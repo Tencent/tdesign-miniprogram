@@ -1,0 +1,18 @@
+<import src="../common/template/button.wxml" />
+<template name="content">
+  <slot wx:if="{{!title && !body}}" name="content-{{current}}"></slot>
+  <block wx:else>
+    <view class="{{prefix}}-class-tooltip">
+      <view wx:if="{{title}}" class="{{prefix}}-class-title {{classPrefix}}__title--{{modeType}}">{{title}}</view>
+      <slot wx:else name="title-{{current}}"></slot>
+      <view wx:if="{{body}}" class="{{prefix}}-class-body {{classPrefix}}__body--{{modeType}}">{{body}}</view>
+      <slot wx:else name="body-{{current}}"></slot>
+    </view>
+    <view class="{{prefix}}-class-footer {{classPrefix}}__footer {{classPrefix}}__footer--{{modeType}}">
+      <template is="button" wx:if="{{current < steps.length - 1}}" data="{{...skipButton}}"></template>
+      <template is="button" wx:else data="{{...backButton}}"></template>
+      <template is="button" wx:if="{{current < steps.length - 1}}" data="{{...nextButton}}"></template>
+      <template is="button" wx:else data="{{...finishButton}}"></template>
+    </view>
+  </block>
+</template>

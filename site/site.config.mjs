@@ -493,6 +493,14 @@ export const docs = [
         component: () => import('@/dropdown-menu/README.md'),
       },
       {
+        title: 'Guide 引导',
+        titleEn: 'Guide',
+        name: 'guide',
+        meta: { docType: 'navigation' },
+        path: '/miniprogram/components/guide',
+        component: () => import('@/guide/README.md'),
+      },
+      {
         title: 'Loading 加载',
         titleEn: 'Loading',
         name: 'loading',

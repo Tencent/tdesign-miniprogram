@@ -42,6 +42,14 @@ export interface TdPickerProps {
     value?: boolean;
   };
   /**
+   * PickerItem 的子项高度，单位 rpx
+   * @default 80
+   */
+  itemHeight?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
    * 用来定义 value / label 在 `options` 中对应的字段别名
    */
   keys?: {
@@ -69,6 +77,14 @@ export interface TdPickerProps {
    * @default true
    */
   usePopup?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 是否使用了自定义导航栏
+   * @default false
+   */
+  usingCustomNavbar?: {
     type: BooleanConstructor;
     value?: boolean;
   };

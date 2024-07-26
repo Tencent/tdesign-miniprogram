@@ -455,6 +455,7 @@ exports[`Indexes Indexes custom demo works fine 1`] = `
     >
       <t-indexes-anchor
         index="{{1}}"
+        tClass="anchor-wrapper"
       >
         <wx-view
           class="capsule"
@@ -486,6 +487,7 @@ exports[`Indexes Indexes custom demo works fine 1`] = `
       </t-cell-group>
       <t-indexes-anchor
         index="{{3}}"
+        tClass="anchor-wrapper"
       >
         <wx-view
           class="capsule"
@@ -517,6 +519,7 @@ exports[`Indexes Indexes custom demo works fine 1`] = `
       </t-cell-group>
       <t-indexes-anchor
         index="{{5}}"
+        tClass="anchor-wrapper"
       >
         <wx-view
           class="capsule"
@@ -548,6 +551,7 @@ exports[`Indexes Indexes custom demo works fine 1`] = `
       </t-cell-group>
       <t-indexes-anchor
         index="{{7}}"
+        tClass="anchor-wrapper"
       >
         <wx-view
           class="capsule"
@@ -579,6 +583,7 @@ exports[`Indexes Indexes custom demo works fine 1`] = `
       </t-cell-group>
       <t-indexes-anchor
         index="{{8}}"
+        tClass="anchor-wrapper"
       >
         <wx-view
           class="capsule"
@@ -610,6 +615,7 @@ exports[`Indexes Indexes custom demo works fine 1`] = `
       </t-cell-group>
       <t-indexes-anchor
         index="{{10}}"
+        tClass="anchor-wrapper"
       >
         <wx-view
           class="capsule"
@@ -641,6 +647,7 @@ exports[`Indexes Indexes custom demo works fine 1`] = `
       </t-cell-group>
       <t-indexes-anchor
         index="#"
+        tClass="anchor-wrapper"
       >
         <wx-view
           class="capsule"

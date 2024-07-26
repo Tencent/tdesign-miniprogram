@@ -165,21 +165,21 @@
 
     &.@{button}--hover {
       z-index: 0;
+      &,
       &::after {
         background-color: @@activeBgColor;
         border-color: @@activeBorderColor;
       }
-      border-color: @@activeBorderColor;
     }
 
     &.@{button}--disabled {
       color: @@disabledColor;
       background-color: @@disabledBgColor;
 
+      &,
       &::after {
         border-color: @@disabledBorderColor;
       }
-      border-color: @@disabledBorderColor;
     }
   }
 }
@@ -222,49 +222,53 @@
 
   &--text {
     color: @button-default-color;
-    background: none;
+    background-color: @bg-color-container;
 
+    &,
     &::after {
       border: 0;
     }
-    border: 0;
 
+    &.@{button}--hover,
     &.@{button}--hover::after {
       background-color: @button-default-text-active-bg-color;
     }
 
     &.@{button}--primary {
       color: @button-primary-text-color;
-      background: none;
+      background-color: @bg-color-container;
 
+      &.@{button}--hover,
       &.@{button}--hover::after {
         background-color: @button-primary-text-active-bg-color;
       }
 
       &.@{button}--disabled {
         color: @button-primary-text-disabled-color;
-        background: none;
+        background-color: @bg-color-container;
       }
     }
 
     &.@{button}--danger {
       color: @button-danger-text-color;
-      background: none;
+      background-color: @bg-color-container;
 
+      &.@{button}--hover,
       &.@{button}--hover::after {
         background-color: @button-danger-text-active-bg-color;
       }
 
       &.@{button}--disabled {
         color: @button-danger-text-disabled-color;
-        background: none;
+        background-color: @bg-color-container;
       }
     }
 
     &.@{button}--light {
       color: @button-light-text-color;
-      background: none;
+      background-color: @bg-color-container;
 
+      &.@{button}--hover,
       &.@{button}--hover::after {
         background-color: @button-light-text-active-bg-color;
       }
@@ -279,11 +283,12 @@
     background-color: transparent;
     color: @button-ghost-color;
 
+    &,
     &::after {
       border-color: @button-ghost-border-color;
     }
-    border-color: @button-ghost-border-color;
 
+    &.@{button}--hover,
     &.@{button}--hover::after {
       background: none;
     }
@@ -291,41 +296,42 @@
     &.@{button}--primary {
       color: @button-ghost-primary-color;
 
+      &,
       &::after {
         border-color: @button-ghost-primary-border-color;
       }
-      border-color: @button-ghost-primary-border-color;
     }
 
     &.@{button}--danger {
       color: @button-ghost-danger-color;
 
+      &,
       &::after {
         border-color: @button-ghost-danger-border-color;
       }
-      border-color: @button-ghost-danger-border-color;
     }
 
     &.@{button}--disabled {
       background-color: transparent;
       color: @button-ghost-disabled-color;
 
+      &,
       &::after {
         border-color: @button-ghost-disabled-color;
       }
-      border-color: @button-ghost-disabled-color;
     }
   }
 
   &--outline {
     color: @button-default-outline-color;
-    background-color: transparent;
+    background-color: @bg-color-container;
 
+    &,
     &::after {
       border-color: @button-default-outline-border-color;
     }
-    border-color: @button-default-outline-border-color;
 
+    &.@{button}--hover,
     &.@{button}--hover::after {
       background-color: @button-default-outline-active-bg-color;
       border-color: @button-default-outline-active-border-color;
@@ -334,19 +340,19 @@
     &.@{button}--disabled {
       color: @button-default-outline-disabled-color;
 
+      &,
       &::after {
         border-color: @button-default-outline-disabled-color;
       }
-      border-color: @button-default-outline-disabled-color;
     }
 
     &.@{button}--primary {
       color: @button-primary-outline-color;
 
+      &,
       &::after {
         border-color: @button-primary-outline-border-color;
       }
-      border-color: @button-primary-outline-border-color;
 
       &.@{button}--hover {
         color: @button-primary-outline-active-border-color;
@@ -361,20 +367,20 @@
         background-color: transparent;
         color: @button-primary-outline-disabled-color;
 
+        &,
         &::after {
           border-color: @button-primary-outline-disabled-color;
         }
-        border-color: @button-primary-outline-disabled-color;
       }
     }
 
     &.@{button}--danger {
       color: @button-danger-outline-color;
 
+      &,
       &::after {
         border-color: @button-danger-outline-border-color;
       }
-      border-color: @button-danger-outline-border-color;
 
       &.@{button}--hover {
         color: @button-danger-outline-active-border-color;
@@ -386,13 +392,13 @@
       }
 
       &.@{button}--disabled {
-        background-color: transparent;
+        background-color: @bg-color-container;
         color: @button-danger-outline-disabled-color;
 
+        &,
         &::after {
           border-color: @button-danger-outline-disabled-color;
         }
-        border-color: @button-danger-outline-disabled-color;
       }
     }
 
@@ -400,14 +406,15 @@
       color: @button-light-outline-color;
       background-color: @button-light-outline-bg-color;
 
+      &,
       &::after {
         border-color: @button-light-outline-border-color;
       }
-      border-color: @button-light-outline-border-color;
 
       &.@{button}--hover {
         color: @button-light-outline-active-border-color;
 
+        &,
         &::after {
           background-color: @button-light-outline-active-bg-color;
           border-color: @button-light-outline-active-border-color;
@@ -415,31 +422,39 @@
       }
 
       &.@{button}--disabled {
-        background-color: transparent;
+        background-color: @bg-color-container;
         color: @button-light-outline-disabled-color;
 
+        &,
         &::after {
           border-color: @button-light-outline-disabled-color;
         }
-        border-color: @button-light-outline-disabled-color;
       }
     }
   }
 
   &--dashed {
-    background-color: transparent;
+    background-color: @bg-color-container;
     border-style: dashed;
+    border-width: 2rpx;
+
+    &.@{button}--hover,
+    &.@{button}--hover::after {
+      background-color: @button-default-outline-active-bg-color;
+      border-color: @button-default-outline-active-border-color;
+    }
 
     &.@{button}--primary {
       color: @button-primary-dashed-color;
 
       &::after {
         border-color: @button-primary-dashed-border-color;
+        border: 0;
       }
       border-color: @button-primary-dashed-border-color;
 
       &.@{button}--disabled {
-        background-color: transparent;
+        background-color: @bg-color-container;
         color: @button-primary-dashed-disabled-color;
 
         &::after {

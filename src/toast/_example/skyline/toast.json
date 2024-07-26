@@ -4,7 +4,6 @@
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "base": "../base",
     "theme": "../theme",
-    "display": "../display",
     "cover": "../cover",
     "close": "../close"
   },

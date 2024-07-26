@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "styleIsolation": "apply-shared",
+  "usingComponents": {
+    "t-overlay": "../overlay/overlay",
+    "t-button": "../button/button",
+    "t-popup": "../popup/popup"
+  }
+}

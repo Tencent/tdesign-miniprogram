@@ -16,10 +16,6 @@ const props: TdNavbarProps = {
     type: Number,
     value: 1,
   },
-  /** 组件类名，分别用于设置组件外层元素、标题、左侧图标、首页图标、胶囊等元素类名 */
-  externalClasses: {
-    type: Array,
-  },
   /** 是否固定在顶部 */
   fixed: {
     type: Boolean,

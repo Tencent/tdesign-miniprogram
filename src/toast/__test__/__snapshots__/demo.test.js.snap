@@ -110,44 +110,6 @@ exports[`Toast Toast cover demo works fine 1`] = `
 </cover>
 `;
 
-exports[`Toast Toast display demo works fine 1`] = `
-<display>
-  <t-toast
-    id="t-toast"
-  />
-  <t-button
-    block="{{true}}"
-    data-type="topShow"
-    size="large"
-    tClass="external-class"
-    variant="outline"
-    bind:tap="handleToast"
-  >
-    顶部展示1秒
-  </t-button>
-  <t-button
-    block="{{true}}"
-    data-type="middleShow"
-    size="large"
-    tClass="external-class"
-    variant="outline"
-    bind:tap="handleToast"
-  >
-    中间展示2秒
-  </t-button>
-  <t-button
-    block="{{true}}"
-    data-type="bottomShow"
-    size="large"
-    tClass="external-class"
-    variant="outline"
-    bind:tap="handleToast"
-  >
-    底部展示3秒
-  </t-button>
-</display>
-`;
-
 exports[`Toast Toast theme demo works fine 1`] = `
 <theme>
   <t-toast

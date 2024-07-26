@@ -1,6 +1,6 @@
 import { prefix } from './config';
 
-const systemInfo = wx.getSystemInfoSync();
+export const systemInfo = wx.getSystemInfoSync();
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
@@ -276,4 +276,14 @@ export const isOverSize = (size, sizeLimit) => {
     typeof sizeLimit === 'number' ? sizeLimit * base : sizeLimit?.size * unitMap[sizeLimit?.unit ?? 'KB']; // 单位 KB
 
   return size > computedSize;
+};
+
+export const rpx2px = (rpx) => Math.floor((systemInfo.windowWidth * rpx) / 750);
+
+export const nextTick = () => {
+  return new Promise<void>((resolve) => {
+    wx.nextTick(() => {
+      resolve();
+    });
+  });
 };

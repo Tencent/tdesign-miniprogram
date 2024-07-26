@@ -12,7 +12,8 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-cell": "tdesign-miniprogram/cell/cell"
+  "t-cell": "tdesign-miniprogram/cell/cell",
+  "t-cell-group": "tdesign-miniprogram/cell-group/cell-group"
 }
 ```
 

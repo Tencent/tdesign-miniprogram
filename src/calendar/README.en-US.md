@@ -17,6 +17,7 @@ min-date | Number | - | \- | N
 title | String / Slot | '请选择日期' | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 type | String | 'single' | options: single/multiple/range | N
 use-popup | Boolean | true | `0.32.0` | N
+using-custom-navbar | Boolean | false | \- | N
 value | Number / Array | - | Typescript：`number \| number[]` | N
 default-value | Number / Array | undefined | uncontrolled property。Typescript：`number \| number[]` | N
 visible | Boolean | false | \- | N
@@ -28,6 +29,7 @@ name | params | description
 change | `(value: timestamp)` | `0.28.0`
 close | `(trigger: CalendarTrigger)` | `0.34.0`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/calendar/type.ts)。<br/>`type CalendarTrigger = 'close-btn' \| 'confirm-btn' \| 'overlay'`<br/>
 confirm | `(value: timestamp)` | \-
+scroll | `({scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY})` | `1.4.6`。triggered when scrolling
 select | `(value: timestamp)` | `0.28.0`
 
 ### CSS Variables

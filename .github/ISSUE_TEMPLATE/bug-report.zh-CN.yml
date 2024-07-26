@@ -25,7 +25,7 @@ body:
     id: reproduce
     attributes:
       label: 重现链接
-      description: 请提供尽可能精简的代码片段 或 GitHub 仓库的链接。请不要填无关链接，否则你的 Issue 将被关闭。
+      description: 请提供尽可能精简的 [代码片段](https://developers.weixin.qq.com/miniprogram/dev/devtools/minicode.html) 或 GitHub 仓库的链接。请不要填无关链接，否则你的 Issue 将被关闭。
       placeholder: 请填写
 
   - type: textarea
@@ -51,7 +51,7 @@ body:
     id: systemVersion
     attributes:
       label: 基础库版本
-      placeholder: 2.11.3
+      placeholder: 3.5.0
 
   - type: textarea
     id: remarks

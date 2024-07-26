@@ -14,27 +14,12 @@ export interface TdNavbarProps {
     value?: boolean;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 后退按钮后退层数，含义参考 [wx.navigateBack](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html)，特殊的，传入 0 不会发生执行 wx.navigateBack
    * @default 1
    */
   delta?: {
     type: NumberConstructor;
     value?: number;
-  };
-  /**
-   * 组件类名，分别用于设置组件外层元素、标题、左侧图标、首页图标、胶囊等元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-title', 't-class-left-icon', 't-class-home-icon', 't-class-capsule'];
   };
   /**
    * 是否固定在顶部

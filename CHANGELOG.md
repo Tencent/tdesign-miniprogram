@@ -6,6 +6,22 @@ docClass: timeline
 ---
 
 
+## 🌈 1.4.5 `2024-07-05` 
+### 🚀 Features
+- `Progress`: `circle` 风格进度条支持自定义起始角度 @jarmywang ([#2903](https://github.com/Tencent/tdesign-miniprogram/pull/2903))
+- `SwipeCell`: 新增 `dragstart` 和 `dragend` 事件 @Lyan-u ([#2904](https://github.com/Tencent/tdesign-miniprogram/pull/2904))
+- `PullDownRefresh`: 新增 `disabled` 属性 @Lyan-u ([#2904](https://github.com/Tencent/tdesign-miniprogram/pull/2904))
+- `Search`: 新增 `resultList` 属性，支持预览列表  @byq1213  @anlyyao ([#2520](https://github.com/Tencent/tdesign-miniprogram/pull/2520))
+- `Picker`: 新增 `itemHeight` 属性，支持自定义 `PickerItem` 子项高度 @anlyyao ([#2953](https://github.com/Tencent/tdesign-miniprogram/pull/2953))
+### 🐞 Bug Fixes
+- `Popup`: 修复右侧弹层未适配自定义标题栏高度 @jarmywang ([#2921](https://github.com/Tencent/tdesign-miniprogram/pull/2921))
+- `Navbar`: 组件内部适配 `wx.onMenuButtonBoundingClientRectWeightChange()` @jby0107 ([#2922](https://github.com/Tencent/tdesign-miniprogram/pull/2922))
+- `Input`: 修复`Skyline`下点击清除图标时页面上 `bindtap` 无效 @anlyyao ([#2946](https://github.com/Tencent/tdesign-miniprogram/pull/2946))
+### 🚧 Others
+- `site`: 全量组件补充示例代码片段，支持导入开发者工具预览 @anlyyao ([#2939](https://github.com/Tencent/tdesign-miniprogram/pull/2939))
+- `Picker`: 废弃无实际意义的 `--td-picker-item-height` @anlyyao ([#2953](https://github.com/Tencent/tdesign-miniprogram/pull/2953))
+
+
 ## 🌈 1.4.4 `2024-06-24` 
 ### 🐞 Bug Fixes
 - `Overlay`: 修复遮罩失效 @anlyyao ([#2887](https://github.com/Tencent/tdesign-miniprogram/pull/2887))
@@ -13,7 +29,7 @@ docClass: timeline
 
 ## 🌈 1.4.3 `2024-06-21` 
 ### 🚀 Features
-- `TabPanel`: 支持动态 `lable` @anlyyao ([#2872](https://github.com/Tencent/tdesign-miniprogram/pull/2872))
+- `TabPanel`: 支持动态 `label` @anlyyao ([#2872](https://github.com/Tencent/tdesign-miniprogram/pull/2872))
 ### 🐞 Bug Fixes
 - `Calendar`:  优化 `title` 默认值 @anlyyao ([#2858](https://github.com/Tencent/tdesign-miniprogram/pull/2858))
 - `Swiper`: 修复 `navigation` 插槽无效的问题 @jarmywang ([#2859](https://github.com/Tencent/tdesign-miniprogram/pull/2859))

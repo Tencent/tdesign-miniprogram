@@ -15,7 +15,7 @@
     <slot />
     <view class="{{classPrefix}}__mask {{classPrefix}}__mask--top" />
     <view class="{{classPrefix}}__mask {{classPrefix}}__mask--bottom" />
-    <view class="{{classPrefix}}__indicator"></view>
+    <view class="{{classPrefix}}__indicator" style="height: {{pickItemHeight}}px"> </view>
   </view>
   <slot name="footer" />
 </view>

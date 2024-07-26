@@ -1,4 +1,3 @@
-// @import (css) '../common/index.wxss';
 @import '../common/style/index.less';
 
 @picker: ~'@{prefix}-picker';
@@ -15,7 +14,6 @@
 @picker-title-line-height: var(--td-picker-title-line-height, 52rpx);
 @picker-title-color: var(--td-picker-title-color, @text-color-primary);
 
-@picker-item-height: var(--td-picker-item-height, 80rpx);
 @picker-bg-color: var(--td-picker-bg-color, @bg-color-container);
 @picker-mask-color-top: var(--td-picker-mask-color-top, hsla(0, 0%, 100%, 0.92));
 @picker-mask-color-bottom: var(--td-picker-mask-color-bottom, hsla(0, 0%, 100%, 0.4));
@@ -98,7 +96,6 @@
   }
 
   &__indicator {
-    height: @picker-item-height;
     position: absolute;
     left: 32rpx;
     right: 32rpx;

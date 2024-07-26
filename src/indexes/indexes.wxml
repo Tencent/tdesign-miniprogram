@@ -11,7 +11,7 @@
     <view
       class="{{_.cls(classPrefix + '__sidebar-item', [['active', activeAnchor === item]])}} {{prefix}}-class-sidebar-item"
       wx:for="{{ _indexList }}"
-      wx:key="index"
+      wx:key="*this"
       bind:tap="onClick"
       data-index="{{index}}"
     >

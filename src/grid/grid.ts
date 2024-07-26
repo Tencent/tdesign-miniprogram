@@ -24,10 +24,7 @@ export default class Grid extends SuperComponent {
   };
 
   observers = {
-    'column,hover,align'() {
-      this.updateContentStyle();
-    },
-    'gutter,border'() {
+    'column,hover,align,gutter,border'() {
       this.updateContentStyle();
       this.doForChild((child) => child.updateStyle());
     },

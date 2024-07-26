@@ -41,7 +41,7 @@
     >{{value+'星'}} {{utils.getText(texts,value,defaultTexts)}}</text
   >
   <view
-    wx:if="{{tipsVisible}}"
+    wx:if="{{tipsVisible && placement}}"
     class="{{_.cls(classPrefix + '__tips', [placement])}}"
     style="left: {{tipsLeft}}px"
     aria-hidden="{{true}}"
@@ -85,7 +85,7 @@
         class="{{_.cls(classPrefix + '__icon', [['selected', utils.ceil(value) == value], ['selected-half', utils.ceil(value) != value]]) }}"
         name="{{utils.getIconName(defaultValue, 0, 0, icon)}}"
         size="{{ size }}"
-        style="{{utils.getColor(color)}}; font-size: {{size}};"
+        style="{{utils.getColor(color)}}"
       />
       <view class="{{classPrefix}}__tips-text">{{value}}</view>
     </view>

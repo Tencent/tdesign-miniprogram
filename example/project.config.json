@@ -404,6 +404,12 @@
           "name": "checkbox",
           "pathName": "pages/checkbox/checkbox",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "guide",
+          "pathName": "pages/guide/guide",
+          "scene": null
         }
       ]
     }

@@ -148,20 +148,6 @@ exports[`Input Input prefix demo works fine 1`] = `
 </prefix>
 `;
 
-exports[`Input Input size demo works fine 1`] = `
-<size>
-  <t-input
-    label="小规格H48"
-    placeholder="请输入文字"
-    size="small"
-  />
-  <t-input
-    label="中规格H56"
-    placeholder="请输入文字"
-  />
-</size>
-`;
-
 exports[`Input Input special demo works fine 1`] = `
 <special>
   <t-input

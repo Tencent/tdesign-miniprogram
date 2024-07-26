@@ -98,8 +98,16 @@ const skylineForm = {
     //   label: '滑动选择器',
     // },
     {
+      name: 'Search',
+      label: '搜索框',
+    },
+    {
       name: 'Stepper',
       label: '步进器',
+    },
+    {
+      name: 'Switch',
+      label: '开关',
     },
     {
       name: 'Textarea',

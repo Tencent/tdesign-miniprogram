@@ -20,7 +20,7 @@ describe('date-time-picker', () => {
     const target = handler(dom);
 
     target.start(0, 0);
-    target.move(0, -35 * step);
+    target.move(0, -34 * step); // itemHeight / 1.2
     target.end();
   };
 
@@ -260,7 +260,7 @@ describe('date-time-picker', () => {
 
       // case1: 滚动完取消，应该回到原点
       await mockScroll();
-      expect($item.data.offset).toBe(-2 * 44);
+      expect($item.data.offset).toBe(-2 * 40);
 
       $cancel.dispatchEvent('tap');
       await simulate.sleep();
@@ -273,7 +273,7 @@ describe('date-time-picker', () => {
       $confirm.dispatchEvent('tap');
       await simulate.sleep();
 
-      expect($item.data.offset).toBe(-2 * 44);
+      expect($item.data.offset).toBe(-2 * 40);
 
       // case3: 滚动完确认，没修改value，应该维持在上次滚动的位置
       enableChange = false;
@@ -281,7 +281,7 @@ describe('date-time-picker', () => {
       // 模拟确认
       $confirm.dispatchEvent('tap');
       await simulate.sleep();
-      expect($item.data.offset).toBe(-2 * 44);
+      expect($item.data.offset).toBe(-2 * 40);
     });
 
     it('uncontrolled', async () => {
@@ -325,7 +325,7 @@ describe('date-time-picker', () => {
       $confirm.dispatchEvent('tap');
       await simulate.sleep();
 
-      expect($item.data.offset).toBe(-2 * 44);
+      expect($item.data.offset).toBe(-2 * 40);
     });
   });
 });
