@@ -2,14 +2,13 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
 import { TdGuideProps, GuideStep } from './type';
-import { debounce, getRect, isNumber, rpx2px, styles, unitConvert } from '../common/utils';
+import { systemInfo, debounce, getRect, isNumber, rpx2px, styles, unitConvert, nextTick } from '../common/utils';
 
 export interface GuideProps extends TdGuideProps {}
 export { GuideStep };
 
 const { prefix } = config;
 const name = `${prefix}-guide`;
-const systemInfo = wx.getSystemInfoSync();
 
 @wxComponent()
 export default class Guide extends SuperComponent {
@@ -40,7 +39,6 @@ export default class Guide extends SuperComponent {
     visible: false,
     _current: -1,
     _steps: [],
-    _init: null,
     buttonProps: {},
     referenceStyle: '',
     popoverStyle: '',
@@ -52,27 +50,21 @@ export default class Guide extends SuperComponent {
 
   observers = {
     async 'steps, current, showOverlay'() {
-      this.data._init();
+      this._init();
     },
   };
 
   lifetimes = {
     created() {
-      this.setData({ _init: debounce(() => this.init(), 20) });
+      this._init = debounce(() => this.init(), 20);
+      this._getPlacement = this.getPlacement();
     },
     attached() {
-      this.data._init();
+      this._init();
     },
   };
 
   methods = {
-    nextTick() {
-      return new Promise<void>((resolve) => {
-        wx.nextTick(() => {
-          resolve();
-        });
-      });
-    },
     async init() {
       const { steps, current } = this.properties;
       const { _steps, _current } = this.data;
@@ -121,74 +113,10 @@ export default class Guide extends SuperComponent {
       }
     },
     async placementOffset({ placement, offset }: GuideStep, place: CSSStyleDeclaration) {
-      await this.nextTick();
-      const rect: WechatMiniprogram.BoundingClientRectCallbackResult = await getRect(this, `.${name}__container`);
-      let offsetLeft = offset?.[0];
-      offsetLeft = unitConvert(isNumber(offsetLeft) ? `${offsetLeft}rpx` : offsetLeft || 0);
-      let offsetTop = offset?.[1];
-      offsetTop = unitConvert(isNumber(offsetTop) ? `${offsetTop}rpx` : offsetTop || 0);
-      const bottom = parseFloat(place.bottom);
-      const left = parseFloat(place.left);
-      const right = parseFloat(place.right);
-      const top = parseFloat(place.top);
-      const height = systemInfo.windowHeight - bottom - top;
-      const width = systemInfo.windowWidth - left - right;
-      const space = rpx2px(32);
-      const style: Partial<CSSStyleDeclaration> = { position: 'absolute' };
-      switch (placement) {
-        case 'center':
-        case 'bottom':
-          style.top = `${Math.max(height + top + space + offsetTop, 1)}px`;
-          style.left = `${Math.max(width / 2 + left - rect.width / 2 + offsetLeft, 1)}px`;
-          break;
-        case 'bottom-left':
-          style.top = `${Math.max(height + top + space + offsetTop, 1)}px`;
-          style.left = `${Math.max(left + offsetLeft, 1)}px`;
-          break;
-        case 'bottom-right':
-          style.top = `${Math.max(height + top + space + offsetTop, 1)}px`;
-          style.right = `${Math.max(right - offsetLeft, 1)}px`;
-          break;
-        case 'left':
-          style.top = `${Math.max(height / 2 + top - rect.height / 2 + offsetTop, 1)}px`;
-          style.right = `${Math.max(width + right + space - offsetLeft, 1)}px`;
-          break;
-        case 'left-top':
-          style.top = `${Math.max(top + offsetTop, 1)}px`;
-          style.right = `${Math.max(width + right + space - offsetLeft, 1)}px`;
-          break;
-        case 'left-bottom':
-          style.bottom = `${Math.max(bottom - offsetTop, 1)}px`;
-          style.right = `${Math.max(width + right + space - offsetLeft, 1)}px`;
-          break;
-        case 'right':
-          style.top = `${Math.max(height / 2 + top - rect.height / 2 + offsetTop, 1)}px`;
-          style.left = `${Math.max(left + width + space + offsetLeft, 1)}px`;
-          break;
-        case 'right-top':
-          style.top = `${Math.max(top + offsetTop, 1)}px`;
-          style.left = `${Math.max(left + width + space + offsetLeft, 1)}px`;
-          break;
-        case 'right-bottom':
-          style.bottom = `${Math.max(bottom - offsetTop, 1)}px`;
-          style.left = `${Math.max(left + width + space + offsetLeft, 1)}px`;
-          break;
-        case 'top':
-          style.bottom = `${Math.max(height + bottom + space - offsetTop, 1)}px`;
-          style.left = `${Math.max(width / 2 + left - rect.width / 2 + offsetLeft, 1)}px`;
-          break;
-        case 'top-left':
-          style.bottom = `${Math.max(height + bottom + space - offsetTop, 1)}px`;
-          style.left = `${Math.max(left + offsetLeft, 1)}px`;
-          break;
-        case 'top-right':
-          style.bottom = `${Math.max(height + bottom + space - offsetTop, 1)}px`;
-          style.right = `${Math.max(right - offsetLeft, 1)}px`;
-          break;
-        default:
-          break;
-      }
-      return styles(style);
+      await nextTick();
+      const rect = await getRect(this, `.${name}__container`);
+      const style = this._getPlacement[placement]?.(rect, place, offset);
+      return styles({ position: 'absolute', ...style });
     },
     buttonProps(step, mode) {
       let skipButton = step.skipButtonProps ?? this.data.skipButtonProps;
@@ -267,6 +195,71 @@ export default class Guide extends SuperComponent {
           break;
       }
       this.triggerEvent('change', { current: this.data.current });
+    },
+    getPlacement() {
+      const space = rpx2px(32);
+      const offsetLeft = (offset) => unitConvert(isNumber(offset?.[0]) ? `${offset?.[0]}rpx` : offset?.[0] || 0);
+      const offsetTop = (offset) => unitConvert(isNumber(offset?.[1]) ? `${offset?.[1]}rpx` : offset?.[1] || 0);
+      const bottom = (place) => parseFloat(place.bottom);
+      const left = (place) => parseFloat(place.left);
+      const right = (place) => parseFloat(place.right);
+      const top = (place) => parseFloat(place.top);
+      const height = (place) => systemInfo.windowHeight - bottom(place) - top(place);
+      const width = (place) => systemInfo.windowWidth - left(place) - right(place);
+      return {
+        center: (rect, place, offset) => ({
+          top: `${Math.max(height(place) + top(place) + space + offsetTop(offset), 1)}px`,
+          left: `${Math.max(width(place) / 2 + left(place) - rect.width / 2 + offsetLeft(offset), 1)}px`,
+        }),
+        bottom: (rect, place, offset) => ({
+          top: `${Math.max(height(place) + top(place) + space + offsetTop(offset), 1)}px`,
+          left: `${Math.max(width(place) / 2 + left(place) - rect.width / 2 + offsetLeft(offset), 1)}px`,
+        }),
+        'bottom-left': (rect, place, offset) => ({
+          top: `${Math.max(height(place) + top(place) + space + offsetTop(offset), 1)}px`,
+          left: `${Math.max(left(place) + offsetLeft(offset), 1)}px`,
+        }),
+        'bottom-right': (rect, place, offset) => ({
+          top: `${Math.max(height(place) + top(place) + space + offsetTop(offset), 1)}px`,
+          right: `${Math.max(right(place) - offsetLeft(offset), 1)}px`,
+        }),
+        left: (rect, place, offset) => ({
+          top: `${Math.max(height(place) / 2 + top(place) - rect.height / 2 + offsetTop(offset), 1)}px`,
+          right: `${Math.max(width(place) + right(place) + space - offsetLeft(offset), 1)}px`,
+        }),
+        'left-top': (rect, place, offset) => ({
+          top: `${Math.max(top(place) + offsetTop(offset), 1)}px`,
+          right: `${Math.max(width(place) + right(place) + space - offsetLeft(offset), 1)}px`,
+        }),
+        'left-bottom': (rect, place, offset) => ({
+          bottom: `${Math.max(bottom(place) - offsetTop(offset), 1)}px`,
+          right: `${Math.max(width(place) + right(place) + space - offsetLeft(offset), 1)}px`,
+        }),
+        right: (rect, place, offset) => ({
+          top: `${Math.max(height(place) / 2 + top(place) - rect.height / 2 + offsetTop(offset), 1)}px`,
+          left: `${Math.max(left(place) + width(place) + space + offsetLeft(offset), 1)}px`,
+        }),
+        'right-top': (rect, place, offset) => ({
+          top: `${Math.max(top(place) + offsetTop(offset), 1)}px`,
+          left: `${Math.max(left(place) + width(place) + space + offsetLeft(offset), 1)}px`,
+        }),
+        'right-bottom': (rect, place, offset) => ({
+          bottom: `${Math.max(bottom(place) - offsetTop(offset), 1)}px`,
+          left: `${Math.max(left(place) + width(place) + space + offsetLeft(offset), 1)}px`,
+        }),
+        top: (rect, place, offset) => ({
+          bottom: `${Math.max(height(place) + bottom(place) + space - offsetTop(offset), 1)}px`,
+          left: `${Math.max(width(place) / 2 + left(place) - rect.width / 2 + offsetLeft(offset), 1)}px`,
+        }),
+        'top-left': (rect, place, offset) => ({
+          bottom: `${Math.max(height(place) + bottom(place) + space - offsetTop(offset), 1)}px`,
+          left: `${Math.max(left(place) + offsetLeft(offset), 1)}px`,
+        }),
+        'top-right': (rect, place, offset) => ({
+          bottom: `${Math.max(height(place) + bottom(place) + space - offsetTop(offset), 1)}px`,
+          right: `${Math.max(right(place) - offsetLeft(offset), 1)}px`,
+        }),
+      };
     },
   };
 }
