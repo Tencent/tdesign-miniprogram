@@ -11,7 +11,7 @@
 }
 
 .capsule--active {
-  background: var(--td-gray-color-13, #fff);
+  background: var(--td-gray-color-13, #ffffff);
   border: 1px solid var(--td-border-level-1-color, #e7e7e7);
 }
 
@@ -21,5 +21,9 @@
 }
 
 .indexes {
-  background: var(--td-bg-color-container, #fff);
+  background: var(--td-bg-color-container, #ffffff);
+}
+
+.anchor-wrapper {
+  background: var(--td-bg-color-container, #ffffff);
 }
