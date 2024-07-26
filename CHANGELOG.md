@@ -6,6 +6,27 @@ docClass: timeline
 ---
 
 
+## 🌈 1.5.0 `2024-07-26` 
+### 🚀 Features
+- `Guide`: 新增`Guide`组件 @hkaikai ([#2998](https://github.com/Tencent/tdesign-miniprogram/pull/2998)) ⚡
+- `Icon`: 新增 `list-numbered`、`lock-off-filled`、`lock-on-filled` 等 3 个图标 @anlyyao ([#2962](https://github.com/Tencent/tdesign-miniprogram/pull/2962))
+- `Calendar`:  新增 `scroll` 事件 @jarmywang ([#2974](https://github.com/Tencent/tdesign-miniprogram/pull/2974))
+- `Rate`: `placement` 属性可选项新增 `''`，表示不显示评分弹窗 @anlyyao ([#2980](https://github.com/Tencent/tdesign-miniprogram/pull/2980))
+### 🐞 Bug Fixes
+- `Icon`: 修复图标 `chart-column` 的命名错误问题 @anlyyao ([#2962](https://github.com/Tencent/tdesign-miniprogram/pull/2962))
+- `Cell`: 修复动态添加 `cell` 时底部 `border` 不显示的问题 @jarmywang ([#2977](https://github.com/Tencent/tdesign-miniprogram/pull/2977))
+- `Button`: 修复`skyline`渲染模式下 `hover` 态失效 @jarmywang ([#2973](https://github.com/Tencent/tdesign-miniprogram/pull/2973))
+- `Grid`: 监听数据变化后未更新子组件样式 @betavs ([#2991](https://github.com/Tencent/tdesign-miniprogram/pull/2991))
+- `Input`: 修复占位符禁用态样式错误 @anlyyao ([#3005](https://github.com/Tencent/tdesign-miniprogram/pull/3005))
+- `Noticebar`: 移除未依赖的组件引用，修复代码质量告警 @anlyyao ([#3006](https://github.com/Tencent/tdesign-miniprogram/pull/3006))
+- `Indexes`: 修复位置错乱和滑动卡顿 @jarmywang ([#3000](https://github.com/Tencent/tdesign-miniprogram/pull/3000))
+### 🚧 Others
+- `官网`: 项目案例更新 @anlyyao ([#2964](https://github.com/Tencent/tdesign-miniprogram/pull/2964))
+- `TabBarItem`: `wx:key` 从 `index` 更换为`value`属性值作为标识符 @jarmywang ([#3002](https://github.com/Tencent/tdesign-miniprogram/pull/3002))
+- `Search`: `skyline` 适配 @byq1213 ([#2971](https://github.com/Tencent/tdesign-miniprogram/pull/2971))
+- `Switch`:  `skyline` 适配 @byq1213 ([#2967](https://github.com/Tencent/tdesign-miniprogram/pull/2967))
+
+
 ## 🌈 1.4.5 `2024-07-05` 
 ### 🚀 Features
 - `Progress`: `circle` 风格进度条支持自定义起始角度 @jarmywang ([#2903](https://github.com/Tencent/tdesign-miniprogram/pull/2903))
