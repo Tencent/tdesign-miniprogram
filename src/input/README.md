@@ -6,6 +6,7 @@ isComponent: true
 ---
 
 <span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-97%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-88%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-97%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-92%25-blue" /></span>
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -78,8 +79,8 @@ isComponent: true
 
 {{ custom }}
 
-
 ## API
+
 ### Input Props
 
 名称 | 类型 | 默认值 | 说明 | 必传
@@ -141,8 +142,9 @@ nicknamereview | `(pass: boolean, timeout: boolean)`| 用户昵称审核完毕�
 click `v0.32.0`| `(trigger: InputTrigger)` | 点击事件。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts)。<br/>`type InputTrigger = 'suffix' \| 'suffix-icon';`<br/>
 
 ### CellGroup 外部样式类
+
 类名 | 说明
--- | -- 
+-- | --
 t-class | 根节点样式类
 t-class-prefix-icon | 前置图标样式类
 t-class-label | 标题样式类
@@ -153,28 +155,30 @@ t-class-suffix-icon | 后置图标样式类
 t-class-tips | 提示样式类
 
 ### CSS 变量
+
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
---td-input-bg-color | @bg-color-container | - 
---td-input-border-color | @component-stroke | - 
---td-input-border-left-space | 32rpx | - 
---td-input-border-radius | @radius-default | - 
---td-input-border-right-space | 0 | - 
---td-input-default-text-color | @font-gray-1 | - 
---td-input-default-tips-color | @font-gray-3 | - 
---td-input-disabled-text-color | @text-color-disabled | - 
---td-input-error-text-color | @error-color | - 
---td-input-error-tips-color | @error-color | - 
---td-input-label-max-width | 5em | - 
---td-input-label-min-width | 2em | - 
---td-input-label-text-color | @font-gray-1 | - 
---td-input-placeholder-text-color | @text-color-placeholder | - 
---td-input-prefix-icon-color | @font-gray-1 | - 
---td-input-success-text-color | @success-color | - 
---td-input-success-tips-color | @success-color | - 
---td-input-suffix-icon-color | @font-gray-3 | - 
---td-input-suffix-text-color | @font-gray-1 | - 
---td-input-vertical-padding | 32rpx | - 
---td-input-warning-text-color | @warning-color | - 
---td-input-warning-tips-color | @warning-color | - 
+--td-input-bg-color | @bg-color-container | -
+--td-input-border-color | @component-stroke | -
+--td-input-border-left-space | 32rpx | -
+--td-input-border-radius | @radius-default | -
+--td-input-border-right-space | 0 | -
+--td-input-default-text-color | @font-gray-1 | -
+--td-input-default-tips-color | @font-gray-3 | -
+--td-input-disabled-text-color | @text-color-disabled | -
+--td-input-error-text-color | @error-color | -
+--td-input-error-tips-color | @error-color | -
+--td-input-label-max-width | 5em | -
+--td-input-label-min-width | 2em | -
+--td-input-label-text-color | @font-gray-1 | -
+--td-input-placeholder-text-color | @text-color-placeholder | -
+--td-input-placeholder-text-font-size | @font-size-m | -
+--td-input-prefix-icon-color | @font-gray-1 | -
+--td-input-success-text-color | @success-color | -
+--td-input-success-tips-color | @success-color | -
+--td-input-suffix-icon-color | @font-gray-3 | -
+--td-input-suffix-text-color | @font-gray-1 | -
+--td-input-vertical-padding | 32rpx | -
+--td-input-warning-text-color | @warning-color | -
+--td-input-warning-tips-color | @warning-color | -
