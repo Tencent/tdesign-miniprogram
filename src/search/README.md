@@ -6,6 +6,7 @@ isComponent: true
 ---
 
 <span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-96%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-86%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-96%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-100%25-blue" /></span>
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -67,7 +68,7 @@ disabled | Boolean | false | 是否禁用 | N
 focus | Boolean | false | 是否聚焦 | N
 hold-keyboard | Boolean | false | focus时，点击页面的时候不收起键盘 | N
 label | String | '' | 已废弃。左侧文本 | N
-left-icon | String / Slot | 'search' | 左侧图标。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+left-icon | String / Slot | 'search' | 左侧图标。如果需要使用 `Slot` 进行自定义，必须将该值设置为假值。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度。`maxcharacter` 和 `maxlength` 二选一使用 | N
 maxlength | Number | -1 | 用户最多可以输入的文本长度，一个中文等于一个计数长度。默认为 -1，不限制输入长度。`maxcharacter` 和 `maxlength` 二选一使用 | N
 placeholder | String | '' | 占位符 | N
@@ -91,6 +92,7 @@ change | `({ value: string })` | 值发生变化时触发
 clear | `({ value: string })` | 点击清除时触发
 focus | `({ value: string })` | 聚焦时触发
 submit | `({ value: string })` | 提交时触发
+
 ### Search External Classes
 
 类名 | 描述
@@ -105,17 +107,17 @@ t-class-left | 左侧图标样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
---td-search-action-color | @brand-color | - 
---td-search-bg-color | @bg-color-secondarycontainer | - 
---td-search-clear-icon-color | @font-gray-3 | - 
---td-search-font-size | @font-size-m | - 
---td-search-height | 80rpx | - 
---td-search-icon-color | @font-gray-3 | - 
---td-search-label-color | @font-gray-1 | - 
---td-search-padding | 16rpx 24rpx | - 
---td-search-placeholder-color | @font-gray-3 | - 
+--td-search-action-color | @brand-color | -
+--td-search-bg-color | @bg-color-secondarycontainer | -
+--td-search-clear-icon-color | @font-gray-3 | -
+--td-search-font-size | @font-size-m | -
+--td-search-height | 80rpx | -
+--td-search-icon-color | @font-gray-3 | -
+--td-search-label-color | @font-gray-1 | -
+--td-search-padding | 16rpx 24rpx | -
+--td-search-placeholder-color | @font-gray-3 | -
 --td-search-result-high-light-color | @brand-color | -
---td-search-square-radius | @radius-default | - 
+--td-search-square-radius | @radius-default | -
 --td-search-text-color | @font-gray-1 | -
