@@ -3,10 +3,15 @@
 exports[`NoticeBar NoticeBar base demo works fine 1`] = `
 <base>
   <t-notice-bar
-    content="这是一条普通的通知信息"
     prefixIcon="{{false}}"
     visible="{{true}}"
-  />
+  >
+    <wx-view
+      slot="content"
+    >
+      这是一条普通的通知信息
+    </wx-view>
+  </t-notice-bar>
 </base>
 `;
 
