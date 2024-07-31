@@ -5,7 +5,7 @@ exports[`PullDownRefresh PullDownRefresh base demo works fine 1`] = `
   <t-pull-down-refresh
     loadingProps="{{
       Object {
-        "size": "50rpx",
+        "size": "30rpx",
       }
     }}"
     loadingTexts="{{

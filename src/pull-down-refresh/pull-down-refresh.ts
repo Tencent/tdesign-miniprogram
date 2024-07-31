@@ -42,6 +42,7 @@ export default class PullDownRefresh extends SuperComponent {
     prefix,
     classPrefix: name,
     barHeight: 0,
+    tipsHeight: 0,
     refreshStatus: -1,
     loosing: false,
     enableToRefresh: true,
@@ -63,6 +64,12 @@ export default class PullDownRefresh extends SuperComponent {
       Object.defineProperty(this, 'maxBarHeight', {
         get() {
           return unitConvert(this.data.maxBarHeight);
+        },
+      });
+
+      Object.defineProperty(this, 'tipsHeight', {
+        get() {
+          return unitConvert(this.data.tipsHeight);
         },
       });
 
@@ -98,6 +105,9 @@ export default class PullDownRefresh extends SuperComponent {
       } else {
         this.doRefresh();
       }
+    },
+    barHeight(val) {
+      this.setData({ tipsHeight: Math.min(val, this.data.loadingBarHeight) });
     },
   };
 
