@@ -82,12 +82,16 @@ pick | `(value: string \| number, index: number)` | `1.0.1`。选择后触发
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-cascader-active-color | @brand-color | - 
---td-cascader-border-color | @border-color | - 
---td-cascader-disabled-color | @font-gray-4 | - 
---td-cascader-options-height | 640rpx | - 
---td-cascader-options-title-color | @font-gray-3 | - 
---td-cascader-step-arrow-color | @font-gray-3 | - 
+--td-cascader-bg-color | @bg-color-container | - 
+--td-cascader-border-color | @component-stroke | - 
+--td-cascader-content-height | 78vh | - 
+--td-cascader-disabled-color | @text-color-disabled | - 
+--td-cascader-options-height | calc(100% - @cascader-step-height) | - 
+--td-cascader-options-title-color | @text-color-placeholder | - 
+--td-cascader-step-arrow-color | @text-color-placeholder | - 
 --td-cascader-step-dot-size | 16rpx | - 
 --td-cascader-step-height | 88rpx | - 
---td-cascader-title-color | @font-gray-1 | - 
+--td-cascader-title-color | @text-color-primary | - 
+--td-cascader-title-height | 26rpx | - 
+--td-cascader-title-padding | @spacer-2 | - 
 --td-cascder-title-font-size | 36rpx | - 
