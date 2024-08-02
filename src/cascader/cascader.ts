@@ -73,7 +73,7 @@ export default class Cascader extends SuperComponent {
         $tabs?.getTabHeight().then((res) => {
           this.state.tabsHeight = res.height;
         });
-        this.initOptionsHeight();
+        this.initOptionsHeight(this.data.steps.length);
         this.updateScrollTop();
         this.initWithValue();
       } else {
@@ -106,12 +106,10 @@ export default class Cascader extends SuperComponent {
       });
 
       if (visible && theme === 'step') {
-        const { contentHeight, stepsInitHeight, stepHeight, subTitlesHeight } = this.state;
-        this.setData({
-          _optionsHeight: contentHeight - stepsInitHeight - subTitlesHeight - (items.length - 1) * stepHeight,
-        });
+        this.updateOptionsHeight(steps.length);
       }
     },
+
     async stepIndex() {
       const { visible } = this.data;
 
@@ -122,7 +120,14 @@ export default class Cascader extends SuperComponent {
   };
 
   methods = {
-    async initOptionsHeight() {
+    updateOptionsHeight(steps: number) {
+      const { contentHeight, stepsInitHeight, stepHeight, subTitlesHeight } = this.state;
+      this.setData({
+        _optionsHeight: contentHeight - stepsInitHeight - subTitlesHeight - (steps - 1) * stepHeight,
+      });
+    },
+
+    async initOptionsHeight(steps: number) {
       const { theme, subTitles } = this.properties;
 
       const { height } = await getRect(this, `.${name}__content`);
@@ -131,7 +136,7 @@ export default class Cascader extends SuperComponent {
       if (theme === 'step') {
         await Promise.all([getRect(this, `.${name}__steps`), getRect(this, `.${name}__step`)]).then(
           ([stepsRect, stepRect]) => {
-            this.state.stepsInitHeight = stepsRect.height;
+            this.state.stepsInitHeight = stepsRect.height - (steps - 1) * stepRect.height;
             this.state.stepHeight = stepRect.height;
           },
         );
@@ -145,7 +150,9 @@ export default class Cascader extends SuperComponent {
       const optionsInitHeight = this.state.contentHeight - this.state.subTitlesHeight;
       this.setData({
         _optionsHeight:
-          theme === 'step' ? optionsInitHeight - this.state.stepsInitHeight : optionsInitHeight - this.state.tabsHeight,
+          theme === 'step'
+            ? optionsInitHeight - this.state.stepsInitHeight - (steps - 1) * this.state.stepHeight
+            : optionsInitHeight - this.state.tabsHeight,
       });
     },
 
