@@ -43,6 +43,8 @@
           class="{{name}}__options"
           scroll-y
           scroll-top="{{scrollTopList[index]}}"
+          type="list"
+          style="height: {{_optionsHeight}}px"
         >
           <view class="cascader-radio-group-{{index}}">
             <t-radio-group
