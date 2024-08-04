@@ -24,6 +24,14 @@ function parseOptions(options: OptionsType, keys: KeysType) {
   });
 }
 
+const defaultState = {
+  contentHeight: 0,
+  stepHeight: 0,
+  tabsHeight: 0,
+  subTitlesHeight: 0,
+  stepsInitHeight: 0,
+};
+
 @wxComponent()
 export default class Cascader extends SuperComponent {
   externalClasses = [`${prefix}-class`];
@@ -42,6 +50,10 @@ export default class Cascader extends SuperComponent {
     },
   ];
 
+  state = {
+    ...defaultState,
+  };
+
   data = {
     prefix,
     name,
@@ -50,16 +62,22 @@ export default class Cascader extends SuperComponent {
     selectedValue: [],
     scrollTopList: [],
     steps: [],
+    _optionsHeight: 0,
   };
 
   observers = {
     visible(v) {
       if (v) {
         const $tabs = this.selectComponent('#tabs');
-
         $tabs?.setTrack();
+        $tabs?.getTabHeight().then((res) => {
+          this.state.tabsHeight = res.height;
+        });
+        this.initOptionsHeight(this.data.steps.length);
         this.updateScrollTop();
         this.initWithValue();
+      } else {
+        this.state = { ...defaultState };
       }
     },
 
@@ -78,6 +96,7 @@ export default class Cascader extends SuperComponent {
       });
     },
     selectedIndexes() {
+      const { visible, theme } = this.properties;
       const { selectedValue, steps, items } = this.genItems();
 
       this.setData({
@@ -85,7 +104,12 @@ export default class Cascader extends SuperComponent {
         selectedValue,
         stepIndex: items.length - 1,
       });
+
+      if (visible && theme === 'step') {
+        this.updateOptionsHeight(steps.length);
+      }
     },
+
     async stepIndex() {
       const { visible } = this.data;
 
@@ -96,6 +120,42 @@ export default class Cascader extends SuperComponent {
   };
 
   methods = {
+    updateOptionsHeight(steps: number) {
+      const { contentHeight, stepsInitHeight, stepHeight, subTitlesHeight } = this.state;
+      this.setData({
+        _optionsHeight: contentHeight - stepsInitHeight - subTitlesHeight - (steps - 1) * stepHeight,
+      });
+    },
+
+    async initOptionsHeight(steps: number) {
+      const { theme, subTitles } = this.properties;
+
+      const { height } = await getRect(this, `.${name}__content`);
+      this.state.contentHeight = height;
+
+      if (theme === 'step') {
+        await Promise.all([getRect(this, `.${name}__steps`), getRect(this, `.${name}__step`)]).then(
+          ([stepsRect, stepRect]) => {
+            this.state.stepsInitHeight = stepsRect.height - (steps - 1) * stepRect.height;
+            this.state.stepHeight = stepRect.height;
+          },
+        );
+      }
+
+      if (subTitles.length > 0) {
+        const { height } = await getRect(this, `.${name}__options-title`);
+        this.state.subTitlesHeight = height;
+      }
+
+      const optionsInitHeight = this.state.contentHeight - this.state.subTitlesHeight;
+      this.setData({
+        _optionsHeight:
+          theme === 'step'
+            ? optionsInitHeight - this.state.stepsInitHeight - (steps - 1) * this.state.stepHeight
+            : optionsInitHeight - this.state.tabsHeight,
+      });
+    },
+
     initWithValue() {
       if (this.data.value != null && this.data.value !== '') {
         const selectedIndexes = this.getIndexesByValue(this.data.options, this.data.value);

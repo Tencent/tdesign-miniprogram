@@ -164,6 +164,11 @@ export default class Tabs extends SuperComponent {
       return offset + targetLeft - (1 / 2) * containerWidth + targetWidth / 2;
     },
 
+    // 外部无法获取虚拟组件节点位置信息
+    getTabHeight() {
+      return getRect(this, `.${name}`);
+    },
+
     getTrackSize() {
       return new Promise<number>((resolve, reject) => {
         if (this.trackWidth) {
