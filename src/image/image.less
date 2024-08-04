@@ -5,6 +5,10 @@
 @image-loading-color: var(--td-image-loading-color, @text-color-placeholder);
 @image-round-radius: var(--td-image-round-radius, @radius-default);
 
+:host {
+  position: relative;
+}
+
 .@{prefix}-image {
   color: @image-color;
   vertical-align: top;
@@ -27,10 +31,10 @@
     height: 100%;
   }
 
-  &--lazy{
+  &--lazy {
     position: absolute;
-    opacity: 0;
     top: 0;
+    z-index: -1;
   }
 
   &--shape {
