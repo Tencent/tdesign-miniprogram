@@ -7,6 +7,8 @@
 @popup-bg-color: var(--td-popup-bg-color, @bg-color-container);
 @popup-border-radius: var(--td-popup-border-radius, @radius-default);
 
+@popup-close-btn-color: var(--td-popup-close-btn-color, @text-color-primary);
+
 .@{popup} {
   position: fixed;
   z-index: 11500;
@@ -25,6 +27,7 @@
     right: 0;
     padding: 20rpx;
     line-height: 1;
+    color: @popup-close-btn-color;
   }
 
   &--top {
