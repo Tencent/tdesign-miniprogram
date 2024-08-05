@@ -37,8 +37,8 @@
 <!-- 图片 -->
 <image
   id="{{tId||'image'}}"
-  hidden="{{isLoading || isFailed}}"
-  class="class {{prefix}}-class {{classPrefix}} {{classPrefix}}--shape-{{shape}}"
+  wx:if="{{ !isFailed }}"
+  class="class {{prefix}}-class {{classPrefix}} {{classPrefix}}--shape-{{shape}} {{isLoading ? classPrefix + '--lazy' : ''}}"
   src="{{src}}"
   style="{{_._style([innerStyle, style, customStyle])}}"
   mode="{{mode}}"
