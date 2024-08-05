@@ -39,8 +39,8 @@ if (combine[COMPONENT_NAME]) {
 }
 
 // 追加到文件
-const cssVariableHeadContent = `\n\n### CSS Variables\n组件提供了下列 CSS 变量，可用于自定义样式。\n名称 | 默认值 | 描述 \n-- | -- | --\n`;
-const cssVariableHeadContentEn = `\n\n### CSS Variables\nThe component provides the following CSS variables, which can be used to customize styles.\nName | Default Value | Description \n-- | -- | --\n`;
+const cssVariableHeadContent = `\n\n### CSS Variables\n\n组件提供了下列 CSS 变量，可用于自定义样式。\n名称 | 默认值 | 描述 \n-- | -- | --\n`;
+const cssVariableHeadContentEn = `\n\n### CSS Variables\n\nThe component provides the following CSS variables, which can be used to customize styles.\nName | Default Value | Description \n-- | -- | --\n`;
 
 fs.appendFileSync(resolveCwd(`src/${COMPONENT_NAME}/README.md`), cssVariableHeadContent);
 fs.appendFileSync(resolveCwd(`src/${COMPONENT_NAME}/README.en-US.md`), cssVariableHeadContentEn);
