@@ -4,6 +4,7 @@ exports[`Popup Popup base demo works fine 1`] = `
 <base>
   <t-popup
     placement="top"
+    usingCustomNavbar="{{true}}"
     visible=""
     bind:visible-change="onVisibleChange"
   >
