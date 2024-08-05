@@ -46,8 +46,7 @@ exports[`image :base 1`] = `
     <wx-image
       ariaHidden="{{true}}"
       ariaLabel=""
-      class="class t-class t-image t-image--shape-square"
-      hidden="{{true}}"
+      class="class t-class t-image t-image--shape-square t-image--lazy"
       id="image"
       lazyLoad="{{false}}"
       mode="scaleToFill"
@@ -71,8 +70,7 @@ exports[`image :success 1`] = `
     <wx-image
       ariaHidden="{{false}}"
       ariaLabel=""
-      class="class t-class t-image t-image--shape-square"
-      hidden="{{false}}"
+      class="class t-class t-image t-image--shape-square "
       id="image"
       lazyLoad="{{false}}"
       mode="heightFix"
