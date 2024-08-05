@@ -6,8 +6,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 32rpx;
-  border-bottom: solid 1rpx var(--bg-color-demo-border);
-  border-top: solid 1rpx var(--bg-color-demo-border);
   margin-top: 32rpx;
   margin-bottom: 32rpx;
 }

@@ -1,6 +1,5 @@
-<view class="custom-navbar">
-  <t-navbar title="TDesign" leftArrow />
-</view>
+<t-navbar class="demo-navbar" title="TDesign" leftArrow />
+
 <view class="side-bar-wrapper" style="height: calc(100vh - {{navbarHeight}}px)">
   <t-side-bar value="{{sideBarIndex}}" bind:change="onSideBarChange">
     <t-side-bar-item

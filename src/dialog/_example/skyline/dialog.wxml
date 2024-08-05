@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar class="block" title="Dialog" left-arrow />
+  <t-navbar class="block demo-navbar" title="Dialog" left-arrow />
   <scroll-view scroll-y type="list" class="scroll-view">
     <view class="demo">
       <view class="demo-title">Dialog 对话框</view>
