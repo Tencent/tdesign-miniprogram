@@ -8,6 +8,7 @@ exports[`message props : style && customStyle 1`] = `
     <t-message-item
       id="t-message"
       bind:close-btn-click="handleClose"
+      bind:duration-end="handleDurationEnd"
       bind:link-click="handleLinkClick"
     >
       <wx-view
