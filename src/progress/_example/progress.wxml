@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar title="Progress" leftArrow />
+  <t-navbar class="demo-navbar" title="Progress" leftArrow />
   <scroll-view scroll-y type="list" class="scroll-view">
     <view class="demo">
       <view class="demo-title">Progress 进度条</view>

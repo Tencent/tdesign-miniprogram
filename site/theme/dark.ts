@@ -2,7 +2,6 @@ const DARK_MODE_NAME = 'dark';
 
 const darkModeCss = `
   body {
-    background: #181818;
     --td-primary-color-1: #1b2f51;
     --td-primary-color-2: #173463;
     --td-primary-color-3: #143975;
@@ -137,22 +136,6 @@ const darkModeCss = `
     --td-scrollbar-color: rgba(255, 255, 255, 10%);
     --td-scroll-track-color: #333;
 
-    --bg-color-demo-home-text: rgba(255, 255, 255, 0.9);
-    --bg-color-demo-home: #4f4e4e;
-    --bg-color-demo-title: #fff;
-    --bg-color-demo-desc: #fff;
-    --bg-color-demo: #181818;
-    --bg-color-demo-border: #5e5e5e;
-    --bg-color-demo-secondary: #2c2c2c;
-    --td-navbar-bg-color: #181818;
-    --td-navbar-color: white;
-    --td-border-level-1-color: var(--td-gray-color-11);
-    --td-component-stroke: var(--td-gray-color-11);
-    --td-border-level-2-color: var(--td-gray-color-9);
-    --td-component-border: var(--td-gray-color-9);
-    --td-grid-bg-color-example: transparent;
-    --td-grid-item-bg-color-example: transparent;
-    --td-input-border-color-example: #5e5e5e;
   }
 `;
 
@@ -300,21 +283,7 @@ const lightModeCss = `
     --td-scrollbar-color: rgba(0, 0, 0, 10%);
     --td-scrollbar-hover-color: rgba(0, 0, 0, 30%);
     --td-scroll-track-color: #fff;
-    --bg-color-demo-desc: #0009;
-    --bg-color-demo-title: #000000e6;
-    --bg-color-demo: #fff;
-    --bg-color-demo-border: #e7e7e7;
-    --bg-color-demo-secondary: #fff;
-    --td-navbar-bg-color: #f6f6f6;
-    --td-navbar-color: black;
-    --td-color-demo-notice-icon: rgba(0, 0, 0, 0.9);
-    --td-avatar-border-color: var(--bg-color-demo);
-    --td-progress-circle-inner-bg-color: var(--bg-color-demo);
-    --td-navbar-bg-color-example: var(--td-bg-color-container);
-    --td-navbar-color-example: var(--td-text-color-primary);
-    --td-grid-bg-color-example: var(--td-bg-color-container);
-    --td-grid-item-bg-color-example: var(--td-bg-color-container);
-    --td-input-border-color-example: rgba(220, 220, 220, 1);
+
   }
 `;
 
@@ -341,11 +310,12 @@ const LIGHT_WHITE_BACKGROUND_COMPONENTS = [
   'action-sheet',
   'dialog',
   'loading',
-  'message',
   'notice-bar',
   'overlay',
   'popup',
   'pull-down-refresh',
+  'toast',
+  'guide',
 ];
 
 function getCurComponentBackground() {
@@ -354,17 +324,16 @@ function getCurComponentBackground() {
   const lastSegment = url.substring(lastUnderscoreIndex + 1);
   let backgroundCss = '';
   if (LIGHT_WHITE_BACKGROUND_COMPONENTS.includes(lastSegment)) {
-    backgroundCss = 'body{ background: #fff !important; }';
-  } else {
-    backgroundCss = 'body{ background: #f6f6f6 !important; }';
+    backgroundCss = 'body{ background-color: var(--td-bg-color-container); }';
   }
   return backgroundCss;
 }
 
 function getDarkStyle() {
+  const curComponentBackground = getCurComponentBackground();
   const styleElement = document.createElement('style');
   styleElement.type = 'text/css';
-  styleElement.textContent = darkModeCss;
+  styleElement.textContent = darkModeCss + curComponentBackground;
   styleElement.id = 'dark';
   return styleElement;
 }

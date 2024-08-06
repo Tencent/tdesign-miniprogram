@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar title="Icon" left-arrow />
+  <t-navbar class="demo-navbar" title="Icon" left-arrow />
   <scroll-view scroll-y type="list" class="scroll-view">
     <view class="demo">
       <view class="demo-title">Icon 图标</view>

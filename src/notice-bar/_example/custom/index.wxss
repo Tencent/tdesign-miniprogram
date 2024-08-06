@@ -4,5 +4,5 @@ page .external-class {
 }
 
 page .external-class-prefix-icon {
-  color: var(--td-color-demo-notice-icon)
+  color: var(--td-text-color-primary);
 }
