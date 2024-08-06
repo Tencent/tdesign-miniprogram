@@ -218,4 +218,8 @@ export default class Message extends SuperComponent {
   handleLinkClick() {
     this.triggerEvent('link-click');
   }
+
+  handleDurationEnd() {
+    this.triggerEvent('duration-end');
+  }
 }
