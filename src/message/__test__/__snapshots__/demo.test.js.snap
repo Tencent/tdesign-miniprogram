@@ -5,6 +5,16 @@ exports[`Message Message base demo works fine 1`] = `
   <t-message
     id="t-message"
   />
+  <t-message
+    content="这是一条通过组件调用的消息通知"
+    offset="{{
+      Array [
+        90,
+        32,
+      ]
+    }}"
+    visible="{{false}}"
+  />
   <wx-view
     class="message-example"
   >
@@ -57,6 +67,16 @@ exports[`Message Message base demo works fine 1`] = `
       bind:tap="showBtnMessage"
     >
       带按钮的通知
+    </t-button>
+    <t-button
+      block="{{true}}"
+      size="large"
+      tClass="external-class"
+      theme="primary"
+      variant="outline"
+      bind:tap="showComponent"
+    >
+      组件调用
     </t-button>
   </wx-view>
 </base>
