@@ -9,6 +9,7 @@ const SHOW_DURATION = 400;
 const { prefix } = config;
 const name = `${prefix}-message`;
 
+let idIndex = 0;
 @wxComponent()
 export default class Message extends SuperComponent {
   options: ComponentsOptionsType = {
@@ -32,7 +33,50 @@ export default class Message extends SuperComponent {
   // 两条message之间的间距，单位px
   gap = 12;
 
-  observers = {};
+  observers = {
+    visible(value) {
+      const id = `t-message-component-${idIndex}`;
+
+      if (value) {
+        this.setData(
+          {
+            messageList: [
+              {
+                id,
+              },
+            ],
+          },
+          () => {
+            const instance = this.selectComponent(`#${id}`);
+            const { content, align, theme, icon, closeBtn, action, marquee, offset, duration, zIndex, gap, single } =
+              this.properties;
+
+            instance.setData(
+              {
+                content,
+                align,
+                theme,
+                icon,
+                closeBtn,
+                action,
+                marquee,
+                offset,
+                duration,
+                zIndex,
+                gap,
+                single,
+              },
+              instance.show.bind(instance, 0),
+            );
+          },
+        );
+      } else {
+        this.setData({
+          messageList: [],
+        });
+      }
+    },
+  };
 
   pageLifetimes = {
     show() {
@@ -52,6 +96,7 @@ export default class Message extends SuperComponent {
       ...this.properties,
       ...this.data,
     };
+    idIndex += 1;
   }
 
   /**
