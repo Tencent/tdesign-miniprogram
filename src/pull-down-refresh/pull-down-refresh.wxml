@@ -32,7 +32,11 @@
     class="{{classPrefix}}__track {{classPrefix + '__track--' + (loosing ? 'loosing' : '')}}"
     style="{{barHeight > 0 ? 'transform: translate3d(0, ' + barHeight + 'px, 0);' : ''}}"
   >
-    <view class="{{classPrefix}}__tips" style="height: {{computedLoadingBarHeight}}px" aria-live="polite">
+    <view
+      class="{{classPrefix}}__tips {{classPrefix + '__tips--' + (loosing ? 'loosing' : '')}}"
+      style="height: {{tipsHeight}}px"
+      aria-live="polite"
+    >
       <t-loading
         wx:if="{{refreshStatus === 2}}"
         delay="{{loadingProps.delay || 0}}"
