@@ -6,6 +6,21 @@ docClass: timeline
 ---
 
 
+## 🌈 1.5.1 `2024-08-09` 
+### 🚀 Features
+- `Input`: 新增 `--td-input-placeholder-text-font-size` 变量 @betavs ([#3018](https://github.com/Tencent/tdesign-miniprogram/pull/3018))
+- `Popup`: 新增 `--td-popup-close-btn-color` @anlyyao ([#3035](https://github.com/Tencent/tdesign-miniprogram/pull/3035))
+- `Message`: 支持组件通过 `visible` 属性调用 @novlan1 ([#3058](https://github.com/Tencent/tdesign-miniprogram/pull/3058))
+### 🐞 Bug Fixes
+- `NoticeBar`: 修复 `content` 插槽内容的底边距异常 @anlyyao ([#3025](https://github.com/Tencent/tdesign-miniprogram/pull/3025))
+- `Cascader`: 修复组件高度设置错误，交互有调整 @anlyyao ([#3027](https://github.com/Tencent/tdesign-miniprogram/pull/3027))
+- `Image`: 修复懒加载无效的问题 @huxinhai ([#3036](https://github.com/Tencent/tdesign-miniprogram/pull/3036))
+- `Message`: 修复 `duration-end` 事件未回调 @jarmywang ([#3051](https://github.com/Tencent/tdesign-miniprogram/pull/3051))
+- `Tabs`: 修复 `card` 主题下`label` 显示不全 @anlyyao ([#3059](https://github.com/Tencent/tdesign-miniprogram/pull/3059))
+- `Tabs`: 修复 `TabPanel`面板内容快速滚动时，点击tab切换出现偶发性页面空白 @hkaikai ([#3055](https://github.com/Tencent/tdesign-miniprogram/pull/3055))
+- `PullDownRefresh`: 修复 `skyline` 下提示语占位高度计算错误 @richardji202 ([#3014](https://github.com/Tencent/tdesign-miniprogram/pull/3014))
+
+
 ## 🌈 1.5.0 `2024-07-26` 
 ### 🚀 Features
 - `Guide`: 新增`Guide`组件 @hkaikai ([#2998](https://github.com/Tencent/tdesign-miniprogram/pull/2998)) ⚡
