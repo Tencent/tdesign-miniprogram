@@ -14,10 +14,6 @@ export default class PullDownRefresh extends SuperComponent {
 
   isPulling = false; // 是否下拉中
 
-  // 触发刷新的下拉高度，单位 px
-  // 松开时下拉高度大于这个值即会触发刷新，触发刷新后松开，会恢复到这个高度并保持，直到刷新结束
-  loadingBarHeight = 100;
-
   /** 开始刷新 - 刷新成功/失败 最大间隔时间setTimeout句柄 */
   maxRefreshAnimateTimeFlag = 0;
 
@@ -52,7 +48,7 @@ export default class PullDownRefresh extends SuperComponent {
   lifetimes = {
     attached() {
       const { screenWidth } = wx.getSystemInfoSync();
-      const { loadingBarHeight, loadingTexts } = this.properties;
+      const { loadingTexts } = this.properties;
       this.setData({
         loadingTexts:
           Array.isArray(loadingTexts) && loadingTexts.length >= 4
@@ -78,12 +74,6 @@ export default class PullDownRefresh extends SuperComponent {
           return unitConvert(this.data.loadingBarHeight);
         },
       });
-
-      if (loadingBarHeight) {
-        this.setData({
-          computedLoadingBarHeight: unitConvert(loadingBarHeight),
-        });
-      }
     },
 
     detached() {
@@ -107,7 +97,7 @@ export default class PullDownRefresh extends SuperComponent {
       }
     },
     barHeight(val) {
-      this.setData({ tipsHeight: Math.min(val, this.data.loadingBarHeight) });
+      this.setData({ tipsHeight: Math.min(val, this.loadingBarHeight) });
     },
   };
 
