@@ -122,24 +122,25 @@ default-value | Array | undefined | 选中值。非受控属性。TS 类型：`T
 change | `(value: CheckboxGroupValue, context: { value: boolean|number|string, label: boolean|number|string })` | 值变化时触发。`context` 表示当前点击项内容。
 
 
-### CSS 变量
+### CSS Variables
+
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-checkbox-bg-color | @bg-color-container | - 
 --td-checkbox-border-color | @component-stroke | - 
---td-checkbox-description-color | @font-gray-2 | - 
---td-checkbox-description-disabled-color | @font-gray-4 | - 
+--td-checkbox-description-color | @text-color-secondary | - 
+--td-checkbox-description-disabled-color | @text-color-disabled | - 
 --td-checkbox-description-line-height | 44rpx | - 
 --td-checkbox-font-size | 32rpx | - 
 --td-checkbox-icon-checked-color | @brand-color | - 
---td-checkbox-icon-color | @gray-color-4 | - 
+--td-checkbox-icon-color | @component-border | - 
 --td-checkbox-icon-disabled-bg-color | @bg-color-component-disabled | - 
 --td-checkbox-icon-disabled-color | @brand-color-disabled | - 
 --td-checkbox-icon-size | 48rpx | - 
 --td-checkbox-tag-active-bg-color | @brand-color-light | - 
 --td-checkbox-tag-active-color | @brand-color | - 
---td-checkbox-title-color | @font-gray-1 | - 
---td-checkbox-title-disabled-color | @font-gray-4 | - 
+--td-checkbox-title-color | @text-color-primary | - 
+--td-checkbox-title-disabled-color | @text-color-disabled | - 
 --td-checkbox-title-line-height | 48rpx | - 
 --td-checkbox-vertical-padding | 32rpx | - 
