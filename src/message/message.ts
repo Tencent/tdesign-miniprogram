@@ -32,7 +32,17 @@ export default class Message extends SuperComponent {
   // 两条message之间的间距，单位px
   gap = 12;
 
-  observers = {};
+  observers = {
+    visible(value) {
+      if (value) {
+        this.setMessage(this.properties, this.properties.theme);
+      } else {
+        this.setData({
+          messageList: [],
+        });
+      }
+    },
+  };
 
   pageLifetimes = {
     show() {
@@ -217,5 +227,9 @@ export default class Message extends SuperComponent {
 
   handleLinkClick() {
     this.triggerEvent('link-click');
+  }
+
+  handleDurationEnd() {
+    this.triggerEvent('duration-end');
   }
 }

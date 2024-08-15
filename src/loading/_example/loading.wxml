@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar title="Loading" leftArrow />
+  <t-navbar class="demo-navbar" title="Loading" leftArrow />
   <scroll-view scroll-y type="list" class="scroll-view">
     <view class="demo">
       <view class="demo-title">Loading 加载</view>

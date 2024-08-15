@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar class="block" title="Divider" left-arrow />
+  <t-navbar class="demo-navbar" class="block" title="Divider" left-arrow />
   <scroll-view scroll-y type="list" class="scroll-view">
     <view class="demo">
       <view class="demo-title">Divider 分割线</view>

@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar title="Avatar" leftArrow />
+  <t-navbar class="demo-navbar" title="Avatar" leftArrow />
   <scroll-view scroll-y type="list" class="scroll-view">
     <view class="demo">
       <view class="demo-title">Avatar 头像</view>

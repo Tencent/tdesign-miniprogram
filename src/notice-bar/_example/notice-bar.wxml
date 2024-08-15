@@ -1,4 +1,4 @@
-<t-navbar title="NoticeBar" leftArrow />
+<t-navbar class="demo-navbar" title="NoticeBar" leftArrow />
 <view class="demo">
   <view class="demo-title">NoticeBar 公告栏</view>
   <view class="demo-desc"> 在导航栏下方，用于给用户显示提示消息。 </view>

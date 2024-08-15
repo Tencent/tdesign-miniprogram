@@ -15,6 +15,9 @@ export default class CellGroup extends SuperComponent {
       linked() {
         this.updateLastChid();
       },
+      unlinked() {
+        this.updateLastChid();
+      },
     },
   };
 

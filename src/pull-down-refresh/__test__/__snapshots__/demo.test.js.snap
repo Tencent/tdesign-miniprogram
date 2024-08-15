@@ -3,11 +3,6 @@
 exports[`PullDownRefresh PullDownRefresh base demo works fine 1`] = `
 <base>
   <t-pull-down-refresh
-    loadingProps="{{
-      Object {
-        "size": "50rpx",
-      }
-    }}"
     loadingTexts="{{
       Array [
         "下拉刷新",

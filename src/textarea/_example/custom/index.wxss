@@ -1,6 +1,6 @@
 .textarea-example {
   padding: 32rpx 32rpx 48rpx;
-  background-color: var(--bg-demo-color);
+  background-color: var(--bg-color-demo);
 }
 
 .external-class {
