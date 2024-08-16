@@ -19,7 +19,7 @@ exports[`Avatar & Avatar Groups Avatar Props : style && customStyle 1`] = `
           ariaLabelledby="t_badge_0_label"
           ariaRole="option"
           class="t-badge  class t-class"
-          style=" "
+          style=""
         >
           <wx-view
             ariaHidden="true"
