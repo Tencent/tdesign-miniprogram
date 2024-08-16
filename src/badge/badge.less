@@ -58,26 +58,7 @@
       overflow: hidden;
       top: 0;
       right: 0;
-    }
-
-    &--before,
-    &--after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      width: 0;
-      height: 0;
-      border-bottom: @badge-basic-height solid @badge-color;
-    }
-
-    &--before {
-      left: calc(-1 * @badge-basic-height + 1rpx);
-      border-left: @badge-basic-height solid transparent;
-    }
-
-    &--after {
-      right: calc(-1 * @badge-basic-height + 1rpx);
-      border-right: @badge-basic-height solid transparent;
+      background-color: @badge-color;
     }
   }
 
