@@ -19,8 +19,8 @@
 
 .@{prefix}-badge {
   position: relative;
-  display: inline-block;
-  vertical-align: top;
+  display: inline-flex;
+  align-items: start;
 
   &--basic {
     z-index: 100;
@@ -55,35 +55,16 @@
   &__ribbon {
     &-outer {
       position: absolute;
+      overflow: hidden;
       top: 0;
       right: 0;
-    }
-
-    &--before,
-    &--after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 0;
-      bottom: 0;
-      border-bottom: @badge-basic-height solid @badge-color;
-    }
-
-    &--before {
-      left: calc(-1 * @badge-basic-height + 1rpx);
-      border-left: @badge-basic-height solid transparent;
-    }
-
-    &--after {
-      right: calc(-1 * @badge-basic-height + 1rpx);
-      border-right: @badge-basic-height solid transparent;
+      background-color: @badge-color;
     }
   }
 
   &--ribbon {
     display: inline-block;
-    transform: rotate(45deg);
-    transform-origin: center center;
+    transform-origin: top left;
     border-radius: 0;
     // padding: 0;
   }
