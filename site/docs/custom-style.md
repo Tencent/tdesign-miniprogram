@@ -55,7 +55,7 @@ TDesign 全体组件均开启了 `addGlobalClass`，可以接受外部传入的�
 ### 在页面中使用 TDesign
 
 ```html
-<t-button theme="primary" >填充按钮<t-button>
+<t-button theme="primary" >填充按钮</t-button>
 ```
 
 ```css
@@ -69,7 +69,7 @@ TDesign 全体组件均开启了 `addGlobalClass`，可以接受外部传入的�
 > 需要在自定义组件的 options 中开启： `styleIsolation: 'shared'`
 
 ```html
-<t-button theme="primary" >填充按钮<t-button>
+<t-button theme="primary" >填充按钮</t-button>
 ```
 
 对应的自定义组件：
@@ -97,7 +97,7 @@ TDesign 在每个组件的内部都预置了许多外部样式类供开发者使
 **注意：在同一个节点上使用普通样式类和外部样式类时，两个类的优先级是未定义的，所以最好加上 `!important`**
 
 ```html
-<t-button t-class-loading="red-loading">填充按钮<t-button>
+<t-button t-class-loading="red-loading">填充按钮</t-button>
 ```
 
 ```css
