@@ -28,6 +28,7 @@ type dataType = {
   prefix: string;
   isVisibleToScreenReader: boolean;
   identifier: number[];
+  __inited: boolean;
 };
 
 interface boundingClientRect {
@@ -45,6 +46,10 @@ export default class Slider extends SuperComponent {
     `${prefix}-class-bar-disabled`,
     `${prefix}-class-cursor`,
   ];
+
+  options = {
+    pureDataPattern: /^__/, // 指定所有 __ 开头的数据字段为纯数据字段
+  };
 
   properties = props;
 
@@ -76,6 +81,7 @@ export default class Slider extends SuperComponent {
     prefix,
     isVisibleToScreenReader: false,
     identifier: [-1, -1],
+    __inited: false,
   };
 
   observers = {
@@ -218,6 +224,7 @@ export default class Slider extends SuperComponent {
   }
 
   async init() {
+    if (this.data.__inited) return;
     const line: boundingClientRect = await getRect(this, '#sliderLine');
     const { blockSize } = this.data;
     const { theme, vertical } = this.properties;
@@ -238,6 +245,7 @@ export default class Slider extends SuperComponent {
       maxRange,
       initialLeft,
       initialRight,
+      __inited: true,
     });
     this.bus.emit('initial');
   }
