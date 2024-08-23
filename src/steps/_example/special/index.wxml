@@ -8,7 +8,7 @@
 <view class="block">
   <t-steps layout="vertical" theme="dot" current="{{count - 1}}" bind:change="onCascader">
     <t-step-item wx:for="{{count}}" wx:key="index" title="{{_.getText(count - 1, index)}}">
-      <t-icon name="chevron-right" size="22" color="rgba(0, 0, 0, .4)" slot="title-right" />
+      <t-icon name="chevron-right" size="44rpx" color="rgba(0, 0, 0, .4)" slot="title-right" />
     </t-step-item>
   </t-steps>
 

@@ -1,5 +1,6 @@
 @import '../common/style/index.less';
 
+@dropdown-menu-height: var(--td-dropdown-menu-height, 96rpx);
 @dropdown-menu-bg-color: var(--td-dropdown-menu-bg-colorm, @bg-color-container);
 @dropdown-menu-color: var(--td-dropdown-menu-colorm, @text-color-primary);
 @dropdown-menu-active-color: var(--td-dropdown-menu-active-colorm, @brand-color);
@@ -13,7 +14,7 @@
 .@{dropdownMenu} {
   position: relative;
   display: flex;
-  height: 48px;
+  height: @dropdown-menu-height;
   background: @dropdown-menu-bg-color;
   .border(bottom);
 

@@ -256,7 +256,7 @@ exports[`Rate Rate special demo works fine 1`] = `
       class="rate-wrapper"
     >
       <t-rate
-        size="30"
+        size="60rpx"
         texts="{{
           Array [
             "非常糟糕",

@@ -16,7 +16,7 @@ exports[`Navbar Navbar back-home demo works fine 1`] = `
         ariaRole="button"
         class="custom-capsule__icon back"
         name="chevron-left"
-        size="20"
+        size="40rpx"
         bind:tap="onBack"
       />
       <t-icon
@@ -24,7 +24,7 @@ exports[`Navbar Navbar back-home demo works fine 1`] = `
         ariaRole="button"
         class="custom-capsule__icon home"
         name="home"
-        size="20"
+        size="40rpx"
         bind:tap="onGoHome"
       />
     </wx-view>

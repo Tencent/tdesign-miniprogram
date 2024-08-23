@@ -37,7 +37,7 @@
       <slot name="icon" />
     </view>
     <view class="{{_.cls(classPrefix + '__text', [['small', !!icon]])}}">
-      <t-icon wx:if="{{hasChildren}}" name="view-list" size="16" t-class="{{classPrefix}}__icon-menu" />
+      <t-icon wx:if="{{hasChildren}}" name="view-list" size="32rpx" t-class="{{classPrefix}}__icon-menu" />
       <slot />
     </view>
   </view>

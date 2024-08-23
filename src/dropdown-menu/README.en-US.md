@@ -45,16 +45,10 @@ close | \- | \-
 
 
 ### CSS Variables
+
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-dropdown-menu-active-colorm | @brand-color | - 
---td-dropdown-menu-bg-colorm | @bg-color-container | - 
---td-dropdown-menu-border-width | 1px | - 
---td-dropdown-menu-colorm | @font-gray-1 | - 
---td-dropdown-menu-disabled-colorm | @font-gray-4 | - 
---td-dropdown-menu-font-sizem | 28rpx | - 
---td-dropdown-menu-icon-sizem | 48rpx | - 
 --td-dropdown-body-max-height | 560rpx | - 
 --td-dropdown-menu-bg-color | @bg-color-container | - 
 --td-tree-bg-color | @bg-color-container | - 
@@ -62,3 +56,11 @@ Name | Default Value | Description
 --td-tree-item-font-size | 32rpx | - 
 --td-tree-item-height | 96rpx | - 
 --td-tree-root-bg-color | @bg-color-secondarycontainer | - 
+--td-dropdown-menu-active-colorm | @brand-color | - 
+--td-dropdown-menu-bg-colorm | @bg-color-container | - 
+--td-dropdown-menu-border-width | 1px | - 
+--td-dropdown-menu-colorm | @text-color-primary | - 
+--td-dropdown-menu-disabled-colorm | @text-color-disabled | - 
+--td-dropdown-menu-font-sizem | 28rpx | - 
+--td-dropdown-menu-height | 96rpx | - 
+--td-dropdown-menu-icon-sizem | 48rpx | - 

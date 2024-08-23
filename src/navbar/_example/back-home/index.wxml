@@ -1,7 +1,7 @@
 <t-navbar t-class-placeholder="t-navbar-placeholder" t-class-content="t-navbar-content" title="标题文字">
   <view slot="capsule" class="custom-capsule">
     <t-icon
-      size="20"
+      size="40rpx"
       bind:tap="onBack"
       aria-role="button"
       aria-label="返回"
@@ -9,7 +9,7 @@
       class="custom-capsule__icon back"
     />
     <t-icon
-      size="20"
+      size="40rpx"
       bind:tap="onGoHome"
       aria-role="button"
       aria-label="首页"
