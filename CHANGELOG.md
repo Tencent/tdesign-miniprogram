@@ -6,6 +6,19 @@ docClass: timeline
 ---
 
 
+## 🌈 1.6.0 `2024-08-23` 
+### 🚀 Features
+- `DropdownMenu`: 新增 `--td-dropdown-menu-height` @anlyyao ([#3094](https://github.com/Tencent/tdesign-miniprogram/pull/3094))
+### 🐞 Bug Fixes
+- `Badge`: 修复角标样式溢出，移除`t-badge__ribbon--before`元素与`t-badge__ribbon--after`元素，改用`clip-path`样式实现 @jby0107 ([#3074](https://github.com/Tencent/tdesign-miniprogram/pull/3074))
+- `Dialog`: 修复命令行调用`closeOnOverlayClick`无效问题 @jarmywang ([#3066](https://github.com/Tencent/tdesign-miniprogram/pull/3066))
+- `Checkbox`: 修复选中态和未选中态直径/边长大小不一致问题 @anlyyao ([#3069](https://github.com/Tencent/tdesign-miniprogram/pull/3069))
+- `Dialog`: `close` 方法参数类型定义异常 @betavs ([#3071](https://github.com/Tencent/tdesign-miniprogram/pull/3071))
+- `Picker`: 兼容 `Skyline` 在深色模式下遮罩显示 @jarmywang ([#3077](https://github.com/Tencent/tdesign-miniprogram/pull/3077))
+- `Progress`: 修复 `label` 插槽重复 @anlyyao ([#3080](https://github.com/Tencent/tdesign-miniprogram/pull/3080))
+- `Slider`: 修复 `hidden` 为 `false` 场景下，调用 `init()` 函数更新组件时点位置错误 @jby0107 ([#3085](https://github.com/Tencent/tdesign-miniprogram/pull/3085))
+
+
 ## 🌈 1.5.1 `2024-08-09` 
 ### 🚀 Features
 - `Input`: 新增 `--td-input-placeholder-text-font-size` 变量 @betavs ([#3018](https://github.com/Tencent/tdesign-miniprogram/pull/3018))
