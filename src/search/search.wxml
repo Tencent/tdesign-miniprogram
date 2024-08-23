@@ -10,7 +10,7 @@
     <t-icon
       wx:if="{{leftIcon}}"
       name="{{leftIcon}}"
-      size="24"
+      size="48rpx"
       class="{{prefix}}-icon {{prefix}}-class-left"
       aria-hidden="{{true}}"
     />
@@ -48,7 +48,7 @@
       aria-role="button"
       aria-label="清除"
     >
-      <t-icon name="close-circle-filled" size="24" />
+      <t-icon name="close-circle-filled" size="48rpx" />
     </view>
   </view>
   <view

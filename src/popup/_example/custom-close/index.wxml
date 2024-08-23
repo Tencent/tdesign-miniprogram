@@ -1,6 +1,6 @@
 <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center">
   <view class="block">
-    <t-icon t-class="close-btn" name="close-circle" size="32" color="#fff" bind:tap="onClose" />
+    <t-icon t-class="close-btn" name="close-circle" size="64rpx" color="#fff" bind:tap="onClose" />
   </view>
 </t-popup>
 

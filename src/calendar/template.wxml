@@ -13,7 +13,7 @@
     wx:if="{{usePopup}}"
     name="close"
     class="{{classPrefix}}__close-btn"
-    size="24"
+    size="48rpx"
     aria-role="button"
     aria-label="关闭"
     bind:tap="handleClose"

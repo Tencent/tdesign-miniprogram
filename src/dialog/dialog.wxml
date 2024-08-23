@@ -22,7 +22,7 @@
     <slot name="top" />
     <view wx:if="{{closeBtn}}" class="{{classPrefix}}__close-btn" bind:tap="onClose">
       <template wx:if="{{_.isObject(closeBtn)}}" is="icon" data="{{ name: 'close', size: 22, ...closeBtn }}" />
-      <t-icon wx:else name="close" size="22" />
+      <t-icon wx:else name="close" size="44rpx" />
     </view>
     <view class="{{classPrefix}}__content {{prefix}}-class-content">
       <view wx:if="{{title}}" class="{{classPrefix}}__header">{{title}}</view>

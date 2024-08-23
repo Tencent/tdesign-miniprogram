@@ -8,7 +8,7 @@
     </view>
     <view class="{{name}}__close-btn" bind:tap="onClose">
       <slot name="close-btn" />
-      <t-icon wx:if="{{closeBtn}}" size="24" name="close" />
+      <t-icon wx:if="{{closeBtn}}" size="48rpx" name="close" />
     </view>
     <view class="{{name}}__content">
       <block wx:if="{{steps && steps.length}}">
@@ -20,7 +20,7 @@
             <view class="{{name}}__step-label {{name}}__step-label--{{index === stepIndex ? 'active' : ''}}">
               {{ item }}
             </view>
-            <t-icon name="chevron-right" size="22" t-class="{{name}}__step-arrow" />
+            <t-icon name="chevron-right" size="44rpx" t-class="{{name}}__step-arrow" />
           </view>
         </view>
         <block wx:if="{{theme == 'tab'}}">

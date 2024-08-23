@@ -62,10 +62,10 @@
             bind:tap="onFileClick"
           >
             <block wx:if="{{file.status == 'loading'}}">
-              <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="24" aria-hidden />
+              <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="48rpx" aria-hidden />
               <view class="{{classPrefix}}__progress-text">{{file.percent ? file.percent + '%' : '上传中...'}}</view>
             </block>
-            <t-icon wx:else name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}" size="24" aria-hidden />
+            <t-icon wx:else name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}" size="48rpx" aria-hidden />
             <view wx:if="{{file.status == 'reload' || file.status == 'failed'}}" class="{{classPrefix}}__progress-text">
               {{file.status == 'reload' ? '重新上传' : '上传失败'}}
             </view>
@@ -79,7 +79,7 @@
             aria-role="button"
             aria-label="删除"
           >
-            <t-icon name="close" size="16" color="#fff" />
+            <t-icon name="close" size="32rpx" color="#fff" />
           </view>
         </view>
       </t-grid-item>
@@ -170,12 +170,17 @@
                 bind:tap="onFileClick"
               >
                 <block wx:if="{{file.status == 'loading'}}">
-                  <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="24" aria-hidden />
+                  <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="48rpx" aria-hidden />
                   <view class="{{classPrefix}}__progress-text"
                     >{{file.percent ? file.percent + '%' : '上传中...'}}</view
                   >
                 </block>
-                <t-icon wx:else name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}" size="24" aria-hidden />
+                <t-icon
+                  wx:else
+                  name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}"
+                  size="48rpx"
+                  aria-hidden
+                />
                 <view
                   wx:if="{{file.status == 'reload' || file.status == 'failed'}}"
                   class="{{classPrefix}}__progress-text"
@@ -193,7 +198,7 @@
                 aria-role="button"
                 aria-label="删除"
               >
-                <t-icon name="close" size="16" color="#fff" />
+                <t-icon name="close" size="32rpx" color="#fff" />
               </view>
             </view>
           </t-grid-item>
