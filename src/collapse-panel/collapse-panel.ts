@@ -23,7 +23,7 @@ export default class CollapsePanel extends SuperComponent {
         const { value, expandIcon, disabled } = target.properties;
 
         this.setData({
-          ultimateExpandIcon: expandIcon || this.properties.expandIcon,
+          ultimateExpandIcon: this.properties.expandIcon == null ? expandIcon : this.properties.expandIcon,
           ultimateDisabled: this.properties.disabled == null ? disabled : this.properties.disabled,
         });
 
