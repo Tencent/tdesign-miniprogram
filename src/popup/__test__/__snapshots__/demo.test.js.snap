@@ -120,7 +120,7 @@ exports[`Popup Popup custom-close demo works fine 1`] = `
       <t-icon
         color="#fff"
         name="close-circle"
-        size="32"
+        size="64rpx"
         tClass="close-btn"
         bind:tap="onClose"
       />

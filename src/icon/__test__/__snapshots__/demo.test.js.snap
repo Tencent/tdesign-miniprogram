@@ -18187,7 +18187,7 @@ exports[`Icon Icon iconImage demo works fine 1`] = `
       <t-icon
         data-name="https://tdesign.gtimg.com/mobile/demos/icon1.png"
         name="https://tdesign.gtimg.com/mobile/demos/icon1.png"
-        size="24"
+        size="48rpx"
         bind:click="onIconTap"
       />
     </wx-view>
@@ -18197,7 +18197,7 @@ exports[`Icon Icon iconImage demo works fine 1`] = `
       <t-icon
         data-name="https://tdesign.gtimg.com/mobile/demos/icon2.png"
         name="https://tdesign.gtimg.com/mobile/demos/icon2.png"
-        size="24"
+        size="48rpx"
         bind:click="onIconTap"
       />
     </wx-view>
