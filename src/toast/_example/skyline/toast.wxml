@@ -10,7 +10,7 @@
       <t-demo title="02 组件状态" desc="内置主题">
         <theme />
       </t-demo>
-      <t-demo title="03 显示遮罩" desc="弹窗可现实遮罩，禁止滑动和点击">
+      <t-demo title="03 显示遮罩" desc="弹窗可显示遮罩，禁止滑动和点击">
         <cover />
       </t-demo>
       <t-demo title="04 手动关闭" desc="手动关闭轻提示">
