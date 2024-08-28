@@ -34,6 +34,9 @@ export default class ImageViewer extends SuperComponent {
       key: 'visible',
       event: 'close',
     },
+    {
+      key:'initialIndex'
+    }
   ];
 
   ready() {
@@ -42,6 +45,11 @@ export default class ImageViewer extends SuperComponent {
   }
 
   observers = {
+    initialIndex(value) {
+      this.setData({
+        currentSwiperIndex: value,
+      })
+    },
     visible(value) {
       this.setData({
         currentSwiperIndex: value ? this.properties.initialIndex : 0,
@@ -59,6 +67,8 @@ export default class ImageViewer extends SuperComponent {
         _deleteBtn: calcIcon(v, 'delete'),
       });
     },
+
+
   };
 
   methods = {
