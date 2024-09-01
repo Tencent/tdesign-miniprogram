@@ -42,10 +42,12 @@ export default class ImageViewer extends SuperComponent {
   }
 
   observers = {
-    visible(value) {
-      this.setData({
-        currentSwiperIndex: value ? this.properties.initialIndex : 0,
-      });
+    'visible,initialIndex,images'(visible, initialIndex, images) {
+      if (visible && images?.length) {
+        this.setData({
+          currentSwiperIndex: initialIndex >= images.length ? images.length - 1 : initialIndex,
+        });
+      }
     },
 
     closeBtn(v) {
