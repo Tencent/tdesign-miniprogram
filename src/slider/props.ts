@@ -50,6 +50,11 @@ const props: TdSliderProps = {
     type: Number,
     value: 1,
   },
+  /** 自定义组件样式 */
+  style: {
+    type: String,
+    value: '',
+  },
   /** 滑块风格 */
   theme: {
     type: String,
@@ -65,7 +70,7 @@ const props: TdSliderProps = {
     type: null,
     value: 0,
   },
-  /** 是否是垂直滑块 */
+  /** 是否是垂直的滑块（渲染垂直滑块时，默认高度为400rpx，可通过修改`--td-slider-bar-height`来自定义高度） */
   vertical: {
     type: Boolean,
     value: false,

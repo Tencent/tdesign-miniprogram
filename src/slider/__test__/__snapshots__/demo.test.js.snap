@@ -198,6 +198,8 @@ exports[`Slider Slider range demo works fine 1`] = `
         ]
       }}"
       range="{{true}}"
+      bind:dragend="onDragend"
+      bind:dragstart="onDragstart"
     />
   </wx-view>
 </range>

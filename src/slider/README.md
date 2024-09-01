@@ -63,13 +63,16 @@ isComponent: true
 {{ vertical }}
 
 ## API
+
 ### Slider Props
 
-名称 | 类型 | 默认值 | 说明 | 必传
+名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
-colors | Array | [] | 废弃。颜色，[已选择, 未选择]。TS 类型：`Array<string>` | N
+style | Object | - | 样式 | N
+custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
+colors | Array | [] | 已废弃。颜色，[已选择, 未选择]。TS 类型：`Array<string>` | N
 disabled | Boolean | false | 是否禁用组件 | N
-disabled-color | Array | [] | 废弃。禁用状态滑动条的颜色，[已选, 未选]。TS 类型：`Array<string>` | N
+disabled-color | Array | [] | 已废弃。禁用状态滑动条的颜色，[已选, 未选]。TS 类型：`Array<string>` | N
 label | String / Boolean | false | 滑块当前值文本。<br />值为 true 显示默认文案；值为 false 不显示滑块当前值文本；<br />值为 `${value}%` 则表示组件会根据占位符渲染文案；<br />值类型为函数时，参数 `value` 标识滑块值，参数 `position=start` 表示范围滑块的起始值，参数 `position=end` 表示范围滑块的终点值。TS 类型：`string \| boolean` | N
 marks | Object / Array | {} | 刻度标记，示例：`[0, 10, 40, 200]` 或者 `{ 5:  '5¥', 10: '10%' }`。TS 类型：`Record<number, string> \| Array<number>` | N
 max | Number | 100 | 滑块范围最大值 | N
@@ -87,34 +90,20 @@ vertical | Boolean | false | 是否是垂直的滑块（渲染垂直滑块时，
 名称 | 参数 | 描述
 -- | -- | --
 change | `(value: SliderValue)` | 滑块值变化时触发
-dragend | \- | 结束拖动时触发
-dragstart | \- | 开始拖动时触发
+dragend | `(value: SliderValue, e: TouchEvent)` | 结束拖动时触发
+dragstart | `(e: TouchEvent)` | 开始拖动时触发
+### Slider External Classes
 
-### Slider 外部样式类
-类名 | 说明
--- | -- 
+类名 | 描述
+-- | --
 t-class | 根节点样式类
 t-class-bar | 滑道底部样式类
 t-class-bar-active | 滑道激活态样式类
 t-class-bar-disabled | 滑道禁用态样式类
 t-class-cursor | 游标样式类
 
-## FAQ
+### CSS Variables
 
-当 slider 外层使用 `hidden` 包裹，需要在 `hidden = false` 时，重新调用组件的 `init` 方法，才能正常渲染（在t-popup/t-dialog中同理）。如下：
-
-```html
-<t-slider id="slider" />
-```
-
-```js
-const $slider = this.selectComponent('#slider');
-
-$slider.init();
-```
-
-
-### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
@@ -134,4 +123,4 @@ $slider.init();
 --td-slider-dot-disabled-bg-color | #fff | - 
 --td-slider-dot-disabled-color | #f3f3f3 | - 
 --td-slider-dot-size | 40rpx | - 
---td-slider-text-color | @text-color-primary | - 
+--td-slider-text-color | @text-color-primary | -
