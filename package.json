@@ -85,7 +85,7 @@
     "gulp-replace-task": "^2.0.1",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",
-    "husky": "^7.0.4",
+    "husky": "^9.1.5",
     "jest": "^26.6.3",
     "jest-html-reporter": "^3.3.0",
     "jsdom": "^20.0.0",
