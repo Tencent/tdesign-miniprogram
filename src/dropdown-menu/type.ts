@@ -30,13 +30,6 @@ export interface TdDropdownMenuProps {
     value?: string | number;
   };
   /**
-   * 组件类名，分别用于设置 组件外层类名、菜单标签、菜单图标类名 等
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-item', 't-class-label', 't-class-icon'];
-  };
-  /**
    * 是否显示遮罩层
    * @default true
    */
