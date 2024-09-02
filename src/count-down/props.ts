@@ -44,6 +44,8 @@ const props: TdCountDownProps = {
   /** 倒计时时长，单位毫秒 */
   time: {
     type: Number,
+    value: 0,
+    required: true,
   },
 };
 
