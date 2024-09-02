@@ -9,7 +9,7 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 colors | Array | [] | `deprecated`。Typescript：`Array<string>` | N
-disabled | Boolean | false | \- | N
+disabled | Boolean | undefined | \- | N
 disabled-color | Array | [] | `deprecated`。Typescript：`Array<string>` | N
 label | String / Boolean | false | Typescript：`string \| boolean` | N
 marks | Object / Array | {} | Typescript：`Record<number, string> \| Array<number>` | N
