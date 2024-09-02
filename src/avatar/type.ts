@@ -5,6 +5,7 @@
  * */
 
 import { BadgeProps } from '../badge/index';
+import { ImageProps } from '../image/index';
 
 export interface TdAvatarProps {
   /**
@@ -23,20 +24,12 @@ export interface TdAvatarProps {
     value?: BadgeProps;
   };
   /**
-   * 是否显示外边框
+   * 已废弃。是否显示外边框
    * @default false
    */
   bordered?: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 组件类名，用于设置组件外层元素类名
@@ -73,7 +66,7 @@ export interface TdAvatarProps {
    */
   imageProps?: {
     type: ObjectConstructor;
-    value?: object;
+    value?: ImageProps;
   };
   /**
    * 形状

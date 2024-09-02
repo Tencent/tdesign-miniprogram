@@ -15,7 +15,7 @@ const props: TdAvatarProps = {
   badgeProps: {
     type: Object,
   },
-  /** 是否显示外边框 */
+  /** 已废弃。是否显示外边框 */
   bordered: {
     type: Boolean,
     value: false,
