@@ -32,32 +32,35 @@ isComponent: true
 {{ base }}
 
 ## API
+
 ### BackTop Props
 
-名称 | 类型 | 默认值 | 说明 | 必传
+名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
-external-classes | Array | - | 组件类名，分别用于设置外层元素、图标、文本内容等元素类名。`['t-class', 't-class-icon', 't-class-text']` | N
-visibility-height | Number | 200 | 滚动高度达到此参数值才出现 | N
-scroll-top | Number | 0 | 页面滚动距离 | N
+style | Object | - | 样式 | N
+custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 fixed | Boolean | true | 是否绝对定位固定到屏幕右下方 | N
-icon | String / Boolean / Object / Slot | true | 图标。值为 `false` 表示不显示图标。不传表示使用默认图标 `'backtop'` | N
+icon | String / Boolean / Object / Slot | true | 图标。值为 `false` 表示不显示图标。不传表示使用默认图标 `'backtop'`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+scroll-top | Number | 0 | 页面滚动距离 | N
 text | String | '' | 文案 | N
 theme | String | round | 预设的样式类型。可选项：round/half-round/round-dark/half-round-dark | N
+visibility-height | Number | 200 | 滚动高度达到此参数值才出现 | N
 
 ### BackTop Events
 
 名称 | 参数 | 描述
 -- | -- | --
 to-top | \- | 点击触发
+### BackTop External Classes
 
-### BackTop 外部样式类
-类名 | 说明
--- | -- 
+类名 | 描述
+-- | --
 t-class | 根节点样式类
 t-class-icon | 图标样式类
 t-class-text | 文本样式类
 
-### CSS 变量
+### CSS Variables
+
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
@@ -66,4 +69,4 @@ t-class-text | 文本样式类
 --td-back-top-round-border-radius | @radius-circle | - 
 --td-back-top-round-color | @font-gray-1 | - 
 --td-back-top-round-dark-bg-color | @gray-color-14 | - 
---td-back-top-round-dark-color | @font-white-1 | - 
+--td-back-top-round-dark-color | @font-white-1 | -
