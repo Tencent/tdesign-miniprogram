@@ -25,10 +25,6 @@ const props: TdCellProps = {
   description: {
     type: String,
   },
-  /** 组件类名，分别用于设置 组件外层类名、标题类名、右侧说明文字类名、下方描述内容类名、图片类名、激活态类名、左侧图标类名、右侧图标类名 等 */
-  externalClasses: {
-    type: Array,
-  },
   /** 是否开启点击反馈 */
   hover: {
     type: Boolean,
