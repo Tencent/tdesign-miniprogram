@@ -1,10 +1,13 @@
 :: BASE_DOC ::
 
 ## API
+
 ### Cascader Props
 
 name | type | default | description | required
 -- | -- | -- | -- | --
+style | Object | - | CSS(Cascading Style Sheets) | N
+custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 close-btn | Boolean / Slot | true | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 keys | Object | - | Typescript：`KeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 options | Array | [] | Typescript：`Array<CascaderOption>` | N
@@ -24,8 +27,8 @@ change | `(value: string \| number, selectedOptions: string[])` | `1.0.1`
 close | `(trigger: TriggerSource)` | `1.0.1`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/cascader/type.ts)。<br/>`type TriggerSource = 'overlay' \| 'close-btn' \| 'finish'`<br/>
 pick | `(value: string \| number, index: number)` | `1.0.1`
 
-
 ### CSS Variables
+
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
@@ -42,4 +45,4 @@ Name | Default Value | Description
 --td-cascader-title-color | @text-color-primary | - 
 --td-cascader-title-height | 26rpx | - 
 --td-cascader-title-padding | @spacer-2 | - 
---td-cascder-title-font-size | 36rpx | - 
+--td-cascder-title-font-size | 36rpx | -
