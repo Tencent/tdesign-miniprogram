@@ -66,10 +66,13 @@ isComponent: true
 {{ special }}
 
 ## API
+
 ### Checkbox Props
 
-名称 | 类型 | 默认值 | 说明 | 必传
+名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
+style | Object | - | 样式 | N
+custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 block | Boolean | true | 是否为块级元素 | N
 borderless | Boolean | false | 是否开启无边框模式 | N
 check-all | Boolean | false | 用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用 | N
@@ -92,23 +95,25 @@ value | String / Number / Boolean | - | 多选框的值。TS 类型：`string \|
 
 名称 | 参数 | 描述
 -- | -- | --
-change | `(checked: boolean, context: { value: boolean|number|string, label: boolean|number|string })` | 值变化时触发。`context` 表示当前点击项内容。
+change | `(checked: boolean, context: { value: boolean\|number\|string, label: boolean\|number\|string })` | 值变化时触发。`context` 表示当前点击项内容。
+### Checkbox External Classes
 
-### Checkbox 外部样式类
-类名 | 说明
--- | -- 
+类名 | 描述
+-- | --
 t-class | 根节点样式类
-t-class-label | 标签样式类
-t-class-icon | 图标样式类
-t-class-content | 内容样式类
 t-class-border | 边框样式类
+t-class-content | 内容样式类
+t-class-icon | 图标样式类
+t-class-label | 标签样式类
+
 
 ### CheckboxGroup Props
 
-名称 | 类型 | 默认值 | 说明 | 必传
+名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
+style | Object | - | 样式 | N
+custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 borderless | Boolean | false | 是否开启无边框模式 | N
-disabled | Boolean | - | 是否禁用组件，默认为 false。 CheckboxGroup.disabled < Checkbox.disabled ，后续新增 Form 组件后，Form.disabled 优先级最低 | N
 max | Number | undefined | 支持最多选中的数量 | N
 name | String | - | 统一设置内部复选框 HTML 属性 | N
 options | Array | [] | 以配置形式设置子元素。示例1：`['北京', '上海']` ，示例2: `[{ label: '全选', checkAll: true }, { label: '上海', value: 'shanghai' }]`。checkAll 值为 true 表示当前选项为「全选选项」。TS 类型：`Array<CheckboxOption>` `type CheckboxOption = string \| number \| CheckboxOptionObj` `interface CheckboxOptionObj { label?: string; value?: string \| number; disabled?: boolean; checkAll?: true }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/checkbox-group/type.ts) | N
@@ -119,8 +124,7 @@ default-value | Array | undefined | 选中值。非受控属性。TS 类型：`T
 
 名称 | 参数 | 描述
 -- | -- | --
-change | `(value: CheckboxGroupValue, context: { value: boolean|number|string, label: boolean|number|string })` | 值变化时触发。`context` 表示当前点击项内容。
-
+change | `(value: CheckboxGroupValue, context: { value: boolean\|number\|string, label: boolean\|number\|string })` | 值变化时触发。`context` 表示当前点击项内容。
 
 ### CSS Variables
 
@@ -143,4 +147,4 @@ change | `(value: CheckboxGroupValue, context: { value: boolean|number|string, l
 --td-checkbox-title-color | @text-color-primary | - 
 --td-checkbox-title-disabled-color | @text-color-disabled | - 
 --td-checkbox-title-line-height | 48rpx | - 
---td-checkbox-vertical-padding | 32rpx | - 
+--td-checkbox-vertical-padding | 32rpx | -
