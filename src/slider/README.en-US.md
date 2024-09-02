@@ -30,6 +30,7 @@ name | params | description
 change | `(value: SliderValue)` | \-
 dragend | `(value: SliderValue, e: TouchEvent)` | \-
 dragstart | `(e: TouchEvent)` | \-
+
 ### Slider External Classes
 
 className | Description

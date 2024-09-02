@@ -50,11 +50,6 @@ const props: TdSliderProps = {
     type: Number,
     value: 1,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 滑块风格 */
   theme: {
     type: String,

@@ -92,6 +92,7 @@ vertical | Boolean | false | 是否是垂直的滑块（渲染垂直滑块时，
 change | `(value: SliderValue)` | 滑块值变化时触发
 dragend | `(value: SliderValue, e: TouchEvent)` | 结束拖动时触发
 dragstart | `(e: TouchEvent)` | 开始拖动时触发
+
 ### Slider External Classes
 
 类名 | 描述
@@ -101,6 +102,20 @@ t-class-bar | 滑道底部样式类
 t-class-bar-active | 滑道激活态样式类
 t-class-bar-disabled | 滑道禁用态样式类
 t-class-cursor | 游标样式类
+
+## FAQ
+
+当 slider 外层使用 `hidden` 包裹，需要在 `hidden = false` 时，重新调用组件的 `init` 方法，才能正常渲染（在t-popup/t-dialog中同理）。如下：
+
+```html
+<t-slider id="slider" />
+```
+
+```js
+const $slider = this.selectComponent('#slider');
+
+$slider.init();
+```
 
 ### CSS Variables
 
