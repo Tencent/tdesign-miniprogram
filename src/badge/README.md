@@ -37,10 +37,13 @@ isComponent: true
 {{ size }}
 
 ## API
+
 ### Badge Props
 
-名称 | 类型 | 默认值 | 说明 | 必传
+名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
+style | Object | - | 样式 | N
+custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 color | String | - | 颜色 | N
 content | String | - | 徽标内容，示例：`content='自定义内容'`。也可以使用默认插槽定义 | N
 count | String / Number / Slot | 0 | 徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+。特殊：值为空表示使用插槽渲染。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
@@ -50,15 +53,16 @@ offset | Array | - | 设置状态点的位置偏移，示例：[-10, 20] 或 ['1
 shape | String | circle | 形状。可选项：circle/square/bubble/ribbon | N
 show-zero | Boolean | false | 当数值为 0 时，是否展示徽标 | N
 size | String | medium | 尺寸。可选项：medium/large | N
+### Badge External Classes
 
-### Badge 外部样式类
-类名 | 说明
--- | -- 
+类名 | 描述
+-- | --
 t-class | 根节点样式类
-t-class-count | 计数样式类
 t-class-content | 内容样式类
+t-class-count | 计数样式类
 
-### CSS 变量
+### CSS Variables
+
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
@@ -74,4 +78,4 @@ t-class-content | 内容样式类
 --td-badge-large-font-size | @font-size-s | - 
 --td-badge-large-height | 40rpx | - 
 --td-badge-large-padding | 10rpx | - 
---td-badge-text-color | @font-white-1 | - 
+--td-badge-text-color | @font-white-1 | -
