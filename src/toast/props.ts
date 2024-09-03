@@ -27,7 +27,6 @@ const props: TdToastProps = {
   /** 遮罩层属性，透传至 Overlay */
   overlayProps: {
     type: Object,
-    value: {},
   },
   /** 弹窗展示位置 */
   placement: {
@@ -47,6 +46,11 @@ const props: TdToastProps = {
   /** 提示类型 */
   theme: {
     type: String,
+  },
+  /** 是否使用了自定义导航栏 */
+  usingCustomNavbar: {
+    type: Boolean,
+    value: false,
   },
 };
 
