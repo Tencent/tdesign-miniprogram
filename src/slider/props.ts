@@ -8,8 +8,8 @@ import { TdSliderProps } from './type';
 const props: TdSliderProps = {
   /** 是否禁用组件 */
   disabled: {
-    type: Boolean,
-    value: false,
+    type: null,
+    value: undefined,
   },
   /** 组件类名，分别用于设置 组件外层元素、滑道底部、滑道激活态、滑道禁用态、游标 等元素类名 */
   externalClasses: {
@@ -65,7 +65,7 @@ const props: TdSliderProps = {
     type: null,
     value: 0,
   },
-  /** 是否是垂直滑块 */
+  /** 是否是垂直的滑块（渲染垂直滑块时，默认高度为400rpx，可通过修改`--td-slider-bar-height`来自定义高度） */
   vertical: {
     type: Boolean,
     value: false,

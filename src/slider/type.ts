@@ -6,14 +6,6 @@
 
 export interface TdSliderProps {
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 是否禁用组件
    * @default false
    */
@@ -109,7 +101,7 @@ export interface TdSliderProps {
     value?: SliderValue;
   };
   /**
-   * 是否垂直展示
+   * 是否是垂直的滑块（渲染垂直滑块时，默认高度为400rpx，可通过修改`--td-slider-bar-height`来自定义高度）
    * @default false
    */
   vertical?: {

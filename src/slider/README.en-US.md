@@ -1,14 +1,16 @@
 :: BASE_DOC ::
 
 ## API
+
 ### Slider Props
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-colors | Array | [] | Typescript：`Array<string>` | N
-disabled | Boolean | false | \- | N
-disabled-color | Array | [] | Typescript：`Array<string>` | N
-external-classes | Array | - | `['t-class', 't-class-bar', 't-class-bar-active', 't-class-bar-disabled', 't-class-cursor']` | N
+style | Object | - | CSS(Cascading Style Sheets) | N
+custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
+colors | Array | [] | `deprecated`。Typescript：`Array<string>` | N
+disabled | Boolean | undefined | \- | N
+disabled-color | Array | [] | `deprecated`。Typescript：`Array<string>` | N
 label | String / Boolean | false | Typescript：`string \| boolean` | N
 marks | Object / Array | {} | Typescript：`Record<number, string> \| Array<number>` | N
 max | Number | 100 | \- | N
@@ -16,20 +18,31 @@ min | Number | 0 | \- | N
 range | Boolean | false | \- | N
 show-extreme-value | Boolean | false | \- | N
 step | Number | 1 | \- | N
-theme | String | default | `0.30.0`。options：default/capsule | N
+theme | String | default | `0.30.0`。options: default/capsule | N
 value | Number / Array | 0 | Typescript：`SliderValue` `type SliderValue = number \| Array<number>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/slider/type.ts) | N
 default-value | Number / Array | undefined | uncontrolled property。Typescript：`SliderValue` `type SliderValue = number \| Array<number>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/slider/type.ts) | N
+vertical | Boolean | false | \- | N
 
 ### Slider Events
 
 name | params | description
 -- | -- | --
 change | `(value: SliderValue)` | \-
-dragend | \- | \-
-dragstart | \- | \-
+dragend | `(value: SliderValue, e: TouchEvent)` | \-
+dragstart | `(e: TouchEvent)` | \-
 
+### Slider External Classes
+
+className | Description
+-- | --
+t-class | \-
+t-class-bar | \-
+t-class-bar-active | \-
+t-class-bar-disabled | \-
+t-class-cursor | \-
 
 ### CSS Variables
+
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
@@ -49,4 +62,4 @@ Name | Default Value | Description
 --td-slider-dot-disabled-bg-color | #fff | - 
 --td-slider-dot-disabled-color | #f3f3f3 | - 
 --td-slider-dot-size | 40rpx | - 
---td-slider-text-color | @text-color-primary | - 
+--td-slider-text-color | @text-color-primary | -

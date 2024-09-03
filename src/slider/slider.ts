@@ -454,7 +454,7 @@ export default class Slider extends SuperComponent {
   }
 
   onTouchEnd(e: WechatMiniprogram.TouchEvent) {
-    this.triggerEvent('dragend', { e });
+    this.triggerEvent('dragend', { e, value: this.data._value });
     if (e.currentTarget.id === 'rightDot') {
       this.data.identifier[1] = -1;
     } else {
