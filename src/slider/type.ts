@@ -7,7 +7,6 @@
 export interface TdSliderProps {
   /**
    * 是否禁用组件
-   * @default false
    */
   disabled?: {
     type: BooleanConstructor;
