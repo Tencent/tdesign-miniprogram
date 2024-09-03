@@ -138,11 +138,11 @@ exports[`dropdown-menu :base 1`] = `
                           >
                             <wx-view
                               ariaChecked="{{false}}"
-                              ariaDisabled="{{false}}"
+                              ariaDisabled="{{null}}"
                               ariaLabel="选项一"
                               ariaRole="radio"
                               class="t-radio t-radio--left t-radio--block class t-class"
-                              disabled="{{false}}"
+                              disabled="{{null}}"
                               style=""
                               tabindex=""
                               mut-bind:tap="handleTap"
@@ -187,11 +187,11 @@ exports[`dropdown-menu :base 1`] = `
                           >
                             <wx-view
                               ariaChecked="{{false}}"
-                              ariaDisabled="{{false}}"
+                              ariaDisabled="{{null}}"
                               ariaLabel="选项二"
                               ariaRole="radio"
                               class="t-radio t-radio--left t-radio--block class t-class"
-                              disabled="{{false}}"
+                              disabled="{{null}}"
                               style=""
                               tabindex=""
                               mut-bind:tap="handleTap"
@@ -236,11 +236,11 @@ exports[`dropdown-menu :base 1`] = `
                           >
                             <wx-view
                               ariaChecked="{{true}}"
-                              ariaDisabled="{{false}}"
+                              ariaDisabled="{{null}}"
                               ariaLabel="选项三"
                               ariaRole="radio"
                               class="t-radio t-radio--left t-radio--block class t-class"
-                              disabled="{{false}}"
+                              disabled="{{null}}"
                               style=""
                               tabindex=""
                               mut-bind:tap="handleTap"
@@ -298,11 +298,11 @@ exports[`dropdown-menu :base 1`] = `
                           >
                             <wx-view
                               ariaChecked="{{false}}"
-                              ariaDisabled="{{false}}"
+                              ariaDisabled="{{null}}"
                               ariaLabel="选项四"
                               ariaRole="radio"
                               class="t-radio t-radio--left t-radio--block class t-class"
-                              disabled="{{false}}"
+                              disabled="{{null}}"
                               style=""
                               tabindex=""
                               mut-bind:tap="handleTap"
@@ -347,11 +347,11 @@ exports[`dropdown-menu :base 1`] = `
                           >
                             <wx-view
                               ariaChecked="{{false}}"
-                              ariaDisabled="{{false}}"
+                              ariaDisabled="{{null}}"
                               ariaLabel="选项五"
                               ariaRole="radio"
                               class="t-radio t-radio--left t-radio--block class t-class"
-                              disabled="{{false}}"
+                              disabled="{{null}}"
                               style=""
                               tabindex=""
                               mut-bind:tap="handleTap"
@@ -396,11 +396,11 @@ exports[`dropdown-menu :base 1`] = `
                           >
                             <wx-view
                               ariaChecked="{{false}}"
-                              ariaDisabled="{{false}}"
+                              ariaDisabled="{{null}}"
                               ariaLabel="选项六"
                               ariaRole="radio"
                               class="t-radio t-radio--left t-radio--block class t-class"
-                              disabled="{{false}}"
+                              disabled="{{null}}"
                               style=""
                               tabindex=""
                               mut-bind:tap="handleTap"
@@ -445,11 +445,11 @@ exports[`dropdown-menu :base 1`] = `
                           >
                             <wx-view
                               ariaChecked="{{false}}"
-                              ariaDisabled="{{false}}"
+                              ariaDisabled="{{null}}"
                               ariaLabel="选项七"
                               ariaRole="radio"
                               class="t-radio t-radio--left t-radio--block class t-class"
-                              disabled="{{false}}"
+                              disabled="{{null}}"
                               style=""
                               tabindex=""
                               mut-bind:tap="handleTap"
@@ -494,11 +494,11 @@ exports[`dropdown-menu :base 1`] = `
                           >
                             <wx-view
                               ariaChecked="{{false}}"
-                              ariaDisabled="{{false}}"
+                              ariaDisabled="{{null}}"
                               ariaLabel="选项八"
                               ariaRole="radio"
                               class="t-radio t-radio--left t-radio--block class t-class"
-                              disabled="{{false}}"
+                              disabled="{{null}}"
                               style=""
                               tabindex=""
                               mut-bind:tap="handleTap"

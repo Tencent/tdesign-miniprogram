@@ -61,7 +61,7 @@ const props: TdMessageProps = {
   /** 是否显示，隐藏时默认销毁组件 */
   visible: {
     type: Boolean,
-    value: null,
+    value: false,
   },
   /** 是否显示，隐藏时默认销毁组件，非受控属性 */
   defaultVisible: {

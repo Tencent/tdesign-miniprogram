@@ -122,7 +122,7 @@ safe-password-time-stamp | Number | - | 安全键盘加密时间戳 | N
 selection-end | Number | -1 | 光标结束位置，自动聚集时有效，需与 selection-start 搭配使用 | N
 selection-start | Number | -1 | 光标起始位置，自动聚集时有效，需与 selection-end 搭配使用 | N
 size | String | medium | 已废弃。输入框尺寸。可选项：small/medium。TS 类型：`'medium' \| 'small'` | N
-status | String | - | 输入框状态。可选项：success/warning/error | N
+status | String | default | 输入框状态。可选项：default/success/warning/error | N
 suffix | String / Slot | - | 后置图标前的后置内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 suffix-icon | String / Object / Slot | - | 后置文本内容。值为字符串则表示图标名称，值为 `Object` 类型，表示透传至 `icon`。。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 tips | String / Slot | - | 输入框下方提示文本，会根据不同的 `status` 呈现不同的样式。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N

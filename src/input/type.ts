@@ -257,10 +257,11 @@ export interface TdInputProps {
   };
   /**
    * 输入框状态
+   * @default default
    */
   status?: {
     type: StringConstructor;
-    value?: 'success' | 'warning' | 'error';
+    value?: 'default' | 'success' | 'warning' | 'error';
   };
   /**
    * 后置图标前的后置内容

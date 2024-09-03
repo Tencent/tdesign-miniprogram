@@ -164,6 +164,7 @@ const props: TdInputProps = {
   /** 输入框状态 */
   status: {
     type: String,
+    value: 'default',
   },
   /** 后置图标前的后置内容 */
   suffix: {
