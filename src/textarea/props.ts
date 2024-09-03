@@ -89,9 +89,10 @@ const props: TdTextareaProps = {
   maxcharacter: {
     type: Number,
   },
-  /** 用户最多可以输入的字符个数 */
+  /** 用户最多可以输入的字符个数，值为 -1 的时候不限制最大长度 */
   maxlength: {
-    type: null,
+    type: Number,
+    value: -1,
   },
   /** 占位符 */
   placeholder: {

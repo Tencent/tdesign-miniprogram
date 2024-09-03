@@ -139,11 +139,12 @@ export interface TdTextareaProps {
     value?: number;
   };
   /**
-   * 用户最多可以输入的字符个数
+   * 用户最多可以输入的字符个数，值为 -1 的时候不限制最大长度
+   * @default -1
    */
   maxlength?: {
-    type: null;
-    value?: string | number;
+    type: NumberConstructor;
+    value?: number;
   };
   /**
    * 占位符

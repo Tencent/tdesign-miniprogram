@@ -24,7 +24,7 @@ hold-keyboard | Boolean | false | \- | N
 indicator | Boolean | false | \- | N
 label | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 maxcharacter | Number | - | \- | N
-maxlength | String / Number | - | \- | N
+maxlength | Number | -1 | \- | N
 placeholder | String | undefined | \- | N
 placeholder-style | String | - | \- | N
 selection-end | Number | -1 | \- | N
