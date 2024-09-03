@@ -3,9 +3,12 @@ import config from '../common/config';
 import props from './props';
 import transition from '../mixins/transition';
 import useCustomNavbar from '../mixins/using-custom-navbar';
+import { TdOverlayProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-overlay`;
+
+export interface OverlayProps extends TdOverlayProps {}
 
 @wxComponent()
 export default class Overlay extends SuperComponent {

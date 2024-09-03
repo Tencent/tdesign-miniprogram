@@ -4,7 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import { TdOverlayProps as OverlayProps } from '../overlay/index';
+import { OverlayProps } from '../overlay/index';
 
 export interface TdPopupProps {
   /**
@@ -61,7 +61,7 @@ export interface TdPopupProps {
     value?: 'top' | 'left' | 'right' | 'bottom' | 'center';
   };
   /**
-   * 防止滚动穿透
+   * 是否阻止背景滚动
    * @default true
    */
   preventScrollThrough?: {
@@ -86,7 +86,6 @@ export interface TdPopupProps {
   };
   /**
    * 是否显示浮层
-   * @default false
    */
   visible?: {
     type: BooleanConstructor;
@@ -94,7 +93,6 @@ export interface TdPopupProps {
   };
   /**
    * 是否显示浮层，非受控属性
-   * @default false
    */
   defaultVisible?: {
     type: BooleanConstructor;
@@ -108,8 +106,4 @@ export interface TdPopupProps {
     type: NumberConstructor;
     value?: number;
   };
-}
-
-export interface PopupVisibleChangeContext {
-  trigger: 'close-btn' | 'overlay';
 }
