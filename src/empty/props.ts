@@ -14,7 +14,7 @@ const props: TdEmptyProps = {
   externalClasses: {
     type: Array,
   },
-  /** 图标名称 */
+  /** 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。 */
   icon: {
     type: null,
   },
