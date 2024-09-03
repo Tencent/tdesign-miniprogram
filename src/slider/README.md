@@ -102,20 +102,6 @@ isComponent: true
 | t-class-bar-disabled | 滑道禁用态样式类 |
 | t-class-cursor       | 游标样式类       |
 
-## FAQ
-
-当 slider 外层使用 `hidden` 包裹，需要在 `hidden = false` 时，重新调用组件的 `init` 方法，才能正常渲染（在t-popup/t-dialog中同理）。如下：
-
-```html
-<t-slider id="slider" />
-```
-
-```js
-const $slider = this.selectComponent('#slider');
-
-$slider.init();
-```
-
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
