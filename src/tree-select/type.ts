@@ -8,14 +8,6 @@ import { TreeOptionData, KeysType } from '../common/common';
 
 export interface TdTreeSelectProps<DataOption extends TreeOptionData = TreeOptionData> {
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 高度，默认单位为 px
    * @default 336
    */
@@ -31,7 +23,7 @@ export interface TdTreeSelectProps<DataOption extends TreeOptionData = TreeOptio
     value?: KeysType;
   };
   /**
-   * 是否多选
+   * 是否允许多选
    * @default false
    */
   multiple?: {

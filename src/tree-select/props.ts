@@ -15,7 +15,7 @@ const props: TdTreeSelectProps = {
   keys: {
     type: Object,
   },
-  /** 是否多选 */
+  /** 是否允许多选 */
   multiple: {
     type: Boolean,
     value: false,
