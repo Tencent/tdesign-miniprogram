@@ -3,18 +3,10 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
-import { RadioValue } from '../radio/type';
+
 import { KeysType } from '../common/common';
 
 export interface TdRadioGroupProps<T = RadioValue> {
-  /**
-   * 复选框和内容相对位置；仅在使用 options 时生效
-   * @default left
-   */
-  placement?: {
-    type: StringConstructor;
-    value?: 'left' | 'right';
-  };
   /**
    * 是否开启无边框模式
    * @default false
@@ -24,14 +16,6 @@ export interface TdRadioGroupProps<T = RadioValue> {
     value?: boolean;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 是否禁用全部子单选框
    */
   disabled?: {
@@ -39,8 +23,8 @@ export interface TdRadioGroupProps<T = RadioValue> {
     value?: boolean;
   };
   /**
-   * 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。值为 fill-circle 表示图标为填充型图标，值为 stroke-line 表示图标为描边型图标；仅在使用 options 时生效
-   * @default 'fill-circle'
+   * 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。使用 String 时，值为 circle 表示填充型图标、值为 line 表示描边型图标、值为 dot 表示圆点图标；仅在使用 options 时生效
+   * @default 'circle'
    */
   icon?: {
     type: null;
@@ -69,6 +53,14 @@ export interface TdRadioGroupProps<T = RadioValue> {
     value?: Array<RadioOption>;
   };
   /**
+   * 复选框和内容相对位置
+   * @default left
+   */
+  placement?: {
+    type: StringConstructor;
+    value?: 'left' | 'right';
+  };
+  /**
    * 选中的值
    */
   value?: {
@@ -93,3 +85,5 @@ export interface RadioOptionObj {
   disabled?: boolean;
   allowUncheck?: boolean;
 }
+
+export type RadioValue = string | number | boolean;

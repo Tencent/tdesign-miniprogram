@@ -6,14 +6,6 @@
 
 export interface TdRadioProps<T = RadioValue> {
   /**
-   * 复选框和内容相对位置
-   * @default left
-   */
-  placement?: {
-    type: StringConstructor;
-    value?: 'left' | 'right';
-  };
-  /**
    * 是否允许取消选中
    * @default false
    */
@@ -61,22 +53,6 @@ export interface TdRadioProps<T = RadioValue> {
     value?: boolean;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 只读状态
-   * @default false
-   */
-  readonly?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
    * 是否为禁用态
    */
   disabled?: {
@@ -84,19 +60,12 @@ export interface TdRadioProps<T = RadioValue> {
     value?: boolean;
   };
   /**
-   * 组件类名，分别用于设置 组件外层、单选图标、主文案、内容 等元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-icon', 't-class-label', 't-class-content', 't-class-border'];
-  };
-  /**
-   * 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。值为 circle 表示图标为填充型图标，值为 line 表示图标为描边型图标
+   * 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 circle 表示填充型图标、值为 line 表示描边型图标、值为 dot 表示圆点图标，值为 slot 时使用插槽
    * @default 'circle'
    */
   icon?: {
     type: null;
-    value?: 'circle' | 'line' | Array<string>;
+    value?: 'circle' | 'line' | 'dot' | Array<string>;
   };
   /**
    * 主文案
@@ -128,6 +97,22 @@ export interface TdRadioProps<T = RadioValue> {
   name?: {
     type: StringConstructor;
     value?: string;
+  };
+  /**
+   * 复选框和内容相对位置
+   * @default left
+   */
+  placement?: {
+    type: StringConstructor;
+    value?: 'left' | 'right';
+  };
+  /**
+   * 只读状态
+   * @default false
+   */
+  readonly?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 单选按钮的值
