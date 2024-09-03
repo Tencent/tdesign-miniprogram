@@ -112,8 +112,8 @@ show-overlay | Boolean | true | 是否出现遮罩层 | N
 skip-button-props | Object | - | 用于自定义当前步骤引导框的跳过按钮的内容。TS 类型：`ButtonProps` | N
 title | String | - | 当前步骤的标题内容，支持插槽：slot="title-{{index}}" (1、当要显示body-{{index}}插槽时，请将title设置为空；2、当要显示content-{{index}}插槽完全自定义内容时，请将body和title都设置为空) | N
 
+### CSS Variables
 
-### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
@@ -151,4 +151,4 @@ title | String | - | 当前步骤的标题内容，支持插槽：slot="title-{{
 --td-guide-reference-border-radius | @radius-default | - 
 --td-guide-reference-mask-color | @font-gray-2 | - 
 --td-guide-title-color | @font-gray-1 | - 
---td-guide-title-font-weight | 600 | - 
+--td-guide-title-font-weight | 600 | -
