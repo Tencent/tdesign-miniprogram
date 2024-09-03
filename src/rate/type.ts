@@ -59,7 +59,7 @@ export interface TdRateProps {
     value?: string;
   };
   /**
-   * 选择评分弹框的位置，值为空字符表示不显示评分弹窗
+   * 选择评分弹框的位置，值为空字符表示不显示评分弹框
    * @default top
    */
   placement?: {
