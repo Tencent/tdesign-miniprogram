@@ -5,6 +5,7 @@
  * */
 
 import { BadgeProps } from '../badge/index';
+import { ImageProps } from '../image/index';
 
 export interface TdGridItemProps {
   /**
@@ -16,26 +17,11 @@ export interface TdGridItemProps {
     value?: BadgeProps;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 文本以外的更多描述，辅助信息。可以通过 Props 传入文本，也可以自定义标题节点
    */
   description?: {
     type: StringConstructor;
     value?: string;
-  };
-  /**
-   * 组件类名，分别用于设置组件外层元素、图片、文本、描述等元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-image', 't-class-text', 't-class-description'];
   };
   /**
    * 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`
@@ -45,7 +31,7 @@ export interface TdGridItemProps {
     value?: string | object;
   };
   /**
-   * 图片，可以是图片地址，也可以自定义图片节点
+   * 图片，可以是图片地址，也可以自定义图片节点，值为 slot 的时候才能使用插槽
    */
   image?: {
     type: StringConstructor;
@@ -56,7 +42,7 @@ export interface TdGridItemProps {
    */
   imageProps?: {
     type: ObjectConstructor;
-    value?: object;
+    value?: ImageProps;
   };
   /**
    * 链接跳转类型
