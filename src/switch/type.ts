@@ -4,7 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-export interface TdSwitchProps {
+export interface TdSwitchProps<T = SwitchValue> {
   /**
    * 用于自定义开关的值，[打开时的值，关闭时的值]。默认为 [true, false]。示例：[1, 0]、['open', 'close']
    * @default [true, false]
@@ -14,8 +14,7 @@ export interface TdSwitchProps {
     value?: Array<SwitchValue>;
   };
   /**
-   * 是否禁用组件
-   * @default false
+   * 是否禁用组件。优先级：Switch.disabled > Form.disabled
    */
   disabled?: {
     type: BooleanConstructor;
@@ -52,14 +51,6 @@ export interface TdSwitchProps {
   size?: {
     type: StringConstructor;
     value?: 'small' | 'medium' | 'large';
-  };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 开关值
