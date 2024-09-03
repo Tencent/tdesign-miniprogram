@@ -15,7 +15,7 @@ const props: TdSideBarItemProps = {
     type: Boolean,
     value: false,
   },
-  /* 图标，传对象则透传至 Icon */
+  /** 图标，传对象则透传至 Icon */
   icon: {
     type: null,
   },
