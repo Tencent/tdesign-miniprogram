@@ -35,7 +35,6 @@ dragstart | `(scrollTop: number, scrollLeft: number)` | `1.2.10`
 refresh | \- | \-
 scrolltolower | \- | \-
 timeout | \- | \-
-
 ### PullDownRefresh External Classes
 
 className | Description

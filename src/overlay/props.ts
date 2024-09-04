@@ -11,11 +11,6 @@ const props: TdOverlayProps = {
     type: String,
     value: '',
   },
-  /** 自定义组件样式 */
-  customStyle: {
-    type: String,
-    value: '',
-  },
   /** 背景色过渡时间，单位毫秒 */
   duration: {
     type: Number,
@@ -25,11 +20,6 @@ const props: TdOverlayProps = {
   preventScrollThrough: {
     type: Boolean,
     value: true,
-  },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
   },
   /** 遮罩层级 */
   zIndex: {

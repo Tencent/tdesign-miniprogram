@@ -15,11 +15,6 @@ const props: TdFooterProps = {
   logo: {
     type: Object,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 版权信息 */
   text: {
     type: String,

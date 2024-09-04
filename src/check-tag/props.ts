@@ -30,10 +30,6 @@ const props: TdCheckTagProps = {
     type: Boolean,
     value: false,
   },
-  /** 组件类名，用于设置 组件外层元素元素类名 */
-  externalClasses: {
-    type: Array,
-  },
   /** 标签图标 */
   icon: {
     type: null,

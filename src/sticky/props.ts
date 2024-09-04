@@ -15,13 +15,9 @@ const props: TdStickyProps = {
     type: Boolean,
     value: false,
   },
-  /** 根结点外部样式 */
-  externalClasses: {
-    type: Array,
-  },
   /** 吸顶时与顶部的距离，单位`px` */
   offsetTop: {
-    type: Number,
+    type: null,
     value: 0,
   },
   /** 吸顶时的 z-index */

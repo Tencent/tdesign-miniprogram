@@ -9,7 +9,7 @@ const props: TdDateTimePickerProps = {
   /** 取消按钮文字 */
   cancelBtn: {
     type: String,
-    value: '',
+    value: '取消',
   },
   /** 确定按钮文字 */
   confirmBtn: {

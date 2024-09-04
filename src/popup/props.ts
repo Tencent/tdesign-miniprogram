@@ -38,7 +38,7 @@ const props: TdPopupProps = {
     type: String,
     value: 'top',
   },
-  /** 防止滚动穿透 */
+  /** 是否阻止背景滚动 */
   preventScrollThrough: {
     type: Boolean,
     value: true,
@@ -48,6 +48,11 @@ const props: TdPopupProps = {
     type: Boolean,
     value: true,
   },
+  /** 是否使用了自定义导航栏 */
+  usingCustomNavbar: {
+    type: Boolean,
+    value: false,
+  },
   /** 是否显示浮层 */
   visible: {
     type: Boolean,
@@ -56,7 +61,6 @@ const props: TdPopupProps = {
   /** 是否显示浮层，非受控属性 */
   defaultVisible: {
     type: Boolean,
-    value: false,
   },
   /** 组件层级，Web 侧样式默认为 5500，移动端样式默认为 1500，小程序样式默认为11500 */
   zIndex: {

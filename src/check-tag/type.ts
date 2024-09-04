@@ -45,13 +45,6 @@ export interface TdCheckTagProps {
     value?: boolean;
   };
   /**
-   * 组件类名，用于设置 组件外层元素元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class'];
-  };
-  /**
    * 标签图标
    */
   icon?: {

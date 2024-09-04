@@ -8,7 +8,7 @@ import { ImageProps } from '../image/index';
 
 export interface TdUploadProps {
   /**
-   * 添加按钮内容。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。
+   * 添加按钮内容
    */
   addContent?: {
     type: StringConstructor;
@@ -31,19 +31,17 @@ export interface TdUploadProps {
   };
   /**
    * 是否禁用组件
-   * @default false
    */
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
   };
   /**
-   * 自定义组件样式
-   * @default ''
+   * 是否支持拖拽排序。长按时是否振动，碰撞时是否振动。示例一：`true`。示例二：`{ vibrate: true, collisionVibrate: true }`
    */
-  style?: {
-    type: StringConstructor;
-    value?: string;
+  draggable?: {
+    type: null;
+    value?: boolean | { vibrate?: boolean; collisionVibrate?: boolean };
   };
   /**
    * 已上传文件列表
@@ -101,11 +99,11 @@ export interface TdUploadProps {
    * 自定义上传方法
    */
   requestMethod?: {
-    type: null;
+    type: undefined;
     value?: null;
   };
   /**
-   * 图片文件大小限制，单位 KB。可选单位有：`'B' | 'KB' | 'MB' | 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }`
+   * 图片文件大小限制，默认单位 KB。可选单位有：`'B' | 'KB' | 'MB' | 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }`
    */
   sizeLimit?: {
     type: null;
@@ -120,19 +118,12 @@ export interface TdUploadProps {
     value?: 'media' | 'messageFile';
   };
   /**
-   * 是否支持拖拽排序
-   */
-  draggable?: {
-    type: null;
-    value?: boolean | Draggable;
-  };
-
-  /**
-   * 过渡参数
+   * 拖拽位置移动时的过渡参数,`duration`单位为ms
+   * @default { backTransition: true, duration: 300, timingFunction: 'ease' }
    */
   transition?: {
     type: ObjectConstructor;
-    value: Transition;
+    value?: Transition;
   };
 }
 
@@ -155,13 +146,6 @@ export interface VideoConfig {
   camera?: 'back' | 'front';
 }
 
-export interface UploadDisplayDragEvents {
-  onDrop?: (event: DragEvent) => void;
-  onDragenter?: (event: DragEvent) => void;
-  onDragover?: (event: DragEvent) => void;
-  onDragleave?: (event: DragEvent) => void;
-}
-
 export interface UploadFile {
   url: string;
   name?: string;
@@ -169,7 +153,6 @@ export interface UploadFile {
   type?: 'image' | 'video';
   percent?: number;
   status: 'loading' | 'reload' | 'failed' | 'done';
-  thumb?: string;
 }
 
 export type MediaType = 'image' | 'video';
@@ -183,11 +166,6 @@ export interface SizeLimitObj {
 export type SizeUnitArray = ['B', 'KB', 'MB', 'GB'];
 
 export type SizeUnit = SizeUnitArray[number];
-
-export interface Draggable {
-  vibrate?: boolean;
-  collisionVibrate?: boolean;
-}
 
 export interface Transition {
   backTransition?: boolean;

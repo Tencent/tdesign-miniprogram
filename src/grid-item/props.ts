@@ -15,15 +15,11 @@ const props: TdGridItemProps = {
   description: {
     type: String,
   },
-  /** 组件类名，分别用于设置组件外层元素、图片、文本、描述等元素类名 */
-  externalClasses: {
-    type: Array,
-  },
   /** 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon` */
   icon: {
     type: null,
   },
-  /** 图片，可以是图片地址，也可以自定义图片节点 */
+  /** 图片，可以是图片地址，也可以自定义图片节点，值为 slot 的时候才能使用插槽 */
   image: {
     type: String,
   },

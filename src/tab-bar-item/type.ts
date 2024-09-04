@@ -15,19 +15,11 @@ export interface TdTabBarItemProps {
     value?: BadgeProps;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 图标名称
+   * 图标名称。传入对象时透传至 Icon 组件
    */
   icon?: {
-    type: StringConstructor;
-    value?: string;
+    type: null;
+    value?: string | object;
   };
   /**
    * 二级菜单

@@ -8,7 +8,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
-closable | Boolean / Object | false | \- | N
+closable | Boolean / Object / Slot | false | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 disabled | Boolean | false | \- | N
 icon | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 max-width | String / Number | - | \- | N
@@ -39,7 +39,7 @@ custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on v
 checked | Boolean | undefined | \- | N
 default-checked | Boolean | undefined | uncontrolled property | N
 closable | Boolean | false | \- | N
-content | String / Number / Array / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+content | String / Number / Array / Slot | - | Typescript：`string \| number \| string[]` | N
 disabled | Boolean | false | \- | N
 icon | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 shape | String | square | options: square/round/mark | N
@@ -59,7 +59,7 @@ className | Description
 -- | --
 t-class | \-
 
-### CSS 变量
+### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 

@@ -34,7 +34,7 @@ export interface TdProgressProps {
    */
   status?: {
     type: StringConstructor;
-    value?: StatusEnum;
+    value?: ProgressStatus;
   };
   /**
    * 进度条线宽，默认单位 `px`
@@ -57,7 +57,7 @@ export interface TdProgressProps {
    */
   theme?: {
     type: StringConstructor;
-    value?: ThemeEnum;
+    value?: ProgressTheme;
   };
   /**
    * 进度条未完成部分颜色
@@ -69,6 +69,6 @@ export interface TdProgressProps {
   };
 }
 
-export type StatusEnum = 'success' | 'error' | 'warning' | 'active';
+export type ProgressStatus = 'success' | 'error' | 'warning' | 'active';
 
-export type ThemeEnum = 'line' | 'plump' | 'circle';
+export type ProgressTheme = 'line' | 'plump' | 'circle';

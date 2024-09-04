@@ -38,7 +38,7 @@ export interface TdTabsProps {
     value?: boolean;
   };
   /**
-   * 是否展示分割线
+   * `1.1.10`。是否展示分割线
    * @default true
    */
   split?: {

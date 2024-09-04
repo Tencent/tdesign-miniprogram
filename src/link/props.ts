@@ -10,7 +10,16 @@ const props: TdLinkProps = {
   content: {
     type: String,
   },
-  /** 与 navigator 原生组件属性保持一致，具体使用参考：https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html。 */
+  /** 是否为禁用态 */
+  disabled: {
+    type: Boolean,
+    value: false,
+  },
+  /** 是否开启点击反馈 */
+  hover: {
+    type: Boolean,
+  },
+  /** 与 navigator 原生组件属性保持一致，具体使用参考：[微信开放文档](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html)。使用时请将形如 `open-type` 风格的属性名改为 `openType` 风格 */
   navigatorProps: {
     type: Object,
   },
@@ -23,22 +32,7 @@ const props: TdLinkProps = {
     type: String,
     value: 'medium',
   },
-  /** 已废弃。组件状态 */
-  status: {
-    type: String,
-    value: 'normal',
-  },
-  /** 禁用态 */
-  disabled: {
-    type: Boolean,
-    value: false,
-  },
-  /** 是否开启点击反馈 */
-  hover: {
-    type: Boolean,
-    value: false,
-  },
-  /** 前置图标 */
+  /** 后置图标 */
   suffixIcon: {
     type: null,
   },
@@ -47,7 +41,7 @@ const props: TdLinkProps = {
     type: String,
     value: 'default',
   },
-  /** 普通状态是否显示链接下划线 */
+  /** 是否显示链接下划线 */
   underline: {
     type: Boolean,
   },

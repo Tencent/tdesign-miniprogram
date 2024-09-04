@@ -14,14 +14,6 @@ export interface TdOverlayProps {
     value?: string;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  customStyle?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 背景色过渡时间，单位毫秒
    * @default 300
    */
@@ -36,14 +28,6 @@ export interface TdOverlayProps {
   preventScrollThrough?: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 是否使用了自定义导航栏

@@ -44,6 +44,7 @@ const props: TdSearchProps = {
   /** 指定 focus 时的光标位置 */
   cursor: {
     type: Number,
+    required: true,
   },
   /** 搜索框聚焦时底部与键盘的距离 */
   cursorSpacing: {
@@ -65,7 +66,7 @@ const props: TdSearchProps = {
     type: Boolean,
     value: false,
   },
-  /** 左侧图标 */
+  /** 左侧图标。如果需要使用 `Slot` 进行自定义，必须将该值设置为假值 */
   leftIcon: {
     type: String,
     value: 'search',
@@ -93,6 +94,7 @@ const props: TdSearchProps = {
   placeholderStyle: {
     type: String,
     value: '',
+    required: true,
   },
   /** 预览结果列表 */
   resultList: {

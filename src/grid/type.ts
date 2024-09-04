@@ -36,21 +36,6 @@ export interface TdGridProps {
     value?: number;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 组件类名，用于设置组件外层元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class'];
-  };
-  /**
    * 间隔大小
    */
   gutter?: {

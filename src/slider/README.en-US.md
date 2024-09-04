@@ -2,6 +2,7 @@
 
 ## API
 
+
 ### Slider Props
 
 name | type | default | description | required
@@ -30,7 +31,6 @@ name | params | description
 change | `(value: SliderValue)` | \-
 dragend | `(value: SliderValue, e: TouchEvent)` | \-
 dragstart | `(e: TouchEvent)` | \-
-
 ### Slider External Classes
 
 className | Description
@@ -40,6 +40,7 @@ t-class-bar | \-
 t-class-bar-active | \-
 t-class-bar-disabled | \-
 t-class-cursor | \-
+
 
 ### CSS Variables
 
@@ -60,6 +61,6 @@ Name | Default Value | Description
 --td-slider-dot-bg-color | #fff | - 
 --td-slider-dot-color | @component-border | - 
 --td-slider-dot-disabled-bg-color | #fff | - 
---td-slider-dot-disabled-color | #f3f3f3 | - 
+--td-slider-dot-disabled-border-color | #f3f3f3 | - 
 --td-slider-dot-size | 40rpx | - 
---td-slider-text-color | @text-color-primary | -
+--td-slider-text-color | @text-color-primary | - 

@@ -30,35 +30,11 @@ export interface TdCellProps {
     value?: boolean;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 下方内容描述
    */
   description?: {
     type: StringConstructor;
     value?: string;
-  };
-  /**
-   * 组件类名，分别用于设置 组件外层类名、标题类名、右侧说明文字类名、下方描述内容类名、图片类名、激活态类名、左侧图标类名、右侧图标类名 等
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: [
-      't-class',
-      't-class-title',
-      't-class-note',
-      't-class-description',
-      't-class-thumb',
-      't-class-hover',
-      't-class-left',
-      't-class-right',
-    ];
   };
   /**
    * 是否开启点击反馈

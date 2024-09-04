@@ -6,35 +6,6 @@
 
 export interface TdBackTopProps {
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 组件类名，分别用于设置外层元素、图标、文本内容等元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-icon', 't-class-text'];
-  };
-  /**
-   * 滚动高度达到此参数值才出现
-   */
-  visibilityHeight?: {
-    type: NumberConstructor;
-    value?: 200;
-  };
-  /**
-   * 页面滚动距离
-   */
-  scrollTop?: {
-    type: NumberConstructor;
-    value: 0;
-  };
-  /**
    * 是否绝对定位固定到屏幕右下方
    * @default true
    */
@@ -43,12 +14,28 @@ export interface TdBackTopProps {
     value?: boolean;
   };
   /**
-   * 图标
+   * 图标。值为 `false` 表示不显示图标。不传表示使用默认图标 `'backtop'`
    * @default true
    */
   icon?: {
     type: null;
-    value?: boolean | string | object;
+    value?: string | boolean | object;
+  };
+  /**
+   * 页面滚动距离
+   * @default 0
+   */
+  scrollTop?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
+   * 自定义组件样式
+   * @default ''
+   */
+  style?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 文案
@@ -65,5 +52,13 @@ export interface TdBackTopProps {
   theme?: {
     type: StringConstructor;
     value?: 'round' | 'half-round' | 'round-dark' | 'half-round-dark';
+  };
+  /**
+   * 滚动高度达到此参数值才出现
+   * @default 200
+   */
+  visibilityHeight?: {
+    type: NumberConstructor;
+    value?: number;
   };
 }

@@ -2,7 +2,6 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- * updated at 2021-09-20 16:58:42
  * */
 
 import { TdIconProps } from './type';
@@ -12,21 +11,20 @@ const props: TdIconProps = {
     type: String,
     value: '',
   },
-  /** 图标名称 */
+  /** 图标名称或图片链接 */
   name: {
     type: String,
     value: '',
     required: true,
   },
-  /** 图标尺寸，支持 'small', 'medium', 'large'，'35px', '3em' 等 */
-  size: {
-    type: String,
-    value: '',
-  },
   /** 自定义图标前缀 */
   prefix: {
     type: String,
-    value: undefined,
+    value: '',
+  },
+  /** 图标大小, 如 `20`, `20px`, `48rpx`, 默认单位是 `px` */
+  size: {
+    type: null,
   },
 };
 

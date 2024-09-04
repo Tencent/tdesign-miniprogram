@@ -21,10 +21,6 @@ const props: TdGridProps = {
     type: Number,
     value: 4,
   },
-  /** 组件类名，用于设置组件外层元素类名 */
-  externalClasses: {
-    type: Array,
-  },
   /** 间隔大小 */
   gutter: {
     type: Number,

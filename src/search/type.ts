@@ -67,6 +67,7 @@ export interface TdSearchProps {
   cursor: {
     type: NumberConstructor;
     value?: number;
+    required?: boolean;
   };
   /**
    * 搜索框聚焦时底部与键盘的距离
@@ -101,7 +102,7 @@ export interface TdSearchProps {
     value?: boolean;
   };
   /**
-   * 左侧图标
+   * 左侧图标。如果需要使用 `Slot` 进行自定义，必须将该值设置为假值
    * @default 'search'
    */
   leftIcon?: {
@@ -146,6 +147,7 @@ export interface TdSearchProps {
   placeholderStyle: {
     type: StringConstructor;
     value?: string;
+    required?: boolean;
   };
   /**
    * 预览结果列表

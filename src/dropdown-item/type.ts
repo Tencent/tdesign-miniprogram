@@ -8,15 +8,7 @@ import { KeysType } from '../common/common';
 
 export interface TdDropdownItemProps {
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 是否禁用
+   * 是否禁用操作项
    * @default false
    */
   disabled?: {
@@ -75,15 +67,6 @@ export interface TdDropdownItemProps {
   optionsColumns?: {
     type: null;
     value?: string | number;
-  };
-  /**
-   * 选项排列；不再支持 tree 布局，可与 treeSelect 配合使用
-   * @default columns
-   * @deprecated
-   */
-  optionsLayout?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 选中值

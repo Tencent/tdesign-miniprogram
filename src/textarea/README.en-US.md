@@ -6,21 +6,32 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
+style | Object | - | CSS(Cascading Style Sheets) | N
+custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 adjust-position | Boolean | true | \- | N
 autofocus | Boolean | false | \- | N
-autosize | Boolean | false | \- | N
+autosize | Boolean / Object | false | Typescript：`boolean \| { maxHeight?: number, minHeight?: number }` | N
+bordered | Boolean | false | \- | N
 confirm-hold | Boolean | false | \- | N
-confirm-type | String | return | options：return/send/search/next/go/done。Typescript：`'return' \| 'send' \| 'search' \| 'next' \| 'go' \| 'done'` | N
+confirm-type | String | return | options: return/send/search/next/go/done。Typescript：`'return' \| 'send' \| 'search' \| 'next' \| 'go' \| 'done'` | N
+cursor | Number | -1 | \- | N
 cursor-spacing | Number | 0 | \- | N
-disabled | Boolean | false | \- | N
-external-classes | Array | - | `['t-class', 't-class-textarea', 't-class-label']` | N
+disable-default-padding | Boolean | false | \- | N
+disabled | Boolean | undefined | \- | N
+fixed | Boolean | false | \- | N
 focus | Boolean | false | \- | N
-label | String / Slot | - | \- | N
+hold-keyboard | Boolean | false | \- | N
+indicator | Boolean | false | \- | N
+label | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 maxcharacter | Number | - | \- | N
-maxlength | Number | - | \- | N
+maxlength | Number | -1 | \- | N
 placeholder | String | undefined | \- | N
-value | String | null | \- | N
-default-value | String | '' | uncontrolled property | N
+placeholder-style | String | - | \- | N
+selection-end | Number | -1 | \- | N
+selection-start | Number | -1 | \- | N
+show-confirm-bar | Boolean | true | \- | N
+value | String / Number | - | Typescript：`TextareaValue` `type TextareaValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/textarea/type.ts) | N
+default-value | String / Number | undefined | uncontrolled property。Typescript：`TextareaValue` `type TextareaValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/textarea/type.ts) | N
 
 ### Textarea Events
 
@@ -30,7 +41,16 @@ blur | `(value: TextareaValue, cursor: number)` | \-
 change | `(value: TextareaValue, cursor: number)` | \-
 enter | `(value: TextareaValue)` | \-
 focus | `(value: TextareaValue)` | \-
+keyboardheightchange | `(height: number, duration: number)` | \-
 line-change | `(value: TextareaValue)` | \-
+### Textarea External Classes
+
+className | Description
+-- | --
+t-class | \-
+t-class-indicator | \-
+t-class-label | \-
+t-class-textarea | \-
 
 ### CSS Variables
 

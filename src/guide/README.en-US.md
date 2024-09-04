@@ -64,8 +64,8 @@ show-overlay | Boolean | true | \- | N
 skip-button-props | Object | - | Typescript：`ButtonProps` | N
 title | String | - | title of current step | N
 
-
 ### CSS Variables
+
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
@@ -103,4 +103,4 @@ Name | Default Value | Description
 --td-guide-reference-border-radius | @radius-default | - 
 --td-guide-reference-mask-color | @font-gray-2 | - 
 --td-guide-title-color | @font-gray-1 | - 
---td-guide-title-font-weight | 600 | - 
+--td-guide-title-font-weight | 600 | -

@@ -68,8 +68,7 @@ dragstart | `(scrollTop: number, scrollLeft: number)` | `1.2.10`。滑动开始�
 refresh | \- | 结束下拉时触发
 scrolltolower | \- | 滚动到页面底部时触发
 timeout | \- | 刷新超时触发
-
-### PullDownRefresh 外部样式类
+### PullDownRefresh External Classes
 
 类名 | 描述
 -- | --
@@ -78,7 +77,7 @@ t-class-indicator | 指示样式类
 t-class-loading | 加载样式类
 t-class-text | 文本样式类
 
-### CSS 变量
+### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述

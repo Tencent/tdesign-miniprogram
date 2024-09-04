@@ -56,10 +56,10 @@ isComponent: true
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
-closable | Boolean / Object | false | 标签是否可关闭 | N
+closable | Boolean / Object / Slot | false | 标签是否可关闭。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 disabled | Boolean | false | 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态 | N
 icon | String / Object / Slot | - | 标签中的图标，可自定义图标呈现。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
-max-width | String / Number | - | 标签最大宽度，宽度超出后会出现省略号。示例：'50px' / 80 (skyline暂不支持该属性) | N
+max-width | String / Number | - | 标签最大宽度，宽度超出后会出现省略号。示例：'50px' / 80 | N
 shape | String | square | 标签类型，有三种：方形、圆角方形、标记型。可选项：square/round/mark | N
 size | String | medium | 标签尺寸。可选项：small/medium/large/extra-large | N
 theme | String | default | 组件风格，用于描述组件不同的应用场景。可选项：default/primary/warning/danger/success | N
@@ -87,7 +87,7 @@ custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场�
 checked | Boolean | undefined | 标签选中的状态，默认风格（theme=default）才有选中态 | N
 default-checked | Boolean | undefined | 标签选中的状态，默认风格（theme=default）才有选中态。非受控属性 | N
 closable | Boolean | false | 标签是否可关闭 | N
-content | String / Number / Array / Slot | - | 组件子元素；传入数组时：[选中内容，非选中内容]。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+content | String / Number / Array / Slot | - | 组件子元素；传入数组时：[选中内容，非选中内容]。TS 类型：`string \| number \| string[]` | N
 disabled | Boolean | false | 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态 | N
 icon | String / Object / Slot | - | 标签图标。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 shape | String | square | 标签类型，有三种：方形、圆角方形、标记型。可选项：square/round/mark | N
@@ -107,7 +107,7 @@ close | \- | 如果关闭按钮存在，点击关闭按钮时触发
 -- | --
 t-class | 根节点样式类
 
-### CSS 变量
+### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 

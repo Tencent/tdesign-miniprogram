@@ -62,7 +62,9 @@ isComponent: true
 
 {{ vertical }}
 
+
 ## API
+
 
 ### Slider Props
 
@@ -92,7 +94,6 @@ vertical | Boolean | false | 是否是垂直的滑块（渲染垂直滑块时，
 change | `(value: SliderValue)` | 滑块值变化时触发
 dragend | `(value: SliderValue, e: TouchEvent)` | 结束拖动时触发
 dragstart | `(e: TouchEvent)` | 开始拖动时触发
-
 ### Slider External Classes
 
 类名 | 描述
@@ -136,6 +137,6 @@ $slider.init();
 --td-slider-dot-bg-color | #fff | - 
 --td-slider-dot-color | @component-border | - 
 --td-slider-dot-disabled-bg-color | #fff | - 
---td-slider-dot-disabled-color | #f3f3f3 | - 
+--td-slider-dot-disabled-border-color | #f3f3f3 | - 
 --td-slider-dot-size | 40rpx | - 
---td-slider-text-color | @text-color-primary | -
+--td-slider-text-color | @text-color-primary | - 

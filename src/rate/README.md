@@ -84,7 +84,7 @@ disabled | Boolean | undefined | 是否禁用评分 | N
 gap | String / Number | 8 | 评分图标的间距 | N
 icon | String / Array | - | `0.30.0`。自定义评分图标，[选中图标，未选中图标]。TS 类型：`string \| string[]` | N
 icon-prefix | String | undefined | 定义图标前缀 | N
-placement | String | top | 选择评分弹框的位置，值为空字符表示不显示评分弹窗。可选项：top / bottom / '' | N
+placement | String | top | 选择评分弹框的位置，值为空字符表示不显示评分弹框。可选项：top / bottom / '' | N
 show-text | Boolean | false | 是否显示对应的辅助文字 | N
 size | String | 24px | 评分图标的大小 | N
 texts | Array | [] | 评分等级对应的辅助文字。组件内置默认值为：['极差', '失望', '一般', '满意', '惊喜']。自定义值示例：['1分', '2分', '3分', '4分', '5分']。TS 类型：`Array<string>` | N

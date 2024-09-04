@@ -66,62 +66,69 @@ For global import, configure it in `app.json` in the root directory of the minip
 
 
 ## API
+
 ### Button Props
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-t-id | String | - | button tag id | N
+style | Object | - | CSS(Cascading Style Sheets) | N
+custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
+app-parameter | String | - | \- | N
 block | Boolean | false | make button to be a block-level element | N
-content | String / Slot | - | button's children elements | N
+content | String / Slot | - | button's children elements。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 custom-dataset | Object | - | Typescript：`any` | N
-disabled | Boolean | false | disable the button, make it can not be clicked | N
-external-classes | Array | - | `['t-class', 't-class-icon', 't-class-loading']` | N
+disabled | Boolean | undefined | disable the button, make it can not be clicked | N
 ghost | Boolean | false | make background-color to be transparent | N
-icon | String / Object | - | icon name | N
-loading | Boolean | false | set button to be loading state | N
-loading-props | Object | - | Typescript：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/button/type.ts) | N
-shape | String | rectangle | button shape。options：rectangle/square/round/circle | N
-size | String | medium | a button has three size。options：small/medium/large。Typescript：`SizeEnum` | N
-suffix | Slot | - | \- | N
-theme | String | default | button theme。options：default/primary/danger | N
-type | String | - | type of button element, same as formType of Miniprogram。options：submit/reset | N
-variant | String | base | button variant。options：base/outline/text | N
-open-type | String | - | options：contact/share/getPhoneNumber/getUserInfo/launchApp/openSetting/feedback/chooseAvatar/agreePrivacyAuthorization | N
-hover-stop-propagation | Boolean | false | \- | N
+hover-class | String | - | \- | N
 hover-start-time | Number | 20 | \- | N
 hover-stay-time | Number | 70 | \- | N
-lang | String | en | options：en/zh_CN/zh_TW | N
-session-from | String | - | \- | N
-send-message-title | String | 当前标题 | \- | N
-send-message-path | String | 当前分享路径 | \- | N
+hover-stop-propagation | Boolean | false | \- | N
+icon | String / Object | - | icon name | N
+lang | String | - | message language。options: en/zh_CN/zh_TW | N
+loading | Boolean | false | set button to be loading state | N
+loading-props | Object | - | Typescript：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/button/type.ts) | N
+open-type | String | - | open type of button, [Miniprogram Button](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)。options: contact/share/getPhoneNumber/getUserInfo/launchApp/openSetting/feedback/chooseAvatar/agreePrivacyAuthorization | N
+phone-number-no-quota-toast | Boolean | true | \- | N
 send-message-img | String | 截图 | \- | N
-app-parameter | String | - | \- | N
+send-message-path | String | 当前分享路径 | \- | N
+send-message-title | String | 当前标题 | \- | N
+session-from | String | - | \- | N
+shape | String | rectangle | button shape。options: rectangle/square/round/circle | N
 show-message-card | Boolean | false | \- | N
-bindgetuserinfo | Eventhandle | - | \- | N
-bindcontact | Eventhandle | - | \- | N
-bindgetphonenumber | Eventhandle | - | \- | N
-binderror | Eventhandle | - | \- | N
-bindopensetting | Eventhandle | - | \- | N
-bindlaunchapp | Eventhandle | - | \- | N
-bindchooseavatar | Eventhandle | - | \- | N
-bindagreeprivacyauthorization | Eventhandle | - | \-| N
+size | String | medium | a button has four size。options: extra-small/small/medium/large | N
+suffix | Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+t-id | String | - | id | N
+theme | String | default | button theme。options: default/primary/danger/light | N
+type | String | - | type of button element, same as formType of Miniprogram。options: submit/reset | N
+variant | String | base | variant of button。options: base/outline/dashed/text | N
 
 ### Button Events
 
 name | params | description
 -- | -- | --
-tap | `(e: MouseEvent)` | trigger on click
+agreeprivacyauthorization | \- | \-
+chooseavatar | \- | \-
+click | `(e: MouseEvent)` | trigger on click
+contact | \- | \-
+createliveactivity | \- | \-
+error | \- | \-
+getphonenumber | \- | \-
+getrealtimephonenumber | \- | \-
+getuserinfo | \- | \-
+launchapp | \- | \-
+opensetting | \- | \-
+tap | `event` | \-
 
+### Button External Classes
 
-### Button ExternalClasses
-类名 | 说明
--- | -- 
-t-class | root
-t-class-icon | icon node
-t-class-loading | loading node
-
+className | Description
+-- | --
+t-class | \-
+t-class-icon | class name of icon
+t-class-loading | class name of loading
 
 ### CSS Variables
+
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
@@ -220,4 +227,4 @@ Name | Default Value | Description
 --td-button-small-font-size | @font-size-base | - 
 --td-button-small-height | 64rpx | - 
 --td-button-small-icon-font-size | 36rpx | - 
---td-button-small-padding-horizontal | 24rpx | - 
+--td-button-small-padding-horizontal | 24rpx | -
