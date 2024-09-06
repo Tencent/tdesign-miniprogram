@@ -153,10 +153,12 @@ exports[`Picker Picker base demo works fine 1`] = `
         Array [
           Object {
             "label": "北京市",
+            "tag": "合",
             "value": "北京市",
           },
           Object {
             "label": "上海市",
+            "tag": "合",
             "value": "上海市",
           },
           Object {
@@ -173,7 +175,30 @@ exports[`Picker Picker base demo works fine 1`] = `
           },
         ]
       }}"
-    />
+    >
+      <wx-view
+        class="label-suffix"
+        slot="label-suffix--0"
+      >
+        <t-tag
+          size="small"
+          theme="primary"
+        >
+          合
+        </t-tag>
+      </wx-view>
+      <wx-view
+        class="label-suffix"
+        slot="label-suffix--1"
+      >
+        <t-tag
+          size="small"
+          theme="primary"
+        >
+          合
+        </t-tag>
+      </wx-view>
+    </t-picker-item>
   </t-picker>
   <t-picker
     cancelBtn="取消"
