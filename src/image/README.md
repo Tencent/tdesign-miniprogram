@@ -77,6 +77,8 @@ load | - | 图片加载完成时触发
 -- | --
 t-class | 根节点样式类
 t-class-load | 加载样式类
+t-class-image | 图片样式类
+t-class-error | 加载失败样式类
 
 ### CSS Variables
 
