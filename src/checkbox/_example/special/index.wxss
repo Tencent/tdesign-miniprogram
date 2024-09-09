@@ -37,29 +37,22 @@
 
 /* 横向布局 */
 .horizontal-box {
-  width: calc(100% - 64rpx);
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   margin: 32rpx;
 }
 
 .horizontal-box .card {
-  flex: 1;
-  margin: 0;
-}
-
-.horizontal-box .card {
-  margin-left: 24rpx;
-}
-
-.horizontal-box .card:first-child {
-  margin-left: 0;
+  flex: 0 0 calc(33.33% - 12rpx);
+  margin: 0 0 24rpx 0;
 }
 
 .horizontal-box .card::after {
-  border-width: 24px 24px 24px 0;
+  border-width: 48rpx 48rpx 48rpx 0;
 }
 
 .horizontal-box .card__icon {
-  font-size: 12px;
+  font-size: 24rpx;
 }
