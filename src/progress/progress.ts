@@ -25,6 +25,7 @@ export default class Progress extends SuperComponent {
     computedStatus: '',
     computedProgress: 0,
     isIOS: false,
+    strokeCircleWidth: '',
   };
 
   attached() {
@@ -64,6 +65,7 @@ export default class Progress extends SuperComponent {
       }
       this.setData({
         heightBar: unitConvert(strokeWidth),
+        strokeCircleWidth: Number.isNaN(strokeWidth) ? '' : `${strokeWidth}px`,
       });
     },
 
