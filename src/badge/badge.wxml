@@ -25,10 +25,21 @@
     id="{{descriptionID}}"
     class="{{this.getBadgeInnerClass({dot, size, shape, count})}} {{prefix}}-has-count {{prefix}}-class-count"
     style="{{_._style([this.getBadgeStyles({color, offset}), ribbonStyle])}}"
-    aria-hidden="true"
-    aria-label="{{ ariaLabel || _.getBadgeAriaLabel({dot, count, maxCount}) }}"
   >
-    {{ this.getBadgeValue({dot, count, maxCount}) }}
+    <block wx:if="{{ renderer === 'skyline' }}">
+      <view
+        wx:if="{{shape == 'ribbon'}}"
+        class="t-badge__ribbon--before"
+        style="{{color ? 'border-color: ' + color : ''}}"
+      />
+      {{ this.getBadgeValue({dot, count, maxCount}) }}
+      <view
+        wx:if="{{shape == 'ribbon'}}"
+        class="t-badge__ribbon--after"
+        style="{{color ? 'border-color: ' + color : ''}}"
+      />
+    </block>
+    <block wx:else> {{ this.getBadgeValue({dot, count, maxCount}) }} </block>
   </view>
   <slot name="count" />
 </view>
