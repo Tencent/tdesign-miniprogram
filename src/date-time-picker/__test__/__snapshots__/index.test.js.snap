@@ -78,7 +78,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2000年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -87,7 +87,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2001年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -96,7 +96,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2002年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -105,7 +105,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2003年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -114,7 +114,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2004年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -123,7 +123,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2005年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -132,7 +132,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2006年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -141,7 +141,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2007年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -150,7 +150,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2008年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -159,7 +159,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2009年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -168,7 +168,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2010年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -177,7 +177,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2011年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -186,7 +186,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2012年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -195,7 +195,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2013年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -204,7 +204,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2014年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -213,7 +213,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2015年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -222,7 +222,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2016年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -231,7 +231,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2017年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -240,7 +240,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2018年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -249,7 +249,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2019年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -258,7 +258,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2020年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item t-picker-item__item--active"
@@ -267,7 +267,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2021年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -276,7 +276,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2022年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -285,7 +285,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2023年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -294,7 +294,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2024年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -303,7 +303,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2025年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -312,7 +312,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2026年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -321,7 +321,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2027年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -330,7 +330,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2028年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -339,7 +339,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2029年
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -348,7 +348,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2030年
-    
+      
                       </wx-view>
                     </wx-view>
                   </wx-view>
@@ -376,7 +376,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       1月
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -385,7 +385,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       2月
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -394,7 +394,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       3月
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -403,7 +403,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       4月
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -412,7 +412,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       5月
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -421,7 +421,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       6月
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -430,7 +430,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       7月
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -439,7 +439,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       8月
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item t-picker-item__item--active"
@@ -448,7 +448,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       9月
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -457,7 +457,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       10月
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -466,7 +466,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       11月
-    
+      
                       </wx-view>
                       <wx-view
                         class="t-picker-item__item"
@@ -475,7 +475,7 @@ exports[`date-time-picker :base 1`] = `
                       >
                         
       12月
-    
+      
                       </wx-view>
                     </wx-view>
                   </wx-view>

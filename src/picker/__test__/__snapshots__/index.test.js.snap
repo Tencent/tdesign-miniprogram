@@ -72,7 +72,7 @@ exports[`picker :base 1`] = `
                   >
                     
       2021年
-    
+      
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
@@ -81,7 +81,7 @@ exports[`picker :base 1`] = `
                   >
                     
       2020年
-    
+      
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
@@ -90,7 +90,7 @@ exports[`picker :base 1`] = `
                   >
                     
       2019年
-    
+      
                   </wx-view>
                 </wx-view>
               </wx-view>
@@ -115,7 +115,7 @@ exports[`picker :base 1`] = `
                   >
                     
       春
-    
+      
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
@@ -124,7 +124,7 @@ exports[`picker :base 1`] = `
                   >
                     
       夏
-    
+      
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
@@ -133,7 +133,7 @@ exports[`picker :base 1`] = `
                   >
                     
       秋
-    
+      
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
@@ -142,7 +142,7 @@ exports[`picker :base 1`] = `
                   >
                     
       冬
-    
+      
                   </wx-view>
                 </wx-view>
               </wx-view>
