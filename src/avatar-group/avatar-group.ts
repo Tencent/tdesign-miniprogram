@@ -38,7 +38,6 @@ export default class AvatarGroup extends SuperComponent {
         length: this.$children.length,
       });
       this.handleMax();
-      this.handleChildCascading();
     },
   };
 
@@ -55,7 +54,8 @@ export default class AvatarGroup extends SuperComponent {
       const classList = [
         name,
         `${prefix}-class`,
-        `${name}-offset-${direction}-${size.indexOf('px') > -1 ? 'medium' : size}`,
+        `${name}-offset-${direction}`,
+        `${name}-offset-${direction}-${size.indexOf('px') > -1 ? 'medium' : size || 'medium'}`,
       ];
 
       this.setData({
@@ -72,15 +72,6 @@ export default class AvatarGroup extends SuperComponent {
 
       restAvatars.forEach((child) => {
         child.hide();
-      });
-    },
-
-    handleChildCascading() {
-      if (this.properties.cascading === 'right-up') return;
-
-      const defaultZIndex = 100;
-      this.$children.forEach((child, index) => {
-        child.updateCascading(defaultZIndex - index * 10);
       });
     },
   };

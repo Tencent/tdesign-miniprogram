@@ -1,6 +1,6 @@
 {
   "component": true,
-  "styleIsolation": "apply-shared",
+  "styleIsolation": "shared",
   "usingComponents": {
     "t-avatar": "../avatar/avatar"
   }

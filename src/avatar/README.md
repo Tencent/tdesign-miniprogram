@@ -76,13 +76,14 @@ icon | String / Object | - | 图标。值为字符串表示图标名称，值为
 image | String | - | 图片地址 | N
 image-props | Object | - | 透传至 Image 组件。TS 类型：`ImageProps`，[Image API Documents](./image?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts) | N
 shape | String | circle | 形状。可选项：circle/round。TS 类型：`ShapeEnum ` `type ShapeEnum = 'circle' \| 'round'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar/type.ts) | N
-size | String | medium | 尺寸，示例值：small/medium/large/24px/38px 等 | N
+size | String | - | 尺寸，示例值：small/medium/large/24px/38px 等。优先级高于 AvatarGroup.size 。Avatar 单独存在时，默认值为 medium。如果父组件存在 AvatarGroup，默认值便由 AvatarGroup.size 决定 | N
 
 ### Avatar Events
 
 名称 | 参数 | 描述
 -- | -- | --
 error | - | 图片加载失败时触发
+
 ### Avatar External Classes
 
 类名 | 描述
@@ -103,13 +104,14 @@ custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场�
 cascading | String | 'left-up' | 图片之间的层叠关系，可选值：左侧图片在上和右侧图片在上。可选项：left-up/right-up。TS 类型：`CascadingValue` `type CascadingValue = 'left-up' \| 'right-up'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/avatar-group/type.ts) | N
 collapse-avatar | String / Slot | - | 头像数量超出时，会出现一个头像折叠元素。该元素内容可自定义。默认为 `+N`。示例：`+5`，`...`, `更多`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 max | Number | - | 能够同时显示的最多头像数量 | N
-size | String | medium | 尺寸，示例值：small/medium/large/24px/38px 等。优先级低于 Avatar.size | N
+size | String | - | 尺寸，示例值：small/medium/large/24px/38px 等。优先级低于 Avatar.size | N
 
 ### AvatarGroup Events
 
 名称 | 参数 | 描述
 -- | -- | --
 collapsed-item-click | - | 点击头像折叠元素触发
+
 ### AvatarGroup External Classes
 
 类名 | 描述
@@ -123,14 +125,16 @@ t-class-image | 图片样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-avatar-group-margin-left-large | -8px | - 
---td-avatar-group-margin-left-medium | -6px | - 
---td-avatar-group-margin-left-small | -4px | - 
+--td-avatar-group-init-z-index | @avatar-group-init-zIndex) - @i | - 
+--td-avatar-group-line-spacing | 4rpx | - 
+--td-avatar-group-margin-left-large | -16rpx | - 
+--td-avatar-group-margin-left-medium | -16rpx | - 
+--td-avatar-group-margin-left-small | -16rpx | - 
 --td-avatar-bg-color | @brand-color-light-active | - 
 --td-avatar-border-color | #fff | - 
---td-avatar-border-width-large | 8rpx | - 
---td-avatar-border-width-medium | 6rpx | - 
---td-avatar-border-width-small | 4rpx | - 
+--td-avatar-border-width-large | 6rpx | - 
+--td-avatar-border-width-medium | 4rpx | - 
+--td-avatar-border-width-small | 2rpx | - 
 --td-avatar-circle-border-radius | @radius-circle | - 
 --td-avatar-content-color | @brand-color | - 
 --td-avatar-icon-large-font-size | 64rpx | - 
@@ -141,6 +145,6 @@ t-class-image | 图片样式类
 --td-avatar-medium-width | 96rpx | - 
 --td-avatar-round-border-radius | @radius-default | - 
 --td-avatar-small-width | 80rpx | - 
---td-avatar-text-large-font-size | 16px | - 
---td-avatar-text-medium-font-size | @font-size-base | - 
---td-avatar-text-small-font-size | @font-size-s | -
+--td-avatar-text-large-font-size | @font-size-xl | - 
+--td-avatar-text-medium-font-size | @font-size-m | - 
+--td-avatar-text-small-font-size | @font-size-base | - 

@@ -21,13 +21,6 @@ export interface TdAvatarGroupProps {
     value?: string;
   };
   /**
-   * 组件类名，用于设置组件外层元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-image', 't-class-content'];
-  };
-  /**
    * 能够同时显示的最多头像数量
    */
   max?: {
@@ -36,7 +29,7 @@ export interface TdAvatarGroupProps {
   };
   /**
    * 尺寸，示例值：small/medium/large/24px/38px 等。优先级低于 Avatar.size
-   * @default medium
+   * @default ''
    */
   size?: {
     type: StringConstructor;
