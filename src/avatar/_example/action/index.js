@@ -14,5 +14,8 @@ Component({
     onAddTap() {
       wx.showToast({ title: '您按下了添加', icon: 'none', duration: 1000 });
     },
+    onClickCollapsedAvatar() {
+      console.log('click collapsed avatar');
+    },
   },
 });

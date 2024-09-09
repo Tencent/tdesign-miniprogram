@@ -74,5 +74,9 @@ export default class AvatarGroup extends SuperComponent {
         child.hide();
       });
     },
+
+    onCollapsedItemClick(e: WechatMiniprogram.CustomEvent) {
+      this.triggerEvent('collapsed-item-click', e.detail);
+    },
   };
 }

@@ -5,6 +5,7 @@ exports[`Avatar Avatar action demo works fine 1`] = `
   <t-avatar-group
     cascading="right-up"
     max="5"
+    bind:collapsed-item-click="onClickCollapsedAvatar"
   >
     <t-avatar
       image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
