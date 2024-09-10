@@ -36,6 +36,7 @@ export default class Avatar extends SuperComponent {
         this.parent = parent;
 
         this.setData({
+          shape: this.data.shape || parent.data.shape || 'circle',
           size: this.data.size || parent.data.size,
           bordered: true,
         });

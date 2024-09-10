@@ -12,6 +12,7 @@
       t-class-image="{{prefix}}-avatar--border {{prefix}}-avatar--border-{{size}} {{prefix}}-class-image"
       t-class-content="{{prefix}}-class-content"
       size="{{size}}"
+      shape="{{shape}}"
       icon="{{ collapseAvatar ? '' : 'user-add'}}"
       aria-role="none"
       >{{collapseAvatar}}</t-avatar
