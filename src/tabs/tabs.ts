@@ -4,6 +4,7 @@ import config from '../common/config';
 import touch from '../mixins/touch';
 import { getRect, uniqueFactory } from '../common/utils';
 import { TdTabsProps } from './type';
+import { getObserver } from '../common/wechat';
 
 const { prefix } = config;
 const name = `${prefix}-tabs`;
@@ -215,6 +216,9 @@ export default class Tabs extends SuperComponent {
           this.setData({
             offset: Math.min(Math.max(offset, 0), maxOffset),
           });
+        } else if (!this._hasObserved) {
+          this._hasObserved = true;
+          getObserver(this, `.${name}`).then(() => this.setTrack());
         }
 
         if (this.data.theme === 'line') {

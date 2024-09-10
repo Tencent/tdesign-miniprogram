@@ -15,14 +15,6 @@ export interface TdTabPanelProps {
     value?: object;
   };
   /**
-   * 【实现有误，暂不支持】选项卡内容隐藏时是否销毁
-   * @default true
-   */
-  destroyOnHide?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
    * 是否禁用当前选项卡
    * @default false
    */

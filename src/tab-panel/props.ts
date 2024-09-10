@@ -10,11 +10,6 @@ const props: TdTabPanelProps = {
   badgeProps: {
     type: Object,
   },
-  /** 【实现有误，暂不支持】选项卡内容隐藏时是否销毁 */
-  destroyOnHide: {
-    type: Boolean,
-    value: true,
-  },
   /** 是否禁用当前选项卡 */
   disabled: {
     type: Boolean,

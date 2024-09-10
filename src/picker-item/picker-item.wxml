@@ -21,6 +21,7 @@
       data-index="{{ index }}"
     >
       {{option[labelAlias]}}
+      <slot name="label-suffix--{{index}}"></slot>
     </view>
   </view>
 </view>

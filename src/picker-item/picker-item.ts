@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions, ComponentsOptionsType } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 
@@ -27,6 +27,10 @@ export default class PickerItem extends SuperComponent {
         }
       },
     },
+  };
+
+  options: ComponentsOptionsType = {
+    multipleSlots: true,
   };
 
   externalClasses = [`${prefix}-class`];

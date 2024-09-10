@@ -36,7 +36,7 @@ const props: TdFabProps = {
     value: false,
   },
   /** 设置垂直方向边界限制，示例：[48, 48] 或 ['96rpx', 80] */
-  yEdge: {
+  yBounds: {
     type: Array,
   },
 };
