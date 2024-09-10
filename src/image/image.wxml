@@ -1,11 +1,11 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view class="class {{prefix}}-class {{classPrefix}}">
+<view style="{{_._style([style, customStyle])}}" class="class {{prefix}}-class {{classPrefix}}">
   <!-- 加载中占位 -->
   <view
     wx:if="{{isLoading}}"
-    style="{{_._style([innerStyle, style, customStyle])}}"
-    class="{{classPrefix}}__img {{classPrefix}}__mask {{classPrefix}}--loading {{classPrefix}}--shape-{{shape}}"
+    style="{{_._style([innerStyle])}}"
+    class="{{classPrefix}}__mask {{classPrefix}}--loading {{classPrefix}}--shape-{{shape}}"
     aria-hidden="{{ariaHidden}}"
   >
     <t-loading
@@ -25,8 +25,8 @@
   <!-- 加载失败占位 -->
   <view
     wx:elif="{{isFailed}}"
-    style="{{_._style([innerStyle, style, customStyle])}}"
-    class="{{classPrefix}}__img {{prefix}}-class-error {{classPrefix}}__mask {{classPrefix}}--failed {{classPrefix}}--shape-{{shape}}"
+    style="{{_._style([innerStyle])}}"
+    class="{{classPrefix}}__mask {{classPrefix}}--failed {{classPrefix}}--shape-{{shape}} {{prefix}}-class-error"
     aria-hidden="{{ariaHidden}}"
   >
     <view wx:if="{{error === 'default'}}" style="font-size: 44rpx" class="{{prefix}}-class-load">
@@ -41,9 +41,9 @@
   <image
     id="{{tId||'image'}}"
     wx:if="{{ !isFailed }}"
-    class="{{classPrefix}}__img {{classPrefix}}--shape-{{shape}} {{isLoading ? classPrefix + '--lazy' : ''}}"
+    style="{{_._style([innerStyle])}}"
+    class="{{classPrefix}}__img {{classPrefix}}--shape-{{shape}} {{isLoading ? classPrefix + '--lazy' : ''}} {{prefix}}-class-image"
     src="{{src}}"
-    style="{{_._style([innerStyle, style, customStyle])}}"
     mode="{{mode}}"
     webp="{{webp}}"
     lazy-load="{{lazy}}"
