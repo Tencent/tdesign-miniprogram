@@ -30,7 +30,7 @@ export default class Fab extends SuperComponent {
   };
 
   observers = {
-    'buttonProps.**, icon, text, ariaLabel'() {
+    'buttonProps.**, icon, text, ariaLabel, yBounds'() {
       this.setData(
         {
           buttonData: {
@@ -68,7 +68,12 @@ export default class Fab extends SuperComponent {
     computedSize() {
       if (!this.properties.draggable) return;
       const insChild = this.selectComponent('#draggable');
-      insChild.computedRect(); // button更新时，重新获取其尺寸
+      // button更新时，重新获取其尺寸
+      if (this.properties?.yBounds?.[1]) {
+        this.setData({ moveStyle: `bottom: ${unitConvert(this.properties.yBounds[1])}px` }, insChild.computedRect);
+      } else {
+        insChild.computedRect();
+      }
     },
   };
 }
