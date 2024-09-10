@@ -20,7 +20,7 @@ export interface TdFabProps {
    */
   draggable?: {
     type: null;
-    value?: boolean | DirectionEnum;
+    value?: boolean | FabDirectionEnum;
   };
   /**
    * 图标
@@ -57,10 +57,10 @@ export interface TdFabProps {
   /**
    * 设置垂直方向边界限制，示例：[48, 48] 或 ['96rpx', 80]
    */
-  yEdge?: {
+  yBounds?: {
     type: ArrayConstructor;
     value?: Array<string | number>;
   };
 }
 
-export type DirectionEnum = 'all' | 'vertical' | 'horizontal';
+export type FabDirectionEnum = 'all' | 'vertical' | 'horizontal';

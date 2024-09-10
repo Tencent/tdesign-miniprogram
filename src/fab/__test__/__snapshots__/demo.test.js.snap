@@ -34,7 +34,7 @@ exports[`Fab Fab draggable demo works fine 1`] = `
     icon="gesture-press"
     text="拖我"
     usingCustomNavbar="{{true}}"
-    yEdge="{{
+    yBounds="{{
       Array [
         0,
         32,

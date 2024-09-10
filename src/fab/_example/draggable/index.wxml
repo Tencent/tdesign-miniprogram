@@ -6,5 +6,5 @@
   aria-label="增加"
   usingCustomNavbar
   draggable
-  y-edge="{{[0, 32]}}"
+  y-bounds="{{[0, 32]}}"
 ></t-fab>
