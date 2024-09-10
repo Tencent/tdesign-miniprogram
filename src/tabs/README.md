@@ -158,7 +158,6 @@ t-class-track | 滚动条样式类
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 badge-props | Object | - | 透传至 Badge 组件 | N
-destroy-on-hide | Boolean | true | 【实现有误，暂不支持】选项卡内容隐藏时是否销毁 | N
 disabled | Boolean | false | 是否禁用当前选项卡 | N
 icon | String / Object | - | `1.0.0-rc.1`。图标，传对象则透传至 Icon | N
 label | String | - | 选项卡名称 | N
