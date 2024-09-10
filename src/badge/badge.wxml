@@ -9,7 +9,7 @@
 
 <view
   style="{{_._style([style, customStyle, ribbonOuterStyle])}}"
-  class="{{this.getBadgeOuterClass({shape})}} class {{prefix}}-class"
+  class="{{this.getBadgeOuterClass({shape, renderer})}} class {{prefix}}-class"
   aria-labelledby="{{labelID}}"
   aria-describedby="{{descriptionID}}"
   aria-role="{{ ariaRole || 'option'}}"

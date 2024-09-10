@@ -55,10 +55,12 @@
   &__ribbon {
     &-outer {
       position: absolute;
-      overflow: hidden;
       top: 0;
       right: 0;
-      background-color: @badge-color;
+      &--webview {
+        background-color: @badge-color;
+        overflow: hidden;
+      }
     }
     &--before,
     &--after {

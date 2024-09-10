@@ -28,5 +28,5 @@
 
 <view class="demo-desc" style="margin-bottom: 32rpx">角标</view>
 <t-cell title="单行标题">
-  <t-badge count="New" offset="{{skylineRender ? [-8, -20]: [0, 0]}}" shape="ribbon" slot="note" />
+  <t-badge count="New" offset="{{skylineRender ? ['-46rpx', '-56rpx']: [0, 0]}}" shape="ribbon" slot="note" />
 </t-cell>

@@ -36,7 +36,8 @@ var getBadgeStyles = function (props) {
 
 var getBadgeOuterClass = function (props) {
   var baseClass = 't-badge';
-  var classNames = [baseClass, props.shape === 'ribbon' ? baseClass + '__ribbon-outer' : ''];
+  var ribbonClass = props.shape === 'ribbon' ? baseClass + '__ribbon-outer' : '';
+  var classNames = ribbonClass ? [baseClass, ribbonClass, ribbonClass ? ribbonClass + '--' + props.renderer : ''] : [baseClass];
   return classNames.join(' ');
 };
 
