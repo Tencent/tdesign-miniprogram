@@ -25,7 +25,6 @@ export default class Progress extends SuperComponent {
     computedStatus: '',
     computedProgress: 0,
     isIOS: false,
-    strokeCircleWidth: '',
   };
 
   attached() {
@@ -65,15 +64,9 @@ export default class Progress extends SuperComponent {
       }
       this.setData({
         heightBar: unitConvert(strokeWidth),
-        strokeCircleWidth: Number.isNaN(strokeWidth) ? '' : `${strokeWidth}px`,
       });
     },
 
-    theme(theme) {
-      if (theme === 'circle') {
-        this.getInnerDiameter();
-      }
-    },
 
     trackColor(trackColor) {
       this.setData({
@@ -82,17 +75,4 @@ export default class Progress extends SuperComponent {
     },
   };
 
-  methods = {
-    getInnerDiameter() {
-      const { strokeWidth } = this.properties;
-      const wrapID = `.${name}__canvas--circle`;
-      if (strokeWidth) {
-        getRect(this, wrapID).then((wrapRect) => {
-          this.setData({
-            innerDiameter: wrapRect.width - unitConvert(strokeWidth) * 2,
-          });
-        });
-      }
-    },
-  };
 }
