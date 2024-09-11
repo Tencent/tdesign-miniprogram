@@ -15,13 +15,12 @@ export interface TdFabProps {
     value?: ButtonProps;
   };
   /**
-   * 是否可移动
+   * 是否可拖拽。`true` / `'all'`可拖动<br>`'vertical'`可垂直拖动<br>`'horizontal'`可水平拖动<br>`false`禁止拖动
    * @default false
    */
   draggable?: {
-    type: BooleanConstructor;
-    optionalTypes: Array<StringConstructor>;
-    value?: boolean | 'all' | 'vertical' | 'horizontal';
+    type: null;
+    value?: boolean | FabDirectionEnum;
   };
   /**
    * 图标
@@ -55,4 +54,13 @@ export interface TdFabProps {
     type: BooleanConstructor;
     value?: boolean;
   };
+  /**
+   * 设置垂直方向边界限制，示例：[48, 48] 或 ['96rpx', 80]
+   */
+  yBounds?: {
+    type: ArrayConstructor;
+    value?: Array<string | number>;
+  };
 }
+
+export type FabDirectionEnum = 'all' | 'vertical' | 'horizontal';

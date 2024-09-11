@@ -58,7 +58,11 @@ export default class Draggable extends SuperComponent {
 
     async computedRect() {
       this.rect = { right: 0, bottom: 0, width: 0, height: 0 };
-      this.rect = await getRect(this, `.${this.data.classPrefix}`);
+      try {
+        this.rect = await getRect(this, `.${this.data.classPrefix}`);
+      } catch (e) {
+        // ignore reject
+      }
     },
   };
 }
