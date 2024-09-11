@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { getBackgroundColor } from './utils';
-import { unitConvert, getRect } from '../common/utils';
+import { unitConvert } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-progress`;
