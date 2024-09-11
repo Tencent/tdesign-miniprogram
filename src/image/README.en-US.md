@@ -32,6 +32,8 @@ className | Description
 -- | --
 t-class | \-
 t-class-load | \-
+t-class-image | \-
+t-class-error | \-
 
 ### CSS Variables
 

@@ -5,13 +5,17 @@
 @image-loading-color: var(--td-image-loading-color, @text-color-placeholder);
 @image-round-radius: var(--td-image-round-radius, @radius-default);
 
-:host {
-  position: relative;
-}
-
 .@{prefix}-image {
-  color: @image-color;
-  vertical-align: top;
+  position: relative;
+  display: inline-block;
+
+  &__mask,
+  &__img {
+    color: @image-color;
+    vertical-align: top;
+    width: inherit;
+    height: inherit;
+  }
 
   &__mask {
     display: flex;
@@ -34,6 +38,7 @@
   &--lazy {
     position: absolute;
     top: 0;
+    left: 0;
     z-index: -1;
   }
 
