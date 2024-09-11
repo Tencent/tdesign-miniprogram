@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { getBackgroundColor } from './utils';
-import { unitConvert, getRect } from '../common/utils';
+import { unitConvert } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-progress`;
@@ -67,11 +67,6 @@ export default class Progress extends SuperComponent {
       });
     },
 
-    theme(theme) {
-      if (theme === 'circle') {
-        this.getInnerDiameter();
-      }
-    },
 
     trackColor(trackColor) {
       this.setData({
@@ -80,17 +75,4 @@ export default class Progress extends SuperComponent {
     },
   };
 
-  methods = {
-    getInnerDiameter() {
-      const { strokeWidth } = this.properties;
-      const wrapID = `.${name}__canvas--circle`;
-      if (strokeWidth) {
-        getRect(this, wrapID).then((wrapRect) => {
-          this.setData({
-            innerDiameter: wrapRect.width - unitConvert(strokeWidth) * 2,
-          });
-        });
-      }
-    },
-  };
 }

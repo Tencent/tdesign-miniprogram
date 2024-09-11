@@ -80,7 +80,7 @@
     >
       <view
         class="{{classPrefix}}__canvas--inner {{prefix}}-class-bar"
-        style="{{innerDiameter? 'width:'+ innerDiameter*2 + 'rpx;' + 'height:'+ innerDiameter*2 + 'rpx;': ''}}"
+        style="{{heightBar? '--td-progress-stroke-circle-width:' + heightBar + 'px' : ''}}"
       >
         <view wx:if="{{label}}" class="{{classPrefix}}__info {{prefix}}-class-label" aria-hidden="{{ true }}">
           <template
