@@ -7,11 +7,12 @@
     <slot name="collapse-avatar" />
   </view>
   <!-- 默认折叠元素 -->
-  <view class="{{classPrefix}}__collapse--default" wx:if="{{max && (max < length)}}">
+  <view class="{{classPrefix}}__collapse--default" wx:if="{{max && (max < length)}}" bindtap="onCollapsedItemClick">
     <t-avatar
       t-class-image="{{prefix}}-avatar--border {{prefix}}-avatar--border-{{size}} {{prefix}}-class-image"
       t-class-content="{{prefix}}-class-content"
       size="{{size}}"
+      shape="{{shape}}"
       icon="{{ collapseAvatar ? '' : 'user-add'}}"
       aria-role="none"
       >{{collapseAvatar}}</t-avatar

@@ -27,7 +27,6 @@ export default class Avatar extends SuperComponent {
     classPrefix: name,
     isShow: true,
     zIndex: 0,
-    borderedWithGroup: false,
   };
 
   relations: RelationsOptions = {
@@ -37,8 +36,9 @@ export default class Avatar extends SuperComponent {
         this.parent = parent;
 
         this.setData({
-          size: this.data.size ?? parent.data.size,
-          borderedWithGroup: true,
+          shape: this.data.shape || parent.data.shape || 'circle',
+          size: this.data.size || parent.data.size,
+          bordered: true,
         });
       },
     },
@@ -58,10 +58,6 @@ export default class Avatar extends SuperComponent {
       this.setData({
         isShow: false,
       });
-    },
-
-    updateCascading(zIndex) {
-      this.setData({ zIndex });
     },
 
     onLoadError(e: WechatMiniprogram.CustomEvent) {

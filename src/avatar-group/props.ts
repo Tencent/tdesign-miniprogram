@@ -15,18 +15,18 @@ const props: TdAvatarGroupProps = {
   collapseAvatar: {
     type: String,
   },
-  /** 组件类名，用于设置组件外层元素类名 */
-  externalClasses: {
-    type: Array,
-  },
   /** 能够同时显示的最多头像数量 */
   max: {
     type: Number,
   },
+  /** 形状。优先级低于 Avatar.shape */
+  shape: {
+    type: String,
+  },
   /** 尺寸，示例值：small/medium/large/24px/38px 等。优先级低于 Avatar.size */
   size: {
     type: String,
-    value: 'medium',
+    value: '',
   },
 };
 
