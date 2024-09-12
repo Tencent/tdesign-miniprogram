@@ -8,7 +8,7 @@
 -->
 
 <view
-  style="{{_._style([style, customStyle, ribbonOuterStyle])}}"
+  style="{{_._style([style, customStyle])}}"
   class="{{this.getBadgeOuterClass({shape})}} class {{prefix}}-class"
   aria-labelledby="{{labelID}}"
   aria-describedby="{{descriptionID}}"
@@ -24,7 +24,7 @@
     wx:if="{{this.isShowBadge({dot,count,showZero})}}"
     id="{{descriptionID}}"
     class="{{this.getBadgeInnerClass({dot, size, shape, count})}} {{prefix}}-has-count {{prefix}}-class-count"
-    style="{{_._style([this.getBadgeStyles({color, offset}), ribbonStyle])}}"
+    style="{{_._style([this.getBadgeStyles({color, offset})])}}"
     aria-hidden="true"
     aria-label="{{ ariaLabel || _.getBadgeAriaLabel({dot, count, maxCount}) }}"
   >
