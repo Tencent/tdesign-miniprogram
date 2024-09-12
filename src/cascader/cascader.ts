@@ -103,6 +103,7 @@ export default class Cascader extends SuperComponent {
         steps,
         selectedValue,
         stepIndex: items.length - 1,
+        items,
       });
 
       if (visible && theme === 'step') {
@@ -281,12 +282,14 @@ export default class Cascader extends SuperComponent {
         this.setData({
           selectedIndexes,
           [`items[${level + 1}]`]: newItems[level + 1],
+          items: newItems,
         });
       } else {
         // setCascaderValue(item.value);
         this.setData(
           {
             selectedIndexes,
+            items: newItems,
           },
           () => {
             const { items } = this.data;
