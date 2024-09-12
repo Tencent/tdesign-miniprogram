@@ -32,7 +32,7 @@
   vertical-align: middle;
   font-size: @radio-font-size;
   background: @radio-bg-color;
-  position: relative;
+
   &:focus {
     outline: 0;
   }
@@ -129,9 +129,9 @@
     }
 
     &-dot {
-      width: 84rpx;
-      height: 84rpx;
-      border: 3px solid @radio-icon-checked-color;
+      width: calc((@radio-icon-size - 6rpx) * 2);
+      height: calc((@radio-icon-size - 6rpx) * 2);
+      border: 6rpx solid @radio-icon-checked-color;
       border-radius: 50%;
       position: absolute;
       top: 50%;
@@ -145,8 +145,8 @@
       &::after {
         content: '';
         display: block;
-        width: 48rpx;
-        height: 48rpx;
+        width: @radio-icon-size;
+        height: @radio-icon-size;
         background: @radio-icon-checked-color;
         border-radius: 50%;
       }
