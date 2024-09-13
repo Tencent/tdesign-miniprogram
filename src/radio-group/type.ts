@@ -8,6 +8,14 @@ import { KeysType } from '../common/common';
 
 export interface TdRadioGroupProps<T = RadioValue> {
   /**
+   * 是否允许取消选中
+   * @default false
+   */
+  allowUncheck?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 是否开启无边框模式
    * @default false
    */

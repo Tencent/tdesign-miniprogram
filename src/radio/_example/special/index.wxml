@@ -1,4 +1,4 @@
-<t-radio-group value="{{value}}" bind:change="onChange">
+<t-radio-group value="{{value}}" allow-uncheck bind:change="onChange">
   <view wx:for="{{3}}" wx:key="index" class="card {{value == index ? 'card--active' : ''}}">
     <t-icon wx:if="{{value == index}}" name="check" t-class="card__icon" />
     <t-radio value="{{index}}" label="单选" content="描述信息描述信息描述信息描述信息描述信息" icon="none" borderless />

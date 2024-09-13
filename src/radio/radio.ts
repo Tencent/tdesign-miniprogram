@@ -82,10 +82,12 @@ export default class Radio extends SuperComponent {
     doChange() {
       const { value, checked, allowUncheck } = this.data;
 
+      const isAllowUncheck = Boolean(allowUncheck || this.$parent?.data.allowUncheck);
+
       if (this.$parent) {
-        this.$parent.updateValue(checked && allowUncheck ? null : value);
+        this.$parent.updateValue(checked && isAllowUncheck ? null : value);
       } else {
-        this._trigger('change', { checked: checked && allowUncheck ? false : !checked });
+        this._trigger('change', { checked: isAllowUncheck ? !checked : true });
       }
     },
     init() {
