@@ -104,7 +104,7 @@ export default class Cascader extends SuperComponent {
         stepIndex: items.length - 1,
       }
 
-      if(items.length !== this.data.items.length){
+      if(items.length > this.data.items.length){
         Object.assign(setData,{ items })
       }
 
