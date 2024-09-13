@@ -85,16 +85,7 @@ export default class Cascader extends SuperComponent {
       this.initWithValue();
     },
 
-    options() {
-      const { selectedValue, steps, items } = this.genItems();
-
-      this.setData({
-        steps,
-        items,
-        selectedValue,
-        stepIndex: items.length - 1,
-      });
-    },
+    
     selectedIndexes() {
       const { visible, theme } = this.properties;
       const { selectedValue, steps, items } = this.genItems();
@@ -282,14 +273,13 @@ export default class Cascader extends SuperComponent {
         this.setData({
           selectedIndexes,
           [`items[${level + 1}]`]: newItems[level + 1],
-          items: newItems,
         });
       } else {
         // setCascaderValue(item.value);
         this.setData(
           {
             selectedIndexes,
-            items: newItems,
+
           },
           () => {
             const { items } = this.data;
