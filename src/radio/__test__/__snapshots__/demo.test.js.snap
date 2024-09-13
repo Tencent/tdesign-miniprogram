@@ -24,6 +24,7 @@ exports[`Radio Radio align demo works fine 1`] = `
 exports[`Radio Radio base demo works fine 1`] = `
 <base>
   <t-radio-group
+    allowUncheck="{{true}}"
     options="{{
       Array [
         Object {
@@ -103,6 +104,7 @@ exports[`Radio Radio horizontal demo works fine 1`] = `
 exports[`Radio Radio special demo works fine 1`] = `
 <special>
   <t-radio-group
+    allowUncheck="{{true}}"
     value="{{0}}"
     bind:change="onChange"
   >
