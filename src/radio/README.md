@@ -82,6 +82,7 @@ value | String / Number / Boolean | false | 单选按钮的值。TS 类型：`T`
 名称 | 参数 | 描述
 -- | -- | --
 change | `(checked: boolean)` | 值变化时触发
+
 ### Radio External Classes
 
 类名 | 描述
@@ -99,6 +100,7 @@ t-class-label | 标签样式类
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
+allow-uncheck | Boolean | false | 是否允许取消选中 | N
 borderless | Boolean | false | 是否开启无边框模式 | N
 disabled | Boolean | undefined | 是否禁用全部子单选框 | N
 icon | String / Array | 'circle' | 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。使用 String 时，值为 circle 表示填充型图标、值为 line 表示描边型图标、值为 dot 表示圆点图标；仅在使用 options 时生效。TS 类型：`'circle' \| 'line' \| 'dot' \| Array<string>` | N

@@ -29,6 +29,7 @@ value | String / Number / Boolean | false | Typescript：`T` `type RadioValue = 
 name | params | description
 -- | -- | --
 change | `(checked: boolean)` | \-
+
 ### Radio External Classes
 
 className | Description
@@ -46,6 +47,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
+allow-uncheck | Boolean | false | \- | N
 borderless | Boolean | false | \- | N
 disabled | Boolean | undefined | \- | N
 icon | String / Array | 'circle' | Typescript：`'circle' \| 'line' \| 'dot' \| Array<string>` | N

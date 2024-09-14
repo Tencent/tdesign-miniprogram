@@ -6,6 +6,11 @@
 
 import { TdRadioGroupProps } from './type';
 const props: TdRadioGroupProps = {
+  /** 是否允许取消选中 */
+  allowUncheck: {
+    type: Boolean,
+    value: false,
+  },
   /** 是否开启无边框模式 */
   borderless: {
     type: Boolean,

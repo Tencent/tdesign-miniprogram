@@ -3,6 +3,7 @@
 exports[`Radio Radio align demo works fine 1`] = `
 <align>
   <t-radio
+    allowUncheck="{{true}}"
     defaultChecked="{{true}}"
     label="单选"
     value="radio1"
@@ -11,6 +12,7 @@ exports[`Radio Radio align demo works fine 1`] = `
     class="block"
   />
   <t-radio
+    allowUncheck="{{true}}"
     defaultChecked="{{true}}"
     label="单选"
     placement="right"
@@ -22,6 +24,7 @@ exports[`Radio Radio align demo works fine 1`] = `
 exports[`Radio Radio base demo works fine 1`] = `
 <base>
   <t-radio-group
+    allowUncheck="{{true}}"
     options="{{
       Array [
         Object {
@@ -101,6 +104,7 @@ exports[`Radio Radio horizontal demo works fine 1`] = `
 exports[`Radio Radio special demo works fine 1`] = `
 <special>
   <t-radio-group
+    allowUncheck="{{true}}"
     value="{{0}}"
     bind:change="onChange"
   >
@@ -212,6 +216,7 @@ exports[`Radio Radio status demo works fine 1`] = `
 exports[`Radio Radio theme demo works fine 1`] = `
 <theme>
   <t-radio
+    allowUncheck="{{true}}"
     defaultChecked="{{true}}"
     icon="line"
     label="单选"
@@ -221,6 +226,7 @@ exports[`Radio Radio theme demo works fine 1`] = `
     style="height: 32rpx"
   />
   <t-radio
+    allowUncheck="{{true}}"
     defaultChecked="{{true}}"
     icon="dot"
     label="单选"
