@@ -55,18 +55,39 @@
   &__ribbon {
     &-outer {
       position: absolute;
-      overflow: hidden;
       top: 0;
       right: 0;
-      background-color: @badge-color;
     }
   }
 
   &--ribbon {
+    position: relative;
     display: inline-block;
-    transform-origin: top left;
+    transform-origin: center center;
+    transform: translate(calc(50% - @badge-basic-height + 1rpx), calc(-50% + @badge-basic-height - 1rpx)) rotate(45deg);
     border-radius: 0;
     // padding: 0;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      bottom: 0;
+      border-bottom: @badge-basic-height solid @badge-color;
+      font-size: 0;
+    }
+
+    &::before {
+      left: calc(-1 * @badge-basic-height + 1rpx);
+      border-left: @badge-basic-height solid transparent;
+    }
+
+    &::after {
+      right: calc(-1 * @badge-basic-height + 1rpx);
+      border-right: @badge-basic-height solid transparent;
+    }
   }
 
   &--bubble {
@@ -87,6 +108,7 @@
   }
 
   &__content:not(:empty) + .t-has-count {
+    transform-origin: center center;
     transform: translate(-50%, -50%);
     position: absolute;
     left: 100%;

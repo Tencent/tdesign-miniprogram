@@ -36,6 +36,11 @@ isComponent: true
 
 {{ size }}
 
+## FAQ
+
+### 如何处理由 ribbon 徽标溢出导致页面出现横向滚动？
+角标溢出问题建议从父容器组件处理。如 <a href="https://github.com/Tencent/tdesign-miniprogram/issues/3063" title="如 #3063 " target="_blank" rel="noopener noreferrer"> #3063 </a>，可以给父容器 `cell` 组件添加 `overflow: hidden`，处理溢出造成页面出现横向滚动的问题。
+
 ## API
 
 ### Badge Props
