@@ -6,6 +6,27 @@ docClass: timeline
 ---
 
 
+## 🌈 1.6.1 `2024-09-14` 
+### 🚀 Features
+- `Fab`: 新增 `yEdge` 属性，支持设置垂直方向边界限制 @anlyyao ([#3125](https://github.com/Tencent/tdesign-miniprogram/pull/3125))
+- `PickerItem`: 支持插槽，自定义 `label` 后缀内容 @anlyyao ([#3127](https://github.com/Tencent/tdesign-miniprogram/pull/3127))
+- `AvatarGroup`: 新增 `shape` 属性，新增 `collapsed-item-click` 事件 @anlyyao ([#3134](https://github.com/Tencent/tdesign-miniprogram/pull/3134))
+- `radioGroup`: 新增 `allowUncheck` 属性 @anlyyao ([#3140](https://github.com/Tencent/tdesign-miniprogram/pull/3140))
+### 🐞 Bug Fixes
+- `Slider`: `dragend` 事件增加返回 `value` @jarmywang ([#3112](https://github.com/Tencent/tdesign-miniprogram/pull/3112))
+- `ImageViewer`: 修复 `images` 长度更新导致 `index` 显示异常 @jarmywang ([#3111](https://github.com/Tencent/tdesign-miniprogram/pull/3111))
+- `ImageViewer`: 修复滚动穿透问题 @dadtakesmefly ([#3146](https://github.com/Tencent/tdesign-miniprogram/pull/3146))
+- `Tabs`: 使用 `hidden` 隐藏后显示仍能够正常显示指示器；移除文档中未实现的 `destroyOnHide` 属性 @jarmywang ([#3132](https://github.com/Tencent/tdesign-miniprogram/pull/3132))
+- `AvatarGroup`: 修复 `size` 属性无效的问题，优化 `zIndex` 处理 @anlyyao ([#3134](https://github.com/Tencent/tdesign-miniprogram/pull/3134))
+- `Image`: 修复图片在 `loading` 态时，加载错位 @huxinhai ([#3128](https://github.com/Tencent/tdesign-miniprogram/pull/3128))
+- `Progress`: 修复环形进度条首次加载时，`strokeWidth` 线宽延迟显示的问题 @huxinhai ([#3139](https://github.com/Tencent/tdesign-miniprogram/pull/3139))
+- `Radio`: 修复 `allowUncheck` 属性无效 @anlyyao ([#3140](https://github.com/Tencent/tdesign-miniprogram/pull/3140))
+- `Badge`:  修复 `skyline` 下角标样式异常，`ribbon` 类型徽标改用伪元素实现 @anlyyao ([#3144](https://github.com/Tencent/tdesign-miniprogram/pull/3144))
+- `Cascader`: 修复 `value` 动态变更时，`options ` 选项内容未更新的问题 @huxinhai ([#3142](https://github.com/Tencent/tdesign-miniprogram/pull/3142))
+- `CollapsePanel`: 修复 `expandIcon` 属性不生效问题，并支持动态设置 `disabled` 属性 @blankqwq ([#3093](https://github.com/Tencent/tdesign-miniprogram/pull/3093))
+
+
+
 ## 🌈 1.6.0 `2024-08-23` 
 ### 🚀 Features
 - `DropdownMenu`: 新增 `--td-dropdown-menu-height` @anlyyao ([#3094](https://github.com/Tencent/tdesign-miniprogram/pull/3094))
