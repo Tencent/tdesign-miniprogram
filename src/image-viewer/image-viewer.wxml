@@ -9,6 +9,7 @@
   aria-modal="{{true}}"
   aria-role="dialog"
   aria-label="图片查看器"
+  catchtouchmove="true"
 >
   <view
     class="{{classPrefix}}__mask"
