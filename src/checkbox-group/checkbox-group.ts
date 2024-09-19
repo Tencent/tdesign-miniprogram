@@ -133,7 +133,7 @@ export default class CheckBoxGroup extends SuperComponent {
               ...item, 
               label:item[keys?.label ?? 'label'],
               value: item[keys?.value?? 'value'],
-              checked: value?.includes(item.value),
+              checked: value?.includes(item[keys?.value?? 'value']),
           };
       });
 
