@@ -55,7 +55,7 @@
 @button-danger-color: var(--td-button-danger-color, @font-white-1);
 @button-danger-border-color: var(--td-button-danger-border-color, @error-color);
 @button-danger-bg-color: var(--td-button-danger-bg-color, @error-color);
-@button-danger-disabled-color: var(--td-button-danger-disabled-color, @font-white-1);
+@button-danger-disabled-color: var(--td-button-danger-disabled-color, @error-color-disabled);
 @button-danger-disabled-bg: var(--td-button-danger-disabled-bg, @error-color-3);
 @button-danger-disabled-border-color: var(--td-button-danger-disabled-border-color, @error-color-3);
 // default + outline
@@ -94,11 +94,14 @@
 // ghost 优先级高于 theme，固定透明背景，白色边框，白色字体
 @button-ghost-color: var(--td-button-ghost-color, @bg-color-container);
 @button-ghost-border-color: var(--td-button-ghost-border-color, @button-ghost-color);
-@button-ghost-disabled-color: var(--td-button-ghost-disabled-color, rgba(255, 255, 255, 0.35));
+@button-ghost-disabled-color: var(--td-button-ghost-disabled-color, @font-white-4);
+@button-ghost-hover-color: var(--td-button-ghost-hover-color, @font-white-2);
 @button-ghost-primary-color: var(--td-button-ghost-primary-color, @brand-color);
 @button-ghost-primary-border-color: var(--td-button-ghost-primary-border-color, @brand-color);
+@button-ghost-primary-hover-color: var(--td-button-ghost-primary-hover-color, @brand-color-active);
 @button-ghost-danger-color: var(--td-button-ghost-danger-color, @error-color);
 @button-ghost-danger-border-color: var(--td-button-ghost-danger-border-color, @error-color);
+@button-ghost-danger-hover-color: var(--td-button-ghost-danger-hover-color, @error-color-active);
 
 // 激活态背景和边框色
 @button-default-active-bg-color: var(--td-button-default-active-bg-color, @bg-color-component-active);
@@ -194,6 +197,48 @@
 .button-theme(light);
 .button-theme(danger);
 
+.ghost-theme(@theme) {
+  @color: 'button-ghost-@{theme}-color';
+  @hoverColor: 'button-ghost-@{theme}-hover-color';
+  @borderColor: 'button-ghost-@{theme}-border-color';
+
+  &.@{button}--@{theme} when (@theme = primary), (@theme = danger) {
+    color: @@color;
+
+    &,
+    &::after {
+      border-color: @@borderColor;
+    }
+
+    &.@{button}--hover {
+      color: @@hoverColor;
+
+      &,
+      &::after {
+        background-color: transparent;
+        border-color: @@hoverColor;
+      }
+    }
+  }
+
+  &.@{button}--@{theme} {
+    &.@{button}--text.@{button}--hover,
+    &.@{button}--text.@{button}--hover::after {
+      background-color: @gray-color-10;
+    }
+
+    &.@{button}--disabled {
+      background-color: transparent;
+      color: @button-ghost-disabled-color;
+
+      &,
+      &::after {
+        border-color: @button-ghost-disabled-color;
+      }
+    }
+  }
+}
+
 .@{button} {
   display: inline-flex;
   align-items: center;
@@ -222,7 +267,7 @@
 
   &--text {
     color: @button-default-color;
-    background-color: @bg-color-container;
+    background-color: transparent;
 
     &,
     &::after {
@@ -236,7 +281,7 @@
 
     &.@{button}--primary {
       color: @button-primary-text-color;
-      background-color: @bg-color-container;
+      background-color: transparent;
 
       &.@{button}--hover,
       &.@{button}--hover::after {
@@ -251,7 +296,7 @@
 
     &.@{button}--danger {
       color: @button-danger-text-color;
-      background-color: @bg-color-container;
+      background-color: transparent;
 
       &.@{button}--hover,
       &.@{button}--hover::after {
@@ -266,7 +311,7 @@
 
     &.@{button}--light {
       color: @button-light-text-color;
-      background-color: @bg-color-container;
+      background-color: transparent;
 
       &.@{button}--hover,
       &.@{button}--hover::after {
@@ -276,49 +321,6 @@
 
     &.@{button}--disabled {
       color: @button-default-disabled-color;
-    }
-  }
-
-  &--ghost {
-    background-color: transparent;
-    color: @button-ghost-color;
-
-    &,
-    &::after {
-      border-color: @button-ghost-border-color;
-    }
-
-    &.@{button}--hover,
-    &.@{button}--hover::after {
-      background: none;
-    }
-
-    &.@{button}--primary {
-      color: @button-ghost-primary-color;
-
-      &,
-      &::after {
-        border-color: @button-ghost-primary-border-color;
-      }
-    }
-
-    &.@{button}--danger {
-      color: @button-ghost-danger-color;
-
-      &,
-      &::after {
-        border-color: @button-ghost-danger-border-color;
-      }
-    }
-
-    &.@{button}--disabled {
-      background-color: transparent;
-      color: @button-ghost-disabled-color;
-
-      &,
-      &::after {
-        border-color: @button-ghost-disabled-color;
-      }
     }
   }
 
@@ -438,6 +440,10 @@
     border-style: dashed;
     border-width: 2rpx;
 
+    &::after {
+      border: 0;
+    }
+
     &.@{button}--hover,
     &.@{button}--hover::after {
       background-color: @button-default-outline-active-bg-color;
@@ -447,30 +453,29 @@
     &.@{button}--primary {
       color: @button-primary-dashed-color;
 
+      &,
       &::after {
         border-color: @button-primary-dashed-border-color;
-        border: 0;
       }
-      border-color: @button-primary-dashed-border-color;
 
       &.@{button}--disabled {
         background-color: @bg-color-container;
         color: @button-primary-dashed-disabled-color;
 
+        &,
         &::after {
           border-color: @button-primary-dashed-disabled-color;
         }
-        border-color: @button-primary-dashed-disabled-color;
       }
     }
 
     &.@{button}--danger {
       color: @button-danger-dashed-color;
 
+      &,
       &::after {
         border-color: @button-danger-dashed-border-color;
       }
-      border-color: @button-danger-dashed-border-color;
 
       &.@{button}--disabled {
         background-color: transparent;
@@ -481,6 +486,31 @@
         }
       }
     }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    color: @button-ghost-color;
+
+    &,
+    &::after {
+      border-color: @button-ghost-border-color;
+    }
+
+    &.@{button}--default.@{button}--hover {
+      color: @button-ghost-hover-color;
+
+      &,
+      &::after {
+        background-color: transparent;
+        border-color: @button-ghost-hover-color;
+      }
+    }
+
+    // 不考虑 ghost + light 场景
+    .ghost-theme(primary);
+    .ghost-theme(danger);
+    .ghost-theme(default);
   }
 
   &__loading + &__content:not(:empty),
