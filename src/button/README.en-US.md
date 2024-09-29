@@ -127,6 +127,7 @@ t-class | \-
 t-class-icon | class name of icon
 t-class-loading | class name of loading
 
+
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
@@ -144,7 +145,7 @@ Name | Default Value | Description
 --td-button-danger-dashed-disabled-color | @button-danger-disabled-color | - 
 --td-button-danger-disabled-bg | @error-color-3 | - 
 --td-button-danger-disabled-border-color | @error-color-3 | - 
---td-button-danger-disabled-color | @font-white-1 | - 
+--td-button-danger-disabled-color | @error-color-disabled | - 
 --td-button-danger-outline-active-bg-color | @bg-color-container-active | - 
 --td-button-danger-outline-active-border-color | @error-color-7 | - 
 --td-button-danger-outline-border-color | @button-danger-outline-color | - 
@@ -157,14 +158,14 @@ Name | Default Value | Description
 --td-button-default-active-border-color | @bg-color-component-active | - 
 --td-button-default-bg-color | @bg-color-component | - 
 --td-button-default-border-color | @bg-color-component | - 
---td-button-default-color | @font-gray-1 | - 
+--td-button-default-color | @text-color-primary | - 
 --td-button-default-disabled-bg | @bg-color-component-disabled | - 
 --td-button-default-disabled-border-color | @bg-color-component-disabled | - 
---td-button-default-disabled-color | @font-gray-4 | - 
+--td-button-default-disabled-color | @text-color-disabled | - 
 --td-button-default-outline-active-bg-color | @bg-color-container-active | - 
 --td-button-default-outline-active-border-color | @component-border | - 
 --td-button-default-outline-border-color | @component-border | - 
---td-button-default-outline-color | @font-gray-1 | - 
+--td-button-default-outline-color | @text-color-primary | - 
 --td-button-default-outline-disabled-color | @component-border | - 
 --td-button-default-text-active-bg-color | @bg-color-container-active | - 
 --td-button-extra-small-font-size | @font-size-base | - 
@@ -176,9 +177,12 @@ Name | Default Value | Description
 --td-button-ghost-color | @bg-color-container | - 
 --td-button-ghost-danger-border-color | @error-color | - 
 --td-button-ghost-danger-color | @error-color | - 
---td-button-ghost-disabled-color | rgba(255, 255, 255, 0.35) | - 
+--td-button-ghost-danger-hover-color | @error-color-active | - 
+--td-button-ghost-disabled-color | @font-white-4 | - 
+--td-button-ghost-hover-color | @font-white-2 | - 
 --td-button-ghost-primary-border-color | @brand-color | - 
 --td-button-ghost-primary-color | @brand-color | - 
+--td-button-ghost-primary-hover-color | @brand-color-active | - 
 --td-button-icon-border-radius | 8rpx | - 
 --td-button-icon-spacer | @spacer | - 
 --td-button-large-font-size | @font-size-m | - 
@@ -227,4 +231,4 @@ Name | Default Value | Description
 --td-button-small-font-size | @font-size-base | - 
 --td-button-small-height | 64rpx | - 
 --td-button-small-icon-font-size | 36rpx | - 
---td-button-small-padding-horizontal | 24rpx | -
+--td-button-small-padding-horizontal | 24rpx | - 
