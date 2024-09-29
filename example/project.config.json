@@ -22,10 +22,11 @@
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
     "showShadowRootInWxmlPanel": true,
+    "bigPackageSizeSupport": true,
     "skylineRenderEnable": true
   },
   "compileType": "miniprogram",
-  "libVersion": "3.4.1",
+  "libVersion": "3.6.0",
   "appid": "wx6f3e38f61d138c04",
   "projectname": "TDesign",
   "debugOptions": {
