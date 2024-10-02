@@ -1,0 +1,76 @@
+<wxs src="../common/utils.wxs" module="_" />
+
+<view class="{{classPrefix}}__panel">
+  <view class="{{classPrefix}}__body">
+    <view class="{{classPrefix}}__saturation"
+      catchtouchstart="onTouchStart"
+      catchtouchmove="onTouchMove"
+      catchtouchend="onTouchEnd"
+      data-type="saturation"
+      style="background: hsl({{sliderInfo.value}}, 100%, 50%)"
+    >
+      <view class="{{classPrefix}}__thumb" tabIndex="{{0}}" style="{{_._style(saturationThumbStyle)}}"></view>
+    </view>
+    <view class="{{classPrefix}}__sliders-wrapper">
+      <view class="{{classPrefix}}__sliders">
+        <view class="{{classPrefix}}__slider-wrapper  {{classPrefix}}__slider-wrapper--hue-type {{classPrefix}}__hue">
+          <view class="{{classPrefix}}__slider"
+            catchtouchstart="onTouchStart"
+            catchtouchmove="onTouchMove"
+            catchtouchend="onTouchEnd"
+            data-type="hue-slider"
+          >
+            <view class="{{classPrefix}}__rail">
+            </view>
+            <view 
+              class="{{classPrefix}}__thumb"
+              style="{{_._style(hueSliderStyle)}}"
+            >
+            </view>
+          </view>
+        </view>
+
+        <view wx:if="{{enableAlpha}}" class="{{classPrefix}}__slider-wrapper {{classPrefix}}__slider-wrapper--alpha-type {{classPrefix}}__alpha {{classPrefix}}--bg-alpha">
+          <view class="{{classPrefix}}__slider-padding"
+            style="background: linear-gradient(90deg, rgba(0,0,0,.0) 0%, rgba(0,0,0,.0) 93%, {{alphaSliderStyle.color}} 93%, {{alphaSliderStyle.color}} 100%)"
+          ></view>
+          <view class="{{classPrefix}}__slider"
+            catchtouchstart="onTouchStart"
+            catchtouchmove="onTouchMove"
+            catchtouchend="onTouchEnd"
+            data-type="alpha-slider"
+          >
+            <view class="{{classPrefix}}__rail"
+            style="background: linear-gradient(to right, rgba(0, 0, 0, 0), {{alphaSliderStyle.color}})"
+            >
+            </view>
+            <view 
+              class="{{classPrefix}}__thumb"
+              style="{{_._style(alphaSliderStyle)}}"
+            >
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view wx:if="{{showPrimaryColorPreview}}" class="{{classPrefix}}__sliders-preview {{classPrefix}}--bg-alpha">
+        <view class="{{classPrefix}}__sliders-preview-inner"
+          style="background: {{previewColor}}"
+        />
+      </view>
+    </view>
+
+    <view class="{{classPrefix}}__format">
+      <view class="{{classPrefix}}__format--item">
+        {{format}}
+      </view>
+      <view class="{{classPrefix}}__format--item">
+        <view class="input-group">
+          <view wx:for="{{formatList}}" wx:key="index"
+            class="input-group__item"
+          >abc</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
