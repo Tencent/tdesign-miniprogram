@@ -1,6 +1,5 @@
 @import '../common/style/index.less';
 
-
 @brand-color-1: var(--td-brand-color-1);
 @brand-color-2: var(--td-brand-color-2);
 @brand-color-3: var(--td-brand-color-3);
@@ -116,47 +115,23 @@
 // 背景色
 @bg-color-page: var(--td-bg-color-page); // 色彩 - page
 @bg-color-container: var(--td-bg-color-container); // 色彩 - 容器
-@bg-color-container-hover: var(
-  --td-bg-color-container-hover
-); // 色彩 - 容器 - hover
-@bg-color-container-active: var(
-  --td-bg-color-container-active
-); // 色彩 - 容器 - active
-@bg-color-container-select: var(
-  --td-bg-color-container-select
-); // 色彩 - 容器 - select
+@bg-color-container-hover: var(--td-bg-color-container-hover); // 色彩 - 容器 - hover
+@bg-color-container-active: var(--td-bg-color-container-active); // 色彩 - 容器 - active
+@bg-color-container-select: var(--td-bg-color-container-select); // 色彩 - 容器 - select
 
-@bg-color-secondarycontainer: var(
-  --td-bg-color-secondarycontainer
-); // 色彩 - 次级容器
-@bg-color-secondarycontainer-hover: var(
-  --td-bg-color-secondarycontainer-hover
-); // 色彩 - 次级容器 - hover
-@bg-color-secondarycontainer-active: var(
-  --td-bg-color-secondarycontainer-active
-); // 色彩 - 次级容器 - active
+@bg-color-secondarycontainer: var(--td-bg-color-secondarycontainer); // 色彩 - 次级容器
+@bg-color-secondarycontainer-hover: var(--td-bg-color-secondarycontainer-hover); // 色彩 - 次级容器 - hover
+@bg-color-secondarycontainer-active: var(--td-bg-color-secondarycontainer-active); // 色彩 - 次级容器 - active
 
 @bg-color-component: var(--td-bg-color-component); // 色彩  - 组件
-@bg-color-component-hover: var(
-  --td-bg-color-component-hover
-); // 色彩 - 组件 - hover
-@bg-color-component-active: var(
-  --td-bg-color-component-active
-); // 色彩 - 组件 - active
+@bg-color-component-hover: var(--td-bg-color-component-hover); // 色彩 - 组件 - hover
+@bg-color-component-active: var(--td-bg-color-component-active); // 色彩 - 组件 - active
 
-@bg-color-secondarycomponent: var(
-  --td-bg-color-secondarycomponent
-); // 色彩 - 次级组件
-@bg-color-secondarycomponent-hover: var(
-  --td-bg-color-secondarycomponent-hover
-); // 色彩 - 次级组件 - hover
-@bg-color-secondarycomponent-active: var(
-  --td-bg-color-secondarycomponent-active
-); // 色彩 - 次级组件 - active
+@bg-color-secondarycomponent: var(--td-bg-color-secondarycomponent); // 色彩 - 次级组件
+@bg-color-secondarycomponent-hover: var(--td-bg-color-secondarycomponent-hover); // 色彩 - 次级组件 - hover
+@bg-color-secondarycomponent-active: var(--td-bg-color-secondarycomponent-active); // 色彩 - 次级组件 - active
 
-@bg-color-component-disabled: var(
-  --td-bg-color-component-disabled
-); // 色彩 - 组件 - disabled
+@bg-color-component-disabled: var(--td-bg-color-component-disabled); // 色彩 - 组件 - disabled
 
 // TODO: 考虑是否在组件内部做判断，不增加额外变量
 // 特殊组件背景色，目前只用于 button、input 组件多主题场景，浅色主题下固定为白色，深色主题下为 transparent 适配背景颜色
@@ -165,9 +140,7 @@
 // 文本颜色
 @text-color-primary: var(--td-text-color-primary); // 色彩-文字-主要
 @text-color-secondary: var(--td-text-color-secondary); // 色彩-文字-次要
-@text-color-placeholder: var(
-  --td-text-color-placeholder
-); // 色彩-文字-占位符/说明
+@text-color-placeholder: var(--td-text-color-placeholder); // 色彩-文字-占位符/说明
 @text-color-disabled: var(--td-text-color-disabled); // 色彩-文字-禁用
 @text-color-anti: var(--td-text-color-anti, #fff); // 色彩-文字-反色
 @text-color-brand: var(--td-text-color-brand); // 色彩-文字-品牌
@@ -194,8 +167,7 @@
 @shadow-inset-right: var(--td-shadow-inset-right);
 @shadow-inset-bottom: var(--td-shadow-inset-bottom);
 @shadow-inset-left: var(--td-shadow-inset-left);
-@shadow-inset: @shadow-inset-top, @shadow-inset-right, @shadow-inset-bottom,
-  @shadow-inset-left;
+@shadow-inset: @shadow-inset-top, @shadow-inset-right, @shadow-inset-bottom, @shadow-inset-left;
 
 // 融合阴影
 @shadow-2-inset: @shadow-2, @shadow-inset;
@@ -269,8 +241,8 @@
 
 // Spacer 【deprecated】
 @spacer: 8px;
-@spacer-s: @spacer * .5; // 间距-4
-@spacer-m: @spacer * .75; // 间距-6
+@spacer-s: @spacer * 0.5; // 间距-4
+@spacer-m: @spacer * 0.75; // 间距-6
 @spacer-l: @spacer * 1.5; // 间距-12
 @spacer-1: @spacer; // 间距-8
 @spacer-2: @spacer * 2; // 间距-16
@@ -359,12 +331,12 @@
 @screen-xxl-min: @screen-xxl;
 
 // 动画
-@anim-time-fn-easing: cubic-bezier(.38, 0, .24, 1);
-@anim-time-fn-ease-out: cubic-bezier(0, 0, .15, 1);
-@anim-time-fn-ease-in: cubic-bezier(.82, 0, 1, .9);
-@anim-duration-base: .2s;
-@anim-duration-moderate: .24s;
-@anim-duration-slow: .28s;
+@anim-time-fn-easing: cubic-bezier(0.38, 0, 0.24, 1);
+@anim-time-fn-ease-out: cubic-bezier(0, 0, 0.15, 1);
+@anim-time-fn-ease-in: cubic-bezier(0.82, 0, 1, 0.9);
+@anim-duration-base: 0.2s;
+@anim-duration-moderate: 0.24s;
+@anim-duration-slow: 0.28s;
 
 // 统一管理各组件层级关系
 @z-index-back-top: 300;
@@ -380,10 +352,9 @@
 @z-index-dragging: 6500;
 @z-index-guide: 999999;
 
-
 @color-picker-panel-width: 750rpx;
-@color-picker-panel-padding: 24rpx;
-@color-picker-panel-radius: @border-radius-medium;
+@color-picker-panel-padding: 32rpx;
+@color-picker-panel-radius: 12rpx;
 @color-picker-icon-radius: @border-radius-default;
 @color-picker-saturation-height: 288rpx;
 @color-picker-saturation-radius: @border-radius-default;
@@ -407,8 +378,8 @@
 @color-picker-gradient-preview-radius: 6rpx;
 @color-picker-swatch-icon-size: @comp-size-xxxs;
 @color-picker-swatch-action-margin-left: @comp-margin-s;
-@color-picker-swatch-width: @comp-size-xxxs;
-@color-picker-swatch-height: @comp-size-xxxs;
+@color-picker-swatch-width: 48rpx;
+@color-picker-swatch-height: 48rpx;
 @color-picker-swatch-radius: 50%;
 @color-picker-swatch-padding: 0;
 @color-picker-swatch-border-size: 1px;
@@ -416,14 +387,22 @@
 @color-picker-swatch-item-padding: calc(@color-picker-panel-padding - 8px); //make sure swatchItem scale
 @color-picker-swatch-item-left-negative-padding: calc(0px - @color-picker-swatch-item-padding);
 // columnGap = (panelWidth - (panelPadding * 2) + (swatchColor * columnsItem)) / 9
-@color-picker-swatch-row-gap: calc(calc(@color-picker-panel-width - calc(calc(@color-picker-panel-padding * 2) + calc(@color-picker-swatch-height * @color-picker-swatch-columns))) / 9);
-@color-picker-swatch-column-gap: calc(calc(@color-picker-panel-width - calc(calc(@color-picker-panel-padding * 2) + calc(@color-picker-swatch-width * @color-picker-swatch-columns))) / 9);
+@color-picker-swatch-row-gap: calc(
+  calc(
+      @color-picker-panel-width -
+        calc(calc(@color-picker-panel-padding * 2) + calc(@color-picker-swatch-height * @color-picker-swatch-columns))
+    ) / 9
+);
+@color-picker-swatch-column-gap: calc(
+  calc(
+      @color-picker-panel-width -
+        calc(calc(@color-picker-panel-padding * 2) + calc(@color-picker-swatch-width * @color-picker-swatch-columns))
+    ) / 9
+);
 @color-picker-swatch-wrap-margin-left: (@color-picker-swatch-padding + @color-picker-swatch-border-size) * -1;
 // 右边往外伸出一点，让滚动条居外侧
-@color-picker-swatch-wrap-margin-right: @color-picker-swatch-wrap-margin-left -
-  10px;
-@color-picker-swatch-wrap-margin: 0 @color-picker-swatch-wrap-margin-right 0
-  @color-picker-swatch-wrap-margin-left;
+@color-picker-swatch-wrap-margin-right: @color-picker-swatch-wrap-margin-left - 10px;
+@color-picker-swatch-wrap-margin: 0 @color-picker-swatch-wrap-margin-right 0 @color-picker-swatch-wrap-margin-left;
 @color-picker-swatch-max-rows: 4; // 最大显示行数
 
 // shadow
@@ -432,15 +411,15 @@
 @colot-picker-swatch-item-color-inset-shadow: @shadow-inset;
 
 // 最大高度 = 行数 * (itemHeight + itemMarginTop)m;
-@color-picker-swatch-rows-max-height: calc(@color-picker-swatch-max-rows *
-calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
+@color-picker-swatch-rows-max-height: calc(
+  @color-picker-swatch-max-rows * calc(@color-picker-swatch-height + @color-picker-swatch-row-gap)
+);
 
 // trigger-input
 @color-picker-trigger-input-padding: 0 @comp-paddingLR-s 0 @comp-paddingLR-xs;
 @color-picker-trigger-input-color-inner-size: calc(@comp-size-xs - 2px);
 @color-picker-trigger-input-color-inner-size-s: calc(@comp-size-xxs - 2px);
 @color-picker-trigger-input-color-inner-size-l: calc(@comp-size-s - 2px);
-
 
 .reset() {
   font: @font-body-medium;
@@ -451,13 +430,13 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
   list-style: none;
 }
 
-
 .@{prefix}-color-picker__panel {
   padding: 0;
   width: @color-picker-panel-width;
-  background: @bg-color-container;
+  background: #fff;
   box-shadow: @color-picker-panel-shadow;
-  border-radius: @border-radius-medium;
+  border-top-left-radius: 24rpx;
+  border-top-right-radius: 24rpx;
   user-select: none;
 }
 
@@ -516,7 +495,8 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
 
 .@{prefix}-color-picker__body {
   padding: @color-picker-panel-padding;
-  padding-bottom: calc(@color-picker-panel-padding - 8rpx);
+  // padding-bottom: calc(@color-picker-panel-padding - 8rpx);
+  padding-bottom: 56rpx;
 }
 
 .@{prefix}-color-picker__thumb {
@@ -534,7 +514,7 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
   box-sizing: border-box;
 
   &::before {
-    content: "";
+    content: '';
     width: 100%;
     height: 100%;
     background: currentcolor;
@@ -552,7 +532,7 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
 
   &::before,
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
@@ -580,7 +560,8 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
 
 .transparentBgImage () {
   /* stylelint-disable-next-line color-no-hex */
-  background-image: linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5), linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5);
+  background-image: linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5),
+    linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5);
   background-size: 6px 6px;
   background-position: 0 0, 3px 3px;
 }
@@ -635,23 +616,16 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
   }
 }
 
-.@{prefix}-color-picker__alpha,
-.@{prefix}-color-picker__format {
+.@{prefix}-color-picker__alpha {
   margin: @color-picker-margin 0 0 0;
+}
+.@{prefix}-color-picker__format {
+  margin: @color-picker-margin 0 56rpx 0;
 }
 
 .@{prefix}-color-picker__hue {
   /* stylelint-disable color-no-hex, color-named */
-  background: linear-gradient(
-    90deg,
-    red,
-    #ff0 17%,
-    #0f0 33%,
-    #0ff 50%,
-    #00f 67%,
-    #f0f 83%,
-    red
-  );
+  background: linear-gradient(90deg, red, #ff0 17%, #0f0 33%, #0ff 50%, #00f 67%, #f0f 83%, red);
 }
 
 .@{prefix}-color-picker__alpha {
@@ -748,7 +722,7 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
         overflow: hidden;
 
         &::before {
-          content: "";
+          content: '';
           width: 100%;
           height: 100%;
           display: block;
@@ -763,7 +737,7 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #F3F3F3;
+  // background-color: #F3F3F3;
   color: rgba(0, 0, 0, 0.4);
   font-size: 28rpx;
   text-align: center;
@@ -774,7 +748,7 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
     &:first-child {
       flex-shrink: 0;
       width: 136rpx;
-      border: 1px solid #DCDCDC;
+      border: 1px solid #dcdcdc;
       border-radius: 12rpx;
       margin-right: 48rpx;
     }
@@ -782,7 +756,8 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
     &:last-child {
       flex: 1;
     }
-    .@{prefix}-size-m, .@{prefix}-input.@{prefix}-size-m {
+    .@{prefix}-size-m,
+    .@{prefix}-input.@{prefix}-size-m {
       font: @color-picker-font;
     }
     .@{prefix}-input-number .@{prefix}-input {
@@ -800,20 +775,20 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
         width: 0;
         margin-left: -1px;
 
-        border: 1px solid #DCDCDC;
+        border: 1px solid #dcdcdc;
         border-radius: 12rpx;
         .@{prefix}-input {
           padding: 0 1px;
 
-          &:focus,
-          &:focus-within,
-          &:hover {
-            z-index: 1;
-          }
+          // &:focus,
+          // &:focus-within,
+          // &:hover {
+          //   z-index: 1;
+          // }
         }
 
         &:not(:first-child):not(:last-child) {
-            border-radius: 0;
+          border-radius: 0;
           //   .@{prefix}-input {
           //   border-radius: 0;
           // }
@@ -835,6 +810,12 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
           //   border-top-left-radius: 0;
           //   border-bottom-left-radius: 0;
           // }
+        }
+
+        &--fixed {
+          flex-shrink: 0;
+          flex-grow: 0;
+          flex-basis: 133rpx;
         }
       }
       .@{prefix}-input-number {
@@ -864,11 +845,10 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
 }
 
 .@{prefix}-color-picker__swatches-wrap {
-  margin-top: @color-picker-margin;
+  // margin-top: @color-picker-margin;
   position: relative;
 
   .@{prefix}-color-picker__swatches {
-
     + .@{prefix}-color-picker__swatches {
       margin-top: @color-picker-margin;
     }
@@ -876,7 +856,7 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
     &--title {
       font: @color-picker-font;
       padding: 0;
-      color: @text-color-primary;
+      color: rgba(0, 0, 0, 0.9);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -895,25 +875,28 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
     }
 
     &--items {
+      margin-top: 24rpx;
       width: 100%;
       list-style: none;
-      display: grid;
-      grid-template-columns: repeat(@color-picker-swatch-columns, @color-picker-swatch-width);
-      gap: @color-picker-swatch-row-gap @color-picker-swatch-column-gap;
+      display: flex;
+      justify-content: space-between;
+      // display: grid;
+      // grid-template-columns: repeat(@color-picker-swatch-columns, @color-picker-swatch-width);
+      // gap: @color-picker-swatch-row-gap @color-picker-swatch-column-gap;
       max-height: @color-picker-swatch-rows-max-height;
       overflow-x: hidden;
       overflow-y: auto;
-      padding: @color-picker-swatch-item-padding;
-      position: relative;
-      left: @color-picker-swatch-item-left-negative-padding;
-      box-sizing: content-box;
+      // padding: @color-picker-swatch-item-padding;
+      // position: relative;
+      // left: @color-picker-swatch-item-left-negative-padding;
+      // box-sizing: content-box;
     }
 
     &--item {
       display: flex;
       width: @color-picker-swatch-width;
       height: @color-picker-swatch-height;
-      border-radius: @border-radius-default;
+      border-radius: 6rpx;
       padding: @color-picker-swatch-padding;
       overflow: hidden;
       cursor: pointer;
@@ -924,10 +907,10 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
       transition: all @anim-duration-base @anim-time-fn-easing;
       box-sizing: border-box;
 
-      &:hover {
-        transform: scale(1.25);
-        transform-origin: center;
-      }
+      // &:hover {
+      //   transform: scale(1.25);
+      //   transform-origin: center;
+      // }
 
       // 暂时先不删，待react同步后再删除
       &__color {
@@ -947,9 +930,9 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
         display: block;
       }
 
-      &:not(.@{prefix}-is-active):hover {
-        padding: 0;
-      }
+      // &:not(.@{prefix}-is-active):hover {
+      //   padding: 0;
+      // }
 
       // 暂时先不删，待react同步后再删除
       &.@{prefix}-is-active .@{prefix}-color-picker__swatches--item__color,
@@ -1032,7 +1015,7 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
   .@{prefix}-color-picker__saturation,
   .@{prefix}-color-picker__slider,
   .@{prefix}-color-picker__swatches--item {
-    opacity: .8;
+    opacity: 0.8;
     cursor: not-allowed;
   }
   .@{prefix}-color-picker__gradient-slider {
@@ -1041,9 +1024,9 @@ calc(@color-picker-swatch-height + @color-picker-swatch-row-gap));
       cursor: not-allowed;
     }
   }
-  .@{prefix}-color-picker__swatches--item:hover {
-    padding: @color-picker-swatch-padding;
-  }
+  // .@{prefix}-color-picker__swatches--item:hover {
+  //   padding: @color-picker-swatch-padding;
+  // }
 }
 
 // 覆盖select-option 默认样式，使其更紧凑点

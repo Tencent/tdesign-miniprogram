@@ -9,7 +9,7 @@ const props: TdColorPickerProps = {
   /** 是否开启透明通道 */
   enableAlpha: {
     type: Boolean,
-    value: true,
+    value: false,
   },
   /** 格式化色值。`enableAlpha` 为真时，`RGBA/HSLA/HSVA` 等值有效 */
   format: {

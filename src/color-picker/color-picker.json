@@ -1,7 +1,4 @@
 {
   "component": true,
-  "usingComponents": {
-    "t-icon": "../icon/icon",
-    "t-input": "../input/input"
-  }
+  "usingComponents": {}
 }

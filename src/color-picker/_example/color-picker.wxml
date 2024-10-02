@@ -4,4 +4,12 @@
   <t-demo title="01 组件类型" desc="基础颜色选择器">
     <base />
   </t-demo>
+
+  <t-demo desc="带色板的颜色选择器">
+    <multiple />
+  </t-demo>
+
+  <t-demo title="02 组件状态" desc="{{curFormat}} 模式">
+    <format />
+  </t-demo>
 </view>
