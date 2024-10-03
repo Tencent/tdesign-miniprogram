@@ -1,5 +1,5 @@
 page {
-  background-color: #fff;
+  background-color: var(--td-bg-color-container);
 }
 
 page .round-image {
@@ -23,6 +23,7 @@ page .round-image {
   padding-left: 40rpx;
   margin-bottom: 8rpx;
   line-height: 52rpx;
+  color: var(--td-text-color-primary);
 }
 
 .side-bar-wrapper .image {

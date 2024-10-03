@@ -18,8 +18,8 @@ export interface TdCellProps {
    * @default false
    */
   arrow?: {
-    type: BooleanConstructor;
-    value?: boolean;
+    type: null;
+    value?: boolean | object;
   };
   /**
    * 是否显示下边框
@@ -30,35 +30,11 @@ export interface TdCellProps {
     value?: boolean;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 下方内容描述
    */
   description?: {
     type: StringConstructor;
     value?: string;
-  };
-  /**
-   * 组件类名，分别用于设置 组件外层类名、标题类名、右侧说明文字类名、下方描述内容类名、图片类名、激活态类名、左侧图标类名、右侧图标类名 等
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: [
-      't-class',
-      't-class-title',
-      't-class-note',
-      't-class-description',
-      't-class-thumb',
-      't-class-hover',
-      't-class-left',
-      't-class-right',
-    ];
   };
   /**
    * 是否开启点击反馈
@@ -86,8 +62,8 @@ export interface TdCellProps {
    * 左侧图标，出现在单元格标题的左侧
    */
   leftIcon?: {
-    type: StringConstructor;
-    value?: string;
+    type: null;
+    value?: string | object;
   };
   /**
    * 和标题同行的说明文字
@@ -108,8 +84,8 @@ export interface TdCellProps {
    * 最右侧图标
    */
   rightIcon?: {
-    type: StringConstructor;
-    value?: string;
+    type: null;
+    value?: string | object;
   };
   /**
    * 标题

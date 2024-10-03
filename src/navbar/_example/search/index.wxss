@@ -1,4 +1,8 @@
 .search-box {
-  --td-search-height: 64rpx;
+  --td-search-height: 32px;
   width: 252px;
+}
+
+page {
+  --td-search-font-size: 18px;
 }

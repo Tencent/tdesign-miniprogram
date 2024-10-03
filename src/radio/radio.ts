@@ -61,25 +61,33 @@ export default class Radio extends SuperComponent {
     optionLinked: false,
     iconVal: [],
     _placement: '',
+    _disabled: false,
+  };
+
+  observers = {
+    disabled(v) {
+      this.setData({ _disabled: v });
+    },
   };
 
   methods = {
     handleTap(e) {
-      if (this.data.disabled || this.data.readonly) return;
-
+      const { _disabled, readonly, contentDisabled } = this.data;
       const { target } = e.currentTarget.dataset;
 
-      if (target === 'text' && this.data.contentDisabled) return;
+      if (_disabled || readonly || (target === 'text' && contentDisabled)) return;
 
       this.doChange();
     },
     doChange() {
       const { value, checked, allowUncheck } = this.data;
 
+      const isAllowUncheck = Boolean(allowUncheck || this.$parent?.data.allowUncheck);
+
       if (this.$parent) {
-        this.$parent.updateValue(checked && allowUncheck ? null : value);
+        this.$parent.updateValue(checked && isAllowUncheck ? null : value);
       } else {
-        this._trigger('change', { checked: checked && allowUncheck ? false : !checked });
+        this._trigger('change', { checked: isAllowUncheck ? !checked : true });
       }
     },
     init() {
@@ -96,7 +104,7 @@ export default class Radio extends SuperComponent {
 
     setDisabled(disabled: Boolean) {
       this.setData({
-        disabled: this.data.disabled || disabled,
+        _disabled: this.data.disabled || disabled,
       });
     },
   };

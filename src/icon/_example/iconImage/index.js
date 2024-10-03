@@ -1,8 +1,8 @@
 Component({
   data: {
     imageIconList: [
-      'https://tdesign.gtimg.com/miniprogram/images/icon1.png',
-      'https://tdesign.gtimg.com/miniprogram/images/icon2.png',
+      'https://tdesign.gtimg.com/mobile/demos/icon1.png',
+      'https://tdesign.gtimg.com/mobile/demos/icon2.png',
     ],
   },
 

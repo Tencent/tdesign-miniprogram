@@ -1,0 +1,5 @@
+<view class="skyline">
+  <scroll-view scroll-y type="list" class="scroll-view">
+    <drawer />
+  </scroll-view>
+</view>

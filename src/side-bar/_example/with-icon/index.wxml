@@ -1,8 +1,10 @@
-<view class="side-bar-wrapper">
+<t-navbar class="demo-navbar" title="TDesign" leftArrow />
+
+<view class="side-bar-wrapper" style="height: calc(100vh - {{navbarHeight}}px)">
   <t-side-bar value="{{sideBarIndex}}" bind:change="onSideBarChange">
     <t-side-bar-item
       wx:for="{{categories}}"
-      wx:key="index"
+      wx:key="label"
       value="{{item.value || index}}"
       label="{{item.label}}"
       icon="{{item.icon}}"
@@ -10,7 +12,7 @@
     />
   </t-side-bar>
   <scroll-view class="content" scroll-y scroll-with-animation scroll-top="{{scrollTop}}" bind:scroll="onScroll">
-    <view wx:for="{{categories}}" wx:key="index" class="section">
+    <view wx:for="{{categories}}" wx:key="label" class="section">
       <view class="title">{{item.title || item.label}}</view>
       <t-grid column="{{3}}" border="{{false}}">
         <block wx:for="{{item.items}}" wx:key="index" wx:for-item="cargo">

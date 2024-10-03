@@ -1,6 +1,5 @@
 <t-pull-down-refresh
   value="{{enable}}"
-  loadingProps="{{loadingProps}}"
   loadingTexts="{{['下拉刷新', '松手刷新', '正在刷新', '刷新完成']}}"
   bind:refresh="onRefresh"
   bind:scroll="onScroll"

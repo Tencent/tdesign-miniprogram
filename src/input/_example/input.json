@@ -7,7 +7,6 @@
     "prefix": "./prefix",
     "layout": "./layout",
     "bordered": "./bordered",
-    "size": "./size",
     "align": "./align",
     "maxlength": "./maxlength",
     "special": "./special",

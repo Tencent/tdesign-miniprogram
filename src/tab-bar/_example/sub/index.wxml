@@ -1,5 +1,5 @@
-<t-tab-bar defaultValue="label_3" theme="tag" split="{{false}}">
-  <t-tab-bar-item wx:for="{{list}}" wx:key="index" value="{{item.value}}" sub-tab-bar="{{item.children}}">
+<t-tab-bar t-class="t-tab-bar" defaultValue="label_3" theme="tag" split="{{false}}">
+  <t-tab-bar-item wx:for="{{list}}" wx:key="value" value="{{item.value}}" sub-tab-bar="{{item.children}}">
     {{item.label}}
   </t-tab-bar-item>
 </t-tab-bar>

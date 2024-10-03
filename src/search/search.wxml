@@ -1,4 +1,5 @@
 <wxs src="../common/utils.wxs" module="_" />
+<wxs src="./search.wxs" module="this"></wxs>
 
 <view style="{{_._style([style, customStyle])}}" class="class {{classPrefix}} {{prefix}}-class">
   <view
@@ -9,11 +10,12 @@
     <t-icon
       wx:if="{{leftIcon}}"
       name="{{leftIcon}}"
-      size="24"
+      size="48rpx"
       class="{{prefix}}-icon {{prefix}}-class-left"
       aria-hidden="{{true}}"
     />
-    <slot name="left-icon" />
+    <slot wx:else name="left-icon" />
+
     <input
       type="{{type}}"
       name="input"
@@ -46,7 +48,7 @@
       aria-role="button"
       aria-label="清除"
     >
-      <t-icon name="close-circle-filled" size="24" />
+      <t-icon name="close-circle-filled" size="48rpx" />
     </view>
   </view>
   <view
@@ -57,5 +59,19 @@
   >
     {{action}}
   </view>
-  <slot name="action" />
+  <slot wx:else name="action" />
+</view>
+
+<view wx:if="{{isShowResultList && !isSelected}}" class="{{classPrefix}}__result-list" aria-role="listbox">
+  <t-cell
+    wx:for="{{resultList}}"
+    wx:key="index"
+    data-index="{{index}}"
+    class="{{classPrefix}}__result-item"
+    hover
+    bind:tap="onSelectResultItem"
+    aria-role="option"
+  >
+    <rich-text slot="title" nodes="{{this.highLight(item, value)}}"></rich-text>
+  </t-cell>
 </view>

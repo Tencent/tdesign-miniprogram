@@ -8,14 +8,14 @@
 <view class="demo-desc">圆形徽标</view>
 <view class="demo-wrapper">
   <t-badge count="2" offset="{{ [2, -2] }}">
-    <t-icon name="notification" size="24" ariaLabel="通知" />
+    <t-icon name="notification" size="48rpx" ariaLabel="通知" />
   </t-badge>
 </view>
 
 <view class="demo-desc">方形徽标</view>
 <view class="demo-wrapper">
   <t-badge count="2" shape="square" offset="{{ [1, -2] }}">
-    <t-icon name="notification" size="24" ariaLabel="通知" />
+    <t-icon name="notification" size="48rpx" ariaLabel="通知" />
   </t-badge>
 </view>
 
@@ -27,6 +27,6 @@
 </view>
 
 <view class="demo-desc" style="margin-bottom: 32rpx">角标</view>
-<t-cell title="单行标题">
-  <t-badge count="New" offset="{{[0, 0]}}" shape="ribbon" slot="note" />
+<t-cell title="单行标题" t-class="t-class-cell">
+  <t-badge count="New" offset="{{skylineRender ? ['-16rpx', '-56rpx']: [0, 0]}}" shape="ribbon" slot="note" />
 </t-cell>

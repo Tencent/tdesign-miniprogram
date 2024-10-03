@@ -30,7 +30,7 @@
         disabled="{{disabled}}"
         placeholder="{{placeholder}}"
         placeholder-style="{{placeholderStyle}}"
-        placeholder-class="{{classPrefix}}__placeholder {{placeholderClass}}"
+        placeholder-class="{{_.cls(classPrefix + '__placeholder',  [['disabled', disabled]])}} {{placeholderClass}}"
         value="{{value}}"
         bindinput="onInput"
         bindfocus="onFocus"
@@ -70,7 +70,7 @@
       <view
         wx:if="{{_clearIcon && value.length > 0 && showClearIcon}}"
         class="{{classPrefix}}__wrap--clearable-icon"
-        bind:touchstart="clearInput"
+        bind:tap="clearInput"
       >
         <template
           is="icon"

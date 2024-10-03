@@ -1,7 +1,12 @@
 <import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
 
-<view style="{{_._style([style, customStyle])}}" class="{{ classPrefix }} class {{prefix}}-class" id="t-bar">
+<view
+  style="{{_._style([style, customStyle])}}"
+  class="{{ classPrefix }} class {{prefix}}-class"
+  id="t-bar"
+  catchtouchmove="{{activeIdx === -1?'':'noop'}}"
+>
   <view
     wx:for="{{menus}}"
     wx:key="index"

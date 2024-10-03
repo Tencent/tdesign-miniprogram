@@ -9,11 +9,18 @@
   title="选择城市"
   cancelBtn="取消"
   confirmBtn="确认"
+  usingCustomNavbar
   bindchange="onPickerChange"
   bindpick="onColumnChange"
   bindcancel="onPickerCancel"
 >
-  <t-picker-item options="{{citys}}" />
+  <t-picker-item options="{{citys}}">
+    <block wx:for="{{citys}}" wx:key="index" wx:for-item="option">
+      <view wx:if="{{option.tag}}" slot="label-suffix--{{index}}" class="label-suffix">
+        <t-tag size="small" theme="primary">{{option.tag}}</t-tag>
+      </view>
+    </block>
+  </t-picker-item>
 </t-picker>
 
 <t-picker
@@ -23,6 +30,7 @@
   title="选择时间"
   cancelBtn="取消"
   confirmBtn="确认"
+  usingCustomNavbar
   bindchange="onPickerChange"
   bindpick="onColumnChange"
   bindcancel="onPickerCancel"

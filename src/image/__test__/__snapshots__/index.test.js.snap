@@ -4,60 +4,64 @@ exports[`image :base 1`] = `
 <main>
   <t-image>
     <wx-view
-      ariaHidden="{{false}}"
-      class="class t-class t-image t-image__mask t-image--loading t-image--shape-square"
+      class="class t-class t-image"
       style=""
     >
-      <t-loading
-        tClass="t-class-load"
-        tClassText="t-image--loading-text"
+      <wx-view
+        ariaHidden="{{false}}"
+        class="t-image__mask t-image--loading t-image--shape-square"
+        style=""
       >
-        <wx-view
-          class="class t-class t-loading t-loading--horizontal"
-          style="width: 44rpx; height: 44rpx; color: inherit;"
+        <t-loading
+          tClass="t-class-load"
+          tClassText="t-image--loading-text"
         >
           <wx-view
-            ariaLabel="加载中"
-            ariaRole="img"
-            class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
-            style="width: 44rpx; height: 44rpx; color: inherit;  animation-duration: 0.8s; animation-play-state: running;"
+            class="class t-class t-loading t-loading--horizontal"
+            style="width: 44rpx; height: 44rpx; color: inherit;"
           >
             <wx-view
-              class="t-loading__dot"
-              style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
-            />
+              ariaLabel="加载中"
+              ariaRole="img"
+              class="t-class-indicator t-loading__spinner t-loading__spinner--dots "
+              style="width: 44rpx; height: 44rpx; color: inherit;  animation-duration: 0.8s; animation-play-state: running;"
+            >
+              <wx-view
+                class="t-loading__dot"
+                style="animation-duration: 0.8s; animation-delay:0s; animation-play-state: running;"
+              />
+              <wx-view
+                class="t-loading__dot"
+                style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
+              />
+              <wx-view
+                class="t-loading__dot"
+                style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+              />
+            </wx-view>
             <wx-view
-              class="t-loading__dot"
-              style="animation-duration: 0.8s; animation-delay:0.26666666666666666s; animation-play-state: running;"
-            />
-            <wx-view
-              class="t-loading__dot"
-              style="animation-duration: 0.8s; animation-delay:0.5333333333333333s; animation-play-state: running;"
+              ariaHidden="{{true}}"
+              ariaLabel=""
+              class="t-loading__text t-loading__text--horizontal t-class-text"
             />
           </wx-view>
-          <wx-view
-            ariaHidden="{{true}}"
-            ariaLabel=""
-            class="t-loading__text t-loading__text--horizontal t-class-text"
-          />
-        </wx-view>
-      </t-loading>
+        </t-loading>
+      </wx-view>
+      <wx-image
+        ariaHidden="{{true}}"
+        ariaLabel=""
+        class="t-image__img t-image--shape-square t-image--lazy t-class-image"
+        id="image"
+        lazyLoad="{{false}}"
+        mode="scaleToFill"
+        showMenuByLongpress="{{false}}"
+        src=""
+        style=""
+        webp="{{false}}"
+        bind:error="onLoadError"
+        bind:load="onLoaded"
+      />
     </wx-view>
-    <wx-image
-      ariaHidden="{{true}}"
-      ariaLabel=""
-      class="class t-class t-image t-image--shape-square"
-      hidden="{{true}}"
-      id="image"
-      lazyLoad="{{false}}"
-      mode="scaleToFill"
-      showMenuByLongpress="{{false}}"
-      src=""
-      style=""
-      webp="{{false}}"
-      bind:error="onLoadError"
-      bind:load="onLoaded"
-    />
   </t-image>
 </main>
 `;
@@ -68,21 +72,25 @@ exports[`image :success 1`] = `
     id="root"
     bind:load="handleLoad"
   >
-    <wx-image
-      ariaHidden="{{false}}"
-      ariaLabel=""
-      class="class t-class t-image t-image--shape-square"
-      hidden="{{false}}"
-      id="image"
-      lazyLoad="{{false}}"
-      mode="heightFix"
-      showMenuByLongpress="{{false}}"
-      src="https://www.tencent.com/img/index/menu_logo.png"
-      style="height: 0px; width: 0.00px;"
-      webp="{{false}}"
-      bind:error="onLoadError"
-      bind:load="onLoaded"
-    />
+    <wx-view
+      class="class t-class t-image"
+      style=""
+    >
+      <wx-image
+        ariaHidden="{{false}}"
+        ariaLabel=""
+        class="t-image__img t-image--shape-square  t-class-image"
+        id="image"
+        lazyLoad="{{false}}"
+        mode="heightFix"
+        showMenuByLongpress="{{false}}"
+        src="https://www.tencent.com/img/index/menu_logo.png"
+        style="height: 0px; width: 0.00px;"
+        webp="{{false}}"
+        bind:error="onLoadError"
+        bind:load="onLoaded"
+      />
+    </wx-view>
   </t-image>
 </main>
 `;

@@ -5,3 +5,7 @@
   margin-bottom: 24px;
   align-items: center;
 }
+
+.t-class-cell {
+  overflow: hidden;
+}

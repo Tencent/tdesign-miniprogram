@@ -17,7 +17,7 @@ exports[`Image Image base demo works fine 1`] = `
         ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         mode="aspectFill"
-        src="https://tdesign.gtimg.com/miniprogram/images/image1.jpeg"
+        src="https://tdesign.gtimg.com/mobile/demos/image1.jpeg"
         width="72"
       />
     </wx-view>
@@ -33,7 +33,7 @@ exports[`Image Image base demo works fine 1`] = `
         ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         mode="heightFix"
-        src="https://tdesign.gtimg.com/miniprogram/images/image1.jpeg"
+        src="https://tdesign.gtimg.com/mobile/demos/image1.jpeg"
         width="72"
       />
     </wx-view>
@@ -48,7 +48,7 @@ exports[`Image Image base demo works fine 1`] = `
       <t-image
         ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
-        src="https://tdesign.gtimg.com/miniprogram/images/image1.jpeg"
+        src="https://tdesign.gtimg.com/mobile/demos/image1.jpeg"
         width="72"
       />
     </wx-view>
@@ -68,7 +68,7 @@ exports[`Image Image base demo works fine 1`] = `
         ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         mode="aspectFill"
-        src="https://tdesign.gtimg.com/miniprogram/images/image1.jpeg"
+        src="https://tdesign.gtimg.com/mobile/demos/image1.jpeg"
         width="72"
       />
     </wx-view>
@@ -84,7 +84,7 @@ exports[`Image Image base demo works fine 1`] = `
         ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         shape="round"
-        src="https://tdesign.gtimg.com/miniprogram/images/image1.jpeg"
+        src="https://tdesign.gtimg.com/mobile/demos/image1.jpeg"
         width="72"
       />
     </wx-view>
@@ -100,23 +100,12 @@ exports[`Image Image base demo works fine 1`] = `
         ariaLabel="一个放置在墙角的黄色行李箱"
         height="72"
         shape="circle"
-        src="https://tdesign.gtimg.com/miniprogram/images/image1.jpeg"
+        src="https://tdesign.gtimg.com/mobile/demos/image1.jpeg"
         width="72"
       />
     </wx-view>
   </wx-view>
 </base>
-`;
-
-exports[`Image Image size demo works fine 1`] = `
-<size>
-  <t-image
-    mode="aspectFill"
-    shape="round"
-    src="https://tdesign.gtimg.com/miniprogram/images/image1.jpeg"
-    tClass="size-l"
-  />
-</size>
 `;
 
 exports[`Image Image status demo works fine 1`] = `
@@ -158,7 +147,7 @@ exports[`Image Image status demo works fine 1`] = `
           loading="{{true}}"
           size="40rpx"
           slot="loading"
-          theme="circular"
+          theme="spinner"
         />
       </t-image>
     </wx-view>

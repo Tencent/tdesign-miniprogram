@@ -58,6 +58,7 @@ describe('pull-down-refresh', () => {
       await simulate.sleep(240); // 等待 close 执行完毕
       const $pullDownRefresh = comp.querySelector('#t-pull-down-refresh');
       const $tips = $pullDownRefresh.querySelector('.t-pull-down-refresh__tips');
+      comp.setData({ value: true });
       expect($tips.dom.getAttribute('style').includes(`${comp.data.loadingBarHeight}px`)).toBeTruthy();
       // expect(comp.toJSON()).toMatchSnapshot();
     });

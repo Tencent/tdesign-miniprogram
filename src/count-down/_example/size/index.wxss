@@ -3,7 +3,7 @@
 }
 
 .demo-count-down-desc {
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--td-text-color-secondary);
   font-size: 28rpx;
 }
 

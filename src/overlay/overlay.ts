@@ -1,35 +1,20 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import props from './props';
 import transition from '../mixins/transition';
+import useCustomNavbar from '../mixins/using-custom-navbar';
+import { TdOverlayProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-overlay`;
 
+export interface OverlayProps extends TdOverlayProps {}
+
 @wxComponent()
 export default class Overlay extends SuperComponent {
-  properties = {
-    zIndex: {
-      type: Number,
-      value: 11000,
-    },
+  properties = props;
 
-    duration: {
-      type: Number,
-      value: 300,
-    },
-
-    backgroundColor: {
-      type: String,
-      value: '',
-    },
-
-    preventScrollThrough: {
-      type: Boolean,
-      value: true,
-    },
-  };
-
-  behaviors = [transition()];
+  behaviors = [transition(), useCustomNavbar];
 
   data = {
     prefix,
@@ -41,7 +26,7 @@ export default class Overlay extends SuperComponent {
   observers = {
     backgroundColor(v) {
       this.setData({
-        computedStyle: `background-color: ${v};`,
+        computedStyle: v ? `background-color: ${v};` : '',
       });
     },
     zIndex(v) {

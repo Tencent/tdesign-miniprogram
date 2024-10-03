@@ -24,7 +24,7 @@ const props: TdTabsProps = {
     type: Boolean,
     value: true,
   },
-  /** 是否展示分割线 */
+  /** `1.1.10`。是否展示分割线 */
   split: {
     type: Boolean,
     value: true,

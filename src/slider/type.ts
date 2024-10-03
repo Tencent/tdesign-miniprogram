@@ -6,27 +6,11 @@
 
 export interface TdSliderProps {
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 是否禁用组件
-   * @default false
    */
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-  /**
-   * 组件类名，分别用于设置 组件外层元素、滑道底部、滑道激活态、滑道禁用态、游标 等元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-bar', 't-class-bar-active', 't-class-bar-disabled', 't-class-cursor'];
   };
   /**
    * 滑块当前值文本。<br />值为 true 显示默认文案；值为 false 不显示滑块当前值文本；<br />值为 `${value}%` 则表示组件会根据占位符渲染文案；<br />值类型为函数时，参数 `value` 标识滑块值，参数 `position=start` 表示范围滑块的起始值，参数 `position=end` 表示范围滑块的终点值
@@ -107,6 +91,14 @@ export interface TdSliderProps {
   defaultValue?: {
     type: null;
     value?: SliderValue;
+  };
+  /**
+   * 是否是垂直的滑块（渲染垂直滑块时，默认高度为400rpx，可通过修改`--td-slider-bar-height`来自定义高度）
+   * @default false
+   */
+  vertical?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
 }
 

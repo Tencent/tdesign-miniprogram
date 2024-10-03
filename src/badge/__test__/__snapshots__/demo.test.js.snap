@@ -28,7 +28,7 @@ exports[`Badge Badge base demo works fine 1`] = `
       <t-icon
         ariaLabel="通知"
         name="notification"
-        size="24"
+        size="48rpx"
       />
     </t-badge>
     <t-badge
@@ -77,7 +77,7 @@ exports[`Badge Badge base demo works fine 1`] = `
       <t-icon
         ariaLabel="通知"
         name="notification"
-        size="24"
+        size="48rpx"
       />
     </t-badge>
     <t-badge
@@ -195,7 +195,7 @@ exports[`Badge Badge theme demo works fine 1`] = `
       <t-icon
         ariaLabel="通知"
         name="notification"
-        size="24"
+        size="48rpx"
       />
     </t-badge>
   </wx-view>
@@ -220,7 +220,7 @@ exports[`Badge Badge theme demo works fine 1`] = `
       <t-icon
         ariaLabel="通知"
         name="notification"
-        size="24"
+        size="48rpx"
       />
     </t-badge>
   </wx-view>
@@ -252,6 +252,7 @@ exports[`Badge Badge theme demo works fine 1`] = `
     角标
   </wx-view>
   <t-cell
+    tClass="t-class-cell"
     title="单行标题"
   >
     <t-badge

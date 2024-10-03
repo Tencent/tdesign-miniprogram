@@ -7,7 +7,7 @@
       class="{{prefix}}-checkbox-option"
       data-item="{{item}}"
       label="{{item.label || item.text || ''}}"
-      value="{{item.value || ''}}"
+      value="{{item.value == null ? '' : item.value}}"
       block="{{item.block || true}}"
       check-all="{{item.checkAll || false}}"
       checked="{{item.checked || false}}"

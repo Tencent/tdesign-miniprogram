@@ -1,3 +1,4 @@
+<t-navbar class="demo-navbar" title="Dialog" leftArrow />
 <view class="demo">
   <view class="demo-title">Dialog 对话框</view>
   <view class="demo-desc">用于显示重要提示或请求用户进行重要操作，一种打断当前操作的模态视图。</view>

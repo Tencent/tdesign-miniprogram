@@ -7,7 +7,7 @@ interface DialogAlertOptionsType {
   context?: Context;
   selector?: string;
   title?: string;
-  content: string;
+  content?: string;
   zIndex?: number;
   asyncClose?: boolean;
   confirmButtonText?: string;
@@ -78,7 +78,7 @@ export default {
       instance._onCancel = reject;
     });
   },
-  close(options: DialogConfirmOptionsType) {
+  close(options?: DialogConfirmOptionsType) {
     const { context, selector = '#t-dialog' } = { ...options };
     const instance = getInstance(context, selector);
     if (instance) {

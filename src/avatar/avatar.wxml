@@ -4,7 +4,7 @@
 
 <view
   class="{{classPrefix}}__wrapper class {{prefix}}-class"
-  style="{{_._style([this.getStyles(isShow, zIndex), style, customStyle])}}"
+  style="{{_._style([this.getStyles(isShow), style, customStyle])}}"
 >
   <t-badge
     color="{{badgeProps.color || ''}}"
@@ -21,7 +21,7 @@
     t-class-count="{{badgeProps.tClassCount}}"
   >
     <view
-      class="{{this.getClass(classPrefix, size, shape, bordered || borderedWithGroup)}} {{prefix}}-class-image"
+      class="{{this.getClass(classPrefix, size || 'medium', shape, bordered)}} {{prefix}}-class-image"
       style="{{this.getSize(size)}}"
       aria-label="{{ ariaLabel || alt ||'头像'}}"
       aria-role="{{ ariaRole || 'img'}}"

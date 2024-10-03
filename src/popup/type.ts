@@ -4,7 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import { TdTransitionProps } from '../transition/index';
+import { OverlayProps } from '../overlay/index';
 
 export interface TdPopupProps {
   /**
@@ -30,14 +30,6 @@ export interface TdPopupProps {
     value?: string;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 动画过渡时间
    * @default 240
    */
@@ -58,7 +50,7 @@ export interface TdPopupProps {
    */
   overlayProps?: {
     type: ObjectConstructor;
-    value?: object;
+    value?: OverlayProps;
   };
   /**
    * 浮层出现位置
@@ -69,7 +61,7 @@ export interface TdPopupProps {
     value?: 'top' | 'left' | 'right' | 'bottom' | 'center';
   };
   /**
-   * 防止滚动穿透
+   * 是否阻止背景滚动
    * @default true
    */
   preventScrollThrough?: {
@@ -85,15 +77,15 @@ export interface TdPopupProps {
     value?: boolean;
   };
   /**
-   * 动画效果定义
+   * 是否使用了自定义导航栏
+   * @default false
    */
-  transitionProps?: {
-    type: ObjectConstructor;
-    value?: TdTransitionProps;
+  usingCustomNavbar?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 是否显示浮层
-   * @default false
    */
   visible?: {
     type: BooleanConstructor;
@@ -101,7 +93,6 @@ export interface TdPopupProps {
   };
   /**
    * 是否显示浮层，非受控属性
-   * @default false
    */
   defaultVisible?: {
     type: BooleanConstructor;
@@ -115,8 +106,4 @@ export interface TdPopupProps {
     type: NumberConstructor;
     value?: number;
   };
-}
-
-export interface PopupVisibleChangeContext {
-  trigger: 'close-btn' | 'overlay';
 }

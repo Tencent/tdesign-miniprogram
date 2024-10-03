@@ -10,7 +10,7 @@
   position: relative;
 }
 
-.custom-capsule__icon + .custom-capsule__icon:before {
+.custom-capsule__icon.home:before {
   content: '';
   display: block;
   position: absolute;
@@ -18,6 +18,6 @@
   top: 50%;
   transform: translateY(-50%);
   width: 1px;
-  height: 36rpx;
+  height: 18px;
   background: #e7e7e7;
 }

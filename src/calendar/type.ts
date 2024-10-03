@@ -16,20 +16,12 @@ export interface TdCalendarProps {
     value?: boolean;
   };
   /**
-   * 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。
+   * 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性
    * @default ''
    */
   confirmBtn?: {
     type: null;
     value?: string | ButtonProps | null;
-  };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 第一天从星期几开始，默认 0 = 周日
@@ -61,7 +53,8 @@ export interface TdCalendarProps {
     value?: number;
   };
   /**
-   * 标题，不传默认为“请选择日期”
+   * 标题
+   * @default '请选择日期'
    */
   title?: {
     type: StringConstructor;
@@ -69,7 +62,7 @@ export interface TdCalendarProps {
   };
   /**
    * 日历的选择类型，single = 单选；multiple = 多选; range = 区间选择
-   * @default single
+   * @default 'single'
    */
   type?: {
     type: StringConstructor;
@@ -80,6 +73,14 @@ export interface TdCalendarProps {
    * @default true
    */
   usePopup?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 是否使用了自定义导航栏
+   * @default false
+   */
+  usingCustomNavbar?: {
     type: BooleanConstructor;
     value?: boolean;
   };

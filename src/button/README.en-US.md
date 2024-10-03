@@ -1,54 +1,135 @@
-:: BASE_DOC ::
+---
+title: Button
+description: Buttons are used to open a closed-loop task, such as "delete" an object, "buy" an item, etc.
+spline: base
+isComponent: true
+---
+
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-83%25-blue" /></span>
+
+
+## Usage
+
+For global import, configure it in `app.json` in the root directory of the miniprogram. For local import, configure it in `index.json` of the page or component that needs to be imported.
+
+```json
+"usingComponents": {
+  "t-button": "tdesign-miniprogram/button/button"
+}
+```
+
+
+## Code Demo
+
+### 01 Component Type
+
+#### Basic Buttons
+
+{{ base }}
+
+#### Icon Button
+
+{{ icon-btn }}
+
+#### Ghost Button
+
+{{ ghost-btn }}
+
+#### Combination Button
+
+{{ group-btn }}
+
+#### Banner Button
+
+{{ block-btn }}
+
+### 02 Component State
+
+#### Buttons for different states
+
+{{ disabled }}
+
+### 03 Component Style
+
+#### Different sizes of buttons
+
+{{ size }}
+
+#### Different shaped buttons
+
+{{ shape }}
+
+#### Different color theme buttons
+
+{{ theme }}
+
+
 
 ## API
+
 ### Button Props
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-t-id | String | - | button tag id | N
+style | Object | - | CSS(Cascading Style Sheets) | N
+custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
+app-parameter | String | - | \- | N
 block | Boolean | false | make button to be a block-level element | N
-content | String / Slot | - | button's children elements | N
+content | String / Slot | - | button's children elements。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 custom-dataset | Object | - | Typescript：`any` | N
-disabled | Boolean | false | disable the button, make it can not be clicked | N
-external-classes | Array | - | `['t-class', 't-class-icon', 't-class-loading']` | N
+disabled | Boolean | undefined | disable the button, make it can not be clicked | N
 ghost | Boolean | false | make background-color to be transparent | N
-icon | String / Object | - | icon name | N
-loading | Boolean | false | set button to be loading state | N
-loading-props | Object | - | Typescript：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/button/type.ts) | N
-shape | String | rectangle | button shape。options：rectangle/square/round/circle | N
-size | String | medium | a button has three size。options：small/medium/large。Typescript：`SizeEnum` | N
-suffix | Slot | - | \- | N
-theme | String | default | button theme。options：default/primary/danger | N
-type | String | - | type of button element, same as formType of Miniprogram。options：submit/reset | N
-variant | String | base | button variant。options：base/outline/text | N
-open-type | String | - | options：contact/share/getPhoneNumber/getUserInfo/launchApp/openSetting/feedback/chooseAvatar/agreePrivacyAuthorization | N
-hover-stop-propagation | Boolean | false | \- | N
+hover-class | String | - | \- | N
 hover-start-time | Number | 20 | \- | N
 hover-stay-time | Number | 70 | \- | N
-lang | String | en | options：en/zh_CN/zh_TW | N
-session-from | String | - | \- | N
-send-message-title | String | 当前标题 | \- | N
-send-message-path | String | 当前分享路径 | \- | N
+hover-stop-propagation | Boolean | false | \- | N
+icon | String / Object | - | icon name | N
+lang | String | - | message language。options: en/zh_CN/zh_TW | N
+loading | Boolean | false | set button to be loading state | N
+loading-props | Object | - | Typescript：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/button/type.ts) | N
+open-type | String | - | open type of button, [Miniprogram Button](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)。options: contact/share/getPhoneNumber/getUserInfo/launchApp/openSetting/feedback/chooseAvatar/agreePrivacyAuthorization | N
+phone-number-no-quota-toast | Boolean | true | \- | N
 send-message-img | String | 截图 | \- | N
-app-parameter | String | - | \- | N
+send-message-path | String | 当前分享路径 | \- | N
+send-message-title | String | 当前标题 | \- | N
+session-from | String | - | \- | N
+shape | String | rectangle | button shape。options: rectangle/square/round/circle | N
 show-message-card | Boolean | false | \- | N
-bindgetuserinfo | Eventhandle | - | \- | N
-bindcontact | Eventhandle | - | \- | N
-bindgetphonenumber | Eventhandle | - | \- | N
-binderror | Eventhandle | - | \- | N
-bindopensetting | Eventhandle | - | \- | N
-bindlaunchapp | Eventhandle | - | \- | N
-bindchooseavatar | Eventhandle | - | \- | N
-bindagreeprivacyauthorization | Eventhandle | - | \-| N
+size | String | medium | a button has four size。options: extra-small/small/medium/large | N
+suffix | Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+t-id | String | - | id | N
+theme | String | default | button theme。options: default/primary/danger/light | N
+type | String | - | type of button element, same as formType of Miniprogram。options: submit/reset | N
+variant | String | base | variant of button。options: base/outline/dashed/text | N
 
 ### Button Events
 
 name | params | description
 -- | -- | --
-tap | `(e: MouseEvent)` | trigger on click
+agreeprivacyauthorization | \- | \-
+chooseavatar | \- | \-
+click | `(e: MouseEvent)` | trigger on click
+contact | \- | \-
+createliveactivity | \- | \-
+error | \- | \-
+getphonenumber | \- | \-
+getrealtimephonenumber | \- | \-
+getuserinfo | \- | \-
+launchapp | \- | \-
+opensetting | \- | \-
+tap | `event` | \-
+
+### Button External Classes
+
+className | Description
+-- | --
+t-class | \-
+t-class-icon | class name of icon
+t-class-loading | class name of loading
 
 
 ### CSS Variables
+
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
@@ -64,7 +145,7 @@ Name | Default Value | Description
 --td-button-danger-dashed-disabled-color | @button-danger-disabled-color | - 
 --td-button-danger-disabled-bg | @error-color-3 | - 
 --td-button-danger-disabled-border-color | @error-color-3 | - 
---td-button-danger-disabled-color | @font-white-1 | - 
+--td-button-danger-disabled-color | @error-color-disabled | - 
 --td-button-danger-outline-active-bg-color | @bg-color-container-active | - 
 --td-button-danger-outline-active-border-color | @error-color-7 | - 
 --td-button-danger-outline-border-color | @button-danger-outline-color | - 
@@ -77,14 +158,14 @@ Name | Default Value | Description
 --td-button-default-active-border-color | @bg-color-component-active | - 
 --td-button-default-bg-color | @bg-color-component | - 
 --td-button-default-border-color | @bg-color-component | - 
---td-button-default-color | @font-gray-1 | - 
+--td-button-default-color | @text-color-primary | - 
 --td-button-default-disabled-bg | @bg-color-component-disabled | - 
 --td-button-default-disabled-border-color | @bg-color-component-disabled | - 
---td-button-default-disabled-color | @font-gray-4 | - 
+--td-button-default-disabled-color | @text-color-disabled | - 
 --td-button-default-outline-active-bg-color | @bg-color-container-active | - 
 --td-button-default-outline-active-border-color | @component-border | - 
 --td-button-default-outline-border-color | @component-border | - 
---td-button-default-outline-color | @font-gray-1 | - 
+--td-button-default-outline-color | @text-color-primary | - 
 --td-button-default-outline-disabled-color | @component-border | - 
 --td-button-default-text-active-bg-color | @bg-color-container-active | - 
 --td-button-extra-small-font-size | @font-size-base | - 
@@ -96,9 +177,12 @@ Name | Default Value | Description
 --td-button-ghost-color | @bg-color-container | - 
 --td-button-ghost-danger-border-color | @error-color | - 
 --td-button-ghost-danger-color | @error-color | - 
---td-button-ghost-disabled-color | rgba(255, 255, 255, 0.35) | - 
+--td-button-ghost-danger-hover-color | @error-color-active | - 
+--td-button-ghost-disabled-color | @font-white-4 | - 
+--td-button-ghost-hover-color | @font-white-2 | - 
 --td-button-ghost-primary-border-color | @brand-color | - 
 --td-button-ghost-primary-color | @brand-color | - 
+--td-button-ghost-primary-hover-color | @brand-color-active | - 
 --td-button-icon-border-radius | 8rpx | - 
 --td-button-icon-spacer | @spacer | - 
 --td-button-large-font-size | @font-size-m | - 

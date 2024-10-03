@@ -1,0 +1,56 @@
+<t-navbar class="demo-navbar" title="Guide" leftArrow />
+
+<view class="demo">
+  <view class="demo-title">Guide 引导</view>
+  <view class="demo-desc">逐步骤进行指引或解释说明的组件，常用于用户不熟悉的或需进行特别强调的页面。</view>
+  <t-demo title="01 组件类型" desc="基础引导" padding>
+    <view style="text-align: center">
+      <t-button theme="primary" content="用户引导" bindtap="handleBaseClick"></t-button>
+    </view>
+    <t-popup visible="{{visibleBasePopup}}" placement="bottom" show-overlay="{{false}}">
+      <view style="height: calc(100vh - {{navbarHeight}}px)">
+        <base wx:if="{{visibleBase}}" bind:close="handleBaseClose" />
+      </view>
+    </t-popup>
+  </t-demo>
+  <t-demo desc="不带遮罩的引导" padding>
+    <view style="text-align: center">
+      <t-button theme="primary" content="用户引导" bindtap="handleNoMaskClick"></t-button>
+    </view>
+    <t-popup visible="{{visibleNoMaskPopup}}" placement="bottom" show-overlay="{{false}}">
+      <view style="height: calc(100vh - {{navbarHeight}}px)">
+        <no-mask wx:if="{{visibleNoMask}}" bind:close="handleNoMaskClose" />
+      </view>
+    </t-popup>
+  </t-demo>
+  <t-demo desc="弹窗形式的引导" padding>
+    <view style="text-align: center">
+      <t-button theme="primary" content="用户引导" bindtap="handleDialogClick"></t-button>
+    </view>
+    <t-popup visible="{{visibleDialogPopup}}" placement="bottom" show-overlay="{{false}}">
+      <view style="height: calc(100vh - {{navbarHeight}}px)">
+        <dialog wx:if="{{visibleDialog}}" bind:close="handleDialogClose" />
+      </view>
+    </t-popup>
+  </t-demo>
+  <t-demo desc="气泡与弹窗混合的引导" padding>
+    <view style="text-align: center">
+      <t-button theme="primary" content="用户引导" bindtap="handleDialog1Click"></t-button>
+    </view>
+    <t-popup visible="{{visibleDialog1Popup}}" placement="bottom" show-overlay="{{false}}">
+      <view style="height: calc(100vh - {{navbarHeight}}px)">
+        <multiple wx:if="{{visibleDialog1}}" bind:close="handleDialog1Close" />
+      </view>
+    </t-popup>
+  </t-demo>
+  <t-demo desc="自定义气泡" padding>
+    <view style="text-align: center">
+      <t-button theme="primary" content="用户引导" bindtap="handleContentClick"></t-button>
+    </view>
+    <t-popup visible="{{visibleContentPopup}}" placement="bottom" show-overlay="{{false}}">
+      <view style="height: calc(100vh - {{navbarHeight}}px)">
+        <content wx:if="{{visibleContent}}" bind:close="handleContentClose" />
+      </view>
+    </t-popup>
+  </t-demo>
+</view>

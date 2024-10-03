@@ -5,8 +5,8 @@
 @cell-group-title-line-height: var(--td-cell-group-title-line-height, 90rpx);
 @cell-group-title-padding-left: var(--td-cell-group-title-padding-left, 32rpx);
 @cell-group-title-bg-color: var(--td-cell-group-title-bg-color, @bg-color-secondarycontainer);
-@cell-group-title-color: var(--td-cell-group-title-color, @font-gray-3);
-@cell-group-border-color: var(--td-cell-group-border-color, @border-color);
+@cell-group-title-color: var(--td-cell-group-title-color, @text-color-placeholder);
+@cell-group-border-color: var(--td-cell-group-border-color, @component-stroke);
 
 .@{prefix}-cell-group {
   position: relative;
@@ -24,11 +24,13 @@
   &--bordered {
     &::before {
       .hairline-top(@cell-group-border-color);
+      transform-origin: top;
       z-index: 1;
     }
 
     &::after {
       .hairline-bottom(@cell-group-border-color);
+      transform-origin: bottom;
       z-index: 1;
     }
   }

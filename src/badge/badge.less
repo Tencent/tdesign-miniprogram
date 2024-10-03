@@ -1,6 +1,7 @@
 @import '../common/style/index.less';
 
 @badge-text-color: var(--td-badge-text-color, @font-white-1);
+@badge-content-text-color: var(--td-badge-content-text-color, @text-color-primary);
 @badge-color: var(--td-badge-bg-color, @error-color);
 @badge-font-size: var(--td-badge-font-size, @font-size-xs);
 @badge-basic-height: var(--td-badge-basic-height, 32rpx);
@@ -18,8 +19,8 @@
 
 .@{prefix}-badge {
   position: relative;
-  display: inline-block;
-  vertical-align: top;
+  display: inline-flex;
+  align-items: start;
 
   &--basic {
     z-index: 100;
@@ -57,33 +58,36 @@
       top: 0;
       right: 0;
     }
+  }
 
-    &--before,
-    &--after {
+  &--ribbon {
+    position: relative;
+    display: inline-block;
+    transform-origin: center center;
+    transform: translate(calc(50% - @badge-basic-height + 1rpx), calc(-50% + @badge-basic-height - 1rpx)) rotate(45deg);
+    border-radius: 0;
+    // padding: 0;
+
+    &::before,
+    &::after {
       content: '';
       position: absolute;
       width: 0;
       height: 0;
       bottom: 0;
       border-bottom: @badge-basic-height solid @badge-color;
+      font-size: 0;
     }
 
-    &--before {
+    &::before {
       left: calc(-1 * @badge-basic-height + 1rpx);
       border-left: @badge-basic-height solid transparent;
     }
 
-    &--after {
+    &::after {
       right: calc(-1 * @badge-basic-height + 1rpx);
       border-right: @badge-basic-height solid transparent;
     }
-  }
-
-  &--ribbon {
-    display: inline-block;
-    transform: rotate(45deg);
-    border-radius: 0;
-    // padding: 0;
   }
 
   &--bubble {
@@ -104,6 +108,7 @@
   }
 
   &__content:not(:empty) + .t-has-count {
+    transform-origin: center center;
     transform: translate(-50%, -50%);
     position: absolute;
     left: 100%;
@@ -113,5 +118,6 @@
   &__content-text {
     display: block;
     line-height: 48rpx;
+    color: @badge-content-text-color;
   }
 }

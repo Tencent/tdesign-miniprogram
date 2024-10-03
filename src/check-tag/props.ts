@@ -16,7 +16,7 @@ const props: TdCheckTagProps = {
     type: null,
     value: undefined,
   },
-  /** 已废弃。标签是否可关闭 */
+  /** 标签是否可关闭 */
   closable: {
     type: Boolean,
     value: false,
@@ -25,25 +25,16 @@ const props: TdCheckTagProps = {
   content: {
     type: null,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态 */
   disabled: {
     type: Boolean,
     value: false,
   },
-  /** 组件类名，用于设置 组件外层元素元素类名 */
-  externalClasses: {
-    type: Array,
-  },
   /** 标签图标 */
   icon: {
     type: null,
   },
-  /** 已废弃。标签类型，有三种：方形、圆角方形、标记型 */
+  /** 标签类型，有三种：方形、圆角方形、标记型 */
   shape: {
     type: String,
     value: 'square',

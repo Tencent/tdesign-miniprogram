@@ -16,7 +16,6 @@
     aria-label="{{ ariaLabel || (badgeProps.dot || badgeProps.count ? _.getBadgeAriaLabel({ ...badgeProps }) : '') }}"
   >
     <view
-      wx:if="{{icon}}"
       class="{{classPrefix}}__icon"
       style="height: {{iconOnly ? 24 : 20}}px"
       aria-hidden="{{ badgeProps.dot || badgeProps.count }}"
@@ -34,11 +33,11 @@
       >
         <template is="icon" data="{{ size: iconOnly ? 24 : 20, ..._icon }}" />
       </t-badge>
-      <template wx:else is="icon" data="{{ ariaHidden: !iconOnly, size: iconOnly ? 24 : 20, ..._icon }}" />
+      <template wx:elif="{{!!icon}}" is="icon" data="{{ ariaHidden: !iconOnly, size: iconOnly ? 24 : 20, ..._icon }}" />
       <slot name="icon" />
     </view>
     <view class="{{_.cls(classPrefix + '__text', [['small', !!icon]])}}">
-      <t-icon wx:if="{{hasChildren}}" name="view-list" size="16" t-class="{{classPrefix}}__icon-menu" />
+      <t-icon wx:if="{{hasChildren}}" name="view-list" size="32rpx" t-class="{{classPrefix}}__icon-menu" />
       <slot />
     </view>
   </view>
@@ -51,7 +50,7 @@
       wx:for="{{subTabBar}}"
       wx:for-item="child"
       wx:for-index="index"
-      wx:key="index"
+      wx:key="value"
       bind:tap="selectChild"
       data-value="{{child.value || index}}"
       aria-role="tab"

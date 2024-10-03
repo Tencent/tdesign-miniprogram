@@ -67,7 +67,7 @@ exports[`Input Input bordered demo works fine 1`] = `
     <t-input
       borderless="{{true}}"
       placeholder="请输入文字"
-      style="border: 2rpx solid rgba(220,220,220,1);border-radius: 12rpx;"
+      style="border: 2rpx solid var(--td-component-border);border-radius: 12rpx;"
       suffixIcon="{{
         Object {
           "ariaLabel": "提示",
@@ -146,20 +146,6 @@ exports[`Input Input prefix demo works fine 1`] = `
     prefixIcon="app"
   />
 </prefix>
-`;
-
-exports[`Input Input size demo works fine 1`] = `
-<size>
-  <t-input
-    label="小规格H48"
-    placeholder="请输入文字"
-    size="small"
-  />
-  <t-input
-    label="中规格H56"
-    placeholder="请输入文字"
-  />
-</size>
 `;
 
 exports[`Input Input special demo works fine 1`] = `

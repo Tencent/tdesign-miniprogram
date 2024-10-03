@@ -1,48 +1,54 @@
-import Toast from 'tdesign-miniprogram/toast/index';
+import SkylineBehavior from '@behaviors/skyline.js';
 
-Page({
-  showText() {
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: '轻提示文字内容',
-    });
-  },
+import { Toast } from 'tdesign-miniprogram';
 
-  showMultiText() {
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: '最多一行展示十个汉字宽度限制最多不超过三行文字',
-    });
-  },
+Component({
+  behaviors: [SkylineBehavior],
 
-  showHorizontalText() {
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: '带横向图标',
-      icon: 'check-circle',
-    });
-  },
+  methods: {
+    showText() {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: '轻提示文字内容',
+      });
+    },
 
-  showVerticalText() {
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: '带竖向图标',
-      icon: 'check-circle',
-      direction: 'column',
-    });
-  },
+    showMultiText() {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: '最多一行展示十个汉字宽度限制最多不超过三行文字',
+      });
+    },
 
-  showLoading() {
-    Toast({
-      context: this,
-      selector: '#t-toast',
-      message: '加载中...',
-      theme: 'loading',
-      direction: 'column',
-    });
+    showHorizontalText() {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: '带横向图标',
+        icon: 'check-circle',
+      });
+    },
+
+    showVerticalText() {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: '带竖向图标',
+        icon: 'check-circle',
+        direction: 'column',
+      });
+    },
+
+    showLoading() {
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message: '加载中...',
+        theme: 'loading',
+        direction: 'column',
+      });
+    },
   },
 });

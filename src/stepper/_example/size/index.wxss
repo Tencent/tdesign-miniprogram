@@ -1,7 +1,6 @@
 .stepper-example {
   padding: 32rpx;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 48rpx;
-  background-color: #fff;
+  display: flex;
+  background-color: var(--bg-color-demo);
+  justify-content: space-between;
 }

@@ -45,7 +45,6 @@ const getUnlimitedQRCodeImage = (appid, appSecret) => {
   getAccessToken(appid, appSecret).then((e) => {
     if (e.access_token) {
       const token = e.access_token;
-      // eslint-disable-next-line no-console
       console.log('==access_token 2h内有效=', token);
       const baseParameter = {
         width: 280, // 小程序码大小
@@ -58,7 +57,7 @@ const getUnlimitedQRCodeImage = (appid, appSecret) => {
       const pageList = getNewPageList(pages.concat(subpackages));
 
       // 循环 pages, 获取相应小程序码
-      pageList.forEach((item, index) => {
+      pageList.forEach((item) => {
         const temp = [...new Set(item.split('/').slice(1))];
         const fileName = temp.join('-');
 
@@ -71,7 +70,6 @@ const getUnlimitedQRCodeImage = (appid, appSecret) => {
             // 因为微信接口 getwxacodeunlimit 成功时返回的是 Buffer ，失败时返回 JSON 结构。这里把返回数据全部当成 Buffer 处理，所以 res.length < 200， 则表示获取失败。
             if (res.length < 200) {
               const { errcode, errmsg } = JSON.parse(res.toString());
-              // eslint-disable-next-line no-console
               console.log('===小程序码获取失败===', item, { errcode, errmsg });
               return;
             }
@@ -88,7 +86,6 @@ const getUnlimitedQRCodeImage = (appid, appSecret) => {
               },
               (err) => {
                 if (err) {
-                  // eslint-disable-next-line no-console
                   console.log('===小程序码图片存储错误===', err);
                 }
               },

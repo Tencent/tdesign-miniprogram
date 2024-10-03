@@ -25,3 +25,23 @@ exports[`Fab Fab base demo works fine 1`] = `
   />
 </base>
 `;
+
+exports[`Fab Fab draggable demo works fine 1`] = `
+<draggable>
+  <t-fab
+    ariaLabel="增加"
+    draggable="{{true}}"
+    icon="gesture-press"
+    text="拖我"
+    usingCustomNavbar="{{true}}"
+    yBounds="{{
+      Array [
+        0,
+        32,
+      ]
+    }}"
+    bind:click="handleClick"
+    bind:move="handleMove"
+  />
+</draggable>
+`;

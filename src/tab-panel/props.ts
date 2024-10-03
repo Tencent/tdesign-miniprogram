@@ -9,19 +9,13 @@ const props: TdTabPanelProps = {
   /** 透传至 Badge 组件 */
   badgeProps: {
     type: Object,
-    value: null,
-  },
-  /** 【实现有误，暂不支持】选项卡内容隐藏时是否销毁 */
-  destroyOnHide: {
-    type: Boolean,
-    value: true,
   },
   /** 是否禁用当前选项卡 */
   disabled: {
     type: Boolean,
     value: false,
   },
-  /** 图标，传对象则透传至 Icon */
+  /** `1.0.0-rc.1`。图标，传对象则透传至 Icon */
   icon: {
     type: null,
   },

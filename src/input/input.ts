@@ -36,8 +36,8 @@ export default class Input extends SuperComponent {
 
   lifetimes = {
     ready() {
-      const { value } = this.properties;
-      this.updateValue(value ?? '');
+      const { value, defaultValue } = this.properties;
+      this.updateValue(value ?? defaultValue ?? '');
     },
   };
 

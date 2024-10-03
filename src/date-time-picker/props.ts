@@ -9,12 +9,17 @@ const props: TdDateTimePickerProps = {
   /** 取消按钮文字 */
   cancelBtn: {
     type: String,
-    value: '',
+    value: '取消',
   },
   /** 确定按钮文字 */
   confirmBtn: {
     type: String,
     value: '',
+  },
+  /**  组件国际化语言，目前支持: 简体中文(zh)、(tc)、英文(en)、日语(ja)、韩语(ko)、俄语(ru)等六种语言 */
+  customLocale: {
+    type: String,
+    value: 'zh',
   },
   /** 选择器的最大可选时间，默认为当前时间+10年 */
   end: {
@@ -39,6 +44,11 @@ const props: TdDateTimePickerProps = {
     type: null,
     value: 'date',
   },
+  /** 透传 `Popup` 组件全部属性 */
+  popupProps: {
+    type: Object,
+    value: {},
+  },
   /** 【开发中】是否在日期旁边显示周几（如周一，周二，周日等） */
   showWeek: {
     type: Boolean,
@@ -57,6 +67,11 @@ const props: TdDateTimePickerProps = {
     type: String,
     value: '',
   },
+  /** 是否使用弹出层包裹 */
+  usePopup: {
+    type: Boolean,
+    value: true,
+  },
   /** 选中值 */
   value: {
     type: null,
@@ -70,16 +85,6 @@ const props: TdDateTimePickerProps = {
   visible: {
     type: Boolean,
     value: false,
-  },
-
-  /** popupProps */
-  popupProps: {
-    type: Object,
-    value: {},
-  },
-  customLocale: {
-    type: String,
-    value: 'zh',
   },
 };
 

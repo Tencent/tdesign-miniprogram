@@ -15,7 +15,6 @@ const mapper = [
   'layout',
   'maxlength',
   'prefix',
-  'size',
   'special',
   'status',
   'suffix',

@@ -4,6 +4,7 @@ exports[`Popup Popup base demo works fine 1`] = `
 <base>
   <t-popup
     placement="top"
+    usingCustomNavbar="{{true}}"
     visible=""
     bind:visible-change="onVisibleChange"
   >
@@ -27,7 +28,9 @@ exports[`Popup Popup base demo works fine 1`] = `
     variant="outline"
     bind:tap="handlePopup"
   >
-    顶部弹出
+    
+  顶部弹出
+
   </t-button>
   <t-button
     block="{{true}}"
@@ -43,7 +46,9 @@ exports[`Popup Popup base demo works fine 1`] = `
     variant="outline"
     bind:tap="handlePopup"
   >
-    左侧弹出
+    
+  左侧弹出
+
   </t-button>
   <t-button
     block="{{true}}"
@@ -59,7 +64,9 @@ exports[`Popup Popup base demo works fine 1`] = `
     variant="outline"
     bind:tap="handlePopup"
   >
-    中间弹出
+    
+  中间弹出
+
   </t-button>
   <t-button
     block="{{true}}"
@@ -75,7 +82,9 @@ exports[`Popup Popup base demo works fine 1`] = `
     variant="outline"
     bind:tap="handlePopup"
   >
-    底部弹出
+    
+  底部弹出
+
   </t-button>
   <t-button
     block="{{true}}"
@@ -91,7 +100,9 @@ exports[`Popup Popup base demo works fine 1`] = `
     variant="outline"
     bind:tap="handlePopup"
   >
-    右侧弹出
+    
+  右侧弹出
+
   </t-button>
 </base>
 `;
@@ -109,7 +120,7 @@ exports[`Popup Popup custom-close demo works fine 1`] = `
       <t-icon
         color="#fff"
         name="close-circle"
-        size="32"
+        size="64rpx"
         tClass="close-btn"
         bind:tap="onClose"
       />
@@ -122,7 +133,9 @@ exports[`Popup Popup custom-close demo works fine 1`] = `
     variant="outline"
     bind:tap="handlePopup"
   >
-    居中弹出层-带自定义关闭按钮
+    
+  居中弹出层-带自定义关闭按钮
+
   </t-button>
 </custom-close>
 `;

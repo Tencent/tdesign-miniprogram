@@ -21,27 +21,12 @@ export interface TdDividerProps {
     value?: string;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 是否虚线（仅在水平分割线有效）
    * @default false
    */
   dashed?: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-  /**
-   * 组件类名，分别用于设置 组件外层类名、分隔线类名 等
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-line', 't-class-content'];
   };
   /**
    * 分隔线类型有两种：水平和垂直

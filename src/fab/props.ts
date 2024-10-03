@@ -10,21 +10,34 @@ const props: TdFabProps = {
   buttonProps: {
     type: Object,
   },
+  /** 是否可拖拽。`true` / `'all'`可拖动<br>`'vertical'`可垂直拖动<br>`'horizontal'`可水平拖动<br>`false`禁止拖动 */
+  draggable: {
+    type: null,
+    value: false,
+  },
   /** 图标 */
   icon: {
     type: String,
     value: '',
+  },
+  /** 悬浮按钮的样式，常用于调整位置（即将废弃，建议使用 `style`） */
+  style: {
+    type: String,
+    value: 'right: 16px; bottom: 32px;',
   },
   /** 文本内容 */
   text: {
     type: String,
     value: '',
   },
-  /** 是否可移动 */
-  draggable: {
+  /** 是否使用了自定义导航栏 */
+  usingCustomNavbar: {
     type: Boolean,
-    optionalTypes: [String],
     value: false,
+  },
+  /** 设置垂直方向边界限制，示例：[48, 48] 或 ['96rpx', 80] */
+  yBounds: {
+    type: Array,
   },
 };
 

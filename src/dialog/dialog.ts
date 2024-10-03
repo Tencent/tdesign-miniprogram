@@ -2,15 +2,17 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { isObject, toCamel } from '../common/utils';
+import useCustomNavbar from '../mixins/using-custom-navbar';
 
 const { prefix } = config;
 const name = `${prefix}-dialog`;
 
 @wxComponent()
 export default class Dialog extends SuperComponent {
+  behaviors = [useCustomNavbar];
+
   options = {
     multipleSlots: true, // 在组件定义时的选项中启用多slot支持
-    addGlobalClass: true,
   };
 
   externalClasses = [
@@ -99,7 +101,7 @@ export default class Dialog extends SuperComponent {
       }
 
       if (evtType !== 'tap') {
-        const success = e.detail?.errMsg.indexOf('ok') > -1;
+        const success = e.detail?.errMsg?.indexOf('ok') > -1;
         this.triggerEvent(success ? 'open-type-event' : 'open-type-error-event', e.detail);
       }
     },
@@ -134,6 +136,7 @@ export default class Dialog extends SuperComponent {
     overlayClick() {
       if (this.properties.closeOnOverlayClick) {
         this.triggerEvent('close', { trigger: 'overlay' });
+        this.close();
       }
       this.triggerEvent('overlay-click');
     },

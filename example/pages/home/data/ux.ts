@@ -15,6 +15,10 @@ const ux = {
       label: '下拉菜单',
     },
     {
+      name: 'Guide',
+      label: '引导',
+    },
+    {
       name: 'Loading',
       label: '加载',
     },
@@ -53,4 +57,34 @@ const ux = {
   ],
 };
 
-export default ux;
+const skylineUx = {
+  name: '反馈',
+  icon: 'chat',
+  childArr: [
+    // {
+    //   name: 'Dialog',
+    //   label: '对话框',
+    // },
+    {
+      name: 'Overlay',
+      label: '遮罩层',
+    },
+    {
+      name: 'Popup',
+      label: '弹出层',
+    },
+    // {
+    //   name: 'PullDownRefresh',
+    //   label: '下拉刷新',
+    // },
+    {
+      name: 'Loading',
+      label: '加载',
+    },
+    {
+      name: 'Toast',
+      label: '轻提示',
+    },
+  ],
+};
+export { ux, skylineUx };

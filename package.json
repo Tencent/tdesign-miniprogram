@@ -1,9 +1,9 @@
 {
   "name": "tdesign-miniprogram",
   "purename": "tdesign",
-  "version": "1.2.6",
+  "version": "1.6.1",
   "description": "tdesign-miniprogram",
-  "title": "tdesign-ßminiprogram",
+  "title": "tdesign-miniprogram",
   "main": "miniprogram_dist/index.js",
   "miniprogram": "miniprogram_dist",
   "keywords": [
@@ -55,6 +55,7 @@
     "@commitlint/config-conventional": "^16.0.0",
     "@rollup/plugin-node-resolve": "^13.0.5",
     "@types/jest": "^27.0.3",
+    "@types/node": "^20.14.11",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "~5.35.0",
     "@vitejs/plugin-vue": "^2.3.3",
@@ -102,7 +103,7 @@
     "stylelint": "^13.13.1",
     "tdesign-icons-view": "^0.2.1",
     "tdesign-publish-cli": "^0.0.12",
-    "tdesign-site-components": "^0.13.10",
+    "tdesign-site-components": "^0.15.2",
     "typescript": "~4.7.2",
     "vite": "^2.7.6",
     "vite-plugin-tdoc": "^2.0.1",

@@ -11,10 +11,6 @@ const props: TdImageProps = {
     type: String,
     value: 'default',
   },
-  /** 组件类名，分别用于设置加载组件外层元素，中间内容等元素类名 */
-  externalClasses: {
-    type: Array,
-  },
   /** 高度，默认单位为`px` */
   height: {
     type: null,
@@ -24,7 +20,7 @@ const props: TdImageProps = {
     type: Boolean,
     value: false,
   },
-  /** 加载态内容。值为 `default` 则表示使用默认加载中风格；值为空或者 `slot` 表示使用插槽渲染，插槽名称为 `loading`；值为其他则表示普通文本内容，如“加载中” */
+  /** 加载态内容。值为 `default` 则表示使用默认加载中风格；值为其他则表示普通文本内容，如“加载中” */
   loading: {
     type: String,
     value: 'default',
@@ -46,6 +42,11 @@ const props: TdImageProps = {
   },
   /** 图片链接 */
   src: {
+    type: String,
+    value: '',
+  },
+  /** 图片标签id */
+  tId: {
     type: String,
     value: '',
   },

@@ -52,7 +52,7 @@
       <view wx:if="{{label && computedProgress > 10}}" class="{{classPrefix }}__info {{prefix}}-class-label">
         <text>{{ _.isString(label)? label: computedProgress + '%' }}</text>
       </view>
-      <slot name="label" />
+      <slot wx:if="{{computedProgress > 10}}" name="label" />
     </view>
     <view
       wx:if="{{label && computedProgress <= 10}}"
@@ -61,7 +61,7 @@
     >
       <text>{{ _.isString(label)? label: computedProgress + '%' }}</text>
     </view>
-    <slot name="label" />
+    <slot wx:if="{{computedProgress <= 10}}" name="label" />
   </view>
 
   <view
@@ -76,11 +76,11 @@
       aria-label="{{ ariaLabel || (isIOS ? this.getIOSAriaLabel(status) : this.getAndroidAriaLabel(status))  }}"
       aria-live="polite"
       class="{{classPrefix}}__canvas--circle"
-      style="background-image: conic-gradient( {{colorCircle || this.STATUS_COLOR[status] || '#0052d9'}} {{computedProgress}}%, {{bgColorBar || '#e7e7e7'}} 0%);"
+      style="background-image: conic-gradient(from var(--td-progress-circle-from), {{colorCircle || this.STATUS_COLOR[status] || 'var(--td-progress-inner-bg-color)'}} {{computedProgress}}%, {{bgColorBar || 'var(--td-progress-track-bg-color)'}} 0%);"
     >
       <view
         class="{{classPrefix}}__canvas--inner {{prefix}}-class-bar"
-        style="{{innerDiameter? 'width:'+ innerDiameter*2 + 'rpx;' + 'height:'+ innerDiameter*2 + 'rpx;': ''}}"
+        style="{{heightBar? '--td-progress-stroke-circle-width:' + heightBar + 'px' : ''}}"
       >
         <view wx:if="{{label}}" class="{{classPrefix}}__info {{prefix}}-class-label" aria-hidden="{{ true }}">
           <template

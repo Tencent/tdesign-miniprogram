@@ -4,6 +4,7 @@ exports[`ActionSheet ActionSheet align demo works fine 1`] = `
 <align>
   <t-action-sheet
     id="t-action-sheet"
+    usingCustomNavbar="{{true}}"
     bind:selected="handleSelected"
   />
   <t-button
@@ -22,6 +23,7 @@ exports[`ActionSheet ActionSheet grid demo works fine 1`] = `
 <grid>
   <t-action-sheet
     id="t-action-sheet"
+    usingCustomNavbar="{{true}}"
     bind:selected="handleSelected"
   />
   <t-button
@@ -49,6 +51,7 @@ exports[`ActionSheet ActionSheet list demo works fine 1`] = `
 <list>
   <t-action-sheet
     id="t-action-sheet"
+    usingCustomNavbar="{{true}}"
     bind:selected="handleSelected"
   />
   <t-button
@@ -85,6 +88,7 @@ exports[`ActionSheet ActionSheet status demo works fine 1`] = `
 <status>
   <t-action-sheet
     id="t-action-sheet"
+    usingCustomNavbar="{{true}}"
     bind:selected="handleSelected"
   />
   <t-button

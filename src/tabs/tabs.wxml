@@ -23,6 +23,7 @@
         scroll-with-animation
         enable-passive
         show-scrollbar="{{false}}"
+        type="list"
         bind:scroll="onScroll"
       >
         <view class="{{_.cls(classPrefix + '__nav', [placement])}}" aria-role="tablist">

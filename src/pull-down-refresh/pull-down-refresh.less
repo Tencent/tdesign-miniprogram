@@ -1,6 +1,6 @@
 @import '../common/style/index.less';
 
-@pull-down-refresh-color: var(--td-pull-down-refresh-color, @font-gray-3);
+@pull-down-refresh-color: var(--td-pull-down-refresh-color, @text-color-placeholder);
 
 .@{prefix}-pull-down-refresh {
   overflow: hidden;
@@ -27,13 +27,12 @@
     align-items: center;
     flex-direction: column;
     overflow: hidden;
+    &--loosing {
+      transition: height ease 0.24s;
+    }
   }
 
   &__text {
     margin: 16rpx 0 0;
-  }
-
-  &__wrap {
-    position: relative;
   }
 }

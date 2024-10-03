@@ -7,13 +7,13 @@
 >
   <view class="{{classPrefix}}__title" tabindex="0">
     <slot name="title" />
-    <text>{{ title || '请选择日期' }}</text>
+    <text wx:if="{{title}}">{{ title }}</text>
   </view>
   <t-icon
     wx:if="{{usePopup}}"
     name="close"
     class="{{classPrefix}}__close-btn"
-    size="24"
+    size="48rpx"
     aria-role="button"
     aria-label="关闭"
     bind:tap="handleClose"
@@ -27,6 +27,7 @@
     scroll-y
     enhanced
     show-scrollbar="{{false}}"
+    bindscroll="onScroll"
   >
     <block wx:for="{{months}}" wx:key="index">
       <view class="{{classPrefix}}__month" id="year_{{item.year}}_month_{{item.month}}"

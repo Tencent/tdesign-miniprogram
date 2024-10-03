@@ -19,12 +19,6 @@ export default [
     qrcode: 'https://tdesign.gtimg.com/miniprogram/case/lining-code.jpg',
   },
   {
-    name: '美宜家',
-    tags: ['电商'],
-    preview: ['https://tdesign.gtimg.com/miniprogram/case/meiyijia.jpg'],
-    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/meiyijia-code.jpg',
-  },
-  {
     name: '沃尔玛',
     tags: ['电商'],
     preview: ['https://tdesign.gtimg.com/miniprogram/case/walmart.jpg'],
@@ -37,16 +31,28 @@ export default [
     qrcode: 'https://tdesign.gtimg.com/miniprogram/case/weida-code.png',
   },
   {
-    name: '小云卡片',
-    tags: ['效率工具'],
-    preview: ['https://tdesign.gtimg.com/miniprogram/case/xiaoyunkapian.png'],
-    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/xiaoyunkapian-code.jpg',
+    name: '上海慈善基金会',
+    tags: ['服务'],
+    preview: ['https://tdesign.gtimg.com/miniprogram/case/cishanjijinhui.jpg'],
+    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/cishanjijinhui-code.png',
   },
   {
-    name: '小楼助教',
-    tags: ['效率工具'],
-    preview: ['https://tdesign.gtimg.com/miniprogram/case/xiaolouzhujiao.png'],
-    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/xiaolouzhujiao-code.png',
+    name: '蓝星球 X',
+    tags: ['服务'],
+    preview: ['https://tdesign.gtimg.com/miniprogram/case/lanxingqiu.png'],
+    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/lanxingqiu-code.jpg',
+  },
+  {
+    name: '曼珠梵星',
+    tags: ['服务'],
+    preview: ['https://tdesign.gtimg.com/miniprogram/case/manzhu.jpg'],
+    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/manzhu-code.jpg',
+  },
+  {
+    name: '区白白',
+    tags: ['服务'],
+    preview: ['https://tdesign.gtimg.com/miniprogram/case/qubaibai.jpg'],
+    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/qubaibai-code.png',
   },
   {
     name: 'frmall',
@@ -54,23 +60,12 @@ export default [
     preview: ['https://tdesign.gtimg.com/miniprogram/case/frmall.png'],
     qrcode: 'https://tdesign.gtimg.com/miniprogram/case/frmall-code.jpg',
   },
-  {
-    name: 'Coding 鱼塘',
-    tags: ['效率工具'],
-    preview: ['https://tdesign.gtimg.com/miniprogram/case/codingyutang.png'],
-    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/codingyutang-code.jpg',
-  },
+
   {
     name: '智写 AI',
     tags: ['效率工具'],
     preview: ['https://tdesign.gtimg.com/miniprogram/case/zhixieai.png'],
     qrcode: 'https://tdesign.gtimg.com/miniprogram/case/zhixieai-code.png',
-  },
-  {
-    name: '好用二维码',
-    tags: ['效率工具'],
-    preview: ['https://tdesign.gtimg.com/miniprogram/case/haoyongqrcode.png'],
-    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/haoyongqrcode-code.png',
   },
   {
     name: '去野户外club',
@@ -83,5 +78,23 @@ export default [
     tags: ['效率工具'],
     preview: ['https://tdesign.gtimg.com/miniprogram/case/bikula.png'],
     qrcode: 'https://tdesign.gtimg.com/miniprogram/case/bikula-code.jpeg',
+  },
+  {
+    name: 'Coding 鱼塘',
+    tags: ['效率工具'],
+    preview: ['https://tdesign.gtimg.com/miniprogram/case/codingyutang.png'],
+    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/codingyutang-code.jpg',
+  },
+  {
+    name: '小云卡片',
+    tags: ['效率工具'],
+    preview: ['https://tdesign.gtimg.com/miniprogram/case/xiaoyunkapian.png'],
+    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/xiaoyunkapian-code.jpg',
+  },
+  {
+    name: '好用二维码',
+    tags: ['效率工具'],
+    preview: ['https://tdesign.gtimg.com/miniprogram/case/haoyongqrcode.png'],
+    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/haoyongqrcode-code.png',
   },
 ];

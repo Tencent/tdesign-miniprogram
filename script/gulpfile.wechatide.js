@@ -1,7 +1,6 @@
-/* eslint-disable no-console */
-const gulp = require('gulp');
 const path = require('path');
 const fs = require('fs');
+const gulp = require('gulp');
 const config = require('./config.js');
 
 const wechatideConfig = {

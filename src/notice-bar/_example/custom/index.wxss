@@ -1,8 +1,8 @@
-.external-class {
-  opacity: 1 !important;
-  background: rgba(243, 243, 243, 1) !important;
+page .external-class {
+  opacity: 1;
+  background: var(--td-bg-color-secondarycontainer, #f3f3f3);
 }
 
-.external-class-prefix-icon {
-  color: rgba(0, 0, 0, 0.9) !important;
+page .external-class-prefix-icon {
+  color: var(--td-text-color-primary);
 }

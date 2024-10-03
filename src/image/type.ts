@@ -6,27 +6,12 @@
 
 export interface TdImageProps {
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 加载失败时显示的内容。值为 `default` 则表示使用默认加载失败风格；值为空或者 `slot` 表示使用插槽渲染，插槽名称为 `error`；值为其他则表示普通文本内容，如“加载失败”
    * @default 'default'
    */
   error?: {
     type: StringConstructor;
     value?: string;
-  };
-  /**
-   * 组件类名，分别用于设置加载组件外层元素，中间内容等元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-load'];
   };
   /**
    * 高度，默认单位为`px`
@@ -44,7 +29,7 @@ export interface TdImageProps {
     value?: boolean;
   };
   /**
-   * 加载态内容。值为 `default` 则表示使用默认加载中风格；值为空或者 `slot` 表示使用插槽渲染，插槽名称为 `loading`；值为其他则表示普通文本内容，如“加载中”
+   * 加载态内容。值为 `default` 则表示使用默认加载中风格；值为其他则表示普通文本内容，如“加载中”
    * @default 'default'
    */
   loading?: {
@@ -94,6 +79,14 @@ export interface TdImageProps {
    * @default ''
    */
   src?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 图片标签id
+   * @default ''
+   */
+  tId?: {
     type: StringConstructor;
     value?: string;
   };

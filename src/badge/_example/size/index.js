@@ -1,5 +1,1 @@
-Component({
-  options: {
-    styleIsolation: 'apply-shared',
-  },
-});
+Component({});

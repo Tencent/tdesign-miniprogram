@@ -15,7 +15,7 @@ const props: TdDialogProps = {
     type: String,
     value: 'horizontal',
   },
-  /** 取消按钮，可自定义。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制取消事件 */
+  /** 取消按钮，可自定义。值为 null 则不显示取消按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 Slot 自定义按钮时，需自行控制取消事件 */
   cancelBtn: {
     type: null,
   },
@@ -27,9 +27,9 @@ const props: TdDialogProps = {
   /** 点击蒙层时是否触发关闭事件 */
   closeOnOverlayClick: {
     type: Boolean,
-    value: undefined,
+    value: false,
   },
-  /** 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 TNode 自定义按钮时，需自行控制确认事件 */
+  /** 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。使用 Slot 自定义按钮时，需自行控制确认事件 */
   confirmBtn: {
     type: null,
   },
@@ -55,6 +55,11 @@ const props: TdDialogProps = {
   showOverlay: {
     type: Boolean,
     value: true,
+  },
+  /** 自定义组件样式 */
+  style: {
+    type: String,
+    value: '',
   },
   /** 标题 */
   title: {

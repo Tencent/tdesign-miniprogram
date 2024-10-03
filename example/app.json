@@ -1,57 +1,96 @@
 {
+  "darkmode": true,
   "pages": [
     "pages/home/home",
     "pages/button/button",
+    "pages/button/skyline/button",
     "pages/tabs/tabs",
     "pages/icon/icon",
+    "pages/icon/skyline/icon",
     "pages/loading/loading",
+    "pages/loading/skyline/loading",
     "pages/progress/progress",
+    "pages/progress/skyline/progress",
     "pages/cascader/cascader",
     "pages/cell/cell",
+    "pages/cell/skyline/cell",
     "pages/cell-group/cell-group",
     "pages/collapse/collapse",
+    "pages/collapse/skyline/collapse",
     "pages/input/input",
+    "pages/input/skyline/input",
     "pages/badge/badge",
+    "pages/badge/skyline/badge",
     "pages/textarea/textarea",
+    "pages/textarea/skyline/textarea",
     "pages/message/message",
     "pages/toast/toast",
+    "pages/toast/skyline/toast",
     "pages/stepper/stepper",
+    "pages/stepper/skyline/stepper",
     "pages/slider/slider",
+    "pages/slider/skyline/slider",
     "pages/radio/radio",
+    "pages/radio/skyline/radio",
     "pages/switch/switch",
+    "pages/switch/skyline/switch",
     "pages/sticky/sticky",
     "pages/tag/tag",
+    "pages/tag/skyline/tag",
     "pages/checkbox/checkbox",
+    "pages/checkbox/skyline/checkbox",
     "pages/gulp-error/index",
     "pages/fab/fab",
+    "pages/fab/skyline/fab",
     "pages/tab-bar/tab-bar",
+    "pages/tab-bar/skyline/tab-bar",
     "pages/transition/transition",
     "pages/popup/popup",
+    "pages/popup/skyline/popup",
     "pages/steps/steps",
+    "pages/steps/skyline/steps",
     "pages/dropdown-menu/dropdown-menu",
     "pages/drawer/drawer",
+    "pages/drawer/skyline/drawer",
     "pages/pull-down-refresh/pull-down-refresh",
+    "pages/pull-down-refresh/skyline/pull-down-refresh",
     "pages/skeleton/skeleton",
+    "pages/skeleton/skyline/skeleton",
     "pages/footer/footer",
+    "pages/footer/skyline/footer",
     "pages/divider/divider",
+    "pages/divider/skyline/divider",
     "pages/empty/empty",
+    "pages/empty/skyline/empty",
     "pages/back-top/back-top",
+    "pages/back-top/skyline/back-top",
     "pages/grid/grid",
     "pages/upload/upload",
     "pages/count-down/count-down",
+    "pages/count-down/skyline/count-down",
     "pages/overlay/overlay",
+    "pages/overlay/skyline/overlay",
     "pages/image/image",
+    "pages/image/skyline/image",
     "pages/search/search",
+    "pages/search/skyline/search",
     "pages/home/navigateFail/navigateFail",
     "pages/navbar/navbar",
+    "pages/navbar/skyline/navbar",
     "pages/date-time-picker/date-time-picker",
+    "pages/date-time-picker/skyline/date-time-picker",
     "pages/notice-bar/notice-bar",
     "pages/image-viewer/image-viewer",
+    "pages/image-viewer/skyline/image-viewer",
     "pages/result/result",
+    "pages/result/skyline/result",
     "pages/result/result-page",
     "pages/link/link",
+    "pages/link/skyline/link",
     "pages/col/col",
-    "pages/color-picker/color-picker"
+    "pages/col/skyline/col",
+    "pages/color-picker/color-picker",
+    "pages/guide/guide"
   ],
   "subpackages": [
     {
@@ -64,7 +103,7 @@
     },
     {
       "root": "pages/avatar/",
-      "pages": ["avatar"]
+      "pages": ["avatar", "skyline/avatar"]
     },
     {
       "root": "pages/calendar/",
@@ -72,11 +111,11 @@
     },
     {
       "root": "pages/dialog/",
-      "pages": ["dialog"]
+      "pages": ["dialog", "skyline/dialog"]
     },
     {
       "root": "pages/picker/",
-      "pages": ["picker"]
+      "pages": ["picker", "skyline/picker"]
     },
     {
       "root": "pages/rate/",
@@ -84,7 +123,7 @@
     },
     {
       "root": "pages/swiper/",
-      "pages": ["swiper"]
+      "pages": ["swiper", "skyline/swiper"]
     },
     {
       "root": "pages/swipe-cell/",
@@ -99,17 +138,30 @@
       "pages": ["indexes", "base/index", "custom/index"]
     }
   ],
+  "themeLocation": "theme.json",
   "usingComponents": {
     "t-demo": "./components/demo-block/index",
     "t-button": "tdesign-miniprogram/button/button",
-    "t-icon": "tdesign-miniprogram/icon/icon"
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-navbar": "tdesign-miniprogram/navbar/navbar"
   },
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#f6f6f6",
-    "backgroundColor": "#f6f6f6",
     "navigationBarTitleText": "TDesign",
-    "navigationBarTextStyle": "black"
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "@navTxtStyle"
   },
-  "sitemapLocation": "sitemap.json"
+  "resolveAlias": {
+    "@behaviors/*": "behaviors/*"
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "rendererOptions": {
+    "skyline": {
+      "disableABTest": true,
+      "defaultDisplayBlock": true,
+      "defaultContentBox": true,
+      "sdkVersionBegin": "3.4.3",
+      "sdkVersionEnd": "15.255.255"
+    }
+  }
 }

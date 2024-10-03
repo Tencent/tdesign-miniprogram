@@ -5,7 +5,7 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['base', 'close', 'cover', 'display', 'theme'];
+const mapper = ['base', 'close', 'cover', 'theme'];
 
 describe('Toast', () => {
   mapper.forEach((demoName) => {

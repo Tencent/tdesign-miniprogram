@@ -3,10 +3,10 @@
   "usingComponents": {
     "base": "./base",
     "label": "./label",
-    "max": "./max",
     "step": "./step",
     "range": "./range",
     "disabled": "./disabled",
-    "capsule": "./capsule"
+    "capsule": "./capsule",
+    "vertical": "./vertical"
   }
 }

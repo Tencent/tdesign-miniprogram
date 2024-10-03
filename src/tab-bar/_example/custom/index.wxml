@@ -1,8 +1,8 @@
 <view class="wrapper">
-  <t-tab-bar value="{{value}}" bindchange="onChange">
+  <t-tab-bar t-class="t-tab-bar" value="{{value}}" bindchange="onChange">
     <t-tab-bar-item
       wx:for="{{list}}"
-      wx:key="index"
+      wx:key="value"
       value="{{item.value}}"
       icon="{{item.icon}}"
       ariaLabel="{{item.ariaLabel}}"

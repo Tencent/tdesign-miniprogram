@@ -1,3 +1,4 @@
+<t-navbar class="demo-navbar" title="Indexes" leftArrow />
 <view class="indexes">
   <view class="demo-title">Indexes 索引</view>
   <view class="demo-desc">用于页面中信息快速检索，可以根据目录中的页码快速找到所需的内容。</view>

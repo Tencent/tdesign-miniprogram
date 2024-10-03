@@ -5,6 +5,7 @@
   placement="{{placement}}"
   title="标题"
   items="{{sidebar}}"
+  usingCustomNavbar
   bind:overlay-click="overlayClick"
   bind:item-click="itemClick"
 ></t-drawer>

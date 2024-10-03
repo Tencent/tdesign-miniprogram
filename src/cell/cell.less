@@ -10,16 +10,16 @@
 @cell-border-width: var(--td-cell-border-width, 1px);
 @cell-border-left-space: var(--td-cell-border-left-space, @cell-horizontal-padding);
 @cell-border-right-space: var(--td-cell-border-right-space, 0);
-@cell-description-color: var(--td-cell-description-color, @font-gray-2);
+@cell-description-color: var(--td-cell-description-color, @text-color-secondary);
 @cell-description-font-size: var(--td-cell-description-font-size, @font-size-base);
 @cell-description-line-height: var(--td-cell-description-line-height, 44rpx);
-@cell-note-color: var(--td-cell-note-color, @font-gray-3);
+@cell-note-color: var(--td-cell-note-color, @text-color-placeholder);
 @cell-note-font-size: var(--td-cell-note-font-size, @font-size-m);
-@cell-title-color: var(--td-cell-title-color, @font-gray-1);
+@cell-title-color: var(--td-cell-title-color, @text-color-primary);
 @cell-title-font-size: var(--td-cell-title-font-size, @font-size-m);
 @cell-left-icon-color: var(--td-cell-left-icon-color, @brand-color);
 @cell-left-icon-font-size: var(--td-cell-left-icon-font-size, 48rpx);
-@cell-right-icon-color: var(--td-cell-right-icon-color, @font-gray-3);
+@cell-right-icon-color: var(--td-cell-right-icon-color, @text-color-placeholder);
 @cell-right-icon-font-size: var(--td-cell-right-icon-font-size, 48rpx);
 @cell-required-color: var(--td-cell-required-color, @error-color-6);
 @cell-required-font-size: var(--td-cell-required-font-size, @font-size-m);
@@ -31,7 +31,6 @@
   display: flex;
   box-sizing: border-box;
   width: 100%;
-  overflow: hidden;
   padding: @cell-vertical-padding @cell-horizontal-padding;
   line-height: @cell-line-height;
   height: @cell-height;
@@ -39,6 +38,7 @@
 
   &::after {
     .hairline-bottom(@cell-border-color, @cell-border-width);
+    transform-origin: bottom;
     left: @cell-border-left-space;
     right: @cell-border-right-space;
   }

@@ -25,7 +25,13 @@ spline: explain
 npm i tdesign-miniprogram -S --production
 ```
 
-> 安装完之后，需要在微信开发者工具中对 npm 进行构建：`工具 -  构建 npm`
+> 安装完之后，需要在微信开发者工具中对 npm 进行构建：`工具 -  构建 npm`。（构建时若出现`NPM packages not found`字样，请到 `project.config.json` 文件补充 `packNpmManually` 和 `packNpmRelationList` 配置项，具体见[NPM 支持](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html?search-key=npm)）
+
+
+> 构建成功后勾选 `将 JS 编译成 ES5`
+> <br/>
+><img width="200" src="https://tdesign.gtimg.com/miniprogram/docs/getting-started.png" />
+
 
 ## 修改 app.json
 

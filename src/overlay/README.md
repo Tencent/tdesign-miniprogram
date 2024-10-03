@@ -26,6 +26,12 @@ isComponent: true
 
 ## 代码演示
 
+<a href="https://developers.weixin.qq.com/s/nS8fQimZ7cSG" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+
+<blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
+<p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
+</blockquote>
+
 ### 基础使用
 
 {{ base }}
@@ -34,13 +40,16 @@ isComponent: true
 
 ### Overlay Props
 
-名称 | 类型 | 默认值 | 说明 | 必传
+名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
-visible | Boolean | false | 是否展示 | N
-zIndex | Number | 11000 | 遮罩层及 | N
+style | Object | - | 样式 | N
+custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
+background-color | String | - | 遮罩层的背景色 | N
 duration | Number | 300 | 背景色过渡时间，单位毫秒 | N
-backgroundColor | String | - | 遮罩层的背景色 | N
-preventScrollThrough | Boolean | true | 防止滚动穿透，即不允许点击和滚动 | N
+prevent-scroll-through | Boolean | true | 防止滚动穿透，即不允许点击和滚动 | N
+using-custom-navbar | Boolean | false | 是否使用了自定义导航栏 | N
+visible | Boolean | false | 是否展示 | N
+z-index | Number | 11000 | 遮罩层级 | N
 
 ### Overlay Events
 
@@ -48,10 +57,10 @@ preventScrollThrough | Boolean | true | 防止滚动穿透，即不允许点击�
 -- | -- | --
 click | `({ visible: boolean })` | 点击遮罩时触发
 
+### CSS Variables
 
-### CSS 变量
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-overlay-bg-color | @font-gray-2 | - 
---td-overlay-transition-duration | 300ms | - 
+--td-overlay-transition-duration | 300ms | -

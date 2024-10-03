@@ -1,4 +1,3 @@
-/* eslint-disable */
 const { execSync } = require('child_process');
 const fs = require('fs');
 const readline = require('readline');
@@ -14,7 +13,6 @@ function updateVersion() {
     rl.setPrompt(`当前 package.json 版本号为: ${pkg.version}\n请输入本次要发布的版本号:(可按回车跳过)\n`);
     rl.prompt();
 
-    // eslint-disable-next-line consistent-return
     rl.on('line', (input) => {
       let newVersion = '';
       if (!input) {
@@ -26,7 +24,7 @@ function updateVersion() {
       } else {
         newVersion = input;
       }
-      const newPkg = JSON.stringify(Object.assign({}, pkg, { version: newVersion }), null, 2);
+      const newPkg = JSON.stringify({ ...pkg, version: newVersion }, null, 2);
       fs.writeFileSync('package.json', `${newPkg}\n`, 'utf8');
       console.log('\x1B[32m%s\x1B[0m', '\n🎉 good job! package.json 文件已更新.\n');
       rl.close();
@@ -58,9 +56,9 @@ async function updateChangeLog() {
   console.log('\x1B[32m%s\x1B[0m', '正在生成 changeLog... \n');
 
   const lastCommit = getLastChangeLogCommit();
-  let initialChangelogStr = fs.readFileSync('CHANGELOG.md', 'utf8');
+  const initialChangelogStr = fs.readFileSync('CHANGELOG.md', 'utf8');
 
-  const pageDataStr = initialChangelogStr.match(/---[\s\S]+---/)[0] + '\n';
+  const pageDataStr = `${initialChangelogStr.match(/---[\s\S]+---/)[0]}\n`;
   const data = initialChangelogStr.split(/---[\s\S]+---/);
   data.unshift(pageDataStr);
 
@@ -68,7 +66,7 @@ async function updateChangeLog() {
     standardChangelog({}, null, { from: lastCommit, to: 'HEAD' })
       .on('data', (chunk) => {
         let changeLogStr = chunk.toString().trim();
-        changeLogStr = changeLogStr.replace(/\(([\d\-]+)\)/g, '`$1`');
+        changeLogStr = changeLogStr.replace(/\(([\d-]+)\)/g, '`$1`');
         changeLogStr = changeLogStr.replace(/^#\s/g, '## ').trim();
         data.splice(1, 0, `${changeLogStr}\n`);
       })

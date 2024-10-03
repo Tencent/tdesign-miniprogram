@@ -4,6 +4,8 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { PopupProps } from '../popup/index';
+
 export interface TdActionSheetProps {
   /**
    * 水平对齐方式
@@ -43,12 +45,29 @@ export interface TdActionSheetProps {
   items: {
     type: ArrayConstructor;
     value?: Array<string | ActionSheetItem>;
+    required?: boolean;
+  };
+  /**
+   * popupProps透传
+   * @default {}
+   */
+  popupProps?: {
+    type: ObjectConstructor;
+    value?: PopupProps;
   };
   /**
    * 是否显示取消按钮
    * @default true
    */
   showCancel?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 是否显示遮罩层
+   * @default true
+   */
+  showOverlay?: {
     type: BooleanConstructor;
     value?: boolean;
   };
@@ -61,12 +80,21 @@ export interface TdActionSheetProps {
     value?: 'list' | 'grid';
   };
   /**
+   * 是否使用了自定义导航栏
+   * @default false
+   */
+  usingCustomNavbar?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 显示与隐藏
    * @default false
    */
   visible: {
     type: BooleanConstructor;
     value?: boolean;
+    required?: boolean;
   };
   /**
    * 显示与隐藏，非受控属性
@@ -75,19 +103,7 @@ export interface TdActionSheetProps {
   defaultVisible: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-  /**
-   * 是否显示遮罩层
-   * @default true
-   */
-  showOverlay: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /** popupProps透传 */
-  popupProps: {
-    type: ObjectConstructor;
-    value?: object;
+    required?: boolean;
   };
 }
 

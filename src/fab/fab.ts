@@ -1,6 +1,8 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import useCustomNavbar from '../mixins/using-custom-navbar';
+import { unitConvert } from '../common/utils';
 
 const systemInfo = wx.getSystemInfoSync();
 const { prefix } = config;
@@ -14,6 +16,8 @@ const baseButtonProps = {
 
 @wxComponent()
 export default class Fab extends SuperComponent {
+  behaviors = [useCustomNavbar];
+
   properties = props;
 
   externalClasses = [`class`, `${prefix}-class`, `${prefix}-class-button`];
@@ -26,7 +30,7 @@ export default class Fab extends SuperComponent {
   };
 
   observers = {
-    'buttonProps.**, icon, text, ariaLabel'() {
+    'buttonProps.**, icon, text, ariaLabel, yBounds'() {
       this.setData(
         {
           buttonData: {
@@ -38,7 +42,7 @@ export default class Fab extends SuperComponent {
             ariaLabel: this.properties.ariaLabel,
           },
         },
-        this.computedSize,
+        this.computedSize?.bind(this),
       );
     },
   };
@@ -48,11 +52,15 @@ export default class Fab extends SuperComponent {
       this.triggerEvent('click', e);
     },
     onMove(e) {
+      const { yBounds } = this.properties;
+      const { distanceTop } = this.data;
+
       const { x, y, rect } = e.detail;
       const maxX = systemInfo.windowWidth - rect.width; // 父容器宽度 - 拖动元素宽度
-      const maxY = systemInfo.windowHeight - rect.height; // 父容器高度 - 拖动元素高度
+      const maxY = systemInfo.windowHeight - Math.max(distanceTop, unitConvert(yBounds[0])) - rect.height; // 父容器高度 - 拖动元素高度
+
       const right = Math.max(0, Math.min(x, maxX));
-      const bottom = Math.max(0, Math.min(y, maxY));
+      const bottom = Math.max(0, unitConvert(yBounds[1]), Math.min(y, maxY));
       this.setData({
         moveStyle: `right: ${right}px; bottom: ${bottom}px;`,
       });
@@ -60,7 +68,12 @@ export default class Fab extends SuperComponent {
     computedSize() {
       if (!this.properties.draggable) return;
       const insChild = this.selectComponent('#draggable');
-      insChild.computedRect(); // button更新时，重新获取其尺寸
+      // button更新时，重新获取其尺寸
+      if (this.properties?.yBounds?.[1]) {
+        this.setData({ moveStyle: `bottom: ${unitConvert(this.properties.yBounds[1])}px` }, insChild.computedRect);
+      } else {
+        insChild.computedRect();
+      }
     },
   };
 }

@@ -1,3 +1,4 @@
+<t-navbar class="demo-navbar" title="Tag" leftArrow />
 <view class="demo">
   <view class="demo-title">Tag 标签</view>
   <view class="demo-desc">用于表明主体的类目，属性或状态。</view>

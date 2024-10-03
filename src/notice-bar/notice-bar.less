@@ -6,7 +6,7 @@
 @notice-bar-line-height: 44rpx;
 @notice-bar-icon-font-size: 44rpx;
 
-@notice-bar-font-color: var(--td-notice-bar-font-color, @font-gray-1); // 公告栏文本颜色
+@notice-bar-font-color: var(--td-notice-bar-font-color, @text-color-primary); // 公告栏文本颜色
 @notice-bar-info-color: var(--td-notice-bar-info-color, @brand-color); // 'info' 主题色
 @notice-bar-info-bg-color: var(--td-notice-bar-info-bg-color, @brand-color-light); // 'info' 主题背景色
 @notice-bar-success-color: var(--td-notice-bar-success-color, @success-color); // 'success' 主题色
@@ -15,7 +15,7 @@
 @notice-bar-warning-bg-color: var(--td-notice-bar-warning-bg-color, @warning-color-1); // 'warning' 主题背景色
 @notice-bar-error-color: var(--td-notice-bar-error-color, @error-color-6); // 'error' 主题色
 @notice-bar-error-bg-color: var(--td-notice-bar-error-bg-color, @error-color-1); // 'error' 主题背景色
-@notice-bar-suffix-icon-color: var(--td-notice-bar-suffix-icon-color, @font-gray-3); // 后缀图标颜色
+@notice-bar-suffix-icon-color: var(--td-notice-bar-suffix-icon-color, @text-color-placeholder); // 后缀图标颜色
 @notice-bar-operation-font-color: var(--td-notice-bar-operation-font-color, @brand-color); // 额外信息文本颜色
 
 @notice-bar: ~'@{prefix}-notice-bar';
@@ -76,6 +76,10 @@
     vertical-align: top;
     color: @notice-bar-operation-font-color;
     font-weight: 700;
+
+    &:empty {
+      display: none;
+    }
   }
 
   &__suffix-icon:not(:empty) {

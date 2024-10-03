@@ -24,21 +24,11 @@
     wx:if="{{this.isShowBadge({dot,count,showZero})}}"
     id="{{descriptionID}}"
     class="{{this.getBadgeInnerClass({dot, size, shape, count})}} {{prefix}}-has-count {{prefix}}-class-count"
-    style="{{this.getBadgeStyles({color, offset})}}"
+    style="{{_._style([this.getBadgeStyles({color, offset})])}}"
     aria-hidden="true"
     aria-label="{{ ariaLabel || _.getBadgeAriaLabel({dot, count, maxCount}) }}"
   >
-    <view
-      wx:if="{{shape == 'ribbon'}}"
-      class="t-badge__ribbon--before"
-      style="{{color ? 'border-color: ' + color : ''}}"
-    />
     {{ this.getBadgeValue({dot, count, maxCount}) }}
-    <view
-      wx:if="{{shape == 'ribbon'}}"
-      class="t-badge__ribbon--after"
-      style="{{color ? 'border-color: ' + color : ''}}"
-    />
   </view>
   <slot name="count" />
 </view>

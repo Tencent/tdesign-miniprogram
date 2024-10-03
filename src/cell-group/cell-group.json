@@ -1,3 +1,4 @@
 {
-  "component": true
+  "component": true,
+  "styleIsolation": "apply-shared"
 }

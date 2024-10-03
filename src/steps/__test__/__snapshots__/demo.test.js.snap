@@ -122,7 +122,7 @@ exports[`Steps Steps special demo works fine 1`] = `
         <t-icon
           color="rgba(0, 0, 0, .4)"
           name="chevron-right"
-          size="22"
+          size="44rpx"
           slot="title-right"
         />
       </t-step-item>
@@ -132,7 +132,7 @@ exports[`Steps Steps special demo works fine 1`] = `
         <t-icon
           color="rgba(0, 0, 0, .4)"
           name="chevron-right"
-          size="22"
+          size="44rpx"
           slot="title-right"
         />
       </t-step-item>
@@ -142,7 +142,7 @@ exports[`Steps Steps special demo works fine 1`] = `
         <t-icon
           color="rgba(0, 0, 0, .4)"
           name="chevron-right"
-          size="22"
+          size="44rpx"
           slot="title-right"
         />
       </t-step-item>
@@ -152,7 +152,7 @@ exports[`Steps Steps special demo works fine 1`] = `
         <t-icon
           color="rgba(0, 0, 0, .4)"
           name="chevron-right"
-          size="22"
+          size="44rpx"
           slot="title-right"
         />
       </t-step-item>
@@ -415,7 +415,7 @@ exports[`Steps Steps vertical demo works fine 1`] = `
           <wx-image
             alt="图标"
             mode="widthFix"
-            src="https://tdesign.gtimg.com/miniprogram/images/steps1.png"
+            src="https://tdesign.gtimg.com/mobile/demos/steps1.png"
             style="width: 100%"
           />
         </wx-view>

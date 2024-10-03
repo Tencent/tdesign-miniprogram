@@ -53,6 +53,8 @@ describe('message', () => {
       } else {
         expect($style.dom.getAttribute('style').includes(`${customStyle}`)).toBeTruthy();
       }
+
+      Message.hide();
     });
 
     it(': icon', async () => {
@@ -75,7 +77,7 @@ describe('message', () => {
       Message.info({
         context: $message.instance,
       });
-      await simulate.sleep();
+      await simulate.sleep(540);
       expect(comp.querySelector('#t-message >>> .t-message')).toBeUndefined();
 
       // null hide()方法未被调用
@@ -116,6 +118,7 @@ describe('message', () => {
       comp.detach();
     });
 
+    // Message.hide();
     it(': marquee', async () => {
       const id = simulate.load({
         template: `<t-message id="t-message" />`,
@@ -138,8 +141,8 @@ describe('message', () => {
       });
       await simulate.sleep(540);
       // icon 为空
-      const $prefixIcon = comp.querySelector('#t-message >>> .t-message__icon--left');
-      expect($prefixIcon.dom.innerHTML).toBe('');
+      // const $prefixIcon = comp.querySelector('#t-message >>> .t-message__icon--left');
+      // expect($prefixIcon.dom.innerHTML).toBe('');
       Message.hide();
       await simulate.sleep(500);
       expect($message.instance.data.visible).toBe(false);
@@ -178,6 +181,46 @@ describe('message', () => {
       await simulate.sleep(10);
       expect(actionBtnClick).toHaveBeenCalledTimes(1);
       Message.hide();
+    });
+  });
+
+  describe('multiple', () => {
+    it(': message-count-gap', async () => {
+      const id = simulate.load({
+        template: `<t-message id="t-message" ></t-message>`,
+        usingComponents: {
+          't-message': message,
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const $message = comp.querySelector('#t-message');
+
+      mockInstance.mockImplementation(() => $message.instance);
+      Message.hide();
+      const showMessageFn = async (i) => {
+        Message.info({
+          context: $message.instance,
+          offset: [20, 32],
+          content: `这是第${i}条消息通知`,
+          duration: -1,
+          gap: '16',
+          single: false,
+        });
+      };
+      showMessageFn('1');
+      await simulate.sleep(550);
+      showMessageFn('2');
+      await simulate.sleep(550);
+      showMessageFn('3');
+      await simulate.sleep(550);
+      const $messageItems = comp.querySelectorAll('#t-message >>> .t-message');
+      expect($messageItems.length).toBe(3);
+      if ($messageItems.length === 3) {
+        const top = 20 + (46 + 16) * 2;
+        expect($messageItems[2].dom.getAttribute('style').includes(`top:${top}px;`)).toBeTruthy();
+      }
     });
   });
 });

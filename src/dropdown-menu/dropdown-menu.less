@@ -1,9 +1,10 @@
 @import '../common/style/index.less';
 
+@dropdown-menu-height: var(--td-dropdown-menu-height, 96rpx);
 @dropdown-menu-bg-color: var(--td-dropdown-menu-bg-colorm, @bg-color-container);
-@dropdown-menu-color: var(--td-dropdown-menu-colorm, @font-gray-1);
+@dropdown-menu-color: var(--td-dropdown-menu-colorm, @text-color-primary);
 @dropdown-menu-active-color: var(--td-dropdown-menu-active-colorm, @brand-color);
-@dropdown-menu-disabled-color: var(--td-dropdown-menu-disabled-colorm, @font-gray-4);
+@dropdown-menu-disabled-color: var(--td-dropdown-menu-disabled-colorm, @text-color-disabled);
 @dropdown-menu-font-size: var(--td-dropdown-menu-font-sizem, 28rpx);
 @dropdown-menu-icon-size: var(--td-dropdown-menu-icon-sizem, 48rpx);
 @dropdown-menu-border-width: var(--td-dropdown-menu-border-width, 1px);
@@ -13,7 +14,7 @@
 .@{dropdownMenu} {
   position: relative;
   display: flex;
-  height: 48px;
+  height: @dropdown-menu-height;
   background: @dropdown-menu-bg-color;
   .border(bottom);
 

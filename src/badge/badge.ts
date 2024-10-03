@@ -31,7 +31,6 @@ export default class Badge extends SuperComponent {
   lifetimes = {
     ready() {
       const uniqueID = getUniqueID();
-
       this.setData({
         labelID: `${uniqueID}_label`,
         descriptionID: `${uniqueID}_description`,

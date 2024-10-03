@@ -11,14 +11,9 @@ const props: TdCalendarProps = {
     type: Boolean,
     value: true,
   },
-  /** 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性。 */
+  /** 确认按钮。值为 null 则不显示确认按钮。值类型为字符串，则表示自定义按钮文本，值类型为 Object 则表示透传 Button 组件属性 */
   confirmBtn: {
     type: null,
-    value: '',
-  },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
     value: '',
   },
   /** 第一天从星期几开始，默认 0 = 周日 */
@@ -38,9 +33,10 @@ const props: TdCalendarProps = {
   minDate: {
     type: Number,
   },
-  /** 标题，不传默认为“请选择日期” */
+  /** 标题 */
   title: {
     type: String,
+    value: '请选择日期',
   },
   /** 日历的选择类型，single = 单选；multiple = 多选; range = 区间选择 */
   type: {
@@ -51,6 +47,11 @@ const props: TdCalendarProps = {
   usePopup: {
     type: Boolean,
     value: true,
+  },
+  /** 是否使用了自定义导航栏 */
+  usingCustomNavbar: {
+    type: Boolean,
+    value: false,
   },
   /** 当前选择的日期，不传则默认今天，当 type = multiple 或 range 时传入数组 */
   value: {

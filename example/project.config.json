@@ -21,10 +21,11 @@
     "enhance": false,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
-    "showShadowRootInWxmlPanel": true
+    "showShadowRootInWxmlPanel": true,
+    "skylineRenderEnable": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.20.2",
+  "libVersion": "3.4.1",
   "appid": "wx6f3e38f61d138c04",
   "projectname": "TDesign",
   "debugOptions": {
@@ -56,6 +57,12 @@
     "miniprogram": {
       "current": 0,
       "list": [
+        {
+          "name": "skyline-home",
+          "pathName": "pages/home/home",
+          "query": "skyline=1",
+          "scene": null
+        },
         {
           "name": "action-sheet",
           "pathName": "pages/action-sheet/action-sheet",
@@ -402,6 +409,12 @@
           "id": -1,
           "name": "checkbox",
           "pathName": "pages/checkbox/checkbox",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "guide",
+          "pathName": "pages/guide/guide",
           "scene": null
         }
       ]

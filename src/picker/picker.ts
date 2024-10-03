@@ -1,12 +1,16 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
+import { rpx2px } from '../common/utils';
 import config from '../common/config';
 import props from './props';
+import useCustomNavbar from '../mixins/using-custom-navbar';
 
 const { prefix } = config;
 const name = `${prefix}-picker`;
 
 @wxComponent()
 export default class Picker extends SuperComponent {
+  behaviors = [useCustomNavbar];
+
   properties = props;
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-confirm`, `${prefix}-class-cancel`, `${prefix}-class-title`];
@@ -36,6 +40,14 @@ export default class Picker extends SuperComponent {
     },
   };
 
+  lifetimes = {
+    attached() {
+      this.setData({
+        pickItemHeight: rpx2px(this.properties.itemHeight),
+      });
+    },
+  };
+
   data = {
     prefix,
     classPrefix: name,
@@ -43,16 +55,19 @@ export default class Picker extends SuperComponent {
     valueAlias: 'value',
     defaultPopUpProps: {},
     defaultPopUpzIndex: 11500,
+    pickItemHeight: 0,
   };
 
   methods = {
     updateChildren() {
+      const { pickItemHeight } = this.data;
       const { value, defaultValue } = this.properties;
 
       this.$children.forEach((child, index) => {
         child.setData({
           value: value?.[index] ?? defaultValue?.[index] ?? '',
           columnIndex: index,
+          pickItemHeight,
         });
         child.update();
       });

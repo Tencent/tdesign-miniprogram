@@ -21,7 +21,6 @@ export default class Tag extends SuperComponent {
 
   options: WechatMiniprogram.Component.ComponentOptions = {
     multipleSlots: true,
-    styleIsolation: 'apply-shared',
   };
 
   lifetimes = {
@@ -43,6 +42,12 @@ export default class Tag extends SuperComponent {
     icon(v) {
       this.setData({
         _icon: calcIcon(v),
+      });
+    },
+
+    closable(v) {
+      this.setData({
+        _closable: calcIcon(v, 'close'),
       });
     },
   };

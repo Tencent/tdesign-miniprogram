@@ -3,6 +3,7 @@
 <scroll-view
   style="{{_._style([style, customStyle])}}"
   class="{{classPrefix}} class {{prefix}}-class"
+  type="list"
   scroll-top="{{scrollTop}}"
   scroll-y
   enable-back-to-top="{{enableBackToTop}}"
@@ -18,14 +19,24 @@
   bind:touchmove="onTouchMove"
   bind:touchend="onTouchEnd"
   bind:scroll="onScroll"
+  binddragstart="onDragStart"
+  binddragging="onDragging"
+  binddragend="onDragEnd"
   bindscrolltoupper="onScrollToTop"
   bindscrolltolower="onScrollToBottom"
+  throttle="{{false}}"
 >
+  <slot name="header" />
+
   <view
     class="{{classPrefix}}__track {{classPrefix + '__track--' + (loosing ? 'loosing' : '')}}"
     style="{{barHeight > 0 ? 'transform: translate3d(0, ' + barHeight + 'px, 0);' : ''}}"
   >
-    <view class="{{classPrefix}}__tips" style="height: {{computedLoadingBarHeight}}px" aria-live="polite">
+    <view
+      class="{{classPrefix}}__tips {{classPrefix + '__tips--' + (loosing ? 'loosing' : '')}}"
+      style="height: {{tipsHeight}}px"
+      aria-live="polite"
+    >
       <t-loading
         wx:if="{{refreshStatus === 2}}"
         delay="{{loadingProps.delay || 0}}"

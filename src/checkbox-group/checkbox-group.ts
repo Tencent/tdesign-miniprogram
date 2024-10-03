@@ -29,6 +29,15 @@ export default class CheckBoxGroup extends SuperComponent {
     options() {
       this.initWithOptions();
     },
+    disabled(v) {
+      if (this.data.options?.length) {
+        this.initWithOptions();
+        return;
+      }
+      this.getChildren().forEach((item) => {
+        item.setDisabled(v);
+      });
+    },
   };
 
   lifetimes = {
@@ -100,7 +109,7 @@ export default class CheckBoxGroup extends SuperComponent {
       } else if (checked) {
         newValue = newValue.concat(value);
       } else {
-        const index = newValue.findIndex((v: string) => v === value);
+        const index = newValue.findIndex((v: string | number) => v === value);
         newValue.splice(index, 1);
       }
 
@@ -150,7 +159,7 @@ export default class CheckBoxGroup extends SuperComponent {
       if (!this.$checkAll) return;
 
       const { value } = this.data;
-      const valueSet = new Set(value.filter((val) => val !== this.$checkAll.data.value));
+      const valueSet = new Set(value?.filter((val) => val !== this.$checkAll.data.value));
       const isCheckall = items.every((item) => (item.data.checkAll ? true : valueSet.has(item.data.value)));
 
       this.$checkAll.setData({

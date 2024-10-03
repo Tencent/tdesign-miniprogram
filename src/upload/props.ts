@@ -6,7 +6,7 @@
 
 import { TdUploadProps } from './type';
 const props: TdUploadProps = {
-  /** 添加按钮内容。值为空，使用默认图标渲染；值为 slot 则表示使用插槽渲染；其他值无效。 */
+  /** 添加按钮内容 */
   addContent: {
     type: String,
   },
@@ -21,8 +21,12 @@ const props: TdUploadProps = {
   },
   /** 是否禁用组件 */
   disabled: {
-    type: Boolean,
-    value: false,
+    type: null,
+    value: undefined,
+  },
+  /** 是否支持拖拽排序。长按时是否振动，碰撞时是否振动。示例一：`true`。示例二：`{ vibrate: true, collisionVibrate: true }` */
+  draggable: {
+    type: null,
   },
   /** 已上传文件列表 */
   files: {
@@ -60,7 +64,7 @@ const props: TdUploadProps = {
   requestMethod: {
     type: null,
   },
-  /** 图片文件大小限制，单位 KB。可选单位有：`'B' | 'KB' | 'MB' | 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }` */
+  /** 图片文件大小限制，默认单位 KB。可选单位有：`'B' | 'KB' | 'MB' | 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }` */
   sizeLimit: {
     type: null,
   },
@@ -69,11 +73,7 @@ const props: TdUploadProps = {
     type: String,
     value: 'media',
   },
-  /** 是否支持拖拽排序 */
-  draggable: {
-    type: null,
-  },
-  /** 是否使用动画过渡 */
+  /** 拖拽位置移动时的过渡参数,`duration`单位为ms */
   transition: {
     type: Object,
     value: { backTransition: true, duration: 300, timingFunction: 'ease' },

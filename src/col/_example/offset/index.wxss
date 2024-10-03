@@ -8,7 +8,6 @@
 
 .dark,
 .light {
-  background-clip: content-box;
   color: #fff;
   font-size: 28rpx;
   line-height: 96rpx;

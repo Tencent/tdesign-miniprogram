@@ -16,5 +16,5 @@
 }
 
 .block .margin-8:not(:last-child) {
-  margin-right: 16rpx;
+  margin-right: 10rpx;
 }

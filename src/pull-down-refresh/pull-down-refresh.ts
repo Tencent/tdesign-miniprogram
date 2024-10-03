@@ -14,10 +14,6 @@ export default class PullDownRefresh extends SuperComponent {
 
   isPulling = false; // 是否下拉中
 
-  // 触发刷新的下拉高度，单位 px
-  // 松开时下拉高度大于这个值即会触发刷新，触发刷新后松开，会恢复到这个高度并保持，直到刷新结束
-  loadingBarHeight = 100;
-
   /** 开始刷新 - 刷新成功/失败 最大间隔时间setTimeout句柄 */
   maxRefreshAnimateTimeFlag = 0;
 
@@ -28,6 +24,7 @@ export default class PullDownRefresh extends SuperComponent {
 
   options = {
     multipleSlots: true,
+    pureDataPattern: /^_/,
   };
 
   relations: RelationsOptions = {
@@ -42,41 +39,28 @@ export default class PullDownRefresh extends SuperComponent {
     prefix,
     classPrefix: name,
     barHeight: 0,
+    tipsHeight: 0,
     refreshStatus: -1,
     loosing: false,
     enableToRefresh: true,
     scrollTop: 0,
+    _maxBarHeight: 0,
+    _loadingBarHeight: 0,
   };
 
   lifetimes = {
     attached() {
       const { screenWidth } = wx.getSystemInfoSync();
-      const { loadingBarHeight, loadingTexts } = this.properties;
+      const { loadingTexts, maxBarHeight, loadingBarHeight } = this.properties;
       this.setData({
+        _maxBarHeight: unitConvert(maxBarHeight),
+        _loadingBarHeight: unitConvert(loadingBarHeight),
         loadingTexts:
           Array.isArray(loadingTexts) && loadingTexts.length >= 4
             ? loadingTexts
             : ['下拉刷新', '松手刷新', '正在刷新', '刷新完成'],
       });
       this.pixelRatio = 750 / screenWidth;
-
-      Object.defineProperty(this, 'maxBarHeight', {
-        get() {
-          return unitConvert(this.data.maxBarHeight);
-        },
-      });
-
-      Object.defineProperty(this, 'loadingBarHeight', {
-        get() {
-          return unitConvert(this.data.loadingBarHeight);
-        },
-      });
-
-      if (loadingBarHeight) {
-        this.setData({
-          computedLoadingBarHeight: unitConvert(loadingBarHeight),
-        });
-      }
     },
 
     detached() {
@@ -99,6 +83,17 @@ export default class PullDownRefresh extends SuperComponent {
         this.doRefresh();
       }
     },
+    barHeight(val) {
+      this.setData({ tipsHeight: Math.min(val, this.data._loadingBarHeight) });
+    },
+
+    maxBarHeight(v) {
+      this.setData({ _maxBarHeight: unitConvert(v) });
+    },
+
+    loadingBarHeight(v) {
+      this.setData({ _loadingBarHeight: unitConvert(v) });
+    },
   };
 
   methods = {
@@ -119,7 +114,7 @@ export default class PullDownRefresh extends SuperComponent {
       this.triggerEvent('scroll', { scrollTop });
     },
     onTouchStart(e: WechatMiniprogram.Component.TrivialInstance) {
-      if (this.isPulling || !this.data.enableToRefresh) return;
+      if (this.isPulling || !this.data.enableToRefresh || this.properties.disabled) return;
       const { touches } = e;
       if (touches.length !== 1) return;
       const { pageX, pageY } = touches[0];
@@ -130,7 +125,7 @@ export default class PullDownRefresh extends SuperComponent {
     },
 
     onTouchMove(e: WechatMiniprogram.Component.TrivialInstance) {
-      if (!this.startPoint) return;
+      if (!this.startPoint || this.properties.disabled) return;
 
       const { touches } = e;
 
@@ -145,7 +140,7 @@ export default class PullDownRefresh extends SuperComponent {
     },
 
     onTouchEnd(e: WechatMiniprogram.Component.TrivialInstance) {
-      if (!this.startPoint) return;
+      if (!this.startPoint || this.properties.disabled) return;
       const { changedTouches } = e;
       if (changedTouches.length !== 1) return;
       const { pageY } = changedTouches[0];
@@ -157,7 +152,7 @@ export default class PullDownRefresh extends SuperComponent {
       this.setData({ loosing: true });
 
       // 松开时高度超过阈值则触发刷新
-      if (barHeight > this.loadingBarHeight) {
+      if (barHeight > this.data._loadingBarHeight) {
         this._trigger('change', { value: true });
         this.triggerEvent('refresh');
       } else {
@@ -165,9 +160,31 @@ export default class PullDownRefresh extends SuperComponent {
       }
     },
 
+    onDragStart(e: WechatMiniprogram.ScrollViewDragStart) {
+      if (this.properties.disabled) return;
+      const { scrollTop, scrollLeft } = e.detail;
+
+      this.triggerEvent('dragstart', { scrollTop, scrollLeft });
+    },
+
+    onDragging(e: WechatMiniprogram.ScrollViewDragging) {
+      if (this.properties.disabled) return;
+      const { scrollTop, scrollLeft } = e.detail;
+
+      this.triggerEvent('dragging', { scrollTop, scrollLeft });
+    },
+
+    onDragEnd(e: WechatMiniprogram.ScrollViewDragEnd) {
+      if (this.properties.disabled) return;
+      const { scrollTop, scrollLeft } = e.detail;
+
+      this.triggerEvent('dragend', { scrollTop, scrollLeft });
+    },
+
     doRefresh() {
+      if (this.properties.disabled) return;
       this.setData({
-        barHeight: this.loadingBarHeight,
+        barHeight: this.data._loadingBarHeight,
         refreshStatus: 2,
         loosing: true,
       });
@@ -184,10 +201,10 @@ export default class PullDownRefresh extends SuperComponent {
     },
 
     setRefreshBarHeight(value: number) {
-      const barHeight = Math.min(value, this.maxBarHeight);
+      const barHeight = Math.min(value, this.data._maxBarHeight);
       const data: Record<string, any> = { barHeight };
 
-      if (barHeight >= this.loadingBarHeight) {
+      if (barHeight >= this.data._loadingBarHeight) {
         data.refreshStatus = 1;
       } else {
         data.refreshStatus = 0;

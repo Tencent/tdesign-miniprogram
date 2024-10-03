@@ -13,6 +13,7 @@ exports[`Picker Picker area demo works fine 1`] = `
     cancelBtn="取消"
     confirmBtn="确认"
     title="选择地区"
+    usingCustomNavbar="{{true}}"
     value="{{Array []}}"
     visible=""
     bind:cancel="onPickerCancel"
@@ -140,6 +141,7 @@ exports[`Picker Picker base demo works fine 1`] = `
     confirmBtn="确认"
     data-key="city"
     title="选择城市"
+    usingCustomNavbar="{{true}}"
     value="{{Array []}}"
     visible=""
     bind:cancel="onPickerCancel"
@@ -151,10 +153,12 @@ exports[`Picker Picker base demo works fine 1`] = `
         Array [
           Object {
             "label": "北京市",
+            "tag": "合",
             "value": "北京市",
           },
           Object {
             "label": "上海市",
+            "tag": "合",
             "value": "上海市",
           },
           Object {
@@ -171,13 +175,37 @@ exports[`Picker Picker base demo works fine 1`] = `
           },
         ]
       }}"
-    />
+    >
+      <wx-view
+        class="label-suffix"
+        slot="label-suffix--0"
+      >
+        <t-tag
+          size="small"
+          theme="primary"
+        >
+          合
+        </t-tag>
+      </wx-view>
+      <wx-view
+        class="label-suffix"
+        slot="label-suffix--1"
+      >
+        <t-tag
+          size="small"
+          theme="primary"
+        >
+          合
+        </t-tag>
+      </wx-view>
+    </t-picker-item>
   </t-picker>
   <t-picker
     cancelBtn="取消"
     confirmBtn="确认"
     data-key="date"
     title="选择时间"
+    usingCustomNavbar="{{true}}"
     value="{{Array []}}"
     visible=""
     bind:cancel="onPickerCancel"
@@ -250,6 +278,7 @@ exports[`Picker Picker with-title demo works fine 1`] = `
     confirmBtn="确认"
     data-key="city"
     title=""
+    usingCustomNavbar="{{true}}"
     value="{{Array []}}"
     visible=""
     bind:cancel="onPickerCancel"
@@ -288,6 +317,7 @@ exports[`Picker Picker with-title demo works fine 1`] = `
     confirmBtn="确认"
     data-key="city2"
     title=""
+    usingCustomNavbar="{{true}}"
     value="{{Array []}}"
     visible=""
     bind:cancel="onPickerCancel"
@@ -322,4 +352,49 @@ exports[`Picker Picker with-title demo works fine 1`] = `
     />
   </t-picker>
 </with-title>
+`;
+
+exports[`Picker Picker without-popup demo works fine 1`] = `
+<without-popup>
+  <t-picker
+    cancelBtn="取消"
+    confirmBtn="确认"
+    data-key="city"
+    title=""
+    usePopup="{{false}}"
+    usingCustomNavbar="{{true}}"
+    value="{{Array []}}"
+    visible=""
+    bind:cancel="onPickerCancel"
+    bind:change="onPickerChange"
+    bind:pick="onColumnChange"
+  >
+    <t-picker-item
+      options="{{
+        Array [
+          Object {
+            "label": "北京市",
+            "value": "北京市",
+          },
+          Object {
+            "label": "上海市",
+            "value": "上海市",
+          },
+          Object {
+            "label": "广州市",
+            "value": "广州市",
+          },
+          Object {
+            "label": "深圳市",
+            "value": "深圳市",
+          },
+          Object {
+            "label": "成都市",
+            "value": "成都市",
+          },
+        ]
+      }}"
+    />
+  </t-picker>
+</without-popup>
 `;

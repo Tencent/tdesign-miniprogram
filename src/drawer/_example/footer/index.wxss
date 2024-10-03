@@ -1,4 +1,3 @@
 .button-host {
-  margin: 0 32rpx;
-  margin-top: auto;
+  margin: 20rpx 32rpx 0;
 }

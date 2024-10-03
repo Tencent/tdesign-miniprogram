@@ -68,26 +68,29 @@ exports[`picker :base 1`] = `
                   <wx-view
                     class="t-picker-item__item t-picker-item__item--active"
                     data-index="{{0}}"
+                    style="height: 40px"
                   >
                     
       2021年
-    
+      
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{1}}"
+                    style="height: 40px"
                   >
                     
       2020年
-    
+      
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{2}}"
+                    style="height: 40px"
                   >
                     
       2019年
-    
+      
                   </wx-view>
                 </wx-view>
               </wx-view>
@@ -108,34 +111,38 @@ exports[`picker :base 1`] = `
                   <wx-view
                     class="t-picker-item__item t-picker-item__item--active"
                     data-index="{{0}}"
+                    style="height: 40px"
                   >
                     
       春
-    
+      
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{1}}"
+                    style="height: 40px"
                   >
                     
       夏
-    
+      
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{2}}"
+                    style="height: 40px"
                   >
                     
       秋
-    
+      
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{3}}"
+                    style="height: 40px"
                   >
                     
       冬
-    
+      
                   </wx-view>
                 </wx-view>
               </wx-view>
@@ -148,6 +155,7 @@ exports[`picker :base 1`] = `
             />
             <wx-view
               class="t-picker__indicator"
+              style="height: 40px"
             />
           </wx-view>
         </wx-view>
@@ -165,7 +173,7 @@ exports[`picker :base 1`] = `
         ariaLabel="关闭"
         ariaRole="button"
         class="t-overlay t-fade-enter t-fade-enter-active class"
-        style="--td-overlay-transition-duration:300ms; z-index:11000;"
+        style="--td-overlay-transition-duration:300ms; z-index:11000; top:0px;"
         bind:tap="handleClick"
         catch:touchmove="noop"
         bind:transitionend="onTransitionEnd"

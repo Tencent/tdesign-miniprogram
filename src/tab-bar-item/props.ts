@@ -10,7 +10,7 @@ const props: TdTabBarItemProps = {
   badgeProps: {
     type: Object,
   },
-  /** 图标名称 */
+  /** 图标名称。传入对象时透传至 Icon 组件 */
   icon: {
     type: null,
   },

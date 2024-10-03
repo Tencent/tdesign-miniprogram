@@ -3,7 +3,7 @@
 @countdown-small-unit-margin: 8rpx; // 'small'尺寸单位分割文本左右间距
 @countdown-medium-unit-margin: 10rpx; // 'medium'尺寸单位分割文本左右间距
 @countdown-large-unit-margin: 12rpx; // 'large'尺寸单位分割文本左右间距
-@countdown-unit-color: @font-gray-1; // 带单位分割线文本颜色
+@countdown-unit-color: @text-color-primary; // 带单位分割线文本颜色
 @countdown-no-unit-color: @error-color-6; // 无单位分割线文本颜色
 @countdown-large-no-unit-margin: 12rpx; // 'large'尺寸无单位分割文本左右间距
 @countdown-medium-no-unit-margin: 6rpx; // 'medium'尺寸无单位分割文本左右间距
@@ -28,7 +28,7 @@
 @countdown-large-no-unit-font-size: 36rpx; // 'large'尺寸无单位分割文本大小
 
 // 纯数字倒计时文本颜色
-@countdown-default-text-color: var(--td-countdown-default-color, @font-gray-1);
+@countdown-default-text-color: var(--td-countdown-default-color, @text-color-primary);
 // 方形/圆形底倒计时文本颜色
 @countdown-text-color: var(--td-countdown-round-color, @font-white-1);
 // 方形/圆形底背景颜色
@@ -37,6 +37,10 @@
 @countdown-square-border-radius: var(--td-countdown-square-border-radius, @radius-small);
 // 带圆形底倒计时圆角大小
 @countdown-round-border-radius: var(--td-countdown-round-border-radius, @radius-circle);
+
+@countdown-number-font-family: TCloudNumber, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Hiragino Sans GB,
+  Microsoft YaHei UI, Microsoft YaHei, Source Han Sans CN, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+  Segoe UI Symbol;
 
 @countdown: ~'@{prefix}-count-down';
 @item: ~'@{countdown}__item';
@@ -101,11 +105,12 @@
 .count-down-size(large);
 
 .@{countdown} {
-  font-family: 'DIN Alternate', 'Courier New', Courier, monospace;
+  font-family: @countdown-number-font-family;
+  display: flex;
 
   .@{item},
   .@{split} {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
   }

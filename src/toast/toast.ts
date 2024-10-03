@@ -4,6 +4,7 @@ import props from './props';
 import transition from '../mixins/transition';
 import { calcIcon } from '../common/utils';
 import { ToastOptionsType } from './index';
+import useCustomNavbar from '../mixins/using-custom-navbar';
 
 const { prefix } = config;
 const name = `${prefix}-toast`;
@@ -18,7 +19,7 @@ export default class Toast extends SuperComponent {
     multipleSlots: true,
   };
 
-  behaviors = [transition()];
+  behaviors = [transition(), useCustomNavbar];
 
   hideTimer: Timer = null;
 

@@ -6,6 +6,6 @@
   --td-loading-text-font-size: 28rpx;
 }
 
-.demo-desc {
+.loading-size-demo .demo-desc {
   margin: 48rpx 0 32rpx;
 }

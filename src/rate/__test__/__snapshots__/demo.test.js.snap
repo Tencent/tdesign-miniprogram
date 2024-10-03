@@ -256,7 +256,7 @@ exports[`Rate Rate special demo works fine 1`] = `
       class="rate-wrapper"
     >
       <t-rate
-        size="30"
+        size="60rpx"
         texts="{{
           Array [
             "非常糟糕",
@@ -277,22 +277,4 @@ exports[`Rate Rate special demo works fine 1`] = `
     </wx-view>
   </wx-view>
 </special>
-`;
-
-exports[`Rate Rate un-filled demo works fine 1`] = `
-<un-filled>
-  <wx-view
-    class="demo-rate"
-  >
-    <wx-view
-      class="demo-rate__title"
-    >
-      请点击评分
-    </wx-view>
-    <t-rate
-      value="{{3}}"
-      bind:change="onChange"
-    />
-  </wx-view>
-</un-filled>
 `;
