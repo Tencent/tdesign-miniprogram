@@ -116,7 +116,7 @@ export default class ColorPicker extends SuperComponent {
       left: 0,
     },
     innerValue: props.defaultValue.value || props.value.value,
-    showPrimaryColorPreview: true,
+    showPrimaryColorPreview: false,
     previewColor: props.defaultValue.value || props.value.value,
     formatList: getFormatList(props.format.value, this.color),
     innerSwatchList: genSwatchList(props.swatchColors.value),
