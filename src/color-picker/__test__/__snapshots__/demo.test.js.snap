@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorPicker ColorPicker base demo works fine 1`] = `
+<base>
+  <t-color-picker />
+</base>
+`;
+
+exports[`ColorPicker ColorPicker format demo works fine 1`] = `
+<format>
+  <wx-view>
+    <t-color-picker
+      enableAlpha="{{true}}"
+      format="CSS"
+      type="multiple"
+      bind:change="onChange"
+      bind:palette-bar-change="onPaletteBarChange"
+    />
+    <t-radio-group
+      options="{{
+        Array [
+          Object {
+            "label": "CSS 模式",
+            "value": "CSS",
+          },
+          Object {
+            "label": "HEX 模式",
+            "value": "HEX",
+          },
+          Object {
+            "label": "RGB 模式",
+            "value": "RGB",
+          },
+          Object {
+            "label": "HSL 模式",
+            "value": "HSL",
+          },
+          Object {
+            "label": "HSV 模式",
+            "value": "HSV",
+          },
+          Object {
+            "label": "CMYK 模式",
+            "value": "CMYK",
+          },
+        ]
+      }}"
+      style="margin-top: 24rpx"
+      value="CSS"
+      bind:change="onChangeRadio"
+    />
+  </wx-view>
+</format>
+`;
+
+exports[`ColorPicker ColorPicker multiple demo works fine 1`] = `
+<multiple>
+  <t-color-picker
+    type="multiple"
+    bind:change="onChange"
+    bind:palette-bar-change="onPaletteBarChange"
+  />
+</multiple>
+`;
