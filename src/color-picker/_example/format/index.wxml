@@ -1,5 +1,11 @@
 <view>
-  <t-color-picker enableAlpha type="multiple" format="{{curFormat}}" />
+  <t-color-picker
+    enableAlpha
+    type="multiple"
+    format="{{curFormat}}"
+    bind:change="onChange"
+    bind:palette-bar-change="onPaletteBarChange"
+  />
   <t-radio-group style="margin-top: 24rpx" value="{{curFormat}}" bind:change="onChangeRadio" options="{{formatList}}">
   </t-radio-group>
 </view>

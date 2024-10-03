@@ -15,7 +15,7 @@
     </view>
     <view class="{{classPrefix}}__sliders-wrapper" wx:if="{{isMultiple}}">
       <view class="{{classPrefix}}__sliders">
-        <view class="{{classPrefix}}__slider-wrapper  {{classPrefix}}__slider-wrapper--hue-type {{classPrefix}}__hue">
+        <view class="{{classPrefix}}__slider-wrapper  {{classPrefix}}__slider-wrapper--hue-type">
           <view
             class="{{classPrefix}}__slider"
             catchtouchstart="onTouchStart"
@@ -30,7 +30,7 @@
 
         <view
           wx:if="{{enableAlpha}}"
-          class="{{classPrefix}}__slider-wrapper {{classPrefix}}__slider-wrapper--alpha-type {{classPrefix}}__alpha {{classPrefix}}--bg-alpha"
+          class="{{classPrefix}}__slider-wrapper {{classPrefix}}__slider-wrapper--alpha-type"
         >
           <view
             class="{{classPrefix}}__slider-padding"
@@ -59,13 +59,13 @@
     </view>
 
     <view class="{{classPrefix}}__format" wx:if="{{isMultiple}}">
-      <view class="{{classPrefix}}__format--item"> {{format}} </view>
-      <view class="{{classPrefix}}__format--item">
-        <view class="input-group">
+      <view class="{{classPrefix}}__format-item {{classPrefix}}__format-item--first"> {{format}} </view>
+      <view class="{{classPrefix}}__format-item {{classPrefix}}__format-item--second">
+        <view class="{{classPrefix}}__format-inputs">
           <view
             wx:for="{{formatList}}"
             wx:key="index"
-            class="input-group__item input-group__item--{{ index === formatList.length - 1 && formatList.length === 2 ? 'fixed' : 'base' }}"
+            class="{{classPrefix}}__format-input {{classPrefix}}__format-input--{{ index === formatList.length - 1 && formatList.length === 2 ? 'fixed' : 'base' }}"
             >{{item}}</view
           >
         </view>
@@ -74,18 +74,18 @@
 
     <view class="{{classPrefix}}__swatches-wrap" wx:if="{{innerSwatchList.length}}">
       <view class="{{classPrefix}}__swatches">
-        <view class="{{classPrefix}}__swatches--title" wx:if="{{isMultiple}}"> 系统预设色彩 </view>
-        <view class="{{classPrefix}}__swatches--items">
+        <view class="{{classPrefix}}__swatches-title" wx:if="{{isMultiple}}"> 系统预设色彩 </view>
+        <view class="{{classPrefix}}__swatches-items">
           <view
             wx:for="{{innerSwatchList}}"
             wx:for-item="swatch"
             wx:key="swatch"
-            class="{{classPrefix}}__swatches--item"
+            class="{{classPrefix}}__swatches-item"
             catch:tap="clickSwatch"
             data-value="{{swatch}}"
           >
-            <view class="{{classPrefix}}__swatches--color">
-              <view class="{{classPrefix}}__swatches--inner" style="background-color: {{swatch}};"> </view>
+            <view class="{{classPrefix}}__swatches-color">
+              <view class="{{classPrefix}}__swatches-inner" style="background-color: {{swatch}};"> </view>
             </view>
           </view>
         </view>

@@ -252,7 +252,7 @@ export default class ColorPicker extends SuperComponent {
       this.setCoreStyle();
     },
     formatValue() {
-      return this.color.getFormatsColorMap()[props.format.value] || this.color.css;
+      return this.color.getFormatsColorMap()[this.properties.format] || this.color.css;
     },
     onChangeSlider({ value, isAlpha }) {
       if (isAlpha) {
