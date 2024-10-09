@@ -89,7 +89,7 @@ export default class CheckBox extends SuperComponent {
       const parent = this.$parent;
 
       if (parent) {
-        parent.updateValue({ ...this.data, checked });
+        parent.updateValue({ ...this.data, checked, item: { label, value, checked } });
       } else {
         this._trigger('change', { context: { value, label }, checked });
       }
