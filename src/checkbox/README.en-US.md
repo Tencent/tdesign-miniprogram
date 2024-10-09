@@ -31,6 +31,7 @@ value | String / Number / Boolean | - | value of checkbox。Typescript：`string
 name | params | description
 -- | -- | --
 change | `(checked: boolean, context: { value: boolean\|number\|string, label: boolean\|number\|string })` | \-
+
 ### Checkbox External Classes
 
 className | Description
@@ -49,6 +50,8 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 borderless | Boolean | false | \- | N
+disabled | Boolean | undefined | \- | N
+keys | Object | - | Typescript：`KeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 max | Number | undefined | \- | N
 name | String | - | \- | N
 options | Array | [] | Typescript：`Array<CheckboxOption>` `type CheckboxOption = string \| number \| CheckboxOptionObj` `interface CheckboxOptionObj { label?: string; value?: string \| number; disabled?: boolean; checkAll?: true }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/checkbox-group/type.ts) | N

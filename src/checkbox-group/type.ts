@@ -4,6 +4,8 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { KeysType } from '../common/common';
+
 export interface TdCheckboxGroupProps<T = CheckboxGroupValue> {
   /**
    * 是否开启无边框模式
@@ -14,11 +16,18 @@ export interface TdCheckboxGroupProps<T = CheckboxGroupValue> {
     value?: boolean;
   };
   /**
-   * 是否禁用组件，默认为 false。 CheckboxGroup.disabled < Checkbox.disabled ，后续新增 Form 组件后，Form.disabled 优先级最低
+   * 是否禁用组件。优先级：Form.disabled < CheckboxGroup.disabled < Checkbox.disabled
    */
   disabled?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 用来定义 value / label 在 `options` 中对应的字段别名
+   */
+  keys?: {
+    type: ObjectConstructor;
+    value?: KeysType;
   };
   /**
    * 支持最多选中的数量

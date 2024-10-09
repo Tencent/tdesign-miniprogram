@@ -117,7 +117,7 @@ export default class CheckBoxGroup extends SuperComponent {
     },
 
     initWithOptions() {
-      const { options, value } = this.data;
+      const { options, value, keys } = this.data;
 
       if (!options?.length || !Array.isArray(options)) return;
 
@@ -129,7 +129,12 @@ export default class CheckBoxGroup extends SuperComponent {
               value: item,
               checked: value?.includes(item),
             }
-          : { ...item, checked: value?.includes(item.value) };
+          : {
+              ...item,
+              label: item[keys?.label ?? 'label'],
+              value: item[keys?.value ?? 'value'],
+              checked: value?.includes(item[keys?.value ?? 'value']),
+            };
       });
 
       this.setData({
