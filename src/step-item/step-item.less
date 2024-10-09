@@ -106,6 +106,10 @@
     vertical-align: top;
     font-size: @font-size-base;
     position: relative;
+
+    &-custom:not(:empty) + &-default {
+      display: none;
+    }
   }
 
   &__dot {
