@@ -2,7 +2,7 @@
 
 <view
   class="class {{prefix}}-class {{classPrefix}} {{active ? prefix + '-is-active': ''}}"
-  style="{{_._style([style, customStyle, (hide ? 'display: none' : '')])}}"
+  style="{{_._style([style, customStyle, (hide ? 'height: 0' : '')])}}"
   id="{{id}}"
   aria-role="tabpanel"
 >
