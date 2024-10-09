@@ -249,7 +249,6 @@ export default class ColorPicker extends SuperComponent {
       });
 
       this.emitColorChange(changeTrigger);
-      this.color.update(this.formatValue());
       this.setCoreStyle();
     },
     formatValue() {
@@ -263,7 +262,7 @@ export default class ColorPicker extends SuperComponent {
       }
 
       this.emitColorChange(isAlpha ? 'palette-alpha-bar' : 'palette-hue-bar');
-      this.color.update(this.formatValue());
+
       this.setCoreStyle();
     },
     handleSaturationDrag(e) {

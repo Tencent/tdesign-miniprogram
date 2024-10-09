@@ -1,8 +1,6 @@
 import tinyColor from 'tinycolor2';
 import { cmykInputToColor, rgb2cmyk } from './cmyk';
-import {
-  parseGradientString, GradientColors, GradientColorPoint, isGradientColor
-} from './gradient';
+import { parseGradientString, GradientColors, GradientColorPoint, isGradientColor } from './gradient';
 
 export interface ColorObject {
   alpha: number;
@@ -100,9 +98,6 @@ export class Color {
   }
 
   update(input: string) {
-    if (input === this.originColor) {
-      return;
-    }
     const gradientColors = parseGradientString(input);
     if (this.isGradient && !gradientColors) {
       // 处理gradient模式下切换不同格式时的交互问题，输入的不是渐变字符串才使用当前处理
@@ -172,9 +167,7 @@ export class Color {
   }
 
   get rgba() {
-    const {
-      r, g, b, a
-    } = hsv2rgba(this.states);
+    const { r, g, b, a } = hsv2rgba(this.states);
     return `rgba(${mathRound(r)}, ${mathRound(g)}, ${mathRound(b)}, ${a})`;
   }
 
@@ -184,9 +177,7 @@ export class Color {
   }
 
   get hsva() {
-    const {
-      h, s, v, a
-    } = this.getHsva();
+    const { h, s, v, a } = this.getHsva();
     return `hsva(${h}, ${s}%, ${v}%, ${a})`;
   }
 
@@ -196,9 +187,7 @@ export class Color {
   }
 
   get hsla() {
-    const {
-      h, s, l, a
-    } = this.getHsla();
+    const { h, s, l, a } = this.getHsla();
     return `hsla(${h}, ${s}%, ${l}%, ${a})`;
   }
 
@@ -211,9 +200,7 @@ export class Color {
   }
 
   get cmyk() {
-    const {
-      c, m, y, k
-    } = this.getCmyk();
+    const { c, m, y, k } = this.getCmyk();
     return `cmyk(${c}, ${m}, ${y}, ${k})`;
   }
 
@@ -306,9 +293,7 @@ export class Color {
   }
 
   getRgba() {
-    const {
-      r, g, b, a
-    } = hsv2rgba(this.states);
+    const { r, g, b, a } = hsv2rgba(this.states);
     return {
       r: mathRound(r),
       g: mathRound(g),
@@ -329,9 +314,7 @@ export class Color {
   }
 
   getHsva(): tinyColor.ColorFormats.HSVA {
-    let {
-      h, s, v, a
-    } = hsv2hsva(this.states);
+    let { h, s, v, a } = hsv2hsva(this.states);
     h = mathRound(h);
     s = mathRound(s * 100);
     v = mathRound(v * 100);
@@ -345,9 +328,7 @@ export class Color {
   }
 
   getHsla(): tinyColor.ColorFormats.HSLA {
-    let {
-      h, s, l, a
-    } = hsv2hsla(this.states);
+    let { h, s, l, a } = hsv2hsla(this.states);
     h = mathRound(h);
     s = mathRound(s * 100);
     l = mathRound(l * 100);
@@ -383,19 +364,28 @@ export class Color {
 
   static hsva2color(h: number, s: number, v: number, a: number) {
     return tinyColor({
-      h, s, v, a
+      h,
+      s,
+      v,
+      a,
     }).toHsvString();
   }
 
   static hsla2color(h: number, s: number, l: number, a: number) {
     return tinyColor({
-      h, s, l, a
+      h,
+      s,
+      l,
+      a,
     }).toHslString();
   }
 
   static rgba2color(r: number, g: number, b: number, a: number) {
     return tinyColor({
-      r, g, b, a
+      r,
+      g,
+      b,
+      a,
     }).toHsvString();
   }
 
@@ -413,9 +403,7 @@ export class Color {
    */
   static object2color(object: any, format: string) {
     if (format === 'CMYK') {
-      const {
-        c, m, y, k
-      } = object;
+      const { c, m, y, k } = object;
       return `cmyk(${c}, ${m}, ${y}, ${k})`;
     }
     const color = tinyColor(object, {
