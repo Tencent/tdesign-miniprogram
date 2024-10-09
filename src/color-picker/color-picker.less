@@ -1,29 +1,35 @@
 @import '../common/style/index.less';
 
-@color-picker-panel-width: 750rpx;
-@color-picker-panel-padding: 32rpx;
-@color-picker-panel-radius: 12rpx;
-@color-picker-saturation-height: 288rpx;
-@color-picker-saturation-radius: 12rpx;
-@color-picker-saturation-thumb-size: 36rpx;
-@color-picker-margin: 24rpx;
-@color-picker-slider-height: 16rpx;
+@color-picker-panel-width: var(--td-color-picker-panel-width, 750rpx);
+@color-picker-panel-padding: var(--td-color-picker-panel-padding, 32rpx);
+@color-picker-panel-radius: var(--td-color-picker-panel-radius, 24rpx);
+@color-picker-panel-background: var(--td-color-picker-background, #fff);
+@color-picker-margin: var(--td-color-picker-margin, 24rpx);
+
+@color-picker-saturation-height: var(--td-color-picker-saturation-height, 288rpx);
+@color-picker-saturation-radius: var(--td-color-picker-saturation-radius, 12rpx);
+@color-picker-saturation-thumb-size: var(--td-color-picker-saturation-thumb-size, 36rpx);
+
+@color-picker-slider-height: var(--td-color-picker-slider-height, 16rpx);
 @color-picker-slider-wrapper-radius: calc(@color-picker-slider-height / 2);
-@color-picker-slider-wrapper-padding: 0 18rpx;
-@color-picker-slider-thumb-size: 36rpx;
-@color-picker-slider-thumb-transform-x: -18rpx;
-@color-picker-slider-thumb-padding: 2px;
-@color-picker-input-format-margin-left: 48rpx;
-@color-picker-swatches-title-font: 32rpx;
-@color-picker-gradient-preview-width: 56rpx;
-@color-picker-gradient-preview-height: 56rpx;
-@color-picker-gradient-preview-radius: 6rpx;
-@color-picker-swatch-width: 48rpx;
-@color-picker-swatch-height: 48rpx;
-@color-picker-swatch-padding: 0;
-@color-picker-swatch-border-radius: 6rpx;
+@color-picker-slider-wrapper-padding: var(--td-color-picker-slider-wrapper-padding, 0 18rpx);
+@color-picker-slider-thumb-size: var(--td-color-picker-slider-thumb-size, 36rpx);
+@color-picker-slider-thumb-transform-x: var(--td-color-picker-slider-thumb-transform-x, -18rpx);
+@color-picker-slider-thumb-padding: var(--td-color-picker-slider-thumb-padding, 2px);
+
+@color-picker-input-format-margin-left: var(--td-color-picker-input-format-margin-left, 48rpx);
+@color-picker-gradient-preview-width: var(--td-color-picker-gradient-preview-width, 56rpx);
+@color-picker-gradient-preview-height: var(--td-color-picker-gradient-preview-height, 56rpx);
+@color-picker-gradient-preview-radius: var(--td-color-picker-gradient-preview-radius, 6rpx);
+
+@color-picker-swatches-title-font: var(--td-color-picker-swatches-title-font, 32rpx);
+@color-picker-swatch-width: var(--td-color-picker-swatch-width, 48rpx);
+@color-picker-swatch-height: var(--td-color-picker-swatch-height, 48rpx);
+@color-picker-swatch-padding: var(--td-color-picker-swatch-padding, 0);
+@color-picker-swatch-border-radius: var(--td-color-picker-swatch-border-radius, 6rpx);
+
 @color-picker-thumbs-shadow: @shadow-1;
-@color-picker-border-radius-circle: 50%;
+@color-picker-border-radius-circle: var(--td-color-picker-border-radius-circle, 50%);
 
 @color-picker: ~'@{prefix}-color-picker';
 
@@ -31,9 +37,9 @@
   &__panel {
     padding: 0;
     width: @color-picker-panel-width;
-    background: #fff;
-    border-top-left-radius: 24rpx;
-    border-top-right-radius: 24rpx;
+    background: @color-picker-panel-background;
+    border-top-left-radius: @color-picker-panel-radius;
+    border-top-right-radius: @color-picker-panel-radius;
     user-select: none;
   }
 
