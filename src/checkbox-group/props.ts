@@ -11,9 +11,14 @@ const props: TdCheckboxGroupProps = {
     type: Boolean,
     value: false,
   },
-  /** 是否禁用组件，默认为 false。 CheckboxGroup.disabled < Checkbox.disabled ，后续新增 Form 组件后，Form.disabled 优先级最低 */
+  /** 是否禁用组件。优先级：Form.disabled < CheckboxGroup.disabled < Checkbox.disabled */
   disabled: {
-    type: Boolean,
+    type: null,
+    value: undefined,
+  },
+  /** 用来定义 value / label 在 `options` 中对应的字段别名 */
+  keys: {
+    type: Object,
   },
   /** 支持最多选中的数量 */
   max: {
