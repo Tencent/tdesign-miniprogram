@@ -124,6 +124,7 @@
     ]
   },
   "dependencies": {
-    "dayjs": "^1.10.7"
+    "dayjs": "^1.10.7",
+    "tinycolor2": "^1.4.2"
   }
 }
