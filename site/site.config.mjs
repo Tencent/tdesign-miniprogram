@@ -233,6 +233,13 @@ export const docs = [
         component: () => import('@/checkbox/README.md'),
       },
       {
+        title: 'ColorPicker 颜色选择器',
+        name: 'color-picker',
+        meta: { docType: 'form' },
+        path: '/miniprogram/components/color-picker',
+        component: () => import('@/color-picker/README.md'),
+      },
+      {
         title: 'DateTimePicker 时间选择器',
         titleEn: 'DateTimePicker',
         name: 'dateTimePicker',

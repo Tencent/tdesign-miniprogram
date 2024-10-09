@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-color-picker": "tdesign-miniprogram/color-picker/color-picker",
+    "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
+    "t-radio": "tdesign-miniprogram/radio/radio"
+  }
+}

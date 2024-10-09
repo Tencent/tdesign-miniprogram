@@ -67,12 +67,10 @@ export default class Progress extends SuperComponent {
       });
     },
 
-
     trackColor(trackColor) {
       this.setData({
         bgColorBar: trackColor,
       });
     },
   };
-
 }
