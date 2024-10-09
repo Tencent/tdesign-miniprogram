@@ -161,21 +161,18 @@ export default class PullDownRefresh extends SuperComponent {
     },
 
     onDragStart(e: WechatMiniprogram.ScrollViewDragStart) {
-      if (this.properties.disabled) return;
       const { scrollTop, scrollLeft } = e.detail;
 
       this.triggerEvent('dragstart', { scrollTop, scrollLeft });
     },
 
     onDragging(e: WechatMiniprogram.ScrollViewDragging) {
-      if (this.properties.disabled) return;
       const { scrollTop, scrollLeft } = e.detail;
 
       this.triggerEvent('dragging', { scrollTop, scrollLeft });
     },
 
     onDragEnd(e: WechatMiniprogram.ScrollViewDragEnd) {
-      if (this.properties.disabled) return;
       const { scrollTop, scrollLeft } = e.detail;
 
       this.triggerEvent('dragend', { scrollTop, scrollLeft });
