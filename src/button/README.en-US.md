@@ -76,7 +76,7 @@ custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on v
 app-parameter | String | - | \- | N
 block | Boolean | false | make button to be a block-level element | N
 content | String / Slot | - | button's children elements。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
-custom-dataset | Object | - | Typescript：`any` | N
+custom-dataset | any | - | \- | N
 disabled | Boolean | undefined | disable the button, make it can not be clicked | N
 ghost | Boolean | false | make background-color to be transparent | N
 hover-class | String | - | \- | N
@@ -126,7 +126,6 @@ className | Description
 t-class | \-
 t-class-icon | class name of icon
 t-class-loading | class name of loading
-
 
 ### CSS Variables
 
@@ -231,4 +230,4 @@ Name | Default Value | Description
 --td-button-small-font-size | @font-size-base | - 
 --td-button-small-height | 64rpx | - 
 --td-button-small-icon-font-size | 36rpx | - 
---td-button-small-padding-horizontal | 24rpx | - 
+--td-button-small-padding-horizontal | 24rpx | -

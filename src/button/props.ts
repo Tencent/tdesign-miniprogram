@@ -20,9 +20,9 @@ const props: TdButtonProps = {
   content: {
     type: String,
   },
-  /** 自定义 dataset，可通过 event.currentTarget.dataset.custom 获取。 */
+  /** 自定义 dataset，可通过 event.currentTarget.dataset.custom 获取 */
   customDataset: {
-    type: Object,
+    type: null,
   },
   /** 禁用状态。优先级：Button.disabled > Form.disabled */
   disabled: {
