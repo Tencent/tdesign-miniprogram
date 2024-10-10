@@ -136,11 +136,10 @@ exports[`Collapse Collapse theme demo works fine 1`] = `
   <t-collapse
     defaultValue="{{
       Array [
-        0,
+        3,
       ]
     }}"
     expandIcon="{{true}}"
-    expandMutex="{{true}}"
     theme="card"
   >
     <t-collapse-panel

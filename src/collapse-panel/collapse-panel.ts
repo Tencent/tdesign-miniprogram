@@ -51,7 +51,7 @@ export default class CollapsePanel extends SuperComponent {
 
   methods = {
     updateExpanded(activeValues = []) {
-      if (!this.$parent || this.data.ultimateDisabled) {
+      if (!this.$parent) {
         return;
       }
 
