@@ -30,7 +30,9 @@
     </t-cell>
   </view>
   <view class="{{classPrefix}}__wrapper" animation="{{animation}}" aria-hidden="{{expanded ? '' : true}}">
-    <view class="{{classPrefix}}__content {{prefix}}-class-content">
+    <view
+      class="{{_.cls(classPrefix + '__content', [['disabled', ultimateDisabled],  ['expanded', expanded], placement])}} {{prefix}}-class-content"
+    >
       {{content}}
       <slot />
       <slot name="content" />
