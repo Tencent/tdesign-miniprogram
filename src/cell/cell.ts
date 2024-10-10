@@ -53,7 +53,6 @@ export default class Cell extends SuperComponent {
   };
 
   setIcon(name, value, defaultValue) {
-    if (!value) return;
     this.setData({
       [name]: calcIcon(value, defaultValue),
     });

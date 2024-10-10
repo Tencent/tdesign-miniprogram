@@ -253,7 +253,7 @@ export const uniqueFactory = (compName) => {
 };
 
 export const calcIcon = (icon: string | Record<string, any>, defaultIcon?: string) => {
-  if ((isBool(icon) && icon && defaultIcon) || isString(icon)) {
+  if (icon && ((isBool(icon) && defaultIcon) || isString(icon))) {
     return { name: isBool(icon) ? defaultIcon : icon };
   }
   if (isObject(icon)) {
