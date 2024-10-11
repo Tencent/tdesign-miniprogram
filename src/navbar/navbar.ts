@@ -1,5 +1,5 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
-import { getRect } from '../common/utils';
+import { getRect, systemInfo } from '../common/utils';
 import config from '../common/config';
 import props from './props';
 
@@ -73,31 +73,25 @@ export default class Navbar extends SuperComponent {
     if (wx.getMenuButtonBoundingClientRect) {
       rect = wx.getMenuButtonBoundingClientRect();
     }
-    if (!rect) return;
-    wx.getSystemInfo({
-      success: (res) => {
-        const boxStyleList = [];
-        boxStyleList.push(`--td-navbar-padding-top: ${res.statusBarHeight}px`);
-        if (rect && res?.windowWidth) {
-          boxStyleList.push(`--td-navbar-right: ${res.windowWidth - rect.left}px`); // 导航栏右侧小程序胶囊按钮宽度
-        }
-        boxStyleList.push(`--td-navbar-capsule-height: ${rect.height}px`); // 胶囊高度
-        boxStyleList.push(`--td-navbar-capsule-width: ${rect.width}px`); // 胶囊宽度
-        boxStyleList.push(`--td-navbar-height: ${(rect.top - res.statusBarHeight) * 2 + rect.height}px`);
-        this.setData({
-          boxStyle: `${boxStyleList.join('; ')}`,
-        });
-        // @ts-ignore
-        if (wx.onMenuButtonBoundingClientRectWeightChange) {
-          // fixme: 规避单元测试无法识别新api，更新后可删除
-          // @ts-ignore
-          wx.onMenuButtonBoundingClientRectWeightChange((res: object) => this.queryElements(res)); // 监听胶囊条长度变化，隐藏遮挡的内容
-        }
-      },
-      fail: (err) => {
-        console.error('navbar 获取系统信息失败', err);
-      },
+    if (!rect || !systemInfo) return;
+
+    const boxStyleList = [];
+    boxStyleList.push(`--td-navbar-padding-top: ${systemInfo.statusBarHeight}px`);
+    if (rect && systemInfo?.windowWidth) {
+      boxStyleList.push(`--td-navbar-right: ${systemInfo.windowWidth - rect.left}px`); // 导航栏右侧小程序胶囊按钮宽度
+    }
+    boxStyleList.push(`--td-navbar-capsule-height: ${rect.height}px`); // 胶囊高度
+    boxStyleList.push(`--td-navbar-capsule-width: ${rect.width}px`); // 胶囊宽度
+    boxStyleList.push(`--td-navbar-height: ${(rect.top - systemInfo.statusBarHeight) * 2 + rect.height}px`);
+    this.setData({
+      boxStyle: `${boxStyleList.join('; ')}`,
     });
+    // @ts-ignore
+    if (wx.onMenuButtonBoundingClientRectWeightChange) {
+      // fixme: 规避单元测试无法识别新api，更新后可删除
+      // @ts-ignore
+      wx.onMenuButtonBoundingClientRectWeightChange((res: object) => this.queryElements(res)); // 监听胶囊条长度变化，隐藏遮挡的内容
+    }
   }
 
   detached() {

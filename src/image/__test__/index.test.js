@@ -2,6 +2,16 @@ import path from 'path';
 import simulate from 'miniprogram-simulate';
 
 describe('image', () => {
+  jest.resetModules();
+
+  jest.mock('../../common/version', () => {
+    const originalModule = jest.requireActual('../../common/version');
+    return {
+      ...originalModule,
+      compareVersion: () => -1,
+    };
+  });
+
   const image = load(path.resolve(__dirname, `../image`), 't-image');
 
   it(`: style && customStyle`, async () => {
@@ -68,17 +78,12 @@ describe('image', () => {
     await simulate.sleep();
 
     expect(handleLoad).toHaveBeenCalled();
-
     // height fixed
-    const mock = jest.spyOn(wx, 'getSystemInfoSync');
-    mock.mockImplementation(() => ({ SDKVersion: '2.10.2' }));
 
     comp.setData({ mode: 'heightFix' });
     $image.dispatchEvent('load', { detail: { width: 100, height: 100 } });
 
     await simulate.sleep();
     expect(comp.toJSON()).toMatchSnapshot();
-
-    mock.mockRestore();
   });
 });

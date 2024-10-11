@@ -1,6 +1,12 @@
+import exp from 'constants';
 import { prefix } from './config';
+import { getWindowInfo, getAppBaseInfo, getDeviceInfo } from './wechat';
 
-export const systemInfo = wx.getSystemInfoSync();
+export const systemInfo: WechatMiniprogram.WindowInfo | WechatMiniprogram.SystemInfo = getWindowInfo();
+
+export const appBaseInfo: WechatMiniprogram.AppBaseInfo | WechatMiniprogram.SystemInfo = getAppBaseInfo();
+
+export const deviceInfo: WechatMiniprogram.DeviceInfo | WechatMiniprogram.SystemInfo = getDeviceInfo();
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
