@@ -5,7 +5,7 @@ exports[`navbar :base 1`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed t-navbar--visible-animation class t-class"
-      style=""
+      style="--td-navbar-padding-top: 20px; --td-navbar-right: 94px; --td-navbar-capsule-height: 32px; --td-navbar-capsule-width: 87px; --td-navbar-height: 40px;"
     >
       <wx-view
         class="t-navbar__placeholder t-class-placeholder"
