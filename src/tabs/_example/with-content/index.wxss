@@ -3,6 +3,6 @@
 }
 
 .custom-panel {
-  height: 120px;
+  height: 120px !important;
   color: var(--td-text-color-primary);
 }

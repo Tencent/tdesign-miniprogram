@@ -387,6 +387,11 @@ exports[`Tabs Tabs with-badge demo works fine 1`] = `
 exports[`Tabs Tabs with-content demo works fine 1`] = `
 <with-content>
   <t-tabs
+    animation="{{
+      Object {
+        "duration": 0.6,
+      }
+    }}"
     defaultValue="{{0}}"
     tClass="custom-tabs"
     tClassContent="custom-panel"
