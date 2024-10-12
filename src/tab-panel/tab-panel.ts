@@ -50,7 +50,9 @@ export default class TabPanel extends SuperComponent {
     this.$parent?.updateTabs();
   }
 
-  render(active: Boolean, parent: any) {
+  render(active: Boolean, parent: WechatMiniprogram.Component.TrivialInstance) {
+    this.initialized = this.initialized || active;
+
     this.setData({
       active,
       hide: !parent.data.animation && !active,

@@ -131,9 +131,9 @@ export default class Tabs extends SuperComponent {
     setCurrentIndex(index: number) {
       if (index <= -1 || index >= this.children.length) return;
       const Labels = [];
-      this.children.forEach((child: any, idx: number) => {
+      this.children.forEach((child: WechatMiniprogram.Component.TrivialInstance, idx: number) => {
         const isActive = index === idx;
-        if (isActive !== child.data.active) {
+        if (isActive !== child.data.active || !child.initialized) {
           child.render(isActive, this);
         }
         Labels.push(child.data.label);

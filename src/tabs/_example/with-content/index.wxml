@@ -1,4 +1,5 @@
 <t-tabs
+  animation="{{ { duration: 0.6 } }}"
   defaultValue="{{0}}"
   bind:change="onTabsChange"
   bind:click="onTabsClick"
