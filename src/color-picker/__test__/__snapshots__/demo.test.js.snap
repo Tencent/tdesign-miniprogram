@@ -13,6 +13,7 @@ exports[`ColorPicker ColorPicker format demo works fine 1`] = `
       enableAlpha="{{true}}"
       format="CSS"
       type="multiple"
+      value="#7bd60b"
       bind:change="onChange"
       bind:palette-bar-change="onPaletteBarChange"
     />
