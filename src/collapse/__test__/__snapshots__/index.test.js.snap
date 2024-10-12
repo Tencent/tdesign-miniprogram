@@ -85,7 +85,7 @@ exports[`collapse :defaultExpandAll 1`] = `
           class="t-collapse-panel__wrapper"
         >
           <wx-view
-            class="t-collapse-panel__content t-class-content"
+            class="t-collapse-panel__content t-collapse-panel__content--expanded t-collapse-panel__content--bottom t-class-content"
           >
             
       
@@ -172,7 +172,7 @@ exports[`collapse :defaultExpandAll 1`] = `
           class="t-collapse-panel__wrapper"
         >
           <wx-view
-            class="t-collapse-panel__content t-class-content"
+            class="t-collapse-panel__content t-collapse-panel__content--expanded t-collapse-panel__content--bottom t-class-content"
           >
             
       
