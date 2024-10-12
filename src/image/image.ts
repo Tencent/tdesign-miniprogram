@@ -1,7 +1,8 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import ImageProps from './props';
 import config from '../common/config';
-import { addUnit, getRect } from '../common/utils';
+import { addUnit, getRect, appBaseInfo } from '../common/utils';
+import { compareVersion } from '../common/version';
 
 const { prefix } = config;
 const name = `${prefix}-image`;
@@ -37,13 +38,9 @@ export default class Image extends SuperComponent {
 
   methods = {
     onLoaded(e: any) {
-      const sdkVersion = wx.getSystemInfoSync().SDKVersion;
-      const versionArray = sdkVersion.split('.').map((v) => parseInt(v, 10));
+      const sdkVersion = appBaseInfo.SDKVersion;
       const { mode, tId } = this.properties;
-      const isInCompatible =
-        versionArray[0] < 2 ||
-        (versionArray[0] === 2 && versionArray[1] < 10) ||
-        (versionArray[0] === 2 && versionArray[1] === 10 && versionArray[2] < 3);
+      const isInCompatible = compareVersion(sdkVersion, '2.10.3') < 0;
       // 版本号低于2.10.3时组件内部实现heightFix模式
       if (mode === 'heightFix' && isInCompatible) {
         // 实现heightFix模式，保持高度和宽高比，设置对应的宽度

@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { getBackgroundColor } from './utils';
-import { unitConvert } from '../common/utils';
+import { unitConvert, deviceInfo } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-progress`;
@@ -28,16 +28,9 @@ export default class Progress extends SuperComponent {
   };
 
   attached() {
-    wx.getSystemInfo({
-      success: (res) => {
-        const isIOS = !!(res.system.toLowerCase().search('ios') + 1);
-        this.setData({
-          isIOS,
-        });
-      },
-      fail: (err) => {
-        console.error('progress 获取系统信息失败', err);
-      },
+    const isIOS = !!(deviceInfo?.system?.toLowerCase().search('ios') + 1);
+    this.setData({
+      isIOS,
     });
   }
 
@@ -67,12 +60,10 @@ export default class Progress extends SuperComponent {
       });
     },
 
-
     trackColor(trackColor) {
       this.setData({
         bgColorBar: trackColor,
       });
     },
   };
-
 }

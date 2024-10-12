@@ -1,4 +1,4 @@
-import { styles, calcIcon } from '../common/utils';
+import { styles, calcIcon, systemInfo } from '../common/utils';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
@@ -67,7 +67,7 @@ export default class ImageViewer extends SuperComponent {
     calcMaskTop() {
       if (this.data.usingCustomNavbar) {
         const rect = wx?.getMenuButtonBoundingClientRect() || null;
-        const { statusBarHeight } = wx.getSystemInfoSync();
+        const { statusBarHeight } = systemInfo;
 
         if (rect && statusBarHeight) {
           this.setData({
@@ -77,7 +77,7 @@ export default class ImageViewer extends SuperComponent {
       }
     },
     saveScreenSize() {
-      const { windowHeight, windowWidth } = wx.getSystemInfoSync();
+      const { windowHeight, windowWidth } = systemInfo;
       this.setData({
         windowHeight,
         windowWidth,

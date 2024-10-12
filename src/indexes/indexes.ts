@@ -1,7 +1,7 @@
 import { RelationsOptions, SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { getRect, throttle } from '../common/utils';
+import { getRect, throttle, systemInfo } from '../common/utils';
 import pageScrollMixin from '../mixins/page-scroll';
 
 const { prefix } = config;
@@ -66,7 +66,7 @@ export default class Indexes extends SuperComponent {
   methods = {
     setHeight(height: string | number) {
       if (!height) {
-        const { windowHeight } = wx.getSystemInfoSync();
+        const { windowHeight } = systemInfo;
         height = windowHeight;
       }
       this.setData(

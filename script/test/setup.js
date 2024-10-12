@@ -47,10 +47,27 @@ const menuButtonBoundingClientRect = {
   width: 87,
 };
 
+const appBaseInfo = {
+  SDKVersion: '2.19.1',
+  version: '8.0.5',
+};
+
+const windowInfo = {
+  pixelRatio: 2,
+  screenWidth: 375,
+  screenHeight: 667,
+  windowWidth: 375,
+  windowHeight: 667,
+  statusBarHeight: 20,
+  screenTop: 0,
+};
+
 global.wx = {
   ...similateApi,
   getSystemInfo: mockAsyncAndPromise('getSystemInfo', systemInfo),
   getSystemInfoSync: mockSync(systemInfo),
   getMenuButtonBoundingClientRect: mockSync(menuButtonBoundingClientRect),
+  getAppBaseInfo: mockSync(appBaseInfo),
+  getWindowInfo: mockSync(windowInfo),
 };
 global.VIRTUAL_HOST = canUseVirtualHost();

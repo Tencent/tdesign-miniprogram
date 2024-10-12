@@ -1,3 +1,5 @@
+import { appBaseInfo } from '../common/utils';
+
 const themeChangeBehavior = Behavior({
   data: {
     theme: 'light',
@@ -10,12 +12,9 @@ const themeChangeBehavior = Behavior({
   methods: {
     _initTheme() {
       const that = this;
-      wx.getSystemInfo({
-        success(res) {
-          that.setData({
-            theme: res.theme,
-          });
-        },
+
+      that.setData({
+        theme: appBaseInfo.theme,
       });
 
       wx.onThemeChange((res) => {

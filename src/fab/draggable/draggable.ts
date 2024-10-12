@@ -1,10 +1,9 @@
 import { SuperComponent, wxComponent } from '../../common/src/index';
 import config from '../../common/config';
 import props from './props';
-import { getRect } from '../../common/utils';
+import { getRect, systemInfo } from '../../common/utils';
 import type { TdDraggableProps } from './type';
 
-const systemInfo = wx.getSystemInfoSync();
 const { prefix } = config;
 const name = `${prefix}-draggable`;
 

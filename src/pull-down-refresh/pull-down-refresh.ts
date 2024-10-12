@@ -1,7 +1,7 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { unitConvert } from '../common/utils';
+import { unitConvert, systemInfo } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-pull-down-refresh`;
@@ -50,7 +50,7 @@ export default class PullDownRefresh extends SuperComponent {
 
   lifetimes = {
     attached() {
-      const { screenWidth } = wx.getSystemInfoSync();
+      const { screenWidth } = systemInfo;
       const { loadingTexts, maxBarHeight, loadingBarHeight } = this.properties;
       this.setData({
         _maxBarHeight: unitConvert(maxBarHeight),
