@@ -5,6 +5,7 @@ Component({
       label: `${item} 模式`,
       value: item,
     })),
+    color: '#7bd60b',
   },
   methods: {
     onChangeRadio(e) {

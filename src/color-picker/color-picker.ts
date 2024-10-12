@@ -66,11 +66,6 @@ export default class ColorPicker extends SuperComponent {
   properties = props;
 
   observers = {
-    'innerValue, format'(value) {
-      if (value !== this.formatValue()) {
-        this.updateColor();
-      }
-    },
     format() {
       this.setCoreStyle();
     },
@@ -125,6 +120,14 @@ export default class ColorPicker extends SuperComponent {
 
   lifetimes = {
     ready() {
+      const { value, defaultValue } = this.properties;
+      const innerValue = value || defaultValue;
+      if (innerValue) {
+        this.setData({
+          innerValue,
+        });
+      }
+      this.color = new Color(innerValue || DEFAULT_COLOR);
       this.updateColor();
 
       Promise.all([getRect(this, `.${name}__saturation`), getRect(this, `.${name}__slider`)]).then(

@@ -3,6 +3,7 @@
     enableAlpha
     type="multiple"
     format="{{curFormat}}"
+    value="{{color}}"
     bind:change="onChange"
     bind:palette-bar-change="onPaletteBarChange"
   />
