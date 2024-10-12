@@ -26,7 +26,7 @@
         type="list"
         bind:scroll="onScroll"
       >
-        <view class="{{_.cls(classPrefix + '__nav', [placement])}}" aria-role="tablist">
+        <view class="{{_.cls(classPrefix + '__nav', [placement, ['evenly', spaceEvenly]])}}" aria-role="tablist">
           <view
             wx:for="{{tabs}}"
             wx:key="index"
