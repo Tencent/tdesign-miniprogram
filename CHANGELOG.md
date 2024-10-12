@@ -6,6 +6,21 @@ docClass: timeline
 ---
 
 
+## 🌈 1.6.2 `2024-10-12` 
+### 🚀 Features
+- `Checkbox`: 新增keys可配置options的value和label的别名 @huxinhai ([#3154](https://github.com/Tencent/tdesign-miniprogram/pull/3154))
+### 🐞 Bug Fixes
+- `Button`: 修复文字按钮样式错误 @anlyyao ([#3163](https://github.com/Tencent/tdesign-miniprogram/pull/3163))
+- `Checkbox`: 修复 `change` 事件中参数缺失的问题 @betavs ([#3157](https://github.com/Tencent/tdesign-miniprogram/pull/3157))
+- `Dialog`: 修复更新按钮属性 `openType` 未重置问题 @jarmywang ([#3178](https://github.com/Tencent/tdesign-miniprogram/pull/3178))
+- `Tabs`: 修复开启 `animation` 时导致的面板滚动位置不准确问题 @anlyyao ([#3188](https://github.com/Tencent/tdesign-miniprogram/pull/3188))
+- `Tabs`: 修复在 `skyline` 中无法滚动的问题 @anlyyao ([#3187](https://github.com/Tencent/tdesign-miniprogram/pull/3187))
+- `Collapse`: 修复禁用+面板展开场景下面板展开态不正确，并处理多个样式问题 @anlyyao ([#3186](https://github.com/Tencent/tdesign-miniprogram/pull/3186))
+- `Cell`: 修复 `arrow` 动态变更无效的问题 @anlyyao ([#3184](https://github.com/Tencent/tdesign-miniprogram/pull/3184))
+- `Switch`: 修复深色模式下文本颜色错误 @anlyyao ([#3183](https://github.com/Tencent/tdesign-miniprogram/pull/3183))
+- `PullDownRefresh`: 修复禁用下拉刷新导致的滑动事件无效 @anlyyao ([#3182](https://github.com/Tencent/tdesign-miniprogram/pull/3182))
+
+
 ## 🌈 1.6.1 `2024-09-14` 
 ### 🚀 Features
 - `Fab`: 新增 `yEdge` 属性，支持设置垂直方向边界限制 @anlyyao ([#3125](https://github.com/Tencent/tdesign-miniprogram/pull/3125))
