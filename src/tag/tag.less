@@ -55,7 +55,7 @@
     @theme-light-color: 'tag-@{value}-light-color';
 
     &.@{prefix}-tag--@{value} {
-      color: if(@variant = dark, @font-white-1, @@theme-color);
+      color: if(@variant = dark, @text-color-anti, @@theme-color);
       border-color: if(@variant = light, @@theme-light-color, @@theme-color);
       background-color: if(@variant = dark, @@theme-color, @@theme-light-color);
     }

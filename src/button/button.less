@@ -38,10 +38,10 @@
 @button-default-disabled-bg: var(--td-button-default-disabled-bg, @bg-color-component-disabled);
 @button-default-disabled-border-color: var(--td-button-default-disabled-border-color, @bg-color-component-disabled);
 // primary
-@button-primary-color: var(--td-button-primary-color, @font-white-1);
+@button-primary-color: var(--td-button-primary-color, @text-color-anti);
 @button-primary-border-color: var(--td-button-primary-border-color, @brand-color);
 @button-primary-bg-color: var(--td-button-primary-bg-color, @brand-color);
-@button-primary-disabled-color: var(--td-button-primary-disabled-color, @font-white-1);
+@button-primary-disabled-color: var(--td-button-primary-disabled-color, @text-color-anti);
 @button-primary-disabled-bg: var(--td-button-primary-disabled-bg, @brand-color-disabled);
 @button-primary-disabled-border-color: var(--td-button-primary-disabled-border-color, @brand-color-disabled);
 // light
@@ -52,7 +52,7 @@
 @button-light-disabled-bg: var(--td-button-light-disabled-bg, @brand-color-light);
 @button-light-disabled-border-color: var(--td-button-light-disabled-border-color, @brand-color-light);
 // danger
-@button-danger-color: var(--td-button-danger-color, @font-white-1);
+@button-danger-color: var(--td-button-danger-color, @text-color-anti);
 @button-danger-border-color: var(--td-button-danger-border-color, @error-color);
 @button-danger-bg-color: var(--td-button-danger-bg-color, @error-color);
 @button-danger-disabled-color: var(--td-button-danger-disabled-color, @error-color-disabled);
@@ -92,7 +92,7 @@
 // light + text
 @button-light-text-color: var(--td-button-light-text-color, @brand-color);
 // ghost 优先级高于 theme，固定透明背景，白色边框，白色字体
-@button-ghost-color: var(--td-button-ghost-color, #fff);
+@button-ghost-color: var(--td-button-ghost-color, @text-color-anti);
 @button-ghost-border-color: var(--td-button-ghost-border-color, @button-ghost-color);
 @button-ghost-disabled-color: var(--td-button-ghost-disabled-color, @font-white-4);
 @button-ghost-hover-color: var(--td-button-ghost-hover-color, @font-white-2);
