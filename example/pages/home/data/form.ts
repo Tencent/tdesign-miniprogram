@@ -15,6 +15,11 @@ const form = {
       label: '多选框',
     },
     {
+      name: 'ColorPicker',
+      label: '颜色选择器',
+      path: '/pages/color-picker/color-picker',
+    },
+    {
       name: 'DateTimePicker',
       label: '时间选择器',
     },
