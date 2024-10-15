@@ -36,5 +36,7 @@
     bind:launchapp="onTplButtonTap"
     bind:agreeprivacyauthorization="onTplButtonTap"
     aria-label="{{ariaLabel || ''}}"
-  />
+  >
+    <slot />
+  </t-button>
 </template>

@@ -31,9 +31,9 @@
   aria-label="{{ariaLabel}}"
 >
   <template
-    wx:if="{{iconName || _.isNoEmptyObj(iconData)}}"
+    wx:if="{{_icon}}"
     is="icon"
-    data="{{class: classPrefix + '__icon', tClass: prefix + '-class-icon', ariaHidden: true, name: iconName, ...iconData}}"
+    data="{{class: classPrefix + '__icon', tClass: prefix + '-class-icon', ariaHidden: true, name: iconName, ..._icon}}"
   />
   <t-loading
     wx:if="{{loading}}"

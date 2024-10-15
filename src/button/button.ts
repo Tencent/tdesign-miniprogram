@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { canIUseFormFieldButton } from '../common/version';
-import { setIcon } from '../common/utils';
+import { calcIcon } from '../common/utils';
 import type { TdButtonProps } from './type';
 
 const { prefix } = config;
@@ -33,9 +33,8 @@ export default class Button extends SuperComponent {
     },
 
     icon(icon) {
-      const obj = setIcon('icon', icon, '');
       this.setData({
-        ...obj,
+        _icon: calcIcon(icon, ''),
       });
     },
   };
