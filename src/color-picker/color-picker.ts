@@ -17,9 +17,17 @@ import { Color, getColorObject } from './utils';
 const { prefix } = config;
 const name = `${prefix}-color-picker`;
 
-const getCoordinate = (e) => {
+const getCoordinate = (e, left?: number, top?: number) => {
   const { pageX, pageY } = e.changedTouches[0] || {};
-  const { offsetLeft, offsetTop } = e.currentTarget;
+  let { offsetLeft, offsetTop } = e.currentTarget;
+
+  if (top !== undefined) {
+    offsetTop = top;
+  }
+
+  if (left !== undefined) {
+    offsetLeft = left;
+  }
 
   return {
     x: pageX - offsetLeft,
@@ -92,6 +100,7 @@ export default class ColorPicker extends SuperComponent {
     },
     sliderRect: {
       width: SLIDER_DEFAULT_WIDTH,
+      left: 0,
     },
     saturationInfo: {
       saturation: 0,
@@ -139,6 +148,7 @@ export default class ColorPicker extends SuperComponent {
                 height: saturationRect.height || SATURATION_PANEL_DEFAULT_HEIGHT,
               },
               sliderRect: {
+                left: sliderRect.left || 0,
                 width: sliderRect.width || SLIDER_DEFAULT_WIDTH,
               },
             },
@@ -274,8 +284,8 @@ export default class ColorPicker extends SuperComponent {
       this.onChangeSaturation({ saturation, value });
     },
     handleSliderDrag(e, isAlpha = false) {
-      const coordinate = getCoordinate(e);
-      const { width } = this.data.sliderRect;
+      const { width, left } = this.data.sliderRect;
+      const coordinate = getCoordinate(e, left);
       const { x } = coordinate;
       const maxValue = isAlpha ? ALPHA_MAX : HUE_MAX;
 

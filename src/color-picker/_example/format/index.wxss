@@ -1,0 +1,36 @@
+.format-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 112rpx;
+  margin: 0 32rpx 40rpx;
+}
+
+.format-item {
+  border-radius: 12rpx;
+  height: 100%;
+  background-color: #fff;
+  padding: 32rpx;
+  line-height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.format-item.active::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 0;
+  top: 0;
+  border-top-left-radius: 12rpx;
+  border-top: 56rpx solid #0052D9;
+  border-right: 56rpx solid transparent;
+  border-radius: 0;
+}
+
+.format-item:not(:last-child) {
+  margin-right: 24rpx;
+}

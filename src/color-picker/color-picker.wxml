@@ -11,7 +11,7 @@
       data-type="saturation"
       style="background: hsl({{sliderInfo.value}}, 100%, 50%)"
     >
-      <view class="{{classPrefix}}__thumb" tabIndex="{{0}}" style="{{_._style(saturationThumbStyle)}}"></view>
+      <view class="{{classPrefix}}__thumb" tabIndex="{{0}}" style="{{_._style(saturationThumbStyle)}}"> </view>
     </view>
     <view class="{{classPrefix}}__sliders-wrapper" wx:if="{{isMultiple}}">
       <view class="{{classPrefix}}__sliders">
@@ -81,12 +81,10 @@
             wx:for-item="swatch"
             wx:key="swatch"
             class="{{classPrefix}}__swatches-item"
-            catch:tap="clickSwatch"
             data-value="{{swatch}}"
+            catch:tap="clickSwatch"
           >
-            <view class="{{classPrefix}}__swatches-color">
-              <view class="{{classPrefix}}__swatches-inner" style="background-color: {{swatch}};"> </view>
-            </view>
+            <view class="{{classPrefix}}__swatches-inner" style="background-color: {{swatch}};"> </view>
           </view>
         </view>
       </view>
