@@ -16,6 +16,13 @@
   box-sizing: border-box;
   position: relative;
   overflow: hidden;
+
+  display: flex;
+  align-items: center;
+}
+
+.format-item.active {
+  border: 3rpx solid #0052d9;
 }
 
 .format-item.active::after {

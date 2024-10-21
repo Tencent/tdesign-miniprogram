@@ -10,7 +10,7 @@
     <multiple />
   </t-demo>
 
-  <t-demo title="02 组件状态" desc="{{curFormat}} 模式">
+  <t-demo title="02 组件状态" desc="组件模式选择">
     <format />
   </t-demo>
 </view>
