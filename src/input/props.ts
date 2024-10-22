@@ -76,6 +76,10 @@ const props: TdInputProps = {
     type: Boolean,
     value: false,
   },
+  /** 指定输入框展示值的格式 */
+  format: {
+    type: null,
+  },
   /** focus时，点击页面的时候不收起键盘 */
   holdKeyboard: {
     type: Boolean,

@@ -102,6 +102,7 @@ cursor-spacing | Number | 0 | 指定光标与键盘的距离，取 input 距离�
 disabled | Boolean | false | 是否禁用输入框 | N
 error-message | String | - | 已废弃。错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips） | N
 focus | Boolean | false | 获取焦点 | N
+format | Function | - | 指定输入框展示值的格式。TS 类型：`InputFormatType` `type InputFormatType = (value: InputValue) => string`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
 hold-keyboard | Boolean | false | focus时，点击页面的时候不收起键盘 | N
 label | String / Slot | - | 左侧文本。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 layout | String | horizontal | 标题输入框布局方式。可选项：vertical/horizontal | N
