@@ -44,6 +44,7 @@
         confirm-type="{{confirmType}}"
         confirm-hold="{{confirmHold}}"
         cursor="{{cursor}}"
+        cursor-color="{{cursorColor}}"
         cursor-spacing="{{cursorSpacing}}"
         adjust-position="{{adjustPosition}}"
         auto-focus="{{autoFocus}}"

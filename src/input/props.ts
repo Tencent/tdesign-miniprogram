@@ -56,6 +56,11 @@ const props: TdInputProps = {
     type: Number,
     required: true,
   },
+  /** 光标颜色。iOS 下的格式为十六进制颜色值 #000000，安卓下的只支持 default 和 green，Skyline 下无限制 */
+  cursorColor: {
+    type: String,
+    value: '',
+  },
   /** 指定光标与键盘的距离，取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离 */
   cursorSpacing: {
     type: Number,
@@ -70,10 +75,6 @@ const props: TdInputProps = {
   focus: {
     type: Boolean,
     value: false,
-  },
-  /** 【开发中】指定输入框展示值的格式 */
-  format: {
-    type: null,
   },
   /** focus时，点击页面的时候不收起键盘 */
   holdKeyboard: {
