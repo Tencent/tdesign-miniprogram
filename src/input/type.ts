@@ -86,6 +86,14 @@ export interface TdInputProps {
     required?: boolean;
   };
   /**
+   * 光标颜色。iOS 下的格式为十六进制颜色值 #000000，安卓下的只支持 default 和 green，Skyline 下无限制
+   * @default ''
+   */
+  cursorColor?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 指定光标与键盘的距离，取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离
    * @default 0
    */
@@ -108,13 +116,6 @@ export interface TdInputProps {
   focus?: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-  /**
-   * 【开发中】指定输入框展示值的格式
-   */
-  format?: {
-    type: undefined;
-    value?: InputFormatType;
   };
   /**
    * focus时，点击页面的时候不收起键盘
@@ -300,7 +301,5 @@ export interface TdInputProps {
     value?: InputValue;
   };
 }
-
-export type InputFormatType = (value: InputValue) => string;
 
 export type InputValue = string | number;
