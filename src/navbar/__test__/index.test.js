@@ -39,7 +39,7 @@ describe('navbar', () => {
     });
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
-
+    await simulate.sleep();
     expect(comp.toJSON()).toMatchSnapshot();
 
     // invisible
