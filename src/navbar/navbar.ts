@@ -67,7 +67,7 @@ export default class Navbar extends SuperComponent {
     hideCenter: false, // 隐藏中部内容
   };
 
-  attached() {
+  async attached() {
     // 场景值为1177（视频号直播间）和1175 （视频号profile页）时，小程序禁用了 wx.getMenuButtonBoundingClientRect
     let rect = null;
     if (wx.getMenuButtonBoundingClientRect) {
@@ -75,9 +75,14 @@ export default class Navbar extends SuperComponent {
     }
     if (!rect || !systemInfo) return;
 
+    const { right } = await getRect(this, `.${name}__left`);
+
     const boxStyleList = [];
     boxStyleList.push(`--td-navbar-padding-top: ${systemInfo.statusBarHeight}px`);
     if (rect && systemInfo?.windowWidth) {
+      const maxSpacing = Math.max(right, systemInfo.windowWidth - rect.left);
+      boxStyleList.push(`--td-navbar-center-left: ${maxSpacing}px`); // 标题左侧距离
+      boxStyleList.push(`--td-navbar-center-width: ${rect.left - maxSpacing}px`); // 标题宽度
       boxStyleList.push(`--td-navbar-right: ${systemInfo.windowWidth - rect.left}px`); // 导航栏右侧小程序胶囊按钮宽度
     }
     boxStyleList.push(`--td-navbar-capsule-height: ${rect.height}px`); // 胶囊高度
@@ -131,6 +136,7 @@ export default class Navbar extends SuperComponent {
         }
       });
     },
+
     goBack() {
       const { delta } = this.data;
       // eslint-disable-next-line
