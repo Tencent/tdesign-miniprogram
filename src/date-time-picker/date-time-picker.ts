@@ -180,7 +180,7 @@ export default class DateTimePicker extends SuperComponent {
       const columnOptions = [];
       fullModes?.forEach((mode) => {
         const columnOption = this.getOptionByType(mode);
-        if (filter) {
+        if (typeof filter === 'function') {
           columnOptions.push(filter(mode, columnOption));
         } else {
           columnOptions.push(columnOption);
