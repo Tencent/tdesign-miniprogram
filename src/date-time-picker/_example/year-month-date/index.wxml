@@ -21,4 +21,5 @@
   bindcancel="hidePicker"
   start="{{start}}"
   end="{{end}}"
+  filter="{{filter}}"
 />
