@@ -46,6 +46,13 @@ export interface TdDateTimePickerProps {
     value?: ['t-class', 't-class-confirm', 't-class-cancel', 't-class-title'];
   };
   /**
+   * 列选项过滤函数，支持自定义列内容。(type 值可为: year, month, date, hour, minute, second)
+   */
+  filter?: {
+    type: undefined;
+    value?: null;
+  };
+  /**
    * 用于格式化 pick、change、confirm 事件返回的值，[详细文档](https://day.js.org/docs/en/display/format)
    * @default 'YYYY-MM-DD HH:mm:ss'
    */
