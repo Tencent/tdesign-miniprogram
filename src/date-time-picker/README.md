@@ -66,6 +66,7 @@ cancel-btn | String | 取消 | 取消按钮文字 | N
 confirm-btn | String | - | 确定按钮文字 | N
 custom-locale | String | zh |  组件国际化语言，目前支持: 简体中文(zh)、(tc)、英文(en)、日语(ja)、韩语(ko)、俄语(ru)等六种语言 | N
 end | String / Number | - | 选择器的最大可选时间，默认为当前时间+10年 | N
+filter | Function | - | 列选项过滤函数，支持自定义列内容。(type 值可为: year, month, date, hour, minute, second) | N
 footer | Slot | - | 底部内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 format | String | 'YYYY-MM-DD HH:mm:ss' | 用于格式化 pick、change、confirm 事件返回的值，[详细文档](https://day.js.org/docs/en/display/format) | N
 header | Boolean / Slot | true | 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
@@ -89,6 +90,7 @@ change | `(value: DateValue)` | 确认按钮点击时触发
 close | `(trigger: TriggerSource)` | `1.0.1`。关闭时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts)。<br/>`type TriggerSource = 'overlay' \| 'cancel-btn' \| 'confirm-btn'`<br/>
 confirm | `(value: DateValue)` | `1.0.1`。确认按钮点击时触发
 pick | `(value: DateValue)` | 选中值发生变化时触发
+
 ### DateTimePicker External Classes
 
 类名 | 描述
@@ -97,17 +99,6 @@ t-class | 根节点样式类
 t-class-cancel | 取消样式类
 t-class-confirm | 确认样式类
 t-class-title | 标题样式类
-
-### DateTimePicker 组件国际化
-组件支持国际化，目前支持：简体中文(zh)、(tc)、英文(en)、日语(ja)、韩语(ko)、俄语(ru)等六种语言，默认为简体中文(zh)。使用方式如下：
-- 全局设置语言： 在小程序全局入口设置 `dayjs` 的语言即可，示例：
-```js
-import dayjs from 'dayjs';
-import 'dayjs/locale/zh-cn';
-
-dayjs.locale('zh-cn'); // 全局设置为简体中文
-```
-- 单个组件设置：在组件上添加 custom-locale 属性即可，注意：custom-locale 优先级高于全局设置。
 
 ### CSS Variables
 
