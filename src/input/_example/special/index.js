@@ -4,6 +4,13 @@ Component({
     phoneError: false,
     phoneNumber: '17600600600',
     priceError: false,
+    priceFormat: (v) => {
+      const isNumber = /^\d+(\.\d+)?$/.test(v);
+      if (isNumber) {
+        return parseFloat(v).toFixed(2);
+      }
+      return v;
+    },
   },
 
   methods: {

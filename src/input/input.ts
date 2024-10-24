@@ -104,7 +104,7 @@ export default class Input extends SuperComponent {
       this.updateClearIconVisible();
 
       // 失焦时处理 format
-      if (this.properties.format) {
+      if (typeof this.properties.format === 'function') {
         const v = this.properties.format(e.detail.value);
         this.updateValue(v);
         this.triggerEvent('blur', { value: this.data.value, cursor: this.data.count });

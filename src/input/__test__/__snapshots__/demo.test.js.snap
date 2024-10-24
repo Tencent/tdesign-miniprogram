@@ -201,6 +201,7 @@ exports[`Input Input special demo works fine 1`] = `
   </t-input>
   <t-input
     align="right"
+    format="{{[Function]}}"
     label="价格"
     placeholder="0.00"
     suffix="元"
