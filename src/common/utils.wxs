@@ -124,6 +124,10 @@ function _style(styles) {
   return styles;
 }
 
+function isValidIconName(str) {
+  return getRegExp('^[A-Za-z0-9\-]+$').test(str);
+}
+
 module.exports = {
   addUnit: addUnit,
   isString: isString,
@@ -134,4 +138,5 @@ module.exports = {
   cls: cls,
   getBadgeAriaLabel: getBadgeAriaLabel,
   _style: _style,
+  isValidIconName: isValidIconName,
 };
