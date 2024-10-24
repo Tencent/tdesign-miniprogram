@@ -127,6 +127,7 @@ exports[`Navbar Navbar left-title demo works fine 1`] = `
     <wx-text
       class="left-text"
       slot="left"
+      bind:tap="onBack"
     >
       返回
     </wx-text>

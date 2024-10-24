@@ -1,1 +1,7 @@
-Component({});
+Component({
+  methods: {
+    onBack() {
+      wx.navigateBack();
+    },
+  },
+});
