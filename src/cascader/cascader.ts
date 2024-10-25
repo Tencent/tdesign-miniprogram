@@ -280,7 +280,12 @@ export default class Cascader extends SuperComponent {
       selectedIndexes[level] = index;
       selectedIndexes.length = level + 1;
 
-      this.triggerEvent('pick', { value: item[keys?.value ?? 'value'], index, level });
+      this.triggerEvent('pick', {
+        value: item[keys?.value ?? 'value'],
+        label: item[keys?.label ?? 'label'],
+        index,
+        level,
+      });
       const { items: newItems } = this.genItems();
       if (item?.[keys?.children ?? 'children']?.length) {
         this.setData({
