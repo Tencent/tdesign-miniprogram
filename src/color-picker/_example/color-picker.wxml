@@ -1,0 +1,16 @@
+<t-navbar class="demo-navbar" title="ColorPicker" leftArrow />
+<view class="demo">
+  <view class="demo-title">ColorPicker 颜色选择器</view>
+  <view class="demo-desc">用于颜色选择，支持多种格式。</view>
+  <t-demo title="01 组件类型" desc="基础颜色选择器">
+    <base />
+  </t-demo>
+
+  <t-demo desc="带色板的颜色选择器">
+    <multiple />
+  </t-demo>
+
+  <t-demo title="02 组件状态" desc="组件模式选择">
+    <format />
+  </t-demo>
+</view>

@@ -89,6 +89,7 @@
     "pages/link/skyline/link",
     "pages/col/col",
     "pages/col/skyline/col",
+    "pages/color-picker/color-picker",
     "pages/guide/guide"
   ],
   "subpackages": [

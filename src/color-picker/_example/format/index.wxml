@@ -1,0 +1,44 @@
+<view>
+  <view class="format-line">
+    <view
+      class="format-item {{ curFormat === item ? 'active' : '' }}"
+      wx:for="{{['CSS', 'HEX', 'RGB']}}"
+      wx:key="item"
+      data-format="{{item}}"
+      catch:tap="clickFormat"
+    >
+      <t-icon
+        wx:if="{{curFormat === item}}"
+        name="check"
+        size="14"
+        custom-style="position: absolute;left: 4rpx;top: 4rpx;z-index: 1;color: #fff"
+      />
+      {{item}}
+    </view>
+  </view>
+  <view class="format-line">
+    <view
+      class="format-item {{ curFormat === item ? 'active' : '' }}"
+      wx:for="{{['HSL', 'HSV', 'CMYK']}}"
+      wx:key="item"
+      data-format="{{item}}"
+      catch:tap="clickFormat"
+    >
+      <t-icon
+        wx:if="{{curFormat === item}}"
+        name="check"
+        size="14"
+        custom-style="position: absolute;left: 4rpx;top: 4rpx;z-index: 1;color: #fff"
+      />
+      {{item}}
+    </view>
+  </view>
+  <t-color-picker
+    enableAlpha
+    type="multiple"
+    format="{{curFormat}}"
+    value="{{color}}"
+    bind:change="onChange"
+    bind:palette-bar-change="onPaletteBarChange"
+  />
+</view>

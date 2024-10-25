@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ColorPicker ColorPicker base demo works fine 1`] = `
+<base>
+  <t-color-picker />
+</base>
+`;
+
+exports[`ColorPicker ColorPicker format demo works fine 1`] = `
+<format>
+  <wx-view>
+    <wx-view
+      class="format-line"
+    >
+      <wx-view
+        class="format-item active"
+        data-format="CSS"
+        catch:tap="clickFormat"
+      >
+        <t-icon
+          customStyle="position: absolute;left: 4rpx;top: 4rpx;z-index: 1;color: #fff"
+          name="check"
+          size="14"
+        />
+        
+      CSS
+    
+      </wx-view>
+      <wx-view
+        class="format-item "
+        data-format="HEX"
+        catch:tap="clickFormat"
+      >
+        
+      HEX
+    
+      </wx-view>
+      <wx-view
+        class="format-item "
+        data-format="RGB"
+        catch:tap="clickFormat"
+      >
+        
+      RGB
+    
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="format-line"
+    >
+      <wx-view
+        class="format-item "
+        data-format="HSL"
+        catch:tap="clickFormat"
+      >
+        
+      HSL
+    
+      </wx-view>
+      <wx-view
+        class="format-item "
+        data-format="HSV"
+        catch:tap="clickFormat"
+      >
+        
+      HSV
+    
+      </wx-view>
+      <wx-view
+        class="format-item "
+        data-format="CMYK"
+        catch:tap="clickFormat"
+      >
+        
+      CMYK
+    
+      </wx-view>
+    </wx-view>
+    <t-color-picker
+      enableAlpha="{{true}}"
+      format="CSS"
+      type="multiple"
+      value="#7bd60b"
+      bind:change="onChange"
+      bind:palette-bar-change="onPaletteBarChange"
+    />
+  </wx-view>
+</format>
+`;
+
+exports[`ColorPicker ColorPicker multiple demo works fine 1`] = `
+<multiple>
+  <t-color-picker
+    enableAlpha="{{true}}"
+    type="multiple"
+    bind:change="onChange"
+    bind:palette-bar-change="onPaletteBarChange"
+  />
+</multiple>
+`;
