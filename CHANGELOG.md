@@ -6,6 +6,26 @@ docClass: timeline
 ---
 
 
+## 🌈 1.7.0 `2024-10-25` 
+### 🚀 Features
+- `ColorPicker`: 新增 `ColorPicker` 组件 @novlan1 ([#3176](https://github.com/Tencent/tdesign-miniprogram/pull/3176))⚡
+- `Fab`:  新增默认插槽 @anlyyao ([#3204](https://github.com/Tencent/tdesign-miniprogram/pull/3204))
+- `Input`: 新增 `cursorColor` 属性 @anlyyao ([#3211](https://github.com/Tencent/tdesign-miniprogram/pull/3211))
+- `Input`: 支持 `format` 属性 @anlyyao ([#3213](https://github.com/Tencent/tdesign-miniprogram/pull/3213))
+- `DateTimePicker`: 新增 `filter` 属性，支持自定义列选项内容 @anlyyao ([#3220](https://github.com/Tencent/tdesign-miniprogram/pull/3220))
+- `Indexeds`: 优化交互样式，索引仅展示首字符，气泡支持展示索引内容 @anlyyao ([#3222](https://github.com/Tencent/tdesign-miniprogram/pull/3222))
+- `Cascader`: `pick` 事件补充 `label` 参数 @anlyyao ([#3223](https://github.com/Tencent/tdesign-miniprogram/pull/3223))
+### 🐞 Bug Fixes
+- `Button`: 修复深色模式的默认幽灵按钮的边框色错误 @anlyyao ([#3200](https://github.com/Tencent/tdesign-miniprogram/pull/3200))
+- `Icon`: 修复使用图片链接时偶发性出现字体图标的问题 @anlyyao ([#3216](https://github.com/Tencent/tdesign-miniprogram/pull/3216))
+- `Upload`: 修复 `loading` 内容未居中问题 @anlyyao ([#3219](https://github.com/Tencent/tdesign-miniprogram/pull/3219))
+- `Navbar`: 修复安卓中因精度带来的标题宽度计算错误，并优化标题左侧间距 @anlyyao ([#3217](https://github.com/Tencent/tdesign-miniprogram/pull/3217))
+### 📝 Documentation
+- `Fab`: 文档补充 `FAQ` 部分 @anlyyao ([#3215](https://github.com/Tencent/tdesign-miniprogram/pull/3215))
+### 🚧 Others
+- `Weixin`: 更新部分不在维护的`wx`接口，并兼容低版本 @anlyyao ([#3192](https://github.com/Tencent/tdesign-miniprogram/pull/3192))
+
+
 ## 🌈 1.6.2 `2024-10-12` 
 ### 🚀 Features
 - `Checkbox`: 新增keys可配置options的value和label的别名 @huxinhai ([#3154](https://github.com/Tencent/tdesign-miniprogram/pull/3154))
