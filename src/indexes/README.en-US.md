@@ -51,7 +51,7 @@ Name | Default Value | Description
 --td-indexes-sidebar-tips-bg-color | @brand-color-light | - 
 --td-indexes-sidebar-tips-color | @brand-color | - 
 --td-indexes-sidebar-tips-font-size | 40rpx | - 
---td-indexes-sidebar-tips-right | 76rpx | - 
+--td-indexes-sidebar-tips-right | calc(100% + 32rpx) | - 
 --td-indexes-sidebar-tips-size | 96rpx | - 
 --td-indexes-anchor-active-bg-color | @bg-color-container | - 
 --td-indexes-anchor-active-color | @brand-color | - 

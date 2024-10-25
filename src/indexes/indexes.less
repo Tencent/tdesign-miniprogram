@@ -12,7 +12,7 @@
 @indexes-sidebar-tips-font-size: var(--td-indexes-sidebar-tips-font-size, 40rpx);
 @indexes-sidebar-tips-color: var(--td-indexes-sidebar-tips-color, @brand-color);
 @indexes-sidebar-tips-bg-color: var(--td-indexes-sidebar-tips-bg-color, @brand-color-light);
-@indexes-sidebar-tips-right: var(--td-indexes-sidebar-tips-right, 76rpx);
+@indexes-sidebar-tips-right: var(--td-indexes-sidebar-tips-right, calc(100% + 32rpx));
 
 .@{prefix}-indexes {
   position: relative;
@@ -47,7 +47,13 @@
     }
 
     &-tips {
-      width: @indexes-sidebar-tips-size;
+      min-width: @indexes-sidebar-tips-size;
+      max-width: 198rpx;
+      padding: 0 32rpx;
+      box-sizing: border-box;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
       height: @indexes-sidebar-tips-size;
       line-height: @indexes-sidebar-tips-size;
       text-align: center;
@@ -55,7 +61,7 @@
       font-weight: 700;
       color: @indexes-sidebar-tips-color;
       background-color: @indexes-sidebar-tips-bg-color;
-      border-radius: 50%;
+      border-radius: @indexes-sidebar-tips-size;
       position: absolute;
       top: 50%;
       bottom: 0;
