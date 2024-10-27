@@ -30,7 +30,7 @@ export default class Icon extends SuperComponent {
       this.triggerEvent('click', event.detail);
     },
 
-    async setIconStyle() {
+    setIconStyle() {
       const { name, color, size, classPrefix } = this.data;
       const isImage = name.indexOf('/') !== -1;
 
@@ -39,17 +39,15 @@ export default class Icon extends SuperComponent {
       const fontStyle = size ? { 'font-size': sizeValue } : {};
       const iconStyle: Record<string, any> = { ...colorStyle, ...fontStyle };
 
-      if (isImage) {
-        const { height } = await getRect(this, `.${classPrefix}`);
-        const iconSize = sizeValue || addUnit(height);
+      this.setData({ isImage }, async () => {
+        if (isImage) {
+          const { height } = await getRect(this, `.${classPrefix}`);
+          const iconSize = sizeValue || addUnit(height);
 
-        iconStyle.width = iconSize;
-        iconStyle.height = iconSize;
-      }
-
-      this.setData({
-        isImage,
-        iconStyle: `${styles(iconStyle)}`,
+          iconStyle.width = iconSize;
+          iconStyle.height = iconSize;
+        }
+        this.setData({ iconStyle: `${styles(iconStyle)}` });
       });
     },
   };
