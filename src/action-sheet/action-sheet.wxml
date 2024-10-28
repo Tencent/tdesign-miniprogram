@@ -42,7 +42,7 @@
         bind:tap="onCancel"
         aria-role="button"
       >
-        {{ cancelText }}
+        {{ cancelText || '取消' }}
       </view>
     </view>
   </t-popup>
