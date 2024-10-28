@@ -4,15 +4,9 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { SizeEnum } from '../common/common';
+
 export interface TdStepperProps {
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
   /**
    * 禁用输入框
    * @default false
@@ -23,7 +17,6 @@ export interface TdStepperProps {
   };
   /**
    * 禁用全部操作
-   * @default false
    */
   disabled?: {
     type: BooleanConstructor;
@@ -37,11 +30,19 @@ export interface TdStepperProps {
     value?: ['t-class', 't-class-input', 't-class-add', 't-class-minus'];
   };
   /**
-   * 输入框宽度
+   * 输入框宽度，默认单位 `px`
    */
   inputWidth?: {
     type: NumberConstructor;
     value?: number;
+  };
+  /**
+   * 是否整型
+   * @default true
+   */
+  integer?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 最大值
@@ -60,20 +61,20 @@ export interface TdStepperProps {
     value?: number;
   };
   /**
+   * 组件尺寸
+   * @default medium
+   */
+  size?: {
+    type: StringConstructor;
+    value?: SizeEnum;
+  };
+  /**
    * 步长
    * @default 1
    */
   step?: {
     type: NumberConstructor;
     value?: number;
-  };
-  /**
-   * 组件尺寸
-   * @default medium
-   */
-  size?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 组件风格
@@ -88,8 +89,7 @@ export interface TdStepperProps {
    * @default 0
    */
   value?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
+    type: null;
     value?: string | number;
   };
   /**
@@ -97,8 +97,7 @@ export interface TdStepperProps {
    * @default 0
    */
   defaultValue?: {
-    type: StringConstructor;
-    optionalTypes: Array<NumberConstructor>;
+    type: null;
     value?: string | number;
   };
 }

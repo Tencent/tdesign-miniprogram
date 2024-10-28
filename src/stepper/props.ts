@@ -13,16 +13,21 @@ const props: TdStepperProps = {
   },
   /** 禁用全部操作 */
   disabled: {
-    type: Boolean,
-    value: false,
+    type: null,
+    value: undefined,
   },
   /** 组件类名，分别用于表示组件外层元素、输入框、右侧递增号、左侧递减号等元素类名 */
   externalClasses: {
     type: Array,
   },
-  /** 输入框宽度 */
+  /** 输入框宽度，默认单位 `px` */
   inputWidth: {
     type: Number,
+  },
+  /** 是否整型 */
+  integer: {
+    type: Boolean,
+    value: true,
   },
   /** 最大值 */
   max: {
@@ -34,15 +39,15 @@ const props: TdStepperProps = {
     type: Number,
     value: 0,
   },
-  /** 步长 */
-  step: {
-    type: Number,
-    value: 1,
-  },
   /** 组件尺寸 */
   size: {
     type: String,
     value: 'medium',
+  },
+  /** 步长 */
+  step: {
+    type: Number,
+    value: 1,
   },
   /** 组件风格 */
   theme: {
@@ -51,14 +56,12 @@ const props: TdStepperProps = {
   },
   /** 值 */
   value: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
     value: null,
   },
   /** 值，非受控属性 */
   defaultValue: {
-    type: String,
-    optionalTypes: [Number],
+    type: null,
     value: 0,
   },
 };
