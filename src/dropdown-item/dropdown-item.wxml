@@ -25,7 +25,7 @@
     t-class="{{classPrefix}}__popup-host"
     t-class-content="{{classPrefix}}__content {{prefix}}-class-content"
   >
-    <view class="{{classPrefix}}__body">
+    <view wx:if="{{options && options.length > 0}}" class="{{classPrefix}}__body">
       <!-- 单选列表 -->
       <scroll-view wx:if="{{!multiple}}" class="{{classPrefix}}__scroll" scroll-y scroll-into-view="id_{{value}}">
         <t-radio-group
@@ -56,7 +56,7 @@
           class="{{classPrefix}}__checkbox {{prefix}}-class-column"
           t-class="{{classPrefix}}__checkbox-group"
           style="grid-template-columns: repeat({{optionsColumns}}, 1fr)"
-          value="{{value}}"
+          value="{{value ? value : []}}"
           bind:change="handleRadioChange"
         >
           <view wx:for="{{options}}" wx:key="index" id="id_{{item[valueAlias]}}">
