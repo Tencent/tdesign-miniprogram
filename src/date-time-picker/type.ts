@@ -50,7 +50,7 @@ export interface TdDateTimePickerProps {
    */
   filter?: {
     type: undefined;
-    value?: null;
+    value?: (type: TimeModeValues, columns: DateTimePickerColumn) => DateTimePickerColumn;
   };
   /**
    * 用于格式化 pick、change、confirm 事件返回的值，[详细文档](https://day.js.org/docs/en/display/format)
@@ -144,6 +144,13 @@ export interface TdDateTimePickerProps {
     type: BooleanConstructor;
     value?: boolean;
   };
+}
+
+export type DateTimePickerColumn = DateTimePickerColumnItem[];
+
+export interface DateTimePickerColumnItem {
+  label: string;
+  value: string;
 }
 
 export type DateTimePickerMode = TimeModeValues | Array<TimeModeValues>;
