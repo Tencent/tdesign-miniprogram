@@ -48,7 +48,7 @@
       aria-role="button"
       aria-label="清除"
     >
-      <t-icon name="close-circle-filled" size="48rpx" />
+      <t-icon name="close-circle-filled" size="inherit" color="inherit" />
     </view>
   </view>
   <view
