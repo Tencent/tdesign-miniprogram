@@ -104,7 +104,7 @@ export default class Cascader extends SuperComponent {
         stepIndex: items.length - 1,
       };
 
-      if (items.length > this.data.items.length) {
+      if (JSON.stringify(items) !== JSON.stringify(this.data.items)) {
         Object.assign(setData, { items });
       }
 
