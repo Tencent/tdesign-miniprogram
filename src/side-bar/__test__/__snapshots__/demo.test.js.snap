@@ -2,11 +2,15 @@
 
 exports[`SideBar SideBar base demo works fine 1`] = `
 <base>
-  <t-navbar
-    class="demo-navbar"
-    leftArrow="{{true}}"
-    title="TDesign"
-  />
+  <wx-view
+    class="custom-navbar"
+  >
+    <t-navbar
+      class="demo-navbar"
+      leftArrow="{{true}}"
+      title="TDesign"
+    />
+  </wx-view>
   <wx-view
     class="side-bar-wrapper"
     style="height: calc(100vh - 0px)"
@@ -523,11 +527,15 @@ exports[`SideBar SideBar base demo works fine 1`] = `
 
 exports[`SideBar SideBar custom demo works fine 1`] = `
 <custom>
-  <t-navbar
-    class="demo-navbar"
-    leftArrow="{{true}}"
-    title="TDesign"
-  />
+  <wx-view
+    class="custom-navbar"
+  >
+    <t-navbar
+      class="demo-navbar"
+      leftArrow="{{true}}"
+      title="TDesign"
+    />
+  </wx-view>
   <wx-view
     class="side-bar-wrapper"
     style="height: calc(100vh - 0px)"
@@ -1044,11 +1052,15 @@ exports[`SideBar SideBar custom demo works fine 1`] = `
 
 exports[`SideBar SideBar switch demo works fine 1`] = `
 <wx-switch>
-  <t-navbar
-    class="demo-navbar"
-    leftArrow="{{true}}"
-    title="TDesign"
-  />
+  <wx-view
+    class="custom-navbar"
+  >
+    <t-navbar
+      class="demo-navbar"
+      leftArrow="{{true}}"
+      title="TDesign"
+    />
+  </wx-view>
   <wx-view
     class="side-bar-wrapper"
     style="height: calc(100vh - 0px)"
@@ -1577,11 +1589,15 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
 
 exports[`SideBar SideBar with-icon demo works fine 1`] = `
 <with-icon>
-  <t-navbar
-    class="demo-navbar"
-    leftArrow="{{true}}"
-    title="TDesign"
-  />
+  <wx-view
+    class="custom-navbar"
+  >
+    <t-navbar
+      class="demo-navbar"
+      leftArrow="{{true}}"
+      title="TDesign"
+    />
+  </wx-view>
   <wx-view
     class="side-bar-wrapper"
     style="height: calc(100vh - 0px)"
