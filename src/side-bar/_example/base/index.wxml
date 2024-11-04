@@ -1,4 +1,6 @@
-<t-navbar class="demo-navbar" title="TDesign" leftArrow />
+<view class="custom-navbar">
+  <t-navbar class="demo-navbar" title="TDesign" leftArrow />
+</view>
 
 <view class="side-bar-wrapper" style="height: calc(100vh - {{navbarHeight}}px)">
   <t-side-bar value="{{sideBarIndex}}" bind:change="onSideBarChange">
@@ -14,7 +16,7 @@
     <view wx:for="{{categories}}" wx:key="index" class="section">
       <view class="title">{{item.title || item.label}}</view>
       <t-grid column="{{3}}" border="{{false}}">
-        <block wx:for="{{item.items}}" wx:key="label" wx:for-item="cargo">
+        <block wx:for="{{item.items}}" wx:key="index" wx:for-item="cargo">
           <t-grid-item
             text="{{cargo.label}}"
             image="{{cargo.image}}"
