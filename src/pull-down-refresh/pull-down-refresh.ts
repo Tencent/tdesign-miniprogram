@@ -20,6 +20,9 @@ export default class PullDownRefresh extends SuperComponent {
   /** 关闭动画耗时setTimeout句柄 */
   closingAnimateTimeFlag = 0;
 
+  /** 恢复刷新状态句柄 */
+  refreshStatusTimer = null;
+
   externalClasses = [`${prefix}-class`, `${prefix}-class-loading`, `${prefix}-class-text`, `${prefix}-class-indicator`];
 
   options = {
@@ -66,6 +69,7 @@ export default class PullDownRefresh extends SuperComponent {
     detached() {
       clearTimeout(this.maxRefreshAnimateTimeFlag);
       clearTimeout(this.closingAnimateTimeFlag);
+      this.resetTimer();
     },
   };
 
@@ -84,6 +88,13 @@ export default class PullDownRefresh extends SuperComponent {
       }
     },
     barHeight(val) {
+      this.resetTimer();
+      if (val === 0 && this.data.refreshStatus !== -1) {
+        this.refreshStatusTimer = setTimeout(() => {
+          this.setData({ refreshStatus: -1 });
+        }, 240);
+      }
+
       this.setData({ tipsHeight: Math.min(val, this.data._loadingBarHeight) });
     },
 
@@ -97,6 +108,13 @@ export default class PullDownRefresh extends SuperComponent {
   };
 
   methods = {
+    resetTimer() {
+      if (this.refreshStatusTimer) {
+        clearTimeout(this.refreshStatusTimer);
+        this.refreshStatusTimer = null;
+      }
+    },
+
     onScrollToBottom() {
       this.triggerEvent('scrolltolower');
     },
