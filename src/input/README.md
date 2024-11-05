@@ -99,7 +99,7 @@ confirm-type | String | done | 设置键盘右下角按钮的文字，仅在type
 cursor | Number | - | 必需。指定 focus 时的光标位置 | Y
 cursor-color | String | - | 光标颜色。iOS 下的格式为十六进制颜色值 #000000，安卓下的只支持 default 和 green，Skyline 下无限制 | N
 cursor-spacing | Number | 0 | 指定光标与键盘的距离，取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离 | N
-disabled | Boolean | false | 是否禁用输入框 | N
+disabled | Boolean | undefined | 是否禁用输入框 | N
 error-message | String | - | 已废弃。错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips） | N
 focus | Boolean | false | 获取焦点 | N
 format | Function | - | 指定输入框展示值的格式。TS 类型：`InputFormatType` `type InputFormatType = (value: InputValue) => string`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
@@ -113,7 +113,7 @@ placeholder | String | undefined | 占位符 | N
 placeholder-class | String | input-placeholder | 指定 placeholder 的样式类 | N
 placeholder-style | String | - | 必需。指定 placeholder 的样式 | Y
 prefix-icon | String / Object / Slot | - | 组件前置图标。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
-readonly | Boolean | false | 【开发中】只读状态 | N
+readonly | Boolean | undefined | 只读状态 | N
 safe-password-cert-path | String | - | 安全键盘加密公钥的路径，只支持包内路径 | N
 safe-password-custom-hash | String | - | 安全键盘计算 hash 的算法表达式，如 `md5(sha1('foo' + sha256(sm3(password + 'bar'))))` | N
 safe-password-length | Number | - | 安全键盘输入密码长度 | N
@@ -125,7 +125,7 @@ selection-start | Number | -1 | 光标起始位置，自动聚集时有效，需
 size | String | medium | 已废弃。输入框尺寸。可选项：small/medium。TS 类型：`'medium' \| 'small'` | N
 status | String | default | 输入框状态。可选项：default/success/warning/error | N
 suffix | String / Slot | - | 后置图标前的后置内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
-suffix-icon | String / Object / Slot | - | 后置文本内容。值为字符串则表示图标名称，值为 `Object` 类型，表示透传至 `icon`。。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+suffix-icon | String / Object / Slot | - | 后置文本内容。值为字符串则表示图标名称，值为 `Object` 类型，表示透传至 `icon`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 tips | String / Slot | - | 输入框下方提示文本，会根据不同的 `status` 呈现不同的样式。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 type | String | text | 输入框类型。可选项：text/number/idcard/digit/safe-password/password/nickname | N
 value | String / Number | - | 输入框的值。TS 类型：`InputValue` `type InputValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/input/type.ts) | N
