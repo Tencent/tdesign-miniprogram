@@ -5,10 +5,10 @@
   class="class"
   visible="{{visible}}"
   placement="bottom"
-  usingCustomNavbar="{{usingCustomNavbar}}"
-  bind:visible-change="onPopupChange"
+  using-custom-navbar="{{usingCustomNavbar || popupProps.usingCustomNavbar}}"
   z-index="{{ popupProps.zIndex || defaultPopUpzIndex }}"
   overlay-props="{{ popupProps.overlayProps || defaultPopUpProps }}"
+  bind:visible-change="onPopupChange"
 >
   <include src="./template.wxml" />
 </t-popup>

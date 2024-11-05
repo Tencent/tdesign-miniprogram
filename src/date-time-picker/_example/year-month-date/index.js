@@ -14,6 +14,9 @@ Page({
       }
       return options;
     },
+    popupProps: {
+      usingCustomNavbar: true,
+    },
   },
   showPicker(e) {
     const { mode } = e.currentTarget.dataset;
