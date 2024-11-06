@@ -182,6 +182,11 @@ exports[`DateTimePicker DateTimePicker year-month-date demo works fine 1`] = `
     filter="{{[Function]}}"
     format="YYYY-MM-DD"
     mode="date"
+    popupProps="{{
+      Object {
+        "usingCustomNavbar": true,
+      }
+    }}"
     start="2000-01-01 00:00:00"
     title="选择日期"
     visible="{{false}}"
