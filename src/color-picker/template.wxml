@@ -1,6 +1,6 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view class="{{classPrefix}}__panel">
+<view class="{{classPrefix}}__panel" style="{{_._style([style, customStyle])}}">
   <view class="{{classPrefix}}__body {{classPrefix}}__body--{{type}}">
     <view
       class="{{classPrefix}}__saturation"
