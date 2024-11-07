@@ -6,6 +6,14 @@
 
 export interface TdColorPickerProps {
   /**
+   * 自动关闭。在点击遮罩层时自动关闭，不需要手动设置 visible
+   * @default true
+   */
+  autoClose?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 是否开启透明通道
    * @default false
    */
@@ -29,12 +37,20 @@ export interface TdColorPickerProps {
     value?: Array<string> | null;
   };
   /**
-   * 颜色选择器类型。（base 表示仅展示系统预设内容; multiple 表示展示色板和系统预设内容。
+   * 颜色选择器类型。（base 表示仅展示系统预设内容; multiple 表示展示色板和系统预设内容
    * @default base
    */
   type?: {
     type: StringConstructor;
     value?: TypeEnum;
+  };
+  /**
+   * 是否使用弹出层包裹颜色选择器
+   * @default false
+   */
+  usePopup?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 色值
@@ -52,19 +68,14 @@ export interface TdColorPickerProps {
     type: StringConstructor;
     value?: string;
   };
+  /**
+   * 是否显示颜色选择器。`usePopup` 为 true 时有效
+   * @default false
+   */
+  visible?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
 }
 
 export type TypeEnum = 'base' | 'multiple';
-
-export interface Coordinate {
-  x: number;
-  y: number;
-}
-
-export type ColorPickerChangeTrigger =
-  | 'palette-saturation-brightness'
-  | 'palette-saturation'
-  | 'palette-brightness'
-  | 'palette-hue-bar'
-  | 'palette-alpha-bar'
-  | 'preset';
