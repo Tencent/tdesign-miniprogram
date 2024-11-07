@@ -21,6 +21,11 @@ const props: TdColorPickerProps = {
     type: String,
     value: 'RGB',
   },
+  /** popupProps透传 */
+  popupProps: {
+    type: Object,
+    value: {},
+  },
   /** 系统预设的颜色样例，值为 `null` 或 `[]` 则不显示系统色，值为 `undefined` 会显示组件内置的系统默认色 */
   swatchColors: {
     type: Array,

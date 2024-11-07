@@ -127,6 +127,7 @@ export default class ColorPicker extends SuperComponent {
     formatList: getFormatList(props.format.value, this.color),
     innerSwatchList: genSwatchList(props.swatchColors.value),
     isMultiple: props.type.value === 'multiple',
+    defaultOverlayProps: {},
   };
 
   lifetimes = {

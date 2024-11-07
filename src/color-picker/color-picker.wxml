@@ -4,7 +4,10 @@
   wx:if="{{usePopup}}"
   class="class"
   visible="{{visible}}"
-  usingCustomNavbar="{{popupProps.usingCustomNavbar || false}}"
+  using-custom-navbar="{{popupProps.usingCustomNavbar || false}}"
+  show-overlay="{{popupProps.showOverlay || true}}"
+  z-index="{{ popupProps.zIndex || 11500 }}"
+  overlay-props="{{ popupProps.overlayProps || defaultOverlayProps }}"
   placement="bottom"
   bind:visible-change="onVisibleChange"
 >

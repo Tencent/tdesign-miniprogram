@@ -11,6 +11,7 @@ custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on v
 auto-close | Boolean | true | \- | N
 enable-alpha | Boolean | false | \- | N
 format | String | RGB | options: RGB/RGBA/HSL/HSLA/HSB/HSV/HSVA/HEX/CMYK/CSS | N
+popup-props | Object | {} | Typescript：`PopupProps`，[Popup API Documents](./popup?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/color-picker/type.ts) | N
 swatch-colors | Array | - | swatch colors。Typescript：`Array<string> \| null` | N
 type | String | base | options: base/multiple。Typescript：`TypeEnum ` `type TypeEnum = 'base' \| 'multiple'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/color-picker/type.ts) | N
 use-popup | Boolean | false | `0.32.0` | N
