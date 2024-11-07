@@ -28,6 +28,13 @@ export default class Rate extends SuperComponent {
     actionType: '',
     scaleIndex: -1,
     isVisibleToScreenReader: false,
+    _gap: 0,
+  };
+
+  observers = {
+    gap(val) {
+      this.setData({ _gap: unitConvert(val) });
+    },
   };
 
   methods = {
