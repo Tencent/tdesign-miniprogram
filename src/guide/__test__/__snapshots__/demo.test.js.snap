@@ -1,0 +1,585 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Guide Guide base demo works fine 1`] = `
+<base>
+  <wx-view>
+    <wx-view
+      class="main-title"
+    >
+      <wx-view
+        class="title-major"
+      >
+        用户引导标题
+      </wx-view>
+      <wx-view
+        class="title-sub"
+      >
+         按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。 
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="field label-field"
+    >
+      <t-input
+        label="标签文字"
+        layout="vertical"
+        placeholder="请输入文字"
+      />
+    </wx-view>
+    <wx-view
+      class="field"
+    >
+      <t-input
+        label="标签文字"
+        layout="vertical"
+        placeholder="请输入文字"
+      />
+    </wx-view>
+    <wx-view
+      class="action"
+    >
+      <t-button
+        block="{{true}}"
+        size="large"
+        theme="light"
+      >
+        重置
+      </t-button>
+      <t-button
+        block="{{true}}"
+        size="large"
+        theme="primary"
+      >
+        确定
+      </t-button>
+    </wx-view>
+  </wx-view>
+  <t-guide
+    current="{{0}}"
+    steps="{{
+      Array [
+        Object {
+          "body": "用户引导的说明文案",
+          "element": [Function],
+          "placement": "center",
+          "title": "用户引导标题",
+        },
+        Object {
+          "body": "用户引导的说明文案",
+          "element": [Function],
+          "highlightPadding": 0,
+          "placement": "bottom",
+          "title": "用户引导标题",
+        },
+        Object {
+          "element": [Function],
+          "placement": "bottom-right",
+          "title": "用户引导标题",
+        },
+      ]
+    }}"
+    bind:finish="close"
+    bind:skip="close"
+  >
+    <wx-view
+      class="slot-body"
+      slot="body-2"
+    >
+      slot展示 用户引导的说明文案
+    </wx-view>
+  </t-guide>
+</base>
+`;
+
+exports[`Guide Guide content demo works fine 1`] = `
+<content>
+  <wx-view>
+    <wx-view
+      class="main-title"
+    >
+      <wx-view
+        class="title-major"
+      >
+        用户引导标题
+      </wx-view>
+      <wx-view
+        class="title-sub"
+      >
+         按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。 
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="field label-field"
+    >
+      <t-input
+        label="标签文字"
+        layout="vertical"
+        placeholder="请输入文字"
+      />
+    </wx-view>
+    <wx-view
+      class="field"
+    >
+      <t-input
+        label="标签文字"
+        layout="vertical"
+        placeholder="请输入文字"
+      />
+    </wx-view>
+    <wx-view
+      class="action"
+    >
+      <t-button
+        block="{{true}}"
+        size="large"
+        theme="light"
+      >
+        重置
+      </t-button>
+      <t-button
+        block="{{true}}"
+        size="large"
+        theme="primary"
+      >
+        确定
+      </t-button>
+    </wx-view>
+  </wx-view>
+  <t-guide
+    current="{{0}}"
+    steps="{{
+      Array [
+        Object {
+          "element": [Function],
+          "placement": "center",
+        },
+        Object {
+          "element": [Function],
+          "highlightPadding": 0,
+          "placement": "bottom",
+        },
+        Object {
+          "element": [Function],
+          "placement": "bottom-right",
+        },
+      ]
+    }}"
+    bind:finish="close"
+    bind:skip="close"
+  >
+    <wx-view
+      class="content"
+      slot="content-0"
+    >
+      <t-icon
+        class="icon"
+        color="#fff"
+        name="arrow-up"
+        size="64rpx"
+      />
+      <p
+        class="text"
+      >
+        1、自定义的图形或说明文案，用来解释或指导该功能使用。
+      </p>
+      <wx-view
+        class="footer"
+      >
+        <t-button
+          class="guide-demo-button"
+          content="跳过"
+          size="extra-small"
+          theme="light"
+          bind:tap="skip"
+        />
+        <t-button
+          class="guide-demo-button"
+          content="下一步"
+          size="extra-small"
+          theme="primary"
+          bind:tap="next"
+        />
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="content"
+      slot="content-1"
+    >
+      <t-icon
+        class="icon"
+        color="#fff"
+        name="arrow-up"
+        size="64rpx"
+      />
+      <p
+        class="text"
+      >
+        2、自定义的图形或说明文案，用来解释或指导该功能使用。
+      </p>
+      <wx-view
+        class="footer"
+      >
+        <t-button
+          class="guide-demo-button"
+          content="跳过"
+          size="extra-small"
+          theme="light"
+          bind:tap="skip"
+        />
+        <t-button
+          class="guide-demo-button"
+          content="下一步"
+          size="extra-small"
+          theme="primary"
+          bind:tap="next"
+        />
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="content"
+      slot="content-2"
+    >
+      <t-icon
+        class="icon"
+        color="#fff"
+        name="arrow-up"
+        size="64rpx"
+      />
+      <p
+        class="text"
+      >
+        3、自定义的图形或说明文案，用来解释或指导该功能使用。
+      </p>
+      <wx-view
+        class="footer"
+      >
+        <t-button
+          class="guide-demo-button"
+          content="跳过"
+          size="extra-small"
+          theme="light"
+          bind:tap="skip"
+        />
+        <t-button
+          class="guide-demo-button"
+          content="下一步"
+          size="extra-small"
+          theme="primary"
+          bind:tap="next"
+        />
+      </wx-view>
+    </wx-view>
+  </t-guide>
+</content>
+`;
+
+exports[`Guide Guide dialog demo works fine 1`] = `
+<dialog>
+  <wx-view>
+    <wx-view
+      class="main-title"
+    >
+      <wx-view
+        class="title-major"
+      >
+        用户引导标题
+      </wx-view>
+      <wx-view
+        class="title-sub"
+      >
+         按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。 
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="field label-field"
+    >
+      <t-input
+        label="标签文字"
+        layout="vertical"
+        placeholder="请输入文字"
+      />
+    </wx-view>
+    <wx-view
+      class="field"
+    >
+      <t-input
+        label="标签文字"
+        layout="vertical"
+        placeholder="请输入文字"
+      />
+    </wx-view>
+    <wx-view
+      class="action"
+    >
+      <t-button
+        block="{{true}}"
+        size="large"
+        theme="light"
+      >
+        重置
+      </t-button>
+      <t-button
+        block="{{true}}"
+        size="large"
+        theme="primary"
+      >
+        确定
+      </t-button>
+    </wx-view>
+  </wx-view>
+  <t-guide
+    current="{{0}}"
+    mode="dialog"
+    steps="{{
+      Array [
+        Object {
+          "element": [Function],
+          "placement": "center",
+          "title": "用户引导标题",
+        },
+        Object {
+          "element": [Function],
+          "highlightPadding": 0,
+          "placement": "bottom",
+          "title": "用户引导标题",
+        },
+        Object {
+          "element": [Function],
+          "placement": "bottom-right",
+          "title": "用户引导标题",
+        },
+      ]
+    }}"
+    bind:finish="close"
+    bind:skip="close"
+  >
+    <wx-view
+      class="slot-body"
+      slot="body-0"
+    >
+      <p>
+        用户引导的说明文案 0
+      </p>
+      <t-image
+        class="guide-demo-image"
+        mode="scaleToFill"
+        src="https://tdesign.gtimg.com/demo/demo-image-1.png"
+        width="100%"
+      />
+    </wx-view>
+    <wx-view
+      class="slot-body"
+      slot="body-1"
+    >
+      <p>
+        用户引导的说明文案 1
+      </p>
+      <t-image
+        class="guide-demo-image"
+        mode="scaleToFill"
+        src="https://tdesign.gtimg.com/demo/demo-image-1.png"
+        width="100%"
+      />
+    </wx-view>
+    <wx-view
+      class="slot-body"
+      slot="body-2"
+    >
+      <p>
+        用户引导的说明文案 2
+      </p>
+      <t-image
+        class="guide-demo-image"
+        mode="scaleToFill"
+        src="https://tdesign.gtimg.com/demo/demo-image-1.png"
+        width="100%"
+      />
+    </wx-view>
+  </t-guide>
+</dialog>
+`;
+
+exports[`Guide Guide multiple demo works fine 1`] = `
+<multiple>
+  <wx-view>
+    <wx-view
+      class="main-title"
+    >
+      <wx-view
+        class="title-major"
+      >
+        用户引导标题
+      </wx-view>
+      <wx-view
+        class="title-sub"
+      >
+         按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。 
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="field label-field"
+    >
+      <t-input
+        label="标签文字"
+        layout="vertical"
+        placeholder="请输入文字"
+      />
+    </wx-view>
+    <wx-view
+      class="field"
+    >
+      <t-input
+        label="标签文字"
+        layout="vertical"
+        placeholder="请输入文字"
+      />
+    </wx-view>
+    <wx-view
+      class="action"
+    >
+      <t-button
+        block="{{true}}"
+        size="large"
+        theme="light"
+      >
+        重置
+      </t-button>
+      <t-button
+        block="{{true}}"
+        size="large"
+        theme="primary"
+      >
+        确定
+      </t-button>
+    </wx-view>
+  </wx-view>
+  <t-guide
+    current="{{0}}"
+    steps="{{
+      Array [
+        Object {
+          "body": "用户引导的说明文案",
+          "element": [Function],
+          "placement": "center",
+          "title": "用户引导标题",
+        },
+        Object {
+          "element": [Function],
+          "mode": "dialog",
+          "placement": "bottom",
+          "title": "用户引导标题",
+        },
+        Object {
+          "body": "用户引导的说明文案",
+          "element": [Function],
+          "placement": "bottom-right",
+          "title": "用户引导标题",
+        },
+      ]
+    }}"
+    bind:finish="close"
+    bind:skip="close"
+  >
+    <wx-view
+      class="slot-body"
+      slot="body-1"
+    >
+      <p>
+        用户引导的说明文案 1
+      </p>
+      <t-image
+        class="guide-demo-image"
+        mode="scaleToFill"
+        src="https://tdesign.gtimg.com/demo/demo-image-1.png"
+        width="100%"
+      />
+    </wx-view>
+  </t-guide>
+</multiple>
+`;
+
+exports[`Guide Guide no-mask demo works fine 1`] = `
+<no-mask>
+  <wx-view>
+    <wx-view
+      class="main-title"
+    >
+      <wx-view
+        class="title-major"
+      >
+        用户引导标题
+      </wx-view>
+      <wx-view
+        class="title-sub"
+      >
+         按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。 
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="field label-field"
+    >
+      <t-input
+        label="标签文字"
+        layout="vertical"
+        placeholder="请输入文字"
+      />
+    </wx-view>
+    <wx-view
+      class="field"
+    >
+      <t-input
+        label="标签文字"
+        layout="vertical"
+        placeholder="请输入文字"
+      />
+    </wx-view>
+    <wx-view
+      class="action"
+    >
+      <t-button
+        block="{{true}}"
+        size="large"
+        theme="light"
+      >
+        重置
+      </t-button>
+      <t-button
+        block="{{true}}"
+        size="large"
+        theme="primary"
+      >
+        确定
+      </t-button>
+    </wx-view>
+  </wx-view>
+  <t-guide
+    current="{{0}}"
+    showOverlay="{{false}}"
+    steps="{{
+      Array [
+        Object {
+          "body": "用户引导的说明文案",
+          "element": [Function],
+          "placement": "center",
+          "title": "用户引导标题",
+        },
+        Object {
+          "body": "用户引导的说明文案",
+          "element": [Function],
+          "highlightPadding": 0,
+          "placement": "bottom",
+          "title": "用户引导标题",
+        },
+        Object {
+          "body": "用户引导的说明文案",
+          "element": [Function],
+          "placement": "top-right",
+          "title": "用户引导标题",
+        },
+      ]
+    }}"
+    bind:finish="close"
+    bind:skip="close"
+  />
+</no-mask>
+`;

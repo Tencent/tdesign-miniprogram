@@ -5,12 +5,12 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['base', 'format', 'multiple', 'use-popup'];
+const mapper = ['base', 'content', 'dialog', 'multiple', 'no-mask'];
 
-describe('ColorPicker', () => {
+describe('Guide', () => {
   mapper.forEach((demoName) => {
-    it(`ColorPicker ${demoName} demo works fine`, () => {
-      const id = load(path.resolve(__dirname, `../../color-picker/_example/${demoName}/index`), demoName);
+    it(`Guide ${demoName} demo works fine`, () => {
+      const id = load(path.resolve(__dirname, `../../guide/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();

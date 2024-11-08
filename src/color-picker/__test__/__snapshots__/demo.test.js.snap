@@ -98,3 +98,28 @@ exports[`ColorPicker ColorPicker multiple demo works fine 1`] = `
   />
 </multiple>
 `;
+
+exports[`ColorPicker ColorPicker use-popup demo works fine 1`] = `
+<use-popup>
+  <t-color-picker
+    enableAlpha="{{true}}"
+    type="multiple"
+    usePopup="{{true}}"
+    visible=""
+    bind:change="onChange"
+    bind:palette-bar-change="onPaletteBarChange"
+  />
+  <t-button
+    block="{{true}}"
+    size="large"
+    tClass="wrapper"
+    theme="primary"
+    variant="outline"
+    bind:tap="handlePopup"
+  >
+    
+  弹窗形式的颜色选择器
+
+  </t-button>
+</use-popup>
+`;

@@ -3,6 +3,7 @@
   "usingComponents": {
     "base": "./base",
     "multiple": "./multiple",
-    "format": "./format"
+    "format": "./format",
+    "usePopup": "./use-popup"
   }
 }

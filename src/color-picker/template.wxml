@@ -1,0 +1,93 @@
+<wxs src="../common/utils.wxs" module="_" />
+
+<view class="{{classPrefix}}__panel" style="{{_._style([style, customStyle])}}">
+  <view class="{{classPrefix}}__body {{classPrefix}}__body--{{type}}">
+    <view
+      class="{{classPrefix}}__saturation"
+      wx:if="{{isMultiple}}"
+      catchtouchstart="onTouchStart"
+      catchtouchmove="onTouchMove"
+      catchtouchend="onTouchEnd"
+      data-type="saturation"
+      style="background: hsl({{sliderInfo.value}}, 100%, 50%)"
+    >
+      <view class="{{classPrefix}}__thumb" tabIndex="{{0}}" style="{{_._style(saturationThumbStyle)}}"> </view>
+    </view>
+    <view class="{{classPrefix}}__sliders-wrapper" wx:if="{{isMultiple}}">
+      <view class="{{classPrefix}}__sliders">
+        <view class="{{classPrefix}}__slider-wrapper  {{classPrefix}}__slider-wrapper--hue-type">
+          <view
+            class="{{classPrefix}}__slider"
+            catchtouchstart="onTouchStart"
+            catchtouchmove="onTouchMove"
+            catchtouchend="onTouchEnd"
+            data-type="hue-slider"
+          >
+            <view class="{{classPrefix}}__rail"> </view>
+            <view class="{{classPrefix}}__thumb" style="{{_._style(hueSliderStyle)}}"> </view>
+          </view>
+        </view>
+
+        <view
+          wx:if="{{enableAlpha}}"
+          class="{{classPrefix}}__slider-wrapper {{classPrefix}}__slider-wrapper--alpha-type"
+        >
+          <view
+            class="{{classPrefix}}__slider-padding"
+            style="background: linear-gradient(90deg, rgba(0,0,0,.0) 0%, rgba(0,0,0,.0) 93%, {{alphaSliderStyle.color}} 93%, {{alphaSliderStyle.color}} 100%)"
+          ></view>
+          <view
+            class="{{classPrefix}}__slider"
+            catchtouchstart="onTouchStart"
+            catchtouchmove="onTouchMove"
+            catchtouchend="onTouchEnd"
+            data-type="alpha-slider"
+          >
+            <view
+              class="{{classPrefix}}__rail"
+              style="background: linear-gradient(to right, rgba(0, 0, 0, 0), {{alphaSliderStyle.color}})"
+            >
+            </view>
+            <view class="{{classPrefix}}__thumb" style="{{_._style(alphaSliderStyle)}}"> </view>
+          </view>
+        </view>
+      </view>
+
+      <view wx:if="{{showPrimaryColorPreview}}" class="{{classPrefix}}__sliders-preview {{classPrefix}}--bg-alpha">
+        <view class="{{classPrefix}}__sliders-preview-inner" style="background: {{previewColor}}" />
+      </view>
+    </view>
+
+    <view class="{{classPrefix}}__format" wx:if="{{isMultiple}}">
+      <view class="{{classPrefix}}__format-item {{classPrefix}}__format-item--first"> {{format}} </view>
+      <view class="{{classPrefix}}__format-item {{classPrefix}}__format-item--second">
+        <view class="{{classPrefix}}__format-inputs">
+          <view
+            wx:for="{{formatList}}"
+            wx:key="index"
+            class="{{classPrefix}}__format-input {{classPrefix}}__format-input--{{ index === formatList.length - 1 && formatList.length === 2 ? 'fixed' : 'base' }}"
+            >{{item}}</view
+          >
+        </view>
+      </view>
+    </view>
+
+    <view class="{{classPrefix}}__swatches-wrap" wx:if="{{innerSwatchList.length}}">
+      <view class="{{classPrefix}}__swatches">
+        <view class="{{classPrefix}}__swatches-title" wx:if="{{isMultiple}}"> 系统预设色彩 </view>
+        <view class="{{classPrefix}}__swatches-items">
+          <view
+            wx:for="{{innerSwatchList}}"
+            wx:for-item="swatch"
+            wx:key="swatch"
+            class="{{classPrefix}}__swatches-item"
+            data-value="{{swatch}}"
+            catch:tap="clickSwatch"
+          >
+            <view class="{{classPrefix}}__swatches-inner" style="background-color: {{swatch}};"> </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
