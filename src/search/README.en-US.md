@@ -62,12 +62,15 @@ Name | Default Value | Description
 -- | -- | --
 --td-search-action-color | @brand-color | - 
 --td-search-bg-color | @bg-color-secondarycontainer | - 
---td-search-clear-icon-color | @font-gray-3 | - 
+--td-search-clear-icon-color | @text-color-placeholder | - 
+--td-search-clear-icon-font-size | 48rpx | - 
 --td-search-font-size | @font-size-m | - 
 --td-search-height | 80rpx | - 
---td-search-icon-color | @font-gray-3 | - 
---td-search-label-color | @font-gray-1 | - 
+--td-search-icon-color | @text-color-placeholder | - 
+--td-search-icon-font-size | 48rpx | - 
+--td-search-label-color | @text-color-primary | - 
 --td-search-padding | 16rpx 24rpx | - 
---td-search-placeholder-color | @font-gray-3 | - 
+--td-search-placeholder-color | @text-color-placeholder | - 
+--td-search-result-high-light-color | @brand-color | - 
 --td-search-square-radius | @radius-default | - 
---td-search-text-color | @font-gray-1 | -
+--td-search-text-color | @text-color-primary | - 
