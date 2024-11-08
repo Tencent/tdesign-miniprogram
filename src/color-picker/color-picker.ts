@@ -20,9 +20,11 @@ const name = `${prefix}-color-picker`;
 const getCoordinate = (e, react, isPopup?: boolean) => {
   const { pageX, pageY, clientY } = e.changedTouches[0] || {};
 
+  const offsetY = isPopup ? react.top : e.currentTarget?.offsetTop;
+
   return {
     x: Math.min(Math.max(0, pageX - react.left), react.width),
-    y: Math.min(Math.max(0, (isPopup ? clientY : pageY) - react.top), react.height),
+    y: Math.min(Math.max(0, (isPopup ? clientY : pageY) - offsetY), react.height),
   };
 };
 
@@ -86,7 +88,7 @@ export default class ColorPicker extends SuperComponent {
       if (usePopup && visible) {
         this.timer = setTimeout(() => {
           this.getEleReact();
-        }, 300); // 300ms是popup的transition-duration
+        }, 350); // popup的transition-duration为300ms，为保证popup已渲染完毕，故使用350ms
       }
     },
   };
