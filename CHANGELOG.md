@@ -6,6 +6,25 @@ docClass: timeline
 ---
 
 
+## 🌈 1.7.1 `2024-11-08` 
+### 🚀 Features
+- `Stepper`: 新增 `integer` 属性，支持输入小数 @anlyyao ([#3230](https://github.com/Tencent/tdesign-miniprogram/pull/3230))
+- `DropdownMenuItem`: 优化组件样式，当 `option` 为空时选项区域不占位 @anlyyao ([#3235](https://github.com/Tencent/tdesign-miniprogram/pull/3235))
+- `Input`: 支持 `readonly` 属性 @anlyyao ([#3255](https://github.com/Tencent/tdesign-miniprogram/pull/3255))
+- `ColorPicker`: 新增 `usePopup`、`visible`、`autoClose`、`style` 与 `customStyle` 等属性，新增 `close` 事件 @anlyyao ([#3260](https://github.com/Tencent/tdesign-miniprogram/pull/3260))
+- `DateTimePicker`: 新增 `autoClose` 属性 @anlyyao ([#3263](https://github.com/Tencent/tdesign-miniprogram/pull/3263))
+### 🐞 Bug Fixes
+- `Icon`: 修复动态计算图片高度异常 @betavs ([#3228](https://github.com/Tencent/tdesign-miniprogram/pull/3228))
+- `ActionSheet`: 为 `cancelText` 补充默认值 @anlyyao ([#3231](https://github.com/Tencent/tdesign-miniprogram/pull/3231))
+- `Stepper`: 增加输入校验，修复使用第三方键盘时带来的格式问题，并修复禁用输入框样式 @anlyyao ([#3230](https://github.com/Tencent/tdesign-miniprogram/pull/3230))
+- `Search`: 修复外部样式类 `t-class-clear` 及 `t-class-left` 无法修改图标大小的问题，并丰富 `css vars` @anlyyao ([#3238](https://github.com/Tencent/tdesign-miniprogram/pull/3238)) ([#3264](https://github.com/Tencent/tdesign-miniprogram/pull/3264))
+- `Cascader`: 修复动态设置 `value` 而选项内容未更新问题 @jarmywang ([#3242](https://github.com/Tencent/tdesign-miniprogram/pull/3242))
+- `PullDownRefresh`: 修复在 `iOS` 部分低系统中（如15.4、14.2、14.1等 ），提示语隐藏不完整的问题 @anlyyao ([#3239](https://github.com/Tencent/tdesign-miniprogram/pull/3239))
+- `DateTimePicker`: 支持通过 `popupProps` 透传 `usingCustomNavbar` 属性，避免遮罩层挡住自定义导航栏 @anlyyao ([#3254](https://github.com/Tencent/tdesign-miniprogram/pull/3254))
+- `Button`: 修复 `danger` + `disable` 时，文本颜色错误 @anlyyao ([#3261](https://github.com/Tencent/tdesign-miniprogram/pull/3261))
+- `Rate`: 修复 `gap` 单位处理异常 @jarmywang ([#3259](https://github.com/Tencent/tdesign-miniprogram/pull/3259))
+
+
 ## 🌈 1.7.0 `2024-10-25` 
 ### 🚀 Features
 - `ColorPicker`: 新增 `ColorPicker` 组件 @novlan1 ([#3176](https://github.com/Tencent/tdesign-miniprogram/pull/3176))⚡
