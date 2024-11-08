@@ -8,6 +8,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
+auto-close | Boolean | false | \- | N
 cancel-btn | String | 取消 | \- | N
 confirm-btn | String | - | \- | N
 custom-locale | String | zh | \- | N

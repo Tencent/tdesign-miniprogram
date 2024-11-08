@@ -62,6 +62,7 @@ isComponent: true
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
+auto-close | Boolean | false | 自动关闭；在确认、取消、点击遮罩层自动关闭，不需要手动设置 visible | N
 cancel-btn | String | 取消 | 取消按钮文字 | N
 confirm-btn | String | - | 确定按钮文字 | N
 custom-locale | String | zh |  组件国际化语言，目前支持: 简体中文(zh)、(tc)、英文(en)、日语(ja)、韩语(ko)、俄语(ru)等六种语言 | N

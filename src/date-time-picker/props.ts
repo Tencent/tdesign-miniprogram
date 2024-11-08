@@ -6,6 +6,11 @@
 
 import { TdDateTimePickerProps } from './type';
 const props: TdDateTimePickerProps = {
+  /** 自动关闭；在确认、取消、点击遮罩层自动关闭，不需要手动设置 visible */
+  autoClose: {
+    type: Boolean,
+    value: false,
+  },
   /** 取消按钮文字 */
   cancelBtn: {
     type: String,
