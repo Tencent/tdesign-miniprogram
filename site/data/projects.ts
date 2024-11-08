@@ -55,19 +55,6 @@ export default [
     qrcode: 'https://tdesign.gtimg.com/miniprogram/case/qubaibai-code.png',
   },
   {
-    name: 'frmall',
-    tags: ['电商', '开源项目'],
-    preview: ['https://tdesign.gtimg.com/miniprogram/case/frmall.png'],
-    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/frmall-code.jpg',
-  },
-
-  {
-    name: '智写 AI',
-    tags: ['效率工具'],
-    preview: ['https://tdesign.gtimg.com/miniprogram/case/zhixieai.png'],
-    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/zhixieai-code.png',
-  },
-  {
     name: '去野户外club',
     tags: ['效率工具'],
     preview: ['https://tdesign.gtimg.com/miniprogram/case/intowild.png'],
@@ -78,6 +65,24 @@ export default [
     tags: ['效率工具'],
     preview: ['https://tdesign.gtimg.com/miniprogram/case/bikula.png'],
     qrcode: 'https://tdesign.gtimg.com/miniprogram/case/bikula-code.jpeg',
+  },
+  {
+    name: 'ABS分区表',
+    tags: ['效率工具'],
+    preview: ['https://tdesign.gtimg.com/miniprogram/case/abc.png'],
+    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/abs-code.jpg',
+  },
+  {
+    name: 'frmall',
+    tags: ['电商', '开源项目'],
+    preview: ['https://tdesign.gtimg.com/miniprogram/case/frmall.png'],
+    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/frmall-code.jpg',
+  },
+  {
+    name: '智写 AI',
+    tags: ['效率工具'],
+    preview: ['https://tdesign.gtimg.com/miniprogram/case/zhixieai.png'],
+    qrcode: 'https://tdesign.gtimg.com/miniprogram/case/zhixieai-code.png',
   },
   {
     name: 'Coding 鱼塘',
