@@ -26,18 +26,13 @@
   <view class="{{classPrefix}}__wrap">
     <view class="{{classPrefix}}__content {{classPrefix}}--{{status}}">
       <input
+        class="{{this.getInputClass(classPrefix, suffix, align, disabled)}} {{prefix}}-class-input"
         maxlength="{{maxlength}}"
-        disabled="{{disabled}}"
+        disabled="{{disabled || readonly}}"
         placeholder="{{placeholder}}"
         placeholder-style="{{placeholderStyle}}"
         placeholder-class="{{_.cls(classPrefix + '__placeholder',  [['disabled', disabled]])}} {{placeholderClass}}"
         value="{{value}}"
-        bindinput="onInput"
-        bindfocus="onFocus"
-        bindblur="onBlur"
-        bindconfirm="onConfirm"
-        bindkeyboardheightchange="onKeyboardHeightChange"
-        bindnicknamereview="onNickNameReview"
         password="{{type === 'password'}}"
         type="{{type === 'password' ? 'text' : type}}"
         focus="{{focus}}"
@@ -58,10 +53,15 @@
         safe-password-nonce="{{safePasswordNonce}}"
         safe-password-salt="{{safePasswordSalt}}"
         safe-password-custom-hash="{{safePasswordCustomHash}}"
-        class="{{this.getInputClass(classPrefix, suffix, align, disabled)}} {{prefix}}-class-input"
         aria-role="textbox"
         aria-label="{{label}}"
         aria-roledescription="{{label}}"
+        bindinput="onInput"
+        bindfocus="onFocus"
+        bindblur="onBlur"
+        bindconfirm="onConfirm"
+        bindkeyboardheightchange="onKeyboardHeightChange"
+        bindnicknamereview="onNickNameReview"
       />
       <!--
           这里aria-role="textbox"和aria-label组合使用实现ios的聚合焦点播报效果。

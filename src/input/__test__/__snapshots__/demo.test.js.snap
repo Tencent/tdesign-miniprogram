@@ -234,6 +234,11 @@ exports[`Input Input status demo works fine 1`] = `
     label="标签文字"
     value="不可编辑文字"
   />
+  <t-input
+    label="标签文字"
+    readonly="{{true}}"
+    value="只读模式"
+  />
 </status>
 `;
 

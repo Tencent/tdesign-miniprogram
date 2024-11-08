@@ -60,7 +60,7 @@ export default class Input extends SuperComponent {
       });
     },
 
-    clearTrigger() {
+    'clearTrigger, clearable, disabled, readonly'() {
       this.updateClearIconVisible();
     },
   };
@@ -87,19 +87,27 @@ export default class Input extends SuperComponent {
         });
       }
     },
+
     updateClearIconVisible(value: boolean = false) {
-      const { clearTrigger } = this.properties;
+      const { clearTrigger, disabled, readonly } = this.properties;
+      if (disabled || readonly) {
+        this.setData({ showClearIcon: false });
+        return;
+      }
       this.setData({ showClearIcon: value || clearTrigger === 'always' });
     },
+
     onInput(e) {
       const { value, cursor, keyCode } = e.detail;
       this.updateValue(value);
       this.triggerEvent('change', { value: this.data.value, cursor, keyCode });
     },
+
     onFocus(e) {
       this.updateClearIconVisible(true);
       this.triggerEvent('focus', e.detail);
     },
+
     onBlur(e) {
       this.updateClearIconVisible();
 
@@ -112,22 +120,28 @@ export default class Input extends SuperComponent {
       }
       this.triggerEvent('blur', e.detail);
     },
+
     onConfirm(e) {
       this.triggerEvent('enter', e.detail);
     },
+
     onSuffixClick() {
       this.triggerEvent('click', { trigger: 'suffix' });
     },
+
     onSuffixIconClick() {
       this.triggerEvent('click', { trigger: 'suffix-icon' });
     },
+
     clearInput(e) {
       this.triggerEvent('clear', e.detail);
       this.setData({ value: '' });
     },
+
     onKeyboardHeightChange(e) {
       this.triggerEvent('keyboardheightchange', e.detail);
     },
+
     onNickNameReview(e) {
       this.triggerEvent('nicknamereview', e.detail);
     },
