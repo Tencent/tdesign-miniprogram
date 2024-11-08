@@ -11,10 +11,11 @@
 
 <!-- 年月日 -->
 <t-date-time-picker
+  auto-close
   title="选择日期"
   visible="{{dateVisible}}"
   mode="date"
-  defaultValue="{{date}}"
+  default-value="{{date}}"
   format="YYYY-MM-DD"
   start="{{start}}"
   end="{{end}}"
@@ -23,4 +24,5 @@
   bindchange="onConfirm"
   bindpick="onColumnChange"
   bindcancel="hidePicker"
+  bindclose="handleClose"
 />
