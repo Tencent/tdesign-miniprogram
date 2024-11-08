@@ -10,7 +10,6 @@
     <t-icon
       wx:if="{{leftIcon}}"
       name="{{leftIcon}}"
-      size="48rpx"
       class="{{prefix}}-icon {{prefix}}-class-left"
       aria-hidden="{{true}}"
     />
