@@ -20,7 +20,7 @@
       wx:for="{{ count }}"
       wx:key="*this"
       class="{{classPrefix }}__icon {{utils.getIconClass(classPrefix + '__icon', defaultValue, value, index, allowHalf, disabled, scaleIndex)}}"
-      style="margin-right:{{ count - index > 1 ? gap : 0 }}px; {{utils.getColor(color)}}"
+      style="margin-right: {{ count - index > 1 ? _.addUnit(gap) : 0 }}; {{utils.getColor(color)}}"
       t-class="{{prefix}}-class-icon"
       name="{{utils.getIconName(defaultValue, value, index, icon)}}"
       size="{{ size }}"
