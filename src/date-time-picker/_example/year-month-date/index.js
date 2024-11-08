@@ -25,12 +25,11 @@ Page({
       [`${mode}Visible`]: true,
     });
   },
-  hidePicker() {
-    const { mode } = this.data;
-    this.setData({
-      [`${mode}Visible`]: false,
-    });
+
+  handleClose(e) {
+    console.log('handleClose:', e);
   },
+
   onConfirm(e) {
     const { value } = e.detail;
     const { mode } = this.data;
@@ -41,8 +40,6 @@ Page({
       [mode]: value,
       [`${mode}Text`]: value,
     });
-
-    this.hidePicker();
   },
 
   onColumnChange(e) {

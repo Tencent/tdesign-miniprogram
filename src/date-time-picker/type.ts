@@ -8,6 +8,14 @@ import { PopupProps } from '../popup/index';
 
 export interface TdDateTimePickerProps {
   /**
+   * 自动关闭；在确认、取消、点击遮罩层自动关闭，不需要手动设置 visible
+   * @default false
+   */
+  autoClose?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 取消按钮文字
    * @default 取消
    */

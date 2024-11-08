@@ -177,6 +177,7 @@ exports[`DateTimePicker DateTimePicker year-month-date demo works fine 1`] = `
     bind:tap="showPicker"
   />
   <t-date-time-picker
+    autoClose="{{true}}"
     defaultValue="{{1640217600000}}"
     end="2030-09-09 12:12:12"
     filter="{{[Function]}}"
@@ -192,6 +193,7 @@ exports[`DateTimePicker DateTimePicker year-month-date demo works fine 1`] = `
     visible="{{false}}"
     bind:cancel="hidePicker"
     bind:change="onConfirm"
+    bind:close="handleClose"
     bind:pick="onColumnChange"
   />
 </year-month-date>
