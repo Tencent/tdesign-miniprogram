@@ -32,7 +32,7 @@ export default class Input extends SuperComponent {
     classPrefix: name,
     classBasePrefix: prefix,
     showClearIcon: true,
-    isIos: isIOS(),
+    defaultCursorColor: isIOS() ? '#0052d9' : 'default',
   };
 
   lifetimes = {
