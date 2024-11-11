@@ -11,6 +11,11 @@ function getInputClass(classPrefix, suffix, align, disabled) {
   return className.join(' ');
 }
 
+function getDefaultCursorColor(isIos, cursorColor) {
+  return isIos ? '#0052d9' : 'default';
+}
+
 module.exports = {
   getInputClass: getInputClass,
+  getDefaultCursorColor: getDefaultCursorColor,
 };
