@@ -1,4 +1,3 @@
-import exp from 'constants';
 import { prefix } from './config';
 import { getWindowInfo, getAppBaseInfo, getDeviceInfo } from './wechat';
 
@@ -127,6 +126,10 @@ export const isUndefined = (value: any): boolean => typeof value === 'undefined'
 
 export const isDef = function (value: any): boolean {
   return !isUndefined(value) && !isNull(value);
+};
+
+export const isIOS = function (): boolean {
+  return !!(deviceInfo?.system?.toLowerCase().search('ios') + 1);
 };
 
 export const addUnit = function (value?: string | number): string | undefined {

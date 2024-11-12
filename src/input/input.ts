@@ -1,7 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { getCharacterLength, calcIcon, isDef } from '../common/utils';
+import { getCharacterLength, calcIcon, isDef, isIOS } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-input`;
@@ -32,6 +32,7 @@ export default class Input extends SuperComponent {
     classPrefix: name,
     classBasePrefix: prefix,
     showClearIcon: true,
+    defaultCursorColor: isIOS() ? '#0052d9' : 'default',
   };
 
   lifetimes = {

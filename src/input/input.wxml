@@ -39,7 +39,7 @@
         confirm-type="{{confirmType}}"
         confirm-hold="{{confirmHold}}"
         cursor="{{cursor}}"
-        cursor-color="{{cursorColor}}"
+        cursor-color="{{cursorColor || defaultCursorColor}}"
         cursor-spacing="{{cursorSpacing}}"
         adjust-position="{{adjustPosition}}"
         auto-focus="{{autoFocus}}"
