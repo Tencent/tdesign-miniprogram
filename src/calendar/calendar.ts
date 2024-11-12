@@ -36,7 +36,7 @@ export default class Calendar extends SuperComponent {
     months: [],
     scrollIntoView: '',
     innerConfirmBtn: {},
-    realyLocalText: {},
+    realLocalText: {},
   };
 
   controlledProps = [
@@ -55,11 +55,11 @@ export default class Calendar extends SuperComponent {
       this.base = new TCalendar(this.properties);
     },
     ready() {
-      const realyLocalText = { ...defaultLocaleText, ...this.properties.localeText };
+      const realLocalText = { ...defaultLocaleText, ...this.properties.localeText };
       this.initialValue();
       this.setData({
-        days: this.base.getDays(realyLocalText.weekdays),
-        realyLocalText,
+        days: this.base.getDays(realLocalText.weekdays),
+        realLocalText,
       });
       this.calcMonths();
 
