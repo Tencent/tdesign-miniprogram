@@ -8,6 +8,14 @@ import useCustomNavbar from '../mixins/using-custom-navbar';
 const { prefix } = config;
 const name = `${prefix}-calendar`;
 
+const defaultLocaleText = {
+  title: '请选择日期',
+  weekdays: ['日', '一', '二', '三', '四', '五', '六'],
+  monthTitle: '{year} 年 {month}',
+  months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
+  confirm: '确认',
+};
+
 export interface CalendarProps extends TdCalendarProps {}
 
 @wxComponent()
@@ -27,7 +35,8 @@ export default class Calendar extends SuperComponent {
     classPrefix: name,
     months: [],
     scrollIntoView: '',
-    innerConfirmBtn: { content: '确定' },
+    innerConfirmBtn: {},
+    realyLocalText: {},
   };
 
   controlledProps = [
@@ -46,9 +55,12 @@ export default class Calendar extends SuperComponent {
       this.base = new TCalendar(this.properties);
     },
     ready() {
+      const realyLocalText = { ...defaultLocaleText, ...this.properties.localeText };
       this.initialValue();
       this.setData({
-        days: this.base.getDays(),
+        days: this.base.getDays(realyLocalText.weekdays),
+        innerConfirmBtn: { content: realyLocalText.confirm },
+        realyLocalText,
       });
       this.calcMonths();
 

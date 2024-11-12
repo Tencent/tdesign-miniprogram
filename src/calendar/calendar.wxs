@@ -24,7 +24,20 @@ function isDateSelected(dateItem) {
   return ['start', 'end', 'selected', 'centre'].indexOf(dateItem.type) >= 0;
 }
 
+function getMonthTitle(year, month, pattern = '') {
+  var REGEXP = getRegExp('\{year\}|\{month\}', 'g');
+
+  return pattern.replace(REGEXP, function(match){
+    var replacements = {
+        '{year}': year,
+        '{month}': month < 10 ? '0' + month : month
+    };
+    return replacements[match] || match;
+  });
+}
+
 module.exports = {
   getDateLabel: getDateLabel,
   isDateSelected: isDateSelected,
+  getMonthTitle: getMonthTitle
 };

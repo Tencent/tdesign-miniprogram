@@ -7,7 +7,7 @@
 >
   <view class="{{classPrefix}}__title" tabindex="0">
     <slot name="title" />
-    <text wx:if="{{title}}">{{ title }}</text>
+    <text wx:if="{{title || realyLocalText.title}}">{{ title || realyLocalText.title }}</text>
   </view>
   <t-icon
     wx:if="{{usePopup}}"
@@ -31,7 +31,7 @@
   >
     <block wx:for="{{months}}" wx:key="index">
       <view class="{{classPrefix}}__month" id="year_{{item.year}}_month_{{item.month}}"
-        >{{ item.year }} 年 {{ item.month + 1 }} 月</view
+        >{{ this.getMonthTitle(item.year, realyLocalText.months[item.month], realyLocalText.monthTitle)}}</view
       >
       <view class="{{classPrefix}}__dates">
         <view wx:for="{{(item.weekdayOfFirstDay - firstDayOfWeek + 7) % 7}}" wx:key="index" />
