@@ -59,7 +59,6 @@ export default class Calendar extends SuperComponent {
       this.initialValue();
       this.setData({
         days: this.base.getDays(realyLocalText.weekdays),
-        innerConfirmBtn: { content: realyLocalText.confirm },
         realyLocalText,
       });
       this.calcMonths();

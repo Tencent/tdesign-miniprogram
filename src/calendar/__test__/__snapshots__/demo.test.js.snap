@@ -68,6 +68,52 @@ exports[`Calendar Calendar custom-text demo works fine 1`] = `
 </custom-text>
 `;
 
+exports[`Calendar Calendar local-text demo works fine 1`] = `
+<local-text>
+  <t-calendar
+    localeText="{{
+      Object {
+        "confirm": "Confirm",
+        "monthTitle": "{month} {year}",
+        "months": Array [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December",
+        ],
+        "title": "Select Date",
+        "weekdays": Array [
+          "Sun",
+          "Mon",
+          "Tue",
+          "Wed",
+          "Thu",
+          "Fri",
+          "Sat",
+        ],
+      }
+    }}"
+    visible="{{false}}"
+    bind:close="onClose"
+    bind:confirm="handleConfirm"
+  />
+  <t-cell
+    arrow="{{true}}"
+    note=""
+    title="国际化"
+    bind:tap="handleCalendar"
+  />
+</local-text>
+`;
+
 exports[`Calendar Calendar multiple demo works fine 1`] = `
 <multiple>
   <t-calendar

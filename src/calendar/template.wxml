@@ -62,10 +62,9 @@
   <view wx:if="{{innerConfirmBtn != null && usePopup}}" class="{{classPrefix}}__footer">
     <slot wx:if="{{innerConfirmBtn === 'slot'}}" name="confirm-btn" />
     <block wx:elif="{{innerConfirmBtn}}">
-      <!-- <t-button block theme="primary" v-bind="confirmBtn" bind:tap="handleConfirm" /> -->
       <template
         is="button"
-        data="{{ block: true,  theme: 'primary', class: 't-calendar__confirm-btn', ...innerConfirmBtn }}"
+        data="{{ block: true,  theme: 'primary', class: 't-calendar__confirm-btn', content: realyLocalText.confirm, ...innerConfirmBtn }}"
       />
     </block>
   </view>
