@@ -75,8 +75,7 @@ export default class Navbar extends SuperComponent {
     }
     if (!rect || !systemInfo) return;
 
-    const { right } = await getRect(this, `.${name}__left`);
-
+    const right = 36;
     const boxStyleList = [];
     boxStyleList.push(`--td-navbar-padding-top: ${systemInfo.statusBarHeight}px`);
     if (rect && systemInfo?.windowWidth) {
@@ -84,6 +83,18 @@ export default class Navbar extends SuperComponent {
       boxStyleList.push(`--td-navbar-center-left: ${maxSpacing}px`); // 标题左侧距离
       boxStyleList.push(`--td-navbar-center-width: ${rect.left - maxSpacing}px`); // 标题宽度
       boxStyleList.push(`--td-navbar-right: ${systemInfo.windowWidth - rect.left}px`); // 导航栏右侧小程序胶囊按钮宽度
+
+      // getRect方法耗时较长，真机约600ms，会导致navbar位置长时间不准确，所以先设置默认值，再异步获取
+      getRect(this, `.${name}__left`).then((rect2) => {
+        if (rect2.right !== right) {
+          const boxStyleList2 = boxStyleList.filter((item) => !item.startsWith('--td-navbar-center-left'));
+          const maxSpacing2 = Math.max(rect2.right, systemInfo.windowWidth - rect.left);
+          boxStyleList2.push(`--td-navbar-center-left: ${maxSpacing2}px`);
+          this.setData({
+            boxStyle: `${boxStyleList2.join('; ')}`,
+          });
+        }
+      });
     }
     boxStyleList.push(`--td-navbar-capsule-height: ${rect.height}px`); // 胶囊高度
     boxStyleList.push(`--td-navbar-capsule-width: ${rect.width}px`); // 胶囊宽度
