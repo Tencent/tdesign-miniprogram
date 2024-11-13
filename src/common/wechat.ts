@@ -16,13 +16,13 @@ export const getObserver = (context, selector: string) => {
  */
 
 export const getWindowInfo = () => {
-  return wx.getWindowInfo && wx.getWindowInfo() ? wx.getWindowInfo() : wx.getSystemInfoSync();
+  return wx.getWindowInfo ? wx.getWindowInfo() || wx.getSystemInfoSync() : wx.getSystemInfoSync();
 };
 
 export const getAppBaseInfo = () => {
-  return wx.getAppBaseInfo && wx.getAppBaseInfo() ? wx.getAppBaseInfo() : wx.getSystemInfoSync();
+  return wx.getAppBaseInfo ? wx.getAppBaseInfo() || wx.getSystemInfoSync() : wx.getSystemInfoSync();
 };
 
 export const getDeviceInfo = () => {
-  return wx.getDeviceInfo && wx.getDeviceInfo() ? wx.getDeviceInfo() : wx.getSystemInfoSync();
+  return wx.getDeviceInfo ? wx.getDeviceInfo() || wx.getSystemInfoSync() : wx.getSystemInfoSync();
 };
