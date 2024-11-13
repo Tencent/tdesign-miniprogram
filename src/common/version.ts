@@ -1,7 +1,7 @@
 import { getAppBaseInfo } from './wechat';
 
 // 获取系统信息
-let systemInfo: WechatMiniprogram.AppBaseInfo;
+let systemInfo: WechatMiniprogram.AppBaseInfo | WechatMiniprogram.SystemInfo;
 function getSystemInfo() {
   if (systemInfo == null) {
     systemInfo = getAppBaseInfo();
