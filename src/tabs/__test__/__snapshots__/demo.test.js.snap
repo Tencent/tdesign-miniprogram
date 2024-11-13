@@ -400,31 +400,43 @@ exports[`Tabs Tabs with-content demo works fine 1`] = `
   >
     <t-tab-panel
       label="选项一"
-      style="display:flex;justify-content:center;align-items:center;"
       value="0"
     >
-      选项一内容
+      <wx-view
+        class="custom-panel__content"
+      >
+        选项一内容
+      </wx-view>
     </t-tab-panel>
     <t-tab-panel
       label="选项二"
-      style="display:flex;justify-content:center;align-items:center;"
       value="1"
     >
-      选项二内容
+      <wx-view
+        class="custom-panel__content"
+      >
+        选项二内容 选项二内容 选项二内容 选项二内容 选项二内容 选项二内容 选项二内容
+      </wx-view>
     </t-tab-panel>
     <t-tab-panel
       label="选项三"
-      style="display:flex;justify-content:center;align-items:center;"
       value="2"
     >
-      选项三内容
+      <wx-view
+        class="custom-panel__content"
+      >
+        选项三内容
+      </wx-view>
     </t-tab-panel>
     <t-tab-panel
       label="选项四"
-      style="display:flex;justify-content:center;align-items:center;"
       value="3"
     >
-      选项四内容
+      <wx-view
+        class="custom-panel__content"
+      >
+        选项四内容
+      </wx-view>
     </t-tab-panel>
   </t-tabs>
 </with-content>
