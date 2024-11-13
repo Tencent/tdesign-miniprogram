@@ -6,6 +6,18 @@ docClass: timeline
 ---
 
 
+## 🌈 1.8.0 `2024-11-13` 
+### 🚀 Features
+- `Icon`: 新增 907 个新图标⚡ 另外: `blockchain` 重命名为 `transform-1` , `gesture-pray-1` 重命名为 `gesture-open` , `gesture-ranslation-1` 重命名为 `wave-bye` , `gesture-up-1` 重命名为 `gesture-typing` , `gesture-up-2` 重命名为 `gesture-right-slip` , `logo-wechat` 重命名为 `logo-wechat-stroke-filled` ; 移除`tree-list`、`logo-adobe-photoshop-1` 图标 @anlyyao ([#3279](https://github.com/Tencent/tdesign-miniprogram/pull/3279))
+- `TabPanel`: 面板高度仅由其内容决定 @anlyyao ([#3280](https://github.com/Tencent/tdesign-miniprogram/pull/3280))
+- `Calendar`: 新增 `localText` 属性，支持组件国际化 @anlyyao ([#3278](https://github.com/Tencent/tdesign-miniprogram/pull/3278))
+### 🐞 Bug Fixes
+- `Input`: 修复 `cursorColor` 属性无默认值的问题 @anlyyao ([#3272](https://github.com/Tencent/tdesign-miniprogram/pull/3272))
+- `Progress`: 修复在 `skyline` 中标签右侧间距错误 @anlyyao ([#3283](https://github.com/Tencent/tdesign-miniprogram/pull/3283))
+### 🚧 Others
+- `other`: `getWindowInfo` 、 `getAppBaseInfo` 、 `getDeviceInfo` 等方法兼容单页模式使用 @anlyyao ([#3281](https://github.com/Tencent/tdesign-miniprogram/pull/3281))
+
+
 ## 🌈 1.7.1 `2024-11-08` 
 ### 🚀 Features
 - `Stepper`: 新增 `integer` 属性，支持输入小数 @anlyyao ([#3230](https://github.com/Tencent/tdesign-miniprogram/pull/3230))
