@@ -39,6 +39,13 @@ export interface TdCalendarProps {
     value?: CalendarFormatType;
   };
   /**
+   * 国际化文案
+   */
+  localeText?: {
+    type: ObjectConstructor;
+    value?: CalendarLocaleText;
+  };
+  /**
    * 最大可选的日期，不传则默认半年后
    */
   maxDate?: {
@@ -53,8 +60,7 @@ export interface TdCalendarProps {
     value?: number;
   };
   /**
-   * 标题
-   * @default '请选择日期'
+   * 标题，不传默认为“请选择日期”
    */
   title?: {
     type: StringConstructor;
@@ -119,4 +125,12 @@ export interface TDate {
   className?: string;
   prefix?: string;
   suffix?: string;
+}
+
+export interface CalendarLocaleText {
+  title?: string;
+  weekdays?: string[];
+  monthTitle?: string;
+  months?: string[];
+  confirm?: string;
 }

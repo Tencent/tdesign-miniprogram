@@ -1,0 +1,2 @@
+<t-calendar visible="{{visible}}" localeText="{{localeText}}" bind:confirm="handleConfirm" bind:close="onClose" />
+<t-cell arrow title="国际化" bind:tap="handleCalendar" note="{{note}}" />
