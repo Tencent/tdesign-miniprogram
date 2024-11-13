@@ -3,6 +3,12 @@
 }
 
 .custom-panel {
-  height: 120px !important;
   color: var(--td-text-color-primary);
+}
+
+.custom-panel__content {
+  padding: 40rpx;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
