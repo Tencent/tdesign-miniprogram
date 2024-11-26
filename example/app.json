@@ -16,7 +16,6 @@
     "pages/cell/skyline/cell",
     "pages/cell-group/cell-group",
     "pages/collapse/collapse",
-    "pages/collapse/skyline/collapse",
     "pages/input/input",
     "pages/input/skyline/input",
     "pages/badge/badge",
