@@ -64,6 +64,10 @@ const genSwatchList = (prop) => {
 
 @wxComponent()
 export default class ColorPicker extends SuperComponent {
+  options = {
+    multipleSlots: true,
+  };
+
   properties = props;
 
   observers = {
