@@ -21,7 +21,6 @@
 @navbar-capsule-border-radius: var(--td-navbar-capsule-border-radius, 16px);
 @navbar-capsule-width: var(--td-navbar-capsule-width, 88px);
 @navbar-capsule-height: var(--td-navbar-capsule-height, 32px);
-// var(--capsule-height)
 
 .@{prefix}-navbar {
   &--fixed {
@@ -78,7 +77,8 @@
   &__left {
     position: relative;
     box-sizing: border-box;
-    // width: @navbar-right;
+    max-width: var(--td-navbar-left-max-width);
+    overflow: hidden;
     display: flex;
     align-items: center;
     margin-left: @spacer-1;
