@@ -89,15 +89,16 @@ export default class Navbar extends SuperComponent {
 
       if (!_menuRect || !_leftRect || !systemInfo) return;
 
-      const _boxStyleList = {};
-      _boxStyleList['--td-navbar-padding-top'] = `${systemInfo.statusBarHeight}px`;
-      _boxStyleList['--td-navbar-right'] = `${systemInfo.windowWidth - _menuRect.left}px`; // 导航栏右侧小程序胶囊按钮宽度
-      _boxStyleList['--td-navbar-left-max-width'] = `${_menuRect.left}px`; // 左侧内容最大宽度
-      _boxStyleList['--td-navbar-capsule-height'] = `${_menuRect.height}px`; // 胶囊高度
-      _boxStyleList['--td-navbar-capsule-width'] = `${_menuRect.width}px`; // 胶囊宽度
-      _boxStyleList['--td-navbar-height'] = `${(_menuRect.top - systemInfo.statusBarHeight) * 2 + _menuRect.height}px`;
+      const _boxStyle = {
+        '--td-navbar-padding-top': `${systemInfo.statusBarHeight}px`,
+        '--td-navbar-right': `${systemInfo.windowWidth - _menuRect.left}px`, // 导航栏右侧小程序胶囊按钮宽度
+        '--td-navbar-left-max-width': `${_menuRect.left}px`, // 左侧内容最大宽度
+        '--td-navbar-capsule-height': `${_menuRect.height}px`, // 胶囊高度
+        '--td-navbar-capsule-width': `${_menuRect.width}px`, // 胶囊宽度
+        '--td-navbar-height': `${(_menuRect.top - systemInfo.statusBarHeight) * 2 + _menuRect.height}px`,
+      };
 
-      this.calcCenterStyle(_leftRect, _menuRect, _boxStyleList);
+      this.calcCenterStyle(_leftRect, _menuRect, _boxStyle);
     },
 
     calcCenterStyle(
@@ -106,18 +107,19 @@ export default class Navbar extends SuperComponent {
       defaultStyle: object,
     ) {
       const maxSpacing = Math.max(leftRect.right, systemInfo.windowWidth - menuRect.left);
-      const _boxStyleObj = {};
+      const _boxStyle = {
+        ...defaultStyle,
+        '--td-navbar-center-left': `${maxSpacing}px`, // 标题左侧距离
+        '--td-navbar-center-width': `${Math.max(menuRect.left - maxSpacing, 0)}px`, // 标题宽度
+      };
 
-      _boxStyleObj['--td-navbar-center-left'] = `${maxSpacing}px`; // 标题左侧距离
-      _boxStyleObj['--td-navbar-center-width'] = `${Math.max(menuRect.left - maxSpacing, 0)}px`; // 标题宽度
-
-      const boxStyle = Object.entries({ ...defaultStyle, ..._boxStyleObj })
+      const boxStyle = Object.entries(_boxStyle)
         .map(([k, v]) => `${k}: ${v}`)
         .join('; ');
 
       this.setData({
         boxStyle,
-        _boxStyle: { ...defaultStyle, ..._boxStyleObj },
+        _boxStyle,
       });
     },
 
