@@ -1,4 +1,9 @@
-<t-input label="输入密码" type="password" value="{{textPassword}}" clearable />
+<t-input
+  label="输入密码"
+  type="password"
+  value="{{textPassword}}"
+  suffixIcon="{{ { name: 'browse-off', ariaLabel: '密码' } }}"
+/>
 
 <t-input placeholder="输入验证码" label="验证码">
   <view slot="suffix" class="suffix">

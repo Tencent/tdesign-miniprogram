@@ -27,12 +27,15 @@
 @input-disabled-text-color: var(--td-input-disabled-text-color, @text-color-disabled); // 输入框禁用态文本颜色
 @input-border-radius: var(--td-input-border-radius, @radius-default); // 边框圆角大小
 
+@input-align-items: var(--td-input-align-items, center); // 内容对齐方式
+
 .@{prefix}-input {
   background-color: @input-bg-color;
   display: flex;
-  align-items: center;
+  align-items: @input-align-items;
   flex: 1;
   padding: @input-vertical-padding;
+  overflow: hidden;
 
   &--border {
     .border(bottom, @input-border-color);
