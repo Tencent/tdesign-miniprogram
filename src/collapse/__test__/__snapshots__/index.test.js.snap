@@ -30,7 +30,7 @@ exports[`collapse :defaultExpandAll 1`] = `
             <wx-view
               ariaLabel=""
               ariaRole=""
-              class="class t-class t-cell  t-cell--middle"
+              class="class t-class t-cell t-cell--middle"
               hoverClass=""
               hoverStayTime="70"
               style=""
@@ -117,7 +117,7 @@ exports[`collapse :defaultExpandAll 1`] = `
             <wx-view
               ariaLabel=""
               ariaRole=""
-              class="class t-class t-cell  t-cell--middle"
+              class="class t-class t-cell t-cell--middle"
               hoverClass=""
               hoverStayTime="70"
               style=""
