@@ -11,7 +11,9 @@
   placement="bottom"
   bind:visible-change="onVisibleChange"
 >
+  <slot name="header" />
   <include src="./template.wxml" />
+  <slot name="footer" />
 </t-popup>
 <block wx:else>
   <include src="./template.wxml" />
