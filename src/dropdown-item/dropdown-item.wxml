@@ -25,9 +25,14 @@
     t-class="{{classPrefix}}__popup-host"
     t-class-content="{{classPrefix}}__content {{prefix}}-class-content"
   >
-    <view wx:if="{{options && options.length > 0}}" class="{{classPrefix}}__body">
+    <view class="{{classPrefix}}__body">
       <!-- 单选列表 -->
-      <scroll-view wx:if="{{!multiple}}" class="{{classPrefix}}__scroll" scroll-y scroll-into-view="id_{{value}}">
+      <scroll-view
+        wx:if="{{!multiple && options && options.length > 0}}"
+        class="{{classPrefix}}__scroll"
+        scroll-y
+        scroll-into-view="id_{{value}}"
+      >
         <t-radio-group
           class="{{classPrefix}}__radio {{prefix}}-class-column"
           t-class="{{classPrefix}}__radio-group"
@@ -51,7 +56,12 @@
         </t-radio-group>
       </scroll-view>
       <!-- 多选列表 -->
-      <scroll-view wx:else class="{{classPrefix}}__scroll" scroll-y scroll-into-view="id_{{firstCheckedValue}}">
+      <scroll-view
+        wx:if="{{multiple && options && options.length > 0}}"
+        class="{{classPrefix}}__scroll"
+        scroll-y
+        scroll-into-view="id_{{firstCheckedValue}}"
+      >
         <t-checkbox-group
           class="{{classPrefix}}__checkbox {{prefix}}-class-column"
           t-class="{{classPrefix}}__checkbox-group"
@@ -74,23 +84,26 @@
 
       <slot />
     </view>
-    <view class="{{classPrefix}}__footer {{prefix}}-class-footer" wx:if="{{multiple}}">
-      <t-button
-        block
-        class="{{classPrefix}}__footer-btn {{classPrefix}}__reset-btn"
-        theme="light"
-        disabled="{{value.length == 0}}"
-        bindtap="handleReset"
-        >重置</t-button
-      >
-      <t-button
-        block
-        class="{{classPrefix}}__footer-btn {{classPrefix}}__confirm-btn"
-        theme="primary"
-        disabled="{{value.length == 0}}"
-        bindtap="handleConfirm"
-        >确定</t-button
-      >
+    <view class="{{classPrefix}}__footer {{prefix}}-class-footer">
+      <slot name="footer" />
+      <block wx:if="{{multiple}}">
+        <t-button
+          block
+          class="{{classPrefix}}__footer-btn {{classPrefix}}__reset-btn"
+          theme="light"
+          content="重置"
+          disabled="{{value.length == 0}}"
+          bindtap="handleReset"
+        />
+        <t-button
+          block
+          class="{{classPrefix}}__footer-btn {{classPrefix}}__confirm-btn"
+          theme="primary"
+          content="确定"
+          disabled="{{value.length == 0}}"
+          bindtap="handleConfirm"
+        />
+      </block>
     </view>
   </t-popup>
 </view>

@@ -20,6 +20,7 @@ name | params | description
 -- | -- | --
 close | \- | \-
 open | \- | \-
+
 ### DropdownMenu External Classes
 
 className | Description
@@ -55,6 +56,7 @@ change | `(value: DropdownValue)` | \-
 close | \- | \-
 confirm | `(value: DropdownValue)` | \-
 reset | \- | \-
+
 ### DropdownItem External Classes
 
 className | Description

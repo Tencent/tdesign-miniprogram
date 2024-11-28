@@ -586,6 +586,9 @@ exports[`dropdown-menu :base 1`] = `
                   </wx-scroll-view>
                 </wx-view>
                 <wx-view
+                  class="t-dropdown-item__footer t-class-footer"
+                />
+                <wx-view
                   class="t-popup__close"
                   bind:tap="handleClose"
                 />
