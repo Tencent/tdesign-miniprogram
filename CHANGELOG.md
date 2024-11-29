@@ -6,6 +6,16 @@ docClass: timeline
 ---
 
 
+## 🌈 1.8.1 `2024-11-29` 
+### 🚀 Features
+- `Progress`: 新增环形进度条相关的  `css vars` @betavs ([#3301](https://github.com/Tencent/tdesign-miniprogram/pull/3301))
+- `Input`: 新增 `--td-input-align-items` 变量，支持自定义组件内容对齐方式 @anlyyao ([#3308](https://github.com/Tencent/tdesign-miniprogram/pull/3308))
+- `ColorPicker`: 新增 `header` 和 `footer` 插槽，仅在 `usePopup` 为 `true` 时有效 @anlyyao ([#3310](https://github.com/Tencent/tdesign-miniprogram/pull/3310))
+### 🐞 Bug Fixes
+- `DropdownMenuItem`: 修复默认插槽无效，并补充 `footer` 具名插槽 @anlyyao ([#3309](https://github.com/Tencent/tdesign-miniprogram/pull/3309))
+- `Navbar`: 修复 `getRect` 耗时过长导致 `navbar` 位置不准确问题，并兼容部分机型因精度问题导致的翻译功能完成后标题仍然隐藏的问题 @jarmywang @anlyyao @betavs  ([#3286](https://github.com/Tencent/tdesign-miniprogram/pull/3286))
+
+
 ## 🌈 1.8.0 `2024-11-13` 
 ### 🚀 Features
 - `Icon`: 新增 907 个新图标⚡ 另外: `blockchain` 重命名为 `transform-1` , `gesture-pray-1` 重命名为 `gesture-open` , `gesture-ranslation-1` 重命名为 `wave-bye` , `gesture-up-1` 重命名为 `gesture-typing` , `gesture-up-2` 重命名为 `gesture-right-slip` , `logo-wechat` 重命名为 `logo-wechat-stroke-filled` ; 移除`tree-list`、`logo-adobe-photoshop-1` 图标 @anlyyao ([#3279](https://github.com/Tencent/tdesign-miniprogram/pull/3279))
