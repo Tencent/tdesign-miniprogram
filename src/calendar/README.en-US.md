@@ -15,6 +15,7 @@ format | Function | - | Typescript：`CalendarFormatType ` `type CalendarFormatT
 locale-text | Object | - | Typescript：`CalendarLocaleText` `interface CalendarLocaleText {title?: string; weekdays?: string[]; monthTitle?: string; months?: string[]; confirm?: string;}`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/calendar/type.ts) | N
 max-date | Number | - | \- | N
 min-date | Number | - | \- | N
+switch-mode | String | none | options: none/month/year-month | N
 title | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 type | String | 'single' | options: single/multiple/range | N
 use-popup | Boolean | true | `0.32.0` | N
@@ -40,11 +41,13 @@ Name | Default Value | Description
 -- | -- | --
 --td-calendar-active-color | @brand-color | - 
 --td-calendar-bg-color | @bg-color-container | - 
---td-calendar-days-color | @font-gray-2 | - 
+--td-calendar-days-color | @text-color-secondary | - 
 --td-calendar-item-centre-color | @brand-color-light | - 
---td-calendar-item-disabled-color | @font-gray-4 | - 
---td-calendar-item-suffix-color | @font-gray-3 | - 
+--td-calendar-item-disabled-color | @text-color-disabled | - 
+--td-calendar-item-suffix-color | @text-color-placeholder | - 
 --td-calendar-radius | 24rpx | - 
---td-calendar-selected-color | @font-white-1 | - 
---td-calendar-title-color | @font-gray-1 | - 
---td-calendar-title-font-size | 18px | -
+--td-calendar-selected-color | @text-color-anti | - 
+--td-calendar-switch-mode-icon-color | @brand-color | - 
+--td-calendar-switch-mode-icon-disabled-color | @brand-color-disabled | - 
+--td-calendar-title-color | @text-color-primary | - 
+--td-calendar-title-font-size | 18px | - 

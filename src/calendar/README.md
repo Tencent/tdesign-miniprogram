@@ -73,6 +73,7 @@ format | Function | - | 用于格式化日期的函数。TS 类型：`CalendarFo
 locale-text | Object | - | 国际化文案。TS 类型：`CalendarLocaleText` `interface CalendarLocaleText {title?: string; weekdays?: string[]; monthTitle?: string; months?: string[]; confirm?: string;}`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/calendar/type.ts) | N
 max-date | Number | - | 最大可选的日期，不传则默认半年后 | N
 min-date | Number | - | 最小可选的日期，不传则默认今天 | N
+switch-mode | String | none | 切换模式。 `none` 表示水平方向平铺展示所有月份； `month` 表示支持按月切换， `year-month` 表示既按年切换，也支持按月切换。可选项：none/month/year-month | N
 title | String / Slot | - | 标题，不传默认为“请选择日期”。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 type | String | 'single' | 日历的选择类型，single = 单选；multiple = 多选; range = 区间选择。可选项：single/multiple/range | N
 use-popup | Boolean | true | `0.32.0`。是否使用弹出层包裹日历 | N
@@ -98,11 +99,13 @@ select | `(value: timestamp)` | `0.28.0`。点击日期时触发
 -- | -- | --
 --td-calendar-active-color | @brand-color | - 
 --td-calendar-bg-color | @bg-color-container | - 
---td-calendar-days-color | @font-gray-2 | - 
+--td-calendar-days-color | @text-color-secondary | - 
 --td-calendar-item-centre-color | @brand-color-light | - 
---td-calendar-item-disabled-color | @font-gray-4 | - 
---td-calendar-item-suffix-color | @font-gray-3 | - 
+--td-calendar-item-disabled-color | @text-color-disabled | - 
+--td-calendar-item-suffix-color | @text-color-placeholder | - 
 --td-calendar-radius | 24rpx | - 
---td-calendar-selected-color | @font-white-1 | - 
---td-calendar-title-color | @font-gray-1 | - 
---td-calendar-title-font-size | 18px | -
+--td-calendar-selected-color | @text-color-anti | - 
+--td-calendar-switch-mode-icon-color | @brand-color | - 
+--td-calendar-switch-mode-icon-disabled-color | @brand-color-disabled | - 
+--td-calendar-title-color | @text-color-primary | - 
+--td-calendar-title-font-size | 18px | - 
