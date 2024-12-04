@@ -7,7 +7,7 @@
     style="font-size:{{ utils.regSize(size) }}"
     bind:touchstart="{{ !disabled ? 'onTouchStart' : '' }}"
     bind:touchmove="{{ !disabled ? 'onTouchMove' : '' }}"
-    bind:tap="{{ !disabled ? 'onTap' : '' }}"
+    bind:tap="onTap"
     bind:touchend="{{ !disabled ? 'onTouchEnd' : ''}}"
     bind:touchcancel="{{ !disabled ? 'onTouchEnd' : ''}}"
     aria-role="slider"
