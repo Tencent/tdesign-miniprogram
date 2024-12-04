@@ -1,18 +1,22 @@
 function getPopupStyles(zIndex, distanceTop, placement) {
   var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
   if ((placement === 'top' || placement === 'left' || placement === 'right') && distanceTop) {
-    zIndexStyle = zIndexStyle + 'top:' + distanceTop + 'px;'
+    zIndexStyle = zIndexStyle + 'top:' + distanceTop + 'px;';
   }
   return zIndexStyle;
 }
 
-function onContentTouchMove (e) {
+function onContentTouchMove(e) {
+  if (e.nv_target && e.nv_target.nv_dataset.nv_prevention) {
+    return false;
+  }
+
   if (e.target.dataset.prevention) {
     return false;
-  };
+  }
 }
 
 module.exports = {
   getPopupStyles: getPopupStyles,
-  onContentTouchMove: onContentTouchMove
+  onContentTouchMove: onContentTouchMove,
 };
