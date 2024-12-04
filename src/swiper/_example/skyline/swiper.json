@@ -6,6 +6,11 @@
   "enablePassiveEvent": false,
   "usingComponents": {
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
-    "swiper-demo": "../swiper"
+    "base": "../base",
+    "fraction": "../fraction",
+    "nav-btn": "../nav-btn",
+    "custom": "../custom",
+    "cards": "../cards",
+    "vertical": "../vertical"
   }
 }

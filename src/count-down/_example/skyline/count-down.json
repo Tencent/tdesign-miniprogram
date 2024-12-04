@@ -5,6 +5,7 @@
   "disableScroll": true,
   "usingComponents": {
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
-    "count-down": "../count-down"
+    "base": "../base",
+    "size": "../size"
   }
 }

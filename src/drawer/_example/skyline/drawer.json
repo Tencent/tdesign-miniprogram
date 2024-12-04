@@ -2,7 +2,10 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
-    "drawer": "../drawer"
+    "base": "../base",
+    "title": "../title",
+    "icon-drawer": "../icon-drawer",
+    "footer": "../footer"
   },
   "renderer": "skyline",
   "componentFramework": "glass-easel",

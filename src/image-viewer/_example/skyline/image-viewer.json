@@ -5,6 +5,7 @@
   "disableScroll": true,
   "usingComponents": {
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
-    "image-viewer": "../image-viewer"
+    "base": "../base",
+    "delete": "../delete"
   }
 }

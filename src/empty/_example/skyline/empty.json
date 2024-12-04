@@ -5,6 +5,8 @@
   "disableScroll": true,
   "usingComponents": {
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
-    "empty": "../empty"
+    "base": "../base",
+    "imageEmpty": "../imageEmpty",
+    "buttonEmpty": "../buttonEmpty"
   }
 }

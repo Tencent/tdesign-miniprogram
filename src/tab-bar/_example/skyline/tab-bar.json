@@ -2,13 +2,13 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
-    "text-only": "../text-only/index",
-    "icon-only": "../icon-only/index",
-    "base": "../base/index",
-    "sub": "../sub/index",
-    "badge": "../badge/index",
-    "round": "../round/index",
-    "custom": "../custom/index"
+    "text-only": "../text-only",
+    "icon-only": "../icon-only",
+    "base": "../base",
+    "sub": "../sub",
+    "badge": "../badge",
+    "round": "../round",
+    "custom": "../custom"
   },
   "renderer": "skyline",
   "componentFramework": "glass-easel",
