@@ -3,6 +3,7 @@
 exports[`Calendar Calendar base demo works fine 1`] = `
 <base>
   <t-calendar
+    value="{{null}}"
     visible="{{false}}"
     bind:close="onClose"
     bind:confirm="handleConfirm"
@@ -16,35 +17,19 @@ exports[`Calendar Calendar base demo works fine 1`] = `
 </base>
 `;
 
-exports[`Calendar Calendar custom-button demo works fine 1`] = `
-<custom-button>
-  <t-calendar
-    confirmBtn="{{null}}"
-    minDate="{{1641052800000}}"
-    visible="{{false}}"
-    bind:change="onChange"
-  />
-  <t-cell
-    arrow="{{true}}"
-    note=""
-    title="不显示按钮"
-    bind:tap="handleCalendar"
-  />
-</custom-button>
-`;
-
 exports[`Calendar Calendar custom-range demo works fine 1`] = `
 <custom-range>
   <t-calendar
-    maxDate="{{1669478400000}}"
-    minDate="{{1643644800000}}"
-    value="{{1652544000000}}"
+    maxDate="{{1646064000000}}"
+    minDate="{{1645113600000}}"
+    value="{{1645113600000}}"
     visible="{{false}}"
     bind:confirm="handleConfirm"
   />
   <t-cell
     arrow="{{true}}"
-    title="自定义区间"
+    note="2022-02-18"
+    title="含不可选的日历"
     bind:tap="handleCalendar"
   />
 </custom-range>
@@ -52,17 +37,31 @@ exports[`Calendar Calendar custom-range demo works fine 1`] = `
 
 exports[`Calendar Calendar custom-text demo works fine 1`] = `
 <custom-text>
+  <t-cell
+    arrow="{{true}}"
+    data-type="single"
+    note="2022-02-18"
+    title="带单行描述的日历"
+    bind:tap="handleCalendar"
+  />
+  <wx-view
+    class="demo-desc"
+  >
+    带双行描述的日历
+  </wx-view>
   <t-calendar
     format="{{[Function]}}"
     maxDate="{{1647273600000}}"
     minDate="{{1643644800000}}"
-    value="{{1644854400000}}"
+    value="{{1645113600000}}"
     visible="{{false}}"
     bind:confirm="handleConfirm"
   />
   <t-cell
     arrow="{{true}}"
-    title="自定义文案"
+    data-type="multiple"
+    note="2022-02-18"
+    title="带双行描述的日历"
     bind:tap="handleCalendar"
   />
 </custom-text>
@@ -101,13 +100,16 @@ exports[`Calendar Calendar local-text demo works fine 1`] = `
         ],
       }
     }}"
+    maxDate="{{1647273600000}}"
+    minDate="{{1643644800000}}"
+    value="{{1645113600000}}"
     visible="{{false}}"
     bind:close="onClose"
     bind:confirm="handleConfirm"
   />
   <t-cell
     arrow="{{true}}"
-    note=""
+    note="2022-02-18"
     title="国际化"
     bind:tap="handleCalendar"
   />
@@ -132,26 +134,68 @@ exports[`Calendar Calendar multiple demo works fine 1`] = `
 exports[`Calendar Calendar range demo works fine 1`] = `
 <range>
   <t-calendar
+    maxDate="{{1735660800000}}"
+    minDate="{{1730390400000}}"
     type="range"
+    value="{{
+      Array [
+        1733328000000,
+        1733760000000,
+      ]
+    }}"
+    visible="{{false}}"
+    bind:confirm="handleConfirm"
+  />
+  <wx-view
+    class="wrapper"
+    bind:tap="handleCalendar"
+  >
+    <wx-view
+      class="wrapper__left"
+    >
+      2024-12-05
+    </wx-view>
+    <t-icon
+      class="wrapper__center"
+      name="swap-right"
+      size="40rpx"
+    />
+    <wx-view
+      class="wrapper__right"
+    >
+      2024-12-10
+    </wx-view>
+  </wx-view>
+</range>
+`;
+
+exports[`Calendar Calendar switch-mode demo works fine 1`] = `
+<switch-mode>
+  <t-calendar
+    maxDate="{{1827244800000}}"
+    minDate="{{1641744000000}}"
+    switchMode="year-month"
+    type="multiple"
+    value="{{
+      Array [
+        1645891200000,
+      ]
+    }}"
     visible="{{false}}"
     bind:confirm="handleConfirm"
   />
   <t-cell
     arrow="{{true}}"
-    title="区间选择日历"
+    title="带翻页功能的日历"
     bind:tap="handleCalendar"
   />
-</range>
+</switch-mode>
 `;
 
 exports[`Calendar Calendar without-popup demo works fine 1`] = `
 <without-popup>
-  <wx-view
-    class="demo-desc"
-  >
-    不使用 Popup
-  </wx-view>
   <t-calendar
+    title="日历标题"
     type="multiple"
     usePopup="{{false}}"
     bind:select="handleSelect"
