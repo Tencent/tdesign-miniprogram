@@ -4,6 +4,7 @@
   "componentFramework": "glass-easel",
   "usingComponents": {
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
-    "layout": "../col"
+    "base": "../base",
+    "offset": "../offset"
   }
 }
