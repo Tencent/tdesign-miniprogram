@@ -50,6 +50,7 @@ exports[`Calendar Calendar custom-text demo works fine 1`] = `
     带双行描述的日历
   </wx-view>
   <t-calendar
+    data-type="single"
     format="{{[Function]}}"
     maxDate="{{1647273600000}}"
     minDate="{{1643644800000}}"
@@ -120,6 +121,7 @@ exports[`Calendar Calendar multiple demo works fine 1`] = `
 <multiple>
   <t-calendar
     type="multiple"
+    value="{{null}}"
     visible="{{false}}"
     bind:confirm="handleConfirm"
   />
@@ -127,7 +129,14 @@ exports[`Calendar Calendar multiple demo works fine 1`] = `
     arrow="{{true}}"
     title="多个选择日历"
     bind:tap="handleCalendar"
-  />
+  >
+    <wx-view
+      class="custom-class-note"
+      slot="note"
+    >
+        
+    </wx-view>
+  </t-cell>
 </multiple>
 `;
 
@@ -175,17 +184,13 @@ exports[`Calendar Calendar switch-mode demo works fine 1`] = `
     maxDate="{{1827244800000}}"
     minDate="{{1641744000000}}"
     switchMode="year-month"
-    type="multiple"
-    value="{{
-      Array [
-        1645891200000,
-      ]
-    }}"
+    value="{{1645891200000}}"
     visible="{{false}}"
     bind:confirm="handleConfirm"
   />
   <t-cell
     arrow="{{true}}"
+    note="2022-02-27"
     title="带翻页功能的日历"
     bind:tap="handleCalendar"
   />

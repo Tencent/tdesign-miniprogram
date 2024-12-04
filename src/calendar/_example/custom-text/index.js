@@ -3,6 +3,7 @@ Component({
     type: 'single',
     visible: false,
     value: new Date(2022, 1, 18).getTime(),
+    singleValue: new Date(2022, 1, 18).getTime(),
     minDate: new Date(2022, 1, 1).getTime(),
     maxDate: new Date(2022, 2, 15).getTime(),
     singleFormat(day) {
@@ -44,6 +45,18 @@ Component({
     },
 
     handleConfirm(e) {
+      const { type } = e.currentTarget.dataset;
+      const { value } = e.detail;
+
+      if (type === 'single') {
+        this.setData({
+          singleValue: value,
+        });
+      } else {
+        this.setData({
+          value,
+        });
+      }
       console.log(e.detail.value);
     },
   },

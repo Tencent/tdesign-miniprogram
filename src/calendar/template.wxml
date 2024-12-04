@@ -22,7 +22,7 @@
   <template
     wx:if="{{switchMode !== 'none'}}"
     is="calendar-header"
-    data="{{ classPrefix: classPrefix + '-header', switchMode, ...actionButtons, title: this.getMonthTitle(currentMonth[0].year, realLocalText.months[currentMonth[0].month], realLocalText.monthTitle), isNextMonthButtonDiasble: true}}"
+    data="{{ classPrefix: classPrefix + '-header', switchMode, ...actionButtons, title: this.getMonthTitle(currentMonth[0].year, realLocalText.months[currentMonth[0].month], realLocalText.monthTitle)}}"
   />
   <view aria-hidden class="{{classPrefix}}__days">
     <view wx:for="{{days}}" wx:key="index" class="{{classPrefix}}__days-item">{{ item }}</view>

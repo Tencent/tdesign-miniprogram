@@ -6,7 +6,6 @@
     "range": "./range",
     "custom-text": "./custom-text",
     "custom-range": "./custom-range",
-    "custom-button": "./custom-button",
     "local-text": "./local-text",
     "without-popup": "./without-popup",
     "switch-mode": "./switch-mode"
