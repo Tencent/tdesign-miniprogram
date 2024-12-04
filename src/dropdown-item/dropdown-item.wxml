@@ -38,11 +38,11 @@
           t-class="{{classPrefix}}__radio-group"
           style="grid-template-columns: repeat({{optionsColumns}}, 1fr)"
           value="{{value}}"
-          placement="right"
           bind:change="handleRadioChange"
         >
           <view wx:for="{{options}}" wx:key="index" id="id_{{item[valueAlias]}}">
             <t-radio
+              placement="{{placement}}"
               tabindex="0"
               icon="line"
               class="{{classPrefix}}__radio-item {{prefix}}-class-column-item"

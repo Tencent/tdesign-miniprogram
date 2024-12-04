@@ -225,8 +225,14 @@ exports[`DropdownMenu DropdownMenu single demo works fine 1`] = `
             "label": "最火产品",
             "value": "hot",
           },
+          Object {
+            "disabled": true,
+            "label": "禁用选项",
+            "value": "disabled",
+          },
         ]
       }}"
+      placement="right"
       value="all"
       bind:change="onChange"
     />
@@ -244,6 +250,7 @@ exports[`DropdownMenu DropdownMenu single demo works fine 1`] = `
           },
         ]
       }}"
+      placement="right"
     />
   </t-dropdown-menu>
 </single>

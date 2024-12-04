@@ -24,9 +24,7 @@ export default class DropdownMenuItem extends SuperComponent {
     `${prefix}-class-footer`,
   ];
 
-  properties = {
-    ...props,
-  };
+  properties = props;
 
   data = {
     prefix,

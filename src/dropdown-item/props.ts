@@ -39,6 +39,11 @@ const props: TdDropdownItemProps = {
     type: null,
     value: 1,
   },
+  /** 复选框和内容相对位置，仅单选菜单栏有效 */
+  placement: {
+    type: String,
+    value: 'left',
+  },
   /** 选中值 */
   value: {
     type: null,

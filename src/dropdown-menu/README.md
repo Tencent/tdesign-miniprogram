@@ -92,6 +92,7 @@ multiple | Boolean | false | 是否多选 | N
 options | Array | [] | 选项数据。TS 类型：`Array<DropdownOption>` `interface DropdownOption { label: string; disabled: boolean; value: DropdownValue; }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dropdown-item/type.ts) | N
 options-columns | String / Number | 1 | 选项分栏（1-3） | N
 options-layout | String | columns | 已废弃。选项排列；不再支持 tree 布局，可与 treeSelect 配合使用 | N
+placement | String | left | 复选框和内容相对位置，仅单选菜单栏有效。可选项：left/right | N
 value | String / Number / Array | undefined | 选中值。TS 类型：`DropdownValue ` `type DropdownValue = string \| number \| Array<DropdownValue>;`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dropdown-item/type.ts) | N
 default-value | String / Number / Array | undefined | 选中值。非受控属性。TS 类型：`DropdownValue ` `type DropdownValue = string \| number \| Array<DropdownValue>;`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/dropdown-item/type.ts) | N
 
@@ -120,13 +121,6 @@ t-class-footer | 底部样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-dropdown-body-max-height | 560rpx | - 
---td-dropdown-menu-bg-color | @bg-color-container | - 
---td-tree-bg-color | @bg-color-container | - 
---td-tree-item-active-color | @brand-color | - 
---td-tree-item-font-size | 32rpx | - 
---td-tree-item-height | 96rpx | - 
---td-tree-root-bg-color | @bg-color-secondarycontainer | - 
 --td-dropdown-menu-active-colorm | @brand-color | - 
 --td-dropdown-menu-bg-colorm | @bg-color-container | - 
 --td-dropdown-menu-border-width | 1px | - 
@@ -134,4 +128,11 @@ t-class-footer | 底部样式类
 --td-dropdown-menu-disabled-colorm | @text-color-disabled | - 
 --td-dropdown-menu-font-sizem | 28rpx | - 
 --td-dropdown-menu-height | 96rpx | - 
---td-dropdown-menu-icon-sizem | 48rpx | -
+--td-dropdown-menu-icon-sizem | 40rpx | - 
+--td-dropdown-body-max-height | 560rpx | - 
+--td-dropdown-menu-bg-color | @bg-color-container | - 
+--td-tree-bg-color | @bg-color-container | - 
+--td-tree-item-active-color | @brand-color | - 
+--td-tree-item-font-size | 32rpx | - 
+--td-tree-item-height | 96rpx | - 
+--td-tree-root-bg-color | @bg-color-secondarycontainer | - 
