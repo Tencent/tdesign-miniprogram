@@ -1,2 +1,16 @@
-<t-calendar visible="{{visible}}" bind:confirm="handleConfirm" type="range" />
-<t-cell arrow title="区间选择日历" bind:tap="handleCalendar" />
+<wxs src="../calendar.wxs" module="this" />
+
+<t-calendar
+  visible="{{visible}}"
+  value="{{value}}"
+  minDate="{{minDate}}"
+  maxDate="{{maxDate}}"
+  type="range"
+  bind:confirm="handleConfirm"
+/>
+
+<view class="wrapper" bind:tap="handleCalendar">
+  <view class="wrapper__left">{{this.formatTimestamp(value[0])}}</view>
+  <t-icon class="wrapper__center" name="swap-right" size="40rpx" />
+  <view class="wrapper__right">{{this.formatTimestamp(value[1])}}</view>
+</view>

@@ -1,2 +1,12 @@
-<t-calendar visible="{{visible}}" localeText="{{localeText}}" bind:confirm="handleConfirm" bind:close="onClose" />
-<t-cell arrow title="国际化" bind:tap="handleCalendar" note="{{note}}" />
+<wxs src="../calendar.wxs" module="this" />
+
+<t-calendar
+  visible="{{visible}}"
+  value="{{value}}"
+  minDate="{{minDate}}"
+  maxDate="{{maxDate}}"
+  localeText="{{localeText}}"
+  bind:confirm="handleConfirm"
+  bind:close="onClose"
+/>
+<t-cell arrow title="国际化" note="{{this.formatTimestamp(value)}}" bind:tap="handleCalendar" />
