@@ -1,23 +1,21 @@
 Component({
   data: {
     visible: false,
-    note: '',
+    value: null,
   },
   methods: {
     handleCalendar() {
       this.setData({ visible: true });
     },
+
     handleConfirm(e) {
       const { value } = e.detail;
-      const format = (val) => {
-        const date = new Date(val);
-        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-      };
-
+      console.log(value);
       this.setData({
-        note: format(value),
+        value,
       });
     },
+
     onClose({ detail }) {
       console.log(detail.trigger);
     },

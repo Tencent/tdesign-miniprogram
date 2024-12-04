@@ -1,9 +1,15 @@
 Component({
   data: {
+    type: 'single',
     visible: false,
-    value: new Date(2022, 1, 15).getTime(),
+    value: new Date(2022, 1, 18).getTime(),
+    singleValue: new Date(2022, 1, 18).getTime(),
     minDate: new Date(2022, 1, 1).getTime(),
     maxDate: new Date(2022, 2, 15).getTime(),
+    singleFormat(day) {
+      day.suffix = '¥60';
+      return day;
+    },
     format(day) {
       const { date } = day;
       const year = date.getFullYear();
@@ -33,10 +39,24 @@ Component({
     },
   },
   methods: {
-    handleCalendar() {
-      this.setData({ visible: true });
+    handleCalendar(e) {
+      const { type } = e.currentTarget.dataset;
+      this.setData({ type, visible: true });
     },
+
     handleConfirm(e) {
+      const { type } = e.currentTarget.dataset;
+      const { value } = e.detail;
+
+      if (type === 'single') {
+        this.setData({
+          singleValue: value,
+        });
+      } else {
+        this.setData({
+          value,
+        });
+      }
       console.log(e.detail.value);
     },
   },

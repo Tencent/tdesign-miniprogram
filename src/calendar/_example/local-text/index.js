@@ -1,7 +1,9 @@
 Component({
   data: {
     visible: false,
-    note: '',
+    value: new Date(2022, 1, 18).getTime(),
+    minDate: new Date(2022, 1, 1).getTime(),
+    maxDate: new Date(2022, 2, 15).getTime(),
     localeText: {
       title: 'Select Date',
       weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
@@ -27,17 +29,14 @@ Component({
     handleCalendar() {
       this.setData({ visible: true });
     },
+
     handleConfirm(e) {
       const { value } = e.detail;
-      const format = (val) => {
-        const date = new Date(val);
-        return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
-      };
-
       this.setData({
-        note: format(value),
+        value,
       });
     },
+
     onClose({ detail }) {
       console.log(detail.trigger);
     },

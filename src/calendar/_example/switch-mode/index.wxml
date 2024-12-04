@@ -3,8 +3,9 @@
 <t-calendar
   visible="{{visible}}"
   value="{{value}}"
+  switch-mode="year-month"
   minDate="{{minDate}}"
   maxDate="{{maxDate}}"
   bind:confirm="handleConfirm"
 />
-<t-cell arrow title="含不可选的日历" note="{{this.formatTimestamp(value)}}" bind:tap="handleCalendar" />
+<t-cell arrow title="带翻页功能的日历" note="{{this.formatTimestamp(value)}}" bind:tap="handleCalendar" />

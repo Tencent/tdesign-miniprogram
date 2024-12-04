@@ -1,0 +1,23 @@
+function getDateByTimestamp(val) {
+  var date = getDate(val);
+  return [date.getFullYear(), date.getMonth() < 10 ? '0' + ( date.getMonth() + 1) : date.getMonth() + 1, date.getDate() < 10 ? '0' + date.getDate() : date.getDate()].join('-');
+}
+
+function formatTimestamp(val) {
+  if (!val) return '';
+
+  var i = 0;
+  if(val.constructor && val.constructor == 'Array'){
+    var _str = '';
+    for (var len = val.length; i < len; i++) {
+      _str += getDateByTimestamp(val[i]) + '、';
+    };
+    return _str
+  }
+
+  return getDateByTimestamp(val);
+};
+
+module.exports = {
+  formatTimestamp: formatTimestamp
+}

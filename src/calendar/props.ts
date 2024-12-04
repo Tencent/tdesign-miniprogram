@@ -37,6 +37,11 @@ const props: TdCalendarProps = {
   minDate: {
     type: Number,
   },
+  /** 切换模式。 `none` 表示水平方向平铺展示所有月份； `month` 表示支持按月切换， `year-month` 表示既按年切换，也支持按月切换 */
+  switchMode: {
+    type: String,
+    value: 'none',
+  },
   /** 标题，不传默认为“请选择日期” */
   title: {
     type: String,
