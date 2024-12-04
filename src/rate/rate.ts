@@ -70,6 +70,8 @@ export default class Rate extends SuperComponent {
       });
     },
     onTap(e: WechatMiniprogram.TouchEvent) {
+      const { disabled } = this.properties;
+      if (disabled) return;
       this.onTouch(e, 'tap');
     },
     onTouchStart() {
