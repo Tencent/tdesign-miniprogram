@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           submodules: recursive
-      - uses: 94dreamer/compressed-size-action@master
+      - uses: preactjs/compressed-size-action@v2
         with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          pattern: "./miniprogram_dist/**/*.{js,wxs,wxml,json}"
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          pattern: './miniprogram_dist/**/*.{js,wxs,wxml,json}'
