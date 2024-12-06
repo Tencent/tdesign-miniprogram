@@ -209,6 +209,9 @@ export default class Cascader extends SuperComponent {
       this.hide('overlay');
     },
     onClose() {
+      if (this.data.checkStrictly) {
+        this.triggerChange();
+      }
       this.hide('close-btn');
     },
     onStepClick(e) {
@@ -258,7 +261,8 @@ export default class Cascader extends SuperComponent {
     handleSelect(e) {
       const { level } = e.target.dataset;
       const { value } = e.detail;
-      const { selectedIndexes, items, keys, options } = this.data;
+      const { checkStrictly } = this.properties;
+      const { selectedIndexes, items, keys, options, selectedValue } = this.data;
       const index = items[level].findIndex((item) => item[keys?.value ?? 'value'] === value);
 
       let item = selectedIndexes.slice(0, level).reduce((acc, item, index) => {
@@ -277,15 +281,20 @@ export default class Cascader extends SuperComponent {
       if (item.disabled) {
         return;
       }
-      selectedIndexes[level] = index;
-      selectedIndexes.length = level + 1;
-
       this.triggerEvent('pick', {
         value: item[keys?.value ?? 'value'],
         label: item[keys?.label ?? 'label'],
         index,
         level,
       });
+      selectedIndexes[level] = index;
+      if (checkStrictly && selectedValue.includes(String(value))) {
+        selectedIndexes.length = level;
+        this.setData({ selectedIndexes });
+        return;
+      }
+      selectedIndexes.length = level + 1;
+
       const { items: newItems } = this.genItems();
       if (item?.[keys?.children ?? 'children']?.length) {
         this.setData({
@@ -298,16 +307,17 @@ export default class Cascader extends SuperComponent {
           {
             selectedIndexes,
           },
-          () => {
-            const { items } = this.data;
-            this._trigger('change', {
-              value: item[keys?.value ?? 'value'],
-              selectedOptions: items.map((item, index) => item[selectedIndexes[index]]),
-            });
-          },
+          this.triggerChange,
         );
         this.hide('finish');
       }
+    },
+    triggerChange() {
+      const { items, selectedValue, selectedIndexes } = this.data;
+      this._trigger('change', {
+        value: selectedValue[selectedValue.length - 1] ?? '',
+        selectedOptions: items.map((item, index) => item[selectedIndexes[index]]).filter(Boolean),
+      });
     },
   };
 }

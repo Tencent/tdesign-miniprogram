@@ -8,6 +8,14 @@ import { TreeOptionData, KeysType } from '../common/common';
 
 export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOptionData> {
   /**
+   * 父子节点选中状态不再关联，可各自选中或取消
+   * @default false
+   */
+  checkStrictly?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 关闭按钮
    * @default true
    */
