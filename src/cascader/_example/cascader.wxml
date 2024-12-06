@@ -21,4 +21,8 @@
   <t-demo desc="使用次级标题">
     <with-title />
   </t-demo>
+
+  <t-demo desc="选择任意一项">
+    <check-strictly />
+  </t-demo>
 </view>
