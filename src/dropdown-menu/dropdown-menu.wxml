@@ -12,7 +12,7 @@
     wx:key="index"
     bindtap="handleToggle"
     data-index="{{index}}"
-    class="{{_.cls(classPrefix + '__item', [['active', activeIdx == index], ['disabled', item.disabled]])}} {{prefix}}-class-item"
+    class="{{_.cls(classPrefix + '__item', [['active', activeIdx == index], ['disabled', item.disabled], [index, true]])}} {{prefix}}-class-item"
     aria-disabled="{{item.disabled}}"
     aria-role="button"
     aria-expanded="{{activeIdx === index}}"
