@@ -15,6 +15,11 @@ Component({
           value: 'hot',
           label: '最火产品',
         },
+        {
+          value: 'disabled',
+          label: '禁用选项',
+          disabled: true,
+        },
       ],
     },
     sorter: {
