@@ -121,14 +121,14 @@ t-class-footer | 底部样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-dropdown-menu-active-colorm | @brand-color | - 
---td-dropdown-menu-bg-colorm | @bg-color-container | - 
+--td-dropdown-menu-active-color | @brand-color | - 
+--td-dropdown-menu-bg-color | @bg-color-container | - 
 --td-dropdown-menu-border-width | 1px | - 
---td-dropdown-menu-colorm | @text-color-primary | - 
---td-dropdown-menu-disabled-colorm | @text-color-disabled | - 
---td-dropdown-menu-font-sizem | 28rpx | - 
+--td-dropdown-menu-color | @text-color-primary | - 
+--td-dropdown-menu-disabled-color | @text-color-disabled | - 
+--td-dropdown-menu-font-size | 28rpx | - 
 --td-dropdown-menu-height | 96rpx | - 
---td-dropdown-menu-icon-sizem | 40rpx | - 
+--td-dropdown-menu-icon-size | 40rpx | - 
 --td-dropdown-body-max-height | 560rpx | - 
 --td-dropdown-menu-bg-color | @bg-color-container | - 
 --td-tree-bg-color | @bg-color-container | - 
