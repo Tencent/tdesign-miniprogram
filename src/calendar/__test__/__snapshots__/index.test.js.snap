@@ -19,7 +19,7 @@ exports[`calendar :base 1`] = `
           data-prevention="{{true}}"
         >
           <wx-view
-            class="t-calendar t-calendar--popup class t-class"
+            class="t-calendar t-calendar--popup t-calendar-switch-mode--none class t-class"
             style=""
           >
             <wx-view
@@ -96,10 +96,14 @@ exports[`calendar :base 1`] = `
               bind:scroll="onScroll"
             >
               <wx-view
-                class="t-calendar__month"
+                class="t-calendar__month t-calendar-header "
                 id="year_2022_month_9"
               >
-                2022 年 10 月
+                <wx-view
+                  class="t-calendar-header__title"
+                >
+                   2022 年 10 月
+                </wx-view>
               </wx-view>
               <wx-view
                 class="t-calendar__dates"

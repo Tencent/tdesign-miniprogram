@@ -1,9 +1,27 @@
+<wxs src="../calendar.wxs" module="this" />
+
+<t-cell
+  arrow
+  title="带单行描述的日历"
+  note="{{this.formatTimestamp(singleValue)}}"
+  data-type="single"
+  bind:tap="handleCalendar"
+/>
+
+<view class="demo-desc">带双行描述的日历</view>
 <t-calendar
   visible="{{visible}}"
-  value="{{value}}"
+  value="{{type === 'single' ? singleValue : value}}"
   minDate="{{minDate}}"
   maxDate="{{maxDate}}"
-  format="{{format}}"
+  format="{{type === 'single' ? singleFormat: format}}"
+  data-type="{{type}}"
   bind:confirm="handleConfirm"
 />
-<t-cell arrow title="自定义文案" bind:tap="handleCalendar" />
+<t-cell
+  arrow
+  title="带双行描述的日历"
+  note="{{this.formatTimestamp(value)}}"
+  data-type="multiple"
+  bind:tap="handleCalendar"
+/>

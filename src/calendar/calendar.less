@@ -4,12 +4,15 @@
 @calendar-bg-color: var(--td-calendar-bg-color, @bg-color-container);
 @calendar-active-color: var(--td-calendar-active-color, @brand-color);
 @calendar-selected-color: var(--td-calendar-selected-color, @text-color-anti);
+@calendar-selected-border-radius: var(--td-calendar-selected-border-radius, @radius-default);
 @calendar-title-font-size: var(--td-calendar-title-font-size, 18px);
 @calendar-title-color: var(--td-calendar-title-color, @text-color-primary);
 @calendar-days-color: var(--td-calendar-days-color, @text-color-secondary);
 @calendar-item-suffix-color: var(--td-calendar-item-suffix-color, @text-color-placeholder);
 @calendar-item-centre-color: var(--td-calendar-item-centre-color, @brand-color-light);
 @calendar-item-disabled-color: var(--td-calendar-item-disabled-color, @text-color-disabled);
+@calendar-switch-mode-icon-color: var(--td-calendar-switch-mode-icon-color, @text-color-secondary);
+@calendar-switch-mode-icon-disabled-color: var(--td-calendar-switch-mode-icon-disabled-color, @text-color-disabled);
 
 .@{prefix}-calendar {
   width: inherit;
@@ -75,7 +78,7 @@
     padding: 32rpx 0 0;
 
     &s {
-      height: 60vh;
+      height: 712rpx;
       padding: 0 32rpx 32rpx;
       box-sizing: border-box;
 
@@ -97,7 +100,7 @@
       align-items: center;
       justify-content: center;
       font-size: 32rpx;
-      border-radius: 16rpx;
+      border-radius: @calendar-selected-border-radius;
       height: 120rpx;
       line-height: 48rpx;
       font-weight: 600;
@@ -140,15 +143,15 @@
       &--end {
         background: @calendar-active-color;
         color: @calendar-selected-color;
-        border-radius: 8rpx;
+        border-radius: @calendar-selected-border-radius;
       }
 
       &--start {
-        border-radius: 8rpx 0 0 8rpx;
+        border-radius: @calendar-selected-border-radius 0 0 @calendar-selected-border-radius;
       }
 
       &--end {
-        border-radius: 0 8rpx 8rpx 0;
+        border-radius: 0 @calendar-selected-border-radius @calendar-selected-border-radius 0;
       }
 
       &--start + &--end {
@@ -200,5 +203,48 @@
 
   &__footer {
     padding: 32rpx;
+  }
+}
+
+.@{prefix}-calendar-switch-mode--none > .@{prefix}-calendar__months {
+  height: 60vh;
+}
+
+.@{prefix}-calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 44rpx;
+
+  &__with-action {
+    padding: 0rpx 32rpx 16rpx 32rpx;
+    box-sizing: border-box;
+
+    .border(bottom, @border-color);
+  }
+
+  &__with-action &__title {
+    flex: 1;
+    text-align: center;
+    font-size: 28rpx;
+    font-weight: 600;
+  }
+
+  &__action {
+    display: flex;
+    font-size: 40rpx;
+    color: @calendar-switch-mode-icon-color;
+  }
+
+  &__icon {
+    padding: 16rpx;
+  }
+
+  &__icon--disabled {
+    color: @calendar-switch-mode-icon-disabled-color;
+  }
+
+  &__title {
+    text-align: left;
   }
 }

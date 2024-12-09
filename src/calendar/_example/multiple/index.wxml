@@ -1,2 +1,6 @@
-<t-calendar visible="{{visible}}" bind:confirm="handleConfirm" type="multiple" />
-<t-cell arrow title="多个选择日历" bind:tap="handleCalendar" />
+<wxs src="../calendar.wxs" module="this" />
+
+<t-calendar visible="{{visible}}" value="{{value}}" type="multiple" bind:confirm="handleConfirm" />
+<t-cell arrow title="多个选择日历" bind:tap="handleCalendar">
+  <view slot="note" class="custom-class-note"> {{this.formatTimestamp(value)}} </view>
+</t-cell>

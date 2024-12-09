@@ -7,12 +7,12 @@ import simulate from 'miniprogram-simulate';
 
 const mapper = [
   'base',
-  'custom-button',
   'custom-range',
   'custom-text',
   'local-text',
   'multiple',
   'range',
+  'switch-mode',
   'without-popup',
 ];
 

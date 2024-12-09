@@ -1,8 +1,9 @@
 <wxs src="../common/utils.wxs" module="_" />
 <import src="../common/template/button.wxml" />
+<import src="./calendar-header.wxml" />
 
 <view
-  class="{{_.cls(classPrefix, [['popup', usePopup]])}} class {{prefix}}-class"
+  class="{{_.cls(classPrefix, [['popup', usePopup]])}} {{classPrefix}}-switch-mode--{{switchMode}} class {{prefix}}-class"
   style="{{_._style([style, customStyle])}}"
 >
   <view class="{{classPrefix}}__title" tabindex="0">
@@ -18,6 +19,11 @@
     aria-label="关闭"
     bind:tap="handleClose"
   />
+  <template
+    wx:if="{{switchMode !== 'none'}}"
+    is="calendar-header"
+    data="{{ classPrefix: classPrefix + '-header', switchMode, ...actionButtons, title: this.getMonthTitle(currentMonth[0].year, realLocalText.months[currentMonth[0].month], realLocalText.monthTitle)}}"
+  />
   <view aria-hidden class="{{classPrefix}}__days">
     <view wx:for="{{days}}" wx:key="index" class="{{classPrefix}}__days-item">{{ item }}</view>
   </view>
@@ -29,10 +35,12 @@
     show-scrollbar="{{false}}"
     bindscroll="onScroll"
   >
-    <block wx:for="{{months}}" wx:key="index">
-      <view class="{{classPrefix}}__month" id="year_{{item.year}}_month_{{item.month}}"
-        >{{ this.getMonthTitle(item.year, realLocalText.months[item.month], realLocalText.monthTitle)}}</view
-      >
+    <block wx:for="{{ switchMode === 'none' ? months : currentMonth}}" wx:key="index">
+      <template
+        wx:if="{{switchMode === 'none'}}"
+        is="calendar-header"
+        data="{{class: classPrefix + '__month', classPrefix: classPrefix + '-header', tId: 'year_' + item.year + '_month_' + item.month, switchMode, ...actionButtons, title: this.getMonthTitle(item.year, realLocalText.months[item.month], realLocalText.monthTitle) }}"
+      />
       <view class="{{classPrefix}}__dates">
         <view wx:for="{{(item.weekdayOfFirstDay - firstDayOfWeek + 7) % 7}}" wx:key="index" />
         <block wx:for="{{item.months}}" wx:for-index="dateIndex" wx:for-item="dateItem" wx:key="dateIndex">
