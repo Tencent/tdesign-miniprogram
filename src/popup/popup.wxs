@@ -7,11 +7,7 @@ function getPopupStyles(zIndex, distanceTop, placement) {
 }
 
 function onContentTouchMove(e) {
-  if (e.nv_target && e.nv_target.nv_dataset.nv_prevention) {
-    return false;
-  }
-
-  if (e.target.dataset.prevention) {
+  if (e.target && e.target.dataset.prevention) {
     return false;
   }
 }
