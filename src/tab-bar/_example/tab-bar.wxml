@@ -6,7 +6,7 @@
     <text-only />
   </t-demo>
 
-  <t-demo desc="图标加文字标签栏">
+  <t-demo desc="图标加文本标签栏">
     <base />
   </t-demo>
 
@@ -14,7 +14,7 @@
     <icon-only />
   </t-demo>
 
-  <t-demo desc="双层级纯文本标签栏">
+  <t-demo desc="双层级文本标签栏">
     <sub />
   </t-demo>
 

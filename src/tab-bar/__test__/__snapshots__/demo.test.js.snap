@@ -2,60 +2,199 @@
 
 exports[`TabBar TabBar badge demo works fine 1`] = `
 <badge>
-  <t-tab-bar
-    defaultValue="label1"
-    split="{{false}}"
-    tClass="t-tab-bar"
+  <wx-view
+    class="wrapper"
   >
-    <t-tab-bar-item
-      ariaLabel="首页，有16条消息"
-      badgeProps="{{
-        Object {
-          "count": 16,
-        }
-      }}"
-      icon="home"
-      value="label1"
+    <t-tab-bar
+      defaultValue="label1"
+      tClass="t-tab-bar"
     >
+      <t-tab-bar-item
+        ariaLabel="首页，有16条消息"
+        badgeProps="{{
+          Object {
+            "count": 16,
+            "offset": Array [
+              16,
+              0,
+            ],
+          }
+        }}"
+        value="label1"
+      >
+        
       首页
-    </t-tab-bar-item>
-    <t-tab-bar-item
-      ariaLabel="软件，有新的消息"
-      badgeProps="{{
-        Object {
-          "dot": true,
-        }
-      }}"
-      icon="app"
-      value="label2"
-    >
-      软件
-    </t-tab-bar-item>
-    <t-tab-bar-item
-      ariaLabel="聊天，New"
-      badgeProps="{{
-        Object {
-          "count": "New",
-        }
-      }}"
-      icon="chat"
-      value="label3"
-    >
+    
+      </t-tab-bar-item>
+      <t-tab-bar-item
+        ariaLabel="应用，有新的消息"
+        badgeProps="{{
+          Object {
+            "dot": true,
+            "offset": Array [
+              16,
+              0,
+            ],
+          }
+        }}"
+        value="label2"
+      >
+        
+      应用
+    
+      </t-tab-bar-item>
+      <t-tab-bar-item
+        ariaLabel="聊天，New"
+        badgeProps="{{
+          Object {
+            "count": "New",
+            "offset": Array [
+              16,
+              0,
+            ],
+          }
+        }}"
+        value="label3"
+      >
+        
       聊天
-    </t-tab-bar-item>
-    <t-tab-bar-item
-      ariaLabel="我的，有很多消息"
-      badgeProps="{{
-        Object {
-          "count": "···",
-        }
-      }}"
-      icon="user"
-      value="label4"
-    >
+    
+      </t-tab-bar-item>
+      <t-tab-bar-item
+        ariaLabel="我的，有很多消息"
+        badgeProps="{{
+          Object {
+            "count": "···",
+            "offset": Array [
+              16,
+              0,
+            ],
+          }
+        }}"
+        value="label4"
+      >
+        
       我的
-    </t-tab-bar-item>
-  </t-tab-bar>
+    
+      </t-tab-bar-item>
+    </t-tab-bar>
+  </wx-view>
+  <wx-view
+    class="wrapper"
+  >
+    <t-tab-bar
+      defaultValue="label1"
+      split="{{false}}"
+      tClass="t-tab-bar"
+    >
+      <t-tab-bar-item
+        ariaLabel="首页，有16条消息"
+        badgeProps="{{
+          Object {
+            "count": 16,
+          }
+        }}"
+        icon="home"
+        value="label1"
+      />
+      <t-tab-bar-item
+        ariaLabel="应用，有新的消息"
+        badgeProps="{{
+          Object {
+            "dot": true,
+          }
+        }}"
+        icon="app"
+        value="label2"
+      />
+      <t-tab-bar-item
+        ariaLabel="聊天，New"
+        badgeProps="{{
+          Object {
+            "count": "New",
+          }
+        }}"
+        icon="chat"
+        value="label3"
+      />
+      <t-tab-bar-item
+        ariaLabel="我的，有很多消息"
+        badgeProps="{{
+          Object {
+            "count": "···",
+          }
+        }}"
+        icon="user"
+        value="label4"
+      />
+    </t-tab-bar>
+  </wx-view>
+  <wx-view
+    class="wrapper"
+  >
+    <t-tab-bar
+      defaultValue="label1"
+      split="{{false}}"
+      tClass="t-tab-bar"
+    >
+      <t-tab-bar-item
+        ariaLabel="首页，有16条消息"
+        badgeProps="{{
+          Object {
+            "count": 16,
+          }
+        }}"
+        icon="home"
+        value="label1"
+      >
+        
+      首页
+    
+      </t-tab-bar-item>
+      <t-tab-bar-item
+        ariaLabel="应用，有新的消息"
+        badgeProps="{{
+          Object {
+            "dot": true,
+          }
+        }}"
+        icon="app"
+        value="label2"
+      >
+        
+      应用
+    
+      </t-tab-bar-item>
+      <t-tab-bar-item
+        ariaLabel="聊天，New"
+        badgeProps="{{
+          Object {
+            "count": "New",
+          }
+        }}"
+        icon="chat"
+        value="label3"
+      >
+        
+      聊天
+    
+      </t-tab-bar-item>
+      <t-tab-bar-item
+        ariaLabel="我的，有很多消息"
+        badgeProps="{{
+          Object {
+            "count": "···",
+          }
+        }}"
+        icon="user"
+        value="label4"
+      >
+        
+      我的
+    
+      </t-tab-bar-item>
+    </t-tab-bar>
+  </wx-view>
 </badge>
 `;
 
@@ -209,7 +348,7 @@ exports[`TabBar TabBar round demo works fine 1`] = `
 exports[`TabBar TabBar sub demo works fine 1`] = `
 <sub>
   <t-tab-bar
-    defaultValue="label_3"
+    defaultValue="user"
     split="{{false}}"
     tClass="t-tab-bar"
     theme="tag"
