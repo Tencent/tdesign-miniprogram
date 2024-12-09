@@ -16,7 +16,7 @@ exports[`dropdown-menu :base 1`] = `
         ariaExpanded="{{true}}"
         ariaHaspopup="menu"
         ariaRole="button"
-        class="t-dropdown-menu__item t-dropdown-menu__item--active t-class-item"
+        class="t-dropdown-menu__item t-dropdown-menu__item--active t-dropdown-menu__item--0 t-class-item"
         data-index="{{0}}"
         bind:tap="handleToggle"
       >
@@ -49,7 +49,7 @@ exports[`dropdown-menu :base 1`] = `
         ariaExpanded="{{false}}"
         ariaHaspopup="menu"
         ariaRole="button"
-        class="t-dropdown-menu__item t-class-item"
+        class="t-dropdown-menu__item t-dropdown-menu__item--1 t-class-item"
         data-index="{{1}}"
         bind:tap="handleToggle"
       >
