@@ -67,7 +67,7 @@ ul {
 
 .content {
   padding: 46px 0;
-  color: #181818;
+  color: var(--text-primary);
 
   h3 {
     font-size: 20px;
