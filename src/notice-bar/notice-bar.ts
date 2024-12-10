@@ -105,7 +105,7 @@ export default class NoticeBar extends SuperComponent {
           .then(([nodeRect, wrapRect]) => {
             const { marquee } = this.properties;
 
-            if (nodeRect == null || wrapRect == null || !nodeRect.width || !wrapRect.width) {
+            if (nodeRect == null || wrapRect == null || !nodeRect.width || !wrapRect.width || marquee === false) {
               return;
             }
 
