@@ -1,6 +1,5 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-
 <view
   wx:if="{{showControls}}"
   class="class {{prefix}}-class {{classPrefix}}__btn"

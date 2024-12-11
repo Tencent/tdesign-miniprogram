@@ -26,7 +26,8 @@ var getBadgeStyles = function (props) {
     styleStr += 'background:' + props.color + ';';
   }
   if (props.offset[0]) {
-    styleStr += 'left: calc(100% + ' + (hasUnit(props.offset[0].toString()) ? props.offset[0] : props.offset[0] + 'px') + ');';
+    styleStr +=
+      'left: calc(100% + ' + (hasUnit(props.offset[0].toString()) ? props.offset[0] : props.offset[0] + 'px') + ');';
   }
   if (props.offset[1]) {
     styleStr += 'top:' + (hasUnit(props.offset[1].toString()) ? props.offset[1] : props.offset[1] + 'px') + ';';
