@@ -33,7 +33,7 @@
   left: 0;
   top: 0;
   border-top-left-radius: 12rpx;
-  border-top: 56rpx solid #0052D9;
+  border-top: 56rpx solid #0052d9;
   border-right: 56rpx solid transparent;
   border-radius: 0;
 }

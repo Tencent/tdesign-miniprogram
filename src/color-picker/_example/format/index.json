@@ -1,7 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "t-color-picker": "tdesign-miniprogram/color-picker/color-picker",
-    "t-icon": "tdesign-miniprogram/icon/icon"
+    "t-color-picker": "tdesign-miniprogram/color-picker/color-picker"
   }
 }

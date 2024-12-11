@@ -2,7 +2,6 @@
   "component": true,
   "usingComponents": {
     "t-guide": "tdesign-miniprogram/guide/guide",
-    "t-input": "tdesign-miniprogram/input/input",
-    "t-button": "tdesign-miniprogram/button/button"
+    "t-input": "tdesign-miniprogram/input/input"
   }
 }

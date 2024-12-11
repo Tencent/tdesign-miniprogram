@@ -6,7 +6,7 @@
   margin: 0 32rpx;
 }
 
-.tr+.tr {
+.tr + .tr {
   margin-top: 48rpx;
 }
 

@@ -1,7 +1,6 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "year-month-date": "../year-month-date",
     "year-month": "../year-month",
     "time": "../time",

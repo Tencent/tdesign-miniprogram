@@ -3,7 +3,6 @@
   "styleIsolation": "apply-shared",
   "usingComponents": {
     "t-badge": "tdesign-miniprogram/badge/badge",
-    "t-cell": "tdesign-miniprogram/cell/cell",
-    "t-icon": "tdesign-miniprogram/icon/icon"
+    "t-cell": "tdesign-miniprogram/cell/cell"
   }
 }

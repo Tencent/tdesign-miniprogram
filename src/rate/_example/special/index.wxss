@@ -17,6 +17,6 @@
 }
 
 .desc--active {
-  color: #ED7B2F;
+  color: #ed7b2f;
   font-weight: 600;
 }

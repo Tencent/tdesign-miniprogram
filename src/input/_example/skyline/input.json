@@ -1,7 +1,6 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "t-input": "tdesign-miniprogram/input/input",
     "base": "../base",
     "suffix": "../suffix",
