@@ -1,7 +1,5 @@
 {
   "navigationBarTitleText": "Indexes",
   "navigationBarBackgroundColor": "#fff",
-  "usingComponents": {
-    "t-button": "tdesign-miniprogram/button/button"
-  }
+  "usingComponents": {}
 }

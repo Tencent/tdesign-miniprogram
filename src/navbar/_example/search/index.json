@@ -2,7 +2,6 @@
   "component": true,
   "styleIsolation": "apply-shared",
   "usingComponents": {
-    "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "t-search": "tdesign-miniprogram/search/search"
   }
 }

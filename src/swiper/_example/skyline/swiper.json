@@ -5,7 +5,6 @@
   "disableScroll": true,
   "enablePassiveEvent": false,
   "usingComponents": {
-    "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "base": "../base",
     "fraction": "../fraction",
     "nav-btn": "../nav-btn",

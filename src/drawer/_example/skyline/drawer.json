@@ -1,7 +1,6 @@
 {
   "navigationStyle": "custom",
   "usingComponents": {
-    "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "base": "../base",
     "title": "../title",
     "icon-drawer": "../icon-drawer",
