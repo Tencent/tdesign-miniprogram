@@ -6,6 +6,20 @@ docClass: timeline
 ---
 
 
+## 🌈 1.8.2 `2024-12-11` 
+### 🚀 Features
+- `DropdownMenuItem`: 新增 `placement` 属性，用于调整复选框和内容相对位置，仅单选菜单栏有效 @anlyyao ([#3327](https://github.com/Tencent/tdesign-miniprogram/pull/3327))
+- `Cascader`: 新增 `checkStrictly` 属性，父子节点选中状态不再关联，可各自选中或取消 @hkaikai ([#3333](https://github.com/Tencent/tdesign-miniprogram/pull/3333))
+- `Calendar`: 支持 `switchMode` 属性，支持按年/月翻页 @anlyyao ([#3326](https://github.com/Tencent/tdesign-miniprogram/pull/3326))
+### 🐞 Bug Fixes
+- `DropdownMenu`: 修复部分 `css vars` 命名错误 @anlyyao ([#3338](https://github.com/Tencent/tdesign-miniprogram/pull/3338))
+- `TabBar`: 修复文本 + 徽标使用场景时，文本被挤压问题 @anlyyao ([#3340](https://github.com/Tencent/tdesign-miniprogram/pull/3340))
+- `Rate`: 修复禁用态下组件无法向上冒泡的问题 @anlyyao ([#3329](https://github.com/Tencent/tdesign-miniprogram/pull/3329))
+- `Popup`: 处理`Skyline` 模式下微信开发者工具控制台报错 @betavs ([#3315](https://github.com/Tencent/tdesign-miniprogram/pull/3315))
+- `Picker`: 在 `Skyline` 模式下样式异常 @betavs ([#3317](https://github.com/Tencent/tdesign-miniprogram/pull/3317))
+- `NoticeBar`: 修复重复进入页面时出现非预期动画 @anlyyao ([#3346](https://github.com/Tencent/tdesign-miniprogram/pull/3346))
+
+
 ## 🌈 1.8.1 `2024-11-29` 
 ### 🚀 Features
 - `Progress`: 新增环形进度条相关的  `css vars` @betavs ([#3301](https://github.com/Tencent/tdesign-miniprogram/pull/3301))
