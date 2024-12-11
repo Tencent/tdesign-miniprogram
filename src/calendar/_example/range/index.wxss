@@ -8,7 +8,7 @@
 }
 
 .wrapper__center {
-  color: var(--td-text-color-placeholder)
+  color: var(--td-text-color-placeholder);
 }
 
 .wrapper__left,
