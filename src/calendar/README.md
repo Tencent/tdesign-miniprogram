@@ -105,7 +105,7 @@ select | `(value: timestamp)` | `0.28.0`。点击日期时触发
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-calendar-active-color | @brand-color | - 
+--td-calendar-active-color | @brand-color | 选中项背景色 
 --td-calendar-bg-color | @bg-color-container | - 
 --td-calendar-days-color | @text-color-secondary | - 
 --td-calendar-item-centre-color | @brand-color-light | - 
