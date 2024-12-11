@@ -60,6 +60,7 @@
 
   &__prefix-icon:not(:empty) {
     padding-right: @spacer;
+    width: @notice-bar-icon-font-size;
   }
 
   &__suffix-icon {
@@ -69,6 +70,10 @@
   &__prefix-icon,
   &__suffix-icon {
     font-size: @notice-bar-icon-font-size;
+
+    &:empty {
+      display: none;
+    }
   }
 
   &__operation {
@@ -84,6 +89,7 @@
 
   &__suffix-icon:not(:empty) {
     padding-left: @spacer;
+    width: @notice-bar-icon-font-size;
   }
 
   // theme
