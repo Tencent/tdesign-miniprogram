@@ -18,6 +18,7 @@ export default class TreeSelect extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
+    scrollIntoView: null,
   };
 
   properties = props;
@@ -32,6 +33,12 @@ export default class TreeSelect extends SuperComponent {
   observers = {
     'value, options, keys, multiple'() {
       this.buildTreeOptions();
+    },
+  };
+
+  lifetimes = {
+    ready() {
+      this.getScrollIntoView('init');
     },
   };
 
@@ -79,10 +86,30 @@ export default class TreeSelect extends SuperComponent {
       });
     },
 
+    getScrollIntoView(status: string) {
+      const { value, scrollIntoView } = this.data;
+      if (status === 'init') {
+        const scrollIntoView = Array.isArray(value)
+          ? value.map((item) => {
+              return Array.isArray(item) ? item[0] : item;
+            })
+          : [value];
+        this.setData({
+          scrollIntoView,
+        });
+      } else {
+        if (scrollIntoView === null) return;
+        this.setData({
+          scrollIntoView: null,
+        });
+      }
+    },
+
     onRootChange(e) {
       const { value } = this.data;
       const { value: itemValue } = e.detail;
 
+      this.getScrollIntoView('none');
       value[0] = itemValue;
 
       this._trigger('change', { value, level: 0 });
@@ -93,6 +120,7 @@ export default class TreeSelect extends SuperComponent {
       const { value } = this.data;
 
       value[level] = itemValue;
+      this.getScrollIntoView('none');
       this._trigger('change', { value, level: 1 });
     },
 
@@ -103,6 +131,7 @@ export default class TreeSelect extends SuperComponent {
 
       value[level] = itemValue;
 
+      this.getScrollIntoView('none');
       this._trigger('change', { value, level });
     },
   };

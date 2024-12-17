@@ -9,7 +9,12 @@ const name = `${prefix}-side-bar-item`;
 export default class SideBarItem extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
-  properties = props;
+  properties = {
+    ...props,
+    tId: {
+      type: String,
+    },
+  };
 
   relations: RelationsOptions = {
     '../side-bar/side-bar': {

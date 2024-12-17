@@ -1,0 +1,10 @@
+<scroll-view
+  class="class {{prefix}}-class"
+  type="list"
+  scroll-y
+  enhanced
+  show-scrollbar="{{false}}"
+  scroll-into-view="{{ scrollIntoView }}"
+>
+  <slot></slot>
+</scroll-view>

@@ -44,6 +44,9 @@ export default class Radio extends SuperComponent {
       type: Boolean,
       value: false,
     },
+    tId: {
+      type: String,
+    },
   };
 
   controlledProps = [

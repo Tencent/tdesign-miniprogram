@@ -56,6 +56,9 @@ export default class CheckBox extends SuperComponent {
       type: String,
       value: 'default',
     },
+    tId: {
+      type: String,
+    },
   };
 
   data = {
