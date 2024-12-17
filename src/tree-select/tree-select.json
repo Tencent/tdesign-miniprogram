@@ -7,6 +7,7 @@
     "t-checkbox": "../checkbox/checkbox",
     "t-checkbox-group": "../checkbox-group/checkbox-group",
     "t-side-bar": "../side-bar/side-bar",
-    "t-side-bar-item": "../side-bar-item/side-bar-item"
+    "t-side-bar-item": "../side-bar-item/side-bar-item",
+    "t-scroll-view": "../scroll-view/scroll-view"
   }
 }

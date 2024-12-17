@@ -2,14 +2,12 @@
 <wxs module="this" src="./index.wxs" />
 
 <view class="{{classPrefix}} class" style="{{_._style(['height:' + _.addUnit(height) , style, customStyle])}}">
-  <scroll-view
-    scroll-y
-    enhanced
-    show-scrollbar="{{false}}"
+  <t-scroll-view
     class="{{_.cls(classPrefix + '__column', [this.getTreeClass(leafLevel - level, treeOptions.length)])}} {{prefix}}-class"
     wx:for="{{treeOptions}}"
     wx:key="level"
     wx:for-index="level"
+    scrollIntoView="{{scrollIntoView && scrollIntoView[level] ? '.scroll-into-view >>> #scroll-to-' + scrollIntoView[level] : '' }}"
   >
     <t-side-bar
       wx:if="{{level == 0}}"
@@ -22,6 +20,8 @@
         wx:key="index"
         label="{{item.label}}"
         value="{{item.value}}"
+        tId="scroll-to-{{item.value}}"
+        class="scroll-into-view"
         t-class="{{prefix}}-class-left-item"
       />
     </t-side-bar>
@@ -32,9 +32,9 @@
         bind:tap="handleTreeClick"
         data-level="{{level}}"
         data-value="{{item.value}}"
-        class="{{_.cls(classPrefix + '__item', [['active', item.value === value[level]]])}} {{prefix}}-class-middle-item"
+        class="{{_.cls(classPrefix + '__item', [['active', item.value === value[level]]])}} {{prefix}}-class-middle-item scroll-into-view "
       >
-        {{item.label}}
+        <view id="scroll-to-{{item.value}}"> {{item.label}} </view>
       </view>
     </block>
     <t-radio-group
@@ -47,15 +47,17 @@
       <t-radio
         wx:for="{{treeOptions[level]}}"
         wx:key="value"
-        icon="line"
-        class="{{classPrefix}}__radio-item {{prefix}}-class-right-item"
+        tId="scroll-to-{{item.value}}"
+        class="scroll-into-view {{classPrefix}}__radio-item {{prefix}}-class-right-item"
         t-class-label="{{prefix}}-class-right-item-label"
+        icon="line"
         value="{{item.value}}"
         maxLabelRow="{{1}}"
         borderless
         placement="right"
-        >{{item.label}}</t-radio
       >
+        {{item.label}}
+      </t-radio>
     </t-radio-group>
     <t-checkbox-group
       wx:else
@@ -70,12 +72,15 @@
         placement="right"
         icon="line"
         maxLabelRow="{{1}}"
-        class="{{prefix}}-class-right-item"
+        tId="scroll-to-{{item.value}}"
+        class="scroll-into-view {{prefix}}-class-right-item"
         t-class-label="{{prefix}}-class-right-item-label"
         borderless
         value="{{item.value}}"
-        >{{item.label}}</t-checkbox
       >
+        {{item.label}}
+      </t-checkbox>
     </t-checkbox-group>
-  </scroll-view>
+  </t-scroll-view>
+  <slot name="content" />
 </view>

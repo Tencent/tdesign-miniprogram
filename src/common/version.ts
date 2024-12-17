@@ -48,3 +48,7 @@ export function canIUseFormFieldButton() {
 export function canUseVirtualHost() {
   return judgeByVersion('2.19.2');
 }
+
+export function canUseProxyScrollView() {
+  return judgeByVersion('2.19.2');
+}

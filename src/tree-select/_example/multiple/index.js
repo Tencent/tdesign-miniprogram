@@ -22,7 +22,7 @@ const generateTree = function (deep = 0, count = 10, prefix) {
 Component({
   data: {
     options: generateTree(1),
-    value: ['0', ['0-0', '0-1']],
+    value: ['5', ['5-0', '5-1']],
   },
 
   methods: {

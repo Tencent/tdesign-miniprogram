@@ -469,8 +469,8 @@ exports[`TreeSelect TreeSelect base demo works fine 1`] = `
     }}"
     value="{{
       Array [
-        "0",
-        "0-0",
+        "5",
+        "5-5",
       ]
     }}"
     bind:change="onChange"
@@ -948,10 +948,10 @@ exports[`TreeSelect TreeSelect multiple demo works fine 1`] = `
     }}"
     value="{{
       Array [
-        "0",
+        "5",
         Array [
-          "0-0",
-          "0-1",
+          "5-0",
+          "5-1",
         ],
       ]
     }}"

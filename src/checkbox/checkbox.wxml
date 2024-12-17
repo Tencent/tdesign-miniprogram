@@ -1,6 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
+  id="{{tId}}"
   style="{{_._style([style, customStyle])}}"
   class="{{_.cls(classPrefix, [placement, theme, ['checked', checked], ['block', block]])}} class {{prefix}}-class"
   aria-role="checkbox"
