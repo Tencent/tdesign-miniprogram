@@ -179,8 +179,8 @@ export default class Calendar extends SuperComponent {
 
       const preYearBtnDisable = _prevYearTimestamp < _minTimestamp || _prevMonthTimestamp < _minTimestamp;
       const prevMonthBtnDisable = _prevMonthTimestamp < _minTimestamp;
-      const nextYearBtnDisable = _nextMonthTimestamp >= _maxTimestamp || _nextYearTimestamp >= _maxTimestamp;
-      const nextMonthBtnDisable = _nextMonthTimestamp >= _maxTimestamp;
+      const nextYearBtnDisable = _nextMonthTimestamp > _maxTimestamp || _nextYearTimestamp > _maxTimestamp;
+      const nextMonthBtnDisable = _nextMonthTimestamp > _maxTimestamp;
 
       this.setData({
         actionButtons: {
