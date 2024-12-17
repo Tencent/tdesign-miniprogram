@@ -40,7 +40,7 @@ Page({
         title: '标题五',
         badgeProps: {},
         disabled: true,
-        items: [],
+        items: items.slice(0, 8),
       },
     ],
     navbarHeight: 0,
@@ -60,7 +60,7 @@ Page({
 
   onSideBarChange(e) {
     const { value } = e.detail;
-
+    console.log('---', value);
     this.setData({ sideBarIndex: value, scrollTop: 0 });
   },
 });

@@ -26,7 +26,7 @@
       <view class="title">{{item.title || item.label}}</view>
       <t-cell-group>
         <block wx:for="{{item.items}}" wx:key="index" wx:for-item="cargo">
-          <t-cell title="{{cargo.label}}{{index}}">
+          <t-cell t-class-left="cell" title="{{cargo.label}}{{index}}">
             <t-image shape="round" src="{{cargo.image}}" slot="image" lazy t-class="image" />
           </t-cell>
         </block>

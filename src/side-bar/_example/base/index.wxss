@@ -9,6 +9,8 @@ page .round-image {
 .side-bar-wrapper {
   display: flex;
   height: 100vh;
+
+  --td-grid-item-text-font-size: 24rpx;
 }
 
 .side-bar-wrapper .content {
@@ -22,11 +24,26 @@ page .round-image {
 .side-bar-wrapper .title {
   padding-left: 40rpx;
   margin-bottom: 8rpx;
-  line-height: 52rpx;
+  font-size: 28rpx;
+  line-height: 44rpx;
   color: var(--td-text-color-primary);
 }
 
 .side-bar-wrapper .image {
   width: 96rpx;
   height: 96rpx;
+  position: relative;
+}
+
+.side-bar-wrapper .image::before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  border-radius: 24rpx;
+  border: 2rpx solid var(--td-gray-color-4);
+  transform-origin: 0 0;
+  transform: scale(0.5);
 }

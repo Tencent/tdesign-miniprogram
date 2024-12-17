@@ -19,6 +19,7 @@
       <t-grid column="{{3}}" border="{{false}}">
         <block wx:for="{{item.items}}" wx:key="index" wx:for-item="cargo">
           <t-grid-item
+            t-class-image="image"
             text="{{cargo.label}}"
             image="{{cargo.image}}"
             image-props="{{ { shape: 'round', lazy: true } }}"
