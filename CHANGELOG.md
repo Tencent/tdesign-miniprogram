@@ -6,6 +6,17 @@ docClass: timeline
 ---
 
 
+## 🌈 1.8.3 `2024-12-19` 
+### 🚀 Features
+- `TreeSelect`: 优化组件交互，支持首次渲染时滚动到选中项位置 @anlyyao ([#3364](https://github.com/Tencent/tdesign-miniprogram/pull/3364))
+### 🐞 Bug Fixes
+- `Dialog`: 部分参数类型声明缺失 @betavs ([#3357](https://github.com/Tencent/tdesign-miniprogram/pull/3357))
+- `SideBar`: 修复激活项图标/文本色值错误 @anlyyao ([#3364](https://github.com/Tencent/tdesign-miniprogram/pull/3364))
+- `Calendar`: 修复 `switchMode` 和 `maxDate` 同时使用时，翻页按钮状态错误 @anlyyao ([#3366](https://github.com/Tencent/tdesign-miniprogram/pull/3366))
+- `Icon`: 补充异常捕获，修复开发工具控制台报错 @anlyyao ([#3370](https://github.com/Tencent/tdesign-miniprogram/pull/3370))
+- `Guide`: 修复 `hideSkip` 属性无效 @anlyyao ([#3371](https://github.com/Tencent/tdesign-miniprogram/pull/3371))
+
+
 ## 🌈 1.8.2 `2024-12-11` 
 ### 🚀 Features
 - `DropdownMenuItem`: 新增 `placement` 属性，用于调整复选框和内容相对位置，仅单选菜单栏有效 @anlyyao ([#3327](https://github.com/Tencent/tdesign-miniprogram/pull/3327))
