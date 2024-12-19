@@ -1,4 +1,6 @@
-<t-navbar class="demo-navbar" title="Guide" leftArrow />
+<view class="custom-navbar">
+  <t-navbar class="demo-navbar" title="Guide" leftArrow />
+</view>
 
 <view class="demo">
   <view class="demo-title">Guide 引导</view>
