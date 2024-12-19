@@ -126,9 +126,7 @@ export default class Guide extends SuperComponent {
         content: '跳过',
         size,
         ...skipButton,
-        class: `${prefix}-class-skip ${name}__button ${step.hideSkip ? `${name}__button--hidden` : ''} ${
-          skipButton?.class || ''
-        }`,
+        class: `${prefix}-class-skip ${name}__button ${skipButton?.class || ''}`,
         type: 'skip',
       };
       let nextButton = step.nextButtonProps ?? this.data.nextButtonProps;

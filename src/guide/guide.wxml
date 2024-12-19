@@ -18,7 +18,7 @@
     >
       <template
         is="content"
-        data="{{ prefix: prefix, classPrefix: classPrefix, title: title, body: body, steps: steps, current: current, modeType: modeType, ...buttonProps }}"
+        data="{{ prefix, classPrefix, title, body, steps, current, modeType, hideSkip, ...buttonProps }}"
       />
     </view>
   </view>
@@ -37,7 +37,7 @@
     >
       <template
         is="content"
-        data="{{ prefix: prefix, classPrefix: classPrefix, title: title, body: body, steps: steps, current: current, modeType: modeType, ...buttonProps }}"
+        data="{{ prefix, classPrefix, title, body, steps, current, modeType, hideSkip, ...buttonProps }}"
       />
     </view>
   </view>

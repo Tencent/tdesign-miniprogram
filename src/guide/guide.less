@@ -46,13 +46,16 @@
     box-shadow: 0 0 0 0 @guide-reference-mask-color, @guide-reference-mask-color 0 0 0 5000px;
     border-radius: @guide-reference-border-radius;
     transition: all @anim-duration-base @anim-time-fn-ease-out;
+
     &--nonoverlay {
       box-shadow: none;
       border: @guide-reference-border;
     }
   }
+
   &__container {
     display: inline-block;
+
     &--popover {
       background-color: @guide-popover-bg-color;
       border: @guide-popover-border;
@@ -62,6 +65,7 @@
       min-width: @guide-popover-min-width;
       max-width: @guide-popover-max-width;
     }
+
     &--dialog {
       background-color: @guide-popover-bg-color;
       border-radius: @guide-dialog-border-radius;
@@ -69,6 +73,7 @@
       width: @guide-dialog-width;
     }
   }
+
   &__title--popover {
     text-align: @guide-popover-title-text-align;
     color: @guide-title-color;
@@ -76,6 +81,7 @@
     font-weight: @guide-title-font-weight;
     line-height: @guide-popover-title-line-height;
   }
+
   &__title--dialog {
     text-align: @guide-dialog-title-text-align;
     color: @guide-title-color;
@@ -83,6 +89,7 @@
     font-weight: @guide-title-font-weight;
     line-height: @guide-dialog-title-line-height;
   }
+
   &__body--popover {
     margin-top: @guide-popover-body-margin-top;
     text-align: @guide-popover-body-text-align;
@@ -91,6 +98,7 @@
     font-weight: @guide-body-font-weight;
     line-height: @guide-popover-body-line-height;
   }
+
   &__body--dialog {
     margin-top: @guide-dialog-body-margin-top;
     text-align: @guide-dialog-body-text-align;
@@ -99,18 +107,19 @@
     font-weight: @guide-body-font-weight;
     line-height: @guide-dialog-body-line-height;
   }
+
   &__footer {
     text-align: @guide-footer-text-align;
     margin-top: @guide-footer-margin-top;
+
     .@{prefix}-guide__button + .@{prefix}-guide__button {
       margin-left: @guide-footer-button-space;
     }
-    .@{prefix}-guide__button--hidden {
-      display: none;
-    }
+
     &--dialog {
       display: flex;
       padding: @guide-dialog-footer-button-padding;
+
       .@{prefix}-guide__button:last-child {
         flex-grow: 1;
       }
