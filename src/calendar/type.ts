@@ -99,14 +99,14 @@ export interface TdCalendarProps {
     value?: boolean;
   };
   /**
-   * 当前选择的日期，不传则默认今天，当 type = multiple 或 range 时传入数组
+   * 当前选择的日期，不传则选用 minDate 属性值或今天，优先级：minDate > today。当 type = multiple 或 range 时传入数组
    */
   value?: {
     type: null;
     value?: number | number[];
   };
   /**
-   * 当前选择的日期，不传则默认今天，当 type = multiple 或 range 时传入数组，非受控属性
+   * 当前选择的日期，不传则选用 minDate 属性值或今天，优先级：minDate > today。当 type = multiple 或 range 时传入数组，非受控属性
    */
   defaultValue?: {
     type: null;

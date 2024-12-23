@@ -187,6 +187,7 @@ exports[`Calendar Calendar switch-mode demo works fine 1`] = `
     value="{{1645891200000}}"
     visible="{{false}}"
     bind:confirm="handleConfirm"
+    bind:panel-change="handlePanelChange"
   />
   <t-cell
     arrow="{{true}}"

@@ -299,6 +299,9 @@ export default class Calendar extends SuperComponent {
       const newValue = funcMap[type]();
       if (!newValue) return;
 
+      const { year, month } = this.getCurrentYearAndMonth(newValue);
+      this.triggerEvent('panel-change', { year, month: month + 1 });
+
       this.calcCurrentMonth(newValue);
     },
   };
