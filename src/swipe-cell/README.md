@@ -63,3 +63,7 @@ right | Array / Slot | - | 右侧滑动操作项。有两种定义方式，一�
 click | `(action: SwipeActionItem, source: SwipeSource)` | 操作项点击时触发（插槽写法组件不触发，业务侧自定义内容和事件）。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/swipe-cell/type.ts)。<br/>`type SwipeSource = 'left' \| 'right'`<br/>
 dragend | \- | 滑动结束事件
 dragstart | \- | 滑动开始事件
+
+## FAQ
+### `SwipeCell` 组件在真机上无法滑动？
+移除全局配置项: "componentFramework": "glass-easel"，详情见： [issue 2524](https://github.com/Tencent/tdesign-miniprogram/issues/2524)。如需使用 `skyline render`，建议页面级粒度开启。
