@@ -41,7 +41,8 @@ exports[`Fab Fab draggable demo works fine 1`] = `
       ]
     }}"
     bind:click="handleClick"
-    bind:move="handleMove"
+    bind:dragend="handleDragEnd"
+    bind:dragstart="handleDragStart"
   />
 </draggable>
 `;

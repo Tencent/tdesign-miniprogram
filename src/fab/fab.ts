@@ -50,6 +50,11 @@ export default class Fab extends SuperComponent {
     onTplButtonTap(e) {
       this.triggerEvent('click', e);
     },
+
+    onStart(e) {
+      this.triggerEvent('dragstart', e.detail.e);
+    },
+
     onMove(e) {
       const { yBounds } = this.properties;
       const { distanceTop } = this.data;
@@ -64,6 +69,11 @@ export default class Fab extends SuperComponent {
         moveStyle: `right: ${right}px; bottom: ${bottom}px;`,
       });
     },
+
+    onEnd(e) {
+      this.triggerEvent('dragend', e.detail.e);
+    },
+
     computedSize() {
       if (!this.properties.draggable) return;
       const insChild = this.selectComponent('#draggable');

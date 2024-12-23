@@ -1,10 +1,15 @@
 Component({
   methods: {
     handleClick(e) {
-      console.log(e);
+      console.log('handleClick: ', e);
     },
-    handleMove(e) {
-      console.log(e);
+
+    handleDragStart(e) {
+      console.log('handleDragStart: ', e);
+    },
+
+    handleDragEnd(e) {
+      console.log('handleDragEnd: ', e);
     },
   },
 });
