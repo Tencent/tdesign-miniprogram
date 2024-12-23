@@ -31,6 +31,7 @@ name | params | description
 change | `(value: timestamp)` | `0.28.0`
 close | `(trigger: CalendarTrigger)` | `0.34.0`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/calendar/type.ts)。<br/>`type CalendarTrigger = 'close-btn' \| 'confirm-btn' \| 'overlay'`<br/>
 confirm | `(value: timestamp)` | \-
+panel-change | `(year: number; month: number)` | `1.8.4`
 scroll | `({scrollLeft, scrollTop, scrollHeight, scrollWidth, deltaX, deltaY})` | `1.4.6`。triggered when scrolling
 select | `(value: timestamp)` | `0.28.0`
 
@@ -50,4 +51,4 @@ Name | Default Value | Description
 --td-calendar-switch-mode-icon-color | @brand-color | - 
 --td-calendar-switch-mode-icon-disabled-color | @brand-color-disabled | - 
 --td-calendar-title-color | @text-color-primary | - 
---td-calendar-title-font-size | 18px | - 
+--td-calendar-title-font-size | 18px | -

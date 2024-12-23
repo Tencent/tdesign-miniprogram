@@ -15,5 +15,10 @@ Component({
       this.setData({ value: e.detail.value });
       console.log(e.detail.value);
     },
+
+    handlePanelChange(e) {
+      const { year, month } = e.detail;
+      console.log('year: ', year, 'month: ', month);
+    },
   },
 });

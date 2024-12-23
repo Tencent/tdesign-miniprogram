@@ -7,5 +7,6 @@
   minDate="{{minDate}}"
   maxDate="{{maxDate}}"
   bind:confirm="handleConfirm"
+  bind:panel-change="handlePanelChange"
 />
 <t-cell arrow title="带翻页功能的日历" note="{{this.formatTimestamp(value)}}" bind:tap="handleCalendar" />
