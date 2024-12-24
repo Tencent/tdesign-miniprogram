@@ -6,7 +6,9 @@
     id="draggable"
     style="right: 16px; bottom: 32px; {{_._style([style, customStyle, moveStyle])}}"
     direction="{{draggable === true ? 'all' : draggable}}"
+    bind:start="onStart"
     bind:move="onMove"
+    bind:end="onEnd"
   >
     <template is="button" data="{{...buttonData}}" />
   </t-draggable>
