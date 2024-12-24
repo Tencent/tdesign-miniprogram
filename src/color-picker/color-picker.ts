@@ -47,7 +47,7 @@ const getFormatList = (format, color) => {
 
   const cur = FORMAT_MAP[format];
   if (cur) {
-    return [...cur.slice(0, cur.length - 1), `${color.alpha * 100}%`];
+    return [...cur.slice(0, cur.length - 1), `${Math.round(color.alpha * 100)}%`];
   }
   return FORMAT_MAP.RGB;
 };
