@@ -47,7 +47,6 @@ const getFormatList = (format, color) => {
 
   const cur = FORMAT_MAP[format];
   if (cur) {
-    // fix: https://github.com/Tencent/tdesign-miniprogram/issues/3384
     return [...cur.slice(0, cur.length - 1), `${Math.round(color.alpha * 100)}%`];
   }
   return FORMAT_MAP.RGB;
