@@ -1,3 +1,4 @@
+<wxs src="./calendar.wxs" module="this" />
 <wxs src="../common/utils.wxs" module="_" />
 <import src="../common/template/button.wxml" />
 <import src="./calendar-header.wxml" />
