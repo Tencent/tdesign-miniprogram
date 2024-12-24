@@ -20,6 +20,8 @@ y-bounds | Array | - | Typescript：`Array<string \| number>` | N
 name | params | description
 -- | -- | --
 click | `({e: Event})` | \-
+drag-end | `(e: TouchEvent)` | \-
+drag-start | `(e: TouchEvent)` | \-
 
 ### CSS Variables
 
