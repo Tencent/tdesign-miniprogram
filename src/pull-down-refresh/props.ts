@@ -69,6 +69,11 @@ const props: TdPullDownRefreshProps = {
     type: null,
     value: 50,
   },
+  /** 是否使用了自定义导航栏 */
+  usingCustomNavbar: {
+    type: Boolean,
+    value: false,
+  },
   /** 组件状态，值为 `true` 表示下拉状态，值为 `false` 表示收起状态 */
   value: {
     type: Boolean,

@@ -110,6 +110,14 @@ export interface TdPullDownRefreshProps {
     value?: string | number;
   };
   /**
+   * 是否使用了自定义导航栏
+   * @default false
+   */
+  usingCustomNavbar?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 组件状态，值为 `true` 表示下拉状态，值为 `false` 表示收起状态
    * @default false
    */
