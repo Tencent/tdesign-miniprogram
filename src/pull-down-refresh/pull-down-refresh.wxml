@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <scroll-view
-  style="{{_._style([style, customStyle])}}"
+  style="{{_._style([style, customStyle, 'max-height: calc(100vh - ' + distanceTop + 'px)'])}}"
   class="{{classPrefix}} class {{prefix}}-class"
   type="list"
   scroll-top="{{scrollTop}}"
