@@ -1,7 +1,6 @@
 <t-navbar title="Rate" leftArrow />
 <view class="demo">
-  <view class="demo-title">Rate 评分</view>
-  <view class="demo-desc">用于对某行为/事物进行打分。</view>
+  <t-demo-header title="Rate 评分" desc="用于对某行为/事物进行打分。" notice="渲染框架支持情况：WebView" />
   <t-demo title="01 组件类型">
     <view class="demo-desc">实心评分</view>
     <base />

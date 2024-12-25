@@ -1,6 +1,9 @@
 <t-navbar title="Badge" leftArrow />
-<view class="demo-title">Badge 徽标</view>
-<view class="demo-desc">用于告知用户，该区域的状态变化或者待处理任务的数量。</view>
+<t-demo-header
+  title="Badge 徽标"
+  desc="用于告知用户，该区域的状态变化或者待处理任务的数量。"
+  notice="渲染框架支持情况：Skyline、WebView"
+/>
 <t-demo title="01 组件类型">
   <base />
 </t-demo>

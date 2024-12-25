@@ -1,8 +1,6 @@
 <t-navbar title="Collapse" leftArrow />
 <view class="demo">
-  <view class="demo-title">Collapse 折叠面板</view>
-  <view class="demo-desc">可以折叠/展开的内容区域。</view>
-
+  <t-demo-header title="Collapse 折叠面板" desc="可以折叠/展开的内容区域。" notice="渲染框架支持情况：WebView" />
   <t-demo title="01 组件类型" desc="基础折叠面板">
     <base />
   </t-demo>

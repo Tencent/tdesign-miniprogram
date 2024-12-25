@@ -1,7 +1,10 @@
 <t-navbar class="demo-navbar" title="Indexes" leftArrow />
 <view class="indexes">
-  <view class="demo-title">Indexes 索引</view>
-  <view class="demo-desc">用于页面中信息快速检索，可以根据目录中的页码快速找到所需的内容。</view>
+  <t-demo-header
+    title="Indexes 索引"
+    desc="用于页面中信息快速检索，可以根据目录中的页码快速找到所需的内容。"
+    notice="渲染框架支持情况：WebView"
+  />
   <t-demo title="01 组件类型" desc="基础索引类型" padding>
     <t-button variant="outline" theme="primary" size="large" block bind:tap="toBase">基础用法</t-button>
   </t-demo>
