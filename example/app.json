@@ -140,6 +140,7 @@
   "themeLocation": "theme.json",
   "usingComponents": {
     "t-demo": "./components/demo-block/index",
+    "t-demo-header": "./components/demo-header/index",
     "t-button": "tdesign-miniprogram/button/button",
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-navbar": "tdesign-miniprogram/navbar/navbar"

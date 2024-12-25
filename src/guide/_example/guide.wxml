@@ -3,8 +3,11 @@
 </view>
 
 <view class="demo">
-  <view class="demo-title">Guide 引导</view>
-  <view class="demo-desc">逐步骤进行指引或解释说明的组件，常用于用户不熟悉的或需进行特别强调的页面。</view>
+  <t-demo-header
+    title="Guide 引导"
+    desc="逐步骤进行指引或解释说明的组件，常用于用户不熟悉的或需进行特别强调的页面。"
+    notice="渲染框架支持情况：WebView"
+  />
   <t-demo title="01 组件类型" desc="基础引导" padding>
     <view style="text-align: center">
       <t-button theme="primary" content="用户引导" bindtap="handleBaseClick"></t-button>

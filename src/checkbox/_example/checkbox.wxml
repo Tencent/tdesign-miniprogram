@@ -2,8 +2,11 @@
   <t-navbar title="Checkbox" leftArrow />
   <scroll-view scroll-y type="list" class="scroll-view">
     <view class="demo">
-      <view class="demo-title">Checkbox 多选框</view>
-      <view class="demo-desc">用于预设的一组选项中执行多项选择，并呈现选择结果。</view>
+      <t-demo-header
+        title="Checkbox 多选框"
+        desc="用于预设的一组选项中执行多项选择，并呈现选择结果。"
+        notice="渲染框架支持情况：Skyline、WebView"
+      />
       <t-demo title="01 组件类型" desc="纵向多选框">
         <base />
       </t-demo>

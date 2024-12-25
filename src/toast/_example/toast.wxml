@@ -1,7 +1,10 @@
 <t-navbar class="demo-navbar" title="Toast" leftArrow />
 <view class="demo">
-  <view class="demo-title">Toast 轻提示</view>
-  <view class="demo-desc">用于轻量级反馈或提示，不会打断用户操作。</view>
+  <t-demo-header
+    title="Toast 轻提示"
+    desc="用于轻量级反馈或提示，不会打断用户操作。"
+    notice="渲染框架支持情况：Skyline、WebView"
+  />
   <t-demo title="01 组件类型" desc="基础提示">
     <base class="box" />
   </t-demo>
