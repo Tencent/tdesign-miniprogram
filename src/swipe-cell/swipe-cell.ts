@@ -25,6 +25,7 @@ export default class SwiperCell extends SuperComponent {
     wrapperStyle: '',
     closed: true,
     classPrefix: name,
+    skipMove: false, // 当触摸方向为纵向时，丢弃move事件，避免阻止下拉刷新等纵向事件
   };
 
   observers = {
@@ -62,6 +63,18 @@ export default class SwiperCell extends SuperComponent {
         });
       },
     );
+  }
+
+  skipMove() {
+    if (!this.data.skipMove) {
+      this.setData({ skipMove: true });
+    }
+  }
+
+  catchMove() {
+    if (this.data.skipMove) {
+      this.setData({ skipMove: false });
+    }
   }
 
   open() {
