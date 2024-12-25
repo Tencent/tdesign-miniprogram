@@ -6,6 +6,19 @@ docClass: timeline
 ---
 
 
+## 🌈 1.8.4 `2024-12-25` 
+### 🚀 Features
+- `Calendar`: 新增 `panel-change`  事件，切换月或年时触发（`switch-mode` 不为 `none` 时有效） @anlyyao ([#3385](https://github.com/Tencent/tdesign-miniprogram/pull/3385))
+- `Avatar`: `size` 属性支持 `rpx` 单位 @anlyyao ([#3387](https://github.com/Tencent/tdesign-miniprogram/pull/3387))
+- `Fab`: 新增 `dragStart` 和 `dragEnd` 事件 @anlyyao ([#3388](https://github.com/Tencent/tdesign-miniprogram/pull/3388))
+### 🐞 Bug Fixes
+- `ColorPicker`: 修复 `alpha` 滑轨精度丢失的问题 @novlan1 ([#3390](https://github.com/Tencent/tdesign-miniprogram/pull/3390))
+- `Calendar`: 修复使用 `glass-easel` 渲染框架后，组件年月日起不显示 @anlyyao ([#3392](https://github.com/Tencent/tdesign-miniprogram/pull/3392))
+- `SwipeCell`: 解决 `PullDownRefresh` 包裹 `SwipeCell` 时手势冲突 @jarmywang ([#3393](https://github.com/Tencent/tdesign-miniprogram/pull/3393))
+- `PullDownRefresh`: 新增 `usingCustomNavbar` 属性，修复与 `Navbar` 同用遮挡底部问题 @jarmywang ([#3394](https://github.com/Tencent/tdesign-miniprogram/pull/3394))
+- `TreeSelect`: 修复 `value` 为空数组时组件未渲染，同时补齐外部样式类 @anlyyao ([#3395](https://github.com/Tencent/tdesign-miniprogram/pull/3395))
+
+
 ## 🌈 1.8.3 `2024-12-19` 
 ### 🚀 Features
 - `TreeSelect`: 优化组件交互，支持首次渲染时滚动到选中项位置 @anlyyao ([#3364](https://github.com/Tencent/tdesign-miniprogram/pull/3364))
