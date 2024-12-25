@@ -101,7 +101,7 @@ size | String | medium | 组件尺寸。可选项：extra-small/small/medium/lar
 suffix | Slot | - | 右侧内容，可用于定义右侧图标。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 t-id | String | - | 按钮标签id | N
 theme | String | default | 组件风格，依次为品牌色、危险色。可选项：default/primary/danger/light | N
-type | String | - | 同小程序的 formType。。可选项：submit/reset | N
+type | String | - | 同小程序的 formType。可选项：submit/reset | N
 variant | String | base | 按钮形式，基础、线框、虚线、文字。可选项：base/outline/dashed/text | N
 
 ### Button Events
@@ -110,7 +110,6 @@ variant | String | base | 按钮形式，基础、线框、虚线、文字。可
 -- | -- | --
 agreeprivacyauthorization | \- | 原生按钮属性，用户同意隐私协议事件回调，open-type=agreePrivacyAuthorization时有效 （Tips: 如果使用 onNeedPrivacyAuthorization 接口，需要在 bindagreeprivacyauthorization 触发后再调用 resolve({ event: "agree", buttonId })）
 chooseavatar | \- | 原生按钮属性，获取用户头像回调，`open-type=chooseAvatar` 时有效。返回 `e.detail.avatarUrl` 为头像临时文件链接
-click | `(e: MouseEvent)` | 点击时触发
 contact | \- | 原生按钮属性，客服消息回调，`open-type="contact"` 时有效
 createliveactivity | \- | 新的一次性订阅消息下发机制回调，`open-type=liveActivity` 时有效
 error | \- | 原生按钮属性，当使用开放能力时，发生错误的回调，`open-type=launchApp` 时有效

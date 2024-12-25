@@ -108,7 +108,6 @@ name | params | description
 -- | -- | --
 agreeprivacyauthorization | \- | \-
 chooseavatar | \- | \-
-click | `(e: MouseEvent)` | trigger on click
 contact | \- | \-
 createliveactivity | \- | \-
 error | \- | \-
