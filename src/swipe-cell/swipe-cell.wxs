@@ -121,6 +121,7 @@ var touchStart = function (event) {
 };
 
 var startDrag = function (event, ownerInstance) {
+  ownerInstance.callMethod('catchMove');
   getState(ownerInstance);
   touchStart(event);
 };
@@ -128,6 +129,9 @@ var startDrag = function (event, ownerInstance) {
 var onDrag = function (event, ownerInstance) {
   getState(ownerInstance);
   touchMove(event);
+  if (state.direction === 'vertical') {
+    ownerInstance.callMethod('skipMove');
+  }
   if (state.direction !== 'horizontal') {
     return;
   }
