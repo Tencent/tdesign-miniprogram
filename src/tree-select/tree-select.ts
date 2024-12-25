@@ -9,7 +9,15 @@ const name = `${prefix}-tree-select`;
 
 @wxComponent()
 export default class TreeSelect extends SuperComponent {
-  externalClasses = [`${prefix}-class`];
+  externalClasses = [
+    `${prefix}-class`,
+    `${prefix}-class-left-column`,
+    `${prefix}-class-left-item`,
+    `${prefix}-class-middle-item`,
+    `${prefix}-class-right-column`,
+    `${prefix}-class-right-item`,
+    `${prefix}-class-right-item-label`,
+  ];
 
   options = {
     multipleSlots: true,
@@ -46,10 +54,12 @@ export default class TreeSelect extends SuperComponent {
     buildTreeOptions() {
       const { options, value, multiple, keys } = this.data;
       const treeOptions = [];
+      const innerValue = [];
+
       let level = -1;
       let node = { children: options };
 
-      if (options.length === 0 || (Array.isArray(value) && value.length === 0)) return;
+      if (options.length === 0) return;
 
       while (node && node.children) {
         level += 1;
@@ -73,6 +83,11 @@ export default class TreeSelect extends SuperComponent {
 
       const leafLevel = Math.max(0, level);
 
+      treeOptions?.forEach((ele, idx) => {
+        const v = idx === treeOptions.length - 1 && multiple ? [ele[0].value] : ele[0].value;
+        innerValue.push(value?.[idx] || v);
+      });
+
       if (multiple) {
         const finalValue = this.data.value || this.data.defaultValue;
         if (finalValue[leafLevel] != null && !Array.isArray(finalValue[leafLevel])) {
@@ -81,6 +96,7 @@ export default class TreeSelect extends SuperComponent {
       }
 
       this.setData({
+        innerValue,
         leafLevel,
         treeOptions,
       });
@@ -106,33 +122,33 @@ export default class TreeSelect extends SuperComponent {
     },
 
     onRootChange(e) {
-      const { value } = this.data;
+      const { innerValue } = this.data;
       const { value: itemValue } = e.detail;
 
       this.getScrollIntoView('none');
-      value[0] = itemValue;
+      innerValue[0] = itemValue;
 
-      this._trigger('change', { value, level: 0 });
+      this._trigger('change', { value: innerValue, level: 0 });
     },
 
     handleTreeClick(e) {
       const { level, value: itemValue } = e.currentTarget.dataset;
-      const { value } = this.data;
+      const { innerValue } = this.data;
 
-      value[level] = itemValue;
+      innerValue[level] = itemValue;
       this.getScrollIntoView('none');
-      this._trigger('change', { value, level: 1 });
+      this._trigger('change', { value: innerValue, level: 1 });
     },
 
     handleRadioChange(e) {
-      const { value } = this.data;
+      const { innerValue } = this.data;
       const { value: itemValue } = e.detail;
       const { level } = e.target.dataset;
 
-      value[level] = itemValue;
+      innerValue[level] = itemValue;
 
       this.getScrollIntoView('none');
-      this._trigger('change', { value, level });
+      this._trigger('change', { value: innerValue, level });
     },
   };
 }

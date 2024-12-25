@@ -11,7 +11,7 @@
   >
     <t-side-bar
       wx:if="{{level == 0}}"
-      value="{{value[level]}}"
+      value="{{innerValue[level]}}"
       bind:change="onRootChange"
       t-class="{{classPrefix}}-column {{prefix}}-class-left-column"
     >
@@ -32,7 +32,7 @@
         bind:tap="handleTreeClick"
         data-level="{{level}}"
         data-value="{{item.value}}"
-        class="{{_.cls(classPrefix + '__item', [['active', item.value === value[level]]])}} {{prefix}}-class-middle-item scroll-into-view "
+        class="{{_.cls(classPrefix + '__item', [['active', item.value === innerValue[level]]])}} {{prefix}}-class-middle-item scroll-into-view"
       >
         <view id="scroll-to-{{item.value}}"> {{item.label}} </view>
       </view>
@@ -41,7 +41,7 @@
       wx:elif="{{!multiple}}"
       class="{{classPrefix}}__radio {{prefix}}-class-right-column"
       data-level="{{level}}"
-      value="{{value[level]}}"
+      value="{{innerValue[level]}}"
       bind:change="handleRadioChange"
     >
       <t-radio
@@ -62,7 +62,7 @@
     <t-checkbox-group
       wx:else
       class="{{classPrefix}}__checkbox {{prefix}}-class-right-column"
-      value="{{value[level]}}"
+      value="{{innerValue[level]}}"
       bind:change="handleRadioChange"
       data-level="{{level}}"
     >
