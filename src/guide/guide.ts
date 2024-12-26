@@ -48,6 +48,13 @@ export default class Guide extends SuperComponent {
     modeType: '',
   };
 
+  controlledProps = [
+    {
+      key: 'current',
+      event: 'change',
+    },
+  ];
+
   observers = {
     async 'steps, current, showOverlay'() {
       this._init();

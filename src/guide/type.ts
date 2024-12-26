@@ -8,7 +8,7 @@ import { ButtonProps } from '../button/index';
 
 export interface TdGuideProps {
   /**
-   * 透传 返回 的全部属性，示例：`{ content: '返回', theme: 'default' }`
+   * 透传 返回按钮 的全部属性，示例：`{ content: '返回', theme: 'default' }`
    */
   backButtonProps?: {
     type: ObjectConstructor;
@@ -22,11 +22,26 @@ export interface TdGuideProps {
     value?: number;
   };
   /**
-   * 透传 完成 的全部属性，示例：`{ content: '完成', theme: 'primary' }`
+   * 当前步骤，即整个引导的进度。-1 则不展示，用于需要中断展示的场景，非受控属性
+   */
+  defaultCurrent?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
+   * 透传 完成按钮 的全部属性，示例：`{ content: '完成', theme: 'primary' }`
    */
   finishButtonProps?: {
     type: ObjectConstructor;
     value?: ButtonProps;
+  };
+  /**
+   * 是否隐藏返回按钮
+   * @default false
+   */
+  hideBack?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 是否隐藏计数
@@ -83,7 +98,7 @@ export interface TdGuideProps {
     value?: ButtonProps;
   };
   /**
-   * 用于定义每个步骤的内容，包括高亮的节点、相对位置和具体的文案内容等。
+   * 用于定义每个步骤的内容，包括高亮的节点、相对位置和具体的文案内容等
    */
   steps?: {
     type: ArrayConstructor;

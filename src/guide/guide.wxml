@@ -18,7 +18,7 @@
     >
       <template
         is="content"
-        data="{{ prefix, classPrefix, title, body, steps, current, modeType, hideSkip, ...buttonProps }}"
+        data="{{ prefix, classPrefix, title, body, steps, current, modeType, hideSkip, hideBack, ...buttonProps }}"
       />
     </view>
   </view>
