@@ -29,7 +29,14 @@ export default class TreeSelect extends SuperComponent {
     scrollIntoView: null,
   };
 
-  properties = props;
+  properties = {
+    ...props,
+    customValue: {
+      // 用于自定义选中值，优先级高于value，用于弥补value为[]场景
+      type: null,
+      value: null,
+    },
+  };
 
   controlledProps = [
     {
@@ -39,7 +46,7 @@ export default class TreeSelect extends SuperComponent {
   ];
 
   observers = {
-    'value, options, keys, multiple'() {
+    'value, customValue, options, keys, multiple'() {
       this.buildTreeOptions();
     },
   };
@@ -52,9 +59,8 @@ export default class TreeSelect extends SuperComponent {
 
   methods = {
     buildTreeOptions() {
-      const { options, value, multiple, keys } = this.data;
+      const { options, value, defaultValue, customValue, multiple, keys } = this.data;
       const treeOptions = [];
-      const innerValue = [];
 
       let level = -1;
       let node = { children: options };
@@ -68,7 +74,7 @@ export default class TreeSelect extends SuperComponent {
           value: item[keys?.value || 'value'],
           children: item.children,
         }));
-        const thisValue = value?.[level];
+        const thisValue = customValue?.[level] || value?.[level];
 
         treeOptions.push([...list]);
 
@@ -83,33 +89,34 @@ export default class TreeSelect extends SuperComponent {
 
       const leafLevel = Math.max(0, level);
 
-      treeOptions?.forEach((ele, idx) => {
-        const v = idx === treeOptions.length - 1 && multiple ? [ele[0].value] : ele[0].value;
-        innerValue.push(value?.[idx] || v);
-      });
-
       if (multiple) {
-        const finalValue = this.data.value || this.data.defaultValue;
+        const finalValue = customValue || value || defaultValue;
         if (finalValue[leafLevel] != null && !Array.isArray(finalValue[leafLevel])) {
           throw TypeError('应传入数组类型的 value');
         }
       }
 
       this.setData({
-        innerValue,
+        innerValue:
+          customValue ||
+          treeOptions?.map((ele, idx) => {
+            const v = idx === treeOptions.length - 1 && multiple ? [ele[0].value] : ele[0].value;
+            return value?.[idx] || v;
+          }),
         leafLevel,
         treeOptions,
       });
     },
 
     getScrollIntoView(status: string) {
-      const { value, scrollIntoView } = this.data;
+      const { value, customValue, scrollIntoView } = this.data;
       if (status === 'init') {
-        const scrollIntoView = Array.isArray(value)
-          ? value.map((item) => {
+        const _value = customValue || value;
+        const scrollIntoView = Array.isArray(_value)
+          ? _value.map((item) => {
               return Array.isArray(item) ? item[0] : item;
             })
-          : [value];
+          : [_value];
         this.setData({
           scrollIntoView,
         });

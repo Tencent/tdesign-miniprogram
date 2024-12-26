@@ -62,7 +62,7 @@
     <t-checkbox-group
       wx:else
       class="{{classPrefix}}__checkbox {{prefix}}-class-right-column"
-      value="{{innerValue[level]}}"
+      value="{{innerValue[level] || []}}"
       bind:change="handleRadioChange"
       data-level="{{level}}"
     >
