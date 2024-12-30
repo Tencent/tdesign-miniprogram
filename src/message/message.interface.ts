@@ -15,6 +15,7 @@ export interface MessageProps {
   align?: string;
   theme?: MessageType;
   icon?: boolean | string;
+  link?: string | object;
   closeBtn?: boolean;
   action?: string;
   marquee?: MessageMarquee;
