@@ -70,27 +70,33 @@ exports[`picker :base 1`] = `
                     data-index="{{0}}"
                     style="height: 40px"
                   >
-                    
-      2021年
-      
+                    <wx-text
+                      class="t-picker-item__item-label"
+                    >
+                      2021年
+                    </wx-text>
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{1}}"
                     style="height: 40px"
                   >
-                    
-      2020年
-      
+                    <wx-text
+                      class="t-picker-item__item-label"
+                    >
+                      2020年
+                    </wx-text>
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{2}}"
                     style="height: 40px"
                   >
-                    
-      2019年
-      
+                    <wx-text
+                      class="t-picker-item__item-label"
+                    >
+                      2019年
+                    </wx-text>
                   </wx-view>
                 </wx-view>
               </wx-view>
@@ -113,36 +119,44 @@ exports[`picker :base 1`] = `
                     data-index="{{0}}"
                     style="height: 40px"
                   >
-                    
-      春
-      
+                    <wx-text
+                      class="t-picker-item__item-label"
+                    >
+                      春
+                    </wx-text>
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{1}}"
                     style="height: 40px"
                   >
-                    
-      夏
-      
+                    <wx-text
+                      class="t-picker-item__item-label"
+                    >
+                      夏
+                    </wx-text>
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{2}}"
                     style="height: 40px"
                   >
-                    
-      秋
-      
+                    <wx-text
+                      class="t-picker-item__item-label"
+                    >
+                      秋
+                    </wx-text>
                   </wx-view>
                   <wx-view
                     class="t-picker-item__item"
                     data-index="{{3}}"
                     style="height: 40px"
                   >
-                    
-      冬
-      
+                    <wx-text
+                      class="t-picker-item__item-label"
+                    >
+                      冬
+                    </wx-text>
                   </wx-view>
                 </wx-view>
               </wx-view>
