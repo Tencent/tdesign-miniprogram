@@ -28,11 +28,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
     color: @picker-item-color;
     font-size: @picker-item-font-size;
+
+    &-label {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
 
     &--active {
       color: @picker-item-active-color;
