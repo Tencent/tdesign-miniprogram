@@ -1,6 +1,6 @@
 <t-notice-bar
   visible="{{visible}}"
-  prefixIcon="null"
+  prefixIcon="{{false}}"
   marquee="{{marquee1}}"
   content="提示文字描述提示文字描述提示文字描述提示文字描述文"
 ></t-notice-bar>
