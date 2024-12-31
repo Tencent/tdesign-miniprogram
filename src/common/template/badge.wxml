@@ -9,7 +9,7 @@
     shape="{{shape || 'circle'}}"
     show-zero="{{showZero || false}}"
     size="{{size || 'medium'}}"
-    t-class="{{class}} {{tClass}}"
+    t-class="{{tClass}}"
     t-class-content="{{tClassContent}}"
     t-class-count="{{tClassCount}}"
   />

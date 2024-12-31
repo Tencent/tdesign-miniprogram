@@ -16,7 +16,7 @@
   <template
     wx:if="{{_closable}}"
     is="icon"
-    data="{{class: classPrefix + '__icon-close', tClass: prefix + '-icon', bindclick: 'handleClose',  ariaRole: 'button', ariaLabel: '关闭',  ..._closable }}"
+    data="{{tClass: classPrefix + '__icon-close ' + prefix + '-icon', bindclick: 'handleClose',  ariaRole: 'button', ariaLabel: '关闭',  ..._closable }}"
     catch:tap="handleClose"
   />
   <slot wx:else name="closable" />

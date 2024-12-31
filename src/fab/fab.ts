@@ -10,7 +10,7 @@ const baseButtonProps = {
   size: 'large',
   shape: 'circle',
   theme: 'primary',
-  externalClass: `${prefix}-fab__button`,
+  tClass: `${prefix}-fab__button`,
 };
 
 @wxComponent()

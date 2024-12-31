@@ -71,7 +71,6 @@ exports[`input props : clearable && label && suffix 1`] = `
           bind:tap="clearInput"
         >
           <t-icon
-            class=""
             tClass="t-class-clearable"
             bind:click=""
           >
@@ -102,7 +101,6 @@ exports[`input props : clearable && label && suffix 1`] = `
           bind:tap="onSuffixIconClick"
         >
           <t-icon
-            class=""
             tClass="t-class-suffix-icon"
             bind:click=""
           >

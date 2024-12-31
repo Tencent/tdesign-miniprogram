@@ -44,7 +44,7 @@
       <template
         wx:elif="{{iconName || _.isNoEmptyObj(iconData)}}"
         is="icon"
-        data="{{class: classPrefix + '__icon', tClass: prefix + '-class-icon', name: iconName, ...iconData}}"
+        data="{{tClass: classPrefix + '__icon ' + prefix + '-class-icon', name: iconName, ...iconData}}"
       />
       <view wx:else class="{{classPrefix}}__text {{prefix}}-class-content">
         <slot />

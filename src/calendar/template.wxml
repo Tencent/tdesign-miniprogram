@@ -73,7 +73,7 @@
     <block wx:elif="{{innerConfirmBtn}}">
       <template
         is="button"
-        data="{{ block: true,  theme: 'primary', class: 't-calendar__confirm-btn', content: realLocalText.confirm, ...innerConfirmBtn }}"
+        data="{{ block: true,  theme: 'primary', rootClass: 't-calendar__confirm-btn', content: realLocalText.confirm, ...innerConfirmBtn }}"
       />
     </block>
   </view>

@@ -14,7 +14,6 @@ exports[`notice-bar props : marquee 1`] = `
         bind:tap="clickPrefixIcon"
       >
         <t-icon
-          class=""
           tClass="t-class-prefix-icon"
           bind:click=""
         >

@@ -7,7 +7,7 @@ function isNext(current, index, list) {
 }
 
 function getImageClass(prefix, current, index, list) {
-  var arr = [prefix + '-swiper__image', prefix + '-class-image'];
+  var arr = [prefix + '-swiper__image-host', prefix + '-swiper__image', prefix + '-class-image'];
 
   if (isPrev(current, index, list)) {
     arr.push(prefix + '-class-prev-image');

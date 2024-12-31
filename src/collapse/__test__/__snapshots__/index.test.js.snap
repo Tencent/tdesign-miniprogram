@@ -58,7 +58,6 @@ exports[`collapse :defaultExpandAll 1`] = `
                 class="t-cell__right t-class-right"
               >
                 <t-icon
-                  class=""
                   tClass="t-cell__right-icon t-class-right-icon"
                   bind:click=""
                 >
@@ -145,7 +144,6 @@ exports[`collapse :defaultExpandAll 1`] = `
                 class="t-cell__right t-class-right"
               >
                 <t-icon
-                  class=""
                   tClass="t-cell__right-icon t-class-right-icon"
                   bind:click=""
                 >
