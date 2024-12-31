@@ -50,7 +50,7 @@
           <template
             wx:if="{{iconName || _.isNoEmptyObj(iconData)}}"
             is="icon"
-            data="{{class: classPrefix + '__icon', name: iconName, ...iconData}}"
+            data="{{tClass: classPrefix + '__icon', name: iconName, ...iconData}}"
           />
         </view>
       </t-badge>

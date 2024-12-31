@@ -2,8 +2,8 @@
   <t-button
     t-id="{{tId || ''}}"
     block="{{block || false}}"
-    class="{{class || ''}}"
-    t-class="{{externalClass}}"
+    class="{{rootClass || ''}}"
+    t-class="{{tClass}}"
     disabled="{{disabled || false}}"
     data-type="{{type}}"
     data-extra="{{extra}}"

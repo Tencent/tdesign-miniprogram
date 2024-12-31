@@ -22,7 +22,6 @@ exports[`message props : style && customStyle 1`] = `
           class="t-message__icon--left"
         >
           <t-icon
-            class=""
             tClass="t-class-icon"
             bind:click=""
           >
@@ -58,7 +57,6 @@ exports[`message props : style && customStyle 1`] = `
           bind:tap="handleClose"
         >
           <t-icon
-            class=""
             tClass="t-class-close-btn"
             bind:click=""
           >

@@ -27,7 +27,7 @@
       <template
         wx:if="{{_.includes(this.STATUS, status)}}"
         is="icon"
-        data="{{class: classPrefix + '__icon', size:'44rpx', name: this.LINE_STATUS_ICON[status]}}"
+        data="{{tClass: classPrefix + '__icon', size:'44rpx', name: this.LINE_STATUS_ICON[status]}}"
       ></template>
       <text wx:else>{{ _.isString(label)? label: computedProgress + '%' }}</text>
     </view>
@@ -86,7 +86,7 @@
           <template
             wx:if="{{_.includes(this.STATUS, status)}}"
             is="icon"
-            data="{{class: classPrefix + '__icon', size:'96rpx', name: this.CIRCLE_STATUS_ICON[status]}}"
+            data="{{tClass: classPrefix + '__icon', size:'96rpx', name: this.CIRCLE_STATUS_ICON[status]}}"
           ></template>
           <text wx:else>{{ _.isString(label)? label: computedProgress + '%' }}</text>
         </view>
