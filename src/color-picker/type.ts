@@ -24,6 +24,14 @@ export interface TdColorPickerProps {
     value?: boolean;
   };
   /**
+   * 如果 color-picker 是在一个 `position:fixed` 的区域，需要显示指定属性 fixed 为 true
+   * @default false
+   */
+  fixed?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 格式化色值。`enableAlpha` 为真时，`RGBA/HSLA/HSVA` 等值有效
    * @default RGB
    */

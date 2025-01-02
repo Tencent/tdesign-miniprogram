@@ -17,14 +17,14 @@ import { Color, getColorObject } from './utils';
 const { prefix } = config;
 const name = `${prefix}-color-picker`;
 
-const getCoordinate = (e, react, isPopup?: boolean) => {
+const getCoordinate = (e, react, isFixed?: boolean) => {
   const { pageX, pageY, clientY } = e.changedTouches[0] || {};
 
-  const offsetY = isPopup ? react.top : e.currentTarget?.offsetTop;
+  const offsetY = isFixed ? react.top : e.currentTarget?.offsetTop;
 
   return {
     x: Math.min(Math.max(0, pageX - react.left), react.width),
-    y: Math.min(Math.max(0, (isPopup ? clientY : pageY) - offsetY), react.height),
+    y: Math.min(Math.max(0, (isFixed ? clientY : pageY) - offsetY), react.height),
   };
 };
 
@@ -312,7 +312,8 @@ export default class ColorPicker extends SuperComponent {
     },
 
     handleSaturationDrag(e) {
-      const coordinate = getCoordinate(e, this.data.panelRect, this.properties.usePopup);
+      const { usePopup, fixed } = this.properties;
+      const coordinate = getCoordinate(e, this.data.panelRect, usePopup || fixed);
       const { saturation, value } = this.getSaturationAndValueByCoordinate(coordinate);
       this.onChangeSaturation({ saturation, value });
     },
