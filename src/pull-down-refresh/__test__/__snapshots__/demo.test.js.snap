@@ -25,7 +25,7 @@ exports[`PullDownRefresh PullDownRefresh base demo works fine 1`] = `
         title="PullDownRefresh 下拉刷新"
       />
       <wx-view
-        class="pulldown-reflesh__content"
+        class="pulldown-refresh__content"
       >
         <t-skeleton
           loading="{{true}}"

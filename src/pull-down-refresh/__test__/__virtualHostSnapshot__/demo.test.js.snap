@@ -34,7 +34,7 @@ exports[`PullDownRefresh PullDownRefresh base demo works fine 1`] = `
         用于快速刷新页面信息，刷新可以是整页刷新也可以是页面的局部刷新。
       </wx-view>
       <wx-view
-        class="pulldown-reflesh__content"
+        class="pulldown-refresh__content"
       >
         <t-skeleton
           loading="{{true}}"
