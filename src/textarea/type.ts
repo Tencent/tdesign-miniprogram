@@ -85,18 +85,10 @@ export interface TdTextareaProps {
     value?: boolean;
   };
   /**
-   * 如果 textarea 是在一个 `position:fixed` 的区域，需要显示指定属性 fixed 为 true
+   * 如果 textarea 是在一个 `position:fixed` 的区域，需要显式指定属性 fixed 为 true
    * @default false
    */
   fixed?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
-   * 如果 textarea 是在一个 `position:fixed` 的区域，需要显示指定属性 fixed 为 true，非受控属性
-   * @default false
-   */
-  defaultFixed?: {
     type: BooleanConstructor;
     value?: boolean;
   };

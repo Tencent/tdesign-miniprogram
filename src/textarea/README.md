@@ -81,7 +81,7 @@ cursor | Number | -1 | 指定 focus 时的光标位置 | N
 cursor-spacing | Number | 0 | 指定光标与键盘的距离。取textarea距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离 | N
 disable-default-padding | Boolean | false | 是否去掉 iOS 下的默认内边距 | N
 disabled | Boolean | undefined | 是否禁用文本框 | N
-fixed | Boolean | false | 如果 textarea 是在一个 `position:fixed` 的区域，需要显示指定属性 fixed 为 true | N
+fixed | Boolean | false | 如果 textarea 是在一个 `position:fixed` 的区域，需要显式指定属性 fixed 为 true | N
 focus | Boolean | false | 自动聚焦 | N
 hold-keyboard | Boolean | false | focus时，点击页面的时候不收起键盘 | N
 indicator | Boolean | false | 显示文本计数器，如 0/140。当 `maxlength < 0 && maxcharacter < 0` 成立时， indicator无效 | N
@@ -106,6 +106,7 @@ enter | `(value: TextareaValue)` | 点击完成时触发
 focus | `(value: TextareaValue)` | 获得焦点时触发
 keyboardheightchange | `(height: number, duration: number)` | 键盘高度发生变化的时候触发此事件
 line-change | `(value: TextareaValue)` | 行高发生变化时触发
+
 ### Textarea External Classes
 
 类名 | 描述
