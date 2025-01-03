@@ -160,6 +160,16 @@
     }
   }
 
+  &__badge {
+    &--active {
+      --td-badge-content-text-color: @tab-item-active-color;
+    }
+
+    &--disabled {
+      --td-badge-content-text-color: @tab-item-disabled-color;
+    }
+  }
+
   &__icon {
     font-size: @tab-icon-size;
     margin-right: calc(@spacer / 4);
