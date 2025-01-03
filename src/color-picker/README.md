@@ -44,6 +44,7 @@ style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 auto-close | Boolean | true | 自动关闭。在点击遮罩层时自动关闭，不需要手动设置 visible | N
 enable-alpha | Boolean | false | 是否开启透明通道 | N
+fixed | Boolean | false | `1.8.5`。如果 color-picker 是在一个 `position:fixed` 的区域，需要显式指定属性 fixed 为 true | N
 footer | Slot | - | 底部插槽，仅在 `usePopup` 为 `true` 时有效。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 format | String | RGB | 格式化色值。`enableAlpha` 为真时，`RGBA/HSLA/HSVA` 等值有效。可选项：RGB/RGBA/HSL/HSLA/HSB/HSV/HSVA/HEX/CMYK/CSS | N
 header | Slot | - | 顶部插槽，仅在 `usePopup` 为 `true` 时有效。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
