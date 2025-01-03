@@ -10,6 +10,7 @@ style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 delay | Number | 0 | \- | N
 duration | Number | 800 | \- | N
+fullscreen | Boolean | true | \- | N
 indicator | Boolean / Slot | true | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 inherit-color | Boolean | false | \- | N
 layout | String | horizontal | options: horizontal/vertical | N
