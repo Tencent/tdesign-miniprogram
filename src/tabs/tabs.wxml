@@ -47,7 +47,7 @@
               <block wx:if="{{item.badgeProps}}">
                 <template
                   is="badge"
-                  data="{{ ...item.badgeProps, content: item.label, tClassContent: _.cls(classPrefix + '__badge', [ ['disabled', item.disabled], ['active', currentIndex === index]])}}"
+                  data="{{ ...item.badgeProps, content: item.label, tClass: _.cls(classPrefix + '__badge', [ ['disabled', item.disabled], ['active', currentIndex === index]])}}"
                 />
               </block>
               <block wx:else>{{item.label}}</block>
