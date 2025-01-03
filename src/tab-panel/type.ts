@@ -38,6 +38,14 @@ export interface TdTabPanelProps {
     value?: string;
   };
   /**
+   * 是否启用选项卡懒加载
+   * @default false
+   */
+  lazy?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 用于自定义选项卡面板内容
    */
   panel?: {
