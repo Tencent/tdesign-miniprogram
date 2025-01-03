@@ -16,7 +16,7 @@ const props: TdColorPickerProps = {
     type: Boolean,
     value: false,
   },
-  /** 如果 color-picker 是在一个 `position:fixed` 的区域，需要显示指定属性 fixed 为 true */
+  /** 如果 color-picker 是在一个 `position:fixed` 的区域，需要显式指定属性 fixed 为 true */
   fixed: {
     type: Boolean,
     value: false,
