@@ -16,7 +16,7 @@ const props: TdLoadingProps = {
     type: Number,
     value: 800,
   },
-  /** 是否显示为全屏加载 */
+  /** 是否显示为全屏加载  */
   fullscreen: {
     type: Boolean,
     value: false,
