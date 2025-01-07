@@ -51,6 +51,7 @@ exports[`ActionSheet ActionSheet list demo works fine 1`] = `
 <list>
   <t-action-sheet
     id="t-action-sheet"
+    showOverlay="{{false}}"
     usingCustomNavbar="{{true}}"
     bind:selected="handleSelected"
   />
