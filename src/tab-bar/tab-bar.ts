@@ -50,7 +50,6 @@ export default class Tabbar extends SuperComponent {
       this.$children.forEach((child) => {
         if (child.properties.value === value) {
           child.showSpread();
-          child.setData({ crowded: this.$children > 3 });
         }
       });
     },

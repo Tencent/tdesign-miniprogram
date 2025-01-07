@@ -43,7 +43,6 @@ export default class TabBarItem extends SuperComponent {
     split: true,
     iconOnly: false,
     theme: '',
-    crowded: false,
     shape: 'normal',
   };
 
