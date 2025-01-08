@@ -11,7 +11,7 @@ action | String / Slot | '' | [see more ts definition](https://github.com/Tencen
 adjust-position | Boolean | true | \- | N
 always-embed | Boolean | false | \- | N
 center | Boolean | false | \- | N
-clear-trigger | String | 'always' | Clear icon trigger, effective only when the input has a value. 。options: always/focus | N
+clear-trigger | String | always | show clear icon, clicked to clear input value。options: always / focus | N
 clearable | Boolean | true | \- | N
 confirm-hold | Boolean | false | \- | N
 confirm-type | String | search | options: send/search/next/go/done | N
@@ -27,7 +27,7 @@ maxlength | Number | -1 | \- | N
 placeholder | String | '' | \- | N
 placeholder-class | String | input-placeholder | \- | N
 placeholder-style | String | - | required | Y
-readonly | Boolean | false | If readonly the input | N
+readonly | Boolean | undefined | \- | N
 result-list | Array | [] | Typescript：`Array<string>` | N
 right-icon | String / Slot | 'close-circle-filled' | `deprecated`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 selection-end | Number | -1 | \- | N

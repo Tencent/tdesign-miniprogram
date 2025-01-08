@@ -26,7 +26,7 @@ const props: TdSearchProps = {
     type: Boolean,
     value: false,
   },
-  /** 清空图标触发方式，仅在输入框有值时有效。 */
+  /** 清空图标触发方式，仅在输入框有值时有效 */
   clearTrigger: {
     type: String,
     value: 'always',
@@ -101,10 +101,10 @@ const props: TdSearchProps = {
     value: '',
     required: true,
   },
-  /** 只读模式 */
+  /** 只读状态 */
   readonly: {
-    type: Boolean,
-    value: false,
+    type: null,
+    value: undefined,
   },
   /** 预览结果列表 */
   resultList: {
@@ -125,11 +125,6 @@ const props: TdSearchProps = {
   shape: {
     type: String,
     value: 'square',
-  },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
   },
   /** 拉起键盘的类型 */
   type: {

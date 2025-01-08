@@ -8,6 +8,7 @@
 @search-padding: var(--td-search-padding, 16rpx 24rpx);
 @search-placeholder-color: var(--td-search-placeholder-color, @text-color-placeholder);
 @search-icon-color: var(--td-search-icon-color, @text-color-placeholder);
+@search-disabled-text-color: var(--td-search-disabled-text-color, @text-color-disabled); // 输入框禁用态文本颜色
 @search-icon-font-size: var(--td-search-icon-font-size, 48rpx);
 @search-square-radius: var(--td-search-square-radius, @radius-default);
 @search-round-radius: calc(@search-height / 2);
@@ -60,6 +61,13 @@
       padding-left: 10rpx;
       min-height: 48rpx;
       line-height: 48rpx;
+    }
+
+    .@{prefix}-input--disabled {
+      color: @search-disabled-text-color;
+      cursor: not-allowed;
+      opacity: 1;
+      -webkit-text-fill-color: currentColor; // fix disabled color in iOS
     }
 
     .@{prefix}-icon {
