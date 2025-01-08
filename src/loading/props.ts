@@ -21,10 +21,6 @@ const props: TdLoadingProps = {
     type: Boolean,
     value: false,
   },
-  /** 组件类名，分别用于设置加载组件外层元素，加载组件文本，加载组件指示符，加载指示符内侧同心圆等元素类名 */
-  externalClasses: {
-    type: Array,
-  },
   /** 加载指示符，值为 true 显示默认指示符，值为 false 则不显示，也可以自定义指示符 */
   indicator: {
     type: Boolean,
@@ -58,10 +54,10 @@ const props: TdLoadingProps = {
   reverse: {
     type: Boolean,
   },
-  /** 尺寸，示例：40rpx/20px */
+  /** 尺寸，示例：20px */
   size: {
     type: String,
-    value: '40rpx',
+    value: '20px',
   },
   /** 加载提示文案 */
   text: {
