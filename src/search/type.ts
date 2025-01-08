@@ -38,8 +38,8 @@ export interface TdSearchProps {
     value?: boolean;
   };
   /**
-   * 清空图标触发方式，仅在输入框有值时有效。
-   * @default 'always'
+   * 清空图标触发方式，仅在输入框有值时有效
+   * @default always
    */
   clearTrigger?: {
     type: StringConstructor;
@@ -158,8 +158,7 @@ export interface TdSearchProps {
     required?: boolean;
   };
   /**
-   * 只读模式
-   * @default false
+   * 只读状态
    */
   readonly?: {
     type: BooleanConstructor;
@@ -196,14 +195,6 @@ export interface TdSearchProps {
   shape?: {
     type: StringConstructor;
     value?: 'square' | 'round';
-  };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 拉起键盘的类型
