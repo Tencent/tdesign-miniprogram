@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 <view
-  style="{{_._style([style, customStyle, !text ? ('width: ' + _.addUnit(size) + '; height: ' + _.addUnit(size)) : '', show ? '' : 'display: none', inheritColor ? 'color: inherit' : ''])}}"
-  class="class {{prefix}}-class {{classPrefix}} {{classPrefix + '--' + layout}}"
+  style="{{_._style([style, customStyle, show ? '' : 'display: none', inheritColor ? 'color: inherit' : ''])}}"
+  class="class {{prefix}}-class {{classPrefix}} {{classPrefix + '--' + layout}} {{fullscreen ? classPrefix + '--fullscreen' : ''}}"
 >
   <view
     wx:if="{{indicator}}"
