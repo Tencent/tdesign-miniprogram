@@ -31,7 +31,7 @@ exports[`search Props :base 1`] = `
         <wx-input
           adjustPosition="{{true}}"
           alwaysEmbed="{{false}}"
-          class="t-input__keyword t-class-input"
+          class="t-input__keyword t-class-input "
           confirmHold="{{false}}"
           confirmType="search"
           cursor="{{0}}"
