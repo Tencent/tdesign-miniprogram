@@ -6,7 +6,8 @@
 @loading-text-color: var(--td-loading-text-color, @text-color-primary);
 @loading-text-font-size: var(--td-loading-text-font-size, 24rpx);
 @loading-text-line-height: var(--td-loading-text-line-height, 40rpx);
-@loading-z-index: 999;
+@loading-z-index: var(--td-loading-z-index, 3500);
+@loading-full-bg-color: var(--td-loading-full-bg-color, rgba(255, 255, 255, 0.6));
 
 .@{loading} {
   display: inline-flex;
@@ -26,6 +27,7 @@
     height: 100%;
     transform: translate(-50%, -50%);
     z-index: @loading-z-index;
+    background-color: @loading-full-bg-color;
   }
 
   &__spinner {
