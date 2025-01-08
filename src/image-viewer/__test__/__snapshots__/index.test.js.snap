@@ -22,7 +22,7 @@ exports[`image-viewer :base 1`] = `
       >
         <wx-view
           class="class t-class t-loading t-loading--horizontal "
-          style="width: 44rpx; height: 44rpx; color: inherit;"
+          style="color: inherit;"
         >
           <wx-view
             ariaLabel="加载中"
@@ -91,7 +91,7 @@ exports[`image-viewer :base 2`] = `
       >
         <wx-view
           class="class t-class t-loading t-loading--horizontal "
-          style="width: 44rpx; height: 44rpx; color: inherit;"
+          style="color: inherit;"
         >
           <wx-view
             ariaLabel="加载中"
@@ -160,7 +160,7 @@ exports[`image-viewer :base 3`] = `
       >
         <wx-view
           class="class t-class t-loading t-loading--horizontal "
-          style="width: 44rpx; height: 44rpx; color: inherit;"
+          style="color: inherit;"
         >
           <wx-view
             ariaLabel="加载中"
