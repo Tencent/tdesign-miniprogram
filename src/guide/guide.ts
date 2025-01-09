@@ -1,3 +1,4 @@
+import isFunction from 'lodash/isFunction';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
@@ -172,9 +173,16 @@ export default class Guide extends SuperComponent {
         finishButton,
       };
     },
+    renderCounter() {
+      const { steps, current, counter } = this.data;
+      const stepsTotal = steps.length;
+      const innerCurrent = current + 1;
+      const popupSlotCounter = isFunction(counter) ? counter({ total: stepsTotal, current: innerCurrent }) : counter;
+      return counter ? popupSlotCounter : `(${innerCurrent}/${stepsTotal})`;
+    },
     buttonContent(button) {
-      const { steps, current, hideCounter } = this.data;
-      return `${button.content.replace(/ \(.*?\)/, '')}${hideCounter ? '' : ` (${current + 1}/${steps.length})`}`;
+      const { hideCounter } = this.data;
+      return `${button.content.replace(/ \(.*?\)/, '')} ${hideCounter ? '' : this.renderCounter()}`;
     },
     onTplButtonTap(e) {
       const { type } = e.target.dataset;

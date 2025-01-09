@@ -15,6 +15,6 @@
   </view>
 </view>
 
-<t-guide current="{{current}}" steps="{{steps}}" bind:skip="close" bind:finish="close">
+<t-guide current="{{current}}" steps="{{steps}}" bind:skip="close" bind:finish="close" counter="{{customerCounter}}">
   <view slot="body-2" class="slot-body">slot展示 用户引导的说明文案</view>
 </t-guide>

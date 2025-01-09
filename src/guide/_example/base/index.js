@@ -2,6 +2,11 @@ Component({
   data: {
     current: -1,
     steps: [],
+    customerCounter({ total, current }) {
+      const enums = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
+      return ` ${enums[current]}/${enums[total]}`;
+    },
+    // customerCounter: 'customerCounter',
   },
   lifetimes: {
     attached() {
