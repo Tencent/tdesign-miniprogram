@@ -134,7 +134,7 @@ export default class Guide extends SuperComponent {
         content: '跳过',
         size,
         ...skipButton,
-        class: `${prefix}-class-skip ${name}__button ${skipButton?.class || ''}`,
+        tClass: `${prefix}-class-skip ${name}__button ${skipButton?.class || ''}`,
         type: 'skip',
       };
       let nextButton = step.nextButtonProps ?? this.data.nextButtonProps;
@@ -143,7 +143,7 @@ export default class Guide extends SuperComponent {
         content: '下一步',
         size,
         ...nextButton,
-        class: `${prefix}-class-next ${name}__button ${nextButton?.class || ''}`,
+        tClass: `${prefix}-class-next ${name}__button ${nextButton?.class || ''}`,
         type: 'next',
       };
       nextButton = { ...nextButton, content: this.buttonContent(nextButton) };
@@ -153,7 +153,7 @@ export default class Guide extends SuperComponent {
         content: '返回',
         size,
         ...backButton,
-        class: `${prefix}-class-back ${name}__button ${backButton?.class || ''}`,
+        tClass: `${prefix}-class-back ${name}__button ${backButton?.class || ''}`,
         type: 'back',
       };
       let finishButton = step.finishButtonProps ?? this.data.finishButtonProps;
@@ -162,7 +162,7 @@ export default class Guide extends SuperComponent {
         content: '完成',
         size,
         ...finishButton,
-        class: `${prefix}-class-finish ${name}__button ${finishButton?.class || ''}`,
+        tClass: `${prefix}-class-finish ${name}__button ${finishButton?.class || ''}`,
         type: 'finish',
       };
       finishButton = { ...finishButton, content: this.buttonContent(finishButton) };
