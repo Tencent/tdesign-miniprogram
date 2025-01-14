@@ -15,6 +15,7 @@
 @picker-title-color: var(--td-picker-title-color, @text-color-primary);
 
 @picker-bg-color: var(--td-picker-bg-color, @bg-color-container);
+@picker-mask-color: var(--td-picker-transparent-color);
 @picker-mask-color-top: var(--td-picker-mask-color-top, hsla(0, 0%, 100%, 0.92));
 @picker-mask-color-bottom: var(--td-picker-mask-color-bottom, hsla(0, 0%, 100%, 0.4));
 
@@ -85,12 +86,12 @@
 
     &--top {
       top: 0;
-      background: linear-gradient(180deg, @picker-bg-color 0%, transparent 100%);
+      background: linear-gradient(180deg, @picker-bg-color 0%, @picker-mask-color 100%);
     }
 
     &--bottom {
       bottom: 0;
-      background: linear-gradient(180deg, @picker-bg-color 0%, transparent 100%);
+      background: linear-gradient(180deg, @picker-bg-color 0%, @picker-mask-color 100%);
       transform: matrix(1, 0, 0, -1, 0, 0);
     }
   }
