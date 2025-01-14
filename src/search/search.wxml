@@ -19,8 +19,8 @@
       type="{{type}}"
       name="input"
       maxlength="{{maxlength}}"
-      disabled="{{disabled}}"
-      class="{{prefix}}-input__keyword {{prefix}}-class-input"
+      disabled="{{disabled || readonly}}"
+      class="{{prefix}}-input__keyword {{prefix}}-class-input {{ disabled ? prefix + '-input--disabled' : ''}}"
       focus="{{focus}}"
       value="{{value}}"
       confirm-type="{{confirmType}}"
@@ -41,7 +41,7 @@
       bind:confirm="onConfirm"
     />
     <view
-      wx:if="{{value !=='' && clearable}}"
+      wx:if="{{value !=='' && clearable && showClearIcon}}"
       class="{{classPrefix}}__clear {{prefix}}-class-clear"
       catch:tap="handleClear"
       aria-role="button"

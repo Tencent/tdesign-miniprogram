@@ -241,47 +241,6 @@ exports[`Tabs Tabs theme demo works fine 1`] = `
   />
   <t-tabs
     defaultValue="{{0}}"
-    spaceEvenly="{{false}}"
-    theme="tag"
-  >
-    <t-tab-panel
-      label="选项"
-      value="{{0}}"
-    />
-    <t-tab-panel
-      label="选项"
-      value="{{1}}"
-    />
-    <t-tab-panel
-      label="选项"
-      value="{{2}}"
-    />
-    <t-tab-panel
-      label="选项"
-      value="{{3}}"
-    />
-    <t-tab-panel
-      label="选项"
-      value="{{4}}"
-    />
-    <t-tab-panel
-      label="选项"
-      value="{{5}}"
-    />
-    <t-tab-panel
-      label="选项"
-      value="{{6}}"
-    />
-    <t-tab-panel
-      label="选项"
-      value="{{7}}"
-    />
-  </t-tabs>
-  <wx-view
-    style="height: 16px"
-  />
-  <t-tabs
-    defaultValue="{{0}}"
     theme="card"
   >
     <t-tab-panel
@@ -299,47 +258,6 @@ exports[`Tabs Tabs theme demo works fine 1`] = `
     <t-tab-panel
       label="选项"
       value="{{3}}"
-    />
-  </t-tabs>
-  <wx-view
-    style="height: 16px"
-  />
-  <t-tabs
-    defaultValue="{{0}}"
-    spaceEvenly="{{false}}"
-    theme="card"
-  >
-    <t-tab-panel
-      label="选项"
-      value="{{0}}"
-    />
-    <t-tab-panel
-      label="选项"
-      value="{{1}}"
-    />
-    <t-tab-panel
-      label="选项"
-      value="{{2}}"
-    />
-    <t-tab-panel
-      label="选项"
-      value="{{3}}"
-    />
-    <t-tab-panel
-      label="选项"
-      value="{{4}}"
-    />
-    <t-tab-panel
-      label="选项"
-      value="{{5}}"
-    />
-    <t-tab-panel
-      label="选项"
-      value="{{6}}"
-    />
-    <t-tab-panel
-      label="选项"
-      value="{{7}}"
     />
   </t-tabs>
 </theme>
@@ -415,7 +333,7 @@ exports[`Tabs Tabs with-content demo works fine 1`] = `
       <wx-view
         class="custom-panel__content"
       >
-        选项二内容 选项二内容 选项二内容 选项二内容 选项二内容 选项二内容 选项二内容
+        选项二内容
       </wx-view>
     </t-tab-panel>
     <t-tab-panel

@@ -9249,21 +9249,6 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="data-filled"
-        name="data-filled"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        data-filled
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
         data-name="data-base-filled"
         name="data-base-filled"
         size="48rpx"
@@ -9363,6 +9348,21 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         data-error
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="data-filled"
+        name="data-filled"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        data-filled
       </wx-view>
     </wx-view>
     <wx-view
@@ -17694,6 +17694,36 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
+        data-name="logo-alipay-filled"
+        name="logo-alipay-filled"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        logo-alipay-filled
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="logo-alipay"
+        name="logo-alipay"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        logo-alipay
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
         data-name="logo-android-filled"
         name="logo-android-filled"
         size="48rpx"
@@ -17748,6 +17778,21 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         logo-apple
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="logo-behance-filled"
+        name="logo-behance-filled"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        logo-behance-filled
       </wx-view>
     </wx-view>
     <wx-view
@@ -18213,21 +18258,6 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         logo-wechatpay
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
-        data-name="logo-wecom-filled"
-        name="logo-wecom-filled"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        logo-wecom-filled
       </wx-view>
     </wx-view>
     <wx-view

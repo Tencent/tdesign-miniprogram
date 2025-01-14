@@ -6,12 +6,28 @@
 @loading-text-color: var(--td-loading-text-color, @text-color-primary);
 @loading-text-font-size: var(--td-loading-text-font-size, 24rpx);
 @loading-text-line-height: var(--td-loading-text-line-height, 40rpx);
+@loading-z-index: var(--td-loading-z-index, 3500);
+@loading-full-bg-color: var(--td-loading-full-bg-color, rgba(255, 255, 255, 0.6));
 
 .@{loading} {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 24rpx;
+
+  &--fullscreen {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: @loading-z-index;
+    background-color: @loading-full-bg-color;
+  }
 
   &__spinner {
     position: relative;

@@ -59,6 +59,7 @@ action | String / Slot | '' | 自定义右侧操作按钮文字。[通用类型�
 adjust-position | Boolean | true | 键盘弹起时，是否自动上推页面 | N
 always-embed | Boolean | false | 强制 input 处于同层状态，默认 focus 时 input 会切到非同层状态 (仅在 iOS 下生效) | N
 center | Boolean | false | 是否居中 | N
+clear-trigger | String | always | 清空图标触发方式，仅在输入框有值时有效。可选项：always / focus | N
 clearable | Boolean | true | 是否启用清除控件 | N
 confirm-hold | Boolean | false | 点击键盘右下角按钮时是否保持键盘不收起 | N
 confirm-type | String | search | 设置键盘右下角按钮的文字，仅在type='text'时生效。<br />具体释义：<br />`send` 右下角按钮为“发送”；<br />`search` 右下角按钮为“搜索”；<br />`next` 右下角按钮为“下一个”；<br />`go` 右下角按钮为“前往”；<br />`done` 右下角按钮为“完成”。<br />[小程序官方文档](https://developers.weixin.qq.com/miniprogram/dev/component/input.html)。可选项：send/search/next/go/done | N
@@ -74,6 +75,7 @@ maxlength | Number | -1 | 用户最多可以输入的文本长度，一个中文
 placeholder | String | '' | 占位符 | N
 placeholder-class | String | input-placeholder | 指定 placeholder 的样式类 | N
 placeholder-style | String | - | 必需。指定 placeholder 的样式 | Y
+readonly | Boolean | undefined | 只读状态 | N
 result-list | Array | [] | 预览结果列表。TS 类型：`Array<string>` | N
 right-icon | String / Slot | 'close-circle-filled' | 已废弃。右侧图标。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 selection-end | Number | -1 | 光标结束位置，自动聚集时有效，需与 selection-start 搭配使用 | N
@@ -92,6 +94,7 @@ change | `({ value: string })` | 值发生变化时触发
 clear | `({ value: string })` | 点击清除时触发
 focus | `({ value: string })` | 聚焦时触发
 submit | `({ value: string })` | 提交时触发
+
 ### Search External Classes
 
 类名 | 描述
@@ -121,4 +124,4 @@ t-class-left | 左侧图标样式类
 --td-search-placeholder-color | @text-color-placeholder | - 
 --td-search-result-high-light-color | @brand-color | - 
 --td-search-square-radius | @radius-default | - 
---td-search-text-color | @text-color-primary | - 
+--td-search-text-color | @text-color-primary | -

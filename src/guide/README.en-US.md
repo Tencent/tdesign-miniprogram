@@ -9,6 +9,7 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 back-button-props | Object | - | Typescript：`ButtonProps` | N
+counter | String / Function | - | Typescript：`string \| ((params: { total: number; current: number }) => string)` | N
 current | Number | - | \- | N
 default-current | Number | undefined | uncontrolled property | N
 finish-button-props | Object | - | Typescript：`ButtonProps` | N

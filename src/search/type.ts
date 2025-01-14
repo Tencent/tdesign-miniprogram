@@ -38,6 +38,14 @@ export interface TdSearchProps {
     value?: boolean;
   };
   /**
+   * 清空图标触发方式，仅在输入框有值时有效
+   * @default always
+   */
+  clearTrigger?: {
+    type: StringConstructor;
+    value?: 'always' | 'focus';
+  };
+  /**
    * 是否启用清除控件
    * @default true
    */
@@ -150,6 +158,13 @@ export interface TdSearchProps {
     required?: boolean;
   };
   /**
+   * 只读状态
+   */
+  readonly?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 预览结果列表
    * @default []
    */
@@ -180,14 +195,6 @@ export interface TdSearchProps {
   shape?: {
     type: StringConstructor;
     value?: 'square' | 'round';
-  };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 拉起键盘的类型
