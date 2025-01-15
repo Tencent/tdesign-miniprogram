@@ -12,12 +12,12 @@ module.exports = {
   },
 
   getSize: function (size = 'medium', systemInfo) {
-    var res = getRegExp('^([0-9]+)(px|rpx)$').exec(size);;
+    var res = getRegExp('^([0-9]+)(px|rpx)$').exec(size);
 
     if (res && res.length >= 3) {
       var px = res[1];
       if (res[2] === 'rpx') {
-         px = Math.floor((systemInfo.windowWidth * res[1]) / 750);
+        px = Math.floor((systemInfo.windowWidth * res[1]) / 750);
       }
 
       return 'width:' + size + ';height:' + size + ';font-size:' + ((px / 8) * 3 + 2) + 'px';
