@@ -32,7 +32,7 @@ jobs:
               }
             })
 
-            let next_action = ''  
+            let next_action = ''
             if (isReviewer) {
               const body = context.payload.comment.body
               core.info(`body: ${body}`)
@@ -41,7 +41,7 @@ jobs:
               }
               if (body.startsWith('/update-snapshot')) {
                 next_action='update-snapshot'
-              }  
+              }
             } else {
                core.warning('You are not collaborator');
             }
