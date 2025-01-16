@@ -45,7 +45,7 @@ page .round-image {
 }
 
 .side-bar-wrapper .image::before {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 0;
   left: 0;

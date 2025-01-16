@@ -4,6 +4,7 @@
  * addUnit */
 // 为 css 添加单位
 function addUnit(value) {
+  // prettier-ignore
   var REGEXP = getRegExp('^-?\d+(.\d+)?$');
   if (value == null) {
     return undefined;
@@ -125,6 +126,7 @@ function _style(styles) {
 }
 
 function isValidIconName(str) {
+  // prettier-ignore
   return getRegExp('^[A-Za-z0-9\-]+$').test(str);
 }
 
