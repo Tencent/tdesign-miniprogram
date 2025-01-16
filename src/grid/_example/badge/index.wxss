@@ -42,13 +42,12 @@
   display: flex;
 }
 
-
 .badge .image {
   position: inherit;
 }
 
 .badge .image::before {
-  content: " ";
+  content: ' ';
   position: absolute;
   top: 0;
   left: 0;

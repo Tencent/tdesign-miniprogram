@@ -1,4 +1,5 @@
 {
+  "explorer.fileNesting.expand": false,
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.patterns": {
     ".gitignore": ".git*",

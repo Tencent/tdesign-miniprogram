@@ -1,6 +1,5 @@
 <import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
-<wxs src="./empty.wxs" module="utils" />
 
 <view style="{{_._style([style, customStyle])}}" class="class {{prefix}}-class {{classPrefix}}">
   <view aria-hidden="true" class="{{classPrefix}}__thumb">
