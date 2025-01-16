@@ -11,7 +11,7 @@ import {
   HUE_MAX,
   DEFAULT_SYSTEM_SWATCH_COLORS,
 } from './constants';
-import { getRect } from '../common/utils';
+import { getRect, debounce } from '../common/utils';
 import { Color, getColorObject } from './utils';
 
 const { prefix } = config;
@@ -141,6 +141,10 @@ export default class ColorPicker extends SuperComponent {
       this.init();
     },
 
+    attached() {
+      this.debouncedUpdateEleRect = debounce((e: WechatMiniprogram.TouchEvent) => this.updateEleRect(e), 150);
+    },
+
     detached() {
       clearTimeout(this.timer);
     },
@@ -160,6 +164,22 @@ export default class ColorPicker extends SuperComponent {
       this.getEleReact();
     },
 
+    updateEleRect(e: WechatMiniprogram.TouchEvent) {
+      if (!e) return;
+
+      const { scrollTop } = e.detail;
+      const { width, height, left, initTop } = this.data.panelRect;
+      this.setData({
+        panelRect: {
+          width,
+          height,
+          left,
+          top: initTop - scrollTop,
+          initTop,
+        },
+      });
+    },
+
     getEleReact() {
       Promise.all([getRect(this, `.${name}__saturation`), getRect(this, `.${name}__slider`)]).then(
         ([saturationRect, sliderRect]) => {
@@ -170,6 +190,7 @@ export default class ColorPicker extends SuperComponent {
                 height: saturationRect.height || SATURATION_PANEL_DEFAULT_HEIGHT,
                 left: saturationRect.left || 0,
                 top: saturationRect.top || 0,
+                initTop: saturationRect.top || 0,
               },
               sliderRect: {
                 left: sliderRect.left || 0,
