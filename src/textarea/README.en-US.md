@@ -43,6 +43,7 @@ enter | `(value: TextareaValue)` | \-
 focus | `(value: TextareaValue)` | \-
 keyboardheightchange | `(height: number, duration: number)` | \-
 line-change | `(value: TextareaValue)` | \-
+
 ### Textarea External Classes
 
 className | Description

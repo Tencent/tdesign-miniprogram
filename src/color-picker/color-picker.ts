@@ -11,20 +11,20 @@ import {
   HUE_MAX,
   DEFAULT_SYSTEM_SWATCH_COLORS,
 } from './constants';
-import { getRect } from '../common/utils';
+import { getRect, debounce } from '../common/utils';
 import { Color, getColorObject } from './utils';
 
 const { prefix } = config;
 const name = `${prefix}-color-picker`;
 
-const getCoordinate = (e, react, isPopup?: boolean) => {
+const getCoordinate = (e, react, isFixed?: boolean) => {
   const { pageX, pageY, clientY } = e.changedTouches[0] || {};
 
-  const offsetY = isPopup ? react.top : e.currentTarget?.offsetTop;
+  const offsetY = isFixed ? react.top : e.currentTarget?.offsetTop;
 
   return {
     x: Math.min(Math.max(0, pageX - react.left), react.width),
-    y: Math.min(Math.max(0, (isPopup ? clientY : pageY) - offsetY), react.height),
+    y: Math.min(Math.max(0, (isFixed ? clientY : pageY) - offsetY), react.height),
   };
 };
 
@@ -95,6 +95,11 @@ export default class ColorPicker extends SuperComponent {
         }, 350); // popup的transition-duration为300ms，为保证popup已渲染完毕，故使用350ms
       }
     },
+    value(v: string) {
+      if (v) {
+        this.init();
+      }
+    },
   };
 
   color = new Color(props.defaultValue.value || props.value.value || DEFAULT_COLOR);
@@ -141,6 +146,10 @@ export default class ColorPicker extends SuperComponent {
       this.init();
     },
 
+    attached() {
+      this.debouncedUpdateEleRect = debounce((e: WechatMiniprogram.TouchEvent) => this.updateEleRect(e), 150);
+    },
+
     detached() {
       clearTimeout(this.timer);
     },
@@ -160,6 +169,22 @@ export default class ColorPicker extends SuperComponent {
       this.getEleReact();
     },
 
+    updateEleRect(e: WechatMiniprogram.TouchEvent) {
+      if (!e) return;
+
+      const { scrollTop } = e.detail;
+      const { width, height, left, initTop } = this.data.panelRect;
+      this.setData({
+        panelRect: {
+          width,
+          height,
+          left,
+          top: initTop - scrollTop,
+          initTop,
+        },
+      });
+    },
+
     getEleReact() {
       Promise.all([getRect(this, `.${name}__saturation`), getRect(this, `.${name}__slider`)]).then(
         ([saturationRect, sliderRect]) => {
@@ -170,6 +195,7 @@ export default class ColorPicker extends SuperComponent {
                 height: saturationRect.height || SATURATION_PANEL_DEFAULT_HEIGHT,
                 left: saturationRect.left || 0,
                 top: saturationRect.top || 0,
+                initTop: saturationRect.top || 0,
               },
               sliderRect: {
                 left: sliderRect.left || 0,
@@ -312,7 +338,8 @@ export default class ColorPicker extends SuperComponent {
     },
 
     handleSaturationDrag(e) {
-      const coordinate = getCoordinate(e, this.data.panelRect, this.properties.usePopup);
+      const { usePopup, fixed } = this.properties;
+      const coordinate = getCoordinate(e, this.data.panelRect, usePopup || fixed);
       const { saturation, value } = this.getSaturationAndValueByCoordinate(coordinate);
       this.onChangeSaturation({ saturation, value });
     },
