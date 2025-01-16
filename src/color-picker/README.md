@@ -63,3 +63,20 @@ visible | Boolean | false | 是否显示颜色选择器。`usePopup` 为 true �
 change | `(value: string, context: { color: ColorObject; trigger: ColorPickerChangeTrigger })` | 选中的色值发生变化时触发，第一个参数 `value` 表示新色值，`context.color` 表示当前调色板控制器的色值，`context.trigger` 表示触发颜色变化的来源。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/color-picker/type.ts)。<br/>`type ColorPickerChangeTrigger = 'palette-hue-bar' \| 'palette-alpha-bar' \| 'preset' `<br/>
 close | `(trigger: ColorPickerTrigger)` | 关闭按钮时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/color-picker/type.ts)。<br/>`type ColorPickerTrigger = 'overlay'`<br/>
 palette-bar-change | `(detail: { color: ColorObject })` | 调色板控制器的值变化时触发，`context.color` 指调色板控制器的值。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/color-picker/type.ts)。<br/>`interface ColorObject { alpha: number; css: string; hex: string; hex8: string; hsl: string; hsla: string; hsv: string; hsva: string; rgb: string; rgba: string; value: number;}`<br/>
+
+## FAQ
+
+如果使用场景为 `scroll-view`，除了需要显示指定 `fixed` 属性为 `true`，还需要手动调用组件的 debouncedUpdateEleRect() 事件。
+
+```html
+<scroll-view type="list" scroll-y bind:scroll="onScroll">
+  <t-color-picker id="ColorPicker" fixed />
+</scroll-view>
+```
+
+```js
+onScroll(e) {
+  if (!this.colorPicker) this.colorPicker = this.selectComponent('#ColorPicker');
+  this.colorPicker.debouncedUpdateEleRect(e);
+}
+```
