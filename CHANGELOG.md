@@ -6,6 +6,32 @@ docClass: timeline
 ---
 
 
+## 🌈 1.8.5 `2025-01-16` 
+### 🚀 Features
+- `TreeSelect`: 新增 `customValue` 属性，自定义选中值，用于弥补 `value` 为空数组场景 @anlyyao ([#3400](https://github.com/Tencent/tdesign-miniprogram/pull/3400))
+- `Loading`: 新增 `fullscreen` 属性，支持全屏加载  @TeacherDingTing ([#3427](https://github.com/Tencent/tdesign-miniprogram/pull/3427))
+- `ColorPicker`: 新增 `fixed` 属性， @anlyyao ([#3426](https://github.com/Tencent/tdesign-miniprogram/pull/3426))
+- `Guide`: 支持自定义计数器 @demoadminjie ([#3439](https://github.com/Tencent/tdesign-miniprogram/pull/3439))
+- `Icon`: 新增 `logo-alipay`、`logo-behance-filled` 等图标，修改 `logo-wecom` 图标，移除不合理的 `logo-wecom-filled` 图标 @anlyyao ([#3434](https://github.com/Tencent/tdesign-miniprogram/pull/3434))
+### 🐞 Bug Fixes
+- `Guide`: 修正返回按钮出现时机，并新增 `hideBack` 属性 @anlyyao ([#3403](https://github.com/Tencent/tdesign-miniprogram/pull/3403))
+- `Message`: `link` 参数类型申明缺失的问题 @betavs ([#3412](https://github.com/Tencent/tdesign-miniprogram/pull/3412))
+- `SwipeCell`: 修复在 `iOS` 手机中导致 `scroll-view` 无法滚动问题 @jarmywang ([#3425](https://github.com/Tencent/tdesign-miniprogram/pull/3425))
+- `Tabs`: 修复徽标激活态颜色错误 @anlyyao ([#3429](https://github.com/Tencent/tdesign-miniprogram/pull/3429))
+- `TabBar`: 修复子项数量大于 3 时子项未按预期调整内边距 @anlyyao ([#3436](https://github.com/Tencent/tdesign-miniprogram/pull/3436))
+- `Search`: 修复禁用态样式错误 @anlyyao ([#3437](https://github.com/Tencent/tdesign-miniprogram/pull/3437))
+- `Image`: 未正确触发组件数据更新的问题 @betavs ([#3443](https://github.com/Tencent/tdesign-miniprogram/pull/3443))
+- `Picker`: 修复 `PickerItem` 项 `label` 超出未省略问题 @anlyyao ([#3415](https://github.com/Tencent/tdesign-miniprogram/pull/3415))
+- `Picker`: 规避 Skyline render 下深/浅模式透明色渲染不一致问题 @betavs ([#3449](https://github.com/Tencent/tdesign-miniprogram/pull/3449))
+- `Stepper`: 修复 `Skyline` 中增加和减少按钮动态更新时禁用态样式错误 @anlyyao ([#3454](https://github.com/Tencent/tdesign-miniprogram/pull/3454))
+- `ActionSheet`: 数据更新后未更新视图的问题 @betavs ([#3438](https://github.com/Tencent/tdesign-miniprogram/pull/3438))
+- `Calendar`: 修复 `value` 不在 `[minDate, maxDate ]` 内时带翻页功能的日历面板空白问题 @anlyyao ([#3457](https://github.com/Tencent/tdesign-miniprogram/pull/3457))
+- `Input`: `cursorColor` 属性默认值设 `#0052d9`，修复安卓在 Skyline 下光标消失的问题 @anlyyao ([#3453](https://github.com/Tencent/tdesign-miniprogram/pull/3453))
+- `ColorPicker`: 修复动态设置 `value` 值无效的问题 @anlyyao ([#3426](https://github.com/Tencent/tdesign-miniprogram/pull/3426))
+### 🚧 Others
+- `Mpx`: 修复在 `Mpx` 框架中编译报错问题 @anlyyao ([#3416](https://github.com/Tencent/tdesign-miniprogram/pull/3416))
+
+
 ## 🌈 1.8.4 `2024-12-25` 
 ### 🚀 Features
 - `Calendar`: 新增 `panel-change`  事件，切换月或年时触发（`switch-mode` 不为 `none` 时有效） @anlyyao ([#3385](https://github.com/Tencent/tdesign-miniprogram/pull/3385))
