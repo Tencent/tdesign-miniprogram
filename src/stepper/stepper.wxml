@@ -11,7 +11,7 @@
     aria-role="button"
     aria-disabled="{{disabled || disableMinus || currentValue <= min}}"
   >
-    <t-icon name="remove" class="{{classPrefix}}__minus-icon" />
+    <t-icon name="remove" />
   </view>
   <view
     class="{{classPrefix}}__input--{{theme}} {{ disabled || disableInput ? classPrefix + '--' + theme + '-disabled': ''}}"
@@ -28,12 +28,12 @@
     />
   </view>
   <view
-    class="{{classPrefix}}__plus {{classPrefix}}__plus--{{theme}} {{classPrefix}}__icon--{{size}}  {{ disabled || disablePlus|| currentValue >= max ? classPrefix + '--' + theme + '-disabled': ''}} {{prefix}}-class-plus"
+    class="{{classPrefix}}__plus {{classPrefix}}__plus--{{theme}} {{classPrefix}}__icon--{{size}} {{ disabled || disablePlus|| currentValue >= max ? classPrefix + '--' + theme + '-disabled': ''}} {{prefix}}-class-plus"
     catchtap="plusValue"
     aria-label="{{'增加' + step}}"
     aria-role="button"
     aria-disabled="{{disabled || disablePlus|| currentValue >= max}}"
   >
-    <t-icon name="add" class="{{classPrefix}}__plus-icon" />
+    <t-icon name="add" />
   </view>
 </view>
