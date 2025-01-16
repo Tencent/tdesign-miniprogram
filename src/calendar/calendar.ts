@@ -200,7 +200,7 @@ export default class Calendar extends SuperComponent {
       this.updateActionButton(date);
 
       this.setData({
-        currentMonth,
+        currentMonth: currentMonth.length > 0 ? currentMonth : [this.data.months[0]],
       });
     },
 
