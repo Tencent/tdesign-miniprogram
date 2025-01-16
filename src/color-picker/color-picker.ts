@@ -95,6 +95,11 @@ export default class ColorPicker extends SuperComponent {
         }, 350); // popup的transition-duration为300ms，为保证popup已渲染完毕，故使用350ms
       }
     },
+    value(v: string) {
+      if (v) {
+        this.init();
+      }
+    },
   };
 
   color = new Color(props.defaultValue.value || props.value.value || DEFAULT_COLOR);
