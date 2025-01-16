@@ -36,19 +36,24 @@ export default class ActionSheet extends SuperComponent {
     },
   ];
 
-  ready() {
-    this.memoInitialData();
-    this.splitGridThemeActions();
-  }
+  observers = {
+    'visible, items'(visible: boolean) {
+      if (!visible) return;
+      this.init();
+    },
+  };
 
   methods = {
-    onSwiperChange(e: WechatMiniprogram.TouchEvent) {
-      const {
-        detail: { current },
-      } = e;
-      this.setData({
-        currentSwiperIndex: current,
-      });
+    init() {
+      this.memoInitialData();
+      this.splitGridThemeActions();
+    },
+
+    memoInitialData() {
+      this.initialData = {
+        ...this.properties,
+        ...this.data,
+      };
     },
 
     splitGridThemeActions() {
@@ -70,13 +75,6 @@ export default class ActionSheet extends SuperComponent {
       this._trigger('visible-change', { visible: true });
     },
 
-    memoInitialData() {
-      this.initialData = {
-        ...this.properties,
-        ...this.data,
-      };
-    },
-
     /** 指令调用隐藏 */
     close() {
       this.triggerEvent('close', { trigger: 'command' });
@@ -93,6 +91,13 @@ export default class ActionSheet extends SuperComponent {
         this.setData({ visible: false });
         this.autoClose = false;
       }
+    },
+
+    onSwiperChange(e: WechatMiniprogram.TouchEvent) {
+      const { current } = e.detail;
+      this.setData({
+        currentSwiperIndex: current,
+      });
     },
 
     onSelect(event: WechatMiniprogram.TouchEvent) {
