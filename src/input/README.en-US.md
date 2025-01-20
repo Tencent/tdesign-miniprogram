@@ -89,7 +89,6 @@ Name | Default Value | Description
 --td-input-bg-color | @bg-color-container | - 
 --td-input-border-color | @component-stroke | - 
 --td-input-border-left-space | 32rpx | - 
---td-input-border-radius | @radius-default | - 
 --td-input-border-right-space | 0 | - 
 --td-input-default-text-color | @text-color-primary | - 
 --td-input-default-tips-color | @text-color-placeholder | - 
