@@ -18,7 +18,7 @@ clearable | Boolean / Object | false | show clear icon, clicked to clear input v
 confirm-hold | Boolean | false | \- | N
 confirm-type | String | done | options: send/search/next/go/done | N
 cursor | Number | - | required | Y
-cursor-color | String | - | \- | N
+cursor-color | String | #0052d9 | \- | N
 cursor-spacing | Number | 0 | \- | N
 disabled | Boolean | undefined | make input to be disabled | N
 error-message | String | - | `deprecated` | N
@@ -107,4 +107,4 @@ Name | Default Value | Description
 --td-input-suffix-text-color | @text-color-primary | - 
 --td-input-vertical-padding | 32rpx | - 
 --td-input-warning-text-color | @warning-color | - 
---td-input-warning-tips-color | @warning-color | - 
+--td-input-warning-tips-color | @warning-color | -

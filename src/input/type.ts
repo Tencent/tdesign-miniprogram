@@ -54,7 +54,7 @@ export interface TdInputProps {
     value?: 'always' | 'focus';
   };
   /**
-   * 是否可清空，默认不启动。值为 `true` 表示使用默认清除空按钮，值为 `Object` 表示透传至 `icon`
+   * 是否可清空，默认不启动。值为 `true` 表示使用默认清空按钮，值为 `Object` 表示透传至 `icon`
    * @default false
    */
   clearable?: {
@@ -87,7 +87,7 @@ export interface TdInputProps {
   };
   /**
    * 光标颜色。iOS 下的格式为十六进制颜色值 #000000，安卓下的只支持 default 和 green，Skyline 下无限制
-   * @default ''
+   * @default #0052d9
    */
   cursorColor?: {
     type: StringConstructor;

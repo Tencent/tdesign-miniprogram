@@ -146,6 +146,14 @@ export interface TdTextareaProps {
     value?: string;
   };
   /**
+   * 指定 placeholder 的样式类，目前仅支持color,font-size和font-weight
+   * @default textarea-placeholder
+   */
+  placeholderClass?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 指定 placeholder 的样式，目前仅支持 color ,font-size和font-weight
    * @default ''
    */

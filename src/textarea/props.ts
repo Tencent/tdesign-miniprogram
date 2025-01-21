@@ -94,6 +94,11 @@ const props: TdTextareaProps = {
     type: String,
     value: undefined,
   },
+  /** 指定 placeholder 的样式类，目前仅支持color,font-size和font-weight */
+  placeholderClass: {
+    type: String,
+    value: 'textarea-placeholder',
+  },
   /** 指定 placeholder 的样式，目前仅支持 color ,font-size和font-weight */
   placeholderStyle: {
     type: String,
