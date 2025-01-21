@@ -6,7 +6,7 @@
 
 import { TdCellProps } from './type';
 const props: TdCellProps = {
-  /** 内容的对齐方式，默认居中对齐 */
+  /** 右侧内容的对齐方式，默认居中对齐 */
   align: {
     type: String,
     value: 'middle',

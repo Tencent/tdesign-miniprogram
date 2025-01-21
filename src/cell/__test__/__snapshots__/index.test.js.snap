@@ -8,7 +8,7 @@ exports[`cell :base 1`] = `
     <wx-view
       ariaLabel=""
       ariaRole=""
-      class="class t-class t-cell t-cell--middle"
+      class="class t-class t-cell"
       hoverClass=""
       hoverStayTime="70"
       style=""
@@ -31,7 +31,7 @@ exports[`cell :base 1`] = `
         class="t-cell__note t-class-note"
       />
       <wx-view
-        class="t-cell__right t-class-right"
+        class="t-cell__right t-cell__right--middle t-class-right"
       />
     </wx-view>
   </main>
