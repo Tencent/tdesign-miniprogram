@@ -5,6 +5,7 @@
 
 // size
 @dialog-width: var(--td-dialog-width, 622rpx);
+@dialog-border-radius: var(--td-dialog-border-radius, @radius-extra-large);
 @dialog-body-max-height: var(--td-dialog-body-max-height, 912rpx);
 
 // color
@@ -21,19 +22,23 @@
 .@{dialog} {
   overflow: hidden;
   width: @dialog-width;
-  border-radius: @radius-default;
+  border-radius: @dialog-border-radius;
   background-color: @bg-color-container;
+
+  &__wrapper {
+    --td-popup-border-radius: @dialog-border-radius;
+  }
 
   &__close-btn {
     position: absolute;
-    top: 16rpx;
-    right: 16rpx;
+    top: @spacer;
+    right: @spacer;
     color: @dialog-close-color;
     z-index: 1; /* skyline适配新增 */
   }
 
   &__content {
-    padding-top: @spacer-4;
+    padding-top: @spacer-3;
     padding-right: @spacer-3;
     padding-bottom: 0;
     padding-left: @spacer-3;
@@ -43,6 +48,10 @@
     flex-direction: column;
     justify-content: center;
     font-size: @font-size-m;
+
+    &:empty {
+      display: none;
+    }
   }
 
   &__header {
@@ -54,7 +63,7 @@
   }
 
   &__header + &__body {
-    margin-top: 16rpx;
+    margin-top: @spacer;
   }
 
   &__body {
@@ -80,7 +89,7 @@
 
   &__footer {
     display: flex;
-    padding: 48rpx;
+    padding: @spacer-3;
 
     &--column {
       flex-flow: column-reverse;
@@ -91,7 +100,7 @@
     }
 
     &--full {
-      padding: 64rpx 0 0;
+      padding: @spacer-4 0 0;
     }
   }
 
@@ -103,11 +112,11 @@
     white-space: nowrap;
 
     &--horizontal + &--horizontal {
-      margin-left: 24rpx;
+      margin-left: @spacer-1;
     }
 
     &--vertical + &--vertical {
-      margin-bottom: 24rpx;
+      margin-bottom: @spacer-1;
     }
 
     &--text {
