@@ -5,6 +5,7 @@ Component({
     showText: false,
     showMultiText: false,
     showTextAndTitle: false,
+    showTitleOnly: false,
     showMultiTextAndTitle: false,
   },
   methods: {

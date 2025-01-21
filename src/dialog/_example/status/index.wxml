@@ -85,7 +85,7 @@
   bind:action="closeDialog"
 />
 
-<view class="demo-desc">带关闭按钮</view>
+<view class="demo-desc">带关闭按钮的对话框</view>
 <t-button
   t-class="wrapper"
   theme="primary"
@@ -95,14 +95,14 @@
   bind:tap="showDialog"
   block
 >
-  带关闭按钮
+  带关闭按钮的对话框
 </t-button>
 <t-dialog
   visible="{{showCloseBtn}}"
   title="对话框标题"
   content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
   close-btn
-  confirm-btn="{{ { content: '警示操作', variant: 'base' } }}"
+  confirm-btn="{{ { content: '警示操作', variant: 'base', theme: 'danger' } }}"
   cancel-btn="取消"
   bind:confirm="closeDialog"
   bind:cancel="closeDialog"
