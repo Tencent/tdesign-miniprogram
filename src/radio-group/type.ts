@@ -24,13 +24,6 @@ export interface TdRadioGroupProps<T = RadioValue> {
     value?: boolean;
   };
   /**
-   * 是否全部子单选框只读
-   */
-  readonly?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
    * 是否禁用全部子单选框
    */
   disabled?: {
@@ -68,12 +61,19 @@ export interface TdRadioGroupProps<T = RadioValue> {
     value?: Array<RadioOption>;
   };
   /**
-   * 复选框和内容相对位置
+   * 复选框和内容相对位置。优先级低于 Radio.placement
    * @default left
    */
   placement?: {
     type: StringConstructor;
     value?: 'left' | 'right';
+  };
+  /**
+   * 只读状态
+   */
+  readonly?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 选中的值

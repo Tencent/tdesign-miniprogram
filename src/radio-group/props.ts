@@ -16,13 +16,6 @@ const props: TdRadioGroupProps = {
     type: Boolean,
     value: false,
   },
-
-  /** 是否全部子单选框只读 */
-  readonly: {
-    type: null,
-    value: undefined,
-  },
-
   /** 是否禁用全部子单选框 */
   disabled: {
     type: null,
@@ -46,10 +39,15 @@ const props: TdRadioGroupProps = {
   options: {
     type: Array,
   },
-  /** 复选框和内容相对位置 */
+  /** 复选框和内容相对位置。优先级低于 Radio.placement */
   placement: {
     type: String,
     value: 'left',
+  },
+  /** 只读状态 */
+  readonly: {
+    type: null,
+    value: undefined,
   },
   /** 选中的值 */
   value: {
