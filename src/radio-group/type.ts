@@ -24,6 +24,13 @@ export interface TdRadioGroupProps<T = RadioValue> {
     value?: boolean;
   };
   /**
+   * 是否全部子单选框只读
+   */
+  readonly?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 是否禁用全部子单选框
    */
   disabled?: {

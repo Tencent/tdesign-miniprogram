@@ -16,6 +16,13 @@ const props: TdRadioGroupProps = {
     type: Boolean,
     value: false,
   },
+
+  /** 是否全部子单选框只读 */
+  readonly: {
+    type: null,
+    value: undefined,
+  },
+
   /** 是否禁用全部子单选框 */
   disabled: {
     type: null,
