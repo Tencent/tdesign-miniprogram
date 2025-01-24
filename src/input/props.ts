@@ -16,6 +16,11 @@ const props: TdInputProps = {
     type: String,
     value: 'left',
   },
+  /** 超出 `maxlength` 或 `maxcharacter` 之后是否允许继续输入 */
+  allowInputOverMax: {
+    type: Boolean,
+    value: false,
+  },
   /** 强制 input 处于同层状态，默认 focus 时 input 会切到非同层状态 (仅在 iOS 下生效) */
   alwaysEmbed: {
     type: Boolean,
@@ -36,7 +41,7 @@ const props: TdInputProps = {
     type: String,
     value: 'always',
   },
-  /** 是否可清空，默认不启动。值为 `true` 表示使用默认清除空按钮，值为 `Object` 表示透传至 `icon` */
+  /** 是否可清空，默认不启动。值为 `true` 表示使用默认清空按钮，值为 `Object` 表示透传至 `icon` */
   clearable: {
     type: null,
     value: false,

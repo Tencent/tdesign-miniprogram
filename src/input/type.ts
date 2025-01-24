@@ -22,6 +22,14 @@ export interface TdInputProps {
     value?: 'left' | 'center' | 'right';
   };
   /**
+   * 超出 `maxlength` 或 `maxcharacter` 之后是否允许继续输入
+   * @default false
+   */
+  allowInputOverMax?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 强制 input 处于同层状态，默认 focus 时 input 会切到非同层状态 (仅在 iOS 下生效)
    * @default false
    */
@@ -54,7 +62,7 @@ export interface TdInputProps {
     value?: 'always' | 'focus';
   };
   /**
-   * 是否可清空，默认不启动。值为 `true` 表示使用默认清除空按钮，值为 `Object` 表示透传至 `icon`
+   * 是否可清空，默认不启动。值为 `true` 表示使用默认清空按钮，值为 `Object` 表示透传至 `icon`
    * @default false
    */
   clearable?: {
