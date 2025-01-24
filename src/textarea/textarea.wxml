@@ -13,7 +13,7 @@
     <textarea
       class="{{classPrefix}}__wrapper-inner {{disabled? prefix +  '-is-disabled' : ''}} {{prefix}}-class-textarea"
       style="{{this.textareaStyle(autosize)}}"
-      maxlength="{{!allowInputOverMax && maxlength}}"
+      maxlength="{{allowInputOverMax ? -1 : maxlength}}"
       disabled="{{disabled || readonly}}"
       placeholder="{{placeholder}}"
       placeholder-class="{{classPrefix}}__placeholder"

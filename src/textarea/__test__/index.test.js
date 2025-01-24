@@ -143,7 +143,7 @@ describe('textarea', () => {
         cursor: undefined,
       });
 
-      $textarea.dispatchEvent('textarea', { detail: { value: 'textarea用于567' } });
+      $textarea.dispatchEvent('input', { detail: { value: 'textarea用于567' } });
       await simulate.sleep(0);
       expect(component.instance.data.count).toBe(15);
     });

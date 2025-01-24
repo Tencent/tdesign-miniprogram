@@ -5,18 +5,7 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = [
-  'allowInputOverMax',
-  'autosize',
-  'base',
-  'card',
-  'custom',
-  'disabled',
-  'label',
-  'maxcharacter',
-  'maxlength',
-  'readonly',
-];
+const mapper = ['autosize', 'base', 'card', 'custom', 'disabled', 'label', 'maxcharacter', 'maxlength'];
 
 describe('Textarea', () => {
   mapper.forEach((demoName) => {

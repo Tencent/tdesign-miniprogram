@@ -22,14 +22,8 @@
       <t-demo>
         <maxcharacter />
       </t-demo>
-      <t-demo desc="允许输入超出最大字符个数限制">
-        <allow-input-over-max />
-      </t-demo>
       <t-demo title="02 组件状态" desc="禁用状态">
         <disabled />
-      </t-demo>
-      <t-demo desc="只读状态">
-        <readonly />
       </t-demo>
       <t-demo title="03 组件样式" desc="卡片样式">
         <card />

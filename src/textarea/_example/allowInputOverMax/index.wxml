@@ -1,9 +1,0 @@
-<t-textarea
-  t-class="external-class"
-  label="标签文字"
-  placeholder="允许输入超出最大字符个数限制"
-  maxlength="20"
-  allowInputOverMax
-  disableDefaultPadding="{{true}}"
-  indicator
-/>
