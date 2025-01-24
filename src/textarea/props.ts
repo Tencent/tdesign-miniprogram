@@ -11,6 +11,11 @@ const props: TdTextareaProps = {
     type: Boolean,
     value: true,
   },
+  /** 超出maxlength或maxcharacter之后是否还允许输入 */
+  allowInputOverMax: {
+    type: Boolean,
+    value: false,
+  },
   /** 自动聚焦，拉起键盘 */
   autofocus: {
     type: Boolean,
@@ -56,11 +61,6 @@ const props: TdTextareaProps = {
     type: null,
     value: undefined,
   },
-  /** 是否只读状态 */
-  readonly: {
-    type: null,
-    value: undefined,
-  },
   /** 如果 textarea 是在一个 `position:fixed` 的区域，需要显式指定属性 fixed 为 true */
   fixed: {
     type: Boolean,
@@ -94,20 +94,25 @@ const props: TdTextareaProps = {
     type: Number,
     value: -1,
   },
-  /** 是否允许超出最大字符数限制，默认不允许 */
-  allowInputOverMax: {
-    type: Boolean,
-    value: false,
-  },
   /** 占位符 */
   placeholder: {
     type: String,
     value: undefined,
   },
+  /** 指定 placeholder 的样式类，目前仅支持color,font-size和font-weight */
+  placeholderClass: {
+    type: String,
+    value: 'textarea-placeholder',
+  },
   /** 指定 placeholder 的样式，目前仅支持 color ,font-size和font-weight */
   placeholderStyle: {
     type: String,
     value: '',
+  },
+  /** 只读状态 */
+  readonly: {
+    type: null,
+    value: undefined,
   },
   /** 光标结束位置，自动聚集时有效，需与 selection-start 搭配使用 */
   selectionEnd: {

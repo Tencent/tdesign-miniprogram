@@ -2,6 +2,7 @@
 
 ## API
 
+
 ### Textarea Props
 
 name | type | default | description | required
@@ -9,6 +10,7 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 adjust-position | Boolean | true | \- | N
+allow-input-over-max | Boolean | false | \- | N
 autofocus | Boolean | false | \- | N
 autosize | Boolean / Object | false | Typescript：`boolean \| { maxHeight?: number, minHeight?: number }` | N
 bordered | Boolean | false | \- | N
@@ -26,7 +28,9 @@ label | String / Slot | - | [see more ts definition](https://github.com/Tencent/
 maxcharacter | Number | - | \- | N
 maxlength | Number | -1 | \- | N
 placeholder | String | undefined | \- | N
+placeholder-class | String | textarea-placeholder | \- | N
 placeholder-style | String | - | \- | N
+readonly | Boolean | undefined | \- | N
 selection-end | Number | -1 | \- | N
 selection-start | Number | -1 | \- | N
 show-confirm-bar | Boolean | true | \- | N
