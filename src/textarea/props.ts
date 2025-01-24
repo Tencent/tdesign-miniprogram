@@ -56,6 +56,11 @@ const props: TdTextareaProps = {
     type: null,
     value: undefined,
   },
+  /** 是否只读状态 */
+  readonly: {
+    type: null,
+    value: undefined,
+  },
   /** 如果 textarea 是在一个 `position:fixed` 的区域，需要显式指定属性 fixed 为 true */
   fixed: {
     type: Boolean,
@@ -88,6 +93,11 @@ const props: TdTextareaProps = {
   maxlength: {
     type: Number,
     value: -1,
+  },
+  /** 是否允许超出最大字符数限制，默认不允许 */
+  allowInputOverMax: {
+    type: Boolean,
+    value: false,
   },
   /** 占位符 */
   placeholder: {

@@ -47,11 +47,19 @@ isComponent: true
 
 {{ maxcharacter }}
 
+允许超出最大字符个数
+
+{{ allowInputOverMax }}
+
 ### 组件状态
 
 禁用多行文本框
 
 {{ disabled }}
+
+多行文本框只读
+
+{{ readonly }}
 
 ### 自定义组件样式
 
@@ -81,6 +89,7 @@ cursor | Number | -1 | 指定 focus 时的光标位置 | N
 cursor-spacing | Number | 0 | 指定光标与键盘的距离。取textarea距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离 | N
 disable-default-padding | Boolean | false | 是否去掉 iOS 下的默认内边距 | N
 disabled | Boolean | undefined | 是否禁用文本框 | N
+readonly | Boolean | undefined | 是否只读 | N
 fixed | Boolean | false | 如果 textarea 是在一个 `position:fixed` 的区域，需要显式指定属性 fixed 为 true | N
 focus | Boolean | false | 自动聚焦 | N
 hold-keyboard | Boolean | false | focus时，点击页面的时候不收起键盘 | N
@@ -88,6 +97,7 @@ indicator | Boolean | false | 显示文本计数器，如 0/140。当 `maxlength
 label | String / Slot | - | 左侧文本。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度 | N
 maxlength | Number | -1 | 用户最多可以输入的字符个数，值为 -1 的时候不限制最大长度 | N
+allowInputOverMax | Boolean | false | 是否允许超出最大字符数限制，默认不允许 | N
 placeholder | String | undefined | 占位符 | N
 placeholder-style | String | - | 指定 placeholder 的样式，目前仅支持 color ,font-size和font-weight | N
 selection-end | Number | -1 | 光标结束位置，自动聚集时有效，需与 selection-start 搭配使用 | N

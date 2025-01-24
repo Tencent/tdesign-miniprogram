@@ -5,8 +5,10 @@
     "label": "./label",
     "autosize": "./autosize",
     "disabled": "./disabled",
+    "readonly": "./readonly",
     "maxcharacter": "./maxcharacter",
     "maxlength": "./maxlength",
+    "allow-input-over-max": "./allowInputOverMax",
     "card": "./card",
     "custom": "./custom"
   }

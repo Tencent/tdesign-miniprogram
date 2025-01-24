@@ -85,6 +85,13 @@ export interface TdTextareaProps {
     value?: boolean;
   };
   /**
+   * 只读状态
+   */
+  readonly?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 如果 textarea 是在一个 `position:fixed` 的区域，需要显式指定属性 fixed 为 true
    * @default false
    */
@@ -137,6 +144,13 @@ export interface TdTextareaProps {
   maxlength?: {
     type: NumberConstructor;
     value?: number;
+  };
+  /**
+   * 是否允许超出最大字符数限制
+   */
+  allowInputOverMax?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 占位符
