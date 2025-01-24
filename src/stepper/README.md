@@ -77,6 +77,7 @@ default-value | String / Number | undefined | 值。非受控属性 | N
 -- | -- | --
 blur | `({ type: string \| number })` | 输入框失去焦点时触发
 change | `({ value: string \| number })` | 数值发生变更时触发
+focus | `(value: string \| number)` | 输入框聚焦时触发
 overlimit | `({type: 'minus' \| 'plus'})` | 数值超出限制时触发
 
 ### Stepper External Classes
