@@ -23,13 +23,6 @@ export interface TdStepperProps {
     value?: boolean;
   };
   /**
-   * 组件类名，分别用于表示组件外层元素、输入框、右侧递增号、左侧递减号等元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-input', 't-class-add', 't-class-minus'];
-  };
-  /**
    * 输入框宽度，默认单位 `px`
    */
   inputWidth?: {
