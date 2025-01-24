@@ -26,6 +26,7 @@ name | params | description
 -- | -- | --
 blur | `({ type: string \| number })` | \-
 change | `({ value: string \| number })` | \-
+focus | `(value: string \| number)` | \-
 overlimit | `({type: 'minus' \| 'plus'})` | \-
 
 ### Stepper External Classes
