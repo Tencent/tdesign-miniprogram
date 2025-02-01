@@ -86,7 +86,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-typescript": "^6.0.0-alpha.1",
     "husky": "^7.0.4",
-    "jest": "^26.6.3",
+    "jest": "^29.7.0",
     "jest-html-reporter": "^3.3.0",
     "jsdom": "^20.0.0",
     "less": "^4.1.1",
