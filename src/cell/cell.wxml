@@ -3,7 +3,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="class {{prefix}}-class {{_.cls(classPrefix, [['borderless', !bordered || isLastChild], align])}}"
+  class="class {{prefix}}-class {{_.cls(classPrefix, [['borderless', !bordered || isLastChild]])}}"
   hover-class="{{ hover ? classPrefix + '--hover' : ''}}"
   hover-stay-time="70"
   bind:tap="onClick"
@@ -45,7 +45,7 @@
     <slot name="note" />
   </view>
 
-  <view class="{{classPrefix}}__right {{prefix}}-class-right">
+  <view class="{{_.cls(classPrefix + '__right', [align])}} {{prefix}}-class-right">
     <template
       wx:if="{{_arrow}}"
       is="icon"

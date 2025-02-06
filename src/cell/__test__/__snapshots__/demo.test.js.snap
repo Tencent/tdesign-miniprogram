@@ -43,7 +43,7 @@ exports[`Cell Cell base demo works fine 1`] = `
     arrow="{{true}}"
     bordered="{{false}}"
     hover="{{true}}"
-    leftIcon="lock-on"
+    leftIcon="app"
     title="单行标题"
   />
 </base>
@@ -96,19 +96,19 @@ exports[`Cell Cell multiple demo works fine 1`] = `
     arrow="{{true}}"
     description="一段很长很长的内容文字"
     hover="{{true}}"
-    leftIcon="lock-on"
+    leftIcon="app"
     title="单行标题"
   />
   <t-cell
     description="一段很长很长的内容文字，长文本自动换行，该选项的描述是一段很长的内容"
     hover="{{true}}"
-    title="多行标题"
+    title="单行标题"
   />
   <t-cell
     arrow="{{true}}"
     description="一段很长很长很长的内容文字"
     hover="{{true}}"
-    title="多行带头像"
+    title="单行标题"
   >
     <wx-view
       class="avatar"
@@ -125,7 +125,7 @@ exports[`Cell Cell multiple demo works fine 1`] = `
     description="一段很长很长的内容文字"
     hover="{{true}}"
     image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
-    title="多行带图片"
+    title="单行标题"
   />
 </multiple>
 `;

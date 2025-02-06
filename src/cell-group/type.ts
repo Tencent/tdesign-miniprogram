@@ -7,28 +7,14 @@
 export interface TdCellGroupProps {
   /**
    * 是否显示组边框
+   * @default false
    */
   bordered?: {
     type: BooleanConstructor;
     value?: boolean;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 组件类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class'];
-  };
-  /**
-   * 单元格风格
+   * 单元格组风格
    * @default default
    */
   theme?: {

@@ -65,6 +65,10 @@
     font-size: @cell-note-font-size;
   }
 
+  &__title {
+    margin-right: @spacer-2;
+  }
+
   &__title,
   &__note {
     flex: 1 1 auto;
@@ -83,13 +87,12 @@
 
   &__left,
   &__right {
-    display: flex;
-    align-items: center;
+    align-self: stretch;
   }
 
   &__left {
     &:not(:empty) {
-      margin-right: @spacer;
+      margin-right: @spacer-1;
     }
 
     &-icon {
@@ -103,12 +106,28 @@
     }
   }
 
-  &__right {
+  &__note:not(:empty) + &__right {
     margin-left: calc(@spacer / 2);
+  }
+
+  &__right {
+    display: flex;
 
     &-icon {
       color: @cell-right-icon-color;
       font-size: @cell-right-icon-font-size;
+    }
+
+    &--middle {
+      align-items: center;
+    }
+
+    &--top {
+      align-items: flex-start;
+    }
+
+    &--bottom {
+      align-items: flex-end;
     }
   }
 
@@ -119,17 +138,5 @@
   &--required {
     font-size: @cell-required-font-size;
     color: @cell-required-color;
-  }
-
-  &--middle {
-    align-items: center;
-  }
-
-  &--top {
-    align-items: flex-start;
-  }
-
-  &--bottom {
-    align-items: flex-end;
   }
 }
