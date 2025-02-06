@@ -1,15 +1,18 @@
 <template name="button">
   <t-button
     t-id="{{tId || ''}}"
+    style="{{style}}"
     block="{{block || false}}"
     class="{{rootClass || ''}}"
     t-class="{{tClass}}"
     disabled="{{disabled || false}}"
     data-type="{{type}}"
     data-extra="{{extra}}"
+    custom-dataset="{{customDataset}}"
     content="{{content || ''}}"
     icon="{{icon || ''}}"
     loading="{{loading || false}}"
+    loading-props="{{loadingProps}}"
     theme="{{theme || 'default'}}"
     ghost="{{ghost || false}}"
     shape="{{shape || 'rectangle'}}"
