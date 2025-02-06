@@ -47,11 +47,12 @@ The component provides the following CSS variables, which can be used to customi
 Name | Default Value | Description 
 -- | -- | --
 --td-dialog-body-max-height | 912rpx | - 
---td-dialog-close-color | @font-gray-3 | - 
---td-dialog-content-color | @font-gray-2 | - 
+--td-dialog-border-radius | @radius-extra-large | - 
+--td-dialog-close-color | @text-color-placeholder | - 
+--td-dialog-content-color | @text-color-secondary | - 
 --td-dialog-content-font-size | 32rpx | - 
 --td-dialog-content-line-height | 48rpx | - 
---td-dialog-title-color | @font-gray-1 | - 
+--td-dialog-title-color | @text-color-primary | - 
 --td-dialog-title-font-size | 36rpx | - 
 --td-dialog-title-line-height | 52rpx | - 
---td-dialog-width | 622rpx | -
+--td-dialog-width | 622rpx | - 

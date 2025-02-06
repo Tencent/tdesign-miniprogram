@@ -21,7 +21,7 @@
     <with-image />
   </t-demo>
 
-  <t-demo title="02 组件状态" padding>
+  <t-demo title="02 组件类型" padding>
     <status />
   </t-demo>
 

@@ -7,7 +7,7 @@
   bind:tap="showDialog"
   block
 >
-  反馈类-基础
+  反馈类-带标题
 </t-button>
 <t-dialog
   visible="{{showTextAndTitle}}"
@@ -40,6 +40,19 @@
   theme="primary"
   size="large"
   variant="outline"
+  data-key="showTitleOnly"
+  bind:tap="showDialog"
+  block
+>
+  反馈类-纯标题
+</t-button>
+<t-dialog visible="{{showTitleOnly}}" title="对话框标题" confirm-btn="{{ confirmBtn }}" bind:confirm="closeDialog" />
+
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
   data-key="showMultiTextAndTitle"
   bind:tap="showDialog"
   block
@@ -56,6 +69,10 @@
   <scroll-view slot="content" type="list" scroll-y class="long-content">
     <view class="content-container"
       >这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
       这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
       这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
       这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案

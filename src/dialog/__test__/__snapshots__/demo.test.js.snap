@@ -12,7 +12,7 @@ exports[`Dialog Dialog base demo works fine 1`] = `
     bind:tap="showDialog"
   >
     
-  反馈类-基础
+  反馈类-带标题
 
   </t-button>
   <t-dialog
@@ -53,6 +53,30 @@ exports[`Dialog Dialog base demo works fine 1`] = `
   />
   <t-button
     block="{{true}}"
+    data-key="showTitleOnly"
+    size="large"
+    tClass="wrapper"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
+  >
+    
+  反馈类-纯标题
+
+  </t-button>
+  <t-dialog
+    confirmBtn="{{
+      Object {
+        "content": "知道了",
+        "variant": "base",
+      }
+    }}"
+    title="对话框标题"
+    visible="{{false}}"
+    bind:confirm="closeDialog"
+  />
+  <t-button
+    block="{{true}}"
     data-key="showMultiTextAndTitle"
     size="large"
     tClass="wrapper"
@@ -85,6 +109,10 @@ exports[`Dialog Dialog base demo works fine 1`] = `
         class="content-container"
       >
         这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+      这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
       这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
       这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
       这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
@@ -186,6 +214,33 @@ exports[`Dialog Dialog confirm demo works fine 1`] = `
       }
     }}"
     content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+    visible="{{false}}"
+    bind:cancel="closeDialog"
+    bind:confirm="closeDialog"
+  />
+  <t-button
+    block="{{true}}"
+    data-key="showLightConfirm"
+    size="large"
+    tClass="wrapper"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
+  >
+    
+  确认类-纯标题
+
+  </t-button>
+  <t-dialog
+    cancelBtn="取消"
+    confirmBtn="{{
+      Object {
+        "content": "确定",
+        "theme": "light",
+        "variant": "base",
+      }
+    }}"
+    title="对话框标题"
     visible="{{false}}"
     bind:cancel="closeDialog"
     bind:confirm="closeDialog"
@@ -330,7 +385,7 @@ exports[`Dialog Dialog status demo works fine 1`] = `
   <wx-view
     class="demo-desc"
   >
-    带关闭按钮
+    带关闭按钮的对话框
   </wx-view>
   <t-button
     block="{{true}}"
@@ -342,7 +397,7 @@ exports[`Dialog Dialog status demo works fine 1`] = `
     bind:tap="showDialog"
   >
     
-  带关闭按钮
+  带关闭按钮的对话框
 
   </t-button>
   <t-dialog
@@ -351,6 +406,7 @@ exports[`Dialog Dialog status demo works fine 1`] = `
     confirmBtn="{{
       Object {
         "content": "警示操作",
+        "theme": "danger",
         "variant": "base",
       }
     }}"
@@ -375,7 +431,7 @@ exports[`Dialog Dialog with-image demo works fine 1`] = `
     bind:tap="showDialog"
   >
     
-  图片置顶
+  图片置顶-带标题描述
 
   </t-button>
   <t-dialog
@@ -387,8 +443,103 @@ exports[`Dialog Dialog with-image demo works fine 1`] = `
       }
     }}"
     content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-    title="带输入框对话框"
-    visible=""
+    title="对话框标题"
+    visible="{{false}}"
+    bind:cancel="closeDialog"
+    bind:confirm="closeDialog"
+  >
+    <t-image
+      slot="top"
+      src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
+      tClass="dialog-image"
+    />
+  </t-dialog>
+  <t-button
+    block="{{true}}"
+    data-key="imageOnTopWithContent"
+    size="large"
+    tClass="wrapper"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
+  >
+    
+  图片置顶-无标题
+
+  </t-button>
+  <t-dialog
+    cancelBtn="取消"
+    confirmBtn="{{
+      Object {
+        "content": "确定",
+        "variant": "base",
+      }
+    }}"
+    content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+    visible="{{false}}"
+    bind:cancel="closeDialog"
+    bind:confirm="closeDialog"
+  >
+    <t-image
+      slot="top"
+      src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
+      tClass="dialog-image"
+    />
+  </t-dialog>
+  <t-button
+    block="{{true}}"
+    data-key="imageOnTopWithTitle"
+    size="large"
+    tClass="wrapper"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
+  >
+    
+  图片置顶-纯标题
+
+  </t-button>
+  <t-dialog
+    cancelBtn="取消"
+    confirmBtn="{{
+      Object {
+        "content": "确定",
+        "variant": "base",
+      }
+    }}"
+    title="对话框标题"
+    visible="{{false}}"
+    bind:cancel="closeDialog"
+    bind:confirm="closeDialog"
+  >
+    <t-image
+      slot="top"
+      src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
+      tClass="dialog-image"
+    />
+  </t-dialog>
+  <t-button
+    block="{{true}}"
+    data-key="imageOnMiddleWithImage"
+    size="large"
+    tClass="wrapper"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
+  >
+    
+  图片置顶-纯图片
+
+  </t-button>
+  <t-dialog
+    cancelBtn="取消"
+    confirmBtn="{{
+      Object {
+        "content": "确定",
+        "variant": "base",
+      }
+    }}"
+    visible="{{false}}"
     bind:cancel="closeDialog"
     bind:confirm="closeDialog"
   >
@@ -408,7 +559,7 @@ exports[`Dialog Dialog with-image demo works fine 1`] = `
     bind:tap="showDialog"
   >
     
-  图片居中
+  图片居中-带标题描述
 
   </t-button>
   <t-dialog
@@ -420,8 +571,40 @@ exports[`Dialog Dialog with-image demo works fine 1`] = `
       }
     }}"
     content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
-    title="带输入框对话框"
-    visible=""
+    title="对话框标题"
+    visible="{{false}}"
+    bind:cancel="closeDialog"
+    bind:confirm="closeDialog"
+  >
+    <t-image
+      slot="middle"
+      src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
+      tClass="image-host dialog-image"
+    />
+  </t-dialog>
+  <t-button
+    block="{{true}}"
+    data-key="imageOnMiddleWithTitle"
+    size="large"
+    tClass="wrapper"
+    theme="primary"
+    variant="outline"
+    bind:tap="showDialog"
+  >
+    
+  图片居中-纯标题
+
+  </t-button>
+  <t-dialog
+    cancelBtn="取消"
+    confirmBtn="{{
+      Object {
+        "content": "确定",
+        "variant": "base",
+      }
+    }}"
+    title="对话框标题"
+    visible="{{false}}"
     bind:cancel="closeDialog"
     bind:confirm="closeDialog"
   >

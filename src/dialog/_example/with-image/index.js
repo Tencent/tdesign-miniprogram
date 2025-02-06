@@ -1,6 +1,12 @@
 Component({
   data: {
     dialogKey: '',
+    imageOnTop: false,
+    imageOnTopWithContent: false,
+    imageOnTopWithTitle: false,
+    imageOnMiddle: false,
+    imageOnMiddleWithTitle: false,
+    imageOnMiddleWithImage: false,
   },
   methods: {
     showDialog(e) {
