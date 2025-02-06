@@ -67,14 +67,14 @@ export default class Input extends SuperComponent {
 
   methods = {
     updateValue(value) {
-      const { maxcharacter, maxlength } = this.properties;
-      if (maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
+      const { allowInputOverMax, maxcharacter, maxlength } = this.properties;
+      if (!allowInputOverMax && maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
         const { length, characters } = getCharacterLength('maxcharacter', value, maxcharacter);
         this.setData({
           value: characters,
           count: length,
         });
-      } else if (maxlength && maxlength > 0 && !Number.isNaN(maxlength)) {
+      } else if (!allowInputOverMax && maxlength && maxlength > 0 && !Number.isNaN(maxlength)) {
         const { length, characters } = getCharacterLength('maxlength', value, maxlength);
         this.setData({
           value: characters,

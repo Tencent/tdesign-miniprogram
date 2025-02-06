@@ -27,7 +27,7 @@
     <view class="{{classPrefix}}__content {{classPrefix}}--{{status}}">
       <input
         class="{{this.getInputClass(classPrefix, suffix, align, disabled)}} {{prefix}}-class-input"
-        maxlength="{{maxlength}}"
+        maxlength="{{allowInputOverMax ? -1 : maxlength}}"
         disabled="{{disabled || readonly}}"
         placeholder="{{placeholder}}"
         placeholder-style="{{placeholderStyle}}"

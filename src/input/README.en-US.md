@@ -10,6 +10,7 @@ style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 adjust-position | Boolean | true | \- | N
 align | String | left | text align type。options: left/center/right | N
+allow-input-over-max | Boolean | false | allow to continue input on value length is over `maxlength` or `maxcharacter` | N
 always-embed | Boolean | false | \- | N
 auto-focus | Boolean | false | \- | N
 borderless | Boolean | false | input without border | N
@@ -107,4 +108,4 @@ Name | Default Value | Description
 --td-input-suffix-text-color | @text-color-primary | - 
 --td-input-vertical-padding | 32rpx | - 
 --td-input-warning-text-color | @warning-color | - 
---td-input-warning-tips-color | @warning-color | - 
+--td-input-warning-tips-color | @warning-color | -
