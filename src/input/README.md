@@ -152,7 +152,7 @@ validate | `(detail: { error?: 'exceed-maximum' \| 'below-minimum' })` | 字数�
 -- | --
 t-class | 根节点样式类
 t-class-clearable | 清空按钮样式类
-t-class-input | 标题样式类
+t-class-input | 输入框样式类
 t-class-label | 标签样式类
 t-class-prefix-icon | 前置图标样式类
 t-class-suffix | 后置样式类

@@ -89,6 +89,7 @@ label | String / Slot | - | 左侧文本。[通用类型定义](https://github.c
 maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度 | N
 maxlength | Number | -1 | 用户最多可以输入的字符个数，值为 -1 的时候不限制最大长度 | N
 placeholder | String | undefined | 占位符 | N
+placeholder-class | String | textarea-placeholder | 指定 placeholder 的样式类，目前仅支持color,font-size和font-weight | N
 placeholder-style | String | - | 指定 placeholder 的样式，目前仅支持 color ,font-size和font-weight | N
 selection-end | Number | -1 | 光标结束位置，自动聚集时有效，需与 selection-start 搭配使用 | N
 selection-start | Number | -1 | 光标起始位置，自动聚集时有效，需与 selection-end 搭配使用 | N
@@ -114,7 +115,7 @@ line-change | `(value: TextareaValue)` | 行高发生变化时触发
 t-class | 根节点样式类
 t-class-indicator | 计数器样式类
 t-class-label | 左侧文本样式类
-t-class-textarea | 占位符样式类
+t-class-textarea | 多行文本框样式类
 
 ### CSS Variables
 

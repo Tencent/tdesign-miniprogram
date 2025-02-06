@@ -16,7 +16,7 @@
       maxlength="{{maxlength}}"
       disabled="{{disabled}}"
       placeholder="{{placeholder}}"
-      placeholder-class="{{classPrefix}}__placeholder"
+      placeholder-class="{{classPrefix}}__placeholder {{placeholderClass}}"
       placeholder-style="{{placeholderStyle}}"
       value="{{value}}"
       auto-height="{{!!autosize}}"

@@ -26,6 +26,7 @@ label | String / Slot | - | [see more ts definition](https://github.com/Tencent/
 maxcharacter | Number | - | \- | N
 maxlength | Number | -1 | \- | N
 placeholder | String | undefined | \- | N
+placeholder-class | String | textarea-placeholder | \- | N
 placeholder-style | String | - | \- | N
 selection-end | Number | -1 | \- | N
 selection-start | Number | -1 | \- | N
