@@ -99,6 +99,54 @@ describe('textarea', () => {
       await simulate.sleep(0);
       expect(component.instance.data.count).toBe(10);
     });
+
+    it(': allowInputOverMax', async () => {
+      const handleChange = jest.fn();
+      const id = simulate.load({
+        template: `<t-textarea
+        class="base"
+        maxcharacter="{{maxcharacter}}"
+        allowInputOverMax
+        value="{{value}}"
+        bind:change="handleChange"
+        >
+        </t-textarea>`,
+        data: {
+          maxcharacter: 10,
+          value: 'tdesign',
+        },
+        methods: {
+          handleChange,
+        },
+        usingComponents: {
+          't-textarea': textarea,
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const component = comp.querySelector('.base');
+      expect(component.instance.data.count).toBe(7);
+
+      const $textarea = comp.querySelector('.base >>> .t-textarea__wrapper-inner');
+
+      $textarea.dispatchEvent('input', { detail: { value: 'tdesign123' } });
+      await simulate.sleep(0);
+      expect(handleChange).toHaveBeenCalledTimes(1);
+      expect(component.instance.data.count).toBe(10);
+
+      $textarea.dispatchEvent('input', { detail: { value: 'textarea用于多行文本信息输入' } });
+      await simulate.sleep(0);
+      expect(handleChange).toHaveBeenCalledTimes(2);
+      expect(component.instance.data.count).toBe(28);
+      expect(handleChange.mock.calls[1][0].detail).toStrictEqual({
+        value: 'textarea用于多行文本信息输入',
+        cursor: undefined,
+      });
+
+      $textarea.dispatchEvent('input', { detail: { value: 'textarea用于567' } });
+      await simulate.sleep(0);
+      expect(component.instance.data.count).toBe(15);
+    });
   });
 
   describe('slots', () => {

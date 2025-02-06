@@ -11,6 +11,11 @@ const props: TdTextareaProps = {
     type: Boolean,
     value: true,
   },
+  /** 超出maxlength或maxcharacter之后是否还允许输入 */
+  allowInputOverMax: {
+    type: Boolean,
+    value: false,
+  },
   /** 自动聚焦，拉起键盘 */
   autofocus: {
     type: Boolean,
@@ -103,6 +108,11 @@ const props: TdTextareaProps = {
   placeholderStyle: {
     type: String,
     value: '',
+  },
+  /** 只读状态 */
+  readonly: {
+    type: null,
+    value: undefined,
   },
   /** 光标结束位置，自动聚集时有效，需与 selection-start 搭配使用 */
   selectionEnd: {

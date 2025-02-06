@@ -61,15 +61,20 @@ export default class Textarea extends SuperComponent {
     },
 
     calculateValue(value, maxcharacter, maxlength) {
+      const { allowInputOverMax } = this.properties;
       if (maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
-        const { length, characters } = getCharacterLength('maxcharacter', value, maxcharacter);
+        const { length, characters } = getCharacterLength(
+          'maxcharacter',
+          value,
+          allowInputOverMax ? Infinity : maxcharacter,
+        );
         return {
           value: characters,
           count: length,
         };
       }
       if (maxlength > 0 && !Number.isNaN(maxlength)) {
-        const { length, characters } = getCharacterLength('maxlength', value, maxlength);
+        const { length, characters } = getCharacterLength('maxlength', value, allowInputOverMax ? Infinity : maxlength);
         return {
           value: characters,
           count: length,
