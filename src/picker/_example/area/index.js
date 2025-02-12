@@ -100,14 +100,18 @@ Component({
 
   lifetimes: {
     ready() {
+      this.init();
+    },
+  },
+
+  methods: {
+    init() {
       const { provinces } = this.data;
       const { cities, counties } = this.getCities(provinces[0].value);
 
       this.setData({ cities, counties });
     },
-  },
 
-  methods: {
     onColumnChange(e) {
       console.log('pick:', e.detail);
       const { column, index } = e.detail;
@@ -159,6 +163,9 @@ Component({
       this.setData({
         areaVisible: false,
       });
+
+      if (this.data.areaValue.length) return;
+      this.init();
     },
 
     onAreaPicker() {
