@@ -1,10 +1,10 @@
-<wxs module="this" src="./index.wxs" />
+<wxs module="_this" src="./index.wxs" />
 <wxs module="_" src="../common/utils.wxs" />
 
 <view
   wx:if="{{wrapperVisible}}"
   class="{{classPrefix}} class {{prefix}}-class"
-  style="{{_._style([this.getStyles(top, zIndex), style, customStyle])}}"
+  style="{{_._style([_this.getStyles(top, zIndex), style, customStyle])}}"
 >
   <view
     class="{{ classPrefix }}__mask"

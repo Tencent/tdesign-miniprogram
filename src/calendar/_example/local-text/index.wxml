@@ -1,4 +1,4 @@
-<wxs src="../calendar.wxs" module="this" />
+<wxs src="../calendar.wxs" module="_this" />
 
 <t-calendar
   visible="{{visible}}"
@@ -9,4 +9,4 @@
   bind:confirm="handleConfirm"
   bind:close="onClose"
 />
-<t-cell arrow title="国际化" note="{{this.formatTimestamp(value)}}" bind:tap="handleCalendar" />
+<t-cell arrow title="国际化" note="{{_this.formatTimestamp(value)}}" bind:tap="handleCalendar" />

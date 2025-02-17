@@ -1,10 +1,10 @@
 <import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
-<wxs src="./progress.wxs" module="this" />
+<wxs src="./progress.wxs" module="_this" />
 
 <view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class">
   <view
-    wx:if="{{theme === this.PRO_THEME.LINE}}"
+    wx:if="{{theme === _this.PRO_THEME.LINE}}"
     class="{{classPrefix }}--thin {{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
   >
     <view
@@ -12,7 +12,7 @@
       aria-valuemin="0"
       aria-valuemax="100"
       aria-valuenow="{{computedProgress}}"
-      aria-label="{{ ariaLabel || (isIOS ? this.getIOSAriaLabel(status) : this.getAndroidAriaLabel(status))  }}"
+      aria-label="{{ ariaLabel || (isIOS ? _this.getIOSAriaLabel(status) : _this.getAndroidAriaLabel(status))  }}"
       aria-live="polite"
       class="{{classPrefix }}__bar"
       style="height: {{heightBar}}px;border-radius: {{heightBar}}px;background-color: {{bgColorBar}}"
@@ -25,9 +25,9 @@
     <!-- aria-hidden=true 禁用掉额外的聚焦 -->
     <view wx:if="{{label}}" class="{{classPrefix}}__info {{prefix}}-class-label" aria-hidden="{{ true }}">
       <template
-        wx:if="{{_.includes(this.STATUS, status)}}"
+        wx:if="{{_.includes(_this.STATUS, status)}}"
         is="icon"
-        data="{{tClass: classPrefix + '__icon', size:'44rpx', name: this.LINE_STATUS_ICON[status]}}"
+        data="{{tClass: classPrefix + '__icon', size:'44rpx', name: _this.LINE_STATUS_ICON[status]}}"
       ></template>
       <text wx:else>{{ _.isString(label)? label: computedProgress + '%' }}</text>
     </view>
@@ -39,9 +39,9 @@
     aria-valuemin="0"
     aria-valuemax="100"
     aria-valuenow="{{computedProgress}}"
-    aria-label="{{ ariaLabel || (isIOS ? this.getIOSAriaLabel(status) : this.getAndroidAriaLabel(status))  }}"
+    aria-label="{{ ariaLabel || (isIOS ? _this.getIOSAriaLabel(status) : _this.getAndroidAriaLabel(status))  }}"
     aria-live="polite"
-    wx:if="{{theme === this.PRO_THEME.PLUMP}}"
+    wx:if="{{theme === _this.PRO_THEME.PLUMP}}"
     class="{{classPrefix}}__bar {{classPrefix}}--plump {{computedProgress > 10 ? classPrefix + '--over-ten':  classPrefix + '--under-ten'}} {{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
     style="height: {{heightBar}}px;border-radius: {{heightBar}}px;background-color: {{bgColorBar}}"
   >
@@ -65,7 +65,7 @@
   </view>
 
   <view
-    wx:if="{{theme === this.PRO_THEME.CIRCLE}}"
+    wx:if="{{theme === _this.PRO_THEME.CIRCLE}}"
     class="{{classPrefix}}--status--{{status || computedStatus}} {{prefix}}-class"
   >
     <view
@@ -73,10 +73,10 @@
       aria-valuemin="0"
       aria-valuemax="100"
       aria-valuenow="{{computedProgress}}"
-      aria-label="{{ ariaLabel || (isIOS ? this.getIOSAriaLabel(status) : this.getAndroidAriaLabel(status))  }}"
+      aria-label="{{ ariaLabel || (isIOS ? _this.getIOSAriaLabel(status) : _this.getAndroidAriaLabel(status))  }}"
       aria-live="polite"
       class="{{classPrefix}}__canvas--circle"
-      style="background-image: conic-gradient(from var(--td-progress-circle-from), {{colorCircle || this.STATUS_COLOR[status] || 'var(--td-progress-inner-bg-color)'}} {{computedProgress}}%, {{bgColorBar || 'var(--td-progress-track-bg-color)'}} 0%);"
+      style="background-image: conic-gradient(from var(--td-progress-circle-from), {{colorCircle || _this.STATUS_COLOR[status] || 'var(--td-progress-inner-bg-color)'}} {{computedProgress}}%, {{bgColorBar || 'var(--td-progress-track-bg-color)'}} 0%);"
     >
       <view
         class="{{classPrefix}}__canvas--inner {{prefix}}-class-bar"
@@ -84,9 +84,9 @@
       >
         <view wx:if="{{label}}" class="{{classPrefix}}__info {{prefix}}-class-label" aria-hidden="{{ true }}">
           <template
-            wx:if="{{_.includes(this.STATUS, status)}}"
+            wx:if="{{_.includes(_this.STATUS, status)}}"
             is="icon"
-            data="{{tClass: classPrefix + '__icon', size:'96rpx', name: this.CIRCLE_STATUS_ICON[status]}}"
+            data="{{tClass: classPrefix + '__icon', size:'96rpx', name: _this.CIRCLE_STATUS_ICON[status]}}"
           ></template>
           <text wx:else>{{ _.isString(label)? label: computedProgress + '%' }}</text>
         </view>

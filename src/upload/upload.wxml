@@ -1,5 +1,5 @@
 <wxs src="../common/utils.wxs" module="_" />
-<wxs src="./upload.wxs" module="this" />
+<wxs src="./upload.wxs" module="_this" />
 <wxs src="./drag.wxs" module="handler" />
 
 <view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class">
@@ -23,8 +23,8 @@
         <view
           class="{{classPrefix}}__wrapper {{disabled? classPrefix + '__wrapper--disabled' : '' }}"
           style="{{gridItemStyle}}"
-          aria-role="{{ariaRole || this.getWrapperAriaRole(file)}}"
-          aria-label="{{ariaLabel || this.getWrapperAriaLabel(file)}}"
+          aria-role="{{ariaRole || _this.getWrapperAriaRole(file)}}"
+          aria-label="{{ariaLabel || _this.getWrapperAriaLabel(file)}}"
         >
           <t-image
             wx:if="{{file.type !== 'video'}}"
@@ -131,8 +131,8 @@
             <view
               class="{{classPrefix}}__wrapper {{disabled? classPrefix + '__wrapper--disabled' : '' }}"
               style="{{gridItemStyle}};"
-              aria-role="{{ariaRole || this.getWrapperAriaRole(file)}}"
-              aria-label="{{ariaLabel || this.getWrapperAriaLabel(file)}}"
+              aria-role="{{ariaRole || _this.getWrapperAriaRole(file)}}"
+              aria-label="{{ariaLabel || _this.getWrapperAriaLabel(file)}}"
             >
               <t-image
                 wx:if="{{file.type !== 'video'}}"

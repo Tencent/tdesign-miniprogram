@@ -1,4 +1,4 @@
-<wxs src="./calendar.wxs" module="this" />
+<wxs src="./calendar.wxs" module="_this" />
 <wxs src="../common/utils.wxs" module="_" />
 
 <t-popup

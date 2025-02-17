@@ -1,5 +1,5 @@
 <wxs src="../common/utils.wxs" module="_" />
-<wxs src="./indexes.wxs" module="this" />
+<wxs src="./indexes.wxs" module="_this" />
 
 <view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class">
   <view
@@ -17,7 +17,7 @@
       data-index="{{index}}"
     >
       <view aria-role="button" aria-label="{{ activeAnchor === item ? '已选中' + item : ''}}">
-        {{ this.getFirstCharacter(item) }}
+        {{ _this.getFirstCharacter(item) }}
       </view>
       <view class="{{classPrefix}}__sidebar-tips" wx:if="{{ showTips && activeAnchor === item }}">
         {{ activeAnchor }}
