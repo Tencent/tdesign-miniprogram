@@ -1,9 +1,9 @@
-<wxs src="../calendar.wxs" module="this" />
+<wxs src="../calendar.wxs" module="_this" />
 
 <t-cell
   arrow
   title="带单行描述的日历"
-  note="{{this.formatTimestamp(singleValue)}}"
+  note="{{_this.formatTimestamp(singleValue)}}"
   data-type="single"
   bind:tap="handleCalendar"
 />
@@ -21,7 +21,7 @@
 <t-cell
   arrow
   title="带双行描述的日历"
-  note="{{this.formatTimestamp(value)}}"
+  note="{{_this.formatTimestamp(value)}}"
   data-type="multiple"
   bind:tap="handleCalendar"
 />

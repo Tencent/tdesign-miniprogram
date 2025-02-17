@@ -1,6 +1,6 @@
 <import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
-<wxs src="./input.wxs" module="this" />
+<wxs src="./input.wxs" module="_this" />
 
 <view
   style="{{_._style([style, customStyle])}}"
@@ -26,7 +26,7 @@
   <view class="{{classPrefix}}__wrap">
     <view class="{{classPrefix}}__content {{classPrefix}}--{{status}}">
       <input
-        class="{{this.getInputClass(classPrefix, suffix, align, disabled)}} {{prefix}}-class-input"
+        class="{{_this.getInputClass(classPrefix, suffix, align, disabled)}} {{prefix}}-class-input"
         maxlength="{{allowInputOverMax ? -1 : maxlength}}"
         disabled="{{disabled || readonly}}"
         placeholder="{{placeholder}}"

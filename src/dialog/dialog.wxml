@@ -1,7 +1,7 @@
 <import src="../common/template/button.wxml" />
 <import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
-<wxs src="./dialog.wxs" module="this" />
+<wxs src="./dialog.wxs" module="_this" />
 
 <t-popup
   name="dialog"
@@ -40,7 +40,7 @@
         <block wx:for="{{actions}}" wx:key="index">
           <template
             is="button"
-            data="{{block: true, type: 'action', extra: index, tClass: prefix + '-class-action', rootClass: this.getActionClass(classPrefix, buttonLayout), ...item }}"
+            data="{{block: true, type: 'action', extra: index, tClass: prefix + '-class-action', rootClass: _this.getActionClass(classPrefix, buttonLayout), ...item }}"
           />
         </block>
       </block>

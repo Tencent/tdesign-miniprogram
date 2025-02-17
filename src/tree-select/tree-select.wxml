@@ -1,9 +1,9 @@
 <wxs module="_" src="../common/utils.wxs" />
-<wxs module="this" src="./index.wxs" />
+<wxs module="_this" src="./index.wxs" />
 
 <view class="{{classPrefix}} class" style="{{_._style(['height:' + _.addUnit(height) , style, customStyle])}}">
   <t-scroll-view
-    class="{{_.cls(classPrefix + '__column', [this.getTreeClass(leafLevel - level, treeOptions.length)])}} {{prefix}}-class"
+    class="{{_.cls(classPrefix + '__column', [_this.getTreeClass(leafLevel - level, treeOptions.length)])}} {{prefix}}-class"
     wx:for="{{treeOptions}}"
     wx:key="level"
     wx:for-index="level"

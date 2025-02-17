@@ -1,4 +1,4 @@
-<wxs src="../calendar.wxs" module="this" />
+<wxs src="../calendar.wxs" module="_this" />
 
 <t-calendar
   visible="{{visible}}"
@@ -7,4 +7,4 @@
   maxDate="{{maxDate}}"
   bind:confirm="handleConfirm"
 />
-<t-cell arrow title="含不可选的日历" note="{{this.formatTimestamp(value)}}" bind:tap="handleCalendar" />
+<t-cell arrow title="含不可选的日历" note="{{_this.formatTimestamp(value)}}" bind:tap="handleCalendar" />

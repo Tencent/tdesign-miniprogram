@@ -1,10 +1,10 @@
-<wxs src="./message-item.wxs" module="this"></wxs>
+<wxs src="./message-item.wxs" module="_this"></wxs>
 <wxs src="../common/utils.wxs" module="_" />
 <import src="../common/template/icon.wxml" />
 <block wx:if="{{visible}}">
   <view
     class="{{classPrefix}} class {{prefix}}-class {{classPrefix}}--{{theme}} {{fadeClass}}"
-    style="{{_._style([this.getMessageStyles(zIndex, offset, wrapTop), style, customStyle])}}"
+    style="{{_._style([_this.getMessageStyles(zIndex, offset, wrapTop), style, customStyle])}}"
     animation="{{showAnimation}}"
     id="{{id || classPrefix}}"
     aria-role="alert"

@@ -1,4 +1,4 @@
-<wxs src="./calendar.wxs" module="this" />
+<wxs src="./calendar.wxs" module="_this" />
 <wxs src="../common/utils.wxs" module="_" />
 <import src="../common/template/button.wxml" />
 <import src="./calendar-header.wxml" />
@@ -23,7 +23,7 @@
   <template
     wx:if="{{switchMode !== 'none'}}"
     is="calendar-header"
-    data="{{ classPrefix: classPrefix + '-header', switchMode, ...actionButtons, title: this.getMonthTitle(currentMonth[0].year, realLocalText.months[currentMonth[0].month], realLocalText.monthTitle)}}"
+    data="{{ classPrefix: classPrefix + '-header', switchMode, ...actionButtons, title: _this.getMonthTitle(currentMonth[0].year, realLocalText.months[currentMonth[0].month], realLocalText.monthTitle)}}"
   />
   <view aria-hidden class="{{classPrefix}}__days">
     <view wx:for="{{days}}" wx:key="index" class="{{classPrefix}}__days-item">{{ item }}</view>
@@ -40,7 +40,7 @@
       <template
         wx:if="{{switchMode === 'none'}}"
         is="calendar-header"
-        data="{{class: classPrefix + '__month', classPrefix: classPrefix + '-header', tId: 'year_' + item.year + '_month_' + item.month, switchMode, ...actionButtons, title: this.getMonthTitle(item.year, realLocalText.months[item.month], realLocalText.monthTitle) }}"
+        data="{{class: classPrefix + '__month', classPrefix: classPrefix + '-header', tId: 'year_' + item.year + '_month_' + item.month, switchMode, ...actionButtons, title: _this.getMonthTitle(item.year, realLocalText.months[item.month], realLocalText.monthTitle) }}"
       />
       <view class="{{classPrefix}}__dates">
         <view wx:for="{{(item.weekdayOfFirstDay - firstDayOfWeek + 7) % 7}}" wx:key="index" />
@@ -51,7 +51,7 @@
             data-month="{{item.month}}"
             data-date="{{dateItem}}"
             aria-role="button"
-            aria-label="{{this.getDateLabel(item, dateItem)}}"
+            aria-label="{{_this.getDateLabel(item, dateItem)}}"
             aria-disabled="{{dateItem.type === 'disabled'}}"
             bind:tap="handleSelect"
           >

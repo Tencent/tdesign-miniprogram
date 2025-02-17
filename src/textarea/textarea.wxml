@@ -1,5 +1,5 @@
 <wxs src="../common/utils.wxs" module="_" />
-<wxs src="./textarea.wxs" module="this" />
+<wxs src="./textarea.wxs" module="_this" />
 
 <view
   style="{{_._style([style, customStyle])}}"
@@ -12,7 +12,7 @@
   <view class="{{classPrefix}}__wrapper">
     <textarea
       class="{{classPrefix}}__wrapper-inner {{disabled? prefix +  '-is-disabled' : ''}} {{prefix}}-class-textarea"
-      style="{{this.textareaStyle(autosize)}}"
+      style="{{_this.textareaStyle(autosize)}}"
       maxlength="{{allowInputOverMax ? -1 : maxlength}}"
       disabled="{{disabled || readonly}}"
       placeholder="{{placeholder}}"

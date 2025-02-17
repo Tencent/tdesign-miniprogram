@@ -1,4 +1,4 @@
-<wxs src="../calendar.wxs" module="this" />
+<wxs src="../calendar.wxs" module="_this" />
 
 <t-calendar
   visible="{{visible}}"
@@ -9,4 +9,4 @@
   bind:confirm="handleConfirm"
   bind:panel-change="handlePanelChange"
 />
-<t-cell arrow title="带翻页功能的日历" note="{{this.formatTimestamp(value)}}" bind:tap="handleCalendar" />
+<t-cell arrow title="带翻页功能的日历" note="{{_this.formatTimestamp(value)}}" bind:tap="handleCalendar" />
