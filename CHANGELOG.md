@@ -6,6 +6,22 @@ docClass: timeline
 ---
 
 
+## 🌈 1.8.6 `2025-02-21` 
+### 🚀 Features
+- `Textarea`: 新增 `placeholderClass` 属性 @anlyyao ([#3468](https://github.com/Tencent/tdesign-miniprogram/pull/3468))
+- `Textarea`: 新增 `readonly` 与 `allowInputOverMax` 属性 @richardji202 ([#3474](https://github.com/Tencent/tdesign-miniprogram/pull/3474))
+- `Input`: 新增 `allowInputOverMax` 属性 @yangbai1991 ([#3473](https://github.com/Tencent/tdesign-miniprogram/pull/3473))
+- `Radiogroup`: 新增 `readonly` 属性 @yangbai1991 ([#3470](https://github.com/Tencent/tdesign-miniprogram/pull/3470))
+### 🐞 Bug Fixes
+
+- `Dialog`: 修复圆角样式错误，并新增 `--td-dialog-border-radius` @anlyyao ([#3469](https://github.com/Tencent/tdesign-miniprogram/pull/3469))
+- `Calendar`: 修复 `confirm-btn` 透传缺失部分参数的问题 @betavs ([#3464](https://github.com/Tencent/tdesign-miniprogram/pull/3464))
+- `Cell`: 修复部分样式错误，并更新 `align` 属性描述 @anlyyao ([#3466](https://github.com/Tencent/tdesign-miniprogram/pull/3466))
+- `Input`: 移除 `--td-input-border-radius`  @betavs ([#3463](https://github.com/Tencent/tdesign-miniprogram/pull/3463))
+### 🚧 Others
+- `WXS`: 所有 `wxs` 文件模块命名 `this` 改为 `_this` @jarmywang  ([#3488](https://github.com/Tencent/tdesign-miniprogram/pull/3488))
+
+
 ## 🌈 1.8.5 `2025-01-16` 
 ### 🚀 Features
 - `TreeSelect`: 新增 `customValue` 属性，自定义选中值，用于弥补 `value` 为空数组场景 @anlyyao ([#3400](https://github.com/Tencent/tdesign-miniprogram/pull/3400))
