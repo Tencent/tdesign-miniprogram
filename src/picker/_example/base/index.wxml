@@ -14,7 +14,7 @@
   bindpick="onColumnChange"
   bindcancel="onPickerCancel"
 >
-  <t-picker-item options="{{citys}}">
+  <t-picker-item options="{{citys}}" format="{{formatter}}">
     <block wx:for="{{citys}}" wx:key="index" wx:for-item="option">
       <view wx:if="{{option.tag}}" slot="label-suffix--{{index}}" class="label-suffix">
         <t-tag size="small" theme="primary">{{option.tag}}</t-tag>

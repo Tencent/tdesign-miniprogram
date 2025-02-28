@@ -57,7 +57,7 @@ export interface TdPickerProps {
     value?: KeysType;
   };
   /**
-   * 透传 `Popup` 组件全部属性
+   * 透传 Popup 组件全部属性
    * @default {}
    */
   popupProps?: {
