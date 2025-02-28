@@ -24,6 +24,7 @@
     class="{{_.cls(classPrefix + '__item', [['roomly', columns.length > 5 && index == 0]])}}"
     options="{{item}}"
     index="index"
+    format="{{formatter}}"
   />
   <slot slot="footer" name="footer" />
 </t-picker>
