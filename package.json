@@ -71,7 +71,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-prettier": "^5.2.3",
     "glob": "^8.1.0",
     "gray-matter": "^4.0.3",
     "gulp": "^4.0.2",
