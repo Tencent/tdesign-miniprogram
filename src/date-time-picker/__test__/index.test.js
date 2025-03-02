@@ -20,7 +20,7 @@ describe('date-time-picker', () => {
     const target = handler(dom);
 
     target.start(0, 0);
-    target.move(0, -34 * step); // itemHeight / 1.2
+    target.move(0, -40 * step); // itemHeight: 40
     target.end();
   };
 
