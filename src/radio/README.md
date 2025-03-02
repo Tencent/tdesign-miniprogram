@@ -6,6 +6,7 @@ isComponent: true
 ---
 
 <span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-98%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-99%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-88%25-blue" /></span>
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -74,7 +75,7 @@ max-content-row | Number | 5 | 内容最大行数限制 | N
 max-label-row | Number | 3 | 主文案最大行数限制 | N
 name | String | - | HTML 元素原生属性 | N
 placement | String | - | 复选框和内容相对位置。优先级高于 RadioGroup.placement。Radio 单独存在时，默认值为 left。如果父组件存在 RadioGroup，默认值便由 RadioGroup.placement 决定。可选项：left/right | N
-readonly | Boolean | undefined | 只读状态 | N
+readonly | Boolean | undefined | `1.8.6`。只读状态 | N
 value | String / Number / Boolean | false | 单选按钮的值。TS 类型：`T` `type RadioValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/radio/type.ts) | N
 
 ### Radio Events
@@ -93,7 +94,6 @@ t-class-content | 内容样式类
 t-class-icon | 图标样式类
 t-class-label | 标签样式类
 
-
 ### RadioGroup Props
 
 名称 | 类型 | 默认值 | 描述 | 必传
@@ -108,7 +108,7 @@ keys | Object | - | 用来定义 value / label 在 `options` 中对应的字段�
 name | String | - | HTML 元素原生属性 | N
 options | Array | - | 单选组件按钮形式。RadioOption 数据类型为 string 或 number 时，表示 label 和 value 值相同。TS 类型：`Array<RadioOption>` `type RadioOption = string \| number \| RadioOptionObj` `interface RadioOptionObj { label?: string; value?: string \| number; readonly?: boolean; disabled?: boolean; allowUncheck?: boolean; }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/radio-group/type.ts) | N
 placement | String | left | 复选框和内容相对位置。优先级低于 Radio.placement。可选项：left/right | N
-readonly | Boolean | undefined | 只读状态 | N
+readonly | Boolean | undefined | `1.8.6`。只读状态 | N
 value | String / Number / Boolean | - | 选中的值。TS 类型：`T` `type RadioValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/radio-group/type.ts) | N
 default-value | String / Number / Boolean | undefined | 选中的值。非受控属性。TS 类型：`T` `type RadioValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/radio-group/type.ts) | N
 
@@ -121,23 +121,24 @@ change | `(value: RadioValue)` | 选中值发生变化时触发
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+
+名称 | 默认值 | 描述
 -- | -- | --
---td-radio-bg-color | @bg-color-container | - 
---td-radio-border-color | @component-stroke | - 
---td-radio-content-checked-color | @font-gray-2 | - 
---td-radio-content-color | @font-gray-2 | - 
---td-radio-content-disabled-color | @font-gray-4 | - 
---td-radio-content-font-size | 28rpx | - 
---td-radio-content-line-height | 44rpx | - 
---td-radio-font-size | 32rpx | - 
---td-radio-icon-checked-color | @brand-color | - 
---td-radio-icon-color | @component-border | - 
---td-radio-icon-disabled-bg-color | @bg-color-component-disabled | - 
---td-radio-icon-disabled-color | @brand-color-disabled | - 
---td-radio-icon-size | 48rpx | - 
---td-radio-label-checked-color | @font-gray-1 | - 
---td-radio-label-color | @font-gray-1 | - 
---td-radio-label-disabled-color | @font-gray-4 | - 
---td-radio-label-line-height | 48rpx | - 
+--td-radio-bg-color | @bg-color-container | -
+--td-radio-border-color | @component-stroke | -
+--td-radio-content-checked-color | @font-gray-2 | -
+--td-radio-content-color | @font-gray-2 | -
+--td-radio-content-disabled-color | @font-gray-4 | -
+--td-radio-content-font-size | 28rpx | -
+--td-radio-content-line-height | 44rpx | -
+--td-radio-font-size | 32rpx | -
+--td-radio-icon-checked-color | @brand-color | -
+--td-radio-icon-color | @component-border | -
+--td-radio-icon-disabled-bg-color | @bg-color-component-disabled | -
+--td-radio-icon-disabled-color | @brand-color-disabled | -
+--td-radio-icon-size | 48rpx | -
+--td-radio-label-checked-color | @font-gray-1 | -
+--td-radio-label-color | @font-gray-1 | -
+--td-radio-label-disabled-color | @font-gray-4 | -
+--td-radio-label-line-height | 48rpx | -
 --td-radio-vertical-padding | 32rpx | -
