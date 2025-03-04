@@ -1,0 +1,24 @@
+name: Publish_Any_Commit
+on:
+  push:
+    branches: [develop]
+  pull_request:
+    branches: [develop]
+
+jobs:
+  build:
+    if: ${{ github.repository == 'Tencent/tdesign-miniprogram' && !startsWith(github.head_ref, 'release/') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - run: npm install
+
+      - run: npm run build
+
+      - run: npx pkg-pr-new publish --compact
