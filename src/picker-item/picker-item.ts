@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent, RelationsOptions, ComponentsOptionsType } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { PickerItemOption } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-picker-item`;
@@ -53,6 +54,7 @@ export default class PickerItem extends SuperComponent {
     columnIndex: 0,
     labelAlias: 'label',
     valueAlias: 'value',
+    formatOptions: props.options.value,
   };
 
   lifetimes = {
@@ -84,8 +86,7 @@ export default class PickerItem extends SuperComponent {
     },
 
     onTouchEnd() {
-      const { offset, labelAlias, valueAlias, columnIndex, pickItemHeight } = this.data;
-      const { options } = this.properties;
+      const { offset, labelAlias, valueAlias, columnIndex, pickItemHeight, formatOptions } = this.data;
 
       if (offset === this.StartOffset) {
         return;
@@ -103,8 +104,8 @@ export default class PickerItem extends SuperComponent {
 
       wx.nextTick(() => {
         this._selectedIndex = index;
-        this._selectedValue = options[index]?.[valueAlias];
-        this._selectedLabel = options[index]?.[labelAlias];
+        this._selectedValue = formatOptions[index]?.[valueAlias];
+        this._selectedLabel = formatOptions[index]?.[labelAlias];
         this.$parent?.triggerColumnChange({
           index,
           column: columnIndex,
@@ -112,21 +113,32 @@ export default class PickerItem extends SuperComponent {
       });
     },
 
+    formatOption(options: PickerItemOption[], columnIndex: number, format: any) {
+      if (typeof format !== 'function') return options;
+
+      return options.map((ele: PickerItemOption) => {
+        return format(ele, columnIndex);
+      });
+    },
+
     // 刷新选中状态
     update() {
-      const { options, value, labelAlias, valueAlias, pickItemHeight } = this.data;
+      const { options, value, labelAlias, valueAlias, pickItemHeight, format, columnIndex } = this.data;
 
-      const index = options.findIndex((item) => item[valueAlias] === value);
+      const formatOptions = this.formatOption(options, columnIndex, format);
+
+      const index = formatOptions.findIndex((item: PickerItemOption) => item[valueAlias] === value);
       const selectedIndex = index > 0 ? index : 0;
 
+      this._selectedIndex = selectedIndex;
+      this._selectedValue = formatOptions[selectedIndex]?.[valueAlias];
+      this._selectedLabel = formatOptions[selectedIndex]?.[labelAlias];
+
       this.setData({
+        formatOptions,
         offset: -selectedIndex * pickItemHeight,
         curIndex: selectedIndex,
       });
-
-      this._selectedIndex = selectedIndex;
-      this._selectedValue = options[selectedIndex]?.[valueAlias];
-      this._selectedLabel = options[selectedIndex]?.[labelAlias];
     },
 
     resetOrigin() {

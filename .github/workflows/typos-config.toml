@@ -5,6 +5,7 @@ actived = "actived"
 Colum = "Colum"
 ded = "ded"
 destory ="destory"
+nd = "nd"
 
 [files]
 extend-exclude = ["CHANGELOG.md"]

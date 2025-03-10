@@ -40,7 +40,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
-format | Function | - | Typescript：`(option: PickerItemOption) => string` | N
+format | Function | - | Typescript：`(option: PickerItemOption, columnIndex: number) => PickerItemOption` | N
 options | Array | [] | Typescript：`PickerItemOption[]` `interface PickerItemOption { label: string; value: string \| number }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker-item/type.ts) | N
 
 ### CSS Variables

@@ -10,7 +10,7 @@ export interface TdPickerItemProps {
    */
   format?: {
     type: undefined;
-    value?: (option: PickerItemOption) => string;
+    value?: (option: PickerItemOption, columnIndex: number) => PickerItemOption;
   };
   /**
    * 数据源

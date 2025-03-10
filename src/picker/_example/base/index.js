@@ -22,6 +22,16 @@ Component({
       { label: '秋', value: '秋' },
       { label: '冬', value: '冬' },
     ],
+    formatter(item) {
+      const { value, label } = item;
+      if (value === '北京市') {
+        return {
+          value,
+          label: label.substring(0, 2),
+        };
+      }
+      return item;
+    },
   },
 
   methods: {
