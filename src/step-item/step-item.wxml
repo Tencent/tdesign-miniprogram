@@ -30,7 +30,7 @@
   >
     <slot />
     <view class="{{_.cls(classPrefix + '__title', [curStatus, layout])}} {{prefix}}-class-title">
-      {{ title }}
+      <block wx:if="{{title}}">{{ title }}></block>
       <slot name="title" />
       <slot wx:if="{{layout === 'vertical'}}" name="title-right" />
     </view>
