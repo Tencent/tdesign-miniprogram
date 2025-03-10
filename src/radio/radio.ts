@@ -105,7 +105,7 @@ export default class Radio extends SuperComponent {
         customIcon: isIdArr,
         slotIcon: icon === 'slot',
         iconVal: isIdArr ? this.$parent?.icon || icon : [],
-        _placement: this.data.placement ?? this.$parent?.data?.placement ?? 'left',
+        _placement: this.data.placement || this.$parent?.data?.placement || 'left',
       });
     },
 
