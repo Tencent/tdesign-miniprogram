@@ -20,7 +20,7 @@
   bindsuccess="onSuccess"
   bindfail="onFail"
   bindcomplete="onComplete"
-  aria-disabled="{{status === 'disabled'}}"
+  aria-disabled="{{disabled}}"
 >
   <view class="{{classPrefix}}__prefix-icon {{prefix}}-class-prefix-icon">
     <slot name="prefix-icon" />
