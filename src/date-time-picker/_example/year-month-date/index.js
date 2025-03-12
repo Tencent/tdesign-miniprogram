@@ -1,3 +1,18 @@
+const calendarMonth = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
+
 Page({
   data: {
     mode: '',
@@ -16,6 +31,25 @@ Page({
     },
     popupProps: {
       usingCustomNavbar: true,
+    },
+
+    formatter(item, index) {
+      let label = item.label.slice(0, -1);
+      if (index === 1) {
+        label = calendarMonth[Number(label) - 1];
+      }
+      if (index === 2) {
+        const suffixes = {
+          1: 'st',
+          2: 'nd',
+          3: 'rd',
+        };
+        label = `${label}${suffixes[label] || 'th'}`;
+      }
+      return {
+        value: item.value,
+        label,
+      };
     },
   },
   showPicker(e) {

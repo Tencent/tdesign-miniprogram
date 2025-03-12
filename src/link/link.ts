@@ -28,7 +28,7 @@ export default class Link extends SuperComponent {
   };
 
   observers = {
-    'theme, status, size, underline, navigatorProps'() {
+    'theme, disabled, size, underline, navigatorProps'() {
       this.setClass();
     },
 

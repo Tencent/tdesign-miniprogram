@@ -20,6 +20,7 @@
   start="{{start}}"
   end="{{end}}"
   filter="{{filter}}"
+  formatter="{{formatter}}"
   popup-props="{{popupProps}}"
   bindchange="onConfirm"
   bindpick="onColumnChange"

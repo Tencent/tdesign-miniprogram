@@ -182,6 +182,7 @@ exports[`DateTimePicker DateTimePicker year-month-date demo works fine 1`] = `
     end="2030-09-09 12:12:12"
     filter="{{[Function]}}"
     format="YYYY-MM-DD"
+    formatter="{{[Function]}}"
     mode="date"
     popupProps="{{
       Object {
