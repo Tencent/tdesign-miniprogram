@@ -25,6 +25,7 @@ name | params | description
 -- | -- | --
 close | \- | \-
 destroy | \- | \-
+
 ### Toast External Classes
 
 className | Description

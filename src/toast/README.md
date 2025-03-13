@@ -62,6 +62,7 @@ using-custom-navbar | Boolean | false | 是否使用了自定义导航栏 | N
 -- | -- | --
 close | \- | 轻提示隐藏的时候触发
 destroy | \- | 轻提示销毁的时候触发
+
 ### Toast External Classes
 
 类名 | 描述

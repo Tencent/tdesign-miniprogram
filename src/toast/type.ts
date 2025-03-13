@@ -73,7 +73,7 @@ export interface TdToastProps {
    */
   theme?: {
     type: StringConstructor;
-    value?: 'loading' | 'success' | 'error';
+    value?: 'loading' | 'success' | 'warning' | 'error';
   };
   /**
    * 是否使用了自定义导航栏
