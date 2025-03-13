@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 function animate(options) {
   var result = [];
 
