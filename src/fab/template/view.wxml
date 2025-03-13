@@ -6,6 +6,6 @@
     class="{{classPrefix}} class {{prefix}}-class"
     style="right: 16px; bottom: 32px; {{_._style([style, customStyle])}}"
   >
-    <template is="button" data="{{...buttonData}}" />
+    <template is="button" data="{{useDefaultSlot: true, ...buttonData}}" />
   </view>
 </template>
