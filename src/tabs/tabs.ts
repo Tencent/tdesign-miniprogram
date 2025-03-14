@@ -230,12 +230,26 @@ export default class Tabs extends SuperComponent {
         if (this.data.theme === 'line') {
           distance += (rect.width - trackLineWidth) / 2;
         }
-        this.setData({
-          trackStyle: `-webkit-transform: translateX(${distance}px);
-            transform: translateX(${distance}px);
-            width:${trackLineWidth}px;
-          `,
-        });
+        const trackStyleList = [
+          `-webkit-transform: translateX(${distance}px);`,
+          `transform: translateX(${distance}px);`,
+          `width:${trackLineWidth}px`,
+        ];
+        // 初始快速定位track位置
+        if (!this.data.trackStyle) {
+          trackStyleList.push('transition-duration: 0;');
+          this.setData({ trackStyle: trackStyleList.join('') }, () => {
+            trackStyleList.push('opacity: 1;');
+            this.setData({ trackStyle: trackStyleList.join('') });
+          });
+        } else {
+          trackStyleList.push('transition-duration: 0.3s;');
+          trackStyleList.push('opacity: 1;');
+          if (this.previousIndex !== currentIndex) {
+            this.previousIndex = currentIndex;
+            this.setData({ trackStyle: trackStyleList.join('') });
+          }
+        }
       } catch (err) {
         this.triggerEvent('error', err);
       }
