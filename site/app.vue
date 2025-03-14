@@ -6,14 +6,16 @@
     <td-doc-aside ref="tdDocAside" title="WeChat MiniProgram"></td-doc-aside>
 
     <router-view :style="contentStyle" @loaded="contentLoaded" :docType="docType" />
+    <td-theme-generator />
   </td-doc-layout>
 </template>
 
 <script>
+import 'tdesign-theme-generator';
+import { defineComponent } from 'vue';
+
 import siteConfig from './site.config';
 import { changeThemeMode } from './theme/dark';
-
-import { defineComponent } from 'vue';
 
 const { docs, enDocs } = JSON.parse(JSON.stringify(siteConfig).replace(/component:.+/g, ''));
 

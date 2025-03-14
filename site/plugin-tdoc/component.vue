@@ -39,7 +39,7 @@ import { defineComponent } from 'vue';
 import Prismjs from 'prismjs';
 import 'prismjs/components/prism-bash.js';
 import 'prismjs/components/prism-json.js';
-import { changeThemeMode, watchExampleRouterChange } from '../theme/dark';
+import { changeThemeMode, watchExampleRouterChange, watchThemeColorChange } from '../theme/dark';
 
 import QrCode from '@components/qrcode.vue';
 
@@ -94,6 +94,7 @@ export default defineComponent({
     if (this.$refs.parentIframe) {
       this.$refs.parentIframe.onload = () => {
         watchExampleRouterChange(this.$refs.parentIframe);
+        watchThemeColorChange();
       };
     }
   },

@@ -125,6 +125,7 @@
   },
   "dependencies": {
     "dayjs": "^1.10.7",
+    "tdesign-theme-generator": "^1.0.17",
     "tinycolor2": "^1.4.2"
   }
 }
