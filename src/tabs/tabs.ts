@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
+import { RelationsOptions, SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
 import touch from '../mixins/touch';
@@ -238,18 +238,12 @@ export default class Tabs extends SuperComponent {
         // 初始快速定位track位置
         if (!this.data.trackStyle) {
           trackStyleList.push('transition-duration: 0;');
-          this.setData({ trackStyle: trackStyleList.join('') }, () => {
-            trackStyleList.push('opacity: 1;');
-            this.setData({ trackStyle: trackStyleList.join('') });
-          });
-        } else {
-          trackStyleList.push('transition-duration: 0.3s;');
-          trackStyleList.push('opacity: 1;');
-          if (this.previousIndex !== currentIndex) {
+          this.setData({ trackStyle: trackStyleList.join('') });
+        } else if (this.previousIndex !== currentIndex) {
             this.previousIndex = currentIndex;
+            trackStyleList.push('transition-duration: 0.3s;');
             this.setData({ trackStyle: trackStyleList.join('') });
           }
-        }
       } catch (err) {
         this.triggerEvent('error', err);
       }
