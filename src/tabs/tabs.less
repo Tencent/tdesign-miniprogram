@@ -191,11 +191,20 @@
     width: 100%;
   }
 
+  @keyframes show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
   &__track {
     position: absolute;
     font-weight: 600;
     z-index: 1;
-    transition-duration: 0.3s;
+    opacity: 0;
     background-color: @tab-track-color;
     left: 0;
     bottom: 1rpx;
