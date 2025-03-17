@@ -58,7 +58,7 @@
           <view
             wx:if="{{theme == 'line' && showBottomLine}}"
             class="{{_.cls(classPrefix + '__track', [placement])}} {{prefix}}-class-track"
-            style="{{trackStyle}}"
+            style="{{_._style(trackStyle)}}"
           />
         </view>
       </scroll-view>

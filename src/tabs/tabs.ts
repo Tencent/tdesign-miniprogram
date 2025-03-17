@@ -68,7 +68,7 @@ export default class Tabs extends SuperComponent {
     tabs: [],
     currentLabels: [],
     currentIndex: -1,
-    trackStyle: '',
+    trackStyle: [],
     offset: 0,
     scrollLeft: 0,
     tabID: '',
@@ -230,19 +230,21 @@ export default class Tabs extends SuperComponent {
         if (this.data.theme === 'line') {
           distance += (rect.width - trackLineWidth) / 2;
         }
-        const trackStyleList = [
-          `-webkit-transform: translateX(${distance}px);`,
-          `transform: translateX(${distance}px);`,
+        const trackStyle = [
+          `-webkit-transform: translateX(${distance}px)`,
+          `transform: translateX(${distance}px)`,
           `width:${trackLineWidth}px`,
+          'opacity: 1',
         ];
         // 初始快速定位track位置
-        if (!this.data.trackStyle) {
-          trackStyleList.push('transition-duration: 0;');
-          this.setData({ trackStyle: trackStyleList.join('') });
+        if (this.data.trackStyle.length === 0) {
+          this.previousIndex = currentIndex;
+          trackStyle.push('transition-duration: 0');
+          this.setData({ trackStyle });
         } else if (this.previousIndex !== currentIndex) {
             this.previousIndex = currentIndex;
-            trackStyleList.push('transition-duration: 0.3s;');
-            this.setData({ trackStyle: trackStyleList.join('') });
+            trackStyle.push('transition-duration: 0.3s');
+            this.setData({ trackStyle });
           }
       } catch (err) {
         this.triggerEvent('error', err);
