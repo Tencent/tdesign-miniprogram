@@ -68,7 +68,7 @@ export default class Tabs extends SuperComponent {
     tabs: [],
     currentLabels: [],
     currentIndex: -1,
-    trackStyle: [],
+    trackOption: { lineWidth: 0, distance: 0, isInit: true },
     offset: 0,
     scrollLeft: 0,
     tabID: '',
@@ -193,7 +193,6 @@ export default class Tabs extends SuperComponent {
     },
 
     async setTrack() {
-      // if (!this.properties.showBottomLine) return;
       const { children } = this;
       if (!children) return;
       const { currentIndex } = this.data;
@@ -226,26 +225,16 @@ export default class Tabs extends SuperComponent {
           getObserver(this, `.${name}`).then(() => this.setTrack());
         }
 
-        const trackLineWidth = await this.getTrackSize();
+        const lineWidth = await this.getTrackSize();
         if (this.data.theme === 'line') {
-          distance += (rect.width - trackLineWidth) / 2;
+          distance += (rect.width - lineWidth) / 2;
         }
-        const trackStyle = [
-          `-webkit-transform: translateX(${distance}px)`,
-          `transform: translateX(${distance}px)`,
-          `width:${trackLineWidth}px`,
-          'opacity: 1',
-        ];
-        // 初始快速定位track位置
-        if (this.data.trackStyle.length === 0) {
+
+        const isInit = this.previousIndex === undefined;
+        if (isInit || this.previousIndex !== currentIndex) {
           this.previousIndex = currentIndex;
-          trackStyle.push('transition-duration: 0');
-          this.setData({ trackStyle });
-        } else if (this.previousIndex !== currentIndex) {
-            this.previousIndex = currentIndex;
-            trackStyle.push('transition-duration: 0.3s');
-            this.setData({ trackStyle });
-          }
+          this.setData({ trackOption: { lineWidth, distance, isInit } });
+        }
       } catch (err) {
         this.triggerEvent('error', err);
       }
