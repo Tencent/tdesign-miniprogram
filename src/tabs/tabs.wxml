@@ -1,6 +1,6 @@
 <import src="../common/template/badge.wxml" />
 <import src="../common/template/icon.wxml" />
-<wxs src="./tabs.wxs" module="filters" />
+<wxs src="./tabs.wxs" module="_tabs" />
 <wxs src="../common/utils.wxs" module="_" />
 
 <view style="{{_._style([style, customStyle])}}" class="{{_.cls(classPrefix, [placement])}} class {{prefix}}-class">
@@ -58,7 +58,7 @@
           <view
             wx:if="{{theme == 'line' && showBottomLine}}"
             class="{{_.cls(classPrefix + '__track', [placement])}} {{prefix}}-class-track"
-            style="{{trackStyle}}"
+            style="{{_tabs.trackStyle(trackOption)}}"
           />
         </view>
       </scroll-view>
@@ -74,7 +74,7 @@
   >
     <view
       class="{{classPrefix}}__content-inner {{prefix}}-class-content"
-      style="{{ filters.animate({duration: animation.duration, currentIndex:currentIndex}) }}"
+      style="{{ _tabs.animate({duration: animation.duration, currentIndex:currentIndex}) }}"
     >
       <slot />
     </view>

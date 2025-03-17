@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
+import { RelationsOptions, SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
 import touch from '../mixins/touch';
@@ -68,7 +68,7 @@ export default class Tabs extends SuperComponent {
     tabs: [],
     currentLabels: [],
     currentIndex: -1,
-    trackStyle: '',
+    trackOption: { lineWidth: 0, distance: 0, isInit: true },
     offset: 0,
     scrollLeft: 0,
     tabID: '',
@@ -193,7 +193,6 @@ export default class Tabs extends SuperComponent {
     },
 
     async setTrack() {
-      // if (!this.properties.showBottomLine) return;
       const { children } = this;
       if (!children) return;
       const { currentIndex } = this.data;
@@ -226,16 +225,16 @@ export default class Tabs extends SuperComponent {
           getObserver(this, `.${name}`).then(() => this.setTrack());
         }
 
-        const trackLineWidth = await this.getTrackSize();
+        const lineWidth = await this.getTrackSize();
         if (this.data.theme === 'line') {
-          distance += (rect.width - trackLineWidth) / 2;
+          distance += (rect.width - lineWidth) / 2;
         }
-        this.setData({
-          trackStyle: `-webkit-transform: translateX(${distance}px);
-            transform: translateX(${distance}px);
-            width:${trackLineWidth}px;
-          `,
-        });
+
+        const isInit = this.previousIndex === undefined;
+        if (isInit || this.previousIndex !== currentIndex) {
+          this.previousIndex = currentIndex;
+          this.setData({ trackOption: { lineWidth, distance, isInit } });
+        }
       } catch (err) {
         this.triggerEvent('error', err);
       }
