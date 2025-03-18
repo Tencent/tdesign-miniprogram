@@ -20,6 +20,10 @@
     <with-title />
   </t-demo>
 
+  <t-demo desc="异步加载">
+    <lazy />
+  </t-demo>
+
   <t-demo desc="选择任意一项">
     <check-strictly />
   </t-demo>

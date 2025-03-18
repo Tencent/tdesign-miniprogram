@@ -6,6 +6,7 @@
     "keys": "./keys",
     "with-value": "./with-value",
     "with-title": "./with-title",
+    "lazy": "./lazy",
     "check-strictly": "./check-strictly"
   }
 }

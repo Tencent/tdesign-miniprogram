@@ -296,7 +296,7 @@ export default class Cascader extends SuperComponent {
       selectedIndexes.length = level + 1;
 
       const { items: newItems } = this.genItems();
-      if (item?.[keys?.children ?? 'children']?.length) {
+      if (item?.[keys?.children ?? 'children']?.length || item?.[keys?.children ?? 'children']?.length === 0) {
         this.setData({
           selectedIndexes,
           [`items[${level + 1}]`]: newItems[level + 1],
