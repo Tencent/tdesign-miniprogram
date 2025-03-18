@@ -1,7 +1,7 @@
 <template name="button">
   <t-button
     t-id="{{tId || ''}}"
-    style="{{style}}"
+    style="{{style || ''}}"
     block="{{block || false}}"
     class="{{rootClass || ''}}"
     t-class="{{tClass}}"
@@ -12,7 +12,7 @@
     content="{{content || ''}}"
     icon="{{icon || ''}}"
     loading="{{loading || false}}"
-    loading-props="{{loadingProps}}"
+    loading-props="{{loadingProps || null }}"
     theme="{{theme || 'default'}}"
     ghost="{{ghost || false}}"
     shape="{{shape || 'rectangle'}}"
@@ -40,6 +40,6 @@
     bind:agreeprivacyauthorization="onTplButtonTap"
     aria-label="{{ariaLabel || ''}}"
   >
-    <slot />
+    <slot wx:if="{{useDefaultSlot || false}}" />
   </t-button>
 </template>
