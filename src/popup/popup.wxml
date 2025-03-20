@@ -20,6 +20,7 @@
       <slot name="close-btn" class="{{classPrefix}}-slot" />
     </view>
   </view>
+  <view class="{{classPrefix}}__mask" style="z-index: {{ maskZindex }};"> </view>
 </view>
 
 <t-overlay

@@ -26,6 +26,7 @@ export default function transition() {
       transitionDurations: 300,
       className: '',
       realVisible: false,
+      maskZindex: -1,
     },
 
     created() {
@@ -87,6 +88,7 @@ export default function transition() {
         this.status = 'leaving';
         this.setData({
           transitionClass: `${prefix}-${name}-leave  ${prefix}-${name}-leave-active`,
+          maskZindex: 99999,
         });
         clearTimeout(this.transitionT);
         setTimeout(() => {
@@ -120,6 +122,7 @@ export default function transition() {
           this.leaved();
           this.setData({
             realVisible: false,
+            maskZindex: -1,
           });
         }
       },
