@@ -31,6 +31,7 @@ export default function transition() {
     created() {
       this.status = '';
       this.transitionT = 0;
+      this.transitionEndStatus = false;
     },
     attached() {
       this.durations = this.getDurations();
@@ -82,6 +83,11 @@ export default function transition() {
         });
       },
       leave() {
+        if (this.data.preventScrollThrough && !this.transitionEndStatus) {
+          this.setData({
+            realVisible: false,
+          });
+        }
         const { name } = this.data;
         const [, duration] = this.durations;
         this.status = 'leaving';
@@ -112,6 +118,7 @@ export default function transition() {
         if (this.customDuration) {
           return;
         }
+        this.transitionEndStatus = true;
 
         clearTimeout(this.transitionT);
         if (this.status === 'entering' && this.data.visible) {
