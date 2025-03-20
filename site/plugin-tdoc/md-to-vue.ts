@@ -1,10 +1,6 @@
-/* eslint-disable */
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-// import camelCase from 'camelcase';
-
-// import testCoverage from '../test-coverage';
 
 const componentPath = path.join(__dirname, './component.vue').replaceAll('\\', '/');
 
@@ -19,33 +15,6 @@ const DEFAULT_EN_TABS = [
   { tab: 'api', name: 'API' },
   { tab: 'design', name: 'Guideline' },
 ];
-
-export default function mdToVue(options: any) {
-  const mdSegment = customRender(options);
-  const { demoCodesImportsStr = '', demoCodesDefsStr } = options;
-
-  // let coverage = '';
-  // if (mdSegment.isComponent) {
-  //   coverage = testCoverage[camelCase(mdSegment.componentName)] || '0%';
-  // }
-
-  const sfc = `
-    <template><tdesign-doc /></template>
-    <script>
-      import TdesignDoc from '${componentPath}';
-      import { defineComponent } from 'vue';
-      ${demoCodesImportsStr}
-
-      export default defineComponent({
-        props: { docType: String },
-        components: { TdesignDoc },
-        provide: { info: ${JSON.stringify(mdSegment)}, demos: { ${demoCodesDefsStr} } },
-      });
-    </script>
-  `;
-
-  return sfc;
-}
 
 // 解析 markdown 内容
 function customRender({ source, file, md }: any) {
@@ -72,7 +41,7 @@ function customRender({ source, file, md }: any) {
   const componentName = reg && reg[1];
 
   // split md
-  let [demoMd = '', apiMd = ''] = content.split(pageData.apiFlag);
+  const [demoMd = '', apiMd = ''] = content.split(pageData.apiFlag);
 
   const mdSegment = {
     ...pageData,
@@ -103,10 +72,30 @@ function customRender({ source, file, md }: any) {
     if (fs.existsSync(designDocPath)) {
       const designMd = fs.readFileSync(designDocPath, 'utf-8');
       mdSegment.designMd = md.render.call(md, `${pageData.toc ? '[toc]\n' : ''}${designMd}`).html;
-    } else {
-      // console.log(`[vite-plugin-tdoc]: 未找到 ${designDocPath} 文件`);
     }
   }
 
   return mdSegment;
+}
+
+export default function mdToVue(options: any) {
+  const mdSegment = customRender(options);
+  const { demoCodesImportsStr = '', demoCodesDefsStr } = options;
+
+  const sfc = `
+    <template><tdesign-doc /></template>
+    <script>
+      import TdesignDoc from '${componentPath}';
+      import { defineComponent } from 'vue';
+      ${demoCodesImportsStr}
+
+      export default defineComponent({
+        props: { docType: String },
+        components: { TdesignDoc },
+        provide: { info: ${JSON.stringify(mdSegment)}, demos: { ${demoCodesDefsStr} } },
+      });
+    </script>
+  `;
+
+  return sfc;
 }

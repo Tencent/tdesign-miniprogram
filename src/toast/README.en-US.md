@@ -16,7 +16,7 @@ overlay-props | Object | - | Typescript：`OverlayProps `，[Overlay API Documen
 placement | String | middle | options:  top/middle/bottom | N
 prevent-scroll-through | Boolean | false | \- | N
 show-overlay | Boolean | false | \- | N
-theme | String | - | options: loading/success/error | N
+theme | String | - | options: loading/success/warning/error | N
 using-custom-navbar | Boolean | false | \- | N
 
 ### Toast Events
@@ -25,6 +25,7 @@ name | params | description
 -- | -- | --
 close | \- | \-
 destroy | \- | \-
+
 ### Toast External Classes
 
 className | Description

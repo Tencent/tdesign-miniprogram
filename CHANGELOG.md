@@ -6,6 +6,21 @@ docClass: timeline
 ---
 
 
+## 🌈 1.8.7 `2025-03-14` 
+### 🚀 Features
+- `Link`: 支持 `disabled` 动态变更 @anlyyao ([#3496](https://github.com/Tencent/tdesign-miniprogram/pull/3496))
+- `DateTimePicker`: 新增 `formatter` 属性 @anlyyao ([#3500](https://github.com/Tencent/tdesign-miniprogram/pull/3500))
+- `Tabs`:  新增 `bottomLineMode` 属性；`TabPanel` 新增 `lazy` 属性 @SkylerXie ([#3428](https://github.com/Tencent/tdesign-miniprogram/pull/3428))
+### 🐞 Bug Fixes
+- `Radio`: 修复横向单选框样式错误 @anlyyao ([#3497](https://github.com/Tencent/tdesign-miniprogram/pull/3497))
+- `Guide`: 修复多个场景组件定位错误 @anlyyao ([#3499](https://github.com/Tencent/tdesign-miniprogram/pull/3499))
+- `Picker`: 修复 `format` 属性无效 @anlyyao ([#3500](https://github.com/Tencent/tdesign-miniprogram/pull/3500))
+- `StepItem`: 修复 `title` 插槽在 `skyline` 渲染下展示偏右的问题 @runoob-coder ([#3519](https://github.com/Tencent/tdesign-miniprogram/pull/3519))
+- `toast`: 新增 `warning` 主题类型 @theEfrain08 ([#3517](https://github.com/Tencent/tdesign-miniprogram/pull/3517))
+### 🚧 Others
+- `other`: 修复因 `button` 模版带来的控制台告警 @anlyyao ([#3523](https://github.com/Tencent/tdesign-miniprogram/pull/3523))
+
+
 ## 🌈 1.8.6 `2025-02-21` 
 ### 🚀 Features
 - `Textarea`: 新增 `placeholderClass` 属性 @anlyyao ([#3468](https://github.com/Tencent/tdesign-miniprogram/pull/3468))

@@ -1,4 +1,3 @@
-/* eslint-disable */
 var utils = require('../common/utils.wxs');
 
 function textareaStyle(autosize) {

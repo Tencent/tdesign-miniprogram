@@ -10,6 +10,6 @@
     bind:move="onMove"
     bind:end="onEnd"
   >
-    <template is="button" data="{{...buttonData}}" />
+    <template is="button" data="{{useDefaultSlot: true, ...buttonData}}" />
   </t-draggable>
 </template>

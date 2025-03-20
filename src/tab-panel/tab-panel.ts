@@ -27,6 +27,7 @@ export default class TabPanel extends SuperComponent {
     active: false,
     hide: true,
     id: '',
+    hasActivated: false,
   };
 
   setId(id) {
@@ -34,7 +35,7 @@ export default class TabPanel extends SuperComponent {
   }
 
   observers = {
-    'label, badgeProps, disabled, icon, panel, value'() {
+    'label, badgeProps, disabled, icon, panel, value, lazy'() {
       this.update();
     },
   };
@@ -52,6 +53,10 @@ export default class TabPanel extends SuperComponent {
 
   render(active: Boolean, parent: WechatMiniprogram.Component.TrivialInstance) {
     this.initialized = this.initialized || active;
+
+    if (active && !this.data.hasActivated) {
+      this.setData({ hasActivated: true });
+    }
 
     this.setData({
       active,

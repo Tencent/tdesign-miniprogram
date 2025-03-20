@@ -53,7 +53,7 @@ overlay-props | Object | - | 遮罩层属性，透传至 Overlay。TS 类型：`
 placement | String | middle | 弹窗展示位置。可选项： top/middle/bottom | N
 prevent-scroll-through | Boolean | false | 防止滚动穿透，即不允许点击和滚动 | N
 show-overlay | Boolean | false | 是否显示遮罩层 | N
-theme | String | - | 提示类型。可选项：loading/success/error | N
+theme | String | - | 提示类型。可选项：loading/success/warning/error | N
 using-custom-navbar | Boolean | false | 是否使用了自定义导航栏 | N
 
 ### Toast Events
@@ -62,6 +62,7 @@ using-custom-navbar | Boolean | false | 是否使用了自定义导航栏 | N
 -- | -- | --
 close | \- | 轻提示隐藏的时候触发
 destroy | \- | 轻提示销毁的时候触发
+
 ### Toast External Classes
 
 类名 | 描述
