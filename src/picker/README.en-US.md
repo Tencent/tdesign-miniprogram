@@ -9,8 +9,8 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 auto-close | Boolean | true | \- | N
-cancel-btn | String / Boolean / Object | true | Typescript：`boolean \| string \| ButtonProps` | N
-confirm-btn | String / Boolean / Object | true | Typescript：`boolean \| string \| ButtonProps`，[Button API Documents](./button?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/picker/type.ts) | N
+cancel-btn | String / Boolean | true | Typescript：`boolean \| string` | N
+confirm-btn | String / Boolean | true | Typescript：`boolean \| string` | N
 footer | Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 header | Boolean / Slot | true | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 item-height | Number | 80 | \- | N
