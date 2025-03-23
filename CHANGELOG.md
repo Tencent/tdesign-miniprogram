@@ -6,6 +6,16 @@ docClass: timeline
 ---
 
 
+## 🌈 1.8.8 `2025-03-23` 
+### 🐞 Bug Fixes
+- `StepItem`: 移除页面中多余的字符内容 @runoob-coder ([#3528](https://github.com/Tencent/tdesign-miniprogram/pull/3528))
+- `Tabs`: 优化指示器初始显示 @jarmywang ([#3525](https://github.com/Tencent/tdesign-miniprogram/pull/3525))
+- `Picker`: 修复 `API` 文档错误，`confirmBtn` 和 `cancelBtn` 属性仅支持 `string` 和 `boolean` 类型 @anlyyao ([#3540](https://github.com/Tencent/tdesign-miniprogram/pull/3540))
+- `Cascader`: 允许 `children` 为空数组，便于支持数据异步场景 @liuffff ([#3542](https://github.com/Tencent/tdesign-miniprogram/pull/3542))
+### 🚧 Others
+- other(theme): 补充 `--td-brand-color-x` 系列色板 @anlyyao ([#3531](https://github.com/Tencent/tdesign-miniprogram/pull/3531))
+ 
+
 ## 🌈 1.8.7 `2025-03-14` 
 ### 🚀 Features
 - `Link`: 支持 `disabled` 动态变更 @anlyyao ([#3496](https://github.com/Tencent/tdesign-miniprogram/pull/3496))
