@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import 'tdesign-theme-generator';
 import { defineComponent } from 'vue';
 
 import siteConfig from './site.config';
