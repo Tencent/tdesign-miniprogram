@@ -1,5 +1,6 @@
 const CUSTOM_THEME_ID = 'custom-theme';
-const CUSTOM_THEME_DARK_ID = 'custom-dark-theme';
+const CUSTOM_DARK_ID = 'custom-theme-dark';
+const CUSTOM_COMMON_ID_PREFIX = 'custom-theme-common';
 
 const LIGHT_WHITE_BACKGROUND_COMPONENTS = [
   'button',
@@ -49,11 +50,22 @@ function getCurComponentBackground() {
 function getTdToken() {
   const isDark = document.documentElement.getAttribute('theme-mode') === 'dark';
 
-  const styleId = isDark ? CUSTOM_THEME_DARK_ID : CUSTOM_THEME_ID;
+  const styleId = isDark ? CUSTOM_DARK_ID : CUSTOM_THEME_ID;
   const customStyle = document.getElementById(styleId)?.textContent || '';
+  const customVars = customStyle.match(/--td-[^;]+;/g) || [];
 
-  const tdVariables = customStyle.match(/--td-[^;]+;/g);
-  return tdVariables ? tdVariables.join('\n') : '';
+  const commonStyles = document.querySelectorAll(`[id^="${CUSTOM_COMMON_ID_PREFIX}-"]`);
+  let commonVars: string[] = [];
+  commonStyles.forEach((node) => {
+    const textContent = node.textContent || '';
+    const matches = textContent.match(/--td-[^;]+;/g);
+    if (matches) {
+      commonVars = commonVars.concat(matches);
+    }
+  });
+
+  const allVariables = [...customVars, ...commonVars];
+  return allVariables.join('\n');
 }
 
 /**
@@ -73,7 +85,7 @@ function updateIframeStyle(previewIframe: HTMLIFrameElement) {
     customStyleEl = style;
   }
 
-  const styleStr = `body {\n${getTdToken()} ${getCurComponentBackground()}\n}`;
+  const styleStr = `body {\n${getTdToken()}\n${getCurComponentBackground()}\n}`;
   customStyleEl.textContent = styleStr;
 }
 

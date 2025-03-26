@@ -6,7 +6,7 @@
     <td-doc-aside ref="tdDocAside" title="WeChat MiniProgram"></td-doc-aside>
 
     <router-view :style="contentStyle" @loaded="contentLoaded" :docType="docType" />
-    <td-theme-generator />
+    <td-theme-generator device="mobile" />
   </td-doc-layout>
 </template>
 
