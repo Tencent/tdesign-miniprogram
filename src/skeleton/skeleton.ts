@@ -3,7 +3,8 @@ import config from '../common/config';
 import props from './props';
 import { SkeletonRowColObj } from './type';
 import { ClassName, Styles } from '../common/common';
-import { isNumber, classNames } from '../common/utils';
+import { classNames } from '../common/utils';
+import { isNumber } from '../common/validator';
 
 const { prefix } = config;
 const name = `${prefix}-skeleton`;

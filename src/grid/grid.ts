@@ -1,5 +1,6 @@
-import { isObject, SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
+import { isObject } from '../common/validator';
 import props from './props';
 
 const { prefix } = config;

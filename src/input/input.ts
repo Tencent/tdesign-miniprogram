@@ -1,7 +1,8 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { getCharacterLength, calcIcon, isDef } from '../common/utils';
+import { getCharacterLength, calcIcon } from '../common/utils';
+import { isDef } from '../common/validator';
 
 const { prefix } = config;
 const name = `${prefix}-input`;

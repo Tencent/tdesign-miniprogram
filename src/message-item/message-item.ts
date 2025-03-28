@@ -2,7 +2,8 @@ import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/sr
 import config from '../common/config';
 import { MessageProps } from '../message/message.interface';
 import props from '../message/props';
-import { getRect, unitConvert, calcIcon, isObject } from '../common/utils';
+import { getRect, unitConvert, calcIcon } from '../common/utils';
+import { isObject } from '../common/validator';
 
 const { prefix } = config;
 const name = `${prefix}-message`;

@@ -1,3 +1,5 @@
+import { isObject } from '../../common/validator';
+
 /** ****************************************************************
  MIT License https://github.com/qiu8310/minapp/blob/v1.0.0-alpha.1/packages/minapp-core/src/system/util/object.ts
  Author Mora <qiuzhongleiabc@126.com> (https://github.com/qiu8310)
@@ -5,16 +7,6 @@
 
 export const getPrototypeOf = function (obj: any): any {
   return Object.getPrototypeOf ? Object.getPrototypeOf(obj) : obj.__proto__;
-};
-
-/**
- * 判断 something 是不是一个 JS Object (从 mora-script 中取过来的)
- *
- * 除了 null, 及字面量，其它一般都是 Object，包括 函数
- */
-export const isObject = function isObject(something: any) {
-  const type = typeof something;
-  return something !== null && (type === 'function' || type === 'object');
 };
 
 /**
@@ -126,10 +118,7 @@ export const toObject = function toObject(
           if (typeof desc[k] === 'function') {
             const oldFn = desc[k] as any;
             desc[k] = function (...args: any[]) {
-              return oldFn.apply(
-                Object.prototype.hasOwnProperty.call(options, 'bindTo') ? options.bindTo : this,
-                args,
-              );
+              return oldFn.apply(Object.prototype.hasOwnProperty.call(options, 'bindTo') ? options.bindTo : this, args);
             };
           }
         });
@@ -142,8 +131,4 @@ export const toObject = function toObject(
   );
 
   return obj;
-};
-
-export const isPlainObject = function isPlainObject(something: any) {
-  return Object.prototype.toString.call(something) === '[object Object]';
 };

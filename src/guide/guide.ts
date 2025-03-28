@@ -1,9 +1,9 @@
-import isFunction from 'lodash/isFunction';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
+import { isFunction, isNumber } from '../common/validator';
 import { TdGuideProps, GuideStep } from './type';
-import { systemInfo, debounce, getRect, isNumber, rpx2px, styles, unitConvert, nextTick } from '../common/utils';
+import { debounce, getRect, rpx2px, styles, unitConvert, nextTick, systemInfo } from '../common/utils';
 
 export interface GuideProps extends TdGuideProps {}
 export { GuideStep };

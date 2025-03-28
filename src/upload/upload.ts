@@ -1,8 +1,9 @@
-import { isObject, SuperComponent, wxComponent } from '../common/src/index';
+import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import { UploadFile } from './type';
 import config from '../common/config';
 import { isOverSize } from '../common/utils';
+import { isObject } from '../common/validator';
 
 const { prefix } = config;
 const name = `${prefix}-upload`;

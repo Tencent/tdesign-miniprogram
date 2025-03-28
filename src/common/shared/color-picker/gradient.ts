@@ -1,5 +1,4 @@
-import isString from 'lodash/isString';
-import isNull from 'lodash/isNull';
+import { isString, isNull } from '../../validator';
 /* eslint-disable no-param-reassign */
 /**
  * 用于反解析渐变字符串为对象
