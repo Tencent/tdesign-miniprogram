@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { getBackgroundColor } from './utils';
-import { unitConvert, deviceInfo } from '../common/utils';
+import { unitConvert, isIOS as isIOSValidator } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-progress`;
@@ -28,7 +28,7 @@ export default class Progress extends SuperComponent {
   };
 
   attached() {
-    const isIOS = !!(deviceInfo?.system?.toLowerCase().search('ios') + 1);
+    const isIOS = isIOSValidator();
     this.setData({
       isIOS,
     });

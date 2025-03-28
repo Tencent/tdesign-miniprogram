@@ -1,17 +1,26 @@
+const path = require('path');
 const gulp = require('gulp');
 const del = require('del');
 const replace = require('gulp-replace');
 const plumber = require('gulp-plumber');
 const changed = require('gulp-changed');
 const gulpTs = require('gulp-typescript');
+const merge2 = require('merge2');
 const sourcemaps = require('gulp-sourcemaps');
 const gulpLess = require('gulp-less');
+const cssmin = require('gulp-clean-css');
+const gulpInsert = require('gulp-insert');
+const jsmin = require('gulp-terser');
+const jsonmin = require('gulp-jsonminify');
+const wxmlmin = require('gulp-htmlmin');
 const rename = require('gulp-rename');
 const replaceTask = require('gulp-replace-task');
 const mpNpm = require('gulp-mp-npm');
 const gulpIf = require('gulp-if');
 
 const config = require('./config');
+
+const baseCssPath = path.resolve(__dirname, '../src/common/style/index.wxss');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -35,11 +44,17 @@ const generateConfigReplaceTask = (replaceConfig, options = {}) => {
   });
 };
 
+const isComponentFolder = (dir) => {
+  return dir === 'src';
+};
+
 /* return gulpfile base tasks */
 module.exports = (src, dist, moduleName) => {
   const tsProject = gulpTs.createProject('tsconfig.json', {
     declaration: true,
     removeComments: isProduction,
+    importHelpers: true,
+    noEmitHelpers: true,
   });
 
   // options
@@ -47,8 +62,10 @@ module.exports = (src, dist, moduleName) => {
   const srcOptions = { base: src, ignore };
   const watchOptions = { events: ['add', 'change'] };
   const gulpErrorPath = 'example/utils/gulpError.js';
+
   // 文件匹配路径
   const globs = {
+    wxml: `${src}/**/*.wxml`, // 匹配 wxml 文件
     ts: `${src}/**/*.ts`, // 匹配 ts 文件
     js: `${src}/**/*.js`, // 匹配 js 文件
     wxs: `${src}/**/*.wxs`, // 匹配 wxs 文件
@@ -57,6 +74,7 @@ module.exports = (src, dist, moduleName) => {
     wxss: `${src}/**/*.wxss`, // 匹配 wxss 文件
     md: `${src}/**/*.md`, // 匹配 md 文件
   };
+
   // 匹配需要拷贝的文件
   globs.copy = [
     `${src}/**`,
@@ -66,6 +84,7 @@ module.exports = (src, dist, moduleName) => {
     `!${globs.json}`,
     `!${globs.less}`,
     `!${globs.wxss}`,
+    `!${globs.md}`,
     '!**/_example/**',
   ];
 
@@ -104,11 +123,30 @@ module.exports = (src, dist, moduleName) => {
       .pipe(changed(dist)) // 过滤掉未改变的文件
       .pipe(gulp.dest(dist));
 
+  /** `gulp wxml`
+   * 处理 wxml
+   * */
+  tasks.wxml = () =>
+    gulp
+      .src(globs.wxml, { ...srcOptions, since: since(tasks.wxml) })
+      .pipe(
+        gulpIf(
+          isComponentFolder(src) && isProduction,
+          wxmlmin({
+            removeComments: true,
+            collapseWhitespace: true,
+            keepClosingSlash: true,
+            caseSensitive: true,
+          }),
+        ),
+      )
+      .pipe(gulp.dest(dist));
+
   /** `gulp ts`
    * 处理ts
    * */
-  tasks.ts = () =>
-    gulp
+  tasks.ts = () => {
+    const tsResult = gulp
       .src(globs.ts, srcOptions)
       .pipe(
         plumber({
@@ -119,10 +157,17 @@ module.exports = (src, dist, moduleName) => {
       )
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
       .pipe(gulpIf(!isProduction, sourcemaps.init()))
-      .pipe(tsProject()) // 编译ts
-      .pipe(mpNpm())
-      .pipe(gulpIf(!isProduction, sourcemaps.write('.')))
-      .pipe(gulp.dest(dist));
+      .pipe(tsProject()); // 编译ts
+
+    return merge2(
+      tsResult.js
+        .pipe(mpNpm())
+        .pipe(gulpIf(isComponentFolder(src) && isProduction, jsmin()))
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest(dist)),
+      tsResult.dts.pipe(gulp.dest(dist)), // 直接输出.d.ts文件
+    );
+  };
 
   /** `gulp js`
    * 处理js
@@ -131,6 +176,7 @@ module.exports = (src, dist, moduleName) => {
     gulp
       .src(globs.js, { ...srcOptions, since: since(tasks.js) })
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
+      .pipe(gulpIf(isComponentFolder(src) && isProduction, jsmin()))
       .pipe(gulp.dest(dist));
 
   /** `gulp wxs`
@@ -145,7 +191,11 @@ module.exports = (src, dist, moduleName) => {
   /** `gulp json`
    * 处理json
    * */
-  tasks.json = () => gulp.src(globs.json, { ...srcOptions, dot: true, since: since(tasks.json) }).pipe(gulp.dest(dist));
+  tasks.json = () =>
+    gulp
+      .src(globs.json, { ...srcOptions, dot: true, since: since(tasks.json) })
+      .pipe(gulpIf(isComponentFolder(src) && isProduction, jsonmin()))
+      .pipe(gulp.dest(dist));
 
   /** `gulp less`
    * 处理less
@@ -164,6 +214,21 @@ module.exports = (src, dist, moduleName) => {
       .pipe(generateConfigReplaceTask(config, { stringify: false }))
       .pipe(gulpIf(!isProduction, sourcemaps.init()))
       .pipe(gulpLess()) // 编译less
+      .pipe(gulpIf(isComponentFolder(src) && isProduction, cssmin()))
+      .pipe(
+        gulpIf(
+          isComponentFolder(src),
+          gulpInsert.transform((contents, file) => {
+            if (!file.path.includes(`src${path.sep}common`)) {
+              const relativePath = path
+                .relative(path.normalize(`${file.path}${path.sep}..`), baseCssPath)
+                .replace(/\\/g, '/');
+              contents = `@import '${relativePath}';${contents}`;
+            }
+            return contents;
+          }),
+        ),
+      )
       .pipe(rename({ extname: '.wxss' }))
       .pipe(gulpIf(!isProduction, sourcemaps.write('.')))
       .pipe(gulp.dest(dist));
@@ -187,7 +252,7 @@ module.exports = (src, dist, moduleName) => {
   tasks.build = gulp.series(
     tasks.clear,
     tasks.resetError,
-    gulp.parallel(tasks.copy, tasks.ts, tasks.js, tasks.wxs, tasks.json, tasks.less, tasks.wxss),
+    gulp.parallel(tasks.copy, tasks.wxml, tasks.ts, tasks.js, tasks.wxs, tasks.json, tasks.less, tasks.wxss),
   );
 
   /** `gulp watch`
@@ -195,6 +260,7 @@ module.exports = (src, dist, moduleName) => {
    * */
   tasks.watch = () => {
     gulp.watch(globs.copy, watchOptions, tasks.copy);
+    gulp.watch(globs.wxml, watchOptions, tasks.wxml);
     gulp.watch(globs.ts, watchOptions, gulp.series(tasks.resetError, tasks.ts));
     gulp.watch(globs.js, watchOptions, tasks.js);
     gulp.watch(globs.wxs, watchOptions, tasks.wxs);
