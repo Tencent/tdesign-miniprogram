@@ -48,6 +48,10 @@ const isComponentFolder = (dir) => {
   return dir === 'src';
 };
 
+const ignoreFilesForDTS = (file) => {
+  return ['props.d.ts', 'type.d.ts'].includes(file.basename);
+};
+
 /* return gulpfile base tasks */
 module.exports = (src, dist, moduleName) => {
   const tsProject = gulpTs.createProject('tsconfig.json', {
@@ -165,7 +169,7 @@ module.exports = (src, dist, moduleName) => {
         .pipe(gulpIf(isComponentFolder(src) && isProduction, jsmin()))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(dist)),
-      tsResult.dts.pipe(gulp.dest(dist)), // 直接输出.d.ts文件
+      tsResult.dts.pipe(gulpIf((file) => !isProduction || !ignoreFilesForDTS(file), gulp.dest(dist))),
     );
   };
 
