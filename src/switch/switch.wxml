@@ -12,7 +12,7 @@
     class="{{_.cls(classPrefix + '__body', [['checked', checked], ['disabled', disabled || loading], size])}} {{prefix}}-class-body"
   >
     <view
-      class="{{_.cls(classPrefix + '__dot', [['checked', checked], ['plain', label.length != 2 && icon.length != 2 && !loading], size])}} {{prefix}}-class-dot"
+      class="{{_.cls(classPrefix + '__dot', [['checked', checked], ['disabled', disabled], ['plain', label.length != 2 && icon.length != 2 && !loading], size])}} {{prefix}}-class-dot"
       aria-hidden="{{true}}"
     >
       <view
