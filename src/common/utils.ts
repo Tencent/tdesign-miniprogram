@@ -1,4 +1,5 @@
 import { prefix } from './config';
+import { isString, isNumber, isDef, isBoolean, isObject } from './validator';
 import { getWindowInfo, getAppBaseInfo, getDeviceInfo } from './wechat';
 
 export const systemInfo: WechatMiniprogram.WindowInfo | WechatMiniprogram.SystemInfo = getWindowInfo();
@@ -112,20 +113,6 @@ export const getRect = function (context: any, selector: string, needAll: boolea
       })
       .exec();
   });
-};
-
-export const isNumber = function (value) {
-  return /^\d+(\.\d+)?$/.test(value);
-};
-
-export const isNull = function (value: any): boolean {
-  return value === null;
-};
-
-export const isUndefined = (value: any): boolean => typeof value === 'undefined';
-
-export const isDef = function (value: any): boolean {
-  return !isUndefined(value) && !isNull(value);
 };
 
 export const isIOS = function (): boolean {
@@ -243,12 +230,6 @@ export const setIcon = (iconName, icon, defaultIcon) => {
   };
 };
 
-export const isBool = (val) => typeof val === 'boolean';
-
-export const isObject = (val) => typeof val === 'object' && val != null;
-
-export const isString = (val) => typeof val === 'string';
-
 export const toCamel = (str) => str.replace(/-(\w)/g, (match, m1) => m1.toUpperCase());
 
 export const getCurrentPage = function <T>() {
@@ -262,8 +243,8 @@ export const uniqueFactory = (compName) => {
 };
 
 export const calcIcon = (icon: string | Record<string, any>, defaultIcon?: string) => {
-  if (icon && ((isBool(icon) && defaultIcon) || isString(icon))) {
-    return { name: isBool(icon) ? defaultIcon : icon };
+  if (icon && ((isBoolean(icon) && defaultIcon) || isString(icon))) {
+    return { name: isBoolean(icon) ? defaultIcon : icon };
   }
   if (isObject(icon)) {
     return icon;

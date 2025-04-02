@@ -1,5 +1,5 @@
 <wxs src="../common/utils.wxs" module="_" />
-<wxs module="_this"> module.exports.format = function(num) { return num < 10 ? '0' + num : num; } </wxs>
+<wxs src="./count-down.wxs" module="_this" />
 
 <view
   style="{{_._style([style, customStyle])}}"

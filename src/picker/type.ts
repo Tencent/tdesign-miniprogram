@@ -4,7 +4,6 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import { ButtonProps } from '../button/index';
 import { PopupProps } from '../popup/index';
 import { KeysType } from '../common/common';
 
@@ -23,7 +22,7 @@ export interface TdPickerProps {
    */
   cancelBtn?: {
     type: null;
-    value?: boolean | string | ButtonProps;
+    value?: boolean | string;
   };
   /**
    * 确定按钮文字
@@ -31,7 +30,7 @@ export interface TdPickerProps {
    */
   confirmBtn?: {
     type: null;
-    value?: boolean | string | ButtonProps;
+    value?: boolean | string;
   };
   /**
    * 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容

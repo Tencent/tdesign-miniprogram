@@ -1,5 +1,5 @@
-import { styles, calcIcon, systemInfo } from '../common/utils';
 import { SuperComponent, wxComponent } from '../common/src/index';
+import { styles, calcIcon, systemInfo } from '../common/utils';
 import config from '../common/config';
 import props from './props';
 

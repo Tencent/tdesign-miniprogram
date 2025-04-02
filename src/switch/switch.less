@@ -1,9 +1,10 @@
-@import '../common/index.less';
+@import '../common/style/base.less';
 
 @switch-checked-color: var(--td-switch-checked-color, @brand-color);
 @switch-checked-disabled-color: var(--td-switch-checked-disabled-color, @brand-color-disabled);
 @switch-unchecked-color: var(--td-switch-unchecked-color, @bg-color-secondarycontainer-active);
 @switch-unchecked-disabled-color: var(--td-switch-unchecked-disabled-color, @bg-color-component-disabled);
+@switch-dot-disabled-color: var(--td-switch-dot-disabled-color, @font-white-1);
 
 @switch-width: var(--td-switch-width, 90rpx);
 @switch-height: var(--td-switch-height, 56rpx);
@@ -24,7 +25,6 @@
 @switch-dot-horizontal-margin: var(--td-switch-dot-horizontal-margin, 6rpx);
 @switch-dot-plain-horizontal-margin: var(--td-switch-dot-plain-horizontal-margin, 10rpx);
 @switch-dot-shadow: var(--td-switch-dot-shadow, @shadow-1);
-@switch-dot-border-color: var(--td-switch-dot-border-color, @gray-color-4);
 
 // large dot
 @switch-dot-large-size: var(--td-switch-dot-large-size, 52rpx);
@@ -153,19 +153,8 @@
     transform: translateY(-50%);
     box-shadow: @switch-dot-shadow;
 
-    &:after {
-      content: '';
-      display: block;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 200%;
-      height: 200%;
-      border: 1px solid @switch-dot-border-color;
-      border-radius: 50%;
-      transform: scale(0.5);
-      transform-origin: 0 0;
-      box-sizing: border-box;
+    &--disabled {
+      background-color: @switch-dot-disabled-color;
     }
 
     &--large {

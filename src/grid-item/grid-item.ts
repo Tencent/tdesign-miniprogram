@@ -1,7 +1,8 @@
-import { SuperComponent, wxComponent, isObject, RelationsOptions } from '../common/src/index';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { uniqueFactory, setIcon } from '../common/utils';
+import { isObject } from '../common/validator';
 
 const { prefix } = config;
 const name = `${prefix}-grid-item`;
