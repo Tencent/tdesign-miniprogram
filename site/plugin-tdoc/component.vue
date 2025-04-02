@@ -36,10 +36,10 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+
 import Prismjs from 'prismjs';
 import 'prismjs/components/prism-bash.js';
 import 'prismjs/components/prism-json.js';
-import { changeThemeMode, watchExampleRouterChange, watchThemeColorChange } from '../theme/dark';
 
 import QrCode from '@components/qrcode.vue';
 
@@ -91,18 +91,6 @@ export default defineComponent({
     this.$emit('loaded', () => {
       tdDocContent.pageStatus = 'show';
     });
-    if (this.$refs.parentIframe) {
-      this.$refs.parentIframe.onload = () => {
-        watchExampleRouterChange(this.$refs.parentIframe);
-        watchThemeColorChange();
-      };
-    }
-  },
-
-  methods: {
-    onIframeLoaded() {
-      changeThemeMode();
-    },
   },
 });
 </script>

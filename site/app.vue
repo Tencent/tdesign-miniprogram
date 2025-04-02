@@ -6,15 +6,12 @@
     <td-doc-aside ref="tdDocAside" title="WeChat MiniProgram"></td-doc-aside>
 
     <router-view :style="contentStyle" @loaded="contentLoaded" :docType="docType" />
-    <td-theme-generator device="mobile" />
   </td-doc-layout>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-
 import siteConfig from './site.config';
-import { changeThemeMode } from './theme/dark';
 
 const { docs, enDocs } = JSON.parse(JSON.stringify(siteConfig).replace(/component:.+/g, ''));
 
@@ -44,25 +41,6 @@ const docsMap = {
   en: sortDocs(enDocs),
 };
 
-function watchHtmlMode(callback = () => {}) {
-  const targetNode = document.documentElement;
-  const config = { attributes: true };
-
-  const observerCallback = (mutationsList) => {
-    for (const mutation of mutationsList) {
-      if (mutation.attributeName === 'theme-mode') {
-        const themeMode = mutation.target.getAttribute('theme-mode') || 'light';
-        if (themeMode) callback(themeMode);
-      }
-    }
-  };
-
-  const observer = new MutationObserver(observerCallback);
-  observer.observe(targetNode, config);
-
-  return observer;
-}
-
 export default defineComponent({
   data() {
     return {
@@ -89,7 +67,7 @@ export default defineComponent({
       window.scrollTo(0, 0);
     };
     this.$refs.tdDocSearch.docsearchInfo = { indexName: 'tdesign_doc_miniprogram' };
-    watchHtmlMode(changeThemeMode);
+    this.initThemeGenerator();
   },
 
   watch: {
@@ -106,6 +84,11 @@ export default defineComponent({
         this.loaded = true;
         callback();
       });
+    },
+    initThemeGenerator() {
+      const generator = document.createElement('td-theme-generator');
+      generator.setAttribute('device', 'mini-program');
+      document.body.appendChild(generator);
     },
   },
 });
