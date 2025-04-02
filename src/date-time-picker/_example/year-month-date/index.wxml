@@ -13,6 +13,7 @@
 <t-date-time-picker
   auto-close
   title="选择日期"
+  showWeek
   visible="{{dateVisible}}"
   mode="date"
   default-value="{{date}}"
