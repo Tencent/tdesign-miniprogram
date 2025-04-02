@@ -74,7 +74,7 @@ formatter | Function | - | 格式化标签。TS 类型：`(option: DateTimePicke
 header | Boolean / Slot | true | 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 mode | String / Array | 'date' | year = 年；month = 年月；date = 年月日；hour = 年月日时； minute = 年月日时分；当类型为数组时，第一个值控制年月日，第二个值控制时分秒。TS 类型：`DateTimePickerMode` `type DateTimePickerMode = TimeModeValues \| Array<TimeModeValues> ` `type TimeModeValues = 'year' \| 'month' \| 'date' \| 'hour' \| 'minute' \| 'second'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
 popup-props | Object | {} | 透传 Popup 组件全部属性。TS 类型：`PopupProps`，[Popup API Documents](./popup?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/date-time-picker/type.ts) | N
-show-week | Boolean | false | 【开发中】是否在日期旁边显示周几（如周一，周二，周日等） | N
+show-week | Boolean | false | `1.9.0`。是否在日期旁边显示周几（如周一，周二，周日等） | N
 start | String / Number | - | 选择器的最小可选时间，默认为当前时间-10年 | N
 steps | Object | - | 时间间隔步数，示例：`{ minute: 5 }` | N
 title | String | - | 标题 | N

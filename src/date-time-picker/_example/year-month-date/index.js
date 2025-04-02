@@ -48,7 +48,7 @@ Page({
           2: 'nd',
           3: 'rd',
         };
-        const weekMapCNtoEN = {
+        const weekMap = {
           "周一": "Mon.",
           "周二": "Tues.",
           "周三": "Wed.",
@@ -61,7 +61,7 @@ Page({
 
         return {
           value: item.value,
-          label: `${label}${dateSuffixes[label] || 'th'} ${weekMapCNtoEN[weekValue]}`
+          label: `${label}${dateSuffixes[label] || 'th'} ${weekMap[weekValue]}`
         }
       }
 
