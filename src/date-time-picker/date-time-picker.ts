@@ -12,7 +12,6 @@ import dayjsLocaleMap from './locale/dayjs';
  * https://dayjs.fenxianglu.cn/category/plugin.html#localedata
  */
 dayjs.extend(localeData);
-// 设置 demo 的默认语言为 zh
 dayjs.locale('zh-cn');
 
 // const defaultLocale = dayjsLocaleMap.default.key;
@@ -104,6 +103,25 @@ export default class DateTimePicker extends SuperComponent {
       });
     },
 
+    getDaysOfWeekInMonth(date: Dayjs) {
+      const { locale, dayjsLocale } = this.data;
+      const startOfMonth = date.startOf('month');
+      const endOfMonth = date.endOf('month');
+      const daysOfWeek = [];
+
+      for (let i = 1; i <= endOfMonth.diff(startOfMonth, 'days') + 1; i += 1) {
+        const currentDate = startOfMonth.add(i, 'days').locale(dayjsLocale); // 显式设置每个日期对象的 locale
+        const dayName = currentDate.format('ddd');
+
+        daysOfWeek.push({
+          value: `${i}`,
+          label: `${i + locale.date} ${dayName}`,
+        });
+      }
+
+      return daysOfWeek;
+    },
+
     getParseDate(): Dayjs {
       const { value, defaultValue } = this.properties;
       const minDate = this.getMinDate();
@@ -178,7 +196,7 @@ export default class DateTimePicker extends SuperComponent {
       const { fullModes, filter } = this.data;
 
       const columnOptions = [];
-      fullModes?.forEach((mode) => {
+      fullModes?.forEach((mode: string) => {
         const columnOption = this.getOptionByType(mode);
         if (typeof filter === 'function') {
           columnOptions.push(filter(mode, columnOption));
@@ -186,18 +204,21 @@ export default class DateTimePicker extends SuperComponent {
           columnOptions.push(columnOption);
         }
       });
-
       return columnOptions;
     },
 
-    getOptionByType(type) {
-      const { locale, steps } = this.data;
+    getOptionByType(type: string) {
+      const { locale, steps, showWeek } = this.data;
       const options: ColumnItemValue[] = [];
 
       const minEdge = this.getOptionEdge('min', type);
       const maxEdge = this.getOptionEdge('max', type);
       const step = steps?.[type] ?? 1;
       const dayjsMonthsShort = dayjs().locale(this.data.dayjsLocale).localeData().monthsShort();
+
+      if (type === 'date' && showWeek) {
+        return this.getDaysOfWeekInMonth(this.date);
+      }
 
       for (let i = minEdge; i <= maxEdge; i += step) {
         options.push({

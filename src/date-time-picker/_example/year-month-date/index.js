@@ -34,22 +34,41 @@ Page({
     },
 
     formatter(item, index) {
-      let label = item.label.slice(0, -1);
       if (index === 1) {
-        label = calendarMonth[Number(label) - 1];
+        const label = item.label.slice(0, -1);
+        return {
+          value: item.value,
+          label: calendarMonth[Number(label) - 1],
+        };
       }
       if (index === 2) {
-        const suffixes = {
+        const [dateValue, weekValue] = item.label.split(' ');
+        const dateSuffixes = {
           1: 'st',
           2: 'nd',
           3: 'rd',
         };
-        label = `${label}${suffixes[label] || 'th'}`;
+        const weekMapCNtoEN = {
+          "周一": "Mon.",
+          "周二": "Tues.",
+          "周三": "Wed.",
+          "周四": "Thurs.",
+          "周五": "Fri.",
+          "周六": "Sat.",
+          "周日": "Sun."
+        };
+        const label = dateValue.slice(0, -1);
+
+        return {
+          value: item.value,
+          label: `${label}${dateSuffixes[label] || 'th'} ${weekMapCNtoEN[weekValue]}`
+        }
       }
+
       return {
         value: item.value,
-        label,
-      };
+        label: item.label.slice(0, -1)
+      }
     },
   },
   showPicker(e) {
