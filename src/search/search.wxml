@@ -42,7 +42,7 @@
     />
     <view
       wx:if="{{value !=='' && clearable && showClearIcon}}"
-      class="{{classPrefix}}__clear {{prefix}}-class-clear"
+      class="{{classPrefix}}__clear hotspot-expanded {{prefix}}-class-clear"
       catch:tap="handleClear"
       aria-role="button"
       aria-label="清除"
