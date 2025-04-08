@@ -17,7 +17,7 @@
   visible="{{dateVisible}}"
   mode="date"
   default-value="{{date}}"
-  format="YYYY-MM-DD"
+  format="YYYY-MM-DD ddd"
   start="{{start}}"
   end="{{end}}"
   filter="{{filter}}"
