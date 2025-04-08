@@ -103,19 +103,19 @@ export default class DateTimePicker extends SuperComponent {
       });
     },
 
-    getDaysOfWeekInMonth(date: Dayjs) {
+    getDaysOfWeekInMonth(date: Dayjs): Array<{ value: string; label: string }> {
       const { locale, dayjsLocale } = this.data;
       const startOfMonth = date.startOf('month');
       const endOfMonth = date.endOf('month');
       const daysOfWeek = [];
 
-      for (let i = 1; i <= endOfMonth.diff(startOfMonth, 'days') + 1; i += 1) {
-        const currentDate = startOfMonth.add(i, 'days').locale(dayjsLocale); // 显式设置每个日期对象的 locale
+      for (let i = 0; i <= endOfMonth.diff(startOfMonth, 'days'); i += 1) {
+        const currentDate = startOfMonth.add(i, 'days').locale(dayjsLocale);
         const dayName = currentDate.format('ddd');
 
         daysOfWeek.push({
-          value: `${i}`,
-          label: `${i + locale.date} ${dayName}`,
+          value: `${i + 1}`,
+          label: `${i + 1}${locale.date || ''} ${dayName}`,
         });
       }
 
