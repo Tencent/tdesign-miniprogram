@@ -59,6 +59,7 @@ time | Number | 0 | 必需。倒计时时长，单位毫秒 | Y
 -- | -- | --
 change | `(time: TimeData)` | 时间变化时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/count-down/type.ts)。<br/>`interface TimeData {  days: number; hours: number; minutes: number; seconds: number; milliseconds: number }`<br/>
 finish | \- | 倒计时结束时触发
+
 ### CountDown External Classes
 
 类名 | 描述
@@ -70,10 +71,11 @@ t-class-split | 分隔线样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+
+名称 | 默认值 | 描述
 -- | -- | --
---td-countdown-bg-color | @error-color | - 
---td-countdown-default-color | @text-color-primary | - 
---td-countdown-round-border-radius | @radius-circle | - 
---td-countdown-round-color | @text-color-anti | - 
---td-countdown-square-border-radius | @radius-small | - 
+--td-countdown-bg-color | @error-color | -
+--td-countdown-default-color | @text-color-primary | -
+--td-countdown-round-border-radius | @radius-circle | -
+--td-countdown-round-color | @text-color-anti | -
+--td-countdown-square-border-radius | @radius-small | -

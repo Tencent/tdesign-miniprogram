@@ -58,7 +58,7 @@ export default class CountDown extends SuperComponent {
       this.remain = this.properties.time;
       this.updateTime(this.remain);
 
-      if (this.properties.autoStart) {
+      if (this.properties.autoStart && this.remain !== 0) {
         this.start();
       }
     },
@@ -80,7 +80,7 @@ export default class CountDown extends SuperComponent {
         formattedTime: timeText.replace(/:/g, ' : '),
       });
 
-      if (remain === 0) {
+      if (remain === 0 && this.counting) {
         this.pause();
         this.triggerEvent('finish');
       }
