@@ -13,8 +13,8 @@ Component({
       };
 
       Dialog.confirm(dialogConfig)
-        .then(() => console.log('点击了确定'))
-        .catch(() => console.log('点击了取消'));
+        .then((data) => console.log('点击了确定', data))
+        .catch((data) => console.log('点击了取消', data));
     },
   },
 });

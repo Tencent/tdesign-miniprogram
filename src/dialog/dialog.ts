@@ -110,24 +110,30 @@ export default class Dialog extends SuperComponent {
 
     onConfirm() {
       this.triggerEvent('confirm');
+
       if (this._onConfirm) {
-        this._onConfirm();
+        this._onConfirm({ trigger: 'confirm' });
         this.close();
       }
     },
 
     onCancel() {
-      this.triggerEvent('close', { trigger: 'cancel' });
+      const trigger = { trigger: 'cancel' };
+
       this.triggerEvent('cancel');
+      this.triggerEvent('close', trigger);
 
       if (this._onCancel) {
-        this._onCancel();
+        this._onCancel(trigger);
         this.close();
       }
     },
 
     onClose() {
-      this.triggerEvent('close', { trigger: 'close-btn' });
+      const trigger = { trigger: 'close-btn' };
+
+      this.triggerEvent('close', trigger);
+      this._onCancel?.(trigger);
       this.close();
     },
 
@@ -136,11 +142,15 @@ export default class Dialog extends SuperComponent {
     },
 
     overlayClick() {
+      this.triggerEvent('overlay-click');
+
       if (this.properties.closeOnOverlayClick) {
-        this.triggerEvent('close', { trigger: 'overlay' });
+        const trigger = { trigger: 'overlay' };
+
+        this.triggerEvent('close', trigger);
+        this._onCancel?.(trigger);
         this.close();
       }
-      this.triggerEvent('overlay-click');
     },
 
     onActionTap(index: number) {
