@@ -43,7 +43,7 @@ export default class Steps extends SuperComponent {
   };
 
   observers = {
-    current() {
+    'current, theme, sequence'() {
       this.updateChildren();
     },
   };
