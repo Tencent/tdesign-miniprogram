@@ -20,7 +20,7 @@
       wx:for-item="option"
       data-index="{{ index }}"
     >
-      <text class="{{classPrefix}}__item-label">{{option[labelAlias]}}</text>
+      <text class="{{classPrefix}}__item-label">{{option[pickerKeys.label]}}</text>
       <slot name="label-suffix--{{index}}"></slot>
     </view>
   </view>
