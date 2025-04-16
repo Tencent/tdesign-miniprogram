@@ -36,9 +36,10 @@ export default class PickerItem extends SuperComponent {
         if ('keys' in parent.data) {
           const { keys } = parent.data;
 
+          if (keys === null || JSON.stringify(this.data.pickerKeys) === JSON.stringify(keys)) return;
+
           this.setData({
-            labelAlias: keys?.label || 'label',
-            valueAlias: keys?.value || 'value',
+            pickerKeys: keys,
           });
         }
       },
@@ -54,7 +55,7 @@ export default class PickerItem extends SuperComponent {
   properties = props;
 
   observers = {
-    options(this: PickerItem) {
+    'options, pickerKeys'() {
       this.update();
     },
   };
@@ -67,8 +68,7 @@ export default class PickerItem extends SuperComponent {
     value: '',
     curIndex: 0,
     columnIndex: 0,
-    labelAlias: 'label',
-    valueAlias: 'value',
+    pickerKeys: { value: 'value', label: 'label' },
     formatOptions: props.options.value,
   };
 
@@ -102,7 +102,7 @@ export default class PickerItem extends SuperComponent {
     },
 
     onTouchEnd(event) {
-      const { offset, labelAlias, valueAlias, columnIndex, pickItemHeight, formatOptions } = this.data;
+      const { offset, pickerKeys, columnIndex, pickItemHeight, formatOptions } = this.data;
       const { startTime } = this;
       if (offset === this.StartOffset) {
         return;
@@ -131,8 +131,8 @@ export default class PickerItem extends SuperComponent {
 
       wx.nextTick(() => {
         this._selectedIndex = index;
-        this._selectedValue = formatOptions[index]?.[valueAlias];
-        this._selectedLabel = formatOptions[index]?.[labelAlias];
+        this._selectedValue = formatOptions[index]?.[pickerKeys?.value];
+        this._selectedLabel = formatOptions[index]?.[pickerKeys?.label];
         this.$parent?.triggerColumnChange({
           index,
           column: columnIndex,
@@ -150,16 +150,16 @@ export default class PickerItem extends SuperComponent {
 
     // 刷新选中状态
     update() {
-      const { options, value, labelAlias, valueAlias, pickItemHeight, format, columnIndex } = this.data;
+      const { options, value, pickerKeys, pickItemHeight, format, columnIndex } = this.data;
 
       const formatOptions = this.formatOption(options, columnIndex, format);
 
-      const index = formatOptions.findIndex((item: PickerItemOption) => item[valueAlias] === value);
+      const index = formatOptions.findIndex((item: PickerItemOption) => item[pickerKeys?.value] === value);
       const selectedIndex = index > 0 ? index : 0;
 
       this._selectedIndex = selectedIndex;
-      this._selectedValue = formatOptions[selectedIndex]?.[valueAlias];
-      this._selectedLabel = formatOptions[selectedIndex]?.[labelAlias];
+      this._selectedValue = formatOptions[selectedIndex]?.[pickerKeys?.value];
+      this._selectedLabel = formatOptions[selectedIndex]?.[pickerKeys?.label];
 
       this.setData({
         formatOptions,
@@ -168,8 +168,8 @@ export default class PickerItem extends SuperComponent {
       });
 
       this._selectedIndex = selectedIndex;
-      this._selectedValue = options[selectedIndex]?.[valueAlias];
-      this._selectedLabel = options[selectedIndex]?.[labelAlias];
+      this._selectedValue = options[selectedIndex]?.[pickerKeys?.value];
+      this._selectedLabel = options[selectedIndex]?.[pickerKeys?.label];
     },
 
     getCount() {
