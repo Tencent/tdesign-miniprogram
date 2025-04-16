@@ -42,5 +42,6 @@ export const getDate = (...args) => {
     const { year, month, date } = getDateRect(now);
     return new Date(year, month + args[0], date);
   }
+  // eslint-disable-next-line prefer-spread
   return Date.apply(null, args);
 };

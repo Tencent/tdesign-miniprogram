@@ -1,5 +1,5 @@
 export const getObserver = (context, selector: string) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     context
       .createIntersectionObserver(context)
       .relativeToViewport()
