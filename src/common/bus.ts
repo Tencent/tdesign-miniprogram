@@ -1,5 +1,6 @@
 export default class Bus {
   listeners: Map<string, any>;
+
   emitted: Set<string>;
 
   constructor() {

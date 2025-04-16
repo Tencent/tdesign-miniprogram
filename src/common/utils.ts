@@ -164,7 +164,9 @@ export const getCharacterLength = (type: string, char: string | number, max?: nu
       length: len,
       characters: str,
     };
-  } else if (type === 'maxlength') {
+  }
+
+  if (type === 'maxlength') {
     const length = str.length > max ? max : str.length;
     return {
       length,
@@ -212,17 +214,17 @@ export const setIcon = (iconName, icon, defaultIcon) => {
         [`${iconName}Name`]: icon,
         [`${iconName}Data`]: {},
       };
-    } else if (typeof icon === 'object') {
+    }
+    if (typeof icon === 'object') {
       return {
         [`${iconName}Name`]: '',
         [`${iconName}Data`]: icon,
       };
-    } else {
-      return {
-        [`${iconName}Name`]: defaultIcon,
-        [`${iconName}Data`]: {},
-      };
     }
+    return {
+      [`${iconName}Name`]: defaultIcon,
+      [`${iconName}Data`]: {},
+    };
   }
   return {
     [`${iconName}Name`]: '',
@@ -239,7 +241,11 @@ export const getCurrentPage = function <T>() {
 
 export const uniqueFactory = (compName) => {
   let number = 0;
-  return () => `${prefix}_${compName}_${number++}`;
+  return () => {
+    const uniqueId = `${prefix}_${compName}_${number}`;
+    number += 1;
+    return uniqueId;
+  };
 };
 
 export const calcIcon = (icon: string | Record<string, any>, defaultIcon?: string) => {

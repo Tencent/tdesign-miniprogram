@@ -141,7 +141,7 @@ export const toComponent = function toComponent(options: Record<string, any>) {
     };
 
     options.methods._trigger = function (evtName, detail, opts) {
-      const target = controlledProps.find((item) => item.event == evtName);
+      const target = controlledProps.find((item) => item.event === evtName);
       if (target) {
         const { key } = target;
 

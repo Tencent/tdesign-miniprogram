@@ -3,10 +3,15 @@ import type { TDate, TDateType, TCalendarType, TCalendarValue } from './type';
 
 export default class TCalendar {
   firstDayOfWeek: number;
+
   value: TCalendarValue | TCalendarValue[];
+
   type: TCalendarType = 'single';
+
   minDate: Date;
+
   maxDate: Date;
+
   format: (day: TDate) => TDate;
 
   constructor(options = {}) {
@@ -50,7 +55,9 @@ export default class TCalendar {
     const ans = [];
     const selectedDate = this.getTrimValue();
     const { minDate, maxDate, type, format } = this;
-    let { year: minYear, month: minMonth, time: minTime } = getDateRect(minDate);
+    const minDateRect = getDateRect(minDate);
+    let { year: minYear, month: minMonth } = minDateRect;
+    const { time: minTime } = minDateRect;
     const { year: maxYear, month: maxMonth, time: maxTime } = getDateRect(maxDate);
     const calcType = (year: number, month: number, date: number): TDateType => {
       const curDate = new Date(year, month, date, 23, 59, 59);
@@ -85,7 +92,7 @@ export default class TCalendar {
     while (minYear < maxYear || (minYear === maxYear && minMonth <= maxMonth)) {
       const target = getMonthDateRect(new Date(minYear, minMonth, 1));
       const months: TDate[] = [];
-      for (let i = 1; i <= 31; i++) {
+      for (let i = 1; i <= 31; i += 1) {
         if (i > target.lastDate) break;
         const dateObj: TDate = {
           date: new Date(minYear, minMonth, i),
