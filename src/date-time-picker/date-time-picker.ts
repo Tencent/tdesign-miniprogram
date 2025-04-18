@@ -33,9 +33,6 @@ const DATE_MODES = ['year', 'month', 'date'];
 const TIME_MODES = ['hour', 'minute', 'second'];
 const FULL_MODES = [...DATE_MODES, ...TIME_MODES];
 
-const DEFAULT_MIN_DATE: Dayjs = dayjs('2000-01-01 00:00:00');
-const DEFAULT_MAX_DATE: Dayjs = dayjs('2030-12-31 23:59:59');
-
 interface ColumnItemValue {
   value: string | number;
   label: string | number;
@@ -141,14 +138,16 @@ export default class DateTimePicker extends SuperComponent {
       return isDateValid ? parseDate : minDate;
     },
 
+    normalize(val: string | number, defaultDay: Dayjs): Dayjs {
+      return val && dayjs(val).isValid() ? dayjs(val) : defaultDay;
+    },
+
     getMinDate(): Dayjs {
-      const { start } = this.properties;
-      return start ? dayjs(start) : DEFAULT_MIN_DATE;
+      return this.normalize(this.properties.start, dayjs().subtract(10, 'year'));
     },
 
     getMaxDate(): Dayjs {
-      const { end } = this.properties;
-      return end ? dayjs(end) : DEFAULT_MAX_DATE;
+      return this.normalize(this.properties.end, dayjs().add(10, 'year'));
     },
 
     getDateRect(type = 'default') {
@@ -164,7 +163,7 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     getDate(): Dayjs {
-      return this.clipDate(this?.date || DEFAULT_MIN_DATE);
+      return this.clipDate(this?.date || this.getMinDate());
     },
 
     // 数据裁减 确保数据不越界
