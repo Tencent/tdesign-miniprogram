@@ -179,7 +179,6 @@ exports[`DateTimePicker DateTimePicker year-month-date demo works fine 1`] = `
   <t-date-time-picker
     autoClose="{{true}}"
     defaultValue="{{1640217600000}}"
-    end="2030-09-09 12:12:12"
     filter="{{[Function]}}"
     format="YYYY-MM-DD ddd"
     formatter="{{[Function]}}"
@@ -190,7 +189,6 @@ exports[`DateTimePicker DateTimePicker year-month-date demo works fine 1`] = `
       }
     }}"
     showWeek="{{true}}"
-    start="2000-01-01 00:00:00"
     title="选择日期"
     visible="{{false}}"
     bind:cancel="hidePicker"
