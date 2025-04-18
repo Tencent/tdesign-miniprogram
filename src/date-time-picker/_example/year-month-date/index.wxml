@@ -18,8 +18,6 @@
   mode="date"
   default-value="{{date}}"
   format="YYYY-MM-DD ddd"
-  start="{{start}}"
-  end="{{end}}"
   filter="{{filter}}"
   formatter="{{formatter}}"
   popup-props="{{popupProps}}"
