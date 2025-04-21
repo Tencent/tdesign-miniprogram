@@ -18,8 +18,8 @@ show-cancel | Boolean | true | \- | N
 show-overlay | Boolean | true | \- | N
 theme | String | list | options: list/grid | N
 using-custom-navbar | Boolean | false | \- | N
-visible | Boolean | false | required | Y
-default-visible | Boolean | undefined | required。uncontrolled property | Y
+visible | Boolean | false | Show or hide | N
+default-visible | Boolean | undefined | uncontrolled property | N
 
 ### ActionSheet Events
 
