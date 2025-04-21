@@ -147,12 +147,24 @@ export default class TreeSelect extends SuperComponent {
       this._trigger('change', { value: innerValue, level: 1 });
     },
 
-    handleRadioChange(e) {
+    handleChange(e) {
       const { innerValue } = this.data;
-      const { value: itemValue } = e.detail;
-      const { level } = e.target.dataset;
+      const { level, type } = e.target.dataset;
 
-      innerValue[level] = itemValue;
+      if (type === 'multiple') {
+        const {
+          context: { value },
+        } = e.detail;
+        const index = innerValue[level].indexOf(value);
+        if (index !== -1) {
+          innerValue[level].splice(index, 1);
+        } else {
+          innerValue[level].push(value);
+        }
+      } else {
+        const { value } = e.detail;
+        innerValue[level] = value;
+      }
 
       this.getScrollIntoView('none');
       this._trigger('change', { value: innerValue, level });

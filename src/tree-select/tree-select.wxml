@@ -41,8 +41,9 @@
       wx:elif="{{!multiple}}"
       class="{{classPrefix}}__radio {{prefix}}-class-right-column"
       data-level="{{level}}"
+      data-type="single"
       value="{{innerValue[level]}}"
-      bind:change="handleRadioChange"
+      bind:change="handleChange"
     >
       <t-radio
         wx:for="{{treeOptions[level]}}"
@@ -63,8 +64,9 @@
       wx:else
       class="{{classPrefix}}__checkbox {{prefix}}-class-right-column"
       value="{{innerValue[level] || []}}"
-      bind:change="handleRadioChange"
       data-level="{{level}}"
+      data-type="multiple"
+      bind:change="handleChange"
     >
       <t-checkbox
         wx:for="{{treeOptions[level]}}"
