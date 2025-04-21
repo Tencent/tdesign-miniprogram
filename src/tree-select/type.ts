@@ -8,6 +8,13 @@ import { TreeOptionData, KeysType } from '../common/common';
 
 export interface TdTreeSelectProps<DataOption extends TreeOptionData = TreeOptionData> {
   /**
+   * 自定义选中值，优先级高于 `value`
+   */
+  customValue?: {
+    type: null;
+    value?: TreeSelectValue;
+  };
+  /**
    * 高度，默认单位为 px
    * @default 336
    */
