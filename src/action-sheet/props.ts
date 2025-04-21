@@ -31,7 +31,7 @@ const props: TdActionSheetProps = {
     type: Array,
     required: true,
   },
-  /** popupProps透传 */
+  /** 透传 Popup 组件全部属性 */
   popupProps: {
     type: Object,
     value: {},
@@ -60,13 +60,11 @@ const props: TdActionSheetProps = {
   visible: {
     type: Boolean,
     value: null,
-    required: true,
   },
   /** 显示与隐藏，非受控属性 */
   defaultVisible: {
     type: Boolean,
     value: false,
-    required: true,
   },
 };
 
