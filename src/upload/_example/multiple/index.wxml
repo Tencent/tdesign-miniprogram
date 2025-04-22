@@ -4,6 +4,7 @@
     media-type="{{['video','image']}}"
     files="{{originFiles}}"
     gridConfig="{{gridConfig}}"
+    removeBtn="{{false}}"
     bind:success="handleSuccess"
     bind:remove="handleRemove"
     bind:click="handleClick"

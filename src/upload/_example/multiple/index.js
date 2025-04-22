@@ -5,16 +5,19 @@ Component({
         url: 'https://tdesign.gtimg.com/mobile/demos/example4.png',
         name: 'uploaded1.png',
         type: 'image',
+        removeBtn: true,
       },
       {
         url: 'https://tdesign.gtimg.com/mobile/demos/example6.png',
         name: 'uploaded2.png',
         type: 'image',
+        removeBtn: true,
       },
       {
         url: 'https://tdesign.gtimg.com/mobile/demos/example5.png',
         name: 'uploaded3.png',
         type: 'image',
+        removeBtn: true,
       },
     ],
     gridConfig: {
