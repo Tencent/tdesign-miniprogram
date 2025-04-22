@@ -1,3 +1,5 @@
+var utils = require('../common/utils.wxs');
+
 var STATUS = ['success', 'error', 'warning'];
 var STATUS_TEXT = ['success', 'error', 'warning', 'active'];
 
@@ -12,11 +14,13 @@ var STATUS_COLOR = {
   error: '#e34d59',
   warning: '#ed7b2f',
 };
+
 var LINE_STATUS_ICON = {
   success: 'check-circle-filled',
   error: 'error-circle-filled',
   warning: 'error-circle-filled',
 };
+
 var CIRCLE_STATUS_ICON = {
   success: 'check',
   error: 'close',
@@ -31,7 +35,7 @@ var CIRCLE_STATUS_ICON = {
  *
  */
 
-var getIOSAriaLabel = function (status) {
+function getIOSAriaLabel(status) {
   if (status === 'error') {
     return '进度失败';
   }
@@ -39,9 +43,9 @@ var getIOSAriaLabel = function (status) {
     return '进度异常';
   }
   return '';
-};
+}
 
-var getAndroidAriaLabel = function (status) {
+function getAndroidAriaLabel(status) {
   if (status === 'error') {
     return '%' + '，进度失败';
   }
@@ -49,7 +53,19 @@ var getAndroidAriaLabel = function (status) {
     return '%' + '，进度异常';
   }
   return '%';
-};
+}
+
+function getCircleStyle(size, strokeWidth) {
+  var styles = {
+    '--td-progress-stroke-circle-width': utils.addUnit(strokeWidth),
+  };
+
+  if (!utils.includes(['default', 'micro'], size)) {
+    styles['--td-progress-circle-width'] = utils.addUnit(size);
+  }
+
+  return utils._style(styles);
+}
 
 module.exports = {
   STATUS: STATUS,
@@ -60,4 +76,5 @@ module.exports = {
   CIRCLE_STATUS_ICON: CIRCLE_STATUS_ICON,
   getAndroidAriaLabel: getAndroidAriaLabel,
   getIOSAriaLabel: getIOSAriaLabel,
+  getCircleStyle: getCircleStyle,
 };
