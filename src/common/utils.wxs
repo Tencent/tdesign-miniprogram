@@ -24,6 +24,10 @@ function isObject(obj) {
   return obj && obj.constructor === 'Object';
 }
 
+function isBoolean(value) {
+  return typeof value === 'boolean';
+}
+
 var isNoEmptyObj = function (obj) {
   return isObject(obj) && JSON.stringify(obj) !== '{}';
 };
@@ -135,6 +139,7 @@ module.exports = {
   isString: isString,
   isArray: isArray,
   isObject: isObject,
+  isBoolean: isBoolean,
   isNoEmptyObj: isNoEmptyObj,
   includes: includes,
   cls: cls,

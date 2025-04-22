@@ -6,6 +6,11 @@
 
 import { TdUploadProps } from './type';
 const props: TdUploadProps = {
+  /** 添加按钮 */
+  addBtn: {
+    type: Boolean,
+    value: true,
+  },
   /** 添加按钮内容 */
   addContent: {
     type: String,
@@ -59,6 +64,11 @@ const props: TdUploadProps = {
   mediaType: {
     type: Array,
     value: ['image', 'video'],
+  },
+  /** 移除按钮 */
+  removeBtn: {
+    type: Boolean,
+    value: true,
   },
   /** 自定义上传方法 */
   requestMethod: {
