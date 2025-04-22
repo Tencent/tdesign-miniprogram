@@ -82,6 +82,7 @@ module.exports = (src, dist, moduleName) => {
   // 匹配需要拷贝的文件
   globs.copy = [
     `${src}/**`,
+    `!${globs.wxml}`,
     `!${globs.ts}`,
     `!${globs.js}`,
     `!${globs.wxs}`,
