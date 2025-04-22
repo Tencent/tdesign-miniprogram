@@ -153,8 +153,10 @@
     -webkit-line-clamp: 2;
   }
 
-  .@{progress}__icon {
-    font-size: @progress-circle-icon-font-size;
+  &--micro {
+    --td-progress-circle-width: 48rpx;
+    --td-progress-stroke-circle-width: 4rpx;
+    --td-progress-circle-icon-font-size: 40rpx;
   }
 }
 
@@ -176,34 +178,26 @@
   }
 }
 
-.@{progress}--status--success {
+.progress-status(@bgColor, @iconColor) {
   .@{progress}__inner {
-    background: @progress-inner-bg-color-success;
+    background: @bgColor;
   }
 
   .@{progress}__icon {
-    color: @success-color;
+    color: @iconColor;
   }
+}
+
+.@{progress}--status--success {
+  .progress-status(@progress-inner-bg-color-success, @success-color);
 }
 
 .@{progress}--status--warning {
-  .@{progress}__inner {
-    background: @progress-inner-bg-color-warning;
-  }
-
-  .@{progress}__icon {
-    color: @warning-color;
-  }
+  .progress-status(@progress-inner-bg-color-warning, @warning-color);
 }
 
 .@{progress}--status--error {
-  .@{progress}__inner {
-    background: @progress-inner-bg-color-error;
-  }
-
-  .@{progress}__icon {
-    color: @error-color;
-  }
+  .progress-status(@progress-inner-bg-color-error, @error-color);
 }
 
 @keyframes progress-active-animation {

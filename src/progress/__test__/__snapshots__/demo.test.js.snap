@@ -2,17 +2,59 @@
 
 exports[`Progress Progress base demo works fine 1`] = `
 <base>
-  <t-progress
-    percentage="80"
-  />
-  <t-progress
-    percentage="80"
-    theme="plump"
-  />
-  <t-progress
-    percentage="30"
-    theme="circle"
-  />
+  <wx-view
+    class="demo-desc"
+  >
+    基础进度条
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-progress
+      percentage="80"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    百分比内显
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-progress
+      percentage="80"
+      theme="plump"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    环形进度条
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-progress
+      percentage="30"
+      theme="circle"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    微型环形进度条
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-progress
+      label="{{false}}"
+      percentage="30"
+      size="micro"
+      theme="circle"
+    />
+  </wx-view>
 </base>
 `;
 
