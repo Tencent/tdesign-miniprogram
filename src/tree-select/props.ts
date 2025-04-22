@@ -6,6 +6,10 @@
 
 import { TdTreeSelectProps } from './type';
 const props: TdTreeSelectProps = {
+  /** 自定义选中值，优先级高于 `value` */
+  customValue: {
+    type: null,
+  },
   /** 高度，默认单位为 px */
   height: {
     type: null,
