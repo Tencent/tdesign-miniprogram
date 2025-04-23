@@ -9,20 +9,28 @@ jobs:
   check-email:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: check_github_primary_email
         run: |
-          log_emails=$(git log --pretty=format:"%ae %ce" -1) && if [[ ${log_emails} =~ '@tencent.com' ]];then echo "默认邮箱 $log_emails 校验非法，可以去 https://github.com/settings/emails 更改" && exit 2;else echo "邮箱 $log_emails 校验通过";fi
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-      - name: check_local_email
-        run: |
-          log_emails=$(git log --pretty=format:"%ae %ce" -1) && if [[ ${log_emails} =~ '@tencent.com' ]];then echo "本地提交邮箱 $log_emails 校验非法，需要本地更改重新提交" && exit 2;else echo "邮箱 $log_emails 校验通过";fi
+          # 获取最新提交的作者邮箱和提交者邮箱
+          log_emails=$(git log --pretty=format:"%ae %ce" -1)
+          # 如果邮箱包含 'tdesign@tencent.com'，跳过验证
+          if [[ ${log_emails} =~ 'tdesign@tencent.com' ]];then 
+            echo "$log_emails 跳过验证"
+            exit 0
+          fi
+          # 如果邮箱包含 '@tencent.com'，校验失败，提示用户更改邮箱
+          if [[ ${log_emails} =~ '@tencent.com' ]];then 
+            echo "默认邮箱 $log_emails 校验非法，可以去 https://github.com/settings/emails 更改" 
+            exit 2;
+          else 
+            # 否则，校验通过
+            echo "邮箱 $log_emails 校验通过";
+          fi
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/install-dep
       - name: lint 检查
         run: npm run lint
