@@ -1,5 +1,6 @@
-import { isPlainObject, toObject } from './flatTool';
+import { toObject } from './flatTool';
 import { SuperComponent } from './superComponent';
+import { isPlainObject } from '../validator';
 import { canUseVirtualHost } from '../version';
 
 // 将 on 开头的生命周期函数转变成非 on 开头的
@@ -140,7 +141,7 @@ export const toComponent = function toComponent(options: Record<string, any>) {
     };
 
     options.methods._trigger = function (evtName, detail, opts) {
-      const target = controlledProps.find((item) => item.event == evtName);
+      const target = controlledProps.find((item) => item.event === evtName);
       if (target) {
         const { key } = target;
 

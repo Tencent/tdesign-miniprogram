@@ -29,7 +29,6 @@
           <t-image
             wx:if="{{file.type !== 'video'}}"
             data-file="{{file}}"
-            bind:tap="onProofTap"
             data-index="{{index}}"
             t-class="{{classPrefix}}__thumbnail"
             style="{{imageProps && imageProps.style || ''}}"
@@ -41,10 +40,9 @@
             shape="{{imageProps && imageProps.shape || 'round'}}"
             webp="{{imageProps && imageProps.webp || false}}"
             showMenuByLongpress="{{imageProps && imageProps.showMenuByLongpress || false}}"
+            bind:tap="onProofTap"
           />
           <video
-            data-file="{{file}}"
-            bind:tap="onFileClick"
             wx:if="{{file.type === 'video'}}"
             class="{{classPrefix}}__thumbnail"
             src="{{file.url}}"
@@ -52,12 +50,14 @@
             controls
             autoplay="{{false}}"
             objectFit="contain"
+            data-file="{{file}}"
+            bind:tap="onFileClick"
           />
           <!-- 失败重试 -->
           <view
-            data-index="{{index}}"
             wx:if="{{file.status && file.status != 'done'}}"
             class="{{classPrefix}}__progress-mask"
+            data-index="{{index}}"
             data-file="{{file}}"
             bind:tap="onFileClick"
           >
@@ -73,11 +73,12 @@
 
           <!-- 删除 -->
           <view
+            wx:if="{{ _.isBoolean(file.removeBtn) ? file.removeBtn : removeBtn}}"
             class="{{classPrefix}}__close-btn hotspot-expanded"
-            bindtap="onDelete"
             data-index="{{index}}"
             aria-role="button"
             aria-label="删除"
+            bindtap="onDelete"
           >
             <t-icon name="close" size="32rpx" color="#fff" />
           </view>
@@ -86,11 +87,11 @@
 
       <!-- 添加 -->
       <t-grid-item
-        wx:if="{{customLimit > 0}}"
+        wx:if="{{ addBtn && customLimit > 0}}"
         t-class="{{classPrefix}}__grid"
         t-class-content="{{classPrefix}}__grid-content"
-        bindclick="onAddTap"
         aria-label="上传"
+        bindclick="onAddTap"
       >
         <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
           <slot name="add-content" />
@@ -112,14 +113,14 @@
       >
         <view
           class="{{classPrefix}}__drag-item"
+          style="width: {{100 / column}}%; --td-upload-drag-transition-duration: {{transition.duration}}ms; --td-upload-drag-transition-timing-function: {{transition.timingFunction}}"
           wx:for="{{customFiles}}"
           wx:key="url"
           wx:for-item="file"
-          style="width: {{100 / column}}%; --td-upload-drag-transition-duration: {{transition.duration}}ms; --td-upload-drag-transition-timing-function: {{transition.timingFunction}}"
+          data-index="{{index}}"
           bind:longpress="{{handler.longPress}}"
           catch:touchmove="{{dragging ? handler.touchMove : ''}}"
           catch:touchend="{{dragging ? handler.touchEnd : ''}}"
-          data-index="{{index}}"
         >
           <!-- 图片/视频 -->
           <t-grid-item
@@ -137,7 +138,6 @@
               <t-image
                 wx:if="{{file.type !== 'video'}}"
                 data-file="{{file}}"
-                bind:tap="onProofTap"
                 data-index="{{index}}"
                 t-class="{{classPrefix}}__thumbnail"
                 style="{{imageProps && imageProps.style || ''}}"
@@ -149,10 +149,9 @@
                 shape="{{imageProps && imageProps.shape || 'round'}}"
                 webp="{{imageProps && imageProps.webp || false}}"
                 showMenuByLongpress="{{imageProps && imageProps.showMenuByLongpress || false}}"
+                bind:tap="onProofTap"
               />
               <video
-                data-file="{{file}}"
-                bind:tap="onFileClick"
                 wx:if="{{file.type === 'video'}}"
                 class="{{classPrefix}}__thumbnail"
                 src="{{file.url}}"
@@ -160,12 +159,14 @@
                 controls
                 autoplay="{{false}}"
                 objectFit="contain"
+                data-file="{{file}}"
+                bind:tap="onFileClick"
               />
               <!-- 失败重试 -->
               <view
-                data-index="{{index}}"
                 wx:if="{{file.status && file.status != 'done'}}"
                 class="{{classPrefix}}__progress-mask"
+                data-index="{{index}}"
                 data-file="{{file}}"
                 bind:tap="onFileClick"
               >
@@ -191,26 +192,27 @@
 
               <!-- 删除 -->
               <view
+                wx:if="{{ _.isBoolean(file.removeBtn) ? file.removeBtn : removeBtn}}"
                 class="{{classPrefix}}__close-btn hotspot-expanded"
-                bindtap="onDelete"
                 data-index="{{index}}"
                 data-url="{{file.url}}"
                 aria-role="button"
                 aria-label="删除"
+                bindtap="onDelete"
               >
                 <t-icon name="close" size="32rpx" color="#fff" />
               </view>
             </view>
           </t-grid-item>
-          <!-- 添加 -->
         </view>
-        <view class="{{classPrefix}}__drag-item" style="width: {{100 / column}}%" wx:if="{{customLimit > 0}}">
+        <!-- 添加 -->
+        <view wx:if="{{addBtn && customLimit > 0}}" class="{{classPrefix}}__drag-item" style="width: {{100 / column}}%">
           <t-grid-item
             t-class="{{classPrefix}}__grid"
             t-class-content="{{classPrefix}}__grid-content"
-            bindclick="onAddTap"
             aria-label="上传"
             style="width: 100%"
+            bindclick="onAddTap"
           >
             <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
               <slot name="add-content" />

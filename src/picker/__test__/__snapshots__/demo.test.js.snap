@@ -149,6 +149,7 @@ exports[`Picker Picker base demo works fine 1`] = `
     bind:pick="onColumnChange"
   >
     <t-picker-item
+      format="{{[Function]}}"
       options="{{
         Array [
           Object {

@@ -32,12 +32,6 @@ export default class Picker extends SuperComponent {
     'value, visible'() {
       this.updateChildren();
     },
-    keys(obj) {
-      this.setData({
-        labelAlias: obj?.label || 'label',
-        valueAlias: obj?.value || 'value',
-      });
-    },
   };
 
   lifetimes = {
@@ -51,8 +45,6 @@ export default class Picker extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-    labelAlias: 'label',
-    valueAlias: 'value',
     defaultPopUpProps: {},
     defaultPopUpzIndex: 11500,
     pickItemHeight: 0,

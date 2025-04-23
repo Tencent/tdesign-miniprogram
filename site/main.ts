@@ -1,6 +1,8 @@
 import { createApp } from 'vue';
 // eslint-disable-next-line import/no-duplicates
 import { registerLocaleChange } from 'tdesign-site-components';
+import 'tdesign-theme-generator';
+
 import app from './app.vue';
 import router from './router';
 

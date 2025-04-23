@@ -24,6 +24,11 @@ const props: TdTabPanelProps = {
     type: String,
     value: '',
   },
+  /** 是否启用选项卡懒加载 */
+  lazy: {
+    type: Boolean,
+    value: false,
+  },
   /** 用于自定义选项卡面板内容 */
   panel: {
     type: String,

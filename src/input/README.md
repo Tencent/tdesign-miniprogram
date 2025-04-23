@@ -89,7 +89,7 @@ style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 adjust-position | Boolean | true | 键盘弹起时，是否自动上推页面 | N
 align | String | left | 文本内容位置，居左/居中/居右。可选项：left/center/right | N
-allow-input-over-max | Boolean | false | 超出 `maxlength` 或 `maxcharacter` 之后是否允许继续输入 | N
+allow-input-over-max | Boolean | false | `1.8.6`。超出 `maxlength` 或 `maxcharacter` 之后是否允许继续输入 | N
 always-embed | Boolean | false | 强制 input 处于同层状态，默认 focus 时 input 会切到非同层状态 (仅在 iOS 下生效) | N
 auto-focus | Boolean | false | (即将废弃，请直接使用 focus )自动聚焦，拉起键盘 | N
 borderless | Boolean | false | 是否开启无边框模式 | N

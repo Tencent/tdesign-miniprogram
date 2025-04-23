@@ -5,7 +5,7 @@
  * */
 
 import { ButtonProps } from '../button/index';
-import { TdOverlayProps as OverlayProps } from '../overlay/type';
+import { OverlayProps } from '../overlay/index';
 
 export interface TdDialogProps {
   /**
@@ -61,13 +61,6 @@ export interface TdDialogProps {
     value?: string;
   };
   /**
-   * 组件类名，分别用于设置 组件外层元素、组件内容部分、确认按钮、取消按钮 等元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-content', 't-class-confirm', 't-class-cancel'];
-  };
-  /**
    * 透传至 Overlay 组件
    * @default {}
    */
@@ -90,14 +83,6 @@ export interface TdDialogProps {
   showOverlay?: {
     type: BooleanConstructor;
     value?: boolean;
-  };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 标题

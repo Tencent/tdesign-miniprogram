@@ -2,7 +2,6 @@
 
 ## API
 
-
 ### Textarea Props
 
 name | type | default | description | required
@@ -10,7 +9,7 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 adjust-position | Boolean | true | \- | N
-allow-input-over-max | Boolean | false | \- | N
+allow-input-over-max | Boolean | false | `1.8.6` | N
 autofocus | Boolean | false | \- | N
 autosize | Boolean / Object | false | Typescript：`boolean \| { maxHeight?: number, minHeight?: number }` | N
 bordered | Boolean | false | \- | N
@@ -30,7 +29,7 @@ maxlength | Number | -1 | \- | N
 placeholder | String | undefined | \- | N
 placeholder-class | String | textarea-placeholder | \- | N
 placeholder-style | String | - | \- | N
-readonly | Boolean | undefined | \- | N
+readonly | Boolean | undefined | `1.8.6` | N
 selection-end | Number | -1 | \- | N
 selection-start | Number | -1 | \- | N
 show-confirm-bar | Boolean | true | \- | N
@@ -60,6 +59,7 @@ t-class-textarea | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
+
 Name | Default Value | Description
 -- | -- | --
 --td-textarea-background-color | @bg-color-container | -

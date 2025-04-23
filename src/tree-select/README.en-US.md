@@ -8,6 +8,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
+custom-value | String / Number / Array | - | Typescript：`TreeSelectValue` | N
 height | String / Number | 336 | \- | N
 keys | Object | - | alias filed name in data。Typescript：`KeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 multiple | Boolean | false | \- | N

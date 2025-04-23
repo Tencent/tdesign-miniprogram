@@ -35,7 +35,7 @@ const props: TdPickerProps = {
   keys: {
     type: Object,
   },
-  /** 透传 `Popup` 组件全部属性 */
+  /** 透传 Popup 组件全部属性 */
   popupProps: {
     type: Object,
     value: {},

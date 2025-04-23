@@ -13,13 +13,13 @@
 <t-date-time-picker
   auto-close
   title="选择日期"
+  showWeek
   visible="{{dateVisible}}"
   mode="date"
   default-value="{{date}}"
-  format="YYYY-MM-DD"
-  start="{{start}}"
-  end="{{end}}"
+  format="YYYY-MM-DD ddd"
   filter="{{filter}}"
+  formatter="{{formatter}}"
   popup-props="{{popupProps}}"
   bindchange="onConfirm"
   bindpick="onColumnChange"

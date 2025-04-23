@@ -102,16 +102,19 @@ exports[`Upload Upload multiple demo works fine 1`] = `
         Array [
           Object {
             "name": "uploaded1.png",
+            "removeBtn": true,
             "type": "image",
             "url": "https://tdesign.gtimg.com/mobile/demos/example4.png",
           },
           Object {
             "name": "uploaded2.png",
+            "removeBtn": true,
             "type": "image",
             "url": "https://tdesign.gtimg.com/mobile/demos/example6.png",
           },
           Object {
             "name": "uploaded3.png",
+            "removeBtn": true,
             "type": "image",
             "url": "https://tdesign.gtimg.com/mobile/demos/example5.png",
           },
@@ -130,6 +133,7 @@ exports[`Upload Upload multiple demo works fine 1`] = `
           "image",
         ]
       }}"
+      removeBtn="{{false}}"
       bind:click="handleClick"
       bind:remove="handleRemove"
       bind:sort-end="handleSortEnd"

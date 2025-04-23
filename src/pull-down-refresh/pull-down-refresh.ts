@@ -1,11 +1,11 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { unitConvert, systemInfo } from '../common/utils';
-import useCustomNavbar from '../mixins/using-custom-navbar';
+import { unitConvert, systemInfo, getRect } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-pull-down-refresh`;
+const defaultLoadingTexts = ['下拉刷新', '松手刷新', '正在刷新', '刷新完成'];
 
 @wxComponent()
 export default class PullDownRefresh extends SuperComponent {
@@ -39,11 +39,10 @@ export default class PullDownRefresh extends SuperComponent {
 
   properties = props;
 
-  behaviors = [useCustomNavbar];
-
   data = {
     prefix,
     classPrefix: name,
+    distanceTop: 0,
     barHeight: 0,
     tipsHeight: 0,
     refreshStatus: -1,
@@ -58,15 +57,21 @@ export default class PullDownRefresh extends SuperComponent {
     attached() {
       const { screenWidth } = systemInfo;
       const { loadingTexts, maxBarHeight, loadingBarHeight } = this.properties;
+      const isCustomLoadingTexts = Array.isArray(loadingTexts) && loadingTexts.length >= 4;
+
       this.setData({
         _maxBarHeight: unitConvert(maxBarHeight),
         _loadingBarHeight: unitConvert(loadingBarHeight),
-        loadingTexts:
-          Array.isArray(loadingTexts) && loadingTexts.length >= 4
-            ? loadingTexts
-            : ['下拉刷新', '松手刷新', '正在刷新', '刷新完成'],
+        loadingTexts: isCustomLoadingTexts ? loadingTexts : defaultLoadingTexts,
       });
+
       this.pixelRatio = 750 / screenWidth;
+
+      getRect(this, `.${name}`).then((rect) => {
+        this.setData({
+          distanceTop: rect.top,
+        });
+      });
     },
 
     detached() {

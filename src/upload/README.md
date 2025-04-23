@@ -56,6 +56,13 @@ isComponent: true
 
 {{ messageFile }}
 
+## FAQ
+
+### 为什么 `Upload` 外层使用 `display: flex` 时会造成组件样式混乱？
+
+`Upload` 是基于 `TGrid` 宫格实现，当外层使用 `display: flex` ，子元素会默认加上 `flex-grow: 0`，造成 `Upload` 组件整体宽度不足。可以通过给组件根节点加上 `flex-grow: 1` 处理。
+ 
+
 ## API
 
 ### Upload Props
@@ -64,6 +71,7 @@ isComponent: true
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
+add-btn | Boolean | true | 添加按钮 | N
 add-content | String / Slot | - | 添加按钮内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 allow-upload-duplicate-file | Boolean | false | `暂不支持`。是否允许重复上传相同文件名的文件 | N
 config | Object | - | 图片上传配置，视频上传配置，文件上传配置等，包含图片尺寸、图片来源、视频来源、视频拍摄最长时间等。更多细节查看小程序官网。[图片上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)。[视频上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseVideo.html)。TS 类型：`UploadMpConfig` `type UploadMpConfig = ImageConfig \| VideoConfig` `interface ImageConfig { count?: number; sizeType?: Array<SizeTypeValues>; sourceType?: Array<SourceTypeValues> }` `type SizeTypeValues = 'original' \| 'compressed'` `type SourceTypeValues = 'album' \| 'camera'` `interface VideoConfig { sourceType?: Array<SourceTypeValues>; compressed?: boolean; maxDuration?: number; camera?: 'back' \| 'front' }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
@@ -76,6 +84,7 @@ gutter | Number | 16 | 预览窗格的 `gutter` 大小，单位 rpx | N
 image-props | Object | - | 透传 Image 组件全部属性。TS 类型：`ImageProps`，[Image API Documents](./image?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 max | Number | 0 | 用于控制文件上传数量，值为 0 则不限制 | N
 media-type | Array | ['image', 'video'] | 支持上传的文件类型，图片或视频。TS 类型：`Array<MediaType>` `type MediaType = 'image' \| 'video'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
+remove-btn | Boolean | true | 移除按钮 | N
 request-method | Function | - | 自定义上传方法 | N
 size-limit | Number / Object | - | 图片文件大小限制，默认单位 KB。可选单位有：`'B' \| 'KB' \| 'MB' \| 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }`。TS 类型：`number \| SizeLimitObj` `interface SizeLimitObj { size: number; unit: SizeUnit ; message?: string }` `type SizeUnitArray = ['B', 'KB', 'MB', 'GB']` `type SizeUnit = SizeUnitArray[number]`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 source | String | media | 来源。可选项：media/messageFile | N

@@ -14,7 +14,7 @@
 .block--left,
 .block--right {
   width: 280px;
-  height: 100vh;
+  height: 100%;
 }
 
 .block--center {

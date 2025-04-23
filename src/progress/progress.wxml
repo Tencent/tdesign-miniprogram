@@ -75,13 +75,10 @@
       aria-valuenow="{{computedProgress}}"
       aria-label="{{ ariaLabel || (isIOS ? _this.getIOSAriaLabel(status) : _this.getAndroidAriaLabel(status))  }}"
       aria-live="polite"
-      class="{{classPrefix}}__canvas--circle"
-      style="background-image: conic-gradient(from var(--td-progress-circle-from), {{colorCircle || _this.STATUS_COLOR[status] || 'var(--td-progress-inner-bg-color)'}} {{computedProgress}}%, {{bgColorBar || 'var(--td-progress-track-bg-color)'}} 0%);"
+      class="{{_.cls(classPrefix + '__canvas--circle', [[size, true]])}}"
+      style="{{_this.getCircleStyle(size, heightBar)}}; background-image: conic-gradient(from var(--td-progress-circle-from), {{colorCircle || _this.STATUS_COLOR[status] || 'var(--td-progress-inner-bg-color)'}} {{computedProgress}}%, {{bgColorBar || 'var(--td-progress-track-bg-color)'}} 0%);"
     >
-      <view
-        class="{{classPrefix}}__canvas--inner {{prefix}}-class-bar"
-        style="{{heightBar? '--td-progress-stroke-circle-width:' + heightBar + 'px' : ''}}"
-      >
+      <view class="{{classPrefix}}__canvas--inner {{prefix}}-class-bar">
         <view wx:if="{{label}}" class="{{classPrefix}}__info {{prefix}}-class-label" aria-hidden="{{ true }}">
           <template
             wx:if="{{_.includes(_this.STATUS, status)}}"

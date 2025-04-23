@@ -20,7 +20,7 @@ describe('date-time-picker', () => {
     const target = handler(dom);
 
     target.start(0, 0);
-    target.move(0, -34 * step); // itemHeight / 1.2
+    target.move(0, -40 * step); // itemHeight: 40
     target.end();
   };
 
@@ -74,6 +74,45 @@ describe('date-time-picker', () => {
     comp.attach(document.createElement('parent-wrapper'));
 
     // expect(comp.toJSON()).toMatchSnapshot();
+  });
+
+  it(':showWeek', async () => {
+    let pickValue = '';
+    const id = simulate.load({
+      template: `<t-date-time-picker
+        id="week"
+        mode="date"
+        showWeek
+        default-value="{{date}}"
+        format="YYYY-MM-DD ddd"
+        start="{{start}}"
+        end="{{end}}"
+        visible="{{visible}}"
+        bind:pick="handlePick"
+        />`,
+      data: {
+        date: new Date('2021-12-23').getTime(), // 支持时间戳传入
+        start: '2000-01-01 00:00:00',
+        end: '2030-09-09 12:12:12',
+        visible: true,
+      },
+      methods: {
+        handlePick(e) {
+          pickValue = e.detail.value;
+        },
+      },
+      usingComponents: {
+        't-date-time-picker': dateTimePicker,
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const $items = comp.querySelectorAll('#week >>> .t-date-time-picker__item');
+    const $DayGroup = $items[2].querySelector('.t-picker-item__group');
+
+    pick($DayGroup, 1);
+    await simulate.sleep(100);
+    expect(pickValue).toBe('2021-12-24 周五');
   });
 
   it('@event', async () => {

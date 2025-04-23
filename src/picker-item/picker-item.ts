@@ -1,14 +1,30 @@
 import { SuperComponent, wxComponent, RelationsOptions, ComponentsOptionsType } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { PickerItemOption } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-picker-item`;
 
-const DefaultDuration = 240;
+// 动画持续时间
+const ANIMATION_DURATION = 1000;
+// 和上一次move事件间隔小于INERTIA_TIME
+const INERTIA_TIME = 300;
+// 且距离大于`MOMENTUM_DISTANCE`时，执行惯性滚动
+const INERTIA_DISTANCE = 15;
 
 const range = function (num: number, min: number, max: number) {
   return Math.min(Math.max(num, min), max);
+};
+
+const momentum = (distance: number, duration: number) => {
+  let nDistance = distance;
+  // 惯性滚动的速度
+  const speed = Math.abs(nDistance / duration);
+  // 加速度经验值: 0.005
+  // 惯性滚动的距离
+  nDistance = (speed / 0.005) * (nDistance < 0 ? -1 : 1);
+  return nDistance;
 };
 
 @wxComponent()
@@ -20,9 +36,10 @@ export default class PickerItem extends SuperComponent {
         if ('keys' in parent.data) {
           const { keys } = parent.data;
 
+          if (keys === null || JSON.stringify(this.data.pickerKeys) === JSON.stringify(keys)) return;
+
           this.setData({
-            labelAlias: keys?.label || 'label',
-            valueAlias: keys?.value || 'value',
+            pickerKeys: keys,
           });
         }
       },
@@ -38,7 +55,7 @@ export default class PickerItem extends SuperComponent {
   properties = props;
 
   observers = {
-    options(this: PickerItem) {
+    'options, pickerKeys'() {
       this.update();
     },
   };
@@ -51,14 +68,15 @@ export default class PickerItem extends SuperComponent {
     value: '',
     curIndex: 0,
     columnIndex: 0,
-    labelAlias: 'label',
-    valueAlias: 'value',
+    pickerKeys: { value: 'value', label: 'label' },
+    formatOptions: props.options.value,
   };
 
   lifetimes = {
     created() {
       this.StartY = 0;
       this.StartOffset = 0;
+      this.startTime = 0;
     },
   };
 
@@ -66,45 +84,55 @@ export default class PickerItem extends SuperComponent {
     onTouchStart(event) {
       this.StartY = event.touches[0].clientY;
       this.StartOffset = this.data.offset;
-      this.setData({ duration: 0 });
+      this.startTime = Date.now();
+      this.setData({
+        duration: 0,
+      });
     },
 
     onTouchMove(event) {
-      const { pickItemHeight } = this.data;
       const { StartY, StartOffset } = this;
-
-      // touch偏移增量
-      const touchDeltaY = event.touches[0].clientY - StartY;
-      const deltaY = this.calculateViewDeltaY(touchDeltaY, pickItemHeight);
-
+      const { pickItemHeight } = this.data;
+      // 偏移增量
+      const deltaY = event.touches[0].clientY - StartY;
+      const newOffset = range(StartOffset + deltaY, -(this.getCount() * pickItemHeight), 0);
       this.setData({
-        offset: range(StartOffset + deltaY, -(this.getCount() * pickItemHeight), 0),
-        duration: DefaultDuration,
+        offset: newOffset,
       });
     },
 
-    onTouchEnd() {
-      const { offset, labelAlias, valueAlias, columnIndex, pickItemHeight } = this.data;
-      const { options } = this.properties;
-
+    onTouchEnd(event) {
+      const { offset, pickerKeys, columnIndex, pickItemHeight, formatOptions } = this.data;
+      const { startTime } = this;
       if (offset === this.StartOffset) {
         return;
       }
-      // 调整偏移量
-      const index = range(Math.round(-offset / pickItemHeight), 0, this.getCount() - 1);
-      this.setData({
-        curIndex: index,
-        offset: -index * pickItemHeight,
-      });
 
+      // 判断是否需要惯性滚动
+      let distance = 0;
+      const move = event.changedTouches[0].clientY - this.StartY;
+      const moveTime = Date.now() - startTime;
+      if (moveTime < INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
+        distance = momentum(move, moveTime);
+      }
+
+      // 调整偏移量
+      const newOffset = range(offset + distance, -this.getCount() * pickItemHeight, 0);
+      const index = range(Math.round(-newOffset / pickItemHeight), 0, this.getCount() - 1);
+      this.setData({
+        offset: -index * pickItemHeight,
+        duration: ANIMATION_DURATION,
+        curIndex: index,
+      });
       if (index === this._selectedIndex) {
         return;
       }
+      this._selectedIndex = index;
 
       wx.nextTick(() => {
         this._selectedIndex = index;
-        this._selectedValue = options[index]?.[valueAlias];
-        this._selectedLabel = options[index]?.[labelAlias];
+        this._selectedValue = formatOptions[index]?.[pickerKeys?.value];
+        this._selectedLabel = formatOptions[index]?.[pickerKeys?.label];
         this.$parent?.triggerColumnChange({
           index,
           column: columnIndex,
@@ -112,37 +140,40 @@ export default class PickerItem extends SuperComponent {
       });
     },
 
+    formatOption(options: PickerItemOption[], columnIndex: number, format: any) {
+      if (typeof format !== 'function') return options;
+
+      return options.map((ele: PickerItemOption) => {
+        return format(ele, columnIndex);
+      });
+    },
+
     // 刷新选中状态
     update() {
-      const { options, value, labelAlias, valueAlias, pickItemHeight } = this.data;
+      const { options, value, pickerKeys, pickItemHeight, format, columnIndex } = this.data;
 
-      const index = options.findIndex((item) => item[valueAlias] === value);
+      const formatOptions = this.formatOption(options, columnIndex, format);
+
+      const index = formatOptions.findIndex((item: PickerItemOption) => item[pickerKeys?.value] === value);
       const selectedIndex = index > 0 ? index : 0;
 
+      this._selectedIndex = selectedIndex;
+      this._selectedValue = formatOptions[selectedIndex]?.[pickerKeys?.value];
+      this._selectedLabel = formatOptions[selectedIndex]?.[pickerKeys?.label];
+
       this.setData({
+        formatOptions,
         offset: -selectedIndex * pickItemHeight,
         curIndex: selectedIndex,
       });
 
       this._selectedIndex = selectedIndex;
-      this._selectedValue = options[selectedIndex]?.[valueAlias];
-      this._selectedLabel = options[selectedIndex]?.[labelAlias];
-    },
-
-    resetOrigin() {
-      this.update();
+      this._selectedValue = options[selectedIndex]?.[pickerKeys?.value];
+      this._selectedLabel = options[selectedIndex]?.[pickerKeys?.label];
     },
 
     getCount() {
       return this.data?.options?.length;
     },
   };
-
-  /**
-   * 将屏幕滑动距离换算为视图偏移量 模拟渐进式滚动
-   * @param touchDeltaY 屏幕滑动距离
-   */
-  calculateViewDeltaY(touchDeltaY: number, itemHeight: number): number {
-    return Math.abs(touchDeltaY) > itemHeight ? 1.2 * touchDeltaY : touchDeltaY;
-  }
 }

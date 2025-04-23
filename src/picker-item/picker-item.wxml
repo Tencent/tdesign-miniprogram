@@ -15,12 +15,12 @@
     <view
       class="{{_.cls(classPrefix + '__item', [['active', curIndex == index]])}}"
       style="height: {{pickItemHeight}}px"
-      wx:for="{{options}}"
+      wx:for="{{formatOptions}}"
       wx:key="index"
       wx:for-item="option"
       data-index="{{ index }}"
     >
-      <text class="{{classPrefix}}__item-label">{{option[labelAlias]}}</text>
+      <text class="{{classPrefix}}__item-label">{{option[pickerKeys.label]}}</text>
       <slot name="label-suffix--{{index}}"></slot>
     </view>
   </view>

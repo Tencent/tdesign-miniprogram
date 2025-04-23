@@ -62,6 +62,19 @@ isComponent: true
 
 {{ vertical }}
 
+## FAQ
+
+当 slider 外层使用 `hidden` 包裹，需要在 `hidden = false` 时，重新调用组件的 `init` 方法，才能正常渲染（在t-popup/t-dialog中同理）。如下：
+
+```html
+<t-slider id="slider" />
+```
+
+```js
+const $slider = this.selectComponent('#slider');
+
+$slider.init();
+```
 
 ## API
 
@@ -103,20 +116,6 @@ t-class-bar | 滑道底部样式类
 t-class-bar-active | 滑道激活态样式类
 t-class-bar-disabled | 滑道禁用态样式类
 t-class-cursor | 游标样式类
-
-## FAQ
-
-当 slider 外层使用 `hidden` 包裹，需要在 `hidden = false` 时，重新调用组件的 `init` 方法，才能正常渲染（在t-popup/t-dialog中同理）。如下：
-
-```html
-<t-slider id="slider" />
-```
-
-```js
-const $slider = this.selectComponent('#slider');
-
-$slider.init();
-```
 
 ### CSS Variables
 

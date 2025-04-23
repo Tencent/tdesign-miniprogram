@@ -1,4 +1,5 @@
 import { prefix } from './config';
+import { isString, isNumber, isDef, isBoolean, isObject } from './validator';
 import { getWindowInfo, getAppBaseInfo, getDeviceInfo } from './wechat';
 
 export const systemInfo: WechatMiniprogram.WindowInfo | WechatMiniprogram.SystemInfo = getWindowInfo();
@@ -114,20 +115,6 @@ export const getRect = function (context: any, selector: string, needAll: boolea
   });
 };
 
-export const isNumber = function (value) {
-  return /^\d+(\.\d+)?$/.test(value);
-};
-
-export const isNull = function (value: any): boolean {
-  return value === null;
-};
-
-export const isUndefined = (value: any): boolean => typeof value === 'undefined';
-
-export const isDef = function (value: any): boolean {
-  return !isUndefined(value) && !isNull(value);
-};
-
 export const isIOS = function (): boolean {
   return !!(deviceInfo?.system?.toLowerCase().search('ios') + 1);
 };
@@ -177,7 +164,9 @@ export const getCharacterLength = (type: string, char: string | number, max?: nu
       length: len,
       characters: str,
     };
-  } else if (type === 'maxlength') {
+  }
+
+  if (type === 'maxlength') {
     const length = str.length > max ? max : str.length;
     return {
       length,
@@ -225,29 +214,23 @@ export const setIcon = (iconName, icon, defaultIcon) => {
         [`${iconName}Name`]: icon,
         [`${iconName}Data`]: {},
       };
-    } else if (typeof icon === 'object') {
+    }
+    if (typeof icon === 'object') {
       return {
         [`${iconName}Name`]: '',
         [`${iconName}Data`]: icon,
       };
-    } else {
-      return {
-        [`${iconName}Name`]: defaultIcon,
-        [`${iconName}Data`]: {},
-      };
     }
+    return {
+      [`${iconName}Name`]: defaultIcon,
+      [`${iconName}Data`]: {},
+    };
   }
   return {
     [`${iconName}Name`]: '',
     [`${iconName}Data`]: {},
   };
 };
-
-export const isBool = (val) => typeof val === 'boolean';
-
-export const isObject = (val) => typeof val === 'object' && val != null;
-
-export const isString = (val) => typeof val === 'string';
 
 export const toCamel = (str) => str.replace(/-(\w)/g, (match, m1) => m1.toUpperCase());
 
@@ -258,12 +241,16 @@ export const getCurrentPage = function <T>() {
 
 export const uniqueFactory = (compName) => {
   let number = 0;
-  return () => `${prefix}_${compName}_${number++}`;
+  return () => {
+    const uniqueId = `${prefix}_${compName}_${number}`;
+    number += 1;
+    return uniqueId;
+  };
 };
 
 export const calcIcon = (icon: string | Record<string, any>, defaultIcon?: string) => {
-  if (icon && ((isBool(icon) && defaultIcon) || isString(icon))) {
-    return { name: isBool(icon) ? defaultIcon : icon };
+  if (icon && ((isBoolean(icon) && defaultIcon) || isString(icon))) {
+    return { name: isBoolean(icon) ? defaultIcon : icon };
   }
   if (isObject(icon)) {
     return icon;

@@ -1,4 +1,4 @@
-@import '../common/style/index.less';
+@import '../common/style/base.less';
 
 @drawer-width: var(--td-drawer-width, 560rpx);
 @drawer-title-font-size: var(--td-drawer-title-font-size, 36rpx);
@@ -16,8 +16,8 @@
 
 .@{prefix}-drawer {
   background: @drawer-bg-color;
-  height: 100vh;
   width: @drawer-width;
+  height: 100%;
   display: flex;
   flex-direction: column;
 

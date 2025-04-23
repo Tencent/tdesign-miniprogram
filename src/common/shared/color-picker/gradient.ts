@@ -1,11 +1,10 @@
-import isString from 'lodash/isString';
-import isNull from 'lodash/isNull';
-/* eslint-disable no-param-reassign */
 /**
  * 用于反解析渐变字符串为对象
  * https://stackoverflow.com/questions/20215440/parse-css-gradient-rule-with-javascript-regex
  */
 import tinyColor from 'tinycolor2';
+
+import { isString, isNull } from '../../validator';
 
 /**
  * Utility combine multiple regular expressions.
@@ -15,7 +14,7 @@ import tinyColor from 'tinycolor2';
  */
 const combineRegExp = (regexpList: (string | RegExp)[], flags: string): RegExp => {
   let source = '';
-  for (let i = 0; i < regexpList.length; i++) {
+  for (let i = 0; i < regexpList.length; i += 1) {
     if (isString(regexpList[i])) {
       source += regexpList[i];
     } else {

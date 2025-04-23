@@ -12,7 +12,6 @@ import dayjsLocaleMap from './locale/dayjs';
  * https://dayjs.fenxianglu.cn/category/plugin.html#localedata
  */
 dayjs.extend(localeData);
-// 设置 demo 的默认语言为 zh
 dayjs.locale('zh-cn');
 
 // const defaultLocale = dayjsLocaleMap.default.key;
@@ -33,9 +32,6 @@ enum ModeItem {
 const DATE_MODES = ['year', 'month', 'date'];
 const TIME_MODES = ['hour', 'minute', 'second'];
 const FULL_MODES = [...DATE_MODES, ...TIME_MODES];
-
-const DEFAULT_MIN_DATE: Dayjs = dayjs('2000-01-01 00:00:00');
-const DEFAULT_MAX_DATE: Dayjs = dayjs('2030-12-31 23:59:59');
 
 interface ColumnItemValue {
   value: string | number;
@@ -104,6 +100,25 @@ export default class DateTimePicker extends SuperComponent {
       });
     },
 
+    getDaysOfWeekInMonth(date: Dayjs): Array<{ value: string; label: string }> {
+      const { locale, dayjsLocale } = this.data;
+      const startOfMonth = date.startOf('month');
+      const endOfMonth = date.endOf('month');
+      const daysOfWeek = [];
+
+      for (let i = 0; i <= endOfMonth.diff(startOfMonth, 'days'); i += 1) {
+        const currentDate = startOfMonth.add(i, 'days').locale(dayjsLocale);
+        const dayName = currentDate.format('ddd');
+
+        daysOfWeek.push({
+          value: `${i + 1}`,
+          label: `${i + 1}${locale.date || ''} ${dayName}`,
+        });
+      }
+
+      return daysOfWeek;
+    },
+
     getParseDate(): Dayjs {
       const { value, defaultValue } = this.properties;
       const minDate = this.getMinDate();
@@ -123,14 +138,16 @@ export default class DateTimePicker extends SuperComponent {
       return isDateValid ? parseDate : minDate;
     },
 
+    normalize(val: string | number, defaultDay: Dayjs): Dayjs {
+      return val && dayjs(val).isValid() ? dayjs(val) : defaultDay;
+    },
+
     getMinDate(): Dayjs {
-      const { start } = this.properties;
-      return start ? dayjs(start) : DEFAULT_MIN_DATE;
+      return this.normalize(this.properties.start, dayjs().subtract(10, 'year'));
     },
 
     getMaxDate(): Dayjs {
-      const { end } = this.properties;
-      return end ? dayjs(end) : DEFAULT_MAX_DATE;
+      return this.normalize(this.properties.end, dayjs().add(10, 'year'));
     },
 
     getDateRect(type = 'default') {
@@ -146,7 +163,7 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     getDate(): Dayjs {
-      return this.clipDate(this?.date || DEFAULT_MIN_DATE);
+      return this.clipDate(this?.date || this.getMinDate());
     },
 
     // 数据裁减 确保数据不越界
@@ -178,7 +195,7 @@ export default class DateTimePicker extends SuperComponent {
       const { fullModes, filter } = this.data;
 
       const columnOptions = [];
-      fullModes?.forEach((mode) => {
+      fullModes?.forEach((mode: string) => {
         const columnOption = this.getOptionByType(mode);
         if (typeof filter === 'function') {
           columnOptions.push(filter(mode, columnOption));
@@ -186,18 +203,21 @@ export default class DateTimePicker extends SuperComponent {
           columnOptions.push(columnOption);
         }
       });
-
       return columnOptions;
     },
 
-    getOptionByType(type) {
-      const { locale, steps } = this.data;
+    getOptionByType(type: string) {
+      const { locale, steps, showWeek } = this.data;
       const options: ColumnItemValue[] = [];
 
       const minEdge = this.getOptionEdge('min', type);
       const maxEdge = this.getOptionEdge('max', type);
       const step = steps?.[type] ?? 1;
       const dayjsMonthsShort = dayjs().locale(this.data.dayjsLocale).localeData().monthsShort();
+
+      if (type === 'date' && showWeek) {
+        return this.getDaysOfWeekInMonth(this.date);
+      }
 
       for (let i = minEdge; i <= maxEdge; i += step) {
         options.push({
