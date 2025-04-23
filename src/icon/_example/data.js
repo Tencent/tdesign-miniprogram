@@ -1190,6 +1190,8 @@ const icons = [
   'logo-chrome',
   'logo-cinema4d-filled',
   'logo-cinema4d',
+  'logo-cnb-filled',
+  'logo-cnb',
   'logo-codepen',
   'logo-codesandbox',
   'logo-dribbble-filled',
@@ -1208,6 +1210,8 @@ const icons = [
   'logo-ie',
   'logo-instagram-filled',
   'logo-instagram',
+  'logo-miniprogram-filled',
+  'logo-miniprogram',
   'logo-qq-filled',
   'logo-qq',
   'logo-twitter-filled',
@@ -1539,6 +1543,8 @@ const icons = [
   'questionnaire',
   'queue-filled',
   'queue',
+  'quote-filled',
+  'quote',
   'radar',
   'radio-1-filled',
   'radio-1',
@@ -1609,6 +1615,8 @@ const icons = [
   'sd-card-1',
   'sd-card-filled',
   'sd-card',
+  'seal-filled',
+  'seal',
   'search-error-filled',
   'search-error',
   'search-filled',
@@ -2114,6 +2122,6 @@ const icons = [
   'zoom-in-filled',
   'zoom-in',
   'zoom-out-filled',
-  'zoom-out',
-];
+  'zoom-out'
+]; 
 export default icons;
