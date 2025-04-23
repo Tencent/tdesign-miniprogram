@@ -6,6 +6,28 @@ docClass: timeline
 ---
 
 
+## 🌈 1.9.0 `2025-04-23` 
+### 🚀 Features
+- `DateTimePicker`: 支持 `showWeek` 属性 @anlyyao ([#3565](https://github.com/Tencent/tdesign-miniprogram/pull/3565) [#3570](https://github.com/Tencent/tdesign-miniprogram/pull/3570))
+- `Dialog`: 命令式调用返回触发器数据 @betavs ([#3579](https://github.com/Tencent/tdesign-miniprogram/pull/3579))
+- `Progress`: 新增 `size` 属性，支持自定义环形进度条尺寸 @anlyyao ([#3604](https://github.com/Tencent/tdesign-miniprogram/pull/3604))
+- `Divider`: 丰富 `css vars`，支持自定义分割线高度 @anlyyao ([#3603](https://github.com/Tencent/tdesign-miniprogram/pull/3603))
+- `Upload`: 组件新增 `addBtn` 和 `removeBtn` 属性，并支持在文件中设置单个图片的 `removeBtn` 属性 @anlyyao ([#3605](https://github.com/Tencent/tdesign-miniprogram/pull/3605))
+### 🐞 Bug Fixes
+- `RadioGroup`: 修复无法在 `form` 中获取数据的问题 @Boomkaa ([#3558](https://github.com/Tencent/tdesign-miniprogram/pull/3558))
+- `Switch`: 修复深色模式下禁用态背景色错误 @anlyyao ([#3564](https://github.com/Tencent/tdesign-miniprogram/pull/3564))
+- `CountDown`: 异步获取 `time` 导致触发 `finish` 事件 @anlyyao ([#3580](https://github.com/Tencent/tdesign-miniprogram/pull/3580))
+- `Steps`: 修复 `theme` 和 `sequence` 属性值动态更新后组件未重新渲染的问题 @betavs ([#3584](https://github.com/Tencent/tdesign-miniprogram/pull/3584))
+- `Picker`: 修复 `keys` 属性无效的问题 @anlyyao ([#3585](https://github.com/Tencent/tdesign-miniprogram/pull/3585))
+- `Popup`: 当 `placement` 为 `'left' | 'right'` 配合 `usingCustomNavbar` 时，容器高度溢出的问题 @betavs ([#3586](https://github.com/Tencent/tdesign-miniprogram/pull/3586))
+- `DateTimePicker`:  修复 `start` 和 `end` 属性默认值错误，以系统当前时间为基准 @anlyyao ([#3594](https://github.com/Tencent/tdesign-miniprogram/pull/3594))
+- `PullDownRefresh`: 动态设置容器最大高度错误的问题 @betavs ([#3592](https://github.com/Tencent/tdesign-miniprogram/pull/3592))
+- `TreeSelect`: 修复多选场景下跨分支点选时选中值不完整 @anlyyao ([#3600](https://github.com/Tencent/tdesign-miniprogram/pull/3600))
+### 🚧 Others
+- `chore`: 移除组件对 `lodash` 的依赖，调整样式引入方式，编译产物移除 `md` 文档并加入文件压缩 @anlyyao ([#3555](https://github.com/Tencent/tdesign-miniprogram/pull/3555))
+- `site`: 站点接入主题生成器 @RylanBot ([#3527](https://github.com/Tencent/tdesign-miniprogram/pull/3527))
+
+
 ## 🌈 1.8.8 `2025-03-23` 
 ### 🐞 Bug Fixes
 - `StepItem`: 移除页面中多余的字符内容 @runoob-coder ([#3528](https://github.com/Tencent/tdesign-miniprogram/pull/3528))
