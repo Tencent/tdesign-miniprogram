@@ -1,12 +1,7 @@
 import { getInstance } from '../common/utils';
+import { ActionSheetItem } from './type';
 
-export interface ActionSheetItem {
-  label: string;
-  color?: string;
-  disabled?: boolean;
-  /** 图标名称或图片链接 */
-  icon?: string;
-}
+export { ActionSheetItem };
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
