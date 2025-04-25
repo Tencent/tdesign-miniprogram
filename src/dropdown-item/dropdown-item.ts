@@ -87,7 +87,7 @@ export default class DropdownMenuItem extends SuperComponent {
         });
       }
     },
-    'label, computedLabel'() {
+    'label, computedLabel, disabled'() {
       this.$parent?.getAllItems();
     },
     show(visible) {
