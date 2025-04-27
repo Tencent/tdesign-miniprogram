@@ -6,6 +6,16 @@ docClass: timeline
 ---
 
 
+## 🌈 1.9.1 `2025-04-27` 
+### 🚀 Features
+- `Icon`: 新增 `logo-miniprogram`、`logo-cnb`、`seal`、`quote` 图标 @taowensheng1997 @uyarn ([#3608](https://github.com/Tencent/tdesign-miniprogram/pull/3608))
+- `Input`:  新增 `extra` 插槽，用于自定义右侧额外的信息 @Boomkaa ([#3614](https://github.com/Tencent/tdesign-miniprogram/pull/3614))
+-  `Cascader`: 新增 `header` 插槽，用于自定义内容头部 @anlyyao ([#3617](https://github.com/Tencent/tdesign-miniprogram/pull/3617))
+### 🐞 Bug Fixes
+- `Icon`: 优化多个文件相关图标的绘制效果，修复 `gesture-right-slip` 的绘制问题 @uyarn([#3608](https://github.com/Tencent/tdesign-miniprogram/pull/3608))
+- `DropdownItem`: 修复动态修改 `disabled` 属性样式未更新 @Boomkaa ([#3612](https://github.com/Tencent/tdesign-miniprogram/pull/3612))
+
+
 ## 🌈 1.9.0 `2025-04-23` 
 ### 🚀 Features
 - `DateTimePicker`: 支持 `showWeek` 属性 @anlyyao ([#3565](https://github.com/Tencent/tdesign-miniprogram/pull/3565) [#3570](https://github.com/Tencent/tdesign-miniprogram/pull/3570))
