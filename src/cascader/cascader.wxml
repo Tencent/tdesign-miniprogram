@@ -10,6 +10,9 @@
       <slot name="close-btn" />
       <t-icon wx:if="{{closeBtn}}" size="48rpx" name="close" />
     </view>
+
+    <slot name="header" />
+
     <view class="{{name}}__content">
       <block wx:if="{{steps && steps.length}}">
         <view wx:if="{{theme == 'step'}}" class="{{name}}__steps">
