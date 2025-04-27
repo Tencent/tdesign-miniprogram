@@ -98,4 +98,6 @@
     </view>
     <slot name="tips" />
   </view>
+
+  <slot name="extra" />
 </view>
