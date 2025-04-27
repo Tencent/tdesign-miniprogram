@@ -6,9 +6,9 @@ const VERSION = process.argv[process.argv.indexOf('--version') + 1]; // 在 --ve
 
 const iconOnlinePath = `https://tdesign.gtimg.com/icon/${VERSION}/fonts/index.css`;
 
-const iconFile = path.join(__dirname, '..', 'src/common/style/icons.less'); // 组件的 .less 文件
+const commonIconFile = path.join(__dirname, '..', 'src/common/style/icons.less'); // 组件的 .less 文件
 const dataFile = path.join(__dirname, '..', 'src/icon/_example/data.js'); // 示例的 .js 文件
-
+const iconFile = path.join(__dirname, '..', 'src/icon/icon.less');
 // 定义一个函数来保存文件
 const saveFile = (filename, content) => {
   fs.writeFile(filename, content, (err) => {
@@ -36,12 +36,17 @@ const getIconCss = () => {
     const iconsJs = `const icons = [\n  '${keys.join("',\n  '")}'\n]; \nexport default icons;\n`;
 
     // 将 iconObject 转换为 LESS 格式的字符串
-    const iconLess = `@icons: {\n  ${Object.entries(iconObject)
+    const commonIconLess = `@icons: {\n  ${Object.entries(iconObject)
       .map(([key, value]) => `${key}: '${value}';`)
       .join('\n  ')}\n}`;
 
+    const iconLess = fs.readFileSync(iconFile, 'utf-8');
+    const pattern = /https:\/\/tdesign\.gtimg\.com\/icon\/([\d.]+)\//g;
+    const newIconLess = iconLess.replaceAll(pattern, `https://tdesign.gtimg.com/icon/${VERSION}/`);
+
+    saveFile(iconFile, newIconLess);
     saveFile(dataFile, iconsJs);
-    saveFile(iconFile, iconLess);
+    saveFile(commonIconFile, commonIconLess);
   });
 };
 
