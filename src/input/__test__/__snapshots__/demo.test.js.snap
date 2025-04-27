@@ -273,18 +273,7 @@ exports[`Input Input suffix demo works fine 1`] = `
     bind:click="click"
   />
   <t-input
-    label="标签文字"
-    placeholder="请输入文字"
-  >
-    <t-button
-      size="extra-small"
-      slot="suffix"
-      theme="primary"
-    >
-       操作按钮 
-    </t-button>
-  </t-input>
-  <t-input
+    class="extra"
     label="标签文字"
     placeholder="请输入文字"
     tips="最多十个字"
