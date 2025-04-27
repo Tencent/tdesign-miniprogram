@@ -5,11 +5,7 @@
   bind:click="click"
 />
 
-<t-input label="标签文字" placeholder="请输入文字">
-  <t-button slot="suffix" theme="primary" size="extra-small"> 操作按钮 </t-button>
-</t-input>
-
-<t-input label="标签文字" placeholder="请输入文字" tips="最多十个字">
+<t-input class="extra" label="标签文字" placeholder="请输入文字" tips="最多十个字">
   <t-button slot="extra" theme="primary" maxcharacter="{{10}}" size="extra-small"> 操作按钮 </t-button>
 </t-input>
 
