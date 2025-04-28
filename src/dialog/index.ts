@@ -54,27 +54,37 @@ const defaultOptions = {
 
 export default {
   alert(options: DialogAlertOptionsType) {
-    const { context, selector = '#t-dialog', ...otherOptions } = { ...defaultOptions, ...options };
+    const { context, selector = '#t-dialog', ...otherOptions } = { ...options };
     const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
 
     return new Promise((resolve) => {
+      const mergedOptions = {
+        ...defaultOptions,
+        ...instance.properties,
+        ...otherOptions,
+      };
       instance.setData({
         cancelBtn: '',
-        ...otherOptions,
+        ...mergedOptions,
         visible: true,
       });
       instance._onConfirm = resolve;
     });
   },
   confirm(options: DialogConfirmOptionsType) {
-    const { context, selector = '#t-dialog', ...otherOptions } = { ...defaultOptions, ...options };
+    const { context, selector = '#t-dialog', ...otherOptions } = { ...options };
     const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
 
     return new Promise((resolve, reject) => {
-      instance.setData({
+      const mergedOptions = {
+        ...defaultOptions,
+        ...instance.properties,
         ...otherOptions,
+      };
+      instance.setData({
+        ...mergedOptions,
         visible: true,
       });
       instance._onConfirm = resolve;
@@ -91,19 +101,23 @@ export default {
     return Promise.reject();
   },
   action(options: DialogActionOptionsType): Promise<{ index: number }> {
-    const { context, selector = '#t-dialog', actions, ...otherOptions } = { ...defaultOptions, ...options };
+    const { context, selector = '#t-dialog', ...otherOptions } = { ...options };
     const instance = getInstance(context, selector);
     if (!instance) return Promise.reject();
-    const { buttonLayout = 'vertical' } = options;
+    const { buttonLayout = 'vertical', actions = instance.properties.actions } = options;
     const maxLengthSuggestion = buttonLayout === 'vertical' ? 7 : 3;
     if (!actions || (typeof actions === 'object' && (actions.length === 0 || actions.length > maxLengthSuggestion))) {
       console.warn(`action 数量建议控制在1至${maxLengthSuggestion}个`);
     }
 
     return new Promise((resolve) => {
-      instance.setData({
-        actions,
+      const mergedOptions = {
+        ...defaultOptions,
+        ...instance.properties,
         ...otherOptions,
+      };
+      instance.setData({
+        ...mergedOptions,
         buttonLayout,
         visible: true,
       });
