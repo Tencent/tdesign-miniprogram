@@ -3,6 +3,7 @@ Component({
     mode: '',
     second: '10:00:00',
     minute: '23:59',
+    start: new Date().setHours(0, 0, 0),
   },
   methods: {
     showPicker(e) {

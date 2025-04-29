@@ -110,6 +110,7 @@ exports[`DateTimePicker DateTimePicker time demo works fine 1`] = `
         "minute",
       ]
     }}"
+    start="{{1745856000979}}"
     title="选择时间"
     value="23:59"
     visible=""
