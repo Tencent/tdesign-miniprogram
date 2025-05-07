@@ -3,6 +3,7 @@ Component({
     mode: '',
     second: '10:00:00',
     minute: '23:59',
+    start: '2025-04-29 00:00:00',
   },
   methods: {
     showPicker(e) {

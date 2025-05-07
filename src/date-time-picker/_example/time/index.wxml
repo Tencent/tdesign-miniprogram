@@ -37,6 +37,7 @@
   title="选择时间"
   visible="{{minuteVisible}}"
   mode="{{['null', 'minute']}}"
+  start="{{start}}"
   value="{{minute}}"
   format="HH:mm"
   bindchange="onConfirm"
