@@ -26,6 +26,8 @@ export default class PullDownRefresh extends SuperComponent {
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-loading`, `${prefix}-class-text`, `${prefix}-class-indicator`];
 
+  behaviors = ['wx://proxy-scroll-view'];
+
   options = {
     multipleSlots: true,
     pureDataPattern: /^_/,
