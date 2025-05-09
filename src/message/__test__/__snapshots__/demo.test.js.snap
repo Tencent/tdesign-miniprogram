@@ -56,7 +56,7 @@ exports[`Message Message base demo works fine 1`] = `
       variant="outline"
       bind:tap="showScrollMessage"
     >
-      可滚动多通知
+      可滚动的通知
     </t-button>
     <t-button
       block="{{true}}"
