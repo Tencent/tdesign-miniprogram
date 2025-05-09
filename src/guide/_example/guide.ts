@@ -18,7 +18,7 @@ Page({
     visibleContent: false,
   },
 
-  async onLoad() {
+  onLoad() {
     this.createSelectorQuery()
       .select('.custom-navbar')
       .boundingClientRect((rect) => {
