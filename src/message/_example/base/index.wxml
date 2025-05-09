@@ -16,7 +16,7 @@
   >
 
   <t-button t-class="external-class" theme="primary" variant="outline" size="large" block bind:tap="showScrollMessage"
-    >可滚动多通知</t-button
+    >可滚动的通知</t-button
   >
 
   <t-button t-class="external-class" theme="primary" variant="outline" size="large" block bind:tap="showBtnMessage"
