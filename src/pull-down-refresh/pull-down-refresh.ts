@@ -1,7 +1,8 @@
-import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
+import { RelationsOptions, SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { unitConvert, systemInfo, getRect } from '../common/utils';
+import { getRect, systemInfo, unitConvert } from '../common/utils';
+import { canUseProxyScrollView } from '../common/version';
 
 const { prefix } = config;
 const name = `${prefix}-pull-down-refresh`;
@@ -25,6 +26,8 @@ export default class PullDownRefresh extends SuperComponent {
   refreshStatusTimer = null;
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-loading`, `${prefix}-class-text`, `${prefix}-class-indicator`];
+
+  behaviors = canUseProxyScrollView() ? ['wx://proxy-scroll-view'] : [];
 
   options = {
     multipleSlots: true,
