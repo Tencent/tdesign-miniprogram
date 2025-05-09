@@ -6,6 +6,13 @@ docClass: timeline
 ---
 
 
+## 🌈 1.9.2 `2025-05-09` 
+### 🐞 Bug Fixes
+- `PullDownRefresh`: 修复配置 `scroll-into-view` 不生效问题 @Boomkaa ([#3633](https://github.com/Tencent/tdesign-miniprogram/pull/3633))
+- `DropdownItem`: 修复 1.9.1 带来的高度塌陷问题 @betavs ([#3635](https://github.com/Tencent/tdesign-miniprogram/pull/3635))
+- `Dialog`: 修复命令式调用时`wxml` 模版中组件属性不生效 @Boomkaa ([#3622](https://github.com/Tencent/tdesign-miniprogram/pull/3622))
+
+
 ## 🌈 1.9.1 `2025-04-27` 
 ### 🚀 Features
 - `Icon`: 新增 `logo-miniprogram`、`logo-cnb`、`seal`、`quote` 图标 @taowensheng1997 @uyarn ([#3608](https://github.com/Tencent/tdesign-miniprogram/pull/3608))
