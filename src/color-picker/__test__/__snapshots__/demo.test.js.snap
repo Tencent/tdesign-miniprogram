@@ -18,7 +18,7 @@ exports[`ColorPicker ColorPicker format demo works fine 1`] = `
         catch:tap="clickFormat"
       >
         <t-icon
-          customStyle="position: absolute;left: 4rpx;top: 4rpx;z-index: 1;color: #fff"
+          customStyle="position: absolute; top: 4rpx; left: 4rpx; color: #fff; z-index: 1;"
           name="check"
           size="14"
         />

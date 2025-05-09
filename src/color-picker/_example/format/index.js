@@ -2,6 +2,10 @@ Component({
   data: {
     curFormat: 'CSS',
     color: '#7bd60b',
+    formatList: [
+      ['CSS', 'HEX', 'RGB'],
+      ['HSL', 'HSV', 'CMYK'],
+    ],
   },
   methods: {
     onChange(e) {
