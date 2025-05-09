@@ -1,3 +1,5 @@
+/// <reference path="../../typing.d.ts" />
+
 export default {
   prefix: CONFIG_PREFIX,
 };
