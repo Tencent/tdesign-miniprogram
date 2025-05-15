@@ -14,7 +14,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "tdesign-miniprogram/*": ["miniprogram_dist/*"]
+      "tdesign-miniprogram/*": ["src/*"]
     }
   },
   "include": ["src/**/*", "example/**/*", "site/**/*", "typing.d.ts", "wechat-miniprogram-extension.d.ts"]
