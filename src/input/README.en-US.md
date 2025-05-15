@@ -36,7 +36,7 @@ placeholder | String | undefined | \- | N
 placeholder-class | String | input-placeholder | \- | N
 placeholder-style | String | - | required | Y
 prefix-icon | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
-readonly | Boolean | undefined | `1.8.6` | N
+readonly | Boolean | undefined | `1.7.1` | N
 safe-password-cert-path | String | - | \- | N
 safe-password-custom-hash | String | - | \- | N
 safe-password-length | Number | - | \- | N
