@@ -6,6 +6,7 @@ const items = new Array(12).fill().map((_, index) => ({
 
 Page({
   offsetTopList: [],
+  lastScrollTop: 0,
   data: {
     sideBarIndex: 1,
     scrollTop: 0,
@@ -71,16 +72,33 @@ Page({
   onScroll(e) {
     const { scrollTop } = e.detail;
     const threshold = 50; // 下一个标题与顶部的距离
+    const direction = scrollTop > this.lastScrollTop ? 'down' : 'up';
+    this.lastScrollTop = scrollTop;
 
-    if (scrollTop < threshold) {
-      this.setData({ sideBarIndex: 0 });
-      return;
-    }
+    // 动态调整阈值：向下滚动时增大阈值，向上时减小
+    const dynamicThreshold = direction === 'down' ? threshold * 1.5 : threshold * 0.8;
 
-    const index = this.offsetTopList.findIndex((top) => top > scrollTop && top - scrollTop <= threshold);
+    // 使用二分查找优化查找效率
+    const findNearestIndex = (arr, target) => {
+      let left = 0;
+      let right = arr.length - 1;
+      let result = 0;
+      while (left <= right) {
+        const mid = Math.floor((left + right) / 2);
+        if (arr[mid] <= target + dynamicThreshold) {
+          result = mid;
+          left = mid + 1;
+        } else {
+          right = mid - 1;
+        }
+      }
+      return result;
+    };
 
-    if (index > -1) {
-      this.setData({ sideBarIndex: index });
+    const newIndex = findNearestIndex(this.offsetTopList, scrollTop);
+
+    if (newIndex !== this.data.sideBarIndex) {
+      this.setData({ sideBarIndex: newIndex });
     }
   },
 });
