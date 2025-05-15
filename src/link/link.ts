@@ -59,7 +59,7 @@ export default class Link extends SuperComponent {
         classList.push(`${name}--underline`);
       }
       if (
-        (navigatorProps && !navigatorProps.url && !['navigateBack', 'exit'].includes(navigatorProps.openType)) ||
+        (navigatorProps && !navigatorProps.url && !navigatorProps.appId && !navigatorProps.shortLink && !['navigateBack', 'exit'].includes(navigatorProps.openType)) ||
         disabled
       ) {
         classList.push(`${name}--disabled`);
