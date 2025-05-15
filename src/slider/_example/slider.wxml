@@ -16,10 +16,10 @@
   <t-demo desc="带数值滑动选择器">
     <label />
   </t-demo>
-  <!--
+
   <t-demo desc="起始非零滑动选择器">
     <max />
-  </t-demo> -->
+  </t-demo>
 
   <t-demo desc="带刻度滑动选择器">
     <step />
