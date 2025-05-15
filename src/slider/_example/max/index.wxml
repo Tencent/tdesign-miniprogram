@@ -1,1 +1,10 @@
-<t-slider defaultValue="30" min="{{30}}" max="{{200}}" label colors="{{colors}}"></t-slider>
+<view class="wrapper">
+  <t-slider
+    defaultValue="{{30}}"
+    min="{{20}}"
+    max="{{100}}"
+    step="{{20}}"
+    marks="{{marks}}"
+    bind:change="handleChange"
+  ></t-slider>
+</view>
