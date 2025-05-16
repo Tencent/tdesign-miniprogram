@@ -1,12 +1,13 @@
 import type { Dayjs } from 'dayjs';
-import dayjs from 'dayjs';
-import localeData from 'dayjs/plugin/localeData';
 
 import config from '../common/config';
 import { SuperComponent, wxComponent } from '../common/src/index';
 
 import props from './props';
 import dayjsLocaleMap from './locale/dayjs';
+
+const dayjs = require('dayjs');
+const localeData = require('dayjs/plugin/localeData');
 /**
  * dayjs LocaleData 插件
  * https://dayjs.fenxianglu.cn/category/plugin.html#localedata
