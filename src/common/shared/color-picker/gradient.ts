@@ -2,7 +2,7 @@
  * 用于反解析渐变字符串为对象
  * https://stackoverflow.com/questions/20215440/parse-css-gradient-rule-with-javascript-regex
  */
-import tinyColor from 'tinycolor2';
+import tinyColor from 'tinycolor2/esm/tinycolor';
 
 import { isString, isNull } from '../../validator';
 
