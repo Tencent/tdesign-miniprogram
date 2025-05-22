@@ -31,7 +31,7 @@ function isExistFile(path) {
 // 生成配置文件内容
 gulp.task('wechatide:components', (cb) => {
   const componentsFolder = fs.readdirSync(wechatideFolder);
-  const src = path.resolve(__dirname, '../src');
+  const src = path.resolve(__dirname, '../packages/components');
 
   const tplConfigPath = path.resolve(__dirname, './tpl.json');
   const tplConfigPathJsonFile = fs.readFileSync(tplConfigPath);
@@ -109,7 +109,7 @@ gulp.task('wechatide:menu', (cb) => {
 
 // 生成配置文件
 gulp.task('wechatide:generate', (cb) => {
-  const base = path.join(__dirname, '../src');
+  const base = path.join(__dirname, '../packages/components');
   const data = JSON.stringify(wechatideConfig, null, 2);
   fs.writeFileSync(`${base}/.wechatide.ib.json`, data);
   cb();

@@ -12,8 +12,8 @@ const upperFirst = require('lodash/upperFirst');
 // };
 
 const CONFIG = {
-  sourcePath: path.resolve(__dirname, '../src'),
-  targetPath: path.resolve(__dirname, '../src'),
+  sourcePath: path.resolve(__dirname, '../packages/components'),
+  targetPath: path.resolve(__dirname, '../packages/components'),
   defaultTemplate: ["import path from 'path';", "import simulate from 'miniprogram-simulate';"].join('\n'),
 };
 
@@ -108,6 +108,7 @@ function main() {
     } else {
       const generation = (componentFolder) => {
         const demoPath = `${sourcePath}/${componentFolder}/_example`;
+        if (!fs.existsSync(demoPath)) return;
         fs.readdir(demoPath, (err1, demoFiles) => {
           if (err1) {
             console.log('Error', err1);

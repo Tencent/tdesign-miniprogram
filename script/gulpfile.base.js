@@ -20,7 +20,7 @@ const gulpIf = require('gulp-if');
 
 const config = require('./config');
 
-const baseCssPath = path.resolve(__dirname, '../src/common/style/index.wxss');
+const baseCssPath = path.resolve(__dirname, '../packages/components/common/style/index.wxss');
 
 const isProduction = process.env.NODE_ENV === 'production';
 
@@ -45,7 +45,7 @@ const generateConfigReplaceTask = (replaceConfig, options = {}) => {
 };
 
 const isComponentFolder = (dir) => {
-  return dir === 'src';
+  return dir === 'components';
 };
 
 /* return gulpfile base tasks */
@@ -58,7 +58,7 @@ module.exports = (src, dist, moduleName) => {
   });
 
   // options
-  const ignore = ['**/__test__', '**/__test__/**', '**/_example/**', '**/_common/**'];
+  const ignore = ['**/__test__', '**/__test__/**', '**/_example/**', '**/packages/common/**'];
   const srcOptions = { base: src, ignore };
   const watchOptions = { events: ['add', 'change'] };
   const gulpErrorPath = 'example/utils/gulpError.js';
@@ -220,7 +220,7 @@ module.exports = (src, dist, moduleName) => {
         gulpIf(
           isComponentFolder(src),
           gulpInsert.transform((contents, file) => {
-            if (!file.path.includes(`src${path.sep}common`)) {
+            if (!file.path.includes(`components${path.sep}common`)) {
               const relativePath = path
                 .relative(path.normalize(`${file.path}${path.sep}..`), baseCssPath)
                 .replace(/\\/g, '/');

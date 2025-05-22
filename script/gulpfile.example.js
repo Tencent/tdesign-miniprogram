@@ -17,7 +17,7 @@ const dist = '_example';
 const { clear, build: baseBuild, watch: baseWatch, handleError, resetError } = base(src, dist, 'example');
 
 // src component examples
-const srcExampleInput = 'src/**/_example/**/*.*';
+const srcExampleInput = 'packages/components/**/_example/**/*.*';
 const srcExampleOutput = 'example/pages';
 const copySrcExample = () => {
   return gulp
@@ -70,7 +70,7 @@ const build = gulp.series(cleanSrcExample, copySrcExample, baseBuild, syncDist);
  * */
 const commonLess = () =>
   gulp
-    .src(path.join(__dirname, '..', `src/common/index.less`))
+    .src(path.join(__dirname, '..', `packages/components/common/index.less`))
     .pipe(
       plumber({
         errorHandler: (err) => {

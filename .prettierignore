@@ -1,2 +1,2 @@
 **/*.md
-src/_common
+packages/common
