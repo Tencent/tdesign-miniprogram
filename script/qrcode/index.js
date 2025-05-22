@@ -14,7 +14,7 @@ const isExistStr = (str, arr) => {
 };
 
 const getImageList = () => {
-  const imageFolderDir = path.resolve(__dirname, `../../site/public/assets/qrcode`);
+  const imageFolderDir = path.resolve(__dirname, `../../packages/site/public/assets/qrcode`);
   const images = fs.readdirSync(imageFolderDir);
   const imageOldList = [];
   images.forEach((item) => {
@@ -75,7 +75,7 @@ const getUnlimitedQRCodeImage = (appid, appSecret) => {
             }
 
             const buffer = Buffer.from(res, 'base64');
-            const destPath = path.resolve(__dirname, `../../site/public/assets/qrcode/${fileName}.png`);
+            const destPath = path.resolve(__dirname, `../../packages/site/public/assets/qrcode/${fileName}.png`);
 
             fs.writeFile(
               destPath,

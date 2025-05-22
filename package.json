@@ -1,5 +1,6 @@
 {
   "name": "tdesign-miniprogram",
+  "packageManager": "pnpm@9.9.0",
   "purename": "tdesign",
   "version": "1.9.2",
   "description": "tdesign-miniprogram",
@@ -23,12 +24,12 @@
     "build:example": "gulp --gulpfile script/gulpfile.example.js --cwd ./",
     "build:assets": "cross-env NODE_ENV=production gulp assets:build --gulpfile script/gulpfile.dist.js --cwd ./",
     "update:icons": "node script/update-icons.js",
-    "lintfix": "eslint '{src,example}/**/*.{js,ts}' --fix",
-    "lint": "eslint '{src,example}/**/*.{js,ts}'",
-    "format": "prettier {src,example,script}/**/*.{js,ts,wxss,less,wxml,html,json,md,wxs} --write",
-    "site": "cd site && vite build",
-    "site:dev": "cd site && vite",
-    "site:intranet": "cd site && vite build --mode intranet",
+    "lintfix": "eslint '{packages/components,example}/**/*.{js,ts}' --fix",
+    "lint": "eslint '{packages/components,example}/**/*.{js,ts}'",
+    "format": "prettier {packages/components,example,script}/**/*.{js,ts,wxss,less,wxml,html,json,md,wxs} --write",
+    "site": "cd packages/site && vite build",
+    "site:dev": "cd packages/site && vite",
+    "site:intranet": "cd packages/site && vite build --mode intranet",
     "site:prerender": "node script/prerender.mjs",
     "cover": "jest --coverage",
     "test": "jest && jest -c jest.e2e.config.js",
@@ -126,10 +127,10 @@
     }
   },
   "lint-staged": {
-    "{src,example,script}/**/*.{js,ts,wxs,wxml,wxss,html,json,less}": [
+    "{packages/components,example,script}/**/*.{js,ts,wxs,wxml,wxss,html,json,less}": [
       "prettier --write"
     ],
-    "{src,example}/**/*.{js,ts}": [
+    "{packages/components,example}/**/*.{js,ts}": [
       "eslint --fix"
     ]
   }

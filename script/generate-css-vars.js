@@ -32,18 +32,18 @@ const matchReg = /(?<=var).*?(?=;)/g;
 const lessPath = [];
 if (combine[COMPONENT_NAME]) {
   combine[COMPONENT_NAME].forEach((item) => {
-    lessPath.push(resolveCwd(`src/${item}/${item}.less`));
+    lessPath.push(resolveCwd(`packages/components/${item}/${item}.less`));
   });
 } else {
-  lessPath.push(resolveCwd(`src/${COMPONENT_NAME}/${COMPONENT_NAME}.less`));
+  lessPath.push(resolveCwd(`packages/components/${COMPONENT_NAME}/${COMPONENT_NAME}.less`));
 }
 
 // 追加到文件
 const cssVariableHeadContent = `\n\n### CSS Variables\n\n组件提供了下列 CSS 变量，可用于自定义样式。\n名称 | 默认值 | 描述 \n-- | -- | --\n`;
 const cssVariableHeadContentEn = `\n\n### CSS Variables\n\nThe component provides the following CSS variables, which can be used to customize styles.\nName | Default Value | Description \n-- | -- | --\n`;
 
-fs.appendFileSync(resolveCwd(`src/${COMPONENT_NAME}/README.md`), cssVariableHeadContent);
-fs.appendFileSync(resolveCwd(`src/${COMPONENT_NAME}/README.en-US.md`), cssVariableHeadContentEn);
+fs.appendFileSync(resolveCwd(`packages/components/${COMPONENT_NAME}/README.md`), cssVariableHeadContent);
+fs.appendFileSync(resolveCwd(`packages/components/${COMPONENT_NAME}/README.en-US.md`), cssVariableHeadContentEn);
 
 // 读取 less 文件内容
 lessPath.forEach((item) => {
@@ -61,8 +61,8 @@ lessPath.forEach((item) => {
           item.length - 1,
         )} | - \n`;
       });
-      fs.appendFileSync(resolveCwd(`src/${COMPONENT_NAME}/README.md`), cssVariableBodyContent);
-      fs.appendFileSync(resolveCwd(`src/${COMPONENT_NAME}/README.en-US.md`), cssVariableBodyContent);
+      fs.appendFileSync(resolveCwd(`packages/components/${COMPONENT_NAME}/README.md`), cssVariableBodyContent);
+      fs.appendFileSync(resolveCwd(`packages/components/${COMPONENT_NAME}/README.en-US.md`), cssVariableBodyContent);
     });
   }
 });

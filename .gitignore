@@ -6,9 +6,9 @@ dist
 example/pages/*
 !example/pages/gulp-error
 !example/pages/home
-test/e2e
-test/unit
-test/unit-virtualHost
+packages/test/e2e
+packages/test/unit
+packages/test/unit-virtualHost
 .DS_Store
 node_modules
 package-lock.json

@@ -9,8 +9,8 @@ on:
         default: '14'
 
 runs:
-  using: "composite"
-  steps: 
+  using: 'composite'
+  steps:
     - uses: actions/setup-node@v2
       with:
         node-version: ${{ inputs.nodeVersion }}
@@ -25,5 +25,5 @@ runs:
         key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
         restore-keys: |
           ${{ runner.os }}-node-
-    - run: npm install
+    - run: pnpm install
       shell: bash
