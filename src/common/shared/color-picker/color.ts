@@ -1,4 +1,4 @@
-import tinyColor from 'tinycolor2';
+import tinyColor from 'tinycolor2/esm/tinycolor';
 import { cmykInputToColor, rgb2cmyk } from './cmyk';
 import { parseGradientString, GradientColors, GradientColorPoint, isGradientColor } from './gradient';
 
