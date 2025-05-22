@@ -170,18 +170,26 @@ exports[`Slider Slider label demo works fine 1`] = `
 
 exports[`Slider Slider max demo works fine 1`] = `
 <max>
-  <t-slider
-    colors="{{
-      Array [
-        "#0052D9",
-        "#E7E7E7",
-      ]
-    }}"
-    defaultValue="30"
-    label="{{true}}"
-    max="{{200}}"
-    min="{{30}}"
-  />
+  <wx-view
+    class="wrapper"
+  >
+    <t-slider
+      defaultValue="{{30}}"
+      marks="{{
+        Object {
+          "100": "100",
+          "20": "20",
+          "40": "40",
+          "60": "60",
+          "80": "80",
+        }
+      }}"
+      max="{{100}}"
+      min="{{20}}"
+      step="{{20}}"
+      bind:change="handleChange"
+    />
+  </wx-view>
 </max>
 `;
 

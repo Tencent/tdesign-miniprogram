@@ -181,17 +181,22 @@ export default class Slider extends SuperComponent {
     setValueAndTrigger();
   }
 
+  valueToPosition(value: number) {
+    const { min, max, theme } = this.properties;
+    const { blockSize, maxRange } = this.data;
+    const halfBlock = (theme as any) === 'capsule' ? Number(blockSize) / 2 : 0;
+
+    return Math.round(((Number(value) - Number(min)) / (Number(max) - Number(min))) * maxRange) + halfBlock;
+  }
+
   handleMark(marks: any) {
     const calcPos = (arr: number[]) => {
-      const { max, theme } = this.properties;
-      const { blockSize, maxRange } = this.data;
-      const margin = (theme as any) === 'capsule' ? blockSize / 2 : 0;
-
       return arr.map((item) => ({
         val: item,
-        left: Math.round((item / Number(max)) * maxRange) + margin,
+        left: this.valueToPosition(item),
       }));
     };
+
     if (marks?.length && Array.isArray(marks)) {
       this.setData({
         isScale: true,
@@ -213,11 +218,8 @@ export default class Slider extends SuperComponent {
   }
 
   setSingleBarWidth(value: number) {
-    const { max, min, theme } = this.properties;
-    const { maxRange, blockSize } = this.data;
-    const halfBlock = (theme as any) === 'capsule' ? Number(blockSize) / 2 : 0;
-    const percentage = (Number(value) - Number(min)) / (Number(max) - Number(min));
-    const width = percentage * maxRange + halfBlock;
+    const width = this.valueToPosition(value);
+
     this.setData({
       lineBarWidth: `${width}px`,
     });
