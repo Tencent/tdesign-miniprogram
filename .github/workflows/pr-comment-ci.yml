@@ -84,7 +84,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 18
-      - run: pnpm install
+      - uses: ./.github/actions/install-dep
       - run: npm run test:snap-update
       - name: Commit Snapshot
         run: |
