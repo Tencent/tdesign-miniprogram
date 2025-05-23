@@ -6,6 +6,17 @@ docClass: timeline
 ---
 
 
+## 🌈 1.9.3 `2025-05-23` 
+### 🐞 Bug Fixes
+- `Slider`: 修复设置 `min` 值后 `marks` 刻度对应位置错误的问题 @betavs ([#3653](https://github.com/Tencent/tdesign-miniprogram/pull/3653))
+- `DateTimePicker`: 修复勾选 SWC 编译脚本文件时组件功能异常 @Boomkaa ([#3654](https://github.com/Tencent/tdesign-miniprogram/pull/3654))
+- `ColorPicker`: 修复勾选 SWC 编译脚本文件时组件功能异常 @betavs ([#3654](https://github.com/Tencent/tdesign-miniprogram/pull/3654))
+- `Link`: 修复在 `navigatorProps` 中只指定 `appId` 或者 `shortLink` 且 `target="miniProgram"` 时样式为禁用状态的问题 @CrazyOrr @betavs ([#3643](https://github.com/Tencent/tdesign-miniprogram/pull/3643))
+- `TreeSelect`: 修复 `customValue` 为空数组时多选报错 @anlyyao ([#3662](https://github.com/Tencent/tdesign-miniprogram/pull/3662))
+### 🚧 Others
+- `fix`: 修复 1.9.0 导致的组件类型丢失问题 @anlyyao ([#3661](https://github.com/Tencent/tdesign-miniprogram/pull/3661))
+
+
 ## 🌈 1.9.2 `2025-05-09` 
 ### 🐞 Bug Fixes
 - `PullDownRefresh`: 修复配置 `scroll-into-view` 不生效问题 @Boomkaa ([#3633](https://github.com/Tencent/tdesign-miniprogram/pull/3633))
