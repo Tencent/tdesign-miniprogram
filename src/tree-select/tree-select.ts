@@ -1,4 +1,5 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
+import { isDef } from '../common/validator';
 import config from '../common/config';
 import props from './props';
 
@@ -150,19 +151,15 @@ export default class TreeSelect extends SuperComponent {
     handleChange(e) {
       const { innerValue } = this.data;
       const { level, type } = e.target.dataset;
+      const { value } = type === 'multiple' ? e.detail.context : e.detail;
 
       if (type === 'multiple') {
-        const {
-          context: { value },
-        } = e.detail;
-        const index = innerValue[level].indexOf(value);
-        if (index !== -1) {
-          innerValue[level].splice(index, 1);
-        } else {
-          innerValue[level].push(value);
+        if (!isDef(innerValue[level])) {
+          innerValue[level] = [];
         }
+        const index = innerValue[level].indexOf(value);
+        index === -1 ? innerValue[level].push(value) : innerValue[level].splice(index, 1);
       } else {
-        const { value } = e.detail;
         innerValue[level] = value;
       }
 
