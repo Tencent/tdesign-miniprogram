@@ -87,6 +87,7 @@ export interface TdInputProps {
   };
   /**
    * 指定 focus 时的光标位置
+   * @default -1
    */
   cursor: {
     type: NumberConstructor;
