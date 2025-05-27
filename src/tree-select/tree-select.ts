@@ -67,7 +67,8 @@ export default class TreeSelect extends SuperComponent {
         const currentLevelOptions = currentNode.children.map((item: TreeOptionData) => ({
           label: item[keys?.label || 'label'],
           value: item[keys?.value || 'value'],
-          children: item.children,
+          disabled: item[keys?.disabled || 'disabled'],
+          children: item[keys?.children || 'children'],
         }));
 
         treeOptions.push(currentLevelOptions);
