@@ -263,6 +263,7 @@ export default class Calendar extends SuperComponent {
     },
 
     toTime(val) {
+      if (!val) return null;
       if (Array.isArray(val)) {
         return val.map((item) => item.getTime());
       }
