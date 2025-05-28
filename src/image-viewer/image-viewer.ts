@@ -18,6 +18,7 @@ export default class ImageViewer extends SuperComponent {
     prefix,
     classPrefix: name,
     currentSwiperIndex: 0,
+    loadedImageIndexes: [],
     windowHeight: 0,
     windowWidth: 0,
     swiperStyle: {},
@@ -45,6 +46,7 @@ export default class ImageViewer extends SuperComponent {
     'visible,initialIndex,images'(visible, initialIndex, images) {
       if (visible && images?.length) {
         this.setData({
+          loadedImageIndexes: [],
           currentSwiperIndex: initialIndex >= images.length ? images.length - 1 : initialIndex,
         });
       }
@@ -139,6 +141,13 @@ export default class ImageViewer extends SuperComponent {
       const { mode, styleObj } = this.calcImageDisplayStyle(width, height);
       const originImagesStyle = this.data.imagesStyle;
       const originSwiperStyle = this.data.swiperStyle;
+
+      if (!this.data.loadedImageIndexes.includes(index)) {
+        this.setData({
+          loadedImageIndexes: [...this.data.loadedImageIndexes, index],
+        });
+      }
+
       this.setData({
         swiperStyle: {
           ...originSwiperStyle,

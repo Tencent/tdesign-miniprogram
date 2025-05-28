@@ -1,5 +1,6 @@
 <import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
+<wxs src="./image-viewer.wxs" module="utils" />
 
 <view
   wx:if="{{visible}}"
@@ -32,10 +33,10 @@
       >
         <swiper-item wx:for="{{images}}" wx:key="index" class="{{classPrefix}}__preview-image">
           <t-image
+            wx:if="{{utils.shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes) }}"
             t-class="t-image--external"
             style="{{imagesStyle[index].style || ''}}"
             mode="aspectFit"
-            lazy
             src="{{item}}"
             data-index="{{index}}"
             class="{{classPrefix}}__image"
