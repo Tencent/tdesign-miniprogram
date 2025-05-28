@@ -33,7 +33,7 @@
       >
         <swiper-item wx:for="{{images}}" wx:key="index" class="{{classPrefix}}__preview-image">
           <t-image
-            wx:if="{{utils.shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes) }}"
+            wx:if="{{!lazy || utils.shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes) }}"
             t-class="t-image--external"
             style="{{imagesStyle[index].style || ''}}"
             mode="aspectFit"
