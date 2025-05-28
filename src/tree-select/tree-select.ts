@@ -30,14 +30,7 @@ export default class TreeSelect extends SuperComponent {
     scrollIntoView: null,
   };
 
-  properties = {
-    ...props,
-    customValue: {
-      // 用于自定义选中值，优先级高于value，用于弥补value为[]场景
-      type: null,
-      value: null,
-    },
-  };
+  properties = props;
 
   controlledProps = [
     {
@@ -60,50 +53,49 @@ export default class TreeSelect extends SuperComponent {
 
   methods = {
     buildTreeOptions() {
-      const { options, value, defaultValue, customValue, multiple, keys } = this.data;
-      const treeOptions = [];
+      const { options, value, customValue, multiple, keys } = this.data;
+
+      if (!options.length) return;
+
+      const treeOptions: TreeOptionData[][] = [];
 
       let level = -1;
-      let node = { children: options };
+      let currentNode = { children: options };
 
-      if (options.length === 0) return;
-
-      while (node && node.children) {
+      while (currentNode?.children) {
         level += 1;
-        const list = node.children.map((item: TreeOptionData) => ({
+        const currentLevelOptions = currentNode.children.map((item: TreeOptionData) => ({
           label: item[keys?.label || 'label'],
           value: item[keys?.value || 'value'],
-          children: item.children,
+          disabled: item[keys?.disabled || 'disabled'],
+          children: item[keys?.children || 'children'],
         }));
-        const thisValue = customValue?.[level] || value?.[level];
 
-        treeOptions.push([...list]);
+        treeOptions.push(currentLevelOptions);
 
-        if (thisValue == null) {
-          const [firstChild] = list;
-          node = firstChild;
-        } else {
-          const child = list.find((child) => child.value === thisValue);
-          node = child ?? list[0];
-        }
+        const currentValue = customValue?.[level] ?? value?.[level];
+        currentNode = currentValue
+          ? currentLevelOptions.find((child) => child.value === currentValue) ?? currentLevelOptions[0]
+          : currentLevelOptions[0];
+      }
+
+      // Ensure at least two levels (even if second is empty)
+      if (treeOptions.length === 1) {
+        treeOptions.push([]);
+        level += 1;
       }
 
       const leafLevel = Math.max(0, level);
-
-      if (multiple) {
-        const finalValue = customValue || value || defaultValue;
-        if (finalValue[leafLevel] != null && !Array.isArray(finalValue[leafLevel])) {
-          throw TypeError('应传入数组类型的 value');
-        }
-      }
+      const innerValue =
+        customValue ||
+        treeOptions.map((levelOptions, idx) => {
+          const isLastLevel = idx === treeOptions.length - 1;
+          const defaultValue = isLastLevel && multiple ? [levelOptions[0]?.value] : levelOptions[0]?.value;
+          return value?.[idx] ?? defaultValue;
+        });
 
       this.setData({
-        innerValue:
-          customValue ||
-          treeOptions?.map((ele, idx) => {
-            const v = idx === treeOptions.length - 1 && multiple ? [ele[0].value] : ele[0].value;
-            return value?.[idx] || v;
-          }),
+        innerValue,
         leafLevel,
         treeOptions,
       });
