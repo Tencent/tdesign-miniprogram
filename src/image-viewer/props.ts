@@ -31,6 +31,11 @@ const props: TdImageViewerProps = {
     type: Number,
     value: 0,
   },
+  /** 是否开启图片懒加载 */
+  lazy: {
+    type: Boolean,
+    value: true,
+  },
   /** 是否显示页码 */
   showIndex: {
     type: Boolean,
