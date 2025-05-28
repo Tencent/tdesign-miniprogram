@@ -52,6 +52,10 @@ isComponent: true
 
 {{ with-title }}
 
+#### 选择任意一项
+
+{{ check-strictly }}
+
 ## API
 
 ### Cascader Props
