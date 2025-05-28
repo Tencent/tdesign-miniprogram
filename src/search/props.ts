@@ -49,6 +49,7 @@ const props: TdSearchProps = {
   /** 指定 focus 时的光标位置 */
   cursor: {
     type: Number,
+    value: -1,
     required: true,
   },
   /** 搜索框聚焦时底部与键盘的距离 */

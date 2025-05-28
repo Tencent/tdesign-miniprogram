@@ -18,7 +18,7 @@ clear-trigger | String | always | show clear icon, clicked to clear input valueã
 clearable | Boolean / Object | false | show clear icon, clicked to clear input value | N
 confirm-hold | Boolean | false | \- | N
 confirm-type | String | done | options: send/search/next/go/done | N
-cursor | Number | - | required | Y
+cursor | Number | -1 | required | Y
 cursor-color | String | #0052d9 | \- | N
 cursor-spacing | Number | 0 | \- | N
 disabled | Boolean | undefined | make input to be disabled | N
