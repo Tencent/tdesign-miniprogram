@@ -6,6 +6,18 @@ docClass: timeline
 ---
 
 
+## 🌈 1.9.4 `2025-05-29` 
+### 🚀 Features
+- `Input`: `cursor` 属性默认值取 `-1`，确保光标在 `value` 值末尾 @anlyyao ([#3672](https://github.com/Tencent/tdesign-miniprogram/pull/3672))
+- `Search`: `cursor` 属性默认值取 `-1`，确保光标在 `value` 值末尾 @anlyyao ([#3672](https://github.com/Tencent/tdesign-miniprogram/pull/3672))
+- `TreeSelect`:  允许 `options` 的 `children` 未定义，同时增强 `keys` 属性，支持为 `disabled / children` 字段自定义别名 @anlyyao ([#3671](https://github.com/Tencent/tdesign-miniprogram/pull/3671))
+### 🐞 Bug Fixes
+- `Calendar`: 修复当 `switchMode !== 'none'` 时，重置空值后选中的状态未更新的问题 @betavs ([#3676](https://github.com/Tencent/tdesign-miniprogram/pull/3676))
+- `Tabs`: 修复 1.8.8 中 `bottomLineMode` 为 `auto/full` 时线宽计算错误 @anlyyao ([#3668](https://github.com/Tencent/tdesign-miniprogram/pull/3668))
+- `ImageViewer`: 修复图片懒加载无效 。同时新增 `lazy` 属性，开启后会预加载当前图片、相邻图片 @anlyyao ([#3674](https://github.com/Tencent/tdesign-miniprogram/pull/3674))
+- `Upload`: 修复 `max = 0` 时上传数量仍受限，以及 `max =  0 和 source="messageFile"` 时无法上传的问题 @anlyyao ([#3679](https://github.com/Tencent/tdesign-miniprogram/pull/3679))
+
+
 ## 🌈 1.9.3 `2025-05-23` 
 ### 🐞 Bug Fixes
 - `Slider`: 修复设置 `min` 值后 `marks` 刻度对应位置错误的问题 @betavs ([#3653](https://github.com/Tencent/tdesign-miniprogram/pull/3653))
