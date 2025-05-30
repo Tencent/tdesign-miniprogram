@@ -6,6 +6,7 @@
     class="{{classPrefix}} class {{prefix}}-class"
     style="right: 16px; bottom: 32px; {{_._style([style, customStyle])}}"
   >
-    <template is="button" data="{{useDefaultSlot: true, ...buttonData}}" />
+    <slot wx:if="{{!buttonData.content && !buttonData.icon}}" />
+    <template wx:else is="button" data="{{useDefaultSlot: true, ...buttonData}}" />
   </view>
 </template>
