@@ -8,7 +8,6 @@ Component({
   },
   methods: {
     handleClick(e) {
-      console.log('aa', this.$$slots.default);
       console.log('handleClick: ', e);
     },
     handleDragStart(e) {
@@ -19,7 +18,6 @@ Component({
     },
     onScroll() {
       clearTimeout(this.timer);
-      console.log('onScroll');
       this.setData({
         scrolling: true,
       });
