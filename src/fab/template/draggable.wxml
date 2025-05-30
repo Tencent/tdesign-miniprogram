@@ -10,6 +10,7 @@
     bind:move="onMove"
     bind:end="onEnd"
   >
-    <template is="button" data="{{useDefaultSlot: true, ...buttonData}}" />
+    <slot wx:if="{{!buttonData.content && !buttonData.icon}}" />
+    <template wx:else is="button" data="{{useDefaultSlot: true, ...buttonData}}" />
   </t-draggable>
 </template>

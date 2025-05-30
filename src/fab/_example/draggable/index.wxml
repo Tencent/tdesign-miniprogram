@@ -1,6 +1,5 @@
 <t-fab
-  icon="gesture-press"
-  text="拖我"
+  icon="add"
   aria-label="增加"
   usingCustomNavbar
   draggable
