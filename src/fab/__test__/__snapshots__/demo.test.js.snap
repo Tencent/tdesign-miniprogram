@@ -5,12 +5,11 @@ exports[`Fab Fab advance demo works fine 1`] = `
   <t-fab
     buttonProps="{{
       Object {
-        "icon": "share",
         "openType": "share",
       }
     }}"
     icon="add"
-    text="分享给朋友"
+    text="按钮文字"
     bind:click="handleClick"
   />
 </advance>
@@ -31,8 +30,7 @@ exports[`Fab Fab draggable demo works fine 1`] = `
   <t-fab
     ariaLabel="增加"
     draggable="{{true}}"
-    icon="gesture-press"
-    text="拖我"
+    icon="add"
     usingCustomNavbar="{{true}}"
     yBounds="{{
       Array [
