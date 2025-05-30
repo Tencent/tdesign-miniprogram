@@ -71,8 +71,8 @@ npm run dev
 
 ## 贡献成员
 
-<a href="https://github.com/tencent/tdesign-miniprogram/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=tencent/tdesign-miniprogram" />
+<a href="https://openomy.app/github/tencent/tdesign-miniprogram" target="_blank">
+  <img src="https://openomy.app/svg?repo=tencent/tdesign-miniprogram&chart=bubble&latestMonth=12" alt="Contribution Leaderboard" />
 </a>
 
 ## 反馈
