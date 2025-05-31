@@ -8,4 +8,4 @@ destory ="destory"
 nd = "nd"
 
 [files]
-extend-exclude = ["CHANGELOG_.md"]
+extend-exclude = ["CHANGELOG*.md"]
