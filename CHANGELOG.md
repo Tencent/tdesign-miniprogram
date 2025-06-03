@@ -1071,4 +1071,4 @@ docClass: timeline
 - `Collapse`:  面板收起时，隐藏 header 的边框 @LeeJim ([#1493](https://github.com/Tencent/tdesign-miniprogram/pull/1493))
 
 ## 🌈 0.x `2021-11-25 - 2023-01-09`
-前往 [GitHub](https://github.com/Tencent/tdesign-miniprogram/blob/develop/CHANGELOG-0.x.md) 查看 `0.x` 更新日志
+前往 [GitHub](https://github.com/Tencent/tdesign-miniprogram/blob/develop/changelogs/CHANGELOG-0.x.md) 查看 `0.x` 更新日志
