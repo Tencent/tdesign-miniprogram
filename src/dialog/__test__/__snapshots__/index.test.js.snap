@@ -22,15 +22,19 @@ exports[`dialog :base 1`] = `
           data-prevention="{{true}}"
         >
           <wx-view
-            class="t-dialog t-class"
-            slot="content"
+            capture-catch:touchstart=null
           >
             <wx-view
-              class="t-dialog__content t-class-content"
-            />
-            <wx-view
-              class="t-dialog__footer t-dialog__footer--full"
-            />
+              class="t-dialog t-class"
+              slot="content"
+            >
+              <wx-view
+                class="t-dialog__content t-class-content"
+              />
+              <wx-view
+                class="t-dialog__footer t-dialog__footer--full"
+              />
+            </wx-view>
           </wx-view>
           <wx-view
             class="t-popup__close"
