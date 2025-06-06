@@ -43,15 +43,15 @@ describe('fab', () => {
 
     expect($content.dom.textContent).toBe('base');
 
-    comp.setData({ text: '' });
+    comp.setData({ text: 'new' });
 
-    expect($content.dom.textContent).toBe('');
+    expect($content.dom.textContent).toBe('new');
   });
 
   it(`fab :event`, async () => {
     const fn = jest.fn();
     const id = simulate.load({
-      template: `<t-fab class="fab" bind:click="handleClick"></fab>`,
+      template: `<t-fab class="fab" text="base" bind:click="handleClick"></fab>`,
       methods: {
         handleClick: fn,
       },

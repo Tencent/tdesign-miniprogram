@@ -18,14 +18,32 @@
     </t-button>
   </view>
 </t-demo>
-<t-demo desc="可移动悬浮按钮">
+<t-demo title="02 组件样式" desc="可移动悬浮按钮">
   <view class="wrapper">
-    <t-button theme="primary" size="large" block variant="outline" bind:tap="handleChange" data-type="movable">
+    <t-button theme="primary" size="large" block variant="outline" bind:tap="handleChange" data-type="draggable">
       可移动悬浮按钮
     </t-button>
+  </view>
+</t-demo>
+<t-demo desc="带自动收缩功能">
+  <view class="wrapper">
+    <t-button theme="primary" size="large" block variant="outline" bind:tap="handleChange" data-type="collapsible">
+      带自动收缩功能
+    </t-button>
+  </view>
+</t-demo>
+<t-demo padding>
+  <view class="skeleton-group">
+    <t-skeleton rowCol="{{rowCol}}" loading />
+    <t-skeleton rowCol="{{rowCol}}" loading />
+  </view>
+  <view class="skeleton-group">
+    <t-skeleton rowCol="{{rowCol}}" loading />
+    <t-skeleton rowCol="{{rowCol}}" loading />
   </view>
 </t-demo>
 
 <base wx:if="{{type == 'base'}}" />
 <advance wx:elif="{{type == 'advance'}}" />
-<draggable wx:else />
+<draggable wx:elif="{{type == 'draggable'}}" />
+<collapsible wx:elif="{{type == 'collapsible'}}" />

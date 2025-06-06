@@ -1,7 +1,6 @@
 Component({
   data: {
     fabButton: {
-      icon: 'share',
       openType: 'share',
     },
   },
