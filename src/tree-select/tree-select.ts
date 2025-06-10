@@ -80,7 +80,7 @@ export default class TreeSelect extends SuperComponent {
       }
 
       // Ensure at least two levels (even if second is empty)
-      if (treeOptions.length === 1) {
+      if (treeOptions.length === 1 || treeOptions.length < this.data.innerValue?.length) {
         treeOptions.push([]);
         level += 1;
       }
@@ -149,8 +149,11 @@ export default class TreeSelect extends SuperComponent {
         if (!isDef(innerValue[level])) {
           innerValue[level] = [];
         }
-        const index = innerValue[level].indexOf(value);
-        index === -1 ? innerValue[level].push(value) : innerValue[level].splice(index, 1);
+
+        if (Array.isArray(innerValue[level])) {
+          const index = innerValue[level].indexOf(value);
+          index === -1 ? innerValue[level].push(value) : innerValue[level].splice(index, 1);
+        }
       } else {
         innerValue[level] = value;
       }
