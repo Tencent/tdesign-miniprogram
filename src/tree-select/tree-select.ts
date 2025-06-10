@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import { isDef } from '../common/validator';
 import config from '../common/config';
+import { getTreeDepth } from '../common/utils';
 import props from './props';
 
 import type { TreeOptionData } from '../common/common';
@@ -79,8 +80,10 @@ export default class TreeSelect extends SuperComponent {
           : currentLevelOptions[0];
       }
 
-      // Ensure at least two levels (even if second is empty)
-      if (treeOptions.length === 1) {
+      const depth = getTreeDepth(options, keys?.children);
+
+      // 补齐 treeOptions 长度到 depth
+      while (treeOptions.length < depth) {
         treeOptions.push([]);
         level += 1;
       }
