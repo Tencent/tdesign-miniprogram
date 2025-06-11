@@ -11,6 +11,9 @@
     >
   </view>
   <slot name="header" />
+
+  <slot name="content" />
+
   <view class="{{_.cls(classPrefix + '__main', [])}}">
     <slot />
     <view class="{{classPrefix}}__mask {{classPrefix}}__mask--top" />
