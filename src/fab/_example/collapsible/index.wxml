@@ -1,5 +1,4 @@
 <t-fab
-  useDefaultSlot
   customStyle="{{scrolling ? 'right: 0;bottom:64px;' : 'right:16px;bottom:24px'}}"
   bind:click="handleClick"
   bind:dragstart="handleDragStart"
