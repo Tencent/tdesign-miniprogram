@@ -69,6 +69,7 @@ exports[`picker :base 1`] = `
                     class="t-picker-item__item t-picker-item__item--active"
                     data-index="{{0}}"
                     style="height: 40px"
+                    bind:tap="onClickItem"
                   >
                     <wx-text
                       class="t-picker-item__item-label"
@@ -80,6 +81,7 @@ exports[`picker :base 1`] = `
                     class="t-picker-item__item"
                     data-index="{{1}}"
                     style="height: 40px"
+                    bind:tap="onClickItem"
                   >
                     <wx-text
                       class="t-picker-item__item-label"
@@ -91,6 +93,7 @@ exports[`picker :base 1`] = `
                     class="t-picker-item__item"
                     data-index="{{2}}"
                     style="height: 40px"
+                    bind:tap="onClickItem"
                   >
                     <wx-text
                       class="t-picker-item__item-label"
@@ -118,6 +121,7 @@ exports[`picker :base 1`] = `
                     class="t-picker-item__item t-picker-item__item--active"
                     data-index="{{0}}"
                     style="height: 40px"
+                    bind:tap="onClickItem"
                   >
                     <wx-text
                       class="t-picker-item__item-label"
@@ -129,6 +133,7 @@ exports[`picker :base 1`] = `
                     class="t-picker-item__item"
                     data-index="{{1}}"
                     style="height: 40px"
+                    bind:tap="onClickItem"
                   >
                     <wx-text
                       class="t-picker-item__item-label"
@@ -140,6 +145,7 @@ exports[`picker :base 1`] = `
                     class="t-picker-item__item"
                     data-index="{{2}}"
                     style="height: 40px"
+                    bind:tap="onClickItem"
                   >
                     <wx-text
                       class="t-picker-item__item-label"
@@ -151,6 +157,7 @@ exports[`picker :base 1`] = `
                     class="t-picker-item__item"
                     data-index="{{3}}"
                     style="height: 40px"
+                    bind:tap="onClickItem"
                   >
                     <wx-text
                       class="t-picker-item__item-label"

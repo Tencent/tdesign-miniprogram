@@ -6,8 +6,8 @@ exports[`date-time-picker :base 1`] = `
     <t-picker
       class="class t-class t-date-time-picker"
       bind:cancel="onCancel"
-      bind:change="onConfirm"
       bind:close="onClose"
+      bind:confirm="onConfirm"
       bind:pick="onColumnChange"
       bind:visible-change="onVisibleChange"
     >
@@ -75,6 +75,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{0}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -86,6 +87,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{1}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -97,6 +99,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{2}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -108,6 +111,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{3}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -119,6 +123,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{4}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -130,6 +135,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{5}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -141,6 +147,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{6}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -152,6 +159,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{7}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -163,6 +171,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{8}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -174,6 +183,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{9}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -185,6 +195,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{10}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -196,6 +207,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{11}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -207,6 +219,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{12}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -218,6 +231,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{13}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -229,6 +243,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{14}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -240,6 +255,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{15}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -251,6 +267,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{16}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -262,6 +279,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{17}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -273,6 +291,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{18}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -284,6 +303,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{19}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -295,6 +315,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{20}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -325,6 +346,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{0}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -336,6 +358,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{1}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -347,6 +370,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{2}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -358,6 +382,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{3}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -369,6 +394,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{4}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -380,6 +406,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{5}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -391,6 +418,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{6}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -402,6 +430,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{7}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -413,6 +442,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item t-picker-item__item--active"
                         data-index="{{8}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -424,6 +454,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{9}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -435,6 +466,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{10}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"
@@ -446,6 +478,7 @@ exports[`date-time-picker :base 1`] = `
                         class="t-picker-item__item"
                         data-index="{{11}}"
                         style="height: 40px"
+                        bind:tap="onClickItem"
                       >
                         <wx-text
                           class="t-picker-item__item-label"

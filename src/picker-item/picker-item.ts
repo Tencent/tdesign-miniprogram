@@ -81,6 +81,18 @@ export default class PickerItem extends SuperComponent {
   };
 
   methods = {
+    onClickItem(event: WechatMiniprogram.TouchEvent) {
+      const { index: clickIndex } = event.currentTarget.dataset;
+      const { pickItemHeight } = this.data;
+      const index = range(clickIndex, 0, this.getCount() - 1);
+
+      if (index !== this._selectedIndex) {
+        this.setData({ offset: -index * pickItemHeight, curIndex: index, duration: 200 });
+      }
+
+      this.updateSelected(index, true);
+    },
+
     onTouchStart(event) {
       this.StartY = event.touches[0].clientY;
       this.StartOffset = this.data.offset;
@@ -102,7 +114,7 @@ export default class PickerItem extends SuperComponent {
     },
 
     onTouchEnd(event) {
-      const { offset, pickerKeys, columnIndex, pickItemHeight, formatOptions } = this.data;
+      const { offset, pickItemHeight } = this.data;
       const { startTime } = this;
       if (offset === this.StartOffset) {
         return;
@@ -124,20 +136,8 @@ export default class PickerItem extends SuperComponent {
         duration: ANIMATION_DURATION,
         curIndex: index,
       });
-      if (index === this._selectedIndex) {
-        return;
-      }
-      this._selectedIndex = index;
-
-      wx.nextTick(() => {
-        this._selectedIndex = index;
-        this._selectedValue = formatOptions[index]?.[pickerKeys?.value];
-        this._selectedLabel = formatOptions[index]?.[pickerKeys?.label];
-        this.$parent?.triggerColumnChange({
-          index,
-          column: columnIndex,
-        });
-      });
+      if (index === this._selectedIndex) return;
+      this.updateSelected(index, true);
     },
 
     formatOption(options: PickerItemOption[], columnIndex: number, format: any) {
@@ -146,6 +146,20 @@ export default class PickerItem extends SuperComponent {
       return options.map((ele: PickerItemOption) => {
         return format(ele, columnIndex);
       });
+    },
+
+    updateSelected(index: number, trigger: boolean) {
+      const { columnIndex, pickerKeys, formatOptions } = this.data;
+      this._selectedIndex = index;
+      this._selectedValue = formatOptions[index]?.[pickerKeys?.value];
+      this._selectedLabel = formatOptions[index]?.[pickerKeys?.label];
+
+      if (trigger) {
+        this.$parent?.triggerColumnChange({
+          index,
+          column: columnIndex,
+        });
+      }
     },
 
     // 刷新选中状态
@@ -157,19 +171,13 @@ export default class PickerItem extends SuperComponent {
       const index = formatOptions.findIndex((item: PickerItemOption) => item[pickerKeys?.value] === value);
       const selectedIndex = index > 0 ? index : 0;
 
-      this._selectedIndex = selectedIndex;
-      this._selectedValue = formatOptions[selectedIndex]?.[pickerKeys?.value];
-      this._selectedLabel = formatOptions[selectedIndex]?.[pickerKeys?.label];
+      this.updateSelected(selectedIndex, false);
 
       this.setData({
         formatOptions,
         offset: -selectedIndex * pickItemHeight,
         curIndex: selectedIndex,
       });
-
-      this._selectedIndex = selectedIndex;
-      this._selectedValue = options[selectedIndex]?.[pickerKeys?.value];
-      this._selectedLabel = options[selectedIndex]?.[pickerKeys?.label];
     },
 
     getCount() {

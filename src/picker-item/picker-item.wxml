@@ -19,6 +19,7 @@
       wx:key="index"
       wx:for-item="option"
       data-index="{{ index }}"
+      bind:tap="onClickItem"
     >
       <text class="{{classPrefix}}__item-label">{{option[pickerKeys.label]}}</text>
       <slot name="label-suffix--{{index}}"></slot>
