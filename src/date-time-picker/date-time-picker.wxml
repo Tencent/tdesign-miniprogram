@@ -12,7 +12,7 @@
   use-popup="{{usePopup}}"
   popup-props="{{ popupProps }}"
   bind:pick="onColumnChange"
-  bind:change="onConfirm"
+  bind:confirm="onConfirm"
   bind:cancel="onCancel"
   bind:visible-change="onVisibleChange"
   bind:close="onClose"

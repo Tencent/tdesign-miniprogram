@@ -6,8 +6,8 @@ exports[`date-time-picker :base 1`] = `
     <t-picker
       class="class t-class t-date-time-picker"
       bind:cancel="onCancel"
-      bind:change="onConfirm"
       bind:close="onClose"
+      bind:confirm="onConfirm"
       bind:pick="onColumnChange"
       bind:visible-change="onVisibleChange"
     >
