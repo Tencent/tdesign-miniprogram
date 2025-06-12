@@ -9,7 +9,6 @@
 
 .@{prefix}-toast {
   position: fixed;
-  right: -50%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 12001;
@@ -20,7 +19,11 @@
   font-size: 28rpx;
   color: @toast-color;
   max-width: @toast-max-width;
-  width: fit-content;
+  min-height: 0; // 防止 flex 容器被意外拉伸
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   box-sizing: border-box;
 
   &--column {
