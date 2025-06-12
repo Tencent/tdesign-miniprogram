@@ -58,6 +58,8 @@ export default class Upload extends SuperComponent {
 
   onProofTap(e: any) {
     this.onFileClick(e);
+    const { preview } = this.properties;
+    if (!preview) return;
     const { index } = e.currentTarget.dataset;
     wx.previewImage({
       urls: this.data.customFiles.filter((file) => file.percent !== -1).map((file) => file.url),

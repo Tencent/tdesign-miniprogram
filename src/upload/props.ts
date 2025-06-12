@@ -65,6 +65,11 @@ const props: TdUploadProps = {
     type: Array,
     value: ['image', 'video'],
   },
+  /** 是否支持图片预览，文件没有预览 */
+  preview: {
+    type: Boolean,
+    value: true,
+  },
   /** 移除按钮 */
   removeBtn: {
     type: Boolean,
