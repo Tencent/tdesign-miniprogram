@@ -84,13 +84,13 @@ export default class PickerItem extends SuperComponent {
     onClickItem(event: WechatMiniprogram.TouchEvent) {
       const { index: clickIndex } = event.currentTarget.dataset;
       const { pickItemHeight } = this.data;
-      const index = range(clickIndex, 0, this.getCount());
+      const index = range(clickIndex, 0, this.getCount() - 1);
 
-      if (index === this._selectedIndex) return;
+      if (index !== this._selectedIndex) {
+        this.setData({ offset: -index * pickItemHeight, curIndex: index, duration: 200 });
+      }
 
       this.updateSelected(index, true);
-
-      this.setData({ offset: -index * pickItemHeight, curIndex: index });
     },
 
     onTouchStart(event) {
@@ -155,11 +155,9 @@ export default class PickerItem extends SuperComponent {
       this._selectedLabel = formatOptions[index]?.[pickerKeys?.label];
 
       if (trigger) {
-        wx.nextTick(() => {
-          this.$parent?.triggerColumnChange({
-            index,
-            column: columnIndex,
-          });
+        this.$parent?.triggerColumnChange({
+          index,
+          column: columnIndex,
         });
       }
     },
