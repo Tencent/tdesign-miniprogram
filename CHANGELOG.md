@@ -6,6 +6,17 @@ docClass: timeline
 ---
 
 
+## 🌈 1.9.5 `2025-06-13` 
+### 🚀 Features
+- `Picker`: 新增 `content` 插槽，用于处理空数据场景；支持点击选中 @anlyyao ([#3711](https://github.com/Tencent/tdesign-miniprogram/pull/3711))([#3712](https://github.com/Tencent/tdesign-miniprogram/pull/3712))
+- `Fab`: 未显示传入 `icon` 和 `text` 时将启用默认插槽，用于自定义悬浮按钮内容，此时 `buttonProps` 将失效 @novlan1 ([#3684](https://github.com/Tencent/tdesign-miniprogram/pull/3684))
+- `Upload`: 新增 `preview` 属性，用于关闭/开启图片预览 @anlyyao ([#3714](https://github.com/Tencent/tdesign-miniprogram/pull/3714))
+### 🐞 Bug Fixes
+- `Toast`: 使用 `flex` 替换 `fit-content`，兼容 `skyline` 场景 @anlyyao ([#3710](https://github.com/Tencent/tdesign-miniprogram/pull/3710))
+- `TreeSelect`: 修复传入非标准 `options` 数据源时组件控制台报错 @anlyyao ([#3708](https://github.com/Tencent/tdesign-miniprogram/pull/3708))
+- `Rate`: 修复点选全星时弹框不显示 @Boomkaa ([#3715](https://github.com/Tencent/tdesign-miniprogram/pull/3715))
+
+
 ## 🌈 1.9.4 `2025-05-29` 
 ### 🚀 Features
 - `Input`: `cursor` 属性默认值取 `-1`，确保光标在 `value` 值末尾 @anlyyao ([#3672](https://github.com/Tencent/tdesign-miniprogram/pull/3672))
