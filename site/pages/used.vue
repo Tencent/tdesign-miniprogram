@@ -2,9 +2,11 @@
   <td-doc-content ref="tdDocContent" platform="mobile" page-status="hidden">
     <td-doc-header platform="mobile" slot="doc-header" ref="tdDocHeader"></td-doc-header>
     <div class="content">
-      <h3>上线项目案例</h3>
-      <p>目前已上线 400+ 个小程序，部分小程序二维码如下。如果你也在使用 TDesign 搭建你的小程序，也欢迎添加你的项目: <a
-          href="https://github.com/Tencent/tdesign-miniprogram/discussions/1094" target="_blank">添加项目</a></p>
+      <h3>{{ $t('subtitle') }}</h3>
+      <p>
+        {{ $t('desc') }}
+        <a href="https://github.com/Tencent/tdesign-miniprogram/discussions/1094" target="_blank">{{ $t('addBtn') }}</a>
+      </p>
 
       <div class="projects">
         <div v-for="p in projects" :key="p.name" class="card">
@@ -14,15 +16,15 @@
               <template v-else>{{ p.name }}</template>
             </div>
             <ul class="card__tags">
-              <li class="card__tag" v-for="t in p.tags">{{ t }}</li>
+              <li class="card__tag" v-for="t in p.tags" :key="t">{{ t }}</li>
             </ul>
           </div>
           <div class="card__imgs">
             <div class="card__preview">
-              <img :src="p.preview[0]" :alt="p.name + '预览图'">
+              <img :src="p.preview[0]" :alt="p.name + 'preview'" />
             </div>
             <div class="card__qrcode">
-              <img :src="p.qrcode" :alt="p.name + '二维码'">
+              <img :src="p.qrcode" :alt="p.name + 'qrcode'" />
             </div>
           </div>
         </div>
@@ -32,25 +34,54 @@
 </template>
 
 <script lang="ts">
-import projects from '../data/projects'
+import projects from '../data/projects';
+
+const docs = {
+  zh: {
+    title: '谁在用',
+    subtitle: '上线项目案例',
+    desc: '目前已上线 400+ 个小程序，部分小程序二维码如下。如果你也在使用 TDesign 搭建你的小程序，也欢迎添加你的项目：',
+    addBtn: '添加项目',
+  },
+  en: {
+    title: 'USED',
+    subtitle: 'Online cases',
+    desc: 'Currently, more than 400 mini-programs have been launched. The QR codes of some mini-programs are as follows. If you are also using TDesign to build your mini-program, you are also welcome to add your project.',
+    addBtn: 'Add',
+  },
+};
 
 export default {
   data() {
     return {
       projects,
-    }
+    };
   },
+
+  computed: {
+    currentLang() {
+      return this.$route?.meta?.lang || 'zh'; // 默认中文
+    },
+  },
+
+  methods: {
+    $t(key: string) {
+      return docs[this.currentLang][key];
+    },
+  },
+
   mounted() {
     const { tdDocContent, tdDocHeader, tdDocTabs } = this.$refs;
 
     this.$emit('loaded', () => {
       tdDocHeader.docInfo = {
-        title: '谁在用', desc: ''
-      }
+        title: this.$t('title'),
+        desc: '',
+      };
       tdDocContent.pageStatus = 'show';
     });
-  }
-}
+  },
+};
 </script>
 
 <style lang="less" scoped>
