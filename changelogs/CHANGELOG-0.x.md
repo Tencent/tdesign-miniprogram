@@ -6,7 +6,7 @@ docClass: timeline
 ---
 
 ## 🌈 0.34.0 `2023-01-09`
-### ❗ Breaking Changes
+### 🚨 Breaking Changes
 - `Avatar`: 优化类名，符合 BEM 规范 @LeeJim ([#1441](https://github.com/Tencent/tdesign-miniprogram/pull/1441))
 - `Button`: 优化类名，符合 BEM 规范 @anlyyao ([#1352](https://github.com/Tencent/tdesign-miniprogram/pull/1352))
 - `Input`: 移除 size 属性 @anlyyao ([#1381](https://github.com/Tencent/tdesign-miniprogram/pull/1381))
@@ -57,7 +57,7 @@ docClass: timeline
 - `Textarea`: 修复 model:value 无效的问题 @anlyyao ([#1463](https://github.com/Tencent/tdesign-miniprogram/pull/1463))
 
 ## 🌈 0.33.0 `2023-01-02`
-### ❗ Breaking Changes
+### 🚨 Breaking Changes
 - `Swiper`: 增加 `18rpx` 的圆角，并支持 CSS Variables，移除了图片的 shape @LeeJim ([#1327](https://github.com/Tencent/tdesign-miniprogram/pull/1327))
 - `Rate`: 修复 gap 取值错误，移除 disabled 的样式 @LeeJim ([#1350](https://github.com/Tencent/tdesign-miniprogram/pull/1350))
 - `Avatar`: 移除 iconProps 属性，属性 icon 支持传入对象 @anlyyao ([#1295](https://github.com/Tencent/tdesign-miniprogram/pull/1295))
@@ -107,7 +107,7 @@ docClass: timeline
 - `Navbar`: 修复 custom-style 属性的响应式问题 @LeeJim ([#1374](https://github.com/Tencent/tdesign-miniprogram/pull/1374))
 
 ## 🌈 0.32.0 `2022-12-27`
-### ❗ Breaking Changes
+### 🚨 Breaking Changes
 - 全局修正插槽名称，保持和文档一致，使用 kebab-case @LeeJim ([#1277](https://github.com/Tencent/tdesign-miniprogram/pull/1277))
 - `ButtonGroup`: 移除该组件 @LeeJim ([#1289](https://github.com/Tencent/tdesign-miniprogram/pull/1289))
 - `DropdownMenu`: 调整外部样式类命名、DOM @LeeJim ([#1259](https://github.com/Tencent/tdesign-miniprogram/pull/1259))
@@ -155,7 +155,7 @@ docClass: timeline
 - `Message`: 修复间距、颜色样式错误问题 @anlyyao ([#1286](https://github.com/Tencent/tdesign-miniprogram/pull/1286))
 
 ## 🌈 0.31.0 `2022-12-19`
-### ❗ BREAKING CHANGES
+### 🚨 Breaking Changes
 - `Input`: 移除 clearableIconProps、prefixIconProps、suffixIconProps 属性 @anlyyao ([#1188](https://github.com/Tencent/tdesign-miniprogram/pull/1188))
 - `SwipeCell`: 调整 DOM @anlyyao ([#1201](https://github.com/Tencent/tdesign-miniprogram/pull/1201))
 - `Dialog`: 属性 closeOnOverlayClick 默认值从 true 改成 undefined @LeeJim ([#1240](https://github.com/Tencent/tdesign-miniprogram/pull/1240))
@@ -187,7 +187,7 @@ docClass: timeline
 
 
 ## 🌈 0.30.0 `2022-12-12`
-### ❗ BREAKING CHANGE
+### 🚨 Breaking Changes
 - `Rate`: 属性 gap 默认值由 8 调整成 4 @LeeJim ([#1177](https://github.com/Tencent/tdesign-miniprogram/pull/1177))
 - `Rate`: 属性 size 默认值由 20 调整成 24 @LeeJim ([#1177](https://github.com/Tencent/tdesign-miniprogram/pull/1177))
 - `Stepper`:  属性 theme 的 gray 名为 filled，并新增 outline 主题 @anlyyao ([#1191](https://github.com/Tencent/tdesign-miniprogram/pull/1191))
@@ -229,7 +229,7 @@ docClass: timeline
 
 
 ## 🌈 0.29.0 `2022-12-05`
-### ❗ BREAKING CHANGES
+### 🚨 Breaking Changes
 - `Loading`: `theme = spinner` 默认颜色改成黑色 @LeeJim ([#1152](https://github.com/Tencent/tdesign-miniprogram/pull/1152))
 - `Loading`: 简化 DOM @LeeJim ([#1152](https://github.com/Tencent/tdesign-miniprogram/pull/1152))
 
@@ -253,7 +253,7 @@ docClass: timeline
 - `Cascader`: 修复重置 `options = []` 时报错的问题 @LeeJim ([#1163](https://github.com/Tencent/tdesign-miniprogram/pull/1163))
 
 ## 🌈 0.28.0 `2022-11-28`
-### ❗ BREAKING CHANGES
+### 🚨 Breaking Changes
 - `Radio`:  调整 icon 属性，新增 dot 类型，并简化原有命名 @LeeJim ([#1098](https://github.com/Tencent/tdesign-miniprogram/pull/1098))
 - `Checkbox`: 移除 color 属性，使用 CSS Variables 代替 @LeeJim ([#1100](https://github.com/Tencent/tdesign-miniprogram/pull/1100))
 - `Search`: 移除 label 属性 @LeeJim ([#1103](https://github.com/Tencent/tdesign-miniprogram/pull/1103))
@@ -306,7 +306,7 @@ docClass: timeline
 - `Footer`: 支持无障碍 @Isabella327 ([#1104](https://github.com/Tencent/tdesign-miniprogram/pull/1104))
 
 ## 🌈 0.27.0 `2022-11-21`
-### ❗️BREAKING CHANGES
+### 🚨 Breaking Changes
 - `Divider`: 移除 line-color 属性，使用 CSS Variables 代替 @LeeJim ([#1035](https://github.com/Tencent/tdesign-miniprogram/pull/1035))
 - `Upload`: 数据对象 file 新增 status 字段，不再以 percent 区分 @LeeJim ([#1034](https://github.com/Tencent/tdesign-miniprogram/pull/1034))
 - `Switch`: 移除 colors 属性，使用 CSS Variables 代替 @LeeJim ([#1080](https://github.com/Tencent/tdesign-miniprogram/pull/1080))
@@ -342,7 +342,7 @@ docClass: timeline
 - `Search`: 修复插槽需要对应值为空时才渲染的问题 @LeeJim ([#1087](https://github.com/Tencent/tdesign-miniprogram/pull/1087))
 
 ## 🌈 0.26.0 `2022-11-14`
-### ❗ Breaking Changes
+### 🚨 Breaking Changes
 - `Textarea`: 调整 confirm-type 的默认值为 return @LeeJim ([#1007](https://github.com/Tencent/tdesign-miniprogram/pull/1007))
 - `Navbar`: 移除 background 使用 CSS Variables 代替 @LeeJim ([#1010](https://github.com/Tencent/tdesign-miniprogram/pull/1010))
 - `Navbar`: 属性 left-icon 更名为 left-arrow，只保留 Boolean 类型 @LeeJim ([#1010](https://github.com/Tencent/tdesign-miniprogram/pull/1010))
@@ -373,7 +373,7 @@ docClass: timeline
 - `Cascader`: 修复异步获取 options 时，无法使用 value 初始化已选选项 @LeeJim ([#1011](https://github.com/Tencent/tdesign-miniprogram/pull/1011))
 
 ## 🌈 0.25.0 `2022-11-07`
-### ❗ Breaking Changes
+### 🚨 Breaking Changes
 - `Badge`: 修复 offset 的顺序，首值应该调整水平方向 @LeeJim ([#971](https://github.com/Tencent/tdesign-miniprogram/pull/971))
 - `Tabs`: 调整非 BEM 的类名，此变更属于破坏性变更 @LeeJim ([#970](https://github.com/Tencent/tdesign-miniprogram/pull/970))
 ### 🚀 Features
@@ -404,7 +404,7 @@ docClass: timeline
 - `Calandar`: 修复在布局不兼容的问题 @LeeJim ([#989](https://github.com/Tencent/tdesign-miniprogram/pull/989))
 
 ## 🌈 0.24.0 `2022-10-31`
-### ❗️BREAKING CHANGES
+### 🚨 Breaking Changes
 - `Radio`: 移除 color 属性，使用 CSS Variable 替代 @anlyyao ([#944](https://github.com/Tencent/tdesign-miniprogram/pull/944))
 
 ### 🚀 Features
@@ -482,7 +482,7 @@ docClass: timeline
 - `Swiper`: 新增单元测试 @anlyyao ([#864](https://github.com/Tencent/tdesign-miniprogram/pull/864))
 
 ## 🌈 0.21.0 `2022-09-13`
-### ❗️BREAKING CHANGES
+### 🚨 Breaking Changes
 - `TabBar`: 点击 subTabBar 选项时，返回的值从数组改成选项的值 @LeeJim ([#846](https://github.com/Tencent/tdesign-miniprogram/pull/846))
 ### 🚀 Features
 - `Slider`: 属性 marks 支持动态响应 @LeeJim ([#853](https://github.com/Tencent/tdesign-miniprogram/pull/853))
@@ -625,7 +625,7 @@ docClass: timeline
 
 ## 🌈 0.18.0 `2022-08-01`
 
-### ❗️ BREAKING CHANGES
+### 🚨 Breaking Changes
 - `Tabbar`: CSS Variables 命名规则由 `--t` 改成 `--td` 开头 @LeeJim ([#663](https://github.com/Tencent/tdesign-miniprogram/pull/663))
 - `Avatar`: 头像组的样式内置进组件内 @anlyyao ([#665](https://github.com/Tencent/tdesign-miniprogram/pull/665))
 ### 🚀 Features
@@ -655,7 +655,7 @@ docClass: timeline
 - `tabbar`: 修复文档中主题定制前缀错误的问题 @anlyyao ([#674](https://github.com/Tencent/tdesign-miniprogram/pull/674))
 
 ## 🌈 0.17.0 `2022-07-25`
-### ❗️BREAKING CHANGES
+### 🚨 Breaking Changes
 - `Tabbar`: 移除 color 属性，使用 CSS Variable 替代 @LeeJim ([#650](https://github.com/Tencent/tdesign-miniprogram/pull/650))
 - `Rate`: 移除 color 属性，使用 CSS Variable 替代 @anlyyao ([#653](https://github.com/Tencent/tdesign-miniprogram/pull/653))
 - `Rate`: `external-classes` 属性中的 `t-class-desc` 更名为 `t-class-text` @anlyyao ([#653](https://github.com/Tencent/tdesign-miniprogram/pull/653))
@@ -705,7 +705,7 @@ docClass: timeline
 - `Indexes`: 更新示例代码 @anlyyao ([#649](https://github.com/Tencent/tdesign-miniprogram/pull/649))
 
 ## 🌈 0.16.0 `2022-07-18`
-### ❗ BREAKING CHANGES
+### 🚨 Breaking Changes
 - `Drawer`: 调整 `placement` 属性，只支持 `left` 和 `right` @LeeJim ([#619](https://github.com/Tencent/tdesign-miniprogram/pull/619))
 - `Button`: `tap` 事件返回值更新为 `event` 对象 @anlyyao ([#603](https://github.com/Tencent/tdesign-miniprogram/pull/603))
 - `Skeleton`: 属性 `theme` 移除 `avatar-text`；新增 `avatar` 、`image` 、`paragraph` @anlyyao ([#617](https://github.com/Tencent/tdesign-miniprogram/pull/617))
@@ -744,7 +744,7 @@ docClass: timeline
 
 ## 0.15.0 `2022-7-11`
 
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 
 - DropdownMenu: 属性 overlay 更名为 showOverlay [#582](https://github.com/Tencent/tdesign-miniprogram/pull/582) [@LeeJim](https://github.com/LeeJim)
 - Popup: 移除 transitionProps 属性 [#585](https://github.com/Tencent/tdesign-miniprogram/pull/585) [@LeeJim](https://github.com/LeeJim)
@@ -767,7 +767,7 @@ docClass: timeline
 
 ## 0.14.0 `2022-7-1`
 
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 
 - TextArea: 移除不生效的外部样式类 `t-class-placeholder`, 建议使用类名 `t-textarea__placeholder` 进行样式覆盖 [#541](https://github.com/Tencent/tdesign-miniprogram/pull/541) [@anlyyao](https://github.com/anlyyao)
 ### Bug Fixes
@@ -819,7 +819,7 @@ docClass: timeline
 - 支持微信开发者工具可视化编程
 
 ## 0.13.0 `2022-6-1`
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 
 - Picker: [#462](https://github.com/Tencent/tdesign-miniprogram/pull/462) [@wutianSweet](https://github.com/wutianSweet)
   - 事件 `change` 更名为 `pick`
@@ -859,7 +859,7 @@ docClass: timeline
 
 ## 0.12.0 `2022-5-24`
 
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 
 - Collapse: `expandIcon` 默认值从 `true` 改成 `null` [#462](https://github.com/Tencent/tdesign-miniprogram/pull/462) [@LeeJim](https://github.com/LeeJim)
 - Collapse: `headerRightContent` 移除 `boolean` 类型 [#462](https://github.com/Tencent/tdesign-miniprogram/pull/462) [@LeeJim](https://github.com/LeeJim)
@@ -902,7 +902,7 @@ docClass: timeline
 
 ## 0.11.0 `2022-5-7`
 
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 
 - Tabs: 不再支持 slot 类型的 `label` [#423](https://github.com/Tencent/tdesign-miniprogram/pull/423) [@LeeJim](https://github.com/LeeJim)
 
@@ -918,7 +918,7 @@ docClass: timeline
   - Steps
 ## 0.10.0 `2022-4-29`
 
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 
 - Picker: 子组件名称从 `t-picker-column` 改成 `t-picker-item` [#392](https://github.com/Tencent/tdesign-miniprogram/pull/392) [@LeeJim](https://github.com/LeeJim)
 - DateTimePicker: `value` 从非受控改成受控 [#413](https://github.com/Tencent/tdesign-miniprogram/pull/413) [@LeeJim](https://github.com/LeeJim)
@@ -940,7 +940,7 @@ docClass: timeline
 
 ## 0.9.0 `2022-4-21`
 
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 
 - Steps: 子组件名称从 `t-step` 改成 `t-step-item` [#373](https://github.com/Tencent/tdesign-miniprogram/pull/373) [@anlyyao](https://github.com/anlyyao)
 ### Bug Fixes
@@ -955,7 +955,7 @@ docClass: timeline
 
 ## 0.8.0 `2022-4-15`
 
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 
 - CheckboxGroup: change 事件返回的 value 将会过滤非 checkbox 的值 [#347](https://github.com/Tencent/tdesign-miniprogram/pull/347) [@LeeJim](https://github.com/LeeJim)
 ### Bug Fixes
@@ -1030,7 +1030,7 @@ docClass: timeline
 
 ## 0.7.0 `2022-3-18`
 
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 
 - Image:
   - 属性 `load-failed` 变更为 `error` [#265](https://github.com/Tencent/tdesign-miniprogram/pull/265) [@xihangzhou](https://github.com/xihangzhou)
@@ -1077,7 +1077,7 @@ docClass: timeline
 
 ## 0.6.0 `2022-3-8`
 
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 
 - Button: [#212](https://github.com/Tencent/tdesign-miniprogram/pull/212) [@anlyyao](https://github.com/anlyyao)
   - 重构 `shape` 的实现，新增支持 `rectangle`、`circle` 类型
@@ -1140,7 +1140,7 @@ docClass: timeline
 
 ## 0.5.0 `2022-1-28`
 
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 
 - 组件支持受控用法，对应的非受控属性增加了 `default` 前缀。支持受控的组件如下：
   - Checkbox [#158](https://github.com/Tencent/tdesign-miniprogram/pull/158) [@amberlwan](https://github.com/amberlwan)
@@ -1200,7 +1200,7 @@ docClass: timeline
 
 ## 0.4.0 `2021-12-30`
 
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 - CSS 类名规范：
   - Slider [#45](https://github.com/Tencent/tdesign-miniprogram/pull/45) [@JJunYang](https://github.com/JJunYang)
   - Stepper [#46](https://github.com/Tencent/tdesign-miniprogram/pull/46) [@JJunYang](https://github.com/JJunYang)
@@ -1217,7 +1217,7 @@ docClass: timeline
 
 ## 0.3.0 `2021-12-23`
 
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 - CSS 类名规范：
   - Textarea [#26](https://github.com/Tencent/tdesign-miniprogram/pull/26) [@JJunYang](https://github.com/JJunYang)
   - Toast [#27](https://github.com/Tencent/tdesign-miniprogram/pull/27) [@jin0209](https://github.com/jin0209)
@@ -1237,7 +1237,7 @@ docClass: timeline
 - Steps: 支持通过 `slot` 的方式传入 `icon` [#22](https://github.com/Tencent/tdesign-miniprogram/pull/22) [@LeeJim](https://github.com/LeeJim)
 
 ## 0.2.0 `2021-12-20`
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 
 - CSS 类名规范：
   - Cell [[4a0db04]](https://github.com/Tencent/tdesign-miniprogram/commit/4a0db04768f56016b27405090890d8fcb113c38b) [@jin0209](https://github.com/jin0209)
@@ -1274,7 +1274,7 @@ docClass: timeline
 
 ## 0.1.0 (2021-11-25)
 
-### BREAKING CHANGES
+### 🚨 Breaking Changes
 
 - Badege: 属性 `visible` 更名为 `showZero`
 - Steps: 属性 `direction` 更名为 `layout`

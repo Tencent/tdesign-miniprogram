@@ -1,9 +1,12 @@
 import * as path from 'path';
-import { defineConfig } from 'vite';
+
+import rollupResolve from '@rollup/plugin-node-resolve';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import rollupResolve from '@rollup/plugin-node-resolve';
-import createTDesignPlugin from './plugin-tdoc';
+import { defineConfig } from 'vite';
+
+import changelog2Json from './plugins/changelog-to-json';
+import createTDesignPlugin from './plugins/plugin-tdoc';
 
 const publicPathMap: Record<string, string> = {
   preview: '/',
@@ -55,6 +58,7 @@ export default ({ mode }: any) => {
       }),
       vueJsx(),
       createTDesignPlugin(),
+      changelog2Json(),
     ],
   });
 };

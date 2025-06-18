@@ -99,7 +99,7 @@ docClass: timeline
 - `Guide`: 修复多个场景组件定位错误 @anlyyao ([#3499](https://github.com/Tencent/tdesign-miniprogram/pull/3499))
 - `Picker`: 修复 `format` 属性无效 @anlyyao ([#3500](https://github.com/Tencent/tdesign-miniprogram/pull/3500))
 - `StepItem`: 修复 `title` 插槽在 `skyline` 渲染下展示偏右的问题 @runoob-coder ([#3519](https://github.com/Tencent/tdesign-miniprogram/pull/3519))
-- `toast`: 新增 `warning` 主题类型 @theEfrain08 ([#3517](https://github.com/Tencent/tdesign-miniprogram/pull/3517))
+- `Toast`: 新增 `warning` 主题类型 @theEfrain08 ([#3517](https://github.com/Tencent/tdesign-miniprogram/pull/3517))
 ### 🚧 Others
 - `other`: 修复因 `button` 模版带来的控制台告警 @anlyyao ([#3523](https://github.com/Tencent/tdesign-miniprogram/pull/3523))
 
@@ -702,7 +702,7 @@ docClass: timeline
 - `CheckBox`: 自定义图标增加半选中态  @lolhezihehe ([#2056](https://github.com/Tencent/tdesign-miniprogram/pull/2056))
 - `Search`: 新增 `cursor-spacing` 属性 @anlyyao ([#2065](https://github.com/Tencent/tdesign-miniprogram/pull/2065))
 ### 🐞 Bug Fixes
-- `indexes`: 索引导航无法选中问题 @lolhezihehe ([#2036](https://github.com/Tencent/tdesign-miniprogram/pull/2036))
+- `Indexes`: 索引导航无法选中问题 @lolhezihehe ([#2036](https://github.com/Tencent/tdesign-miniprogram/pull/2036))
 - `Switch`: 修复加载态时仍能点击的问题 @betavs ([#2061](https://github.com/Tencent/tdesign-miniprogram/pull/2061))
 - `Switch`: 修复 `loading` 态背景色错误 @anlyyao ([#2074](https://github.com/Tencent/tdesign-miniprogram/pull/2074))
 - `Icon`: 修复命名错误的问题 @anlyyao ([#2076](https://github.com/Tencent/tdesign-miniprogram/pull/2076))
