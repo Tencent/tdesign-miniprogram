@@ -2,6 +2,7 @@
 import { promises, readdirSync, statSync } from 'fs';
 import path from 'path';
 import type { ViteDevServer } from 'vite';
+import { CHILD_TO_PARENT_MAP } from './components';
 import type { ComponentLog, ComponentLogMap, LogItem, Logs, LogType, VersionLog } from './types';
 
 const outputPath = path.resolve(__dirname, '../../../changelog.json');
@@ -148,18 +149,17 @@ function groupLogByComponent(entries: string[]) {
           // 所有反引号包裹的字符
           .map((match) => match[1])
           // 过滤无效组件名
-          .filter((name) => COMP_LIST.includes(name)),
+          .filter((name) => COMP_LIST.includes(name))
+          // 将子组件转换为父组件名
+          .map((name) => CHILD_TO_PARENT_MAP[name] || name),
       ),
     ];
-
-    // 移除冒号前面的总结部分（兼容中英文符号）
-    const description = entry.replace(/^[^:：]+[:：]\s*/, '');
 
     // 如果一条日志提到了多个组件，则每个组件都插入一条对应的日志
     components.forEach((component) => {
       logs.push({
         component,
-        description,
+        description: entry,
       });
     });
   });
