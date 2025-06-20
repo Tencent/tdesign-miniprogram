@@ -16,7 +16,6 @@ docClass: timeline
 - `TreeSelect`: 修复传入非标准 `options` 数据源时组件控制台报错 @anlyyao ([#3708](https://github.com/Tencent/tdesign-miniprogram/pull/3708))
 - `Rate`: 修复点选全星时弹框不显示 @Boomkaa ([#3715](https://github.com/Tencent/tdesign-miniprogram/pull/3715))
 
-
 ## 🌈 1.9.4 `2025-05-29` 
 ### 🚀 Features
 - `Input`: `cursor` 属性默认值取 `-1`，确保光标在 `value` 值末尾 @anlyyao ([#3672](https://github.com/Tencent/tdesign-miniprogram/pull/3672))
@@ -24,10 +23,9 @@ docClass: timeline
 - `TreeSelect`:  允许 `options` 的 `children` 未定义，同时增强 `keys` 属性，支持为 `disabled / children` 字段自定义别名 @anlyyao ([#3671](https://github.com/Tencent/tdesign-miniprogram/pull/3671))
 ### 🐞 Bug Fixes
 - `Calendar`: 修复当 `switchMode !== 'none'` 时，重置空值后选中的状态未更新的问题 @betavs ([#3676](https://github.com/Tencent/tdesign-miniprogram/pull/3676))
-- `Tabs`: 修复 1.8.8 中 `bottomLineMode` 为 `auto/full` 时线宽计算错误 @anlyyao ([#3668](https://github.com/Tencent/tdesign-miniprogram/pull/3668))
+- `Tabs`: 修复 `1.8.8` 中 `bottomLineMode` 为 `auto/full` 时线宽计算错误 @anlyyao ([#3668](https://github.com/Tencent/tdesign-miniprogram/pull/3668))
 - `ImageViewer`: 修复图片懒加载无效 。同时新增 `lazy` 属性，开启后会预加载当前图片、相邻图片 @anlyyao ([#3674](https://github.com/Tencent/tdesign-miniprogram/pull/3674))
 - `Upload`: 修复 `max = 0` 时上传数量仍受限，以及 `max =  0 和 source="messageFile"` 时无法上传的问题 @anlyyao ([#3679](https://github.com/Tencent/tdesign-miniprogram/pull/3679))
-
 
 ## 🌈 1.9.3 `2025-05-23` 
 ### 🐞 Bug Fixes
@@ -37,15 +35,13 @@ docClass: timeline
 - `Link`: 修复在 `navigatorProps` 中只指定 `appId` 或者 `shortLink` 且 `target="miniProgram"` 时样式为禁用状态的问题 @CrazyOrr @betavs ([#3643](https://github.com/Tencent/tdesign-miniprogram/pull/3643))
 - `TreeSelect`: 修复 `customValue` 为空数组时多选报错 @anlyyao ([#3662](https://github.com/Tencent/tdesign-miniprogram/pull/3662))
 ### 🚧 Others
-- `fix`: 修复 1.9.0 导致的组件类型丢失问题 @anlyyao ([#3661](https://github.com/Tencent/tdesign-miniprogram/pull/3661))
-
+- `fix`: 修复 `1.9.0` 导致的组件类型丢失问题 @anlyyao ([#3661](https://github.com/Tencent/tdesign-miniprogram/pull/3661))
 
 ## 🌈 1.9.2 `2025-05-09` 
 ### 🐞 Bug Fixes
 - `PullDownRefresh`: 修复配置 `scroll-into-view` 不生效问题 @Boomkaa ([#3633](https://github.com/Tencent/tdesign-miniprogram/pull/3633))
-- `DropdownItem`: 修复 1.9.1 带来的高度塌陷问题 @betavs ([#3635](https://github.com/Tencent/tdesign-miniprogram/pull/3635))
+- `DropdownItem`: 修复 `1.9.1` 带来的高度塌陷问题 @betavs ([#3635](https://github.com/Tencent/tdesign-miniprogram/pull/3635))
 - `Dialog`: 修复命令式调用时`wxml` 模版中组件属性不生效 @Boomkaa ([#3622](https://github.com/Tencent/tdesign-miniprogram/pull/3622))
-
 
 ## 🌈 1.9.1 `2025-04-27` 
 ### 🚀 Features
@@ -55,7 +51,6 @@ docClass: timeline
 ### 🐞 Bug Fixes
 - `Icon`: 优化多个文件相关图标的绘制效果，修复 `gesture-right-slip` 的绘制问题 @uyarn([#3608](https://github.com/Tencent/tdesign-miniprogram/pull/3608))
 - `DropdownItem`: 修复动态修改 `disabled` 属性样式未更新 @Boomkaa ([#3612](https://github.com/Tencent/tdesign-miniprogram/pull/3612))
-
 
 ## 🌈 1.9.0 `2025-04-23` 
 ### 🚀 Features
@@ -78,7 +73,6 @@ docClass: timeline
 - `chore`: 移除组件对 `lodash` 的依赖，调整样式引入方式，编译产物移除 `md` 文档并加入文件压缩 @anlyyao ([#3555](https://github.com/Tencent/tdesign-miniprogram/pull/3555))
 - `site`: 站点接入主题生成器 @RylanBot ([#3527](https://github.com/Tencent/tdesign-miniprogram/pull/3527))
 
-
 ## 🌈 1.8.8 `2025-03-23` 
 ### 🐞 Bug Fixes
 - `StepItem`: 移除页面中多余的字符内容 @runoob-coder ([#3528](https://github.com/Tencent/tdesign-miniprogram/pull/3528))
@@ -87,7 +81,6 @@ docClass: timeline
 - `Cascader`: 允许 `children` 为空数组，便于支持数据异步场景 @liuffff ([#3542](https://github.com/Tencent/tdesign-miniprogram/pull/3542))
 ### 🚧 Others
 - `other(theme)`: 补充 `--td-brand-color-x` 系列色板 @anlyyao ([#3531](https://github.com/Tencent/tdesign-miniprogram/pull/3531))
-
 
 ## 🌈 1.8.7 `2025-03-14` 
 ### 🚀 Features
@@ -103,7 +96,6 @@ docClass: timeline
 ### 🚧 Others
 - `other`: 修复因 `button` 模版带来的控制台告警 @anlyyao ([#3523](https://github.com/Tencent/tdesign-miniprogram/pull/3523))
 
-
 ## 🌈 1.8.6 `2025-02-21` 
 ### 🚀 Features
 - `Textarea`:
@@ -118,7 +110,6 @@ docClass: timeline
 - `Input`: 移除 `--td-input-border-radius`  @betavs ([#3463](https://github.com/Tencent/tdesign-miniprogram/pull/3463))
 ### 🚧 Others
 - `WXS`: 所有 `wxs` 文件模块命名 `this` 改为 `_this` @jarmywang  ([#3488](https://github.com/Tencent/tdesign-miniprogram/pull/3488))
-
 
 ## 🌈 1.8.5 `2025-01-16` 
 ### 🚀 Features
@@ -146,7 +137,6 @@ docClass: timeline
 ### 🚧 Others
 - `Mpx`: 修复在 `Mpx` 框架中编译报错问题 @anlyyao ([#3416](https://github.com/Tencent/tdesign-miniprogram/pull/3416))
 
-
 ## 🌈 1.8.4 `2024-12-25` 
 ### 🚀 Features
 - `Calendar`: 新增 `panel-change`  事件，切换月或年时触发（`switch-mode` 不为 `none` 时有效） @anlyyao ([#3385](https://github.com/Tencent/tdesign-miniprogram/pull/3385))
@@ -159,7 +149,6 @@ docClass: timeline
 - `PullDownRefresh`: 新增 `usingCustomNavbar` 属性，修复与 `Navbar` 同用遮挡底部问题 @jarmywang ([#3394](https://github.com/Tencent/tdesign-miniprogram/pull/3394))
 - `TreeSelect`: 修复 `value` 为空数组时组件未渲染，同时补齐外部样式类 @anlyyao ([#3395](https://github.com/Tencent/tdesign-miniprogram/pull/3395))
 
-
 ## 🌈 1.8.3 `2024-12-19` 
 ### 🚀 Features
 - `TreeSelect`: 优化组件交互，支持首次渲染时滚动到选中项位置 @anlyyao ([#3364](https://github.com/Tencent/tdesign-miniprogram/pull/3364))
@@ -169,7 +158,6 @@ docClass: timeline
 - `Calendar`: 修复 `switchMode` 和 `maxDate` 同时使用时，翻页按钮状态错误 @anlyyao ([#3366](https://github.com/Tencent/tdesign-miniprogram/pull/3366))
 - `Icon`: 补充异常捕获，修复开发工具控制台报错 @anlyyao ([#3370](https://github.com/Tencent/tdesign-miniprogram/pull/3370))
 - `Guide`: 修复 `hideSkip` 属性无效 @anlyyao ([#3371](https://github.com/Tencent/tdesign-miniprogram/pull/3371))
-
 
 ## 🌈 1.8.2 `2024-12-11` 
 ### 🚀 Features
@@ -184,7 +172,6 @@ docClass: timeline
 - `Picker`: 在 `Skyline` 模式下样式异常 @betavs ([#3317](https://github.com/Tencent/tdesign-miniprogram/pull/3317))
 - `NoticeBar`: 修复重复进入页面时出现非预期动画 @anlyyao ([#3346](https://github.com/Tencent/tdesign-miniprogram/pull/3346))
 
-
 ## 🌈 1.8.1 `2024-11-29` 
 ### 🚀 Features
 - `Progress`: 新增环形进度条相关的  `css vars` @betavs ([#3301](https://github.com/Tencent/tdesign-miniprogram/pull/3301))
@@ -193,7 +180,6 @@ docClass: timeline
 ### 🐞 Bug Fixes
 - `DropdownItem`: 修复默认插槽无效，并补充 `footer` 具名插槽 @anlyyao ([#3309](https://github.com/Tencent/tdesign-miniprogram/pull/3309))
 - `Navbar`: 修复 `getRect` 耗时过长导致 `navbar` 位置不准确问题，并兼容部分机型因精度问题导致的翻译功能完成后标题仍然隐藏的问题 @jarmywang @anlyyao @betavs  ([#3286](https://github.com/Tencent/tdesign-miniprogram/pull/3286))
-
 
 ## 🌈 1.8.0 `2024-11-13` 
 ### 🚀 Features
@@ -205,7 +191,6 @@ docClass: timeline
 - `Progress`: 修复在 `skyline` 中标签右侧间距错误 @anlyyao ([#3283](https://github.com/Tencent/tdesign-miniprogram/pull/3283))
 ### 🚧 Others
 - `other`: `getWindowInfo` 、 `getAppBaseInfo` 、 `getDeviceInfo` 等方法兼容单页模式使用 @anlyyao ([#3281](https://github.com/Tencent/tdesign-miniprogram/pull/3281))
-
 
 ## 🌈 1.7.1 `2024-11-08` 
 ### 🚀 Features
@@ -225,7 +210,6 @@ docClass: timeline
 - `Button`: 修复 `danger` + `disable` 时，文本颜色错误 @anlyyao ([#3261](https://github.com/Tencent/tdesign-miniprogram/pull/3261))
 - `Rate`: 修复 `gap` 单位处理异常 @jarmywang ([#3259](https://github.com/Tencent/tdesign-miniprogram/pull/3259))
 
-
 ## 🌈 1.7.0 `2024-10-25` 
 ### 🚀 Features
 - `ColorPicker`: 新增 `ColorPicker` 组件 @novlan1 ([#3176](https://github.com/Tencent/tdesign-miniprogram/pull/3176))⚡
@@ -244,8 +228,7 @@ docClass: timeline
 ### 📝 Documentation
 - `Fab`: 文档补充 `FAQ` 部分 @anlyyao ([#3215](https://github.com/Tencent/tdesign-miniprogram/pull/3215))
 ### 🚧 Others
-- `Weixin`: 更新部分不在维护的`wx`接口，并兼容低版本 @anlyyao ([#3192](https://github.com/Tencent/tdesign-miniprogram/pull/3192))
-
+- `WX`: 更新部分不在维护的`wx`接口，并兼容低版本 @anlyyao ([#3192](https://github.com/Tencent/tdesign-miniprogram/pull/3192))
 
 ## 🌈 1.6.2 `2024-10-12` 
 ### 🚀 Features
@@ -261,7 +244,6 @@ docClass: timeline
 - `Cell`: 修复 `arrow` 动态变更无效的问题 @anlyyao ([#3184](https://github.com/Tencent/tdesign-miniprogram/pull/3184))
 - `Switch`: 修复深色模式下文本颜色错误 @anlyyao ([#3183](https://github.com/Tencent/tdesign-miniprogram/pull/3183))
 - `PullDownRefresh`: 修复禁用下拉刷新导致的滑动事件无效 @anlyyao ([#3182](https://github.com/Tencent/tdesign-miniprogram/pull/3182))
-
 
 ## 🌈 1.6.1 `2024-09-14` 
 ### 🚀 Features
@@ -283,7 +265,6 @@ docClass: timeline
 - `Cascader`: 修复 `value` 动态变更时，`options ` 选项内容未更新的问题 @huxinhai ([#3142](https://github.com/Tencent/tdesign-miniprogram/pull/3142))
 - `CollapsePanel`: 修复 `expandIcon` 属性不生效问题，并支持动态设置 `disabled` 属性 @blankqwq ([#3093](https://github.com/Tencent/tdesign-miniprogram/pull/3093))
 
-
 ## 🌈 1.6.0 `2024-08-23` 
 ### 🚀 Features
 - `DropdownMenu`: 新增 `--td-dropdown-menu-height` @anlyyao ([#3094](https://github.com/Tencent/tdesign-miniprogram/pull/3094))
@@ -295,7 +276,6 @@ docClass: timeline
 - `Picker`: 兼容 `Skyline` 在深色模式下遮罩显示 @jarmywang ([#3077](https://github.com/Tencent/tdesign-miniprogram/pull/3077))
 - `Progress`: 修复 `label` 插槽重复 @anlyyao ([#3080](https://github.com/Tencent/tdesign-miniprogram/pull/3080))
 - `Slider`: 修复 `hidden` 为 `false` 场景下，调用 `init()` 函数更新组件时点位置错误 @jby0107 ([#3085](https://github.com/Tencent/tdesign-miniprogram/pull/3085))
-
 
 ## 🌈 1.5.1 `2024-08-09` 
 ### 🚀 Features
@@ -312,7 +292,6 @@ docClass: timeline
   - 修复 `TabPanel`面板内容快速滚动时，点击tab切换出现偶发性页面空白 @hkaikai ([#3055](https://github.com/Tencent/tdesign-miniprogram/pull/3055))
 - `PullDownRefresh`: 修复 `skyline` 下提示语占位高度计算错误 @richardji202 ([#3014](https://github.com/Tencent/tdesign-miniprogram/pull/3014))
 
-
 ## 🌈 1.5.0 `2024-07-26` 
 ### 🚀 Features
 - `Guide`: 新增`Guide`组件 @hkaikai ([#2998](https://github.com/Tencent/tdesign-miniprogram/pull/2998)) ⚡
@@ -328,11 +307,10 @@ docClass: timeline
 - `Noticebar`: 移除未依赖的组件引用，修复代码质量告警 @anlyyao ([#3006](https://github.com/Tencent/tdesign-miniprogram/pull/3006))
 - `Indexes`: 修复位置错乱和滑动卡顿 @jarmywang ([#3000](https://github.com/Tencent/tdesign-miniprogram/pull/3000))
 ### 🚧 Others
-- `官网`: 项目案例更新 @anlyyao ([#2964](https://github.com/Tencent/tdesign-miniprogram/pull/2964))
+- `site`: 项目案例更新 @anlyyao ([#2964](https://github.com/Tencent/tdesign-miniprogram/pull/2964))
 - `TabBarItem`: `wx:key` 从 `index` 更换为`value`属性值作为标识符 @jarmywang ([#3002](https://github.com/Tencent/tdesign-miniprogram/pull/3002))
 - `Search`: `skyline` 适配 @byq1213 ([#2971](https://github.com/Tencent/tdesign-miniprogram/pull/2971))
 - `Switch`:  `skyline` 适配 @byq1213 ([#2967](https://github.com/Tencent/tdesign-miniprogram/pull/2967))
-
 
 ## 🌈 1.4.5 `2024-07-05` 
 ### 🚀 Features
@@ -349,11 +327,9 @@ docClass: timeline
 - `site`: 全量组件补充示例代码片段，支持导入开发者工具预览 @anlyyao ([#2939](https://github.com/Tencent/tdesign-miniprogram/pull/2939))
 - `Picker`: 废弃无实际意义的 `--td-picker-item-height` @anlyyao ([#2953](https://github.com/Tencent/tdesign-miniprogram/pull/2953))
 
-
 ## 🌈 1.4.4 `2024-06-24` 
 ### 🐞 Bug Fixes
 - `Overlay`: 修复遮罩失效 @anlyyao ([#2887](https://github.com/Tencent/tdesign-miniprogram/pull/2887))
-
 
 ## 🌈 1.4.3 `2024-06-21` 
 ### 🚀 Features
@@ -370,7 +346,6 @@ docClass: timeline
 ### 🚧 Others
 - `site(Button)`: 支持示例代码导入开发者工具 @anlyyao ([#2883](https://github.com/Tencent/tdesign-miniprogram/pull/2883))
 
-
 ## 🌈 1.4.2 `2024-06-07`
 ### 🐞 Bug Fixes
 - `Skeleton`: 修复深色模式渐变动画颜色错误 @anlyyao ([#2818](https://github.com/Tencent/tdesign-miniprogram/pull/2818))
@@ -384,7 +359,6 @@ docClass: timeline
 - `CountDown`: 示例添加 `TCloudNumber` 字体的 `Base64` 转码 @ArcticFoxPro ([#2836](https://github.com/Tencent/tdesign-miniprogram/pull/2836))
 - `Message`: 修复官网 `Message` 组件示例页面白屏 @anlyyao ([#2841](https://github.com/Tencent/tdesign-miniprogram/pull/2841))
 
-
 ## 🌈 1.4.1 `2024-05-28` 
 ### 🚀 Features
 - `Picker`: 新增 `use-popup` 属性 @anlyyao ([#2770](https://github.com/Tencent/tdesign-miniprogram/pull/2770))
@@ -396,7 +370,7 @@ docClass: timeline
 - `Navbar`:  为适配右侧胶囊尺寸，恢复使用 `px` 单位 @anlyyao ([#2781](https://github.com/Tencent/tdesign-miniprogram/pull/2781))
 - `Picker`: 修复子项文本尺寸自适应问题 @anlyyao ([#2782](https://github.com/Tencent/tdesign-miniprogram/pull/2782))
 - `Tabs`:
-  - 修复在 Skyline 模式下组件不能正常使用的问题 @narukeu ([#2788](https://github.com/Tencent/tdesign-miniprogram/pull/2788))
+  - 修复在 `Skyline` 模式下组件不能正常使用的问题 @narukeu ([#2788](https://github.com/Tencent/tdesign-miniprogram/pull/2788))
   - 修复示例文案错误 @ArcticFoxPro ([#2801](https://github.com/Tencent/tdesign-miniprogram/pull/2801))
 - `CellGroup`: 修复深色模式下外边框颜色错误 @anlyyao ([#2790](https://github.com/Tencent/tdesign-miniprogram/pull/2790))
 - `Slider`:
@@ -407,8 +381,7 @@ docClass: timeline
 - `CountDown`: 改用 `TCloudNumber` 字体 @anlyyao ([#2765](https://github.com/Tencent/tdesign-miniprogram/pull/2765))
 - `Button`: 更新示例，对齐视觉 @anlyyao ([#2811](https://github.com/Tencent/tdesign-miniprogram/pull/2811))
 ### 🚧 Others
-- `fix(Site)`: 修复预览窗口内部切换时不更随颜色模式问题 @zuiaiwanqian ([#2768](https://github.com/Tencent/tdesign-miniprogram/pull/2768))
-
+- `site`: 修复预览窗口内部切换时不更随颜色模式问题 @zuiaiwanqian ([#2768](https://github.com/Tencent/tdesign-miniprogram/pull/2768))
 
 ## 🌈 1.4.0 `2024-05-09`
 ### 🚀 Features
@@ -417,7 +390,6 @@ docClass: timeline
 - `Textarea`: 新增 `default-value` 属性 @betavs ([#2737](https://github.com/Tencent/tdesign-miniprogram/pull/2737))
 ### 🐞 Bug Fixes
 - `Layout`: 修复 `Col` 和 `Row` 的 `style` 与 `customStyle` 属性无效的问题 @anlyyao ([#2745](https://github.com/Tencent/tdesign-miniprogram/pull/2745))
-
 
 ## 🌈 1.3.1 `2024-04-29` 
 ### 🚀 Features
@@ -432,7 +404,6 @@ docClass: timeline
 ### 🚧 Others
 - `chore`: `styleIsolation` 配置项从 `options` 迁移到 `JSON` @anlyyao ([#2718](https://github.com/Tencent/tdesign-miniprogram/pull/2718))
 - `chore`: 修正包名 @betavs ([#2734](https://github.com/Tencent/tdesign-miniprogram/pull/2734))
-
 
 ## 🌈 1.3.0 `2024-04-19`
 ### 🚀 Features
@@ -455,10 +426,9 @@ docClass: timeline
 - `Drawer`: 修复 `--td-drawer-item-icon-color` 名称错误 @anlyyao ([#2697](https://github.com/Tencent/tdesign-miniprogram/pull/2697))
 - `TabBarItem`: 当 `tab-bar` 组件 `split` 属性为真时，样式异常 @betavs ([#2696](https://github.com/Tencent/tdesign-miniprogram/pull/2696))
 ### 🚧 Others
-- `Footer`: sync api @liweijie0812 ([#2683](https://github.com/Tencent/tdesign-miniprogram/pull/2683))
-- `Tag`: sync api @liweijie0812 ([#2684](https://github.com/Tencent/tdesign-miniprogram/pull/2684))
-- `Result`: sync api @liweijie0812 ([#2685](https://github.com/Tencent/tdesign-miniprogram/pull/2685))
-
+- `Footer`: 同步 `API` 文档 @liweijie0812 ([#2683](https://github.com/Tencent/tdesign-miniprogram/pull/2683))
+- `Tag`: 同步 `API` 文档 @liweijie0812 ([#2684](https://github.com/Tencent/tdesign-miniprogram/pull/2684))
+- `Result`: 同步 `API` 文档 @liweijie0812 ([#2685](https://github.com/Tencent/tdesign-miniprogram/pull/2685))
 
 ## 🌈 1.2.9 `2024-03-07`
 ### 🚀 Features
@@ -476,7 +446,6 @@ docClass: timeline
 - `TabBar`: 移除重复样式类 @Moonofweisheng ([#2630](https://github.com/Tencent/tdesign-miniprogram/pull/2630))
 - `DropdownItem`: 采用 [BEM](http://getbem.com/) 命名规范优化类名 @betavs ([#2611](https://github.com/Tencent/tdesign-miniprogram/pull/2611))
 
-
 ## 🌈 1.2.8 `2024-02-06`
 ### 🚀 Features
 - `Slider`: 新增 `vertical`属性 @zuiaiwanqian ([#2592](https://github.com/Tencent/tdesign-miniprogram/pull/2592))
@@ -490,7 +459,6 @@ docClass: timeline
 - `Dialog`: 处理基础调试库在 `3.3.3` ～ `3.3.4` 版本时控制台报错 @anlyyao ([#2587](https://github.com/Tencent/tdesign-miniprogram/pull/2587))
 ### 🚧 Others
 - `NoticeBar`: 声明 `NoticeBarTrigger` 类型 @betavs ([#2567](https://github.com/Tencent/tdesign-miniprogram/pull/2567))
-
 
 ## 🌈 1.2.7 `2024-01-17`
 ### 🚀 Features
@@ -507,7 +475,6 @@ docClass: timeline
 ### 🚧 Others
 - `Button`: 处理控制台警告的问题 @IronManman ([#2521](https://github.com/Tencent/tdesign-miniprogram/pull/2521))
 - `ActionSheet`: 文档更新 @jin0209 ([#2541](https://github.com/Tencent/tdesign-miniprogram/pull/2541))
-
 
 ## 🌈 1.2.6 `2023-12-22`
 ### 🚀 Features
@@ -526,7 +493,6 @@ docClass: timeline
 - `Icon`: 弃用 `wx.setClipboardData` 防止收集用户信息。 @anlyyao ([#2498](https://github.com/Tencent/tdesign-miniprogram/pull/2498))
 - `Textarea`: 更新文档默认值 @betavs ([#2507](https://github.com/Tencent/tdesign-miniprogram/pull/2507))
 
-
 ## 🌈 1.2.5 `2023-12-08`
 ### 🚀 Features
 - `Cell`: 新增外部样式类 `t-class-center` @anlyyao ([#2439](https://github.com/Tencent/tdesign-miniprogram/pull/2439))
@@ -540,7 +506,6 @@ docClass: timeline
 - `Textarea`:  修复文档 `confirm-type` 属性默认值描述错误 @betavs ([#2475](https://github.com/Tencent/tdesign-miniprogram/pull/2475))
 - `BackTop`: 返回顶部按钮，增加 `iphone` 底部安全区 @leozeli ([#2457](https://github.com/Tencent/tdesign-miniprogram/pull/2457))
 
-
 ## 🌈 1.2.4 `2023-11-15`
 ### 🚀 Features
 - `Rate`: 新增 `placement` 属性 @betavs ([#2359](https://github.com/Tencent/tdesign-miniprogram/pull/2359))
@@ -549,7 +514,7 @@ docClass: timeline
 - `BackTop`: 新增 `scrollTop` 和 `visibilityHeight` 属性 @betavs ([#2177](https://github.com/Tencent/tdesign-miniprogram/pull/2177))
 ### 🐞 Bug Fixes
 - `Search`: 修复因 `input` 未设置最小高度导致异常的问题 @betavs ([#2340](https://github.com/Tencent/tdesign-miniprogram/pull/2340))
-- `Picker`: 兼容 keys 为 null 的情况 @betavs ([#2358](https://github.com/Tencent/tdesign-miniprogram/pull/2358))
+- `Picker`: 兼容 `keys` 为 `null` 的情况 @betavs ([#2358](https://github.com/Tencent/tdesign-miniprogram/pull/2358))
 - `Image`:  优化组件内部函数重复执行的问题 @betavs ([#2362](https://github.com/Tencent/tdesign-miniprogram/pull/2362))
 - `Checkbox`: 移除未使用的组件 `Cell` @eehhh ([#2404](https://github.com/Tencent/tdesign-miniprogram/pull/2404))
 - `Radio`: 移除未使用的组件 `Cell` @eehhh ([#2405](https://github.com/Tencent/tdesign-miniprogram/pull/2405))
@@ -557,7 +522,6 @@ docClass: timeline
 - `SideBar`: 修复子项激活态时 `prefix`与`suffix` 内容遮挡相邻项的点击热区问题 @Moonofweisheng ([#2431](https://github.com/Tencent/tdesign-miniprogram/pull/2431))
 ### 🚧 Others
 - `Tabs`: 更新示例 @Xcyq ([#2386](https://github.com/Tencent/tdesign-miniprogram/pull/2386))
-
 
 ## 🌈 1.2.3 `2023-09-14`
 ### 🚀 Features
@@ -577,11 +541,10 @@ docClass: timeline
   - 修复无法输出小数的问题 @LeeJim ([#2314](https://github.com/Tencent/tdesign-miniprogram/pull/2314))
   - 修复输入小数后增减的精度问题 @LeeJim ([#2314](https://github.com/Tencent/tdesign-miniprogram/pull/2314))
 - `TreeSelect`:
-  - 解决异步 options 导致无法渲染的问题 @LeeJim ([#2315](https://github.com/Tencent/tdesign-miniprogram/pull/2315))
+  - 解决异步 `options` 导致无法渲染的问题 @LeeJim ([#2315](https://github.com/Tencent/tdesign-miniprogram/pull/2315))
   - 解决异步数据导致的报错问题 @LeeJim ([#2315](https://github.com/Tencent/tdesign-miniprogram/pull/2315))
 - `ActionSheet`: 移除未使用的组件 @betavs ([#2318](https://github.com/Tencent/tdesign-miniprogram/pull/2318))
 - `SideBar`: 修复示例滚动问题 @betavs ([#2325](https://github.com/Tencent/tdesign-miniprogram/pull/2325))
-
 
 ## 🌈 1.2.1 `2023-08-22`
 ### 🚀 Features
@@ -589,17 +552,16 @@ docClass: timeline
 ### 🐞 Bug Fixes
 - `CellGroup`: 修复 `updateLastChid` 事件被多次触发的问题 @anlyyao ([#2302](https://github.com/Tencent/tdesign-miniprogram/pull/2302))
 - `Popup`: 修复 `visibleChange` 事件参数错误的问题 @anlyyao ([#2303](https://github.com/Tencent/tdesign-miniprogram/pull/2303))
-- `Rate`: 修复value = 0 且半选时图标错误的问题 @betavs ([#2307](https://github.com/Tencent/tdesign-miniprogram/pull/2307))
-- `Radio`: 修复 tap 事件无法冒泡的问题 @LeeJim ([#2309](https://github.com/Tencent/tdesign-miniprogram/pull/2309))
-- `Checkbox`: 修复 tap 事件无法冒泡的问题 @LeeJim ([#2309](https://github.com/Tencent/tdesign-miniprogram/pull/2309))
-
+- `Rate`: 修复 `value = 0` 且半选时图标错误的问题 @betavs ([#2307](https://github.com/Tencent/tdesign-miniprogram/pull/2307))
+- `Radio`: 修复 `tap` 事件无法冒泡的问题 @LeeJim ([#2309](https://github.com/Tencent/tdesign-miniprogram/pull/2309))
+- `Checkbox`: 修复 `tap` 事件无法冒泡的问题 @LeeJim ([#2309](https://github.com/Tencent/tdesign-miniprogram/pull/2309))
 
 ## 🌈 1.2.0 `2023-08-16`
 ### 🚀 Features
-- `Search`: 支持透传更多 Input 的属性 @betavs ([#2229](https://github.com/Tencent/tdesign-miniprogram/pull/2229))
+- `Search`: 支持透传更多 `Input` 的属性 @betavs ([#2229](https://github.com/Tencent/tdesign-miniprogram/pull/2229))
 - `Icon`: 图标更新，新增 `960` 个图标 @anlyyao ([#2254](https://github.com/Tencent/tdesign-miniprogram/pull/2254))
 - `Input`: 新增  `--td-input-label-max-width` 和 `--td-input-label-min-width` 两个样式变量 @anlyyao ([#2259](https://github.com/Tencent/tdesign-miniprogram/pull/2259))
-- `Loading`: 新增 CSS Variable 用于调整加载提示文案颜色 @ElanYoung ([#2273](https://github.com/Tencent/tdesign-miniprogram/pull/2273))
+- `Loading`: 新增 `CSS Variable` 用于调整加载提示文案颜色 @ElanYoung ([#2273](https://github.com/Tencent/tdesign-miniprogram/pull/2273))
 ### 🐞 Bug Fixes
 - `Swiper`: 修复图片加载中/加载错误占位符未居中的问题 @anlyyao ([#2246](https://github.com/Tencent/tdesign-miniprogram/pull/2246))
 - `TabBar`: 修复示例代码展示错误 @anlyyao ([#2257](https://github.com/Tencent/tdesign-miniprogram/pull/2257))
@@ -610,7 +572,7 @@ docClass: timeline
   - 阻止默认的垂直滚动，优化交互体验 @LeeJim ([#2281](https://github.com/Tencent/tdesign-miniprogram/pull/2281))
   - 使用 hidden 隐藏后显示仍能够正常使用 @LeeJim ([#2283](https://github.com/Tencent/tdesign-miniprogram/pull/2283))
 - `Collapse`: 修复默认展开全部时，无法正常收起的问题 @LeeJim ([#2280](https://github.com/Tencent/tdesign-miniprogram/pull/2280))
-- `Checkbox`: 修复 icon 无法使用插槽的问题 @LeeJim ([#2285](https://github.com/Tencent/tdesign-miniprogram/pull/2285))
+- `Checkbox`: 修复 `icon` 无法使用插槽的问题 @LeeJim ([#2285](https://github.com/Tencent/tdesign-miniprogram/pull/2285))
 - `Popup`: 修复滚动穿透的问题 @LeeJim ([#2290](https://github.com/Tencent/tdesign-miniprogram/pull/2290))
 ### 🚧 Others
 - `Swiper`:
@@ -618,22 +580,20 @@ docClass: timeline
   - 补充外部样式类信息 @LeeJim ([#2256](https://github.com/Tencent/tdesign-miniprogram/pull/2256))
 - `Icon`: 更新图标展示UI组件至 0.2.0 版本 @uyarn ([#2269](https://github.com/Tencent/tdesign-miniprogram/pull/2269))
 
-
 ## 🌈 1.1.15 `2023-08-01`
 ### 🚀 Features
 - `DropdownMenu`: 支持自定义箭头图标 @LeeJim ([#2240](https://github.com/Tencent/tdesign-miniprogram/pull/2240))
 ### 🐞 Bug Fixes
 - `ActionSheet`: 修复宫格模式下无法调整选项颜色的问题 @LeeJim ([#2231](https://github.com/Tencent/tdesign-miniprogram/pull/2231))
-- `SwipeCell`: 修复 left、right 没有动态响应的问题 @LeeJim ([#2239](https://github.com/Tencent/tdesign-miniprogram/pull/2239))
+- `SwipeCell`: 修复 `left`、`right` 没有动态响应的问题 @LeeJim ([#2239](https://github.com/Tencent/tdesign-miniprogram/pull/2239))
 ### 🚧 Others
 - `Link`: 补充使用说明，修复文档中句号导致的链接跳转错误 @qianxuu ([#2227](https://github.com/Tencent/tdesign-miniprogram/pull/2227))
 
-
 ## 🌈 1.1.14 `2023-07-25`
 ### 🚀 Features
-- `ActionSheet`: 新增 suffixIcon，仅在 `theme = list` 时展示 @LeeJim ([#2210](https://github.com/Tencent/tdesign-miniprogram/pull/2210))
+- `ActionSheet`: 新增 `suffixIcon`，仅在 `theme = list` 时展示 @LeeJim ([#2210](https://github.com/Tencent/tdesign-miniprogram/pull/2210))
 - `TreeSelect`:  `label` 内容支持文本超长省略 @anlyyao ([#2208](https://github.com/Tencent/tdesign-miniprogram/pull/2208))
-- `Overlay`: 支持 duration 属性，用于调整背景色过渡时间 @betavs ([#2179](https://github.com/Tencent/tdesign-miniprogram/pull/2179))
+- `Overlay`: 支持 `duration` 属性，用于调整背景色过渡时间 @betavs ([#2179](https://github.com/Tencent/tdesign-miniprogram/pull/2179))
 ### 🐞 Bug Fixes
 - `Popup`: 解决自动聚焦的问题 @LeeJim ([#2209](https://github.com/Tencent/tdesign-miniprogram/pull/2209))
 - `Slider`: 修复无法滑动的问题 @LeeJim ([#2211](https://github.com/Tencent/tdesign-miniprogram/pull/2211))
@@ -641,41 +601,38 @@ docClass: timeline
 ### 🚧 Others
 - 修复 utils.wxs 的语法错误 @LeeJim ([#2217](https://github.com/Tencent/tdesign-miniprogram/pull/2217))
 
-
 ## 🌈 1.1.13 `2023-07-18`
 ### 🚀 Features
-- `ActionSheet`: 新增 show-overlay 属性 @betavs ([#2194](https://github.com/Tencent/tdesign-miniprogram/pull/2194))
+- `ActionSheet`: 新增 `show-overlay` 属性 @betavs ([#2194](https://github.com/Tencent/tdesign-miniprogram/pull/2194))
 ### 🐞 Bug Fixes
-- `Toast`: 修复close方法类型声明错误 @betavs ([#2191](https://github.com/Tencent/tdesign-miniprogram/pull/2191))
+- `Toast`: 修复 `close` 方法类型声明错误 @betavs ([#2191](https://github.com/Tencent/tdesign-miniprogram/pull/2191))
 - `Message`: 修复 `__text-nowrap` 类名前缀错误的问题 @hwaphon ([#2195](https://github.com/Tencent/tdesign-miniprogram/pull/2195))
-- `Slider`: 移除错误的 wxml @hwaphon ([#2195](https://github.com/Tencent/tdesign-miniprogram/pull/2195))
+- `Slider`: 移除错误的 `wxml` @hwaphon ([#2195](https://github.com/Tencent/tdesign-miniprogram/pull/2195))
 - `DateTimePicker`: 修复动态传入 mode 时无法正确渲染的问题 @betavs ([#2188](https://github.com/Tencent/tdesign-miniprogram/pull/2188))
 ### 🚧 Others
-- `docs`: 在 API 模块展示所有的 CSS Variables @anlyyao ([#2182](https://github.com/Tencent/tdesign-miniprogram/pull/2182))
+- `docs`: 在 `API` 模块展示所有的 `CSS Variables` @anlyyao ([#2182](https://github.com/Tencent/tdesign-miniprogram/pull/2182))
 - `docs`: 将外部样式类的内容独立展示 @ccccpj ([#2200](https://github.com/Tencent/tdesign-miniprogram/pull/2200))
 - 修复一些示例/文档中的拼写错误 @anlyyao ([#2197](https://github.com/Tencent/tdesign-miniprogram/pull/2197))
 
-
 ## 🌈 1.1.12 `2023-07-11`
 ### 🚀 Features
-- `PullDownRefresh`: 增加 show-scrollbar 属性 @lolhezihehe ([#2163](https://github.com/Tencent/tdesign-miniprogram/pull/2163))
+- `PullDownRefresh`: 增加 `show-scrollbar` 属性 @lolhezihehe ([#2163](https://github.com/Tencent/tdesign-miniprogram/pull/2163))
 ### 🐞 Bug Fixes
 - `Rate`:
   - 修复无法点击的问题 @AntzyMo ([#2158](https://github.com/Tencent/tdesign-miniprogram/pull/2158))
   - 使事件冒泡至上层元素 @LeeJim ([#2168](https://github.com/Tencent/tdesign-miniprogram/pull/2168))
 - `DateTimePicker`: 修复无法选择的问题 @betavs ([#2169](https://github.com/Tencent/tdesign-miniprogram/pull/2169))
 - `Tabs`: 修复超出时滚动不流畅的问题 @LeeJim ([#2170](https://github.com/Tencent/tdesign-miniprogram/pull/2170))
-- `TreeSelect`: 修复多选时 value 使用空数组报错的问题 @LeeJim ([#2173](https://github.com/Tencent/tdesign-miniprogram/pull/2173))
+- `TreeSelect`: 修复多选时 `value` 使用空数组报错的问题 @LeeJim ([#2173](https://github.com/Tencent/tdesign-miniprogram/pull/2173))
 ### 🚧 Others
-- 移除开启 virtual-host 场景的 snapshot 测试 @LeeJim ([#2161](https://github.com/Tencent/tdesign-miniprogram/pull/2161))
+- 移除开启 `virtual-host` 场景的 `snapshot` 测试 @LeeJim ([#2161](https://github.com/Tencent/tdesign-miniprogram/pull/2161))
 - 修复控制台告警 @betavs ([#2164](https://github.com/Tencent/tdesign-miniprogram/pull/2164))
-
 
 ## 🌈 1.1.11 `2023-07-04`
 ### 🚀 Features
-- `CheckboxGroup`: 新增 borderless 属性 @betavs ([#2124](https://github.com/Tencent/tdesign-miniprogram/pull/2124))
+- `CheckboxGroup`: 新增 `borderless` 属性 @betavs ([#2124](https://github.com/Tencent/tdesign-miniprogram/pull/2124))
 - `Radio`: 允许取消选中 @betavs ([#2141](https://github.com/Tencent/tdesign-miniprogram/pull/2141))
-- `DropdownItem`: 新增 close 事件 @LeeJim ([#2147](https://github.com/Tencent/tdesign-miniprogram/pull/2147))
+- `DropdownItem`: 新增 `close` 事件 @LeeJim ([#2147](https://github.com/Tencent/tdesign-miniprogram/pull/2147))
 ### 🐞 Bug Fixes
 - `Tabs`: 解决选项过多时样式错误的问题 @betavs ([#2123](https://github.com/Tencent/tdesign-miniprogram/pull/2123))
 - `Picker`: 修复默认值无效 @betavs ([#2126](https://github.com/Tencent/tdesign-miniprogram/pull/2126))
@@ -684,30 +641,28 @@ docClass: timeline
 - `Checkbox`:
   - 修复自定义图标尺寸后的垂直对齐问题 @LeeJim ([#2136](https://github.com/Tencent/tdesign-miniprogram/pull/2136))
   - 修复 disabled 优先级的问题 @LeeJim ([#2137](https://github.com/Tencent/tdesign-miniprogram/pull/2137))
-- `CheckboxGroup`: 修复使用 options 时，disabled 不生效的问题 @LeeJim ([#2137](https://github.com/Tencent/tdesign-miniprogram/pull/2137))
-- `Search`: 截获点击 clear 触发的 tap 事件 @LeeJim ([#2139](https://github.com/Tencent/tdesign-miniprogram/pull/2139))
+- `CheckboxGroup`: 修复使用 `options` 时，disabled 不生效的问题 @LeeJim ([#2137](https://github.com/Tencent/tdesign-miniprogram/pull/2137))
+- `Search`: 截获点击 `clear` 触发的 tap 事件 @LeeJim ([#2139](https://github.com/Tencent/tdesign-miniprogram/pull/2139))
 - `Divider`: 修复外部样式类的位置 @LeeJim ([#2140](https://github.com/Tencent/tdesign-miniprogram/pull/2140))
-- `Toast`: 解决 close 事件重复触发 @LeeJim ([#2146](https://github.com/Tencent/tdesign-miniprogram/pull/2146))
+- `Toast`: 解决 `close` 事件重复触发 @LeeJim ([#2146](https://github.com/Tencent/tdesign-miniprogram/pull/2146))
 - `Popup`: 修复底部弹出时的宽度问题 @LeeJim ([#2152](https://github.com/Tencent/tdesign-miniprogram/pull/2152))
 ### 🚧 Others
-- 解决控制台报警的问题 @LeeJim ([#2149](https://github.com/Tencent/tdesign-miniprogram/pull/2149))
-
+- `IDE`: 解决控制台报警的问题 @LeeJim ([#2149](https://github.com/Tencent/tdesign-miniprogram/pull/2149))
 
 ## 🌈 1.1.10 `2023-06-20`
 ### 🚀 Features
-- `Tabs`: 新增 split 属性 @LeeJim ([#2113](https://github.com/Tencent/tdesign-miniprogram/pull/2113))
-- `NoticeBar`: 新增 interval 属性 @betavs ([#2097](https://github.com/Tencent/tdesign-miniprogram/pull/2097))
+- `Tabs`: 新增 `split` 属性 @LeeJim ([#2113](https://github.com/Tencent/tdesign-miniprogram/pull/2113))
+- `NoticeBar`: 新增 `interval` 属性 @betavs ([#2097](https://github.com/Tencent/tdesign-miniprogram/pull/2097))
 ### 🐞 Bug Fixes
 - `Grid`: 修复 `align=left` 无效的问题 @anlyyao ([#2110](https://github.com/Tencent/tdesign-miniprogram/pull/2110))
 - `Fab`: 修复 `buttonProps` 中的 `hoverClass`属性透传至 `button` 无效 @anlyyao ([#2093](https://github.com/Tencent/tdesign-miniprogram/pull/2093))
 - `Upload`: 修复图片尺寸超出的问题 @betavs ([#2098](https://github.com/Tencent/tdesign-miniprogram/pull/2098))
 - `Slider`:
-  - 修复使用 max 之后刻度展示错误的问题 @betavs ([#2114](https://github.com/Tencent/tdesign-miniprogram/pull/2114))
+  - 修复使用 `max` 之后刻度展示错误的问题 @betavs ([#2114](https://github.com/Tencent/tdesign-miniprogram/pull/2114))
   - 修复异步展示时导致刻度渲染错误的问题 @LeeJim ([#2115](https://github.com/Tencent/tdesign-miniprogram/pull/2115))
 - `Input`: 修复 `type=number` 时，`value=0` 无效的问题 @anlyyao ([#2108](https://github.com/Tencent/tdesign-miniprogram/pull/2108))
-- `ActionSheet`: 修复点击 disabled 的选项仍触发 close、visible-change 事件 @LeeJim ([#2117](https://github.com/Tencent/tdesign-miniprogram/pull/2117))
-- `Stepper`: 保证值发生变化才触发 change 事件 @LeeJim ([#2118](https://github.com/Tencent/tdesign-miniprogram/pull/2118))
-
+- `ActionSheet`: 修复点击 `disabled` 的选项仍触发 `close`、`visible-change` 事件 @LeeJim ([#2117](https://github.com/Tencent/tdesign-miniprogram/pull/2117))
+- `Stepper`: 保证值发生变化才触发 `change` 事件 @LeeJim ([#2118](https://github.com/Tencent/tdesign-miniprogram/pull/2118))
 
 ## 🌈 1.1.9 `2023-06-13`
 ### 🚀 Features
@@ -719,91 +674,84 @@ docClass: timeline
   - 修复加载态时仍能点击的问题 @betavs ([#2061](https://github.com/Tencent/tdesign-miniprogram/pull/2061))
   - 修复 `loading` 态背景色错误 @anlyyao ([#2074](https://github.com/Tencent/tdesign-miniprogram/pull/2074))
 - `Icon`: 修复命名错误的问题 @anlyyao ([#2076](https://github.com/Tencent/tdesign-miniprogram/pull/2076))
-- `TreeSelect`: 修复使用 keys 之后无法正常使用的问题 @LeeJim ([#2085](https://github.com/Tencent/tdesign-miniprogram/pull/2085))
-- `RadioGroup`: 修复使用 options 时值为 falsy 时异常的问题 @betavs ([#2082](https://github.com/Tencent/tdesign-miniprogram/pull/2082))
+- `TreeSelect`: 修复使用 `keys` 之后无法正常使用的问题 @LeeJim ([#2085](https://github.com/Tencent/tdesign-miniprogram/pull/2085))
+- `RadioGroup`: 修复使用 `options` 时值为 `falsy` 时异常的问题 @betavs ([#2082](https://github.com/Tencent/tdesign-miniprogram/pull/2082))
 - `CellGroup`: 修复 `bordered` 属性无效的问题 @anlyyao ([#2089](https://github.com/Tencent/tdesign-miniprogram/pull/2089))
-
 
 ## 🌈 1.1.8 `2023-05-30`
 ### 🚀 Features
-- `Textarea`:  属性 autoSize 支持控制最大最小高度 @anlyyao ([#2035](https://github.com/Tencent/tdesign-miniprogram/pull/2035))
+- `Textarea`:  属性 `autoSize` 支持控制最大最小高度 @anlyyao ([#2035](https://github.com/Tencent/tdesign-miniprogram/pull/2035))
 - `Sticky`:  补充外部样式类 `t-class-content` @anlyyao ([#2047](https://github.com/Tencent/tdesign-miniprogram/pull/2047))
 ### 🐞 Bug Fixes
-- `DropdownMenu`: 修复基础调试版本低于 2.19.2时无法使用的问题 @anlyyao ([#2043](https://github.com/Tencent/tdesign-miniprogram/pull/2043))
-- `Sticky`: 解决 fixed 定位时宽度错误 @anlyyao ([#2047](https://github.com/Tencent/tdesign-miniprogram/pull/2047))
+- `DropdownMenu`: 修复基础调试版本低于 `2.19.2` 时无法使用的问题 @anlyyao ([#2043](https://github.com/Tencent/tdesign-miniprogram/pull/2043))
+- `Sticky`: 解决 `fixed` 定位时宽度错误 @anlyyao ([#2047](https://github.com/Tencent/tdesign-miniprogram/pull/2047))
 - `NavBar`: 修复背景色支持渐变色 @LeeJim ([#2049](https://github.com/Tencent/tdesign-miniprogram/pull/2049))
-- `Drawer`:
-  - 修复 item-click 参数返回错误的问题 @ElanYoung ([#2039](https://github.com/Tencent/tdesign-miniprogram/pull/2039))
-  - 修复 item-click 参数返回错误的问题 @ElanYoung ([#2039](https://github.com/Tencent/tdesign-miniprogram/pull/2039))
+- `Drawer`: 修复 `item-click` 参数返回错误的问题 @ElanYoung ([#2039](https://github.com/Tencent/tdesign-miniprogram/pull/2039))
 - `Image`: 修复 width 和 height 无动态响应的问题 @LeeJim ([#2050](https://github.com/Tencent/tdesign-miniprogram/pull/2050))
 ### 🚧 Others
-- 修复 babel 报错的问题 @zhangpaopao0609 ([#2046](https://github.com/Tencent/tdesign-miniprogram/pull/2046))
-
+- 修复 `babel` 报错的问题 @zhangpaopao0609 ([#2046](https://github.com/Tencent/tdesign-miniprogram/pull/2046))
 
 ## 🌈 1.1.7 `2023-05-23`
 ### 🚀 Features
-- `ActionSheet`: 新增 CSS Variable 用于控制取消按钮颜色 @favouredddd ([#2007](https://github.com/Tencent/tdesign-miniprogram/pull/2007))
+- `ActionSheet`: 新增 `CSS Variable `用于控制取消按钮颜色 @favouredddd ([#2007](https://github.com/Tencent/tdesign-miniprogram/pull/2007))
 ### 🐞 Bug Fixes
-- `ActionSheet`: 解决 ActionSheet 引入报错 @anlyyao ([#2008](https://github.com/Tencent/tdesign-miniprogram/pull/2008))
+- `ActionSheet`: 解决 `ActionSheet` 引入报错 @anlyyao ([#2008](https://github.com/Tencent/tdesign-miniprogram/pull/2008))
 - `Sticky`: 处理在锁定的情况下，宽度计算错误的问题 @LeeJim ([#2012](https://github.com/Tencent/tdesign-miniprogram/pull/2012))
 - `SideBarItem`: 修复选中态样式问题 @betavs ([#2011](https://github.com/Tencent/tdesign-miniprogram/pull/2011))
-- `TabBar`: 修正 virtualHost 不可用时的宽度 @LeeJim ([#2013](https://github.com/Tencent/tdesign-miniprogram/pull/2013))
+- `TabBar`: 修正 `virtualHost` 不可用时的宽度 @LeeJim ([#2013](https://github.com/Tencent/tdesign-miniprogram/pull/2013))
 - `Icon`: 更正图标命名 @anlyyao ([#2020](https://github.com/Tencent/tdesign-miniprogram/pull/2020))
-
 
 ## 🌈 1.1.6 `2023-05-15`
 ### 🚀 Features
-- `Icon`: 更新版本至 v0.1.4 @anlyyao ([#1979](https://github.com/Tencent/tdesign-miniprogram/pull/1979))
+- `Icon`: 更新版本至 `0.1.4` @anlyyao ([#1979](https://github.com/Tencent/tdesign-miniprogram/pull/1979))
 - `DropdownMenu`: 选项过多时自动滚动到已选项 @jarmywang ([#1981](https://github.com/Tencent/tdesign-miniprogram/pull/1981))
 - `Slider`: 属性 `step` 支持传入小数 @anlyyao ([#1990](https://github.com/Tencent/tdesign-miniprogram/pull/1990))
-- `GridItem`: 新增 click 事件 @anlyyao ([#1993](https://github.com/Tencent/tdesign-miniprogram/pull/1993))
-- `Picker`: 新增 popupProps 属性，透传至 Popup @favouredddd ([#1985](https://github.com/Tencent/tdesign-miniprogram/pull/1985))
-- `DateTimePikcer`: 新增支持 popupProps 属性，透传至 Popup @favouredddd ([#1991](https://github.com/Tencent/tdesign-miniprogram/pull/1991))
-- `ActionSheet`: 新增 PopupProps 属性，透传至 Popup @favouredddd ([#2002](https://github.com/Tencent/tdesign-miniprogram/pull/2002))
+- `GridItem`: 新增 `click` 事件 @anlyyao ([#1993](https://github.com/Tencent/tdesign-miniprogram/pull/1993))
+- `Picker`: 新增 `popupProps` 属性，透传至 `Popup` @favouredddd ([#1985](https://github.com/Tencent/tdesign-miniprogram/pull/1985))
+- `DateTimePikcer`: 新增支持 `popupProps` 属性，透传至 `Popup` @favouredddd ([#1991](https://github.com/Tencent/tdesign-miniprogram/pull/1991))
+- `ActionSheet`: 新增 `PopupProps` 属性，透传至 `Popup` @favouredddd ([#2002](https://github.com/Tencent/tdesign-miniprogram/pull/2002))
 ### 🐞 Bug Fixes
-- `NavBar`: 修复 fixed 定位 @betavs ([#1982](https://github.com/Tencent/tdesign-miniprogram/pull/1982))
-- `Slider`: 修复 change 事件重复触发相同值的问题 @anlyyao ([#1990](https://github.com/Tencent/tdesign-miniprogram/pull/1990))
-- `Input`: 修复 label 为英文时无法换行 @anlyyao ([#1994](https://github.com/Tencent/tdesign-miniprogram/pull/1994))
+- `NavBar`: 修复 `fixed` 定位 @betavs ([#1982](https://github.com/Tencent/tdesign-miniprogram/pull/1982))
+- `Slider`: 修复 `change` 事件重复触发相同值的问题 @anlyyao ([#1990](https://github.com/Tencent/tdesign-miniprogram/pull/1990))
+- `Input`: 修复 `label` 为英文时无法换行 @anlyyao ([#1994](https://github.com/Tencent/tdesign-miniprogram/pull/1994))
 - `PullDownRefresh`:
-  - 解决 refresh 事件触发时机错误的问题 @LeeJim ([#1998](https://github.com/Tencent/tdesign-miniprogram/pull/1998))
-  - 修复 value 不可控的问题 @LeeJim ([#1998](https://github.com/Tencent/tdesign-miniprogram/pull/1998))
-- `Button`: 修复 variant 无法动态响应的问题 @favouredddd ([#2000](https://github.com/Tencent/tdesign-miniprogram/pull/2000))
+  - 解决 `refresh` 事件触发时机错误的问题 @LeeJim ([#1998](https://github.com/Tencent/tdesign-miniprogram/pull/1998))
+  - 修复 `value` 不可控的问题 @LeeJim ([#1998](https://github.com/Tencent/tdesign-miniprogram/pull/1998))
+- `Button`: 修复 `variant` 无法动态响应的问题 @favouredddd ([#2000](https://github.com/Tencent/tdesign-miniprogram/pull/2000))
 - `DropdownMenu`: 单选选项行高不一致 @bitjian ([#1992](https://github.com/Tencent/tdesign-miniprogram/pull/1992))
-- `Layout`: 修复 col 组件不换行的问题，移除 flex 布局 @wuping97 ([#1996](https://github.com/Tencent/tdesign-miniprogram/pull/1996))
+- `Layout`: 修复 `col` 组件不换行的问题，移除 `flex` 布局 @wuping97 ([#1996](https://github.com/Tencent/tdesign-miniprogram/pull/1996))
 - `Dialog`: 修复无法动态移除按钮的问题 @yuchumian ([#1986](https://github.com/Tencent/tdesign-miniprogram/pull/1986))
-- `Calendar`: 修复 type 属性失效的问题 @LeeJim ([#2003](https://github.com/Tencent/tdesign-miniprogram/pull/2003))
+- `Calendar`: 修复 `type` 属性失效的问题 @LeeJim ([#2003](https://github.com/Tencent/tdesign-miniprogram/pull/2003))
 ### 🚧 Others
-- `Steps`: 移除文档中无效的 API @anlyyao ([#1995](https://github.com/Tencent/tdesign-miniprogram/pull/1995))
-
+- `Steps`: 移除文档中无效的 `API` @anlyyao ([#1995](https://github.com/Tencent/tdesign-miniprogram/pull/1995))
 
 ## 🌈 1.1.5 `2023-05-08`
 ### 🚀 Features
-- `PulldownRefresh`: 支持透传更多属性至 scroll-view 组件 @LeeJim ([#1959](https://github.com/Tencent/tdesign-miniprogram/pull/1959))
-- `DateTimePicker`: 新增 steps 属性，用于调整时间间隔步数 @LeeJim ([#1961](https://github.com/Tencent/tdesign-miniprogram/pull/1961))
-- `Steps`: 新增 sequence 属性，支持逆序展示 @LeeJim ([#1962](https://github.com/Tencent/tdesign-miniprogram/pull/1962))
-- `DropdownMenu`: 新增 CSS Variable 用于调整边框宽度 @LeeJim ([#1967](https://github.com/Tencent/tdesign-miniprogram/pull/1967))
+- `PulldownRefresh`: 支持透传更多属性至 `scroll-view` 组件 @LeeJim ([#1959](https://github.com/Tencent/tdesign-miniprogram/pull/1959))
+- `DateTimePicker`: 新增 `steps` 属性，用于调整时间间隔步数 @LeeJim ([#1961](https://github.com/Tencent/tdesign-miniprogram/pull/1961))
+- `Steps`: 新增 `sequence` 属性，支持逆序展示 @LeeJim ([#1962](https://github.com/Tencent/tdesign-miniprogram/pull/1962))
+- `DropdownMenu`: 新增 `CSS Variable` 用于调整边框宽度 @LeeJim ([#1967](https://github.com/Tencent/tdesign-miniprogram/pull/1967))
 ### 🐞 Bug Fixes
-- `Tabs`: 修复 track 位置计算错误的问题 @LeeJim ([#1958](https://github.com/Tencent/tdesign-miniprogram/pull/1958))
-- `PulldownRefresh`: 解决 value = true 时无法触发加载状态的问题 @LeeJim ([#1960](https://github.com/Tencent/tdesign-miniprogram/pull/1960))
-- `Steps`: 修复 icon 插槽无法使用的问题 @LeeJim ([#1962](https://github.com/Tencent/tdesign-miniprogram/pull/1962))
+- `Tabs`: 修复 `track` 位置计算错误的问题 @LeeJim ([#1958](https://github.com/Tencent/tdesign-miniprogram/pull/1958))
+- `PulldownRefresh`: 解决 `value = true` 时无法触发加载状态的问题 @LeeJim ([#1960](https://github.com/Tencent/tdesign-miniprogram/pull/1960))
+- `Steps`: 修复 `icon` 插槽无法使用的问题 @LeeJim ([#1962](https://github.com/Tencent/tdesign-miniprogram/pull/1962))
 - `Stepper`: 修复无法输入空值的问题 @anlyyao ([#1971](https://github.com/Tencent/tdesign-miniprogram/pull/1971))
-- `Calendar`: 解决 usePopup = false 时，没有自动定位到当前值的问题 @LeeJim ([#1969](https://github.com/Tencent/tdesign-miniprogram/pull/1969))
+- `Calendar`: 解决 `usePopup = false` 时，没有自动定位到当前值的问题 @LeeJim ([#1969](https://github.com/Tencent/tdesign-miniprogram/pull/1969))
 - `ActionSheet`: 修复使用命令行方式点击取消按钮无法关闭的问题 @LeeJim ([#1968](https://github.com/Tencent/tdesign-miniprogram/pull/1968))
 ### 🚧 Others
-- `Picker`: 完善文档，增加 TS 定义的关联链接。 @LeeJim ([#1956](https://github.com/Tencent/tdesign-miniprogram/pull/1956))
+- `Picker`: 完善文档，增加 `TS` 定义的关联链接。 @LeeJim ([#1956](https://github.com/Tencent/tdesign-miniprogram/pull/1956))
 
 
-## 🌈 1.1.4 `2023-05-01`
+##  1.1.4 `2023-05-01`
 ### 🚀 Features
-- `ImageViewer`: 新增 usingCustomNavigation 属性，处理使用自定义导航栏时被遮挡的问题 @LeeJim ([#1944](https://github.com/Tencent/tdesign-miniprogram/pull/1944))
-- `Swiper`: 新增 image-load 事件 @LeeJim ([#1949](https://github.com/Tencent/tdesign-miniprogram/pull/1949))
+- `ImageViewer`: 新增 `usingCustomNavigation` 属性，处理使用自定义导航栏时被遮挡的问题 @LeeJim ([#1944](https://github.com/Tencent/tdesign-miniprogram/pull/1944))
+- `Swiper`: 新增 `image-load` 事件 @LeeJim ([#1949](https://github.com/Tencent/tdesign-miniprogram/pull/1949))
 ### 🐞 Bug Fixes
-- `Slider`: 修复 dragstart、dragend 事件没反应的问题 @LeeJim ([#1940](https://github.com/Tencent/tdesign-miniprogram/pull/1940))
-- `Picker`: 解决使用 falsy 值导致无法正确选择的问题 @LeeJim ([#1948](https://github.com/Tencent/tdesign-miniprogram/pull/1948))
+- `Slider`: 修复 `dragstart`、`dragend` 事件没反应的问题 @LeeJim ([#1940](https://github.com/Tencent/tdesign-miniprogram/pull/1940))
+- `Picker`: 解决使用 `falsy` 值导致无法正确选择的问题 @LeeJim ([#1948](https://github.com/Tencent/tdesign-miniprogram/pull/1948))
 - `Toast`: 页面隐藏的时候自动关闭 @LeeJim ([#1947](https://github.com/Tencent/tdesign-miniprogram/pull/1947))
 ### 🚧 Others
-- `Swiper`: 更新 swiper 组件 API 文档 @anlyyao ([#1945](https://github.com/Tencent/tdesign-miniprogram/pull/1945))
-
+- `Swiper`: 更新 `API` 文档 @anlyyao ([#1945](https://github.com/Tencent/tdesign-miniprogram/pull/1945))
 
 ## 🌈 1.1.3 `2023-04-26`
 ### 🚀 Features
@@ -811,41 +759,39 @@ docClass: timeline
 - `Tabs`:
   - 新增外部样式类 `t-class-content` @LeeJim ([#1931](https://github.com/Tencent/tdesign-miniprogram/pull/1931))
   - 新增 middle 插槽 @LeeJim ([#1936](https://github.com/Tencent/tdesign-miniprogram/pull/1936))
-- `CollapsePanel`: 新增 headerLeftIcon 属性，支持面板头左侧使用图标 @LeeJim ([#1933](https://github.com/Tencent/tdesign-miniprogram/pull/1933))
+- `CollapsePanel`: 新增 `headerLeftIcon` 属性，支持面板头左侧使用图标 @LeeJim ([#1933](https://github.com/Tencent/tdesign-miniprogram/pull/1933))
 ### 🐞 Bug Fixes
-- `Upload`: 修复 max 属性相关的问题 @LeeJim ([#1914](https://github.com/Tencent/tdesign-miniprogram/pull/1914))
+- `Upload`: 修复 `max` 属性相关的问题 @LeeJim ([#1914](https://github.com/Tencent/tdesign-miniprogram/pull/1914))
 - `NavBar`:
   - 修复胶囊边框层级过高，遮挡内容点击事件的问题 @LeeJim ([#1920](https://github.com/Tencent/tdesign-miniprogram/pull/1920))
   - 解决内容垂直居中的问题 @LeeJim ([#1926](https://github.com/Tencent/tdesign-miniprogram/pull/1926))
-- `Button`: 修复 variant=outline 状态下 loading 不展示的问题 @lolhezihehe ([#1922](https://github.com/Tencent/tdesign-miniprogram/pull/1922))
+- `Button`: 修复 `variant = outline` 状态下 `loading` 不展示的问题 @lolhezihehe ([#1922](https://github.com/Tencent/tdesign-miniprogram/pull/1922))
 - `DropdownMenu`: 修复单选情况下无法使用多列的问题 @LeeJim ([#1927](https://github.com/Tencent/tdesign-miniprogram/pull/1927))
-- `Link`: 修复 disabled 态下仍能跳转的问题 @anlyyao ([#1928](https://github.com/Tencent/tdesign-miniprogram/pull/1928))
-- `Calendar`: 修复 format 报错的问题 @LeeJim ([#1930](https://github.com/Tencent/tdesign-miniprogram/pull/1930))
+- `Link`: 修复 `disabled` 态下仍能跳转的问题 @anlyyao ([#1928](https://github.com/Tencent/tdesign-miniprogram/pull/1928))
+- `Calendar`: 修复 `format` 报错的问题 @LeeJim ([#1930](https://github.com/Tencent/tdesign-miniprogram/pull/1930))
 - `Input`: 修复垂直布局时样式错误 @anlyyao ([#1934](https://github.com/Tencent/tdesign-miniprogram/pull/1934))
-
 
 ## 🌈 1.1.2 `2023-04-17`
 ### 🚀 Features
 - `Swiper`:
   - 支持无障碍访问 @zhangpaopao0609 ([#1598](https://github.com/Tencent/tdesign-miniprogram/pull/1598))
-  - `list` 属性支持 SwiperList[] 类型 @zhangpaopao0609 ([#1598](https://github.com/Tencent/tdesign-miniprogram/pull/1598))
-- `Divider`: 新增 CSS Variables 用于控制分割线样式 @favouredddd ([#1890](https://github.com/Tencent/tdesign-miniprogram/pull/1890))
-- `Grid`: 补充 CSS Variables 以修改不同列数下的图片尺寸和文字大小 @lolhezihehe ([#1903](https://github.com/Tencent/tdesign-miniprogram/pull/1903))
-- `Radio`: 新增 CSS Variables 用于控制内容字体大小 @favouredddd ([#1895](https://github.com/Tencent/tdesign-miniprogram/pull/1895))
+  - `list` 属性支持 `SwiperList[]` 类型 @zhangpaopao0609 ([#1598](https://github.com/Tencent/tdesign-miniprogram/pull/1598))
+- `Divider`: 新增 `CSS Variables` 用于控制分割线样式 @favouredddd ([#1890](https://github.com/Tencent/tdesign-miniprogram/pull/1890))
+- `Grid`: 补充 `CSS Variables` 以修改不同列数下的图片尺寸和文字大小 @lolhezihehe ([#1903](https://github.com/Tencent/tdesign-miniprogram/pull/1903))
+- `Radio`: 新增 `CSS Variables` 用于控制内容字体大小 @favouredddd ([#1895](https://github.com/Tencent/tdesign-miniprogram/pull/1895))
 ### 🐞 Bug Fixes
 - `Loading`: 修复  `inheritColor = true` 时，因样式问题导致组件一直处于加载状态 @Cyrus97 ([#1873](https://github.com/Tencent/tdesign-miniprogram/pull/1873))
 - `Empty`: 支持描述内容超出自动换行 @favouredddd ([#1870](https://github.com/Tencent/tdesign-miniprogram/pull/1870))
 - `Row`: 增加默认样式实现垂直居中 @tomcat-hz ([#1866](https://github.com/Tencent/tdesign-miniprogram/pull/1866))
 - `Progress`: 优化无障碍访问体验 @yaogengzhu ([#1354](https://github.com/Tencent/tdesign-miniprogram/pull/1354))
-- `Radio`: 优化样式，新增 CSS Variables 控制文字激活态颜色 @LeeJim ([#1889](https://github.com/Tencent/tdesign-miniprogram/pull/1889))
-- `ActionSheet`: 解决 show 方法的 TS 报错 @LeeJim ([#1907](https://github.com/Tencent/tdesign-miniprogram/pull/1907))
+- `Radio`: 优化样式，新增 `CSS Variables` 控制文字激活态颜色 @LeeJim ([#1889](https://github.com/Tencent/tdesign-miniprogram/pull/1889))
+- `ActionSheet`: 解决 `show` 方法的 `TS` 报错 @LeeJim ([#1907](https://github.com/Tencent/tdesign-miniprogram/pull/1907))
 - `Radio`: 修复图标尺寸无法调整的问题 @bitjian ([#1909](https://github.com/Tencent/tdesign-miniprogram/pull/1909))
-- `Button`: 修复 type = submit 时，disabled 未生效的问题 @bitjian ([#1878](https://github.com/Tencent/tdesign-miniprogram/pull/1878))
-
+- `Button`: 修复 `type = submit `时，disabled 未生效的问题 @bitjian ([#1878](https://github.com/Tencent/tdesign-miniprogram/pull/1878))
 
 ## 🌈 1.1.1 `2023-04-03`
 ### 🚀 Features
-- `Button`: 新增 hover-class 属性 @anlyyao ([#1847](https://github.com/Tencent/tdesign-miniprogram/pull/1847))
+- `Button`: 新增 `hover-class` 属性 @anlyyao ([#1847](https://github.com/Tencent/tdesign-miniprogram/pull/1847))
 ### 🐞 Bug Fixes
 - `Tabs`: 解决内容重叠的问题 @LeeJim ([#1853](https://github.com/Tencent/tdesign-miniprogram/pull/1853))
 - `Message`: 处理 `loop` 产生的控制台告警 @anlyyao ([#1856](https://github.com/Tencent/tdesign-miniprogram/pull/1856))
@@ -853,26 +799,24 @@ docClass: timeline
 - `Avatar`: 修复控制台报错 @jarmywang ([#1858](https://github.com/Tencent/tdesign-miniprogram/pull/1858))
 - `Drawer`: 修复 destroyOnClose 属性不生效  @jarmywang ([#1864](https://github.com/Tencent/tdesign-miniprogram/pull/1864))
 
-
 ## 🌈 1.1.0 `2023-03-27`
 ### 🚀 Features
-- `Layout`: 新增布局组件，包含 row 和 col 组件 @wuping97 ([#1821](https://github.com/Tencent/tdesign-miniprogram/pull/1821))
-- `Search`:  新增 type 属性透传至 input，默认为 text @haochenli ([#1828](https://github.com/Tencent/tdesign-miniprogram/pull/1828))
+- `Layout`: 新增布局组件，包含 `row` 和 `col` 组件 @wuping97 ([#1821](https://github.com/Tencent/tdesign-miniprogram/pull/1821))
+- `Search`:  新增 `type` 属性透传至 `input`，默认为 `text` @haochenli ([#1828](https://github.com/Tencent/tdesign-miniprogram/pull/1828))
 ### 🐞 Bug Fixes
-- `Button`: 修复 disabled = true 仍触发 tap 事件的问题 @wuping97 ([#1833](https://github.com/Tencent/tdesign-miniprogram/pull/1833))
+- `Button`: 修复 `disabled = true` 仍触发 `tap` 事件的问题 @wuping97 ([#1833](https://github.com/Tencent/tdesign-miniprogram/pull/1833))
 - `NoticeBar`:
   - 修复二轮滚动初始位置不正确 @anlyyao ([#1835](https://github.com/Tencent/tdesign-miniprogram/pull/1835))
   - 修复 `loop` 为 `0` 时还会循环播放的问题 @haochenli ([#1826](https://github.com/Tencent/tdesign-miniprogram/pull/1826))
 - `PullDownRefresh`:
-  - 修复 loading-texts 默认值缺失的问题 @haochenli ([#1837](https://github.com/Tencent/tdesign-miniprogram/pull/1837))
-  - 解决外部样式类 t-class-text 拼写错误的问题 @LeeJim ([#1839](https://github.com/Tencent/tdesign-miniprogram/pull/1839))
-- `Grid`: 修复 t-class-image 无法赋予 image 样式的问题 @LeeJim ([#1842](https://github.com/Tencent/tdesign-miniprogram/pull/1842))
-- `Cascader`: 修复当 value 发生变更时，options 没有更新的问题 @LeeJim ([#1841](https://github.com/Tencent/tdesign-miniprogram/pull/1841))
+  - 修复 `loading-texts` 默认值缺失的问题 @haochenli ([#1837](https://github.com/Tencent/tdesign-miniprogram/pull/1837))
+  - 解决外部样式类 `t-class-text` 拼写错误的问题 @LeeJim ([#1839](https://github.com/Tencent/tdesign-miniprogram/pull/1839))
+- `Grid`: 修复 `t-class-image` 无法赋予 `image` 样式的问题 @LeeJim ([#1842](https://github.com/Tencent/tdesign-miniprogram/pull/1842))
+- `Cascader`: 修复当 `value` 发生变更时，`options` 没有更新的问题 @LeeJim ([#1841](https://github.com/Tencent/tdesign-miniprogram/pull/1841))
 - `Tabs`:
-  - 修复设置 animation 导致 panel 内容无法切换的问题 @LeeJim ([#1843](https://github.com/Tencent/tdesign-miniprogram/pull/1843))
-  - 修复 theme 不等于 line 时，获取 track 报错的问题 @LeeJim ([#1843](https://github.com/Tencent/tdesign-miniprogram/pull/1843))
+  - 修复设置 `animation` 导致 `panel` 内容无法切换的问题 @LeeJim ([#1843](https://github.com/Tencent/tdesign-miniprogram/pull/1843))
+  - 修复 `theme` 不等于 `line` 时，获取 track 报错的问题 @LeeJim ([#1843](https://github.com/Tencent/tdesign-miniprogram/pull/1843))
   - 移除滚动条 @LeeJim ([#1844](https://github.com/Tencent/tdesign-miniprogram/pull/1844))
-
 
 ## 🌈 1.0.4 `2023-03-20`
 ### 🚀 Features
@@ -880,9 +824,9 @@ docClass: timeline
 - `Steps`: 支持无障碍访问 @tangzixuan ([#1783](https://github.com/Tencent/tdesign-miniprogram/pull/1783))
 ### 🐞 Bug Fixes
 - `Textarea`: 修复 `autosize` 为 `true` 时，`placeholder` 上移问题 @anlyyao ([#1781](https://github.com/Tencent/tdesign-miniprogram/pull/1781))
-- `Switch`: 修复 label 和 icon 渲染顺序错误的问题 @LeeJim ([#1809](https://github.com/Tencent/tdesign-miniprogram/pull/1809))
-- `Loading`: 修复错误的 style 导致 wxs 报错 @LeeJim ([#1810](https://github.com/Tencent/tdesign-miniprogram/pull/1810))
-- `Radio`: 修复 placement 优先级的问题 @LeeJim ([#1812](https://github.com/Tencent/tdesign-miniprogram/pull/1812))
+- `Switch`: 修复 `label` 和 `icon` 渲染顺序错误的问题 @LeeJim ([#1809](https://github.com/Tencent/tdesign-miniprogram/pull/1809))
+- `Loading`: 修复错误的 `style` 导致 `wxs` 报错 @LeeJim ([#1810](https://github.com/Tencent/tdesign-miniprogram/pull/1810))
+- `Radio`: 修复 `placement` 优先级的问题 @LeeJim ([#1812](https://github.com/Tencent/tdesign-miniprogram/pull/1812))
 - `Button`: 解决多个插槽的渲染问题 @LeeJim ([#1813](https://github.com/Tencent/tdesign-miniprogram/pull/1813))
 - `Link`: 解决多个插槽无法渲染的问题 @LeeJim ([#1816](https://github.com/Tencent/tdesign-miniprogram/pull/1816))
 - `TabPanel`: 解决多个插槽无法渲染的问题 @LeeJim ([#1816](https://github.com/Tencent/tdesign-miniprogram/pull/1816))
@@ -890,85 +834,81 @@ docClass: timeline
   - 修复点击事件失效问题 @yaogengzhu ([#1802](https://github.com/Tencent/tdesign-miniprogram/pull/1802))
   - 修复 limit 限制的问题 @yaogengzhu ([#1800](https://github.com/Tencent/tdesign-miniprogram/pull/1800))
 
-
 ## 🌈 1.0.3 `2023-03-14`
 ### 🚀 Features
-- `Picker`: 新增支持 keys 属性 @LeeJim ([#1759](https://github.com/Tencent/tdesign-miniprogram/pull/1759))
+- `Picker`: 新增支持 `keys` 属性 @LeeJim ([#1759](https://github.com/Tencent/tdesign-miniprogram/pull/1759))
 - `Input`: 支持 `nicknamereview` 事件 @anlyyao ([#1755](https://github.com/Tencent/tdesign-miniprogram/pull/1755))
 - `Popup`: 增加默认圆角、默认背景色、安全底边距 @jarmywang ([#1758](https://github.com/Tencent/tdesign-miniprogram/pull/1758))
 ### 🐞 Bug Fixes
 - `DropdownMenu`:
-  - 修复 label 的展示逻辑 @LeeJim ([#1748](https://github.com/Tencent/tdesign-miniprogram/pull/1748))
-  - 修复 radio 图标的展示位置 @LeeJim ([#1748](https://github.com/Tencent/tdesign-miniprogram/pull/1748))
+  - 修复 `label` 的展示逻辑 @LeeJim ([#1748](https://github.com/Tencent/tdesign-miniprogram/pull/1748))
+  - 修复 `radio` 图标的展示位置 @LeeJim ([#1748](https://github.com/Tencent/tdesign-miniprogram/pull/1748))
 - `Popup`: 修复关闭按钮无法点击的问题 @jarmywang ([#1754](https://github.com/Tencent/tdesign-miniprogram/pull/1754))
-- `Calendar`: 修复 format 属性不是响应式的问题 @LeeJim ([#1753](https://github.com/Tencent/tdesign-miniprogram/pull/1753))
-- `Checkbox`: 修复存在 disabled 选项时，全选出错的问题 @LeeJim ([#1766](https://github.com/Tencent/tdesign-miniprogram/pull/1766))
+- `Calendar`: 修复 `format` 属性不是响应式的问题 @LeeJim ([#1753](https://github.com/Tencent/tdesign-miniprogram/pull/1753))
+- `Checkbox`: 修复存在 `disabled` 选项时，全选出错的问题 @LeeJim ([#1766](https://github.com/Tencent/tdesign-miniprogram/pull/1766))
 - `Badge`:
-  - 修复 shape = ribbon 时，修改 color 不能改变全部颜色的问题 @LeeJim ([#1764](https://github.com/Tencent/tdesign-miniprogram/pull/1764))
+  - 修复 `shape = ribbon` 时，修改 `color` 不能改变全部颜色的问题 @LeeJim ([#1764](https://github.com/Tencent/tdesign-miniprogram/pull/1764))
   - 优化和不同组件组合的无障碍访问 @yaogengzhu ([#1428](https://github.com/Tencent/tdesign-miniprogram/pull/1428))
 - `Upload`:
-  - 修复 sizelimit 不支持对象传参的问题 @LeeJim ([#1763](https://github.com/Tencent/tdesign-miniprogram/pull/1763))
-  - 修复 sizelimit 默认单位和文档不一致的问题，从 `B` 改成 `KB` @LeeJim ([#1763](https://github.com/Tencent/tdesign-miniprogram/pull/1763))
+  - 修复 `sizelimit` 不支持对象传参的问题 @LeeJim ([#1763](https://github.com/Tencent/tdesign-miniprogram/pull/1763))
+  - 修复 `sizelimit` 默认单位和文档不一致的问题，从 `B` 改成 `KB` @LeeJim ([#1763](https://github.com/Tencent/tdesign-miniprogram/pull/1763))
 - `Button`:
-  - 取消 `loading` 态下的 hover 效果 @anlyyao ([#1739](https://github.com/Tencent/tdesign-miniprogram/pull/1739))
+  - 取消 `loading` 态下的 `hover` 效果 @anlyyao ([#1739](https://github.com/Tencent/tdesign-miniprogram/pull/1739))
   - 事件 `tap` 仅在非加载或禁用状态时触发 @anlyyao ([#1739](https://github.com/Tencent/tdesign-miniprogram/pull/1739))
 - `Cell`: 修复 `note` 内容超出被遮挡问题 @anlyyao ([#1769](https://github.com/Tencent/tdesign-miniprogram/pull/1769))
-- `Progress`: 修复 label 插槽无效 @anlyyao ([#1771](https://github.com/Tencent/tdesign-miniprogram/pull/1771))
-- `Grid`: 修复 grid-item 的 image 插槽不可用的问题，需传入 image =  slot 才可使用插槽 @LeeJim ([#1772](https://github.com/Tencent/tdesign-miniprogram/pull/1772))
+- `Progress`: 修复 `label` 插槽无效 @anlyyao ([#1771](https://github.com/Tencent/tdesign-miniprogram/pull/1771))
+- `GridItem`: 修复 `image` 插槽不可用的问题，需传入 `image =  slot` 才可使用插槽 @LeeJim ([#1772](https://github.com/Tencent/tdesign-miniprogram/pull/1772))
 ### 🚧 Others
-- `Picker`: 文档中移除 render-label、columns 还不支持的属性 @LeeJim ([#1759](https://github.com/Tencent/tdesign-miniprogram/pull/1759))
-
+- `Picker`: 文档中移除 `render-label`、`columns `还不支持的属性 @LeeJim ([#1759](https://github.com/Tencent/tdesign-miniprogram/pull/1759))
 
 ## 🌈 1.0.2 `2023-03-07`
 ### 🐞 Bug Fixes
-- `Radio`: 修复使用 options 时可传入的属性不齐的问题 @LeeJim ([#1707](https://github.com/Tencent/tdesign-miniprogram/pull/1707))
-- `Checkbox`: 修复使用 options 时可传入的属性不齐的问题 @LeeJim ([#1707](https://github.com/Tencent/tdesign-miniprogram/pull/1707))
+- `Radio`: 修复使用 `options` 时可传入的属性不齐的问题 @LeeJim ([#1707](https://github.com/Tencent/tdesign-miniprogram/pull/1707))
+- `Checkbox`: 修复使用 `options` 时可传入的属性不齐的问题 @LeeJim ([#1707](https://github.com/Tencent/tdesign-miniprogram/pull/1707))
 - `RadioGroup`:
-  - 修复 placement 默认值错误的问题 @LeeJim ([#1707](https://github.com/Tencent/tdesign-miniprogram/pull/1707))
-  - 修复 icon 消失的问题 @LeeJim ([#1707](https://github.com/Tencent/tdesign-miniprogram/pull/1707))
+  - 修复 `placement` 默认值错误的问题 @LeeJim ([#1707](https://github.com/Tencent/tdesign-miniprogram/pull/1707))
+  - 修复 `icon` 消失的问题 @LeeJim ([#1707](https://github.com/Tencent/tdesign-miniprogram/pull/1707))
 - `ActionSheet`: 修复点击报错的问题 @LeeJim ([#1726](https://github.com/Tencent/tdesign-miniprogram/pull/1726))
 - `Swiper`:
   - 修复在真机上圆角无效问题 @anlyyao ([#1733](https://github.com/Tencent/tdesign-miniprogram/pull/1733))
-  - 修复基础调试库低于2.19.2时，图片不显示问题 @anlyyao ([#1736](https://github.com/Tencent/tdesign-miniprogram/pull/1736))
+  - 修复基础调试库低于 `2.19.2` 时，图片不显示问题 @anlyyao ([#1736](https://github.com/Tencent/tdesign-miniprogram/pull/1736))
 - `NavBar`: 修复外部样式类不可用的问题 @LeeJim ([#1735](https://github.com/Tencent/tdesign-miniprogram/pull/1735))
-- `Footer`: 补齐 API 文档描述 @anlyyao ([#1737](https://github.com/Tencent/tdesign-miniprogram/pull/1737))
+- `Footer`: 补齐 `API` 文档描述 @anlyyao ([#1737](https://github.com/Tencent/tdesign-miniprogram/pull/1737))
 - `ImageViewer`: 修复图片显示不全的问题 @anlyyao ([#1656](https://github.com/Tencent/tdesign-miniprogram/pull/1656))
 - `Input`:
-  - 修复 `maxLength` 无效问题，并将默认值变更为 -1 @anlyyao ([#1732](https://github.com/Tencent/tdesign-miniprogram/pull/1732))
-  - 修复键盘弹起时，点击 clear 没反应的问题 @anlyyao ([#1732](https://github.com/Tencent/tdesign-miniprogram/pull/1732))
-
+  - 修复 `maxLength` 无效问题，并将默认值变更为 `-1` @anlyyao ([#1732](https://github.com/Tencent/tdesign-miniprogram/pull/1732))
+  - 修复键盘弹起时，点击 `clear` 没反应的问题 @anlyyao ([#1732](https://github.com/Tencent/tdesign-miniprogram/pull/1732))
 
 ## 🌈 1.0.1 `2023-03-01`
 ### 🚀 Features
-- `Cascader`: 新增 close 事件 @LeeJim ([#1685](https://github.com/Tencent/tdesign-miniprogram/pull/1685))
-- `Picker`: 新增 close 事件 @LeeJim ([#1687](https://github.com/Tencent/tdesign-miniprogram/pull/1687))
-- `DateTimePicker`: 新增 close 事件 @LeeJim ([#1687](https://github.com/Tencent/tdesign-miniprogram/pull/1687))
+- `Cascader`: 新增 `close` 事件 @LeeJim ([#1685](https://github.com/Tencent/tdesign-miniprogram/pull/1685))
+- `Picker`: 新增 `close` 事件 @LeeJim ([#1687](https://github.com/Tencent/tdesign-miniprogram/pull/1687))
+- `DateTimePicker`: 新增 `close` 事件 @LeeJim ([#1687](https://github.com/Tencent/tdesign-miniprogram/pull/1687))
 - `Upload`: 支持无障碍访问 @zhangpaopao0609 ([#1238](https://github.com/Tencent/tdesign-miniprogram/pull/1238))
 ### 🐞 Bug Fixes
-- `ActionSheet`: 补充 close 事件，增加 trigger 参数 @LeeJim ([#1683](https://github.com/Tencent/tdesign-miniprogram/pull/1683))
+- `ActionSheet`: 补充 `close` 事件，增加 `trigger` 参数 @LeeJim ([#1683](https://github.com/Tencent/tdesign-miniprogram/pull/1683))
 - `Cascader`:
   - 修复 pick 事件的参数 @LeeJim ([#1685](https://github.com/Tencent/tdesign-miniprogram/pull/1685))
   - 修复 radio 图标显示位置不正确的问题 @LeeJim ([#1693](https://github.com/Tencent/tdesign-miniprogram/pull/1693))
-- `Drawer`: 修复 close 事件不生效的问题 @LeeJim ([#1686](https://github.com/Tencent/tdesign-miniprogram/pull/1686))
+- `Drawer`: 修复 `close` 事件不生效的问题 @LeeJim ([#1686](https://github.com/Tencent/tdesign-miniprogram/pull/1686))
 - `Message`: 
   - 修复外部样式类 `t-class-link` 无效问题 @anlyyao ([#1690](https://github.com/Tencent/tdesign-miniprogram/pull/1690))
   - 更新内嵌 `link` 组件的属性 @anlyyao ([#1694](https://github.com/Tencent/tdesign-miniprogram/pull/1694))
-- `DropdownMenu`: 修复 radio 图标显示位置不正确的问题 @LeeJim ([#1693](https://github.com/Tencent/tdesign-miniprogram/pull/1693))
-- `TreeSelect`: 修复 radio 图标显示位置不正确的问题 @LeeJim ([#1693](https://github.com/Tencent/tdesign-miniprogram/pull/1693))
-
+- `DropdownMenu`: 修复 `radio` 图标显示位置不正确的问题 @LeeJim ([#1693](https://github.com/Tencent/tdesign-miniprogram/pull/1693))
+- `TreeSelect`: 修复 `radio` 图标显示位置不正确的问题 @LeeJim ([#1693](https://github.com/Tencent/tdesign-miniprogram/pull/1693))
 
 ## 🌈 1.0.0 `2023-02-27`
 ### 🚨 Breaking Changes
-- 主题色 CSS Variables 命名从 `--td-primary-color` 改成 `--td-brand-color` @LeeJim ([#1623](https://github.com/Tencent/tdesign-miniprogram/pull/1623))
-- `Cell`: 调整 hover 状态对应的类名 @anlyyao ([#1635](https://github.com/Tencent/tdesign-miniprogram/pull/1635))
-- `Checkbox`: 属性 align 更名为 placement @anlyyao ([#1629](https://github.com/Tencent/tdesign-miniprogram/pull/1629))
-- `Toast`: 属性 theme 的枚举值 fail 替换成 error @LeeJim ([#1647](https://github.com/Tencent/tdesign-miniprogram/pull/1647))
-- `Slider`: 移除 colors 和 disabledColor，建议使用 CSS Variables 修改 @LeeJim ([#1676](https://github.com/Tencent/tdesign-miniprogram/pull/1676))
-- `Loading`: 移除 theme = error 以及 theme = bar，以及调整 DOM @LeeJim ([#1626](https://github.com/Tencent/tdesign-miniprogram/pull/1626))
+- 主题色 `CSS Variables` 命名从 `--td-primary-color` 改成 `--td-brand-color` @LeeJim ([#1623](https://github.com/Tencent/tdesign-miniprogram/pull/1623))
+- `Cell`: 调整 `hover` 状态对应的类名 @anlyyao ([#1635](https://github.com/Tencent/tdesign-miniprogram/pull/1635))
+- `Checkbox`: 属性 `align` 更名为 `placement` @anlyyao ([#1629](https://github.com/Tencent/tdesign-miniprogram/pull/1629))
+- `Toast`: 属性 `theme` 的枚举值 `fail` 替换成 `error` @LeeJim ([#1647](https://github.com/Tencent/tdesign-miniprogram/pull/1647))
+- `Slider`: 移除 `colors` 和 disabledColor，建议使用 `CSS Variables` 修改 @LeeJim ([#1676](https://github.com/Tencent/tdesign-miniprogram/pull/1676))
+- `Loading`: 移除 `theme = error` 以及 `theme = bar`，以及调整 `DOM` @LeeJim ([#1626](https://github.com/Tencent/tdesign-miniprogram/pull/1626))
 - `Picker`: 移除 `footer` 插槽 @anlyyao ([#1631](https://github.com/Tencent/tdesign-miniprogram/pull/1631))
 - `DateTimePicker`: 移除 `footer` 插槽 @anlyyao ([#1631](https://github.com/Tencent/tdesign-miniprogram/pull/1631))
-- `Radio`: 属性 align 更名为 placement @anlyyao ([#1630](https://github.com/Tencent/tdesign-miniprogram/pull/1630))
-- `RadioGroup`: 属性 align 更名为 placement @anlyyao ([#1630](https://github.com/Tencent/tdesign-miniprogram/pull/1630))
+- `Radio`: 属性 `align` 更名为 `placement` @anlyyao ([#1630](https://github.com/Tencent/tdesign-miniprogram/pull/1630))
+- `RadioGroup`: 属性 `align` 更名为 `placement` @anlyyao ([#1630](https://github.com/Tencent/tdesign-miniprogram/pull/1630))
 - `Search`:  移除 `right-icon` 属性相关 @anlyyao ([#1628](https://github.com/Tencent/tdesign-miniprogram/pull/1628))
 - `Avatar`: 移除 `bordered` 属性 @anlyyao ([#1632](https://github.com/Tencent/tdesign-miniprogram/pull/1632))
 - `AvatarGroup`: `cascading` 属性默认值变更为 `left-up` @anlyyao ([#1632](https://github.com/Tencent/tdesign-miniprogram/pull/1632))
@@ -979,11 +919,11 @@ docClass: timeline
   -  移除 `theme` 属性 @anlyyao ([#1642](https://github.com/Tencent/tdesign-miniprogram/pull/1642))
 - `CountDown`: `theme` 属性移除 `hightlight` @anlyyao ([#1645](https://github.com/Tencent/tdesign-miniprogram/pull/1645))
 - `Link`: 移除 `status` 属性 @anlyyao ([#1652](https://github.com/Tencent/tdesign-miniprogram/pull/1652))
-- `Rate`: 移除 variant 属性，完全依赖 icon 属性来控制图标 @LeeJim ([#1674](https://github.com/Tencent/tdesign-miniprogram/pull/1674))
+- `Rate`: 移除 `variant` 属性，完全依赖 `icon` 属性来控制图标 @LeeJim ([#1674](https://github.com/Tencent/tdesign-miniprogram/pull/1674))
 - `NoticeBar`:  `extra` 属性更名为 `operation` @anlyyao ([#1638](https://github.com/Tencent/tdesign-miniprogram/pull/1638))
 ### 🚀 Features
 - `Search`: 新增 `clearable`，用于启用清除控件 @anlyyao ([#1628](https://github.com/Tencent/tdesign-miniprogram/pull/1628))
-- `Button`: 新增支持 suffix 插槽 @LeeJim ([#1624](https://github.com/Tencent/tdesign-miniprogram/pull/1624))
+- `Button`: 新增支持 `suffix` 插槽 @LeeJim ([#1624](https://github.com/Tencent/tdesign-miniprogram/pull/1624))
 - `Message`: 新增 `link` 属性 @anlyyao ([#1637](https://github.com/Tencent/tdesign-miniprogram/pull/1637))
 - `Link`:
   - 新增 `disabled` 属性 @anlyyao ([#1652](https://github.com/Tencent/tdesign-miniprogram/pull/1652))
@@ -992,31 +932,30 @@ docClass: timeline
 - `Drawer`: 补充 `hover` 态样式 @anlyyao ([#1673](https://github.com/Tencent/tdesign-miniprogram/pull/1673))
 - `AvatarGroup`: 头像组中默认带边框 @anlyyao ([#1678](https://github.com/Tencent/tdesign-miniprogram/pull/1678))
 ### 🐞 Bug Fixes
-- `Fab`: 修复丢失style 默认值的问题 @LeeJim ([#1625](https://github.com/Tencent/tdesign-miniprogram/pull/1625))
+- `Fab`: 修复丢失 `style` 默认值的问题 @LeeJim ([#1625](https://github.com/Tencent/tdesign-miniprogram/pull/1625))
 - `Dialog`: 修复文字按钮`hover`态圆角不正确 @anlyyao ([#1633](https://github.com/Tencent/tdesign-miniprogram/pull/1633))
-- `Switch`: 优化禁用态下 loading 的颜色 @LeeJim ([#1627](https://github.com/Tencent/tdesign-miniprogram/pull/1627))
+- `Switch`: 优化禁用态下 `loading` 的颜色 @LeeJim ([#1627](https://github.com/Tencent/tdesign-miniprogram/pull/1627))
 - `Message`: 修复主题图标不正确 @anlyyao ([#1637](https://github.com/Tencent/tdesign-miniprogram/pull/1637))
 - `NavBar`: 修复胶囊内部点击事件没反应的问题 @LeeJim ([#1641](https://github.com/Tencent/tdesign-miniprogram/pull/1641))
 - `Dialog`:
-  - 修复 confirm 的拼写错误 @zzzimooo ([#1644](https://github.com/Tencent/tdesign-miniprogram/pull/1644))
+  - 修复 `confirm` 的拼写错误 @zzzimooo ([#1644](https://github.com/Tencent/tdesign-miniprogram/pull/1644))
   - 修复命令行方式没法调整按钮布局的问题 @zzzimooo ([#1655](https://github.com/Tencent/tdesign-miniprogram/pull/1655))
 - `CountDown`: 修复默认风格下时间单位分割的问题 @anlyyao ([#1645](https://github.com/Tencent/tdesign-miniprogram/pull/1645))
 - `Slider`: 优化无障碍访问支持 @byq1213 ([#1388](https://github.com/Tencent/tdesign-miniprogram/pull/1388))
-- `Collapse`: 修复 disabled 状态下标题颜色错误的问题 @LeeJim ([#1648](https://github.com/Tencent/tdesign-miniprogram/pull/1648))
-- `Cell`: 修复外部样式类 t-class-title 放置位置错误的问题 @LeeJim ([#1648](https://github.com/Tencent/tdesign-miniprogram/pull/1648))
+- `Collapse`: 修复 `disabled` 状态下标题颜色错误的问题 @LeeJim ([#1648](https://github.com/Tencent/tdesign-miniprogram/pull/1648))
+- `Cell`: 修复外部样式类 `t-class-title` 放置位置错误的问题 @LeeJim ([#1648](https://github.com/Tencent/tdesign-miniprogram/pull/1648))
 - `Tag`: 修复 `close` 与 `click` 事件一并触发的问题 @anlyyao ([#1669](https://github.com/Tencent/tdesign-miniprogram/pull/1669))
 - `Rate`: 修复 tips 偶尔会不消失的问题 @LeeJim ([#1674](https://github.com/Tencent/tdesign-miniprogram/pull/1674))
 - `BackTop`: 修复 `icon` 不显示问题 @anlyyao ([#1660](https://github.com/Tencent/tdesign-miniprogram/pull/1660))
 - `NoticeBar`: 修复主题图标不正确 @anlyyao ([#1638](https://github.com/Tencent/tdesign-miniprogram/pull/1638))
-- `Badge`: 调整 display 使用 block 替换 inline-block  @anlyyao ([#1679](https://github.com/Tencent/tdesign-miniprogram/pull/1679))
-
+- `Badge`: 调整 `display` 使用 block 替换 inline-block  @anlyyao ([#1679](https://github.com/Tencent/tdesign-miniprogram/pull/1679))
 
 ## 🌈 1.0.0-rc.3 `2023-02-20`
 ### 🚨 Breaking Changes
-- `Image`: 插槽的渲染需要传入对应 slot 的字符串 @LeeJim ([#1609](https://github.com/Tencent/tdesign-miniprogram/pull/1609))
-- `Input`: 调整 DOM 以及类名 @anlyyao ([#1585](https://github.com/Tencent/tdesign-miniprogram/pull/1585))
+- `Image`: 插槽的渲染需要传入对应 `slot` 的字符串 @LeeJim ([#1609](https://github.com/Tencent/tdesign-miniprogram/pull/1609))
+- `Input`: 调整 `DOM` 以及类名 @anlyyao ([#1585](https://github.com/Tencent/tdesign-miniprogram/pull/1585))
 ### 🚀 Features
-- 所有组件新增支持 class 外部样式类，仅在开启 virtualHost 的情况下生效 @anlyyao ([#1587](https://github.com/Tencent/tdesign-miniprogram/pull/1587))
+- 所有组件新增支持 `class` 外部样式类，仅在开启 `virtualHost` 的情况下生效 @anlyyao ([#1587](https://github.com/Tencent/tdesign-miniprogram/pull/1587))
 - `Input`: 支持 `tips` 文本方向与 `align` 属性值一致 @anlyyao ([#1585](https://github.com/Tencent/tdesign-miniprogram/pull/1585))
 - `CellGroup`: 默认最后一项 `cell` 无底部边框线 @anlyyao ([#1607](https://github.com/Tencent/tdesign-miniprogram/pull/1607))
 - `Image`: 补充外部样式类名 `class` @anlyyao ([#1611](https://github.com/Tencent/tdesign-miniprogram/pull/1611))
@@ -1024,13 +963,13 @@ docClass: timeline
 - `Drawer`: 支持无障碍访问 @zhangpaopao0609 ([#1552](https://github.com/Tencent/tdesign-miniprogram/pull/1552))
 ### 🐞 Bug Fixes
 - `Input`: 修复 `layout = 'vertical'` 时，样式不正确 @anlyyao ([#1585](https://github.com/Tencent/tdesign-miniprogram/pull/1585))
-- `Swiper`:  修复图片压缩变形问题 @anlyyao ([#1607](https://github.com/Tencent/tdesign-miniprogram/pull/1607))
+- `Swiper`: 修复图片压缩变形问题 @anlyyao ([#1607](https://github.com/Tencent/tdesign-miniprogram/pull/1607))
 - `Navbar`: 修复左侧胶囊按钮在真机上上边框线消失问题 @anlyyao ([#1607](https://github.com/Tencent/tdesign-miniprogram/pull/1607))
 - `Upload`: 解决因无备用值产生的告警 @anlyyao ([#1611](https://github.com/Tencent/tdesign-miniprogram/pull/1611))
 - `Picker`: 解决因无备用值产生的告警 @anlyyao ([#1611](https://github.com/Tencent/tdesign-miniprogram/pull/1611))
 - `PullDownRefresh`: 解决因无备用值产生的告警 @anlyyao ([#1611](https://github.com/Tencent/tdesign-miniprogram/pull/1611))
 - `NoticeBar`: 解决 `SelectorQuery` 带来的告警 @anlyyao ([#1611](https://github.com/Tencent/tdesign-miniprogram/pull/1611))
-- `Link`: 修复 API 文档错误 @anlyyao ([#1611](https://github.com/Tencent/tdesign-miniprogram/pull/1611))
+- `Link`: 修复 `API` 文档错误 @anlyyao ([#1611](https://github.com/Tencent/tdesign-miniprogram/pull/1611))
 - `Tabs`: 修复属性不支持响应式变化的问题 @LeeJim ([#1616](https://github.com/Tencent/tdesign-miniprogram/pull/1616))
 - `DropdownMenu`: 修复下拉菜单遮罩层无法点击 @RoseyW ([#1615](https://github.com/Tencent/tdesign-miniprogram/pull/1615))
 - `Message`: 修复事件名称，以符合文档 @LeeJim ([#1618](https://github.com/Tencent/tdesign-miniprogram/pull/1618))
@@ -1038,89 +977,83 @@ docClass: timeline
 - `SwiperNav`: 修复事件名，从 `navBtnChange` 改成 `nav-btn-change` @LeeJim ([#1619](https://github.com/Tencent/tdesign-miniprogram/pull/1619))
 - `TextArea`: 修复事件名，从 `lineChange` 改成 `line-change` @LeeJim ([#1619](https://github.com/Tencent/tdesign-miniprogram/pull/1619))
 
-
 ## 🌈 1.0.0-rc.2 `2023-02-13`
 ### 🚨 Breaking Changes
 - `Icon`: `size` 和 `color` 属性默认值变更为 `''` @anlyyao ([#1553](https://github.com/Tencent/tdesign-miniprogram/pull/1553))
 ### 🚀 Features
 - 所有组件同时支持 `style` 和 `customStyle` 属性 @LeeJim ([#1532](https://github.com/Tencent/tdesign-miniprogram/pull/1532))
 - `Button`: 支持点击态边框颜色 CSS Variable @anlyyao ([#1530](https://github.com/Tencent/tdesign-miniprogram/pull/1530))
-- `Result`: 属性 icon 支持对象类型，透传至图标组件 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `TabBar`: 属性 icon 支持对象类型，透传至图标组件 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `Toast`: 属性 icon 支持对象类型，透传至图标组件 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `Result`: 属性 `icon` 支持对象类型，透传至图标组件 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `TabBar`: 属性 `icon` 支持对象类型，透传至图标组件 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `Toast`: 属性 `icon` 支持对象类型，透传至图标组件 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
 - `Input`: 支持名为 `tips` 的插槽 @anlyyao ([#1572](https://github.com/Tencent/tdesign-miniprogram/pull/1572))
 ### 🐞 Bug Fixes
-- 修复因 template 引起的控制台告警 @anlyyao ([#1548](https://github.com/Tencent/tdesign-miniprogram/pull/1548))
+- 修复因 `template` 引起的控制台告警 @anlyyao ([#1548](https://github.com/Tencent/tdesign-miniprogram/pull/1548))
 - 修复控制台告警 @LeeJim ([#1586](https://github.com/Tencent/tdesign-miniprogram/pull/1586))
 - `NavBar`: 补充根元素缺失的高度 @LeeJim ([#1526](https://github.com/Tencent/tdesign-miniprogram/pull/1526))
 - `Search`:  修复插槽命名错误 @anlyyao ([#1529](https://github.com/Tencent/tdesign-miniprogram/pull/1529))
 - `Loading`: 支持无障碍访问 @yaogengzhu ([#1534](https://github.com/Tencent/tdesign-miniprogram/pull/1534))
 - `Checkbox`:  修复 `--td-checkbox-icon-size` 对未选中态复选框不生效问题 @anlyyao ([#1530](https://github.com/Tencent/tdesign-miniprogram/pull/1530))
-- `BackTop`: 优化插槽渲染不再需要传入 slot 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `Badge`: 优化插槽渲染不再需要传入 slot 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `Grid`: 优化插槽渲染不再需要传入 slot 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `Image`: 优化插槽渲染不再需要传入 slot 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `Input`: 优化插槽渲染不再需要传入 slot 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `Link`: 优化插槽渲染不再需要传入 slot 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `Loading`: 优化插槽渲染不再需要传入 slot 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `Message`: 优化插槽渲染不再需要传入 slot 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `BackTop`: 优化插槽渲染不再需要传入 slot 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `CountDown`: 优化插槽渲染不再需要传入 slot 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `TabBar`: 优化插槽渲染不再需要传入 slot 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `TextArea`: 优化插槽渲染不再需要传入 slot 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `Toast`: 优化插槽渲染不再需要传入 slot 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `CountDown`: 补充 content 插槽 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `Drawer`: 补充 title 插槽 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `Radio`: 补充 label、content 插槽 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
-- `TabPanel`: 补充 panel 插槽 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `BackTop`: 优化插槽渲染不再需要传入 `slot` 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `Badge`: 优化插槽渲染不再需要传入 `slot` 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `Grid`: 优化插槽渲染不再需要传入 `slot` 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `Image`: 优化插槽渲染不再需要传入 `slot` 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `Input`: 优化插槽渲染不再需要传入 `slot` 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `Link`: 优化插槽渲染不再需要传入 `slot` 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `Loading`: 优化插槽渲染不再需要传入 `slot` 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `Message`: 优化插槽渲染不再需要传入 `slot` 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `BackTop`: 优化插槽渲染不再需要传入 `slot` 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `CountDown`: 优化插槽渲染不再需要传入 `slot` 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `TabBar`: 优化插槽渲染不再需要传入 `slot` 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `TextArea`: 优化插槽渲染不再需要传入 `slot` 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `Toast`: 优化插槽渲染不再需要传入 `slot` 字符串 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `CountDown`: 补充 `content` 插槽 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `Drawer`: 补充 `title` 插槽 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `Radio`: 补充 `label`、`content` 插槽 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
+- `TabPanel`: 补充 `panel` 插槽 @LeeJim ([#1539](https://github.com/Tencent/tdesign-miniprogram/pull/1539))
 - `ImageViewer`:
-  - 优化插槽渲染逻辑，不再需要传入 slot 字符串 @LeeJim ([#1544](https://github.com/Tencent/tdesign-miniprogram/pull/1544))
+  - 优化插槽渲染逻辑，不再需要传入 `slot` 字符串 @LeeJim ([#1544](https://github.com/Tencent/tdesign-miniprogram/pull/1544))
   - 修复关闭点击不生效的问题，以及 trigger 参数不对的问题 @LeeJim ([#1544](https://github.com/Tencent/tdesign-miniprogram/pull/1544))
 - `Calendar`:
   - 移除 `tabindex` 元素 的 `outline` 样式 @anlyyao ([#1573](https://github.com/Tencent/tdesign-miniprogram/pull/1573))
-  - 优化 title 插槽，不再需要传入 slot 字符串 @LeeJim ([#1588](https://github.com/Tencent/tdesign-miniprogram/pull/1588))
-- `Button`: 修复 CSS Variable 变量命名错误 @anlyyao ([#1563](https://github.com/Tencent/tdesign-miniprogram/pull/1563))
-
+  - 优化 `title` 插槽，不再需要传入 `slot` 字符串 @LeeJim ([#1588](https://github.com/Tencent/tdesign-miniprogram/pull/1588))
+- `Button`: 修复 `CSS Variable` 变量命名错误 @anlyyao ([#1563](https://github.com/Tencent/tdesign-miniprogram/pull/1563))
 
 ## 🌈 1.0.0-rc.1 `2023-01-18`
 ### 🚨 Breaking Changes
-- `Dialog`: 移除内置的 input 样式 @LeeJim ([#1516](https://github.com/Tencent/tdesign-miniprogram/pull/1516))
-- `Input`: 优化 DOM，移除外置的 wapper 元素 @LeeJim ([#1516](https://github.com/Tencent/tdesign-miniprogram/pull/1516))
+- `Dialog`: 移除内置的 `input` 样式 @LeeJim ([#1516](https://github.com/Tencent/tdesign-miniprogram/pull/1516))
+- `Input`: 优化 `DOM`，移除外置的 `wapper` 元素 @LeeJim ([#1516](https://github.com/Tencent/tdesign-miniprogram/pull/1516))
 ### 🚀 Features
 - `Cell`:
-  - 新增底边框左右边距 CSS Variables @anlyyao ([#1515](https://github.com/Tencent/tdesign-miniprogram/pull/1515))
-  - 补充 CSS Variables @anlyyao ([#1517](https://github.com/Tencent/tdesign-miniprogram/pull/1517))
-- `SideBar`: 支持传入 Icon @LeeJim ([#1520](https://github.com/Tencent/tdesign-miniprogram/pull/1520))
-- `Tabs`: 支持传入 icon @LeeJim ([#1519](https://github.com/Tencent/tdesign-miniprogram/pull/1519))
+  - 新增底边框左右边距 `CSS Variables` @anlyyao ([#1515](https://github.com/Tencent/tdesign-miniprogram/pull/1515))
+  - 补充 `CSS Variables` @anlyyao ([#1517](https://github.com/Tencent/tdesign-miniprogram/pull/1517))
+- `SideBar`: 支持传入 `Icon` @LeeJim ([#1520](https://github.com/Tencent/tdesign-miniprogram/pull/1520))
+- `Tabs`: 支持传入 `Icon` @LeeJim ([#1519](https://github.com/Tencent/tdesign-miniprogram/pull/1519))
 ### 🐞 Bug Fixes
-- `Upload`:
-  - 修复 add-content 不生效的问题 @LeeJim ([#1507](https://github.com/Tencent/tdesign-miniprogram/pull/1507))
-  -  优化插槽渲染，不再需要传入 add-content = 'slot' @LeeJim ([#1507](https://github.com/Tencent/tdesign-miniprogram/pull/1507))
-- `Cascader`: 修复 slot 无法使用的问题 @LeeJim ([#1508](https://github.com/Tencent/tdesign-miniprogram/pull/1508))
+- `Upload`: 修复 `add-content` 不生效，并优化插槽渲染，不再需要传入 `add-content = 'slot'` @LeeJim ([#1507](https://github.com/Tencent/tdesign-miniprogram/pull/1507))
+- `Cascader`: 修复 `slot` 无法使用的问题 @LeeJim ([#1508](https://github.com/Tencent/tdesign-miniprogram/pull/1508))
 - `Picker`: 修复样式、优化布局以及交互体验 @LeeJim ([#1513](https://github.com/Tencent/tdesign-miniprogram/pull/1513))
 - `Swiper`: 修复 `autoplay` 状态下，`swiper` 偶现左右抖动问题 @anlyyao ([#1494](https://github.com/Tencent/tdesign-miniprogram/pull/1494))
 
-
 ## 🌈 1.0.0-rc `2023-01-12`
 ### 🚨 Breaking Changes
-- 全部组件开启 vritualHost，当基础库版本低于 2.19.2 自动关闭 @LeeJim ([#1495](https://github.com/Tencent/tdesign-miniprogram/pull/1495))
-- 全部组件使用 style 属性替代 customStyle @LeeJim ([#1495](https://github.com/Tencent/tdesign-miniprogram/pull/1495))
-- `Tabs`: 废弃 placement 属性，左右布局请使用 SideBar 组件 @LeeJim ([#1492](https://github.com/Tencent/tdesign-miniprogram/pull/1492))
+- 全部组件开启 `vritualHost`，当基础库版本低于 `2.19.2` 自动关闭 @LeeJim ([#1495](https://github.com/Tencent/tdesign-miniprogram/pull/1495))
+- 全部组件使用 `style` 属性替代 `customStyle` @LeeJim ([#1495](https://github.com/Tencent/tdesign-miniprogram/pull/1495))
+- `Tabs`: 废弃 `placement` 属性，左右布局请使用 SideBar 组件 @LeeJim ([#1492](https://github.com/Tencent/tdesign-miniprogram/pull/1492))
 ### 🚀 Features
-- `Cell`: 新增 CSS Variables 用于控制高度 @LeeJim ([#1482](https://github.com/Tencent/tdesign-miniprogram/pull/1482))
-- `Indexes`: 新增支持 stickyOffset 属性，用于调整吸顶时的距离 @LeeJim ([#1485](https://github.com/Tencent/tdesign-miniprogram/pull/1485))
-- `Button`: 支持 0.5px 边框 @anlyyao ([#1474](https://github.com/Tencent/tdesign-miniprogram/pull/1474))
+- `Cell`: 新增 `CSS Variables` 用于控制高度 @LeeJim ([#1482](https://github.com/Tencent/tdesign-miniprogram/pull/1482))
+- `Indexes`: 新增支持 `stickyOffset` 属性，用于调整吸顶时的距离 @LeeJim ([#1485](https://github.com/Tencent/tdesign-miniprogram/pull/1485))
+- `Button`: 支持` 0.5px` 边框 @anlyyao ([#1474](https://github.com/Tencent/tdesign-miniprogram/pull/1474))
 ### 🐞 Bug Fixes
 - `Button`: 修复 `shape = 'round'` 或 `‘circle’` 时，`border`样式错误 @anlyyao ([#1491](https://github.com/Tencent/tdesign-miniprogram/pull/1491))
 - `Calendar`: 修复视觉问题 @LeeJim ([#1473](https://github.com/Tencent/tdesign-miniprogram/pull/1473))
 - `Collapse`:
   - 当 panel 内容为动态内容时，支持展开 @LeeJim ([#1477](https://github.com/Tencent/tdesign-miniprogram/pull/1477))
-  - 面板收起时，隐藏 header 的边框 @LeeJim ([#1493](https://github.com/Tencent/tdesign-miniprogram/pull/1493))
+  - 面板收起时，隐藏 `header` 的边框 @LeeJim ([#1493](https://github.com/Tencent/tdesign-miniprogram/pull/1493))
 - `Textarea`: 支持自适应父容器高度 @anlyyao ([#1484](https://github.com/Tencent/tdesign-miniprogram/pull/1484))
-- `Dialog`: 修复 confirmBtn 为 string 类型时，样式错误 @anlyyao ([#1474](https://github.com/Tencent/tdesign-miniprogram/pull/1474))
+- `Dialog`: 修复 `confirmBtn` 为 `string` 类型时，样式错误 @anlyyao ([#1474](https://github.com/Tencent/tdesign-miniprogram/pull/1474))
 - `Stepper`: 修复 `theme='normal'`时禁用态视觉错误 @anlyyao ([#1487](https://github.com/Tencent/tdesign-miniprogram/pull/1487))
 - `Rate`: 修复半选时 tips 的图标 @LeeJim ([#1490](https://github.com/Tencent/tdesign-miniprogram/pull/1490))
-
 
 ## 🌈 0.x `2021-11-25 - 2023-01-09`
 前往 [GitHub](https://github.com/Tencent/tdesign-miniprogram/blob/develop/changelogs/CHANGELOG-0.x.md) 查看 `0.x` 更新日志
