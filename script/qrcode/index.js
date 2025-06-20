@@ -13,6 +13,10 @@ const isExistStr = (str, arr) => {
   return arr.includes(temp);
 };
 
+const isSkylinePage = (str) => {
+  return str.includes('skyline');
+};
+
 const getImageList = () => {
   const imageFolderDir = path.resolve(__dirname, `../../site/public/assets/qrcode`);
   const images = fs.readdirSync(imageFolderDir);
@@ -26,14 +30,19 @@ const getImageList = () => {
 const getNewPageList = (list) => {
   const pageList = [];
   const imageOldList = getImageList();
+
   list.forEach((item) => {
     if (Object.prototype.toString.call(item) === '[object Object]') {
       item.pages.forEach((subItem) => {
-        if (!isExistStr(item.root + subItem, imageOldList)) {
+        if (
+          item.root === subItem &&
+          !isExistStr(item.root + subItem, imageOldList) &&
+          !isSkylinePage(`${item.root}${subItem}`)
+        ) {
           pageList.push(item.root + subItem);
         }
       });
-    } else if (!isExistStr(item, imageOldList)) {
+    } else if (!isExistStr(item, imageOldList) && !isSkylinePage(item)) {
       pageList.push(item);
     }
   });
@@ -45,7 +54,7 @@ const getUnlimitedQRCodeImage = (appid, appSecret) => {
   getAccessToken(appid, appSecret).then((e) => {
     if (e.access_token) {
       const token = e.access_token;
-      console.log('==access_token 2h内有效=', token);
+      console.log('access_token 2h内有效：', token);
       const baseParameter = {
         width: 280, // 小程序码大小
         // check_path: false,
@@ -65,8 +74,8 @@ const getUnlimitedQRCodeImage = (appid, appSecret) => {
           page: item, // 扫码进入的小程序页面路径
           scene: `name=${temp[0]}`, // 标识
         };
-        getUnlimitedQRCode(token, JSON.stringify({ ...specialParameter, ...baseParameter }), { ...baseConfig }).then(
-          (res) => {
+        getUnlimitedQRCode(token, JSON.stringify({ ...specialParameter, ...baseParameter }), { ...baseConfig })
+          .then((res) => {
             // 因为微信接口 getwxacodeunlimit 成功时返回的是 Buffer ，失败时返回 JSON 结构。这里把返回数据全部当成 Buffer 处理，所以 res.length < 200， 则表示获取失败。
             if (res.length < 200) {
               const { errcode, errmsg } = JSON.parse(res.toString());
@@ -90,8 +99,10 @@ const getUnlimitedQRCodeImage = (appid, appSecret) => {
                 }
               },
             );
-          },
-        );
+          })
+          .catch((e) => {
+            console.log(e);
+          });
       });
     }
   });
