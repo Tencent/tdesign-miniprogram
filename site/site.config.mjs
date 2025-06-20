@@ -121,7 +121,7 @@ export const docs = [
         titleEn: 'Layout',
         name: 'layout',
         meta: { docType: 'base' },
-        path: '/miniprogram/components/col',
+        path: '/miniprogram/components/layout',
         component: () => import('@/col/README.md'),
       },
       {
