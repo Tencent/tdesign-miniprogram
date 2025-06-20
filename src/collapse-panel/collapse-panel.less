@@ -41,7 +41,8 @@
     align-items: center;
     padding-left: @collapse-horizontal-padding;
     height: @collapse-header-height;
-    color: @collapse-header-text-color;
+    --td-cell-title-color: @collapse-header-text-color;
+    --td-cell-left-icon-color: var(--td-collapse-icon-color, @font-gray-3);
 
     &--top {
       .border(top, @collapse-border-color);
