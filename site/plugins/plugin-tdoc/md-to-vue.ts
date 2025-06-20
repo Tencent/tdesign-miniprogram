@@ -1,7 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const componentPath = path.join(__dirname, './component.vue').replaceAll('\\', '/');
 
 const DEFAULT_TABS = [
