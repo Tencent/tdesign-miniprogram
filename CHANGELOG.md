@@ -8,7 +8,9 @@ docClass: timeline
 
 ## 🌈 1.9.5 `2025-06-13` 
 ### 🚀 Features
-- `Picker`: 新增 `content` 插槽，用于处理空数据场景；支持点击选中 @anlyyao ([#3711](https://github.com/Tencent/tdesign-miniprogram/pull/3711))([#3712](https://github.com/Tencent/tdesign-miniprogram/pull/3712))
+- `Picker`: 
+  - 新增 `content` 插槽，用于处理空数据场景 @anlyyao ([#3711](https://github.com/Tencent/tdesign-miniprogram/pull/3711))
+  - 支持点击选中 @anlyyao ([#3712](https://github.com/Tencent/tdesign-miniprogram/pull/3712))
 - `Fab`: 未显示传入 `icon` 和 `text` 时将启用默认插槽，用于自定义悬浮按钮内容，此时 `buttonProps` 将失效 @novlan1 ([#3684](https://github.com/Tencent/tdesign-miniprogram/pull/3684))
 - `Upload`: 新增 `preview` 属性，用于关闭/开启图片预览 @anlyyao ([#3714](https://github.com/Tencent/tdesign-miniprogram/pull/3714))
 ### 🐞 Bug Fixes
