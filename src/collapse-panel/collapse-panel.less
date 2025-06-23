@@ -14,6 +14,7 @@
 @collapse-content-padding: var(--td-collapse-content-padding, 32rpx);
 @collapse-content-line-height: var(--td-collapse-content-line-height, 1.5);
 @collapse-border-color: var(--td-collapse-border-color, @border-level-1-color);
+@collapse-icon-color: var(--td-collapse-icon-color, @font-gray-3);
 
 @collapse-panel-bg-color: var(--td-collapse-panel-bg-color, @bg-color-container);
 
@@ -42,7 +43,7 @@
     padding-left: @collapse-horizontal-padding;
     height: @collapse-header-height;
     --td-cell-title-color: @collapse-header-text-color;
-    --td-cell-left-icon-color: var(--td-collapse-icon-color, @font-gray-3);
+    --td-cell-left-icon-color: @collapse-icon-color;
 
     &--top {
       .border(top, @collapse-border-color);
@@ -68,7 +69,7 @@
       padding-left: 8px;
       width: 44px;
       padding-right: 8px;
-      color: var(--td-collapse-icon-color, @font-gray-3);
+      color: @collapse-icon-color;
     }
   }
 
