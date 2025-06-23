@@ -12,7 +12,7 @@ export default {
     demoCodesImports = {};
 
     // 增加渲染规则
-    md.renderer.rules.html_block = function (tokens: string, idx: number) {
+    md.renderer.rules.html_block = function (tokens: any[], idx: number) {
       const { content } = tokens[idx];
       if (content.startsWith('<img') && content.indexOf('qrcode') === -1) {
         return '';
@@ -25,6 +25,7 @@ export default {
     source = source.replace(/{{\s+(.+)\s+}}/g, (_: string, demoDirName: string) => {
       const demoPath = path.resolve(resourceDir, `./_example/${demoDirName}`);
       if (!fs.existsSync(demoPath)) {
+        // eslint-disable-next-line no-console
         console.log('\x1B[36m%s\x1B[0m', `${name} 组件需要实现 _example/${demoDirName} 示例!`);
         return '\n<h3>DEMO (🚧建设中）...</h3>';
       }
