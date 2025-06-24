@@ -152,7 +152,7 @@ describe('upload', () => {
       const $gridItem = comp.querySelector('#t-upload >>> .t-grid-item');
       // gutter = 16, 单位 rpx
       expect($gridContent.dom.getAttribute('style')).toEqual(
-        `margin-left:-${comp.data.gutter}px; margin-top:-${comp.data.gutter}px`,
+        `margin-bottom:-${comp.data.gutter}px; margin-right:-${comp.data.gutter}px`,
       );
 
       // gridConfig: width、 height

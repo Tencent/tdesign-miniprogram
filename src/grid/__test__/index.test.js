@@ -26,13 +26,13 @@ describe('grid', () => {
     comp.attach(document.createElement('parent-wrapper'));
 
     const $content = comp.querySelector('#grid >>> .t-grid__content');
-    expect($content.dom.style.marginLeft).toBe('-4px');
+    expect($content.dom.style.marginRight).toBe('-4px');
 
     comp.setData({ border: true });
-    expect($content.dom.style.marginLeft).toBe('-2px');
+    expect($content.dom.style.marginRight).toBe('-2px');
 
     comp.setData({ border: {} });
-    expect($content.dom.style.marginLeft).toBe('-2px');
+    expect($content.dom.style.marginRight).toBe('-2px');
   });
 
   it(':gutter', () => {
@@ -42,7 +42,7 @@ describe('grid', () => {
     comp.setData({ gutter: 0 });
 
     const $content = comp.querySelector('#grid >>> .t-grid__content');
-    expect($content.dom.style.marginLeft).toBe('-0px');
+    expect($content.dom.style.marginRight).toBe('-0px');
   });
 
   it(':event', async () => {
