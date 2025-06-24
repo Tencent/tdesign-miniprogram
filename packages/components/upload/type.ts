@@ -104,6 +104,14 @@ export interface TdUploadProps {
     value?: Array<MediaType>;
   };
   /**
+   * 是否支持图片预览，文件没有预览
+   * @default true
+   */
+  preview?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 移除按钮
    * @default true
    */

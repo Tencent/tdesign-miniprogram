@@ -86,8 +86,10 @@ export default class Picker extends SuperComponent {
       const columns = this.getColumnIndexes();
 
       this.close('confirm-btn');
-      this.triggerEvent('change', { value, label, columns });
       this.triggerEvent('confirm', { value, label, columns });
+
+      if (JSON.stringify(this.data.value) === JSON.stringify(value)) return;
+      this.triggerEvent('change', { value, label, columns });
     },
 
     triggerColumnChange({ column, index }) {

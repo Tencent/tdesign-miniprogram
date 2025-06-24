@@ -1,5 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
+import { isDef } from '../common/validator';
 import config from '../common/config';
+import { getTreeDepth } from '../common/utils';
 import props from './props';
 
 import type { TreeOptionData } from '../common/common';
@@ -29,14 +31,7 @@ export default class TreeSelect extends SuperComponent {
     scrollIntoView: null,
   };
 
-  properties = {
-    ...props,
-    customValue: {
-      // 用于自定义选中值，优先级高于value，用于弥补value为[]场景
-      type: null,
-      value: null,
-    },
-  };
+  properties = props;
 
   controlledProps = [
     {
@@ -59,50 +54,51 @@ export default class TreeSelect extends SuperComponent {
 
   methods = {
     buildTreeOptions() {
-      const { options, value, defaultValue, customValue, multiple, keys } = this.data;
-      const treeOptions = [];
+      const { options, value, customValue, multiple, keys } = this.data;
+
+      if (!options.length) return;
+
+      const treeOptions: TreeOptionData[][] = [];
 
       let level = -1;
-      let node = { children: options };
+      let currentNode = { children: options };
 
-      if (options.length === 0) return;
-
-      while (node && node.children) {
+      while (currentNode?.children) {
         level += 1;
-        const list = node.children.map((item: TreeOptionData) => ({
+        const currentLevelOptions = currentNode.children.map((item: TreeOptionData) => ({
           label: item[keys?.label || 'label'],
           value: item[keys?.value || 'value'],
-          children: item.children,
+          disabled: item[keys?.disabled || 'disabled'],
+          children: item[keys?.children || 'children'],
         }));
-        const thisValue = customValue?.[level] || value?.[level];
 
-        treeOptions.push([...list]);
+        treeOptions.push(currentLevelOptions);
 
-        if (thisValue == null) {
-          const [firstChild] = list;
-          node = firstChild;
-        } else {
-          const child = list.find((child) => child.value === thisValue);
-          node = child ?? list[0];
-        }
+        const currentValue = customValue?.[level] ?? value?.[level];
+        currentNode = currentValue
+          ? currentLevelOptions.find((child) => child.value === currentValue) ?? currentLevelOptions[0]
+          : currentLevelOptions[0];
+      }
+
+      const depth = getTreeDepth(options, keys?.children);
+
+      // 补齐 treeOptions 长度到 depth
+      while (treeOptions.length < depth) {
+        treeOptions.push([]);
+        level += 1;
       }
 
       const leafLevel = Math.max(0, level);
-
-      if (multiple) {
-        const finalValue = customValue || value || defaultValue;
-        if (finalValue[leafLevel] != null && !Array.isArray(finalValue[leafLevel])) {
-          throw TypeError('应传入数组类型的 value');
-        }
-      }
+      const innerValue =
+        customValue ||
+        treeOptions.map((levelOptions, idx) => {
+          const isLastLevel = idx === treeOptions.length - 1;
+          const defaultValue = isLastLevel && multiple ? [levelOptions[0]?.value] : levelOptions[0]?.value;
+          return value?.[idx] ?? defaultValue;
+        });
 
       this.setData({
-        innerValue:
-          customValue ||
-          treeOptions?.map((ele, idx) => {
-            const v = idx === treeOptions.length - 1 && multiple ? [ele[0].value] : ele[0].value;
-            return value?.[idx] || v;
-          }),
+        innerValue,
         leafLevel,
         treeOptions,
       });
@@ -150,19 +146,15 @@ export default class TreeSelect extends SuperComponent {
     handleChange(e) {
       const { innerValue } = this.data;
       const { level, type } = e.target.dataset;
+      const { value } = type === 'multiple' ? e.detail.context : e.detail;
 
       if (type === 'multiple') {
-        const {
-          context: { value },
-        } = e.detail;
-        const index = innerValue[level].indexOf(value);
-        if (index !== -1) {
-          innerValue[level].splice(index, 1);
-        } else {
-          innerValue[level].push(value);
+        if (!isDef(innerValue[level])) {
+          innerValue[level] = [];
         }
+        const index = innerValue[level].indexOf(value);
+        index === -1 ? innerValue[level].push(value) : innerValue[level].splice(index, 1);
       } else {
-        const { value } = e.detail;
         innerValue[level] = value;
       }
 

@@ -46,6 +46,14 @@ export interface TdImageViewerProps {
     value?: Number;
   };
   /**
+   * 是否开启图片懒加载
+   * @default true
+   */
+  lazy?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 是否显示页码
    * @default false
    */

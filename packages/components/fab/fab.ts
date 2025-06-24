@@ -35,8 +35,8 @@ export default class Fab extends SuperComponent {
           buttonData: {
             ...baseButtonProps,
             shape: this.properties.text ? 'round' : 'circle',
-            icon: this.properties.icon,
             ...this.properties.buttonProps,
+            icon: this.properties.icon,
             content: this.properties.text,
             ariaLabel: this.properties.ariaLabel,
           },

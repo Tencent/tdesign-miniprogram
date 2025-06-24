@@ -215,7 +215,23 @@ module.exports = (src, dist, moduleName) => {
       .pipe(generateConfigReplaceTask(config, { stringify: false }))
       .pipe(gulpIf(!isProduction, sourcemaps.init()))
       .pipe(gulpLess()) // 编译less
-      .pipe(gulpIf(isComponentFolder(src) && isProduction, cssmin()))
+      .pipe(
+        gulpIf(
+          isComponentFolder(src) && isProduction,
+          cssmin({
+            compatibility: 'ie9',
+            format: {
+              semicolonAfterLastProperty: true,
+              breaks: {
+                afterAtRule: true,
+                afterRuleEnds: true,
+                afterBlockBegins: true,
+                afterBlockEnds: true,
+              },
+            },
+          }),
+        ),
+      )
       .pipe(
         gulpIf(
           isComponentFolder(src),

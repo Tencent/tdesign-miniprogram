@@ -13,6 +13,7 @@ close-btn | String / Boolean / Object / Slot | false | [see more ts definition](
 delete-btn | String / Boolean / Object / Slot | false | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 images | Array | [] | Typescript：`Array<string>` | N
 initial-index | Number | 0 | Typescript：`Number` | N
+lazy | Boolean | true | `1.9.4` | N
 show-index | Boolean | false | \- | N
 using-custom-navbar | Boolean | false | `v1.1.4` | N
 visible | Boolean | false | hide or show image viewer | N
@@ -22,9 +23,9 @@ default-visible | Boolean | undefined | hide or show image viewer。uncontrolled
 
 name | params | description
 -- | -- | --
-change | `(index: Number)` | \-
+change | `(index: number)` | \-
 close | `(trigger: 'overlay' \| 'button', visible: Boolean, index: Number)` | \-
-delete | `(index: Number)` | \-
+delete | `(index: number)` | \-
 
 ### CSS Variables
 

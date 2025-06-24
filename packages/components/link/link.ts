@@ -55,13 +55,13 @@ export default class Link extends SuperComponent {
     setClass() {
       const { theme, size, underline, navigatorProps, disabled } = this.properties;
       const classList = [name, `${name}--${theme}`, `${name}--${size}`];
+      const { url, appId, shortLink, target, openType } = navigatorProps ?? {};
+      const condition = !(url || (target === 'miniProgram' && (appId || shortLink)));
+
       if (underline) {
         classList.push(`${name}--underline`);
       }
-      if (
-        (navigatorProps && !navigatorProps.url && !['navigateBack', 'exit'].includes(navigatorProps.openType)) ||
-        disabled
-      ) {
+      if ((navigatorProps && condition && !['navigateBack', 'exit'].includes(openType)) || disabled) {
         classList.push(`${name}--disabled`);
       }
 

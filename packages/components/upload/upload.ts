@@ -58,6 +58,8 @@ export default class Upload extends SuperComponent {
 
   onProofTap(e: any) {
     this.onFileClick(e);
+    const { preview } = this.properties;
+    if (!preview) return;
     const { index } = e.currentTarget.dataset;
     wx.previewImage({
       urls: this.data.customFiles.filter((file) => file.percent !== -1).map((file) => file.url),
@@ -67,7 +69,7 @@ export default class Upload extends SuperComponent {
 
   handleLimit(customFiles: UploadFile[], max: number) {
     if (max === 0) {
-      max = 20;
+      max = Number.MAX_SAFE_INTEGER;
     }
     this.setData({
       customFiles: customFiles.length > max ? customFiles.slice(0, max) : customFiles,
@@ -268,10 +270,10 @@ export default class Upload extends SuperComponent {
     },
 
     chooseMedia(mediaType) {
-      const { config, sizeLimit, customLimit } = this.data;
-
+      const { customLimit } = this.data;
+      const { config, sizeLimit } = this.properties;
       wx.chooseMedia({
-        count: customLimit,
+        count: Math.min(20, customLimit),
         mediaType,
         ...config,
         success: (res) => {
@@ -317,9 +319,10 @@ export default class Upload extends SuperComponent {
     },
 
     chooseMessageFile(mediaType) {
-      const { max, config, sizeLimit } = this.properties;
+      const { customLimit } = this.data;
+      const { config, sizeLimit } = this.properties;
       wx.chooseMessageFile({
-        count: max,
+        count: Math.min(100, customLimit),
         type: Array.isArray(mediaType) ? 'all' : mediaType,
         ...config,
         success: (res) => {

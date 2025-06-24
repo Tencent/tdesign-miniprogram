@@ -21,6 +21,7 @@ gutter | Number | 16 | \- | N
 image-props | Object | - | Typescript：`ImageProps`，[Image API Documents](./image?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
 max | Number | 0 | max count of files limit | N
 media-type | Array | ['image', 'video'] | Typescript：`Array<MediaType>` `type MediaType = 'image' \| 'video'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N
+preview | Boolean | true | `1.9.5` | N
 remove-btn | Boolean | true | \- | N
 request-method | Function | - | \- | N
 size-limit | Number / Object | - | files size limit。Typescript：`number \| SizeLimitObj` `interface SizeLimitObj { size: number; unit: SizeUnit ; message?: string }` `type SizeUnitArray = ['B', 'KB', 'MB', 'GB']` `type SizeUnit = SizeUnitArray[number]`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/upload/type.ts) | N

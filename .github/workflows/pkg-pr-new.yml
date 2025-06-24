@@ -21,4 +21,8 @@ jobs:
 
       - run: npm run build
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - run: npx pkg-pr-new publish --compact

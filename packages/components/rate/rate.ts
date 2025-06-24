@@ -50,15 +50,13 @@ export default class Rate extends SuperComponent {
           value = 0;
         }
 
-        if (eventType === 'move' || (eventType === 'tap' && allowHalf)) {
-          const left = Math.ceil(value - 1) * (unitConvert(gap) + unitConvert(size)) + unitConvert(size) * 0.5;
-          this.setData({
-            tipsVisible: true,
-            actionType: eventType,
-            scaleIndex: Math.ceil(value),
-            tipsLeft: Math.max(left, 0),
-          });
-        }
+        const tipsLeft = Math.ceil(value - 1) * (unitConvert(gap) + unitConvert(size)) + unitConvert(size) * 0.5;
+        this.setData({
+          tipsVisible: true,
+          actionType: eventType,
+          scaleIndex: Math.ceil(value),
+          tipsLeft: Math.max(tipsLeft, 0),
+        });
 
         if (value !== currentValue) {
           this._trigger('change', { value });

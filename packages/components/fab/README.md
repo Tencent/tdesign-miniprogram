@@ -45,6 +45,10 @@ isComponent: true
 
 {{ draggable }}
 
+### 带自动收缩功能
+
+{{ collapsible }}
+
 ## FAQ
 
 ### 为什么通过 style/customStyle 设置 top/left 调整初试定位后，会使页面内容无法点击以及拖拽异常？

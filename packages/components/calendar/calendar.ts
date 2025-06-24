@@ -71,11 +71,9 @@ export default class Calendar extends SuperComponent {
         days: this.base.getDays(realLocalText.weekdays),
         realLocalText,
       });
-      this.calcMonths();
 
-      if (this.data.switchMode !== 'none') {
-        this.calcCurrentMonth();
-      }
+      this.calcMonths();
+      this.updateCurrentMonth();
 
       if (!this.data.usePopup) {
         this.scrollIntoView();
@@ -106,6 +104,7 @@ export default class Calendar extends SuperComponent {
     value(v) {
       this.base.value = v;
       this.calcMonths();
+      this.updateCurrentMonth();
     },
 
     visible(v) {
@@ -192,6 +191,11 @@ export default class Calendar extends SuperComponent {
       });
     },
 
+    updateCurrentMonth() {
+      if (this.data.switchMode === 'none') return;
+      this.calcCurrentMonth();
+    },
+
     calcCurrentMonth(newValue?: any) {
       const date = newValue || this.getCurrentDate();
       const { year, month } = this.getCurrentYearAndMonth(date);
@@ -235,12 +239,9 @@ export default class Calendar extends SuperComponent {
       const rawValue = this.base.select({ cellType: date.type, year, month, date: date.day });
 
       const value = this.toTime(rawValue);
-      this.calcMonths();
 
-      if (this.data.switchMode !== 'none') {
-        const date = this.getCurrentDate();
-        this.calcCurrentMonth(date);
-      }
+      this.calcMonths();
+      this.updateCurrentMonth();
 
       if (this.data.confirmBtn == null) {
         // 不显示确认按钮，则选择完即关闭 popup
@@ -262,6 +263,7 @@ export default class Calendar extends SuperComponent {
     },
 
     toTime(val) {
+      if (!val) return null;
       if (Array.isArray(val)) {
         return val.map((item) => item.getTime());
       }

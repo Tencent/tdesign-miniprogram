@@ -115,6 +115,20 @@ export const getRect = function (context: any, selector: string, needAll: boolea
   });
 };
 
+interface TreeNode {
+  children?: TreeNode[];
+  [key: string]: any;
+}
+
+export const getTreeDepth = (tree: TreeNode[], key?: string) => {
+  return tree.reduce((maxDepth: number, node: TreeNode) => {
+    if (node[key ?? 'children'] && node[key ?? 'children'].length > 0) {
+      return Math.max(maxDepth, getTreeDepth(node[key ?? 'children'], key) + 1);
+    }
+    return Math.max(maxDepth, 1);
+  }, 0);
+};
+
 export const isIOS = function (): boolean {
   return !!(deviceInfo?.system?.toLowerCase().search('ios') + 1);
 };
