@@ -1,6 +1,6 @@
 /**
  * 编译时的配置全局替换
- * 配置文件 scripts/config.js
+ * 配置文件 script/config.js
  */
 
 /**
