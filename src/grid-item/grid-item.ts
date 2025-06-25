@@ -102,7 +102,7 @@ export default class GridItem extends SuperComponent {
   // 获取应该加在gridWrap上的padding
   getPaddingStyle() {
     const { gutter } = this.parent.properties;
-    if (gutter) return `padding-left:${gutter}rpx;padding-top:${gutter}rpx`;
+    if (gutter) return `padding-bottom:${gutter}rpx;padding-right:${gutter}rpx`;
     return '';
   }
 
@@ -114,7 +114,7 @@ export default class GridItem extends SuperComponent {
     if (!isObject(border)) border = {} as any;
     const { color = '#266FE8', width = 2, style = 'solid' } = border as any;
     if (gutter) return `border:${width}rpx ${style} ${color}`;
-    return `border-top:${width}rpx ${style} ${color};border-left:${width}rpx ${style} ${color}`;
+    return `border-bottom:${width}rpx ${style} ${color};border-right:${width}rpx ${style} ${color}`;
   }
 
   onClick(e) {
