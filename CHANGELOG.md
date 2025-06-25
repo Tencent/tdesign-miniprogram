@@ -6,6 +6,18 @@ docClass: timeline
 ---
 
 
+## 🌈 1.9.6 `2025-06-25` 
+### 🚀 Features
+- `Upload`: 支持视频预览 @anlyyao ([#3741](https://github.com/Tencent/tdesign-miniprogram/pull/3741))
+- `Icon`: 自定义 `icon`名称支持使用下划线 @zhonghuipro ([#3744](https://github.com/Tencent/tdesign-miniprogram/pull/3744))
+### 🐞 Bug Fixes
+- `CollapsePanel`: 修复部分 `css` 变量无效的问题 @betavs ([#3731](https://github.com/Tencent/tdesign-miniprogram/pull/3731))
+- `Grid`: 修复 `GridItem` 项数是 `columns` 列数的非整数倍时边框样式错误 @anlyyao ([#3740](https://github.com/Tencent/tdesign-miniprogram/pull/3740))
+### 🚧 Others
+- `build`: 修复 `1.9.0` 版本在 `Windows` 环境下 `WXSS` 文件编译错误 @anlyyao ([#3719](https://github.com/Tencent/tdesign-miniprogram/pull/3719))
+- `site`: 官网支持单组件 `Changelog` @RylanBot ([#3725](https://github.com/Tencent/tdesign-miniprogram/pull/3725))
+
+
 ## 🌈 1.9.5 `2025-06-13` 
 ### 🚀 Features
 - `Picker`: 
