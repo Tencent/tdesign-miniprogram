@@ -40,7 +40,7 @@
             shape="{{imageProps && imageProps.shape || 'round'}}"
             webp="{{imageProps && imageProps.webp || false}}"
             showMenuByLongpress="{{imageProps && imageProps.showMenuByLongpress || false}}"
-            bind:tap="onProofTap"
+            bind:tap="onPreview"
           />
           <video
             wx:if="{{file.type === 'video'}}"
@@ -51,7 +51,8 @@
             autoplay="{{false}}"
             objectFit="contain"
             data-file="{{file}}"
-            bind:tap="onFileClick"
+            data-index="{{index}}"
+            bind:tap="onPreview"
           />
           <!-- 失败重试 -->
           <view
@@ -149,7 +150,7 @@
                 shape="{{imageProps && imageProps.shape || 'round'}}"
                 webp="{{imageProps && imageProps.webp || false}}"
                 showMenuByLongpress="{{imageProps && imageProps.showMenuByLongpress || false}}"
-                bind:tap="onProofTap"
+                bind:tap="onPreview"
               />
               <video
                 wx:if="{{file.type === 'video'}}"
@@ -160,7 +161,8 @@
                 autoplay="{{false}}"
                 objectFit="contain"
                 data-file="{{file}}"
-                bind:tap="onFileClick"
+                data-index="{{index}}"
+                bind:tap="onPreview"
               />
               <!-- 失败重试 -->
               <view

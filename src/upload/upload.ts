@@ -56,17 +56,6 @@ export default class Upload extends SuperComponent {
     },
   };
 
-  onProofTap(e: any) {
-    this.onFileClick(e);
-    const { preview } = this.properties;
-    if (!preview) return;
-    const { index } = e.currentTarget.dataset;
-    wx.previewImage({
-      urls: this.data.customFiles.filter((file) => file.percent !== -1).map((file) => file.url),
-      current: this.data.customFiles[index]?.url,
-    });
-  }
-
   handleLimit(customFiles: UploadFile[], max: number) {
     if (max === 0) {
       max = Number.MAX_SAFE_INTEGER;
@@ -87,7 +76,7 @@ export default class Upload extends SuperComponent {
     this.triggerEvent('fail', err);
   }
 
-  onFileClick(e) {
+  onFileClick(e: WechatMiniprogram.BaseEvent) {
     const { file } = e.currentTarget.dataset;
     this.triggerEvent('click', { file });
   }
@@ -226,6 +215,59 @@ export default class Upload extends SuperComponent {
   }
 
   methods = {
+    getPreviewMediaSources() {
+      const previewMediaSources: WechatMiniprogram.MediaSource[] = [];
+      this.data.customFiles.forEach((ele) => {
+        const mediaSource: WechatMiniprogram.MediaSource = {
+          url: ele.url,
+          type: ele.type,
+          poster: ele.thumb || undefined,
+        };
+        previewMediaSources.push(mediaSource);
+      });
+
+      return previewMediaSources;
+    },
+
+    onPreview(e: WechatMiniprogram.BaseEvent) {
+      this.onFileClick(e);
+      const { preview } = this.properties;
+
+      if (!preview) return;
+
+      const usePreviewMedia = this.data.customFiles.some((file: UploadFile) => file.type === 'video');
+      if (usePreviewMedia) {
+        this.onPreviewMedia(e);
+      } else {
+        this.onPreviewImage(e);
+      }
+    },
+
+    onPreviewImage(e: WechatMiniprogram.BaseEvent) {
+      const { index } = e.currentTarget.dataset;
+      const urls = this.data.customFiles.filter((file: UploadFile) => file.percent !== -1).map((file) => file.url);
+      const current = this.data.customFiles[index]?.url;
+      wx.previewImage({
+        urls,
+        current,
+        fail() {
+          wx.showToast({ title: '预览图片失败', icon: 'none' });
+        },
+      });
+    },
+
+    onPreviewMedia(e: WechatMiniprogram.BaseEvent) {
+      const { index: current } = e.currentTarget.dataset;
+      const sources = this.getPreviewMediaSources();
+      wx.previewMedia({
+        sources,
+        current,
+        fail() {
+          wx.showToast({ title: '预览视频失败', icon: 'none' });
+        },
+      });
+    },
+
     uploadFiles(files: UploadFile[]) {
       return new Promise((resolve) => {
         // 开始调用上传函数
