@@ -232,9 +232,10 @@ export default class Calendar extends SuperComponent {
     },
 
     handleSelect(e) {
+      const { readonly } = this.properties;
       const { date, year, month } = e.currentTarget.dataset;
 
-      if (date.type === 'disabled') return;
+      if (date.type === 'disabled' || readonly) return;
 
       const rawValue = this.base.select({ cellType: date.type, year, month, date: date.day });
 
