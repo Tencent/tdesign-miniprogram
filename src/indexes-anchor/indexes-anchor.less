@@ -7,6 +7,9 @@
 @indexes-anchor-font-size: var(--td-indexes-anchor-font-size, 28rpx);
 @indexes-anchor-line-height: var(--td-indexes-anchor-line-height, 44rpx);
 @indexes-anchor-active-font-weight: var(--td-indexes-anchor-active-font-weight, 600);
+@indexes-anchor-offset-top: var(--td-indexes-anchor-top, 0); // 锚点吸顶时与顶部的距离
+@indexes-anchor-padding: var(--td-indexes-anchor-padding, 8rpx 32rpx);
+@indexes-anchor-border-color: var(--td-indexes-anchor-border-color, @component-border);
 
 .@{prefix}-indexes-anchor {
   color: @indexes-anchor-color;
@@ -15,12 +18,13 @@
 
   &__header {
     display: none;
-    padding: 8rpx 32rpx;
+    padding: @indexes-anchor-padding;
     background-color: @indexes-anchor-bg-color;
 
     &--active {
       background-color: @indexes-anchor-active-bg-color;
-      .border(bottom);
+
+      .border(bottom, @indexes-anchor-border-color);
     }
   }
 
@@ -37,7 +41,7 @@
 
     &--sticky {
       position: fixed;
-      top: 0;
+      top: @indexes-anchor-offset-top;
       left: 0;
       width: 100%;
       z-index: 1;
