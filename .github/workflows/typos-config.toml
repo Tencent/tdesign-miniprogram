@@ -6,6 +6,7 @@ Colum = "Colum"
 ded = "ded"
 destory ="destory"
 nd = "nd"
+loosing = "loosing"
 
 [files]
 extend-exclude = ["CHANGELOG*.md"]
