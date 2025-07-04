@@ -43,6 +43,12 @@ isComponent: true
 
 {{ custom }}
 
+## FAQ
+
+### 在滚动元素中， Indexes 索引组件失效（[#3746](https://github.com/Tencent/tdesign-miniprogram/issues/3746)）？
+
+`Indexes` 组件自 `0.32.0` 版本开始移除了对 `scroll-view` 的依赖，组件内部使用 [wx.pageScrollTo](https://developers.weixin.qq.com/miniprogram/dev/api/ui/scroll/wx.pageScrollTo.html) 滚动到指定位置，因此只支持页面级滚动，不支持在滚动元素中嵌套使用，包括 overflow: scroll、 scroll-view 等。
+
 ### API
 
 ### Indexes Props
