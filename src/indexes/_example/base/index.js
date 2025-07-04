@@ -1,5 +1,6 @@
 Page({
   data: {
+    defaultCurrent: 'B',
     indexList: [],
     list: [
       {
@@ -101,10 +102,16 @@ Page({
     });
   },
 
+  onChange(e) {
+    const { index } = e.detail;
+
+    console.log('change:', index);
+  },
+
   onSelect(e) {
     const { index } = e.detail;
 
-    console.log(index);
+    console.log('select:', index);
   },
 
   getCustomNavbarHeight() {
