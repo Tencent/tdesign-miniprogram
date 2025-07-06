@@ -6,9 +6,9 @@ dist
 example/pages/*
 !example/pages/gulp-error
 !example/pages/home
-packages/test/e2e
-packages/test/unit
-packages/test/unit-virtualHost
+packages/tdesign-miniprogram/test/e2e
+packages/tdesign-miniprogram/test/unit
+packages/tdesign-miniprogram/test/unit-virtualHost
 .DS_Store
 node_modules
 package-lock.json
@@ -27,5 +27,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
-tdesign-miniprogram
+/tdesign-miniprogram
 m2w_dist

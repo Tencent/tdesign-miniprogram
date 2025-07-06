@@ -22,6 +22,7 @@
     "example/**/*",
     "site/**/*",
     "typing.d.ts",
-    "wechat-miniprogram-extension.d.ts"
-, "packages/site/plugins/changelog-to-json/index.ts"  ]
+    "wechat-miniprogram-extension.d.ts",
+    "packages/site/plugins/changelog-to-json/index.ts"
+  ]
 }

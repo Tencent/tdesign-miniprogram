@@ -1,6 +1,6 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
-import { hex2Rgb } from '../../../test/utils/colors';
+import { hex2Rgb } from '../../../tdesign-miniprogram/test/utils/colors';
 
 const shapes = ['circle', 'square', 'round', 'ribbon'];
 
