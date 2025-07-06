@@ -60,7 +60,14 @@ export interface TdCalendarProps {
     value?: number;
   };
   /**
-   * 切换模式。 `none` 表示水平方向平铺展示所有月份； `month` 表示支持按月切换， `year-month` 表示既按年切换，也支持按月切换
+   * 是否只读，只读状态下不能选择日期
+   */
+  readonly?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 切换模式。 `none` 表示平铺展示所有月份； `month` 表示支持按月切换， `year-month` 表示既按年切换，也支持按月切换
    * @default none
    */
   switchMode?: {

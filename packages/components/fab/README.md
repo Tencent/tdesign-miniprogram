@@ -57,6 +57,10 @@ isComponent: true
 
 Fab 组件默认定位 `right: 16px; bottom: 32px;`，且拖拽功能也是通过调整 `right` 与 `bottom` 属性值实现，因此在使用 `Fab` 组件时，仅支持通过 `style/customStyle` 属性设置 `right/bottom` 来调整初试位置， 避免使用 `top/left`。
 
+### 开启 Skyline 渲染引擎后，组件所在页面崩溃？
+
+因为 Skyline 还不支持多层阴影，要等微信官方处理。当下可参考 [#2865](https://github.com/Tencent/tdesign-miniprogram/issues/2865) 进行规避处理
+
 
 ## API
 

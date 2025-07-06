@@ -81,4 +81,14 @@ npm run dev
 
 ## 基础库版本
 
-最低基础库版本`^2.6.5`
+最低基础库版本`^2.12.0`
+
+### 组件与基础库版本对应关系
+
+| 组件  | API    | 最低基础库 | 描述 |
+| ----- | ------ | ---------- | ---- |
+| Upload | [wx.previewMedia](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.previewMedia.html) | 2.12.0 | - |
+| Upload | [wx.chooseMedia](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | 2.10.0 | - |
+| Upload | [wx.chooseMessageFile](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseMessageFile.html) | 2.5.0 | - |
+| Navbar | [wx.getMenuButtonBoundingClientRect](https://developers.weixin.qq.com/miniprogram/dev/api/ui/menu/wx.getMenuButtonBoundingClientRect.html) | 2.1.0 | - |
+

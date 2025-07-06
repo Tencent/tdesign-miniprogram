@@ -55,10 +55,10 @@ export default class Grid extends SuperComponent {
       const { gutter } = this.properties;
       let { border } = this.properties;
 
-      if (!border) return `margin-left:-${gutter}rpx; margin-top:-${gutter}rpx`;
+      if (!border) return `margin-bottom:-${gutter}rpx; margin-right:-${gutter}rpx`;
       if (!isObject(border)) border = {} as any;
       const { width = 2 } = border as any;
-      return `margin-left:-${width}rpx; margin-top:-${width}rpx`;
+      return `margin-bottom:-${width}rpx; margin-right:-${width}rpx`;
     },
   };
 }

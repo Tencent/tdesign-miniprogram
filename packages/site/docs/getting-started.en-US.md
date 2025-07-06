@@ -26,7 +26,11 @@ TDesign MiniProgram already supports using NPM to install third-party packages. 
 npm i tdesign-miniprogram -S --production
 ```
 
-> After installation, npm needs to be built in WeChat developer tools: `tool -  build npm`
+> After installation, npm needs to be built in WeChat developer tools: `tool -  build npm`.(If `NPM packages not found` appears during the build, please go to the `project.config.json` file to add the `packNpmManually` and `packNpmRelationList` configuration items. For details, see [NPM Support](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html?search-key=npm))
+
+> After the build is successful, check the box `Compile JS to ES5`
+> <br/>
+><img width="200" src="https://tdesign.gtimg.com/miniprogram/docs/getting-started.png" />
 
 ## Modify app.json
 
@@ -78,4 +82,14 @@ Open [WeChat Developer Tools](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools
 
 ## Base library version
 
-Minimum base library version `^2.6.5`
+Minimum base library version `^2.12.0`
+
+### Correspondence between component and basic library versions
+
+| 组件  | API    | 最低基础库 | 描述 |
+| ----- | ------ | ---------- | ---- |
+| Upload | [wx.previewMedia](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.previewMedia.html) | 2.12.0 | - |
+| Upload | [wx.chooseMedia](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html) | 2.10.0 | - |
+| Upload | [wx.chooseMessageFile](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseMessageFile.html) | 2.5.0 | - |
+| Navbar | [wx.getMenuButtonBoundingClientRect](https://developers.weixin.qq.com/miniprogram/dev/api/ui/menu/wx.getMenuButtonBoundingClientRect.html) | 2.1.0 | - |
+

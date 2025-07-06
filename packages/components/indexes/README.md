@@ -43,6 +43,12 @@ isComponent: true
 
 {{ custom }}
 
+## FAQ
+
+### 在滚动元素中， Indexes 索引组件失效（[#3746](https://github.com/Tencent/tdesign-miniprogram/issues/3746)）？
+
+`Indexes` 组件自 `0.32.0` 版本开始移除了对 `scroll-view` 的依赖，组件内部使用 [wx.pageScrollTo](https://developers.weixin.qq.com/miniprogram/dev/api/ui/scroll/wx.pageScrollTo.html) 滚动到指定位置，因此只支持页面级滚动，不支持在滚动元素中嵌套使用，包括 overflow: scroll、 scroll-view 等。
+
 ### API
 
 ### Indexes Props
@@ -85,8 +91,8 @@ t-class-sidebar-item | 侧边栏选项样式类
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-indexes-sidebar-active-bg-color | @brand-color | - 
---td-indexes-sidebar-active-color | @font-white-1 | - 
---td-indexes-sidebar-color | @font-gray-1 | - 
+--td-indexes-sidebar-active-color | @text-color-anti | - 
+--td-indexes-sidebar-color | @text-color-primary | - 
 --td-indexes-sidebar-font-size | 24rpx | - 
 --td-indexes-sidebar-item-size | 40rpx | - 
 --td-indexes-sidebar-line-height | 40rpx | - 
@@ -100,6 +106,9 @@ t-class-sidebar-item | 侧边栏选项样式类
 --td-indexes-anchor-active-color | @brand-color | - 
 --td-indexes-anchor-active-font-weight | 600 | - 
 --td-indexes-anchor-bg-color | @bg-color-secondarycontainer | - 
---td-indexes-anchor-color | @font-gray-1 | - 
+--td-indexes-anchor-border-color | @component-border | - 
+--td-indexes-anchor-color | @text-color-primary | - 
 --td-indexes-anchor-font-size | 28rpx | - 
---td-indexes-anchor-line-height | 44rpx | -
+--td-indexes-anchor-line-height | 44rpx | - 
+--td-indexes-anchor-padding | 8rpx 32rpx | - 
+--td-indexes-anchor-top | 0 | - 

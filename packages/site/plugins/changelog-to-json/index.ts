@@ -7,7 +7,7 @@ import generateChangelogJson from '../../../../src/_common/docs/plugins/changelo
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const outputPath = path.resolve(__dirname, '../../dist/changelog.json');
+const outputPath = path.resolve(__dirname, '../../../_site/changelog.json');
 const changelogPath = path.resolve(__dirname, '../../../CHANGELOG.md');
 
 export default function changelog2Json() {

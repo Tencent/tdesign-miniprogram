@@ -131,7 +131,7 @@ function _style(styles) {
 
 function isValidIconName(str) {
   // prettier-ignore
-  return getRegExp('^[A-Za-z0-9\-]+$').test(str);
+  return getRegExp('^[A-Za-z0-9\-\_]+$').test(str);
 }
 
 module.exports = {
