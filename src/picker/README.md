@@ -39,15 +39,11 @@ isComponent: true
 
 {{ area }}
 
-### 组件状态
+### 组件样式
 
 是否带标题
 
 {{ with-title }}
-
-### 不使用 Popup
-
-{{ without-popup }}
 
 ## API
 
@@ -95,6 +91,7 @@ options | Array | [] | 数据源。TS 类型：`PickerItemOption[]` `interface P
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
+
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-picker-group-height | 400rpx | - 
