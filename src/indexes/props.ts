@@ -6,9 +6,18 @@
 
 import { TdIndexesProps } from './type';
 const props: TdIndexesProps = {
+  /** 索引列表的激活项，默认首项 */
+  current: {
+    type: null,
+    value: null,
+  },
+  /** 索引列表的激活项，默认首项，非受控属性 */
+  defaultCurrent: {
+    type: null,
+  },
   /** 索引字符列表。不传默认 `A-Z` */
   indexList: {
-    type: null,
+    type: Array,
   },
   /** 索引是否吸顶，默认为true */
   sticky: {
