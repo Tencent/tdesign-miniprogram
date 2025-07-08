@@ -160,7 +160,7 @@ export default class Indexes extends SuperComponent {
       }
     },
 
-    setAnchorByCurrent(current: string | number, suorce: string) {
+    setAnchorByCurrent(current: string | number, source: 'init' | 'click' | 'touch' | 'update') {
       const { stickyOffset } = this.data;
 
       if (this.data.activeAnchor !== null && this.data.activeAnchor === current) return;
@@ -170,7 +170,7 @@ export default class Indexes extends SuperComponent {
       if (target) {
         const scrollTop = target.top - stickyOffset;
 
-        if (scrollTop === 0 && suorce === 'init') {
+        if (scrollTop === 0 && source === 'init') {
           this.setAnchorOnScroll(scrollTop);
         } else {
           wx.pageScrollTo({
@@ -179,7 +179,7 @@ export default class Indexes extends SuperComponent {
           });
         }
 
-        if (['click', 'touch'].includes(suorce)) {
+        if (['click', 'touch'].includes(source)) {
           this.toggleTips(true);
           this.triggerEvent('select', { index: current });
         }
