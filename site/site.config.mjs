@@ -430,6 +430,14 @@ export const docs = [
         component: () => import('@/progress/README.md'),
       },
       {
+        title: 'QRCode 二维码',
+        titleEn: 'QRCode',
+        name: 'qrcode',
+        meta: { docType: 'data' },
+        path: '/miniprogram/components/qrcode',
+        component: () => import('@/qrcode/README.md'),
+      },
+      {
         title: 'Result 结果',
         titleEn: 'Result',
         name: 'result',
