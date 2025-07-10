@@ -1,0 +1,12 @@
+<wxs src="./form.wxs" module="_this" />
+<view class="{{classPrefix}} {{classPrefix}}--{{labelAlign}} {{prefix}}-class">
+  <slot />
+  <view style="{{_this.buttonGroupStyle(buttonGroupStyle)}}">
+    <view capture-bind:tap="onSubmit">
+      <slot name="submit" />
+    </view>
+    <view capture-bind:tap="onReset">
+      <slot name="reset" />
+    </view>
+  </view>
+</view>

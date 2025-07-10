@@ -1,7 +1,7 @@
 @import '../common/style/base.less';
 
-@textarea-vertical-padding: 32rpx; // 文本框垂直方向间距
-@textarea-horizontal-padding: 32rpx; // 文本框水平方向间距
+@textarea-vertical-padding: var(--td-textarea-vertical-padding, 32rpx); // 文本框垂直方向间距
+@textarea-horizontal-padding: var(--td-textarea-horizontal-padding, 32rpx); // 文本框水平方向间距
 @textarea-text-line-height: 48rpx; // 输入框文本行高
 @textarea-label-line-height: 44rpx; // 标签文本行高
 @textarea-label-padding-bottom: @spacer;
