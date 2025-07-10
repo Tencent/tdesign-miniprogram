@@ -40,7 +40,7 @@
       <template
         wx:if="{{switchMode === 'none'}}"
         is="calendar-header"
-        data="{{class: classPrefix + '__month', classPrefix: classPrefix + '-header', tId: 'year_' + item.year + '_month_' + item.month, switchMode, ...actionButtons, title: _this.getMonthTitle(item.year, realLocalText.months[item.month], realLocalText.monthTitle) }}"
+        data="{{tClass: classPrefix + '__month', classPrefix: classPrefix + '-header', tId: 'year_' + item.year + '_month_' + item.month, switchMode, ...actionButtons, title: _this.getMonthTitle(item.year, realLocalText.months[item.month], realLocalText.monthTitle) }}"
       />
       <view class="{{classPrefix}}__dates">
         <view wx:for="{{(item.weekdayOfFirstDay - firstDayOfWeek + 7) % 7}}" wx:key="index" />
