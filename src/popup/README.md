@@ -80,3 +80,4 @@ t-class-content | 内容样式类
 --td-popup-bg-color | @bg-color-container | - 
 --td-popup-border-radius | @radius-default | - 
 --td-popup-close-btn-color | @text-color-primary | -
+--td-popup-transition | all 300ms ease | -
