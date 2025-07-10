@@ -8,7 +8,6 @@
         <td-doc-phone>
           <div class="qrcode__wrapper" slot="qrcode">
             <img class="qrcode" :src="qrcode" />
-            <!-- <img class="qrcode" :src="`https://tdesign.gtimg.com/miniprogram/qrcode/${name}.png`" /> -->
           </div>
           <iframe
             :src="liveUrl"
@@ -41,14 +40,8 @@ import Prismjs from 'prismjs';
 import 'prismjs/components/prism-bash.js';
 import 'prismjs/components/prism-json.js';
 
-import QrCode from '@components/qrcode.vue';
-
 export default defineComponent({
   inject: ['info', 'demos'],
-
-  components: {
-    QrCode,
-  },
 
   computed: {
     tab: {
@@ -65,14 +58,15 @@ export default defineComponent({
       const { path } = this.$route;
       const name = path.slice(path.lastIndexOf('/') + 1);
 
-      return name === 'layout' ? 'col' : name;
+      return name.replace('layout', 'col');
     },
     liveUrl() {
-      return `//tdesign.tencent.com/miniprogram-live/m2w/program/miniprogram/#!pages/${this.name}/${this.name}.html`;
+      const componentName = this.name.split('-en')[0];
+      return `//tdesign.tencent.com/miniprogram-live/m2w/program/miniprogram/#!pages/${componentName}/${componentName}.html`;
     },
     qrcode() {
-      // new URL(): https://cn.vitejs.dev/guide/assets.html#new-url-url-import-meta-url
-      return new URL(`../public/assets/qrcode/${this.name}.png`, import.meta.url).href;
+      const componentName = this.name.split('-en')[0];
+      return `//tdesign.tencent.com/miniprogram/assets/qrcode/${componentName}.png`;
     },
   },
 

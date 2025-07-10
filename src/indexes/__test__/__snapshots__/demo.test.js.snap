@@ -11,8 +11,10 @@ exports[`Indexes Indexes base demo works fine 1`] = `
     />
   </wx-view>
   <t-indexes
+    current="B"
     indexList="{{Array []}}"
     stickyOffset="{{0}}"
+    bind:change="onChange"
     bind:select="onSelect"
   >
     <t-indexes-anchor

@@ -43,6 +43,12 @@ isComponent: true
 
 {{ custom }}
 
+## FAQ
+
+### 在滚动元素中， Indexes 索引组件失效（[#3746](https://github.com/Tencent/tdesign-miniprogram/issues/3746)）？
+
+`Indexes` 组件自 `0.32.0` 版本开始移除了对 `scroll-view` 的依赖，组件内部使用 [wx.pageScrollTo](https://developers.weixin.qq.com/miniprogram/dev/api/ui/scroll/wx.pageScrollTo.html) 滚动到指定位置，因此只支持页面级滚动，不支持在滚动元素中嵌套使用，包括 overflow: scroll、 scroll-view 等。
+
 ### API
 
 ### Indexes Props
@@ -51,7 +57,9 @@ isComponent: true
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
-index-list | Array | - | `0.32.0`。索引字符列表。不传默认 `A-Z`。TS 类型：`string [] \| number[]` | N
+current | String / Number | - | `1.9.7`。索引列表的激活项，默认首项 | N
+default-current | String / Number | undefined | `1.9.7`。索引列表的激活项，默认首项。非受控属性 | N
+index-list | Array | - | `0.32.0`。索引字符列表。不传默认 `A-Z`。TS 类型：`Array<string \| number>` | N
 list | Array | [] | 已废弃。索引列表的列表数据。每个元素包含三个子元素，index(string)：索引值，例如1，2，3，...或A，B，C等；title(string): 索引标题，可不填将默认设为索引值；children(Array<{title: string}>): 子元素列表，title为子元素的展示文案。TS 类型：`ListItem[] ` `interface ListItem { title: string;  index: string;  children: { title: string; [key: string]: any} [] }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/indexes/type.ts) | N
 sticky | Boolean | true | 索引是否吸顶，默认为true。TS 类型：`Boolean` | N
 sticky-offset | Number | 0 | `1.0.0`。锚点吸顶时与顶部的距离	 | N
@@ -85,8 +93,8 @@ t-class-sidebar-item | 侧边栏选项样式类
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-indexes-sidebar-active-bg-color | @brand-color | - 
---td-indexes-sidebar-active-color | @font-white-1 | - 
---td-indexes-sidebar-color | @font-gray-1 | - 
+--td-indexes-sidebar-active-color | @text-color-anti | - 
+--td-indexes-sidebar-color | @text-color-primary | - 
 --td-indexes-sidebar-font-size | 24rpx | - 
 --td-indexes-sidebar-item-size | 40rpx | - 
 --td-indexes-sidebar-line-height | 40rpx | - 
@@ -100,6 +108,9 @@ t-class-sidebar-item | 侧边栏选项样式类
 --td-indexes-anchor-active-color | @brand-color | - 
 --td-indexes-anchor-active-font-weight | 600 | - 
 --td-indexes-anchor-bg-color | @bg-color-secondarycontainer | - 
---td-indexes-anchor-color | @font-gray-1 | - 
+--td-indexes-anchor-border-color | @component-border | - 
+--td-indexes-anchor-color | @text-color-primary | - 
 --td-indexes-anchor-font-size | 28rpx | - 
---td-indexes-anchor-line-height | 44rpx | -
+--td-indexes-anchor-line-height | 44rpx | - 
+--td-indexes-anchor-padding | 8rpx 32rpx | - 
+--td-indexes-anchor-top | 0 | - 

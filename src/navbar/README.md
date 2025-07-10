@@ -93,13 +93,17 @@ t-class-title | 标题样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
+--td-navbar-background | @navbar-bg-color | - 
 --td-navbar-bg-color | @bg-color-container | - 
---td-navbar-capsule-border-color | #e3e6ea | - 
---td-navbar-capsule-border-radius | 32rpx | - 
---td-navbar-capsule-height | 64rpx | - 
---td-navbar-capsule-width | 176rpx | - 
---td-navbar-color | @font-gray-1 | - 
---td-navbar-height | 96rpx | - 
---td-navbar-left-arrow-size | 48rpx | - 
---td-navbar-title-font-size | 36rpx | - 
---td-navbar-title-font-weight | 600 | -
+--td-navbar-capsule-border-color | @border-level-1-color | - 
+--td-navbar-capsule-border-radius | 16px | - 
+--td-navbar-capsule-height | 32px | - 
+--td-navbar-capsule-width | 88px | - 
+--td-navbar-center-left | @navbar-right | - 
+--td-navbar-center-width | --td-navbar-center-width | - 
+--td-navbar-color | @text-color-primary | - 
+--td-navbar-height | 48px | - 
+--td-navbar-left-arrow-size | 24px | - 
+--td-navbar-left-max-width | --td-navbar-left-max-width | - 
+--td-navbar-title-font-size | 18px | - 
+--td-navbar-title-font-weight | 600 | - 

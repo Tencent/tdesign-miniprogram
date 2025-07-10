@@ -171,13 +171,16 @@ export default class PickerItem extends SuperComponent {
       const index = formatOptions.findIndex((item: PickerItemOption) => item[pickerKeys?.value] === value);
       const selectedIndex = index > 0 ? index : 0;
 
-      this.updateSelected(selectedIndex, false);
-
-      this.setData({
-        formatOptions,
-        offset: -selectedIndex * pickItemHeight,
-        curIndex: selectedIndex,
-      });
+      this.setData(
+        {
+          formatOptions,
+          offset: -selectedIndex * pickItemHeight,
+          curIndex: selectedIndex,
+        },
+        () => {
+          this.updateSelected(selectedIndex, false);
+        },
+      );
     },
 
     getCount() {
