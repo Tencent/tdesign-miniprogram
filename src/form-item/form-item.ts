@@ -2,7 +2,6 @@ import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/ind
 import config from '../common/config';
 import props from './props';
 import { validate, ValidateStatus } from '../form/form-model';
-import { FormRule, ValidateTriggerType, FormItemValidateMessage } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-form-item`;
@@ -102,7 +101,7 @@ export default class FormItem extends SuperComponent {
     },
 
     // 获取验证规则
-    getRules(): FormRule[] {
+    getRules() {
       const { rules } = this.properties;
 
       // 优先使用组件自身的规则
@@ -115,7 +114,7 @@ export default class FormItem extends SuperComponent {
     },
 
     // 验证表单项
-    async validate(data, trigger: ValidateTriggerType = 'all', showErrorMessage?: boolean) {
+    async validate(data, trigger, showErrorMessage?: boolean) {
       const rules = this.getRules();
       if (rules.length === 0) {
         return { [this.properties.name]: true };
@@ -144,7 +143,7 @@ export default class FormItem extends SuperComponent {
     },
 
     // 纯净验证（不显示错误信息）
-    async validateOnly(trigger: ValidateTriggerType = 'all') {
+    async validateOnly(trigger) {
       return this.validate(trigger, false);
     },
 
@@ -216,7 +215,7 @@ export default class FormItem extends SuperComponent {
     },
 
     // 设置验证信息
-    setValidateMessage(validateMessage: FormItemValidateMessage[]) {
+    setValidateMessage(validateMessage) {
       this.setData({
         errorList: validateMessage.filter((item) => item.type === 'error'),
         successList: validateMessage.filter((item) => item.type === 'warning'),

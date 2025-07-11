@@ -1,5 +1,3 @@
-import { FormRule } from './type';
-
 // 工具函数：安全获取rule属性的实际值
 function getRuleValue(field: any, key?: string): any {
   if (field && typeof field === 'object' && 'type' in field) {
@@ -37,7 +35,7 @@ export interface ValidateResult {
 }
 
 // 执行单个验证规则
-async function executeRule(value: any, rule: FormRule): Promise<ValidateResult> {
+async function executeRule(value: any, rule): Promise<ValidateResult> {
   const result: ValidateResult = {
     result: true,
   };
@@ -156,7 +154,7 @@ async function executeRule(value: any, rule: FormRule): Promise<ValidateResult> 
 }
 
 // 验证函数
-export async function validate(value: any, rules: FormRule[]): Promise<ValidateResult[]> {
+export async function validate(value: any, rules): Promise<ValidateResult[]> {
   const results: ValidateResult[] = [];
 
   const promises = rules.map((rule) => executeRule(value, rule));

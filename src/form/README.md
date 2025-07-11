@@ -1,68 +1,4 @@
----
-title: Form 表单
-description: 表单组件，用于数据录入、校验，支持布局、验证、提交等功能。
-spline: form
-isComponent: true
----
-
-<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-100%25-blue" /></span>
-
-## 引入
-
-全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
-
-```json
-"usingComponents": {
-  "t-form": "tdesign-miniprogram/form/form",
-  "t-form-item": "tdesign-miniprogram/form/form-item"
-}
-```
-
-## 代码演示
-
-<a href="https://developers.weixin.qq.com/s/F1cSo7mm75SS" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
-
-<blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
-<p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
-</blockquote>
-
-### 01 组件类型
-
-#### 基础表单
-
-{{ base }}
-
-#### 水平布局表单
-
-{{ horizontal }}
-
-#### 垂直布局表单
-
-{{ vertical }}
-
-### 02 组件状态
-
-#### 表单验证
-
-{{ validation }}
-
-#### 表单禁用
-
-{{ disabled }}
-
-### 03 组件样式
-
-#### 标签对齐
-
-{{ label-align }}
-
-#### 必填标识
-
-{{ required-mark }}
-
-#### 冒号显示
-
-{{ colon }}
+:: BASE_DOC ::
 
 ## API
 
@@ -72,28 +8,29 @@ isComponent: true
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
+button-group-style | Object | {} | 表单底部按钮组样式 | N
 colon | Boolean | false | 是否在表单标签字段右侧显示冒号 | N
-contentAlign | String | 'left' | 表单内容对齐方式。可选项：left/right | N
-data | Object | {} | 表单数据 | N
-disabled | Boolean | undefined | 是否禁用整个表单 | N
-errorMessage | Object | - | 表单错误信息配置 | N
-labelAlign | String | 'left' | 表单字段标签对齐方式。可选项：left/right/top | N
-labelWidth | String / Number | '81px' | 可以整体设置label标签宽度 | N
-preventSubmitDefault | Boolean | true | 是否阻止表单提交默认事件 | N
-requiredMark | Boolean | undefined | 是否显示必填符号（*） | N
-resetType | String | 'empty' | 重置表单的方式。可选项：empty/initial | N
-rules | Object | - | 表单字段校验规则 | N
-scrollToFirstError | String | - | 表单校验不通过时，是否自动滚动到第一个校验不通过的字段。可选项：smooth/auto | N
-showErrorMessage | Boolean | true | 校验不通过时，是否显示错误提示信息 | N
-submitWithWarningMessage | Boolean | false | 当校验结果只有告警信息时，是否触发 submit 提交事件 | N
+data | Object | {} | 表单数据。TS 类型：`FormData` | N
+label-align | String | right | 表单字段标签对齐方式：左对齐、右对齐、顶部对齐。可选项：left/right/top | N
+label-width | String / Number | '100px' | 可以整体设置label标签宽度，默认为100px | N
+required-mark | Boolean | undefined | 是否显示必填符号（*），默认显示 | N
+reset-type | String | empty | 重置表单的方式，值为 empty 表示重置表单为空，值为 initial 表示重置表单数据为初始值。可选项：empty/initial | N
+rules | Object | - | 表单字段校验规则。TS 类型：`FormRules<FormData>` `type FormRules<T extends Data = any> = { [field in keyof T]?: Array<FormRule> }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/form/type.ts) | N
 
 ### Form Events
 
 名称 | 参数 | 描述
 -- | -- | --
-submit | `(context: SubmitContext)` | 表单提交时触发
-reset | `(context: { e?: FormResetEvent })` | 表单重置时触发
-validate | `(result: ValidateResultContext)` | 校验结束后触发
+reset | `(detail: { e?: FormResetEvent })` | 表单重置时触发
+submit | `(context: SubmitContext<FormData>)` | 表单提交时触发。其中 `context.validateResult` 表示校验结果，`context.firstError` 表示校验不通过的第一个规则提醒。`context.validateResult` 值为 `true` 表示校验通过；如果校验不通过，`context.validateResult` 值为校验结果列表。<br />【注意】⚠️ 默认情况，输入框按下 Enter 键会自动触发提交事件，如果希望禁用这个默认行为，可以给输入框添加  enter 事件，并在事件中设置 `e.preventDefault()`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/form/type.ts)。<br/>`interface SubmitContext<T extends Data = Data> { e?: FormSubmitEvent; validateResult: FormValidateResult<T>; firstError?: string; fields?: any }`<br/><br/>`type FormValidateResult<T> = boolean \| ValidateResultObj<T>`<br/><br/>`type ValidateResultObj<T> = { [key in keyof T]: boolean \| ValidateResultList }`<br/><br/>`type ValidateResultList = Array<AllValidateResult>`<br/><br/>`type AllValidateResult = CustomValidateObj \| ValidateResultType`<br/><br/>`interface ValidateResultType extends FormRule { result: boolean }`<br/><br/>`type ValidateResult<T> = { [key in keyof T]: boolean \| ErrorList }`<br/><br/>`type ErrorList = Array<FormRule>`<br/>
+
+### FormInstanceFunctions 组件实例方法
+
+名称 | 参数 | 返回值 | 描述
+-- | -- | -- | --
+reset | `(params?: FormResetParams<FormData>)` | \- | 必需。重置表单，表单里面没有重置按钮`<button type=\"reset\" />`时可以使用该方法，默认重置全部字段为空，该方法会触发 `reset` 事件。<br />如果表单属性 `resetType='empty'` 或者 `reset.type='empty'` 会重置为空；<br />如果表单属性 `resetType='initial'` 或者 `reset.type='initial'` 会重置为表单初始值。<br />`reset.fields` 用于设置具体重置哪些字段，示例：`reset({ type: 'initial', fields: ['name', 'age'] })`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/form/type.ts)。<br/>`interface FormResetParams<FormData> { type?: 'initial' \| 'empty'; fields?: Array<keyof FormData> }`<br/>
+submit | `(params?: { showErrorMessage?: boolean })` | \- | 必需。提交表单，表单里面没有提交按钮`<button type=\"submit\" />`时可以使用该方法。`showErrorMessage` 表示是否在提交校验不通过时显示校验不通过的原因，默认显示。该方法会触发 `submit` 事件
+
 
 ### FormItem Props
 
@@ -101,87 +38,50 @@ validate | `(result: ValidateResultContext)` | 校验结束后触发
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
-arrow | Boolean | false | 是否显示右侧箭头 | N
-contentAlign | String | 'left' | 表单内容对齐方式。可选项：left/right | N
-for | String | - | label 原生属性 | N
-help | String | - | 表单项说明内容 | N
-label | String | '' | 字段标签名称 | N
-labelAlign | String | - | 表单字段标签对齐方式。可选项：left/right/top | N
-labelWidth | String / Number | - | 可以整体设置标签宽度 | N
-name | String / Number | - | 表单字段名称 | N
-requiredMark | Boolean | undefined | 是否显示必填符号（*） | N
-rules | Array | - | 表单字段校验规则 | N
-showErrorMessage | Boolean | undefined | 校验不通过时，是否显示错误提示信息 | N
+help | String / Slot | - | 表单项说明内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+label-align | String | - | 表单字段标签对齐方式：左对齐、右对齐、顶部对齐。默认使用 Form 的对齐方式，优先级高于 Form.labelAlign。可选项：left/right/top | N
+label-width | String / Number | - | 可以整体设置标签宽度，优先级高于 Form.labelWidth | N
+name | String | - | 表单字段名称 | N
+required-mark | Boolean | undefined | 是否显示必填符号（*），优先级高于 Form.requiredMark | N
 
-### 验证规则
+### FormRule
 
-名称 | 类型 | 描述
--- | -- | --
-required | Boolean | 必填验证
-email | Boolean | 邮箱验证
-telnumber | Boolean | 手机号验证
-idcard | Boolean | 身份证验证
-number | Boolean | 数字验证
-boolean | Boolean | 布尔值验证
-url | Boolean | URL验证
-date | Boolean | 日期验证
-whitespace | Boolean | 空格验证
-len | Number | 长度验证
-min | Number | 最小长度验证
-max | Number | 最大长度验证
-enum | Array | 枚举验证
-pattern | RegExp | 正则验证
-validator | Function | 自定义验证
+名称 | 类型 | 默认值 | 描述 | 必传
+-- | -- | -- | -- | --
+boolean | Boolean | - | 内置校验方法，校验值类型是否为布尔类型，示例：`{ boolean: true, message: '数据类型必须是布尔类型' }` | N
+date | Boolean / Object | - | 内置校验方法，校验值是否为日期格式，[参数文档](https://github.com/validatorjs/validator.js)，示例：`{ date: { delimiters: '-' }, message: '日期分隔线必须是短横线（-）' }`。TS 类型：`boolean \| IsDateOptions` `interface IsDateOptions { format: string; strictMode: boolean; delimiters: string[] }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/form/type.ts) | N
+email | Boolean / Object | - | 内置校验方法，校验值是否为邮件格式，[参数文档](https://github.com/validatorjs/validator.js)，示例：`{ email: { ignore_max_length: true }, message: '请输入正确的邮箱地址' }`。TS 类型：`boolean \| IsEmailOptions` `import { IsEmailOptions } from 'validator/es/lib/isEmail'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/form/type.ts) | N
+enum | Array | - | 内置校验方法，校验值是否属于枚举值中的值。示例：`{ enum: ['primary', 'info', 'warning'], message: '值只能是 primary/info/warning 中的一种' }`。TS 类型：`Array<string>` | N
+idcard | Boolean | - | 内置校验方法，校验值是否为身份证号码，组件校验正则为 `/^(\\d{18,18}\|\\d{15,15}\|\\d{17,17}x)$/i`，示例：`{ idcard: true, message: '请输入正确的身份证号码' }` | N
+len | Number / Boolean | - | 内置校验方法，校验值固定长度，如：len: 10 表示值的字符长度只能等于 10 ，中文表示 2 个字符，英文为 1 个字符。示例：`{ len: 10, message: '内容长度不对' }`。<br />如果希望字母和中文都是同样的长度，示例：`{ validator: (val) => val.length === 10, message: '内容文本长度只能是 10 个字' }` | N
+max | Number / Boolean | - | 内置校验方法，校验值最大长度，如：max: 100 表示值最多不能超过 100 个字符，中文表示 2 个字符，英文为 1 个字符。示例：`{ max: 10, message: '内容超出' }`。<br />如果希望字母和中文都是同样的长度，示例：`{ validator: (val) => val.length <= 10, message: '内容文本长度不能超过 10 个字' }`<br />如果数据类型数字（Number），则自动变为数字大小的比对 | N
+message | String | - | 校验未通过时呈现的错误信息，值为空则不显示 | N
+min | Number / Boolean | - | 内置校验方法，校验值最小长度，如：min: 10 表示值最多不能少于 10 个字符，中文表示 2 个字符，英文为 1 个字符。示例：`{ min: 10, message: '内容长度不够' }`。<br />如果希望字母和中文都是同样的长度，示例：`{ validator: (val) => val.length >= 10, message: '内容文本长度至少为 10 个字' }`。<br />如果数据类型数字（Number），则自动变为数字大小的比对 | N
+number | Boolean | - | 内置校验方法，校验值是否为数字（1.2 、 1e5  都算数字），示例：`{ number: true, message: '请输入数字' }` | N
+pattern | Object | - | 内置校验方法，校验值是否符合正则表达式匹配结果，示例：`{ pattern: /@qq.com/, message: '请输入 QQ 邮箱' }`。TS 类型：`RegExp` | N
+required | Boolean | - | 内置校验方法，校验值是否已经填写。该值为 true，默认显示必填标记，可通过设置 `requiredMark: false` 隐藏必填标记 | N
+telnumber | Boolean | - | 内置校验方法，校验值是否为手机号码，校验正则为 `/^1[3-9]\d{9}$/`，示例：`{ telnumber: true, message: '请输入正确的手机号码' }` | N
+trigger | String | change | 校验触发方式。TS 类型：`ValidateTriggerType` | N
+type | String | error | 校验未通过时呈现的错误信息类型，有 告警信息提示 和 错误信息提示 等两种。可选项：error/warning | N
+url | Boolean / Object | - | 内置校验方法，校验值是否为网络链接地址，[参数文档](https://github.com/validatorjs/validator.js)，示例：`{ url: { protocols: ['http','https','ftp'] }, message: '请输入正确的 Url 地址' }`。TS 类型：`boolean \| IsURLOptions` `import { IsURLOptions } from 'validator/es/lib/isURL'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/form/type.ts) | N
+validator | Function | - | 自定义校验规则，示例：`{ validator: (val) => val.length > 0, message: '请输入内容'}`。TS 类型：`CustomValidator` `type CustomValidator = (val: ValueType) => CustomValidateResolveType \| Promise<CustomValidateResolveType>` `type CustomValidateResolveType = boolean \| CustomValidateObj` `interface CustomValidateObj { result: boolean; message: string; type?: 'error' \| 'warning' \| 'success' }` `type ValueType = any`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/form/type.ts) | N
+whitespace | Boolean | - | 内置校验方法，校验值是否为空格。示例：`{ whitespace: true, message: '值不能为空' }` | N
 
-### 组件实例方法
+### FormErrorMessage
 
-名称 | 参数 | 返回值 | 描述
--- | -- | -- | --
-validate | `(params?: FormValidateParams)` | `Promise<FormValidateResult>` | 校验函数
-validateOnly | `(params?: Pick<FormValidateParams, 'fields' \| 'trigger'>)` | `Promise<FormValidateResult>` | 纯净的校验函数
-submit | `(params?: { showErrorMessage?: boolean })` | - | 提交表单
-reset | `(params?: FormResetParams)` | - | 重置表单
-clearValidate | `(fields?: Array<string>)` | - | 清空校验结果
-setValidateMessage | `(message: FormValidateMessage)` | - | 设置自定义校验结果
-
-### Form External Classes
-
-类名 | 描述
--- | --
-t-class | 根节点样式类
-
-### FormItem External Classes
-
-类名 | 描述
--- | --
-t-class | 根节点样式类
-t-class-label | 标签样式类
-t-class-help | 说明内容样式类
-t-class-error | 错误信息样式类
-
-### CSS Variables
-
-组件提供了下列 CSS 变量，可用于自定义样式。
-
-名称 | 默认值 | 描述
--- | -- | --
---td-form-bg-color | @bg-color-container | -
---td-form-border-color | @component-stroke | -
---td-form-border-radius | @radius-default | -
---td-form-item-border-color | @component-stroke | -
---td-form-item-border-width | 1rpx | -
---td-form-item-padding | 32rpx | -
---td-form-label-color | @text-color-primary | -
---td-form-label-font-size | @font-size-m | -
---td-form-label-font-weight | 400 | -
---td-form-label-line-height | 48rpx | -
---td-form-label-min-width | 2em | -
---td-form-label-max-width | 5em | -
---td-form-required-color | @error-color | -
---td-form-help-color | @text-color-placeholder | -
---td-form-help-font-size | @font-size-s | -
---td-form-error-color | @error-color | -
---td-form-error-font-size | @font-size-s | -
---td-form-colon-color | @text-color-primary | -
---td-form-colon-margin-left | 4rpx | -
---td-form-colon-margin-right | 8rpx | - 
+名称 | 类型 | 默认值 | 描述 | 必传
+-- | -- | -- | -- | --
+boolean | String | - | 布尔类型校验不通过时的表单项显示文案，全局配置默认是：`'${name}数据类型必须是布尔类型'` | N
+date | String | - | 日期校验规则不通过时的表单项显示文案，全局配置默认是：`'请输入正确的${name}'` | N
+enum | String | - | 枚举值校验规则不通过时的表单项显示文案，全局配置默认是：`${name}只能是${validate}等` | N
+idcard | String | - | 身份证号码校验不通过时的表单项显示文案，全局配置默认是：`'请输入正确的${name}'` | N
+len | String | - | 值长度校验不通过时的表单项显示文案，全局配置默认是：`'${name}字符长度必须是 ${validate}'` | N
+max | String | - | 值的长度太长或值本身太大时，校验不通过的表单项显示文案，全局配置默认是：`'${name}字符长度不能超过 ${validate} 个字符，一个中文等于两个字符'` | N
+min | String | - | 值的长度太短或值本身太小时，校验不通过的表单项显示文案，全局配置默认是：`'${name}字符长度不能少于 ${validate} 个字符，一个中文等于两个字符'` | N
+number | String | - | 数字类型校验不通过时的表单项显示文案，全局配置默认是：`'${name}必须是数字'` | N
+pattern | String | - | 正则表达式校验不通过时的表单项显示文案，全局配置默认是：`'请输入正确的${name}'` | N
+required | String | - | 没有填写必填项时的表单项显示文案，全局配置默认是：`'${name}必填'` | N
+telnumber | String | - | 手机号号码校验不通过时的表单项显示文案，全局配置默认是：`'请输入正确的${name}'` | N
+url | String | - | 链接校验规则不通过时的表单项显示文案，全局配置默认是：`'请输入正确的${name}'` | N
+validator | String | - | 自定义校验规则校验不通过时的表单项显示文案，全局配置默认是：'${name}不符合要求' | N
+whitespace | String | - | 值为空格校验不通过时表单项显示文案，全局配置默认是：`'${name}不能为空` | N

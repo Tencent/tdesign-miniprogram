@@ -1,7 +1,6 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { FormValidateParams, FormValidateMessage, Data } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-form`;
@@ -109,7 +108,7 @@ export default class Form extends SuperComponent {
     },
 
     // 纯净验证（不显示错误信息）
-    async validateOnly(params: Pick<FormValidateParams, 'fields' | 'trigger'> = {}) {
+    async validateOnly(params) {
       const { fields, trigger = 'all' } = params;
       const { children } = this.data;
 
@@ -214,7 +213,7 @@ export default class Form extends SuperComponent {
     },
 
     // 设置验证信息
-    setValidateMessage(validateMessage: FormValidateMessage<Data>) {
+    setValidateMessage(validateMessage) {
       const { children } = this.data;
 
       children.forEach((child) => {
