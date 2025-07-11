@@ -93,8 +93,10 @@ export default class PullDownRefresh extends SuperComponent {
           this.setData({
             refreshStatus: 3,
           });
+          setTimeout(() => {
+            this.setData({ barHeight: 0 });
+          }, this.properties.successDuration);
         }
-        this.setData({ barHeight: 0 });
       } else {
         this.doRefresh();
       }
