@@ -22,6 +22,8 @@ Component({
     },
     onScroll(e) {
       const { scrollTop } = e.detail;
+      if (this.data.enable) return;
+
       this.setData({ scrollTop });
     },
   },
