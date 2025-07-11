@@ -1,7 +1,5 @@
 export type Classes = Array<string>;
 
-export type TNode<T = any> = string | number | boolean | ((props: T) => string | number | boolean) | any;
-
 export interface Styles {
   [css: string]: string | number;
 }
@@ -21,13 +19,13 @@ export type OptionData = {
 export type TreeOptionData<T = string | number> = {
   children?: Array<TreeOptionData<T>> | boolean;
   /** option label content */
-  label?: string | TNode;
+  label?: string;
   /** option search text */
   text?: string;
   /** option value */
   value?: T;
   /** option node content */
-  content?: string | TNode;
+  content?: string;
 } & PlainObject;
 
 export type SizeEnum = 'small' | 'medium' | 'large';
