@@ -2,7 +2,7 @@
   "component": true,
   "usingComponents": {
     "t-form": "tdesign-miniprogram/form/form",
-    "t-form-item": "tdesign-miniprogram/form/form-item",
+    "t-form-item": "tdesign-miniprogram/form-item/form-item",
     "t-input": "tdesign-miniprogram/input/input",
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",

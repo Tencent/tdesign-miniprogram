@@ -23,7 +23,7 @@ export default class Form extends SuperComponent {
   };
 
   relations: RelationsOptions = {
-    [`./form-item`]: {
+    '../form-item/form-item': {
       type: 'child',
       linked() {},
     },
