@@ -65,6 +65,7 @@ export default class PullDownRefresh extends SuperComponent {
       this.setData({
         _maxBarHeight: unitConvert(maxBarHeight),
         _loadingBarHeight: unitConvert(loadingBarHeight),
+        tipsHeight: unitConvert(loadingBarHeight),
         loadingTexts: isCustomLoadingTexts ? loadingTexts : defaultLoadingTexts,
       });
 
@@ -105,8 +106,6 @@ export default class PullDownRefresh extends SuperComponent {
           this.setData({ refreshStatus: -1 });
         }, 240);
       }
-
-      this.setData({ tipsHeight: Math.min(val, this.data._loadingBarHeight) });
     },
 
     maxBarHeight(v) {
@@ -114,7 +113,7 @@ export default class PullDownRefresh extends SuperComponent {
     },
 
     loadingBarHeight(v) {
-      this.setData({ _loadingBarHeight: unitConvert(v) });
+      this.setData({ tipsHeight: unitConvert(v), _loadingBarHeight: unitConvert(v) });
     },
   };
 
