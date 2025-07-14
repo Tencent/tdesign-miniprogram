@@ -57,7 +57,6 @@ Page({
 
       path = `/pages/${name}/${this.skyline ? 'skyline/' : ''}${name}`;
     }
-    console.log(path);
 
     wx.navigateTo({
       url: path,
