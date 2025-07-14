@@ -10,13 +10,14 @@ const props: TdFormItemProps = {
   help: {
     type: String,
   },
+  /** 字段标签名称 */
+  label: {
+    type: String,
+    value: '',
+  },
   /** 表单字段标签对齐方式：左对齐、右对齐、顶部对齐。默认使用 Form 的对齐方式，优先级高于 Form.labelAlign */
   labelAlign: {
     type: String,
-  },
-  /** 可以整体设置标签宽度，优先级高于 Form.labelWidth */
-  labelWidth: {
-    type: null,
   },
   /** 表单字段名称 */
   name: {

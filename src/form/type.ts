@@ -7,8 +7,6 @@
 import { IsEmailOptions } from 'validator/es/lib/isEmail';
 import { IsURLOptions } from 'validator/es/lib/isURL';
 
-export type ValidateTriggerType = 'blur' | 'change' | 'submit' | 'all';
-
 export interface TdFormProps<FormData extends Data = Data> {
   /**
    * 表单底部按钮组样式
@@ -43,15 +41,8 @@ export interface TdFormProps<FormData extends Data = Data> {
     value?: 'left' | 'right' | 'top';
   };
   /**
-   * 可以整体设置label标签宽度，默认为100px
-   * @default '100px'
-   */
-  labelWidth?: {
-    type: null;
-    value?: string | number;
-  };
-  /**
    * 是否显示必填符号（*），默认显示
+   * @default false
    */
   requiredMark?: {
     type: BooleanConstructor;
@@ -67,6 +58,7 @@ export interface TdFormProps<FormData extends Data = Data> {
   };
   /**
    * 表单字段校验规则
+   * @default {}
    */
   rules?: {
     type: ObjectConstructor;
@@ -103,18 +95,19 @@ export interface TdFormItemProps {
     value?: string;
   };
   /**
+   * 字段标签名称
+   * @default ''
+   */
+  label?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 表单字段标签对齐方式：左对齐、右对齐、顶部对齐。默认使用 Form 的对齐方式，优先级高于 Form.labelAlign
    */
   labelAlign?: {
     type: StringConstructor;
     value?: 'left' | 'right' | 'top';
-  };
-  /**
-   * 可以整体设置标签宽度，优先级高于 Form.labelWidth
-   */
-  labelWidth?: {
-    type: null;
-    value?: string | number;
   };
   /**
    * 表单字段名称
@@ -187,11 +180,6 @@ export interface FormRule {
    * 内置校验方法，校验值是否为手机号码，校验正则为 `/^1[3-9]\d{9}$/`，示例：`{ telnumber: true, message: '请输入正确的手机号码' }`
    */
   telnumber?: boolean;
-  /**
-   * 校验触发方式
-   * @default change
-   */
-  trigger?: ValidateTriggerType;
   /**
    * 校验未通过时呈现的错误信息类型，有 告警信息提示 和 错误信息提示 等两种
    * @default error

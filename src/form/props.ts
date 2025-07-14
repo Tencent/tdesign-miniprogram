@@ -26,15 +26,10 @@ const props: TdFormProps = {
     type: String,
     value: 'right',
   },
-  /** 可以整体设置label标签宽度，默认为100px */
-  labelWidth: {
-    type: null,
-    value: '100px',
-  },
   /** 是否显示必填符号（*），默认显示 */
   requiredMark: {
-    type: null,
-    value: undefined,
+    type: Boolean,
+    value: false,
   },
   /** 重置表单的方式，值为 empty 表示重置表单为空，值为 initial 表示重置表单数据为初始值 */
   resetType: {
@@ -44,6 +39,7 @@ const props: TdFormProps = {
   /** 表单字段校验规则 */
   rules: {
     type: Object,
+    value: {},
   },
 };
 

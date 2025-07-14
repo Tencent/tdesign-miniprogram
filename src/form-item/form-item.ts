@@ -1,6 +1,6 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
-import props from './props';
+import props from '../form/form-item-props';
 import { validate, ValidateStatus } from '../form/form-model';
 
 const { prefix } = config;
@@ -40,12 +40,13 @@ export default class FormItem extends SuperComponent {
       linked(target) {
         target.registerChild(this);
         this.form = target;
-        const { requiredMark } = this.properties;
+        const { requiredMark, labelAlign } = this.properties;
         this.setData({
           rules: target.data.rules[this.properties.name],
           colon: target.data.colon,
-          labelAlign: target.data.labelAlign,
-          requiredMark: requiredMark === undefined ? target.data.requiredMark : requiredMark,
+          labelAlign: labelAlign || target.data.labelAlign || 'right',
+          labelWidth: target.data.labelWidth,
+          requiredMark: requiredMark || target.data.requiredMark || false,
         });
       },
       unlinked() {

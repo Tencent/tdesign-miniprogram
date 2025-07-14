@@ -12,10 +12,9 @@ button-group-style | Object | {} | The style of the button group at the bottom o
 colon | Boolean | false | \- | N
 data | Object | {} | Typescript：`FormData` | N
 label-align | String | right | options: left/right/top | N
-label-width | String / Number | '100px' | \- | N
-required-mark | Boolean | undefined | \- | N
+required-mark | Boolean | false | \- | N
 reset-type | String | empty | options: empty/initial | N
-rules | Object | - | Typescript：`FormRules<FormData>` `type FormRules<T extends Data = any> = { [field in keyof T]?: Array<FormRule> }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/form/type.ts) | N
+rules | Object | {} | Typescript：`FormRules<FormData>` `type FormRules<T extends Data = any> = { [field in keyof T]?: Array<FormRule> }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/form/type.ts) | N
 
 ### Form Events
 
@@ -30,6 +29,11 @@ name | params | return | description
 -- | -- | -- | --
 reset | `(params?: FormResetParams<FormData>)` | \- | required。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/form/type.ts)。<br/>`interface FormResetParams<FormData> { type?: 'initial' \| 'empty'; fields?: Array<keyof FormData> }`<br/>
 submit | `(params?: { showErrorMessage?: boolean })` | \- | required
+### Form CSS Variables
+
+variableName | default | description
+-- | -- | --
+td-form-item-label-width | '100px' | \-
 
 
 ### FormItem Props
@@ -39,8 +43,8 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 help | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+label | String / Slot | '' | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 label-align | String | - | options: left/right/top | N
-label-width | String / Number | - | \- | N
 name | String | - | \- | N
 required-mark | Boolean | undefined | \- | N
 
@@ -61,7 +65,6 @@ number | Boolean | - | \- | N
 pattern | Object | - | Typescript：`RegExp` | N
 required | Boolean | - | \- | N
 telnumber | Boolean | - | \- | N
-trigger | String | change | Typescript：`ValidateTriggerType` | N
 type | String | error | options: error/warning | N
 url | Boolean / Object | - | Typescript：`boolean \| IsURLOptions` `import { IsURLOptions } from 'validator/es/lib/isURL'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/form/type.ts) | N
 validator | Function | - | Typescript：`CustomValidator` `type CustomValidator = (val: ValueType) => CustomValidateResolveType \| Promise<CustomValidateResolveType>` `type CustomValidateResolveType = boolean \| CustomValidateObj` `interface CustomValidateObj { result: boolean; message: string; type?: 'error' \| 'warning' \| 'success' }` `type ValueType = any`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/form/type.ts) | N
