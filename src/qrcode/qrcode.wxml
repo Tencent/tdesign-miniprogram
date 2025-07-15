@@ -1,0 +1,20 @@
+<!-- 边框是否展现需要控制 -->
+<view style="border: 1rpx #DCDCDC solid; border-radius: 6rpx; position: relative;">
+  <qrcode-canvas
+    bind:qrcodeTouch="{{qrcodeTouch}}"
+    value="{{value}}"
+    level="{{level}}"
+    color="{{color}}" 
+    bgColor="{{bgColor}}"
+    icon="{{icon}}"
+    bind:drawError="handleDrawError"
+    bind:drawCompleted="handleDrawCompleted"
+  >
+  </qrcode-canvas>
+  <block wx:if="{{  showMask && canvasReady}}">
+    <qrcode-status
+      status="{{status}}"
+    > 
+    </qrcode-status>
+  </block>
+</view>

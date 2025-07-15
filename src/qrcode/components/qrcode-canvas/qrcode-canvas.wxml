@@ -1,0 +1,11 @@
+<canvas  
+  class="qrcode-canvas"
+  type="2d" 
+  id="qrcodeCanvas"
+  style="width: {{size}}rpx; height: {{size}}rpx;"
+  bindtouchstart="handleTouch"
+>
+</canvas>
+
+
+

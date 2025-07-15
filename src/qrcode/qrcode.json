@@ -1,0 +1,7 @@
+{
+    "component": true,
+    "usingComponents": {
+      "qrcode-canvas": "./components/qrcode-canvas/qrcode-canvas",
+      "qrcode-status": "./components/qrcode-status/qrcode-status"
+    }
+}
