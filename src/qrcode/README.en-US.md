@@ -2,7 +2,6 @@
 
 ## API
 
-
 ### QRCode Props
 
 name | type | default | description | required
