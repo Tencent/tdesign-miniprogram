@@ -12,7 +12,7 @@ export default {
   },
   size: {
     type: Number,
-    value: 300 as TdQRCodeProps['size'],
+    value: 160 as TdQRCodeProps['size'],
   },
   iconSize: {
     type: Number,

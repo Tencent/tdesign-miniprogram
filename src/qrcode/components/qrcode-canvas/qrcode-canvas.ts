@@ -2,14 +2,14 @@ import { SuperComponent, wxComponent } from '../../../common/src/index';
 import props from './props';
 import { TdQRCodeProps, QRCodeEvents, QRCodeMethods } from './type';
 import { DEFAULT_MINVERSION, excavateModules } from '../../utils/utils';
-import { useQRCode } from '../../hooks/useQRCode';
+import { useQRCode } from '../../utils/useQRCode';
 
 @wxComponent()
 export default class QRCode extends SuperComponent implements QRCodeMethods {
   properties = props;
   events: QRCodeEvents = {
     drawCompleted: true,
-    drawError: true,
+    drawError: {error: null},
     qrcodeTouch: true,
   };
 
