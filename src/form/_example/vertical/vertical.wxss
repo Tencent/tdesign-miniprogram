@@ -1,0 +1,46 @@
+.box {
+  display: flex;
+  gap: 16px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 80px;
+}
+
+.upload {
+  width: 100%;
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.button-group .submit-button,
+.button-group .reset-button {
+  flex: 1;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.button-group .submit-button {
+  background-color: #0052d9;
+  color: #fff;
+}
+
+.button-group .reset-button {
+  background-color: #f5f5f5;
+  color: #666;
+}
+
+.button-group .submit-button::after,
+.button-group .reset-button::after {
+  border: none;
+}
