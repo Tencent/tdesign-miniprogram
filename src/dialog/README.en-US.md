@@ -58,4 +58,4 @@ Name | Default Value | Description
 --td-dialog-title-color | @text-color-primary | - 
 --td-dialog-title-font-size | 36rpx | - 
 --td-dialog-title-line-height | 52rpx | - 
---td-dialog-width | 622rpx | -
+--td-dialog-width | 622rpx | - 

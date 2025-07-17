@@ -112,8 +112,8 @@ t-class-text | 文本样式类
 -- | -- | --
 --td-rate-icon-scale | 1.33 | - 
 --td-rate-selected-color | @warning-color | - 
---td-rate-text-active-color | @font-gray-1 | - 
+--td-rate-text-active-color | @text-color-primary | - 
 --td-rate-text-active-font-weight | 600 | - 
---td-rate-text-color | @font-gray-4 | - 
+--td-rate-text-color | @text-color-disabled | - 
 --td-rate-text-font-size | @font-size-m | - 
---td-rate-unselected-color | @bg-color-secondarycomponent | -
+--td-rate-unselected-color | @component-border | - 

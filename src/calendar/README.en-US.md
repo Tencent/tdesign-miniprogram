@@ -48,8 +48,9 @@ Name | Default Value | Description
 --td-calendar-item-disabled-color | @text-color-disabled | - 
 --td-calendar-item-suffix-color | @text-color-placeholder | - 
 --td-calendar-radius | 24rpx | - 
+--td-calendar-selected-border-radius | @radius-default | - 
 --td-calendar-selected-color | @text-color-anti | - 
---td-calendar-switch-mode-icon-color | @brand-color | - 
---td-calendar-switch-mode-icon-disabled-color | @brand-color-disabled | - 
+--td-calendar-switch-mode-icon-color | @text-color-secondary | - 
+--td-calendar-switch-mode-icon-disabled-color | @text-color-disabled | - 
 --td-calendar-title-color | @text-color-primary | - 
---td-calendar-title-font-size | 18px | -
+--td-calendar-title-font-size | 18px | - 

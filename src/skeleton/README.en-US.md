@@ -26,13 +26,14 @@ t-class-row | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
+--td-skeleton-circle-border-radius | @skeleton-circle-border-radius | - 
 --td-skeleton-animation-flashed | rgba(90%, 90%, 90%, 0.3) | - 
 --td-skeleton-animation-gradient | rgba(0, 0, 0, 4%) | - 
---td-skeleton-bg-color | @bg-color-page | - 
+--td-skeleton-bg-color | @bg-color-secondarycontainer | - 
 --td-skeleton-circle-border-radius | @radius-circle | - 
 --td-skeleton-circle-height | 96rpx | - 
 --td-skeleton-rect-border-radius | @radius-default | - 
 --td-skeleton-rect-height | 32rpx | - 
 --td-skeleton-row-spacing | @spacer-2 | - 
 --td-skeleton-text-border-radius | @radius-small | - 
---td-skeleton-text-height | 32rpx | -
+--td-skeleton-text-height | 32rpx | - 

@@ -63,8 +63,8 @@ Name | Default Value | Description
 --td-tab-font-size | 28rpx | - 
 --td-tab-icon-size | 36rpx | - 
 --td-tab-item-active-color | @brand-color | - 
---td-tab-item-color | @font-gray-1 | - 
---td-tab-item-disabled-color | @font-gray-4 | - 
+--td-tab-item-color | @text-color-primary | - 
+--td-tab-item-disabled-color | @text-color-disabled | - 
 --td-tab-item-height | 96rpx | - 
 --td-tab-item-tag-active-bg | @brand-color-light | - 
 --td-tab-item-tag-bg | @bg-color-secondarycontainer | - 
@@ -75,4 +75,4 @@ Name | Default Value | Description
 --td-tab-track-color | @brand-color | - 
 --td-tab-track-radius | 8rpx | - 
 --td-tab-track-thickness | 6rpx | - 
---td-tab-track-width | 32rpx | -
+--td-tab-track-width | 32rpx | - 

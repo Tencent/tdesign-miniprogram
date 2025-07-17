@@ -67,6 +67,7 @@ Name | Default Value | Description
 --td-search-bg-color | @bg-color-secondarycontainer | - 
 --td-search-clear-icon-color | @text-color-placeholder | - 
 --td-search-clear-icon-font-size | 48rpx | - 
+--td-search-disabled-text-color | @text-color-disabled | - 
 --td-search-font-size | @font-size-m | - 
 --td-search-height | 80rpx | - 
 --td-search-icon-color | @text-color-placeholder | - 
@@ -76,4 +77,4 @@ Name | Default Value | Description
 --td-search-placeholder-color | @text-color-placeholder | - 
 --td-search-result-high-light-color | @brand-color | - 
 --td-search-square-radius | @radius-default | - 
---td-search-text-color | @text-color-primary | -
+--td-search-text-color | @text-color-primary | - 
