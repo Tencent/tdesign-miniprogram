@@ -11,6 +11,10 @@ const name = `${prefix}-qrcode`;
 export default class QRCode extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
+  options = {
+    multipleSlots: true,
+  };
+
   properties = props;
 
   data = {

@@ -67,11 +67,11 @@ export default class QRCode extends SuperComponent implements QRCodeMethods {
         minVersion: DEFAULT_MINVERSION,
         includeMargin: includeMargin!,
         marginSize: rpxToPx(marginSize!),
-        size: rpxToPx(size!),
+        size: rpxToPx(size),
         imageSettings: icon ? {
           src: icon,
-          width: iconSize,
-          height: iconSize,
+          width: rpxToPx(iconSize),
+          height: rpxToPx(iconSize),
           excavate: true
         } : undefined
       });
