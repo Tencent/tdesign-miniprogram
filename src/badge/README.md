@@ -77,10 +77,11 @@ t-class-count | 计数样式类
 --td-badge-bg-color | @error-color | - 
 --td-badge-border-radius | 4rpx | - 
 --td-badge-bubble-border-radius | 20rpx 20rpx 20rpx 1px | - 
+--td-badge-content-text-color | @text-color-primary | - 
 --td-badge-dot-size | 16rpx | - 
 --td-badge-font-size | @font-size-xs | - 
 --td-badge-font-weight | 600 | - 
 --td-badge-large-font-size | @font-size-s | - 
 --td-badge-large-height | 40rpx | - 
 --td-badge-large-padding | 10rpx | - 
---td-badge-text-color | @font-white-1 | -
+--td-badge-text-color | @text-color-anti | - 

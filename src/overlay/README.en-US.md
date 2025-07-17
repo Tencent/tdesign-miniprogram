@@ -21,7 +21,6 @@ name | params | description
 -- | -- | --
 click | `({ visible: boolean })` | \-
 
-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.

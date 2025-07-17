@@ -83,9 +83,9 @@ t-class-error | 加载失败样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述
+名称 | 默认值 | 描述 
 -- | -- | --
---td-image-color | @font-gray-3 | -
---td-image-loading-bg-color | @bg-color-secondarycontainer | -
---td-image-loading-color | @font-gray-3 | -
---td-image-round-radius | @radius-default | -
+--td-image-color | @text-color-placeholder | - 
+--td-image-loading-bg-color | @bg-color-secondarycontainer | - 
+--td-image-loading-color | @text-color-placeholder | - 
+--td-image-round-radius | @radius-default | - 

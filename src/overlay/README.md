@@ -63,4 +63,4 @@ click | `({ visible: boolean })` | 点击遮罩时触发
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-overlay-bg-color | @font-gray-2 | - 
---td-overlay-transition-duration | 300ms | -
+--td-overlay-transition-duration | 300ms | - 

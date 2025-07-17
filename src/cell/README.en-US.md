@@ -97,4 +97,4 @@ Name | Default Value | Description
 --td-cell-right-icon-font-size | 48rpx | - 
 --td-cell-title-color | @text-color-primary | - 
 --td-cell-title-font-size | @font-size-m | - 
---td-cell-vertical-padding | 32rpx | -
+--td-cell-vertical-padding | 32rpx | - 

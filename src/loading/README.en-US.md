@@ -36,6 +36,8 @@ The component provides the following CSS variables, which can be used to customi
 Name | Default Value | Description 
 -- | -- | --
 --td-loading-color | @brand-color | - 
---td-loading-text-color | inherit | - 
+--td-loading-full-bg-color | rgba(255, 255, 255, 0.6) | - 
+--td-loading-text-color | @text-color-primary | - 
 --td-loading-text-font-size | 24rpx | - 
---td-loading-text-line-height | 40rpx | -
+--td-loading-text-line-height | 40rpx | - 
+--td-loading-z-index | 3500 | - 

@@ -47,4 +47,4 @@ Name | Default Value | Description
 --td-cascader-title-color | @text-color-primary | - 
 --td-cascader-title-height | 26rpx | - 
 --td-cascader-title-padding | @spacer-2 | - 
---td-cascder-title-font-size | 36rpx | -
+--td-cascder-title-font-size | 36rpx | - 
