@@ -5,7 +5,6 @@
     color="{{color}}" 
     bgColor="{{bgColor}}"
     icon="{{icon}}"
-    customRender="{{customRender}}"
     bind:drawError="handleDrawError"
     bind:drawCompleted="handleDrawCompleted">
     
@@ -15,7 +14,7 @@
       <qrcode-status 
         status="{{status}}"
         bind:onRefresh="handleRefresh"
-        customRender="{{customRender}}">
+        statusRender="{{statusRender}}">
         <slot name="statusRender">
         
         </slot>

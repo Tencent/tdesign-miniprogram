@@ -1,8 +1,7 @@
-// src/qrcode/index.ts
-import { SuperComponent, wxComponent } from '../../../common/src/index';
-import config from '../../../common/config';
 import props from './props';
-import { QRCodeStatusProps, QRCodeStatusEvents } from './type';
+import config from '../../../common/config';
+import { QRCodeStatusProps} from './type';
+import { SuperComponent, wxComponent } from '../../../common/src/index';
 
 const { prefix } = config;
 const name = `${prefix}-qrcode`;
@@ -15,21 +14,21 @@ export default class QRCode extends SuperComponent {
     multipleSlots: true,
   };
 
-  properties = props;
+  properties = {
+    ...props,
+    statusRender: {
+      type: Boolean,
+      value: false
+    }
+  };
 
   data = {
     classPrefix: name,
   };
 
-  // 事件类型声明
-  events: QRCodeStatusEvents = {
-    refresh: true,
-  };
-
   methods = {
     handleRefresh() {
       this.triggerEvent('refresh');
-      console.log('点击重新刷新');
     },
   };
 }
