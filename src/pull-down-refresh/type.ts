@@ -102,6 +102,14 @@ export interface TdPullDownRefreshProps {
     value?: boolean;
   };
   /**
+   * 刷新成功提示展示时长，单位 'ms'
+   * @default 500
+   */
+  successDuration?: {
+    type: null;
+    value?: string | number;
+  };
+  /**
    * 距顶部/左边多远时，触发 scrolltoupper 事件
    * @default 50
    */
