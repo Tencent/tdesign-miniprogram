@@ -8,13 +8,13 @@ const name = `${prefix}-qrcode`;
 
 @wxComponent()
 export default class QRCode extends SuperComponent {
-  externalClasses = [`${prefix}-class`, `${prefix}-class-bar`, `${prefix}-class-label`];
+  externalClasses = [`${prefix}-class`];
 
   options = {
     multipleSlots: true,
   };
 
-  properties = props;
+  properties = props as TdQRCodeProps;
 
   data = {
     prefix,
@@ -23,32 +23,33 @@ export default class QRCode extends SuperComponent {
     showMask: false,
   };
 
-  attached() {
-    // 初始化逻辑可以放在这里
-  }
-
-  observers = {
-    status(newVal) {
-      this.setData({
-        showMask: newVal !== 'active'
-      });
-    },
-    // 可以添加其他属性观察器
+  lifetimes = {
+    attached() {
+      this.setData({ showMask: this.properties.status !== 'active' });
+    }
   };
 
-  // 方法直接定义为类方法
-  qrcodeTouch() {
-    console.log("点击二维码");
-  }
+  observers = {
+    'status': function(newVal: string) {
+      this.setData({ showMask: newVal !== 'active' });
+    }
+  };
 
-  handleDrawCompleted() {
-    this.setData({
-      canvasReady: true
-    });
-  }
-
-  handleDrawError(e: any) {
-    const { error, detail } = e.detail;
-    console.log("二维码绘制失败", error, detail);
-  }
+  methods = {
+    qrcodeTouch() {
+      console.log("点击二维码");
+    },
+    handleDrawCompleted() { 
+      console.log("二维码绘制成功");
+      this.setData({ canvasReady: true });
+    },
+    handleDrawError(e: any) {
+      const { error, detail } = e.detail;
+      console.log("二维码绘制失败", error, detail);
+    },
+    handleRefresh() {
+      console.log("点击refresh");
+      this.triggerEvent("onRefresh");
+    }
+  };
 }
