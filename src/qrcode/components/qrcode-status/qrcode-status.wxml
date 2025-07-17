@@ -1,5 +1,5 @@
 <view class="qrcode-status">
-  <block wx:if="{{customRender}}">
+  <block wx:if="{{statusRender}}">
     <slot name="statusRender" 
       status="{{status}}" 
       onRefresh="handleRefresh"

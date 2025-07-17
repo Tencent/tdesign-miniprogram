@@ -15,8 +15,8 @@ export default {
     value: 160 as TdQRCodeProps['size'],
   },
   iconSize: {
-    type: Number,
-    value: 40 as TdQRCodeProps['iconSize'],
+    type: null,
+    value: 40 as unknown as TdQRCodeProps['iconSize'],
   },
   level: {
     type: String,
