@@ -15,10 +15,10 @@ export default class QRCode extends SuperComponent {
 
   properties = {
     ...props,
-    statusRender :{ 
+    statusRender: {
       type: Boolean,
-      value: false
-    }
+      value: false,
+    },
   };
 
   data = {
@@ -30,32 +30,29 @@ export default class QRCode extends SuperComponent {
 
   lifetimes = {
     attached() {
-      this.setData({ 
-        showMask: this.properties.status !== 'active' 
+      this.setData({
+        showMask: this.properties.status !== 'active',
       });
-    }
+    },
   };
 
   observers = {
-    'status': function(newVal: string) {
-      this.setData({ 
-        showMask: newVal !== 'active' 
+    status: function (newVal: string) {
+      this.setData({
+        showMask: newVal !== 'active',
       });
-    }
+    },
   };
 
   methods = {
-    handleDrawCompleted() { 
-      this.setData({ 
-        canvasReady: true 
+    handleDrawCompleted() {
+      this.setData({
+        canvasReady: true,
       });
     },
-    handleDrawError(e: any) {
-      const { error, detail } = e.detail;
-      console.log("二维码绘制失败", error, detail);
-    },
+    handleDrawError() {},
     handleRefresh() {
-      this.triggerEvent("onRefresh");
-    }
+      this.triggerEvent('onRefresh');
+    },
   };
 }

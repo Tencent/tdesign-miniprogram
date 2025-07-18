@@ -1,0 +1,19 @@
+<t-qrcode
+  value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+  level="M"
+  status="active"
+  color="#0052D9"
+  bgColor="#fff"
+>
+</t-qrcode>
+
+<view style="width: 100rpx"></view>
+
+<t-qrcode
+  value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+  level="M"
+  status="active"
+  color="#0052D9"
+  bgColor="#D9E1FF"
+>
+</t-qrcode>

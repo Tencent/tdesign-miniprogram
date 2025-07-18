@@ -13,8 +13,12 @@ export default {
       scannedText: '已扫描',
     } as QRCodeStatusProps['locale'],
   },
-  customRender: {
+  statusRender: {
     type: Boolean,
-    value: false as QRCodeStatusProps['customRender'],
+    value: false as QRCodeStatusProps['statusRender'],
+  },
+  onRefresh: {
+    type: Function,
+    value: null,
   },
 };

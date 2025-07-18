@@ -21,7 +21,7 @@ export interface QRCodeStatusProps {
    * 是否启用自定义渲染
    * @default false
    */
-  customRender?: boolean;
+  statusRender?: boolean;
 }
 
 export interface QRCodeStatusEvents {

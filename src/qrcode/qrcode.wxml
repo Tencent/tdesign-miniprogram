@@ -1,23 +1,20 @@
 <view class="t-qrcode {{borderless ? 't-qrcode--borderless' : 't-qrcode--bordered'}}">
   <qrcode-canvas
+    size="{{size}}"
     value="{{value}}"
     level="{{level}}"
-    color="{{color}}" 
+    color="{{color}}"
     bgColor="{{bgColor}}"
     icon="{{icon}}"
+    iconSize="{{iconSize}}"
     bind:drawError="handleDrawError"
-    bind:drawCompleted="handleDrawCompleted">
-    
+    bind:drawCompleted="handleDrawCompleted"
+  >
   </qrcode-canvas>
 
   <block wx:if="{{showMask && canvasReady}}">
-      <qrcode-status 
-        status="{{status}}"
-        bind:onRefresh="handleRefresh"
-        statusRender="{{statusRender}}">
-        <slot name="statusRender">
-        
-        </slot>
-      </qrcode-status>
+    <qrcode-status status="{{status}}" bind:onRefresh="handleRefresh" statusRender="{{statusRender}}">
+      <slot name="statusRender" slot="statusRender"> </slot>
+    </qrcode-status>
   </block>
 </view>

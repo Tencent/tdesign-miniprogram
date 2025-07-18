@@ -1,0 +1,5 @@
+<t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" level="M" status="active"> </t-qrcode>
+
+<view style="width: 100rpx"> </view>
+
+<t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" level="M" status="active" size="{{240}}"> </t-qrcode>
