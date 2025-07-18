@@ -1,7 +1,8 @@
 {
-    "component": true,
-    "usingComponents": {
-      "qrcode-canvas": "./components/qrcode-canvas/qrcode-canvas",
-      "qrcode-status": "./components/qrcode-status/qrcode-status"
-    }
+  "component": true,
+  "styleIsolation": "apply-shared",
+  "usingComponents": {
+    "qrcode-canvas": "./components/qrcode-canvas/qrcode-canvas",
+    "qrcode-status": "./components/qrcode-status/qrcode-status"
+  }
 }
