@@ -1,0 +1,13 @@
+<radio-group style="margin-bottom: 40rpx" bindchange="handleLevelChange">
+  <label wx:for="{{levels}}" wx:key="value">
+    <radio value="{{item.value}}" checked="{{item.checked}}" />
+    {{item.label}}
+  </label>
+</radio-group>
+
+<t-qrcode
+  value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+  level="{{currentLevel}}"
+  status="active"
+  size="{{300}}"
+/>

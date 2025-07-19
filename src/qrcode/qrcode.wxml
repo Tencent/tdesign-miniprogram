@@ -1,0 +1,25 @@
+<wxs src="./utils/utils.wxs" module="_" />
+
+<view
+  style="{{_._style([style, customStyle])}} width:{{size}}rpx; height: {{size}}rpx;"
+  class="{{classPrefix}} {{classPrefix}}--{{borderless ? 'borderless' : 'bordered'}} {{prefix}}-class"
+>
+  <qrcode-canvas
+    size="{{size}}"
+    value="{{value}}"
+    level="{{level}}"
+    color="{{color}}"
+    bg-color="{{bgColor}}"
+    icon="{{icon}}"
+    icon-size="{{iconSize}}"
+    bind:drawError="handleDrawError"
+    bind:drawCompleted="handleDrawCompleted"
+  >
+  </qrcode-canvas>
+
+  <block wx:if="{{showMask && canvasReady}}">
+    <qrcode-status status="{{status}}" bind:onRefresh="handleRefresh" status-render="{{statusRender}}">
+      <slot name="statusRender" slot="statusRender"> </slot>
+    </qrcode-status>
+  </block>
+</view>
