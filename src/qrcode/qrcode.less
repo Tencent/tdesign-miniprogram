@@ -1,18 +1,22 @@
 @import '../common/style/base.less';
 
+@qrcode-border-color: var(--td-qrcode-border-color, #dcdcdc);
+@qrcode-border-width: var(--td-qrcode-border-width, 1rpx);
+@qrcode-border-radius: var(--td-qrcode-border-radius, 6rpx);
 
-
-.t-qrcode {
+.@{prefix}-qrcode {
   position: relative;
   display: flex;
-  
+
   &--borderless {
     border: none;
     border-radius: 0;
   }
-  
+
   &--bordered {
-    border: 1rpx solid #DCDCDC;
-    border-radius: 6rpx;
+    border-width: @qrcode-border-width;
+    border-style: solid;
+    border-color: @qrcode-border-color;
+    border-radius: @qrcode-border-radius;
   }
 }

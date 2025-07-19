@@ -1,5 +1,5 @@
 import props from './props';
-import { useQRCode } from '../../utils/useQRCode';
+import useQRCode from '../../utils/useQRCode';
 import { TdQRCodeProps } from './type';
 import { SuperComponent, wxComponent } from '../../../common/src/index';
 import { DEFAULT_MINVERSION, excavateModules } from '../../utils/utils';
