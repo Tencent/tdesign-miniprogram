@@ -1,6 +1,6 @@
-<view class="qrcode-status">
+<view class="{{classPrefix}}-status">
   <block wx:if="{{statusRender}}">
-    <slot name="statusRender" status="{{status}}" class="statusSlot"> </slot>
+    <slot name="statusRender" status="{{status}}"> </slot>
   </block>
 
   <block wx:else>
@@ -12,7 +12,7 @@
       </view>
     </view>
 
-    <view wx:elif="{{status === 'loading'}}" class="loading-container">
+    <view wx:elif="{{status === 'loading'}}" class="{{classPrefix}}-loading-container">
       <t-loading> </t-loading>
     </view>
 
@@ -20,7 +20,5 @@
       <t-icon name="check-circle-filled" size="24rpx" color="#2BA471" />
       <view> {{locale.scannedText}} </view>
     </view>
-
-    <view wx:elif="{{status === 'active'}}"> </view>
   </block>
 </view>

@@ -1,64 +1,56 @@
-.qrcode-status {
-  position: absolute;  
-  top: 0;             
-  left: 0;            
-  width: 100%;        
-  height: 100%;      
-  background-color: rgba(255, 255, 255, 0.96); 
+@import '../common/style/base.less';
+
+@qrcode-status-bg-color: var(--td-qrcode-status-bg-color, rgba(255, 255, 255, 0.96));
+@qrcode-text-color: var(--td-qrcode-text-color, rgba(0, 0, 0, 0.9));
+@qrcode-button-color: var(--td-qrcode-button-color, #0052d9);
+@qrcode-text-font-size: var(--td-qrcode-text-font-size, 28rpx);
+@qrcode-small-text-font-size: var(--td-qrcode-small-text-font-size, 24rpx);
+@qrcode-text-margin-bottom: var(--td-qrcode-text-margin-bottom, 16rpx);
+
+.@{prefix}-qrcode-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: @qrcode-status-bg-color;
   display: flex;
-  pointer-events: auto; 
+  pointer-events: auto;
   align-items: center;
   justify-content: center;
 }
 
-.t-qrcode-expired {
+.@{prefix}-qrcode-expired {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: transparent;
+
+  &__text {
+    color: @qrcode-text-color;
+    font-size: @qrcode-text-font-size;
+    margin-bottom: @qrcode-text-margin-bottom;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: @qrcode-button-color;
+    font-size: @qrcode-text-font-size;
+  }
 }
 
-.t-qrcode-expired__text {
-  color: rgb(0, 0, 0, 0.90);
-  font-size: 28rpx;
-  margin-bottom: 16rpx;
-}
-
-.t-qrcode-expired__button {
+.@{prefix}-qrcode-scanned {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #0052d9;
-  font-size: 28rpx;
+  color: @qrcode-text-color;
+  font-size: @qrcode-small-text-font-size;
 }
 
-.t-qrcode-scanned {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgb(0, 0, 0, 0.90);
-  font-size: 24rpx;
-}
-
-.t-qrcode-scanned__icon {
-  width: 24rpx;
-  height: 24rpx;
-  margin-right: 8rpx;
-}
-
-.loading-container {
+.@{prefix}-qrcode-loading-container {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.loading-icon {
-  width: 32rpx;
-  height: 32rpx;
-}
-
-.icon {
-  width: 24rpx;
-  height: 24rpx;
-  margin-right: 4rpx;
 }

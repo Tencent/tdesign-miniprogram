@@ -11,6 +11,7 @@ export default class QRCode extends SuperComponent {
 
   options = {
     multipleSlots: true,
+    virtualHost: true,
   };
 
   properties = {
@@ -18,6 +19,14 @@ export default class QRCode extends SuperComponent {
     statusRender: {
       type: Boolean,
       value: false,
+    },
+    style: {
+      type: String,
+      value: '',
+    },
+    customStyle: {
+      type: String,
+      value: '',
     },
   };
 

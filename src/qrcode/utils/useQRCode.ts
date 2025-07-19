@@ -13,10 +13,10 @@ interface Options {
 }
 
 interface QRCodeResult {
-  cells: boolean[][];          
-  margin: number;              
+  cells: boolean[][];
+  margin: number;
   numCells: number;
-  calculatedImageSettings: {    
+  calculatedImageSettings: {
     x: number;
     y: number;
     h: number;
@@ -24,10 +24,10 @@ interface QRCodeResult {
     excavation: Excavation | null;
     opacity: number;
   } | null;
-  qrcode: QrCode;             
+  qrcode: QrCode;
 }
 
-export const useQRCode = (opt: Options): QRCodeResult => {
+const useQRCode = (opt: Options): QRCodeResult => {
   const { value, level, minVersion, includeMargin, marginSize, imageSettings, size } = opt;
 
   const qrcode = (() => {
@@ -44,6 +44,8 @@ export const useQRCode = (opt: Options): QRCodeResult => {
     margin,
     numCells: cells.length + margin * 2,
     calculatedImageSettings,
-    qrcode
+    qrcode,
   };
 };
+
+export default useQRCode;

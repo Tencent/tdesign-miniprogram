@@ -81,3 +81,21 @@ value | String | - | 扫描后的文本 | N
 名称 | 参数 | 描述
 -- | -- | --
 refresh | \- | 点击"点击刷新"的回调
+
+
+### Progress External Classes
+
+类名 | 描述
+-- | --
+t-class | 根节点样式类
+
+### CSS Variables
+
+
+组件提供了下列 CSS 变量，可用于自定义样式。
+
+名称 | 默认值 | 描述
+-- | -- | --
+--td-qrcode-border-color | #dcdcdc | -
+--td-qrcode-border-width | 1rpx | -
+--td-qrcode-border-radius | 6rpx | -
