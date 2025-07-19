@@ -1,0 +1,23 @@
+<view class="skyline">
+  <t-navbar class="demo-navbar" title="QRCode" leftArrow />
+  <scroll-view scroll-y type="list" class="scroll-view">
+    <view class="demo">
+      <t-demo-header title="QRCode 进度条" desc="用于将文本渲染成二维码。" notice="渲染类型支持情况：canvas" />
+      <t-demo desc="基础用法" padding>
+        <base />
+      </t-demo>
+      <t-demo desc="增加icon" padding>
+        <icon />
+      </t-demo>
+      <t-demo desc="纠错级别" padding>
+        <level />
+      </t-demo>
+      <t-demo desc="二维码状态" padding>
+        <status />
+      </t-demo>
+      <t-demo desc="自定义状态渲染器" padding>
+        <statusRender />
+      </t-demo>
+    </view>
+  </scroll-view>
+</view>

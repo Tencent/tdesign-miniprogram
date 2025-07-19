@@ -1,8 +1,8 @@
 <wxs src="./utils/utils.wxs" module="_" />
 
 <view
-  style="{{_._style([style, customStyle])}}"
-  class="{{classPrefix}} {{classPrefix}}--{{borderless ? 'borderless' : 'bordered'}}"
+  style="{{_._style([style, customStyle])}} width:{{size}}rpx; height: {{size}}rpx;"
+  class="{{classPrefix}} {{classPrefix}}--{{borderless ? 'borderless' : 'bordered'}} {{prefix}}-class"
 >
   <qrcode-canvas
     size="{{size}}"
