@@ -1,5 +1,5 @@
 import { TdQRCodeProps } from './type';
-import { DEFAULT_NEED_MARGIN, DEFAULT_MARGIN_SIZE } from '../../utils/utils';
+import { DEFAULT_NEED_MARGIN, DEFAULT_MARGIN_SIZE } from '../qrcode/utils/utils';
 
 export default {
   value: {

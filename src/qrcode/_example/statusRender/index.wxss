@@ -1,54 +1,44 @@
-.qrcodeqrcode-expired {
+.radio-container {
+  margin-bottom: 40rpx;
+}
+
+.horizontal-radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30rpx;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+}
+
+.radio-text {
+  margin-left: 8rpx;
+}
+
+.qrcode-expired {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: transparent;
+  justify-content: center;
 }
 
-.qrcode-expired__text {
+.qrcode-expired__text,
+.qrcode-scanned {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: rgb(0, 0, 0, 0.9);
-  font-size: 28rpx;
   margin-bottom: 16rpx;
 }
 
 .qrcode-expired__button {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: #0052d9;
-  font-size: 28rpx;
-}
-
-.qrcode-scanned {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgb(0, 0, 0, 0.9);
-  font-size: 24rpx;
-}
-
-.qrcode-scanned__icon {
-  width: 24rpx;
-  height: 24rpx;
-  margin-right: 8rpx;
+  color: #576b95;
 }
 
 .loading-container {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.loading-icon {
-  width: 32rpx;
-  height: 32rpx;
-}
-
-.icon {
-  width: 24rpx;
-  height: 24rpx;
-  margin-right: 4rpx;
 }

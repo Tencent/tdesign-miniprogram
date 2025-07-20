@@ -1,14 +1,16 @@
-<radio-group style="margin-bottom: 40rpx" bindchange="handleStatusChange">
-  <label wx:for="{{status}}" wx:key="value">
-    <radio value="{{item.value}}" checked="{{item.checked}}" />
-    {{item.label}}
-  </label>
-</radio-group>
+<view class="radio-container">
+  <radio-group class="horizontal-radio-group" bindchange="handleStatusChange">
+    <label wx:for="{{status}}" wx:key="value" class="radio-label">
+      <radio value="{{item.value}}" checked="{{item.checked}}" />
+      <text class="radio-text">{{item.label}}</text>
+    </label>
+  </radio-group>
+</view>
 
 <t-qrcode
   value="https://tdesign.gtimg.com/site/tdesign-logo.png"
   status="{{currentStatus}}"
-  size="{{400}}"
+  size="{{300}}"
   statusRender="{{true}}"
 >
   <view slot="statusRender">
@@ -18,19 +20,17 @@
       </view>
       <view class="qrcode-expired__button" bindtap="handleRefresh">
         <t-icon name="refresh" size="24rpx" />
-        <view>{{locale.refreshText}} </view>
+        <view>{{locale.refreshText}}</view>
       </view>
     </view>
 
     <view wx:elif="{{currentStatus === 'loading'}}" class="loading-container">
-      <t-loading> </t-loading>
+      <t-loading theme="spinner" size="32rpx" />
     </view>
 
     <view wx:elif="{{currentStatus === 'scanned'}}" class="qrcode-scanned">
       <t-icon name="check-circle-filled" size="24rpx" color="#2BA471" />
-      <view> {{locale.scannedText}} </view>
+      <view>{{locale.scannedText}}</view>
     </view>
-
-    <view wx:elif="{{currentStatus === 'active'}}"> </view>
   </view>
 </t-qrcode>

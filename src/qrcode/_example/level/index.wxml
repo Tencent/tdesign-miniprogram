@@ -1,5 +1,5 @@
-<radio-group style="margin-bottom: 40rpx" bindchange="handleLevelChange">
-  <label wx:for="{{levels}}" wx:key="value">
+<radio-group class="horizontal-radio-group" bindchange="handleLevelChange">
+  <label wx:for="{{levels}}" wx:key="value" class="radio-label">
     <radio value="{{item.value}}" checked="{{item.checked}}" />
     {{item.label}}
   </label>

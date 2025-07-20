@@ -1,4 +1,4 @@
-import { ErrorCorrectionLevel } from '../../utils/type';
+import { ErrorCorrectionLevel } from '../../src/_common/js/qrcode/types';
 
 export interface TdQRCodeProps {
   /** 二维码内容 */

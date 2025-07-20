@@ -2,12 +2,12 @@
   "navigationBarTitleText": "QRCode",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
-    "t-qrcode": "tdesign-miniprogram/qrcode/qrcode",
     "base": "./base",
     "color": "./color",
     "icon": "./icon",
     "level": "./level",
     "status": "./status",
     "statusRender": "./statusRender"
-  }
+  },
+  "disableScroll": false
 }

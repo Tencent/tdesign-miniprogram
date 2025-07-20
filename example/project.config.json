@@ -257,6 +257,12 @@
           "scene": null
         },
         {
+          "name": "qrcode",
+          "pathName": "pages/qrcode/qrcode",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "overlay",
           "pathName": "pages/overlay/overlay",
           "query": "",

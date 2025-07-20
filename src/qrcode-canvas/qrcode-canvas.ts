@@ -1,8 +1,8 @@
 import props from './props';
-import useQRCode from '../../utils/useQRCode';
+import useQRCode from '../qrcode/hooks/useQRCode';
 import { TdQRCodeProps } from './type';
-import { SuperComponent, wxComponent } from '../../../common/src/index';
-import { DEFAULT_MINVERSION, excavateModules } from '../../utils/utils';
+import { SuperComponent, wxComponent } from '../common/src/index';
+import { DEFAULT_MINVERSION, excavateModules } from '../qrcode/utils/utils';
 
 @wxComponent()
 export default class QRCode extends SuperComponent {
@@ -46,10 +46,12 @@ export default class QRCode extends SuperComponent {
       const { value, icon, size, iconSize, level, bgColor, color, includeMargin, marginSize } = this
         .properties as TdQRCodeProps;
 
+      const windowInfo = wx.getWindowInfo();
+
       const rpxToPx = (rpx: number) => {
-        const systemInfo = wx.getSystemInfoSync();
-        return (rpx / 750) * systemInfo.windowWidth;
+        return (rpx / 750) * windowInfo.windowWidth;
       };
+
       const sizeProp = this.getSizeProp(iconSize);
       try {
         const qrData = useQRCode({
@@ -69,7 +71,7 @@ export default class QRCode extends SuperComponent {
             : undefined,
         });
 
-        const dpr = wx.getSystemInfoSync().pixelRatio;
+        const dpr = windowInfo.pixelRatio;
         canvas.width = rpxToPx(size) * dpr;
         canvas.height = rpxToPx(size) * dpr;
         const scale = (rpxToPx(size) / qrData.numCells) * dpr;
@@ -125,7 +127,9 @@ export default class QRCode extends SuperComponent {
       ctx.globalAlpha = 1;
       ctx.drawImage(img as any, x, y, width, height);
     },
-    getSizeProp(iconSize: null) {
+
+    getSizeProp(iconSize: number | { width: number; height: number } | null | undefined) {
+      if (!iconSize) return { width: 0, height: 0 };
       if (typeof iconSize === 'number') {
         return {
           width: iconSize,
@@ -133,20 +137,25 @@ export default class QRCode extends SuperComponent {
         };
       }
       return {
-        width: iconSize?.width,
-        height: iconSize?.height,
+        width: iconSize.width,
+        height: iconSize.height,
       };
     },
 
     checkdefaultValue() {
-      const updates = {};
+      const updates = { bgColor: '', color: '' };
+      let changeFlag = false;
       const { bgColor, color } = this.properties;
       const { bgColor: defBg, color: defCol } = props;
-
-      bgColor === '' && defBg.value && (updates.bgColor = defBg.value);
-      color === '' && defCol.value && (updates.color = defCol.value);
-
-      Object.keys(updates).length && this.setData(updates);
+      if (bgColor === '' && defBg.value) {
+        updates.bgColor = defBg.value;
+        changeFlag = true;
+      }
+      if (color === '' && defCol.value) {
+        updates.color = defCol.value;
+        changeFlag = true;
+      }
+      changeFlag && this.setData(updates);
     },
   };
 }

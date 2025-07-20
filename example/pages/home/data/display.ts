@@ -55,6 +55,10 @@ const display = {
       label: '进度条',
     },
     {
+      name: 'Qrcode',
+      label: '二维码',
+    },
+    {
       name: 'Result',
       label: '结果',
     },
@@ -120,6 +124,10 @@ const skylineDisplay = {
     {
       name: 'Progress',
       label: '进度条',
+    },
+    {
+      name: 'Qrcode',
+      label: '二维码',
     },
     {
       name: 'Result',

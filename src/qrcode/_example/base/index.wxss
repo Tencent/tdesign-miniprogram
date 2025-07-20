@@ -1,6 +1,6 @@
 .t-qrcode-container {
-  display: flex; /* 启用 flex 布局 */
-  flex-direction: row; /* 水平排列（默认值，可省略） */
-  align-items: center; /* 垂直居中 */
-  gap: 20rpx; /* 组件间距（可选） */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 20rpx;
 }

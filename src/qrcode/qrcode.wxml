@@ -1,4 +1,4 @@
-<wxs src="./utils/utils.wxs" module="_" />
+<wxs src="../common/utils.wxs" module="_" />
 
 <view
   style="{{_._style([style, customStyle])}} width:{{size}}rpx; height: {{size}}rpx;"

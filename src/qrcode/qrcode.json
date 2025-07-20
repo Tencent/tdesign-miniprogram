@@ -2,7 +2,7 @@
   "component": true,
   "styleIsolation": "apply-shared",
   "usingComponents": {
-    "qrcode-canvas": "./components/qrcode-canvas/qrcode-canvas",
-    "qrcode-status": "./components/qrcode-status/qrcode-status"
+    "qrcode-canvas": "../qrcode-canvas/qrcode-canvas",
+    "qrcode-status": "../qrcode-status/qrcode-status"
   }
 }

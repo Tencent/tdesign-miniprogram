@@ -1,6 +1,6 @@
 import props from './props';
-import config from '../../../common/config';
-import { SuperComponent, wxComponent } from '../../../common/src/index';
+import config from '../common/config';
+import { SuperComponent, wxComponent } from '../common/src/index';
 
 const { prefix } = config;
 const name = `${prefix}-qrcode`;
