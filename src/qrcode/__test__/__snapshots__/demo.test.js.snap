@@ -7,13 +7,20 @@ exports[`Qrcode Qrcode base demo works fine 1`] = `
   >
     <t-qrcode
       level="M"
-      size="200"
+      size="160"
+      status="active"
+      value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    />
+    <t-qrcode
+      borderless="{{true}}"
+      level="M"
+      size="160"
       status="active"
       value="https://tdesign.gtimg.com/site/tdesign-logo.png"
     />
     <t-qrcode
       level="M"
-      size="240"
+      size="200"
       status="active"
       value="https://tdesign.gtimg.com/site/tdesign-logo.png"
     />
@@ -160,6 +167,7 @@ exports[`Qrcode Qrcode status demo works fine 1`] = `
     size="{{300}}"
     status="expired"
     value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    bind:refresh="handleRefresh"
   />
 </status>
 `;

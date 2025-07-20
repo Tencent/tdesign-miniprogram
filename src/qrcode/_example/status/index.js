@@ -19,5 +19,8 @@ Component({
         })),
       });
     },
+    handleRefresh() {
+      console.log('点击刷新');
+    },
   },
 });

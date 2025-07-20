@@ -30,7 +30,6 @@ export default class QRCode extends SuperComponent {
         .fields({ node: true, size: true })
         .exec(async (res) => {
           if (!res[0]?.node) {
-            console.error('Canvas node not found');
             return;
           }
 
