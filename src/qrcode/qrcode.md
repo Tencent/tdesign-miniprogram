@@ -17,7 +17,6 @@ status | String | active | 二维码状态。可选项：active/expired/loading/
 statusRender | Slot / Function | - | 自定义状态渲染器。TS 类型：`(info:StatusRenderInfo) => TNode` `type StatusRenderInfo = {status:QRStatus;onRefresh?: () => void;}`。[通用类型定义](https://github.com/Tencent/tdesign-vue-next/blob/develop/packages/components/common.ts)。[详细类型定义](https://github.com/Tencent/tdesign-vue-next/blob/develop/packages/components/qrcode/type.ts) | N
 type | String | canvas | 渲染类型。可选项：canvas/svg | N
 value | String | - | 扫描后的文本 | N
-onRefresh | Function |  | TS 类型：`() => void`<br/>点击"点击刷新"的回调 | N
 
 ### QRCode Events
 

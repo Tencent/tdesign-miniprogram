@@ -18,7 +18,7 @@
   </qrcode-canvas>
 
   <block wx:if="{{showMask && canvasReady}}">
-    <qrcode-status status="{{status}}" bind:onRefresh="handleRefresh" status-render="{{statusRender}}">
+    <qrcode-status status="{{status}}" bind:refresh="handleRefresh" status-render="{{statusRender}}">
       <slot name="statusRender" slot="statusRender"> </slot>
     </qrcode-status>
   </block>

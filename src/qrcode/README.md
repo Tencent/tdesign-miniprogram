@@ -30,10 +30,20 @@ value 传入需要渲染的值，使用 size 调整二维码大小，默认值�
 
 {{ base }}
 
+### 自定义颜色
+通过设置 color 自定义二维码颜色，通过设置 bgColor 自定义背景颜色，默认属性是黑白色
+
+{{ color }}
+
 ### 带 Icon 的例子
 将 icon 的地址传入 icon 属性，使用iconSize属性调整大小
 
 {{ icon }}
+
+### 纠错比例
+通过设置 level 调整不同的容错等级，提供 L，M，Q，H 四个等级
+
+{{ level }}
 
 ### 不同的状态
 可以通过 status 的值控制二维码的状态，提供 active，expired，loading，scanned 四个值
@@ -44,16 +54,6 @@ value 传入需要渲染的值，使用 size 调整二维码大小，默认值�
 可以通过 statusRender 的值控制二维码不同状态的渲染逻辑, 小程序中该属性为 Boolean ，利用slot进行自定义渲染
 
 {{ statusRender }}
-
-### 自定义颜色
-通过设置 color 自定义二维码颜色，通过设置 bgColor 自定义背景颜色，默认属性是黑白色
-
-{{ color }}
-
-### 纠错比例
-通过设置 level 调整不同的容错等级，提供 L，M，Q，H 四个等级
-
-{{ level }}
 
 ##
 

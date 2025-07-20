@@ -17,8 +17,8 @@ export default {
     type: Boolean,
     value: false as QRCodeStatusProps['statusRender'],
   },
-  onRefresh: {
-    type: Function,
+  refresh: {
+    type: null,
     value: null,
   },
 };

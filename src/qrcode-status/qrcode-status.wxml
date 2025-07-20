@@ -1,4 +1,4 @@
-<view class="{{classPrefix}}-status">
+<view class="{{classPrefix}}__status">
   <block wx:if="{{statusRender}}">
     <slot name="statusRender" status="{{status}}"> </slot>
   </block>

@@ -61,7 +61,7 @@ export default class QRCode extends SuperComponent {
     },
     handleDrawError() {},
     handleRefresh() {
-      this.triggerEvent('onRefresh');
+      this.triggerEvent('refresh');
     },
   };
 }
