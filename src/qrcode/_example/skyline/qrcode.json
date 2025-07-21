@@ -5,6 +5,11 @@
   "disableScroll": true,
   "usingComponents": {
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
-    "demo-progress": "../qrcode"
+    "base": "../base",
+    "color": "../color",
+    "icon": "../icon",
+    "level": "../level",
+    "status": "../status",
+    "statusRender": "../statusRender"
   }
 }
