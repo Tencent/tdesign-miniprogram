@@ -46,6 +46,12 @@
   },
   "author": "tdesign",
   "license": "MIT",
+  "overrides": {
+    "miniprogram-api-typings": "^4.1.0"
+  },
+  "resolutions": {
+    "miniprogram-api-typings": "^4.1.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/plugin-proposal-decorators": "^7.18.9",
