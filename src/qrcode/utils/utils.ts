@@ -1,10 +1,4 @@
-import type {
-  ERROR_LEVEL_MAPPED_TYPE,
-  ErrorCorrectionLevel,
-  Excavation,
-  ImageSettings,
-  Modules,
-} from './type';
+import type { ERROR_LEVEL_MAPPED_TYPE, ErrorCorrectionLevel, Excavation, ImageSettings, Modules } from './types';
 import { Ecc } from './qrcodegen';
 
 // =================== ERROR_LEVEL ==========================
@@ -39,9 +33,7 @@ export const generatePath = (modules: Modules, margin: number = 0) => {
     let start: number | null = null;
     row.forEach((cell, x) => {
       if (!cell && start !== null) {
-        ops.push(
-          `M${start + margin} ${y + margin}h${x - start}v1H${start + margin}z`
-        );
+        ops.push(`M${start + margin} ${y + margin}h${x - start}v1H${start + margin}z`);
         start = null;
         return;
       }
@@ -53,11 +45,7 @@ export const generatePath = (modules: Modules, margin: number = 0) => {
         if (start === null) {
           ops.push(`M${x + margin},${y + margin} h1v1H${x + margin}z`);
         } else {
-          ops.push(
-            `M${start + margin},${y + margin} h${x + 1 - start}v1H${
-              start + margin
-            }z`
-          );
+          ops.push(`M${start + margin},${y + margin} h${x + 1 - start}v1H${start + margin}z`);
         }
         return;
       }
@@ -76,17 +64,18 @@ export const generatePath = (modules: Modules, margin: number = 0) => {
  * @param excavation
  * @returns
  */
-export const excavateModules = (modules: Modules, excavation: Excavation) => modules.slice().map((row: any, y: any) => {
-  if (y < excavation.y || y >= excavation.y + excavation.h) {
-    return row;
-  }
-  return row.map((cell: any, x: any) => {
-    if (x < excavation.x || x >= excavation.x + excavation.w) {
-      return cell;
+export const excavateModules = (modules: Modules, excavation: Excavation) =>
+  modules.slice().map((row: any, y: any) => {
+    if (y < excavation.y || y >= excavation.y + excavation.h) {
+      return row;
     }
-    return false;
+    return row.map((cell: any, x: any) => {
+      if (x < excavation.x || x >= excavation.x + excavation.w) {
+        return cell;
+      }
+      return false;
+    });
   });
-});
 
 /**
  * Get image settings
@@ -100,7 +89,7 @@ export const getImageSettings = (
   cells: Modules,
   size: number,
   margin: number,
-  imageSettings?: ImageSettings
+  imageSettings?: ImageSettings,
 ): null | {
   x: number;
   y: number;
@@ -117,12 +106,8 @@ export const getImageSettings = (
   const scale = numCells / size;
   const w = (imageSettings.width || defaultSize) * scale;
   const h = (imageSettings.height || defaultSize) * scale;
-  const x = imageSettings.x == null
-    ? cells.length / 2 - w / 2
-    : imageSettings.x * scale;
-  const y = imageSettings.y == null
-    ? cells.length / 2 - h / 2
-    : imageSettings.y * scale;
+  const x = imageSettings.x == null ? cells.length / 2 - w / 2 : imageSettings.x * scale;
+  const y = imageSettings.y == null ? cells.length / 2 - h / 2 : imageSettings.y * scale;
   const opacity = imageSettings.opacity == null ? 1 : imageSettings.opacity;
 
   let excavation = null;
