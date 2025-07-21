@@ -55,8 +55,9 @@ const display = {
       label: '进度条',
     },
     {
-      name: 'Qrcode',
+      name: 'QRCode',
       label: '二维码',
+      path: '/pages/qrcode/qrcode',
     },
     {
       name: 'Result',
@@ -126,8 +127,9 @@ const skylineDisplay = {
       label: '进度条',
     },
     {
-      name: 'Qrcode',
+      name: 'QRCode',
       label: '二维码',
+      path: '/pages/qrcode/skyline/qrcode',
     },
     {
       name: 'Result',

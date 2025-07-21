@@ -34,7 +34,7 @@
 .qrcode-expired__button {
   display: flex;
   align-items: center;
-  color: #576b95;
+  color: #0051ff;
 }
 
 .loading-container {

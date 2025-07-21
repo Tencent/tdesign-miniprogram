@@ -26,7 +26,7 @@ isComponent: true
 ## 组件类型
 
 ### 基础用法
-value 传入需要渲染的值，使用 size 调整二维码大小，默认值是160rpx
+value 传入需要渲染的值，使用 size 调整二维码大小，默认值是160rpx，使用boderless属性决定是否需要边框
 
 {{ base }}
 

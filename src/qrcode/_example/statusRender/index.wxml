@@ -26,6 +26,7 @@
 
     <view wx:elif="{{currentStatus === 'loading'}}" class="loading-container">
       <t-loading theme="spinner" size="32rpx" />
+      加载中...
     </view>
 
     <view wx:elif="{{currentStatus === 'scanned'}}" class="qrcode-scanned">
