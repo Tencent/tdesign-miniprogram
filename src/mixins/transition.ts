@@ -71,6 +71,12 @@ export default function transition() {
         }, 30);
         if (typeof duration === 'number' && duration > 0) {
           this.transitionT = setTimeout(this.entered.bind(this), duration + 30);
+        } else {
+          setTimeout(() => {
+            if (this.status === 'entering') {
+              this.entered();
+            }
+          }, 300);
         }
       },
       entered() {
@@ -97,6 +103,12 @@ export default function transition() {
         if (typeof duration === 'number' && duration > 0) {
           this.customDuration = true;
           this.transitionT = setTimeout(this.leaved.bind(this), duration + 30);
+        } else {
+          setTimeout(() => {
+            if (this.status === 'leaving') {
+              this.leaved();
+            }
+          }, 300);
         }
       },
       leaved() {
@@ -106,6 +118,7 @@ export default function transition() {
         this.status = 'leaved';
         this.setData({
           transitionClass: '',
+          realVisible: false,
         });
       },
       onTransitionEnd() {
@@ -118,9 +131,6 @@ export default function transition() {
           this.entered();
         } else if (this.status === 'leaving' && !this.data.visible) {
           this.leaved();
-          this.setData({
-            realVisible: false,
-          });
         }
       },
     },
