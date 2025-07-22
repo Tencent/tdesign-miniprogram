@@ -90,7 +90,8 @@
     "pages/col/col",
     "pages/col/skyline/col",
     "pages/color-picker/color-picker",
-    "pages/guide/guide"
+    "pages/guide/guide",
+    "pages/watermark/watermark"
   ],
   "subpackages": [
     {

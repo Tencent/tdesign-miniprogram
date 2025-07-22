@@ -79,6 +79,10 @@ const display = {
       name: 'Tag',
       label: '标签',
     },
+    {
+      name: 'Watermark',
+      label: '水印',
+    },
   ],
 };
 

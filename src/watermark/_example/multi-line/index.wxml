@@ -1,0 +1,10 @@
+<t-watermark
+  watermark-content="{{watermark}}"
+  line-space="{{24}}"
+  x="{{100}}"
+  y="{{120}}"
+  width="{{158}}"
+  height="{{22}}"
+>
+  <view style="width: 100%; height: 300px" />
+</t-watermark>
