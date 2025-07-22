@@ -28,6 +28,8 @@ export default class Skeleton extends SuperComponent {
 
   properties = props;
 
+  timer = undefined;
+
   data = {
     prefix,
     classPrefix: name,
@@ -47,6 +49,10 @@ export default class Skeleton extends SuperComponent {
     attached() {
       this.init();
       this.isShowSkeleton();
+    },
+
+    detached() {
+      this.clearTimer();
     },
   };
 
@@ -127,17 +133,28 @@ export default class Skeleton extends SuperComponent {
       return style;
     },
 
+    clearTimer() {
+      if (this.timer) {
+        clearTimeout(this.timer);
+        this.timer = null;
+      }
+    },
+
     isShowSkeleton() {
+      this.clearTimer();
+
       const { loading, delay } = this.properties;
+
       if (!loading || delay === 0) {
         this.setData({
           isShow: loading,
         });
         return;
       }
-      setTimeout(() => {
+
+      this.timer = setTimeout(() => {
         this.setData({
-          isShow: loading,
+          isShow: this.properties.loading,
         });
       }, delay);
     },
