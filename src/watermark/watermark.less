@@ -1,0 +1,25 @@
+@import '../common/style/base.less';
+
+@keyframes watermark {
+  0% {
+    left: var(--watermark-left-0);
+    top: var(--watermark-top-0);
+  }
+  25% {
+    left: var(--watermark-left-1);
+    top: var(--watermark-top-1);
+  }
+  50% {
+    left: var(--watermark-left-2);
+    top: var(--watermark-top-2);
+    transform: translateX(-100%);
+  }
+  75% {
+    left: var(--watermark-left-3);
+    top: var(--watermark-top-3);
+  }
+  100% {
+    left: var(--watermark-left-0);
+    top: var(--watermark-top-0);
+  }
+}
