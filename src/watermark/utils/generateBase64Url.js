@@ -9,7 +9,7 @@ export default function generateBase64Url(
     onFinish('');
     return;
   }
-  const ratio = wx.getDeviceInfo().pixelRatio || 1;
+  const ratio = wx.getWindowInfo().pixelRatio || 1;
   const canvasWidth = (gapX + width) * ratio;
   const canvasHeight = (gapY + height) * ratio;
 
