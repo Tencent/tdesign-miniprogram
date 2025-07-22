@@ -3,6 +3,7 @@ import useQRCode from '../qrcode/hooks/useQRCode';
 import { TdQRCodeProps } from './type';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import { DEFAULT_MINVERSION, excavateModules } from '../common/shared/qrcode/utils';
+import { rpx2px } from '../common/utils';
 
 @wxComponent()
 export default class QRCode extends SuperComponent {
@@ -45,12 +46,6 @@ export default class QRCode extends SuperComponent {
       const { value, icon, size, iconSize, level, bgColor, color, includeMargin, marginSize } = this
         .properties as TdQRCodeProps;
 
-      const windowInfo = wx.getWindowInfo();
-
-      const rpxToPx = (rpx: number) => {
-        return (rpx / 750) * windowInfo.windowWidth;
-      };
-
       const sizeProp = this.getSizeProp(iconSize);
       try {
         const qrData = useQRCode({
@@ -58,22 +53,23 @@ export default class QRCode extends SuperComponent {
           level: level,
           minVersion: DEFAULT_MINVERSION,
           includeMargin: includeMargin,
-          marginSize: rpxToPx(marginSize),
-          size: rpxToPx(size),
+          marginSize: rpx2px(marginSize),
+          size: rpx2px(size),
           imageSettings: icon
             ? {
                 src: icon,
-                width: rpxToPx(sizeProp.width),
-                height: rpxToPx(sizeProp.height),
+                width: rpx2px(sizeProp.width),
+                height: rpx2px(sizeProp.height),
                 excavate: true,
               }
             : undefined,
         });
 
+        const windowInfo = wx.getWindowInfo();
         const dpr = windowInfo.pixelRatio;
-        canvas.width = rpxToPx(size) * dpr;
-        canvas.height = rpxToPx(size) * dpr;
-        const scale = (rpxToPx(size) / qrData.numCells) * dpr;
+        canvas.width = rpx2px(size) * dpr;
+        canvas.height = rpx2px(size) * dpr;
+        const scale = (rpx2px(size) / qrData.numCells) * dpr;
         ctx.scale(scale, scale);
 
         ctx.fillStyle = bgColor;

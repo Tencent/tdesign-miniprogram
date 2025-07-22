@@ -172,8 +172,8 @@ exports[`Qrcode Qrcode status demo works fine 1`] = `
 </status>
 `;
 
-exports[`Qrcode Qrcode statusRender demo works fine 1`] = `
-<statusRender>
+exports[`Qrcode Qrcode status-render demo works fine 1`] = `
+<status-render>
   <wx-view
     class="radio-container"
   >
@@ -260,5 +260,5 @@ exports[`Qrcode Qrcode statusRender demo works fine 1`] = `
       </wx-view>
     </wx-view>
   </t-qrcode>
-</statusRender>
+</status-render>
 `;
