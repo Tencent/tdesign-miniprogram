@@ -1,6 +1,6 @@
-import { QrCode, QrSegment } from '../utils/qrcodegen';
-import type { ErrorCorrectionLevel, Excavation, ImageSettings } from '../utils/types';
-import { ERROR_LEVEL_MAP, getImageSettings, getMarginSize } from '../utils/utils';
+import { QrCode, QrSegment } from '../../common/shared/qrcode/qrcodegen';
+import type { ErrorCorrectionLevel, Excavation, ImageSettings } from '../../common/shared/qrcode/types';
+import { ERROR_LEVEL_MAP, getImageSettings, getMarginSize } from '../../common/shared/qrcode/utils';
 
 interface Options {
   value: string;

@@ -8,6 +8,5 @@
     "level": "./level",
     "status": "./status",
     "statusRender": "./statusRender"
-  },
-  "disableScroll": false
+  }
 }

@@ -1,4 +1,4 @@
-import { ErrorCorrectionLevel } from '../qrcode/utils/types';
+import { ErrorCorrectionLevel } from '../common/shared/qrcode/types';
 
 export interface TdQRCodeProps {
   /** 二维码内容 */

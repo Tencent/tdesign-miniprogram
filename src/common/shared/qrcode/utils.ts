@@ -1,4 +1,11 @@
-import type { ERROR_LEVEL_MAPPED_TYPE, ErrorCorrectionLevel, Excavation, ImageSettings, Modules } from './types';
+import type {
+  CrossOrigin,
+  ERROR_LEVEL_MAPPED_TYPE,
+  ErrorCorrectionLevel,
+  Excavation,
+  ImageSettings,
+  Modules,
+} from './types';
 import { Ecc } from './qrcodegen';
 
 // =================== ERROR_LEVEL ==========================
@@ -14,10 +21,10 @@ export const DEFAULT_SIZE = 160;
 export const DEFAULT_LEVEL: ErrorCorrectionLevel = 'M';
 export const DEFAULT_BACKGROUND_COLOR = '#FFFFFF';
 export const DEFAULT_FRONT_COLOR = '#000000';
-export const DEFAULT_NEED_MARGIN = true;
+export const DEFAULT_NEED_MARGIN = false;
 export const DEFAULT_MINVERSION = 1;
-export const SPEC_MARGIN_SIZE = 0;
-export const DEFAULT_MARGIN_SIZE = 6; // 不同大小的二维码要修改默认margin
+export const SPEC_MARGIN_SIZE = 4;
+export const DEFAULT_MARGIN_SIZE = 0;
 export const DEFAULT_IMG_SCALE = 0.1;
 
 // =================== UTILS ==========================
@@ -65,11 +72,11 @@ export const generatePath = (modules: Modules, margin: number = 0) => {
  * @returns
  */
 export const excavateModules = (modules: Modules, excavation: Excavation) =>
-  modules.slice().map((row: any, y: any) => {
+  modules.slice().map((row, y) => {
     if (y < excavation.y || y >= excavation.y + excavation.h) {
       return row;
     }
-    return row.map((cell: any, x: any) => {
+    return row.map((cell, x) => {
       if (x < excavation.x || x >= excavation.x + excavation.w) {
         return cell;
       }
@@ -97,6 +104,7 @@ export const getImageSettings = (
   w: number;
   excavation: Excavation | null;
   opacity: number;
+  crossOrigin: CrossOrigin;
 } => {
   if (imageSettings == null) {
     return null;
@@ -119,7 +127,9 @@ export const getImageSettings = (
     excavation = { x: floorX, y: floorY, w: ceilW, h: ceilH };
   }
 
-  return { x, y, h, w, excavation, opacity };
+  const { crossOrigin } = imageSettings;
+
+  return { x, y, h, w, excavation, opacity, crossOrigin };
 };
 
 /**
@@ -139,5 +149,10 @@ export const getMarginSize = (needMargin: boolean, marginSize?: number) => {
  * Check if Path2D is supported
  */
 export const isSupportPath2d = (() => {
-  return false;
+  try {
+    new Path2D().addPath(new Path2D());
+  } catch {
+    return false;
+  }
+  return true;
 })();
