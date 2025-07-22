@@ -50,6 +50,10 @@ export default class Skeleton extends SuperComponent {
       this.init();
       this.isShowSkeleton();
     },
+
+    detached() {
+      this.clearTimer();
+    },
   };
 
   methods = {
@@ -129,10 +133,15 @@ export default class Skeleton extends SuperComponent {
       return style;
     },
 
-    isShowSkeleton() {
+    clearTimer() {
       if (this.timer) {
         clearTimeout(this.timer);
+        this.timer = null;
       }
+    },
+
+    isShowSkeleton() {
+      this.clearTimer();
 
       const { loading, delay } = this.properties;
 
