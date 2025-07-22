@@ -21,7 +21,7 @@
         <status />
       </t-demo>
       <t-demo desc="自定义状态渲染器" padding>
-        <statusRender />
+        <status-render />
       </t-demo>
     </view>
   </scroll-view>

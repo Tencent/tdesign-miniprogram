@@ -7,6 +7,6 @@
     "icon": "./icon",
     "level": "./level",
     "status": "./status",
-    "statusRender": "./statusRender"
+    "status-render": "./status-render"
   }
 }
