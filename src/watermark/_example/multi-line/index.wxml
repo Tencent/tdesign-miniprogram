@@ -3,8 +3,8 @@
   line-space="{{24}}"
   x="{{100}}"
   y="{{120}}"
-  width="{{158}}"
-  height="{{22}}"
+  width="{{120}}"
+  height="{{30}}"
 >
   <view style="width: 100%; height: 300px" />
 </t-watermark>
