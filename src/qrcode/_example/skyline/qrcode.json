@@ -10,6 +10,7 @@
     "icon": "../icon",
     "level": "../level",
     "status": "../status",
-    "status-render": "../status-render"
+    "status-render": "../status-render",
+    "download": "../download"
   }
 }

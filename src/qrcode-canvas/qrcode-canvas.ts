@@ -3,7 +3,6 @@ import useQRCode from '../qrcode/hooks/useQRCode';
 import { TdQRCodeProps } from './type';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import { DEFAULT_MINVERSION, excavateModules } from '../common/shared/qrcode/utils';
-import { rpx2px } from '../common/utils';
 
 @wxComponent()
 export default class QRCode extends SuperComponent {
@@ -53,23 +52,23 @@ export default class QRCode extends SuperComponent {
           level: level,
           minVersion: DEFAULT_MINVERSION,
           includeMargin: includeMargin,
-          marginSize: rpx2px(marginSize),
-          size: rpx2px(size),
+          marginSize: marginSize,
+          size: size,
           imageSettings: icon
             ? {
                 src: icon,
-                width: rpx2px(sizeProp.width),
-                height: rpx2px(sizeProp.height),
+                width: sizeProp.width,
+                height: sizeProp.height,
                 excavate: true,
               }
             : undefined,
         });
 
         const windowInfo = wx.getWindowInfo();
-        const dpr = windowInfo.pixelRatio;
-        canvas.width = rpx2px(size) * dpr;
-        canvas.height = rpx2px(size) * dpr;
-        const scale = (rpx2px(size) / qrData.numCells) * dpr;
+        const dpr = windowInfo.pixelRatio || 1;
+        canvas.width = size * dpr;
+        canvas.height = size * dpr;
+        const scale = (size * dpr) / qrData.numCells;
         ctx.scale(scale, scale);
 
         ctx.fillStyle = bgColor;
@@ -84,7 +83,7 @@ export default class QRCode extends SuperComponent {
         cellsToDraw.forEach((row, y) => {
           row.forEach((cell, x) => {
             if (cell) {
-              ctx.fillRect(x + qrData.margin, y + qrData.margin, 1, 1);
+              ctx.fillRect(x + qrData.margin, y + qrData.margin, 1.05, 1.05); // 略微大于 1 是抗锯齿处理
             }
           });
         });
@@ -151,6 +150,18 @@ export default class QRCode extends SuperComponent {
         changeFlag = true;
       }
       changeFlag && this.setData(updates);
+    },
+    // 暴露 canvas 给父组件
+    getCanvasNode() {
+      return new Promise((resolve) => {
+        const query = wx.createSelectorQuery().in(this);
+        query
+          .select('#qrcodeCanvas')
+          .fields({ node: true, size: true })
+          .exec((res) => {
+            resolve(res[0]?.node); // 返回Canvas节点
+          });
+      });
     },
   };
 }

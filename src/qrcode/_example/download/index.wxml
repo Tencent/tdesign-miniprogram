@@ -1,0 +1,4 @@
+<view class="t-qrcode-container">
+  <t-qrcode id="myQrcode" value="https://example.com" />
+  <view class="t-qrcode-container__button" bindtap="handleDownload">Download </view>
+</view>

@@ -7,18 +7,18 @@
     <view wx:if="{{status === 'expired'}}" class="{{classPrefix}}-expired">
       <view class="{{classPrefix}}-expired__text"> {{locale.expiredText}} </view>
       <view class="{{classPrefix}}-expired__button" bindtap="handleRefresh">
-        <t-icon name="refresh" size="24rpx" />
-        <view>{{locale.refreshText}} </view>
+        <t-icon name="refresh" size="36rpx" />
+        <view class="{{classPrefix}}-expired__text2">{{locale.refreshText}} </view>
       </view>
     </view>
 
     <view wx:elif="{{status === 'loading'}}" class="{{classPrefix}}-loading-container">
-      <t-loading theme="spinner" size="32rpx" />
+      <t-loading size="64rpx" />
     </view>
 
     <view wx:elif="{{status === 'scanned'}}" class="{{classPrefix}}-scanned">
-      <t-icon name="check-circle-filled" size="24rpx" color="#2BA471" />
-      <view> {{locale.scannedText}} </view>
+      <t-icon name="check-circle-filled" size="44rpx" color="#2BA471" />
+      <view class="{{classPrefix}}-scanned__text"> {{locale.scannedText}} </view>
     </view>
   </block>
 </view>

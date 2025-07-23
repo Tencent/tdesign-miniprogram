@@ -1,12 +1,14 @@
 @import '../common/style/base.less';
 
 @qrcode-border-color: var(--td-qrcode-border-color, #dcdcdc);
-@qrcode-border-width: var(--td-qrcode-border-width, 1rpx);
-@qrcode-border-radius: var(--td-qrcode-border-radius, 6rpx);
+@qrcode-border-width: var(--td-qrcode-border-width, 1px);
+@qrcode-border-radius: var(--td-qrcode-border-radius, 6px);
 
 .@{prefix}-qrcode {
   position: relative;
   display: flex;
+  padding: 11px;
+  box-sizing: border-box;
 
   &--borderless {
     border: none;

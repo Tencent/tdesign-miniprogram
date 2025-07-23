@@ -1,4 +1,5 @@
 import { TdQRCodeProps } from './type';
+import { DEFAULT_MARGIN_SIZE, DEFAULT_NEED_MARGIN } from '../common/shared/qrcode/utils';
 
 export default {
   value: {
@@ -31,10 +32,14 @@ export default {
   },
   includeMargin: {
     type: Boolean,
-    value: true as TdQRCodeProps['includeMargin'],
+    value: DEFAULT_NEED_MARGIN as TdQRCodeProps['includeMargin'],
   },
   marginSize: {
     type: Number,
-    value: 6 as TdQRCodeProps['marginSize'],
+    value: DEFAULT_MARGIN_SIZE as TdQRCodeProps['marginSize'],
+  },
+  paddingSize: {
+    type: Number,
+    value: 12, //
   },
 };

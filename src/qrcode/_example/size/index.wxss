@@ -1,0 +1,22 @@
+.t-qrcode-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.controls {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 4rpx;
+}
+
+.change-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  padding: 12rpx;
+  color: #000000;
+  border-radius: 10rpx;
+  background-color: #dcdcdc;
+}

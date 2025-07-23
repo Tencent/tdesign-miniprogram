@@ -3,16 +3,15 @@
 @qrcode-status-bg-color: var(--td-qrcode-status-bg-color, rgba(255, 255, 255, 0.96));
 @qrcode-text-color: var(--td-qrcode-text-color, rgba(0, 0, 0, 0.9));
 @qrcode-button-color: var(--td-qrcode-button-color, #0052d9);
-@qrcode-text-font-size: var(--td-qrcode-text-font-size, 28rpx);
-@qrcode-small-text-font-size: var(--td-qrcode-small-text-font-size, 24rpx);
-@qrcode-text-margin-bottom: var(--td-qrcode-text-margin-bottom, 16rpx);
+@qrcode-text-font-size: var(--td-qrcode-text-font-size, 14px);
+@qrcode-text-line-height: var(--td-qrcode-text-line-height, 22px);
 
 .@{prefix}-qrcode__status {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 2%;
+  left: 2%;
+  width: 96%;
+  height: 96%; // 解决 border 四角残缺问题
   background-color: @qrcode-status-bg-color;
   display: flex;
   pointer-events: auto;
@@ -29,7 +28,7 @@
   &__text {
     color: @qrcode-text-color;
     font-size: @qrcode-text-font-size;
-    margin-bottom: @qrcode-text-margin-bottom;
+    line-height: @qrcode-text-line-height;
   }
 
   &__button {
@@ -39,6 +38,13 @@
     color: @qrcode-button-color;
     font-size: @qrcode-text-font-size;
   }
+
+  &__text2 {
+    font-weight: 600;
+    margin-left: 4px;
+    font-size: @qrcode-text-font-size;
+    line-height: @qrcode-text-line-height;
+  }
 }
 
 .@{prefix}-qrcode-scanned {
@@ -46,7 +52,13 @@
   align-items: center;
   justify-content: center;
   color: @qrcode-text-color;
-  font-size: @qrcode-small-text-font-size;
+  font-size: @qrcode-text-font-size;
+
+  &__text {
+    margin-left: 8px;
+    font-size: @qrcode-text-font-size;
+    line-height: @qrcode-text-line-height;
+  }
 }
 
 .@{prefix}-qrcode-loading-container {

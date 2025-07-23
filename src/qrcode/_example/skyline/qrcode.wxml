@@ -5,24 +5,53 @@
       <view class="demo-title">QRCode 二维码</view>
       <view class="demo-desc">用于将文本渲染成二维码。</view>
 
-      <t-demo desc="基础用法" padding>
+      <t-demo title="01 基础用法" padding>
+        <view class="intro-text"> value 传入需要渲染的值，使用 borderless 属性决定是否需要边框 </view>
         <base />
       </t-demo>
-      <t-demo desc="设置颜色" padding>
+
+      <t-demo title="02 控制大小" padding>
+        <view class="intro-text"> 使用 size 调整二维码大小，默认值是 160px, 单位是 px </view>
+        <size />
+      </t-demo>
+
+      <t-demo title="03 设置颜色" padding>
+        <view class="intro-text">
+          通过设置 color 自定义二维码颜色，通过设置 bgColor 自定义背景颜色，默认属性是黑白色
+        </view>
         <color />
       </t-demo>
-      <t-demo desc="增加icon" padding>
+
+      <t-demo title="04 增加icon" padding>
+        <view class="intro-text"> 将 icon 的地址传入 icon 属性，使用 iconSize 属性调整大小 </view>
         <icon />
       </t-demo>
-      <t-demo desc="纠错级别" padding>
+
+      <t-demo title="05 纠错级别" padding>
+        <view class="intro-text"> 通过设置 level 调整不同的容错等级，提供 L，M，Q，H 四个等级 </view>
         <level />
       </t-demo>
-      <t-demo desc="二维码状态" padding>
+
+      <t-demo title="06 二维码状态" padding>
+        <view class="intro-text">
+          通过 status 的值控制二维码的状态，提供 active，expired，loading，scanned 四个值
+        </view>
         <status />
       </t-demo>
-      <t-demo desc="自定义状态渲染器" padding>
+
+      <t-demo title="07 自定义状态渲染器" padding>
+        <view class="intro-text">
+          通过 statusRender 的值控制二维码不同状态的渲染逻辑, 小程序中该属性为 Boolean ，利用 slot 进行自定义渲染
+        </view>
         <status-render />
       </t-demo>
+
+      <t-demo title="08 下载二维码" padding>
+        <view class="intro-text"> 通过获取底层的 canvas 的ID，可以实现二维码的下载 </view>
+        <download />
+      </t-demo>
+
+      <view style="height: 100rpx"> </view>
     </view>
   </scroll-view>
 </view>

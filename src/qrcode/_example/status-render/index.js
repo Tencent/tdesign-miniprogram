@@ -7,14 +7,14 @@ Component({
     ],
     currentStatus: 'expired',
     locale: {
-      expiredText: '二维码过期啦',
-      refreshText: '请点击刷新',
-      scannedText: '扫描完成',
+      expiredText: '二维码过期',
+      refreshText: '点击刷新',
+      scannedText: '已扫描',
     },
   },
   methods: {
     handleStatusChange(e) {
-      console.log('触发状态变化了');
+      console.log('状态变化');
       const selectedValue = e.detail.value;
       this.setData({
         currentStatus: selectedValue,

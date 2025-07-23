@@ -24,21 +24,31 @@
   justify-content: center;
 }
 
-.qrcode-expired__text,
-.qrcode-scanned {
+.qrcode-expired__wrapper,
+.qrcode-scanned__wrapper {
   display: flex;
   align-items: center;
-  margin-bottom: 16rpx;
 }
 
 .qrcode-expired__button {
   display: flex;
   align-items: center;
-  color: #0051ff;
+  color: #0052d9;
 }
 
 .loading-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.scanned-text {
+  font-size: 28rpx;
+  line-height: 44rpx;
+  margin-left: 12rpx;
+}
+
+.qrcode-expired__text2 {
+  margin-left: 4px;
 }

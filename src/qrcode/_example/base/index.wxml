@@ -1,11 +1,9 @@
 <view class="t-qrcode-container">
-  <t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" level="M" status="active" size="160"></t-qrcode>
+  <t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" level="M" status="active"></t-qrcode>
   <t-qrcode
     value="https://tdesign.gtimg.com/site/tdesign-logo.png"
     level="M"
     status="active"
-    size="160"
     borderless="{{true}}"
   ></t-qrcode>
-  <t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" level="M" status="active" size="200"></t-qrcode>
 </view>

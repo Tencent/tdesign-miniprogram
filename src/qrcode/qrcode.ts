@@ -38,6 +38,12 @@ export default class QRCode extends SuperComponent {
   };
 
   lifetimes = {
+    async ready() {
+      const canvasComp = this.selectComponent('#qrcodeCanvas'); // 获取子组件示例提供下载
+      const canvas = await canvasComp.getCanvasNode();
+      this.setData({ canvasNode: canvas });
+    },
+
     attached() {
       this.setData({
         showMask: this.properties.status !== 'active',
@@ -62,6 +68,26 @@ export default class QRCode extends SuperComponent {
     handleDrawError() {},
     handleRefresh() {
       this.triggerEvent('refresh');
+    },
+    // 二维码下载方法
+    async handleDownload() {
+      if (!this.data.canvasNode) {
+        console.error('未找到 canvas 节点');
+        return;
+      }
+
+      wx.canvasToTempFilePath(
+        {
+          canvas: this.data.canvasNode,
+          success: (res) => {
+            wx.saveImageToPhotosAlbum({ filePath: res.tempFilePath });
+          },
+          fail: (err) => {
+            console.error('canvasToTempFilePath failed', err);
+          },
+        },
+        this,
+      );
     },
   };
 }

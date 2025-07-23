@@ -8,6 +8,5 @@
 <t-qrcode
   value="https://tdesign.gtimg.com/site/tdesign-logo.png"
   status="{{currentStatus}}"
-  size="{{300}}"
   bind:refresh="handleRefresh"
 />

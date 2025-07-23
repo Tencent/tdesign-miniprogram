@@ -1,0 +1,13 @@
+<view class="t-qrcode-container">
+  <view class="controls">
+    <view class="change-button" bindtap="decreaseSize">- Smaller</view>
+    <view class="change-button" bindtap="increaseSize">+ Larger</view>
+  </view>
+
+  <t-qrcode
+    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    level="M"
+    status="active"
+    size="{{size}}"
+  ></t-qrcode>
+</view>
