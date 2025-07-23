@@ -12,7 +12,7 @@
     <view wx:if="{{currentStatus === 'expired'}}" class="qrcode-expired">
       <view class="qrcode-expired__wrapper">
         <t-icon name="close-circle-filled" size="36rpx" color="#ff0000" />
-        <text class="qrcode-expired__text2"> {{locale.expiredText}} </text>
+        <text class="qrcode-expired__text"> {{locale.expiredText}} </text>
       </view>
       <view class="qrcode-expired__button" bindtap="handleRefresh">
         <t-icon name="refresh" size="36rpx" />

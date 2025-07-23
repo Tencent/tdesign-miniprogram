@@ -282,7 +282,7 @@ exports[`Qrcode Qrcode status-render demo works fine 1`] = `
             size="36rpx"
           />
           <wx-text
-            class="qrcode-expired__text2"
+            class="qrcode-expired__text"
           >
              二维码过期 
           </wx-text>

@@ -49,6 +49,11 @@
   margin-left: 12rpx;
 }
 
+.qrcode-expired__text {
+  margin-left: 4px;
+  font-weight: 600;
+}
+
 .qrcode-expired__text2 {
   margin-left: 4px;
 }
