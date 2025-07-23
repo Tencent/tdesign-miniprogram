@@ -151,7 +151,7 @@ export default class QRCode extends SuperComponent {
       }
       changeFlag && this.setData(updates);
     },
-    // 暴露 canvas 给父组件
+    // 暴露 canvas 节点给父组件
     getCanvasNode() {
       return new Promise((resolve) => {
         const query = wx.createSelectorQuery().in(this);
@@ -159,7 +159,7 @@ export default class QRCode extends SuperComponent {
           .select('#qrcodeCanvas')
           .fields({ node: true, size: true })
           .exec((res) => {
-            resolve(res[0]?.node); // 返回Canvas节点
+            resolve(res[0]?.node);
           });
       });
     },

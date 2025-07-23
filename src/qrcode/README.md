@@ -26,7 +26,7 @@ isComponent: true
 ## 组件类型
 
 ### 基础用法
-value 传入需要渲染的值，使用 borderless 属性决定是否需要边框
+value 传入需要渲染的值，使用 borderless 属性决定是否需要边框，默认有边框
 
 {{ base }}
 
@@ -36,32 +36,33 @@ value 传入需要渲染的值，使用 borderless 属性决定是否需要边�
 {{ size }}
 
 ### 自定义颜色
-通过设置 color 自定义二维码颜色，通过设置 bgColor 自定义背景颜色，默认属性是黑白色
+通过设置 color 自定义二维码颜色，设置 bgColor 自定义背景颜色，默认是黑白色
 
 {{ color }}
 
 ### 带 Icon 的例子
-将 icon 的地址传入 icon 属性，使用 iconSize 属性调整大小
+将 icon 的地址传入 icon 属性，使用 iconSize 属性调整大小, 默认是 40px，单位 px
 
 {{ icon }}
 
 ### 纠错比例
-通过设置 level 调整不同的容错等级，提供 L，M，Q，H 四个等级
+通过设置 level 调整不同的容错等级，提供 L，M，Q，H 四个等级，默认是 M
 
 {{ level }}
 
 ### 不同的状态
-通过 status 的值控制二维码的状态，提供 active，expired，loading，scanned 四个值
+通过设置 status 控制二维码的状态，有 active，expired，loading，scanned 四种状态，默认是 active
 
 {{ status }}
 
 ### 自定义状态渲染
-通过 statusRender 的值控制二维码不同状态的渲染逻辑, 小程序中该属性为 Boolean ，利用 slot 进行自定义渲染
+设置 statusRender 为 true 后，可以利用小程序中的 slot 来自定义不同状态的渲染逻辑和样式
 
 {{ statusRender }}
 
 ### 下载二维码
-通过获取底层的 canvas 的ID，可以实现二维码的下载
+提供 handleDownload 方法，可以实现二维码的下载
+
 {{ download }}
 
 ##
@@ -107,4 +108,4 @@ t-class | 根节点样式类
 -- | -- | --
 --td-qrcode-border-color | #dcdcdc | -
 --td-qrcode-border-width | 1px | -
---td-qrcode-border-radius | 4px | -
+--td-qrcode-border-radius | 6px | -

@@ -39,7 +39,7 @@ export default class QRCode extends SuperComponent {
 
   lifetimes = {
     async ready() {
-      const canvasComp = this.selectComponent('#qrcodeCanvas'); // 获取子组件示例提供下载
+      const canvasComp = this.selectComponent('#qrcodeCanvas'); // 获取 canvas 示例
       const canvas = await canvasComp.getCanvasNode();
       this.setData({ canvasNode: canvas });
     },
