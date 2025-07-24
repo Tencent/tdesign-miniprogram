@@ -146,13 +146,17 @@ export default class Navbar extends SuperComponent {
 
     onMenuButtonBoundingClientRectWeightChange() {
       if (wx.onMenuButtonBoundingClientRectWeightChange) {
-        wx.onMenuButtonBoundingClientRectWeightChange((res: object) => this.queryElements(res)); // 监听胶囊条长度变化，隐藏遮挡的内容
+        this.onMenuButtonBoundingClientRectWeightChangeCallback = (
+          res: WechatMiniprogram.OnMenuButtonBoundingClientRectWeightChangeListenerResult,
+        ) => this.queryElements(res);
+
+        wx.onMenuButtonBoundingClientRectWeightChange(this.onMenuButtonBoundingClientRectWeightChangeCallback);
       }
     },
 
     offMenuButtonBoundingClientRectWeightChange() {
-      if (wx.offMenuButtonBoundingClientRectWeightChange) {
-        wx.offMenuButtonBoundingClientRectWeightChange((res: object) => this.queryElements(res));
+      if (this.onMenuButtonBoundingClientRectWeightChangeCallback) {
+        wx.offMenuButtonBoundingClientRectWeightChange(this.onMenuButtonBoundingClientRectWeightChangeCallback);
       }
     },
 
@@ -160,28 +164,20 @@ export default class Navbar extends SuperComponent {
      * 比较胶囊条和navbar内容，决定是否隐藏
      * @param capsuleRect API返回值，胶囊条的位置信息
      */
-    queryElements(capsuleRect) {
+    queryElements(capsuleRect: WechatMiniprogram.OnMenuButtonBoundingClientRectWeightChangeListenerResult) {
       Promise.all([
         getRect(this, `.${this.data.classPrefix}__left`),
         getRect(this, `.${this.data.classPrefix}__center`),
       ]).then(([leftRect, centerRect]) => {
         // 部分安卓机型中（目前仅在Magic6/7中复现），仍存在精度问题，暂使用 Math.round() 取整规避
-        if (Math.round(leftRect.right) > capsuleRect.left) {
-          this.setData({
-            hideLeft: true,
-            hideCenter: true,
-          });
-        } else if (Math.round(centerRect.right) > capsuleRect.left) {
-          this.setData({
-            hideLeft: false,
-            hideCenter: true,
-          });
-        } else {
-          this.setData({
-            hideLeft: false,
-            hideCenter: false,
-          });
-        }
+        const leftRight = Math.round(leftRect.right);
+        const centerRight = Math.round(centerRect.right);
+        const capsuleLeft = capsuleRect.left;
+
+        this.setData({
+          hideLeft: leftRight > capsuleLeft,
+          hideCenter: leftRight > capsuleLeft ? true : centerRight > capsuleLeft,
+        });
       });
     },
 
