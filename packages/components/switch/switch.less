@@ -46,6 +46,8 @@
 @switch-icon-large-size: var(--td-switch-icon-large-size, 48rpx);
 @switch-icon-small-size: var(--td-switch-icon-small-size, 32rpx);
 
+@switch-loading-color: var(--td-switch-loading-color, @brand-color);
+
 .@{prefix}-switch {
   display: flex;
   align-items: center;
@@ -103,7 +105,7 @@
   }
 
   &__loading {
-    color: @switch-label-checked-color;
+    --td-loading-color: @switch-loading-color;
   }
 
   &__body {

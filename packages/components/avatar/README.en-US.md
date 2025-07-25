@@ -88,4 +88,4 @@ Name | Default Value | Description
 --td-avatar-small-width | 80rpx | - 
 --td-avatar-text-large-font-size | @font-size-xl | - 
 --td-avatar-text-medium-font-size | @font-size-m | - 
---td-avatar-text-small-font-size | @font-size-base | -
+--td-avatar-text-small-font-size | @font-size-base | - 

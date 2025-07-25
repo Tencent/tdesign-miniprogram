@@ -107,15 +107,16 @@ select | `(value: timestamp)` | `0.28.0`。点击日期时触发
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-calendar-active-color | @brand-color | 选中项背景色 
+--td-calendar-active-color | @brand-color | - 
 --td-calendar-bg-color | @bg-color-container | - 
 --td-calendar-days-color | @text-color-secondary | - 
 --td-calendar-item-centre-color | @brand-color-light | - 
 --td-calendar-item-disabled-color | @text-color-disabled | - 
 --td-calendar-item-suffix-color | @text-color-placeholder | - 
 --td-calendar-radius | 24rpx | - 
+--td-calendar-selected-border-radius | @radius-default | - 
 --td-calendar-selected-color | @text-color-anti | - 
---td-calendar-switch-mode-icon-color | @brand-color | - 
---td-calendar-switch-mode-icon-disabled-color | @brand-color-disabled | - 
+--td-calendar-switch-mode-icon-color | @text-color-secondary | - 
+--td-calendar-switch-mode-icon-disabled-color | @text-color-disabled | - 
 --td-calendar-title-color | @text-color-primary | - 
---td-calendar-title-font-size | 18px | -
+--td-calendar-title-font-size | 18px | - 

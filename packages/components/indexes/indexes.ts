@@ -13,6 +13,13 @@ export default class Indexes extends SuperComponent {
 
   properties = props;
 
+  controlledProps = [
+    {
+      key: 'current',
+      event: 'change',
+    },
+  ];
+
   data = {
     prefix,
     classPrefix: name,
@@ -37,8 +44,6 @@ export default class Indexes extends SuperComponent {
 
   sidebar = null;
 
-  currentTouchAnchor = null;
-
   observers = {
     indexList(v) {
       this.setIndexList(v);
@@ -46,6 +51,12 @@ export default class Indexes extends SuperComponent {
     },
     height(v) {
       this.setHeight(v);
+    },
+
+    current(current: string | number) {
+      if (current && this.data.activeAnchor && current !== this.data.activeAnchor) {
+        this.setAnchorByCurrent(current, 'update');
+      }
     },
   };
 
@@ -100,7 +111,9 @@ export default class Indexes extends SuperComponent {
           const next = this.groupTop[index + 1];
           item.totalHeight = (next?.top || Infinity) - item.top;
         });
-        this.setAnchorOnScroll(0);
+
+        const current = this.data.current || this.data._indexList[0];
+        this.setAnchorByCurrent(current, 'init');
       });
       this.getSidebarRect();
     },
@@ -147,31 +160,36 @@ export default class Indexes extends SuperComponent {
       }
     },
 
-    setAnchorByIndex(index) {
-      const { _indexList, stickyOffset } = this.data;
-      const activeAnchor = _indexList[index];
+    setAnchorByCurrent(current: string | number, source: 'init' | 'click' | 'touch' | 'update') {
+      const { stickyOffset } = this.data;
 
-      if (this.data.activeAnchor !== null && this.data.activeAnchor === activeAnchor) return;
+      if (this.data.activeAnchor !== null && this.data.activeAnchor === current) return;
 
-      const target = this.groupTop.find((item) => item.anchor === activeAnchor);
+      const target = this.groupTop.find((item) => item.anchor === current);
 
       if (target) {
-        this.currentTouchAnchor = activeAnchor;
         const scrollTop = target.top - stickyOffset;
-        wx.pageScrollTo({
-          scrollTop,
-          duration: 0,
-        });
-        this.toggleTips(true);
-        this.triggerEvent('select', { index: activeAnchor });
-        this.setData({ activeAnchor });
+
+        if (scrollTop === 0 && source === 'init') {
+          this.setAnchorOnScroll(scrollTop);
+        } else {
+          wx.pageScrollTo({
+            scrollTop,
+            duration: 0,
+          });
+        }
+
+        if (['click', 'touch'].includes(source)) {
+          this.toggleTips(true);
+          this.triggerEvent('select', { index: current });
+        }
       }
     },
 
     onClick(e) {
-      const { index } = e.currentTarget.dataset;
+      const { current } = e.currentTarget.dataset;
 
-      this.setAnchorByIndex(index);
+      this.setAnchorByCurrent(current, 'click');
     },
 
     onTouchMove(e) {
@@ -203,7 +221,7 @@ export default class Indexes extends SuperComponent {
       };
       const index = getAnchorIndex(e.changedTouches[0].clientY);
 
-      this.setAnchorByIndex(index);
+      this.setAnchorByCurrent(this.data._indexList[index], 'touch');
     }, 1000 / 30), // 30 frame
 
     setAnchorOnScroll(scrollTop: number) {
@@ -211,7 +229,7 @@ export default class Indexes extends SuperComponent {
         return;
       }
 
-      const { sticky, stickyOffset, activeAnchor } = this.data;
+      const { sticky, stickyOffset } = this.data;
 
       scrollTop += stickyOffset;
 
@@ -222,13 +240,10 @@ export default class Indexes extends SuperComponent {
       if (curIndex === -1) return;
 
       const curGroup = this.groupTop[curIndex];
-      if (this.currentTouchAnchor !== null) {
-        this.triggerEvent('change', { index: curGroup.anchor });
-        this.currentTouchAnchor = null;
-      } else if (activeAnchor !== curGroup.anchor) {
-        this.triggerEvent('change', { index: curGroup.anchor });
-        this.setData({ activeAnchor: curGroup.anchor });
-      }
+
+      this.setData({ activeAnchor: curGroup.anchor }, () => {
+        this._trigger('change', { index: curGroup.anchor, current: curGroup.anchor });
+      });
 
       if (sticky) {
         const offset = curGroup.top - scrollTop;

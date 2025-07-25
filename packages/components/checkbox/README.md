@@ -128,6 +128,7 @@ default-value | Array | undefined | 选中值。非受控属性。TS 类型：`T
 名称 | 参数 | 描述
 -- | -- | --
 change | `(value: CheckboxGroupValue, context: { value: boolean\|number\|string, label: boolean\|number\|string })` | 值变化时触发。`context` 表示当前点击项内容。
+
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
@@ -149,4 +150,4 @@ change | `(value: CheckboxGroupValue, context: { value: boolean\|number\|string,
 --td-checkbox-title-color | @text-color-primary | - 
 --td-checkbox-title-disabled-color | @text-color-disabled | - 
 --td-checkbox-title-line-height | 48rpx | - 
---td-checkbox-vertical-padding | 32rpx | -
+--td-checkbox-vertical-padding | 32rpx | - 

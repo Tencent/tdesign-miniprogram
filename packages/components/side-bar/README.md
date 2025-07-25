@@ -92,9 +92,9 @@ value | String / Number | - | 当前选项的值 | N
 --td-side-bar-active-color | @brand-color | - 
 --td-side-bar-bg-color | @bg-color-secondarycontainer | - 
 --td-side-bar-border-radius | 18rpx | - 
---td-side-bar-color | @font-gray-1 | - 
---td-side-bar-disabled-color | @font-gray-4 | - 
+--td-side-bar-color | @text-color-primary | - 
+--td-side-bar-disabled-color | @text-color-disabled | - 
 --td-side-bar-font-size | 32rpx | - 
 --td-side-bar-icon-size | 40rpx | - 
 --td-side-bar-item-height | 112rpx | - 
---td-side-bar-item-line-height | 48rpx | -
+--td-side-bar-item-line-height | 48rpx | - 

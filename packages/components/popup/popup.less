@@ -13,7 +13,7 @@
   position: fixed;
   z-index: 11500;
   max-height: calc(100vh - var(--td-popup-distance-top, 0));
-  transition: all 300ms ease;
+  transition: var(--td-popup-transition, all 300ms ease);
   background-color: @popup-bg-color;
 
   &__content {

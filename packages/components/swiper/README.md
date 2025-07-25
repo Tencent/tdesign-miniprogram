@@ -132,13 +132,13 @@ t-class | 根节点样式类
 --td-swiper-item-padding | 0 | - 
 --td-swiper-radius | @radius-large | - 
 --td-swiper-nav-btn-bg-color | @font-gray-3 | - 
---td-swiper-nav-btn-color | @font-white-1 | - 
+--td-swiper-nav-btn-color | @text-color-anti | - 
 --td-swiper-nav-btn-size | 48rpx | - 
---td-swiper-nav-dot-active-color | @font-white-1 | - 
+--td-swiper-nav-dot-active-color | @text-color-anti | - 
 --td-swiper-nav-dot-color | @font-white-2 | - 
 --td-swiper-nav-dot-size | 12rpx | - 
 --td-swiper-nav-dots-bar-active-width | 40rpx | - 
 --td-swiper-nav-fraction-bg-color | @font-gray-3 | - 
---td-swiper-nav-fraction-color | @font-white-1 | - 
+--td-swiper-nav-fraction-color | @text-color-anti | - 
 --td-swiper-nav-fraction-font-size | 24rpx | - 
---td-swiper-nav-fraction-height | 48rpx | -
+--td-swiper-nav-fraction-height | 48rpx | - 

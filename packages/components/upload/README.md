@@ -110,10 +110,12 @@ success | `(files: MediaContext)` | 上传成功后触发，包含所有上传�
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-upload-add-bg-color | @bg-color-secondarycontainer | - 
---td-upload-add-color | @font-gray-3 | - 
+--td-upload-add-color | @text-color-placeholder | - 
 --td-upload-add-disabled-bg-color | @bg-color-component-disabled | - 
 --td-upload-add-icon-disabled-color | @text-color-disabled | - 
 --td-upload-add-icon-font-size | 56rpx | - 
---td-upload-disabled-mask | rgba(255, 255, 255, 0.55) | - 
+--td-upload-disabled-mask | rgba(0, 0.6) | - 
+--td-upload-drag-transition-duration | --td-upload-drag-transition-duration | - 
+--td-upload-drag-transition-timing-function | --td-upload-drag-transition-timing-function | - 
+--td-upload-drag-z-index | 999 | - 
 --td-upload-radius | @radius-default | - 
---td-upload-drag-z-index | 999 | -

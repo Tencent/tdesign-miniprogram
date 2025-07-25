@@ -17,12 +17,5 @@
       "tdesign-miniprogram/*": ["packages/components/*"]
     }
   },
-  "include": [
-    "packages/components/**/*",
-    "example/**/*",
-    "site/**/*",
-    "typing.d.ts",
-    "wechat-miniprogram-extension.d.ts",
-    "packages/site/plugins/changelog-to-json/index.ts"
-  ]
+  "include": ["packages/**/*", "example/**/*", "typing.d.ts"],
 }

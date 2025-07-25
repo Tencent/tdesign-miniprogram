@@ -78,5 +78,7 @@ t-class-content | 内容样式类
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-popup-bg-color | @bg-color-container | - 
---td-popup-border-radius | @radius-default | - 
---td-popup-close-btn-color | @text-color-primary | -
+--td-popup-border-radius | @radius-extra-large | - 
+--td-popup-close-btn-color | @text-color-primary | - 
+--td-popup-distance-top | 0) | - 
+--td-popup-transition | all 300ms ease | - 

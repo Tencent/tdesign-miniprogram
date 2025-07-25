@@ -122,14 +122,13 @@ t-class-textarea | 多行文本框样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-
-名称 | 默认值 | 描述
+名称 | 默认值 | 描述 
 -- | -- | --
---td-textarea-background-color | @bg-color-container | -
---td-textarea-border-color | rgba(220, 220, 220, 1) | -
---td-textarea-border-radius | @radius-default | -
---td-textarea-disabled-text-color | @font-gray-4 | -
---td-textarea-indicator-text-color | @font-gray-3 | -
---td-textarea-label-color | @font-gray-1 | -
---td-textarea-placeholder-color | @font-gray-3 | -
---td-textarea-text-color | @font-gray-1 | -
+--td-textarea-background-color | @bg-color-container | - 
+--td-textarea-border-color | @component-border | - 
+--td-textarea-border-radius | @radius-default | - 
+--td-textarea-disabled-text-color | @text-color-disabled | - 
+--td-textarea-indicator-text-color | @text-color-placeholder | - 
+--td-textarea-label-color | @text-color-primary | - 
+--td-textarea-placeholder-color | @text-color-placeholder | - 
+--td-textarea-text-color | @text-color-primary | - 

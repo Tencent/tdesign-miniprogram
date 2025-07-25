@@ -6,6 +6,21 @@ docClass: timeline
 ---
 
 
+## 🌈 1.9.7 `2025-07-10` 
+### 🚀 Features
+- `Calendar`: 新增 `readonly` 属性 @anlyyao ([#3752](https://github.com/Tencent/tdesign-miniprogram/pull/3752))
+- `Indexes`: 
+  - 新增 `current` 属性，支持非受控模式，用于自定义索引列表激活项 @anlyyao ([#3761](https://github.com/Tencent/tdesign-miniprogram/pull/3761))
+  - 丰富组件 `CSS Variables` @anlyyao ([#3760](https://github.com/Tencent/tdesign-miniprogram/pull/3760))
+- `Popup`: 新增 `--td-popup-transition` 样式变量 @betavs ([#3775](https://github.com/Tencent/tdesign-miniprogram/pull/3775))
+- `Navbar`: 新增 `--td-navbar-background` 样式变量 @anlyyao ([#3764](https://github.com/Tencent/tdesign-miniprogram/pull/3764))
+### 🐞 Bug Fixes
+- `PickerItem`: 解决 `options` 数据源更新后点击确认按钮 `Picker` 组件的 `change` 事件返回值不正确 @anlyyao ([#3759](https://github.com/Tencent/tdesign-miniprogram/pull/3759))
+- `Calendar`: 修复因 `class` 关键字导致在 `Mpx` 框架中编译报错 @anlyyao ([#3781](https://github.com/Tencent/tdesign-miniprogram/pull/3781))
+### 🚧 Others
+- `site`: 修复官网组件预览二维码路径错误 @anlyyao ([#3751](https://github.com/Tencent/tdesign-miniprogram/pull/3751))
+
+
 ## 🌈 1.9.6 `2025-06-25` 
 ### 🚀 Features
 - `Upload`: 支持视频预览 @anlyyao ([#3741](https://github.com/Tencent/tdesign-miniprogram/pull/3741))
