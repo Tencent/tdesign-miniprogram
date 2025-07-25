@@ -1,0 +1,103 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fab Fab advance demo works fine 1`] = `
+<advance>
+  <t-fab
+    buttonProps="{{
+      Object {
+        "icon": "share",
+        "openType": "share",
+      }
+    }}"
+    icon="add"
+    text="分享给朋友"
+    bind:click="handleClick"
+  />
+</advance>
+`;
+
+exports[`Fab Fab base demo works fine 1`] = `
+<base>
+  <t-fab
+    ariaLabel="增加"
+    icon="add"
+    bind:click="handleClick"
+  />
+</base>
+`;
+
+exports[`Fab Fab collapsible demo works fine 1`] = `
+<collapsible>
+  <t-fab
+    customStyle="right:16px;bottom:24px"
+    bind:click="handleClick"
+    bind:dragend="handleDragEnd"
+    bind:dragstart="handleDragStart"
+  >
+    <wx-view
+      class="wrap"
+    >
+      <wx-view
+        class="item"
+      >
+        <t-icon
+          name="add-circle"
+          size="20"
+        />
+        <wx-view
+          class="text"
+        >
+          添加
+        </wx-view>
+      </wx-view>
+      <wx-view
+        class="item"
+      >
+        <t-icon
+          name="star"
+          size="20"
+        />
+        <wx-view
+          class="text"
+        >
+          收藏
+        </wx-view>
+      </wx-view>
+      <wx-view
+        class="item"
+      >
+        <t-icon
+          name="jump"
+          size="20"
+        />
+        <wx-view
+          class="text"
+        >
+          分享
+        </wx-view>
+      </wx-view>
+    </wx-view>
+  </t-fab>
+</collapsible>
+`;
+
+exports[`Fab Fab draggable demo works fine 1`] = `
+<draggable>
+  <t-fab
+    ariaLabel="增加"
+    draggable="{{true}}"
+    icon="gesture-press"
+    text="拖我"
+    usingCustomNavbar="{{true}}"
+    yBounds="{{
+      Array [
+        0,
+        32,
+      ]
+    }}"
+    bind:click="handleClick"
+    bind:dragend="handleDragEnd"
+    bind:dragstart="handleDragStart"
+  />
+</draggable>
+`;

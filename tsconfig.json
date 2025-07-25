@@ -14,8 +14,8 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "tdesign-miniprogram/*": ["src/*"]
+      "tdesign-miniprogram/*": ["packages/components/*"]
     }
   },
-  "include": ["src/**/*", "example/**/*", "site/**/*", "typing.d.ts"]
+  "include": ["packages/**/*", "example/**/*", "typing.d.ts"],
 }

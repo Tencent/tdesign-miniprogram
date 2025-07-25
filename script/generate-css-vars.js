@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const COMPONENT_NAME = process.argv[process.argv.indexOf('--NAME') + 1]; // 在 --NAME 后面
+const ROOT_DIR = 'packages/components';
 
 const combine = {
   avatar: ['avatar-group', 'avatar'],
@@ -28,7 +29,7 @@ const resolveCwd = (...args) => {
   return path.join(...args);
 };
 
-const findFilePath = (componentName) => resolveCwd(`src/${componentName}/${componentName}.less`);
+const findFilePath = (componentName) => resolveCwd(`${ROOT_DIR}/${componentName}/${componentName}.less`);
 
 const getAllComponentName = async (dirPath) => {
   const items = await fs.promises.readdir(dirPath, { withFileTypes: true });
@@ -102,7 +103,7 @@ const processAllComponents = async () => {
 
   let COMPONENT_NAMES = [];
   if (COMPONENT_NAME === 'all') {
-    COMPONENT_NAMES = await getAllComponentName(resolveCwd('src'));
+    COMPONENT_NAMES = await getAllComponentName(resolveCwd(ROOT_DIR));
   } else {
     COMPONENT_NAMES = [COMPONENT_NAME];
   }
@@ -112,8 +113,8 @@ const processAllComponents = async () => {
     COMPONENT_NAMES.map(async (name) => {
       const variables = await generateCssVariables(name);
       if (variables) {
-        updateDocVariables(`src/${name}/README.md`, cssVariableHeadContent, variables);
-        updateDocVariables(`src/${name}/README.en-US.md`, cssVariableHeadContentEn, variables);
+        updateDocVariables(`${ROOT_DIR}/${name}/README.md`, cssVariableHeadContent, variables);
+        updateDocVariables(`${ROOT_DIR}/${name}/README.en-US.md`, cssVariableHeadContentEn, variables);
         console.log(`✅ 组件 "${name}" 文档更新完成`);
       } else {
         console.log(`${name}" 没有找到 CSS 变量`);
