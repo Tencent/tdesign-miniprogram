@@ -6,9 +6,9 @@ dist
 example/pages/*
 !example/pages/gulp-error
 !example/pages/home
-packages/tdesign-miniprogram/test/e2e
-packages/tdesign-miniprogram/test/unit
-packages/tdesign-miniprogram/test/unit-virtualHost
+test/e2e
+test/unit
+test/unit-virtualHost
 .DS_Store
 node_modules
 package-lock.json

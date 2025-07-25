@@ -5,7 +5,7 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['advance', 'base', 'draggable'];
+const mapper = ['advance', 'base', 'collapsible', 'draggable'];
 
 describe('Fab', () => {
   mapper.forEach((demoName) => {

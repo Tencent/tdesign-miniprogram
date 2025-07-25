@@ -1,33 +1,35 @@
 module.exports = {
+  rootDir: '../',
   verbose: true,
   testEnvironment: 'jsdom',
   testURL: 'http://localhost/',
   moduleFileExtensions: ['js', 'ts'],
   moduleNameMapper: {
-    '^tdesign-miniprogram/(.*)': '../../components/$1',
-    '^tdesign-miniprogram': '../../components/index',
-    '^@behaviors/(.*)': '../../../example/behaviors/$1',
+    '^tdesign-miniprogram/(.*)': '<rootDir>/packages/components/$1',
+    '^tdesign-miniprogram': '<rootDir>/packages/components/index',
+    '^@behaviors/(.*)': '<rootDir>/example/behaviors/$1',
   },
-  testMatch: ['../../components/**/__test__/**/*.test.{js,ts}'],
-  collectCoverageFrom: ['../../components/**/*.{js,ts}', '!**/__test__/**', '!**/_example/**'],
+  testMatch: ['<rootDir>/packages/components/**/__test__/**/*.test.{js,ts}'],
+  collectCoverageFrom: ['<rootDir>/packages/components/**/*.{js,ts}', '!**/__test__/**', '!**/_example/**'],
   collectCoverage: true,
   coverageProvider: 'v8',
-  coverageDirectory: './unit/coverage',
+  coverageDirectory: '<rootDir>/test/unit/coverage',
   reporters: [
     'default',
     [
-      './node_modules/jest-html-reporter',
+      'jest-html-reporter',
       {
         pageTitle: 'TDesign-miniprogram Unit Test Report',
-        outputPath: './unit/report/test-report.html',
+        outputPath: '<rootDir>/test/unit/report/test-report.html',
       },
     ],
   ],
-  setupFiles: ['../../../script/test/setup.js'],
+  setupFiles: ['<rootDir>/script/test/setup.js'],
   coverageReporters: ['html', 'json-summary'],
   globals: {
     CONFIG_PREFIX: 't',
   },
-  globalSetup: '../../../script/test/globalSetup.js',
+  globalSetup: '<rootDir>/script/test/globalSetup.js',
   snapshotSerializers: ['miniprogram-simulate/jest-snapshot-plugin'],
 };
+
