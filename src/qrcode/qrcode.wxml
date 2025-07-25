@@ -2,7 +2,7 @@
 
 <view
   style="{{_._style([style, customStyle])}} width:{{size}}px; height: {{size}}px; background-color: {{bgColor}};"
-  class="{{classPrefix}} {{classPrefix}}--{{borderless ? 'borderless' : 'bordered'}} {{prefix}}-class"
+  class="{{classPrefix}} {{borderless ? prefix+'-'+'borderless' : ''}} {{prefix}}-class"
 >
   <qrcode-canvas
     id="qrcodeCanvas"
@@ -19,8 +19,10 @@
   </qrcode-canvas>
 
   <block wx:if="{{showMask && canvasReady}}">
-    <qrcode-status status="{{status}}" bind:refresh="handleRefresh" status-render="{{statusRender}}">
-      <slot name="statusRender" slot="statusRender"> </slot>
-    </qrcode-status>
+    <view class="{{prefix}}-mask">
+      <qrcode-status status="{{status}}" bind:refresh="handleRefresh" status-render="{{statusRender}}">
+        <slot name="statusRender" slot="statusRender"> </slot>
+      </qrcode-status>
+    </view>
   </block>
 </view>

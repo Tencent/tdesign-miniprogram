@@ -1,7 +1,1 @@
-<canvas
-  type="2d"
-  class="t-qrcode__canvas"
-  id="qrcodeCanvas"
-  style="width: {{size - paddingSize * 2}}px; height: {{size - paddingSize * 2}}px;"
-  ><!-- 减去父容器边框的padding -->
-</canvas>
+<canvas type="2d" class="t-qrcode__canvas" id="qrcodeCanvas"></canvas>

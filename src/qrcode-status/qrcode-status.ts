@@ -20,6 +20,7 @@ export default class QRCode extends SuperComponent {
   };
 
   data = {
+    prefix,
     classPrefix: name,
   };
 

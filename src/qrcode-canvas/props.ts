@@ -40,6 +40,6 @@ export default {
   },
   paddingSize: {
     type: Number,
-    value: 12, //
+    value: 13, //
   },
 };

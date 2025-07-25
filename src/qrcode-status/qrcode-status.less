@@ -1,68 +1,41 @@
 @import '../common/style/base.less';
 
-@qrcode-status-bg-color: var(--td-qrcode-status-bg-color, rgba(255, 255, 255, 0.96));
-@qrcode-text-color: var(--td-qrcode-text-color, rgba(0, 0, 0, 0.9));
-@qrcode-button-color: var(--td-qrcode-button-color, #0052d9);
-@qrcode-text-font-size: var(--td-qrcode-text-font-size, 14px);
-@qrcode-text-line-height: var(--td-qrcode-text-line-height, 22px);
+@qrcode-expired-link-motion-duration-mid: 0.2s;
+@qrcode-expired-link-motion-ease-in-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+@qrcode-expired-link-color-hover: var(--td-brand-color-hover);
+@qrcode-scanned-icon-color: var(--td-success-color);
 
-.@{prefix}-qrcode__status {
-  position: absolute;
-  top: 2%;
-  left: 2%;
-  width: 96%;
-  height: 96%; // 解决 border 四角残缺问题
-  background-color: @qrcode-status-bg-color;
-  display: flex;
-  pointer-events: auto;
-  align-items: center;
-  justify-content: center;
-}
+@qrcode-mask-inner-gap: 8px;
+@qrcode-mask-inner-btn-height: 32px;
 
-.@{prefix}-qrcode-expired {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: transparent;
-
+.@{prefix}-expired {
   &__text {
+    color: @text-color-primary;
     font-weight: 600;
-    color: @qrcode-text-color;
-    font-size: @qrcode-text-font-size;
-    line-height: @qrcode-text-line-height;
   }
 
   &__button {
     display: flex;
+    color: @brand-color;
+    box-shadow: none;
+    cursor: pointer;
+    column-gap: @qrcode-mask-inner-gap;
     align-items: center;
-    justify-content: center;
-    color: @qrcode-button-color;
-    font-size: @qrcode-text-font-size;
-  }
+    height: @qrcode-mask-inner-btn-height;
+    transition: all @qrcode-expired-link-motion-duration-mid @qrcode-expired-link-motion-ease-in-out;
 
-  &__text2 {
-    margin-left: 4px;
-    font-size: @qrcode-text-font-size;
-    line-height: @qrcode-text-line-height;
+    &:hover {
+      color: @qrcode-expired-link-color-hover;
+    }
   }
 }
 
-.@{prefix}-qrcode-scanned {
+.@{prefix}-scanned {
   display: flex;
+  column-gap: @qrcode-mask-inner-gap;
   align-items: center;
-  justify-content: center;
-  color: @qrcode-text-color;
-  font-size: @qrcode-text-font-size;
 
-  &__text {
-    margin-left: 8px;
-    font-size: @qrcode-text-font-size;
-    line-height: @qrcode-text-line-height;
+  &__icon {
+    color: @qrcode-scanned-icon-color;
   }
-}
-
-.@{prefix}-qrcode-loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
