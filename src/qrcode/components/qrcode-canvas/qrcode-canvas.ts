@@ -1,8 +1,8 @@
 import props from './props';
-import useQRCode from '../qrcode/hooks/useQRCode';
+import useQRCode from '../../hooks/useQRCode';
 import { TdQRCodeProps } from './type';
-import { SuperComponent, wxComponent } from '../common/src/index';
-import { DEFAULT_MINVERSION, excavateModules } from '../common/shared/qrcode/utils';
+import { SuperComponent, wxComponent } from '../../../common/src/index';
+import { DEFAULT_MINVERSION, excavateModules } from '../../../common/shared/qrcode/utils';
 
 @wxComponent()
 export default class QRCode extends SuperComponent {
