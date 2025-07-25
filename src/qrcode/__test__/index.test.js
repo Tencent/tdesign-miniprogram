@@ -147,7 +147,7 @@ describe('qrcode', () => {
     });
 
     const container = comp.querySelector('.base >>> .t-qrcode');
-    expect(container.dom.getAttribute('class').includes('t-qrcode--borderless')).toBeTruthy();
+    expect(container.dom.getAttribute('class').includes('t-borderless')).toBeTruthy();
   });
 
   it(`: refresh event `, async () => {
