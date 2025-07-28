@@ -57,7 +57,7 @@ export default function transition() {
         return [Number(durations), Number(durations)];
       },
       enter() {
-        const { name } = this.data;
+        const { name, transitionDurations } = this.data;
         const [duration] = this.durations;
         this.status = 'entering';
         this.setData({
@@ -72,11 +72,10 @@ export default function transition() {
         if (typeof duration === 'number' && duration > 0) {
           this.transitionT = setTimeout(this.entered.bind(this), duration + 30);
         } else {
-          setTimeout(() => {
-            if (this.status === 'entering') {
-              this.entered();
-            }
-          }, 300);
+          this.transitionT = setTimeout(
+            this.status === 'entering' ? this.entered.bind(this) : null,
+            transitionDurations + 30,
+          );
         }
       },
       entered() {
@@ -88,7 +87,7 @@ export default function transition() {
         });
       },
       leave() {
-        const { name } = this.data;
+        const { name, transitionDurations } = this.data;
         const [, duration] = this.durations;
         this.status = 'leaving';
         this.setData({
@@ -104,11 +103,10 @@ export default function transition() {
           this.customDuration = true;
           this.transitionT = setTimeout(this.leaved.bind(this), duration + 30);
         } else {
-          setTimeout(() => {
-            if (this.status === 'leaving') {
-              this.leaved();
-            }
-          }, 300);
+          this.transitionT = setTimeout(
+            this.status === 'leaving' ? this.leaved.bind(this) : null,
+            transitionDurations + 30,
+          );
         }
       },
       leaved() {
