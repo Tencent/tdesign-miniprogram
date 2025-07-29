@@ -1,13 +1,11 @@
-<view class="t-qrcode-container">
-  <view class="controls">
-    <view class="change-button" bindtap="decreaseSize">- Smaller</view>
-    <view class="change-button" bindtap="increaseSize">+ Larger</view>
-  </view>
-
-  <t-qrcode
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-    level="M"
-    status="active"
-    size="{{size}}"
-  ></t-qrcode>
+<view class="button-group">
+  <view class="left-change-button change-button" bindtap="decreaseSize"
+    ><view class="button-text">- Smaller</view></view
+  >
+  <view class="right-change-button change-button" bindtap="increaseSize"
+    ><view class="button-text">+ Larger</view></view
+  >
+</view>
+<view class="show-container">
+  <t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" size="{{size}}"></t-qrcode>
 </view>

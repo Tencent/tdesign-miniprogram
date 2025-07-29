@@ -1,10 +1,12 @@
-.horizontal-radio-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20rpx;
+.qrcode-container {
+  margin-bottom: 24rpx;
 }
 
-.radio-label {
-  display: flex;
-  align-items: center;
+.status-text {
+  display: block;
+  margin-bottom: 16rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  line-height: 22px;
+  color: rgba(0, 0, 0, 0.6);
 }

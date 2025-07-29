@@ -1,9 +1,25 @@
 Component({
   data: {
     size: 160,
-    maxSize: 300,
     minSize: 80,
   },
+  lifetimes: {
+    attached() {
+      const query = wx.createSelectorQuery().in(this);
+      query
+        .select('.show-container')
+        .boundingClientRect((rect) => {
+          if (rect) {
+            const containerWidth = rect.width;
+            this.setData({
+              maxSize: containerWidth, // 将最大尺寸设置为父容器的宽度
+            });
+          }
+        })
+        .exec();
+    },
+  },
+
   methods: {
     increaseSize() {
       if (this.data.size < this.data.maxSize) {

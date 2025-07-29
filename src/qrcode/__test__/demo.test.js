@@ -5,7 +5,7 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['base', 'color', 'download', 'icon', 'level', 'size', 'status', 'status-render'];
+const mapper = ['base', 'borderless', 'color', 'icon', 'level', 'size', 'status'];
 
 describe('Qrcode', () => {
   mapper.forEach((demoName) => {

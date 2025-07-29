@@ -1,18 +1,18 @@
-<view class="t-qrcode-container">
-  <t-qrcode
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-    level="M"
-    status="active"
-    color="#0052D9"
-    bgColor="#fff"
-  >
-  </t-qrcode>
-  <t-qrcode
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-    level="M"
-    status="active"
-    color="#0052D9"
-    bgColor="#D9E1FF"
-  >
-  </t-qrcode>
-</view>
+<view class="intro-text" style="padding-bottom: 16px"> 二维码颜色 </view>
+<t-qrcode
+  value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+  level="M"
+  status="active"
+  color="#0052D9"
+  bgColor="#fff"
+>
+</t-qrcode>
+<view class="intro-text" style="padding-bottom: 16px; padding-top: 24px"> 二维码背景颜色 </view>
+<t-qrcode
+  value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+  level="M"
+  status="active"
+  color="#0052D9"
+  bgColor="#D9E1FF"
+>
+</t-qrcode>

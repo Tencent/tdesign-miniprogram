@@ -5,13 +5,12 @@ exports[`Qrcode Qrcode base demo works fine 1`] = `
   <wx-view
     class="t-qrcode-container"
   >
+    <wx-view
+      class="intro-text"
+    >
+       基本用法 
+    </wx-view>
     <t-qrcode
-      level="M"
-      status="active"
-      value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-    />
-    <t-qrcode
-      borderless="{{true}}"
       level="M"
       status="active"
       value="https://tdesign.gtimg.com/site/tdesign-logo.png"
@@ -20,54 +19,50 @@ exports[`Qrcode Qrcode base demo works fine 1`] = `
 </base>
 `;
 
+exports[`Qrcode Qrcode borderless demo works fine 1`] = `
+<borderless>
+  <t-qrcode
+    borderless="{{true}}"
+    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+  />
+</borderless>
+`;
+
 exports[`Qrcode Qrcode color demo works fine 1`] = `
 <color>
   <wx-view
-    class="t-qrcode-container"
+    class="intro-text"
+    style="padding-bottom: 16px"
   >
-    <t-qrcode
-      bgColor="#fff"
-      color="#0052D9"
-      level="M"
-      status="active"
-      value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-    />
-    <t-qrcode
-      bgColor="#D9E1FF"
-      color="#0052D9"
-      level="M"
-      status="active"
-      value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-    />
+     二维码颜色 
   </wx-view>
-</color>
-`;
-
-exports[`Qrcode Qrcode download demo works fine 1`] = `
-<download>
+  <t-qrcode
+    bgColor="#fff"
+    color="#0052D9"
+    level="M"
+    status="active"
+    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+  />
   <wx-view
-    class="t-qrcode-container"
+    class="intro-text"
+    style="padding-bottom: 16px; padding-top: 24px"
   >
-    <t-qrcode
-      id="myQrcode"
-      value="https://example.com"
-    />
-    <wx-view
-      class="t-qrcode-container__button"
-      bind:tap="handleDownload"
-    >
-      Download 
-    </wx-view>
+     二维码背景颜色 
   </wx-view>
-</download>
+  <t-qrcode
+    bgColor="#D9E1FF"
+    color="#0052D9"
+    level="M"
+    status="active"
+    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+  />
+</color>
 `;
 
 exports[`Qrcode Qrcode icon demo works fine 1`] = `
 <wx-icon>
   <t-qrcode
     icon="https://tdesign.gtimg.com/site/tdesign-logo.png"
-    level="M"
-    status="active"
     value="https://tdesign.gtimg.com/site/tdesign-logo.png"
   />
 </wx-icon>
@@ -75,57 +70,26 @@ exports[`Qrcode Qrcode icon demo works fine 1`] = `
 
 exports[`Qrcode Qrcode level demo works fine 1`] = `
 <level>
-  <wx-radio-group
-    class="horizontal-radio-group"
-    bind:change="handleLevelChange"
-  >
-    <wx-label
-      class="radio-label"
-    >
-      <wx-radio
-        checked="{{true}}"
-        value="L"
-      />
-      
-    L
-  
-    </wx-label>
-    <wx-label
-      class="radio-label"
-    >
-      <wx-radio
-        checked=""
-        value="M"
-      />
-      
-    M
-  
-    </wx-label>
-    <wx-label
-      class="radio-label"
-    >
-      <wx-radio
-        checked=""
-        value="Q"
-      />
-      
-    Q
-  
-    </wx-label>
-    <wx-label
-      class="radio-label"
-    >
-      <wx-radio
-        checked=""
-        value="H"
-      />
-      
-    H
-  
-    </wx-label>
-  </wx-radio-group>
+  <t-slider
+    marks="{{
+      Object {
+        "0": "7%",
+        "1": "15%",
+        "2": "25%",
+        "3": "35%",
+      }
+    }}"
+    max="3"
+    min="0"
+    step="1"
+    value="{{1}}"
+    bind:change="handleSliderChange"
+  />
+  <wx-view
+    style="height: 16px; width: 100%"
+  />
   <t-qrcode
-    level="L"
+    level="M"
     status="active"
     value="https://tdesign.gtimg.com/site/tdesign-logo.png"
   />
@@ -135,28 +99,34 @@ exports[`Qrcode Qrcode level demo works fine 1`] = `
 exports[`Qrcode Qrcode size demo works fine 1`] = `
 <size>
   <wx-view
-    class="t-qrcode-container"
+    class="button-group"
   >
     <wx-view
-      class="controls"
+      class="left-change-button change-button"
+      bind:tap="decreaseSize"
     >
       <wx-view
-        class="change-button"
-        bind:tap="decreaseSize"
+        class="button-text"
       >
         - Smaller
       </wx-view>
+    </wx-view>
+    <wx-view
+      class="right-change-button change-button"
+      bind:tap="increaseSize"
+    >
       <wx-view
-        class="change-button"
-        bind:tap="increaseSize"
+        class="button-text"
       >
         + Larger
       </wx-view>
     </wx-view>
+  </wx-view>
+  <wx-view
+    class="show-container"
+  >
     <t-qrcode
-      level="M"
       size="{{160}}"
-      status="active"
       value="https://tdesign.gtimg.com/site/tdesign-logo.png"
     />
   </wx-view>
@@ -165,144 +135,61 @@ exports[`Qrcode Qrcode size demo works fine 1`] = `
 
 exports[`Qrcode Qrcode status demo works fine 1`] = `
 <status>
-  <wx-radio-group
-    class="horizontal-radio-group"
-    style="margin-bottom: 40rpx"
-    bind:change="handleStatusChange"
-  >
-    <wx-label
-      class="radio-label"
-    >
-      <wx-radio
-        checked="{{true}}"
-        value="expired"
-      />
-      
-    expired
-  
-    </wx-label>
-    <wx-label
-      class="radio-label"
-    >
-      <wx-radio
-        checked=""
-        value="loading"
-      />
-      
-    loading
-  
-    </wx-label>
-    <wx-label
-      class="radio-label"
-    >
-      <wx-radio
-        checked=""
-        value="scanned"
-      />
-      
-    scanned
-  
-    </wx-label>
-  </wx-radio-group>
-  <t-qrcode
-    status="expired"
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-    bind:refresh="handleRefresh"
-  />
-</status>
-`;
-
-exports[`Qrcode Qrcode status-render demo works fine 1`] = `
-<status-render>
   <wx-view
-    class="radio-container"
+    class="qrcode-container"
   >
-    <wx-radio-group
-      class="horizontal-radio-group"
-      bind:change="handleStatusChange"
+    <wx-text
+      class="status-text"
     >
-      <wx-label
-        class="radio-label"
-      >
-        <wx-radio
-          checked="{{true}}"
-          value="expired"
-        />
-        <wx-text
-          class="radio-text"
-        >
-          expired
-        </wx-text>
-      </wx-label>
-      <wx-label
-        class="radio-label"
-      >
-        <wx-radio
-          checked=""
-          value="loading"
-        />
-        <wx-text
-          class="radio-text"
-        >
-          loading
-        </wx-text>
-      </wx-label>
-      <wx-label
-        class="radio-label"
-      >
-        <wx-radio
-          checked=""
-          value="scanned"
-        />
-        <wx-text
-          class="radio-text"
-        >
-          scanned
-        </wx-text>
-      </wx-label>
-    </wx-radio-group>
+      acgtive 
+    </wx-text>
+    <t-qrcode
+      status="active"
+      value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+      bind:refresh="handleRefresh"
+    />
   </wx-view>
-  <t-qrcode
-    status="expired"
-    statusRender="{{true}}"
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+  <wx-view
+    class="qrcode-container"
   >
-    <wx-view
-      slot="statusRender"
+    <wx-text
+      class="status-text"
     >
-      <wx-view
-        class="qrcode-expired"
-      >
-        <wx-view
-          class="qrcode-expired__wrapper"
-        >
-          <t-icon
-            color="#ff0000"
-            name="close-circle-filled"
-            size="36rpx"
-          />
-          <wx-text
-            class="qrcode-expired__text"
-          >
-             二维码过期 
-          </wx-text>
-        </wx-view>
-        <wx-view
-          class="qrcode-expired__button"
-          bind:tap="handleRefresh"
-        >
-          <t-icon
-            name="refresh"
-            size="36rpx"
-          />
-          <wx-view
-            class="qrcode-expired__text2"
-          >
-            点击刷新
-          </wx-view>
-        </wx-view>
-      </wx-view>
-    </wx-view>
-  </t-qrcode>
-</status-render>
+      expired 
+    </wx-text>
+    <t-qrcode
+      status="expired"
+      value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+      bind:refresh="handleRefresh"
+    />
+  </wx-view>
+  <wx-view
+    class="qrcode-container"
+  >
+    <wx-text
+      class="status-text"
+    >
+      loading 
+    </wx-text>
+    <t-qrcode
+      status="loading"
+      value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+      bind:refresh="handleRefresh"
+    />
+  </wx-view>
+  <wx-view
+    class="qrcode-container"
+  >
+    <wx-text
+      class="status-text"
+    >
+      scanned 
+    </wx-text>
+    <t-qrcode
+      status="scanned"
+      value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+      bind:refresh="handleRefresh"
+    />
+  </wx-view>
+</status>
 `;

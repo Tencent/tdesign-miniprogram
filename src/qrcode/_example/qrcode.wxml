@@ -1,52 +1,38 @@
 <view class="skyline">
   <t-navbar class="demo-navbar" title="QRCode" leftArrow />
   <view class="demo">
-    <t-demo-header title="QRCode 二维码" desc="用于将文本渲染成二维码。" notice="渲染框架支持情况：Skyline、WebView" />
+    <t-demo-header
+      title="QRCode 二维码"
+      desc="能够将文本转换生成二维码的组件，支持自定义配色和 Logo 配置。"
+      notice="渲染框架支持情况：WebView"
+    />
 
-    <t-demo title="01 基础用法" padding>
-      <view class="intro-text"> value 传入需要渲染的值，使用 borderless 属性决定是否需要边框，默认有边框 </view>
+    <t-demo title="01 组件类型" padding>
       <base />
     </t-demo>
 
-    <t-demo title="02 控制大小" padding>
-      <view class="intro-text"> 使用 size 调整二维码大小，默认值是 160px, 单位是 px </view>
-      <size />
-    </t-demo>
-
-    <t-demo title="03 设置颜色" padding>
-      <view class="intro-text"> 通过设置 color 自定义二维码颜色，设置 bgColor 自定义背景颜色，默认是黑白色 </view>
-      <color />
-    </t-demo>
-
-    <t-demo title="04 增加icon" padding>
-      <view class="intro-text"> 将 icon 的地址传入 icon 属性，使用 iconSize 属性调整大小, 默认是 40px，单位 px </view>
+    <t-demo desc="带 Icon 的二维码" padding>
       <icon />
     </t-demo>
 
-    <t-demo title="05 纠错级别" padding>
-      <view class="intro-text"> 通过设置 level 调整不同的容错等级，提供 L，M，Q，H 四个等级，默认是 M </view>
+    <t-demo desc="无边框的二维码" padding>
+      <borderless />
+    </t-demo>
+
+    <t-demo desc="二维码纠错等级" padding>
       <level />
     </t-demo>
 
-    <t-demo title="06 二维码状态" padding>
-      <view class="intro-text">
-        通过设置 status 控制二维码的状态，有 active，expired，loading，scanned 四种状态，默认是 active
-      </view>
+    <t-demo title="02 组件状态" padding>
       <status />
     </t-demo>
 
-    <t-demo title="07 自定义状态渲染" padding>
-      <view class="intro-text">
-        设置 statusRender 为 true 后，可以利用小程序中的 slot 来自定义不同状态的渲染逻辑和样式
-      </view>
-      <status-render />
+    <t-demo title="03 组件样式" padding>
+      <color />
     </t-demo>
 
-    <t-demo title="08 下载二维码" padding>
-      <view class="intro-text"> 提供 handleDownload 方法，可以实现二维码的下载 </view>
-      <download />
+    <t-demo desc="二维码尺寸" padding>
+      <size />
     </t-demo>
-
-    <view style="height: 100rpx"> </view>
   </view>
 </view>

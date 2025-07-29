@@ -1,7 +1,8 @@
 Component({
   data: {
     status: [
-      { value: 'expired', label: 'expired', checked: true },
+      { value: 'active', label: 'acgtive' },
+      { value: 'expired', label: 'expired' },
       { value: 'loading', label: 'loading' },
       { value: 'scanned', label: 'scanned' },
     ],

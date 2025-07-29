@@ -4,13 +4,12 @@
   "componentFramework": "glass-easel",
   "disableScroll": true,
   "usingComponents": {
-    "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "base": "../base",
     "color": "../color",
+    "size": "../size",
     "icon": "../icon",
     "level": "../level",
     "status": "../status",
-    "status-render": "../status-render",
-    "download": "../download"
+    "borderless": "../borderless"
   }
 }

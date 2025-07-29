@@ -22,6 +22,15 @@ export default class QRCode extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
+    isSkyline: false,
+  };
+
+  lifetimes = {
+    attached() {
+      this.setData({
+        isSkyline: this.renderer === 'skyline',
+      });
+    },
   };
 
   methods = {

@@ -1,12 +1,8 @@
-<radio-group class="horizontal-radio-group" style="margin-bottom: 40rpx" bindchange="handleStatusChange">
-  <label wx:for="{{status}}" wx:key="value" class="radio-label">
-    <radio value="{{item.value}}" checked="{{item.checked}}" />
-    {{item.label}}
-  </label>
-</radio-group>
-
-<t-qrcode
-  value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-  status="{{currentStatus}}"
-  bind:refresh="handleRefresh"
-/>
+<view wx:for="{{status}}" wx:key="value" class="qrcode-container">
+  <text class="status-text">{{item.label}} </text>
+  <t-qrcode
+    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    status="{{item.value}}"
+    bind:refresh="handleRefresh"
+  />
+</view>
