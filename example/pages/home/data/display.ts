@@ -127,11 +127,6 @@ const skylineDisplay = {
       label: '进度条',
     },
     {
-      name: 'QRCode',
-      label: '二维码',
-      path: '/pages/qrcode/skyline/qrcode',
-    },
-    {
       name: 'Result',
       label: '结果',
     },
