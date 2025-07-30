@@ -137,7 +137,7 @@ exports[`Qrcode Qrcode status demo works fine 1`] = `
     <wx-text
       class="status-text"
     >
-      acgtive 
+      active 
     </wx-text>
     <t-qrcode
       status="active"

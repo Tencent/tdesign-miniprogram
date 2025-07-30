@@ -1,7 +1,7 @@
 Component({
   data: {
     status: [
-      { value: 'active', label: 'acgtive' },
+      { value: 'active', label: 'active' },
       { value: 'expired', label: 'expired' },
       { value: 'loading', label: 'loading' },
       { value: 'scanned', label: 'scanned' },
