@@ -1,6 +1,6 @@
 Component({
   data: {
-    value: 1, // 默认选中 L（0 对应 L，1 对应 M，2 对应 Q，3 对应 H）
+    value: 1,
     marks: {
       0: '7%',
       1: '15%',

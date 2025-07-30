@@ -102,21 +102,21 @@ exports[`Qrcode Qrcode size demo works fine 1`] = `
     class="button-group"
   >
     <wx-view
-      class="left-change-button change-button"
+      class="left-change-button change-button "
       bind:tap="decreaseSize"
     >
       <wx-view
-        class="button-text"
+        class="button-text "
       >
         - Smaller
       </wx-view>
     </wx-view>
     <wx-view
-      class="right-change-button change-button"
+      class="right-change-button change-button "
       bind:tap="increaseSize"
     >
       <wx-view
-        class="button-text"
+        class="button-text "
       >
         + Larger
       </wx-view>

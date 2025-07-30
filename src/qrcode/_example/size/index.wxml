@@ -1,10 +1,10 @@
 <view class="button-group">
-  <view class="left-change-button change-button" bindtap="decreaseSize"
-    ><view class="button-text">- Smaller</view></view
-  >
-  <view class="right-change-button change-button" bindtap="increaseSize"
-    ><view class="button-text">+ Larger</view></view
-  >
+  <view class="left-change-button change-button {{size === minSize? 'button-disable': ''}}" bindtap="decreaseSize">
+    <view class="button-text {{size === minSize? 'button-text-disable': ''}}">- Smaller</view>
+  </view>
+  <view class="right-change-button change-button {{size === maxSize? 'button-disable': ''}}" bindtap="increaseSize">
+    <view class="button-text {{size === maxSize? 'button-text-disable': ''}}">+ Larger</view>
+  </view>
 </view>
 <view class="show-container">
   <t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" size="{{size}}"></t-qrcode>

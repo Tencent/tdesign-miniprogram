@@ -21,7 +21,7 @@ Component({
       });
     },
     handleRefresh() {
-      console.log('点击刷新');
+      console.log('Click Refresh');
     },
   },
 });
