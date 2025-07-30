@@ -52,6 +52,7 @@ Name | Default Value | Description
 --td-switch-large-height | 64rpx | - 
 --td-switch-large-radius | calc(@switch-large-height / 2) | - 
 --td-switch-large-width | 104rpx | - 
+--td-switch-loading-color | @brand-color | - 
 --td-switch-radius | calc(@switch-height / 2) | - 
 --td-switch-small-height | 48rpx | - 
 --td-switch-small-radius | calc(@switch-small-height / 2) | - 

@@ -12,7 +12,6 @@ index | String / Number | - | 索引字符 | N
 -- | -- 
 t-class | 根节点样式类
 
-
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
