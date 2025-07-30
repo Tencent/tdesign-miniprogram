@@ -1,6 +1,6 @@
 ---
 title: QRCode 二维码
-description: 能够将文本转换生成二维码
+description: 二维码能够将文本转换生成二维码的组件，支持自定义配色和 Logo 配置。
 spline: message
 isComponent: true
 ---
@@ -23,37 +23,36 @@ isComponent: true
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
 </blockquote>
 
-## 组件类型
+### 01 组件类型
 
-### 基础用法
-value 传入需要渲染的值，使用 borderless 属性决定是否需要边框，默认有边框
+#### 基本用法
 
 {{ base }}
 
-### 控制大小
-使用 size 调整二维码大小，默认值是 160px, 单位是 px
-
-{{ size }}
-
-### 自定义颜色
-通过设置 color 自定义二维码颜色，设置 bgColor 自定义背景颜色，默认是黑白色
-
-{{ color }}
-
-### 带 Icon 的例子
-将 icon 的地址传入 icon 属性，使用 iconSize 属性调整大小, 默认是 40px，单位 px
+#### 带 Icon 的二维码
 
 {{ icon }}
 
-### 纠错比例
-通过设置 level 调整不同的容错等级，提供 L，M，Q，H 四个等级，默认是 M
+
+
+#### 二维码纠错等级
 
 {{ level }}
 
-### 不同的状态
-通过设置 status 控制二维码的状态，有 active，expired，loading，scanned 四种状态，默认是 active
+### 02 组件状态
 
 {{ status }}
+
+### 03 组件样式
+
+#### 二维码颜色
+
+{{ color }}
+
+#### 二维码尺寸
+
+{{ size }}
+
 
 ### FAQ
 

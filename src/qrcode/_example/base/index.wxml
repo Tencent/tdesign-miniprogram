@@ -1,4 +1,2 @@
-<view class="t-qrcode-container">
-  <view class="intro-text"> 基本用法 </view>
-  <t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" level="M" status="active"></t-qrcode>
-</view>
+<view class="intro-text"> 基本用法 </view>
+<t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" level="M" status="active"></t-qrcode>

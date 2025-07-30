@@ -3,19 +3,15 @@
 exports[`Qrcode Qrcode base demo works fine 1`] = `
 <base>
   <wx-view
-    class="t-qrcode-container"
+    class="intro-text"
   >
-    <wx-view
-      class="intro-text"
-    >
-       基本用法 
-    </wx-view>
-    <t-qrcode
-      level="M"
-      status="active"
-      value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-    />
+     基本用法 
   </wx-view>
+  <t-qrcode
+    level="M"
+    status="active"
+    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+  />
 </base>
 `;
 
