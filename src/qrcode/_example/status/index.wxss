@@ -4,8 +4,9 @@
 
 .status-text {
   display: block;
-  margin-bottom: 16rpx;
-  font-size: 28rpx;
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-size: 14px;
   font-weight: 400;
   line-height: 22px;
   color: rgba(0, 0, 0, 0.6);

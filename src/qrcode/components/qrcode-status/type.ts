@@ -1,9 +1,9 @@
 export interface QRCodeStatusProps {
   /**
    * 二维码状态
-   * @default ''
+   * @default 'active'
    */
-  status?: 'expired' | 'scanned' | '';
+  status?: 'active' | 'expired' | 'loading' | 'scanned';
 
   /**
    * 本地化文本配置
@@ -22,9 +22,4 @@ export interface QRCodeStatusProps {
    * @default false
    */
   statusRender?: boolean;
-}
-
-export interface QRCodeStatusEvents {
-  /** 点击刷新时触发 */
-  refresh: boolean;
 }

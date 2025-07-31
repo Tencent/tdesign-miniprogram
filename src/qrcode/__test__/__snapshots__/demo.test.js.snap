@@ -95,97 +95,90 @@ exports[`Qrcode Qrcode level demo works fine 1`] = `
 exports[`Qrcode Qrcode size demo works fine 1`] = `
 <size>
   <wx-view
-    class="button-group"
+    class="container"
   >
     <wx-view
-      class="left-change-button change-button "
-      bind:tap="decreaseSize"
+      class="button-group"
     >
-      <wx-view
-        class="button-text "
+      <t-button
+        class="button"
+        data-step="{{-10}}"
+        disabled="{{false}}"
+        variant="text"
+        bind:tap="changeSize"
       >
-        - Smaller
-      </wx-view>
+        
+      - Smaller
+    
+      </t-button>
+      <wx-view
+        class="line"
+      />
+      <t-button
+        class="button"
+        data-step="{{10}}"
+        disabled="{{false}}"
+        variant="text"
+        bind:tap="changeSize"
+      >
+        
+      + Larger
+    
+      </t-button>
     </wx-view>
     <wx-view
-      class="right-change-button change-button "
-      bind:tap="increaseSize"
+      class="qrcode-container"
     >
-      <wx-view
-        class="button-text "
-      >
-        + Larger
-      </wx-view>
+      <t-qrcode
+        size="{{160}}"
+        value="https://tdesign.tencent.com/"
+      />
     </wx-view>
-  </wx-view>
-  <wx-view
-    class="show-container"
-  >
-    <t-qrcode
-      size="{{160}}"
-      value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-    />
   </wx-view>
 </size>
 `;
 
 exports[`Qrcode Qrcode status demo works fine 1`] = `
 <status>
-  <wx-view
-    class="qrcode-container"
+  <wx-text
+    class="status-text"
   >
-    <wx-text
-      class="status-text"
-    >
-      active 
-    </wx-text>
-    <t-qrcode
-      status="active"
-      value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-      bind:refresh="handleRefresh"
-    />
-  </wx-view>
-  <wx-view
-    class="qrcode-container"
+     active 
+  </wx-text>
+  <t-qrcode
+    status="active"
+    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    bind:refresh="handleRefresh"
+  />
+  <wx-text
+    class="status-text"
   >
-    <wx-text
-      class="status-text"
-    >
-      expired 
-    </wx-text>
-    <t-qrcode
-      status="expired"
-      value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-      bind:refresh="handleRefresh"
-    />
-  </wx-view>
-  <wx-view
-    class="qrcode-container"
+     expired 
+  </wx-text>
+  <t-qrcode
+    status="expired"
+    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    bind:refresh="handleRefresh"
+  />
+  <wx-text
+    class="status-text"
   >
-    <wx-text
-      class="status-text"
-    >
-      loading 
-    </wx-text>
-    <t-qrcode
-      status="loading"
-      value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-      bind:refresh="handleRefresh"
-    />
-  </wx-view>
-  <wx-view
-    class="qrcode-container"
+     loading 
+  </wx-text>
+  <t-qrcode
+    status="loading"
+    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    bind:refresh="handleRefresh"
+  />
+  <wx-text
+    class="status-text"
   >
-    <wx-text
-      class="status-text"
-    >
-      scanned 
-    </wx-text>
-    <t-qrcode
-      status="scanned"
-      value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-      bind:refresh="handleRefresh"
-    />
-  </wx-view>
+     scanned 
+  </wx-text>
+  <t-qrcode
+    status="scanned"
+    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    bind:refresh="handleRefresh"
+  />
 </status>
 `;

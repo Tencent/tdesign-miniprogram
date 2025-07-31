@@ -1,8 +1,11 @@
-<view wx:for="{{status}}" wx:key="value" class="qrcode-container">
-  <text class="status-text">{{item.label}} </text>
-  <t-qrcode
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-    status="{{item.value}}"
-    bind:refresh="handleRefresh"
-  />
-</view>
+<text class="status-text"> active </text>
+<t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" status="{{'active'}}" bind:refresh="handleRefresh" />
+
+<text class="status-text"> expired </text>
+<t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" status="{{'expired'}}" bind:refresh="handleRefresh" />
+
+<text class="status-text"> loading </text>
+<t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" status="{{'loading'}}" bind:refresh="handleRefresh" />
+
+<text class="status-text"> scanned </text>
+<t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" status="{{'scanned'}}" bind:refresh="handleRefresh" />

@@ -65,7 +65,9 @@ export default class QRCode extends SuperComponent {
         canvasReady: true,
       });
     },
-    handleDrawError() {},
+    handleDrawError(err) {
+      console.error('二维码绘制失败', err);
+    },
     handleRefresh() {
       this.triggerEvent('refresh');
     },

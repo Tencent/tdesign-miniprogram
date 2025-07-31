@@ -1,5 +1,10 @@
 import { TdQRCodeProps } from './type';
-import { DEFAULT_MARGIN_SIZE, DEFAULT_NEED_MARGIN } from '../../../common/shared/qrcode/utils';
+import {
+  DEFAULT_MARGIN_SIZE,
+  DEFAULT_NEED_MARGIN,
+  DEFAULT_BACKGROUND_COLOR,
+  DEFAULT_FRONT_COLOR,
+} from '../../../common/shared/qrcode/utils';
 
 export default {
   value: {
@@ -24,11 +29,11 @@ export default {
   },
   bgColor: {
     type: String,
-    value: '#ffffff' as TdQRCodeProps['bgColor'],
+    value: DEFAULT_BACKGROUND_COLOR as TdQRCodeProps['bgColor'],
   },
   color: {
     type: String,
-    value: '#000000' as TdQRCodeProps['color'],
+    value: DEFAULT_FRONT_COLOR as TdQRCodeProps['color'],
   },
   includeMargin: {
     type: Boolean,

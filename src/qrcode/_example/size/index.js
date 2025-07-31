@@ -4,29 +4,11 @@ Component({
     minSize: 80,
     maxSize: 240,
   },
-  lifetimes: {},
-
   methods: {
-    increaseSize() {
-      if (this.data.size < this.data.maxSize) {
-        this.setData({
-          size: this.data.size + 10,
-        });
-      } else {
-        this.setData({
-          size: this.data.maxSize,
-        });
-      }
-    },
-    decreaseSize() {
-      if (this.data.size > this.data.minSize) {
-        this.setData({
-          size: this.data.size - 10,
-        });
-      } else {
-        this.setData({
-          size: this.data.minSize,
-        });
+    changeSize(e) {
+      const newSize = this.data.size + e.currentTarget.dataset.step;
+      if (newSize >= this.data.minSize && newSize <= this.data.maxSize) {
+        this.setData({ size: newSize });
       }
     },
   },
