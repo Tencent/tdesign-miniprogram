@@ -131,7 +131,7 @@ t-class-content | 内容样式类
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-action-sheet-border-color | @border-level-1-color | - 
---td-action-sheet-border-radius | @radius-extra-large | - 
+--td-action-sheet-border-radius | @radius-extraLarge | - 
 --td-action-sheet-cancel-color | @text-color-primary | - 
 --td-action-sheet-cancel-height | 96rpx | - 
 --td-action-sheet-color | @text-color-primary | - 
