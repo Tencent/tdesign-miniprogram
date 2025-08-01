@@ -10,7 +10,7 @@
     </t-demo-header>
     <!-- 文档参考：https://developers.weixin.qq.com/miniprogram/dev/component/native-component.html -->
 
-    <t-demo title="01 组件类型" padding>
+    <t-demo title="01 组件类型" desc="基本用法" padding>
       <base />
     </t-demo>
 
@@ -26,11 +26,11 @@
       <level />
     </t-demo>
 
-    <t-demo title="02 组件状态" padding>
+    <t-demo title="02 组件状态" desc="active" padding>
       <status />
     </t-demo>
 
-    <t-demo title="03 组件样式" padding>
+    <t-demo title="03 组件样式" desc="二维码颜色" padding>
       <color />
     </t-demo>
 

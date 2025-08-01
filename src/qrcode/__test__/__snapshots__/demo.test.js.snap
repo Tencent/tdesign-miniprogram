@@ -2,15 +2,10 @@
 
 exports[`Qrcode Qrcode base demo works fine 1`] = `
 <base>
-  <wx-view
-    class="intro-text"
-  >
-     基本用法 
-  </wx-view>
   <t-qrcode
     level="M"
     status="active"
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    value="https://tdesign.tencent.com/"
   />
 </base>
 `;
@@ -19,29 +14,22 @@ exports[`Qrcode Qrcode borderless demo works fine 1`] = `
 <borderless>
   <t-qrcode
     borderless="{{true}}"
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    value="https://tdesign.tencent.com/"
   />
 </borderless>
 `;
 
 exports[`Qrcode Qrcode color demo works fine 1`] = `
 <color>
-  <wx-view
-    class="intro-text"
-    style="padding-bottom: 16px"
-  >
-     二维码颜色 
-  </wx-view>
   <t-qrcode
     bgColor="#fff"
     color="#0052D9"
     level="M"
     status="active"
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    value="https://tdesign.tencent.com/"
   />
   <wx-view
-    class="intro-text"
-    style="padding-bottom: 16px; padding-top: 24px"
+    class="demo-summary"
   >
      二维码背景颜色 
   </wx-view>
@@ -50,7 +38,7 @@ exports[`Qrcode Qrcode color demo works fine 1`] = `
     color="#0052D9"
     level="M"
     status="active"
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    value="https://tdesign.tencent.com/"
   />
 </color>
 `;
@@ -59,7 +47,7 @@ exports[`Qrcode Qrcode icon demo works fine 1`] = `
 <wx-icon>
   <t-qrcode
     icon="https://tdesign.gtimg.com/site/tdesign-logo.png"
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    value="https://tdesign.tencent.com/"
   />
 </wx-icon>
 `;
@@ -82,13 +70,14 @@ exports[`Qrcode Qrcode level demo works fine 1`] = `
     bind:change="handleSliderChange"
   />
   <wx-view
-    style="height: 16px; width: 100%"
-  />
-  <t-qrcode
-    level="M"
-    status="active"
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-  />
+    class="qrcode-content"
+  >
+    <t-qrcode
+      level="M"
+      status="active"
+      value="https://tdesign.tencent.com/"
+    />
+  </wx-view>
 </level>
 `;
 
@@ -140,44 +129,39 @@ exports[`Qrcode Qrcode size demo works fine 1`] = `
 
 exports[`Qrcode Qrcode status demo works fine 1`] = `
 <status>
-  <wx-text
-    class="status-text"
-  >
-     active 
-  </wx-text>
   <t-qrcode
     status="active"
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    value="https://tdesign.tencent.com/"
     bind:refresh="handleRefresh"
   />
-  <wx-text
-    class="status-text"
+  <wx-view
+    class="demo-summary"
   >
      expired 
-  </wx-text>
+  </wx-view>
   <t-qrcode
     status="expired"
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    value="https://tdesign.tencent.com/"
     bind:refresh="handleRefresh"
   />
-  <wx-text
-    class="status-text"
+  <wx-view
+    class="demo-summary"
   >
      loading 
-  </wx-text>
+  </wx-view>
   <t-qrcode
     status="loading"
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    value="https://tdesign.tencent.com/"
     bind:refresh="handleRefresh"
   />
-  <wx-text
-    class="status-text"
+  <wx-view
+    class="demo-summary"
   >
      scanned 
-  </wx-text>
+  </wx-view>
   <t-qrcode
     status="scanned"
-    value="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    value="https://tdesign.tencent.com/"
     bind:refresh="handleRefresh"
   />
 </status>

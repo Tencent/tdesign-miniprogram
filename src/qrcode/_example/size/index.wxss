@@ -7,7 +7,7 @@
   width: 100%;
   display: flex;
   padding: 0;
-  border: 1px solid var(--td-component-border, #dcdcdc);
+  border: 1px solid var(--td-component-border);
   border-radius: 6px;
   margin-bottom: 16px;
   overflow: hidden;
@@ -16,12 +16,12 @@
 .line {
   height: auto;
   width: 1px;
-  background-color: var(--td-component-border, #dcdcdc);
+  background-color: var(--td-component-border);
 }
 
 .button {
   flex: 1;
-  border-radius: 0 !important;
+  --td-button-border-radius: 0px;
 }
 
 .qrcode-container {
@@ -30,5 +30,6 @@
   padding: 20px 0;
   justify-content: center;
   align-items: center;
-  background: var(--td-bg-color-secondarycontainer, #f5f5f5);
+  align-self: stretch;
+  background: var(--td-bg-color-secondarycontainer);
 }

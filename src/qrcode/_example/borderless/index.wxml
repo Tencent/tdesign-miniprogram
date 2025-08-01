@@ -1,1 +1,1 @@
-<t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" borderless="{{true}}"></t-qrcode>
+<t-qrcode value="https://tdesign.tencent.com/" borderless="{{true}}" />

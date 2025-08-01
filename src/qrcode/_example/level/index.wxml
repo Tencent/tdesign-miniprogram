@@ -1,5 +1,4 @@
 <t-slider value="{{value}}" min="0" max="3" step="1" marks="{{marks}}" bindchange="handleSliderChange" />
-
-<view style="height: 16px; width: 100%"> </view>
-
-<t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" level="{{currentLevel}}" status="active" />
+<view class="qrcode-content">
+  <t-qrcode value="https://tdesign.tencent.com/" level="{{currentLevel}}" status="active" />
+</view>

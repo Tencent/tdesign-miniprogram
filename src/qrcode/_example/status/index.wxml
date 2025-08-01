@@ -1,11 +1,10 @@
-<text class="status-text"> active </text>
-<t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" status="{{'active'}}" bind:refresh="handleRefresh" />
+<t-qrcode value="https://tdesign.tencent.com/" status="{{'active'}}" bind:refresh="handleRefresh" />
 
-<text class="status-text"> expired </text>
-<t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" status="{{'expired'}}" bind:refresh="handleRefresh" />
+<view class="demo-summary"> expired </view>
+<t-qrcode value="https://tdesign.tencent.com/" status="{{'expired'}}" bind:refresh="handleRefresh" />
 
-<text class="status-text"> loading </text>
-<t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" status="{{'loading'}}" bind:refresh="handleRefresh" />
+<view class="demo-summary"> loading </view>
+<t-qrcode value="https://tdesign.tencent.com/" status="{{'loading'}}" bind:refresh="handleRefresh" />
 
-<text class="status-text"> scanned </text>
-<t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" status="{{'scanned'}}" bind:refresh="handleRefresh" />
+<view class="demo-summary"> scanned </view>
+<t-qrcode value="https://tdesign.tencent.com/" status="{{'scanned'}}" bind:refresh="handleRefresh" />

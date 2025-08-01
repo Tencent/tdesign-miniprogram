@@ -1,13 +1,9 @@
-.qrcode-container {
-  margin-bottom: 24rpx;
-}
+.demo-summary {
+  padding-top: 48rpx;
+  padding-bottom: 32rpx;
+  box-sizing: border-box;
 
-.status-text {
-  display: block;
-  margin-top: 24px;
-  margin-bottom: 16px;
-  font-size: 14px;
-  font-weight: 400;
   line-height: 22px;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--bg-color-demo-desc);
+  font-size: var(--td-font-size-base, 28rpx);
 }
