@@ -101,11 +101,9 @@ t-class | 根节点样式类
 
 ### CSS Variables
 
-
 组件提供了下列 CSS 变量，可用于自定义样式。
-
-名称 | 默认值 | 描述
+名称 | 默认值 | 描述 
 -- | -- | --
---td-qrcode-border-color | #dcdcdc | -
---td-qrcode-border-width | 1px | -
---td-qrcode-border-radius | 6px | -
+--td-font-size-title-small | --td-font-size-title-small | - 
+--td-brand-color-hover | --td-brand-color-hover | - 
+--td-success-color | --td-success-color | - 
