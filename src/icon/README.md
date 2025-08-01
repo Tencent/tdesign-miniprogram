@@ -120,3 +120,10 @@ click | \- | 点击图标时触发。[通用类型定义](https://github.com/Ten
 类名 | 描述
 -- | --
 t-class | 根节点样式类
+
+### CSS Variables
+
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+ant: norma | ant: norma | - 

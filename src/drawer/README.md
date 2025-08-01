@@ -76,15 +76,15 @@ overlay-click | \- | 如果蒙层存在，点击蒙层时触发
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-drawer-bg-color | @bg-color-container | - 
---td-drawer-border-color | @border-color | - 
+--td-drawer-border-color | @border-level-1-color | - 
 --td-drawer-footer-padding-bottom | 40rpx | - 
 --td-drawer-hover-color | @bg-color-secondarycontainer | - 
---td-drawer-item-icon-color | @drawer-title-color
 --td-drawer-item-height | 48rpx | - 
+--td-drawer-item-icon-color | @drawer-title-color | - 
 --td-drawer-item-icon-size | 48rpx | - 
 --td-drawer-item-padding | 32rpx | - 
 --td-drawer-sidebar-height | 70vh | - 
---td-drawer-title-color | @font-gray-1 | - 
+--td-drawer-title-color | @text-color-primary | - 
 --td-drawer-title-font-size | 36rpx | - 
 --td-drawer-title-padding | 48rpx 32rpx 16rpx | - 
---td-drawer-width | 560rpx | -
+--td-drawer-width | 560rpx | - 

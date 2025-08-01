@@ -92,6 +92,8 @@ t-class-text | 文本样式类
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-loading-color | @brand-color | - 
---td-loading-text-color | inherit | - 
+--td-loading-full-bg-color | rgba(255, 255, 255, 0.6) | - 
+--td-loading-text-color | @text-color-primary | - 
 --td-loading-text-font-size | 24rpx | - 
---td-loading-text-line-height | 40rpx | -
+--td-loading-text-line-height | 40rpx | - 
+--td-loading-z-index | 3500 | - 

@@ -73,13 +73,13 @@ title | String | - | title of current step | N
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-guide-body-color | @font-gray-2 | - 
+--td-guide-body-color | @text-color-secondary | - 
 --td-guide-body-font-weight | 400 | - 
 --td-guide-dialog-body-font-size | @font-size-m | - 
 --td-guide-dialog-body-line-height | 48rpx | - 
 --td-guide-dialog-body-margin-top | 16rpx | - 
 --td-guide-dialog-body-text-align | center | - 
---td-guide-dialog-border-radius | @radius-extra-large | - 
+--td-guide-dialog-border-radius | @radius-extraLarge | - 
 --td-guide-dialog-footer-button-padding | 0 @spacer-3 | - 
 --td-guide-dialog-padding | @spacer-3 0 | - 
 --td-guide-dialog-title-font-size | 36rpx | - 
@@ -89,12 +89,12 @@ Name | Default Value | Description
 --td-guide-footer-button-space | @spacer-1 | - 
 --td-guide-footer-margin-top | @spacer-3 | - 
 --td-guide-footer-text-align | right | - 
---td-guide-popover-bg-color | @font-white-1 | - 
+--td-guide-popover-bg-color | @bg-color-container | - 
 --td-guide-popover-body-font-size | @font-size-base | - 
 --td-guide-popover-body-line-height | 44rpx | - 
 --td-guide-popover-body-margin-top | 8rpx | - 
 --td-guide-popover-body-text-align | left | - 
---td-guide-popover-border | 2rpx solid @gray-color-4 | - 
+--td-guide-popover-border | 2rpx solid @component-border | - 
 --td-guide-popover-border-radius | @radius-large | - 
 --td-guide-popover-max-width | 540rpx | - 
 --td-guide-popover-min-width | 480rpx | - 
@@ -106,5 +106,5 @@ Name | Default Value | Description
 --td-guide-reference-border | 4rpx solid @brand-color | - 
 --td-guide-reference-border-radius | @radius-default | - 
 --td-guide-reference-mask-color | @font-gray-2 | - 
---td-guide-title-color | @font-gray-1 | - 
---td-guide-title-font-weight | 600 | -
+--td-guide-title-color | @text-color-primary | - 
+--td-guide-title-font-weight | 600 | - 

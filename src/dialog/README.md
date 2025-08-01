@@ -111,7 +111,7 @@ t-class-content | 内容样式类
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-dialog-body-max-height | 912rpx | - 
---td-dialog-border-radius | @radius-extra-large | - 
+--td-dialog-border-radius | @radius-extraLarge | - 
 --td-dialog-close-color | @text-color-placeholder | - 
 --td-dialog-content-color | @text-color-secondary | - 
 --td-dialog-content-font-size | 32rpx | - 
@@ -119,4 +119,4 @@ t-class-content | 内容样式类
 --td-dialog-title-color | @text-color-primary | - 
 --td-dialog-title-font-size | 36rpx | - 
 --td-dialog-title-line-height | 52rpx | - 
---td-dialog-width | 622rpx | -
+--td-dialog-width | 622rpx | - 

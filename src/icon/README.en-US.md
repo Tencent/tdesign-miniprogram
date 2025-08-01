@@ -24,3 +24,10 @@ click | \- | [see more ts definition](https://github.com/Tencent/tdesign-minipro
 className | Description
 -- | --
 t-class | \-
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+ant: norma | ant: norma | - 

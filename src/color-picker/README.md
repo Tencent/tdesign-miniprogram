@@ -80,3 +80,33 @@ change | `(value: string, context: { color: ColorObject; trigger: ColorPickerCha
 close | `(trigger: ColorPickerTrigger)` | 关闭按钮时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/color-picker/type.ts)。<br/>`type ColorPickerTrigger = 'overlay'`<br/>
 palette-bar-change | `(detail: { color: ColorObject })` | 调色板控制器的值变化时触发，`context.color` 指调色板控制器的值。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/color-picker/type.ts)。<br/>`interface ColorObject { alpha: number; css: string; hex: string; hex8: string; hsl: string; hsla: string; hsv: string; hsva: string; rgb: string; rgba: string; value: number;}`<br/>
 
+### CSS Variables
+
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-color-picker-background | #fff | - 
+--td-color-picker-border-radius-circle | 50% | - 
+--td-color-picker-format-background-color | @gray-color-1 | - 
+--td-color-picker-gradient-preview-height | 56rpx | - 
+--td-color-picker-gradient-preview-radius | 6rpx | - 
+--td-color-picker-gradient-preview-width | 56rpx | - 
+--td-color-picker-input-format-margin-left | 48rpx | - 
+--td-color-picker-margin | 24rpx | - 
+--td-color-picker-panel-padding | 32rpx | - 
+--td-color-picker-panel-radius | 24rpx | - 
+--td-color-picker-panel-width | 750rpx | - 
+--td-color-picker-saturation-height | 288rpx | - 
+--td-color-picker-saturation-radius | 12rpx | - 
+--td-color-picker-saturation-thumb-size | 48rpx | - 
+--td-color-picker-slider-height | 16rpx | - 
+--td-color-picker-slider-thumb-padding | 6rpx | - 
+--td-color-picker-slider-thumb-size | 48rpx | - 
+--td-color-picker-slider-thumb-transform-x | -18rpx | - 
+--td-color-picker-slider-wrapper-padding | 0 18rpx | - 
+--td-color-picker-swatch-active | rgba(0, 0, 0, 0.2) | - 
+--td-color-picker-swatch-border-radius | 6rpx | - 
+--td-color-picker-swatch-height | 48rpx | - 
+--td-color-picker-swatch-padding | 0 | - 
+--td-color-picker-swatch-width | 48rpx | - 
+--td-color-picker-swatches-title-font | 32rpx | - 

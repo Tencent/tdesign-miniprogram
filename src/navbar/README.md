@@ -93,6 +93,8 @@ t-class-title | 标题样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
+--td-navbar-padding-top | 20px | - 
+--td-navbar-right | 95px | - 
 --td-navbar-background | @navbar-bg-color | - 
 --td-navbar-bg-color | @bg-color-container | - 
 --td-navbar-capsule-border-color | @border-level-1-color | - 
@@ -100,7 +102,7 @@ t-class-title | 标题样式类
 --td-navbar-capsule-height | 32px | - 
 --td-navbar-capsule-width | 88px | - 
 --td-navbar-center-left | @navbar-right | - 
---td-navbar-center-width | --td-navbar-center-width | - 
+--td-navbar-center-width | 187px | - 
 --td-navbar-color | @text-color-primary | - 
 --td-navbar-height | 48px | - 
 --td-navbar-left-arrow-size | 24px | - 
