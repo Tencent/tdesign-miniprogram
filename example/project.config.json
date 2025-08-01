@@ -26,7 +26,7 @@
     "bigPackageSizeSupport": true
   },
   "compileType": "miniprogram",
-  "libVersion": "3.6.3",
+  "libVersion": "3.8.11",
   "appid": "wx6f3e38f61d138c04",
   "projectname": "TDesign",
   "debugOptions": {
@@ -253,6 +253,12 @@
         {
           "name": "progress",
           "pathName": "pages/progress/progress",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "qrcode",
+          "pathName": "pages/qrcode/qrcode",
           "query": "",
           "scene": null
         },

@@ -55,6 +55,11 @@ const display = {
       label: '进度条',
     },
     {
+      name: 'QRCode',
+      label: '二维码',
+      path: '/pages/qrcode/qrcode',
+    },
+    {
       name: 'Result',
       label: '结果',
     },
