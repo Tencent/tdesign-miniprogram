@@ -6,7 +6,7 @@ const APP_ID = process.argv[process.argv.indexOf('--APP_ID') + 1]; // 在 --APP_
 const APP_SECRET = process.argv[process.argv.indexOf('--APP_SECRET') + 1]; // --APP_SECRET 后面
 
 if (process.argv.indexOf('--APP_ID') < 0 || process.argv.indexOf('--APP_SECRET') < 0) {
-  console.error('请传入APP_ID与APP_SECRET或联系PMC操作');
+  console.error('请传入 APP_ID 与 APP_SECRET 或联系PMC操作');
   return;
 }
 
