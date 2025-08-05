@@ -67,15 +67,15 @@ spline: explain
   </div>
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/drawer-en">
-      <img  class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-drawer.png" />
-      <img  class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-drawer-dark.png" />
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-drawer.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-drawer-dark.png" />
       <p class="name">Drawer</p>
     </a>
   </div>
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/indexes-en">
-      <img  class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-indexes.png" />
-      <img  class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-indexes-dark.png" />
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-indexes.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-indexes-dark.png" />
       <p class="name">Indexes</p>
     </a>
   </div>
@@ -235,12 +235,12 @@ spline: explain
   </div>
 </section>
 
-<h3>Data Display<em class="tag">16</em></h3>
+<h3>Data Display<em class="tag">17</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/avatar-en">
-      <img  class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-avatar.png" />
-      <img  class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-avatar-dark.png" />
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-avatar.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-avatar-dark.png" />
       <p class="name">Avatar</p>
     </a>
   </div>
@@ -322,6 +322,14 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-progress.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-progress-dark.png" />
       <p class="name">Progress</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/qrcode-en">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-qrcode.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-qrcode-dark.png" />
+      <p class="name">QRCode</p>
     </a>
   </div>
 
