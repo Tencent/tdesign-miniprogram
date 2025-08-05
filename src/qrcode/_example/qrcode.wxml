@@ -22,7 +22,7 @@
       <borderless />
     </t-demo>
 
-    <t-demo desc="二维码纠错等级" padding>
+    <t-demo desc="二维码纠错等级">
       <level />
     </t-demo>
 
