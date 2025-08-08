@@ -28,6 +28,7 @@ exports[`textarea slots : label 1`] = `
         confirmHold="{{false}}"
         confirmType="return"
         cursor="{{-1}}"
+        cursorColor="#0052d9"
         cursorSpacing="{{0}}"
         disabled="{{null}}"
         disableDefaultPadding="{{false}}"
