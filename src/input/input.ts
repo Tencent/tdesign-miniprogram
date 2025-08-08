@@ -145,6 +145,7 @@ export default class Input extends SuperComponent {
 
     onNickNameReview(e) {
       this.triggerEvent('nicknamereview', e.detail);
+      this.triggerEvent('change', { value: this.data.value });
     },
   };
 }
