@@ -3,6 +3,10 @@ const form = {
   icon: 'bulletpoint',
   childArr: [
     {
+      name: 'Form',
+      label: '表单',
+    },
+    {
       name: 'Calendar',
       label: '日历',
     },

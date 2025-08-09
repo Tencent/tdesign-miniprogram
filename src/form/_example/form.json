@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-switch": "tdesign-miniprogram/switch/switch",
+    "horizontal": "./horizontal/horizontal",
+    "vertical": "./vertical/vertical",
+    "t-navbar": "tdesign-miniprogram/navbar/navbar"
+  }
+}
