@@ -51,7 +51,7 @@ const isComponentFolder = (dir) => {
 /* return gulpfile base tasks */
 module.exports = (src, dist, moduleName) => {
   const tsProject = gulpTs.createProject('tsconfig.json', {
-    declaration: true,
+    declaration: isComponentFolder(src),
     removeComments: isProduction,
     importHelpers: true,
     noEmitHelpers: true,
