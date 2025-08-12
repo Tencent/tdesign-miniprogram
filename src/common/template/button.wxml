@@ -34,6 +34,7 @@
     bind:getuserinfo="onTplButtonTap"
     bind:contact="onTplButtonTap"
     bind:getphonenumber="onTplButtonTap"
+    bind:getrealtimephonenumber="onTplButtonTap"
     bind:error="onTplButtonTap"
     bind:opensetting="onTplButtonTap"
     bind:launchapp="onTplButtonTap"

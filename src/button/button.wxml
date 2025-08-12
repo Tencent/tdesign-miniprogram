@@ -23,6 +23,7 @@
   bind:getuserinfo="getuserinfo"
   bind:contact="contact"
   bind:getphonenumber="getphonenumber"
+  bind:getrealtimephonenumber="getrealtimephonenumber"
   bind:error="error"
   bind:opensetting="opensetting"
   bind:launchapp="launchapp"
