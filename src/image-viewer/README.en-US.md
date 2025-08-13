@@ -32,6 +32,7 @@ delete | `(index: number)` | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
+--td-image-viewer-bg-color | @mask-active | - 
 --td-image-viewer-close-margin-left | @spacer-1 | - 
 --td-image-viewer-delete-margin-right | @spacer-1 | - 
 --td-image-viewer-nav-bg-color | @font-gray-3 | - 
