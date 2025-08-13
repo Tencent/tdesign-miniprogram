@@ -78,9 +78,9 @@ delete | `(index: number)` | 点击删除操作按钮时触发
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-image-viewer-bg-color | @mask-active | - 
 --td-image-viewer-close-margin-left | @spacer-1 | - 
 --td-image-viewer-delete-margin-right | @spacer-1 | - 
+--td-image-viewer-mask-bg-color | @mask-active | - 
 --td-image-viewer-nav-bg-color | #000 | - 
 --td-image-viewer-nav-color | @text-color-anti | - 
 --td-image-viewer-nav-height | 96rpx | - 

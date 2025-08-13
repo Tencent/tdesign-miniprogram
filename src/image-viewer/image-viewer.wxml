@@ -16,7 +16,7 @@
     class="{{classPrefix}}__mask"
     data-source="overlay"
     bind:tap="onClose"
-    style="{{ '--td-image-viewer-bg-color: ' + backgroundColor }}"
+    style="{{ '--td-image-viewer-mask-bg-color: ' + backgroundColor }}"
     aria-role="button"
     aria-label="关闭"
   />
