@@ -40,7 +40,7 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/col-en">
+    <a class="item" href="/miniprogram/components/layout-en">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-layout.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-layout-dark.png" />
       <p class="name">Layout</p>
