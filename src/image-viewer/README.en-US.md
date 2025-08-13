@@ -8,7 +8,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
-background-color | String | 'rgba(0, 0, 0, 1)' | \- | N
+background-color | String | - | \- | N
 close-btn | String / Boolean / Object / Slot | false | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 delete-btn | String / Boolean / Object / Slot | false | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
 images | Array | [] | Typescript：`Array<string>` | N
@@ -38,4 +38,4 @@ Name | Default Value | Description
 --td-image-viewer-nav-color | @text-color-anti | - 
 --td-image-viewer-nav-height | 96rpx | - 
 --td-image-viewer-nav-index-font-size | @font-size-base | - 
---td-image-viewer-top | @position-fixed-top | - 
+--td-image-viewer-top | @position-fixed-top | -
