@@ -81,6 +81,7 @@ export const docs = [
   },
   {
     title: '基础',
+    titleEn: 'Base',
     type: 'component', // 组件文档
     children: [
       {
@@ -136,6 +137,7 @@ export const docs = [
   },
   {
     title: '导航',
+    titleEn: 'Navigation',
     type: 'component',
     children: [
       {
@@ -206,6 +208,7 @@ export const docs = [
   },
   {
     title: '输入',
+    titleEn: 'Form',
     type: 'component',
     children: [
       {
@@ -234,6 +237,7 @@ export const docs = [
       },
       {
         title: 'ColorPicker 颜色选择器',
+        titleEn: 'ColorPicker',
         name: 'color-picker',
         meta: { docType: 'form' },
         path: '/miniprogram/components/color-picker',
@@ -339,6 +343,7 @@ export const docs = [
   },
   {
     title: '数据展示',
+    titleEn: 'Data Display',
     type: 'component',
     children: [
       {
@@ -481,6 +486,7 @@ export const docs = [
   },
   {
     title: '反馈',
+    titleEn: 'Feedback',
     type: 'component', // 组件文档
     children: [
       {
