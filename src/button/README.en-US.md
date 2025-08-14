@@ -229,4 +229,4 @@ Name | Default Value | Description
 --td-button-small-font-size | @font-size-base | - 
 --td-button-small-height | 64rpx | - 
 --td-button-small-icon-font-size | 36rpx | - 
---td-button-small-padding-horizontal | 24rpx | - 
+--td-button-small-padding-horizontal | 24rpx | -
