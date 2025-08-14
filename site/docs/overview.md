@@ -403,7 +403,7 @@ spline: explain
     <a class="item" href="/miniprogram/components/guide">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-guide.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-guide-dark.png" />
-      <p class="name">Guide 按钮</p>
+      <p class="name">Guide 引导</p>
     </a>
   </div>
 
