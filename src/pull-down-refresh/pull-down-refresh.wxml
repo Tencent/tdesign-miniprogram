@@ -18,6 +18,7 @@
   bind:touchstart="onTouchStart"
   bind:touchmove="onTouchMove"
   bind:touchend="onTouchEnd"
+  bind:touchcancel="onTouchEnd"
   bind:scroll="onScroll"
   binddragstart="onDragStart"
   binddragging="onDragging"
