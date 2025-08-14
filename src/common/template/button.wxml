@@ -33,6 +33,7 @@
     bind:tap="onTplButtonTap"
     bind:getuserinfo="onTplButtonTap"
     bind:contact="onTplButtonTap"
+    bind:createliveactivity="onTplButtonTap"
     bind:getphonenumber="onTplButtonTap"
     bind:getrealtimephonenumber="onTplButtonTap"
     bind:error="onTplButtonTap"

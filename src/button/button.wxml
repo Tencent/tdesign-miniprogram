@@ -22,6 +22,7 @@
   catch:tap="handleTap"
   bind:getuserinfo="getuserinfo"
   bind:contact="contact"
+  bind:createliveactivity="createliveactivity"
   bind:getphonenumber="getphonenumber"
   bind:getrealtimephonenumber="getrealtimephonenumber"
   bind:error="error"
