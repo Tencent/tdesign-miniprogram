@@ -1,0 +1,76 @@
+.tdesign-mobile-demo {
+  padding: 16px;
+  background: #f5f5f5;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.summary {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.demo-block {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  margin-top: 16px;
+}
+
+.demo-block__title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.demo-block__summary {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.option {
+  margin-bottom: 12px;
+}
+
+.button-group {
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 8px 4px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+.button-group .custom-button {
+  height: 32px;
+  flex: 1;
+  border: none;
+  border-radius: 16px;
+  font-size: 14px;
+  background-color: #f5f5f5;
+  color: #666;
+  margin-right: 8px;
+}
+
+.button-group .custom-button:last-child {
+  margin-right: 0;
+}
+
+.button-group .custom-button.active {
+  background-color: #0052d9;
+  color: #fff;
+}
+
+.button-group .custom-button::after {
+  border: none;
+}
