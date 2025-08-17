@@ -21,9 +21,7 @@ export default class Stepper extends SuperComponent {
   observers = {
     value(v) {
       this.preValue = Number(v);
-      this.setData({
-        currentValue: this.format(Number(v)),
-      });
+      this.updateCurrentValue(this.format(this.preValue));
     },
   };
 
@@ -36,9 +34,7 @@ export default class Stepper extends SuperComponent {
   lifetimes = {
     attached() {
       const { value, min } = this.properties;
-      this.setData({
-        currentValue: value ? Number(value) : min,
-      });
+      this.updateCurrentValue(value ? Number(value) : min);
     },
   };
 
@@ -77,10 +73,14 @@ export default class Stepper extends SuperComponent {
     },
 
     setValue(value) {
-      value = this.format(value);
-      if (this.preValue === value) return;
-      this.preValue = value;
-      this._trigger('change', { value: Number(value) });
+      const newValue = Number(this.format(value));
+
+      this.updateCurrentValue(newValue);
+
+      if (this.preValue === newValue) return;
+
+      this.preValue = newValue;
+      this._trigger('change', { value: newValue });
     },
 
     minusValue() {
@@ -115,6 +115,12 @@ export default class Stepper extends SuperComponent {
       return v;
     },
 
+    updateCurrentValue(value) {
+      this.setData({
+        currentValue: value,
+      });
+    },
+
     handleFocus(e) {
       const { value } = e.detail;
 
@@ -129,10 +135,13 @@ export default class Stepper extends SuperComponent {
       }
 
       const formatted = this.filterIllegalChar(value);
-      this.setData({
-        currentValue: formatted,
-      });
-      this.triggerEvent('input', { value: formatted });
+      const newValue = this.format(formatted);
+
+      this.updateCurrentValue(this.data.integer ? newValue : formatted);
+
+      if (this.data.integer || /\.\d+/.test(formatted)) {
+        this.setValue(formatted);
+      }
     },
 
     handleBlur(e) {
