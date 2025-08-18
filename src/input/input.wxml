@@ -57,6 +57,7 @@
         aria-label="{{label}}"
         aria-roledescription="{{label}}"
         bindinput="onInput"
+        bindchange="onChange"
         bindfocus="onFocus"
         bindblur="onBlur"
         bindconfirm="onConfirm"
