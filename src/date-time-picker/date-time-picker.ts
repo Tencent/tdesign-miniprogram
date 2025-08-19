@@ -105,16 +105,21 @@ export default class DateTimePicker extends SuperComponent {
       const { locale, dayjsLocale } = this.data;
       const startOfMonth = date.startOf('month');
       const endOfMonth = date.endOf('month');
+      const minDate = this.getMinDate();
+      const maxDate = this.getMaxDate();
       const daysOfWeek = [];
 
       for (let i = 0; i <= endOfMonth.diff(startOfMonth, 'days'); i += 1) {
         const currentDate = startOfMonth.add(i, 'days').locale(dayjsLocale);
-        const dayName = currentDate.format('ddd');
-
-        daysOfWeek.push({
-          value: `${i + 1}`,
-          label: `${i + 1}${locale.date || ''} ${dayName}`,
-        });
+        if (currentDate.isBefore(minDate) || currentDate.isAfter(maxDate)) {
+          if (currentDate.isAfter(maxDate)) break;
+        } else {
+          const dayName = currentDate.format('ddd');
+          daysOfWeek.push({
+            value: `${i + 1}`,
+            label: `${i + 1}${locale.date || ''} ${dayName}`,
+          });
+        }
       }
 
       return daysOfWeek;
