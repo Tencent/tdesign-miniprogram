@@ -6,22 +6,22 @@ export default function randomMovingStyle() {
   const bottomLimit = 95;
   const rightLimit = 90;
   const left0 = align === 1 ? rightLimit : align === 3 ? leftTopLimit : p1;
-  const left1 = align === 0 ? rightLimit : align === 2 ? leftTopLimit : 100 - p1;
-  const left2 = align === 1 ? leftTopLimit : align === 3 ? rightLimit : 100 - p1;
-  const left3 = align === 0 ? leftTopLimit : align === 2 ? rightLimit : p1;
+  const left25 = align === 0 ? rightLimit : align === 2 ? leftTopLimit : 100 - p1;
+  const left50 = align === 1 ? leftTopLimit : align === 3 ? rightLimit : 100 - p1;
+  const left75 = align === 0 ? leftTopLimit : align === 2 ? rightLimit : p1;
   const top0 = align === 0 ? leftTopLimit : align === 2 ? bottomLimit : p1;
-  const top1 = align === 1 ? bottomLimit : align === 3 ? leftTopLimit : p1;
-  const top2 = align === 0 ? bottomLimit : align === 2 ? leftTopLimit : 100 - p1;
-  const top3 = align === 1 ? leftTopLimit : align === 3 ? bottomLimit : 100 - p1;
+  const top25 = align === 1 ? bottomLimit : align === 3 ? leftTopLimit : p1;
+  const top50 = align === 0 ? bottomLimit : align === 2 ? leftTopLimit : 100 - p1;
+  const top75 = align === 1 ? leftTopLimit : align === 3 ? bottomLimit : 100 - p1;
 
   return {
     left0: `${left0}%`,
-    left2: `${left2}%`,
-    left1: `${left1}%`,
-    left3: `${left3}%`,
+    left25: `${left25}%`,
+    left50: `${left50}%`,
+    left75: `${left75}%`,
     top0: `${top0}%`,
-    top1: `${top1}%`,
-    top2: `${top2}%`,
-    top3: `${top3}%`,
+    top25: `${top25}%`,
+    top50: `${top50}%`,
+    top75: `${top75}%`,
   };
 }
