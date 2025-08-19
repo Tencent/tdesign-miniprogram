@@ -2,7 +2,7 @@ import { systemInfo } from '../../common/utils';
 
 export default function generateBase64Url(
   canvas,
-  { width, height, gapX, gapY, offsetLeft, offsetTop, rotate, alpha, watermarkContent, lineSpace },
+  { width, height, gapX, gapY, offsetLeft, offsetTop, rotate, alpha, watermarkContent, lineSpace, watermarkColor },
   onFinish,
 ) {
   const ctx = canvas.getContext('2d');
@@ -54,13 +54,7 @@ export default function generateBase64Url(
         onFinish(canvas.toDataURL());
       };
     } else if (item.text) {
-      const {
-        text,
-        fontColor = 'rgba(0, 0, 0, 0.1)',
-        fontSize = 16,
-        fontFamily = undefined,
-        fontWeight = 'normal',
-      } = item;
+      const { text, fontColor = watermarkColor, fontSize = 16, fontFamily = undefined, fontWeight = 'normal' } = item;
       item.top = top;
       top += lineSpace;
       const markSize = Number(fontSize) * ratio;

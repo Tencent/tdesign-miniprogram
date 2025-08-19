@@ -3,6 +3,7 @@ import config from '../common/config';
 import props from './props';
 import generateBase64Url from './utils/generateBase64Url';
 import randomMovingStyle from './utils/randomMovingStyle';
+import { appBaseInfo } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-watermark`;
@@ -30,7 +31,17 @@ export default class Watermark extends SuperComponent {
     },
   };
 
+  attached() {
+    wx.onThemeChange(() => {
+      this.renderWatermark();
+    });
+  }
+
   methods = {
+    watermarkColor() {
+      return appBaseInfo.theme === 'dark' ? 'rgba(238, 238, 238, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+    },
+
     renderWatermark() {
       const query = wx.createSelectorQuery().in(this);
       query
@@ -60,6 +71,7 @@ export default class Watermark extends SuperComponent {
             watermarkContent: props.watermarkContent,
             offsetLeft: offsetLeft,
             offsetTop: offsetTop,
+            watermarkColor: this.watermarkColor(),
           };
           generateBase64Url(canvas, bgImageOptions, (base64Url) => {
             let animationVars = {};
