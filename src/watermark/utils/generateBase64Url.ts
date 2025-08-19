@@ -1,3 +1,5 @@
+import { systemInfo } from '../../common/utils';
+
 export default function generateBase64Url(
   canvas,
   { width, height, gapX, gapY, offsetLeft, offsetTop, rotate, alpha, watermarkContent, lineSpace },
@@ -9,7 +11,7 @@ export default function generateBase64Url(
     onFinish('');
     return;
   }
-  const ratio = wx.getWindowInfo().pixelRatio || 1;
+  const ratio = systemInfo.pixelRatio || 1;
   const canvasWidth = (gapX + width) * ratio;
   const canvasHeight = (gapY + height) * ratio;
 
@@ -35,7 +37,6 @@ export default function generateBase64Url(
       item.top = top;
       top += height;
       const image = canvas.createImage();
-      // eslint-disable-next-line no-param-reassign
       image.src = url;
       image.onload = () => {
         ctx.drawImage(image, 0, item.top * ratio, width * ratio, height * ratio);
@@ -60,7 +61,6 @@ export default function generateBase64Url(
         fontFamily = undefined,
         fontWeight = 'normal',
       } = item;
-      // eslint-disable-next-line no-param-reassign
       item.top = top;
       top += lineSpace;
       const markSize = Number(fontSize) * ratio;
