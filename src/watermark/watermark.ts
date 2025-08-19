@@ -24,6 +24,12 @@ export default class Watermark extends SuperComponent {
     },
   };
 
+  observers = {
+    'watermarkContent, movable, rotate, x, y, width, height, alpha, lineSpace, moveInterval, zIndex, rotate, offset, removable, isRepeat'() {
+      this.renderWatermark();
+    },
+  };
+
   methods = {
     renderWatermark() {
       const query = wx.createSelectorQuery().in(this);
@@ -58,16 +64,16 @@ export default class Watermark extends SuperComponent {
           generateBase64Url(canvas, bgImageOptions, (base64Url) => {
             let animationVars = {};
             if (props.movable) {
-              const { left0, left1, left2, left3, top0, top1, top2, top3 } = randomMovingStyle();
+              const { left0, left25, left50, left75, top0, top25, top50, top75 } = randomMovingStyle();
               animationVars = {
                 '--watermark-left-0': left0,
-                '--watermark-left-1': left1,
-                '--watermark-left-2': left2,
-                '--watermark-left-3': left3,
+                '--watermark-left-25': left25,
+                '--watermark-left-50': left50,
+                '--watermark-left-75': left75,
                 '--watermark-top-0': top0,
-                '--watermark-top-1': top1,
-                '--watermark-top-2': top2,
-                '--watermark-top-3': top3,
+                '--watermark-top-25': top25,
+                '--watermark-top-50': top50,
+                '--watermark-top-75': top75,
               };
             }
 
