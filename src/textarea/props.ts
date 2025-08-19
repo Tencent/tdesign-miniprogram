@@ -46,6 +46,11 @@ const props: TdTextareaProps = {
     type: Number,
     value: -1,
   },
+  /** 【试验性】光标颜色，仅在 Skyline 下有效 */
+  cursorColor: {
+    type: String,
+    value: '#0052d9',
+  },
   /** 指定光标与键盘的距离。取textarea距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离 */
   cursorSpacing: {
     type: Number,

@@ -16,6 +16,7 @@ bordered | Boolean | false | \- | N
 confirm-hold | Boolean | false | \- | N
 confirm-type | String | return | options: return/send/search/next/go/done。Typescript：`'return' \| 'send' \| 'search' \| 'next' \| 'go' \| 'done'` | N
 cursor | Number | -1 | \- | N
+cursor-color | String | #0052d9 | \- | N
 cursor-spacing | Number | 0 | \- | N
 disable-default-padding | Boolean | false | \- | N
 disabled | Boolean | undefined | \- | N
@@ -68,4 +69,4 @@ Name | Default Value | Description
 --td-textarea-indicator-text-color | @text-color-placeholder | - 
 --td-textarea-label-color | @text-color-primary | - 
 --td-textarea-placeholder-color | @text-color-placeholder | - 
---td-textarea-text-color | @text-color-primary | - 
+--td-textarea-text-color | @text-color-primary | -

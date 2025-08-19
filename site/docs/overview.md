@@ -39,7 +39,7 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/col">
+    <a class="item" href="/miniprogram/components/layout">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-layout.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-layout-dark.png" />
       <p class="name">Layout 布局</p>
@@ -66,15 +66,15 @@ spline: explain
   </div>
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/drawer">
-      <img  class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-drawer.png" />
-      <img  class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-drawer-dark.png" />
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-drawer.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-drawer-dark.png" />
       <p class="name">Drawer 抽屉</p>
     </a>
   </div>
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/indexes">
-      <img  class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-indexes.png" />
-      <img  class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-indexes-dark.png" />
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-indexes.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-indexes-dark.png" />
       <p class="name">Indexes 索引</p>
     </a>
   </div>
@@ -234,12 +234,12 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">16</em></h3>
+<h3>数据展示<em class="tag">17</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/avatar">
-      <img  class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-avatar.png" />
-      <img  class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-avatar-dark.png" />
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-avatar.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-avatar-dark.png" />
       <p class="name">Avatar 头像</p>
     </a>
   </div>
@@ -325,6 +325,14 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/qrcode">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-qrcode.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-qrcode-dark.png" />
+      <p class="name">QRCode 二维码</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/result">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-result.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-result-dark.png" />
@@ -395,7 +403,7 @@ spline: explain
     <a class="item" href="/miniprogram/components/guide">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-guide.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-guide-dark.png" />
-      <p class="name">Guide 按钮</p>
+      <p class="name">Guide 引导</p>
     </a>
   </div>
 

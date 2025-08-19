@@ -25,6 +25,7 @@
       focus="{{focus}}"
       cursor="{{cursor}}"
       cursor-spacing="{{cursorSpacing}}"
+      cursor-color="{{cursorColor}}"
       adjust-position="{{adjustPosition}}"
       confirm-type="{{confirmType}}"
       confirm-hold="{{confirmHold}}"

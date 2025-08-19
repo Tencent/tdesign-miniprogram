@@ -79,7 +79,7 @@ Name | Default Value | Description
 --td-guide-dialog-body-line-height | 48rpx | - 
 --td-guide-dialog-body-margin-top | 16rpx | - 
 --td-guide-dialog-body-text-align | center | - 
---td-guide-dialog-border-radius | @radius-extra-large | - 
+--td-guide-dialog-border-radius | @radius-extraLarge | - 
 --td-guide-dialog-footer-button-padding | 0 @spacer-3 | - 
 --td-guide-dialog-padding | @spacer-3 0 | - 
 --td-guide-dialog-title-font-size | 36rpx | - 

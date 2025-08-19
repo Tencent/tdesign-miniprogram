@@ -72,13 +72,14 @@ isComponent: true
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 adjust-position | Boolean | true | 键盘弹起时，是否自动上推页面 | N
-allow-input-over-max | Boolean | false | `1.8.6`。 超出maxlength或maxcharacter之后是否还允许输入 | N
+allow-input-over-max | Boolean | false | `1.8.6`。超出maxlength或maxcharacter之后是否还允许输入 | N
 autofocus | Boolean | false | 自动聚焦，拉起键盘 | N
 autosize | Boolean / Object | false | 是否自动增高，值为 true 时，style.height 不生效。支持传入对象，如 { maxHeight: 120, minHeight: 20 }。TS 类型：`boolean \| { maxHeight?: number, minHeight?: number }` | N
 bordered | Boolean | false | 是否显示外边框 | N
 confirm-hold | Boolean | false | 点击键盘右下角按钮时是否保持键盘不收起点 | N
 confirm-type | String | return | 设置键盘右下角按钮的文字，仅在 type='text'时生效。可选项：return/send/search/next/go/done。TS 类型：`'return' \| 'send' \| 'search' \| 'next' \| 'go' \| 'done'` | N
 cursor | Number | -1 | 指定 focus 时的光标位置 | N
+cursor-color | String | #0052d9 | 【试验性】光标颜色，仅在 Skyline 下有效 | N
 cursor-spacing | Number | 0 | 指定光标与键盘的距离。取textarea距离底部的距离和cursor-spacing指定的距离的最小值作为光标与键盘的距离 | N
 disable-default-padding | Boolean | false | 是否去掉 iOS 下的默认内边距 | N
 disabled | Boolean | undefined | 是否禁用文本框 | N
@@ -131,4 +132,4 @@ t-class-textarea | 多行文本框样式类
 --td-textarea-indicator-text-color | @text-color-placeholder | - 
 --td-textarea-label-color | @text-color-primary | - 
 --td-textarea-placeholder-color | @text-color-placeholder | - 
---td-textarea-text-color | @text-color-primary | - 
+--td-textarea-text-color | @text-color-primary | -

@@ -7,7 +7,7 @@
 export interface TdImageViewerProps {
   /**
    * 遮罩的背景颜色
-   * @default 'rgba(0, 0, 0, 1)'
+   * @default ''
    */
   backgroundColor?: {
     type: StringConstructor;
@@ -46,7 +46,7 @@ export interface TdImageViewerProps {
     value?: Number;
   };
   /**
-   * 是否开启图片懒加载
+   * 是否开启图片懒加载。开启后会预加载当前图片、相邻图片
    * @default true
    */
   lazy?: {

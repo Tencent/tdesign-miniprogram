@@ -104,7 +104,7 @@ export default class Calendar extends SuperComponent {
     value(v) {
       this.base.value = v;
       this.calcMonths();
-      this.updateCurrentMonth();
+      this.updateCurrentMonth(v);
     },
 
     visible(v) {
@@ -191,9 +191,9 @@ export default class Calendar extends SuperComponent {
       });
     },
 
-    updateCurrentMonth() {
+    updateCurrentMonth(newValue?: any) {
       if (this.data.switchMode === 'none') return;
-      this.calcCurrentMonth();
+      this.calcCurrentMonth(newValue);
     },
 
     calcCurrentMonth(newValue?: any) {
