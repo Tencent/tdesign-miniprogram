@@ -121,7 +121,6 @@ click | \- | 点击图标时触发。[通用类型定义](https://github.com/Ten
 -- | --
 t-class | 根节点样式类
 
-
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。

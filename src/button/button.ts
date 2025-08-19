@@ -75,8 +75,14 @@ export default class Button extends SuperComponent {
     contact(e) {
       this.triggerEvent('contact', e.detail);
     },
+    createliveactivity(e) {
+      this.triggerEvent('createliveactivity', e.detail);
+    },
     getphonenumber(e) {
       this.triggerEvent('getphonenumber', e.detail);
+    },
+    getrealtimephonenumber(e) {
+      this.triggerEvent('getrealtimephonenumber', e.detail);
     },
     error(e) {
       this.triggerEvent('error', e.detail);

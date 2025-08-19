@@ -6,6 +6,20 @@ docClass: timeline
 ---
 
 
+## 🌈 1.10.0 `2025-08-01` 
+### 🚀 Features
+- `QRCode`: 新增`QRCode`组件 @SinzoL ([#3780](https://github.com/Tencent/tdesign-miniprogram/pull/3780)) ⚡
+### 🐞 Bug Fixes
+- `Calendar`: 修复 `value` 更新后翻页模式日历面板数据不更新的问题 @anlyyao ([#3800](https://github.com/Tencent/tdesign-miniprogram/pull/3800))
+- `Skeleton`: 修复 `delay` 设置较大时组件未按预期消失的问题 @betavs ([#3793](https://github.com/Tencent/tdesign-miniprogram/pull/3793))
+- `Switch`: 修复 `loading` 颜色、`dot` 滑块禁用态/深色模式背景色错误 @anlyyao ([#3802](https://github.com/Tencent/tdesign-miniprogram/pull/3802))
+- `ActionSheet`: 修复页面跳转返回后再点击不显示问题 @Boomkaa ([#3796](https://github.com/Tencent/tdesign-miniprogram/pull/3796))
+-  `Toast`: 修复 `Toast` 已隐藏，页面无法点击问题 @Boomkaa ([#3796](https://github.com/Tencent/tdesign-miniprogram/pull/3796))
+- `NoticeBar`:  修正警告主题图标 @liweijie0812 ([#3812](https://github.com/Tencent/tdesign-miniprogram/pull/3812))
+### 🚧 Others
+- `CSS`: 重命名圆角与字体部分 `CSS Vars` ，如 `--td-radius-extra-large` 变更为 `--td-radius-extraLarge` @anlyyao ([#3809](https://github.com/Tencent/tdesign-miniprogram/pull/3809))
+
+
 ## 🌈 1.9.7 `2025-07-10` 
 ### 🚀 Features
 - `Calendar`: 新增 `readonly` 属性 @anlyyao ([#3752](https://github.com/Tencent/tdesign-miniprogram/pull/3752))

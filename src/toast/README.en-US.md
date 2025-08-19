@@ -37,9 +37,9 @@ t-class | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-toast-bg-color | @font-gray-2 | - 
+--td-toast-bg-color | @mask-active | - 
 --td-toast-color | @text-color-anti | - 
 --td-toast-column-icon-size | 64rpx | - 
 --td-toast-max-width | 374rpx | - 
 --td-toast-radius | 8rpx | - 
---td-toast-row-icon-size | 48rpx | - 
+--td-toast-row-icon-size | 48rpx | -

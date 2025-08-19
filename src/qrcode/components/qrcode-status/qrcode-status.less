@@ -1,0 +1,41 @@
+@import '../../../common/style/base.less';
+
+@qrcode-expired-link-motion-duration-mid: 0.2s;
+@qrcode-expired-link-motion-ease-in-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+@qrcode-expired-link-color-hover: var(--td-brand-color-hover);
+@qrcode-scanned-icon-color: var(--td-success-color);
+
+@qrcode-mask-inner-gap: 8px;
+@qrcode-mask-inner-btn-height: 32px;
+
+.@{prefix}-expired {
+  &__text {
+    color: @text-color-primary;
+    font-weight: 600;
+  }
+
+  &__button {
+    display: flex;
+    color: @brand-color;
+    box-shadow: none;
+    cursor: pointer;
+    column-gap: @qrcode-mask-inner-gap;
+    align-items: center;
+    height: @qrcode-mask-inner-btn-height;
+    transition: all @qrcode-expired-link-motion-duration-mid @qrcode-expired-link-motion-ease-in-out;
+
+    &:hover {
+      color: @qrcode-expired-link-color-hover;
+    }
+  }
+}
+
+.@{prefix}-scanned {
+  display: flex;
+  column-gap: @qrcode-mask-inner-gap;
+  align-items: center;
+
+  &__icon {
+    color: @qrcode-scanned-icon-color;
+  }
+}

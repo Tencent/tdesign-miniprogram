@@ -41,32 +41,33 @@ describe('transition', () => {
       const [transitionDom] = transitionComp.dom.children;
 
       // enter
-      transitionComp.setData({ visible: true });
-      expect(transitionDom.style.display).toEqual('');
-      expect(transitionDom.className.match(/fade-enter\s/)).toBeTruthy();
-      expect(transitionDom.className.match(/fade-enter-active/)).toBeTruthy();
+      transitionComp.setData({ visible: true }, () => {
+        expect(transitionDom.style.display).toEqual('');
+        expect(transitionDom.className.match(/fade-enter\s/)).toBeTruthy();
+        expect(transitionDom.className.match(/fade-enter-active/)).toBeTruthy();
 
-      // enter to
-      jest.runAllTimers();
-      expect(transitionDom.className.match(/fade-enter-to/)).toBeTruthy();
+        // enter to
+        jest.runAllTimers();
+        expect(transitionDom.className.match(/fade-enter-to/)).toBeTruthy();
 
-      // enter finished
-      transitionComp.instance.onTransitionEnd();
-      expect(transitionDom.className.match(/fade-(enter|enter-to|enter-active)/)).toBeFalsy();
+        // enter finished
+        transitionComp.instance.onTransitionEnd();
+        expect(transitionDom.className.match(/fade-(enter|enter-to|enter-active)/)).toBeFalsy();
 
-      // leave
-      transitionComp.setData({ visible: false });
-      expect(transitionDom.className.match(/leave\s/)).toBeTruthy();
-      expect(transitionDom.className.match(/leave-active/)).toBeTruthy();
+        // leave
+        transitionComp.setData({ visible: false });
+        expect(transitionDom.className.match(/leave\s/)).toBeTruthy();
+        expect(transitionDom.className.match(/leave-active/)).toBeTruthy();
 
-      // leave to
-      jest.runAllTimers();
-      expect(transitionDom.className.match(/leave-to/)).toBeTruthy();
+        // leave to
+        jest.runAllTimers();
+        expect(transitionDom.className.match(/leave-to/)).toBeTruthy();
 
-      // leave finished
-      transitionComp.instance.onTransitionEnd();
-      expect(transitionDom.style.display).toEqual('none');
-      expect(transitionDom.className.match(/(leave|leave-to|leave-active)/)).toBeFalsy();
+        // leave finished
+        transitionComp.instance.onTransitionEnd();
+        expect(transitionDom.style.display).toEqual('none');
+        expect(transitionDom.className.match(/(leave|leave-to|leave-active)/)).toBeFalsy();
+      });
     });
 
     it(':name', () => {
@@ -74,11 +75,12 @@ describe('transition', () => {
       transitionComp.attach(document.createElement('parent-wrapper'));
       const [transitionDom] = transitionComp.dom.children;
 
-      transitionComp.setData({ visible: true });
-      jest.runAllTimers();
-      expect(transitionDom.className.match(/foo-enter/)).toBeTruthy();
-      expect(transitionDom.className.match(/foo-enter-active/)).toBeTruthy();
-      expect(transitionDom.className.match(/foo-enter-to/)).toBeTruthy();
+      transitionComp.setData({ visible: true }, () => {
+        jest.runAllTimers();
+        expect(transitionDom.className.match(/foo-enter/)).toBeTruthy();
+        expect(transitionDom.className.match(/foo-enter-active/)).toBeTruthy();
+        expect(transitionDom.className.match(/foo-enter-to/)).toBeTruthy();
+      });
     });
 
     // it(':destroyOnHide', () => {
@@ -93,13 +95,14 @@ describe('transition', () => {
     // });
 
     it(':appear', () => {
-      const transitionComp = simulate.render(transitionId, { visible: true, appear: true });
-      transitionComp.attach(document.createElement('parent-wrapper'));
-      const [transitionDom] = transitionComp.dom.children;
-      expect(transitionDom.className.match(/enter\s/)).toBeTruthy();
-      expect(transitionDom.className.match(/enter-active/)).toBeTruthy();
-      jest.runAllTimers();
-      expect(transitionDom.className.match(/enter-to/)).toBeTruthy();
+      const transitionComp = simulate.render(transitionId, { visible: true, appear: true }, () => {
+        transitionComp.attach(document.createElement('parent-wrapper'));
+        const [transitionDom] = transitionComp.dom.children;
+        expect(transitionDom.className.match(/enter\s/)).toBeTruthy();
+        expect(transitionDom.className.match(/enter-active/)).toBeTruthy();
+        jest.runAllTimers();
+        expect(transitionDom.className.match(/enter-to/)).toBeTruthy();
+      });
     });
 
     it(':durations', () => {

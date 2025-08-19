@@ -11,6 +11,7 @@
     "pages/loading/skyline/loading",
     "pages/progress/progress",
     "pages/progress/skyline/progress",
+    "pages/qrcode/qrcode",
     "pages/cascader/cascader",
     "pages/cell/cell",
     "pages/cell/skyline/cell",

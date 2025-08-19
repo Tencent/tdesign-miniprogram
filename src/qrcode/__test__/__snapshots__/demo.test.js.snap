@@ -1,0 +1,168 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Qrcode Qrcode base demo works fine 1`] = `
+<base>
+  <t-qrcode
+    level="M"
+    status="active"
+    value="https://tdesign.tencent.com/"
+  />
+</base>
+`;
+
+exports[`Qrcode Qrcode borderless demo works fine 1`] = `
+<borderless>
+  <t-qrcode
+    borderless="{{true}}"
+    value="https://tdesign.tencent.com/"
+  />
+</borderless>
+`;
+
+exports[`Qrcode Qrcode color demo works fine 1`] = `
+<color>
+  <t-qrcode
+    bgColor="#fff"
+    color="#0052D9"
+    level="M"
+    status="active"
+    value="https://tdesign.tencent.com/"
+  />
+  <wx-view
+    class="demo-summary"
+  >
+     二维码背景颜色 
+  </wx-view>
+  <t-qrcode
+    bgColor="#D9E1FF"
+    color="#0052D9"
+    level="M"
+    status="active"
+    value="https://tdesign.tencent.com/"
+  />
+</color>
+`;
+
+exports[`Qrcode Qrcode icon demo works fine 1`] = `
+<wx-icon>
+  <t-qrcode
+    icon="https://tdesign.gtimg.com/site/tdesign-logo.png"
+    value="https://tdesign.tencent.com/"
+  />
+</wx-icon>
+`;
+
+exports[`Qrcode Qrcode level demo works fine 1`] = `
+<level>
+  <t-slider
+    marks="{{
+      Object {
+        "0": "7%",
+        "1": "15%",
+        "2": "25%",
+        "3": "35%",
+      }
+    }}"
+    max="3"
+    min="0"
+    step="1"
+    value="{{1}}"
+    bind:change="handleSliderChange"
+  />
+  <wx-view
+    class="qrcode-content"
+  >
+    <t-qrcode
+      level="M"
+      status="active"
+      value="https://tdesign.tencent.com/"
+    />
+  </wx-view>
+</level>
+`;
+
+exports[`Qrcode Qrcode size demo works fine 1`] = `
+<size>
+  <wx-view
+    class="container"
+  >
+    <wx-view
+      class="button-group"
+    >
+      <t-button
+        class="button"
+        data-step="{{-10}}"
+        disabled="{{false}}"
+        variant="text"
+        bind:tap="changeSize"
+      >
+        
+      - Smaller
+    
+      </t-button>
+      <wx-view
+        class="line"
+      />
+      <t-button
+        class="button"
+        data-step="{{10}}"
+        disabled="{{false}}"
+        variant="text"
+        bind:tap="changeSize"
+      >
+        
+      + Larger
+    
+      </t-button>
+    </wx-view>
+    <wx-view
+      class="qrcode-container"
+    >
+      <t-qrcode
+        size="{{160}}"
+        value="https://tdesign.tencent.com/"
+      />
+    </wx-view>
+  </wx-view>
+</size>
+`;
+
+exports[`Qrcode Qrcode status demo works fine 1`] = `
+<status>
+  <t-qrcode
+    status="active"
+    value="https://tdesign.tencent.com/"
+    bind:refresh="handleRefresh"
+  />
+  <wx-view
+    class="demo-summary"
+  >
+     expired 
+  </wx-view>
+  <t-qrcode
+    status="expired"
+    value="https://tdesign.tencent.com/"
+    bind:refresh="handleRefresh"
+  />
+  <wx-view
+    class="demo-summary"
+  >
+     loading 
+  </wx-view>
+  <t-qrcode
+    status="loading"
+    value="https://tdesign.tencent.com/"
+    bind:refresh="handleRefresh"
+  />
+  <wx-view
+    class="demo-summary"
+  >
+     scanned 
+  </wx-view>
+  <t-qrcode
+    status="scanned"
+    value="https://tdesign.tencent.com/"
+    bind:refresh="handleRefresh"
+  />
+</status>
+`;
