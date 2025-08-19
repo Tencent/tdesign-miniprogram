@@ -6,5 +6,5 @@
   width="{{120}}"
   height="{{30}}"
 >
-  <view style="width: 100%; height: 300px" />
+  <view style="width: 100%; height: 400px" />
 </t-watermark>
