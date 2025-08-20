@@ -36,15 +36,11 @@
   height: @cell-height;
   background-color: @cell-bg-color;
 
-  &::after {
+  &--bordered::after {
     .hairline-bottom(@cell-border-color, @cell-border-width);
     transform-origin: bottom;
     left: @cell-border-left-space;
     right: @cell-border-right-space;
-  }
-
-  &--borderless::after {
-    display: none;
   }
 
   &__description {

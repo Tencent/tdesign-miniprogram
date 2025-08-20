@@ -14,7 +14,7 @@
     <t-cell
       title="{{header}}"
       note="{{headerRightContent}}"
-      bordered
+      bordered="{{false}}"
       left-icon="{{headerLeftIcon}}"
       right-icon="{{ ultimateExpandIcon ? (expanded ? 'chevron-up' : 'chevron-down') : '' }}"
       t-class="{{_.cls(classPrefix + '__header', [placement, ['expanded', expanded]])}} {{prefix}}-class-header"
