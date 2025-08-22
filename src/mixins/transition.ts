@@ -64,6 +64,7 @@ export default function transition() {
           realVisible: true,
           transitionClass: `${prefix}-${name}-enter ${prefix}-${name}-enter-active`,
         });
+        clearTimeout(this.transitionT);
         setTimeout(() => {
           this.setData({
             transitionClass: `${prefix}-${name}-enter-active ${prefix}-${name}-enter-to`,

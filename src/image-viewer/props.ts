@@ -9,7 +9,7 @@ const props: TdImageViewerProps = {
   /** 遮罩的背景颜色 */
   backgroundColor: {
     type: String,
-    value: 'rgba(0, 0, 0, 1)',
+    value: '',
   },
   /** 是否显示关闭操作，前提需要开启页码。值为字符串表示图标名称，值为 `true` 表示使用默认图标 `close`，值为 `Object` 类型，表示透传至 `icon` ，不传表示不显示图标 */
   closeBtn: {
@@ -31,7 +31,7 @@ const props: TdImageViewerProps = {
     type: Number,
     value: 0,
   },
-  /** 是否开启图片懒加载 */
+  /** 是否开启图片懒加载。开启后会预加载当前图片、相邻图片 */
   lazy: {
     type: Boolean,
     value: true,
