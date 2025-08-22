@@ -12,4 +12,4 @@ declare module '*.md' {
 
 declare module 'vite-plugin-tdoc';
 
-declare module 'tdesign-site-components';
+declare module '@tdesign/site-components';
