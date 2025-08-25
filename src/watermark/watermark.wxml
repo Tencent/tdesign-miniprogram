@@ -1,0 +1,9 @@
+<wxs module="_" src="../common/utils.wxs" />
+
+<view style="position: relative; overflow: hidden; width: 100%">
+  <block wx:if="{{content}}">{{content}}</block>
+  <slot name="content" />
+  <slot />
+  <canvas type="2d" id="watermarkCanvas" style="display: none; width: 100%; height: 100%" />
+  <view id="watermark" style="{{_._style(watermarkStyle)}}"></view>
+</view>

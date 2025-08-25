@@ -407,6 +407,12 @@
           "scene": null
         },
         {
+          "name": "watermark",
+          "pathName": "pages/watermark/watermark",
+          "query": "",
+          "scene": null
+        },
+        {
           "id": -1,
           "name": "search",
           "pathName": "pages/search/search",
