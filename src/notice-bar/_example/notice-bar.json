@@ -3,6 +3,7 @@
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
     "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar",
+    "banner": "./banner",
     "base": "./base",
     "iconDemo": "./iconDemo",
     "suffixIcon": "./suffixIcon",
