@@ -56,7 +56,7 @@ exports[`NoticeBar NoticeBar customization demo works fine 1`] = `
       class="inline"
       slot="content"
     >
-       提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述
+       提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述 
     </wx-view>
     <t-link
       content="详情"
@@ -89,7 +89,7 @@ exports[`NoticeBar NoticeBar event demo works fine 1`] = `
       class="inline"
       slot="content"
     >
-       这是一条普通的通知信息
+       这是一条普通的通知信息 
     </wx-view>
     <t-link
       content="详情"
