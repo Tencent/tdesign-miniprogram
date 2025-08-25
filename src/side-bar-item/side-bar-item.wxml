@@ -22,4 +22,5 @@
     <template is="badge" data="{{ ...badgeProps, content: label }}" />
   </block>
   <block wx:else>{{label}}</block>
+  <slot />
 </view>
