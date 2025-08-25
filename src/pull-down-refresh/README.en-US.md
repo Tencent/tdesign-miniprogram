@@ -20,6 +20,7 @@ max-bar-height | String / Number | 80 | \- | N
 refresh-timeout | Number | 3000 | \- | N
 scroll-into-view | String | - | `1.1.5` | N
 show-scrollbar | Boolean | true | \- | N
+success-duration | String / Number | 500 | \- | N
 upper-threshold | String / Number | 50 | `1.1.5` | N
 using-custom-navbar | Boolean | false | \- | N
 value | Boolean | false | \- | N

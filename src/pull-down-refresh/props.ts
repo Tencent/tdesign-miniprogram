@@ -64,6 +64,11 @@ const props: TdPullDownRefreshProps = {
     type: Boolean,
     value: true,
   },
+  /** 刷新成功提示展示时长，单位 'ms' */
+  successDuration: {
+    type: null,
+    value: 500,
+  },
   /** 距顶部/左边多远时，触发 scrolltoupper 事件 */
   upperThreshold: {
     type: null,
