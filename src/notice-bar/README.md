@@ -50,6 +50,10 @@ isComponent: true
 
 {{ event }}
 
+非通栏样式的公告栏
+
+{{ banner }}
+
 自定义样式的公告栏
 
 {{ custom }}

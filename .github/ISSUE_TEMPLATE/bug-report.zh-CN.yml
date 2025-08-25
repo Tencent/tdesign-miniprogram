@@ -1,5 +1,5 @@
 name: 反馈 Bug
-description: 通过 github 模板进行 Bug 反馈。
+description: 通过 GitHub 模板进行 Bug 反馈。
 title: "[组件名称] 描述问题的标题"
 labels: [🐞 bug, 🧐 unconfirmed]
 body:
@@ -11,21 +11,21 @@ body:
 
         在发布一个 Issue 前，请确保：
         - 在 [常见问题](https://tdesign.tencent.com/about/faq)、[更新日志](https://tdesign.tencent.com/about/release) 和 [旧Issue列表](https://github.com/Tencent/tdesign-miniprogram/issues?q=is%3Aissue) 中搜索过你的问题。（你的问题可能已有人提出，也可能已在最新版本中被修正）
-        - 如果你发现一个已经关闭的旧 Issue 在最新版本中仍然存在，不要在旧 Issue 下面留言，请建一个新的 issue。
+        - 如果你发现一个已经关闭的旧 Issue 在最新版本中仍然存在，不要在旧 Issue 下面留言，请建一个新的 Issue。
 
   - type: input
     id: version
     attributes:
       label: tdesign-miniprogram 版本
-      description: 请检查在最新项目版本中能否重现此 issue。
+      description: 请检查在最新项目版本中能否重现此 Issue。
       placeholder: 请填写
     validations:
       required: true
 
-  - type: input
+  - type: textarea
     id: reproduce
     attributes:
-      label: 重现链接
+      label: 重现代码
       description: 请提供尽可能精简的 [代码片段](https://developers.weixin.qq.com/miniprogram/dev/devtools/minicode.html) 或 GitHub 仓库的链接。请不要填无关链接，否则你的 Issue 将被关闭。
       placeholder: 请填写
 
