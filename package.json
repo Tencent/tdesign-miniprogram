@@ -97,7 +97,7 @@
     "jest-html-reporter": "^3.3.0",
     "jsdom": "^20.0.0",
     "less": "^4.1.1",
-    "lint-staged": "^10.0.0-1",
+    "lint-staged": "^16.1.2",
     "lodash": "^4.17.21",
     "merge2": "^1.4.1",
     "miniprogram-api-typings": "^3.12.3",
