@@ -101,19 +101,20 @@ export default class DateTimePicker extends SuperComponent {
       });
     },
 
-    getDaysOfWeekInMonth(date: Dayjs): Array<{ value: string; label: string }> {
-      const { locale, dayjsLocale } = this.data;
+    getDaysOfWeekInMonth(date: Dayjs, type: string): Array<{ value: string; label: string }> {
+      const { locale, steps, dayjsLocale } = this.data;
       const startOfMonth = date.startOf('month');
-      const endOfMonth = date.endOf('month');
+      const minEdge = this.getOptionEdge('min', type);
+      const maxEdge = this.getOptionEdge('max', type);
+      const step = steps?.[type] ?? 1;
       const daysOfWeek = [];
 
-      for (let i = 0; i <= endOfMonth.diff(startOfMonth, 'days'); i += 1) {
-        const currentDate = startOfMonth.add(i, 'days').locale(dayjsLocale);
+      for (let i = minEdge; i <= maxEdge; i += step) {
+        const currentDate = startOfMonth.date(i).locale(dayjsLocale);
         const dayName = currentDate.format('ddd');
-
         daysOfWeek.push({
-          value: `${i + 1}`,
-          label: `${i + 1}${locale.date || ''} ${dayName}`,
+          value: `${i}`,
+          label: `${i}${locale.date || ''} ${dayName}`,
         });
       }
 
@@ -217,7 +218,7 @@ export default class DateTimePicker extends SuperComponent {
       const dayjsMonthsShort = dayjs().locale(this.data.dayjsLocale).localeData().monthsShort();
 
       if (type === 'date' && showWeek) {
-        return this.getDaysOfWeekInMonth(this.date);
+        return this.getDaysOfWeekInMonth(this.date, type);
       }
 
       for (let i = minEdge; i <= maxEdge; i += step) {
