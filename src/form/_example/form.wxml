@@ -1,0 +1,28 @@
+<view class="tdesign-mobile-demo">
+  <t-navbar class="block" title="Form" left-arrow />
+  <view class="demo">
+    <t-demo-header title="Form 表单" desc="用于收集输入信息。" notice="渲染框架支持情况：WebView" />
+    <t-demo title="基础表单" desc="">
+      <view class="demo-block">
+        <view class="option">
+          <view class="button-group">
+            <button class="custom-button {{isActive1 ? 'active' : ''}}" bindtap="onClick" data-name="isActive1">
+              水平排布
+            </button>
+            <button class="custom-button {{isActive2 ? 'active' : ''}}" bindtap="onClick" data-name="isActive2">
+              竖直排布
+            </button>
+          </view>
+        </view>
+      </view>
+    </t-demo>
+
+    <view class="demo-block" wx:if="{{isActive1}}">
+      <horizontal disabled="{{switchValue}}" />
+    </view>
+
+    <view class="demo-block" wx:if="{{isActive2}}">
+      <vertical disabled="{{switchValue}}" />
+    </view>
+  </view>
+</view>

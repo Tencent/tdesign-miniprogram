@@ -1,0 +1,16 @@
+.box {
+  display: flex;
+  gap: 16px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 80px;
+}
+
+.button-group {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  justify-content: space-around;
+}

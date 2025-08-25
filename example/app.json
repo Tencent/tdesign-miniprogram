@@ -3,6 +3,7 @@
   "pages": [
     "pages/home/home",
     "pages/button/button",
+    "pages/form/form",
     "pages/button/skyline/button",
     "pages/tabs/tabs",
     "pages/icon/icon",

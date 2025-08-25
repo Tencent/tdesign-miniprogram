@@ -1,0 +1,12 @@
+var utils = require('../common/utils.wxs');
+
+function buttonGroupStyle(buttonGroupStyle) {
+  if (buttonGroupStyle && buttonGroupStyle.constructor === 'Object') {
+    return utils._style(buttonGroupStyle);
+  }
+  return '';
+}
+
+module.exports = {
+  buttonGroupStyle: buttonGroupStyle,
+};

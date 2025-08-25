@@ -212,6 +212,14 @@ export const docs = [
     type: 'component',
     children: [
       {
+        title: 'Form 表单',
+        titleEn: 'Form',
+        name: 'form',
+        meta: { docType: 'form' },
+        path: '/miniprogram/components/form',
+        component: () => import('@/form/README.md'),
+      },
+      {
         title: 'Calendar 日历',
         titleEn: 'Calendar',
         name: 'calendar',
