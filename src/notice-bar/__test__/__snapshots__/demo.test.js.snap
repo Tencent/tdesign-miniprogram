@@ -1,24 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NoticeBar NoticeBar banner demo works fine 1`] = `
-<banner>
-  <t-notice-bar
-    class="notice-bar-example"
-    content="这是一条非通栏样式的通知消息"
-    prefixIcon="{{false}}"
-    visible="{{true}}"
-  >
-    <wx-view
-      slot="prefix-icon"
-    >
-      <t-icon
-        name="error-circle-filled"
-      />
-    </wx-view>
-  </t-notice-bar>
-</banner>
-`;
-
 exports[`NoticeBar NoticeBar base demo works fine 1`] = `
 <base>
   <t-notice-bar

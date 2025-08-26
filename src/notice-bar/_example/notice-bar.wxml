@@ -17,9 +17,6 @@
   <t-demo desc="带入口的公告栏">
     <event />
   </t-demo>
-  <t-demo desc="非通栏样式的公告栏">
-    <banner />
-  </t-demo>
   <t-demo desc="自定义样式的公告栏">
     <custom />
   </t-demo>
