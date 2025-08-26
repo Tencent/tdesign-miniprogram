@@ -67,7 +67,7 @@ export default class Watermark extends SuperComponent {
             lineSpace: props.lineSpace,
             alpha: props.alpha,
             gapX: gapX,
-            gapY: gapX,
+            gapY: gapY,
             watermarkContent: props.watermarkContent,
             offsetLeft: offsetLeft,
             offsetTop: offsetTop,
