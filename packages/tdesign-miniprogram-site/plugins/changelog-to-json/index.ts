@@ -3,11 +3,11 @@ import path, { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 import type { ViteDevServer } from 'vite';
-import generateChangelogJson from '../../../../common/docs/plugins/changelog-to-json';
+import generateChangelogJson from '../../../common/docs/plugins/changelog-to-json';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const outputPath = path.resolve(__dirname, '../../../../../_site/changelog.json');
+const outputPath = path.resolve(__dirname, '../../../../_site/changelog.json');
 const changelogPath = path.resolve(__dirname, '../../CHANGELOG.md');
 
 export default function changelog2Json() {

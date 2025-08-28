@@ -8,7 +8,6 @@ name | type | default | description | required
 external-classes | Array | - | `['t-class']` | N
 index | String / Number | - | \- | N
 
-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.

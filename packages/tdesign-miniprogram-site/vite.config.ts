@@ -25,8 +25,8 @@ export default ({ mode }: any) => {
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './'),
-        '@': path.resolve(__dirname, '../../components'),
-        '@common': path.resolve(__dirname, '../../common'),
+        '@': path.resolve(__dirname, '../components'),
+        '@common': path.resolve(__dirname, '../common'),
         '@components': path.resolve(__dirname, './components'),
         '@docs': path.resolve(__dirname, './docs'),
         '@pages': path.resolve(__dirname, './pages'),
@@ -39,7 +39,7 @@ export default ({ mode }: any) => {
       https: false,
     },
     build: {
-      outDir: '../../../_site',
+      outDir: '../../_site',
       rollupOptions: {
         input: {
           site: path.resolve(__dirname, 'index.html'),

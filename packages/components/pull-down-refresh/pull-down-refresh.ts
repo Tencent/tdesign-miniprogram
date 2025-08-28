@@ -1,3 +1,4 @@
+import { getObserver } from '../common/wechat';
 import { RelationsOptions, SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
@@ -70,11 +71,7 @@ export default class PullDownRefresh extends SuperComponent {
 
       this.pixelRatio = 750 / screenWidth;
 
-      getRect(this, `.${name}`).then((rect) => {
-        this.setData({
-          distanceTop: rect.top,
-        });
-      });
+      this.updateDistanceTop();
     },
 
     detached() {
@@ -119,6 +116,27 @@ export default class PullDownRefresh extends SuperComponent {
   };
 
   methods = {
+    updateDistanceTop() {
+      const update = (top: number) => {
+        this.setData({
+          distanceTop: top,
+        });
+      };
+
+      getRect(this, `.${name}`).then((rect) => {
+        if (rect.top) {
+          update(rect.top);
+          return;
+        }
+
+        getObserver(this, `.${name}`).then((res) => {
+          if (res.intersectionRatio > 0) {
+            update(res.boundingClientRect.top);
+          }
+        });
+      });
+    },
+
     resetTimer() {
       if (this.refreshStatusTimer) {
         clearTimeout(this.refreshStatusTimer);
@@ -129,11 +147,13 @@ export default class PullDownRefresh extends SuperComponent {
     onScrollToBottom() {
       this.triggerEvent('scrolltolower');
     },
+
     onScrollToTop() {
       this.setData({
         enableToRefresh: true,
       });
     },
+
     onScroll(e) {
       const { scrollTop } = e.detail;
 
@@ -142,6 +162,7 @@ export default class PullDownRefresh extends SuperComponent {
       });
       this.triggerEvent('scroll', { scrollTop });
     },
+
     onTouchStart(e: WechatMiniprogram.Component.TrivialInstance) {
       if (this.isPulling || !this.data.enableToRefresh || this.properties.disabled) return;
       const { touches } = e;

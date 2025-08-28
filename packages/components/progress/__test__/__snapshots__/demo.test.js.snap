@@ -65,41 +65,26 @@ exports[`Progress Progress circle demo works fine 1`] = `
     padding="{{true}}"
   >
     <t-progress
-      percentage="80"
+      percentage="30"
       theme="circle"
     />
     <t-progress
-      percentage="88"
+      percentage="30"
       status="warning"
       theme="circle"
     />
     <t-progress
-      percentage="88"
+      percentage="30"
       status="error"
       theme="circle"
     />
     <t-progress
-      percentage="88"
+      percentage="100"
       status="success"
       theme="circle"
     />
   </t-demo>
 </circle>
-`;
-
-exports[`Progress Progress custom demo works fine 1`] = `
-<custom>
-  <t-progress
-    color="#CD04FF"
-    percentage="88"
-    tClassLabel="external-class-label"
-    trackColor="#EAC9FF"
-  />
-  <t-progress
-    percentage="88"
-    tClassBar="external-class-bar"
-  />
-</custom>
 `;
 
 exports[`Progress Progress line demo works fine 1`] = `
@@ -108,15 +93,15 @@ exports[`Progress Progress line demo works fine 1`] = `
     percentage="80"
   />
   <t-progress
-    percentage="88"
+    percentage="80"
     status="warning"
   />
   <t-progress
-    percentage="88"
+    percentage="80"
     status="error"
   />
   <t-progress
-    percentage="88"
+    percentage="80"
     status="success"
   />
   <t-progress
@@ -126,7 +111,7 @@ exports[`Progress Progress line demo works fine 1`] = `
         "to": "#00A870",
       }
     }}"
-    percentage="88"
+    percentage="80"
     status="active"
   />
 </line>
@@ -139,17 +124,17 @@ exports[`Progress Progress plump demo works fine 1`] = `
     theme="plump"
   />
   <t-progress
-    percentage="88"
+    percentage="80"
     status="warning"
     theme="plump"
   />
   <t-progress
-    percentage="88"
+    percentage="80"
     status="error"
     theme="plump"
   />
   <t-progress
-    percentage="88"
+    percentage="80"
     status="success"
     theme="plump"
   />
@@ -160,40 +145,9 @@ exports[`Progress Progress plump demo works fine 1`] = `
         "to": "#00A870",
       }
     }}"
-    percentage="88"
+    percentage="80"
     status="active"
     theme="plump"
   />
 </plump>
-`;
-
-exports[`Progress Progress transition demo works fine 1`] = `
-<transition>
-  <t-progress
-    ariaLabel="88%"
-    percentage="{{88}}"
-  />
-  <wx-view
-    class="button-group"
-  >
-    <t-button
-      size="small"
-      theme="primary"
-      variant="plain"
-      bind:tap="clickReduce"
-    >
-      减少
-    </t-button>
-    <wx-view
-      class="space"
-    />
-    <t-button
-      size="small"
-      theme="primary"
-      bind:tap="clickAdd"
-    >
-      增加
-    </t-button>
-  </wx-view>
-</transition>
 `;

@@ -22,6 +22,7 @@ const combine = {
   grid: ['grid', 'grid-item'],
   layout: ['row', 'col'],
   form: ['form', 'form-item'],
+  qrcode: ['qrcode', 'qrcode/components/qrcode-canvas', 'qrcode/components/qrcode-status'],
 };
 
 const resolveCwd = (...args) => {
@@ -29,7 +30,7 @@ const resolveCwd = (...args) => {
   return path.join(...args);
 };
 
-const findFilePath = (componentName) => resolveCwd(`${ROOT_DIR}/${componentName}/${componentName}.less`);
+const findFilePath = (componentPath, componentName) => resolveCwd(`${ROOT_DIR}/${componentPath}/${componentName}.less`);
 
 const getAllComponentName = async (dirPath) => {
   const items = await fs.promises.readdir(dirPath, { withFileTypes: true });
@@ -43,10 +44,10 @@ const generateCssVariables = async (componentName) => {
 
   if (combine[componentName]) {
     combine[componentName].forEach((item) => {
-      lessPath.push(findFilePath(item));
+      lessPath.push(findFilePath(item, item.includes('/') ? item.split('/').pop() : item));
     });
   } else {
-    lessPath.push(findFilePath(componentName));
+    lessPath.push(findFilePath(componentName, componentName));
   }
 
   const validPaths = lessPath.filter((item) => fs.existsSync(item));
@@ -59,10 +60,10 @@ const generateCssVariables = async (componentName) => {
 
     const list = file.match(matchReg)?.sort();
 
-    list?.forEach((item) => {
+    list?.forEach((item, index) => {
       cssVariableBodyContent += `${item.slice(1, item.indexOf(',')).trim()} | ${item
         .slice(item.indexOf(',') + 2, item.length - 1)
-        .trim()} | - \n`;
+        .trim()} | -${index === list.length - 1 ? '' : ' \n'}`;
     });
   });
 

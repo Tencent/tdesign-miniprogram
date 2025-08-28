@@ -60,7 +60,7 @@ isComponent: true
 
 ### 为什么 `Upload` 外层使用 `display: flex` 时会造成组件样式混乱？
 
-`Upload` 是基于 `TGrid` 宫格实现，当外层使用 `display: flex` ，子元素会默认加上 `flex-grow: 0`，造成 `Upload` 组件整体宽度不足。可以通过给组件根节点加上 `flex-grow: 1` 处理。
+`Upload` 是基于 `TGrid` 宫格实现，当外层使用 `display: flex` ，子元素会默认加上 `flex-grow: 0`，造成 `Upload` 组件整体宽度不足。可以通过给 `Upload` 组件节点加上 `flex-grow: 1` 处理。
  
 
 ## API

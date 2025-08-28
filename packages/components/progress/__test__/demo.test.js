@@ -5,7 +5,7 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['base', 'circle', 'custom', 'line', 'plump', 'transition'];
+const mapper = ['base', 'circle', 'line', 'plump'];
 
 describe('Progress', () => {
   mapper.forEach((demoName) => {

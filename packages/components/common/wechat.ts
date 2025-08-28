@@ -1,5 +1,5 @@
 export const getObserver = (context, selector: string) => {
-  return new Promise((resolve) => {
+  return new Promise<WechatMiniprogram.IntersectionObserverObserveCallbackResult>((resolve) => {
     context
       .createIntersectionObserver(context)
       .relativeToViewport()

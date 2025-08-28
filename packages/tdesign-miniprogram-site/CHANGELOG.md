@@ -6,6 +6,37 @@ docClass: timeline
 ---
 
 
+## 🌈 1.10.1 `2025-08-22` 
+### 🚀 Features
+- `Textarea`: 新增 `cursorColor` 属性，仅在 `Skyline` 下有效 @anlyyao ([#3832](https://github.com/Tencent/tdesign-miniprogram/pull/3832))
+- `Button`: 
+  - 新增 `getrealtimephonenumber` 事件 @novlan1 ([#3845](https://github.com/Tencent/tdesign-miniprogram/pull/3845))
+  - 新增 `createliveactivity` 事件 @anlyyao ([#3845](https://github.com/Tencent/tdesign-miniprogram/pull/3845))
+### 🐞 Bug Fixes
+- `ImageViewer`: 移除 `backgroundColor` 属性默认值，导航背景色固定为 `#000`，遮罩背景色使用 `@mask-active` @anlyyao ([#3843](https://github.com/Tencent/tdesign-miniprogram/pull/3843))
+- `Toast`: 修复即将关闭时再次触发显示导致之后的触发无效的问题 @betavs ([#3841](https://github.com/Tencent/tdesign-miniprogram/pull/3841))
+- `Stepper`: 结合 `dialog` 组件使用时，输入值后键盘弹起状态下点击弹窗确认按钮关闭弹窗后 `change` 事件才触发的问题 @betavs ([#3804](https://github.com/Tencent/tdesign-miniprogram/pull/3804))
+- `Collapse`: 修复 `--td-collapse-border-color` 无效的问题 @SinzoL ([#3862](https://github.com/Tencent/tdesign-miniprogram/pull/3862))
+- `PullDownRefresh`: 处理容器隐藏状态下高度计算异常的问题 @betavs ([#3863](https://github.com/Tencent/tdesign-miniprogram/pull/3863))
+- `Skeleton`: 骨架屏动画`animation-delay` 属性修改为 `0s` @anlyyao ([#3853](https://github.com/Tencent/tdesign-miniprogram/pull/3853))
+### 🚧 Others
+- `Cell`: 组件边框样式新增 `.t-cell--bordered` 移除 `.t-cell--borderless` 类名 @SinzoL ([#3862](https://github.com/Tencent/tdesign-miniprogram/pull/3862))
+
+
+## 🌈 1.10.0 `2025-08-01` 
+### 🚀 Features
+- `QRCode`: 新增`QRCode`组件 @SinzoL ([#3780](https://github.com/Tencent/tdesign-miniprogram/pull/3780)) ⚡
+### 🐞 Bug Fixes
+- `Calendar`: 修复 `value` 更新后翻页模式日历面板数据不更新的问题 @anlyyao ([#3800](https://github.com/Tencent/tdesign-miniprogram/pull/3800))
+- `Skeleton`: 修复 `delay` 设置较大时组件未按预期消失的问题 @betavs ([#3793](https://github.com/Tencent/tdesign-miniprogram/pull/3793))
+- `Switch`: 修复 `loading` 颜色、`dot` 滑块禁用态/深色模式背景色错误 @anlyyao ([#3802](https://github.com/Tencent/tdesign-miniprogram/pull/3802))
+- `ActionSheet`: 修复页面跳转返回后再点击不显示问题 @Boomkaa ([#3796](https://github.com/Tencent/tdesign-miniprogram/pull/3796))
+-  `Toast`: 修复 `Toast` 已隐藏，页面无法点击问题 @Boomkaa ([#3796](https://github.com/Tencent/tdesign-miniprogram/pull/3796))
+- `NoticeBar`:  修正警告主题图标 @liweijie0812 ([#3812](https://github.com/Tencent/tdesign-miniprogram/pull/3812))
+### 🚧 Others
+- `CSS`: 重命名圆角与字体部分 `CSS Vars` ，如 `--td-radius-extra-large` 变更为 `--td-radius-extraLarge` @anlyyao ([#3809](https://github.com/Tencent/tdesign-miniprogram/pull/3809))
+
+
 ## 🌈 1.9.7 `2025-07-10` 
 ### 🚀 Features
 - `Calendar`: 新增 `readonly` 属性 @anlyyao ([#3752](https://github.com/Tencent/tdesign-miniprogram/pull/3752))

@@ -1,0 +1,10 @@
+<t-qrcode value="https://tdesign.tencent.com/" status="{{'active'}}" bind:refresh="handleRefresh" />
+
+<view class="demo-summary"> expired </view>
+<t-qrcode value="https://tdesign.tencent.com/" status="{{'expired'}}" bind:refresh="handleRefresh" />
+
+<view class="demo-summary"> loading </view>
+<t-qrcode value="https://tdesign.tencent.com/" status="{{'loading'}}" bind:refresh="handleRefresh" />
+
+<view class="demo-summary"> scanned </view>
+<t-qrcode value="https://tdesign.tencent.com/" status="{{'scanned'}}" bind:refresh="handleRefresh" />
