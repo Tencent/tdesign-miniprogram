@@ -25,6 +25,14 @@ export default function changelog2Json() {
       // 生产构建时写入物理文件
       if (process.env.NODE_ENV === 'production') {
         const json = await generateChangelogJson(changelogPath, 'mobile');
+        const dir = path.dirname(outputPath); 
+        try {
+          await promises.access(dir);
+        } catch (error) {
+          if (error.code === 'ENOENT') {
+            await promises.mkdir(dir, { recursive: true });
+          }
+        }
         await promises.writeFile(outputPath, JSON.stringify(json));
       }
     },
