@@ -15,7 +15,7 @@ const SHOW_DURATION = 500;
 const THEME_ICON = {
   info: 'info-circle-filled',
   success: 'check-circle-filled',
-  warning: 'info-circle-filled',
+  warning: 'error-circle-filled',
   error: 'error-circle-filled',
 };
 
