@@ -62,10 +62,10 @@ export default defineComponent({
     },
     liveHost() {
       const { host } = window.location;
-      if (host.includes('woa.')) {
-        return `ty.${host}`;
+      if (host.startsWith('ty.')) {
+        return host;
       }
-      return host;
+      return 'tdesign.tencent.com';
     },
     liveUrl() {
       const componentName = this.name.split('-en')[0];
