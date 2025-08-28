@@ -60,13 +60,20 @@ export default defineComponent({
 
       return name.replace('layout', 'col');
     },
+    liveHost() {
+      const { host } = window.location;
+      if (host.includes('woa.')) {
+        return `ty.${host}`;
+      }
+      return host;
+    },
     liveUrl() {
       const componentName = this.name.split('-en')[0];
-      return `//tdesign.tencent.com/miniprogram-live/m2w/program/miniprogram/#!pages/${componentName}/${componentName}.html`;
+      return `//${this.liveHost}/miniprogram-live/m2w/program/miniprogram/#!pages/${componentName}/${componentName}.html`;
     },
     qrcode() {
       const componentName = this.name.split('-en')[0];
-      return `//tdesign.tencent.com/miniprogram/assets/qrcode/${componentName}.png`;
+      return `//${this.liveHost}/miniprogram/assets/qrcode/${componentName}.png`;
     },
   },
 
