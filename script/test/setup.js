@@ -2,14 +2,14 @@ import Path from 'path';
 import simulate from 'miniprogram-simulate';
 import similateApi from 'miniprogram-simulate/src/api';
 import { mockSync, mockAsyncAndPromise } from 'miniprogram-simulate/src/api/utils';
-import { canUseVirtualHost } from '../../src/common/version';
+import { canUseVirtualHost } from '../../packages/components/common/version';
 
 global.getApp = () => null;
 global.Page = (options) => Component(options);
 global.load = (path, demoName) => {
   return simulate.load(path, demoName, {
     less: true,
-    rootPath: Path.resolve(__dirname, '../../src'),
+    rootPath: Path.resolve(__dirname, '../../packages/components'),
     compilerOptions: {
       maxBuffer: 1024 * 1024 * 2,
     },
