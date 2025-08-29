@@ -6,9 +6,9 @@ const VERSION = process.argv[process.argv.indexOf('--version') + 1]; // 在 --ve
 
 const iconOnlinePath = `https://tdesign.gtimg.com/icon/${VERSION}/fonts/index.css`;
 
-const commonIconFile = path.join(__dirname, '..', 'src/common/style/icons.less'); // 组件的 .less 文件
-const dataFile = path.join(__dirname, '..', 'src/icon/_example/data.js'); // 示例的 .js 文件
-const iconFile = path.join(__dirname, '..', 'src/icon/icon.less');
+const commonIconFile = path.join(__dirname, '..', 'packages/components/common/style/icons.less'); // 组件的 .less 文件
+const dataFile = path.join(__dirname, '..', 'packages/components/icon/_example/data.js'); // 示例的 .js 文件
+const iconFile = path.join(__dirname, '..', 'packages/components/icon/icon.less');
 // 定义一个函数来保存文件
 const saveFile = (filename, content) => {
   fs.writeFile(filename, content, (err) => {

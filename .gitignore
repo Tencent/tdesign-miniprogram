@@ -27,5 +27,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw*
-tdesign-miniprogram
+/tdesign-miniprogram
 m2w_dist

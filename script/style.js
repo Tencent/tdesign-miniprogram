@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 
-glob('src/**/*.md', (err, files) => {
+glob('packages/components/**/*.md', (err, files) => {
   if (err) {
     console.log(err);
   }
