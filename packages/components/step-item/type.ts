@@ -14,6 +14,13 @@ export interface TdStepItemProps {
     value?: string;
   };
   /**
+   * 步骤条自定义内容
+   */
+  extra?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 图标。传入 slot 代表使用插槽，其他字符串代表使用内置图标
    */
   icon?: {

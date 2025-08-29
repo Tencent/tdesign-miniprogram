@@ -32,13 +32,6 @@ export interface TdPullDownRefreshProps {
     value?: boolean;
   };
   /**
-   * 加载loading样式
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-loading', 't-class-text', 't-class-indicator'];
-  };
-  /**
    * 加载中下拉高度，如果值为数字则单位是：'px'
    * @default 50
    */
@@ -100,6 +93,14 @@ export interface TdPullDownRefreshProps {
   showScrollbar?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 刷新成功提示展示时长，单位 'ms'
+   * @default 500
+   */
+  successDuration?: {
+    type: null;
+    value?: string | number;
   };
   /**
    * 距顶部/左边多远时，触发 scrolltoupper 事件

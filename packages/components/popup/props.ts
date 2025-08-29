@@ -24,10 +24,6 @@ const props: TdPopupProps = {
     type: Number,
     value: 240,
   },
-  /** 组件类名，分别用于设置 组件外层元素、遮罩层、浮层内容 等元素类名 */
-  externalClasses: {
-    type: Array,
-  },
   /** 遮罩层的属性，透传至 overlay */
   overlayProps: {
     type: Object,

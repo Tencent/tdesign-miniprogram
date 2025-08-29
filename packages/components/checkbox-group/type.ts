@@ -8,7 +8,7 @@ import { KeysType } from '../common/common';
 
 export interface TdCheckboxGroupProps<T = CheckboxGroupValue> {
   /**
-   * 是否开启无边框模式
+   * 是否开启无边框模式。优先级低于 Checkbox.borderless
    * @default false
    */
   borderless?: {
@@ -23,7 +23,7 @@ export interface TdCheckboxGroupProps<T = CheckboxGroupValue> {
     value?: boolean;
   };
   /**
-   * 用来定义 value / label 在 `options` 中对应的字段别名
+   * 用来定义 value / label / disabled 在 `options` 中对应的字段别名
    */
   keys?: {
     type: ObjectConstructor;
@@ -51,6 +51,13 @@ export interface TdCheckboxGroupProps<T = CheckboxGroupValue> {
   options?: {
     type: ArrayConstructor;
     value?: Array<CheckboxOption>;
+  };
+  /**
+   * 只读状态
+   */
+  readonly?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 选中值

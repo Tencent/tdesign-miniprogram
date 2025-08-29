@@ -29,7 +29,7 @@ export interface TdSwitchProps<T = SwitchValue> {
     value?: string[];
   };
   /**
-   * 开关的标签；[打开时的标签，关闭时的标签]
+   * 开关内容，[开启时内容，关闭时内容]。示例：['开', '关']
    * @default []
    */
   label?: {

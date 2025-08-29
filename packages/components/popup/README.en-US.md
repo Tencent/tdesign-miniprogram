@@ -8,11 +8,11 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
-close-btn | Boolean / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+close-btn | Boolean / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 close-on-overlay-click | Boolean | true | \- | N
-content | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+content | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 duration | Number | 240 | \- | N
-overlay-props | Object | {} | Typescript：`OverlayProps`，[Overlay API Documents](./overlay?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/popup/type.ts) | N
+overlay-props | Object | {} | Typescript：`OverlayProps`，[Overlay API Documents](./overlay?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/popup/type.ts) | N
 placement | String | top | options: top/left/right/bottom/center | N
 prevent-scroll-through | Boolean | true | \- | N
 show-overlay | Boolean | true | \- | N
@@ -25,7 +25,8 @@ z-index | Number | 11500 | \- | N
 
 name | params | description
 -- | -- | --
-visible-change | `(visible: boolean, trigger: PopupSource) ` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/popup/type.ts)。<br/>`type PopupSource = 'close-btn' \| 'overlay'`<br/>
+visible-change | `(visible: boolean, trigger: PopupSource) ` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/popup/type.ts)。<br/>`type PopupSource = 'close-btn' \| 'overlay'`<br/>
+
 ### Popup External Classes
 
 className | Description
@@ -42,4 +43,4 @@ Name | Default Value | Description
 --td-popup-border-radius | @radius-extraLarge | - 
 --td-popup-close-btn-color | @text-color-primary | - 
 --td-popup-distance-top | 0) | - 
---td-popup-transition | all 300ms ease | - 
+--td-popup-transition | all 300ms ease | -

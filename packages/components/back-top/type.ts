@@ -30,14 +30,6 @@ export interface TdBackTopProps {
     value?: number;
   };
   /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 文案
    * @default ''
    */

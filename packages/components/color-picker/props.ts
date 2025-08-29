@@ -21,12 +21,12 @@ const props: TdColorPickerProps = {
     type: Boolean,
     value: false,
   },
-  /** 格式化色值。`enableAlpha` 为真时，`RGBA/HSLA/HSVA` 等值有效 */
+  /** 格式化色值。`enableAlpha` 为真时，`HEX8/RGBA/HSLA/HSVA` 有效 */
   format: {
     type: String,
     value: 'RGB',
   },
-  /** popupProps透传 */
+  /** 透传 Popup 组件全部属性 */
   popupProps: {
     type: Object,
     value: {},
@@ -34,6 +34,7 @@ const props: TdColorPickerProps = {
   /** 系统预设的颜色样例，值为 `null` 或 `[]` 则不显示系统色，值为 `undefined` 会显示组件内置的系统默认色 */
   swatchColors: {
     type: Array,
+    value: undefined,
   },
   /** 颜色选择器类型。（base 表示仅展示系统预设内容; multiple 表示展示色板和系统预设内容 */
   type: {

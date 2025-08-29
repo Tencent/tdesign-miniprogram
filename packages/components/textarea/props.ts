@@ -11,7 +11,7 @@ const props: TdTextareaProps = {
     type: Boolean,
     value: true,
   },
-  /** 超出maxlength或maxcharacter之后是否还允许输入 */
+  /** 超出 `maxlength` 或 `maxcharacter` 之后是否还允许输入 */
   allowInputOverMax: {
     type: Boolean,
     value: false,

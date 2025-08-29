@@ -27,8 +27,8 @@ const props: TdStepsProps = {
   },
   /** 只读状态 */
   readonly: {
-    type: Boolean,
-    value: false,
+    type: null,
+    value: undefined,
   },
   /** 步骤条顺序 */
   sequence: {

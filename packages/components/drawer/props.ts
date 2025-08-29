@@ -34,6 +34,11 @@ const props: TdDrawerProps = {
   title: {
     type: String,
   },
+  /** 是否使用了自定义导航栏 */
+  usingCustomNavbar: {
+    type: Boolean,
+    value: false,
+  },
   /** 组件是否可见 */
   visible: {
     type: Boolean,

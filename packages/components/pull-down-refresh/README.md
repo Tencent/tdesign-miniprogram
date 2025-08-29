@@ -44,15 +44,16 @@ custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场�
 disabled | Boolean | false | 是否禁用下拉刷新 | N
 enable-back-to-top | Boolean | true | `1.1.5`。iOS点击顶部状态栏、安卓双击标题栏时，滚动条返回顶部，只支持竖向。自 2.27.3 版本开始，若非显式设置为 false，则在显示尺寸大于屏幕 90% 时自动开启 | N
 enable-passive | Boolean | false | `1.1.5`。开启 passive 特性，能优化一定的滚动性能 | N
-header | Slot | - | `1.2.10`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+header | Slot | - | `1.2.10`。头部。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 loading-bar-height | String / Number | 50 | 加载中下拉高度，如果值为数字则单位是：'px' | N
-loading-props | Object | - | 加载loading样式。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/pull-down-refresh/type.ts) | N
+loading-props | Object | - | 加载loading样式。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/pull-down-refresh/type.ts) | N
 loading-texts | Array | [] | 提示语，组件内部默认值为 ['下拉刷新', '松手刷新', '正在刷新', '刷新完成']。TS 类型：`string[]` | N
 lower-threshold | String / Number | 50 | `1.1.5`。距底部/右边多远时，触发 scrolltolower 事件 | N
 max-bar-height | String / Number | 80 | 最大下拉高度，如果值为数字则单位是：'px' | N
 refresh-timeout | Number | 3000 | 刷新超时时间 | N
 scroll-into-view | String | - | `1.1.5`。值应为某子元素id（id不能以数字开头）。设置哪个方向可滚动，则在哪个方向滚动到该元素 | N
 show-scrollbar | Boolean | true | 滚动条显隐控制 (同时开启 enhanced 属性后生效) | N
+success-duration | String / Number | 500 | 刷新成功提示展示时长，单位 'ms' | N
 upper-threshold | String / Number | 50 | `1.1.5`。距顶部/左边多远时，触发 scrolltoupper 事件 | N
 using-custom-navbar | Boolean | false | 是否使用了自定义导航栏 | N
 value | Boolean | false | 组件状态，值为 `true` 表示下拉状态，值为 `false` 表示收起状态 | N
@@ -84,4 +85,4 @@ t-class-text | 文本样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-pull-down-refresh-color | @text-color-placeholder | - 
+--td-pull-down-refresh-color | @text-color-placeholder | -

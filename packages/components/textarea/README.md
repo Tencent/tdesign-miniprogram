@@ -72,7 +72,7 @@ isComponent: true
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 adjust-position | Boolean | true | 键盘弹起时，是否自动上推页面 | N
-allow-input-over-max | Boolean | false | `1.8.6`。超出maxlength或maxcharacter之后是否还允许输入 | N
+allow-input-over-max | Boolean | false | `1.8.6`。超出 `maxlength` 或 `maxcharacter` 之后是否还允许输入 | N
 autofocus | Boolean | false | 自动聚焦，拉起键盘 | N
 autosize | Boolean / Object | false | 是否自动增高，值为 true 时，style.height 不生效。支持传入对象，如 { maxHeight: 120, minHeight: 20 }。TS 类型：`boolean \| { maxHeight?: number, minHeight?: number }` | N
 bordered | Boolean | false | 是否显示外边框 | N
@@ -87,7 +87,7 @@ fixed | Boolean | false | 如果 textarea 是在一个 `position:fixed` 的区�
 focus | Boolean | false | 自动聚焦 | N
 hold-keyboard | Boolean | false | focus时，点击页面的时候不收起键盘 | N
 indicator | Boolean | false | 显示文本计数器，如 0/140。当 `maxlength < 0 && maxcharacter < 0` 成立时， indicator无效 | N
-label | String / Slot | - | 左侧文本。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+label | String / Slot | - | 左侧文本。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度 | N
 maxlength | Number | -1 | 用户最多可以输入的字符个数，值为 -1 的时候不限制最大长度 | N
 placeholder | String | undefined | 占位符 | N
@@ -97,8 +97,8 @@ readonly | Boolean | undefined | `1.8.6`。只读状态 | N
 selection-end | Number | -1 | 光标结束位置，自动聚集时有效，需与 selection-start 搭配使用 | N
 selection-start | Number | -1 | 光标起始位置，自动聚集时有效，需与 selection-end 搭配使用 | N
 show-confirm-bar | Boolean | true | 是否显示键盘上方带有”完成“按钮那一栏 | N
-value | String / Number | - | 文本框值。TS 类型：`TextareaValue` `type TextareaValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/textarea/type.ts) | N
-default-value | String / Number | undefined | 文本框值。非受控属性。TS 类型：`TextareaValue` `type TextareaValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/textarea/type.ts) | N
+value | String / Number | - | 文本框值。TS 类型：`TextareaValue` `type TextareaValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/textarea/type.ts) | N
+default-value | String / Number | undefined | 文本框值。非受控属性。TS 类型：`TextareaValue` `type TextareaValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/textarea/type.ts) | N
 
 ### Textarea Events
 

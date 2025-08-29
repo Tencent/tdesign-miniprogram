@@ -38,13 +38,6 @@ export interface TdPopupProps {
     value?: number;
   };
   /**
-   * 组件类名，分别用于设置 组件外层元素、遮罩层、浮层内容 等元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-overlay', 't-class-content'];
-  };
-  /**
    * 遮罩层的属性，透传至 overlay
    * @default {}
    */

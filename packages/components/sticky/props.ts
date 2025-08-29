@@ -6,7 +6,7 @@
 
 import { TdStickyProps } from './type';
 const props: TdStickyProps = {
-  /** 函数返回容器对应的 NodesRef 节点，将对应节点指定为组件的外部容器，滚动时组件会始终保持在容器范围内，当组件即将超出容器底部时，会返回原位置。 */
+  /** 函数返回容器对应的 NodesRef 节点，将对应节点指定为组件的外部容器，滚动时组件会始终保持在容器范围内，当组件即将超出容器底部时，会返回原位置 */
   container: {
     type: null,
   },

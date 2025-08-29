@@ -2,7 +2,6 @@
 
 ## API
 
-
 ### Slider Props
 
 name | type | default | description | required
@@ -20,8 +19,8 @@ range | Boolean | false | \- | N
 show-extreme-value | Boolean | false | \- | N
 step | Number | 1 | \- | N
 theme | String | default | `0.30.0`。options: default/capsule | N
-value | Number / Array | 0 | Typescript：`SliderValue` `type SliderValue = number \| Array<number>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/slider/type.ts) | N
-default-value | Number / Array | undefined | uncontrolled property。Typescript：`SliderValue` `type SliderValue = number \| Array<number>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/slider/type.ts) | N
+value | Number / Array | 0 | Typescript：`SliderValue` `type SliderValue = number \| Array<number>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/slider/type.ts) | N
+default-value | Number / Array | undefined | uncontrolled property。Typescript：`SliderValue` `type SliderValue = number \| Array<number>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/slider/type.ts) | N
 vertical | Boolean | false | \- | N
 
 ### Slider Events
@@ -31,6 +30,7 @@ name | params | description
 change | `(value: SliderValue)` | \-
 dragend | `(value: SliderValue, e: TouchEvent)` | \-
 dragstart | `(e: TouchEvent)` | \-
+
 ### Slider External Classes
 
 className | Description
@@ -62,4 +62,4 @@ Name | Default Value | Description
 --td-slider-dot-disabled-bg-color | #fff | - 
 --td-slider-dot-disabled-border-color | #f3f3f3 | - 
 --td-slider-dot-size | 40rpx | - 
---td-slider-text-color | @text-color-primary | - 
+--td-slider-text-color | @text-color-primary | -

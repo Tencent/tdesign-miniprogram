@@ -23,11 +23,6 @@ const props: TdSwipeCellProps = {
   right: {
     type: Array,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
 };
 
 export default props;

@@ -18,7 +18,7 @@ hide-counter | Boolean | false | \- | N
 hide-skip | Boolean | false | \- | N
 highlight-padding | Number | 16 | \- | N
 mode | String | popover | options: popover/dialog | N
-next-button-props | Object | - | Typescript：`ButtonProps`，[Button API Documents](./button?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/guide/type.ts) | N
+next-button-props | Object | - | Typescript：`ButtonProps`，[Button API Documents](./button?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/guide/type.ts) | N
 show-overlay | Boolean | true | \- | N
 skip-button-props | Object | - | Typescript：`ButtonProps` | N
 steps | Array | - | Typescript：`Array<GuideStep>` | N
@@ -57,13 +57,13 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 back-button-props | Object | - | Typescript：`ButtonProps` | N
 body | String | - | \- | N
-element | Function | - | required。Typescript：`StepElement` `type StepElement = () => Promise<WechatMiniprogram.BoundingClientRectCallbackResult>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/guide/type.ts) | Y
+element | Function | - | required。Typescript：`StepElement` `type StepElement = () => Promise<WechatMiniprogram.BoundingClientRectCallbackResult>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/guide/type.ts) | Y
 finish-button-props | Object | - | Typescript：`ButtonProps` | N
 highlight-padding | Number | - | \- | N
 mode | String | - | options: popover/dialog | N
 next-button-props | Object | - | Typescript：`ButtonProps` | N
 offset | Array | - | this api is in discussing. do not use it。Typescript：`Array<string \| number>` | N
-placement | String | 'top' | Typescript：`StepPopoverPlacement ` `type StepPopoverPlacement = 'top'\|'left'\|'right'\|'bottom'\|'top-left'\|'top-right'\|'bottom-left'\|'bottom-right'\|'left-top'\|'left-bottom'\|'right-top'\|'right-bottom'\|'center'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/guide/type.ts) | N
+placement | String | 'top' | Typescript：`StepPopoverPlacement ` `type StepPopoverPlacement = 'top'\|'left'\|'right'\|'bottom'\|'top-left'\|'top-right'\|'bottom-left'\|'bottom-right'\|'left-top'\|'left-bottom'\|'right-top'\|'right-bottom'\|'center'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/guide/type.ts) | N
 show-overlay | Boolean | true | \- | N
 skip-button-props | Object | - | Typescript：`ButtonProps` | N
 title | String | - | title of current step | N
@@ -107,4 +107,4 @@ Name | Default Value | Description
 --td-guide-reference-border-radius | @radius-default | - 
 --td-guide-reference-mask-color | @font-gray-2 | - 
 --td-guide-title-color | @text-color-primary | - 
---td-guide-title-font-weight | 600 | - 
+--td-guide-title-font-weight | 600 | -

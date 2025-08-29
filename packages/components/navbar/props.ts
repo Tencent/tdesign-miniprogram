@@ -26,6 +26,11 @@ const props: TdNavbarProps = {
     type: Boolean,
     value: false,
   },
+  /** 是否开启顶部安全区适配 */
+  safeAreaInsetTop: {
+    type: Boolean,
+    value: true,
+  },
   /** 页面标题 */
   title: {
     type: String,

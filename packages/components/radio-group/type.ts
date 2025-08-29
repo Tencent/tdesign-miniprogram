@@ -39,7 +39,7 @@ export interface TdRadioGroupProps<T = RadioValue> {
     value?: 'circle' | 'line' | 'dot' | Array<string>;
   };
   /**
-   * 用来定义 value / label 在 `options` 中对应的字段别名
+   * 用来定义 value / label / disabled 在 `options` 中对应的字段别名
    */
   keys?: {
     type: ObjectConstructor;

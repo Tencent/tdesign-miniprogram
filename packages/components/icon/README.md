@@ -114,7 +114,8 @@ size | String / Number | - | 图标大小, 如 `20`, `20px`, `48rpx`, 默认单�
 
 名称 | 参数 | 描述
 -- | -- | --
-click | \- | 点击图标时触发。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts)
+click | \- | 点击图标时触发。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)
+
 ### Icon External Classes
 
 类名 | 描述
@@ -126,4 +127,4 @@ t-class | 根节点样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
-ant: norma | ant: norma | - 
+ant: norma | ant: norma | -

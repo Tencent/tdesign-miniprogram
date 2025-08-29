@@ -25,7 +25,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
-badge-props | Object | - | Typescript：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/side-bar-item/type.ts) | N
+badge-props | Object | - | Typescript：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/side-bar-item/type.ts) | N
 disabled | Boolean | false | \- | N
 icon | String / Object | - | \- | N
 label | String | - | \- | N
@@ -47,4 +47,4 @@ Name | Default Value | Description
 --td-side-bar-font-size | 32rpx | - 
 --td-side-bar-icon-size | 40rpx | - 
 --td-side-bar-item-height | 112rpx | - 
---td-side-bar-item-line-height | 48rpx | - 
+--td-side-bar-item-line-height | 48rpx | -

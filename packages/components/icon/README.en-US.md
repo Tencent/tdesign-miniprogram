@@ -2,7 +2,6 @@
 
 ## API
 
-
 ### Icon Props
 
 name | type | default | description | required
@@ -18,7 +17,8 @@ size | String / Number | - | \- | N
 
 name | params | description
 -- | -- | --
-click | \- | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts)
+click | \- | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)
+
 ### Icon External Classes
 
 className | Description
@@ -30,4 +30,4 @@ t-class | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
-ant: norma | ant: norma | - 
+ant: norma | ant: norma | -

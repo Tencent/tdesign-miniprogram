@@ -9,12 +9,16 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 animation | Boolean | true | \- | N
-capsule | Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+background | String | - | `deprecated`。background | N
+capsule | Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 delta | Number | 1 | \- | N
 fixed | Boolean | true | \- | N
-left | Slot | - | `0.26.0`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+home-icon | String | - | `deprecated`。homeIcon | N
+left | Slot | - | `0.26.0`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 left-arrow | Boolean | false | `0.26.0` | N
-title | String / Slot | - | page title。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+left-icon | String | - | `deprecated` | N
+safe-area-inset-top | Boolean | true | \- | N
+title | String / Slot | - | page title。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 title-max-length | Number | - | \- | N
 visible | Boolean | true | \- | N
 
@@ -25,7 +29,9 @@ name | params | description
 complete | \- | \-
 fail | \- | \-
 go-back | \- | \-
+go-home | \- | `deprecated`
 success | \- | \-
+
 ### Navbar External Classes
 
 className | Description
@@ -59,4 +65,4 @@ Name | Default Value | Description
 --td-navbar-left-arrow-size | 24px | - 
 --td-navbar-left-max-width | --td-navbar-left-max-width | - 
 --td-navbar-title-font-size | 18px | - 
---td-navbar-title-font-weight | 600 | - 
+--td-navbar-title-font-weight | 600 | -
