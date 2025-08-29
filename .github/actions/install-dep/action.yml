@@ -9,21 +9,27 @@ on:
         default: '14'
 
 runs:
-  using: "composite"
-  steps: 
-    - uses: actions/setup-node@v2
+  using: 'composite'
+  steps:
+    - uses: actions/setup-node@v4
       with:
         node-version: ${{ inputs.nodeVersion }}
-    - name: Get npm cache directory
-      id: npm-cache-dir
+
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+
+    - name: Get pnpm store directory
+      id: pnpm-cache
       shell: bash
-      run: echo "dir=$(npm config get cache)" >> ${GITHUB_OUTPUT}
-    - uses: actions/cache@v3
-      id: npm-cache # use this to check for `cache-hit` ==> if: steps.npm-cache.outputs.cache-hit != 'true'
+      run: echo "dir=$(pnpm store path)" >> ${GITHUB_OUTPUT}
+
+    - uses: actions/cache@v4
+      name: Setup pnpm cache
       with:
-        path: ${{ steps.npm-cache-dir.outputs.dir }}
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package.json') }}
+        path: ${{ steps.pnpm-cache.outputs.dir }}
+        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
         restore-keys: |
-          ${{ runner.os }}-node-
-    - run: npm install
+          ${{ runner.os }}-pnpm-store-
+
+    - run: pnpm install
       shell: bash
