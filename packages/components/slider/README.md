@@ -78,7 +78,6 @@ $slider.init();
 
 ## API
 
-
 ### Slider Props
 
 名称 | 类型 | 默认值 | 描述 | 必传
@@ -96,8 +95,8 @@ range | Boolean | false | 双游标滑块 | N
 show-extreme-value | Boolean | false | 是否边界值 | N
 step | Number | 1 | 步长 | N
 theme | String | default | `0.30.0`。滑块风格。可选项：default/capsule | N
-value | Number / Array | 0 | 滑块值。TS 类型：`SliderValue` `type SliderValue = number \| Array<number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/slider/type.ts) | N
-default-value | Number / Array | undefined | 滑块值。非受控属性。TS 类型：`SliderValue` `type SliderValue = number \| Array<number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/slider/type.ts) | N
+value | Number / Array | 0 | 滑块值。TS 类型：`SliderValue` `type SliderValue = number \| Array<number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/slider/type.ts) | N
+default-value | Number / Array | undefined | 滑块值。非受控属性。TS 类型：`SliderValue` `type SliderValue = number \| Array<number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/slider/type.ts) | N
 vertical | Boolean | false | 是否是垂直的滑块（渲染垂直滑块时，默认高度为400rpx，可通过修改`--td-slider-bar-height`来自定义高度） | N
 
 ### Slider Events
@@ -107,6 +106,7 @@ vertical | Boolean | false | 是否是垂直的滑块（渲染垂直滑块时，
 change | `(value: SliderValue)` | 滑块值变化时触发
 dragend | `(value: SliderValue, e: TouchEvent)` | 结束拖动时触发
 dragstart | `(e: TouchEvent)` | 开始拖动时触发
+
 ### Slider External Classes
 
 类名 | 描述
@@ -138,4 +138,4 @@ t-class-cursor | 游标样式类
 --td-slider-dot-disabled-bg-color | #fff | - 
 --td-slider-dot-disabled-border-color | #f3f3f3 | - 
 --td-slider-dot-size | 40rpx | - 
---td-slider-text-color | @text-color-primary | - 
+--td-slider-text-color | @text-color-primary | -

@@ -6,7 +6,7 @@
 
 import { TdCheckboxGroupProps } from './type';
 const props: TdCheckboxGroupProps = {
-  /** 是否开启无边框模式 */
+  /** 是否开启无边框模式。优先级低于 Checkbox.borderless */
   borderless: {
     type: Boolean,
     value: false,
@@ -16,7 +16,7 @@ const props: TdCheckboxGroupProps = {
     type: null,
     value: undefined,
   },
-  /** 用来定义 value / label 在 `options` 中对应的字段别名 */
+  /** 用来定义 value / label / disabled 在 `options` 中对应的字段别名 */
   keys: {
     type: Object,
   },
@@ -34,6 +34,11 @@ const props: TdCheckboxGroupProps = {
   options: {
     type: Array,
     value: [],
+  },
+  /** 只读状态 */
+  readonly: {
+    type: null,
+    value: undefined,
   },
   /** 选中值 */
   value: {

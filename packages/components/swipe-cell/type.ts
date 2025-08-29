@@ -34,14 +34,6 @@ export interface TdSwipeCellProps {
     type: ArrayConstructor;
     value?: Array<SwipeActionItem>;
   };
-  /**
-   * 自定义组件样式
-   * @default ''
-   */
-  style?: {
-    type: StringConstructor;
-    value?: string;
-  };
 }
 
 export interface SwipeActionItem {

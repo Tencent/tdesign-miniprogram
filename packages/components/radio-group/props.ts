@@ -26,7 +26,7 @@ const props: TdRadioGroupProps = {
     type: null,
     value: 'circle',
   },
-  /** 用来定义 value / label 在 `options` 中对应的字段别名 */
+  /** 用来定义 value / label / disabled 在 `options` 中对应的字段别名 */
   keys: {
     type: Object,
   },

@@ -15,10 +15,6 @@ const props: TdTabsProps = {
     type: String,
     value: 'fixed',
   },
-  /** 组件类名，分别用于设置 组件外层元素、选项卡单项、选项卡激活态、滚动条样式类名 等类名 */
-  externalClasses: {
-    type: Array,
-  },
   /** 是否展示底部激活线条 */
   showBottomLine: {
     type: Boolean,

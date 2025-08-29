@@ -16,21 +16,7 @@ export interface TdDropdownItemProps {
     value?: boolean;
   };
   /**
-   * 组件类名，分别用于设置 组件外层类名、菜单列、菜单列选项、菜单列选项标签、树形菜单、树形菜单列等类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: [
-      't-class',
-      't-class-content',
-      't-class-column',
-      't-class-column-item',
-      't-class-column-item-label',
-      't-class-footer',
-    ];
-  };
-  /**
-   * 用来定义 value / label 在 `options` 中对应的字段别名
+   * 用来定义 value / label / disabled 在 `options` 中对应的字段别名
    */
   keys?: {
     type: ObjectConstructor;

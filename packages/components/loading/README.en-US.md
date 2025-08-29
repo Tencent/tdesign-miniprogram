@@ -11,7 +11,7 @@ custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on v
 delay | Number | 0 | \- | N
 duration | Number | 800 | \- | N
 fullscreen | Boolean | false | `1.8.5` | N
-indicator | Boolean / Slot | true | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+indicator | Boolean / Slot | true | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 inherit-color | Boolean | false | \- | N
 layout | String | horizontal | options: horizontal/vertical | N
 loading | Boolean | true | \- | N
@@ -19,7 +19,7 @@ pause | Boolean | false | \- | N
 progress | Number | - | \- | N
 reverse | Boolean | - | \- | N
 size | String | '20px' | \- | N
-text | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+text | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 theme | String | circular | options: circular/spinner/dots | N
 
 ### Loading External Classes
@@ -40,4 +40,4 @@ Name | Default Value | Description
 --td-loading-text-color | @text-color-primary | - 
 --td-loading-text-font-size | 24rpx | - 
 --td-loading-text-line-height | 40rpx | - 
---td-loading-z-index | 3500 | - 
+--td-loading-z-index | 3500 | -

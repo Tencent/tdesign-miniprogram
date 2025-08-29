@@ -41,7 +41,7 @@ export interface TdAvatarProps {
     value?: boolean;
   };
   /**
-   * 图标。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`。
+   * 图标。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon`
    */
   icon?: {
     type: null;

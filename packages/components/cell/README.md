@@ -56,22 +56,22 @@ custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场�
 align | String | middle | 右侧内容的对齐方式，默认居中对齐。可选项：top/middle/bottom | N
 arrow | Boolean / Object | false | 是否显示右侧箭头 | N
 bordered | Boolean | true | 是否显示下边框 | N
-description | String / Slot | - | 下方内容描述。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+description | String / Slot | - | 下方内容描述。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 hover | Boolean | - | 是否开启点击反馈 | N
-image | String / Slot | - | 主图。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+image | String / Slot | - | 主图。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 jump-type | String | navigateTo | 链接跳转类型。可选项：switchTab/reLaunch/redirectTo/navigateTo | N
-left-icon | String / Object / Slot | - | 左侧图标，出现在单元格标题的左侧。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
-note | String / Slot | - | 和标题同行的说明文字。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+left-icon | String / Object / Slot | - | 左侧图标，出现在单元格标题的左侧。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+note | String / Slot | - | 和标题同行的说明文字。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 required | Boolean | false | 是否显示表单必填星号 | N
-right-icon | String / Object / Slot | - | 最右侧图标。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
-title | String / Slot | - | 标题。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+right-icon | String / Object / Slot | - | 最右侧图标。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+title | String / Slot | - | 标题。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 url | String | - | 点击后跳转链接地址。如果值为空，则表示不需要跳转 | N
 
 ### Cell Events
 
 名称 | 参数 | 描述
 -- | -- | --
-click | - | 右侧内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts)
+click | - | 右侧内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)
 
 ### Cell External Classes
 
@@ -142,4 +142,4 @@ t-class-title | 标题样式类
 --td-cell-right-icon-font-size | 48rpx | - 
 --td-cell-title-color | @text-color-primary | - 
 --td-cell-title-font-size | @font-size-m | - 
---td-cell-vertical-padding | 32rpx | - 
+--td-cell-vertical-padding | 32rpx | -

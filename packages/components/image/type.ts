@@ -67,7 +67,7 @@ export interface TdImageProps {
     value?: 'circle' | 'round' | 'square';
   };
   /**
-   * 长按图片显示发送给朋友、收藏、保存图片、搜一搜、打开名片/前往群聊/打开小程序（若图片中包含对应二维码或小程序码）的菜单。
+   * 长按图片显示发送给朋友、收藏、保存图片、搜一搜、打开名片/前往群聊/打开小程序（若图片中包含对应二维码或小程序码）的菜单
    * @default false
    */
   showMenuByLongpress?: {

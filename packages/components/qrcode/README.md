@@ -82,8 +82,8 @@ icon | String | - | 二维码中图片的地址 | N
 icon-size | Number / Object | 40 | 二维码中图片的大小。TS 类型：`number \| { width: number; height: number }` | N
 level | String | M | 二维码纠错等级。可选项：L/M/Q/H | N
 size | Number | 160 | 二维码大小 | N
-status | String | active | 二维码状态。可选项：active/expired/loading/scanned。TS 类型：`QRStatus` `type QRStatus = "active" \| "expired" \| "loading" \| "scanned"`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/qrcode/type.ts) | N
-status-render | Slot | - | 自定义状态渲染器。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/qrcode/type.ts) | N
+status | String | active | 二维码状态。可选项：active/expired/loading/scanned。TS 类型：`QRStatus` `type QRStatus = "active" \| "expired" \| "loading" \| "scanned"`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/qrcode/type.ts) | N
+status-render | Slot | - | 自定义状态渲染器。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/qrcode/type.ts) | N
 value | String | - | 扫描后的文本 | N
 
 ### QRCode Events
@@ -92,13 +92,6 @@ value | String | - | 扫描后的文本 | N
 -- | -- | --
 refresh | \- | 点击"点击刷新"的回调
 
-
-### Progress External Classes
-
-类名 | 描述
--- | --
-t-class | 根节点样式类
-
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
@@ -106,4 +99,4 @@ t-class | 根节点样式类
 -- | -- | --
 --td-font-size-title-small | --td-font-size-title-small | - 
 --td-brand-color-hover | --td-brand-color-hover | - 
---td-success-color | --td-success-color | - 
+--td-success-color | --td-success-color | -

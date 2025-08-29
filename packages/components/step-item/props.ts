@@ -11,6 +11,10 @@ const props: TdStepItemProps = {
     type: String,
     value: '',
   },
+  /** 步骤条自定义内容 */
+  extra: {
+    type: String,
+  },
   /** 图标。传入 slot 代表使用插槽，其他字符串代表使用内置图标 */
   icon: {
     type: String,

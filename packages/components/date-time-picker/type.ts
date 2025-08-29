@@ -109,10 +109,11 @@ export interface TdDateTimePickerProps {
   };
   /**
    * 时间间隔步数，示例：`{ minute: 5 }`
+   * @default {}
    */
   steps?: {
     type: ObjectConstructor;
-    value?: object;
+    value?: { [key in TimeModeValues]?: number };
   };
   /**
    * 标题

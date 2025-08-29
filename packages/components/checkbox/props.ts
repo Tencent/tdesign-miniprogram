@@ -13,8 +13,8 @@ const props: TdCheckboxProps = {
   },
   /** 是否开启无边框模式 */
   borderless: {
-    type: Boolean,
-    value: false,
+    type: null,
+    value: undefined,
   },
   /** 用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用 */
   checkAll: {
@@ -80,8 +80,8 @@ const props: TdCheckboxProps = {
   },
   /** 只读状态 */
   readonly: {
-    type: Boolean,
-    value: false,
+    type: null,
+    value: undefined,
   },
   /** 多选框的值 */
   value: {

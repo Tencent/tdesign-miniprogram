@@ -8,11 +8,12 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
-description | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+description | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 icon | String / Boolean / Object | true | \- | N
-image | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+image | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 theme | String | default | options: default/success/warning/error | N
-title | String / Slot | '' | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+title | String / Slot | '' | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+
 ### Result External Classes
 
 className | Description
@@ -38,4 +39,4 @@ Name | Default Value | Description
 --td-result-title-color | @text-color-primary | - 
 --td-result-title-font-size | @font-size-xl | - 
 --td-result-title-line-height | 56rpx | - 
---td-result-title-margin-top | @spacer-1 | - 
+--td-result-title-margin-top | @spacer-1 | -

@@ -66,7 +66,7 @@ hide-counter | Boolean | false | 是否隐藏计数 | N
 hide-skip | Boolean | false | 是否隐藏跳过按钮 | N
 highlight-padding | Number | 16 | 高亮框的内边距，单位rpx | N
 mode | String | popover | 引导框的类型。可选项：popover/dialog | N
-next-button-props | Object | - | 透传 下一步按钮 的全部属性，示例：{ content: '下一步', theme: 'primary' }。TS 类型：`ButtonProps`，[Button API Documents](./button?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/guide/type.ts) | N
+next-button-props | Object | - | 透传 下一步按钮 的全部属性，示例：{ content: '下一步', theme: 'primary' }。TS 类型：`ButtonProps`，[Button API Documents](./button?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/guide/type.ts) | N
 show-overlay | Boolean | true | 是否出现遮罩层 | N
 skip-button-props | Object | - | 透传 跳过按钮 的全部属性，{ content: '跳过', theme: 'default' }。TS 类型：`ButtonProps` | N
 steps | Array | - | 用于定义每个步骤的内容，包括高亮的节点、相对位置和具体的文案内容等。TS 类型：`Array<GuideStep>` | N
@@ -105,13 +105,13 @@ t-class-tooltip | 高亮框提示内容区域样式类
 -- | -- | -- | -- | --
 back-button-props | Object | - | 用于自定义当前引导框的返回按钮的内容。TS 类型：`ButtonProps` | N
 body | String | - | 当前步骤提示框的内容，支持插槽：slot="body-{{index}}" (1、当要显示body-{{index}}插槽时，请将body设置为空；2、当要显示content-{{index}}插槽完全自定义内容时，请将body和title都设置为空) | N
-element | Function | - | 必需。高亮的节点。示例： `() => new Promise((resolve) => this.createSelectorQuery().select('#tdesign').boundingClientRect((rect) => resolve(rect)).exec())`。TS 类型：`StepElement` `type StepElement = () => Promise<WechatMiniprogram.BoundingClientRectCallbackResult>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/guide/type.ts) | Y
+element | Function | - | 必需。高亮的节点。示例： `() => new Promise((resolve) => this.createSelectorQuery().select('#tdesign').boundingClientRect((rect) => resolve(rect)).exec())`。TS 类型：`StepElement` `type StepElement = () => Promise<WechatMiniprogram.BoundingClientRectCallbackResult>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/guide/type.ts) | Y
 finish-button-props | Object | - | 透传 完成 的全部属性，示例：`{ content: '完成', theme: 'primary' }`。TS 类型：`ButtonProps` | N
 highlight-padding | Number | - | 高亮框的内边距，单位rpx | N
 mode | String | - | 引导框的类型。可选项：popover/dialog | N
 next-button-props | Object | - | 用于自定义当前引导框的下一步按钮的内容。TS 类型：`ButtonProps` | N
 offset | Array | - | 相对于 placement 的偏移量[left, top]，默认单位rpx，示例：[-10, 20] 或 ['10px', '8px'] 或 ['20rpx', '16rpx'] (仅当 `mode` 为 `popover` 时生效)。TS 类型：`Array<string \| number>` | N
-placement | String | 'top' | 引导框相对于高亮元素出现的位置，(仅当 `mode` 为 `popover` 时生效)。TS 类型：`StepPopoverPlacement ` `type StepPopoverPlacement = 'top'\|'left'\|'right'\|'bottom'\|'top-left'\|'top-right'\|'bottom-left'\|'bottom-right'\|'left-top'\|'left-bottom'\|'right-top'\|'right-bottom'\|'center'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/guide/type.ts) | N
+placement | String | 'top' | 引导框相对于高亮元素出现的位置，(仅当 `mode` 为 `popover` 时生效)。TS 类型：`StepPopoverPlacement ` `type StepPopoverPlacement = 'top'\|'left'\|'right'\|'bottom'\|'top-left'\|'top-right'\|'bottom-left'\|'bottom-right'\|'left-top'\|'left-bottom'\|'right-top'\|'right-bottom'\|'center'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/guide/type.ts) | N
 show-overlay | Boolean | true | 是否出现遮罩层 | N
 skip-button-props | Object | - | 用于自定义当前步骤引导框的跳过按钮的内容。TS 类型：`ButtonProps` | N
 title | String | - | 当前步骤的标题内容，支持插槽：slot="title-{{index}}" (1、当要显示body-{{index}}插槽时，请将title设置为空；2、当要显示content-{{index}}插槽完全自定义内容时，请将body和title都设置为空) | N
@@ -155,4 +155,4 @@ title | String | - | 当前步骤的标题内容，支持插槽：slot="title-{{
 --td-guide-reference-border-radius | @radius-default | - 
 --td-guide-reference-mask-color | @font-gray-2 | - 
 --td-guide-title-color | @text-color-primary | - 
---td-guide-title-font-weight | 600 | - 
+--td-guide-title-font-weight | 600 | -

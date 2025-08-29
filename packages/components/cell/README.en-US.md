@@ -11,22 +11,22 @@ custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on v
 align | String | middle | options: top/middle/bottom | N
 arrow | Boolean / Object | false | \- | N
 bordered | Boolean | true | \- | N
-description | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+description | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 hover | Boolean | - | \- | N
-image | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+image | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 jump-type | String | navigateTo | options: switchTab/reLaunch/redirectTo/navigateTo | N
-left-icon | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
-note | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+left-icon | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+note | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 required | Boolean | false | \- | N
-right-icon | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
-title | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+right-icon | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+title | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 url | String | - | \- | N
 
 ### Cell Events
 
 name | params | description
 -- | -- | --
-click | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts)
+click | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)
 
 ### Cell External Classes
 
@@ -97,4 +97,4 @@ Name | Default Value | Description
 --td-cell-right-icon-font-size | 48rpx | - 
 --td-cell-title-color | @text-color-primary | - 
 --td-cell-title-font-size | @font-size-m | - 
---td-cell-vertical-padding | 32rpx | - 
+--td-cell-vertical-padding | 32rpx | -

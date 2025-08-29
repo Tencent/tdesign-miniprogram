@@ -97,6 +97,7 @@ variant | String | outline | 已废弃。形状类型，有描边类型和填充
 名称 | 参数 | 描述
 -- | -- | --
 change | `(value: number)` | 评分数改变时触发
+
 ### Rate External Classes
 
 类名 | 描述
@@ -116,4 +117,4 @@ t-class-text | 文本样式类
 --td-rate-text-active-font-weight | 600 | - 
 --td-rate-text-color | @text-color-disabled | - 
 --td-rate-text-font-size | @font-size-m | - 
---td-rate-unselected-color | @component-border | - 
+--td-rate-unselected-color | @component-border | -

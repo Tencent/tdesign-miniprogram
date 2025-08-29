@@ -38,13 +38,6 @@ export interface TdBadgeProps {
     value?: boolean;
   };
   /**
-   * 组件类名，分别用于设置外层元素、默认内容、右上角内容等元素类名
-   */
-  externalClasses?: {
-    type: ArrayConstructor;
-    value?: ['t-class', 't-class-content', 't-class-count'];
-  };
-  /**
    * 封顶的数字值
    * @default 99
    */

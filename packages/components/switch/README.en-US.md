@@ -14,8 +14,8 @@ icon | Array | [] | `0.27.0`。Typescript：`string[]` | N
 label | Array | [] | `0.27.0`。Typescript：`string[]` | N
 loading | Boolean | false | `0.27.0` | N
 size | String | medium | `0.27.0`。options: small/medium/large | N
-value | String / Number / Boolean | null | Typescript：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/switch/type.ts) | N
-default-value | String / Number / Boolean | undefined | uncontrolled property。Typescript：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/switch/type.ts) | N
+value | String / Number / Boolean | null | Typescript：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/switch/type.ts) | N
+default-value | String / Number / Boolean | undefined | uncontrolled property。Typescript：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/switch/type.ts) | N
 
 ### Switch Events
 
@@ -59,4 +59,4 @@ Name | Default Value | Description
 --td-switch-small-width | 78rpx | - 
 --td-switch-unchecked-color | @bg-color-secondarycontainer-active | - 
 --td-switch-unchecked-disabled-color | @bg-color-component-disabled | - 
---td-switch-width | 90rpx | - 
+--td-switch-width | 90rpx | -

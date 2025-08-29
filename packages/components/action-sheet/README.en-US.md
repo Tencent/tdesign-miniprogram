@@ -12,8 +12,8 @@ align | String | center | `0.29.0`。options: center/left | N
 cancel-text | String | - | \- | N
 count | Number | 8 | \- | N
 description | String | - | `0.29.0` | N
-items | Array | - | required。Typescript：`Array<string \| ActionSheetItem>` `interface ActionSheetItem { label: string; color?: string; disabled?: boolean; icon?: string; suffixIcon?: string }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/action-sheet/type.ts) | Y
-popup-props | Object | {} | Typescript：`PopupProps`，[Popup API Documents](./popup?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/action-sheet/type.ts) | N
+items | Array | - | required。Typescript：`Array<string \| ActionSheetItem>` `interface ActionSheetItem { label: string; color?: string; disabled?: boolean; icon?: string; suffixIcon?: string }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/action-sheet/type.ts) | Y
+popup-props | Object | {} | Typescript：`PopupProps`，[Popup API Documents](./popup?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/action-sheet/type.ts) | N
 show-cancel | Boolean | true | \- | N
 show-overlay | Boolean | true | \- | N
 theme | String | list | options: list/grid | N
@@ -26,7 +26,7 @@ default-visible | Boolean | undefined | uncontrolled property | N
 name | params | description
 -- | -- | --
 cancel | \- | \-
-close | `(trigger: ActionSheetTriggerSource)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/action-sheet/type.ts)。<br/>`type ActionSheetTriggerSource = 'overlay' \| 'command' \| 'select' `<br/>
+close | `(trigger: ActionSheetTriggerSource)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/action-sheet/type.ts)。<br/>`type ActionSheetTriggerSource = 'overlay' \| 'command' \| 'select' `<br/>
 selected | `(selected: ActionSheetItem \| string, index: number)` | \-
 
 ### ActionSheet External Classes
@@ -51,4 +51,4 @@ Name | Default Value | Description
 --td-action-sheet-gap-color | @bg-color-page | - 
 --td-action-sheet-list-item-disabled-color | @text-color-disabled | - 
 --td-action-sheet-list-item-height | 112rpx | - 
---td-action-sheet-text-align | center | - 
+--td-action-sheet-text-align | center | -

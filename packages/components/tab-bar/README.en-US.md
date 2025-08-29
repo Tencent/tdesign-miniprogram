@@ -22,6 +22,7 @@ default-value | String / Number / Array | undefined | uncontrolled property。Ty
 name | params | description
 -- | -- | --
 change | `(value: string \| number)` | \-
+
 ### TabBar External Classes
 
 className | Description
@@ -35,9 +36,9 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
-badge-props | Object | - | Typescript：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-bar-item/type.ts) | N
-icon | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
-sub-tab-bar | Array | - | Typescript：`SubTabBarItem[] ` `interface SubTabBarItem { value: string; label: string }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/tab-bar-item/type.ts) | N
+badge-props | Object | - | Typescript：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/tab-bar-item/type.ts) | N
+icon | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+sub-tab-bar | Array | - | Typescript：`SubTabBarItem[] ` `interface SubTabBarItem { value: string; label: string }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/tab-bar-item/type.ts) | N
 value | String / Number | - | \- | N
 
 ### CSS Variables
@@ -56,4 +57,4 @@ Name | Default Value | Description
 --td-tab-bar-height | 80rpx | - 
 --td-tab-bar-hover-bg-color | rgba(0, 0, 0, 0.05) | - 
 --td-tab-bar-spread-border-color | @border-color | - 
---td-tab-bar-spread-shadow | @shadow-3 | - 
+--td-tab-bar-spread-shadow | @shadow-3 | -

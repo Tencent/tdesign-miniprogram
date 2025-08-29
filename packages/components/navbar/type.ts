@@ -38,6 +38,14 @@ export interface TdNavbarProps {
     value?: boolean;
   };
   /**
+   * 是否开启顶部安全区适配
+   * @default true
+   */
+  safeAreaInsetTop?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 页面标题
    */
   title?: {

@@ -28,6 +28,7 @@ variant | String | outline | options: outline/filled | N
 name | params | description
 -- | -- | --
 change | `(value: number)` | \-
+
 ### Rate External Classes
 
 className | Description
@@ -47,4 +48,4 @@ Name | Default Value | Description
 --td-rate-text-active-font-weight | 600 | - 
 --td-rate-text-color | @text-color-disabled | - 
 --td-rate-text-font-size | @font-size-m | - 
---td-rate-unselected-color | @component-border | - 
+--td-rate-unselected-color | @component-border | -

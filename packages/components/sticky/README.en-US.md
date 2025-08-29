@@ -17,7 +17,8 @@ z-index | Number | 99 | \- | N
 
 name | params | description
 -- | -- | --
-scroll | `(detail: { scrollTop: number, isFixed: boolean })` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts)
+scroll | `(detail: { scrollTop: number, isFixed: boolean })` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)
+
 ### Sticky External Classes
 
 className | Description

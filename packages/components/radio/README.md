@@ -66,17 +66,17 @@ allow-uncheck | Boolean | false | 是否允许取消选中 | N
 block | Boolean | true | 是否为块级元素 | N
 checked | Boolean | false | 是否选中 | N
 default-checked | Boolean | undefined | 是否选中。非受控属性 | N
-content | String / Slot | - | 单选内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+content | String / Slot | - | 单选内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 content-disabled | Boolean | false | 是否禁用组件内容（content）触发选中 | N
 disabled | Boolean | undefined | 是否为禁用态 | N
 icon | String / Array / Slot | 'circle' | 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 circle 表示填充型图标、值为 line 表示描边型图标、值为 dot 表示圆点图标，值为 slot 时使用插槽。TS 类型：`'circle' \| 'line' \| 'dot' \| Array<string>` | N
-label | String / Slot | - | 主文案。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+label | String / Slot | - | 主文案。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 max-content-row | Number | 5 | 内容最大行数限制 | N
 max-label-row | Number | 3 | 主文案最大行数限制 | N
 name | String | - | HTML 元素原生属性 | N
 placement | String | - | 复选框和内容相对位置。优先级高于 RadioGroup.placement。Radio 单独存在时，默认值为 left。如果父组件存在 RadioGroup，默认值便由 RadioGroup.placement 决定。可选项：left/right | N
 readonly | Boolean | undefined | `1.8.6`。只读状态 | N
-value | String / Number / Boolean | false | 单选按钮的值。TS 类型：`T` `type RadioValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/radio/type.ts) | N
+value | String / Number / Boolean | false | 单选按钮的值。TS 类型：`T` `type RadioValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/radio/type.ts) | N
 
 ### Radio Events
 
@@ -94,6 +94,7 @@ t-class-content | 内容样式类
 t-class-icon | 图标样式类
 t-class-label | 标签样式类
 
+
 ### RadioGroup Props
 
 名称 | 类型 | 默认值 | 描述 | 必传
@@ -104,13 +105,13 @@ allow-uncheck | Boolean | false | 是否允许取消选中 | N
 borderless | Boolean | false | 是否开启无边框模式 | N
 disabled | Boolean | undefined | 是否禁用全部子单选框 | N
 icon | String / Array | 'circle' | 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。使用 String 时，值为 circle 表示填充型图标、值为 line 表示描边型图标、值为 dot 表示圆点图标；仅在使用 options 时生效。TS 类型：`'circle' \| 'line' \| 'dot' \| Array<string>` | N
-keys | Object | - | 用来定义 value / label 在 `options` 中对应的字段别名。TS 类型：`KeysType`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+keys | Object | - | 用来定义 value / label / disabled 在 `options` 中对应的字段别名。TS 类型：`KeysType`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 name | String | - | HTML 元素原生属性 | N
-options | Array | - | 单选组件按钮形式。RadioOption 数据类型为 string 或 number 时，表示 label 和 value 值相同。TS 类型：`Array<RadioOption>` `type RadioOption = string \| number \| RadioOptionObj` `interface RadioOptionObj { label?: string; value?: string \| number; readonly?: boolean; disabled?: boolean; allowUncheck?: boolean; }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/radio-group/type.ts) | N
+options | Array | - | 单选组件按钮形式。RadioOption 数据类型为 string 或 number 时，表示 label 和 value 值相同。TS 类型：`Array<RadioOption>` `type RadioOption = string \| number \| RadioOptionObj` `interface RadioOptionObj { label?: string; value?: string \| number; readonly?: boolean; disabled?: boolean; allowUncheck?: boolean; }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/radio-group/type.ts) | N
 placement | String | left | 复选框和内容相对位置。优先级低于 Radio.placement。可选项：left/right | N
 readonly | Boolean | undefined | `1.8.6`。只读状态 | N
-value | String / Number / Boolean | - | 选中的值。TS 类型：`T` `type RadioValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/radio-group/type.ts) | N
-default-value | String / Number / Boolean | undefined | 选中的值。非受控属性。TS 类型：`T` `type RadioValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/src/radio-group/type.ts) | N
+value | String / Number / Boolean | - | 选中的值。TS 类型：`T` `type RadioValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/radio-group/type.ts) | N
+default-value | String / Number / Boolean | undefined | 选中的值。非受控属性。TS 类型：`T` `type RadioValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/radio-group/type.ts) | N
 
 ### RadioGroup Events
 
@@ -140,4 +141,4 @@ change | `(value: RadioValue)` | 选中值发生变化时触发
 --td-radio-label-color | @text-color-primary | - 
 --td-radio-label-disabled-color | @text-color-disabled | - 
 --td-radio-label-line-height | 48rpx | - 
---td-radio-vertical-padding | 32rpx | - 
+--td-radio-vertical-padding | 32rpx | -

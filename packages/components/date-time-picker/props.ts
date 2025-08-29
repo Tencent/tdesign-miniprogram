@@ -70,6 +70,7 @@ const props: TdDateTimePickerProps = {
   /** 时间间隔步数，示例：`{ minute: 5 }` */
   steps: {
     type: Object,
+    value: {},
   },
   /** 标题 */
   title: {

@@ -55,7 +55,7 @@ isComponent: true
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
-action | String / Slot | '' | 自定义右侧操作按钮文字。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+action | String / Slot | '' | 自定义右侧操作按钮文字。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 adjust-position | Boolean | true | 键盘弹起时，是否自动上推页面 | N
 always-embed | Boolean | false | 强制 input 处于同层状态，默认 focus 时 input 会切到非同层状态 (仅在 iOS 下生效) | N
 center | Boolean | false | 是否居中 | N
@@ -69,7 +69,7 @@ disabled | Boolean | false | 是否禁用 | N
 focus | Boolean | false | 是否聚焦 | N
 hold-keyboard | Boolean | false | focus时，点击页面的时候不收起键盘 | N
 label | String | '' | 已废弃。左侧文本 | N
-left-icon | String / Slot | 'search' | 左侧图标。如果需要使用 `Slot` 进行自定义，必须将该值设置为假值。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+left-icon | String / Slot | 'search' | 左侧图标。如果需要使用 `Slot` 进行自定义，必须将该值设置为假值。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 maxcharacter | Number | - | 用户最多可以输入的字符个数，一个中文汉字表示两个字符长度。`maxcharacter` 和 `maxlength` 二选一使用 | N
 maxlength | Number | -1 | 用户最多可以输入的文本长度，一个中文等于一个计数长度。默认为 -1，不限制输入长度。`maxcharacter` 和 `maxlength` 二选一使用 | N
 placeholder | String | '' | 占位符 | N
@@ -77,7 +77,7 @@ placeholder-class | String | input-placeholder | 指定 placeholder 的样式类
 placeholder-style | String | - | 必需。指定 placeholder 的样式 | Y
 readonly | Boolean | undefined | 只读状态 | N
 result-list | Array | [] | 预览结果列表。TS 类型：`Array<string>` | N
-right-icon | String / Slot | 'close-circle-filled' | 已废弃。右侧图标。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+right-icon | String / Slot | 'close-circle-filled' | 已废弃。右侧图标。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 selection-end | Number | -1 | 光标结束位置，自动聚集时有效，需与 selection-start 搭配使用 | N
 selection-start | Number | -1 | 光标起始位置，自动聚集时有效，需与 selection-end 搭配使用 | N
 shape | String | 'square' | 搜索框形状。可选项：square/round | N
@@ -125,4 +125,4 @@ t-class-left | 左侧图标样式类
 --td-search-placeholder-color | @text-color-placeholder | - 
 --td-search-result-high-light-color | @brand-color | - 
 --td-search-square-radius | @radius-default | - 
---td-search-text-color | @text-color-primary | - 
+--td-search-text-color | @text-color-primary | -

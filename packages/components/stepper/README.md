@@ -65,7 +65,7 @@ input-width | Number | - | 输入框宽度，默认单位 `px` | N
 integer | Boolean | true | 是否整型 | N
 max | Number | 100 | 最大值 | N
 min | Number | 0 | 最小值 | N
-size | String | medium | 组件尺寸。可选项：small/medium/large。TS 类型：`SizeEnum`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+size | String | medium | 组件尺寸。可选项：small/medium/large。TS 类型：`SizeEnum`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 step | Number | 1 | 步长 | N
 theme | String | normal | 组件风格。可选项：normal/filled/outline | N
 value | String / Number | 0 | 值 | N
@@ -98,4 +98,4 @@ t-class-plus | 右侧递增号样式类
 --td-stepper-input-disabled-color | @text-color-disabled | - 
 --td-stepper-border-color | @component-border | - 
 --td-stepper-border-radius | @radius-small | - 
---td-stepper-input-color | @text-color-primary | - 
+--td-stepper-input-color | @text-color-primary | -

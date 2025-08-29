@@ -32,15 +32,15 @@ export interface TdColorPickerProps {
     value?: boolean;
   };
   /**
-   * 格式化色值。`enableAlpha` 为真时，`RGBA/HSLA/HSVA` 等值有效
+   * 格式化色值。`enableAlpha` 为真时，`HEX8/RGBA/HSLA/HSVA` 有效
    * @default RGB
    */
   format?: {
     type: StringConstructor;
-    value?: 'RGB' | 'RGBA' | 'HSL' | 'HSLA' | 'HSB' | 'HSV' | 'HSVA' | 'HEX' | 'CMYK' | 'CSS';
+    value?: 'HEX' | 'HEX8' | 'RGB' | 'RGBA' | 'HSL' | 'HSLA' | 'HSV' | 'HSVA' | 'CMYK' | 'CSS';
   };
   /**
-   * popupProps透传
+   * 透传 Popup 组件全部属性
    * @default {}
    */
   popupProps?: {
@@ -52,7 +52,7 @@ export interface TdColorPickerProps {
    */
   swatchColors?: {
     type: ArrayConstructor;
-    value?: Array<string> | null;
+    value?: Array<string> | null | undefined;
   };
   /**
    * 颜色选择器类型。（base 表示仅展示系统预设内容; multiple 表示展示色板和系统预设内容

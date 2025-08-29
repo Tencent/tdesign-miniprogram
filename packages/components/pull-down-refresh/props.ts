@@ -21,10 +21,6 @@ const props: TdPullDownRefreshProps = {
     type: Boolean,
     value: false,
   },
-  /** 加载loading样式 */
-  externalClasses: {
-    type: Array,
-  },
   /** 加载中下拉高度，如果值为数字则单位是：'px' */
   loadingBarHeight: {
     type: null,
@@ -63,6 +59,11 @@ const props: TdPullDownRefreshProps = {
   showScrollbar: {
     type: Boolean,
     value: true,
+  },
+  /** 刷新成功提示展示时长，单位 'ms' */
+  successDuration: {
+    type: null,
+    value: 500,
   },
   /** 距顶部/左边多远时，触发 scrolltoupper 事件 */
   upperThreshold: {

@@ -21,11 +21,6 @@ const props: TdBackTopProps = {
     type: Number,
     value: 0,
   },
-  /** 自定义组件样式 */
-  style: {
-    type: String,
-    value: '',
-  },
   /** 文案 */
   text: {
     type: String,
