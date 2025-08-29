@@ -4,7 +4,7 @@ const os = require('os');
 
 const specify = process.argv[2];
 
-const data = require('../packages/test/unit/coverage/coverage-summary.json');
+const data = require('../test/unit/coverage/coverage-summary.json');
 
 const ans = new Map();
 
