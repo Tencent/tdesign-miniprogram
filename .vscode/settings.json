@@ -1,4 +1,14 @@
 {
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    ".gitignore": ".git*",
+    ".prettierrc.yml": ".prettier*, .eslint*, .editorconfig",
+    "README.md": "*.md, LICENSE",
+    "tsconfig.json": "tsconfig.*.json, *.d.ts",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, .npm*",
+    "babel.config.js": "*.config.js"
+  },
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.tslint": "explicit",
