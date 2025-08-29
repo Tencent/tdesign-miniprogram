@@ -19,7 +19,7 @@
     "@tdesign/site-components": "^0.17.0",
     "@types/prismjs": "^1.26.5",
     "@vitejs/plugin-vue": "^5.2.4",
-    "@vitejs/plugin-vue-jsx": "^4.2.0",
+    "@vitejs/plugin-vue-jsx": "^5.1.1",
     "gray-matter": "^4.0.3",
     "prismjs": "^1.24.1",
     "tdesign-icons-view": "^0.3.6",
