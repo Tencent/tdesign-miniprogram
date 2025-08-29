@@ -15,6 +15,9 @@
   <a href="https://www.npmjs.com/package/tdesign-miniprogram">
     <img src="https://img.shields.io/npm/dm/tdesign-miniprogram" alt="Downloads">
   </a>
+   <a href="https://pkg.pr.new/~/Tencent/tdesign-miniprogram">
+    <img src="https://pkg.pr.new/badge/Tencent/tdesign-miniprogram?style=flat&color=000&logoSize=auto" alt="Downloads">
+  </a>
   <a href="https://deepwiki.com/Tencent/tdesign-miniprogram">
     <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki">
   </a>
