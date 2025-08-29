@@ -104,6 +104,13 @@ export default class Input extends SuperComponent {
       this.triggerEvent('change', { value: this.data.value, cursor, keyCode });
     },
 
+    onChange(e) {
+      if (this.properties.type !== 'nickname') return;
+      const { value } = e.detail;
+      this.updateValue(value);
+      this.triggerEvent('change', { value: this.data.value });
+    },
+
     onFocus(e) {
       this.updateClearIconVisible(true);
       this.triggerEvent('focus', e.detail);
