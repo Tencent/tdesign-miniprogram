@@ -89,7 +89,7 @@
     "gulp-typescript": "^6.0.0-alpha.1",
     "husky": "^7.0.4",
     "less": "^4.1.1",
-    "lint-staged": "^10.0.0-1",
+    "lint-staged": "^16.1.2",
     "lodash": "^4.17.21",
     "merge2": "^1.4.1",
     "miniprogram-api-typings": "^3.12.3",
