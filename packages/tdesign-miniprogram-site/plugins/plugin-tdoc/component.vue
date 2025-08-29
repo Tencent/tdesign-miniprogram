@@ -40,8 +40,6 @@ import Prismjs from 'prismjs';
 import 'prismjs/components/prism-bash.js';
 import 'prismjs/components/prism-json.js';
 
-const IS_DEV = import.meta.env.DEV;
-
 export default defineComponent({
   inject: ['info', 'demos'],
 
@@ -50,7 +48,7 @@ export default defineComponent({
       get() {
         return this.$route.query.tab || 'demo';
       },
-      set(v: string) {
+      set(v) {
         if (this.$route.query.tab !== v) {
           this.$router.push({ query: { tab: v } });
         }
@@ -62,16 +60,13 @@ export default defineComponent({
 
       return name.replace('layout', 'col');
     },
-    liveHost() {
-      return 'tdesign.tencent.com';
-    },
     liveUrl() {
       const componentName = this.name.split('-en')[0];
-      return `//${this.liveHost}/miniprogram/live/m2w/program/miniprogram/#!pages/${componentName}/${componentName}.html`;
+      return `//tdesign.tencent.com/miniprogram-live/m2w/program/miniprogram/#!pages/${componentName}/${componentName}.html`;
     },
     qrcode() {
       const componentName = this.name.split('-en')[0];
-      return `//${this.liveHost}/miniprogram/assets/qrcode/${componentName}.png`;
+      return `//tdesign.tencent.com/miniprogram/assets/qrcode/${componentName}.png`;
     },
   },
 
