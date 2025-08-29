@@ -228,8 +228,8 @@ export const docs = [
         component: () => import('@/cascader/README.md'),
       },
       {
-        title: 'CheckBox 多选框',
-        titleEn: 'CheckBox',
+        title: 'Checkbox 多选框',
+        titleEn: 'Checkbox',
         name: 'checkbox',
         meta: { docType: 'form' },
         path: '/miniprogram/components/checkbox',
