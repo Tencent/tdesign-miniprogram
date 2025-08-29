@@ -11,7 +11,7 @@ npm config set registry http://mirrors.tencent.com/npm/
 
 pnpm install
 
-pnpm i @tencent/m2w-tdesign -w
+pnpm add @tencent/m2w-tdesign -w
 
 # 执行 m2w-tdesign 命令
 npx m2w-tdesign build --navigationStyle custom --output ../_site/live --baseUrl /miniprogram/live
