@@ -1,0 +1,153 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress Progress base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="demo-desc"
+  >
+    基础进度条
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-progress
+      percentage="80"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    百分比内显
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-progress
+      percentage="80"
+      theme="plump"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    环形进度条
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-progress
+      percentage="30"
+      theme="circle"
+    />
+  </wx-view>
+  <wx-view
+    class="demo-desc"
+  >
+    微型环形进度条
+  </wx-view>
+  <wx-view
+    class="demo-wrapper"
+  >
+    <t-progress
+      label="{{false}}"
+      percentage="30"
+      size="micro"
+      theme="circle"
+    />
+  </wx-view>
+</base>
+`;
+
+exports[`Progress Progress circle demo works fine 1`] = `
+<circle>
+  <t-demo
+    desc="环形进度条"
+    padding="{{true}}"
+  >
+    <t-progress
+      percentage="30"
+      theme="circle"
+    />
+    <t-progress
+      percentage="30"
+      status="warning"
+      theme="circle"
+    />
+    <t-progress
+      percentage="30"
+      status="error"
+      theme="circle"
+    />
+    <t-progress
+      percentage="100"
+      status="success"
+      theme="circle"
+    />
+  </t-demo>
+</circle>
+`;
+
+exports[`Progress Progress line demo works fine 1`] = `
+<line>
+  <t-progress
+    percentage="80"
+  />
+  <t-progress
+    percentage="80"
+    status="warning"
+  />
+  <t-progress
+    percentage="80"
+    status="error"
+  />
+  <t-progress
+    percentage="80"
+    status="success"
+  />
+  <t-progress
+    color="{{
+      Object {
+        "from": "#0052D9",
+        "to": "#00A870",
+      }
+    }}"
+    percentage="80"
+    status="active"
+  />
+</line>
+`;
+
+exports[`Progress Progress plump demo works fine 1`] = `
+<plump>
+  <t-progress
+    percentage="80"
+    theme="plump"
+  />
+  <t-progress
+    percentage="80"
+    status="warning"
+    theme="plump"
+  />
+  <t-progress
+    percentage="80"
+    status="error"
+    theme="plump"
+  />
+  <t-progress
+    percentage="80"
+    status="success"
+    theme="plump"
+  />
+  <t-progress
+    color="{{
+      Object {
+        "from": "#0052D9",
+        "to": "#00A870",
+      }
+    }}"
+    percentage="80"
+    status="active"
+    theme="plump"
+  />
+</plump>
+`;
