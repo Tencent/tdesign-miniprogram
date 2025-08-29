@@ -11,7 +11,7 @@ const ans = new Map();
 Object.keys(data).forEach((fPath) => {
   const _fPath = os.platform() === 'win32' ? fPath.slice(2).replace(/\\/g, '/') : fPath;
   if (_fPath.startsWith('/')) {
-    const [, component] = /src\/([\w-]+)\//.exec(_fPath) ?? [];
+    const [, component] = /packages\/components\/([\w-]+)\//.exec(_fPath) ?? [];
 
     if (component) {
       if (!fPath.includes('/_example/')) {
@@ -68,7 +68,10 @@ ans.forEach((items, component) => {
   });
 
   if ((specify && component === specify) || !specify) {
-    const fPath = path.resolve(__dirname, `../src/${component}/README.md`);
+    const fPath = path.resolve(__dirname, `../packages/components/${component}/README.md`);
+
+    if (!fs.existsSync(fPath)) return;
+
     let readme = fs.readFileSync(fPath, { encoding: 'utf-8' });
 
     readme = readme.replace(/<span class="coverages-badge".+span>\n/g, '');

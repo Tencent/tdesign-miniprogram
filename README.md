@@ -15,6 +15,9 @@
   <a href="https://www.npmjs.com/package/tdesign-miniprogram">
     <img src="https://img.shields.io/npm/dm/tdesign-miniprogram" alt="Downloads">
   </a>
+   <a href="https://pkg.pr.new/~/Tencent/tdesign-miniprogram">
+    <img src="https://pkg.pr.new/badge/Tencent/tdesign-miniprogram?style=flat&color=000&logoSize=auto" alt="Downloads">
+  </a>
   <a href="https://deepwiki.com/Tencent/tdesign-miniprogram">
     <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki">
   </a>
@@ -82,7 +85,7 @@ npm run dev
 
 有任何问题，建议通过 [Github issues](https://github.com/Tencent/tdesign-miniprogram/issues) 反馈或扫码加入用户微信群。
 
-<img src="https://raw.githubusercontent.com/Tencent/tdesign/main/packages/components/src/images/groups/wx-group.png" width="200" />
+<img src="https://raw.githubusercontent.com/Tencent/tdesign/main/packages/site-components/src/images/groups/wx-group.png" width="200" />
 
 ## 开源协议
 

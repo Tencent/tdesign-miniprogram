@@ -2,7 +2,7 @@ const gulp = require('gulp');
 const base = require('./gulpfile.base');
 
 /* config */
-const src = 'src';
+const src = 'packages/components';
 const dist = 'miniprogram_dist';
 
 /* base tasks */
