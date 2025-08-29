@@ -17,6 +17,7 @@ export default class Swiper extends SuperComponent {
 
   options = {
     multipleSlots: true,
+    pureDataPattern: /^_/,
   };
 
   properties = props;
@@ -38,6 +39,7 @@ export default class Swiper extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
+    _source: '', // 触发源
   };
 
   lifetimes = {
@@ -71,11 +73,20 @@ export default class Swiper extends SuperComponent {
     onChange(e) {
       const { current, source } = e.detail;
 
+      if (!source) return;
+
       this.setData({
         navCurrent: current,
+        _source: source,
       });
 
       this.triggerEvent('change', { current, source });
+    },
+
+    onAnimationFinish(e: WechatMiniprogram.SwiperAnimationFinish) {
+      const { current, source } = e.detail;
+
+      this.triggerEvent('animationfinish', { current, source: source || this.data._source });
     },
 
     onNavBtnChange(e) {
@@ -99,6 +110,7 @@ export default class Swiper extends SuperComponent {
 
       this.setData({
         current: nextPos,
+        _source: source,
       });
       this.triggerEvent('change', { current: nextPos, source });
     },
