@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { chromium } from 'playwright';
 import { preview } from 'vite';
-import { docs } from '../site/site.config.mjs';
+import { docs } from '../packages/tdesign-miniprogram-site/site.config.mjs';
 
 const prefix = 'http://127.0.0.1:9999';
 const spiderPath = path.resolve('./_static_site');
@@ -24,7 +24,7 @@ function initPageList() {
 async function initPreviewServer() {
   const previewServer = await preview({
     preview: { port: 9999, open: false },
-    build: { outDir: './_site' },
+    build: { outDir: '../_site' },
   });
 
   previewServer.printUrls();
