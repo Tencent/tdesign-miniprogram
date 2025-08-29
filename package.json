@@ -1,6 +1,6 @@
 {
   "name": "tdesign-miniprogram",
-  "packageManager": "pnpm@9.9.0",
+  "packageManager": "pnpm@9.15.9",
   "purename": "tdesign",
   "version": "1.10.1",
   "description": "tdesign-miniprogram",
@@ -32,6 +32,7 @@
     "site:dev": "pnpm -C packages/tdesign-miniprogram-site site:dev",
     "site:intranet": "pnpm -C packages/tdesign-miniprogram-site site:intranet",
     "site:prerender": "pnpm -C packages/tdesign-miniprogram-site site:prerender",
+    "m2w": "sh ./script/m2w.sh",
     "cover": "pnpm -C test cover",
     "test": "pnpm -C test test",
     "test:snap-update": "pnpm -C test test:snap-update",
