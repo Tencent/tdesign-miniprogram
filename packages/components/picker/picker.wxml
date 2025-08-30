@@ -3,6 +3,7 @@
 <t-popup
   wx:if="{{usePopup}}"
   class="class"
+  close-on-overlay-click="{{autoClose}}"
   visible="{{visible}}"
   placement="bottom"
   using-custom-navbar="{{usingCustomNavbar || popupProps.usingCustomNavbar}}"
