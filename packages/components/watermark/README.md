@@ -1,4 +1,60 @@
-:: BASE_DOC ::
+---
+title: Watermark 水印
+description: 给页面的某个区域加上水印。
+spline: data
+isComponent: true
+---
+
+
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-0%25-red" /></span>
+## 引入
+
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
+
+```json
+"usingComponents": {
+  "t-watermark": "tdesign-miniprogram/watermark/watermark"
+}
+```
+
+## 代码演示
+
+<!-- <a href="https://developers.weixin.qq.com/s/l0azMimf7CSu" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+
+<blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
+<p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
+</blockquote> -->
+
+### 组件类型
+
+#### 文字水印
+
+{{ base }}
+
+#### 图片水印
+
+{{ image }}
+
+#### 图片灰阶水印
+
+{{ gray }}
+
+#### 多行图文水印
+
+{{ multi-line }}
+
+#### 多行图文灰阶水印
+
+{{ multi-line-gray }}
+
+#### 运动文字水印
+
+{{ move-text }}
+
+#### 运动图片水印
+
+{{ move-image }}
+
 
 ## API
 
