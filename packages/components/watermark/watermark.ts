@@ -31,12 +31,6 @@ export default class Watermark extends SuperComponent {
     },
   };
 
-  attached() {
-    wx.onThemeChange(() => {
-      this.renderWatermark();
-    });
-  }
-
   methods = {
     watermarkColor() {
       return appBaseInfo.theme === 'dark' ? 'rgba(238, 238, 238, 0.1)' : 'rgba(0, 0, 0, 0.1)';

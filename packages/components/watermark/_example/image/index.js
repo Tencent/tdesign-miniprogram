@@ -1,5 +1,5 @@
 Component({
   data: {
-    watermark: { url: 'https://tdesign.gtimg.com/site/logo-watermark.svg' },
+    watermark: { url: 'https://tdesign.gtimg.com/starter/brand-logo-light.png' },
   },
 });
