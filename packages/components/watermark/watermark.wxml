@@ -1,6 +1,6 @@
 <wxs module="_" src="../common/utils.wxs" />
 
-<view style="position: relative; overflow: hidden; width: 100%">
+<view class="{{classPrefix}} class {{prefix}}-class" style="{{_._style([style, customStyle])}}">
   <block wx:if="{{content}}">{{content}}</block>
   <slot name="content" />
   <slot />
