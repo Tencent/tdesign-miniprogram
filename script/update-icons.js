@@ -21,33 +21,39 @@ const saveFile = (filename, content) => {
 };
 
 const getIconCss = () => {
-  get(iconOnlinePath).then((e) => {
-    const regex = new RegExp(`\\.t-icon-(.*):before \\{\\s+content: "(.*)";`, 'g');
-    const icons = e.match(regex);
+  get(iconOnlinePath)
+    .then((e) => {
+      const regex = new RegExp(`\\.t-icon-(.*):before \\{\\s+content: "(.*)";`, 'g');
+      const icons = e.match(regex);
 
-    const iconList = icons.map((icon) => {
-      return { [icon.replace(regex, '$1')]: icon.replace(regex, '$2') };
+      const iconList = icons.map((icon) => {
+        return { [icon.replace(regex, '$1')]: icon.replace(regex, '$2') };
+      });
+
+      const iconObject = Object.assign({}, ...iconList);
+      const keys = Object.keys(iconObject);
+
+      // 将 keys 数组转换为 JS 格式的字符串
+      const iconsJs = `const icons = [\n  ${keys.map((key) => `'${key}',`).join('\n  ')}\n];\nexport default icons;\n`;
+
+      // 将 iconObject 转换为 LESS 格式的字符串
+      const commonIconLess = `@icons: {\n  ${Object.entries(iconObject)
+        .map(([key, value]) => `${key}: '${value}';`)
+        .join('\n  ')}\n};\n`;
+
+      const iconLess = fs.readFileSync(iconFile, 'utf-8');
+      const pattern = /https:\/\/tdesign\.gtimg\.com\/icon\/([\d.]+)\//g;
+      const newIconLess = iconLess.replaceAll(pattern, `https://tdesign.gtimg.com/icon/${VERSION}/`);
+
+      saveFile(iconFile, newIconLess);
+      saveFile(dataFile, iconsJs);
+      saveFile(commonIconFile, commonIconLess);
+      // Use an explicit path to the prettier config relative to this script's location.
+      // Prevents ENOENT when the script is invoked from a different working directory.
+    })
+    .catch((err) => {
+      console.error('Error fetching icon CSS:', err);
     });
-
-    const iconObject = Object.assign({}, ...iconList);
-    const keys = Object.keys(iconObject);
-
-    // 将 keys 数组转换为 JS 格式的字符串
-    const iconsJs = `const icons = [\n  '${keys.join("',\n  '")}'\n]; \nexport default icons;\n`;
-
-    // 将 iconObject 转换为 LESS 格式的字符串
-    const commonIconLess = `@icons: {\n  ${Object.entries(iconObject)
-      .map(([key, value]) => `${key}: '${value}';`)
-      .join('\n  ')}\n}`;
-
-    const iconLess = fs.readFileSync(iconFile, 'utf-8');
-    const pattern = /https:\/\/tdesign\.gtimg\.com\/icon\/([\d.]+)\//g;
-    const newIconLess = iconLess.replaceAll(pattern, `https://tdesign.gtimg.com/icon/${VERSION}/`);
-
-    saveFile(iconFile, newIconLess);
-    saveFile(dataFile, iconsJs);
-    saveFile(commonIconFile, commonIconLess);
-  });
 };
 
 getIconCss();
