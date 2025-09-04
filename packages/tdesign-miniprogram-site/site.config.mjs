@@ -482,6 +482,14 @@ export const docs = [
         path: '/miniprogram/components/tag',
         component: () => import('@/tag/README.md'),
       },
+      {
+        title: 'Watermark 水印',
+        titleEn: 'Watermark',
+        name: 'watermark',
+        meta: { docType: 'data' },
+        path: '/miniprogram/components/watermark',
+        component: () => import('@/watermark/README.md'),
+      },
     ],
   },
   {
