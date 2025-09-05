@@ -14,14 +14,6 @@ export const docs = [
         componentEn: () => import('@docs/getting-started.en-US.md'),
       },
       {
-        title: '贡献指南',
-        titleEn: 'CONTRIBUTING',
-        name: 'develop',
-        meta: { docType: 'explain' },
-        path: '/miniprogram/develop',
-        component: () => import('~/CONTRIBUTING.md'),
-      },
-      {
         title: '谁在用',
         titleEn: 'USED',
         name: 'used',
