@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.ref_type == 'tag'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/install-dep
       - run: pnpm build
         shell: bash
