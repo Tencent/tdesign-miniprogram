@@ -6,7 +6,7 @@ on:
       nodeVersion:
         required: false
         type: string
-        default: '14'
+        default: '18'
 
 runs:
   using: 'composite'
@@ -17,19 +17,6 @@ runs:
 
     - name: Setup pnpm
       uses: pnpm/action-setup@v4
-
-    - name: Get pnpm store directory
-      id: pnpm-cache
-      shell: bash
-      run: echo "dir=$(pnpm store path)" >> $GITHUB_OUTPUT
-
-    - uses: actions/cache@v4
-      name: Setup pnpm cache
-      with:
-        path: ${{ steps.pnpm-cache.outputs.dir }}
-        key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-        restore-keys: |
-          ${{ runner.os }}-pnpm-store-
 
     - run: pnpm install
       shell: bash
