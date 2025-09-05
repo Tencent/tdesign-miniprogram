@@ -45,7 +45,7 @@ const generateConfigReplaceTask = (replaceConfig, options = {}) => {
 };
 
 const isComponentFolder = (dir) => {
-  return dir === 'components';
+  return dir === 'packages/components';
 };
 
 /* return gulpfile base tasks */
@@ -58,7 +58,7 @@ module.exports = (src, dist, moduleName) => {
   });
 
   // options
-  const ignore = ['**/__test__', '**/__test__/**', '**/_example/**', '**/packages/common/**'];
+  const ignore = ['**/__test__/**', '**/_example/**', '**/node_modules/**'];
   const srcOptions = { base: src, ignore };
   const watchOptions = { events: ['add', 'change'] };
   const gulpErrorPath = 'example/utils/gulpError.js';
