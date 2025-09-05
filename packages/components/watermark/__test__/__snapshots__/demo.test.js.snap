@@ -1,0 +1,162 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Watermark Watermark base demo works fine 1`] = `
+<base>
+  <t-watermark
+    height="{{52}}"
+    watermarkContent="{{
+      Object {
+        "text": "文字水印",
+      }
+    }}"
+    width="{{68}}"
+    x="{{56}}"
+    y="{{56}}"
+  >
+    <wx-view
+      style="width: 100%; height: 340px"
+    />
+  </t-watermark>
+</base>
+`;
+
+exports[`Watermark Watermark gray demo works fine 1`] = `
+<gray>
+  <t-watermark
+    alpha="{{0.3}}"
+    height="{{20}}"
+    watermarkContent="{{
+      Object {
+        "isGrayscale": true,
+        "url": "https://tdesign.gtimg.com/starter/brand-logo-light.png",
+      }
+    }}"
+    width="{{120}}"
+    x="{{56}}"
+    y="{{76}}"
+  >
+    <wx-view
+      style="width: 100%; height: 300px"
+    />
+  </t-watermark>
+</gray>
+`;
+
+exports[`Watermark Watermark image demo works fine 1`] = `
+<wx-image>
+  <t-watermark
+    height="{{20}}"
+    watermarkContent="{{
+      Object {
+        "url": "https://tdesign.gtimg.com/starter/brand-logo-light.png",
+      }
+    }}"
+    width="{{120}}"
+    x="{{56}}"
+    y="{{76}}"
+  >
+    <wx-view
+      style="width: 100%; height: 300px"
+    />
+  </t-watermark>
+</wx-image>
+`;
+
+exports[`Watermark Watermark move-image demo works fine 1`] = `
+<move-image>
+  <t-watermark
+    height="{{30}}"
+    movable="{{true}}"
+    watermarkContent="{{
+      Object {
+        "url": "https://tdesign.gtimg.com/site/baseLogo-light.png",
+      }
+    }}"
+    width="{{120}}"
+    x="{{100}}"
+    y="{{140}}"
+  >
+    <wx-view
+      style="width: 100%; height: 300px"
+    />
+  </t-watermark>
+</move-image>
+`;
+
+exports[`Watermark Watermark move-text demo works fine 1`] = `
+<move-text>
+  <t-watermark
+    height="{{60}}"
+    movable="{{true}}"
+    watermarkContent="{{
+      Object {
+        "text": "文字水印",
+      }
+    }}"
+    width="{{120}}"
+    x="{{210}}"
+    y="{{200}}"
+  >
+    <wx-view
+      style="width: 100%; height: 300px"
+    />
+  </t-watermark>
+</move-text>
+`;
+
+exports[`Watermark Watermark multi-line demo works fine 1`] = `
+<multi-line>
+  <t-watermark
+    alpha="{{0.3}}"
+    height="{{20}}"
+    lineSpace="{{24}}"
+    watermarkContent="{{
+      Array [
+        Object {
+          "fontColor": "black",
+          "text": "水印文本",
+        },
+        Object {
+          "url": "https://tdesign.gtimg.com/starter/brand-logo-light.png",
+        },
+      ]
+    }}"
+    width="{{120}}"
+    x="{{56}}"
+    y="{{76}}"
+  >
+    <wx-view
+      style="width: 100%; height: 300px"
+    />
+  </t-watermark>
+</multi-line>
+`;
+
+exports[`Watermark Watermark multi-line-gray demo works fine 1`] = `
+<multi-line-gray>
+  <t-watermark
+    alpha="{{0.3}}"
+    height="{{20}}"
+    lineSpace="{{24}}"
+    watermarkContent="{{
+      Array [
+        Object {
+          "fontColor": "black",
+          "text": "水印文本",
+        },
+        Object {
+          "isGrayscale": true,
+          "url": "https://tdesign.gtimg.com/starter/brand-logo-light.png",
+        },
+      ]
+    }}"
+    width="{{120}}"
+    x="{{56}}"
+    y="{{76}}"
+  >
+    <wx-view
+      style="width: 100%; height: 300px"
+    />
+  </t-watermark>
+</multi-line-gray>
+`;

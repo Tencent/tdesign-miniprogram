@@ -19,6 +19,7 @@
     display-multiple-items="{{displayMultipleItems}}"
     style="height: {{_.addUnit(height)}}"
     bindchange="onChange"
+    bindanimationfinish="onAnimationFinish"
   >
     <swiper-item
       wx:for="{{list}}"

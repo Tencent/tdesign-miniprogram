@@ -79,6 +79,10 @@
     align-items: center;
   }
 
+  &--vertical {
+    margin-bottom: 16rpx;
+  }
+
   &__anchor {
     display: flex;
     align-items: center;
@@ -150,8 +154,11 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 8rpx;
     }
+  }
+
+  &__title + &__description:not(:empty) {
+    margin-top: 8rpx;
   }
 
   &__description {

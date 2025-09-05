@@ -8,16 +8,16 @@ import { DEFAULT_MINVERSION, excavateModules } from '../../../common/shared/qrco
 export default class QRCode extends SuperComponent {
   properties = props;
 
-  lifeTimes = {
+  lifetimes = {
     ready() {
-      this.checkdefaultValue();
+      this.checkDefaultValue();
       this.initCanvas();
     },
   };
 
   observers = {
     '**': function () {
-      this.checkdefaultValue();
+      this.checkDefaultValue();
       this.initCanvas();
     },
   };
@@ -87,39 +87,25 @@ export default class QRCode extends SuperComponent {
             }
           });
         });
-        if (icon) {
-          await this.drawCenterIcon(
-            canvas,
-            ctx,
-            qrData.calculatedImageSettings?.w || 0,
-            qrData.calculatedImageSettings?.h || 0,
-            qrData.numCells,
+        if (icon && qrData.calculatedImageSettings) {
+          const img = canvas.createImage();
+          await new Promise((resolve, reject) => {
+            img.onload = resolve;
+            img.onerror = reject;
+            img.src = this.properties.icon;
+          });
+          ctx.drawImage(
+            img as any,
+            qrData.calculatedImageSettings.x + qrData.margin,
+            qrData.calculatedImageSettings.y + qrData.margin,
+            qrData.calculatedImageSettings.w,
+            qrData.calculatedImageSettings.h,
           );
         }
         this.triggerEvent('drawCompleted');
       } catch (err) {
         this.triggerEvent('drawError', { error: err });
       }
-    },
-
-    async drawCenterIcon(
-      canvas: WechatMiniprogram.Canvas,
-      ctx: WechatMiniprogram.CanvasContext,
-      width: number,
-      height: number,
-      numCells: number,
-    ) {
-      const img = canvas.createImage();
-      await new Promise((resolve, reject) => {
-        img.onload = resolve;
-        img.onerror = reject;
-        img.src = this.properties.icon;
-      });
-
-      const x = Math.floor((numCells - width) / 2);
-      const y = Math.floor((numCells - height) / 2);
-      ctx.globalAlpha = 1;
-      ctx.drawImage(img as any, x, y, width, height);
     },
 
     getSizeProp(iconSize: number | { width: number; height: number } | null | undefined) {
@@ -136,7 +122,7 @@ export default class QRCode extends SuperComponent {
       };
     },
 
-    checkdefaultValue() {
+    checkDefaultValue() {
       const updates = { bgColor: '', color: '' };
       let changeFlag = false;
       const { bgColor, color } = this.properties;
