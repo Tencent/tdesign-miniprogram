@@ -49,8 +49,8 @@ Component({
       const { data } = this.properties;
       // 确保 data 不为 undefined 或 null
       const safeData = data || {};
-      const formData = { ...safeData};
-      const initialData = { ...safeData};
+      const formData = { ...safeData };
+      const initialData = { ...safeData };
       const fields = Object.keys(safeData);
       this.setData({
         formData,

@@ -90,6 +90,7 @@
     "pages/col/col",
     "pages/col/skyline/col",
     "pages/color-picker/color-picker",
+    "pages/form/form",
     "pages/guide/guide",
     "pages/watermark/watermark"
   ],

@@ -1,11 +1,3 @@
-<view class="{{classPrefix}} {{classPrefix}}--{{labelAlign}} {{prefix}}-class">
+<form class="{{classPrefix}} {{classPrefix}}--{{labelAlign}} {{prefix}}-class">
   <slot />
-  <view>
-    <view capture-bind:tap="onSubmit">
-      <slot name="submit" />
-    </view>
-    <view capture-bind:tap="onReset">
-      <slot name="reset" />
-    </view>
-  </view>
-</view>
+</form>

@@ -1,0 +1,58 @@
+.tdesign-mobile-demo {
+  padding: 32rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 16rpx;
+}
+
+.summary {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 32rpx;
+  line-height: 1.5;
+}
+
+.demo-block {
+  margin-bottom: 32rpx;
+}
+
+.demo-block-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #000;
+  margin-bottom: 8rpx;
+}
+
+.demo-block-summary {
+  font-size: 26rpx;
+  color: #666;
+  margin-bottom: 24rpx;
+}
+
+.option {
+  margin-bottom: 24rpx;
+}
+
+.button-group {
+  background-color: #fff;
+  box-sizing: border-box;
+  padding: 16rpx 8rpx;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  border-bottom: 1rpx solid #e7e7e7;
+  margin-bottom: 16rpx;
+}
+
+.button-group .t-button {
+  height: 64rpx;
+  flex: 1;
+}
+
+.button-group .t-button:not(:last-child) {
+  margin-right: 16rpx;
+}

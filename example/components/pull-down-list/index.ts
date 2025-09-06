@@ -35,7 +35,14 @@ Component({
       });
     },
     tapChild(e: any) {
-      this.triggerEvent('click', e.target.dataset);
+      const { dataset } = e.target;
+      // 重新构造item对象
+      const item = {
+        name: dataset.name,
+        label: dataset.label,
+        path: dataset.path,
+      };
+      this.triggerEvent('click', { item });
     },
   },
 });

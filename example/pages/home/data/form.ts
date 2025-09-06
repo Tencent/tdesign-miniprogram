@@ -71,6 +71,11 @@ const form = {
       name: 'Upload',
       label: '上传',
     },
+    {
+      name: 'Form',
+      label: '表单',
+      path: '/pages/form/form',
+    },
   ],
 };
 
@@ -117,6 +122,11 @@ const skylineForm = {
     {
       name: 'Textarea',
       label: '多行文本框',
+    },
+    {
+      name: 'Form',
+      label: '表单',
+      path: '/pages/form/form',
     },
   ],
 };

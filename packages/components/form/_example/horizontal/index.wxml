@@ -1,0 +1,104 @@
+<t-form
+  id="form"
+  data="{{formData}}"
+  rules="{{rules}}"
+  reset-type="initial"
+  show-error-message
+  label-align="left"
+  disabled="{{disabled}}"
+  scroll-to-first-error="auto"
+  bind:reset="onReset"
+  bind:submit="onSubmit"
+>
+  <t-form-item label="用户名" name="name" help="输入用户名">
+    <t-input
+      value="{{formData.name}}"
+      borderless
+      placeholder="请输入内容"
+      bind:change="onInputChange"
+      data-field="name"
+    />
+  </t-form-item>
+
+  <t-form-item label="密码" name="password">
+    <t-input
+      value="{{formData.password}}"
+      borderless
+      type="password"
+      clearable="{{false}}"
+      placeholder="请输入内容"
+      bind:change="onInputChange"
+      data-field="password"
+    />
+  </t-form-item>
+
+  <t-form-item label="性别" name="gender">
+    <t-radio-group value="{{formData.gender}}" class="box" borderless bind:change="onRadioChange">
+      <t-radio block="{{false}}" name="radio" value="man" label="男" />
+      <t-radio block="{{false}}" name="radio" value="women" label="女" />
+      <t-radio block="{{false}}" name="radio" value="secret" label="保密" />
+    </t-radio-group>
+  </t-form-item>
+
+  <t-form-item label="生日" name="birth" content-align="right">
+    <t-input
+      value="{{formData.birth}}"
+      borderless
+      align="right"
+      placeholder="请输入生日"
+      bind:change="onInputChange"
+      data-field="birth"
+    />
+  </t-form-item>
+
+  <t-form-item arrow label="籍贯" name="place" content-align="right">
+    <t-input value="{{formData.place}}" borderless align="right" placeholder="请输入内容" bind:tap="showCascader" />
+    <t-cascader
+      visible="{{visibleCascader}}"
+      value="{{address}}"
+      title="选择地址"
+      options="{{options}}"
+      bind:change="onChangeCascader"
+      bind:visible-change="onCascaderVisibleChange"
+    />
+  </t-form-item>
+
+  <t-form-item label="年限" name="age" content-align="right">
+    <t-stepper value="{{formData.age}}" theme="filled" bind:change="onChangeStepper" />
+  </t-form-item>
+
+  <t-form-item label="自我评价" name="description" content-align="right">
+    <t-rate value="{{formData.description}}" variant="filled" allow-half gap="{{rateGap}}" bind:change="onRateChange" />
+  </t-form-item>
+
+  <t-form-item label="个人简介" name="resume">
+    <t-textarea
+      value="{{formData.resume}}"
+      class="textarea"
+      indicator
+      maxlength="{{50}}"
+      placeholder="请输入个人简介"
+      bind:change="onTextareaChange"
+    />
+  </t-form-item>
+
+  <t-form-item label="上传照片" name="photo">
+    <t-upload
+      class="upload"
+      files="{{formData.photo}}"
+      multiple
+      max="{{6}}"
+      action="{{action}}"
+      bind:fail="onFail"
+      bind:progress="onProgress"
+      bind:change="onChangeUpload"
+      bind:preview="onPreview"
+      bind:success="onSuccess"
+      bind:remove="onRemove"
+      bind:select-change="onSelectChange"
+    />
+  </t-form-item>
+
+  <t-button slot="submit" theme="primary" formType="submit" size="large" bind:tap="submit">提交</t-button>
+  <t-button slot="reset" theme="default" variant="base" formType="reset" size="large" bind:tap="reset">重置</t-button>
+</t-form>
