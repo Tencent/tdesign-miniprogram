@@ -10,11 +10,9 @@ style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 colon | Boolean | false | \- | N
 data | Object | {} | Typescript：`FormData` | N
-disabled | Boolean | undefined | \- | N
 error-message | Object | - | Typescript：`FormErrorMessage` | N
 label-align | String | right | options: left/right/top | N
 label-width | String / Number | '81px' | \- | N
-readonly | Boolean | undefined | \- | N
 required-mark | Boolean | undefined | \- | N
 required-mark-position | String | - | Display position of required symbols。options: left/right | N
 reset-type | String | empty | options: empty/initial | N
@@ -36,14 +34,12 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 arrow | Boolean | false | \- | N
-for | String | - | \- | N
-help | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
-label | String / Slot | '' | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+help | String | - | \- | N
+label | String | '' | \- | N
 label-align | String | - | options: left/right/top | N
 label-width | String / Number | - | \- | N
 name | String | - | \- | N
 required-mark | Boolean | undefined | \- | N
-rules | Array | - | Typescript：`Array<FormRule>` | N
 show-error-message | Boolean | undefined | \- | N
 
 ### FormRule

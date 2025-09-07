@@ -25,13 +25,6 @@ export interface TdFormProps<FormData extends Data = Data> {
     value?: FormData;
   };
   /**
-   * 是否禁用整个表单
-   */
-  disabled?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
    * 表单错误信息配置，示例：`{ idcard: '请输入正确的身份证号码', max: '字符长度不能超过 ${max}' }`
    */
   errorMessage?: {
@@ -53,13 +46,6 @@ export interface TdFormProps<FormData extends Data = Data> {
   labelWidth?: {
     type: null;
     value?: string | number;
-  };
-  /**
-   * 是否整个表单只读
-   */
-  readonly?: {
-    type: BooleanConstructor;
-    value?: boolean;
   };
   /**
    * 是否显示必填符号（*），默认显示

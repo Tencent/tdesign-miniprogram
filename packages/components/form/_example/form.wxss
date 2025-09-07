@@ -1,5 +1,5 @@
 .tdesign-mobile-demo {
-  padding: 32rpx;
+  padding: 32rpx 0;
 }
 
 .title {

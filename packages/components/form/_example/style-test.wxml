@@ -1,0 +1,76 @@
+<view class="tdesign-mobile-demo">
+  <view class="title">Form 样式测试</view>
+  <view class="summary">测试form组件的各种样式状态</view>
+
+  <!-- 基础样式测试 -->
+  <view class="demo-block">
+    <view class="demo-block-title">基础样式</view>
+    <t-form label-align="right">
+      <t-form-item label="用户名" name="name">
+        <t-input placeholder="请输入用户名" />
+      </t-form-item>
+      <t-form-item label="密码" name="password">
+        <t-input type="password" placeholder="请输入密码" />
+      </t-form-item>
+    </t-form>
+  </view>
+
+  <!-- 标签对齐测试 -->
+  <view class="demo-block">
+    <view class="demo-block-title">标签对齐 - 左对齐</view>
+    <t-form label-align="left">
+      <t-form-item label="用户名" name="name">
+        <t-input placeholder="请输入用户名" />
+      </t-form-item>
+    </t-form>
+  </view>
+
+  <view class="demo-block">
+    <view class="demo-block-title">标签对齐 - 顶部对齐</view>
+    <t-form label-align="top">
+      <t-form-item label="用户名" name="name">
+        <t-input placeholder="请输入用户名" />
+      </t-form-item>
+    </t-form>
+  </view>
+
+  <!-- 禁用状态测试 -->
+  <view class="demo-block">
+    <view class="demo-block-title">禁用状态</view>
+    <t-form disabled="{{true}}">
+      <t-form-item label="用户名" name="name">
+        <t-input placeholder="请输入用户名" />
+      </t-form-item>
+    </t-form>
+  </view>
+
+  <!-- 只读状态测试 -->
+  <view class="demo-block">
+    <view class="demo-block-title">只读状态</view>
+    <t-form readonly="{{true}}">
+      <t-form-item label="用户名" name="name">
+        <t-input value="只读内容" />
+      </t-form-item>
+    </t-form>
+  </view>
+
+  <!-- 必填标记测试 -->
+  <view class="demo-block">
+    <view class="demo-block-title">必填标记</view>
+    <t-form required-mark="{{true}}">
+      <t-form-item label="用户名" name="name" required>
+        <t-input placeholder="请输入用户名" />
+      </t-form-item>
+    </t-form>
+  </view>
+
+  <!-- 冒号显示测试 -->
+  <view class="demo-block">
+    <view class="demo-block-title">冒号显示</view>
+    <t-form colon="{{true}}">
+      <t-form-item label="用户名" name="name">
+        <t-input placeholder="请输入用户名" />
+      </t-form-item>
+    </t-form>
+  </view>
+</view>

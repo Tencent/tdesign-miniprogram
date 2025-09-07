@@ -14,6 +14,7 @@
     <t-input
       value="{{formData.name}}"
       borderless
+      align="right"
       placeholder="请输入内容"
       bind:change="onInputChange"
       data-field="name"
@@ -25,6 +26,7 @@
       value="{{formData.password}}"
       borderless
       type="password"
+      align="right"
       clearable="{{false}}"
       placeholder="请输入内容"
       bind:change="onInputChange"
@@ -99,6 +101,6 @@
     />
   </t-form-item>
 
-  <t-button slot="submit" theme="primary" formType="submit" size="large" bind:tap="submit">提交</t-button>
-  <t-button slot="reset" theme="default" variant="base" formType="reset" size="large" bind:tap="reset">重置</t-button>
+  <t-button theme="primary" formType="submit" size="large" bind:tap="submit">提交</t-button>
+  <t-button theme="default" variant="base" formType="reset" size="large" bind:tap="reset">重置</t-button>
 </t-form>

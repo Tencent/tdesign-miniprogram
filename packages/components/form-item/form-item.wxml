@@ -13,11 +13,11 @@
     <text wx:if="{{colon}}" class="{{classPrefix}}__label--colon">:</text>
   </view>
 
-  <view class="desc-wrapper" wx:if="{{help || descLink.text}}">
-    <!-- 帮助信息 -->
-    <view wx:if="{{help}}" class="{{classPrefix}}__help {{prefix}}-class-help"> {{ help }} </view>
-    <!-- 示例信息 -->
-    <t-button
+  <!-- <view class="desc-wrapper" wx:if="{{help || descLink.text}}"> -->
+  <!-- 帮助信息 -->
+  <!-- <view wx:if="{{help}}" class="{{classPrefix}}__help {{prefix}}-class-help"> {{ help }} </view> -->
+  <!-- 示例信息 -->
+  <!-- <t-button
       bindtap="handlePreviewImage"
       data-url="{{descLink.url}}"
       wx:if="{{descLink.text}}"
@@ -26,8 +26,8 @@
       variant="text"
     >
       {{descLink.text }}</t-button
-    >
-  </view>
+    > -->
+  <!-- </view> -->
 
   <!-- 内容区域 -->
   <view
