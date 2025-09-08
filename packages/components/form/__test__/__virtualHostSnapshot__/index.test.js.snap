@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`form props : style && customStyle 1`] = `""`;
+
+exports[`form props : labelAlign 1`] = `""`;
+
+exports[`form props : colon && labelWidth 1`] = `""`;
+
+exports[`form props : data && rules 1`] = `""`;
+
+exports[`form props : showErrorMessage && requiredMark 1`] = `""`;
+
+exports[`form props : resetType 1`] = `""`;
+
+exports[`form methods : validate 1`] = `""`;
+
+exports[`form methods : validateOnly 1`] = `""`;
+
+exports[`form methods : submit 1`] = `""`;
+
+exports[`form methods : reset 1`] = `""`;
+
+exports[`form methods : clearValidate 1`] = `""`;
+
+exports[`form methods : setValidateMessage 1`] = `""`;
+
+exports[`form methods : updateFormData 1`] = `""`;
+
+exports[`form methods : getEmptyValue 1`] = `""`;
+
+exports[`form event : submit 1`] = `""`;
+
+exports[`form event : reset 1`] = `""`;
+
+exports[`form event : validate 1`] = `""`;
