@@ -45,7 +45,7 @@ const generateConfigReplaceTask = (replaceConfig, options = {}) => {
 };
 
 const isComponentFolder = (dir) => {
-  return dir === 'components';
+  return dir === 'packages/components';
 };
 
 /* return gulpfile base tasks */

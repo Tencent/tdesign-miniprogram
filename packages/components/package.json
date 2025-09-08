@@ -9,6 +9,7 @@
   },
   "devDependencies": {
     "tinycolor2": "^1.4.2",
+    "tslib": "^2.8.1",
     "miniprogram-simulate": "^1.6.0"
   }
 }

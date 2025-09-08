@@ -7,11 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.ref_type == 'tag'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/install-dep
-        with:
-          nodeVersion: '14.6.0'
-      - run: npm run build
+      - run: pnpm build
         shell: bash
       - name: release miniprogram
         uses: LeeJim/setup-miniprogram@main
