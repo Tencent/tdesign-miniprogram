@@ -16,8 +16,6 @@
   --textarea-vertical-padding: 0;
   --td-textarea-horizontal-padding: 0;
 }
-
-/* 方法5：全局覆盖（如果上述方法都不行） */
 page .textarea .t-textarea {
   padding: 0 !important;
 }
