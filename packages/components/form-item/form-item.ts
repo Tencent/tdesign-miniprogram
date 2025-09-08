@@ -27,7 +27,6 @@ Component({
     form: {},
     colon: false,
     showErrorMessage: true,
-    descLink: {},
   },
 
   relations: {
@@ -36,17 +35,25 @@ Component({
       linked(target) {
         target.registerChild(this);
         this.form = target;
-        const { requiredMark, labelAlign, descLink } = this.properties;
+        const { requiredMark, labelAlign, labelWidth, showErrorMessage } = this.properties;
         const isRequired = target.data.rules[this.properties.name]?.some((rule) => rule.required);
         this.setData(
           {
             rules: target.data.rules[this.properties.name],
             colon: target.data.colon,
             labelAlign: labelAlign || target.data.labelAlign || 'right',
-            labelWidth: target.data.labelWidth,
-            requiredMark: isRequired ? requiredMark || target.data.requiredMark || false : false,
-            showErrorMessage: target.data.showErrorMessage,
-            descLink,
+            labelWidth: labelWidth || target.data.labelWidth,
+            requiredMark: (() => {
+              if (!isRequired) {
+                return false;
+              }
+              if (typeof requiredMark === 'boolean') {
+                return requiredMark;
+              }
+              return target.data.requiredMark || false;
+            })(),
+            showErrorMessage: typeof showErrorMessage === 'boolean' ? showErrorMessage : target.data.showErrorMessage,
+            requiredMarkPosition: target.data.requiredMarkPosition,
           },
           () => {
             this.setData({
@@ -178,7 +185,7 @@ Component({
     },
 
     // 更新验证状态
-    updateValidateStatus(analysis, showErrorMessage) {
+    updateValidateStatus(analysis) {
       const { errorList, successList } = analysis;
 
       this.setData({
@@ -186,33 +193,6 @@ Component({
         successList,
         verifyStatus: errorList.length > 0 ? ValidateStatus.FAIL : ValidateStatus.SUCCESS,
       });
-
-      // 显示错误信息
-      if (showErrorMessage) {
-        const { showErrorMessage: formShowErrorMessage } = this.form.properties;
-        const { showErrorMessage: itemShowErrorMessage } = this.properties;
-        const shouldShow = itemShowErrorMessage || formShowErrorMessage;
-        if (shouldShow && errorList.length > 0) {
-          this.showErrorMessage(errorList[0].message);
-          this.setData({
-            showErrorMessage: shouldShow,
-          });
-        }
-      }
-    },
-
-    // 显示错误信息
-    showErrorMessage(message) {
-      // 这里可以集成toast或其他提示组件
-      // TODO: 实现错误信息显示逻辑
-      // 暂时使用 wx.showToast 显示错误信息
-      if (message) {
-        wx.showToast({
-          title: message,
-          icon: 'none',
-          duration: 2000,
-        });
-      }
     },
 
     // 清空验证结果
