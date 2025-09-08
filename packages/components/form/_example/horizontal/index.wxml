@@ -1,12 +1,12 @@
 <t-form
   id="form"
+  class="form"
   data="{{formData}}"
   rules="{{rules}}"
   reset-type="initial"
   show-error-message
   label-align="left"
-  disabled="{{disabled}}"
-  scroll-to-first-error="auto"
+  required-mark
   bind:reset="onReset"
   bind:submit="onSubmit"
 >
@@ -86,21 +86,23 @@
 
   <t-form-item label="上传照片" name="photo">
     <t-upload
-      class="upload"
+      class="my-upload"
       files="{{formData.photo}}"
       multiple
       max="{{6}}"
       action="{{action}}"
+      grid-config="{{gridConfig}}"
       bind:fail="onFail"
       bind:progress="onProgress"
       bind:change="onChangeUpload"
       bind:preview="onPreview"
       bind:success="onSuccess"
       bind:remove="onRemove"
-      bind:select-change="onSelectChange"
     />
   </t-form-item>
 
-  <t-button theme="primary" formType="submit" size="large" bind:tap="submit">提交</t-button>
-  <t-button theme="default" variant="base" formType="reset" size="large" bind:tap="reset">重置</t-button>
+  <view class="button-group">
+    <t-button theme="primary" formType="submit" size="large" bind:tap="submit">提交</t-button>
+    <t-button theme="default" variant="base" formType="reset" size="large" bind:tap="reset">重置</t-button>
+  </view>
 </t-form>

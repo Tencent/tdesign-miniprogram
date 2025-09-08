@@ -1,5 +1,12 @@
+// 验证结果接口
+interface ValidateResult {
+  result: boolean;
+  message?: string;
+  type?: string;
+}
+
 // 工具函数：安全获取rule属性的实际值
-function getRuleValue(field, key) {
+function getRuleValue(field: any, key?: string): any {
   if (field && typeof field === 'object' && 'type' in field) {
     // 针对type字段，过滤掉'error'和'warning'
     if (key === 'type') {
@@ -28,8 +35,8 @@ export const ValidateStatus = {
 };
 
 // 执行单个验证规则
-async function executeRule(value, rule) {
-  const result = {
+async function executeRule(value: any, rule: any): Promise<ValidateResult> {
+  const result: ValidateResult = {
     result: true,
   };
 
@@ -171,7 +178,7 @@ async function executeRule(value, rule) {
     const validateResult = await validator(value);
     if (!validateResult) {
       result.result = false;
-      result.message = getRuleValue(rule.message) || customResult.message;
+      result.message = getRuleValue(rule.message) || '验证失败';
       result.type = 'error';
       return result;
     }
@@ -180,8 +187,8 @@ async function executeRule(value, rule) {
 }
 
 // 验证函数
-export async function validate(value, rules) {
-  const results = [];
+export async function validate(value: any, rules: any[]): Promise<ValidateResult[]> {
+  const results: ValidateResult[] = [];
 
   const promises = rules.map((rule) => executeRule(value, rule));
   const ruleResults = await Promise.all(promises);

@@ -33,6 +33,9 @@ Component({
     address: '120119',
     rateGap: 8,
     action: 'https://service-bv448zsw-1257786608.gz.apigw.tencentcs.com/api/upload-demo',
+    gridConfig: {
+      column: 4,
+    },
     options: [
       {
         label: '北京市',
@@ -92,23 +95,39 @@ Component({
       },
     ],
     rules: {
-      name: [{ validator: (val) => val.length === 8, message: '只能输入8个字符英文' }],
-      password: [{ validator: (val) => val.length > 6, message: '长度大于6个字符' }],
-      gender: [{ validator: (val) => val !== '', message: '不能为空' }],
-      birth: [{ validator: (val) => val !== '', message: '不能为空' }],
-      place: [{ validator: (val) => val !== '', message: '不能为空' }],
-      description: [{ validator: (val) => val > 3, message: '分数过低会影响整体评价' }],
-      resume: [{ validator: (val) => val !== '', message: '不能为空' }],
+      name: [
+        { required: true, message: '用户名不能为空' },
+        { maxLength: 3, message: '用户名不能超过3个字符' },
+      ],
+      password: [{ required: true, message: '密码不能为空' }],
+      gender: [{ required: true, message: '性别不能为空' }],
+      birth: [{ required: true, message: '生日不能为空' }],
+      age: [{ required: true, message: '年限不能为空' }],
+      place: [{ required: true, message: '籍贯不能为空' }],
+      description: [{ required: true, message: '分数不能为空' }],
+      resume: [{ required: true, message: '简介不能为空' }],
+      photo: [{ required: true, message: '上传照片不能为空' }],
     },
   },
 
   methods: {
     onReset() {
-      console.log('===onReset');
+      this.setData({
+        formData: e.detail.formData,
+      });
     },
 
     onSubmit(e) {
       console.log('===onSubmit', e);
+    },
+
+    submit() {
+      const form = this.selectComponent('#form');
+      form.submit();
+    },
+    reset() {
+      const form = this.selectComponent('#form');
+      form.reset();
     },
 
     onInputChange(e) {
@@ -176,15 +195,19 @@ Component({
     },
 
     onSuccess(e) {
-      console.log('====onSuccess', e);
+      const { files } = e.detail;
+      this.setData({
+        'formData.photo': [...files],
+      });
     },
 
     onRemove(e) {
-      console.log('====onRemove', e);
-    },
-
-    onSelectChange(e) {
-      console.log('====onSelectChange', e);
+      const {index} = e.detail;
+      const {photo} = this.data.formData;
+      photo.splice(index, 1);
+      this.setData({
+        'formData.photo': photo,
+      });
     },
   },
 });

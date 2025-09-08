@@ -6,10 +6,11 @@
   <view
     wx:if="{{label}}"
     class="{{classPrefix}}__label {{classPrefix}}__label--{{labelAlign}} {{prefix}}-class-label"
-    style="{{labelStyle}}"
+    style="width: {{labelWidth}}"
   >
-    <text wx:if="{{requiredMark}}" class="{{classPrefix}}__label--required">*</text>
+    <text wx:if="{{requiredMark && requiredMarkPosition === 'left'}}" class="{{classPrefix}}__label--required">*</text>
     <text>{{label}}</text>
+    <text wx:if="{{requiredMark && requiredMarkPosition === 'right'}}" class="{{classPrefix}}__label--required">*</text>
     <text wx:if="{{colon}}" class="{{classPrefix}}__label--colon">:</text>
   </view>
 

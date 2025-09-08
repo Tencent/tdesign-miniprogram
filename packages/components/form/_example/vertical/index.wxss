@@ -18,6 +18,9 @@
   position: relative;
   border-bottom: 1rpx solid #e7e7e7;
 }
+.upload {
+  width: 100%;
+}
 
 .button-group .t-button {
   height: 64rpx;

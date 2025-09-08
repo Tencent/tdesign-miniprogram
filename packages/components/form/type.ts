@@ -25,13 +25,6 @@ export interface TdFormProps<FormData extends Data = Data> {
     value?: FormData;
   };
   /**
-   * 表单错误信息配置，示例：`{ idcard: '请输入正确的身份证号码', max: '字符长度不能超过 ${max}' }`
-   */
-  errorMessage?: {
-    type: ObjectConstructor;
-    value?: FormErrorMessage;
-  };
-  /**
    * 表单字段标签对齐方式：左对齐、右对齐、顶部对齐
    * @default right
    */

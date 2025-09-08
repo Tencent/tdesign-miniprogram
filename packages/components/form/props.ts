@@ -16,10 +16,6 @@ const props: TdFormProps = {
     type: Object,
     value: {},
   },
-  /** 表单错误信息配置，示例：`{ idcard: '请输入正确的身份证号码', max: '字符长度不能超过 ${max}' }` */
-  errorMessage: {
-    type: Object,
-  },
   /** 表单字段标签对齐方式：左对齐、右对齐、顶部对齐 */
   labelAlign: {
     type: String,
@@ -38,6 +34,7 @@ const props: TdFormProps = {
   /** 表单必填符号（*）显示位置 */
   requiredMarkPosition: {
     type: String,
+    value: 'left',
   },
   /** 重置表单的方式，值为 empty 表示重置表单为空，值为 initial 表示重置表单数据为初始值 */
   resetType: {

@@ -1,5 +1,6 @@
 .tdesign-mobile-demo {
-  padding: 32rpx 0;
+  padding: 180rpx 0;
+  background-color: #f5f5f5;
 }
 
 .title {
@@ -17,7 +18,10 @@
 }
 
 .demo-block {
-  margin-bottom: 32rpx;
+  box-sizing: border-box;
+  padding-bottom: 32rpx;
+  padding: 0 32rpx;
+  background-color: #f5f5f5;
 }
 
 .demo-block-title {

@@ -150,7 +150,6 @@ Component({
     // 获取第一个错误信息
     getFirstError(validateResult) {
       if (validateResult === true) return '';
-
       const firstKey = Object.keys(validateResult)[0];
       if (!firstKey) return '';
 

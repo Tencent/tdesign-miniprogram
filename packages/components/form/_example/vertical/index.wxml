@@ -1,11 +1,11 @@
 <t-form
+  id="form"
   data="{{formData}}"
   rules="{{rules}}"
   reset-type="empty"
   show-error-message
   label-align="top"
-  disabled="{{disabled}}"
-  scroll-to-first-error="auto"
+  required-mark
   bind:reset="onReset"
   bind:submit="onSubmit"
 >
@@ -86,18 +86,19 @@
       multiple
       max="{{8}}"
       action="{{action}}"
+      class="upload"
       bind:fail="onFail"
+      grid-config="{{gridConfig}}"
       bind:progress="onProgress"
       bind:change="onChangeUpload"
       bind:preview="onPreview"
       bind:success="onSuccess"
       bind:remove="onRemove"
-      bind:select-change="onSelectChange"
     />
   </t-form-item>
 
   <view class="button-group">
-    <t-button theme="primary" variant="light" type="submit" size="large">提交</t-button>
-    <t-button theme="default" variant="base" type="reset" size="large">重置</t-button>
+    <t-button theme="primary" variant="light" type="submit" size="large" bind:tap="submit">提交</t-button>
+    <t-button theme="default" variant="base" type="reset" size="large" bind:tap="reset">重置</t-button>
   </view>
 </t-form>

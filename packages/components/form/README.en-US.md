@@ -10,7 +10,6 @@ style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 colon | Boolean | false | \- | N
 data | Object | {} | Typescript：`FormData` | N
-error-message | Object | - | Typescript：`FormErrorMessage` | N
 label-align | String | right | options: left/right/top | N
 label-width | String / Number | '81px' | \- | N
 required-mark | Boolean | undefined | \- | N

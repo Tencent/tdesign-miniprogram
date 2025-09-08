@@ -4,8 +4,10 @@
   "private": true,
   "main": "index.ts",
   "license": "MIT",
+  "dependencies": {
+    "dayjs": "^1.10.7"
+  },
   "devDependencies": {
-    "dayjs": "^1.10.7",
     "tinycolor2": "^1.4.2",
     "miniprogram-simulate": "^1.6.0"
   }

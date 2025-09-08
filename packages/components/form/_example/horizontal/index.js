@@ -33,6 +33,9 @@ Component({
     address: '120119',
     rateGap: 8,
     action: 'https://service-bv448zsw-1257786608.gz.apigw.tencentcs.com/api/upload-demo',
+    gridConfig: {
+      column: 3,
+    },
     options: [
       {
         label: '北京市',
@@ -92,7 +95,10 @@ Component({
       },
     ],
     rules: {
-      name: [{ required: true, message: '用户名不能为空' }],
+      name: [
+        { required: true, message: '用户名不能为空' },
+        { maxLength: 3, message: '用户名不能超过3个字符' },
+      ],
       password: [{ required: true, message: '密码不能为空' }],
       gender: [{ required: true, message: '性别不能为空' }],
       birth: [{ required: true, message: '生日不能为空' }],
@@ -106,7 +112,6 @@ Component({
 
   methods: {
     onReset(e) {
-      console.log('===onReset', e);
       this.setData({
         formData: e.detail.formData,
       });
@@ -194,15 +199,19 @@ Component({
     },
 
     onSuccess(e) {
-      console.log('====onSuccess', e);
+      const { files } = e.detail;
+      this.setData({
+        'formData.photo': [...files],
+      });
     },
 
     onRemove(e) {
-      console.log('====onRemove', e);
-    },
-
-    onSelectChange(e) {
-      console.log('====onSelectChange', e);
+      const {index} = e.detail;
+      const {photo} = this.data.formData;
+      photo.splice(index, 1);
+      this.setData({
+        'formData.photo': photo,
+      });
     },
   },
 });

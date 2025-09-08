@@ -2,7 +2,8 @@
 
 /* Less 支持测试 - 监听功能验证 */
 @form-item-prefix: ~'@{prefix}-form-item';
-@form-item-padding: var(--td-form-item-padding, 32rpx);
+@form-item-horizontal-padding: var(--td-form-item-horizontal-padding, 32rpx);
+@form-item-vertical-padding: var(--td-form-item-vertical-padding, 32rpx);
 @form-item-label-width: var(--td-form-item-label-width, 160rpx);
 @form-item-justify-content: var(--td-form-item-justify-content, space-between);
 .@{form-item-prefix} {
@@ -11,11 +12,12 @@
   align-items: flex-start;
   justify-content: @form-item-justify-content;
   width: 100%;
-  padding: @form-item-padding 0rpx;
+  padding: @form-item-horizontal-padding @form-item-vertical-padding;
   background-color: #ffffff;
   --td-input-vertical-padding: 0rpx;
   --td-textarea-vertical-padding: 0rpx;
   --td-textarea-horizontal-padding: 0rpx;
+  box-sizing: border-box;
   &--top {
     display: flex;
     flex-direction: column;
