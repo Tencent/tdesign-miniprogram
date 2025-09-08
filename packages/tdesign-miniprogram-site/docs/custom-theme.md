@@ -8,7 +8,7 @@ spline: explain
 
 ## 全局自定义
 
-小程序的 CSS Variables 全部定义可以在这里看到: [_variables.less](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/style/_variables.less)
+小程序的 CSS Variables 全部定义可以在这里看到: [_variables.less](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/common/style/_variables.less)
 
 如果你想改变主题色，主要改变这几个变量即可：
 
@@ -29,7 +29,7 @@ page {
 }
 ```
 
-> 当然，[_variables.less](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/style/_variables.less) 里面都是通用的全局变量，都可以修改
+> 当然，[_variables.less](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/common/style/_variables.less) 里面都是通用的全局变量，都可以修改
 
 ## 局部自定义
 
@@ -62,4 +62,4 @@ page {
 }
 ```
 
-> 目前仅有部分组件支持自定义主题，支持的组件在其文档有陈列对应的 CSS Variables，可以访问 [tab-bar-item.less](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/tab-bar-item/tab-bar-item.less)
+> 目前仅有部分组件支持自定义主题，支持的组件在其文档有陈列对应的 CSS Variables，可以访问 [tab-bar-item.less](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/tab-bar-item/tab-bar-item.less)

@@ -65,7 +65,7 @@ isComponent: true
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 alpha | Number | 1 | 水印整体透明度，取值范围 [0-1] | N
-content | String / Slot | - | 水印所覆盖的内容节点。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/common.ts) | N
+content | String / Slot | - | 水印所覆盖的内容节点。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/common/common.ts) | N
 height | Number | - | 水印高度 | N
 is-repeat | Boolean | true | 水印是否重复出现 | N
 line-space | Number | 16 | 行间距，只作用在多行（`content` 配置为数组）情况下 | N
