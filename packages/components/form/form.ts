@@ -1,7 +1,8 @@
 import props from './props';
+import config from '../common/config';
 
-const prefix = 't';
-const name = `t-form`;
+const { prefix } = config;
+const name = `${prefix}-form`;
 
 Component({
   behaviors: ['wx://component-export'],

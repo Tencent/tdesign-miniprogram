@@ -1,8 +1,9 @@
 import props from './props';
 import { validate, ValidateStatus } from './form-model';
+import config from '../common/config';
 
-const prefix = 't';
-const name = `t-form-item`;
+const { prefix } = config;
+const name = `${prefix}-form-item`;
 
 Component({
   externalClasses: [
