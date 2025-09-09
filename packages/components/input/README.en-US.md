@@ -25,7 +25,7 @@ disabled | Boolean | undefined | make input to be disabled | N
 error-message | String | - | `deprecated` | N
 extra | Slot | - | `1.9.1`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 focus | Boolean | false | \- | N
-format | Function | - | input value formatter, `type=number` does not work. if you need to format number, `InputNumber` Component might be better。Typescript：`InputFormatType` `type InputFormatType = (value: InputValue) => string`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/input/type.ts) | N
+format | Function | - | input value formatter, `type=number` does not work. if you need to format number, `InputNumber` Component might be better。Typescript：`InputFormatType` `type InputFormatType = (value: InputValue) => string`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/input/type.ts) | N
 hold-keyboard | Boolean | false | \- | N
 label | String / Slot | - | text on the left of input。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 layout | String | horizontal | options: vertical/horizontal | N
@@ -51,8 +51,8 @@ suffix | String / Slot | - | suffix content before suffixIcon。[see more ts def
 suffix-icon | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 tips | String / Slot | - | tips on the bottom of input, different `status` can make tips to be different color。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 type | String | text | options: text/number/idcard/digit/safe-password/password/nickname | N
-value | String / Number | - | input value。Typescript：`InputValue` `type InputValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/input/type.ts) | N
-default-value | String / Number | undefined | input value。uncontrolled property。Typescript：`InputValue` `type InputValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/input/type.ts) | N
+value | String / Number | - | input value。Typescript：`InputValue` `type InputValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/input/type.ts) | N
+default-value | String / Number | undefined | input value。uncontrolled property。Typescript：`InputValue` `type InputValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/input/type.ts) | N
 
 ### Input Events
 

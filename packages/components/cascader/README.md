@@ -84,7 +84,7 @@ visible | Boolean | false | 是否展示 | N
 名称 | 参数 | 描述
 -- | -- | --
 change | `(value: string \| number, selectedOptions: string[])` | `1.0.1`。值发生变更时触发
-close | `(trigger: CascaderTriggerSource)` | `1.0.1`。关闭时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/cascader/type.ts)。<br/>`type CascaderTriggerSource = 'overlay' \| 'close-btn' \| 'finish'`<br/>
+close | `(trigger: CascaderTriggerSource)` | `1.0.1`。关闭时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/cascader/type.ts)。<br/>`type CascaderTriggerSource = 'overlay' \| 'close-btn' \| 'finish'`<br/>
 pick | `(value: string \| number, label: string, index: number, level: number)` | `1.0.1`。选择后触发
 
 ### CSS Variables

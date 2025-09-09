@@ -104,7 +104,7 @@ disabled | Boolean | undefined | 是否禁用输入框 | N
 error-message | String | - | 已废弃。错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips） | N
 extra | Slot | - | `1.9.1`。右侧额外内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 focus | Boolean | false | 获取焦点 | N
-format | Function | - | 指定输入框展示值的格式。TS 类型：`InputFormatType` `type InputFormatType = (value: InputValue) => string`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/input/type.ts) | N
+format | Function | - | 指定输入框展示值的格式。TS 类型：`InputFormatType` `type InputFormatType = (value: InputValue) => string`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/input/type.ts) | N
 hold-keyboard | Boolean | false | focus时，点击页面的时候不收起键盘 | N
 label | String / Slot | - | 左侧文本。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 layout | String | horizontal | 标题输入框布局方式。可选项：vertical/horizontal | N
@@ -130,8 +130,8 @@ suffix | String / Slot | - | 后置图标前的后置内容。[通用类型定�
 suffix-icon | String / Object / Slot | - | 后置文本内容。值为字符串则表示图标名称，值为 `Object` 类型，表示透传至 `icon`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 tips | String / Slot | - | 输入框下方提示文本，会根据不同的 `status` 呈现不同的样式。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 type | String | text | 输入框类型。可选项：text/number/idcard/digit/safe-password/password/nickname | N
-value | String / Number | - | 输入框的值。TS 类型：`InputValue` `type InputValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/input/type.ts) | N
-default-value | String / Number | undefined | 输入框的值。非受控属性。TS 类型：`InputValue` `type InputValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/input/type.ts) | N
+value | String / Number | - | 输入框的值。TS 类型：`InputValue` `type InputValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/input/type.ts) | N
+default-value | String / Number | undefined | 输入框的值。非受控属性。TS 类型：`InputValue` `type InputValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/input/type.ts) | N
 
 ### Input Events
 

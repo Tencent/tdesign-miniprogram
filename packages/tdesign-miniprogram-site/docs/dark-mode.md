@@ -54,7 +54,7 @@ TDesign Minirogram 基于 Design Token 变量和媒体查询 `prefers-color-sche
 }
 ```
 
-> 💡Tips：所有的 [Design Token](https://github.com/Tencent/tdesign-miniprogram/blob/develop/src/common/style/_variables.less) 可以在这里找到。
+> 💡Tips：所有的 [Design Token](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/style/_variables.less) 可以在这里找到。
 
 ### 4. 体验深色模式
 
