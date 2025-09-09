@@ -12,7 +12,7 @@ close-btn | Boolean / Slot | - | [see more ts definition](https://github.com/Ten
 close-on-overlay-click | Boolean | true | \- | N
 content | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 duration | Number | 240 | \- | N
-overlay-props | Object | {} | Typescript：`OverlayProps`，[Overlay API Documents](./overlay?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/popup/type.ts) | N
+overlay-props | Object | {} | Typescript：`OverlayProps`，[Overlay API Documents](./overlay?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/popup/type.ts) | N
 placement | String | top | options: top/left/right/bottom/center | N
 prevent-scroll-through | Boolean | true | \- | N
 show-overlay | Boolean | true | \- | N
@@ -25,7 +25,7 @@ z-index | Number | 11500 | \- | N
 
 name | params | description
 -- | -- | --
-visible-change | `(visible: boolean, trigger: PopupSource) ` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/popup/type.ts)。<br/>`type PopupSource = 'close-btn' \| 'overlay'`<br/>
+visible-change | `(visible: boolean, trigger: PopupSource) ` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/popup/type.ts)。<br/>`type PopupSource = 'close-btn' \| 'overlay'`<br/>
 
 ### Popup External Classes
 

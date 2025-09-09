@@ -13,7 +13,7 @@ enable-back-to-top | Boolean | true | `1.1.5` | N
 enable-passive | Boolean | false | `1.1.5` | N
 header | Slot | - | `1.2.10`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 loading-bar-height | String / Number | 50 | \- | N
-loading-props | Object | - | Typescript：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/pull-down-refresh/type.ts) | N
+loading-props | Object | - | Typescript：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/pull-down-refresh/type.ts) | N
 loading-texts | Array | [] | Typescript：`string[]` | N
 lower-threshold | String / Number | 50 | `1.1.5` | N
 max-bar-height | String / Number | 80 | \- | N

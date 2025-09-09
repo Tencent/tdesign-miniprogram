@@ -27,7 +27,7 @@ visible | Boolean | false | \- | N
 name | params | description
 -- | -- | --
 change | `(value: string \| number, selectedOptions: string[])` | `1.0.1`
-close | `(trigger: CascaderTriggerSource)` | `1.0.1`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/cascader/type.ts)。<br/>`type CascaderTriggerSource = 'overlay' \| 'close-btn' \| 'finish'`<br/>
+close | `(trigger: CascaderTriggerSource)` | `1.0.1`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/cascader/type.ts)。<br/>`type CascaderTriggerSource = 'overlay' \| 'close-btn' \| 'finish'`<br/>
 pick | `(value: string \| number, label: string, index: number, level: number)` | `1.0.1`
 
 ### CSS Variables
