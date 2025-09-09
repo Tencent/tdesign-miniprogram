@@ -74,7 +74,6 @@ const form = {
     {
       name: 'Form',
       label: '表单',
-      path: '/pages/form/form',
     },
   ],
 };
@@ -126,7 +125,6 @@ const skylineForm = {
     {
       name: 'Form',
       label: '表单',
-      path: '/pages/form/form',
     },
   ],
 };
