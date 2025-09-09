@@ -36,13 +36,13 @@ const props: TdFormItemProps = {
   },
   /** 是否显示必填符号（*），优先级高于 Form.requiredMark */
   requiredMark: {
-    type: null,
-    value: undefined,
+    type: Boolean,
+    value: true,
   },
   /** 校验不通过时，是否显示错误提示信息，优先级高于 `Form.showErrorMessage` */
   showErrorMessage: {
-    type: null,
-    value: undefined,
+    type: Boolean,
+    value: true,
   },
 };
 

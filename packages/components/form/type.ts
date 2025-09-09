@@ -42,6 +42,7 @@ export interface TdFormProps<FormData extends Data = Data> {
   };
   /**
    * 是否显示必填符号（*），默认显示
+   * @default true
    */
   requiredMark?: {
     type: BooleanConstructor;

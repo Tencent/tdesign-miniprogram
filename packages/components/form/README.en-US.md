@@ -12,7 +12,7 @@ colon | Boolean | false | \- | N
 data | Object | {} | Typescript：`FormData` | N
 label-align | String | right | options: left/right/top | N
 label-width | String / Number | '81px' | \- | N
-required-mark | Boolean | undefined | \- | N
+required-mark | Boolean | true | Whether to display the required symbol (*), which is displayed by default | N
 required-mark-position | String | - | Display position of required symbols。options: left/right | N
 reset-type | String | empty | options: empty/initial | N
 rules | Object | - | Typescript：`FormRules<FormData>` `type FormRules<T extends Data = any> = { [field in keyof T]?: Array<FormRule> }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/form/type.ts) | N
