@@ -30,6 +30,7 @@ export default ({ mode }: any) => {
         '@components': path.resolve(__dirname, '../../components'),
         '@docs': path.resolve(__dirname, './docs'),
         '@pages': path.resolve(__dirname, './pages'),
+        '@tdesign-miniprogram': path.resolve(__dirname, '../../tdesign-miniprogram'),
       },
     },
     server: {

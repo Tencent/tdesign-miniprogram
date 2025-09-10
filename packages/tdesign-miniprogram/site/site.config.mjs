@@ -27,7 +27,7 @@ export const docs = [
         name: 'changelog',
         meta: { docType: 'explain' },
         path: '/miniprogram/changelog',
-        component: () => import('~/CHANGELOG.md'),
+        component: () => import('@tdesign-miniprogram/CHANGELOG.md'),
       },
       {
         title: '样式覆盖',
