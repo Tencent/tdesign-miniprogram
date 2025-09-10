@@ -14,6 +14,9 @@
     "url": "https://github.com/Tencent/tdesign-miniprogram"
   },
   "homepage": "https://tdesign.tencent.com/miniprogram",
+  "bugs": {
+    "url": "https://github.com/Tencent/tdesign-miniprogram/issues"
+  },
   "author": "tdesign",
   "license": "MIT",
   "devDependencies": {}

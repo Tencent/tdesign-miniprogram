@@ -9,7 +9,7 @@ Page({
     isSkyline: false,
   },
   onLoad(options) {
-    const { path, q, skyline } = options;
+    const { q, skyline } = options;
 
     let compList = [];
     this.skyline = skyline;
@@ -26,8 +26,6 @@ Page({
 
     // 小程序跳转各个小程序组件库
     if (q) {
-      // Navigator.gotoPage(path, rest);
-      // console.log(option);
       const str = this.getQueryByUrl(decodeURIComponent(q));
       wx.navigateTo({
         url: `/pages/${str.page}/${str.page}`,

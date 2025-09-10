@@ -3,6 +3,8 @@ miniprogram_dist
 
 _wechatide
 _example
+!packages/components/**/_example/
+
 packages/tdesign-miniprogram/example/pages/*
 !packages/tdesign-miniprogram/example/pages/gulp-error
 !packages/tdesign-miniprogram/example/pages/home

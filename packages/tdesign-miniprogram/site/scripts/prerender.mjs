@@ -16,8 +16,6 @@ function initPageList() {
     });
   });
 
-  console.log(pageList);
-
   return pageList;
 }
 
