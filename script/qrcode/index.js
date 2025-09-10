@@ -23,7 +23,7 @@ const isSkylinePage = (str) => {
 };
 
 const getImageList = () => {
-  const imageFolderDir = path.resolve(__dirname, `../../packages/tdesign-miniprogram-site/public/assets/qrcode`);
+  const imageFolderDir = path.resolve(__dirname, `../../packages/tdesign-miniprogram/public/assets/qrcode`);
   const images = fs.readdirSync(imageFolderDir);
   const imageOldList = [];
   images.forEach((item) => {
@@ -91,7 +91,7 @@ const getUnlimitedQRCodeImage = (appid, appSecret) => {
             const buffer = Buffer.from(res, 'base64');
             const destPath = path.resolve(
               __dirname,
-              `../../packages/tdesign-miniprogram-site/public/assets/qrcode/${fileName}.png`,
+              `../../packages/tdesign-miniprogram/public/assets/qrcode/${fileName}.png`,
             );
 
             fs.writeFile(
