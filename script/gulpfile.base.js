@@ -61,7 +61,7 @@ module.exports = (src, dist, moduleName) => {
   const ignore = ['**/__test__', '**/__test__/**', '**/_example/**', '**/packages/common/**', '**/node_modules/**'];
   const srcOptions = { base: src, ignore };
   const watchOptions = { events: ['add', 'change'] };
-  const gulpErrorPath = 'example/utils/gulpError.js';
+  const gulpErrorPath = 'packages/tdesign-miniprogram/example/utils/gulpError.js';
 
   // 文件匹配路径
   const globs = {
@@ -106,14 +106,17 @@ module.exports = (src, dist, moduleName) => {
    * */
   tasks.handleError = (err) =>
     gulp
-      .src(gulpErrorPath, { base: 'example' })
+      .src(gulpErrorPath, { base: 'packages/tdesign-miniprogram/example' })
       .pipe(replace('gulpErrorPlaceHolder', err))
       .pipe(gulp.dest('_example/'));
 
   /** `gulp resetError`
    * 重置gulpError
    * */
-  tasks.resetError = () => gulp.src(gulpErrorPath, { base: 'example', allowEmpty: true }).pipe(gulp.dest('_example/'));
+  tasks.resetError = () =>
+    gulp
+      .src(gulpErrorPath, { base: 'packages/tdesign-miniprogram/example', allowEmpty: true })
+      .pipe(gulp.dest('_example/'));
 
   /** `gulp copy`
    * 清理

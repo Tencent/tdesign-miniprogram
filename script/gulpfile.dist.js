@@ -3,7 +3,7 @@ const base = require('./gulpfile.base');
 
 /* config */
 const src = 'packages/components';
-const dist = 'miniprogram_dist';
+const dist = 'packages/tdesign-miniprogram/miniprogram_dist';
 
 /* base tasks */
 const { clear, build: baseBuild, watch: baseWatch } = base(src, dist, 'dist');

@@ -78,7 +78,7 @@ jobs:
           token: ${{ secrets.PERSONAL_TOKEN }}
       - name: tag and push if needed
         run: |
-          data=$(cat package.json)
+          data=$(cat packages/tdesign-miniprogram/package.json)
           re="\"version\": \"([^\"]*)\""
           [[ $data =~ $re ]]
           echo "${BASH_REMATCH[1]}"

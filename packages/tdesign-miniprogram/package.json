@@ -1,31 +1,20 @@
 {
-  "name": "@tdesign/miniprogram-site",
+  "name": "tdesign-miniprogram",
+  "version": "1.11.0-beta",
+  "title": "tdesign-miniprogram",
+  "description": "TDesign Component for miniprogram",
+  "main": "miniprogram_dist/index.js",
+  "miniprogram": "miniprogram_dist",
+  "keywords": [
+    "tdesign",
+    "miniprogram"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tencent/tdesign-miniprogram"
+  },
+  "homepage": "https://tdesign.tencent.com/miniprogram",
   "author": "tdesign",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "site": "vite build --configLoader runner",
-    "site:dev": "vite --configLoader runner",
-    "site:intranet": "vite build --mode intranet --configLoader runner",
-    "site:prerender": "node ../../../script/prerender.mjs"
-  },
   "license": "MIT",
-  "dependencies": {
-    "vue": "^3.5.20",
-    "vue-router": "^4.0.11"
-  },
-  "devDependencies": {
-    "@rollup/plugin-node-resolve": "^13.3.0",
-    "@tdesign/site-components": "^0.17.0",
-    "@types/prismjs": "^1.26.5",
-    "@vitejs/plugin-vue": "^5.2.4",
-    "@vitejs/plugin-vue-jsx": "^4.2.0",
-    "gray-matter": "^4.0.3",
-    "prismjs": "^1.24.1",
-    "tdesign-icons-view": "^0.3.6",
-    "tdesign-site-components": "^0.16.0",
-    "tdesign-theme-generator": "^1.1.0",
-    "vite": "^6.2.3",
-    "vite-plugin-tdoc": "^2.0.1"
-  }
+  "devDependencies": {}
 }

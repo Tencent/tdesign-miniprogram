@@ -17,5 +17,5 @@
       "tdesign-miniprogram/*": ["packages/components/*"]
     }
   },
-  "include": ["packages/**/*", "example/**/*", "typing.d.ts"],
+  "include": ["packages/**/*", "typing.d.ts"]
 }

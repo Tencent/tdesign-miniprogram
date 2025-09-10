@@ -15,4 +15,4 @@ jobs:
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           install-script: 'npm install --force'
-          pattern: './miniprogram_dist/**/*.{js,wxs,wxml,json}'
+          pattern: './packages/tdesign-miniprogram/miniprogram_dist/**/*.{js,wxs,wxml,json}'
