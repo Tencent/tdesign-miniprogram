@@ -1,0 +1,262 @@
+@import '../common/style/base.less';
+
+@form-prefix: ~'@{prefix}-form';
+
+// Form 变量定义
+@form-bg-color: var(--td-form-bg-color, #ffffff);
+@form-padding: var(--td-form-padding, 0);
+@form-border-radius: var(--td-form-border-radius, 0);
+@form-disabled-opacity: var(--td-form-disabled-opacity, 0.6);
+@form-readonly-bg-color: var(--td-form-readonly-bg-color, @bg-color-secondarycontainer);
+
+.@{form-prefix} {
+  position: relative;
+  width: 100%;
+  background-color: @form-bg-color;
+  padding: @form-padding;
+  border-radius: @form-border-radius;
+  box-sizing: border-box;
+  min-height: 100%;
+
+  // 标签对齐方式
+  &--label-left {
+    .@{form-prefix}__item {
+      .@{form-prefix}__label {
+        text-align: left;
+        justify-content: flex-start;
+      }
+    }
+  }
+
+  &--label-right {
+    .@{form-prefix}__item {
+      .@{form-prefix}__label {
+        text-align: right;
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  &--label-top {
+    .@{form-prefix}__item {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .@{form-prefix}__label {
+        width: 100%;
+        margin-bottom: @spacer;
+        text-align: left;
+        justify-content: flex-start;
+      }
+
+      .@{form-prefix}__controls {
+        width: 100%;
+        margin-top: 0;
+      }
+    }
+  }
+
+  // 禁用状态
+  &--disabled {
+    opacity: @form-disabled-opacity;
+    pointer-events: none;
+    cursor: not-allowed;
+
+    .@{form-prefix}__item {
+      .@{form-prefix}__label,
+      .@{form-prefix}__controls,
+      .@{form-prefix}__help,
+      .@{form-prefix}__extra {
+        color: @text-color-disabled;
+      }
+    }
+  }
+
+  // 只读状态
+  &--readonly {
+    background-color: @form-readonly-bg-color;
+
+    .@{form-prefix}__item {
+      .@{form-prefix}__label,
+      .@{form-prefix}__controls,
+      .@{form-prefix}__help,
+      .@{form-prefix}__extra {
+        color: @text-color-secondary;
+      }
+    }
+  }
+
+  // 表单项容器
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    margin-bottom: @spacer-2;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // 标签样式
+  &__label {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-width: 160rpx;
+    max-width: 300rpx;
+    margin-right: @spacer-2;
+    font-size: @font-size-m;
+    color: @text-color-primary;
+    line-height: 1.5;
+    word-break: break-all;
+    box-sizing: border-box;
+
+    // 必填标记
+    &--required {
+      &::before {
+        content: '*';
+        color: @error-color;
+        margin-right: 4rpx;
+        font-size: @font-size-m;
+        line-height: 1;
+      }
+    }
+
+    // 冒号样式
+    &--colon {
+      &::after {
+        content: ':';
+        margin-left: 4rpx;
+        color: @text-color-primary;
+      }
+    }
+
+    // 必填标记位置调整
+    &--required-mark-left {
+      &::before {
+        content: '*';
+        color: @error-color;
+        margin-right: 4rpx;
+        font-size: @font-size-m;
+        line-height: 1;
+      }
+    }
+
+    &--required-mark-right {
+      &::after {
+        content: '*';
+        color: @error-color;
+        margin-left: 4rpx;
+        font-size: @font-size-m;
+        line-height: 1;
+      }
+    }
+  }
+
+  // 控件区域
+  &__controls {
+    flex: 1;
+    width: 100%;
+    min-width: 0; // 防止flex子项溢出
+    display: flex;
+    flex-direction: column;
+  }
+
+  // 帮助文本
+  &__help {
+    margin-top: @spacer;
+    font-size: @font-size-s;
+    color: @text-color-secondary;
+    line-height: 1.4;
+  }
+
+  // 额外内容
+  &__extra {
+    margin-left: @spacer-2;
+    font-size: @font-size-s;
+    color: @text-color-secondary;
+    line-height: 1.4;
+  }
+
+  // 错误状态
+  &--error {
+    .@{form-prefix}__label {
+      color: @error-color;
+    }
+
+    .@{form-prefix}__help {
+      color: @error-color;
+    }
+  }
+
+  // 成功状态
+  &--success {
+    .@{form-prefix}__label {
+      color: @success-color;
+    }
+
+    .@{form-prefix}__help {
+      color: @success-color;
+    }
+  }
+
+  // 警告状态
+  &--warning {
+    .@{form-prefix}__label {
+      color: @warning-color;
+    }
+
+    .@{form-prefix}__help {
+      color: @warning-color;
+    }
+  }
+
+  // 响应式设计
+  @media (max-width: 750rpx) {
+    &__label {
+      min-width: 120rpx;
+      max-width: 200rpx;
+      font-size: @font-size-base;
+    }
+
+    &__item {
+      margin-bottom: @spacer;
+    }
+  }
+
+  // 紧凑模式
+  &--compact {
+    .@{form-prefix}__item {
+      margin-bottom: @spacer;
+    }
+
+    .@{form-prefix}__label {
+      min-width: 120rpx;
+      font-size: @font-size-base;
+    }
+
+    .@{form-prefix}__help {
+      margin-top: calc(@spacer / 2);
+      font-size: @font-size-xs;
+    }
+  }
+
+  // 宽松模式
+  &--loose {
+    .@{form-prefix}__item {
+      margin-bottom: @spacer-3;
+    }
+
+    .@{form-prefix}__label {
+      min-width: 200rpx;
+      font-size: @font-size-l;
+    }
+
+    .@{form-prefix}__help {
+      margin-top: @spacer-2;
+      font-size: @font-size-m;
+    }
+  }
+}

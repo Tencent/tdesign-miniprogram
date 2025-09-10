@@ -1,0 +1,18 @@
+{
+  "component": true,
+  "styleIsolation": "shared",
+  "usingComponents": {
+    "t-form": "tdesign-miniprogram/form/form",
+    "t-form-item": "tdesign-miniprogram/form-item/form-item",
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
+    "t-radio": "tdesign-miniprogram/radio/radio",
+    "t-popup": "tdesign-miniprogram/popup/popup",
+    "t-cascader": "tdesign-miniprogram/cascader/cascader",
+    "t-stepper": "tdesign-miniprogram/stepper/stepper",
+    "t-rate": "tdesign-miniprogram/rate/rate",
+    "t-textarea": "tdesign-miniprogram/textarea/textarea",
+    "t-upload": "tdesign-miniprogram/upload/upload",
+    "t-button": "tdesign-miniprogram/button/button"
+  }
+}
