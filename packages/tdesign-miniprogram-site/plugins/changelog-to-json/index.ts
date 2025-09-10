@@ -7,7 +7,7 @@ import generateChangelogJson from '../../../common/docs/plugins/changelog-to-jso
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const outputPath = path.resolve(__dirname, '../../../../_site/changelog.json');
+const outputPath = path.resolve(__dirname, '../../dist/changelog.json');
 const changelogPath = path.resolve(__dirname, '../../CHANGELOG.md');
 
 export default function changelog2Json() {
@@ -25,7 +25,7 @@ export default function changelog2Json() {
       // 生产构建时写入物理文件
       if (process.env.NODE_ENV === 'production') {
         const json = await generateChangelogJson(changelogPath, 'mobile');
-        const dir = path.dirname(outputPath); 
+        const dir = path.dirname(outputPath);
         try {
           await promises.access(dir);
         } catch (error) {

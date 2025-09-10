@@ -39,7 +39,6 @@ export default ({ mode }: any) => {
       https: false,
     },
     build: {
-      outDir: '../../_site',
       rollupOptions: {
         input: {
           site: path.resolve(__dirname, 'index.html'),
