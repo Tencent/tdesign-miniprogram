@@ -1,22 +1,27 @@
 import props from './props';
 import { validate, ValidateStatus } from './form-model';
 import config from '../common/config';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
+
 
 const { prefix } = config;
 const name = `${prefix}-form-item`;
 
-Component({
-  externalClasses: [
+@wxComponent()
+export default class FormItem extends SuperComponent {
+  externalClasses = [
+
     `${prefix}-class`,
     `${prefix}-class-label`,
     `${prefix}-class-controls`,
     `${prefix}-class-help`,
     `${prefix}-class-extra`,
-  ],
+  ];
 
-  properties: props as any,
+  properties = props as any;
 
-  data: {
+  data = {
+
     prefix,
     classPrefix: name,
     errorList: [],
@@ -28,9 +33,10 @@ Component({
     form: {},
     colon: false,
     showErrorMessage: true,
-  },
+  };
 
-  relations: {
+  relations: RelationsOptions = {
+
     '../form/form': {
       type: 'parent',
       linked(target) {
@@ -69,9 +75,10 @@ Component({
         }
       },
     },
-  },
+  };
 
-  lifetimes: {
+  lifetimes = {
+
     ready() {
       this.initFormItem();
     },
@@ -80,9 +87,10 @@ Component({
         this.form.unregisterChild(this.properties.name);
       }
     },
-  },
+  };
 
-  methods: {
+  methods = {
+
     // 处理描述信息链接点击事件
     handlePreviewImage(e) {
       const { url } = e.currentTarget.dataset;
@@ -262,5 +270,6 @@ Component({
       // 触发blur验证
       this.validate('blur');
     },
-  },
-});
+  };
+}
+
