@@ -1,5 +1,6 @@
 <form
   class="{{classPrefix}} {{classPrefix}}--{{labelAlign}} {{classPrefix}}--{{disabled ? 'disabled' : ''}} {{classPrefix}}--{{readonly ? 'readonly' : ''}} {{prefix}}-class"
+  style="{{style}}"
 >
   <slot />
 </form>

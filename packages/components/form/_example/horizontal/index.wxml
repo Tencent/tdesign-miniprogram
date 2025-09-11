@@ -15,7 +15,7 @@
       value="{{formData.name}}"
       borderless
       align="right"
-      placeholder="请输入内容"
+      placeholder="请输入用户名"
       bind:change="onInputChange"
       data-field="name"
     />
@@ -28,7 +28,7 @@
       type="password"
       align="right"
       clearable="{{false}}"
-      placeholder="请输入内容"
+      placeholder="请输入密码"
       bind:change="onInputChange"
       data-field="password"
     />
@@ -54,7 +54,7 @@
   </t-form-item>
 
   <t-form-item arrow label="籍贯" name="place" content-align="right">
-    <t-input value="{{formData.place}}" borderless align="right" placeholder="请输入内容" bind:tap="showCascader" />
+    <t-input value="{{formData.place}}" borderless align="right" placeholder="请选择籍贯" bind:tap="showCascader" />
     <t-cascader
       visible="{{visibleCascader}}"
       value="{{address}}"

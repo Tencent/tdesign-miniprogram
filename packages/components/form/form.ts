@@ -1,33 +1,35 @@
 import props from './props';
 import config from '../common/config';
+import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 
 const { prefix } = config;
 const name = `${prefix}-form`;
+@wxComponent()
+export default class Form extends SuperComponent {
+  behaviors = ['wx://component-export'];
 
-Component({
-  behaviors: ['wx://component-export'],
-  externalClasses: [
+  externalClasses = [
     `${prefix}-class`,
     `${prefix}-class-label`,
     `${prefix}-class-controls`,
     `${prefix}-class-help`,
     `${prefix}-class-extra`,
-  ],
+  ];
 
-  properties: props as any,
+  properties = props as any;
 
-  options: {
+  options = {
     multipleSlots: true,
-  },
+  };
 
-  relations: {
+  relations: RelationsOptions = {
     '../form-item/form-item': {
       type: 'child',
       linked() {},
     },
-  },
+  };
 
-  data: {
+  data = {
     prefix,
     classPrefix: name,
     children: [],
@@ -36,15 +38,15 @@ Component({
     rules: {},
     fields: [],
     showErrorMessage: true,
-  },
+  };
 
-  lifetimes: {
+  lifetimes = {
     ready() {
       this.initFormData();
     },
-  },
+  };
 
-  methods: {
+  methods = {
     // 初始化表单数据
     initFormData() {
       const { data } = this.properties;
@@ -260,5 +262,5 @@ Component({
     onReset() {
       this.reset();
     },
-  },
-});
+  };
+}

@@ -44,29 +44,10 @@ Page({
   },
 
   clickHandle(e) {
-    // 添加安全检查，确保e.detail存在
-    if (!e.detail) {
-      console.error('clickHandle: e.detail is undefined', e);
-      return;
-    }
-
-    // 从e.detail中获取item对象
-    const { item } = e.detail;
-    if (!item) {
-      console.error('clickHandle: item is undefined', e.detail);
-      return;
-    }
-
-    let { name, path = '' } = item as {
+    let { name, path = '' } = e.detail.item as {
       name: string;
       path?: string;
     };
-
-    // 确保name存在
-    if (!name) {
-      console.error('clickHandle: name is undefined', e.detail.item);
-      return;
-    }
 
     if (!path) {
       name = name.replace(/^[A-Z]/, (match) => `${match}`.toLocaleLowerCase());
