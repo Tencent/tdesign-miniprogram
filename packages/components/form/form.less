@@ -3,10 +3,9 @@
 @form-prefix: ~'@{prefix}-form';
 
 // Form 变量定义
-@form-bg-color: var(--td-form-bg-color, #ffffff);
+@form-bg-color: var(--td-form-bg-color, @bg-color-container);
 @form-padding: var(--td-form-padding, 0);
 @form-border-radius: var(--td-form-border-radius, 0);
-@form-disabled-opacity: var(--td-form-disabled-opacity, 0.6);
 @form-readonly-bg-color: var(--td-form-readonly-bg-color, @bg-color-secondarycontainer);
 
 .@{form-prefix} {
@@ -58,7 +57,7 @@
 
   // 禁用状态
   &--disabled {
-    opacity: @form-disabled-opacity;
+    opacity: 0.6;
     pointer-events: none;
     cursor: not-allowed;
 

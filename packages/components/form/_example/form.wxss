@@ -41,7 +41,7 @@
   margin-bottom: 24rpx;
 }
 
-.button-group {
+.select-button-group {
   background-color: #fff;
   box-sizing: border-box;
   padding: 16rpx 8rpx;
@@ -52,11 +52,11 @@
   margin-bottom: 16rpx;
 }
 
-.button-group .t-button {
+.select-button-group .t-button {
   height: 64rpx;
   flex: 1;
 }
 
-.button-group .t-button:not(:last-child) {
+.select-button-group .t-button:not(:last-child) {
   margin-right: 16rpx;
 }

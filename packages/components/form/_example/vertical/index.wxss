@@ -23,7 +23,7 @@
 }
 
 .button-group .t-button {
-  height: 64rpx;
+  height: 80rpx;
   flex: 1;
 }
 
