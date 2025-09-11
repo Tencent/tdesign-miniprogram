@@ -26,7 +26,7 @@
     "bigPackageSizeSupport": true
   },
   "compileType": "miniprogram",
-  "libVersion": "3.8.11",
+  "libVersion": "widelyUsed",
   "appid": "wx6f3e38f61d138c04",
   "projectname": "TDesign",
   "debugOptions": {

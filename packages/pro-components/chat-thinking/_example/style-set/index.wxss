@@ -1,0 +1,55 @@
+.demo-container {
+  padding: 32rpx;
+  width: 100%;
+  background-color: #eee;
+  box-sizing: border-box;
+  border-radius: 4rpx;
+}
+
+.config-content {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  border-radius: 4rpx;
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+
+.layout-content,
+.animation-content {
+  width: 50%;
+}
+
+.title {
+  font-size: 24rpx;
+}
+
+.animation-content {
+  margin-top: 40rpx;
+}
+
+.box {
+  padding: 10rpx;
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  gap: 10rpx;
+  box-sizing: border-box;
+}
+
+.radio-box {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.radio-label {
+  font-size: 24rpx;
+  margin: 0;
+  padding: 0;
+}

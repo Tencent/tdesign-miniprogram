@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "t-chat-actionbar": "tdesign-miniprogram/chat-actionbar/chat-actionbar"
+  }
+}

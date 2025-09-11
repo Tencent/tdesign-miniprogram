@@ -1,0 +1,11 @@
+<view class="skyline-demo">
+    <view class="demo-header">
+        <text class="demo-title">Skyline 渲染引擎演示</text>
+        <text class="demo-subtitle">使用 Skyline 渲染引擎提升附件管理性能</text>
+    </view>
+
+    <view class="demo-content">
+        <t-chat-attachments attachments="{{attachments}}" layout="grid" maxCount="9" bind:change="onAttachmentsChange"
+            bind:upload="onUpload" bind:delete="onDelete" />
+    </view>
+</view>

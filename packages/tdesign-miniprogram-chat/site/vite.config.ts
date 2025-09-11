@@ -25,12 +25,12 @@ export default ({ mode }: any) => {
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './'),
-        '@': path.resolve(__dirname, '../../components'),
+        '@': path.resolve(__dirname, '../../pro-components'),
         '@common': path.resolve(__dirname, '../../common'),
         '@components': path.resolve(__dirname, '../../components'),
         '@docs': path.resolve(__dirname, './docs'),
         '@pages': path.resolve(__dirname, './pages'),
-        '@tdesign-miniprogram': path.resolve(__dirname, '../../tdesign-miniprogram'),
+        '@tdesign-miniprogram-chat': path.resolve(__dirname, '../../tdesign-miniprogram-chat'),
       },
     },
     server: {

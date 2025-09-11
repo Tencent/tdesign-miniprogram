@@ -1,0 +1,14 @@
+.button-example {
+  margin: 32rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.button-example:after {
+  content: '';
+  flex: auto;
+}
+
+.title {
+  padding: 32rpx;
+}

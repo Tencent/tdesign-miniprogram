@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "ChatThinking 聊天思考状态",
+  "usingComponents": {
+    "base": "./base",
+    "style-set": "./style-set",
+    "t-navbar": "tdesign-miniprogram/navbar/navbar"
+  }
+}

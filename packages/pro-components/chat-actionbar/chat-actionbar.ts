@@ -1,0 +1,215 @@
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../components/common/src/index';
+
+import config from '../../components/common/config';
+
+const { prefix } = config;
+const name = `${prefix}-chat-actionbar`;
+
+@wxComponent()
+export default class ChatActionbar extends SuperComponent {
+  options: ComponentsOptionsType = {
+    multipleSlots: true,
+    addGlobalClass: true,
+    styleIsolation: 'shared',
+  };
+
+  properties = {
+    chatId: {
+      type: String,
+      value: '',
+    },
+    actionBar: {
+      type: Array,
+      value: ['refresh', 'copy', 'good', 'bad', 'share'],
+    },
+    comment: {
+      type: String,
+      value: '',
+    },
+    content: {
+      type: String,
+      value: '',
+    },
+    copyMode: {
+      type: String,
+      value: 'markdown',
+    },
+    placement: {
+      type: String,
+      value: 'start',
+    },
+  };
+
+  data = {
+    actions: [],
+    COMPONENT_NAME: name,
+    pComment: '',
+    computedPlacement: '',
+    iconMap: {
+      good: 'thumb-up',
+      bad: 'thumb-down',
+      refresh: 'refresh',
+      copy: 'file-copy',
+      share: 'share',
+    },
+    iconActiveMap: {
+      good: 'thumb-up-filled',
+      bad: 'thumb-down-filled',
+    },
+  };
+
+  observers = {
+    comment(newVal) {
+      this.setData({
+        pComment: newVal || '',
+      });
+    },
+    placement() {
+      this.setComputedPlacement();
+    },
+    'actionBar, pComment'() {
+      this.setActions();
+    },
+  };
+
+  methods = {
+    filterSpecialChars(content: string): string {
+      // 保留段落、换行和缩进 - 不处理换行符和行首空白
+      let result = content;
+
+      // 先处理表格格式 - 保留表格语法
+      const tableRegex = /^(\s*\|.*\|.*\n\s*\|[-: ]+\|.*\n(\s*\|.*\|.*\n)*)/gm;
+      const tables = [];
+      result = result.replace(tableRegex, (match) => {
+        // 在表格内容中去除特殊引用格式和强调语法
+        const cleanedTable = match
+          .replace(/\[\d+(?:,\d+)*\]\(@ref\)/g, '')
+          .replace(/(\*\*|__)(.*?)\1|(\*|_)(.*?)\3/g, '$2$4')
+          // 替换表格中的<br>标签为换行符
+          .replace(/<br\s*\/?>/gi, '\n');
+        tables.push(cleanedTable);
+        return `%%TABLE${tables.length - 1}%%`; // 用占位符临时替换表格
+      });
+
+      // 替换标题（保留行首缩进）
+      result = result.replace(/^(\s*)#{1,6}\s+/gm, '$1');
+      // 替换强调语法
+      result = result.replace(/(\*\*|__)(.*?)\1|(\*|_)(.*?)\3/g, '$2$4');
+      // 替换图片
+      result = result.replace(/!\[.*?\]\(.*?\)/g, '');
+      // 处理特殊引用格式（非表格部分）
+      result = result.replace(/\[\d+(?:,\d+)*\]\(@ref\)/g, '');
+      // 处理其他特殊字符但保留列表标记(-*+)、换行符和缩进
+      const specialChars = /(\\|`|\{|\}|\[|\]|\(|\)|\||！|@ref|\([@#]\w+\))/g;
+      result = result.replace(specialChars, '');
+      // 处理可能剩余的 [数字] 格式
+      result = result.replace(/\[\d+\]/g, '');
+      // 替换非表格部分的<br>标签为换行符
+      result = result.replace(/<br\s*\/?>/gi, '\n');
+
+      // 恢复表格格式
+      result = result.replace(/%%TABLE(\d+)%%/g, (match, index) => tables[parseInt(index, 10)] || '');
+
+      // 清理多余的空行但保留单个换行和缩进
+      return result.replace(/\n{3,}/g, '\n\n').trim();
+    },
+
+    handelActionClick(e) {
+      const { name } = e.currentTarget.dataset;
+      if (name === 'copy' && this.data.content) {
+        this.data.handleCopy();
+      } else if (name === 'good') {
+        const isActive = this.data.pComment === 'good';
+        this.setData({
+          pComment: isActive ? undefined : 'good',
+        });
+        this.triggerEvent('handleAction', {
+          name,
+          active: !isActive,
+        });
+      } else if (name === 'bad') {
+        const isActive = this.data.pComment === 'bad';
+        this.setData({
+          pComment: isActive ? undefined : 'bad',
+        });
+        this.triggerEvent('handleAction', {
+          name,
+          active: !isActive,
+        });
+      } else {
+        this.triggerEvent('handleAction', {
+          name,
+        });
+      }
+    },
+
+    handleCopy() {
+      if (!this.data.content) return;
+      const copyContent =
+        this.data.copyMode === 'markdown' ? this.data.content : this.data.filterSpecialChars(this.data.content);
+      wx.setClipboardData({
+        data: copyContent,
+        success: () => {
+          wx.showToast({
+            title: '复制成功',
+          });
+        },
+        fail: (e) => {
+          // eslint-disable-next-line no-console
+          console.log(e);
+          wx.showToast({
+            title: '复制失败，请手动复制',
+            icon: 'none',
+          });
+        },
+      });
+    },
+
+    setComputedPlacement() {
+      this.setData({
+        computedPlacement: this.properties.placement || 'start',
+      });
+    },
+
+    setActions() {
+      const baseActions = [];
+      if (Array.isArray(this.properties.actionBar)) {
+        this.properties.actionBar.forEach((item) => {
+          if (item === 'good' || item === 'bad') {
+            baseActions.push({
+              name: item,
+              isActive: this.data.pComment === item,
+            });
+          } else {
+            baseActions.push({
+              name: item,
+              isActive: false,
+            });
+          }
+        });
+      }
+      this.setData({
+        actions: baseActions,
+      });
+    },
+  };
+
+  lifetimes = {
+    created() {
+      this.data.filterSpecialChars = this.filterSpecialChars.bind(this);
+      this.data.handelActionClick = this.handelActionClick.bind(this);
+      this.data.handleCopy = this.handleCopy.bind(this);
+    },
+
+    attached() {
+      // 初始化pComment
+      this.setData({
+        pComment: this.properties.comment || '',
+      });
+      this.setComputedPlacement();
+      this.setActions();
+    },
+
+    detached() {},
+  };
+}

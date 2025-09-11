@@ -1,0 +1,10 @@
+<t-navbar class="demo-navbar" title="ChatLoading" leftArrow />
+<view class="demo">
+  <t-demo-header title="ChatLoading" desc="对话加载状态" notice="渲染框架支持情况：WebView" />
+  <t-demo title="加载组件" desc="支持多种加载中动效类型，包括skeleton/moving/gradient/circle">
+    <base />
+  </t-demo>
+  <t-demo title="带文案描述的加载组件" desc="">
+    <text />
+  </t-demo>
+</view>

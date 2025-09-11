@@ -1,0 +1,10 @@
+<view class="skyline-demo">
+    <view class="demo-header">
+        <text class="demo-title">Skyline 渲染引擎演示</text>
+        <text class="demo-subtitle">使用 Skyline 渲染引擎提升加载动画性能</text>
+    </view>
+
+    <view class="demo-content">
+        <t-chat-loading loading="{{loading}}" theme="light" animation="pulse" text="正在加载中..." />
+    </view>
+</view>

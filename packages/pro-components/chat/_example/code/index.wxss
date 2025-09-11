@@ -1,0 +1,19 @@
+.chat-box {
+  display: block;
+  height: 75vh;
+  padding: 16rpx;
+}
+
+.preview {
+  padding: 8rpx 16rpx;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #c5c5c5;
+  border-radius: 6rpx;
+  color: #181818;
+}
+
+.preview .btn {
+  color: #366ef4;
+  margin-left: 32rpx;
+}

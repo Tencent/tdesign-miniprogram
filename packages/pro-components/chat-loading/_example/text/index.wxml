@@ -1,0 +1,3 @@
+<view class="demo-container">
+  <t-chat-loading animation="moving" text="思考中..." />
+</view>

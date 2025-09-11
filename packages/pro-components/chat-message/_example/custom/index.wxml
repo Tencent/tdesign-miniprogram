@@ -1,0 +1,7 @@
+<view class="button-example">
+  <t-chat-message message="{{message}}">
+  </t-chat-message>
+  <t-chat-message message="{{message2}}">
+    <tc-canvas slot="content" el="normalLine" onInit="{{meow}}"></tc-canvas>
+  </t-chat-message>
+</view>

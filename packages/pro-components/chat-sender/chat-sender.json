@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "t-icon": "../../components/icon/icon",
+    "chat-attachments": "../chat-attachments/chat-attachments"
+  },
+  "component": true
+}

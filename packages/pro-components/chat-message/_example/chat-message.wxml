@@ -1,0 +1,28 @@
+<t-navbar class="demo-navbar" title="ChatMessage" leftArrow />
+<view class="demo">
+  <t-demo-header title="ChatMessage" desc="对话单元" notice="渲染框架支持情况：WebView" />
+  <t-demo title="基础聊天消息">
+    <base />
+  </t-demo>
+  <t-demo title="基础样式">
+    <style-component />
+  </t-demo>
+  <t-demo title="placement">
+    <placement />
+  </t-demo>
+  <t-demo title="可配置头像，昵称，位置">
+    <configure />
+  </t-demo>
+  <t-demo title="消息状态">
+    <status />
+  </t-demo>
+  <t-demo title="内置支持的几种消息内容">
+    <content />
+  </t-demo>
+  <t-demo title="消息内容自定义">
+    <custom />
+  </t-demo>
+  <t-demo title="消息操作栏">
+    <action />
+  </t-demo>
+</view>

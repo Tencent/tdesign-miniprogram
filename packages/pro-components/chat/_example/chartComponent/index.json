@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "styleIsolation": "shared",
+  "usingComponents": {
+    "tc-canvas": "@tencent/tvision-t4-mp"
+  }
+}

@@ -1,0 +1,24 @@
+.container {
+  padding: 32rpx;
+  background-color: #f8f9fa;
+}
+
+.layout-btn {
+  margin: 16rpx 0;
+  padding: 12rpx 24rpx;
+  background-color: #0052d9;
+  color: #fff;
+  border: none;
+  border-radius: 8rpx;
+  font-size: 28rpx;
+}
+
+.demo-text {
+  padding: 16rpx 0;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
