@@ -3,7 +3,6 @@
   "styleIsolation": "shared",
   "usingComponents": {
     "t-chat-message": "tdesign-miniprogram/chat-message/chat-message",
-    "t-chat-actionbar": "tdesign-miniprogram/chat-actionbar/chat-actionbar",
-    "tc-canvas": "@tencent/tvision-t4-mp"
+    "t-chat-actionbar": "tdesign-miniprogram/chat-actionbar/chat-actionbar"
   }
 }
