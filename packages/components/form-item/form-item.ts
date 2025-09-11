@@ -3,12 +3,14 @@ import { validate, ValidateStatus } from './form-model';
 import config from '../common/config';
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 
+
 const { prefix } = config;
 const name = `${prefix}-form-item`;
 
 @wxComponent()
 export default class FormItem extends SuperComponent {
   externalClasses = [
+
     `${prefix}-class`,
     `${prefix}-class-label`,
     `${prefix}-class-controls`,
@@ -19,6 +21,7 @@ export default class FormItem extends SuperComponent {
   properties = props as any;
 
   data = {
+
     prefix,
     classPrefix: name,
     errorList: [],
@@ -33,6 +36,7 @@ export default class FormItem extends SuperComponent {
   };
 
   relations: RelationsOptions = {
+
     '../form/form': {
       type: 'parent',
       linked(target) {
@@ -74,6 +78,7 @@ export default class FormItem extends SuperComponent {
   };
 
   lifetimes = {
+
     ready() {
       this.initFormItem();
     },
@@ -85,6 +90,7 @@ export default class FormItem extends SuperComponent {
   };
 
   methods = {
+
     // 处理描述信息链接点击事件
     handlePreviewImage(e) {
       const { url } = e.currentTarget.dataset;
@@ -266,3 +272,4 @@ export default class FormItem extends SuperComponent {
     },
   };
 }
+

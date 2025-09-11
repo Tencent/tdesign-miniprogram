@@ -13,8 +13,8 @@ disabled | Boolean | - | \- | N
 expand-icon | Boolean | true | \- | N
 expand-mutex | Boolean | false | \- | N
 theme | String | default | options: default/card | N
-value | Array | [] | Typescript：`CollapseValue` `type CollapseValue = Array<string \| number>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/collapse/type.ts) | N
-default-value | Array | undefined | uncontrolled property。Typescript：`CollapseValue` `type CollapseValue = Array<string \| number>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/collapse/type.ts) | N
+value | Array | [] | Typescript：`CollapseValue` `type CollapseValue = Array<string \| number>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/collapse/type.ts) | N
+default-value | Array | undefined | uncontrolled property。Typescript：`CollapseValue` `type CollapseValue = Array<string \| number>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/collapse/type.ts) | N
 
 ### Collapse Events
 

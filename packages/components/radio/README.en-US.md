@@ -22,7 +22,7 @@ max-label-row | Number | 3 | \- | N
 name | String | - | \- | N
 placement | String | - | options: left/right | N
 readonly | Boolean | undefined | `1.8.6` | N
-value | String / Number / Boolean | false | Typescript：`T` `type RadioValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/radio/type.ts) | N
+value | String / Number / Boolean | false | Typescript：`T` `type RadioValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/radio/type.ts) | N
 
 ### Radio Events
 
@@ -53,11 +53,11 @@ disabled | Boolean | undefined | \- | N
 icon | String / Array | 'circle' | Typescript：`'circle' \| 'line' \| 'dot' \| Array<string>` | N
 keys | Object | - | Typescript：`KeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 name | String | - | \- | N
-options | Array | - | Typescript：`Array<RadioOption>` `type RadioOption = string \| number \| RadioOptionObj` `interface RadioOptionObj { label?: string; value?: string \| number; readonly?: boolean; disabled?: boolean; allowUncheck?: boolean; }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/radio-group/type.ts) | N
+options | Array | - | Typescript：`Array<RadioOption>` `type RadioOption = string \| number \| RadioOptionObj` `interface RadioOptionObj { label?: string; value?: string \| number; readonly?: boolean; disabled?: boolean; allowUncheck?: boolean; }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/radio-group/type.ts) | N
 placement | String | left | options: left/right | N
 readonly | Boolean | undefined | `1.8.6` | N
-value | String / Number / Boolean | - | Typescript：`T` `type RadioValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/radio-group/type.ts) | N
-default-value | String / Number / Boolean | undefined | uncontrolled property。Typescript：`T` `type RadioValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/radio-group/type.ts) | N
+value | String / Number / Boolean | - | Typescript：`T` `type RadioValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/radio-group/type.ts) | N
+default-value | String / Number / Boolean | undefined | uncontrolled property。Typescript：`T` `type RadioValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/radio-group/type.ts) | N
 
 ### RadioGroup Events
 

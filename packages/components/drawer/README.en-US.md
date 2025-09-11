@@ -11,7 +11,7 @@ custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on v
 close-on-overlay-click | Boolean | true | \- | N
 destroy-on-close | Boolean | false | \- | N
 footer | Slot | - | `0.29.0`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
-items | Array | - | Typescript：`DrawerItem[]` `interface DrawerItem { title: string; icon: string; }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/drawer/type.ts) | N
+items | Array | - | Typescript：`DrawerItem[]` `interface DrawerItem { title: string; icon: string; }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/drawer/type.ts) | N
 placement | String | right | options: left/right | N
 show-overlay | Boolean | true | \- | N
 title | String / Slot | - | `0.29.0`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
@@ -23,7 +23,7 @@ z-index | Number | 11500 | \- | N
 
 name | params | description
 -- | -- | --
-close | `(trigger: DrawerTriggerSource)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/drawer/type.ts)。<br/>`type DrawerTriggerSource = 'overlay'`<br/>
+close | `(trigger: DrawerTriggerSource)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/drawer/type.ts)。<br/>`type DrawerTriggerSource = 'overlay'`<br/>
 item-click | `(index: number; item: DrawerItem)` | \-
 overlay-click | \- | \-
 

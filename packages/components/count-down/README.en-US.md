@@ -21,7 +21,7 @@ time | Number | 0 | required | Y
 
 name | params | description
 -- | -- | --
-change | `(time: TimeData)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/count-down/type.ts)。<br/>`interface TimeData {  days: number; hours: number; minutes: number; seconds: number; milliseconds: number }`<br/>
+change | `(time: TimeData)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/count-down/type.ts)。<br/>`interface TimeData {  days: number; hours: number; minutes: number; seconds: number; milliseconds: number }`<br/>
 finish | \- | \-
 
 ### CountDown External Classes

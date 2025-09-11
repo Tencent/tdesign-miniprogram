@@ -23,6 +23,7 @@ scroll-to-first-error | String | - | options: ''/smooth/auto | N
 show-error-message | Boolean | true | \- | N
 submit-with-warning-message | Boolean | false | \- | N
 
+
 ### Form Events
 
 name | params | description
@@ -42,6 +43,7 @@ submit | `(params?: { showErrorMessage?: boolean })` | \- | required
 validate | `(params?: FormValidateParams)` | `Promise<FormValidateResult<FormData>>` | required。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/form/type.ts)。<br/>`interface FormValidateParams { fields?: Array<string>; showErrorMessage?: boolean; trigger?: ValidateTriggerType }`<br/><br/>`type ValidateTriggerType = 'blur' \| 'change' \| 'submit' \| 'all'`<br/>
 
 
+
 ### FormItem Props
 
 name | type | default | description | required
@@ -52,11 +54,13 @@ arrow | Boolean | false | \- | N
 for | String | - | \- | N
 help | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 label | String / Slot | '' | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+
 label-align | String | - | options: left/right/top | N
 label-width | String / Number | - | \- | N
 name | String | - | \- | N
 required-mark | Boolean | undefined | \- | N
 rules | Array | - | Typescript：`Array<FormRule>` | N
+
 show-error-message | Boolean | undefined | \- | N
 
 ### FormRule
@@ -66,6 +70,7 @@ name | type | default | description | required
 boolean | Boolean | - | \- | N
 date | Boolean / Object | - | Typescript：`boolean \| IsDateOptions` `interface IsDateOptions { format: string; strictMode: boolean; delimiters: string[] }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/form/type.ts) | N
 email | Boolean / Object | - | Typescript：`boolean \| IsEmailOptions` `import { IsEmailOptions } from 'validator/es/lib/isEmail'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/form/type.ts) | N
+
 enum | Array | - | Typescript：`Array<string>` | N
 idcard | Boolean | - | \- | N
 len | Number / Boolean | - | \- | N
@@ -80,6 +85,7 @@ trigger | String | change | Typescript：`ValidateTriggerType` | N
 type | String | error | options: error/warning | N
 url | Boolean / Object | - | Typescript：`boolean \| IsURLOptions` `import { IsURLOptions } from 'validator/es/lib/isURL'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/form/type.ts) | N
 validator | Function | - | Typescript：`CustomValidator` `type CustomValidator = (val: ValueType) => CustomValidateResolveType \| Promise<CustomValidateResolveType>` `type CustomValidateResolveType = boolean \| CustomValidateObj` `interface CustomValidateObj { result: boolean; message: string; type?: 'error' \| 'warning' \| 'success' }` `type ValueType = any`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/form/type.ts) | N
+
 whitespace | Boolean | - | \- | N
 
 ### FormErrorMessage

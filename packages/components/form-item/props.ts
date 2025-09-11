@@ -19,6 +19,7 @@ const props: TdFormItemProps = {
   /** 表单项说明内容 */
   help: {
     type: String,
+
   },
   /** 字段标签名称 */
   label: {
@@ -51,6 +52,7 @@ const props: TdFormItemProps = {
   showErrorMessage: {
     type: null,
     value: undefined,
+
   },
 };
 

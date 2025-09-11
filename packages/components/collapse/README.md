@@ -67,8 +67,8 @@ disabled | Boolean | - | 是否禁用面板展开/收起操作 | N
 expand-icon | Boolean | true | 展开图标 | N
 expand-mutex | Boolean | false | 每个面板互斥展开，每次只展开一个面板 | N
 theme | String | default | 折叠面板风格。可选项：default/card | N
-value | Array | [] | 展开的面板集合。TS 类型：`CollapseValue` `type CollapseValue = Array<string \| number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/collapse/type.ts) | N
-default-value | Array | undefined | 展开的面板集合。非受控属性。TS 类型：`CollapseValue` `type CollapseValue = Array<string \| number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/collapse/type.ts) | N
+value | Array | [] | 展开的面板集合。TS 类型：`CollapseValue` `type CollapseValue = Array<string \| number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/collapse/type.ts) | N
+default-value | Array | undefined | 展开的面板集合。非受控属性。TS 类型：`CollapseValue` `type CollapseValue = Array<string \| number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/collapse/type.ts) | N
 
 ### Collapse Events
 
