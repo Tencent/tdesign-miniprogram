@@ -11,10 +11,14 @@ const props: TdFormItemProps = {
     type: Boolean,
     value: false,
   },
+  /** label 原生属性 */
+  for: {
+    type: String,
+    value: '',
+  },
   /** 表单项说明内容 */
   help: {
     type: String,
-    value: '',
   },
   /** 字段标签名称 */
   label: {
@@ -36,13 +40,17 @@ const props: TdFormItemProps = {
   },
   /** 是否显示必填符号（*），优先级高于 Form.requiredMark */
   requiredMark: {
-    type: Boolean,
-    value: true,
+    type: null,
+    value: undefined,
+  },
+  /** 表单字段校验规则 */
+  rules: {
+    type: Array,
   },
   /** 校验不通过时，是否显示错误提示信息，优先级高于 `Form.showErrorMessage` */
   showErrorMessage: {
-    type: Boolean,
-    value: true,
+    type: null,
+    value: undefined,
   },
 };
 

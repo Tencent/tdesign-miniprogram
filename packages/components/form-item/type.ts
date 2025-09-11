@@ -14,8 +14,15 @@ export interface TdFormItemProps {
     value?: boolean;
   };
   /**
-   * 表单项说明内容
+   * label 原生属性
    * @default ''
+   */
+  for?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 表单项说明内容
    */
   help?: {
     type: StringConstructor;
@@ -53,15 +60,20 @@ export interface TdFormItemProps {
   };
   /**
    * 是否显示必填符号（*），优先级高于 Form.requiredMark
-   * @default true
    */
   requiredMark?: {
     type: BooleanConstructor;
     value?: boolean;
   };
   /**
+   * 表单字段校验规则
+   */
+  rules?: {
+    type: ArrayConstructor;
+    value?: Array<any>;
+  };
+  /**
    * 校验不通过时，是否显示错误提示信息，优先级高于 `Form.showErrorMessage`
-   * @default true
    */
   showErrorMessage?: {
     type: BooleanConstructor;
