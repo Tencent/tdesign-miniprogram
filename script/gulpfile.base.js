@@ -112,7 +112,7 @@ module.exports = (src, dist, moduleName) => {
   const tasks = {};
 
   /** `gulp replacePaths`
-   * 统一处理 pro-conponents 的路径替换，保证组件复制到 example/miniprogram-dist 后，路径正确
+   * 统一处理 pro-components 的路径替换，保证组件复制到 example/miniprogram-dist 后，路径正确
    * */
   tasks.replacePaths = () => gulpIf(isProComponent(src), replace(/\.\.\/components\//g, ''));
 

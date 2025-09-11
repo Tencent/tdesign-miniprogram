@@ -5,17 +5,25 @@
     </view>
     <block wx:for="{{actions}}" wx:for-item="item" wx:for-index="index" wx:key="index">
       <!-- 分享按钮使用 button 标签 -->
-      <button wx:if="{{item.name === 'share'}}" data-name="{{item.name}}"
+      <button
+        wx:if="{{item.name === 'share'}}"
+        data-name="{{item.name}}"
         class="{{[COMPONENT_NAME+'__item', item.isActive ? COMPONENT_NAME+'__item-active' : '']}}"
-        open-type="{{content ? 'share' : 'none'}}" data-chat-id="{{chatId}}" bindtap="handelActionClick">
+        open-type="{{content ? 'share' : 'none'}}"
+        data-chat-id="{{chatId}}"
+        bindtap="handleActionClick"
+      >
         <t-icon wx:if="{{!item.isActive}}" name="{{iconMap[item.name]}}" size="40rpx" />
         <t-icon wx:else name="{{iconActiveMap[item.name]}}" size="40rpx" />
       </button>
 
       <!-- 其他按钮使用 view 标签 -->
-      <view wx:else data-name="{{item.name}}"
+      <view
+        wx:else
+        data-name="{{item.name}}"
         class="{{[COMPONENT_NAME+'__item', item.isActive ? COMPONENT_NAME+'__item-active' : '']}}"
-        bindtap="handelActionClick">
+        bindtap="handleActionClick"
+      >
         <t-icon wx:if="{{!item.isActive}}" name="{{iconMap[item.name]}}" size="40rpx" />
         <t-icon wx:else name="{{iconActiveMap[item.name]}}" size="40rpx" />
       </view>
