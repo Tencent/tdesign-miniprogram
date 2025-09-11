@@ -7,10 +7,10 @@ module.exports = {
   moduleNameMapper: {
     '^tdesign-miniprogram/(.*)': '<rootDir>/packages/components/$1',
     '^tdesign-miniprogram': '<rootDir>/packages/components/index',
-    '^@behaviors/(.*)': '<rootDir>/example/behaviors/$1',
+    '^@behaviors/(.*)': '<rootDir>/packages/tdesign-miniprogram/example/behaviors/$1',
   },
-  testMatch: ['<rootDir>/packages/components/**/__test__/**/*.test.{js,ts}'],
-  collectCoverageFrom: ['<rootDir>/packages/components/**/*.{js,ts}', '!**/__test__/**', '!**/_example/**'],
+  testMatch: ['<rootDir>/packages/(components|pro-components)/**/__test__/**/*.test.{js,ts}'],
+  collectCoverageFrom: ['<rootDir>/packages/(components|pro-components)/**/*.{js,ts}', '!**/__test__/**', '!**/_example/**'],
   collectCoverage: true,
   coverageProvider: 'v8',
   coverageDirectory: '<rootDir>/packages/tdesign-miniprogram/test/unit/coverage',

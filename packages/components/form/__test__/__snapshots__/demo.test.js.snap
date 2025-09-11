@@ -107,7 +107,7 @@ exports[`Form Form horizontal demo works fine 1`] = `
         align="right"
         borderless="{{true}}"
         data-field="name"
-        placeholder="请输入内容"
+        placeholder="请输入用户名"
         value=""
         bind:change="onInputChange"
       />
@@ -121,7 +121,7 @@ exports[`Form Form horizontal demo works fine 1`] = `
         borderless="{{true}}"
         clearable="{{false}}"
         data-field="password"
-        placeholder="请输入内容"
+        placeholder="请输入密码"
         type="password"
         value=""
         bind:change="onInputChange"
@@ -180,7 +180,7 @@ exports[`Form Form horizontal demo works fine 1`] = `
       <t-input
         align="right"
         borderless="{{true}}"
-        placeholder="请输入内容"
+        placeholder="请选择籍贯"
         value=""
         bind:tap="showCascader"
       />
@@ -551,7 +551,7 @@ exports[`Form Form vertical demo works fine 1`] = `
       <t-input
         borderless="{{true}}"
         data-field="name"
-        placeholder="请输入内容"
+        placeholder="请输入用户名"
         value=""
         bind:change="onInputChange"
       />
@@ -564,7 +564,7 @@ exports[`Form Form vertical demo works fine 1`] = `
         borderless="{{true}}"
         clearable="{{false}}"
         data-field="password"
-        placeholder="请输入内容"
+        placeholder="请输入密码"
         type="password"
         value=""
         bind:change="onInputChange"
@@ -619,7 +619,7 @@ exports[`Form Form vertical demo works fine 1`] = `
     >
       <t-input
         borderless="{{true}}"
-        placeholder="请输入内容"
+        placeholder="请选择籍贯"
         value=""
         bind:tap="showCascader"
       />
