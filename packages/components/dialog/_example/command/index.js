@@ -1,4 +1,4 @@
-import { Dialog } from 'tdesign-miniprogram';
+import Dialog from 'tdesign-miniprogram/dialog';
 
 Component({
   methods: {
