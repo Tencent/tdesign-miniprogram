@@ -9,6 +9,10 @@
     "tdesign",
     "miniprogram"
   ],
+  "files": [
+    "miniprogram_dist",
+    "CHANGELOG.md"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Tencent/tdesign-miniprogram"
