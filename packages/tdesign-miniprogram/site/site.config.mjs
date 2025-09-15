@@ -72,6 +72,24 @@ export const docs = [
     ],
   },
   {
+    title: '高阶组件',
+    titleEn: 'Pro',
+    type: 'component',
+    children: [
+      {
+        title: 'AI Chat 对话',
+        titleEn: 'Chat',
+        name: 'chat',
+        path: '/miniprogram-chat',
+        redirect: () => {
+          const isTDesignHost = window.location.host.includes('tdesign');
+          const baseUrl = isTDesignHost ? `//${window.location.host}` : 'https://tdesign.tencent.com';
+          window.open(`${baseUrl}/miniprogram-chat`, '_blank');
+        },
+      },
+    ],
+  },
+  {
     title: '基础',
     titleEn: 'Base',
     type: 'component', // 组件文档
