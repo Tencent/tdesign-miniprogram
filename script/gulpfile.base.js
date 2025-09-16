@@ -17,7 +17,6 @@ const rename = require('gulp-rename');
 const replaceTask = require('gulp-replace-task');
 const mpNpm = require('gulp-mp-npm');
 const gulpIf = require('gulp-if');
-const print = require('gulp-print').default; // 需要先安装 gulp-print
 
 const config = require('./config');
 
@@ -73,7 +72,7 @@ module.exports = (src, dist, moduleName) => {
   });
 
   // options
-  const ignore = ['**/__test__', '**/_example/**', '**/node_modules/**'];
+  const ignore = ['**/__test__/**', '**/_example/**', '**/node_modules/**', '**/package.json'];
   const srcOptions = { base: src, ignore };
   const watchOptions = { events: ['add', 'change'] };
   const gulpErrorPath = 'packages/tdesign-miniprogram/example/utils/gulpError.js';
