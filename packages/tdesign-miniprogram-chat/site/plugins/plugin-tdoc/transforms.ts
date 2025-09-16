@@ -33,6 +33,9 @@ export default {
       const js = fs.readFileSync(path.resolve(demoPath, 'index.js'), { encoding: 'utf-8' });
       const css = fs.readFileSync(path.resolve(demoPath, 'index.wxss'), { encoding: 'utf-8' });
       const json = fs.readFileSync(path.resolve(demoPath, 'index.json'), { encoding: 'utf-8' });
+      const mock = fs.existsSync(path.resolve(demoPath, 'mock.js'))
+        ? fs.readFileSync(path.resolve(demoPath, 'mock.js'), { encoding: 'utf-8' })
+        : '';
 
       return `
 <td-code-block panel="WXML">
@@ -43,6 +46,8 @@ export default {
   <pre slot="CSS" lang="css">${encodeURIComponent(css)}</pre>
 
   <pre slot="JSON" lang="javascript">${encodeURIComponent(json)}</pre>
+
+  ${mock ? `<pre slot="MOCK" lang="javascript">${encodeURIComponent(mock)}</pre>` : ''}
 </td-code-block>`;
     });
 
