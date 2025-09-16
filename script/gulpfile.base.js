@@ -200,6 +200,7 @@ module.exports = (src, dist, moduleName) => {
     gulp
       .src(globs.js, { ...srcOptions, since: since(tasks.js) })
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
+      .pipe(mpNpm())
       .pipe(gulpIf(isComponent(src) && isProduction, jsmin()))
       .pipe(gulp.dest(dist));
 
