@@ -97,7 +97,6 @@ exports[`Upload Upload multiple demo works fine 1`] = `
     class="wrapper"
   >
     <t-upload
-      disabled="{{true}}"
       files="{{
         Array [
           Object {
