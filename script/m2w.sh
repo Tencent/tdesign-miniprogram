@@ -11,9 +11,9 @@ npm config set registry http://mirrors.tencent.com/npm/
 
 pnpm install
 
-pnpm add @tencent/m2w-tdesign -w
+pnpm add @tencent/m2w-tdesign@latest -w
 
 # 执行 m2w-tdesign 命令
-npx m2w-tdesign build --navigationStyle custom --output ../_site/live --baseUrl /miniprogram/live
+npx m2w-tdesign build --navigationStyle custom --output ../packages/tdesign-miniprogram/site/dist/live --baseUrl /miniprogram/live
 
 echo "m2w 脚本执行完成！"

@@ -1,0 +1,27 @@
+.chat-box {
+  display: block;
+  height: 75vh;
+  padding: 16rpx;
+}
+
+.preview {
+  padding: 16rpx;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
+}
+
+.step-text-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.step-text {
+  text-align: start;
+}
+
+.step-text.command {
+  border: 1px solid black;
+  padding: 16rpx;
+}

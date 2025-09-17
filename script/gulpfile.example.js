@@ -10,15 +10,15 @@ const packageJSON = require('../package.json');
 const base = require('./gulpfile.base');
 
 /* config */
-const src = 'example';
+const src = 'packages/tdesign-miniprogram/example';
 const dist = '_example';
 
 /* base tasks */
 const { clear, build: baseBuild, watch: baseWatch, handleError, resetError } = base(src, dist, 'example');
 
 // src component examples
-const srcExampleInput = 'packages/components/**/_example/**/*.*';
-const srcExampleOutput = 'example/pages';
+const srcExampleInput = ['packages/components/**/_example/**/*.*'];
+const srcExampleOutput = 'packages/tdesign-miniprogram/example/pages';
 const copySrcExample = () => {
   return gulp
     .src(srcExampleInput)
@@ -44,9 +44,9 @@ const watchSrcExample = () => gulp.watch(srcExampleInput, copySrcExample);
 const since = (task) => (file) => gulp.lastRun(task) > file.stat.ctime ? gulp.lastRun(task) : 0;
 
 /** `gulp syncDist`
- * 将 miniprogram_dist 同步至 _example
+ * 将 packages/tdesign-miniprogram/miniprogram_dist 同步至 _example/miniprogram_npm
  * */
-const input = 'miniprogram_dist';
+const input = 'packages/tdesign-miniprogram/miniprogram_dist';
 const output = `_example/miniprogram_npm/${packageJSON.name}`;
 const syncDist = () =>
   gulp
@@ -55,7 +55,7 @@ const syncDist = () =>
     .pipe(gulp.dest(output));
 
 /** `gulp watchDist`
- * 监听 miniprogram_dist
+ * 监听 packages/tdesign-miniprogram/miniprogram_dist
  * */
 const watchDist = () => gulp.watch(`${input}/**`, syncDist);
 watchDist.displayName = 'syncDist:watch';

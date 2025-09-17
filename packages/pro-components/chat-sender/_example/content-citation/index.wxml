@@ -1,0 +1,35 @@
+<view class="demo-container">
+  <view class="demo-section">
+    <view class="demo-title">输入框自定义</view>
+    <view class="demo-description">提供灵活的插槽自定义输入框</view>
+
+    <!-- 聊天发送器组件 -->
+    <view class="chat-sender-wrapper">
+      <t-chat-sender value="{{value}}" loading="{{loading}}" disabled="{{disabled}}" placeholder="{{placeholder}}"
+        textareaProps="{{textareaProps}}" fileList="{{fileList}}" attachmentsProps="{{attachmentsProps}}"
+        renderPresets="{{renderPresets}}" visible="{{visible}}" bind:send="onSend" bind:stop="onStop"
+        bind:focus="onFocus" bind:blur="onBlur" bind:change="onChange" bind:uploadClick="onUploadClick"
+        bind:fileClick="onFileClick" bind:fileDelete="onFileDelete" bind:fileChange="onFileChange"
+        bind:fileAdd="onFileAdd" bind:fileSelect="onFileSelect" bind:updateVisible="onUpdateVisible"
+        bind:keyboardheightchange="onKeyboardHeightChange">
+        <view slot="header" class="demo-header" wx:if="{{headerText}}">
+          <t-icon name="enter" size="40rpx" color="#00000066" style="transform: scaleX(-1)" />
+          <view class="header-content">
+            {{headerText}}
+          </view>
+          <t-icon name="add" size="40rpx" color="rgba(0, 0, 0, 0.6)" style="transform:rotate(45deg)" bind:tap="handleCLoseCite"/>
+        </view>
+        <view slot="footerPrefix" class="demo-footer-prefix">
+          <view class="deep-think-block {{deepThinkActive ? 'active' : ''}}" bind:tap="onDeepThinkTap">
+            <t-icon name="system-sum" size="32rpx" />
+            <text class="deep-think-text">Deep Thinking</text>
+          </view>
+          <view class="net-search-block {{ netSearchActive ? 'active' : '' }}" bind:tap="onNetSearchTap">
+            <t-icon name="internet" size="32rpx" />
+          </view>
+        </view>
+      </t-chat-sender>
+    </view>
+
+  </view>
+</view>

@@ -1,0 +1,8 @@
+<view class="demo-container">
+    <t-chat-attachments
+        items="{{items}}"
+        bind:fileClick="onFileClick"
+        bind:remove="onRemove"
+        bind:add="onAdd"
+    />
+</view>

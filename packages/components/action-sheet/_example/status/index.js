@@ -1,4 +1,4 @@
-import ActionSheet, { ActionSheetTheme } from 'tdesign-miniprogram/action-sheet/index';
+import ActionSheet, { ActionSheetTheme } from 'tdesign-miniprogram/action-sheet';
 
 Component({
   methods: {

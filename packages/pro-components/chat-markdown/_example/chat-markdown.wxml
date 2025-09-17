@@ -1,0 +1,7 @@
+<t-navbar class="demo-navbar" title="ChatMarkdown" leftArrow />
+<view class="demo">
+  <t-demo-header title="ChatMarkdown" desc="对话 Markdown 渲染器" notice="渲染框架支持情况：WebView" />
+  <t-demo title="01 组件类型" desc="chat-markdown">
+    <base />
+  </t-demo>
+</view>

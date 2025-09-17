@@ -1,10 +1,10 @@
 // dayjs 语言包
-import enLocale from 'dayjs/locale/en';
-import zhLocale from 'dayjs/locale/zh-cn';
-import tcLocale from 'dayjs/locale/zh-tw'; // 繁体
-import koLocale from 'dayjs/locale/ko'; // 韩语
-import jaLocale from 'dayjs/locale/ja'; // 日语
-import ruLocale from 'dayjs/locale/ru'; // 俄语
+import * as enLocale from 'dayjs/locale/en';
+import * as zhLocale from 'dayjs/locale/zh-cn';
+import * as tcLocale from 'dayjs/locale/zh-tw'; // 繁体
+import * as koLocale from 'dayjs/locale/ko'; // 韩语
+import * as jaLocale from 'dayjs/locale/ja'; // 日语
+import * as ruLocale from 'dayjs/locale/ru'; // 俄语
 
 // 本地语言包
 import en from './en';

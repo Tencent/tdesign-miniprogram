@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "ChatAttachments 聊天附件",
+  "usingComponents": {
+    "base": "./base",
+    "t-navbar": "tdesign-miniprogram/navbar/navbar"
+  }
+}

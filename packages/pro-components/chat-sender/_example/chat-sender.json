@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "ChatSender",
+  "usingComponents": {
+    "base": "./base",
+    "attachments": "./attachments",
+    "content-citation":"./content-citation",
+    "t-navbar": "tdesign-miniprogram/navbar/navbar",
+    "t-tabs": "tdesign-miniprogram/tabs/tabs",
+    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel"
+  }
+}

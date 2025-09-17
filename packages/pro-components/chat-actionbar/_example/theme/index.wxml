@@ -1,0 +1,28 @@
+<view class="demo-container">
+    <view class="theme-switch">
+        <text>主题切换：</text>
+        <button bindtap="toggleTheme" class="theme-btn">
+            切换到{{currentTheme === 'light' ? '暗色' : '亮色'}}主题
+        </button>
+    </view>
+
+    <view class="actionbar-container">
+        <t-chat-actionbar actions="{{actions}}" theme="{{currentTheme}}" bind:action="onAction" />
+    </view>
+
+    <view class="controls">
+        <view class="control-item">
+            <text>操作数量：</text>
+            <picker bindchange="onActionCountChange" value="{{actionCountIndex}}" range="{{actionCountOptions}}">
+                <view class="picker">{{actionCountOptions[actionCountIndex]}}</view>
+            </picker>
+        </view>
+
+        <view class="control-item">
+            <text>布局方式：</text>
+            <picker bindchange="onLayoutChange" value="{{layoutIndex}}" range="{{layoutOptions}}">
+                <view class="picker">{{layoutOptions[layoutIndex]}}</view>
+            </picker>
+        </view>
+    </view>
+</view>
