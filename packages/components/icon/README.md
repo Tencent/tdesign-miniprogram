@@ -95,7 +95,7 @@ isComponent: true
  </p>
 </div>
 
-<td-icons-view />
+<td-icons-view framework-content/>
 
 ## API
 

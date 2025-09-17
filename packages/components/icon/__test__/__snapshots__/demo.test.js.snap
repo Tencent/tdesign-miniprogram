@@ -339,6 +339,21 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
+        data-name="align-bottom"
+        name="align-bottom"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        align-bottom
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
         data-name="align-top"
         name="align-top"
         size="48rpx"
@@ -17244,21 +17259,6 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="list"
-        name="list"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        list
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
         data-name="load"
         name="load"
         size="48rpx"
@@ -18234,6 +18234,36 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
+        data-name="logo-stackblitz-filled"
+        name="logo-stackblitz-filled"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        logo-stackblitz-filled
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="logo-stackblitz"
+        name="logo-stackblitz"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        logo-stackblitz
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
         data-name="logo-twitter-filled"
         name="logo-twitter-filled"
         size="48rpx"
@@ -18318,6 +18348,21 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         logo-wechatpay
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="logo-wecom-filled"
+        name="logo-wecom-filled"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        logo-wecom-filled
       </wx-view>
     </wx-view>
     <wx-view
@@ -20958,6 +21003,36 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         no-expression
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="no-result-filled"
+        name="no-result-filled"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        no-result-filled
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="no-result"
+        name="no-result"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        no-result
       </wx-view>
     </wx-view>
     <wx-view
@@ -28824,6 +28899,21 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
+        data-name="tree-list"
+        name="tree-list"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        tree-list
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
         data-name="tree-round-dot-filled"
         name="tree-round-dot-filled"
         size="48rpx"
@@ -30819,36 +30909,6 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="video-camera-3-filled"
-        name="video-camera-3-filled"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        video-camera-3-filled
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
-        data-name="video-camera-3"
-        name="video-camera-3"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        video-camera-3
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
         data-name="video-camera-dollar-filled"
         name="video-camera-dollar-filled"
         size="48rpx"
@@ -31503,6 +31563,36 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         wifi-1
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="wifi-no-filled"
+        name="wifi-no-filled"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        wifi-no-filled
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="wifi-no"
+        name="wifi-no"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        wifi-no
       </wx-view>
     </wx-view>
     <wx-view

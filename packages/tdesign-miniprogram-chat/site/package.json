@@ -7,6 +7,7 @@
     "site": "vite build --configLoader runner",
     "site:dev": "vite --configLoader runner",
     "site:intranet": "vite build --mode intranet --configLoader runner",
+    "site:preview": "cross-env NODE_ENV=development vite build --configLoader runner --mode preview && cp dist/index.html dist/404.html",
     "site:prerender": "node scripts/prerender.mjs"
   },
   "license": "MIT",
