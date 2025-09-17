@@ -1,0 +1,80 @@
+@import '../../components/common/style/base.less';
+
+@chat-content-prefix: ~'@{prefix}-chat';
+
+// Chat Content 组件变量
+@chat-content-spacer-1: 8rpx;
+@chat-content-spacer-2: 16rpx;
+@chat-content-spacer-3: 24rpx;
+@chat-content-spacer-4: 32rpx;
+@chat-content-spacer-5: 40rpx;
+@chat-content-spacer-6: 48rpx;
+@chat-content-spacer-7: 64rpx;
+@chat-content-spacer-8: 80rpx;
+@chat-content-text-padding: 24rpx 32rpx;
+@chat-content-img-margin: 8rpx 0;
+@chat-content-img-radius: 6rpx;
+@chat-content-text-radius: 24rpx;
+@chat-content-border-width: 2rpx;
+@chat-message-height-body-large: 48rpx;
+@chat-message-font-body-large: var(--td-font-size-body-large) / @chat-message-height-body-large var(--td-font-family);
+// Chat Content 组件样式
+.@{chat-content-prefix} {
+  // 基础文本容器样式
+  &__text {
+    padding: @chat-content-text-padding;
+    font: @chat-message-font-body-large;
+    word-break: break-all;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    box-sizing: border-box;
+
+    // 用户文本样式
+    &__user {
+      color: @font-gray-2;
+        // word-break: break-all;
+        // word-wrap: break-word;
+        // overflow-wrap: break-word;
+
+      ._pre {
+        color: @font-gray-2;
+        margin: 0;
+        white-space: pre-wrap;
+        // word-break: break-all;
+        // word-wrap: break-word;
+        // overflow-wrap: break-word;
+      }
+    }
+
+    // 助手文本样式
+    &__assistant {
+      color: @font-gray-1;
+      // word-break: break-all;
+      // word-wrap: break-word;
+      // overflow-wrap: break-word;
+
+      ._ol {
+        -webkit-padding-start: @chat-content-spacer-5;
+        padding-inline-start: @chat-content-spacer-5;
+
+        ._li {
+          list-style: decimal;
+        }
+      }
+
+      ._img {
+        max-width: 100%;
+        margin: @chat-content-img-margin;
+        border-radius: @chat-content-img-radius;
+      }
+    }
+  }
+
+  // Rich-text 组件样式修复
+  // rich-text {
+  //   word-break: break-all;
+  //   word-wrap: break-word;
+  //   overflow-wrap: break-word;
+  //   display: block;
+  // }
+}

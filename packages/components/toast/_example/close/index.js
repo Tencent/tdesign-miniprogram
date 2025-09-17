@@ -1,4 +1,4 @@
-import { Toast, hideToast } from 'tdesign-miniprogram';
+import Toast, { hideToast } from 'tdesign-miniprogram/toast';
 
 Component({
   methods: {

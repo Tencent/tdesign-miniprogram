@@ -1,0 +1,10 @@
+<t-navbar class="demo-navbar" title="ChatThinking" leftArrow />
+<view class="demo">
+  <t-demo-header title="ChatThinking" desc="对话思考状态" notice="渲染框架支持情况：WebView" />
+  <t-demo title="基本使用" desc="chat-thinking">
+    <base content="{{content}}" />
+  </t-demo>
+  <t-demo title="样式设置" desc="chat-thinking">
+    <style-set />
+  </t-demo>
+</view>

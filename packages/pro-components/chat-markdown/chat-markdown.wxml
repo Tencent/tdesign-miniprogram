@@ -1,0 +1,3 @@
+<view class="{{[COMPONENT_NAME,COMPONENT_NAME+theme]}}">
+  <chat-markdown-node nodes="{{nodes}}"></chat-markdown-node>
+</view>

@@ -24,6 +24,8 @@ const baseCssPath = path.resolve(__dirname, '../packages/components/common/style
 
 const isProduction = process.env.NODE_ENV === 'production';
 
+const mpNpmOptions = { fullExtract: ['tdesign-miniprogram/common'] };
+
 // set displayName
 const setDisplayName = (tasks, moduleName) => {
   Object.keys(tasks).forEach((key) => {
@@ -31,6 +33,10 @@ const setDisplayName = (tasks, moduleName) => {
       tasks[key].displayName = moduleName ? `${moduleName}:${key}` : key;
     }
   });
+};
+
+const isJsonFile = (file) => {
+  return file.path.endsWith('.json');
 };
 
 // generate config replace task
@@ -44,24 +50,32 @@ const generateConfigReplaceTask = (replaceConfig, options = {}) => {
   });
 };
 
-const isComponentFolder = (dir) => {
+const isProComponent = (dir) => {
+  return dir === 'packages/pro-components';
+};
+
+const isBaseComponent = (dir) => {
   return dir === 'packages/components';
+};
+
+const isComponent = (dir) => {
+  return isBaseComponent(dir) || isProComponent(dir);
 };
 
 /* return gulpfile base tasks */
 module.exports = (src, dist, moduleName) => {
   const tsProject = gulpTs.createProject('tsconfig.json', {
-    declaration: isComponentFolder(src),
+    declaration: isComponent(src),
     removeComments: isProduction,
     importHelpers: true,
     noEmitHelpers: true,
   });
 
   // options
-  const ignore = ['**/__test__', '**/_example/**', '**/node_modules/**'];
+  const ignore = ['**/__test__/**', '**/_example/**', '**/node_modules/**', '**/package.json'];
   const srcOptions = { base: src, ignore };
   const watchOptions = { events: ['add', 'change'] };
-  const gulpErrorPath = 'example/utils/gulpError.js';
+  const gulpErrorPath = 'packages/tdesign-miniprogram/example/utils/gulpError.js';
 
   // 文件匹配路径
   const globs = {
@@ -96,6 +110,18 @@ module.exports = (src, dist, moduleName) => {
   /* tasks */
   const tasks = {};
 
+  /** `gulp replacePaths`
+   * 统一处理 pro-components 的路径替换，保证组件复制到 example/miniprogram-dist 后，路径正确
+   * */
+  tasks.replacePaths = () => {
+    return gulpIf(
+      isProComponent(src),
+      replace(/(\.\.\/components\/|tdesign-miniprogram)/g, (match) => {
+        return match.includes('components') ? '' : '..';
+      }),
+    );
+  };
+
   /** `gulp clear`
    * 清理文件
    * */
@@ -106,14 +132,17 @@ module.exports = (src, dist, moduleName) => {
    * */
   tasks.handleError = (err) =>
     gulp
-      .src(gulpErrorPath, { base: 'example' })
+      .src(gulpErrorPath, { base: 'packages/tdesign-miniprogram/example' })
       .pipe(replace('gulpErrorPlaceHolder', err))
       .pipe(gulp.dest('_example/'));
 
   /** `gulp resetError`
    * 重置gulpError
    * */
-  tasks.resetError = () => gulp.src(gulpErrorPath, { base: 'example', allowEmpty: true }).pipe(gulp.dest('_example/'));
+  tasks.resetError = () =>
+    gulp
+      .src(gulpErrorPath, { base: 'packages/tdesign-miniprogram/example', allowEmpty: true })
+      .pipe(gulp.dest('_example/'));
 
   /** `gulp copy`
    * 清理
@@ -132,7 +161,7 @@ module.exports = (src, dist, moduleName) => {
       .src(globs.wxml, { ...srcOptions, since: since(tasks.wxml) })
       .pipe(
         gulpIf(
-          isComponentFolder(src) && isProduction,
+          isComponent(src) && isProduction,
           wxmlmin({
             removeComments: true,
             collapseWhitespace: true,
@@ -163,7 +192,8 @@ module.exports = (src, dist, moduleName) => {
     return merge2(
       tsResult.js
         .pipe(mpNpm())
-        .pipe(gulpIf(isComponentFolder(src) && isProduction, jsmin()))
+        .pipe(tasks.replacePaths())
+        .pipe(gulpIf(isComponent(src) && isProduction, jsmin()))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(dist)),
       tsResult.dts.pipe(gulp.dest(dist)), // 直接输出.d.ts文件
@@ -177,7 +207,8 @@ module.exports = (src, dist, moduleName) => {
     gulp
       .src(globs.js, { ...srcOptions, since: since(tasks.js) })
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
-      .pipe(gulpIf(isComponentFolder(src) && isProduction, jsmin()))
+      .pipe(mpNpm())
+      .pipe(gulpIf(isComponent(src) && isProduction, jsmin()))
       .pipe(gulp.dest(dist));
 
   /** `gulp wxs`
@@ -186,6 +217,7 @@ module.exports = (src, dist, moduleName) => {
   tasks.wxs = () =>
     gulp
       .src(globs.wxs, { ...srcOptions, since: since(tasks.wxs) })
+      .pipe(tasks.replacePaths())
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
       .pipe(gulp.dest(dist));
 
@@ -195,7 +227,9 @@ module.exports = (src, dist, moduleName) => {
   tasks.json = () =>
     gulp
       .src(globs.json, { ...srcOptions, dot: true, since: since(tasks.json) })
-      .pipe(gulpIf(isComponentFolder(src) && isProduction, jsonmin()))
+      .pipe(mpNpm(mpNpmOptions))
+      .pipe(tasks.replacePaths())
+      .pipe(gulpIf(isComponent(src) && isProduction && isJsonFile, jsonmin()))
       .pipe(gulp.dest(dist));
 
   /** `gulp less`
@@ -217,7 +251,7 @@ module.exports = (src, dist, moduleName) => {
       .pipe(gulpLess()) // 编译less
       .pipe(
         gulpIf(
-          isComponentFolder(src) && isProduction,
+          isComponent(src) && isProduction,
           cssmin({
             compatibility: 'ie9',
             format: {
@@ -234,12 +268,13 @@ module.exports = (src, dist, moduleName) => {
       )
       .pipe(
         gulpIf(
-          isComponentFolder(src),
+          isComponent(src),
           gulpInsert.transform((contents, file) => {
             if (!file.path.includes(`components${path.sep}common`)) {
               const relativePath = path
                 .relative(path.normalize(`${file.path}${path.sep}..`), baseCssPath)
-                .replace(/\\/g, '/');
+                .replace(/\\/g, '/')
+                .replace(/\.\.\/components\//g, '');
               contents = `@import '${relativePath}';${contents}`;
             }
             return contents;

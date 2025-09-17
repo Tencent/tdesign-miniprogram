@@ -1,0 +1,155 @@
+@import '../../components/common/style/base.less';
+
+@chat-loading-prefix: ~'@{prefix}-chat-loading';
+
+@color-primary: #0052d9;
+@color-primary-6: #366ef4;
+@color-primary-8: #003cab;
+
+@size-dot: 16rpx;
+@size-container: 28rpx;
+@size-border: 3rpx;
+
+@animation-duration: 0.6s;
+
+.@{chat-loading-prefix} {
+  display: flex;
+  align-items: center;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+
+  &__text {
+    font-size: 28rpx;
+  }
+
+  &__moving {
+    position: relative;
+    width: @size-container;
+    height: @size-container;
+    left: 4rpx;
+    margin: 0 6rpx 0 0;
+    scale: 0.8;
+
+    view {
+      position: absolute;
+      width: @size-dot;
+      height: @size-dot;
+      border-radius: 50%;
+      background-color: @color-primary;
+    }
+
+    &--top {
+      top: -8rpx;
+      left: 6rpx;
+      animation: dot-moving-top @animation-duration ease-in-out alternate infinite;
+    }
+
+    &--left {
+      bottom: -10rpx;
+      left: -10rpx;
+      animation: dot-moving-left @animation-duration ease-in-out alternate infinite;
+    }
+
+    &--right {
+      bottom: -10rpx;
+      right: -10rpx;
+      animation: dot-moving-right @animation-duration ease-in-out alternate infinite;
+    }
+  }
+
+  &__gradient {
+    width: @size-container;
+    height: @size-container;
+    background-color: transparent;
+    border-radius: 50%;
+    border: @size-border solid @color-primary;
+    animation: border-gradient-color @animation-duration ease-in-out alternate infinite;
+    box-sizing: border-box;
+  }
+
+  &__skeleton {
+    width: 100%;
+  }
+}
+
+@keyframes dot-moving-top {
+  0% {
+    transform: scale(1);
+    top: -4px;
+  }
+  to {
+    transform: scale(1.75);
+    top: 3px;
+  }
+}
+
+@keyframes dot-moving-left {
+  0% {
+    transform: scale(1);
+    bottom: -8rpx;
+    left: -8rpx;
+  }
+  to {
+    transform: scale(1.75);
+    bottom: 6rpx;
+    left: 6rpx;
+  }
+}
+
+@keyframes dot-moving-right {
+  0% {
+    transform: scale(1);
+    bottom: -8rpx;
+    right: -8rpx;
+  }
+  to {
+    transform: scale(1.75);
+    bottom: 6rpx;
+    right: 6rpx;
+  }
+}
+
+@keyframes border-gradient-color {
+  0% {
+    border-color: @color-primary;
+    border-width: 1.5px;
+  }
+  50% {
+    border-color: @color-primary-8;
+    border-width: 3px;
+  }
+  100% {
+    border-color: @color-primary-6;
+    border-width: 4px;
+  }
+}
+
+@keyframes a_tick {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 14rpx;
+  }
+}
+
+@keyframes a_tick-1 {
+  0% {
+    transform: rotate(45deg) scale(0, 1);
+  }
+  100% {
+    transform: rotate(45deg) scale(1, 1);
+  }
+}
+
+@keyframes a_tick-2 {
+  0% {
+    transform: rotate(-45deg) scale(0, 1);
+  }
+  100% {
+    transform: rotate(-45deg) scale(1, 1);
+  }
+}

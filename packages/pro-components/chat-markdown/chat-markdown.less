@@ -1,0 +1,141 @@
+@import '../../components/common/style/base.less';
+
+@chat-markdown-prefix: ~'@{prefix}-chat-markdown';
+
+@chat-color: #16181a;
+@chat-line-height: 1.75;
+@chat-font-size-h1: 2em;
+@chat-font-size-h2: 1.75em;
+@chat-font-size-h3: 1.5em;
+@chat-font-size-h4: 1.25em;
+@chat-font-size-h5: 1em;
+@chat-font-size-h6: 0.75em;
+@chat-color-blockquote: #59636e;
+@chat-border-blockquote: 8rpx solid @chat-border-color;
+@chat-border-padding: 0.75em;
+@chat-font-weight-h: bold;
+@chat-height-hr: 6rpx;
+@chat-border-color: #d1d9e0;
+@chat-link-color: #126dff;
+@chat-codespan-bg: #f6f8fa;
+@chat-border-width: 1rpx;
+@chat-codespan-border: #eaedf0;
+@chat-table-header-bg: #f0f0f0;
+@chat-table-border: #ccc;
+@chat-codespan-spacer-1: 4rpx;
+@chat-codespan-spacer-2: 8rpx;
+@chat-codespan-font-size: 0.8em;
+@chat-table-padding: 5rpx 10rpx;
+
+.@{chat-markdown-prefix} {
+  color: @chat-color;
+  word-wrap: break-word;
+  word-break: break-word;
+  line-height: @chat-line-height;
+}
+.@{chat-markdown-prefix}-inline {
+  display: inline;
+}
+.@{chat-markdown-prefix}-p {
+  -webkit-margin-before: @spacer-1;
+  margin-block-start: @spacer-1;
+  -webkit-margin-after: @spacer-1;
+  margin-block-end: @spacer-1;
+}
+.@{chat-markdown-prefix}-blockquote {
+  padding: 0 @chat-border-padding;
+  color: @chat-color-blockquote;
+  border-left: @chat-border-blockquote;
+  margin-bottom: @spacer-1;
+}
+.@{chat-markdown-prefix}-h {
+  font-size: @chat-font-size-h5;
+  margin: @spacer-1 0;
+  font-weight: @chat-font-weight-h;
+}
+.@{chat-markdown-prefix}-h1 {
+  font-size: @chat-font-size-h1;
+}
+.@{chat-markdown-prefix}-h2 {
+  font-size: @chat-font-size-h2;
+}
+.@{chat-markdown-prefix}-h3 {
+  font-size: @chat-font-size-h3;
+}
+.@{chat-markdown-prefix}-h4 {
+  font-size: @chat-font-size-h4;
+}
+.@{chat-markdown-prefix}-h5 {
+  font-size: @chat-font-size-h5;
+}
+.@{chat-markdown-prefix}-h6 {
+  font-size: @chat-font-size-h6;
+}
+.@{chat-markdown-prefix}-em {
+  font-style: italic;
+}
+.@{chat-markdown-prefix}-strong {
+  font-weight: bold;
+}
+.@{chat-markdown-prefix}-hr {
+  height: @chat-height-hr;
+  padding: 0;
+  margin: @spacer-1 0;
+  background-color: @chat-border-color;
+  border: 0;
+}
+.@{chat-markdown-prefix}-list {
+  display: block;
+  padding-left: @spacer-1;
+  margin: @spacer-1 0;
+}
+.@{chat-markdown-prefix}-list.@{chat-markdown-prefix}-list__decimal {
+  list-style-type: decimal;
+}
+.@{chat-markdown-prefix}-list-item {
+  display: list-item;
+  margin-bottom: @spacer-1;
+}
+.@{chat-markdown-prefix}-link {
+  color: @chat-link-color;
+}
+.@{chat-markdown-prefix}-del {
+  text-decoration: line-through;
+}
+.@{chat-markdown-prefix}-codespan {
+  padding: @chat-codespan-spacer-1 @chat-codespan-spacer-2;
+  margin: 0 @chat-codespan-spacer-1;
+  border-radius: @chat-codespan-spacer-2;
+  font-size: @chat-codespan-font-size;
+  overflow-x: auto;
+  background-color: @chat-codespan-bg;
+  border: @chat-border-width solid @chat-codespan-border;
+}
+.@{chat-markdown-prefix}-table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+.@{chat-markdown-prefix}-thead {
+  display: table-header-group;
+}
+.@{chat-markdown-prefix}-tbody {
+  display: table-row-group;
+}
+.@{chat-markdown-prefix}-tr {
+  display: table-row;
+}
+.@{chat-markdown-prefix}-th {
+  display: table-cell;
+  vertical-align: middle;
+  background-color: @chat-table-header-bg;
+  font-weight: @chat-font-weight-h;
+  padding: @chat-table-padding;
+  border: @chat-border-width solid @chat-table-border;
+}
+.@{chat-markdown-prefix}-td {
+  display: table-cell;
+  vertical-align: middle;
+  padding: @chat-table-padding;
+  border: @chat-border-width solid @chat-table-border;
+}

@@ -1,6 +1,6 @@
 ---
 title: 贡献指南
-# description: 
+# description:
 spline: explain
 ---
 ## 开发规范
@@ -53,8 +53,8 @@ npm start
 
 此时会同时启动 `dist` 与 `example` 的构建服务，对应的开发路径与构建路径分别为：
 
-- `packages/components` -> `miniprogram_dist`
-- `packages/components/*/_example` -> `example` -> `_example`
+- `packages/components` -> `packages/tdesign-miniprogram/miniprogram_dist`
+- `packages/components/*/_example` -> `packages/tdesign-miniprogram/example` -> `_example`
 
 使用微信开发者工具导入项目 `_example` 文件夹
 

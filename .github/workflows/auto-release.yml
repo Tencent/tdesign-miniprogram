@@ -57,8 +57,10 @@ jobs:
         env:
           BODY: ${{ github.event.comment.body }}
         run: |
-          txt=$(cat packages/tdesign-miniprogram-site/CHANGELOG.md)
-          echo "${txt%%##*}$BODY${txt##*---}" > packages/tdesign-miniprogram-site/CHANGELOG.md
+          txt=$(cat packages/tdesign-miniprogram/CHANGELOG.md)
+          chat_txt=$(cat packages/tdesign-miniprogram-chat/CHANGELOG.md)
+          echo "${txt%%##*}$BODY${txt##*---}" > packages/tdesign-miniprogram/CHANGELOG.md
+          echo "${chat_txt%%##*}$BODY${chat_txt##*---}" > packages/tdesign-miniprogram-chat/CHANGELOG.md
           git add .
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
@@ -78,7 +80,7 @@ jobs:
           token: ${{ secrets.PERSONAL_TOKEN }}
       - name: tag and push if needed
         run: |
-          data=$(cat package.json)
+          data=$(cat packages/tdesign-miniprogram/package.json)
           re="\"version\": \"([^\"]*)\""
           [[ $data =~ $re ]]
           echo "${BASH_REMATCH[1]}"

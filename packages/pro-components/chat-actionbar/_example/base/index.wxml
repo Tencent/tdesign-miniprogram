@@ -1,0 +1,3 @@
+<view class="container">
+  <t-chat-actionbar content="{{content}}" bind:handleAction="handleAction" />
+</view>

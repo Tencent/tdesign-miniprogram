@@ -1,4 +1,4 @@
-import { ActionSheet, ActionSheetTheme } from 'tdesign-miniprogram';
+import ActionSheet, { ActionSheetTheme } from 'tdesign-miniprogram/action-sheet';
 
 const firstGrid = [
   {

@@ -1,0 +1,11 @@
+{
+  "name": "@tdesign/pro-components",
+  "author": "tdesign",
+  "private": true,
+  "main": "index.ts",
+  "license": "MIT",
+  "devDependencies": {
+    "marked": "^16.1.2",
+    "miniprogram-computed": "^5.0.0"
+  }
+}

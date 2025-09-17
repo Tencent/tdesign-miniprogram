@@ -1,0 +1,76 @@
+/* 代码块容器 */
+.t-chat-markdown-code-block {
+  margin: 16rpx 0;
+  border-radius: 8rpx;
+  background-color: #f6f8fa;
+  border: 1rpx solid #e1e4e8;
+  overflow: hidden;
+}
+
+/* 代码语言标签 */
+.t-chat-markdown-code-header {
+  padding: 8rpx 16rpx;
+  background-color: #e1e4e8;
+  border-bottom: 1rpx solid #d0d7de;
+}
+
+.t-chat-markdown-code-lang {
+  font-size: 24rpx;
+  color: #656d76;
+  font-weight: 500;
+}
+
+/* 代码内容区域 */
+.t-chat-markdown-code-content {
+  padding: 16rpx;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  white-space: nowrap;
+  height: auto;
+}
+
+.t-chat-markdown-code-text {
+  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  font-size: 28rpx;
+  line-height: 1.6;
+  color: #24292f;
+  /* 关键设置：防止换行 */
+  white-space: pre;
+  word-wrap: normal;
+  word-break: normal;
+  overflow-wrap: normal;
+  display: inline-block;
+  vertical-align: top;
+  min-width: 100%;
+}
+
+/* 暗色主题支持 */
+.t-chat-markdown-code-dark .t-chat-markdown-code-block {
+  background-color: #161b22;
+  border-color: #30363d;
+}
+
+.t-chat-markdown-code-dark .t-chat-markdown-code-header {
+  background-color: #21262d;
+  border-bottom-color: #30363d;
+}
+
+.t-chat-markdown-code-dark .t-chat-markdown-code-lang {
+  color: #7d8590;
+}
+
+.t-chat-markdown-code-dark .t-chat-markdown-code-text {
+  color: #e6edf3;
+}
+
+/* 浅色主题 */
+.t-chat-markdown-code-light .t-chat-markdown-code-block {
+  background-color: #ffffff;
+  border-color: #d0d7de;
+}
+
+.t-chat-markdown-code-light .t-chat-markdown-code-header {
+  background-color: #f6f8fa;
+  border-bottom-color: #d0d7de;
+}
