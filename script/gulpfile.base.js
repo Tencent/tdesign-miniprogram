@@ -113,7 +113,14 @@ module.exports = (src, dist, moduleName) => {
   /** `gulp replacePaths`
    * 统一处理 pro-components 的路径替换，保证组件复制到 example/miniprogram-dist 后，路径正确
    * */
-  tasks.replacePaths = () => gulpIf(isProComponent(src), replace(/\.\.\/components\//g, ''));
+  tasks.replacePaths = () => {
+    return gulpIf(
+      isProComponent(src),
+      replace(/(\.\.\/components\/|tdesign-miniprogram)/g, (match) => {
+        return match.includes('components') ? '' : '..';
+      }),
+    );
+  };
 
   /** `gulp clear`
    * 清理文件
