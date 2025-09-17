@@ -28,7 +28,7 @@ jobs:
 
       - run: pnpm install
 
-      - run: pnpm -C packages/tdesign-miniprogram/site run site:intranet
+      - run: pnpm -C packages/tdesign-miniprogram/site run site:preview
 
       - uses: actions/upload-artifact@v4
         with:
@@ -51,7 +51,7 @@ jobs:
 
       - run: pnpm install
 
-      - run: pnpm -C packages/tdesign-miniprogram-chat/site run site:intranet
+      - run: pnpm -C packages/tdesign-miniprogram-chat/site run site:preview
 
       - uses: actions/upload-artifact@v4
         with:

@@ -7,6 +7,7 @@
     "site": "vite build --configLoader runner",
     "site:dev": "vite --configLoader runner",
     "site:intranet": "vite build --mode intranet --configLoader runner",
+    "site:preview": "vite build --configLoader runner --mode preview && cp dist/index.html dist/404.html",
     "site:prerender": "node scripts/prerender.mjs",
     "update:icons": "node scripts/update-icons.mjs",
     "update:css": "node scripts/generate-css-vars.mjs",
