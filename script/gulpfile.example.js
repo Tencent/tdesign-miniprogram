@@ -18,7 +18,8 @@ const dist = '_example';
 const { clear, build: baseBuild, watch: baseWatch, handleError, resetError } = base(src, dist, 'example');
 
 // src component examples
-const srcExampleInput = ['packages/components/**/_example/**/*.*'];
+// src component examples
+const srcExampleInput = ['packages/components/**/_example/**/*.*', 'packages/pro-components/**/_example/**/*.*'];
 const srcExampleOutput = 'packages/tdesign-miniprogram/example/pages';
 const copySrcExample = () => {
   return gulp
