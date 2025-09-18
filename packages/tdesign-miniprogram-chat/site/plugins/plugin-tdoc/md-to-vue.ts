@@ -39,7 +39,7 @@ function customRender({ source, file, md }: any) {
   };
 
   // md filename
-  const reg = file.match(/src\/(\S*)(?=\/\S*.md)/);
+  const reg = file.match(/components\/(\S*)(?=\/\S*.md)/);
   const componentName = reg && reg[1];
 
   // split md
@@ -69,7 +69,7 @@ function customRender({ source, file, md }: any) {
 
   // 设计指南内容 不展示 design Tab 则不解析
   if (pageData.isComponent && pageData.tdDocTabs.some((item) => item.tab === 'design')) {
-    const designDocPath = path.resolve(__dirname, `../../common/docs/mobile/design/${componentName}.md`);
+    const designDocPath = path.resolve(__dirname, `../../../../common/docs/mobile/design/${componentName}.md`);
 
     if (fs.existsSync(designDocPath)) {
       const designMd = fs.readFileSync(designDocPath, 'utf-8');

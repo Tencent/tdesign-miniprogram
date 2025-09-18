@@ -7,7 +7,7 @@ let demoCodesImports: Record<string, string> = {};
 export default {
   before({ source, file, md }: any) {
     const resourceDir = path.dirname(file);
-    const reg = file.match(/packages\/components\/(\S*)(?=\/\S*.md)/);
+    const reg = file.match(/packages\/pro-components\/(\S*)(?=\/\S*.md)/);
     const name = reg && reg[1];
     demoCodesImports = {};
 
