@@ -25,7 +25,6 @@
     "gray-matter": "^4.0.3",
     "playwright": "^1.19.1",
     "prismjs": "^1.24.1",
-    "tdesign-site-components": "^0.16.0",
     "tdesign-theme-generator": "^1.1.0",
     "vite": "^6.2.3",
     "vite-plugin-tdoc": "^2.0.1"
