@@ -16,7 +16,7 @@
       class="{{_.cls(classPrefix + '__item', [['active', curIndex == index]])}}"
       style="height: {{pickItemHeight}}px"
       wx:for="{{formatOptions}}"
-      wx:key="index"
+      wx:key="value"
       wx:for-item="option"
       data-index="{{ index }}"
       bind:tap="onClickItem"
