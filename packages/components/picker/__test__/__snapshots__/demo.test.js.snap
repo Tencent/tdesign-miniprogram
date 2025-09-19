@@ -153,6 +153,7 @@ exports[`Picker Picker base demo works fine 1`] = `
       options="{{
         Array [
           Object {
+            "icon": "home",
             "label": "北京市",
             "tag": "合",
             "value": "北京市",

@@ -5,7 +5,7 @@ Component({
     dateText: '',
     dateValue: [],
     citys: [
-      { label: '北京市', value: '北京市', tag: '合' },
+      { label: '北京市', value: '北京市', icon: 'home', tag: '合' },
       { label: '上海市', value: '上海市', tag: '合' },
       { label: '广州市', value: '广州市' },
       { label: '深圳市', value: '深圳市' },
@@ -26,6 +26,7 @@ Component({
       const { value, label } = item;
       if (value === '北京市') {
         return {
+          ...item,
           value,
           label: label.substring(0, 2),
         };
