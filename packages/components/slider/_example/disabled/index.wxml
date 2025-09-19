@@ -1,7 +1,7 @@
 <t-slider value="{{35}}" disabled />
 
 <view class="wrapper">
-  <t-slider show-extreme-value label="${value}" value="{{ [40, 60] }}" range disabled />
+  <t-slider show-extreme-value label="${value}%" value="{{ [40, 60] }}" range disabled />
 </view>
 
 <view class="wrapper">
