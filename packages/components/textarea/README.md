@@ -131,5 +131,6 @@ t-class-textarea | 多行文本框样式类
 --td-textarea-disabled-text-color | @text-color-disabled | - 
 --td-textarea-indicator-text-color | @text-color-placeholder | - 
 --td-textarea-label-color | @text-color-primary | - 
+--td-textarea-padding | 32rpx | - 
 --td-textarea-placeholder-color | @text-color-placeholder | - 
 --td-textarea-text-color | @text-color-primary | -
