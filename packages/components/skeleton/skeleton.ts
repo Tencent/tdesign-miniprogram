@@ -33,7 +33,7 @@ export default class Skeleton extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-    parsedRowcols: [],
+    parsedRowCols: [],
   };
 
   observers = {
@@ -60,20 +60,19 @@ export default class Skeleton extends SuperComponent {
     init() {
       const { theme, rowCol } = this.properties;
       const rowCols = [];
+
       if (rowCol.length) {
         rowCols.push(...rowCol);
       } else {
         rowCols.push(...ThemeMap[theme || 'text']);
       }
 
-      const parsedRowcols = rowCols.map((item) => {
+      const parsedRowCols = rowCols.map((item) => {
         if (isNumber(item)) {
-          return [
-            {
-              class: this.getColItemClass({ type: 'text' }),
-              style: {},
-            },
-          ];
+          return new Array(item).fill({
+            class: this.getColItemClass({ type: 'text' }),
+            style: {},
+          });
         }
         if (Array.isArray(item)) {
           return item.map((col) => {
@@ -96,9 +95,10 @@ export default class Skeleton extends SuperComponent {
       });
 
       this.setData({
-        parsedRowcols,
+        parsedRowCols,
       });
     },
+
     getColItemClass(obj: SkeletonRowColObj): ClassName {
       return classNames([
         `${name}__col`,
