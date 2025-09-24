@@ -71,10 +71,10 @@ const form = {
       name: 'Upload',
       label: '上传',
     },
-    {
-      name: 'Form',
-      label: '表单',
-    },
+    // {
+    //   name: 'Form',
+    //   label: '表单',
+    // },
   ],
 };
 
@@ -122,10 +122,10 @@ const skylineForm = {
       name: 'Textarea',
       label: '多行文本框',
     },
-    {
-      name: 'Form',
-      label: '表单',
-    },
+    // {
+    //   name: 'Form',
+    //   label: '表单',
+    // },
   ],
 };
 
