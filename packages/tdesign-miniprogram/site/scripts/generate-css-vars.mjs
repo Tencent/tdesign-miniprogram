@@ -2,7 +2,9 @@ import fs from 'fs';
 import resolveCwd from './utils.mjs';
 
 const COMPONENT_NAME = process.argv[process.argv.indexOf('--NAME') + 1]; // 在 --NAME 后面
-const ROOT_DIR = resolveCwd('../../components');
+const ROOT_DIR = COMPONENT_NAME.includes('chat')
+  ? resolveCwd('/packages/pro-components')
+  : resolveCwd('/packages/components');
 
 const combine = {
   avatar: ['avatar-group', 'avatar'],
@@ -72,23 +74,21 @@ const generateCssVariables = async (componentName) => {
  * @param {string} variables - 生成的变量内容
  */
 const updateDocVariables = (filePath, headContent, variables) => {
-  const path = resolveCwd(filePath);
+  if (!fs.existsSync(filePath)) return;
 
-  if (!fs.existsSync(path)) return;
-
-  const content = fs.readFileSync(path, 'utf8');
+  const content = fs.readFileSync(filePath, 'utf8');
   const cssVariablesSection = `\n${headContent}${variables}`;
 
   // 检查是否存在 ### CSS Variables 部分
   if (content.includes('### CSS Variables')) {
     // 替换现有部分
     const newContent = content.replace(/(^|\n+)### CSS Variables[\s\S]*?(?=###|$)/, cssVariablesSection);
-    fs.writeFileSync(path, newContent, 'utf8');
+    fs.writeFileSync(filePath, newContent, 'utf8');
   } else {
     // 追加到文件末尾
     const trimmedContent = content.trimEnd();
     const newContent = `${trimmedContent}\n${cssVariablesSection}`;
-    fs.writeFileSync(path, newContent, 'utf8');
+    fs.writeFileSync(filePath, newContent, 'utf8');
   }
 };
 
