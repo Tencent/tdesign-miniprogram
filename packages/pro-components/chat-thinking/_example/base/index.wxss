@@ -1,0 +1,7 @@
+.demo-container {
+  padding: 32rpx;
+  width: 100%;
+  background-color: #eee;
+  box-sizing: border-box;
+  border-radius: 4rpx;
+}

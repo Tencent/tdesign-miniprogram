@@ -1,0 +1,10 @@
+<view class="button-example">
+  <t-divider content="可配置头像，昵称，时间" />
+  <t-chat-message avatar="https://tdesign.gtimg.com/site/avatar.jpg" datetime="今天16:38" name="张三"
+    message="{{message}}"></t-chat-message>
+  <t-chat-message avatar="https://tdesign.gtimg.com/site/chat-avatar.png" datetime="今天16:38" name="TDesignAI"
+    message="{{message2}}" animation="skeleton"></t-chat-message>
+  <t-divider content="可配置位置" />
+  <t-chat-message message="{{message}}" placement="right"></t-chat-message>
+  <t-chat-message message="{{message2}}" placement="left"></t-chat-message>
+</view>

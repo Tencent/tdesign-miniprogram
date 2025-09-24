@@ -46,7 +46,7 @@ enable-back-to-top | Boolean | true | `1.1.5`。iOS点击顶部状态栏、安�
 enable-passive | Boolean | false | `1.1.5`。开启 passive 特性，能优化一定的滚动性能 | N
 header | Slot | - | `1.2.10`。头部。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 loading-bar-height | String / Number | 50 | 加载中下拉高度，如果值为数字则单位是：'px' | N
-loading-props | Object | - | 加载loading样式。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/pull-down-refresh/type.ts) | N
+loading-props | Object | - | 加载loading样式。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/pull-down-refresh/type.ts) | N
 loading-texts | Array | [] | 提示语，组件内部默认值为 ['下拉刷新', '松手刷新', '正在刷新', '刷新完成']。TS 类型：`string[]` | N
 lower-threshold | String / Number | 50 | `1.1.5`。距底部/右边多远时，触发 scrolltolower 事件 | N
 max-bar-height | String / Number | 80 | 最大下拉高度，如果值为数字则单位是：'px' | N

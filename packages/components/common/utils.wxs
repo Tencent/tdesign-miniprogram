@@ -28,9 +28,9 @@ function isBoolean(value) {
   return typeof value === 'boolean';
 }
 
-var isNoEmptyObj = function (obj) {
+function isNoEmptyObj(obj) {
   return isObject(obj) && JSON.stringify(obj) !== '{}';
-};
+}
 
 function includes(arr, value) {
   if (!arr || !isArray(arr)) return false;

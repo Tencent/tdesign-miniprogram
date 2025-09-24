@@ -1,0 +1,27 @@
+<view class="tdesign-mobile-demo">
+  <view class="demo-block">
+    <view class="title">Form 表单</view>
+    <view class="summary">用于开启一个闭环的操作任务，如"删除"对象、"购买"商品等。</view>
+
+    <view class="demo-block-title">01 组件类型</view>
+    <view class="demo-block-summary">基础表单</view>
+  </view>
+  <view class="option">
+    <view class="select-button-group">
+      <t-button theme="{{isActive1 ? 'light' : 'default'}}" shape="round" data-name="isActive1" bind:tap="onClick">
+        水平排布
+      </t-button>
+      <t-button theme="{{isActive2 ? 'light' : 'default'}}" shape="round" data-name="isActive2" bind:tap="onClick">
+        竖向排布
+      </t-button>
+    </view>
+  </view>
+
+  <view wx:if="{{isActive1}}">
+    <horizontal disabled="{{switchValue}}" />
+  </view>
+
+  <view wx:if="{{isActive2}}">
+    <vertical disabled="{{switchValue}}" />
+  </view>
+</view>

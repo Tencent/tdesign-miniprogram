@@ -1,0 +1,27 @@
+{
+  "name": "tdesign-miniprogram",
+  "version": "1.11.0-beta.1",
+  "title": "tdesign-miniprogram",
+  "description": "TDesign Component for miniprogram",
+  "main": "miniprogram_dist/index.js",
+  "miniprogram": "miniprogram_dist",
+  "keywords": [
+    "tdesign",
+    "miniprogram"
+  ],
+  "files": [
+    "miniprogram_dist",
+    "CHANGELOG.md"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Tencent/tdesign-miniprogram"
+  },
+  "homepage": "https://tdesign.tencent.com/miniprogram",
+  "bugs": {
+    "url": "https://github.com/Tencent/tdesign-miniprogram/issues"
+  },
+  "author": "tdesign",
+  "license": "MIT",
+  "devDependencies": {}
+}

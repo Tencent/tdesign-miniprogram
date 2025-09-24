@@ -1,0 +1,64 @@
+<view
+  class="{{classPrefix}} {{classPrefix}}--{{labelAlign}} {{classPrefix}}--bordered {{classPrefix}}--{{verifyStatus === 2 ? 'error' : verifyStatus === 1 ? 'success' : ''}} {{prefix}}-class {{className}}"
+  style="{{_._style([style, customStyle])}}"
+>
+  <!-- 标签区域 -->
+  <view
+    wx:if="{{label}}"
+    class="{{classPrefix}}__label {{classPrefix}}__label--{{labelAlign}} {{prefix}}-class-label"
+    style="width: {{labelWidth}}"
+  >
+    <text wx:if="{{requiredMark && requiredMarkPosition === 'left'}}" class="{{classPrefix}}__label--required">*</text>
+    <text>{{label}}</text>
+    <text wx:if="{{requiredMark && requiredMarkPosition === 'right'}}" class="{{classPrefix}}__label--required">*</text>
+    <text wx:if="{{colon}}" class="{{classPrefix}}__label--colon">:</text>
+  </view>
+
+  <!-- <view class="desc-wrapper" wx:if="{{help || descLink.text}}"> -->
+  <!-- 帮助信息 -->
+  <!-- <view wx:if="{{help}}" class="{{classPrefix}}__help {{prefix}}-class-help"> {{ help }} </view> -->
+  <!-- 示例信息 -->
+  <!-- <t-button
+      bindtap="handlePreviewImage"
+      data-url="{{descLink.url}}"
+      wx:if="{{descLink.text}}"
+      theme="primary"
+      size="extra-small"
+      variant="text"
+    >
+      {{descLink.text }}</t-button
+    > -->
+  <!-- </view> -->
+
+  <!-- 内容区域 -->
+  <view
+    class="{{classPrefix}}__controls {{classPrefix}}__controls--{{contentAlign}} {{prefix}}-class-controls"
+    style="{{contentStyle}}"
+  >
+    <!-- 表单项内容 -->
+    <view class="{{classPrefix}}__controls-content">
+      <slot />
+      <!-- 右侧箭头 -->
+      <view wx:if="{{false}}" class="{{classPrefix}}__arrow">
+        <t-icon name="chevron-right" size="16" />
+      </view>
+    </view>
+
+    <!-- 错误信息 -->
+    <view
+      wx:if="{{errorList.length > 0 && showErrorMessage}}"
+      class="{{classPrefix}}__error {{classPrefix}}__error--{{errorList[0].type || 'error'}}"
+      style="{{errorPosition}}"
+    >
+      {{errorList[0].message}}
+    </view>
+
+    <!-- 成功信息 -->
+    <view wx:if="{{successList.length > 0}}" class="{{classPrefix}}__success"> {{successList[0].message}} </view>
+  </view>
+
+  <!-- 额外内容 -->
+  <view class="{{classPrefix}}__extra {{prefix}}-class-extra">
+    <slot name="extra" />
+  </view>
+</view>

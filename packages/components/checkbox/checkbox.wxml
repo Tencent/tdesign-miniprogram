@@ -19,7 +19,6 @@
       <image
         src="{{checked ? indeterminate && icon[2] ? icon[2] : icon[0] : icon[1]}}"
         class="{{classPrefix}}__icon-image"
-        webp
       />
     </view>
     <block wx:else>

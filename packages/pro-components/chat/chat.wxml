@@ -1,0 +1,25 @@
+<view class="{{[classes]}}">
+  <scroll-view class="{{[listClasses]}}" scroll-y="{{true}}" enable-flex="{{true}}" enhanced="{{true}}"
+    scroll-with-animation="{{true}}" scroll-top="{{scrollViewTop}}" data-ref="chatListRef"
+    data-event-opts="{{[['scroll',[['onScroll',['$event']]]]]}}" bindscroll="handleScroll">
+    <block wx:if="{{reverse}}">
+      <view class="place-holder"></view>
+    </block>
+    <!-- /**
+       * 1. 两种方式获取要渲染的 list
+       *  a. props 传 data
+       *  b. slots t-chat-message
+       * a 优先级更高
+       */ -->
+    <block wx:if="{{data.length > 0}}">
+      <chat-message wx:for="{{data}}" wx:key="index" avatar="{{item.avatar}}" name="{{item.name}}"
+        datetime="{{item.datetime}}" message="{{item.message}}" />
+    </block>
+    <block wx:else>
+      <slot></slot>
+    </block>
+  </scroll-view>
+  <view class="{{[COMPONENT_NAME+'__footer']}}">
+    <slot name="footer"></slot>
+  </view>
+</view>

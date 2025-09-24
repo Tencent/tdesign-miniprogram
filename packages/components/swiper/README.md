@@ -79,9 +79,9 @@ easing-function | String | default | `0.32.0`。指定 swiper 切换缓动动画
 height | String / Number | 192 | 轮播的高度；默认单位 `px` | N
 image-props | Object | - | `0.34.0`。透传至 Image 组件 | N
 interval | Number | 5000 | 轮播间隔时间 | N
-list | Array | - | `0.32.0`。图片列表。TS 类型：`string[] \| SwiperList[]` `interface SwiperList { value: string, ariaLabel: string }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/swiper/type.ts) | N
+list | Array | - | `0.32.0`。图片列表。TS 类型：`string[] \| SwiperList[]` `interface SwiperList { value: string, ariaLabel: string }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/swiper/type.ts) | N
 loop | Boolean | true | 是否循环播放 | N
-navigation | Boolean / Object / Slot | true | 导航器全部配置，true 的话使用默认配置。TS 类型：`SwiperNavProps \| boolean`，[SwiperNav API Documents](./swiper-nav?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/swiper/type.ts) | N
+navigation | Boolean / Object / Slot | true | 导航器全部配置，true 的话使用默认配置。TS 类型：`SwiperNavProps \| boolean`，[SwiperNav API Documents](./swiper-nav?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/swiper/type.ts) | N
 next-margin | String / Number | 0 | `0.32.0`。后边距，可用于露出后一项的一小部分。默认单位 `px` | N
 pagination-position | String | bottom | 页码信息展示位置。可选项：top-left/top/top-right/bottom-left/bottom/bottom-right | N
 previous-margin | String / Number | 0 | `0.32.0`。前边距，可用于露出前一项的一小部分。默认单位 `px` | N
@@ -92,7 +92,7 @@ snap-to-edge | Boolean | false | `0.32.0`。当 swiper-item 的个数大于等�
 名称 | 参数 | 描述
 -- | -- | --
 animationfinish | `(current: number, source: SwiperChangeSource)` | `1.11.0`。轮播切换时触发
-change | `(current: number, source: SwiperChangeSource)` | 轮播切换时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/swiper/type.ts)。<br/>`type SwiperChangeSource = 'autoplay' \| 'touch' \| 'nav'`<br/>
+change | `(current: number, source: SwiperChangeSource)` | 轮播切换时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/swiper/type.ts)。<br/>`type SwiperChangeSource = 'autoplay' \| 'touch' \| 'nav'`<br/>
 click | `(index: number)` | `0.34.0`。点击轮播项时触发
 image-load | `(index: number)` | `1.1.4`。图片加载时触发
 
@@ -119,7 +119,7 @@ min-show-num | Number | 2 | 小于这个数字不会显示导航器 | N
 pagination-position | String | bottom | `0.34.0`。页码信息展示位置。可选项：top-left/top/top-right/bottom-left/bottom/bottom-right | N
 show-controls | Boolean | false | `0.32.0`。是否显示两侧的控制按钮 | N
 total | Number | 0 | `0.34.0`。总共的项数 | N
-type | String | dots | 导航器类型，点状(dots)、点条状(dots-bar)、分式(fraction)等。TS 类型：`SwiperNavigationType` `type SwiperNavigationType = 'dots' \| 'dots-bar' \| 'fraction'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/swiper-nav/type.ts) | N
+type | String | dots | 导航器类型，点状(dots)、点条状(dots-bar)、分式(fraction)等。TS 类型：`SwiperNavigationType` `type SwiperNavigationType = 'dots' \| 'dots-bar' \| 'fraction'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/swiper-nav/type.ts) | N
 
 ### SwiperNav External Classes
 

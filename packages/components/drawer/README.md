@@ -54,7 +54,7 @@ custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场�
 close-on-overlay-click | Boolean | true | 点击蒙层时是否触发抽屉关闭事件 | N
 destroy-on-close | Boolean | false | 抽屉关闭时是否销毁节点 | N
 footer | Slot | - | `0.29.0`。抽屉的底部。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
-items | Array | - | 抽屉里的列表项。TS 类型：`DrawerItem[]` `interface DrawerItem { title: string; icon: string; }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/drawer/type.ts) | N
+items | Array | - | 抽屉里的列表项。TS 类型：`DrawerItem[]` `interface DrawerItem { title: string; icon: string; }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/drawer/type.ts) | N
 placement | String | right | 抽屉方向。可选项：left/right | N
 show-overlay | Boolean | true | 是否显示遮罩层 | N
 title | String / Slot | - | `0.29.0`。抽屉的标题。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
@@ -66,7 +66,7 @@ z-index | Number | 11500 | 抽屉层级，样式默认为 11500 | N
 
 名称 | 参数 | 描述
 -- | -- | --
-close | `(trigger: DrawerTriggerSource)` | 关闭时触发。。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/drawer/type.ts)。<br/>`type DrawerTriggerSource = 'overlay'`<br/>
+close | `(trigger: DrawerTriggerSource)` | 关闭时触发。。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/drawer/type.ts)。<br/>`type DrawerTriggerSource = 'overlay'`<br/>
 item-click | `(index: number; item: DrawerItem)` | 点击抽屉里的列表项
 overlay-click | \- | 如果蒙层存在，点击蒙层时触发
 

@@ -1,0 +1,74 @@
+<view class="{{[''+COMPONENT_NAME]}}">
+  <view class="{{[COMPONENT_NAME+'__left-content']}}">
+    <view class="{{[COMPONENT_NAME+'__scrollable-content','scroll-x']}}">
+      <block wx:for="{{files}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+        <view data-event-opts="{{[['tap',[['handleFileClick',['$0'],[[['files','',index]]]]]]]}}"
+          class="{{[COMPONENT_NAME+'__file-wrap']}}" bindtap="handleClick">
+          <block wx:if="{{item.fileType==='image'}}">
+            <view class="{{['file-image',COMPONENT_NAME+'__file']}}">
+              <block wx:if="{{item.status==='pending'}}">
+                <view class="{{['loading',COMPONENT_NAME+'__file-status']}}">
+                  <t-loading theme="circular" size="24px" class="wrapper" />
+                </view>
+              </block>
+              <block wx:elif="{{item.status==='fail'}}">
+                <view class="{{['fail',COMPONENT_NAME+'__file-status']}}">
+                  <t-loading theme="circular" size="24px" class="wrapper" />
+                </view>
+              </block>
+              <block wx:elif="{{item.status==='error'}}">
+                <view class="{{['error',COMPONENT_NAME+'__file-status']}}">
+                  <t-loading theme="circular" size="24px" class="wrapper" />
+                </view>
+              </block>
+              <block wx:else>
+                <image class="image" src="{{item.url}}" mode="scaleToFill" lazy-load="false"></image>
+              </block>
+              <block wx:if="{{removable}}">
+                <t-icon data-event-opts="{{[['tap',[['handleRemove',['$0',index],[[['files','',index]]]]]]]}}"
+                  catchtap="handleDelete" class="cancel" name="close-circle-filled" size="14px" />
+              </block>
+            </view>
+          </block>
+          <block wx:else>
+            <view class="{{['file',COMPONENT_NAME+'__file']}}">
+              <view class="image">
+                <block wx:if="{{item.status==='pending'}}">
+                  <view class="{{['loading',COMPONENT_NAME+'__file-status']}}">
+                    <t-loading theme="circular" size="24px" class="wrapper" />
+                  </view>
+                </block>
+                <block wx:elif="{{item.status==='fail'}}">
+                  <view class="{{['fail',COMPONENT_NAME+'__file-status']}}">
+                    <t-loading theme="circular" size="24px" class="wrapper" />
+                  </view>
+                </block>
+                <block wx:elif="{{item.status==='error'}}">
+                  <view class="{{['error',COMPONENT_NAME+'__file-status']}}">
+                    <t-loading theme="circular" size="24px" class="wrapper" />
+                  </view>
+                </block>
+                <block wx:else>
+                  <t-icon name="{{item.fileIcon}}" size="24"></t-icon>
+                </block>
+              </view>
+              <view class="content">
+                <view class="title">{{item.name}}</view>
+                <block>
+                  <view wx:if="{{item.status==='pending'}}" class="desc">上传中...{{item.progress || 0+"%"}}</view>
+                  <view wx:elif="{{item.status==='fail'}}" class="desc">上传失败</view>
+                  <view wx:elif="{{item.status==='error'}}" class="desc">{{item.errorMessage}}</view>
+                  <view wx:else class="desc">{{item.desc}}</view>
+                </block>
+              </view>
+              <block wx:if="{{removable}}">
+                <t-icon data-event-opts="{{[['tap',[['handleRemove',['$0',index],[[['files','',index]]]]]]]}}"
+                  catchtap="handleDelete" class="cancel" name="close-circle-filled" size="14px" />
+              </block>
+            </view>
+          </block>
+        </view>
+      </block>
+    </view>
+  </view>
+</view>

@@ -1,9 +1,9 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view wx:if="{{ isShow }}" style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class ">
-  <view wx:if="{{ parsedRowcols.length }}" class="{{classPrefix}}__content">
+  <view wx:if="{{ parsedRowCols.length }}" class="{{classPrefix}}__content">
     <view
-      wx:for="{{parsedRowcols}}"
+      wx:for="{{parsedRowCols}}"
       wx:for-index="index"
       wx:for-item="row"
       wx:key="index"

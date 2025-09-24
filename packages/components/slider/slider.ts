@@ -4,6 +4,7 @@ import { trimSingleValue, trimValue } from './tool';
 import props from './props';
 import type { SliderValue } from './type';
 import { getRect } from '../common/utils';
+import { isString, isFunction } from '../common/validator';
 import Bus from '../common/bus';
 
 const { prefix } = config;
@@ -26,6 +27,8 @@ type dataType = {
   scaleTextArray: any[];
   _value: SliderValue;
   prefix: string;
+  realLabel: string | string[];
+  extremeLabel: string[];
   isVisibleToScreenReader: boolean;
   identifier: number[];
   __inited: boolean;
@@ -79,6 +82,8 @@ export default class Slider extends SuperComponent {
     scaleArray: [],
     scaleTextArray: [],
     prefix,
+    realLabel: '',
+    extremeLabel: [],
     isVisibleToScreenReader: false,
     identifier: [-1, -1],
     __inited: false,
@@ -95,7 +100,23 @@ export default class Slider extends SuperComponent {
     marks(val) {
       this.bus.on('initial', () => this.handleMark(val));
     },
+    label(val) {
+      this.setData({
+        isShowLabel: Boolean(val),
+      });
+    },
+    'showExtremeValue, min, max'() {
+      this.getwExtremeLabel();
+    },
   };
+
+  getwExtremeLabel() {
+    const { showExtremeValue, min, max } = this.properties;
+    if (!showExtremeValue) return;
+    this.setData({
+      extremeLabel: [this.getLabelByValue(Number(min), 'min'), this.getLabelByValue(Number(max), 'max')],
+    });
+  }
 
   lifetimes = {
     created() {
@@ -163,12 +184,41 @@ export default class Slider extends SuperComponent {
     });
   }
 
+  getLabelByValue(value: SliderValue, position?: 'start' | 'end' | 'min' | 'max') {
+    const { label } = this.properties;
+
+    if (isString(label)) {
+      let text = String(value);
+      try {
+        const rule = /\${value}%/g;
+        const enableToReplace = rule.test(label);
+        if (enableToReplace) {
+          text = label.replace(rule, String(value));
+        } else {
+          text = label;
+          throw new Error();
+        }
+      } catch (e) {
+        console.warn(`fail to parse label prop, please pass string such as '\${value}%'`);
+      }
+      return text;
+    }
+
+    if (isFunction(label)) {
+      return label(value, position);
+    }
+
+    return String(value);
+  }
+
   handlePropsChange(newValue: SliderValue) {
     const value = trimValue(newValue, this.properties);
+    const realLabel = this.getLabelByValue(value);
 
     const setValueAndTrigger = () => {
       this.setData({
         _value: value,
+        realLabel,
       });
     };
 
@@ -440,6 +490,7 @@ export default class Slider extends SuperComponent {
 
     this.setData({
       dotTopValue: [a, b],
+      realLabel: [this.getLabelByValue(a, 'start'), this.getLabelByValue(b, 'end')],
     });
 
     if (left + right <= maxRange) {

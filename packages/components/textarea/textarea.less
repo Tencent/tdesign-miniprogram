@@ -1,7 +1,6 @@
 @import '../common/style/base.less';
 
-@textarea-vertical-padding: 32rpx; // 文本框垂直方向间距
-@textarea-horizontal-padding: 32rpx; // 文本框水平方向间距
+@textarea-padding: var(--td-textarea-padding, 32rpx);
 @textarea-text-line-height: 48rpx; // 输入框文本行高
 @textarea-label-line-height: 44rpx; // 标签文本行高
 @textarea-label-padding-bottom: @spacer;
@@ -35,7 +34,7 @@
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding: @textarea-vertical-padding @textarea-horizontal-padding;
+  padding: @textarea-padding;
   background-color: @textarea-background-color;
 
   &__label:not(:empty) {

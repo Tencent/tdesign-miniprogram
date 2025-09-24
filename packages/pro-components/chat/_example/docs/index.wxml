@@ -1,0 +1,15 @@
+<view>
+  <t-chat class="chat-box">
+    <block wx:for="{{chatList}}" wx:key="index" wx:for-index="chatIndex">
+      <t-chat-message avatar="{{item.avatar}}" name="{{item.name}}" datetime="{{item.datetime}}"
+        message="{{item.message}}" role="{{item.message.role}}">
+        <t-chat-actionbar slot="actionbar" placement="end" actionBar="{{customActionBar}}" />
+      </t-chat-message>
+    </block>
+    <view slot="footer">
+      <t-chat-sender value="{{value}}" loading="{{loading}}" disabled="{{disabled}}" bind:send="onSend"
+        bind:stop="onStop" bind:focus="onFocus" bind:updatevisible="onUpdateVisible"
+        attachmentsProps="{{attachmentsProps}}" />
+    </view>
+  </t-chat>
+</view>

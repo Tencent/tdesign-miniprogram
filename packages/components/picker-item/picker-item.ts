@@ -39,7 +39,7 @@ export default class PickerItem extends SuperComponent {
           if (keys === null || JSON.stringify(this.data.pickerKeys) === JSON.stringify(keys)) return;
 
           this.setData({
-            pickerKeys: keys,
+            pickerKeys: { ...this.data.pickerKeys, ...keys },
           });
         }
       },
@@ -68,7 +68,7 @@ export default class PickerItem extends SuperComponent {
     value: '',
     curIndex: 0,
     columnIndex: 0,
-    pickerKeys: { value: 'value', label: 'label' },
+    pickerKeys: { value: 'value', label: 'label', icon: 'icon' },
     formatOptions: props.options.value,
   };
 

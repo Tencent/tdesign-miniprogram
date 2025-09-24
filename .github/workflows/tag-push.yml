@@ -7,11 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event.ref_type == 'tag'
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: ./.github/actions/install-dep
-        with:
-          nodeVersion: '14.6.0'
-      - run: npm run build
+      - run: pnpm build
         shell: bash
       - name: release miniprogram
         uses: LeeJim/setup-miniprogram@main
@@ -28,8 +26,9 @@ jobs:
           MINI_APP_PRIVATE_KEY: ${{ secrets.TDESIGN_MINI_KEY }}
       - id: publish
         name: publish NPM
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v4
         with:
+          package: packages/tdesign-miniprogram
           token: ${{ secrets.TDESIGN_NPM_TOKEN }}
           tag: ${{ contains(github.ref_name, 'beta') && 'beta' || 'latest' }}
       - if: steps.publish.outputs.type != 'none'

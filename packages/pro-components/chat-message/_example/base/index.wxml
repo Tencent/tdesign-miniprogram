@@ -1,0 +1,6 @@
+<view class="button-example">
+  <t-chat-message avatar="https://tdesign.gtimg.com/site/chat-avatar.png" datetime="今天16:38" name="TDesignAI"
+    message="{{userMessage}}"></t-chat-message>
+  <t-chat-message avatar="https://tdesign.gtimg.com/site/chat-avatar.png" datetime="今天16:38" name="TDesignAI"
+    message="{{assistantMessage}}" animation="skeleton"></t-chat-message>
+</view>

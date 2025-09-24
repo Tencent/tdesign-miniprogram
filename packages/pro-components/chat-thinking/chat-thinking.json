@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-chat-loading": "../chat-loading/chat-loading"
+  }
+}

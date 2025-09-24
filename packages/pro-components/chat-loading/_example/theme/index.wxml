@@ -1,0 +1,34 @@
+<view class="demo-container">
+    <view class="theme-switch">
+        <text>主题切换：</text>
+        <button bindtap="toggleTheme" class="theme-btn">
+            切换到{{currentTheme === 'light' ? '暗色' : '亮色'}}主题
+        </button>
+    </view>
+
+    <view class="loading-container">
+        <t-chat-loading loading="{{loading}}" theme="{{currentTheme}}" animation="{{animation}}"
+            text="{{loadingText}}" />
+    </view>
+
+    <view class="controls">
+        <view class="control-item">
+            <text>动画效果：</text>
+            <picker bindchange="onAnimationChange" value="{{animationIndex}}" range="{{animationOptions}}">
+                <view class="picker">{{animationOptions[animationIndex]}}</view>
+            </picker>
+        </view>
+
+        <view class="control-item">
+            <text>加载文本：</text>
+            <input class="text-input" value="{{loadingText}}" placeholder="输入加载文本" bindinput="onTextChange" />
+        </view>
+
+        <view class="control-item">
+            <text>加载状态：</text>
+            <button bindtap="toggleLoading" class="toggle-btn">
+                {{loading ? '停止' : '开始'}}
+            </button>
+        </view>
+    </view>
+</view>

@@ -58,8 +58,8 @@ icon | Array | [] | `0.27.0`。开关的图标；[打开时的图标，关闭时
 label | Array | [] | `0.27.0`。开关内容，[开启时内容，关闭时内容]。示例：['开', '关'] 。TS 类型：`string[]` | N
 loading | Boolean | false | `0.27.0`。是否处于加载中状态 | N
 size | String | medium | `0.27.0`。开关尺寸。可选项：small/medium/large | N
-value | String / Number / Boolean | null | 开关值。TS 类型：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/switch/type.ts) | N
-default-value | String / Number / Boolean | undefined | 开关值。非受控属性。TS 类型：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/components/switch/type.ts) | N
+value | String / Number / Boolean | null | 开关值。TS 类型：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/switch/type.ts) | N
+default-value | String / Number / Boolean | undefined | 开关值。非受控属性。TS 类型：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/switch/type.ts) | N
 
 ### Switch Events
 

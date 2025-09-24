@@ -1,0 +1,14 @@
+<view class="button-example">
+  <t-chat-message avatar="https://tdesign.gtimg.com/site/chat-avatar.png" datetime="今天16:38" name="TDesignAI"
+    message="{{userMessage}}" variant="base"></t-chat-message>
+  <t-chat-message avatar="https://tdesign.gtimg.com/site/chat-avatar.png" datetime="今天16:38" name="TDesignAI"
+    message="{{assistantMessage}}" variant="outline"></t-chat-message>
+  <t-chat-message placement="left" avatar="https://tdesign.gtimg.com/site/chat-avatar.png" datetime="今天16:38"
+    name="TDesignAI" message="{{userMessage}}" variant="base"></t-chat-message>
+  <t-chat-message placement="right" avatar="https://tdesign.gtimg.com/site/chat-avatar.png" datetime="今天16:38"
+    name="TDesignAI" message="{{assistantMessage}}" variant="base"></t-chat-message>
+  <t-chat-message placement="left" avatar="https://tdesign.gtimg.com/site/chat-avatar.png" datetime="今天16:38"
+    name="TDesignAI" message="{{userMessage}}" variant="outline"></t-chat-message>
+  <t-chat-message placement="right" avatar="https://tdesign.gtimg.com/site/chat-avatar.png" datetime="今天16:38"
+    name="TDesignAI" message="{{assistantMessage}}" variant="outline"></t-chat-message>
+</view>

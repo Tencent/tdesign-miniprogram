@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "t-chat-attachments": "tdesign-miniprogram/chat-attachments/chat-attachments"
+  }
+}
