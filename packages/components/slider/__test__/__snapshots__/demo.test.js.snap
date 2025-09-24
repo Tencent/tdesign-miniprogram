@@ -40,7 +40,7 @@ exports[`Slider Slider capsule demo works fine 1`] = `
           60,
         ]
       }}"
-      label="\${value}"
+      label="\${value}%"
       range="{{true}}"
       theme="capsule"
     />
@@ -95,7 +95,7 @@ exports[`Slider Slider disabled demo works fine 1`] = `
   >
     <t-slider
       disabled="{{true}}"
-      label="\${value}"
+      label="\${value}%"
       range="{{true}}"
       showExtremeValue="{{true}}"
       value="{{
@@ -140,7 +140,7 @@ exports[`Slider Slider label demo works fine 1`] = `
     class="wrapper"
   >
     <t-slider
-      label="\${value}"
+      label="\${value}%"
       value="{{35}}"
       bind:change="handleChange"
     />
@@ -160,7 +160,7 @@ exports[`Slider Slider label demo works fine 1`] = `
           60,
         ]
       }}"
-      label="\${value}"
+      label="{{[Function]}}"
       range="{{true}}"
       showExtremeValue="{{true}}"
     />
@@ -277,7 +277,7 @@ exports[`Slider Slider vertical demo works fine 1`] = `
     class="wrapper"
   >
     <t-slider
-      label="\${singlevalue}"
+      label="\${value}%"
       value="{{35}}"
       vertical="{{true}}"
       bind:change="handleSingleChange"
@@ -322,7 +322,7 @@ exports[`Slider Slider vertical demo works fine 1`] = `
     class="wrapper"
   >
     <t-slider
-      label="\${capsuleValue}"
+      label="\${value}%"
       theme="capsule"
       value="{{35}}"
       vertical="{{true}}"
