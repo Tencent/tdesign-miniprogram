@@ -77,8 +77,8 @@ export default class Upload extends SuperComponent {
   }
 
   onFileClick(e: WechatMiniprogram.BaseEvent) {
-    const { file } = e.currentTarget.dataset;
-    this.triggerEvent('click', { file });
+    const { file, index } = e.currentTarget.dataset;
+    this.triggerEvent('click', { index, file });
   }
 
   /**

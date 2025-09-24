@@ -96,7 +96,7 @@ transition | Object | { backTransition: true, duration: 300, timingFunction: 'ea
 名称 | 参数 | 描述
 -- | -- | --
 add | `(files: MediaContext)` | 选择后触发，仅包含本次选择的照片；`url` 表示选定视频的临时文件路径 (本地路径)。`duration` 表示选定视频的时间长度。`size`选定视频的数据量大小。更多描述参考 wx.chooseMedia 小程序官网描述。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/upload/type.ts)。<br/>`type MediaContext = VideoContext[] \| ImageContext[]`<br/><br/>`interface VideoContext { name?: string; type?: string; url?: string; duration?: number; size?: number; width?: number; height?: number; thumb: string; progress: number }`<br/><br/>`interface ImageContext { name: string; type: string; url: string;  size: number; width: number; height: number; progress: number  }`<br/>
-click | `(file: VideoContext \| ImageContext)` | 点击已选文件时触发；常用于重新上传
+click | `(index: number; file: VideoContext \| ImageContext)` | 点击已选文件时触发；常用于重新上传
 complete | \- | 上传成功或失败后触发
 drop | `(files: MediaContext) ` | 拖拽结束后触发，包含所有上传的文件（拖拽后的文件顺序）；`url` 表示选定视频的临时文件路径 (本地路径)。`duration` 表示选定视频的时间长度。`size` 选定视频的数据量大小。更多描述参考 wx.chooseMedia 小程序官网描述。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/upload/type.ts)。<br/>`type MediaContext = VideoContext[] \| ImageContext[]; interface VideoContext { name?: string; type?: string; url?: string; duration?: number; size?: number; width?: number; height?: number; thumb: string; progress: number }; interface ImageContext { name: string; type: string; url: string;  size: number; width: number; height: number; progress: number}`<br/>
 fail | \- | 上传失败后触发
