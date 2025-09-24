@@ -72,7 +72,14 @@ module.exports = (src, dist, moduleName) => {
   });
 
   // options
-  const ignore = ['**/__test__/**', '**/_example/**', '**/node_modules/**', '**/package.json'];
+  const ignore = [
+    '**/__test__/**',
+    '**/_example/**',
+    '**/node_modules/**',
+    '**/package.json',
+    '**/form/**',
+    '**/form-item/**',
+  ];
   const srcOptions = { base: src, ignore };
   const watchOptions = { events: ['add', 'change'] };
   const gulpErrorPath = 'packages/tdesign-miniprogram/example/utils/gulpError.js';

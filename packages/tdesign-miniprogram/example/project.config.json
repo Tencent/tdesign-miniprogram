@@ -185,12 +185,6 @@
           "scene": null
         },
         {
-          "name": "form",
-          "pathName": "pages/form/form",
-          "query": "",
-          "scene": null
-        },
-        {
           "name": "grid",
           "pathName": "pages/grid/grid",
           "query": "",
