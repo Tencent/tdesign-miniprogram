@@ -5,7 +5,7 @@ on:
     branches: [develop]
     types: [opened, synchronize, reopened, closed]
     paths:
-      - 'package.json'
+      - 'packages/tdesign-miniprogram/package.json'
   issue_comment:
     types: [edited]
 
@@ -19,8 +19,14 @@ jobs:
     steps:
       - run: echo "The head of this PR starts with 'release/'"
       - uses: actions/checkout@v3
+      - name: Extract version
+        id: version
+        run: |
+          echo "version=$(node -p 'require("./packages/tdesign-miniprogram/package.json").version')" >> $GITHUB_OUTPUT
       - uses: TDesignOteam/tdesign-changelog-action@main
         id: changelog
+        with:
+          tag: ${{ steps.version.outputs.version }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Add comment
