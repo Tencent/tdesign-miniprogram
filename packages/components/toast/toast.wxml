@@ -33,6 +33,6 @@
   z-index="{{overlayProps && overlayProps.zIndex || 11000}}"
   duration="{{overlayProps && overlayProps.duration || 300}}"
   usingCustomNavbar="{{overlayProps && overlayProps.usingCustomNavbar || usingCustomNavbar}}"
-  backgroundColor="{{preventScrollThrough ? 'transparent' : overlayProps && overlayProps.backgroundColor || ''}}"
+  backgroundColor="{{!showOverlay && preventScrollThrough ? 'transparent' : overlayProps && overlayProps.backgroundColor || ''}}"
   preventScrollThrough="{{preventScrollThrough || overlayProps && overlayProps.preventScrollThrough}}"
 />
