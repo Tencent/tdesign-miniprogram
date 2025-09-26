@@ -2,10 +2,11 @@
 
 <view
   style="{{_._style([style, customStyle])}} width:{{size}}px; height: {{size}}px; background-color: {{bgColor}};"
-  class="{{classPrefix}} {{borderless ? prefix+'-'+'borderless' : ''}} {{prefix}}-class"
+  class="{{classPrefix}} {{borderless ? prefix+'-'+'borderless' : ''}} class {{prefix}}-class"
 >
   <qrcode-canvas
     id="qrcodeCanvas"
+    class="{{prefix}}-class-canvas"
     size="{{size}}"
     value="{{value}}"
     level="{{level}}"

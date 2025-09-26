@@ -7,7 +7,7 @@ const name = `${prefix}-qrcode`;
 
 @wxComponent()
 export default class QRCode extends SuperComponent {
-  externalClasses = [`${prefix}-class`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-canvas`];
 
   options = {
     multipleSlots: true,

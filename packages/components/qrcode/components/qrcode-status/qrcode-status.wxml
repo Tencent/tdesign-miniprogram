@@ -1,5 +1,5 @@
 <block wx:if="{{statusRender}}">
-  <slot name="statusRender" status="{{status}}"> </slot>
+  <slot name="statusRender" />
 </block>
 
 <block wx:else>
