@@ -215,6 +215,8 @@ export default class Slider extends SuperComponent {
     const value = trimValue(newValue, this.properties);
     const realLabel = this.getLabelByValue(value);
 
+    this.triggerValue(value);
+
     const setValueAndTrigger = () => {
       this.setData({
         _value: value,
