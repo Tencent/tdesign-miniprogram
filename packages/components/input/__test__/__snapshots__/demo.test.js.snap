@@ -275,11 +275,11 @@ exports[`Input Input suffix demo works fine 1`] = `
   <t-input
     class="extra"
     label="标签文字"
+    maxcharacter="{{10}}"
     placeholder="请输入文字"
     tips="最多十个字"
   >
     <t-button
-      maxcharacter="{{10}}"
       size="extra-small"
       slot="extra"
       theme="primary"
