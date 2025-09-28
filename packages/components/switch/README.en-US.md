@@ -23,6 +23,15 @@ name | params | description
 -- | -- | --
 change | `(value: SwitchValue)` | \-
 
+### Switch External Classes
+
+className | Description
+-- | --
+t-class | \-
+t-class-body | \-
+t-class-dot | \-
+t-class-label | \-
+
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
