@@ -6,7 +6,7 @@ const { prefix } = config;
 const name = `${prefix}-switch`;
 @wxComponent()
 export default class Switch extends SuperComponent {
-  externalClasses = ['t-class', 't-class-label', 't-class-body', 't-class-dot'];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-label`, `${prefix}-class-body`, `${prefix}-class-dot`];
 
   behaviors = ['wx://form-field'];
 
