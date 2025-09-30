@@ -13,8 +13,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const publicPathMap: Record<string, string> = {
   preview: '/',
-  intranet: '/miniprogram/',
-  production: 'https://static.tdesign.tencent.com/miniprogram/',
+  production: '/miniprogram/',
 };
 
 // https://vitejs.dev/config/
