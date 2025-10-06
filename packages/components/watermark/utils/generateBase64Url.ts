@@ -126,7 +126,7 @@ export default function generateBase64Url(
         ctx.save?.();
         drawRotate(ctx, rotateX, rotateY, rotate);
 
-        // TODO：其他技术栈修复了「灰度效果只影响图片，不影响文字」的bug，因为小程序不能新建元素，暂时没有好的解决方案
+        // TODO：其他技术栈修复了「灰度效果只影响图片，不影响文字」的bug，因为小程序不能创建临时canvas，暂时没有想到比较优雅的解决方案
         if (isGrayscale) {
           ctx.drawImage(img, offsetX, offsetY + item.top * ratio, width * ratio, height * ratio);
           const imgData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
