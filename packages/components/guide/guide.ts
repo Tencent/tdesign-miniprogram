@@ -189,22 +189,22 @@ export default class Guide extends SuperComponent {
     },
     onTplButtonTap(e) {
       const { type } = e.target.dataset;
-      const parmas = { e, current: this.data.current, total: this.data.steps.length };
+      const params = { e, current: this.data.current, total: this.data.steps.length };
       switch (type) {
         case 'next':
-          this.triggerEvent('next-step-click', { next: this.data.current + 1, ...parmas });
+          this.triggerEvent('next-step-click', { next: this.data.current + 1, ...params });
           this.setData({ current: this.data.current + 1 });
           break;
         case 'skip':
-          this.triggerEvent('skip', parmas);
+          this.triggerEvent('skip', params);
           this.setData({ current: -1 });
           break;
         case 'back':
-          this.triggerEvent('back', parmas);
+          this.triggerEvent('back', params);
           this.setData({ current: 0 });
           break;
         case 'finish':
-          this.triggerEvent('finish', parmas);
+          this.triggerEvent('finish', params);
           this.setData({ current: -1 });
           break;
         default:
