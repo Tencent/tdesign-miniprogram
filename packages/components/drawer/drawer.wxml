@@ -4,14 +4,14 @@
   wx:if="{{!destroyOnClose || visible}}"
   style="{{_._style([style, customStyle])}}"
   class="class"
-  bind:visible-change="visibleChange"
   visible="{{visible}}"
-  zIndex="{{zIndex}}"
-  usingCustomNavbar="{{usingCustomNavbar}}"
+  z-index="{{zIndex}}"
+  using-custom-navbar="{{usingCustomNavbar}}"
   placement="{{placement == 'right' ? 'right' : 'left'}}"
-  showOverlay="{{showOverlay}}"
-  overlayProps="{{overlayProps}}"
-  closeOnOverlayClick="{{closeOnOverlayClick}}"
+  show-overlay="{{showOverlay}}"
+  overlay-props="{{overlayProps}}"
+  close-on-click-overlay="{{closeOnOverlayClick}}"
+  bind:visible-change="onVisibleChange"
 >
   <view class="{{classPrefix}}">
     <slot name="title" />
@@ -27,9 +27,9 @@
         wx:key="index"
         data-item="{{item}}"
         data-index="{{index}}"
-        bindtap="itemClick"
         aria-role="{{ ariaRole || 'button' }}"
         aria-label="{{item.title}}"
+        bindtap="onItemClick"
       >
         <view aria-hidden="{{true}}" wx:if="{{item.icon}}" class="{{classPrefix}}__sidebar-item-icon">
           <t-icon name="{{item.icon}}" />
