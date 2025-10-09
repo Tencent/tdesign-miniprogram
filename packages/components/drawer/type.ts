@@ -4,6 +4,8 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { OverlayProps } from '../overlay/index';
+
 export interface TdDrawerProps {
   /**
    * 点击蒙层时是否触发抽屉关闭事件
@@ -27,6 +29,14 @@ export interface TdDrawerProps {
   items?: {
     type: ArrayConstructor;
     value?: DrawerItem[];
+  };
+  /**
+   * 遮罩层的属性，透传至 overlay
+   * @default {}
+   */
+  overlayProps?: {
+    type: ObjectConstructor;
+    value?: OverlayProps;
   };
   /**
    * 抽屉方向

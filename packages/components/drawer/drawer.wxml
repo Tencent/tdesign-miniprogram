@@ -10,6 +10,7 @@
   usingCustomNavbar="{{usingCustomNavbar}}"
   placement="{{placement == 'right' ? 'right' : 'left'}}"
   showOverlay="{{showOverlay}}"
+  overlayProps="{{overlayProps}}"
   closeOnOverlayClick="{{closeOnOverlayClick}}"
 >
   <view class="{{classPrefix}}">
