@@ -8,10 +8,11 @@ const sourcemaps = require('gulp-sourcemaps');
 const plumber = require('gulp-plumber');
 const base = require('./gulpfile.base');
 
+const PACKAGE_NAME = 'tdesign-miniprogram';
+
 /* config */
 const src = 'packages/tdesign-miniprogram/example';
 const dist = '_example';
-const npm_dist = 'tdesign-miniprogram';
 
 /* base tasks */
 const { clear, build: baseBuild, watch: baseWatch, handleError, resetError } = base(src, dist, 'example');
@@ -47,7 +48,7 @@ const since = (task) => (file) => gulp.lastRun(task) > file.stat.ctime ? gulp.la
  * 将 packages/tdesign-miniprogram/miniprogram_dist 同步至 _example/miniprogram_npm
  * */
 const input = 'packages/tdesign-miniprogram/miniprogram_dist';
-const output = `_example/miniprogram_npm/${npm_dist}`;
+const output = `_example/miniprogram_npm/${PACKAGE_NAME}`;
 const syncDist = () =>
   gulp
     .src(`${input}/**`, { base: input, since: since(syncDist) })
