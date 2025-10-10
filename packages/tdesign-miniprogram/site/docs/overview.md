@@ -373,9 +373,9 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
-    <a class="item" href="./components/watermark">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-watermark.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-watermark-dark.png" />
+    <a class="item" href="/miniprogram/components/watermark">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-watermark.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-watermark-dark.png" />
       <p class="name">Watermark 水印</p>
     </a>
   </div>

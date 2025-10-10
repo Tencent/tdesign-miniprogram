@@ -2,7 +2,7 @@
   <t-navbar title="TDesign" leftArrow />
 </view>
 <t-indexes
-  current="{{defaultCurrent}}"
+  current="{{current}}"
   index-list="{{indexList}}"
   sticky-offset="{{stickyOffset}}"
   bind:select="onSelect"
