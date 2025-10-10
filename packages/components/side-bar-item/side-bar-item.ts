@@ -30,6 +30,11 @@ export default class SideBarItem extends SuperComponent {
     icon(v) {
       this.setData({ _icon: typeof v === 'string' ? { name: v } : v });
     },
+    disabled(v) {
+      this.setData({
+        active: !v && this.data.active,
+      });
+    },
   };
 
   data = {
@@ -42,7 +47,7 @@ export default class SideBarItem extends SuperComponent {
 
   methods = {
     updateActive(value) {
-      const active = value === this.data.value;
+      const active = value === this.data.value && !this.data.disabled;
       this.setData({
         active,
       });
