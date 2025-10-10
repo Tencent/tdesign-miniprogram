@@ -20,6 +20,11 @@ const props: TdDrawerProps = {
   items: {
     type: Array,
   },
+  /** 遮罩层的属性，透传至 overlay */
+  overlayProps: {
+    type: Object,
+    value: {},
+  },
   /** 抽屉方向 */
   placement: {
     type: String,

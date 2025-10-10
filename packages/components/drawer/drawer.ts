@@ -24,7 +24,7 @@ export default class Drawer extends SuperComponent {
 
   methods = {
     // closeOnOverlayClick为true时才能触发popup的visible-change事件
-    visibleChange({ detail }) {
+    onVisibleChange({ detail }) {
       const { visible } = detail;
       const { showOverlay } = this.data;
 
@@ -41,7 +41,7 @@ export default class Drawer extends SuperComponent {
       }
     },
 
-    itemClick(detail) {
+    onItemClick(detail) {
       const { index, item } = detail.currentTarget.dataset;
 
       this.triggerEvent('item-click', { index, item });
