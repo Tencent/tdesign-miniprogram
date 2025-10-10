@@ -235,7 +235,7 @@ spline: explain
   </div>
 </section>
 
-<h3>Data Display<em class="tag">17</em></h3>
+<h3>Data Display<em class="tag">18</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/avatar-en">
@@ -370,6 +370,14 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-tag.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-tag-dark.png" />
       <p class="name">Tag</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/watermark-en">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/doc/doc-watermark.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/doc/doc-watermark-dark.png" />
+      <p class="name">Watermark</p>
     </a>
   </div>
 </section>
