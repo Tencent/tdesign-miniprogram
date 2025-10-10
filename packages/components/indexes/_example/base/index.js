@@ -1,6 +1,6 @@
 Page({
   data: {
-    defaultCurrent: 'B',
+    current: 'B',
     indexList: [],
     list: [
       {
@@ -104,7 +104,9 @@ Page({
 
   onChange(e) {
     const { index } = e.detail;
-
+    this.setData({
+      current: index,
+    });
     console.log('change:', index);
   },
 

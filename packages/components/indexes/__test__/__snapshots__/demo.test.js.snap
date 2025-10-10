@@ -11,7 +11,7 @@ exports[`Indexes Indexes base demo works fine 1`] = `
     />
   </wx-view>
   <t-indexes
-    defaultCurrent="B"
+    current="B"
     indexList="{{Array []}}"
     stickyOffset="{{0}}"
     bind:change="onChange"
