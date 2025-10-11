@@ -12,6 +12,7 @@ alpha | Number | 1 | \- | N
 content | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 height | Number | - | \- | N
 is-repeat | Boolean | true | \- | N
+layout | String | rectangular | options: rectangular/hexagonal | N
 line-space | Number | 16 | \- | N
 movable | Boolean | false | \- | N
 move-interval | Number | 3000 | \- | N

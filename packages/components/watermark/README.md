@@ -55,6 +55,11 @@ isComponent: true
 
 {{ move-image }}
 
+### 不同布局的水印 
+通过设置 layout 使用不同的布局。
+
+{{ layout }}
+
 
 ## API
 
@@ -68,6 +73,7 @@ alpha | Number | 1 | 水印整体透明度，取值范围 [0-1] | N
 content | String / Slot | - | 水印所覆盖的内容节点。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 height | Number | - | 水印高度 | N
 is-repeat | Boolean | true | 水印是否重复出现 | N
+layout | String | rectangular | 水印的布局方式，rectangular：矩形，即横平竖直的水印；hexagonal：六边形，即错位的水印。可选项：rectangular/hexagonal | N
 line-space | Number | 16 | 行间距，只作用在多行（`content` 配置为数组）情况下 | N
 movable | Boolean | false | 水印是否可移动 | N
 move-interval | Number | 3000 | 水印发生运动位移的间隙，单位：毫秒 | N

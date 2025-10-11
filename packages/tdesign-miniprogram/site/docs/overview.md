@@ -372,7 +372,7 @@ spline: explain
     </a>
   </div>
 
-   <div class="image-wrapper">
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/watermark">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-watermark.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-watermark-dark.png" />
