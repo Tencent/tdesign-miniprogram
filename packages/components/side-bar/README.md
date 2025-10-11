@@ -96,5 +96,5 @@ value | String / Number | - | 当前选项的值 | N
 --td-side-bar-disabled-color | @text-color-disabled | - 
 --td-side-bar-font-size | 32rpx | - 
 --td-side-bar-icon-size | 40rpx | - 
---td-side-bar-item-height | 112rpx | - 
+--td-side-bar-item-height | auto | - 
 --td-side-bar-item-line-height | 48rpx | -

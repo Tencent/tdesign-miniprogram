@@ -3,8 +3,8 @@ import resolveCwd from './utils.mjs';
 
 const COMPONENT_NAME = process.argv[process.argv.indexOf('--NAME') + 1]; // 在 --NAME 后面
 const ROOT_DIR = COMPONENT_NAME.includes('chat')
-  ? resolveCwd('/packages/pro-components')
-  : resolveCwd('/packages/components');
+  ? resolveCwd('../../../packages/components')
+  : resolveCwd('../../../packages/components');
 
 const combine = {
   avatar: ['avatar-group', 'avatar'],
@@ -57,14 +57,14 @@ const generateCssVariables = async (componentName) => {
 
     const list = file.match(matchReg)?.sort();
 
-    list?.forEach((item, index) => {
+    list?.forEach((item) => {
       cssVariableBodyContent += `${item.slice(1, item.indexOf(',')).trim()} | ${item
         .slice(item.indexOf(',') + 2, item.length - 1)
-        .trim()} | -${index === list.length - 1 ? '' : ' \n'}`;
+        .trim()} | -${' \n'}`;
     });
   });
 
-  return cssVariableBodyContent;
+  return cssVariableBodyContent.trimEnd();
 };
 
 /**
