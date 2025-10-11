@@ -5,7 +5,7 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['base', 'gray', 'image', 'move-image', 'move-text', 'multi-line', 'multi-line-gray'];
+const mapper = ['base', 'gray', 'image', 'layout', 'move-image', 'move-text', 'multi-line', 'multi-line-gray'];
 
 describe('Watermark', () => {
   mapper.forEach((demoName) => {

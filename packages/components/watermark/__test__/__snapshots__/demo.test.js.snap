@@ -62,6 +62,54 @@ exports[`Watermark Watermark image demo works fine 1`] = `
 </wx-image>
 `;
 
+exports[`Watermark Watermark layout demo works fine 1`] = `
+<layout>
+  <wx-view
+    class="demo-desc"
+    style="margin-bottom: 32rpx"
+  >
+    Rectangular Grid 矩形布局
+  </wx-view>
+  <t-watermark
+    height="{{52}}"
+    watermarkContent="{{
+      Object {
+        "text": "文字水印",
+      }
+    }}"
+    width="{{68}}"
+    x="{{56}}"
+    y="{{56}}"
+  >
+    <wx-view
+      style="width: 100%; height: 340px"
+    />
+  </t-watermark>
+  <wx-view
+    class="demo-desc"
+    style="margin-bottom: 32rpx"
+  >
+    Hexagonal Grid 六边形网格
+  </wx-view>
+  <t-watermark
+    height="{{52}}"
+    layout="hexagonal"
+    watermarkContent="{{
+      Object {
+        "text": "文字水印",
+      }
+    }}"
+    width="{{68}}"
+    x="{{56}}"
+    y="{{56}}"
+  >
+    <wx-view
+      style="width: 100%; height: 340px"
+    />
+  </t-watermark>
+</layout>
+`;
+
 exports[`Watermark Watermark move-image demo works fine 1`] = `
 <move-image>
   <t-watermark

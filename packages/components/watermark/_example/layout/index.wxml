@@ -1,11 +1,9 @@
-<div class="demo-block__header-desc demo-block_subtitle" style="margin: 8px 0 16px 16px">Rectangular Grid 矩形布局</div>
+<view class="demo-desc" style="margin-bottom: 32rpx">Rectangular Grid 矩形布局</view>
 <t-watermark watermark-content="{{watermark}}" y="{{56}}" x="{{56}}" width="{{68}}" height="{{52}}">
   <view style="width: 100%; height: 340px" />
 </t-watermark>
 
-<div class="demo-block__header-desc demo-block_subtitle" style="margin: 24px 0 16px 16px"
-  >Hexagonal Grid 六边形网格</div
->
+<view class="demo-desc" style="margin-bottom: 32rpx">Hexagonal Grid 六边形网格</view>
 <t-watermark watermark-content="{{watermark}}" y="{{56}}" x="{{56}}" width="{{68}}" height="{{52}}" layout="hexagonal">
   <view style="width: 100%; height: 340px" />
 </t-watermark>

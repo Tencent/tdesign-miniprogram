@@ -29,7 +29,6 @@
     <move-image-watermark />
   </t-demo>
 
-  <t-demo title="02 组件样式">
-    <layout />
-  </t-demo>
+  <t-demo title="02 组件样式" />
+  <layout />
 </view>
