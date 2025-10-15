@@ -109,7 +109,7 @@ const processAllComponents = async () => {
 
   let COMPONENT_NAMES = [];
   if (COMPONENT_NAME === 'all') {
-    COMPONENT_NAMES = await getAllComponentName((ROOT_DIR));
+    COMPONENT_NAMES = await getAllComponentName(ROOT_DIR);
   } else {
     COMPONENT_NAMES = [COMPONENT_NAME];
   }
