@@ -106,3 +106,17 @@ telnumber | String | - | 手机号号码校验不通过时的表单项显示文�
 url | String | - | 链接校验规则不通过时的表单项显示文案，全局配置默认是：`'请输入正确的${name}'` | N
 validator | String | - | 自定义校验规则校验不通过时的表单项显示文案，全局配置默认是：'${name}不符合要求' | N
 whitespace | String | - | 值为空格校验不通过时表单项显示文案，全局配置默认是：`'${name}不能为空` | N
+
+### CSS Variables
+
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-form-bg-color | @bg-color-container | - 
+--td-form-border-radius | 0 | - 
+--td-form-padding | 0 | - 
+--td-form-readonly-bg-color | @bg-color-secondarycontainer | - 
+--td-form-item-horizontal-padding | 32rpx | - 
+--td-form-item-justify-content | space-between | - 
+--td-form-item-label-width | 160rpx | - 
+--td-form-item-vertical-padding | 32rpx | -

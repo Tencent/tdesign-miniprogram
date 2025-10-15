@@ -54,7 +54,6 @@ Name | Default Value | Description
 --td-slider-capsule-bar-width | 48rpx | - 
 --td-slider-capsule-line-heihgt | 36rpx | - 
 --td-slider-default-color | @bg-color-component | - 
---td-slider-default-color | @bg-color-component-disabled | - 
 --td-slider-disabled-color | @brand-color-disabled | - 
 --td-slider-disabled-text-color | @text-color-disabled | - 
 --td-slider-dot-bg-color | #fff | - 
