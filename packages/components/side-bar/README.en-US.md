@@ -40,7 +40,6 @@ Name | Default Value | Description
 --td-side-bar-height | 100% | - 
 --td-side-bar-width | 206rpx | - 
 --td-side-bar-active-color | @brand-color | - 
---td-side-bar-bg-color | @bg-color-secondarycontainer | - 
 --td-side-bar-border-radius | 18rpx | - 
 --td-side-bar-color | @text-color-primary | - 
 --td-side-bar-disabled-color | @text-color-disabled | - 

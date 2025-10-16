@@ -22,4 +22,4 @@ Name | Default Value | Description
 --td-indexes-anchor-font-size | 28rpx | - 
 --td-indexes-anchor-line-height | 44rpx | - 
 --td-indexes-anchor-padding | 8rpx 32rpx | - 
---td-indexes-anchor-top | 0 | - 
+--td-indexes-anchor-top | 0 | -

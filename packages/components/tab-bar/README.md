@@ -108,8 +108,6 @@ value | String / Number | - | 标识符 | N
 --td-tab-bar-round-shadow | @shadow-3 | - 
 --td-tab-bar-active-bg | @brand-color-light | - 
 --td-tab-bar-active-color | @brand-color | - 
---td-tab-bar-bg-color | @bg-color-container | - 
---td-tab-bar-border-color | @border-color | - 
 --td-tab-bar-color | @text-color-primary | - 
 --td-tab-bar-height | 80rpx | - 
 --td-tab-bar-hover-bg-color | rgba(0, 0, 0, 0.05) | - 

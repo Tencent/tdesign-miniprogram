@@ -18,3 +18,13 @@ name | String | - | \- | N
 required-mark | Boolean | undefined | \- | N
 rules | Array | - | Typescript：`Array<FormRule>` | N
 show-error-message | Boolean | undefined | \- | N
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-form-item-horizontal-padding | 32rpx | - 
+--td-form-item-justify-content | space-between | - 
+--td-form-item-label-width | 160rpx | - 
+--td-form-item-vertical-padding | 32rpx | -
