@@ -28,4 +28,7 @@
   <t-demo desc="运动图片水印">
     <move-image-watermark />
   </t-demo>
+
+  <t-demo title="02 组件样式" />
+  <layout />
 </view>

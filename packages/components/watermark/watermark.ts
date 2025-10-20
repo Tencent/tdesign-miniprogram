@@ -26,7 +26,7 @@ export default class Watermark extends SuperComponent {
   };
 
   observers = {
-    'watermarkContent, movable, rotate, x, y, width, height, alpha, lineSpace, moveInterval, zIndex, rotate, offset, removable, isRepeat'() {
+    'watermarkContent, movable, rotate, x, y, width, height, alpha, lineSpace, moveInterval, zIndex, rotate, offset, removable, isRepeat, layout'() {
       this.renderWatermark();
     },
   };
@@ -66,8 +66,9 @@ export default class Watermark extends SuperComponent {
             offsetLeft: offsetLeft,
             offsetTop: offsetTop,
             watermarkColor: this.watermarkColor(),
+            layout: props.layout,
           };
-          generateBase64Url(canvas, bgImageOptions, (base64Url) => {
+          generateBase64Url(canvas, bgImageOptions, (base64Url, backgroundSize) => {
             let animationVars = {};
             if (props.movable) {
               const { left0, left25, left50, left75, top0, top25, top50, top75 } = randomMovingStyle();
@@ -93,7 +94,7 @@ export default class Watermark extends SuperComponent {
                 bottom: 0,
                 width: '100%',
                 height: '100%',
-                backgroundSize: `${gapX + props.width}px`,
+                backgroundSize: `${backgroundSize?.width || gapX.value + props.width}px`,
                 pointerEvents: 'none',
                 backgroundRepeat: props.movable ? 'no-repeat' : 'repeat',
                 backgroundImage: `url('${base64Url}')`,

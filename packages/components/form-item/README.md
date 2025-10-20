@@ -18,3 +18,13 @@ name | String | - | 表单字段名称 | N
 required-mark | Boolean | undefined | 是否显示必填符号（*），优先级高于 Form.requiredMark | N
 rules | Array | - | 【开发中】 | N
 show-error-message | Boolean | undefined | 校验不通过时，是否显示错误提示信息，优先级高于 `Form.showErrorMessage` | N
+
+### CSS Variables
+
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-form-item-horizontal-padding | 32rpx | - 
+--td-form-item-justify-content | space-between | - 
+--td-form-item-label-width | 160rpx | - 
+--td-form-item-vertical-padding | 32rpx | -

@@ -79,7 +79,6 @@ t-class-row | 列样式类
 --td-skeleton-animation-flashed | rgba(90%, 90%, 90%, 0.3) | - 
 --td-skeleton-animation-gradient | rgba(0, 0, 0, 4%) | - 
 --td-skeleton-bg-color | @bg-color-secondarycontainer | - 
---td-skeleton-circle-border-radius | @radius-circle | - 
 --td-skeleton-circle-height | 96rpx | - 
 --td-skeleton-rect-border-radius | @radius-default | - 
 --td-skeleton-rect-height | 32rpx | - 

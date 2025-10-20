@@ -3,8 +3,8 @@ import resolveCwd from './utils.mjs';
 
 const COMPONENT_NAME = process.argv[process.argv.indexOf('--NAME') + 1]; // 在 --NAME 后面
 const ROOT_DIR = COMPONENT_NAME.includes('chat')
-  ? resolveCwd('/packages/pro-components')
-  : resolveCwd('/packages/components');
+  ? resolveCwd('../../../packages/pro-components')
+  : resolveCwd('../../../packages/components');
 
 const combine = {
   avatar: ['avatar-group', 'avatar'],
@@ -37,6 +37,7 @@ const getAllComponentName = async (dirPath) => {
 const generateCssVariables = async (componentName) => {
   const lessPath = [];
 
+  const parsedKeys = [];
   let cssVariableBodyContent = '';
 
   if (combine[componentName]) {
@@ -53,18 +54,27 @@ const generateCssVariables = async (componentName) => {
   const fileContents = await Promise.all(validPaths.map((item) => fs.promises.readFile(item, 'utf8')));
 
   fileContents.forEach((file) => {
-    const matchReg = /(?<=var)[\s\S]*?(?=;)/g;
+    const matchReg = /(?<=var)\([\s\S]*?(?=;)/g;
 
     const list = file.match(matchReg)?.sort();
 
-    list?.forEach((item, index) => {
-      cssVariableBodyContent += `${item.slice(1, item.indexOf(',')).trim()} | ${item
+    list?.forEach((item) => {
+      const key = item.slice(1, item.indexOf(',')).trim()
+      const value = item
         .slice(item.indexOf(',') + 2, item.length - 1)
-        .trim()} | -${index === list.length - 1 ? '' : ' \n'}`;
+        .trim();
+      if (!key || !value) {
+        throw new Error('⚠️ 解析失败，请检查 less 文件')
+      }
+      if (!parsedKeys.includes(key)) {
+        parsedKeys.push(key);
+        cssVariableBodyContent += `${key} | ${value} | -${' \n'}`;
+      }
+    
     });
   });
 
-  return cssVariableBodyContent;
+  return cssVariableBodyContent.trimEnd();
 };
 
 /**
@@ -99,7 +109,7 @@ const processAllComponents = async () => {
 
   let COMPONENT_NAMES = [];
   if (COMPONENT_NAME === 'all') {
-    COMPONENT_NAMES = await getAllComponentName(resolveCwd(ROOT_DIR));
+    COMPONENT_NAMES = await getAllComponentName(ROOT_DIR);
   } else {
     COMPONENT_NAMES = [COMPONENT_NAME];
   }

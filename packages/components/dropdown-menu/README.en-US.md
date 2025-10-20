@@ -83,7 +83,6 @@ Name | Default Value | Description
 --td-dropdown-menu-height | 96rpx | - 
 --td-dropdown-menu-icon-size | 40rpx | - 
 --td-dropdown-body-max-height | 560rpx | - 
---td-dropdown-menu-bg-color | @bg-color-container | - 
 --td-tree-bg-color | @bg-color-container | - 
 --td-tree-item-active-color | @brand-color | - 
 --td-tree-item-font-size | 32rpx | - 

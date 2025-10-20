@@ -234,7 +234,7 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">17</em></h3>
+<h3>数据展示<em class="tag">18</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/avatar">
@@ -369,6 +369,14 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-tag.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-tag-dark.png" />
       <p class="name">Tag 标签</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/watermark">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-watermark.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-watermark-dark.png" />
+      <p class="name">Watermark 水印</p>
     </a>
   </div>
 </section>

@@ -167,14 +167,16 @@ export default class Calendar extends SuperComponent {
     updateActionButton(value: Date) {
       const _min = this.getCurrentYearAndMonth(this.base.minDate);
       const _max = this.getCurrentYearAndMonth(this.base.maxDate);
+      const _value = this.getCurrentYearAndMonth(value);
 
       const _minTimestamp = new Date(_min.year, _min.month, 1).getTime();
       const _maxTimestamp = new Date(_max.year, _max.month, 1).getTime();
+      const _dateValue = new Date(_value.year, _value.month, 1);
 
-      const _prevYearTimestamp = getPrevYear(value).getTime();
-      const _prevMonthTimestamp = getPrevMonth(value).getTime();
-      const _nextMonthTimestamp = getNextMonth(value).getTime();
-      const _nextYearTimestamp = getNextYear(value).getTime();
+      const _prevYearTimestamp = getPrevYear(_dateValue).getTime();
+      const _prevMonthTimestamp = getPrevMonth(_dateValue).getTime();
+      const _nextMonthTimestamp = getNextMonth(_dateValue).getTime();
+      const _nextYearTimestamp = getNextYear(_dateValue).getTime();
 
       const preYearBtnDisable = _prevYearTimestamp < _minTimestamp || _prevMonthTimestamp < _minTimestamp;
       const prevMonthBtnDisable = _prevMonthTimestamp < _minTimestamp;
