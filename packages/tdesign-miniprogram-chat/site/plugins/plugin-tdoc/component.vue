@@ -75,7 +75,7 @@ export default defineComponent({
     },
     qrcode() {
       const componentName = this.name.split('-en')[0];
-      return `//tdesign.tencent.com/miniprogram/assets/qrcode/${componentName}.png`;
+      return `//tdesign.tencent.com/miniprogram-chat/assets/qrcode/${componentName}.png`;
     },
   },
 
