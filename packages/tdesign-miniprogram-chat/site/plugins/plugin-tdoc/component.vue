@@ -71,7 +71,7 @@ export default defineComponent({
     },
     liveUrl() {
       const componentName = this.name.split('-en')[0];
-      return `${this.liveHost}/miniprogram/live/m2w/program/miniprogram//#!pages/${componentName}/${componentName}.html`;
+      return `${this.liveHost}/miniprogram-chat/live/m2w/program/miniprogram//#!pages/${componentName}/${componentName}.html`;
     },
     qrcode() {
       const componentName = this.name.split('-en')[0];
