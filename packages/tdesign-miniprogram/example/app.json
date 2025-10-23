@@ -91,7 +91,16 @@
     "pages/col/skyline/col",
     "pages/color-picker/color-picker",
     "pages/guide/guide",
-    "pages/watermark/watermark"
+    "pages/watermark/watermark",
+    "pages/chat/chat",
+    "pages/chat-message/chat-message",
+    "pages/chat-content/chat-content",
+    "pages/chat-actionbar/chat-actionbar",
+    "pages/chat-loading/chat-loading",
+    "pages/chat-thinking/chat-thinking",
+    "pages/chat-attachments/chat-attachments",
+    "pages/chat-markdown/chat-markdown",
+    "pages/chat-sender/chat-sender"
   ],
   "subpackages": [
     {

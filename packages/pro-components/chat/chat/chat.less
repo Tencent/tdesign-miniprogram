@@ -1,0 +1,92 @@
+@import '../../../components/common/style/base.less';
+
+@chat-prefix: ~'@{prefix}-chat';
+
+@chat-text-color-primary: @font-gray-1;
+@chat-text-color-secondary: @font-gray-2;
+@chat-text-color-tertiary: @font-gray-3;
+@chat-background-base: @gray-color-1;
+@chat-border-color: @gray-color-4;
+
+// 间距变量（统一使用 chat 前缀）
+@chat-spacer-1: 8rpx;
+@chat-spacer-2: 12rpx;
+@chat-spacer-3: 16rpx;
+@chat-spacer-4: 24rpx;
+@chat-spacer-5: 32rpx;
+@chat-spacer-6: 40rpx;
+@chat-spacer-7: 48rpx;
+@chat-spacer-8: 64rpx;
+@chat-spacer-9: 80rpx;
+
+// 边框相关变量
+@chat-border-width: 2rpx;
+@chat-border-width-small: 1rpx;
+@chat-border-width-large: 3rpx;
+@chat-border-width-xlarge: 6rpx;
+@chat-border-width-xxlarge: 8rpx;
+
+// 圆角变量
+@chat-border-radius-small: 6rpx;
+@chat-border-radius-medium: 8rpx;
+@chat-border-radius-large: 24rpx;
+
+// 尺寸变量
+@chat-avatar-size: @chat-spacer-8;
+@chat-avatar-margin: @chat-spacer-1;
+@chat-content-padding: @chat-spacer-5;
+@chat-text-padding-vertical: @chat-spacer-4;
+@chat-text-padding-horizontal: @chat-spacer-5;
+@chat-inner-margin-bottom: @chat-spacer-5;
+@chat-footer-margin-top: @chat-spacer-6;
+@chat-name-padding-right: @chat-spacer-3;
+@chat-avatar-padding-top: @chat-spacer-7;
+@chat-avatar-box-padding-top: @chat-spacer-2;
+@chat-detail-max-width: @chat-spacer-9;
+@chat-detail-max-width-large: 1600rpx;
+@chat-text-border-radius: @chat-border-radius-large;
+@chat-image-border-radius: @chat-border-radius-small;
+@chat-image-margin: @chat-spacer-1;
+@chat-list-padding-start: @chat-spacer-6;
+
+// 动画相关变量
+@chat-skeleton-height: @chat-spacer-4;
+@chat-moving-dot-size: @chat-spacer-3;
+@chat-moving-container-size: @chat-spacer-4;
+@chat-gradient-border-size: 3rpx;
+@chat-max-width: 1600rpx;
+
+// 基础 Chat 组件样式
+.@{chat-prefix} {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  color: @chat-text-color-primary;
+
+  // Chat 列表样式
+  &__list {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+    --chat-actionbar-padding: @chat-content-padding 0 0 0;
+
+    // 反向列表样式
+    &--reverse {
+      display: flex;
+      flex-direction: column;
+      transform: rotate(180deg);
+    }
+
+    // 占位符样式
+    .place-holder {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+  }
+}
+
+
+
+
