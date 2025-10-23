@@ -34,7 +34,7 @@ export const toComponent = function toComponent(options: Record<string, any>) {
   if (options.properties) {
     Object.keys(options.properties).forEach((k) => {
       let opt = options.properties[k];
-      // 如何不是 Object 类型，则默认指定 type = options.properties[k]；
+      // 如果不是 Object 类型，则默认指定 type = options.properties[k]；
       if (!isPlainObject(opt)) {
         opt = { type: opt };
       }

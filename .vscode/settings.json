@@ -46,5 +46,5 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.words": ["stylelint"]
+  "cSpell.words": ["stylelint", "cascader"]
 }
