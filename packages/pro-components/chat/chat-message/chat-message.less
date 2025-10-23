@@ -1,0 +1,288 @@
+@import '../../../components/common/style/base.less';
+
+@chat-message-prefix: ~'@{prefix}-chat';
+
+// Chat Message 变量定义
+@chat-message-spacer-1: 8rpx;
+@chat-message-spacer-2: 12rpx;
+@chat-message-spacer-3: 16rpx;
+@chat-message-spacer-4: 24rpx;
+@chat-message-spacer-5: 32rpx;
+@chat-message-spacer-6: 40rpx;
+@chat-message-spacer-7: 48rpx;
+@chat-message-spacer-8: 64rpx;
+@chat-message-spacer-9: 80rpx;
+@chat-message-border-radius-small: 6rpx;
+@chat-message-border-radius-medium: 8rpx;
+@chat-message-border-radius-large: 24rpx;
+@chat-message-border-width: 2rpx;
+@chat-message-border-width-small: 1rpx;
+@chat-message-border-width-large: 3rpx;
+@chat-message-border-width-xlarge: 6rpx;
+@chat-message-border-width-xxlarge: 8rpx;
+@chat-message-skeleton-height: 24rpx;
+@chat-message-moving-dot-size: 16rpx;
+@chat-message-moving-container-size: 24rpx;
+@chat-message-gradient-border-size: 3rpx;
+@chat-message-max-width: 1600rpx;
+@chat-message-height-body-large: 48rpx;
+@chat-message-font-body-large: var(--td-font-size-body-large) / @chat-message-height-body-large var(--td-font-family);
+// Chat Message 组件样式
+.@{chat-message-prefix} {
+  // 反向列表样式
+  &__list--reverse {
+    .@{chat-message-prefix}__inner {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+    }
+  }
+  // 内部容器样式
+  &__inner {
+    display: flex;
+    margin-bottom: @spacer-2;
+
+    // 头像样式
+    .@{chat-message-prefix}__avatar {
+      flex: 0 0 auto;
+      padding-top: 0rpx;
+    }
+
+    // 内容容器样式
+    .@{chat-message-prefix}__content {
+      flex: 1 1 auto;
+      width: 1%;
+    }
+
+    // 基础内容样式
+    .@{chat-message-prefix}__content--base {
+      padding-top: @chat-message-spacer-7;
+    }
+
+    // 详情容器样式
+    .@{chat-message-prefix}__detail {
+      max-width: 100%;
+      box-sizing: border-box;
+    }
+
+    // 有头部时的样式
+    &--hasheader {
+      .@{chat-message-prefix}__avatar {
+        padding-top: @chat-message-spacer-7;
+      }
+    }
+
+    // 用户消息样式
+    &.user {
+      .@{chat-message-prefix}__skeleton {
+        align-items: flex-end;
+      }
+      .@{chat-message-prefix}__base {
+        padding-right: @spacer-2;
+      }
+    }
+
+    // 助手消息样式
+    &.assistant {
+      .@{chat-message-prefix}__skeleton {
+        align-items: flex-start;
+      }
+      .@{chat-message-prefix}__base {
+        padding-left: @spacer-2;
+      }
+    }
+
+    // 错误消息样式
+    &.error {
+      .@{chat-message-prefix}__skeleton {
+        align-items: flex-start;
+      }
+      .@{chat-message-prefix}__base {
+        padding-left: @spacer-2;
+      }
+      .@{chat-message-prefix}__text--error {
+        color: @error-color-6;
+      }
+    }
+
+    // 左侧布局样式
+    &.left {
+      display: flex;
+      flex-direction: row;
+      .@{chat-message-prefix}__content {
+        align-items: flex-start;
+      }
+      .@{chat-message-prefix}__skeleton {
+        align-items: flex-start;
+      }
+      .@{chat-message-prefix}__base {
+        padding-left: @spacer-2;
+      }
+    }
+
+    // 右侧布局样式
+    &.right {
+      display: flex;
+      flex-direction: row-reverse;
+      .@{chat-message-prefix}__content {
+        align-items: flex-end;
+      }
+      .@{chat-message-prefix}__skeleton {
+        align-items: flex-end;
+      }
+      .@{chat-message-prefix}__base {
+        padding-right: @spacer-2;
+      }
+    }
+  }
+
+  // 头像样式
+  &__avatar {
+    flex-shrink: 0;
+    cursor: pointer;
+    display: flex;
+    margin: 0 @chat-message-spacer-1;
+    padding-top: @chat-message-spacer-7;
+
+    &__box {
+      padding-top: @chat-message-spacer-2;
+    }
+
+    &-image {
+      width: @chat-message-spacer-8;
+      height: @chat-message-spacer-8;
+      border-radius: @radius-circle;
+    }
+  }
+
+  // 内容容器样式
+  &__content {
+    font: @chat-message-font-body-large;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    .t-skeleton {
+      width: 100%;
+      padding: @spacer-2;
+    }
+  }
+
+  // 基础信息样式
+  &__base {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: baseline;
+    font: 600 @chat-message-font-body-large;
+    color: @font-gray-3;
+    padding-left: @spacer-2;
+  }
+
+  // 名称样式
+  &__name {
+    padding-right: @chat-message-spacer-3;
+    cursor: pointer;
+  }
+
+  // 文本变体样式
+  &__text--variant--base {
+    .@{chat-message-prefix}__text {
+      background-color: @gray-color-1;
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+    }
+
+    &.assistant .@{chat-message-prefix}__text {
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+    }
+
+    &.user .@{chat-message-prefix}__text {
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+    }
+
+    &.left .@{chat-message-prefix}__text {
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+    }
+
+    &.right .@{chat-message-prefix}__text {
+      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large @chat-message-border-radius-large;
+    }
+
+  }
+
+  &__text--variant--outline {
+    .@{chat-message-prefix}__text {
+      background-color: @gray-color-1;
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+    }
+
+    &.assistant .@{chat-message-prefix}__text {
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+    }
+
+    &.user .@{chat-message-prefix}__text {
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+    }
+
+    &.left .@{chat-message-prefix}__text {
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+    }
+
+    &.right .@{chat-message-prefix}__text {
+      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large @chat-message-border-radius-large;
+    }
+  }
+
+  // Actionbar 插槽样式
+  &__actionbar-slot {
+    &:empty {
+      display: none;
+    }
+  }
+}
+
+// 正常模式下的特殊样式
+.@{chat-message-prefix}-is-normal {
+  .@{chat-message-prefix}__inner {
+    &.user {
+      flex-direction: row-reverse;
+
+      .@{chat-message-prefix}__avatar {
+        margin-right: 0;
+      }
+
+      .@{chat-message-prefix}__content {
+        align-items: flex-end;
+      }
+
+      .@{chat-message-prefix}__content .@{chat-message-prefix}__base {
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  .@{chat-message-prefix}__detail {
+    max-width: 100%;
+  }
+
+  .@{chat-message-prefix}__text--variant--base {
+    &.user .@{chat-message-prefix}__text {
+      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large @chat-message-border-radius-large;
+    }
+
+    &.assistant .@{chat-message-prefix}__text {
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+    }
+  }
+
+  .@{chat-message-prefix}__text--variant--outline {
+    &.user .@{chat-message-prefix}__text {
+      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large @chat-message-border-radius-large;
+    }
+
+    &.assistant .@{chat-message-prefix}__text {
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+    }
+  }
+}
+
+

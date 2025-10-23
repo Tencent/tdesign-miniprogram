@@ -3,7 +3,7 @@ const base = require('./gulpfile.base');
 
 /* config */
 const componentsPath = 'packages/components';
-const proComponentsPath = 'packages/pro-components';
+const proComponentsPath = 'packages/pro-components/chat';
 const dist = 'packages/tdesign-miniprogram/miniprogram_dist';
 
 /* base tasks */

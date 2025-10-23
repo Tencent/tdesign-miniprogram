@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "t-skeleton": "../../../components/skeleton/skeleton",
+    "t-loading": "../../../components/loading/loading"
+  },
+  "component": true
+}
