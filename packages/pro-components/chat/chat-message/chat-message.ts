@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
 import props from './props';
 
 @wxComponent()
