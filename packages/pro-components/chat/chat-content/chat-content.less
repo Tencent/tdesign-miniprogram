@@ -1,4 +1,4 @@
-@import '../../../components/common/style/base.less';
+@import '../common/style/base.less';
 
 @chat-content-prefix: ~'@{prefix}-chat';
 
@@ -22,19 +22,19 @@
 .@{chat-content-prefix} {
   // 基础文本容器样式
   &__text {
-    padding: @chat-content-text-padding;
     font: @chat-message-font-body-large;
     word-break: break-all;
     word-wrap: break-word;
     overflow-wrap: break-word;
     box-sizing: border-box;
+    width: fit-content;
 
     // 用户文本样式
     &__user {
       color: @font-gray-2;
-        // word-break: break-all;
-        // word-wrap: break-word;
-        // overflow-wrap: break-word;
+      // word-break: break-all;
+      // word-wrap: break-word;
+      // overflow-wrap: break-word;
 
       ._pre {
         color: @font-gray-2;

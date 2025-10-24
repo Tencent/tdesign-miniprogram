@@ -1,4 +1,4 @@
-@import '../../../components/common/style/base.less';
+@import '../common/style/base.less';
 
 @chat-loading-prefix: ~'@{prefix}-chat-loading';
 
@@ -21,8 +21,17 @@
     box-sizing: border-box;
   }
 
+  &__icon-container {
+    width: @size-container;
+    height: @size-container;
+    padding: 6rpx;
+    margin-right: 8rpx;
+  }
+
+
   &__text {
     font-size: 28rpx;
+    margin-left: 8rpx;
   }
 
   &__moving {
@@ -49,7 +58,7 @@
 
     &--left {
       bottom: -10rpx;
-      left: -10rpx;
+      left: -12rpx;
       animation: dot-moving-left @animation-duration ease-in-out alternate infinite;
     }
 
@@ -68,6 +77,11 @@
     border: @size-border solid @color-primary;
     animation: border-gradient-color @animation-duration ease-in-out alternate infinite;
     box-sizing: border-box;
+    padding: 0 6rpx;
+  }
+
+  &__circle {
+    padding: 0 6rpx;
   }
 
   &__skeleton {

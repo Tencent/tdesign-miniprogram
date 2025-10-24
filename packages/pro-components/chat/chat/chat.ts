@@ -1,5 +1,4 @@
-import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
-import { handleEvent } from '../tools/_handle-event.js';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
 
 @wxComponent()
 export default class Chat extends SuperComponent {
@@ -35,6 +34,14 @@ export default class Chat extends SuperComponent {
       type: String,
       value: '加载中...',
     },
+    virtualList: {
+      type: Boolean,
+      value: false,
+    },
+    fragmentLen: {
+      type: Number,
+      value: 8,
+    },
   };
 
   data = {
@@ -43,21 +50,24 @@ export default class Chat extends SuperComponent {
     scrollViewTop: 0,
     classes: [],
     listClasses: [],
+    startIndex: 0,
+    endIndex: 0,
   };
 
   observers = {
-    'layout, COMPONENT_NAME'() {
-      this.setClasses();
-    },
     'reverse, COMPONENT_NAME'() {
       this.setListClasses();
+    },
+    data() {
+      const dataLen = this.properties.data.length;
+      if (this.properties.virtualList && this.oldDataLen !== dataLen) {
+        this.oldDataLen = dataLen;
+        this.resetFragments();
+      }
     },
   };
 
   methods = {
-    handleScroll(e) {
-      handleEvent.call(this, e);
-    },
     setScrollTop(scrollTop = 0) {
       if (scrollTop === this.data.scrollViewTop) {
         // eslint-disable-next-line no-param-reassign
@@ -68,21 +78,10 @@ export default class Chat extends SuperComponent {
       });
     },
     scrollToBottom() {
-      this.data.setScrollTop();
+      this.setScrollTop();
     },
     onScroll(e) {
       this.triggerEvent('scroll', e);
-    },
-    setClasses() {
-      if (this.properties.layout === 'both') {
-        this.setData({
-          classes: ['class', `${this.data.COMPONENT_NAME}`, `${this.data.COMPONENT_NAME}-is-normal`],
-        });
-      } else {
-        this.setData({
-          classes: ['class', `${this.data.COMPONENT_NAME}`],
-        });
-      }
     },
     setListClasses() {
       if (this.properties.reverse) {
@@ -95,19 +94,57 @@ export default class Chat extends SuperComponent {
         });
       }
     },
+    handlerScrollToUpper() {
+      if (!this.properties.reverse && this.properties.virtualList) {
+        this.addFragment();
+      }
+    },
+    handlerScrollToLower() {
+      if (this.properties.reverse && this.properties.virtualList) {
+        this.addFragment();
+      }
+    },
+    resetFragments() {
+      const dataLen = this.properties.data.length;
+      if (dataLen) {
+        const { fragmentLen } = this.properties;
+        if (this.properties.reverse) {
+          this.setData({
+            startIndex: 0,
+            endIndex: Math.min(dataLen - 1, fragmentLen - 1),
+          });
+        } else {
+          this.setData({
+            startIndex: Math.max(dataLen - fragmentLen, 0),
+            endIndex: Math.max(dataLen - 1, 0),
+          });
+        }
+      }
+    },
+    addFragment(count = 4) {
+      const dataLen = this.properties.data.length;
+      if (dataLen) {
+        if (this.properties.reverse) {
+          this.setData({
+            endIndex: Math.min(dataLen - 1, this.data.endIndex + count),
+          });
+        } else {
+          this.setData({
+            startIndex: Math.max(this.data.startIndex - count, 0),
+          });
+          // todo 正向布局自动滚动到原来位置？
+        }
+      }
+    },
   };
 
   lifetimes = {
     created() {
       this.data.setScrollTop = this.setScrollTop.bind(this);
       this.data.scrollToBottom = this.scrollToBottom.bind(this);
-      this.data.onScroll = this.onScroll.bind(this);
     },
     attached() {
-      this.setClasses();
       this.setListClasses();
-      const createdFn = function __anonymous() {};
-      createdFn.call(this);
     },
     detached() {},
   };

@@ -1,4 +1,5 @@
-import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
+import props from './props';
 
 @wxComponent()
 export default class ChatMessage extends SuperComponent {
@@ -8,44 +9,7 @@ export default class ChatMessage extends SuperComponent {
     styleIsolation: 'shared',
   };
 
-  properties = {
-    chatId: {
-      type: String,
-      value: '',
-    },
-    avatar: {
-      type: null,
-      value: '',
-    },
-    name: {
-      type: String,
-      value: '',
-    },
-    datetime: {
-      type: String,
-      value: '',
-    },
-    textLoading: {
-      type: Boolean,
-      value: false,
-    },
-    variant: {
-      type: String,
-      value: 'base',
-    },
-    message: {
-      type: Object,
-      value: {},
-    },
-    placement: {
-      type: String,
-      value: '',
-    },
-    animation: {
-      type: String,
-      value: 'skeleton',
-    },
-  };
+  properties = props;
 
   data = {
     COMPONENT_NAME: 't-chat',
@@ -71,7 +35,7 @@ export default class ChatMessage extends SuperComponent {
     COMPONENT_NAME() {
       this.setContentClasses();
     },
-    'COMPONENT_NAME, variant, message, placement, showDateTime'() {
+    'COMPONENT_NAME, variant, placement, showDateTime'() {
       this.setChatItemClass();
     },
   };
@@ -85,17 +49,17 @@ export default class ChatMessage extends SuperComponent {
     },
     setShowAvatar() {
       this.setData({
-        showAvatar: this.properties?.avatar || null,
+        showAvatar: this.properties?.avatar || '',
       });
     },
     setShowName() {
       this.setData({
-        showName: this.properties?.name || null,
+        showName: this.properties?.name || '',
       });
     },
     setShowDateTime() {
       this.setData({
-        showDateTime: this.properties?.datetime || null,
+        showDateTime: this.properties?.datetime || '',
       });
     },
     setContentClasses() {
@@ -107,7 +71,7 @@ export default class ChatMessage extends SuperComponent {
       const baseClass = [
         `${this.data.COMPONENT_NAME}__inner`,
         `${this.data.COMPONENT_NAME}__text--variant--${this.properties.variant}`,
-        this.properties.message.role,
+        this.properties.role,
         this.properties.placement,
       ];
       if (this.data.showDateTime) {

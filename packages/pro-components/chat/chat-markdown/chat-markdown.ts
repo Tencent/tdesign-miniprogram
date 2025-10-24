@@ -1,6 +1,6 @@
 import { Lexer } from 'marked';
-import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
-import config from '../../../components/common/config';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
+import config from '../common/config';
 
 const { prefix } = config;
 const name = `${prefix}-chat-markdown`;
@@ -33,7 +33,6 @@ export default class ChatMarkdown extends SuperComponent {
       value: {
         gfm: true,
         pedantic: false,
-        smartLists: true,
         breaks: true,
       },
     },
@@ -42,6 +41,7 @@ export default class ChatMarkdown extends SuperComponent {
   data = {
     COMPONENT_NAME: name,
     nodes: [], // 解析后的节点
+    name, // 用于子组件查询父组件时的标识符
   };
 
   observers = {

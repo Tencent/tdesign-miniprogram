@@ -1,10 +1,10 @@
-import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../../components/common/src/index';
-import config from '../../../../components/common/config';
-import { handleEvent } from '../../tools/_handle-event.js';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../common/src/index';
+import config from '../../common/config';
+
 
 const { prefix } = config;
 const name = `${prefix}-chat-markdown`;
-const ROOT_COMPONENT_NAME = 'CareMarkdown';
+const ROOT_COMPONENT_NAME = name;
 
 @wxComponent()
 export default class ChatMarkdownNode extends SuperComponent {
@@ -27,7 +27,9 @@ export default class ChatMarkdownNode extends SuperComponent {
 
   methods = {
     linkClick(e) {
-      handleEvent.call(this, e);
+      const { index } = e.currentTarget.dataset || {};
+      const token = this.data.nodes?.[index];
+      this.handleClick(e, 'link-tap', token);
     },
 
     getCareMarkdown() {
@@ -36,18 +38,19 @@ export default class ChatMarkdownNode extends SuperComponent {
       }
       for (
         this.setData({
-          careMarkdown: this.data.$parent,
+          careMarkdown: this.selectOwnerComponent(),
         });
-        this.data.careMarkdown.$options.name !== ROOT_COMPONENT_NAME;
+        this.data.careMarkdown.__data__.name !== ROOT_COMPONENT_NAME;
         this.setData({
-          careMarkdown: this.data.careMarkdown.$parent,
+          careMarkdown: this.data.careMarkdown.selectOwnerComponent(),
         })
       );
       return this.data.careMarkdown;
     },
 
     handleClick(event, type, token) {
-      this.data.getCareMarkdown().$emit(type, {
+      // 通用点击事件
+      this.data.getCareMarkdown().triggerEvent('click', {
         event,
         node: token,
       });

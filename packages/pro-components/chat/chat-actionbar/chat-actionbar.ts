@@ -1,6 +1,5 @@
-import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
-
-import config from '../../../components/common/config';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
+import config from '../common/config';
 
 const { prefix } = config;
 const name = `${prefix}-chat-actionbar`;
@@ -114,7 +113,7 @@ export default class ChatActionbar extends SuperComponent {
       return result.replace(/\n{3,}/g, '\n\n').trim();
     },
 
-    handleActionClick(e) {
+    handelActionClick(e) {
       const { name } = e.currentTarget.dataset;
       if (name === 'copy' && this.data.content) {
         this.data.handleCopy();
@@ -147,21 +146,9 @@ export default class ChatActionbar extends SuperComponent {
       if (!this.data.content) return;
       const copyContent =
         this.data.copyMode === 'markdown' ? this.data.content : this.data.filterSpecialChars(this.data.content);
-      wx.setClipboardData({
+      this.triggerEvent('handleAction', {
+        name: 'copy',
         data: copyContent,
-        success: () => {
-          wx.showToast({
-            title: '复制成功',
-          });
-        },
-        fail: (e) => {
-          // eslint-disable-next-line no-console
-          console.log(e);
-          wx.showToast({
-            title: '复制失败，请手动复制',
-            icon: 'none',
-          });
-        },
       });
     },
 
@@ -197,7 +184,7 @@ export default class ChatActionbar extends SuperComponent {
   lifetimes = {
     created() {
       this.data.filterSpecialChars = this.filterSpecialChars.bind(this);
-      this.data.handleActionClick = this.handleActionClick.bind(this);
+      this.data.handelActionClick = this.handelActionClick.bind(this);
       this.data.handleCopy = this.handleCopy.bind(this);
     },
 

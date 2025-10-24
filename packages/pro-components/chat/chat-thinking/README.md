@@ -25,7 +25,7 @@ isComponent: true
 </blockquote>
 
 
-### 基础用法
+### 01 组件类型
 
 支持通过`maxHeight`来设置展示内容的最大高度，超出会自动滚动；
 
@@ -33,7 +33,16 @@ isComponent: true
 
 {{ base }}
 
-### 样式设置
+### 03 组件状态
+思考中
+
+{{ pending }}
+
+思考完成
+
+{{ complete }}
+
+### 03 组件样式
 支持通过`layout`来设置思考过程的布局方式
 
 支持通过`animation`来设置思考内容加载过程的动画效果

@@ -1,4 +1,4 @@
-@import '../../../components/common/style/base.less';
+@import '../common/style/base.less';
 
 @chat-prefix: ~'@{prefix}-chat';
 
@@ -34,7 +34,7 @@
 // 尺寸变量
 @chat-avatar-size: @chat-spacer-8;
 @chat-avatar-margin: @chat-spacer-1;
-@chat-content-padding: @chat-spacer-5;
+@chat-content-padding: @chat-spacer-4;
 @chat-text-padding-vertical: @chat-spacer-4;
 @chat-text-padding-horizontal: @chat-spacer-5;
 @chat-inner-margin-bottom: @chat-spacer-5;
@@ -70,15 +70,17 @@
     overflow-y: auto;
     overflow-x: hidden;
     width: 100%;
-    --chat-actionbar-padding: @chat-content-padding 0 0 0;
 
     // 反向列表样式
     &--reverse {
       display: flex;
       flex-direction: column;
-      transform: rotate(180deg);
-    }
+      transform: scaleY(-1);
 
+      &::-webkit-scrollbar {
+        transform: scaleY(-1);
+      }
+    }
     // 占位符样式
     .place-holder {
       flex-grow: 1;
@@ -86,7 +88,3 @@
     }
   }
 }
-
-
-
-

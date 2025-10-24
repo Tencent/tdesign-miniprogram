@@ -3,6 +3,7 @@
   "usingComponents": {
     "base": "./base",
     "text": "./text",
+    "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
     "t-navbar": "tdesign-miniprogram/navbar/navbar"
   }
 }

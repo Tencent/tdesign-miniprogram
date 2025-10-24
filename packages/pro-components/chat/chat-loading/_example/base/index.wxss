@@ -1,8 +1,15 @@
 .demo-container {
-  padding: 32rpx;
-  box-sizing: border-box;
+  display: flex;
+  align-items: center;
 }
 
-.loading-row {
-  margin-top: 32rpx;
+.chat-example {
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
+}
+
+.chat-example-block {
+  background-color: #fff;
+  padding: 32rpx;
 }

@@ -1,4 +1,5 @@
-<view class="{{chatItemClass}}" bindlongpress="handleLongPress">
+<wxs src="../common/utils.wxs" module="_" />
+<view class="class {{chatItemClass}}" bindlongpress="handleLongPress" style="{{_._style([style, customStyle])}}">
   <view wx:if="{{showAvatar}}" class="{{COMPONENT_NAME + '__avatar'}}">
     <view class="{{COMPONENT_NAME + '__avatar__box'}}">
       <view wx:if="{{avatar}}">
@@ -11,7 +12,7 @@
       <text wx:if="{{showName}}" class="{{COMPONENT_NAME + '__name'}}">{{name}}</text>
       <text wx:if="{{datetime}}" class="{{COMPONENT_NAME + '__time'}}">{{datetime}}</text>
     </view>
-    <block wx:if="{{message.status === 'pending'}}">
+    <block wx:if="{{status === 'pending'}}">
       <view style="width: 100%">
         <chat-loading animation="{{animation}}"></chat-loading>
       </view>
@@ -19,12 +20,15 @@
     <block wx:else>
       <view class="{{COMPONENT_NAME + '__detail'}}">
         <!-- 属性传值优先级高于content插槽 -->
-        <block wx:if="{{message && message.content}}">
-          <block wx:for="{{message.content}}" wx:key="index">
-            <chat-thinking wx:if="{{item.type === 'thinking'}}" content="{{item.data}}"
-              role="{{message.role}}"></chat-thinking>
+        <block wx:if="{{content.length > 0}}">
+          <block wx:for="{{content}}" wx:key="index">
+            <attachments wx:if="{{item.type === 'attachment' && role === 'user'}}" items="{{item.data}}"
+              removable="{{false}}" inChat="{{true}}"
+              imageProps="{{chatContentProps && chatContentProps.attachment && chatContentProps.attachment.imageProps}}">
+            </attachments>
+            <chat-thinking wx:if="{{item.type === 'thinking'}}" content="{{item.data}}" role="{{role}}"></chat-thinking>
             <chat-content wx:elif="{{item.type === 'text' || item.type === 'markdown'}}" content="{{item}}"
-              role="{{message.role}}"></chat-content>
+              role="{{role}}"></chat-content>
           </block>
         </block>
         <block wx:else>
@@ -32,7 +36,7 @@
         </block>
       </view>
     </block>
-    <view wx:if="{{message && message.role === 'assistant'}}" class="{{COMPONENT_NAME + '__actionbar-slot'}}">
+    <view wx:if="{{role === 'assistant'}}" class="{{COMPONENT_NAME + '__actionbar-slot'}}">
       <slot name="actionbar"></slot>
     </view>
   </view>

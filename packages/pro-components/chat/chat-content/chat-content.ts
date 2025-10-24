@@ -1,4 +1,4 @@
-import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
 
 @wxComponent()
 export default class ChatContent extends SuperComponent {
@@ -21,7 +21,7 @@ export default class ChatContent extends SuperComponent {
 
   data = {
     COMPONENT_NAME: 't-chat',
-    textInfo: null,
+    textInfo: '',
   };
 
   observers = {

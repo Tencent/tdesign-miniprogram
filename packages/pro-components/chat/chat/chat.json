@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "chat-message": "../chat-message/chat-message"
+    "chat-message": "@tencent/tdesign-miniprogram-chat/chat-message/chat-message"
   },
   "component": true
 }

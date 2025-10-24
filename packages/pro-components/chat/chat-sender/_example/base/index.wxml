@@ -1,9 +1,17 @@
-<view class="demo-container">
-  <view class="demo-section">
-    <view class="demo-title">聊天发送器</view>
-    <view class="demo-description">用于聊天场景的消息输入和发送组件</view>
-
-    <!-- 聊天发送器组件 -->
+<view class="demo-base-container">
+  <!-- 聊天发送器组件 -->
+  <view class="chat-sender-demo-wrapper">
+    <view class="chat-sender-height-limit">
+      <view class="chat-sender-height-left-limit">
+        
+      </view>
+      <view class="chat-sender-height-right-limit">
+        
+      </view>
+    </view>
+    <view class="chat-sender-placeholder">
+      高度限制：最大高度为132px
+    </view>
     <view class="chat-sender-wrapper">
       <t-chat-sender value="{{value}}" loading="{{loading}}" disabled="{{disabled}}" placeholder="{{placeholder}}"
         textareaProps="{{textareaProps}}" fileList="{{fileList}}" attachmentsProps="{{attachmentsProps}}"
@@ -15,7 +23,7 @@
         <view slot="footerPrefix" class="demo-footer-prefix" >
           <view class="deep-think-block {{deepThinkActive ? 'active' : ''}}" bind:tap="onDeepThinkTap">
             <t-icon name="system-sum" size="32rpx"/>
-            <text class="deep-think-text">Deep Thinking</text>
+            <text class="deep-think-text">深度思考</text>
           </view>
           <view class="net-search-block {{ netSearchActive ? 'active' : '' }}" bind:tap="onNetSearchTap">
             <t-icon name="internet" size="32rpx"/>
@@ -23,6 +31,8 @@
         </view>
       </t-chat-sender>
     </view>
-
+    <view class="demo-footer">
+      内容由AI生成，仅供参考
+    </view>
   </view>
 </view>

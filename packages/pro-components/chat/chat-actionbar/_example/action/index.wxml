@@ -1,3 +1,4 @@
+<t-toast id="t-toast" />
 <view class="container">
   <checkbox-group class="checkbox-group" bindchange="checkboxChange">
     <label wx:for="{{items}}" wx:key="value">

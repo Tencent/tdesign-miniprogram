@@ -108,7 +108,6 @@ t-class-text | 文本内容样式类
 
 ### 4. 组件依赖
 - 依赖 `t-chat-markdown` 组件处理Markdown内容
-- 使用 `miniprogram-computed` 进行响应式计算
 
 ## 注意事项
 

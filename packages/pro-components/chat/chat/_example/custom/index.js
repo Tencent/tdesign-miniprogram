@@ -1,4 +1,28 @@
+import { Toast } from 'tdesign-miniprogram';
+import { getSafeAreaHeight, getNavigationBarHeight } from '../../../utils/utils';
+
+const sleep = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+const fetchStream = async (str, options) => {
+  const { success, complete, delay = 100 } = options;
+
+  const arr = str.split('');
+
+  for (let i = 0; i < arr.length; i += 1) {
+    // eslint-disable-next-line no-await-in-loop
+    await sleep(delay);
+    success(arr[i]);
+  }
+
+  complete();
+};
+
 Component({
+  options: {
+    styleIsolation: 'shared',
+  },
   data: {
     chatList: [
       {
@@ -17,6 +41,8 @@ Component({
     value: '北京今天早晚高峰交通情况如何，需要分别给出曲线图表示每个时段', // 输入框的值
     loading: false, // 加载状态
     disabled: false, // 禁用状态
+    inputStyle: '', // 动态样式
+    contentHeight: '100vh', // 内容高度
   },
   methods: {
     // 发送消息事件处理
@@ -26,7 +52,6 @@ Component({
 
       // 创建用户消息对象
       const userMessage = {
-        avatar: 'https://tdesign.gtimg.com/site/avatar.jpg',
         message: {
           role: 'user',
           content: [
@@ -51,6 +76,9 @@ Component({
     // 停止事件处理
     onStop() {
       console.log('停止发送');
+      this.setData({
+        loading: false,
+      });
     },
 
     // 聚焦事件处理
@@ -70,110 +98,180 @@ Component({
     simulateAssistantReply() {
       this.setData({ loading: true });
 
-      // 模拟延迟回复
-      setTimeout(() => {
-        const assistantMessage = {
-          avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
-          message: {
-            role: 'assistant',
-            content: [
-              {
-                type: 'markdown',
-                data: '今日上午北京道路车辆通行状况9:00的峰值（1320),可能显示早高峰拥堵最严重时段10:00后缓慢回落，可以得出如下折线图：',
-              },
-              {
-                type: 'chart',
-                data: {
-                  id: 8379.117942106575,
-                  chartType: 'line',
-                  options: {
-                    xAxis: {
-                      boundaryGap: true,
-                    },
-                    yAxis: {
-                      axisLabel: {
-                        inside: false,
-                      },
-                    },
-                    series: [
-                      {
-                        data: [
-                          { name: '0:00', value: 500 },
-                          { name: '1:00', value: 402 },
-                          { name: '2:00', value: 382 },
-                          { name: '3:00', value: 434 },
-                          { name: '4:00', value: 560 },
-                          { name: '5:00', value: 630 },
-                          { name: '6:00', value: 720 },
-                          { name: '7:00', value: 980 },
-                          { name: '8:00', value: 1230 },
-                          { name: '9:00', value: 1320 },
-                          { name: '10:00', value: 1200 },
-                          { name: '11:00', value: 1300 },
-                          { name: '12:00', value: 1100 },
-                        ],
-                        type: 'line',
-                      },
-                    ],
-                  },
-                },
-              },
-              {
-                type: 'markdown',
-                data: '今日晚上北京道路车辆通行状况18:00的峰值（1322),可能显示早高峰拥堵最严重时段21:00后缓慢回落，可以得出如下折线图：',
-                strategy: 'append',
-                status: 'streaming',
-              },
-              {
-                type: 'chart',
-                data: {
-                  id: 9954.694158956194,
-                  chartType: 'line',
-                  options: {
-                    xAxis: {
-                      boundaryGap: true,
-                    },
-                    yAxis: {
-                      axisLabel: {
-                        inside: false,
-                      },
-                    },
-                    series: [
-                      {
-                        data: [
-                          { name: '0:00', value: 500 },
-                          { name: '1:00', value: 402 },
-                          { name: '2:00', value: 382 },
-                          { name: '3:00', value: 434 },
-                          { name: '4:00', value: 560 },
-                          { name: '5:00', value: 630 },
-                          { name: '6:00', value: 720 },
-                          { name: '7:00', value: 980 },
-                          { name: '8:00', value: 1230 },
-                          { name: '9:00', value: 1320 },
-                          { name: '10:00', value: 1200 },
-                          { name: '11:00', value: 1300 },
-                          { name: '12:00', value: 1100 },
-                        ],
-                        type: 'line',
-                      },
-                    ],
-                  },
-                },
-                strategy: 'append',
-                status: 'complete',
-              },
-            ],
+      const assistantMessage = {
+        avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
+        message: {
+          role: 'assistant',
+          content: [
+            {
+              type: 'markdown',
+              data: '',
+            },
+          ],
+        },
+      };
+
+      const list = [assistantMessage, ...this.data.chatList];
+
+      this.setData({
+        chatList: list,
+      });
+
+      const that = this;
+      wx.nextTick(async () => {
+        await fetchStream(
+          '今日上午北京道路车辆通行状况9:00的峰值（1320),可能显示早高峰拥堵最严重时段10:00后缓慢回落，可以得出如下折线图：',
+          {
+            success(result) {
+              if (!that.data.loading) return;
+              that.data.chatList[0].message.content[0].data += result;
+              that.setData({
+                chatList: that.data.chatList,
+              });
+            },
+            complete() {},
           },
-        };
+        );
 
-        const list = [assistantMessage, ...this.data.chatList];
+        if (!that.data.loading) return;
 
-        this.setData({
-          chatList: list,
+        that.data.chatList[0].message.content.push(
+          {
+            type: 'chart',
+            data: {
+              id: 8379.117942106575,
+              chartType: 'line',
+              options: {
+                xAxis: {
+                  boundaryGap: true,
+                  type: 'category',
+                  data: ['0:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00'],
+                },
+                yAxis: {
+                  type: 'value',
+                },
+                series: [
+                  {
+                    data: [500, 401, 382, 433, 560, 630, 720],
+                    type: 'line',
+                  },
+                ],
+              },
+            },
+          },
+          {
+            type: 'markdown',
+            data: '',
+          },
+        );
+        that.setData({
+          chatList: that.data.chatList,
+        });
+
+        await fetchStream(
+          '今日晚上北京道路车辆通行状况18:00的峰值（1322),可能显示早高峰拥堵最严重时段21:00后缓慢回落，可以得出如下折线图：',
+          {
+            success(result) {
+              if (!that.data.loading) return;
+              that.data.chatList[0].message.content[2].data += result;
+              that.setData({
+                chatList: that.data.chatList,
+              });
+            },
+            complete() {},
+          },
+        );
+
+        if (!that.data.loading) return;
+
+        that.data.chatList[0].message.content.push({
+          type: 'chart',
+          data: {
+            id: 9954.694158956194,
+            chartType: 'line',
+            options: {
+              xAxis: {
+                boundaryGap: true,
+                type: 'category',
+                data: ['0:00', '1:00', '2:00', '3:00', '4:00', '5:00', '6:00'],
+              },
+              yAxis: {
+                type: 'value',
+              },
+              series: [
+                {
+                  data: [500, 401, 382, 433, 560, 630, 720],
+                  type: 'line',
+                },
+              ],
+            },
+          },
+          strategy: 'append',
+          status: 'complete',
+        });
+        that.data.chatList[0].message.status = 'complete';
+        that.setData({
+          chatList: that.data.chatList,
           loading: false,
         });
-      }, 1000);
+      });
+    },
+    handleAction(e) {
+      const { name, active, data } = e.detail;
+      console.log(e);
+
+      let message = '';
+      switch (name) {
+        case 'copy':
+          console.log(data);
+          message = '复制成功';
+          break;
+        case 'good':
+          message = active ? '点赞成功' : '取消点赞';
+          break;
+        case 'bad':
+          message = active ? '点踩成功' : '取消点踩';
+          break;
+        case 'share':
+          message = '分享功能';
+          break;
+        default:
+          message = `执行了${name}操作`;
+      }
+
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message,
+        theme: 'success',
+      });
+    },
+  },
+  lifetimes: {
+    attached: function () {
+      /**
+       * 计算内容区域高度
+       * 生成CSS calc表达式：calc(100vh - 96rpx - 导航高度 - 底部安全区域高度)
+       */
+      try {
+        // 获取当前的导航栏高度和安全区域高度
+        const navigationBarHeight = getNavigationBarHeight() || 0;
+        const safeAreaBottom = getSafeAreaHeight() || 0;
+
+        // 生成CSS calc表达式字符串
+        const contentHeight = `calc(100vh - 96rpx - ${navigationBarHeight}px - ${safeAreaBottom}px)`;
+
+        this.setData({
+          contentHeight: contentHeight,
+        });
+
+        console.log('内容区域高度CSS表达式:', contentHeight);
+      } catch (error) {
+        console.error('生成内容高度表达式失败:', error);
+        this.setData({
+          contentHeight: 'calc(100vh - 96rpx)',
+        });
+      }
     },
   },
 });

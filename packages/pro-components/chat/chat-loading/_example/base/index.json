@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "t-chat-loading": "tdesign-miniprogram/chat-loading/chat-loading",
+    "t-chat-loading": "@tencent/tdesign-miniprogram-chat/chat-loading/chat-loading",
     "t-col": "tdesign-miniprogram/col/col",
     "t-row": "tdesign-miniprogram/row/row"
   }

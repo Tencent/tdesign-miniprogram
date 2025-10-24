@@ -1,3 +1,5 @@
+import { Toast } from 'tdesign-miniprogram';
+
 Page({
   data: {
     content: '这是一段可以被复制的内容，支持markdown格式。\n\n**粗体文本**\n*斜体文本*\n\n- 列表项1\n- 列表项2',
@@ -6,12 +8,13 @@ Page({
   },
 
   handleAction(e) {
-    const { name, active } = e.detail;
+    const { name, active, data } = e.detail;
     console.log(e);
 
     let message = '';
     switch (name) {
       case 'copy':
+        console.log(data);
         message = '复制成功';
         break;
       case 'good':
@@ -27,9 +30,11 @@ Page({
         message = `执行了${name}操作`;
     }
 
-    wx.showToast({
-      title: message,
-      icon: 'success',
+    Toast({
+      context: this,
+      selector: '#t-toast',
+      message,
+      theme: 'success',
     });
   },
 

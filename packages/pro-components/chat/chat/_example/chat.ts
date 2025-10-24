@@ -1,1 +1,7 @@
-Page({});
+Page({
+  options: {
+    styleIsolation: 'shared',
+  },
+
+  data: {},
+});

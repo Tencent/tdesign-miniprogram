@@ -1,9 +1,10 @@
-@import '../../../components/common/style/base.less';
+@import '../common/style/base.less';
 
 @chat-thinking-prefix: ~'@{prefix}-chat-thinking';
 
-@color-bg: #ffffff;
+@color-bg: @gray-color-1;
 @color-primary: #126dff;
+
 @color-text-title: #4e5d71;
 @color-text-content: #828e9f;
 @color-border: #e5e5e5;
@@ -17,19 +18,19 @@
 @spacing-xxl: 40rpx;
 
 .@{chat-thinking-prefix} {
-  background: @color-bg;
-  padding: @spacing-lg;
+  // background: @color-bg;
+  // padding: @spacing-lg;
   width: 100%;
   box-sizing: border-box;
 
   &__inner {
     &__block {
+      background: @color-bg;
       border-radius: @radius-base;
       padding: @spacing-md @spacing-lg;
     }
 
     &__border {
-      background: @color-bg;
       padding: @spacing-md @spacing-lg;
     }
   }
@@ -69,31 +70,12 @@
       }
     }
 
-    .icon-check,
-    .icon-close {
-      display: flex;
-      width: @spacing-xl;
-      height: @spacing-xl;
-      background-size: contain;
-      margin-right: @spacing-xs;
+    .check-circle-icon {
+      color: var(--td-success-color-5);
     }
 
-    .icon-check {
-      background: url('https://static.wecity.qq.com/h5/2025-6/icon-check-d268c9c5fc2a96e2d43299aee2d75fe3.svg')
-        no-repeat 0 0;
-    }
-
-    .icon-close {
-      background: url('https://static.wecity.qq.com/webrebuildcommoncare-form-item/icon-upload-close.svg') no-repeat 0 0;
-    }
-
-    .complete-icon {
-      width: @spacing-xl;
-      height: @spacing-xl;
-      margin-right: @spacing-sm;
-      background: url('https://static.wecity.qq.com/webrebuildyidian/250402-chatbot-ai/icon-tick.svg') no-repeat center;
-      background-size: contain;
-      flex-shrink: 0;
+    .close-icon {
+      color: rgba(0, 0, 0, .6);
     }
 
     &__txt {
@@ -104,21 +86,9 @@
       margin-left: @spacing-md;
     }
 
-    &__btn {
-      width: @spacing-xxl;
-      height: @spacing-xxl;
-      flex-shrink: 0;
-      background-image: url('https://static.wecity.qq.com/webrebuildyidian/250402-chatbot-ai/icon-arrow.svg');
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: @spacing-xl @spacing-xl;
-      margin-left: @spacing-xs;
-      transform: rotateZ(180deg);
-      border-radius: @spacing-xxl;
-
-      &.close {
-        transform: rotateZ(0);
-      }
+    .collapse-icon {
+      color: rgba(0, 0, 0, .6);
+      transition: transform 0.3s ease-in-out;
     }
   }
 

@@ -1,4 +1,5 @@
-<view class="button-example">
-  <t-chat-message message="{{userMessage}}" variant="base"></t-chat-message>
-  <t-chat-message message="{{userMessage}}" variant="outline"></t-chat-message>
+<view class="chat-example">
+  <view class="chat-example-block"><t-chat-message content="{{userMessage.content}}" role="{{userMessage.role}}" variant="text"></t-chat-message></view>
+  <view class="chat-example-block"><t-chat-message content="{{userMessage.content}}" role="{{userMessage.role}}" variant="base"></t-chat-message></view>
+  <view class="chat-example-block"><t-chat-message content="{{userMessage.content}}" role="{{userMessage.role}}" variant="outline"></t-chat-message></view>
 </view>

@@ -1,7 +1,15 @@
 .chat-box {
-  display: block;
-  height: 75vh;
-  padding: 16rpx;
+  padding-top: 32rpx;
+  box-sizing: border-box;
+}
+
+.t-chat__list {
+  padding: 0 0 0 32rpx;
+  box-sizing: border-box;
+}
+
+.t-chat__inner {
+  padding-right: 32rpx;
 }
 
 .preview {
@@ -9,6 +17,10 @@
   display: flex;
   justify-content: space-between;
   border: 1px solid black;
+}
+
+.step {
+  padding-top: 24rpx;
 }
 
 .step-text-list {
@@ -22,6 +34,43 @@
 }
 
 .step-text.command {
-  border: 1px solid black;
   padding: 16rpx;
+  border-radius: 16rpx;
+  background-color: #f3f3f3;
+  display: flex;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.step-text.result {
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.step-icon {
+  margin-right: 12rpx;
+  margin-top: 4rpx;
+}
+
+.t-steps-item__circle--finish {
+  background-color: transparent;
+  color: #000000e5;
+  border: 1px solid #000000e5;
+  width: 16px;
+  height: 16px;
+}
+
+.t-steps-item__circle--finish .t-icon {
+  font-size: 12px;
+}
+
+.t-steps-item__line--finish {
+  background-color: #dcdcdc;
+}
+
+.t-steps-item__title--finish {
+  color: #000000e5;
+  font-weight: 600;
 }

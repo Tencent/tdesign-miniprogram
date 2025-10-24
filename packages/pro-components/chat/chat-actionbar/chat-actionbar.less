@@ -1,10 +1,11 @@
-@import '../../../components/common/style/base.less';
+@import '../common/style/base.less';
 
 @chat-actionbar-prefix: ~'@{prefix}-chat-actionbar';
 
+// Chat Actionbar 变量定义
 @chat-actionbar-height: 72rpx;
 @chat-actionbar-border-width: 1rpx;
-@chat-actionbar-spacer-1: 8rpx;
+@chat-actionbar-spacer-1: 4rpx;
 @chat-actionbar-spacer-2: 28rpx;
 @chat-actionbar-item-color: #000000e5;
 @chat-actionbar-item-active: #126dff;
@@ -12,81 +13,85 @@
 @chat-actionbar-popover-radius: 32rpx;
 @chat-actionbar-popover-padding: 45rpx;
 
+// Chat Actionbar 组件样式
 .@{chat-actionbar-prefix} {
   display: flex;
   padding: var(--chat-actionbar-padding, 0);
-}
-.@{chat-actionbar-prefix}.start {
-  justify-content: flex-start;
-}
-.@{chat-actionbar-prefix}.end {
-  justify-content: flex-end;
-}
-.@{chat-actionbar-prefix}__inner {
-  background-color: @gray-color-1;
-  border: @chat-actionbar-border-width solid @gray-color-4;
-  height: @chat-actionbar-height;
-  border-radius: @radius-default;
-  padding: 0 @chat-actionbar-spacer-1;
-  display: inline-flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-}
-.@{chat-actionbar-prefix}__inner-column {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-.@{chat-actionbar-prefix}__item {
-  color: @chat-actionbar-item-color;
-  padding: @chat-actionbar-spacer-1 @chat-actionbar-spacer-2;
-  border-right: @chat-actionbar-border-width solid @gray-color-3;
-  background-color: unset;
-  border: none;
-  outline: none;
-  &:after {
-      display: none;
-    }
-  &-active {
-    color: @primary-color-7;
+
+  // 对齐方式
+  &.start {
+    justify-content: flex-start;
   }
 
-  &:last-child {
-    border-right: none;
+  &.end {
+    justify-content: flex-end;
   }
-}
-.@{chat-actionbar-prefix}__item-left {
-  &:empty {
-    display: none;
+
+  // 内部容器
+  &__inner {
+    background-color: @gray-color-1;
+    border: @chat-actionbar-border-width solid @gray-color-4;
+    height: @chat-actionbar-height;
+    border-radius: @radius-default;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    // 列布局
+    &-column {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    // 弹出层
+    &-popover {
+      padding: @chat-actionbar-popover-padding;
+      background-color: @chat-actionbar-popover-background;
+      border-radius: @chat-actionbar-popover-radius;
+      color: @font-white-1;
+    }
   }
-}
-.@{chat-actionbar-prefix}__item .icon {
-  width: 48rpx;
-  height: 48rpx;
-  background: url('https://static.wecity.qq.com/h5/2025-6/share-e2947a45f24ccf4b0d0edb649327aab3.svg') no-repeat center;
-  background-size: contain;
-}
-.@{chat-actionbar-prefix}__item .icon-sound {
-  background-image: url('https://static.wecity.qq.com/h5/2025-6/audio-89c4ec956fc21c21ad0adfd34156f7eb.svg');
-}
-.@{chat-actionbar-prefix}__item .icon-mute {
-  background-image: url('https://static.wecity.qq.com/h5/2025-6/mute-fa0b70d81ad70a22526a77a5b764dbd1.svg');
-}
-.@{chat-actionbar-prefix}__item .icon-audio {
-  background-image: url('https://static.wecity.qq.com/h5/2025-6/audio-89c4ec956fc21c21ad0adfd34156f7eb.svg');
-}
-.@{chat-actionbar-prefix}__item .text-active {
-  color: @chat-actionbar-item-active;
-}
-.@{chat-actionbar-prefix}__item-right {
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-}
-.@{chat-actionbar-prefix}__inner-popover {
-  padding: @chat-actionbar-popover-padding;
-  background-color: @chat-actionbar-popover-background;
-  border-radius: @chat-actionbar-popover-radius;
-  color: @font-white-1;
+
+  // 操作项
+  &__item {
+    color: @chat-actionbar-item-color;
+    padding: @chat-actionbar-spacer-1 @chat-actionbar-spacer-2;
+    border-right: @chat-actionbar-border-width solid @component-stroke;
+    background-color: unset;
+    outline: none;
+
+    &:after {
+      display: none;
+    }
+
+    &:last-child {
+      border-right: none;
+    }
+
+    // 激活状态
+    &-active {
+      color: @primary-color-7;
+    }
+
+    // 左侧内容
+    &-left {
+      &:empty {
+        display: none;
+      }
+    }
+
+    // 右侧内容
+    &-right {
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-around;
+    }
+
+    // 文本激活状态
+    .text-active {
+      color: @chat-actionbar-item-active;
+    }
+  }
 }

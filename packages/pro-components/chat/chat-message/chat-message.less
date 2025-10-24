@@ -1,4 +1,4 @@
-@import '../../../components/common/style/base.less';
+@import '../common/style/base.less';
 
 @chat-message-prefix: ~'@{prefix}-chat';
 
@@ -27,13 +27,16 @@
 @chat-message-max-width: 1600rpx;
 @chat-message-height-body-large: 48rpx;
 @chat-message-font-body-large: var(--td-font-size-body-large) / @chat-message-height-body-large var(--td-font-family);
+@chat-content-text-padding: 24rpx 32rpx;
+@chat-base-height: 44rpx;
+@chat-content-padding: @chat-message-spacer-4;
 // Chat Message 组件样式
 .@{chat-message-prefix} {
   // 反向列表样式
   &__list--reverse {
     .@{chat-message-prefix}__inner {
-      -webkit-transform: rotate(180deg);
-      transform: rotate(180deg);
+      -webkit-transform: scaleY(-1);
+      transform: scaleY(-1);
     }
   }
   // 内部容器样式
@@ -62,12 +65,13 @@
     .@{chat-message-prefix}__detail {
       max-width: 100%;
       box-sizing: border-box;
+      display: contents;
     }
 
     // 有头部时的样式
     &--hasheader {
       .@{chat-message-prefix}__avatar {
-        padding-top: @chat-message-spacer-7;
+        padding-top: calc(@chat-base-height + @chat-message-spacer-3);
       }
     }
 
@@ -132,6 +136,9 @@
       .@{chat-message-prefix}__base {
         padding-right: @spacer-2;
       }
+      .@{chat-message-prefix}__avatar {
+        margin-left: @chat-message-spacer-4;
+      }
     }
   }
 
@@ -140,11 +147,11 @@
     flex-shrink: 0;
     cursor: pointer;
     display: flex;
-    margin: 0 @chat-message-spacer-1;
-    padding-top: @chat-message-spacer-7;
+    margin-right: @chat-message-spacer-4;
+    padding-top: calc(@chat-base-height + @chat-message-spacer-3);
 
     &__box {
-      padding-top: @chat-message-spacer-2;
+      // padding-top: @chat-message-spacer-2;
     }
 
     &-image {
@@ -163,19 +170,20 @@
     justify-content: center;
     .t-skeleton {
       width: 100%;
-      padding: @spacer-2;
+      // padding: @spacer-2;
     }
   }
 
   // 基础信息样式
   &__base {
     display: flex;
-    flex-wrap: wrap;
     justify-content: flex-start;
-    align-items: baseline;
-    font: 600 @chat-message-font-body-large;
+    align-items: center;
+    height: @chat-base-height;
+    font-size: 600 @chat-message-font-body-large;
     color: @font-gray-3;
-    padding-left: @spacer-2;
+    // padding-left: @spacer-2;
+    margin-bottom: @chat-message-spacer-3;
   }
 
   // 名称样式
@@ -187,53 +195,71 @@
   // 文本变体样式
   &__text--variant--base {
     .@{chat-message-prefix}__text {
+      padding: @chat-content-text-padding;
       background-color: @gray-color-1;
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
+        @chat-message-border-radius-large;
     }
 
     &.assistant .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
+        @chat-message-border-radius-large;
+      background-color: transparent;
+      padding: 0;
     }
 
     &.user .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
+        @chat-message-border-radius-large;
     }
 
     &.left .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
+        @chat-message-border-radius-large;
     }
 
     &.right .@{chat-message-prefix}__text {
-      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large @chat-message-border-radius-large;
+      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large
+        @chat-message-border-radius-large;
     }
-
   }
 
   &__text--variant--outline {
     .@{chat-message-prefix}__text {
-      background-color: @gray-color-1;
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+      padding: @chat-content-text-padding;
+      border-color: @component-border;
+      border-style: solid;
+      border-width: @chat-message-border-width-small;
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
+        @chat-message-border-radius-large;
     }
 
     &.assistant .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
+        @chat-message-border-radius-large;
     }
 
     &.user .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
+        @chat-message-border-radius-large;
     }
 
     &.left .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
+        @chat-message-border-radius-large;
     }
 
     &.right .@{chat-message-prefix}__text {
-      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large @chat-message-border-radius-large;
+      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large
+        @chat-message-border-radius-large;
     }
   }
 
   // Actionbar 插槽样式
   &__actionbar-slot {
+    // margin-top: @chat-message-spacer-4;
+    --chat-actionbar-padding: @chat-content-padding 0 0 0;
+
     &:empty {
       display: none;
     }
@@ -248,6 +274,7 @@
 
       .@{chat-message-prefix}__avatar {
         margin-right: 0;
+        margin-left: 24rpx;
       }
 
       .@{chat-message-prefix}__content {
@@ -266,23 +293,25 @@
 
   .@{chat-message-prefix}__text--variant--base {
     &.user .@{chat-message-prefix}__text {
-      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large @chat-message-border-radius-large;
+      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large
+        @chat-message-border-radius-large;
     }
 
     &.assistant .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
+        @chat-message-border-radius-large;
     }
   }
 
   .@{chat-message-prefix}__text--variant--outline {
     &.user .@{chat-message-prefix}__text {
-      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large @chat-message-border-radius-large;
+      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large
+        @chat-message-border-radius-large;
     }
 
     &.assistant .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large @chat-message-border-radius-large;
+      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
+        @chat-message-border-radius-large;
     }
   }
 }
-
-

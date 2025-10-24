@@ -1,15 +1,17 @@
-import { ComponentWithComputed } from 'miniprogram-computed';
-import config from '../../../components/common/config';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
+import config from '../common/config';
 
 const { prefix } = config;
 const name = `${prefix}-chat-loading`;
 
-const constructorOptions = {
-  options: {
+@wxComponent()
+export default class ChatLoading extends SuperComponent {
+  options: ComponentsOptionsType = {
     multipleSlots: true,
     addGlobalClass: true,
-  },
-  properties: {
+  };
+
+  properties = {
     animation: {
       type: String,
       value: 'moving',
@@ -18,9 +20,9 @@ const constructorOptions = {
       type: String,
       value: '',
     },
-  },
-  data: {
+  };
+
+  data = {
     COMPONENT_NAME: name,
-  },
-};
-ComponentWithComputed(constructorOptions);
+  };
+}

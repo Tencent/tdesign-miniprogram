@@ -1,9 +1,16 @@
-<view class="demo-container">
-  <view class="demo-section">
-    <view class="demo-title">输入框自定义</view>
-    <view class="demo-description">提供灵活的插槽自定义输入框</view>
-
-    <!-- 聊天发送器组件 -->
+<view class="demo-content-citation-container">
+  <view class="chat-sender-demo-wrapper">
+    <view class="chat-sender-height-limit">
+      <view class="chat-sender-height-left-limit">
+        
+      </view>
+      <view class="chat-sender-height-right-limit">
+        
+      </view>
+    </view>
+    <view class="chat-sender-placeholder">
+      高度限制：最大高度为132px
+    </view>
     <view class="chat-sender-wrapper">
       <t-chat-sender value="{{value}}" loading="{{loading}}" disabled="{{disabled}}" placeholder="{{placeholder}}"
         textareaProps="{{textareaProps}}" fileList="{{fileList}}" attachmentsProps="{{attachmentsProps}}"
@@ -13,16 +20,20 @@
         bind:fileAdd="onFileAdd" bind:fileSelect="onFileSelect" bind:updateVisible="onUpdateVisible"
         bind:keyboardheightchange="onKeyboardHeightChange">
         <view slot="header" class="demo-header" wx:if="{{headerText}}">
-          <t-icon name="enter" size="40rpx" color="#00000066" style="transform: scaleX(-1)" />
+          <view style="padding: 4rpx;height: 40rpx;">
+            <t-icon name="enter" size="40rpx" color="#00000066" style="transform: scaleX(-1);" />
+          </view>
           <view class="header-content">
             {{headerText}}
           </view>
-          <t-icon name="add" size="40rpx" color="rgba(0, 0, 0, 0.6)" style="transform:rotate(45deg)" bind:tap="handleCLoseCite"/>
+          <view style="padding: 4rpx;height: 40rpx;margin-left: auto;">
+            <t-icon name="close" size="40rpx" color="rgba(0, 0, 0, 0.6)" bind:tap="handleCLoseCite"/>
+          </view>
         </view>
         <view slot="footerPrefix" class="demo-footer-prefix">
           <view class="deep-think-block {{deepThinkActive ? 'active' : ''}}" bind:tap="onDeepThinkTap">
             <t-icon name="system-sum" size="32rpx" />
-            <text class="deep-think-text">Deep Thinking</text>
+            <text class="deep-think-text">深度思考</text>
           </view>
           <view class="net-search-block {{ netSearchActive ? 'active' : '' }}" bind:tap="onNetSearchTap">
             <t-icon name="internet" size="32rpx" />
@@ -30,6 +41,8 @@
         </view>
       </t-chat-sender>
     </view>
-
+    <view class="demo-content-citation-footer">
+      内容由AI生成，仅供参考
+    </view>
   </view>
 </view>

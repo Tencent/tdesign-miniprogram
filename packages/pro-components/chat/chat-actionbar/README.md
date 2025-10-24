@@ -54,15 +54,13 @@ copyMode对应复制内容的模式，可选 'markdown'（复制markdown原文�
 
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
+chatId | String | '' | 聊天消息的唯一标识，一般用于分享一段问答 | N
 content | String | - | 被复制的内容 | N
 copyMode | String | markdown | 复制内容的模式，可选 'markdown'（复制markdown原文）或 'text'（复制纯文本） | N
-disabled | Boolean | false | 操作按钮是否可点击 | N
 comment | String | - | 评价类型， 可选值： `'good(点赞)'/'bad(点踩)`， 默认为空| N
-actionBar | Array |-| ["refresh", "copy", "good", "bad"，"share"]  | 操作按钮配置项，可配置操作按钮选项和顺序。TS 类型：`Array<'replay'\|'copy'\|'good'\|'bad'>` | N
-left | slot  | -  |左侧区域插槽 | N
-handleAction | Function | - |  TS 类型：`(value:string, context: { e: MouseEvent }) => void`<br/>点击点赞，点踩，复制，重新生成按钮时触发 分享， | N
-placement | Function | - |  TS 类型：`longpress/start/end/space-around/space-between`<br/>长按弹出浮层，左对齐，右对齐，均分(4列均分)，两端对齐(1+3) | N
-touch | Object | - |  TS 类型：`{pageX，pageY，clientX，clientY}`<br/>长按触发点[详细类型定义](https://developers.weixin.qq.com/minigame/dev/api/device/touch-event/Touch.html)   | N
+actionBar | Array | ["refresh", "copy", "good", "bad", "share"] | 操作按钮配置项，可配置操作按钮选项和顺序。TS 类型：`Array<'refresh'\|'copy'\|'good'\|'bad'\|'share'>` | N
+placement | String | start | 操作栏位置。可选项：start/end/space-around/space-between | N
+
 ### ChatAction Events
 
 名称 | 参数 | 描述

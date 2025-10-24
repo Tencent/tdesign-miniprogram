@@ -10,9 +10,14 @@ Page({
       title: '思考过程',
     },
     typeSpeed: 50,
+    status: "pending",
+    startTime: 0,
   },
 
   onLoad() {
+    this.setData({
+      startTime: Date.now(),
+    });
     this.startTyping();
   },
 
@@ -29,6 +34,24 @@ Page({
     const typeNextChar = () => {
       if (currentIndex <= fullText.length) {
         const currentText = fullText.substring(0, currentIndex);
+
+        // 检查是否已经完成打字
+        if (currentIndex === fullText.length) {
+          const endTime = Date.now();
+          const duration = Math.round((endTime - this.data.startTime) / 1000);
+          this.setData({
+            currentText,
+            content: {
+              text: currentText,
+              title: `已完成思考（耗时${duration}秒）`,
+            },
+            isTyping: false,
+            status: "complete",
+          });
+          return; // 直接返回，不再继续执行
+        }
+
+        // 正常打字过程
         this.setData({
           currentText,
           content: {
@@ -41,11 +64,9 @@ Page({
         if (currentIndex < fullText.length) {
           this.typingTimer = setTimeout(typeNextChar, typeSpeed);
         }
-
         currentIndex += 1;
       }
     };
-
     typeNextChar();
   },
 
@@ -61,6 +82,7 @@ Page({
         title: '思考过程',
       },
       isTyping: true,
+      startTime: Date.now(),
     });
 
     this.startTyping();

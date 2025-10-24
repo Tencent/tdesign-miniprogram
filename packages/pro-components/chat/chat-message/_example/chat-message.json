@@ -6,9 +6,7 @@
     "configure": "./configure",
     "status": "./status",
     "content": "./content",
-    "custom": "./custom",
-    "action": "./action",
-    "placement": "./placement",
-    "t-navbar": "tdesign-miniprogram/navbar/navbar"
+    "t-navbar": "tdesign-miniprogram/navbar/navbar",
+    "t-skeleton": "tdesign-miniprogram/skeleton/skeleton"
   }
 }

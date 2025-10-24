@@ -1,13 +1,35 @@
 .chat-box {
-  display: block;
-  height: 75vh;
-  padding: 16rpx;
+  padding-top: 32rpx;
+  box-sizing: border-box;
 }
 
-.imagelist {
-  padding: 16rpx;
+.t-chat__list {
+  padding: 0 0 0 32rpx;
+  box-sizing: border-box;
+}
+
+.t-chat__inner {
+  padding-right: 32rpx;
+}
+
+.image-container {
+  padding: 16rpx 16rpx 0 0;
+  width: 600rpx;
+  overflow-x: auto;
+}
+
+.image-list {
   display: flex;
-  flex-direction: column;
   gap: 16rpx;
-  border: 1px solid black;
+  flex-wrap: nowrap;
+}
+
+.image-list image {
+  border-radius: 12rpx;
+  flex-shrink: 0;
+}
+
+.image-chat .assistant,
+.image-chat .assistant .t-chat__detail {
+  width: 100%;
 }

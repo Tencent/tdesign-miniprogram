@@ -1,10 +1,10 @@
-.button-example {
-  margin: 32rpx;
+.chat-example {
   display: flex;
   flex-direction: column;
+  gap: 32rpx;
 }
 
-.button-example:after {
-  content: '';
-  flex: auto;
+.chat-example-block {
+  background-color: #fff;
+  padding: 32rpx 32rpx 0 32rpx;
 }

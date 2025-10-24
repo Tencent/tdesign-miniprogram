@@ -1,10 +1,10 @@
 <t-navbar class="demo-navbar" title="ChatActionbar" leftArrow />
 <view class="demo">
-  <t-demo-header title="ChatActionbar" desc="对话操作栏" notice="渲染框架支持情况：WebView" />
-  <t-demo title="01 默认展示">
+  <t-demo-header title="ChatActionbar 对话操作栏" desc="用于 ChatBot 对话场景中的操作栏组件。" notice="渲染框架支持情况：WebView" />
+  <t-demo title="01 组件类型" desc="基础类型">
     <base />
   </t-demo>
-  <t-demo title="02 手动初始化状态">
+  <t-demo title="02 组件状态" desc="手动初始化状态">
     <comment />
   </t-demo>
   <t-demo title="03 左右布局">

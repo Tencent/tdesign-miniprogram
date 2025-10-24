@@ -1,76 +1,120 @@
-/* 代码块容器 */
-.t-chat-markdown-code-block {
-  margin: 16rpx 0;
-  border-radius: 8rpx;
-  background-color: #f6f8fa;
-  border: 1rpx solid #e1e4e8;
-  overflow: hidden;
-}
+@import '../../common/style/base.less';
 
-/* 代码语言标签 */
-.t-chat-markdown-code-header {
-  padding: 8rpx 16rpx;
-  background-color: #e1e4e8;
-  border-bottom: 1rpx solid #d0d7de;
-}
+@chat-markdown-code-prefix: ~'@{prefix}-chat-markdown-code';
 
-.t-chat-markdown-code-lang {
-  font-size: 24rpx;
-  color: #656d76;
-  font-weight: 500;
-}
+// Chat Markdown Code 变量定义
+@code-block-margin: 16rpx;
+@code-block-radius: 8rpx;
+@code-block-bg-light: #f6f8fa;
+@code-block-bg-dark: #161b22;
+@code-block-bg-white: #ffffff;
+@code-block-border-light: #e1e4e8;
+@code-block-border-dark: #30363d;
+@code-block-border-white: #d0d7de;
 
-/* 代码内容区域 */
-.t-chat-markdown-code-content {
-  padding: 16rpx;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  white-space: nowrap;
-  height: auto;
-}
+@code-header-padding: 8rpx 16rpx;
+@code-header-bg-light: #e1e4e8;
+@code-header-bg-dark: #21262d;
+@code-header-bg-white: #f6f8fa;
+@code-header-border-light: #d0d7de;
+@code-header-border-dark: #30363d;
+@code-header-border-white: #d0d7de;
 
-.t-chat-markdown-code-text {
-  font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
-  font-size: 28rpx;
-  line-height: 1.6;
-  color: #24292f;
-  /* 关键设置：防止换行 */
-  white-space: pre;
-  word-wrap: normal;
-  word-break: normal;
-  overflow-wrap: normal;
-  display: inline-block;
-  vertical-align: top;
-  min-width: 100%;
-}
+@code-lang-font-size: 24rpx;
+@code-lang-color-light: #656d76;
+@code-lang-color-dark: #7d8590;
+@code-lang-font-weight: 500;
 
-/* 暗色主题支持 */
-.t-chat-markdown-code-dark .t-chat-markdown-code-block {
-  background-color: #161b22;
-  border-color: #30363d;
-}
+@code-content-padding: 16rpx;
 
-.t-chat-markdown-code-dark .t-chat-markdown-code-header {
-  background-color: #21262d;
-  border-bottom-color: #30363d;
-}
+@code-text-font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+@code-text-font-size: 28rpx;
+@code-text-line-height: 1.6;
+@code-text-color-light: #24292f;
+@code-text-color-dark: #e6edf3;
 
-.t-chat-markdown-code-dark .t-chat-markdown-code-lang {
-  color: #7d8590;
-}
+// Chat Markdown Code 组件样式
+.@{chat-markdown-code-prefix} {
+  // 代码块容器
+  &-block {
+    margin: @code-block-margin 0;
+    border-radius: @code-block-radius;
+    background-color: @code-block-bg-light;
+    border: 1rpx solid @code-block-border-light;
+    overflow: hidden;
+  }
 
-.t-chat-markdown-code-dark .t-chat-markdown-code-text {
-  color: #e6edf3;
-}
+  // 代码语言标签
+  &-header {
+    padding: @code-header-padding;
+    background-color: @code-header-bg-light;
+    border-bottom: 1rpx solid @code-header-border-light;
+  }
 
-/* 浅色主题 */
-.t-chat-markdown-code-light .t-chat-markdown-code-block {
-  background-color: #ffffff;
-  border-color: #d0d7de;
-}
+  // 语言标签文本
+  &-lang {
+    font-size: @code-lang-font-size;
+    color: @code-lang-color-light;
+    font-weight: @code-lang-font-weight;
+  }
 
-.t-chat-markdown-code-light .t-chat-markdown-code-header {
-  background-color: #f6f8fa;
-  border-bottom-color: #d0d7de;
+  // 代码内容区域
+  &-content {
+    padding: @code-content-padding;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    height: auto;
+  }
+
+  // 代码文本
+  &-text {
+    font-family: @code-text-font-family;
+    font-size: @code-text-font-size;
+    line-height: @code-text-line-height;
+    color: @code-text-color-light;
+    /* 关键设置：防止换行 */
+    white-space: pre;
+    word-wrap: normal;
+    word-break: normal;
+    overflow-wrap: normal;
+    display: inline-block;
+    vertical-align: top;
+    min-width: 100%;
+  }
+
+  // 暗色主题
+  &-dark {
+    .@{chat-markdown-code-prefix}-block {
+      background-color: @code-block-bg-dark;
+      border-color: @code-block-border-dark;
+    }
+
+    .@{chat-markdown-code-prefix}-header {
+      background-color: @code-header-bg-dark;
+      border-bottom-color: @code-header-border-dark;
+    }
+
+    .@{chat-markdown-code-prefix}-lang {
+      color: @code-lang-color-dark;
+    }
+
+    .@{chat-markdown-code-prefix}-text {
+      color: @code-text-color-dark;
+    }
+  }
+
+  // 浅色主题
+  &-light {
+    .@{chat-markdown-code-prefix}-block {
+      background-color: @code-block-bg-white;
+      border-color: @code-block-border-white;
+    }
+
+    .@{chat-markdown-code-prefix}-header {
+      background-color: @code-header-bg-white;
+      border-bottom-color: @code-header-border-white;
+    }
+  }
 }
