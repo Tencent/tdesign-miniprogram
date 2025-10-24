@@ -1,5 +1,5 @@
-import { SuperComponent, wxComponent } from '../common/src/index';
-import config from '../common/config';
+import { SuperComponent, wxComponent } from '../../../components/common/src/index';
+import config from '../../../components/common/config';
 
 const { prefix } = config;
 const name = `${prefix}-chat-sender`;

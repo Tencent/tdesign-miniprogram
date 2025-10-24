@@ -1,6 +1,6 @@
 import { Lexer } from 'marked';
-import { SuperComponent, wxComponent, ComponentsOptionsType } from '../common/src/index';
-import config from '../common/config';
+import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
+import config from '../../../components/common/config';
 
 const { prefix } = config;
 const name = `${prefix}-chat-markdown`;
