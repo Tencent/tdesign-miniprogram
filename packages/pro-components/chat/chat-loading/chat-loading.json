@@ -1,7 +1,7 @@
 {
   "usingComponents": {
-    "t-skeleton": "../../../components/skeleton/skeleton",
-    "t-loading": "../../../components/loading/loading"
+    "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
+    "t-loading": "tdesign-miniprogram/loading/loading"
   },
   "component": true
 }

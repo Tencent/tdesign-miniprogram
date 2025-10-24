@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "Attachments 聊天附件",
+  "usingComponents": {
+    "base": "./base",
+    "fileLoading": "./fileLoading",
+    "imageLoading": "./imageLoading",
+    "file": "./file",
+    "t-navbar": "tdesign-miniprogram/navbar/navbar"
+  }
+}

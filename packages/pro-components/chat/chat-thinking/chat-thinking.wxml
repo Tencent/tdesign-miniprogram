@@ -1,24 +1,25 @@
-<view class="{{[COMPONENT_NAME]}}">
+<wxs src="../common/utils.wxs" module="_" />
+<view class="class {{[COMPONENT_NAME]}}" style="{{_._style([style, customStyle])}}">
   <view class="{{[COMPONENT_NAME+'__inner',COMPONENT_NAME+'__inner__'+layout]}}">
     <view class="{{[COMPONENT_NAME+'__hd']}}">
       <block wx:if="{{status==='error'}}">
-        <view class="icon-close"></view>
+        <t-icon class="close-icon" name="close-circle" size="40rpx"></t-icon>
+      </block>
+      <block wx:if="{{status==='complete' || status==='stop'}}">
+        <t-icon class="check-circle-icon" name="check-circle" size="40rpx"></t-icon>
       </block>
       <block wx:else>
         <t-chat-loading animation="{{animation}}"></t-chat-loading>
       </block>
       <view class="{{[COMPONENT_NAME+'__hd__txt']}}">{{content.title||"正在思考中..."}}</view>
-      <view
-        data-event-opts="{{[['tap',[['handleCollapse',['$event']]]]]}}"
-        class="{{[COMPONENT_NAME+'__hd__btn',[(!localCollapsed)?'close':'']]}}"
-        bindtap="__e"
-      ></view>
+      <view data-event-opts="{{[['tap',[['handleCollapse',['$event']]]]]}}">
+        <t-icon class="collapse-icon" wx:if="{{localCollapsed}}" name="chevron-up" size="40rpx" bindtap="handleCollapse"
+          style="transform: rotate(0deg);"></t-icon>
+        <t-icon class="collapse-icon" wx:else name="chevron-up" size="40rpx" bindtap="handleCollapse"
+          style="transform: rotate(180deg);"></t-icon>
+      </view>
     </view>
-    <view
-      hidden="{{!(!localCollapsed)}}"
-      class="{{[COMPONENT_NAME+'__bd',COMPONENT_NAME+'__bd__'+layout]}}"
-      style="{{(contentStyle)}}"
-      >{{''+(content.text||"")+''}}</view
-    >
+    <view hidden="{{!(!localCollapsed)}}" class="{{[COMPONENT_NAME+'__bd',COMPONENT_NAME+'__bd__'+layout]}}"
+      style="{{(contentStyle)}}">{{''+(content.text||"")+''}}</view>
   </view>
 </view>

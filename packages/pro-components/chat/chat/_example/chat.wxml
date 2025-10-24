@@ -1,6 +1,6 @@
 <t-navbar class="demo-navbar" title="Chat" leftArrow />
 <view class="demo">
-  <t-tabs defaultValue="{{0}}" space-evenly="{{false}}" style="height: 100%">
+  <t-tabs defaultValue="{{0}}" space-evenly="{{false}}">
     <t-tab-panel label="基础使用" value="{{0}}">
       <base />
     </t-tab-panel>
@@ -10,9 +10,10 @@
     <t-tab-panel label="自定义" value="{{2}}">
       <custom />
     </t-tab-panel>
-    <t-tab-panel label="代码助手" value="{{3}}">
+    <!-- 本次迭代先不上 -->
+    <!-- <t-tab-panel label="代码助手" value="{{3}}">
       <codedemo />
-    </t-tab-panel>
+    </t-tab-panel> -->
     <t-tab-panel label="文案助手" value="{{4}}">
       <docs />
     </t-tab-panel>

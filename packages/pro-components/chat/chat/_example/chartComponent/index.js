@@ -1,5 +1,6 @@
-function onInitNormalLine(chart, opt) {
-  console.log('chart实例:', chart);
+import * as echarts from '../ec-canvas/echarts';
+
+function onInitNormalLine(opt) {
   console.log('contentItem数据:', opt);
 
   // 使用contentItem中的数据，如果没有则使用mockData2
@@ -15,12 +16,23 @@ function onInitNormalLine(chart, opt) {
       },
     ],
   };
-  chart.setOption(normalLineOption);
+
+  return (canvas, width, height, dpr) => {
+    const chart = echarts.init(canvas, null, {
+      width: width,
+      height: height,
+      devicePixelRatio: dpr, // 像素比
+    });
+    canvas.setChart(chart);
+
+    chart.setOption(normalLineOption);
+    return chart;
+  };
 }
 
 Component({
   data: {
-    meow: () => {},
+    ec: null,
   },
 
   properties: {
@@ -32,8 +44,8 @@ Component({
   lifetimes: {
     attached() {
       this.setData({
-        meow: (chart) => {
-          onInitNormalLine(chart, this.properties.options);
+        ec: {
+          onInit: onInitNormalLine(this.properties.options),
         },
       });
     },

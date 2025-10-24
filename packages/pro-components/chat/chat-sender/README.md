@@ -27,20 +27,25 @@ isComponent: true
 
 ### 01 组件类型
 
-#### 基础输入框
+#### 基础类型
 
 {{ base }}
 
-### 附件输入
+### 上传文件
 
 支持选择附件及展示附件列表，受控进行文件数据管理，示例中模拟了文件上传流程
 
 {{ attachments }}
 
-### 输入框自定义
-输入框底部左侧区域 `footer-prefix` ，输入框底部操作区域 `suffix`
+### 内容引用
+输入框顶部区域 `header` ，输入框底部左侧区域 `footer-prefix` ，输入框底部操作区域 `suffix`
 
-{{ slot }}
+{{ content-citation }}
+
+### 文件引用
+输入框顶部区域 `header` ，输入框底部左侧区域 `footer-prefix` ，输入框底部操作区域 `suffix`
+
+{{ file-citation }}
 
 ## API
 ### ChatSender Props
@@ -61,8 +66,8 @@ fileList | Array | [] | 附件文件列表 | N
 attachmentsProps | Object | { items: [], removable: true, imageViewer: true, addable: false } | 附件列表属性 | N
 renderPresets | Array | [见下方说明] | 预设发送区渲染配置 | N
 visible | Boolean | false | 上传面板是否可见 | N
-
-
+adjustPosition | Boolean | false | 默认键盘弹起不会把页面顶起来 | N
+autoRiseWithKeyboard | Boolean | false | 键盘弹起时自动顶起来输入框 | N
 ### 事件
 
 事件名 | 说明 | 回调参数
@@ -79,6 +84,7 @@ fileChange | 附件列表变化时触发 | files
 fileAdd | 添加附件时触发 | -
 fileSelect | 选择文件（图片/微信文件）时触发 | { e, name, files }
 update:visible | 上传面板显示状态变化时触发 | Boolean
+keyboardheightchange | 键盘高度变化时触发 | {e}
 
 #### fileSelect 回调参数说明
 

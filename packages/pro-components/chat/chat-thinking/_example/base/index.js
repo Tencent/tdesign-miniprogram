@@ -8,5 +8,9 @@ Component({
         title: '思考过程',
       },
     },
+    status: {
+      type: String,
+      value: 'pending',
+    }
   },
 });

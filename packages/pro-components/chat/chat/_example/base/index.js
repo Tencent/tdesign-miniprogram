@@ -1,3 +1,6 @@
+import { Toast } from 'tdesign-miniprogram';
+import { getSafeAreaHeight, getNavigationBarHeight } from '../../../utils/utils';
+
 const mockData = `南极的自动提款机并没有一个特定的专属名称，但历史上确实有一台ATM机曾短暂存在于南极的**麦克默多站**（McMurdo Station）。这台ATM由美国**富兰克林国家银行**（Wells Fargo）于1998年安装，主要供驻扎在该站的科研人员使用。不过，由于南极的极端环境和极低的人口密度，这台ATM机并未长期运行，最终被移除。
 
 **背景补充：**
@@ -7,12 +10,34 @@ const mockData = `南极的自动提款机并没有一个特定的专属名称�
 
 南极作为非主权领土，其基础设施以科研和生活支持为主，商业金融服务非常有限。若有类似设施，通常是临时或实验性质的。`;
 
+const sleep = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+const fetchStream = async (str, options) => {
+  const { success, complete, delay = 100 } = options;
+
+  const arr = str.split('');
+
+  for (let i = 0; i < arr.length; i += 1) {
+    // eslint-disable-next-line no-await-in-loop
+    await sleep(delay);
+    success(arr[i]);
+  }
+
+  complete();
+};
+
 Component({
+  options: {
+    styleIsolation: 'shared',
+  },
   data: {
     chatList: [
       {
         avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
         message: {
+          status: 'complete',
           role: 'assistant',
           content: [
             {
@@ -23,7 +48,6 @@ Component({
         },
       },
       {
-        avatar: 'https://tdesign.gtimg.com/site/avatar.jpg',
         message: {
           role: 'user',
           content: [
@@ -38,9 +62,14 @@ Component({
     value: '', // 输入框的值
     loading: false, // 加载状态
     disabled: false, // 禁用状态
+    inputStyle: '', // 输入框样式
+    contentHeight: '100vh', // 内容高度
   },
 
   methods: {
+    onScroll(e) {
+      console.log('监听滚动', e);
+    },
     // 发送消息事件处理
     onSend(e) {
       const { value } = e.detail;
@@ -48,7 +77,6 @@ Component({
 
       // 创建用户消息对象
       const userMessage = {
-        avatar: 'https://tdesign.gtimg.com/site/avatar.jpg',
         message: {
           role: 'user',
           content: [
@@ -73,13 +101,15 @@ Component({
     // 停止事件处理
     onStop() {
       console.log('停止发送');
+      this.setData({
+        loading: false,
+      });
     },
 
     // 聚焦事件处理
     onFocus() {
       console.log('输入框聚焦');
     },
-
     // 获取当前时间
     getCurrentTime() {
       const now = new Date();
@@ -90,29 +120,103 @@ Component({
 
     // 模拟助手回复
     simulateAssistantReply() {
-      console.log(1);
       this.setData({ loading: true });
 
-      // 模拟延迟回复
-      setTimeout(() => {
-        const assistantMessage = {
-          avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
-          message: {
-            role: 'assistant',
-            content: [
-              {
-                type: 'markdown',
-                data: mockData,
-              },
-            ],
+      const assistantMessage = {
+        message: {
+          role: 'assistant',
+          content: [
+            {
+              type: 'markdown',
+              data: '',
+            },
+          ],
+        },
+        avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
+      };
+
+      this.setData({
+        chatList: [assistantMessage, ...this.data.chatList],
+      });
+
+      const that = this;
+      wx.nextTick(() => {
+        fetchStream(mockData, {
+          success(result) {
+            if (!that.data.loading) return;
+            that.data.chatList[0].message.content[0].data += result;
+            that.setData({
+              chatList: that.data.chatList,
+            });
           },
-        };
+          complete() {
+            that.data.chatList[0].message.status = 'complete';
+            that.setData({
+              chatList: that.data.chatList,
+            });
+            that.setData({
+              loading: false,
+            });
+          },
+        });
+      });
+    },
+    handleAction(e) {
+      const { name, active, data } = e.detail;
+      console.log(e);
+
+      let message = '';
+      switch (name) {
+        case 'copy':
+          console.log(data);
+          message = '复制成功';
+          break;
+        case 'good':
+          message = active ? '点赞成功' : '取消点赞';
+          break;
+        case 'bad':
+          message = active ? '点踩成功' : '取消点踩';
+          break;
+        case 'share':
+          message = '分享功能';
+          break;
+        default:
+          message = `执行了${name}操作`;
+      }
+
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message,
+        theme: 'success',
+      });
+    },
+  },
+  lifetimes: {
+    attached: function () {
+      /**
+       * 计算内容区域高度
+       * 生成CSS calc表达式：calc(100vh - 96rpx - 导航高度 - 底部安全区域高度)
+       */
+      try {
+        // 获取当前的导航栏高度和安全区域高度
+        const navigationBarHeight = getNavigationBarHeight() || 0;
+        const safeAreaBottom = getSafeAreaHeight() || 0;
+
+        // 生成CSS calc表达式字符串
+        const contentHeight = `calc(100vh - 96rpx - ${navigationBarHeight}px - ${safeAreaBottom}px)`;
 
         this.setData({
-          chatList: [assistantMessage, ...this.data.chatList],
-          loading: false,
+          contentHeight: contentHeight,
         });
-      }, 1000);
+
+        console.log('内容区域高度CSS表达式:', contentHeight);
+      } catch (error) {
+        console.error('生成内容高度表达式失败:', error);
+        this.setData({
+          contentHeight: 'calc(100vh - 96rpx)',
+        });
+      }
     },
   },
 });

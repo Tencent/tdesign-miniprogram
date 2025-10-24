@@ -12,7 +12,7 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-chat-loading": "tdesign-miniprogram-chat/chat-loading/chat-loading"
+  "t-chat-loading": "@tencent/tdesign-miniprogram-chat/chat-loading/chat-loading"
 }
 ```
 
@@ -39,7 +39,7 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
-animation | String | moving | 加载的状态形式。可选项：moving/gradient/circle/skeleton | N
+animation | String | moving | 加载的状态形式。可选项：moving/gradient/circle | N
 text | String | - | 加载过程展示的文字内容 | N
 
 ### CSS Variables

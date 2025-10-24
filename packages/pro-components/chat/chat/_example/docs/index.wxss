@@ -1,7 +1,15 @@
 .chat-box {
-  display: block;
-  height: 75vh;
-  padding: 16rpx;
+  padding-top: 32rpx;
+  box-sizing: border-box;
+}
+
+.t-chat__list {
+  padding: 0 0 0 32rpx;
+  box-sizing: border-box;
+}
+
+.t-chat__inner {
+  padding-right: 32rpx;
 }
 
 .preview {

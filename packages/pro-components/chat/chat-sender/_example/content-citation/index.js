@@ -8,8 +8,8 @@ Page({
     placeholder: '请输入消息...',
     textareaProps: {
       autosize: {
-        maxHeight: 125,
-        minHeight: 43,// 设置为0时，用自动计算height的高度
+        maxHeight: 132,
+        minHeight: 24,// 设置为0时，用自动计算height的高度
       }, // 默认为false
     },
     attachmentsProps: {

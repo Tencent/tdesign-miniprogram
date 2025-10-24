@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "t-attachments": "@tencent/tdesign-miniprogram-chat/attachments/attachments"
+  }
+}

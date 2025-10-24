@@ -1,3 +1,4 @@
+<t-toast id="t-toast" />
 <view class="container">
   <t-button style="margin: 16rpx 0" bind:tap="handleChangePlacement" variant="outline" theme="primary">
     切换到{{placement === 'start' ? '右侧' : '左侧'}}布局

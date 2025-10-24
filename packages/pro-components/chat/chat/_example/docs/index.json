@@ -2,10 +2,11 @@
   "component": true,
   "styleIsolation": "shared",
   "usingComponents": {
-    "t-chat-message": "tdesign-miniprogram/chat-message/chat-message",
-    "t-chat-content": "tdesign-miniprogram/chat-content/chat-content",
-    "t-chat": "tdesign-miniprogram/chat/chat",
-    "t-chat-sender": "tdesign-miniprogram/chat-sender/chat-sender",
-    "t-chat-actionbar": "tdesign-miniprogram/chat-actionbar/chat-actionbar"
+    "t-chat-message": "@tencent/tdesign-miniprogram-chat/chat-message/chat-message",
+    "t-chat-content": "@tencent/tdesign-miniprogram-chat/chat-content/chat-content",
+    "t-chat": "@tencent/tdesign-miniprogram-chat/chat/chat",
+    "t-chat-sender": "@tencent/tdesign-miniprogram-chat/chat-sender/chat-sender",
+    "t-chat-actionbar": "@tencent/tdesign-miniprogram-chat/chat-actionbar/chat-actionbar",
+    "t-toast": "tdesign-miniprogram/toast/toast"
   }
 }

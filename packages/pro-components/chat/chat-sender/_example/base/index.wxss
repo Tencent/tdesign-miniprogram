@@ -1,115 +1,66 @@
-.demo-container {
-  padding: 32rpx;
-  background-color: #f8f9fa;
-}
-
-.demo-section {
-  margin-bottom: 48rpx;
-  background: #fff;
-  border-radius: 12rpx;
-  padding: 32rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
-}
-
-.demo-title {
-  font-size: 36rpx;
-  font-weight: 600;
-  color: #333;
-  margin-bottom: 16rpx;
-}
-
-.demo-description {
-  font-size: 28rpx;
-  color: #666;
-  margin-bottom: 32rpx;
-  line-height: 1.5;
-}
-
-/* 控制面板 */
-.control-panel {
-  margin-bottom: 32rpx;
-  padding: 24rpx;
-  background: #f8f9fa;
-  border-radius: 8rpx;
-}
-
-.control-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 16rpx;
-}
-
-.control-item:last-child {
-  margin-bottom: 0;
-}
-
-.control-label {
-  font-size: 28rpx;
-  color: #333;
+.demo-base-container {
+  padding: 56rpx 0 0 0;
+  background-color: #ffffff;
+  height: 488rpx;
+  position: relative;
 }
 
 /* 聊天发送器包装器 */
-.chat-sender-wrapper {
+.chat-sender-demo-wrapper{
+
   margin-bottom: 32rpx;
   /* border: 2rpx solid #e5e5e5; */
   border-radius: 8rpx;
   overflow: hidden;
 }
 
-/* 状态面板 */
-.status-panel {
-  padding: 24rpx;
-  background: #f0f9ff;
-  border-radius: 8rpx;
-  border-left: 4rpx solid #1890ff;
-}
 
-.status-item {
+.chat-sender-height-limit{
+  height: 72rpx;
+  padding: 0 24rpx;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 12rpx;
+  align-items: center;
 }
 
-.status-item:last-child {
-  margin-bottom: 0;
+.chat-sender-height-left-limit{
+  height: 70rpx;
+  width: 70rpx;
+  border-top: 1px #E7E7E7 dashed;
+  border-left: 1px #E7E7E7 dashed;
+  border-top-left-radius: 32rpx;
+}
+.chat-sender-height-right-limit{
+  height: 70rpx;
+  width: 70rpx;
+  border-top: 1px #E7E7E7 dashed;
+  border-right: 1px #E7E7E7 dashed;
+  border-top-right-radius: 32rpx;
+}
+.chat-sender-placeholder{
+  font-size: 32rpx;
+  color: rgba(0, 0, 0, 0.1);
+  text-align: center;
+  height:48rpx;
 }
 
-.status-label {
-  font-size: 26rpx;
-  color: #666;
+.chat-sender-wrapper {
+  position: absolute;
+  width: 100%;
+  bottom: 0rpx;
+  background-color: #ffffff;
 }
 
-.status-value {
-  font-size: 26rpx;
-  color: #333;
-  font-weight: 500;
-}
 
-/* 功能说明 */
-.feature-list {
-  display: flex;
-  flex-direction: column;
-  gap: 16rpx;
-}
-
-.feature-item {
-  display: flex;
-  flex-direction: column;
-  gap: 8rpx;
-}
-
-.feature-title {
-  font-size: 28rpx;
-  color: #333;
-  font-weight: 500;
-}
-
-.feature-desc {
-  font-size: 26rpx;
-  color: #666;
-  line-height: 1.4;
-  margin-left: 20rpx;
+.demo-footer{
+  height: 32rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 20rpx;
+  line-height: 32rpx;
+  color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 32rpx;
 }
 
 .demo-footer-prefix{
@@ -118,8 +69,8 @@
 }
 
 .deep-think-block{
-  width: 280rpx;
-  height: 64rpx;
+  padding: 0 24rpx;
+  height: 60rpx;
   border-radius: 200rpx;
   border: 2rpx solid rgba(220, 220, 220, 1);
   display: flex;
@@ -135,7 +86,7 @@
 
 .net-search-block{
   width: 64rpx;
-  height: 64rpx;
+  height: 60rpx;
   border: 2rpx solid rgba(220, 220, 220, 1);
   border-radius: 200rpx;
   display: flex;

@@ -1,3 +1,5 @@
-<view class="demo-container">
-  <t-chat-loading animation="moving" text="思考中..." />
+<view class="chat-example">
+  <view class="chat-example-block">
+    <t-chat-loading animation="moving" text="思考中..." />
+  </view>
 </view>

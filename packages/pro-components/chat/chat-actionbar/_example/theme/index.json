@@ -1,5 +1,5 @@
 {
-    "usingComponents": {
-        "t-chat-actionbar": "../../../chat-actionbar/chat-actionbar"
-    }
+  "usingComponents": {
+    "t-chat-actionbar": "@tencent/tdesign-miniprogram-chat/chat-actionbar/chat-actionbar"
+  }
 }

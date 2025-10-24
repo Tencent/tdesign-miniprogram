@@ -1,3 +1,4 @@
+<t-toast id="t-toast" />
 <view class="container">
   <label class="copy-mode-switch">
     <checkbox-group class="checkbox-group" bindchange="handleCopyModeChange">

@@ -1,25 +1,30 @@
-<view>
-  <t-chat class="chat-box">
+<view class="chat-box image-chat" style="height: {{contentHeight}};">
+  <t-chat>
     <block wx:for="{{chatList}}" wx:key="index" wx:for-index="chatIndex">
-      <t-chat-message avatar="{{item.avatar}}" name="{{item.name}}" datetime="{{item.datetime}}"
-        role="{{item.message.role}}">
+      <t-chat-message avatar="{{item.avatar || ''}}" name="{{item.name || ''}}" datetime="{{item.datetime || ''}}"
+        role="{{item.message.role}}" placement="{{item.message.role === 'user' ? 'right' : 'left'}}">
         <view slot="content">
           <block wx:for="{{item.message.content}}" wx:for-item="contentItem" wx:for-index="contentIndex"
             wx:key="contentIndex">
             <t-chat-content content="{{contentItem}}"
               wx:if="{{contentItem.type === 'text' || contentItem.type === 'markdown'}}" />
-            <view class="imagelist" wx:if="{{contentItem.type === 'imageview'}}">
-              <image wx:for="{{contentItem.data}}" wx:for-item="imageItem" wx:key="index" src="{{imageItem.url}}"
-                style="width: 320rpx; height: 320rpx;" />
-            </view>
+            <scroll-view scroll-x class="image-container" wx:if="{{contentItem.type === 'imageview'}}">
+              <view class="image-list">
+                <image wx:for="{{contentItem.data}}" mode="aspectFill" wx:for-item="imageItem" wx:key="index"
+                  src="{{imageItem.url}}" style="{{imageItem.style}}" />
+              </view>
+            </scroll-view>
           </block>
         </view>
-        <t-chat-actionbar slot="actionbar" placement="end" actionBar="{{customActionBar}}" />
+        <t-chat-actionbar
+          wx:if="{{chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'}}"
+          slot="actionbar" placement="end" bind:handleAction="handleAction" />
       </t-chat-message>
     </block>
     <view slot="footer">
       <t-chat-sender value="{{value}}" loading="{{loading}}" disabled="{{disabled}}" bind:send="onSend"
-        bind:stop="onStop" bind:focus="onFocus" />
+        bind:stop="onStop" bind:focus="onFocus" autoRiseWithKeyboard="{{true}}" />
     </view>
   </t-chat>
 </view>
+<t-toast id="t-toast" />

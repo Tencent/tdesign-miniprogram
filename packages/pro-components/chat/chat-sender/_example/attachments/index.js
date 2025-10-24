@@ -1,3 +1,5 @@
+import Toast from 'tdesign-miniprogram/toast';
+
 Page({
   data: {
     value: '',
@@ -11,18 +13,18 @@ Page({
       },
       {
         fileType: 'pdf',
-        name: 'document.pdf',
+        name: '文档.pdf',
         url: 'https://example.com/document.pdf',
         size: 3072,
         status: 'pending',
       },
     ],
-    visible: false,
+    visible: true,
     placeholder: '请输入消息...',
     textareaProps: {
       autosize: {
-        maxHeight: 125,
-        minHeight: 43,// 设置为0时，用自动计算height的高度
+        maxHeight: 132,
+        minHeight: 24,// 设置为0时，用自动计算height的高度
       }, // 默认为false
     },
     attachmentsProps: {
@@ -34,7 +36,7 @@ Page({
         },
         {
           fileType: 'pdf',
-          name: 'document.pdf',
+          name: '文档.pdf',
           url: 'https://example.com/document.pdf',
           size: 3072,
           status: 'pending',
@@ -58,6 +60,7 @@ Page({
     ],
     deepThinkActive: false,
     netSearchActive: false,
+    showUploadMenu: true,
   },
 
   // 发送消息
@@ -172,9 +175,11 @@ Page({
 
   // 上传面板显示状态变化
   onUpdateVisible(e) {
-    const visible = e.detail;
-    console.log('上传面板显示状态:', visible);
-    this.setData({ visible });
+    Toast({
+      context: this,
+      selector: '#t-toast',
+      message: '暂不可操作',
+    });
   },
 
   // 键盘高度变化

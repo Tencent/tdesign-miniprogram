@@ -1,5 +1,0 @@
-<view class="button-example">
-  <t-chat-message message="{{message}}">
-    <t-chat-actionbar slot="actionbar" />
-  </t-chat-message>
-</view>

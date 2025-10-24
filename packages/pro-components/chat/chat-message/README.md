@@ -11,39 +11,37 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-chat-message": "tdesign-miniprogram/chat-message/chat-message"
+  "t-chat-message": "@tencent/tdesign-miniprogram-chat/chat-message/chat-message"
 }
 ```
 
 ## 代码演示
 
-### 01 基础用法
+### 01 组件类型
 
-#### 基础聊天消息
+#### 基础类型
 
 {{ base }}
 
-{{ style }}
-
-### 可配置头像，昵称，位置
+#### 可配置昵称、头像、对齐方式
 
 {{ configure }}
 
-#### 加载中状态
+#### 配置消息属性
+
+{{ content }}
+
+### 02 组件状态
+
+#### 加载状态
 
 {{ status }}
 
-## 消息内容渲染
-### 内置支持的几种消息内容
-通过配置 `message type`属性，可以渲染内置的几种消息内容：**Markdown格式内容**、**思考过程**
-{{ content }}
+### 03 组件样式
 
-### 消息内容自定义
-{{ custom }}
+#### 气泡样式
 
-### 消息操作栏
-消息底部操作栏，通过`植入插槽actionbar`的方式实现，可以直接使用`ChatActionBar`组件，也可以完全自定义实现
-{{ action }}
+{{ style }}
 
 ## API
 
@@ -56,10 +54,11 @@ avatar | String / Object / Slot / Function | '' | 自定义的头像配置。支
 name | String / Slot / Function | '' | 自定义的昵称。支持字符串、插槽或函数 | N
 datetime | String / Slot / Function | '' | 对话单元的时间配置。支持字符串、插槽或函数 | N
 variant | String | 'base' | 气泡框样式，支持基础、线框、文字三种类型。可选项：base/outline/text | N
-message | Object | {} | 消息内容对象。类型定义见下方 ChatMessagesData | N
+role | String | 'user' | 消息角色类型。可选项：user/assistant/system | N
+content | Array | [] | 消息内容。数组类型，数组中的每一项为一个消息内容对象。 | N
 placement | String | '' | 消息显示位置。可选项：left/right | N
 animation | String | 'skeleton' | 动画效果，支持「渐变加载动画」,「闪烁加载动画」, 「骨架屏」三种。可选项：skeleton/moving/gradient | N
-
+chatContentProps | Object | {} | 聊天内容组件的属性，[详细定义](./type.ts)| N
 
 ### ChatMessagesData 消息对象结构
 
@@ -67,7 +66,7 @@ animation | String | 'skeleton' | 动画效果，支持「渐变加载动画」,
 --|--|--|--
 role | `"user" \| "assistant" \| "system"` | Y | 消息角色类型
 status | `"pending" \| "streaming" \| "complete" \| "stop" \| "error"` | N | 消息状态
-content | `UserMessageContent[] \| AIMessageContent[] \|  TextContent[]` | N | 消息内容
+content | `UserMessageContent[] \| AIMessageContent[] \|  TextContent[] \| AttachmentContent[]` | N | 消息内容
 ext | any | N | 扩展字段
 
 #### UserMessageContent 内容类型支持
@@ -82,7 +81,7 @@ ext | any | N | 扩展字段
 几种类型都继承自`ChatBaseContent`，包含通用字段：
 字段 | 类型 | 必传 | 默认值 | 说明
 --|--|--|--|--
-type | `ChatContentType` | Y | - | 内容类型标识（text/markdown/thinking等）
+type | `ChatContentType` | Y | - | 内容类型标识（text/markdown/thinking/attachment等）
 data | 泛型TData | Y | - | 具体内容数据，类型由type决定
 
 ### ChatMessage Events
@@ -105,7 +104,7 @@ default | 默认插槽，用于自定义消息内容
 
 组件提供了下列 CSS 变量，可用于自定义样式。
 
-名称 | 默认值 | 描述
+名称 | 默认值 | 描述 
 -- | -- | --
 --t-chat-message-avatar-size | 64rpx | 头像尺寸
 --t-chat-message-avatar-radius | 50% | 头像圆角
@@ -180,7 +179,7 @@ t-class-actions | 操作栏样式类
 
 ## 注意事项
 
-1. **组件依赖**：该组件依赖 `tdesign-miniprogram` 包
+1. **组件依赖**：该组件依赖 `@tencent/tdesign-miniprogram-chat` 包
 2. **样式隔离**：组件使用 `styleIsolation: 'shared'` 模式
 3. **插槽支持**：支持多个插槽，可以灵活自定义内容
 4. **响应式更新**：支持通过 `observers` 监听属性变化自动更新UI

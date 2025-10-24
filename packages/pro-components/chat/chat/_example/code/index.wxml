@@ -1,8 +1,8 @@
-<view>
-  <t-chat class="chat-box">
+<view class="chat-box" style="height: {{contentHeight}};">
+  <t-chat>
     <block wx:for="{{chatList}}" wx:key="index" wx:for-index="chatIndex">
-      <t-chat-message avatar="{{item.avatar}}" name="{{item.name}}" datetime="{{item.datetime}}"
-        role="{{item.message.role}}">
+      <t-chat-message avatar="{{item.avatar || ''}}" name="{{item.name || ''}}" datetime="{{item.datetime || ''}}"
+        role="{{item.message.role}}" placement="{{item.message.role === 'user' ? 'right' : 'left'}}">
         <view slot="content">
           <block wx:for="{{item.message.content}}" wx:for-item="contentItem" wx:for-index="contentIndex"
             wx:key="contentIndex">
@@ -17,12 +17,15 @@
             </view>
           </block>
         </view>
-        <t-chat-actionbar slot="actionbar" placement="end" actionBar="{{customActionBar}}" />
+        <t-chat-actionbar
+          wx:if="{{chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'}}"
+          slot="actionbar" placement="end" bind:handleAction="handleAction" />
       </t-chat-message>
     </block>
     <view slot="footer">
       <t-chat-sender value="{{value}}" loading="{{loading}}" disabled="{{disabled}}" bind:send="onSend"
-        bind:stop="onStop" bind:focus="onFocus" />
+        bind:stop="onStop" bind:focus="onFocus" autoRiseWithKeyboard="{{true}}" />
     </view>
   </t-chat>
 </view>
+<t-toast id="t-toast" />

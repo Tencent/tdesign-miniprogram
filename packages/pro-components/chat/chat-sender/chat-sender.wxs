@@ -1,4 +1,4 @@
-var utils = require('../../../components/common/utils.wxs');
+var utils = require('../common/utils.wxs');
 
 function textareaStyle(autosize) {
   if (autosize && autosize.constructor === 'Object') {
@@ -12,4 +12,5 @@ function textareaStyle(autosize) {
 
 module.exports = {
   textareaStyle: textareaStyle,
+  _style: utils._style
 };

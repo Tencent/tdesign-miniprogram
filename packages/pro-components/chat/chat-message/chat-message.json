@@ -1,8 +1,9 @@
 {
   "usingComponents": {
-    "chat-content": "../chat-content/chat-content",
-    "chat-thinking": "../chat-thinking/chat-thinking",
-    "chat-loading": "../chat-loading/chat-loading"
+    "chat-content": "@tencent/tdesign-miniprogram-chat/chat-content/chat-content",
+    "chat-thinking": "@tencent/tdesign-miniprogram-chat/chat-thinking/chat-thinking",
+    "chat-loading": "@tencent/tdesign-miniprogram-chat/chat-loading/chat-loading",
+    "attachments": "@tencent/tdesign-miniprogram-chat/attachments/attachments"
   },
   "component": true
 }

@@ -1,5 +1,5 @@
 {
-  "component": true,
-  "styleIsolation": "shared",
-  "usingComponents": {}
+  "usingComponents": {
+    "ec-canvas": "../ec-canvas/ec-canvas"
+  }
 }

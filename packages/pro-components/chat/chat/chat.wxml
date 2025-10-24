@@ -1,19 +1,24 @@
-<view class="{{[classes]}}">
+<wxs src="../common/utils.wxs" module="_" />
+<view class="class {{[classes]}} {{COMPONENT_NAME}}" style="{{_._style([style, customStyle])}}">
   <scroll-view class="{{[listClasses]}}" scroll-y="{{true}}" enable-flex="{{true}}" enhanced="{{true}}"
-    scroll-with-animation="{{true}}" scroll-top="{{scrollViewTop}}" data-ref="chatListRef"
-    data-event-opts="{{[['scroll',[['onScroll',['$event']]]]]}}" bindscroll="handleScroll">
+    scroll-with-animation="{{true}}" scroll-top="{{scrollViewTop}}" data-ref="chatListRef" bindscroll="onScroll"
+    bindscrolltoupper="handlerScrollToUpper" bindscrolltolower="handlerScrollToLower">
     <block wx:if="{{reverse}}">
       <view class="place-holder"></view>
     </block>
     <!-- /**
-       * 1. 两种方式获取要渲染的 list
-       *  a. props 传 data
-       *  b. slots t-chat-message
-       * a 优先级更高
-       */ -->
+        * 1. 两种方式获取要渲染的 list
+        *  a. props 传 data
+        *  b. slots t-chat-message
+        * a 优先级更高
+        */ -->
     <block wx:if="{{data.length > 0}}">
-      <chat-message wx:for="{{data}}" wx:key="index" avatar="{{item.avatar}}" name="{{item.name}}"
-        datetime="{{item.datetime}}" message="{{item.message}}" />
+      <block wx:for="{{data}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+        <chat-message wx:if="{{virtualList ? index >= startIndex && index <= endIndex : true}}"
+          avatar="{{item.avatar || ''}}" name="{{item.name || ''}}" datetime="{{item.datetime || ''}}"
+          content="{{item.content}}" role="{{item.role}}"
+          placement="{{ layout === 'both' ? (item.role === 'user' ? 'right' : 'left') : 'left' }}" />
+      </block>
     </block>
     <block wx:else>
       <slot></slot>
