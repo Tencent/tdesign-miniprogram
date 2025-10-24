@@ -9,7 +9,7 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 auto-start | Boolean | true | \- | N
-content | String / Slot | 'default' | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+content | String | 'default' | \- | N
 format | String | HH:mm:ss | \- | N
 millisecond | Boolean | false | \- | N
 size | String | 'medium' | `0.5.1`。options: small/medium/large | N
@@ -23,6 +23,13 @@ name | params | description
 -- | -- | --
 change | `(time: TimeData)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/count-down/type.ts)。<br/>`interface TimeData {  days: number; hours: number; minutes: number; seconds: number; milliseconds: number }`<br/>
 finish | \- | \-
+
+### CountDown Slots
+
+name | Description
+-- | --
+\- | \-
+content | \-
 
 ### CountDown External Classes
 

@@ -9,7 +9,7 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 add-btn | Boolean | true | \- | N
-add-content | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+add-content | String | - | \- | N
 allow-upload-duplicate-file | Boolean | false | `暂不支持`。allow to upload duplicate name files | N
 config | Object | - | Typescript：`UploadMpConfig` `type UploadMpConfig = ImageConfig \| VideoConfig` `interface ImageConfig { count?: number; sizeType?: Array<SizeTypeValues>; sourceType?: Array<SourceTypeValues> }` `type SizeTypeValues = 'original' \| 'compressed'` `type SourceTypeValues = 'album' \| 'camera'` `interface VideoConfig { sourceType?: Array<SourceTypeValues>; compressed?: boolean; maxDuration?: number; camera?: 'back' \| 'front' }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/upload/type.ts) | N
 disabled | Boolean | undefined | make upload to be disabled | N
@@ -40,6 +40,12 @@ fail | \- | \-
 remove | `(index: number; file: UploadFile)` | \-
 select-change | `(files: MediaContext[]; currentSelectedFiles: MediaContext[])` | \-
 success | `(files: MediaContext)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/upload/type.ts)。<br/>`type MediaContext = VideoContext[] \| ImageContext[]`<br/><br/>`interface VideoContext { name?: string; type?: string; url?: string; duration?: number; size?: number; width?: number; height?: number; thumb: string; progress: number }`<br/><br/>`interface ImageContext { name: string; type: string; url: string;  size: number; width: number; height: number; progress: number  }`<br/>
+
+### Upload Slots
+
+name | Description
+-- | --
+add-content | \-
 
 ### CSS Variables
 

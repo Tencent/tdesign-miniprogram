@@ -68,6 +68,12 @@ z-index | Number | 11600 | 菜单栏 z-index 层级 | N
 close | \- | 菜单关闭时触发
 open | \- | 菜单展开时触发
 
+### DropdownMenu Slots
+
+名称 | 描述
+-- | --
+\- | 默认插槽，自定义内容区域内容
+
 ### DropdownMenu External Classes
 
 类名 | 描述
@@ -85,7 +91,7 @@ t-class-label | 标签样式类
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 disabled | Boolean | false | 是否禁用操作项 | N
-footer | Slot | - | 底部。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+
 keys | Object | - | 用来定义 value / label / disabled 在 `options` 中对应的字段别名。TS 类型：`KeysType`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 label | String | - | 标题 | N
 multiple | Boolean | false | 是否多选 | N
@@ -104,6 +110,13 @@ change | `(value: DropdownValue)` | 值改变时触发
 close | \- | 关闭时触发
 confirm | `(value: DropdownValue)` | 点击确认时触发
 reset | \- | 点击重置时触发
+
+### DropdownItem Slots
+
+名称 | 描述
+-- | --
+\- | 默认插槽，自定义内容区域内容
+footer | 底部
 
 ### DropdownItem External Classes
 

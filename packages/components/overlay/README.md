@@ -57,6 +57,12 @@ z-index | Number | 11000 | 遮罩层级 | N
 -- | -- | --
 click | `({ visible: boolean })` | 点击遮罩时触发
 
+### Overlay Slots
+
+名称 | 描述
+-- | --
+\- | 默认插槽，自定义内容区域内容
+
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。

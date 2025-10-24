@@ -20,13 +20,6 @@ using-custom-navbar | Boolean | false | \- | N
 visible | Boolean | false | \- | N
 z-index | Number | 11500 | \- | N
 
-### Drawer Slots
-
-name | Description
--- | --
-footer | `0.29.0`
-title | `0.29.0`
-
 ### Drawer Events
 
 name | params | description
@@ -34,6 +27,14 @@ name | params | description
 close | `(trigger: DrawerTriggerSource)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/drawer/type.ts)。<br/>`type DrawerTriggerSource = 'overlay'`<br/>
 item-click | `(index: number; item: DrawerItem)` | \-
 overlay-click | \- | \-
+
+### Drawer Slots
+
+name | Description
+-- | --
+\- | \-
+footer | `0.29.0`
+title | `0.29.0`
 
 ### CSS Variables
 

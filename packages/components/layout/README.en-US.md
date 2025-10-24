@@ -10,6 +10,12 @@ style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 gutter | String / Number | - | \- | N
 
+### Row Slots
+
+name | Description
+-- | --
+\- | \-
+
 
 ### Col Props
 
@@ -19,3 +25,9 @@ style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 offset | String / Number | - | \- | N
 span | String / Number | - | \- | N
+
+### Col Slots
+
+name | Description
+-- | --
+\- | \-

@@ -63,13 +63,6 @@ using-custom-navbar | Boolean | false | 是否使用了自定义导航栏 | N
 visible | Boolean | false | 组件是否可见 | N
 z-index | Number | 11500 | 抽屉层级，样式默认为 11500 | N
 
-### Drawer Slots
-
-名称 | 描述
--- | --
-footer | `0.29.0`。抽屉的底部
-title | `0.29.0`。抽屉的标题
-
 ### Drawer Events
 
 名称 | 参数 | 描述
@@ -77,6 +70,14 @@ title | `0.29.0`。抽屉的标题
 close | `(trigger: DrawerTriggerSource)` | 关闭时触发。。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/drawer/type.ts)。<br/>`type DrawerTriggerSource = 'overlay'`<br/>
 item-click | `(index: number; item: DrawerItem)` | 点击抽屉里的列表项
 overlay-click | \- | 如果蒙层存在，点击蒙层时触发
+
+### Drawer Slots
+
+名称 | 描述
+-- | --
+\- | 自定义抽屉的底部
+footer | `0.29.0`。抽屉的底部
+title | `0.29.0`。自定义 `title` 显示内容
 
 ### CSS Variables
 

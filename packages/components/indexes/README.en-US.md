@@ -22,6 +22,12 @@ name | params | description
 change | `(index: string \| number)` | `0.34.0`
 select | `(index: string \| number)` | \-
 
+### Indexes Slots
+
+name | Description
+-- | --
+\- | \-
+
 
 ### IndexesAnchor Props
 
@@ -30,6 +36,12 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 index | String / Number | - | \- | N
+
+### IndexesAnchor Slots
+
+name | Description
+-- | --
+\- | \-
 
 ### IndexesAnchor External Classes
 

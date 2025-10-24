@@ -13,12 +13,12 @@ borderless | Boolean | undefined | \- | N
 check-all | Boolean | false | \- | N
 checked | Boolean | false | \- | N
 default-checked | Boolean | undefined | uncontrolled property | N
-content | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+content | String | - | \- | N
 content-disabled | Boolean | - | \- | N
 disabled | Boolean | undefined | \- | N
 icon | String / Array | 'circle' | Typescript：`'circle' \| 'line' \| 'rectangle' \| string[]` | N
 indeterminate | Boolean | false | \- | N
-label | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+label | String | - | \- | N
 max-content-row | Number | 5 | \- | N
 max-label-row | Number | 3 | \- | N
 name | String | - | \- | N
@@ -31,6 +31,14 @@ value | String / Number / Boolean | - | value of checkbox。Typescript：`string
 name | params | description
 -- | -- | --
 change | `(checked: boolean, context: { value: boolean\|number\|string, label: boolean\|number\|string })` | \-
+
+### Checkbox Slots
+
+name | Description
+-- | --
+\- | \-
+content | \-
+label | \-
 
 ### Checkbox External Classes
 
@@ -64,6 +72,12 @@ default-value | Array | undefined | uncontrolled property。Typescript：`T` `ty
 name | params | description
 -- | -- | --
 change | `(value: CheckboxGroupValue, context: { value: boolean\|number\|string, label: boolean\|number\|string })` | \-
+
+### CheckboxGroup Slots
+
+name | Description
+-- | --
+\- | \-
 
 ### CSS Variables
 
