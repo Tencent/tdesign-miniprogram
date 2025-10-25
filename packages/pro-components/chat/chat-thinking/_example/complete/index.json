@@ -1,6 +1,6 @@
 {
   "usingComponents": {
-    "t-chat-thinking": "@tencent/tdesign-miniprogram-chat/chat-thinking/chat-thinking",
+    "t-chat-thinking": "tdesign-miniprogram/chat-thinking/chat-thinking",
     "t-radio": "tdesign-miniprogram/radio/radio",
     "t-radio-group": "tdesign-miniprogram/radio-group/radio-group"
   }

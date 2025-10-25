@@ -11,7 +11,7 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-chat-message": "@tencent/tdesign-miniprogram-chat/chat-message/chat-message"
+  "t-chat-message": "tdesign-miniprogram/chat-message/chat-message"
 }
 ```
 
@@ -179,7 +179,7 @@ t-class-actions | 操作栏样式类
 
 ## 注意事项
 
-1. **组件依赖**：该组件依赖 `@tencent/tdesign-miniprogram-chat` 包
+1. **组件依赖**：该组件依赖 `tdesign-miniprogram` 包
 2. **样式隔离**：组件使用 `styleIsolation: 'shared'` 模式
 3. **插槽支持**：支持多个插槽，可以灵活自定义内容
 4. **响应式更新**：支持通过 `observers` 监听属性变化自动更新UI

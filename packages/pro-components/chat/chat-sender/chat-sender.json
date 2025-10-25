@@ -1,7 +1,7 @@
 {
   "usingComponents": {
     "t-icon": "tdesign-miniprogram/icon/icon",
-    "attachments": "@tencent/tdesign-miniprogram-chat/attachments/attachments"
+    "attachments": "tdesign-miniprogram/attachments/attachments"
   },
   "component": true
 }
