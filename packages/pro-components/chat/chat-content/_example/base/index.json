@@ -1,6 +1,6 @@
 {
   "component": true,
   "usingComponents": {
-    "t-chat-content": "@tencent/tdesign-miniprogram-chat/chat-content/chat-content"
+    "t-chat-content": "tdesign-miniprogram/chat-content/chat-content"
   }
 }

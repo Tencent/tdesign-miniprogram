@@ -12,7 +12,7 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-chat-loading": "@tencent/tdesign-miniprogram-chat/chat-loading/chat-loading"
+  "t-chat-loading": "tdesign-miniprogram/chat-loading/chat-loading"
 }
 ```
 

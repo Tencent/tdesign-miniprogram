@@ -11,7 +11,7 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-chat-markdown": "@tencent/tdesign-miniprogram-chat/chat-markdown/chat-markdown"
+  "t-chat-markdown": "tdesign-miniprogram/chat-markdown/chat-markdown"
 }
 ```
 
