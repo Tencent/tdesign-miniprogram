@@ -98,54 +98,86 @@
     "pages/chat-actionbar/chat-actionbar",
     "pages/chat-loading/chat-loading",
     "pages/chat-thinking/chat-thinking",
-    "pages/chat-attachments/chat-attachments",
+    "pages/attachments/attachments",
     "pages/chat-markdown/chat-markdown",
     "pages/chat-sender/chat-sender"
   ],
   "subpackages": [
     {
       "root": "pages/side-bar/",
-      "pages": ["side-bar", "base/index", "switch/index", "custom/index", "with-icon/index"]
+      "pages": [
+        "side-bar",
+        "base/index",
+        "switch/index",
+        "custom/index",
+        "with-icon/index"
+      ]
     },
     {
       "root": "pages/action-sheet/",
-      "pages": ["action-sheet"]
+      "pages": [
+        "action-sheet"
+      ]
     },
     {
       "root": "pages/avatar/",
-      "pages": ["avatar", "skyline/avatar"]
+      "pages": [
+        "avatar",
+        "skyline/avatar"
+      ]
     },
     {
       "root": "pages/calendar/",
-      "pages": ["calendar"]
+      "pages": [
+        "calendar"
+      ]
     },
     {
       "root": "pages/dialog/",
-      "pages": ["dialog", "skyline/dialog"]
+      "pages": [
+        "dialog",
+        "skyline/dialog"
+      ]
     },
     {
       "root": "pages/picker/",
-      "pages": ["picker", "skyline/picker"]
+      "pages": [
+        "picker",
+        "skyline/picker"
+      ]
     },
     {
       "root": "pages/rate/",
-      "pages": ["rate"]
+      "pages": [
+        "rate"
+      ]
     },
     {
       "root": "pages/swiper/",
-      "pages": ["swiper", "skyline/swiper"]
+      "pages": [
+        "swiper",
+        "skyline/swiper"
+      ]
     },
     {
       "root": "pages/swipe-cell/",
-      "pages": ["swipe-cell"]
+      "pages": [
+        "swipe-cell"
+      ]
     },
     {
       "root": "pages/tree-select/",
-      "pages": ["tree-select"]
+      "pages": [
+        "tree-select"
+      ]
     },
     {
       "root": "pages/indexes/",
-      "pages": ["indexes", "base/index", "custom/index"]
+      "pages": [
+        "indexes",
+        "base/index",
+        "custom/index"
+      ]
     }
   ],
   "themeLocation": "theme.json",
