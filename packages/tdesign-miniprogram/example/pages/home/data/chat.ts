@@ -23,7 +23,7 @@ const chat = {
       label: '思考过程',
     },
     {
-      name: 'ChatAttachments',
+      name: 'Attachments',
       label: '附件',
     },
     {
