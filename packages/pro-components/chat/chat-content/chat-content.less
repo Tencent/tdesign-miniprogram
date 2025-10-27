@@ -18,7 +18,10 @@
 @chat-content-border-width: 2rpx;
 @chat-message-height-body-large: 48rpx;
 @chat-message-font-body-large: var(--td-font-size-body-large) / @chat-message-height-body-large var(--td-font-family);
-// Chat Content 组件样式
+
+@chat-content-user-text-color: var(--td-chat-content-user-text-color, @text-color-primary);
+@chat-content-assistant-text-color: var(--td-chat-content-assistant-text-color, @text-color-primary);
+
 .@{chat-content-prefix} {
   // 基础文本容器样式
   &__text {
@@ -31,13 +34,13 @@
 
     // 用户文本样式
     &__user {
-      color: @font-gray-2;
+      color: @chat-content-user-text-color;
       // word-break: break-all;
       // word-wrap: break-word;
       // overflow-wrap: break-word;
 
+      // TODO: _pre 层是否可移除？
       ._pre {
-        color: @font-gray-2;
         margin: 0;
         white-space: pre-wrap;
         // word-break: break-all;
@@ -48,7 +51,7 @@
 
     // 助手文本样式
     &__assistant {
-      color: @font-gray-1;
+      color: @chat-content-assistant-text-color;
       // word-break: break-all;
       // word-wrap: break-word;
       // overflow-wrap: break-word;

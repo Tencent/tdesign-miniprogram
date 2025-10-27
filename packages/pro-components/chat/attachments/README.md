@@ -41,6 +41,8 @@ items | Array | [] | 文件列表数据，每个元素需包含fileType/name/url
 removable | Boolean | true | 是否显示删除按钮 | N
 imageViewer | Boolean | true | 是否启用图片预览功能 | N
 addable | Boolean | true | 是否显示添加按钮 | N
+imageProps | Object | { mode: 'scaleToFill', width: 52, height: 52 } | 图片组件的属性配置，包含mode（图片裁剪模式）、width（宽度）、height（高度） | N
+
 
 
 ### FileItem 类型定义

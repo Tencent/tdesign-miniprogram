@@ -1,6 +1,6 @@
 .demo-attachments-container {
   padding: 56rpx 0 0 0;
-  background-color: #ffffff;
+  background-color: var(--td-bg-color-container);
   height: 608rpx;
   position: relative;
   transition: all 0.3s;
@@ -10,7 +10,7 @@
   height: 780rpx;
 }
 
-.demo-attachments-footer{
+.demo-attachments-footer {
   height: 32rpx;
   width: 100%;
   text-align: center;
@@ -28,39 +28,38 @@
   overflow: hidden;
 }
 
-.demo-footer-prefix{
+.demo-footer-prefix {
   display: flex;
   align-items: center;
 }
 
-.deep-think-block{
+.deep-think-block {
   padding: 0 24rpx;
   height: 60rpx;
-  border-radius: 200rpx;
-  border: 2rpx solid rgba(220, 220, 220, 1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: rgba(0, 0, 0, 0.9);
   margin-right: 16rpx;
 }
 
-.deep-think-text{
+.deep-think-text {
   margin-left: 8rpx;
 }
 
-.net-search-block{
-  width: 64rpx;
-  height: 60rpx;
-  border: 2rpx solid rgba(220, 220, 220, 1);
+.deep-think-block,
+.net-search-block {
+  color: var(--td-text-color-primary);
   border-radius: 200rpx;
+  border: 2rpx solid var(--td-component-border);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.active{
+.net-search-block {
+  width: 64rpx;
+  height: 60rpx;
+}
+
+.active {
   border-color: rgba(217, 225, 255, 1);
-  color: rgba(0, 82, 217, 1);
+  color: var(--td-brand-color);
   background-color: rgba(242, 243, 255, 1);
 }

@@ -187,10 +187,12 @@ Component({
     },
     handleAction(e) {
       const { name, active, data } = e.detail;
-      console.log(e);
 
       let message = '';
       switch (name) {
+        case 'refresh':
+          message = '已刷新';
+          break;
         case 'copy':
           console.log(data);
           message = '复制成功';

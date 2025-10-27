@@ -1,14 +1,24 @@
 <wxs src="./chat-sender.wxs" module="_this" />
 
-<view class="class {{COMPONENT_NAME}}" bindtap="handleOutsideClick"
-  style="{{_this._style([style, customStyle, inputStyle])}}">
-  <view class="{{COMPONENT_NAME + '__header'}}"
-    style="{{(attachmentsProps.items && attachmentsProps.items.length > 0)?'margin-top:-8rpx;':''}}">
+<view
+  class="class {{COMPONENT_NAME}}"
+  bindtap="handleOutsideClick"
+  style="{{_this._style([style, customStyle, inputStyle])}}"
+>
+  <view
+    class="{{COMPONENT_NAME + '__header'}}"
+    style="{{(attachmentsProps.items && attachmentsProps.items.length > 0)?'margin-top:-8rpx;':''}}"
+  >
     <block wx:if="{{attachmentsProps.items && attachmentsProps.items.length > 0}}">
       <view class="{{COMPONENT_NAME + '__attachments'}}">
-        <attachments items="{{attachmentsProps.items}}" removable="{{attachmentsProps.removable}}"
-          imageViewer="{{attachmentsProps.imageViewer}}" bind:fileClick="handleFileClick" bind:remove="handleFileRemove"
-          bind:add="handleFileAdd">
+        <attachments
+          items="{{attachmentsProps.items}}"
+          removable="{{attachmentsProps.removable}}"
+          imageViewer="{{attachmentsProps.imageViewer}}"
+          bind:fileClick="handleFileClick"
+          bind:remove="handleFileRemove"
+          bind:add="handleFileAdd"
+        >
         </attachments>
       </view>
     </block>
@@ -20,12 +30,26 @@
   <view class="{{COMPONENT_NAME + '__textarea'}} {{focusFlag ? COMPONENT_NAME + '__textarea--focus' : ''}}">
     <view class="textarea-hook">
       <slot name="input-prefix"></slot>
-      <textarea class="ipt" style="{{_this.textareaStyle(textareaProps.autosize)}}" disabled="{{disabled}}"
-        auto-height="{{!!textareaProps.autosize}}" confirm-type="send" adjust-position="{{adjustPosition}}"
-        disable-default-padding="{{false}}" cursor-spacing="30" maxlength="-1" value="{{value}}" bindchange="textChange"
-        bindfocus="focusFn" bindblur="blurFn" bindtap="handlerClick" bindinput="textChange"
-        bindkeyboardheightchange="onkeyboardheightchange" bindconfirm="handleSendClick">
-        </textarea>
+      <textarea
+        class="ipt"
+        style="{{_this.textareaStyle(textareaProps.autosize)}}"
+        disabled="{{disabled}}"
+        auto-height="{{!!textareaProps.autosize}}"
+        confirm-type="send"
+        adjust-position="{{adjustPosition}}"
+        disable-default-padding="{{false}}"
+        cursor-spacing="30"
+        maxlength="-1"
+        value="{{value}}"
+        bindchange="textChange"
+        bindfocus="focusFn"
+        bindblur="blurFn"
+        bindtap="handlerClick"
+        bindinput="textChange"
+        bindkeyboardheightchange="onkeyboardheightchange"
+        bindconfirm="handleSendClick"
+      >
+      </textarea>
       <view class="placeholder {{focusFlag || value ? 'hide' : ''}}">{{placeholder}}</view>
     </view>
 
@@ -43,8 +67,12 @@
                   <block wx:if="{{item.name === 'upload'}}">
                     <view class="plus-btn {{item.status === 'disabled' ? 'disabled' : ''}}">
                       <block wx:if="{{item.type === 'bottom'}}">
-                        <view class="btn-func" catchtap="handleUploadClick" data-type="{{item.type}}"
-                          data-status="{{item.status}}">
+                        <view
+                          class="btn-func"
+                          catchtap="handleUploadClick"
+                          data-type="{{item.type}}"
+                          data-status="{{item.status}}"
+                        >
                           <t-icon wx:if="{{!visible}}" name="add" size="40rpx" />
                           <t-icon wx:else name="close" size="40rpx" />
                         </view>
@@ -54,17 +82,20 @@
 
                   <block wx:if="{{item.name === 'send'}}">
                     <block wx:if="{{item.type === 'text'}}">
-                      <view class="send-btn-{{item.type}} {{value || loading ? '' : 'disabled'}}"
-                        bindtap="handleSendClick">
+                      <view
+                        class="send-btn-{{item.type}} {{value || loading ? '' : 'disabled'}}"
+                        bindtap="handleSendClick"
+                      >
                         {{loading ? '停止' : '发送'}}
                       </view>
                     </block>
                     <block wx:else>
                       <view
                         class="send-btn-icon send-btn-{{item.type}} {{value || loading ? '' : 'disabled'}} {{loading ? 'stop' : ''}}"
-                        bindtap="handleSendClick">
+                        bindtap="handleSendClick"
+                      >
                         <block wx:if="{{!loading}}">
-                          <t-icon name="send-filled" size="32rpx" color="#ffffff" />
+                          <t-icon name="send-filled" size="{{20}}" color="#ffffff" />
                         </block>
                         <block wx:else>
                           <view style="width: 24rpx; height: 24rpx; background-color: #ffffff" />
@@ -84,8 +115,11 @@
     </view>
   </view>
 </view>
-<view wx:if="{{visible && uploadPlacement === 'bottom'}}" class="{{COMPONENT_NAME + '__footer__upload'}}"
-  catchtap="handleUploadClick">
+<view
+  wx:if="{{visible && uploadPlacement === 'bottom'}}"
+  class="{{COMPONENT_NAME + '__footer__upload'}}"
+  catchtap="handleUploadClick"
+>
   <block wx:for="{{uploadNames}}" wx:for-item="name" wx:for-index="index" wx:key="index">
     <view class="{{COMPONENT_NAME + '__footer__upload__item'}}" bindtap="handleUploadEntryClick" data-name="{{name}}">
       <view class="{{COMPONENT_NAME + '__footer__upload__item__icon'}}">

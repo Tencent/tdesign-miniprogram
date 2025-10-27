@@ -55,8 +55,13 @@ export const docs = [
         titleEn: 'ChatContent',
         name: 'ChatContent',
         meta: { docType: 'base' },
+<<<<<<< HEAD
         path: '/miniprogram-chat/components/chat-sender',
         component: () => import('@/chat/chat-sender/README.md'),
+=======
+        path: '/miniprogram-chat/components/chat-content',
+        component: () => import('@/chat/chat-content/README.md'),
+>>>>>>> 3c509c4f054cef0ff75e0bdb675fad6fbf13d2c2
         // componentEn: () => import('@/chat/chat-content/README.en-US.md'),
       },
       {
@@ -64,9 +69,15 @@ export const docs = [
         titleEn: 'ChatSender',
         name: 'ChatSender',
         meta: { docType: 'base' },
+<<<<<<< HEAD
         path: '/miniprogram-chat/components/chat-content',
         component: () => import('@/chat/chat-content/README.md'),
         // componentEn: () => import('@/chat/chat-content/README.en-US.md'),
+=======
+        path: '/miniprogram-chat/components/chat-sender',
+        component: () => import('@/chat/chat-sender/README.md'),
+        // componentEn: () => import('@/chat/chat-sender/README.en-US.md'),
+>>>>>>> 3c509c4f054cef0ff75e0bdb675fad6fbf13d2c2
       },
       {
         title: 'Markdown 对话 ',

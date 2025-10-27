@@ -429,6 +429,60 @@
           "name": "guide",
           "pathName": "pages/guide/guide",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "chat",
+          "pathName": "pages/chat/chat",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "chat-message",
+          "pathName": "pages/chat-message/chat-message",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "chat-content",
+          "pathName": "pages/chat-content/chat-content",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "chat-actionbar",
+          "pathName": "pages/chat-actionbar/chat-actionbar",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "chat-loading",
+          "pathName": "pages/chat-loading/chat-loading",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "chat-thinking",
+          "pathName": "pages/chat-thinking/chat-thinking",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "attachments",
+          "pathName": "pages/attachments/attachments",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "chat-markdown",
+          "pathName": "pages/chat-markdown/chat-markdown",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "chat-sender",
+          "pathName": "pages/chat-sender/chat-sender",
+          "scene": null
         }
       ]
     }
