@@ -21,16 +21,6 @@ const props: TdOverlayProps = {
     type: Boolean,
     value: true,
   },
-  /** 是否使用了自定义导航栏 */
-  usingCustomNavbar: {
-    type: Boolean,
-    value: false,
-  },
-  /** 是否展示 */
-  visible: {
-    type: Boolean,
-    value: false,
-  },
   /** 遮罩层级 */
   zIndex: {
     type: Number,
