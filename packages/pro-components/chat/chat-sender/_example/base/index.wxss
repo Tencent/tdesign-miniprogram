@@ -68,12 +68,6 @@
 .deep-think-block {
   padding: 0 24rpx;
   height: 60rpx;
-  border-radius: 200rpx;
-  border: 2rpx solid var(--td-component-border);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: var(--td-text-color-primary);
   margin-right: 16rpx;
 }
 
@@ -81,14 +75,19 @@
   margin-left: 8rpx;
 }
 
+.deep-think-block,
 .net-search-block {
-  width: 64rpx;
-  height: 60rpx;
-  border: 2rpx solid var(--td-component-border);
+  color: var(--td-text-color-primary);
   border-radius: 200rpx;
+  border: 2rpx solid var(--td-component-border);
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.net-search-block {
+  width: 64rpx;
+  height: 60rpx;
 }
 
 .active {
