@@ -1,6 +1,6 @@
 <t-navbar class="demo-navbar" title="Chat" leftArrow />
 <view class="demo">
-  <t-tabs defaultValue="{{0}}" space-evenly="{{false}}">
+  <t-tabs defaultValue="{{0}}" space-evenly="{{false}}" swipeable="{{false}}">
     <t-tab-panel label="基础使用" value="{{0}}">
       <base />
     </t-tab-panel>

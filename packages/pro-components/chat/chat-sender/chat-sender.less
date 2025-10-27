@@ -7,9 +7,9 @@
 @chat-sender-padding: 22rpx 0;
 @chat-sender-margin: 48rpx 24rpx 80rpx 24rpx;
 @chat-sender-border-width: 2rpx;
-@chat-sender-border-color: #dcdcdc;
-@chat-sender-border-color-focus: #0052d9;
-@chat-sender-bg-color: #ffffff;
+@chat-sender-border-color: @component-border;
+@chat-sender-border-color-focus: @brand-color;
+@chat-sender-bg-color: #20d055;
 @chat-sender-shadow-focus: 0 0 0 2px rgba(0, 82, 217, 0.2);
 @chat-sender-shadow:0px 8px 10px -5px rgba(0, 0, 0, 0.08),
 0px 16px 24px 2px rgba(0, 0, 0, 0.04),
@@ -27,14 +27,14 @@
 @chat-sender-textarea-hook-max-height: 280rpx;
 
 @chat-sender-input-max-height: 264rpx;
-@chat-sender-input-font-size: 32rpx;
+@chat-sender-input-font-size: @font-size-m;
 @chat-sender-input-line-height: 48rpx;
-@chat-sender-input-color: rgba(0, 0, 0, 0.9);
-@chat-sender-input-caret-color: #126dff;
+@chat-sender-input-color: @text-color-primary;
+@chat-sender-input-caret-color: @brand-color;
 @chat-sender-input-font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
 @chat-sender-input-letter-spacing: 5%;
 
-@chat-sender-placeholder-color: rgba(0, 0, 0, 0.26);
+@chat-sender-placeholder-color: @text-color-placeholder;
 @chat-sender-placeholder-transition: opacity 0.25s linear;
 
 @chat-sender-icon-size: 32rpx;
@@ -42,8 +42,8 @@
 @chat-sender-footer-z-index: 2;
 @chat-sender-send-btn-size: 64rpx;
 @chat-sender-send-btn-margin-left: 16rpx;
-@chat-sender-send-btn-bg-color: #0052d9;
-@chat-sender-send-btn-bg-color-disabled: #dcdcdc;
+@chat-sender-send-btn-bg-color: @brand-color;
+@chat-sender-send-btn-bg-color-disabled: @bg-color-secondarycomponent;
 @chat-sender-send-btn-text-color: #126dff;
 @chat-sender-send-btn-text-color-disabled: #c9ccd2;
 @chat-sender-send-btn-transition: all 0.3s ease;
@@ -53,16 +53,16 @@
 @chat-sender-upload-item-margin-right: 24rpx;
 @chat-sender-upload-item-icon-size: 96rpx;
 @chat-sender-upload-item-icon-radius: 12rpx;
-@chat-sender-upload-item-icon-bg: rgb(243, 243, 243);
+@chat-sender-upload-item-icon-bg: @bg-color-secondarycontainer;
 @chat-sender-upload-item-icon-margin-bottom: 16rpx;
 @chat-sender-upload-item-text-font-size: 28rpx;
 @chat-sender-upload-item-text-line-height: 44rpx;
-@chat-sender-upload-item-text-color: rgba(0, 0, 0, 0.9);
+@chat-sender-upload-item-text-color: @text-color-primary;
 
 @chat-sender-file-margin-bottom: 24rpx;
 
 @chat-sender-btn-func-size: 58rpx;
-@chat-sender-btn-func-bg: #ffffff;
+@chat-sender-btn-func-bg: @bg-color-container;
 @chat-sender-btn-func-border: 2rpx solid #dcdcdc;
 @chat-sender-btn-func-disabled-bg: #c9ccd2;
 @chat-sender-btn-func-disabled-opacity: 0.24;
@@ -308,6 +308,7 @@
 
         &.disabled {
           background-color: @chat-sender-send-btn-bg-color-disabled;
+          color: @bg-color-container;
         }
 
         &.stop {
@@ -349,6 +350,8 @@
     justify-content: center;
     align-items: center;
 
+
+    // TODO: 未在视图层找到对应节点，是否可移除？
     // 菜单样式
     &--menu {
       position: absolute;

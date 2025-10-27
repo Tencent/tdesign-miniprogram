@@ -2,10 +2,7 @@
 
 @chat-attachments-prefix: ~'@{prefix}-attachments';
 
-// Chat Attachments 变量定义
-@chat-attachments-border-radius: 12rpx;
-@chat-attachments-border-radius-large: 24rpx;
-@chat-attachments-background-color: @gray-color-1;
+@chat-attachments-background-color: @bg-color-secondarycontainer;
 @chat-attachments-file-margin: 16rpx;
 @chat-attachments-file-margin-small: 8rpx;
 @chat-attachments-file-margin-tiny: 8rpx;
@@ -15,8 +12,8 @@
 @chat-attachments-file-width: 256rpx;
 @chat-attachments-file-height: 104rpx;
 @chat-attachments-file-icon-size: 64rpx;
-@chat-attachments-title-color: @font-gray-1;
-@chat-attachments-desc-color: @font-gray-3;
+@chat-attachments-title-color: @text-color-primary;
+@chat-attachments-desc-color: @text-color-placeholder;
 @chat-attachments-title-font-size: 28rpx;
 @chat-attachments-desc-font-size: 24rpx;
 @chat-attachments-title-line-height: 44rpx;
@@ -65,7 +62,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    border-radius: @chat-attachments-border-radius-large;
+    border-radius: @radius-extraLarge;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -96,7 +93,7 @@
 
   // 文件项样式
   &__file {
-    border-radius: @chat-attachments-border-radius-large;
+    border-radius: @radius-extraLarge;
     margin-top: @chat-attachments-file-margin-tiny;
     display: block;
     position: relative;
@@ -117,7 +114,7 @@
       .image {
         width: 100%;
         height: 100%;
-        border-radius: @chat-attachments-border-radius-large;
+        border-radius: @radius-extraLarge;
       }
     }
 
@@ -204,7 +201,7 @@
       .image {
         max-width: 400rpx;
         max-height: 400rpx;
-        border-radius: 12rpx;
+        border-radius: @radius-extraLarge;
       }
     }
   }
@@ -221,7 +218,7 @@
       .image {
         max-width: 400rpx;
         max-height: 400rpx;
-        border-radius: 12rpx;
+        border-radius: @radius-extraLarge;
       }
     }
     .@{chat-attachments-prefix}__file-wrap {

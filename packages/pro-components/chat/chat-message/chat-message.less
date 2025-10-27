@@ -12,9 +12,6 @@
 @chat-message-spacer-7: 48rpx;
 @chat-message-spacer-8: 64rpx;
 @chat-message-spacer-9: 80rpx;
-@chat-message-border-radius-small: 6rpx;
-@chat-message-border-radius-medium: 8rpx;
-@chat-message-border-radius-large: 24rpx;
 @chat-message-border-width: 2rpx;
 @chat-message-border-width-small: 1rpx;
 @chat-message-border-width-large: 3rpx;
@@ -26,7 +23,6 @@
 @chat-message-gradient-border-size: 3rpx;
 @chat-message-max-width: 1600rpx;
 @chat-message-height-body-large: 48rpx;
-@chat-message-font-body-large: var(--td-font-size-body-large) / @chat-message-height-body-large var(--td-font-family);
 @chat-content-text-padding: 24rpx 32rpx;
 @chat-base-height: 44rpx;
 @chat-content-padding: @chat-message-spacer-4;
@@ -163,11 +159,13 @@
 
   // 内容容器样式
   &__content {
-    font: @chat-message-font-body-large;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    font-size: @font-size-m;
+    line-height: @chat-message-height-body-large;
+    font-family: @font-family;
     .t-skeleton {
       width: 100%;
       // padding: @spacer-2;
@@ -180,7 +178,9 @@
     justify-content: flex-start;
     align-items: center;
     height: @chat-base-height;
-    font-size: 600 @chat-message-font-body-large;
+    font-size: @font-size-base;
+    line-height: @chat-base-height;
+    font-family: @font-family;
     color: @font-gray-3;
     // padding-left: @spacer-2;
     margin-bottom: @chat-message-spacer-3;
@@ -193,34 +193,44 @@
   }
 
   // 文本变体样式
+  &__text--variant--text {
+    .@{chat-message-prefix}__text {
+      &__user,
+      &__assistant {
+        color: @text-color-secondary;
+      }
+    }
+
+  }
+
   &__text--variant--base {
     .@{chat-message-prefix}__text {
       padding: @chat-content-text-padding;
-      background-color: @gray-color-1;
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
-        @chat-message-border-radius-large;
+      background-color: @bg-color-secondarycontainer;
+      border-radius: 0 @radius-extraLarge @radius-extraLarge
+        @radius-extraLarge;
     }
 
     &.assistant .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
-        @chat-message-border-radius-large;
+      border-radius: 0 @radius-extraLarge @radius-extraLarge
+        @radius-extraLarge;
       background-color: transparent;
       padding: 0;
     }
 
     &.user .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
-        @chat-message-border-radius-large;
+      border-radius: 0 @radius-extraLarge @radius-extraLarge
+        @radius-extraLarge;
     }
 
     &.left .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
-        @chat-message-border-radius-large;
+      border-radius: 0 @radius-extraLarge @radius-extraLarge
+        @radius-extraLarge;
     }
 
     &.right .@{chat-message-prefix}__text {
-      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large
-        @chat-message-border-radius-large;
+      border-radius: @radius-extraLarge 0 @radius-extraLarge
+        @radius-extraLarge;
     }
   }
 
@@ -230,28 +240,28 @@
       border-color: @component-border;
       border-style: solid;
       border-width: @chat-message-border-width-small;
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
-        @chat-message-border-radius-large;
+      border-radius: 0 @radius-extraLarge @radius-extraLarge
+        @radius-extraLarge;
     }
 
     &.assistant .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
-        @chat-message-border-radius-large;
+      border-radius: 0 @radius-extraLarge @radius-extraLarge
+        @radius-extraLarge;
     }
 
     &.user .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
-        @chat-message-border-radius-large;
+      border-radius: 0 @radius-extraLarge @radius-extraLarge
+        @radius-extraLarge;
     }
 
     &.left .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
-        @chat-message-border-radius-large;
+      border-radius: 0 @radius-extraLarge @radius-extraLarge
+        @radius-extraLarge;
     }
 
     &.right .@{chat-message-prefix}__text {
-      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large
-        @chat-message-border-radius-large;
+      border-radius: @radius-extraLarge 0 @radius-extraLarge
+        @radius-extraLarge;
     }
   }
 
@@ -293,25 +303,25 @@
 
   .@{chat-message-prefix}__text--variant--base {
     &.user .@{chat-message-prefix}__text {
-      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large
-        @chat-message-border-radius-large;
+      border-radius: @radius-extraLarge 0 @radius-extraLarge
+        @radius-extraLarge;
     }
 
     &.assistant .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
-        @chat-message-border-radius-large;
+      border-radius: 0 @radius-extraLarge @radius-extraLarge
+        @radius-extraLarge;
     }
   }
 
   .@{chat-message-prefix}__text--variant--outline {
     &.user .@{chat-message-prefix}__text {
-      border-radius: @chat-message-border-radius-large 0 @chat-message-border-radius-large
-        @chat-message-border-radius-large;
+      border-radius: @radius-extraLarge 0 @radius-extraLarge
+        @radius-extraLarge;
     }
 
     &.assistant .@{chat-message-prefix}__text {
-      border-radius: 0 @chat-message-border-radius-large @chat-message-border-radius-large
-        @chat-message-border-radius-large;
+      border-radius: 0 @radius-extraLarge @radius-extraLarge
+        @radius-extraLarge;
     }
   }
 }
