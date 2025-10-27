@@ -23,8 +23,7 @@
         <block wx:if="{{content.length > 0}}">
           <block wx:for="{{content}}" wx:key="index">
             <attachments wx:if="{{item.type === 'attachment' && role === 'user'}}" items="{{item.data}}"
-              removable="{{false}}" inChat="{{true}}"
-              imageProps="{{chatContentProps && chatContentProps.attachment && chatContentProps.attachment.imageProps}}">
+              removable="{{false}}" inChat="{{true}}">
             </attachments>
             <chat-thinking wx:if="{{item.type === 'thinking'}}" content="{{item.data}}" role="{{role}}"></chat-thinking>
             <chat-content wx:elif="{{item.type === 'text' || item.type === 'markdown'}}" content="{{item}}"

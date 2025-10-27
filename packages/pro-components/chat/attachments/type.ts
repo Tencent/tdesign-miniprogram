@@ -72,15 +72,4 @@ export interface TdChatAttachmentsProps {
     type: BooleanConstructor;
     value?: boolean;
   };
-  /**
-   * 图片模式
-   */
-  imageProps?: {
-    type: StringConstructor;
-    value?: {
-      mode: 'aspectFill' | 'scaleToFill' | 'widthFix' | 'heightFix';
-      width: number;
-      height: number;
-    };
-  };
 }

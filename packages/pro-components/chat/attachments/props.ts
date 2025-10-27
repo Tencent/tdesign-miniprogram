@@ -25,16 +25,7 @@ const props: TdChatAttachmentsProps = {
   addable: {
     type: Boolean,
     value: true,
-  },
-  /** 图片模式 */
-  imageProps: {
-    type: String,
-    value: {
-      mode: 'scaleToFill',
-      width: 52,
-      height: 52,
-    },
-  },
+  }
 };
 
 export default props;

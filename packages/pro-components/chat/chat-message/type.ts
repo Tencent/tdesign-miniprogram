@@ -26,13 +26,9 @@ export type TdChatContentThinkProps = {
   collapsed?: boolean;
   layout?: 'block' | 'border';
 };
-export type TdChatContentAttachmentProps = {
-  imageProps?: TdChatAttachmentsProps['imageProps'];
-};
 
 export type TdChatContentProps = {
   thinking?: TdChatContentThinkProps;
-  attachment?: TdChatContentAttachmentProps;
 } & Partial<Record<Exclude<ChatContentType, 'attachment' | 'thinking'>, any>>;
 
 export interface TdChatMessageProps {

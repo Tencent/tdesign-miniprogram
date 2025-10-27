@@ -16,8 +16,8 @@
                 </view>
               </block>
               <block wx:else>
-                <image class="image" src="{{item.url}}" mode="{{_this.getImageMode(imageProps)}}" lazy-load="false"
-                  style="{{_this.imageStyle(imageProps)}}"></image>
+                <image class="image" src="{{item.url}}" mode="{{ _this.getImageMode(item)}}" lazy-load="false"
+                  style="{{inChat ? _this.imageStyle(item) : ''}}"></image>
               </block>
               <block wx:if="{{removable}}">
                 <t-icon catchtap="onRemoveTap" data-index="{{index}}" class="cancel" name="close-circle-filled"

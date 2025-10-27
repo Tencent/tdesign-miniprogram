@@ -64,12 +64,7 @@ Component({
     fileList: [],
     visible: false, // 是否显示选择文件面板
     chatContentProps: {
-      attachment: {
-        imageProps: {
-          width: 1920, // 图片实际宽度
-          height: 1080, // 图片实际高度
-        },
-      },
+      thinking: { maxHeight: 100, collapsed: true },
     },
     contentHeight: '100vh', // 内容高度
   },

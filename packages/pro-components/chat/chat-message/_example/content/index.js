@@ -27,6 +27,8 @@ Component({
               name: 'avatar.jpg',
               size: 234234,
               url: 'https://tdesign.gtimg.com/demo/demo-image-1.png',
+              width: 1920, // 图片实际宽度
+              height: 1080, // 图片实际高度
             },
           ],
         },
@@ -47,6 +49,8 @@ Component({
               name: 'avatar.jpg',
               size: 234234,
               url: 'https://tdesign.gtimg.com/demo/demo-image-1.png',
+              width: 1920, // 图片实际宽度
+              height: 1080, // 图片实际高度
             },
           ],
         },
@@ -67,12 +71,16 @@ Component({
               name: 'avatar.jpg',
               size: 234234,
               url: 'https://tdesign.gtimg.com/demo/demo-image-1.png',
+              width: 1920, // 为了更好的适配不同尺寸图片建议传入宽高，不传也有兜底尺寸
+              height: 1080, // 为了更好的适配不同尺寸图片建议传入宽高，不传也有兜底尺寸
             },
             {
               fileType: 'image',
               name: 'avatar2.jpg',
               size: 234234,
               url: 'https://tdesign.gtimg.com/demo/demo-image-1.png',
+              width: 1920, // 图片实际宽度
+              height: 1080, // 图片实际高度
             },
           ],
         },
@@ -94,6 +102,8 @@ Component({
               url: 'https://tdesign.gtimg.com/demo/demo-image-1.png',
               size: 1024,
               status: 'success',
+               width: 1920, // 图片实际宽度
+              height: 1080, // 图片实际高度
             },
             {
               fileType: 'pdf',
@@ -137,14 +147,6 @@ Component({
           data: '不，牛顿第一定律并不适用于所有参考系。它只适用于惯性参考系。',
         },
       ],
-    },
-    chatContentProps: {
-      attachment: {
-        imageProps: {
-          width: 1920, // 图片实际宽度
-          height: 1080, // 图片实际高度
-        },
-      },
     },
   },
 });
