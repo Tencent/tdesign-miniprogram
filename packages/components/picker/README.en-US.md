@@ -11,7 +11,6 @@ custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on v
 auto-close | Boolean | true | \- | N
 cancel-btn | String / Boolean | true | Typescript：`boolean \| string` | N
 confirm-btn | String / Boolean | true | Typescript：`boolean \| string` | N
-
 header | Boolean | true | \- | N
 item-height | Number | 80 | \- | N
 keys | Object | - | Typescript：`KeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N

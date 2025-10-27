@@ -48,7 +48,6 @@ isComponent: true
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
-
 description | String | - | 描述文字 | N
 icon | String / Object | - | 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon` | N
 image | String | - | 图片地址 | N

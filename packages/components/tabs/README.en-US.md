@@ -10,7 +10,6 @@ style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 animation | Object | - | Typescript：`TabAnimation` `type TabAnimation = { duration: number } & Record<string, any>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/tabs/type.ts) | N
 bottom-line-mode | String | fixed | options: fixed/auto/full | N
-
 show-bottom-line | Boolean | true | \- | N
 space-evenly | Boolean | true | \- | N
 split | Boolean | true | \- | N

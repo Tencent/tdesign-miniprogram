@@ -123,7 +123,6 @@ style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 animation | Object | - | 动画效果设置。其中 duration 表示动画时长。（单位：秒）。TS 类型：`TabAnimation` `type TabAnimation = { duration: number } & Record<string, any>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/tabs/type.ts) | N
 bottom-line-mode | String | fixed | 激活下划线的模式。可选项：fixed/auto/full | N
-
 show-bottom-line | Boolean | true | 是否展示底部激活线条 | N
 space-evenly | Boolean | true | 选项卡头部空间是否均分 | N
 split | Boolean | true | `1.1.10`。是否展示分割线 | N

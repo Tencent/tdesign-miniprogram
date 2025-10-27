@@ -96,7 +96,6 @@ session-from | String | - | \- | N
 shape | String | rectangle | button shape。options: rectangle/square/round/circle | N
 show-message-card | Boolean | false | \- | N
 size | String | medium | a button has four size。options: extra-small/small/medium/large | N
-
 t-id | String | - | id | N
 theme | String | default | button theme。options: default/primary/danger/light | N
 type | String | - | type of button element, same as formType of Miniprogram。options: submit/reset | N

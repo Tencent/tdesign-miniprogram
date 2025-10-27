@@ -102,7 +102,6 @@ cursor-color | String | #0052d9 | 光标颜色。iOS 下的格式为十六进制
 cursor-spacing | Number | 0 | 指定光标与键盘的距离，取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离 | N
 disabled | Boolean | undefined | 是否禁用输入框 | N
 error-message | String | - | 已废弃。错误提示文本，值为空不显示（废弃属性，如果需要，请更为使用 status 和 tips） | N
-
 focus | Boolean | false | 获取焦点 | N
 format | Function | - | 指定输入框展示值的格式。TS 类型：`InputFormatType` `type InputFormatType = (value: InputValue) => string`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/input/type.ts) | N
 hold-keyboard | Boolean | false | focus时，点击页面的时候不收起键盘 | N

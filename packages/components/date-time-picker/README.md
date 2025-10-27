@@ -68,7 +68,6 @@ confirm-btn | String | - | 确定按钮文字 | N
 custom-locale | String | zh |  组件国际化语言，目前支持: 简体中文(zh)、(tc)、英文(en)、日语(ja)、韩语(ko)、俄语(ru)等六种语言 | N
 end | String / Number | - | 选择器的最大可选时间，默认为当前时间+10年 | N
 filter | Function | - | 列选项过滤函数，支持自定义列内容。(type 值可为: year, month, date, hour, minute, second)。TS 类型：`(type: TimeModeValues, columns: DateTimePickerColumn) => DateTimePickerColumn` `type DateTimePickerColumn = DateTimePickerColumnItem[]` `interface DateTimePickerColumnItem { label: string,value: string}`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/date-time-picker/type.ts) | N
-
 format | String | 'YYYY-MM-DD HH:mm:ss' | 用于格式化 pick、change、confirm 事件返回的值，[详细文档](https://day.js.org/docs/en/display/format) | N
 formatter | Function | - | 格式化标签。TS 类型：`(option: DateTimePickerColumnItem, columnIndex: number) => DateTimePickerColumnItem` | N
 header | Boolean | true | 头部内容。值为 true 显示空白头部，值为 false 不显示任何内容 | N

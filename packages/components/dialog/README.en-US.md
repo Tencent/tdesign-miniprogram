@@ -15,12 +15,10 @@ close-btn | Boolean / Object | false | `0.31.0`。Typescript：`boolean \| Butto
 close-on-overlay-click | Boolean | false | \- | N
 confirm-btn | String / Object | - | \- | N
 content | String | - | \- | N
-
 overlay-props | Object | {} | Typescript：`OverlayProps`，[Overlay API Documents](./overlay?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/dialog/type.ts) | N
 prevent-scroll-through | Boolean | true | \- | N
 show-overlay | Boolean | true | \- | N
 title | String | - | \- | N
-
 using-custom-navbar | Boolean | false | \- | N
 visible | Boolean | - | \- | N
 z-index | Number | 11500 | \- | N
