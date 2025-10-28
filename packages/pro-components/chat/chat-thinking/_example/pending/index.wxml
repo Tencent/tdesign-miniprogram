@@ -1,3 +1,3 @@
-<view>
+<view class="chat-example-block">
   <t-chat-thinking content="{{content}}" bind:expandChange="handleExpandChange" layout="block" status="{{status}}" />
 </view>

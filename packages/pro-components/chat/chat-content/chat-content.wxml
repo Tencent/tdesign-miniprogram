@@ -1,4 +1,4 @@
-<wxs src="../common/utils.wxs" module="_" />
+<wxs src="../../../components/common/utils.wxs" module="_" />
 <view class="class {{[COMPONENT_NAME+'__text']}}" style="{{_._style([style, customStyle])}}">
   <block wx:if="{{content.type === 'text'}}">
     <view class="{{[COMPONENT_NAME+'__text__'+role]}}">

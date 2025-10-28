@@ -4,7 +4,6 @@
     "base": "./base",
     "fileLoading": "./fileLoading",
     "imageLoading": "./imageLoading",
-    "file": "./file",
-    "t-navbar": "tdesign-miniprogram/navbar/navbar"
+    "file": "./file"
   }
 }

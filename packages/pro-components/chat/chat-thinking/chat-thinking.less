@@ -1,37 +1,20 @@
 @import '../../../components/common/style/base.less';
 
-@chat-thinking-prefix: ~'@{prefix}-chat-thinking';
+@chat-thinking: ~'@{prefix}-chat-thinking';
 
-@color-bg: @gray-color-1;
-@color-primary: #126dff;
-
-@color-text-title: #4e5d71;
-@color-text-content: #828e9f;
-@color-border: #e5e5e5;
-
-@radius-base: 8rpx;
-@spacing-xs: 8rpx;
-@spacing-sm: 12rpx;
-@spacing-md: 16rpx;
-@spacing-lg: 24rpx;
-@spacing-xl: 32rpx;
-@spacing-xxl: 40rpx;
-
-.@{chat-thinking-prefix} {
-  // background: @color-bg;
-  // padding: @spacing-lg;
+.@{chat-thinking} {
   width: 100%;
   box-sizing: border-box;
 
   &__inner {
     &__block {
-      background: @color-bg;
-      border-radius: @radius-base;
-      padding: @spacing-md @spacing-lg;
+      background-color: @bg-color-page;
+      border-radius: @radius-default;
+      padding: @spacer @spacer-1;
     }
 
     &__border {
-      padding: @spacing-md @spacing-lg;
+      padding: @spacer @spacer-1;
     }
   }
 
@@ -39,17 +22,18 @@
     display: flex;
     align-items: center;
 
+    // TODO:  loading-icon 未找到对应视图层
     .loading-icon {
-      width: @spacing-xl;
-      height: @spacing-xl;
-      margin-right: @spacing-sm;
+      width: @spacer-2;
+      height: @spacer-2;
+      margin-right: 12rpx;
       flex-shrink: 0;
       position: relative;
 
       .loading-dot {
         width: 6rpx;
         height: 6rpx;
-        background: @color-primary;
+        background-color: #126dff;
         position: absolute;
         left: 1rpx;
         top: 50%;
@@ -71,38 +55,38 @@
     }
 
     .check-circle-icon {
-      color: var(--td-success-color-5);
+      color: @success-color;
     }
 
     .close-icon {
-      color: rgba(0, 0, 0, .6);
+      color: @text-color-secondary;
     }
 
     &__txt {
-      color: @color-text-title;
+      color: @text-color-placeholder;
       font-size: 28rpx;
       line-height: 32rpx;
       flex: 1;
-      margin-left: @spacing-md;
+      margin-left: @spacer;
     }
 
     .collapse-icon {
-      color: rgba(0, 0, 0, .6);
+      color: @text-color-secondary;
       transition: transform 0.3s ease-in-out;
     }
   }
 
   &__bd {
-    color: @color-text-content;
+    color: @text-color-placeholder;
     font-size: 28rpx;
     line-height: 170%;
-    margin-top: @spacing-lg;
+    margin-top: @spacer-1;
     white-space: pre-wrap;
     overflow-y: auto;
 
     &__border {
-      border-left: 2rpx solid @color-border;
-      padding-left: @spacing-md;
+      border-left: 4rpx solid @component-stroke;
+      padding-left: @spacer;
     }
   }
 }

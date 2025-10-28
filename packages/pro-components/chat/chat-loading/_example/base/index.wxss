@@ -1,15 +1,4 @@
-.demo-container {
-  display: flex;
-  align-items: center;
-}
-
-.chat-example {
-  display: flex;
-  flex-direction: column;
-  gap: 32rpx;
-}
-
 .chat-example-block {
-  background-color: #fff;
+  display: block;
   padding: 32rpx;
 }

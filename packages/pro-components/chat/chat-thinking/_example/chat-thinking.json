@@ -3,7 +3,6 @@
   "usingComponents": {
     "base": "./base",
     "style-set": "./style-set",
-    "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "pending": "./pending",
     "complete": "./complete"
   }

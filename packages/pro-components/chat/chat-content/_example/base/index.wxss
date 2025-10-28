@@ -1,0 +1,9 @@
+.chat-example-block {
+  display: block;
+  padding: 32rpx;
+  background-color: var(--td-bg-color-container);
+}
+
+.title {
+  margin-bottom: 32rpx;
+}

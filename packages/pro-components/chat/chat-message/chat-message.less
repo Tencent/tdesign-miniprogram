@@ -1,36 +1,14 @@
 @import '../../../components/common/style/base.less';
 
-@chat-message-prefix: ~'@{prefix}-chat';
+@chat-message: ~'@{prefix}-chat';
 
-// Chat Message 变量定义
-@chat-message-spacer-1: 8rpx;
-@chat-message-spacer-2: 12rpx;
-@chat-message-spacer-3: 16rpx;
-@chat-message-spacer-4: 24rpx;
-@chat-message-spacer-5: 32rpx;
-@chat-message-spacer-6: 40rpx;
-@chat-message-spacer-7: 48rpx;
-@chat-message-spacer-8: 64rpx;
-@chat-message-spacer-9: 80rpx;
-@chat-message-border-width: 2rpx;
-@chat-message-border-width-small: 1rpx;
-@chat-message-border-width-large: 3rpx;
-@chat-message-border-width-xlarge: 6rpx;
-@chat-message-border-width-xxlarge: 8rpx;
-@chat-message-skeleton-height: 24rpx;
-@chat-message-moving-dot-size: 16rpx;
-@chat-message-moving-container-size: 24rpx;
-@chat-message-gradient-border-size: 3rpx;
-@chat-message-max-width: 1600rpx;
-@chat-message-height-body-large: 48rpx;
-@chat-content-text-padding: 24rpx 32rpx;
-@chat-base-height: 44rpx;
-@chat-content-padding: @chat-message-spacer-4;
-// Chat Message 组件样式
-.@{chat-message-prefix} {
+@chat-message-content-padding: 24rpx 32rpx;
+@chat-message-height: 44rpx;
+
+.@{chat-message} {
   // 反向列表样式
   &__list--reverse {
-    .@{chat-message-prefix}__inner {
+    .@{chat-message}__inner {
       -webkit-transform: scaleY(-1);
       transform: scaleY(-1);
     }
@@ -41,24 +19,24 @@
     margin-bottom: @spacer-2;
 
     // 头像样式
-    .@{chat-message-prefix}__avatar {
+    .@{chat-message}__avatar {
       flex: 0 0 auto;
       padding-top: 0rpx;
     }
 
     // 内容容器样式
-    .@{chat-message-prefix}__content {
+    .@{chat-message}__content {
       flex: 1 1 auto;
       width: 1%;
     }
 
     // 基础内容样式
-    .@{chat-message-prefix}__content--base {
-      padding-top: @chat-message-spacer-7;
+    .@{chat-message}__content--base {
+      padding-top: @spacer-3;
     }
 
     // 详情容器样式
-    .@{chat-message-prefix}__detail {
+    .@{chat-message}__detail {
       max-width: 100%;
       box-sizing: border-box;
       display: contents;
@@ -66,40 +44,40 @@
 
     // 有头部时的样式
     &--hasheader {
-      .@{chat-message-prefix}__avatar {
-        padding-top: calc(@chat-base-height + @chat-message-spacer-3);
+      .@{chat-message}__avatar {
+        padding-top: calc(@chat-message-height + @spacer);
       }
     }
 
     // 用户消息样式
     &.user {
-      .@{chat-message-prefix}__skeleton {
+      .@{chat-message}__skeleton {
         align-items: flex-end;
       }
-      .@{chat-message-prefix}__base {
+      .@{chat-message}__base {
         padding-right: @spacer-2;
       }
     }
 
     // 助手消息样式
     &.assistant {
-      .@{chat-message-prefix}__skeleton {
+      .@{chat-message}__skeleton {
         align-items: flex-start;
       }
-      .@{chat-message-prefix}__base {
+      .@{chat-message}__base {
         padding-left: @spacer-2;
       }
     }
 
     // 错误消息样式
     &.error {
-      .@{chat-message-prefix}__skeleton {
+      .@{chat-message}__skeleton {
         align-items: flex-start;
       }
-      .@{chat-message-prefix}__base {
+      .@{chat-message}__base {
         padding-left: @spacer-2;
       }
-      .@{chat-message-prefix}__text--error {
+      .@{chat-message}__text--error {
         color: @error-color-6;
       }
     }
@@ -108,13 +86,13 @@
     &.left {
       display: flex;
       flex-direction: row;
-      .@{chat-message-prefix}__content {
+      .@{chat-message}__content {
         align-items: flex-start;
       }
-      .@{chat-message-prefix}__skeleton {
+      .@{chat-message}__skeleton {
         align-items: flex-start;
       }
-      .@{chat-message-prefix}__base {
+      .@{chat-message}__base {
         padding-left: @spacer-2;
       }
     }
@@ -123,17 +101,17 @@
     &.right {
       display: flex;
       flex-direction: row-reverse;
-      .@{chat-message-prefix}__content {
+      .@{chat-message}__content {
         align-items: flex-end;
       }
-      .@{chat-message-prefix}__skeleton {
+      .@{chat-message}__skeleton {
         align-items: flex-end;
       }
-      .@{chat-message-prefix}__base {
+      .@{chat-message}__base {
         padding-right: @spacer-2;
       }
-      .@{chat-message-prefix}__avatar {
-        margin-left: @chat-message-spacer-4;
+      .@{chat-message}__avatar {
+        margin-left: @spacer-1;
       }
     }
   }
@@ -143,16 +121,16 @@
     flex-shrink: 0;
     cursor: pointer;
     display: flex;
-    margin-right: @chat-message-spacer-4;
-    padding-top: calc(@chat-base-height + @chat-message-spacer-3);
+    margin-right: @spacer-1;
+    padding-top: calc(@chat-message-height + @spacer);
 
     &__box {
-      // padding-top: @chat-message-spacer-2;
+
     }
 
     &-image {
-      width: @chat-message-spacer-8;
-      height: @chat-message-spacer-8;
+      width: @spacer-4;
+      height: @spacer-4;
       border-radius: @radius-circle;
     }
   }
@@ -164,7 +142,7 @@
     align-items: flex-start;
     justify-content: center;
     font-size: @font-size-m;
-    line-height: @chat-message-height-body-large;
+    line-height: 48rpx;
     font-family: @font-family;
     .t-skeleton {
       width: 100%;
@@ -177,24 +155,24 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    height: @chat-base-height;
+    height: @chat-message-height;
     font-size: @font-size-base;
-    line-height: @chat-base-height;
+    line-height: @chat-message-height;
     font-family: @font-family;
-    color: @font-gray-3;
+    color: @text-color-placeholder;
     // padding-left: @spacer-2;
-    margin-bottom: @chat-message-spacer-3;
+    margin-bottom: @spacer;
   }
 
   // 名称样式
   &__name {
-    padding-right: @chat-message-spacer-3;
+    padding-right: @spacer;
     cursor: pointer;
   }
 
   // 文本变体样式
   &__text--variant--text {
-    .@{chat-message-prefix}__text {
+    .@{chat-message}__text {
       &__user,
       &__assistant {
         color: @text-color-secondary;
@@ -203,62 +181,60 @@
   }
 
   &__text--variant--base {
-    .@{chat-message-prefix}__text {
-      padding: @chat-content-text-padding;
+    .@{chat-message}__text {
+      padding: @chat-message-content-padding;
       background-color: @bg-color-secondarycontainer;
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.assistant .@{chat-message-prefix}__text {
+    &.assistant .@{chat-message}__text {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
       background-color: transparent;
       padding: 0;
     }
 
-    &.user .@{chat-message-prefix}__text {
+    &.user .@{chat-message}__text {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.left .@{chat-message-prefix}__text {
+    &.left .@{chat-message}__text {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.right .@{chat-message-prefix}__text {
+    &.right .@{chat-message}__text {
       border-radius: @radius-extraLarge 0 @radius-extraLarge
         @radius-extraLarge;
     }
   }
 
   &__text--variant--outline {
-    .@{chat-message-prefix}__text {
-      padding: @chat-content-text-padding;
-      border-color: @component-border;
-      border-style: solid;
-      border-width: @chat-message-border-width-small;
+    .@{chat-message}__text {
+      padding: @chat-message-content-padding;
+      border: 1rpx solid @component-border;
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.assistant .@{chat-message-prefix}__text {
+    &.assistant .@{chat-message}__text {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.user .@{chat-message-prefix}__text {
+    &.user .@{chat-message}__text {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.left .@{chat-message-prefix}__text {
+    &.left .@{chat-message}__text {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.right .@{chat-message-prefix}__text {
+    &.right .@{chat-message}__text {
       border-radius: @radius-extraLarge 0 @radius-extraLarge
         @radius-extraLarge;
     }
@@ -266,8 +242,8 @@
 
   // Actionbar 插槽样式
   &__actionbar-slot {
-    // margin-top: @chat-message-spacer-4;
-    --chat-actionbar-padding: @chat-content-padding 0 0 0;
+    // margin-top: @spacer-1;
+    --chat-actionbar-padding: @spacer-1 0 0 0;
 
     &:empty {
       display: none;
@@ -276,49 +252,49 @@
 }
 
 // 正常模式下的特殊样式
-.@{chat-message-prefix}-is-normal {
-  .@{chat-message-prefix}__inner {
+.@{chat-message}-is-normal {
+  .@{chat-message}__inner {
     &.user {
       flex-direction: row-reverse;
 
-      .@{chat-message-prefix}__avatar {
+      .@{chat-message}__avatar {
         margin-right: 0;
         margin-left: 24rpx;
       }
 
-      .@{chat-message-prefix}__content {
+      .@{chat-message}__content {
         align-items: flex-end;
       }
 
-      .@{chat-message-prefix}__content .@{chat-message-prefix}__base {
+      .@{chat-message}__content .@{chat-message}__base {
         justify-content: flex-end;
       }
     }
   }
 
-  .@{chat-message-prefix}__detail {
+  .@{chat-message}__detail {
     max-width: 100%;
   }
 
-  .@{chat-message-prefix}__text--variant--base {
-    &.user .@{chat-message-prefix}__text {
+  .@{chat-message}__text--variant--base {
+    &.user .@{chat-message}__text {
       border-radius: @radius-extraLarge 0 @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.assistant .@{chat-message-prefix}__text {
+    &.assistant .@{chat-message}__text {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
   }
 
-  .@{chat-message-prefix}__text--variant--outline {
-    &.user .@{chat-message-prefix}__text {
+  .@{chat-message}__text--variant--outline {
+    &.user .@{chat-message}__text {
       border-radius: @radius-extraLarge 0 @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.assistant .@{chat-message-prefix}__text {
+    &.assistant .@{chat-message}__text {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }

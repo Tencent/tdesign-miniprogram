@@ -5,7 +5,6 @@
     "action": "./action",
     "comment": "./comment",
     "layout": "./layout",
-    "copy": "./copy",
-    "t-navbar": "tdesign-miniprogram/navbar/navbar"
+    "copy": "./copy"
   }
 }

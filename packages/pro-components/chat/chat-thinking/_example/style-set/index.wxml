@@ -3,23 +3,25 @@
     <view class="layout-content">
       <view class="title">layout：</view>
       <t-radio-group borderless t-class="box" value="{{layout}}" bind:change="handleLayoutChange">
-        <t-radio t-class="radio-box" t-class-icon="radio-icon" t-class-label="radio-label"
-          value="border">border</t-radio>
-        <t-radio value="block" t-class="radio-box" t-class-icon="radio-icon" t-class-label="radio-label">block</t-radio>
+        <t-radio t-class="radio-box" value="border">border</t-radio>
+        <t-radio value="block" t-class="radio-box">block</t-radio>
       </t-radio-group>
     </view>
     <view class="animation-content">
       <view class="title">animation：</view>
       <t-radio-group borderless t-class="box" value="{{animation}}" bind:change="handleAnimationChange">
-        <t-radio value="moving" t-class="radio-box" t-class-icon="radio-icon"
-          t-class-label="radio-label">moving</t-radio>
-        <t-radio value="gradient" t-class="radio-box" t-class-icon="radio-icon"
-          t-class-label="radio-label">gradient</t-radio>
-        <t-radio value="circle" t-class="radio-box" t-class-icon="radio-icon"
-          t-class-label="radio-label">circle</t-radio>
+        <t-radio value="moving" t-class="radio-box">moving</t-radio>
+        <t-radio value="gradient" t-class="radio-box">gradient</t-radio>
+        <t-radio value="circle" t-class="radio-box">circle</t-radio>
       </t-radio-group>
     </view>
   </view>
-  <t-chat-thinking content="{{content}}" layout="{{layout}}" animation="{{animation}}"
-    bind:expandChange="handleExpandChange" />
+  <view class="chat-example-block">
+    <t-chat-thinking
+      content="{{content}}"
+      layout="{{layout}}"
+      animation="{{animation}}"
+      bind:expandChange="handleExpandChange"
+    />
+  </view>
 </view>

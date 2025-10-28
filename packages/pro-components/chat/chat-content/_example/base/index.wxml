@@ -1,13 +1,9 @@
-<view class="demo-section">
-  <view class="demo-section__title">用户内容</view>
-  <view class="demo-section__content">
-    <t-chat-content content="{{userContent}}" role="user"></t-chat-content>
-  </view>
+<view class="chat-example-block">
+  <view class="title">用户内容</view>
+  <t-chat-content content="{{userContent}}" role="user"></t-chat-content>
 </view>
 
-<view class="demo-section">
-  <view class="demo-section__title">助手内容（Markdown）</view>
-  <view class="demo-section__content">
-    <t-chat-content content="{{assistantContent}}" role="assistant"></t-chat-content>
-  </view>
+<view class="chat-example-block">
+  <view class="itle">助手内容（Markdown）</view>
+  <t-chat-content content="{{assistantContent}}" role="assistant"></t-chat-content>
 </view>

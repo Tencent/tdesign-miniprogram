@@ -1,12 +1,11 @@
 {
   "navigationBarTitleText": "ChatItem",
   "usingComponents": {
+    "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
     "base": "./base",
     "style-component": "./style",
     "configure": "./configure",
     "status": "./status",
-    "content": "./content",
-    "t-navbar": "tdesign-miniprogram/navbar/navbar",
-    "t-skeleton": "tdesign-miniprogram/skeleton/skeleton"
+    "content": "./content"
   }
 }

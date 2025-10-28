@@ -1,4 +1,4 @@
-<wxs src="../common/utils.wxs" module="_" />
+<wxs src="../../../components/common/utils.wxs" module="_" />
 <view class="class {{[COMPONENT_NAME]}}" style="{{_._style([style, customStyle])}}">
   <!-- 动态加载动画 -->
   <view class="{{COMPONENT_NAME + '__icon-container'}}" wx:if="{{animation !== 'skeleton'}}">
@@ -18,11 +18,11 @@
       <t-loading theme="circular" size="28rpx" />
     </block>
   </view>
-    <block wx:if="{{animation==='skeleton'}}" style="width: 100%;">
-      <view class="{{COMPONENT_NAME + '__skeleton'}}" style="width: 100%;">
-        <t-skeleton rowCol="{{[1, 1, 1, {width: '80%'}]}}" theme="paragraph" animation="gradient" loading></t-skeleton>
-      </view>
-    </block>
+  <block wx:if="{{animation==='skeleton'}}" style="width: 100%">
+    <view class="{{COMPONENT_NAME + '__skeleton'}}" style="width: 100%">
+      <t-skeleton rowCol="{{[1, 1, 1, {width: '80%'}]}}" theme="paragraph" animation="gradient" loading></t-skeleton>
+    </view>
+  </block>
   <!-- 文本内容 -->
   <view class="{{[COMPONENT_NAME+'__text']}}">{{text}}</view>
 </view>

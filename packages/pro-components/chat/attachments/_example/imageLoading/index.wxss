@@ -5,6 +5,5 @@
 }
 
 .chat-example-block {
-  background-color: #fff;
   padding: 32rpx;
 }

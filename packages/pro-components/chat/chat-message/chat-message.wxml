@@ -1,4 +1,5 @@
-<wxs src="../common/utils.wxs" module="_" />
+<wxs src="../../../components/common/utils.wxs" module="_" />
+
 <view class="class {{chatItemClass}}" bindlongpress="handleLongPress" style="{{_._style([style, customStyle])}}">
   <view wx:if="{{showAvatar}}" class="{{COMPONENT_NAME + '__avatar'}}">
     <view class="{{COMPONENT_NAME + '__avatar__box'}}">
@@ -22,12 +23,19 @@
         <!-- 属性传值优先级高于content插槽 -->
         <block wx:if="{{content.length > 0}}">
           <block wx:for="{{content}}" wx:key="index">
-            <attachments wx:if="{{item.type === 'attachment' && role === 'user'}}" items="{{item.data}}"
-              removable="{{false}}" inChat="{{true}}">
+            <attachments
+              wx:if="{{item.type === 'attachment' && role === 'user'}}"
+              items="{{item.data}}"
+              removable="{{false}}"
+              inChat="{{true}}"
+            >
             </attachments>
             <chat-thinking wx:if="{{item.type === 'thinking'}}" content="{{item.data}}" role="{{role}}"></chat-thinking>
-            <chat-content wx:elif="{{item.type === 'text' || item.type === 'markdown'}}" content="{{item}}"
-              role="{{role}}"></chat-content>
+            <chat-content
+              wx:elif="{{item.type === 'text' || item.type === 'markdown'}}"
+              content="{{item}}"
+              role="{{role}}"
+            ></chat-content>
           </block>
         </block>
         <block wx:else>
