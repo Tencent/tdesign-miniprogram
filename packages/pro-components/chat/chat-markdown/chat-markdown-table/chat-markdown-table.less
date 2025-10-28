@@ -1,63 +1,68 @@
-/* 表格 */
-.t-markdown-table-container {
-  width: 100%;
-  overflow-y: hidden;
-  overflow-x: auto;
-  border: 1rpx solid #dee2e6;
-}
+@import '../../../../components/common/style/base.less';
 
-.t-markdown-table {
+@chat-markdown-table: ~'@{prefix}-chat-markdown-table';
+
+.@{chat-markdown-table} {
   display: table;
   min-width: 100%;
   max-width: max-content;
   border-collapse: collapse;
   white-space: nowrap;
-}
 
-.t-markdown-thead {
-  display: table-header-group;
-}
-
-.t-markdown-tbody {
-  display: table-row-group;
-}
-
-.t-markdown-tr {
-  display: table-row;
-  border-bottom: 1rpx solid #dee2e6;
-  &:last-child {
-    border-bottom: none;
+  &__container {
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+    border: 1rpx solid @component-border;
   }
-}
 
-/* 斑马条纹样式 */
-.t-markdown-tr:nth-child(2n + 1) {
-  background-color: #ffffff;
-}
-
-.t-markdown-tr:nth-child(2n) {
-  background-color: #f3f3f3;
-}
-
-.t-markdown-th {
-  display: table-cell;
-  vertical-align: middle;
-  background: #f3f3f3;
-  padding: 5rpx 10rpx;
-  color: #00000066;
-  border-right: 1rpx solid #dee2e6;
-  &:last-child {
-    border-right: none;
+  &__thead {
+    display: table-header-group;
   }
-}
 
-.t-markdown-td {
-  display: table-cell;
-  vertical-align: middle;
-  padding: 5rpx 10rpx;
-  border-right: 1rpx solid #dee2e6;
+  &__tbody {
+    display: table-row-group;
+  }
 
-  &:last-child {
-    border-right: none;
+  &__tr {
+    display: table-row;
+    border-bottom: 1rpx solid @component-border;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    /* 斑马条纹样式 */
+    &:nth-child(2n + 1) {
+      background-color: @bg-color-container;
+    }
+
+    &:nth-child(2n) {
+      background-color: @bg-color-secondarycontainer;
+    }
+  }
+
+  &__th {
+    display: table-cell;
+    vertical-align: middle;
+    background-color: @bg-color-secondarycontainer;
+    padding: 5rpx 10rpx;
+    color: @text-color-secondary;
+    border-right: 1rpx solid @component-border;
+
+    &:last-child {
+      border-right: none;
+    }
+  }
+
+  &__td {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 5rpx 10rpx;
+    border-right: 1rpx solid @component-border;
+
+    &:last-child {
+      border-right: none;
+    }
   }
 }

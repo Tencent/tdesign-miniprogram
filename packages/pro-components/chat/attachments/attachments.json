@@ -1,8 +1,8 @@
 {
+  "component": true,
   "usingComponents": {
     "t-icon": "tdesign-miniprogram/icon/icon",
     "t-image": "tdesign-miniprogram/image/image",
     "t-loading": "tdesign-miniprogram/loading/loading"
-  },
-  "component": true
+  }
 }

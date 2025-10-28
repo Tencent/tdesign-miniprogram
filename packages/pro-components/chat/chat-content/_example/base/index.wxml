@@ -1,9 +1,13 @@
-<view class="chat-example-block">
+<view class="chat-example">
   <view class="title">用户内容</view>
-  <t-chat-content content="{{userContent}}" role="user"></t-chat-content>
+  <view class="chat-example-block">
+    <t-chat-content content="{{userContent}}" role="user"></t-chat-content>
+  </view>
 </view>
 
-<view class="chat-example-block">
-  <view class="itle">助手内容（Markdown）</view>
-  <t-chat-content content="{{assistantContent}}" role="assistant"></t-chat-content>
+<view class="chat-example">
+  <view class="title">助手内容（Markdown）</view>
+  <view class="chat-example-block">
+    <t-chat-content content="{{assistantContent}}" role="assistant"></t-chat-content>
+  </view>
 </view>

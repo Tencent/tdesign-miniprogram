@@ -1,3 +1,3 @@
-<view class="demo-container">
+<view class="chat-example-block">
   <t-chat-markdown content="{{markdownContent}}" is-markdown="{{true}}" bind:click="handleLinkTap" />
 </view>

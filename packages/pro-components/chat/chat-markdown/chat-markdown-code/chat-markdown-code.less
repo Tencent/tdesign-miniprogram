@@ -3,64 +3,64 @@
 @chat-markdown-code: ~'@{prefix}-chat-markdown-code';
 
 // Chat Markdown Code 变量定义
-@code-block-margin: 16rpx;
-@code-block-radius: 8rpx;
-@code-block-bg-light: #f6f8fa;
-@code-block-bg-dark: #161b22;
-@code-block-bg-white: #ffffff;
-@code-block-border-light: #e1e4e8;
-@code-block-border-dark: #30363d;
-@code-block-border-white: #d0d7de;
+@chat-markdown-code-block-margin: 16rpx;
+@chat-markdown-code-block-radius: 8rpx;
+@chat-markdown-code-block-bg-light: #f6f8fa;
+@chat-markdown-code-block-bg-dark: #161b22;
+@chat-markdown-code-block-bg-white: #ffffff;
+@chat-markdown-code-block-border-light: #e1e4e8;
+@chat-markdown-code-block-border-dark: #30363d;
+@chat-markdown-code-block-border-white: #d0d7de;
 
-@code-header-padding: 8rpx 16rpx;
-@code-header-bg-light: #e1e4e8;
-@code-header-bg-dark: #21262d;
-@code-header-bg-white: #f6f8fa;
-@code-header-border-light: #d0d7de;
-@code-header-border-dark: #30363d;
-@code-header-border-white: #d0d7de;
+@chat-markdown-code-header-padding: 8rpx 16rpx;
+@chat-markdown-code-header-bg-light: #e1e4e8;
+@chat-markdown-code-header-bg-dark: #21262d;
+@chat-markdown-code-header-bg-white: #f6f8fa;
+@chat-markdown-code-header-border-light: #d0d7de;
+@chat-markdown-code-header-border-dark: #30363d;
+@chat-markdown-code-header-border-white: #d0d7de;
 
-@code-lang-font-size: 24rpx;
-@code-lang-color-light: #656d76;
-@code-lang-color-dark: #7d8590;
-@code-lang-font-weight: 500;
+@chat-markdown-code-lang-font-size: 24rpx;
+@chat-markdown-code-lang-color-light: #656d76;
+@chat-markdown-code-lang-color-dark: #7d8590;
+@chat-markdown-code-lang-font-weight: 500;
 
-@code-content-padding: 16rpx;
+@chat-markdown-code-content-padding: 16rpx;
 
-@code-text-font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
-@code-text-font-size: 28rpx;
-@code-text-line-height: 1.6;
-@code-text-color-light: #24292f;
-@code-text-color-dark: #e6edf3;
+@chat-markdown-code-text-font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+@chat-markdown-code-text-font-size: 28rpx;
+@chat-markdown-code-text-line-height: 1.6;
+@chat-markdown-code-text-color-light: #24292f;
+@chat-markdown-code-text-color-dark: #e6edf3;
 
 // Chat Markdown Code 组件样式
 .@{chat-markdown-code} {
   // 代码块容器
   &-block {
-    margin: @code-block-margin 0;
-    border-radius: @code-block-radius;
-    background-color: @code-block-bg-light;
-    border: 1rpx solid @code-block-border-light;
+    margin: @chat-markdown-code-block-margin 0;
+    border-radius: @chat-markdown-code-block-radius;
+    background-color: @chat-markdown-code-block-bg-light;
+    border: 1rpx solid @chat-markdown-code-block-border-light;
     overflow: hidden;
   }
 
   // 代码语言标签
   &-header {
-    padding: @code-header-padding;
-    background-color: @code-header-bg-light;
-    border-bottom: 1rpx solid @code-header-border-light;
+    padding: @chat-markdown-code-header-padding;
+    background-color: @chat-markdown-code-header-bg-light;
+    border-bottom: 1rpx solid @chat-markdown-code-header-border-light;
   }
 
   // 语言标签文本
   &-lang {
-    font-size: @code-lang-font-size;
-    color: @code-lang-color-light;
-    font-weight: @code-lang-font-weight;
+    font-size: @chat-markdown-code-lang-font-size;
+    color: @chat-markdown-code-lang-color-light;
+    font-weight: @chat-markdown-code-lang-font-weight;
   }
 
   // 代码内容区域
   &-content {
-    padding: @code-content-padding;
+    padding: @chat-markdown-code-content-padding;
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
@@ -70,10 +70,10 @@
 
   // 代码文本
   &-text {
-    font-family: @code-text-font-family;
-    font-size: @code-text-font-size;
-    line-height: @code-text-line-height;
-    color: @code-text-color-light;
+    font-family: @chat-markdown-code-text-font-family;
+    font-size: @chat-markdown-code-text-font-size;
+    line-height: @chat-markdown-code-text-line-height;
+    color: @chat-markdown-code-text-color-light;
     /* 关键设置：防止换行 */
     white-space: pre;
     word-wrap: normal;
@@ -87,34 +87,34 @@
   // 暗色主题
   &-dark {
     .@{chat-markdown-code}-block {
-      background-color: @code-block-bg-dark;
-      border-color: @code-block-border-dark;
+      background-color: @chat-markdown-code-block-bg-dark;
+      border-color: @chat-markdown-code-block-border-dark;
     }
 
     .@{chat-markdown-code}-header {
-      background-color: @code-header-bg-dark;
-      border-bottom-color: @code-header-border-dark;
+      background-color: @chat-markdown-code-header-bg-dark;
+      border-bottom-color: @chat-markdown-code-header-border-dark;
     }
 
     .@{chat-markdown-code}-lang {
-      color: @code-lang-color-dark;
+      color: @chat-markdown-code-lang-color-dark;
     }
 
     .@{chat-markdown-code}-text {
-      color: @code-text-color-dark;
+      color: @chat-markdown-code-text-color-dark;
     }
   }
 
   // 浅色主题
   &-light {
     .@{chat-markdown-code}-block {
-      background-color: @code-block-bg-white;
-      border-color: @code-block-border-white;
+      background-color: @chat-markdown-code-block-bg-white;
+      border-color: @chat-markdown-code-block-border-white;
     }
 
     .@{chat-markdown-code}-header {
-      background-color: @code-header-bg-white;
-      border-bottom-color: @code-header-border-white;
+      background-color: @chat-markdown-code-header-bg-white;
+      border-bottom-color: @chat-markdown-code-header-border-white;
     }
   }
 }

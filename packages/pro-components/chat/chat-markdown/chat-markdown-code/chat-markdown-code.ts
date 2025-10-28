@@ -1,7 +1,5 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../../components/common/src/index';
 
-
-
 @wxComponent()
 export default class ChatMarkdownCode extends SuperComponent {
   options: ComponentsOptionsType = {
@@ -25,5 +23,3 @@ export default class ChatMarkdownCode extends SuperComponent {
     detached() {},
   };
 }
-
-

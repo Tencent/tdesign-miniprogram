@@ -1,4 +1,5 @@
 <wxs src="../../../components/common/utils.wxs" module="_" />
+
 <view class="class {{[COMPONENT_NAME,COMPONENT_NAME+theme]}}" style="{{_._style([style, customStyle])}}">
   <chat-markdown-node nodes="{{nodes}}"></chat-markdown-node>
 </view>
