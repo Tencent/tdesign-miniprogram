@@ -1,6 +1,10 @@
 <t-navbar class="demo-navbar" title="Attachments" leftArrow />
 <view class="demo">
-  <t-demo-header title="Attachments" desc="用于聊天场景中上传、预览合管理附件的组件" notice="渲染框架支持情况：WebView" />
+  <t-demo-header
+    title="Attachments"
+    desc="用于聊天场景中上传、预览和管理附件的组件"
+    notice="渲染框架支持情况：WebView"
+  />
   <t-demo title="01 组件类型" desc="图片类型">
     <base />
   </t-demo>
