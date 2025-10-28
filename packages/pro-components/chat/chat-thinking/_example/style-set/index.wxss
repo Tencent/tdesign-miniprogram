@@ -3,6 +3,7 @@
 }
 
 .title {
+  color: var(--td-text-color-primary);
   font-size: 32rpx;
 }
 

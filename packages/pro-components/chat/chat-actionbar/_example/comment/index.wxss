@@ -1,6 +1,6 @@
 .container {
   padding: 32rpx;
-  background-color: #f8f9fa;
+  background-color: var(--td-bg-color-container);
 }
 
 .layout-btn {
