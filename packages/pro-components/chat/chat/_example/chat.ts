@@ -3,5 +3,13 @@ Page({
     styleIsolation: 'shared',
   },
 
-  data: {},
+  data: {
+    value: 0,
+  },
+
+  onTabsChange(event) {
+    this.setData({
+      value: event.detail.value,
+    });
+  },
 });

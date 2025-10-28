@@ -1,11 +1,11 @@
-<view class="t-chat-markdown-code-block">
+<view class="{{classPrefix}}-block">
   <!-- 代码语言标签 -->
-  <view class="t-chat-markdown-code-header" wx:if="{{node.lang}}">
-    <text class="t-chat-markdown-code-lang">{{node.lang}}</text>
+  <view class="{{classPrefix}}-header" wx:if="{{node.lang}}">
+    <text class="{{classPrefix}}-lang">{{node.lang}}</text>
   </view>
 
   <!-- 代码内容区域 -->
-  <scroll-view class="t-chat-markdown-code-content" scroll-x="{{true}}">
-    <text class="t-chat-markdown-code-text" decode="{{true}}">{{node.text}}</text>
+  <scroll-view class="{{classPrefix}}-content" scroll-x="{{true}}">
+    <text class="{{classPrefix}}-text" decode="{{true}}">{{node.text}}</text>
   </scroll-view>
 </view>

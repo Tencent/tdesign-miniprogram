@@ -1,7 +1,8 @@
 {
+  "component": true,
+  "styleIsolation": "apply-shared",
   "usingComponents": {
     "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
     "t-loading": "tdesign-miniprogram/loading/loading"
-  },
-  "component": true
+  }
 }

@@ -1,10 +1,10 @@
 <wxs src="../../../components/common/utils.wxs" module="_" />
 <view
-  class="class {{[COMPONENT_NAME,placement==='longpress'?COMPONENT_NAME+'__inner-popover':'',computedPlacement]}}"
+  class="class {{[classPrefix,placement==='longpress'?classPrefix+'__inner-popover':'',computedPlacement]}}"
   style="{{_._style([style, customStyle])}}"
 >
-  <view class="{{[COMPONENT_NAME+'__inner',COMPONENT_NAME+'__inner-column']}}">
-    <view class="{{[COMPONENT_NAME+'__item',COMPONENT_NAME+'__item-left']}}">
+  <view class="{{[classPrefix+'__inner',classPrefix+'__inner-column']}}">
+    <view class="{{[classPrefix+'__item',classPrefix+'__item-left']}}">
       <slot name="left"></slot>
     </view>
     <block wx:for="{{actions}}" wx:for-item="item" wx:for-index="index" wx:key="index">
@@ -12,7 +12,7 @@
       <button
         wx:if="{{item.name === 'share'}}"
         data-name="{{item.name}}"
-        class="{{[COMPONENT_NAME+'__item', item.isActive ? COMPONENT_NAME+'__item-active' : '']}}"
+        class="{{[classPrefix+'__item', item.isActive ? classPrefix+'__item-active' : '']}}"
         open-type="{{content ? 'share' : 'none'}}"
         data-chat-id="{{chatId}}"
         bindtap="handelActionClick"
@@ -25,7 +25,7 @@
       <view
         wx:else
         data-name="{{item.name}}"
-        class="{{[COMPONENT_NAME+'__item', item.isActive ? COMPONENT_NAME+'__item-active' : '']}}"
+        class="{{[classPrefix+'__item', item.isActive ? classPrefix+'__item-active' : '']}}"
         bindtap="handelActionClick"
       >
         <t-icon wx:if="{{!item.isActive}}" name="{{iconMap[item.name]}}" size="40rpx" />

@@ -25,7 +25,18 @@ Component({
       type: String,
       value: '100vh',
     },
+
+    isActive: {
+      type: Boolean,
+      value: false,
+      observer: function (v) {
+        this.setData({
+          value: v ? '请帮我做一个5岁儿童生日聚会的规划' : '', // 输入框的值
+        });
+      },
+    },
   },
+
   options: {
     styleIsolation: 'shared',
   },
@@ -44,7 +55,7 @@ Component({
         },
       },
     ],
-    value: '请帮我做一个5岁儿童生日聚会的规划', // 输入框的值
+    value: '', // 输入框的值
     loading: false, // 加载状态
     disabled: false, // 禁用状态
     inputStyle: '', // 输入框动态样式

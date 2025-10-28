@@ -75,5 +75,6 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: var(--td-font-size-body-medium);
   color: var(--td-text-color-placeholder);
 }

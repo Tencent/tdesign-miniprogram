@@ -8,7 +8,6 @@ const name = `${prefix}-chat-loading`;
 export default class ChatLoading extends SuperComponent {
   options: ComponentsOptionsType = {
     multipleSlots: true,
-    addGlobalClass: true,
   };
 
   properties = {
@@ -23,6 +22,6 @@ export default class ChatLoading extends SuperComponent {
   };
 
   data = {
-    COMPONENT_NAME: name,
+    classPrefix: name,
   };
 }

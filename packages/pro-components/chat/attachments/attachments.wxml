@@ -1,45 +1,56 @@
 <wxs src="./attachments.wxs" module="_this" />
-<wxs src="../common/utils.wxs" module="_" />
-<view class="{{[''+COMPONENT_NAME, inChat ? 'inChat' : '', _this.getFileTypeClass(inChat, files)]}}"
-  style="{{_._style([style, customStyle])}}">
+<wxs src="../../../components/common/utils.wxs" module="_" />
 
-
-  <view class="{{[COMPONENT_NAME+'__left-content']}}">
-    <view class="{{[COMPONENT_NAME+'__scrollable-content','scroll-x']}}">
+<view
+  class="{{[''+classPrefix, inChat ? 'inChat' : '', _this.getFileTypeClass(inChat, files)]}}"
+  style="{{_._style([style, customStyle])}}"
+>
+  <view class="{{[classPrefix+'__left-content']}}">
+    <view class="{{[classPrefix+'__scrollable-content','scroll-x']}}">
       <block wx:for="{{files}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-        <view class="{{[COMPONENT_NAME+'__file-wrap']}}" bindtap="onFileWrapTap" data-index="{{index}}">
+        <view class="{{[classPrefix+'__file-wrap']}}" bindtap="onFileWrapTap" data-index="{{index}}">
           <block wx:if="{{item.fileType==='image'}}">
-            <view class="{{['file-image',COMPONENT_NAME+'__file']}}">
+            <view class="{{['file-image',classPrefix+'__file']}}">
               <block wx:if="{{item.status==='pending'||item.status==='fail'||item.status==='error'}}">
-                <view class="{{[item.status,COMPONENT_NAME+'__file-status']}}">
+                <view class="{{[item.status,classPrefix+'__file-status']}}">
                   <t-loading theme="circular" size="24px" class="wrapper" />
                 </view>
               </block>
               <block wx:else>
-                <image class="image" src="{{item.url}}" mode="{{ _this.getImageMode(item)}}" lazy-load="false"
-                  style="{{inChat ? _this.imageStyle(item) : ''}}"></image>
+                <image
+                  class="image"
+                  src="{{item.url}}"
+                  mode="{{ _this.getImageMode(item)}}"
+                  lazy-load="false"
+                  style="{{inChat ? _this.imageStyle(item) : ''}}"
+                ></image>
               </block>
               <block wx:if="{{removable}}">
-                <t-icon catchtap="onRemoveTap" data-index="{{index}}" class="cancel" name="close-circle-filled"
-                  size="16px" />
+                <t-icon
+                  catchtap="onRemoveTap"
+                  data-index="{{index}}"
+                  class="cancel"
+                  name="close-circle-filled"
+                  size="16px"
+                />
               </block>
             </view>
           </block>
           <block wx:else>
-            <view class="{{['file',COMPONENT_NAME+'__file']}}">
+            <view class="{{['file',classPrefix+'__file']}}">
               <view class="image">
                 <block wx:if="{{item.status==='pending'}}">
-                  <view class="{{['loading',COMPONENT_NAME+'__file-status']}}">
+                  <view class="{{['loading',classPrefix+'__file-status']}}">
                     <t-loading theme="circular" size="24px" class="wrapper" />
                   </view>
                 </block>
                 <block wx:elif="{{item.status==='fail'}}">
-                  <view class="{{['fail',COMPONENT_NAME+'__file-status']}}">
+                  <view class="{{['fail',classPrefix+'__file-status']}}">
                     <t-loading theme="circular" size="24px" class="wrapper" />
                   </view>
                 </block>
                 <block wx:elif="{{item.status==='error'}}">
-                  <view class="{{['error',COMPONENT_NAME+'__file-status']}}">
+                  <view class="{{['error',classPrefix+'__file-status']}}">
                     <t-loading theme="circular" size="24px" class="wrapper" />
                   </view>
                 </block>
@@ -57,8 +68,13 @@
                 </block>
               </view>
               <block wx:if="{{removable}}">
-                <t-icon catchtap="onRemoveTap" data-index="{{index}}" class="cancel" name="close-circle-filled"
-                  size="16px" />
+                <t-icon
+                  catchtap="onRemoveTap"
+                  data-index="{{index}}"
+                  class="cancel"
+                  name="close-circle-filled"
+                  size="16px"
+                />
               </block>
             </view>
           </block>

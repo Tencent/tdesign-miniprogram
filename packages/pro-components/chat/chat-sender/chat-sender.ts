@@ -8,7 +8,6 @@ const name = `${prefix}-chat-sender`;
 export default class ChatSender extends SuperComponent {
   options = {
     multipleSlots: true,
-    addGlobalClass: true,
   };
 
   properties = {
@@ -100,7 +99,7 @@ export default class ChatSender extends SuperComponent {
   };
 
   data = {
-    COMPONENT_NAME: name,
+    classPrefix: name,
     scrollViewTop: 0,
     focusFlag: false,
     isSending: false,

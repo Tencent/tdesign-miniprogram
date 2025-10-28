@@ -23,6 +23,21 @@ const fetchStream = async (str, options) => {
 };
 
 Component({
+  properties: {
+    isActive: {
+      type: Boolean,
+      value: false,
+      observer: function (v) {
+        // 延迟 10ms，避免 hidden 场景下， value 变更无法触发 textarea 的自动换行
+        // 代码片段（iOS 真机可复现）：https://developers.weixin.qq.com/s/7UoAYgmr8G4k
+        setTimeout(() => {
+          this.setData({
+            value: v ? '根据所提供的材料总结一篇文章，推荐春天户外郊游打卡目的地，需要符合小红书平台写作风格' : '', // 输入框的值
+          });
+        }, 10);
+      },
+    },
+  },
   data: {
     customActionBar: ['copy', 'good', 'bad'],
     chatList: [
@@ -39,7 +54,7 @@ Component({
         },
       },
     ],
-    value: '根据所提供的材料总结一篇文章，推荐春天户外郊游打卡目的地，需要符合小红书平台写作风格', // 输入框的值
+    value: '', // 输入框的值
     loading: false, // 加载状态
     disabled: false, // 禁用状态
     inputStyle: '', // 动态样式

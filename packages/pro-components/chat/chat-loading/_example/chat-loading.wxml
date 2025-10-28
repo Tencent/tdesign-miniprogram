@@ -1,10 +1,14 @@
 <t-navbar class="demo-navbar" title="ChatLoading" leftArrow />
 <view class="demo">
-  <t-demo-header title="ChatLoading" desc="对话加载状态" notice="渲染框架支持情况：WebView" />
-  <t-demo title="01 组件类型" desc="支持多种加载中动效类型，包括skeleton、moving、gradient、circle">
+  <t-demo-header
+    title="ChatLoading"
+    desc="用于 ChatBot 对话场景中的加载状态组件。"
+    notice="渲染框架支持情况：WebView"
+  />
+  <t-demo title="01 组件类型" desc="支持多种加载中动效类型，包括 gradient、moving、circle">
     <base />
   </t-demo>
-  <t-demo title="02 带文案描述的加载组件">
+  <t-demo desc="带文案描述的加载组件">
     <text />
   </t-demo>
 </view>

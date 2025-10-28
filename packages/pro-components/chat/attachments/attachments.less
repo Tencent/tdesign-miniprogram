@@ -1,24 +1,24 @@
 @import '../../../components/common/style/base.less';
 
-@chat-attachments: ~'@{prefix}-attachments';
+@attachments: ~'@{prefix}-attachments';
 
-@chat-attachments-background-color: @bg-color-secondarycontainer;
-@chat-attachments-file-margin: 16rpx;
-@chat-attachments-file-margin-tiny: 8rpx;
-@chat-attachments-file-padding: 24rpx;
-@chat-attachments-file-image-size: 104rpx;
-@chat-attachments-file-width: 256rpx;
-@chat-attachments-file-height: 104rpx;
-@chat-attachments-file-icon-size: 64rpx;
-@chat-attachments-title-color: @text-color-primary;
-@chat-attachments-desc-color: @text-color-placeholder;
-@chat-attachments-title-font-size: 28rpx;
-@chat-attachments-desc-font-size: 24rpx;
-@chat-attachments-title-line-height: 44rpx;
-@chat-attachments-desc-line-height: 40rpx;
-@chat-attachments-title-margin-bottom: -2rpx;
+@attachments-background-color: @bg-color-secondarycontainer;
+@attachments-file-margin: 16rpx;
+@attachments-file-margin-tiny: 8rpx;
+@attachments-file-padding: 24rpx;
+@attachments-file-image-size: 104rpx;
+@attachments-file-width: 256rpx;
+@attachments-file-height: 104rpx;
+@attachments-file-icon-size: 64rpx;
+@attachments-title-color: @text-color-primary;
+@attachments-desc-color: @text-color-placeholder;
+@attachments-title-font-size: 28rpx;
+@attachments-desc-font-size: 24rpx;
+@attachments-title-line-height: 44rpx;
+@attachments-desc-line-height: 40rpx;
+@attachments-title-margin-bottom: -2rpx;
 
-.@{chat-attachments} {
+.@{attachments} {
   display: flex;
   width: 100%;
   height: auto;
@@ -80,7 +80,7 @@
   // 文件包装器
   &__file-wrap {
     box-sizing: border-box;
-    margin-left: @chat-attachments-file-margin;
+    margin-left: @attachments-file-margin;
 
     &:first-of-type {
       margin-left: 0;
@@ -90,10 +90,10 @@
   // 文件项样式
   &__file {
     border-radius: @radius-extraLarge;
-    margin-top: @chat-attachments-file-margin-tiny;
+    margin-top: @attachments-file-margin-tiny;
     display: block;
     position: relative;
-    background-color: @chat-attachments-background-color;
+    background-color: @attachments-background-color;
 
     // 删除按钮样式
     .cancel {
@@ -105,8 +105,8 @@
 
     // 图片文件样式 适配图片附件在聊天中的特殊样式
     &.file-image {
-      width: @chat-attachments-file-image-size;
-      height: @chat-attachments-file-image-size;
+      width: @attachments-file-image-size;
+      height: @attachments-file-image-size;
 
       .image {
         width: 100%;
@@ -117,15 +117,15 @@
 
     // 普通文件样式
     &.file {
-      width: @chat-attachments-file-width;
-      height: @chat-attachments-file-height;
+      width: @attachments-file-width;
+      height: @attachments-file-height;
       display: flex;
       align-items: stretch;
       justify-content: flex-start;
-      padding: 0 @chat-attachments-file-padding;
+      padding: 0 @attachments-file-padding;
 
       .image {
-        width: @chat-attachments-file-icon-size;
+        width: @attachments-file-icon-size;
         height: auto;
         box-sizing: border-box;
         overflow: hidden;
@@ -148,31 +148,31 @@
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        margin-left: @chat-attachments-file-margin;
+        margin-left: @attachments-file-margin;
 
         .title {
           width: 100%;
-          color: @chat-attachments-title-color;
-          font-size: @chat-attachments-title-font-size;
+          color: @attachments-title-color;
+          font-size: @attachments-title-font-size;
           font-style: normal;
           font-weight: 400;
-          line-height: @chat-attachments-title-line-height;
+          line-height: @attachments-title-line-height;
           /* 核心：单行溢出隐藏 + 显示省略号（兼容全浏览器） */
           white-space: nowrap; /* 强制文字在一行显示，不换行 */
           overflow: hidden; /* 超出容器部分隐藏 */
           text-overflow: ellipsis; /* 超出部分显示“...” */
           /* 移除冗余属性：原 -webkit-box 相关属性与 nowrap 冲突，且单行场景无需 */
-          margin-bottom: @chat-attachments-title-margin-bottom;
+          margin-bottom: @attachments-title-margin-bottom;
           padding: 0;
         }
 
         .desc {
           width: 100%;
-          color: @chat-attachments-desc-color;
-          font-size: @chat-attachments-desc-font-size;
+          color: @attachments-desc-color;
+          font-size: @attachments-desc-font-size;
           font-style: normal;
           font-weight: 400;
-          line-height: @chat-attachments-desc-line-height;
+          line-height: @attachments-desc-line-height;
         }
       }
     }
@@ -181,14 +181,14 @@
 
 // 对话中附件样式覆盖
 .inChat {
-  .@{chat-attachments}__file {
+  .@{attachments}__file {
     margin-top: 0;
-    margin-bottom: @chat-attachments-file-margin;
+    margin-bottom: @attachments-file-margin;
   }
 
   &.all_images {
     width: 100%;
-    .file-image.@{chat-attachments}__file {
+    .file-image.@{attachments}__file {
       background-color: transparent !important;
     }
     .file-image {
@@ -205,7 +205,7 @@
 
   &.all_files {
     width: auto;
-    .file-image.@{chat-attachments}__file {
+    .file-image.@{attachments}__file {
       background-color: transparent !important;
     }
     .file-image {
@@ -218,13 +218,13 @@
         border-radius: @radius-extraLarge;
       }
     }
-    .@{chat-attachments}__file-wrap {
+    .@{attachments}__file-wrap {
       margin-left: 0;
     }
-    .@{chat-attachments}__scrollable-content {
+    .@{attachments}__scrollable-content {
       display: contents;
     }
-    .file.@{chat-attachments}__file {
+    .file.@{attachments}__file {
       width: 352rpx;
     }
   }
@@ -233,7 +233,7 @@
 // 右侧布局下的附件样式
 .@{prefix}-chat__inner.right {
   .inChat {
-    .file-image.@{chat-attachments}__file {
+    .file-image.@{attachments}__file {
       text-align: right;
     }
   }

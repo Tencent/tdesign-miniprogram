@@ -4,7 +4,7 @@
     "t-tabs": "tdesign-miniprogram/tabs/tabs",
     "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
     "base": "./base",
-    "hook-component": "./hookComponent",
+    "hook-component": "./hook-component",
     "custom": "./custom",
     "codedemo": "./code",
     "docs": "./docs",

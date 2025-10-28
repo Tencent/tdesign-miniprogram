@@ -1,17 +1,13 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../../components/common/src/index';
 import config from '../../../../components/common/config';
 
-
 const { prefix } = config;
 const name = `${prefix}-chat-markdown`;
-const ROOT_COMPONENT_NAME = name;
 
 @wxComponent()
 export default class ChatMarkdownNode extends SuperComponent {
   options: ComponentsOptionsType = {
     multipleSlots: true,
-    addGlobalClass: true,
-    styleIsolation: 'shared',
   };
 
   properties = {
@@ -22,7 +18,7 @@ export default class ChatMarkdownNode extends SuperComponent {
   };
 
   data = {
-    COMPONENT_NAME: name,
+    classPrefix: name,
   };
 
   methods = {
@@ -40,7 +36,7 @@ export default class ChatMarkdownNode extends SuperComponent {
         this.setData({
           careMarkdown: this.selectOwnerComponent(),
         });
-        this.data.careMarkdown.__data__.name !== ROOT_COMPONENT_NAME;
+        this.data.careMarkdown.__data__.name !== name;
         this.setData({
           careMarkdown: this.data.careMarkdown.selectOwnerComponent(),
         })

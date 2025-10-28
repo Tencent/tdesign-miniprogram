@@ -20,6 +20,17 @@ const fetchStream = async (str, options) => {
 };
 
 Component({
+  properties: {
+    isActive: {
+      type: Boolean,
+      value: false,
+      observer: function (v) {
+        this.setData({
+          value: v ? '请为Tdesign设计三张品牌宣传图' : '', // 输入框的值
+        });
+      },
+    },
+  },
   options: {
     styleIsolation: 'shared',
   },
@@ -39,7 +50,7 @@ Component({
         },
       },
     ],
-    value: '请为Tdesign设计三张品牌宣传图', // 输入框的值
+    value: '', // 输入框的值
     loading: false, // 加载状态
     disabled: false, // 禁用状态
     inputStyle: '', // 输入框动态样式

@@ -1,6 +1,6 @@
 <wxs src="../../../components/common/utils.wxs" module="_" />
 
-<view class="class {{[classes]}} {{COMPONENT_NAME}}" style="{{_._style([style, customStyle])}}">
+<view class="class {{[classes]}} {{classPrefix}}" style="{{_._style([style, customStyle])}}">
   <scroll-view
     class="{{[listClasses]}}"
     scroll-y="{{true}}"
@@ -39,7 +39,7 @@
       <slot></slot>
     </block>
   </scroll-view>
-  <view class="{{[COMPONENT_NAME+'__footer']}}">
+  <view class="{{[classPrefix+'__footer']}}">
     <slot name="footer"></slot>
   </view>
 </view>

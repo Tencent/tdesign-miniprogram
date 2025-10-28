@@ -1,10 +1,13 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
+import config from '../../../components/common/config';
+
+const { prefix } = config;
+const name = `${prefix}-chat`;
 
 @wxComponent()
 export default class Chat extends SuperComponent {
   options: ComponentsOptionsType = {
     multipleSlots: true,
-    addGlobalClass: true,
   };
 
   externalClasses = ['slot-class'];
@@ -45,8 +48,7 @@ export default class Chat extends SuperComponent {
   };
 
   data = {
-    // 前缀
-    COMPONENT_NAME: 't-chat',
+    classPrefix: name,
     scrollViewTop: 0,
     classes: [],
     listClasses: [],
@@ -55,7 +57,7 @@ export default class Chat extends SuperComponent {
   };
 
   observers = {
-    'reverse, COMPONENT_NAME'() {
+    'reverse, classPrefix'() {
       this.setListClasses();
     },
     data() {
@@ -86,11 +88,11 @@ export default class Chat extends SuperComponent {
     setListClasses() {
       if (this.properties.reverse) {
         this.setData({
-          listClasses: [`${this.data.COMPONENT_NAME}__list`, `${this.data.COMPONENT_NAME}__list--reverse`],
+          listClasses: [`${this.data.classPrefix}__list`, `${this.data.classPrefix}__list--reverse`],
         });
       } else {
         this.setData({
-          listClasses: [`${this.data.COMPONENT_NAME}__list`],
+          listClasses: [`${this.data.classPrefix}__list`],
         });
       }
     },

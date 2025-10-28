@@ -8,8 +8,6 @@ const name = `${prefix}-chat-actionbar`;
 export default class ChatActionbar extends SuperComponent {
   options: ComponentsOptionsType = {
     multipleSlots: true,
-    addGlobalClass: true,
-    styleIsolation: 'shared',
   };
 
   properties = {
@@ -41,7 +39,7 @@ export default class ChatActionbar extends SuperComponent {
 
   data = {
     actions: [],
-    COMPONENT_NAME: name,
+    classPrefix: name,
     pComment: '',
     computedPlacement: '',
     iconMap: {

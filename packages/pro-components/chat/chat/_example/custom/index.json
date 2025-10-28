@@ -2,12 +2,12 @@
   "component": true,
   "styleIsolation": "shared",
   "usingComponents": {
+    "t-toast": "tdesign-miniprogram/toast/toast",
     "t-chat-message": "tdesign-miniprogram/chat-message/chat-message",
     "t-chat-content": "tdesign-miniprogram/chat-content/chat-content",
     "t-chat": "tdesign-miniprogram/chat/chat",
     "t-chat-sender": "tdesign-miniprogram/chat-sender/chat-sender",
     "t-chat-actionbar": "tdesign-miniprogram/chat-actionbar/chat-actionbar",
-    "chart-component": "../chartComponent",
-    "t-toast": "tdesign-miniprogram/toast/toast"
+    "chart-component": "../chart-component"
   }
 }

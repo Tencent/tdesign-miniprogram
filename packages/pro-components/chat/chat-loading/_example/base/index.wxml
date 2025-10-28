@@ -3,10 +3,10 @@
     <t-chat-loading animation="skeleton" />
   </view> -->
   <view class="chat-example-block">
-    <t-chat-loading animation="moving" />
+    <t-chat-loading animation="gradient" />
   </view>
   <view class="chat-example-block">
-    <t-chat-loading animation="gradient" />
+    <t-chat-loading animation="moving" />
   </view>
   <view class="chat-example-block">
     <t-chat-loading animation="circle" />
