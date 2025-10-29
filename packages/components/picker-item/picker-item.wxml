@@ -12,22 +12,49 @@
     class="{{classPrefix}}__wrapper"
     style="transition: transform {{ duration }}ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, {{ offset }}px, 0)"
   >
-    <view
-      class="{{_.cls(classPrefix + '__item', [['active', curIndex == index]])}}"
-      style="height: {{pickItemHeight}}px"
-      wx:for="{{formatOptions}}"
-      wx:key="value"
-      wx:for-item="option"
-      data-index="{{ index }}"
-      bind:tap="onClickItem"
-    >
-      <t-icon
-        wx:if="{{option[pickerKeys.icon]}}"
-        class="{{classPrefix}}__item-icon"
-        name="{{option[pickerKeys.icon]}}"
-      />
-      <text class="{{classPrefix}}__item-label">{{option[pickerKeys.label]}}</text>
-      <slot name="label-suffix--{{index}}"></slot>
+    <!-- 虚拟滚动：占位容器（撑开总高度） -->
+    <view wx:if="{{enableVirtualScroll}}" style="height: {{totalHeight}}px; position: relative;">
+      <!-- 可见区域（绝对定位） -->
+      <view style="position: absolute; top: {{virtualOffsetY}}px; left: 0; right: 0;">
+        <view
+          class="{{_.cls(classPrefix + '__item', [['active', curIndex == (virtualStartIndex + index)]])}}"
+          style="height: {{pickItemHeight}}px"
+          wx:for="{{visibleOptions}}"
+          wx:key="value"
+          wx:for-item="option"
+          data-index="{{ virtualStartIndex + index }}"
+          bind:tap="onClickItem"
+        >
+          <t-icon
+            wx:if="{{option[pickerKeys.icon]}}"
+            class="{{classPrefix}}__item-icon"
+            name="{{option[pickerKeys.icon]}}"
+          />
+          <text class="{{classPrefix}}__item-label">{{option[pickerKeys.label]}}</text>
+          <slot name="label-suffix--{{virtualStartIndex + index}}"></slot>
+        </view>
+      </view>
     </view>
+
+    <!-- 非虚拟滚动：原有实现 -->
+    <block wx:else>
+      <view
+        class="{{_.cls(classPrefix + '__item', [['active', curIndex == index]])}}"
+        style="height: {{pickItemHeight}}px"
+        wx:for="{{visibleOptions}}"
+        wx:key="value"
+        wx:for-item="option"
+        data-index="{{ index }}"
+        bind:tap="onClickItem"
+      >
+        <t-icon
+          wx:if="{{option[pickerKeys.icon]}}"
+          class="{{classPrefix}}__item-icon"
+          name="{{option[pickerKeys.icon]}}"
+        />
+        <text class="{{classPrefix}}__item-label">{{option[pickerKeys.label]}}</text>
+        <slot name="label-suffix--{{index}}"></slot>
+      </view>
+    </block>
   </view>
 </view>

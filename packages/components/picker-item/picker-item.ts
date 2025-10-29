@@ -13,6 +13,20 @@ const INERTIA_TIME = 300;
 // 且距离大于`MOMENTUM_DISTANCE`时，执行惯性滚动
 const INERTIA_DISTANCE = 15;
 
+// 虚拟滚动配置
+const VIRTUAL_SCROLL_CONFIG = {
+  ENABLE_THRESHOLD: 100, // 超过100个选项启用虚拟滚动
+  VISIBLE_COUNT: 5, // 可见区域显示5个选项
+  BUFFER_COUNT: 3, // 上下各缓冲3个选项
+  THROTTLE_TIME: 32, // 节流时间（约30fps）
+};
+
+// 性能监控阈值
+const PERFORMANCE_THRESHOLD = {
+  RENDER_TIME: 500, // 渲染时间超过500ms警告
+  OPTIONS_COUNT: 200, // 选项数量超过200警告
+};
+
 const range = function (num: number, min: number, max: number) {
   return Math.min(Math.max(num, min), max);
 };
@@ -70,6 +84,12 @@ export default class PickerItem extends SuperComponent {
     columnIndex: 0,
     pickerKeys: { value: 'value', label: 'label', icon: 'icon' },
     formatOptions: props.options.value,
+    // 虚拟滚动相关
+    enableVirtualScroll: false, // 是否启用虚拟滚动
+    visibleOptions: [], // 可见的选项列表
+    virtualStartIndex: 0, // 虚拟滚动起始索引
+    virtualOffsetY: 0, // 虚拟滚动偏移量
+    totalHeight: 0, // 总高度（用于占位）
   };
 
   lifetimes = {
@@ -78,6 +98,24 @@ export default class PickerItem extends SuperComponent {
       this.StartOffset = 0;
       this.startTime = 0;
       this._moveTimer = null;
+      this._renderStartTime = 0; // 性能监控：渲染开始时间
+    },
+    attached() {
+      // 性能监控：记录渲染开始时间
+      this._renderStartTime = Date.now();
+    },
+    ready() {
+      // 性能监控：计算渲染耗时
+      const renderTime = Date.now() - this._renderStartTime;
+      const optionsCount = this.getCount();
+
+      if (renderTime > PERFORMANCE_THRESHOLD.RENDER_TIME) {
+        console.warn(`[TDesign Picker] 渲染耗时过长: ${renderTime}ms, 选项数量: ${optionsCount}`);
+      }
+
+      if (optionsCount > PERFORMANCE_THRESHOLD.OPTIONS_COUNT) {
+        console.warn(`[TDesign Picker] 选项数量过多 (${optionsCount})，已自动启用虚拟滚动优化`);
+      }
     },
   };
 
@@ -105,21 +143,23 @@ export default class PickerItem extends SuperComponent {
 
     onTouchMove(event) {
       const { StartY, StartOffset } = this;
-      const { pickItemHeight } = this.data;
+      const { pickItemHeight, enableVirtualScroll } = this.data;
       // 偏移增量
       const deltaY = event.touches[0].clientY - StartY;
       const newOffset = range(StartOffset + deltaY, -(this.getCount() * pickItemHeight), 0);
 
-      // 数据过多简单节流
-      if (this.getCount() > 100) {
-        if (!this._moveTimer) {
-          this.setData({ offset: newOffset });
-          this._moveTimer = setTimeout(() => {
-            this._moveTimer = null;
-          }, 20);
-        }
-      } else {
+      // 优化节流策略：统一使用更激进的节流
+      if (!this._moveTimer) {
         this.setData({ offset: newOffset });
+
+        // 虚拟滚动：更新可见范围
+        if (enableVirtualScroll) {
+          this.updateVisibleOptions(newOffset);
+        }
+
+        this._moveTimer = setTimeout(() => {
+          this._moveTimer = null;
+        }, VIRTUAL_SCROLL_CONFIG.THROTTLE_TIME);
       }
     },
 
@@ -182,10 +222,14 @@ export default class PickerItem extends SuperComponent {
       const { options, value, pickerKeys, pickItemHeight, format, columnIndex } = this.data;
 
       const formatOptions = this.formatOption(options, columnIndex, format);
+      const optionsCount = formatOptions.length;
+
+      // 判断是否启用虚拟滚动
+      const enableVirtualScroll = optionsCount >= VIRTUAL_SCROLL_CONFIG.ENABLE_THRESHOLD;
 
       // 大数据量优化：使用 Map 快速查找索引
       let index: number = -1;
-      if (formatOptions.length > 500) {
+      if (optionsCount > 500) {
         // 构建临时 Map（只在查找时构建，不缓存）
         const valueMap = new Map<any, number>(formatOptions.map((item, idx) => [item[pickerKeys?.value], idx]));
         index = valueMap.get(value) ?? -1;
@@ -194,16 +238,73 @@ export default class PickerItem extends SuperComponent {
       }
       const selectedIndex = index > 0 ? index : 0;
 
-      this.setData(
-        {
-          formatOptions,
-          offset: -selectedIndex * pickItemHeight,
-          curIndex: selectedIndex,
-        },
-        () => {
-          this.updateSelected(selectedIndex, false);
-        },
-      );
+      const updateData: any = {
+        formatOptions,
+        offset: -selectedIndex * pickItemHeight,
+        curIndex: selectedIndex,
+        enableVirtualScroll,
+        totalHeight: optionsCount * pickItemHeight,
+      };
+
+      // 如果启用虚拟滚动，计算可见选项
+      if (enableVirtualScroll) {
+        const visibleRange = this.computeVirtualRange(-selectedIndex * pickItemHeight, optionsCount, pickItemHeight);
+        updateData.visibleOptions = formatOptions.slice(visibleRange.startIndex, visibleRange.endIndex);
+        updateData.virtualStartIndex = visibleRange.startIndex;
+        updateData.virtualOffsetY = visibleRange.startIndex * pickItemHeight;
+      } else {
+        // 不启用虚拟滚动时，visibleOptions 等于 formatOptions
+        updateData.visibleOptions = formatOptions;
+        updateData.virtualStartIndex = 0;
+        updateData.virtualOffsetY = 0;
+      }
+
+      this.setData(updateData, () => {
+        this.updateSelected(selectedIndex, false);
+      });
+    },
+
+    /**
+     * 计算虚拟滚动的可见范围
+     * @param offset 当前滚动偏移量
+     * @param totalCount 总选项数量
+     * @param itemHeight 单个选项高度
+     */
+    computeVirtualRange(offset: number, totalCount: number, itemHeight: number) {
+      const scrollTop = Math.abs(offset);
+      const { VISIBLE_COUNT, BUFFER_COUNT } = VIRTUAL_SCROLL_CONFIG;
+
+      // 计算起始索引（减去缓冲区）
+      const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight) - BUFFER_COUNT);
+      // 计算结束索引（加上可见数量和缓冲区）
+      const endIndex = Math.min(totalCount, startIndex + VISIBLE_COUNT + BUFFER_COUNT * 2);
+
+      return { startIndex, endIndex };
+    },
+
+    /**
+     * 更新虚拟滚动的可见选项
+     * @param offset 当前滚动偏移量（可选，不传则使用 data.offset）
+     */
+    updateVisibleOptions(offset?: number) {
+      const { formatOptions, pickItemHeight, enableVirtualScroll } = this.data;
+
+      if (!enableVirtualScroll) return;
+
+      const currentOffset = offset !== undefined ? offset : this.data.offset;
+      const visibleRange = this.computeVirtualRange(currentOffset, formatOptions.length, pickItemHeight);
+
+      // 只有当可见范围发生变化时才更新
+      if (
+        visibleRange.startIndex !== this.data.virtualStartIndex ||
+        visibleRange.endIndex !== this.data.virtualStartIndex + this.data.visibleOptions.length
+      ) {
+        this.setData({
+          visibleOptions: formatOptions.slice(visibleRange.startIndex, visibleRange.endIndex),
+          virtualStartIndex: visibleRange.startIndex,
+          virtualOffsetY: visibleRange.startIndex * pickItemHeight,
+        });
+      }
     },
 
     getCount() {
