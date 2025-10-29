@@ -76,6 +76,12 @@ default-value | Array | undefined | 展开的面板集合。非受控属性。TS
 -- | -- | --
 change | `(value: CollapseValue)` | 切换面板时触发，返回变化的值
 
+### Collapse Slots
+
+名称 | 描述
+-- | --
+\- | 默认插槽，自定义内容区域内容
+
 
 ### CollapsePanel Props
 
@@ -83,14 +89,25 @@ change | `(value: CollapseValue)` | 切换面板时触发，返回变化的值
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
-content | String / Slot | - | 折叠面板内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+content | String | - | 折叠面板内容 | N
 disabled | Boolean | undefined | 禁止当前面板展开，优先级大于 Collapse 的同名属性 | N
-expand-icon | Boolean / Slot | undefined | 当前折叠面板展开图标，优先级大于 Collapse 的同名属性。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
-header | String / Slot | - | 面板头内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
-header-left-icon | String / Slot | - | 面板头左侧图标。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
-header-right-content | String / Slot | - | 面板头的右侧区域，一般用于呈现面板操作。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+expand-icon | Boolean | undefined | 当前折叠面板展开图标，优先级大于 Collapse 的同名属性 | N
+header | String | - | 面板头内容 | N
+header-left-icon | String | - | 面板头左侧图标 | N
+header-right-content | String | - | 面板头的右侧区域，一般用于呈现面板操作 | N
 placement | String | bottom | `0.34.0`。选项卡内容的位置。可选项：bottom/top | N
 value | String / Number | - | 当前面板唯一标识，如果值为空则取当前面下标兜底作为唯一标识 | N
+
+### CollapsePanel Slots
+
+名称 | 描述
+-- | --
+\- | 默认插槽，作用同 `content` 插槽
+content | 自定义 `content` 显示内容
+expand-icon | 自定义 `expand-icon` 显示内容
+header | 自定义 `header` 显示内容
+header-left-icon | 自定义 `header-left-icon` 显示内容
+header-right-content | 自定义 `header-right-content` 显示内容
 
 ### CollapsePanel External Classes
 

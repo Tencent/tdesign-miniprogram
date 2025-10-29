@@ -8,10 +8,17 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
-action | Slot | - | action block。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
-description | String / Slot | - | empty component description。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+description | String | - | empty component description | N
 icon | String / Object | - | \- | N
-image | String / Slot | - | image url, or Image component props, or custom any node you need。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+image | String | - | image url, or Image component props, or custom any node you need | N
+
+### Empty Slots
+
+name | Description
+-- | --
+action | action block
+description | empty component description
+image | image url, or Image component props, or custom any node you need
 
 ### Empty External Classes
 

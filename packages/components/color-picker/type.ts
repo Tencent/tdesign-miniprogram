@@ -16,10 +16,26 @@ export interface TdColorPickerProps {
     value?: boolean;
   };
   /**
+   * 颜色模式选择。同时支持单色和渐变两种模式，可仅使用单色或者渐变其中一种模式，也可以同时使用。`monochrome` 表示单色，`linear-gradient` 表示渐变色
+   * @default "monochrome"
+   */
+  colorModes?: {
+    type: null;
+    value?: colorModesEnum | colorModesEnum[];
+  };
+  /**
    * 是否开启透明通道
    * @default false
    */
   enableAlpha?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 是否允许开启通过点击渐变轴增加渐变梯度，默认开启，关闭时只会存在起始和结束两个颜色
+   * @default true
+   */
+  enableMultipleGradient?: {
     type: BooleanConstructor;
     value?: boolean;
   };
@@ -95,5 +111,7 @@ export interface TdColorPickerProps {
     value?: boolean;
   };
 }
+
+export type colorModesEnum = 'monochrome' | 'linear-gradient';
 
 export type TypeEnum = 'base' | 'multiple';

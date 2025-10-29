@@ -48,10 +48,17 @@ isComponent: true
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
-action | Slot | - | 操作按钮。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
-description | String / Slot | - | 描述文字。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+description | String | - | 描述文字 | N
 icon | String / Object | - | 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon` | N
-image | String / Slot | - | 图片地址。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+image | String | - | 图片地址 | N
+
+### Empty Slots
+
+名称 | 描述
+-- | --
+action | 操作按钮
+description | 自定义 `description` 显示内容
+image | 自定义 `image` 显示内容
 
 ### Empty External Classes
 
