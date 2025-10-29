@@ -17,8 +17,10 @@ const INERTIA_DISTANCE = 15;
 const VIRTUAL_SCROLL_CONFIG = {
   ENABLE_THRESHOLD: 100, // 超过100个选项启用虚拟滚动
   VISIBLE_COUNT: 5, // 可见区域显示5个选项
-  BUFFER_COUNT: 3, // 上下各缓冲3个选项
-  THROTTLE_TIME: 32, // 节流时间（约30fps）
+  BUFFER_COUNT: 8, // 上下各缓冲8个选项（增加缓冲区，防止快速滑动时空白）
+  THROTTLE_TIME: 16, // 节流时间（60fps，提高更新频率）
+  FAST_SCROLL_BUFFER: 12, // 快速滑动时的额外缓冲区
+  FAST_SCROLL_THRESHOLD: 50, // 判定为快速滑动的速度阈值（px/frame）
 };
 
 // 性能监控阈值
@@ -98,7 +100,11 @@ export default class PickerItem extends SuperComponent {
       this.StartOffset = 0;
       this.startTime = 0;
       this._moveTimer = null;
+      this._animationTimer = null; // 动画期间更新虚拟滚动的定时器
       this._renderStartTime = 0; // 性能监控：渲染开始时间
+      this._lastOffset = 0; // 上一次的偏移量（用于计算滑动速度）
+      this._lastMoveTime = 0; // 上一次移动的时间
+      this._scrollDirection = 0; // 滑动方向：1向下，-1向上，0静止
     },
     attached() {
       // 性能监控：记录渲染开始时间
@@ -115,6 +121,17 @@ export default class PickerItem extends SuperComponent {
 
       if (optionsCount > PERFORMANCE_THRESHOLD.OPTIONS_COUNT) {
         console.warn(`[TDesign Picker] 选项数量过多 (${optionsCount})，已自动启用虚拟滚动优化`);
+      }
+    },
+    detached() {
+      // 清理定时器，防止内存泄漏
+      if (this._moveTimer) {
+        clearTimeout(this._moveTimer);
+        this._moveTimer = null;
+      }
+      if (this._animationTimer) {
+        clearInterval(this._animationTimer);
+        this._animationTimer = null;
       }
     },
   };
@@ -144,23 +161,51 @@ export default class PickerItem extends SuperComponent {
     onTouchMove(event) {
       const { StartY, StartOffset } = this;
       const { pickItemHeight, enableVirtualScroll } = this.data;
+      const currentTime = Date.now();
+
       // 偏移增量
       const deltaY = event.touches[0].clientY - StartY;
       const newOffset = range(StartOffset + deltaY, -(this.getCount() * pickItemHeight), 0);
 
-      // 优化节流策略：统一使用更激进的节流
-      if (!this._moveTimer) {
+      // 计算滑动速度和方向
+      const offsetDelta = newOffset - this._lastOffset;
+      const timeDelta = currentTime - this._lastMoveTime || 16;
+      const scrollSpeed = Math.abs(offsetDelta / timeDelta) * 16; // 转换为 px/frame
+
+      // 计算滑动方向（避免嵌套三元表达式）
+      if (offsetDelta > 0) {
+        this._scrollDirection = 1; // 向下滑动
+      } else if (offsetDelta < 0) {
+        this._scrollDirection = -1; // 向上滑动
+      } else {
+        this._scrollDirection = 0; // 静止
+      }
+
+      // 判断是否为快速滑动
+      const isFastScroll = scrollSpeed > VIRTUAL_SCROLL_CONFIG.FAST_SCROLL_THRESHOLD;
+
+      // 优化节流策略：快速滑动时立即更新，慢速滑动时节流
+      if (!this._moveTimer || isFastScroll) {
+        if (this._moveTimer) {
+          clearTimeout(this._moveTimer);
+          this._moveTimer = null;
+        }
+
         this.setData({ offset: newOffset });
 
-        // 虚拟滚动：更新可见范围
+        // 虚拟滚动：更新可见范围（快速滑动时使用更大的缓冲区）
         if (enableVirtualScroll) {
-          this.updateVisibleOptions(newOffset);
+          this.updateVisibleOptions(newOffset, isFastScroll);
         }
 
         this._moveTimer = setTimeout(() => {
           this._moveTimer = null;
         }, VIRTUAL_SCROLL_CONFIG.THROTTLE_TIME);
       }
+
+      // 记录当前状态
+      this._lastOffset = newOffset;
+      this._lastMoveTime = currentTime;
     },
 
     onTouchEnd(event) {
@@ -186,11 +231,64 @@ export default class PickerItem extends SuperComponent {
       // 调整偏移量
       const newOffset = range(offset + distance, -this.getCount() * pickItemHeight, 0);
       const index = range(Math.round(-newOffset / pickItemHeight), 0, this.getCount() - 1);
-      this.setData({
-        offset: -index * pickItemHeight,
-        duration: ANIMATION_DURATION,
-        curIndex: index,
-      });
+
+      // 判断是否为快速惯性滚动
+      const isFastInertia = Math.abs(distance) > pickItemHeight * 3;
+
+      // 立即更新虚拟滚动视图（修复惯性滚动后空白问题，快速滚动时使用更大缓冲区）
+      if (this.data.enableVirtualScroll) {
+        this.updateVisibleOptions(-index * pickItemHeight, isFastInertia);
+      }
+
+      // 清除之前的动画更新定时器
+      if (this._animationTimer) {
+        clearInterval(this._animationTimer);
+        this._animationTimer = null;
+      }
+
+      // 在动画执行期间定期更新虚拟滚动视图（确保动画过程流畅）
+      if (this.data.enableVirtualScroll && Math.abs(distance) > 0) {
+        const startOffset = offset;
+        const endOffset = -index * pickItemHeight;
+        const startTime = Date.now();
+
+        this._animationTimer = setInterval(() => {
+          const elapsed = Date.now() - startTime;
+          const progress = Math.min(elapsed / ANIMATION_DURATION, 1);
+
+          // 使用缓动函数计算当前偏移量
+          const easeOutCubic = 1 - (1 - progress) ** 3;
+          const currentOffset = startOffset + (endOffset - startOffset) * easeOutCubic;
+
+          // 快速惯性滚动时使用更大的缓冲区
+          this.updateVisibleOptions(currentOffset, isFastInertia);
+
+          if (progress >= 1) {
+            clearInterval(this._animationTimer);
+            this._animationTimer = null;
+          }
+        }, 16); // 约60fps
+      }
+
+      this.setData(
+        {
+          offset: -index * pickItemHeight,
+          duration: ANIMATION_DURATION,
+          curIndex: index,
+        },
+        () => {
+          // 动画结束后清除定时器并最终更新虚拟滚动视图
+          if (this._animationTimer) {
+            clearInterval(this._animationTimer);
+            this._animationTimer = null;
+          }
+          if (this.data.enableVirtualScroll) {
+            // 动画结束后使用正常缓冲区（不再是快速滚动状态）
+            this.updateVisibleOptions(-index * pickItemHeight, false);
+          }
+        },
+      );
+
       if (index === this._selectedIndex) return;
       this.updateSelected(index, true);
     },
@@ -269,15 +367,28 @@ export default class PickerItem extends SuperComponent {
      * @param offset 当前滚动偏移量
      * @param totalCount 总选项数量
      * @param itemHeight 单个选项高度
+     * @param isFastScroll 是否为快速滑动
      */
-    computeVirtualRange(offset: number, totalCount: number, itemHeight: number) {
+    computeVirtualRange(offset: number, totalCount: number, itemHeight: number, isFastScroll = false) {
       const scrollTop = Math.abs(offset);
-      const { VISIBLE_COUNT, BUFFER_COUNT } = VIRTUAL_SCROLL_CONFIG;
+      const { VISIBLE_COUNT, BUFFER_COUNT, FAST_SCROLL_BUFFER } = VIRTUAL_SCROLL_CONFIG;
 
-      // 计算起始索引（减去缓冲区）
-      const startIndex = Math.max(0, Math.floor(scrollTop / itemHeight) - BUFFER_COUNT);
-      // 计算结束索引（加上可见数量和缓冲区）
-      const endIndex = Math.min(totalCount, startIndex + VISIBLE_COUNT + BUFFER_COUNT * 2);
+      // 根据滑动速度动态调整缓冲区大小
+      const dynamicBuffer = isFastScroll ? FAST_SCROLL_BUFFER : BUFFER_COUNT;
+
+      // 根据滑动方向调整缓冲区分配
+      // 向上滑动（_scrollDirection = -1）：增加顶部缓冲区
+      // 向下滑动（_scrollDirection = 1）：增加底部缓冲区
+      const topBuffer = this._scrollDirection === -1 ? dynamicBuffer + 2 : dynamicBuffer;
+      const bottomBuffer = this._scrollDirection === 1 ? dynamicBuffer + 2 : dynamicBuffer;
+
+      // 计算当前可见区域的中心索引
+      const centerIndex = Math.floor(scrollTop / itemHeight);
+
+      // 计算起始索引（减去顶部缓冲区）
+      const startIndex = Math.max(0, centerIndex - topBuffer);
+      // 计算结束索引（加上可见数量和底部缓冲区）
+      const endIndex = Math.min(totalCount, centerIndex + VISIBLE_COUNT + bottomBuffer);
 
       return { startIndex, endIndex };
     },
@@ -285,14 +396,15 @@ export default class PickerItem extends SuperComponent {
     /**
      * 更新虚拟滚动的可见选项
      * @param offset 当前滚动偏移量（可选，不传则使用 data.offset）
+     * @param isFastScroll 是否为快速滑动
      */
-    updateVisibleOptions(offset?: number) {
+    updateVisibleOptions(offset?: number, isFastScroll = false) {
       const { formatOptions, pickItemHeight, enableVirtualScroll } = this.data;
 
       if (!enableVirtualScroll) return;
 
       const currentOffset = offset !== undefined ? offset : this.data.offset;
-      const visibleRange = this.computeVirtualRange(currentOffset, formatOptions.length, pickItemHeight);
+      const visibleRange = this.computeVirtualRange(currentOffset, formatOptions.length, pickItemHeight, isFastScroll);
 
       // 只有当可见范围发生变化时才更新
       if (
