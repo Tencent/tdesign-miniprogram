@@ -23,12 +23,6 @@ const VIRTUAL_SCROLL_CONFIG = {
   FAST_SCROLL_THRESHOLD: 50, // 判定为快速滑动的速度阈值（px/frame）
 };
 
-// 性能监控阈值
-const PERFORMANCE_THRESHOLD = {
-  RENDER_TIME: 500, // 渲染时间超过500ms警告
-  OPTIONS_COUNT: 200, // 选项数量超过200警告
-};
-
 const range = function (num: number, min: number, max: number) {
   return Math.min(Math.max(num, min), max);
 };
@@ -101,27 +95,9 @@ export default class PickerItem extends SuperComponent {
       this.startTime = 0;
       this._moveTimer = null;
       this._animationTimer = null; // 动画期间更新虚拟滚动的定时器
-      this._renderStartTime = 0; // 性能监控：渲染开始时间
       this._lastOffset = 0; // 上一次的偏移量（用于计算滑动速度）
       this._lastMoveTime = 0; // 上一次移动的时间
       this._scrollDirection = 0; // 滑动方向：1向下，-1向上，0静止
-    },
-    attached() {
-      // 性能监控：记录渲染开始时间
-      this._renderStartTime = Date.now();
-    },
-    ready() {
-      // 性能监控：计算渲染耗时
-      const renderTime = Date.now() - this._renderStartTime;
-      const optionsCount = this.getCount();
-
-      if (renderTime > PERFORMANCE_THRESHOLD.RENDER_TIME) {
-        console.warn(`[TDesign Picker] 渲染耗时过长: ${renderTime}ms, 选项数量: ${optionsCount}`);
-      }
-
-      if (optionsCount > PERFORMANCE_THRESHOLD.OPTIONS_COUNT) {
-        console.warn(`[TDesign Picker] 选项数量过多 (${optionsCount})，已自动启用虚拟滚动优化`);
-      }
     },
     detached() {
       // 清理定时器，防止内存泄漏
