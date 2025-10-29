@@ -77,6 +77,7 @@ export default class PickerItem extends SuperComponent {
       this.StartY = 0;
       this.StartOffset = 0;
       this.startTime = 0;
+      this._moveTimer = null;
     },
   };
 
@@ -108,12 +109,26 @@ export default class PickerItem extends SuperComponent {
       // 偏移增量
       const deltaY = event.touches[0].clientY - StartY;
       const newOffset = range(StartOffset + deltaY, -(this.getCount() * pickItemHeight), 0);
-      this.setData({
-        offset: newOffset,
-      });
+
+      // 数据过多简单节流
+      if (this.getCount() > 100) {
+        if (!this._moveTimer) {
+          this.setData({ offset: newOffset });
+          this._moveTimer = setTimeout(() => {
+            this._moveTimer = null;
+          }, 20);
+        }
+      } else {
+        this.setData({ offset: newOffset });
+      }
     },
 
     onTouchEnd(event) {
+      if (this._moveTimer) {
+        clearTimeout(this._moveTimer);
+        this._moveTimer = null;
+      }
+
       const { offset, pickItemHeight } = this.data;
       const { startTime } = this;
       if (offset === this.StartOffset) {
@@ -168,7 +183,15 @@ export default class PickerItem extends SuperComponent {
 
       const formatOptions = this.formatOption(options, columnIndex, format);
 
-      const index = formatOptions.findIndex((item: PickerItemOption) => item[pickerKeys?.value] === value);
+      // 大数据量优化：使用 Map 快速查找索引
+      let index: number = -1;
+      if (formatOptions.length > 500) {
+        // 构建临时 Map（只在查找时构建，不缓存）
+        const valueMap = new Map<any, number>(formatOptions.map((item, idx) => [item[pickerKeys?.value], idx]));
+        index = valueMap.get(value) ?? -1;
+      } else {
+        index = formatOptions.findIndex((item: PickerItemOption) => item[pickerKeys?.value] === value);
+      }
       const selectedIndex = index > 0 ? index : 0;
 
       this.setData(
@@ -185,6 +208,17 @@ export default class PickerItem extends SuperComponent {
 
     getCount() {
       return this.data?.options?.length;
+    },
+
+    getCurrentSelected() {
+      const { offset, pickItemHeight, formatOptions, pickerKeys } = this.data;
+      const currentIndex = Math.max(0, Math.min(Math.round(-offset / pickItemHeight), this.getCount() - 1));
+
+      return {
+        index: currentIndex,
+        value: formatOptions[currentIndex]?.[pickerKeys?.value],
+        label: formatOptions[currentIndex]?.[pickerKeys?.label],
+      };
     },
   };
 }

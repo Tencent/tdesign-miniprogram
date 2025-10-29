@@ -29,8 +29,11 @@ export default class Picker extends SuperComponent {
   };
 
   observers = {
-    'value, visible'() {
-      this.updateChildren();
+    'value, visible'(value, visible) {
+      // 只在打开弹窗或value变化时更新，关闭时不更新避免滚动
+      if (visible) {
+        this.updateChildren();
+      }
     },
   };
 
@@ -82,8 +85,21 @@ export default class Picker extends SuperComponent {
     },
 
     onConfirm() {
-      const [value, label] = this.getSelectedValue();
-      const columns = this.getColumnIndexes();
+      // 获取当前实际显示的选中值
+      const value = [];
+      const label = [];
+      const columns = [];
+
+      this.$children.forEach((child, columnIndex) => {
+        const current = child.getCurrentSelected();
+
+        value.push(current.value);
+        label.push(current.label);
+        columns.push({
+          column: columnIndex,
+          index: current.index,
+        });
+      });
 
       this.close('confirm-btn');
       this.triggerEvent('confirm', { value, label, columns });
