@@ -47,6 +47,7 @@
   position: absolute;
   width: 100%;
   bottom: 0rpx;
+  background-color: #ffffff;
 }
 
 .demo-footer {

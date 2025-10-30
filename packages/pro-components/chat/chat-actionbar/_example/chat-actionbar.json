@@ -2,10 +2,6 @@
   "navigationBarTitleText": "ChatActionbar 聊天操作栏",
   "usingComponents": {
     "base": "./base",
-    "action": "./action",
-    "comment": "./comment",
-    "layout": "./layout",
-    "copy": "./copy",
-    "t-navbar": "tdesign-miniprogram/navbar/navbar"
+    "comment": "./comment"
   }
 }

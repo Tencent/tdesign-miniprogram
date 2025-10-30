@@ -1,5 +1,5 @@
 // import { Lexer } from 'marked';
-import markdownData from './mock-nodes.js';
+import markdownData from './mock.js';
 
 // 创建Lexer实例时添加配置，禁用gfm规范中的缩进代码块
 // const lexer = new Lexer({});

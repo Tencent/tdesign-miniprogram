@@ -43,6 +43,17 @@ const fetchStream = async (str, options) => {
 };
 
 Component({
+  properties: {
+    isActive: {
+      type: Boolean,
+      value: false,
+      observer: function (v) {
+        this.setData({
+          value: v ? '南极的自动提款机叫什么名字' : '', // 输入框的值
+        });
+      },
+    },
+  },
   data: {
     chatList: [
       {
@@ -70,7 +81,8 @@ Component({
         },
       },
     ],
-    value: '南极的自动提款机叫什么名字', // 输入框的值
+
+    value: '',
     loading: false, // 加载状态
     disabled: false, // 禁用状态
     inputStyle: '', // 动态样式
@@ -220,6 +232,7 @@ Component({
   },
   lifetimes: {
     attached: function () {
+      console.log('-----attached----');
       /**
        * 计算内容区域高度
        * 生成CSS calc表达式：calc(100vh - 96rpx - 导航高度 - 底部安全区域高度)
@@ -227,10 +240,9 @@ Component({
       try {
         // 获取当前的导航栏高度和安全区域高度
         const navigationBarHeight = getNavigationBarHeight() || 0;
-        const safeAreaBottom = getSafeAreaHeight() || 0;
 
         // 生成CSS calc表达式字符串
-        const contentHeight = `calc(100vh - 96rpx - ${navigationBarHeight}px - ${safeAreaBottom}px)`;
+        const contentHeight = `calc(100vh - 96rpx - ${navigationBarHeight}px)`;
 
         this.setData({
           contentHeight: contentHeight,

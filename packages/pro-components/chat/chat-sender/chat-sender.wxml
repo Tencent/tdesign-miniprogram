@@ -1,16 +1,16 @@
 <wxs src="./chat-sender.wxs" module="_this" />
 
 <view
-  class="class {{COMPONENT_NAME}}"
+  class="class {{classPrefix}}"
   bindtap="handleOutsideClick"
   style="{{_this._style([style, customStyle, inputStyle])}}"
 >
   <view
-    class="{{COMPONENT_NAME + '__header'}}"
+    class="{{classPrefix + '__header'}}"
     style="{{(attachmentsProps.items && attachmentsProps.items.length > 0)?'margin-top:-8rpx;':''}}"
   >
     <block wx:if="{{attachmentsProps.items && attachmentsProps.items.length > 0}}">
-      <view class="{{COMPONENT_NAME + '__attachments'}}">
+      <view class="{{classPrefix + '__attachments'}}">
         <attachments
           items="{{attachmentsProps.items}}"
           removable="{{attachmentsProps.removable}}"
@@ -27,7 +27,7 @@
     </block>
   </view>
 
-  <view class="{{COMPONENT_NAME + '__textarea'}} {{focusFlag ? COMPONENT_NAME + '__textarea--focus' : ''}}">
+  <view class="{{classPrefix + '__textarea'}} {{focusFlag ? classPrefix + '__textarea--focus' : ''}}">
     <view class="textarea-hook">
       <slot name="input-prefix"></slot>
       <textarea
@@ -53,15 +53,15 @@
       <view class="placeholder {{focusFlag || value ? 'hide' : ''}}">{{placeholder}}</view>
     </view>
 
-    <view class="{{COMPONENT_NAME + '__footer'}}">
-      <view class="{{COMPONENT_NAME + '__mode'}}">
+    <view class="{{classPrefix + '__footer'}}">
+      <view class="{{classPrefix + '__mode'}}">
         <slot name="footerPrefix"></slot>
       </view>
 
-      <view class="{{COMPONENT_NAME + '__button'}}">
-        <view class="{{COMPONENT_NAME + '__button__sendbtn'}}">
+      <view class="{{classPrefix + '__button'}}">
+        <view class="{{classPrefix + '__button__sendbtn'}}">
           <block wx:if="{{renderPresets}}">
-            <view class="{{COMPONENT_NAME + '__button__sendbtn__default'}}">
+            <view class="{{classPrefix + '__button__sendbtn__default'}}">
               <block wx:for="{{renderPresets}}" wx:for-item="item" wx:for-index="index" wx:key="index">
                 <view>
                   <block wx:if="{{item.name === 'upload'}}">
@@ -95,7 +95,7 @@
                         bindtap="handleSendClick"
                       >
                         <block wx:if="{{!loading}}">
-                          <t-icon name="send-filled" size="{{20}}" color="#ffffff" />
+                          <t-icon name="send-filled" size="40rpx" color="#ffffff" />
                         </block>
                         <block wx:else>
                           <view style="width: 24rpx; height: 24rpx; background-color: #ffffff" />
@@ -117,16 +117,16 @@
 </view>
 <view
   wx:if="{{visible && uploadPlacement === 'bottom'}}"
-  class="{{COMPONENT_NAME + '__footer__upload'}}"
+  class="{{classPrefix + '__footer__upload'}}"
   catchtap="handleUploadClick"
 >
   <block wx:for="{{uploadNames}}" wx:for-item="name" wx:for-index="index" wx:key="index">
-    <view class="{{COMPONENT_NAME + '__footer__upload__item'}}" bindtap="handleUploadEntryClick" data-name="{{name}}">
-      <view class="{{COMPONENT_NAME + '__footer__upload__item__icon'}}">
+    <view class="{{classPrefix + '__footer__upload__item'}}" bindtap="handleUploadEntryClick" data-name="{{name}}">
+      <view class="{{classPrefix + '__footer__upload__item__icon'}}">
         <t-icon name="{{uploadConfig[name].iconClass}}" size="56rpx" />
       </view>
 
-      <view class="{{COMPONENT_NAME + '__footer__upload__item__text'}}"> {{uploadConfig[name].text}} </view>
+      <view class="{{classPrefix + '__footer__upload__item__text'}}"> {{uploadConfig[name].text}} </view>
     </view>
   </block>
 </view>

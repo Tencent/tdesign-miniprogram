@@ -20,6 +20,18 @@ const fetchStream = async (str, options) => {
 };
 
 Component({
+  properties: {
+    isActive: {
+      type: Boolean,
+      value: false,
+      observer: function (v) {
+        this.setData({
+          value: v ? '南极的自动提款机叫什么名字' : '', // 输入框的值
+        });
+      },
+    },
+  },
+
   options: {
     styleIsolation: 'shared',
   },
@@ -38,7 +50,7 @@ Component({
         },
       },
     ],
-    value: '北京今天早晚高峰交通情况如何，需要分别给出曲线图表示每个时段', // 输入框的值
+    value: '', // 输入框的值
     loading: false, // 加载状态
     disabled: false, // 禁用状态
     inputStyle: '', // 动态样式
@@ -258,10 +270,9 @@ Component({
       try {
         // 获取当前的导航栏高度和安全区域高度
         const navigationBarHeight = getNavigationBarHeight() || 0;
-        const safeAreaBottom = getSafeAreaHeight() || 0;
 
         // 生成CSS calc表达式字符串
-        const contentHeight = `calc(100vh - 96rpx - ${navigationBarHeight}px - ${safeAreaBottom}px)`;
+        const contentHeight = `calc(100vh - 96rpx - ${navigationBarHeight}px)`;
 
         this.setData({
           contentHeight: contentHeight,

@@ -8,8 +8,6 @@ const name = `${prefix}-chat-actionbar`;
 export default class ChatActionbar extends SuperComponent {
   options: ComponentsOptionsType = {
     multipleSlots: true,
-    addGlobalClass: true,
-    styleIsolation: 'shared',
   };
 
   properties = {
@@ -41,15 +39,14 @@ export default class ChatActionbar extends SuperComponent {
 
   data = {
     actions: [],
-    COMPONENT_NAME: name,
+    classPrefix: name,
     pComment: '',
-    computedPlacement: '',
     iconMap: {
       good: 'thumb-up',
       bad: 'thumb-down',
       refresh: 'refresh',
-      copy: 'file-copy',
-      share: 'share',
+      copy: 'copy',
+      share: 'share-1',
     },
     iconActiveMap: {
       good: 'thumb-up-filled',
@@ -62,9 +59,6 @@ export default class ChatActionbar extends SuperComponent {
       this.setData({
         pComment: newVal || '',
       });
-    },
-    placement() {
-      this.setComputedPlacement();
     },
     'actionBar, pComment'() {
       this.setActions();
@@ -152,12 +146,6 @@ export default class ChatActionbar extends SuperComponent {
       });
     },
 
-    setComputedPlacement() {
-      this.setData({
-        computedPlacement: this.properties.placement || 'start',
-      });
-    },
-
     setActions() {
       const baseActions = [];
       if (Array.isArray(this.properties.actionBar)) {
@@ -193,7 +181,6 @@ export default class ChatActionbar extends SuperComponent {
       this.setData({
         pComment: this.properties.comment || '',
       });
-      this.setComputedPlacement();
       this.setActions();
     },
 

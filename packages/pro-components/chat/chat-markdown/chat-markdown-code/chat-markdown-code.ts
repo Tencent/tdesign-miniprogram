@@ -1,13 +1,13 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../../components/common/src/index';
+import config from '../../../../components/common/config';
 
-
+const { prefix } = config;
+const name = `${prefix}-chat-markdown-code`;
 
 @wxComponent()
 export default class ChatMarkdownCode extends SuperComponent {
   options: ComponentsOptionsType = {
     multipleSlots: true,
-    addGlobalClass: true,
-    styleIsolation: 'shared',
   };
 
   properties = {
@@ -17,7 +17,9 @@ export default class ChatMarkdownCode extends SuperComponent {
     },
   };
 
-  data = {};
+  data = {
+    classPrefix: name,
+  };
 
   lifetimes = {
     created() {},
@@ -25,5 +27,3 @@ export default class ChatMarkdownCode extends SuperComponent {
     detached() {},
   };
 }
-
-

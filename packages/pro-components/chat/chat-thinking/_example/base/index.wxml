@@ -1,4 +1,9 @@
-<view>
-  <t-chat-thinking content="{{content}}" layout="block" status="{{status}}" animation="moving"
-    bind:expandChange="handleExpandChange" />
+<view class="chat-example-block">
+  <t-chat-thinking
+    content="{{content}}"
+    layout="block"
+    status="{{status}}"
+    animation="moving"
+    bind:expandChange="handleExpandChange"
+  />
 </view>

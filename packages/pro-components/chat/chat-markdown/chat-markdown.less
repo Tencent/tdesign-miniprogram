@@ -1,39 +1,31 @@
 @import '../../../components/common/style/base.less';
 
-@chat-markdown-prefix: ~'@{prefix}-chat-markdown';
+@chat-markdown: ~'@{prefix}-chat-markdown';
 
-// Chat Markdown 变量定义
-@chat-color: #16181a;
-@chat-line-height: 1.75;
-@chat-font-size-h1: 2em;
-@chat-font-size-h2: 1.75em;
-@chat-font-size-h3: 1.5em;
-@chat-font-size-h4: 1.25em;
-@chat-font-size-h5: 1em;
-@chat-font-size-h6: 0.75em;
-@chat-color-blockquote: #59636e;
-@chat-border-blockquote: 8rpx solid @chat-border-color;
-@chat-border-padding: 0.75em;
-@chat-font-weight-h: bold;
-@chat-height-hr: 6rpx;
-@chat-border-color: #d1d9e0;
-@chat-link-color: #126dff;
-@chat-codespan-bg: #f6f8fa;
-@chat-border-width: 1rpx;
-@chat-codespan-border: #eaedf0;
-@chat-table-header-bg: #f0f0f0;
-@chat-table-border: #ccc;
-@chat-codespan-spacer-1: 4rpx;
-@chat-codespan-spacer-2: 8rpx;
-@chat-codespan-font-size: 0.8em;
-@chat-table-padding: 5rpx 10rpx;
+@chat-markdown-color: @text-color-primary;
+@chat-markdown-line-height: 1.75;
+@chat-markdown-h1: 2em;
+@chat-markdown-h2: 1.75em;
+@chat-markdown-h3: 1.5em;
+@chat-markdown-h4: 1.25em;
+@chat-markdown-h5: 1em;
+@chat-markdown-h6: 0.75em;
+@chat-markdown-blockquote-color: @text-color-primary;
+@chat-markdown-blockquote-bg-color: @bg-color-secondarycontainer;
+@chat-markdown-blockquote-border: 4rpx solid @component-border;
+@chat-markdown-blockquote-padding: 0 0.75em;
+@chat-markdown-hr-height: 6rpx;
+@chat-markdown-link-color: @brand-color;
+@chat-markdown-codespan-bg-color: @bg-color-page;
+@chat-markdown-codespan-font-size: 0.8em;
+@chat-markdown-table-header-bg-color: @bg-color-component;
+@chat-markdown-table-padding: 5rpx 10rpx;
 
-// Chat Markdown 组件样式
-.@{chat-markdown-prefix} {
-  color: @chat-color;
+.@{chat-markdown} {
+  color: @chat-markdown-color;
   word-wrap: break-word;
   word-break: break-word;
-  line-height: @chat-line-height;
+  line-height: @chat-markdown-line-height;
 
   // 内联样式
   &-inline {
@@ -50,41 +42,42 @@
 
   // 引用块样式
   &-blockquote {
-    padding: 0 @chat-border-padding;
-    color: @chat-color-blockquote;
-    border-left: @chat-border-blockquote;
+    padding: @chat-markdown-blockquote-padding;
+    color: @chat-markdown-blockquote-color;
+    background-color: @chat-markdown-blockquote-bg-color;
+    border-left: @chat-markdown-blockquote-border;
     margin-bottom: @spacer-1;
   }
 
   // 标题样式
   &-h {
-    font-size: @chat-font-size-h5;
+    font-size: @chat-markdown-h5;
     margin: @spacer-1 0;
-    font-weight: @chat-font-weight-h;
+    font-weight: bold;
 
     // 各级标题
     &1 {
-      font-size: @chat-font-size-h1;
+      font-size: @chat-markdown-h1;
     }
 
     &2 {
-      font-size: @chat-font-size-h2;
+      font-size: @chat-markdown-h2;
     }
 
     &3 {
-      font-size: @chat-font-size-h3;
+      font-size: @chat-markdown-h3;
     }
 
     &4 {
-      font-size: @chat-font-size-h4;
+      font-size: @chat-markdown-h4;
     }
 
     &5 {
-      font-size: @chat-font-size-h5;
+      font-size: @chat-markdown-h5;
     }
 
     &6 {
-      font-size: @chat-font-size-h6;
+      font-size: @chat-markdown-h6;
     }
   }
 
@@ -100,10 +93,10 @@
 
   // 分割线样式
   &-hr {
-    height: @chat-height-hr;
+    height: @chat-markdown-hr-height;
     padding: 0;
     margin: @spacer-1 0;
-    background-color: @chat-border-color;
+    background-color: @component-border;
     border: 0;
   }
 
@@ -127,7 +120,7 @@
 
   // 链接样式
   &-link {
-    color: @chat-link-color;
+    color: @chat-markdown-link-color;
   }
 
   // 删除线样式
@@ -137,13 +130,13 @@
 
   // 代码样式
   &-codespan {
-    padding: @chat-codespan-spacer-1 @chat-codespan-spacer-2;
-    margin: 0 @chat-codespan-spacer-1;
-    border-radius: @chat-codespan-spacer-2;
-    font-size: @chat-codespan-font-size;
+    padding: 4rpx 8rpx;
+    margin: 0 4rpx;
+    border-radius: 8rpx;
+    font-size: @chat-markdown-codespan-font-size;
     overflow-x: auto;
-    background-color: @chat-codespan-bg;
-    border: @chat-border-width solid @chat-codespan-border;
+    background-color: @chat-markdown-codespan-bg-color;
+    border: 1rpx solid @component-border;
   }
 
   // 表格样式
@@ -171,18 +164,18 @@
     &-th {
       display: table-cell;
       vertical-align: middle;
-      background-color: @chat-table-header-bg;
-      font-weight: @chat-font-weight-h;
-      padding: @chat-table-padding;
-      border: @chat-border-width solid @chat-table-border;
+      background-color: @chat-markdown-table-header-bg-color;
+      font-weight: bold;
+      padding: @chat-markdown-table-padding;
+      border: 1rpx solid @component-border;
     }
 
     // 表格单元格
     &-td {
       display: table-cell;
       vertical-align: middle;
-      padding: @chat-table-padding;
-      border: @chat-border-width solid @chat-table-border;
+      padding: @chat-markdown-table-padding;
+      border: 1rpx solid @component-border;
     }
   }
 }

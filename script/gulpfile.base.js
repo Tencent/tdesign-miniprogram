@@ -166,6 +166,7 @@ module.exports = (src, dist, moduleName) => {
   tasks.wxml = () =>
     gulp
       .src(globs.wxml, { ...srcOptions, since: since(tasks.wxml) })
+      .pipe(tasks.replacePaths())
       .pipe(
         gulpIf(
           isComponent(src) && isProduction,

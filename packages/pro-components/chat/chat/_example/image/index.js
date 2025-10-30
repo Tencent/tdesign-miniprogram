@@ -20,6 +20,17 @@ const fetchStream = async (str, options) => {
 };
 
 Component({
+  properties: {
+    isActive: {
+      type: Boolean,
+      value: false,
+      observer: function (v) {
+        this.setData({
+          value: v ? '请为Tdesign设计三张品牌宣传图' : '', // 输入框的值
+        });
+      },
+    },
+  },
   options: {
     styleIsolation: 'shared',
   },
@@ -39,7 +50,7 @@ Component({
         },
       },
     ],
-    value: '请为Tdesign设计三张品牌宣传图', // 输入框的值
+    value: '', // 输入框的值
     loading: false, // 加载状态
     disabled: false, // 禁用状态
     inputStyle: '', // 输入框动态样式
@@ -164,28 +175,49 @@ Component({
           status: 'complete',
           data: [
             {
-              url: 'https://tdesign.gtimg.com/demo/demo-image-2.png',
-              format: 'png',
-              width: 1204,
-              height: 1024,
+              name: 'sample1.png',
+              url: 'https://tdesign.gtimg.com/site/avatar.jpg',
+              fileType: 'image',
+              status: 'success',
               size: 1032,
-              style: 'height: 256rpx; width: 256rpx;',
+              width: 128,
+              height: 128,
             },
             {
-              url: 'https://tdesign.gtimg.com/demo/demo-image-2.png',
-              format: 'png',
-              width: 1204,
-              height: 1024,
+              name: 'sample2.png',
+              url: 'https://tdesign.gtimg.com/site/avatar.jpg',
+              fileType: 'image',
+              status: 'success',
               size: 1032,
-              style: 'height: 256rpx; width: 256rpx;',
+              width: 128,
+              height: 128,
             },
             {
-              url: 'https://tdesign.gtimg.com/demo/demo-image-3.png',
-              format: 'png',
-              width: 1204,
-              height: 1024,
+              name: 'sample3.png',
+              url: 'https://tdesign.gtimg.com/site/avatar.jpg',
+              fileType: 'image',
+              status: 'success',
               size: 1032,
-              style: 'height: 256rpx; width: 256rpx;',
+              width: 128,
+              height: 128,
+            },
+            {
+              name: 'sample4.png',
+              url: 'https://tdesign.gtimg.com/site/avatar.jpg',
+              fileType: 'image',
+              status: 'success',
+              size: 1032,
+              width: 128,
+              height: 128,
+            },
+            {
+              name: 'sample5.png',
+              url: 'https://tdesign.gtimg.com/site/avatar.jpg',
+              fileType: 'image',
+              status: 'success',
+              size: 1032,
+              width: 128,
+              height: 128,
             },
           ],
         });
@@ -238,10 +270,9 @@ Component({
       try {
         // 获取当前的导航栏高度和安全区域高度
         const navigationBarHeight = getNavigationBarHeight() || 0;
-        const safeAreaBottom = getSafeAreaHeight() || 0;
 
         // 生成CSS calc表达式字符串
-        const contentHeight = `calc(100vh - 96rpx - ${navigationBarHeight}px - ${safeAreaBottom}px)`;
+        const contentHeight = `calc(100vh - 96rpx - ${navigationBarHeight}px)`;
 
         this.setData({
           contentHeight: contentHeight,

@@ -8,7 +8,6 @@ const name = `${prefix}-chat-thinking`;
 export default class ChatThinking extends SuperComponent {
   options = {
     multipleSlots: true,
-    addGlobalClass: true,
   };
 
   properties = {
@@ -30,7 +29,7 @@ export default class ChatThinking extends SuperComponent {
     },
     animation: {
       type: String,
-      value: 'circle',
+      value: 'moving',
     },
     collapsed: {
       type: Boolean,
@@ -41,7 +40,7 @@ export default class ChatThinking extends SuperComponent {
   data = {
     localCollapsed: false,
     contentStyle: '',
-    COMPONENT_NAME: name,
+    classPrefix: name,
   };
 
   observers = {

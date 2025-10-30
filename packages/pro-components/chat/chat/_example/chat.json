@@ -1,15 +1,14 @@
 {
   "navigationBarTitleText": "Chat",
   "usingComponents": {
+    "t-tabs": "tdesign-miniprogram/tabs/tabs",
+    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
     "base": "./base",
-    "hook-component": "./hookComponent",
+    "hook-component": "./hook-component",
     "custom": "./custom",
     "codedemo": "./code",
     "docs": "./docs",
     "imagedemo": "./image",
-    "agent": "./agent",
-    "t-navbar": "tdesign-miniprogram/navbar/navbar",
-    "t-tabs": "tdesign-miniprogram/tabs/tabs",
-    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel"
+    "agent": "./agent"
   }
 }

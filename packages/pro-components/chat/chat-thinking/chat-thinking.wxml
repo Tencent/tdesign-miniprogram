@@ -1,7 +1,8 @@
-<wxs src="../common/utils.wxs" module="_" />
-<view class="class {{[COMPONENT_NAME]}}" style="{{_._style([style, customStyle])}}">
-  <view class="{{[COMPONENT_NAME+'__inner',COMPONENT_NAME+'__inner__'+layout]}}">
-    <view class="{{[COMPONENT_NAME+'__hd']}}">
+<wxs src="../../../components/common/utils.wxs" module="_" />
+
+<view class="class {{[classPrefix]}}" style="{{_._style([style, customStyle])}}">
+  <view class="{{[classPrefix+'__inner',classPrefix+'__inner__'+layout]}}">
+    <view class="{{[classPrefix+'__hd']}}">
       <block wx:if="{{status==='error'}}">
         <t-icon class="close-icon" name="close-circle" size="40rpx"></t-icon>
       </block>
@@ -11,15 +12,22 @@
       <block wx:else>
         <t-chat-loading animation="{{animation}}"></t-chat-loading>
       </block>
-      <view class="{{[COMPONENT_NAME+'__hd__txt']}}">{{content.title||"正在思考中..."}}</view>
+      <view class="{{[classPrefix+'__hd__txt']}}">{{content.title||"正在思考中..."}}</view>
       <view data-event-opts="{{[['tap',[['handleCollapse',['$event']]]]]}}">
-        <t-icon class="collapse-icon" wx:if="{{localCollapsed}}" name="chevron-up" size="40rpx" bindtap="handleCollapse"
-          style="transform: rotate(0deg);"></t-icon>
-        <t-icon class="collapse-icon" wx:else name="chevron-up" size="40rpx" bindtap="handleCollapse"
-          style="transform: rotate(180deg);"></t-icon>
+        <t-icon
+          class="collapse-icon"
+          name="chevron-up"
+          size="40rpx"
+          bindtap="handleCollapse"
+          style="{{localCollapsed ? 'transform: rotate(180deg)' : ''}}"
+        ></t-icon>
       </view>
     </view>
-    <view hidden="{{!(!localCollapsed)}}" class="{{[COMPONENT_NAME+'__bd',COMPONENT_NAME+'__bd__'+layout]}}"
-      style="{{(contentStyle)}}">{{''+(content.text||"")+''}}</view>
+    <view
+      hidden="{{!(!localCollapsed)}}"
+      class="{{[classPrefix+'__bd',classPrefix+'__bd__'+layout]}}"
+      style="{{(contentStyle)}}"
+      >{{''+(content.text||"")+''}}</view
+    >
   </view>
 </view>

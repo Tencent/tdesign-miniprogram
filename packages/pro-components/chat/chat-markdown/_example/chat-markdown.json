@@ -6,7 +6,6 @@
     "code": "./code",
     "sheet": "./sheet",
     "url": "./url",
-    "refer": "./refer",
-    "t-navbar": "tdesign-miniprogram/navbar/navbar"
+    "refer": "./refer"
   }
 }

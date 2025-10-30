@@ -9,8 +9,6 @@ const name = `${prefix}-chat-markdown`;
 export default class ChatMarkdown extends SuperComponent {
   options: ComponentsOptionsType = {
     multipleSlots: true,
-    addGlobalClass: true,
-    styleIsolation: 'shared',
   };
 
   properties = {
@@ -39,7 +37,7 @@ export default class ChatMarkdown extends SuperComponent {
   };
 
   data = {
-    COMPONENT_NAME: name,
+    classPrefix: name,
     nodes: [], // 解析后的节点
     name, // 用于子组件查询父组件时的标识符
   };

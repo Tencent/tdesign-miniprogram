@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../../
 import config from '../../../../components/common/config';
 
 const { prefix } = config;
-const name = `${prefix}-chat`;
+const name = `${prefix}-chat-markdown-table`;
 
 @wxComponent()
 export default class ChatMarkdownTable extends SuperComponent {
@@ -20,7 +20,7 @@ export default class ChatMarkdownTable extends SuperComponent {
   };
 
   data = {
-    COMPONENT_NAME: name,
+    classPrefix: name,
   };
 
   methods = {};

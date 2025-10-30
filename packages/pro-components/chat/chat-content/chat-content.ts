@@ -1,11 +1,13 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
+import config from '../../../components/common/config';
+
+const { prefix } = config;
+const name = `${prefix}-chat`;
 
 @wxComponent()
 export default class ChatContent extends SuperComponent {
   options: ComponentsOptionsType = {
     multipleSlots: true,
-    addGlobalClass: true,
-    styleIsolation: 'shared',
   };
 
   properties = {
@@ -20,7 +22,7 @@ export default class ChatContent extends SuperComponent {
   };
 
   data = {
-    COMPONENT_NAME: 't-chat',
+    classPrefix: name,
     textInfo: '',
   };
 

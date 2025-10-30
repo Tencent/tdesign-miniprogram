@@ -1,19 +1,20 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
 import props from './props';
+import config from '../../../components/common/config';
+
+const { prefix } = config;
+const name = `${prefix}-chat`;
 
 @wxComponent()
 export default class ChatMessage extends SuperComponent {
   options: ComponentsOptionsType = {
     multipleSlots: true,
-    addGlobalClass: true,
-    styleIsolation: 'shared',
   };
 
   properties = props;
 
   data = {
-    COMPONENT_NAME: 't-chat',
-    // COMPONENT_NAME: 't-chat',
+    classPrefix: name,
     article: '',
     showAvatar: null,
     showName: null,
@@ -32,10 +33,10 @@ export default class ChatMessage extends SuperComponent {
     datetime() {
       this.setShowDateTime();
     },
-    COMPONENT_NAME() {
+    classPrefix() {
       this.setContentClasses();
     },
-    'COMPONENT_NAME, variant, placement, showDateTime'() {
+    'classPrefix, variant, placement, showDateTime'() {
       this.setChatItemClass();
     },
   };
@@ -64,18 +65,18 @@ export default class ChatMessage extends SuperComponent {
     },
     setContentClasses() {
       this.setData({
-        contentClasses: [`${this.data.COMPONENT_NAME}__content`],
+        contentClasses: [`${this.data.classPrefix}__content`],
       });
     },
     setChatItemClass() {
       const baseClass = [
-        `${this.data.COMPONENT_NAME}__inner`,
-        `${this.data.COMPONENT_NAME}__text--variant--${this.properties.variant}`,
+        `${this.data.classPrefix}__inner`,
+        `${this.data.classPrefix}__text--variant--${this.properties.variant}`,
         this.properties.role,
         this.properties.placement,
       ];
       if (this.data.showDateTime) {
-        baseClass.push(`${this.data.COMPONENT_NAME}__inner--hasheader`);
+        baseClass.push(`${this.data.classPrefix}__inner--hasheader`);
       }
       this.setData({
         chatItemClass: baseClass,

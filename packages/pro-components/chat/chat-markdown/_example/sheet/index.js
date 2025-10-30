@@ -1,4 +1,4 @@
-import markdownData from './mock-nodes.js';
+import markdownData from './mock.js';
 // 内置marked处理
 Page({
   data: {

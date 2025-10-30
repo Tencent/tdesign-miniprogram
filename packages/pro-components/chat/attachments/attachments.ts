@@ -1,11 +1,13 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
+import config from '../../../components/common/config';
+
+const { prefix } = config;
+const name = `${prefix}-attachments`;
 
 @wxComponent()
 export default class Attachments extends SuperComponent {
   options: ComponentsOptionsType = {
     multipleSlots: true,
-    addGlobalClass: true,
-    styleIsolation: 'shared',
   };
 
   properties = {
@@ -34,9 +36,7 @@ export default class Attachments extends SuperComponent {
   };
 
   data = {
-    COMPONENT_NAME: 't-attachments',
-    /** @type {string} - 组件内部内容 */
-    content: '这里是上传的内容，超出宽度时可以滚动。',
+    classPrefix: name,
     files: [],
   };
 

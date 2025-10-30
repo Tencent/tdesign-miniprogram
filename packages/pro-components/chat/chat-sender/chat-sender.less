@@ -14,6 +14,7 @@
 @chat-sender-shadow:0px 8px 10px -5px rgba(0, 0, 0, 0.08),
 0px 16px 24px 2px rgba(0, 0, 0, 0.04),
 0px 6px 30px 5px rgba(0, 0, 0, 0.05);
+@chat-sender-margin-bottom-transition: margin-bottom 0.3s ease;
 
 @chat-sender-header-padding-bottom: 16rpx;
 @chat-sender-attachments-padding: 0 24rpx;
@@ -90,6 +91,7 @@
   box-sizing: border-box;
   margin: @chat-sender-margin;
   box-shadow: @chat-sender-shadow;
+  transition: @chat-sender-margin-bottom-transition;
 
   // 聚焦状态
   &--focus {

@@ -1,5 +1,16 @@
 <view class="chat-example">
-  <view class="chat-example-block">
+  <!-- 有效的示例，呈现效果为 单行滚动 -->
+  <!-- <view class="chat-example-block">
     <t-attachments items="{{items}}" bind:fileClick="onFileClick" bind:remove="onRemove" bind:add="onAdd" />
+  </view> -->
+
+  <view class="chat-example-block" wx:for="{{items}}" wx:for-item="item" wx:key="url">
+    <t-attachments
+      style="display: inline"
+      items="{{[item]}}"
+      bind:fileClick="onFileClick"
+      bind:remove="onRemove"
+      bind:add="onAdd"
+    />
   </view>
 </view>

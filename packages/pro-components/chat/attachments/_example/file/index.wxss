@@ -1,10 +1,9 @@
 .chat-example {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 32rpx;
-}
 
-.chat-example-block {
-  background-color: #fff;
   padding: 32rpx;
+  box-sizing: border-box;
+  background-color: var(--td-bg-color-container);
 }

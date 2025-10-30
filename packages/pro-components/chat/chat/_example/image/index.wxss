@@ -3,8 +3,8 @@
   box-sizing: border-box;
 }
 
-.t-chat__list {
-  padding: 0 0 0 32rpx;
+.image-chat .t-chat__list {
+  padding: 0 0 0 0;
   box-sizing: border-box;
 }
 
@@ -12,24 +12,34 @@
   padding-right: 32rpx;
 }
 
-.image-container {
-  padding: 16rpx 16rpx 0 0;
-  width: 600rpx;
-  overflow-x: auto;
-}
-
-.image-list {
-  display: flex;
-  gap: 16rpx;
-  flex-wrap: nowrap;
-}
-
-.image-list image {
-  border-radius: 12rpx;
-  flex-shrink: 0;
+.image-chat .t-chat__inner.assistant .t-chat__avatar {
+  padding-left: 32rpx;
 }
 
 .image-chat .assistant,
 .image-chat .assistant .t-chat__detail {
   width: 100%;
+}
+
+.attachment-slide {
+  height: 274rpx;
+  width: 100%;
+}
+
+.attachment-slide .t-attachments {
+  padding-right: 32rpx;
+  padding-top: 24rpx;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  right: 0;
+}
+
+.attachment-slide .t-attachments .t-attachments__file-wrap:first-child {
+  padding-left: 120rpx;
+}
+
+.attachment-slide .t-attachments .t-attachments__file-wrap:last-child {
+  padding-right: 32rpx;
 }

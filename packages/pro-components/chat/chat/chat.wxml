@@ -1,10 +1,20 @@
-<wxs src="../common/utils.wxs" module="_" />
-<view class="class {{[classes]}} {{COMPONENT_NAME}}" style="{{_._style([style, customStyle])}}">
-  <scroll-view class="{{[listClasses]}}" scroll-y="{{true}}" enable-flex="{{true}}" enhanced="{{true}}"
-    scroll-with-animation="{{true}}" scroll-top="{{scrollViewTop}}" data-ref="chatListRef" bindscroll="onScroll"
-    bindscrolltoupper="handlerScrollToUpper" bindscrolltolower="handlerScrollToLower">
+<wxs src="../../../components/common/utils.wxs" module="_" />
+
+<view class="class {{[classes]}} {{classPrefix}}" style="{{_._style([style, customStyle])}}">
+  <scroll-view
+    class="{{[listClasses]}}"
+    scroll-y="{{true}}"
+    enable-flex="{{true}}"
+    enhanced="{{true}}"
+    scroll-with-animation="{{true}}"
+    scroll-top="{{scrollViewTop}}"
+    data-ref="chatListRef"
+    bindscroll="onScroll"
+    bindscrolltoupper="handlerScrollToUpper"
+    bindscrolltolower="handlerScrollToLower"
+  >
     <block wx:if="{{reverse}}">
-      <view class="place-holder"></view>
+      <view class="placeholder"></view>
     </block>
     <!-- /**
         * 1. 两种方式获取要渲染的 list
@@ -14,17 +24,22 @@
         */ -->
     <block wx:if="{{data.length > 0}}">
       <block wx:for="{{data}}" wx:for-index="index" wx:for-item="item" wx:key="index">
-        <chat-message wx:if="{{virtualList ? index >= startIndex && index <= endIndex : true}}"
-          avatar="{{item.avatar || ''}}" name="{{item.name || ''}}" datetime="{{item.datetime || ''}}"
-          content="{{item.content}}" role="{{item.role}}"
-          placement="{{ layout === 'both' ? (item.role === 'user' ? 'right' : 'left') : 'left' }}" />
+        <chat-message
+          wx:if="{{virtualList ? index >= startIndex && index <= endIndex : true}}"
+          avatar="{{item.avatar || ''}}"
+          name="{{item.name || ''}}"
+          datetime="{{item.datetime || ''}}"
+          content="{{item.content}}"
+          role="{{item.role}}"
+          placement="{{ layout === 'both' ? (item.role === 'user' ? 'right' : 'left') : 'left' }}"
+        />
       </block>
     </block>
     <block wx:else>
       <slot></slot>
     </block>
   </scroll-view>
-  <view class="{{[COMPONENT_NAME+'__footer']}}">
+  <view class="{{[classPrefix+'__footer']}}">
     <slot name="footer"></slot>
   </view>
 </view>
