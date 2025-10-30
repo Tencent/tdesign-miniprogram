@@ -5,6 +5,7 @@
 @tab-bar-height: var(--td-tab-bar-height, 80rpx);
 @tab-bar-color: var(--td-tab-bar-color, @text-color-primary);
 @tab-bar-bg-color: var(--td-tab-bar-bg-color, @bg-color-container);
+@tab-bar-item-bg-color: var(--td-tab-bar-item-bg-color, transparent);
 @tab-bar-border-color: var(--td-tab-bar-border-color, @border-color);
 @tab-bar-hover-bg-color: var(--td-tab-bar-hover-bg-color, rgba(0, 0, 0, 0.05));
 @tab-bar-active-color: var(--td-tab-bar-active-color, @brand-color);
@@ -23,7 +24,7 @@
   user-select: none;
   position: relative;
   margin: 16rpx 0;
-  background-color: @tab-bar-bg-color;
+  background-color: @tab-bar-item-bg-color;
   padding: 0 24rpx;
 
   &--text-only {
