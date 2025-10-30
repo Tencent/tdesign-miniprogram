@@ -2,20 +2,17 @@
 
 @chat-actionbar: ~'@{prefix}-chat-actionbar';
 
-@chat-actionbar-height: 72rpx;
-@chat-actionbar-border-width: 1rpx;
-@chat-actionbar-spacer-1: 4rpx;
-@chat-actionbar-spacer-2: 28rpx;
+@chat-actionbar-padding: var(--chat-actionbar-padding, 0);
+@chat-actionbar-item-padding: var(--chat-actionbar-item-padding, 8rpx 20rpx);
 @chat-actionbar-item-color: @text-color-primary;
 @chat-actionbar-item-active: @brand-color;
-@chat-actionbar-popover-background: rgba(0, 0, 0, 0.6);
+@chat-actionbar-popover-background: @mask-active;
 @chat-actionbar-popover-radius: 32rpx;
 @chat-actionbar-popover-padding: 45rpx;
 
-// Chat Actionbar 组件样式
 .@{chat-actionbar} {
   display: flex;
-  padding: var(--chat-actionbar-padding, 0);
+  padding: @chat-actionbar-padding;
 
   // 对齐方式
   &.start {
@@ -29,8 +26,8 @@
   // 内部容器
   &__inner {
     background-color: @bg-color-secondarycontainer;
-    border: @chat-actionbar-border-width solid @component-border;
-    height: @chat-actionbar-height;
+    border: 2rpx solid @component-border;
+    height: 72rpx;
     border-radius: @radius-default;
     display: inline-flex;
     flex-direction: row;
@@ -56,8 +53,8 @@
   // 操作项
   &__item {
     color: @chat-actionbar-item-color;
-    padding: @chat-actionbar-spacer-1 @chat-actionbar-spacer-2;
-    border-right: @chat-actionbar-border-width solid @component-stroke;
+    padding: @chat-actionbar-item-padding;
+    border-right: 2rpx solid @component-stroke;
     background-color: unset;
     outline: none;
 

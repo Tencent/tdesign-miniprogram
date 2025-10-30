@@ -1,6 +1,7 @@
 <wxs src="../../../components/common/utils.wxs" module="_" />
+<!-- TODO: api 可选项没有 longpress，这部分是否可移除？ -->
 <view
-  class="class {{[classPrefix,placement==='longpress'?classPrefix+'__inner-popover':'',computedPlacement]}}"
+  class="class {{[classPrefix, placement==='longpress' ? classPrefix+'__inner-popover' : '', computedPlacement]}}"
   style="{{_._style([style, customStyle])}}"
 >
   <view class="{{[classPrefix+'__inner',classPrefix+'__inner-column']}}">

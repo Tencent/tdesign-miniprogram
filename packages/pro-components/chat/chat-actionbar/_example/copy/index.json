@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "t-chat-actionbar": "tdesign-miniprogram/chat-actionbar/chat-actionbar",
-    "t-toast": "tdesign-miniprogram/toast/toast"
-  }
-}
