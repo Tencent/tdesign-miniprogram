@@ -1,5 +1,8 @@
 @import '../../../components/common/style/base.less';
 
+@chat-content: ~'@{prefix}-chat-content';
+
+// TODO: 建议用组件名作类名前缀
 @chat-message: ~'@{prefix}-chat';
 
 @chat-message-content-padding: 24rpx 32rpx;
@@ -172,7 +175,7 @@
 
   // 文本变体样式
   &__text--variant--text {
-    .@{chat-message}__text {
+    .@{chat-content} {
       &__user,
       &__assistant {
         color: @text-color-secondary;
@@ -181,60 +184,60 @@
   }
 
   &__text--variant--base {
-    .@{chat-message}__text {
+    .@{chat-content} {
       padding: @chat-message-content-padding;
       background-color: @bg-color-secondarycontainer;
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.assistant .@{chat-message}__text {
+    &.assistant .@{chat-content} {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
       background-color: transparent;
       padding: 0;
     }
 
-    &.user .@{chat-message}__text {
+    &.user .@{chat-content} {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.left .@{chat-message}__text {
+    &.left .@{chat-content} {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.right .@{chat-message}__text {
+    &.right .@{chat-content} {
       border-radius: @radius-extraLarge 0 @radius-extraLarge
         @radius-extraLarge;
     }
   }
 
   &__text--variant--outline {
-    .@{chat-message}__text {
+    .@{chat-content}  {
       padding: @chat-message-content-padding;
       border: 1rpx solid @component-border;
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.assistant .@{chat-message}__text {
+    &.assistant .@{chat-content} {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.user .@{chat-message}__text {
+    &.user .@{chat-content} {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.left .@{chat-message}__text {
+    &.left .@{chat-content} {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.right .@{chat-message}__text {
+    &.right .@{chat-content} {
       border-radius: @radius-extraLarge 0 @radius-extraLarge
         @radius-extraLarge;
     }
@@ -277,24 +280,24 @@
   }
 
   .@{chat-message}__text--variant--base {
-    &.user .@{chat-message}__text {
+    &.user .@{chat-content} {
       border-radius: @radius-extraLarge 0 @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.assistant .@{chat-message}__text {
+    &.assistant .@{chat-content} {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
   }
 
   .@{chat-message}__text--variant--outline {
-    &.user .@{chat-message}__text {
+    &.user .@{chat-content} {
       border-radius: @radius-extraLarge 0 @radius-extraLarge
         @radius-extraLarge;
     }
 
-    &.assistant .@{chat-message}__text {
+    &.assistant .@{chat-content} {
       border-radius: 0 @radius-extraLarge @radius-extraLarge
         @radius-extraLarge;
     }
