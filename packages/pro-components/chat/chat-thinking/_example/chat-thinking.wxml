@@ -11,7 +11,7 @@
   <t-demo desc="思考完成">
     <complete />
   </t-demo>
-  <t-demo title="03 组件样式">
-    <style-set />
+  <t-demo title="03 组件样式" desc="">
+    <layout />
   </t-demo>
 </view>

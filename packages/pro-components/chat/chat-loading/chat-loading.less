@@ -22,7 +22,7 @@
 
   &__text {
     color: @text-color-placeholder;
-    font-size: 28rpx;
+    font-size: @font-size-base;
     margin-left: 8rpx;
   }
 
@@ -72,8 +72,11 @@
     padding: 0 6rpx;
   }
 
-  &__circle {
-    padding: 0 6rpx;
+  &__dots {
+    // padding: 0 6rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__skeleton {

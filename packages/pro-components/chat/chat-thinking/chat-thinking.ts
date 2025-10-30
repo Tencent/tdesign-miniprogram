@@ -29,7 +29,7 @@ export default class ChatThinking extends SuperComponent {
     },
     animation: {
       type: String,
-      value: 'circle',
+      value: 'moving',
     },
     collapsed: {
       type: Boolean,

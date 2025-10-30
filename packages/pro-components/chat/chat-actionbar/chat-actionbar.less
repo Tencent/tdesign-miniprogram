@@ -3,7 +3,7 @@
 @chat-actionbar: ~'@{prefix}-chat-actionbar';
 
 @chat-actionbar-padding: var(--chat-actionbar-padding, 0);
-@chat-actionbar-item-padding: var(--chat-actionbar-item-padding, 8rpx 20rpx);
+@chat-actionbar-item-padding: var(--chat-actionbar-item-padding, 16rpx 28rpx);
 @chat-actionbar-item-color: @text-color-primary;
 @chat-actionbar-item-active: @brand-color;
 @chat-actionbar-popover-background: @mask-active;
@@ -27,7 +27,7 @@
   &__inner {
     background-color: @bg-color-secondarycontainer;
     border: 2rpx solid @component-border;
-    height: 72rpx;
+    box-sizing: border-box;
     border-radius: @radius-default;
     display: inline-flex;
     flex-direction: row;

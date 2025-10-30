@@ -15,9 +15,9 @@
       <view class="{{classPrefix + '__gradient'}}" />
     </block>
 
-    <block class="{{classPrefix + '__circle'}}" wx:if="{{animation==='circle'}}">
-      <t-loading theme="circular" size="28rpx" />
-    </block>
+    <view class="{{classPrefix + '__dots'}}" wx:if="{{animation==='dots'}}">
+      <t-loading theme="dots" size="60rpx" />
+    </view>
   </view>
   <block wx:if="{{animation==='skeleton'}}" style="width: 100%">
     <view class="{{classPrefix + '__skeleton'}}" style="width: 100%">
