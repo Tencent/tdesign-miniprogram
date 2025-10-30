@@ -230,10 +230,9 @@ Component({
       try {
         // 获取当前的导航栏高度和安全区域高度
         const navigationBarHeight = getNavigationBarHeight() || 0;
-        const safeAreaBottom = getSafeAreaHeight() || 0;
 
         // 生成CSS calc表达式字符串
-        const contentHeight = `calc(100vh - 96rpx - ${navigationBarHeight}px - ${safeAreaBottom}px)`;
+        const contentHeight = `calc(100vh - 96rpx - ${navigationBarHeight}px)`;
 
         this.setData({
           contentHeight: contentHeight,

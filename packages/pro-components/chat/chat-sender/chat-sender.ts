@@ -27,8 +27,8 @@ export default class ChatSender extends SuperComponent {
       type: Object,
       value: {
         autosize: {
-          maxHeight: 132,
-          minHeight: 24,
+          maxHeight: 264,
+          minHeight: 48,
         },
       },
     },

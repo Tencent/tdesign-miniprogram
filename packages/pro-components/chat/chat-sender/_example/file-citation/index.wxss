@@ -20,6 +20,7 @@
   /* border: 2rpx solid #e5e5e5; */
   border-radius: 8rpx;
   overflow: hidden;
+  background-color: #ffffff;
 }
 
 .demo-footer-prefix {
