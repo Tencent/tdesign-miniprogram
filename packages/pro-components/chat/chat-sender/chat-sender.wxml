@@ -2,15 +2,15 @@
 
 <view
   class="class {{classPrefix}}"
-  bindtap="handleOutsideClick"
   style="{{_this._style([style, customStyle, inputStyle])}}"
+  bindtap="handleOutsideClick"
 >
   <view
-    class="{{classPrefix + '__header'}}"
+    class="{{classPrefix}}__header"
     style="{{(attachmentsProps.items && attachmentsProps.items.length > 0)?'margin-top:-8rpx;':''}}"
   >
     <block wx:if="{{attachmentsProps.items && attachmentsProps.items.length > 0}}">
-      <view class="{{classPrefix + '__attachments'}}">
+      <view class="{{classPrefix}}__attachments">
         <attachments
           items="{{attachmentsProps.items}}"
           removable="{{attachmentsProps.removable}}"
@@ -23,15 +23,15 @@
       </view>
     </block>
     <block wx:else>
-      <slot name="header"></slot>
+      <slot name="header" />
     </block>
   </view>
 
-  <view class="{{classPrefix + '__textarea'}} {{focusFlag ? classPrefix + '__textarea--focus' : ''}}">
-    <view class="textarea-hook">
-      <slot name="input-prefix"></slot>
+  <view class="{{classPrefix}}__actions">
+    <view class="{{classPrefix}}__textarea">
+      <slot name="input-prefix" />
       <textarea
-        class="ipt"
+        class="{{classPrefix}}__textarea--control"
         style="{{_this.textareaStyle(textareaProps.autosize)}}"
         disabled="{{disabled}}"
         auto-height="{{!!textareaProps.autosize}}"
@@ -50,83 +50,74 @@
         bindconfirm="handleSendClick"
       >
       </textarea>
-      <view class="placeholder {{focusFlag || value ? 'hide' : ''}}">{{placeholder}}</view>
+      <view class="{{classPrefix}}__textarea--placeholder {{focusFlag || value ? 'hide' : ''}}">{{placeholder}}</view>
     </view>
 
-    <view class="{{classPrefix + '__footer'}}">
+    <view class="{{classPrefix}}__footer">
       <view class="{{classPrefix + '__mode'}}">
-        <slot name="footerPrefix"></slot>
+        <slot name="footer-prefix" />
       </view>
+      <view class="{{classPrefix}}__sendbtn">
+        <block wx:if="{{renderPresets}}">
+          <view class="{{classPrefix}}__sendbtn--default">
+            <block wx:for="{{renderPresets}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+              <view>
+                <block wx:if="{{item.name === 'upload'}}">
+                  <view class="plus-btn {{item.status === 'disabled' ? 'disabled' : ''}}">
+                    <block wx:if="{{item.type === 'bottom'}}">
+                      <view
+                        class="btn-func"
+                        data-type="{{item.type}}"
+                        data-status="{{item.status}}"
+                        catchtap="handleUploadClick"
+                      >
+                        <t-icon name="{{visible? 'close' : 'add'}}" size="40rpx" />
+                      </view>
+                    </block>
+                  </view>
+                </block>
 
-      <view class="{{classPrefix + '__button'}}">
-        <view class="{{classPrefix + '__button__sendbtn'}}">
-          <block wx:if="{{renderPresets}}">
-            <view class="{{classPrefix + '__button__sendbtn__default'}}">
-              <block wx:for="{{renderPresets}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-                <view>
-                  <block wx:if="{{item.name === 'upload'}}">
-                    <view class="plus-btn {{item.status === 'disabled' ? 'disabled' : ''}}">
-                      <block wx:if="{{item.type === 'bottom'}}">
-                        <view
-                          class="btn-func"
-                          catchtap="handleUploadClick"
-                          data-type="{{item.type}}"
-                          data-status="{{item.status}}"
-                        >
-                          <t-icon wx:if="{{!visible}}" name="add" size="40rpx" />
-                          <t-icon wx:else name="close" size="40rpx" />
-                        </view>
+                <block wx:if="{{item.name === 'send'}}">
+                  <block wx:if="{{item.type === 'text'}}">
+                    <view
+                      class="send-btn-{{item.type}} {{value || loading ? '' : 'disabled'}}"
+                      bindtap="handleSendClick"
+                    >
+                      {{loading ? '停止' : '发送'}}
+                    </view>
+                  </block>
+                  <block wx:else>
+                    <view
+                      class="send-btn-icon send-btn-{{item.type}} {{value || loading ? '' : 'disabled'}} {{loading ? 'stop' : ''}}"
+                      bindtap="handleSendClick"
+                    >
+                      <block wx:if="{{!loading}}">
+                        <t-icon name="send-filled" size="40rpx" color="#ffffff" />
+                      </block>
+                      <block wx:else>
+                        <view style="width: 24rpx; height: 24rpx; background-color: #ffffff" />
                       </block>
                     </view>
                   </block>
-
-                  <block wx:if="{{item.name === 'send'}}">
-                    <block wx:if="{{item.type === 'text'}}">
-                      <view
-                        class="send-btn-{{item.type}} {{value || loading ? '' : 'disabled'}}"
-                        bindtap="handleSendClick"
-                      >
-                        {{loading ? '停止' : '发送'}}
-                      </view>
-                    </block>
-                    <block wx:else>
-                      <view
-                        class="send-btn-icon send-btn-{{item.type}} {{value || loading ? '' : 'disabled'}} {{loading ? 'stop' : ''}}"
-                        bindtap="handleSendClick"
-                      >
-                        <block wx:if="{{!loading}}">
-                          <t-icon name="send-filled" size="40rpx" color="#ffffff" />
-                        </block>
-                        <block wx:else>
-                          <view style="width: 24rpx; height: 24rpx; background-color: #ffffff" />
-                        </block>
-                      </view>
-                    </block>
-                  </block>
-                </view>
-              </block>
-            </view>
-          </block>
-          <block wx:else>
-            <slot name="suffix"></slot>
-          </block>
-        </view>
+                </block>
+              </view>
+            </block>
+          </view>
+        </block>
+        <block wx:else>
+          <slot name="suffix" />
+        </block>
       </view>
     </view>
   </view>
 </view>
-<view
-  wx:if="{{visible && uploadPlacement === 'bottom'}}"
-  class="{{classPrefix + '__footer__upload'}}"
-  catchtap="handleUploadClick"
->
+<view wx:if="{{visible && uploadPlacement === 'bottom'}}" class="{{classPrefix}}__upload" catchtap="handleUploadClick">
   <block wx:for="{{uploadNames}}" wx:for-item="name" wx:for-index="index" wx:key="index">
-    <view class="{{classPrefix + '__footer__upload__item'}}" bindtap="handleUploadEntryClick" data-name="{{name}}">
-      <view class="{{classPrefix + '__footer__upload__item__icon'}}">
+    <view class="{{classPrefix}}__upload-item" data-name="{{name}}" bindtap="handleUploadEntryClick">
+      <view class="{{classPrefix}}__upload-item__icon">
         <t-icon name="{{uploadConfig[name].iconClass}}" size="56rpx" />
       </view>
-
-      <view class="{{classPrefix + '__footer__upload__item__text'}}"> {{uploadConfig[name].text}} </view>
+      <view class="{{classPrefix}}__upload-item__text"> {{uploadConfig[name].text}} </view>
     </view>
   </block>
 </view>

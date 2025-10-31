@@ -1,19 +1,13 @@
 @import '../../../components/common/style/base.less';
 
-@chat-sender-prefix: ~'@{prefix}-chat-sender';
+@chat-sender: ~'@{prefix}-chat-sender';
 
-// Chat Sender 变量定义
 @chat-sender-border-radius: 32rpx;
 @chat-sender-padding: 22rpx 0;
 @chat-sender-margin: 48rpx 24rpx 80rpx 24rpx;
 @chat-sender-border-width: 2rpx;
 @chat-sender-border-color: @component-border;
-@chat-sender-border-color-focus: @brand-color;
-@chat-sender-bg-color: #20d055;
-@chat-sender-shadow-focus: 0 0 0 2px rgba(0, 82, 217, 0.2);
-@chat-sender-shadow:0px 8px 10px -5px rgba(0, 0, 0, 0.08),
-0px 16px 24px 2px rgba(0, 0, 0, 0.04),
-0px 6px 30px 5px rgba(0, 0, 0, 0.05);
+@chat-sender-shadow: @shadow-3;
 @chat-sender-margin-bottom-transition: margin-bottom 0.3s ease;
 
 @chat-sender-header-padding-bottom: 16rpx;
@@ -39,14 +33,13 @@
 @chat-sender-placeholder-transition: opacity 0.25s linear;
 
 @chat-sender-icon-size: 32rpx;
-
 @chat-sender-footer-z-index: 2;
 @chat-sender-send-btn-size: 64rpx;
 @chat-sender-send-btn-margin-left: 16rpx;
 @chat-sender-send-btn-bg-color: @brand-color;
 @chat-sender-send-btn-bg-color-disabled: @bg-color-secondarycomponent;
-@chat-sender-send-btn-text-color: #126dff;
-@chat-sender-send-btn-text-color-disabled: #c9ccd2;
+@chat-sender-send-btn-text-color: @brand-color;
+@chat-sender-send-btn-text-color-disabled: @text-color-disabled;
 @chat-sender-send-btn-transition: all 0.3s ease;
 
 @chat-sender-upload-margin-top: -40rpx;
@@ -59,11 +52,9 @@
 @chat-sender-upload-item-text-font-size: 28rpx;
 @chat-sender-upload-item-text-line-height: 44rpx;
 
-@chat-sender-file-margin-bottom: 24rpx;
-
 @chat-sender-btn-func-size: 58rpx;
 @chat-sender-btn-func-bg: @bg-color-container;
-@chat-sender-btn-func-border: 2rpx solid #dcdcdc;
+@chat-sender-btn-func-border: 2rpx solid @component-border;
 @chat-sender-btn-func-disabled-bg: #c9ccd2;
 @chat-sender-btn-func-disabled-opacity: 0.24;
 
@@ -82,8 +73,7 @@
 @chat-sender-menu-item-text-line-height: 36rpx;
 @chat-sender-menu-item-text-letter-spacing: 1rpx;
 
-// Chat Sender 组件样式
-.@{chat-sender-prefix} {
+.@{chat-sender} {
   position: relative;
   border-radius: @chat-sender-border-radius;
   padding: @chat-sender-padding;
@@ -92,13 +82,6 @@
   margin: @chat-sender-margin;
   box-shadow: @chat-sender-shadow;
   transition: @chat-sender-margin-bottom-transition;
-
-  // 聚焦状态
-  &--focus {
-    border-color: @chat-sender-border-color-focus;
-    background-color: @chat-sender-bg-color;
-    box-shadow: @chat-sender-shadow-focus;
-  }
 
   // 头部区域
   &__header {
@@ -109,39 +92,6 @@
     &:empty {
       display: none;
     }
-
-    // 滚动容器
-    .scroll-wrapper {
-      width: 100%;
-      overflow-x: auto;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: none;
-      padding-left: var(--left-padding);
-      box-sizing: border-box;
-      transition: padding-left 0.3s ease;
-
-      &::-webkit-scrollbar {
-        display: none;
-      }
-    }
-
-    // 内容容器
-    .content-wrapper {
-      display: inline-flex;
-      flex-wrap: nowrap;
-      gap: @chat-sender-attachments-gap;
-      padding-right: var(--right-padding);
-      min-width: calc(100% - var(--left-padding) - var(--right-padding));
-    }
-
-    // 图片/附件项
-    .image-item,
-    .attachment-item {
-      width: @chat-sender-attachments-item-size;
-      height: @chat-sender-attachments-item-size;
-      border-radius: @chat-sender-attachments-item-radius;
-      flex-shrink: 0;
-    }
   }
 
   // 附件区域
@@ -150,65 +100,53 @@
   }
 
   // 文本输入区域
-  &__textarea {
+  &__actions {
     position: relative;
     display: flex;
     flex-direction: column;
     // gap: @chat-sender-textarea-gap;
     padding: @chat-sender-textarea-padding;
+  }
 
-    // 输入框容器
-    .textarea-hook {
-      position: relative;
-      flex: 1;
+  // 输入框容器
+  &__textarea {
+    position: relative;
+    flex: 1;
+    padding-bottom: @chat-sender-textarea-hook-padding-bottom;
+    max-height: @chat-sender-textarea-hook-max-height;
+
+    // 输入框
+    &--control {
+      max-height: @chat-sender-input-max-height;
+      display: block;
+      width: 100%;
+      color: @chat-sender-input-color;
+      font-size: @chat-sender-input-font-size;
+      line-height: @chat-sender-input-line-height;
+      word-break: break-word;
+      caret-color: @chat-sender-input-caret-color;
+      font-family: @chat-sender-input-font-family;
+      font-weight: 400;
+      letter-spacing: @chat-sender-input-letter-spacing;
       padding-bottom: @chat-sender-textarea-hook-padding-bottom;
-      max-height: @chat-sender-textarea-hook-max-height;
-
-      // 输入框
-      .ipt {
-        max-height: @chat-sender-input-max-height;
-        display: block;
-        width: 100%;
-        color: @chat-sender-input-color;
-        font-size: @chat-sender-input-font-size;
-        line-height: @chat-sender-input-line-height;
-        word-break: break-word;
-        caret-color: @chat-sender-input-caret-color;
-        font-family: @chat-sender-input-font-family;
-        font-weight: 400;
-        letter-spacing: @chat-sender-input-letter-spacing;
-        padding-bottom: @chat-sender-textarea-hook-padding-bottom;
-      }
-
-      // 占位符
-      .placeholder {
-        color: @chat-sender-placeholder-color;
-        font-size: @chat-sender-input-font-size;
-        position: absolute;
-        left: 0;
-        top: 0;
-        transform: translateY(1%);
-        z-index: 1;
-        pointer-events: none;
-        opacity: 1;
-        transition: @chat-sender-placeholder-transition;
-
-        &.hide {
-          opacity: 0;
-        }
-      }
     }
 
-    // 图标样式
-    .cam-icon,
-    .pic-icon,
-    .file-icon {
-      width: @chat-sender-icon-size;
-      height: @chat-sender-icon-size;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center;
-      flex-shrink: 0;
+    // 占位符
+    &--placeholder {
+      color: @chat-sender-placeholder-color;
+      font-size: @chat-sender-input-font-size;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translateY(1%);
+      z-index: 1;
+      pointer-events: none;
+      opacity: 1;
+      transition: @chat-sender-placeholder-transition;
+
+      &.hide {
+        opacity: 0;
+      }
     }
   }
 
@@ -218,56 +156,57 @@
     justify-content: space-between;
     position: relative;
     z-index: @chat-sender-footer-z-index;
+  }
 
-    // 上传区域
-    &__upload {
+  // 上传区域
+  &__upload {
+    display: flex;
+    margin-top: @chat-sender-upload-margin-top;
+    margin-bottom: @chat-sender-upload-margin-bottom;
+    align-items: center;
+    justify-content: flex-start;
+    transition: @chat-sender-send-btn-transition;
+
+    // 上传项
+    &-item {
       display: flex;
-      margin-top: @chat-sender-upload-margin-top;
-      margin-bottom: @chat-sender-upload-margin-bottom;
+      flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      transition: @chat-sender-send-btn-transition;
+      justify-content: center;
+      border-radius: @chat-sender-attachments-item-radius;
+      flex-shrink: 0;
+      // margin-right: @chat-sender-upload-item-margin-right;
+      flex-grow: 1;
+      color: @text-color-primary;
 
-      // 上传项
-      &__item {
+      // 上传项图标
+      &__icon {
+        width: @chat-sender-upload-item-icon-size;
+        height: @chat-sender-upload-item-icon-size;
+        border-radius: @chat-sender-upload-item-icon-radius;
+        margin-bottom: @chat-sender-upload-item-icon-margin-bottom;
+        background-color: @chat-sender-upload-item-icon-bg;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-        border-radius: @chat-sender-attachments-item-radius;
-        flex-shrink: 0;
-        // margin-right: @chat-sender-upload-item-margin-right;
-        flex-grow: 1;
-        color: @text-color-primary;
+      }
 
-        // 上传项图标
-        &__icon {
-          width: @chat-sender-upload-item-icon-size;
-          height: @chat-sender-upload-item-icon-size;
-          border-radius: @chat-sender-upload-item-icon-radius;
-          margin-bottom: @chat-sender-upload-item-icon-margin-bottom;
-          background-color: @chat-sender-upload-item-icon-bg;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        // 上传项文本
-        &__text {
-          font-size: @chat-sender-upload-item-text-font-size;
-          line-height: @chat-sender-upload-item-text-line-height;
-        }
+      // 上传项文本
+      &__text {
+        font-size: @chat-sender-upload-item-text-font-size;
+        line-height: @chat-sender-upload-item-text-line-height;
       }
     }
   }
 
   // 按钮区域
-  &__button {
+  &__sendbtn {
     display: flex;
     align-items: center;
+    justify-content: center;
 
     // 发送按钮默认状态
-    &__sendbtn__default {
+    &--default {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -317,25 +256,6 @@
         }
       }
     }
-
-    // 上传悬浮容器
-    &__sendbtn__upload__levitate__container {
-      position: relative;
-    }
-
-    // 上传悬浮层
-    &__sendbtn__upload__levitate {
-      position: absolute;
-      top: 0;
-      left: 0;
-      background-color: @chat-sender-upload-item-icon-bg;
-      z-index: 100;
-    }
-  }
-
-  // 文件区域
-  &__file {
-    margin-bottom: @chat-sender-file-margin-bottom;
   }
 
   // 功能按钮
@@ -350,7 +270,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 
     // TODO: 未在视图层找到对应节点，是否可移除？
     // 菜单样式
