@@ -432,7 +432,7 @@
         },
         {
           "id": -1,
-          "name": "chat",
+          "name": "chat-list",
           "pathName": "pages/chat-list/chat-list",
           "scene": null
         },
