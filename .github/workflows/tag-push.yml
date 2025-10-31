@@ -28,7 +28,7 @@ jobs:
           MINI_APP_ID: ${{ secrets.TDESIGN_APP_ID }}
           MINI_APP_PRIVATE_KEY: ${{ secrets.TDESIGN_MINI_KEY }}
 
-      - run: npm install -g npm@latest
+      - run: sudo npm install -g npm@latest
 
       - id: publish
         name: publish NPM
