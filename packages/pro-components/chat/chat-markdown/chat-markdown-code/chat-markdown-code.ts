@@ -20,10 +20,4 @@ export default class ChatMarkdownCode extends SuperComponent {
   data = {
     classPrefix: name,
   };
-
-  lifetimes = {
-    created() {},
-    attached() {},
-    detached() {},
-  };
 }
