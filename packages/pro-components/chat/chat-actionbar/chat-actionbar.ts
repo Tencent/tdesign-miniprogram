@@ -107,7 +107,7 @@ export default class ChatActionbar extends SuperComponent {
       return result.replace(/\n{3,}/g, '\n\n').trim();
     },
 
-    handelActionClick(e) {
+    handleActionClick(e) {
       const { name } = e.currentTarget.dataset;
       if (name === 'copy' && this.data.content) {
         this.data.handleCopy();
@@ -172,7 +172,7 @@ export default class ChatActionbar extends SuperComponent {
   lifetimes = {
     created() {
       this.data.filterSpecialChars = this.filterSpecialChars.bind(this);
-      this.data.handelActionClick = this.handelActionClick.bind(this);
+      this.data.handleActionClick = this.handleActionClick.bind(this);
       this.data.handleCopy = this.handleCopy.bind(this);
     },
 

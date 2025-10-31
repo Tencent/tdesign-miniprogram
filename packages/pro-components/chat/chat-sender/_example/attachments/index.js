@@ -24,7 +24,7 @@ Page({
     textareaProps: {
       autosize: {
         maxHeight: 264,
-        minHeight: 48,// 设置为0时，用自动计算height的高度
+        minHeight: 48, // 设置为0时，用自动计算height的高度
       }, // 默认为false
     },
     attachmentsProps: {
@@ -153,7 +153,7 @@ Page({
   onFileChange(e) {
     const { files } = e.detail;
     console.log('文件列表变化:', files);
-    this.setData({attachmentsProps:{...this.data.attachmentsProps,items:files}});
+    this.setData({ attachmentsProps: { ...this.data.attachmentsProps, items: files } });
     this.setData({ fileList: files });
   },
 
@@ -174,7 +174,7 @@ Page({
   },
 
   // 上传面板显示状态变化
-  onUpdateVisible(e) {
+  onUpdateVisible() {
     Toast({
       context: this,
       selector: '#t-toast',
@@ -207,6 +207,6 @@ Page({
   },
 
   onNetSearchTap() {
-    this.setData({ netSearchActive: !this.data.netSearchActive })
-  }
+    this.setData({ netSearchActive: !this.data.netSearchActive });
+  },
 });
