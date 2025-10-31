@@ -36,10 +36,10 @@
   right: 0;
 }
 
-.attachment-slide .t-attachments .t-attachments__file-wrap:first-child {
+.attachment-slide .t-attachments .t-attachments__files:first-child {
   padding-left: 120rpx;
 }
 
-.attachment-slide .t-attachments .t-attachments__file-wrap:last-child {
+.attachment-slide .t-attachments .t-attachments__files:last-child {
   padding-right: 32rpx;
 }
