@@ -7,13 +7,13 @@
   box-sizing: border-box;
 
   &__inner {
-    &__block {
+    &--block {
       background-color: @bg-color-page;
       border-radius: @radius-default;
       padding: @spacer @spacer-1;
     }
 
-    &__border {
+    &--border {
       padding: @spacer @spacer-1;
     }
   }
@@ -22,69 +22,42 @@
     display: flex;
     align-items: center;
 
-    // TODO:  loading-icon 未找到对应视图层
-    .loading-icon {
-      width: @spacer-2;
-      height: @spacer-2;
-      margin-right: 12rpx;
-      flex-shrink: 0;
-      position: relative;
+    .@{chat-thinking}__icon {
+      font-size: @font-size-xl;
 
-      .loading-dot {
-        width: 6rpx;
-        height: 6rpx;
-        background-color: #126dff;
-        position: absolute;
-        left: 1rpx;
-        top: 50%;
-        transform: translateY(-50%);
-        border-radius: 50%;
-        animation: scale 1.5s linear infinite forwards;
-        transform-origin: 50% 50%;
+      &--close {
+        color: @text-color-secondary;
+      }
 
-        &:nth-child(2) {
-          left: 13rpx;
-          animation-delay: 0.5s;
-        }
+      &--complete,
+      &--stop {
+        color: @success-color;
+      }
 
-        &:nth-child(3) {
-          left: 24rpx;
-          animation-delay: 1s;
-        }
+      &--collapse {
+        color: @text-color-secondary;
+        transition: transform 0.3s ease-in-out;
       }
     }
 
-    .check-circle-icon {
-      color: @success-color;
-    }
-
-    .close-icon {
-      color: @text-color-secondary;
-    }
-
-    &__txt {
+    .@{chat-thinking}__txt {
       color: @text-color-primary;
-      font-size: 28rpx;
+      font-size: @font-size-base;
       line-height: 32rpx;
       flex: 1;
       margin-left: @spacer;
-    }
-
-    .collapse-icon {
-      color: @text-color-secondary;
-      transition: transform 0.3s ease-in-out;
     }
   }
 
   &__bd {
     color: @text-color-placeholder;
-    font-size: 28rpx;
+    font-size: @font-size-base;
     line-height: 170%;
     margin-top: @spacer-1;
     white-space: pre-wrap;
     overflow-y: auto;
 
-    &__border {
+    &--border {
       border-left: 4rpx solid @component-stroke;
       padding-left: @spacer;
     }

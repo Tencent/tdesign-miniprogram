@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../com
 import config from '../../../components/common/config';
 
 const { prefix } = config;
-const name = `${prefix}-chat`;
+const name = `${prefix}-chat-content`;
 
 @wxComponent()
 export default class ChatContent extends SuperComponent {
@@ -78,6 +78,8 @@ export default class ChatContent extends SuperComponent {
     },
     attached() {
       this.setTextInfo();
+
+      // TODO: __anonymous ??
       const mountedFn = function __anonymous() {};
       mountedFn.call(this);
     },

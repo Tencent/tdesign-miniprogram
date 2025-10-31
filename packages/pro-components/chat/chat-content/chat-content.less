@@ -1,67 +1,44 @@
 @import '../../../components/common/style/base.less';
 
-@chat-content: ~'@{prefix}-chat';
+@chat-content: ~'@{prefix}-chat-content';
 
 @chat-content-user-text-color: var(--td-chat-content-user-text-color, @text-color-primary);
 @chat-content-assistant-text-color: var(--td-chat-content-assistant-text-color, @text-color-primary);
 
 .@{chat-content} {
-  // 基础文本容器样式
-  &__text {
-    font-size: 32rpx;
-    line-height: 48rpx;
-    word-break: break-all;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    box-sizing: border-box;
-    width: fit-content;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  word-break: break-all;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  width: fit-content;
 
-    // 用户文本样式
-    &__user {
-      color: @chat-content-user-text-color;
-      // word-break: break-all;
-      // word-wrap: break-word;
-      // overflow-wrap: break-word;
+  &__user {
+    color: @chat-content-user-text-color;
 
-      // TODO: _pre 层是否可移除？
-      ._pre {
-        margin: 0;
-        white-space: pre-wrap;
-        // word-break: break-all;
-        // word-wrap: break-word;
-        // overflow-wrap: break-word;
-      }
-    }
-
-    // 助手文本样式
-    &__assistant {
-      color: @chat-content-assistant-text-color;
-      // word-break: break-all;
-      // word-wrap: break-word;
-      // overflow-wrap: break-word;
-
-      ._ol {
-        -webkit-padding-start: 40rpx;
-        padding-inline-start: 40rpx;
-
-        ._li {
-          list-style: decimal;
-        }
-      }
-
-      ._img {
-        max-width: 100%;
-        margin: 8rpx 0;
-        border-radius: @radius-small;
-      }
+    ._pre {
+      margin: 0;
+      white-space: pre-wrap;
     }
   }
 
-  // Rich-text 组件样式修复
-  // rich-text {
-  //   word-break: break-all;
-  //   word-wrap: break-word;
-  //   overflow-wrap: break-word;
-  //   display: block;
-  // }
+  &__assistant {
+    color: @chat-content-assistant-text-color;
+
+    ._ol {
+      -webkit-padding-start: 40rpx;
+      padding-inline-start: 40rpx;
+
+      ._li {
+        list-style: decimal;
+      }
+    }
+
+    ._img {
+      max-width: 100%;
+      margin: 8rpx 0;
+      border-radius: @radius-small;
+    }
+  }
 }

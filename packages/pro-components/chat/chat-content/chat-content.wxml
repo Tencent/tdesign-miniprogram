@@ -1,14 +1,15 @@
 <wxs src="../../../components/common/utils.wxs" module="_" />
 
-<view class="class {{[classPrefix+'__text']}}" style="{{_._style([style, customStyle])}}">
+<view class="class {{classPrefix}}" style="{{_._style([style, customStyle])}}">
   <block wx:if="{{content.type === 'text'}}">
-    <view class="{{[classPrefix+'__text__'+role]}}">
-      <view class="_pre"><rich-text nodes="{{textInfo}}"></rich-text></view>
+    <view class="{{classPrefix}}__{{role}}">
+      <view class="_pre">
+        <rich-text nodes="{{textInfo}}" />
+      </view>
     </view>
   </block>
   <block wx:else>
-    <view class="{{[classPrefix+'__text__assistant']}}">
-      <!-- 使用t-chat-markdown组件渲染Markdown内容 -->
+    <view class="{{classPrefix}}__assistant">
       <t-chat-markdown content="{{textInfo}}"></t-chat-markdown>
     </view>
   </block>
