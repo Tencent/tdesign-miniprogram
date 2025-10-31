@@ -1,8 +1,8 @@
 <wxs src="../../../components/common/utils.wxs" module="_" />
 
-<view class="class {{[classes]}} {{classPrefix}}" style="{{_._style([style, customStyle])}}">
+<view class="class {{classPrefix}} {{[classes]}}" style="{{_._style([style, customStyle])}}">
   <scroll-view
-    class="{{[listClasses]}}"
+    class="{{_.cls(classPrefix + '__content', [['reverse' , reverse]])}}"
     scroll-y="{{true}}"
     enable-flex="{{true}}"
     enhanced="{{true}}"
@@ -35,11 +35,9 @@
         />
       </block>
     </block>
-    <block wx:else>
-      <slot></slot>
-    </block>
+    <slot wx:else />
   </scroll-view>
-  <view class="{{[classPrefix+'__footer']}}">
-    <slot name="footer"></slot>
+  <view class="{{classPrefix}}__footer">
+    <slot name="footer" />
   </view>
 </view>

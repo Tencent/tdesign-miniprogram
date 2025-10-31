@@ -1,17 +1,32 @@
 <view class="chat-box" style="height: {{contentHeight}};">
   <t-chat bindscroll="onScroll">
     <block wx:for="{{chatList}}" wx:key="index">
-      <t-chat-message avatar="{{item.avatar || ''}}" name="{{item.name || ''}}" datetime="{{item.datetime || ''}}"
-        content="{{item.message.content}}" role="{{item.message.role}}"
-        placement="{{item.message.role === 'user' ? 'right' : 'left'}}">
+      <t-chat-message
+        avatar="{{item.avatar || ''}}"
+        name="{{item.name || ''}}"
+        datetime="{{item.datetime || ''}}"
+        content="{{item.message.content}}"
+        role="{{item.message.role}}"
+        placement="{{item.message.role === 'user' ? 'right' : 'left'}}"
+      >
         <t-chat-actionbar
           wx:if="{{chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'}}"
-          slot="actionbar" placement="end" bind:handleAction="handleAction" />
+          slot="actionbar"
+          placement="end"
+          bind:handleAction="handleAction"
+        />
       </t-chat-message>
     </block>
     <view slot="footer">
-      <t-chat-sender value="{{value}}" loading="{{loading}}" disabled="{{disabled}}" bind:send="onSend"
-        bind:stop="onStop" bind:focus="onFocus" autoRiseWithKeyboard="{{true}}" />
+      <t-chat-sender
+        value="{{value}}"
+        loading="{{loading}}"
+        disabled="{{disabled}}"
+        autoRiseWithKeyboard="{{true}}"
+        bind:send="onSend"
+        bind:stop="onStop"
+        bind:focus="onFocus"
+      />
     </view>
   </t-chat>
 </view>

@@ -2,15 +2,13 @@ import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../com
 import config from '../../../components/common/config';
 
 const { prefix } = config;
-const name = `${prefix}-chat`;
+const name = `${prefix}-chat-list`;
 
 @wxComponent()
 export default class Chat extends SuperComponent {
   options: ComponentsOptionsType = {
     multipleSlots: true,
   };
-
-  externalClasses = ['slot-class'];
 
   properties = {
     data: {
@@ -57,9 +55,6 @@ export default class Chat extends SuperComponent {
   };
 
   observers = {
-    'reverse, classPrefix'() {
-      this.setListClasses();
-    },
     data() {
       const dataLen = this.properties.data.length;
       if (this.properties.virtualList && this.oldDataLen !== dataLen) {
@@ -85,27 +80,19 @@ export default class Chat extends SuperComponent {
     onScroll(e) {
       this.triggerEvent('scroll', e);
     },
-    setListClasses() {
-      if (this.properties.reverse) {
-        this.setData({
-          listClasses: [`${this.data.classPrefix}__list`, `${this.data.classPrefix}__list--reverse`],
-        });
-      } else {
-        this.setData({
-          listClasses: [`${this.data.classPrefix}__list`],
-        });
-      }
-    },
+
     handlerScrollToUpper() {
       if (!this.properties.reverse && this.properties.virtualList) {
         this.addFragment();
       }
     },
+
     handlerScrollToLower() {
       if (this.properties.reverse && this.properties.virtualList) {
         this.addFragment();
       }
     },
+
     resetFragments() {
       const dataLen = this.properties.data.length;
       if (dataLen) {
@@ -123,6 +110,7 @@ export default class Chat extends SuperComponent {
         }
       }
     },
+
     addFragment(count = 4) {
       const dataLen = this.properties.data.length;
       if (dataLen) {
@@ -145,9 +133,5 @@ export default class Chat extends SuperComponent {
       this.data.setScrollTop = this.setScrollTop.bind(this);
       this.data.scrollToBottom = this.scrollToBottom.bind(this);
     },
-    attached() {
-      this.setListClasses();
-    },
-    detached() {},
   };
 }
