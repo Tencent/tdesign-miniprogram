@@ -8,6 +8,6 @@
   box-sizing: border-box;
 }
 
-.t-chat__inner {
+.t-chat-message {
   padding-right: 32rpx;
 }
