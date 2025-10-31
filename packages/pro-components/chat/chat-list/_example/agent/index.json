@@ -4,10 +4,12 @@
   "usingComponents": {
     "t-chat-message": "tdesign-miniprogram/chat-message/chat-message",
     "t-chat-content": "tdesign-miniprogram/chat-content/chat-content",
-    "t-chat": "tdesign-miniprogram/chat/chat",
+    "t-chat": "tdesign-miniprogram/chat-list/chat-list",
     "t-chat-sender": "tdesign-miniprogram/chat-sender/chat-sender",
     "t-chat-actionbar": "tdesign-miniprogram/chat-actionbar/chat-actionbar",
-    "t-attachments": "tdesign-miniprogram/attachments/attachments",
+    "t-steps": "tdesign-miniprogram/steps/steps",
+    "t-step-item": "tdesign-miniprogram/step-item/step-item",
+    "t-icon": "tdesign-miniprogram/icon/icon",
     "t-toast": "tdesign-miniprogram/toast/toast"
   }
 }

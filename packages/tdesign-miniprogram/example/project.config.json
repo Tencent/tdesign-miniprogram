@@ -433,7 +433,7 @@
         {
           "id": -1,
           "name": "chat",
-          "pathName": "pages/chat/chat",
+          "pathName": "pages/chat-list/chat-list",
           "scene": null
         },
         {

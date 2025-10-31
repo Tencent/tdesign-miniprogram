@@ -3,7 +3,7 @@ const chat = {
   icon: 'chat',
   childArr: [
     {
-      name: 'Chat',
+      name: 'ChatList',
       label: '对话',
     },
     {

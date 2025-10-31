@@ -1,5 +1,5 @@
 ---
-title: Chat 对话
+title: ChatList 对话
 description: 用于 ChatBot 对话或者普通对话场景的组件。
 spline: base
 isComponent: true
@@ -12,7 +12,7 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-chat": "tdesign-miniprogram-chat/chat/chat"
+  "t-chat": "tdesign-miniprogram-chat/chat-list/chat-list"
 }
 ```
 

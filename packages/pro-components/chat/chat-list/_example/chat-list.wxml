@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="Chat" leftArrow />
+<t-navbar class="demo-navbar" title="ChatList" leftArrow />
 <view class="demo">
   <!-- 通过 isActive 为 chatSender 的 value 赋值，避免 textarea 在 ios 上无法被遮挡的问题-->
   <t-tabs space-evenly="{{false}}" swipeable="{{false}}" value="{{value}}" bind:change="onTabsChange">

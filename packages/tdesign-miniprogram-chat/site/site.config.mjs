@@ -33,13 +33,13 @@ export const docs = [
     type: 'component', // 组件文档
     children: [
       {
-        title: 'Chat 对话',
-        titleEn: 'Chat',
-        name: 'Chat',
+        title: 'ChatList 对话',
+        titleEn: 'ChatList',
+        name: 'ChatList',
         meta: { docType: 'base' },
-        path: '/miniprogram-chat/components/chat',
-        component: () => import('@/chat/chat/README.md'),
-        // componentEn: () => import('@/chat/chat/README.en-US.md'),
+        path: '/miniprogram-chat/components/chat-list',
+        component: () => import('@/chat/chat-list/README.md'),
+        // componentEn: () => import('@/chat/chat-list/README.en-US.md'),
       },
       {
         title: 'ChatMessage 对话单元',
