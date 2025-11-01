@@ -98,7 +98,7 @@
     "npm-run-all": "^4.1.5",
     "playwright": "^1.19.1",
     "prettier": "^2.0.5",
-    "standard-changelog": "^2.0.27",
+    "standard-changelog": "^7.0.1",
     "stylelint": "^13.13.1",
     "tdesign-publish-cli": "^0.0.12",
     "tdesign-theme-generator": "^1.1.0",
