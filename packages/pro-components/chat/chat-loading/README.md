@@ -25,11 +25,13 @@ isComponent: true
 </blockquote>
 
 
-### 加载组件
+### 01 组件类型
+
+支持多种加载中动效类型，包括 gradient、moving、dots
 
 {{ base }}
 
-### 带文案描述的加载组件
+带文案描述的加载组件
 
 {{ text }}
 

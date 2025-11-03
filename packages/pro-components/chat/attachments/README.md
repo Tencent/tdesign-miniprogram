@@ -27,9 +27,21 @@ isComponent: true
 
 ### 01 组件类型
 
-#### 基础附件管理
+图片类型
 
 {{ base }}
+
+文件类型
+
+{{ file }}
+
+### 02 组件状态
+图片类型加载状态
+
+{{ imageLoading }}
+
+文件类型加载状态
+{{ fileLoading }}
 
 ## API
 

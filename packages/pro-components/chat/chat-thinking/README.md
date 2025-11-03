@@ -27,13 +27,13 @@ isComponent: true
 
 ### 01 组件类型
 
-支持通过`maxHeight`来设置展示内容的最大高度，超出会自动滚动；
-
-支持通过`collapsed`来控制面板是否折叠，示例中展示了当内容输出结束时自动收起的效果
+- 支持通过`maxHeight`来设置展示内容的最大高度，超出会自动滚动；
+- 支持通过`animation`来设置思考内容加载过程的动画效果,包括circle/moving/gradient
+- 支持通过`collapsed`来控制面板是否折叠，示例中展示了当内容输出结束时自动收起的效果
 
 {{ base }}
 
-### 03 组件状态
+### 02 组件状态
 思考中
 
 {{ pending }}
@@ -45,9 +45,7 @@ isComponent: true
 ### 03 组件样式
 支持通过`layout`来设置思考过程的布局方式
 
-支持通过`animation`来设置思考内容加载过程的动画效果
-
-{{ style-set }}
+{{ layout }}
 
 ## API
 ### ChatThinking Props

@@ -31,7 +31,7 @@ isComponent: true
 {{ base }}
 
 #### 组合式用法
-{{ hookComponent }}
+{{ hook-component }}
 
 #### 自定义
 {{ custom }}
