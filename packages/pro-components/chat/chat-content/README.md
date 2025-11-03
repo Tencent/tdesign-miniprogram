@@ -29,13 +29,14 @@ isComponent: true
 
 ### 默认聊天格式
 
-对大模型返回的 markdown 数据自动渲染。
+- 对大模型返回的 markdown 数据自动渲染。markdown 会内置调用 `t-chat-markdown` 渲染，同时可根据 role（user/assistant）切换样式。
+- 用户发送的消息保持默认格式显示，纯文本会做 HTML 转义并用 rich-text 渲染；
 
 {{ base }}
 
 ### 纯文本聊天
 
-用户发送的消息保持默认格式显示，没有高亮效果
+用户发送的消息保持默认格式显示，纯文本会做 HTML 转义并用 rich-text 渲染；
 
 {{ text }}
 
