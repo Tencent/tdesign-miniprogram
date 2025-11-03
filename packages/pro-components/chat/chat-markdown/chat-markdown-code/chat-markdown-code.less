@@ -2,7 +2,6 @@
 
 @chat-markdown-code: ~'@{prefix}-chat-markdown-code';
 
-// Chat Markdown Code 变量定义
 @chat-markdown-code-block-margin: 16rpx;
 @chat-markdown-code-block-radius: 8rpx;
 @chat-markdown-code-block-bg-light: #f6f8fa;
@@ -27,7 +26,8 @@
 
 @chat-markdown-code-content-padding: 16rpx;
 
-@chat-markdown-code-text-font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+@chat-markdown-code-text-font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New',
+  monospace;
 @chat-markdown-code-text-font-size: 28rpx;
 @chat-markdown-code-text-line-height: 1.6;
 @chat-markdown-code-text-color-light: #24292f;
@@ -35,30 +35,28 @@
 
 .@{chat-markdown-code} {
   // 代码块容器
-  &-block {
-    margin: @chat-markdown-code-block-margin 0;
-    border-radius: @chat-markdown-code-block-radius;
-    background-color: @chat-markdown-code-block-bg-light;
-    border: 1rpx solid @chat-markdown-code-block-border-light;
-    overflow: hidden;
-  }
+  margin: @chat-markdown-code-block-margin 0;
+  border-radius: @chat-markdown-code-block-radius;
+  background-color: @chat-markdown-code-block-bg-light;
+  border: 1rpx solid @chat-markdown-code-block-border-light;
+  overflow: hidden;
 
   // 代码语言标签
-  &-header {
+  &__header {
     padding: @chat-markdown-code-header-padding;
     background-color: @chat-markdown-code-header-bg-light;
     border-bottom: 1rpx solid @chat-markdown-code-header-border-light;
   }
 
   // 语言标签文本
-  &-lang {
+  &__lang {
     font-size: @chat-markdown-code-lang-font-size;
     color: @chat-markdown-code-lang-color-light;
     font-weight: @chat-markdown-code-lang-font-weight;
   }
 
   // 代码内容区域
-  &-content {
+  &__content {
     padding: @chat-markdown-code-content-padding;
     overflow-x: auto;
     overflow-y: hidden;
@@ -68,7 +66,7 @@
   }
 
   // 代码文本
-  &-text {
+  &__text {
     font-family: @chat-markdown-code-text-font-family;
     font-size: @chat-markdown-code-text-font-size;
     line-height: @chat-markdown-code-text-line-height;
@@ -83,6 +81,7 @@
     min-width: 100%;
   }
 
+  // TODO: 除样式外，未见 dark/light 相关逻辑，需要确认是否需要。 「对应 css token 暂未处理」
   // 暗色主题
   &-dark {
     .@{chat-markdown-code}-block {

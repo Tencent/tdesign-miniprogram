@@ -9,7 +9,7 @@ Page({
     textareaProps: {
       autosize: {
         maxHeight: 264,
-        minHeight: 48,// 设置为0时，用自动计算height的高度
+        minHeight: 48, // 设置为0时，用自动计算height的高度
       }, // 默认为false
     },
     attachmentsProps: {
@@ -26,7 +26,7 @@ Page({
     ],
     deepThinkActive: false,
     netSearchActive: false,
-    headerText:'word文件.docx',
+    headerText: 'word文件.docx',
   },
 
   // 发送消息
@@ -117,7 +117,7 @@ Page({
 
   // 文件列表变化
   onFileChange(e) {
-    console.log(e,'e----');
+    console.log(e, 'e----');
 
     const { files } = e.detail;
     console.log('文件列表变化:', files);
@@ -172,10 +172,10 @@ Page({
   },
 
   onNetSearchTap() {
-    this.setData({ netSearchActive: !this.data.netSearchActive })
+    this.setData({ netSearchActive: !this.data.netSearchActive });
   },
 
-  handleCLoseCite(){
-    this.setData({headerText:''})
-  }
+  handleCLoseCite() {
+    this.setData({ headerText: '' });
+  },
 });

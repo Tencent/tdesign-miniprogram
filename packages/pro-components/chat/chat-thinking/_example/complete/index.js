@@ -9,7 +9,7 @@ Component({
   },
   methods: {
     handleExpandChange(e) {
-      console.log('展开状态变化:', e.detail)
+      console.log('展开状态变化:', e.detail);
     },
   },
 });

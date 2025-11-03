@@ -9,7 +9,7 @@ Page({
     textareaProps: {
       autosize: {
         maxHeight: 264,
-        minHeight: 48,// 设置为0时，用自动计算height的高度
+        minHeight: 48, // 设置为0时，用自动计算height的高度
       }, // 默认为false
     },
     attachmentsProps: {
@@ -26,7 +26,8 @@ Page({
     ],
     deepThinkActive: false,
     netSearchActive: false,
-    headerText:'牛顿第一定律并不适用于所有参考系，它只适用于惯性参考系。在质点不受外力作用时，能够判断出质点静止或作匀速直线运动的参考系一定是惯性参考系，因此只有在惯性参考系中牛顿第一定律才适用。'
+    headerText:
+      '牛顿第一定律并不适用于所有参考系，它只适用于惯性参考系。在质点不受外力作用时，能够判断出质点静止或作匀速直线运动的参考系一定是惯性参考系，因此只有在惯性参考系中牛顿第一定律才适用。',
   },
 
   // 发送消息
@@ -117,7 +118,7 @@ Page({
 
   // 文件列表变化
   onFileChange(e) {
-    console.log(e,'e----');
+    console.log(e, 'e----');
 
     const { files } = e.detail;
     console.log('文件列表变化:', files);
@@ -172,10 +173,10 @@ Page({
   },
 
   onNetSearchTap() {
-    this.setData({ netSearchActive: !this.data.netSearchActive })
+    this.setData({ netSearchActive: !this.data.netSearchActive });
   },
 
-  handleCLoseCite(){
-    this.setData({headerText:''})
-  }
+  handleCLoseCite() {
+    this.setData({ headerText: '' });
+  },
 });

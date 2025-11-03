@@ -2,18 +2,18 @@
 <wxs src="../../../components/common/utils.wxs" module="_" />
 
 <view
-  class="{{[''+classPrefix, inChat ? 'inChat' : '', _this.getFileTypeClass(inChat, files)]}}"
+  class="{{classPrefix}} {{[inChat ? classPrefix + '--chatting' : '', _this.getFileTypeClass(inChat, files)]}}"
   style="{{_._style([style, customStyle])}}"
 >
-  <view class="{{[classPrefix+'__left-content']}}">
-    <view class="{{[classPrefix+'__scrollable-content','scroll-x']}}">
+  <view class="{{classPrefix}}__left">
+    <view class="{{classPrefix}}__scrollable scroll-x">
       <block wx:for="{{files}}" wx:for-item="item" wx:for-index="index" wx:key="index">
-        <view class="{{[classPrefix+'__file-wrap']}}" bindtap="onFileWrapTap" data-index="{{index}}">
+        <view class="{{classPrefix}}__files" bindtap="onFileWrapTap" data-index="{{index}}">
           <block wx:if="{{item.fileType==='image'}}">
-            <view class="{{['file-image',classPrefix+'__file']}}">
-              <block wx:if="{{item.status==='pending'||item.status==='fail'||item.status==='error'}}">
-                <view class="{{[item.status,classPrefix+'__file-status']}}">
-                  <t-loading theme="circular" size="24px" class="wrapper" />
+            <view class="file-image {{classPrefix}}__file">
+              <block wx:if="{{item.status==='pending' || item.status==='fail' || item.status==='error'}}">
+                <view class="{{item.status}} {{classPrefix}}__file--{{item.status}}">
+                  <t-loading theme="circular" size="48rpx" />
                 </view>
               </block>
               <block wx:else>
@@ -29,7 +29,7 @@
                 <t-icon
                   catchtap="onRemoveTap"
                   data-index="{{index}}"
-                  class="cancel"
+                  class="{{classPrefix}}__remove"
                   name="close-circle-filled"
                   size="16px"
                 />
@@ -37,41 +37,43 @@
             </view>
           </block>
           <block wx:else>
-            <view class="{{['file',classPrefix+'__file']}}">
+            <view class="file {{classPrefix}}__file">
               <view class="image">
                 <block wx:if="{{item.status==='pending'}}">
-                  <view class="{{['loading',classPrefix+'__file-status']}}">
-                    <t-loading theme="circular" size="24px" class="wrapper" />
+                  <view class="loading {{classPrefix}}__file--pending">
+                    <t-loading theme="circular" size="48rpx" />
                   </view>
                 </block>
                 <block wx:elif="{{item.status==='fail'}}">
-                  <view class="{{['fail',classPrefix+'__file-status']}}">
-                    <t-loading theme="circular" size="24px" class="wrapper" />
+                  <view class="fail {{classPrefix}}__file--fail">
+                    <t-loading theme="circular" size="48rpx" />
                   </view>
                 </block>
                 <block wx:elif="{{item.status==='error'}}">
-                  <view class="{{['error',classPrefix+'__file-status']}}">
-                    <t-loading theme="circular" size="24px" class="wrapper" />
+                  <view class="error {{classPrefix}}__file--error">
+                    <t-loading theme="circular" size="48rpx" />
                   </view>
                 </block>
                 <block wx:else>
-                  <t-icon name="{{item.fileIcon.name}}" color="{{item.fileIcon.color}}" size="24"></t-icon>
+                  <t-icon name="{{item.fileIcon.name}}" color="{{item.fileIcon.color}}" size="48rpx"></t-icon>
                 </block>
               </view>
-              <view class="content">
-                <view class="title">{{item.name}}</view>
+              <view class="{{classPrefix}}__content">
+                <view class="{{classPrefix}}__title">{{item.name}}</view>
                 <block>
-                  <view wx:if="{{item.status==='pending'}}" class="desc">上传中...{{item.progress || 0+"%"}}</view>
-                  <view wx:elif="{{item.status==='fail'}}" class="desc">上传失败</view>
-                  <view wx:elif="{{item.status==='error'}}" class="desc">{{item.errorMessage}}</view>
-                  <view wx:else class="desc">{{item.desc}}</view>
+                  <view wx:if="{{item.status==='pending'}}" class="{{classPrefix}}__desc"
+                    >上传中...{{item.progress || 0+"%"}}</view
+                  >
+                  <view wx:elif="{{item.status==='fail'}}" class="{{classPrefix}}__desc">上传失败</view>
+                  <view wx:elif="{{item.status==='error'}}" class="{{classPrefix}}__desc">{{item.errorMessage}}</view>
+                  <view wx:else class="{{classPrefix}}__desc">{{item.desc}}</view>
                 </block>
               </view>
               <block wx:if="{{removable}}">
                 <t-icon
                   catchtap="onRemoveTap"
                   data-index="{{index}}"
-                  class="cancel"
+                  class="{{classPrefix}}__remove"
                   name="close-circle-filled"
                   size="16px"
                 />

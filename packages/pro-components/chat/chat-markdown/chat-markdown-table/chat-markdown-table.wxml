@@ -1,5 +1,5 @@
-<view class="{{classPrefix}}__container">
-  <view class="{{classPrefix}}">
+<view class="{{classPrefix}}">
+  <view class="{{classPrefix}}__container">
     <view class="{{classPrefix}}__thead">
       <view class="{{classPrefix}}__tr">
         <block wx:for="{{node.header}}" wx:for-item="th" wx:for-index="j" wx:key="j">
@@ -14,7 +14,7 @@
         <view class="{{classPrefix}}__tr">
           <block wx:for="{{row}}" wx:for-item="cell" wx:for-index="l" wx:key="l">
             <view class="{{classPrefix}}__td" style="{{('text-align:'+node.align[l]||'left'+';')}}">
-              <chat-markdown-node nodes="{{cell.tokens}}" bind:__l="__l"></chat-markdown-node>
+              <chat-markdown-node nodes="{{cell.tokens}}"></chat-markdown-node>
             </view>
           </block>
         </view>

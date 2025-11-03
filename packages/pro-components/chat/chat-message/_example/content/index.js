@@ -102,7 +102,7 @@ Component({
               url: 'https://tdesign.gtimg.com/demo/demo-image-1.png',
               size: 1024,
               status: 'success',
-               width: 1920, // 图片实际宽度
+              width: 1920, // 图片实际宽度
               height: 1080, // 图片实际高度
             },
             {

@@ -1,5 +1,5 @@
 import { Toast } from 'tdesign-miniprogram';
-import { getSafeAreaHeight, getNavigationBarHeight } from '../../../utils/utils';
+import { getNavigationBarHeight } from '../../../utils/utils';
 
 const mockData = {
   avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',

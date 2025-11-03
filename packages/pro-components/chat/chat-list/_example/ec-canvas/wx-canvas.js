@@ -3,11 +3,10 @@ export default class WxCanvas {
     this.ctx = ctx;
     this.canvasId = canvasId;
     this.chart = null;
-    this.isNew = isNew
+    this.isNew = isNew;
     if (isNew) {
       this.canvasNode = canvasNode;
-    }
-    else {
+    } else {
       this._initStyle(ctx);
     }
 
@@ -57,55 +56,60 @@ export default class WxCanvas {
   }
 
   _initStyle(ctx) {
-    ctx.createRadialGradient = () => {
-      return ctx.createCircularGradient(arguments);
+    ctx.createRadialGradient = (...args) => {
+      return ctx.createCircularGradient(...args);
     };
   }
 
   _initEvent() {
     this.event = {};
-    const eventNames = [{
-      wxName: 'touchStart',
-      ecName: 'mousedown'
-    }, {
-      wxName: 'touchMove',
-      ecName: 'mousemove'
-    }, {
-      wxName: 'touchEnd',
-      ecName: 'mouseup'
-    }, {
-      wxName: 'touchEnd',
-      ecName: 'click'
-    }];
-    eventNames.forEach(name => {
-      this.event[name.wxName] = e => {
+    const eventNames = [
+      {
+        wxName: 'touchStart',
+        ecName: 'mousedown',
+      },
+      {
+        wxName: 'touchMove',
+        ecName: 'mousemove',
+      },
+      {
+        wxName: 'touchEnd',
+        ecName: 'mouseup',
+      },
+      {
+        wxName: 'touchEnd',
+        ecName: 'click',
+      },
+    ];
+    eventNames.forEach((name) => {
+      this.event[name.wxName] = (e) => {
         const touch = e.touches[0];
         this.chart.getZr().handler.dispatch(name.ecName, {
           zrX: name.wxName === 'tap' ? touch.clientX : touch.x,
           zrY: name.wxName === 'tap' ? touch.clientY : touch.y,
           preventDefault: () => {},
           stopImmediatePropagation: () => {},
-          stopPropagation: () => {}
+          stopPropagation: () => {},
         });
       };
     });
   }
 
   set width(w) {
-    if (this.canvasNode) this.canvasNode.width = w
+    if (this.canvasNode) this.canvasNode.width = w;
   }
+
   set height(h) {
-    if (this.canvasNode) this.canvasNode.height = h
+    if (this.canvasNode) this.canvasNode.height = h;
   }
 
   get width() {
-    if (this.canvasNode)
-      return this.canvasNode.width
-    return 0
+    if (this.canvasNode) return this.canvasNode.width;
+    return 0;
   }
+
   get height() {
-    if (this.canvasNode)
-      return this.canvasNode.height
-    return 0
+    if (this.canvasNode) return this.canvasNode.height;
+    return 0;
   }
 }

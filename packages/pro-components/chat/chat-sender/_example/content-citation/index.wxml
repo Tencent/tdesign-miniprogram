@@ -39,7 +39,7 @@
             <t-icon name="close" size="40rpx" bind:tap="handleCLoseCite" />
           </view>
         </view>
-        <view slot="footerPrefix" class="demo-footer-prefix">
+        <view slot="footer-prefix" class="demo-footer-prefix">
           <view class="deep-think-block {{deepThinkActive ? 'active' : ''}}" bind:tap="onDeepThinkTap">
             <t-icon name="system-sum" size="40rpx" />
             <text class="deep-think-text">深度思考</text>

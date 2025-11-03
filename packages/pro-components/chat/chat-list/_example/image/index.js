@@ -1,5 +1,6 @@
+// eslint-disable-next-line
 import { Toast } from 'tdesign-miniprogram';
-import { getSafeAreaHeight, getNavigationBarHeight } from '../../../utils/utils';
+import { getNavigationBarHeight } from '../../../utils/utils';
 
 const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));

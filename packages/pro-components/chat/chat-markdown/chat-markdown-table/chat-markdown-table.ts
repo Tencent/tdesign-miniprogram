@@ -8,8 +8,6 @@ const name = `${prefix}-chat-markdown-table`;
 export default class ChatMarkdownTable extends SuperComponent {
   options: ComponentsOptionsType = {
     multipleSlots: true,
-    addGlobalClass: true,
-    styleIsolation: 'shared',
   };
 
   properties = {
@@ -22,6 +20,4 @@ export default class ChatMarkdownTable extends SuperComponent {
   data = {
     classPrefix: name,
   };
-
-  methods = {};
 }

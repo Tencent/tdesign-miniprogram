@@ -1,11 +1,11 @@
-<view class="{{classPrefix}}-block">
+<view class="{{classPrefix}}">
   <!-- 代码语言标签 -->
-  <view class="{{classPrefix}}-header" wx:if="{{node.lang}}">
-    <text class="{{classPrefix}}-lang">{{node.lang}}</text>
+  <view class="{{classPrefix}}__header" wx:if="{{node.lang}}">
+    <text class="{{classPrefix}}__lang">{{node.lang}}</text>
   </view>
 
   <!-- 代码内容区域 -->
-  <scroll-view class="{{classPrefix}}-content" scroll-x="{{true}}">
-    <text class="{{classPrefix}}-text" decode="{{true}}">{{node.text}}</text>
+  <scroll-view class="{{classPrefix}}__content" scroll-x="{{true}}">
+    <text class="{{classPrefix}}__text" decode="{{true}}">{{node.text}}</text>
   </scroll-view>
 </view>

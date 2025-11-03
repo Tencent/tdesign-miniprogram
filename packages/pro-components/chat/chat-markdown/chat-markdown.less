@@ -1,6 +1,7 @@
 @import '../../../components/common/style/base.less';
 
 @chat-markdown: ~'@{prefix}-chat-markdown';
+@chat-markdown-table: ~'@{prefix}-chat-markdown-table';
 
 @chat-markdown-color: @text-color-primary;
 @chat-markdown-line-height: 1.75;
@@ -38,6 +39,16 @@
     margin-block-start: @spacer-1;
     -webkit-margin-after: @spacer-1;
     margin-block-end: @spacer-1;
+
+    &:first-child {
+      -webkit-margin-before: 0;
+      margin-block-start: 0;
+    }
+
+    &:last-child {
+      -webkit-margin-after: 0;
+      margin-block-end: 0;
+    }
   }
 
   // 引用块样式
@@ -140,7 +151,7 @@
   }
 
   // 表格样式
-  &-table {
+  .@{chat-markdown-table}__container {
     display: table;
     width: 100%;
     border-collapse: collapse;

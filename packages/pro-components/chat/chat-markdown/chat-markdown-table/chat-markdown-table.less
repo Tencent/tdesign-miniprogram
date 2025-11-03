@@ -3,17 +3,17 @@
 @chat-markdown-table: ~'@{prefix}-chat-markdown-table';
 
 .@{chat-markdown-table} {
-  display: table;
-  min-width: 100%;
-  max-width: max-content;
-  border-collapse: collapse;
-  white-space: nowrap;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: auto;
+  border: 1rpx solid @component-border;
 
   &__container {
-    width: 100%;
-    overflow-y: hidden;
-    overflow-x: auto;
-    border: 1rpx solid @component-border;
+    display: table;
+    min-width: 100%;
+    max-width: max-content;
+    border-collapse: collapse;
+    white-space: nowrap;
   }
 
   &__thead {

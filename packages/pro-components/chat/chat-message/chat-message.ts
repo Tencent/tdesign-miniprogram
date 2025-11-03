@@ -3,7 +3,7 @@ import props from './props';
 import config from '../../../components/common/config';
 
 const { prefix } = config;
-const name = `${prefix}-chat`;
+const name = `${prefix}-chat-message`;
 
 @wxComponent()
 export default class ChatMessage extends SuperComponent {
@@ -69,14 +69,11 @@ export default class ChatMessage extends SuperComponent {
       });
     },
     setChatItemClass() {
-      const baseClass = [
-        `${this.data.classPrefix}__inner`,
-        `${this.data.classPrefix}__text--variant--${this.properties.variant}`,
-        this.properties.role,
-        this.properties.placement,
-      ];
-      if (this.data.showDateTime) {
-        baseClass.push(`${this.data.classPrefix}__inner--hasheader`);
+      const { classPrefix, showDateTime } = this.data;
+      const { variant, role, placement } = this.properties;
+      const baseClass = [`${classPrefix}`, `${classPrefix}--${variant}`, role, placement];
+      if (showDateTime) {
+        baseClass.push(`${classPrefix}__header`);
       }
       this.setData({
         chatItemClass: baseClass,
