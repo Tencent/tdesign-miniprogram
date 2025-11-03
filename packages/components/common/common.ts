@@ -6,9 +6,6 @@ export interface Styles {
 
 export type ImageEvent = any;
 
-/**
- * 通用全局类型
- * */
 export type PlainObject = { [key: string]: any };
 
 export type OptionData = {
@@ -19,15 +16,18 @@ export type OptionData = {
 export type TreeOptionData<T = string | number> = {
   children?: Array<TreeOptionData<T>> | boolean;
   /** option label content */
-  label?: string | TNode;
+  label?: string;
   /** option search text */
   text?: string;
   /** option value */
   value?: T;
   /** option node content */
-  content?: string | TNode;
+  content?: string;
 } & PlainObject;
 
+/**
+ * 通用全局类型
+ * */
 export type SizeEnum = 'small' | 'medium' | 'large';
 
 export type ShapeEnum = 'circle' | 'round';
