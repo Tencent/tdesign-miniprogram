@@ -89,8 +89,16 @@ export default class Message extends SuperComponent {
       this.addMessage(msgObj);
     } else {
       // 更新消息
+      const instance = this.instances[instanceIndex];
       const offsetHeight = msg.single ? 0 : this.getOffsetHeight(instanceIndex);
-      this.showMessageItem(msgObj, id, offsetHeight);
+      instance.resetData(() => {
+        instance.setData(msgObj, () => {
+          instance.show(offsetHeight);
+        });
+        instance.onHide = () => {
+          this.close(id);
+        };
+      });
     }
   }
 
