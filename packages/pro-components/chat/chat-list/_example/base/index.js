@@ -67,6 +67,13 @@ Component({
   },
 
   methods: {
+    // 调用chatList的滚动到底部方法
+    scrollToBottom() {
+      const chatListComponent = this.selectComponent('#chatList');
+      if (chatListComponent && typeof chatListComponent.scrollToBottom === 'function') {
+        chatListComponent.scrollToBottom();
+      }
+    },
     onScroll(e) {
       console.log('监听滚动', e);
     },

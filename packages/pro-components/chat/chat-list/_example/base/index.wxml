@@ -1,5 +1,5 @@
 <view class="chat-box" style="height: {{contentHeight}};">
-  <t-chat bindscroll="onScroll">
+  <t-chat id="chatList" bindscroll="onScroll">
     <block wx:for="{{chatList}}" wx:key="index">
       <t-chat-message
         avatar="{{item.avatar || ''}}"
