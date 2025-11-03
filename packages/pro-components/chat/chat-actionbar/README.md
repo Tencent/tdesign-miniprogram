@@ -35,19 +35,6 @@ isComponent: true
 
 {{ comment }}
 
-### 左右布局
-
-{{ layout }}
-
-### 按钮配置
-
-{{ action }}
-
-### 复制模式
-
-copyMode对应复制内容的模式，可选 'markdown'（复制markdown原文）或 'text'（复制纯文本）
-
-{{ copy }}
 
 ## API
 ### ChatAction Props

@@ -57,19 +57,10 @@ name | String / Slot / Function | '' | 自定义的昵称。支持字符串、�
 datetime | String / Slot / Function | '' | 对话单元的时间配置。支持字符串、插槽或函数 | N
 variant | String | 'base' | 气泡框样式，支持基础、线框、文字三种类型。可选项：base/outline/text | N
 role | String | 'user' | 消息角色类型。可选项：user/assistant/system | N
-content | Array | [] | 消息内容。数组类型，数组中的每一项为一个消息内容对象。 | N
+content | Array | [] | 消息内容。数组类型，数组中的每一项为一个消息内容对象。类型定义见 Message | N
 placement | String | '' | 消息显示位置。可选项：left/right | N
 animation | String | 'skeleton' | 动画效果，支持「渐变加载动画」,「闪烁加载动画」, 「骨架屏」三种。可选项：skeleton/moving/gradient | N
 chatContentProps | Object | {} | 聊天内容组件的属性，[详细定义](./type.ts)| N
-
-### ChatMessagesData 消息对象结构
-
-字段 | 类型 | 必传 | 说明
---|--|--|--
-role | `"user" \| "assistant" \| "system"` | Y | 消息角色类型
-status | `"pending" \| "streaming" \| "complete" \| "stop" \| "error"` | N | 消息状态
-content | `UserMessageContent[] \| AIMessageContent[] \|  TextContent[] \| AttachmentContent[]` | N | 消息内容
-ext | any | N | 扩展字段
 
 #### UserMessageContent 内容类型支持
 - 文本消息 (`TextContent`)
@@ -100,7 +91,7 @@ avatar | 自定义头像内容
 name | 自定义昵称内容
 datetime | 自定义时间内容
 actionbar | 自定义操作栏内容
-default | 默认插槽，用于自定义消息内容
+content | 默认插槽，用于自定义消息内容
 
 ### CSS Variables
 
@@ -150,7 +141,7 @@ t-class-actions | 操作栏样式类
   </view>
   <view slot="name">AI助手</view>
   <view slot="datetime">刚刚</view>
-  <view slot="default">
+  <view slot="content">
     这是AI助手的回复内容
   </view>
 </t-chat-message>
@@ -160,7 +151,7 @@ t-class-actions | 操作栏样式类
 
 ```html
 <t-chat-message
-  text-loading="{{true}}"
+  status="pending"
   animation="skeleton"
   role="assistant"
 />
