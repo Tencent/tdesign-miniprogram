@@ -37,8 +37,13 @@ export default class ActionSheet extends SuperComponent {
   ];
 
   observers = {
-    'visible, items'(visible: boolean) {
-      if (!visible) return;
+    items() {
+      this.splitGridThemeActions();
+    },
+  };
+
+  lifetimes = {
+    ready() {
       this.init();
     },
   };
