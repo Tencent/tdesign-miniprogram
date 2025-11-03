@@ -12,7 +12,7 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-chat": "tdesign-miniprogram-chat/chat-list/chat-list"
+  "t-chat": "tdesign-miniprogram/chat-list/chat-list"
 }
 ```
 

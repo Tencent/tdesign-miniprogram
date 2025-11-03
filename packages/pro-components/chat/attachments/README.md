@@ -13,7 +13,7 @@ isComponent: true
 
 ```json
 "usingComponents": {
-  "t-attachments": "tdesign-miniprogram-chat/attachments/attachments"
+  "t-attachments": "tdesign-miniprogram/attachments/attachments"
 }
 ```
 
