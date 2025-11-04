@@ -2,7 +2,7 @@
 
 <view class="class {{classPrefix}}" style="{{_._style([style, customStyle])}}">
   <view class="{{_.cls(classPrefix + '__inner', [layout])}}">
-    <view class="{{[classPrefix+'__hd']}}">
+    <view class="{{classPrefix}}__hd">
       <block wx:if="{{status === 'error' || status === 'complete' || status === 'stop'}}">
         <t-icon
           class="{{_.cls(classPrefix + '__icon', [status])}}"

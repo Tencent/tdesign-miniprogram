@@ -9,7 +9,7 @@
 }
 
 .t-chat-message {
-  padding-right: 32rpx;
+  padding: 0 32rpx;
 }
 
 .image-chat .t-chat__inner.assistant .t-chat__avatar {

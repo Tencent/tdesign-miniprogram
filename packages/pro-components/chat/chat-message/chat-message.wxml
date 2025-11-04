@@ -28,7 +28,12 @@
               inChat="{{true}}"
             >
             </attachments>
-            <chat-thinking wx:if="{{item.type === 'thinking'}}" content="{{item.data}}" role="{{role}}" status="{{status}}"></chat-thinking>
+            <chat-thinking
+              wx:if="{{item.type === 'thinking'}}"
+              content="{{item.data}}"
+              role="{{role}}"
+              status="{{status}}"
+            ></chat-thinking>
             <chat-content
               wx:elif="{{item.type === 'text' || item.type === 'markdown'}}"
               content="{{item}}"

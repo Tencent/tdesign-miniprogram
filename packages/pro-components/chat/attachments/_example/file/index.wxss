@@ -1,7 +1,7 @@
 .chat-example {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32rpx;
+  gap: 32rpx 0;
 
   padding: 32rpx;
   box-sizing: border-box;
