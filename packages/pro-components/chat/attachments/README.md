@@ -49,7 +49,7 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
-items | Array | [] | 文件列表数据，每个元素需包含fileType/name/url/size等属性 | Y
+items | Array | [] | 附件列表。TS类型：FileItem[] | Y
 removable | Boolean | true | 是否显示删除按钮 | N
 imageViewer | Boolean | true | 是否启用图片预览功能 | N
 addable | Boolean | true | 是否显示添加按钮 | N
