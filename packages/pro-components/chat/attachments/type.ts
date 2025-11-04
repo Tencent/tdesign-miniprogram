@@ -37,8 +37,19 @@ export interface FileItem {
    * 自定义文件图标URL
    */
   fileIcon?: string;
+  /**
+   * 图片宽度
+   */
+  width?: number;
+  /**
+   * 图片高度
+   */
+  height?: number;
+  /**
+   * 图片缩放模式
+   */
+  mode?: 'aspectFit' | 'aspectFill' | 'widthFix' | 'heightFix' | 'scaleToFill';
 }
-
 export interface TdChatAttachmentsProps {
   /**
    * 文件列表数据，每个元素需包含fileType/name/url/size等属性

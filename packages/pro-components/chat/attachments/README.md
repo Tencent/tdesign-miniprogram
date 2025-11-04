@@ -53,7 +53,7 @@ items | Array | [] | 文件列表数据，每个元素需包含fileType/name/url
 removable | Boolean | true | 是否显示删除按钮 | N
 imageViewer | Boolean | true | 是否启用图片预览功能 | N
 addable | Boolean | true | 是否显示添加按钮 | N
-imageProps | Object | { mode: 'scaleToFill', width: 52, height: 52 } | 图片组件的属性配置，包含mode（图片裁剪模式）、width（宽度）、height（高度） | N
+
 
 
 
@@ -68,8 +68,10 @@ interface FileItem {
   progress?: number  // 上传进度(0-100)
   errorMessage?: string  // 错误信息
   fileIcon?: string  // 自定义文件图标URL
+  width?: number  // 图片宽度(px)
+  height?: number  // 图片高度(px)
+  mode?: 'aspectFit' | 'aspectFill' | 'widthFix' | 'heightFix' | 'scaleToFill'  // 图片模式
 }
-```
 
 ### Attachments Events
 
@@ -79,20 +81,3 @@ fileClick | `(item: FileItem)` | 点击文件时触发
 remove | `(item: FileItem, index: number)` | 点击删除按钮时触发
 add | - | 点击添加按钮时触发
 
-### Attachments Slots
-
-名称 | 作用域参数 | 描述
--- | -- | --
-default | - | 自定义文件列表内容
-
-### Attachments Methods
-
-方法名 | 参数 | 返回值 | 描述
--- | -- | -- | --
-handleFileClick | `item: FileItem` | - | 处理文件点击事件
-handleRemove | `item: FileItem, index: number` | - | 处理文件删除
-handleAdd | - | - | 处理添加按钮点击
-renderDesc | `item: FileItem` | string | 生成文件描述文本
-renderIcon | `item: FileItem` | string | 获取文件图标URL
-renderFileType | `item: FileItem` | string | 识别文件类型
-renderExtension | `item: FileItem` | string | 获取文件扩展名

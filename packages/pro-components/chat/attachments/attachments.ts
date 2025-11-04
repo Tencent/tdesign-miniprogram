@@ -23,12 +23,6 @@ export default class Attachments extends SuperComponent {
       type: Boolean,
       value: true,
     },
-    imageProps: {
-      type: Object,
-      value: {
-        mode: 'scaleToFill',
-      },
-    },
     inChat: {
       type: Boolean,
       value: false,
