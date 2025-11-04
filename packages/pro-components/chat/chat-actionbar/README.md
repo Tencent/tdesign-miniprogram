@@ -52,4 +52,4 @@ placement | String | start | 操作栏位置。可选项：start/end/space-aroun
 
 名称 | 参数 | 描述
 -- | -- | --
-handleAction | `(name: ChatActionsName, context: { e: MouseEvent, active: boolean })`  点击点赞，点踩，复制，分享，重新生成按钮时触发发
+actions | `(name: ChatActionsName, context: { e: MouseEvent, active: boolean })`  点击点赞，点踩，复制，分享，重新生成按钮时触发发

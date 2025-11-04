@@ -1,4 +1,4 @@
 <t-toast id="t-toast" />
 <view class="container">
-  <t-chat-actionbar content="{{content}}" bind:handleAction="handleAction" />
+  <t-chat-actionbar content="{{content}}" bind:actions="handleAction" />
 </view>

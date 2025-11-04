@@ -116,7 +116,7 @@ export default class ChatActionbar extends SuperComponent {
         this.setData({
           pComment: isActive ? undefined : 'good',
         });
-        this.triggerEvent('handleAction', {
+        this.triggerEvent('actions', {
           name,
           active: !isActive,
         });
@@ -125,12 +125,12 @@ export default class ChatActionbar extends SuperComponent {
         this.setData({
           pComment: isActive ? undefined : 'bad',
         });
-        this.triggerEvent('handleAction', {
+        this.triggerEvent('actions', {
           name,
           active: !isActive,
         });
       } else {
-        this.triggerEvent('handleAction', {
+        this.triggerEvent('actions', {
           name,
         });
       }
@@ -140,7 +140,7 @@ export default class ChatActionbar extends SuperComponent {
       if (!this.data.content) return;
       const copyContent =
         this.data.copyMode === 'markdown' ? this.data.content : this.data.filterSpecialChars(this.data.content);
-      this.triggerEvent('handleAction', {
+      this.triggerEvent('actions', {
         name: 'copy',
         data: copyContent,
       });
