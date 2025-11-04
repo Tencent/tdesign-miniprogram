@@ -83,7 +83,6 @@ fileDelete | 删除附件时触发 | file
 fileChange | 附件列表变化时触发 | files
 fileAdd | 添加附件时触发 | -
 fileSelect | 选择文件（图片/微信文件）时触发 | { e, name, files }
-update:visible | 上传面板显示状态变化时触发 | Boolean
 keyboardheightchange | 键盘高度变化时触发 | {e}
 
 #### fileSelect 回调参数说明
