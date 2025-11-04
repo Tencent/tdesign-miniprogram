@@ -1,6 +1,6 @@
 <view class="chat-example">
   <!-- 附件消息 -->
-  <view class="chat-example-block">
+  <!-- <view class="chat-example-block">
     <t-chat-message
       content="{{pic1.content}}"
       role="{{pic1.role}}"
@@ -28,7 +28,7 @@
       role="{{fileMessage.role}}"
       chatContentProps="{{chatContentProps}}"
     ></t-chat-message>
-  </view>
+  </view> -->
   <view class="chat-example-block">
     <t-chat-message
       content="{{fileMessage.content}}"

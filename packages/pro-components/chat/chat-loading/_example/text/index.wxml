@@ -1,5 +1,5 @@
 <view class="chat-example">
   <view class="chat-example-block">
-    <t-chat-loading animation="gradient" text="加载中..." />
+    <t-chat-loading animation="dots" text="加载中..." />
   </view>
 </view>

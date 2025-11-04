@@ -2,6 +2,7 @@ Component({
   data: {
     aiMessage: {
       role: 'assistant',
+      status: 'complete',
       content: [
         {
           type: 'thinking',
@@ -105,34 +106,34 @@ Component({
               width: 1920, // 图片实际宽度
               height: 1080, // 图片实际高度
             },
-            {
-              fileType: 'pdf',
-              name: 'document.pdf',
-              url: 'https://example.com/document.pdf',
-              size: 3072,
-              status: 'success',
-            },
-            {
-              fileType: 'doc',
-              name: 'report.docx',
-              url: 'https://example.com/report.docx',
-              size: 1536,
-              status: 'success',
-            },
-            {
-              fileType: 'audio',
-              name: 'audio.mp3',
-              url: 'https://example.com/audio.mp3',
-              size: 512,
-              status: 'success',
-            },
-            {
-              fileType: 'ppt',
-              name: 'presentation.ppt',
-              url: 'https://example.com/presentation.ppt',
-              size: 512,
-              status: 'success',
-            },
+            // {
+            //   fileType: 'pdf',
+            //   name: 'document.pdf',
+            //   url: 'https://example.com/document.pdf',
+            //   size: 3072,
+            //   status: 'success',
+            // },
+            // {
+            //   fileType: 'doc',
+            //   name: 'report.docx',
+            //   url: 'https://example.com/report.docx',
+            //   size: 1536,
+            //   status: 'success',
+            // },
+            // {
+            //   fileType: 'audio',
+            //   name: 'audio.mp3',
+            //   url: 'https://example.com/audio.mp3',
+            //   size: 512,
+            //   status: 'success',
+            // },
+            // {
+            //   fileType: 'ppt',
+            //   name: 'presentation.ppt',
+            //   url: 'https://example.com/presentation.ppt',
+            //   size: 512,
+            //   status: 'success',
+            // },
             {
               fileType: 'xls',
               name: 'spreadsheet.xls',
