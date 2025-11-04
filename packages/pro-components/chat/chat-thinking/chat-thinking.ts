@@ -56,7 +56,7 @@ export default class ChatThinking extends SuperComponent {
         localCollapsed: !this.data.localCollapsed,
       });
       // 通知父组件状态变化
-      this.triggerEvent('expandChange', this.data.localCollapsed);
+      this.triggerEvent('collapsedChange', this.data.localCollapsed);
     },
     setContentStyle() {
       if (this.data.maxHeight) {

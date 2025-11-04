@@ -8,7 +8,7 @@ Component({
     status: 'pending',
   },
   methods: {
-    handleExpandChange(e) {
+    handleCollapsedChange(e) {
       console.log('展开状态变化:', e.detail);
     },
   },

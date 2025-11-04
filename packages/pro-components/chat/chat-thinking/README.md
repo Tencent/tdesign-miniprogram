@@ -63,7 +63,7 @@ collapsed | Boolean | false | 是否折叠（受控） | N
 
 名称 | 参数 | 描述
 -- | -- | --
-expand-change | `(value: Boolean)` | 展开图标点击事件。TS 类型：`TNode`。[通用类型定义](https://github.com/Tencent/tdesign-vue-next/blob/develop/packages/components/common.ts)。[详细类型定义](https://github.com/Tencent/tdesign-vue-next/blob/develop/packages/pro-components/chat/type.ts)。
+collapsedChange | `(value: Boolean)` | 展开图标点击事件。TS 类型：`TNode`。[通用类型定义](https://github.com/Tencent/tdesign-vue-next/blob/develop/packages/components/common.ts)。[详细类型定义](https://github.com/Tencent/tdesign-vue-next/blob/develop/packages/pro-components/chat/type.ts)。
 
 ### CSS Variables
 
