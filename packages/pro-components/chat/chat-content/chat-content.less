@@ -4,6 +4,7 @@
 
 @chat-content-user-text-color: var(--td-chat-content-user-text-color, @text-color-primary);
 @chat-content-assistant-text-color: var(--td-chat-content-assistant-text-color, @text-color-primary);
+@chat-content-error-text-color: var(--td-chat-content-error-text-color, @error-color);
 
 .@{chat-content} {
   font-size: 32rpx;
@@ -40,5 +41,9 @@
       margin: 8rpx 0;
       border-radius: @radius-small;
     }
+  }
+// 错误状态样式
+  &__error {
+    color: @chat-content-error-text-color;
   }
 }

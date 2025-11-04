@@ -49,7 +49,8 @@ isComponent: true
 -- | -- | -- | -- | --
 content | Object | {} | 聊天内容对象，包含type和data字段 | Y
 role | String | '' | 消息角色，用于区分用户和助手的消息样式 | N
-
+status | String | '' | 消息角色，用于区分用户和助手的消息样式 | N
+markdownProps | Object | 详见chat-markdown | marked 解析器的配置选项 | N
 ### Content 对象结构
 
 ```typescript

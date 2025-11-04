@@ -19,6 +19,14 @@ export default class ChatContent extends SuperComponent {
       type: String,
       value: '',
     },
+    status: {
+      type: String,
+      value: '',
+    },
+    markdownProps: {
+      type: Object,
+      value: {},
+    },
   };
 
   data = {
@@ -59,7 +67,8 @@ export default class ChatContent extends SuperComponent {
     },
 
     setTextInfo() {
-      if (this.properties.content.type === 'text') {
+      // error 状态下统一按纯文本处理，避免走 markdown 渲染
+      if (this.properties.content.type === 'text' || this.properties.status === 'error') {
         this.setData({
           textInfo: this.escape(this.properties.content.data || ''),
         });
@@ -78,10 +87,6 @@ export default class ChatContent extends SuperComponent {
     },
     attached() {
       this.setTextInfo();
-
-      // TODO: __anonymous ??
-      const mountedFn = function __anonymous() {};
-      mountedFn.call(this);
     },
 
     detached() {},

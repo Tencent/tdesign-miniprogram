@@ -25,8 +25,8 @@ export default class ChatMarkdown extends SuperComponent {
       type: Boolean,
       value: true,
     },
-    // 新增：marked配置选项
-    markedOptions: {
+    // 新增：marked配置选项（原 markedOptions 重命名为 options）
+    options: {
       type: Object,
       value: {
         gfm: true,
@@ -58,7 +58,7 @@ export default class ChatMarkdown extends SuperComponent {
     // 解析markdown文本
     parseMarkdown(markdown: string) {
       try {
-        const lexer = new Lexer(this.data.markedOptions);
+        const lexer = new Lexer(this.data.options);
         const tokens = lexer.lex(markdown);
 
         this.setData({ nodes: tokens });

@@ -55,9 +55,9 @@ isComponent: true
 -- | -- | -- | -- | --
 content | String | '' | Markdown 格式的文本内容 | N
 isMarkdown | Boolean | true | 是否启用 Markdown 解析，false 时作为普通文本显示 | N
-markedOptions | Object | 见下方说明 | marked 解析器的配置选项 | N
+options | Object | 见下方说明 | marked 解析器的配置选项 | N
 
-### markedOptions 配置
+### options 配置
 
 ```javascript
 {
@@ -147,7 +147,7 @@ t-class-link | 链接样式类
 ```html
 <t-chat-markdown 
   content="{{markdownText}}"
-  marked-options="{{{
+  options="{{{
     gfm: true,
     pedantic: false,
     smartLists: true,

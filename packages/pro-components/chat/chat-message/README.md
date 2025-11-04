@@ -39,6 +39,10 @@ isComponent: true
 
 {{ status }}
 
+### 错误状态
+
+{{ error }}
+
 ### 03 组件样式
 
 #### 气泡样式

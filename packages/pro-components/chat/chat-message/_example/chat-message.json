@@ -6,6 +6,7 @@
     "style-component": "./style",
     "configure": "./configure",
     "status": "./status",
-    "content": "./content"
+    "content": "./content",
+    "error": "./error"
   }
 }
