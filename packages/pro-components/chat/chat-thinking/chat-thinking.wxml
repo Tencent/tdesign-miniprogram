@@ -22,8 +22,6 @@
         />
       </view>
     </view>
-    <view hidden="{{!(!localCollapsed)}}" class="{{_.cls(classPrefix + '__bd', [layout])}}" style="{{(contentStyle)}}">
-      {{''+(content.text||"")+''}}
-    </view>
+    <view hidden="{{!(!localCollapsed)}}" class="{{_.cls(classPrefix + '__bd', [layout])}}" style="{{contentStyle}}">{{content.text||""}}</view>
   </view>
 </view>
