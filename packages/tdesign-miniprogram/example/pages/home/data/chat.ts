@@ -19,6 +19,10 @@ const chat = {
       label: '对话 Markdown',
     },
     {
+      name: 'ChatContent',
+      label: '对话正文',
+    },
+    {
       name: 'ChatThinking',
       label: '思考过程',
     },

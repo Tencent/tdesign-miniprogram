@@ -54,7 +54,6 @@ isComponent: true
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
 content | String | '' | Markdown 格式的文本内容 | N
-isMarkdown | Boolean | true | 是否启用 Markdown 解析，false 时作为普通文本显示 | N
 options | Object | 见下方说明 | marked 解析器的配置选项 | N
 
 ### options 配置
@@ -138,7 +137,6 @@ t-class-link | 链接样式类
 ```html
 <t-chat-markdown 
   content="# 标题\n这是一段**粗体**文本。"
-  theme="normal"
 />
 ```
 
@@ -170,7 +168,6 @@ t-class-link | 链接样式类
 ```html
 <t-chat-markdown 
   content="{{complexMarkdown}}"
-  theme="normal"
 />
 ```
 

@@ -1,5 +1,5 @@
 <view class="chat-example">
-  <view class="title">用户内容</view>
+  <view class="title">用户内容纯文本支持HTML转义</view>
   <view class="chat-example-block">
     <t-chat-content content="{{userContent}}" role="user"></t-chat-content>
   </view>

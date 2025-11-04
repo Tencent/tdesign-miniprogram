@@ -12,18 +12,9 @@ export default class ChatMarkdown extends SuperComponent {
   };
 
   properties = {
-    theme: {
-      type: String,
-      value: 'normal',
-    },
     content: {
       type: String,
       value: '',
-    },
-    // 新增：支持直接传入markdown文本
-    isMarkdown: {
-      type: Boolean,
-      value: true,
     },
     // 新增：marked配置选项（原 markedOptions 重命名为 options）
     options: {
@@ -45,12 +36,7 @@ export default class ChatMarkdown extends SuperComponent {
   observers = {
     // 监听markdown文本变化，自动解析
     content: function (markdown: string) {
-      // 判断isMarkdown是否为true
-      if (this.data.isMarkdown) {
-        this.parseMarkdown(markdown);
-      } else {
-        this.setData({ nodes: [] });
-      }
+      this.parseMarkdown(markdown);
     },
   };
 
@@ -80,10 +66,6 @@ export default class ChatMarkdown extends SuperComponent {
 
   lifetimes = {
     attached() {
-      // 组件挂载后，如果有markdown文本，进行解析
-      if (this.data.isMarkdown) {
-        this.parseMarkdown(this.data.content);
-      }
     },
   };
 }
