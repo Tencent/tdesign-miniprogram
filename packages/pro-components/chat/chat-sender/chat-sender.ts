@@ -75,7 +75,6 @@ export default class ChatSender extends SuperComponent {
         {
           name: 'upload',
           presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'],
-          type: 'popup',
           status: '',
         },
         {
@@ -230,13 +229,10 @@ export default class ChatSender extends SuperComponent {
     },
 
     handleUploadClick(e) {
-      const { type, status } = e.currentTarget.dataset;
+      const { status } = e.currentTarget.dataset;
       this.triggerEvent('uploadClick');
       // 禁用状态不显示上传面板
       if (this.data.disabled || status === 'disabled') return;
-      this.setData({
-        uploadPlacement: type,
-      });
       // 点击按钮切换面板显示状态
       this.triggerEvent('updateVisible', !this.data.visible);
       // 透传处理上传按钮点击事件,由业务侧控制是否显示上传面板

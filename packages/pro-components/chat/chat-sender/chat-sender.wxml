@@ -64,10 +64,9 @@
               <view>
                 <block wx:if="{{item.name === 'upload'}}">
                   <view class="plus-btn {{item.status === 'disabled' ? 'disabled' : ''}}">
-                    <block wx:if="{{item.type === 'bottom'}}">
+                    <block>
                       <view
                         class="btn-func"
-                        data-type="{{item.type}}"
                         data-status="{{item.status}}"
                         catchtap="handleUploadClick"
                       >
@@ -111,7 +110,7 @@
     </view>
   </view>
 </view>
-<view wx:if="{{visible && uploadPlacement === 'bottom'}}" class="{{classPrefix}}__upload" catchtap="handleUploadClick">
+<view wx:if="{{visible}}" class="{{classPrefix}}__upload" catchtap="handleUploadClick">
   <block wx:for="{{uploadNames}}" wx:for-item="name" wx:for-index="index" wx:key="index">
     <view class="{{classPrefix}}__upload-item" data-name="{{name}}" bindtap="handleUploadEntryClick">
       <view class="{{classPrefix}}__upload-item__icon">

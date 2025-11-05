@@ -68,7 +68,6 @@ Component({
       {
         name: 'upload',
         presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'],
-        type: 'bottom',
         status: '',
       },
       {

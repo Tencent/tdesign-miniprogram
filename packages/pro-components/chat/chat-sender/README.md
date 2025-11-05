@@ -112,7 +112,6 @@ Array<
   | {
       name: 'upload', // 固定为上传入口
       presets: string[], // 上传入口类型数组（如 ['uploadImage', 'uploadCamera', 'uploadAttachment']）
-      type: 'popup' | 'bottom', // 上传入口展现方式：弹出层或底部
       status?: string, // 可选，'disabled' 时按钮不可用
     }
   | {
@@ -136,7 +135,6 @@ Array<
   {
     name: 'upload',
     presets: ['uploadImage', 'uploadCamera', 'uploadAttachment'],
-    type: 'popup',
     status: '',
   },
   {
@@ -152,7 +150,6 @@ Array<
   {
     name: 'upload',
     presets: ['uploadImage', 'uploadAttachment'],
-    type: 'popup',
   },
   {
     name: 'send',
@@ -167,7 +164,6 @@ Array<
   {
     name: 'upload',
     presets: ['uploadCamera'],
-    type: 'bottom',
   },
   {
     name: 'send',
@@ -182,7 +178,6 @@ Array<
   {
     name: 'upload',
     presets: ['uploadImage', 'uploadCamera'],
-    type: 'popup',
     status: 'disabled',
   },
   {
