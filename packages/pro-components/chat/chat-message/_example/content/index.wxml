@@ -39,7 +39,12 @@
   </view>
   <!-- 思考过程消息 -->
   <view class="chat-example-block">
-    <t-chat-message content="{{aiMessage.content}}" role="{{aiMessage.role}}" variant="text">
+    <t-chat-message
+      content="{{aiMessage.content}}"
+      role="{{aiMessage.role}}"
+      status="{{aiMessage.status}}"
+      variant="text"
+    >
       <t-chat-actionbar slot="actionbar" />
     </t-chat-message>
   </view>
