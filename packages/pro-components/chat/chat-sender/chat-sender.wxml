@@ -80,7 +80,7 @@
                 <block wx:if="{{item.name === 'send'}}">
                   <block wx:if="{{item.type === 'text'}}">
                     <view
-                      class="send-btn-{{item.type}} {{value || loading ? '' : 'disabled'}}"
+                      class="send-btn-{{item.type}} {{value || loading ? 'active' : 'disabled'}}"
                       bindtap="handleSendClick"
                     >
                       {{loading ? '停止' : '发送'}}
@@ -88,11 +88,11 @@
                   </block>
                   <block wx:else>
                     <view
-                      class="send-btn-icon send-btn-{{item.type}} {{value || loading ? '' : 'disabled'}} {{loading ? 'stop' : ''}}"
+                      class="send-btn-icon send-btn-{{item.type}} {{value || loading ? 'active' : 'disabled'}} {{loading ? 'stop' : ''}}"
                       bindtap="handleSendClick"
                     >
                       <block wx:if="{{!loading}}">
-                        <t-icon name="send-filled" size="32rpx" color="#ffffff" />
+                        <t-icon name="send-filled" size="32rpx" />
                       </block>
                       <block wx:else>
                         <view style="width: 24rpx; height: 24rpx; background-color: #ffffff" />

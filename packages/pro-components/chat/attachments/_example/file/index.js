@@ -3,13 +3,13 @@ Page({
     items: [
       {
         fileType: 'doc',
-        name: 'word-file.docxf',
-        url: 'https://example.com/word-file.docxf',
+        name: 'word-file.doc',
+        url: 'https://example.com/word-file.doc',
         size: 222859,
         status: 'success',
       },
       {
-        fileType: 'xls',
+        fileType: 'excel',
         name: 'excel-file.xlsx',
         url: 'https://example.com/excel-file.xlsx',
         size: 222859,
@@ -37,8 +37,8 @@ Page({
         status: 'success',
       },
       {
-        fileType: 'audio',
-        name: 'audio-file.mp3',
+        fileType: 'file',
+        name: 'file',
         url: 'https://example.com/audio-file.mp3',
         size: 222859,
         status: 'success',

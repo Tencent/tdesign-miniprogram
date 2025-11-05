@@ -50,7 +50,7 @@
 
 .step-icon {
   margin-right: 12rpx;
-  margin-top: 4rpx;
+  margin-top: 6rpx;
 }
 
 .t-steps-item__circle--finish {

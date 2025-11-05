@@ -3,6 +3,7 @@
 @chat-list: ~'@{prefix}-chat-list';
 @chat-content: ~'@{prefix}-chat-content';
 @chat-message: ~'@{prefix}-chat-message';
+@chat-thinking: ~'@{prefix}-chat-thinking';
 @attachments: ~'@{prefix}-attachments';
 
 @chat-message-content-padding: 24rpx 32rpx;
@@ -14,6 +15,11 @@
     -webkit-transform: scaleY(-1);
     transform: scaleY(-1);
   }
+}
+
+.@{attachments} + .@{chat-content}:not(:empty),
+.@{chat-thinking} + .@{chat-content}:not(:empty){
+  margin-top: 24rpx;
 }
 
 .@{chat-message} {
@@ -231,9 +237,7 @@
     }
   }
 
-  // Actionbar 插槽样式
   &__actionbar {
-    // margin-top: @spacer-1;
     --chat-actionbar-padding: @spacer-1 0 0 0;
 
     &:empty {

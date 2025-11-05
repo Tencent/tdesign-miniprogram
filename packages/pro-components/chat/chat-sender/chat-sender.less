@@ -4,7 +4,7 @@
 
 @chat-sender-border-radius: 32rpx;
 @chat-sender-padding: 22rpx 0;
-@chat-sender-margin: 48rpx 24rpx 80rpx 24rpx;
+@chat-sender-margin: 24rpx 24rpx 80rpx 24rpx;
 @chat-sender-border-width: 2rpx;
 @chat-sender-border-color: @component-border;
 @chat-sender-shadow: @shadow-3;
@@ -73,6 +73,8 @@
 @chat-sender-menu-item-text-line-height: 36rpx;
 @chat-sender-menu-item-text-letter-spacing: 1rpx;
 
+@chat-sender-bg-color: var(--td-bg-color-specialcomponent, #fff);
+
 .@{chat-sender} {
   position: relative;
   border-radius: @chat-sender-border-radius;
@@ -82,6 +84,7 @@
   margin: @chat-sender-margin;
   box-shadow: @chat-sender-shadow;
   transition: @chat-sender-margin-bottom-transition;
+  background-color: @chat-sender-bg-color;
 
   // 头部区域
   &__header {
@@ -212,6 +215,8 @@
       justify-content: center;
 
       .plus-btn {
+        color: @text-color-primary;
+
         .btn-icon {
           display: block;
         }
@@ -235,6 +240,7 @@
       }
 
       .send-btn-icon {
+        color: @bg-color-container;
         width: @chat-sender-send-btn-size;
         height: @chat-sender-send-btn-size;
         margin-left: @chat-sender-send-btn-margin-left;
@@ -245,6 +251,10 @@
         justify-content: center;
         transform: rotate(-90deg);
         transition: @chat-sender-send-btn-transition;
+
+        &.active {
+          color: @text-color-anti;
+        }
 
         &.disabled {
           background-color: @chat-sender-send-btn-bg-color-disabled;

@@ -35,7 +35,7 @@
             <t-icon name="enter" size="40rpx" style="transform: scaleX(-1)" />
           </view>
           <view class="header-content"> {{headerText}} </view>
-          <view style="padding: 4rpx; height: 40rpx; margin-left: auto; color: var(--td-text-color-secondary)">
+          <view style="padding: 4rpx; height: 40rpx; margin-left: auto; color: var(--td-text-color-placeholder)">
             <t-icon name="close" size="40rpx" bind:tap="handleCLoseCite" />
           </view>
         </view>
