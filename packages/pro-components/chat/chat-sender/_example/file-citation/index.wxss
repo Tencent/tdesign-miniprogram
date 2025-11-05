@@ -73,6 +73,8 @@
 }
 
 .header-file-content {
+  padding: 2rpx 0;
+  line-height: 44rpx;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

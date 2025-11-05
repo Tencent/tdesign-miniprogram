@@ -25,15 +25,9 @@
                   style="{{inChat ? _this.imageStyle(item) : ''}}"
                 ></image>
               </block>
-              <block wx:if="{{removable}}">
-                <t-icon
-                  catchtap="onRemoveTap"
-                  data-index="{{index}}"
-                  class="{{classPrefix}}__remove"
-                  name="close-circle-filled"
-                  size="16px"
-                />
-              </block>
+              <view wx:if="{{removable}}" class="{{classPrefix}}__remove">
+                <t-icon data-index="{{index}}" name="multiply" size="16px" catchtap="onRemoveTap" />
+              </view>
             </view>
           </block>
           <block wx:else>
@@ -69,15 +63,9 @@
                   <view wx:else class="{{classPrefix}}__desc">{{item.desc}}</view>
                 </block>
               </view>
-              <block wx:if="{{removable}}">
-                <t-icon
-                  catchtap="onRemoveTap"
-                  data-index="{{index}}"
-                  class="{{classPrefix}}__remove"
-                  name="close-circle-filled"
-                  size="16px"
-                />
-              </block>
+              <view wx:if="{{removable}}" class="{{classPrefix}}__remove">
+                <t-icon data-index="{{index}}" name="multiply" size="16px" catchtap="onRemoveTap" />
+              </view>
             </view>
           </block>
         </view>

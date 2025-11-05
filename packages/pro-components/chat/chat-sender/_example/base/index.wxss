@@ -38,7 +38,7 @@
 .chat-sender-placeholder {
   font-size: 32rpx;
   font-weight: 600;
-  color: var(--td-text-color-placeholder);
+  color: var(--demo-chat-sender-placeholder);
   text-align: center;
   height: 48rpx;
 }

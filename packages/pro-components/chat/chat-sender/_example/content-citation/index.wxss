@@ -70,7 +70,8 @@
 }
 
 .header-content {
-  padding: 0 24rpx;
+  padding: 2rpx 24rpx;
+  box-sizing: border-box;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
