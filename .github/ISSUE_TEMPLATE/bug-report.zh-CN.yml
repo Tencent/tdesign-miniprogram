@@ -22,10 +22,10 @@ body:
     validations:
       required: true
 
-  - type: textarea
+  - type: input
     id: reproduce
     attributes:
-      label: 重现代码
+      label: 重现链接
       description: 请提供尽可能精简的 [代码片段](https://developers.weixin.qq.com/miniprogram/dev/devtools/minicode.html) 或 GitHub 仓库的链接。请不要填无关链接，否则你的 Issue 将被关闭。
       placeholder: 请填写
 
