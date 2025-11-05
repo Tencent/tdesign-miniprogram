@@ -185,13 +185,10 @@
 
 // 对话中附件样式覆盖
 .@{attachments}--chatting {
-  .@{attachments}__file {
-    margin-top: 0;
-    margin-bottom: @attachments-file-margin;
-  }
 
   &.all_images {
     width: 100%;
+
     .file-image.@{attachments}__file {
       background-color: transparent !important;
     }
@@ -209,6 +206,11 @@
 
   &.all_files {
     width: auto;
+
+    .@{attachments}__files:not(:last-child) {
+      margin-bottom: @attachments-file-margin;
+    }
+
     .file-image.@{attachments}__file {
       background-color: transparent !important;
     }
