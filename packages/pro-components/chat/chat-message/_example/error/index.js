@@ -6,7 +6,7 @@ Component({
       content: [
         {
           type: 'text',
-          data: '！！！请求出错',
+          data: '´• •`!!!请求出错',
         },
       ],
     },

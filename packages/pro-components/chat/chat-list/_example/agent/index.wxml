@@ -27,7 +27,7 @@
                       wx:for="{{item.tasks}}"
                       wx:key="index"
                       wx:for-item="taskItem"
-                      class="{{['step-text', taskItem.type]}}"
+                      class="step-text {{taskItem.type}}"
                     >
                       <t-icon
                         wx:if="{{taskItem.type === 'command'}}"

@@ -3,7 +3,7 @@
 <view class="class {{[classPrefix]}}" style="{{_._style([style, customStyle])}}">
   <!-- 动态加载动画 -->
   <view wx:if="{{animation !== 'skeleton'}}" class="{{classPrefix}}__icon">
-    <block wx:if="{{animation==='moving'}}">
+    <block wx:if="{{animation === 'moving'}}">
       <view class="{{classPrefix}}__moving">
         <view class="{{classPrefix}}__moving--top" />
         <view class="{{classPrefix}}__moving--left" />
@@ -25,5 +25,5 @@
     </view>
   </block>
   <!-- 文本内容 -->
-  <view class="{{classPrefix}}__text">{{text}}</view>
+  <view wx:if="{{text}}" class="{{classPrefix}}__text">{{text}}</view>
 </view>

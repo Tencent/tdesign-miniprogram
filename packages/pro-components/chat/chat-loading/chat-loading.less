@@ -14,11 +14,6 @@
   }
 
   &__icon {
-    width: 28rpx;
-    height: 28rpx;
-    padding: 6rpx;
-    margin-right: 8rpx;
-
     .@{chat-loading}__skeleton{
       width: 100%
     }
@@ -41,7 +36,9 @@
     margin: 0 6rpx 0 0;
     scale: 0.8;
 
-    view {
+    &--top,
+    &--left,
+    &--right {
       position: absolute;
       width: 16rpx;
       height: 16rpx;
