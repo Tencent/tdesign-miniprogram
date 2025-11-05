@@ -1,7 +1,7 @@
 <t-navbar class="demo-navbar" title="ChatThinking" leftArrow />
 
 <view class="demo">
-  <t-demo-header title="ChatThinking" desc="用于展示 ChatBot 思考过程的组件。" notice="渲染框架支持情况：WebView" />
+  <t-demo-header title="ChatThinking 思考过程" desc="用于展示思考过程的组件。" notice="渲染框架支持情况：WebView" />
   <t-demo title="01 组件类型" desc="支持多种加载动效类型，包括gradient、moving、dots">
     <base />
   </t-demo>

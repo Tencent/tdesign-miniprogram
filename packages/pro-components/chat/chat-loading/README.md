@@ -1,6 +1,6 @@
 ---
-title: ChatLoading 加载中
-description: 用于 ChatBot 对话场景中的加载状态组件。
+title: ChatLoading 对话加载
+description: 用于对话场景中的加载状态组件。
 spline: base
 isComponent: true
 ---
@@ -47,7 +47,7 @@ text | String | - | 加载过程展示的文字内容 | N
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-chat-loading-color | @brand-color | 加载图标颜色
 --td-chat-loading-text-color | @text-color-secondary | 加载文本颜色

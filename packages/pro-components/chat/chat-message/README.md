@@ -1,6 +1,6 @@
 ---
-title: ChatMessage 聊天消息
-description: ChatMessage 用于在聊天对话中显示单个消息项。它可以展示用户的头像、昵称、时间、聊天内容，支持多种消息状态和样式变体。
+title: ChatMessage 对话消息体
+description: 用于在聊天对话中显示单个消息项。它可以展示用户的头像、昵称、时间、聊天内容，支持多种消息状态和样式变体。
 spline: base
 isComponent: true
 ---
@@ -101,7 +101,7 @@ content | 默认插槽，用于自定义消息内容
 
 组件提供了下列 CSS 变量，可用于自定义样式。
 
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --t-chat-message-avatar-size | 64rpx | 头像尺寸
 --t-chat-message-avatar-radius | 50% | 头像圆角
