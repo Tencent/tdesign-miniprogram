@@ -55,7 +55,7 @@ isComponent: true
 disabled | Boolean | false | 是否禁用输入框 | N
 placeholder | String | 请输入消息... | 输入框默认文案 | N
 loading | Boolean | false | 发送按钮是否处于加载状态 | N
-textareaProps | Object | { autosize: { maxHeight: 125, minHeight: 0 } } | 透传给Textarea组件的全部属性，autosize支持Boolean或Object`boolean \| { maxHeight?: number, minHeight?: number }`| N
+textareaProps | Object | { autosize: { maxHeight: 264, minHeight: 48 } } | 透传给Textarea组件的全部属性，autosize支持Boolean或Object`boolean \| { maxHeight?: number, minHeight?: number }`，autosize数值单位为rpx| N
 value | String | '' | 输入框的值 | N
 onBlur | Function | () => {} | 输入框失焦时触发 | N
 onChange | Function | () => {} | 输入框值发生变化时触发 | N

@@ -92,7 +92,7 @@
                       bindtap="handleSendClick"
                     >
                       <block wx:if="{{!loading}}">
-                        <t-icon name="send-filled" size="40rpx" color="#ffffff" />
+                        <t-icon name="send-filled" size="32rpx" color="#ffffff" />
                       </block>
                       <block wx:else>
                         <view style="width: 24rpx; height: 24rpx; background-color: #ffffff" />

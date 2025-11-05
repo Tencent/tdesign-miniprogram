@@ -92,12 +92,12 @@
     "pages/color-picker/color-picker",
     "pages/guide/guide",
     "pages/watermark/watermark",
-    "pages/chat-list/chat-list"
+    "pages/chat-message/chat-message"
   ],
   "subpackages": [
     {
-      "root": "pages/chat-message",
-      "pages": ["chat-message"]
+      "root": "pages/chat-list",
+      "pages": ["chat-list"]
     },
     {
       "root": "pages/chat-content",

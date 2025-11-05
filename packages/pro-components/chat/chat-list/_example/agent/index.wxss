@@ -7,16 +7,15 @@
   padding: 0 0 0 32rpx;
   box-sizing: border-box;
 }
-
 .t-chat-message {
-  padding-right: 32rpx;
+  padding: 0 32rpx;
 }
 
 .preview {
   padding: 16rpx;
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
+  border: 1px solid var(--td-component-border);
 }
 
 .step {
@@ -36,17 +35,17 @@
 .step-text.command {
   padding: 16rpx;
   border-radius: 16rpx;
-  background-color: #f3f3f3;
+  background-color: var(--td-bg-color-secondarycontainer);
   display: flex;
   font-size: 28rpx;
   line-height: 44rpx;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--td-text-color-secondary);
 }
 
 .step-text.result {
   font-size: 28rpx;
   line-height: 44rpx;
-  color: rgba(0, 0, 0, 0.9);
+  color: var(--td-text-color-primary);
 }
 
 .step-icon {
@@ -56,8 +55,8 @@
 
 .t-steps-item__circle--finish {
   background-color: transparent;
-  color: #000000e5;
-  border: 1px solid #000000e5;
+  color: var(--td-text-color-primary);
+  border: 1px solid var(--td-text-color-primary);
   width: 16px;
   height: 16px;
 }
@@ -67,10 +66,10 @@
 }
 
 .t-steps-item__line--finish {
-  background-color: #dcdcdc;
+  background-color: var(--td-component-border);
 }
 
 .t-steps-item__title--finish {
-  color: #000000e5;
+  color: var(--td-text-color-primary);
   font-weight: 600;
 }

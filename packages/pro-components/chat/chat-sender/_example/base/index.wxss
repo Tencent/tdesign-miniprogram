@@ -24,21 +24,21 @@
 .chat-sender-height-left-limit {
   height: 70rpx;
   width: 70rpx;
-  border-top: 1px #e7e7e7 dashed;
-  border-left: 1px #e7e7e7 dashed;
+  border-top: 1px var(--td-component-stroke) dashed;
+  border-left: 1px var(--td-component-stroke) dashed;
   border-top-left-radius: 32rpx;
 }
 .chat-sender-height-right-limit {
   height: 70rpx;
   width: 70rpx;
-  border-top: 1px #e7e7e7 dashed;
-  border-right: 1px #e7e7e7 dashed;
+  border-top: 1px var(--td-component-stroke) dashed;
+  border-right: 1px var(--td-component-stroke) dashed;
   border-top-right-radius: 32rpx;
 }
 .chat-sender-placeholder {
   font-size: 32rpx;
   font-weight: 600;
-  color: var(--td-text-color-disabled);
+  color: var(--demo-chat-sender-placeholder);
   text-align: center;
   height: 48rpx;
 }
@@ -47,7 +47,7 @@
   position: absolute;
   width: 100%;
   bottom: 0rpx;
-  background-color: #ffffff;
+  background-color: var(--td-bg-color-container);
 }
 
 .demo-footer {
@@ -92,7 +92,7 @@
 }
 
 .active {
-  border-color: rgba(217, 225, 255, 1);
+  border-color: var(--td-brand-color-light-active);
   color: var(--td-brand-color);
-  background-color: rgba(242, 243, 255, 1);
+  background-color: var(--td-brand-color-light);
 }

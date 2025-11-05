@@ -20,7 +20,7 @@
   /* border: 2rpx solid #e5e5e5; */
   border-radius: 8rpx;
   overflow: hidden;
-  background-color: #ffffff;
+  background-color: var(--td-bg-color-container);
 }
 
 .demo-footer-prefix {
@@ -54,9 +54,9 @@
 }
 
 .active {
-  border-color: rgba(217, 225, 255, 1);
+  border-color: var(--td-brand-color-light-active);
   color: var(--td-brand-color);
-  background-color: rgba(242, 243, 255, 1);
+  background-color: var(--td-brand-color-light);
 }
 
 .demo-header {
@@ -64,7 +64,7 @@
   width: calc(100% - 48rpx);
   margin-left: 24rpx;
   height: 62rpx;
-  border-bottom: 2rpx solid var(--td-component-border);
+  border-bottom: 2rpx solid var(--td-component-stroke);
 }
 
 .header-content-wrapper {
@@ -73,6 +73,8 @@
 }
 
 .header-file-content {
+  padding: 2rpx 0;
+  line-height: 44rpx;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

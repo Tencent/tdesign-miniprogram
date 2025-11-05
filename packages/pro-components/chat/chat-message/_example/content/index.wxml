@@ -1,6 +1,6 @@
 <view class="chat-example">
   <!-- 附件消息 -->
-  <view class="chat-example-block">
+  <!-- <view class="chat-example-block">
     <t-chat-message
       content="{{pic1.content}}"
       role="{{pic1.role}}"
@@ -28,7 +28,7 @@
       role="{{fileMessage.role}}"
       chatContentProps="{{chatContentProps}}"
     ></t-chat-message>
-  </view>
+  </view> -->
   <view class="chat-example-block">
     <t-chat-message
       content="{{fileMessage.content}}"
@@ -39,7 +39,12 @@
   </view>
   <!-- 思考过程消息 -->
   <view class="chat-example-block">
-    <t-chat-message content="{{aiMessage.content}}" role="{{aiMessage.role}}" variant="text">
+    <t-chat-message
+      content="{{aiMessage.content}}"
+      role="{{aiMessage.role}}"
+      status="{{aiMessage.status}}"
+      variant="text"
+    >
       <t-chat-actionbar slot="actionbar" />
     </t-chat-message>
   </view>

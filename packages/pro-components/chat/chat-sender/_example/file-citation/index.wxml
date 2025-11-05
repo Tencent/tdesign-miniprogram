@@ -43,7 +43,7 @@
             />
             <view class="header-file-content" hover-class="none" hover-stop-propagation="false"> {{headerText}} </view>
           </view>
-          <view style="padding: 4rpx; height: 40rpx; margin-left: auto; color: var(--td-text-color-secondary)">
+          <view style="padding: 4rpx; height: 40rpx; margin-left: auto; color: var(--td-text-color-placeholder)">
             <t-icon name="close" size="40rpx" bind:tap="handleCLoseCite" />
           </view>
         </view>

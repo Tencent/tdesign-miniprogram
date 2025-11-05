@@ -1,5 +1,11 @@
-page {
-  // background-color: var(--td-bg-color-container);
+.chat-sender-placeholder {
+  --demo-chat-sender-placeholder: rgba(0, 0, 0, .1);
+}
+
+@media (prefers-color-scheme: dark) {
+  .chat-sender-placeholder {
+    --demo-chat-sender-placeholder: #fff;
+  }
 }
 
 .t-button {
@@ -9,3 +15,4 @@ page {
 .t-button:last-child {
   margin-right: 0;
 }
+

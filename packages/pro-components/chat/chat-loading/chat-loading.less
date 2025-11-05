@@ -27,7 +27,10 @@
   &__text {
     color: @text-color-placeholder;
     font-size: @font-size-base;
-    margin-left: 8rpx;
+
+    &:not(:empty) {
+      margin-left: @spacer;
+    }
   }
 
   &__moving {
