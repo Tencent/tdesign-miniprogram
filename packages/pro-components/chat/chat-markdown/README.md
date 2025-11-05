@@ -1,5 +1,5 @@
 ---
-title: ChatMarkdown 聊天 Markdown 渲染器
+title: ChatMarkdown Markdown内容
 description: 用于聊天场景中渲染 Markdown 格式文本的组件，内置 marked 解析器，支持多种 Markdown 语法和配置选项。
 spline: base
 isComponent: true
@@ -83,7 +83,7 @@ default | 自定义内容插槽
 
 组件提供了下列 CSS 变量，可用于自定义样式。
 
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --t-chat-markdown-text-color | rgba(0, 0, 0, 0.9) | 文本颜色
 --t-chat-markdown-heading-color | rgba(0, 0, 0, 0.9) | 标题颜色
@@ -135,7 +135,7 @@ t-class-link | 链接样式类
 ### 基础用法
 
 ```html
-<t-chat-markdown 
+<t-chat-markdown
   content="# 标题\n这是一段**粗体**文本。"
 />
 ```
@@ -143,7 +143,7 @@ t-class-link | 链接样式类
 ### 自定义配置
 
 ```html
-<t-chat-markdown 
+<t-chat-markdown
   content="{{markdownText}}"
   options="{{{
     gfm: true,
@@ -157,16 +157,13 @@ t-class-link | 链接样式类
 ### 禁用 Markdown 解析
 
 ```html
-<t-chat-markdown 
-  content="这是普通文本，不会被解析为 Markdown"
-  is-markdown="{{false}}"
-/>
+<t-chat-markdown content="这是普通文本，不会被解析为 Markdown" />
 ```
 
 ### 复杂 Markdown 内容
 
 ```html
-<t-chat-markdown 
+<t-chat-markdown
   content="{{complexMarkdown}}"
 />
 ```
@@ -183,19 +180,19 @@ t-class-link | 链接样式类
 
 ### 最佳实践
 
-1. **性能优化**: 
+1. **性能优化**:
    - 对于长文本内容，建议分页或虚拟滚动
    - 避免频繁更新 content 属性
 
-2. **主题适配**: 
+2. **主题适配**:
    - 根据应用主题自动切换明暗主题
    - 使用 CSS 变量自定义样式
 
-3. **错误处理**: 
+3. **错误处理**:
    - 组件内置错误处理，解析失败时降级为普通文本
    - 建议对用户输入进行长度限制
 
-4. **无障碍访问**: 
+4. **无障碍访问**:
    - 确保渲染后的内容对屏幕阅读器友好
    - 提供适当的语义化标签
 
@@ -214,4 +211,4 @@ t-class-link | 链接样式类
 - 支持主题样式切换
 - 内置错误处理和降级方案
 - 支持多种 Markdown 语法特性
-- 优化渲染性能和用户体验 
+- 优化渲染性能和用户体验

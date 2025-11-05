@@ -1,8 +1,8 @@
 <t-navbar class="demo-navbar" title="ChatMessage" leftArrow />
 <view class="demo">
   <t-demo-header
-    title="ChatMessage 聊天信息"
-    desc="ChatMessage 用于在聊天对话中显示单个消息项。它可以展示用户的头像、昵称、时间、聊天内容，支持多种消息状态和样式变体。"
+    title="ChatMessage 对话消息体"
+    desc="用于在聊天对话中显示单个消息项。它可以展示用户的头像、昵称、时间、聊天内容，支持多种消息状态和样式变体。"
     notice="渲染框架支持情况：WebView"
   />
   <t-demo title="01 组件类型" desc="基础类型">

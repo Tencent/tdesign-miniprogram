@@ -1,6 +1,6 @@
 ---
-title: ChatSender 聊天发送器
-description: 用于聊天场景的消息输入和发送组件。
+title: ChatSender 对话输入
+description: 用于聊天对话的输入框，可以扩展模型、多模态等能力。
 spline: base
 isComponent: true
 ---

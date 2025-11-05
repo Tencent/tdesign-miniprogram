@@ -2,7 +2,10 @@
 
 <view class="class {{[classPrefix]}}" style="{{_._style([style, customStyle])}}">
   <!-- 动态加载动画 -->
-  <view wx:if="{{animation !== 'skeleton'}}" class="{{classPrefix}}__icon">
+  <view
+    wx:if="{{animation !== 'skeleton'}}"
+    class="{{classPrefix}}__icon {{ animation === 'dots' ? '' : classPrefix + '__icon--with-padding' }}"
+  >
     <block wx:if="{{animation === 'moving'}}">
       <view class="{{classPrefix}}__moving">
         <view class="{{classPrefix}}__moving--top" />

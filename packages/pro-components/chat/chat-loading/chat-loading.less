@@ -14,6 +14,11 @@
   }
 
   &__icon {
+    &--with-padding {
+      padding: 6rpx;
+      box-sizing: border-box;
+    }
+
     .@{chat-loading}__skeleton{
       width: 100%
     }
@@ -32,35 +37,32 @@
     position: relative;
     width: 28rpx;
     height: 28rpx;
-    left: 4rpx;
-    margin: 0 6rpx 0 0;
-    scale: 0.8;
 
     &--top,
     &--left,
     &--right {
       position: absolute;
-      width: 16rpx;
-      height: 16rpx;
+      width: 14rpx;
+      height: 14rpx;
       border-radius: 50%;
       background-color: @brand-color;
     }
 
     &--top {
       top: -8rpx;
-      left: 6rpx;
+      left: 7rpx;
       animation: dot-moving-top @chat-loading-animation-duration ease-in-out alternate infinite;
     }
 
     &--left {
-      bottom: -10rpx;
-      left: -12rpx;
+      bottom: -8rpx;
+      left: -6rpx;
       animation: dot-moving-left @chat-loading-animation-duration ease-in-out alternate infinite;
     }
 
     &--right {
-      bottom: -10rpx;
-      right: -10rpx;
+      bottom: -8rpx;
+      right: -6rpx;
       animation: dot-moving-right @chat-loading-animation-duration ease-in-out alternate infinite;
     }
   }
@@ -92,19 +94,19 @@
 @keyframes dot-moving-top {
   0% {
     transform: scale(1);
-    top: -4px;
+    top: -7rpx;
   }
   to {
     transform: scale(1.75);
-    top: 3px;
+    top: 6rpx;
   }
 }
 
 @keyframes dot-moving-left {
   0% {
     transform: scale(1);
-    bottom: -8rpx;
-    left: -8rpx;
+    bottom: -7rpx;
+    left: -7rpx;
   }
   to {
     transform: scale(1.75);
@@ -116,8 +118,8 @@
 @keyframes dot-moving-right {
   0% {
     transform: scale(1);
-    bottom: -8rpx;
-    right: -8rpx;
+    bottom: -7rpx;
+    right: -7rpx;
   }
   to {
     transform: scale(1.75);
