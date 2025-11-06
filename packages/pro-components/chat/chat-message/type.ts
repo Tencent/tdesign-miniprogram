@@ -4,27 +4,69 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 import { TdChatLoadingProps } from '../chat-loading/type';
-import { TdChatAttachmentsProps } from '../attachments/type';
+import { TdChatAttachmentsProps, FileItem } from '../attachments/type';
 
-export type ChatContentType = 'text' | 'markdown' | 'search' | 'thinking' | 'suggestion' | 'attachment';
+export type ChatContentType =
+  | 'text'
+  | 'markdown'
+  | 'thinking'
+  | 'attachment'
 
-// todo: 下个版本
-// export interface TdChatMarkdownContentProps {
-//   content: string;
-//   [key: string]: any;
-// }
+export type ChatMessageStatus = 'pending' | 'streaming' | 'complete' | 'stop' | 'error';
 
-// export interface TdChatContentSearchProps {
-//   query: string;
-//   results: any[];
-//   [key: string]: any;
-// }
+/**
+ * 基础内容结构，所有内容类型都遵循此结构
+ */
+export interface ChatBaseContent<T extends ChatContentType, TData> {
+  type: T;
+  data: TData;
+}
+
+/**
+ * 思考内容数据结构
+ */
+export interface ThinkingContentData {
+  /**
+   * 思考标题
+   */
+  title?: string;
+  /**
+   * 思考内容文本
+   */
+  text: string;
+}
+
+/**
+ * 文本内容类型
+ */
+export type TextContent = ChatBaseContent<'text', string>;
+
+/**
+ * Markdown内容类型
+ */
+export type MarkdownContent = ChatBaseContent<'markdown', string>;
+
+/**
+ * 思考内容类型
+ */
+export type ThinkingContent = ChatBaseContent<'thinking', ThinkingContentData>;
+
+/**
+ * 附件内容类型
+ */
+export type AttachmentContent = ChatBaseContent<'attachment', FileItem[]>;
+
+/**
+ * 消息内容联合类型
+ */
+export type MessageContent = TextContent | MarkdownContent | ThinkingContent | AttachmentContent;
 
 export type TdChatContentThinkProps = {
   maxHeight?: number;
   animation?: TdChatLoadingProps['animation'];
   collapsed?: boolean;
   layout?: 'block' | 'border';
+  status?: 'pending' | 'complete' ;
 };
 
 export type TdChatContentProps = {
@@ -73,12 +115,14 @@ export interface TdChatMessageProps {
     value?: 'base' | 'outline' | 'text';
   };
   /**
-   * 消息内容对象 todo: 需要完善
-   * @default {}
+   * 消息内容对象，支持多种内容类型的数组
+   * - 用户消息：TextContent | AttachmentContent
+   * - AI消息：TextContent | MarkdownContent | ThinkingContent | AttachmentContent
+   * @default []
    */
   content?: {
     type: ArrayConstructor;
-    value?: Array<any>;
+    value?: MessageContent[];
   };
   role?: {
     type: StringConstructor;

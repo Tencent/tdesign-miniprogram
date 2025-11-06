@@ -1,13 +1,12 @@
 <wxs src="../../../components/common/utils.wxs" module="_" />
-<!-- TODO: api 可选项没有 longpress，这部分是否可移除？ -->
+<!-- TODO: api 可选项 longpress 下个版本迭代发布长按气泡样式 -->
 <view
   class="class {{[classPrefix, placement==='longpress' ? classPrefix+'__inner--popover' : '', computedPlacement]}}"
   style="{{_._style([style, customStyle])}}"
 >
   <view class="{{classPrefix}}__inner {{classPrefix}}__inner--column">
     <view class="{{classPrefix}}__item {{classPrefix}}__left">
-      <!-- TODO: 推荐改成 prefix 表示前缀插槽 -->
-      <slot name="left" />
+      <slot name="prefix" />
     </view>
     <block wx:for="{{actions}}" wx:for-item="item" wx:for-index="index" wx:key="index">
       <!-- 分享按钮使用 button 标签 -->
