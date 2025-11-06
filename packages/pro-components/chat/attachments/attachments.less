@@ -91,10 +91,14 @@
   // 文件项样式
   &__file {
     border-radius: @radius-extraLarge;
-    margin-top: @attachments-file-margin-tiny;
     display: block;
     position: relative;
     background-color: @attachments-background-color;
+
+    // 仅当有删除按钮时，增加上边距
+    &--removable {
+      margin-top: @attachments-file-margin-tiny;
+    }
 
     // 删除按钮样式
     .@{attachments}__remove {
