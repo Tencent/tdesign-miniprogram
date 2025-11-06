@@ -2,7 +2,6 @@
 
 ## API
 
-
 ### ChatLoading Props
 
 name | type | default | description | required

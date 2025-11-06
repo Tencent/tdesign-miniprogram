@@ -29,24 +29,21 @@ const props: TdChatMessageProps = {
     type: String,
     value: '',
   },
-  /** 消息内容对象 */
+  /** 消息内容，数组中的每一项为一个消息内容对象 */
   content: {
     type: Array,
   },
   /** 对话单元的时间配置 */
   datetime: {
     type: String,
-    value: '',
   },
   /** 自定义的昵称 */
   name: {
     type: String,
-    value: '',
   },
   /** 消息显示位置 */
   placement: {
     type: String,
-    value: 'left',
   },
   /** 消息角色 */
   role: {

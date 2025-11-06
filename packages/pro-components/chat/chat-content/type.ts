@@ -4,23 +4,23 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { ChatMarkdownProps } from '../chat-markdown/index';
+
 export interface TdChatContentProps {
   /**
-   * 聊天内容对象，包含 `type` 和 `data` 字段
-   * @default {}
+   * 聊天内容对象
    */
   content: {
     type: ObjectConstructor;
-    value?: object;
+    value?: TdChatContentType;
     required?: boolean;
   };
   /**
-   * 详见 `ChatMarkdown` 的 `options` 属性
-   * @default {options: { gfm: true, pedantic: false, breaks: true }}
+   * marked 解析器的配置选项
    */
   markdownProps?: {
     type: ObjectConstructor;
-    value?: object;
+    value?: ChatMarkdownProps;
   };
   /**
    * 消息角色，用于区分用户和助手的消息样式
@@ -37,4 +37,9 @@ export interface TdChatContentProps {
     type: StringConstructor;
     value?: 'error' | '';
   };
+}
+
+export interface TdChatContentType {
+  type: 'text' | 'markdown';
+  data: string;
 }

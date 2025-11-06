@@ -11,7 +11,7 @@ export interface TdChatActionbarProps {
    */
   actionBar?: {
     type: ArrayConstructor;
-    value?: Array<string>;
+    value?: Array<'replay' | 'copy' | 'good' | 'bad' | 'share'>;
   };
   /**
    * 【实验】聊天消息的唯一标识
@@ -30,7 +30,7 @@ export interface TdChatActionbarProps {
     value?: string;
   };
   /**
-   * 复制内容文本
+   * 被复制的内容
    * @default ''
    */
   content?: {

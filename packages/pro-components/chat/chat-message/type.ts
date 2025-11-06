@@ -4,6 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { ChatContentProps } from '../chat-content/index';
 import { FileItem } from '../attachments/index';
 
 export interface TdChatMessageProps {
@@ -35,7 +36,7 @@ export interface TdChatMessageProps {
    */
   chatContentProps?: {
     type: ObjectConstructor;
-    value?: object;
+    value?: ChatContentProps;
   };
   /**
    * 聊天消息的唯一标识
@@ -46,7 +47,7 @@ export interface TdChatMessageProps {
     value?: string;
   };
   /**
-   * 消息内容对象
+   * 消息内容，数组中的每一项为一个消息内容对象
    */
   content?: {
     type: ArrayConstructor;
@@ -54,7 +55,6 @@ export interface TdChatMessageProps {
   };
   /**
    * 对话单元的时间配置
-   * @default ''
    */
   datetime?: {
     type: StringConstructor;
@@ -62,7 +62,6 @@ export interface TdChatMessageProps {
   };
   /**
    * 自定义的昵称
-   * @default ''
    */
   name?: {
     type: StringConstructor;
@@ -70,7 +69,6 @@ export interface TdChatMessageProps {
   };
   /**
    * 消息显示位置
-   * @default left
    */
   placement?: {
     type: StringConstructor;
@@ -93,7 +91,7 @@ export interface TdChatMessageProps {
   };
   /**
    * 气泡框样式，支持基础、线框、文字三种类型
-   * @default 'base'
+   * @default base
    */
   variant?: {
     type: StringConstructor;

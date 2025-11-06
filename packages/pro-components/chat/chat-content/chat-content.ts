@@ -1,8 +1,11 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
+import { TdChatContentProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-chat-content`;
+
+export interface ChatContentProps extends TdChatContentProps {}
 
 @wxComponent()
 export default class ChatContent extends SuperComponent {

@@ -1,9 +1,12 @@
 import { Lexer } from 'marked';
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
+import { TdChatMarkdownProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-chat-markdown`;
+
+export interface ChatMarkdownProps extends TdChatMarkdownProps {}
 
 @wxComponent()
 export default class ChatMarkdown extends SuperComponent {
@@ -65,7 +68,6 @@ export default class ChatMarkdown extends SuperComponent {
   };
 
   lifetimes = {
-    attached() {
-    },
+    attached() {},
   };
 }

@@ -40,9 +40,14 @@ const props: TdChatSenderProps = {
     type: String,
     value: '请输入消息...',
   },
-  /** 预设发送区渲染配置 */
+  /** 预设发送区渲染配置，用于灵活配置发送区的上传入口和发送按钮，支持自定义类型、顺序、样式 */
   renderPresets: {
     type: Array,
+  },
+  /** 透传给 Textarea 组件的属性，autosize数值单位为 rpx */
+  textareaProps: {
+    type: null,
+    value: { autosize: { maxHeight: 264, minHeight: 48 } },
   },
   /** 输入框的值 */
   value: {

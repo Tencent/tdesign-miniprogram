@@ -21,7 +21,7 @@ const props: TdChatActionbarProps = {
     type: String,
     value: '',
   },
-  /** 复制内容文本 */
+  /** 被复制的内容 */
   content: {
     type: String,
     value: '',
