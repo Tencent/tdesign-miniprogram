@@ -177,7 +177,7 @@ Component({
           data: [
             {
               name: 'sample1.png',
-              url: 'https://tdesign.gtimg.com/site/avatar.jpg',
+              url: 'https://tdesign.gtimg.com/site/square.png',
               fileType: 'image',
               status: 'success',
               size: 1032,
@@ -186,7 +186,7 @@ Component({
             },
             {
               name: 'sample2.png',
-              url: 'https://tdesign.gtimg.com/site/avatar.jpg',
+              url: 'https://tdesign.gtimg.com/site/square.png',
               fileType: 'image',
               status: 'success',
               size: 1032,
@@ -195,7 +195,7 @@ Component({
             },
             {
               name: 'sample3.png',
-              url: 'https://tdesign.gtimg.com/site/avatar.jpg',
+              url: 'https://tdesign.gtimg.com/site/square.png',
               fileType: 'image',
               status: 'success',
               size: 1032,
@@ -204,7 +204,7 @@ Component({
             },
             {
               name: 'sample4.png',
-              url: 'https://tdesign.gtimg.com/site/avatar.jpg',
+              url: 'https://tdesign.gtimg.com/site/square.png',
               fileType: 'image',
               status: 'success',
               size: 1032,
@@ -213,7 +213,7 @@ Component({
             },
             {
               name: 'sample5.png',
-              url: 'https://tdesign.gtimg.com/site/avatar.jpg',
+              url: 'https://tdesign.gtimg.com/site/square.png',
               fileType: 'image',
               status: 'success',
               size: 1032,

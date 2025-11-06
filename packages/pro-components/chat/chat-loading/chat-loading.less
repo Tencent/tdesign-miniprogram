@@ -49,19 +49,19 @@
     }
 
     &--top {
-      top: -8rpx;
+      top: -6rpx;
       left: 7rpx;
       animation: dot-moving-top @chat-loading-animation-duration ease-in-out alternate infinite;
     }
 
     &--left {
-      bottom: -8rpx;
+      bottom: -6rpx;
       left: -6rpx;
       animation: dot-moving-left @chat-loading-animation-duration ease-in-out alternate infinite;
     }
 
     &--right {
-      bottom: -8rpx;
+      bottom: -6rpx;
       right: -6rpx;
       animation: dot-moving-right @chat-loading-animation-duration ease-in-out alternate infinite;
     }
@@ -94,37 +94,37 @@
 @keyframes dot-moving-top {
   0% {
     transform: scale(1);
-    top: -7rpx;
+    top: -6rpx;
   }
   to {
-    transform: scale(1.75);
-    top: 6rpx;
+    transform: scale(2);
+    top: 7rpx;
   }
 }
 
 @keyframes dot-moving-left {
   0% {
     transform: scale(1);
-    bottom: -7rpx;
-    left: -7rpx;
+    bottom: -6rpx;
+    left: -6rpx;
   }
   to {
-    transform: scale(1.75);
-    bottom: 6rpx;
-    left: 6rpx;
+    transform: scale(2);
+    bottom: 7rpx;
+    left: 7rpx;
   }
 }
 
 @keyframes dot-moving-right {
   0% {
     transform: scale(1);
-    bottom: -7rpx;
-    right: -7rpx;
+    bottom: -6rpx;
+    right: -6rpx;
   }
   to {
-    transform: scale(1.75);
-    bottom: 6rpx;
-    right: 6rpx;
+    transform: scale(2);
+    bottom: 7rpx;
+    right: 7rpx;
   }
 }
 

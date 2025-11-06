@@ -91,10 +91,14 @@
   // 文件项样式
   &__file {
     border-radius: @radius-extraLarge;
-    margin-top: @attachments-file-margin-tiny;
     display: block;
     position: relative;
     background-color: @attachments-background-color;
+
+    // 仅当有删除按钮时，增加上边距
+    &--removable {
+      margin-top: @attachments-file-margin-tiny;
+    }
 
     // 删除按钮样式
     .@{attachments}__remove {
@@ -185,13 +189,10 @@
 
 // 对话中附件样式覆盖
 .@{attachments}--chatting {
-  .@{attachments}__file {
-    margin-top: 0;
-    margin-bottom: @attachments-file-margin;
-  }
 
   &.all_images {
     width: 100%;
+
     .file-image.@{attachments}__file {
       background-color: transparent !important;
     }
@@ -209,6 +210,11 @@
 
   &.all_files {
     width: auto;
+
+    .@{attachments}__files:not(:last-child) {
+      margin-bottom: @attachments-file-margin;
+    }
+
     .file-image.@{attachments}__file {
       background-color: transparent !important;
     }

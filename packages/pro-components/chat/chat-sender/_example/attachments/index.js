@@ -9,7 +9,7 @@ Page({
       {
         fileType: 'image',
         name: '图片1.png',
-        url: 'https://tdesign.gtimg.com/site/avatar.jpg',
+        url: 'https://tdesign.gtimg.com/site/square.png',
       },
       {
         fileType: 'pdf',
@@ -32,7 +32,7 @@ Page({
         {
           fileType: 'image',
           name: '图片1.png',
-          url: 'https://tdesign.gtimg.com/site/avatar.jpg',
+          url: 'https://tdesign.gtimg.com/site/square.png',
         },
         {
           fileType: 'pdf',

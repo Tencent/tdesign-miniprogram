@@ -10,7 +10,7 @@
       <block wx:for="{{files}}" wx:for-item="item" wx:for-index="index" wx:key="index">
         <view class="{{classPrefix}}__files" bindtap="onFileWrapTap" data-index="{{index}}">
           <block wx:if="{{item.fileType==='image'}}">
-            <view class="file-image {{classPrefix}}__file">
+            <view class="file-image {{classPrefix}}__file {{removable ? classPrefix + '__file--removable' : ''}}">
               <block wx:if="{{item.status==='pending' || item.status==='fail' || item.status==='error'}}">
                 <view class="{{item.status}} {{classPrefix}}__file--{{item.status}}">
                   <t-loading theme="circular" size="48rpx" />
@@ -20,7 +20,7 @@
                 <image
                   class="image"
                   src="{{item.url}}"
-                  mode="{{ _this.getImageMode(item)}}"
+                  mode="{{_this.getImageMode(item)}}"
                   lazy-load="false"
                   style="{{inChat ? _this.imageStyle(item) : ''}}"
                 ></image>
@@ -31,7 +31,7 @@
             </view>
           </block>
           <block wx:else>
-            <view class="file {{classPrefix}}__file">
+            <view class="file {{classPrefix}}__file {{removable ? classPrefix + '__file--removable' : ''}}">
               <view class="image">
                 <block wx:if="{{item.status==='pending'}}">
                   <view class="loading {{classPrefix}}__file--pending">

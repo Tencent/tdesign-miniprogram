@@ -1,7 +1,7 @@
 Component({
   data: {
     message: {
-      role: 'user',
+      role: 'system',
       content: [
         {
           type: 'text',
