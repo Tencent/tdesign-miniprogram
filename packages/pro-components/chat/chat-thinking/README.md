@@ -48,22 +48,25 @@ isComponent: true
 {{ layout }}
 
 ## API
+
 ### ChatThinking Props
 
-名称 | 类型 | 默认值 | 说明 | 必传
+名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
-content | Object | - | 思考内容对象。TS类型：`{ text?: string; title?: string }` | N
-layout | String | block | 布局方式。可选项： block/border | N
-status | ChatMessageStatus/Function | - | 思考状态。可选项：complete/stop/error/pending | N
-maxHeight | Number | - | 内容区域最大高度，超出会自动滚动 | N
-animation | String | circle | 加载动画类型。可选项： circle/moving/gradient | N
-collapsed | Boolean | false | 是否折叠（受控） | N
+style | Object | - | 样式 | N
+custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
+animation | String | circle | 内容区域最大高度，超出会自动滚动。可选项：circle/moving/gradient | N
+collapsed | String | false | 是否折叠 | N
+content | Object | - | 必需。思考内容对象。TS 类型：`{ text?: string; title?: string }` | Y
+layout | String | block | 布局方式。可选项：block/border | N
+max-height | Number | - | 内容区域最大高度，超出会自动滚动 | N
+status | String | - | 必需。思考状态。可选项：complete/stop/error/pending | Y
 
 ### ChatThinking Events
 
 名称 | 参数 | 描述
 -- | -- | --
-collapsedChange | `(value: Boolean)` | 展开图标点击事件。TS 类型：`TNode`。[通用类型定义](https://github.com/Tencent/tdesign-vue-next/blob/develop/packages/components/common.ts)。[详细类型定义](https://github.com/Tencent/tdesign-vue-next/blob/develop/packages/pro-components/chat/type.ts)。
+collapsed-change | `(value: Boolean)` | 切换折叠面板时触发
 
 ### CSS Variables
 

@@ -4,15 +4,10 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import { TdChatAttachmentsProps } from './type';
-const props: TdChatAttachmentsProps = {
-  /** 文件列表数据，每个元素需包含fileType/name/url/size等属性 */
-  items: {
-    type: Array,
-    value: [],
-  },
-  /** 是否显示删除按钮 */
-  removable: {
+import { TdAttachmentsProps } from './type';
+const props: TdAttachmentsProps = {
+  /** 是否显示添加按钮 */
+  addable: {
     type: Boolean,
     value: true,
   },
@@ -21,11 +16,21 @@ const props: TdChatAttachmentsProps = {
     type: Boolean,
     value: true,
   },
-  /** 是否显示添加按钮 */
-  addable: {
+  /** 【实验】附件列表 */
+  items: {
+    type: Array,
+    value: [],
+  },
+  /** 文件列表超出时样式 */
+  overflow: {
+    type: String,
+    value: 'wrap',
+  },
+  /** 是否显示删除按钮 */
+  removable: {
     type: Boolean,
     value: true,
-  }
+  },
 };
 
 export default props;

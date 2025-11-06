@@ -1,8 +1,11 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
+import { TdAttachmentsProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-attachments`;
+
+export interface AttachmentsProps extends TdAttachmentsProps {}
 
 @wxComponent()
 export default class Attachments extends SuperComponent {

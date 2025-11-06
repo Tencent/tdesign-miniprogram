@@ -53,31 +53,16 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
-content | String | '' | Markdown 格式的文本内容 | N
-options | Object | 见下方说明 | marked 解析器的配置选项 | N
-
-### options 配置
-
-```javascript
-{
-  gfm: true,        // GitHub风格Markdown
-  pedantic: false,  // 不遵循严格规范
-  smartLists: true, // 智能列表
-  breaks: false     // 不自动换行
-}
-```
+style | Object | - | 样式 | N
+custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
+content | String | - | 必需。markdown 内容文本 | Y
+options | Object | { gfm: true, pedantic: false, breaks: true } | Markdown 解析器基础配置。TS 类型：`TdChatContentMDOptions ` `interface TdChatContentMDOptions {gfm?: boolean; pedantic?: boolean; smartLists?: boolean; breaks?: boolean}`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/chat-markdown/type.ts) | N
 
 ### ChatMarkdown Events
 
 名称 | 参数 | 描述
 -- | -- | --
-click | `(context: { detail:{event， node}, currentTarget, target})` | 点击链接时触发
-
-### ChatMarkdown Slots
-
-名称 | 描述
--- | --
-default | 自定义内容插槽
+click | `(detail: {detail:{event, node}, currentTarget, target})` | 点击链接时触发
 
 ### CSS Variables
 

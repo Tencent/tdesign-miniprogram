@@ -37,19 +37,23 @@ isComponent: true
 
 
 ## API
-### ChatAction Props
+
+### ChatActionbar Props
 
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
-chatId | String | '' | 聊天消息的唯一标识，一般用于分享一段问答 | N
-content | String | - | 被复制的内容 | N
-copyMode | String | markdown | 复制内容的模式，可选 'markdown'（复制markdown原文）或 'text'（复制纯文本） | N
-comment | String | - | 评价类型， 可选值： `'good(点赞)'/'bad(点踩)`， 默认为空| N
-actionBar | Array | ["refresh", "copy", "good", "bad", "share"] | 操作按钮配置项，可配置操作按钮选项和顺序。TS 类型：`Array<'refresh'\|'copy'\|'good'\|'bad'\|'share'>` | N
-placement | String | start | 操作栏位置。可选项：start/end/space-around/space-between | N
+style | Object | - | 样式 | N
+custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
+action-bar | Array | ['refresh', 'copy', 'good', 'bad', 'share'] | 操作栏配置。TS 类型：`Array<string>` | N
+chat-id | String | - | 【实验】聊天消息的唯一标识 | N
+comment | String | - | 评价内容 | N
+content | String | - | 复制内容文本 | N
+copy-mode | String | markdown | 【实验】复制内容的模式，可选 'markdown'（复制markdown原文）或 'text'（复制纯文本）。可选项：markdown/text | N
+disabled | Boolean | false | 【讨论中】操作按钮是否可点击 | N
+placement | String | start | 【实验】操作栏位置。可选项：start/end/space-around/space-between | N
 
-### ChatAction Events
+### ChatActionbar Events
 
 名称 | 参数 | 描述
 -- | -- | --
-actions | `(name: ChatActionsName, context: { e: MouseEvent, active: boolean })`  点击点赞，点踩，复制，分享，重新生成按钮时触发发
+actions | `(name: ChatActionsName, active: boolean)` | 点击点赞，点踩，复制，分享，重新生成按钮时触发发

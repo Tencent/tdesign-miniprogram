@@ -48,148 +48,38 @@ isComponent: true
 {{ file-citation }}
 
 ## API
+
 ### ChatSender Props
 
-名称 | 类型 | 默认值 | 说明 | 必传
+名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
+style | Object | - | 样式 | N
+custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
+adjust-position | Boolean | false | 默认键盘弹起不会把页面顶起来 | N
+attachments-props | Object | - | 附件列表属性。TS 类型：`AttachmentsProps`，[Attachments API Documents](./attachments?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/chat-sender/type.ts) | N
+auto-rise-with-keyboard | Boolean | false | 键盘弹起时自动顶起来输入框 | N
 disabled | Boolean | false | 是否禁用输入框 | N
-placeholder | String | 请输入消息... | 输入框默认文案 | N
+file-list | Array | [] | 附件文件列表。TS 类型：`FileItem[]` | N
 loading | Boolean | false | 发送按钮是否处于加载状态 | N
-textareaProps | Object | { autosize: { maxHeight: 264, minHeight: 48 } } | 透传给Textarea组件的全部属性，autosize支持Boolean或Object`boolean \| { maxHeight?: number, minHeight?: number }`，autosize数值单位为rpx| N
-value | String | '' | 输入框的值 | N
-onBlur | Function | () => {} | 输入框失焦时触发 | N
-onChange | Function | () => {} | 输入框值发生变化时触发 | N
-onFocus | Function | () => {} | 输入框聚焦时触发 | N
-onSend | Function | () => {} | 点击消息发送的回调方法 | N
-onStop | Function | () => {} | 点击消息终止的回调方法 | N
-fileList | Array | [] | 附件文件列表 | N
-attachmentsProps | Object | { items: [], removable: true, imageViewer: true, addable: false } | 附件列表属性 | N
-renderPresets | Array | [见下方说明] | 预设发送区渲染配置 | N
+placeholder | String | 请输入消息... | 输入框默认文案 | N
+render-presets | Array | - | 预设发送区渲染配置。TS 类型：`Array<unknown>` | N
+value | String | - | 输入框的值 | N
+default-value | String | undefined | 输入框的值。非受控属性 | N
 visible | Boolean | false | 上传面板是否可见 | N
-adjustPosition | Boolean | false | 默认键盘弹起不会把页面顶起来 | N
-autoRiseWithKeyboard | Boolean | false | 键盘弹起时自动顶起来输入框 | N
-### 事件
 
-事件名 | 说明 | 回调参数
+### ChatSender Events
+
+名称 | 参数 | 描述
 -- | -- | --
-send | 点击发送按钮时触发 | value, { e }
-stop | 点击停止按钮时触发 | value, { e }
-focus | 输入框聚焦时触发 | value, context
-blur | 输入框失焦时触发 | value, context
-change | 输入框内容变化时触发 | value, context
-uploadClick | 点击上传按钮时触发 | -
-fileClick | 点击附件时触发 | file
-fileDelete | 删除附件时触发 | file
-fileChange | 附件列表变化时触发 | files
-fileAdd | 添加附件时触发 | -
-fileSelect | 选择文件（图片/微信文件）时触发 | { e, name, files }
-keyboardheightchange | 键盘高度变化时触发 | {e}
-
-#### fileSelect 回调参数说明
-
-字段 | 类型 | 说明
--- | -- | --
-e | Event | 原始事件对象
-name | String | 触发来源，uploadImage（相册）、uploadCamera（拍照）、uploadAttachment（微信文件）
-files | Array | 选中的文件列表，格式为：{ url, name, size, fileType }
-
-### 插槽
-
-插槽名 | 说明
--- | --
-header | 输入框上方自定义内容（如工具栏、附件等）
-footerPrefix | 输入框下方左侧自定义内容
-suffix | 发送按钮右侧自定义内容
-
-### renderPresets 说明
-
-`renderPresets` 用于灵活配置发送区的上传入口和发送按钮，支持自定义类型、顺序、样式。
-
-#### 类型定义
-
-```
-Array<
-  | {
-      name: 'upload', // 固定为上传入口
-      presets: string[], // 上传入口类型数组（如 ['uploadImage', 'uploadCamera', 'uploadAttachment']）
-      status?: string, // 可选，'disabled' 时按钮不可用
-    }
-  | {
-      name: 'send', // 固定为发送按钮
-      type: 'icon' | 'text', // 发送按钮类型
-      // 可扩展更多属性，如自定义文案、icon等
-    }
->
-```
-
-#### 可选上传类型（presets）
-- `uploadImage`：图片
-- `uploadCamera`：拍摄
-- `uploadAttachment`：微信文件
-
-#### 示例用法
-
-**1. 默认配置（上传+发送）**
-```
-[
-  {
-    name: 'upload',
-    presets: ['uploadImage', 'uploadCamera', 'uploadAttachment'],
-    status: '',
-  },
-  {
-    name: 'send',
-    type: 'icon',
-  },
-]
-```
-
-**2. 只显示“图片”和“微信文件”，发送按钮为文字**
-```
-[
-  {
-    name: 'upload',
-    presets: ['uploadImage', 'uploadAttachment'],
-  },
-  {
-    name: 'send',
-    type: 'text',
-  },
-]
-```
-
-**3. 上传入口为底部，只显示“拍照”，发送按钮为icon**
-```
-[
-  {
-    name: 'upload',
-    presets: ['uploadCamera'],
-  },
-  {
-    name: 'send',
-    type: 'icon',
-  },
-]
-```
-
-**4. 禁用上传入口**
-```
-[
-  {
-    name: 'upload',
-    presets: ['uploadImage', 'uploadCamera'],
-    status: 'disabled',
-  },
-  {
-    name: 'send',
-    type: 'icon',
-  },
-]
-```
-
-#### 说明
-- `presets` 数组决定上传入口的类型和顺序，支持任意组合。
-- `type` 决定上传入口的展现方式（底部/弹出）。
-- `status` 可选，支持 'disabled'，可控制入口是否可用。
-- 发送按钮通过 `name: 'send'` 和 `type` 控制样式，后续可扩展更多属性。
-
+blur | `(value:string, context: { e: FocusEvent })` | 输入框聚焦时触发
+change | `(value:string, context: { e: InputEvent \| MouseEvent \| KeyboardEvent })` | 输入框值发生变化时触发
+file-add | \- | 添加附件时触发
+file-change | `(file:FileItem)` | 附件列表变化时触发
+file-click | `(file:FileItem)` | 点击附件时触发
+file-delete | `(file:FileItem)` | 删除附件时触发
+file-select | `(detail: {files: FileList, name: UploadActionType})` | 选择文件（图片/微信文件）时触发
+focus | `(value:string, context: { e: FocusEvent }) ` | 输入框聚焦时触发
+keyboardheightchange | `(detail: {height: number, duration: number})` | 选择文件（图片/微信文件）时触发
+send | `(value:string, context: {\| KeyboardEvent })` | 点击消息发送的回调方法
+stop | `(value:string)` | 点击消息终止的回调方法
+upload-click | \- | 【实验】点击上传按钮时触发

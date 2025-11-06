@@ -3,35 +3,40 @@
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
-import { TdChatLoadingProps } from '../chat-loading/type';
-import { TdChatAttachmentsProps } from '../attachments/type';
 
-export type ChatContentType = 'text' | 'markdown' | 'search' | 'thinking' | 'suggestion' | 'attachment';
-
-// todo: 下个版本
-// export interface TdChatMarkdownContentProps {
-//   content: string;
-//   [key: string]: any;
-// }
-
-// export interface TdChatContentSearchProps {
-//   query: string;
-//   results: any[];
-//   [key: string]: any;
-// }
-
-export type TdChatContentThinkProps = {
-  maxHeight?: number;
-  animation?: TdChatLoadingProps['animation'];
-  collapsed?: boolean;
-  layout?: 'block' | 'border';
-};
-
-export type TdChatContentProps = {
-  thinking?: TdChatContentThinkProps;
-} & Partial<Record<Exclude<ChatContentType, 'attachment' | 'thinking'>, any>>;
+import { FileItem } from '../attachments/index';
 
 export interface TdChatMessageProps {
+  /**
+   * 【实验】 是否允许自定义局部消息内容，其他消息内容实用默认样式
+   * @default false
+   */
+  allowContentSegmentCustom?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 动画效果
+   * @default skeleton
+   */
+  animation?: {
+    type: StringConstructor;
+    value?: 'skeleton' | 'moving' | 'gradient' | 'dots';
+  };
+  /**
+   * 自定义的头像配置
+   */
+  avatar?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
+   * 聊天内容组件的属性
+   */
+  chatContentProps?: {
+    type: ObjectConstructor;
+    value?: object;
+  };
   /**
    * 聊天消息的唯一标识
    * @default ''
@@ -41,23 +46,14 @@ export interface TdChatMessageProps {
     value?: string;
   };
   /**
-   * 自定义的头像配置。支持字符串、对象、插槽或函数
-   * @default ''
+   * 消息内容对象
    */
-  avatar?: {
-    type: null;
-    value?: any;
+  content?: {
+    type: ArrayConstructor;
+    value?: ChatMessageContent;
   };
   /**
-   * 自定义的昵称。支持字符串、插槽或函数
-   * @default ''
-   */
-  name?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 对话单元的时间配置。支持字符串、插槽或函数
+   * 对话单元的时间配置
    * @default ''
    */
   datetime?: {
@@ -65,55 +61,66 @@ export interface TdChatMessageProps {
     value?: string;
   };
   /**
-   * 气泡框样式，支持基础、线框、文字三种类型
-   * @default base
+   * 自定义的昵称
+   * @default ''
    */
-  variant?: {
+  name?: {
     type: StringConstructor;
-    value?: 'base' | 'outline' | 'text';
+    value?: string;
   };
   /**
-   * 消息内容对象 todo: 需要完善
-   * @default {}
+   * 消息显示位置
+   * @default left
    */
-  content?: {
-    type: ArrayConstructor;
-    value?: Array<any>;
+  placement?: {
+    type: StringConstructor;
+    value?: 'left' | 'right';
   };
+  /**
+   * 消息角色
+   * @default user
+   */
   role?: {
     type: StringConstructor;
     value?: 'user' | 'assistant' | 'system';
   };
   /**
-   * 消息显示位置
-   * @default ''
-   */
-  placement?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 消息状态
-   * @default ''
    */
   status?: {
     type: StringConstructor;
-    value?: string;
+    value?: 'pending' | 'streaming' | 'complete' | 'stop' | 'error';
   };
   /**
-   * 动画效果，支持「渐变加载动画」,「闪烁加载动画」, 「骨架屏」三种
-   * @default skeleton
+   * 气泡框样式，支持基础、线框、文字三种类型
+   * @default 'base'
    */
-  animation?: {
+  variant?: {
     type: StringConstructor;
-    value?: 'skeleton' | 'moving' | 'gradient';
-  };
-  /**
-   * 聊天内容组件的属性
-   * @default {}
-   */
-  chatContentProps?: {
-    type: ObjectConstructor;
-    value?: TdChatContentProps;
+    value?: 'base' | 'outline' | 'text';
   };
 }
+
+export type ChatMessageContent = TextContent | MarkdownContent | ThinkingContent | AttachmentContent;
+
+export type AttachmentContent = ChatBaseContent<'attachment', FileItem[]>;
+
+export type ThinkingContent = ChatBaseContent<'thinking', ThinkingContentData>;
+
+export type MarkdownContent = ChatBaseContent<'markdown', string>;
+
+export type TextContent = ChatBaseContent<'text', string>;
+
+export interface ThinkingContentData {
+  title?: string;
+  text: string;
+}
+
+export interface ChatBaseContent<T extends ChatContentType, TData> {
+  type: T;
+  data: TData;
+}
+
+export type ChatMessageStatus = 'pending' | 'streaming' | 'complete' | 'stop' | 'error';
+
+export type ChatContentType = 'text' | 'markdown' | 'thinking' | 'attachment';

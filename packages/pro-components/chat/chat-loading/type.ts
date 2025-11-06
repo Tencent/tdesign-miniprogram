@@ -11,11 +11,11 @@ export interface TdChatLoadingProps {
    */
   animation?: {
     type: StringConstructor;
-    value?: 'moving' | 'gradient' | 'circle' | 'skeleton';
+    value?: 'skeleton' | 'moving' | 'gradient' | 'dot';
   };
   /**
    * 加载过程展示的文字内容
-   * @default -
+   * @default ''
    */
   text?: {
     type: StringConstructor;

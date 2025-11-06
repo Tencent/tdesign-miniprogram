@@ -49,35 +49,18 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
-items | Array | [] | 附件列表。TS类型：FileItem[] | Y
-removable | Boolean | true | 是否显示删除按钮 | N
-imageViewer | Boolean | true | 是否启用图片预览功能 | N
+style | Object | - | 样式 | N
+custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 addable | Boolean | true | 是否显示添加按钮 | N
-
-
-
-
-### FileItem 类型定义
-```typescript
-interface FileItem {
-  fileType: 'image'|'video'|'audio'|'pdf'|'doc'|'ppt'|'txt'  // 文件类型
-  name: string  // 文件名
-  url: string  // 文件URL
-  size: number  // 文件大小(KB)
-  status?: 'success'|'fail'|'pending'|'error'  // 上传状态
-  progress?: number  // 上传进度(0-100)
-  errorMessage?: string  // 错误信息
-  fileIcon?: string  // 自定义文件图标URL
-  width?: number  // 图片宽度(px)
-  height?: number  // 图片高度(px)
-  mode?: 'aspectFit' | 'aspectFill' | 'widthFix' | 'heightFix' | 'scaleToFill'  // 图片模式
-}
+image-viewer | Boolean | true | 是否启用图片预览功能 | N
+items | Array | [] | 【实验】附件列表。TS 类型：`FileItem[]` `interface FileItem { fileType: 'image'\|'video'\|'audio'\|'pdf'\|'doc'\|'ppt'\|'txt'; name: string; url: string; size: number; status?: 'success'\|'fail'\|'pending'\|'error'; progress?: number; errorMessage?: string; fileIcon?: string; width?: number; height?: number; mode?: 'aspectFit' \| 'aspectFill' \| 'widthFix' \| 'heightFix' \| 'scaleToFill'}`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/attachments/type.ts) | N
+overflow | String | wrap | 文件列表超出时样式。可选项：wrap/scrollX/scrollY | N
+removable | Boolean | true | 是否显示删除按钮 | N
 
 ### Attachments Events
 
 名称 | 参数 | 描述
 -- | -- | --
-fileClick | `(item: FileItem)` | 点击文件时触发
+add | \- | 点击添加按钮时触发
+file-click | `(item: FileItem)` | 点击文件时触发
 remove | `(item: FileItem, index: number)` | 点击删除按钮时触发
-add | - | 点击添加按钮时触发
-

@@ -4,66 +4,12 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-export interface FileItem {
+export interface TdAttachmentsProps {
   /**
-   * 文件类型
-   */
-  fileType: 'image' | 'pdf' | 'doc' | 'ppt' | 'txt';
-  /**
-   * 文件名
-   */
-  name: string;
-  /**
-   * 文件URL
-   */
-  url: string;
-  /**
-   * 文件大小(KB)
-   */
-  size: number;
-  /**
-   * 上传状态
-   */
-  status?: 'success' | 'fail' | 'pending' | 'error';
-  /**
-   * 上传进度(0-100)
-   */
-  progress?: number;
-  /**
-   * 错误信息
-   */
-  errorMessage?: string;
-  /**
-   * 自定义文件图标URL
-   */
-  fileIcon?: string;
-  /**
-   * 图片宽度
-   */
-  width?: number;
-  /**
-   * 图片高度
-   */
-  height?: number;
-  /**
-   * 图片缩放模式
-   */
-  mode?: 'aspectFit' | 'aspectFill' | 'widthFix' | 'heightFix' | 'scaleToFill';
-}
-export interface TdChatAttachmentsProps {
-  /**
-   * 文件列表数据，每个元素需包含fileType/name/url/size等属性
-   * @default []
-   */
-  items?: {
-    type: ArrayConstructor;
-    value?: FileItem[];
-  };
-  /**
-   * 是否显示删除按钮
+   * 是否显示添加按钮
    * @default true
    */
-  removable?: {
+  addable?: {
     type: BooleanConstructor;
     value?: boolean;
   };
@@ -76,11 +22,41 @@ export interface TdChatAttachmentsProps {
     value?: boolean;
   };
   /**
-   * 是否显示添加按钮
+   * 【实验】附件列表
+   * @default []
+   */
+  items?: {
+    type: ArrayConstructor;
+    value?: FileItem[];
+  };
+  /**
+   * 文件列表超出时样式
+   * @default wrap
+   */
+  overflow?: {
+    type: StringConstructor;
+    value?: 'wrap' | 'scrollX' | 'scrollY';
+  };
+  /**
+   * 是否显示删除按钮
    * @default true
    */
-  addable?: {
+  removable?: {
     type: BooleanConstructor;
     value?: boolean;
   };
+}
+
+export interface FileItem {
+  fileType: 'image' | 'video' | 'audio' | 'pdf' | 'doc' | 'ppt' | 'txt';
+  name: string;
+  url: string;
+  size: number;
+  status?: 'success' | 'fail' | 'pending' | 'error';
+  progress?: number;
+  errorMessage?: string;
+  fileIcon?: string;
+  width?: number;
+  height?: number;
+  mode?: 'aspectFit' | 'aspectFill' | 'widthFix' | 'heightFix' | 'scaleToFill';
 }

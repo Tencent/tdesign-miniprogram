@@ -47,73 +47,9 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
-content | Object | {} | 聊天内容对象，包含type和data字段 | Y
-role | String | '' | 消息角色，用于区分用户和助手的消息样式 | N
-status | String | '' | 消息角色，用于区分用户和助手的消息样式 | N
-markdownProps | Object | 详见chat-markdown | marked 解析器的配置选项 | N
-### Content 对象结构
-
-```typescript
-interface Content {
-  type: 'text' | 'markdown';  // 内容类型
-  data: string;               // 内容数据
-}
-```
-
-### 使用示例
-
-#### 纯文本内容
-```xml
-<t-chat-content 
-  content="{{ { type: 'text', data: '这是一条纯文本消息' } }}"
-  role="user"
-/>
-```
-
-#### Markdown内容
-```xml
-<t-chat-content 
-  content="{{ { type: 'markdown', data: '# 标题\n这是一条**Markdown**消息' } }}"
-  role="assistant"
-/>
-```
-
-### ChatContent External Classes
-
-类名 | 描述
--- | --
-t-class | 根节点样式类
-t-class-text | 文本内容样式类
-
-### CSS Variables
-
-组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
--- | -- | --
---td-chat-content-text-color | @text-color-primary | 文本颜色
---td-chat-content-text-size | @font-size-base | 文本大小
---td-chat-content-line-height | @line-height-base | 行高
-
-## 功能特性
-
-### 1. 智能内容渲染
-- **纯文本内容**：使用 `rich-text` 组件渲染，支持HTML转义
-- **Markdown内容**：自动调用 `t-chat-markdown` 组件进行渲染
-
-### 2. 角色样式区分
-- **用户消息**：使用 `t-chat__text__user` 样式类
-- **助手消息**：使用 `t-chat__text__assistant` 样式类
-
-### 3. 内容安全处理
-- 内置HTML转义功能，防止XSS攻击
-- 支持编码和非编码两种转义模式
-
-### 4. 组件依赖
-- 依赖 `t-chat-markdown` 组件处理Markdown内容
-
-## 注意事项
-
-1. **content对象**：必须包含 `type` 和 `data` 两个字段
-2. **type字段**：目前支持 `text` 和 `markdown` 两种类型
-3. **role字段**：用于样式区分，建议传入 `user` 或 `assistant`
-4. **Markdown渲染**：需要确保 `t-chat-markdown` 组件已正确引入
+style | Object | - | 样式 | N
+custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
+content | Object | {} | 必需。聊天内容对象，包含 `type` 和 `data` 字段	 | Y
+markdown-props | Object | {options: { gfm: true, pedantic: false, breaks: true }} | 详见 `ChatMarkdown` 的 `options` 属性 | N
+role | String | - | 必需。消息角色，用于区分用户和助手的消息样式	。可选项：user/assistant/system | Y
+status | String | - | 正文状态。可选项：error / '' | N
