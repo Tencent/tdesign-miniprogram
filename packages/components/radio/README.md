@@ -66,11 +66,11 @@ allow-uncheck | Boolean | false | 是否允许取消选中 | N
 block | Boolean | true | 是否为块级元素 | N
 checked | Boolean | false | 是否选中 | N
 default-checked | Boolean | undefined | 是否选中。非受控属性 | N
-content | String / Slot | - | 单选内容。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+content | String | - | 单选内容 | N
 content-disabled | Boolean | false | 是否禁用组件内容（content）触发选中 | N
 disabled | Boolean | undefined | 是否为禁用态 | N
-icon | String / Array / Slot | 'circle' | 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 circle 表示填充型图标、值为 line 表示描边型图标、值为 dot 表示圆点图标，值为 slot 时使用插槽。TS 类型：`'circle' \| 'line' \| 'dot' \| Array<string>` | N
-label | String / Slot | - | 主文案。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+icon | String / Array | 'circle' | 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 circle 表示填充型图标、值为 line 表示描边型图标、值为 dot 表示圆点图标，值为 slot 时使用插槽。TS 类型：`'circle' \| 'line' \| 'dot' \| Array<string>` | N
+label | String | - | 主文案 | N
 max-content-row | Number | 5 | 内容最大行数限制 | N
 max-label-row | Number | 3 | 主文案最大行数限制 | N
 name | String | - | HTML 元素原生属性 | N
@@ -83,6 +83,15 @@ value | String / Number / Boolean | false | 单选按钮的值。TS 类型：`T`
 名称 | 参数 | 描述
 -- | -- | --
 change | `(checked: boolean)` | 值变化时触发
+
+### Radio Slots
+
+名称 | 描述
+-- | --
+\- | 默认插槽，主文案
+content | 自定义 `content` 显示内容
+icon | 自定义选中图标和非选中图标
+label | 自定义 `label` 显示内容
 
 ### Radio External Classes
 
@@ -118,6 +127,12 @@ default-value | String / Number / Boolean | undefined | 选中的值。非受控
 名称 | 参数 | 描述
 -- | -- | --
 change | `(value: RadioValue)` | 选中值发生变化时触发
+
+### RadioGroup Slots
+
+名称 | 描述
+-- | --
+\- | 默认插槽，单选框组内容
 
 ### CSS Variables
 

@@ -68,6 +68,12 @@ default-value | String / Number | undefined | 选项值。非受控属性 | N
 change | `(value: number \| string, label: string)` | 选项值发生变化时触发
 click | `(value: number \| string, label: string)` | 点击选项时触发
 
+### SideBar Slots
+
+名称 | 描述
+-- | --
+\- | 默认插槽，自定义侧边导航栏内容
+
 
 ### SideBarItem Props
 
@@ -80,6 +86,12 @@ disabled | Boolean | false | 是否禁用 | N
 icon | String / Object | - | 图标，传对象则透传至 Icon | N
 label | String | - | 展示的标签 | N
 value | String / Number | - | 当前选项的值 | N
+
+### SideBarItem Slots
+
+名称 | 描述
+-- | --
+\- | 默认插槽，自定义侧边导航项内容
 
 ### CSS Variables
 

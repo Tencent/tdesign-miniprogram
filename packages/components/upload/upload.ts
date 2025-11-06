@@ -132,9 +132,26 @@ export default class Upload extends SuperComponent {
     });
   }
 
+  /**
+   * 重置拖拽布局状态
+   */
+  resetDragLayout() {
+    this.setData({
+      dragBaseData: {},
+      dragWrapStyle: '',
+      dragLayout: false,
+    });
+  }
+
   initDragLayout() {
     const { draggable, disabled } = this.properties;
-    if (!draggable || disabled) return;
+    const { customFiles } = this.data;
+
+    if (!draggable || disabled || customFiles.length === 0) {
+      this.resetDragLayout();
+      return;
+    }
+
     this.initDragList();
     this.initDragBaseData();
   }
@@ -170,15 +187,7 @@ export default class Upload extends SuperComponent {
   }
 
   initDragBaseData() {
-    const { classPrefix, rows, column, customFiles } = this.data;
-    if (customFiles.length === 0) {
-      this.setData({
-        dragBaseData: {},
-        dragWrapStyle: '',
-        dragLayout: false,
-      });
-      return;
-    }
+    const { classPrefix, rows, column } = this.data;
     const query = this.createSelectorQuery();
     const selectorGridItem = `.${classPrefix} >>> .t-grid-item`;
     const selectorGrid = `.${classPrefix} >>> .t-grid`;

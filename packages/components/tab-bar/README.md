@@ -94,9 +94,15 @@ t-class | 根节点样式类
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 badge-props | Object | - | 图标右上角提示信息。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/tab-bar-item/type.ts) | N
-icon | String / Object / Slot | - | 图标名称。传入对象时透传至 Icon 组件。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+icon | String / Object | - | 图标名称。传入对象时透传至 Icon 组件 | N
 sub-tab-bar | Array | - | 二级菜单。TS 类型：`SubTabBarItem[] ` `interface SubTabBarItem { value: string; label: string }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/tab-bar-item/type.ts) | N
 value | String / Number | - | 标识符 | N
+
+### TabBarItem Slots
+
+名称 | 描述
+-- | --
+icon | 图标插槽，用于自定义图标区域内容
 
 ### CSS Variables
 

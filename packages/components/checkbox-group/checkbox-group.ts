@@ -8,6 +8,8 @@ const name = `${prefix}-checkbox-group`;
 export default class CheckBoxGroup extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
+  behaviors = ['wx://form-field'];
+
   relations: RelationsOptions = {
     '../checkbox/checkbox': {
       type: 'descendant',

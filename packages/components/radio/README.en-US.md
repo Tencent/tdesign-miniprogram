@@ -12,11 +12,11 @@ allow-uncheck | Boolean | false | \- | N
 block | Boolean | true | \- | N
 checked | Boolean | false | \- | N
 default-checked | Boolean | undefined | uncontrolled property | N
-content | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+content | String | - | \- | N
 content-disabled | Boolean | false | \- | N
 disabled | Boolean | undefined | \- | N
-icon | String / Array / Slot | 'circle' | Typescript：`'circle' \| 'line' \| 'dot' \| Array<string>` | N
-label | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+icon | String / Array | 'circle' | Typescript：`'circle' \| 'line' \| 'dot' \| Array<string>` | N
+label | String | - | \- | N
 max-content-row | Number | 5 | \- | N
 max-label-row | Number | 3 | \- | N
 name | String | - | \- | N
@@ -29,6 +29,15 @@ value | String / Number / Boolean | false | Typescript：`T` `type RadioValue = 
 name | params | description
 -- | -- | --
 change | `(checked: boolean)` | \-
+
+### Radio Slots
+
+name | Description
+-- | --
+\- | \-
+content | \-
+icon | \-
+label | \-
 
 ### Radio External Classes
 
@@ -64,6 +73,12 @@ default-value | String / Number / Boolean | undefined | uncontrolled property。
 name | params | description
 -- | -- | --
 change | `(value: RadioValue)` | \-
+
+### RadioGroup Slots
+
+name | Description
+-- | --
+\- | \-
 
 ### CSS Variables
 
