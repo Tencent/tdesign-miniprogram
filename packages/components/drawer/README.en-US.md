@@ -19,6 +19,13 @@ using-custom-navbar | Boolean | false | \- | N
 visible | Boolean | false | \- | N
 z-index | Number | 11500 | \- | N
 
+### Drawer Slots
+
+name | Description
+-- | --
+footer | `0.29.0`
+title | `0.29.0`
+
 ### Drawer Events
 
 name | params | description

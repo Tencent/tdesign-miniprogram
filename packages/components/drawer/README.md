@@ -62,6 +62,13 @@ using-custom-navbar | Boolean | false | 是否使用了自定义导航栏 | N
 visible | Boolean | false | 组件是否可见 | N
 z-index | Number | 11500 | 抽屉层级，样式默认为 11500 | N
 
+### Drawer Slots
+
+名称 | 描述
+-- | --
+footer | `0.29.0`。抽屉的底部
+title | `0.29.0`。抽屉的标题
+
 ### Drawer Events
 
 名称 | 参数 | 描述
