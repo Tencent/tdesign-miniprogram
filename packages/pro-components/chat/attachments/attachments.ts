@@ -1,8 +1,12 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
+import props from './props';
+import { TdAttachmentsProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-attachments`;
+
+export interface AttachmentsProps extends TdAttachmentsProps {}
 
 @wxComponent()
 export default class Attachments extends SuperComponent {
@@ -11,18 +15,9 @@ export default class Attachments extends SuperComponent {
   };
 
   properties = {
-    items: {
-      type: Array,
-      value: [],
-    },
-    removable: {
-      type: Boolean,
-      value: true,
-    },
-    imageViewer: {
-      type: Boolean,
-      value: true,
-    },
+    ...props,
+
+    // 组件内置属性，暂不对外
     inChat: {
       type: Boolean,
       value: false,

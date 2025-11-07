@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-chat-list`;
@@ -11,30 +12,8 @@ export default class Chat extends SuperComponent {
   };
 
   properties = {
-    data: {
-      type: Array,
-      value: [],
-    },
-    layout: {
-      type: String,
-      value: 'both',
-    },
-    clearHistory: {
-      type: Boolean,
-      value: false,
-    },
-    reverse: {
-      type: Boolean,
-      value: true,
-    },
-    isStreamLoad: {
-      type: Boolean,
-      value: false,
-    },
-    textLoading: {
-      type: String,
-      value: '加载中...',
-    },
+    ...props,
+
     virtualList: {
       type: Boolean,
       value: false,
