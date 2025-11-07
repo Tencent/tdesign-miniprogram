@@ -2,8 +2,8 @@
   "navigationBarTitleText": "Attachments 聊天附件",
   "usingComponents": {
     "base": "./base",
-    "fileLoading": "./fileLoading",
-    "imageLoading": "./imageLoading",
+    "fileLoading": "./file-loading",
+    "imageLoading": "./image-loading",
     "file": "./file"
   }
 }

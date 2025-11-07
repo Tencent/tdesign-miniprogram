@@ -15,7 +15,6 @@ isComponent: true
 }
 ```
 
-## 代码演示
 
 ### 01 组件类型
 
@@ -39,7 +38,7 @@ isComponent: true
 
 {{ status }}
 
-### 错误状态
+#### 出错状态
 
 {{ error }}
 

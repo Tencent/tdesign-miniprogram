@@ -5,7 +5,7 @@ spline: base
 isComponent: true
 ---
 
-<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-83%25-blue" /></span>
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -25,27 +25,32 @@ isComponent: true
 </blockquote>
 
 
-### 01 组件类型
+### 组件类型
 
-#### 基础问答
+#### 基础使用
+
 {{ base }}
 
 #### 组合式用法
+
 {{ hook-component }}
 
 #### 自定义
+
 `t-chat-message`支持`content`自定义，使用建议：渲染聊天消息统一用 `t-chat-content`；仅在需要“单独使用 Markdown 组件”或自定义管线时使用 `t-chat-markdown`。也支持别的 markdown 渲染组件，选择其他 markdown 渲染库由用户自行安装。
+
 {{ custom }}
 
-## 场景化示例
+#### 文案助手
 
-### 文案助手
 {{ docs }}
 
-### 图像生成
+#### 图像生成
+
 {{ image }}
 
-### 任务规划
+#### 任务规划
+
 {{ agent }}
 
 ## API

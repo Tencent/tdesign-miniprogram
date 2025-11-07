@@ -1,11 +1,9 @@
 ---
-title: ChatContent 聊天内容
+title: ChatContent 对话正文
 description: ChatContent 用于在聊天对话中渲染不同类型的聊天内容。它支持纯文本和Markdown格式的内容渲染，能够根据内容类型自动选择合适的渲染方式。
 spline: base
 isComponent: true
 ---
-
-<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-83%25-blue" /></span>
 
 ## 引入
 
@@ -17,28 +15,14 @@ isComponent: true
 }
 ```
 
-## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/F1cSo7mm75SS" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
-
-<blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
-<p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
-</blockquote>
-
-### 01 内容类型
-
-### 默认聊天格式
+### 01 组件类型
 
 - 对大模型返回的 markdown 数据自动渲染。markdown 会内置调用 `t-chat-markdown` 渲染，同时可根据 role（user/assistant）切换样式。
 - 用户发送的消息保持默认格式显示，纯文本会做 HTML 转义并用 rich-text 渲染；
 
+
 {{ base }}
-
-### 纯文本聊天
-
-用户发送的消息保持默认格式显示，纯文本会做 HTML 转义并用 rich-text 渲染；
-
-{{ text }}
 
 
 ## API

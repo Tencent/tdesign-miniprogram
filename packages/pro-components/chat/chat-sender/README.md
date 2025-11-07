@@ -5,7 +5,6 @@ spline: base
 isComponent: true
 ---
 
-<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-100%25-blue" /></span>
 
 ## 引入
 
@@ -17,13 +16,6 @@ isComponent: true
 }
 ```
 
-## 代码演示
-
-<a href="https://developers.weixin.qq.com/s/F1cSo7mm75SS" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
-
-<blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
-<p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
-</blockquote>
 
 ### 01 组件类型
 
@@ -31,18 +23,19 @@ isComponent: true
 
 {{ base }}
 
-### 上传文件
+#### 上传文件
 
 支持选择附件及展示附件列表，受控进行文件数据管理，示例中模拟了文件上传流程
 
 {{ attachments }}
 
-### 内容引用
+#### 内容引用
 输入框顶部区域 `header` ，输入框底部左侧区域 `footer-prefix` ，输入框底部操作区域 `suffix`
 
 {{ content-citation }}
 
-### 文件引用
+#### 文件引用
+
 输入框顶部区域 `header` ，输入框底部左侧区域 `footer-prefix` ，输入框底部操作区域 `suffix`
 
 {{ file-citation }}
