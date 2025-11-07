@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-chat-actionbar`;
@@ -10,32 +11,7 @@ export default class ChatActionbar extends SuperComponent {
     multipleSlots: true,
   };
 
-  properties = {
-    chatId: {
-      type: String,
-      value: '',
-    },
-    actionBar: {
-      type: Array,
-      value: ['refresh', 'copy', 'good', 'bad', 'share'],
-    },
-    comment: {
-      type: String,
-      value: '',
-    },
-    content: {
-      type: String,
-      value: '',
-    },
-    copyMode: {
-      type: String,
-      value: 'markdown',
-    },
-    placement: {
-      type: String,
-      value: 'start',
-    },
-  };
+  properties = props;
 
   data = {
     actions: [],

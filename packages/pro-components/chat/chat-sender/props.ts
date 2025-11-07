@@ -43,6 +43,7 @@ const props: TdChatSenderProps = {
   /** 预设发送区渲染配置，用于灵活配置发送区的上传入口和发送按钮，支持自定义类型、顺序、样式 */
   renderPresets: {
     type: Array,
+    value: [{name: 'upload', presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'], status: ''},{ name: 'send', type: 'icon'}],
   },
   /** 透传给 Textarea 组件的属性，autosize数值单位为 rpx */
   textareaProps: {
@@ -51,11 +52,6 @@ const props: TdChatSenderProps = {
   },
   /** 输入框的值 */
   value: {
-    type: String,
-    value: null,
-  },
-  /** 输入框的值，非受控属性 */
-  defaultValue: {
     type: String,
     value: '',
   },

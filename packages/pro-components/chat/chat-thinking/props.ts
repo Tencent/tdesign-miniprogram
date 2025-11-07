@@ -9,12 +9,12 @@ const props: TdChatThinkingProps = {
   /** 内容区域最大高度，超出会自动滚动 */
   animation: {
     type: String,
-    value: 'circle',
+    value: 'moving',
   },
   /** 是否折叠 */
   collapsed: {
-    type: String,
-    value: 'false',
+    type: Boolean,
+    value: false,
   },
   /** 思考内容对象 */
   content: {
@@ -33,6 +33,7 @@ const props: TdChatThinkingProps = {
   /** 思考状态 */
   status: {
     type: String,
+    value: 'pending',
     required: true,
   },
 };

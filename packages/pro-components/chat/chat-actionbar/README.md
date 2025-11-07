@@ -44,7 +44,7 @@ isComponent: true
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
-action-bar | Array | ['refresh', 'copy', 'good', 'bad', 'share'] | 操作栏配置。TS 类型：`Array<'replay'\|'copy'\|'good'\|'bad'\|'share'>` | N
+action-bar | Array | ['replay', 'copy', 'good', 'bad', 'share'] | 操作栏配置。TS 类型：`Array<'replay'\|'copy'\|'good'\|'bad'\|'share'>` | N
 chat-id | String | - | 【实验】聊天消息的唯一标识 | N
 comment | String | - | 评价内容 | N
 content | String | - | 被复制的内容 | N
@@ -56,4 +56,4 @@ placement | String | start | 【实验】操作栏位置。可选项：start/end
 
 名称 | 参数 | 描述
 -- | -- | --
-actions | `(name: string, active: boolean)` | 点击点赞，点踩，复制，分享，重新生成按钮时触发发
+actions | `(detail: {name: string, active: boolean})` | 点击点赞，点踩，复制，分享，重新生成按钮时触发发

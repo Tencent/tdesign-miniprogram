@@ -8,7 +8,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
-action-bar | Array | ['refresh', 'copy', 'good', 'bad', 'share'] | Typescript: `Array<'replay'\|'copy'\|'good'\|'bad'\|'share'>` | N
+action-bar | Array | ['replay', 'copy', 'good', 'bad', 'share'] | Typescript: `Array<'replay'\|'copy'\|'good'\|'bad'\|'share'>` | N
 chat-id | String | - | \- | N
 comment | String | - | \- | N
 content | String | - | \- | N
@@ -20,4 +20,4 @@ placement | String | start | options: start/end/space-around/space-between | N
 
 name | params | description
 -- | -- | --
-actions | `(name: string, active: boolean)` | \-
+actions | `(detail: {name: string, active: boolean})` | \-

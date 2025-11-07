@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-chat-thinking`;
@@ -10,32 +11,7 @@ export default class ChatThinking extends SuperComponent {
     multipleSlots: true,
   };
 
-  properties = {
-    content: {
-      type: Object,
-      value: undefined,
-    },
-    layout: {
-      type: String,
-      value: 'block',
-    },
-    status: {
-      type: String,
-      value: 'pending',
-    },
-    maxHeight: {
-      type: Number,
-      value: 0,
-    },
-    animation: {
-      type: String,
-      value: 'moving',
-    },
-    collapsed: {
-      type: Boolean,
-      value: false,
-    },
-  };
+  properties = props;
 
   data = {
     localCollapsed: false,

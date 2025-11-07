@@ -7,7 +7,7 @@
 export interface TdChatThinkingProps {
   /**
    * 内容区域最大高度，超出会自动滚动
-   * @default circle
+   * @default moving
    */
   animation?: {
     type: StringConstructor;
@@ -18,8 +18,8 @@ export interface TdChatThinkingProps {
    * @default false
    */
   collapsed?: {
-    type: StringConstructor;
-    value?: string;
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 思考内容对象
@@ -46,6 +46,7 @@ export interface TdChatThinkingProps {
   };
   /**
    * 思考状态
+   * @default pending
    */
   status: {
     type: StringConstructor;

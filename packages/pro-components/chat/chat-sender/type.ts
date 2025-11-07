@@ -64,10 +64,11 @@ export interface TdChatSenderProps {
   };
   /**
    * 预设发送区渲染配置，用于灵活配置发送区的上传入口和发送按钮，支持自定义类型、顺序、样式
+   * @default [{name: 'upload', presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'], status: ''},{ name: 'send', type: 'icon'}]
    */
   renderPresets?: {
     type: ArrayConstructor;
-    value?: Array<ChatActionButtons>;
+    value?: ChatActionButtons;
   };
   /**
    * 透传给 Textarea 组件的属性，autosize数值单位为 rpx
@@ -82,14 +83,6 @@ export interface TdChatSenderProps {
    * @default ''
    */
   value?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
-   * 输入框的值，非受控属性
-   * @default ''
-   */
-  defaultValue?: {
     type: StringConstructor;
     value?: string;
   };

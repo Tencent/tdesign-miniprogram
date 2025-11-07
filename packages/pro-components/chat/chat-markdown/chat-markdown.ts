@@ -1,6 +1,7 @@
 import { Lexer } from 'marked';
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
+import props from './props';
 import { TdChatMarkdownProps } from './type';
 
 const { prefix } = config;
@@ -14,21 +15,7 @@ export default class ChatMarkdown extends SuperComponent {
     multipleSlots: true,
   };
 
-  properties = {
-    content: {
-      type: String,
-      value: '',
-    },
-    // 新增：marked配置选项（原 markedOptions 重命名为 options）
-    options: {
-      type: Object,
-      value: {
-        gfm: true,
-        pedantic: false,
-        breaks: true,
-      },
-    },
-  };
+  properties = props;
 
   data = {
     classPrefix: name,

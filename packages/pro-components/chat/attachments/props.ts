@@ -6,7 +6,7 @@
 
 import { TdAttachmentsProps } from './type';
 const props: TdAttachmentsProps = {
-  /** 是否显示添加按钮 */
+  /** 【讨论中】是否显示添加按钮 */
   addable: {
     type: Boolean,
     value: true,
@@ -20,11 +20,6 @@ const props: TdAttachmentsProps = {
   items: {
     type: Array,
     value: [],
-  },
-  /** 文件列表超出时样式 */
-  overflow: {
-    type: String,
-    value: 'wrap',
   },
   /** 是否显示删除按钮 */
   removable: {

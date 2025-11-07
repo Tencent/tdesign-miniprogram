@@ -51,7 +51,7 @@ export interface TdChatMessageProps {
    */
   content?: {
     type: ArrayConstructor;
-    value?: ChatMessageContent;
+    value?: ChatMessageContent[];
   };
   /**
    * 对话单元的时间配置

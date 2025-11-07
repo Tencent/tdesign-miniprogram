@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
 import { TdChatContentProps } from './type';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-chat-content`;
@@ -13,24 +14,7 @@ export default class ChatContent extends SuperComponent {
     multipleSlots: true,
   };
 
-  properties = {
-    content: {
-      type: Object,
-      value: {},
-    },
-    role: {
-      type: String,
-      value: '',
-    },
-    status: {
-      type: String,
-      value: '',
-    },
-    markdownProps: {
-      type: Object,
-      value: {},
-    },
-  };
+  properties = props;
 
   data = {
     classPrefix: name,

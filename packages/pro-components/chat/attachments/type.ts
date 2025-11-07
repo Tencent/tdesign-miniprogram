@@ -6,7 +6,7 @@
 
 export interface TdAttachmentsProps {
   /**
-   * 是否显示添加按钮
+   * 【讨论中】是否显示添加按钮
    * @default true
    */
   addable?: {
@@ -28,14 +28,6 @@ export interface TdAttachmentsProps {
   items?: {
     type: ArrayConstructor;
     value?: FileItem[];
-  };
-  /**
-   * 文件列表超出时样式
-   * @default wrap
-   */
-  overflow?: {
-    type: StringConstructor;
-    value?: 'wrap' | 'scrollX' | 'scrollY';
   };
   /**
    * 是否显示删除按钮

@@ -51,10 +51,9 @@ isComponent: true
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
-addable | Boolean | true | 是否显示添加按钮 | N
+addable | Boolean | true | 【讨论中】是否显示添加按钮 | N
 image-viewer | Boolean | true | 是否启用图片预览功能 | N
 items | Array | [] | 【实验】附件列表。TS 类型：`FileItem[]` `interface FileItem { fileType: 'image'\|'video'\|'audio'\|'pdf'\|'doc'\|'ppt'\|'txt'; name: string; url: string; size: number; status?: 'success'\|'fail'\|'pending'\|'error'; progress?: number; errorMessage?: string; fileIcon?: string; width?: number; height?: number; mode?: 'aspectFit' \| 'aspectFill' \| 'widthFix' \| 'heightFix' \| 'scaleToFill'}`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/attachments/type.ts) | N
-overflow | String | wrap | 文件列表超出时样式。可选项：wrap/scrollX/scrollY | N
 removable | Boolean | true | 是否显示删除按钮 | N
 
 ### Attachments Events
