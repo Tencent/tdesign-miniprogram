@@ -280,45 +280,5 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    // TODO: 未在视图层找到对应节点，是否可移除？
-    // 菜单样式
-    &--menu {
-      position: absolute;
-      right: 0;
-      top: @chat-sender-menu-top;
-      transform: translateY(-100%);
-      padding: @chat-sender-menu-padding;
-      border-radius: @chat-sender-menu-radius;
-      background: @chat-sender-menu-bg;
-      box-shadow: @chat-sender-menu-shadow;
-
-      // 菜单项
-      &__item {
-        display: flex;
-        align-items: center;
-        width: @chat-sender-menu-item-width;
-        padding: @chat-sender-menu-item-padding;
-
-        & + & {
-          border-top: @chat-sender-menu-item-border;
-        }
-
-        .cam-icon,
-        .pic-icon,
-        .file-icon {
-          margin-right: @chat-sender-menu-item-icon-margin-right;
-        }
-
-        .menu-txt {
-          color: @chat-sender-menu-item-text-color;
-          font-size: @chat-sender-menu-item-text-font-size;
-          font-weight: @chat-sender-menu-item-text-font-weight;
-          line-height: @chat-sender-menu-item-text-line-height;
-          letter-spacing: @chat-sender-menu-item-text-letter-spacing;
-          white-space: nowrap;
-        }
-      }
-    }
   }
 }

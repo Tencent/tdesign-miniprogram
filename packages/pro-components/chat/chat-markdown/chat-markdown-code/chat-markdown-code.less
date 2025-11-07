@@ -81,28 +81,6 @@
     min-width: 100%;
   }
 
-  // TODO: 除样式外，未见 dark/light 相关逻辑，需要确认是否需要。 「对应 css token 暂未处理」
-  // 暗色主题
-  &-dark {
-    .@{chat-markdown-code}-block {
-      background-color: @chat-markdown-code-block-bg-dark;
-      border-color: @chat-markdown-code-block-border-dark;
-    }
-
-    .@{chat-markdown-code}-header {
-      background-color: @chat-markdown-code-header-bg-dark;
-      border-bottom-color: @chat-markdown-code-header-border-dark;
-    }
-
-    .@{chat-markdown-code}-lang {
-      color: @chat-markdown-code-lang-color-dark;
-    }
-
-    .@{chat-markdown-code}-text {
-      color: @chat-markdown-code-text-color-dark;
-    }
-  }
-
   // 浅色主题
   &-light {
     .@{chat-markdown-code}-block {
