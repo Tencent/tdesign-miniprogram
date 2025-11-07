@@ -1,5 +1,4 @@
-// eslint-disable-next-line
-import { Toast } from 'tdesign-miniprogram';
+import Toast from 'tdesign-miniprogram/toast';
 import { getNavigationBarHeight } from '../../../utils/utils';
 
 const sleep = (ms) => {
@@ -36,6 +35,12 @@ Component({
     styleIsolation: 'shared',
   },
   data: {
+    renderPresets: [
+      {
+        name: 'send',
+        type: 'icon',
+      },
+    ],
     customActionBar: ['good', 'bad'],
     chatList: [
       {
@@ -231,11 +236,11 @@ Component({
     },
     handleAction(e) {
       const { name, active, data } = e.detail;
-
+      console.log('----', name);
       let message = '';
       switch (name) {
-        case 'refresh':
-          message = '已刷新';
+        case 'replay':
+          message = '重新生成';
           break;
         case 'copy':
           console.log(data);

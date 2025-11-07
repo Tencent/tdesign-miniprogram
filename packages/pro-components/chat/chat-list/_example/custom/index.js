@@ -1,4 +1,4 @@
-import { Toast } from 'tdesign-miniprogram';
+import Toast from 'tdesign-miniprogram/toast';
 import { getNavigationBarHeight } from '../../../utils/utils';
 
 const sleep = (ms) => {
@@ -36,6 +36,12 @@ Component({
     styleIsolation: 'shared',
   },
   data: {
+    renderPresets: [
+      {
+        name: 'send',
+        type: 'icon',
+      },
+    ],
     chatList: [
       {
         avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
@@ -233,8 +239,8 @@ Component({
 
       let message = '';
       switch (name) {
-        case 'refresh':
-          message = '已刷新';
+        case 'replay':
+          message = '重新生成';
           break;
         case 'copy':
           console.log(data);

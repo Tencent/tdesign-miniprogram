@@ -1,4 +1,4 @@
-import { Toast } from 'tdesign-miniprogram';
+import Toast from 'tdesign-miniprogram/toast';
 
 Page({
   data: {
@@ -11,8 +11,8 @@ Page({
 
     let message = '';
     switch (name) {
-      case 'refresh':
-        message = '已刷新';
+      case 'replay':
+        message = '重新生成';
         break;
       case 'copy':
         console.log(data);

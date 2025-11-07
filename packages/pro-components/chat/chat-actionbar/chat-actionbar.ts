@@ -20,7 +20,7 @@ export default class ChatActionbar extends SuperComponent {
     iconMap: {
       good: 'thumb-up',
       bad: 'thumb-down',
-      refresh: 'refresh',
+      replay: 'refresh',
       copy: 'copy',
       share: 'share-1',
     },
