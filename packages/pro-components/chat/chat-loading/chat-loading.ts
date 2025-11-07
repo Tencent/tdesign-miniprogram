@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-chat-loading`;
@@ -10,16 +11,7 @@ export default class ChatLoading extends SuperComponent {
     multipleSlots: true,
   };
 
-  properties = {
-    animation: {
-      type: String,
-      value: 'moving',
-    },
-    text: {
-      type: String,
-      value: '',
-    },
-  };
+  properties = props;
 
   data = {
     classPrefix: name,

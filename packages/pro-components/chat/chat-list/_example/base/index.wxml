@@ -14,7 +14,7 @@
           wx:if="{{chatIndex !== chatList.length - 1 && item.status === 'complete' && item.role === 'assistant'}}"
           slot="actionbar"
           placement="end"
-          bind:handleAction="handleAction"
+          bind:actions="handleAction"
         />
       </t-chat-message>
     </block>
@@ -24,6 +24,7 @@
         loading="{{loading}}"
         disabled="{{disabled}}"
         autoRiseWithKeyboard="{{true}}"
+        renderPresets="{{renderPresets}}"
         bind:send="onSend"
         bind:stop="onStop"
         bind:focus="onFocus"

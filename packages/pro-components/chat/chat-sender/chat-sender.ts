@@ -1,5 +1,6 @@
 import { SuperComponent, wxComponent } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
+import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-chat-sender`;
@@ -10,92 +11,7 @@ export default class ChatSender extends SuperComponent {
     multipleSlots: true,
   };
 
-  properties = {
-    disabled: {
-      type: Boolean,
-      value: false,
-    },
-    placeholder: {
-      type: String,
-      value: '请输入消息...',
-    },
-    loading: {
-      type: Boolean,
-      value: false,
-    },
-    textareaProps: {
-      type: Object,
-      value: {
-        autosize: {
-          maxHeight: 264,
-          minHeight: 48,
-        },
-      },
-    },
-    value: {
-      type: String,
-      value: '',
-    },
-    onBlur: {
-      type: null,
-      value: undefined,
-    },
-    onChange: {
-      type: null,
-      value: undefined,
-    },
-    onFocus: {
-      type: null,
-      value: undefined,
-    },
-    onSend: {
-      type: null,
-      value: undefined,
-    },
-    onStop: {
-      type: null,
-      value: undefined,
-    },
-    fileList: {
-      type: Array,
-      value: [],
-    },
-    attachmentsProps: {
-      type: Object,
-      value: {
-        items: [],
-        removable: true,
-        imageViewer: true,
-        addable: false,
-      },
-    },
-    renderPresets: {
-      type: Array,
-      value: [
-        {
-          name: 'upload',
-          presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'],
-          status: '',
-        },
-        {
-          name: 'send',
-          type: 'icon',
-        },
-      ],
-    },
-    visible: {
-      type: Boolean,
-      value: false,
-    },
-    adjustPosition: {
-      type: Boolean,
-      value: false,
-    },
-    autoRiseWithKeyboard: {
-      type: Boolean,
-      value: false,
-    },
-  };
+  properties = props;
 
   data = {
     classPrefix: name,

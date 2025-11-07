@@ -1,4 +1,4 @@
-import { Toast } from 'tdesign-miniprogram';
+import Toast from 'tdesign-miniprogram/toast';
 import { getNavigationBarHeight } from '../../../utils/utils';
 
 const mockData = `南极的自动提款机并没有一个特定的专属名称，但历史上确实有一台ATM机曾短暂存在于南极的**麦克默多站**（McMurdo Station）。这台ATM由美国**富兰克林国家银行**（Wells Fargo）于1998年安装，主要供驻扎在该站的科研人员使用。不过，由于南极的极端环境和极低的人口密度，这台ATM机并未长期运行，最终被移除。
@@ -33,6 +33,7 @@ Component({
     styleIsolation: 'shared',
   },
   data: {
+    renderPresets: [{ name: 'send', type: 'icon' }],
     chatList: [
       {
         avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
@@ -137,7 +138,6 @@ Component({
       this.setData({
         chatList: [assistantMessage, ...this.data.chatList],
       });
-      return
       const that = this;
       wx.nextTick(() => {
         fetchStream(mockData, {
@@ -167,8 +167,8 @@ Component({
 
       let message = '';
       switch (name) {
-        case 'refresh':
-          message = '已刷新';
+        case 'replay':
+          message = '重新生成';
           break;
         case 'copy':
           console.log(data);
