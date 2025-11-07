@@ -8,7 +8,7 @@
         content="{{item.content}}"
         role="{{item.role}}"
         placement="{{item.role === 'user' ? 'right' : 'left'}}"
-        status="{{item.status}}"
+        status="{{item.status || ''}}"
       >
         <t-chat-actionbar
           wx:if="{{chatIndex !== chatList.length - 1 && item.status === 'complete' && item.role === 'assistant'}}"
