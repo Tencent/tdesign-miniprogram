@@ -31,10 +31,6 @@ export default class Chat extends SuperComponent {
       type: Boolean,
       value: false,
     },
-    textLoading: {
-      type: String,
-      value: '加载中...',
-    },
     virtualList: {
       type: Boolean,
       value: false,
@@ -43,6 +39,10 @@ export default class Chat extends SuperComponent {
       type: Number,
       value: 8,
     },
+    animation: {
+      type: String,
+      value: 'skeleton',
+    }
   };
 
   data = {

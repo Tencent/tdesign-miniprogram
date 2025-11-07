@@ -41,7 +41,7 @@ isComponent: true
 
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
-animation | String | moving | 加载的状态形式。可选项：moving/gradient/circle | N
+animation | String | moving | 加载的状态形式。可选项：moving/gradient/circle/dots | N
 text | String | - | 加载过程展示的文字内容 | N
 
 ### CSS Variables

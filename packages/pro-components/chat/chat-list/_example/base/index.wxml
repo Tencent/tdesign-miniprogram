@@ -5,12 +5,13 @@
         avatar="{{item.avatar || ''}}"
         name="{{item.name || ''}}"
         datetime="{{item.datetime || ''}}"
-        content="{{item.message.content}}"
-        role="{{item.message.role}}"
-        placement="{{item.message.role === 'user' ? 'right' : 'left'}}"
+        content="{{item.content}}"
+        role="{{item.role}}"
+        placement="{{item.role === 'user' ? 'right' : 'left'}}"
+        status="{{item.status}}"
       >
         <t-chat-actionbar
-          wx:if="{{chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'}}"
+          wx:if="{{chatIndex !== chatList.length - 1 && item.status === 'complete' && item.role === 'assistant'}}"
           slot="actionbar"
           placement="end"
           bind:handleAction="handleAction"
@@ -29,5 +30,7 @@
       />
     </view>
   </t-chat>
+  <!-- 内置虚拟列表优化性能仅在data属性中使用 -->
+  <!-- <t-chat id="chatList" bindscroll="onScroll" data="{{chatList}}"></t-chat> -->
 </view>
 <t-toast id="t-toast" />

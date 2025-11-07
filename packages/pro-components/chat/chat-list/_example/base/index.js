@@ -36,19 +36,16 @@ Component({
     chatList: [
       {
         avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
-        message: {
-          status: 'complete',
-          role: 'assistant',
-          content: [
+        role: 'assistant',
+        status: 'complete',
+        content: [
             {
               type: 'text',
               data: '它叫 McMurdo Station ATM，是美国富国银行安装在南极洲最大科学中心麦克默多站的一台自动提款机。',
             },
           ],
-        },
       },
       {
-        message: {
           role: 'user',
           content: [
             {
@@ -56,7 +53,6 @@ Component({
               data: '牛顿第一定律是否适用于所有参考系？',
             },
           ],
-        },
       },
     ],
     value: '', // 输入框的值
@@ -64,6 +60,7 @@ Component({
     disabled: false, // 禁用状态
     inputStyle: '', // 输入框样式
     contentHeight: '100vh', // 内容高度
+    animation: 'dots',
   },
 
   methods: {
@@ -84,15 +81,13 @@ Component({
 
       // 创建用户消息对象
       const userMessage = {
-        message: {
-          role: 'user',
-          content: [
-            {
-              type: 'text',
-              data: value.trim(),
-            },
-          ],
-        },
+        role: 'user',
+        content: [
+          {
+            type: 'text',
+            data: value.trim(),
+          },
+        ],
       };
 
       // 将用户消息插入到chatList的开头（因为reverse为true，所以用unshift）
@@ -107,7 +102,6 @@ Component({
 
     // 停止事件处理
     onStop() {
-      console.log('停止发送');
       this.setData({
         loading: false,
       });
@@ -127,37 +121,37 @@ Component({
 
     // 模拟助手回复
     simulateAssistantReply() {
-      this.setData({ loading: true });
-
+      this.setData({ loading: true});
+      // 请求中
       const assistantMessage = {
-        message: {
-          role: 'assistant',
-          content: [
-            {
-              type: 'markdown',
-              data: '',
-            },
-          ],
-        },
+        role: 'assistant',
+        content: [
+          {
+            type: 'markdown',
+            data: '',
+          },
+        ],
         avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
+        status: 'pending',
       };
-
       this.setData({
         chatList: [assistantMessage, ...this.data.chatList],
       });
-
+      return
       const that = this;
       wx.nextTick(() => {
         fetchStream(mockData, {
-          success(result) {
-            if (!that.data.loading) return;
-            that.data.chatList[0].message.content[0].data += result;
-            that.setData({
-              chatList: that.data.chatList,
-            });
-          },
+      success(result) {
+        // 生文中
+        that.data.chatList[0].status = 'streaming';
+        if (!that.data.loading) return;
+        that.data.chatList[0].content[0].data += result;
+        that.setData({
+          chatList: that.data.chatList,
+        });
+      },
           complete() {
-            that.data.chatList[0].message.status = 'complete';
+            that.data.chatList[0].status = 'complete';
             that.setData({
               chatList: that.data.chatList,
             });
