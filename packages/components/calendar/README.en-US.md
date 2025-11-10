@@ -8,21 +8,22 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
+allow-same-day | Boolean | false | `1.11.2` | N
 auto-close | Boolean | true | `0.34.0` | N
 confirm-btn | String / Object | '' | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/calendar/type.ts) | N
 first-day-of-week | Number | 0 | \- | N
-format | Function | - | Typescript：`CalendarFormatType ` `type CalendarFormatType = (day: TDate) => TDate` `type TDateType = 'selected' \| 'disabled' \| 'start' \| 'centre' \| 'end' \| ''` `interface TDate { date: Date; day: number; type: TDateType; className?: string; prefix?: string; suffix?: string;}`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/calendar/type.ts) | N
-locale-text | Object | - | Typescript：`CalendarLocaleText` `interface CalendarLocaleText {title?: string; weekdays?: string[]; monthTitle?: string; months?: string[]; confirm?: string;}`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/calendar/type.ts) | N
+format | Function | - | Typescript: `CalendarFormatType ` `type CalendarFormatType = (day: TDate) => TDate` `type TDateType = 'selected' \| 'disabled' \| 'start' \| 'centre' \| 'end' \| ''` `interface TDate { date: Date; day: number; type: TDateType; className?: string; prefix?: string; suffix?: string;}`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/calendar/type.ts) | N
+locale-text | Object | - | Typescript: `CalendarLocaleText` `interface CalendarLocaleText {title?: string; weekdays?: string[]; monthTitle?: string; months?: string[]; confirm?: string;}`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/calendar/type.ts) | N
 max-date | Number | - | \- | N
 min-date | Number | - | \- | N
 readonly | Boolean | - | `1.9.7` | N
 switch-mode | String | none | `1.8.2`。options: none/month/year-month | N
 title | String | - | \- | N
-type | String | 'single' | options: single/multiple/range | N
+type | String | single | options: single/multiple/range | N
 use-popup | Boolean | true | `0.32.0` | N
 using-custom-navbar | Boolean | false | \- | N
-value | Number / Array | - | Typescript：`number \| number[]` | N
-default-value | Number / Array | undefined | uncontrolled property。Typescript：`number \| number[]` | N
+value | Number / Array | - | Typescript: `number \| number[]` | N
+default-value | Number / Array | undefined | uncontrolled property。Typescript: `number \| number[]` | N
 visible | Boolean | false | \- | N
 
 ### Calendar Events
