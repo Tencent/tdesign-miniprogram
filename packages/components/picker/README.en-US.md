@@ -69,8 +69,6 @@ Name | Default Value | Description
 --td-picker-confirm-color | @brand-color | - 
 --td-picker-indicator-bg-color | @bg-color-secondarycontainer | - 
 --td-picker-indicator-border-radius | 12rpx | - 
---td-picker-mask-color-bottom | hsla(0, 0%, 100%, 0.4) | - 
---td-picker-mask-color-top | hsla(0, 0%, 100%, 0.92) | - 
 --td-picker-title-color | @text-color-primary | - 
 --td-picker-title-font-size | 36rpx | - 
 --td-picker-title-font-weight | 600 | - 
