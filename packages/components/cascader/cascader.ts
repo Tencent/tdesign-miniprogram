@@ -15,11 +15,13 @@ type KeysType = TdCascaderProps['keys']['value'];
 function parseOptions(options: OptionsType, keys: KeysType) {
   const label = keys?.label ?? 'label';
   const value = keys?.value ?? 'value';
+  const disabled = keys?.disabled ?? 'disabled';
 
   return options.map((item) => {
     return {
       [label]: item[label],
       [value]: item[value],
+      [disabled]: item[disabled],
     };
   });
 }
@@ -278,7 +280,7 @@ export default class Cascader extends SuperComponent {
         item = item[keys?.children ?? 'children'][index];
       }
 
-      if (item.disabled) {
+      if (item[keys?.disabled ?? 'disabled']) {
         return;
       }
       this.triggerEvent('pick', {
