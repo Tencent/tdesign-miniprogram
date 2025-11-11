@@ -1,0 +1,170 @@
+@import '../common/style/base.less';
+
+@popover: ~'@{prefix}-popover';
+
+// 主题色变量
+@popover-padding: 24rpx;
+@popover-arrow: 12rpx;
+
+.@{popover}__wrapper {
+  display: inline-block;
+}
+
+.@{popover} {
+  position: absolute;
+  z-index: 11500;
+  overflow: visible;
+  transition: 0.2s ease-in-out all;
+
+  &__content {
+    position: relative;
+    padding: @popover-padding;
+    border-radius: 12rpx;
+    box-shadow: @shadow-3;
+    font-size: @font-size-m;
+    line-height: 48rpx;
+    box-sizing: border-box;
+    word-break: break-all;
+
+    border-radius: 6px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    word-break: break-all;
+  }
+
+  &__arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+    border-width: @popover-arrow;
+  }
+
+  // 主题
+  &--dark {
+    color: #fff;
+    background: @font-gray-1;
+
+    .@{popover}__arrow {
+      color: @font-gray-1;
+    }
+  }
+
+  &--light {
+    color: @text-color-primary;
+    background: @bg-color-container;
+
+    .@{popover}__arrow {
+      color: @bg-color-container;
+    }
+  }
+
+  &--brand {
+    color: @primary-color-7;
+    background: @primary-color-1;
+
+    .@{popover}__arrow {
+      color: @primary-color-1;
+    }
+  }
+
+  &--success {
+    color: @success-color-5;
+    background: @success-color-1;
+
+    .@{popover}__arrow {
+      color: @success-color-1;
+    }
+  }
+
+  &--warning {
+    color: @warning-color-5;
+    background: @warning-color-1;
+
+    .@{popover}__arrow {
+      color: @warning-color-1;
+    }
+  }
+
+  &--error {
+    color: @error-color-6;
+    background: @error-color-1;
+
+    .@{popover}__arrow {
+      color: @error-color-1;
+    }
+  }
+
+  // 箭头方向与偏移
+  &[data-placement^='top'] {
+    transform-origin: 50% 100%;
+    .@{popover}__content {
+      margin-bottom: 16rpx;
+    }
+    .@{popover}__arrow {
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-bottom-width: 0;
+      border-top-color: currentColor;
+      margin-bottom: -@popover-arrow;
+    }
+  }
+
+  &[data-placement^='bottom'] {
+    transform-origin: 50% 0;
+    .@{popover}__content {
+      margin-top: 16rpx;
+    }
+    .@{popover}__arrow {
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      border-top-width: 0;
+      border-bottom-color: currentColor;
+      margin-top: -@popover-arrow;
+    }
+  }
+
+  &[data-placement^='left'] {
+    transform-origin: 100% 50%;
+    .@{popover}__content {
+      margin-right: 16rpx;
+    }
+    .@{popover}__arrow {
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      border-right-width: 0;
+      border-left-color: currentColor;
+      margin-right: -@popover-arrow;
+    }
+  }
+
+  &[data-placement^='right'] {
+    transform-origin: 0 50%;
+    .@{popover}__content {
+      margin-left: 16rpx;
+    }
+    .@{popover}__arrow {
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left-width: 0;
+      border-right-color: currentColor;
+      margin-left: -@popover-arrow;
+    }
+  }
+
+  &.@{prefix}-fade-enter-to {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.@{prefix}-fade-enter,
+  &.@{prefix}-fade-leave-to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

@@ -1,0 +1,18 @@
+function getPopupStyles(zIndex, distanceTop, placement) {
+  var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
+  if ((placement === 'top' || placement === 'left' || placement === 'right') && distanceTop) {
+    zIndexStyle = zIndexStyle + 'top:' + distanceTop + 'px;' + '--td-popup-distance-top:' + distanceTop + 'px;';
+  }
+  return zIndexStyle;
+}
+
+function onContentTouchMove(e) {
+  if (e.target && e.target.dataset.prevention) {
+    return false;
+  }
+}
+
+module.exports = {
+  getPopupStyles: getPopupStyles,
+  onContentTouchMove: onContentTouchMove,
+};

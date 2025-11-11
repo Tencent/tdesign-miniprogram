@@ -1,4 +1,28 @@
-:: BASE_DOC ::
+---
+title: Popover 弹出气泡
+description: 用于文字提示的气泡框。
+spline: data
+isComponent: true
+---
+
+
+## 引入
+
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
+
+```json
+"usingComponents": {
+  "t-popover": "tdesign-miniprogram/popover/popover"
+}
+```
+
+<!-- ## 代码演示 -->
+
+
+### 组件类型
+带箭头的弹出气泡
+
+{{ base }}
 
 ## API
 

@@ -1,0 +1,32 @@
+<wxs src="../common/utils.wxs" module="_" />
+
+<view id="{{classPrefix}}-wrapper" class="{{classPrefix}}__wrapper {{prefix}}-class-trigger" catch:tap="onToggle">
+  <slot />
+</view>
+
+<!-- 透明遮罩用于外部点击关闭 -->
+<t-overlay
+  id="popover-overlay"
+  wx:if="{{realVisible && closeOnClickOutside}}"
+  visible="{{true}}"
+  z-index="11000"
+  duration="0"
+  background-color="rgba(0,0,0,0)"
+  bind:tap="onOverlayTap"
+/>
+
+<!-- 内容气泡，绝对定位到计算的位置 -->
+<view
+  wx:if="{{realVisible}}"
+  id="{{classPrefix}}-content"
+  style="{{contentStyle}}"
+  class="{{classPrefix}} {{transitionClass}}"
+  data-placement="{{placement}}"
+  bind:transitionend="onTransitionEnd"
+>
+  <view class="{{classPrefix}}__content {{classPrefix}}--{{theme}} ">
+    <slot name="content" />
+    <!-- 箭头 -->
+    <view wx:if="{{showArrow}}" class="{{classPrefix}}__arrow"></view>
+  </view>
+</view>
