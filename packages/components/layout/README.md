@@ -10,6 +10,12 @@ style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 gutter | String / Number | - | 列之间的间距（默认单位px） | N
 
+### Row Slots
+
+名称 | 描述
+-- | --
+\- | 默认插槽，行内容
+
 
 ### Col Props
 
@@ -19,3 +25,9 @@ style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 offset | String / Number | - | 列的偏移量（默认单位px） | N
 span | String / Number | - | 列的宽度（默认单位px） | N
+
+### Col Slots
+
+名称 | 描述
+-- | --
+\- | 默认插槽，列内容

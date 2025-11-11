@@ -22,6 +22,8 @@
 
   &__wrapper {
     padding: 144rpx 0;
+    // 虚拟滚动性能优化：使用 will-change 提示浏览器
+    will-change: transform;
   }
 
   &__item {
@@ -30,6 +32,8 @@
     align-items: center;
     color: @picker-item-color;
     font-size: @picker-item-font-size;
+    // 虚拟滚动性能优化：隔离渲染上下文
+    contain: layout style paint;
 
     &-icon {
       font-size: 36rpx;

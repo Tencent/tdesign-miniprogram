@@ -24,7 +24,7 @@ fixed | Boolean | false | \- | N
 focus | Boolean | false | \- | N
 hold-keyboard | Boolean | false | \- | N
 indicator | Boolean | false | \- | N
-label | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+label | String | - | \- | N
 maxcharacter | Number | - | \- | N
 maxlength | Number | -1 | \- | N
 placeholder | String | undefined | \- | N
@@ -47,6 +47,12 @@ enter | `(value: TextareaValue)` | \-
 focus | `(value: TextareaValue)` | \-
 keyboardheightchange | `(height: number, duration: number)` | \-
 line-change | `(value: TextareaValue)` | \-
+
+### Textarea Slots
+
+name | Description
+-- | --
+label | \-
 
 ### Textarea External Classes
 

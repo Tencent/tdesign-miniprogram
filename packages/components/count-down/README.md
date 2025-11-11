@@ -45,7 +45,7 @@ isComponent: true
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 auto-start | Boolean | true | 是否自动开始倒计时 | N
-content | String / Slot | 'default' | 最终倒计时的展示内容，值为'default'时使用默认的格式，否则使用自定义样式插槽。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+content | String | 'default' | 最终倒计时的展示内容，值为'default'时使用默认的格式，否则使用自定义样式插槽 | N
 format | String | HH:mm:ss | 时间格式，DD-日，HH-时，mm-分，ss-秒，SSS-毫秒 | N
 millisecond | Boolean | false | 是否开启毫秒级渲染 | N
 size | String | 'medium' | `0.5.1`。倒计时尺寸。可选项：small/medium/large | N
@@ -59,6 +59,13 @@ time | Number | 0 | 必需。倒计时时长，单位毫秒 | Y
 -- | -- | --
 change | `(time: TimeData)` | 时间变化时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/count-down/type.ts)。<br/>`interface TimeData {  days: number; hours: number; minutes: number; seconds: number; milliseconds: number }`<br/>
 finish | \- | 倒计时结束时触发
+
+### CountDown Slots
+
+名称 | 描述
+-- | --
+\- | 默认插槽，作用同 `content` 插槽
+content | 自定义 `content` 显示内容
 
 ### CountDown External Classes
 

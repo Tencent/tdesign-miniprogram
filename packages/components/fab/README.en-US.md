@@ -23,6 +23,12 @@ click | `(detail: {e: Event})` | \-
 drag-end | `(detail: { e: TouchEvent })` | \-
 drag-start | `(detail: { e: TouchEvent })` | \-
 
+### Fab Slots
+
+name | Description
+-- | --
+\- | \-
+
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.

@@ -6,6 +6,17 @@ docClass: timeline
 ---
 
 
+## 🌈 1.11.1 `2025-11-06` 
+### 🐞 Bug Fixes
+- `Calendar`: 修复 `value[]` 结合 `swich-mode` 时，初始化错误 @anlyyao ([#4005](https://github.com/Tencent/tdesign-miniprogram/pull/4005))
+- `CheckboxGroup`: 修复无法在 `form` 中获取数据的问题 @Boomkaa ([#4017](https://github.com/Tencent/tdesign-miniprogram/pull/4017))
+- `TabBar`: 修复子项背景色叠加的问题 @Boomkaa ([#4019](https://github.com/Tencent/tdesign-miniprogram/pull/4019))
+- `ActionSheet`: 修复组件初始化数据重复修改导致异常的问题 @betavs ([#4013](https://github.com/Tencent/tdesign-miniprogram/pull/4013))
+- `Toast`: 修复圆角样式错误 @anlyyao ([#4031](https://github.com/Tencent/tdesign-miniprogram/pull/4031))
+- `Upload`: 修复 `draggable` 值变换时组件显示错误 @anlyyao ([#4030](https://github.com/Tencent/tdesign-miniprogram/pull/4030))
+- `Picker`: 修复 `autoClose` 为 `false` 时，点击遮罩层会重置选项为拨动前选项值的问题 @composable-tu ([#3874](https://github.com/Tencent/tdesign-miniprogram/pull/3874))
+
+
 ## 🌈 1.11.0 `2025-10-20` 
 ### 🚀 Features
 - `Watermark`: 新增 `Watermark` 水印组件 @Wesley-0808 ([#3799](https://github.com/Tencent/tdesign-miniprogram/pull/3799))

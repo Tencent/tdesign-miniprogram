@@ -19,7 +19,7 @@ image-props | Object | - | `0.34.0` | N
 interval | Number | 5000 | \- | N
 list | Array | - | `0.32.0`。Typescript：`string[] \| SwiperList[]` `interface SwiperList { value: string, ariaLabel: string }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/swiper/type.ts) | N
 loop | Boolean | true | \- | N
-navigation | Boolean / Object / Slot | true | Typescript：`SwiperNavProps \| boolean`，[SwiperNav API Documents](./swiper-nav?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/swiper/type.ts) | N
+navigation | Boolean / Object | true | Typescript：`SwiperNavProps \| boolean`，[SwiperNav API Documents](./swiper-nav?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/swiper/type.ts) | N
 next-margin | String / Number | 0 | `0.32.0` | N
 pagination-position | String | bottom | options: top-left/top/top-right/bottom-left/bottom/bottom-right | N
 previous-margin | String / Number | 0 | `0.32.0` | N
@@ -33,6 +33,12 @@ animationfinish | `(current: number, source: SwiperChangeSource)` | `1.11.0`。�
 change | `(current: number, source: SwiperChangeSource)` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/swiper/type.ts)。<br/>`type SwiperChangeSource = 'autoplay' \| 'touch' \| 'nav'`<br/>
 click | `(index: number)` | `0.34.0`
 image-load | `(index: number)` | `1.1.4`
+
+### Swiper Slots
+
+name | Description
+-- | --
+navigation | \-
 
 ### Swiper External Classes
 

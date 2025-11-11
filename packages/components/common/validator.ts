@@ -16,8 +16,8 @@ export function isDef(value: unknown): boolean {
   return !isUndefined(value) && !isNull(value);
 }
 
-export function isNumber(value: string) {
-  return /^\d+(\.\d+)?$/.test(value);
+export function isNumber(value: string | number): boolean {
+  return typeof value === 'number' || /^-?\d+(\.\d+)?$/.test(value);
 }
 
 export function isBoolean(value: unknown): value is boolean {

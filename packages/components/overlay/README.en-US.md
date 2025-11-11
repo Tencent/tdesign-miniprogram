@@ -20,6 +20,12 @@ name | params | description
 -- | -- | --
 click | `({ visible: boolean })` | \-
 
+### Overlay Slots
+
+name | Description
+-- | --
+\- | \-
+
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.

@@ -5,6 +5,9 @@ on: create
 jobs:
   TAG_PUSH:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     if: github.event.ref_type == 'tag'
     steps:
       - uses: actions/checkout@v4
@@ -24,12 +27,14 @@ jobs:
         env:
           MINI_APP_ID: ${{ secrets.TDESIGN_APP_ID }}
           MINI_APP_PRIVATE_KEY: ${{ secrets.TDESIGN_MINI_KEY }}
+
+      - run: sudo npm install -g npm@latest
+
       - id: publish
         name: publish NPM
         uses: JS-DevTools/npm-publish@v4
         with:
           package: packages/tdesign-miniprogram
-          token: ${{ secrets.TDESIGN_NPM_TOKEN }}
           tag: ${{ contains(github.ref_name, 'beta') && 'beta' || 'latest' }}
       - if: steps.publish.outputs.type != 'none'
         run: |

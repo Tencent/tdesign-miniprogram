@@ -70,7 +70,7 @@ isComponent: true
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 alpha | Number | 1 | 水印整体透明度，取值范围 [0-1] | N
-content | String / Slot | - | 水印所覆盖的内容节点。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+content | String | - | 水印所覆盖的内容节点 | N
 height | Number | - | 水印高度 | N
 is-repeat | Boolean | true | 水印是否重复出现 | N
 layout | String | rectangular | 水印的布局方式，rectangular：矩形，即横平竖直的水印；hexagonal：六边形，即错位的水印。可选项：rectangular/hexagonal | N
@@ -85,6 +85,13 @@ width | Number | - | 水印宽度 | N
 x | Number | - | 水印之间的水平间距 | N
 y | Number | - | 水印之间的垂直间距 | N
 z-index | Number | - | 水印元素的 `z-index`，默认值写在 CSS 中 | N
+
+### Watermark Slots
+
+名称 | 描述
+-- | --
+\- | 默认插槽，作用同 `content` 插槽
+content | 自定义 `content` 显示内容
 
 ### WatermarkText
 
