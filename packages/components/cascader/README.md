@@ -110,6 +110,6 @@ title | 自定义 `title` 显示内容
 --td-cascader-step-dot-size | 16rpx | - 
 --td-cascader-step-height | 88rpx | - 
 --td-cascader-title-color | @text-color-primary | - 
+--td-cascader-title-font-size | 36rpx | - 
 --td-cascader-title-height | 26rpx | - 
---td-cascader-title-padding | @spacer-2 | - 
---td-cascader-title-font-size | 36rpx | -
+--td-cascader-title-padding | @spacer-2 | -

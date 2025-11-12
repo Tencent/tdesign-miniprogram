@@ -6,6 +6,16 @@ docClass: timeline
 ---
 
 
+## 🌈 1.11.2 `2025-11-12` 
+### 🚀 Features
+- `Picker`: 
+  - ⚠️ `itemHeight` 默认单位改用 `px`，避免单位转换带来的精度问题 @anlyyao ([#4052](https://github.com/Tencent/tdesign-miniprogram/pull/4052))
+  - 新增 `visibleItemCount` 属性，可自定义可视区域 `PickerItem` 的子项个数 @anlyyao ([#4052](https://github.com/Tencent/tdesign-miniprogram/pull/4052))
+  -  优化大量数据时列表滚动性能 @jarmywang ([#4014](https://github.com/Tencent/tdesign-miniprogram/pull/4014))
+- `Calendar`: 新增 `allowSameDay` 属性，允许 `type='range'` 场景的起始时间相同 @anlyyao ([#4045](https://github.com/Tencent/tdesign-miniprogram/pull/4045))
+- `Cascader`: 支持通过 `keys` 属性定义 `children / disabled` 在 `options` 中对应的字段别名 @anlyyao ([#4044](https://github.com/Tencent/tdesign-miniprogram/pull/4044))
+
+
 ## 🌈 1.11.1 `2025-11-06` 
 ### 🐞 Bug Fixes
 - `Calendar`: 修复 `value[]` 结合 `swich-mode` 时，初始化错误 @anlyyao ([#4005](https://github.com/Tencent/tdesign-miniprogram/pull/4005))
