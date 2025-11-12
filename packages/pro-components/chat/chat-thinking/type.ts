@@ -11,7 +11,7 @@ export interface TdChatThinkingProps {
    */
   animation?: {
     type: StringConstructor;
-    value?: 'circle' | 'moving' | 'gradient';
+    value?: 'skeleton' | 'moving' | 'gradient' | 'dot';
   };
   /**
    * 是否折叠

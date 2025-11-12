@@ -63,7 +63,6 @@ isComponent: true
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
-allow-content-segment-custom | Boolean | false | 【实验】 是否允许自定义局部消息内容，其他消息内容实用默认样式 | N
 animation | String | skeleton | 动画效果。可选项：skeleton/moving/gradient/dots | N
 avatar | String | - | 自定义的头像配置 | N
 chat-content-props | Object | - | 聊天内容组件的属性。TS 类型：`ChatContentProps`，[ChatContent API Documents](./chat-content?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/pro-components/chat/chat-message/type.ts) | N

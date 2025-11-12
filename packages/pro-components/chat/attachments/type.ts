@@ -22,12 +22,13 @@ export interface TdAttachmentsProps {
     value?: boolean;
   };
   /**
-   * 【实验】附件列表
+   * 附件列表
    * @default []
    */
-  items?: {
+  items: {
     type: ArrayConstructor;
     value?: FileItem[];
+    required?: boolean;
   };
   /**
    * 是否显示删除按钮

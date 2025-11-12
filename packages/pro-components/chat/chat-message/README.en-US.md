@@ -7,7 +7,6 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
-allow-content-segment-custom | Boolean | false | \- | N
 animation | String | skeleton | options: skeleton/moving/gradient/dots | N
 avatar | String | - | \- | N
 chat-content-props | Object | - | Typescript: `ChatContentProps`，[ChatContent API Documents](./chat-content?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/pro-components/chat/chat-message/type.ts) | N

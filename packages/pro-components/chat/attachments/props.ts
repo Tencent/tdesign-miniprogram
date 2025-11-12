@@ -16,10 +16,11 @@ const props: TdAttachmentsProps = {
     type: Boolean,
     value: true,
   },
-  /** 【实验】附件列表 */
+  /** 附件列表 */
   items: {
     type: Array,
     value: [],
+    required: true,
   },
   /** 是否显示删除按钮 */
   removable: {

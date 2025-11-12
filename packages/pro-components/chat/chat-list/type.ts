@@ -11,7 +11,7 @@ export interface TdChatListProps {
    */
   animation?: {
     type: StringConstructor;
-    value?: 'skeleton' | 'moving' | 'gradient';
+    value?: 'skeleton' | 'moving' | 'gradient' | 'dot';
   };
   /**
    * 对话列表的数据
@@ -21,7 +21,7 @@ export interface TdChatListProps {
     value?: Array<TdChatItemMeta>;
   };
   /**
-   * 对话布局形式，支持两侧对齐与左对齐。使用插槽自定义对话内容时不生效，得用`t-chat-message`的`placement`属性。
+   * 对话布局形式，支持两侧对齐与左对齐。使用插槽自定义对话内容时不生效，得用`t-chat-message`的`placement`属性
    * @default both
    */
   layout?: {
@@ -44,5 +44,5 @@ export interface TdChatItemMeta {
   role?: string;
   datetime?: string;
   content?: string;
-  reasoning?: string;
+  status?: string;
 }
