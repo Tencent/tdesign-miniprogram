@@ -12,6 +12,8 @@ export default class TCalendar {
 
   maxDate: Date;
 
+  allowSameDay: Boolean;
+
   format: (day: TDate) => TDate;
 
   constructor(options = {}) {
@@ -54,7 +56,7 @@ export default class TCalendar {
   getMonths() {
     const ans = [];
     const selectedDate = this.getTrimValue();
-    const { minDate, maxDate, type, format } = this;
+    const { minDate, maxDate, type, allowSameDay, format } = this;
     const minDateRect = getDateRect(minDate);
     let { year: minYear, month: minMonth } = minDateRect;
     const { time: minTime } = minDateRect;
@@ -74,9 +76,12 @@ export default class TCalendar {
       if (type === 'range' && selectedDate) {
         if (Array.isArray(selectedDate)) {
           const [startDate, endDate] = selectedDate;
+          const compareWithStart = startDate && isSameDate({ year, month, date }, startDate);
+          const compareWithEnd = endDate && isSameDate({ year, month, date }, endDate);
 
-          if (startDate && isSameDate({ year, month, date }, startDate)) return 'start';
-          if (endDate && isSameDate({ year, month, date }, endDate)) return 'end';
+          if (compareWithStart && compareWithEnd && allowSameDay) return 'start-end';
+          if (compareWithStart) return 'start';
+          if (compareWithEnd) return 'end';
           if (startDate && endDate && curDate.getTime() > startDate.getTime() && curDate.getTime() < endDate.getTime())
             return 'centre';
         }
@@ -124,7 +129,7 @@ export default class TCalendar {
     this.value = selected;
 
     if (type === 'range' && Array.isArray(selectedDate)) {
-      if (selectedDate.length === 1 && selected > selectedDate[0]) {
+      if (selectedDate.length === 1 && selected >= selectedDate[0]) {
         this.value = [selectedDate[0], selected];
       } else {
         this.value = [selected];

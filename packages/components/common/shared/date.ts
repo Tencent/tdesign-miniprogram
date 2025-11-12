@@ -12,7 +12,7 @@ export const getDateRect = (date: Date | number) => {
   };
 };
 
-export const isSameDate = (date1: CompareDate, date2: CompareDate) => {
+export const isSameDate = (date1: CompareDate, date2: CompareDate): Boolean => {
   if (date1 instanceof Date || typeof date1 === 'number') date1 = getDateRect(date1);
   if (date2 instanceof Date || typeof date2 === 'number') date2 = getDateRect(date2);
   const keys = ['year', 'month', 'date'];
