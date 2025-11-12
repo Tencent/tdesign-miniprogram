@@ -3,7 +3,7 @@
 <view
   id="{{tId}}"
   style="{{_._style([style, customStyle])}}"
-  class="{{_.cls(classPrefix, [placement, theme, ['checked', checked], ['block', block]])}} class {{prefix}}-class"
+  class="{{_.cls(classPrefix, [placement, theme, ['checked', checked], ['block', block], ['disabled', _disabled]])}} class {{prefix}}-class"
   aria-role="checkbox"
   aria-checked="{{checked ? (indeterminate ? 'mixed' : true) : false}}"
   aria-disabled="{{_disabled ? true : false}}"
