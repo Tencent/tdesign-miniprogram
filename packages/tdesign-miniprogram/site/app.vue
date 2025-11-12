@@ -1,7 +1,10 @@
 <template>
   <td-doc-layout>
     <td-header ref="tdHeader" slot="header">
-      <td-doc-search slot="search" ref="tdDocSearch"></td-doc-search>
+      <div slot="search" style="display: flex; align-items: center">
+        <td-ai-button style="margin-right: 8px" framework="miniprogram" :demoRequestBody="demoRequestBody" />
+        <td-doc-search ref="tdDocSearch" />
+      </div>
     </td-header>
     <td-doc-aside ref="tdDocAside" title="WeChat MiniProgram"></td-doc-aside>
 
@@ -41,11 +44,16 @@ const docsMap = {
   en: sortDocs(enDocs),
 };
 
+const demoRequestBody = JSON.stringify({
+  files: {},
+});
+
 export default defineComponent({
   data() {
     return {
       docType: '',
       loaded: false,
+      demoRequestBody,
     };
   },
 
@@ -93,3 +101,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style lang="less">
+#webchat-sdk-iframe {
+  z-index: 99999;
+}
+</style>
