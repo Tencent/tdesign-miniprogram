@@ -1,7 +1,7 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view id="{{classPrefix}}-wrapper" class="{{classPrefix}}__wrapper {{prefix}}-class-trigger" catch:tap="onToggle">
-  <slot />
+<view id="{{classPrefix}}-wrapper" class="{{classPrefix}}__wrapper">
+  <slot catch:tap="onToggle" />
 </view>
 
 <!-- 透明遮罩用于外部点击关闭 -->
@@ -26,6 +26,7 @@
 >
   <view class="{{classPrefix}}__content {{classPrefix}}--{{theme}} ">
     <slot name="content" />
+    <view>{{content}}</view>
     <!-- 箭头 -->
     <view wx:if="{{showArrow}}" class="{{classPrefix}}__arrow"></view>
   </view>

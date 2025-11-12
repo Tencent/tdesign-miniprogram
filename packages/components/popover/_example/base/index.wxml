@@ -1,0 +1,62 @@
+<view class="row">
+  <view class="demo-block__header-desc">带箭头的弹出气泡</view>
+  <t-popover
+    placement="top"
+    theme="dark"
+    bind:visible-change="onVisibleChange"
+    data-target="normal"
+    visible="{{visible.normal}}"
+    closeOnClickOutside="{{false}}"
+  >
+    <view slot="content">弹出气泡内容</view>
+    <view class="popover-example__content">
+      <t-button
+        style="display: flex"
+        theme="primary"
+        variant="outline"
+        size="large"
+        data-target="normal"
+        bind:tap="showPopover"
+      >
+        带箭头
+      </t-button></view
+    >
+  </t-popover>
+
+  <view class="demo-block__header-desc">不带箭头的弹出气泡</view>
+  <t-popover
+    placement="top"
+    theme="dark"
+    content="弹出气泡内容"
+    showArrow="{{false}}"
+    data-target="noArrow"
+    visible="{{visible.noArrow}}"
+  >
+    <view class="popover-example__content">
+      <t-button
+        theme="primary"
+        style="display: flex"
+        variant="outline"
+        size="large"
+        data-target="noArrow"
+        bind:tap="showPopover"
+        >不带箭头</t-button
+      ></view
+    >
+  </t-popover>
+
+  <view class="demo-block__header-desc">自定义内容弹出气泡</view>
+  <t-popover style="display: flex" placement="top" theme="dark" data-target="custom" visible="{{visible.custom}}">
+    <view slot="content">
+      <view class="custom__list">
+        <view wx:for="{{3}}" wx:key="index" class="custom__item">选项{{ index + 1 }}</view>
+      </view>
+    </view>
+
+    <view class="popover-example__content">
+      <t-button theme="primary" variant="outline" size="large" data-target="custom" bind:tap="showPopover"
+        >自定义内容</t-button
+      ></view
+    >
+  </t-popover>
+</view>
