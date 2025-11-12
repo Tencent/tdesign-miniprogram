@@ -6,6 +6,11 @@
 
 import { TdCalendarProps } from './type';
 const props: TdCalendarProps = {
+  /** 是否允许区间选择日历的起止时间相同，仅当 `type='range'` 时有效 */
+  allowSameDay: {
+    type: Boolean,
+    value: false,
+  },
   /** 自动关闭；在点击关闭按钮、确认按钮、遮罩层时自动关闭，不需要手动设置 visible */
   autoClose: {
     type: Boolean,

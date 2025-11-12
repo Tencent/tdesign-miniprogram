@@ -86,6 +86,10 @@ export default class Calendar extends SuperComponent {
       this.base.type = v;
     },
 
+    allowSameDay(v) {
+      this.base.allowSameDay = v;
+    },
+
     confirmBtn(v) {
       if (typeof v === 'string') {
         this.setData({ innerConfirmBtn: v === 'slot' ? 'slot' : { content: v } });
