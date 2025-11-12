@@ -16,7 +16,7 @@ const INERTIA_DISTANCE = 15;
 // 虚拟滚动配置
 const VIRTUAL_SCROLL_CONFIG = {
   ENABLE_THRESHOLD: 100, // 超过100个选项启用虚拟滚动
-  VISIBLE_COUNT: 5, // 可见区域显示5个选项
+  // VISIBLE_COUNT: 5, // 可见区域显示5个选项，使用 visibleItemCount 属性代替
   BUFFER_COUNT: 8, // 上下各缓冲8个选项（增加缓冲区，防止快速滑动时空白）
   THROTTLE_TIME: 16, // 节流时间（60fps，提高更新频率）
   FAST_SCROLL_BUFFER: 12, // 快速滑动时的额外缓冲区
@@ -86,6 +86,11 @@ export default class PickerItem extends SuperComponent {
     virtualStartIndex: 0, // 虚拟滚动起始索引
     virtualOffsetY: 0, // 虚拟滚动偏移量
     totalHeight: 0, // 总高度（用于占位）
+
+    // 动态属性（由父组件传递）
+    itemHeight: 40, // 单个选项高度
+    visibleItemCount: 5, // 可视区域内的选项个数
+    wrapperPaddingY: 72, // wrapper的上下padding
   };
 
   lifetimes = {
@@ -115,11 +120,11 @@ export default class PickerItem extends SuperComponent {
   methods = {
     onClickItem(event: WechatMiniprogram.TouchEvent) {
       const { index: clickIndex } = event.currentTarget.dataset;
-      const { pickItemHeight } = this.data;
+      const { itemHeight } = this.data;
       const index = range(clickIndex, 0, this.getCount() - 1);
 
       if (index !== this._selectedIndex) {
-        this.setData({ offset: -index * pickItemHeight, curIndex: index, duration: 200 });
+        this.setData({ offset: -index * itemHeight, curIndex: index, duration: 200 });
       }
 
       this.updateSelected(index, true);
@@ -136,12 +141,12 @@ export default class PickerItem extends SuperComponent {
 
     onTouchMove(event) {
       const { StartY, StartOffset } = this;
-      const { pickItemHeight, enableVirtualScroll } = this.data;
+      const { itemHeight, enableVirtualScroll } = this.data;
       const currentTime = Date.now();
 
       // 偏移增量
       const deltaY = event.touches[0].clientY - StartY;
-      const newOffset = range(StartOffset + deltaY, -(this.getCount() * pickItemHeight), 0);
+      const newOffset = range(StartOffset + deltaY, -(this.getCount() * itemHeight), 0);
 
       // 计算滑动速度和方向
       const offsetDelta = newOffset - this._lastOffset;
@@ -190,7 +195,7 @@ export default class PickerItem extends SuperComponent {
         this._moveTimer = null;
       }
 
-      const { offset, pickItemHeight } = this.data;
+      const { offset, itemHeight } = this.data;
       const { startTime } = this;
       if (offset === this.StartOffset) {
         return;
@@ -205,15 +210,15 @@ export default class PickerItem extends SuperComponent {
       }
 
       // 调整偏移量
-      const newOffset = range(offset + distance, -this.getCount() * pickItemHeight, 0);
-      const index = range(Math.round(-newOffset / pickItemHeight), 0, this.getCount() - 1);
+      const newOffset = range(offset + distance, -this.getCount() * itemHeight, 0);
+      const index = range(Math.round(-newOffset / itemHeight), 0, this.getCount() - 1);
 
       // 判断是否为快速惯性滚动
-      const isFastInertia = Math.abs(distance) > pickItemHeight * 3;
+      const isFastInertia = Math.abs(distance) > itemHeight * 3;
 
       // 立即更新虚拟滚动视图（修复惯性滚动后空白问题，快速滚动时使用更大缓冲区）
       if (this.data.enableVirtualScroll) {
-        this.updateVisibleOptions(-index * pickItemHeight, isFastInertia);
+        this.updateVisibleOptions(-index * itemHeight, isFastInertia);
       }
 
       // 清除之前的动画更新定时器
@@ -225,7 +230,7 @@ export default class PickerItem extends SuperComponent {
       // 在动画执行期间定期更新虚拟滚动视图（确保动画过程流畅）
       if (this.data.enableVirtualScroll && Math.abs(distance) > 0) {
         const startOffset = offset;
-        const endOffset = -index * pickItemHeight;
+        const endOffset = -index * itemHeight;
         const startTime = Date.now();
 
         this._animationTimer = setInterval(() => {
@@ -248,7 +253,7 @@ export default class PickerItem extends SuperComponent {
 
       this.setData(
         {
-          offset: -index * pickItemHeight,
+          offset: -index * itemHeight,
           duration: ANIMATION_DURATION,
           curIndex: index,
         },
@@ -260,7 +265,7 @@ export default class PickerItem extends SuperComponent {
           }
           if (this.data.enableVirtualScroll) {
             // 动画结束后使用正常缓冲区（不再是快速滚动状态）
-            this.updateVisibleOptions(-index * pickItemHeight, false);
+            this.updateVisibleOptions(-index * itemHeight, false);
           }
         },
       );
@@ -293,7 +298,7 @@ export default class PickerItem extends SuperComponent {
 
     // 刷新选中状态
     update() {
-      const { options, value, pickerKeys, pickItemHeight, format, columnIndex } = this.data;
+      const { options, value, pickerKeys, format, columnIndex, itemHeight, visibleItemCount } = this.data;
 
       const formatOptions = this.formatOption(options, columnIndex, format);
       const optionsCount = formatOptions.length;
@@ -312,20 +317,24 @@ export default class PickerItem extends SuperComponent {
       }
       const selectedIndex = index > 0 ? index : 0;
 
+      // 计算wrapper的padding，确保选中项居中显示
+      const wrapperPaddingY = ((visibleItemCount - 1) / 2) * itemHeight;
+
       const updateData: any = {
         formatOptions,
-        offset: -selectedIndex * pickItemHeight,
+        offset: -selectedIndex * itemHeight,
         curIndex: selectedIndex,
         enableVirtualScroll,
-        totalHeight: optionsCount * pickItemHeight,
+        totalHeight: optionsCount * itemHeight,
+        wrapperPaddingY,
       };
 
       // 如果启用虚拟滚动，计算可见选项
       if (enableVirtualScroll) {
-        const visibleRange = this.computeVirtualRange(-selectedIndex * pickItemHeight, optionsCount, pickItemHeight);
+        const visibleRange = this.computeVirtualRange(-selectedIndex * itemHeight, optionsCount, itemHeight);
         updateData.visibleOptions = formatOptions.slice(visibleRange.startIndex, visibleRange.endIndex);
         updateData.virtualStartIndex = visibleRange.startIndex;
-        updateData.virtualOffsetY = visibleRange.startIndex * pickItemHeight;
+        updateData.virtualOffsetY = visibleRange.startIndex * itemHeight;
       } else {
         // 不启用虚拟滚动时，visibleOptions 等于 formatOptions
         updateData.visibleOptions = formatOptions;
@@ -347,7 +356,8 @@ export default class PickerItem extends SuperComponent {
      */
     computeVirtualRange(offset: number, totalCount: number, itemHeight: number, isFastScroll = false) {
       const scrollTop = Math.abs(offset);
-      const { VISIBLE_COUNT, BUFFER_COUNT, FAST_SCROLL_BUFFER } = VIRTUAL_SCROLL_CONFIG;
+      const { BUFFER_COUNT, FAST_SCROLL_BUFFER } = VIRTUAL_SCROLL_CONFIG;
+      const { visibleItemCount } = this.data;
 
       // 根据滑动速度动态调整缓冲区大小
       const dynamicBuffer = isFastScroll ? FAST_SCROLL_BUFFER : BUFFER_COUNT;
@@ -364,7 +374,7 @@ export default class PickerItem extends SuperComponent {
       // 计算起始索引（减去顶部缓冲区）
       const startIndex = Math.max(0, centerIndex - topBuffer);
       // 计算结束索引（加上可见数量和底部缓冲区）
-      const endIndex = Math.min(totalCount, centerIndex + VISIBLE_COUNT + bottomBuffer);
+      const endIndex = Math.min(totalCount, centerIndex + visibleItemCount + bottomBuffer);
 
       return { startIndex, endIndex };
     },
@@ -375,12 +385,12 @@ export default class PickerItem extends SuperComponent {
      * @param isFastScroll 是否为快速滑动
      */
     updateVisibleOptions(offset?: number, isFastScroll = false) {
-      const { formatOptions, pickItemHeight, enableVirtualScroll } = this.data;
+      const { formatOptions, itemHeight, enableVirtualScroll } = this.data;
 
       if (!enableVirtualScroll) return;
 
       const currentOffset = offset !== undefined ? offset : this.data.offset;
-      const visibleRange = this.computeVirtualRange(currentOffset, formatOptions.length, pickItemHeight, isFastScroll);
+      const visibleRange = this.computeVirtualRange(currentOffset, formatOptions.length, itemHeight, isFastScroll);
 
       // 只有当可见范围发生变化时才更新
       if (
@@ -390,7 +400,7 @@ export default class PickerItem extends SuperComponent {
         this.setData({
           visibleOptions: formatOptions.slice(visibleRange.startIndex, visibleRange.endIndex),
           virtualStartIndex: visibleRange.startIndex,
-          virtualOffsetY: visibleRange.startIndex * pickItemHeight,
+          virtualOffsetY: visibleRange.startIndex * itemHeight,
         });
       }
     },
@@ -400,8 +410,8 @@ export default class PickerItem extends SuperComponent {
     },
 
     getCurrentSelected() {
-      const { offset, pickItemHeight, formatOptions, pickerKeys } = this.data;
-      const currentIndex = Math.max(0, Math.min(Math.round(-offset / pickItemHeight), this.getCount() - 1));
+      const { offset, itemHeight, formatOptions, pickerKeys } = this.data;
+      const currentIndex = Math.max(0, Math.min(Math.round(-offset / itemHeight), this.getCount() - 1));
 
       return {
         index: currentIndex,

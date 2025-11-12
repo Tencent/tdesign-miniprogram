@@ -41,8 +41,8 @@ export interface TdPickerProps {
     value?: boolean;
   };
   /**
-   * PickerItem 的子项高度，单位 rpx
-   * @default 80
+   * PickerItem 的子项高度，单位 `px`
+   * @default 40
    */
   itemHeight?: {
     type: NumberConstructor;
@@ -108,6 +108,14 @@ export interface TdPickerProps {
   visible?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 可视区域 PickerItem 的子项个数
+   * @default 5
+   */
+  visibleItemCount?: {
+    type: NumberConstructor;
+    value?: number;
   };
 }
 
