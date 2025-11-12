@@ -30,7 +30,7 @@ npm i tdesign-miniprogram -S --production
 
 > 构建成功后勾选 `将 JS 编译成 ES5`
 > <br/>
-><img width="200" src="https://tdesign.gtimg.com/miniprogram/docs/getting-started.png" />
+> <img width="200" src="https://tdesign.gtimg.com/miniprogram/docs/getting-started.png" />
 
 
 ## 修改 app.json
