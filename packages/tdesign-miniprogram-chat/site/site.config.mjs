@@ -13,14 +13,6 @@ export const docs = [
         component: () => import('@docs/getting-started.md'),
       },
       {
-        title: '更新日志',
-        titleEn: 'CHANGELOG',
-        name: 'changelog',
-        meta: { docType: 'explain' },
-        path: '/miniprogram-chat/changelog',
-        component: () => import('@tdesign-miniprogram-chat/CHANGELOG.md'),
-      },
-      {
         title: '什么是流式输出',
         name: 'sse',
         path: '/miniprogram-chat/sse',

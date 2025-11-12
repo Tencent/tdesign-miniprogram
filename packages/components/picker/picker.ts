@@ -1,5 +1,4 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
-import { rpx2px } from '../common/utils';
 import config from '../common/config';
 import props from './props';
 import useCustomNavbar from '../mixins/using-custom-navbar';
@@ -29,16 +28,15 @@ export default class Picker extends SuperComponent {
   };
 
   observers = {
-    'value, visible'() {
-      this.updateChildren();
+    'value, visible'(value, visible) {
+      // 只在打开弹窗或value变化时更新，关闭时不更新避免滚动
+      if (visible) {
+        this.updateChildren();
+        this.updateIndicatorPosition();
+      }
     },
-  };
-
-  lifetimes = {
-    attached() {
-      this.setData({
-        pickItemHeight: rpx2px(this.properties.itemHeight),
-      });
+    'itemHeight, visibleItemCount'() {
+      this.updateIndicatorPosition();
     },
   };
 
@@ -47,19 +45,19 @@ export default class Picker extends SuperComponent {
     classPrefix: name,
     defaultPopUpProps: {},
     defaultPopUpzIndex: 11500,
-    pickItemHeight: 0,
+    indicatorTop: 72, // 默认indicator位置，会动态计算
   };
 
   methods = {
     updateChildren() {
-      const { pickItemHeight } = this.data;
-      const { value, defaultValue } = this.properties;
+      const { value, defaultValue, itemHeight, visibleItemCount } = this.properties;
 
       this.$children.forEach((child, index) => {
         child.setData({
           value: value?.[index] ?? defaultValue?.[index] ?? '',
           columnIndex: index,
-          pickItemHeight,
+          itemHeight,
+          visibleItemCount,
         });
         child.update();
       });
@@ -82,8 +80,21 @@ export default class Picker extends SuperComponent {
     },
 
     onConfirm() {
-      const [value, label] = this.getSelectedValue();
-      const columns = this.getColumnIndexes();
+      // 获取当前实际显示的选中值
+      const value = [];
+      const label = [];
+      const columns = [];
+
+      this.$children.forEach((child, columnIndex) => {
+        const current = child.getCurrentSelected();
+
+        value.push(current.value);
+        label.push(current.label);
+        columns.push({
+          column: columnIndex,
+          index: current.index,
+        });
+      });
 
       this.close('confirm-btn');
       this.triggerEvent('confirm', { value, label, columns });
@@ -115,9 +126,16 @@ export default class Picker extends SuperComponent {
       }
       this.triggerEvent('close', { trigger });
     },
+
+    updateIndicatorPosition() {
+      const { itemHeight, visibleItemCount } = this.properties;
+      const indicatorTop = ((visibleItemCount - 1) / 2) * itemHeight;
+      this.setData({ indicatorTop });
+    },
   };
 
   ready() {
     this.$children.map((column, index) => (column.columnIndex = index));
+    this.updateIndicatorPosition();
   }
 }
