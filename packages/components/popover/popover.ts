@@ -73,23 +73,11 @@ export default class Popover extends SuperComponent {
       }
     },
 
-    // getPopperPlacement = (placement: TdPopoverProps['placement']): Placement => {
-    //   return placement?.replace(/-(left|top)$/, '-start').replace(/-(right|bottom)$/, '-end') as Placement;
-    // },
+    onWrapperTap() {
+      const curr = !!this.data.visible;
+      this.updateVisible(!curr);
+    },
 
-    // getPopoverOptions = () => ({
-    //   placement: getPopperPlacement(props.placement),
-    //   modifiers: [
-    //     {
-    //       name: 'arrow',
-    //       options: {
-    //         padding: placementPadding,
-    //       },
-    //     },
-    //   ],
-    // }),
-
-    // 计算箭头偏移的样式：仅作用于箭头元素，不修改内容 padding
     calcArrowStyle(placement: string, contentDom: any, popoverDom: any) {
       const horizontal = ['top', 'bottom'];
       const vertical = ['left', 'right'];
@@ -124,7 +112,6 @@ export default class Popover extends SuperComponent {
     },
 
     async computePosition() {
-      // 计算触发元素和内容尺寸，设置 contentStyle
       const { placement } = this.data;
       const _placement = placement.replace(/-(left|top)$/, '-start').replace(/-(right|bottom)$/, '-end');
       this.setData({ _placement });
@@ -137,49 +124,49 @@ export default class Popover extends SuperComponent {
         const [triggerRect, contentRect, viewportOffset] = res;
         if (!triggerRect || !contentRect) return;
 
-        // 间距 8rpx => px
         const offset = unitConvert(8);
         let top = 0;
         let left = 0;
 
-        const base = placement.split('-')[0];
-        const second = placement.split('-')[1];
+        const isTopBase = _placement.startsWith('top');
+        const isBottomBase = _placement.startsWith('bottom');
+        const isLeftBase = _placement.startsWith('left');
+        const isRightBase = _placement.startsWith('right');
 
-        switch (base) {
-          case 'top':
-            top = triggerRect.top - contentRect.height - offset;
-            break;
-          case 'bottom':
-            top = triggerRect.top + triggerRect.height + offset;
-            break;
-          case 'left':
-            left = triggerRect.left - contentRect.width - offset;
-            break;
-          case 'right':
-            left = triggerRect.left + triggerRect.width + offset;
-            break;
-          default:
-            top = triggerRect.top - contentRect.height - offset;
+        if (isTopBase) {
+          top = triggerRect.top - contentRect.height - offset;
+        } else if (isBottomBase) {
+          top = triggerRect.top + triggerRect.height + offset;
+        } else if (isLeftBase) {
+          left = triggerRect.left - contentRect.width - offset;
+        } else if (isRightBase) {
+          left = triggerRect.left + triggerRect.width + offset;
+        } else {
+          top = triggerRect.top - contentRect.height - offset;
         }
+
+        const isStart = _placement.includes('start');
+        const isEnd = _placement.includes('end');
 
         // 垂直方向的水平居中/偏移
-        if (['top', 'bottom'].includes(base)) {
-          if (!second) {
-            left = triggerRect.left + triggerRect.width / 2 - contentRect.width / 2;
-          } else if (second === 'left') {
+        if (isTopBase || isBottomBase) {
+          if (isStart) {
             left = triggerRect.left;
-          } else if (second === 'right') {
+          } else if (isEnd) {
             left = triggerRect.left + triggerRect.width - contentRect.width;
+          } else {
+            left = triggerRect.left + triggerRect.width / 2 - contentRect.width / 2;
           }
         }
+
         // 水平方向的垂直居中/偏移
-        if (['left', 'right'].includes(base)) {
-          if (!second) {
-            top = triggerRect.top + triggerRect.height / 2 - contentRect.height / 2;
-          } else if (second === 'top') {
+        if (isLeftBase || isRightBase) {
+          if (isStart) {
             top = triggerRect.top;
-          } else if (second === 'bottom') {
+          } else if (isEnd) {
             top = triggerRect.top + triggerRect.height - contentRect.height;
+          } else {
+            top = triggerRect.top + triggerRect.height / 2 - contentRect.height / 2;
           }
         }
 

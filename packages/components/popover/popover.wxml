@@ -1,6 +1,4 @@
-<wxs src="../common/utils.wxs" module="_" />
-
-<view id="{{classPrefix}}-wrapper" class="{{classPrefix}}__wrapper">
+<view id="{{classPrefix}}-wrapper" class="{{classPrefix}}__wrapper" bind:tap="onWrapperTap">
   <slot />
 </view>
 
@@ -17,12 +15,11 @@
 <view
   wx:if="{{realVisible}}"
   id="{{classPrefix}}-content"
-  style="{{contentStyle}}"
-  class="{{classPrefix}} {{transitionClass}}"
+  style="{{contentStyle}} {{customStyle}}"
+  class="{{classPrefix}} {{transitionClass}} {{prefix}}-class"
   data-placement="{{_placement}}"
-  bind:transitionend="onTransitionEnd"
 >
-  <view class="{{classPrefix}}__content {{classPrefix}}--{{theme}} ">
+  <view class="{{classPrefix}}__content {{classPrefix}}--{{theme}} {{prefix}}-class-content">
     <slot name="content" />
     <view wx:if="{{content}}">{{content}}</view>
 

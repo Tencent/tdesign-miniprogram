@@ -16,7 +16,7 @@
     </view>
   </t-popover>
 
-  <view class="demo-block__header-desc">不带箭头的弹出气泡</view>
+  <view class="demo-block__header-desc" style="margin-top: 32rpx">不带箭头的弹出气泡</view>
   <t-popover
     placement="top"
     theme="dark"
@@ -32,7 +32,7 @@
     </view>
   </t-popover>
 
-  <view class="demo-block__header-desc">自定义内容弹出气泡</view>
+  <view class="demo-block__header-desc" style="margin-top: 32rpx">自定义内容弹出气泡</view>
   <t-popover placement="top" theme="dark" data-target="custom" visible="{{visible.custom}}">
     <view slot="content">
       <view class="custom__list">
