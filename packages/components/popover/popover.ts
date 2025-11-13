@@ -29,9 +29,7 @@ export default class Popover extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-    placement: 'top',
     _placement: 'top',
-    theme: 'dark',
     contentStyle: '',
     arrowStyle: '',
   };
@@ -61,7 +59,7 @@ export default class Popover extends SuperComponent {
 
   methods = {
     updateVisible(visible: boolean) {
-      if (visible === this.data.visible) return;
+      if (visible === this.data.realVisible) return;
       this.setData({ visible }, () => {
         this.triggerEvent('visible-change', { visible });
       });

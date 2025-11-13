@@ -22,6 +22,7 @@
     theme="dark"
     content="弹出气泡内容"
     showArrow="{{false}}"
+    bind:visible-change="onVisibleChange"
     data-target="noArrow"
     visible="{{visible.noArrow}}"
   >
@@ -33,7 +34,13 @@
   </t-popover>
 
   <view class="demo-block__header-desc" style="margin-top: 32rpx">自定义内容弹出气泡</view>
-  <t-popover placement="top" theme="dark" data-target="custom" visible="{{visible.custom}}">
+  <t-popover
+    placement="top"
+    theme="dark"
+    bind:visible-change="onVisibleChange"
+    data-target="custom"
+    visible="{{visible.custom}}"
+  >
     <view slot="content">
       <view class="custom__list">
         <view wx:for="{{3}}" wx:key="index" class="custom__item">选项{{ index + 1 }}</view>

@@ -52,6 +52,7 @@ exports[`Popover Popover base demo works fine 1`] = `
       showArrow="{{false}}"
       theme="dark"
       visible="{{false}}"
+      bind:visible-change="onVisibleChange"
     >
       <wx-view
         class="popover-example__content"
@@ -80,6 +81,7 @@ exports[`Popover Popover base demo works fine 1`] = `
       placement="top"
       theme="dark"
       visible="{{false}}"
+      bind:visible-change="onVisibleChange"
     >
       <wx-view
         slot="content"
