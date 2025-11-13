@@ -1,3 +1,4 @@
+import { getWindowInfo } from 'tdesign-miniprogram/common/wechat';
 import { TdPopoverProps } from './type';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
@@ -29,15 +30,16 @@ export default class Popover extends SuperComponent {
     prefix,
     classPrefix: name,
     placement: 'top',
+    _placement: 'top',
     theme: 'dark',
     contentStyle: '',
-    _triggerRect: null as WechatMiniprogram.BoundingClientRectCallbackResult | null,
+    arrowStyle: '',
   };
 
   observers = {
-    visible(v: boolean) {
-      if (v === undefined || v === null) return;
-      this.updateVisible(v, 'prop');
+    visible(val: boolean) {
+      if (val === undefined || val === null) return;
+      this.updateVisible(val);
     },
     placement() {
       if (this.data.realVisible) this.computePosition();
@@ -52,44 +54,91 @@ export default class Popover extends SuperComponent {
   lifetimes = {
     attached() {
       if (this.properties.defaultVisible) {
-        this.updateVisible(true, 'default');
+        this.updateVisible(true);
       }
     },
   };
 
   methods = {
-    updateVisible(visible: boolean, trigger: string) {
+    updateVisible(visible: boolean) {
       if (visible === this.data.visible) return;
       this.setData({ visible }, () => {
-        this.triggerEvent('visible-change', { visible, trigger });
+        this.triggerEvent('visible-change', { visible });
       });
-    },
-
-    onToggle() {
-      const { realVisible } = this.data;
-      this.updateVisible(!realVisible, 'trigger');
     },
 
     onOverlayTap() {
       if (this.properties.closeOnClickOutside) {
-        this.updateVisible(false, 'overlay');
+        this.updateVisible(false);
       }
+    },
+
+    // getPopperPlacement = (placement: TdPopoverProps['placement']): Placement => {
+    //   return placement?.replace(/-(left|top)$/, '-start').replace(/-(right|bottom)$/, '-end') as Placement;
+    // },
+
+    // getPopoverOptions = () => ({
+    //   placement: getPopperPlacement(props.placement),
+    //   modifiers: [
+    //     {
+    //       name: 'arrow',
+    //       options: {
+    //         padding: placementPadding,
+    //       },
+    //     },
+    //   ],
+    // }),
+
+    // 计算箭头偏移的样式：仅作用于箭头元素，不修改内容 padding
+    calcArrowStyle(placement: string, contentDom: any, popoverDom: any) {
+      const horizontal = ['top', 'bottom'];
+      const vertical = ['left', 'right'];
+      const isBase = [...horizontal, ...vertical].find((item) => item === placement);
+      if (isBase) {
+        return '';
+      }
+
+      const { width, left } = contentDom;
+      const { width: popperWidth, height: popperHeight } = popoverDom;
+      const { windowWidth } = getWindowInfo();
+
+      const isHorizontal = horizontal.find((item) => placement.includes(item));
+      const isVertical = vertical.find((item) => placement.includes(item));
+      const isEnd = placement.includes('end');
+
+      if (isHorizontal) {
+        const padding = isEnd ? Math.min(width + left, popperWidth) : Math.min(windowWidth - left, popperWidth);
+        if (isEnd) {
+          return `left:${padding - 22}px;`;
+        }
+        return `right:${padding - 22}px;`;
+      }
+      if (isVertical) {
+        const offset = popperHeight - 22;
+        if (isEnd) {
+          return `top:${offset}px;`;
+        }
+        return `bottom:${offset}px;top:unset;`;
+      }
+      return '';
     },
 
     async computePosition() {
       // 计算触发元素和内容尺寸，设置 contentStyle
-      // 简化：仅处理四个基础方向 top/right/bottom/left 以及带 start/end 的 12 种。
       const { placement } = this.data;
+      const _placement = placement.replace(/-(left|top)$/, '-start').replace(/-(right|bottom)$/, '-end');
+      this.setData({ _placement });
       const query = this.createSelectorQuery();
       query.select(`#${name}-wrapper`).boundingClientRect();
       query.select(`#${name}-content`).boundingClientRect();
+
+      query.selectViewport().scrollOffset();
       query.exec((res) => {
-        const [triggerRect, contentRect] = res as [
-          WechatMiniprogram.BoundingClientRectCallbackResult,
-          WechatMiniprogram.BoundingClientRectCallbackResult,
-        ];
+        const [triggerRect, contentRect, viewportOffset] = res;
         if (!triggerRect || !contentRect) return;
-        const offset = unitConvert(8); // 间距 8rpx => px
+
+        // 间距 8rpx => px
+        const offset = unitConvert(8);
         let top = 0;
         let left = 0;
 
@@ -134,8 +183,13 @@ export default class Popover extends SuperComponent {
           }
         }
 
+        const { scrollTop = 0, scrollLeft = 0 } = viewportOffset;
+        top += scrollTop;
+        left += scrollLeft;
+
         const style = `top:${Math.max(top, 0)}px;left:${Math.max(left, 0)}px;`;
-        this.setData({ contentStyle: style, _triggerRect: triggerRect });
+        const arrowStyle = this.calcArrowStyle(_placement, triggerRect, contentRect);
+        this.setData({ contentStyle: style, arrowStyle });
       });
     },
   };

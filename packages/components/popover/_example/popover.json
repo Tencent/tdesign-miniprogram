@@ -2,6 +2,8 @@
   "navigationBarTitleText": "Popover",
   "navigationBarBackgroundColor": "#fff",
   "usingComponents": {
-    "base": "./base"
+    "base": "./base",
+    "theme": "./theme",
+    "placement": "./placement"
   }
 }

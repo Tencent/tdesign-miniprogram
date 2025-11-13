@@ -4,4 +4,10 @@
   <t-demo title="01 组件类型" padding>
     <base />
   </t-demo>
+  <t-demo title="02 组件样式">
+    <theme />
+  </t-demo>
+  <t-demo>
+    <placement />
+  </t-demo>
 </view>
