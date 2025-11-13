@@ -29,7 +29,7 @@
     "prismjs": "^1.24.1",
     "tdesign-icons-view": "^0.4.0",
     "tdesign-theme-generator": "^1.1.8",
-    "vite": "^6.2.3",
+    "vite": "^7.2.2",
     "vite-plugin-tdoc": "^2.0.1"
   }
 }
