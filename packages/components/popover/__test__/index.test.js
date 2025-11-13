@@ -16,10 +16,12 @@ describe('popover', () => {
     if (!VIRTUAL_HOST) {
       // 初始不可见
       expect(comp.querySelector('#p >>> .t-popover__content')).toBeUndefined();
+
       // 点击触发
       const $trigger = comp.querySelector('#p >>> .t-popover__wrapper');
       $trigger.dispatchEvent('tap');
       await simulate.sleep(0);
+
       expect(comp.querySelector('#p >>> .t-popover__content')).toBeTruthy();
     }
   });
