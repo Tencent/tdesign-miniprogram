@@ -1,4 +1,0 @@
-<view class="button-example">
-  <t-chat-message message="{{userMessage}}" variant="base"></t-chat-message>
-  <t-chat-message message="{{userMessage}}" variant="outline"></t-chat-message>
-</view>

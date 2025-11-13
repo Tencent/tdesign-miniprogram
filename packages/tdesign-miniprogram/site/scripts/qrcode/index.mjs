@@ -64,7 +64,6 @@ const getUnlimitedQRCodeImage = (appid, appSecret) => {
       console.log('access_token 2h内有效：', token);
       const baseParameter = {
         width: 280, // 小程序码大小
-        // check_path: false,
       };
       const baseConfig = {
         responseType: 'arraybuffer',

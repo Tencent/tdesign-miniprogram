@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "chat-content": "../chat-content/chat-content",
-    "chat-thinking": "../chat-thinking/chat-thinking",
-    "chat-loading": "../chat-loading/chat-loading"
-  },
-  "component": true
-}

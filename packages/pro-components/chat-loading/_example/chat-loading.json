@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "ChatLoading 聊天加载状态",
-  "usingComponents": {
-    "base": "./base",
-    "text": "./text",
-    "t-navbar": "tdesign-miniprogram/navbar/navbar"
-  }
-}

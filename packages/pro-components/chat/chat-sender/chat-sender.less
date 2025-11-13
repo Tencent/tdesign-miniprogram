@@ -1,0 +1,284 @@
+@import '../../../components/common/style/base.less';
+
+@chat-sender: ~'@{prefix}-chat-sender';
+
+@chat-sender-border-radius: 32rpx;
+@chat-sender-padding: 22rpx 0;
+@chat-sender-margin: 24rpx 24rpx 80rpx 24rpx;
+@chat-sender-border-width: 2rpx;
+@chat-sender-border-color: @component-border;
+@chat-sender-shadow: @shadow-3;
+@chat-sender-margin-bottom-transition: margin-bottom 0.3s ease;
+
+@chat-sender-header-padding-bottom: 16rpx;
+@chat-sender-attachments-padding: 0 24rpx;
+@chat-sender-attachments-gap: 20rpx;
+@chat-sender-attachments-item-size: 128rpx;
+@chat-sender-attachments-item-radius: 8rpx;
+
+@chat-sender-textarea-gap: 10rpx;
+@chat-sender-textarea-padding: 0 24rpx;
+@chat-sender-textarea-hook-padding-bottom: 16rpx;
+@chat-sender-textarea-hook-max-height: 280rpx;
+
+@chat-sender-input-max-height: 264rpx;
+@chat-sender-input-font-size: @font-size-m;
+@chat-sender-input-line-height: 48rpx;
+@chat-sender-input-color: @text-color-primary;
+@chat-sender-input-caret-color: @brand-color;
+@chat-sender-input-font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
+@chat-sender-input-letter-spacing: 5%;
+
+@chat-sender-placeholder-color: @text-color-disabled;
+@chat-sender-placeholder-transition: opacity 0.25s linear;
+
+@chat-sender-icon-size: 32rpx;
+@chat-sender-footer-z-index: 2;
+@chat-sender-send-btn-size: 64rpx;
+@chat-sender-send-btn-margin-left: 16rpx;
+@chat-sender-send-btn-bg-color: @brand-color;
+@chat-sender-send-btn-bg-color-disabled: @bg-color-secondarycomponent;
+@chat-sender-send-btn-text-color: @brand-color;
+@chat-sender-send-btn-text-color-disabled: @text-color-disabled;
+@chat-sender-send-btn-transition: all 0.3s ease;
+
+@chat-sender-upload-margin-top: -40rpx;
+@chat-sender-upload-margin-bottom: 24rpx;
+@chat-sender-upload-item-margin-right: 24rpx;
+@chat-sender-upload-item-icon-size: 96rpx;
+@chat-sender-upload-item-icon-radius: 12rpx;
+@chat-sender-upload-item-icon-bg: @bg-color-secondarycontainer;
+@chat-sender-upload-item-icon-margin-bottom: 16rpx;
+@chat-sender-upload-item-text-font-size: 28rpx;
+@chat-sender-upload-item-text-line-height: 44rpx;
+
+@chat-sender-btn-func-size: 58rpx;
+@chat-sender-btn-func-bg: @bg-color-container;
+@chat-sender-btn-func-border: 2rpx solid @component-border;
+@chat-sender-btn-func-disabled-bg: #c9ccd2;
+@chat-sender-btn-func-disabled-opacity: 0.24;
+
+@chat-sender-menu-top: -24rpx;
+@chat-sender-menu-padding: 0 24rpx;
+@chat-sender-menu-radius: 16rpx;
+@chat-sender-menu-bg: #ffffff;
+@chat-sender-menu-shadow: 0 16rpx 16rpx 0 rgba(0, 119, 254, 0.08);
+@chat-sender-menu-item-width: 172rpx;
+@chat-sender-menu-item-padding: 24rpx 8rpx;
+@chat-sender-menu-item-border: 1rpx solid #ebedf0;
+@chat-sender-menu-item-icon-margin-right: 24rpx;
+@chat-sender-menu-item-text-color: #535d6d;
+@chat-sender-menu-item-text-font-size: 28rpx;
+@chat-sender-menu-item-text-font-weight: 500;
+@chat-sender-menu-item-text-line-height: 36rpx;
+@chat-sender-menu-item-text-letter-spacing: 1rpx;
+
+@chat-sender-bg-color: var(--td-bg-color-specialcomponent, #fff);
+
+.@{chat-sender} {
+  position: relative;
+  border-radius: @chat-sender-border-radius;
+  padding: @chat-sender-padding;
+  border: @chat-sender-border-width solid @chat-sender-border-color;
+  box-sizing: border-box;
+  margin: @chat-sender-margin;
+  box-shadow: @chat-sender-shadow;
+  transition: @chat-sender-margin-bottom-transition;
+  background-color: @chat-sender-bg-color;
+
+  // 头部区域
+  &__header {
+    padding-bottom: @chat-sender-header-padding-bottom;
+    width: 100%;
+    overflow: hidden;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  // 附件区域
+  &__attachments {
+    padding: @chat-sender-attachments-padding;
+  }
+
+  // 文本输入区域
+  &__actions {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    // gap: @chat-sender-textarea-gap;
+    padding: @chat-sender-textarea-padding;
+  }
+
+  // 输入框容器
+  &__textarea {
+    position: relative;
+    flex: 1;
+    padding-bottom: @chat-sender-textarea-hook-padding-bottom;
+    max-height: @chat-sender-textarea-hook-max-height;
+
+    // 输入框
+    &--control {
+      max-height: @chat-sender-input-max-height;
+      display: block;
+      width: 100%;
+      color: @chat-sender-input-color;
+      font-size: @chat-sender-input-font-size;
+      line-height: @chat-sender-input-line-height;
+      word-break: break-word;
+      caret-color: @chat-sender-input-caret-color;
+      font-family: @chat-sender-input-font-family;
+      font-weight: 400;
+      letter-spacing: @chat-sender-input-letter-spacing;
+      padding-bottom: @chat-sender-textarea-hook-padding-bottom;
+    }
+
+    // 占位符
+    &--placeholder {
+      color: @chat-sender-placeholder-color;
+      font-size: @chat-sender-input-font-size;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transform: translateY(1%);
+      z-index: 1;
+      pointer-events: none;
+      opacity: 1;
+      transition: @chat-sender-placeholder-transition;
+
+      &.hide {
+        opacity: 0;
+      }
+    }
+  }
+
+  // 底部区域
+  &__footer {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    z-index: @chat-sender-footer-z-index;
+  }
+
+  // 上传区域
+  &__upload {
+    display: flex;
+    margin-top: @chat-sender-upload-margin-top;
+    margin-bottom: @chat-sender-upload-margin-bottom;
+    align-items: center;
+    justify-content: flex-start;
+    transition: @chat-sender-send-btn-transition;
+
+    // 上传项
+    &-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: @chat-sender-attachments-item-radius;
+      flex-shrink: 0;
+      // margin-right: @chat-sender-upload-item-margin-right;
+      flex-grow: 1;
+      color: @text-color-primary;
+
+      // 上传项图标
+      &__icon {
+        width: @chat-sender-upload-item-icon-size;
+        height: @chat-sender-upload-item-icon-size;
+        border-radius: @chat-sender-upload-item-icon-radius;
+        margin-bottom: @chat-sender-upload-item-icon-margin-bottom;
+        background-color: @chat-sender-upload-item-icon-bg;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      // 上传项文本
+      &__text {
+        font-size: @chat-sender-upload-item-text-font-size;
+        line-height: @chat-sender-upload-item-text-line-height;
+      }
+    }
+  }
+
+  // 按钮区域
+  &__sendbtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    // 发送按钮默认状态
+    &--default {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .plus-btn {
+        color: @text-color-primary;
+
+        .btn-icon {
+          display: block;
+        }
+
+        &.disabled {
+          pointer-events: none;
+          opacity: @chat-sender-btn-func-disabled-opacity;
+
+          .btn-func:after {
+            background: @chat-sender-btn-func-disabled-bg;
+          }
+        }
+      }
+
+      .send-btn-text {
+        color: @chat-sender-send-btn-text-color;
+
+        &.disabled {
+          color: @chat-sender-send-btn-text-color-disabled;
+        }
+      }
+
+      .send-btn-icon {
+        color: @bg-color-container;
+        width: @chat-sender-send-btn-size;
+        height: @chat-sender-send-btn-size;
+        margin-left: @chat-sender-send-btn-margin-left;
+        border-radius: 999rpx;
+        background-color: @chat-sender-send-btn-bg-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: rotate(-90deg);
+        transition: @chat-sender-send-btn-transition;
+
+        &.active {
+          color: @text-color-anti;
+        }
+
+        &.disabled {
+          background-color: @chat-sender-send-btn-bg-color-disabled;
+          color: @bg-color-container;
+        }
+
+        &.stop {
+          // 停止按钮样式
+        }
+      }
+    }
+  }
+
+  // 功能按钮
+  .btn-func {
+    width: @chat-sender-btn-func-size;
+    height: @chat-sender-btn-func-size;
+    position: relative;
+    z-index: @chat-sender-footer-z-index;
+    background-color: @chat-sender-btn-func-bg;
+    border-radius: 999rpx;
+    border: @chat-sender-btn-func-border;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

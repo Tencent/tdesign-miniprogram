@@ -1,5 +1,0 @@
-.demo-container {
-  padding: 32rpx;
-  background-color: #fff;
-  box-sizing: border-box;
-}

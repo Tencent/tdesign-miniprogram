@@ -1,0 +1,251 @@
+@import '../../../components/common/style/base.less';
+
+@chat-list: ~'@{prefix}-chat-list';
+@chat-content: ~'@{prefix}-chat-content';
+@chat-message: ~'@{prefix}-chat-message';
+@chat-thinking: ~'@{prefix}-chat-thinking';
+@attachments: ~'@{prefix}-attachments';
+
+@chat-message-content-padding: 24rpx 32rpx;
+@chat-message-height: 44rpx;
+
+// 反向列表样式
+.@{chat-list}__content--reverse {
+  .@{chat-message} {
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+  }
+}
+
+.@{attachments} + .@{chat-content}:not(:empty),
+.@{chat-thinking} + .@{chat-content}:not(:empty){
+  margin-top: 24rpx;
+}
+
+.@{chat-message} {
+  display: flex;
+  margin-bottom: @spacer-2;
+
+  // 头像样式
+  .@{chat-message}__avatar {
+    flex: 0 0 auto;
+    padding-top: 0rpx;
+  }
+
+  // 内容容器样式
+  .@{chat-message}__content {
+    flex: 1 1 auto;
+    width: 1%;
+  }
+
+  // 基础内容样式
+  .@{chat-message}__content--base {
+    padding-top: @spacer-3;
+  }
+
+  // 详情容器样式
+  .@{chat-message}__detail {
+    max-width: 100%;
+    box-sizing: border-box;
+    display: contents;
+  }
+
+  // 有头部时的样式
+  &__header {
+    .@{chat-message}__avatar {
+      padding-top: calc(@chat-message-height + @spacer);
+    }
+  }
+
+  // 用户消息样式
+  &.user {
+    .@{chat-message}__base {
+      padding-right: @spacer-2;
+    }
+
+    .@{chat-content} {
+      max-width: 90%;
+    }
+  }
+
+  // 助手消息样式
+  &.assistant {
+    .@{chat-message}__base {
+      padding-left: @spacer-2;
+    }
+  }
+
+  // 错误消息样式
+  &.error {
+    .@{chat-message}__base {
+      padding-left: @spacer-2;
+    }
+    .@{chat-message}__text--error {
+      color: @error-color-6;
+    }
+  }
+
+  // 左侧布局样式
+  &.left {
+    display: flex;
+    flex-direction: row;
+
+    .@{chat-message}__content {
+      align-items: flex-start;
+    }
+
+    .@{chat-message}__base {
+      padding-left: @spacer-2;
+    }
+  }
+
+  // 右侧布局样式
+  &.right {
+    display: flex;
+    flex-direction: row-reverse;
+
+    .@{chat-message}__content {
+      align-items: flex-end;
+    }
+
+    .@{chat-message}__base {
+      padding-right: @spacer-2;
+    }
+
+    .@{chat-message}__avatar {
+      margin-left: @spacer-1;
+      margin-right: 0;
+    }
+  }
+
+  // 头像样式
+  &__avatar {
+    flex-shrink: 0;
+    cursor: pointer;
+    display: flex;
+    margin-right: @spacer-1;
+    padding-top: calc(@chat-message-height + @spacer);
+
+    &-image {
+      width: @spacer-4;
+      height: @spacer-4;
+      border-radius: @radius-circle;
+    }
+  }
+
+  // 内容容器样式
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    font-size: @font-size-m;
+    line-height: 48rpx;
+    font-family: @font-family;
+
+    .t-skeleton {
+      width: 100%;
+      // padding: @spacer-2;
+    }
+  }
+
+  // 基础信息样式
+  &__base {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: @chat-message-height;
+    font-size: @font-size-base;
+    line-height: @chat-message-height;
+    font-family: @font-family;
+    color: @text-color-placeholder;
+    // padding-left: @spacer-2;
+    margin-bottom: @spacer;
+  }
+
+  // 名称样式
+  &__name {
+    padding-right: @spacer;
+    cursor: pointer;
+  }
+
+  // 气泡框样式：纯文本
+  &--text {
+    .@{chat-content} {
+      &__user,
+      &__assistant {
+        color: @text-color-secondary;
+      }
+    }
+  }
+
+  // 气泡框样式：基础
+  &--base {
+    .@{chat-content} {
+      padding: @chat-message-content-padding;
+      background-color: @bg-color-secondarycontainer;
+      border-radius: 0 @radius-extraLarge @radius-extraLarge @radius-extraLarge;
+    }
+
+    &.assistant .@{chat-content} {
+      border-radius: 0 @radius-extraLarge @radius-extraLarge @radius-extraLarge;
+      background-color: transparent;
+      padding: 0;
+    }
+
+    &.user .@{chat-content} {
+      border-radius: 0 @radius-extraLarge @radius-extraLarge @radius-extraLarge;
+    }
+
+    &.left .@{chat-content} {
+      border-radius: 0 @radius-extraLarge @radius-extraLarge @radius-extraLarge;
+    }
+
+    &.right .@{chat-content} {
+      border-radius: @radius-extraLarge 0 @radius-extraLarge @radius-extraLarge;
+    }
+  }
+
+  // 气泡框样式：线框
+  &--outline {
+    .@{chat-content} {
+      padding: @chat-message-content-padding;
+      border: 1rpx solid @component-border;
+      border-radius: 0 @radius-extraLarge @radius-extraLarge @radius-extraLarge;
+    }
+
+    &.assistant .@{chat-content} {
+      border-radius: 0 @radius-extraLarge @radius-extraLarge @radius-extraLarge;
+    }
+
+    &.user .@{chat-content} {
+      border-radius: 0 @radius-extraLarge @radius-extraLarge @radius-extraLarge;
+    }
+
+    &.left .@{chat-content} {
+      border-radius: 0 @radius-extraLarge @radius-extraLarge @radius-extraLarge;
+    }
+
+    &.right .@{chat-content} {
+      border-radius: @radius-extraLarge 0 @radius-extraLarge @radius-extraLarge;
+    }
+  }
+
+  &--base,
+  &--outline,
+  &--text {
+    &.right {
+      .@{attachments}__scrollable {
+        justify-content: flex-end;
+      }
+    }
+  }
+
+  &__actionbar {
+    --chat-actionbar-padding: @spacer-1 0 0 0;
+
+    &:empty {
+      display: none;
+    }
+  }
+}

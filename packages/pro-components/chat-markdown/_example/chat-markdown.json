@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "ChatMarkdown 聊天 Markdown 渲染器",
-  "usingComponents": {
-    "base": "./base",
-    "t-navbar": "tdesign-miniprogram/navbar/navbar"
-  }
-}

@@ -202,8 +202,8 @@ Component({
     },
 
     onRemove(e) {
-      const {index} = e.detail;
-      const {photo} = this.data.formData;
+      const { index } = e.detail;
+      const { photo } = this.data.formData;
       photo.splice(index, 1);
       this.setData({
         'formData.photo': photo,

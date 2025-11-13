@@ -1,8 +1,0 @@
-.demo-container {
-  padding: 32rpx;
-  box-sizing: border-box;
-}
-
-.loading-row {
-  margin-top: 32rpx;
-}
