@@ -19,10 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - uses: ./.github/actions/install-dep
         with:
-          node-version: ${{ matrix.node }}
-
-      - run: pnpm install
+          nodeVersion: ${{ matrix.node }}
 
       - run: pnpm run build
