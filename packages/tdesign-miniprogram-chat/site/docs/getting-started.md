@@ -56,7 +56,7 @@ npm i tdesign-miniprogram -S --production
 ```json
 {
   "usingComponents": {
-    "t-chat": "tdesign-miniprogram/chat/chat",
+    "t-chat": "tdesign-miniprogram/chat-list/chat-list",
     "t-chat-message": "tdesign-miniprogram/chat-message/chat-message",
     "t-chat-sender": "tdesign-miniprogram/chat-sender/chat-sender"
   }
