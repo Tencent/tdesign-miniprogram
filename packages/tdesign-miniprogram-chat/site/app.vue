@@ -3,7 +3,7 @@
     <td-header ref="tdHeader" slot="header">
       <td-doc-search slot="search" ref="tdDocSearch"></td-doc-search>
     </td-header>
-    <td-doc-aside ref="tdDocAside" title="WeChat MiniProgram"></td-doc-aside>
+    <td-doc-aside ref="tdDocAside" title="WeChat MiniProgram for AI"></td-doc-aside>
 
     <router-view :style="contentStyle" @loaded="contentLoaded" :docType="docType" />
   </td-doc-layout>

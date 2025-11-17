@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "styleIsolation": "shared",
+  "usingComponents": {
+    "chat-content": "tdesign-miniprogram/chat-content/chat-content",
+    "chat-thinking": "tdesign-miniprogram/chat-thinking/chat-thinking",
+    "chat-loading": "tdesign-miniprogram/chat-loading/chat-loading",
+    "attachments": "tdesign-miniprogram/attachments/attachments"
+  }
+}

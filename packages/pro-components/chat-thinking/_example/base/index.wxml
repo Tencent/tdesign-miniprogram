@@ -1,3 +1,0 @@
-<view class="demo-container">
-  <t-chat-thinking content="{{content}}" layout="block" animation="moving" bind:expandChange="handleExpandChange" />
-</view>

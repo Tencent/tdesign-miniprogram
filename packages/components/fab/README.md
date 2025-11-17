@@ -85,6 +85,12 @@ click | `(detail: {e: Event})` | 悬浮按钮点击事件
 drag-end | `(detail: { e: TouchEvent })` | 结束拖拽时触发
 drag-start | `(detail: { e: TouchEvent })` | 开始拖拽时触发
 
+### Fab Slots
+
+名称 | 描述
+-- | --
+\- | 默认插槽，按钮内容
+
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。

@@ -51,7 +51,7 @@ const generateConfigReplaceTask = (replaceConfig, options = {}) => {
 };
 
 const isProComponent = (dir) => {
-  return dir === 'packages/pro-components';
+  return dir === 'packages/pro-components/chat';
 };
 
 const isBaseComponent = (dir) => {
@@ -123,7 +123,7 @@ module.exports = (src, dist, moduleName) => {
   tasks.replacePaths = () => {
     return gulpIf(
       isProComponent(src),
-      replace(/(\.\.\/components\/|tdesign-miniprogram)/g, (match) => {
+      replace(/((?:\.\.\/){2}components\/|tdesign-miniprogram)/g, (match) => {
         return match.includes('components') ? '' : '..';
       }),
     );
@@ -166,6 +166,7 @@ module.exports = (src, dist, moduleName) => {
   tasks.wxml = () =>
     gulp
       .src(globs.wxml, { ...srcOptions, since: since(tasks.wxml) })
+      .pipe(tasks.replacePaths())
       .pipe(
         gulpIf(
           isComponent(src) && isProduction,
@@ -281,7 +282,7 @@ module.exports = (src, dist, moduleName) => {
               const relativePath = path
                 .relative(path.normalize(`${file.path}${path.sep}..`), baseCssPath)
                 .replace(/\\/g, '/')
-                .replace(/\.\.\/components\//g, '');
+                .replace(/(?:\.\.\/){2}components\//g, '');
               contents = `@import '${relativePath}';${contents}`;
             }
             return contents;

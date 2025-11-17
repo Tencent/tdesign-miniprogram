@@ -1,0 +1,35 @@
+@import '../../../components/common/style/base.less';
+
+@chat-list: ~'@{prefix}-chat-list';
+
+@chat-text-color: @text-color-primary;
+
+.@{chat-list} {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  color: @chat-text-color;
+
+  &__content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+
+    &--reverse {
+      display: flex;
+      flex-direction: column;
+      transform: scaleY(-1);
+
+      &::-webkit-scrollbar {
+        transform: scaleY(-1);
+      }
+    }
+
+    .placeholder {
+      flex-grow: 1;
+      flex-shrink: 1;
+    }
+  }
+}

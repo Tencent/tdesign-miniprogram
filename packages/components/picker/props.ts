@@ -26,10 +26,10 @@ const props: TdPickerProps = {
     type: Boolean,
     value: true,
   },
-  /** PickerItem 的子项高度，单位 rpx */
+  /** PickerItem 的子项高度，单位 `px` */
   itemHeight: {
     type: Number,
-    value: 80,
+    value: 40,
   },
   /** 用来定义 value / label / icon 在 `options` 中对应的字段别名 */
   keys: {
@@ -68,6 +68,11 @@ const props: TdPickerProps = {
   visible: {
     type: Boolean,
     value: false,
+  },
+  /** 可视区域 PickerItem 的子项个数 */
+  visibleItemCount: {
+    type: Number,
+    value: 5,
   },
 };
 

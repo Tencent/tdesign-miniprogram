@@ -1,6 +1,0 @@
-{
-  "usingComponents": {
-    "chat-markdown-node": "./chat-markdown-node/chat-markdown-node"
-  },
-  "component": true
-}

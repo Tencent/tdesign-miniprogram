@@ -1,0 +1,37 @@
+<view class="chat-box" style="height: {{contentHeight}};">
+  <t-chat id="chatList" bindscroll="onScroll">
+    <block wx:for="{{chatList}}" wx:key="index">
+      <t-chat-message
+        avatar="{{item.avatar || ''}}"
+        name="{{item.name || ''}}"
+        datetime="{{item.datetime || ''}}"
+        content="{{item.content}}"
+        role="{{item.role}}"
+        placement="{{item.role === 'user' ? 'right' : 'left'}}"
+        status="{{item.status || ''}}"
+      >
+        <t-chat-actionbar
+          wx:if="{{chatIndex !== chatList.length - 1 && item.status === 'complete' && item.role === 'assistant'}}"
+          slot="actionbar"
+          placement="end"
+          bind:actions="handleAction"
+        />
+      </t-chat-message>
+    </block>
+    <view slot="footer">
+      <t-chat-sender
+        value="{{value}}"
+        loading="{{loading}}"
+        disabled="{{disabled}}"
+        autoRiseWithKeyboard="{{true}}"
+        renderPresets="{{renderPresets}}"
+        bind:send="onSend"
+        bind:stop="onStop"
+        bind:focus="onFocus"
+      />
+    </view>
+  </t-chat>
+  <!-- 内置虚拟列表优化性能仅在data属性中使用 -->
+  <!-- <t-chat id="chatList" bindscroll="onScroll" data="{{chatList}}"></t-chat> -->
+</view>
+<t-toast id="t-toast" />

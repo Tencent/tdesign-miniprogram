@@ -86,6 +86,10 @@ export default class Calendar extends SuperComponent {
       this.base.type = v;
     },
 
+    allowSameDay(v) {
+      this.base.allowSameDay = v;
+    },
+
     confirmBtn(v) {
       if (typeof v === 'string') {
         this.setData({ innerConfirmBtn: v === 'slot' ? 'slot' : { content: v } });
@@ -104,7 +108,7 @@ export default class Calendar extends SuperComponent {
     value(v) {
       this.base.value = v;
       this.calcMonths();
-      this.updateCurrentMonth(v);
+      this.updateCurrentMonth(Array.isArray(v) ? v[0] : v);
     },
 
     visible(v) {

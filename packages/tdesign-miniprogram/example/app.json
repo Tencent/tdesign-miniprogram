@@ -91,9 +91,42 @@
     "pages/col/skyline/col",
     "pages/color-picker/color-picker",
     "pages/guide/guide",
-    "pages/watermark/watermark"
+    "pages/watermark/watermark",
+    "pages/chat-message/chat-message"
   ],
   "subpackages": [
+    {
+      "root": "pages/chat-list",
+      "pages": ["chat-list"]
+    },
+    {
+      "root": "pages/chat-content",
+      "pages": ["chat-content"]
+    },
+    {
+      "root": "pages/chat-actionbar",
+      "pages": ["chat-actionbar"]
+    },
+    {
+      "root": "pages/chat-loading",
+      "pages": ["chat-loading"]
+    },
+    {
+      "root": "pages/chat-thinking",
+      "pages": ["chat-thinking"]
+    },
+    {
+      "root": "pages/attachments",
+      "pages": ["attachments"]
+    },
+    {
+      "root": "pages/chat-markdown",
+      "pages": ["chat-markdown"]
+    },
+    {
+      "root": "pages/chat-sender",
+      "pages": ["chat-sender"]
+    },
     {
       "root": "pages/side-bar/",
       "pages": ["side-bar", "base/index", "switch/index", "custom/index", "with-icon/index"]

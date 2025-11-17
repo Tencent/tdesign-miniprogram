@@ -1,0 +1,171 @@
+@import '../../../components/common/style/base.less';
+
+@chat-loading: ~'@{prefix}-chat-loading';
+
+@chat-loading-animation-duration: 0.6s;
+
+.@{chat-loading} {
+  display: flex;
+  align-items: center;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+
+  &__icon {
+    &--with-padding {
+      padding: 6rpx;
+      box-sizing: border-box;
+    }
+
+    .@{chat-loading}__skeleton{
+      width: 100%
+    }
+  }
+
+  &__text {
+    color: @text-color-placeholder;
+    font-size: @font-size-base;
+
+    &:not(:empty) {
+      margin-left: @spacer;
+    }
+  }
+
+  &__moving {
+    position: relative;
+    width: 28rpx;
+    height: 28rpx;
+
+    &--top,
+    &--left,
+    &--right {
+      position: absolute;
+      width: 14rpx;
+      height: 14rpx;
+      border-radius: 50%;
+      background-color: @brand-color;
+    }
+
+    &--top {
+      top: -6rpx;
+      left: 7rpx;
+      animation: dot-moving-top @chat-loading-animation-duration ease-in-out alternate infinite;
+    }
+
+    &--left {
+      bottom: -6rpx;
+      left: -6rpx;
+      animation: dot-moving-left @chat-loading-animation-duration ease-in-out alternate infinite;
+    }
+
+    &--right {
+      bottom: -6rpx;
+      right: -6rpx;
+      animation: dot-moving-right @chat-loading-animation-duration ease-in-out alternate infinite;
+    }
+  }
+
+  &__gradient {
+    width: 28rpx;
+    height: 28rpx;
+    background-color: transparent;
+    border-radius: 50%;
+    border: 3rpx solid @brand-color;
+    animation: border-gradient-color @chat-loading-animation-duration ease-in-out alternate infinite;
+    box-sizing: border-box;
+    padding: 0 6rpx;
+  }
+
+  &__dots {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__skeleton {
+    width: 100%;
+  }
+}
+
+@keyframes dot-moving-top {
+  0% {
+    transform: scale(1);
+    top: -6rpx;
+  }
+  to {
+    transform: scale(2);
+    top: 7rpx;
+  }
+}
+
+@keyframes dot-moving-left {
+  0% {
+    transform: scale(1);
+    bottom: -6rpx;
+    left: -6rpx;
+  }
+  to {
+    transform: scale(2);
+    bottom: 7rpx;
+    left: 7rpx;
+  }
+}
+
+@keyframes dot-moving-right {
+  0% {
+    transform: scale(1);
+    bottom: -6rpx;
+    right: -6rpx;
+  }
+  to {
+    transform: scale(2);
+    bottom: 7rpx;
+    right: 7rpx;
+  }
+}
+
+@keyframes border-gradient-color {
+  0% {
+    border-color: @brand-color;
+    border-width: 1.5px;
+  }
+  50% {
+    border-color: @brand-color-active;
+    border-width: 3px;
+  }
+  100% {
+    border-color: @primary-color-6;
+    border-width: 4px;
+  }
+}
+
+@keyframes a_tick {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 14rpx;
+  }
+}
+
+@keyframes a_tick-1 {
+  0% {
+    transform: rotate(45deg) scale(0, 1);
+  }
+  100% {
+    transform: rotate(45deg) scale(1, 1);
+  }
+}
+
+@keyframes a_tick-2 {
+  0% {
+    transform: rotate(-45deg) scale(0, 1);
+  }
+  100% {
+    transform: rotate(-45deg) scale(1, 1);
+  }
+}

@@ -1,7 +1,0 @@
-{
-  "navigationBarTitleText": "ChatContent",
-  "usingComponents": {
-    "base": "./base",
-    "t-navbar": "tdesign-miniprogram/navbar/navbar"
-  }
-}

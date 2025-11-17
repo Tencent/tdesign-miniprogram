@@ -22,6 +22,12 @@ name | params | description
 -- | -- | --
 change | `({current: string \| number, previous: string \| number})` | \-
 
+### Steps Slots
+
+name | Description
+-- | --
+\- | \-
+
 ### Steps External Classes
 
 className | Description
@@ -35,12 +41,22 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
-content | String / Slot | '' | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
-extra | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
-icon | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+content | String | '' | \- | N
+extra | String | - | \- | N
+icon | String | - | \- | N
 status | String | default | options: default/process/finish/error。Typescript：`StepStatus` `type StepStatus = 'default' \| 'process' \| 'finish' \| 'error'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/step-item/type.ts) | N
 sub-step-items | Array | [] | `deprecated`。Typescript：`SubStepItem[]` `interface SubStepItem { status: StepStatus, title: string }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/step-item/type.ts) | N
-title | String / Slot | '' | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+title | String | '' | \- | N
+
+### StepItem Slots
+
+name | Description
+-- | --
+\- | \-
+content | \-
+extra | \-
+icon | \-
+title | \-
 
 ### StepItem External Classes
 

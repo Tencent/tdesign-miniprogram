@@ -8,14 +8,14 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
-content | String / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+content | String | - | \- | N
 disabled | Boolean | false | make link to be disabled | N
 hover | Boolean | - | \- | N
 navigator-props | Object | - | \- | N
-prefix-icon | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+prefix-icon | String / Object | - | \- | N
 size | String | medium | options: small/medium/large。Typescript：`SizeEnum`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 status | String | normal | `deprecated`。options: normal/active/disabled | N
-suffix-icon | String / Object / Slot | - | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+suffix-icon | String / Object | - | \- | N
 theme | String | default | options: default/primary/danger/warning/success | N
 underline | Boolean | - | \- | N
 
@@ -26,6 +26,15 @@ name | params | description
 complete | \- | \-
 fail | \- | \-
 success | \- | \-
+
+### Link Slots
+
+name | Description
+-- | --
+\- | \-
+content | \-
+prefix-icon | \-
+suffix-icon | \-
 
 ### Link External Classes
 
