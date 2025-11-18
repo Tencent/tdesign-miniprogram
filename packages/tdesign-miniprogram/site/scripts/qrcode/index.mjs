@@ -40,15 +40,10 @@ const getNewPageList = (list) => {
 
   list.forEach((item) => {
     if (Object.prototype.toString.call(item) === '[object Object]') {
-      item.pages.forEach((subItem) => {
-        if (
-          item.root === subItem &&
-          !isExistStr(item.root + subItem, imageOldList) &&
-          !isSkylinePage(`${item.root}${subItem}`)
-        ) {
-          pageList.push(item.root + subItem);
-        }
-      });
+      const pageName = item.root.split('/')[1];
+      if (!isExistStr(`${item.root}${pageName}`, imageOldList) && !isSkylinePage(`${item.root}${pageName}`)) {
+        pageList.push(`${item.root}${pageName}`);
+      }
     } else if (!isExistStr(item, imageOldList) && !isSkylinePage(item)) {
       pageList.push(item);
     }
