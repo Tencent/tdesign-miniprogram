@@ -21,13 +21,14 @@ const DEFAULT_EN_TABS = [
 
 function getMobilePrefix(mode) {
   if (mode === 'preview') {
-    return '/mobile';
+    return 'https://tdesign.tencent.com/uniapp/mobile';
   }
   if (process.env.NODE_ENV === 'development') {
-    return 'http://localhost:11111/tdesign-uniapp/mobile';
+    return 'http://localhost:11111/uniapp/mobile';
   }
-  return '/tdesign-uniapp/mobile';
+  return '/uniapp/mobile';
 }
+
 
 export default function mdToVue(options) {
   const mdSegment = customRender(options);
@@ -157,7 +158,7 @@ function customRender({ source, file, md, mode }) {
   };
 
   // md filename
-  const reg = file.match(/tdesign-uniapp-chat\/(\S*)(?=\/\S*.md)/);
+  const reg = file.match(/tdesign-uniapp-chat\/components\/(\S*)(?=\/\S*.md)/);
   // const reg = file.match(/([\w-]+)\.?([\w-]+)?\.md/);
   const componentName = reg && reg[1];
 

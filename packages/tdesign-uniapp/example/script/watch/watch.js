@@ -31,7 +31,8 @@ async function main() {
   watch(config.baseAndChatSourceGlob, async (e) => {
     const { event, history, base } = e || {};
 
-    if (event !== 'unlink' && history?.[0]) {
+    if (event !== 'unlink' && history?.[0]
+       && (history[0].includes('tdesign-uniapp/components') || history[0].includes('tdesign-uniapp-chat/components'))) {
       const filePath = history[0];
       let relativePath = path.relative(base, filePath);
       console.log('relativePath', relativePath);
