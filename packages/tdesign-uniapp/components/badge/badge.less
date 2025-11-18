@@ -1,0 +1,123 @@
+@import '../common/style/base.less';
+
+@badge-text-color: var(--td-badge-text-color, @text-color-anti);
+@badge-content-text-color: var(--td-badge-content-text-color, @text-color-primary);
+@badge-color: var(--td-badge-bg-color, @error-color);
+@badge-font-size: var(--td-badge-font-size, @font-size-xs);
+@badge-basic-height: var(--td-badge-basic-height, 32rpx);
+@badge-basic-width: var(--td-badge-basic-width, 32rpx);
+@badge-basic-padding: var(--td-badge-basic-padding, 8rpx);
+@badge-font-weight: var(--td-badge-font-weight, 600);
+@badge-border-radius: var(--td-badge-border-radius, 4rpx);
+@border-bubble-border-radius: var(--td-badge-bubble-border-radius, 20rpx 20rpx 20rpx 1px);
+@badge-dot-size: var(--td-badge-dot-size, 16rpx);
+
+// large
+@badge-large-font-size: var(--td-badge-large-font-size, @font-size-s);
+@badge-large-height: var(--td-badge-large-height, 40rpx);
+@badge-large-padding: var(--td-badge-large-padding, 10rpx);
+
+.@{prefix}-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: start;
+
+  &--basic {
+    z-index: 100;
+    padding: 0 @badge-basic-padding;
+    font-size: @badge-font-size;
+    color: @badge-text-color;
+    background-color: @badge-color;
+    text-align: center;
+    height: @badge-basic-height;
+    line-height: @badge-basic-height;
+    font-weight: @badge-font-weight;
+    border-radius: @badge-border-radius;
+  }
+
+  &--dot {
+    height: @badge-dot-size;
+    border-radius: 50%;
+    min-width: @badge-dot-size;
+    padding: 0;
+  }
+
+  &--count {
+    min-width: @badge-basic-width;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
+  &--circle {
+    border-radius: calc(@badge-basic-height / 2);
+  }
+
+  &__ribbon {
+    &-outer {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+
+  &--ribbon {
+    position: relative;
+    display: inline-block;
+    transform-origin: center center;
+    transform: translate(calc(50% - @badge-basic-height + 1rpx), calc(-50% + @badge-basic-height - 1rpx)) rotate(45deg);
+    border-radius: 0;
+    // padding: 0;
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      bottom: 0;
+      border-bottom: @badge-basic-height solid @badge-color;
+      font-size: 0;
+    }
+
+    &::before {
+      left: calc(-1 * @badge-basic-height + 1rpx);
+      border-left: @badge-basic-height solid transparent;
+    }
+
+    &::after {
+      right: calc(-1 * @badge-basic-height + 1rpx);
+      border-right: @badge-basic-height solid transparent;
+    }
+  }
+
+  &--bubble {
+    border-radius: @border-bubble-border-radius;
+  }
+
+  // size
+  &--large {
+    font-size: @badge-large-font-size;
+    height: @badge-large-height;
+    min-width: @badge-large-height;
+    line-height: @badge-large-height;
+    padding: 0 @badge-large-padding;
+  }
+
+  &--large&--circle {
+    border-radius: calc(@badge-large-height / 2);
+  }
+
+  &__content:not(:empty) + .t-has-count {
+    transform-origin: center center;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    left: 100%;
+    top: 0;
+  }
+
+  &__content-text {
+    display: block;
+    line-height: 48rpx;
+    color: @badge-content-text-color;
+  }
+}

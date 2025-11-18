@@ -1,0 +1,40 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.json",
+  "compilerOptions": {
+    "sourceMap": true,
+    "baseUrl": ".",
+    "allowJs": true,
+    "paths": {
+      "tdesign-uniapp/*": [
+        "packages/tdesign/*"
+      ],
+      "tdesign-site/*": [
+        "packages/demo/*"
+      ],
+      "tdesign-uniapp-chat/*": [
+        "packages/tdesign-uniapp-chat/*"
+      ]
+    },
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "types": [
+      "@dcloudio/types",
+      "node",
+      "miniprogram-api-typings"
+    ],
+    "noImplicitAny": false,
+  },
+  "include": [
+    "packages/**/*.ts",
+    "packages/**/*.d.ts",
+    "packages/**/*.tsx",
+    "packages/**/*.vue",
+    "./*.ts",
+    "./types/*.ts"
+  ],
+  "exclude": [
+    "packages/tdesign-app/uni_modules/uni-upgrade-center-app/**/*.ts"
+  ]
+}

@@ -13,6 +13,8 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development gulp dev --gulpfile script/gulpfile.js --cwd ./",
+    "uniapp": "pnpm -C packages/tdesign-uniapp",
+    "uniapp:chat": "pnpm -C packages/tdesign-uniapp",
     "build": "cross-env NODE_ENV=production gulp build --gulpfile script/gulpfile.js --cwd ./",
     "build:dist": "gulp --gulpfile script/gulpfile.dist.js --cwd ./",
     "build:example": "gulp --gulpfile script/gulpfile.example.js --cwd ./",
