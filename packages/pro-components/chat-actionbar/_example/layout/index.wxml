@@ -1,6 +1,0 @@
-<view class="container">
-  <t-button style="margin: 16rpx 0" bind:tap="handleChangePlacement" variant="outline" theme="primary">
-    切换到{{placement === 'start' ? '右侧' : '左侧'}}布局
-  </t-button>
-  <t-chat-actionbar content="{{content}}" bind:handleAction="handleAction" placement="{{placement}}" />
-</view>

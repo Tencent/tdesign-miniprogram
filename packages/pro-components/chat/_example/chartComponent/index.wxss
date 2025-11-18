@@ -1,5 +1,0 @@
-.normalLine canvas {
-  position: relative !important;
-  width: 100% !important;
-  height: 600rpx !important;
-}

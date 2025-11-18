@@ -1,0 +1,45 @@
+.chat-box {
+  padding-top: 32rpx;
+  box-sizing: border-box;
+}
+
+.image-chat .t-chat__list {
+  padding: 0 0 0 0;
+  box-sizing: border-box;
+}
+
+.t-chat-message {
+  padding: 0 32rpx;
+}
+
+.image-chat .t-chat__inner.assistant .t-chat__avatar {
+  padding-left: 32rpx;
+}
+
+.image-chat .assistant,
+.image-chat .assistant .t-chat__detail {
+  width: 100%;
+}
+
+.attachment-slide {
+  height: 274rpx;
+  width: 100%;
+}
+
+.attachment-slide .t-attachments {
+  padding-right: 32rpx;
+  padding-top: 24rpx;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  right: 0;
+}
+
+.attachment-slide .t-attachments .t-attachments__files:first-child {
+  padding-left: 120rpx;
+}
+
+.attachment-slide .t-attachments .t-attachments__files:last-child {
+  padding-right: 32rpx;
+}

@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "styleIsolation": "apply-shared",
+  "usingComponents": {
+    "t-chat-loading": "tdesign-miniprogram/chat-loading/chat-loading",
+    "t-icon": "tdesign-miniprogram/icon/icon"
+  }
+}

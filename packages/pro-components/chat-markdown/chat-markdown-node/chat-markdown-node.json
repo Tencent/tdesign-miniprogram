@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "chat-markdown-table": "../chat-markdown-table/chat-markdown-table",
-    "chat-markdown-code": "../chat-markdown-code/chat-markdown-code",
-    "chat-markdown-node": "./chat-markdown-node"
-  },
-  "component": true
-}

@@ -1,0 +1,101 @@
+@import '../../../components/common/style/base.less';
+
+@chat-thinking: ~'@{prefix}-chat-thinking';
+
+.@{chat-thinking} {
+  width: 100%;
+  box-sizing: border-box;
+
+  &__inner {
+    &--block {
+      background-color: @bg-color-page;
+      border-radius: @radius-default;
+      padding: @spacer @spacer-1;
+    }
+
+    &--border {
+      padding: @spacer @spacer-1;
+    }
+  }
+
+  &__hd {
+    height: 48rpx;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+
+    .@{chat-thinking}__icon {
+      font-size: @font-size-xl;
+
+      &--close {
+        color: @text-color-secondary;
+      }
+
+      &--complete,
+      &--stop {
+        color: @success-color;
+      }
+
+      &--collapse {
+        color: @text-color-secondary;
+        transition: transform 0.3s ease-in-out;
+      }
+    }
+
+    .@{chat-thinking}__txt {
+      color: @text-color-primary;
+      font-size: @font-size-base;
+      line-height: 32rpx;
+      flex: 1;
+      margin-left: @spacer;
+    }
+  }
+
+  &__bd {
+    color: @text-color-placeholder;
+    font-size: @font-size-base;
+    line-height: 170%;
+    margin-top: @spacer-1;
+    white-space: pre-wrap;
+    overflow-y: auto;
+
+    &--border {
+      border-left: 4rpx solid @component-stroke;
+      padding-left: @spacer;
+    }
+  }
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1.333) translateY(-50%);
+  }
+  33% {
+    transform: scale(1.333) translateY(-50%);
+  }
+  34% {
+    transform: scale(1) translateY(-50%);
+  }
+  100% {
+    transform: scale(1) translateY(-50%);
+  }
+}
+
+@-webkit-keyframes scale {
+  0% {
+    -webkit-transform: scale(1.333) translateY(-50%);
+    transform: scale(1.333) translateY(-50%);
+  }
+  33% {
+    -webkit-transform: scale(1.333) translateY(-50%);
+    transform: scale(1.333) translateY(-50%);
+  }
+  34% {
+    -webkit-transform: scale(1) translateY(-50%);
+    transform: scale(1) translateY(-50%);
+  }
+  100% {
+    -webkit-transform: scale(1) translateY(-50%);
+    transform: scale(1) translateY(-50%);
+  }
+}

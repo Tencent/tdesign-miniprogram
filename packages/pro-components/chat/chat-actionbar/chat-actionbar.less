@@ -1,0 +1,84 @@
+@import '../../../components/common/style/base.less';
+
+@chat-actionbar: ~'@{prefix}-chat-actionbar';
+
+@chat-actionbar-padding: var(--chat-actionbar-padding, 0);
+@chat-actionbar-item-padding: var(--chat-actionbar-item-padding, 16rpx 28rpx);
+@chat-actionbar-item-color: @text-color-primary;
+@chat-actionbar-item-active: @brand-color;
+
+// TODO: 长按弹出层样式
+@chat-actionbar-popover-background: @mask-active;
+@chat-actionbar-popover-radius: 32rpx;
+@chat-actionbar-popover-padding: 45rpx;
+
+.@{chat-actionbar} {
+  display: flex;
+  padding: @chat-actionbar-padding;
+
+  // 对齐方式
+  &.start {
+    justify-content: flex-start;
+  }
+
+  &.end {
+    justify-content: flex-end;
+  }
+
+  // 内部容器
+  &__inner {
+    background-color: @bg-color-secondarycontainer;
+    border: 2rpx solid @component-border;
+    box-sizing: border-box;
+    border-radius: @radius-default;
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    // 列布局
+    &--column {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    // 弹出层
+    &--popover {
+      padding: @chat-actionbar-popover-padding;
+      background-color: @chat-actionbar-popover-background;
+      border-radius: @chat-actionbar-popover-radius;
+      color: @font-white-1;
+    }
+  }
+
+  // 左侧内容
+  &__left {
+    &:empty {
+      display: none;
+    }
+  }
+
+  // 操作项
+  &__item {
+    color: @chat-actionbar-item-color;
+    margin: 12rpx 0;
+    padding: 4rpx 28rpx;
+    border-right: 2rpx solid @component-stroke;
+    background-color: unset;
+    outline: none;
+
+    &:after {
+      display: none;
+    }
+
+    &:last-child {
+      border-right: none;
+    }
+
+    // 激活状态
+    &--active {
+      color: @chat-actionbar-item-active;
+    }
+  }
+}

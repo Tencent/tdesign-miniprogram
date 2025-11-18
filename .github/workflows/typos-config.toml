@@ -9,4 +9,4 @@ nd = "nd"
 loosing = "loosing"
 
 [files]
-extend-exclude = ["CHANGELOG*.md", "changelog.json"]
+extend-exclude = ["CHANGELOG*.md", "changelog.json", "echarts.js"]

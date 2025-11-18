@@ -1,3 +1,0 @@
-<view class="demo-container">
-  <t-chat-markdown content="{{markdownContent}}" is-markdown="{{true}}" />
-</view>

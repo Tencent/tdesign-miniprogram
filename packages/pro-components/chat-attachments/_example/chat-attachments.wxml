@@ -1,7 +1,0 @@
-<t-navbar class="demo-navbar" title="ChatAttachments" leftArrow />
-<view class="demo">
-  <t-demo-header title="ChatAttachments" desc="对话附件" notice="渲染框架支持情况：WebView" />
-  <t-demo title="01 组件类型" desc="chat-attachments">
-    <base />
-  </t-demo>
-</view>

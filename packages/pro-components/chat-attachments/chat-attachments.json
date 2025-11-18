@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "t-icon": "../../components/icon/icon",
-    "t-image": "../../components/image/image",
-    "t-loading": "../../components/loading/loading"
-  },
-  "component": true
-}
