@@ -6,10 +6,10 @@ const config = {
   rawTargetDirInApp: path.resolve(__dirname, '../../../app/tdesign-uniapp-raw'),
 
   sourceDir: path.resolve(__dirname, '../../../components'),
-  chatSourceDir: path.resolve(__dirname, '../../../tdesign-uniapp-chat'),
+  chatSourceDir: path.resolve(__dirname, '../../../../tdesign-uniapp-chat/components'),
 
   sourceGlob: path.resolve(__dirname, '../../../components/**/*'),
-  chatSourceGlob: path.resolve(__dirname, '../../../tdesign-uniapp-chat/**/*'),
+  chatSourceGlob: path.resolve(__dirname, '../../../../tdesign-uniapp-chat/components/**/*'),
   baseAndChatSourceGlob: path.resolve(__dirname, '../../../../{tdesign-uniapp,tdesign-uniapp-chat}/**/*'),
 
   demoDir: path.resolve(__dirname, '../../src/pages-more'),

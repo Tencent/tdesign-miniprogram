@@ -24,7 +24,7 @@ packages/tdesign-uniapp/npm_dist/
 packages/tdesign-uniapp-chat/npm_dist/
 
 # about app of uniapp
-packages/tdesign-uniapp/app/uni_modules/tdesign-uniapp/
+packages/tdesign-uniapp/app/uni_modules/tdesign-uniapp*/
 packages/tdesign-uniapp/app/unpackage/
 packages/tdesign-uniapp/app/pages-more/
 packages/tdesign-uniapp/app/pages/

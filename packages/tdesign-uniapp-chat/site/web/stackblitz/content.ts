@@ -1,4 +1,4 @@
-import orgPkg from '../../../tdesign/package.json';
+import orgPkg from '../../../components/package.json';
 
 export const HTML_CONTENT = `
 <!DOCTYPE html>
@@ -218,7 +218,8 @@ export const PACKAGE_JSON_CONTENT = JSON.stringify(
       '@dcloudio/uni-mp-weixin': '3.0.0-4070620250821001',
       '@dcloudio/uni-mp-xhs': '3.0.0-4070620250821001',
       '@dcloudio/uni-quickapp-webview': '3.0.0-4070620250821001',
-      'tdesign-uniapp': orgPkg.version,
+      'tdesign-uniapp': 'latest',
+      'tdesign-uniapp-chat': orgPkg.version,
       vue: '^3.4.21',
       'vue-router': '4.5.1',
     },

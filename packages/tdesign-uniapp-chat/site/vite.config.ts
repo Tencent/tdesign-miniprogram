@@ -55,7 +55,7 @@ export default ({ mode }) => {
     root: '.',
     resolve: {
       alias: {
-        '@': resolvePath('../tdesign-uniapp-chat'),
+        '@': resolvePath('../components'),
         '@docs': resolvePath('./docs'),
       },
     },

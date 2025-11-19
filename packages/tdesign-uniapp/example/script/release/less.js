@@ -6,11 +6,11 @@ const rpxTransform = require('postcss-rpx-transform');
 
 const CONFIG = {
   whiteList: [
-    path.resolve(process.cwd(), 'packages/tdesign/common/style/theme/index.less'),
-    path.resolve(process.cwd(), 'packages/tdesign/common/style/base.less'),
-    path.resolve(process.cwd(), 'packages/tdesign/common/style/_variables.less'),
-    path.resolve(process.cwd(), 'packages/tdesign/common/style/mixins/'),
-    path.resolve(process.cwd(), 'packages/tdesign/common/style/theme/raw/'),
+    path.resolve(__dirname, '../../../components/common/style/theme/index.less'),
+    path.resolve(__dirname, '../../../components/common/style/base.less'),
+    path.resolve(__dirname, '../../../components/common/style/_variables.less'),
+    path.resolve(__dirname, '../../../components/common/style/mixins/'),
+    path.resolve(__dirname, '../../../components/common/style/theme/raw/'),
   ],
 };
 

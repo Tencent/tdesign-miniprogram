@@ -13,7 +13,7 @@ async function copyOneProject({
   const list = glob.sync(globMode, {
     ignore: '**/node_modules/**/*',
     nodir: true,
-  });
+  }).filter(item => !item.includes('node_modules'));
 
   for (const item of list) {
     const relativePath = path.relative(sourceDir, item);

@@ -12,7 +12,7 @@
   },
   "scripts": {
     "dev": "concurrently \"npm run watch\" \"pnpm --filter=\"./example\" dev:h5\" \"pnpm --filter=\"./site\" dev\"",
-    "dev:chat": "concurrently \"npm run watch\" \"pnpm --filter=\"./example\" dev:h5\" \"pnpm --filter=\"./site-chat\" dev\"",
+    "dev:h5": "concurrently \"npm run watch\" \"pnpm --filter=\"./example\" dev:h5\"",
     "dev:mp-weixin": "concurrently \"npm run watch\" \"pnpm --filter=\"./example\" dev:mp-weixin\"",
     "dev:mp-alipay": "concurrently \"npm run watch\" \"pnpm --filter=\"./example\" dev:mp-alipay\"",
     "dev:mp-toutiao": "concurrently \"npm run watch\" \"pnpm --filter=\"./example\" dev:mp-toutiao\"",
@@ -35,6 +35,7 @@
     "build:mp-jd": "pnpm --filter=\"./example\" build:mp-jd",
     "build:mp-baidu": "pnpm --filter=\"./example\" build:mp-baidu",
     "build:mp": "npm run build:mp-weixin",
+    "site:dev": "pnpm --filter=\"./site\" run dev",
     "preview": "pnpm --filter=\"./site\" run site:preview && pnpm --filter=\"./example\" build:h5",
     "preview:chat": "pnpm --filter=\"./site-chat\" run site:preview && pnpm --filter=\"./example\" build:h5",
     "type-check": "vue-tsc --noEmit",

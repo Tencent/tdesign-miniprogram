@@ -11,9 +11,9 @@
     "url": "git+https://github.com/novlan1/tdesign-uniapp.git"
   },
   "scripts": {
-    "build": "pnpm --filter=\"./site\" build",
-    "preview": "pnpm --filter=\"./site\" run site:preview",
-    "preview:chat": "pnpm --filter=\"./site\" run site:preview",
+    "site": "pnpm --filter=\"./site\" build",
+    "site:dev": "pnpm --filter=\"./site\" run dev",
+    "site:preview": "pnpm --filter=\"./site\" run site:preview",
     "type-check": "vue-tsc --noEmit",
     "publish": "cd npm_dist && npm publish"
   },
