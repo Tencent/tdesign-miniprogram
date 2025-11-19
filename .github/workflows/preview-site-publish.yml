@@ -122,7 +122,7 @@ jobs:
                   const preview_text = `[${tdesign[component].status}](${tdesign[component].report_url})`;
                   let package_name = component;
                   if (component === "tdesign-miniprogram-chat") {
-                    package_name = "@tdesign-miniprogram/chat1";
+                    package_name = "@tdesign-miniprogram/chat";
                   }
 
                   return `| ${package_name} | ${preview_text} | `;
