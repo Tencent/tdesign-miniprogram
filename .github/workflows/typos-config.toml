@@ -9,4 +9,13 @@ nd = "nd"
 loosing = "loosing"
 
 [files]
-extend-exclude = ["CHANGELOG*.md", "changelog.json", "echarts.js"]
+extend-exclude = [
+  "CHANGELOG*.md", 
+  "changelog.json", 
+  "echarts.js",
+  "packages/tdesign-app/common/uni.css",
+  "packages/tdesign-app/uni_modules/**/*",
+  "packages/tdesign-uniapp/components/npm/**/*",
+  "packages/tdesign-uniapp-chat/components/npm/**/*",
+  "packages/tdesign-uniapp-chat/chat-list/_example/ec-canvas/echarts.js"
+]

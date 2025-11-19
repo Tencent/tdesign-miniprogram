@@ -6,19 +6,19 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/novlan1/tdesign-uniapp/blob/develop/LICENSE">
-    <img src="https://img.shields.io/npm/l/tdesign-uniapp.svg?sanitize=true" alt="License">
+  <a href="https://github.com/novlan1/tdesign-uniapp-chat/blob/develop/LICENSE">
+    <img src="https://img.shields.io/npm/l/tdesign-uniapp-chat.svg?sanitize=true" alt="License">
   </a>
-  <a href="https://www.npmjs.com/package/tdesign-uniapp">
-    <img src="https://img.shields.io/npm/v/tdesign-uniapp.svg?sanitize=true" alt="Version">
+  <a href="https://www.npmjs.com/package/tdesign-uniapp-chat">
+    <img src="https://img.shields.io/npm/v/tdesign-uniapp-chat.svg?sanitize=true" alt="Version">
   </a>
   <a href="https://www.npmjs.com/package/tdesign-uniapp-chat">
     <img src="https://img.shields.io/npm/dm/tdesign-uniapp-chat" alt="Downloads">
   </a>
-  <a href="https://pkg.pr.new/~/novlan1/tdesign-uniapp">
-    <img src="https://pkg.pr.new/badge/novlan1/tdesign-uniapp?style=flat&color=000&logoSize=auto" alt="Downloads">
+  <a href="https://pkg.pr.new/~/novlan1/tdesign-uniapp-chat">
+    <img src="https://pkg.pr.new/badge/novlan1/tdesign-uniapp-chat?style=flat&color=000&logoSize=auto" alt="Downloads">
   </a>
-  <a href="https://deepwiki.com/novlan1/tdesign-uniapp">
+  <a href="https://deepwiki.com/novlan1/tdesign-uniapp-chat">
     <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki">
   </a>
 </p>
