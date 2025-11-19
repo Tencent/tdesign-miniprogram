@@ -81,7 +81,6 @@
     "commitizen": "^4.2.3",
     "concurrently": "^6.5.1",
     "cross-env": "^7.0.3",
-    "cypress": "^9.1.1",
     "cz-conventional-changelog": "3.3.0",
     "debug": "^4.3.1",
     "dom-parser": "^0.1.6",
