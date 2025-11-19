@@ -62,11 +62,11 @@
   ],
   "homepage": "https://uwayfly.com/tdesign-uniapp-chat/",
   "bugs": {
-    "url": "https://github.com/novlan1/tdesign-uniapp/issues"
+    "url": "https://github.com/Tencent/tdesign-miniprogram/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/novlan1/tdesign-uniapp.git"
+    "url": "git+https://github.com/Tencent/tdesign-miniprogram.git"
   },
   "scripts": {
     "dev:custom": "uni -p",

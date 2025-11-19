@@ -5,7 +5,7 @@
   "version": "3.4.9",
   "description": "tdesign-uniapp 示例工程",
   "scripts": {},
-  "repository": "https://github.com/novlan1/tdesign-uniapp.git",
+  "repository": "https://github.com/Tencent/tdesign-miniprogram.git",
   "keywords": [
     "tdesign-uniapp",
     "uni-app"
@@ -13,7 +13,7 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/novlan1/tdesign-uniapp/issues"
+    "url": "https://github.com/Tencent/tdesign-miniprogram/issues"
   },
   "homepage": "https://uwayfly.com/tdesign-uniapp/",
   "dependencies": {},

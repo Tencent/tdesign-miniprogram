@@ -4,11 +4,11 @@
   "private": "true",
   "homepage": "https://uwayfly.com/tdesign-uniapp/",
   "bugs": {
-    "url": "https://github.com/novlan1/tdesign-uniapp/issues"
+    "url": "https://github.com/Tencent/tdesign-miniprogram/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/novlan1/tdesign-uniapp.git"
+    "url": "git+https://github.com/Tencent/tdesign-miniprogram.git"
   },
   "scripts": {
     "site": "pnpm --filter=\"./site\" build",
