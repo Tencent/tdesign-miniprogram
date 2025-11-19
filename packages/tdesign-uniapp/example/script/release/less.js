@@ -36,10 +36,10 @@ async function processLess(inputFile, rawOutputFile, rawOutputFileInApp) {
     const cssResult = await less.render(lessCode, {
       // 设置导入路径
       paths: [
-        path.join(__dirname, '../../../tdesign/common'),
-        path.join(__dirname, '../../../tdesign/common/style'),
-        path.join(__dirname, '../../../tdesign/common/style/mixins'),
-        path.join(__dirname, '../../../tdesign/common/style/theme'),
+        path.join(__dirname, '../../../components/common'),
+        path.join(__dirname, '../../../components/common/style'),
+        path.join(__dirname, '../../../components/common/style/mixins'),
+        path.join(__dirname, '../../../components/common/style/theme'),
       ],
     });
 
