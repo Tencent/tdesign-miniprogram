@@ -16,8 +16,16 @@ jobs:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           install-script: 'npm install --force'
           pattern: './packages/tdesign-miniprogram/miniprogram_dist/**/*.{js,wxs,wxml,json}'
+          comment-key: miniprogram
+
+      - name: Install pnpm
+        run: npm install -g pnpm@9
+      
+      - name: Install dependencies
+        run: pnpm install
+
       - uses: preactjs/compressed-size-action@v2
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          install-script: 'pnpm install --force'
           pattern: './packages/{tdesign-uniapp,tdesign-uniapp-chat}/npm_dist/**/*.{js,ts,vue,less,css}'
+          comment-key: uniapp
