@@ -38,7 +38,7 @@ async function prepareOne({
     ignore: '**/{node_modules,_example}/**/*',
     nodir: true,
     dot: true,
-  });
+  }).filter(item => !item.includes('_example') && !item.includes('node_modules'));
 
   for (const item of list) {
     const relativePath = path.relative(sourceDir, item);

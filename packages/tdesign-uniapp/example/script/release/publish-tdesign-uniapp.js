@@ -1,7 +1,7 @@
 const { publishCore } = require('./publish-core');
 const path = require('path');
 
-const PUBLISH_DIR = path.resolve(__dirname, '../../../../npm_dist_chat');
+const PUBLISH_DIR = path.resolve(__dirname, '../../../../tdesign-uniapp-chat/npm_dist');
 
 console.log('[PUBLISH_DIR]', PUBLISH_DIR);
 
