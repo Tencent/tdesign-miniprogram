@@ -43,7 +43,7 @@
     "changelog": "node script/generate-changelog.js",
     "robot": "publish-cli robot-msg",
     "qrcode": "pnpm -C packages/tdesign-miniprogram/site qrcode",
-    "postinstall": "pnpm -C packages/tdesign-uniapp run init && pnpm -C packages/tdesign-uniapp run release:prepare"
+    "postinstall": "cd packages/tdesign-uniapp && npm run release:prepare"
   },
   "author": "tdesign",
   "license": "MIT",
