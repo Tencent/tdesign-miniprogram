@@ -41,7 +41,7 @@
     "type-check": "vue-tsc --noEmit",
     "init": "node ./example/script/watch/init.js && node ./example/script/pages/index.js",
     "watch": "node ./example/script/watch/watch.js",
-    "postinstall": "npm run init && npm run release:prepare",
+    "prepare": "npm run init && npm run release:prepare",
     "release:prepare": "node ./example/script/release/prepare.js",
     "publish": "cd npm_dist && npm publish",
     "commit": "git-cz"
