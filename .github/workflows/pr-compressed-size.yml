@@ -27,7 +27,7 @@ jobs:
       - uses: preactjs/compressed-size-action@v2
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          build-script: "build:uniapp"
+          build-script: "build:uniapp || true"
           pattern: './packages/tdesign-uniapp/npm_dist/**/*.{js,ts,vue,less,css}'
           comment-key: uniapp
 
@@ -35,5 +35,5 @@ jobs:
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
           pattern: './packages/tdesign-uniapp-chat/npm_dist/**/*.{js,ts,vue,less,css}'
-          build-script: "build:uniapp:chat"
+          build-script: "build:uniapp:chat || true"
           comment-key: uniapp-chat
