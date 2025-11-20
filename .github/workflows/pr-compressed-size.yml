@@ -27,13 +27,11 @@ jobs:
       - uses: preactjs/compressed-size-action@v2
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          postinstall: "pnpm run uniapp -- run init && pnpm run uniapp -- run release:prepare"
           pattern: './packages/tdesign-uniapp/npm_dist/**/*.{js,ts,vue,less,css}'
           comment-key: uniapp
 
       - uses: preactjs/compressed-size-action@v2
         with:
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          postinstall: "pnpm run uniapp -- run init && pnpm run uniapp -- run release:prepare"
           pattern: './packages/tdesign-uniapp-chat/npm_dist/**/*.{js,ts,vue,less,css}'
           comment-key: uniapp-chat
