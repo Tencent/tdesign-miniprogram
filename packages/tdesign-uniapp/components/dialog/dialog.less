@@ -1,0 +1,144 @@
+@import '../common/style/base.less';
+
+@dialog: ~'@{prefix}-dialog';
+@dialogBtn: ~'@{dialog}__button';
+
+// size
+@dialog-width: var(--td-dialog-width, 622rpx);
+@dialog-border-radius: var(--td-dialog-border-radius, @radius-extraLarge);
+@dialog-body-max-height: var(--td-dialog-body-max-height, 912rpx);
+
+// color
+@dialog-title-font-size: var(--td-dialog-title-font-size, 36rpx);
+@dialog-title-color: var(--td-dialog-title-color, @text-color-primary);
+@dialog-title-line-height: var(--td-dialog-title-line-height, 52rpx);
+
+@dialog-content-font-size: var(--td-dialog-content-font-size, 32rpx);
+@dialog-content-color: var(--td-dialog-content-color, @text-color-secondary);
+@dialog-content-line-height: var(--td-dialog-content-line-height, 48rpx);
+
+@dialog-close-color: var(--td-dialog-close-color, @text-color-placeholder);
+
+.@{dialog} {
+  overflow: hidden;
+  width: @dialog-width;
+  border-radius: @dialog-border-radius;
+  background-color: @bg-color-container;
+
+  &__wrapper {
+    --td-popup-border-radius: @dialog-border-radius;
+  }
+
+  &__close-btn {
+    position: absolute;
+    top: @spacer;
+    right: @spacer;
+    color: @dialog-close-color;
+    z-index: 1; /* skyline适配新增 */
+  }
+
+  &__content {
+    padding-top: @spacer-3;
+    padding-right: @spacer-3;
+    padding-bottom: 0;
+    padding-left: @spacer-3;
+    max-height: @dialog-body-max-height;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: @font-size-m;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__header {
+    text-align: center;
+    font-weight: bold;
+    font-size: @dialog-title-font-size;
+    line-height: @dialog-title-line-height;
+    color: @dialog-title-color;
+  }
+
+  &__header + &__body {
+    margin-top: @spacer;
+  }
+
+  &__body {
+    overflow-y: scroll;
+    text-align: center;
+    -webkit-overflow-scrolling: touch;
+    font-size: @dialog-content-font-size;
+    color: @dialog-content-color;
+    line-height: @dialog-content-line-height;
+
+    &-text {
+      word-wrap: break-word;
+    }
+
+    &--left {
+      text-align: left;
+    }
+
+    &--right {
+      text-align: right;
+    }
+  }
+
+  &__footer {
+    display: flex;
+    padding: @spacer-3;
+
+    &--column {
+      flex-flow: column-reverse;
+
+      :deep(.@{dialog}__button) {
+        width: 100%;
+      }
+    }
+
+    &--full {
+      padding: @spacer-4 0 0;
+    }
+  }
+
+  :deep(&__button) {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &--horizontal:not(:first-child) {
+      margin-left: @spacer-1;
+    }
+
+    &--vertical:not(:first-child)  {
+      margin-bottom: @spacer-1;
+    }
+
+    &--text {
+      flex: 1;
+      --td-button-border-radius: 0;
+      --td-button-medium-height: 112rpx;
+      border-radius: 0;
+
+      &:before {
+        content: ' ';
+        position: absolute;
+        box-sizing: border-box;
+        top: 0;
+        left: 0;
+        border-top: 1px solid @border-level-1-color;
+        border-left: 1px solid @border-level-1-color;
+        transform: scale(0.5);
+        transform-origin: 0 0;
+        width: 200%;
+        height: 200%;
+        border-radius: 0;
+      }
+    }
+  }
+}

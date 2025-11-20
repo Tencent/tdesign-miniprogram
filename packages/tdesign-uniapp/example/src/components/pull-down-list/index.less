@@ -1,0 +1,60 @@
+.pullDownList {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--td-bg-color-container);
+  border-radius: 8rpx;
+  margin-bottom: 12rpx * 2;
+  overflow: hidden;
+
+  .switchBox {
+    height: 60rpx * 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16rpx * 2;
+    font-size: 16rpx * 2;
+    line-height: 24rpx * 2;
+    color: var(--td-text-color-secondary);
+  }
+
+  .name,
+  .icon {
+    transition: opacity 0.3s;
+  }
+
+  .name {
+    opacity: 0.9;
+  }
+
+  &.actived {
+    .name {
+      opacity: 0.4;
+    }
+
+    .icon {
+      opacity: 0.4;
+    }
+  }
+
+  .childBox {
+    transition: height 0.3s;
+
+    .child {
+      box-sizing: border-box;
+      border-bottom: 1rpx solid var(--td-component-stroke);
+      height: 56rpx * 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 16rpx * 2;
+      margin-right: 16rpx * 2;
+      font-size: 16rpx * 2;
+      opacity: 0.9;
+      color: var(--td-text-color-primary);
+
+      &:last-of-type {
+        border-bottom-color: transparent;
+      }
+    }
+  }
+}

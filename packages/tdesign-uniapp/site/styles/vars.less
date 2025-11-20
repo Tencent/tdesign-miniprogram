@@ -1,0 +1,125 @@
+@prefix: tdesign;
+@primary-color: #0052d9;
+
+@primary-color-darken-1: darken(@primary-color, (43 - 35) * 1%);
+@primary-color-darken-2: darken(@primary-color, (43 - 27) * 1%);
+@primary-color-darken-3: darken(@primary-color, (43 - 19) * 1%);
+@primary-color-darken-4: darken(@primary-color, (43 - 11) * 1%);
+
+@primary-color-lighter-1: lighten(@primary-color, (51 - 43) * 1%);
+@primary-color-lighter-2: lighten(@primary-color, (59 - 43) * 1%);
+@primary-color-lighter-3: lighten(@primary-color, (67 - 43) * 1%);
+@primary-color-lighter-4: lighten(@primary-color, (75 - 43) * 1%);
+@primary-color-lighter-5: lighten(@primary-color, (83 - 43) * 1%);
+@primary-color-lighter-6: lighten(@primary-color, (91 - 43) * 1%);
+@primary-color-lighter-7: lighten(@primary-color, (96 - 43) * 1%);
+// @primary-color-lighter-6: hsl(217, 100, 91);
+
+// 状态色
+@success-color: #3ecc36;
+@error-color: #ff3e00;
+@warning-color: #ffa700;
+@info-color: #c7ddf3;
+
+@disabled-color: #c0c0c0;
+
+// 文字色
+@text-color: #333; // 黑 80%
+@text-color-lighter-1: #666; // 黑 60%
+@text-color-lighter-2: #999; // 黑 40%
+@text-color-lighter-3: #ccc; // 黑 20%
+
+// 文字色
+@text-color-white: #fff;
+@text-color-white-lighter-1: rgba(255, 255, 255, 0.8);
+@text-color-white-lighter-2: rgba(255, 255, 255, 0.6);
+@text-color-white-lighter-3: rgba(255, 255, 255, 0.4);
+
+@placeholder-color: #999;
+
+@font-size-base: 14px;
+@line-height-base: 1.5;
+@font-family:  "PingFang SC", -apple-system, "Helvetica Neue", Helvetica, BlinkMacSystemFont, "Microsoft YaHei", tahoma, Arial, "Open Sans", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+
+/**
+ * 文字部分 
+ * size 大小，line 行高， color 颜色
+ */
+// 字体大小
+@font-size-small: 12px;
+@font-size: 14px;
+@font-size-large: 16px;
+@font-size-larger: 18px;
+// 行高
+@line-height-small: 30px;
+@line-height: 38px;
+@line-height-large: 48px;
+@line-height-larger: 60px;
+
+// 标题文字
+@title-level-1-size: 38px;
+@title-level-1-line: 53 / 38;
+@title-level-1-color: @text-color;
+@title-level-2-size: 20px;
+@title-level-2-line: 28 / 20;
+@title-level-2-color: @text-color;
+@title-level-3-size: 16px;
+@title-level-3-line: 22 / 16;
+@title-level-3-color: @text-color;
+@title-level-4-size: 16px;
+@title-level-4-line: 22 / 16;
+@title-level-4-color: @text-color-lighter-1;
+
+// 正常文字
+@text-level-1-size: 14px;
+@text-level-1-line: 20 / 14;
+@text-level-1-color: @text-color;
+@text-level-2-size: 14px;
+@text-level-2-line: 20 / 14;
+@text-level-2-color: @text-color-lighter-1;
+@text-level-3-size: 14px;
+@text-level-3-line: 20 / 14;
+@text-level-3-color: @text-color-lighter-2;
+
+// 小字
+@smalltext-level-1-size: 12px;
+@smalltext-level-1-line: 17 / 14;
+@smalltext-level-1-color: @text-color-lighter-1;
+@smalltext-level-2-size: 12px;
+@smalltext-level-2-line: 17 / 14;
+@smalltext-level-2-color: @text-color-lighter-2;
+
+@link-color: @primary-color;
+@link-hover-color: lighten(@primary-color, 20%);
+@link-active-color: darken(@primary-color, 20%);
+@link-decoration: none;
+@link-hover-decoration: none;
+
+// Shadow
+@shadow-level-1: 3px 3px 8px 2px rgba(0, 0, 0, 0.06);
+@shadow-level-2: 6px 6px 12px 6px rgba(0, 0, 0, 0.08);
+
+
+// border
+@border-color: #d9d9d9;
+@border-main: 1px solid @border-color;
+@border-color-2: lighten(@border-color, 5.9124%);
+@border-main-2: 1px solid @border-color-2;
+
+// rate
+@background-color-disabled: #e9e9e9;
+@background-color-active: #ffa700;
+
+@border-radius-percent: 0;
+
+@body-background: #ffffff;
+@component-background: #ffffff;
+
+// layout
+@layoutMargin: 10px;
+
+// header 
+@headerHeight: 81px;
+
+// footer
+@footerHeight: 160px;

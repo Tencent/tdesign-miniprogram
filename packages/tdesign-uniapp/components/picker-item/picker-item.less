@@ -1,0 +1,50 @@
+@import '../common/style/base.less';
+
+@picker: ~'@{prefix}-picker';
+@item: ~'@{picker}-item';
+@picker-group-height: var(--td-picker-group-height, 400rpx);
+@picker-item-color: var(--td-picker-item-color, @text-color-secondary);
+@picker-item-active-color: var(--td-picker-item-active-color, @text-color-primary);
+@picker-item-font-size: var(--td-picker-item-font-size, @font-size-m);
+
+:host {
+  display: flex;
+  // padding: 0 40rpx;
+}
+
+.@{item} {
+  &__group {
+    height: @picker-group-height;
+    overflow: hidden;
+    flex: 1;
+    z-index: 1;
+  }
+
+  &__wrapper {
+    padding: 144rpx 0;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: @picker-item-color;
+    font-size: @picker-item-font-size;
+
+    &-icon {
+      font-size: 36rpx;
+      margin-right: @spacer;
+    }
+
+    &-label {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    &--active {
+      color: @picker-item-active-color;
+      font-weight: 600;
+    }
+  }
+}

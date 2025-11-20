@@ -1,0 +1,12 @@
+@import '../../../common/style/base.less';
+
+.t-qrcode__canvas-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.t-qrcode__canvas {
+  display: block;
+  // 不设置 width 和 height，由内联样式控制
+  // 避免 100% 导致的尺寸超出问题
+}

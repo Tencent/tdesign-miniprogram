@@ -1,0 +1,15 @@
+.ellipsis(@w:auto) {
+  width: @w;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+.ellipsisLn(@line) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: @line;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}

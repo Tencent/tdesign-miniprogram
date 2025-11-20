@@ -1,0 +1,166 @@
+export const docs = [
+  {
+    title: '开始',
+    titleEn: 'Start',
+    type: 'document', // 普通文档
+    children: [
+      {
+        title: '快速开始',
+        titleEn: 'Getting Started',
+        name: 'getting-started',
+        meta: { docType: 'explain' },
+        path: '/tdesign-uniapp-chat/getting-started',
+        component: () => import('@docs/getting-started.md'),
+      },
+      {
+        title: '更新日志',
+        titleEn: 'CHANGELOG',
+        name: 'changelog',
+        path: '/tdesign-uniapp-chat/changelog',
+        component: () => import('@/CHANGELOG.md'),
+      },
+      {
+        title: '常见问题',
+        titleEn: 'FAQ',
+        name: 'faq',
+        path: '/tdesign-uniapp-chat/faq',
+        component: () => import('@docs/faq.md'),
+      },
+      {
+        title: '什么是流式输出',
+        name: 'sse',
+        path: '/tdesign-uniapp-chat/sse',
+        component: () => import('@docs/sse.md'),
+      },
+    ],
+  },
+  {
+    title: '全局配置',
+    titleEn: 'Global Config',
+    type: 'document',
+    children: [
+      {
+        title: '样式覆盖',
+        titleEn: 'Custom Style',
+        name: 'custom-style',
+        meta: { docType: 'explain' },
+        path: '/tdesign-uniapp-chat/custom-style',
+        component: () => import('@docs/custom-style.md'),
+      },
+      {
+        title: '自定义主题',
+        titleEn: 'Custom Theme',
+        name: 'custom-theme',
+        meta: { docType: 'explain' },
+        path: '/tdesign-uniapp-chat/custom-theme',
+        component: () => import('@docs/custom-theme.md'),
+      },
+      {
+        title: '深色模式',
+        titleEn: 'Dark Mode',
+        name: 'dark-mode',
+        meta: { docType: 'explain' },
+        path: '/tdesign-uniapp-chat/dark-mode',
+        component: () => import('@docs/dark-mode.md'),
+      },
+    ],
+  },
+  {
+    title: '基础',
+    type: 'component', // 组件文档
+    children: [
+      {
+        title: 'ChatList 对话列表',
+        titleEn: 'ChatList',
+        name: 'ChatList 对话列表',
+        meta: { docType: 'base' },
+        path: '/tdesign-uniapp-chat/components/chat-list',
+        component: () => import('@/chat-list/README.md'),
+      },
+      {
+        title: 'ChatSender 对话输入',
+        titleEn: 'ChatSender',
+        name: 'ChatSender 对话输入',
+        meta: { docType: 'base' },
+        path: '/tdesign-uniapp-chat/components/chat-sender',
+        component: () => import('@/chat-sender/README.md'),
+      },
+      {
+        title: 'ChatMessage 对话消息体',
+        titleEn: 'ChatMessage',
+        name: 'ChatMessage 对话消息体',
+        meta: { docType: 'base' },
+        path: '/tdesign-uniapp-chat/components/chat-message',
+        component: () => import('@/chat-message/README.md'),
+      },
+      {
+        title: 'ChatActionbar 对话操作',
+        titleEn: 'ChatActionbar',
+        name: 'ChatActionbar 对话操作',
+        meta: { docType: 'base' },
+        path: '/tdesign-uniapp-chat/components/chat-actionbar',
+        component: () => import('@/chat-actionbar/README.md'),
+      },
+      {
+        title: 'ChatMarkdown Markdown内容',
+        titleEn: 'ChatMarkdown',
+        name: 'ChatMarkdown Markdown内容',
+        meta: { docType: 'base' },
+        path: '/tdesign-uniapp-chat/components/chat-markdown',
+        component: () => import('@/chat-markdown/README.md'),
+        componentEn: () => import('@/chat-markdown/README.en-US.md'),
+      },
+      {
+        title: 'ChatThinking 思考过程',
+        titleEn: 'ChatThinking',
+        name: 'ChatThinking 思考过程',
+        meta: { docType: 'base' },
+        path: '/tdesign-uniapp-chat/components/chat-thinking',
+        component: () => import('@/chat-thinking/README.md'),
+        componentEn: () => import('@/chat-thinking/README.en-US.md'),
+      },
+      {
+        title: 'ChatLoading 对话加载',
+        titleEn: 'ChatLoading',
+        name: 'ChatLoading 对话加载',
+        meta: { docType: 'base' },
+        path: '/tdesign-uniapp-chat/components/chat-loading',
+        component: () => import('@/chat-loading/README.md'),
+        componentEn: () => import('@/chat-loading/README.en-US.md'),
+      },
+      {
+        title: 'Attachments 文件附件',
+        titleEn: 'Attachments',
+        name: 'Attachments 文件附件',
+        meta: { docType: 'base' },
+        path: '/tdesign-uniapp-chat/components/attachments',
+        component: () => import('@/attachments/README.md'),
+        componentEn: () => import('@/attachments/README.en-US.md'),
+      },
+      {
+        title: 'ChatContent 对话正文',
+        titleEn: 'ChatContent',
+        name: 'ChatContent 对话正文',
+        meta: { docType: 'base' },
+        path: '/tdesign-uniapp-chat/components/chat-content',
+        component: () => import('@/chat-content/README.md'),
+        componentEn: () => import('@/chat-content/README.en-US.md'),
+      },
+    ],
+  },
+];
+
+export const enDocs = docs.map(doc => ({
+  ...doc,
+  title: doc.titleEn || '',
+  children: doc?.children?.map(child => ({
+    title: child.titleEn || '',
+    name: `${child.name}-en`,
+    path: `${child.path}-en`,
+    meta: { lang: 'en' },
+    component: child.componentEn || child.component,
+  })),
+}));
+
+export default { enDocs, docs };
+
