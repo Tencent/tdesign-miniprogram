@@ -82,6 +82,15 @@
 @spacer-5: var(--td-spacer-5, 96rpx); // 间距-大-x
 @spacer-6: var(--td-spacer-6, 160rpx); // 间距-大-xx
 
+@text-line-height: var(--td-line-height-body-extraSmall, 16px);
+@text-line-height-xs: var(--td-line-height-body-extraSmall, @text-line-height);
+@text-line-height-s: var(--td-line-height-body-small, 20px);
+@text-line-height-base: var(--td-line-height-title-small, 22px);
+@text-line-height-m: var(--td-line-height-title-medium, 24px);
+@text-line-height-l: var(--td-line-height-title-large, 26px);
+@text-line-height-xl: var(--td-line-height-title-extraLarge, 28px);
+@text-line-height-xxl: var(--td-line-height-headline-large, 44px);
+
 // Font
 @font-size: var(--td-font-size, 20rpx);
 @font-size-xs: var(--td-font-size-xs, @font-size); // 字号-一级字号
@@ -94,6 +103,28 @@
 
 @font-family: var(--td-font-family, PingFang SC, Microsoft YaHei, Arial Regular); // 字体-磅数-常规
 @font-family-medium: var(--td-font-family-medium, PingFang SC, Microsoft YaHei, Arial Medium); // 字体-磅数-粗体
+
+// 使用以下与Design Token对应的font token开发组件对应字体、行高
+@font-link-small: var(--td-font-link-small);
+@font-link-medium: var(--td-font-link-medium);
+@font-link-large: var(--td-font-link-large);
+@font-mark-extraSmall: var(--td-font-mark-extraSmall);
+@font-mark-small: var(--td-font-mark-small);
+@font-mark-medium: var(--td-font-mark-medium);
+@font-mark-large: var(--td-font-mark-large);
+@font-body-extraSmall: var(--td-font-body-extraSmall);
+@font-body-small: var(--td-font-body-small);
+@font-body-medium: var(--td-font-body-medium);
+@font-body-large: var(--td-font-body-large);
+@font-title-small: var(--td-font-title-small);
+@font-title-medium: var(--td-font-title-medium);
+@font-title-large: var(--td-font-title-large);
+@font-title-extraLarge: var(--td-font-title-extraLarge);
+@font-headline-small: var(--td-font-headline-small);
+@font-headline-medium: var(--td-font-headline-medium);
+@font-headline-large: var(--td-font-headline-large);
+@font-display-medium: var(--td-font-display-medium);
+@font-display-large: var(--td-font-display-large);
 
 // 圆角
 @radius-small: var(--td-radius-small, 6rpx);
