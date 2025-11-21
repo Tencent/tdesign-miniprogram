@@ -3,14 +3,18 @@
 @chat-actionbar: ~'@{prefix}-chat-actionbar';
 
 @chat-actionbar-padding: var(--chat-actionbar-padding, 0);
-@chat-actionbar-item-padding: var(--chat-actionbar-item-padding, 16rpx 28rpx);
+@chat-actionbar-item-padding: var(--chat-actionbar-item-padding, 4rpx 28rpx);
+@chat-actionbar-item-margin: 12rpx 0;
 @chat-actionbar-item-color: @text-color-primary;
 @chat-actionbar-item-active: @brand-color;
 
 // TODO: 长按弹出层样式
-@chat-actionbar-popover-background: @mask-active;
-@chat-actionbar-popover-radius: 32rpx;
-@chat-actionbar-popover-padding: 45rpx;
+@chat-actionbar-popover-background: rgba(0, 0, 0, 0.9);
+@chat-actionbar-popover-radius: 6rpx;
+@chat-actionbar-popover-padding: 40rpx 16rpx;
+@chat-actionbar-popover-padding-tri-width: 24rpx;
+@chat-actionbar-popover-padding-tri-height: 10rpx;
+@chat-actionbar-popover-item-color: @font-white-1;
 
 .@{chat-actionbar} {
   display: flex;
@@ -23,6 +27,53 @@
 
   &.end {
     justify-content: flex-end;
+  }
+
+  // 弹出层
+  &--popover {
+    position: fixed;
+    display: none;
+    padding: @chat-actionbar-popover-padding;
+    color: @font-white-1;
+    background-color: @chat-actionbar-popover-background;
+    border-radius: @chat-actionbar-popover-radius;
+
+    // 顶部三角形
+    &::before {
+      content: '';
+      position: absolute;
+      top: calc(@chat-actionbar-popover-padding-tri-height * -2);
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: @chat-actionbar-popover-padding-tri-width solid transparent;
+      border-right: @chat-actionbar-popover-padding-tri-width solid transparent;
+      border-bottom: calc(@chat-actionbar-popover-padding-tri-height * 2) solid @chat-actionbar-popover-background;
+    }
+
+    &.popover-visible {
+      display: block;
+    }
+
+    .@{chat-actionbar}__inner {
+      background-color: unset;
+      border: none;
+
+      &--column {
+        gap: 8rpx;
+      }
+    }
+
+    .@{chat-actionbar}__item--popover {
+      color: #fff;
+      background-color: unset;
+      padding: 0;
+      font-size: 28rpx;
+      line-height: 42rpx;
+      width: 128rpx;
+      text-align: center;
+    }
   }
 
   // 内部容器
@@ -42,14 +93,6 @@
       align-items: center;
       justify-content: space-between;
     }
-
-    // 弹出层
-    &--popover {
-      padding: @chat-actionbar-popover-padding;
-      background-color: @chat-actionbar-popover-background;
-      border-radius: @chat-actionbar-popover-radius;
-      color: @font-white-1;
-    }
   }
 
   // 左侧内容
@@ -62,8 +105,8 @@
   // 操作项
   &__item {
     color: @chat-actionbar-item-color;
-    margin: 12rpx 0;
-    padding: 4rpx 28rpx;
+    margin: @chat-actionbar-item-margin;
+    padding: @chat-actionbar-item-padding;
     border-right: 2rpx solid @component-stroke;
     background-color: unset;
     outline: none;
