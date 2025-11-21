@@ -1,4 +1,4 @@
-<view id="{{classPrefix}}-wrapper" class="{{classPrefix}}__wrapper" bind:tap="onWrapperTap">
+<view id="{{classPrefix}}-wrapper" class="{{classPrefix}}__wrapper">
   <slot />
 </view>
 

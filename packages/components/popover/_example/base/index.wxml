@@ -35,11 +35,12 @@
 
   <view class="demo-block__header-desc" style="margin-top: 32rpx">自定义内容弹出气泡</view>
   <t-popover
+    class="custom"
     placement="top"
     theme="dark"
-    bind:visible-change="onVisibleChange"
-    data-target="custom"
     visible="{{visible.custom}}"
+    data-target="custom"
+    bind:visible-change="onVisibleChange"
   >
     <view slot="content">
       <view class="custom__list">
@@ -48,9 +49,9 @@
     </view>
 
     <view class="popover-example__content">
-      <t-button theme="primary" variant="outline" size="large" data-target="custom" bind:tap="showPopover"
-        >自定义内容</t-button
-      ></view
-    >
+      <t-button theme="primary" variant="outline" size="large" data-target="custom" bind:tap="showPopover">
+        自定义内容
+      </t-button>
+    </view>
   </t-popover>
 </view>

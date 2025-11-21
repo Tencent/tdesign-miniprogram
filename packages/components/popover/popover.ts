@@ -1,4 +1,4 @@
-import { getWindowInfo } from 'tdesign-miniprogram/common/wechat';
+import { getWindowInfo } from '../common/wechat';
 import { TdPopoverProps } from './type';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
@@ -6,7 +6,6 @@ import props from './props';
 import { unitConvert } from '../common/utils';
 import transition from '../mixins/transition';
 
-// 保留 visible 以支持受控用法
 delete props.visible;
 
 export interface PopoverProps extends TdPopoverProps {}
@@ -59,7 +58,7 @@ export default class Popover extends SuperComponent {
 
   methods = {
     updateVisible(visible: boolean) {
-      if (visible === this.data.realVisible) return;
+      if (visible === this.data.visible) return;
       this.setData({ visible }, () => {
         this.triggerEvent('visible-change', { visible });
       });
@@ -69,11 +68,6 @@ export default class Popover extends SuperComponent {
       if (this.properties.closeOnClickOutside) {
         this.updateVisible(false);
       }
-    },
-
-    onWrapperTap() {
-      const curr = !!this.data.visible;
-      this.updateVisible(!curr);
     },
 
     calcArrowStyle(placement: string, contentDom: any, popoverDom: any) {
