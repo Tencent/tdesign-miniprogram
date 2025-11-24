@@ -5,8 +5,7 @@
 @divider-horizontal-margin: var(--td-divider-horizontal-margin, 20rpx);
 @divider-vertical-margin: var(--td-divider-vertical-margin, @spacer);
 @divider-content-color: var(--td-divider-content-color, @text-color-placeholder);
-@divider-content-font-size: var(--td-divider-content-font-size, @font-size-s);
-@divider-content-line-height: var(--td-divider-content-line-height, 40rpx);
+@divider-content-font: var(--td-divider-content-font, @font-body-small);
 @divider-content-line-style: var(--td-divider-content-line-style, solid);
 @divider-content-margin: var(--td-divider-content-margin, @spacer-1);
 
@@ -67,8 +66,7 @@
   }
 
   &__content {
-    font-size: @divider-content-font-size;
-    line-height: @divider-content-line-height;
+    font-size: @divider-content-font;
     color: @divider-content-color;
   }
 

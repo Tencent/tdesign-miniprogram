@@ -22,25 +22,20 @@
 @tag-disabled-border-color: var(--td-tag-disabled-border-color, @component-border);
 
 // size
-@tag-small-padding: var(--td-tag-small-padding, 12rpx - 1px);
-@tag-medium-padding: var(--td-tag-medium-padding, 16rpx - 1px);
-@tag-large-padding: var(--td-tag-large-padding, 16rpx - 1px);
-@tag-extra-large-padding: var(--td-tag-extra-large-padding, 32rpx - 1px);
+@tag-small-padding: var(--td-tag-small-padding, 2rpx 10rpx);
+@tag-medium-padding: var(--td-tag-medium-padding, 2rpx 14rpx);
+@tag-large-padding: var(--td-tag-large-padding, 4rpx 14rpx);
+@tag-extra-large-padding: var(--td-tag-extra-large-padding, 16rpx 30rpx);
 
-@tag-small-font-size: var(--td-tag-small-font-size, @font-size);
-@tag-medium-font-size: var(--td-tag-medium-font-size, @font-size-s);
-@tag-large-font-size: var(--td-tag-large-font-size, @font-size-base);
-@tag-extra-large-font-size: var(--td-tag-extra-large-font-size, @font-size-base);
+@tag-small-font: var(--td-tag-small-font, @font-body-extraSmall);
+@tag-medium-font: var(--td-tag-medium-font-size, @font-body-small);
+@tag-large-font: var(--td-tag-large-font, @font-body-medium);
+@tag-extra-large-font: var(--td-tag-extra-large-font, @font-body-medium);
 
 @tag-small-icon-size: var(--td-tag-small-icon-size, 24rpx);
 @tag-medium-icon-size: var(--td-tag-medium-icon-size, 28rpx);
 @tag-large-icon-size: var(--td-tag-large-icon-size, 32rpx);
 @tag-extra-large-icon-size: var(--td-tag-extra-large-icon-size, 32rpx);
-
-@tag-small-height: var(--td-tag-small-height, 40rpx);
-@tag-medium-height: var(--td-tag-medium-height, 48rpx);
-@tag-large-height: var(--td-tag-large-height, 56rpx);
-@tag-extra-large-height: var(--td-tag-extra-large-height, 80rpx);
 
 @tag-square-border-radius: var(--td-tag-square-border-radius, 8rpx);
 @tag-round-border-radius: var(--td-tag-round-border-radius, 999px);
@@ -66,7 +61,6 @@
   border: 2rpx solid transparent;
   box-sizing: border-box;
   border-radius: @tag-square-border-radius;
-  font-size: @tag-medium-font-size;
   user-select: none;
   vertical-align: middle;
 
@@ -87,10 +81,8 @@
   }
 
   &--small {
-    height: @tag-small-height;
-    line-height: @tag-small-height;
-    padding: 0 @tag-small-padding;
-    font-size: @tag-small-font-size;
+    padding: @tag-small-padding;
+    font: @tag-small-font;
 
     .@{prefix}-icon,
     .@{prefix}-icon-close {
@@ -99,10 +91,8 @@
   }
 
   &--medium {
-    height: @tag-medium-height;
-    line-height: @tag-medium-height;
-    padding: 0 @tag-medium-padding;
-    font-size: @tag-medium-font-size;
+    padding: @tag-medium-padding;
+    font: @tag-medium-font;
 
     .@{prefix}-icon,
     .@{prefix}-icon-close {
@@ -111,10 +101,8 @@
   }
 
   &--large {
-    height: @tag-large-height;
-    line-height: @tag-large-height;
-    padding: 0 @tag-large-padding;
-    font-size: @tag-large-font-size;
+    padding: @tag-large-padding;
+    font: @tag-large-font;
 
     .@{prefix}-icon,
     .@{prefix}-icon-close {
@@ -123,10 +111,8 @@
   }
 
   &--extra-large {
-    height: @tag-extra-large-height;
-    line-height: @tag-extra-large-height;
-    padding: 0 @tag-extra-large-padding;
-    font-size: @tag-extra-large-font-size;
+    padding: @tag-extra-large-padding;
+    font: @tag-extra-large-font;
 
     .@{prefix}-icon,
     .@{prefix}-icon-close {

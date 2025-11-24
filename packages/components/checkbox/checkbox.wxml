@@ -25,12 +25,12 @@
       <t-icon
         wx:if="{{checked && (icon == 'circle' || icon == 'rectangle')}}"
         name="{{indeterminate ? ('minus-' + icon + '-filled') : ('check-' + icon + '-filled')}}"
-        class="{{_.cls(classPrefix + '__icon-wrapper', [])}}"
+        class="{{classPrefix}}__icon-wrapper"
       />
       <t-icon
         wx:if="{{checked && icon == 'line'}}"
         name="{{indeterminate ? ('minus-' + icon + '-filled') : 'check'}}"
-        class="{{_.cls(classPrefix + '__icon-wrapper', [])}}"
+        class="{{classPrefix}}__icon-wrapper"
       />
       <view
         wx:elif="{{!checked && (icon == 'circle' || icon == 'rectangle')}}"

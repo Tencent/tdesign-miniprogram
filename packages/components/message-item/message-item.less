@@ -6,8 +6,7 @@
 
 @message-align: flex-start;
 @message-icon-size: 44rpx;
-@message-content-height: 44rpx;
-@message-content-font-size: @font-size-base;
+@message-content-font: @font-body-medium;
 
 @message-bg-color: var(--td-message-bg-color, @bg-color-container); // 消息通知背景颜色
 @message-box-shadow: var(--td-message-box-shadow, @shadow-1); // 消息通知阴影
@@ -42,8 +41,7 @@
   &__text {
     display: inline-block;
     color: @message-content-font-color;
-    font-size: @message-content-font-size;
-    line-height: @message-content-height;
+    font: @message-content-font;
   }
 
   &__text-wrap {

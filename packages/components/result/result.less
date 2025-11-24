@@ -2,12 +2,10 @@
 
 @result-icon-font-size: 160rpx;
 
-@result-title-font-size: var(--td-result-title-font-size, @font-size-xl);
-@result-title-line-height: var(--td-result-title-line-height, 56rpx);
+@result-title-font: var(--td-result-title-font, @font-title-extraLarge);
 @result-title-color: var(--td-result-title-color, @text-color-primary);
 
-@result-description-font-size: var(--td-result-description-font-size, @font-size-base);
-@result-description-line-height: var(--td-result-description-line-height, 44rpx);
+@result-description-font: var(--td-result-description-font, @font-body-medium);
 @result-description-color: var(--td-result-description-color, @text-color-secondary);
 
 @result-icon-default-color: var(--td-result-icon-default-color, @brand-color);
@@ -28,9 +26,7 @@
   }
 
   &__title {
-    line-height: @result-title-line-height; // 标题行高
-    font-size: @result-title-font-size; // 标题文字大小
-    font-weight: 700;
+    font: @result-title-font; // 标题字体大小
     color: @result-title-color; // 标题颜色
   }
 
@@ -41,8 +37,7 @@
   &__description {
     text-align: center;
     color: @result-description-color; // 描述颜色
-    font-size: @result-description-font-size; // 描述文字大小
-    line-height: @result-description-line-height; // 描述行高
+    font: @result-description-font; // 描述文字字体大小
   }
 
   &__title + &__description:not(:empty) {

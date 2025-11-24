@@ -3,8 +3,7 @@
 @color-picker-panel-width: var(--td-color-picker-panel-width, 750rpx);
 @color-picker-panel-padding: var(--td-color-picker-panel-padding, 32rpx);
 @color-picker-panel-radius: var(--td-color-picker-panel-radius, 24rpx);
-@color-picker-panel-background: var(--td-color-picker-background, #fff);
-@color-picker-margin: var(--td-color-picker-margin, 24rpx);
+@color-picker-panel-background: var(--td-color-picker-panel-background, @bg-color-container);
 
 @color-picker-saturation-height: var(--td-color-picker-saturation-height, 288rpx);
 @color-picker-saturation-radius: var(--td-color-picker-saturation-radius, 12rpx);
@@ -22,16 +21,14 @@
 @color-picker-gradient-preview-height: var(--td-color-picker-gradient-preview-height, 56rpx);
 @color-picker-gradient-preview-radius: var(--td-color-picker-gradient-preview-radius, 6rpx);
 
-@color-picker-swatches-title-font: var(--td-color-picker-swatches-title-font, 32rpx);
+@color-picker-swatches-title-font: var(--td-color-picker-swatches-title-font, @font-title-medium);
 @color-picker-swatch-width: var(--td-color-picker-swatch-width, 48rpx);
 @color-picker-swatch-height: var(--td-color-picker-swatch-height, 48rpx);
 @color-picker-swatch-padding: var(--td-color-picker-swatch-padding, 0);
-@color-picker-swatch-border-radius: var(--td-color-picker-swatch-border-radius, 6rpx);
-@color-picker-swatch-active: var(--td-color-picker-swatch-active, rgba(0, 0, 0, 0.2));
+@color-picker-swatch-border-radius: var(--td-color-picker-swatch-border-radius, @radius-small);
 
 @color-picker-thumbs-shadow: @shadow-1;
-@color-picker-border-radius-circle: var(--td-color-picker-border-radius-circle, 50%);
-@color-picker-format-background-color: var(--td-color-picker-format-background-color, @gray-color-1);
+@color-picker-border-radius-circle: var(--td-color-picker-border-radius-circle, @radius-circle);
 
 @color-picker: ~'@{prefix}-color-picker';
 
@@ -69,7 +66,7 @@
       border-radius: @color-picker-border-radius-circle;
       box-sizing: border-box;
       display: block;
-      border: 1px solid #dcdcdc;
+      border: 1px solid @component-border;
     }
 
     &::before {
@@ -192,7 +189,7 @@
 
   &__sliders-preview {
     flex-shrink: 0;
-    margin-left: @color-picker-margin;
+    margin-left: @spacer-1;
     width: @color-picker-gradient-preview-width;
     height: @color-picker-gradient-preview-height;
     border-radius: @color-picker-gradient-preview-radius;
@@ -211,21 +208,23 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: rgba(0, 0, 0, 0.4);
-    font-size: 28rpx;
+    color: @text-color-placeholder;
     text-align: center;
-    line-height: 56rpx;
-    height: 56rpx;
-    margin-top: 40rpx;
+  }
+
+  &__format:not(:empty) + &__swatches-wrap:not(:empty) {
+    margin-top: 56rpx;
   }
 
   &__format-item {
-    background: @color-picker-format-background-color;
+    font: @font-body-medium;
+
     &--first {
       flex-shrink: 0;
       width: 136rpx;
-      border: 1px solid #dcdcdc;
-      border-radius: 12rpx;
+      border: 2rpx solid @component-border;
+      border-radius: @radius-default;
+      padding: 6rpx 0;
       margin-right: 24rpx;
     }
 
@@ -243,10 +242,10 @@
   &__format-input {
     flex: 1;
     width: 0;
-    margin-left: -1px;
-
-    border: 1px solid #dcdcdc;
-    border-radius: 12rpx;
+    margin-left: -2rpx;
+    padding: 6rpx 0;
+    border: 1px solid @component-border;
+    border-radius: @radius-default;
 
     &:not(:first-child):not(:last-child) {
       border-radius: 0;
@@ -270,25 +269,22 @@
   }
 
   &__swatches-wrap {
-    margin-top: 56rpx;
     position: relative;
   }
 
   &__swatches {
     + .@{color-picker}__swatches {
-      margin-top: @color-picker-margin;
+      margin-top: @spacer-1;
     }
   }
 
   &__swatches-title {
     font: @color-picker-swatches-title-font;
     padding: 0;
-    color: rgba(0, 0, 0, 0.9);
+    color: @text-color-primary;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 48rpx;
-    line-height: 48rpx;
   }
 
   &__swatches-items {
@@ -311,7 +307,7 @@
   &__swatches-item {
     width: @color-picker-swatch-width;
     height: @color-picker-swatch-height;
-    border-radius: 6rpx;
+    border-radius: @radius-small;
     padding: @color-picker-swatch-padding;
     overflow: hidden;
 

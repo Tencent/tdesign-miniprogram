@@ -1,6 +1,6 @@
 @import '../common/style/base.less';
 
-@notice-bar-font-size: @font-size-base;
+@notice-bar-font: @font-body-medium;
 @notice-bar-horizontal-padding: 32rpx;
 @notice-bar-vertical-padding: 26rpx;
 @notice-bar-line-height: 44rpx;
@@ -24,12 +24,11 @@
   display: flex;
   align-items: flex-start;
   padding: @notice-bar-vertical-padding @notice-bar-horizontal-padding;
-  font-size: @notice-bar-font-size;
 
   &__content-wrap {
     flex: 1;
     overflow-x: hidden;
-    line-height: @notice-bar-line-height;
+    font: @notice-bar-font;
     color: @notice-bar-font-color;
   }
 

@@ -28,8 +28,7 @@
 
 @chat-markdown-code-text-font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New',
   monospace;
-@chat-markdown-code-text-font-size: 28rpx;
-@chat-markdown-code-text-line-height: 1.6;
+@chat-markdown-code-text-font: @font-body-medium;
 @chat-markdown-code-text-color-light: #24292f;
 @chat-markdown-code-text-color-dark: #e6edf3;
 
@@ -67,9 +66,8 @@
 
   // 代码文本
   &__text {
+    font: @chat-markdown-code-text-font;
     font-family: @chat-markdown-code-text-font-family;
-    font-size: @chat-markdown-code-text-font-size;
-    line-height: @chat-markdown-code-text-line-height;
     color: @chat-markdown-code-text-color-light;
     /* 关键设置：防止换行 */
     white-space: pre;

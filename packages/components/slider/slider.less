@@ -19,11 +19,11 @@
 @slider-capsule-bar-heihgt: var(--td-slider-capsule-bar-heihgt, 48rpx);
 @slider-capsule-bar-width: var(--td-slider-capsule-bar-width, 48rpx);
 @slider-capsule-bar-color: var(--td-slider-capsule-bar-color, @bg-color-component);
-@slider-capsule-line-heihgt: var(--td-slider-capsule-line-heihgt, 36rpx);
+@slider-capsule-line-height: var(--td-slider-capsule-line-heihgt, 36rpx);
 
 .@{slider} {
   width: 100%;
-  font-size: 14px;
+  font-size: @font-body-medium;
   display: flex;
   align-items: center;
 
@@ -57,12 +57,12 @@
     }
 
     &--capsule {
-      height: @slider-capsule-line-heihgt;
+      height: @slider-capsule-line-height;
     }
 
     &--capsule&--single {
-      border-top-left-radius: calc(@slider-capsule-line-heihgt / 2);
-      border-bottom-left-radius: calc(@slider-capsule-line-heihgt / 2);
+      border-top-left-radius: calc(@slider-capsule-line-height / 2);
+      border-bottom-left-radius: calc(@slider-capsule-line-height / 2);
     }
   }
 
@@ -93,7 +93,6 @@
       text-align: center;
       width: 96rpx;
       height: 44rpx;
-      line-height: 44rpx;
     }
   }
 
@@ -191,11 +190,11 @@
       }
 
       &--capsule {
-        height: @slider-capsule-line-heihgt;
+        height: @slider-capsule-line-height;
         width: 4rpx;
         border-radius: 0;
         background-color: @slider-capsule-bar-color;
-        margin-top: calc(-0.5 * @slider-capsule-line-heihgt);
+        margin-top: calc(-0.5 * @slider-capsule-line-height);
       }
 
       &--hidden {
@@ -242,8 +241,8 @@
     border-radius: calc(@slider-bar-width / 2);
 
     &--capsule.@{slider}__line--single {
-      border-top-left-radius: calc(@slider-capsule-line-heihgt / 2);
-      border-top-right-radius: calc(@slider-capsule-line-heihgt / 2);
+      border-top-left-radius: calc(@slider-capsule-line-height / 2);
+      border-top-right-radius: calc(@slider-capsule-line-height / 2);
     }
   }
 
@@ -294,7 +293,7 @@
 
       &--capsule {
         height: 4rpx;
-        width: @slider-capsule-line-heihgt;
+        width: @slider-capsule-line-height;
       }
     }
 

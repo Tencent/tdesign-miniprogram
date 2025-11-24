@@ -7,12 +7,11 @@
 // font-size
 @collapse-title-font-size: var(--td-collapse-title-font-size, @font-size-m);
 @collapse-extra-font-size: var(--td-collapse-extra-font-size, @font-size-m);
-@collapse-content-font-size: var(--td-collapse-content-font-size, @font-size-base);
+@collapse-content-font: var(--td-collapse-content-font, @font-body-medium);
 
 @collapse-header-height: var(--td-collapse-header-height, auto);
 @collapse-horizontal-padding: var(--td-collapse-horizontal-padding, 32rpx);
 @collapse-content-padding: var(--td-collapse-content-padding, 32rpx);
-@collapse-content-line-height: var(--td-collapse-content-line-height, 1.5);
 @collapse-border-color: var(--td-collapse-border-color, @border-level-1-color);
 @collapse-icon-color: var(--td-collapse-icon-color, @font-gray-3);
 
@@ -88,9 +87,8 @@
 
   &__content {
     color: @collapse-content-text-color;
-    font-size: @collapse-content-font-size;
+    font: @collapse-content-font;
     padding: @collapse-content-padding;
-    line-height: @collapse-content-line-height;
 
     &--disabled {
       color: @text-color-disabled;

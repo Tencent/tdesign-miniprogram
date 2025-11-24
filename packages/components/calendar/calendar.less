@@ -99,11 +99,9 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 32rpx;
+      font: @font-title-medium;
       border-radius: @calendar-selected-border-radius;
       height: 120rpx;
-      line-height: 48rpx;
-      font-weight: 600;
       margin-top: 16rpx;
       color: @calendar-title-color;
 
@@ -112,11 +110,9 @@
       &-prefix,
       &-suffix {
         position: absolute;
-        font-size: 20rpx;
-        line-height: 32rpx;
+        font: @font-body-extraSmall;
         width: 100%;
         text-align: center;
-        font-weight: 400;
       }
 
       &-prefix {
@@ -215,7 +211,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  line-height: 44rpx;
 
   &__with-action {
     padding: 0rpx 32rpx 16rpx 32rpx;
@@ -227,7 +222,7 @@
   &__with-action &__title {
     flex: 1;
     text-align: center;
-    font-size: 28rpx;
+    font: @font-title-small;
     font-weight: 600;
   }
 
