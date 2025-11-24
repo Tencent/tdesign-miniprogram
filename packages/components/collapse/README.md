@@ -123,8 +123,7 @@ t-class-header | 头部样式类
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-collapse-border-color | @border-level-1-color | - 
---td-collapse-content-font-size | @font-size-base | - 
---td-collapse-content-line-height | 1.5 | - 
+--td-collapse-content-font | @font-body-medium | - 
 --td-collapse-content-padding | 32rpx | - 
 --td-collapse-content-text-color | @text-color-primary | - 
 --td-collapse-extra-font-size | @font-size-m | - 

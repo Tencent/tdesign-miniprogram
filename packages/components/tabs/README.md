@@ -186,7 +186,7 @@ panel | 自定义 `panel` 显示内容
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-tab-border-color | @component-stroke | - 
---td-tab-font-size | 28rpx | - 
+--td-tab-font | @font-body-medium | - 
 --td-tab-icon-size | 36rpx | - 
 --td-tab-item-active-color | @brand-color | - 
 --td-tab-item-color | @text-color-primary | - 

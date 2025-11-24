@@ -124,7 +124,7 @@ t-class-left | 左侧图标样式类
 --td-search-clear-icon-color | @text-color-placeholder | - 
 --td-search-clear-icon-font-size | 48rpx | - 
 --td-search-disabled-text-color | @text-color-disabled | - 
---td-search-font-size | @font-size-m | - 
+--td-search-font | @font-body-large | - 
 --td-search-height | 80rpx | - 
 --td-search-icon-color | @text-color-placeholder | - 
 --td-search-icon-font-size | 48rpx | - 

@@ -37,14 +37,12 @@ The component provides the following CSS variables, which can be used to customi
 Name | Default Value | Description 
 -- | -- | --
 --td-result-description-color | @text-color-secondary | - 
---td-result-description-font-size | @font-size-base | - 
---td-result-description-line-height | 44rpx | - 
+--td-result-description-font | @font-body-medium | - 
 --td-result-description-margin-top | @spacer | - 
 --td-result-icon-default-color | @brand-color | - 
 --td-result-icon-error-color | @error-color | - 
 --td-result-icon-success-color | @success-color | - 
 --td-result-icon-warning-color | @warning-color | - 
 --td-result-title-color | @text-color-primary | - 
---td-result-title-font-size | @font-size-xl | - 
---td-result-title-line-height | 56rpx | - 
+--td-result-title-font | @font-title-extraLarge | - 
 --td-result-title-margin-top | @spacer-1 | -

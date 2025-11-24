@@ -87,5 +87,5 @@ Name | Default Value | Description
 --td-swiper-nav-dots-bar-active-width | 40rpx | - 
 --td-swiper-nav-fraction-bg-color | @font-gray-3 | - 
 --td-swiper-nav-fraction-color | @text-color-anti | - 
---td-swiper-nav-fraction-font-size | 24rpx | - 
+--td-swiper-nav-fraction-font | @font-body-small | - 
 --td-swiper-nav-fraction-height | 48rpx | -

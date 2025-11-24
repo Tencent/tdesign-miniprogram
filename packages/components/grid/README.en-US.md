@@ -78,8 +78,7 @@ Name | Default Value | Description
 --td-grid-card-radius | @radius-large | - 
 --td-grid-item-bg-color | @bg-color-container | - 
 --td-grid-item-description-color | @text-color-placeholder | - 
---td-grid-item-description-font-size | 24rpx | - 
---td-grid-item-description-line-height | 40rpx | - 
+--td-grid-item-description-font | @font-body-small | - 
 --td-grid-item-description-padding-top | 0 | - 
 --td-grid-item-horizontal-text-description-top | 0 | - 
 --td-grid-item-horizontal-text-padding-left | 0 | - 
@@ -89,8 +88,7 @@ Name | Default Value | Description
 --td-grid-item-image-width | 96rpx | - 
 --td-grid-item-padding | 32rpx | - 
 --td-grid-item-text-color | @text-color-primary | - 
---td-grid-item-text-font-size | 28rpx | - 
---td-grid-item-text-line-height | 44rpx | - 
---td-grid-item-text-middle-font-size | 24rpx | - 
+--td-grid-item-text-font | @font-title-small | - 
+--td-grid-item-text-middle-font | @font-body-small | - 
 --td-grid-item-text-padding-top | 16rpx | - 
---td-grid-item-text-small-font-size | 24rpx | -
+--td-grid-item-text-small-font | @font-body-extraSmall | -

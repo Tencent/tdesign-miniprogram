@@ -69,8 +69,7 @@ The component provides the following CSS variables, which can be used to customi
 Name | Default Value | Description 
 -- | -- | --
 --td-collapse-border-color | @border-level-1-color | - 
---td-collapse-content-font-size | @font-size-base | - 
---td-collapse-content-line-height | 1.5 | - 
+--td-collapse-content-font | @font-body-medium | - 
 --td-collapse-content-padding | 32rpx | - 
 --td-collapse-content-text-color | @text-color-primary | - 
 --td-collapse-extra-font-size | @font-size-m | - 

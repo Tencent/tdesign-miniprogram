@@ -42,10 +42,9 @@ Name | Default Value | Description
 --td-progress-inner-bg-color-error | @error-color | - 
 --td-progress-inner-bg-color-success | @success-color | - 
 --td-progress-inner-bg-color-warning | @warning-color | - 
+--td-progress-circle-icon-font-size | 96rpx | - 
 --td-progress-circle-inner-bg-color | @text-color-anti | - 
---td-progress-circle-label-font-size | 40rpx | - 
---td-progress-circle-label-font-weight | 700 | - 
---td-progress-circle-label-line-height | 56rpx | - 
+--td-progress-circle-label-font | @font-title-extraLarge | - 
 --td-progress-circle-width | 224rpx | - 
 --td-progress-inner-bg-color | @brand-color | - 
 --td-progress-line-stroke-width | 12rpx | - 

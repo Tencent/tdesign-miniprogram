@@ -96,8 +96,7 @@ Name | Default Value | Description
 --td-cell-border-right-space | 0 | - 
 --td-cell-border-width | 1px | - 
 --td-cell-description-color | @text-color-secondary | - 
---td-cell-description-font-size | @font-size-base | - 
---td-cell-description-line-height | 44rpx | - 
+--td-cell-description-font-size | @font-body-medium | - 
 --td-cell-height | auto | - 
 --td-cell-horizontal-padding | 32rpx | - 
 --td-cell-hover-color | @bg-color-secondarycontainer | - 
@@ -105,7 +104,6 @@ Name | Default Value | Description
 --td-cell-image-width | 96rpx | - 
 --td-cell-left-icon-color | @brand-color | - 
 --td-cell-left-icon-font-size | 48rpx | - 
---td-cell-line-height | 48rpx | - 
 --td-cell-note-color | @text-color-placeholder | - 
 --td-cell-note-font-size | @font-size-m | - 
 --td-cell-required-color | @error-color | - 
@@ -113,5 +111,5 @@ Name | Default Value | Description
 --td-cell-right-icon-color | @text-color-placeholder | - 
 --td-cell-right-icon-font-size | 48rpx | - 
 --td-cell-title-color | @text-color-primary | - 
---td-cell-title-font-size | @font-size-m | - 
+--td-cell-title-font-size | @font-body-large | - 
 --td-cell-vertical-padding | 32rpx | -
