@@ -149,7 +149,7 @@ t-class-text | 文本样式类
 --td-grid-item-image-width | 96rpx | - 
 --td-grid-item-padding | 32rpx | - 
 --td-grid-item-text-color | @text-color-primary | - 
---td-grid-item-text-font | @font-title-small | - 
+--td-grid-item-text-font | @font-body-medium | - 
 --td-grid-item-text-middle-font | @font-body-small | - 
 --td-grid-item-text-padding-top | 16rpx | - 
 --td-grid-item-text-small-font | @font-body-extraSmall | -

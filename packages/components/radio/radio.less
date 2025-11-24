@@ -1,7 +1,7 @@
 @import '../common/style/base.less';
 
 @radio-icon-size: var(--td-radio-icon-size, 48rpx);
-@radio-label-font: var(--td-radio-font-size, @font-body-large);
+@radio-label-font: var(--td-radio-font, @font-body-large);
 @radio-label-line-height: var(--td-radio-label-line-height, 48rpx);
 @radio-vertical-padding: var(--td-radio-vertical-padding, 32rpx);
 @radio-bg-color: var(--td-radio-bg-color, @bg-color-container);
@@ -181,7 +181,6 @@
     .limit-title-row();
     color: @radio-label-color;
     font: @radio-label-font;
-    line-height: @radio-label-line-height;
 
     &--checked {
       color: @radio-label-checked-color;

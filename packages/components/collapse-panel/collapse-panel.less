@@ -5,8 +5,8 @@
 @collapse-header-text-disabled-color: var(--td-collapse-header-text-disabled-color, @text-color-disabled);
 
 // font-size
-@collapse-title-font-size: var(--td-collapse-title-font-size, @font-size-m);
-@collapse-extra-font-size: var(--td-collapse-extra-font-size, @font-size-m);
+@collapse-title-font: var(--td-collapse-title-font, @font-body-large);
+@collapse-extra-font: var(--td-collapse-extra-font, @font-body-large);
 @collapse-content-font: var(--td-collapse-content-font, @font-body-medium);
 
 @collapse-header-height: var(--td-collapse-header-height, auto);
@@ -73,7 +73,7 @@
   }
 
   &__extra {
-    font-size: @collapse-extra-font-size;
+    font: @collapse-extra-font;
   }
 
   &__body {
@@ -110,7 +110,7 @@
 
 .class {
   &-title {
-    font-size: @collapse-title-font-size;
+    font: @collapse-title-font;
 
     &--disabled {
       color: @text-color-disabled;

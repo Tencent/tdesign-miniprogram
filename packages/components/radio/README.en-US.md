@@ -91,7 +91,7 @@ Name | Default Value | Description
 --td-radio-content-color | @text-color-secondary | - 
 --td-radio-content-disabled-color | @text-color-disabled | - 
 --td-radio-content-font | @font-body-medium | - 
---td-radio-font-size | @font-body-large | - 
+--td-radio-font | @font-body-large | - 
 --td-radio-icon-checked-color | @brand-color | - 
 --td-radio-icon-color | @component-border | - 
 --td-radio-icon-disabled-bg-color | @bg-color-component-disabled | - 

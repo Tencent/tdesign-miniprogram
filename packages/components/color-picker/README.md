@@ -92,7 +92,6 @@ header | 顶部插槽，仅在 `usePopup` 为 `true` 时有效
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-color-picker-border-radius-circle | @radius-circle | - 
 --td-color-picker-gradient-preview-height | 56rpx | - 
 --td-color-picker-gradient-preview-radius | 6rpx | - 
 --td-color-picker-gradient-preview-width | 56rpx | - 

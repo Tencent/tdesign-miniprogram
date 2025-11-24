@@ -2,7 +2,7 @@
 
 @step-item-dot-size: var(--td-step-item-dot-size, 16rpx);
 @step-item-circle-size: var(--td-step-item-circle-size, 44rpx);
-@step-item-circle-font-size: var(--td-step-item-circle-font-size, 28rpx);
+@step-item-circle-text-font: var(--td-step-item-circle-text-font, @font-body-medium);
 @step-item-description-color: var(--td-step-item-description-color, @text-color-placeholder);
 
 @step-item-default-circle-bg: var(--td-step-item-default-circle-bg, @bg-color-secondarycontainer);
@@ -102,7 +102,7 @@
     height: @step-item-circle-size;
     text-align: center;
     border-radius: 50%;
-    font-size: @step-item-circle-font-size;
+    font: @step-item-circle-text-font;
   }
 
   &__icon {
@@ -142,7 +142,7 @@
 
   &__title {
     position: relative;
-    font-size: @font-body-medium;
+    font: @font-body-medium;
 
     &--process {
       font-weight: 600;

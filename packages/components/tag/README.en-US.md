@@ -98,7 +98,7 @@ Name | Default Value | Description
 --td-tag-large-icon-size | 32rpx | - 
 --td-tag-large-padding | 4rpx 14rpx | - 
 --td-tag-mark-border-radius | @tag-round-border-radius | - 
---td-tag-medium-font-size | @font-body-small | - 
+--td-tag-medium-font | @font-body-small | - 
 --td-tag-medium-icon-size | 28rpx | - 
 --td-tag-medium-padding | 2rpx 14rpx | - 
 --td-tag-outline-bg-color | @bg-color-container | - 

@@ -70,5 +70,4 @@ Name | Default Value | Description
 --td-navbar-height | 48px | - 
 --td-navbar-left-arrow-size | 24px | - 
 --td-navbar-left-max-width | --td-navbar-left-max-width | - 
---td-navbar-title-font-size | 18px | - 
---td-navbar-title-font-weight | 600 | -
+--td-navbar-title-font | @font-title-large | -
