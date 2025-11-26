@@ -1,10 +1,9 @@
 @import '../common/style/base.less';
 
-@qrcode-padding: 12px;
-@qrcode-border-radius: 6px;
+@qrcode-padding: 24rpx;
+@qrcode-border-radius: 12rpx;
 @qrcode-z-index: 300;
-@qrcode-line-height: 22px;
-@qrcode-mask-inner-font-size: var(--td-font-size-title-small);
+@qrcode-mask-inner-font: @font-body-medium;
 
 .@{prefix}-qrcode {
   position: relative;
@@ -33,10 +32,9 @@
     width: 100%;
     height: 100%;
     color: @text-color-primary;
-    line-height: @qrcode-line-height;
     background-color: @mask-bg;
     text-align: center;
     border-radius: @qrcode-border-radius;
-    font-size: @qrcode-mask-inner-font-size;
+    font: @qrcode-mask-inner-font;
   }
 }

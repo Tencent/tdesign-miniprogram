@@ -12,10 +12,8 @@
 @attachments-file-icon-size: 64rpx;
 @attachments-title-color: @text-color-primary;
 @attachments-desc-color: @text-color-placeholder;
-@attachments-title-font-size: 28rpx;
-@attachments-desc-font-size: 24rpx;
-@attachments-title-line-height: 44rpx;
-@attachments-desc-line-height: 40rpx;
+@attachments-title-font: @font-body-medium;
+@attachments-desc-font: @font-body-small;
 @attachments-title-margin-bottom: -2rpx;
 
 .@{attachments} {
@@ -160,10 +158,8 @@
         .@{attachments}__title {
           width: 100%;
           color: @attachments-title-color;
-          font-size: @attachments-title-font-size;
+          font: @attachments-title-font;
           font-style: normal;
-          font-weight: 400;
-          line-height: @attachments-title-line-height;
           /* 核心：单行溢出隐藏 + 显示省略号（兼容全浏览器） */
           white-space: nowrap; /* 强制文字在一行显示，不换行 */
           overflow: hidden; /* 超出容器部分隐藏 */
@@ -176,10 +172,8 @@
         .@{attachments}__desc {
           width: 100%;
           color: @attachments-desc-color;
-          font-size: @attachments-desc-font-size;
+          font: @attachments-desc-font;
           font-style: normal;
-          font-weight: 400;
-          line-height: @attachments-desc-line-height;
           margin-top: -4rpx;
         }
       }

@@ -25,10 +25,10 @@
 @button-large-padding-horizontal: var(--td-button-large-padding-horizontal, 40rpx);
 
 // 图标大小
-@button-extra-small-icon-font-size: var(--td-button-extra-small-icon-font-size, 36rpx);
-@button-small-icon-font-size: var(--td-button-small-icon-font-size, 36rpx);
-@button-medium-icon-font-size: var(--td-button-medium-icon-font-size, 40rpx);
-@button-large-icon-font-size: var(--td-button-large-icon-font-size, 48rpx);
+@button-extra-small-icon-size: var(--td-button-extra-small-icon-size, 36rpx);
+@button-small-icon-size: var(--td-button-small-icon-size, 36rpx);
+@button-medium-icon-size: var(--td-button-medium-icon-size, 40rpx);
+@button-large-icon-size: var(--td-button-large-icon-size, 48rpx);
 
 // default
 @button-default-color: var(--td-button-default-color, @text-color-primary);
@@ -131,7 +131,7 @@
   @fontSize: 'button-@{size}-font-size';
   @padding: 'button-@{size}-padding-horizontal';
   @height: 'button-@{size}-height';
-  @iconSize: 'button-@{size}-icon-font-size';
+  @iconSize: 'button-@{size}-icon-size';
 
   .@{button}--size-@{size} {
     font-size: @@fontSize;

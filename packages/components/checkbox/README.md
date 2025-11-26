@@ -153,8 +153,7 @@ change | `(value: CheckboxGroupValue, context: { value: boolean\|number\|string,
 --td-checkbox-border-color | @component-stroke | - 
 --td-checkbox-description-color | @text-color-secondary | - 
 --td-checkbox-description-disabled-color | @text-color-disabled | - 
---td-checkbox-description-line-height | 44rpx | - 
---td-checkbox-font-size | 32rpx | - 
+--td-checkbox-description-font | @font-body-medium | - 
 --td-checkbox-icon-checked-color | @brand-color | - 
 --td-checkbox-icon-color | @component-border | - 
 --td-checkbox-icon-disabled-bg-color | @bg-color-component-disabled | - 
@@ -164,5 +163,6 @@ change | `(value: CheckboxGroupValue, context: { value: boolean\|number\|string,
 --td-checkbox-tag-active-color | @brand-color | - 
 --td-checkbox-title-color | @text-color-primary | - 
 --td-checkbox-title-disabled-color | @text-color-disabled | - 
+--td-checkbox-title-font | @font-body-large | - 
 --td-checkbox-title-line-height | 48rpx | - 
---td-checkbox-vertical-padding | 32rpx | -
+--td-checkbox-vertical-padding | @spacer-2 | -

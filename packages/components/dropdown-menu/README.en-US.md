@@ -94,9 +94,4 @@ Name | Default Value | Description
 --td-dropdown-menu-font-size | 28rpx | - 
 --td-dropdown-menu-height | 96rpx | - 
 --td-dropdown-menu-icon-size | 40rpx | - 
---td-dropdown-body-max-height | 560rpx | - 
---td-tree-bg-color | @bg-color-container | - 
---td-tree-item-active-color | @brand-color | - 
---td-tree-item-font-size | 32rpx | - 
---td-tree-item-height | 96rpx | - 
---td-tree-root-bg-color | @bg-color-secondarycontainer | -
+--td-dropdown-body-max-height | 560rpx | -

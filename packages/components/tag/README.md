@@ -139,27 +139,23 @@ t-class | 根节点样式类
 --td-tag-disabled-background-color | @bg-color-component-disabled | - 
 --td-tag-disabled-border-color | @component-border | - 
 --td-tag-disabled-color | @text-color-disabled | - 
---td-tag-extra-large-font-size | @font-size-base | - 
---td-tag-extra-large-height | 80rpx | - 
+--td-tag-extra-large-font | @font-body-medium | - 
 --td-tag-extra-large-icon-size | 32rpx | - 
---td-tag-extra-large-padding | 32rpx - 1px | - 
---td-tag-large-font-size | @font-size-base | - 
---td-tag-large-height | 56rpx | - 
+--td-tag-extra-large-padding | 16rpx 30rpx | - 
+--td-tag-large-font | @font-body-medium | - 
 --td-tag-large-icon-size | 32rpx | - 
---td-tag-large-padding | 16rpx - 1px | - 
+--td-tag-large-padding | 4rpx 14rpx | - 
 --td-tag-mark-border-radius | @tag-round-border-radius | - 
---td-tag-medium-font-size | @font-size-s | - 
---td-tag-medium-height | 48rpx | - 
+--td-tag-medium-font | @font-body-small | - 
 --td-tag-medium-icon-size | 28rpx | - 
---td-tag-medium-padding | 16rpx - 1px | - 
+--td-tag-medium-padding | 2rpx 14rpx | - 
 --td-tag-outline-bg-color | @bg-color-container | - 
 --td-tag-primary-color | @brand-color | - 
 --td-tag-primary-light-color | @brand-color-light | - 
 --td-tag-round-border-radius | 999px | - 
---td-tag-small-font-size | @font-size | - 
---td-tag-small-height | 40rpx | - 
+--td-tag-small-font | @font-body-extraSmall | - 
 --td-tag-small-icon-size | 24rpx | - 
---td-tag-small-padding | 12rpx - 1px | - 
+--td-tag-small-padding | 2rpx 10rpx | - 
 --td-tag-square-border-radius | 8rpx | - 
 --td-tag-success-color | @success-color | - 
 --td-tag-success-light-color | @success-color-1 | - 

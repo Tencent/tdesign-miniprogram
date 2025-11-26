@@ -109,8 +109,9 @@ Name | Default Value | Description
 --td-input-label-max-width | 5em | - 
 --td-input-label-min-width | 2em | - 
 --td-input-label-text-color | @text-color-primary | - 
+--td-input-label-text-font | @font-body-large | - 
 --td-input-placeholder-text-color | @text-color-placeholder | - 
---td-input-placeholder-text-font-size | @font-size-m | - 
+--td-input-placeholder-text-font | @font-body-large | - 
 --td-input-prefix-icon-color | @text-color-primary | - 
 --td-input-success-text-color | @success-color | - 
 --td-input-success-tips-color | @success-color | - 

@@ -1,21 +1,18 @@
 @import '../common/style/base.less';
 
 @footer-text-color: var(--td-footer-text-color, @text-color-placeholder);
-@footer-text-font-size: var(--td-footer-text-font-size, @font-size-s);
-@footer-text-line-height: var(--td-footer-text-line-height, 40rpx);
+@footer-text-font: var(--td-footer-text-font, @font-body-small);
 @footer-text-margin-top: var(--td-footer-text-margin-top, 8rpx);
 @footer-link-color: var(--td-footer-link-color, @brand-color);
-@footer-link-font-size: var(--td-footer-link-font-size, @font-size-s);
-@footer-link-line-height: var(--td-footer-link-line-height, 40rpx);
+@footer-link-font: var(--td-footer-link-font, @font-body-medium);
 
 @footer-link-dividing-line-padding: var(--td-footer-link-dividing-line-padding, @spacer-1);
 @footer-link-dividing-line-color: var(--td-footer-link-dividing-line-color, @text-color-placeholder);
 @footer-logo-icon-width: var(--td-footer-logo-icon-width, 48rpx);
 @footer-logo-icon-height: var(--td-footer-logo-icon-height, 48rpx);
 @footer-logo-icon-margin-right: var(--td-footer-logo-icon-margin-right, @spacer);
-@footer-logo-title-font-size: var(--td-footer-logo-title-font-size, @font-size-m);
+@footer-logo-title-font: var(--td-footer-logo-title-font, @font-title-medium);
 @footer-logo-title-url-width: var(--td-footer-logo-title-url-width, 256rpx);
-@footer-logo-title-line-height: var(--td-footer-logo-title-line-height, 48rpx);
 
 .@{prefix}-footer {
   display: flex;
@@ -24,8 +21,7 @@
   justify-content: flex-start;
 
   &__text {
-    font-size: @footer-text-font-size; // 版权信息文本大小
-    line-height: @footer-text-line-height; // 版权信息文本行高
+    font: @footer-text-font; // 版权信息文本大小
     color: @footer-text-color; // 版权信息文本颜色
   }
 
@@ -41,8 +37,7 @@
 
   &__link-item {
     color: @footer-link-color; // 链接文本颜色
-    font-size: @footer-link-font-size; // 链接文本大小
-    line-height: @footer-link-line-height; // 链接文本行高
+    font: @footer-link-font; // 链接文本大小
     text-decoration: underline;
   }
 
@@ -67,9 +62,7 @@
 
   &__title {
     color: @text-color-primary;
-    font-weight: bold;
-    font-size: @footer-logo-title-font-size; // 图标配置，标题文本大小
-    line-height: @footer-logo-title-line-height; // 图标配置，标题文本行高
+    font: @footer-logo-title-font; // 图标配置，标题字体大小
     font-style: italic;
   }
 

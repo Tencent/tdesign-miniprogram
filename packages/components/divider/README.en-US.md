@@ -34,8 +34,7 @@ Name | Default Value | Description
 --td-divider-border-width | 2rpx | - 
 --td-divider-color | @bg-color-component | - 
 --td-divider-content-color | @text-color-placeholder | - 
---td-divider-content-font-size | @font-size-s | - 
---td-divider-content-line-height | 40rpx | - 
+--td-divider-content-font | @font-body-small | - 
 --td-divider-content-line-style | solid | - 
 --td-divider-content-margin | @spacer-1 | - 
 --td-divider-horizontal-margin | 20rpx | - 

@@ -54,6 +54,7 @@ Name | Default Value | Description
 --td-action-sheet-cancel-height | 96rpx | - 
 --td-action-sheet-color | @text-color-primary | - 
 --td-action-sheet-description-color | @text-color-placeholder | - 
+--td-action-sheet-description-font | @font-body-medium | - 
 --td-action-sheet-gap-color | @bg-color-page | - 
 --td-action-sheet-list-item-disabled-color | @text-color-disabled | - 
 --td-action-sheet-list-item-height | 112rpx | - 

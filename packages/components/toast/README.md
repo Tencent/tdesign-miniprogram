@@ -77,6 +77,6 @@ t-class | 根节点样式类
 --td-toast-bg-color | @mask-active | - 
 --td-toast-color | @text-color-anti | - 
 --td-toast-column-icon-size | 64rpx | - 
---td-toast-max-width | 374rpx | - 
---td-toast-radius | 8rpx | - 
+--td-toast-max-width | 370rpx | - 
+--td-toast-radius | @radius-default | - 
 --td-toast-row-icon-size | 48rpx | -

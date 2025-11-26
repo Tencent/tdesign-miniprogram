@@ -90,9 +90,8 @@ Name | Default Value | Description
 --td-radio-content-checked-color | @text-color-secondary | - 
 --td-radio-content-color | @text-color-secondary | - 
 --td-radio-content-disabled-color | @text-color-disabled | - 
---td-radio-content-font-size | 28rpx | - 
---td-radio-content-line-height | 44rpx | - 
---td-radio-font-size | 32rpx | - 
+--td-radio-content-font | @font-body-medium | - 
+--td-radio-font | @font-body-large | - 
 --td-radio-icon-checked-color | @brand-color | - 
 --td-radio-icon-color | @component-border | - 
 --td-radio-icon-disabled-bg-color | @bg-color-component-disabled | - 
