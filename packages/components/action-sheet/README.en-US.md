@@ -48,14 +48,14 @@ t-class-content | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-action-sheet-border-color | @border-level-1-color | - 
---td-action-sheet-border-radius | @radius-extraLarge | - 
---td-action-sheet-cancel-color | @text-color-primary | - 
---td-action-sheet-cancel-height | 96rpx | - 
---td-action-sheet-color | @text-color-primary | - 
---td-action-sheet-description-color | @text-color-placeholder | - 
---td-action-sheet-description-font | @font-body-medium | - 
---td-action-sheet-gap-color | @bg-color-page | - 
---td-action-sheet-list-item-disabled-color | @text-color-disabled | - 
---td-action-sheet-list-item-height | 112rpx | - 
+--td-action-sheet-border-color | @border-level-1-color | -
+--td-action-sheet-border-radius | @radius-extraLarge | -
+--td-action-sheet-cancel-color | @text-color-primary | -
+--td-action-sheet-cancel-height | 96rpx | -
+--td-action-sheet-color | @text-color-primary | -
+--td-action-sheet-description-color | @text-color-placeholder | -
+--td-action-sheet-description-font | @font-body-medium | -
+--td-action-sheet-gap-color | @bg-color-page | -
+--td-action-sheet-list-item-disabled-color | @text-color-disabled | -
+--td-action-sheet-list-item-height | 112rpx | -
 --td-action-sheet-text-align | center | -

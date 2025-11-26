@@ -66,7 +66,7 @@ const generateCssVariables = async (componentName) => {
       }
       if (!parsedKeys.includes(key)) {
         parsedKeys.push(key);
-        cssVariableBodyContent += `${key} | ${value} | -${' \n'}`;
+        cssVariableBodyContent += `${key} | ${value} | -${'\n'}`;
       }
     });
   });
@@ -84,7 +84,7 @@ const updateDocVariables = (filePath, headContent, variables) => {
   if (!fs.existsSync(filePath)) return;
 
   const content = fs.readFileSync(filePath, 'utf8');
-  const cssVariablesSection = `\n${headContent}${variables}`;
+  const cssVariablesSection = `\n${headContent}${variables}\n`;
 
   // 检查是否存在 ### CSS Variables 部分
   if (content.includes('### CSS Variables')) {
@@ -94,7 +94,7 @@ const updateDocVariables = (filePath, headContent, variables) => {
   } else {
     // 追加到文件末尾
     const trimmedContent = content.trimEnd();
-    const newContent = `${trimmedContent}\n${cssVariablesSection}`;
+    const newContent = `${trimmedContent}${cssVariablesSection}\n`;
     fs.writeFileSync(filePath, newContent, 'utf8');
   }
 };

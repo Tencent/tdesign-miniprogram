@@ -136,14 +136,14 @@ t-class-content | 内容样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-action-sheet-border-color | @border-level-1-color | - 
---td-action-sheet-border-radius | @radius-extraLarge | - 
---td-action-sheet-cancel-color | @text-color-primary | - 
---td-action-sheet-cancel-height | 96rpx | - 
---td-action-sheet-color | @text-color-primary | - 
---td-action-sheet-description-color | @text-color-placeholder | - 
---td-action-sheet-description-font | @font-body-medium | - 
---td-action-sheet-gap-color | @bg-color-page | - 
---td-action-sheet-list-item-disabled-color | @text-color-disabled | - 
---td-action-sheet-list-item-height | 112rpx | - 
+--td-action-sheet-border-color | @border-level-1-color | -
+--td-action-sheet-border-radius | @radius-extraLarge | -
+--td-action-sheet-cancel-color | @text-color-primary | -
+--td-action-sheet-cancel-height | 96rpx | -
+--td-action-sheet-color | @text-color-primary | -
+--td-action-sheet-description-color | @text-color-placeholder | -
+--td-action-sheet-description-font | @font-body-medium | -
+--td-action-sheet-gap-color | @bg-color-page | -
+--td-action-sheet-list-item-disabled-color | @text-color-disabled | -
+--td-action-sheet-list-item-height | 112rpx | -
 --td-action-sheet-text-align | center | -
