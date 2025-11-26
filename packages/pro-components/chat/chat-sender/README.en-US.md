@@ -36,3 +36,10 @@ keyboardheightchange | `(detail: {height: number, duration: number})` | \-
 send | `(value:string, context: {\| KeyboardEvent })` | \-
 stop | `(value:string)` | \-
 upload-click | \- | \-
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-chat-sender-bg-color | @bg-color-specialcomponent | -

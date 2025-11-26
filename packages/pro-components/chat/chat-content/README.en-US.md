@@ -11,3 +11,12 @@ content | Object | - | required。Typescript: `TdChatContentType ` `interface Td
 markdown-props | Object | - | Typescript: `ChatMarkdownProps`，[ChatMarkdown API Documents](./chat-markdown?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/pro-components/chat/chat-content/type.ts) | N
 role | String | - | required。options: user/assistant/system | Y
 status | String | - | options: error / '' | N
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-chat-content-assistant-text-color | @text-color-primary | -
+--td-chat-content-error-text-color | @error-color | -
+--td-chat-content-user-text-color | @text-color-primary | -

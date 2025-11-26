@@ -83,3 +83,10 @@ keyboardheightchange | `(detail: {height: number, duration: number})` | 选择�
 send | `(value:string, context: {\| KeyboardEvent })` | 点击消息发送的回调方法
 stop | `(value:string)` | 点击消息终止的回调方法
 upload-click | \- | 【实验】点击上传按钮时触发
+
+### CSS Variables
+
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-chat-sender-bg-color | @bg-color-specialcomponent | -

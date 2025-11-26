@@ -21,3 +21,11 @@ placement | String | start | options: start/end/space-around/space-between | N
 name | params | description
 -- | -- | --
 actions | `(detail: {name: string, active: boolean})` | \-
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--chat-actionbar-item-padding | 16rpx 28rpx | -
+--chat-actionbar-padding | 0 | -

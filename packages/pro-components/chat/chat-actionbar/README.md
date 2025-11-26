@@ -59,3 +59,11 @@ placement | String | start | 【实验】操作栏位置。可选项：start/end
 名称 | 参数 | 描述
 -- | -- | --
 actions | `(detail: {name: string, active: boolean})` | 点击点赞，点踩，复制，分享，重新生成按钮时触发发
+
+### CSS Variables
+
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--chat-actionbar-item-padding | 16rpx 28rpx | -
+--chat-actionbar-padding | 0 | -

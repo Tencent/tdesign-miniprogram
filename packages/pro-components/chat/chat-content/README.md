@@ -44,3 +44,12 @@ content | Object | - | 必需。聊天内容对象。TS 类型：`TdChatContentT
 markdown-props | Object | - | marked 解析器的配置选项。TS 类型：`ChatMarkdownProps`，[ChatMarkdown API Documents](./chat-markdown?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/pro-components/chat/chat-content/type.ts) | N
 role | String | - | 必需。消息角色，用于区分用户和助手的消息样式	。可选项：user/assistant/system | Y
 status | String | - | 正文状态。可选项：error / '' | N
+
+### CSS Variables
+
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-chat-content-assistant-text-color | @text-color-primary | -
+--td-chat-content-error-text-color | @error-color | -
+--td-chat-content-user-text-color | @text-color-primary | -
