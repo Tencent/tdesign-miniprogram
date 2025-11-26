@@ -1,6 +1,6 @@
 ---
 title: Footer 页脚
-description: 用于基础列表展示，可附带文字、品牌 logo、操作，常用商详、个人中心、设置等页面。
+description: 用于展示网站的版权声明、联系信息、重要页面链接和其他相关内容等信息。
 spline: data
 isComponent: true
 ---

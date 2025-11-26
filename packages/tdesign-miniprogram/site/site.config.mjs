@@ -199,7 +199,7 @@ export const docs = [
         component: () => import('@/steps/README.md'),
       },
       {
-        title: 'TabBar 标签栏',
+        title: 'TabBar 底部标签栏',
         titleEn: 'TabBar',
         name: 'tabbar',
         meta: { docType: 'navigation' },
@@ -334,7 +334,7 @@ export const docs = [
         component: () => import('@/textarea/README.md'),
       },
       {
-        title: 'TreeSelect 树形选择',
+        title: 'TreeSelect 树形选择器',
         titleEn: 'TreeSelect',
         name: 'treeSelect',
         meta: { docType: 'form' },
@@ -469,7 +469,7 @@ export const docs = [
         component: () => import('@/skeleton/README.md'),
       },
       {
-        title: 'Sticky 吸顶',
+        title: 'Sticky 吸顶容器',
         titleEn: 'Sticky',
         name: 'sticky',
         meta: { docType: 'navigation' },

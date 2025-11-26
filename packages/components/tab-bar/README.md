@@ -1,5 +1,5 @@
 ---
-title: TabBar 标签栏
+title: TabBar 底部标签栏
 description: 用于在不同功能模块之间进行快速切换，位于页面底部。
 spline: navigation
 isComponent: true
