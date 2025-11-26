@@ -3,8 +3,8 @@
 @progress-line-stroke-width: var(--td-progress-line-stroke-width, 12rpx); // line 进度条线宽
 @progress-stroke-plump-width: var(--td-progress-stroke-plump-width, 40rpx); // plump 进度条线宽
 @progress-stroke-circle-width: var(--td-progress-stroke-circle-width, 12rpx); // circle 进度条线宽
-@progress-line-icon-font-size: calc(@font-size-base + 2px);
-@progress-circle-icon-font-size: var(--td-progress-circle-icon-font-size, 96rpx);
+@progress-line-icon-size: calc(@font-size-base + 2px);
+@progress-circle-icon-size: var(--td-progress-circle-icon-size, 96rpx);
 @progress-plump-label-font: @font-body-small;
 @progress-circle-width: var(--td-progress-circle-width, 224rpx);
 @progress-circle-from: 0deg;
@@ -80,7 +80,7 @@
   align-items: center;
 
   .@{progress}__icon {
-    font-size: @progress-line-icon-font-size;
+    font-size: @progress-line-icon-size;
   }
 }
 
@@ -152,7 +152,7 @@
   &--micro {
     --td-progress-circle-width: 48rpx;
     --td-progress-stroke-circle-width: 4rpx;
-    --td-progress-circle-icon-font-size: 40rpx;
+    --td-progress-circle-icon-size: 40rpx;
   }
 }
 

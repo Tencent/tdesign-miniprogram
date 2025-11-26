@@ -148,13 +148,13 @@ t-class-title | 标题样式类
 --td-cell-image-height | 96rpx | - 
 --td-cell-image-width | 96rpx | - 
 --td-cell-left-icon-color | @brand-color | - 
---td-cell-left-icon-font-size | 48rpx | - 
+--td-cell-left-icon-size | 48rpx | - 
 --td-cell-note-color | @text-color-placeholder | - 
 --td-cell-note-font-size | @font-size-m | - 
 --td-cell-required-color | @error-color | - 
 --td-cell-required-font-size | @font-size-m | - 
 --td-cell-right-icon-color | @text-color-placeholder | - 
---td-cell-right-icon-font-size | 48rpx | - 
+--td-cell-right-icon-size | 48rpx | - 
 --td-cell-title-color | @text-color-primary | - 
 --td-cell-title-font | @font-body-large | - 
 --td-cell-vertical-padding | 32rpx | -

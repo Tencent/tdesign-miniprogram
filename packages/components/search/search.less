@@ -9,12 +9,12 @@
 @search-placeholder-color: var(--td-search-placeholder-color, @text-color-placeholder);
 @search-icon-color: var(--td-search-icon-color, @text-color-placeholder);
 @search-disabled-text-color: var(--td-search-disabled-text-color, @text-color-disabled); // 输入框禁用态文本颜色
-@search-icon-font-size: var(--td-search-icon-font-size, 48rpx);
+@search-icon-size: var(--td-search-icon-size, 48rpx);
 @search-square-radius: var(--td-search-square-radius, @radius-default);
 @search-round-radius: calc(@search-height / 2);
 @search-action-color: var(--td-search-action-color, @brand-color);
 @search-clear-icon-color: var(--td-search-clear-icon-color, @text-color-placeholder);
-@search-clear-icon-font-size: var(--td-search-clear-icon-font-size, 48rpx);
+@search-clear-icon-size: var(--td-search-clear-icon-size, 48rpx);
 @search-result-high-light-color: var(--td-search-result-high-light-color, @brand-color);
 
 .@{prefix}-search {
@@ -71,14 +71,14 @@
 
     .@{prefix}-icon {
       color: @search-icon-color;
-      font-size: @search-icon-font-size;
+      font-size: @search-icon-size;
     }
   }
 
   &__clear {
     position: relative;
     margin-left: 10px;
-    font-size: @search-clear-icon-font-size;
+    font-size: @search-clear-icon-size;
     color: @search-clear-icon-color;
   }
 
