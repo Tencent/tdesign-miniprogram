@@ -27,7 +27,7 @@ export default class Avatar extends SuperComponent {
     classPrefix: name,
     isShow: true,
     zIndex: 0,
-    systemInfo,
+    windowWidth: systemInfo.windowWidth,
   };
 
   relations: RelationsOptions = {
