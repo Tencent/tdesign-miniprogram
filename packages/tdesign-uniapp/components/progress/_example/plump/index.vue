@@ -1,0 +1,45 @@
+<template>
+  <view>
+    <t-progress
+      theme="plump"
+      :percentage="80"
+    />
+    <t-progress
+      theme="plump"
+      :percentage="88"
+      status="warning"
+    />
+    <t-progress
+      theme="plump"
+      :percentage="88"
+      status="error"
+    />
+    <t-progress
+      theme="plump"
+      :percentage="88"
+      status="success"
+    />
+    <t-progress
+      theme="plump"
+      :color="{ from: '#0052D9', to: '#00A870' }"
+      :percentage="88"
+      status="active"
+    />
+  </view>
+</template>
+
+<script>
+import tProgress from 'tdesign-uniapp/progress/progress.vue';
+export default {
+  components: {
+    tProgress,
+  },
+  data() {
+    return {};
+  },
+  created() {},
+  methods: {},
+};
+</script>
+<style>
+</style>

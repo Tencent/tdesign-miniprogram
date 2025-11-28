@@ -1,0 +1,30 @@
+@import '../common/style/base.less';
+
+@swiper-radius: var(--td-swiper-radius, @radius-large);
+@swiper-item-padding: var(--td-swiper-item-padding, 0);
+
+.@{prefix}-swiper {
+  position: relative;
+
+  &-host {
+    border-radius: @swiper-radius;
+    overflow: hidden;
+    transform: translateY(0);
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: @swiper-item-padding;
+  }
+
+  :deep(&__image) {
+    width: 100%;
+    transition: all 0.3s ease;
+
+    &-host {
+      width: 100%;
+    }
+  }
+}

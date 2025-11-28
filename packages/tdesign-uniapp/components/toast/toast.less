@@ -1,0 +1,95 @@
+@import '../common/style/base.less';
+
+@toast-color: var(--td-toast-color, @text-color-anti);
+@toast-bg-color: var(--td-toast-bg-color, @mask-active);
+@toast-max-width: var(--td-toast-max-width, 374rpx);
+@toast-radius: var(--td-toast-radius, 8rpx);
+@toast-row-icon-size: var(--td-toast-row-icon-size, 48rpx);
+@toast-column-icon-size: var(--td-toast-column-icon-size, 64rpx);
+
+.@{prefix}-toast {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 12001;
+  opacity: 1;
+  transition: opacity 300ms ease;
+  background-color: @toast-bg-color;
+  border-radius: @toast-radius;
+  font-size: 28rpx;
+  color: @toast-color;
+  max-width: @toast-max-width;
+  min-height: 0; // 防止 flex 容器被意外拉伸
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  box-sizing: border-box;
+
+  &--column {
+    padding: 48rpx;
+    min-width: 160rpx;
+    min-height: 160rpx;
+    border-radius: 16rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--loading&--with-text {
+    min-width: 204rpx;
+    min-height: 204rpx;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  &__content {
+    align-items: center;
+    line-height: 44rpx;
+
+    &--row {
+      display: flex;
+      text-align: left;
+      padding: 28rpx 44rpx;
+    }
+
+    &--column {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  :deep(&__icon) {
+    &--row {
+      display: flex;
+      font-size: @toast-row-icon-size;
+    }
+    &--column {
+      font-size: @toast-column-icon-size;
+    }
+  }
+
+  &__text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    white-space: pre-line;
+
+    &--column:not(:empty):not(:only-child) {
+      margin-top: 16rpx;
+    }
+
+    &--row:not(:empty):not(:only-child) {
+      margin-left: 16rpx;
+    }
+  }
+
+  &.@{prefix}-fade-enter,
+  &.@{prefix}-fade-leave-to {
+    opacity: 0;
+  }
+}

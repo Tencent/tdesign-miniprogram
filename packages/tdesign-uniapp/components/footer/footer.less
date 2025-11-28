@@ -1,0 +1,79 @@
+@import '../common/style/base.less';
+
+@footer-text-color: var(--td-footer-text-color, @text-color-placeholder);
+@footer-text-font-size: var(--td-footer-text-font-size, @font-size-s);
+@footer-text-line-height: var(--td-footer-text-line-height, 40rpx);
+@footer-text-margin-top: var(--td-footer-text-margin-top, 8rpx);
+@footer-link-color: var(--td-footer-link-color, @brand-color);
+@footer-link-font-size: var(--td-footer-link-font-size, @font-size-s);
+@footer-link-line-height: var(--td-footer-link-line-height, 40rpx);
+
+@footer-link-dividing-line-padding: var(--td-footer-link-dividing-line-padding, @spacer-1);
+@footer-link-dividing-line-color: var(--td-footer-link-dividing-line-color, @text-color-placeholder);
+@footer-logo-icon-width: var(--td-footer-logo-icon-width, 48rpx);
+@footer-logo-icon-height: var(--td-footer-logo-icon-height, 48rpx);
+@footer-logo-icon-margin-right: var(--td-footer-logo-icon-margin-right, @spacer);
+@footer-logo-title-font-size: var(--td-footer-logo-title-font-size, @font-size-m);
+@footer-logo-title-url-width: var(--td-footer-logo-title-url-width, 256rpx);
+@footer-logo-title-line-height: var(--td-footer-logo-title-line-height, 48rpx);
+
+.@{prefix}-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  &__text {
+    font-size: @footer-text-font-size; // 版权信息文本大小
+    line-height: @footer-text-line-height; // 版权信息文本行高
+    color: @footer-text-color; // 版权信息文本颜色
+  }
+
+  &__link-list + &__text:not(:empty) {
+    margin-top: @footer-text-margin-top; // 版权信息顶部间距
+  }
+
+  &__link-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__link-item {
+    color: @footer-link-color; // 链接文本颜色
+    font-size: @footer-link-font-size; // 链接文本大小
+    line-height: @footer-link-line-height; // 链接文本行高
+    text-decoration: underline;
+  }
+
+  &__link-line {
+    font-size: 24rpx;
+    color: @footer-link-dividing-line-color; // 链接分界线颜色
+    display: inline-block;
+    padding: 0 @footer-link-dividing-line-padding; // 链接分界线左右间距
+  }
+
+  &__logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  // :deep(&__icon) {
+  //   width: @footer-logo-icon-width; // 图标宽度
+  //   height: @footer-logo-icon-height; // 图标高度
+  //   margin-right: @footer-logo-icon-margin-right; // 图标右部间距
+  // }
+
+  &__title {
+    color: @text-color-primary;
+    font-weight: bold;
+    font-size: @footer-logo-title-font-size; // 图标配置，标题文本大小
+    line-height: @footer-logo-title-line-height; // 图标配置，标题文本行高
+    font-style: italic;
+  }
+
+  // :deep(&__title-url) {
+  //   width: @footer-logo-title-url-width; // 图标配置，链接跳转地址宽度
+  // }
+}

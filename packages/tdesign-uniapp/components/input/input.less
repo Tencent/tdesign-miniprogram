@@ -1,0 +1,206 @@
+@import '../common/style/base.less';
+
+@input-vertical-padding: var(--td-input-vertical-padding, 32rpx); //输入框垂直方向内间距
+
+@input-default-text-color: var(--td-input-default-text-color, @text-color-primary); // 'default' 状态输入框文本颜色
+@input-success-text-color: var(--td-input-success-text-color, @success-color); // 'success' 状态输入框文本颜色
+@input-warning-text-color: var(--td-input-warning-text-color, @warning-color); // 'warning' 状态输入框文本颜色
+@input-error-text-color: var(--td-input-error-text-color, @error-color); // 'error' 状态输入框文本颜色
+
+@input-default-tips-color: var(--td-input-default-tips-color, @text-color-placeholder); // 'default' 状态辅助文本颜色
+@input-success-tips-color: var(--td-input-success-tips-color, @success-color); // 'success' 状态辅助文本颜色
+@input-warning-tips-color: var(--td-input-warning-tips-color, @warning-color); // 'warning' 状态辅助文本颜色
+@input-error-tips-color: var(--td-input-error-tips-color, @error-color); // 'error' 状态辅助文本颜色
+
+@input-bg-color: var(--td-input-bg-color, @bg-color-container); // 输入框背景颜色
+@input-border-color: var(--td-input-border-color, @component-stroke); // 输入框分割线颜色
+@input-border-left-space: var(--td-input-border-left-space, 32rpx);
+@input-border-right-space: var(--td-input-border-right-space, 0);
+@input-placeholder-text-color: var(--td-input-placeholder-text-color, @text-color-placeholder); // 输入框占位符文本颜色
+@input-placeholder-text-font-size: var(--td-input-placeholder-text-font-size, @font-size-m); // 输入框占位符文本字体大小
+@input-prefix-icon-color: var(--td-input-prefix-icon-color, @text-color-primary); // // 输入框前缀图标颜色
+@input-suffix-icon-color: var(--td-input-suffix-icon-color, @text-color-placeholder); // 输入框后缀图标颜色
+@input-label-text-color: var(--td-input-label-text-color, @text-color-primary); // 左侧文本颜色
+@input-label-min-width: var(--td-input-label-min-width, 2em);
+@input-label-max-width: var(--td-input-label-max-width, 5em);
+@input-suffix-text-color: var(--td-input-suffix-text-color, @text-color-primary); // 后置图标前的后置内容文本颜色
+@input-disabled-text-color: var(--td-input-disabled-text-color, @text-color-disabled); // 输入框禁用态文本颜色
+
+@input-align-items: var(--td-input-align-items, center); // 内容对齐方式
+
+.@{prefix}-input {
+  background-color: @input-bg-color;
+  display: flex;
+  align-items: @input-align-items;
+  flex: 1;
+  padding: @input-vertical-padding;
+  overflow: hidden;
+
+  &--border {
+    .border(bottom, @input-border-color);
+
+    &:after {
+      left: @input-border-left-space;
+      right: @input-border-right-space;
+    }
+  }
+
+  &--layout-vertical {
+    flex-direction: column;
+    align-items: start;
+  }
+
+  &__wrap--prefix {
+    display: flex;
+  }
+
+  &__icon--prefix {
+    font-size: 48rpx;
+    color: @input-prefix-icon-color;
+  }
+
+  &__label:not(:empty) {
+    min-width: @input-label-min-width;
+    max-width: @input-label-max-width;
+    font-size: @font-size-m;
+    line-height: 48rpx;
+    color: @input-label-text-color;
+    margin-right: @spacer-2;
+    word-wrap: break-word;
+
+    .@{prefix}-input--layout-vertical & {
+      font-size: @font-size-base;
+      padding-bottom: 8rpx;
+    }
+  }
+
+  &__icon--prefix:not(:empty) + &__label:not(:empty) {
+    padding-left: 8rpx;
+  }
+
+  &__label:not(:empty) + &__wrap {
+    margin-left: @spacer-2;
+  }
+
+  &__icon--prefix:not(:empty) + &__label:empty {
+    margin-right: @spacer-2;
+  }
+
+  &__wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-shrink: 1;
+    flex: 1;
+
+    .@{prefix}-input__content {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      line-height: 48rpx;
+      font-size: @font-size-m;
+    }
+
+    &--clearable-icon,
+    &--suffix-icon,
+    &--suffix {
+      flex: 0 0 auto;
+      padding-left: @spacer-1;
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    &--clearable-icon,
+    &--suffix-icon {
+      font-size: 48rpx;
+      color: @input-suffix-icon-color;
+    }
+
+    &--suffix {
+      font-size: @font-size-m;
+      color: @input-suffix-text-color;
+    }
+  }
+
+  &__icon--prefix,
+  &__tips,
+  &__wrap--clearable-icon,
+  &__wrap--suffix-icon,
+  &__wrap--suffix {
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__control {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0; // for flex-shrink in field__button
+    min-height: 48rpx;
+    margin: 0;
+    padding: 0;
+    color: @input-default-text-color;
+    line-height: inherit;
+    background-color: transparent;
+    border: 0;
+    resize: none;
+    font-size: inherit;
+
+    &--disabled {
+      color: @input-disabled-text-color;
+      cursor: not-allowed;
+      opacity: 1;
+      -webkit-text-fill-color: currentColor; // fix disabled color in iOS
+    }
+
+    &--read-only {
+      cursor: default;
+    }
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &__placeholder {
+    color: @input-placeholder-text-color;
+    font-size: @input-placeholder-text-font-size;
+
+    &--disabled {
+      color: @input-disabled-text-color;
+    }
+  }
+
+  &__tips {
+    font-size: @font-size-s;
+    line-height: 40rpx;
+    padding-top: 8rpx;
+  }
+}
+
+.input-status(@status) {
+  @tipsColor: 'input-@{status}-tips-color';
+
+  .@{prefix}-input--@{status} + .@{prefix}-input__tips {
+    color: @@tipsColor;
+  }
+}
+
+// status
+.input-status(default);
+.input-status(success);
+.input-status(warning);
+.input-status(error);

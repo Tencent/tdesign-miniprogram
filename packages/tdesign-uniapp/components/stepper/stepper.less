@@ -1,0 +1,159 @@
+@import '../common/style/base.less';
+
+@stepper-small-height: 40rpx;
+@stepper-medium-height: 48rpx;
+@stepper-large-height: 56rpx;
+@stepper-small-font-size: 20rpx;
+@stepper-medium-font-size: 24rpx;
+@stepper-large-font-size: 32rpx;
+@stepper-small-icon-size: 24rpx;
+@stepper-medium-icon-size: 32rpx;
+@stepper-large-icon-size: 40rpx;
+@stepper-small-input-width: 68rpx;
+@stepper-medium-input-width: 76rpx;
+@stepper-large-input-width: 90rpx;
+@stepper-border-width: 2rpx;
+
+@stepper-border-radius: var(--td-stepper-border-radius, @radius-small); // outline/filled 主题下的圆角大小
+@stepper-border-color: var(--td-stepper-border-color, @component-border); // outline/filled 主题下的圆角颜色
+@stepper-input-color: var(--td-stepper-input-color, @text-color-primary); // 输入框文本/图标颜色
+@stepper-input-disabled-color: var(
+  --td-stepper-input-disabled-color,
+  @text-color-disabled
+); // 禁用态输入框文本/图标颜色
+@stepper-input-disabled-bg: var(
+  --td-stepper-input-disabled-bg,
+  @bg-color-component-disabled
+); // 禁用态输入框文本/图标颜色
+
+@stepper: ~'@{prefix}-stepper';
+
+.@{stepper} {
+  display: flex;
+  align-items: center;
+  color: @stepper-input-color;
+
+  &__input {
+    margin: 0 8rpx;
+    text-align: center;
+    vertical-align: top;
+    height: inherit;
+    min-height: inherit;
+
+    background: inherit;
+    padding: 0;
+  }
+
+  &__minus,
+  &__plus {
+    padding: 8rpx;
+    box-sizing: border-box;
+  }
+
+  &__input,
+  &__minus-icon,
+  &__plus-icon {
+    color: inherit;
+  }
+
+  &__input--normal,
+  &__input--filled,
+  &__input--outline {
+    height: inherit;
+    box-sizing: border-box;
+  }
+
+  &--small {
+    height: @stepper-small-height;
+    font-size: @stepper-small-font-size;
+  }
+
+  &--medium {
+    height: @stepper-medium-height;
+    font-size: @stepper-medium-font-size;
+  }
+
+  &--large {
+    height: @stepper-large-height;
+    font-size: @stepper-large-font-size;
+  }
+
+  &__input--small {
+    width: @stepper-small-input-width;
+  }
+
+  &__input--medium {
+    height: @stepper-medium-height;
+    width: @stepper-medium-input-width;
+  }
+
+  &__input--large {
+    width: @stepper-large-input-width;
+  }
+
+  &__icon--small {
+    width: @stepper-small-height;
+    height: @stepper-small-height;
+    font-size: @stepper-small-icon-size;
+  }
+
+  &__icon--medium {
+    width: @stepper-medium-height;
+    height: @stepper-medium-height;
+    font-size: @stepper-medium-icon-size;
+  }
+
+  &__icon--large {
+    width: @stepper-large-height;
+    height: @stepper-large-height;
+    font-size: @stepper-large-icon-size;
+  }
+
+  &__minus--outline,
+  &__plus--outline {
+    border: @stepper-border-width solid @stepper-border-color;
+  }
+
+  &__input--outline {
+    border: none;
+    border-top: @stepper-border-width solid @stepper-border-color;
+    border-bottom: @stepper-border-width solid @stepper-border-color;
+  }
+
+  &__minus--outline,
+  &__minus--filled {
+    border-radius: 0;
+    border-top-left-radius: @stepper-border-radius;
+    border-bottom-left-radius: @stepper-border-radius;
+  }
+  &__plus--outline,
+  &__plus--filled {
+    border-radius: 0;
+    border-top-right-radius: @stepper-border-radius;
+    border-bottom-right-radius: @stepper-border-radius;
+  }
+
+  &__minus--filled,
+  &__plus--filled {
+    background-color: @bg-color-secondarycontainer;
+  }
+
+  &__input--filled {
+    background-color: @bg-color-secondarycontainer;
+    margin: 0 8rpx;
+
+    .@{stepper}__input {
+      margin: 0;
+    }
+  }
+
+  &--normal-disabled {
+    color: @stepper-input-disabled-color;
+  }
+
+  &--filled-disabled,
+  &--outline-disabled {
+    color: @stepper-input-disabled-color;
+    background-color: @stepper-input-disabled-bg;
+  }
+}
