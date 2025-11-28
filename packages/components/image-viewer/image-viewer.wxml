@@ -41,6 +41,7 @@
             data-index="{{index}}"
             class="{{classPrefix}}__image"
             bindload="onImageLoadSuccess"
+            show-menu-by-longpress="{{showMenuByLongpress}}"
           ></t-image>
         </swiper-item>
       </swiper>
