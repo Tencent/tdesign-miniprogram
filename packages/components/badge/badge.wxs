@@ -36,19 +36,19 @@ var getBadgeStyles = function (props) {
 };
 
 var getBadgeOuterClass = function (props) {
-  var baseClass = 't-badge';
+  var baseClass = props.classPrefix;
   var classNames = [baseClass, props.shape === 'ribbon' ? baseClass + '__ribbon-outer' : ''];
   return classNames.join(' ');
 };
 
 var getBadgeInnerClass = function (props) {
-  var baseClass = 't-badge';
+  var baseClass = props.classPrefix;
   var classNames = [
     baseClass + '--basic',
     props.dot ? baseClass + '--dot' : '',
     baseClass + '--' + props.size,
     baseClass + '--' + props.shape,
-    !props.dot && props.count ? baseClass + '--count' : '',
+    !props.dot ? baseClass + '--count' : '',
   ];
   return classNames.join(' ');
 };

@@ -38,6 +38,13 @@ exports[`Avatar & Avatar Groups Avatar Props : style && customStyle 1`] = `
               />
             </wx-view>
           </wx-view>
+          <wx-view
+            ariaHidden="true"
+            ariaLabel="有0条消息"
+            class="t-badge--basic  t-badge--medium t-badge--circle t-badge--count t-has-count t-class-count"
+            id="t_badge_0_description"
+            style=""
+          />
         </wx-view>
       </t-badge>
     </wx-view>
