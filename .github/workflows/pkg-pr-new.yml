@@ -25,4 +25,4 @@ jobs:
         with:
           node-version: 20
 
-      - run: pnpm dlx pkg-pr-new publish 'packages/tdesign-miniprogram' --compact
+      - run: pnpm dlx pkg-pr-new publish 'packages/tdesign-miniprogram' --compact --packageManager=npm,pnpm
