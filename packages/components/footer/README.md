@@ -60,15 +60,15 @@ theme | String | 'text' | 已废弃。页脚展示类型。可选项：text/logo
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-footer-link-color | @brand-color | - 
---td-footer-link-dividing-line-color | @text-color-placeholder | - 
---td-footer-link-dividing-line-padding | @spacer-1 | - 
---td-footer-link-font | @font-body-medium | - 
---td-footer-logo-icon-height | 48rpx | - 
---td-footer-logo-icon-margin-right | @spacer | - 
---td-footer-logo-icon-width | 48rpx | - 
---td-footer-logo-title-font | @font-title-medium | - 
---td-footer-logo-title-url-width | 256rpx | - 
---td-footer-text-color | @text-color-placeholder | - 
---td-footer-text-font | @font-body-small | - 
+--td-footer-link-color | @brand-color | -
+--td-footer-link-dividing-line-color | @text-color-placeholder | -
+--td-footer-link-dividing-line-padding | @spacer-1 | -
+--td-footer-link-font | @font-body-medium | -
+--td-footer-logo-icon-height | 48rpx | -
+--td-footer-logo-icon-margin-right | @spacer | -
+--td-footer-logo-icon-width | 48rpx | -
+--td-footer-logo-title-font | @font-title-medium | -
+--td-footer-logo-title-url-width | 256rpx | -
+--td-footer-text-color | @text-color-placeholder | -
+--td-footer-text-font | @font-body-small | -
 --td-footer-text-margin-top | 8rpx | -

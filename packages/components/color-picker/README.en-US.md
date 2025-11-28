@@ -42,24 +42,24 @@ header | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-color-picker-gradient-preview-height | 56rpx | - 
---td-color-picker-gradient-preview-radius | 6rpx | - 
---td-color-picker-gradient-preview-width | 56rpx | - 
---td-color-picker-input-format-margin-left | 48rpx | - 
---td-color-picker-panel-background | @bg-color-container | - 
---td-color-picker-panel-padding | 32rpx | - 
---td-color-picker-panel-radius | 24rpx | - 
---td-color-picker-panel-width | 750rpx | - 
---td-color-picker-saturation-height | 288rpx | - 
---td-color-picker-saturation-radius | 12rpx | - 
---td-color-picker-saturation-thumb-size | 48rpx | - 
---td-color-picker-slider-height | 16rpx | - 
---td-color-picker-slider-thumb-padding | 6rpx | - 
---td-color-picker-slider-thumb-size | 48rpx | - 
---td-color-picker-slider-thumb-transform-x | -18rpx | - 
---td-color-picker-slider-wrapper-padding | 0 18rpx | - 
---td-color-picker-swatch-border-radius | @radius-small | - 
---td-color-picker-swatch-height | 48rpx | - 
---td-color-picker-swatch-padding | 0 | - 
---td-color-picker-swatch-width | 48rpx | - 
+--td-color-picker-gradient-preview-height | 56rpx | -
+--td-color-picker-gradient-preview-radius | 6rpx | -
+--td-color-picker-gradient-preview-width | 56rpx | -
+--td-color-picker-input-format-margin-left | 48rpx | -
+--td-color-picker-panel-background | @bg-color-container | -
+--td-color-picker-panel-padding | 32rpx | -
+--td-color-picker-panel-radius | 24rpx | -
+--td-color-picker-panel-width | 750rpx | -
+--td-color-picker-saturation-height | 288rpx | -
+--td-color-picker-saturation-radius | 12rpx | -
+--td-color-picker-saturation-thumb-size | 48rpx | -
+--td-color-picker-slider-height | 16rpx | -
+--td-color-picker-slider-thumb-padding | 6rpx | -
+--td-color-picker-slider-thumb-size | 48rpx | -
+--td-color-picker-slider-thumb-transform-x | -18rpx | -
+--td-color-picker-slider-wrapper-padding | 0 18rpx | -
+--td-color-picker-swatch-border-radius | @radius-small | -
+--td-color-picker-swatch-height | 48rpx | -
+--td-color-picker-swatch-padding | 0 | -
+--td-color-picker-swatch-width | 48rpx | -
 --td-color-picker-swatches-title-font | @font-title-medium | -

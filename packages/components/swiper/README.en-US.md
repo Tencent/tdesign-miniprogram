@@ -76,16 +76,16 @@ t-class | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-swiper-item-padding | 0 | - 
---td-swiper-radius | @radius-large | - 
---td-swiper-nav-btn-bg-color | @font-gray-3 | - 
---td-swiper-nav-btn-color | @text-color-anti | - 
---td-swiper-nav-btn-size | 48rpx | - 
---td-swiper-nav-dot-active-color | @text-color-anti | - 
---td-swiper-nav-dot-color | @font-white-2 | - 
---td-swiper-nav-dot-size | 12rpx | - 
---td-swiper-nav-dots-bar-active-width | 40rpx | - 
---td-swiper-nav-fraction-bg-color | @font-gray-3 | - 
---td-swiper-nav-fraction-color | @text-color-anti | - 
---td-swiper-nav-fraction-font | @font-body-small | - 
+--td-swiper-item-padding | 0 | -
+--td-swiper-radius | @radius-large | -
+--td-swiper-nav-btn-bg-color | @font-gray-3 | -
+--td-swiper-nav-btn-color | @text-color-anti | -
+--td-swiper-nav-btn-size | 48rpx | -
+--td-swiper-nav-dot-active-color | @text-color-anti | -
+--td-swiper-nav-dot-color | @font-white-2 | -
+--td-swiper-nav-dot-size | 12rpx | -
+--td-swiper-nav-dots-bar-active-width | 40rpx | -
+--td-swiper-nav-fraction-bg-color | @font-gray-3 | -
+--td-swiper-nav-fraction-color | @text-color-anti | -
+--td-swiper-nav-fraction-font | @font-body-small | -
 --td-swiper-nav-fraction-height | 48rpx | -
