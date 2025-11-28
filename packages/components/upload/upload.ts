@@ -292,13 +292,13 @@ export default class Upload extends SuperComponent {
     },
 
     uploadFiles(files: UploadFile[]) {
-      return new Promise((resolve) => {
+      return Promise.resolve().then(() => {
         // 开始调用上传函数
         const task = this.data.requestMethod(files);
         if (task instanceof Promise) {
           return task;
         }
-        resolve({});
+        return Promise.resolve({});
       });
     },
 
