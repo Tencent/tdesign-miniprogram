@@ -166,29 +166,36 @@ export default class Message extends SuperComponent {
     this.nextAnimationContext = 0;
   }
 
-  show(offsetHeight: number = 0) {
-    const { duration, marquee, offset, id } = this.properties;
-    this.setData({
-      visible: true,
-      loop: marquee.loop || this.data.loop,
-      fadeClass: `${name}__fade`,
-      wrapTop: unitConvert(offset[0]) + offsetHeight,
-    });
-    this.reset();
-    this.checkAnimation();
-    if (duration && duration > 0) {
-      this.closeTimeoutContext = setTimeout(() => {
-        this.hide();
-        this.triggerEvent('duration-end', { self: this });
-      }, duration) as unknown as number;
-    }
-    const wrapID = id ? `#${id}` : `#${name}`;
-    getRect(this, wrapID).then((wrapRect) => {
-      this.setData({ height: wrapRect.height }, () => {
-        this.setData({
-          fadeClass: ``,
-        });
+  show(offsetHeight: number = 0): Promise<void> {
+    return new Promise((resolve) => {
+      const { duration, marquee, offset, id } = this.properties;
+      this.setData({
+        visible: true,
+        loop: marquee.loop || this.data.loop,
+        fadeClass: `${name}__fade`,
+        wrapTop: unitConvert(offset[0]) + offsetHeight,
       });
+      this.reset();
+      this.checkAnimation();
+      if (duration && duration > 0) {
+        this.closeTimeoutContext = setTimeout(() => {
+          this.hide();
+          this.triggerEvent('duration-end', { self: this });
+        }, duration) as unknown as number;
+      }
+      const wrapID = id ? `#${id}` : `#${name}`;
+      getRect(this, wrapID)
+        .then((wrapRect) => {
+          this.setData({ height: wrapRect.height }, () => {
+            this.setData({
+              fadeClass: ``,
+            });
+            resolve();
+          });
+        })
+        .catch(() => {
+          resolve();
+        });
     });
   }
 
