@@ -40,20 +40,20 @@ Component({
         role: 'assistant',
         status: 'complete',
         content: [
-            {
-              type: 'text',
-              data: '它叫 McMurdo Station ATM，是美国富国银行安装在南极洲最大科学中心麦克默多站的一台自动提款机。',
-            },
-          ],
+          {
+            type: 'text',
+            data: '它叫 McMurdo Station ATM，是美国富国银行安装在南极洲最大科学中心麦克默多站的一台自动提款机。',
+          },
+        ],
       },
       {
-          role: 'user',
-          content: [
-            {
-              type: 'text',
-              data: '牛顿第一定律是否适用于所有参考系？',
-            },
-          ],
+        role: 'user',
+        content: [
+          {
+            type: 'text',
+            data: '牛顿第一定律是否适用于所有参考系？',
+          },
+        ],
       },
     ],
     value: '', // 输入框的值
@@ -62,6 +62,7 @@ Component({
     inputStyle: '', // 输入框样式
     contentHeight: '100vh', // 内容高度
     animation: 'dots',
+    activePopover: '',
   },
 
   methods: {
@@ -122,7 +123,7 @@ Component({
 
     // 模拟助手回复
     simulateAssistantReply() {
-      this.setData({ loading: true});
+      this.setData({ loading: true });
       // 请求中
       const assistantMessage = {
         role: 'assistant',
@@ -141,15 +142,15 @@ Component({
       const that = this;
       wx.nextTick(() => {
         fetchStream(mockData, {
-      success(result) {
-        // 生文中
-        that.data.chatList[0].status = 'streaming';
-        if (!that.data.loading) return;
-        that.data.chatList[0].content[0].data += result;
-        that.setData({
-          chatList: that.data.chatList,
-        });
-      },
+          success(result) {
+            // 生文中
+            that.data.chatList[0].status = 'streaming';
+            if (!that.data.loading) return;
+            that.data.chatList[0].content[0].data += result;
+            that.setData({
+              chatList: that.data.chatList,
+            });
+          },
           complete() {
             that.data.chatList[0].status = 'complete';
             that.setData({
@@ -193,6 +194,34 @@ Component({
         message,
         theme: 'success',
       });
+    },
+    showPopover(e) {
+      const { e: event, id } = e.detail;
+      const child = this.selectComponent('.popover-actionbar');
+      const actionbar = this.selectComponent(`#actionbar-${id}`);
+      if (child) {
+        this.setData({
+          activePopover: id,
+        });
+        child.__data__.setPComment(actionbar.__data__.pComment);
+        child.__data__.showPopover(`top:${event.detail.y}px;left:${event.detail.x}px`);
+      }
+    },
+    hidePopover() {
+      const child = this.selectComponent('.popover-actionbar');
+      if (child) {
+        child.__data__.hidePopover();
+      }
+    },
+    handlePopoverAction(e) {
+      const { name } = e.detail;
+
+      this.handleAction(e);
+      if (name === 'good' || name === 'bad') {
+        const actionbar = this.selectComponent(`#actionbar-${this.data.activePopover}`);
+        const child = this.selectComponent('.popover-actionbar');
+        actionbar.__data__.setPComment(child.__data__.pComment);
+      }
     },
   },
   lifetimes: {

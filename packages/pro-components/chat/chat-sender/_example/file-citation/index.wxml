@@ -49,11 +49,11 @@
         </view>
         <view slot="footer-prefix" class="demo-footer-prefix">
           <view class="deep-think-block {{deepThinkActive ? 'active' : ''}}" bind:tap="onDeepThinkTap">
-            <t-icon name="system-sum" size="40rpx" />
+            <t-icon name="system-sum" size="36rpx" />
             <text class="deep-think-text">深度思考</text>
           </view>
           <view class="net-search-block {{ netSearchActive ? 'active' : '' }}" bind:tap="onNetSearchTap">
-            <t-icon name="internet" size="40rpx" />
+            <t-icon name="internet" size="36rpx" />
           </view>
         </view>
       </t-chat-sender>
