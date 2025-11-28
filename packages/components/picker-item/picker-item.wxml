@@ -25,12 +25,8 @@
           data-index="{{ virtualStartIndex + index }}"
           bind:tap="onClickItem"
         >
-          <t-icon
-            wx:if="{{option[pickerKeys.icon]}}"
-            class="{{classPrefix}}__item-icon"
-            name="{{option[pickerKeys.icon]}}"
-          />
-          <text class="{{classPrefix}}__item-label">{{option[pickerKeys.label]}}</text>
+          <t-icon wx:if="{{option[keys.icon]}}" class="{{classPrefix}}__item-icon" name="{{option[keys.icon]}}" />
+          <text class="{{classPrefix}}__item-label">{{option[keys.label]}}</text>
           <slot name="label-suffix--{{virtualStartIndex + index}}"></slot>
         </view>
       </view>
@@ -47,12 +43,8 @@
         data-index="{{ index }}"
         bind:tap="onClickItem"
       >
-        <t-icon
-          wx:if="{{option[pickerKeys.icon]}}"
-          class="{{classPrefix}}__item-icon"
-          name="{{option[pickerKeys.icon]}}"
-        />
-        <text class="{{classPrefix}}__item-label">{{option[pickerKeys.label]}}</text>
+        <t-icon wx:if="{{option[keys.icon]}}" class="{{classPrefix}}__item-icon" name="{{option[keys.icon]}}" />
+        <text class="{{classPrefix}}__item-label">{{option[keys.label]}}</text>
         <slot name="label-suffix--{{index}}"></slot>
       </view>
     </block>
