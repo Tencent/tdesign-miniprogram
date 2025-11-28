@@ -448,6 +448,14 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/popover">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-popover.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-popover-dark.png" />
+      <p class="name">Popover 弹出气泡</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/popup">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-popup.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-popup-dark.png" />

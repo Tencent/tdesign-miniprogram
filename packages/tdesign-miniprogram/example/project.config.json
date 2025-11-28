@@ -275,6 +275,12 @@
           "scene": null
         },
         {
+          "name": "popover",
+          "pathName": "pages/popover/popover",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "popup",
           "pathName": "pages/popup/popup",
           "query": "",
