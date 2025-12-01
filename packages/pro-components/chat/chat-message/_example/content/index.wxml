@@ -5,7 +5,12 @@
       content="{{pic1.content}}"
       role="{{pic1.role}}"
       chatContentProps="{{chatContentProps}}"
-    ></t-chat-message>
+    >
+    <view slot="name">
+      <t-avatar image="{{pic1.avatar}}" size="24px"/>
+      张三
+    </view>
+  </t-chat-message>
   </view>
   <view class="chat-example-block">
     <t-chat-message
