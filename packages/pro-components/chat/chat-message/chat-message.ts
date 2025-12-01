@@ -46,6 +46,10 @@ export default class ChatMessage extends SuperComponent {
       this.triggerEvent('message-longpress', {
         e,
         id: this.data.chatId,
+        longPressPosition: {
+          x: e.detail.x,
+          y: e.detail.y,
+        },
       });
     },
     setShowAvatar() {

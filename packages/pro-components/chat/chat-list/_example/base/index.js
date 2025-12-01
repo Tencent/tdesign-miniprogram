@@ -45,6 +45,8 @@ Component({
             data: '它叫 McMurdo Station ATM，是美国富国银行安装在南极洲最大科学中心麦克默多站的一台自动提款机。',
           },
         ],
+        chatId: `${Date.now()}`,
+        comment: '',
       },
       {
         role: 'user',
@@ -62,7 +64,8 @@ Component({
     inputStyle: '', // 输入框样式
     contentHeight: '100vh', // 内容高度
     animation: 'dots',
-    activePopover: '',
+    activePopoverId: '', // 当前打开悬浮actionbar的chatId
+    activePopoverComment: '', // 当前打开悬浮actionbar的comment
   },
 
   methods: {
@@ -135,6 +138,8 @@ Component({
         ],
         avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
         status: 'pending',
+        chatId: `${Date.now()}`,
+        comment: '',
       };
       this.setData({
         chatList: [assistantMessage, ...this.data.chatList],
@@ -164,7 +169,7 @@ Component({
       });
     },
     handleAction(e) {
-      const { name, active, data } = e.detail;
+      const { name, active, data, chatId } = e.detail;
 
       let message = '';
       switch (name) {
@@ -194,17 +199,28 @@ Component({
         message,
         theme: 'success',
       });
+
+      if (name === 'good' || name === 'bad') {
+        this.data.chatList.forEach((item) => {
+          if (item.chatId === chatId) {
+            item.comment = active ? name : '';
+          }
+        });
+        this.setData({
+          chatList: this.data.chatList,
+        });
+      }
     },
     showPopover(e) {
-      const { e: event, id } = e.detail;
+      const { id, longPressPosition } = e.detail;
       const child = this.selectComponent('.popover-actionbar');
       const actionbar = this.selectComponent(`#actionbar-${id}`);
       if (child) {
         this.setData({
-          activePopover: id,
+          activePopoverId: id,
+          activePopoverComment: actionbar.__data__.pComment,
         });
-        child.__data__.setPComment(actionbar.__data__.pComment);
-        child.__data__.showPopover(`top:${event.detail.y}px;left:${event.detail.x}px`);
+        child.__data__.showPopover(longPressPosition);
       }
     },
     hidePopover() {
@@ -214,13 +230,18 @@ Component({
       }
     },
     handlePopoverAction(e) {
-      const { name } = e.detail;
+      const { name, active } = e.detail;
 
       this.handleAction(e);
       if (name === 'good' || name === 'bad') {
-        const actionbar = this.selectComponent(`#actionbar-${this.data.activePopover}`);
-        const child = this.selectComponent('.popover-actionbar');
-        actionbar.__data__.setPComment(child.__data__.pComment);
+        this.data.chatList.forEach((item) => {
+          if (item.chatId === this.data.activePopoverId) {
+            item.comment = active ? name : '';
+          }
+        });
+        this.setData({
+          chatList: this.data.chatList,
+        });
       }
     },
   },
