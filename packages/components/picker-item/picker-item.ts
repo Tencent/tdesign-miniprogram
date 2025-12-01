@@ -42,17 +42,6 @@ export default class PickerItem extends SuperComponent {
   relations: RelationsOptions = {
     '../picker/picker': {
       type: 'parent',
-      linked(parent) {
-        if ('keys' in parent.data) {
-          const { keys } = parent.data;
-
-          if (keys === null || JSON.stringify(this.data.pickerKeys) === JSON.stringify(keys)) return;
-
-          this.setData({
-            pickerKeys: { ...this.data.pickerKeys, ...keys },
-          });
-        }
-      },
     },
   };
 
@@ -65,7 +54,7 @@ export default class PickerItem extends SuperComponent {
   properties = props;
 
   observers = {
-    'options, pickerKeys'() {
+    'options, keys'() {
       this.update();
     },
   };
@@ -78,7 +67,7 @@ export default class PickerItem extends SuperComponent {
     value: '',
     curIndex: 0,
     columnIndex: 0,
-    pickerKeys: { value: 'value', label: 'label', icon: 'icon' },
+    keys: {},
     formatOptions: props.options.value,
     // 虚拟滚动相关
     enableVirtualScroll: false, // 是否启用虚拟滚动
@@ -283,10 +272,10 @@ export default class PickerItem extends SuperComponent {
     },
 
     updateSelected(index: number, trigger: boolean) {
-      const { columnIndex, pickerKeys, formatOptions } = this.data;
+      const { columnIndex, keys, formatOptions } = this.data;
       this._selectedIndex = index;
-      this._selectedValue = formatOptions[index]?.[pickerKeys?.value];
-      this._selectedLabel = formatOptions[index]?.[pickerKeys?.label];
+      this._selectedValue = formatOptions[index]?.[keys?.value];
+      this._selectedLabel = formatOptions[index]?.[keys?.label];
 
       if (trigger) {
         this.$parent?.triggerColumnChange({
@@ -298,7 +287,7 @@ export default class PickerItem extends SuperComponent {
 
     // 刷新选中状态
     update() {
-      const { options, value, pickerKeys, format, columnIndex, itemHeight, visibleItemCount } = this.data;
+      const { options, value, keys, format, columnIndex, itemHeight, visibleItemCount } = this.data;
 
       const formatOptions = this.formatOption(options, columnIndex, format);
       const optionsCount = formatOptions.length;
@@ -310,10 +299,10 @@ export default class PickerItem extends SuperComponent {
       let index: number = -1;
       if (optionsCount > 500) {
         // 构建临时 Map（只在查找时构建，不缓存）
-        const valueMap = new Map<any, number>(formatOptions.map((item, idx) => [item[pickerKeys?.value], idx]));
+        const valueMap = new Map<any, number>(formatOptions.map((item, idx) => [item[keys?.value], idx]));
         index = valueMap.get(value) ?? -1;
       } else {
-        index = formatOptions.findIndex((item: PickerItemOption) => item[pickerKeys?.value] === value);
+        index = formatOptions.findIndex((item: PickerItemOption) => item[keys?.value] === value);
       }
       const selectedIndex = index > 0 ? index : 0;
 
@@ -410,13 +399,13 @@ export default class PickerItem extends SuperComponent {
     },
 
     getCurrentSelected() {
-      const { offset, itemHeight, formatOptions, pickerKeys } = this.data;
+      const { offset, itemHeight, formatOptions, keys } = this.data;
       const currentIndex = Math.max(0, Math.min(Math.round(-offset / itemHeight), this.getCount() - 1));
 
       return {
         index: currentIndex,
-        value: formatOptions[currentIndex]?.[pickerKeys?.value],
-        label: formatOptions[currentIndex]?.[pickerKeys?.label],
+        value: formatOptions[currentIndex]?.[keys?.value],
+        label: formatOptions[currentIndex]?.[keys?.label],
       };
     },
   };

@@ -6,6 +6,8 @@ import useCustomNavbar from '../mixins/using-custom-navbar';
 const { prefix } = config;
 const name = `${prefix}-picker`;
 
+const DEFAULT_KEYS = { value: 'value', label: 'label', icon: 'icon' };
+
 @wxComponent()
 export default class Picker extends SuperComponent {
   behaviors = [useCustomNavbar];
@@ -50,7 +52,7 @@ export default class Picker extends SuperComponent {
 
   methods = {
     updateChildren() {
-      const { value, defaultValue, itemHeight, visibleItemCount } = this.properties;
+      const { value, defaultValue, itemHeight, visibleItemCount, keys } = this.properties;
 
       this.$children.forEach((child, index) => {
         child.setData({
@@ -58,6 +60,7 @@ export default class Picker extends SuperComponent {
           columnIndex: index,
           itemHeight,
           visibleItemCount,
+          keys: { ...DEFAULT_KEYS, ...(keys || {}) },
         });
         child.update();
       });
