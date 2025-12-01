@@ -1,6 +1,12 @@
 import Toast from 'tdesign-miniprogram/toast';
 import { getNavigationBarHeight } from '../../../utils/utils';
 
+let uniqueId = 0;
+const getUniqueKey = () => {
+  uniqueId += 1;
+  return `key-${uniqueId}`;
+};
+
 const mockData = `南极的自动提款机并没有一个特定的专属名称，但历史上确实有一台ATM机曾短暂存在于南极的**麦克默多站**（McMurdo Station）。这台ATM由美国**富兰克林国家银行**（Wells Fargo）于1998年安装，主要供驻扎在该站的科研人员使用。不过，由于南极的极端环境和极低的人口密度，这台ATM机并未长期运行，最终被移除。
 
 **背景补充：**
@@ -45,7 +51,7 @@ Component({
             data: '它叫 McMurdo Station ATM，是美国富国银行安装在南极洲最大科学中心麦克默多站的一台自动提款机。',
           },
         ],
-        chatId: `${Date.now()}`,
+        chatId: getUniqueKey(),
         comment: '',
       },
       {
@@ -138,7 +144,7 @@ Component({
         ],
         avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
         status: 'pending',
-        chatId: `${Date.now()}`,
+        chatId: getUniqueKey(),
         comment: '',
       };
       this.setData({
@@ -230,19 +236,8 @@ Component({
       }
     },
     handlePopoverAction(e) {
-      const { name, active } = e.detail;
-
+      e.detail.chatId = this.data.activePopoverId;
       this.handleAction(e);
-      if (name === 'good' || name === 'bad') {
-        this.data.chatList.forEach((item) => {
-          if (item.chatId === this.data.activePopoverId) {
-            item.comment = active ? name : '';
-          }
-        });
-        this.setData({
-          chatList: this.data.chatList,
-        });
-      }
     },
   },
   lifetimes: {
