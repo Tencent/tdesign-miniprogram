@@ -22,11 +22,9 @@
 @chat-sender-textarea-hook-max-height: 280rpx;
 
 @chat-sender-input-max-height: 264rpx;
-@chat-sender-input-font-size: @font-size-m;
-@chat-sender-input-line-height: 48rpx;
+@chat-sender-input-font: @font-body-large;
 @chat-sender-input-color: @text-color-primary;
 @chat-sender-input-caret-color: @brand-color;
-@chat-sender-input-font-family: 'PingFang SC', 'Helvetica Neue', Arial, sans-serif;
 @chat-sender-input-letter-spacing: 5%;
 
 @chat-sender-placeholder-color: @text-color-disabled;
@@ -46,11 +44,10 @@
 @chat-sender-upload-margin-bottom: 24rpx;
 @chat-sender-upload-item-margin-right: 24rpx;
 @chat-sender-upload-item-icon-size: 96rpx;
-@chat-sender-upload-item-icon-radius: 12rpx;
+@chat-sender-upload-item-icon-radius: @radius-default;
 @chat-sender-upload-item-icon-bg: @bg-color-secondarycontainer;
 @chat-sender-upload-item-icon-margin-bottom: 16rpx;
-@chat-sender-upload-item-text-font-size: 28rpx;
-@chat-sender-upload-item-text-line-height: 44rpx;
+@chat-sender-upload-item-text-font: @font-body-medium;
 
 @chat-sender-btn-func-size: 58rpx;
 @chat-sender-btn-func-bg: @bg-color-container;
@@ -58,22 +55,7 @@
 @chat-sender-btn-func-disabled-bg: #c9ccd2;
 @chat-sender-btn-func-disabled-opacity: 0.24;
 
-@chat-sender-menu-top: -24rpx;
-@chat-sender-menu-padding: 0 24rpx;
-@chat-sender-menu-radius: 16rpx;
-@chat-sender-menu-bg: #ffffff;
-@chat-sender-menu-shadow: 0 16rpx 16rpx 0 rgba(0, 119, 254, 0.08);
-@chat-sender-menu-item-width: 172rpx;
-@chat-sender-menu-item-padding: 24rpx 8rpx;
-@chat-sender-menu-item-border: 1rpx solid #ebedf0;
-@chat-sender-menu-item-icon-margin-right: 24rpx;
-@chat-sender-menu-item-text-color: #535d6d;
-@chat-sender-menu-item-text-font-size: 28rpx;
-@chat-sender-menu-item-text-font-weight: 500;
-@chat-sender-menu-item-text-line-height: 36rpx;
-@chat-sender-menu-item-text-letter-spacing: 1rpx;
-
-@chat-sender-bg-color: var(--td-bg-color-specialcomponent, #fff);
+@chat-sender-bg-color: var(--td-chat-sender-bg-color, @bg-color-specialcomponent);
 
 .@{chat-sender} {
   position: relative;
@@ -84,7 +66,7 @@
   margin: @chat-sender-margin;
   box-shadow: @chat-sender-shadow;
   transition: @chat-sender-margin-bottom-transition;
-  background-color: @chat-sender-bg-color;
+  background-color: @bg-color-specialcomponent;
 
   // 头部区域
   &__header {
@@ -124,12 +106,9 @@
       display: block;
       width: 100%;
       color: @chat-sender-input-color;
-      font-size: @chat-sender-input-font-size;
-      line-height: @chat-sender-input-line-height;
+      font: @chat-sender-input-font;
       word-break: break-word;
       caret-color: @chat-sender-input-caret-color;
-      font-family: @chat-sender-input-font-family;
-      font-weight: 400;
       letter-spacing: @chat-sender-input-letter-spacing;
       padding-bottom: @chat-sender-textarea-hook-padding-bottom;
     }
@@ -137,7 +116,7 @@
     // 占位符
     &--placeholder {
       color: @chat-sender-placeholder-color;
-      font-size: @chat-sender-input-font-size;
+      font: @chat-sender-input-font;
       position: absolute;
       left: 0;
       top: 0;
@@ -196,8 +175,7 @@
 
       // 上传项文本
       &__text {
-        font-size: @chat-sender-upload-item-text-font-size;
-        line-height: @chat-sender-upload-item-text-line-height;
+        font: @chat-sender-upload-item-text-font;
       }
     }
   }

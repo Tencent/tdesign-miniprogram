@@ -39,11 +39,11 @@ delete-btn | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-image-viewer-close-margin-left | @spacer-1 | - 
---td-image-viewer-delete-margin-right | @spacer-1 | - 
---td-image-viewer-mask-bg-color | @mask-active | - 
---td-image-viewer-nav-bg-color | #000 | - 
---td-image-viewer-nav-color | @text-color-anti | - 
---td-image-viewer-nav-height | 96rpx | - 
---td-image-viewer-nav-index-font-size | @font-size-base | - 
+--td-image-viewer-close-margin-left | @spacer-1 | -
+--td-image-viewer-delete-margin-right | @spacer-1 | -
+--td-image-viewer-mask-bg-color | @mask-active | -
+--td-image-viewer-nav-bg-color | #000 | -
+--td-image-viewer-nav-color | @text-color-anti | -
+--td-image-viewer-nav-height | 96rpx | -
+--td-image-viewer-nav-index-font-size | @font-size-base | -
 --td-image-viewer-top | @position-fixed-top | -

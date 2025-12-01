@@ -18,7 +18,7 @@
     "build:example": "gulp --gulpfile script/gulpfile.example.js --cwd ./",
     "build:assets": "cross-env NODE_ENV=production gulp assets:build --gulpfile script/gulpfile.dist.js --cwd ./",
     "update:icons": "pnpm -C packages/tdesign-miniprogram/site update:icons",
-    "update:css": "pnpm -C packages/tdesign-miniprogram/site update:css",
+    "api:css": "node packages/common/scripts/generate-css-vars.mjs Miniprogram",
     "lintfix": "eslint '{packages/components,packages/pro-components,packages/tdesign-miniprogram/example}/**/*.{js,ts}' --fix",
     "lint": "eslint '{packages/components,packages/pro-components,packages/tdesign-miniprogram/example}/**/*.{js,ts}'",
     "format": "prettier {packages/components,packages/pro-components,packages/tdesign-miniprogram/example,script}/**/*.{js,ts,wxss,less,wxml,html,json,md,wxs} --write",

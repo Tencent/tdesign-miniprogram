@@ -139,7 +139,7 @@ export interface TdCalendarProps {
 
 export type CalendarFormatType = (day: TDate) => TDate;
 
-export type TDateType = 'selected' | 'disabled' | 'start' | 'centre' | 'end' | '';
+export type TDateType = 'selected' | 'disabled' | 'start' | 'start-end' | 'centre' | 'end' | '';
 
 export interface TDate {
   date: Date;

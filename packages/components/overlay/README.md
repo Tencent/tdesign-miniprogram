@@ -68,5 +68,5 @@ click | `({ visible: boolean })` | 点击遮罩时触发
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-overlay-bg-color | @mask-active | - 
+--td-overlay-bg-color | @mask-active | -
 --td-overlay-transition-duration | 300ms | -

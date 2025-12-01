@@ -8,6 +8,7 @@
 @action-sheet-gap-color: var(--td-action-sheet-gap-color, @bg-color-page);
 @action-sheet-color: var(--td-action-sheet-color, @text-color-primary);
 @action-sheet-border-radius: var(--td-action-sheet-border-radius, @radius-extraLarge);
+@action-sheet-description-font: var(--td-action-sheet-description-font, @font-body-medium);
 @action-sheet-description-color: var(--td-action-sheet-description-color, @text-color-placeholder);
 @action-sheet-text-align: var(--td-action-sheet-text-align, center);
 @action-sheet-cancel-height: var(--td-action-sheet-cancel-height, 96rpx);
@@ -52,8 +53,7 @@
 
   &__description {
     color: @action-sheet-description-color;
-    line-height: 44rpx;
-    font-size: 28rpx;
+    font: @action-sheet-description-font;
     text-align: @action-sheet-text-align;
     padding: 24rpx 32rpx;
 

@@ -115,11 +115,11 @@ url | String | - | 水印图片源地址，为了显示清楚，建议导出 2 �
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---watermark-left-0 | --watermark-left-0 | - 
---watermark-left-25 | --watermark-left-25 | - 
---watermark-left-50 | --watermark-left-50 | - 
---watermark-left-75 | --watermark-left-75 | - 
---watermark-top-0 | --watermark-top-0 | - 
---watermark-top-25 | --watermark-top-25 | - 
---watermark-top-50 | --watermark-top-50 | - 
+--watermark-left-0 | --watermark-left-0 | -
+--watermark-left-25 | --watermark-left-25 | -
+--watermark-left-50 | --watermark-left-50 | -
+--watermark-left-75 | --watermark-left-75 | -
+--watermark-top-0 | --watermark-top-0 | -
+--watermark-top-25 | --watermark-top-25 | -
+--watermark-top-50 | --watermark-top-50 | -
 --watermark-top-75 | --watermark-top-75 | -

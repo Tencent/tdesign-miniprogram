@@ -1,9 +1,8 @@
 @import '../common/style/base.less';
 
 @radio-icon-size: var(--td-radio-icon-size, 48rpx);
-@radio-font-size: var(--td-radio-font-size, 32rpx);
+@radio-label-font: var(--td-radio-font, @font-body-large);
 @radio-label-line-height: var(--td-radio-label-line-height, 48rpx);
-@radio-content-line-height: var(--td-radio-content-line-height, 44rpx);
 @radio-vertical-padding: var(--td-radio-vertical-padding, 32rpx);
 @radio-bg-color: var(--td-radio-bg-color, @bg-color-container);
 @radio-border-color: var(--td-radio-border-color, @component-stroke);
@@ -18,7 +17,7 @@
 @radio-icon-disabled-bg-color: var(--td-radio-icon-disabled-bg-color, @bg-color-component-disabled);
 @radio-icon-checked-color: var(--td-radio-icon-checked-color, @brand-color);
 
-@radio-content-font-size: var(--td-radio-content-font-size, 28rpx);
+@radio-content-font: var(--td-radio-content-font, @font-body-medium);
 
 .limit-title-row {
   display: -webkit-box;
@@ -30,7 +29,6 @@
   position: relative;
   display: inline-flex;
   vertical-align: middle;
-  font-size: @radio-font-size;
   background: @radio-bg-color;
 
   &:focus {
@@ -182,7 +180,7 @@
   &__title {
     .limit-title-row();
     color: @radio-label-color;
-    line-height: @radio-label-line-height;
+    font: @radio-label-font;
 
     &--checked {
       color: @radio-label-checked-color;
@@ -197,8 +195,7 @@
   &__description {
     .limit-title-row();
     color: @radio-content-color;
-    font-size: @radio-content-font-size;
-    line-height: @radio-content-line-height;
+    font: @radio-content-font;
 
     &--checked {
       color: @radio-content-checked-color;
