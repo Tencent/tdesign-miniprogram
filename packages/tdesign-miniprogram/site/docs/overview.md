@@ -103,7 +103,7 @@ spline: explain
     <a class="item" href="/miniprogram/components/tab-bar">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-tabbar.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-tabbar-dark.png" />
-      <p class="name">TabBar 标签栏</p>
+      <p class="name">TabBar 底部标签栏</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -221,7 +221,7 @@ spline: explain
     <a class="item" href="/miniprogram/components/tree-select">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-treeselect.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-treeselect-dark.png" />
-      <p class="name">TreeSelect 树形选择</p>
+      <p class="name">TreeSelect 树形选择器</p>
     </a>
   </div>
 

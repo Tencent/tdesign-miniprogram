@@ -63,19 +63,17 @@ label-suffix-index | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-picker-bg-color | @bg-color-container | - 
---td-picker-border-radius | 24rpx | - 
---td-picker-button-font-size | 32rpx | - 
---td-picker-cancel-color | @text-color-secondary | - 
---td-picker-confirm-color | @brand-color | - 
---td-picker-indicator-bg-color | @bg-color-secondarycontainer | - 
---td-picker-indicator-border-radius | 12rpx | - 
---td-picker-title-color | @text-color-primary | - 
---td-picker-title-font-size | 36rpx | - 
---td-picker-title-font-weight | 600 | - 
---td-picker-title-line-height | 52rpx | - 
---td-picker-toolbar-height | 116rpx | - 
---td-picker-transparent-color | --td-picker-transparent-color | - 
---td-picker-item-active-color | @text-color-primary | - 
---td-picker-item-color | @text-color-secondary | - 
+--td-picker-bg-color | @bg-color-container | -
+--td-picker-border-radius | 24rpx | -
+--td-picker-button-font | @font-body-large | -
+--td-picker-cancel-color | @text-color-secondary | -
+--td-picker-confirm-color | @brand-color | -
+--td-picker-indicator-bg-color | @bg-color-secondarycontainer | -
+--td-picker-indicator-border-radius | 12rpx | -
+--td-picker-title-color | @text-color-primary | -
+--td-picker-title-font | @font-title-large | -
+--td-picker-toolbar-height | 116rpx | -
+--td-picker-transparent-color | --td-picker-transparent-color | -
+--td-picker-item-active-color | @text-color-primary | -
+--td-picker-item-color | @text-color-secondary | -
 --td-picker-item-font-size | @font-size-m | -

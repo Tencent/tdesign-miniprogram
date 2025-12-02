@@ -35,6 +35,5 @@ status-render | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-font-size-title-small | --td-font-size-title-small | - 
 --td-brand-color-hover | --td-brand-color-hover | - 
 --td-success-color | --td-success-color | -

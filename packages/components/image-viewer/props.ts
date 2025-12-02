@@ -21,6 +21,10 @@ const props: TdImageViewerProps = {
     type: null,
     value: false,
   },
+  /** 透传至 Image 组件 */
+  imageProps: {
+    type: Object,
+  },
   /** 图片数组 */
   images: {
     type: Array,

@@ -3,17 +3,16 @@
 @badge-text-color: var(--td-badge-text-color, @text-color-anti);
 @badge-content-text-color: var(--td-badge-content-text-color, @text-color-primary);
 @badge-color: var(--td-badge-bg-color, @error-color);
-@badge-font-size: var(--td-badge-font-size, @font-size-xs);
+@badge-font: var(--td-badge-font, @font-mark-extraSmall);
 @badge-basic-height: var(--td-badge-basic-height, 32rpx);
 @badge-basic-width: var(--td-badge-basic-width, 32rpx);
 @badge-basic-padding: var(--td-badge-basic-padding, 8rpx);
-@badge-font-weight: var(--td-badge-font-weight, 600);
 @badge-border-radius: var(--td-badge-border-radius, 4rpx);
 @border-bubble-border-radius: var(--td-badge-bubble-border-radius, 20rpx 20rpx 20rpx 1px);
 @badge-dot-size: var(--td-badge-dot-size, 16rpx);
 
 // large
-@badge-large-font-size: var(--td-badge-large-font-size, @font-size-s);
+@badge-large-font: var(--td-badge-large-font, @font-mark-small);
 @badge-large-height: var(--td-badge-large-height, 40rpx);
 @badge-large-padding: var(--td-badge-large-padding, 10rpx);
 
@@ -25,13 +24,11 @@
   &--basic {
     z-index: 100;
     padding: 0 @badge-basic-padding;
-    font-size: @badge-font-size;
+    font: @badge-font;
     color: @badge-text-color;
     background-color: @badge-color;
     text-align: center;
     height: @badge-basic-height;
-    line-height: @badge-basic-height;
-    font-weight: @badge-font-weight;
     border-radius: @badge-border-radius;
   }
 
@@ -96,10 +93,9 @@
 
   // size
   &--large {
-    font-size: @badge-large-font-size;
+    font: @badge-large-font;
     height: @badge-large-height;
     min-width: @badge-large-height;
-    line-height: @badge-large-height;
     padding: 0 @badge-large-padding;
   }
 
@@ -117,7 +113,7 @@
 
   &__content-text {
     display: block;
-    line-height: 48rpx;
+    font: @font-body-large;
     color: @badge-content-text-color;
   }
 }

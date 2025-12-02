@@ -16,7 +16,6 @@
   transition: opacity 300ms ease;
   background-color: @toast-bg-color;
   border-radius: @toast-radius;
-  font-size: 28rpx;
   color: @toast-color;
   max-width: @toast-max-width;
   min-height: 0; // 防止 flex 容器被意外拉伸
@@ -45,7 +44,7 @@
 
   &__content {
     align-items: center;
-    line-height: 44rpx;
+    font: @font-body-medium;
 
     &--row {
       display: flex;

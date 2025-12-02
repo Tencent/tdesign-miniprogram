@@ -46,19 +46,19 @@ t-class-cursor | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-slider-active-color | @brand-color | - 
---td-slider-bar-height | 8rpx | - 
---td-slider-bar-width | 8rpx | - 
---td-slider-capsule-bar-color | @bg-color-component | - 
---td-slider-capsule-bar-heihgt | 48rpx | - 
---td-slider-capsule-bar-width | 48rpx | - 
---td-slider-capsule-line-heihgt | 36rpx | - 
---td-slider-default-color | @bg-color-component | - 
---td-slider-disabled-color | @brand-color-disabled | - 
---td-slider-disabled-text-color | @text-color-disabled | - 
---td-slider-dot-bg-color | #fff | - 
---td-slider-dot-color | @component-border | - 
---td-slider-dot-disabled-bg-color | #fff | - 
---td-slider-dot-disabled-border-color | #f3f3f3 | - 
---td-slider-dot-size | 40rpx | - 
+--td-slider-active-color | @brand-color | -
+--td-slider-bar-height | 8rpx | -
+--td-slider-bar-width | 8rpx | -
+--td-slider-capsule-bar-color | @bg-color-component | -
+--td-slider-capsule-bar-heihgt | 48rpx | -
+--td-slider-capsule-bar-width | 48rpx | -
+--td-slider-capsule-line-heihgt | 36rpx | -
+--td-slider-default-color | @bg-color-component | -
+--td-slider-disabled-color | @brand-color-disabled | -
+--td-slider-disabled-text-color | @text-color-disabled | -
+--td-slider-dot-bg-color | #fff | -
+--td-slider-dot-color | @component-border | -
+--td-slider-dot-disabled-bg-color | #fff | -
+--td-slider-dot-disabled-border-color | #f3f3f3 | -
+--td-slider-dot-size | 40rpx | -
 --td-slider-text-color | @text-color-primary | -

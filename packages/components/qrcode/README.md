@@ -103,6 +103,5 @@ status-render | 自定义状态渲染器
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-font-size-title-small | --td-font-size-title-small | - 
 --td-brand-color-hover | --td-brand-color-hover | - 
 --td-success-color | --td-success-color | -

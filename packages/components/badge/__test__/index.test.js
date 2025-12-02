@@ -184,7 +184,7 @@ describe('badge', () => {
     comp.attach(document.createElement('parent-wrapper'));
 
     const $count = comp.querySelector('.badge >>> .t-badge--basic');
-    expect($count).toBeUndefined();
+    expect($count.dom.textContent.trim()).toBe('');
 
     comp.setData({ showZero: true });
 
