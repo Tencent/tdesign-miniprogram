@@ -15,11 +15,13 @@
 <view
   wx:if="{{realVisible}}"
   id="{{classPrefix}}-content"
-  style="{{contentStyle}} {{customStyle}}"
+  style="{{style}} {{contentStyle}} {{customStyle}}"
   class="{{classPrefix}} {{transitionClass}} {{prefix}}-class"
   data-placement="{{_placement}}"
 >
-  <view class="{{classPrefix}}__content {{classPrefix}}--{{theme}} {{prefix}}-class-content">
+  <view
+    class="{{classPrefix}}__content {{classPrefix}}--{{theme}} {{prefix}}-class-content {{showArrow ? classPrefix + '__content--arrow' : ''}}"
+  >
     <slot name="content" />
     <view wx:if="{{content}}">{{content}}</view>
 

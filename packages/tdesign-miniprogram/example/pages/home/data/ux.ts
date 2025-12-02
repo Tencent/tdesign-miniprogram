@@ -70,6 +70,10 @@ const skylineUx = {
       label: '遮罩层',
     },
     {
+      name: 'Popover',
+      label: '弹出气泡',
+    },
+    {
       name: 'Popup',
       label: '弹出层',
     },

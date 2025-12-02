@@ -45,20 +45,9 @@ export default class Popover extends SuperComponent {
       if (val === undefined || val === null) return;
       this.updateVisible(val);
     },
-    placement() {
-      if (this.data.realVisible) this.computePosition();
-    },
-    realVisible(v: boolean) {
+    'placement, realVisible'(v: boolean) {
       if (v) {
         this.computePosition();
-      }
-    },
-  };
-
-  lifetimes = {
-    attached() {
-      if (this.properties.defaultVisible) {
-        this.updateVisible(true);
       }
     },
   };
@@ -96,12 +85,12 @@ export default class Popover extends SuperComponent {
       if (isHorizontal) {
         const padding = isEnd ? Math.min(width + left, popperWidth) : Math.min(windowWidth - left, popperWidth);
         if (isEnd) {
-          return `left:${padding - 22}px;`;
+          return `left:${padding - 28}px;`;
         }
-        return `right:${padding - 22}px;`;
+        return `right:${padding - 28}px;`;
       }
       if (isVertical) {
-        const offset = popperHeight - 22;
+        const offset = popperHeight - 28;
         if (isEnd) {
           return `top:${offset}px;`;
         }
