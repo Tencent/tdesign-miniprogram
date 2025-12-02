@@ -54,6 +54,10 @@
   &__header {
     .@{chat-message}__avatar {
       padding-top: calc(@chat-message-height + @spacer);
+
+      &:empty {
+        padding-top: 0;
+      }
     }
   }
 
@@ -115,6 +119,10 @@
     .@{chat-message}__avatar {
       margin-left: @spacer-1;
       margin-right: 0;
+
+      &:empty {
+        margin-left: 0;
+      }
     }
   }
 
@@ -125,6 +133,11 @@
     display: flex;
     margin-right: @spacer-1;
     padding-top: calc(@chat-message-height + @spacer);
+
+    &:empty {
+      padding-top: 0;
+      margin-right: 0;
+    }
 
     &-image {
       width: @spacer-4;

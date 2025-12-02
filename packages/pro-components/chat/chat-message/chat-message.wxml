@@ -1,13 +1,13 @@
 <wxs src="../../../components/common/utils.wxs" module="_" />
 
 <view class="class {{chatItemClass}}" style="{{_._style([style, customStyle])}}" bindlongpress="handleLongPress">
-  <view wx:if="{{showAvatar}}" class="{{classPrefix}}__avatar">
+  <view class="{{classPrefix}}__avatar">
+    <!-- 头像插槽 -->
+    <slot name="avatar" />
     <block wx:if="{{avatar}}">
       <image src="{{avatar}}" class="{{classPrefix}}__avatar-image"></image>
     </block>
   </view>
-  <!-- 头像插槽 -->
-  <slot name="avatar" />
   <view class="{{contentClasses}}">
     <view class="{{classPrefix}}__base">
       <!-- 昵称插槽 -->
