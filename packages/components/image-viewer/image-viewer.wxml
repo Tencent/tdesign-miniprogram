@@ -34,7 +34,7 @@
         <swiper-item wx:for="{{images}}" wx:key="index" class="{{classPrefix}}__preview-image">
           <t-image
             wx:if="{{!lazy || utils.shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes) }}"
-            t-class="t-image--external"
+            t-class="{{prefix}}-image--external"
             class="{{classPrefix}}__image"
             style="{{imagesStyle[index].style || ''}}"
             data-index="{{index}}"
