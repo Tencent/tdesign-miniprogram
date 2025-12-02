@@ -41,6 +41,11 @@ const props: TdChatActionbarProps = {
     type: String,
     value: 'start',
   },
+  /** 【实验】长按触发点的位置信息，用于定位 popover */
+  longPressPosition: {
+    type: Object,
+    value: null,
+  },
 };
 
 export default props;

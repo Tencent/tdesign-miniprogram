@@ -221,27 +221,30 @@ Component({
     },
     showPopover(e) {
       const { id, longPressPosition } = e.detail;
-      const child = this.selectComponent('.popover-actionbar');
-      if (child) {
-        let comment = '';
-        this.data.chatList.forEach((item) => {
-          if (item.chatId === id) {
-            comment = item.comment;
-          }
-        });
+      let comment = '';
+      let role = '';
+      this.data.chatList.forEach((item) => {
+        if (item.chatId === id) {
+          comment = item.comment;
+          role = item.role;
+        }
+      });
 
-        this.setData({
-          activePopoverId: id,
-          activePopoverComment: comment,
-        });
-        child.__data__.showPopover(longPressPosition);
+      // 仅当 role 为 user 时才显示 popover
+      if (role !== 'user') {
+        return;
       }
+
+      this.setData({
+        activePopoverId: id,
+        activePopoverComment: comment,
+        longPressPosition,
+      });
     },
     hidePopover() {
-      const child = this.selectComponent('.popover-actionbar');
-      if (child) {
-        child.__data__.hidePopover();
-      }
+      this.setData({
+        longPressPosition: null,
+      });
     },
     handlePopoverAction(e) {
       e.detail.chatId = this.data.activePopoverId;

@@ -39,6 +39,15 @@ export default class ChatActionbar extends SuperComponent {
     'actionBar, pComment'() {
       this.setActions();
     },
+    longPressPosition(newVal) {
+      if (this.properties.placement === 'longpress') {
+        if (newVal) {
+          this.showPopover(newVal);
+        } else {
+          this.hidePopover();
+        }
+      }
+    },
   };
 
   methods = {
