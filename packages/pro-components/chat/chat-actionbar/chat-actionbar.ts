@@ -95,6 +95,7 @@ export default class ChatActionbar extends SuperComponent {
         this.triggerEvent('actions', {
           name,
           active: !isActive,
+          chatId: this.properties.chatId,
         });
       } else if (name === 'bad') {
         const isActive = this.data.pComment === 'bad';
@@ -104,10 +105,12 @@ export default class ChatActionbar extends SuperComponent {
         this.triggerEvent('actions', {
           name,
           active: !isActive,
+          chatId: this.properties.chatId,
         });
       } else {
         this.triggerEvent('actions', {
           name,
+          chatId: this.properties.chatId,
         });
       }
     },
@@ -156,10 +159,11 @@ export default class ChatActionbar extends SuperComponent {
       });
     },
 
-    showPopover(str) {
-      const width = (this.data.actions.length * 128 + (this.data.actions.length - 1) * 8 + 16 * 2) / 2;
+    showPopover(pos) {
+      const lineNumber = Math.min(this.data.actions.length, 4);
+      const width = (lineNumber * 128 + (lineNumber - 1) * 8 + 16 * 2) / 2;
       this.setData({
-        popoverPosition: `${str};margin-left:-${width}rpx`,
+        popoverPosition: `top:${pos.y}px;left:${pos.x}px;margin-left:-${width}rpx`,
       });
     },
 

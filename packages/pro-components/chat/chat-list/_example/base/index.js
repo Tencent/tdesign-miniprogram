@@ -1,6 +1,12 @@
 import Toast from 'tdesign-miniprogram/toast';
 import { getNavigationBarHeight } from '../../../utils/utils';
 
+let uniqueId = 0;
+const getUniqueKey = () => {
+  uniqueId += 1;
+  return `key-${uniqueId}`;
+};
+
 const mockData = `南极的自动提款机并没有一个特定的专属名称，但历史上确实有一台ATM机曾短暂存在于南极的**麦克默多站**（McMurdo Station）。这台ATM由美国**富兰克林国家银行**（Wells Fargo）于1998年安装，主要供驻扎在该站的科研人员使用。不过，由于南极的极端环境和极低的人口密度，这台ATM机并未长期运行，最终被移除。
 
 **背景补充：**
@@ -45,6 +51,8 @@ Component({
             data: '它叫 McMurdo Station ATM，是美国富国银行安装在南极洲最大科学中心麦克默多站的一台自动提款机。',
           },
         ],
+        chatId: getUniqueKey(),
+        comment: '',
       },
       {
         role: 'user',
@@ -54,6 +62,7 @@ Component({
             data: '牛顿第一定律是否适用于所有参考系？',
           },
         ],
+        chatId: getUniqueKey(),
       },
     ],
     value: '', // 输入框的值
@@ -62,7 +71,8 @@ Component({
     inputStyle: '', // 输入框样式
     contentHeight: '100vh', // 内容高度
     animation: 'dots',
-    activePopover: '',
+    activePopoverId: '', // 当前打开悬浮actionbar的chatId
+    activePopoverComment: '', // 当前打开悬浮actionbar的comment
   },
 
   methods: {
@@ -90,6 +100,7 @@ Component({
             data: value.trim(),
           },
         ],
+        chatId: getUniqueKey(),
       };
 
       // 将用户消息插入到chatList的开头（因为reverse为true，所以用unshift）
@@ -135,6 +146,8 @@ Component({
         ],
         avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
         status: 'pending',
+        chatId: getUniqueKey(),
+        comment: '',
       };
       this.setData({
         chatList: [assistantMessage, ...this.data.chatList],
@@ -164,7 +177,7 @@ Component({
       });
     },
     handleAction(e) {
-      const { name, active, data } = e.detail;
+      const { name, active, data, chatId } = e.detail;
 
       let message = '';
       switch (name) {
@@ -194,17 +207,34 @@ Component({
         message,
         theme: 'success',
       });
+
+      if (name === 'good' || name === 'bad') {
+        this.data.chatList.forEach((item) => {
+          if (item.chatId === chatId) {
+            item.comment = active ? name : '';
+          }
+        });
+        this.setData({
+          chatList: this.data.chatList,
+        });
+      }
     },
     showPopover(e) {
-      const { e: event, id } = e.detail;
+      const { id, longPressPosition } = e.detail;
       const child = this.selectComponent('.popover-actionbar');
-      const actionbar = this.selectComponent(`#actionbar-${id}`);
       if (child) {
-        this.setData({
-          activePopover: id,
+        let comment = '';
+        this.data.chatList.forEach((item) => {
+          if (item.chatId === id) {
+            comment = item.comment;
+          }
         });
-        child.__data__.setPComment(actionbar.__data__.pComment);
-        child.__data__.showPopover(`top:${event.detail.y}px;left:${event.detail.x}px`);
+
+        this.setData({
+          activePopoverId: id,
+          activePopoverComment: comment,
+        });
+        child.__data__.showPopover(longPressPosition);
       }
     },
     hidePopover() {
@@ -214,14 +244,8 @@ Component({
       }
     },
     handlePopoverAction(e) {
-      const { name } = e.detail;
-
+      e.detail.chatId = this.data.activePopoverId;
       this.handleAction(e);
-      if (name === 'good' || name === 'bad') {
-        const actionbar = this.selectComponent(`#actionbar-${this.data.activePopover}`);
-        const child = this.selectComponent('.popover-actionbar');
-        actionbar.__data__.setPComment(child.__data__.pComment);
-      }
     },
   },
   lifetimes: {
