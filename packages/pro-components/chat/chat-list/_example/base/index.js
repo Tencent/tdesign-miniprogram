@@ -73,6 +73,7 @@ Component({
     animation: 'dots',
     activePopoverId: '', // 当前打开悬浮actionbar的chatId
     activePopoverComment: '', // 当前打开悬浮actionbar的comment
+    longPressPosition: null, // 长按位置对象
   },
 
   methods: {
