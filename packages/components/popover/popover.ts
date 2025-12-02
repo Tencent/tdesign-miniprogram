@@ -33,6 +33,13 @@ export default class Popover extends SuperComponent {
     arrowStyle: '',
   };
 
+  controlledProps = [
+    {
+      key: 'visible',
+      event: 'visible-change',
+    },
+  ];
+
   observers = {
     visible(val: boolean) {
       if (val === undefined || val === null) return;
@@ -60,7 +67,7 @@ export default class Popover extends SuperComponent {
     updateVisible(visible: boolean) {
       if (visible === this.data.visible) return;
       this.setData({ visible }, () => {
-        this.triggerEvent('visible-change', { visible });
+        this._trigger('visible-change', { visible });
       });
     },
 

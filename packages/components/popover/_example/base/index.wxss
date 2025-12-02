@@ -18,6 +18,8 @@
 }
 
 .custom {
+  display: flex;
+  justify-content: center;
   --td-popover-padding: 0;
 }
 

@@ -34,24 +34,25 @@
   </t-popover>
 
   <view class="demo-block__header-desc" style="margin-top: 32rpx">自定义内容弹出气泡</view>
-  <t-popover
-    class="custom"
-    placement="top"
-    theme="dark"
-    visible="{{visible.custom}}"
-    data-target="custom"
-    bind:visible-change="onVisibleChange"
-  >
-    <view slot="content">
-      <view class="custom__list">
-        <view wx:for="{{3}}" wx:key="index" class="custom__item">选项{{ index + 1 }}</view>
+  <view class="custom">
+    <t-popover
+      placement="top"
+      theme="dark"
+      visible="{{visible.custom}}"
+      data-target="custom"
+      bind:visible-change="onVisibleChange"
+    >
+      <view slot="content">
+        <view class="custom__list">
+          <view wx:for="{{3}}" wx:key="index" class="custom__item">选项{{ index + 1 }}</view>
+        </view>
       </view>
-    </view>
 
-    <view class="popover-example__content">
-      <t-button theme="primary" variant="outline" size="large" data-target="custom" bind:tap="showPopover">
-        自定义内容
-      </t-button>
-    </view>
-  </t-popover>
+      <view class="popover-example__content">
+        <t-button theme="primary" variant="outline" size="large" data-target="custom" bind:tap="showPopover">
+          自定义内容
+        </t-button>
+      </view>
+    </t-popover></view
+  >
 </view>
