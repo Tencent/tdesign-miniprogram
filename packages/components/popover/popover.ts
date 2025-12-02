@@ -5,6 +5,7 @@ import config from '../common/config';
 import props from './props';
 import { unitConvert } from '../common/utils';
 import transition from '../mixins/transition';
+import pageScrollMixin from '../mixins/page-scroll';
 
 delete props.visible;
 
@@ -15,7 +16,7 @@ const name = `${prefix}-popover`;
 
 @wxComponent()
 export default class Popover extends SuperComponent {
-  behaviors = [transition()];
+  behaviors = [transition(), pageScrollMixin()];
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-content`, `${prefix}-class-trigger`];
 
@@ -53,6 +54,12 @@ export default class Popover extends SuperComponent {
   };
 
   methods = {
+    onScroll() {
+      if (this.data.realVisible) {
+        this.computePosition();
+      }
+    },
+
     updateVisible(visible: boolean) {
       if (visible === this.data.visible) return;
       this.setData({ visible }, () => {
@@ -66,10 +73,24 @@ export default class Popover extends SuperComponent {
       }
     },
 
-    calcArrowStyle(placement: string, contentDom: any, popoverDom: any) {
+    getToward(placement: string) {
       const horizontal = ['top', 'bottom'];
       const vertical = ['left', 'right'];
+      const isHorizontal = horizontal.find((item) => placement.includes(item));
+      const isVertical = vertical.find((item) => placement.includes(item));
       const isBase = [...horizontal, ...vertical].find((item) => item === placement);
+      const isEnd = placement.includes('end');
+      return {
+        isHorizontal,
+        isVertical,
+        isBase,
+        isEnd,
+      };
+    },
+
+    calcArrowStyle(placement: string, contentDom: any, popoverDom: any) {
+      const { isHorizontal, isVertical, isBase, isEnd } = this.getToward(placement);
+
       if (isBase) {
         return '';
       }
@@ -77,10 +98,6 @@ export default class Popover extends SuperComponent {
       const { width, left } = contentDom;
       const { width: popperWidth, height: popperHeight } = popoverDom;
       const { windowWidth } = getWindowInfo();
-
-      const isHorizontal = horizontal.find((item) => placement.includes(item));
-      const isVertical = vertical.find((item) => placement.includes(item));
-      const isEnd = placement.includes('end');
 
       if (isHorizontal) {
         const padding = isEnd ? Math.min(width + left, popperWidth) : Math.min(windowWidth - left, popperWidth);
@@ -99,9 +116,101 @@ export default class Popover extends SuperComponent {
       return '';
     },
 
+    calcContentPosition(placement: string, triggerRect: any, contentRect: any, offset: number) {
+      let top = 0;
+      let left = 0;
+
+      const isTopBase = placement.startsWith('top');
+      const isBottomBase = placement.startsWith('bottom');
+      const isLeftBase = placement.startsWith('left');
+      const isRightBase = placement.startsWith('right');
+
+      if (isTopBase) {
+        top = triggerRect.top - contentRect.height - offset;
+      } else if (isBottomBase) {
+        top = triggerRect.top + triggerRect.height + offset;
+      } else if (isLeftBase) {
+        left = triggerRect.left - contentRect.width - offset;
+      } else if (isRightBase) {
+        left = triggerRect.left + triggerRect.width + offset;
+      } else {
+        top = triggerRect.top - contentRect.height - offset;
+      }
+
+      const isStart = placement.includes('start');
+      const isEnd = placement.includes('end');
+      let align: 'start' | 'end' | 'center';
+      if (isStart) align = 'start';
+      else if (isEnd) align = 'end';
+      else align = 'center';
+
+      if (isTopBase || isBottomBase) {
+        left = this.alignCrossAxis(triggerRect.left, triggerRect.width, contentRect.width, align);
+      }
+
+      if (isLeftBase || isRightBase) {
+        top = this.alignCrossAxis(triggerRect.top, triggerRect.height, contentRect.height, align);
+      }
+
+      return { top, left };
+    },
+
+    alignCrossAxis(start: number, triggerSize: number, contentSize: number, align: 'start' | 'end' | 'center') {
+      if (align === 'start') return start;
+      if (align === 'end') return start + triggerSize - contentSize;
+      return start + triggerSize / 2 - contentSize / 2;
+    },
+
+    calcPlacement(placement: string, triggerRect: any, contentRect: any, offset: number) {
+      const { isHorizontal, isVertical } = this.getToward(placement);
+      // 获取内容大小
+      const { width: contentWidth, height: contentHeight } = contentRect;
+      // 获取所在位置
+      const { left: triggerLeft, top: triggerTop, right: triggerRight, bottom: triggerBottom } = triggerRect;
+      // 是否能正常放置
+      let canPlace = true;
+      const { windowWidth, windowHeight } = getWindowInfo();
+      let finalPlacement = placement;
+
+      if (isHorizontal) {
+        if (placement.startsWith('top')) {
+          canPlace = triggerTop - contentHeight - offset >= 0;
+        } else if (placement.startsWith('bottom')) {
+          canPlace = triggerBottom + contentHeight + offset <= windowHeight;
+        }
+      } else if (isVertical) {
+        if (placement.startsWith('left')) {
+          canPlace = triggerLeft - contentWidth - offset >= 0;
+        } else if (placement.startsWith('right')) {
+          canPlace = triggerRight + contentWidth + offset <= windowWidth;
+        }
+      }
+
+      if (!canPlace) {
+        // 反向
+        if (isHorizontal) {
+          finalPlacement = placement.startsWith('top')
+            ? placement.replace('top', 'bottom')
+            : placement.replace('bottom', 'top');
+        } else if (isVertical) {
+          finalPlacement = placement.startsWith('left')
+            ? placement.replace('left', 'right')
+            : placement.replace('right', 'left');
+        }
+      }
+
+      const basePos = this.calcContentPosition(finalPlacement, triggerRect, contentRect, offset);
+
+      return {
+        placement: finalPlacement,
+        ...basePos,
+      };
+    },
+
     async computePosition() {
       const { placement } = this.data;
       const _placement = placement.replace(/-(left|top)$/, '-start').replace(/-(right|bottom)$/, '-end');
+      // 此处必须要设置，否则计算的位置会出错
       this.setData({ _placement });
       const query = this.createSelectorQuery();
       query.select(`#${name}-wrapper`).boundingClientRect();
@@ -113,54 +222,20 @@ export default class Popover extends SuperComponent {
         if (!triggerRect || !contentRect) return;
 
         const offset = unitConvert(8);
-        let top = 0;
-        let left = 0;
 
-        const isTopBase = _placement.startsWith('top');
-        const isBottomBase = _placement.startsWith('bottom');
-        const isLeftBase = _placement.startsWith('left');
-        const isRightBase = _placement.startsWith('right');
-
-        if (isTopBase) {
-          top = triggerRect.top - contentRect.height - offset;
-        } else if (isBottomBase) {
-          top = triggerRect.top + triggerRect.height + offset;
-        } else if (isLeftBase) {
-          left = triggerRect.left - contentRect.width - offset;
-        } else if (isRightBase) {
-          left = triggerRect.left + triggerRect.width + offset;
-        } else {
-          top = triggerRect.top - contentRect.height - offset;
-        }
-
-        const isStart = _placement.includes('start');
-        const isEnd = _placement.includes('end');
-
-        // 垂直方向的水平居中/偏移
-        if (isTopBase || isBottomBase) {
-          if (isStart) {
-            left = triggerRect.left;
-          } else if (isEnd) {
-            left = triggerRect.left + triggerRect.width - contentRect.width;
-          } else {
-            left = triggerRect.left + triggerRect.width / 2 - contentRect.width / 2;
-          }
-        }
-
-        // 水平方向的垂直居中/偏移
-        if (isLeftBase || isRightBase) {
-          if (isStart) {
-            top = triggerRect.top;
-          } else if (isEnd) {
-            top = triggerRect.top + triggerRect.height - contentRect.height;
-          } else {
-            top = triggerRect.top + triggerRect.height / 2 - contentRect.height / 2;
-          }
-        }
+        // 最终放置位置
+        const { placement: finalPlacement, ...basePos } = this.calcPlacement(
+          _placement,
+          triggerRect,
+          contentRect,
+          offset,
+        );
+        // TODO 优化：滚动时可能导致箭头闪烁
+        this.setData({ _placement: finalPlacement });
 
         const { scrollTop = 0, scrollLeft = 0 } = viewportOffset;
-        top += scrollTop;
-        left += scrollLeft;
+        const top = basePos.top + scrollTop;
+        const left = basePos.left + scrollLeft;
 
         const style = `top:${Math.max(top, 0)}px;left:${Math.max(left, 0)}px;`;
         const arrowStyle = this.calcArrowStyle(_placement, triggerRect, contentRect);
