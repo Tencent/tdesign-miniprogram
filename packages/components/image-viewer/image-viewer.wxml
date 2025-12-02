@@ -35,13 +35,17 @@
           <t-image
             wx:if="{{!lazy || utils.shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes) }}"
             t-class="t-image--external"
-            style="{{imagesStyle[index].style || ''}}"
-            mode="aspectFit"
-            src="{{item}}"
-            data-index="{{index}}"
             class="{{classPrefix}}__image"
+            style="{{imagesStyle[index].style || ''}}"
+            data-index="{{index}}"
+            src="{{item}}"
+            mode="{{imageProps && imageProps.mode || 'aspectFit'}}"
+            lazy="{{imageProps && imageProps.lazy || false}}"
+            loading="{{imageProps && imageProps.loading || 'default'}}"
+            shape="{{imageProps && imageProps.shape || 'square'}}"
+            webp="{{imageProps && imageProps.webp || false}}"
+            show-menu-by-longpress="{{imageProps && imageProps.showMenuByLongpress || false}}"
             bindload="onImageLoadSuccess"
-            show-menu-by-longpress="{{showMenuByLongpress}}"
           ></t-image>
         </swiper-item>
       </swiper>

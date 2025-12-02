@@ -21,6 +21,10 @@ const props: TdImageViewerProps = {
     type: null,
     value: false,
   },
+  /** 透传至 Image 组件 */
+  imageProps: {
+    type: Object,
+  },
   /** 图片数组 */
   images: {
     type: Array,
@@ -38,11 +42,6 @@ const props: TdImageViewerProps = {
   },
   /** 是否显示页码 */
   showIndex: {
-    type: Boolean,
-    value: false,
-  },
-  /** 长按图片显示发送给朋友、收藏、保存图片、搜一搜、打开名片/前往群聊/打开小程序（若图片中包含对应二维码或小程序码）的菜单 */
-  showMenuByLongpress: {
     type: Boolean,
     value: false,
   },

@@ -4,6 +4,8 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { ImageProps } from '../image/index';
+
 export interface TdImageViewerProps {
   /**
    * 遮罩的背景颜色
@@ -28,6 +30,13 @@ export interface TdImageViewerProps {
   deleteBtn?: {
     type: null;
     value?: string | boolean | object;
+  };
+  /**
+   * 透传至 Image 组件
+   */
+  imageProps?: {
+    type: ObjectConstructor;
+    value?: ImageProps;
   };
   /**
    * 图片数组
@@ -58,14 +67,6 @@ export interface TdImageViewerProps {
    * @default false
    */
   showIndex?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
-   * 长按图片显示发送给朋友、收藏、保存图片、搜一搜、打开名片/前往群聊/打开小程序（若图片中包含对应二维码或小程序码）的菜单
-   * @default false
-   */
-  showMenuByLongpress?: {
     type: BooleanConstructor;
     value?: boolean;
   };

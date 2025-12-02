@@ -57,11 +57,11 @@ custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场�
 background-color | String | - | 遮罩的背景颜色 | N
 close-btn | String / Boolean / Object | false | 是否显示关闭操作，前提需要开启页码。值为字符串表示图标名称，值为 `true` 表示使用默认图标 `close`，值为 `Object` 类型，表示透传至 `icon` ，不传表示不显示图标 | N
 delete-btn | String / Boolean / Object | false | 是否显示删除操作，前提需要开启页码。值为字符串表示图标名称，值为 `true` 表示使用默认图标 `delete`，值为 `Object` 类型，表示透传至 `icon`，不传表示不显示图标 | N
+image-props | Object | - | `1.12.0`。透传至 Image 组件。TS 类型：`ImageProps`，[Image API Documents](./image?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/image-viewer/type.ts) | N
 images | Array | [] | 图片数组。TS 类型：`Array<string>` | N
 initial-index | Number | 0 | 初始化页码。TS 类型：`Number` | N
 lazy | Boolean | true | `1.9.4`。是否开启图片懒加载。开启后会预加载当前图片、相邻图片 | N
 show-index | Boolean | false | 是否显示页码 | N
-show-menu-by-longpress | Boolean | false | `1.11.3`。长按图片显示发送给朋友、收藏、保存图片、搜一搜、打开名片/前往群聊/打开小程序（若图片中包含对应二维码或小程序码）的菜单 | N
 using-custom-navbar | Boolean | false | `v1.1.4`。是否使用了自定义导航栏 | N
 visible | Boolean | false | 隐藏/显示预览 | N
 default-visible | Boolean | undefined | 隐藏/显示预览。非受控属性 | N
