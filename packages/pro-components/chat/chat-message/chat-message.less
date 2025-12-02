@@ -18,7 +18,7 @@
 }
 
 .@{attachments} + .@{chat-content}:not(:empty),
-.@{chat-thinking} + .@{chat-content}:not(:empty){
+.@{chat-thinking} + .@{chat-content}:not(:empty) {
   margin-top: 24rpx;
 }
 
@@ -157,6 +157,11 @@
     color: @text-color-placeholder;
     // padding-left: @spacer-2;
     margin-bottom: @spacer;
+
+    &:empty {
+      height: 0;
+      margin-bottom: 0;
+    }
   }
 
   // 名称样式
