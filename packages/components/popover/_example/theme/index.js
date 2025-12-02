@@ -17,8 +17,9 @@ Component({
       });
     },
     onVisibleChange(e) {
+      const { target } = e.currentTarget.dataset;
       this.setData({
-        visible: e.detail.visible,
+        [`visible.${target}`]: e.detail.visible,
       });
     },
   },
