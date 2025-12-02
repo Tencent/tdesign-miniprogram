@@ -160,7 +160,8 @@ export default class ChatActionbar extends SuperComponent {
     },
 
     showPopover(pos) {
-      const width = (this.data.actions.length * 128 + (this.data.actions.length - 1) * 8 + 16 * 2) / 2;
+      const lineNumber = Math.min(this.data.actions.length, 4);
+      const width = (lineNumber * 128 + (lineNumber - 1) * 8 + 16 * 2) / 2;
       this.setData({
         popoverPosition: `top:${pos.y}px;left:${pos.x}px;margin-left:-${width}rpx`,
       });

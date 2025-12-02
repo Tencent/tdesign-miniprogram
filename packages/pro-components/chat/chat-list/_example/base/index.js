@@ -62,6 +62,7 @@ Component({
             data: '牛顿第一定律是否适用于所有参考系？',
           },
         ],
+        chatId: getUniqueKey(),
       },
     ],
     value: '', // 输入框的值
@@ -99,6 +100,7 @@ Component({
             data: value.trim(),
           },
         ],
+        chatId: getUniqueKey(),
       };
 
       // 将用户消息插入到chatList的开头（因为reverse为true，所以用unshift）
@@ -220,11 +222,17 @@ Component({
     showPopover(e) {
       const { id, longPressPosition } = e.detail;
       const child = this.selectComponent('.popover-actionbar');
-      const actionbar = this.selectComponent(`#actionbar-${id}`);
       if (child) {
+        let comment = '';
+        this.data.chatList.forEach((item) => {
+          if (item.chatId === id) {
+            comment = item.comment;
+          }
+        });
+
         this.setData({
           activePopoverId: id,
-          activePopoverComment: actionbar.__data__.pComment,
+          activePopoverComment: comment,
         });
         child.__data__.showPopover(longPressPosition);
       }
