@@ -16,7 +16,7 @@
   wx:if="{{realVisible}}"
   id="{{classPrefix}}-content"
   style="{{style}} {{contentStyle}} {{customStyle}}"
-  class="{{classPrefix}} {{transitionClass}} {{prefix}}-class"
+  class="{{class}} {{classPrefix}} {{transitionClass}} {{prefix}}-class"
   data-placement="{{_placement}}"
 >
   <view
