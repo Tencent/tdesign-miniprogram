@@ -3,7 +3,7 @@ import { TdPopoverProps } from './type';
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { unitConvert } from '../common/utils';
+import { debounce } from '../common/utils';
 import transition from '../mixins/transition';
 import pageScrollMixin from '../mixins/page-scroll';
 
@@ -56,7 +56,7 @@ export default class Popover extends SuperComponent {
   methods = {
     onScroll() {
       if (this.data.realVisible) {
-        this.computePosition();
+        debounce(() => this.computePosition());
       }
     },
 
@@ -116,7 +116,7 @@ export default class Popover extends SuperComponent {
       return '';
     },
 
-    calcContentPosition(placement: string, triggerRect: any, contentRect: any, offset: number) {
+    calcContentPosition(placement: string, triggerRect: any, contentRect: any) {
       let top = 0;
       let left = 0;
 
@@ -126,15 +126,15 @@ export default class Popover extends SuperComponent {
       const isRightBase = placement.startsWith('right');
 
       if (isTopBase) {
-        top = triggerRect.top - contentRect.height - offset;
+        top = triggerRect.top - contentRect.height;
       } else if (isBottomBase) {
-        top = triggerRect.top + triggerRect.height + offset;
+        top = triggerRect.top + triggerRect.height;
       } else if (isLeftBase) {
-        left = triggerRect.left - contentRect.width - offset;
+        left = triggerRect.left - contentRect.width;
       } else if (isRightBase) {
-        left = triggerRect.left + triggerRect.width + offset;
+        left = triggerRect.left + triggerRect.width;
       } else {
-        top = triggerRect.top - contentRect.height - offset;
+        top = triggerRect.top - contentRect.height;
       }
 
       const isStart = placement.includes('start');
@@ -161,7 +161,7 @@ export default class Popover extends SuperComponent {
       return start + triggerSize / 2 - contentSize / 2;
     },
 
-    calcPlacement(placement: string, triggerRect: any, contentRect: any, offset: number) {
+    calcPlacement(placement: string, triggerRect: any, contentRect: any) {
       const { isHorizontal, isVertical } = this.getToward(placement);
       // 获取内容大小
       const { width: contentWidth, height: contentHeight } = contentRect;
@@ -174,15 +174,15 @@ export default class Popover extends SuperComponent {
 
       if (isHorizontal) {
         if (placement.startsWith('top')) {
-          canPlace = triggerTop - contentHeight - offset >= 0;
+          canPlace = triggerTop - contentHeight >= 0;
         } else if (placement.startsWith('bottom')) {
-          canPlace = triggerBottom + contentHeight + offset <= windowHeight;
+          canPlace = triggerBottom + contentHeight <= windowHeight;
         }
       } else if (isVertical) {
         if (placement.startsWith('left')) {
-          canPlace = triggerLeft - contentWidth - offset >= 0;
+          canPlace = triggerLeft - contentWidth >= 0;
         } else if (placement.startsWith('right')) {
-          canPlace = triggerRight + contentWidth + offset <= windowWidth;
+          canPlace = triggerRight + contentWidth <= windowWidth;
         }
       }
 
@@ -199,7 +199,7 @@ export default class Popover extends SuperComponent {
         }
       }
 
-      const basePos = this.calcContentPosition(finalPlacement, triggerRect, contentRect, offset);
+      const basePos = this.calcContentPosition(finalPlacement, triggerRect, contentRect);
 
       return {
         placement: finalPlacement,
@@ -221,15 +221,8 @@ export default class Popover extends SuperComponent {
         const [triggerRect, contentRect, viewportOffset] = res;
         if (!triggerRect || !contentRect) return;
 
-        const offset = unitConvert(8);
-
         // 最终放置位置
-        const { placement: finalPlacement, ...basePos } = this.calcPlacement(
-          _placement,
-          triggerRect,
-          contentRect,
-          offset,
-        );
+        const { placement: finalPlacement, ...basePos } = this.calcPlacement(_placement, triggerRect, contentRect);
         // TODO 优化：滚动时可能导致箭头闪烁
         this.setData({ _placement: finalPlacement });
 
