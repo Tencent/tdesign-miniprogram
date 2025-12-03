@@ -56,7 +56,7 @@ export default class Popover extends SuperComponent {
   methods = {
     onScroll() {
       if (this.data.realVisible) {
-        debounce(() => this.computePosition());
+        debounce(() => this.computePosition(), 100);
       }
     },
 
