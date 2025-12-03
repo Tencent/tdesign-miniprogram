@@ -145,5 +145,5 @@ t-class-content | 内容样式类
 --td-action-sheet-description-font | @font-body-medium | -
 --td-action-sheet-gap-color | @bg-color-page | -
 --td-action-sheet-list-item-disabled-color | @text-color-disabled | -
---td-action-sheet-list-item-height | 112rpx | -
+--td-action-sheet-list-item-padding | @spacer-2 | -
 --td-action-sheet-text-align | center | -
