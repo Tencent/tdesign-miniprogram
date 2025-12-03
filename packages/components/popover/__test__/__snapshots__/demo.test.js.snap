@@ -76,50 +76,56 @@ exports[`Popover Popover base demo works fine 1`] = `
     >
       自定义内容弹出气泡
     </wx-view>
-    <t-popover
-      data-target="custom"
-      placement="top"
-      theme="dark"
-      visible="{{false}}"
-      bind:visible-change="onVisibleChange"
+    <wx-view
+      class="custom"
     >
-      <wx-view
-        slot="content"
+      <t-popover
+        data-target="custom"
+        placement="top"
+        theme="dark"
+        visible="{{false}}"
+        bind:visible-change="onVisibleChange"
       >
         <wx-view
-          class="custom__list"
+          slot="content"
         >
           <wx-view
-            class="custom__item"
+            class="custom__list"
           >
-            选项1
-          </wx-view>
-          <wx-view
-            class="custom__item"
-          >
-            选项2
-          </wx-view>
-          <wx-view
-            class="custom__item"
-          >
-            选项3
+            <wx-view
+              class="custom__item"
+            >
+              选项1
+            </wx-view>
+            <wx-view
+              class="custom__item"
+            >
+              选项2
+            </wx-view>
+            <wx-view
+              class="custom__item"
+            >
+              选项3
+            </wx-view>
           </wx-view>
         </wx-view>
-      </wx-view>
-      <wx-view
-        class="popover-example__content"
-      >
-        <t-button
-          data-target="custom"
-          size="large"
-          theme="primary"
-          variant="outline"
-          bind:tap="showPopover"
+        <wx-view
+          class="popover-example__content"
         >
+          <t-button
+            data-target="custom"
+            size="large"
+            theme="primary"
+            variant="outline"
+            bind:tap="showPopover"
+          >
+            
           自定义内容
-        </t-button>
-      </wx-view>
-    </t-popover>
+        
+          </t-button>
+        </wx-view>
+      </t-popover>
+    </wx-view>
   </wx-view>
 </base>
 `;
