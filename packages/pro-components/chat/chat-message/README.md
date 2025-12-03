@@ -86,5 +86,5 @@ longpress | `(detail: { id: string })` | \-
 名称 | 描述
 -- | --
 avatar | 自定义 `avatar` 显示内容
+content | 自定义消息内容
 name | 自定义 `name` 显示内容
-content | 自定义 `content` 显示内容
