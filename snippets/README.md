@@ -76,3 +76,4 @@ TDesign 微信小程序组件库的组件示例代码片段
 | SwipeCell       | SwipeCell 组件示例页       | https://developers.weixin.qq.com/s/eK8Acim67mSD |
 | Toast           | Toast 组件示例页           | https://developers.weixin.qq.com/s/l0azMimf7CSu |
 | Popover         | Popover 组件示例页         | https://developers.weixin.qq.com/s/MbaI79m38K5J |
+| ColorPicker       | ColorPicker 组件示例页       | https://developers.weixin.qq.com/s/uZbgA9mG8Q5m |
