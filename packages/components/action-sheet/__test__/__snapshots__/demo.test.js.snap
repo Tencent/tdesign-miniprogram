@@ -9,6 +9,17 @@ exports[`ActionSheet ActionSheet align demo works fine 1`] = `
   />
   <t-button
     block="{{true}}"
+    customDataset="center"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handleAction"
+  >
+    居中列表型
+  </t-button>
+  <t-button
+    block="{{true}}"
+    customDataset="left"
     size="large"
     theme="primary"
     variant="outline"

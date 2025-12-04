@@ -14,12 +14,10 @@
     overlay-props="{{ popupProps.overlayProps || defaultPopUpProps }}"
   >
     <view
-      class="{{_.cls(classPrefix + '__content', [['grid', gridThemeItems.length]])}} {{prefix}}-class-content"
+      class="{{_.cls(classPrefix + '__content', [align, ['grid', gridThemeItems.length]])}} {{prefix}}-class-content"
       tabindex="0"
     >
-      <view wx:if="{{description}}" tabindex="0" class="{{_.cls(classPrefix + '__description', [align])}}"
-        >{{description}}</view
-      >
+      <view wx:if="{{description}}" tabindex="0" class="{{classPrefix}}__description">{{description}}</view>
       <block wx:if="{{gridThemeItems.length}}">
         <template is="grid" data="{{classPrefix, prefix, gridThemeItems, count, currentSwiperIndex}}" />
       </block>
@@ -27,7 +25,7 @@
         <block wx:for="{{ items }}" wx:key="index">
           <template
             is="list"
-            data="{{index, classPrefix, listThemeItemClass: _.cls(classPrefix + '__list-item', [align, [disabled, item.disabled]]), item}}"
+            data="{{index, classPrefix, listThemeItemClass: _.cls(classPrefix + '__list-item', [['disabled', item.disabled]]), item}}"
           />
         </block>
       </view>

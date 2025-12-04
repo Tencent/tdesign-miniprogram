@@ -1,17 +1,19 @@
 @import '../common/style/base.less';
 
 @action-sheet: ~'@{prefix}-action-sheet';
-@action-sheet-list-item-padding: var(--td-action-sheet-list-item-padding, @spacer-2);
-@action-sheet-list-item-disabled-color: var(--td-action-sheet-list-item-disabled-color, @text-color-disabled);
-@action-sheet-border-color: var(--td-action-sheet-border-color, @border-level-1-color);
+
+@action-sheet-disabled-color: var(--td-action-sheet-disabled-color, @text-color-disabled);
+@action-sheet-border-color: var(--td-action-sheet-border-color, @component-stroke);
 @action-sheet-gap-color: var(--td-action-sheet-gap-color, @bg-color-page);
 @action-sheet-color: var(--td-action-sheet-color, @text-color-primary);
 @action-sheet-border-radius: var(--td-action-sheet-border-radius, @radius-extraLarge);
 @action-sheet-description-font: var(--td-action-sheet-description-font, @font-body-medium);
 @action-sheet-description-color: var(--td-action-sheet-description-color, @text-color-placeholder);
-@action-sheet-text-align: var(--td-action-sheet-text-align, center);
-@action-sheet-cancel-height: var(--td-action-sheet-cancel-height, 96rpx);
 @action-sheet-cancel-color: var(--td-action-sheet-cancel-color, @text-color-primary);
+@action-sheet-dot-size: var(--td-action-sheet-dot-size, 16rpx);
+@action-sheet-dot-color: var(--td-action-sheet-dot-color, @text-color-disabled);
+@action-sheet-dot-active-color: var(--td-action-sheet-dot-active-color, @brand-color);
+
 .@{action-sheet} {
   &__content {
     color: @action-sheet-color;
@@ -22,6 +24,23 @@
 
     &--grid {
       padding-top: 16rpx;
+    }
+
+    &--left {
+      .@{action-sheet}__description {
+        text-align: left;
+      }
+
+      .@{action-sheet}__list-item {
+        &-content,
+        &-desc {
+          justify-content: start;
+        }
+
+        &-icon--suffix {
+          margin-left: auto;
+        }
+      }
     }
 
     &:focus {
@@ -53,21 +72,13 @@
   &__description {
     color: @action-sheet-description-color;
     font: @action-sheet-description-font;
-    text-align: @action-sheet-text-align;
-    padding: 24rpx 32rpx;
+    text-align: center;
+    padding: @spacer-1 @spacer-2;
 
     &:focus {
       outline: 0;
     }
     .border(bottom, @action-sheet-border-color);
-
-    &--left {
-      text-align: left;
-
-      &::after {
-        left: 32rpx;
-      }
-    }
   }
 
   &__list {
@@ -76,23 +87,18 @@
       .border(bottom, @action-sheet-border-color);
 
       flex-direction: column;
-      padding: @action-sheet-list-item-padding;
+      padding: @spacer-2;
 
       &:focus {
         outline: 0;
       }
 
-      &--left {
-        .@{action-sheet}__left-item-content {
-          justify-content: start;
-        }
-      }
-
       &--disabled {
-        color: @action-sheet-list-item-disabled-color;
+        color: @action-sheet-disabled-color;
       }
 
-      &-content {
+      &-content,
+      &-desc {
         width: 100%;
 
         .flex-center();
@@ -115,11 +121,11 @@
 
       &-icon {
         font-size: 48rpx;
-        margin-right: 16rpx;
+        margin-right: @spacer;
 
         &--suffix {
           margin-right: 0;
-          margin-left: auto;
+          margin-left: @spacer;
         }
       }
     }
@@ -145,28 +151,31 @@
   }
 
   &__cancel {
-    .flex-center();
+    padding: @spacer-1 @spacer-2;
+    font: @font-body-large;
     color: @action-sheet-cancel-color;
-    height: @action-sheet-cancel-height;
+
+    .flex-center();
   }
 
   &__dots {
     position: absolute;
     left: 50%;
-    bottom: 32rpx;
+    bottom: @spacer-2;
     transform: translateX(-50%);
     display: flex;
     flex-direction: row;
+
     &-item {
-      width: 16rpx;
-      height: 16rpx;
-      background-color: #dcdcdc;
+      width: @action-sheet-dot-size;
+      height: @action-sheet-dot-size;
+      background-color: @action-sheet-dot-color;
       border-radius: 50%;
-      margin: 0 16rpx;
+      margin: 0 @spacer;
       transition: all 0.4s ease-in;
 
       &.@{prefix}-is-active {
-        background-color: #0052d9;
+        background-color: @action-sheet-dot-active-color;
       }
     }
   }

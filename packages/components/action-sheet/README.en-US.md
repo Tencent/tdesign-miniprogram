@@ -48,14 +48,14 @@ t-class-content | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-action-sheet-border-color | @border-level-1-color | -
+--td-action-sheet-border-color | @component-stroke | -
 --td-action-sheet-border-radius | @radius-extraLarge | -
 --td-action-sheet-cancel-color | @text-color-primary | -
---td-action-sheet-cancel-height | 96rpx | -
 --td-action-sheet-color | @text-color-primary | -
 --td-action-sheet-description-color | @text-color-placeholder | -
 --td-action-sheet-description-font | @font-body-medium | -
+--td-action-sheet-disabled-color | @text-color-disabled | -
+--td-action-sheet-dot-active-color | @brand-color | -
+--td-action-sheet-dot-color | @text-color-disabled | -
+--td-action-sheet-dot-size | 16rpx | -
 --td-action-sheet-gap-color | @bg-color-page | -
---td-action-sheet-list-item-disabled-color | @text-color-disabled | -
---td-action-sheet-list-item-padding | @spacer-2 | -
---td-action-sheet-text-align | center | -

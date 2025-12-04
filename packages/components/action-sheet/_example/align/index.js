@@ -2,33 +2,32 @@ import ActionSheet, { ActionSheetTheme } from 'tdesign-miniprogram/action-sheet'
 
 Component({
   methods: {
-    handleAction() {
+    handleAction(e) {
+      const align = e.detail.currentTarget.dataset.custom;
+
       ActionSheet.show({
         theme: ActionSheetTheme.List,
         selector: '#t-action-sheet',
         context: this,
-        align: 'left',
-        description: '动作面板描述文字',
+        cancelText: 'cancel',
+        align,
+        description: 'Email Settings',
         items: [
           {
-            label: '选项一',
-            icon: 'app',
-            suffixIcon: 'chevron-right',
+            label: 'Move',
+            icon: 'enter',
           },
           {
-            label: '选项二',
-            icon: 'app',
-            suffixIcon: 'chevron-right',
+            label: 'Mark as important',
+            icon: 'book',
           },
           {
-            label: '选项三',
-            icon: 'app',
-            suffixIcon: 'chevron-right',
+            label: 'Unsubscribe',
+            icon: 'pin',
           },
           {
-            label: '选项四',
-            icon: 'app',
-            suffixIcon: 'chevron-right',
+            label: 'Add to Tasks',
+            icon: 'cloud-upload',
           },
         ],
       });
