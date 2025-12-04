@@ -3,7 +3,11 @@
 <import src="./template/list.wxml" />
 <import src="./template/grid.wxml" />
 
-<view id="{{classPrefix}}" style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class">
+<view
+  id="{{classPrefix}}"
+  style="{{_._style([style, customStyle])}}"
+  class="{{_.cls(classPrefix, [align, theme, ['no-description', !description]])}} class {{prefix}}-class"
+>
   <t-popup
     visible="{{visible}}"
     placement="bottom"
@@ -13,10 +17,7 @@
     z-index="{{ popupProps.zIndex || defaultPopUpzIndex }}"
     overlay-props="{{ popupProps.overlayProps || defaultPopUpProps }}"
   >
-    <view
-      class="{{_.cls(classPrefix + '__content', [align, ['grid', gridThemeItems.length]])}} {{prefix}}-class-content"
-      tabindex="0"
-    >
+    <view class="{{classPrefix}}__content {{prefix}}-class-content" tabindex="0">
       <view wx:if="{{description}}" tabindex="0" class="{{classPrefix}}__description">{{description}}</view>
       <block wx:if="{{gridThemeItems.length}}">
         <template is="grid" data="{{classPrefix, prefix, gridThemeItems, count, currentSwiperIndex}}" />

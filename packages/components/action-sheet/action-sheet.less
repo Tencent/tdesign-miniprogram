@@ -22,29 +22,35 @@
     background-color: @bg-color-container;
     overflow: hidden;
 
-    &--grid {
-      padding-top: 16rpx;
-    }
-
-    &--left {
-      .@{action-sheet}__description {
-        text-align: left;
-      }
-
-      .@{action-sheet}__list-item {
-        &-content,
-        &-desc {
-          justify-content: start;
-        }
-
-        &-icon--suffix {
-          margin-left: auto;
-        }
-      }
-    }
-
     &:focus {
       outline: 0;
+    }
+  }
+
+  &--grid {
+    padding-top: @spacer;
+
+    .@{action-sheet}__description {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  &--left {
+    .@{action-sheet}__description {
+      text-align: left;
+    }
+
+    .@{action-sheet}__list-item {
+      &-content,
+      &-desc {
+        justify-content: start;
+      }
+
+      &-icon--suffix {
+        margin-left: auto;
+      }
     }
   }
 
