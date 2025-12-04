@@ -40,7 +40,8 @@
     "generate": "gulp generate --gulpfile script/gulpfile.js --cwd ./",
     "changelog": "node script/generate-changelog.js",
     "robot": "publish-cli robot-msg",
-    "qrcode": "pnpm -C packages/tdesign-miniprogram/site qrcode"
+    "qrcode": "pnpm -C packages/tdesign-miniprogram/site qrcode",
+    "snippet": "node snippets/generate-demo-snippet.mjs"
   },
   "author": "tdesign",
   "license": "MIT",
