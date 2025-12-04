@@ -34,7 +34,7 @@ Component({
           },
           {
             label: 'Mark as important',
-            icon: 'book',
+            icon: 'bookmark',
           },
           {
             label: 'Unsubscribe',

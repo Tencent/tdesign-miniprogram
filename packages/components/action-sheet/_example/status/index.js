@@ -15,7 +15,7 @@ Component({
           },
           {
             label: 'Mark as important',
-            icon: 'book',
+            icon: 'bookmark',
             color: '#0052D9',
           },
           {
