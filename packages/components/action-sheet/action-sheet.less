@@ -89,11 +89,14 @@
 
   &__list {
     &-item {
-      .flex-center();
-      .border(bottom, @action-sheet-border-color);
-
       flex-direction: column;
       padding: @spacer-2;
+
+      &:not(:last-child) {
+        .border(bottom, @action-sheet-border-color);
+      }
+
+      .flex-center();
 
       &:focus {
         outline: 0;
