@@ -11,7 +11,7 @@ page .round-image {
   height: 100vh;
   overflow: hidden;
 
-  --td-grid-item-text-font-size: 24rpx;
+  --td-grid-item-text-font: 24rpx;
 }
 
 .side-bar-wrapper .content {
