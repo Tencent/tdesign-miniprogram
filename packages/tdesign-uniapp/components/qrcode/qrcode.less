@@ -1,0 +1,42 @@
+@import '../common/style/base.less';
+
+@qrcode-padding: 12px;
+@qrcode-border-radius: 6px;
+@qrcode-z-index: 300;
+@qrcode-line-height: 22px;
+@qrcode-mask-inner-font-size: var(--td-font-size-title-small);
+
+.@{prefix}-qrcode {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  background-color: @bg-color-container;
+  padding: @qrcode-padding;
+  border-radius: @qrcode-border-radius;
+  border: 1px solid @component-border;
+
+  &.@{prefix}-borderless {
+    border-color: transparent;
+  }
+
+  .@{prefix}-mask {
+    left: 0;
+    top: 0; // 解决 skyline 模式下的偏移问题
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 0;
+    z-index: @qrcode-z-index;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    color: @text-color-primary;
+    line-height: @qrcode-line-height;
+    background-color: @mask-bg;
+    text-align: center;
+    border-radius: @qrcode-border-radius;
+    font-size: @qrcode-mask-inner-font-size;
+  }
+}

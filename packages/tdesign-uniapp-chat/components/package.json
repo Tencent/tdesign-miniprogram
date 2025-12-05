@@ -1,0 +1,157 @@
+{
+  "name": "tdesign-uniapp-chat",
+  "id": "tdesign-uniapp-chat",
+  "version": "0.1.1",
+  "author": "novlan1",
+  "title": "tdesign-uniapp-chat",
+  "description": "TDesign Chat Component for uniapp",
+  "typings": "./types/index.d.ts",
+  "exports": {
+    "./*": "./*",
+    "./attachments/attachments.vue": {
+      "types": "./types/attachments.d.ts",
+      "import": "./attachments/attachments.vue",
+      "default": "./attachments/attachments.vue"
+    },
+    "./chat-actionbar/chat-actionbar.vue": {
+      "types": "./types/chat-actionbar.d.ts",
+      "import": "./chat-actionbar/chat-actionbar.vue",
+      "default": "./chat-actionbar/chat-actionbar.vue"
+    },
+    "./chat-content/chat-content.vue": {
+      "types": "./types/chat-content.d.ts",
+      "import": "./chat-content/chat-content.vue",
+      "default": "./chat-content/chat-content.vue"
+    },
+    "./chat-list/chat-list.vue": {
+      "types": "./types/chat-list.d.ts",
+      "import": "./chat-list/chat-list.vue",
+      "default": "./chat-list/chat-list.vue"
+    },
+    "./chat-loading/chat-loading.vue": {
+      "types": "./types/chat-loading.d.ts",
+      "import": "./chat-loading/chat-loading.vue",
+      "default": "./chat-loading/chat-loading.vue"
+    },
+    "./chat-markdown/chat-markdown.vue": {
+      "types": "./types/chat-markdown.d.ts",
+      "import": "./chat-markdown/chat-markdown.vue",
+      "default": "./chat-markdown/chat-markdown.vue"
+    },
+    "./chat-message/chat-message.vue": {
+      "types": "./types/chat-message.d.ts",
+      "import": "./chat-message/chat-message.vue",
+      "default": "./chat-message/chat-message.vue"
+    },
+    "./chat-sender/chat-sender.vue": {
+      "types": "./types/chat-sender.d.ts",
+      "import": "./chat-sender/chat-sender.vue",
+      "default": "./chat-sender/chat-sender.vue"
+    },
+    "./chat-thinking/chat-thinking.vue": {
+      "types": "./types/chat-thinking.d.ts",
+      "import": "./chat-thinking/chat-thinking.vue",
+      "default": "./chat-thinking/chat-thinking.vue"
+    }
+  },
+  "keywords": [
+    "tdesign",
+    "miniprogram",
+    "uniapp",
+    "vue"
+  ],
+  "homepage": "https://uwayfly.com/tdesign-uniapp-chat/",
+  "bugs": {
+    "url": "https://github.com/Tencent/tdesign-miniprogram/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tencent/tdesign-miniprogram.git"
+  },
+  "scripts": {
+    "dev:custom": "uni -p",
+    "dev:h5": "uni",
+    "dev:h5:ssr": "uni --ssr",
+    "dev:mp-alipay": "uni -p mp-alipay",
+    "dev:mp-baidu": "uni -p mp-baidu",
+    "dev:mp-jd": "uni -p mp-jd",
+    "dev:mp-kuaishou": "uni -p mp-kuaishou",
+    "dev:mp-lark": "uni -p mp-lark",
+    "dev:mp-qq": "uni -p mp-qq",
+    "dev:mp-toutiao": "uni -p mp-toutiao",
+    "dev:mp-weixin": "uni -p mp-weixin",
+    "dev:mp-xhs": "uni -p mp-xhs",
+    "dev:quickapp-webview": "uni -p quickapp-webview",
+    "dev:quickapp-webview-huawei": "uni -p quickapp-webview-huawei",
+    "dev:quickapp-webview-union": "uni -p quickapp-webview-union",
+    "build:custom": "uni build -p",
+    "build:h5": "uni build",
+    "build:h5:ssr": "uni build --ssr",
+    "build:mp-alipay": "uni build -p mp-alipay",
+    "build:mp-baidu": "uni build -p mp-baidu",
+    "build:mp-jd": "uni build -p mp-jd",
+    "build:mp-kuaishou": "uni build -p mp-kuaishou",
+    "build:mp-lark": "uni build -p mp-lark",
+    "build:mp-qq": "uni build -p mp-qq",
+    "build:mp-toutiao": "uni build -p mp-toutiao",
+    "build:mp-weixin": "uni build -p mp-weixin",
+    "build:mp-xhs": "uni build -p mp-xhs",
+    "build:quickapp-webview": "uni build -p quickapp-webview",
+    "build:quickapp-webview-huawei": "uni build -p quickapp-webview-huawei",
+    "build:quickapp-webview-union": "uni build -p quickapp-webview-union",
+    "type-check": "vue-tsc --noEmit",
+    "postinstall": "node ./script/postinstall",
+    "publish": "node ../demo/script/release/publish-tdesign-uniapp-chat.js"
+  },
+  "devDependencies": {
+    "@dcloudio/types": "^3.4.8",
+    "@dcloudio/uni-app": "3.0.0-4030620241128001",
+    "@dcloudio/uni-app-harmony": "3.0.0-4030620241128001",
+    "@dcloudio/uni-app-plus": "3.0.0-4030620241128001",
+    "@dcloudio/uni-automator": "3.0.0-4030620241128001",
+    "@dcloudio/uni-cli-shared": "3.0.0-4030620241128001",
+    "@dcloudio/uni-components": "3.0.0-4030620241128001",
+    "@dcloudio/uni-h5": "3.0.0-4030620241128001",
+    "@dcloudio/uni-mp-alipay": "3.0.0-4030620241128001",
+    "@dcloudio/uni-mp-baidu": "3.0.0-4030620241128001",
+    "@dcloudio/uni-mp-jd": "3.0.0-4030620241128001",
+    "@dcloudio/uni-mp-kuaishou": "3.0.0-4030620241128001",
+    "@dcloudio/uni-mp-lark": "3.0.0-4030620241128001",
+    "@dcloudio/uni-mp-qq": "3.0.0-4030620241128001",
+    "@dcloudio/uni-mp-toutiao": "3.0.0-4030620241128001",
+    "@dcloudio/uni-mp-weixin": "3.0.0-4030620241128001",
+    "@dcloudio/uni-mp-xhs": "3.0.0-4030620241128001",
+    "@dcloudio/uni-quickapp-webview": "3.0.0-4030620241128001",
+    "@dcloudio/uni-stacktracey": "3.0.0-4030620241128001",
+    "@dcloudio/vite-plugin-uni": "3.0.0-4030620241128001",
+    "@stylistic/eslint-plugin-jsx": "3.1.0",
+    "@types/node": "^24.2.0",
+    "@typescript-eslint/eslint-plugin": "7.18.0",
+    "@typescript-eslint/parser": "7.18.0",
+    "@vue/runtime-core": "^3.4.21",
+    "@vue/tsconfig": "^0.7.0",
+    "eslint": "8.57.1",
+    "eslint-config-light": "latest",
+    "eslint-config-light-vue3": "latest",
+    "eslint-import-resolver-alias": "1.1.2",
+    "eslint-import-resolver-node": "0.3.9",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jest": "25",
+    "eslint-plugin-light": "latest",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-react": "7.26.1",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "eslint-plugin-tailwindcss": "3.18.0",
+    "eslint-plugin-vue": "9.14.0",
+    "prismjs": "^1.30.0",
+    "typescript": "5.1",
+    "vite": "5.2.8",
+    "vue": "^3.4.21",
+    "vue-i18n": "^9.1.9",
+    "vue-tsc": "^1.0.24"
+  },
+  "dependencies": {
+    "tdesign-uniapp": "latest"
+  },
+  "license": "MIT"
+}

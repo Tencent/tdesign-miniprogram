@@ -1,0 +1,150 @@
+@import '../common/style/base.less';
+
+@countdown-small-unit-margin: 8rpx; // 'small'尺寸单位分割文本左右间距
+@countdown-medium-unit-margin: 10rpx; // 'medium'尺寸单位分割文本左右间距
+@countdown-large-unit-margin: 12rpx; // 'large'尺寸单位分割文本左右间距
+@countdown-unit-color: @text-color-primary; // 带单位分割线文本颜色
+@countdown-no-unit-color: @error-color; // 无单位分割线文本颜色
+@countdown-large-no-unit-margin: 12rpx; // 'large'尺寸无单位分割文本左右间距
+@countdown-medium-no-unit-margin: 6rpx; // 'medium'尺寸无单位分割文本左右间距
+@countdown-small-no-unit-margin: 4rpx; // 'small'尺寸无单位分割文本左右间距
+@countdown-small-bg-width: 40rpx; // 'small'尺寸方/圆底背景宽高
+@countdown-medium-bg-width: 48rpx; // 'medium'尺寸方/圆底背景宽高
+@countdown-large-bg-width: 56rpx; // 'large'尺寸方/圆底背景宽高
+@countdown-small-default-font-size: @font-size-base; // 'small'尺寸纯数字倒计时文本大小
+@countdown-small-square-font-size: @font-size-s; // 'small'尺寸带方形底倒计时文本大小
+@countdown-small-round-font-size: @font-size-s; // 'small'尺寸带圆形底倒计时文本大小
+@countdown-small-unit-font-size: @font-size; // 'small'尺寸单位分割文本大小
+@countdown-small-no-unit-font-size: @font-size-base; // 'small'尺寸无单位分割文本大小
+@countdown-medium-default-font-size: @font-size-m; // 'medium'尺寸纯数字倒计时文本大小
+@countdown-medium-square-font-size: @font-size-base; // 'medium'尺寸带方形底倒计时文本大小
+@countdown-medium-round-font-size: @font-size-base; // 'medium'尺寸带圆形底倒计时文本大小
+@countdown-medium-unit-font-size: @font-size-s; // 'medium'尺寸单位分割文本大小
+@countdown-medium-no-unit-font-size: @font-size-m; // 'medium'尺寸无单位分割文本大小
+@countdown-large-default-font-size: 36rpx; // 'large'尺寸纯数字倒计时文本大小
+@countdown-large-square-font-size: @font-size-m; // 'large'尺寸带方形底倒计时文本大小
+@countdown-large-round-font-size: @font-size-m; // 'large'尺寸带圆形底倒计时文本大小
+@countdown-large-unit-font-size: @font-size-base; // 'large'尺寸单位分割文本大小
+@countdown-large-no-unit-font-size: 36rpx; // 'large'尺寸无单位分割文本大小
+
+// 纯数字倒计时文本颜色
+@countdown-default-text-color: var(--td-countdown-default-color, @text-color-primary);
+// 方形/圆形底倒计时文本颜色
+@countdown-text-color: var(--td-countdown-round-color, @text-color-anti);
+// 方形/圆形底背景颜色
+@countdown-bg-color: var(--td-countdown-bg-color, @error-color);
+// 带方形底倒计时圆角大小
+@countdown-square-border-radius: var(--td-countdown-square-border-radius, @radius-small);
+// 带圆形底倒计时圆角大小
+@countdown-round-border-radius: var(--td-countdown-round-border-radius, @radius-circle);
+
+@countdown-number-font-family: TCloudNumber, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Hiragino Sans GB,
+  Microsoft YaHei UI, Microsoft YaHei, Source Han Sans CN, sans-serif, Apple Color Emoji, Segoe UI Emoji,
+  Segoe UI Symbol;
+
+@countdown: ~'@{prefix}-count-down';
+@item: ~'@{countdown}__item';
+@split: ~'@{countdown}__split';
+
+.count-down-size(@size) {
+  .@{countdown} {
+    @defaultFontSize: 'countdown-@{size}-default-font-size';
+    @roundFontSize: 'countdown-@{size}-round-font-size';
+    @squareFontSize: 'countdown-@{size}-square-font-size';
+    @width: 'countdown-@{size}-bg-width';
+    @height: 'countdown-@{size}-bg-width';
+    @dotMargin: 'countdown-@{size}-no-unit-margin';
+    @dotFontSize: 'countdown-@{size}-no-unit-font-size';
+    @textMargin: 'countdown-@{size}-unit-margin';
+    @textFontSize: 'countdown-@{size}-unit-font-size';
+
+    &--@{size} {
+      &.@{countdown}--default {
+        font-size: @@defaultFontSize;
+      }
+
+      &.@{countdown}--round {
+        > .@{item} {
+          font-size: @@roundFontSize;
+        }
+      }
+
+      &.@{countdown}--square {
+        > .@{item} {
+          font-size: @@squareFontSize;
+        }
+      }
+
+      &.@{countdown}--round,
+      &.@{countdown}--square {
+        > .@{item} {
+          width: @@width;
+          height: @@height;
+        }
+      }
+
+      &.@{countdown}--round,
+      &.@{countdown}--square {
+        > .@{split}--dot {
+          margin: 0 @@dotMargin;
+          font-size: @@dotFontSize;
+          font-weight: 700;
+        }
+
+        > .@{split}--text {
+          margin: 0 @@textMargin;
+          font-size: @@textFontSize;
+        }
+      }
+    }
+  }
+}
+
+.count-down-size(small);
+.count-down-size(medium);
+.count-down-size(large);
+
+.@{countdown} {
+  font-family: @countdown-number-font-family;
+  display: flex;
+
+  .@{item},
+  .@{split} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--square,
+  &--round {
+    > .@{split}--dot {
+      color: @countdown-no-unit-color;
+    }
+
+    > .@{split}--text {
+      color: @countdown-unit-color;
+    }
+  }
+
+  &--default {
+    color: @countdown-default-text-color;
+  }
+
+  &--square {
+    color: @countdown-text-color;
+
+    > .@{item} {
+      border-radius: @countdown-square-border-radius;
+      background: @countdown-bg-color;
+    }
+  }
+
+  &--round {
+    color: @countdown-text-color;
+
+    > .@{item} {
+      border-radius: @countdown-round-border-radius;
+      background: @countdown-bg-color;
+    }
+  }
+}

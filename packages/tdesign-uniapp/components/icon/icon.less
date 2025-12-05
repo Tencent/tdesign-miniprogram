@@ -1,0 +1,50 @@
+@import '../common/style/base.less';
+@import '../common/style/icons.less';
+
+@font-face {
+  font-family: @prefix;
+  src: url('https://tdesign.gtimg.com/icon/0.4.0/fonts/t.eot'),
+    url('https://tdesign.gtimg.com/icon/0.4.0/fonts/t.eot?#iefix') format('ded-opentype'),
+    url('https://tdesign.gtimg.com/icon/0.4.0/fonts/t.woff') format('woff'),
+    url('https://tdesign.gtimg.com/icon/0.4.0/fonts/t.ttf') format('truetype'),
+    url('https://tdesign.gtimg.com/icon/0.4.0/fonts/t.svg') format('svg'); /* iOS 4.1- */
+  font-weight: normal;
+  font-style: normal;
+}
+
+.@{prefix}-icon {
+  &--image {
+    // 2.x 建议移除该 wrapper
+    width: 100%;
+    height: 100%;
+  }
+
+  &__image {
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.@{prefix}-icon-base {
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  text-align: center;
+  display: block;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.@{prefix}-icon {
+  /* stylelint-disable-next-line declaration-no-important */
+  font-family: @prefix !important; /* prevent issues with browser extensions that change fonts */
+
+  each(@icons, {
+    &-@{key}:before {
+      content: @value;
+    }
+  });
+}

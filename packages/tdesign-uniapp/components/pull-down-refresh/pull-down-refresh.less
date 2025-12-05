@@ -1,0 +1,38 @@
+@import '../common/style/base.less';
+
+@pull-down-refresh-color: var(--td-pull-down-refresh-color, @text-color-placeholder);
+
+.@{prefix}-pull-down-refresh {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+
+  &__track {
+    position: relative;
+
+    &--loosing {
+      transition: transform ease 0.24s;
+    }
+  }
+
+  &__tips {
+    position: absolute;
+    color: @pull-down-refresh-color;
+    font-size: 24rpx;
+    top: 0;
+    width: 100%;
+    transform: translateY(-100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    &--loosing {
+      transition: height ease 0.24s;
+    }
+  }
+
+  &__text {
+    margin: 16rpx 0 0;
+  }
+}

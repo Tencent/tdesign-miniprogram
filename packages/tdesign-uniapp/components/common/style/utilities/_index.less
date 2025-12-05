@@ -1,0 +1,16 @@
+.hotspot-expanded {
+  &.relative {
+    position: relative;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    transform: scale(1.5);
+  }
+}
