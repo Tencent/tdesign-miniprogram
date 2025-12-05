@@ -7,20 +7,8 @@ Component({
         theme: ActionSheetTheme.List,
         selector: '#t-action-sheet',
         context: this,
-        items: [
-          {
-            label: '选项一',
-          },
-          {
-            label: '选项二',
-          },
-          {
-            label: '选项三',
-          },
-          {
-            label: '选项四',
-          },
-        ],
+        cancelText: 'cancel',
+        items: ['Move', 'Mark as important', 'Unsubscribe', 'Add to Tasks'],
       });
     },
     showDescAction() {
@@ -28,18 +16,9 @@ Component({
         theme: ActionSheetTheme.List,
         selector: '#t-action-sheet',
         context: this,
-        description: '动作面板描述文字',
-        items: [
-          {
-            label: '选项一',
-          },
-          {
-            label: '选项二',
-          },
-          {
-            label: '选项三',
-          },
-        ],
+        cancelText: 'cancel',
+        description: 'Email Settings',
+        items: ['Move', 'Mark as important', 'Unsubscribe', 'Add to Tasks'],
       });
     },
     showIconAction() {
@@ -47,22 +26,23 @@ Component({
         theme: ActionSheetTheme.List,
         selector: '#t-action-sheet',
         context: this,
+        cancelText: 'cancel',
         items: [
           {
-            label: '选项一',
-            icon: 'app',
+            label: 'Move',
+            icon: 'enter',
           },
           {
-            label: '选项二',
-            icon: 'app',
+            label: 'Mark as important',
+            icon: 'bookmark',
           },
           {
-            label: '选项三',
-            icon: 'app',
+            label: 'Unsubscribe',
+            icon: 'pin',
           },
           {
-            label: '选项四',
-            icon: 'app',
+            label: 'Add to Tasks',
+            icon: 'cloud-upload',
           },
         ],
       });
