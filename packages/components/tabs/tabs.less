@@ -3,7 +3,7 @@
 @tabs: ~'@{prefix}-tabs';
 @item: ~'@{tabs}__item';
 
-@tab-font-size: var(--td-tab-font-size, @font-size-base);
+@tab-font: var(--td-tab-font, @font-body-medium);
 @tab-nav-bg-color: var(--td-tab-nav-bg-color, @bg-color-container);
 
 @tab-item-height: var(--td-tab-item-height, 96rpx);
@@ -30,7 +30,7 @@
 
 .@{prefix}-tabs {
   position: relative;
-  font-size: @tab-font-size;
+  font: @tab-font;
   background: @tab-nav-bg-color;
   flex-wrap: wrap;
 

@@ -1,7 +1,6 @@
 @import '../common/style/base.less';
 
 @cell-height: var(--td-cell-height, auto);
-@cell-line-height: var(--td-cell-line-height, 48rpx);
 @cell-vertical-padding: var(--td-cell-vertical-padding, 32rpx);
 @cell-horizontal-padding: var(--td-cell-horizontal-padding, 32rpx);
 @cell-bg-color: var(--td-cell-bg-color, @bg-color-container);
@@ -11,16 +10,15 @@
 @cell-border-left-space: var(--td-cell-border-left-space, @cell-horizontal-padding);
 @cell-border-right-space: var(--td-cell-border-right-space, 0);
 @cell-description-color: var(--td-cell-description-color, @text-color-secondary);
-@cell-description-font-size: var(--td-cell-description-font-size, @font-size-base);
-@cell-description-line-height: var(--td-cell-description-line-height, 44rpx);
+@cell-description-font: var(--td-cell-description-font, @font-body-medium);
 @cell-note-color: var(--td-cell-note-color, @text-color-placeholder);
 @cell-note-font-size: var(--td-cell-note-font-size, @font-size-m);
 @cell-title-color: var(--td-cell-title-color, @text-color-primary);
-@cell-title-font-size: var(--td-cell-title-font-size, @font-size-m);
+@cell-title-font: var(--td-cell-title-font, @font-body-large);
 @cell-left-icon-color: var(--td-cell-left-icon-color, @brand-color);
-@cell-left-icon-font-size: var(--td-cell-left-icon-font-size, 48rpx);
+@cell-left-icon-size: var(--td-cell-left-icon-size, 48rpx);
 @cell-right-icon-color: var(--td-cell-right-icon-color, @text-color-placeholder);
-@cell-right-icon-font-size: var(--td-cell-right-icon-font-size, 48rpx);
+@cell-right-icon-size: var(--td-cell-right-icon-size, 48rpx);
 @cell-required-color: var(--td-cell-required-color, @error-color);
 @cell-required-font-size: var(--td-cell-required-font-size, @font-size-m);
 @cell-image-width: var(--td-cell-image-width, 96rpx);
@@ -32,7 +30,6 @@
   box-sizing: border-box;
   width: 100%;
   padding: @cell-vertical-padding @cell-horizontal-padding;
-  line-height: @cell-line-height;
   height: @cell-height;
   background-color: @cell-bg-color;
 
@@ -44,8 +41,7 @@
   }
 
   &__description {
-    font-size: @cell-description-font-size;
-    line-height: @cell-description-line-height;
+    font: @cell-description-font;
     color: @cell-description-color;
 
     &-text {
@@ -76,9 +72,8 @@
 
   &__title-text {
     display: flex;
-    font-size: @cell-title-font-size;
+    font: @cell-title-font;
     color: @cell-title-color;
-    font-weight: 400;
   }
 
   &__left,
@@ -93,7 +88,7 @@
 
     &-icon {
       color: @cell-left-icon-color;
-      font-size: @cell-left-icon-font-size;
+      font-size: @cell-left-icon-size;
     }
 
     &-image {
@@ -111,7 +106,7 @@
 
     &-icon {
       color: @cell-right-icon-color;
-      font-size: @cell-right-icon-font-size;
+      font-size: @cell-right-icon-size;
     }
 
     &--middle {

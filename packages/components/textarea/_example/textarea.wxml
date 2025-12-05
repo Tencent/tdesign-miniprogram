@@ -4,7 +4,7 @@
     <view class="demo">
       <t-demo-header
         title="Textarea 多行文本框"
-        desc="用于多行文本信息输入。"
+        desc="用于多行文本的输入。"
         notice="渲染框架支持情况：Skyline、WebView"
       />
       <t-demo title="01 组件类型" desc="基础多行文本框">

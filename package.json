@@ -18,7 +18,7 @@
     "build:example": "gulp --gulpfile script/gulpfile.example.js --cwd ./",
     "build:assets": "cross-env NODE_ENV=production gulp assets:build --gulpfile script/gulpfile.dist.js --cwd ./",
     "update:icons": "pnpm -C packages/tdesign-miniprogram/site update:icons",
-    "update:css": "pnpm -C packages/tdesign-miniprogram/site update:css",
+    "api:css": "node packages/common/scripts/generate-css-vars.mjs Miniprogram",
     "lintfix": "eslint '{packages/components,packages/pro-components,packages/tdesign-miniprogram/example}/**/*.{js,ts}' --fix",
     "lint": "eslint '{packages/components,packages/pro-components,packages/tdesign-miniprogram/example}/**/*.{js,ts}'",
     "format": "prettier {packages/components,packages/pro-components,packages/tdesign-miniprogram/example,script}/**/*.{js,ts,wxss,less,wxml,html,json,md,wxs} --write",
@@ -40,7 +40,8 @@
     "generate": "gulp generate --gulpfile script/gulpfile.js --cwd ./",
     "changelog": "node script/generate-changelog.js",
     "robot": "publish-cli robot-msg",
-    "qrcode": "pnpm -C packages/tdesign-miniprogram/site qrcode"
+    "qrcode": "pnpm -C packages/tdesign-miniprogram/site qrcode",
+    "snippet": "node snippets/generate-demo-snippet.mjs"
   },
   "author": "tdesign",
   "license": "MIT",
@@ -101,7 +102,6 @@
     "standard-changelog": "^2.0.27",
     "stylelint": "^13.13.1",
     "tdesign-publish-cli": "^0.0.12",
-    "tdesign-theme-generator": "^1.1.0",
     "tinycolor2": "^1.4.2",
     "tslib": "^2.8.1",
     "typescript": "~4.7.2"

@@ -120,80 +120,21 @@ data: {"id":"7eced65bb3cb122d9f927563fc0e5673","created":1695218378,"choices":[{
 
 data: {"id":"7eced65bb3cb122d9f927563fc0e5673","created":1695218378,"choices":[{"delta":{"role":"assistant","content":"模型"}}],"usage":{"prompt_tokens":10,"completion_tokens":11,"total_tokens":21}}
 ```
-下面是解析流式接口请求的代码片段：
+下面是微信小程序解析SSE流式接口请求的代码片段示例：
 ```js
-export const fetchSSE = async (options: FetchSSEOptions = {}) => {
-  const { success, fail, complete } = options;
-  // fetch请求流式接口url，需传入接口url和参数
-  const responsePromise = fetch().catch((e) => {
-    const msg = e.toString() || '流式接口异常';
-    complete?.(false, msg);
-    return Promise.reject(e); // 确保错误能够被后续的.catch()捕获
-  });
-
-  responsePromise
-    .then((response) => {
-      if (!response?.ok) {
-        complete?.(false, response.statusText);
-        fail?.();
-        throw new Error('Request failed'); // 抛出错误以便链式调用中的下一个.catch()处理
+  const requestTask = wx.request({
+      url: 'https://your-api-url',
+      enableChunked: true,
+      success(res){
+        console.log('success：', res)
+      },
+      fail(err){
+        console.warn('fail：', err);
       }
-      const reader = response.body.getReader();
-      const decoder = new TextDecoder();
-      if (!reader) throw new Error('No reader available');
-
-      const bufferArr: string[] = [];
-      let dataText = ''; // 记录数据
-      const event: SSEEvent = { type: null, data: null };
-
-      async function processText({ done, value }: ReadableStreamReadResult<Uint8Array>): Promise<void> {
-        if (done) {
-          complete?.(true);
-          return Promise.resolve();
-        }
-        const chunk = decoder.decode(value);
-        const buffers = chunk.toString().split(/\r?\n/);
-        bufferArr.push(...buffers);
-        const i = 0;
-        while (i < bufferArr.length) {
-          const line = bufferArr[i];
-          if (line) {
-            dataText += line;
-            const response = line.slice(6);
-            if (response === '[DONE]') {
-              event.type = 'finish';
-              dataText = '';
-            } else {
-              const choices = JSON.parse(response.trim())?.choices?.[0];
-              if (choices.finish_reason === 'stop') {
-                event.type = 'finish';
-                dataText = '';
-              } else {
-                event.type = 'delta';
-                event.data = choices;
-              }
-            }
-          }
-          if (event.type && event.data) {
-            const jsonData = JSON.parse(JSON.stringify(event));
-            console.log('流式数据解析结果:', jsonData);
-            // 回调更新数据
-            success(jsonData);
-            event.type = null;
-            event.data = null;
-          }
-          bufferArr.splice(i, 1);
-        }
-        return reader.read().then(processText);
-      }
-
-      return reader.read().then(processText);
-    })
-    .catch(() => {
-      // 处理整个链式调用过程中发生的任何错误
-      fail?.();
     });
-};
+    // 解析流式返回的数据
+  requestTask.onChunkReceived((chunk)=>console.log('chunk', chunk))
+
 ```
 
 

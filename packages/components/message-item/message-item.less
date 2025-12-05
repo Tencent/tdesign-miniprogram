@@ -6,13 +6,12 @@
 
 @message-align: flex-start;
 @message-icon-size: 44rpx;
-@message-content-height: 44rpx;
-@message-content-font-size: @font-size-base;
+@message-content-font: @font-body-medium;
 
 @message-bg-color: var(--td-message-bg-color, @bg-color-container); // 消息通知背景颜色
 @message-box-shadow: var(--td-message-box-shadow, @shadow-1); // 消息通知阴影
 @message-border-radius: var(--td-message-border-radius, @radius-default); // 消息通知圆角大小
-@message-content-font-color: var(--td-message-content-font-color, @text-color-primary); // 内容文本颜色
+@message-content-color: var(--td-message-content-color, @text-color-primary); // 内容文本颜色
 @message-info-color: var(--td-message-info-color, @brand-color); // 'info'主题色
 @message-success-color: var(--td-message-success-color, @success-color); // 'success'主题色
 @message-warning-color: var(--td-message-warning-color, @warning-color); // 'warning'主题色
@@ -41,9 +40,8 @@
 
   &__text {
     display: inline-block;
-    color: @message-content-font-color;
-    font-size: @message-content-font-size;
-    line-height: @message-content-height;
+    color: @message-content-color;
+    font: @message-content-font;
   }
 
   &__text-wrap {

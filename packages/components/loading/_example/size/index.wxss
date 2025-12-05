@@ -1,9 +1,9 @@
 .large {
-  --td-loading-text-font-size: 32rpx;
+  --td-loading-text-font: var(--td-font-body-large);
 }
 
-.middle {
-  --td-loading-text-font-size: 28rpx;
+.medium {
+  --td-loading-text-font: var(--td-font-body-medium);
 }
 
 .loading-size-demo .demo-desc {

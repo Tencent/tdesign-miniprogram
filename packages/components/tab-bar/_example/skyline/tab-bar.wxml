@@ -2,7 +2,7 @@
   <t-navbar class="block" title="TabBar" left-arrow />
   <scroll-view scroll-y type="list" class="scroll-view" scroll-top="{{scrollTo}}" bindscroll="onScroll">
     <view class="demo">
-      <view class="demo-title">TabBar 标签栏</view>
+      <view class="demo-title">TabBar 底部标签栏</view>
       <view class="demo-desc">用于在不同功能模块之间进行快速切换，位于页面底部。</view>
       <t-demo title="01 组件类型" desc="纯文本标签栏">
         <text-only />

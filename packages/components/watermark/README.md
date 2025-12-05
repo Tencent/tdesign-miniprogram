@@ -19,11 +19,11 @@ isComponent: true
 
 ## 代码演示
 
-<!-- <a href="https://developers.weixin.qq.com/s/l0azMimf7CSu" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/4MciR9mZ805J" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
-</blockquote> -->
+</blockquote>
 
 ### 组件类型
 
@@ -115,11 +115,11 @@ url | String | - | 水印图片源地址，为了显示清楚，建议导出 2 �
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---watermark-left-0 | --watermark-left-0 | - 
---watermark-left-25 | --watermark-left-25 | - 
---watermark-left-50 | --watermark-left-50 | - 
---watermark-left-75 | --watermark-left-75 | - 
---watermark-top-0 | --watermark-top-0 | - 
---watermark-top-25 | --watermark-top-25 | - 
---watermark-top-50 | --watermark-top-50 | - 
+--watermark-left-0 | --watermark-left-0 | -
+--watermark-left-25 | --watermark-left-25 | -
+--watermark-left-50 | --watermark-left-50 | -
+--watermark-left-75 | --watermark-left-75 | -
+--watermark-top-0 | --watermark-top-0 | -
+--watermark-top-25 | --watermark-top-25 | -
+--watermark-top-50 | --watermark-top-50 | -
 --watermark-top-75 | --watermark-top-75 | -

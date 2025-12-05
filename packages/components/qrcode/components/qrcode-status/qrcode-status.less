@@ -2,8 +2,8 @@
 
 @qrcode-expired-link-motion-duration-mid: 0.2s;
 @qrcode-expired-link-motion-ease-in-out: cubic-bezier(0.215, 0.61, 0.355, 1);
-@qrcode-expired-link-color-hover: var(--td-brand-color-hover);
-@qrcode-scanned-icon-color: var(--td-success-color);
+@qrcode-expired-link-color-active: @brand-color-active;
+@qrcode-scanned-icon-color: @success-color;
 
 @qrcode-mask-inner-gap: 8px;
 @qrcode-mask-inner-btn-height: 32px;
@@ -25,7 +25,7 @@
     transition: all @qrcode-expired-link-motion-duration-mid @qrcode-expired-link-motion-ease-in-out;
 
     &:hover {
-      color: @qrcode-expired-link-color-hover;
+      color: @qrcode-expired-link-color-active;
     }
   }
 }

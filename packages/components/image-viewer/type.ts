@@ -4,6 +4,8 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { ImageProps } from '../image/index';
+
 export interface TdImageViewerProps {
   /**
    * 遮罩的背景颜色
@@ -28,6 +30,13 @@ export interface TdImageViewerProps {
   deleteBtn?: {
     type: null;
     value?: string | boolean | object;
+  };
+  /**
+   * 透传至 Image 组件
+   */
+  imageProps?: {
+    type: ObjectConstructor;
+    value?: ImageProps;
   };
   /**
    * 图片数组

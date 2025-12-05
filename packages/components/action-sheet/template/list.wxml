@@ -8,13 +8,15 @@
     aria-label="{{item.label || item}}"
     tabindex="0"
   >
-    <t-icon wx:if="{{item.icon}}" name="{{item.icon}}" class="{{classPrefix}}__list-item-icon" size="48rpx"></t-icon>
-    <view class="{{classPrefix}}__list-item-text">{{item.label || item}}</view>
-    <t-icon
-      wx:if="{{item.suffixIcon}}"
-      name="{{item.suffixIcon}}"
-      class="{{classPrefix}}__list-item-icon {{classPrefix}}__list-item-icon--suffix"
-      size="48rpx"
-    ></t-icon>
+    <view class="{{classPrefix}}__list-item-content">
+      <t-icon wx:if="{{item.icon}}" name="{{item.icon}}" class="{{classPrefix}}__list-item-icon" />
+      <view class="{{classPrefix}}__list-item-text">{{item.label || item}}</view>
+      <t-icon
+        wx:if="{{item.suffixIcon}}"
+        name="{{item.suffixIcon}}"
+        class="{{classPrefix}}__list-item-icon {{classPrefix}}__list-item-icon--suffix"
+      />
+    </view>
+    <view wx:if="{{item.description}}" class="{{classPrefix}}__list-item-desc">{{item.description}}</view>
   </view>
 </template>
