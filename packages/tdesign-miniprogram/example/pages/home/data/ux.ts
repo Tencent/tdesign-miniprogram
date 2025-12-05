@@ -39,6 +39,10 @@ const ux = {
       label: '遮罩层',
     },
     {
+      name: 'Popover',
+      label: '弹出气泡',
+    },
+    {
       name: 'Popup',
       label: '弹出层',
     },
@@ -69,10 +73,10 @@ const skylineUx = {
       name: 'Overlay',
       label: '遮罩层',
     },
-    {
-      name: 'Popover',
-      label: '弹出气泡',
-    },
+    // {
+    //   name: 'Popover',
+    //   label: '弹出气泡',
+    // },
     {
       name: 'Popup',
       label: '弹出层',
