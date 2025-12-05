@@ -8,16 +8,15 @@ docClass: timeline
 
 ## 🌈 1.12.0 `2025-12-05` 
 ### 🚀 Features
-- `Chat`:  新增 `Chat` 系列组件 @zydemail @liuding0304 @goldjunkrat @waiterxiaoyy @mimaoxiao @zhangjiaoalice
-  - 新增 `ChatList` 对话列表组件 
-  - 新增 `ChatSender` 对话输入组件
-  - 新增 `ChatMessage` 对话消息体组件 
-  - 新增 `ChatActionbar` 对话操作组件 
-  - 新增 `ChatMarkdown` `Markdown` 内容组件 
-  - 新增 `ChatThinking` 思考过程组件 
-  - 新增 `ChatLoading` 对话加载组件 
-  - 新增 `Attachments` 文件附件组件 
-  - 新增 `ChatContent` 对话正文组件 
+- `ChatList`:  新增 `ChatList` 对话列表组件 @zydemail @liuding0304 @goldjunkrat @waiterxiaoyy @mimaoxiao @zhangjiaoalice ([#4010](https://github.com/Tencent/tdesign-miniprogram/pull/4010))
+- `ChatSender`: 新增 `ChatSender` 对话输入组件 @zydemail @liuding0304 @goldjunkrat @waiterxiaoyy @mimaoxiao @zhangjiaoalice ([#4010](https://github.com/Tencent/tdesign-miniprogram/pull/4010))
+- `ChatMessage`: 新增 `ChatMessage` 对话消息体组件 @zydemail @liuding0304 @goldjunkrat @waiterxiaoyy @mimaoxiao @zhangjiaoalice ([#4010](https://github.com/Tencent/tdesign-miniprogram/pull/4010))
+- `ChatActionbar`: 新增 `ChatActionbar` 对话操作组件 @zydemail @liuding0304 @goldjunkrat @waiterxiaoyy @mimaoxiao @zhangjiaoalice ([#4010](https://github.com/Tencent/tdesign-miniprogram/pull/4010))
+- `ChatMarkdown`: 新增 `ChatMarkdown` `Markdown` 内容组件 @zydemail @liuding0304 @goldjunkrat @waiterxiaoyy @mimaoxiao @zhangjiaoalice ([#4010](https://github.com/Tencent/tdesign-miniprogram/pull/4010))
+- `ChatThinking`: 新增 `ChatThinking` 思考过程组件 @zydemail @liuding0304 @goldjunkrat @waiterxiaoyy @mimaoxiao @zhangjiaoalice ([#4010](https://github.com/Tencent/tdesign-miniprogram/pull/4010))
+- `ChatLoading`: 新增 `ChatLoading` 对话加载组件 @zydemail @liuding0304 @goldjunkrat @waiterxiaoyy @mimaoxiao @zhangjiaoalice ([#4010](https://github.com/Tencent/tdesign-miniprogram/pull/4010))
+- `Attachments`: 新增 `Attachments` 文件附件组件 @zydemail @liuding0304 @goldjunkrat @waiterxiaoyy @mimaoxiao @zhangjiaoalice ([#4010](https://github.com/Tencent/tdesign-miniprogram/pull/4010))
+- `ChatContent`: 新增 `ChatContent` 对话正文组件 @zydemail @liuding0304 @goldjunkrat @waiterxiaoyy @mimaoxiao @zhangjiaoalice ([#4010](https://github.com/Tencent/tdesign-miniprogram/pull/4010))
 - `Popover`: 新增 `Popover` 组件 @Wesley-0808 ([#4049](https://github.com/Tencent/tdesign-miniprogram/pull/4049))
 - `ImageViewer`: 新增 `image-props` 属性 @betavs ([#4078](https://github.com/Tencent/tdesign-miniprogram/pull/4078))
 - `ActionSheet`:  `item` 属性补充 `description` 字段 @anlyyao ([#4096](https://github.com/Tencent/tdesign-miniprogram/pull/4096))
