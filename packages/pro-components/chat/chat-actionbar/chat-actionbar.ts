@@ -17,6 +17,7 @@ export default class ChatActionbar extends SuperComponent {
     actions: [],
     classPrefix: name,
     pComment: '',
+    computedPlacement: '',
     iconMap: {
       good: 'thumb-up',
       bad: 'thumb-down',
@@ -28,16 +29,24 @@ export default class ChatActionbar extends SuperComponent {
       good: 'thumb-up-filled',
       bad: 'thumb-down-filled',
     },
+    popoverPosition: '',
   };
 
   observers = {
     comment(newVal) {
-      this.setData({
-        pComment: newVal || '',
-      });
+      this.setPComment(newVal);
     },
     'actionBar, pComment'() {
       this.setActions();
+    },
+    longPressPosition(newVal) {
+      if (this.properties.placement === 'longpress') {
+        if (newVal) {
+          this.showPopover(newVal);
+        } else {
+          this.hidePopover();
+        }
+      }
     },
   };
 
@@ -95,6 +104,7 @@ export default class ChatActionbar extends SuperComponent {
         this.triggerEvent('actions', {
           name,
           active: !isActive,
+          chatId: this.properties.chatId,
         });
       } else if (name === 'bad') {
         const isActive = this.data.pComment === 'bad';
@@ -104,10 +114,12 @@ export default class ChatActionbar extends SuperComponent {
         this.triggerEvent('actions', {
           name,
           active: !isActive,
+          chatId: this.properties.chatId,
         });
       } else {
         this.triggerEvent('actions', {
           name,
+          chatId: this.properties.chatId,
         });
       }
     },
@@ -119,6 +131,12 @@ export default class ChatActionbar extends SuperComponent {
       this.triggerEvent('actions', {
         name: 'copy',
         data: copyContent,
+      });
+    },
+
+    setComputedPlacement() {
+      this.setData({
+        computedPlacement: this.properties.placement || 'start',
       });
     },
 
@@ -143,6 +161,24 @@ export default class ChatActionbar extends SuperComponent {
         actions: baseActions,
       });
     },
+
+    setPComment(newVal) {
+      this.setData({
+        pComment: newVal || '',
+      });
+    },
+
+    showPopover(pos) {
+      const lineNumber = Math.min(this.data.actions.length, 4);
+      const width = (lineNumber * 128 + (lineNumber - 1) * 8 + 16 * 2) / 2;
+      this.setData({
+        popoverPosition: `top:${pos.y}px;left:${pos.x}px;margin-left:-${width}rpx`,
+      });
+    },
+
+    hidePopover() {
+      this.setData({ popoverPosition: '' });
+    },
   };
 
   lifetimes = {
@@ -150,6 +186,9 @@ export default class ChatActionbar extends SuperComponent {
       this.data.filterSpecialChars = this.filterSpecialChars.bind(this);
       this.data.handleActionClick = this.handleActionClick.bind(this);
       this.data.handleCopy = this.handleCopy.bind(this);
+      this.data.showPopover = this.showPopover.bind(this);
+      this.data.hidePopover = this.hidePopover.bind(this);
+      this.data.setPComment = this.setPComment.bind(this);
     },
 
     attached() {
