@@ -139,7 +139,7 @@ t-class-image | 图片样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-avatar-group-init-z-index | @avatar-group-init-zIndex) - @i | -
+--td-avatar-group-init-z-index | @avatar-group-init-zIndex | -
 --td-avatar-group-line-spacing | 4rpx | -
 --td-avatar-group-margin-left-large | -16rpx | -
 --td-avatar-group-margin-left-medium | -16rpx | -

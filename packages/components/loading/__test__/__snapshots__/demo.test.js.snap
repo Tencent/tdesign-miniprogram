@@ -97,7 +97,7 @@ exports[`Loading Loading size demo works fine 1`] = `
       中尺寸
     </wx-view>
     <t-loading
-      class="middle"
+      class="medium"
       size="56rpx"
       text="加载中..."
       theme="circular"
