@@ -6,6 +6,41 @@ docClass: timeline
 ---
 
 
+## 🌈 1.12.0 `2025-12-05` 
+### 🚀 Features
+- `Chat`:  新增 `Chat` 系列组件 @zydemail @liuding0304 @goldjunkrat @waiterxiaoyy @mimaoxiao @zhangjiaoalice
+  - 新增 `ChatList` 对话列表组件 
+  - 新增 `ChatSender` 对话输入组件
+  - 新增 `ChatMessage` 对话消息体组件 
+  - 新增 `ChatActionbar` 对话操作组件 
+  - 新增 `ChatMarkdown` `Markdown` 内容组件 
+  - 新增 `ChatThinking` 思考过程组件 
+  - 新增 `ChatLoading` 对话加载组件 
+  - 新增 `Attachments` 文件附件组件 
+  - 新增 `ChatContent` 对话正文组件 
+- `Popover`: 新增 `Popover` 组件 @Wesley-0808 ([#4049](https://github.com/Tencent/tdesign-miniprogram/pull/4049))
+- `ImageViewer`: 新增 `image-props` 属性 @betavs ([#4078](https://github.com/Tencent/tdesign-miniprogram/pull/4078))
+- `ActionSheet`:  `item` 属性补充 `description` 字段 @anlyyao ([#4096](https://github.com/Tencent/tdesign-miniprogram/pull/4096))
+### 🐞 Bug Fixes
+- `BackTop`: 修复文本字重错误 @anlyyao ([#4061](https://github.com/Tencent/tdesign-miniprogram/pull/4061))
+- `ColorPicker`: 修复组件深色模式背景、边框、文本色错误 @anlyyao ([#4061](https://github.com/Tencent/tdesign-miniprogram/pull/4061))
+- `Grid`: 修复 `column` 小于4 或大于4 时，文本字号大小错误 @anlyyao ([#4061](https://github.com/Tencent/tdesign-miniprogram/pull/4061))
+- `Badge`: 修复 `count` 插槽异常 @anlyyao ([#4085](https://github.com/Tencent/tdesign-miniprogram/pull/4085))
+- `Picker`: 修复 `keys` 动态变更时，子项列表数据不显示 @anlyyao ([#4084](https://github.com/Tencent/tdesign-miniprogram/pull/4084))
+- `Upload`:  @anlyyao ([#4087](https://github.com/Tencent/tdesign-miniprogram/pull/4087))
+  - 修复企业微信/桌面端环境中部分机型无法唤起上传
+  - 修复当 `request-method` 返回 `Promise` 时，无法上传的问题
+- `ActionSheet`:  @anlyyao ([#4096](https://github.com/Tencent/tdesign-miniprogram/pull/4096))
+  - 修复左对齐场景下，子项 `border` 左间距错误
+  - 修复 `grid` 主题 +  无 `description` 描述文本场景下，顶部间距错误
+  - `list` 主题最后一项不应设置底边框
+  - 修复 `item` 属性的 `disabled` 配置无效
+- `Toast`: 修复弹窗与遮罩消失不同步的问题 @Boomkaa ([#4103](https://github.com/Tencent/tdesign-miniprogram/pull/4103))
+### 🚧 Others
+- ⚠️ chore: 改用 `Font token`，组件级 CSS Vars 有调整，涉及组件有：`ActionSheet`、`Badge`、`Calendar`、`Cascader` 等 30+ 组件
+- ⚠️chore:  `--td-xx-icon-font-size` 统一更名为  `--td-xx-icon-size`，涉及组件有 `BackTop`、`Button`、`Cell`、`Empty`、`Grid`、`ImageViewer`、`NoticeBar`、`Progress`、`Result`、`Search` 和 `Upload`，共计 11 个组件
+
+
 ## 🌈 1.11.2 `2025-11-12` 
 ### 🚀 Features
 - `Picker`: 
