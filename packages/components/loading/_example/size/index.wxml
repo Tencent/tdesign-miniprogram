@@ -3,7 +3,7 @@
 
   <view class="demo-desc">中尺寸</view>
 
-  <t-loading theme="{{ skylineRender ? 'spinner' : 'circular'}}" size="56rpx" text="加载中..." class="middle" />
+  <t-loading theme="{{ skylineRender ? 'spinner' : 'circular'}}" size="56rpx" text="加载中..." class="medium" />
 
   <view class="demo-desc">小尺寸</view>
 

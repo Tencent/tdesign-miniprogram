@@ -2,7 +2,7 @@
   --td-loading-text-font: var(--td-font-body-large);
 }
 
-.middle {
+.medium {
   --td-loading-text-font: var(--td-font-body-medium);
 }
 
