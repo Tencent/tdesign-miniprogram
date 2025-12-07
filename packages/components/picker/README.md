@@ -115,10 +115,10 @@ label-suffix-index | 列表子项后置插槽，用于自定义标签文本之�
 --td-picker-confirm-color | @brand-color | -
 --td-picker-indicator-bg-color | @bg-color-secondarycontainer | -
 --td-picker-indicator-border-radius | 12rpx | -
+--td-picker-item-active-color | @text-color-primary | -
+--td-picker-item-color | @text-color-secondary | -
+--td-picker-item-font-size | @font-size-m | -
 --td-picker-title-color | @text-color-primary | -
 --td-picker-title-font | @font-title-large | -
 --td-picker-toolbar-height | 116rpx | -
 --td-picker-transparent-color | --td-picker-transparent-color | -
---td-picker-item-active-color | @text-color-primary | -
---td-picker-item-color | @text-color-secondary | -
---td-picker-item-font-size | @font-size-m | -

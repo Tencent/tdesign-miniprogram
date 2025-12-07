@@ -133,6 +133,7 @@ t-class-footer | 底部样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
+--td-dropdown-body-max-height | 560rpx | -
 --td-dropdown-menu-active-color | @brand-color | -
 --td-dropdown-menu-bg-color | @bg-color-container | -
 --td-dropdown-menu-border-width | 1px | -
@@ -141,4 +142,3 @@ t-class-footer | 底部样式类
 --td-dropdown-menu-font-size | 28rpx | -
 --td-dropdown-menu-height | 96rpx | -
 --td-dropdown-menu-icon-size | 40rpx | -
---td-dropdown-body-max-height | 560rpx | -
