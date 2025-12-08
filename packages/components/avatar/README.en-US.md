@@ -79,7 +79,7 @@ t-class-image | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-avatar-group-init-z-index | @avatar-group-init-zIndex) - @i | -
+--td-avatar-group-init-z-index | @avatar-group-init-zIndex | -
 --td-avatar-group-line-spacing | 4rpx | -
 --td-avatar-group-margin-left-large | -16rpx | -
 --td-avatar-group-margin-left-medium | -16rpx | -

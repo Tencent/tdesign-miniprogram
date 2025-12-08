@@ -19,6 +19,8 @@ Component({
     },
     pic1: {
       role: 'user',
+      name: '张三',
+      avatar: 'https://tdesign.gtimg.com/site/avatar.jpg',
       content: [
         {
           type: 'attachment',

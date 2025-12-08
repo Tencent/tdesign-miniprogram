@@ -572,6 +572,14 @@ export const docs = [
         component: () => import('@/overlay/README.md'),
       },
       {
+        title: 'Popover 弹出气泡',
+        titleEn: 'Popover',
+        name: 'popover',
+        meta: { docType: 'message' },
+        path: '/miniprogram/components/popover',
+        component: () => import('@/popover/README.md'),
+      },
+      {
         title: 'Popup 弹出层',
         titleEn: 'Popup',
         name: 'popup',

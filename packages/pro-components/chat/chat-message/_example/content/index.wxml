@@ -2,13 +2,6 @@
   <!-- 附件消息 -->
   <view class="chat-example-block">
     <t-chat-message
-      content="{{pic1.content}}"
-      role="{{pic1.role}}"
-      chatContentProps="{{chatContentProps}}"
-    ></t-chat-message>
-  </view>
-  <view class="chat-example-block">
-    <t-chat-message
       content="{{pic2.content}}"
       role="{{pic2.role}}"
       chatContentProps="{{chatContentProps}}"
