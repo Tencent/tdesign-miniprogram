@@ -47,6 +47,7 @@ export interface TdChatMessageProps {
   };
   /**
    * 对话单元的时间配置
+   * @default ''
    */
   datetime?: {
     type: StringConstructor;

@@ -30,12 +30,12 @@ isComponent: true
 {{ base }}
 
 #### 可配置昵称、头像、对齐方式
-
+支持`avatar`，`name`插槽自定义
 {{ configure }}
 
 #### 配置消息属性
 
-支持`avatar`，`name`，`datetime`，`content`插槽自定义, `content`插槽使用建议：渲染聊天消息统一用 `t-chat-content`；仅在需要“单独使用 Markdown 组件”时使用 `t-chat-markdown`。也支持别的 markdown 渲染组件，选择其他 markdown 渲染库由用户自行安装。
+支持`content`插槽自定义, `content`插槽使用建议：渲染聊天消息统一用 `t-chat-content`；仅在需要“单独使用 Markdown 组件”时使用 `t-chat-markdown`。也支持别的 markdown 渲染组件，选择其他 markdown 渲染库由用户自行安装。
 
 {{ content }}
 
@@ -86,5 +86,5 @@ longpress | `(detail: { id: string })` | \-
 名称 | 描述
 -- | --
 avatar | 自定义 `avatar` 显示内容
-datetime | 自定义 `datetime` 显示内容
+content | 自定义消息内容
 name | 自定义 `name` 显示内容

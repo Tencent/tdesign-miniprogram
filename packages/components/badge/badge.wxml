@@ -21,6 +21,7 @@
   <view
     aria-hidden="true"
     aria-label="{{ ariaLabel || _.getBadgeAriaLabel({dot, count, maxCount}) }}"
+    wx:if="{{_this.isShowBadge({dot,count,showZero}) || count === null}}"
     id="{{descriptionID}}"
     class="{{_this.getBadgeInnerClass({classPrefix, dot, size, shape, count})}} {{prefix}}-has-count {{prefix}}-class-count"
     style="{{_._style([_this.getBadgeStyles({color, offset})])}}"

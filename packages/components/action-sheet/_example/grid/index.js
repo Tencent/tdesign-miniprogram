@@ -45,6 +45,16 @@ Component({
         items: firstGrid,
       });
     },
+    handleActionWithDesc() {
+      ActionSheet.show({
+        theme: ActionSheetTheme.Grid,
+        selector: '#t-action-sheet',
+        context: this,
+        items: firstGrid,
+        description: '动作面板描述文字',
+      });
+    },
+
     handleMultiAction() {
       ActionSheet.show({
         theme: ActionSheetTheme.Grid,

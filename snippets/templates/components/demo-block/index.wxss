@@ -1,0 +1,46 @@
+.demo-block {
+  margin: var(--td-spacer-4, 64rpx) 0 0;
+}
+.demo-block__header {
+  color: var(--bg-color-demo-title);
+  margin: 0 var(--td-spacer-2, 32rpx);
+}
+.demo-block__header-title {
+  font-weight: 700;
+  font-size: 36rpx;
+  line-height: 52rpx;
+}
+.demo-block__header-desc {
+  margin-top: var(--td-spacer, 16rpx);
+  font-size: var(--td-font-size-base, 28rpx);
+  white-space: pre-line;
+  color: var(--bg-color-demo-desc);
+  line-height: 22px;
+}
+.demo-block__oper {
+  margin-top: var(--td-spacer, 16rpx);
+}
+.demo-block__oper-subtitle {
+  font-size: var(--td-font-size-s, 24rpx);
+  margin-bottom: var(--td-spacer-2, 32rpx);
+  opacity: 0.4;
+}
+.demo-block__oper-btn {
+  margin: 0 0 var(--td-spacer-2, 32rpx) 0;
+  height: 96rpx;
+}
+.demo-block__slot {
+  margin-top: var(--td-spacer-2, 32rpx);
+}
+.demo-block__slot.with-padding {
+  margin-top: var(--td-spacer-2, 32rpx);
+  margin-left: var(--td-spacer-2, 32rpx);
+  margin-right: var(--td-spacer-2, 32rpx);
+  margin-bottom: 0;
+}
+.demo-block_notitle {
+  margin-top: 0px;
+}
+.demo-block_notitle .demo-block_subtitle {
+  margin-top: var(--td-spacer-3, 48rpx);
+}
