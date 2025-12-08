@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "@tdesign/site-components": "^0.17.0",
+    "@tdesign/site-components": "^0.18.0-alpha.7",
     "@tdesign/theme-generator": "^1.2.0",
     "@types/prismjs": "^1.26.5",
     "@vitejs/plugin-vue": "^5.2.4",
