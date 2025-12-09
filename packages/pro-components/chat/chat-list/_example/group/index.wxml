@@ -1,0 +1,28 @@
+<view class="chat-box" style="height: {{contentHeight}};">
+  <t-chat id="chatList" bindscroll="onScroll" bindscrolltoupper="onScrollToUpper" reverse="{{false}}">
+    <block wx:for="{{groupedChatList}}" wx:for-index="groupIndex" wx:key="groupIndex">
+      <t-chat-group
+        group-data="{{item}}"
+        group-index="{{groupIndex}}"
+        layout="both"
+        animation="{{animation}}"
+        is-latest="{{groupIndex === groupedChatList.length - 1}}"
+        anchor-height="{{anchorHeight}}"
+      >
+      </t-chat-group>
+    </block>
+    <view slot="footer">
+      <t-chat-sender
+        value="{{value}}"
+        loading="{{loading}}"
+        disabled="{{disabled}}"
+        autoRiseWithKeyboard="{{true}}"
+        renderPresets="{{renderPresets}}"
+        bind:send="onSend"
+        bind:stop="onStop"
+        bind:focus="onFocus"
+      />
+    </view>
+  </t-chat>
+</view>
+<t-toast id="t-toast" />

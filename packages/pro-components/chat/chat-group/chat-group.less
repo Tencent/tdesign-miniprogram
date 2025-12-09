@@ -1,0 +1,20 @@
+@import '../../../components/common/style/index.less';
+
+@chat-group: ~'@{prefix}-chat-group';
+
+.@{chat-group} {
+  // 高度钩子相对的父元素
+  position: relative;
+  &:last-child{
+    margin-bottom: 29rpx;
+  }
+  &__height-hook {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100px;
+    pointer-events: none;
+    background-color: rgba(255, 0, 0, 0.3);
+  }
+}

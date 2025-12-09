@@ -1,0 +1,23 @@
+var utils = require('../../../components/common/utils.wxs');
+
+function addUnit(value) {
+  // prettier-ignore
+  var REGEXP = getRegExp('^-?\d+(.\d+)?$');
+  if (value == null) {
+    return undefined;
+  }
+  return REGEXP.test('' + value) ? value + 'px' : value;
+}
+
+function hookStyle(anchorHeight) {
+  if (anchorHeight && anchorHeight > 0) {
+    return utils._style({
+      height: addUnit(anchorHeight),
+    });
+  }
+  return '';
+}
+
+module.exports = {
+  hookStyle: hookStyle,
+};

@@ -1,0 +1,46 @@
+<wxs src="./chat-group.wxs" module="_this" />
+
+<view
+  class="class {{classPrefix}}"
+  style="{{_this._style([style, customStyle])}}"
+>
+    <!-- 用户消息 + 高度钩子 -->
+    <view class="{{classPrefix}}__user-hook">
+      <block wx:for="{{groupData}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+        <chat-message
+          wx:if="{{item.role === 'user'}}"
+          class="{{classPrefix}}__user"
+          avatar="{{item.avatar || ''}}"
+          name="{{item.name || ''}}"
+          datetime="{{item.datetime || ''}}"
+          content="{{item.content}}"
+          role="{{item.role}}"
+          chat-id="{{item.chatId || ''}}"
+          placement="{{ layout === 'both' ? 'right' : 'left' }}"
+          animation="{{animation}}"
+          status="{{item.status || ''}}"
+        />
+      </block>
+      <view
+        class="{{classPrefix}}__height-hook"
+        style="{{_this.hookStyle(anchorHeight)}}"
+      ></view>
+    </view>
+
+    <!-- AI 消息 -->
+    <block wx:for="{{groupData}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+      <chat-message
+        wx:if="{{item.role === 'assistant'}}"
+        class="{{classPrefix}}__ai"
+        avatar="{{item.avatar || ''}}"
+        name="{{item.name || ''}}"
+        datetime="{{item.datetime || ''}}"
+        content="{{item.content}}"
+        role="{{item.role}}"
+        chat-id="{{item.chatId || ''}}"
+        placement="{{ layout === 'both' ? 'left' : 'left' }}"
+        animation="{{animation}}"
+        status="{{item.status || ''}}"
+      />
+    </block>
+</view>

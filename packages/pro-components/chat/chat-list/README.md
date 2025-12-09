@@ -53,6 +53,10 @@ isComponent: true
 
 {{ agent }}
 
+#### 提问置顶
+
+{{ group }}
+
 ## API
 
 ### ChatList Props

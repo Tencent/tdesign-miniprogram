@@ -9,6 +9,7 @@
     "codedemo": "./code",
     "docs": "./docs",
     "imagedemo": "./image",
-    "agent": "./agent"
+    "agent": "./agent",
+    "group": "./group"
   }
 }
