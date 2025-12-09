@@ -215,10 +215,11 @@ export default class Popover extends SuperComponent {
       const query = this.createSelectorQuery();
       query.select(`#${name}-wrapper`).boundingClientRect();
       query.select(`#${name}-content`).boundingClientRect();
+      query.select(`#${name}-wrapper`).fields({ computedStyle: ['position'] });
 
       query.selectViewport().scrollOffset();
       query.exec((res) => {
-        const [triggerRect, contentRect, viewportOffset] = res;
+        const [triggerRect, contentRect, triggerStyle, viewportOffset] = res;
         if (!triggerRect || !contentRect) return;
 
         // 最终放置位置
@@ -227,8 +228,10 @@ export default class Popover extends SuperComponent {
         this.setData({ _placement: finalPlacement });
 
         const { scrollTop = 0, scrollLeft = 0 } = viewportOffset;
-        const top = basePos.top + scrollTop;
-        const left = basePos.left + scrollLeft;
+        // 如果触发元素是 fixed 定位，不需要加上滚动偏移量
+        const isFixed = triggerStyle?.position === 'fixed';
+        const top = isFixed ? basePos.top : basePos.top + scrollTop;
+        const left = isFixed ? basePos.left : basePos.left + scrollLeft;
 
         const style = `top:${Math.max(top, 0)}px;left:${Math.max(left, 0)}px;`;
         const arrowStyle = this.calcArrowStyle(_placement, triggerRect, contentRect);
