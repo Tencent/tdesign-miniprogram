@@ -219,6 +219,7 @@ export default class Popover extends SuperComponent {
 
       query.selectViewport().scrollOffset();
       query.exec((res) => {
+        // res 数组顺序: [triggerRect, contentRect, triggerStyle, viewportOffset]
         const [triggerRect, contentRect, triggerStyle, viewportOffset] = res;
         if (!triggerRect || !contentRect) return;
 
