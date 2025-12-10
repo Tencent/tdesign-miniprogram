@@ -1,4 +1,4 @@
-<t-navbar title="Input" leftArrow />
+<t-navbar title="Input" leftArrow placeholder zIndex="{{99}}" />
 <view class="input-example">
   <t-demo-header title="Input 输入框" desc="用于单行文本信息输入。" notice="渲染框架支持情况：Skyline、WebView" />
   <t-demo title="01 组件类型" desc="基础输入框">

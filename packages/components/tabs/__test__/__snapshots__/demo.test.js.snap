@@ -64,7 +64,7 @@ exports[`Tabs Tabs base demo works fine 1`] = `
     sticky="{{true}}"
     stickyProps="{{
       Object {
-        "zIndex": 2,
+        "zIndex": 100,
       }
     }}"
     tClass="custom-tabs"
