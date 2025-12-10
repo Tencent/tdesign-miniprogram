@@ -1,6 +1,7 @@
 import { wxComponent, SuperComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { getRect } from '../common/utils';
 
 const { prefix } = config;
 const classPrefix = `${prefix}-tab-bar`;
@@ -20,6 +21,7 @@ export default class Tabbar extends SuperComponent {
   data = {
     prefix,
     classPrefix,
+    placeholderHeight: 56,
   };
 
   properties = props;
@@ -35,6 +37,9 @@ export default class Tabbar extends SuperComponent {
     value() {
       this.updateChildren();
     },
+    'fixed, placeholder'() {
+      this.setPlaceholderHeight();
+    },
   };
 
   lifetimes = {
@@ -44,6 +49,16 @@ export default class Tabbar extends SuperComponent {
   };
 
   methods = {
+    setPlaceholderHeight() {
+      if (!this.properties.fixed || !this.properties.placeholder) return;
+
+      wx.nextTick(() => {
+        getRect(this, `.${classPrefix}`).then((res) => {
+          this.setData({ placeholderHeight: res.height });
+        });
+      });
+    },
+
     showChildren() {
       const { value } = this.data;
 
