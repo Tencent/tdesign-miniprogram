@@ -9,6 +9,7 @@ const name = `${prefix}-chat-actionbar`;
 export default class ChatActionbar extends SuperComponent {
   options: ComponentsOptionsType = {
     multipleSlots: true,
+    styleIsolation: 'shared',
   };
 
   properties = props;
@@ -29,7 +30,9 @@ export default class ChatActionbar extends SuperComponent {
       good: 'thumb-up-filled',
       bad: 'thumb-down-filled',
     },
+    popoverStyle: 'position: fixed;',
     popoverPosition: '',
+    longpressVisible: false,
   };
 
   observers = {
@@ -169,15 +172,20 @@ export default class ChatActionbar extends SuperComponent {
     },
 
     showPopover(pos) {
-      const lineNumber = Math.min(this.data.actions.length, 4);
-      const width = (lineNumber * 128 + (lineNumber - 1) * 8 + 16 * 2) / 2;
       this.setData({
-        popoverPosition: `top:${pos.y}px;left:${pos.x}px;margin-left:-${width}rpx`,
+        popoverPosition: `top:${pos.y}px;left:${pos.x}px`,
+        longpressVisible: true,
       });
     },
 
     hidePopover() {
       this.setData({ popoverPosition: '' });
+    },
+
+    onVisibleChange(e) {
+      this.setData({
+        longpressVisible: e.detail.visible,
+      });
     },
   };
 

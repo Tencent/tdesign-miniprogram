@@ -31,31 +31,11 @@
 
   // 弹出层
   &--popover {
-    position: fixed;
-    display: none;
     padding: @chat-actionbar-popover-padding;
     color: @font-white-1;
     background-color: @chat-actionbar-popover-background;
     border-radius: @chat-actionbar-popover-radius;
-    max-width: 544rpx;
-
-    // 顶部三角形
-    &::before {
-      content: '';
-      position: absolute;
-      top: calc(@chat-actionbar-popover-padding-tri-height * -2);
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0;
-      height: 0;
-      border-left: @chat-actionbar-popover-padding-tri-width solid transparent;
-      border-right: @chat-actionbar-popover-padding-tri-width solid transparent;
-      border-bottom: calc(@chat-actionbar-popover-padding-tri-height * 2) solid @chat-actionbar-popover-background;
-    }
-
-    &.popover-visible {
-      display: block;
-    }
+    width: 544rpx;
 
     .@{chat-actionbar}__inner {
       background-color: unset;
@@ -132,6 +112,15 @@
     // 激活状态
     &--active {
       color: @chat-actionbar-item-active;
+    }
+  }
+
+  &__popover-skeleton {
+    position: fixed;
+
+    &__inner {
+      width: 20rpx;
+      height: 20rpx;
     }
   }
 }

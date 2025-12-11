@@ -1,6 +1,7 @@
 <wxs src="../../../components/common/utils.wxs" module="_" />
 <!-- TODO: api 可选项 longpress 下个版本迭代发布长按气泡样式 -->
 <view
+  wx:if="{{placement !== 'longpress'}}"
   class="{{[classPrefix, placement==='longpress' ? classPrefix+'--popover' : '', computedPlacement, popoverPosition ? 'popover-visible' : '']}}"
   style="{{_._style([style, customStyle, popoverPosition])}}"
 >
@@ -36,4 +37,53 @@
       </view>
     </block>
   </view>
+</view>
+<view wx:else class="{{[classPrefix, classPrefix+'__popover-skeleton']}}" style="{{popoverPosition}}">
+  <t-popover
+    placement="bottom"
+    theme="dark"
+    bind:visible-change="onVisibleChange"
+    visible="{{longpressVisible}}"
+    style="{{popoverStyle}}"
+  >
+    <view class="{{[classPrefix, classPrefix+'__popover-skeleton__inner']}}"></view>
+    <view
+      slot="content"
+      class="{{[classPrefix, placement==='longpress' ? classPrefix+'--popover' : '', computedPlacement, popoverPosition ? 'popover-visible' : '']}}"
+      style="{{_._style([style, customStyle])}}"
+    >
+      <view class="{{classPrefix}}__inner {{classPrefix}}__inner--column">
+        <view
+          class="{{classPrefix}}__left {{placement==='longpress' ? classPrefix+'__item--popover' : classPrefix+'__item'}}"
+        >
+          <slot name="prefix" />
+        </view>
+        <block wx:for="{{actions}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+          <!-- 分享按钮使用 button 标签 -->
+          <button
+            wx:if="{{item.name === 'share'}}"
+            data-name="{{item.name}}"
+            class="{{_.cls(placement==='longpress' ? classPrefix+'__item--popover' : classPrefix+'__item', [['active', item.isActive]])}}"
+            open-type="{{content ? 'share' : 'none'}}"
+            data-chat-id="{{chatId}}"
+            bindtap="handleActionClick"
+          >
+            <t-icon name="{{item.isActive ? iconActiveMap[item.name] : iconMap[item.name]}}" size="40rpx" />
+            <view wx:if="{{placement==='longpress'}}" class="{{classPrefix}}__item__text">{{item.name}}</view>
+          </button>
+
+          <!-- 其他按钮使用 view 标签 -->
+          <view
+            wx:else
+            data-name="{{item.name}}"
+            class="{{_.cls(placement==='longpress' ? classPrefix+'__item--popover' : classPrefix+'__item', [['active', item.isActive]])}}"
+            bindtap="handleActionClick"
+          >
+            <t-icon name="{{item.isActive ? iconActiveMap[item.name] : iconMap[item.name]}}" size="40rpx" />
+            <view wx:if="{{placement==='longpress'}}" class="{{classPrefix}}__item__text">{{item.name}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </t-popover>
 </view>
