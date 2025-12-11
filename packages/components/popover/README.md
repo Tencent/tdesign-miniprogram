@@ -25,12 +25,27 @@ isComponent: true
 </blockquote>
 
 ### 组件类型
-带箭头的弹出气泡
+#### 带箭头的弹出气泡
 
 {{ base }}
 
-## API
+### 组件样式
 
+{{ theme }}
+
+{{ placement }}
+
+## FAQ
+
+如果使用场景为 `fixed`，除了需要显示指定 `fixed` 属性为 `true`，还需在触发元素的顶层添加`t-popover-wrapper--fixed` 类，用于定位触发元素。
+
+```html
+<scroll-view type="list" scroll-y bind:scroll="onScroll">
+  <t-color-picker id="ColorPicker" fixed />
+</scroll-view>
+```
+
+## API
 
 ### Popover Props
 
@@ -40,6 +55,7 @@ style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 close-on-click-outside | Boolean | true | 是否在点击外部元素后关闭菜单  | N
 content | String | - | 确认框内容 | N
+fixed | Boolean | false | 如果 popover 是在一个 `position:fixed` 的区域，需要显式指定属性 fixed 为 true | N
 placement | String | top | 浮层出现位置。可选项：top/left/right/bottom/top-left/top-right/bottom-left/bottom-right/left-top/left-bottom/right-top/right-bottom | N
 show-arrow | Boolean | true | 是否显示浮层箭头 | N
 theme | String | dark | 弹出气泡主题。可选项：dark/light/brand/success/warning/error | N
@@ -55,8 +71,8 @@ visible-change | `(visible: boolean)` | 确认框显示或隐藏时触发
 
 名称 | 描述
 -- | --
-\- | 自定义 `` 显示内容
-content \| 自定义 `content` 显示内容
+\- | 默认插槽，作用同 `content` 插槽
+content | 自定义 `content` 显示内容
 
 ### Popover External Classes
 
@@ -70,4 +86,4 @@ t-class-content | 内容样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-popover-padding | 24rpx | - 
+--td-popover-padding | 24rpx | -

@@ -15,6 +15,11 @@ const props: TdPopoverProps = {
   content: {
     type: String,
   },
+  /** 如果 popover 是在一个 `position:fixed` 的区域，需要显式指定属性 fixed 为 true */
+  fixed: {
+    type: Boolean,
+    value: false,
+  },
   /** 浮层出现位置 */
   placement: {
     type: String,

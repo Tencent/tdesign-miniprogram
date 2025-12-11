@@ -21,6 +21,14 @@ export interface TdPopoverProps {
     value?: string;
   };
   /**
+   * 如果 popover 是在一个 `position:fixed` 的区域，需要显式指定属性 fixed 为 true
+   * @default false
+   */
+  fixed?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 浮层出现位置
    * @default top
    */
