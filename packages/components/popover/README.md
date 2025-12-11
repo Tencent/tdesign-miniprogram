@@ -31,8 +31,10 @@ isComponent: true
 
 ### 组件样式
 
+#### 气泡主题
 {{ theme }}
 
+#### 气泡位置
 {{ placement }}
 
 ## FAQ
@@ -40,9 +42,9 @@ isComponent: true
 如果使用场景为 `fixed`，除了需要显示指定 `fixed` 属性为 `true`，还需在触发元素的顶层添加`t-popover-wrapper--fixed` 类，用于定位触发元素。
 
 ```html
-<scroll-view type="list" scroll-y bind:scroll="onScroll">
-  <t-color-picker id="ColorPicker" fixed />
-</scroll-view>
+<t-popover fixed>
+  <view class="t-popover-wrapper--fixed" />
+</t-popover>
 ```
 
 ## API
