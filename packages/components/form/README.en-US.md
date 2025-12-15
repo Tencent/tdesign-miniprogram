@@ -114,9 +114,9 @@ Name | Default Value | Description
 -- | -- | --
 --td-form-bg-color | @bg-color-container | -
 --td-form-border-radius | 0 | -
+--td-form-padding | 0 | -
+--td-form-readonly-bg-color | @bg-color-secondarycontainer | -
 --td-form-item-horizontal-padding | 32rpx | -
 --td-form-item-justify-content | space-between | -
 --td-form-item-label-width | 160rpx | -
 --td-form-item-vertical-padding | 32rpx | -
---td-form-padding | 0 | -
---td-form-readonly-bg-color | @bg-color-secondarycontainer | -

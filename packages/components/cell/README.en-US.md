@@ -84,6 +84,12 @@ t-class-title | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
+--td-cell-group-border-color | @component-stroke | -
+--td-cell-group-title-bg-color | @bg-color-secondarycontainer | -
+--td-cell-group-title-color | @text-color-placeholder | -
+--td-cell-group-title-font-size | 28rpx | -
+--td-cell-group-title-line-height | 90rpx | -
+--td-cell-group-title-padding-left | 32rpx | -
 --td-cell-bg-color | @bg-color-container | -
 --td-cell-border-color | @component-stroke | -
 --td-cell-border-left-space | @cell-horizontal-padding | -
@@ -91,12 +97,6 @@ Name | Default Value | Description
 --td-cell-border-width | 1px | -
 --td-cell-description-color | @text-color-secondary | -
 --td-cell-description-font | @font-body-medium | -
---td-cell-group-border-color | @component-stroke | -
---td-cell-group-title-bg-color | @bg-color-secondarycontainer | -
---td-cell-group-title-color | @text-color-placeholder | -
---td-cell-group-title-font-size | 28rpx | -
---td-cell-group-title-line-height | 90rpx | -
---td-cell-group-title-padding-left | 32rpx | -
 --td-cell-height | auto | -
 --td-cell-horizontal-padding | 32rpx | -
 --td-cell-hover-color | @bg-color-secondarycontainer | -

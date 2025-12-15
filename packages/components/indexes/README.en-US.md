@@ -56,15 +56,6 @@ t-class-sidebar-item | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-indexes-anchor-active-bg-color | @bg-color-container | -
---td-indexes-anchor-active-color | @brand-color | -
---td-indexes-anchor-active-font-weight | 600 | -
---td-indexes-anchor-bg-color | @bg-color-secondarycontainer | -
---td-indexes-anchor-border-color | @component-border | -
---td-indexes-anchor-color | @text-color-primary | -
---td-indexes-anchor-font | @font-body-medium | -
---td-indexes-anchor-padding | 8rpx 32rpx | -
---td-indexes-anchor-top | 0 | -
 --td-indexes-sidebar-active-bg-color | @brand-color | -
 --td-indexes-sidebar-active-color | @text-color-anti | -
 --td-indexes-sidebar-color | @text-color-primary | -
@@ -76,3 +67,12 @@ Name | Default Value | Description
 --td-indexes-sidebar-tips-font | @font-title-extraLarge | -
 --td-indexes-sidebar-tips-right | calc(100% + 32rpx) | -
 --td-indexes-sidebar-tips-size | 96rpx | -
+--td-indexes-anchor-active-bg-color | @bg-color-container | -
+--td-indexes-anchor-active-color | @brand-color | -
+--td-indexes-anchor-active-font-weight | 600 | -
+--td-indexes-anchor-bg-color | @bg-color-secondarycontainer | -
+--td-indexes-anchor-border-color | @component-border | -
+--td-indexes-anchor-color | @text-color-primary | -
+--td-indexes-anchor-font | @font-body-medium | -
+--td-indexes-anchor-padding | 8rpx 32rpx | -
+--td-indexes-anchor-top | 0 | -
