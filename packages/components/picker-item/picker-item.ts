@@ -6,8 +6,9 @@ import { PickerItemOption } from './type';
 const { prefix } = config;
 const name = `${prefix}-picker-item`;
 
-// 动画持续时间
-const ANIMATION_DURATION = 1000;
+// 动画持续时间（优化：根据滑动距离动态计算，基础时长降低）
+const ANIMATION_DURATION_BASE = 300; // 基础动画时长
+const ANIMATION_DURATION_MAX = 600; // 最大动画时长
 // 和上一次move事件间隔小于INERTIA_TIME
 const INERTIA_TIME = 300;
 // 且距离大于`MOMENTUM_DISTANCE`时，执行惯性滚动
@@ -130,7 +131,7 @@ export default class PickerItem extends SuperComponent {
 
     onTouchMove(event) {
       const { StartY, StartOffset } = this;
-      const { itemHeight, enableVirtualScroll } = this.data;
+      const { itemHeight, enableVirtualScroll, formatOptions } = this.data;
       const currentTime = Date.now();
 
       // 偏移增量
@@ -161,11 +162,26 @@ export default class PickerItem extends SuperComponent {
           this._moveTimer = null;
         }
 
-        this.setData({ offset: newOffset });
-
-        // 虚拟滚动：更新可见范围（快速滑动时使用更大的缓冲区）
+        // 性能优化：合并 setData 调用，减少逻辑层到渲染层的通信次数
         if (enableVirtualScroll) {
-          this.updateVisibleOptions(newOffset, isFastScroll);
+          const visibleRange = this.computeVirtualRange(newOffset, formatOptions.length, itemHeight, isFastScroll);
+          // 只有当可见范围发生变化时才更新虚拟滚动数据
+          if (
+            visibleRange.startIndex !== this.data.virtualStartIndex ||
+            visibleRange.endIndex !== this.data.virtualStartIndex + this.data.visibleOptions.length
+          ) {
+            this.setData({
+              offset: newOffset,
+              visibleOptions: formatOptions.slice(visibleRange.startIndex, visibleRange.endIndex),
+              virtualStartIndex: visibleRange.startIndex,
+              virtualOffsetY: visibleRange.startIndex * itemHeight,
+            });
+          } else {
+            // 可见范围未变化，只更新 offset
+            this.setData({ offset: newOffset });
+          }
+        } else {
+          this.setData({ offset: newOffset });
         }
 
         this._moveTimer = setTimeout(() => {
@@ -184,7 +200,7 @@ export default class PickerItem extends SuperComponent {
         this._moveTimer = null;
       }
 
-      const { offset, itemHeight } = this.data;
+      const { offset, itemHeight, enableVirtualScroll, formatOptions } = this.data;
       const { startTime } = this;
       if (offset === this.StartOffset) {
         return;
@@ -201,14 +217,20 @@ export default class PickerItem extends SuperComponent {
       // 调整偏移量
       const newOffset = range(offset + distance, -this.getCount() * itemHeight, 0);
       const index = range(Math.round(-newOffset / itemHeight), 0, this.getCount() - 1);
+      const finalOffset = -index * itemHeight;
 
-      // 判断是否为快速惯性滚动
+      // 动态计算动画时长：根据滑动距离调整，距离越大时长越长，但有上限
+      const scrollDistance = Math.abs(finalOffset - offset);
+      const scrollItems = scrollDistance / itemHeight;
+      const animationDuration = Math.min(
+        ANIMATION_DURATION_MAX,
+        ANIMATION_DURATION_BASE + scrollItems * 30, // 每滑动一个选项增加30ms
+      );
+
+      // 判断是否为快速惯性滚动（用于决定缓冲区大小）
       const isFastInertia = Math.abs(distance) > itemHeight * 3;
-
-      // 立即更新虚拟滚动视图（修复惯性滚动后空白问题，快速滚动时使用更大缓冲区）
-      if (this.data.enableVirtualScroll) {
-        this.updateVisibleOptions(-index * itemHeight, isFastInertia);
-      }
+      // 根据是否快速惯性滚动选择缓冲区大小
+      const bufferCount = isFastInertia ? VIRTUAL_SCROLL_CONFIG.FAST_SCROLL_BUFFER : VIRTUAL_SCROLL_CONFIG.BUFFER_COUNT;
 
       // 清除之前的动画更新定时器
       if (this._animationTimer) {
@@ -216,48 +238,43 @@ export default class PickerItem extends SuperComponent {
         this._animationTimer = null;
       }
 
-      // 在动画执行期间定期更新虚拟滚动视图（确保动画过程流畅）
-      if (this.data.enableVirtualScroll && Math.abs(distance) > 0) {
-        const startOffset = offset;
-        const endOffset = -index * itemHeight;
-        const startTime = Date.now();
+      // 性能优化：合并 setData 调用，一次性更新所有状态
+      const updateData: any = {
+        offset: finalOffset,
+        duration: animationDuration,
+        curIndex: index,
+      };
 
-        this._animationTimer = setInterval(() => {
-          const elapsed = Date.now() - startTime;
-          const progress = Math.min(elapsed / ANIMATION_DURATION, 1);
+      // 虚拟滚动：预先计算覆盖动画全程的可见范围，避免动画期间频繁更新
+      if (enableVirtualScroll) {
+        // 计算当前位置和目标位置的索引范围
+        const currentIndex = Math.floor(Math.abs(offset) / itemHeight);
+        const targetIndex = index;
 
-          // 使用缓动函数计算当前偏移量
-          const easeOutCubic = 1 - (1 - progress) ** 3;
-          const currentOffset = startOffset + (endOffset - startOffset) * easeOutCubic;
+        // 计算覆盖动画全程的可见范围（从当前位置到目标位置）
+        const minIndex = Math.min(currentIndex, targetIndex);
+        const maxIndex = Math.max(currentIndex, targetIndex);
 
-          // 快速惯性滚动时使用更大的缓冲区
-          this.updateVisibleOptions(currentOffset, isFastInertia);
+        // 使用缓冲区扩展范围，确保动画过程中不会出现空白
+        const animationStartIndex = Math.max(0, minIndex - bufferCount);
+        const animationEndIndex = Math.min(formatOptions.length, maxIndex + this.data.visibleItemCount + bufferCount);
 
-          if (progress >= 1) {
-            clearInterval(this._animationTimer);
-            this._animationTimer = null;
-          }
-        }, 16); // 约60fps
+        updateData.visibleOptions = formatOptions.slice(animationStartIndex, animationEndIndex);
+        updateData.virtualStartIndex = animationStartIndex;
+        updateData.virtualOffsetY = animationStartIndex * itemHeight;
       }
 
-      this.setData(
-        {
-          offset: -index * itemHeight,
-          duration: ANIMATION_DURATION,
-          curIndex: index,
-        },
-        () => {
-          // 动画结束后清除定时器并最终更新虚拟滚动视图
-          if (this._animationTimer) {
-            clearInterval(this._animationTimer);
-            this._animationTimer = null;
-          }
-          if (this.data.enableVirtualScroll) {
-            // 动画结束后使用正常缓冲区（不再是快速滚动状态）
-            this.updateVisibleOptions(-index * itemHeight, false);
-          }
-        },
-      );
+      this.setData(updateData, () => {
+        // 动画结束后，精确更新虚拟滚动视图到最终位置
+        if (enableVirtualScroll) {
+          const visibleRange = this.computeVirtualRange(finalOffset, formatOptions.length, itemHeight, false);
+          this.setData({
+            visibleOptions: formatOptions.slice(visibleRange.startIndex, visibleRange.endIndex),
+            virtualStartIndex: visibleRange.startIndex,
+            virtualOffsetY: visibleRange.startIndex * itemHeight,
+          });
+        }
+      });
 
       if (index === this._selectedIndex) return;
       this.updateSelected(index, true);
