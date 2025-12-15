@@ -89,5 +89,5 @@ t-class-content | 内容样式类
 --td-popup-bg-color | @bg-color-container | -
 --td-popup-border-radius | @radius-extraLarge | -
 --td-popup-close-btn-color | @text-color-primary | -
---td-popup-distance-top | 0) | -
+--td-popup-distance-top | 0 | -
 --td-popup-transition | all 300ms ease | -
