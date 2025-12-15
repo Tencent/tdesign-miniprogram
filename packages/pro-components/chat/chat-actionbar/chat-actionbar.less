@@ -31,11 +31,8 @@
 
   // 弹出层
   &--popover {
-    padding: @chat-actionbar-popover-padding;
     color: @font-white-1;
-    background-color: @chat-actionbar-popover-background;
     border-radius: @chat-actionbar-popover-radius;
-    width: 544rpx;
 
     .@{chat-actionbar}__inner {
       background-color: unset;
@@ -117,6 +114,7 @@
 
   &__popover-skeleton {
     position: fixed;
+    --td-popover-padding: @chat-actionbar-popover-padding;
 
     &__inner {
       width: 20rpx;

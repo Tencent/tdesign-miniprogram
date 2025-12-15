@@ -25,12 +25,14 @@ export default class ChatActionbar extends SuperComponent {
       replay: 'refresh',
       copy: 'copy',
       share: 'share-1',
+      quote: 'enter',
     },
     iconActiveMap: {
       good: 'thumb-up-filled',
       bad: 'thumb-down-filled',
     },
-    popoverStyle: 'position: fixed;',
+    widthStyle: '',
+    popoverStyle: 'transition: none;position: fixed;',
     popoverPosition: '',
     longpressVisible: false,
   };
@@ -39,7 +41,7 @@ export default class ChatActionbar extends SuperComponent {
     comment(newVal) {
       this.setPComment(newVal);
     },
-    'actionBar, pComment'() {
+    'actionBar, pComment, placement'() {
       this.setActions();
     },
     longPressPosition(newVal) {
@@ -125,6 +127,7 @@ export default class ChatActionbar extends SuperComponent {
           chatId: this.properties.chatId,
         });
       }
+      this.onVisibleChange({ detail: { visible: false } });
     },
 
     handleCopy() {
@@ -144,22 +147,37 @@ export default class ChatActionbar extends SuperComponent {
     },
 
     setActions() {
+      const text = {
+        replay: '刷新',
+        copy: '复制',
+        good: '点赞',
+        bad: '点踩',
+        share: '分享',
+        quote: '引用',
+      };
+
       const baseActions = [];
-      if (Array.isArray(this.properties.actionBar)) {
-        this.properties.actionBar.forEach((item) => {
-          if (item === 'good' || item === 'bad') {
-            baseActions.push({
-              name: item,
-              isActive: this.data.pComment === item,
-            });
-          } else {
-            baseActions.push({
-              name: item,
-              isActive: false,
-            });
-          }
-        });
+      let dataActions = [];
+      if (this.properties.placement === 'longpress') {
+        dataActions = ['quote', 'copy', 'share'];
+      } else if (Array.isArray(this.properties.actionBar)) {
+        dataActions = this.properties.actionBar;
       }
+      dataActions.forEach((item) => {
+        if (item === 'good' || item === 'bad') {
+          baseActions.push({
+            name: item,
+            isActive: this.data.pComment === item,
+            text: text[item] || item,
+          });
+        } else {
+          baseActions.push({
+            name: item,
+            isActive: false,
+            text: text[item] || item,
+          });
+        }
+      });
       this.setData({
         actions: baseActions,
       });
@@ -173,19 +191,55 @@ export default class ChatActionbar extends SuperComponent {
 
     showPopover(pos) {
       this.setData({
+        widthStyle: `width: ${this.data.actions.length * 128 + (this.data.actions.length - 1) * 8}rpx`,
         popoverPosition: `top:${pos.y}px;left:${pos.x}px`,
         longpressVisible: true,
       });
+
+      setTimeout(() => {
+        const child = this.selectComponent('.popover');
+        const query = this.createSelectorQuery().in(child);
+
+        query.select('.t-popover').boundingClientRect();
+        query.exec((res) => {
+          const [rect] = res;
+
+          // 新增：检查元素是否超出屏幕宽度
+          const { screenWidth } = wx.getWindowInfo();
+          const elementRightEdge = rect.left + rect.width;
+
+          if (elementRightEdge > screenWidth) {
+            // eslint-disable-next-line no-console
+            console.log('meowr');
+            this.setData({
+              popoverStyle: `transition: none;position:fixed; left: unset !important; right: 16rpx !important;`,
+            });
+          } else if (rect.left <= 0) {
+            // eslint-disable-next-line no-console
+            console.log('meowl');
+            this.setData({ popoverStyle: `transition: none;position:fixed; left: 16rpx !important;` });
+          }
+        });
+      }, 200);
     },
 
     hidePopover() {
-      this.setData({ popoverPosition: '' });
+      this.onVisibleChange({ detail: { visible: false } });
     },
 
     onVisibleChange(e) {
+      const { visible } = e.detail;
       this.setData({
-        longpressVisible: e.detail.visible,
+        longpressVisible: visible,
       });
+      if (!visible) {
+        setTimeout(() => {
+          this.setData({
+            popoverPosition: '',
+            popoverStyle: 'transition: none;position: fixed;',
+          });
+        }, 200);
+      }
     },
   };
 

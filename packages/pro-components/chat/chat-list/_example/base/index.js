@@ -72,7 +72,6 @@ Component({
     contentHeight: '100vh', // 内容高度
     animation: 'dots',
     activePopoverId: '', // 当前打开悬浮actionbar的chatId
-    activePopoverComment: '', // 当前打开悬浮actionbar的comment
     longPressPosition: null, // 长按位置对象
   },
 
@@ -222,11 +221,10 @@ Component({
     },
     showPopover(e) {
       const { id, longPressPosition } = e.detail;
-      let comment = '';
+
       let role = '';
       this.data.chatList.forEach((item) => {
         if (item.chatId === id) {
-          comment = item.comment;
           role = item.role;
         }
       });
@@ -238,13 +236,7 @@ Component({
 
       this.setData({
         activePopoverId: id,
-        activePopoverComment: comment,
         longPressPosition,
-      });
-    },
-    hidePopover() {
-      this.setData({
-        longPressPosition: null,
       });
     },
     handlePopoverAction(e) {

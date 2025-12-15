@@ -1,4 +1,4 @@
-<view class="chat-box" style="height: {{contentHeight}};" bind:tap="hidePopover">
+<view class="chat-box" style="height: {{contentHeight}};">
   <t-chat id="chatList" bindscroll="onScroll">
     <block wx:for="{{chatList}}" wx:key="index">
       <t-chat-message
@@ -39,7 +39,6 @@
   <t-chat-actionbar
     class="popover-actionbar"
     placement="longpress"
-    comment="{{activePopoverComment}}"
     bind:actions="handlePopoverAction"
     longPressPosition="{{longPressPosition}}"
   />
