@@ -131,67 +131,15 @@ export default class PickerItem extends SuperComponent {
 
     onTouchMove(event) {
       const { StartY, StartOffset } = this;
-      const { itemHeight, enableVirtualScroll, formatOptions } = this.data;
-      const currentTime = Date.now();
+      const { itemHeight } = this.data;
 
       // 偏移增量
       const deltaY = event.touches[0].clientY - StartY;
-      const newOffset = range(StartOffset + deltaY, -(this.getCount() * itemHeight), 0);
+      const newOffset = range(StartOffset + deltaY, -(this.getCount() - 1) * itemHeight, 0);
 
-      // 计算滑动速度和方向
-      const offsetDelta = newOffset - this._lastOffset;
-      const timeDelta = currentTime - this._lastMoveTime || 16;
-      const scrollSpeed = Math.abs(offsetDelta / timeDelta) * 16; // 转换为 px/frame
-
-      // 计算滑动方向（避免嵌套三元表达式）
-      if (offsetDelta > 0) {
-        this._scrollDirection = 1; // 向下滑动
-      } else if (offsetDelta < 0) {
-        this._scrollDirection = -1; // 向上滑动
-      } else {
-        this._scrollDirection = 0; // 静止
-      }
-
-      // 判断是否为快速滑动
-      const isFastScroll = scrollSpeed > VIRTUAL_SCROLL_CONFIG.FAST_SCROLL_THRESHOLD;
-
-      // 优化节流策略：快速滑动时立即更新，慢速滑动时节流
-      if (!this._moveTimer || isFastScroll) {
-        if (this._moveTimer) {
-          clearTimeout(this._moveTimer);
-          this._moveTimer = null;
-        }
-
-        // 性能优化：合并 setData 调用，减少逻辑层到渲染层的通信次数
-        if (enableVirtualScroll) {
-          const visibleRange = this.computeVirtualRange(newOffset, formatOptions.length, itemHeight, isFastScroll);
-          // 只有当可见范围发生变化时才更新虚拟滚动数据
-          if (
-            visibleRange.startIndex !== this.data.virtualStartIndex ||
-            visibleRange.endIndex !== this.data.virtualStartIndex + this.data.visibleOptions.length
-          ) {
-            this.setData({
-              offset: newOffset,
-              visibleOptions: formatOptions.slice(visibleRange.startIndex, visibleRange.endIndex),
-              virtualStartIndex: visibleRange.startIndex,
-              virtualOffsetY: visibleRange.startIndex * itemHeight,
-            });
-          } else {
-            // 可见范围未变化，只更新 offset
-            this.setData({ offset: newOffset });
-          }
-        } else {
-          this.setData({ offset: newOffset });
-        }
-
-        this._moveTimer = setTimeout(() => {
-          this._moveTimer = null;
-        }, VIRTUAL_SCROLL_CONFIG.THROTTLE_TIME);
-      }
-
-      // 记录当前状态
-      this._lastOffset = newOffset;
-      this._lastMoveTime = currentTime;
+      // touchMove 期间只更新 offset，不更新虚拟滚动数据
+      // 虚拟滚动数据在 touchEnd 时统一更新，避免频繁 setData 导致掉帧
+      this.setData({ offset: newOffset });
     },
 
     onTouchEnd(event) {
