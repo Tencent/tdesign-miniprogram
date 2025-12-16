@@ -12,13 +12,13 @@
   padding: 0 32rpx;
 }
 
-.image-chat .t-chat__inner.assistant .t-chat__avatar {
-  padding-left: 32rpx;
-}
-
 .image-chat .assistant,
 .image-chat .assistant .t-chat__detail {
   width: 100%;
+}
+
+.image-chat .assistant .t-chat-content {
+  padding-right: 64rpx !important;
 }
 
 .attachment-slide {
@@ -43,6 +43,6 @@
   padding-right: 96rpx;
 }
 
-.image-actionbar {
-  --chat-actionbar-padding: 16rpx 0 0 0;
+.image-chat .t-chat-message__actionbar {
+  --chat-actionbar-padding: 16rpx 0 0 0 !important;
 }

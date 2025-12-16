@@ -31,7 +31,6 @@
             <t-chat-content
               content="{{contentItem}}"
               wx:if="{{contentItem.type === 'text' || contentItem.type === 'markdown'}}"
-              style="padding-right: 64rpx"
             />
             <view wx:else class="attachment-slide">
               <t-attachments items="{{contentItem.data}}" inChat="{{true}}" removable="{{false}}" />
@@ -40,7 +39,6 @@
         </view>
         <t-chat-actionbar
           wx:if="{{chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'}}"
-          class="image-actionbar"
           slot="actionbar"
           placement="end"
           bind:actions="handleAction"
