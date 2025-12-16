@@ -22,12 +22,11 @@
 }
 
 .attachment-slide {
-  height: 274rpx;
+  height: calc(128px + 24rpx);
   width: 100%;
 }
 
 .attachment-slide .t-attachments {
-  padding-right: 32rpx;
   padding-top: 24rpx;
   box-sizing: border-box;
   position: fixed;
@@ -41,5 +40,9 @@
 }
 
 .attachment-slide .t-attachments .t-attachments__files:last-child {
-  padding-right: 32rpx;
+  padding-right: 96rpx;
+}
+
+.image-actionbar {
+  --chat-actionbar-padding: 16rpx 0 0 0;
 }
