@@ -7,7 +7,7 @@
 @chat-content-error-text-color: var(--td-chat-content-error-text-color, @error-color);
 
 .@{chat-content} {
-  font: @font-body-large;
+  font-size: @font-body-large;
   word-break: break-all;
   word-wrap: break-word;
   overflow-wrap: break-word;
@@ -42,7 +42,7 @@
       border-radius: @radius-small;
     }
   }
-// 错误状态样式
+  // 错误状态样式
   &__error {
     color: @chat-content-error-text-color;
   }
