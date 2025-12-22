@@ -1,5 +1,7 @@
-<t-navbar class="demo-navbar" title="Attachments" leftArrow />
-<view class="demo">
+<view class="skyline">
+  <t-navbar class="demo-navbar" title="Attachments" leftArrow />
+  <scroll-view scroll-y type="list" class="scroll-view">
+    <view class="demo">
   <t-demo-header
     title="Attachments 文件附件"
     desc="用于聊天场景中上传、预览和管理附件的组件。"
@@ -17,4 +19,6 @@
   <t-demo desc="文件类型加载状态">
     <fileLoading />
   </t-demo>
+    </view>
+  </scroll-view>
 </view>

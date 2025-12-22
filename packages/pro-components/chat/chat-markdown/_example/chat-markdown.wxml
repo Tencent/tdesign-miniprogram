@@ -1,5 +1,7 @@
-<t-navbar class="demo-navbar" title="ChatMarkdown" leftArrow />
-<view class="demo">
+<view class="skyline">
+  <t-navbar class="demo-navbar" title="ChatMarkdown" leftArrow />
+  <scroll-view scroll-y type="list" class="scroll-view">
+    <view class="demo">
   <t-demo-header
     title="ChatMarkdown Markdown内容"
     desc="用于聊天场景中渲染 Markdown 格式文本的组件，内置 marked 解析器，支持多种 Markdown 语法和配置选项。"
@@ -23,4 +25,6 @@
   <t-demo title="04 引用">
     <refer />
   </t-demo>
+    </view>
+  </scroll-view>
 </view>

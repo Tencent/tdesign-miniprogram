@@ -12,6 +12,7 @@
     bindscroll="onScroll"
     bindscrolltoupper="handlerScrollToUpper"
     bindscrolltolower="handlerScrollToLower"
+    type="list"
   >
     <block wx:if="{{reverse}}">
       <view class="placeholder"></view>

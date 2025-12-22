@@ -1,5 +1,7 @@
-<t-navbar class="demo-navbar" title="ChatMessage" leftArrow />
-<view class="demo">
+<view class="skyline">
+  <t-navbar class="demo-navbar" title="ChatMessage" leftArrow />
+  <scroll-view scroll-y type="list" class="scroll-view">
+    <view class="demo">
   <t-demo-header
     title="ChatMessage 对话消息体"
     desc="用于在聊天对话中显示单个消息项。它可以展示用户的头像、昵称、时间、聊天内容，支持多种消息状态和样式变体。"
@@ -23,4 +25,6 @@
   <t-demo title="03 组件样式" desc="气泡样式">
     <style-component />
   </t-demo>
+    </view>
+  </scroll-view>
 </view>

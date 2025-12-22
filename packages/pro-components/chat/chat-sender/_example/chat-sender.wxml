@@ -1,5 +1,7 @@
-<t-navbar class="demo-navbar" title="ChatSender" leftArrow />
-<view class="demo">
+<view class="skyline">
+  <t-navbar class="demo-navbar" title="ChatSender" leftArrow />
+  <scroll-view scroll-y type="list" class="scroll-view">
+    <view class="demo">
   <t-demo-header
     title="ChatSender 对话输入"
     desc="用于 AI 聊天的输入框，可以扩展模型、多模态等能力。"
@@ -17,4 +19,6 @@
   <t-demo desc="文件引用">
     <file-citation />
   </t-demo>
+    </view>
+  </scroll-view>
 </view>

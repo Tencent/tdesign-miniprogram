@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "ChatItem",
+  "disableScroll": true,
   "usingComponents": {
     "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
     "base": "./base",
