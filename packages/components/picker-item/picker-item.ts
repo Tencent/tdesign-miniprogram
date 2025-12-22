@@ -51,7 +51,13 @@ export default class PickerItem extends SuperComponent {
 
   externalClasses = [`${prefix}-class`];
 
-  properties = props;
+  properties = {
+    ...props,
+    useSlots: {
+      type: Boolean,
+      value: true,
+    },
+  };
 
   observers = {
     'options, keys'() {
