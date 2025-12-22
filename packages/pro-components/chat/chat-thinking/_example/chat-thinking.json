@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "ChatThinking 聊天思考状态",
+  "disableScroll": true,
   "usingComponents": {
     "base": "./base",
     "layout": "./layout",
