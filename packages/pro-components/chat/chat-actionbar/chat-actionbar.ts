@@ -202,14 +202,10 @@ export default class ChatActionbar extends SuperComponent {
           const elementRightEdge = rect.left + rect.width;
 
           if (elementRightEdge > screenWidth) {
-            // eslint-disable-next-line no-console
-            console.log('meowr');
             this.setData({
               popoverStyle: `transition: none;position:fixed; left: unset !important; right: 16rpx !important;`,
             });
           } else if (rect.left <= 0) {
-            // eslint-disable-next-line no-console
-            console.log('meowl');
             this.setData({ popoverStyle: `transition: none;position:fixed; left: 16rpx !important;` });
           }
         });
