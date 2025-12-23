@@ -53,12 +53,20 @@ export interface TdBadgeProps {
     value?: Array<string | number>;
   };
   /**
-   * 形状
+   * 徽标形状，其中 ribbon 和 ribbon-right 等价
    * @default circle
    */
   shape?: {
     type: StringConstructor;
-    value?: 'circle' | 'square' | 'bubble' | 'ribbon';
+    value?:
+      | 'circle'
+      | 'square'
+      | 'bubble'
+      | 'ribbon'
+      | 'ribbon-right'
+      | 'ribbon-left'
+      | 'triangle-right'
+      | 'triangle-left';
   };
   /**
    * 当数值为 0 时，是否展示徽标

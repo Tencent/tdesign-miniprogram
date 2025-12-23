@@ -13,8 +13,8 @@ content | String | - | \- | N
 count | String / Number | 0 | \- | N
 dot | Boolean | false | \- | N
 max-count | Number | 99 | \- | N
-offset | Array | - | Typescript：`Array<string \| number>` | N
-shape | String | circle | options: circle/square/bubble/ribbon | N
+offset | Array | - | Typescript: `Array<string \| number>` | N
+shape | String | circle | options: circle/square/bubble/ribbon/ribbon-right/ribbon-left/triangle-right/triangle-left | N
 show-zero | Boolean | false | \- | N
 size | String | medium | options: medium/large | N
 

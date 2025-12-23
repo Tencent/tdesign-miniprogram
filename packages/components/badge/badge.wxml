@@ -9,7 +9,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="{{_this.getBadgeOuterClass({classPrefix, shape})}} class {{prefix}}-class"
+  class="{{classPrefix}} {{ !hasActualContent? classPrefix + '__' + shape + '-outer': '' }} class {{prefix}}-class"
   aria-labelledby="{{labelID}}"
   aria-describedby="{{descriptionID}}"
   aria-role="{{ ariaRole || 'option'}}"
@@ -28,9 +28,11 @@
     aria-hidden="true"
     aria-label="{{ ariaLabel || _.getBadgeAriaLabel({dot, count, maxCount}) }}"
   >
-    <block wx:if="{{_this.isShowBadge({dot,count,showZero})}}">
-      {{ _this.getBadgeValue({dot, count, maxCount}) }}
-    </block>
-    <slot else name="count" />
+    <view class="{{classPrefix}}__count">
+      <block wx:if="{{_this.isShowBadge({dot,count,showZero})}}">
+        {{ _this.getBadgeValue({dot, count, maxCount}) }}
+      </block>
+      <slot else name="count" />
+    </view>
   </view>
 </view>
