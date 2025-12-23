@@ -199,7 +199,8 @@
   }
 
   &__count {
-    display: inline-block;
-    font: @font-mark-extraSmall;
+    &:empty {
+      display: none;
+    }
   }
 }
