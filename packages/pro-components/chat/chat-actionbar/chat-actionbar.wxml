@@ -77,7 +77,7 @@
             <t-icon
               name="{{iconMap[item.name]}}"
               size="40rpx"
-              style="{{item.name === 'quote' ? 'transform: scaleX(-1)' : ''}}"
+              customStyle="{{item.name === 'quote' ? 'transform: scaleX(-1)' : ''}}"
             />
             <view class="{{classPrefix}}__item__text">{{item.text}}</view>
           </view>
