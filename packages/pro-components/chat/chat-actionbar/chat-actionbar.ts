@@ -18,7 +18,6 @@ export default class ChatActionbar extends SuperComponent {
     actions: [],
     classPrefix: name,
     pComment: '',
-    computedPlacement: '',
     iconMap: {
       good: 'thumb-up',
       bad: 'thumb-down',
@@ -137,12 +136,6 @@ export default class ChatActionbar extends SuperComponent {
       this.triggerEvent('actions', {
         name: 'copy',
         data: copyContent,
-      });
-    },
-
-    setComputedPlacement() {
-      this.setData({
-        computedPlacement: this.properties.placement || 'start',
       });
     },
 

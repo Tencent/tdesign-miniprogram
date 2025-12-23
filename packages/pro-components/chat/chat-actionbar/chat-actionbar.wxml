@@ -2,8 +2,8 @@
 <!-- TODO: api 可选项 longpress 下个版本迭代发布长按气泡样式 -->
 <view
   wx:if="{{placement !== 'longpress'}}"
-  class="{{[classPrefix, computedPlacement, popoverPosition ? 'popover-visible' : '']}}"
-  style="{{_._style([style, customStyle, popoverPosition])}}"
+  class="{{[classPrefix, placement]}}"
+  style="{{_._style([style, customStyle])}}"
 >
   <view class="{{classPrefix}}__inner {{classPrefix}}__inner--column">
     <view class="{{classPrefix}}__left {{classPrefix+'__item'}}">
@@ -40,13 +40,13 @@
     placement="bottom"
     theme="dark"
     visible="{{longpressVisible}}"
-    style="{{popoverStyle}}"
+    customStyle="{{popoverStyle}}"
     bind:visible-change="onVisibleChange"
   >
     <view class="{{[classPrefix, classPrefix+'__popover-skeleton__inner']}}"></view>
     <view
       slot="content"
-      class="{{[classPrefix, classPrefix+'--popover', computedPlacement, popoverPosition ? 'popover-visible' : '']}}"
+      class="{{[classPrefix, classPrefix+'--popover', 'popover-visible']}}"
       style="{{_._style([style, customStyle, widthStyle])}}"
     >
       <view class="{{classPrefix}}__inner {{classPrefix}}__inner--column">
