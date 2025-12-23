@@ -267,5 +267,27 @@ exports[`Badge Badge theme demo works fine 1`] = `
       slot="note"
     />
   </t-cell>
+  <wx-view
+    class="demo-desc"
+    style="margin-bottom: 32rpx"
+  >
+    三角角标
+  </wx-view>
+  <t-cell
+    tClass="t-class-cell"
+    title="单行标题"
+  >
+    <t-badge
+      count="New"
+      offset="{{
+        Array [
+          0,
+          0,
+        ]
+      }}"
+      shape="triangle-right"
+      slot="note"
+    />
+  </t-cell>
 </theme>
 `;

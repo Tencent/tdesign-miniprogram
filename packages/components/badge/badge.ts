@@ -26,34 +26,33 @@ export default class Badge extends SuperComponent {
     value: '',
     labelID: '',
     descriptionID: '',
-    hasActualContent: false,
+    useOuterClass: false,
   };
 
   lifetimes = {
     ready() {
       const uniqueID = getUniqueID();
-      const target = ['ribbon', 'ribbon-right', 'ribbon-left', 'triangle-right', 'triangle-left'];
+
       this.setData({
         labelID: `${uniqueID}_label`,
         descriptionID: `${uniqueID}_description`,
       });
 
-      if (target.includes(this.properties.shape)) {
-        this.checkForActualContent();
-      }
+      this.checkForActualContent();
     },
   };
 
   methods = {
     checkForActualContent() {
-      if (this.properties.content) {
-        this.setData({ hasActualContent: true });
+      const target = ['ribbon', 'ribbon-right', 'ribbon-left', 'triangle-right', 'triangle-left'];
+      if (this.properties.content || !target.includes(this.properties.shape)) {
+        this.setData({ useOuterClass: false });
         return;
       }
 
       return getRect(this, `.${name}__content`).then((rect) => {
         const hasSlotContent = rect.width > 0 || rect.height > 0;
-        this.setData({ hasActualContent: hasSlotContent });
+        this.setData({ useOuterClass: !hasSlotContent });
       });
     },
   };
