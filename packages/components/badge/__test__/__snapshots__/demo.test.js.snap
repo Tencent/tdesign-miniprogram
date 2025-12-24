@@ -152,7 +152,7 @@ exports[`Badge Badge size demo works fine 1`] = `
   <wx-view
     class="demo-desc"
   >
-    Middle
+    Medium
   </wx-view>
   <wx-view
     class="block"
