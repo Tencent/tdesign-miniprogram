@@ -35,7 +35,7 @@ const props: TdBadgeProps = {
   offset: {
     type: Array,
   },
-  /** 徽标形状，其中 ribbon 和 ribbon-right 等价 */
+  /** 徽标形状，其中 ribbon 和 ribbon-right 等效 */
   shape: {
     type: String,
     value: 'circle',
