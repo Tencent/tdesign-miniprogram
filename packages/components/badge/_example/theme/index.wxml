@@ -28,10 +28,10 @@
 
 <view class="demo-desc" style="margin-bottom: 32rpx">角标</view>
 <t-cell title="单行标题" t-class="t-class-cell">
-  <t-badge count="New" offset="{{skylineRender ? ['-18rpx', '-32rpx']: [0, 0]}}" shape="ribbon" slot="note" />
+  <t-badge count="NEW" offset="{{skylineRender ? ['-18rpx', '-32rpx']: [0, 0]}}" shape="ribbon" slot="note" />
 </t-cell>
 
 <view class="demo-desc" style="margin-bottom: 32rpx">三角角标</view>
 <t-cell title="单行标题" t-class="t-class-cell">
-  <t-badge count="New" offset="{{skylineRender ? ['-24rpx', '-32rpx']: [0, 0]}}" shape="triangle-right" slot="note" />
+  <t-badge count="NEW" offset="{{skylineRender ? ['-24rpx', '-32rpx']: [0, 0]}}" shape="triangle-right" slot="note" />
 </t-cell>

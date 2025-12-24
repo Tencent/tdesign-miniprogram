@@ -75,54 +75,18 @@
     }
   }
 
-  &--ribbon,
-  &--ribbon-right,
-  &--ribbon-left {
-    position: relative;
-    display: inline-block;
-    transform-origin: center center;
-    border-radius: 0;
-
-    &::before,
-    &::after {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 0;
-      bottom: 0;
-      border-bottom: @badge-basic-height solid @badge-color;
-      font-size: 0;
-    }
-
-    &::before {
-      left: calc(-1 * @badge-basic-height + 1rpx);
-      border-left: @badge-basic-height solid transparent;
-    }
-
-    &::after {
-      right: calc(-1 * @badge-basic-height + 1rpx);
-      border-right: @badge-basic-height solid transparent;
-    }
-  }
-
-  &--ribbon,
-  &--ribbon-right {
-    transform: translate(calc(50% - @badge-basic-height + 1rpx), calc(-50% + @badge-basic-height - 1rpx)) rotate(45deg);
-  }
-
-  &--ribbon-left {
-    transform: translate(calc(-50% + @badge-basic-height - 1rpx), calc(-50% + @badge-basic-height - 1rpx))
-      rotate(-45deg);
-  }
-
   &--bubble {
     border-radius: @border-bubble-border-radius;
   }
 
+  &--ribbon,
+  &--ribbon-right,
+  &--ribbon-left,
   &--triangle-left,
   &--triangle-right {
     width: calc(@badge-basic-height * 2);
     height: calc(@badge-basic-height * 2);
+    border-radius: 0;
     padding: 0;
     position: absolute;
     top: 0;
@@ -132,21 +96,39 @@
     overflow: hidden;
   }
 
+  &--ribbon,
+  &--ribbon-right {
+    background: linear-gradient(45deg, transparent 50%, @badge-color 50%, @badge-color 82%, transparent 82%);
+  }
+
   &--triangle-right {
     background: linear-gradient(45deg, transparent 50%, @badge-color 50%);
+  }
+
+  &--ribbon,
+  &--ribbon-right,
+  &--triangle-right {
     right: 0;
 
     .@{prefix}-badge__count {
-      transform: rotate(45deg) translateY(calc(-1 * var(--td-line-height-mark-extraSmall, 32rpx) / 2));
+      transform: rotate(45deg) translateY(calc(-1 * var(--td-line-height-mark-extraSmall, 32rpx) / 2 + 2rpx));
     }
+  }
+
+  &--ribbon-left {
+    background: linear-gradient(-45deg, transparent 50%, @badge-color 50%, @badge-color 82%, transparent 82%);
   }
 
   &--triangle-left {
     background: linear-gradient(-45deg, transparent 50%, @badge-color 50%);
+  }
+
+  &--ribbon-left,
+  &--triangle-left {
     left: 0;
 
     .@{prefix}-badge__count {
-      transform: rotate(-45deg) translateY(calc(-1 * var(--td-line-height-mark-extraSmall, 32rpx) / 2));
+      transform: rotate(-45deg) translateY(calc(-1 * var(--td-line-height-mark-extraSmall, 32rpx) / 2 + 2rpx));
     }
   }
 
@@ -162,15 +144,30 @@
     border-radius: calc(@badge-large-height / 2);
   }
 
+  &--large&--ribbon,
+  &--large&--ribbon-right,
+  &--large&--ribbon-left,
   &--large&--triangle-right,
   &--large&--triangle-left {
     width: calc(@badge-large-height * 2);
     height: calc(@badge-large-height * 2);
   }
 
-  &__content:not(:empty) + &--ribbon.@{prefix}-has-count,
-  &__content:not(:empty) + &--ribbon-right.@{prefix}-has-count,
-  &__content:not(:empty) + &--ribbon-left.@{prefix}-has-count,
+  &--large&--ribbon,
+  &--large&--ribbon-right,
+  &--large&--triangle-right {
+    .@{prefix}-badge__count {
+      transform: rotate(45deg) translateY(calc(-1 * var(--td-line-height-mark-small, 40rpx) / 2 + 2rpx));
+    }
+  }
+
+  &--large&--ribbon-left,
+  &--large&--triangle-left {
+    .@{prefix}-badge__count {
+      transform: rotate(-45deg) translateY(calc(-1 * var(--td-line-height-mark-small, 40rpx) / 2 + 2rpx));
+    }
+  }
+
   &__content:not(:empty) + &--bubble.@{prefix}-has-count,
   &__content:not(:empty) + &--circle.@{prefix}-has-count,
   &__content:not(:empty) + &--square.@{prefix}-has-count {
@@ -178,18 +175,7 @@
     transform: translate(-50%, -50%);
     position: absolute;
     top: 0;
-  }
-
-  &__content:not(:empty) + &--ribbon.@{prefix}-has-count,
-  &__content:not(:empty) + &--ribbon-right.@{prefix}-has-count,
-  &__content:not(:empty) + &--bubble.@{prefix}-has-count,
-  &__content:not(:empty) + &--circle.@{prefix}-has-count,
-  &__content:not(:empty) + &--square.@{prefix}-has-count {
     left: 100%;
-  }
-
-  &__content:not(:empty) + &--ribbon-left.@{prefix}-has-count {
-    right: 100%;
   }
 
   &__content-text {

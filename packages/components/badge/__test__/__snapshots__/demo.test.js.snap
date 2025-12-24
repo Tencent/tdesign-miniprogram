@@ -256,7 +256,7 @@ exports[`Badge Badge theme demo works fine 1`] = `
     title="单行标题"
   >
     <t-badge
-      count="New"
+      count="NEW"
       offset="{{
         Array [
           0,
@@ -278,7 +278,7 @@ exports[`Badge Badge theme demo works fine 1`] = `
     title="单行标题"
   >
     <t-badge
-      count="New"
+      count="NEW"
       offset="{{
         Array [
           0,
