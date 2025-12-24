@@ -88,18 +88,10 @@ export default class PickerItem extends SuperComponent {
       this.StartY = 0;
       this.StartOffset = 0;
       this.startTime = 0;
-      this._moveTimer = null;
       this._animationTimer = null; // 动画期间更新虚拟滚动的定时器
-      this._lastOffset = 0; // 上一次的偏移量（用于计算滑动速度）
-      this._lastMoveTime = 0; // 上一次移动的时间
-      this._scrollDirection = 0; // 滑动方向：1向下，-1向上，0静止
     },
     detached() {
       // 清理定时器，防止内存泄漏
-      if (this._moveTimer) {
-        clearTimeout(this._moveTimer);
-        this._moveTimer = null;
-      }
       if (this._animationTimer) {
         clearInterval(this._animationTimer);
         this._animationTimer = null;
@@ -143,11 +135,6 @@ export default class PickerItem extends SuperComponent {
     },
 
     onTouchEnd(event) {
-      if (this._moveTimer) {
-        clearTimeout(this._moveTimer);
-        this._moveTimer = null;
-      }
-
       const { offset, itemHeight, enableVirtualScroll, formatOptions } = this.data;
       const { startTime } = this;
       if (offset === this.StartOffset) {
@@ -314,21 +301,15 @@ export default class PickerItem extends SuperComponent {
       const { visibleItemCount } = this.data;
 
       // 根据滑动速度动态调整缓冲区大小
-      const dynamicBuffer = isFastScroll ? FAST_SCROLL_BUFFER : BUFFER_COUNT;
-
-      // 根据滑动方向调整缓冲区分配
-      // 向上滑动（_scrollDirection = -1）：增加顶部缓冲区
-      // 向下滑动（_scrollDirection = 1）：增加底部缓冲区
-      const topBuffer = this._scrollDirection === -1 ? dynamicBuffer + 2 : dynamicBuffer;
-      const bottomBuffer = this._scrollDirection === 1 ? dynamicBuffer + 2 : dynamicBuffer;
+      const bufferCount = isFastScroll ? FAST_SCROLL_BUFFER : BUFFER_COUNT;
 
       // 计算当前可见区域的中心索引
       const centerIndex = Math.floor(scrollTop / itemHeight);
 
-      // 计算起始索引（减去顶部缓冲区）
-      const startIndex = Math.max(0, centerIndex - topBuffer);
-      // 计算结束索引（加上可见数量和底部缓冲区）
-      const endIndex = Math.min(totalCount, centerIndex + visibleItemCount + bottomBuffer);
+      // 计算起始索引（减去缓冲区）
+      const startIndex = Math.max(0, centerIndex - bufferCount);
+      // 计算结束索引（加上可见数量和缓冲区）
+      const endIndex = Math.min(totalCount, centerIndex + visibleItemCount + bufferCount);
 
       return { startIndex, endIndex };
     },
