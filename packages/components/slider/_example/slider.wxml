@@ -1,4 +1,4 @@
-<t-navbar title="Slider" leftArrow />
+<t-navbar title="Slider" leftArrow placeholder zIndex="{{99}}" />
 <view class="demo">
   <t-demo-header
     title="Slider 滑动选择器"

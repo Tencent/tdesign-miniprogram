@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar title="NavBar" left-arrow />
+  <t-navbar title="NavBar" left-arrow placeholder zIndex="{{99}}" />
   <scroll-view scroll-y type="list" class="scroll-view">
     <view class="demo">
       <view class="demo-title">NavBar 导航栏</view>

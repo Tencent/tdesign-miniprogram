@@ -22,6 +22,14 @@ export interface TdTabBarProps {
     value?: boolean;
   };
   /**
+   * 固定在底部时是否开启占位
+   * @default false
+   */
+  placeholder?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 是否开启底部安全区适配
    * @default true
    */
@@ -66,5 +74,13 @@ export interface TdTabBarProps {
   defaultValue?: {
     type: null;
     value?: string | number | Array<string | number>;
+  };
+  /**
+   * 标签栏层级
+   * @default 1
+   */
+  zIndex?: {
+    type: NumberConstructor;
+    value?: number;
   };
 }

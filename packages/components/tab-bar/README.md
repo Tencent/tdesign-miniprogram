@@ -67,12 +67,14 @@ style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 bordered | Boolean | true | 是否显示外边框 | N
 fixed | Boolean | true | 是否固定在底部 | N
+placeholder | Boolean | false | `1.12.1`。固定在底部时是否开启占位 | N
 safe-area-inset-bottom | Boolean | true | 是否开启底部安全区适配 | N
 shape | String | normal | 标签栏的形状。可选项：normal/round | N
 split | Boolean | true | 是否需要分割线 | N
 theme | String | normal | 选项风格。可选项：normal/tag | N
 value | String / Number / Array | - | 当前选中标签的索引。TS 类型：`string \| number \| Array<string \| number>` | N
 default-value | String / Number / Array | undefined | 当前选中标签的索引。非受控属性。TS 类型：`string \| number \| Array<string \| number>` | N
+z-index | Number | 1 | 标签栏层级 | N
 
 ### TabBar Events
 

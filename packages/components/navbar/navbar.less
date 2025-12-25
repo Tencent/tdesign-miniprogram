@@ -23,12 +23,13 @@
 @navbar-capsule-height: var(--td-navbar-capsule-height, 32px);
 
 .@{prefix}-navbar {
+  position: relative;
+
   &--fixed {
     .@{prefix}-navbar__content {
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 5001;
     }
   }
 
@@ -62,7 +63,6 @@
 
   &__content {
     position: relative;
-    z-index: 1;
     height: @navbar-height;
     width: calc(100% - @navbar-right);
     padding-right: @navbar-right;
@@ -103,7 +103,6 @@
     &::before {
       content: '';
       position: absolute;
-      z-index: -1;
       top: 0;
       left: 0;
       width: 200%;

@@ -4,7 +4,7 @@
 
 @attachments-background-color: @bg-color-secondarycontainer;
 @attachments-file-margin: 16rpx;
-@attachments-file-margin-tiny: 8rpx;
+@attachments-file-margin-tiny: 10rpx;
 @attachments-file-padding: 24rpx;
 @attachments-file-image-size: 104rpx;
 @attachments-file-width: 256rpx;
@@ -92,10 +92,12 @@
     display: block;
     position: relative;
     background-color: @attachments-background-color;
+    overflow: visible; // 允许删除按钮溢出显示
 
-    // 仅当有删除按钮时，增加上边距
+    // 仅当有删除按钮时，增加上边距和右边距以留出删除按钮空间
     &--removable {
-      margin-top: @attachments-file-margin-tiny;
+      margin-top: 12rpx;
+      margin-right: 8rpx;
     }
 
     // 删除按钮样式
@@ -104,8 +106,8 @@
       color: @bg-color-container;
       border-radius: @radius-circle;
       position: absolute;
-      right: -4px;
-      top: -4px;
+      right: -8rpx;
+      top: -8rpx;
     }
 
     // 图片文件样式 适配图片附件在聊天中的特殊样式
@@ -183,7 +185,6 @@
 
 // 对话中附件样式覆盖
 .@{attachments}--chatting {
-
   &.all_images {
     width: 100%;
 

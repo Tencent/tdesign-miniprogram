@@ -3,8 +3,7 @@
 exports[`Navbar Navbar back-home demo works fine 1`] = `
 <back-home>
   <t-navbar
-    tClassContent="t-navbar-content"
-    tClassPlaceholder="t-navbar-placeholder"
+    fixed="{{false}}"
     title="标题文字"
   >
     <wx-view
@@ -38,8 +37,8 @@ exports[`Navbar Navbar base demo works fine 1`] = `
     class="block"
   >
     <t-navbar
-      tClassContent="t-navbar-content"
-      tClassPlaceholder="t-navbar-placeholder"
+      fixed="{{false}}"
+      placeholder="{{true}}"
       tClassTitle="nav-title"
       title="标题文字"
     />
@@ -49,9 +48,8 @@ exports[`Navbar Navbar base demo works fine 1`] = `
   >
     <t-navbar
       class="block"
+      fixed="{{false}}"
       leftArrow="{{true}}"
-      tClassContent="t-navbar-content"
-      tClassPlaceholder="t-navbar-placeholder"
       title="标题文字"
       bind:go-back="handleBack"
     />
@@ -63,9 +61,8 @@ exports[`Navbar Navbar custom-color demo works fine 1`] = `
 <custom-color>
   <t-navbar
     class="custom-navbar"
+    fixed="{{false}}"
     leftArrow="{{true}}"
-    tClassContent="t-navbar-content"
-    tClassPlaceholder="t-navbar-placeholder"
     title="标题文字"
   />
 </custom-color>
@@ -74,8 +71,7 @@ exports[`Navbar Navbar custom-color demo works fine 1`] = `
 exports[`Navbar Navbar img demo works fine 1`] = `
 <img>
   <t-navbar
-    tClassContent="t-navbar-content"
-    tClassPlaceholder="t-navbar-placeholder"
+    fixed="{{false}}"
   >
     <wx-view
       slot="left"
@@ -96,16 +92,14 @@ exports[`Navbar Navbar left-title demo works fine 1`] = `
     class="block"
   >
     <t-navbar
+      fixed="{{false}}"
       leftArrow="{{true}}"
-      tClassContent="t-navbar-content"
-      tClassPlaceholder="t-navbar-placeholder"
       title="标题居中"
     />
   </wx-view>
   <t-navbar
+    fixed="{{false}}"
     leftArrow="{{true}}"
-    tClassContent="t-navbar-content"
-    tClassPlaceholder="t-navbar-placeholder"
   >
     <wx-view
       class="custom-title"
@@ -120,9 +114,8 @@ exports[`Navbar Navbar left-title demo works fine 1`] = `
     标题尺寸
   </wx-view>
   <t-navbar
+    fixed="{{false}}"
     leftArrow="{{true}}"
-    tClassContent="t-navbar-content"
-    tClassPlaceholder="t-navbar-placeholder"
   >
     <wx-text
       class="left-text"
@@ -143,9 +136,8 @@ exports[`Navbar Navbar left-title demo works fine 1`] = `
 exports[`Navbar Navbar search demo works fine 1`] = `
 <search>
   <t-navbar
+    fixed="{{false}}"
     leftIcon="slot"
-    tClassContent="t-navbar-content"
-    tClassPlaceholder="t-navbar-placeholder"
   >
     <wx-view
       class="search-box"

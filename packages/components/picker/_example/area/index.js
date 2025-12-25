@@ -77,6 +77,61 @@ const areaList = {
   },
 };
 
+// 使用这份数据可以模拟大量数据场景
+// // 生成广东省1000个城市
+// const generateCities = () => {
+//   const cities = {
+//     110100: '北京市',
+//   };
+//
+//   // 生成广东省1000个城市
+//   for (let i = 1; i <= 1000; i++) {
+//     const cityCode = 440000 + i * 100;
+//     cities[cityCode] = `广东城市${i}`;
+//   }
+//
+//   return cities;
+// };
+//
+// // 生成广州市10000个地区
+// const generateCounties = () => {
+//   const counties = {
+//     110101: '东城区',
+//     110102: '西城区',
+//     110105: '朝阳区',
+//     110106: '丰台区',
+//     110107: '石景山区',
+//     110108: '海淀区',
+//     110109: '门头沟区',
+//     110111: '房山区',
+//     110112: '通州区',
+//     110113: '顺义区',
+//     110114: '昌平区',
+//     110115: '大兴区',
+//     110116: '怀柔区',
+//     110117: '平谷区',
+//     110118: '密云区',
+//     110119: '延庆区',
+//   };
+//
+//   // 生成广州市(440100)10000个地区
+//   for (let i = 1; i <= 10000; i++) {
+//     const countyCode = 44010000 + i;
+//     counties[countyCode] = `广州地区${i}`;
+//   }
+//
+//   return counties;
+// };
+//
+// const areaList = {
+//   provinces: {
+//     110000: '北京市',
+//     440000: '广东省',
+//   },
+//   cities: generateCities(),
+//   counties: generateCounties(),
+// };
+
 const getOptions = (obj, filter) => {
   const res = Object.keys(obj).map((key) => ({ value: key, label: obj[key] }));
 
