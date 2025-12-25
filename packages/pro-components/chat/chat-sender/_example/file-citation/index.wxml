@@ -1,5 +1,5 @@
 <view class="demo-content-citation-container">
-  <view class="chat-sender-demo-wrapper">
+  <view class="chat-sender-demo-wrapper" style="height: 568rpx;">
     <view class="chat-sender-height-limit">
       <view class="chat-sender-height-left-limit"> </view>
       <view class="chat-sender-height-right-limit"> </view>

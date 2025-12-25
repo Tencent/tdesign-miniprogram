@@ -7,6 +7,7 @@
 
 /* 聊天发送器包装器 */
 .chat-sender-demo-wrapper {
+  height: 488rpx;
   margin-bottom: 32rpx;
   /* border: 2rpx solid #e5e5e5; */
   border-radius: 8rpx;

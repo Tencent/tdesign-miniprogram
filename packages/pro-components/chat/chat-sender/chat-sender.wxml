@@ -34,7 +34,8 @@
         class="{{classPrefix}}__textarea--control"
         style="{{_this.textareaStyle(textareaProps.autosize)}}"
         disabled="{{disabled}}"
-        auto-height="{{!!textareaProps.autosize}}"
+        auto-height="{{textareaAutoHeight}}"
+        show-scrollbar="{{!textareaAutoHeight}}"
         confirm-type="send"
         adjust-position="{{adjustPosition}}"
         disable-default-padding="{{false}}"
@@ -46,6 +47,7 @@
         bindblur="blurFn"
         bindtap="handlerClick"
         bindinput="textChange"
+        bindlinechange="onLineChange"
         bindkeyboardheightchange="onkeyboardheightchange"
         bindconfirm="handleSendClick"
       >
