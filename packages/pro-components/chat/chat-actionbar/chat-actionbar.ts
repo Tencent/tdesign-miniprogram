@@ -9,6 +9,7 @@ const name = `${prefix}-chat-actionbar`;
 export default class ChatActionbar extends SuperComponent {
   options: ComponentsOptionsType = {
     multipleSlots: true,
+    styleIsolation: 'shared',
   };
 
   properties = props;
@@ -23,21 +24,33 @@ export default class ChatActionbar extends SuperComponent {
       replay: 'refresh',
       copy: 'copy',
       share: 'share-1',
+      quote: 'enter',
     },
     iconActiveMap: {
       good: 'thumb-up-filled',
       bad: 'thumb-down-filled',
     },
+    widthStyle: '',
+    popoverStyle: 'transition: none;position: fixed;',
+    popoverPosition: '',
+    longpressVisible: false,
   };
 
   observers = {
     comment(newVal) {
-      this.setData({
-        pComment: newVal || '',
-      });
+      this.setPComment(newVal);
     },
-    'actionBar, pComment'() {
+    'actionBar, pComment, placement'() {
       this.setActions();
+    },
+    longPressPosition(newVal) {
+      if (this.properties.placement === 'longpress') {
+        if (newVal) {
+          this.showPopover(newVal);
+        } else {
+          this.hidePopover();
+        }
+      }
     },
   };
 
@@ -95,6 +108,7 @@ export default class ChatActionbar extends SuperComponent {
         this.triggerEvent('actions', {
           name,
           active: !isActive,
+          chatId: this.properties.chatId,
         });
       } else if (name === 'bad') {
         const isActive = this.data.pComment === 'bad';
@@ -104,12 +118,15 @@ export default class ChatActionbar extends SuperComponent {
         this.triggerEvent('actions', {
           name,
           active: !isActive,
+          chatId: this.properties.chatId,
         });
       } else {
         this.triggerEvent('actions', {
           name,
+          chatId: this.properties.chatId,
         });
       }
+      this.onVisibleChange({ detail: { visible: false } });
     },
 
     handleCopy() {
@@ -123,25 +140,95 @@ export default class ChatActionbar extends SuperComponent {
     },
 
     setActions() {
+      const text = {
+        replay: '刷新',
+        copy: '复制',
+        good: '点赞',
+        bad: '点踩',
+        share: '分享',
+        quote: '引用',
+      };
+
       const baseActions = [];
-      if (Array.isArray(this.properties.actionBar)) {
-        this.properties.actionBar.forEach((item) => {
-          if (item === 'good' || item === 'bad') {
-            baseActions.push({
-              name: item,
-              isActive: this.data.pComment === item,
-            });
-          } else {
-            baseActions.push({
-              name: item,
-              isActive: false,
-            });
-          }
-        });
+      let dataActions = [];
+      if (this.properties.placement === 'longpress') {
+        dataActions = ['quote', 'copy', 'share'];
+      } else if (Array.isArray(this.properties.actionBar)) {
+        dataActions = this.properties.actionBar;
       }
+      dataActions.forEach((item) => {
+        if (item === 'good' || item === 'bad') {
+          baseActions.push({
+            name: item,
+            isActive: this.data.pComment === item,
+            text: text[item] || item,
+          });
+        } else {
+          baseActions.push({
+            name: item,
+            isActive: false,
+            text: text[item] || item,
+          });
+        }
+      });
       this.setData({
         actions: baseActions,
       });
+    },
+
+    setPComment(newVal) {
+      this.setData({
+        pComment: newVal || '',
+      });
+    },
+
+    showPopover(pos) {
+      this.setData({
+        widthStyle: `width: ${this.data.actions.length * 128 + (this.data.actions.length - 1) * 8}rpx`,
+        popoverPosition: `top:${pos.y}px;left:${pos.x}px`,
+        longpressVisible: true,
+      });
+
+      setTimeout(() => {
+        const child = this.selectComponent('.popover');
+        const query = this.createSelectorQuery().in(child);
+
+        query.select('.t-popover').boundingClientRect();
+        query.exec((res) => {
+          const [rect] = res;
+
+          // 新增：检查元素是否超出屏幕宽度
+          const { screenWidth } = wx.getWindowInfo();
+          const elementRightEdge = rect.left + rect.width;
+
+          if (elementRightEdge > screenWidth) {
+            this.setData({
+              popoverStyle: `transition: none;position:fixed; left: unset !important; right: 16rpx !important;`,
+            });
+          } else if (rect.left <= 0) {
+            this.setData({ popoverStyle: `transition: none;position:fixed; left: 16rpx !important;` });
+          }
+        });
+      }, 200);
+    },
+
+    hidePopover() {
+      this.onVisibleChange({ detail: { visible: false } });
+    },
+
+    onVisibleChange(e) {
+      const { visible } = e.detail;
+      this.setData({
+        longpressVisible: visible,
+      });
+      if (!visible) {
+        setTimeout(() => {
+          this.setData({
+            popoverPosition: '',
+            popoverStyle: 'transition: none;position: fixed;',
+          });
+        }, 200);
+      }
     },
   };
 
@@ -150,6 +237,9 @@ export default class ChatActionbar extends SuperComponent {
       this.data.filterSpecialChars = this.filterSpecialChars.bind(this);
       this.data.handleActionClick = this.handleActionClick.bind(this);
       this.data.handleCopy = this.handleCopy.bind(this);
+      this.data.showPopover = this.showPopover.bind(this);
+      this.data.hidePopover = this.hidePopover.bind(this);
+      this.data.setPComment = this.setPComment.bind(this);
     },
 
     attached() {
