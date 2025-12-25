@@ -26,6 +26,11 @@ const props: TdNavbarProps = {
     type: Boolean,
     value: false,
   },
+  /** 固定在顶部时是否开启占位 */
+  placeholder: {
+    type: Boolean,
+    value: false,
+  },
   /** 是否开启顶部安全区适配 */
   safeAreaInsetTop: {
     type: Boolean,
@@ -43,6 +48,11 @@ const props: TdNavbarProps = {
   visible: {
     type: Boolean,
     value: true,
+  },
+  /** 导航条层级 */
+  zIndex: {
+    type: Number,
+    value: 1,
   },
 };
 

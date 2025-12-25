@@ -1,7 +1,7 @@
 Component({
   data: {
     stickyProps: {
-      zIndex: 2,
+      zIndex: 100,
     },
   },
   methods: {

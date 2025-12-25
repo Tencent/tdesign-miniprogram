@@ -8,7 +8,9 @@ exports[`SideBar SideBar base demo works fine 1`] = `
     <t-navbar
       class="demo-navbar"
       leftArrow="{{true}}"
+      placeholder="{{true}}"
       title="TDesign"
+      zIndex="{{99}}"
     />
   </wx-view>
   <wx-view
@@ -572,7 +574,9 @@ exports[`SideBar SideBar custom demo works fine 1`] = `
     <t-navbar
       class="demo-navbar"
       leftArrow="{{true}}"
+      placeholder="{{true}}"
       title="TDesign"
+      zIndex="{{99}}"
     />
   </wx-view>
   <wx-view
@@ -1136,7 +1140,9 @@ exports[`SideBar SideBar switch demo works fine 1`] = `
     <t-navbar
       class="demo-navbar"
       leftArrow="{{true}}"
+      placeholder="{{true}}"
       title="TDesign"
+      zIndex="{{99}}"
     />
   </wx-view>
   <wx-view
@@ -1806,7 +1812,9 @@ exports[`SideBar SideBar with-icon demo works fine 1`] = `
     <t-navbar
       class="demo-navbar"
       leftArrow="{{true}}"
+      placeholder="{{true}}"
       title="TDesign"
+      zIndex="{{99}}"
     />
   </wx-view>
   <wx-view
