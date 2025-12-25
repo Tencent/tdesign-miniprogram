@@ -15,7 +15,7 @@ const props: TdPopoverProps = {
   content: {
     type: String,
   },
-  /** 如果 popover 是在一个 `position:fixed` 的区域，需要显式指定属性 fixed 为 true */
+  /** 如果触发元素为 `fixed` 场景，需要显示指定 `fixed` 属性为 `true`，同时需在触发元素层添加 `t-popover-wrapper--fixed` 类，用于定位触发元素  */
   fixed: {
     type: Boolean,
     value: false,
