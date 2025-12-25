@@ -1,7 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import config from '../common/config';
-import { isFunction, isNumber } from '../common/validator';
+import { isFunction, isNumeric } from '../common/validator';
 import { TdGuideProps, GuideStep } from './type';
 import { debounce, getRect, rpx2px, styles, unitConvert, nextTick, systemInfo } from '../common/utils';
 
@@ -214,8 +214,8 @@ export default class Guide extends SuperComponent {
     },
     getPlacement() {
       const space = rpx2px(32);
-      const offsetLeft = (offset) => unitConvert(isNumber(offset?.[0]) ? `${offset?.[0]}rpx` : offset?.[0] || 0);
-      const offsetTop = (offset) => unitConvert(isNumber(offset?.[1]) ? `${offset?.[1]}rpx` : offset?.[1] || 0);
+      const offsetLeft = (offset) => unitConvert(isNumeric(offset?.[0]) ? `${offset?.[0]}rpx` : offset?.[0] || 0);
+      const offsetTop = (offset) => unitConvert(isNumeric(offset?.[1]) ? `${offset?.[1]}rpx` : offset?.[1] || 0);
       const left = (place) => parseFloat(place.left);
       const right = (place) => parseFloat(place.right);
       const top = (place) => parseFloat(place.top);

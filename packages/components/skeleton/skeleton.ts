@@ -4,7 +4,7 @@ import props from './props';
 import { SkeletonRowColObj } from './type';
 import { ClassName, Styles } from '../common/common';
 import { classNames } from '../common/utils';
-import { isNumber } from '../common/validator';
+import { isInteger, isNumeric } from '../common/validator';
 
 const { prefix } = config;
 const name = `${prefix}-skeleton`;
@@ -68,12 +68,13 @@ export default class Skeleton extends SuperComponent {
       }
 
       const parsedRowCols = rowCols.map((item) => {
-        if (isNumber(item)) {
+        if (isInteger(item) && item >= 0) {
           return new Array(item).fill({
             class: this.getColItemClass({ type: 'text' }),
             style: {},
           });
         }
+
         if (Array.isArray(item)) {
           return item.map((col) => {
             return {
@@ -122,7 +123,7 @@ export default class Skeleton extends SuperComponent {
       const style: Styles = {};
       styleName.forEach((name) => {
         if (name in obj) {
-          const px = isNumber(obj[name]) ? `${obj[name]}px` : obj[name];
+          const px = isNumeric(obj[name]) ? `${obj[name]}px` : obj[name];
           if (name === 'size') {
             [style.width, style.height] = [px, px];
           } else {
