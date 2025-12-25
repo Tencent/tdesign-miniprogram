@@ -15,6 +15,11 @@ const props: TdPopoverProps = {
   content: {
     type: String,
   },
+  /** 如果触发元素为 `fixed` 场景，需要显示指定 `fixed` 属性为 `true`，同时需在触发元素层添加 `t-popover-wrapper--fixed` 类，用于定位触发元素  */
+  fixed: {
+    type: Boolean,
+    value: false,
+  },
   /** 浮层出现位置 */
   placement: {
     type: String,
