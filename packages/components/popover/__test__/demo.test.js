@@ -5,12 +5,12 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['base', 'theme', 'placement'];
+const mapper = ['base', 'placement', 'theme'];
 
 describe('Popover', () => {
   mapper.forEach((demoName) => {
     it(`Popover ${demoName} demo works fine`, () => {
-      const id = load(path.resolve(__dirname, `../_example/${demoName}/index`), demoName);
+      const id = load(path.resolve(__dirname, `../../popover/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();
