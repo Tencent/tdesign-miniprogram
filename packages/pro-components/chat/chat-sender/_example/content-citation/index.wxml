@@ -1,5 +1,5 @@
 <view class="demo-content-citation-container">
-  <view class="chat-sender-demo-wrapper">
+  <view class="chat-sender-demo-wrapper" style="height: 568rpx;">
     <view class="chat-sender-height-limit">
       <view class="chat-sender-height-left-limit"> </view>
       <view class="chat-sender-height-right-limit"> </view>
@@ -34,7 +34,7 @@
           <view style="padding: 4rpx; height: 40rpx; color: var(--td-text-color-disabled)">
             <t-icon name="enter" size="40rpx" style="transform: scaleX(-1)" />
           </view>
-          <view class="header-content"> {{headerText}} </view>
+          <text overflow="ellipsis" class="header-content"> {{headerText}} </text>
           <view style="padding: 4rpx; height: 40rpx; margin-left: auto; color: var(--td-text-color-placeholder)">
             <t-icon name="close" size="40rpx" bind:tap="handleCLoseCite" />
           </view>
