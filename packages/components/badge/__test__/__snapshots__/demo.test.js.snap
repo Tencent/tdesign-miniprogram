@@ -263,6 +263,23 @@ exports[`Badge Badge theme demo works fine 1`] = `
           0,
         ]
       }}"
+      shape="ribbon-left"
+      slot="note"
+    />
+  </t-cell>
+  <t-cell
+    bordered="{{false}}"
+    tClass="t-class-cell"
+    title="单行标题"
+  >
+    <t-badge
+      count="NEW"
+      offset="{{
+        Array [
+          0,
+          0,
+        ]
+      }}"
       shape="ribbon"
       slot="note"
     />
@@ -274,6 +291,23 @@ exports[`Badge Badge theme demo works fine 1`] = `
     三角角标
   </wx-view>
   <t-cell
+    tClass="t-class-cell"
+    title="单行标题"
+  >
+    <t-badge
+      count="NEW"
+      offset="{{
+        Array [
+          0,
+          0,
+        ]
+      }}"
+      shape="triangle-left"
+      slot="note"
+    />
+  </t-cell>
+  <t-cell
+    bordered="{{false}}"
     tClass="t-class-cell"
     title="单行标题"
   >

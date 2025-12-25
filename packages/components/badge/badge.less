@@ -98,7 +98,7 @@
 
   &--ribbon,
   &--ribbon-right {
-    background: linear-gradient(45deg, transparent 50%, @badge-color 50%, @badge-color 82%, transparent 82%);
+    background: linear-gradient(45deg, transparent 50%, @badge-color 50%, @badge-color 85%, transparent 85%);
   }
 
   &--triangle-right {
@@ -111,12 +111,12 @@
     right: 0;
 
     .@{prefix}-badge__count {
-      transform: rotate(45deg) translateY(calc(-1 * var(--td-line-height-mark-extraSmall, 32rpx) / 2 + 2rpx));
+      transform: rotate(45deg) translateY(calc(-1 * var(--td-line-height-mark-extraSmall, 32rpx) / 2 + 1rpx));
     }
   }
 
   &--ribbon-left {
-    background: linear-gradient(-45deg, transparent 50%, @badge-color 50%, @badge-color 82%, transparent 82%);
+    background: linear-gradient(-45deg, transparent 50%, @badge-color 50%, @badge-color 85%, transparent 85%);
   }
 
   &--triangle-left {
@@ -128,7 +128,7 @@
     left: 0;
 
     .@{prefix}-badge__count {
-      transform: rotate(-45deg) translateY(calc(-1 * var(--td-line-height-mark-extraSmall, 32rpx) / 2 + 2rpx));
+      transform: rotate(-45deg) translateY(calc(-1 * var(--td-line-height-mark-extraSmall, 32rpx) / 2 + 1rpx));
     }
   }
 
@@ -151,20 +151,21 @@
   &--large&--triangle-left {
     width: calc(@badge-large-height * 2);
     height: calc(@badge-large-height * 2);
+    padding: 0;
   }
 
   &--large&--ribbon,
   &--large&--ribbon-right,
   &--large&--triangle-right {
     .@{prefix}-badge__count {
-      transform: rotate(45deg) translateY(calc(-1 * var(--td-line-height-mark-small, 40rpx) / 2 + 2rpx));
+      transform: rotate(45deg) translateY(calc(-1 * var(--td-line-height-mark-small, 40rpx) / 2 + 3rpx));
     }
   }
 
   &--large&--ribbon-left,
   &--large&--triangle-left {
     .@{prefix}-badge__count {
-      transform: rotate(-45deg) translateY(calc(-1 * var(--td-line-height-mark-small, 40rpx) / 2 + 2rpx));
+      transform: rotate(-45deg) translateY(calc(-1 * var(--td-line-height-mark-small, 40rpx) / 2 + 3rpx));
     }
   }
 
