@@ -5,20 +5,7 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = [
-  'align',
-  'banner',
-  'base',
-  'bordered',
-  'custom',
-  'label',
-  'layout',
-  'maxlength',
-  'prefix',
-  'special',
-  'status',
-  'suffix',
-];
+const mapper = ['align', 'banner', 'base', 'bordered', 'custom', 'label', 'layout', 'maxlength', 'prefix', 'special', 'status', 'suffix'];
 
 describe('Input', () => {
   mapper.forEach((demoName) => {
