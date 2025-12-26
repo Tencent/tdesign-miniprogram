@@ -59,6 +59,7 @@
     border-style: solid;
     border-color: transparent;
     border-width: @popover-arrow-width;
+    color: inherit;
   }
 
   // 主题
@@ -93,7 +94,9 @@
 .arrow-placement-right();
 
 .content-placement-top {
-  .@{prefix}-popover[data-placement^='top'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-top,
+  .@{prefix}-popover.@{prefix}-popover--placement-top-start,
+  .@{prefix}-popover.@{prefix}-popover--placement-top-end {
     .@{prefix}-popover__content {
       margin-bottom: @popover-content-margin;
     }
@@ -104,7 +107,9 @@
 }
 
 .content-placement-bottom {
-  .@{prefix}-popover[data-placement^='bottom'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-bottom,
+  .@{prefix}-popover.@{prefix}-popover--placement-bottom-start,
+  .@{prefix}-popover.@{prefix}-popover--placement-bottom-end {
     .@{prefix}-popover__content {
       margin-top: @popover-content-margin;
     }
@@ -115,7 +120,9 @@
 }
 
 .content-placement-left {
-  .@{prefix}-popover[data-placement^='left'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-left,
+  .@{prefix}-popover.@{prefix}-popover--placement-left-start,
+  .@{prefix}-popover.@{prefix}-popover--placement-left-end {
     .@{prefix}-popover__content {
       margin-right: @popover-content-margin;
     }
@@ -126,7 +133,9 @@
 }
 
 .content-placement-right {
-  .@{prefix}-popover[data-placement^='right'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-right,
+  .@{prefix}-popover.@{prefix}-popover--placement-right-start,
+  .@{prefix}-popover.@{prefix}-popover--placement-right-end {
     .@{prefix}-popover__content {
       margin-left: @popover-content-margin;
     }
@@ -137,7 +146,9 @@
 }
 
 .arrow-placement-top() {
-  .@{prefix}-popover[data-placement^='top'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-top,
+  .@{prefix}-popover.@{prefix}-popover--placement-top-start,
+  .@{prefix}-popover.@{prefix}-popover--placement-top-end {
     .@{prefix}-popover__arrow {
       bottom: 0;
       border-top-color: currentColor;
@@ -146,7 +157,7 @@
     }
   }
 
-  .@{prefix}-popover[data-placement='top'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-top {
     transform-origin: 50% 100%;
 
     .@{prefix}-popover__arrow {
@@ -155,7 +166,7 @@
     }
   }
 
-  .@{prefix}-popover[data-placement='top-start'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-top-start {
     transform-origin: 0 100%;
 
     .@{prefix}-popover__arrow {
@@ -163,7 +174,7 @@
     }
   }
 
-  .@{prefix}-popover[data-placement='top-end'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-top-end {
     transform-origin: 100% 100%;
 
     .@{prefix}-popover__arrow {
@@ -173,7 +184,9 @@
 }
 
 .arrow-placement-left() {
-  .@{prefix}-popover[data-placement^='left'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-left,
+  .@{prefix}-popover.@{prefix}-popover--placement-left-start,
+  .@{prefix}-popover.@{prefix}-popover--placement-left-end {
     .@{prefix}-popover__arrow {
       right: 0;
       border-right-width: 0;
@@ -182,7 +195,7 @@
     }
   }
 
-  .@{prefix}-popover[data-placement='left'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-left {
     transform-origin: 100% 50%;
 
     .@{prefix}-popover__arrow {
@@ -191,7 +204,7 @@
     }
   }
 
-  .@{prefix}-popover[data-placement='left-start'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-left-start {
     transform-origin: 100% 0;
 
     .@{prefix}-popover__arrow {
@@ -199,7 +212,7 @@
     }
   }
 
-  .@{prefix}-popover[data-placement='left-end'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-left-end {
     transform-origin: 100% 100%;
 
     .@{prefix}-popover__arrow {
@@ -209,7 +222,9 @@
 }
 
 .arrow-placement-bottom() {
-  .@{prefix}-popover[data-placement^='bottom'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-bottom,
+  .@{prefix}-popover.@{prefix}-popover--placement-bottom-start,
+  .@{prefix}-popover.@{prefix}-popover--placement-bottom-end {
     .@{prefix}-popover__arrow {
       top: 0;
       border-top-width: 0;
@@ -218,7 +233,7 @@
     }
   }
 
-  .@{prefix}-popover[data-placement='bottom'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-bottom {
     transform-origin: 50% 0;
 
     .@{prefix}-popover__arrow {
@@ -227,7 +242,7 @@
     }
   }
 
-  .@{prefix}-popover[data-placement='bottom-start'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-bottom-start {
     transform-origin: 0 0;
 
     .@{prefix}-popover__arrow {
@@ -235,7 +250,7 @@
     }
   }
 
-  .@{prefix}-popover[data-placement='bottom-end'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-bottom-end {
     transform-origin: 100% 0;
 
     .@{prefix}-popover__arrow {
@@ -245,7 +260,9 @@
 }
 
 .arrow-placement-right() {
-  .@{prefix}-popover[data-placement^='right'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-right,
+  .@{prefix}-popover.@{prefix}-popover--placement-right-start,
+  .@{prefix}-popover.@{prefix}-popover--placement-right-end {
     .@{prefix}-popover__arrow {
       left: 0;
       border-right-color: currentColor;
@@ -254,7 +271,7 @@
     }
   }
 
-  .@{prefix}-popover[data-placement='right'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-right {
     transform-origin: 0 50%;
 
     .@{prefix}-popover__arrow {
@@ -263,7 +280,7 @@
     }
   }
 
-  .@{prefix}-popover[data-placement='right-start'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-right-start {
     transform-origin: 0 0;
 
     .@{prefix}-popover__arrow {
@@ -271,7 +288,7 @@
     }
   }
 
-  .@{prefix}-popover[data-placement='right-end'] {
+  .@{prefix}-popover.@{prefix}-popover--placement-right-end {
     transform-origin: 0 100%;
 
     .@{prefix}-popover__arrow {
@@ -285,11 +302,12 @@
   @bgColor: 'popover-@{theme}-bg-color';
 
   .@{prefix}-popover__content.@{prefix}-popover--@{theme} {
-    color: @@color;
     background: @@bgColor;
-
-    .@{prefix}-popover__arrow {
-      color: @@bgColor;
+    color: @@bgColor;  // Set color to background so arrow can inherit it via currentColor
+    
+    // Reset text color for content
+    & > view, & > text, & > * {
+      color: @@color;
     }
   }
 }
