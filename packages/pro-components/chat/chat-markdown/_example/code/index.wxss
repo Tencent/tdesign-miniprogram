@@ -2,3 +2,7 @@
   background-color: var(--td-bg-color-container);
   padding: 32rpx;
 }
+
+.chat-example-block .t-chat-markdown-code__content {
+  height: 96rpx;
+}

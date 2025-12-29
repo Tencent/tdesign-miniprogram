@@ -5,14 +5,16 @@
 @chat-content-user-text-color: var(--td-chat-content-user-text-color, @text-color-primary);
 @chat-content-assistant-text-color: var(--td-chat-content-assistant-text-color, @text-color-primary);
 @chat-content-error-text-color: var(--td-chat-content-error-text-color, @error-color);
+@chat-content-line-height: 1.5;
 
 .@{chat-content} {
   font: @font-body-large;
+  line-height: @chat-content-line-height;
   word-break: break-all;
   word-wrap: break-word;
   overflow-wrap: break-word;
   box-sizing: border-box;
-  width: fit-content;
+  max-width: 100%;
 
   &__user,
   &__system {
@@ -42,7 +44,7 @@
       border-radius: @radius-small;
     }
   }
-// 错误状态样式
+  // 错误状态样式
   &__error {
     color: @chat-content-error-text-color;
   }
