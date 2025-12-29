@@ -16,7 +16,7 @@ clearable | Boolean | true | \- | N
 confirm-hold | Boolean | false | \- | N
 confirm-type | String | search | options: send/search/next/go/done | N
 cursor | Number | -1 | required | Y
-cursor-color | String | #0052d9 | \- | N
+cursor-color | String | #0052d9 | `1.12.1` | N
 cursor-spacing | Number | 0 | \- | N
 disabled | Boolean | false | \- | N
 focus | Boolean | false | \- | N
