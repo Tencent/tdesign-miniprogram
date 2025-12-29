@@ -32,6 +32,7 @@
       selection-end="{{selectionEnd}}"
       hold-keyboard="{{holdKeyboard}}"
       cursor-spacing="{{cursorSpacing}}"
+      cursor-color="{{cursorColor}}"
       placeholder="{{placeholder}}"
       placeholder-style="{{placeholderStyle}}"
       placeholder-class="{{placeholderClass}} {{classPrefix}}__placeholder {{classPrefix}}__placeholder--{{center ? 'center': 'normal'}}"

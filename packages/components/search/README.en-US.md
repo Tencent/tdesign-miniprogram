@@ -16,6 +16,7 @@ clearable | Boolean | true | \- | N
 confirm-hold | Boolean | false | \- | N
 confirm-type | String | search | options: send/search/next/go/done | N
 cursor | Number | -1 | required | Y
+cursor-color | String | #0052d9 | \- | N
 cursor-spacing | Number | 0 | \- | N
 disabled | Boolean | false | \- | N
 focus | Boolean | false | \- | N
@@ -28,7 +29,7 @@ placeholder | String | '' | \- | N
 placeholder-class | String | input-placeholder | \- | N
 placeholder-style | String | - | required | Y
 readonly | Boolean | undefined | \- | N
-result-list | Array | [] | Typescript：`Array<string>` | N
+result-list | Array | [] | Typescript: `Array<string>` | N
 right-icon | String | 'close-circle-filled' | `deprecated` | N
 selection-end | Number | -1 | \- | N
 selection-start | Number | -1 | \- | N
