@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="Divider" leftArrow />
+<t-navbar class="demo-navbar" title="Divider" leftArrow placeholder />
 <view class="demo">
   <t-demo-header
     title="Divider 分割线"

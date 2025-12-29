@@ -1,4 +1,4 @@
-<t-navbar title="Message" leftArrow />
+<t-navbar title="Message" leftArrow placeholder />
 <view class="demo message-example">
   <t-demo-header
     title="Message 消息通知"

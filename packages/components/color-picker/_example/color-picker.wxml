@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="ColorPicker" leftArrow />
+<t-navbar class="demo-navbar" title="ColorPicker" leftArrow placeholder />
 
 <view class="demo">
   <t-demo-header
