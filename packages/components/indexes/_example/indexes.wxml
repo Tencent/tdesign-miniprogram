@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="Indexes" leftArrow />
+<t-navbar class="demo-navbar" title="Indexes" leftArrow placeholder />
 <view class="indexes">
   <t-demo-header
     title="Indexes 索引"

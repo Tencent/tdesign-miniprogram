@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="Tag" leftArrow />
+<t-navbar class="demo-navbar" title="Tag" leftArrow placeholder />
 <view class="demo">
   <t-demo-header title="Tag 标签" desc="用于表明主体的类目，属性或状态。" notice="渲染框架支持情况：Skyline、WebView" />
   <t-demo title="01 组件类型">

@@ -1,4 +1,4 @@
-<t-navbar title="Upload" leftArrow />
+<t-navbar title="Upload" leftArrow placeholder />
 <view class="demo">
   <t-demo-header title="Upload 上传" notice="渲染框架支持情况：WebView">
     <view slot="desc">

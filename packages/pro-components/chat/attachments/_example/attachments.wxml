@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="Attachments" leftArrow />
+<t-navbar class="demo-navbar" title="Attachments" leftArrow placeholder />
 <view class="demo">
   <t-demo-header
     title="Attachments 文件附件"
