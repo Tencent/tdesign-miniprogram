@@ -47,7 +47,8 @@
   .@{chat-message}__detail {
     max-width: 100%;
     box-sizing: border-box;
-    display: contents;
+    display: flex;
+    flex-direction: column;
   }
 
   // 有头部时的样式
@@ -65,10 +66,6 @@
   &.user {
     .@{chat-message}__base {
       padding-right: @spacer-2;
-    }
-
-    .@{chat-content} {
-      max-width: 90%;
     }
   }
 
