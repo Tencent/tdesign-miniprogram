@@ -21,18 +21,22 @@
   width: 100%;
 }
 
-.attachment-slide {
-  height: 274rpx;
+.image-chat .t-chat-message__detail {
   width: 100%;
 }
 
+.attachment-slide {
+  height: 274rpx;
+  width: calc(100% + 128rpx) !important;
+}
+
 .attachment-slide .t-attachments {
-  padding-right: 32rpx;
+  height: 274rpx;
   padding-top: 24rpx;
   box-sizing: border-box;
-  position: fixed;
+  position: relative;
   z-index: 2;
-  left: 0;
+  left: -128rpx;
   right: 0;
 }
 
@@ -41,5 +45,5 @@
 }
 
 .attachment-slide .t-attachments .t-attachments__files:last-child {
-  padding-right: 32rpx;
+  padding-right: 64rpx;
 }
