@@ -15,10 +15,12 @@ fixed | Boolean | true | \- | N
 home-icon | String | - | `deprecated`。homeIcon | N
 left-arrow | Boolean | false | `0.26.0` | N
 left-icon | String | - | `deprecated` | N
+placeholder | Boolean | false | `1.12.1` | N
 safe-area-inset-top | Boolean | true | \- | N
 title | String | - | page title | N
 title-max-length | Number | - | \- | N
 visible | Boolean | true | \- | N
+z-index | Number | 1 | \- | N
 
 ### Navbar Events
 
@@ -56,19 +58,18 @@ t-class-title | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-navbar-padding-top | 20px | - 
---td-navbar-right | 95px | - 
---td-navbar-background | @navbar-bg-color | - 
---td-navbar-bg-color | @bg-color-container | - 
---td-navbar-capsule-border-color | @border-level-1-color | - 
---td-navbar-capsule-border-radius | 16px | - 
---td-navbar-capsule-height | 32px | - 
---td-navbar-capsule-width | 88px | - 
---td-navbar-center-left | @navbar-right | - 
---td-navbar-center-width | 187px | - 
---td-navbar-color | @text-color-primary | - 
---td-navbar-height | 48px | - 
---td-navbar-left-arrow-size | 24px | - 
---td-navbar-left-max-width | --td-navbar-left-max-width | - 
---td-navbar-title-font-size | 18px | - 
---td-navbar-title-font-weight | 600 | -
+--td-navbar-padding-top | 20px | -
+--td-navbar-right | 95px | -
+--td-navbar-background | @navbar-bg-color | -
+--td-navbar-bg-color | @bg-color-container | -
+--td-navbar-capsule-border-color | @border-level-1-color | -
+--td-navbar-capsule-border-radius | 16px | -
+--td-navbar-capsule-height | 32px | -
+--td-navbar-capsule-width | 88px | -
+--td-navbar-center-left | @navbar-right | -
+--td-navbar-center-width | 187px | -
+--td-navbar-color | @text-color-primary | -
+--td-navbar-height | 48px | -
+--td-navbar-left-arrow-size | 24px | -
+--td-navbar-left-max-width | --td-navbar-left-max-width | -
+--td-navbar-title-font | @font-title-large | -

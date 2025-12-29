@@ -6,6 +6,8 @@ import useCustomNavbar from '../mixins/using-custom-navbar';
 const { prefix } = config;
 const name = `${prefix}-picker`;
 
+const DEFAULT_KEYS = { value: 'value', label: 'label', icon: 'icon' };
+
 @wxComponent()
 export default class Picker extends SuperComponent {
   behaviors = [useCustomNavbar];
@@ -29,8 +31,10 @@ export default class Picker extends SuperComponent {
 
   observers = {
     'value, visible'(value, visible) {
-      // 只在打开弹窗或value变化时更新，关闭时不更新避免滚动
-      if (visible) {
+      const { usePopup } = this.properties;
+      // 平铺模式（usePopup=false）：始终响应 value 变化
+      // 弹窗模式（usePopup=true）：只在打开弹窗时更新，关闭时不更新避免回弹
+      if (!usePopup || visible) {
         this.updateChildren();
         this.updateIndicatorPosition();
       }
@@ -50,7 +54,7 @@ export default class Picker extends SuperComponent {
 
   methods = {
     updateChildren() {
-      const { value, defaultValue, itemHeight, visibleItemCount } = this.properties;
+      const { value, defaultValue, itemHeight, visibleItemCount, keys } = this.properties;
 
       this.$children.forEach((child, index) => {
         child.setData({
@@ -58,6 +62,7 @@ export default class Picker extends SuperComponent {
           columnIndex: index,
           itemHeight,
           visibleItemCount,
+          keys: { ...DEFAULT_KEYS, ...(keys || {}) },
         });
         child.update();
       });

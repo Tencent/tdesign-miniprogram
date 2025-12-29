@@ -1,0 +1,14 @@
+{
+  "name": "tdesign-button-demo",
+  "version": "tdesign-miniprogram-version",
+  "description": "",
+  "main": ".eslintrc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "tdesign-miniprogram": "latest"
+  }
+}

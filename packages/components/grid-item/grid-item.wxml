@@ -1,8 +1,8 @@
 <import src="../common/template/image.wxml" />
 <import src="../common/template/icon.wxml" />
 <wxs module="util">
-  module.exports.getImageSize = function(column) { if (column >= 5) return 'small'; if (column == 4) return 'middle';
-  return 'large'; }
+  module.exports.getImageSize = function(column) { if (!column || column === 4) return 'middle'; return column > 4 ?
+  'small' : 'large'; }
 </wxs>
 <wxs module="_" src="../common/utils.wxs" />
 

@@ -1,6 +1,6 @@
 ---
 title: Textarea 多行文本框
-description: 用于多行文本信息输入。
+description: 用于多行文本的输入。
 spline: form
 isComponent: true
 ---
@@ -19,7 +19,7 @@ isComponent: true
 
 ## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/uw6f3imu7KSJ" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/mqRGWpmA815s" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -131,12 +131,12 @@ t-class-textarea | 多行文本框样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-textarea-background-color | @bg-color-container | - 
---td-textarea-border-color | @component-border | - 
---td-textarea-border-radius | @radius-default | - 
---td-textarea-disabled-text-color | @text-color-disabled | - 
---td-textarea-indicator-text-color | @text-color-placeholder | - 
---td-textarea-label-color | @text-color-primary | - 
---td-textarea-padding | 32rpx | - 
---td-textarea-placeholder-color | @text-color-placeholder | - 
+--td-textarea-background-color | @bg-color-container | -
+--td-textarea-border-color | @component-border | -
+--td-textarea-border-radius | @radius-default | -
+--td-textarea-disabled-text-color | @text-color-disabled | -
+--td-textarea-indicator-text-color | @text-color-placeholder | -
+--td-textarea-label-color | @text-color-primary | -
+--td-textarea-padding | 32rpx | -
+--td-textarea-placeholder-color | @text-color-placeholder | -
 --td-textarea-text-color | @text-color-primary | -

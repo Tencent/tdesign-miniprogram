@@ -16,6 +16,11 @@ const props: TdTabBarProps = {
     type: Boolean,
     value: true,
   },
+  /** 固定在底部时是否开启占位 */
+  placeholder: {
+    type: Boolean,
+    value: false,
+  },
   /** 是否开启底部安全区适配 */
   safeAreaInsetBottom: {
     type: Boolean,
@@ -44,6 +49,11 @@ const props: TdTabBarProps = {
   /** 当前选中标签的索引，非受控属性 */
   defaultValue: {
     type: null,
+  },
+  /** 标签栏层级 */
+  zIndex: {
+    type: Number,
+    value: 1,
   },
 };
 

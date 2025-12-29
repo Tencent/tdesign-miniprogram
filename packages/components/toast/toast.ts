@@ -61,6 +61,7 @@ export default class Toast extends SuperComponent {
         placement: props.placement.value,
         preventScrollThrough: props.preventScrollThrough.value,
         theme: props.theme.value,
+        close: null, // 确保 close 回调被重置为当前传入的值或 null
       };
 
       const data = {

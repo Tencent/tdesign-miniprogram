@@ -1,0 +1,295 @@
+@import '../common/style/base.less';
+
+@popover: ~'@{prefix}-popover';
+
+// 主题色变量
+@popover-padding: var(--td-popover-padding, 24rpx);
+@popover-arrow-width: 16rpx;
+@popover-content-margin: 16rpx;
+@popover-content-arrow-margin: 24rpx;
+
+// 主题色变量
+@popover-dark-color: #fff;
+@popover-dark-bg-color: @font-gray-1;
+@popover-light-color: @text-color-primary;
+@popover-light-bg-color: @bg-color-container;
+@popover-brand-color: @primary-color-7;
+@popover-brand-bg-color: @primary-color-1;
+@popover-success-color: @success-color-5;
+@popover-success-bg-color: @success-color-1;
+@popover-warning-color: @warning-color-5;
+@popover-warning-bg-color: @warning-color-1;
+@popover-error-color: @error-color-6;
+@popover-error-bg-color: @error-color-1;
+
+.@{popover}__wrapper {
+  display: inline-block;
+}
+
+.@{popover} {
+  position: absolute;
+  z-index: 11500;
+  overflow: visible;
+  transition: 0.2s ease-in-out all;
+
+  &--fixed {
+    position: fixed;
+  }
+
+  &__content {
+    position: relative;
+    padding: @popover-padding;
+    border-radius: 12rpx;
+    box-shadow: @shadow-3;
+    font-size: @font-size-m;
+    line-height: 48rpx;
+    box-sizing: border-box;
+    word-break: break-all;
+
+    border-radius: 6px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    word-break: break-all;
+  }
+
+  &__arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-color: transparent;
+    border-width: @popover-arrow-width;
+  }
+
+  // 主题
+  .popover-theme(dark);
+  .popover-theme(light);
+  .popover-theme(brand);
+  .popover-theme(success);
+  .popover-theme(warning);
+  .popover-theme(error);
+
+  &.@{prefix}-fade-enter-to {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &.@{prefix}-fade-enter,
+  &.@{prefix}-fade-leave-to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+// 箭头方向与偏移
+.content-placement-top();
+.content-placement-bottom();
+.content-placement-left();
+.content-placement-right();
+
+.arrow-placement-top();
+.arrow-placement-bottom();
+.arrow-placement-left();
+.arrow-placement-right();
+
+.content-placement-top {
+  .@{prefix}-popover[data-placement^='top'] {
+    .@{prefix}-popover__content {
+      margin-bottom: @popover-content-margin;
+    }
+    .@{prefix}-popover__content--arrow {
+      margin-bottom: @popover-content-arrow-margin;
+    }
+  }
+}
+
+.content-placement-bottom {
+  .@{prefix}-popover[data-placement^='bottom'] {
+    .@{prefix}-popover__content {
+      margin-top: @popover-content-margin;
+    }
+    .@{prefix}-popover__content--arrow {
+      margin-top: @popover-content-arrow-margin;
+    }
+  }
+}
+
+.content-placement-left {
+  .@{prefix}-popover[data-placement^='left'] {
+    .@{prefix}-popover__content {
+      margin-right: @popover-content-margin;
+    }
+    .@{prefix}-popover__content--arrow {
+      margin-right: @popover-content-arrow-margin;
+    }
+  }
+}
+
+.content-placement-right {
+  .@{prefix}-popover[data-placement^='right'] {
+    .@{prefix}-popover__content {
+      margin-left: @popover-content-margin;
+    }
+    .@{prefix}-popover__content--arrow {
+      margin-left: @popover-content-arrow-margin;
+    }
+  }
+}
+
+.arrow-placement-top() {
+  .@{prefix}-popover[data-placement^='top'] {
+    .@{prefix}-popover__arrow {
+      bottom: 0;
+      border-top-color: currentColor;
+      border-bottom-width: 0;
+      margin-bottom: calc(@popover-arrow-width * -1);
+    }
+  }
+
+  .@{prefix}-popover[data-placement='top'] {
+    transform-origin: 50% 100%;
+
+    .@{prefix}-popover__arrow {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .@{prefix}-popover[data-placement='top-start'] {
+    transform-origin: 0 100%;
+
+    .@{prefix}-popover__arrow {
+      left: @popover-padding;
+    }
+  }
+
+  .@{prefix}-popover[data-placement='top-end'] {
+    transform-origin: 100% 100%;
+
+    .@{prefix}-popover__arrow {
+      right: @popover-padding;
+    }
+  }
+}
+
+.arrow-placement-left() {
+  .@{prefix}-popover[data-placement^='left'] {
+    .@{prefix}-popover__arrow {
+      right: 0;
+      border-right-width: 0;
+      border-left-color: currentColor;
+      margin-right: calc(@popover-arrow-width * -1);
+    }
+  }
+
+  .@{prefix}-popover[data-placement='left'] {
+    transform-origin: 100% 50%;
+
+    .@{prefix}-popover__arrow {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .@{prefix}-popover[data-placement='left-start'] {
+    transform-origin: 100% 0;
+
+    .@{prefix}-popover__arrow {
+      top: @popover-padding;
+    }
+  }
+
+  .@{prefix}-popover[data-placement='left-end'] {
+    transform-origin: 100% 100%;
+
+    .@{prefix}-popover__arrow {
+      bottom: @popover-padding;
+    }
+  }
+}
+
+.arrow-placement-bottom() {
+  .@{prefix}-popover[data-placement^='bottom'] {
+    .@{prefix}-popover__arrow {
+      top: 0;
+      border-top-width: 0;
+      border-bottom-color: currentColor;
+      margin-top: calc(@popover-arrow-width * -1);
+    }
+  }
+
+  .@{prefix}-popover[data-placement='bottom'] {
+    transform-origin: 50% 0;
+
+    .@{prefix}-popover__arrow {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  .@{prefix}-popover[data-placement='bottom-start'] {
+    transform-origin: 0 0;
+
+    .@{prefix}-popover__arrow {
+      left: @popover-padding;
+    }
+  }
+
+  .@{prefix}-popover[data-placement='bottom-end'] {
+    transform-origin: 100% 0;
+
+    .@{prefix}-popover__arrow {
+      right: @popover-padding;
+    }
+  }
+}
+
+.arrow-placement-right() {
+  .@{prefix}-popover[data-placement^='right'] {
+    .@{prefix}-popover__arrow {
+      left: 0;
+      border-right-color: currentColor;
+      border-left-width: 0;
+      margin-left: calc(@popover-arrow-width * -1);
+    }
+  }
+
+  .@{prefix}-popover[data-placement='right'] {
+    transform-origin: 0 50%;
+
+    .@{prefix}-popover__arrow {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .@{prefix}-popover[data-placement='right-start'] {
+    transform-origin: 0 0;
+
+    .@{prefix}-popover__arrow {
+      top: @popover-padding;
+    }
+  }
+
+  .@{prefix}-popover[data-placement='right-end'] {
+    transform-origin: 0 100%;
+
+    .@{prefix}-popover__arrow {
+      bottom: @popover-padding;
+    }
+  }
+}
+
+.popover-theme(@theme) {
+  @color: 'popover-@{theme}-color';
+  @bgColor: 'popover-@{theme}-bg-color';
+
+  .@{prefix}-popover--@{theme} {
+    color: @@color;
+    background: @@bgColor;
+
+    .@{prefix}-popover__arrow {
+      color: @@bgColor;
+    }
+  }
+}

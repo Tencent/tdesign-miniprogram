@@ -6,8 +6,9 @@ import { PickerItemOption } from './type';
 const { prefix } = config;
 const name = `${prefix}-picker-item`;
 
-// 动画持续时间
-const ANIMATION_DURATION = 1000;
+// 动画持续时间（优化：根据滑动距离动态计算，基础时长降低）
+const ANIMATION_DURATION_BASE = 300; // 基础动画时长
+const ANIMATION_DURATION_MAX = 600; // 最大动画时长
 // 和上一次move事件间隔小于INERTIA_TIME
 const INERTIA_TIME = 300;
 // 且距离大于`MOMENTUM_DISTANCE`时，执行惯性滚动
@@ -42,17 +43,6 @@ export default class PickerItem extends SuperComponent {
   relations: RelationsOptions = {
     '../picker/picker': {
       type: 'parent',
-      linked(parent) {
-        if ('keys' in parent.data) {
-          const { keys } = parent.data;
-
-          if (keys === null || JSON.stringify(this.data.pickerKeys) === JSON.stringify(keys)) return;
-
-          this.setData({
-            pickerKeys: { ...this.data.pickerKeys, ...keys },
-          });
-        }
-      },
     },
   };
 
@@ -62,10 +52,16 @@ export default class PickerItem extends SuperComponent {
 
   externalClasses = [`${prefix}-class`];
 
-  properties = props;
+  properties = {
+    ...props,
+    useSlots: {
+      type: Boolean,
+      value: true,
+    },
+  };
 
   observers = {
-    'options, pickerKeys'() {
+    'options, keys'() {
       this.update();
     },
   };
@@ -78,7 +74,7 @@ export default class PickerItem extends SuperComponent {
     value: '',
     curIndex: 0,
     columnIndex: 0,
-    pickerKeys: { value: 'value', label: 'label', icon: 'icon' },
+    keys: {},
     formatOptions: props.options.value,
     // 虚拟滚动相关
     enableVirtualScroll: false, // 是否启用虚拟滚动
@@ -98,18 +94,10 @@ export default class PickerItem extends SuperComponent {
       this.StartY = 0;
       this.StartOffset = 0;
       this.startTime = 0;
-      this._moveTimer = null;
       this._animationTimer = null; // 动画期间更新虚拟滚动的定时器
-      this._lastOffset = 0; // 上一次的偏移量（用于计算滑动速度）
-      this._lastMoveTime = 0; // 上一次移动的时间
-      this._scrollDirection = 0; // 滑动方向：1向下，-1向上，0静止
     },
     detached() {
       // 清理定时器，防止内存泄漏
-      if (this._moveTimer) {
-        clearTimeout(this._moveTimer);
-        this._moveTimer = null;
-      }
       if (this._animationTimer) {
         clearInterval(this._animationTimer);
         this._animationTimer = null;
@@ -141,61 +129,19 @@ export default class PickerItem extends SuperComponent {
 
     onTouchMove(event) {
       const { StartY, StartOffset } = this;
-      const { itemHeight, enableVirtualScroll } = this.data;
-      const currentTime = Date.now();
+      const { itemHeight } = this.data;
 
       // 偏移增量
       const deltaY = event.touches[0].clientY - StartY;
-      const newOffset = range(StartOffset + deltaY, -(this.getCount() * itemHeight), 0);
+      const newOffset = range(StartOffset + deltaY, -(this.getCount() - 1) * itemHeight, 0);
 
-      // 计算滑动速度和方向
-      const offsetDelta = newOffset - this._lastOffset;
-      const timeDelta = currentTime - this._lastMoveTime || 16;
-      const scrollSpeed = Math.abs(offsetDelta / timeDelta) * 16; // 转换为 px/frame
-
-      // 计算滑动方向（避免嵌套三元表达式）
-      if (offsetDelta > 0) {
-        this._scrollDirection = 1; // 向下滑动
-      } else if (offsetDelta < 0) {
-        this._scrollDirection = -1; // 向上滑动
-      } else {
-        this._scrollDirection = 0; // 静止
-      }
-
-      // 判断是否为快速滑动
-      const isFastScroll = scrollSpeed > VIRTUAL_SCROLL_CONFIG.FAST_SCROLL_THRESHOLD;
-
-      // 优化节流策略：快速滑动时立即更新，慢速滑动时节流
-      if (!this._moveTimer || isFastScroll) {
-        if (this._moveTimer) {
-          clearTimeout(this._moveTimer);
-          this._moveTimer = null;
-        }
-
-        this.setData({ offset: newOffset });
-
-        // 虚拟滚动：更新可见范围（快速滑动时使用更大的缓冲区）
-        if (enableVirtualScroll) {
-          this.updateVisibleOptions(newOffset, isFastScroll);
-        }
-
-        this._moveTimer = setTimeout(() => {
-          this._moveTimer = null;
-        }, VIRTUAL_SCROLL_CONFIG.THROTTLE_TIME);
-      }
-
-      // 记录当前状态
-      this._lastOffset = newOffset;
-      this._lastMoveTime = currentTime;
+      // touchMove 期间只更新 offset，不更新虚拟滚动数据
+      // 虚拟滚动数据在 touchEnd 时统一更新，避免频繁 setData 导致掉帧
+      this.setData({ offset: newOffset });
     },
 
     onTouchEnd(event) {
-      if (this._moveTimer) {
-        clearTimeout(this._moveTimer);
-        this._moveTimer = null;
-      }
-
-      const { offset, itemHeight } = this.data;
+      const { offset, itemHeight, enableVirtualScroll, formatOptions } = this.data;
       const { startTime } = this;
       if (offset === this.StartOffset) {
         return;
@@ -212,14 +158,20 @@ export default class PickerItem extends SuperComponent {
       // 调整偏移量
       const newOffset = range(offset + distance, -this.getCount() * itemHeight, 0);
       const index = range(Math.round(-newOffset / itemHeight), 0, this.getCount() - 1);
+      const finalOffset = -index * itemHeight;
 
-      // 判断是否为快速惯性滚动
+      // 动态计算动画时长：根据滑动距离调整，距离越大时长越长，但有上限
+      const scrollDistance = Math.abs(finalOffset - offset);
+      const scrollItems = scrollDistance / itemHeight;
+      const animationDuration = Math.min(
+        ANIMATION_DURATION_MAX,
+        ANIMATION_DURATION_BASE + scrollItems * 30, // 每滑动一个选项增加30ms
+      );
+
+      // 判断是否为快速惯性滚动（用于决定缓冲区大小）
       const isFastInertia = Math.abs(distance) > itemHeight * 3;
-
-      // 立即更新虚拟滚动视图（修复惯性滚动后空白问题，快速滚动时使用更大缓冲区）
-      if (this.data.enableVirtualScroll) {
-        this.updateVisibleOptions(-index * itemHeight, isFastInertia);
-      }
+      // 根据是否快速惯性滚动选择缓冲区大小
+      const bufferCount = isFastInertia ? VIRTUAL_SCROLL_CONFIG.FAST_SCROLL_BUFFER : VIRTUAL_SCROLL_CONFIG.BUFFER_COUNT;
 
       // 清除之前的动画更新定时器
       if (this._animationTimer) {
@@ -227,48 +179,43 @@ export default class PickerItem extends SuperComponent {
         this._animationTimer = null;
       }
 
-      // 在动画执行期间定期更新虚拟滚动视图（确保动画过程流畅）
-      if (this.data.enableVirtualScroll && Math.abs(distance) > 0) {
-        const startOffset = offset;
-        const endOffset = -index * itemHeight;
-        const startTime = Date.now();
+      // 性能优化：合并 setData 调用，一次性更新所有状态
+      const updateData: any = {
+        offset: finalOffset,
+        duration: animationDuration,
+        curIndex: index,
+      };
 
-        this._animationTimer = setInterval(() => {
-          const elapsed = Date.now() - startTime;
-          const progress = Math.min(elapsed / ANIMATION_DURATION, 1);
+      // 虚拟滚动：预先计算覆盖动画全程的可见范围，避免动画期间频繁更新
+      if (enableVirtualScroll) {
+        // 计算当前位置和目标位置的索引范围
+        const currentIndex = Math.floor(Math.abs(offset) / itemHeight);
+        const targetIndex = index;
 
-          // 使用缓动函数计算当前偏移量
-          const easeOutCubic = 1 - (1 - progress) ** 3;
-          const currentOffset = startOffset + (endOffset - startOffset) * easeOutCubic;
+        // 计算覆盖动画全程的可见范围（从当前位置到目标位置）
+        const minIndex = Math.min(currentIndex, targetIndex);
+        const maxIndex = Math.max(currentIndex, targetIndex);
 
-          // 快速惯性滚动时使用更大的缓冲区
-          this.updateVisibleOptions(currentOffset, isFastInertia);
+        // 使用缓冲区扩展范围，确保动画过程中不会出现空白
+        const animationStartIndex = Math.max(0, minIndex - bufferCount);
+        const animationEndIndex = Math.min(formatOptions.length, maxIndex + this.data.visibleItemCount + bufferCount);
 
-          if (progress >= 1) {
-            clearInterval(this._animationTimer);
-            this._animationTimer = null;
-          }
-        }, 16); // 约60fps
+        updateData.visibleOptions = formatOptions.slice(animationStartIndex, animationEndIndex);
+        updateData.virtualStartIndex = animationStartIndex;
+        updateData.virtualOffsetY = animationStartIndex * itemHeight;
       }
 
-      this.setData(
-        {
-          offset: -index * itemHeight,
-          duration: ANIMATION_DURATION,
-          curIndex: index,
-        },
-        () => {
-          // 动画结束后清除定时器并最终更新虚拟滚动视图
-          if (this._animationTimer) {
-            clearInterval(this._animationTimer);
-            this._animationTimer = null;
-          }
-          if (this.data.enableVirtualScroll) {
-            // 动画结束后使用正常缓冲区（不再是快速滚动状态）
-            this.updateVisibleOptions(-index * itemHeight, false);
-          }
-        },
-      );
+      this.setData(updateData, () => {
+        // 动画结束后，精确更新虚拟滚动视图到最终位置
+        if (enableVirtualScroll) {
+          const visibleRange = this.computeVirtualRange(finalOffset, formatOptions.length, itemHeight, false);
+          this.setData({
+            visibleOptions: formatOptions.slice(visibleRange.startIndex, visibleRange.endIndex),
+            virtualStartIndex: visibleRange.startIndex,
+            virtualOffsetY: visibleRange.startIndex * itemHeight,
+          });
+        }
+      });
 
       if (index === this._selectedIndex) return;
       this.updateSelected(index, true);
@@ -283,10 +230,10 @@ export default class PickerItem extends SuperComponent {
     },
 
     updateSelected(index: number, trigger: boolean) {
-      const { columnIndex, pickerKeys, formatOptions } = this.data;
+      const { columnIndex, keys, formatOptions } = this.data;
       this._selectedIndex = index;
-      this._selectedValue = formatOptions[index]?.[pickerKeys?.value];
-      this._selectedLabel = formatOptions[index]?.[pickerKeys?.label];
+      this._selectedValue = formatOptions[index]?.[keys?.value];
+      this._selectedLabel = formatOptions[index]?.[keys?.label];
 
       if (trigger) {
         this.$parent?.triggerColumnChange({
@@ -298,7 +245,7 @@ export default class PickerItem extends SuperComponent {
 
     // 刷新选中状态
     update() {
-      const { options, value, pickerKeys, format, columnIndex, itemHeight, visibleItemCount } = this.data;
+      const { options, value, keys, format, columnIndex, itemHeight, visibleItemCount } = this.data;
 
       const formatOptions = this.formatOption(options, columnIndex, format);
       const optionsCount = formatOptions.length;
@@ -310,10 +257,10 @@ export default class PickerItem extends SuperComponent {
       let index: number = -1;
       if (optionsCount > 500) {
         // 构建临时 Map（只在查找时构建，不缓存）
-        const valueMap = new Map<any, number>(formatOptions.map((item, idx) => [item[pickerKeys?.value], idx]));
+        const valueMap = new Map<any, number>(formatOptions.map((item, idx) => [item[keys?.value], idx]));
         index = valueMap.get(value) ?? -1;
       } else {
-        index = formatOptions.findIndex((item: PickerItemOption) => item[pickerKeys?.value] === value);
+        index = formatOptions.findIndex((item: PickerItemOption) => item[keys?.value] === value);
       }
       const selectedIndex = index > 0 ? index : 0;
 
@@ -360,21 +307,15 @@ export default class PickerItem extends SuperComponent {
       const { visibleItemCount } = this.data;
 
       // 根据滑动速度动态调整缓冲区大小
-      const dynamicBuffer = isFastScroll ? FAST_SCROLL_BUFFER : BUFFER_COUNT;
-
-      // 根据滑动方向调整缓冲区分配
-      // 向上滑动（_scrollDirection = -1）：增加顶部缓冲区
-      // 向下滑动（_scrollDirection = 1）：增加底部缓冲区
-      const topBuffer = this._scrollDirection === -1 ? dynamicBuffer + 2 : dynamicBuffer;
-      const bottomBuffer = this._scrollDirection === 1 ? dynamicBuffer + 2 : dynamicBuffer;
+      const bufferCount = isFastScroll ? FAST_SCROLL_BUFFER : BUFFER_COUNT;
 
       // 计算当前可见区域的中心索引
       const centerIndex = Math.floor(scrollTop / itemHeight);
 
-      // 计算起始索引（减去顶部缓冲区）
-      const startIndex = Math.max(0, centerIndex - topBuffer);
-      // 计算结束索引（加上可见数量和底部缓冲区）
-      const endIndex = Math.min(totalCount, centerIndex + visibleItemCount + bottomBuffer);
+      // 计算起始索引（减去缓冲区）
+      const startIndex = Math.max(0, centerIndex - bufferCount);
+      // 计算结束索引（加上可见数量和缓冲区）
+      const endIndex = Math.min(totalCount, centerIndex + visibleItemCount + bufferCount);
 
       return { startIndex, endIndex };
     },
@@ -410,13 +351,13 @@ export default class PickerItem extends SuperComponent {
     },
 
     getCurrentSelected() {
-      const { offset, itemHeight, formatOptions, pickerKeys } = this.data;
+      const { offset, itemHeight, formatOptions, keys } = this.data;
       const currentIndex = Math.max(0, Math.min(Math.round(-offset / itemHeight), this.getCount() - 1));
 
       return {
         index: currentIndex,
-        value: formatOptions[currentIndex]?.[pickerKeys?.value],
-        label: formatOptions[currentIndex]?.[pickerKeys?.label],
+        value: formatOptions[currentIndex]?.[keys?.value],
+        label: formatOptions[currentIndex]?.[keys?.label],
       };
     },
   };

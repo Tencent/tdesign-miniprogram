@@ -31,6 +31,7 @@ const props: TdChatMessageProps = {
   /** 对话单元的时间配置 */
   datetime: {
     type: String,
+    value: '',
   },
   /** 自定义的昵称 */
   name: {

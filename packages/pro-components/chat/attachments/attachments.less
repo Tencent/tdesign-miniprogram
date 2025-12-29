@@ -4,7 +4,7 @@
 
 @attachments-background-color: @bg-color-secondarycontainer;
 @attachments-file-margin: 16rpx;
-@attachments-file-margin-tiny: 8rpx;
+@attachments-file-margin-tiny: 10rpx;
 @attachments-file-padding: 24rpx;
 @attachments-file-image-size: 104rpx;
 @attachments-file-width: 256rpx;
@@ -12,10 +12,8 @@
 @attachments-file-icon-size: 64rpx;
 @attachments-title-color: @text-color-primary;
 @attachments-desc-color: @text-color-placeholder;
-@attachments-title-font-size: 28rpx;
-@attachments-desc-font-size: 24rpx;
-@attachments-title-line-height: 44rpx;
-@attachments-desc-line-height: 40rpx;
+@attachments-title-font: @font-body-medium;
+@attachments-desc-font: @font-body-small;
 @attachments-title-margin-bottom: -2rpx;
 
 .@{attachments} {
@@ -94,10 +92,12 @@
     display: block;
     position: relative;
     background-color: @attachments-background-color;
+    overflow: visible; // 允许删除按钮溢出显示
 
-    // 仅当有删除按钮时，增加上边距
+    // 仅当有删除按钮时，增加上边距和右边距以留出删除按钮空间
     &--removable {
-      margin-top: @attachments-file-margin-tiny;
+      margin-top: 12rpx;
+      margin-right: 8rpx;
     }
 
     // 删除按钮样式
@@ -106,8 +106,8 @@
       color: @bg-color-container;
       border-radius: @radius-circle;
       position: absolute;
-      right: -4px;
-      top: -4px;
+      right: -8rpx;
+      top: -8rpx;
     }
 
     // 图片文件样式 适配图片附件在聊天中的特殊样式
@@ -160,10 +160,8 @@
         .@{attachments}__title {
           width: 100%;
           color: @attachments-title-color;
-          font-size: @attachments-title-font-size;
+          font: @attachments-title-font;
           font-style: normal;
-          font-weight: 400;
-          line-height: @attachments-title-line-height;
           /* 核心：单行溢出隐藏 + 显示省略号（兼容全浏览器） */
           white-space: nowrap; /* 强制文字在一行显示，不换行 */
           overflow: hidden; /* 超出容器部分隐藏 */
@@ -176,10 +174,8 @@
         .@{attachments}__desc {
           width: 100%;
           color: @attachments-desc-color;
-          font-size: @attachments-desc-font-size;
+          font: @attachments-desc-font;
           font-style: normal;
-          font-weight: 400;
-          line-height: @attachments-desc-line-height;
           margin-top: -4rpx;
         }
       }
@@ -189,7 +185,6 @@
 
 // 对话中附件样式覆盖
 .@{attachments}--chatting {
-
   &.all_images {
     width: 100%;
 

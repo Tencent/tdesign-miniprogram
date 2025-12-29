@@ -10,6 +10,7 @@
         data-index="{{index}}"
         icon="{{ { name: item.icon, color: item.color } }}"
         text="{{item.label || ''}}"
+        description="{{item.description || ''}}"
         image="{{item.image || ''}}"
         style="--td-grid-item-text-color: {{item.color}}"
       >
@@ -30,6 +31,7 @@
               bind:tap="onSelect"
               icon="{{ { name: item.icon, color: item.color } }}"
               text="{{item.label || ''}}"
+              description="{{item.description || ''}}"
               image="{{item.image || ''}}"
               style="--td-grid-item-text-color: {{item.color}}"
             >

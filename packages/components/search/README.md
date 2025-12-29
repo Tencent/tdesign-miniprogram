@@ -19,7 +19,7 @@ isComponent: true
 
 ## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/wG6pximT7xSH" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/B1QKApmN8H5s" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -119,18 +119,18 @@ t-class-left | 左侧图标样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-search-action-color | @brand-color | - 
---td-search-bg-color | @bg-color-secondarycontainer | - 
---td-search-clear-icon-color | @text-color-placeholder | - 
---td-search-clear-icon-font-size | 48rpx | - 
---td-search-disabled-text-color | @text-color-disabled | - 
---td-search-font-size | @font-size-m | - 
---td-search-height | 80rpx | - 
---td-search-icon-color | @text-color-placeholder | - 
---td-search-icon-font-size | 48rpx | - 
---td-search-label-color | @text-color-primary | - 
---td-search-padding | 16rpx 24rpx | - 
---td-search-placeholder-color | @text-color-placeholder | - 
---td-search-result-high-light-color | @brand-color | - 
---td-search-square-radius | @radius-default | - 
+--td-search-action-color | @brand-color | -
+--td-search-bg-color | @bg-color-secondarycontainer | -
+--td-search-clear-icon-color | @text-color-placeholder | -
+--td-search-clear-icon-size | 48rpx | -
+--td-search-disabled-text-color | @text-color-disabled | -
+--td-search-font | @font-body-large | -
+--td-search-height | 80rpx | -
+--td-search-icon-color | @text-color-placeholder | -
+--td-search-icon-size | 48rpx | -
+--td-search-label-color | @text-color-primary | -
+--td-search-padding | 16rpx 24rpx | -
+--td-search-placeholder-color | @text-color-placeholder | -
+--td-search-result-high-light-color | @brand-color | -
+--td-search-square-radius | @radius-default | -
 --td-search-text-color | @text-color-primary | -

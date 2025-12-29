@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="Dialog" leftArrow />
+<t-navbar class="demo-navbar" title="Dialog" leftArrow placeholder />
 <view class="demo">
   <t-demo-header
     title="Dialog 对话框"

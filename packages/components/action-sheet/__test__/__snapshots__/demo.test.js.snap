@@ -9,6 +9,17 @@ exports[`ActionSheet ActionSheet align demo works fine 1`] = `
   />
   <t-button
     block="{{true}}"
+    customDataset="center"
+    size="large"
+    theme="primary"
+    variant="outline"
+    bind:tap="handleAction"
+  >
+    居中列表型
+  </t-button>
+  <t-button
+    block="{{true}}"
+    customDataset="left"
     size="large"
     theme="primary"
     variant="outline"
@@ -40,6 +51,15 @@ exports[`ActionSheet ActionSheet grid demo works fine 1`] = `
     size="large"
     theme="primary"
     variant="outline"
+    bind:tap="handleActionWithDesc"
+  >
+    常描述宫格型
+  </t-button>
+  <t-button
+    block="{{true}}"
+    size="large"
+    theme="primary"
+    variant="outline"
     bind:tap="handleMultiAction"
   >
     带翻页宫格型
@@ -61,7 +81,7 @@ exports[`ActionSheet ActionSheet list demo works fine 1`] = `
     variant="outline"
     bind:tap="handleAction"
   >
-    列表型
+    常规列表型
   </t-button>
   <t-button
     block="{{true}}"

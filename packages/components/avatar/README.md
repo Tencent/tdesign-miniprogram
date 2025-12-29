@@ -19,7 +19,7 @@ isComponent: true
 
 ## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/a86Sfimw7VSO" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/oiQl6pmr855m" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -139,26 +139,26 @@ t-class-image | 图片样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-avatar-group-init-z-index | @avatar-group-init-zIndex) - @i | - 
---td-avatar-group-line-spacing | 4rpx | - 
---td-avatar-group-margin-left-large | -16rpx | - 
---td-avatar-group-margin-left-medium | -16rpx | - 
---td-avatar-group-margin-left-small | -16rpx | - 
---td-avatar-bg-color | @brand-color-light-active | - 
---td-avatar-border-color | #fff | - 
---td-avatar-border-width-large | 6rpx | - 
---td-avatar-border-width-medium | 4rpx | - 
---td-avatar-border-width-small | 2rpx | - 
---td-avatar-circle-border-radius | @radius-circle | - 
---td-avatar-content-color | @brand-color | - 
---td-avatar-icon-large-font-size | 64rpx | - 
---td-avatar-icon-medium-font-size | 48rpx | - 
---td-avatar-icon-small-font-size | 40rpx | - 
---td-avatar-large-width | 128rpx | - 
---td-avatar-margin-left | 0 | - 
---td-avatar-medium-width | 96rpx | - 
---td-avatar-round-border-radius | @radius-default | - 
---td-avatar-small-width | 80rpx | - 
---td-avatar-text-large-font-size | @font-size-xl | - 
---td-avatar-text-medium-font-size | @font-size-m | - 
+--td-avatar-group-init-z-index | @avatar-group-init-zIndex | -
+--td-avatar-group-line-spacing | 4rpx | -
+--td-avatar-group-margin-left-large | -16rpx | -
+--td-avatar-group-margin-left-medium | -16rpx | -
+--td-avatar-group-margin-left-small | -16rpx | -
+--td-avatar-bg-color | @brand-color-light-active | -
+--td-avatar-border-color | #fff | -
+--td-avatar-border-width-large | 6rpx | -
+--td-avatar-border-width-medium | 4rpx | -
+--td-avatar-border-width-small | 2rpx | -
+--td-avatar-circle-border-radius | @radius-circle | -
+--td-avatar-content-color | @brand-color | -
+--td-avatar-icon-large-font-size | 64rpx | -
+--td-avatar-icon-medium-font-size | 48rpx | -
+--td-avatar-icon-small-font-size | 40rpx | -
+--td-avatar-large-width | 128rpx | -
+--td-avatar-margin-left | 0 | -
+--td-avatar-medium-width | 96rpx | -
+--td-avatar-round-border-radius | @radius-default | -
+--td-avatar-small-width | 80rpx | -
+--td-avatar-text-large-font-size | @font-size-xl | -
+--td-avatar-text-medium-font-size | @font-size-m | -
 --td-avatar-text-small-font-size | @font-size-base | -

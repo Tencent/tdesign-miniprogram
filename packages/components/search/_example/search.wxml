@@ -1,4 +1,4 @@
-<t-navbar title="Search" leftArrow />
+<t-navbar title="Search" leftArrow placeholder zIndex="{{99}}" />
 <view class="demo">
   <t-demo-header
     title="Search 搜索框"

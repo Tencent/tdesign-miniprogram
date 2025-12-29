@@ -1,6 +1,6 @@
 ---
 title: SideBar 侧边栏
-description: 用于内容分类后的展示切换。
+description: 用于信息分类后的展示切换或锚点，位于页面左侧。
 spline: navigation
 isComponent: true
 ---
@@ -28,7 +28,7 @@ isComponent: true
 
 ## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/fL9gNim87GSp" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/7rQ9xpmS8K5X" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -98,14 +98,13 @@ value | String / Number | - | 当前选项的值 | N
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-side-bar-bg-color | @bg-color-secondarycontainer | - 
---td-side-bar-height | 100% | - 
---td-side-bar-width | 206rpx | - 
---td-side-bar-active-color | @brand-color | - 
---td-side-bar-border-radius | 18rpx | - 
---td-side-bar-color | @text-color-primary | - 
---td-side-bar-disabled-color | @text-color-disabled | - 
---td-side-bar-font-size | 32rpx | - 
---td-side-bar-icon-size | 40rpx | - 
---td-side-bar-item-height | auto | - 
---td-side-bar-item-line-height | 48rpx | -
+--td-side-bar-bg-color | @bg-color-secondarycontainer | -
+--td-side-bar-height | 100% | -
+--td-side-bar-width | 206rpx | -
+--td-side-bar-active-color | @brand-color | -
+--td-side-bar-border-radius | 18rpx | -
+--td-side-bar-color | @text-color-primary | -
+--td-side-bar-disabled-color | @text-color-disabled | -
+--td-side-bar-font | @font-body-large | -
+--td-side-bar-icon-size | 40rpx | -
+--td-side-bar-item-height | auto | -

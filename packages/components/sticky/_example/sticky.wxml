@@ -1,8 +1,8 @@
 <view class="custom-navbar">
-  <t-navbar title="Sticky" leftArrow />
+  <t-navbar title="Sticky" leftArrow placeholder zIndex="{{99}}" />
 </view>
 <view class="demo tdesign-demo-sticky-base">
-  <t-demo-header title="Sticky 吸顶" desc="用于常驻页面顶部的信息、操作展示。" notice="渲染框架支持情况：WebView" />
+  <t-demo-header title="Sticky 吸顶容器" desc="用于常驻页面顶部的信息、操作展示。" notice="渲染框架支持情况：WebView" />
   <t-demo title="01 类型" desc="基础吸顶" padding>
     <base navbar-height="{{navbarHeight}}" />
   </t-demo>

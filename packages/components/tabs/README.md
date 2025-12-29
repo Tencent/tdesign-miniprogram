@@ -19,7 +19,7 @@ isComponent: true
 
 ## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/YR98fimt7MSV" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/AgQDzpm88Y50" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -185,20 +185,20 @@ panel | 自定义 `panel` 显示内容
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-tab-border-color | @component-stroke | - 
---td-tab-font-size | 28rpx | - 
---td-tab-icon-size | 36rpx | - 
---td-tab-item-active-color | @brand-color | - 
---td-tab-item-color | @text-color-primary | - 
---td-tab-item-disabled-color | @text-color-disabled | - 
---td-tab-item-height | 96rpx | - 
---td-tab-item-tag-active-bg | @brand-color-light | - 
---td-tab-item-tag-bg | @bg-color-secondarycontainer | - 
---td-tab-item-tag-height | 64rpx | - 
---td-tab-item-vertical-height | 108rpx | - 
---td-tab-item-vertical-width | 208rpx | - 
---td-tab-nav-bg-color | @bg-color-container | - 
---td-tab-track-color | @brand-color | - 
---td-tab-track-radius | 8rpx | - 
---td-tab-track-thickness | 6rpx | - 
+--td-tab-border-color | @component-stroke | -
+--td-tab-font | @font-body-medium | -
+--td-tab-icon-size | 36rpx | -
+--td-tab-item-active-color | @brand-color | -
+--td-tab-item-color | @text-color-primary | -
+--td-tab-item-disabled-color | @text-color-disabled | -
+--td-tab-item-height | 96rpx | -
+--td-tab-item-tag-active-bg | @brand-color-light | -
+--td-tab-item-tag-bg | @bg-color-secondarycontainer | -
+--td-tab-item-tag-height | 64rpx | -
+--td-tab-item-vertical-height | 108rpx | -
+--td-tab-item-vertical-width | 208rpx | -
+--td-tab-nav-bg-color | @bg-color-container | -
+--td-tab-track-color | @brand-color | -
+--td-tab-track-radius | 8rpx | -
+--td-tab-track-thickness | 6rpx | -
 --td-tab-track-width | 32rpx | -

@@ -21,7 +21,7 @@ isComponent: true
 
 步骤条，方向可以横向和纵向，可以自定义步骤条显示内容以及是否可写
 
-<a href="https://developers.weixin.qq.com/s/3H9EuimQ7JS0" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/iEQBNpmL8P5p" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -133,29 +133,29 @@ t-class-title | 标题样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-step-item-circle-font-size | 28rpx | - 
---td-step-item-circle-size | 44rpx | - 
---td-step-item-default-circle-bg | @bg-color-secondarycontainer | - 
---td-step-item-default-circle-color | @text-color-placeholder | - 
---td-step-item-default-dot-border-color | @component-border | - 
---td-step-item-default-icon-color | @text-color-placeholder | - 
---td-step-item-default-title-color | @text-color-placeholder | - 
---td-step-item-description-color | @text-color-placeholder | - 
---td-step-item-dot-size | 16rpx | - 
---td-step-item-error-circle-bg | @error-color-1 | - 
---td-step-item-error-circle-color | @error-color | - 
---td-step-item-error-dot-border-color | @error-color | - 
---td-step-item-error-icon-color | @error-color | - 
---td-step-item-error-title-color | @error-color | - 
---td-step-item-finish-circle-bg | @brand-color-light | - 
---td-step-item-finish-circle-color | @brand-color | - 
---td-step-item-finish-dot-border-color | @brand-color | - 
---td-step-item-finish-icon-color | @brand-color | - 
---td-step-item-finish-line-color | @brand-color | - 
---td-step-item-finish-title-color | @text-color-primary | - 
---td-step-item-line-color | @component-border | - 
---td-step-item-process-circle-bg | @brand-color | - 
---td-step-item-process-circle-color | @text-color-anti | - 
---td-step-item-process-dot-border-color | @brand-color | - 
---td-step-item-process-icon-color | @brand-color | - 
+--td-step-item-circle-size | 44rpx | -
+--td-step-item-circle-text-font | @font-body-medium | -
+--td-step-item-default-circle-bg | @bg-color-secondarycontainer | -
+--td-step-item-default-circle-color | @text-color-placeholder | -
+--td-step-item-default-dot-border-color | @component-border | -
+--td-step-item-default-icon-color | @text-color-placeholder | -
+--td-step-item-default-title-color | @text-color-placeholder | -
+--td-step-item-description-color | @text-color-placeholder | -
+--td-step-item-dot-size | 16rpx | -
+--td-step-item-error-circle-bg | @error-color-1 | -
+--td-step-item-error-circle-color | @error-color | -
+--td-step-item-error-dot-border-color | @error-color | -
+--td-step-item-error-icon-color | @error-color | -
+--td-step-item-error-title-color | @error-color | -
+--td-step-item-finish-circle-bg | @brand-color-light | -
+--td-step-item-finish-circle-color | @brand-color | -
+--td-step-item-finish-dot-border-color | @brand-color | -
+--td-step-item-finish-icon-color | @brand-color | -
+--td-step-item-finish-line-color | @brand-color | -
+--td-step-item-finish-title-color | @text-color-primary | -
+--td-step-item-line-color | @component-border | -
+--td-step-item-process-circle-bg | @brand-color | -
+--td-step-item-process-circle-color | @text-color-anti | -
+--td-step-item-process-dot-border-color | @brand-color | -
+--td-step-item-process-icon-color | @brand-color | -
 --td-step-item-process-title-color | @brand-color | -

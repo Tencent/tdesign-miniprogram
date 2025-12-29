@@ -9,7 +9,6 @@
     "site:preview": "cross-env NODE_ENV=development vite build --configLoader runner --mode preview && cp dist/index.html dist/404.html",
     "site:prerender": "node scripts/prerender.mjs",
     "update:icons": "node scripts/update-icons.mjs",
-    "update:css": "node scripts/generate-css-vars.mjs",
     "qrcode": "node scripts/qrcode/index.mjs"
   },
   "license": "MIT",
@@ -19,7 +18,8 @@
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^13.3.0",
-    "@tdesign/site-components": "^0.18.0-alpha.2",
+    "@tdesign/site-components": "^0.18.0-alpha.7",
+    "@tdesign/theme-generator": "^1.2.0",
     "@types/prismjs": "^1.26.5",
     "@vitejs/plugin-vue": "^5.2.4",
     "@vitejs/plugin-vue-jsx": "^4.2.0",
@@ -28,7 +28,6 @@
     "playwright": "^1.19.1",
     "prismjs": "^1.24.1",
     "tdesign-icons-view": "^0.4.0",
-    "tdesign-theme-generator": "^1.1.8",
     "vite": "^6.2.3",
     "vite-plugin-tdoc": "^2.0.1"
   }

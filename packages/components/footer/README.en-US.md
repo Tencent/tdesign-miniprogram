@@ -20,18 +20,15 @@ theme | String | 'text' | `deprecated`。options: text/logo | N
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-footer-link-color | @brand-color | - 
---td-footer-link-dividing-line-color | @text-color-placeholder | - 
---td-footer-link-dividing-line-padding | @spacer-1 | - 
---td-footer-link-font-size | @font-size-s | - 
---td-footer-link-line-height | 40rpx | - 
---td-footer-logo-icon-height | 48rpx | - 
---td-footer-logo-icon-margin-right | @spacer | - 
---td-footer-logo-icon-width | 48rpx | - 
---td-footer-logo-title-font-size | @font-size-m | - 
---td-footer-logo-title-line-height | 48rpx | - 
---td-footer-logo-title-url-width | 256rpx | - 
---td-footer-text-color | @text-color-placeholder | - 
---td-footer-text-font-size | @font-size-s | - 
---td-footer-text-line-height | 40rpx | - 
+--td-footer-link-color | @brand-color | -
+--td-footer-link-dividing-line-color | @text-color-placeholder | -
+--td-footer-link-dividing-line-padding | @spacer-1 | -
+--td-footer-link-font | @font-body-medium | -
+--td-footer-logo-icon-height | 48rpx | -
+--td-footer-logo-icon-margin-right | @spacer | -
+--td-footer-logo-icon-width | 48rpx | -
+--td-footer-logo-title-font | @font-title-medium | -
+--td-footer-logo-title-url-width | 256rpx | -
+--td-footer-text-color | @text-color-placeholder | -
+--td-footer-text-font | @font-body-small | -
 --td-footer-text-margin-top | 8rpx | -

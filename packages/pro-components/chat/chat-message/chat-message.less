@@ -18,7 +18,7 @@
 }
 
 .@{attachments} + .@{chat-content}:not(:empty),
-.@{chat-thinking} + .@{chat-content}:not(:empty){
+.@{chat-thinking} + .@{chat-content}:not(:empty) {
   margin-top: 24rpx;
 }
 
@@ -54,6 +54,10 @@
   &__header {
     .@{chat-message}__avatar {
       padding-top: calc(@chat-message-height + @spacer);
+
+      &:empty {
+        padding-top: 0;
+      }
     }
   }
 
@@ -115,6 +119,10 @@
     .@{chat-message}__avatar {
       margin-left: @spacer-1;
       margin-right: 0;
+
+      &:empty {
+        margin-left: 0;
+      }
     }
   }
 
@@ -125,6 +133,11 @@
     display: flex;
     margin-right: @spacer-1;
     padding-top: calc(@chat-message-height + @spacer);
+
+    &:empty {
+      padding-top: 0;
+      margin-right: 0;
+    }
 
     &-image {
       width: @spacer-4;
@@ -139,9 +152,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    font-size: @font-size-m;
-    line-height: 48rpx;
-    font-family: @font-family;
+    font: @font-body-large;
 
     .t-skeleton {
       width: 100%;
@@ -155,12 +166,15 @@
     justify-content: flex-start;
     align-items: center;
     height: @chat-message-height;
-    font-size: @font-size-base;
-    line-height: @chat-message-height;
-    font-family: @font-family;
+    font: @font-body-medium;
     color: @text-color-placeholder;
     // padding-left: @spacer-2;
     margin-bottom: @spacer;
+
+    &:empty {
+      height: 0;
+      margin-bottom: 0;
+    }
   }
 
   // 名称样式

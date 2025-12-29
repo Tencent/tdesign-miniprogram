@@ -38,6 +38,14 @@ export interface TdNavbarProps {
     value?: boolean;
   };
   /**
+   * 固定在顶部时是否开启占位
+   * @default false
+   */
+  placeholder?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 是否开启顶部安全区适配
    * @default true
    */
@@ -66,5 +74,13 @@ export interface TdNavbarProps {
   visible?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 导航条层级
+   * @default 1
+   */
+  zIndex?: {
+    type: NumberConstructor;
+    value?: number;
   };
 }

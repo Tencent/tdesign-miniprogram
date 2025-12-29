@@ -19,7 +19,7 @@ isComponent: true
 
 ## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/6H70dimL7jSK" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/LyQxOpme8p5A" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -135,23 +135,21 @@ t-class-text | 文本样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-grid-bg-color | @bg-color-container | - 
---td-grid-card-radius | @radius-large | - 
---td-grid-item-bg-color | @bg-color-container | - 
---td-grid-item-description-color | @text-color-placeholder | - 
---td-grid-item-description-font-size | 24rpx | - 
---td-grid-item-description-line-height | 40rpx | - 
---td-grid-item-description-padding-top | 0 | - 
---td-grid-item-horizontal-text-description-top | 0 | - 
---td-grid-item-horizontal-text-padding-left | 0 | - 
---td-grid-item-hover-bg-color | @bg-color-secondarycontainer | - 
---td-grid-item-image-middle-width | 80rpx | - 
---td-grid-item-image-small-width | 64rpx | - 
---td-grid-item-image-width | 96rpx | - 
---td-grid-item-padding | 32rpx | - 
---td-grid-item-text-color | @text-color-primary | - 
---td-grid-item-text-font-size | 28rpx | - 
---td-grid-item-text-line-height | 44rpx | - 
---td-grid-item-text-middle-font-size | 24rpx | - 
---td-grid-item-text-padding-top | 16rpx | - 
---td-grid-item-text-small-font-size | 24rpx | -
+--td-grid-bg-color | @bg-color-container | -
+--td-grid-card-radius | @radius-large | -
+--td-grid-item-bg-color | @bg-color-container | -
+--td-grid-item-description-color | @text-color-placeholder | -
+--td-grid-item-description-font | @font-body-small | -
+--td-grid-item-description-padding-top | 0 | -
+--td-grid-item-horizontal-text-description-top | 0 | -
+--td-grid-item-horizontal-text-padding-left | 0 | -
+--td-grid-item-hover-bg-color | @bg-color-secondarycontainer | -
+--td-grid-item-image-middle-width | 80rpx | -
+--td-grid-item-image-small-width | 64rpx | -
+--td-grid-item-image-width | 96rpx | -
+--td-grid-item-padding | 32rpx | -
+--td-grid-item-text-color | @text-color-primary | -
+--td-grid-item-text-font | @font-body-medium | -
+--td-grid-item-text-middle-font | @font-body-small | -
+--td-grid-item-text-padding-top | 16rpx | -
+--td-grid-item-text-small-font | @font-body-extraSmall | -

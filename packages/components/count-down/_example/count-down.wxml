@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="CountDown" leftArrow />
+<t-navbar class="demo-navbar" title="CountDown" leftArrow placeholder />
 <t-demo-header title="CountDown 倒计时" desc="用于实时展示倒计时数值。" notice="渲染框架支持情况：Skyline、WebView" />
 <t-demo padding title="01 组件类型">
   <base />

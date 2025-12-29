@@ -18,7 +18,7 @@ isComponent: true
 
 ## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/Jraocimc7mSr" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/LaQgipmj8z5j" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -99,9 +99,8 @@ t-class-text | 文本样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-loading-color | @brand-color | - 
---td-loading-full-bg-color | rgba(255, 255, 255, 0.6) | - 
---td-loading-text-color | @text-color-primary | - 
---td-loading-text-font-size | 24rpx | - 
---td-loading-text-line-height | 40rpx | - 
+--td-loading-color | @brand-color | -
+--td-loading-full-bg-color | rgba(255, 255, 255, 0.6) | -
+--td-loading-text-color | @text-color-primary | -
+--td-loading-text-font | @font-body-small | -
 --td-loading-z-index | 3500 | -

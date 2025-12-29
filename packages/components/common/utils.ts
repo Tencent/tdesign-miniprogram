@@ -1,12 +1,17 @@
 import { prefix } from './config';
-import { isString, isNumber, isDef, isBoolean, isObject } from './validator';
+import { isString, isNumeric, isDef, isBoolean, isObject } from './validator';
 import { getWindowInfo, getAppBaseInfo, getDeviceInfo } from './wechat';
 
-export const systemInfo: WechatMiniprogram.WindowInfo | WechatMiniprogram.SystemInfo = getWindowInfo();
+interface WxWorkSystemInfo extends WechatMiniprogram.SystemInfo {
+  environment?: 'wxwork';
+}
+interface SystemInfo extends WxWorkSystemInfo {}
 
-export const appBaseInfo: WechatMiniprogram.AppBaseInfo | WechatMiniprogram.SystemInfo = getAppBaseInfo();
+export const systemInfo: WechatMiniprogram.WindowInfo | SystemInfo = getWindowInfo();
 
-export const deviceInfo: WechatMiniprogram.DeviceInfo | WechatMiniprogram.SystemInfo = getDeviceInfo();
+export const appBaseInfo: WechatMiniprogram.AppBaseInfo | SystemInfo = getAppBaseInfo();
+
+export const deviceInfo: WechatMiniprogram.DeviceInfo | SystemInfo = getDeviceInfo();
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
@@ -133,12 +138,21 @@ export const isIOS = function (): boolean {
   return !!(deviceInfo?.system?.toLowerCase().search('ios') + 1);
 };
 
+/**
+ * 判断是否是为企微环境
+ * 企微环境 wx.getSystemInfoSync() 接口会额外返回 environment 字段（微信中不返回）
+ * https://developer.work.weixin.qq.com/document/path/91511
+ */
+export const isWxWork = (deviceInfo as SystemInfo)?.environment === 'wxwork';
+
+export const isPC = ['mac', 'windows'].includes(deviceInfo?.platform);
+
 export const addUnit = function (value?: string | number): string | undefined {
   if (!isDef(value)) {
     return undefined;
   }
   value = String(value);
-  return isNumber(value) ? `${value}px` : value;
+  return isNumeric(value) ? `${value}px` : value;
 };
 
 /**

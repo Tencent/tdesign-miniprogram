@@ -1,19 +1,7 @@
 <view class="block">
-  <t-navbar
-    t-class-placeholder="t-navbar-placeholder"
-    t-class-content="t-navbar-content"
-    title="标题文字"
-    t-class-title="nav-title"
-  />
+  <t-navbar title="标题文字" fixed="{{false}}" placeholder t-class-title="nav-title" />
 </view>
 
 <view class="block">
-  <t-navbar
-    t-class-placeholder="t-navbar-placeholder"
-    t-class-content="t-navbar-content"
-    class="block"
-    title="标题文字"
-    left-arrow
-    bind:go-back="handleBack"
-  />
+  <t-navbar class="block" title="标题文字" fixed="{{false}}" left-arrow bind:go-back="handleBack" />
 </view>

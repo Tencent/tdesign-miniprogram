@@ -1,4 +1,4 @@
-<t-navbar title="Rate" leftArrow />
+<t-navbar title="Rate" leftArrow placeholder />
 <view class="demo">
   <t-demo-header title="Rate 评分" desc="用于对某行为/事物进行打分。" notice="渲染框架支持情况：WebView" />
   <t-demo title="01 组件类型">

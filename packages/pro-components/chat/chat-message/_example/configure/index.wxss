@@ -8,3 +8,15 @@
   background-color: var(--td-bg-color-container);
   padding: 32rpx 32rpx 0 32rpx;
 }
+
+.name-block {
+  display: flex;
+  align-items: center;
+  margin-right: 16rpx;
+}
+
+.name-block image {
+  margin-right: 16rpx;
+  width: 40rpx;
+  height: 40rpx;
+}

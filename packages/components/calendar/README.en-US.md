@@ -12,7 +12,7 @@ allow-same-day | Boolean | false | `1.11.2` | N
 auto-close | Boolean | true | `0.34.0` | N
 confirm-btn | String / Object | '' | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/calendar/type.ts) | N
 first-day-of-week | Number | 0 | \- | N
-format | Function | - | Typescript: `CalendarFormatType ` `type CalendarFormatType = (day: TDate) => TDate` `type TDateType = 'selected' \| 'disabled' \| 'start' \| 'centre' \| 'end' \| ''` `interface TDate { date: Date; day: number; type: TDateType; className?: string; prefix?: string; suffix?: string;}`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/calendar/type.ts) | N
+format | Function | - | Typescript: `CalendarFormatType ` `type CalendarFormatType = (day: TDate) => TDate` `type TDateType = 'selected' \| 'disabled' \| 'start' \| 'start-end' \|'centre' \| 'end' \| ''` `interface TDate { date: Date; day: number; type: TDateType; className?: string; prefix?: string; suffix?: string;}`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/calendar/type.ts) | N
 locale-text | Object | - | Typescript: `CalendarLocaleText` `interface CalendarLocaleText {title?: string; weekdays?: string[]; monthTitle?: string; months?: string[]; confirm?: string;}`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/calendar/type.ts) | N
 max-date | Number | - | \- | N
 min-date | Number | - | \- | N
@@ -49,16 +49,16 @@ title | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-calendar-active-color | @brand-color | - 
---td-calendar-bg-color | @bg-color-container | - 
---td-calendar-days-color | @text-color-secondary | - 
---td-calendar-item-centre-color | @brand-color-light | - 
---td-calendar-item-disabled-color | @text-color-disabled | - 
---td-calendar-item-suffix-color | @text-color-placeholder | - 
---td-calendar-radius | 24rpx | - 
---td-calendar-selected-border-radius | @radius-default | - 
---td-calendar-selected-color | @text-color-anti | - 
---td-calendar-switch-mode-icon-color | @text-color-secondary | - 
---td-calendar-switch-mode-icon-disabled-color | @text-color-disabled | - 
---td-calendar-title-color | @text-color-primary | - 
---td-calendar-title-font-size | 18px | -
+--td-calendar-active-color | @brand-color | -
+--td-calendar-bg-color | @bg-color-container | -
+--td-calendar-days-color | @text-color-secondary | -
+--td-calendar-item-centre-color | @brand-color-light | -
+--td-calendar-item-disabled-color | @text-color-disabled | -
+--td-calendar-item-suffix-color | @text-color-placeholder | -
+--td-calendar-radius | 24rpx | -
+--td-calendar-selected-border-radius | @radius-default | -
+--td-calendar-selected-color | @text-color-anti | -
+--td-calendar-switch-mode-icon-color | @text-color-secondary | -
+--td-calendar-switch-mode-icon-disabled-color | @text-color-disabled | -
+--td-calendar-title-color | @text-color-primary | -
+--td-calendar-title-font | @font-title-large | -

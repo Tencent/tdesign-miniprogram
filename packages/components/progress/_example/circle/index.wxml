@@ -1,4 +1,4 @@
-<t-demo wx:if="{{!skylineRender}}" desc="环形进度条" padding>
+<t-demo desc="环形进度条" padding>
   <t-progress theme="circle" percentage="30" />
   <t-progress theme="circle" percentage="30" status="warning" />
   <t-progress theme="circle" percentage="30" status="error" />

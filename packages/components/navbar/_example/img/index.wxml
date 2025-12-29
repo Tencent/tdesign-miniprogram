@@ -1,4 +1,4 @@
-<t-navbar t-class-placeholder="t-navbar-placeholder" t-class-content="t-navbar-content">
+<t-navbar fixed="{{false}}">
   <view slot="left">
     <t-image
       t-class="custom-image"

@@ -1,4 +1,4 @@
-<t-navbar title="SwipeCell" leftArrow />
+<t-navbar title="SwipeCell" leftArrow placeholder />
 <view class="demo">
   <t-demo-header
     title="SwipeCell 滑动操作"

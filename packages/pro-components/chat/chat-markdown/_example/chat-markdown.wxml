@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="ChatMarkdown" leftArrow />
+<t-navbar class="demo-navbar" title="ChatMarkdown" leftArrow placeholder />
 <view class="demo">
   <t-demo-header
     title="ChatMarkdown Markdown内容"

@@ -112,11 +112,11 @@ whitespace | String | - | 值为空格校验不通过时表单项显示文案，
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-form-bg-color | @bg-color-container | - 
---td-form-border-radius | 0 | - 
---td-form-padding | 0 | - 
---td-form-readonly-bg-color | @bg-color-secondarycontainer | - 
---td-form-item-horizontal-padding | 32rpx | - 
---td-form-item-justify-content | space-between | - 
---td-form-item-label-width | 160rpx | - 
+--td-form-bg-color | @bg-color-container | -
+--td-form-border-radius | 0 | -
+--td-form-padding | 0 | -
+--td-form-readonly-bg-color | @bg-color-secondarycontainer | -
+--td-form-item-horizontal-padding | 32rpx | -
+--td-form-item-justify-content | space-between | -
+--td-form-item-label-width | 160rpx | -
 --td-form-item-vertical-padding | 32rpx | -

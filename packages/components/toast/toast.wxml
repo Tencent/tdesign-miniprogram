@@ -29,7 +29,7 @@
 </view>
 <t-overlay
   style="{{ overlayProps && overlayProps.style || ''}}"
-  visible="{{realVisible && (showOverlay || preventScrollThrough)}}"
+  visible="{{visible && (showOverlay || preventScrollThrough)}}"
   z-index="{{overlayProps && overlayProps.zIndex || 11000}}"
   duration="{{overlayProps && overlayProps.duration || 300}}"
   usingCustomNavbar="{{overlayProps && overlayProps.usingCustomNavbar || usingCustomNavbar}}"

@@ -22,6 +22,7 @@
     wx:for="{{columns}}"
     wx:key="index"
     class="{{_.cls(classPrefix + '__item', [['roomly', columns.length >= 5 && index == 0]])}}"
+    use-slots="{{false}}"
     options="{{item}}"
     index="index"
     format="{{formatter}}"

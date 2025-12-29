@@ -67,16 +67,3 @@ status | String | pending | 必需。思考状态。可选项：complete/stop/er
 名称 | 参数 | 描述
 -- | -- | --
 collapsed-change | `(value: Boolean)` | 切换折叠面板时触发
-
-### CSS Variables
-
-组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述
--- | -- | --
---td-chat-thinking-bg-color | @bg-color-container | 思考过程背景色
---td-chat-thinking-border-color | @component-border | 思考过程边框颜色
---td-chat-thinking-border-radius | @radius-default | 思考过程边框圆角
---td-chat-thinking-color | @text-color-primary | 思考过程文字颜色
---td-chat-thinking-font-size | @font-size-base | 思考过程文字大小
---td-chat-thinking-line-height | @line-height-base | 思考过程行高
---td-chat-thinking-padding | @spacer-2 | 思考过程内边距

@@ -52,13 +52,13 @@ add-content | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-upload-add-bg-color | @bg-color-secondarycontainer | - 
---td-upload-add-color | @text-color-placeholder | - 
---td-upload-add-disabled-bg-color | @bg-color-component-disabled | - 
---td-upload-add-icon-disabled-color | @text-color-disabled | - 
---td-upload-add-icon-font-size | 56rpx | - 
---td-upload-disabled-mask | rgba(0, 0.6) | - 
---td-upload-drag-transition-duration | --td-upload-drag-transition-duration | - 
---td-upload-drag-transition-timing-function | --td-upload-drag-transition-timing-function | - 
---td-upload-drag-z-index | 999 | - 
+--td-upload-add-bg-color | @bg-color-secondarycontainer | -
+--td-upload-add-color | @text-color-placeholder | -
+--td-upload-add-disabled-bg-color | @bg-color-component-disabled | -
+--td-upload-add-icon-disabled-color | @text-color-disabled | -
+--td-upload-add-icon-size | 56rpx | -
+--td-upload-disabled-mask | rgba(0, 0.6) | -
+--td-upload-drag-transition-duration | --td-upload-drag-transition-duration | -
+--td-upload-drag-transition-timing-function | --td-upload-drag-transition-timing-function | -
+--td-upload-drag-z-index | 999 | -
 --td-upload-radius | @radius-default | -

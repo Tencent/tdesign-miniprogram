@@ -20,7 +20,7 @@ isComponent: true
 
 <img src="https://tdesign.gtimg.com/miniprogram/readme/slider.png" width="375px" height="50%">
 
-<a href="https://developers.weixin.qq.com/s/2p6gkime7CSn" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/iDQ1kpmL8N5R" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -122,19 +122,19 @@ t-class-cursor | 游标样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-slider-active-color | @brand-color | - 
---td-slider-bar-height | 8rpx | - 
---td-slider-bar-width | 8rpx | - 
---td-slider-capsule-bar-color | @bg-color-component | - 
---td-slider-capsule-bar-heihgt | 48rpx | - 
---td-slider-capsule-bar-width | 48rpx | - 
---td-slider-capsule-line-heihgt | 36rpx | - 
---td-slider-default-color | @bg-color-component | - 
---td-slider-disabled-color | @brand-color-disabled | - 
---td-slider-disabled-text-color | @text-color-disabled | - 
---td-slider-dot-bg-color | #fff | - 
---td-slider-dot-color | @component-border | - 
---td-slider-dot-disabled-bg-color | #fff | - 
---td-slider-dot-disabled-border-color | #f3f3f3 | - 
---td-slider-dot-size | 40rpx | - 
+--td-slider-active-color | @brand-color | -
+--td-slider-bar-height | 8rpx | -
+--td-slider-bar-width | 8rpx | -
+--td-slider-capsule-bar-color | @bg-color-component | -
+--td-slider-capsule-bar-heihgt | 48rpx | -
+--td-slider-capsule-bar-width | 48rpx | -
+--td-slider-capsule-line-heihgt | 36rpx | -
+--td-slider-default-color | @bg-color-component | -
+--td-slider-disabled-color | @brand-color-disabled | -
+--td-slider-disabled-text-color | @text-color-disabled | -
+--td-slider-dot-bg-color | #fff | -
+--td-slider-dot-color | @component-border | -
+--td-slider-dot-disabled-bg-color | #fff | -
+--td-slider-dot-disabled-border-color | #f3f3f3 | -
+--td-slider-dot-size | 40rpx | -
 --td-slider-text-color | @text-color-primary | -

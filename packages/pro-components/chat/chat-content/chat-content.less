@@ -7,15 +7,15 @@
 @chat-content-error-text-color: var(--td-chat-content-error-text-color, @error-color);
 
 .@{chat-content} {
-  font-size: 32rpx;
-  line-height: 48rpx;
+  font: @font-body-large;
   word-break: break-all;
   word-wrap: break-word;
   overflow-wrap: break-word;
   box-sizing: border-box;
   width: fit-content;
 
-  &__user {
+  &__user,
+  &__system {
     color: @chat-content-user-text-color;
 
     ._pre {
