@@ -6,7 +6,7 @@
   style="{{_._style([style, customStyle])}}"
 >
   <view class="{{classPrefix}}__left">
-    <view class="{{classPrefix}}__scrollable scroll-x">
+    <scroll-view class="{{classPrefix}}__scrollable scroll-x" scroll-x style="height: {{scrollViewHeight}}px">
       <block wx:for="{{files}}" wx:for-item="item" wx:for-index="index" wx:key="index">
         <view class="{{classPrefix}}__files" bindtap="onFileWrapTap" data-index="{{index}}">
           <block wx:if="{{item.fileType==='image'}}">
@@ -23,6 +23,7 @@
                   mode="{{_this.getImageMode(item)}}"
                   lazy-load="false"
                   style="{{inChat ? _this.imageStyle(item) : ''}}"
+                  bindload="onImageLoad"
                 ></image>
               </block>
               <view wx:if="{{removable}}" class="{{classPrefix}}__remove">
