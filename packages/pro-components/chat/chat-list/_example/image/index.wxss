@@ -31,7 +31,6 @@
 }
 
 .attachment-slide .t-attachments {
-  height: 274rpx;
   padding-top: 24rpx;
   box-sizing: border-box;
   position: relative;
