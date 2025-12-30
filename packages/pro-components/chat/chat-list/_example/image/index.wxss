@@ -21,7 +21,7 @@
   width: 100%;
 }
 
-.image-chat .t-chat-message__detail {
+.image-chat .assistant .t-chat-message__detail {
   width: 100%;
 }
 
