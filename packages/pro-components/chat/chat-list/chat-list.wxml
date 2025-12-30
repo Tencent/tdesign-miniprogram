@@ -14,9 +14,6 @@
     bindscrolltolower="handlerScrollToLower"
     type="list"
   >
-    <block wx:if="{{reverse}}">
-      <view class="placeholder"></view>
-    </block>
     <!-- /**
         * 1. 两种方式获取要渲染的 list
         *  a. props 传 data
@@ -40,6 +37,8 @@
     </block>
     <slot wx:else />
   </scroll-view>
+
+  <view wx:if="{{reverse}}" class="{{classPrefix}}__placeholder"></view>
   <view class="{{classPrefix}}__footer">
     <slot name="footer" />
   </view>
