@@ -13,8 +13,8 @@ extend-exclude = [
   "CHANGELOG*.md", 
   "changelog.json", 
   "echarts.js",
-  "packages/tdesign-uniapp/components/npm/**/*",
-  "packages/tdesign-uniapp-chat/components/npm/**/*",
+  "packages/uniapp-components/npm/**/*",
+  "packages/uniapp-pro-components/chat/npm/**/*",
   "packages/tdesign-uniapp/app/common/uni.css",
   "packages/tdesign-uniapp/app/uni_modules/**/*",
 ]
