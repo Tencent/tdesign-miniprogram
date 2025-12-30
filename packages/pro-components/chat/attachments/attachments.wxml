@@ -71,6 +71,6 @@
           </block>
         </view>
       </block>
-    </view>
+    </scroll-view>
   </view>
 </view>
