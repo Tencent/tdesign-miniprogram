@@ -35,6 +35,7 @@ exports[`search Props :base 1`] = `
           confirmHold="{{false}}"
           confirmType="search"
           cursor="{{-1}}"
+          cursorColor="#0052d9"
           cursorSpacing="{{0}}"
           disabled="{{null}}"
           focus="{{false}}"
