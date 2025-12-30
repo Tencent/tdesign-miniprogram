@@ -27,6 +27,7 @@ export default class Attachments extends SuperComponent {
   data = {
     classPrefix: name,
     files: [],
+    isSkyline: false,
   };
 
   observers = {
@@ -187,6 +188,8 @@ export default class Attachments extends SuperComponent {
       this.data.renderIcon = this.renderIcon.bind(this);
       this.data.renderFileType = this.renderFileType.bind(this);
       this.data.renderExtension = this.renderExtension.bind(this);
+      // 检测 Skyline 模式
+      this.setData({ isSkyline: this.renderer === 'skyline' });
     },
     attached() {
       this.setFiles();

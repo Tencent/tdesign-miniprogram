@@ -6,14 +6,14 @@
   style="{{_._style([style, customStyle])}}"
 >
   <view class="{{classPrefix}}__left">
-    <scroll-view class="{{classPrefix}}__scrollable scroll-x" scroll-x>
+    <view class="{{classPrefix}}__scrollable scroll-x">
       <block wx:for="{{files}}" wx:for-item="item" wx:for-index="index" wx:key="index">
         <view class="{{classPrefix}}__files" bindtap="onFileWrapTap" data-index="{{index}}">
           <block wx:if="{{item.fileType==='image'}}">
             <view class="file-image {{classPrefix}}__file {{removable ? classPrefix + '__file--removable' : ''}}">
               <block wx:if="{{item.status==='pending' || item.status==='fail' || item.status==='error'}}">
                 <view class="{{item.status}} {{classPrefix}}__file--{{item.status}}">
-                  <t-loading theme="circular" size="48rpx" />
+                  <t-loading theme="{{isSkyline ? 'spinner' : 'circular'}}" size="48rpx" />
                 </view>
               </block>
               <block wx:else>
@@ -35,17 +35,17 @@
               <view class="image">
                 <block wx:if="{{item.status==='pending'}}">
                   <view class="loading {{classPrefix}}__file--pending">
-                    <t-loading theme="circular" size="48rpx" />
+                    <t-loading theme="{{isSkyline ? 'spinner' : 'circular'}}" size="48rpx" />
                   </view>
                 </block>
                 <block wx:elif="{{item.status==='fail'}}">
                   <view class="fail {{classPrefix}}__file--fail">
-                    <t-loading theme="circular" size="48rpx" />
+                    <t-loading theme="{{isSkyline ? 'spinner' : 'circular'}}" size="48rpx" />
                   </view>
                 </block>
                 <block wx:elif="{{item.status==='error'}}">
                   <view class="error {{classPrefix}}__file--error">
-                    <t-loading theme="circular" size="48rpx" />
+                    <t-loading theme="{{isSkyline ? 'spinner' : 'circular'}}" size="48rpx" />
                   </view>
                 </block>
                 <block wx:else>
@@ -70,6 +70,6 @@
           </block>
         </view>
       </block>
-    </scroll-view>
+    </view>
   </view>
 </view>
