@@ -18,8 +18,6 @@ function cpLess(file) {
     return result;
   });
 
-  console.log('==', file, newContent === content);
-
   writeFileSync(file, newContent);
 }
 

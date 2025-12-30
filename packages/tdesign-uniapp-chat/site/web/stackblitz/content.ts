@@ -1,4 +1,4 @@
-import orgPkg from '../../../components/package.json';
+import orgPkg from '../../../../tdesign-uniapp-chat/package.json';
 
 export const HTML_CONTENT = `
 <!DOCTYPE html>

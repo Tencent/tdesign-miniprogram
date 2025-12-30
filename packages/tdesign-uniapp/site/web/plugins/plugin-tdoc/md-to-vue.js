@@ -157,7 +157,7 @@ function customRender({ source, file, md, mode }) {
   };
 
   // md filename
-  const reg = file.match(/tdesign-uniapp\/components\/(\S*)(?=\/\S*.md)/);
+  const reg = file.match(/uniapp-components\/(\S*)(?=\/\S*.md)/);
   // const reg = file.match(/([\w-]+)\.?([\w-]+)?\.md/);
   const componentName = reg && reg[1];
 

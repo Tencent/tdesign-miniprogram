@@ -4,19 +4,20 @@ const fs = require('fs');
 const { writeFileSync } = require('t-comm');
 const { toPascal } = require('../utils/utils');
 
+const PACKAGES_ROOT = path.resolve(__dirname, '../../../../');
 
 const CONFIG = {
-  pkgJsonPath: path.resolve(__dirname, '../../../tdesign/package.json'),
-  chatPkgJsonPath: path.resolve(__dirname, '../../../tdesign-uniapp-chat/package.json'),
+  pkgJsonPath: path.resolve(PACKAGES_ROOT, 'uniapp-components/package.json'),
+  chatPkgJsonPath: path.resolve(__dirname, 'uniapp-pro-components/chat/package.json'),
 
-  dtsDir: path.resolve(__dirname, '../../../tdesign/types'),
-  chatDtsDir: path.resolve(__dirname, '../../../tdesign-uniapp-chat/types'),
+  dtsDir: path.resolve(PACKAGES_ROOT, 'uniapp-components/types'),
+  chatDtsDir: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat/types'),
 
-  indexPath: path.resolve(__dirname, '../../../tdesign/types/index.d.ts'),
-  chatIndexPath: path.resolve(__dirname, '../../../tdesign-uniapp-chat/types/index.d.ts'),
+  indexPath: path.resolve(PACKAGES_ROOT, 'uniapp-components/types/index.d.ts'),
+  chatIndexPath: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat/types/index.d.ts'),
 
-  globalDTSPath: path.resolve(__dirname, '../../../tdesign/global.d.ts'),
-  chatGlobalDTSPath: path.resolve(__dirname, '../../../tdesign-uniapp-chat/global.d.ts'),
+  globalDTSPath: path.resolve(PACKAGES_ROOT, 'uniapp-components/global.d.ts'),
+  chatGlobalDTSPath: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat/global.d.ts'),
   filterTypes: ['form-item'],
 };
 

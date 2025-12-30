@@ -3,14 +3,15 @@ const path = require('path');
 const less = require('less');
 const postcss = require('postcss');
 const rpxTransform = require('postcss-rpx-transform');
+const PACKAGES_ROOT = path.resolve(__dirname, '../../../../');
 
 const CONFIG = {
   whiteList: [
-    path.resolve(__dirname, '../../../components/common/style/theme/index.less'),
-    path.resolve(__dirname, '../../../components/common/style/base.less'),
-    path.resolve(__dirname, '../../../components/common/style/_variables.less'),
-    path.resolve(__dirname, '../../../components/common/style/mixins/'),
-    path.resolve(__dirname, '../../../components/common/style/theme/raw/'),
+    path.resolve(PACKAGES_ROOT, 'uniapp-components/common/style/theme/index.less'),
+    path.resolve(PACKAGES_ROOT, 'uniapp-components/common/style/base.less'),
+    path.resolve(PACKAGES_ROOT, 'uniapp-components/common/style/_variables.less'),
+    path.resolve(PACKAGES_ROOT, 'uniapp-components/common/style/mixins/'),
+    path.resolve(PACKAGES_ROOT, 'uniapp-components/common/style/theme/raw/'),
   ],
 };
 
@@ -36,10 +37,10 @@ async function processLess(inputFile, rawOutputFile, rawOutputFileInApp) {
     const cssResult = await less.render(lessCode, {
       // 设置导入路径
       paths: [
-        path.join(__dirname, '../../../components/common'),
-        path.join(__dirname, '../../../components/common/style'),
-        path.join(__dirname, '../../../components/common/style/mixins'),
-        path.join(__dirname, '../../../components/common/style/theme'),
+        path.join(PACKAGES_ROOT, 'uniapp-components/common'),
+        path.join(PACKAGES_ROOT, 'uniapp-components/common/style'),
+        path.join(PACKAGES_ROOT, 'uniapp-components/common/style/mixins'),
+        path.join(PACKAGES_ROOT, 'uniapp-components/common/style/theme'),
       ],
     });
 

@@ -1,16 +1,18 @@
 const path = require('path');
 
+const PACKAGES_ROOT = path.resolve(__dirname, '../../../../');
+
 const config = {
   targetDir: path.resolve(__dirname, '../../src/_tdesign'),
   rawTargetDir: path.resolve(__dirname, '../../src/_tdesign-raw'),
   rawTargetDirInApp: path.resolve(__dirname, '../../../app/tdesign-uniapp-raw'),
 
-  sourceDir: path.resolve(__dirname, '../../../components'),
-  chatSourceDir: path.resolve(__dirname, '../../../../tdesign-uniapp-chat/components'),
+  sourceDir: path.resolve(PACKAGES_ROOT, 'uniapp-components'),
+  chatSourceDir: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat'),
 
-  sourceGlob: path.resolve(__dirname, '../../../components/**/*'),
-  chatSourceGlob: path.resolve(__dirname, '../../../../tdesign-uniapp-chat/components/**/*'),
-  baseAndChatSourceGlob: path.resolve(__dirname, '../../../../{tdesign-uniapp,tdesign-uniapp-chat}/**/*'),
+  sourceGlob: path.resolve(PACKAGES_ROOT, 'uniapp-components/**/*'),
+  chatSourceGlob: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat/**/*'),
+  baseAndChatSourceGlob: path.resolve(PACKAGES_ROOT, '{uniapp-components,uniapp-pro-components}/**/*'),
 
   demoDir: path.resolve(__dirname, '../../src/pages-more'),
 

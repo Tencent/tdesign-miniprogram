@@ -1,13 +1,15 @@
 const path = require('path');
 
-const config = {
-  targetDir: path.resolve(__dirname, '../../../npm_dist'),
-  sourceDir: path.resolve(__dirname, '../../../components'),
-  sourceGlob: path.resolve(__dirname, '../../../components/**/*'),
+const PACKAGES_ROOT = path.resolve(__dirname, '../../../../');
 
-  chatTargetDir: path.resolve(__dirname, '../../../../tdesign-uniapp-chat/npm_dist'),
-  chatSourceDir: path.resolve(__dirname, '../../../../tdesign-uniapp-chat/components'),
-  chatSourceGlob: path.resolve(__dirname, '../../../../tdesign-uniapp-chat/components/**/*'),
+const config = {
+  targetDir: path.resolve(PACKAGES_ROOT, 'tdesign-uniapp/npm_dist'),
+  sourceDir: path.resolve(PACKAGES_ROOT, 'uniapp-components'),
+  sourceGlob: path.resolve(PACKAGES_ROOT, 'uniapp-components/**/*'),
+
+  chatTargetDir: path.resolve(PACKAGES_ROOT, 'tdesign-uniapp-chat/npm_dist'),
+  chatSourceDir: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat'),
+  chatSourceGlob: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat/**/*'),
 
   demoDir: path.resolve(__dirname, '../../src/pages-more'),
 };
@@ -15,4 +17,5 @@ const config = {
 
 module.exports = {
   config,
+  PACKAGES_ROOT,
 };

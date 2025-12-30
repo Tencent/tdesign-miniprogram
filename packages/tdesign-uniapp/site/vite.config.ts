@@ -55,7 +55,7 @@ export default ({ mode }) => {
     root: '.',
     resolve: {
       alias: {
-        '@': resolvePath('../components'),
+        '@': resolvePath('../../uniapp-components'),
         '@docs': resolvePath('./docs'),
       },
     },

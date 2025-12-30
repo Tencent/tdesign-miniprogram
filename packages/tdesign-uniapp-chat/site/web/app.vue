@@ -28,7 +28,7 @@
 
 <script>
 import { defineComponent } from 'vue';
-import packageJson from '../../components/package.json';
+import packageJson from '../../../tdesign-uniapp-chat/package.json';
 import siteConfig from '../docs.config';
 import { filterVersions, sortDocs } from './utils';
 
