@@ -6,6 +6,33 @@ docClass: timeline
 ---
 
 
+## 🌈 1.12.1 `2025-12-31` 
+### 🚀 Features
+- `Navbar`: 新增 `placeholder` 属性，默认值为 `false`；新增 `zIndex` 属性，默认值为 `1` @anlyyao ([#4116](https://github.com/Tencent/tdesign-miniprogram/pull/4116))
+- `TabBar`: 新增 `placeholder` 属性，默认值为 `false`；新增 `zIndex` 属性，默认值为 `1` @anlyyao ([#4116](https://github.com/Tencent/tdesign-miniprogram/pull/4116))
+- `Badge`: @anlyyao ([#4137](https://github.com/Tencent/tdesign-miniprogram/pull/4137))
+  - `shape` 属性新增 `ribbon-right/ribbon-left/triangle-right/triangle-left` 可选项，其中 `ribbon` 与 `ribbon-right` 等效
+  - 优化 `ribbon` 实现，改用 `background: linear-gradient()`，移除伪元素相关样式
+ - `Popover`: 新增 `fixed` API，适用于触发元素为 `fixed` 场景。⚠️ 当触发元素为 `fixed` 时，除了需要显示指定 `fixed` 属性为 `true`，还需在触发元素层添加 `t-popover-wrapper--fixed` 类，用于定位触发元素。@Wesley-0808 ([#4114](https://github.com/Tencent/tdesign-miniprogram/pull/4114))
+- `Search`: @anlyyao ([#4150](https://github.com/Tencent/tdesign-miniprogram/pull/4150))
+  - 确保点击清空按钮后，组件内容清空但保持聚焦
+  - 新增 `cursor-color` 属性
+### 🐞 Bug Fixes
+- `ChatContent`: 修复角色为 `system` 时文本颜色错误 @anlyyao ([#4112](https://github.com/Tencent/tdesign-miniprogram/pull/4112))
+- `Toast`: 修复 `Toast` 嵌套调用时 `close` 回调陷入循环的问题 @anlyyao ([#4110](https://github.com/Tencent/tdesign-miniprogram/pull/4110))
+- `Attachments`: 修复删除按钮在华为 `pure70` 机型上显示不完整的问题 @waiterxiaoyy ([#4124](https://github.com/Tencent/tdesign-miniprogram/pull/4124))
+- `DateTimePicker`: 修复插槽名重复导致的控制台告警 @anlyyao ([#4126](https://github.com/Tencent/tdesign-miniprogram/pull/4126))
+- `Picker`: 
+  - 优化性能减少掉帧 @jarmywang @Boomkaa  ([#4120](https://github.com/Tencent/tdesign-miniprogram/pull/4120))
+  - 修复平铺模式 `value` 变化未能准确监听 @jarmywang ([#4120](https://github.com/Tencent/tdesign-miniprogram/pull/4120))
+- `ColorPicker`:  补充 `styleIsolation` 配置项，解决外部样式无法覆盖组件样式问题 @anlyyao ([#4138](https://github.com/Tencent/tdesign-miniprogram/pull/4138))
+- `SwipeCell`: 消除 `IntersectionObserver is using slowest path` 警告 @anlyyao ([#4139](https://github.com/Tencent/tdesign-miniprogram/pull/4139))
+- `Tabs`: 消除 `IntersectionObserver is using slowest path` 警告 @anlyyao ([#4139](https://github.com/Tencent/tdesign-miniprogram/pull/4139))
+- `Progress`: @anlyyao ([#4153](https://github.com/Tencent/tdesign-miniprogram/pull/4153))
+  - 修复深色模式下环形进度条内部背景色错误
+  - 修复环形进度条内部文本间距错误
+
+
 ## 🌈 1.12.0 `2025-12-05` 
 ### 🚀 Features
 - `ChatList`:  新增 `ChatList` 对话列表组件 @zydemail @liuding0304 @goldjunkrat @waiterxiaoyy @mimaoxiao @zhangjiaoalice ([#4010](https://github.com/Tencent/tdesign-miniprogram/pull/4010))
