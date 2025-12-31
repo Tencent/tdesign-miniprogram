@@ -7,6 +7,7 @@
 @loading-text-font: var(--td-loading-text-font, @font-body-small);
 @loading-z-index: var(--td-loading-z-index, 3500);
 @loading-full-bg-color: var(--td-loading-full-bg-color, rgba(255, 255, 255, 0.6));
+@loading-circular-inner-bg-color: var(--td-loading-circular-inner-bg-color, @bg-color-container);
 
 .@{loading} {
   display: inline-flex;
@@ -66,6 +67,7 @@
 
     &--circular {
       .@{loading}__circular {
+        position: relative;
         border-radius: 100%;
         width: 100%;
         height: 100%;
@@ -73,13 +75,20 @@
           from 180deg at 50% 50%,
           rgba(255, 255, 255, 0) 0deg,
           rgba(255, 255, 255, 0) 60deg,
-          currentColor 330deg,
+          @loading-color 330deg,
           rgba(255, 255, 255, 0) 360deg
         );
-        mask: radial-gradient(transparent calc(50% - 1rpx), #fff 50%);
 
-        /* stylelint-disable-next-line */
-        -webkit-mask: radial-gradient(transparent calc(50% - 1rpx), #fff 50%);
+        &-inner {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: calc(100% - 12rpx);
+          height: calc(100% - 12rpx);
+          border-radius: 100%;
+          background-color: @loading-circular-inner-bg-color;
+        }
       }
     }
 

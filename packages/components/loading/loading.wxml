@@ -16,7 +16,9 @@
       wx:key="index"
       class="{{classPrefix}}__dot {{classPrefix}}__dot-{{index}}"
     />
-    <view wx:if="{{ theme === 'circular' }}" class="{{classPrefix}}__circular" />
+    <view wx:if="{{ theme === 'circular' }}" class="{{classPrefix}}__circular">
+      <view class="{{classPrefix}}__circular-inner"></view>
+    </view>
     <block wx:if="{{ theme === 'dots' }}">
       <view
         class="{{classPrefix}}__dot"
