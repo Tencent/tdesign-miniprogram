@@ -72,7 +72,7 @@
       <scroll-view wx:if="{{_this.hasImageFile(files)}}" class="{{classPrefix}}__scrollable scroll-x" scroll-x style="height: {{scrollViewHeight}}px">
         <block wx:for="{{files}}" wx:for-item="item" wx:for-index="index" wx:key="index">
           <view wx:if="{{item.fileType==='image'}}" class="{{classPrefix}}__files" bindtap="onFileWrapTap" data-index="{{index}}">
-            <template is="image-item" data="{{item, index, classPrefix, removable, isSkyline, inChat}}" />
+            <template is="image-item" data="{{item, index, classPrefix, removable, inChat}}" />
           </view>
         </block>
       </scroll-view>
@@ -81,7 +81,7 @@
       <view class="{{classPrefix}}__files-container">
         <block wx:for="{{files}}" wx:for-item="item" wx:for-index="index" wx:key="index">
           <view wx:if="{{item.fileType!=='image'}}" class="{{classPrefix}}__files" bindtap="onFileWrapTap" data-index="{{index}}">
-            <template is="file-item" data="{{item, index, classPrefix, removable, isSkyline}}" />
+            <template is="file-item" data="{{item, index, classPrefix, removable}}" />
           </view>
         </block>
       </view>
@@ -92,8 +92,8 @@
       <scroll-view class="{{classPrefix}}__scrollable scroll-x" scroll-x style="height: {{scrollViewHeight}}px">
         <block wx:for="{{files}}" wx:for-item="item" wx:for-index="index" wx:key="index">
           <view class="{{classPrefix}}__files" bindtap="onFileWrapTap" data-index="{{index}}">
-            <template wx:if="{{item.fileType==='image'}}" is="image-item" data="{{item, index, classPrefix, removable, isSkyline, inChat}}" />
-            <template wx:else is="file-item" data="{{item, index, classPrefix, removable, isSkyline}}" />
+            <template wx:if="{{item.fileType==='image'}}" is="image-item" data="{{item, index, classPrefix, removable, inChat}}" />
+            <template wx:else is="file-item" data="{{item, index, classPrefix, removable}}" />
           </view>
         </block>
       </scroll-view>
