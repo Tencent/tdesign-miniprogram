@@ -95,7 +95,7 @@ t-class-label | 标签样式类
 --td-progress-inner-bg-color-success | @success-color | -
 --td-progress-inner-bg-color-warning | @warning-color | -
 --td-progress-circle-icon-size | 96rpx | -
---td-progress-circle-inner-bg-color | @text-color-anti | -
+--td-progress-circle-inner-bg-color | @bg-color-container | -
 --td-progress-circle-label-font | @font-title-extraLarge | -
 --td-progress-circle-width | 224rpx | -
 --td-progress-inner-bg-color | @brand-color | -
