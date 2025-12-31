@@ -46,8 +46,25 @@ function getFileTypeClass(inChat, files) {
   return allImages ? 'all_images' : 'all_files';
 }
 
+function hasImageFile(files) {
+  // 如果 files 为空或不存在，返回 false
+  if (!files || files.length === 0) {
+    return false;
+  }
+
+  // 检查是否存在至少一个图片文件
+  for (var i = 0; i < files.length; i++) {
+    if (files[i].fileType === 'image') {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 module.exports = {
   imageStyle: imageStyle,
   getImageMode: getImageMode,
   getFileTypeClass: getFileTypeClass,
+  hasImageFile: hasImageFile,
 };
