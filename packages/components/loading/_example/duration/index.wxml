@@ -1,6 +1,6 @@
 <t-loading
-  theme="{{ skylineRender ? 'spinner' : 'circular'}}"
-  size="52rpx"
+  theme="circular"
+  size="44rpx"
   text="加载中..."
   t-class-text="text-l"
   duration="{{2000 - duration}}"
