@@ -1,8 +1,12 @@
 {
   "darkmode": true,
   "themeLocation": "theme.json",
-  "resolveAlias": {},
-  "pages": ["pages/button/button"],
+  "resolveAlias": {
+    "@behaviors/*": "behaviors/*"
+  },
+  "pages": [
+    "pages/button/button"
+  ],
   "usingComponents": {
     "t-demo": "./components/demo-block/index",
     "t-demo-header": "./components/demo-header/index",

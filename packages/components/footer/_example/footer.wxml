@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="Footer" leftArrow />
+<t-navbar class="demo-navbar" title="Footer" leftArrow placeholder />
 <t-demo-header
   title="Footer 页脚"
   desc="用于展示网站的版权声明、联系信息、重要页面链接和其他相关内容等信息。"

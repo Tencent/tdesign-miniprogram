@@ -1,5 +1,5 @@
 <view class="custom-navbar">
-  <t-navbar class="demo-navbar" title="Guide" leftArrow />
+  <t-navbar class="demo-navbar" title="Guide" leftArrow placeholder />
 </view>
 
 <view class="demo">

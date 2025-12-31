@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="SideBar" leftArrow />
+<t-navbar class="demo-navbar" title="SideBar" leftArrow placeholder />
 
 <t-demo-header
   title="SideBar 侧边栏"
