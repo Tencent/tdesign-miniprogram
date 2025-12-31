@@ -1,4 +1,4 @@
-<t-navbar title="Grid" leftArrow />
+<t-navbar title="Grid" leftArrow placeholder zIndex="{{99}}" />
 <view class="demo">
   <t-demo-header
     title="Grid 宫格"

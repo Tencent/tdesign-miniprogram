@@ -12,7 +12,6 @@
   color: @chat-text-color;
 
   &__content {
-    flex: 1;
     overflow-y: auto;
     overflow-x: hidden;
     width: 100%;
@@ -26,10 +25,15 @@
         transform: scaleY(-1);
       }
     }
+  }
 
-    .placeholder {
-      flex-grow: 1;
-      flex-shrink: 1;
-    }
+  &__placeholder {
+    flex-grow: 1;
+    flex-shrink: 1;
+  }
+
+  &__footer {
+    flex-grow: 0;
+    flex-shrink: 0;
   }
 }

@@ -1,5 +1,5 @@
 <view class="wrapper">
-  <t-tab-bar t-class="t-tab-bar" value="{{value}}" bindchange="onChange">
+  <t-tab-bar t-class="t-tab-bar" value="{{value}}" fixed="{{false}}" bindchange="onChange">
     <t-tab-bar-item
       wx:for="{{list}}"
       wx:key="value"

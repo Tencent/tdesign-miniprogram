@@ -1,4 +1,4 @@
-<t-tab-bar t-class="t-tab-bar" value="{{value}}" bindchange="onChange" theme="tag" split="{{false}}">
+<t-tab-bar t-class="t-tab-bar" value="{{value}}" theme="tag" fixed="{{false}}" split="{{false}}" bindchange="onChange">
   <t-tab-bar-item
     wx:for="{{list}}"
     wx:key="value"

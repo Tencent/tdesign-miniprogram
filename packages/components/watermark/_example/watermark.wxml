@@ -1,4 +1,4 @@
-<t-navbar title="Watermark" leftArrow />
+<t-navbar title="Watermark" leftArrow placeholder />
 <view class="demo">
   <t-demo-header title="Watermark 水印" desc="给页面的某个区域加上水印。" notice="渲染框架支持情况：WebView" />
   <t-demo title="01 组件类型" desc="文字水印">

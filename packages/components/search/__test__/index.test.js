@@ -207,7 +207,7 @@ describe('search', () => {
       comp.attach(document.createElement('parent-wrapper'));
 
       const $clear = comp.querySelector('.search >>> .t-search__clear');
-      $clear.dispatchEvent('tap');
+      $clear.dispatchEvent('touchstart');
       await simulate.sleep(20);
       expect(onClear).toHaveBeenCalledTimes(1);
       expect(val).toBe('');

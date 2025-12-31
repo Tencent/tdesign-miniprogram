@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar title="Cell" leftArrow />
+  <t-navbar title="Cell" leftArrow placeholder zIndex="{{99}}" />
   <scroll-view scroll-y type="list" class="scroll-view">
     <view class="demo">
       <view class="demo-title">Cell 单元格</view>

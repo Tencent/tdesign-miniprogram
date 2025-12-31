@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="Skeleton" leftArrow />
+<t-navbar class="demo-navbar" title="Skeleton" leftArrow placeholder />
 <view class="demo">
   <t-demo-header
     title="Skeleton 骨架屏"

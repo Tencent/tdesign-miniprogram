@@ -2,7 +2,7 @@ import { wxComponent, SuperComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { classNames, calcIcon } from '../common/utils';
-import { isNumber } from '../common/validator';
+import { isNumeric } from '../common/validator';
 
 const { prefix } = config;
 const name = `${prefix}-tag`;
@@ -77,7 +77,7 @@ export default class Tag extends SuperComponent {
       if (!maxWidth) {
         return '';
       }
-      const width = isNumber(maxWidth) ? `${maxWidth}px` : maxWidth;
+      const width = isNumeric(maxWidth) ? `${maxWidth}px` : maxWidth;
       this.setData({ tagStyle: `max-width:${width};` });
     },
 

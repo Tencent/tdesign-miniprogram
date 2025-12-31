@@ -1,5 +1,5 @@
 <view class="custom-navbar">
-  <t-navbar class="demo-navbar" title="TDesign" leftArrow />
+  <t-navbar class="demo-navbar" title="TDesign" leftArrow placeholder zIndex="{{99}}" />
 </view>
 
 <view class="side-bar-wrapper" style="height: calc(100vh - {{navbarHeight}}px)">
