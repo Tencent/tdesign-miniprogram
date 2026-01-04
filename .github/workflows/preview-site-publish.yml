@@ -99,6 +99,8 @@ jobs:
       - preview-context
       - tdesign-miniprogram
       - tdesign-miniprogram-chat
+      - tdesign-uniapp
+      - tdesign-uniapp-chat
     runs-on: ubuntu-latest
     steps:
       - name: jobs report
