@@ -6,8 +6,8 @@ _wechatide
 _example
 !packages/components/**/_example/
 !packages/pro-components/**/_example/
-!packages/tdesign-uniapp/**/_example/
-!packages/tdesign-uniapp-chat/**/_example/
+!packages/uniapp-components/**/_example/
+!packages/uniapp-pro-components/**/_example/
 
 packages/tdesign-miniprogram/example/pages/*
 !packages/tdesign-miniprogram/example/pages/gulp-error
