@@ -1,0 +1,112 @@
+@import "../vars.less";
+@import "../mixins/index.less";
+
+.tdesign-mobile-demo-block {
+  .button-demo {
+
+    .t-button {
+      margin-bottom: 16px;
+    }
+  }
+
+  .tdesign-demo-iconfont {
+    .tdesign-demo-icon {
+      display: inline-block;
+      width: 25%;
+      text-align: center;
+
+      .t-icon {
+        color: inherit;
+        font-size: 28px;
+      }
+
+      p {
+        margin: 10px 0;
+        .text-ellipsis();
+      }
+    }
+  }
+
+  .cell-base {
+    background-color: #fbfbfb;
+  }
+
+  .tag-demo {
+    background-color: var(--bg-color-demo, #fff);
+    padding: 16px;
+    display: flex;
+
+    .t-tag+.t-tag {
+      margin-left: 16px;
+    }
+  }
+
+  .tag-demo+.tag-demo {
+    margin-top: 16px;
+  }
+
+  .segmented-control-demo {
+    background-color: #fff;
+    padding: 12px 16px;
+  }
+
+  .toast-demo,
+  .message-demo,
+  .dialog-demo,
+  .action-sheet-demo {
+    padding: 0 16px;
+
+    > .t-button + .t-button {
+      margin-top: 16px;
+    }
+  }
+
+  .slider-demo {
+    background-color: #fff;
+    padding: 12px 16px;
+  }
+
+  .stepper-demo {
+    background-color: #fff;
+    // max-height: 69px;
+  }
+
+  .stepper-demo+.stepper-demo {
+    margin-top: 16px;
+  }
+  .stepper-inline-demo .t-stepper{
+    padding: 12px 16px;
+  }
+
+  .stepper-pure-demo {
+    display: inline-block;
+  }
+
+  .step-demo {
+    background-color: #fff;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-top: 40px;
+
+    .t-steps {
+      padding-bottom: 40px;
+    }
+  }
+
+  .step-demo+.step-demo {
+    margin-top: 16px;
+  }
+
+
+  .badge-demo {
+    display: flex;
+    margin-top: 28px;
+    margin-bottom: 24px;
+    margin-left: 16px;
+    align-items: center;
+
+    .badge-item {
+      margin-right: 48px;
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "name": "tdesign-uniapp",
+  "version": "0.0.0",
+  "private": "true",
+  "homepage": "https://uwayfly.com/tdesign-uniapp/",
+  "bugs": {
+    "url": "https://github.com/Tencent/tdesign-miniprogram/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tencent/tdesign-miniprogram.git"
+  },
+  "scripts": {
+    "site": "pnpm --filter=\"./site\" build",
+    "site:dev": "pnpm --filter=\"./site\" run dev",
+    "site:preview": "pnpm --filter=\"./site\" run site:preview",
+    "type-check": "vue-tsc --noEmit",
+    "publish": "cd npm_dist && npm publish"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^12.0.1",
+    "@commitlint/config-conventional": "^12.0.1",
+    "@dcloudio/types": "^3.4.19",
+    "@stylistic/eslint-plugin-jsx": "3.1.0",
+    "@types/node": "^24.2.0",
+    "@typescript-eslint/eslint-plugin": "7.18.0",
+    "@typescript-eslint/parser": "7.18.0",
+    "@vue/runtime-core": "^3.4.21",
+    "@vue/tsconfig": "^0.7.0",
+    "concurrently": "^9.2.1",
+    "dotenv": "^17.2.3",
+    "echarts": "^6.0.0",
+    "eslint": "8.57.1",
+    "eslint-config-light": "latest",
+    "eslint-config-light-vue3": "latest",
+    "eslint-import-resolver-alias": "1.1.2",
+    "eslint-import-resolver-node": "0.3.9",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jest": "25",
+    "eslint-plugin-light": "latest",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-react": "7.26.1",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "eslint-plugin-tailwindcss": "3.18.0",
+    "eslint-plugin-vue": "9.14.0",
+    "glob": "^11.0.3",
+    "husky": "^6.0.0",
+    "less": "^4.4.2",
+    "lint-staged": "^10.5.4",
+    "miniprogram-api-typings": "^4.1.0",
+    "postcss-less": "^6.0.0",
+    "postcss-rpx-transform": "^1.0.1",
+    "stylelint": "14.16.1",
+    "stylelint-config-common": "1.0.10",
+    "stylelint-config-standard": "^39.0.1",
+    "stylelint-less": "^3.0.1",
+    "stylelint-scss": "6.10.0",
+    "t-comm": "^2.0.26",
+    "tslib": "^2.3.1",
+    "typescript": "5.1",
+    "vite": "5.2.8",
+    "vue-tsc": "^1.0.24",
+    "zrender": "^6.0.0"
+  },
+  "lint-staged": {
+    "*.{ts,js,vue}": [
+      "eslint --fix"
+    ]
+  }
+}
