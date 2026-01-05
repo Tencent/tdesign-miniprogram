@@ -1,5 +1,6 @@
 {
   "name": "tdesign-uniapp-chat-site",
+  "type": "module",
   "private": "true",
   "version": "0.0.1",
   "description": "site of tdesign-uniapp-chat",

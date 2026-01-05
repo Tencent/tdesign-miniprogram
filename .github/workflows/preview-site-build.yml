@@ -16,13 +16,13 @@ jobs:
           path: pr-id.txt
           retention-days: 5
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: recursive
 
       - uses: pnpm/action-setup@v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 18
 
@@ -39,13 +39,13 @@ jobs:
   tdesign-miniprogram-chat-site:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: recursive
 
       - uses: pnpm/action-setup@v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 18
 
@@ -57,4 +57,50 @@ jobs:
         with:
           name: tdesign-miniprogram-chat-site
           path: packages/tdesign-miniprogram-chat/site/dist
+          retention-days: 5
+
+  tdesign-uniapp-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 18
+
+      - run: pnpm install
+
+      - run: pnpm -C packages/tdesign-uniapp/site run site:preview
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tdesign-uniapp-site
+          path: packages/tdesign-uniapp/site/dist
+          retention-days: 5
+
+  tdesign-uniapp-chat-site:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 18
+
+      - run: pnpm install
+
+      - run: pnpm -C packages/tdesign-uniapp-chat/site run site:preview
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tdesign-uniapp-chat-site
+          path: packages/tdesign-uniapp-chat/site/dist
           retention-days: 5
