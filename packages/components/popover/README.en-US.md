@@ -42,7 +42,6 @@ The component provides the following CSS variables, which can be used to customi
 Name | Default Value | Description 
 -- | -- | --
 --td-popover-padding | 24rpx | -
---td-popover-bg-color | The background color corresponding to the popover theme | -
 --td-popover-dark-color | @text-color-anti | -
 --td-popover-dark-bg-color | @font-gray-1 | -
 --td-popover-light-color | @text-color-primary | -

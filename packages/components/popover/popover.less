@@ -4,7 +4,6 @@
 
 // 对外暴露变量
 @popover-padding: var(--td-popover-padding, 24rpx);
-// --td-popover-bg-color: 用于自定义气泡背景色。默认值根据theme确定
 
 // 尺寸变量
 @popover-arrow-width: 16rpx;
@@ -301,14 +300,13 @@
 .popover-theme(@theme) {
   @color: 'popover-@{theme}-color';
   @bgColor: 'popover-@{theme}-bg-color';
-  @popover-bgColor: var(--td-popover-bg-color, @@bgColor);
 
   .@{prefix}-popover--@{theme} {
     color: @@color;
-    background: @popover-bgColor;
+    background: @@bgColor;
 
     .@{prefix}-popover__arrow {
-      color: @popover-bgColor;
+      color: @@bgColor;
     }
   }
 }
