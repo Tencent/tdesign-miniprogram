@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   util: { statements: '48.86%', branches: '71.42%', functions: '22.22%', lines: '48.86%' },
   actionSheet: { statements: '85.39%', branches: '89.33%', functions: '94.28%', lines: '85.39%' },
   avatar: { statements: '95.21%', branches: '93.75%', functions: '76.92%', lines: '95.21%' },
