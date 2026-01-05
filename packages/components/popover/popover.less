@@ -2,8 +2,11 @@
 
 @popover: ~'@{prefix}-popover';
 
-// 主题色变量
+// 对外暴露变量
 @popover-padding: var(--td-popover-padding, 24rpx);
+// --td-popover-bg-color: 用于自定义气泡背景色，支持css变量和直接赋值两种方式，默认值需要根据theme确定
+
+// 尺寸变量
 @popover-arrow-width: 16rpx;
 @popover-content-margin: 16rpx;
 @popover-content-arrow-margin: 24rpx;
@@ -45,7 +48,6 @@
     line-height: 48rpx;
     box-sizing: border-box;
     word-break: break-all;
-
     border-radius: 6px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
@@ -299,14 +301,14 @@
 .popover-theme(@theme) {
   @color: 'popover-@{theme}-color';
   @bgColor: 'popover-@{theme}-bg-color';
+  @popover-bgColor: var(--td-popover-bg-color, @@bgColor);
 
   .@{prefix}-popover--@{theme} {
     color: @@color;
-    background: @@bgColor;
+    background: @popover-bgColor;
 
     .@{prefix}-popover__arrow {
-      color: @@color;
-      background: @@bgColor;
+      color: @popover-bgColor;
     }
   }
 }

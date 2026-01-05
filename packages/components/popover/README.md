@@ -80,3 +80,4 @@ t-class-content | 内容样式类
 名称 | 默认值 | 描述 
 -- | -- | --
 --td-popover-padding | 24rpx | -
+--td-popover-bg-color | 气泡主题对应的背景色 | -
