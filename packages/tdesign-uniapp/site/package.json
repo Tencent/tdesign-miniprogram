@@ -1,6 +1,7 @@
 {
   "name": "tdesign-uniapp-site",
   "private": "true",
+  "type": "module",
   "version": "0.0.1",
   "description": "site of tdesign-uniapp",
   "author": "novlan1",
