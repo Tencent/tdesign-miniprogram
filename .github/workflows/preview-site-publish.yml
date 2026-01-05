@@ -37,6 +37,14 @@ jobs:
         id: tdesign-miniprogram-chat-domain
         run: echo "tdesign_miniprogram_chat_domain=https://preview-pr-${{ steps.pr.outputs.id }}-tdesign-miniprogram-chat.surge.sh" >> $GITHUB_OUTPUT
 
+      - name: tdesign-uniapp-domain
+        id: tdesign-uniapp-domain
+        run: echo "tdesign_uniapp_domain=https://preview-pr-${{ steps.pr.outputs.id }}-tdesign-uniapp.surge.sh" >> $GITHUB_OUTPUT
+
+      - name: tdesign-uniapp-chat-domain
+        id: tdesign-uniapp-chat-domain
+        run: echo "tdesign_uniapp_chat_domain=https://preview-pr-${{ steps.pr.outputs.id }}-tdesign-uniapp-chat.surge.sh" >> $GITHUB_OUTPUT
+
   tdesign-miniprogram:
     if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
@@ -138,11 +146,16 @@ jobs:
                 if (job.conclusion === "success") {
                   tdesign[job.name].status = preview_success;
                   if (job.name === "tdesign-miniprogram") {
-                    
                     tdesign[job.name].report_url = tdesign_miniprogram_domain;
                   }
                   if (job.name === "tdesign-miniprogram-chat") {
                     tdesign[job.name].report_url = tdesign_miniprogram_chat_domain;
+                  }
+                  if (job.name === "tdesign-uniapp") {
+                    tdesign[job.name].report_url = tdesign_uniapp_domain;
+                  }
+                  if (job.name === "tdesign-uniapp-chat") {
+                    tdesign[job.name].report_url = tdesign_uniapp_chat_domain;
                   }
                 }
               });
