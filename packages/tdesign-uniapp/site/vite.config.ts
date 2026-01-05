@@ -32,7 +32,7 @@ const ENV_PREFIX = ['VITE_', 'VUE_APP'];
 
 export default ({ mode }) => {
   const env = loadEnv(mode, root, ENV_PREFIX);
-  const vueAppBase = env.VUE_APP_PUBLICPATH?.replace(/\/$/, '');
+  const vueAppBase = env.VUE_APP_PUBLICPATH;
   const experimentalConfig = vueAppBase
     ? {
       experimental: {
@@ -50,7 +50,7 @@ export default ({ mode }) => {
         ) {
           console.log('[experimental] ', hostType, hostId, type, filename);
 
-          return `${vueAppBase}/${filename}`;
+          return path.join(vueAppBase, filename);
         },
       },
     }
