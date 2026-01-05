@@ -146,18 +146,15 @@ jobs:
                 if (job.conclusion === "success") {
                   tdesign[job.name].status = preview_success;
                   if (job.name === "tdesign-miniprogram") {
-                    
                     tdesign[job.name].report_url = tdesign_miniprogram_domain;
                   }
                   if (job.name === "tdesign-miniprogram-chat") {
                     tdesign[job.name].report_url = tdesign_miniprogram_chat_domain;
                   }
                   if (job.name === "tdesign-uniapp") {
-                    
                     tdesign[job.name].report_url = tdesign_uniapp_domain;
                   }
                   if (job.name === "tdesign-uniapp-chat") {
-                    
                     tdesign[job.name].report_url = tdesign_uniapp_chat_domain;
                   }
                 }
