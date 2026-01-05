@@ -12,18 +12,18 @@
 @popover-content-arrow-margin: 24rpx;
 
 // 主题色变量
-@popover-dark-color: #fff;
-@popover-dark-bg-color: @font-gray-1;
-@popover-light-color: @text-color-primary;
-@popover-light-bg-color: @bg-color-container;
-@popover-brand-color: @primary-color-7;
-@popover-brand-bg-color: @primary-color-1;
-@popover-success-color: @success-color-5;
-@popover-success-bg-color: @success-color-1;
-@popover-warning-color: @warning-color-5;
-@popover-warning-bg-color: @warning-color-1;
-@popover-error-color: @error-color-6;
-@popover-error-bg-color: @error-color-1;
+@popover-dark-color: var(--td-popover-dark-color, @text-color-anti);
+@popover-dark-bg-color: var(--td-popover-dark-bg-color, @bg-color-anti);
+@popover-light-color: var(--td-popover-light-color, @text-color-primary);
+@popover-light-bg-color: var(--td-popover-light-bg-color, @bg-color-container);
+@popover-brand-color: var(--td-popover-brand-color, @primary-color-7);
+@popover-brand-bg-color: var(--td-popover-brand-bg-color, @primary-color-1);
+@popover-success-color: var(--td-popover-success-color, @success-color-5);
+@popover-success-bg-color: var(--td-popover-success-bg-color, @success-color-1);
+@popover-warning-color: var(--td-popover-warning-color, @warning-color-5);
+@popover-warning-bg-color: var(--td-popover-warning-bg-color, @warning-color-1);
+@popover-error-color: var(--td-popover-error-color, @error-color-6);
+@popover-error-bg-color: var(--td-popover-error-bg-color, @error-color-1);
 
 .@{popover}__wrapper {
   display: inline-block;
