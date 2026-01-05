@@ -2,7 +2,6 @@ import * as path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
-import { removeLastSlash } from 't-comm/es/slash/slash';
 
 // import changelog2Json from './web/plugins/changelog-to-json';
 import tdocPlugin from './web/plugins/plugin-tdoc';
@@ -33,7 +32,7 @@ const ENV_PREFIX = ['VITE_', 'VUE_APP'];
 
 export default ({ mode }) => {
   const env = loadEnv(mode, root, ENV_PREFIX);
-  const vueAppBase = env.VUE_APP_PUBLICPATH;
+  const vueAppBase = env.VUE_APP_PUBLICPATH.replace(/\/$/, '');;
   const experimentalConfig = vueAppBase ? {
     experimental: {
       renderBuiltUrl(filename: string, { hostId, hostType, type }: {
@@ -43,7 +42,7 @@ export default ({ mode }) => {
       }) {
         console.log('[experimental] ', hostType, hostId, type, filename);
 
-        return `${removeLastSlash(vueAppBase)}/${filename}`;
+        return `${vueAppBase}/${filename}`;
       },
     },
   } : {};

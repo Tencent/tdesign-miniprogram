@@ -70,7 +70,7 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 18
 
       - run: pnpm install
 
@@ -93,7 +93,7 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 18
 
       - run: pnpm install
 
