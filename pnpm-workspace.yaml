@@ -1,2 +1,5 @@
 packages:
   - packages/**
+  - '!**/npm_dist/**'
+  - '!**/_tdesign*/**'
+  - '!**/uni_modules/**'

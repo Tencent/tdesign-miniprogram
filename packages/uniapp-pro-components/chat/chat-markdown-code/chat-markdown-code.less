@@ -1,0 +1,96 @@
+@import 'tdesign-uniapp/common/style/base.less';
+
+@chat-markdown-code: ~'@{prefix}-chat-markdown-code';
+
+@chat-markdown-code-block-margin: 16rpx;
+@chat-markdown-code-block-radius: 8rpx;
+@chat-markdown-code-block-bg-light: #f6f8fa;
+@chat-markdown-code-block-bg-dark: #161b22;
+@chat-markdown-code-block-bg-white: #ffffff;
+@chat-markdown-code-block-border-light: #e1e4e8;
+@chat-markdown-code-block-border-dark: #30363d;
+@chat-markdown-code-block-border-white: #d0d7de;
+
+@chat-markdown-code-header-padding: 8rpx 16rpx;
+@chat-markdown-code-header-bg-light: #e1e4e8;
+@chat-markdown-code-header-bg-dark: #21262d;
+@chat-markdown-code-header-bg-white: #f6f8fa;
+@chat-markdown-code-header-border-light: #d0d7de;
+@chat-markdown-code-header-border-dark: #30363d;
+@chat-markdown-code-header-border-white: #d0d7de;
+
+@chat-markdown-code-lang-font-size: 24rpx;
+@chat-markdown-code-lang-color-light: #656d76;
+@chat-markdown-code-lang-color-dark: #7d8590;
+@chat-markdown-code-lang-font-weight: 500;
+
+@chat-markdown-code-content-padding: 16rpx;
+
+@chat-markdown-code-text-font-family: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New',
+  monospace;
+@chat-markdown-code-text-font-size: 28rpx;
+@chat-markdown-code-text-line-height: 1.6;
+@chat-markdown-code-text-color-light: #24292f;
+@chat-markdown-code-text-color-dark: #e6edf3;
+
+.@{chat-markdown-code} {
+  // 代码块容器
+  margin: @chat-markdown-code-block-margin 0;
+  border-radius: @chat-markdown-code-block-radius;
+  background-color: @chat-markdown-code-block-bg-light;
+  border: 1rpx solid @chat-markdown-code-block-border-light;
+  overflow: hidden;
+
+  // 代码语言标签
+  &__header {
+    padding: @chat-markdown-code-header-padding;
+    background-color: @chat-markdown-code-header-bg-light;
+    border-bottom: 1rpx solid @chat-markdown-code-header-border-light;
+  }
+
+  // 语言标签文本
+  &__lang {
+    font-size: @chat-markdown-code-lang-font-size;
+    color: @chat-markdown-code-lang-color-light;
+    font-weight: @chat-markdown-code-lang-font-weight;
+  }
+
+  // 代码内容区域
+  &__content {
+    padding: @chat-markdown-code-content-padding;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    white-space: nowrap;
+    height: auto;
+  }
+
+  // 代码文本
+  &__text {
+    font-family: @chat-markdown-code-text-font-family;
+    font-size: @chat-markdown-code-text-font-size;
+    line-height: @chat-markdown-code-text-line-height;
+    color: @chat-markdown-code-text-color-light;
+    /* 关键设置：防止换行 */
+    white-space: pre;
+    word-wrap: normal;
+    word-break: normal;
+    overflow-wrap: normal;
+    display: inline-block;
+    vertical-align: top;
+    min-width: 100%;
+  }
+
+  // 浅色主题
+  &-light {
+    .@{chat-markdown-code}-block {
+      background-color: @chat-markdown-code-block-bg-white;
+      border-color: @chat-markdown-code-block-border-white;
+    }
+
+    .@{chat-markdown-code}-header {
+      background-color: @chat-markdown-code-header-bg-white;
+      border-bottom-color: @chat-markdown-code-header-border-white;
+    }
+  }
+}

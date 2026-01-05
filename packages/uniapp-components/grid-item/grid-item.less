@@ -1,0 +1,157 @@
+@import '../common/style/base.less';
+
+@item: ~'@{prefix}-grid-item';
+
+@grid-item-icon-font-size: 48rpx;
+
+@grid-item-padding: var(--td-grid-item-padding, 32rpx);
+@grid-item-bg-color: var(--td-grid-item-bg-color, @bg-color-container);
+@grid-item-image-width: var(--td-grid-item-image-width, 96rpx);
+@grid-item-image-small-width: var(--td-grid-item-image-small-width, 64rpx);
+@grid-item-image-middle-width: var(--td-grid-item-image-middle-width, 80rpx);
+@grid-item-text-color: var(--td-grid-item-text-color, @text-color-primary);
+@grid-item-text-font-size: var(--td-grid-item-text-font-size, 28rpx);
+@grid-item-text-small-font-size: var(--td-grid-item-text-small-font-size, 24rpx);
+@grid-item-text-middle-font-size: var(--td-grid-item-text-middle-font-size, 24rpx);
+@grid-item-text-line-height: var(--td-grid-item-text-line-height, 44rpx);
+@grid-item-text-padding-top: var(--td-grid-item-text-padding-top, 16rpx);
+@grid-item-description-font-size: var(--td-grid-item-description-font-size, 24rpx);
+@grid-item-description-line-height: var(--td-grid-item-description-line-height, 40rpx);
+@grid-item-description-color: var(--td-grid-item-description-color, @text-color-placeholder);
+@grid-item-description-padding-top: var(--td-grid-item-description-padding-top, 0);
+@grid-item-hover-bg-color: var(--td-grid-item-hover-bg-color, @bg-color-secondarycontainer);
+@grid-item-horizontal-text-padding-left: var(--td-grid-item-horizontal-text-padding-left, 0);
+@grid-item-horizontal-text-description-top: var(--td-grid-item-horizontal-text-description-top, 0);
+
+.@{item} {
+  box-sizing: border-box;
+  height: 100%;
+  // float: left;
+  display: inline-block;
+  vertical-align: top;
+  background-color: @grid-item-bg-color;
+
+  &--hover {
+    background-color: @grid-item-hover-bg-color;
+  }
+
+  &--auto-size {
+    width: 84 * 2rpx;
+  }
+
+  &__wrapper {
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    padding: @grid-item-padding 0 24rpx;
+
+    &--horizontal {
+      flex-direction: row;
+      padding-left: @grid-item-padding;
+    }
+
+    &--left {
+      justify-self: flex-start;
+      align-items: flex-start;
+      width: 100%;
+      box-sizing: border-box;
+
+      .@{prefix}-grid-item__words {
+        text-align: left;
+      }
+    }
+  }
+
+  &__words {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+
+    &--horizontal {
+      margin-left: 24rpx;
+    }
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__image {
+    &:not(:empty) {
+      width: @grid-item-image-width;
+      height: @grid-item-image-width;
+
+      &.@{item}__image--small {
+        width: @grid-item-image-small-width;
+        height: @grid-item-image-small-width;
+      }
+
+      &.@{item}__image--middle {
+        width: @grid-item-image-middle-width;
+        height: @grid-item-image-middle-width;
+      }
+
+      .@{prefix}-grid__image {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    :deep(&--icon) {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: @bg-color-secondarycontainer;
+      border-radius: @radius-default;
+    }
+  }
+
+  &__text {
+    width: inherit;
+    color: @grid-item-text-color;
+    font-size: @grid-item-text-font-size;
+    line-height: @grid-item-text-line-height;
+    padding-top: @grid-item-text-padding-top;
+
+    &--small {
+      font-size: @grid-item-text-small-font-size;
+    }
+
+    &--middle {
+      font-size: @grid-item-text-middle-font-size;
+    }
+
+    &--horizontal {
+      padding-top: 0;
+      text-align: left;
+    }
+  }
+
+  &__description {
+    padding-top: @grid-item-description-padding-top;
+    width: inherit;
+    color: @grid-item-description-color;
+    font-size: @grid-item-description-font-size;
+    line-height: @grid-item-description-line-height;
+
+    &--horizontal {
+      margin-top: @grid-item-horizontal-text-description-top;
+      padding-left: @grid-item-horizontal-text-padding-left;
+      text-align-last: left;
+    }
+  }
+
+  :deep(&__icon) {
+    font-size: @grid-item-icon-font-size;
+  }
+}

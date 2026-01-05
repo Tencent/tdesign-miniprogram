@@ -1,0 +1,580 @@
+{
+  "pages": [
+    {
+      "path": "pages/home/home"
+    },
+    {
+      "path": "pages/home/navigate-fail/index"
+    },
+    {
+      "path": "pages-more/result/result-page"
+    },
+    {
+      "path": "pages-more/indexes/custom/index"
+    },
+    {
+      "path": "pages-more/indexes/base/index"
+    },
+    {
+      "path": "pages-more/side-bar/base/index"
+    },
+    {
+      "path": "pages-more/side-bar/switch/index"
+    },
+    {
+      "path": "pages-more/side-bar/with-icon/index"
+    },
+    {
+      "path": "pages-more/side-bar/custom/index"
+    },
+    {
+      "path": "pages-more/button/button"
+    },
+    {
+      "path": "pages-more/divider/divider"
+    },
+    {
+      "path": "pages-more/fab/fab"
+    },
+    {
+      "path": "pages-more/icon/icon"
+    },
+    {
+      "path": "pages-more/link/link"
+    },
+    {
+      "path": "pages-more/col/col"
+    },
+    {
+      "path": "pages-more/back-top/back-top"
+    },
+    {
+      "path": "pages-more/drawer/drawer"
+    },
+    {
+      "path": "pages-more/indexes/indexes"
+    },
+    {
+      "path": "pages-more/navbar/navbar"
+    },
+    {
+      "path": "pages-more/side-bar/side-bar"
+    },
+    {
+      "path": "pages-more/steps/steps"
+    },
+    {
+      "path": "pages-more/tab-bar/tab-bar"
+    },
+    {
+      "path": "pages-more/tabs/tabs"
+    },
+    {
+      "path": "pages-more/calendar/calendar"
+    },
+    {
+      "path": "pages-more/cascader/cascader"
+    },
+    {
+      "path": "pages-more/checkbox/checkbox"
+    },
+    {
+      "path": "pages-more/color-picker/color-picker"
+    },
+    {
+      "path": "pages-more/date-time-picker/date-time-picker"
+    },
+    {
+      "path": "pages-more/form/form"
+    },
+    {
+      "path": "pages-more/input/input"
+    },
+    {
+      "path": "pages-more/picker/picker"
+    },
+    {
+      "path": "pages-more/radio/radio"
+    },
+    {
+      "path": "pages-more/rate/rate"
+    },
+    {
+      "path": "pages-more/search/search"
+    },
+    {
+      "path": "pages-more/slider/slider"
+    },
+    {
+      "path": "pages-more/stepper/stepper"
+    },
+    {
+      "path": "pages-more/switch/switch"
+    },
+    {
+      "path": "pages-more/textarea/textarea"
+    },
+    {
+      "path": "pages-more/tree-select/tree-select"
+    },
+    {
+      "path": "pages-more/upload/upload"
+    },
+    {
+      "path": "pages-more/avatar/avatar"
+    },
+    {
+      "path": "pages-more/badge/badge"
+    },
+    {
+      "path": "pages-more/cell/cell"
+    },
+    {
+      "path": "pages-more/collapse/collapse"
+    },
+    {
+      "path": "pages-more/count-down/count-down"
+    },
+    {
+      "path": "pages-more/empty/empty"
+    },
+    {
+      "path": "pages-more/footer/footer"
+    },
+    {
+      "path": "pages-more/grid/grid"
+    },
+    {
+      "path": "pages-more/image/image"
+    },
+    {
+      "path": "pages-more/image-viewer/image-viewer"
+    },
+    {
+      "path": "pages-more/progress/progress"
+    },
+    {
+      "path": "pages-more/qrcode/qrcode"
+    },
+    {
+      "path": "pages-more/result/result"
+    },
+    {
+      "path": "pages-more/skeleton/skeleton"
+    },
+    {
+      "path": "pages-more/sticky/sticky"
+    },
+    {
+      "path": "pages-more/swiper/swiper"
+    },
+    {
+      "path": "pages-more/tag/tag"
+    },
+    {
+      "path": "pages-more/watermark/watermark"
+    },
+    {
+      "path": "pages-more/action-sheet/action-sheet"
+    },
+    {
+      "path": "pages-more/dialog/dialog"
+    },
+    {
+      "path": "pages-more/dropdown-menu/dropdown-menu"
+    },
+    {
+      "path": "pages-more/guide/guide"
+    },
+    {
+      "path": "pages-more/loading/loading"
+    },
+    {
+      "path": "pages-more/message/message"
+    },
+    {
+      "path": "pages-more/notice-bar/notice-bar"
+    },
+    {
+      "path": "pages-more/overlay/overlay"
+    },
+    {
+      "path": "pages-more/popup/popup"
+    },
+    {
+      "path": "pages-more/pull-down-refresh/pull-down-refresh"
+    },
+    {
+      "path": "pages-more/swipe-cell/swipe-cell"
+    },
+    {
+      "path": "pages-more/toast/toast"
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "pages-more/chat-list",
+      "pages": [
+        {
+          "path": "chat-list"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/chat-message",
+      "pages": [
+        {
+          "path": "chat-message"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/chat-sender",
+      "pages": [
+        {
+          "path": "chat-sender"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/chat-markdown",
+      "pages": [
+        {
+          "path": "chat-markdown"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/chat-content",
+      "pages": [
+        {
+          "path": "chat-content"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/chat-thinking",
+      "pages": [
+        {
+          "path": "chat-thinking"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/attachments",
+      "pages": [
+        {
+          "path": "attachments"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/chat-actionbar",
+      "pages": [
+        {
+          "path": "chat-actionbar"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/chat-loading",
+      "pages": [
+        {
+          "path": "chat-loading"
+        }
+      ]
+    }
+  ],
+  "globalStyle": {
+    "pageOrientation": "portrait",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "TDesign UniApp",
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "custom"
+  },
+  "condition": {
+    "current": 0,
+    "list": [
+      {
+        "name": "button",
+        "pathName": "pages-more/button/button"
+      },
+      {
+        "name": "divider",
+        "pathName": "pages-more/divider/divider"
+      },
+      {
+        "name": "fab",
+        "pathName": "pages-more/fab/fab"
+      },
+      {
+        "name": "icon",
+        "pathName": "pages-more/icon/icon"
+      },
+      {
+        "name": "link",
+        "pathName": "pages-more/link/link"
+      },
+      {
+        "name": "layout",
+        "pathName": "pages-more/col/col"
+      },
+      {
+        "name": "back-top",
+        "pathName": "pages-more/back-top/back-top"
+      },
+      {
+        "name": "drawer",
+        "pathName": "pages-more/drawer/drawer"
+      },
+      {
+        "name": "indexes",
+        "pathName": "pages-more/indexes/indexes"
+      },
+      {
+        "name": "navbar",
+        "pathName": "pages-more/navbar/navbar"
+      },
+      {
+        "name": "side-bar",
+        "pathName": "pages-more/side-bar/side-bar"
+      },
+      {
+        "name": "steps",
+        "pathName": "pages-more/steps/steps"
+      },
+      {
+        "name": "tab-bar",
+        "pathName": "pages-more/tab-bar/tab-bar"
+      },
+      {
+        "name": "tabs",
+        "pathName": "pages-more/tabs/tabs"
+      },
+      {
+        "name": "calendar",
+        "pathName": "pages-more/calendar/calendar"
+      },
+      {
+        "name": "cascader",
+        "pathName": "pages-more/cascader/cascader"
+      },
+      {
+        "name": "checkbox",
+        "pathName": "pages-more/checkbox/checkbox"
+      },
+      {
+        "name": "color-picker",
+        "pathName": "pages-more/color-picker/color-picker"
+      },
+      {
+        "name": "date-time-picker",
+        "pathName": "pages-more/date-time-picker/date-time-picker"
+      },
+      {
+        "name": "form",
+        "pathName": "pages-more/form/form"
+      },
+      {
+        "name": "input",
+        "pathName": "pages-more/input/input"
+      },
+      {
+        "name": "picker",
+        "pathName": "pages-more/picker/picker"
+      },
+      {
+        "name": "radio",
+        "pathName": "pages-more/radio/radio"
+      },
+      {
+        "name": "rate",
+        "pathName": "pages-more/rate/rate"
+      },
+      {
+        "name": "search",
+        "pathName": "pages-more/search/search"
+      },
+      {
+        "name": "slider",
+        "pathName": "pages-more/slider/slider"
+      },
+      {
+        "name": "stepper",
+        "pathName": "pages-more/stepper/stepper"
+      },
+      {
+        "name": "switch",
+        "pathName": "pages-more/switch/switch"
+      },
+      {
+        "name": "textarea",
+        "pathName": "pages-more/textarea/textarea"
+      },
+      {
+        "name": "tree-select",
+        "pathName": "pages-more/tree-select/tree-select"
+      },
+      {
+        "name": "upload",
+        "pathName": "pages-more/upload/upload"
+      },
+      {
+        "name": "avatar",
+        "pathName": "pages-more/avatar/avatar"
+      },
+      {
+        "name": "badge",
+        "pathName": "pages-more/badge/badge"
+      },
+      {
+        "name": "cell",
+        "pathName": "pages-more/cell/cell"
+      },
+      {
+        "name": "collapse",
+        "pathName": "pages-more/collapse/collapse"
+      },
+      {
+        "name": "count-down",
+        "pathName": "pages-more/count-down/count-down"
+      },
+      {
+        "name": "empty",
+        "pathName": "pages-more/empty/empty"
+      },
+      {
+        "name": "footer",
+        "pathName": "pages-more/footer/footer"
+      },
+      {
+        "name": "grid",
+        "pathName": "pages-more/grid/grid"
+      },
+      {
+        "name": "image",
+        "pathName": "pages-more/image/image"
+      },
+      {
+        "name": "image-viewer",
+        "pathName": "pages-more/image-viewer/image-viewer"
+      },
+      {
+        "name": "progress",
+        "pathName": "pages-more/progress/progress"
+      },
+      {
+        "name": "q-r-code",
+        "pathName": "pages-more/qrcode/qrcode"
+      },
+      {
+        "name": "result",
+        "pathName": "pages-more/result/result"
+      },
+      {
+        "name": "skeleton",
+        "pathName": "pages-more/skeleton/skeleton"
+      },
+      {
+        "name": "sticky",
+        "pathName": "pages-more/sticky/sticky"
+      },
+      {
+        "name": "swiper",
+        "pathName": "pages-more/swiper/swiper"
+      },
+      {
+        "name": "tag",
+        "pathName": "pages-more/tag/tag"
+      },
+      {
+        "name": "watermark",
+        "pathName": "pages-more/watermark/watermark"
+      },
+      {
+        "name": "action-sheet",
+        "pathName": "pages-more/action-sheet/action-sheet"
+      },
+      {
+        "name": "dialog",
+        "pathName": "pages-more/dialog/dialog"
+      },
+      {
+        "name": "dropdown-menu",
+        "pathName": "pages-more/dropdown-menu/dropdown-menu"
+      },
+      {
+        "name": "guide",
+        "pathName": "pages-more/guide/guide"
+      },
+      {
+        "name": "loading",
+        "pathName": "pages-more/loading/loading"
+      },
+      {
+        "name": "message",
+        "pathName": "pages-more/message/message"
+      },
+      {
+        "name": "notice-bar",
+        "pathName": "pages-more/notice-bar/notice-bar"
+      },
+      {
+        "name": "overlay",
+        "pathName": "pages-more/overlay/overlay"
+      },
+      {
+        "name": "popup",
+        "pathName": "pages-more/popup/popup"
+      },
+      {
+        "name": "pull-down-refresh",
+        "pathName": "pages-more/pull-down-refresh/pull-down-refresh"
+      },
+      {
+        "name": "swipe-cell",
+        "pathName": "pages-more/swipe-cell/swipe-cell"
+      },
+      {
+        "name": "toast",
+        "pathName": "pages-more/toast/toast"
+      },
+      {
+        "name": "chat-list",
+        "pathName": "pages-more/chat-list/chat-list"
+      },
+      {
+        "name": "chat-message",
+        "pathName": "pages-more/chat-message/chat-message"
+      },
+      {
+        "name": "chat-sender",
+        "pathName": "pages-more/chat-sender/chat-sender"
+      },
+      {
+        "name": "chat-markdown",
+        "pathName": "pages-more/chat-markdown/chat-markdown"
+      },
+      {
+        "name": "chat-content",
+        "pathName": "pages-more/chat-content/chat-content"
+      },
+      {
+        "name": "chat-thinking",
+        "pathName": "pages-more/chat-thinking/chat-thinking"
+      },
+      {
+        "name": "attachments",
+        "pathName": "pages-more/attachments/attachments"
+      },
+      {
+        "name": "chat-actionbar",
+        "pathName": "pages-more/chat-actionbar/chat-actionbar"
+      },
+      {
+        "name": "chat-loading",
+        "pathName": "pages-more/chat-loading/chat-loading"
+      }
+    ]
+  }
+}
