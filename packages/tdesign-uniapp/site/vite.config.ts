@@ -68,7 +68,7 @@ export default ({ mode }) => {
     },
     server: {
       host: '0.0.0.0',
-      port: 18000,
+      port: 19002,
       open: '/',
       https: false as any,
     },
