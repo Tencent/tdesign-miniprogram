@@ -216,8 +216,10 @@ export default class Slider extends SuperComponent {
     const value = trimValue(newValue, this.properties);
     const realLabel = this.getLabelByValue(value);
 
-    // 不触发 change 事件，避免受控模式下死循环
-    this.preval = value;
+    // 避免受控模式下死循环，同时不影响初始化后的首次点击
+    if (this.preval !== undefined) {
+      this.preval = value;
+    }
 
     const setValueAndTrigger = () => {
       this.setData({
