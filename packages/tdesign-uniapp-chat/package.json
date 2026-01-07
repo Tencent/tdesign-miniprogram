@@ -55,6 +55,7 @@
   },
   "files": [
     "npm_dist",
+    "global.d.ts",
     "README.md",
     "CHANGELOG.md"
   ],
