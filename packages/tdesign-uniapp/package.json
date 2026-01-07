@@ -16,6 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/Tencent/tdesign-miniprogram.git"
   },
+  "typings": "./npm_dist/types/index.d.ts",
   "exports": {
     "./*": "./npm_dist/*",
     "./action-sheet/action-sheet.vue": {

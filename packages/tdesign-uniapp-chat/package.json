@@ -1,6 +1,7 @@
 {
   "name": "tdesign-uniapp-chat",
   "version": "0.1.1",
+  "typings": "./npm_dist/types/index.d.ts",
   "exports": {
     "./*": "./npm_dist/*",
     "./attachments/attachments.vue": {
