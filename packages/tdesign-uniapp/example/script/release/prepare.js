@@ -36,12 +36,7 @@ async function prepareOne({ targetDir, sourceGlob, sourceDir }) {
       nodir: true,
       dot: true,
     })
-    .filter((item) => {
-      const relativePath = path.relative(sourceDir, item);
-      const parts = relativePath.split(path.sep);
-      // 只保留第一层是目录的文件（即路径深度至少为2）
-      return parts.length >= 2 && !item.includes('_example') && !item.includes('node_modules');
-    });
+    .filter((item) => !item.includes('_example') && !item.includes('node_modules') && !item.includes('package.json'));
 
   for (const item of list) {
     const relativePath = path.relative(sourceDir, item);
