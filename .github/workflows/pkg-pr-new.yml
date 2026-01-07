@@ -25,4 +25,4 @@ jobs:
         with:
           node-version: 20
 
-      - run: pnpm dlx pkg-pr-new publish 'packages/tdesign-miniprogram' 'packages/tdesign-uniapp' 'packages/tdesign-uniapp-chat/npm_dist'
+      - run: pnpm dlx pkg-pr-new publish 'packages/tdesign-miniprogram' 'packages/tdesign-uniapp' 'packages/tdesign-uniapp-chat'
