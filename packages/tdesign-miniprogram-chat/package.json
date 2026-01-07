@@ -20,6 +20,54 @@
   "bugs": {
     "url": "https://github.com/Tencent/tdesign-miniprogram/issues"
   },
+  "exports": {
+    "./*": "./*",
+    "./attachments/attachments.vue": {
+      "types": "./types/attachments.d.ts",
+      "import": "./attachments/attachments.vue",
+      "default": "./attachments/attachments.vue"
+    },
+    "./chat-actionbar/chat-actionbar.vue": {
+      "types": "./types/chat-actionbar.d.ts",
+      "import": "./chat-actionbar/chat-actionbar.vue",
+      "default": "./chat-actionbar/chat-actionbar.vue"
+    },
+    "./chat-content/chat-content.vue": {
+      "types": "./types/chat-content.d.ts",
+      "import": "./chat-content/chat-content.vue",
+      "default": "./chat-content/chat-content.vue"
+    },
+    "./chat-list/chat-list.vue": {
+      "types": "./types/chat-list.d.ts",
+      "import": "./chat-list/chat-list.vue",
+      "default": "./chat-list/chat-list.vue"
+    },
+    "./chat-loading/chat-loading.vue": {
+      "types": "./types/chat-loading.d.ts",
+      "import": "./chat-loading/chat-loading.vue",
+      "default": "./chat-loading/chat-loading.vue"
+    },
+    "./chat-markdown/chat-markdown.vue": {
+      "types": "./types/chat-markdown.d.ts",
+      "import": "./chat-markdown/chat-markdown.vue",
+      "default": "./chat-markdown/chat-markdown.vue"
+    },
+    "./chat-message/chat-message.vue": {
+      "types": "./types/chat-message.d.ts",
+      "import": "./chat-message/chat-message.vue",
+      "default": "./chat-message/chat-message.vue"
+    },
+    "./chat-sender/chat-sender.vue": {
+      "types": "./types/chat-sender.d.ts",
+      "import": "./chat-sender/chat-sender.vue",
+      "default": "./chat-sender/chat-sender.vue"
+    },
+    "./chat-thinking/chat-thinking.vue": {
+      "types": "./types/chat-thinking.d.ts",
+      "import": "./chat-thinking/chat-thinking.vue",
+      "default": "./chat-thinking/chat-thinking.vue"
+    }
+  },
   "author": "tdesign",
   "license": "MIT",
   "devDependencies": {}

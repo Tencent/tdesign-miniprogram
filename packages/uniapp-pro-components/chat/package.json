@@ -1,8 +1,7 @@
 {
-  "name": "tdesign-uniapp-chat",
+  "name": "@tdesign/uniapp-pro-components-chat",
   "id": "tdesign-uniapp-chat",
-  "version": "0.1.1",
-  "author": "novlan1",
+  "private": true,
   "title": "tdesign-uniapp-chat",
   "description": "TDesign Chat Component for uniapp",
   "typings": "./types/index.d.ts",

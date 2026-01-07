@@ -1,8 +1,62 @@
 {
-  "name": "tdesign-uniapp",
-  "version": "0.0.0",
-  "private": "true",
-  "homepage": "https://uwayfly.com/tdesign-uniapp/",
+  "name": "tdesign-uniapp-chat",
+  "version": "0.1.1",
+  "exports": {
+    "./*": "./npm_dist/*",
+    "./attachments/attachments.vue": {
+      "types": "./npm_dist/types/attachments.d.ts",
+      "import": "./npm_dist/attachments/attachments.vue",
+      "default": "./npm_dist/attachments/attachments.vue"
+    },
+    "./chat-actionbar/chat-actionbar.vue": {
+      "types": "./npm_dist/types/chat-actionbar.d.ts",
+      "import": "./npm_dist/chat-actionbar/chat-actionbar.vue",
+      "default": "./npm_dist/chat-actionbar/chat-actionbar.vue"
+    },
+    "./chat-content/chat-content.vue": {
+      "types": "./npm_dist/types/chat-content.d.ts",
+      "import": "./npm_dist/chat-content/chat-content.vue",
+      "default": "./npm_dist/chat-content/chat-content.vue"
+    },
+    "./chat-list/chat-list.vue": {
+      "types": "./npm_dist/types/chat-list.d.ts",
+      "import": "./npm_dist/chat-list/chat-list.vue",
+      "default": "./npm_dist/chat-list/chat-list.vue"
+    },
+    "./chat-loading/chat-loading.vue": {
+      "types": "./npm_dist/types/chat-loading.d.ts",
+      "import": "./npm_dist/chat-loading/chat-loading.vue",
+      "default": "./npm_dist/chat-loading/chat-loading.vue"
+    },
+    "./chat-markdown/chat-markdown.vue": {
+      "types": "./npm_dist/types/chat-markdown.d.ts",
+      "import": "./npm_dist/chat-markdown/chat-markdown.vue",
+      "default": "./npm_dist/chat-markdown/chat-markdown.vue"
+    },
+    "./chat-message/chat-message.vue": {
+      "types": "./npm_dist/types/chat-message.d.ts",
+      "import": "./npm_dist/chat-message/chat-message.vue",
+      "default": "./npm_dist/chat-message/chat-message.vue"
+    },
+    "./chat-sender/chat-sender.vue": {
+      "types": "./npm_dist/types/chat-sender.d.ts",
+      "import": "./npm_dist/chat-sender/chat-sender.vue",
+      "default": "./npm_dist/chat-sender/chat-sender.vue"
+    },
+    "./chat-thinking/chat-thinking.vue": {
+      "types": "./npm_dist/types/chat-thinking.d.ts",
+      "import": "./npm_dist/chat-thinking/chat-thinking.vue",
+      "default": "./npm_dist/chat-thinking/chat-thinking.vue"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "npm_dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "bugs": {
     "url": "https://github.com/Tencent/tdesign-miniprogram/issues"
   },
