@@ -28,24 +28,24 @@ async function main() {
   });
 }
 
-async function prepareOne({
-  targetDir,
-  sourceGlob,
-  sourceDir,
-}) {
+async function prepareOne({ targetDir, sourceGlob, sourceDir }) {
   deleteFolder(targetDir);
-  const list = glob.sync(sourceGlob, {
-    ignore: '**/{node_modules,_example}/**/*',
-    nodir: true,
-    dot: true,
-  }).filter(item => !item.includes('_example') && !item.includes('node_modules'));
+  const list = glob
+    .sync(sourceGlob, {
+      ignore: '**/{node_modules,_example}/**/*',
+      nodir: true,
+      dot: true,
+    })
+    .filter((item) => {
+      const relativePath = path.relative(sourceDir, item);
+      const parts = relativePath.split(path.sep);
+      // 只保留第一层是目录的文件（即路径深度至少为2）
+      return parts.length >= 2 && !item.includes('_example') && !item.includes('node_modules');
+    });
 
   for (const item of list) {
     const relativePath = path.relative(sourceDir, item);
-    const {
-      relativeTargetByCwd,
-      relativeSourceByCwd,
-    } = await copy({
+    const { relativeTargetByCwd, relativeSourceByCwd } = await copy({
       relativePath,
       filePath: item,
       config: {
@@ -59,6 +59,5 @@ async function prepareOne({
 
   console.log(`[Wrote] done! Length is ${list.length}!`);
 }
-
 
 main();

@@ -1,5 +1,6 @@
 {
-  "name": "tdesign-uniapp",
+  "name": "@tdesign/uniapp-components",
+  "private": true,
   "id": "tdesign-uniapp",
   "version": "0.5.5",
   "author": "novlan1",
