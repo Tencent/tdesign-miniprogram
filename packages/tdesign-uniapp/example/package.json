@@ -70,7 +70,7 @@
     "@vue/tsconfig": "^0.7.0",
     "chokidar": "^4.0.3",
     "cos-nodejs-sdk-v5": "^2.15.4",
-    "glob": "^11.0.3",
+    "glob": "^13.0.0",
     "gulp": "^5.0.1",
     "gulp-watch": "^5.0.1",
     "less": "^4.4.0",
