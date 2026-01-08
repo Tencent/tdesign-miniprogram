@@ -17,7 +17,7 @@ export const docs = [
         titleEn: 'CHANGELOG',
         name: 'changelog',
         path: '/uniapp/changelog',
-        component: () => import('@/CHANGELOG.md'),
+        component: () => import('../CHANGELOG.md'),
       },
       {
         title: '组件概览',
@@ -611,10 +611,10 @@ export const docs = [
   },
 ];
 
-const enDocs = docs.map(doc => ({
+const enDocs = docs.map((doc) => ({
   ...doc,
   title: doc.titleEn,
-  children: doc?.children?.map(child => ({
+  children: doc?.children?.map((child) => ({
     title: child.titleEn,
     name: `${child.name}-en`,
     path: `${child.path}-en`,

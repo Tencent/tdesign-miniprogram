@@ -1,14 +1,415 @@
 {
   "name": "tdesign-uniapp",
-  "version": "0.0.0",
-  "private": "true",
-  "homepage": "https://uwayfly.com/tdesign-uniapp/",
+  "version": "0.5.5",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "npm_dist",
+    "global.d.ts",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "bugs": {
     "url": "https://github.com/Tencent/tdesign-miniprogram/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Tencent/tdesign-miniprogram.git"
+  },
+  "typings": "./npm_dist/types/index.d.ts",
+  "exports": {
+    "./*": "./npm_dist/*",
+    "./action-sheet/action-sheet.vue": {
+      "types": "./npm_dist/types/action-sheet.d.ts",
+      "import": "./npm_dist/action-sheet/action-sheet.vue",
+      "default": "./npm_dist/action-sheet/action-sheet.vue"
+    },
+    "./avatar/avatar.vue": {
+      "types": "./npm_dist/types/avatar.d.ts",
+      "import": "./npm_dist/avatar/avatar.vue",
+      "default": "./npm_dist/avatar/avatar.vue"
+    },
+    "./avatar-group/avatar-group.vue": {
+      "types": "./npm_dist/types/avatar-group.d.ts",
+      "import": "./npm_dist/avatar-group/avatar-group.vue",
+      "default": "./npm_dist/avatar-group/avatar-group.vue"
+    },
+    "./back-top/back-top.vue": {
+      "types": "./npm_dist/types/back-top.d.ts",
+      "import": "./npm_dist/back-top/back-top.vue",
+      "default": "./npm_dist/back-top/back-top.vue"
+    },
+    "./badge/badge.vue": {
+      "types": "./npm_dist/types/badge.d.ts",
+      "import": "./npm_dist/badge/badge.vue",
+      "default": "./npm_dist/badge/badge.vue"
+    },
+    "./button/button.vue": {
+      "types": "./npm_dist/types/button.d.ts",
+      "import": "./npm_dist/button/button.vue",
+      "default": "./npm_dist/button/button.vue"
+    },
+    "./calendar/calendar.vue": {
+      "types": "./npm_dist/types/calendar.d.ts",
+      "import": "./npm_dist/calendar/calendar.vue",
+      "default": "./npm_dist/calendar/calendar.vue"
+    },
+    "./cascader/cascader.vue": {
+      "types": "./npm_dist/types/cascader.d.ts",
+      "import": "./npm_dist/cascader/cascader.vue",
+      "default": "./npm_dist/cascader/cascader.vue"
+    },
+    "./cell/cell.vue": {
+      "types": "./npm_dist/types/cell.d.ts",
+      "import": "./npm_dist/cell/cell.vue",
+      "default": "./npm_dist/cell/cell.vue"
+    },
+    "./cell-group/cell-group.vue": {
+      "types": "./npm_dist/types/cell-group.d.ts",
+      "import": "./npm_dist/cell-group/cell-group.vue",
+      "default": "./npm_dist/cell-group/cell-group.vue"
+    },
+    "./check-tag/check-tag.vue": {
+      "types": "./npm_dist/types/check-tag.d.ts",
+      "import": "./npm_dist/check-tag/check-tag.vue",
+      "default": "./npm_dist/check-tag/check-tag.vue"
+    },
+    "./checkbox/checkbox.vue": {
+      "types": "./npm_dist/types/checkbox.d.ts",
+      "import": "./npm_dist/checkbox/checkbox.vue",
+      "default": "./npm_dist/checkbox/checkbox.vue"
+    },
+    "./checkbox-group/checkbox-group.vue": {
+      "types": "./npm_dist/types/checkbox-group.d.ts",
+      "import": "./npm_dist/checkbox-group/checkbox-group.vue",
+      "default": "./npm_dist/checkbox-group/checkbox-group.vue"
+    },
+    "./col/col.vue": {
+      "types": "./npm_dist/types/col.d.ts",
+      "import": "./npm_dist/col/col.vue",
+      "default": "./npm_dist/col/col.vue"
+    },
+    "./collapse/collapse.vue": {
+      "types": "./npm_dist/types/collapse.d.ts",
+      "import": "./npm_dist/collapse/collapse.vue",
+      "default": "./npm_dist/collapse/collapse.vue"
+    },
+    "./collapse-panel/collapse-panel.vue": {
+      "types": "./npm_dist/types/collapse-panel.d.ts",
+      "import": "./npm_dist/collapse-panel/collapse-panel.vue",
+      "default": "./npm_dist/collapse-panel/collapse-panel.vue"
+    },
+    "./color-picker/color-picker.vue": {
+      "types": "./npm_dist/types/color-picker.d.ts",
+      "import": "./npm_dist/color-picker/color-picker.vue",
+      "default": "./npm_dist/color-picker/color-picker.vue"
+    },
+    "./count-down/count-down.vue": {
+      "types": "./npm_dist/types/count-down.d.ts",
+      "import": "./npm_dist/count-down/count-down.vue",
+      "default": "./npm_dist/count-down/count-down.vue"
+    },
+    "./date-time-picker/date-time-picker.vue": {
+      "types": "./npm_dist/types/date-time-picker.d.ts",
+      "import": "./npm_dist/date-time-picker/date-time-picker.vue",
+      "default": "./npm_dist/date-time-picker/date-time-picker.vue"
+    },
+    "./dialog/dialog.vue": {
+      "types": "./npm_dist/types/dialog.d.ts",
+      "import": "./npm_dist/dialog/dialog.vue",
+      "default": "./npm_dist/dialog/dialog.vue"
+    },
+    "./divider/divider.vue": {
+      "types": "./npm_dist/types/divider.d.ts",
+      "import": "./npm_dist/divider/divider.vue",
+      "default": "./npm_dist/divider/divider.vue"
+    },
+    "./drawer/drawer.vue": {
+      "types": "./npm_dist/types/drawer.d.ts",
+      "import": "./npm_dist/drawer/drawer.vue",
+      "default": "./npm_dist/drawer/drawer.vue"
+    },
+    "./dropdown-item/dropdown-item.vue": {
+      "types": "./npm_dist/types/dropdown-item.d.ts",
+      "import": "./npm_dist/dropdown-item/dropdown-item.vue",
+      "default": "./npm_dist/dropdown-item/dropdown-item.vue"
+    },
+    "./dropdown-menu/dropdown-menu.vue": {
+      "types": "./npm_dist/types/dropdown-menu.d.ts",
+      "import": "./npm_dist/dropdown-menu/dropdown-menu.vue",
+      "default": "./npm_dist/dropdown-menu/dropdown-menu.vue"
+    },
+    "./empty/empty.vue": {
+      "types": "./npm_dist/types/empty.d.ts",
+      "import": "./npm_dist/empty/empty.vue",
+      "default": "./npm_dist/empty/empty.vue"
+    },
+    "./fab/fab.vue": {
+      "types": "./npm_dist/types/fab.d.ts",
+      "import": "./npm_dist/fab/fab.vue",
+      "default": "./npm_dist/fab/fab.vue"
+    },
+    "./footer/footer.vue": {
+      "types": "./npm_dist/types/footer.d.ts",
+      "import": "./npm_dist/footer/footer.vue",
+      "default": "./npm_dist/footer/footer.vue"
+    },
+    "./form/form.vue": {
+      "types": "./npm_dist/types/form.d.ts",
+      "import": "./npm_dist/form/form.vue",
+      "default": "./npm_dist/form/form.vue"
+    },
+    "./form-item/form-item.vue": {
+      "types": "./npm_dist/types/form-item.d.ts",
+      "import": "./npm_dist/form-item/form-item.vue",
+      "default": "./npm_dist/form-item/form-item.vue"
+    },
+    "./grid/grid.vue": {
+      "types": "./npm_dist/types/grid.d.ts",
+      "import": "./npm_dist/grid/grid.vue",
+      "default": "./npm_dist/grid/grid.vue"
+    },
+    "./grid-item/grid-item.vue": {
+      "types": "./npm_dist/types/grid-item.d.ts",
+      "import": "./npm_dist/grid-item/grid-item.vue",
+      "default": "./npm_dist/grid-item/grid-item.vue"
+    },
+    "./guide/guide.vue": {
+      "types": "./npm_dist/types/guide.d.ts",
+      "import": "./npm_dist/guide/guide.vue",
+      "default": "./npm_dist/guide/guide.vue"
+    },
+    "./icon/icon.vue": {
+      "types": "./npm_dist/types/icon.d.ts",
+      "import": "./npm_dist/icon/icon.vue",
+      "default": "./npm_dist/icon/icon.vue"
+    },
+    "./image/image.vue": {
+      "types": "./npm_dist/types/image.d.ts",
+      "import": "./npm_dist/image/image.vue",
+      "default": "./npm_dist/image/image.vue"
+    },
+    "./image-viewer/image-viewer.vue": {
+      "types": "./npm_dist/types/image-viewer.d.ts",
+      "import": "./npm_dist/image-viewer/image-viewer.vue",
+      "default": "./npm_dist/image-viewer/image-viewer.vue"
+    },
+    "./indexes/indexes.vue": {
+      "types": "./npm_dist/types/indexes.d.ts",
+      "import": "./npm_dist/indexes/indexes.vue",
+      "default": "./npm_dist/indexes/indexes.vue"
+    },
+    "./indexes-anchor/indexes-anchor.vue": {
+      "types": "./npm_dist/types/indexes-anchor.d.ts",
+      "import": "./npm_dist/indexes-anchor/indexes-anchor.vue",
+      "default": "./npm_dist/indexes-anchor/indexes-anchor.vue"
+    },
+    "./input/input.vue": {
+      "types": "./npm_dist/types/input.d.ts",
+      "import": "./npm_dist/input/input.vue",
+      "default": "./npm_dist/input/input.vue"
+    },
+    "./link/link.vue": {
+      "types": "./npm_dist/types/link.d.ts",
+      "import": "./npm_dist/link/link.vue",
+      "default": "./npm_dist/link/link.vue"
+    },
+    "./loading/loading.vue": {
+      "types": "./npm_dist/types/loading.d.ts",
+      "import": "./npm_dist/loading/loading.vue",
+      "default": "./npm_dist/loading/loading.vue"
+    },
+    "./message/message.vue": {
+      "types": "./npm_dist/types/message.d.ts",
+      "import": "./npm_dist/message/message.vue",
+      "default": "./npm_dist/message/message.vue"
+    },
+    "./navbar/navbar.vue": {
+      "types": "./npm_dist/types/navbar.d.ts",
+      "import": "./npm_dist/navbar/navbar.vue",
+      "default": "./npm_dist/navbar/navbar.vue"
+    },
+    "./notice-bar/notice-bar.vue": {
+      "types": "./npm_dist/types/notice-bar.d.ts",
+      "import": "./npm_dist/notice-bar/notice-bar.vue",
+      "default": "./npm_dist/notice-bar/notice-bar.vue"
+    },
+    "./overlay/overlay.vue": {
+      "types": "./npm_dist/types/overlay.d.ts",
+      "import": "./npm_dist/overlay/overlay.vue",
+      "default": "./npm_dist/overlay/overlay.vue"
+    },
+    "./picker/picker.vue": {
+      "types": "./npm_dist/types/picker.d.ts",
+      "import": "./npm_dist/picker/picker.vue",
+      "default": "./npm_dist/picker/picker.vue"
+    },
+    "./picker-item/picker-item.vue": {
+      "types": "./npm_dist/types/picker-item.d.ts",
+      "import": "./npm_dist/picker-item/picker-item.vue",
+      "default": "./npm_dist/picker-item/picker-item.vue"
+    },
+    "./popup/popup.vue": {
+      "types": "./npm_dist/types/popup.d.ts",
+      "import": "./npm_dist/popup/popup.vue",
+      "default": "./npm_dist/popup/popup.vue"
+    },
+    "./progress/progress.vue": {
+      "types": "./npm_dist/types/progress.d.ts",
+      "import": "./npm_dist/progress/progress.vue",
+      "default": "./npm_dist/progress/progress.vue"
+    },
+    "./pull-down-refresh/pull-down-refresh.vue": {
+      "types": "./npm_dist/types/pull-down-refresh.d.ts",
+      "import": "./npm_dist/pull-down-refresh/pull-down-refresh.vue",
+      "default": "./npm_dist/pull-down-refresh/pull-down-refresh.vue"
+    },
+    "./qrcode/qrcode.vue": {
+      "types": "./npm_dist/types/qrcode.d.ts",
+      "import": "./npm_dist/qrcode/qrcode.vue",
+      "default": "./npm_dist/qrcode/qrcode.vue"
+    },
+    "./radio/radio.vue": {
+      "types": "./npm_dist/types/radio.d.ts",
+      "import": "./npm_dist/radio/radio.vue",
+      "default": "./npm_dist/radio/radio.vue"
+    },
+    "./radio-group/radio-group.vue": {
+      "types": "./npm_dist/types/radio-group.d.ts",
+      "import": "./npm_dist/radio-group/radio-group.vue",
+      "default": "./npm_dist/radio-group/radio-group.vue"
+    },
+    "./rate/rate.vue": {
+      "types": "./npm_dist/types/rate.d.ts",
+      "import": "./npm_dist/rate/rate.vue",
+      "default": "./npm_dist/rate/rate.vue"
+    },
+    "./result/result.vue": {
+      "types": "./npm_dist/types/result.d.ts",
+      "import": "./npm_dist/result/result.vue",
+      "default": "./npm_dist/result/result.vue"
+    },
+    "./row/row.vue": {
+      "types": "./npm_dist/types/row.d.ts",
+      "import": "./npm_dist/row/row.vue",
+      "default": "./npm_dist/row/row.vue"
+    },
+    "./search/search.vue": {
+      "types": "./npm_dist/types/search.d.ts",
+      "import": "./npm_dist/search/search.vue",
+      "default": "./npm_dist/search/search.vue"
+    },
+    "./side-bar/side-bar.vue": {
+      "types": "./npm_dist/types/side-bar.d.ts",
+      "import": "./npm_dist/side-bar/side-bar.vue",
+      "default": "./npm_dist/side-bar/side-bar.vue"
+    },
+    "./side-bar-item/side-bar-item.vue": {
+      "types": "./npm_dist/types/side-bar-item.d.ts",
+      "import": "./npm_dist/side-bar-item/side-bar-item.vue",
+      "default": "./npm_dist/side-bar-item/side-bar-item.vue"
+    },
+    "./skeleton/skeleton.vue": {
+      "types": "./npm_dist/types/skeleton.d.ts",
+      "import": "./npm_dist/skeleton/skeleton.vue",
+      "default": "./npm_dist/skeleton/skeleton.vue"
+    },
+    "./slider/slider.vue": {
+      "types": "./npm_dist/types/slider.d.ts",
+      "import": "./npm_dist/slider/slider.vue",
+      "default": "./npm_dist/slider/slider.vue"
+    },
+    "./step-item/step-item.vue": {
+      "types": "./npm_dist/types/step-item.d.ts",
+      "import": "./npm_dist/step-item/step-item.vue",
+      "default": "./npm_dist/step-item/step-item.vue"
+    },
+    "./stepper/stepper.vue": {
+      "types": "./npm_dist/types/stepper.d.ts",
+      "import": "./npm_dist/stepper/stepper.vue",
+      "default": "./npm_dist/stepper/stepper.vue"
+    },
+    "./steps/steps.vue": {
+      "types": "./npm_dist/types/steps.d.ts",
+      "import": "./npm_dist/steps/steps.vue",
+      "default": "./npm_dist/steps/steps.vue"
+    },
+    "./sticky/sticky.vue": {
+      "types": "./npm_dist/types/sticky.d.ts",
+      "import": "./npm_dist/sticky/sticky.vue",
+      "default": "./npm_dist/sticky/sticky.vue"
+    },
+    "./swipe-cell/swipe-cell.vue": {
+      "types": "./npm_dist/types/swipe-cell.d.ts",
+      "import": "./npm_dist/swipe-cell/swipe-cell.vue",
+      "default": "./npm_dist/swipe-cell/swipe-cell.vue"
+    },
+    "./swiper/swiper.vue": {
+      "types": "./npm_dist/types/swiper.d.ts",
+      "import": "./npm_dist/swiper/swiper.vue",
+      "default": "./npm_dist/swiper/swiper.vue"
+    },
+    "./swiper-nav/swiper-nav.vue": {
+      "types": "./npm_dist/types/swiper-nav.d.ts",
+      "import": "./npm_dist/swiper-nav/swiper-nav.vue",
+      "default": "./npm_dist/swiper-nav/swiper-nav.vue"
+    },
+    "./switch/switch.vue": {
+      "types": "./npm_dist/types/switch.d.ts",
+      "import": "./npm_dist/switch/switch.vue",
+      "default": "./npm_dist/switch/switch.vue"
+    },
+    "./tab-bar/tab-bar.vue": {
+      "types": "./npm_dist/types/tab-bar.d.ts",
+      "import": "./npm_dist/tab-bar/tab-bar.vue",
+      "default": "./npm_dist/tab-bar/tab-bar.vue"
+    },
+    "./tab-bar-item/tab-bar-item.vue": {
+      "types": "./npm_dist/types/tab-bar-item.d.ts",
+      "import": "./npm_dist/tab-bar-item/tab-bar-item.vue",
+      "default": "./npm_dist/tab-bar-item/tab-bar-item.vue"
+    },
+    "./tab-panel/tab-panel.vue": {
+      "types": "./npm_dist/types/tab-panel.d.ts",
+      "import": "./npm_dist/tab-panel/tab-panel.vue",
+      "default": "./npm_dist/tab-panel/tab-panel.vue"
+    },
+    "./tabs/tabs.vue": {
+      "types": "./npm_dist/types/tabs.d.ts",
+      "import": "./npm_dist/tabs/tabs.vue",
+      "default": "./npm_dist/tabs/tabs.vue"
+    },
+    "./tag/tag.vue": {
+      "types": "./npm_dist/types/tag.d.ts",
+      "import": "./npm_dist/tag/tag.vue",
+      "default": "./npm_dist/tag/tag.vue"
+    },
+    "./textarea/textarea.vue": {
+      "types": "./npm_dist/types/textarea.d.ts",
+      "import": "./npm_dist/textarea/textarea.vue",
+      "default": "./npm_dist/textarea/textarea.vue"
+    },
+    "./toast/toast.vue": {
+      "types": "./npm_dist/types/toast.d.ts",
+      "import": "./npm_dist/toast/toast.vue",
+      "default": "./npm_dist/toast/toast.vue"
+    },
+    "./tree-select/tree-select.vue": {
+      "types": "./npm_dist/types/tree-select.d.ts",
+      "import": "./npm_dist/tree-select/tree-select.vue",
+      "default": "./npm_dist/tree-select/tree-select.vue"
+    },
+    "./upload/upload.vue": {
+      "types": "./npm_dist/types/upload.d.ts",
+      "import": "./npm_dist/upload/upload.vue",
+      "default": "./npm_dist/upload/upload.vue"
+    },
+    "./watermark/watermark.vue": {
+      "types": "./npm_dist/types/watermark.d.ts",
+      "import": "./npm_dist/watermark/watermark.vue",
+      "default": "./npm_dist/watermark/watermark.vue"
+    }
   },
   "scripts": {
     "dev": "concurrently \"npm run watch\" \"pnpm --filter=\"./example\" dev:h5\" \"pnpm --filter=\"./site\" dev\"",

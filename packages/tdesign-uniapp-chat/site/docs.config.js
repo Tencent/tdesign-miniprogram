@@ -17,7 +17,7 @@ export const docs = [
         titleEn: 'CHANGELOG',
         name: 'changelog',
         path: '/tdesign-uniapp-chat/changelog',
-        component: () => import('@/CHANGELOG.md'),
+        component: () => import('../CHANGELOG.md'),
       },
       {
         title: '常见问题',
@@ -150,10 +150,10 @@ export const docs = [
   },
 ];
 
-export const enDocs = docs.map(doc => ({
+export const enDocs = docs.map((doc) => ({
   ...doc,
   title: doc.titleEn || '',
-  children: doc?.children?.map(child => ({
+  children: doc?.children?.map((child) => ({
     title: child.titleEn || '',
     name: `${child.name}-en`,
     path: `${child.path}-en`,
@@ -163,4 +163,3 @@ export const enDocs = docs.map(doc => ({
 }));
 
 export default { enDocs, docs };
-
