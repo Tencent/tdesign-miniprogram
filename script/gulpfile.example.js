@@ -8,6 +8,9 @@ const sourcemaps = require('gulp-sourcemaps');
 const plumber = require('gulp-plumber');
 const base = require('./gulpfile.base');
 
+const EXAMPLE_TYPE = process.env.TYPE || 'all';
+const SKIP_SKYLINE = process.env.SKIP_SKYLINE || false;
+
 const PACKAGE_NAME = 'tdesign-miniprogram';
 
 /* config */
@@ -18,11 +21,22 @@ const dist = '_example';
 const { clear, build: baseBuild, watch: baseWatch, handleError, resetError } = base(src, dist, 'example');
 
 // src component examples
-const srcExampleInput = ['packages/components/**/_example/**/*.*', 'packages/pro-components/chat/**/_example/**/*.*'];
+const baseExamplePaths = ['packages/components/**/_example/**/*.*'];
+const chatExamplePaths = ['packages/pro-components/chat/**/_example/**/*.*'];
+const skylineFilter = SKIP_SKYLINE ? ['!**/skyline/**/*.*'] : [];
+
+const srcExampleInput = {
+  base: [...baseExamplePaths, ...skylineFilter],
+  chat: [...chatExamplePaths, ...skylineFilter],
+  all: [...baseExamplePaths, ...chatExamplePaths, ...skylineFilter],
+};
+
 const srcExampleOutput = 'packages/tdesign-miniprogram/example/pages';
-const copySrcExample = () => {
+
+const copySrcExample = (type = 'all') => {
+  console.log(`📦 Copying ${type} component examples...`);
   return gulp
-    .src(srcExampleInput)
+    .src(srcExampleInput[type])
     .pipe(changed(srcExampleOutput))
     .pipe(
       rename((path) => {
@@ -36,9 +50,12 @@ const copySrcExample = () => {
     )
     .pipe(gulp.dest(srcExampleOutput));
 };
+
 const cleanSrcExample = () => del([`${srcExampleOutput}/**`, `!${srcExampleOutput}/{home,gulp-error}/**`]);
 
-const watchSrcExample = () => gulp.watch(srcExampleInput, copySrcExample);
+const watchSrcExample = (type = 'all') => {
+  return gulp.watch(srcExampleInput[type], () => copySrcExample(type));
+};
 
 // 包装 gulp.lastRun, 引入文件 ctime 作为文件变动判断另一标准
 // https://github.com/gulpjs/vinyl-fs/issues/226
@@ -64,7 +81,9 @@ watchDist.displayName = 'syncDist:watch';
 /** `gulp build`
  * 构建
  * */
-const build = gulp.series(cleanSrcExample, copySrcExample, baseBuild, syncDist);
+const build = (type = 'all') => {
+  return gulp.series(cleanSrcExample, () => copySrcExample(type), baseBuild, syncDist);
+};
 
 /** `gulp task`
  * 编译app.less
@@ -99,12 +118,14 @@ const watchCommonLess = () => {
 /** `gulp watch`
  * 监听
  * */
-const watch = gulp.parallel(baseWatch, watchSrcExample, watchCommonLess, watchDist);
+const watch = (type = 'all') => {
+  return gulp.parallel(baseWatch, () => watchSrcExample(type), watchCommonLess, watchDist);
+};
 
 // `gulp --tasks --gulpfile script/gulpfile.example.js` list tasks
 module.exports = {
   clear,
   build,
   watch,
-  default: build,
+  default: build(EXAMPLE_TYPE),
 };

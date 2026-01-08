@@ -10,15 +10,21 @@
             <img class="qrcode" :src="qrcode" />
           </div>
           <iframe
+            v-if="showIframe"
             :src="liveUrl"
             frameborder="0"
             width="100%"
             height="100%"
             class="mobile-iframe"
             style="box-sizing: border-box; border-radius: 0 0 6px 6px; overflow: hidden"
-            @load="onIframeLoaded"
             ref="parentIframe"
           ></iframe>
+          <!-- iframe 加载进度条 -->
+          <div v-else class="iframe-progress-bar">
+            <div class="iframe-progress-bar__track">
+              <div class="iframe-progress-bar__fill"></div>
+            </div>
+          </div>
         </td-doc-phone>
         <td-contributors platform="miniprogram" framework="wx" :component-name="name"></td-contributors>
       </div>
@@ -44,6 +50,13 @@ const IS_DEV = import.meta.env.DEV;
 
 export default defineComponent({
   inject: ['info', 'demos'],
+
+  data() {
+    return {
+      showIframe: false,
+      iframeLoadTimer: null as number | null,
+    };
+  },
 
   computed: {
     tab: {
@@ -71,7 +84,7 @@ export default defineComponent({
     },
     liveUrl() {
       const componentName = this.name.split('-en')[0];
-      return `${this.liveHost}/miniprogram/live/m2w/program/miniprogram//#!pages/${componentName}/${componentName}.html`;
+      return `${this.liveHost}/miniprogram/live/m2w/program/miniprogram/#!pages/${componentName}/${componentName}.html`;
     },
     qrcode() {
       const componentName = this.name.split('-en')[0];
@@ -94,6 +107,23 @@ export default defineComponent({
     this.$emit('loaded', () => {
       tdDocContent.pageStatus = 'show';
     });
+
+    this.loadIframeDelayed();
+  },
+
+  beforeUnmount() {
+    if (this.iframeLoadTimer) {
+      clearTimeout(this.iframeLoadTimer);
+      this.iframeLoadTimer = null;
+    }
+  },
+
+  methods: {
+    loadIframeDelayed() {
+      this.iframeLoadTimer = window.setTimeout(() => {
+        this.showIframe = true;
+      }, 5000);
+    },
   },
 });
 </script>
@@ -142,6 +172,34 @@ export default defineComponent({
     height: 128px;
     padding: 4px;
     box-sizing: border-box;
+  }
+}
+
+.iframe-progress-bar {
+  &__track {
+    width: 100%;
+    height: 6px;
+    background-color: var(--td-bg-color-component);
+    overflow: hidden;
+  }
+
+  &__fill {
+    width: 100%;
+    height: 100%;
+    background-color: var(--td-brand-color);
+    animation: progress 5s ease-in-out infinite;
+  }
+}
+
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
   }
 }
 </style>
