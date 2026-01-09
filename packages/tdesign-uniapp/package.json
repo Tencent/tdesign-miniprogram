@@ -426,6 +426,7 @@
     "dev:mp": "npm run dev:mp-weixin",
     "dev:mp:pure": "pnpm --filter=\"./example\" dev:mp-weixin",
     "build": "pnpm --filter=\"./site\" build && pnpm --filter=\"./example\" build:h5",
+    "build:npm": "npm run init && npm run release:prepare",
     "build:mp-weixin": "pnpm --filter=\"./example\" build:mp-weixin",
     "build:mp-alipay": "pnpm --filter=\"./example\" build:mp-alipay",
     "build:mp-toutiao": "pnpm --filter=\"./example\" build:mp-toutiao",
@@ -442,7 +443,6 @@
     "type-check": "vue-tsc --noEmit",
     "init": "node ./example/script/watch/init.js && node ./example/script/pages/index.js",
     "watch": "node ./example/script/watch/watch.js",
-    "prepare": "npm run init && npm run release:prepare",
     "release:prepare": "node ./example/script/release/prepare.js",
     "publish": "cd npm_dist && npm publish",
     "commit": "git-cz"

@@ -1,4 +1,4 @@
-name: Publish_Any_Commit
+name: pkg-pr-new
 on:
   push:
     branches: [develop]
@@ -20,6 +20,8 @@ jobs:
       - uses: ./.github/actions/install-dep
 
       - run: pnpm run build
+
+      - run: pnpm run uniapp build:npm
 
       - uses: actions/setup-node@v4
         with:
