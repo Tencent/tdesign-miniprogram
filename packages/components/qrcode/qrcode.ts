@@ -60,6 +60,14 @@ export default class QRCode extends SuperComponent {
   };
 
   methods = {
+    // 用于外部调用，重新绘制二维码
+    init() {
+      const canvasComp = this.selectComponent('#qrcodeCanvas');
+      if (canvasComp) {
+        canvasComp.initCanvas();
+      }
+    },
+
     handleDrawCompleted() {
       this.setData({
         canvasReady: true,
