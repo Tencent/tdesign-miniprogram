@@ -1,4 +1,4 @@
-name: Compressed Size
+name: pr-compressed-size
 
 on:
   pull_request:
