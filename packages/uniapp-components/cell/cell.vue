@@ -1,9 +1,9 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="[
       tClass,
-      _.cls(classPrefix, [['bordered', bordered || isLastChild]])
+      tools.cls(classPrefix, [['bordered', bordered || isLastChild]])
     ]"
     :hover-class="hover ? classPrefix + '--hover' : ''"
     hover-stay-time="70"
@@ -44,7 +44,7 @@
           classPrefix + '__title-text ',
           tClassTitle
         ]"
-        :style="_._style(titleStyle)"
+        :style="tools._style(titleStyle)"
       >
         <block v-if="title">
           {{ title }}
@@ -79,7 +79,7 @@
         classPrefix + '__note ',
         tClassNote
       ]"
-      :style="_._style(noteStyle)"
+      :style="tools._style(noteStyle)"
     >
       <text v-if="note">
         {{ note }}
@@ -88,7 +88,7 @@
     </view>
     <view
       :class="[
-        _.cls(classPrefix + '__right', [align]),
+        tools.cls(classPrefix + '__right', [align]),
         tClassRight
       ]"
     >
@@ -133,7 +133,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { calcIcon } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
@@ -181,26 +181,26 @@ export default uniComponent({
       _rightIcon: null,
       _leftIcon: null,
       isLastChild: false,
-      _,
+      tools,
     };
   },
   computed: {
     rightArrowCustomStyle() {
-      return _._style([
+      return tools._style([
         COMMON_RIGHT_ICON_STYLE,
         this.rightIconStyle || '',
         this._arrow.style || '',
       ]);
     },
     rightIconCustomStyle() {
-      return _._style([
+      return tools._style([
         COMMON_RIGHT_ICON_STYLE,
         this.rightIconStyle || '',
         this._rightIcon.style || '',
       ]);
     },
     leftIconCustomStyle() {
-      return _._style([
+      return tools._style([
         {
           color: 'var(--td-cell-left-icon-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)))',
           fontSize: 'var(--td-cell-left-icon-font-size, 24px)',
@@ -209,7 +209,7 @@ export default uniComponent({
       ]);
     },
     leftImageCustomStyle() {
-      return _._style({
+      return tools._style({
         height: 'var(--td-cell-image-height, 48px)',
         width: 'var(--td-cell-image-width, 48px)',
       });

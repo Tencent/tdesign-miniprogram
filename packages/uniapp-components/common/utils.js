@@ -206,15 +206,27 @@ export const getCharacterLength = (type, char, max) => {
 export const chunk = (arr, size) => Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
 
 
-export const getInstance = function (context, selector) {
-  if (!context) {
-    const pages = getCurrentPages();
-    const page = pages[pages.length - 1];
-    context = (page).$$basePage || page;
-  }
+const getPageContext = () => {
+  const pages = getCurrentPages();
+  const page = pages[pages.length - 1];
+  return (page).$$basePage || page;
+};
 
+
+const findInstance = (context, pageContext, pureSelector) => {
+  if (context && context.$refs[pureSelector]) {
+    return context.$refs[pureSelector];
+  }
+  if (pageContext && pageContext.$refs[pureSelector]) {
+    return pageContext.$refs[pureSelector];
+  }
+  return null;
+};
+
+export const getInstance = function (context, selector) {
+  const pageContext = getPageContext();
   const pureSelector = /^[.#]/.test(selector) ? selector.slice(1) : selector;
-  const instance = context ? context.$refs[pureSelector] : null;
+  const instance = findInstance(context, pageContext, pureSelector);
 
   if (!instance) {
     console.warn('未找到组件,请检查 selector 是否正确');

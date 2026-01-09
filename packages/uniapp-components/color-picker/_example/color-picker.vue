@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="ColorPicker"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
 
@@ -42,7 +44,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import BaseDemo from './base/index.vue';
 import multiple from './multiple/index.vue';

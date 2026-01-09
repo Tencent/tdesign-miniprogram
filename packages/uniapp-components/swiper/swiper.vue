@@ -1,7 +1,7 @@
 <template>
   <view
     :class="classPrefix + ' ' + tClass"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
   >
     <swiper
       :class="classPrefix + '-host'"
@@ -12,11 +12,11 @@
       :circular="loop"
       :vertical="direction == 'vertical'"
       :easing-function="easingFunction"
-      :previous-margin="_.addUnit(previousMargin)"
-      :next-margin="_.addUnit(nextMargin)"
+      :previous-margin="tools.addUnit(previousMargin)"
+      :next-margin="tools.addUnit(nextMargin)"
       :snap-to-edge="snapToEdge"
       :display-multiple-items="displayMultipleItems"
-      :style="'height: ' + _.addUnit(height)"
+      :style="'height: ' + tools.addUnit(height)"
       @change="onChange"
       @animationfinish="onAnimationFinish"
     >
@@ -24,7 +24,7 @@
         v-for="(item, index) in list"
         :key="index"
         :class="
-          _.cls(classPrefix + '__item', [
+          tools.cls(classPrefix + '__item', [
             ['preview', isPrev(navCurrent, index, list)],
             ['next', isNext(navCurrent, index, list)]
           ])
@@ -32,17 +32,17 @@
         :data-index="index"
         :aria-hidden="navCurrent !== index"
         aria-role="image"
-        :aria-label="_.isObject(item) ? item.ariaLabel : ''"
+        :aria-label="tools.isObject(item) ? item.ariaLabel : ''"
         @click="onTap($event, { index })"
       >
         <t-image
           :t-class="getImageClass(prefix, navCurrent, index, list, tClassImage, tClassPrevImage, tClassNextImage)"
-          :custom-style="'height: ' + _.addUnit(height) || ''"
+          :custom-style="'height: ' + tools.addUnit(height) || ''"
           :error="imageProps.error || 'default'"
           :lazy="imageProps.lazy || false"
           :loading="imageProps.loading || 'default'"
           :shape="imageProps.shape || 'square'"
-          :src="_.isObject(item) ? item.value : item"
+          :src="tools.isObject(item) ? item.value : item"
           :mode="imageProps.mode || 'aspectFill'"
           :webp="imageProps.webp || false"
           :show-menu-by-longpress="imageProps.showMenuByLongpress || false"
@@ -72,7 +72,7 @@ import tImage from '../image/image';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { isPrev, isNext, getImageClass } from './computed.js';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 
@@ -103,7 +103,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _,
+      tools,
       navCurrent: 0,
     };
   },

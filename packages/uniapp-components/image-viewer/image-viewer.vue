@@ -3,7 +3,7 @@
     v-if="dataVisible"
     :id="classPrefix"
     :class="classPrefix + ' ' + tClass"
-    :style="_._style([customStyle, '--td-image-viewer-top: ' + distanceTop + 'px'])"
+    :style="tools._style([customStyle, '--td-image-viewer-top: ' + distanceTop + 'px'])"
     :aria-modal="true"
     aria-role="dialog"
     aria-label="图片查看器"
@@ -21,7 +21,7 @@
       <view :class="classPrefix + '__content'">
         <swiper
           class="swiper"
-          :style="swiperStyle[currentSwiperIndex]?.style"
+          :style="swiperStyle[currentSwiperIndex] && swiperStyle[currentSwiperIndex].style"
           :autoplay="false"
           :current="currentSwiperIndex"
           tabindex="0"
@@ -36,7 +36,7 @@
             <t-image
               v-if="!lazy || shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes)"
               t-class="t-image--external"
-              :custom-style="imagesStyle[index]?.style || ''"
+              :custom-style="(imagesStyle[index] && imagesStyle[index].style) || ''"
               mode="aspectFit"
               :src="item"
               :data-index="index"
@@ -112,7 +112,7 @@ import { uniComponent } from '../common/src/index';
 import { styles, calcIcon, systemInfo } from '../common/utils';
 import { prefix } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { shouldLoadImage } from './computed.js';
 import useCustomNavbar from '../mixins/using-custom-navbar';
 
@@ -150,7 +150,7 @@ export default uniComponent({
       swiperStyle: {},
       imagesStyle: {},
       maskTop: 0,
-      _,
+      tools,
 
       _deleteBtn: null,
       _closeBtn: null,

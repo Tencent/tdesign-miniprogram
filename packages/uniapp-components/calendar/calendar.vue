@@ -14,7 +14,7 @@
         :use-popup="usePopup"
         :switch-mode="switchMode"
         :t-class="tClass"
-        :custom-style="_._style([customStyle])"
+        :custom-style="tools._style([customStyle])"
         :title="title"
         :real-local-text="realLocalText"
         :months="months"
@@ -45,7 +45,7 @@
         :use-popup="usePopup"
         :switch-mode="switchMode"
         :t-class="tClass"
-        :custom-style="_._style([customStyle])"
+        :custom-style="tools._style([customStyle])"
         :title="title"
         :real-local-text="realLocalText"
         :months="months"
@@ -85,7 +85,7 @@ import props from './props';
 import TCalendar from '../common/shared/calendar/index';
 import useCustomNavbar from '../mixins/using-custom-navbar';
 import { getPrevMonth, getPrevYear, getNextMonth, getNextYear } from './utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import {
   getMonthTitle,
   getDateLabel,
@@ -150,7 +150,7 @@ export default uniComponent({
         nextMonthBtnDisable: false,
         nextYearBtnDisable: false,
       },
-      _,
+      tools,
 
       dataVisible: this.visible,
       dataValue: coalesce(this.value, this.defaultValue),

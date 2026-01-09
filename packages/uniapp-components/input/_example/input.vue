@@ -4,6 +4,8 @@
     <t-navbar
       title="Input"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="input-example">
@@ -63,7 +65,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import BaseDemo from './base/index.vue';
 import maxlength from './maxlength/index.vue';

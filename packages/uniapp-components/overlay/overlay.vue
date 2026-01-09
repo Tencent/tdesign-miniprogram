@@ -3,7 +3,7 @@
     <view
       v-if="realVisible && preventScrollThrough"
       :class="prefix + '-overlay ' + transitionClass"
-      :style="_._style([
+      :style="tools._style([
         '--td-overlay-transition-duration:' + duration + 'ms',
         'z-index:' + _zIndex, 'top:' + distanceTop + 'px',
         computedStyle,
@@ -21,7 +21,7 @@
     <view
       v-else-if="realVisible"
       :class="prefix + '-overlay ' + transitionClass "
-      :style="_._style([
+      :style="tools._style([
         'z-index:' + _zIndex,
         'top:' + distanceTop + 'px',
         computedStyle,
@@ -42,7 +42,7 @@ import { prefix } from '../common/config';
 import props from './props';
 import transition from '../mixins/transition';
 import useCustomNavbar from '../mixins/using-custom-navbar';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-overlay`;
@@ -70,7 +70,7 @@ export default uniComponent({
       classPrefix: name,
       computedStyle: '',
       _zIndex: 11000,
-      _,
+      tools,
     };
   },
   watch: {

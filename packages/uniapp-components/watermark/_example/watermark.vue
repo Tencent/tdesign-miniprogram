@@ -4,6 +4,8 @@
     <t-navbar
       title="Watermark"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">
@@ -42,7 +44,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 import baseWatermark from './base/index.vue';
 import imageWatermark from './image/index.vue';
 import grayWatermark from './gray/index.vue';

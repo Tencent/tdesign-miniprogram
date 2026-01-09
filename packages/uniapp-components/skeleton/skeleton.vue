@@ -2,7 +2,7 @@
   <view>
     <view
       v-if="isShow"
-      :style="_._style([customStyle])"
+      :style="tools._style([customStyle])"
       :class="[classPrefix + ' ', tClass]"
     >
       <view
@@ -21,7 +21,7 @@
             v-for="(col, index1) in row"
             :key="index1"
             :class="[col.class + ' ', tClassCol]"
-            :style="_._style(col.style)"
+            :style="tools._style(col.style)"
           />
         </view>
       </view>
@@ -40,7 +40,7 @@ import { prefix } from '../common/config';
 import props from './props';
 import { classNames } from '../common/utils';
 import { isNumber } from '../common/validator';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-skeleton`;
@@ -87,7 +87,7 @@ export default uniComponent({
       classPrefix: name,
       parsedRowCols: [],
       isShow: false,
-      _,
+      tools,
       timer: null,
     };
   },

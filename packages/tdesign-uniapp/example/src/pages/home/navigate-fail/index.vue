@@ -18,15 +18,22 @@
     </view>
   </view>
 </template>
-<script lang="ts" setup>
-import { ref } from 'vue';
+<script>
 
-const failImage = ref('error-circle-filled');
-
-const toHome = () => {
-  uni.reLaunch({
-    url: '/pages/home/home',
-  });
+export default {
+  name: 'NavigateFail',
+  data() {
+    return {
+      failImage: 'error-circle-filled',
+    };
+  },
+  methods: {
+    toHome() {
+      uni.reLaunch({
+        url: '/pages/home/home',
+      });
+    },
+  },
 };
 </script>
 <style lang="less" src="./index.less"></style>

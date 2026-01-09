@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="[
       classPrefix,
       tClass
@@ -67,7 +67,7 @@ import tImage from '../image/image';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-footer`;
@@ -91,19 +91,19 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _,
+      tools,
     };
   },
   computed: {
     iconCustomStyle() {
-      return _._style({
+      return tools._style({
         width: 'var(--td-footer-logo-icon-width, 24px)',
         height: 'var(--td-footer-logo-icon-height, 24px)',
         marginRight: 'var(--td-footer-logo-icon-margin-right, var(--td-spacer, 8px))',
       });
     },
     titleUrlCustomStyle() {
-      return _._style({
+      return tools._style({
         width: 'var(--td-footer-logo-title-url-width, 128px)',
       });
     },

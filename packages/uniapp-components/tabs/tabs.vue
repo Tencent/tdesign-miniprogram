@@ -1,19 +1,19 @@
 <template>
   <view
-    :style="_._style([customStyle])"
-    :class="_.cls(classPrefix, [placement]) + ' ' + tClass"
+    :style="tools._style([customStyle])"
+    :class="tools.cls(classPrefix, [placement]) + ' ' + tClass"
   >
     <t-sticky
-      :t-class="_.cls(classPrefix + '__sticky', [placement])"
+      :t-class="tools.cls(classPrefix + '__sticky', [placement])"
       :disabled="!sticky"
-      :z-index="stickyProps?.zIndex || 1"
-      :offset-top="stickyProps?.offsetTop || 0"
-      :container="stickyProps?.container"
+      :z-index="(stickyProps && stickyProps.zIndex) || 1"
+      :offset-top="(stickyProps && stickyProps.offsetTop) || 0"
+      :container="stickyProps && stickyProps.container"
       @scroll="onTouchScroll"
     >
-      <view :class="_.cls(classPrefix + '__wrapper', [theme])">
+      <view :class="tools.cls(classPrefix + '__wrapper', [theme])">
         <scroll-view
-          :class="_.cls(classPrefix + '__scroll', [placement, ['split', split]])"
+          :class="tools.cls(classPrefix + '__scroll', [placement, ['split', split]])"
           enhanced
           enable-flex
           :scroll-left="offset"
@@ -26,7 +26,7 @@
           @scroll="onScroll"
         >
           <view
-            :class="_.cls(classPrefix + '__nav', [placement, ['evenly', spaceEvenly]])"
+            :class="tools.cls(classPrefix + '__nav', [placement, ['evenly', spaceEvenly]])"
             aria-role="tablist"
           >
             <view
@@ -34,7 +34,7 @@
               :key="index"
               :data-index="index"
               :class="
-                _.cls(classPrefix + '__item', [theme, ['evenly', spaceEvenly], placement, ['disabled', item.disabled], ['active', currentIndex === index]]) +
+                tools.cls(classPrefix + '__item', [theme, ['evenly', spaceEvenly], placement, ['disabled', item.disabled], ['active', currentIndex === index]]) +
                   ' ' +
                   (currentIndex === index ? tClassActive : '') +
                   ' ' +
@@ -44,11 +44,11 @@
               :aria-controls="tabID + '_panel_' + index"
               :aria-selected="currentIndex === index"
               :aria-disabled="item.disabled"
-              :aria-label="ariaLabel || (item.badgeProps.dot || item.badgeProps.count ? item.label + _.getBadgeAriaLabel({ ...item.badgeProps }) : '')"
+              :aria-label="ariaLabel || (item.badgeProps.dot || item.badgeProps.count ? item.label + tools.getBadgeAriaLabel({ ...item.badgeProps }) : '')"
               @click="onTabTap"
             >
               <view
-                :class="_.cls(classPrefix + '__item-inner', [theme, ['active', currentIndex === index]])"
+                :class="tools.cls(classPrefix + '__item-inner', [theme, ['active', currentIndex === index]])"
                 :aria-hidden="item.badgeProps.dot || item.badgeProps.count"
               >
                 <block
@@ -80,7 +80,7 @@
                     :show-zero="item.badgeProps.showZero || false"
                     :size="item.badgeProps.size || 'medium'"
                     :t-class="
-                      _.cls(classPrefix + '__badge', [
+                      tools.cls(classPrefix + '__badge', [
                         ['disabled', item.disabled],
                         ['active', currentIndex === index]
                       ])
@@ -107,7 +107,7 @@
             </view>
             <view
               v-if="theme == 'line' && showBottomLine"
-              :class="_.cls(classPrefix + '__track', [placement]) + ' ' + tClassTrack"
+              :class="tools.cls(classPrefix + '__track', [placement]) + ' ' + tClassTrack"
               :style="trackStyle(trackOption)"
             />
           </view>
@@ -116,7 +116,7 @@
     </t-sticky>
     <slot name="middle" />
     <view
-      :class="_.cls(classPrefix + '__content', [['animated', animation]])"
+      :class="tools.cls(classPrefix + '__content', [['animated', animation]])"
       @touchstart="onTouchStart"
       @touchmove="onTouchMove"
       @touchend="onTouchEnd"
@@ -141,7 +141,7 @@ import { prefix } from '../common/config';
 import touch from '../mixins/touch';
 import { getRect, uniqueFactory, coalesce, nextTick } from '../common/utils';
 import { getObserver } from '../common/wechat';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 import { animate, trackStyle } from './computed';
 
@@ -222,7 +222,7 @@ export default uniComponent({
       scrollLeft: 0,
       tabID: '',
       placement: 'top',
-      _,
+      tools,
 
       dataValue: coalesce(this.value, this.defaultValue),
     };
@@ -467,7 +467,7 @@ export default uniComponent({
     },
 
     getIconCustomStyle(item) {
-      return _._style([
+      return tools._style([
         {
           fontSize: 'var(--td-tab-icon-size, 18px)',
           marginRight: 'calc(var(--td-spacer, 8px) / 4)',

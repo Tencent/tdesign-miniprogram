@@ -5,6 +5,8 @@
       title="Link"
       left-arrow
       :capsule="false"
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <scroll-view
@@ -53,7 +55,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import contentDemo from './content/index.vue';
 import underline from './underline/index.vue';

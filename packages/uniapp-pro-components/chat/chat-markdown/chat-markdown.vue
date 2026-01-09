@@ -7,8 +7,16 @@
   </view>
 </template>
 <script>
+import './polyfill';
 import chatMarkdownNode from '../chat-markdown-node/chat-markdown-node.vue';
+// #ifdef APP-PLUS
+import { Lexer as LexerUni } from '../npm/marked/uniapp';
+// #endif
+
+// #ifndef APP-PLUS
 import { Lexer } from '../npm/marked';
+// #endif
+
 import { prefix } from 'tdesign-uniapp/common/config';
 import props from './props';
 import _ from 'tdesign-uniapp/common/utils.wxs';
@@ -55,7 +63,14 @@ export default uniComponent({
     // 解析markdown文本
     parseMarkdown(markdown) {
       try {
-        const lexer = new Lexer(this.options);
+        let lexer;
+        // #ifdef APP-PLUS
+        lexer = new LexerUni(this.options);
+        // #endif
+        // #ifndef APP-PLUS
+        lexer = new Lexer(this.options);
+        // #endif
+
         const tokens = lexer.lex(markdown);
 
         this.nodes = tokens;

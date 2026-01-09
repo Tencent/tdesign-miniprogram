@@ -7,15 +7,15 @@
     "uni-scss",
     "uni-ui",
     "辅助样式"
-],
+  ],
   "repository": "https://github.com/dcloudio/uni-ui",
   "engines": {
     "HBuilderX": "^3.1.0"
   },
   "dcloudext": {
     "category": [
-        "JS SDK",
-        "通用 SDK"
+      "JS SDK",
+      "通用 SDK"
     ],
     "sale": {
       "regular": {
@@ -73,8 +73,8 @@
           "联盟": "n"
         },
         "Vue": {
-            "vue2": "y",
-            "vue3": "y"
+          "vue2": "y",
+          "vue3": "y"
         }
       }
     }

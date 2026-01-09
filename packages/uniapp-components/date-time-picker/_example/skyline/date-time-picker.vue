@@ -44,7 +44,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import yearMonthDate from '../year-month-date/index.vue';

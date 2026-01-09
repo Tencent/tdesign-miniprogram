@@ -1,10 +1,10 @@
 <template>
   <view class="skyline">
     <!-- #ifndef MP-ALIPAY -->
-
-    class="demo-navbar"
-    title="Image"
-    left-arrow
+    <t-navbar
+      class="demo-navbar"
+      title="Image"
+      left-arrow
     />
     <!-- #endif -->
     <scroll-view
@@ -31,7 +31,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import baseDemo from '../base/index.vue';

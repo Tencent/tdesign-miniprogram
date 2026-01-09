@@ -1,7 +1,7 @@
 <template>
   <view
     :class="[classPrefix, tClass]"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     @touchstart="onTouchStart"
     @touchmove.stop.prevent="onTouchMove"
     @touchend="onTouchEnd"
@@ -14,7 +14,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { getRect, getWindowInfo } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-draggable`;
@@ -36,7 +36,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _,
+      tools,
       systemInfo: getWindowInfo(),
     };
   },

@@ -1,6 +1,6 @@
 <template>
   <scroll-view
-    :style="_._style([customStyle, 'max-height: calc(100vh - ' + distanceTop + 'px)'])"
+    :style="tools._style([customStyle, 'max-height: calc(100vh - ' + distanceTop + 'px)'])"
     :class="classPrefix + ' ' + tClass"
     type="list"
     :scroll-top="scrollTop"
@@ -65,7 +65,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { getRect, systemInfo, unitConvert } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { getObserver } from '../common/wechat';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 
@@ -132,7 +132,7 @@ export default uniComponent({
       closingAnimateTimeFlag: 0,
       refreshStatusTimer: null,
 
-      _,
+      tools,
       REFRESH_STATUS_MAP,
     };
   },

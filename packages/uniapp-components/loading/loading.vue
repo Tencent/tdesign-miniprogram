@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([
+    :style="tools._style([
       customStyle,
       show ? '' : 'display: none',
       inheritColor ? 'color: inherit' : ''
@@ -20,8 +20,8 @@
           classPrefix + '__spinner--' + theme + ' ' + (reverse ? 'reverse' : '')
       ]"
       :style="
-        'width: ' +_.addUnit(size) +
-          '; height: ' + _.addUnit(size) +
+        'width: ' +tools.addUnit(size) +
+          '; height: ' + tools.addUnit(size) +
           '; ' + (inheritColor ? 'color: inherit;' : '') +
           ' ' + (indicator ? '' : 'display: none;') +
           ' ' + (duration ? 'animation-duration: ' + duration / 1000 + 's;' : '') +
@@ -77,7 +77,7 @@
       <slot name="indicator" />
     </view>
     <view
-      :class="[_.cls(classPrefix + '__text', [layout]), tClassText]"
+      :class="[tools.cls(classPrefix + '__text', [layout]), tClassText]"
       :aria-hidden="indicator"
       :aria-label="ariaLabel || text"
     >
@@ -93,7 +93,7 @@
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-loading`;
@@ -118,7 +118,7 @@ export default uniComponent({
       prefix,
       classPrefix: name,
       show: true,
-      _,
+      tools,
     };
   },
   watch: {

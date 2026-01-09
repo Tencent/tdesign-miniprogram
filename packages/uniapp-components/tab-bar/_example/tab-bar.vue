@@ -4,6 +4,8 @@
     <t-navbar
       title="TabBar"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">
@@ -51,7 +53,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import textOnly from './text-only/index.vue';
 import iconOnly from './icon-only/index.vue';
@@ -76,7 +78,7 @@ export default {
     };
   },
   methods: {
-    onChange(event: any) {
+    onChange(event) {
       console.log(event);
     },
   },

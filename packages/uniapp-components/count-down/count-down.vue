@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="classPrefix + ' ' + classPrefix + '--' + theme + ' ' + classPrefix + '--' + size + ' ' + tClass"
     aria-role="option"
   >
@@ -37,7 +37,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { isSameSecond, parseFormat, parseTimeData, TimeDataUnit } from './utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { format as formatUtil } from './computed.js';
 
 
@@ -67,7 +67,7 @@ export default uniComponent({
       timeDataUnit: TimeDataUnit,
       timeData: parseTimeData(0),
       formattedTime: '0',
-      _,
+      tools,
       timeoutId: null,
       isInitialTime: false,
     };

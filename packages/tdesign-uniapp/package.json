@@ -1,12 +1,19 @@
 {
   "name": "tdesign-uniapp",
-  "version": "0.5.5",
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/"
-  },
+  "version": "0.6.3",
+  "id": "tdesign-uniapp",
+  "title": "tdesign-uniapp",
+  "description": "TDesign Component for uniapp",
+  "keywords": [
+    "tdesign",
+    "miniprogram",
+    "uniapp",
+    "vue"
+  ],
   "files": [
-    "npm_dist",
+    "dist",
     "global.d.ts",
+    "LICENSE",
     "README.md",
     "CHANGELOG.md"
   ],
@@ -17,398 +24,401 @@
     "type": "git",
     "url": "git+https://github.com/Tencent/tdesign-miniprogram.git"
   },
-  "typings": "./npm_dist/types/index.d.ts",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "typings": "./dist/types/index.d.ts",
   "exports": {
-    "./*": "./npm_dist/*",
+    "./*": "./dist/*",
     "./action-sheet/action-sheet.vue": {
-      "types": "./npm_dist/types/action-sheet.d.ts",
-      "import": "./npm_dist/action-sheet/action-sheet.vue",
-      "default": "./npm_dist/action-sheet/action-sheet.vue"
+      "types": "./dist/types/action-sheet.d.ts",
+      "import": "./dist/action-sheet/action-sheet.vue",
+      "default": "./dist/action-sheet/action-sheet.vue"
     },
     "./avatar/avatar.vue": {
-      "types": "./npm_dist/types/avatar.d.ts",
-      "import": "./npm_dist/avatar/avatar.vue",
-      "default": "./npm_dist/avatar/avatar.vue"
+      "types": "./dist/types/avatar.d.ts",
+      "import": "./dist/avatar/avatar.vue",
+      "default": "./dist/avatar/avatar.vue"
     },
     "./avatar-group/avatar-group.vue": {
-      "types": "./npm_dist/types/avatar-group.d.ts",
-      "import": "./npm_dist/avatar-group/avatar-group.vue",
-      "default": "./npm_dist/avatar-group/avatar-group.vue"
+      "types": "./dist/types/avatar-group.d.ts",
+      "import": "./dist/avatar-group/avatar-group.vue",
+      "default": "./dist/avatar-group/avatar-group.vue"
     },
     "./back-top/back-top.vue": {
-      "types": "./npm_dist/types/back-top.d.ts",
-      "import": "./npm_dist/back-top/back-top.vue",
-      "default": "./npm_dist/back-top/back-top.vue"
+      "types": "./dist/types/back-top.d.ts",
+      "import": "./dist/back-top/back-top.vue",
+      "default": "./dist/back-top/back-top.vue"
     },
     "./badge/badge.vue": {
-      "types": "./npm_dist/types/badge.d.ts",
-      "import": "./npm_dist/badge/badge.vue",
-      "default": "./npm_dist/badge/badge.vue"
+      "types": "./dist/types/badge.d.ts",
+      "import": "./dist/badge/badge.vue",
+      "default": "./dist/badge/badge.vue"
     },
     "./button/button.vue": {
-      "types": "./npm_dist/types/button.d.ts",
-      "import": "./npm_dist/button/button.vue",
-      "default": "./npm_dist/button/button.vue"
+      "types": "./dist/types/button.d.ts",
+      "import": "./dist/button/button.vue",
+      "default": "./dist/button/button.vue"
     },
     "./calendar/calendar.vue": {
-      "types": "./npm_dist/types/calendar.d.ts",
-      "import": "./npm_dist/calendar/calendar.vue",
-      "default": "./npm_dist/calendar/calendar.vue"
+      "types": "./dist/types/calendar.d.ts",
+      "import": "./dist/calendar/calendar.vue",
+      "default": "./dist/calendar/calendar.vue"
     },
     "./cascader/cascader.vue": {
-      "types": "./npm_dist/types/cascader.d.ts",
-      "import": "./npm_dist/cascader/cascader.vue",
-      "default": "./npm_dist/cascader/cascader.vue"
+      "types": "./dist/types/cascader.d.ts",
+      "import": "./dist/cascader/cascader.vue",
+      "default": "./dist/cascader/cascader.vue"
     },
     "./cell/cell.vue": {
-      "types": "./npm_dist/types/cell.d.ts",
-      "import": "./npm_dist/cell/cell.vue",
-      "default": "./npm_dist/cell/cell.vue"
+      "types": "./dist/types/cell.d.ts",
+      "import": "./dist/cell/cell.vue",
+      "default": "./dist/cell/cell.vue"
     },
     "./cell-group/cell-group.vue": {
-      "types": "./npm_dist/types/cell-group.d.ts",
-      "import": "./npm_dist/cell-group/cell-group.vue",
-      "default": "./npm_dist/cell-group/cell-group.vue"
+      "types": "./dist/types/cell-group.d.ts",
+      "import": "./dist/cell-group/cell-group.vue",
+      "default": "./dist/cell-group/cell-group.vue"
     },
     "./check-tag/check-tag.vue": {
-      "types": "./npm_dist/types/check-tag.d.ts",
-      "import": "./npm_dist/check-tag/check-tag.vue",
-      "default": "./npm_dist/check-tag/check-tag.vue"
+      "types": "./dist/types/check-tag.d.ts",
+      "import": "./dist/check-tag/check-tag.vue",
+      "default": "./dist/check-tag/check-tag.vue"
     },
     "./checkbox/checkbox.vue": {
-      "types": "./npm_dist/types/checkbox.d.ts",
-      "import": "./npm_dist/checkbox/checkbox.vue",
-      "default": "./npm_dist/checkbox/checkbox.vue"
+      "types": "./dist/types/checkbox.d.ts",
+      "import": "./dist/checkbox/checkbox.vue",
+      "default": "./dist/checkbox/checkbox.vue"
     },
     "./checkbox-group/checkbox-group.vue": {
-      "types": "./npm_dist/types/checkbox-group.d.ts",
-      "import": "./npm_dist/checkbox-group/checkbox-group.vue",
-      "default": "./npm_dist/checkbox-group/checkbox-group.vue"
+      "types": "./dist/types/checkbox-group.d.ts",
+      "import": "./dist/checkbox-group/checkbox-group.vue",
+      "default": "./dist/checkbox-group/checkbox-group.vue"
     },
     "./col/col.vue": {
-      "types": "./npm_dist/types/col.d.ts",
-      "import": "./npm_dist/col/col.vue",
-      "default": "./npm_dist/col/col.vue"
+      "types": "./dist/types/col.d.ts",
+      "import": "./dist/col/col.vue",
+      "default": "./dist/col/col.vue"
     },
     "./collapse/collapse.vue": {
-      "types": "./npm_dist/types/collapse.d.ts",
-      "import": "./npm_dist/collapse/collapse.vue",
-      "default": "./npm_dist/collapse/collapse.vue"
+      "types": "./dist/types/collapse.d.ts",
+      "import": "./dist/collapse/collapse.vue",
+      "default": "./dist/collapse/collapse.vue"
     },
     "./collapse-panel/collapse-panel.vue": {
-      "types": "./npm_dist/types/collapse-panel.d.ts",
-      "import": "./npm_dist/collapse-panel/collapse-panel.vue",
-      "default": "./npm_dist/collapse-panel/collapse-panel.vue"
+      "types": "./dist/types/collapse-panel.d.ts",
+      "import": "./dist/collapse-panel/collapse-panel.vue",
+      "default": "./dist/collapse-panel/collapse-panel.vue"
     },
     "./color-picker/color-picker.vue": {
-      "types": "./npm_dist/types/color-picker.d.ts",
-      "import": "./npm_dist/color-picker/color-picker.vue",
-      "default": "./npm_dist/color-picker/color-picker.vue"
+      "types": "./dist/types/color-picker.d.ts",
+      "import": "./dist/color-picker/color-picker.vue",
+      "default": "./dist/color-picker/color-picker.vue"
     },
     "./count-down/count-down.vue": {
-      "types": "./npm_dist/types/count-down.d.ts",
-      "import": "./npm_dist/count-down/count-down.vue",
-      "default": "./npm_dist/count-down/count-down.vue"
+      "types": "./dist/types/count-down.d.ts",
+      "import": "./dist/count-down/count-down.vue",
+      "default": "./dist/count-down/count-down.vue"
     },
     "./date-time-picker/date-time-picker.vue": {
-      "types": "./npm_dist/types/date-time-picker.d.ts",
-      "import": "./npm_dist/date-time-picker/date-time-picker.vue",
-      "default": "./npm_dist/date-time-picker/date-time-picker.vue"
+      "types": "./dist/types/date-time-picker.d.ts",
+      "import": "./dist/date-time-picker/date-time-picker.vue",
+      "default": "./dist/date-time-picker/date-time-picker.vue"
     },
     "./dialog/dialog.vue": {
-      "types": "./npm_dist/types/dialog.d.ts",
-      "import": "./npm_dist/dialog/dialog.vue",
-      "default": "./npm_dist/dialog/dialog.vue"
+      "types": "./dist/types/dialog.d.ts",
+      "import": "./dist/dialog/dialog.vue",
+      "default": "./dist/dialog/dialog.vue"
     },
     "./divider/divider.vue": {
-      "types": "./npm_dist/types/divider.d.ts",
-      "import": "./npm_dist/divider/divider.vue",
-      "default": "./npm_dist/divider/divider.vue"
+      "types": "./dist/types/divider.d.ts",
+      "import": "./dist/divider/divider.vue",
+      "default": "./dist/divider/divider.vue"
     },
     "./drawer/drawer.vue": {
-      "types": "./npm_dist/types/drawer.d.ts",
-      "import": "./npm_dist/drawer/drawer.vue",
-      "default": "./npm_dist/drawer/drawer.vue"
+      "types": "./dist/types/drawer.d.ts",
+      "import": "./dist/drawer/drawer.vue",
+      "default": "./dist/drawer/drawer.vue"
     },
     "./dropdown-item/dropdown-item.vue": {
-      "types": "./npm_dist/types/dropdown-item.d.ts",
-      "import": "./npm_dist/dropdown-item/dropdown-item.vue",
-      "default": "./npm_dist/dropdown-item/dropdown-item.vue"
+      "types": "./dist/types/dropdown-item.d.ts",
+      "import": "./dist/dropdown-item/dropdown-item.vue",
+      "default": "./dist/dropdown-item/dropdown-item.vue"
     },
     "./dropdown-menu/dropdown-menu.vue": {
-      "types": "./npm_dist/types/dropdown-menu.d.ts",
-      "import": "./npm_dist/dropdown-menu/dropdown-menu.vue",
-      "default": "./npm_dist/dropdown-menu/dropdown-menu.vue"
+      "types": "./dist/types/dropdown-menu.d.ts",
+      "import": "./dist/dropdown-menu/dropdown-menu.vue",
+      "default": "./dist/dropdown-menu/dropdown-menu.vue"
     },
     "./empty/empty.vue": {
-      "types": "./npm_dist/types/empty.d.ts",
-      "import": "./npm_dist/empty/empty.vue",
-      "default": "./npm_dist/empty/empty.vue"
+      "types": "./dist/types/empty.d.ts",
+      "import": "./dist/empty/empty.vue",
+      "default": "./dist/empty/empty.vue"
     },
     "./fab/fab.vue": {
-      "types": "./npm_dist/types/fab.d.ts",
-      "import": "./npm_dist/fab/fab.vue",
-      "default": "./npm_dist/fab/fab.vue"
+      "types": "./dist/types/fab.d.ts",
+      "import": "./dist/fab/fab.vue",
+      "default": "./dist/fab/fab.vue"
     },
     "./footer/footer.vue": {
-      "types": "./npm_dist/types/footer.d.ts",
-      "import": "./npm_dist/footer/footer.vue",
-      "default": "./npm_dist/footer/footer.vue"
+      "types": "./dist/types/footer.d.ts",
+      "import": "./dist/footer/footer.vue",
+      "default": "./dist/footer/footer.vue"
     },
     "./form/form.vue": {
-      "types": "./npm_dist/types/form.d.ts",
-      "import": "./npm_dist/form/form.vue",
-      "default": "./npm_dist/form/form.vue"
+      "types": "./dist/types/form.d.ts",
+      "import": "./dist/form/form.vue",
+      "default": "./dist/form/form.vue"
     },
     "./form-item/form-item.vue": {
-      "types": "./npm_dist/types/form-item.d.ts",
-      "import": "./npm_dist/form-item/form-item.vue",
-      "default": "./npm_dist/form-item/form-item.vue"
+      "types": "./dist/types/form-item.d.ts",
+      "import": "./dist/form-item/form-item.vue",
+      "default": "./dist/form-item/form-item.vue"
     },
     "./grid/grid.vue": {
-      "types": "./npm_dist/types/grid.d.ts",
-      "import": "./npm_dist/grid/grid.vue",
-      "default": "./npm_dist/grid/grid.vue"
+      "types": "./dist/types/grid.d.ts",
+      "import": "./dist/grid/grid.vue",
+      "default": "./dist/grid/grid.vue"
     },
     "./grid-item/grid-item.vue": {
-      "types": "./npm_dist/types/grid-item.d.ts",
-      "import": "./npm_dist/grid-item/grid-item.vue",
-      "default": "./npm_dist/grid-item/grid-item.vue"
+      "types": "./dist/types/grid-item.d.ts",
+      "import": "./dist/grid-item/grid-item.vue",
+      "default": "./dist/grid-item/grid-item.vue"
     },
     "./guide/guide.vue": {
-      "types": "./npm_dist/types/guide.d.ts",
-      "import": "./npm_dist/guide/guide.vue",
-      "default": "./npm_dist/guide/guide.vue"
+      "types": "./dist/types/guide.d.ts",
+      "import": "./dist/guide/guide.vue",
+      "default": "./dist/guide/guide.vue"
     },
     "./icon/icon.vue": {
-      "types": "./npm_dist/types/icon.d.ts",
-      "import": "./npm_dist/icon/icon.vue",
-      "default": "./npm_dist/icon/icon.vue"
+      "types": "./dist/types/icon.d.ts",
+      "import": "./dist/icon/icon.vue",
+      "default": "./dist/icon/icon.vue"
     },
     "./image/image.vue": {
-      "types": "./npm_dist/types/image.d.ts",
-      "import": "./npm_dist/image/image.vue",
-      "default": "./npm_dist/image/image.vue"
+      "types": "./dist/types/image.d.ts",
+      "import": "./dist/image/image.vue",
+      "default": "./dist/image/image.vue"
     },
     "./image-viewer/image-viewer.vue": {
-      "types": "./npm_dist/types/image-viewer.d.ts",
-      "import": "./npm_dist/image-viewer/image-viewer.vue",
-      "default": "./npm_dist/image-viewer/image-viewer.vue"
+      "types": "./dist/types/image-viewer.d.ts",
+      "import": "./dist/image-viewer/image-viewer.vue",
+      "default": "./dist/image-viewer/image-viewer.vue"
     },
     "./indexes/indexes.vue": {
-      "types": "./npm_dist/types/indexes.d.ts",
-      "import": "./npm_dist/indexes/indexes.vue",
-      "default": "./npm_dist/indexes/indexes.vue"
+      "types": "./dist/types/indexes.d.ts",
+      "import": "./dist/indexes/indexes.vue",
+      "default": "./dist/indexes/indexes.vue"
     },
     "./indexes-anchor/indexes-anchor.vue": {
-      "types": "./npm_dist/types/indexes-anchor.d.ts",
-      "import": "./npm_dist/indexes-anchor/indexes-anchor.vue",
-      "default": "./npm_dist/indexes-anchor/indexes-anchor.vue"
+      "types": "./dist/types/indexes-anchor.d.ts",
+      "import": "./dist/indexes-anchor/indexes-anchor.vue",
+      "default": "./dist/indexes-anchor/indexes-anchor.vue"
     },
     "./input/input.vue": {
-      "types": "./npm_dist/types/input.d.ts",
-      "import": "./npm_dist/input/input.vue",
-      "default": "./npm_dist/input/input.vue"
+      "types": "./dist/types/input.d.ts",
+      "import": "./dist/input/input.vue",
+      "default": "./dist/input/input.vue"
     },
     "./link/link.vue": {
-      "types": "./npm_dist/types/link.d.ts",
-      "import": "./npm_dist/link/link.vue",
-      "default": "./npm_dist/link/link.vue"
+      "types": "./dist/types/link.d.ts",
+      "import": "./dist/link/link.vue",
+      "default": "./dist/link/link.vue"
     },
     "./loading/loading.vue": {
-      "types": "./npm_dist/types/loading.d.ts",
-      "import": "./npm_dist/loading/loading.vue",
-      "default": "./npm_dist/loading/loading.vue"
+      "types": "./dist/types/loading.d.ts",
+      "import": "./dist/loading/loading.vue",
+      "default": "./dist/loading/loading.vue"
     },
     "./message/message.vue": {
-      "types": "./npm_dist/types/message.d.ts",
-      "import": "./npm_dist/message/message.vue",
-      "default": "./npm_dist/message/message.vue"
+      "types": "./dist/types/message.d.ts",
+      "import": "./dist/message/message.vue",
+      "default": "./dist/message/message.vue"
     },
     "./navbar/navbar.vue": {
-      "types": "./npm_dist/types/navbar.d.ts",
-      "import": "./npm_dist/navbar/navbar.vue",
-      "default": "./npm_dist/navbar/navbar.vue"
+      "types": "./dist/types/navbar.d.ts",
+      "import": "./dist/navbar/navbar.vue",
+      "default": "./dist/navbar/navbar.vue"
     },
     "./notice-bar/notice-bar.vue": {
-      "types": "./npm_dist/types/notice-bar.d.ts",
-      "import": "./npm_dist/notice-bar/notice-bar.vue",
-      "default": "./npm_dist/notice-bar/notice-bar.vue"
+      "types": "./dist/types/notice-bar.d.ts",
+      "import": "./dist/notice-bar/notice-bar.vue",
+      "default": "./dist/notice-bar/notice-bar.vue"
     },
     "./overlay/overlay.vue": {
-      "types": "./npm_dist/types/overlay.d.ts",
-      "import": "./npm_dist/overlay/overlay.vue",
-      "default": "./npm_dist/overlay/overlay.vue"
+      "types": "./dist/types/overlay.d.ts",
+      "import": "./dist/overlay/overlay.vue",
+      "default": "./dist/overlay/overlay.vue"
     },
     "./picker/picker.vue": {
-      "types": "./npm_dist/types/picker.d.ts",
-      "import": "./npm_dist/picker/picker.vue",
-      "default": "./npm_dist/picker/picker.vue"
+      "types": "./dist/types/picker.d.ts",
+      "import": "./dist/picker/picker.vue",
+      "default": "./dist/picker/picker.vue"
     },
     "./picker-item/picker-item.vue": {
-      "types": "./npm_dist/types/picker-item.d.ts",
-      "import": "./npm_dist/picker-item/picker-item.vue",
-      "default": "./npm_dist/picker-item/picker-item.vue"
+      "types": "./dist/types/picker-item.d.ts",
+      "import": "./dist/picker-item/picker-item.vue",
+      "default": "./dist/picker-item/picker-item.vue"
     },
     "./popup/popup.vue": {
-      "types": "./npm_dist/types/popup.d.ts",
-      "import": "./npm_dist/popup/popup.vue",
-      "default": "./npm_dist/popup/popup.vue"
+      "types": "./dist/types/popup.d.ts",
+      "import": "./dist/popup/popup.vue",
+      "default": "./dist/popup/popup.vue"
     },
     "./progress/progress.vue": {
-      "types": "./npm_dist/types/progress.d.ts",
-      "import": "./npm_dist/progress/progress.vue",
-      "default": "./npm_dist/progress/progress.vue"
+      "types": "./dist/types/progress.d.ts",
+      "import": "./dist/progress/progress.vue",
+      "default": "./dist/progress/progress.vue"
     },
     "./pull-down-refresh/pull-down-refresh.vue": {
-      "types": "./npm_dist/types/pull-down-refresh.d.ts",
-      "import": "./npm_dist/pull-down-refresh/pull-down-refresh.vue",
-      "default": "./npm_dist/pull-down-refresh/pull-down-refresh.vue"
+      "types": "./dist/types/pull-down-refresh.d.ts",
+      "import": "./dist/pull-down-refresh/pull-down-refresh.vue",
+      "default": "./dist/pull-down-refresh/pull-down-refresh.vue"
     },
     "./qrcode/qrcode.vue": {
-      "types": "./npm_dist/types/qrcode.d.ts",
-      "import": "./npm_dist/qrcode/qrcode.vue",
-      "default": "./npm_dist/qrcode/qrcode.vue"
+      "types": "./dist/types/qrcode.d.ts",
+      "import": "./dist/qrcode/qrcode.vue",
+      "default": "./dist/qrcode/qrcode.vue"
     },
     "./radio/radio.vue": {
-      "types": "./npm_dist/types/radio.d.ts",
-      "import": "./npm_dist/radio/radio.vue",
-      "default": "./npm_dist/radio/radio.vue"
+      "types": "./dist/types/radio.d.ts",
+      "import": "./dist/radio/radio.vue",
+      "default": "./dist/radio/radio.vue"
     },
     "./radio-group/radio-group.vue": {
-      "types": "./npm_dist/types/radio-group.d.ts",
-      "import": "./npm_dist/radio-group/radio-group.vue",
-      "default": "./npm_dist/radio-group/radio-group.vue"
+      "types": "./dist/types/radio-group.d.ts",
+      "import": "./dist/radio-group/radio-group.vue",
+      "default": "./dist/radio-group/radio-group.vue"
     },
     "./rate/rate.vue": {
-      "types": "./npm_dist/types/rate.d.ts",
-      "import": "./npm_dist/rate/rate.vue",
-      "default": "./npm_dist/rate/rate.vue"
+      "types": "./dist/types/rate.d.ts",
+      "import": "./dist/rate/rate.vue",
+      "default": "./dist/rate/rate.vue"
     },
     "./result/result.vue": {
-      "types": "./npm_dist/types/result.d.ts",
-      "import": "./npm_dist/result/result.vue",
-      "default": "./npm_dist/result/result.vue"
+      "types": "./dist/types/result.d.ts",
+      "import": "./dist/result/result.vue",
+      "default": "./dist/result/result.vue"
     },
     "./row/row.vue": {
-      "types": "./npm_dist/types/row.d.ts",
-      "import": "./npm_dist/row/row.vue",
-      "default": "./npm_dist/row/row.vue"
+      "types": "./dist/types/row.d.ts",
+      "import": "./dist/row/row.vue",
+      "default": "./dist/row/row.vue"
     },
     "./search/search.vue": {
-      "types": "./npm_dist/types/search.d.ts",
-      "import": "./npm_dist/search/search.vue",
-      "default": "./npm_dist/search/search.vue"
+      "types": "./dist/types/search.d.ts",
+      "import": "./dist/search/search.vue",
+      "default": "./dist/search/search.vue"
     },
     "./side-bar/side-bar.vue": {
-      "types": "./npm_dist/types/side-bar.d.ts",
-      "import": "./npm_dist/side-bar/side-bar.vue",
-      "default": "./npm_dist/side-bar/side-bar.vue"
+      "types": "./dist/types/side-bar.d.ts",
+      "import": "./dist/side-bar/side-bar.vue",
+      "default": "./dist/side-bar/side-bar.vue"
     },
     "./side-bar-item/side-bar-item.vue": {
-      "types": "./npm_dist/types/side-bar-item.d.ts",
-      "import": "./npm_dist/side-bar-item/side-bar-item.vue",
-      "default": "./npm_dist/side-bar-item/side-bar-item.vue"
+      "types": "./dist/types/side-bar-item.d.ts",
+      "import": "./dist/side-bar-item/side-bar-item.vue",
+      "default": "./dist/side-bar-item/side-bar-item.vue"
     },
     "./skeleton/skeleton.vue": {
-      "types": "./npm_dist/types/skeleton.d.ts",
-      "import": "./npm_dist/skeleton/skeleton.vue",
-      "default": "./npm_dist/skeleton/skeleton.vue"
+      "types": "./dist/types/skeleton.d.ts",
+      "import": "./dist/skeleton/skeleton.vue",
+      "default": "./dist/skeleton/skeleton.vue"
     },
     "./slider/slider.vue": {
-      "types": "./npm_dist/types/slider.d.ts",
-      "import": "./npm_dist/slider/slider.vue",
-      "default": "./npm_dist/slider/slider.vue"
+      "types": "./dist/types/slider.d.ts",
+      "import": "./dist/slider/slider.vue",
+      "default": "./dist/slider/slider.vue"
     },
     "./step-item/step-item.vue": {
-      "types": "./npm_dist/types/step-item.d.ts",
-      "import": "./npm_dist/step-item/step-item.vue",
-      "default": "./npm_dist/step-item/step-item.vue"
+      "types": "./dist/types/step-item.d.ts",
+      "import": "./dist/step-item/step-item.vue",
+      "default": "./dist/step-item/step-item.vue"
     },
     "./stepper/stepper.vue": {
-      "types": "./npm_dist/types/stepper.d.ts",
-      "import": "./npm_dist/stepper/stepper.vue",
-      "default": "./npm_dist/stepper/stepper.vue"
+      "types": "./dist/types/stepper.d.ts",
+      "import": "./dist/stepper/stepper.vue",
+      "default": "./dist/stepper/stepper.vue"
     },
     "./steps/steps.vue": {
-      "types": "./npm_dist/types/steps.d.ts",
-      "import": "./npm_dist/steps/steps.vue",
-      "default": "./npm_dist/steps/steps.vue"
+      "types": "./dist/types/steps.d.ts",
+      "import": "./dist/steps/steps.vue",
+      "default": "./dist/steps/steps.vue"
     },
     "./sticky/sticky.vue": {
-      "types": "./npm_dist/types/sticky.d.ts",
-      "import": "./npm_dist/sticky/sticky.vue",
-      "default": "./npm_dist/sticky/sticky.vue"
+      "types": "./dist/types/sticky.d.ts",
+      "import": "./dist/sticky/sticky.vue",
+      "default": "./dist/sticky/sticky.vue"
     },
     "./swipe-cell/swipe-cell.vue": {
-      "types": "./npm_dist/types/swipe-cell.d.ts",
-      "import": "./npm_dist/swipe-cell/swipe-cell.vue",
-      "default": "./npm_dist/swipe-cell/swipe-cell.vue"
+      "types": "./dist/types/swipe-cell.d.ts",
+      "import": "./dist/swipe-cell/swipe-cell.vue",
+      "default": "./dist/swipe-cell/swipe-cell.vue"
     },
     "./swiper/swiper.vue": {
-      "types": "./npm_dist/types/swiper.d.ts",
-      "import": "./npm_dist/swiper/swiper.vue",
-      "default": "./npm_dist/swiper/swiper.vue"
+      "types": "./dist/types/swiper.d.ts",
+      "import": "./dist/swiper/swiper.vue",
+      "default": "./dist/swiper/swiper.vue"
     },
     "./swiper-nav/swiper-nav.vue": {
-      "types": "./npm_dist/types/swiper-nav.d.ts",
-      "import": "./npm_dist/swiper-nav/swiper-nav.vue",
-      "default": "./npm_dist/swiper-nav/swiper-nav.vue"
+      "types": "./dist/types/swiper-nav.d.ts",
+      "import": "./dist/swiper-nav/swiper-nav.vue",
+      "default": "./dist/swiper-nav/swiper-nav.vue"
     },
     "./switch/switch.vue": {
-      "types": "./npm_dist/types/switch.d.ts",
-      "import": "./npm_dist/switch/switch.vue",
-      "default": "./npm_dist/switch/switch.vue"
+      "types": "./dist/types/switch.d.ts",
+      "import": "./dist/switch/switch.vue",
+      "default": "./dist/switch/switch.vue"
     },
     "./tab-bar/tab-bar.vue": {
-      "types": "./npm_dist/types/tab-bar.d.ts",
-      "import": "./npm_dist/tab-bar/tab-bar.vue",
-      "default": "./npm_dist/tab-bar/tab-bar.vue"
+      "types": "./dist/types/tab-bar.d.ts",
+      "import": "./dist/tab-bar/tab-bar.vue",
+      "default": "./dist/tab-bar/tab-bar.vue"
     },
     "./tab-bar-item/tab-bar-item.vue": {
-      "types": "./npm_dist/types/tab-bar-item.d.ts",
-      "import": "./npm_dist/tab-bar-item/tab-bar-item.vue",
-      "default": "./npm_dist/tab-bar-item/tab-bar-item.vue"
+      "types": "./dist/types/tab-bar-item.d.ts",
+      "import": "./dist/tab-bar-item/tab-bar-item.vue",
+      "default": "./dist/tab-bar-item/tab-bar-item.vue"
     },
     "./tab-panel/tab-panel.vue": {
-      "types": "./npm_dist/types/tab-panel.d.ts",
-      "import": "./npm_dist/tab-panel/tab-panel.vue",
-      "default": "./npm_dist/tab-panel/tab-panel.vue"
+      "types": "./dist/types/tab-panel.d.ts",
+      "import": "./dist/tab-panel/tab-panel.vue",
+      "default": "./dist/tab-panel/tab-panel.vue"
     },
     "./tabs/tabs.vue": {
-      "types": "./npm_dist/types/tabs.d.ts",
-      "import": "./npm_dist/tabs/tabs.vue",
-      "default": "./npm_dist/tabs/tabs.vue"
+      "types": "./dist/types/tabs.d.ts",
+      "import": "./dist/tabs/tabs.vue",
+      "default": "./dist/tabs/tabs.vue"
     },
     "./tag/tag.vue": {
-      "types": "./npm_dist/types/tag.d.ts",
-      "import": "./npm_dist/tag/tag.vue",
-      "default": "./npm_dist/tag/tag.vue"
+      "types": "./dist/types/tag.d.ts",
+      "import": "./dist/tag/tag.vue",
+      "default": "./dist/tag/tag.vue"
     },
     "./textarea/textarea.vue": {
-      "types": "./npm_dist/types/textarea.d.ts",
-      "import": "./npm_dist/textarea/textarea.vue",
-      "default": "./npm_dist/textarea/textarea.vue"
+      "types": "./dist/types/textarea.d.ts",
+      "import": "./dist/textarea/textarea.vue",
+      "default": "./dist/textarea/textarea.vue"
     },
     "./toast/toast.vue": {
-      "types": "./npm_dist/types/toast.d.ts",
-      "import": "./npm_dist/toast/toast.vue",
-      "default": "./npm_dist/toast/toast.vue"
+      "types": "./dist/types/toast.d.ts",
+      "import": "./dist/toast/toast.vue",
+      "default": "./dist/toast/toast.vue"
     },
     "./tree-select/tree-select.vue": {
-      "types": "./npm_dist/types/tree-select.d.ts",
-      "import": "./npm_dist/tree-select/tree-select.vue",
-      "default": "./npm_dist/tree-select/tree-select.vue"
+      "types": "./dist/types/tree-select.d.ts",
+      "import": "./dist/tree-select/tree-select.vue",
+      "default": "./dist/tree-select/tree-select.vue"
     },
     "./upload/upload.vue": {
-      "types": "./npm_dist/types/upload.d.ts",
-      "import": "./npm_dist/upload/upload.vue",
-      "default": "./npm_dist/upload/upload.vue"
+      "types": "./dist/types/upload.d.ts",
+      "import": "./dist/upload/upload.vue",
+      "default": "./dist/upload/upload.vue"
     },
     "./watermark/watermark.vue": {
-      "types": "./npm_dist/types/watermark.d.ts",
-      "import": "./npm_dist/watermark/watermark.vue",
-      "default": "./npm_dist/watermark/watermark.vue"
+      "types": "./dist/types/watermark.d.ts",
+      "import": "./dist/watermark/watermark.vue",
+      "default": "./dist/watermark/watermark.vue"
     }
   },
   "scripts": {
@@ -426,6 +436,7 @@
     "dev:mp": "npm run dev:mp-weixin",
     "dev:mp:pure": "pnpm --filter=\"./example\" dev:mp-weixin",
     "build": "pnpm --filter=\"./site\" build && pnpm --filter=\"./example\" build:h5",
+    "build:npm": "npm run init && npm run release:prepare",
     "build:mp-weixin": "pnpm --filter=\"./example\" build:mp-weixin",
     "build:mp-alipay": "pnpm --filter=\"./example\" build:mp-alipay",
     "build:mp-toutiao": "pnpm --filter=\"./example\" build:mp-toutiao",
@@ -442,55 +453,52 @@
     "type-check": "vue-tsc --noEmit",
     "init": "node ./example/script/watch/init.js && node ./example/script/pages/index.js",
     "watch": "node ./example/script/watch/watch.js",
-    "prepare": "npm run init && npm run release:prepare",
     "release:prepare": "node ./example/script/release/prepare.js",
-    "publish": "cd npm_dist && npm publish",
     "commit": "git-cz"
   },
   "devDependencies": {
-    "@commitlint/cli": "^12.0.1",
-    "@commitlint/config-conventional": "^12.0.1",
-    "@dcloudio/types": "^3.4.19",
-    "@stylistic/eslint-plugin-jsx": "3.1.0",
-    "@types/node": "^24.2.0",
+    "@commitlint/cli": "catalog:",
+    "@commitlint/config-conventional": "catalog:",
+    "@dcloudio/types": "catalog:uni",
+    "@stylistic/eslint-plugin-jsx": "catalog:",
+    "@types/node": "catalog:",
     "@typescript-eslint/eslint-plugin": "^5.6.0",
     "@typescript-eslint/parser": "~5.35.0",
     "@vue/runtime-core": "^3.4.21",
-    "@vue/tsconfig": "^0.7.0",
-    "concurrently": "^9.2.1",
-    "dotenv": "^17.2.3",
-    "echarts": "^6.0.0",
+    "@vue/tsconfig": "catalog:",
+    "concurrently": "catalog:",
+    "dotenv": "catalog:",
+    "echarts": "catalog:",
     "eslint": "8.57.1",
     "eslint-config-light": "latest",
     "eslint-config-light-vue3": "latest",
-    "eslint-import-resolver-alias": "1.1.2",
-    "eslint-import-resolver-node": "0.3.9",
+    "eslint-import-resolver-alias": "catalog:",
+    "eslint-import-resolver-node": "catalog:",
     "eslint-plugin-import": "2.26.0",
-    "eslint-plugin-jest": "25",
+    "eslint-plugin-jest": "catalog:",
     "eslint-plugin-light": "latest",
     "eslint-plugin-prettier": "4.2.1",
-    "eslint-plugin-react": "7.26.1",
-    "eslint-plugin-react-hooks": "4.2.0",
-    "eslint-plugin-tailwindcss": "3.18.0",
+    "eslint-plugin-react": "catalog:",
+    "eslint-plugin-react-hooks": "catalog:",
+    "eslint-plugin-tailwindcss": "catalog:",
     "eslint-plugin-vue": "9.14.0",
-    "glob": "^11.0.3",
-    "husky": "^6.0.0",
-    "less": "^4.4.2",
-    "lint-staged": "^10.5.4",
-    "miniprogram-api-typings": "^4.1.0",
-    "postcss-less": "^6.0.0",
-    "postcss-rpx-transform": "^1.0.1",
+    "glob": "catalog:",
+    "less": "catalog:",
+    "lint-staged": "catalog:",
+    "miniprogram-api-typings": "catalog:miniprogram",
+    "postcss-less": "catalog:",
+    "postcss-rpx-transform": "catalog:",
     "stylelint": "14.16.1",
-    "stylelint-config-common": "1.0.10",
+    "stylelint-config-common": "catalog:",
     "stylelint-config-standard": "^39.0.1",
-    "stylelint-less": "^3.0.1",
-    "stylelint-scss": "6.10.0",
-    "t-comm": "^2.0.26",
-    "tslib": "^2.3.1",
+    "stylelint-less": "catalog:",
+    "stylelint-scss": "catalog:",
+    "t-comm": "catalog:",
+    "tslib": "catalog:",
     "typescript": "5.1",
-    "vite": "5.2.8",
+    "vite": "catalog:",
     "vue-tsc": "^1.0.24",
-    "zrender": "^6.0.0"
+    "zrender": "catalog:"
   },
   "lint-staged": {
     "*.{ts,js,vue}": [

@@ -1,7 +1,7 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <t-attachments
+      <TAttachments
         :items="items"
         @fileClick="onFileClick"
         @remove="onRemove"
@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import tAttachments from 'tdesign-uniapp-chat/attachments/attachments.vue';
+import TAttachments from 'tdesign-uniapp-chat/attachments/attachments.vue';
 export default {
   components: {
-    tAttachments,
+    TAttachments,
   },
   data() {
     return {

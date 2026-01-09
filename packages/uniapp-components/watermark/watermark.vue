@@ -1,7 +1,7 @@
 <template>
   <view
     :class="classPrefix + ' ' + tClass"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
   >
     <block v-if="content">
       {{ content }}
@@ -16,13 +16,13 @@
     />
     <view
       :class="movable ? 'watermark-move' : ''"
-      :style="_._style(watermarkStyle)"
+      :style="tools._style(watermarkStyle)"
     />
   </view>
 </template>
 
 <script>
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import watermarkProps from './props';
 import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
@@ -44,7 +44,7 @@ export default uniComponent({
   data() {
     return {
       classPrefix: name,
-      _,
+      tools,
       watermarkStyle: {},
       initialed: false,
       canvasId: `watermark-canvas-${Math.random().toString(36)

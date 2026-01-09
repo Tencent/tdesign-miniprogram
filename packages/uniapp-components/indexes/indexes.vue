@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="classPrefix + ' ' + tClass"
     disable-scroll
   >
@@ -14,7 +14,7 @@
       <view
         v-for="(item, index) in _indexList"
         :key="index"
-        :class="_.cls(classPrefix + '__sidebar-item', [['active', dataCurrent === item]]) + ' ' + tClassSidebarItem"
+        :class="tools.cls(classPrefix + '__sidebar-item', [['active', dataCurrent === item]]) + ' ' + tClassSidebarItem"
         :data-index="index"
         @click.stop="onClick(item, index)"
       >
@@ -45,7 +45,7 @@ import { prefix } from '../common/config';
 import props from './props';
 import { getRect, throttle, systemInfo } from '../common/utils';
 import pageScrollMixin from '../mixins/page-scroll';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { getFirstCharacter } from './computed.js';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 
@@ -95,7 +95,7 @@ export default uniComponent({
       activeAnchor: this.current,
       showTips: false,
 
-      _,
+      tools,
 
       timer: null,
       groupTop: [],

@@ -2,7 +2,7 @@
   <view
     :class="[
       tClass,
-      _.cls(classPrefix, [span]),
+      tools.cls(classPrefix, [span]),
       (offset ? classPrefix + '--offset-' + offset : '')
     ]"
     :style="getColStyles(gutter, customStyle)"
@@ -14,7 +14,7 @@
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { getColStyles } from './computed.js';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
@@ -36,7 +36,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _,
+      tools,
       gutter: '',
     };
   },

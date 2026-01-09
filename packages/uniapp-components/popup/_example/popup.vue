@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="Popup"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <t-demo-header
@@ -32,7 +34,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 import BaseDemo from './base/index.vue';
 import withTitle from './with-title/index.vue';
 import customClose from './custom-close/index.vue';
@@ -52,7 +54,7 @@ export default {
     };
   },
   methods: {
-    handlePopup(e: any) {
+    handlePopup(e) {
       const placement = e.currentTarget.dataset.type;
       this.placement = placement;
       this[placement] = true;

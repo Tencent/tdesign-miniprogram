@@ -12,7 +12,7 @@
     </block>
     <block v-else>
       <view :class="classPrefix + '__assistant'">
-        <t-chat-markdown
+        <TChatMarkdown
           :content="textInfo"
           :options="markdownProps && markdownProps.options"
           @click="onClick"
@@ -22,7 +22,7 @@
   </view>
 </template>
 <script>
-import tChatMarkdown from '../chat-markdown/chat-markdown.vue';
+import TChatMarkdown from '../chat-markdown/chat-markdown.vue';
 import { prefix } from 'tdesign-uniapp/common/config';
 import props from './props';
 import _ from 'tdesign-uniapp/common/utils.wxs';
@@ -39,7 +39,7 @@ export default uniComponent({
   },
 
   components: {
-    tChatMarkdown,
+    TChatMarkdown,
   },
 
   props: {

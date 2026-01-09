@@ -37,7 +37,7 @@ export default class Watermark extends SuperComponent {
     },
 
     renderWatermark() {
-      const query = wx.createSelectorQuery().in(this);
+      const query = this.createSelectorQuery();
       query
         .select('#watermarkCanvas')
         .fields({ node: true, size: true })

@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="Form"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <t-demo-header
@@ -52,7 +54,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import Horizontal from './horizontal/index.vue';
 import Vertical from './vertical/index.vue';

@@ -14,8 +14,8 @@
 >
   <block wx:if="{{active}}">
     <view class="{{classPrefix}}__line"></view>
-    <view class="{{classPrefix}}__prefix"></view>
-    <view class="{{classPrefix}}__suffix"></view>
+    <view wx:if="{{!isFirstChild}}" class="{{classPrefix}}__prefix"></view>
+    <view wx:if="{{!isLastChild}}" class="{{classPrefix}}__suffix"></view>
   </block>
   <template wx:if="{{_icon}}" is="icon" data="{{ tClass: classPrefix + '__icon', ..._icon }}" />
   <block wx:if="{{badgeProps}}">

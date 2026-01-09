@@ -1,7 +1,7 @@
 <template>
   <view>
     <view
-      :style="_._style([customStyle])"
+      :style="tools._style([customStyle])"
       :class="classPrefix + ' ' + tClass"
     >
       <view
@@ -107,7 +107,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { getCharacterLength, nextTick } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { highLight } from './computed.js';
 // import { getInnerMaxLen } from '../input/utils';
 
@@ -144,7 +144,7 @@ export default uniComponent({
       isShowResultList: false,
       isSelected: false,
       showClearIcon: false,
-      _,
+      tools,
 
       dataValue: this.value,
       // innerMaxLen: -1,
@@ -245,7 +245,7 @@ export default uniComponent({
       this.$emit('action-click');
     },
 
-    onSelectResultItem(_, { index }) {
+    onSelectResultItem(tools, { index }) {
       const item = this.resultList[index];
       this.dataValue = item;
       this.isSelected = true;

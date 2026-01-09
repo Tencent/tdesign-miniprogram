@@ -11,7 +11,6 @@
       开放能力按钮
     </t-button>
     <t-dialog
-      id="t-dialog"
       ref="t-dialog"
     />
   </view>

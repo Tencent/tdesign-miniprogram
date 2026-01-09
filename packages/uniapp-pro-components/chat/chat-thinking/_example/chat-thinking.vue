@@ -4,6 +4,8 @@
       class="demo-navbar"
       title="ChatThinking"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
 
     <view class="demo">

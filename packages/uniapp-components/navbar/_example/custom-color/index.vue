@@ -3,16 +3,26 @@
     <t-navbar
       t-class-placeholder="t-navbar-placeholder"
       t-class-content="t-navbar-content"
-      class="custom-navbar"
+      t-class="custom-navbar"
       left-arrow
       title="标题文字"
-    />
+      @right-click="handleRightClick"
+    >
+      <template #right>
+        <div>右侧内容</div>
+      </template>
+    </t-navbar>
   </view>
 </template>
 
 <script>
 import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+
+
 export default {
+  options: {
+    styleIsolation: 'shared',
+  },
   components: {
     tNavbar,
   },
@@ -20,7 +30,11 @@ export default {
     return {};
   },
   created() {},
-  methods: {},
+  methods: {
+    handleRightClick() {
+      console.log('right click');
+    },
+  },
 };
 </script>
 <style>

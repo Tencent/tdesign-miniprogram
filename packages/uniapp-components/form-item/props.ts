@@ -8,6 +8,14 @@ import type { TdFormItemProps } from './type';
 export default {
   /** 是否显示右侧箭头 */
   arrow: Boolean,
+  /** 表单内容对齐方式，优先级高于 Form.contentAlign */
+  contentAlign: {
+    type: String,
+    validator(val: TdFormItemProps['contentAlign']): boolean {
+      if (!val) return true;
+      return ['left', 'right'].includes(val);
+    },
+  },
   /** label 原生属性 */
   for: {
     type: String,

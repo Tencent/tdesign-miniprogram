@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="ActionSheet"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">
@@ -47,12 +49,14 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import list from './list/index.vue';
 import status from './status/index.vue';
 import grid from './grid/index.vue';
 import align from './align/index.vue';
+
+
 export default {
   options: {
     styleIsolation: 'shared',

@@ -1,7 +1,7 @@
 <template>
   <view
     :class="classPrefix"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
   >
     <view
       :class="classPrefix + '__wrapper ' + tClass"
@@ -21,7 +21,7 @@
         v-for="(item, index) in count"
         :key="index"
         :t-class="classPrefix + '__icon ' + utils.getIconClass(classPrefix + '__icon', defaultValue, dataValue, index, allowHalf, disabled, scaleIndex) + ' ' + tClassIcon"
-        :custom-style="'margin-right: ' + (count - index > 1 ? _.addUnit(gap) : 0) + '; ' + utils.getColor(color)"
+        :custom-style="'margin-right: ' + (count - index > 1 ? tools.addUnit(gap) : 0) + '; ' + utils.getColor(color)"
         :name="utils.getIconName(defaultValue, dataValue, index, icon)"
         :size="size"
         :prefix="iconPrefix"
@@ -29,7 +29,7 @@
     </view>
     <text
       v-if="showText"
-      :class="_.cls(classPrefix + '__text', [['active', dataValue > 0]]) + ' ' + tClassText"
+      :class="tools.cls(classPrefix + '__text', [['active', dataValue > 0]]) + ' ' + tClassText"
       :aria-hidden="true"
     >
       {{ utils.getText(texts, dataValue, defaultTexts) }}
@@ -37,7 +37,7 @@
     <text
       v-if="isVisibleToScreenReader"
       :class="
-        _.cls(classPrefix + '__text', [
+        tools.cls(classPrefix + '__text', [
           ['active', dataValue > 0],
           ['sr-only', isVisibleToScreenReader]
         ]) +
@@ -52,14 +52,14 @@
     <!-- TODO -->
     <view
       v-if="tipsVisible && placement"
-      :class="_.cls(classPrefix + '__tips', [placement])"
+      :class="tools.cls(classPrefix + '__tips', [placement])"
       :style="'left: ' + tipsLeft + 'px'"
       :aria-hidden="true"
     >
       <block v-if="actionType == 'tap'">
         <view
           v-if="allowHalf"
-          :class="_.cls(classPrefix + '__tips-item', [['active', utils.ceil(dataValue) - 0.5 == dataValue]])"
+          :class="tools.cls(classPrefix + '__tips-item', [['active', utils.ceil(dataValue) - 0.5 == dataValue]])"
           :data-value="utils.ceil(dataValue) - 0.5"
           @click="onSelect"
         >
@@ -74,12 +74,12 @@
           </view>
         </view>
         <view
-          :class="_.cls(classPrefix + '__tips-item', [['active', utils.ceil(dataValue) == dataValue]])"
+          :class="tools.cls(classPrefix + '__tips-item', [['active', utils.ceil(dataValue) == dataValue]])"
           :data-value="utils.ceil(dataValue)"
           @click="onSelect"
         >
           <t-icon
-            :t-class="_.cls(classPrefix + '__icon', ['selected'])"
+            :t-class="tools.cls(classPrefix + '__icon', ['selected'])"
             :name="utils.getIconName(defaultValue, 0, 0, icon)"
             :size="size"
             :custom-style="utils.getColor(color)"
@@ -91,13 +91,13 @@
       </block>
       <view
         v-else
-        :class="_.cls(classPrefix + '__tips-item', [['active', utils.ceil(dataValue) == dataValue && actionType == 'tap']])"
+        :class="tools.cls(classPrefix + '__tips-item', [['active', utils.ceil(dataValue) == dataValue && actionType == 'tap']])"
         :data-value="utils.ceil(dataValue)"
         @click="onSelect"
       >
         <t-icon
           :t-class="
-            _.cls(classPrefix + '__icon', [
+            tools.cls(classPrefix + '__icon', [
               ['selected', utils.ceil(dataValue) == dataValue],
               ['selected-half', utils.ceil(dataValue) != dataValue]
             ])
@@ -119,7 +119,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { unitConvert, getRect, coalesce } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import utils from './computed.js';
 import { parseEventDynamicCode } from '../common/event/dynamic';
 
@@ -160,7 +160,7 @@ export default uniComponent({
       scaleIndex: -1,
       isVisibleToScreenReader: false,
 
-      _,
+      tools,
       utils,
       dataValue: coalesce(this.value, this.defaultValue),
     };

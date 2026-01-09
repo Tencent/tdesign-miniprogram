@@ -4,6 +4,8 @@
       class="demo-navbar"
       title="ChatMarkdown"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <view class="demo">
       <t-demo-header
@@ -39,7 +41,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 import baseDemo from './base/index.vue';
 import list from './list/index.vue';
 import codeDemo from './code/index.vue';

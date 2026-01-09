@@ -21,7 +21,6 @@
 
     <t-picker
       v-model:visible="cityVisible"
-      :value="cityValue"
       data-key="city"
       title="选择城市"
       cancel-btn="取消"
@@ -57,7 +56,6 @@
 
     <t-picker
       v-model:visible="dateVisible"
-      :value="dateValue"
       data-key="date"
       title="选择时间"
       cancel-btn="取消"

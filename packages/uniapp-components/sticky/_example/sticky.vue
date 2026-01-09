@@ -5,6 +5,8 @@
       <t-navbar
         title="Sticky"
         left-arrow
+        :delta="-1"
+        @go-back="onDemoGoBack"
       />
     <!-- #endif -->
     </view>
@@ -37,7 +39,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import BaseDemo from './base/index.vue';
 import offset from './offset/index.vue';

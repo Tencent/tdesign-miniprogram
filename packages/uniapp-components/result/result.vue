@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="[
       classPrefix + ' ' + classPrefix + '--theme-' + theme,
       tClass
@@ -66,7 +66,7 @@ import { uniComponent } from '../common/src/index';
 import props from './props';
 import { prefix } from '../common/config';
 import { calcIcon } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-result`;
@@ -100,7 +100,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _,
+      tools,
 
       _icon: null,
     };

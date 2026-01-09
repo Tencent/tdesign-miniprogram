@@ -3,7 +3,7 @@
     <view
       v-if="showControls"
       :class="classPrefix + '__btn ' + ' ' + tClass"
-      :style="_._style([customStyle])"
+      :style="tools._style([customStyle])"
     >
       <view
         :class="classPrefix + '__btn--prev'"
@@ -22,7 +22,7 @@
     </view>
     <view
       v-if="total >= minShowNum"
-      :style="_._style([customStyle])"
+      :style="tools._style([customStyle])"
       :class="
         tClass +
           ' ' + classPrefix +
@@ -35,7 +35,7 @@
         <view
           v-for="(item, idx) in total"
           :key="idx"
-          :class="_.cls(classPrefix + '__' + type + '-item', [['active', current === idx], direction])"
+          :class="tools.cls(classPrefix + '__' + type + '-item', [['active', current === idx], direction])"
         />
       </block>
       <block v-if="type === 'fraction'">
@@ -48,7 +48,7 @@
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 const name = `${prefix}-swiper-nav`;
@@ -71,7 +71,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _,
+      tools,
     };
   },
 

@@ -33,7 +33,7 @@
 import tPopup from 'tdesign-uniapp/popup/popup.vue';
 import tIcon from 'tdesign-uniapp/icon/icon.vue';
 import tButton from 'tdesign-uniapp/button/button.vue';
-import _ from 'tdesign-uniapp/common/utils.wxs';
+import tools from 'tdesign-uniapp/common/utils.wxs';
 
 export default {
   options: {
@@ -73,7 +73,7 @@ export default {
 
       visible: false,
 
-      closeIconCustomStyle: _._style({
+      closeIconCustomStyle: tools._style({
         position: 'absolute',
         left: '50%',
         marginLeft: '-16px',

@@ -38,13 +38,12 @@ const getComponentPages = (list,  isSkyline) => list.reduce((acc, item) => [
 
 function main() {
   const list = [
-    // chat,
     base,
     nav,
     form,
     display,
-    ux,
   ];
+
   const skylineList = SHOW_SKYLINE_PAGES ? [
     skylineChat,
     skylineBase,
@@ -71,19 +70,22 @@ function main() {
       },
     })),
   ];
+  const getSubPackages = info => info.childArr.map((item) => {
+    const camelName = hyphenate(item.name);
+    return {
+      root: `pages-more/${camelName}`,
+      pages: [
+        {
+          path: camelName,
+        },
+      ],
+    };
+  });
   rawData.subPackages = [
-    ...chat.childArr.map((item) => {
-      const camelName = hyphenate(item.name);
-      return {
-        root: `pages-more/${camelName}`,
-        pages: [
-          {
-            path: camelName,
-          },
-        ],
-      };
-    }),
+    ...getSubPackages(ux),
+    ...getSubPackages(chat),
   ];
+
   rawData.condition = {
     current: 0,
     list: [
@@ -100,6 +102,17 @@ function main() {
       ], []),
     ],
   };
+
+  rawData.preloadRule = {
+    'pages/home/home': {
+      network: 'all',
+      packages: [
+        ...getSubPackages(ux),
+        ...getSubPackages(chat),
+      ].map(item => item.root),
+    },
+  };
+
   writeFileSync(pagesJson, `${JSON.stringify(rawData, null, 2)}\n`, false);
   console.log('[pages.json] Wrote!');
 }

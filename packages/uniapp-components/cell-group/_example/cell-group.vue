@@ -4,6 +4,8 @@
     <t-navbar
       title="cell-group 组合单元格"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">
@@ -42,7 +44,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 export default {
   data() {
     return {};

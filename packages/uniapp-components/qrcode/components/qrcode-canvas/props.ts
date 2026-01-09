@@ -23,7 +23,7 @@ export default {
   level: {
     type: String,
     default: 'M',
-    validator: (value) => ['L', 'M', 'Q', 'H'].includes(value),
+    validator: (value: string) => ['L', 'M', 'Q', 'H'].includes(value),
   },
   // 背景色
   bgColor: {

@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="classPrefix"
   >
     <view
@@ -34,7 +34,7 @@
         :aria-hidden="true"
       >
         <block
-          v-if="_.includes(STATUS, status)"
+          v-if="tools.includes(STATUS, status)"
           name="icon"
         >
           <t-icon
@@ -44,7 +44,7 @@
           />
         </block>
         <text v-else>
-          {{ _.isString(label) ? label : computedProgress + '%' }}
+          {{ tools.isString(label) ? label : computedProgress + '%' }}
         </text>
       </view>
       <slot name="label" />
@@ -80,7 +80,7 @@
           v-if="label && computedProgress > 10"
           :class="classPrefix + '__info ' + tClassLabel"
         >
-          <text>{{ _.isString(label) ? label : computedProgress + '%' }}</text>
+          <text>{{ tools.isString(label) ? label : computedProgress + '%' }}</text>
         </view>
         <slot
           v-if="computedProgress > 10"
@@ -92,7 +92,7 @@
         :class="classPrefix + '__info ' + tClassLabel"
         :aria-hidden="true"
       >
-        <text>{{ _.isString(label) ? label : computedProgress + '%' }}</text>
+        <text>{{ tools.isString(label) ? label : computedProgress + '%' }}</text>
       </view>
       <slot
         v-if="computedProgress <= 10"
@@ -110,7 +110,7 @@
         :aria-valuenow="computedProgress"
         :aria-label="ariaLabel || (isIOS ? getIOSAriaLabel(status) : getAndroidAriaLabel(status))"
         aria-live="polite"
-        :class="_.cls(classPrefix + '__canvas--circle', [[size, true]])"
+        :class="tools.cls(classPrefix + '__canvas--circle', [[size, true]])"
         :style="
           getCircleStyle(size, heightBar) +
             '; background-image: conic-gradient(from var(--td-progress-circle-from), ' +
@@ -129,7 +129,7 @@
             :aria-hidden="true"
           >
             <block
-              v-if="_.includes(STATUS, status)"
+              v-if="tools.includes(STATUS, status)"
               name="icon"
             >
               <t-icon
@@ -139,7 +139,7 @@
               />
             </block>
             <text v-else>
-              {{ _.isString(label) ? label : computedProgress + '%' }}
+              {{ tools.isString(label) ? label : computedProgress + '%' }}
             </text>
           </view>
           <slot name="label" />
@@ -155,7 +155,7 @@ import { prefix } from '../common/config';
 import props from './props';
 import { getBackgroundColor } from './utils';
 import { unitConvert, isIOS as isIOSValidator } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 import {
   STATUS,
@@ -210,7 +210,7 @@ export default uniComponent({
       getCircleStyle,
       getIOSAriaLabel,
       getAndroidAriaLabel,
-      _,
+      tools,
     };
   },
   watch: {

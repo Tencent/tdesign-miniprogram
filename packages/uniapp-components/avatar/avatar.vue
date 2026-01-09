@@ -4,7 +4,7 @@
       classPrefix + '__wrapper',
       tClass
     ]"
-    :style="_._style([utils.getStyles(isShow), customStyle, innerStyle])"
+    :style="tools._style([utils.getStyles(isShow), customStyle, innerStyle])"
   >
     <t-badge
       v-if="badgeProps"
@@ -47,7 +47,7 @@
           @error="onLoadError"
         />
         <block
-          v-else-if="iconName || _.isNoEmptyObj(iconData)"
+          v-else-if="iconName || tools.isNoEmptyObj(iconData)"
           name="icon"
         >
           <t-icon
@@ -84,7 +84,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import avatarProps from './props';
 import { setIcon, systemInfo } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { utils } from './computed.js';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
@@ -121,7 +121,7 @@ export default uniComponent({
       zIndex: 0,
       systemInfo,
       utils,
-      _,
+      tools,
 
       iconName: '',
       iconData: {},
@@ -140,7 +140,7 @@ export default uniComponent({
         large: 'var(--td-avatar-icon-large-font-size, 32px)',
       };
       if (!fontSize[this.dataSize]) return '';
-      return _._style([
+      return tools._style([
         {
           fontSize: fontSize[this.dataSize],
         },
@@ -148,7 +148,7 @@ export default uniComponent({
       ]);
     },
     imageCustomStyle() {
-      return _._style([
+      return tools._style([
         {
           width: '100%',
           height: '100%',

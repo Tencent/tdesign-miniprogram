@@ -4,7 +4,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import linkDemo from '../link.vue';
 export default {

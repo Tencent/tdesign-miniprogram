@@ -27,6 +27,7 @@ complete | \- | \-
 fail | \- | \-
 go-back | \- | \-
 go-home | \- | `deprecated`
+right-click | \- | \-
 success | \- | \-
 
 ### Navbar Slots
@@ -35,6 +36,7 @@ name | Description
 -- | --
 capsule | \-
 left | \-
+right | \-
 title | page title
 
 ### Navbar External Classes

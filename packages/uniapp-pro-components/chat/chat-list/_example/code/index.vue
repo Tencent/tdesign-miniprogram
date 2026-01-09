@@ -4,12 +4,12 @@
       class="chat-box"
       :style="'height: ' + contentHeight + ';'"
     >
-      <t-chat>
+      <TChatList>
         <block
           v-for="(item, chatIndex) in chatList"
           :key="item.key"
         >
-          <t-chat-message
+          <TChatMessage
             :avatar="item.avatar || ''"
             :name="item.name || ''"
             :datetime="item.datetime || ''"
@@ -40,16 +40,16 @@
               </block>
             </template>
             <template #actionbar>
-              <t-chat-actionbar
+              <TChatActionbar
                 v-if="chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'"
                 placement="end"
                 @actions="handleAction"
               />
             </template>
-          </t-chat-message>
+          </TChatMessage>
         </block>
         <template #footer>
-          <t-chat-sender
+          <TChatSender
             :value="value"
             :loading="loading"
             :disabled="disabled"
@@ -59,18 +59,18 @@
             @focus="onFocus"
           />
         </template>
-      </t-chat>
+      </TChatList>
     </view>
-    <t-toast ref="t-toast" />
+    <TToast ref="t-toast" />
   </view>
 </template>
 
 <script>
-import tChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
-import tChat from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
-import tChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import tChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
-import tToast from 'tdesign-uniapp/toast/toast.vue';
+import TChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
+import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
+import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
+import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import TToast from 'tdesign-uniapp/toast/toast.vue';
 import Toast from 'tdesign-uniapp/toast';
 import { getNavigationBarHeight } from '../utils';
 
@@ -94,11 +94,11 @@ const fetchStream = async (str, options) => {
 };
 export default {
   components: {
-    tChatMessage,
-    tChat,
-    tChatSender,
-    tChatActionbar,
-    tToast,
+    TChatMessage,
+    TChatList,
+    TChatSender,
+    TChatActionbar,
+    TToast,
   },
   data() {
     return {

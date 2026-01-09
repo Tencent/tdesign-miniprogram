@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="[
       getBadgeOuterClass({ shape }),
       tClass
@@ -11,7 +11,7 @@
   >
     <view
       :id="labelID"
-      :class="_.cls(classPrefix + '__content', [['empty', !content && !hasChild]]) + ' ' + tClassContent"
+      :class="tools.cls(classPrefix + '__content', [['empty', !content && !hasChild]]) + ' ' + tClassContent"
       :aria-hidden="true"
     >
       <!-- #ifdef H5 -->
@@ -40,12 +40,12 @@
       v-if="isShowBadge({ dot, count, showZero })"
       :id="descriptionID"
       :aria-hidden="true"
-      :aria-label="ariaLabel || _.getBadgeAriaLabel({ dot, count, maxCount })"
+      :aria-label="ariaLabel || tools.getBadgeAriaLabel({ dot, count, maxCount })"
       :class="[
         getBadgeInnerClass({ dot, size, shape, count }) + ' ' + prefix + '-has-count ',
         tClassCount
       ]"
-      :style="_._style([getBadgeStyles({ color, offset })])"
+      :style="tools._style([getBadgeStyles({ color, offset })])"
     >
       {{ getBadgeValue({ dot, count, maxCount }) }}
     </view>
@@ -57,7 +57,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { uniqueFactory } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 import {
   getBadgeValue,
@@ -92,7 +92,7 @@ export default uniComponent({
       value: '',
       labelID: '',
       descriptionID: '',
-      _,
+      tools,
     };
   },
   computed: {

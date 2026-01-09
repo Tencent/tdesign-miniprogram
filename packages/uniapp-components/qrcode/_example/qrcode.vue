@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="QRCode"
       :left-arrow="true"
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">

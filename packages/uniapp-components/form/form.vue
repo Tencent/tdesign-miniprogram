@@ -20,8 +20,14 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { coalesce } from '../common/utils';
 
 const name = `${prefix}-form`;
+
+const needValidate = (name, fields) => {
+  if (!fields || !Array.isArray(fields)) return true;
+  return fields.indexOf(`${name}`) !== -1;
+};
 
 export default uniComponent({
   name,
@@ -91,10 +97,15 @@ export default uniComponent({
     },
 
     // 验证表单
-    async validate() {
+    async validate(params = {}) {
+      const { fields, trigger = 'all' } = params;
+      const showErrorMessage = coalesce(params.showErrorMessage, this.showErrorMessage);
+
       const { children } = this;
       const { data } = this;
-      const validatePromises = children.map(child => child.validate(data, 'all', this.showErrorMessage));
+      const validatePromises = children
+        .filter(child => needValidate(`${child.name}`, fields))
+        .map(child => child.validate(data, trigger, showErrorMessage));
 
       try {
         const results = await Promise.all(validatePromises);
@@ -166,9 +177,11 @@ export default uniComponent({
     },
 
     // 提交表单
-    async submit() {
+    async submit(options) {
       try {
-        const validateResult = await this.validate();
+        const validateResult = await this.validate({
+          showErrorMessage: coalesce(options?.showErrorMessage, this.showErrorMessage),
+        });
         const firstError = this.getFirstError(validateResult);
         this.$emit('submit', {
           validateResult,
@@ -196,19 +209,21 @@ export default uniComponent({
       }
     },
     // 重置表单
-    reset() {
-      const { children, initialData, formData, fields } = this;
+    reset(params = {}) {
+      const { fields } = params;
+      const resetType = coalesce(params.resetType, this.resetType);
+      const { children, initialData, formData } = this;
 
-      children.forEach((child) => {
-        if (fields && fields.includes(child.name)) {
-          if (this.resetType === 'empty') {
+      children
+        .filter(child => needValidate(`${child.name}`, fields))
+        .forEach((child) => {
+          if (resetType === 'empty') {
             this.updateFormData(child.name, this.getEmptyValue(child.name));
-          } else if (this.resetType === 'initial') {
+          } else if (resetType === 'initial') {
             this.updateFormData(child.name, initialData[child.name]);
           }
           child.resetField();
-        }
-      });
+        });
 
       this.$emit('reset', {
         formData,

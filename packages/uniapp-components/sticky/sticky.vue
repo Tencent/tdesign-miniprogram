@@ -1,11 +1,11 @@
 <template>
   <view
     :class="classPrefix + ' ' + tClass"
-    :style="_._style(['z-index:' + zIndex, containerStyle, customStyle])"
+    :style="tools._style(['z-index:' + zIndex, containerStyle, customStyle])"
   >
     <view
       :class="classPrefix + '__content ' + tClassContent"
-      :style="_._style(['z-index:' + zIndex, contentStyle])"
+      :style="tools._style(['z-index:' + zIndex, contentStyle])"
     >
       <slot />
     </view>
@@ -17,7 +17,7 @@ import props from './props';
 import { prefix } from '../common/config';
 import pageScrollMixin from '../mixins/page-scroll';
 import { getRect, nextTick } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-sticky`;
@@ -43,7 +43,7 @@ export default uniComponent({
       classPrefix: name,
       containerStyle: '',
       contentStyle: '',
-      _,
+      tools,
     };
   },
   watch: {

@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="Button"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">
@@ -61,7 +63,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 import baseComp from './base/index.vue';
 import size from './size/index.vue';
 import iconBtn from './icon-btn/index.vue';

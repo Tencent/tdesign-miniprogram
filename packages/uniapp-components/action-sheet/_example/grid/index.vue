@@ -1,7 +1,6 @@
 <template>
   <view>
     <TActionSheet
-      id="t-action-sheet"
       ref="t-action-sheet"
       :using-custom-navbar="!isMPAlipay"
       @selected="handleSelected($event, { tagId: 't-action-sheet' })"

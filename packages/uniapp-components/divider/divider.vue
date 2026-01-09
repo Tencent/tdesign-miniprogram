@@ -6,7 +6,7 @@
         tClass,
         classPrefix + '--' + layout + ' ' + classPrefix + '--' + align + ' ' + (dashed ? classPrefix + '--dashed' : '')
       ]"
-      :style="_._style([dividerStyle, customStyle])"
+      :style="tools._style([dividerStyle, customStyle])"
     >
       <view
         :class="[
@@ -29,7 +29,7 @@
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-divider`;
@@ -51,7 +51,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _,
+      tools,
       dividerStyle: '',
     };
   },

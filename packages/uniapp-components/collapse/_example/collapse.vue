@@ -4,6 +4,8 @@
     <t-navbar
       title="Collapse"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">
@@ -40,7 +42,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 import baseComp from './base/index.vue';
 import placement from './placement/index.vue';
 import action from './action/index.vue';

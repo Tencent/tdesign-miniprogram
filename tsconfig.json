@@ -18,5 +18,8 @@
       "tdesign-miniprogram/*": ["packages/components/*"]
     }
   },
-  "include": ["packages/**/*", "typing.d.ts"]
+  "include": ["packages/**/*", "typing.d.ts"],
+  "exclude": [
+    "packages/uniapp-components/npm/**/*"
+  ]
 }

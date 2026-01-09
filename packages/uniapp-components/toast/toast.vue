@@ -2,8 +2,8 @@
   <view>
     <view
       v-if="realVisible"
-      :class="_.cls(classPrefix, [dataDirection, dataTheme, ['with-text', dataMessage]]) + ' ' + tClass + ' ' + transitionClass"
-      :style="_._style(['top:' + (dataPlacement === 'top' ? '25%' : dataPlacement === 'bottom' ? '75%' : '45%'), customStyle])"
+      :class="tools.cls(classPrefix, [dataDirection, dataTheme, ['with-text', dataMessage]]) + ' ' + tClass + ' ' + transitionClass"
+      :style="tools._style(['top:' + (dataPlacement === 'top' ? '25%' : dataPlacement === 'bottom' ? '75%' : '45%'), customStyle])"
       @transitionend="onTransitionEnd"
       @touchstart.stop.prevent="loop"
     >
@@ -65,7 +65,7 @@ import props from './props';
 import { transitionMixins } from '../mixins/transition';
 import { calcIcon, toCamel, coalesce } from '../common/utils';
 import useCustomNavbar from '../mixins/using-custom-navbar';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { canUseVirtualHost } from '../common/version';
 
 
@@ -116,7 +116,7 @@ export default uniComponent({
 
       isLoading: false,
       hideTimer: null,
-      _,
+      tools,
     };
   },
 

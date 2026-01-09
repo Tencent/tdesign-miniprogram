@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="classPrefix + ' ' + classPrefix + '--' + size + ' ' + tClass"
   >
     <view
@@ -53,7 +53,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import { coalesce } from '../common/utils';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-stepper`;
@@ -87,7 +87,7 @@ export default uniComponent({
       currentValue: 0,
       classPrefix: name,
       prefix,
-      _,
+      tools,
       disablePlus: false,
       disableMinus: false,
     };

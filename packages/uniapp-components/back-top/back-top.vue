@@ -1,8 +1,8 @@
 <template>
   <view
     v-if="!hidden"
-    :style="_._style([customStyle])"
-    :class="tClass + ' ' + _.cls(classPrefix, [['fixed', fixed], theme])"
+    :style="tools._style([customStyle])"
+    :class="tClass + ' ' + tools.cls(classPrefix, [['fixed', fixed], theme])"
     aria-role="button"
     @click="toTop"
   >
@@ -44,7 +44,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { calcIcon } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -112,7 +112,7 @@ export default uniComponent({
       classPrefix: name,
       _icon: null,
       hidden: true,
-      _,
+      tools,
     };
   },
 });

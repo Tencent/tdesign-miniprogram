@@ -4,7 +4,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import demoLoading from '../loading';
 export default {

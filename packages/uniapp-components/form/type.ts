@@ -15,6 +15,11 @@ export interface TdFormProps<FormData extends Data = Data> {
    */
   colon?: boolean;
   /**
+   * 表单内容对齐方式：左对齐、右对齐
+   * @default left
+   */
+  contentAlign?: 'left' | 'right';
+  /**
    * 表单数据
    * @default {}
    */
@@ -110,12 +115,17 @@ export interface FormInstanceFunctions<FormData extends Data = Data> {
   validate: (params?: FormValidateParams) => Promise<FormValidateResult<FormData>>;
 }
 
+
 export interface TdFormItemProps {
   /**
    * 是否显示右侧箭头
    * @default false
    */
   arrow?: boolean;
+  /**
+   * 表单内容对齐方式，优先级高于 Form.contentAlign
+   */
+  contentAlign?: 'left' | 'right';
   /**
    * label 原生属性
    * @default ''
@@ -374,3 +384,4 @@ export interface CustomValidateObj {
 }
 
 export type ValueType = any;
+

@@ -1,7 +1,7 @@
 <template>
   <button
     :id="tId"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :data-custom="customDataset"
     :class="className"
     :form-type="disabled || loading ? '' : type"
@@ -80,7 +80,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { calcIcon } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-button`;
@@ -108,7 +108,7 @@ export default uniComponent({
   ],
   data() {
     return {
-      _,
+      tools,
       prefix,
       className: '',
       classPrefix: name,
@@ -124,7 +124,7 @@ export default uniComponent({
         large: 'var(--td-button-large-icon-font-size, 24px)',
       };
 
-      return _._style([
+      return tools._style([
         {
           fontSize: fontSize[this.size || 'medium'],
           borderRadius: 'var(--td-button-icon-border-radius, 4px)',
@@ -133,7 +133,7 @@ export default uniComponent({
       ]);
     },
     loadingCustomStyle() {
-      return _._style({
+      return tools._style({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

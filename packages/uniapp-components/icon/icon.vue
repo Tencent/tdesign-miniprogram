@@ -1,7 +1,7 @@
 <template>
   <view
     :class="[tClass, prefix || 't-icon']"
-    :style="_._style([iconStyle, customStyle])"
+    :style="tools._style([iconStyle, customStyle])"
     :aria-hidden="ariaHidden"
     :aria-label="ariaLabel"
     :aria-role="ariaRole"
@@ -18,7 +18,7 @@
       />
     </view>
     <div
-      v-if="_.isValidIconName(name) && !isImage"
+      v-if="tools.isValidIconName(name) && !isImage"
       :class="(prefix ? prefix : classPrefix) + '-' + name + ' ' + classPrefix + '-base'"
     />
   </view>
@@ -28,7 +28,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { styles, addUnit, getRect } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-icon`;
@@ -47,7 +47,7 @@ export default uniComponent({
       classPrefix: name,
       isImage: false,
       iconStyle: undefined,
-      _,
+      tools,
     };
   },
   watch: {

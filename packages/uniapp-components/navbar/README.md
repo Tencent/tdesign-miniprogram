@@ -72,6 +72,7 @@ complete | \- | navigateBack 执行完成后触发（失败或成功均会触发
 fail | \- | navigateBack 执行失败后触发
 go-back | \- | 点击左侧箭头时触发
 go-home | \- | 已废弃。点击 Home 触发
+right-click | \- | 点击右侧图标时触发
 success | \- | navigateBack 执行成功后触发
 
 ### Navbar Slots
@@ -80,6 +81,7 @@ success | \- | navigateBack 执行成功后触发
 -- | --
 capsule | 左侧胶囊区域
 left | 左侧内容区域
+right | 右侧内容区域
 title | 自定义 `title` 显示内容
 
 ### Navbar External Classes
