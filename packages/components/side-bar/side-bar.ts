@@ -4,7 +4,6 @@ import props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-side-bar`;
-const relationsPath = '../side-bar-item/side-bar-item';
 
 @wxComponent()
 export default class SideBar extends SuperComponent {
@@ -13,7 +12,7 @@ export default class SideBar extends SuperComponent {
   children = [];
 
   relations: RelationsOptions = {
-    [relationsPath]: {
+    '../side-bar-item/side-bar-item': {
       type: 'child',
       linked(child) {
         this.children.push(child);
@@ -36,8 +35,13 @@ export default class SideBar extends SuperComponent {
 
   observers = {
     value(v) {
-      this.$children.forEach((item) => {
+      const sideBarItems = this.$children;
+      sideBarItems.forEach((item, index) => {
         item.updateActive(v);
+        item.setData({
+          isFirstChild: index === 0,
+          isLastChild: index === sideBarItems.length - 1,
+        });
       });
     },
   };
