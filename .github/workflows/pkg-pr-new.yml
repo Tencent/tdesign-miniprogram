@@ -21,6 +21,8 @@ jobs:
 
       - run: pnpm run build
 
+      - run: pnpm run uniapp build:npm
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
