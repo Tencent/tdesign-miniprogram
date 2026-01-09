@@ -34,7 +34,6 @@ const srcExampleInput = {
 const srcExampleOutput = 'packages/tdesign-miniprogram/example/pages';
 
 const copySrcExample = (type = 'all') => {
-  console.log(`📦 Copying ${type} component examples...`);
   return gulp
     .src(srcExampleInput[type])
     .pipe(changed(srcExampleOutput))
