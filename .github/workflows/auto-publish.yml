@@ -8,13 +8,12 @@ jobs:
   publish-official-website:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           ref: main
           fetch-depth: 0
           submodules: recursive
           token: ${{ secrets.TDESIGN_BOT_TOKEN }}
-          
 
       - name: update official website
         run: |
@@ -25,68 +24,43 @@ jobs:
           git merge origin/develop
           git push origin main
 
-  publish-tag-site-tdesign-react:
-    if: startsWith(github.event.release.tag_name,'tdesign-react')
+  publish-miniprogram:
+    if: startsWith(github.event.release.tag_name,'tdesign-miniprogram')
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: recursive
 
       - uses: pnpm/action-setup@v4
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 18
 
       - run: pnpm install
 
-      - run: pnpm -C packages/tdesign-react/site run preview
+      - run: pnpm build
 
-      - uses: actions/github-script@v7
-        id: domain
+      - name: extract version
+        id: version
+        run: |
+          const tagName = '${{ github.event.release.tag_name }}'
+          const lastIndex = tagName.lastIndexOf('@');
+          const version = tagName.slice(lastIndex + 1);
+          echo "version=$version" >> $GITHUB_OUTPUT
+        shell: bash
+
+      - name: release miniprogram
+        uses: LeeJim/setup-miniprogram@main
         with:
-          script: |
-            const tagName = '${{ github.event.release.tag_name }}'
-            const lastIndex = tagName.lastIndexOf('@');
-            const version = tagName.slice(lastIndex + 1);
-            const domain= `https://${version.split('.').join('_')}-tdesign-react.surge.sh`
-            core.setOutput('surge', domain);
-            core.setOutput('project', 'packages/tdesign-react/site/dist');
-
-      - run: |
-          export DEPLOY_DOMAIN=${{ steps.domain.outputs.surge }}
-          npx surge --project ${{ steps.domain.outputs.project }} --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
-
-  publish-tag-site-tdesign-react-chat:
-    if: startsWith(github.event.release.tag_name,'@tdesign-react/chat')
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: recursive
-
-      - uses: pnpm/action-setup@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
-
-      - run: pnpm install
-
-      - run: pnpm -C packages/tdesign-react-aigc/site run preview
-
-      - uses: actions/github-script@v7
-        id: domain
-        with:
-          script: |
-            const tagName = '${{ github.event.release.tag_name }}'
-            const lastIndex = tagName.lastIndexOf('@');
-            const version = tagName.slice(lastIndex + 1);
-            const domain= `https://${version.split('.').join('_')}-tdesign-react-chat.surge.sh`
-            core.setOutput('surge', domain);
-            core.setOutput('project', 'packages/tdesign-react-aigc/site/dist');
-
-      - run: |
-          export DEPLOY_DOMAIN=${{ steps.domain.outputs.surge }}
-          npx surge --project ${{ steps.domain.outputs.project }} --domain $DEPLOY_DOMAIN --token ${{ secrets.TDESIGN_SURGE_TOKEN }}
+          project_type: miniProgram
+          action_type: upload
+          project_path: ./_example
+          version: ${{ steps.version.outputs.version }}
+          es6: true
+          es7: true
+          minify: true
+        env:
+          MINI_APP_ID: ${{ secrets.TDESIGN_APP_ID }}
+          MINI_APP_PRIVATE_KEY: ${{ secrets.TDESIGN_MINI_KEY }}
