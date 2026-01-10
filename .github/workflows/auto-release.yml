@@ -25,7 +25,9 @@ jobs:
 
       - run: pnpm install
 
-      - run: pnpm exec run-p build build:aigc
+      - run: pnpm build
+
+      - run: pnpm run uniapp build:npm
 
       - uses: actions/setup-node@v4
         with:
