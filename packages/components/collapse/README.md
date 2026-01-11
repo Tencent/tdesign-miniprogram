@@ -131,6 +131,6 @@ t-class-header | 头部样式类
 --td-collapse-header-text-color | @text-color-primary | -
 --td-collapse-header-text-disabled-color | @text-color-disabled | -
 --td-collapse-horizontal-padding | 32rpx | -
---td-collapse-icon-color | @font-gray-3 | -
+--td-collapse-icon-color | @text-color-placeholder | -
 --td-collapse-panel-bg-color | @bg-color-container | -
 --td-collapse-title-font | @font-body-large | -
