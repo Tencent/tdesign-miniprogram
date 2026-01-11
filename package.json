@@ -31,6 +31,8 @@
     "site-chat:dev": "pnpm -C packages/tdesign-miniprogram-chat/site site:dev",
     "site-chat:prerender": "pnpm -C packages/tdesign-miniprogram-chat/site site:prerender",
     "m2w": "sh ./script/m2w.sh",
+    "m2w:base": "sh ./script/m2w.sh base",
+    "m2w:chat": "sh ./script/m2w.sh chat",
     "cover": "pnpm -C packages/tdesign-miniprogram/test cover",
     "test": "pnpm -C packages/tdesign-miniprogram/test test",
     "test:snap-update": "pnpm -C packages/tdesign-miniprogram/test test:snap-update",
