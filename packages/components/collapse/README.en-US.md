@@ -78,5 +78,6 @@ Name | Default Value | Description
 --td-collapse-header-text-disabled-color | @text-color-disabled | -
 --td-collapse-horizontal-padding | 32rpx | -
 --td-collapse-icon-color | @text-color-placeholder | -
+--td-collapse-left-icon-color | @brand-color | -
 --td-collapse-panel-bg-color | @bg-color-container | -
 --td-collapse-title-font | @font-body-large | -
