@@ -126,10 +126,11 @@ t-class-header | 头部样式类
 --td-collapse-content-font | @font-body-medium | -
 --td-collapse-content-padding | 32rpx | -
 --td-collapse-content-text-color | @text-color-primary | -
+--td-collapse-disabled-color | @text-color-disabled | -
 --td-collapse-extra-font | @font-body-large | -
 --td-collapse-header-height | auto | -
 --td-collapse-header-text-color | @text-color-primary | -
---td-collapse-header-text-disabled-color | @text-color-disabled | -
+--td-collapse-header-text-disabled-color | @collapse-disabled-color | -
 --td-collapse-horizontal-padding | 32rpx | -
 --td-collapse-icon-color | @text-color-placeholder | -
 --td-collapse-left-icon-color | @brand-color | -
