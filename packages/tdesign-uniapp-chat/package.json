@@ -71,7 +71,7 @@
     "site": "pnpm --filter=\"./site\" build",
     "site:dev": "pnpm --filter=\"./site\" run dev",
     "site:preview": "pnpm --filter=\"./site\" run site:preview",
-    "type-check": "vue-tsc --noEmit",
+    "type-check": "vue-tsc --noEmit"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.0.1",
