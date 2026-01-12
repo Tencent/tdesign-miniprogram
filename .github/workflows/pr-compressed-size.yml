@@ -35,7 +35,7 @@ jobs:
           install-script: 'pnpm install --no-frozen-lockfile'
           build-script: 'uniapp build:npm'
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          pattern: './packages/tdesign-uniapp/npm_dist/**/*.{js,ts,vue,less,css}'
+          pattern: './packages/tdesign-uniapp/dist/**/*.{js,ts,vue,less,css}'
           comment-key: uniapp
 
   uniapp-chat-size:
@@ -52,5 +52,5 @@ jobs:
           install-script: 'pnpm install --no-frozen-lockfile'
           build-script: 'uniapp build:npm'
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          pattern: './packages/tdesign-uniapp-chat/npm_dist/**/*.{js,ts,vue,less,css}'
+          pattern: './packages/tdesign-uniapp-chat/dist/**/*.{js,ts,vue,less,css}'
           comment-key: uniapp-chat
