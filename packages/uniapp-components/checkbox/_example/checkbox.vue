@@ -4,6 +4,8 @@
     <t-navbar
       title="Checkbox"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <scroll-view
@@ -65,7 +67,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import BaseDemo from './base/index.vue';
 import HorizontalDemo from './horizontal/index.vue';

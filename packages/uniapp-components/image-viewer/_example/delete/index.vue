@@ -11,7 +11,6 @@
     </t-button>
 
     <t-action-sheet
-      id="t-action-sheet"
       ref="t-action-sheet"
     />
 

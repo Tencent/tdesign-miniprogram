@@ -13,7 +13,7 @@
           class="chat-sender-wrapper"
           :style="showUploadMenu ? 'bottom:32rpx;' : ''"
         >
-          <t-chat-sender
+          <TChatSender
             :value="value"
             :loading="loading"
             :disabled="disabled"
@@ -47,7 +47,7 @@
                   :class="'deep-think-block ' + (deepThinkActive ? 'active' : '')"
                   @click.stop="onDeepThinkTap"
                 >
-                  <t-icon
+                  <TIcon
                     name="system-sum"
                     size="40rpx"
                   />
@@ -59,14 +59,14 @@
                   :class="'net-search-block ' + (netSearchActive ? 'active' : '')"
                   @click.stop="onNetSearchTap"
                 >
-                  <t-icon
+                  <TIcon
                     name="internet"
                     size="40rpx"
                   />
                 </view>
               </view>
             </template>
-          </t-chat-sender>
+          </TChatSender>
         </view>
         <view
           v-if="!visible"
@@ -76,21 +76,21 @@
         </view>
       </view>
     </view>
-    <t-toast ref="t-toast" />
+    <TToast ref="t-toast" />
   </view>
 </template>
 
 <script>
-import tChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import tToast from 'tdesign-uniapp/toast/toast.vue';
+import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
+import TToast from 'tdesign-uniapp/toast/toast.vue';
 import Toast from 'tdesign-uniapp/toast';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
+import TIcon from 'tdesign-uniapp/icon/icon.vue';
 
 export default {
   components: {
-    tChatSender,
-    tToast,
-    tIcon,
+    TChatSender,
+    TToast,
+    TIcon,
   },
   data() {
     return {

@@ -5,6 +5,8 @@
       title="Steps"
       left-arrow
       :capsule="false"
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <scroll-view
@@ -39,7 +41,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import horizontal from './horizontal/index.vue';
 import vertical from './vertical/index.vue';

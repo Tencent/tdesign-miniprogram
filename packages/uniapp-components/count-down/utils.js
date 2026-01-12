@@ -1,10 +1,3 @@
-export interface TimeData {
-  DD: number;
-  HH: number;
-  mm: number;
-  ss: number;
-  SSS: number;
-}
 export const TimeDataUnit = {
   DD: '天',
   HH: '时',
@@ -18,7 +11,7 @@ const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 const DAY = 24 * HOUR;
 
-export const parseTimeData = function (time: number): TimeData {
+export const parseTimeData = function (time) {
   const days = Math.floor(time / DAY);
   const hours = Math.floor((time % DAY) / HOUR);
   const minutes = Math.floor((time % HOUR) / MINUTE);
@@ -33,18 +26,17 @@ export const parseTimeData = function (time: number): TimeData {
   };
 };
 
-export const isSameSecond = function (time1: number, time2: number): boolean {
+export const isSameSecond = function (time1, time2) {
   return Math.floor(time1 / 1000) === Math.floor(time2 / 1000);
 };
 
-export type TTimeList = { digit: string; unit: string; match: string }[];
 
 /**
  *
  * @param time 倒计时时间，毫秒单位
  * @param format 倒计时格式化字符串，例如：dd天hh小时mm分ss秒SSS毫秒，hh:mm:ss.SSS，hh:mm:ss
  */
-export const parseFormat = function (time: number, format: string) {
+export const parseFormat = function (time, format) {
   const obj = {
     'D+': Math.floor(time / 86400000), // 日
     'H+': Math.floor((time % 86400000) / 3600000), // 小时
@@ -52,13 +44,13 @@ export const parseFormat = function (time: number, format: string) {
     's+': Math.floor((time % 60000) / 1000), // 秒
     'S+': Math.floor(time % 1000), // 毫秒
   };
-  const timeList: TTimeList = [];
+  const timeList = [];
   let timeText = format;
 
   Object.keys(obj).forEach((prop) => {
     if (new RegExp(`(${prop})`).test(timeText)) {
       timeText = timeText.replace(RegExp.$1, (match, offset, source) => {
-        const v = `${(obj as any)[prop]}`;
+        const v = `${(obj)[prop]}`;
         let digit = v;
         if (match.length > 1) {
           digit = (match.replace(new RegExp(match[0], 'g'), '0') + v).substr(v.length);

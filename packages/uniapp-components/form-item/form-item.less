@@ -6,6 +6,9 @@
 @form-item-vertical-padding: var(--td-form-item-vertical-padding, 32rpx);
 @form-item-label-width: var(--td-form-item-label-width, 160rpx);
 @form-item-justify-content: var(--td-form-item-justify-content, space-between);
+@form-bg-color: var(--td-form-bg-color, @bg-color-container);
+
+
 .@{form-item-prefix} {
   position: relative;
   display: flex;
@@ -13,7 +16,8 @@
   justify-content: @form-item-justify-content;
   width: 100%;
   padding: @form-item-vertical-padding @form-item-horizontal-padding;
-  background-color: #ffffff;
+  background-color: @form-bg-color;
+
   --td-input-vertical-padding: 0rpx;
   --td-textarea-vertical-padding: 0rpx;
   --td-textarea-horizontal-padding: 0rpx;
@@ -101,11 +105,18 @@
   }
 
   &__help {
-    // margin: 4rpx 0 8rpx;
-    font-size: @font-size-m;
+    font-size: @font-size-s;
 
-    color: @font-gray-1;
+    color: @text-color-disabled;
     line-height: 1.4;
+
+    &--left {
+      text-align: left;
+    }
+
+    &--right {
+      text-align: right;
+    }
   }
 
   &__desc-link {

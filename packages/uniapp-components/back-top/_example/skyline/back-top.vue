@@ -113,7 +113,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import tButton from 'tdesign-uniapp/button/button.vue';

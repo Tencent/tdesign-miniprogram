@@ -31,6 +31,7 @@ import TFormItem from 'tdesign-uniapp/form-item/form-item.vue';
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
 colon | Boolean | false | 是否在表单标签字段右侧显示冒号 | N
+content-align | String | left | 表单内容对齐方式：左对齐、右对齐。可选项：left/right | N
 data | Object | {} | 表单数据。TS 类型：`FormData` | N
 disabled | Boolean | undefined | 是否禁用整个表单 | N
 error-message | Object | - | 表单错误信息配置，示例：`{ idcard: '请输入正确的身份证号码', max: '字符长度不能超过 ${max}' }`。TS 类型：`FormErrorMessage` | N
@@ -70,6 +71,7 @@ validate | `(params?: FormValidateParams)` | `Promise<FormValidateResult<FormDat
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
 arrow | Boolean | false | 是否显示右侧箭头 | N
+content-align | String | - | 表单内容对齐方式，优先级高于 Form.contentAlign。可选项：left/right | N
 for | String | - | label 原生属性 | N
 help | String | - | 表单项说明内容 | N
 label | String | '' | 字段标签名称 | N

@@ -1,10 +1,9 @@
 <template>
   <view>
     <t-popup
-      :visible="visible"
+      v-model:visible="visible"
       :using-custom-navbar="!isMPAlipay"
       :placement="cur.value || 'top'"
-      @visible-change="onVisibleChange"
     >
       <view :class="'block block--' + cur.value">
         {{ cur.text }}
@@ -79,9 +78,6 @@ export default {
       setTimeout(() => {
         this.visible = true;
       });
-    },
-    onVisibleChange({ visible }) {
-      this.visible = visible;
     },
   },
 };

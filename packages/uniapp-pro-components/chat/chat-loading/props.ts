@@ -12,7 +12,7 @@ export default {
     default: 'moving' as TdChatLoadingProps['animation'],
     validator(val: TdChatLoadingProps['animation']): boolean {
       if (!val) return true;
-      return ['skeleton', 'moving', 'gradient', 'dot'].includes(val);
+      return ['skeleton', 'moving', 'gradient', 'dots'].includes(val);
     },
   },
   /** 加载过程展示的文字内容 */

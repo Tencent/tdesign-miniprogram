@@ -1,23 +1,23 @@
 <template>
   <view
-    :style="_._style([customStyle])"
-    :class="_.cls(classPrefix, [layout, ['readonly', readonly]]) + ' ' + tClass"
+    :style="tools._style([customStyle])"
+    :class="tools.cls(classPrefix, [layout, ['readonly', readonly]]) + ' ' + tClass"
     :aria-role="ariaRole || readonly ? 'option' : 'button'"
     :aria-label="ariaLabel || getAriaLabel(index, title, content)"
     :aria-current="curStatus == 'process' ? 'step' : ''"
     @click="onTap"
   >
     <view
-      :class="_.cls(classPrefix + '__anchor', [layout])"
+      :class="tools.cls(classPrefix + '__anchor', [layout])"
       :aria-hidden="true"
     >
       <view
         v-if="isDot"
-        :class="_.cls(classPrefix + '__dot', [curStatus])"
+        :class="tools.cls(classPrefix + '__dot', [curStatus])"
       />
       <view
         v-else-if="icon"
-        :class="_.cls(classPrefix + '__icon', [curStatus])"
+        :class="tools.cls(classPrefix + '__icon', [curStatus])"
       >
         <slot
           v-if="icon == 'slot'"
@@ -31,7 +31,7 @@
       </view>
       <view
         v-else
-        :class="_.cls(classPrefix + '__circle', [curStatus])"
+        :class="tools.cls(classPrefix + '__circle', [curStatus])"
       >
         <t-icon
           v-if="curStatus == 'finish'"
@@ -47,11 +47,11 @@
       </view>
     </view>
     <view
-      :class="_.cls(classPrefix + '__content', [layout, ['last', isLastChild]]) + ' ' + tClassContent"
+      :class="tools.cls(classPrefix + '__content', [layout, ['last', isLastChild]]) + ' ' + tClassContent"
       :aria-hidden="true"
     >
       <slot />
-      <view :class="_.cls(classPrefix + '__title', [curStatus, layout]) + ' ' + tClassContent">
+      <view :class="tools.cls(classPrefix + '__title', [curStatus, layout]) + ' ' + tClassContent">
         <block v-if="title">
           {{ title }}
         </block>
@@ -61,19 +61,19 @@
           name="title-right"
         />
       </view>
-      <view :class="_.cls(classPrefix + '__description', [layout]) + ' ' + tClassDescription">
+      <view :class="tools.cls(classPrefix + '__description', [layout]) + ' ' + tClassDescription">
         <block v-if="content">
           {{ content }}
         </block>
         <slot name="content" />
       </view>
-      <view :class="_.cls(classPrefix + '__extra', [layout]) + ' ' + tClassExtra">
+      <view :class="tools.cls(classPrefix + '__extra', [layout]) + ' ' + tClassExtra">
         <slot name="extra" />
       </view>
     </view>
     <view
       v-if="!isLastChild"
-      :class="_.cls(classPrefix + '__line', [curStatus, layout, theme, sequence])"
+      :class="tools.cls(classPrefix + '__line', [curStatus, layout, theme, sequence])"
       :aria-hidden="true"
     />
   </view>
@@ -83,7 +83,7 @@ import tIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { getAriaLabel } from './computed.js';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
@@ -123,7 +123,7 @@ export default uniComponent({
       layout: 'vertical',
       isLastChild: false,
       sequence: 'positive',
-      _,
+      tools,
 
       readonly: false,
       theme: '',

@@ -1,8 +1,8 @@
 <template>
   <view>
-    <t-toast ref="t-toast" />
+    <TToast ref="t-toast" />
     <view class="container">
-      <t-chat-actionbar
+      <TChatActionbar
         :content="content"
         :comment="comment"
         @actions="handleAction"
@@ -12,14 +12,14 @@
 </template>
 
 <script>
-import tChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
-import tToast from 'tdesign-uniapp/toast/toast.vue';
+import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import TToast from 'tdesign-uniapp/toast/toast.vue';
 import Toast from 'tdesign-uniapp/toast';
 
 export default {
   components: {
-    tChatActionbar,
-    tToast,
+    TChatActionbar,
+    TToast,
   },
   data() {
     return {

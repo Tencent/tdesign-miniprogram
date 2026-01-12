@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="Tag"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view>
@@ -34,7 +36,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import theme from './theme/index.vue';
 import size from './size/index.vue';

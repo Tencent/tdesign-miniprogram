@@ -4,7 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import type { TdTabValue as TabValue } from '../tabs/type';
+import type { TabValue } from '../tabs/type';
 
 export interface TdTabPanelProps {
   /**

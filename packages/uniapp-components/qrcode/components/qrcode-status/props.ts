@@ -3,7 +3,7 @@ export default {
   status: {
     type: String,
     default: 'active',
-    validator: (value) => ['active', 'expired', 'loading', 'scanned'].includes(value),
+    validator: (value: string) => ['active', 'expired', 'loading', 'scanned'].includes(value),
   },
   // 本地化文本配置
   locale: {

@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="classPrefix + ' ' + (bordered ? classPrefix + '--border' : '') + ' ' + tClass"
   >
     <view :class="classPrefix + '__label ' + tClassLabel">
@@ -54,9 +54,10 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { getCharacterLength, coalesce, nextTick } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { textareaStyle } from './computed.js';
 // import { getInnerMaxLen } from '../input/utils';
+import { RELATION_MAP } from '../common/relation/parent-map.js';
 
 
 const name = `${prefix}-textarea`;
@@ -72,15 +73,25 @@ export default uniComponent({
     `${prefix}-class-label`,
     `${prefix}-class-indicator`,
   ],
+  inject: {
+    [RELATION_MAP.FormKey]: {
+      default: null,
+    },
+  },
   props: {
     ...props,
   },
+
+  emits: [
+    'update:value',
+  ],
+
   data() {
     return {
       prefix,
       classPrefix: name,
       count: 0,
-      _,
+      tools,
 
       dataValue: coalesce(this.value, this.defaultValue, ''),
     };
@@ -88,6 +99,11 @@ export default uniComponent({
   watch: {
     value(val) {
       this.updateValue(val);
+
+      if (this[RELATION_MAP.FormKey]
+        && this[RELATION_MAP.FormKey].onValueChange) {
+        this[RELATION_MAP.FormKey].onValueChange(val);
+      }
     },
   },
   mounted() {
@@ -145,8 +161,14 @@ export default uniComponent({
     onInput(event) {
       const { value, cursor } = event.detail;
       this.updateValue(value);
-      this.$emit('change', { value: this.dataValue, cursor });
+      this.emitChange({ value: this.dataValue, cursor });
     },
+
+    emitChange(data) {
+      this.$emit('change', data);
+      this.$emit('update:value', data.value);
+    },
+
     onFocus(event) {
       this.$emit('focus', {
         ...event.detail,
@@ -156,6 +178,11 @@ export default uniComponent({
       this.$emit('blur', {
         ...event.detail,
       });
+
+      if (this[RELATION_MAP.FormKey]
+        && this[RELATION_MAP.FormKey].onBlur) {
+        this[RELATION_MAP.FormKey].onBlur(event.detail.value);
+      }
     },
     onConfirm(event) {
       this.$emit('enter', {

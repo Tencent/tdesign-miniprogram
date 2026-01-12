@@ -8,6 +8,8 @@
       status="error"
       tips="错误提示"
       :clearable="{ name: 'close', color: '#D54941', ariaLabel: '通讯录' }"
+      @clear="onClear"
+      @click="onClick"
     />
 
     <t-input
@@ -39,6 +41,9 @@ export default {
   methods: {
     onClick() {
       console.log('click input');
+    },
+    onClear() {
+      console.log('clear input');
     },
   },
 };

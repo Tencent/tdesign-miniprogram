@@ -12,7 +12,7 @@
           />
         </block>
         <block v-else>
-          <t-chat-loading :animation="animation" />
+          <TChatLoading :animation="animation" />
         </block>
         <view :class="classPrefix + '__txt'">
           {{ content.title || '正在思考中...' }}
@@ -37,8 +37,8 @@
   </view>
 </template>
 <script>
-import tChatLoading from 'tdesign-uniapp-chat/chat-loading/chat-loading.vue';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
+import TChatLoading from '../chat-loading/chat-loading.vue';
+import TIcon from 'tdesign-uniapp/icon/icon.vue';
 import { prefix } from 'tdesign-uniapp/common/config';
 import props from './props';
 import _ from 'tdesign-uniapp/common/utils.wxs';
@@ -55,8 +55,8 @@ export default uniComponent({
   },
 
   components: {
-    tIcon,
-    tChatLoading,
+    TIcon,
+    TChatLoading,
   },
 
   props: {

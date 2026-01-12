@@ -10,9 +10,9 @@
       {{ title }}
     </view>
     <view
-      :style="_._style([customStyle])"
+      :style="tools._style([customStyle])"
       :class="[
-        _.cls(classPrefix, [['bordered', bordered], theme]),
+        tools.cls(classPrefix, [['bordered', bordered], theme]),
         tClass
       ]"
     >
@@ -24,7 +24,7 @@
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -45,7 +45,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _,
+      tools,
     };
   },
   methods: {

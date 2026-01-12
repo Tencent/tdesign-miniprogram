@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="Swiper"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo swiper-demo">
@@ -58,7 +60,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import BaseDemo from './base/index.vue';
 import fraction from './fraction/index.vue';

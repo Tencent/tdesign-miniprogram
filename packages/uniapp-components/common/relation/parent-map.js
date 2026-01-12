@@ -21,4 +21,6 @@ export const RELATION_MAP = {
   BackTop: 'PullDownRefresh',
 
   FormItem: 'Form',
+
+  FormKey: 'FormKey',
 };

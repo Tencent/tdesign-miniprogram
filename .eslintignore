@@ -4,3 +4,6 @@ node_modules
 
 # special files
 echarts.js
+
+packages/uniapp-components/npm/
+packages/uniapp-pro-components/chat/npm/

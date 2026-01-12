@@ -3,7 +3,7 @@
     v-if="!lazy || hasActivated"
     :id="id"
     :class="tClass + ' ' + classPrefix + ' ' + (active ? classPrefix + '--active' : classPrefix + '--inactive')"
-    :style="_._style([customStyle, hide ? 'display: none' : ''])"
+    :style="tools._style([customStyle, hide ? 'display: none' : ''])"
     aria-role="tabpanel"
   >
     <view v-if="panel">
@@ -17,7 +17,7 @@
 import { uniComponent } from '../common/src/index';
 import props from './props';
 import { prefix } from '../common/config';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -42,7 +42,7 @@ export default uniComponent({
       hide: true,
       id: '',
       hasActivated: false,
-      _,
+      tools,
     };
   },
   watch: {

@@ -1,8 +1,8 @@
 <template>
   <view
     :id="tId"
-    :style="_._style([customStyle])"
-    :class="_.cls(classPrefix, [_placement, ['block', block]]) + ' ' + tClass"
+    :style="tools._style([customStyle])"
+    :class="tools.cls(classPrefix, [_placement, ['block', block]]) + ' ' + tClass"
     :disabled="_disabled"
     aria-role="radio"
     :aria-checked="dataChecked"
@@ -10,7 +10,7 @@
     :aria-disabled="_disabled"
     @click.stop="handleTap"
   >
-    <view :class="_.cls(classPrefix + '__icon', [_placement, ['checked', dataChecked], ['disabled', _disabled]]) + ' ' + tClassIcon">
+    <view :class="tools.cls(classPrefix + '__icon', [_placement, ['checked', dataChecked], ['disabled', _disabled]]) + ' ' + tClassIcon">
       <slot
         v-if="slotIcon"
         name="icon"
@@ -33,11 +33,11 @@
         />
         <view
           v-if="dataChecked && icon == 'dot'"
-          :class="_.cls(classPrefix + '__icon-' + icon, [['disabled', _disabled]])"
+          :class="tools.cls(classPrefix + '__icon-' + icon, [['disabled', _disabled]])"
         />
         <view
           v-if="!dataChecked && (icon == 'circle' || icon == 'dot')"
-          :class="_.cls(classPrefix + '__icon-circle', [['disabled', _disabled]])"
+          :class="tools.cls(classPrefix + '__icon-circle', [['disabled', _disabled]])"
         />
         <view
           v-if="!dataChecked && icon == 'line'"
@@ -52,7 +52,7 @@
     >
       <view
         :class="
-          _.cls(classPrefix + '__title', [
+          tools.cls(classPrefix + '__title', [
             ['disabled', _disabled],
             ['checked', dataChecked]
           ]) +
@@ -69,7 +69,7 @@
       </view>
       <view
         :class="
-          _.cls(classPrefix + '__description', [
+          tools.cls(classPrefix + '__description', [
             ['disabled', _disabled],
             ['checked', dataChecked]
           ]) +
@@ -86,7 +86,7 @@
     </view>
     <view
       v-if="!borderless"
-      :class="_.cls(classPrefix + '__border', [_placement]) + ' ' + tClassBorder"
+      :class="tools.cls(classPrefix + '__border', [_placement]) + ' ' + tClassBorder"
     />
   </view>
 </template>
@@ -96,7 +96,7 @@ import { prefix, ISOLATED_RELATION_KEY } from '../common/config';
 import { coalesce } from '../common/utils';
 import { uniComponent } from '../common/src/index';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -145,7 +145,7 @@ export default uniComponent({
       _placement: '',
       _disabled: false,
       _readonly: false,
-      _,
+      tools,
 
       dataChecked: coalesce(this.checked, this.defaultChecked),
     };

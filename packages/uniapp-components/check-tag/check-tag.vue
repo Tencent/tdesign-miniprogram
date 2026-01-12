@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="className + ' ' + tClass"
     @click="onClick"
   >
@@ -29,7 +29,7 @@
     <view :class="classPrefix + '__text'">
       <slot />
       <slot name="content" />
-      <block v-if="_.isArray(content) && content.length == 2">
+      <block v-if="tools.isArray(content) && content.length == 2">
         {{ dataChecked ? content[0] : content[1] }}
       </block>
       <block v-else>
@@ -53,7 +53,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { classNames, calcIcon, coalesce } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-tag`;
@@ -83,7 +83,7 @@ export default uniComponent({
       prefix,
       classPrefix: name,
       className: '',
-      _,
+      tools,
       _icon: null,
 
       dataChecked: coalesce(this.checked, this.defaultChecked),

@@ -7,7 +7,7 @@
         ' ' + classPrefix + '--' + (verifyStatus === 2 ? 'error' : verifyStatus === 1 ? 'success' : '') +
         ' ' + tClass
     "
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
   >
     <view
       v-if="label"
@@ -20,7 +20,13 @@
       >
         *
       </text>
-      <text>{{ label }}</text>
+      <slot
+        name="label"
+      >
+        <text>
+          {{ label }}
+        </text>
+      </slot>
       <text
         v-if="dataRequiredMark && requiredMarkPosition === 'right'"
         :class="classPrefix + '__label--required'"
@@ -41,7 +47,7 @@
       <view :class="classPrefix + '__controls-content ' + classPrefix + '__controls-content--' + dataContentAlign">
         <slot />
         <view
-          v-if="false"
+          v-if="arrow"
           :class="classPrefix + '__arrow'"
         >
           <t-icon
@@ -50,10 +56,19 @@
           />
         </view>
       </view>
+
+      <view
+        :class="classPrefix + '__help ' + classPrefix + '__help--' + dataContentAlign + tClassHelp"
+        :style="errorPosition"
+      >
+        <slot name="help">
+          {{ help }}
+        </slot>
+      </view>
+
       <view
         v-if="errorList.length > 0 && dataShowErrorMessage"
         :class="classPrefix + '__error ' + classPrefix + '__error--' + (errorList[0].type || 'error')"
-        :style="errorPosition"
       >
         {{ errorList[0].message }}
       </view>
@@ -64,6 +79,7 @@
         {{ successList[0].message }}
       </view>
     </view>
+
     <view :class="classPrefix + '__extra ' + tClassExtra">
       <slot name="extra" />
     </view>
@@ -77,7 +93,7 @@ import { validate, ValidateStatus } from './form-model';
 import TIcon from '../icon/icon.vue';
 import TButton from '../button/button.vue';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { isNumber } from '../common/validator';
 
 const name = `${prefix}-form-item`;
@@ -94,6 +110,11 @@ export default uniComponent({
     `${prefix}-class-help`,
     `${prefix}-class-extra`,
   ],
+  provide() {
+    return {
+      [RELATION_MAP.FormKey]: this,
+    };
+  },
   mixins: [ChildrenMixin(RELATION_MAP.FormItem)],
   components: {
     TIcon,
@@ -116,13 +137,15 @@ export default uniComponent({
       colon: false,
       // showErrorMessage: true,
 
-      _,
+      tools,
       dataRules: this.rules,
       dataLabelAlign: this.labelAlign,
       dataLabelWidth: this.labelWidth,
       dataRequiredMark: this.requiredMark,
       dataShowErrorMessage: this.showErrorMessage,
       dataContentAlign: this.contentAlign,
+
+      errorPosition: '',
     };
   },
   computed: {
@@ -137,7 +160,7 @@ export default uniComponent({
         }
       }
 
-      return _._style(contentStyle);
+      return tools._style(contentStyle);
     },
   },
   watch: {
@@ -182,7 +205,7 @@ export default uniComponent({
       this.requiredMarkPosition = target.requiredMarkPosition;
 
       setTimeout(() => {
-        this.errorPosition = this.dataLabelAlign !== 'top' && 'text-align: right;';
+        this.errorPosition = this.dataLabelAlign !== 'top' && `text-align: ${this.dataContentAlign}`;
       }, 33);
     },
     innerAfterUnlinked() {
@@ -254,7 +277,9 @@ export default uniComponent({
       }
 
       // 根据触发方式过滤规则
-      const filteredRules = trigger === 'all' ? rules : rules.filter(rule => (rule.trigger || 'change') === trigger);
+      const filteredRules = trigger === 'all'
+        ? rules
+        : rules.filter(rule => (rule.trigger || 'change') === trigger);
 
       if (filteredRules.length === 0) {
         return { [this.name]: true };
@@ -277,7 +302,7 @@ export default uniComponent({
 
     // 纯净验证（不显示错误信息）
     async validateOnly(trigger) {
-      return this.validate(trigger, false);
+      return this.validate(this.getFormData(), trigger, false);
     },
 
     // 分析验证结果
@@ -354,14 +379,14 @@ export default uniComponent({
         this.form.updateFormData(name, value);
 
         // 触发change验证
-        this.validate('change');
+        this.validate(this.getFormData(), 'change', true);
       }
     },
 
     // 处理失焦事件
     onBlur() {
       // 触发blur验证
-      this.validate('blur');
+      this.validate(this.getFormData(), 'blur', true);
     },
   },
 });

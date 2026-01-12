@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="Drawer"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">
@@ -43,7 +45,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import BaseDemo from './base/index.vue';
 import titleDemo from './title/index.vue';

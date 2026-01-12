@@ -4,6 +4,8 @@
       class="demo-navbar"
       title="ChatContent"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <view class="demo">
       <t-demo-header

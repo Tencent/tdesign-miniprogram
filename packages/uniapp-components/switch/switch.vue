@@ -1,16 +1,16 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="tClass + ' ' + classPrefix"
     :aria-checked="checked"
     :aria-disabled="disabled"
     aria-role="switch"
     @click="handleSwitch"
   >
-    <view :class="_.cls(classPrefix + '__body', [['checked', checked], ['disabled', disabled || loading], size]) + ' ' + tClassBody">
+    <view :class="tools.cls(classPrefix + '__body', [['checked', checked], ['disabled', disabled || loading], size]) + ' ' + tClassBody">
       <view
         :class="
-          _.cls(classPrefix + '__dot', [['checked', checked], ['disabled', disabled], ['plain', label.length != 2 && icon.length != 2 && !loading], size]) +
+          tools.cls(classPrefix + '__dot', [['checked', checked], ['disabled', disabled], ['plain', label.length != 2 && icon.length != 2 && !loading], size]) +
             ' ' +
             tClassDot
         "
@@ -18,7 +18,7 @@
       >
         <view
           v-if="label"
-          :class="_.cls(classPrefix + '__label', [['checked', checked], ['disabled', disabled], size]) + ' ' + tClassLabel"
+          :class="tools.cls(classPrefix + '__label', [['checked', checked], ['disabled', disabled], size]) + ' ' + tClassLabel"
         >
           <t-loading
             v-if="loading"
@@ -31,7 +31,7 @@
           <t-icon
             v-else-if="icon.length == 2"
             :name="checked ? icon[0] : icon[1]"
-            :t-class="_.cls(classPrefix + '__icon', [['checked', checked], size])"
+            :t-class="tools.cls(classPrefix + '__icon', [['checked', checked], size])"
           />
         </view>
       </view>
@@ -45,7 +45,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import { coalesce } from '../common/utils';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-switch`;
@@ -80,7 +80,7 @@ export default uniComponent({
       prefix,
       classPrefix: name,
       checked: false,
-      _,
+      tools,
 
       dataValue: coalesce(this.value, this.defaultValue),
     };

@@ -4,15 +4,15 @@
       v-if="usePopup"
       :visible="dataVisible"
       placement="bottom"
-      :using-custom-navbar="usingCustomNavbar || popupProps?.usingCustomNavbar"
-      :custom-navbar-height="coalesce(customNavbarHeight, popupProps?.usingCustomNavbar)"
-      :z-index="popupProps?.zIndex || defaultPopUpzIndex"
-      :overlay-props="popupProps?.overlayProps || defaultPopUpProps"
+      :using-custom-navbar="usingCustomNavbar || (popupProps && popupProps.usingCustomNavbar)"
+      :custom-navbar-height="coalesce(customNavbarHeight, popupProps && popupProps.usingCustomNavbar)"
+      :z-index="(popupProps && popupProps.zIndex) || defaultPopUpzIndex"
+      :overlay-props="(popupProps && popupProps.overlayProps) || defaultPopUpProps"
       @visible-change="onPopupChange"
     >
       <template #content>
         <view
-          :style="_._style([customStyle])"
+          :style="tools._style([customStyle])"
           :class="classPrefix + ' ' + tClass"
         >
           <view
@@ -40,7 +40,7 @@
           <slot name="header" />
           <slot name="content" />
           <view
-            :class="_.cls(classPrefix + '__main', [])"
+            :class="tools.cls(classPrefix + '__main', [])"
             disable-scroll
           >
             <slot />
@@ -58,7 +58,7 @@
 
     <block v-else>
       <view
-        :style="_._style([customStyle])"
+        :style="tools._style([customStyle])"
         :class="classPrefix + ' ' + tClass"
       >
         <view
@@ -86,7 +86,7 @@
         <slot name="header" />
         <slot name="content" />
         <view
-          :class="_.cls(classPrefix + '__main', [])"
+          :class="tools.cls(classPrefix + '__main', [])"
           disable-scroll
         >
           <slot />
@@ -109,7 +109,7 @@ import { rpx2px, coalesce } from '../common/utils';
 import { prefix } from '../common/config';
 import props from './props';
 import useCustomNavbar from '../mixins/using-custom-navbar';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 
 const name = `${prefix}-picker`;
@@ -147,7 +147,7 @@ export default uniComponent({
       defaultPopUpProps: {},
       defaultPopUpzIndex: 11500,
       pickItemHeight: 0,
-      _,
+      tools,
 
       dataValue: coalesce(this.value, this.defaultValue),
       dataVisible: this.visible,

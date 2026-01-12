@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="BackTop"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">
@@ -101,7 +103,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import tButton from 'tdesign-uniapp/button/button.vue';
 import tSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
@@ -130,12 +132,12 @@ export default {
       ],
     };
   },
-  onPageScroll(e: any) {
+  onPageScroll(e) {
     const { scrollTop } = e;
     this.scrollTop = scrollTop;
   },
   methods: {
-    onBtnClick(e: any, { source: type }) {
+    onBtnClick(e, { source: type }) {
       this.type = type;
       uni.pageScrollTo({
         duration: 300,

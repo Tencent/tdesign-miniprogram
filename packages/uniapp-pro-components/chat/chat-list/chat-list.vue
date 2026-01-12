@@ -49,7 +49,7 @@
   </view>
 </template>
 <script>
-import chatMessage from '../chat-message/chat-message.vue';
+import ChatMessage from '../chat-message/chat-message.vue';
 import { prefix } from 'tdesign-uniapp/common/config';
 import props from './props';
 
@@ -68,7 +68,7 @@ export default uniComponent({
   },
 
   components: {
-    chatMessage,
+    ChatMessage,
   },
 
   props: {
@@ -168,7 +168,7 @@ export default uniComponent({
 <style scoped>
 @import './chat-list.css';
 
-/* #ifdef H5 */
+/* #ifdef H5 || APP-PLUS */
 .t-chat-list__content :deep(.uni-scroll-view-content) {
   display: flex;;
   flex-direction: column;

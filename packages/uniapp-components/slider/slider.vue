@@ -1,8 +1,8 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="
-      _.cls(classPrefix, [
+      tools.cls(classPrefix, [
         ['top', label || scaleTextArray.length],
         ['disabled', disabled],
         ['range', range]
@@ -22,7 +22,7 @@
       </text>
       <view
         id="sliderLine"
-        :class="_.cls(classPrefix + '__bar', [['disabled', disabled], theme, ['marks', isScale && theme == 'capsule']]) + ' ' + tClassBar"
+        :class="tools.cls(classPrefix + '__bar', [['disabled', disabled], theme, ['marks', isScale && theme == 'capsule']]) + ' ' + tClassBar"
         @click="onSingleLineTap"
       >
         <block v-if="isScale">
@@ -30,7 +30,7 @@
             v-for="(item, index) in scaleArray"
             :key="index"
             :class="
-              _.cls(classPrefix + '__scale-item', [
+              tools.cls(classPrefix + '__scale-item', [
                 ['active', _value >= item.val],
                 ['disabled', disabled],
                 theme,
@@ -42,14 +42,14 @@
           >
             <view
               v-if="scaleTextArray.length"
-              :class="_.cls(classPrefix + '__scale-desc', [theme])"
+              :class="tools.cls(classPrefix + '__scale-desc', [theme])"
             >
               {{ scaleTextArray[index] }}
             </view>
           </view>
         </block>
         <view
-          :class="_.cls(classPrefix + '__line', [['disabled', disabled], theme, 'single']) + ' ' + tClassBarActive"
+          :class="tools.cls(classPrefix + '__line', [['disabled', disabled], theme, 'single']) + ' ' + tClassBarActive"
           :style="(vertical ? 'height' : 'width') + ': ' + lineBarWidth"
         >
           <view
@@ -62,7 +62,7 @@
           >
             <view
               v-if="label || isVisibleToScreenReader"
-              :class="_.cls(classPrefix + '__dot-value', [['sr-only', !label]])"
+              :class="tools.cls(classPrefix + '__dot-value', [['sr-only', !label]])"
               aria-role="alert"
               aria-live="assertive"
               :aria-hidden="!isVisibleToScreenReader"
@@ -97,7 +97,7 @@
       </view>
       <view
         id="sliderLine"
-        :class="_.cls(classPrefix + '__bar', [['disabled', disabled], theme, ['marks', isScale && theme == 'capsule']]) + ' ' + tClassBar"
+        :class="tools.cls(classPrefix + '__bar', [['disabled', disabled], theme, ['marks', isScale && theme == 'capsule']]) + ' ' + tClassBar"
         @click="onLineTap"
       >
         <block v-if="isScale">
@@ -105,7 +105,7 @@
             v-for="(item, index) in scaleArray"
             :key="index"
             :class="
-              _.cls(classPrefix + '__scale-item', [
+              tools.cls(classPrefix + '__scale-item', [
                 ['active', dotTopValue[1] >= item.val && item.val >= dotTopValue[0]],
                 ['disabled', disabled],
                 theme,
@@ -117,14 +117,14 @@
           >
             <view
               v-if="scaleTextArray.length"
-              :class="_.cls(classPrefix + '__scale-desc', [theme])"
+              :class="tools.cls(classPrefix + '__scale-desc', [theme])"
             >
               {{ scaleTextArray[index] }}
             </view>
           </view>
         </block>
         <view
-          :class="_.cls(classPrefix + '__line', [['disabled', disabled], theme]) + ' ' + tClassBarActive"
+          :class="tools.cls(classPrefix + '__line', [['disabled', disabled], theme]) + ' ' + tClassBarActive"
           :style="(vertical ? 'top' : 'left') + ': ' + lineLeft + 'px; ' + (vertical ? 'bottom' : 'right') + ': ' + lineRight + 'px'"
         >
           <view
@@ -137,7 +137,7 @@
           >
             <view
               v-if="label || isVisibleToScreenReader"
-              :class="_.cls(classPrefix + '__dot-value', [['sr-only', !label]])"
+              :class="tools.cls(classPrefix + '__dot-value', [['sr-only', !label]])"
               aria-role="alert"
               aria-live="assertive"
               :aria-hidden="!isVisibleToScreenReader"
@@ -164,7 +164,7 @@
           >
             <view
               v-if="label || isVisibleToScreenReader"
-              :class="_.cls(classPrefix + '__dot-value', [['sr-only', !label]])"
+              :class="tools.cls(classPrefix + '__dot-value', [['sr-only', !label]])"
               aria-role="alert"
               aria-live="assertive"
               :aria-hidden="!isVisibleToScreenReader"
@@ -199,7 +199,7 @@ import { trimSingleValue, trimValue } from './tool';
 import props from './props';
 import { getRect, coalesce, nextTick } from '../common/utils';
 import Bus from '../common/bus';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { getValue } from './computed.js';
 import { isString, isFunction } from '../common/validator';
 
@@ -251,7 +251,7 @@ export default uniComponent({
       isVisibleToScreenReader: false,
       identifier: [-1, -1],
       __inited: false,
-      _,
+      tools,
 
       lineBarWidth: 0,
     };

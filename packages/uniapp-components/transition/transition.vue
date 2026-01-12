@@ -1,7 +1,7 @@
 <template>
   <view
     :class="tClass + ' ' + classPrefix + ' ' + transitionClass"
-    :style="_._style([visible ? '' : 'display: none', customStyle])"
+    :style="tools._style([visible ? '' : 'display: none', customStyle])"
     @transitionend="onTransitionEnd"
   >
     <slot />
@@ -11,7 +11,7 @@
 import { uniComponent } from '../common/src/index';
 import transition from '../mixins/transition';
 import { prefix } from '../common/config';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-transition`;
@@ -31,7 +31,7 @@ export default uniComponent({
   data() {
     return {
       classPrefix: name,
-      _,
+      tools,
     };
   },
   watch: {

@@ -9,7 +9,7 @@
         高度限制：最大高度为132px
       </view>
       <view class="chat-sender-wrapper">
-        <t-chat-sender
+        <TChatSender
           :value="value"
           :loading="loading"
           :disabled="disabled"
@@ -41,7 +41,7 @@
               class="demo-header"
             >
               <view style="padding: 4rpx; height: 40rpx; color: var(--td-text-color-disabled)">
-                <t-icon
+                <TIcon
                   name="enter"
                   size="40rpx"
                   style="transform: scaleX(-1)"
@@ -51,7 +51,7 @@
                 {{ headerText }}
               </view>
               <view style="padding: 4rpx; height: 40rpx; margin-left: auto; color: var(--td-text-color-placeholder)">
-                <t-icon
+                <TIcon
                   name="close"
                   size="40rpx"
                   @click="handleCLoseCite"
@@ -69,7 +69,7 @@
                 :class="'deep-think-block ' + (deepThinkActive ? 'active' : '')"
                 @click.stop="onDeepThinkTap"
               >
-                <t-icon
+                <TIcon
                   name="system-sum"
                   size="40rpx"
                 />
@@ -81,14 +81,14 @@
                 :class="'net-search-block ' + (netSearchActive ? 'active' : '')"
                 @click.stop="onNetSearchTap"
               >
-                <t-icon
+                <TIcon
                   name="internet"
                   size="40rpx"
                 />
               </view>
             </view>
           </template>
-        </t-chat-sender>
+        </TChatSender>
       </view>
       <view class="demo-content-citation-footer">
         内容由AI生成，仅供参考
@@ -98,12 +98,13 @@
 </template>
 
 <script>
-import tChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
+import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
+import TIcon from 'tdesign-uniapp/icon/icon.vue';
+
 export default {
   components: {
-    tChatSender,
-    tIcon,
+    TChatSender,
+    TIcon,
   },
   data() {
     return {

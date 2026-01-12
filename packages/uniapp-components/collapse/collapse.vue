@@ -1,9 +1,9 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="[
       tClass,
-      _.cls(classPrefix, [['hairline--top-bottom', border], theme])
+      tools.cls(classPrefix, [['hairline--top-bottom', border], theme])
     ]"
   >
     <slot />
@@ -14,7 +14,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import { coalesce } from '../common/utils';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -44,7 +44,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _,
+      tools,
       border: false,
       dataValue: coalesce(this.value, this.defaultValue),
       mounted: false,

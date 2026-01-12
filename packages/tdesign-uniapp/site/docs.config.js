@@ -576,6 +576,14 @@ export const docs = [
         component: () => import('@/overlay/README.md'),
       },
       {
+        title: 'Popover 弹出气泡',
+        titleEn: 'Popover',
+        name: 'popover',
+        meta: { docType: 'message' },
+        path: '/uniapp/components/popover',
+        component: () => import('@/popover/README.md'),
+      },
+      {
         title: 'Popup 弹出层',
         titleEn: 'Popup',
         name: 'popup',
@@ -611,10 +619,10 @@ export const docs = [
   },
 ];
 
-const enDocs = docs.map((doc) => ({
+const enDocs = docs.map(doc => ({
   ...doc,
   title: doc.titleEn,
-  children: doc?.children?.map((child) => ({
+  children: doc?.children?.map(child => ({
     title: child.titleEn,
     name: `${child.name}-en`,
     path: `${child.path}-en`,

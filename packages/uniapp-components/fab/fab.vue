@@ -1,9 +1,8 @@
 <template>
   <t-draggable
     v-if="draggable"
-    id="draggable"
     ref="draggable"
-    :custom-style="_._style(['right: 16px; bottom: 32px;', customStyle, moveStyle])"
+    :custom-style="tools._style(['right: 16px; bottom: 32px;', customStyle, moveStyle])"
     :direction="draggable === true ? 'all' : draggable"
     :t-class="tClass"
     @start="onStart"
@@ -64,9 +63,9 @@
   <view
     v-else
     :class="[classPrefix, tClass]"
-    :style="_._style(['right: 16px; bottom: 32px;', customStyle])"
+    :style="tools._style(['right: 16px; bottom: 32px;', customStyle])"
   >
-    <slot v-if="!buttonData?.content && !buttonData?.icon" />
+    <slot v-if="!buttonData || !buttonData.content && !buttonData.icon" />
     <t-button
       v-else
       :t-id="buttonData.tId"
@@ -122,7 +121,7 @@ import { prefix } from '../common/config';
 import props from './props';
 import useCustomNavbar from '../mixins/using-custom-navbar';
 import { unitConvert, getWindowInfo } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 const name = `${prefix}-fab`;
 
@@ -157,7 +156,7 @@ export default uniComponent({
       prefix,
       classPrefix: name,
       moveStyle: null,
-      _,
+      tools,
       systemInfo: getWindowInfo(),
     };
   },

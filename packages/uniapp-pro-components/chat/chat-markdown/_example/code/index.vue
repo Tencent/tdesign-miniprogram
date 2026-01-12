@@ -1,6 +1,6 @@
 <template>
   <view class="chat-example-block">
-    <t-chat-markdown
+    <TChatMarkdown
       :content="markdownContent"
       @click="handleLinkTap"
     />
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import tChatMarkdown from 'tdesign-uniapp-chat/chat-markdown/chat-markdown.vue';
+import TChatMarkdown from 'tdesign-uniapp-chat/chat-markdown/chat-markdown.vue';
 
 const markdownData = `
 \`\`\`TDesign-登录表单.jsx
@@ -20,7 +20,7 @@ const LoginForm = () => { const [loading, setLoading] = useState(false);
 
 export default {
   components: {
-    tChatMarkdown,
+    TChatMarkdown,
   },
   data() {
     return {

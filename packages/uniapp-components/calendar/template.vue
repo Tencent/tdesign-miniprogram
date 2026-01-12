@@ -29,7 +29,11 @@
       <CalendarHeader
         :class-prefix="classPrefix + '-header'"
         :switch-mode="switchMode"
-        :title="getMonthTitle(currentMonth[0]?.year, realLocalText.months?.[currentMonth[0]?.month], realLocalText.monthTitle)"
+        :title="getMonthTitle(
+          currentMonth[0] && currentMonth[0].year,
+          realLocalText.months && currentMonth[0] && realLocalText.months[currentMonth[0].month],
+          realLocalText.monthTitle
+        )"
         :pre-year-btn-disable="actionButtons.preYearBtnDisable"
         :prev-month-btn-disable="actionButtons.prevMonthBtnDisable"
         :next-year-btn-disable="actionButtons.nextYearBtnDisable"
@@ -70,7 +74,7 @@
             :class-prefix="classPrefix + '-header'"
             :switch-mode="switchMode"
             :t-id="'year_' + item.year + '_month_' + item.month"
-            :title="getMonthTitle(item.year, realLocalText.months?.[item.month], realLocalText.monthTitle)"
+            :title="getMonthTitle(item.year, realLocalText.months && realLocalText.months[item.month], realLocalText.monthTitle)"
             :pre-year-btn-disable="actionButtons.preYearBtnDisable"
             :prev-month-btn-disable="actionButtons.prevMonthBtnDisable"
             :next-year-btn-disable="actionButtons.nextYearBtnDisable"

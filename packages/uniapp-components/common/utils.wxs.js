@@ -18,7 +18,6 @@ function isString(string) {
 
 function isArray(array) {
   return Array.isArray(array);
-  // return array && array.constructor === 'Array';
 }
 
 function isObject(x) {

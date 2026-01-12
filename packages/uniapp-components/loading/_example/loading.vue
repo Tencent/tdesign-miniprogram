@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="Loading"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <scroll-view
@@ -63,7 +65,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 //
 import BaseComp from './base/index.vue';
 import HorizontalDemo from './horizontal/index.vue';

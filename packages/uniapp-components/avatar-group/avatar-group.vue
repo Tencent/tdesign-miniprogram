@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="className"
   >
     <slot />
@@ -31,7 +31,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import avatarGroupProps from './props';
 
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -63,7 +63,7 @@ export default uniComponent({
       hasChild: true,
       length: 0,
       className: '',
-      _,
+      tools,
     };
   },
   watch: {

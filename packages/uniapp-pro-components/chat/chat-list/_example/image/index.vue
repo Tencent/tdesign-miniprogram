@@ -4,12 +4,12 @@
       class="chat-box image-chat"
       :style="'height: ' + contentHeight + ';'"
     >
-      <t-chat>
+      <TChatList>
         <block
           v-for="(item, chatIndex) in chatList"
           :key="item.key"
         >
-          <t-chat-message
+          <TChatMessage
             :avatar="item.avatar || ''"
             :name="item.name || ''"
             :datetime="item.datetime || ''"
@@ -24,7 +24,7 @@
                   v-for="(contentItem, contentIndex) in item.message.content"
                   :key="contentIndex"
                 >
-                  <t-chat-content
+                  <TChatContent
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
                     :role="item.message.role"
@@ -39,7 +39,7 @@
                   v-for="(contentItem, contentIndex) in item.message.content"
                   :key="contentIndex"
                 >
-                  <t-chat-content
+                  <TChatContent
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
                     :role="item.message.role"
@@ -59,16 +59,16 @@
               </view>
             </template>
             <template #actionbar>
-              <t-chat-actionbar
+              <TChatActionbar
                 v-if="chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'"
                 placement="end"
                 @actions="handleAction"
               />
             </template>
-          </t-chat-message>
+          </TChatMessage>
         </block>
         <template #footer>
-          <t-chat-sender
+          <TChatSender
             :value="value"
             :loading="loading"
             :disabled="disabled"
@@ -79,20 +79,20 @@
             @focus="onFocus"
           />
         </template>
-      </t-chat>
+      </TChatList>
     </view>
-    <t-toast ref="t-toast" />
+    <TToast ref="t-toast" />
   </view>
 </template>
 
 <script>
-import tChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
-import tChatContent from 'tdesign-uniapp-chat/chat-content/chat-content.vue';
-import tChat from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
+import TChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
+import TChatContent from 'tdesign-uniapp-chat/chat-content/chat-content.vue';
+import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
 import TAttachments from 'tdesign-uniapp-chat/attachments/attachments.vue';
-import tChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import tChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
-import tToast from 'tdesign-uniapp/toast/toast.vue';
+import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
+import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import TToast from 'tdesign-uniapp/toast/toast.vue';
 import Toast from 'tdesign-uniapp/toast';
 import { getNavigationBarHeight } from '../utils';
 
@@ -115,12 +115,12 @@ const fetchStream = async (str, options) => {
 };
 export default {
   components: {
-    tChatMessage,
-    tChatContent,
-    tChat,
-    tChatSender,
-    tChatActionbar,
-    tToast,
+    TChatMessage,
+    TChatContent,
+    TChatList,
+    TChatSender,
+    TChatActionbar,
+    TToast,
     TAttachments,
   },
   props: {
@@ -378,7 +378,7 @@ export default {
 
     handleAction(e) {
       const { name, active, data } = e;
-      console.log('----', name);
+      console.log('[handleAction]', name);
       let message = '';
       switch (name) {
         case 'replay':

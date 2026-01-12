@@ -1,9 +1,11 @@
-export enum MessageType {
-  info = 'info',
-  success = 'success',
-  warning = 'warning',
-  error = 'error',
-}
+
+export const MessageType = {
+  info: 'info',
+  success: 'success',
+  warning: 'warning',
+  error: 'error',
+};
+
 export interface MessageMarquee {
   speed?: number;
   loop?: number;
@@ -13,7 +15,7 @@ export interface MessageProps {
   visible?: boolean;
   content: string;
   align?: string;
-  theme?: MessageType;
+  theme?: keyof typeof MessageType;
   icon?: boolean | string;
   link?: string | object;
   closeBtn?: boolean;

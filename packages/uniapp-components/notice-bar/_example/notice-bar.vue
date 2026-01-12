@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="NoticeBar"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">
@@ -52,7 +54,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 // import tNoticeBar from 'tdesign-uniapp/notice-bar/notice-bar.vue';
 import BaseDemo from './base/index.vue';

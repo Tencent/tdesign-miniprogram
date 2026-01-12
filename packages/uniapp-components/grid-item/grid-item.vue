@@ -1,10 +1,10 @@
 <template>
   <view
     :class="[
-      _.cls(classPrefix, [['auto-size', column == 0]]),
+      tools.cls(classPrefix, [['auto-size', column == 0]]),
       tClass
     ]"
-    :style="_._style([gridItemStyle, customStyle])"
+    :style="tools._style([gridItemStyle, customStyle])"
     :hover-class="hover ? classPrefix + '--hover' : ''"
     :hover-stay-time="200"
     :aria-role="ariaRole || 'button'"
@@ -13,12 +13,12 @@
     @click="onClick"
   >
     <view
-      :class="_.cls(classPrefix + '__wrapper', [layout])"
+      :class="tools.cls(classPrefix + '__wrapper', [layout])"
       :style="gridItemWrapperStyle"
     >
       <view
         :class="[
-          _.cls(classPrefix + '__content', [align, layout]),
+          tools.cls(classPrefix + '__content', [align, layout]),
           tClassContent
         ]"
         :style="gridItemContentStyle"
@@ -41,14 +41,14 @@
         >
           <view
             :class="[
-              _.cls(classPrefix + '__image', [getImageSize(column), ['icon', icon]]),
+              tools.cls(classPrefix + '__image', [getImageSize(column), ['icon', icon]]),
               tClassImage
             ]"
           >
             <block v-if="image && image != 'slot'">
               <t-image
-                :t-class="_.cls(classPrefix + '__image', [getImageSize(column)]) + ' ' + tClassImage"
-                :custom-style="_._style([imageProps.style, imageProps.customStyle])"
+                :t-class="tools.cls(classPrefix + '__image', [getImageSize(column)]) + ' ' + tClassImage"
+                :custom-style="tools._style([imageProps.style, imageProps.customStyle])"
                 :height="imageProps.height || ''"
                 :width="imageProps.width || ''"
                 :error="imageProps.error"
@@ -66,7 +66,7 @@
             </block>
             <slot name="image" />
             <block
-              v-if="iconName || _.isNoEmptyObj(iconData)"
+              v-if="iconName || tools.isNoEmptyObj(iconData)"
               name="icon"
             >
               <t-icon
@@ -85,17 +85,17 @@
         </t-badge>
         <view
           :id="describedbyID"
-          :class="_.cls(classPrefix + '__words', [layout])"
+          :class="tools.cls(classPrefix + '__words', [layout])"
           :aria-label="ariaLabel
             || (
               (badgeProps && (badgeProps.dot || badgeProps.count))
-                ? text + ',' + description + ',' + _.getBadgeAriaLabel({ ...(badgeProps || {}) })
+                ? text + ',' + description + ',' + tools.getBadgeAriaLabel({ ...(badgeProps || {}) })
                 : '')"
         >
           <view
             v-if="text"
             :class="[
-              _.cls(classPrefix + '__text', [getImageSize(column), layout]) + ' ',
+              tools.cls(classPrefix + '__text', [getImageSize(column), layout]) + ' ',
               tClassText
             ]"
           >
@@ -105,7 +105,7 @@
           <view
             v-if="description"
             :class="[
-              _.cls(classPrefix + '__description', [getImageSize(column), layout]) + ' ',
+              tools.cls(classPrefix + '__description', [getImageSize(column), layout]) + ' ',
               tClassDescription
             ]"
           >
@@ -127,7 +127,7 @@ import { prefix } from '../common/config';
 import props from './props';
 import { uniqueFactory, setIcon } from '../common/utils';
 import { isObject } from '../common/validator';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -176,7 +176,7 @@ export default uniComponent({
       align: 'center',
       column: 0,
       describedbyID: '',
-      _,
+      tools,
 
       iconName: '',
       iconData: {},

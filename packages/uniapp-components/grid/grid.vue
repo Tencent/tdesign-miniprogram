@@ -1,7 +1,7 @@
 <template>
   <view
-    :style="_._style([customStyle])"
-    :class="_.cls(classPrefix, [theme]) + ' ' + tClass"
+    :style="tools._style([customStyle])"
+    :class="tools.cls(classPrefix, [theme]) + ' ' + tClass"
   >
     <view
       v-if="column > 0"
@@ -26,7 +26,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import { isObject } from '../common/validator';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -48,7 +48,7 @@ export default uniComponent({
       prefix,
       classPrefix: name,
       contentStyle: '',
-      _,
+      tools,
     };
   },
   watch: {

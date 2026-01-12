@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="Icon"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">
@@ -26,7 +28,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 import baseComp from './base/index.vue';
 import custom from './custom/index.vue';
 import iconImage from './iconImage/index.vue';

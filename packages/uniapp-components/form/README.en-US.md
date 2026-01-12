@@ -22,16 +22,17 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
 colon | Boolean | false | \- | N
-data | Object | {} | Typescript：`FormData` | N
+content-align | String | left | options: left/right | N
+data | Object | {} | Typescript: `FormData` | N
 disabled | Boolean | undefined | \- | N
-error-message | Object | - | Typescript：`FormErrorMessage` | N
+error-message | Object | - | Typescript: `FormErrorMessage` | N
 label-align | String | right | options: left/right/top | N
 label-width | String / Number | '81px' | \- | N
 readonly | Boolean | undefined | \- | N
 required-mark | Boolean | undefined | \- | N
 required-mark-position | String | - | Display position of required symbols。options: left/right | N
 reset-type | String | empty | options: empty/initial | N
-rules | Object | - | Typescript：`FormRules<FormData>` `type FormRules<T extends Data = any> = { [field in keyof T]?: Array<FormRule> }`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/form/type.ts) | N
+rules | Object | - | Typescript: `FormRules<FormData>` `type FormRules<T extends Data = any> = { [field in keyof T]?: Array<FormRule> }`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/form/type.ts) | N
 scroll-to-first-error | String | - | options: ''/smooth/auto | N
 show-error-message | Boolean | true | \- | N
 submit-with-warning-message | Boolean | false | \- | N
@@ -61,6 +62,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
 arrow | Boolean | false | \- | N
+content-align | String | - | options: left/right | N
 for | String | - | \- | N
 help | String | - | \- | N
 label | String | '' | \- | N
@@ -68,7 +70,7 @@ label-align | String | - | options: left/right/top | N
 label-width | String / Number | - | \- | N
 name | String | - | \- | N
 required-mark | Boolean | undefined | \- | N
-rules | Array | - | Typescript：`Array<FormRule>` | N
+rules | Array | - | Typescript: `Array<FormRule>` | N
 show-error-message | Boolean | undefined | \- | N
 
 ### FormItem Slots
@@ -83,22 +85,22 @@ label | \-
 name | type | default | description | required
 -- | -- | -- | -- | --
 boolean | Boolean | - | \- | N
-date | Boolean / Object | - | Typescript：`boolean \| IsDateOptions` `interface IsDateOptions { format: string; strictMode: boolean; delimiters: string[] }`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/form/type.ts) | N
-email | Boolean / Object | - | Typescript：`boolean \| IsEmailOptions` `import type { IsEmailOptions } from '../common/common'`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/form/type.ts) | N
-enum | Array | - | Typescript：`Array<string>` | N
+date | Boolean / Object | - | Typescript: `boolean \| IsDateOptions` `interface IsDateOptions { format: string; strictMode: boolean; delimiters: string[] }`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/form/type.ts) | N
+email | Boolean / Object | - | Typescript: `boolean \| IsEmailOptions` `import type { IsEmailOptions } from '../common/common'`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/form/type.ts) | N
+enum | Array | - | Typescript: `Array<string>` | N
 idcard | Boolean | - | \- | N
 len | Number / Boolean | - | \- | N
 max | Number / Boolean | - | \- | N
 message | String | - | \- | N
 min | Number / Boolean | - | \- | N
 number | Boolean | - | \- | N
-pattern | String / Object | - | Typescript：`RegExp \| string` | N
+pattern | String / Object | - | Typescript: `RegExp \| string` | N
 required | Boolean | - | \- | N
 telnumber | Boolean | - | \- | N
-trigger | String | change | Typescript：`ValidateTriggerType` | N
+trigger | String | change | Typescript: `ValidateTriggerType` | N
 type | String | error | options: error/warning | N
-url | Boolean / Object | - | Typescript：`boolean \| IsURLOptions` `import type { IsURLOptions } from '../common/common'`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/form/type.ts) | N
-validator | Function | - | Typescript：`CustomValidator` `type CustomValidator = (val: ValueType) => CustomValidateResolveType \| Promise<CustomValidateResolveType>` `type CustomValidateResolveType = boolean \| CustomValidateObj` `interface CustomValidateObj { result: boolean; message: string; type?: 'error' \| 'warning' \| 'success' }` `type ValueType = any`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/form/type.ts) | N
+url | Boolean / Object | - | Typescript: `boolean \| IsURLOptions` `import type { IsURLOptions } from '../common/common'`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/form/type.ts) | N
+validator | Function | - | Typescript: `CustomValidator` `type CustomValidator = (val: ValueType) => CustomValidateResolveType \| Promise<CustomValidateResolveType>` `type CustomValidateResolveType = boolean \| CustomValidateObj` `interface CustomValidateObj { result: boolean; message: string; type?: 'error' \| 'warning' \| 'success' }` `type ValueType = any`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/form/type.ts) | N
 whitespace | Boolean | - | \- | N
 
 ### FormErrorMessage

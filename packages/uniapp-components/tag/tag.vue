@@ -1,7 +1,7 @@
 <template>
   <view
     :class="[className + ' ', tClass]"
-    :style="_._style([tagStyle, customStyle])"
+    :style="tools._style([tagStyle, customStyle])"
     @click="handleClick"
   >
     <view
@@ -59,7 +59,7 @@ import { prefix } from '../common/config';
 import props from './props';
 import { classNames, calcIcon } from '../common/utils';
 import { isNumber } from '../common/validator';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-tag`;
@@ -85,7 +85,7 @@ export default uniComponent({
       classPrefix: name,
       className: '',
       tagStyle: '',
-      _,
+      tools,
 
       _icon: null,
       _closable: null,

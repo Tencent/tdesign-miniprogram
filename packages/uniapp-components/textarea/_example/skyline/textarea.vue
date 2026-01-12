@@ -4,7 +4,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import textareaDemo from '../textarea.vue';
 export default {

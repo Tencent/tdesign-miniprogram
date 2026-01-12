@@ -24,7 +24,7 @@
 <script>
 import tCheckboxGroup from 'tdesign-uniapp/checkbox-group/checkbox-group.vue';
 import tCheckbox from 'tdesign-uniapp/checkbox/checkbox.vue';
-import _ from 'tdesign-uniapp/common/utils.wxs';
+import tools from 'tdesign-uniapp/common/utils.wxs';
 
 
 export default {
@@ -39,7 +39,7 @@ export default {
   },
   computed: {
     cardCustomStyle() {
-      return _._style({
+      return tools._style({
         borderRadius: '24rpx',
         margin: '16px',
         overflow: 'hidden',

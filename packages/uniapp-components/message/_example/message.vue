@@ -4,6 +4,8 @@
     <t-navbar
       title="Message"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo message-example">
@@ -28,7 +30,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import BaseDemo from './base/index.vue';
 import theme from './theme/index.vue';

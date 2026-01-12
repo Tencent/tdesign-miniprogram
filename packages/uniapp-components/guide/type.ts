@@ -156,7 +156,7 @@ export interface GuideStep {
   title?: string;
 }
 
-export type StepElement = () => Promise<WechatMiniprogram.BoundingClientRectCallbackResult>;
+export type StepElement = () => any;
 
 export type StepPopoverPlacement =
   | 'top'

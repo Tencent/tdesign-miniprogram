@@ -1,6 +1,5 @@
-export type CompareDate = Date | number | { year: number; month: number; date: number };
 
-export const getDateRect = (date: Date | number) => {
+export const getDateRect = (date) => {
   const _date = new Date(date);
 
   return {
@@ -12,14 +11,14 @@ export const getDateRect = (date: Date | number) => {
   };
 };
 
-export const isSameDate = (date1: CompareDate, date2: CompareDate) => {
+export const isSameDate = (date1, date2) => {
   if (date1 instanceof Date || typeof date1 === 'number') date1 = getDateRect(date1);
   if (date2 instanceof Date || typeof date2 === 'number') date2 = getDateRect(date2);
   const keys = ['year', 'month', 'date'];
-  return keys.every((key) => date1[key] === date2[key]);
+  return keys.every(key => date1[key] === date2[key]);
 };
 
-export const getMonthDateRect = (date: Date | number) => {
+export const getMonthDateRect = (date) => {
   const { year, month } = getDateRect(date);
   const firstDay = new Date(year, month, 1);
   const weekdayOfFirstDay = firstDay.getDay();
@@ -33,7 +32,7 @@ export const getMonthDateRect = (date: Date | number) => {
   };
 };
 
-export const isValidDate = (val) => typeof val === 'number' || val instanceof Date;
+export const isValidDate = val => typeof val === 'number' || val instanceof Date;
 
 export const getDate = (...args) => {
   const now = new Date();

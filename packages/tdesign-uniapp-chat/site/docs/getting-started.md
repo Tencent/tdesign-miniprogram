@@ -29,13 +29,21 @@ npm i tdesign-uniapp-chat
 1. 在 `main.ts` 中引入样式文件
 
 ```js
+// CLI 模式
 import 'tdesign-uniapp/common/style/theme/index.css';
+
+// HBuilderX 模式
+// import './uni_modules/tdesign-uniapp/components/common/style/theme/index.css';
 ```
 
 也可以引入 `rpx` 单位的 `less` 文件，该文件与 `tdesign-miniprogram` 完全一致。
 
 ```js
+// CLI 模式
 import 'tdesign-uniapp/common/style/theme/index.less';
+
+// HBuilderX 模式
+// import './uni_modules/tdesign-uniapp/components/common/style/theme/index.less';
 ```
 
 2. 在文件中使用

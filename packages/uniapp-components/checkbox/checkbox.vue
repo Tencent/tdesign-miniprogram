@@ -1,8 +1,8 @@
 <template>
   <view
     :id="tId"
-    :style="_._style([customStyle])"
-    :class="_.cls(classPrefix, [placement, theme, ['checked', dataChecked], ['block', block]]) + ' ' + tClass"
+    :style="tools._style([customStyle])"
+    :class="tools.cls(classPrefix, [placement, theme, ['checked', dataChecked], ['block', block]]) + ' ' + tClass"
     aria-role="checkbox"
     :aria-checked="dataChecked ? (dataIndeterminate ? 'mixed' : true) : false"
     :aria-disabled="_disabled ? true : false"
@@ -10,14 +10,14 @@
   >
     <view
       v-if="theme == 'default'"
-      :class="_.cls(classPrefix + '__icon', [placement, ['checked', dataChecked], ['disabled', _disabled]]) + ' ' + tClassIcon"
+      :class="tools.cls(classPrefix + '__icon', [placement, ['checked', dataChecked], ['disabled', _disabled]]) + ' ' + tClassIcon"
     >
       <slot
         v-if="icon === 'slot'"
         name="icon"
       />
       <view
-        v-else-if="_.isArray(icon)"
+        v-else-if="tools.isArray(icon)"
         :class="classPrefix + '__icon'"
       >
         <image
@@ -30,16 +30,16 @@
         <t-icon
           v-if="dataChecked && (icon == 'circle' || icon == 'rectangle')"
           :name="dataIndeterminate ? 'minus-' + icon + '-filled' : 'check-' + icon + '-filled'"
-          :class="_.cls(classPrefix + '__icon-wrapper', [])"
+          :class="tools.cls(classPrefix + '__icon-wrapper', [])"
         />
         <t-icon
           v-if="dataChecked && icon == 'line'"
           :name="dataIndeterminate ? 'minus-' + icon + '-filled' : 'check'"
-          :class="_.cls(classPrefix + '__icon-wrapper', [])"
+          :class="tools.cls(classPrefix + '__icon-wrapper', [])"
         />
         <view
           v-else-if="!dataChecked && (icon == 'circle' || icon == 'rectangle')"
-          :class="_.cls(classPrefix + '__icon-' + icon, [['disabled', _disabled]])"
+          :class="tools.cls(classPrefix + '__icon-' + icon, [['disabled', _disabled]])"
         />
         <view
           v-if="!dataChecked && icon == 'line'"
@@ -54,7 +54,7 @@
     >
       <view
         :class="
-          _.cls(classPrefix + '__title', [
+          tools.cls(classPrefix + '__title', [
             ['disabled', _disabled],
             ['checked', dataChecked]
           ]) +
@@ -70,7 +70,7 @@
         <slot name="label" />
       </view>
       <view
-        :class="_.cls(classPrefix + '__description', [['disabled', _disabled]]) + ' ' + tClassContent"
+        :class="tools.cls(classPrefix + '__description', [['disabled', _disabled]]) + ' ' + tClassContent"
         :style="'-webkit-line-clamp:' + maxContentRow"
       >
         <block v-if="content">
@@ -81,7 +81,7 @@
     </view>
     <view
       v-if="theme == 'default' && !dataBorderless"
-      :class="_.cls(classPrefix + '__border', [placement]) + ' ' + tClassBorder"
+      :class="tools.cls(classPrefix + '__border', [placement]) + ' ' + tClassBorder"
     />
   </view>
 </template>
@@ -91,7 +91,7 @@ import { uniComponent } from '../common/src/index';
 import { coalesce } from '../common/utils';
 import { prefix, ISOLATED_RELATION_KEY } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -134,7 +134,7 @@ export default uniComponent({
       prefix,
       classPrefix: name,
       _disabled: false,
-      _,
+      tools,
 
       dataBorderless: this.borderless,
       dataIndeterminate: this.indeterminate,

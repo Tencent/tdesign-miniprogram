@@ -70,7 +70,7 @@ import tCheckboxGroup from 'tdesign-uniapp/checkbox-group/checkbox-group.vue';
 import tCheckbox from 'tdesign-uniapp/checkbox/checkbox.vue';
 import tIcon from 'tdesign-uniapp/icon/icon.vue';
 import { canUseVirtualHost } from 'tdesign-uniapp/common/version';
-import _ from 'tdesign-uniapp/common/utils.wxs';
+import tools from 'tdesign-uniapp/common/utils.wxs';
 
 export default {
   options: {
@@ -107,7 +107,7 @@ export default {
       return 'horizontal-box';
     },
     horBoxCustomStyle() {
-      return _._style({
+      return tools._style({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',

@@ -19,7 +19,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import tButton from 'tdesign-uniapp/button/button.vue';
 import tTransition from 'tdesign-uniapp/transition/transition.vue';

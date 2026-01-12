@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="classPrefix + ' ' + tClass"
   >
     <t-grid
@@ -83,7 +83,7 @@
               </view>
             </view>
             <view
-              v-if="_.isBoolean(file.removeBtn) ? file.removeBtn : removeBtn"
+              v-if="tools.isBoolean(file.removeBtn) ? file.removeBtn : removeBtn"
               :class="classPrefix + '__close-btn hotspot-expanded'"
               :data-index="index"
               aria-role="button"
@@ -211,7 +211,7 @@
                   </view>
                 </view>
                 <view
-                  v-if="_.isBoolean(file.removeBtn) ? file.removeBtn : removeBtn"
+                  v-if="tools.isBoolean(file.removeBtn) ? file.removeBtn : removeBtn"
                   :class="classPrefix + '__close-btn hotspot-expanded'"
                   :data-index="index"
                   :data-url="file.url"
@@ -273,7 +273,7 @@ import props from './props';
 import { prefix } from '../common/config';
 import { isOverSize, coalesce } from '../common/utils';
 import { isObject } from '../common/validator';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import {
   getWrapperAriaRole,
   getWrapperAriaLabel,
@@ -343,7 +343,7 @@ export default uniComponent({
       dragList: [], // 拖拽的数据列
       dragging: true, // 是否开始拖拽
       dragLayout: false, // 是否开启拖拽布局
-      _,
+      tools,
 
       gridItemStyle: '',
 

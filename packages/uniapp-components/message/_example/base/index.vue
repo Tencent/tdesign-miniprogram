@@ -1,7 +1,6 @@
 <template>
   <view>
     <t-message
-      id="t-message"
       ref="t-message"
     />
 

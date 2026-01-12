@@ -4,6 +4,8 @@
     <t-navbar
       title="DateTimePicker"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">
@@ -46,7 +48,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import yearMonthDate from './year-month-date/index.vue';
 import yearMonth from './year-month/index.vue';

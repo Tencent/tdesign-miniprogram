@@ -2,7 +2,7 @@
   <view>
     <t-popup
       v-if="!destroyOnClose || dataVisible"
-      :custom-style="_._style([customStyle])"
+      :custom-style="tools._style([customStyle])"
       :visible="dataVisible"
       :z-index="zIndex"
       :using-custom-navbar="usingCustomNavbar"
@@ -68,7 +68,7 @@ import { prefix } from '../common/config';
 import { coalesce } from '../common/utils';
 import props from './props';
 import useCustomNavbar from '../mixins/using-custom-navbar';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-drawer`;
@@ -98,7 +98,7 @@ export default uniComponent({
   data() {
     return {
       classPrefix: name,
-      _,
+      tools,
       dataVisible: coalesce(this.visible, this.defaultVisible),
     };
   },

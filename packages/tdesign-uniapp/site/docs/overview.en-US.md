@@ -389,7 +389,7 @@ spline: explain
   </div>
 </section>
 
-<h3>Feedback<em class="tag">10</em></h3>
+<h3>Feedback<em class="tag">13</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/uniapp/components/action-sheet-en">
@@ -452,6 +452,14 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-overlay.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-overlay-dark.png" />
       <p class="name">Overlay</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/uniapp/components/popover-en">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-popover.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-popover-dark.png" />
+      <p class="name">Popover</p>
     </a>
   </div>
 

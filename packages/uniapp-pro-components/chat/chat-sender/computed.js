@@ -3,7 +3,7 @@ import { getRegExp } from 'tdesign-uniapp/common/runtime/wxs-polyfill';
 
 
 export function textareaStyle(autosize) {
-  if (autosize && autosize.constructor === 'Object') {
+  if (autosize && typeof autosize === 'object') {
     return utils._style({
       'min-height': addUnit(autosize.minHeight),
       'max-height': addUnit(autosize.maxHeight),

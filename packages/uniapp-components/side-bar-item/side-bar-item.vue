@@ -2,18 +2,20 @@
   <view
     :id="tId"
     :class="
-      _.cls(classPrefix, [
+      tools.cls(classPrefix, [
         ['active', active],
         ['disabled', disabled]
       ]) +
         ' ' +
         tClass
     "
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     aria-role="button"
     :aria-label="
       ariaLabel ||
-        (badgeProps?.dot || badgeProps?.count ? (active ? '已选中，' + label + _.getBadgeAriaLabel({ ...badgeProps }) : label + _.getBadgeAriaLabel({ ...badgeProps })) : '')
+        (badgeProps && (badgeProps.dot || badgeProps.count)
+          ? (active ? '已选中，' + label + tools.getBadgeAriaLabel({ ...badgeProps })
+            : label + tools.getBadgeAriaLabel({ ...badgeProps })) : '')
     "
     :aria-disabled="disabled"
     @click="handleClick"
@@ -67,7 +69,7 @@ import tIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -101,12 +103,12 @@ export default uniComponent({
       active: false,
       isPre: false,
       isNext: false,
-      _,
+      tools,
     };
   },
   computed: {
     iconCustomStyle() {
-      return _._style([
+      return tools._style([
         {
           fontSize: 'var(--td-side-bar-icon-size, 20px)',
           marginRight: '2px',
