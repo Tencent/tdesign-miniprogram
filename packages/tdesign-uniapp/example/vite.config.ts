@@ -20,7 +20,7 @@ const baseAlias = {
   'tdesign-site': path.resolve(__dirname).replace(/\\/g, '/'),
   packages: path.resolve(__dirname, '../').replace(/\\/g, '/'),
   'tdesign-uniapp': path.resolve(__dirname, './src/_tdesign').replace(/\\/g, '/'),
-  'tdesign-uniapp-chat': path.resolve(__dirname, './src/_tdesign-uniapp-chat').replace(/\\/g, '/'),
+  'tdesign-uniapp-chat': path.resolve(__dirname, './src/_tdesign').replace(/\\/g, '/'),
 };
 const ENV_PREFIX = ['VITE_', 'VUE_APP'];
 const root: string = process.cwd();
@@ -52,7 +52,7 @@ export default ({ mode }) => {
         ...baseAlias,
       },
     },
-    base: vueAppBase || '/tdesign-uniapp/mobile',
+    base: vueAppBase || '/uniapp/mobile',
     server: {
       port: 11111,
       hmr: true,

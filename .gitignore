@@ -18,8 +18,7 @@ packages/tdesign-miniprogram/test/unit
 packages/tdesign-miniprogram/test/unit-virtualHost
 
 # about uniapp 
-packages/tdesign-uniapp/example/src/_tdesign
-packages/tdesign-uniapp/example/src/_tdesign-raw/
+packages/tdesign-uniapp/example/src/_tdesign*
 packages/tdesign-uniapp/example/src/pages-more/
 packages/tdesign-uniapp/npm_dist/
 packages/tdesign-uniapp-chat/npm_dist/
