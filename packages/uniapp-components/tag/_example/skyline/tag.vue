@@ -42,7 +42,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import theme from '../theme/index.vue';

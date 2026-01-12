@@ -5,7 +5,7 @@
         用户内容纯文本支持HTML转义
       </view>
       <view class="chat-example-block">
-        <t-chat-content
+        <TChatContent
           :content="userContent"
           role="user"
         />
@@ -17,7 +17,7 @@
         助手内容（Markdown）
       </view>
       <view class="chat-example-block">
-        <t-chat-content
+        <TChatContent
           :content="assistantContent"
           role="assistant"
         />
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import tChatContent from 'tdesign-uniapp-chat/chat-content/chat-content.vue';
+import TChatContent from 'tdesign-uniapp-chat/chat-content/chat-content.vue';
 
 
 const markdownData = `# Markdown功能测试 (H1标题)
@@ -68,7 +68,7 @@ greet('Markdown');
 
 export default {
   components: {
-    tChatContent,
+    TChatContent,
   },
   data() {
     return {

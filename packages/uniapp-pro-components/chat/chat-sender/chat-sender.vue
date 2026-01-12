@@ -150,7 +150,7 @@
 </template>
 <script>
 import tIcon from 'tdesign-uniapp/icon/icon.vue';
-import attachments from 'tdesign-uniapp-chat/attachments/attachments.vue';
+import attachments from '../attachments/attachments.vue';
 import { prefix } from 'tdesign-uniapp/common/config';
 import props from './props';
 import { uniComponent } from 'tdesign-uniapp/common/src/index';

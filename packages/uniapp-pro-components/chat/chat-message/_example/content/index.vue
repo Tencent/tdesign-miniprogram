@@ -2,21 +2,21 @@
   <view class="chat-example">
     <!-- 附件消息 -->
     <view class="chat-example-block">
-      <t-chat-message
+      <TChatMessage
         :content="pic1.content"
         :role="pic1.role"
         :chat-content-props="chatContentProps"
       />
     </view>
     <view class="chat-example-block">
-      <t-chat-message
+      <TChatMessage
         :content="pic2.content"
         :role="pic2.role"
         :chat-content-props="chatContentProps"
       />
     </view>
     <view class="chat-example-block">
-      <t-chat-message
+      <TChatMessage
         :content="pic3.content"
         :role="pic3.role"
         placement="right"
@@ -24,14 +24,14 @@
       />
     </view>
     <view class="chat-example-block">
-      <t-chat-message
+      <TChatMessage
         :content="fileMessage.content"
         :role="fileMessage.role"
         :chat-content-props="chatContentProps"
       />
     </view>
     <view class="chat-example-block">
-      <t-chat-message
+      <TChatMessage
         :content="fileMessage.content"
         :role="fileMessage.role"
         placement="right"
@@ -40,29 +40,29 @@
     </view>
     <!-- 思考过程消息 -->
     <view class="chat-example-block">
-      <t-chat-message
+      <TChatMessage
         :content="aiMessage.content"
         :role="aiMessage.role"
         :status="aiMessage.status"
         variant="text"
       >
         <template #actionbar>
-          <t-chat-actionbar />
+          <TChatActionbar />
         </template>
-      </t-chat-message>
+      </TChatMessage>
     </view>
   </view>
 </template>
 
 <script>
-import tChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
-import tChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import TChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
+import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
 
 
 export default {
   components: {
-    tChatMessage,
-    tChatActionbar,
+    TChatMessage,
+    TChatActionbar,
   },
   data() {
     return {

@@ -10,7 +10,6 @@
       基础图片预览
     </t-button>
     <t-toast
-      id="t-toast"
       ref="t-toast"
     />
     <t-image-viewer

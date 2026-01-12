@@ -5,7 +5,7 @@
  * @param {number} max
  * @return {number}
  */
-export const trimSingleValue = (value: any, min: number, max: number): number => {
+export const trimSingleValue = (value, min, max) => {
   if (value < min) {
     return min;
   }
@@ -23,7 +23,7 @@ export const trimSingleValue = (value: any, min: number, max: number): number =>
  * @param props
  * @returns
  */
-export const trimValue = (value: number | number[], props): number | number[] | undefined => {
+export const trimValue = (value, props) => {
   const { min, max, range } = props;
 
   if (range && Array.isArray(value)) {

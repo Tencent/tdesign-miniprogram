@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="ImageViewer"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">
@@ -31,7 +33,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 import BaseComp from './base/index.vue';
 import DeleteDemo from './delete/index.vue';
 export default {

@@ -2,12 +2,12 @@
   <view
     v-if="wrapperVisible"
     :class="classPrefix + ' ' + tClass"
-    :style="_._style([getStyles(top, zIndex), customStyle])"
+    :style="tools._style([getStyles(top, zIndex), customStyle])"
   >
     <view
       v-if="show"
       :class="classPrefix + '__mask'"
-      :style="_._style(['height:' + maskHeight + 'px', customStyle])"
+      :style="tools._style(['height:' + maskHeight + 'px', customStyle])"
       @click="handleMaskClick"
       @touchmove.stop.prevent="closeDropdown"
     />
@@ -128,7 +128,7 @@ import { prefix } from '../common/config';
 import { coalesce, getRect, getWindowInfo } from '../common/utils';
 import props from './props';
 import menuProps from '../dropdown-menu/props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { getStyles } from './computed';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 import { canUseVirtualHost } from '../common/version';
@@ -187,7 +187,7 @@ export default uniComponent({
       dataValue: coalesce(this.value, this.defaultValue),
 
       wrapperVisible: false,
-      _,
+      tools,
 
       windowTop: 0,
     };
@@ -216,7 +216,7 @@ export default uniComponent({
     },
 
     radioGroupCustomStyle() {
-      return _._style([
+      return tools._style([
         {
           width: '100%',
           overflow: 'scroll',
@@ -230,7 +230,7 @@ export default uniComponent({
       ]);
     },
     checkboxGroupCustomStyle() {
-      return _._style([
+      return tools._style([
         {
           width: '100%',
           overflow: 'scroll',

@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="[
       classPrefix + ' ' + classPrefix + '--' + placement,
       tClass
@@ -19,7 +19,7 @@
         bordered
         :left-icon="headerLeftIcon"
         :right-icon="ultimateExpandIcon ? (expanded ? 'chevron-up' : 'chevron-down') : ''"
-        :t-class="_.cls(classPrefix + '__header', [placement, ['expanded', expanded]]) + ' ' + tClassHeader"
+        :t-class="tools.cls(classPrefix + '__header', [placement, ['expanded', expanded]]) + ' ' + tClassHeader"
         :t-class-title="'class-title ' + (ultimateDisabled ? 'class-title--disabled' : '')"
         :t-class-note="'class-note ' + (ultimateDisabled ? 'class-note--disabled' : '')"
         :t-class-right-icon="'class-right-icon ' + classPrefix + '__arrow--' + placement + ' ' + (ultimateDisabled ? 'class-right-icon--disabled' : '')"
@@ -63,7 +63,7 @@
       :animation="animation"
       :aria-hidden="expanded ? '' : true"
     >
-      <view :class="_.cls(classPrefix + '__content', [['disabled', ultimateDisabled], ['expanded', expanded], placement]) + ' ' + tClassContent">
+      <view :class="tools.cls(classPrefix + '__content', [['disabled', ultimateDisabled], ['expanded', expanded], placement]) + ' ' + tClassContent">
         {{ content }}
         <slot />
         <slot name="content" />
@@ -77,7 +77,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { getRect } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -109,25 +109,25 @@ export default uniComponent({
       classBasePrefix: prefix,
       ultimateExpandIcon: false,
       ultimateDisabled: false,
-      _,
+      tools,
       animation: null,
     };
   },
   computed: {
     titleCustomStyle() {
-      return _._style({
+      return tools._style({
         fontSize: 'var(--td-collapse-title-font-size, var(--td-font-size-m, 16px))',
         color: this.ultimateDisabled && DISABLED_COLOR,
       });
     },
     noteCustomStyle() {
-      return _._style({
+      return tools._style({
         color: this.ultimateDisabled && DISABLED_COLOR,
 
       });
     },
     rightIconCustomStyle() {
-      return _._style({
+      return tools._style({
         color: this.ultimateDisabled && DISABLED_COLOR,
       });
     },

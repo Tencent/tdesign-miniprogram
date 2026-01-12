@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="Result Page"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="page">
@@ -30,7 +32,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import tButton from 'tdesign-uniapp/button/button.vue';
 import tResult from 'tdesign-uniapp/result/result.vue';

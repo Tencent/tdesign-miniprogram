@@ -4,7 +4,7 @@
       block 样式
     </view>
     <view class="chat-example-block">
-      <t-chat-thinking
+      <TChatThinking
         layout="block"
         :content="content"
         :status="status"
@@ -16,7 +16,7 @@
       border 样式
     </view>
     <view class="chat-example-block">
-      <t-chat-thinking
+      <TChatThinking
         layout="border"
         :content="content"
         :status="status"
@@ -27,12 +27,12 @@
 </template>
 
 <script>
-import tChatThinking from 'tdesign-uniapp-chat/chat-thinking/chat-thinking.vue';
+import TChatThinking from 'tdesign-uniapp-chat/chat-thinking/chat-thinking.vue';
 
 
 export default {
   components: {
-    tChatThinking,
+    TChatThinking,
   },
   data() {
     return {

@@ -4,6 +4,8 @@
       class="demo-navbar"
       title="ChatList"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <view class="demo">
       <!-- 通过 isActive 为 chatSender 的 value 赋值，避免 textarea 在 ios 上无法被遮挡的问题 -->

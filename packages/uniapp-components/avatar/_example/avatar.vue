@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="Avatar"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <scroll-view
@@ -70,7 +72,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import imageAvatar from './image-avatar/index.vue';
 import characterAvatar from './character-avatar/index.vue';

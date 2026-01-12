@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="Indexes"
       left-arrow
+      ta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="indexes">
@@ -47,7 +49,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import tButton from 'tdesign-uniapp/button/button.vue';
 export default {

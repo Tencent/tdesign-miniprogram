@@ -1,104 +1,62 @@
 import tinyColor from '../../../npm/tinycolor2/esm/tinycolor.js';
 import { cmykInputToColor, rgb2cmyk } from './cmyk';
-import { parseGradientString, type GradientColors, type GradientColorPoint, isGradientColor } from './gradient';
-
-export interface ColorObject {
-  alpha: number;
-  css: string;
-  hex: string;
-  hex8: string;
-  hsl: string;
-  hsla: string;
-  hsv: string;
-  hsva: string;
-  rgb: string;
-  rgba: string;
-  saturation: number;
-  value: number;
-  isGradient: boolean;
-  linearGradient?: string;
-}
-
-interface ColorStates {
-  s: number;
-  v: number;
-  h: number;
-  a: number;
-}
-
-interface GradientStates {
-  colors: GradientColorPoint[];
-  degree: number;
-  selectedId: string;
-  css?: string;
-}
+import { parseGradientString, isGradientColor } from './gradient';
 
 const mathRound = Math.round;
-const hsv2rgba = (states: ColorStates): tinyColor.ColorFormats.RGBA => tinyColor(states).toRgb();
-const hsv2hsva = (states: ColorStates): tinyColor.ColorFormats.HSVA => tinyColor(states).toHsv();
-const hsv2hsla = (states: ColorStates): tinyColor.ColorFormats.HSLA => tinyColor(states).toHsl();
-
+const hsv2rgba = states => tinyColor(states).toRgb();
+const hsv2hsva = states => tinyColor(states).toHsv();
+const hsv2hsla = states => tinyColor(states).toHsl();
 /**
  * 将渐变对象转换成字符串
  * @param object
  * @returns
  */
-export const gradientColors2string = (object: GradientColors): string => {
+export const gradientColors2string = (object) => {
   const { points, degree } = object;
   const colorsStop = points
     .sort((pA, pB) => pA.left - pB.left)
     .map(p => `${p.color} ${Math.round(p.left * 100) / 100}%`);
-
   return `linear-gradient(${degree}deg,${colorsStop.join(',')})`;
 };
-
 /**
  * 去除颜色的透明度
  * @param color
  * @returns
  */
-export const getColorWithoutAlpha = (color: string) => tinyColor(color).setAlpha(1)
+export const getColorWithoutAlpha = color => tinyColor(color).setAlpha(1)
   .toHexString();
-
 // 生成一个随机ID
 export const genId = () => (1 + Math.random() * 4294967295).toString(16);
-
 /**
  * 生成一个渐变颜色
  * @param left
  * @param color
  * @returns
  */
-export const genGradientPoint = (left: number, color: string): GradientColorPoint => ({
+export const genGradientPoint = (left, color) => ({
   id: genId(),
   left,
   color,
 });
-
 export class Color {
-  states: ColorStates = {
-    s: 100,
-    v: 100,
-    h: 100,
-    a: 1,
-  };
-
-  originColor: string;
-
-  isGradient: boolean;
-
-  gradientStates: GradientStates = {
-    colors: [],
-    degree: 0,
-    selectedId: null,
-    css: '',
-  };
-
-  constructor(input: string) {
+  constructor(input) {
+    this.states = {
+      s: 100,
+      v: 100,
+      h: 100,
+      a: 1,
+    };
+    this.gradientStates = {
+      colors: [],
+      degree: 0,
+      selectedId: null,
+      css: '',
+    };
     this.update(input);
   }
 
-  update(input: string) {
+  update(input) {
+    let _a; let _b;
     const gradientColors = parseGradientString(input);
     if (this.isGradient && !gradientColors) {
       // 处理gradient模式下切换不同格式时的交互问题，输入的不是渐变字符串才使用当前处理
@@ -112,17 +70,16 @@ export class Color {
     let colorInput = input;
     if (gradientColors) {
       this.isGradient = true;
-      const object = gradientColors as GradientColors;
+      const object = gradientColors;
       const points = object.points.map(c => genGradientPoint(c.left, c.color));
       this.gradientStates = {
         colors: points,
         degree: object.degree,
-        selectedId: points[0]?.id || null,
+        selectedId: ((_a = points[0]) === null || _a === void 0 ? void 0 : _a.id) || null,
       };
       this.gradientStates.css = this.linearGradient;
-      colorInput = this.gradientSelectedPoint?.color;
+      colorInput = (_b = this.gradientSelectedPoint) === null || _b === void 0 ? void 0 : _b.color;
     }
-
     this.updateStates(colorInput);
   }
 
@@ -224,7 +181,7 @@ export class Color {
     return this.gradientStates.colors;
   }
 
-  set gradientColors(colors: GradientColorPoint[]) {
+  set gradientColors(colors) {
     this.gradientStates.colors = colors;
     this.gradientStates.css = this.linearGradient;
   }
@@ -233,19 +190,20 @@ export class Color {
     return this.gradientStates.selectedId;
   }
 
-  set gradientSelectedId(id: string) {
+  set gradientSelectedId(id) {
+    let _a;
     if (id === this.gradientSelectedId) {
       return;
     }
     this.gradientStates.selectedId = id;
-    this.updateStates(this.gradientSelectedPoint?.color);
+    this.updateStates((_a = this.gradientSelectedPoint) === null || _a === void 0 ? void 0 : _a.color);
   }
 
   get gradientDegree() {
     return this.gradientStates.degree;
   }
 
-  set gradientDegree(degree: number) {
+  set gradientDegree(degree) {
     this.gradientStates.degree = Math.max(0, Math.min(360, degree));
     this.gradientStates.css = this.linearGradient;
   }
@@ -278,16 +236,13 @@ export class Color {
       return false;
     }
     const index = gradientColors.findIndex(color => color.id === gradientSelectedId);
-    const newColor = {
-      ...current,
-      color: this.rgba,
-    };
+    const newColor = {...current, color: this.rgba};
     gradientColors.splice(index, 1, newColor);
     this.gradientColors = gradientColors.slice();
     return this;
   }
 
-  updateStates(input: string) {
+  updateStates(input) {
     const color = tinyColor(cmykInputToColor(input));
     const hsva = color.toHsv();
     this.states = hsva;
@@ -314,7 +269,7 @@ export class Color {
     };
   }
 
-  getHsva(): tinyColor.ColorFormats.HSVA {
+  getHsva() {
     let { h, s, v, a } = hsv2hsva(this.states);
     h = mathRound(h);
     s = mathRound(s * 100);
@@ -328,7 +283,7 @@ export class Color {
     };
   }
 
-  getHsla(): tinyColor.ColorFormats.HSLA {
+  getHsla() {
     let { h, s, l, a } = hsv2hsla(this.states);
     h = mathRound(h);
     s = mathRound(s * 100);
@@ -343,27 +298,27 @@ export class Color {
   }
 
   /**
-   * 判断输入色是否与当前色相同
-   * @param color
-   * @returns
-   */
-  equals(color: string): boolean {
+     * 判断输入色是否与当前色相同
+     * @param color
+     * @returns
+     */
+  equals(color) {
     return tinyColor.equals(this.rgba, color);
   }
 
   /**
-   * 校验输入色是否是一个有效颜色
-   * @param color
-   * @returns
-   */
-  static isValid(color: string): boolean {
+     * 校验输入色是否是一个有效颜色
+     * @param color
+     * @returns
+     */
+  static isValid(color) {
     if (parseGradientString(color)) {
       return true;
     }
     return tinyColor(color).isValid();
   }
 
-  static hsva2color(h: number, s: number, v: number, a: number) {
+  static hsva2color(h, s, v, a) {
     return tinyColor({
       h,
       s,
@@ -372,7 +327,7 @@ export class Color {
     }).toHsvString();
   }
 
-  static hsla2color(h: number, s: number, l: number, a: number) {
+  static hsla2color(h, s, l, a) {
     return tinyColor({
       h,
       s,
@@ -381,7 +336,7 @@ export class Color {
     }).toHslString();
   }
 
-  static rgba2color(r: number, g: number, b: number, a: number) {
+  static rgba2color(r, g, b, a) {
     return tinyColor({
       r,
       g,
@@ -390,19 +345,19 @@ export class Color {
     }).toHsvString();
   }
 
-  static hex2color(hex: string, a: number) {
+  static hex2color(hex, a) {
     const color = tinyColor(hex);
     color.setAlpha(a);
     return color.toHexString();
   }
 
   /**
-   * 对象转颜色字符串
-   * @param object
-   * @param format
-   * @returns
-   */
-  static object2color(object: any, format: string) {
+     * 对象转颜色字符串
+     * @param object
+     * @param format
+     * @returns
+     */
+  static object2color(object, format) {
     if (format === 'CMYK') {
       const { c, m, y, k } = object;
       return `cmyk(${c}, ${m}, ${y}, ${k})`;
@@ -412,35 +367,32 @@ export class Color {
     });
     return color.toRgbString();
   }
-
-  /**
-   * 是否是渐变色
-   * @param input
-   * @returns
-   */
-  static isGradientColor = (input: string) => !!isGradientColor(input);
-
-  /**
-   * 比较两个颜色是否相同
-   * @param color1
-   * @param color2
-   * @returns
-   */
-  static compare = (color1: string, color2: string): boolean => {
-    const isGradientColor1 = Color.isGradientColor(color1);
-    const isGradientColor2 = Color.isGradientColor(color2);
-    if (isGradientColor1 && isGradientColor2) {
-      const gradientColor1 = gradientColors2string(parseGradientString(color1) as GradientColors);
-      const gradientColor2 = gradientColors2string(parseGradientString(color2) as GradientColors);
-      return gradientColor1 === gradientColor2;
-    }
-    if (!isGradientColor1 && !isGradientColor2) {
-      return tinyColor.equals(color1, color2);
-    }
-    return false;
-  };
 }
-
+/**
+ * 是否是渐变色
+ * @param input
+ * @returns
+ */
+Color.isGradientColor = input => !!isGradientColor(input);
+/**
+ * 比较两个颜色是否相同
+ * @param color1
+ * @param color2
+ * @returns
+ */
+Color.compare = (color1, color2) => {
+  const isGradientColor1 = Color.isGradientColor(color1);
+  const isGradientColor2 = Color.isGradientColor(color2);
+  if (isGradientColor1 && isGradientColor2) {
+    const gradientColor1 = gradientColors2string(parseGradientString(color1));
+    const gradientColor2 = gradientColors2string(parseGradientString(color2));
+    return gradientColor1 === gradientColor2;
+  }
+  if (!isGradientColor1 && !isGradientColor2) {
+    return tinyColor.equals(color1, color2);
+  }
+  return false;
+};
 const COLOR_OBJECT_OUTPUT_KEYS = [
   'alpha',
   'css',
@@ -456,13 +408,12 @@ const COLOR_OBJECT_OUTPUT_KEYS = [
   'value',
   'isGradient',
 ];
-
 /**
  * 获取对外输出的color对象
  * @param color
  * @returns
  */
-export const getColorObject = (color: Color): ColorObject => {
+export const getColorObject = (color) => {
   if (!color) {
     return null;
   }
@@ -474,5 +425,4 @@ export const getColorObject = (color: Color): ColorObject => {
   }
   return colorObject;
 };
-
 export default Color;

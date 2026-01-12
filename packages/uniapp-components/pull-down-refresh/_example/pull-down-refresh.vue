@@ -5,13 +5,15 @@
       class="demo-navbar"
       title="PullDownRefresh"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <BaseDemo />
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import BaseDemo from './base/index.vue';
 export default {

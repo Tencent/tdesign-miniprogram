@@ -1,7 +1,7 @@
 <template>
   <view
     id="t-bar"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="classPrefix + ' ' + tClass"
     @touchmove.stop.prevent="parseEventDynamicCode($event, activeIdx === -1 ? '' : 'noop')"
   >
@@ -10,7 +10,7 @@
       :key="index"
       :data-index="index"
       :class="
-        _.cls(classPrefix + '__item', [
+        tools.cls(classPrefix + '__item', [
           ['active', activeIdx == index],
           ['disabled', item.disabled],
           [index, true]
@@ -56,7 +56,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { calcIcon } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 import { parseEventDynamicCode } from '../common/event/dynamic';
 import { canUseVirtualHost } from '../common/version';
@@ -94,7 +94,7 @@ export default uniComponent({
       _arrowIcon: {
         name: props.arrowIcon.default,
       },
-      _,
+      tools,
     };
   },
   watch: {

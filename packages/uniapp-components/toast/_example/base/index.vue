@@ -1,7 +1,6 @@
 <template>
   <view>
     <t-toast
-      id="t-toast"
       ref="t-toast"
     />
     <view class="box">

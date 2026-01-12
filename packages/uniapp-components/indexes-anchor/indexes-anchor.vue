@@ -1,11 +1,11 @@
 <template>
   <view
     :class="classPrefix + ' ' + tClass"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
   >
     <view
       :class="
-        _.cls(classPrefix + '__wrapper', [
+        tools.cls(classPrefix + '__wrapper', [
           ['sticky', sticky],
           ['active', active]
         ])
@@ -15,7 +15,7 @@
       <view :class="classPrefix + '__slot'">
         <slot />
       </view>
-      <view :class="_.cls(classPrefix + '__header', [['active', active]])">
+      <view :class="tools.cls(classPrefix + '__header', [['active', active]])">
         {{ index }}
       </view>
     </view>
@@ -25,7 +25,7 @@
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -55,7 +55,7 @@ export default uniComponent({
       anchorStyle: '',
       sticky: false,
       active: false,
-      _,
+      tools,
     };
   },
   watch: {

@@ -1,7 +1,7 @@
 <template>
   <view
     v-if="visible"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="[
       classPrefix + ' ' + classPrefix + '--' + theme,
       tClass
@@ -34,7 +34,7 @@
       :class="classPrefix + '__content-wrap'"
       @click="clickContent"
     >
-      <view v-if="direction === 'vertical' && _.isArray(content)">
+      <view v-if="direction === 'vertical' && tools.isArray(content)">
         <swiper
           :autoplay="true"
           :vertical="true"
@@ -107,7 +107,7 @@ import { uniComponent } from '../common/src/index';
 import { getRect, getAnimationFrame, calcIcon } from '../common/utils';
 import props from './props';
 import { prefix } from '../common/config';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-notice-bar`;
@@ -147,7 +147,7 @@ export default uniComponent({
       loop: -1,
       __ready: false,
       animationData: null,
-      _,
+      tools,
     };
   },
   watch: {

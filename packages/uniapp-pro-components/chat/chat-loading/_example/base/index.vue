@@ -4,24 +4,24 @@
     <t-chat-loading animation="skeleton" />
   </view> -->
     <view class="chat-example-block">
-      <t-chat-loading animation="gradient" />
+      <TChatLoading animation="gradient" />
     </view>
     <view class="chat-example-block">
-      <t-chat-loading animation="moving" />
+      <TChatLoading animation="moving" />
     </view>
     <view class="chat-example-block">
-      <t-chat-loading animation="dots" />
+      <TChatLoading animation="dots" />
     </view>
   </view>
 </template>
 
 <script>
-import tChatLoading from 'tdesign-uniapp-chat/chat-loading/chat-loading.vue';
+import TChatLoading from 'tdesign-uniapp-chat/chat-loading/chat-loading.vue';
 
 
 export default {
   components: {
-    tChatLoading,
+    TChatLoading,
   },
 
   data() {

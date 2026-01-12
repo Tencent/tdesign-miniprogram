@@ -56,6 +56,10 @@ export interface TdNavbarProps {
    */
   onGoBack?: () => void;
   /**
+   * 点击右侧图标时触发
+   */
+  onRightClick?: () => void;
+  /**
    * navigateBack 执行成功后触发
    */
   onSuccess?: () => void;

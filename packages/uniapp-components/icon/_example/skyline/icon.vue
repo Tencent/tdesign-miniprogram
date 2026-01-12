@@ -33,7 +33,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import baseDemo from '../base/index.vue';

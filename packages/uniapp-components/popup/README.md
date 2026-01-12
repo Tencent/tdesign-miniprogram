@@ -53,7 +53,7 @@ z-index | Number | 11500 | 组件层级，Web 侧样式默认为 5500，移动�
 
 名称 | 参数 | 描述
 -- | -- | --
-visible-change | `(context: { visible: boolean, trigger: PopupSource }) ` | 当浮层隐藏或显示时触发。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/popup/type.ts)。<br/>`type PopupSource = 'close-btn' \| 'overlay'`<br/>
+visible-change | `(context: { visible: boolean, trigger: PopupSource }) ` | 当浮层隐藏时触发。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/popup/type.ts)。<br/>`type PopupSource = 'close-btn' \| 'overlay'`<br/>
 
 ### Popup Slots
 

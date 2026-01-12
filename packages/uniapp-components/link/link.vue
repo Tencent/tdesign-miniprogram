@@ -2,7 +2,7 @@
   <view>
     <navigator
       :class="className + ' ' + tClass"
-      :style="_._style([customStyle])"
+      :style="tools._style([customStyle])"
       :target="navigatorProps.target"
       :url="!disabled ? (navigatorProps.url || '') : ''"
       :open-type="navigatorProps.openType || 'navigate'"
@@ -77,7 +77,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { calcIcon, coalesce } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-link`;
@@ -104,7 +104,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _,
+      tools,
       _prefixIcon: null,
       _suffixIcon: null,
       className: '',

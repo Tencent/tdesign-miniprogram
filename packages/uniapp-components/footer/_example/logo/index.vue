@@ -2,11 +2,11 @@
   <view>
     <!-- theme 为 logo -->
     <view class="footer-example">
-      <t-footer :logo="logo" />
+      <TFooter :logo="logo" />
     </view>
 
     <view class="footer-example">
-      <t-footer
+      <TFooter
         :logo="{url:
           theme === 'dark'
             ? 'https://tdesign.gtimg.com/mobile/demos/footer-logo-dark.png'
@@ -17,16 +17,29 @@
   </view>
 </template>
 
-<script lang="ts" setup>
-import tFooter from 'tdesign-uniapp/footer/footer.vue';
-import { ref } from 'vue';
-import { useTheme } from 'tdesign-uniapp/mixins/theme-change';
+<script>
+import TFooter from 'tdesign-uniapp/footer/footer.vue';
+import { themeMixin } from 'tdesign-uniapp/mixins/theme-change';
 
-const logo = ref({
+const logo = {
   icon: 'https://tdesign.gtimg.com/mobile/demos/logo2.png',
   title: '品牌名称',
-});
-const { theme } = useTheme();
+};
+
+
+export default {
+  components: {
+    TFooter,
+  },
+  mixins: [
+    themeMixin,
+  ],
+  data() {
+    return {
+      logo,
+    };
+  },
+};
 
 </script>
 <style>

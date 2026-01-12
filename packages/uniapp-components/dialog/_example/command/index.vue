@@ -10,7 +10,6 @@
       命令行操作
     </t-button>
     <t-dialog
-      id="t-dialog"
       ref="t-dialog"
     />
   </view>

@@ -1,11 +1,11 @@
 <template>
   <view
     :class="tClass + ' ' + classPrefix"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     data-key="cell"
-    :opened="dataOpened"
-    :left-width="leftWidth"
-    :right-width="rightWidth"
+    :opened="state.opened"
+    :left-width="state.leftWidth"
+    :right-width="state.rightWidth"
     @click="onTap"
     @touchstart="parseEventDynamicCode($event, disabled || 'startDrag')"
     @touchmove="parseEventDynamicCode($event, skipMove ? '' : disabled || 'onDrag')"
@@ -37,7 +37,7 @@
               :custom-style="item.icon.style || ''"
               :t-class="classPrefix + '__icon'"
               :prefix="item.icon.prefix"
-              :name="item.icon?.name || item.icon"
+              :name="item.icon.name || item.icon"
               :size="item.icon.size"
               :color="item.icon.color"
               :aria-hidden="!!item.icon.ariaHidden"
@@ -74,8 +74,8 @@
             <t-icon
               :custom-style="item.icon.style || ''"
               :t-class="classPrefix + '__icon'"
-              :prefix="item.icon?.prefix"
-              :name="item.icon?.name || item.icon"
+              :prefix="item.icon.prefix"
+              :name="item.icon.name || item.icon"
               :size="item.icon.size"
               :color="item.icon.color"
               :aria-hidden="!!item.icon.ariaHidden"
@@ -111,7 +111,7 @@ import {
   onCloseChange,
   onOpenedChange,
 } from './computed';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { parseEventDynamicCode } from '../common/event/dynamic';
 
 let ARRAY = [];
@@ -162,19 +162,29 @@ export default uniComponent({
       closed: true,
       classPrefix: name,
       skipMove: false,
-      dataOpened: null,
-      _,
+      tools,
 
-      leftWidth: 0,
-      rightWidth: 0,
+      state: {
+        leftWidth: 0,
+        rightWidth: 0,
+        offset: 0,
+        startOffset: 0,
+        opened: this.opened,
+      },
     };
   },
   watch: {
     left: 'setSwipeWidth',
     right: 'setSwipeWidth',
-    leftWidth: 'initLeftWidth',
-    rightWidth: 'initRightWidth',
-    dataOpened: 'onOpenedChange',
+    'state.leftWidth': 'initLeftWidth',
+    'state.rightWidth': 'initRightWidth',
+    'state.opened': 'onOpenedChange',
+    opened: {
+      handler(v) {
+        this.state.opened = v;
+      },
+      immediate: true,
+    },
   },
   mounted() {
     ARRAY.push(this);
@@ -194,8 +204,8 @@ export default uniComponent({
             this.setSwipeWidth();
           });
         }
-        this.leftWidth = leftRect.width;
-        this.rightWidth = rightRect.width;
+        this.state.leftWidth = leftRect.width;
+        this.state.rightWidth = rightRect.width;
       });
     },
 
@@ -208,11 +218,11 @@ export default uniComponent({
     },
 
     open() {
-      this.dataOpened = true;
+      this.state.opened = true;
     },
 
     close() {
-      this.dataOpened = false;
+      this.state.opened = false;
     },
 
     closeOther() {

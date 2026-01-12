@@ -1,7 +1,7 @@
 <template>
   <view
-    :style="_._style([customStyle])"
-    :class="_.cls(classPrefix, [['border', !borderless], ['readonly', readonly], ['disabled', disabled]])
+    :style="tools._style([customStyle])"
+    :class="tools.cls(classPrefix, [['border', !borderless], ['readonly', readonly], ['disabled', disabled]])
       + ' ' + classPrefix + '--layout-' + layout + ' ' + tClass"
     aria-describedby
   >
@@ -47,7 +47,7 @@
           :disabled="disabled || readonly"
           :placeholder="placeholder"
           :placeholder-style="placeholderStyle"
-          :placeholder-class="_.cls(classPrefix + '__placeholder', [['disabled', disabled]]) + ' ' + placeholderClass"
+          :placeholder-class="tools.cls(classPrefix + '__placeholder', [['disabled', disabled]]) + ' ' + placeholderClass"
           :value="dataValue"
           :password="type === 'password'"
           :type="type === 'password' ? 'text' : type"
@@ -80,9 +80,9 @@
           @nicknamereview="onNickNameReview"
         >
         <view
-          v-if="_clearIcon && dataValue?.length && showClearIcon"
+          v-if="_clearIcon && dataValue && dataValue.length && showClearIcon"
           :class="classPrefix + '__wrap--clearable-icon'"
-          @click="clearInput"
+          @click.stop="clearInput"
         >
           <t-icon
             :custom-style="_clearIcon.style || ''"
@@ -149,8 +149,8 @@ import props from './props';
 import { getCharacterLength, calcIcon, coalesce, nextTick } from '../common/utils';
 import { isDef } from '../common/validator';
 import { getInputClass } from './computed.js';
-import _ from '../common/utils.wxs';
-// import { getInnerMaxLen } from './utils';
+import tools from '../common/utils.wxs';
+import { RELATION_MAP } from '../common/relation/parent-map.js';
 
 
 const name = `${prefix}-input`;
@@ -160,6 +160,11 @@ export default uniComponent({
   name,
   options: {
     styleIsolation: 'shared',
+  },
+  inject: {
+    [RELATION_MAP.FormKey]: {
+      default: null,
+    },
   },
   externalClasses: [
     `${prefix}-class`,
@@ -187,6 +192,7 @@ export default uniComponent({
     'keyboardheightchange',
     'nicknamereview',
     'validate',
+    'update:value',
   ],
   data() {
     return {
@@ -194,7 +200,7 @@ export default uniComponent({
       classPrefix: name,
       classBasePrefix: prefix,
       showClearIcon: true,
-      _,
+      tools,
 
       dataValue: coalesce(this.value, this.defaultValue),
 
@@ -233,14 +239,16 @@ export default uniComponent({
     value: {
       handler(v) {
         this.dataValue = v;
+        nextTick().then(() => {
+          this.dataValue = v;
+
+          if (this[RELATION_MAP.FormKey]
+            && this[RELATION_MAP.FormKey].onValueChange) {
+            this[RELATION_MAP.FormKey].onValueChange(v);
+          }
+        });
       },
     },
-
-    // count: 'updateInnerMaxLen',
-    // dataValue: 'updateInnerMaxLen',
-    // allowInputOverMax: 'updateInnerMaxLen',
-    // maxcharacter: 'updateInnerMaxLen',
-    // maxlength: 'updateInnerMaxLen',
   },
   mounted() {
     const { value, defaultValue } = this;
@@ -311,14 +319,19 @@ export default uniComponent({
     onInput(e) {
       const { value, cursor, keyCode } = e.detail;
       this.updateValue(value);
-      this.$emit('change', { value: this.dataValue, cursor, keyCode });
+      this.emitChange({ value: this.dataValue, cursor, keyCode });
     },
 
     onChange(e) {
       if (this.type !== 'nickname') return;
       const { value } = e.detail;
       this.updateValue(value);
-      this.$emit('change', { value: this.dataValue });
+      this.emitChange({ value: this.dataValue });
+    },
+
+    emitChange(data) {
+      this.$emit('change', data);
+      this.$emit('update:value', data.value);
     },
 
     onFocus(e) {
@@ -328,6 +341,11 @@ export default uniComponent({
 
     onBlur(e) {
       this.updateClearIconVisible();
+
+      if (this[RELATION_MAP.FormKey]
+        && this[RELATION_MAP.FormKey].onBlur) {
+        this[RELATION_MAP.FormKey].onBlur(this.dataValue);
+      }
 
       // 失焦时处理 format
       if (typeof this.format === 'function') {

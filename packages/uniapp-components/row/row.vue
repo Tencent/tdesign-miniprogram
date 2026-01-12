@@ -10,7 +10,7 @@
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { getRowStyles } from './computed.js';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 
@@ -29,7 +29,7 @@ export default uniComponent({
   data() {
     return {
       prefix,
-      _,
+      tools,
     };
   },
   watch: {

@@ -1,7 +1,6 @@
 <template>
   <view>
     <t-form
-      id="form"
       ref="form"
       :data="formData"
       :rules="rules"
@@ -103,7 +102,7 @@
           @click="showCascader"
         />
         <t-cascader
-          :visible="visibleCascader"
+          v-model:visible="visibleCascader"
           :value="address"
           title="选择地址"
           :options="options"
@@ -497,7 +496,7 @@ export default {
       this.formData = e.formData;
     },
     onSubmit(e) {
-      console.log('===onSubmit', e);
+      console.log('[onSubmit]: ', e);
     },
     submit() {
       const { form } = this.$refs;
@@ -539,16 +538,16 @@ export default {
       this.formData.age = e.value;
     },
     onFail(e) {
-      console.log('---onFail', e);
+      console.log('[onFail]: ', e);
     },
     onProgress(e) {
-      console.log('---onProgress:', e);
+      console.log('[onProgress]: ', e);
     },
     onChangeUpload(e) {
-      console.log('====onChange', e);
+      console.log('[onChange]: ', e);
     },
     onPreview(e) {
-      console.log('====onPreview', e);
+      console.log('[onPreview]: ', e);
     },
     onSuccess(e) {
       const { files } = e;
@@ -582,7 +581,7 @@ export default {
 }
 
 .button-group {
-    background-color: #fff;
+    background-color: var(--bg-color-demo, #fff);
     box-sizing: border-box;
     padding: 32rpx;
     display: flex;

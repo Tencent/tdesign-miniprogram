@@ -45,43 +45,61 @@
     </view>
   </view>
 </template>
-<script lang="ts" setup>
-import { ref } from 'vue';
+<script>
 import TIcon from 'tdesign-uniapp/icon/icon.vue';
-
 const itemHeight = 56 * 2;
-const childBoxHeight = ref(0);
-defineOptions({
-  styleIsolation: 'shared',
-});
 
-const props = withDefaults(defineProps<{
-  defaultOpen?: boolean;
-  name?: string;
-  icon?: string;
-  childArr?: any[];
-  tClass?: string;
-}>(), {
-  defaultOpen: false,
-  name: '',
-  icon: '',
-  childArr: () => ([]),
-  tClass: '',
-});
+export default {
+  options: {
+    styleIsolation: 'shared',
+  },
+  components: {
+    TIcon,
+  },
+  props: {
+    defaultOpen: {
+      type: Boolean,
+      default: false,
+    },
+    name: {
+      type: String,
+      default: '',
+    },
+    icon: {
+      type: String,
+      default: '',
+    },
+    childArr: {
+      type: Array,
+      default: () => ([]),
+    },
+    tClass: {
+      type: String,
+      default: '',
+    },
+  },
+  emits: [
+    'click',
+  ],
+  data() {
+    return {
+      childBoxHeight: 0,
+    };
+  },
+  methods: {
+    switchHandle() {
+      this.childBoxHeight = this.childBoxHeight > 0
+        ? 0
+        : this.childArr.length * itemHeight;
+    },
 
-const emits = defineEmits(['click']);
 
-
-const switchHandle = () => {
-  childBoxHeight.value = childBoxHeight.value > 0
-    ? 0
-    : props.childArr.length * itemHeight;
+    clickChild(item) {
+      this.$emit('click', item);
+    },
+  },
 };
 
-
-const clickChild = (item) => {
-  emits('click', item);
-};
 
 </script>
 <style lang="less" src="./index.less" scoped></style>

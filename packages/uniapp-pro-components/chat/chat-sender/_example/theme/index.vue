@@ -1,99 +1,101 @@
 <template>
   <view>
     <view class="button-example">
-      <t-button size="large">
+      <TButton size="large">
         填充按钮
-      </t-button>
-      <t-button
+      </TButton>
+      <TButton
         size="large"
         variant="outline"
       >
         描边按钮
-      </t-button>
-      <t-button
+      </TButton>
+      <TButton
         size="large"
         variant="text"
       >
         文字按钮
-      </t-button>
+      </TButton>
     </view>
 
     <view class="button-example">
-      <t-button
+      <TButton
         size="large"
         theme="primary"
       >
         填充按钮
-      </t-button>
-      <t-button
+      </TButton>
+      <TButton
         size="large"
         theme="primary"
         variant="outline"
       >
         描边按钮
-      </t-button>
-      <t-button
+      </TButton>
+      <TButton
         size="large"
         theme="primary"
         variant="text"
       >
         文字按钮
-      </t-button>
+      </TButton>
     </view>
 
     <view class="button-example">
-      <t-button
+      <TButton
         size="large"
         theme="danger"
       >
         填充按钮
-      </t-button>
-      <t-button
+      </TButton>
+      <TButton
         size="large"
         theme="danger"
         variant="outline"
       >
         描边按钮
-      </t-button>
-      <t-button
+      </TButton>
+      <TButton
         size="large"
         theme="danger"
         variant="text"
       >
         文字按钮
-      </t-button>
+      </TButton>
     </view>
 
     <view class="button-example">
-      <t-button
+      <TButton
         size="large"
         theme="light"
       >
         填充按钮
-      </t-button>
-      <t-button
+      </TButton>
+      <TButton
         size="large"
         theme="light"
         variant="outline"
       >
         描边按钮
-      </t-button>
-      <t-button
+      </TButton>
+      <TButton
         size="large"
         theme="light"
         variant="text"
       >
         文字按钮
-      </t-button>
+      </TButton>
     </view>
   </view>
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+
+
 export default {
   components: {
-    tButton,
+    TButton,
   },
   data() {
     return {};

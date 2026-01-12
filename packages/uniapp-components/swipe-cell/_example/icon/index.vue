@@ -2,6 +2,7 @@
   <view>
     <t-swipe-cell
       :right="right"
+      opened
       @click="onActionClick"
     >
       <t-cell

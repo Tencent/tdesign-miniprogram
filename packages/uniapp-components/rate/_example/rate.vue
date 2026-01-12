@@ -4,6 +4,8 @@
     <t-navbar
       title="Rate"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">
@@ -64,7 +66,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import BaseDemo from './base/index.vue';
 import custom from './custom/index.vue';

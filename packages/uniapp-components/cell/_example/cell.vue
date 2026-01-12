@@ -4,6 +4,8 @@
     <t-navbar
       title="Cell"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <view class="demo">
@@ -30,7 +32,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 import baseComp from './base/index.vue';
 import multiple from './multiple/index.vue';
 import theme from './theme/index.vue';

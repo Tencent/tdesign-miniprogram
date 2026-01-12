@@ -1,7 +1,7 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <t-chat-message
+      <TChatMessage
         datetime="16:38"
         name="张三"
         :content="message.content"
@@ -9,7 +9,7 @@
       />
     </view>
     <view class="chat-example-block">
-      <t-chat-message
+      <TChatMessage
         avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
         datetime="16:38"
         name="TDesignAI"
@@ -18,7 +18,7 @@
       />
     </view>
     <view class="chat-example-block">
-      <t-chat-message
+      <TChatMessage
         avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
         datetime="16:38"
         name="TDesignAI"
@@ -31,12 +31,12 @@
 </template>
 
 <script>
-import tChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
+import TChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
 
 
 export default {
   components: {
-    tChatMessage,
+    TChatMessage,
   },
   data() {
     return {

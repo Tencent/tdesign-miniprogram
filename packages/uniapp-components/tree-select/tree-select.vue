@@ -1,7 +1,7 @@
 <template>
   <view
     :class="classPrefix"
-    :style="_._style(['height:' + _.addUnit(height), customStyle])"
+    :style="tools._style(['height:' + tools.addUnit(height), customStyle])"
   >
     <t-scroll-view
       v-for="(item, level) in treeOptions"
@@ -35,7 +35,7 @@
           :data-level="level"
           :data-value="treeItem.value"
           :class="
-            _.cls(classPrefix + '__item', [
+            tools.cls(classPrefix + '__item', [
               ['active', treeItem.value === innerValue[level]],
               ['disabled', treeItem.disabled]
             ]) +
@@ -118,7 +118,7 @@ import { isDef } from '../common/validator';
 import { prefix } from '../common/config';
 import { getTreeDepth, coalesce, nextTick } from '../common/utils';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { getTreeClass } from './computed.js';
 import { canUseVirtualHost } from '../common/version';
 
@@ -161,9 +161,10 @@ export default uniComponent({
       prefix,
       classPrefix: name,
       scrollIntoView: null,
-      _,
+      tools,
 
       innerValue: coalesce(this.value, this.defaultValue),
+      treeOptions: [],
     };
   },
   computed: {
@@ -308,7 +309,7 @@ export default uniComponent({
     },
     getScrollViewRealClass(level) {
       const { classPrefix, leafLevel, treeOptions, tClass } = this;
-      return `${_.cls(`${classPrefix}__column`, [getTreeClass(leafLevel - level, treeOptions.length)])} ${tClass}`;
+      return `${tools.cls(`${classPrefix}__column`, [getTreeClass(leafLevel - level, treeOptions.length)])} ${tClass}`;
     },
   },
 });

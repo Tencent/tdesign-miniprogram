@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="classPrefix + ' ' + tClass"
     aria-role="radiogroup"
   >
@@ -39,7 +39,7 @@ import { prefix } from '../common/config';
 import { coalesce } from '../common/utils';
 import { uniComponent } from '../common/src/index';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -60,6 +60,11 @@ export default uniComponent({
   externalClasses: [
     `${prefix}-class`,
   ],
+  inject: {
+    [RELATION_MAP.FormKey]: {
+      default: null,
+    },
+  },
   mixins: [ParentMixin(RELATION_MAP.Radio)],
   components: {
     tRadio,
@@ -72,7 +77,7 @@ export default uniComponent({
       prefix,
       classPrefix: name,
       radioOptions: [],
-      _,
+      tools,
 
       dataValue: coalesce(this.value, this.defaultValue),
     };
@@ -142,10 +147,19 @@ export default uniComponent({
 
     updateValue(value) {
       this._trigger('change', { value });
+
+      this.onChange(value);
     },
 
-    handleRadioChange(_, { value, index, allowUncheck, checked }) {
+    handleRadioChange(tools, { value, index, allowUncheck, checked }) {
       this._trigger('change', checked === false && allowUncheck ? { value: null, index } : { value, index });
+    },
+
+    onChange(value) {
+      if (this[RELATION_MAP.FormKey]
+        && this[RELATION_MAP.FormKey].onValueChange) {
+        this[RELATION_MAP.FormKey].onValueChange(value);
+      }
     },
 
     // 支持自定义options

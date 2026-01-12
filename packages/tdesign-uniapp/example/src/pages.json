@@ -173,45 +173,113 @@
     },
     {
       "path": "pages-more/watermark/watermark"
-    },
-    {
-      "path": "pages-more/action-sheet/action-sheet"
-    },
-    {
-      "path": "pages-more/dialog/dialog"
-    },
-    {
-      "path": "pages-more/dropdown-menu/dropdown-menu"
-    },
-    {
-      "path": "pages-more/guide/guide"
-    },
-    {
-      "path": "pages-more/loading/loading"
-    },
-    {
-      "path": "pages-more/message/message"
-    },
-    {
-      "path": "pages-more/notice-bar/notice-bar"
-    },
-    {
-      "path": "pages-more/overlay/overlay"
-    },
-    {
-      "path": "pages-more/popup/popup"
-    },
-    {
-      "path": "pages-more/pull-down-refresh/pull-down-refresh"
-    },
-    {
-      "path": "pages-more/swipe-cell/swipe-cell"
-    },
-    {
-      "path": "pages-more/toast/toast"
     }
   ],
   "subPackages": [
+    {
+      "root": "pages-more/action-sheet",
+      "pages": [
+        {
+          "path": "action-sheet"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/dialog",
+      "pages": [
+        {
+          "path": "dialog"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/dropdown-menu",
+      "pages": [
+        {
+          "path": "dropdown-menu"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/guide",
+      "pages": [
+        {
+          "path": "guide"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/loading",
+      "pages": [
+        {
+          "path": "loading"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/message",
+      "pages": [
+        {
+          "path": "message"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/notice-bar",
+      "pages": [
+        {
+          "path": "notice-bar"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/overlay",
+      "pages": [
+        {
+          "path": "overlay"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/popover",
+      "pages": [
+        {
+          "path": "popover"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/popup",
+      "pages": [
+        {
+          "path": "popup"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/pull-down-refresh",
+      "pages": [
+        {
+          "path": "pull-down-refresh"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/swipe-cell",
+      "pages": [
+        {
+          "path": "swipe-cell"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/toast",
+      "pages": [
+        {
+          "path": "toast"
+        }
+      ]
+    },
     {
       "root": "pages-more/chat-list",
       "pages": [
@@ -524,6 +592,10 @@
         "pathName": "pages-more/overlay/overlay"
       },
       {
+        "name": "popover",
+        "pathName": "pages-more/popover/popover"
+      },
+      {
         "name": "popup",
         "pathName": "pages-more/popup/popup"
       },
@@ -576,5 +648,34 @@
         "pathName": "pages-more/chat-loading/chat-loading"
       }
     ]
+  },
+  "preloadRule": {
+    "pages/home/home": {
+      "network": "all",
+      "packages": [
+        "pages-more/action-sheet",
+        "pages-more/dialog",
+        "pages-more/dropdown-menu",
+        "pages-more/guide",
+        "pages-more/loading",
+        "pages-more/message",
+        "pages-more/notice-bar",
+        "pages-more/overlay",
+        "pages-more/popover",
+        "pages-more/popup",
+        "pages-more/pull-down-refresh",
+        "pages-more/swipe-cell",
+        "pages-more/toast",
+        "pages-more/chat-list",
+        "pages-more/chat-message",
+        "pages-more/chat-sender",
+        "pages-more/chat-markdown",
+        "pages-more/chat-content",
+        "pages-more/chat-thinking",
+        "pages-more/attachments",
+        "pages-more/chat-actionbar",
+        "pages-more/chat-loading"
+      ]
+    }
   }
 }

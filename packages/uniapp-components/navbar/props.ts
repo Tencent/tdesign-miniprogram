@@ -55,6 +55,11 @@ export default {
     type: Function,
     default: () => ({}),
   },
+  /** 点击右侧图标时触发 */
+  onRightClick: {
+    type: Function,
+    default: () => ({}),
+  },
   /** navigateBack 执行成功后触发 */
   onSuccess: {
     type: Function,

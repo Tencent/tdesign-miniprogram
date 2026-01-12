@@ -16,7 +16,7 @@
         @change="onChange"
         @select="onSelect"
       >
-        <template
+        <view
           v-for="(item, index) in list"
           :key="index"
         >
@@ -37,7 +37,7 @@
               :bordered="item.children.length - 1 != index"
             />
           </t-cell-group>
-        </template>
+        </view>
       </t-indexes>
     </view>
   </view>

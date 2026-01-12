@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     :class="[
       tClass,
       classPrefix
@@ -17,7 +17,7 @@
         mode="aspectFit"
       />
       <block
-        v-else-if="iconName || _.isNoEmptyObj(iconData)"
+        v-else-if="iconName || tools.isNoEmptyObj(iconData)"
         name="icon"
       >
         <t-icon
@@ -66,7 +66,7 @@ import { uniComponent } from '../common/src/index';
 import props from './props';
 import { prefix } from '../common/config';
 import { setIcon } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { canUseVirtualHost } from '../common/version';
 
 
@@ -99,7 +99,7 @@ export default uniComponent({
       iconName: '',
       iconData: {},
 
-      _,
+      tools,
     };
   },
   computed: {

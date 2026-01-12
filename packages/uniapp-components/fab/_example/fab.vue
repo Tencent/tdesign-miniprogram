@@ -5,6 +5,8 @@
       class="demo-navbar"
       title="Fab"
       left-arrow
+      :delta="-1"
+      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <t-demo-header
@@ -104,7 +106,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import tButton from 'tdesign-uniapp/button/button.vue';
 import tSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
@@ -142,7 +144,7 @@ export default {
     handlePageScroll(e);
   },
   methods: {
-    handleChange(e: any, _dataset) {
+    handleChange(e, _dataset) {
       this.type = _dataset.type;
     },
   },

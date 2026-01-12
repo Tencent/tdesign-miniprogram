@@ -4,7 +4,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import checkboxDemo from '../checkbox.vue';
 export default {

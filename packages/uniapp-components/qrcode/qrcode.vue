@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="`${_._style([customStyle])}; width:${containerSize}px; height: ${containerSize}px; background-color: ${bgColor};`"
+    :style="`${tools._style([customStyle])}; width:${containerSize}px; height: ${containerSize}px; background-color: ${bgColor};`"
     :class="`${classPrefix} ${borderless ? prefix + '-' + 'borderless' : ''} ${tClass}`"
   >
     <QrcodeCanvas
@@ -40,7 +40,7 @@ import QrcodeStatus from './components/qrcode-status/qrcode-status.vue';
 import { prefix } from '../common/config';
 import props from './props';
 import { uniComponent } from '../common/src/index';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 const name = `${prefix}-qrcode`;
 
@@ -63,7 +63,7 @@ export default uniComponent({
   data() {
     return {
       prefix,
-      _,
+      tools,
       showMask: false,
       classPrefix: name,
       canvasReady: false,

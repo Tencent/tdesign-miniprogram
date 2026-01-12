@@ -4,7 +4,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import demoAvatar from '../avatar.vue';
 export default {

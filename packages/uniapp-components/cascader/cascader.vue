@@ -7,7 +7,7 @@
       @visible-change="onVisibleChange"
     >
       <view
-        :style="_._style([customStyle])"
+        :style="tools._style([customStyle])"
         :class="name"
       >
         <view :class="name + '__title'">
@@ -71,7 +71,6 @@
 
             <TTabs
               v-if="theme == 'tab'"
-              id="tabs"
               ref="tabs"
               :value="stepIndex"
               :space-evenly="false"
@@ -137,7 +136,7 @@ import { prefix } from '../common/config';
 import props from './props';
 import { getRect, coalesce, nextTick } from '../common/utils';
 
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-cascader`;
@@ -197,7 +196,7 @@ export default uniComponent({
       scrollTopList: [],
       steps: [],
       _optionsHeight: 0,
-      _,
+      tools,
 
       dataVisible: this.visible,
       dataValue: coalesce(this.value, this.defaultValue),
@@ -206,7 +205,7 @@ export default uniComponent({
   },
   computed: {
     stepArrowCustomStyle() {
-      return _._style({
+      return tools._style({
         color: 'var(--td-cascader-step-arrow-color, var(--td-text-color-placeholder, var(--td-font-gray-3, rgba(0, 0, 0, .4))))',
         marginLeft: 'auto',
       });
@@ -318,7 +317,7 @@ export default uniComponent({
       // #ifdef MP-TOUTIAO
       nextTick().then(() => {
         const tabsRef = this.$refs.tabs;
-        this.steps.forEach((_, index) => {
+        this.steps.forEach((tools, index) => {
           const tabRef = this.$refs[`tab-${index}`];
           tabRef?.[0]?.setParent(tabsRef);
         });
@@ -452,7 +451,7 @@ export default uniComponent({
         items,
       };
     },
-    handleSelect(_, { level, value }) {
+    handleSelect(tools, { level, value }) {
       const { checkStrictly } = this;
       const { selectedIndexes, items, keys, options, selectedValue } = this;
 

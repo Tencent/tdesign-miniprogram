@@ -3,45 +3,24 @@
  * https://stackoverflow.com/questions/20215440/parse-css-gradient-rule-with-javascript-regex
  */
 import tinyColor from '../../../npm/tinycolor2/esm/tinycolor.js';
-
 import { isString, isNull } from '../../validator';
-
-/**
+/** ../../validator.js
  * Utility combine multiple regular expressions.
  *
  * @param {RegExp[]|string[]} regexpList List of regular expressions or strings.
  * @param {string} flags Normal RegExp flags.
  */
-const combineRegExp = (regexpList: (string | RegExp)[], flags: string): RegExp => {
+const combineRegExp = (regexpList, flags) => {
   let source = '';
   for (let i = 0; i < regexpList.length; i += 1) {
     if (isString(regexpList[i])) {
       source += regexpList[i];
     } else {
-      source += (regexpList[i] as RegExp).source;
+      source += regexpList[i].source;
     }
   }
   return new RegExp(source, flags);
 };
-
-interface RegExpLib {
-  gradientSearch: RegExp;
-  colorStopSearch: RegExp;
-}
-
-interface ColorStop {
-  color: string;
-  position?: string;
-}
-
-interface ParseGradientResult {
-  original: string;
-  colorStopList?: ColorStop[];
-  line?: string;
-  angle?: string;
-  sideCorner?: string;
-}
-
 /**
  * Generate the required regular expressions once.
  *
@@ -49,7 +28,7 @@ interface ParseGradientResult {
  *
  * @result {object} Object containing regular expressions.
  */
-const generateRegExp = (): RegExpLib => {
+const generateRegExp = () => {
   // Note any variables with "Capture" in name include capturing bracket set(s).
   const searchFlags = 'gi'; // ignore case for angles, "rgb" etc
   const rAngle = /(?:[+-]?\d*\.?\d+)(?:deg|grad|rad|turn)/; // Angle +ive, -ive and angle types
@@ -65,10 +44,7 @@ const generateRegExp = (): RegExpLib => {
   const // ".9", "-5px", "100%".
     rKeyword = /[_a-z-][_a-z0-9-]*/;
   const // "red", "transparent".
-    rColor = combineRegExp(
-      ['(?:', rColorHex, '|', '(?:rgb|hsl)', rDigits3, '|', '(?:rgba|hsla)', rDigits4, '|', rKeyword, ')'],
-      '',
-    );
+    rColor = combineRegExp(['(?:', rColorHex, '|', '(?:rgb|hsl)', rDigits3, '|', '(?:rgba|hsla)', rDigits4, '|', rKeyword, ')'], '');
   const rColorStop = combineRegExp([rColor, '(?:\\s+', rValue, '(?:\\s+', rValue, ')?)?'], '');
   const // Single Color Stop, optional %, optional length.
     rColorStopList = combineRegExp(['(?:', rColorStop, rComma, ')*', rColorStop], '');
@@ -77,17 +53,12 @@ const generateRegExp = (): RegExpLib => {
   const // Angle or SideCorner
     rGradientSearch = combineRegExp(['(?:(', rLineCapture, ')', rComma, ')?(', rColorStopList, ')'], searchFlags);
   const // Capture 1:"line", 2:"angle" (optional), 3:"side corner" (optional) and 4:"stop list".
-    rColorStopSearch = combineRegExp(
-      ['\\s*(', rColor, ')', '(?:\\s+', '(', rValue, '))?', '(?:', rComma, '\\s*)?'],
-      searchFlags,
-    ); // Capture 1:"color" and 2:"position" (optional).
-
+    rColorStopSearch = combineRegExp(['\\s*(', rColor, ')', '(?:\\s+', '(', rValue, '))?', '(?:', rComma, '\\s*)?'], searchFlags); // Capture 1:"color" and 2:"position" (optional).
   return {
     gradientSearch: rGradientSearch,
     colorStopSearch: rColorStopSearch,
   };
 };
-
 /**
  * Actually parse the input gradient parameters string into an object for reusability.
  *
@@ -99,21 +70,18 @@ const generateRegExp = (): RegExpLib => {
  * @param {string} input
  * @returns {object|undefined}
  */
-const parseGradient = (regExpLib: RegExpLib, input: string) => {
-  let result: ParseGradientResult;
-  let matchColorStop: any;
-  let stopResult: ColorStop;
-
+const parseGradient = (regExpLib, input) => {
+  let result;
+  let matchColorStop;
+  let stopResult;
   // reset search position, because we reuse regex.
   regExpLib.gradientSearch.lastIndex = 0;
-
   const matchGradient = regExpLib.gradientSearch.exec(input);
   if (!isNull(matchGradient)) {
     result = {
       original: matchGradient[0],
       colorStopList: [],
     };
-
     // Line (Angle or Side-Corner).
     if (matchGradient[1]) {
       // eslint-disable-next-line prefer-destructuring
@@ -129,57 +97,38 @@ const parseGradient = (regExpLib: RegExpLib, input: string) => {
       // eslint-disable-next-line prefer-destructuring
       result.sideCorner = matchGradient[3];
     }
-
     // reset search position, because we reuse regex.
     regExpLib.colorStopSearch.lastIndex = 0;
-
     // Loop though all the color-stops.
     matchColorStop = regExpLib.colorStopSearch.exec(matchGradient[4]);
     while (!isNull(matchColorStop)) {
       stopResult = {
         color: matchColorStop[1],
       };
-
       // Position (optional).
       if (matchColorStop[2]) {
         // eslint-disable-next-line prefer-destructuring
         stopResult.position = matchColorStop[2];
       }
       result.colorStopList.push(stopResult);
-
       // Continue searching from previous position.
       matchColorStop = regExpLib.colorStopSearch.exec(matchGradient[4]);
     }
   }
-
   // Can be undefined if match not found.
   return result;
 };
-
-export interface GradientColorPoint {
-  id?: string;
-  color?: string;
-  left?: number;
-}
-
-export interface GradientColors {
-  points: GradientColorPoint[];
-  degree: number;
-}
-
 const REGEXP_LIB = generateRegExp();
 const REG_GRADIENT = /.*gradient\s*\(((?:\([^)]*\)|[^)(]*)*)\)/gim;
-
 /**
  * 验证是否是渐变字符串
  * @param input
  * @returns
  */
-export const isGradientColor = (input: string): null | RegExpExecArray => {
+export const isGradientColor = (input) => {
   REG_GRADIENT.lastIndex = 0;
   return REG_GRADIENT.exec(input);
 };
-
 // 边界字符串和角度关系
 const sideCornerDegreeMap = {
   top: 0,
@@ -195,27 +144,25 @@ const sideCornerDegreeMap = {
   'bottom right': 45,
   'right bottom': 45,
 };
-
 /**
  * 解析渐变字符串为 GradientColors 对象
  * @param input
  * @returns
  */
-export const parseGradientString = (input: string): GradientColors | boolean => {
+export const parseGradientString = (input) => {
   const match = isGradientColor(input);
   if (!match) {
     return false;
   }
-  const gradientColors: GradientColors = {
+  const gradientColors = {
     points: [],
     degree: 0,
   };
-
-  const result: ParseGradientResult = parseGradient(REGEXP_LIB, match[1]);
+  const result = parseGradient(REGEXP_LIB, match[1]);
   if (result.original.trim() !== match[1].trim()) {
     return false;
   }
-  const points: GradientColorPoint[] = result.colorStopList.map(({ color, position }) => {
+  const points = result.colorStopList.map(({ color, position }) => {
     const point = Object.create(null);
     point.color = tinyColor(color).toRgbString();
     point.left = parseFloat(position);
@@ -227,8 +174,7 @@ export const parseGradientString = (input: string): GradientColors | boolean => 
     degree = sideCornerDegreeMap[result.sideCorner] || 90;
   }
   gradientColors.degree = degree;
-
   return gradientColors;
 };
-
 export default parseGradientString;
+

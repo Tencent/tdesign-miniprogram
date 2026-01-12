@@ -1,7 +1,7 @@
 <template>
   <view
-    :style="_._style([customStyle])"
-    :class="_.cls(classPrefix + '__group', []) + ' ' + tClass"
+    :style="tools._style([customStyle])"
+    :class="tools.cls(classPrefix + '__group', []) + ' ' + tClass"
     @touchstart="onTouchStart"
     @touchmove.stop.prevent="onTouchMove"
     @touchend="onTouchEnd"
@@ -14,7 +14,7 @@
       <view
         v-for="(option, index) in formatOptions"
         :key="index"
-        :class="_.cls(classPrefix + '__item', [['active', curIndex == index]])"
+        :class="tools.cls(classPrefix + '__item', [['active', curIndex == index]])"
         :style="'height: ' + pickItemHeight + 'px'"
         :data-index="index"
         @click="onClickItem"
@@ -32,7 +32,7 @@
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -85,7 +85,7 @@ export default uniComponent({
       columnIndex: 0,
       pickerKeys: { value: 'value', label: 'label', icon: 'icon' },
       formatOptions: props.options.value,
-      _,
+      tools,
 
       pickItemHeight: undefined,
     };

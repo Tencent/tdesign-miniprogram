@@ -4,7 +4,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import demoProgress from '../progress.vue';
 export default {

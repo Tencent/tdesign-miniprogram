@@ -1,7 +1,6 @@
 <template>
   <view>
     <t-form
-      id="form"
       ref="form"
       class="form"
       :data="formData"
@@ -18,14 +17,15 @@
         name="name"
         help="输入用户名"
       >
+        <template #label>
+          用户名
+        </template>
         <t-input
-          :value="formData.name"
+          v-model:value="formData.name"
           borderless
-          align="right"
           placeholder="请输入用户名"
           data-field="name"
           style="flex: 1;"
-          @change="onInputChange($event, { field: 'name' })"
         />
       </t-form-item>
 
@@ -37,7 +37,6 @@
           :value="formData.password"
           borderless
           type="password"
-          align="right"
           :clearable="false"
           placeholder="请输入密码"
           data-field="password"
@@ -112,7 +111,7 @@
         />
 
         <t-cascader
-          :visible="visibleCascader"
+          v-model:visible="visibleCascader"
           :value="address"
           title="选择地址"
           :options="options"
@@ -152,13 +151,12 @@
         name="resume"
       >
         <t-textarea
-          :value="formData.resume"
+          v-model:value="formData.resume"
           t-class="textarea"
           indicator
           :maxlength="50"
           placeholder="请输入个人简介"
           style="flex: 1;"
-          @change="onTextareaChange"
         />
       </t-form-item>
 
@@ -506,15 +504,27 @@ export default {
       this.formData = e.formData;
     },
     onSubmit(e) {
-      console.log('===onSubmit', e);
+      console.log('[onSubmit]: ', e);
     },
     submit() {
       const { form } = this.$refs;
       form.submit();
+
+      // form.validate({
+      //   fields: ['name', 'password', 'gender'],
+      //   trigger: 'blur',
+      // }).then((result) => {
+      //   console.log('[submit] result: ', result);
+      // });
     },
     reset() {
       const { form } = this.$refs;
       form.reset();
+
+      // form.reset({
+      //   resetType: 'initial',
+      //   fields: ['name', 'password', 'gender'],
+      // });
     },
     onInputChange(e, { field }) {
       this.formData[`${field}`] = e.value;
@@ -548,16 +558,16 @@ export default {
       this.formData.age = e.value;
     },
     onFail(e) {
-      console.log('---onFail', e);
+      console.log('[onFail]: ', e);
     },
     onProgress(e) {
-      console.log('---onProgress:', e);
+      console.log('[onProgress]: ', e);
     },
     onChangeUpload(e) {
-      console.log('====onChange', e);
+      console.log('[onChange]: ', e);
     },
     onPreview(e) {
-      console.log('====onPreview', e);
+      console.log('[onPreview]: ', e);
     },
     onSuccess(e) {
       const { files } = e;
@@ -602,7 +612,7 @@ export default {
 }
 
 .button-group {
-    background-color: #fff;
+    background-color: var(--bg-color-demo, #fff);
     box-sizing: border-box;
     padding: 32rpx;
     display: flex;

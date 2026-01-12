@@ -5,6 +5,8 @@
       <t-navbar
         title="Tabs"
         left-arrow
+        :delta="-1"
+        @go-back="onDemoGoBack"
       />
     <!-- #endif -->
     </view>
@@ -51,7 +53,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import BaseDemo from './base/index.vue';
 import scroll from './scroll/index.vue';

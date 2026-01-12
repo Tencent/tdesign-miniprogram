@@ -1,7 +1,7 @@
 <template>
   <view>
     <t-picker
-      :custom-style="_._style([customStyle])"
+      :custom-style="tools._style([customStyle])"
       :class="tClass + ' ' + classPrefix"
       :visible="visible"
       :value="columnsValue"
@@ -29,7 +29,7 @@
       <t-picker-item
         v-for="(item, index) in columns"
         :key="index"
-        :class="_.cls(classPrefix + '__item', [['roomly', columns.length >= 5 && index == 0]])"
+        :class="tools.cls(classPrefix + '__item', [['roomly', columns.length >= 5 && index == 0]])"
         :options="item"
         index="index"
         :format="formatter"
@@ -52,12 +52,10 @@ import { coalesce } from '../common/utils';
 import { uniComponent } from '../common/src/index';
 import props from './props';
 import dayjsLocaleMap from './locale/dayjs';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import dayjs from '../npm/dayjs/esm/index.js';
 import localeData from '../npm/dayjs/esm/plugin/localeData';
 
-// const dayjs = require('dayjs');
-// const localeData = require('dayjs/plugin/localeData');
 /**
  * dayjs LocaleData 插件
  * https://dayjs.fenxianglu.cn/category/plugin.html#localedata
@@ -65,7 +63,6 @@ import localeData from '../npm/dayjs/esm/plugin/localeData';
 dayjs.extend(localeData);
 dayjs.locale('zh-cn');
 
-// const defaultLocale = dayjsLocaleMap.default.key;
 const defaultLocale = dayjsLocaleMap[dayjs.locale()]?.key || dayjsLocaleMap.default?.key;
 
 
@@ -120,9 +117,11 @@ export default uniComponent({
       fullModes: [],
       locale: dayjsLocaleMap[defaultLocale].i18n, // 国际化语言包
       dayjsLocale: dayjsLocaleMap[defaultLocale].key, // dayjs 自适应的 key
-      _,
+      tools,
 
       dataValue: coalesce(this.value, this.defaultValue),
+
+      date: null,
     };
   },
   watch: {
@@ -170,7 +169,8 @@ export default uniComponent({
     },
   },
   created() {
-    this.date = null;
+    // created 时机并不准，uniapp 自己 mock 的
+    // this.date = null;
   },
   mounted() {
 

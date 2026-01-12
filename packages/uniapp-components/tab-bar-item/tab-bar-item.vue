@@ -1,19 +1,19 @@
 <template>
   <view
-    :style="_._style([customStyle])"
-    :class="_.cls(classPrefix, [
+    :style="tools._style([customStyle])"
+    :class="tools.cls(classPrefix, [
       ['split', split], ['text-only', !icon],
       ['crowded', crowded], shape]
     ) + ' ' + tClass"
   >
     <view
-      :class="_.cls(classPrefix + '__content', [['checked', isChecked], theme])"
+      :class="tools.cls(classPrefix + '__content', [['checked', isChecked], theme])"
       :hover-class="classPrefix + '__content--active'"
       :hover-stay-time="200"
       :aria-selected="(!hasChildren || !isSpread) && isChecked ? true : false"
       :aria-expanded="hasChildren && isSpread ? true : ''"
       :aria-role="hasChildren ? 'button' : 'tab'"
-      :aria-label="ariaLabel || (badgeProps.dot || badgeProps.count ? _.getBadgeAriaLabel({ ...badgeProps }) : '')"
+      :aria-label="ariaLabel || (badgeProps.dot || badgeProps.count ? tools.getBadgeAriaLabel({ ...badgeProps }) : '')"
       @click="toggle"
     >
       <view
@@ -71,7 +71,7 @@
         </block>
         <slot name="icon" />
       </view>
-      <view :class="_.cls(classPrefix + '__text', [['small', !!icon]])">
+      <view :class="tools.cls(classPrefix + '__text', [['small', !!icon]])">
         <t-icon
           v-if="hasChildren"
           name="view-list"
@@ -117,7 +117,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { getRect, calcIcon } from '../common/utils';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 const classPrefix = `${prefix}-tab-bar-item`;
@@ -166,7 +166,7 @@ export default uniComponent({
       theme: '',
       crowded: false,
       shape: 'normal',
-      _,
+      tools,
     };
   },
   async mounted() {

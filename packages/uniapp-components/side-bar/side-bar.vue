@@ -1,7 +1,7 @@
 <template>
   <view
     :class="classPrefix + ' ' + tClass"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
   >
     <slot />
     <view :class="classPrefix + '__padding'" />
@@ -12,7 +12,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import { coalesce } from '../common/utils';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -44,7 +44,7 @@ export default uniComponent({
     return {
       classPrefix: name,
       prefix,
-      _,
+      tools,
 
       dataValue: coalesce(this.value, this.defaultValue),
     };

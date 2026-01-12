@@ -150,10 +150,10 @@ export const docs = [
   },
 ];
 
-export const enDocs = docs.map((doc) => ({
+export const enDocs = docs.map(doc => ({
   ...doc,
   title: doc.titleEn || '',
-  children: doc?.children?.map((child) => ({
+  children: doc?.children?.map(child => ({
     title: child.titleEn || '',
     name: `${child.name}-en`,
     path: `${child.path}-en`,

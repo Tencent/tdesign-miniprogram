@@ -62,7 +62,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script>
 
 import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import textOnly from '../text-only/index.vue';

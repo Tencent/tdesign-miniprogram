@@ -1,7 +1,7 @@
 <template>
   <view
-    :class="_.cls(classPrefix, [['fixed', fixed]]) + ' ' + visibleClass + ' ' + tClass"
-    :style="_._style([boxStyle, customStyle])"
+    :class="tools.cls(classPrefix, [['fixed', fixed]]) + ' ' + visibleClass + ' ' + tClass"
+    :style="tools._style([boxStyle, customStyle])"
   >
     <view
       v-if="fixed"
@@ -36,6 +36,13 @@
           {{ showTitle }}
         </text>
       </view>
+
+      <view
+        :class="classPrefix + '__right'"
+        @click="onClickRight"
+      >
+        <slot name="right" />
+      </view>
     </view>
   </view>
 </template>
@@ -45,7 +52,7 @@ import { uniComponent } from '../common/src/index';
 import { getRect, systemInfo } from '../common/utils';
 import { prefix } from '../common/config';
 import props from './props';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-navbar`;
@@ -86,6 +93,7 @@ export default uniComponent({
     'complete',
     'success',
     'go-back',
+    'right-click',
   ],
   data() {
     return {
@@ -99,7 +107,7 @@ export default uniComponent({
       _menuRect: null,
       _leftRect: null,
       _boxStyle: {},
-      _,
+      tools,
 
       visibleClass: '',
 
@@ -206,8 +214,11 @@ export default uniComponent({
         bottom: BASE_MENU_RECT.top + BASE_MENU_RECT.height,
         left: BASE_MENU_RECT.right - BASE_MENU_RECT.width,
       };
-      if (uni.getMenuButtonBoundingClientRect) {
-        rect = uni.getMenuButtonBoundingClientRect();
+      if (uni.getMenuButtonBoundingClientRect
+         && typeof uni.getMenuButtonBoundingClientRect === 'function'
+         && typeof uni.getMenuButtonBoundingClientRect()  === 'object'
+      ) {
+        rect = uni.getMenuButtonBoundingClientRect() || {};
       }
 
       this._menuRect = rect;
@@ -268,6 +279,10 @@ export default uniComponent({
           },
         });
       }
+    },
+
+    onClickRight() {
+      this.$emit('right-click');
     },
   },
 });

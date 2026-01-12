@@ -1,4 +1,17 @@
+import { goBackOrGoHome } from 'tdesign-uniapp/common/route';
+
+const SHARE_INFO = {
+  title: 'TDesign UI',
+};
+
+
 export default {
+  onShareAppMessage() {
+    return SHARE_INFO;
+  },
+  onShareTimeline() {
+    return SHARE_INFO;
+  },
   computed: {
     gCustomNavbarHeight() {
       let result = 0;
@@ -41,5 +54,10 @@ export default {
       });
     }
     // #endif
+  },
+  methods: {
+    onDemoGoBack() {
+      goBackOrGoHome();
+    },
   },
 };

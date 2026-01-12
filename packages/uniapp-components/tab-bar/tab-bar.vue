@@ -1,7 +1,7 @@
 <template>
   <view
-    :style="_._style([customStyle])"
-    :class="_.cls(classPrefix, [
+    :style="tools._style([customStyle])"
+    :class="tools.cls(classPrefix, [
       ['border', bordered], ['fixed', fixed],
       ['safe', safeAreaInsetBottom], shape]
     ) + ' ' + tClass"
@@ -16,7 +16,7 @@ import { prefix } from '../common/config';
 import props from './props';
 import { coalesce } from '../common/utils';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 const classPrefix = `${prefix}-tab-bar`;
 
@@ -42,7 +42,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix,
-      _,
+      tools,
 
       dataValue: coalesce(this.value, this.defaultValue),
     };

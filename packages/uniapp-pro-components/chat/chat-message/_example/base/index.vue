@@ -1,7 +1,7 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <t-chat-message
+      <TChatMessage
         :content="userMessage.content"
         :role="userMessage.role"
       />
@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import tChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
+import TChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
 
 export default {
   components: {
-    tChatMessage,
+    TChatMessage,
   },
   props: {
     userMessage: {

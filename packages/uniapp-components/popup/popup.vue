@@ -2,8 +2,8 @@
   <view>
     <view
       v-if="realVisible"
-      :style="_._style([popup.getPopupStyles(zIndex, distanceTop, placement), customStyle])"
-      :class="_.cls(classPrefix, [placement]) + ' ' + transitionClass + ' ' + tClass"
+      :style="tools._style([popup.getPopupStyles(zIndex, distanceTop, placement), customStyle])"
+      :class="tools.cls(classPrefix, [placement]) + ' ' + transitionClass + ' ' + tClass"
       @transitionend="onTransitionEnd"
     >
       <view
@@ -74,7 +74,7 @@ import { prefix } from '../common/config';
 import props from './props';
 import { transitionMixins } from '../mixins/transition';
 import useCustomNavbar from '../mixins/using-custom-navbar';
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 import popup from './computed.js';
 
 delete props.visible;
@@ -102,13 +102,14 @@ export default uniComponent({
   emits: [
     'visible-change',
     'leaved',
+    'update:visible',
   ],
   data() {
     return {
       prefix,
       classPrefix: name,
       popup,
-      _,
+      tools,
     };
   },
   computed: {
@@ -123,11 +124,13 @@ export default uniComponent({
       const { closeOnOverlayClick } = this;
       if (closeOnOverlayClick) {
         this.$emit('visible-change', { visible: false, trigger: 'overlay' });
+        this.$emit('update:visible', false);
       }
     },
 
     handleClose() {
       this.$emit('visible-change', { visible: false, trigger: 'close-btn' });
+      this.$emit('update:visible', false);
     },
   },
 });

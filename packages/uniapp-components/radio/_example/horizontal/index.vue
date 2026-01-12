@@ -27,7 +27,7 @@
 <script>
 import tRadioGroup from 'tdesign-uniapp/radio-group/radio-group.vue';
 import tRadio from 'tdesign-uniapp/radio/radio.vue';
-import _ from 'tdesign-uniapp/common/utils.wxs';
+import tools from 'tdesign-uniapp/common/utils.wxs';
 
 
 export default {
@@ -45,7 +45,7 @@ export default {
   },
   computed: {
     boxCustomStyle() {
-      return _._style({
+      return tools._style({
         padding: '16px',
         display: 'flex',
         justifyContent: 'space-between',

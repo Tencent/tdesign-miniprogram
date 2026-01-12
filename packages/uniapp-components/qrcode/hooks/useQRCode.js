@@ -1,33 +1,7 @@
 import { QrCode, QrSegment } from '../../common/shared/qrcode/qrcodegen';
-import type { ErrorCorrectionLevel, Excavation, ImageSettings } from '../../common/shared/qrcode/types';
 import { ERROR_LEVEL_MAP, getImageSettings, getMarginSize } from '../../common/shared/qrcode/utils';
 
-interface Options {
-  value: string;
-  level: ErrorCorrectionLevel;
-  minVersion: number;
-  includeMargin: boolean;
-  marginSize?: number;
-  imageSettings?: ImageSettings;
-  size: number;
-}
-
-interface QRCodeResult {
-  cells: boolean[][];
-  margin: number;
-  numCells: number;
-  calculatedImageSettings: {
-    x: number;
-    y: number;
-    h: number;
-    w: number;
-    excavation: Excavation | null;
-    opacity: number;
-  } | null;
-  qrcode: QrCode;
-}
-
-const useQRCode = (opt: Options): QRCodeResult => {
+const useQRCode = (opt) => {
   const { value, level, minVersion, includeMargin, marginSize, imageSettings, size } = opt;
 
   const qrcode = (() => {

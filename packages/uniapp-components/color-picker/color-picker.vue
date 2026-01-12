@@ -3,11 +3,11 @@
     <t-popup
       v-if="usePopup"
       :visible="dataVisible"
-      :using-custom-navbar="popupProps?.usingCustomNavbar || false"
-      :custom-navbar-height="popupProps?.customNavbarHeight"
-      :show-overlay="popupProps?.showOverlay || true"
-      :z-index="popupProps?.zIndex || 11500"
-      :overlay-props="popupProps?.overlayProps || defaultOverlayProps"
+      :using-custom-navbar="(popupProps && popupProps.usingCustomNavbar) || false"
+      :custom-navbar-height="popupProps && popupProps.customNavbarHeight"
+      :show-overlay="(popupProps && popupProps.showOverlay) || true"
+      :z-index="(popupProps && popupProps.zIndex) || 11500"
+      :overlay-props="(popupProps && popupProps.overlayProps) || defaultOverlayProps"
       placement="bottom"
       @visible-change="onVisibleChange"
     >
@@ -15,7 +15,7 @@
       <TemplateVue
         ref="templateVue"
         :class-prefix="classPrefix"
-        :custom-style="_._style([customStyle])"
+        :custom-style="tools._style([customStyle])"
         :is-multiple="isMultiple"
         :type="type"
         :slider-info="sliderInfo"
@@ -39,7 +39,7 @@
       <TemplateVue
         ref="templateVue"
         :class-prefix="classPrefix"
-        :custom-style="_._style([customStyle])"
+        :custom-style="tools._style([customStyle])"
         :is-multiple="isMultiple"
         :type="type"
         :slider-info="sliderInfo"
@@ -78,7 +78,7 @@ import { debounce, nextTick } from '../common/utils';
 import { Color, getColorObject } from './utils';
 import TemplateVue from './template.vue';
 
-import _ from '../common/utils.wxs';
+import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-color-picker`;
@@ -182,7 +182,7 @@ export default uniComponent({
       innerSwatchList: genSwatchList(props.swatchColors.default),
       isMultiple: props.type.default === 'multiple',
       defaultOverlayProps: {},
-      _,
+      tools,
       color: {},
       dataVisible: this.visible,
     };

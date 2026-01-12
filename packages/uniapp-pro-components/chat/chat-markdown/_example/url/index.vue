@@ -1,6 +1,6 @@
 <template>
   <view class="chat-example-block">
-    <t-chat-markdown
+    <TChatMarkdown
       :content="markdownContent"
       @click="handleLinkTap"
     />
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import tChatMarkdown from 'tdesign-uniapp-chat/chat-markdown/chat-markdown.vue';
+import TChatMarkdown from 'tdesign-uniapp-chat/chat-markdown/chat-markdown.vue';
 
 const markdownData = `
 ![示例](https://tdesign.gtimg.com/demo/demo-image-1.png "示例")
@@ -17,7 +17,7 @@ const markdownData = `
 
 export default {
   components: {
-    tChatMarkdown,
+    TChatMarkdown,
   },
   data() {
     return {
