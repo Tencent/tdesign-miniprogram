@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="Swiper" leftArrow />
+<t-navbar class="demo-navbar" title="Swiper" leftArrow placeholder zIndex="{{99}}" />
 <view class="demo swiper-demo">
   <t-demo-header
     title="Swiper 轮播图"

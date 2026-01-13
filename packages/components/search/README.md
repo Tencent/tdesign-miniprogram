@@ -19,7 +19,7 @@ isComponent: true
 
 ## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/wG6pximT7xSH" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/2XDtrNmK8o5d" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -64,6 +64,7 @@ clearable | Boolean | true | 是否启用清除控件 | N
 confirm-hold | Boolean | false | 点击键盘右下角按钮时是否保持键盘不收起 | N
 confirm-type | String | search | 设置键盘右下角按钮的文字，仅在type='text'时生效。<br />具体释义：<br />`send` 右下角按钮为“发送”；<br />`search` 右下角按钮为“搜索”；<br />`next` 右下角按钮为“下一个”；<br />`go` 右下角按钮为“前往”；<br />`done` 右下角按钮为“完成”。<br />[小程序官方文档](https://developers.weixin.qq.com/miniprogram/dev/component/input.html)。可选项：send/search/next/go/done | N
 cursor | Number | -1 | 必需。指定 focus 时的光标位置 | Y
+cursor-color | String | #0052d9 | `1.12.1`。光标颜色。iOS 下的格式为十六进制颜色值 #000000，安卓下的只支持 default 和 green，Skyline 下无限制 | N
 cursor-spacing | Number | 0 | 搜索框聚焦时底部与键盘的距离 | N
 disabled | Boolean | false | 是否禁用 | N
 focus | Boolean | false | 是否聚焦 | N

@@ -1,4 +1,4 @@
-<t-navbar title="Switch" leftArrow />
+<t-navbar title="Switch" leftArrow placeholder />
 <view class="demo">
   <t-demo-header
     title="Switch 开关"

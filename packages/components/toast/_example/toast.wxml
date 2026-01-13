@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="Toast" leftArrow />
+<t-navbar class="demo-navbar" title="Toast" leftArrow placeholder />
 <view class="demo">
   <t-demo-header
     title="Toast 轻提示"

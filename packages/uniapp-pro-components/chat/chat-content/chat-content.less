@@ -1,0 +1,49 @@
+@import 'tdesign-uniapp/common/style/base.less';
+
+@chat-content: ~'@{prefix}-chat-content';
+
+@chat-content-user-text-color: var(--td-chat-content-user-text-color, @text-color-primary);
+@chat-content-assistant-text-color: var(--td-chat-content-assistant-text-color, @text-color-primary);
+@chat-content-error-text-color: var(--td-chat-content-error-text-color, @error-color);
+
+.@{chat-content} {
+  font-size: 32rpx;
+  line-height: 48rpx;
+  word-break: break-all;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+  width: fit-content;
+
+  &__user {
+    color: @chat-content-user-text-color;
+
+    ._pre {
+      margin: 0;
+      white-space: pre-wrap;
+    }
+  }
+
+  &__assistant {
+    color: @chat-content-assistant-text-color;
+
+    ._ol {
+      -webkit-padding-start: 40rpx;
+      padding-inline-start: 40rpx;
+
+      ._li {
+        list-style: decimal;
+      }
+    }
+
+    ._img {
+      max-width: 100%;
+      margin: 8rpx 0;
+      border-radius: @radius-small;
+    }
+  }
+// 错误状态样式
+  &__error {
+    color: @chat-content-error-text-color;
+  }
+}

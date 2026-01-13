@@ -1,4 +1,4 @@
-<t-navbar title="DropdownMenu" leftArrow />
+<t-navbar title="DropdownMenu" leftArrow placeholder />
 <view class="demo">
   <t-demo-header
     title="DropdownMenu 下拉菜单"

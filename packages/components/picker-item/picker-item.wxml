@@ -27,7 +27,7 @@
         >
           <t-icon wx:if="{{option[keys.icon]}}" class="{{classPrefix}}__item-icon" name="{{option[keys.icon]}}" />
           <text class="{{classPrefix}}__item-label">{{option[keys.label]}}</text>
-          <slot name="label-suffix--{{virtualStartIndex + index}}"></slot>
+          <slot wx:if="{{useSlots}}" name="label-suffix--{{virtualStartIndex + index}}"></slot>
         </view>
       </view>
     </view>
@@ -45,7 +45,7 @@
       >
         <t-icon wx:if="{{option[keys.icon]}}" class="{{classPrefix}}__item-icon" name="{{option[keys.icon]}}" />
         <text class="{{classPrefix}}__item-label">{{option[keys.label]}}</text>
-        <slot name="label-suffix--{{index}}"></slot>
+        <slot wx:if="{{useSlots}}" name="label-suffix--{{index}}"></slot>
       </view>
     </block>
   </view>

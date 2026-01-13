@@ -1,4 +1,4 @@
-<t-navbar title="NavBar" leftArrow />
+<t-navbar title="NavBar" zIndex="{{99}}" leftArrow placeholder zIndex="{{99}}" />
 <view class="demo">
   <t-demo-header
     title="NavBar 导航栏"

@@ -1,0 +1,17 @@
+unpackage
+node_modules/
+coverage
+static/common/*
+
+dist/
+/log/
+!.vuepress
+
+uni_modules/
+miniprogram_npm/
+packages/tdesign/npm/
+packages/tdesign-uniapp-chat/npm/
+packages/tdesign-uniapp-chat/chat-list/_example/ec-canvas/echarts.js
+
+*.html
+!.stylelintrc.js

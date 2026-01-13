@@ -1,18 +1,56 @@
-name: Compressed Size
+name: pr-compressed-size
 
 on:
   pull_request:
     types: [opened, synchronize]
 
 jobs:
-  compressed-size:
+  miniprogram-size:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           submodules: recursive
+
+      - uses: ./.github/actions/install-dep
+
       - uses: preactjs/compressed-size-action@v2
         with:
+          install-script: 'pnpm install --no-frozen-lockfile'
           repo-token: '${{ secrets.GITHUB_TOKEN }}'
-          install-script: 'npm install --force'
           pattern: './packages/tdesign-miniprogram/miniprogram_dist/**/*.{js,wxs,wxml,json}'
+          comment-key: miniprogram
+
+  uniapp-size:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+      - uses: ./.github/actions/install-dep
+
+      - uses: preactjs/compressed-size-action@v2
+        with:
+          install-script: 'pnpm install --no-frozen-lockfile'
+          build-script: 'uniapp build:npm'
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          pattern: './packages/tdesign-uniapp/dist/**/*.{js,ts,vue,less,css}'
+          comment-key: uniapp
+
+  uniapp-chat-size:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          submodules: recursive
+
+      - uses: ./.github/actions/install-dep
+
+      - uses: preactjs/compressed-size-action@v2
+        with:
+          install-script: 'pnpm install --no-frozen-lockfile'
+          build-script: 'uniapp build:npm'
+          repo-token: '${{ secrets.GITHUB_TOKEN }}'
+          pattern: './packages/tdesign-uniapp-chat/dist/**/*.{js,ts,vue,less,css}'
+          comment-key: uniapp-chat

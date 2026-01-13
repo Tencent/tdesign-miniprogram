@@ -19,7 +19,7 @@ isComponent: true
 
 ## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/H0G5SdmU7HSh" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/MCE5rNmh8953" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -67,12 +67,14 @@ style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 bordered | Boolean | true | 是否显示外边框 | N
 fixed | Boolean | true | 是否固定在底部 | N
+placeholder | Boolean | false | `1.12.1`。固定在底部时是否开启占位 | N
 safe-area-inset-bottom | Boolean | true | 是否开启底部安全区适配 | N
 shape | String | normal | 标签栏的形状。可选项：normal/round | N
 split | Boolean | true | 是否需要分割线 | N
 theme | String | normal | 选项风格。可选项：normal/tag | N
 value | String / Number / Array | - | 当前选中标签的索引。TS 类型：`string \| number \| Array<string \| number>` | N
 default-value | String / Number / Array | undefined | 当前选中标签的索引。非受控属性。TS 类型：`string \| number \| Array<string \| number>` | N
+z-index | Number | 1 | 标签栏层级 | N
 
 ### TabBar Events
 

@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="ChatMessage" leftArrow />
+<t-navbar class="demo-navbar" title="ChatMessage" leftArrow placeholder />
 <view class="demo">
   <t-demo-header
     title="ChatMessage 对话消息体"

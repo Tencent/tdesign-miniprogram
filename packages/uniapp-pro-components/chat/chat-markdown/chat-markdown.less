@@ -1,0 +1,192 @@
+@import 'tdesign-uniapp/common/style/base.less';
+
+@chat-markdown: ~'@{prefix}-chat-markdown';
+@chat-markdown-table: ~'@{prefix}-chat-markdown-table';
+
+@chat-markdown-color: @text-color-primary;
+@chat-markdown-line-height: 1.75;
+@chat-markdown-h1: 2em;
+@chat-markdown-h2: 1.75em;
+@chat-markdown-h3: 1.5em;
+@chat-markdown-h4: 1.25em;
+@chat-markdown-h5: 1em;
+@chat-markdown-h6: 0.75em;
+@chat-markdown-blockquote-color: @text-color-primary;
+@chat-markdown-blockquote-bg-color: @bg-color-secondarycontainer;
+@chat-markdown-blockquote-border: 4rpx solid @component-border;
+@chat-markdown-blockquote-padding: 0 0.75em;
+@chat-markdown-hr-height: 6rpx;
+@chat-markdown-link-color: @brand-color;
+@chat-markdown-codespan-bg-color: @bg-color-page;
+@chat-markdown-codespan-font-size: 0.8em;
+@chat-markdown-table-header-bg-color: @bg-color-component;
+@chat-markdown-table-padding: 5rpx 10rpx;
+
+.@{chat-markdown} {
+  color: @chat-markdown-color;
+  word-wrap: break-word;
+  word-break: break-word;
+  line-height: @chat-markdown-line-height;
+
+  // 内联样式
+  &-inline {
+    display: inline;
+  }
+
+  // 段落样式
+  &-p {
+    -webkit-margin-before: @spacer-1;
+    margin-block-start: @spacer-1;
+    -webkit-margin-after: @spacer-1;
+    margin-block-end: @spacer-1;
+
+    &:first-child {
+      -webkit-margin-before: 0;
+      margin-block-start: 0;
+    }
+
+    &:last-child {
+      -webkit-margin-after: 0;
+      margin-block-end: 0;
+    }
+  }
+
+  // 引用块样式
+  &-blockquote {
+    padding: @chat-markdown-blockquote-padding;
+    color: @chat-markdown-blockquote-color;
+    background-color: @chat-markdown-blockquote-bg-color;
+    border-left: @chat-markdown-blockquote-border;
+    margin-bottom: @spacer-1;
+  }
+
+  // 标题样式
+  &-h {
+    font-size: @chat-markdown-h5;
+    margin: @spacer-1 0;
+    font-weight: bold;
+
+    // 各级标题
+    &1 {
+      font-size: @chat-markdown-h1;
+    }
+
+    &2 {
+      font-size: @chat-markdown-h2;
+    }
+
+    &3 {
+      font-size: @chat-markdown-h3;
+    }
+
+    &4 {
+      font-size: @chat-markdown-h4;
+    }
+
+    &5 {
+      font-size: @chat-markdown-h5;
+    }
+
+    &6 {
+      font-size: @chat-markdown-h6;
+    }
+  }
+
+  // 强调样式
+  &-em {
+    font-style: italic;
+  }
+
+  // 加粗样式
+  &-strong {
+    font-weight: bold;
+  }
+
+  // 分割线样式
+  &-hr {
+    height: @chat-markdown-hr-height;
+    padding: 0;
+    margin: @spacer-1 0;
+    background-color: @component-border;
+    border: 0;
+  }
+
+  // 列表样式
+  &-list {
+    display: block;
+    padding: 0;
+    margin: 0 0 @spacer 1.5em;;
+
+    // 有序列表
+    &__decimal {
+      list-style-type: decimal;
+    }
+  }
+
+  // 列表项样式
+  &-list-item {
+    display: list-item;
+    margin-bottom: @spacer-1;
+  }
+
+  // 链接样式
+  &-link {
+    color: @chat-markdown-link-color;
+  }
+
+  // 删除线样式
+  &-del {
+    text-decoration: line-through;
+  }
+
+  // 代码样式
+  &-codespan {
+    padding: 4rpx 8rpx;
+    margin: 0 4rpx;
+    border-radius: 8rpx;
+    font-size: @chat-markdown-codespan-font-size;
+    overflow-x: auto;
+    background-color: @chat-markdown-codespan-bg-color;
+    border: 1rpx solid @component-border;
+  }
+
+  // 表格样式
+  .@{chat-markdown-table}__container {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+
+    // 表头组
+    &-thead {
+      display: table-header-group;
+    }
+
+    // 表体组
+    &-tbody {
+      display: table-row-group;
+    }
+
+    // 表格行
+    &-tr {
+      display: table-row;
+    }
+
+    // 表头单元格
+    &-th {
+      display: table-cell;
+      vertical-align: middle;
+      background-color: @chat-markdown-table-header-bg-color;
+      font-weight: bold;
+      padding: @chat-markdown-table-padding;
+      border: 1rpx solid @component-border;
+    }
+
+    // 表格单元格
+    &-td {
+      display: table-cell;
+      vertical-align: middle;
+      padding: @chat-markdown-table-padding;
+      border: 1rpx solid @component-border;
+    }
+  }
+}

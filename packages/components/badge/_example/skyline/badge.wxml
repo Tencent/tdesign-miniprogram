@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar class="block" title="Badge" left-arrow />
+  <t-navbar class="block" title="Badge" left-arrow placeholder zIndex="{{99}}" />
   <scroll-view scroll-y type="list" class="scroll-view">
     <view class="demo-title">Badge 徽标</view>
     <view class="demo-desc">用于告知用户，该区域的状态变化或者待处理任务的数量。</view>

@@ -6,6 +6,8 @@ _wechatide
 _example
 !packages/components/**/_example/
 !packages/pro-components/**/_example/
+!packages/uniapp-components/**/_example/
+!packages/uniapp-pro-components/**/_example/
 
 packages/tdesign-miniprogram/example/pages/*
 !packages/tdesign-miniprogram/example/pages/gulp-error
@@ -14,6 +16,21 @@ packages/tdesign-miniprogram/example/pages/*
 packages/tdesign-miniprogram/test/e2e
 packages/tdesign-miniprogram/test/unit
 packages/tdesign-miniprogram/test/unit-virtualHost
+
+# about uniapp 
+packages/tdesign-uniapp/example/src/_tdesign*
+packages/tdesign-uniapp/example/src/pages-more/
+packages/tdesign-uniapp/npm_dist/
+packages/tdesign-uniapp-chat/npm_dist/
+
+# about app of uniapp
+packages/tdesign-uniapp/app/uni_modules/tdesign-uniapp*/
+packages/tdesign-uniapp/app/unpackage/
+packages/tdesign-uniapp/app/pages-more/
+packages/tdesign-uniapp/app/pages/
+packages/tdesign-uniapp/app/components/
+packages/tdesign-uniapp/app/tdesign-uniapp-raw/
+
 
 .DS_Store
 node_modules

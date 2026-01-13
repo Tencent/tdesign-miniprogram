@@ -1,8 +1,9 @@
 @import '../common/style/base.less';
 
+@collapse-disabled-color: var(--td-collapse-disabled-color, @text-color-disabled);
 @collapse-header-text-color: var(--td-collapse-header-text-color, @text-color-primary);
 @collapse-content-text-color: var(--td-collapse-content-text-color, @text-color-primary);
-@collapse-header-text-disabled-color: var(--td-collapse-header-text-disabled-color, @text-color-disabled);
+@collapse-header-text-disabled-color: var(--td-collapse-header-text-disabled-color, @collapse-disabled-color);
 
 // font-size
 @collapse-title-font: var(--td-collapse-title-font, @font-body-large);
@@ -13,7 +14,8 @@
 @collapse-horizontal-padding: var(--td-collapse-horizontal-padding, 32rpx);
 @collapse-content-padding: var(--td-collapse-content-padding, 32rpx);
 @collapse-border-color: var(--td-collapse-border-color, @border-level-1-color);
-@collapse-icon-color: var(--td-collapse-icon-color, @font-gray-3);
+@collapse-left-icon-color: var(--td-collapse-left-icon-color, @brand-color);
+@collapse-icon-color: var(--td-collapse-icon-color, @text-color-placeholder);
 
 @collapse-panel-bg-color: var(--td-collapse-panel-bg-color, @bg-color-container);
 
@@ -41,8 +43,6 @@
     align-items: center;
     padding-left: @collapse-horizontal-padding;
     height: @collapse-header-height;
-    --td-cell-title-color: @collapse-header-text-color;
-    --td-cell-left-icon-color: @collapse-icon-color;
 
     &--top {
       .border(top, @collapse-border-color);
@@ -53,22 +53,7 @@
     }
 
     &::after {
-      left: 32rpx;
-    }
-
-    &-right {
-      display: inline-flex;
-      align-items: center;
-      height: 100%;
-    }
-
-    &-icon {
-      // 增大热区
-      height: 100%;
-      padding-left: 8px;
-      width: 44px;
-      padding-right: 8px;
-      color: @collapse-icon-color;
+      left: @spacer-2;
     }
   }
 
@@ -91,7 +76,7 @@
     padding: @collapse-content-padding;
 
     &--disabled {
-      color: @text-color-disabled;
+      color: @collapse-disabled-color;
     }
 
     &--expanded&--bottom {
@@ -108,24 +93,27 @@
   }
 }
 
+// cell: 统一用外部样式类自定义样式
 .class {
   &-title {
     font: @collapse-title-font;
-
-    &--disabled {
-      color: @text-color-disabled;
-    }
+    color: @collapse-header-text-color;
   }
 
-  &-note {
-    &--disabled {
-      color: @text-color-disabled;
-    }
+  &-left-icon {
+    color: @collapse-left-icon-color;
   }
 
   &-right-icon {
+    color: @collapse-icon-color;
+  }
+
+  &-title,
+  &-note,
+  &-left-icon,
+  &-right-icon {
     &--disabled {
-      color: @text-color-disabled;
+      color: @collapse-disabled-color;
     }
   }
 }

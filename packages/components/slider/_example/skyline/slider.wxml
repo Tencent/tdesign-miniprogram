@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar class="block" title="Slider" left-arrow />
+  <t-navbar class="block" title="Slider" left-arrow placeholder zIndex="{{99}}" />
   <scroll-view scroll-y type="list" class="scroll-view">
     <view class="demo">
       <view class="demo-title">Slider 滑动选择器</view>

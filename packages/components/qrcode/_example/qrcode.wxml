@@ -1,5 +1,5 @@
 <view class="skyline">
-  <t-navbar class="demo-navbar" title="QRCode" leftArrow />
+  <t-navbar class="demo-navbar" title="QRCode" leftArrow placeholder zIndex="{{99}}" />
   <view class="demo">
     <t-demo-header title="QRCode 二维码" notice="渲染框架支持情况：WebView">
       <view slot="desc">

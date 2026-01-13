@@ -1,4 +1,4 @@
-<t-navbar title="Cascader" leftArrow />
+<t-navbar title="Cascader" leftArrow placeholder />
 <view class="demo">
   <t-demo-header title="Cascader 级联选择器" desc="用于多层级数据的逐级选择。" notice="渲染框架支持情况：WebView" />
   <t-demo title="01 类型" desc="">

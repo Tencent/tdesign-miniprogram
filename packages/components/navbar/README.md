@@ -18,7 +18,7 @@ isComponent: true
 
 ## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/REHT3emm7kS5" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/XmyPWMmX8D5A" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -64,10 +64,12 @@ fixed | Boolean | true | 是否固定在顶部 | N
 home-icon | String | - | 已废弃。首页图标地址。值为 '' 或者 undefined 则表示不显示返回图标，值为 'circle' 表示显示默认图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址 | N
 left-arrow | Boolean | false | `0.26.0`。是否展示左侧箭头 | N
 left-icon | String | - | 已废弃。左侧图标地址，值为 '' 或者 undefined 则表示不显示返回图标，值为 'arrow-left' 表示显示返回图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址 | N
+placeholder | Boolean | false | `1.12.1`。固定在顶部时是否开启占位 | N
 safe-area-inset-top | Boolean | true | 是否开启顶部安全区适配 | N
 title | String | - | 页面标题 | N
 title-max-length | Number | - | 标题文字最大长度，超出的范围使用 `...` 表示 | N
 visible | Boolean | true | 是否显示 | N
+z-index | Number | 1 | 导航条层级 | N
 
 ### Navbar Events
 

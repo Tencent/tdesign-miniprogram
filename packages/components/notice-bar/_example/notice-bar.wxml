@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="NoticeBar" leftArrow />
+<t-navbar class="demo-navbar" title="NoticeBar" leftArrow placeholder />
 <view class="demo">
   <t-demo-header
     title="NoticeBar 公告栏"

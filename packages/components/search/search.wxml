@@ -32,6 +32,7 @@
       selection-end="{{selectionEnd}}"
       hold-keyboard="{{holdKeyboard}}"
       cursor-spacing="{{cursorSpacing}}"
+      cursor-color="{{cursorColor}}"
       placeholder="{{placeholder}}"
       placeholder-style="{{placeholderStyle}}"
       placeholder-class="{{placeholderClass}} {{classPrefix}}__placeholder {{classPrefix}}__placeholder--{{center ? 'center': 'normal'}}"
@@ -43,7 +44,7 @@
     <view
       wx:if="{{value !=='' && clearable && showClearIcon}}"
       class="{{classPrefix}}__clear hotspot-expanded {{prefix}}-class-clear"
-      catch:tap="handleClear"
+      catch:touchstart="handleClear"
       aria-role="button"
       aria-label="清除"
     >

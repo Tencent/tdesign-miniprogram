@@ -1,0 +1,15 @@
+@import '../common/style/base.less';
+
+@fab-shadow: var(--td-fab-shadow, @shadow-2);
+
+.@{prefix}-fab {
+  position: fixed;
+
+  &__button {
+    box-shadow: @fab-shadow;
+  }
+
+  &__draggable {
+    position: fixed;
+  }
+}

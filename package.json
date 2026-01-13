@@ -13,6 +13,8 @@
   "scripts": {
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development gulp dev --gulpfile script/gulpfile.js --cwd ./",
+    "uniapp": "pnpm -C packages/tdesign-uniapp",
+    "uniapp:chat": "pnpm -C packages/tdesign-uniapp-chat",
     "build": "cross-env NODE_ENV=production gulp build --gulpfile script/gulpfile.js --cwd ./",
     "build:dist": "gulp --gulpfile script/gulpfile.dist.js --cwd ./",
     "build:example": "gulp --gulpfile script/gulpfile.example.js --cwd ./",
@@ -29,6 +31,8 @@
     "site-chat:dev": "pnpm -C packages/tdesign-miniprogram-chat/site site:dev",
     "site-chat:prerender": "pnpm -C packages/tdesign-miniprogram-chat/site site:prerender",
     "m2w": "sh ./script/m2w.sh",
+    "m2w:base": "sh ./script/m2w.sh base",
+    "m2w:chat": "sh ./script/m2w.sh chat",
     "cover": "pnpm -C packages/tdesign-miniprogram/test cover",
     "test": "pnpm -C packages/tdesign-miniprogram/test test",
     "test:snap-update": "pnpm -C packages/tdesign-miniprogram/test test:snap-update",
@@ -41,6 +45,8 @@
     "changelog": "node script/generate-changelog.js",
     "robot": "publish-cli robot-msg",
     "qrcode": "pnpm -C packages/tdesign-miniprogram/site qrcode",
+    "build:uniapp": "pnpm -C packages/tdesign-uniapp run release:prepare",
+    "build:uniapp:chat": "pnpm -C packages/tdesign-uniapp run release:prepare",
     "snippet": "node snippets/generate-demo-snippet.mjs"
   },
   "author": "tdesign",
