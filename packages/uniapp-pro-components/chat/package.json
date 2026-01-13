@@ -126,7 +126,7 @@
     "eslint-plugin-tailwindcss": "catalog:",
     "eslint-plugin-vue": "9.14.0",
     "typescript": "5.1",
-    "vite": "5.2.8",
+    "vite": "catalog:",
     "vue": "catalog:",
     "vue-i18n": "catalog:",
     "vue-tsc": "^1.0.24"

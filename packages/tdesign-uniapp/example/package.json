@@ -81,7 +81,7 @@
     "tdesign-uniapp-auto-import-resolver": "catalog:",
     "unplugin-auto-import": "catalog:",
     "unplugin-vue-components": "catalog:",
-    "vite": "6.3.6",
+    "vite": "catalog:",
     "vue-tsc": "^1.0.24"
   }
 }
