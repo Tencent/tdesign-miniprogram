@@ -187,3 +187,5 @@ catalogs:
     '@dcloudio/uni-quickapp-webview': 3.0.0-4030620241128001
     '@dcloudio/uni-stacktracey': 3.0.0-4030620241128001
     '@dcloudio/vite-plugin-uni': 3.0.0-4030620241128001
+
+shamefullyHoist: true
