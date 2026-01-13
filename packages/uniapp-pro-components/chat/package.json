@@ -50,6 +50,20 @@
       "default": "./chat-thinking/chat-thinking.vue"
     }
   },
+  "keywords": [
+    "tdesign",
+    "miniprogram",
+    "uniapp",
+    "vue"
+  ],
+  "homepage": "https://tdesign.tencent.com/uniapp-chat/",
+  "bugs": {
+    "url": "https://github.com/Tencent/tdesign-miniprogram/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tencent/tdesign-miniprogram.git"
+  },
   "scripts": {
     "dev:custom": "uni -p",
     "dev:h5": "uni",

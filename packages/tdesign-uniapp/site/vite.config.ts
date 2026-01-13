@@ -6,17 +6,17 @@ import vueJsx from '@vitejs/plugin-vue-jsx';
 // import changelog2Json from './web/plugins/changelog-to-json';
 import tdocPlugin from './web/plugins/plugin-tdoc';
 
-const resolvePath = r => path.resolve(__dirname, r);
+const resolvePath = (r) => path.resolve(__dirname, r);
 
 const publicPathMap = {
   preview: '/',
-  production: '/uniapp/',
+  production: 'https://static.tdesign.tencent.com/uniapp/',
 };
 
-const isCustomElement = tag => tag.startsWith('td-');
+const isCustomElement = (tag) => tag.startsWith('td-');
 
 // Rollup 4+ 的 tree-shaking 策略调整, 这里是为了让样式在站点构建正常
-const disableTreeShakingPlugin = paths => ({
+const disableTreeShakingPlugin = (paths) => ({
   name: 'disable-treeshake',
   transform(code, id) {
     for (const path of paths) {
@@ -35,25 +35,27 @@ export default ({ mode }) => {
   const vueAppBase = env.VUE_APP_PUBLICPATH;
   const experimentalConfig = vueAppBase
     ? {
-      experimental: {
-        renderBuiltUrl(
-          filename: string,
-          {
-            hostId,
-            hostType,
-            type,
-          }: {
-            hostId: string;
-            hostType: string;
-            type: string;
-          },
-        ) {
-          console.log('[experimental] ', hostType, hostId, type, filename);
+        experimental: {
+          renderBuiltUrl(
+            filename: string,
+            {
+              hostId,
+              hostType,
+              type,
+            }: {
+              hostId: string;
+              hostType: string;
+              type: string;
+            },
+          ) {
+            console.log('[experimental] ', hostType, hostId, type, filename);
 
-          return path.join(vueAppBase, filename);
+            // 确保基础路径以 / 结尾
+            const basePath = vueAppBase.endsWith('/') ? vueAppBase : `${vueAppBase}/`;
+            return `${basePath}${filename}`;
+          },
         },
-      },
-    }
+      }
     : {};
 
   const result = defineConfig({

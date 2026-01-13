@@ -27,7 +27,7 @@
 
 ## 文档
 
-[点此查看](https://uwayfly.com/tdesign-uniapp/)
+[点此查看](https://tdesign.tencent.com/uniapp/)
 
 ## 预览
 
