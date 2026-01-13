@@ -92,7 +92,7 @@
     "eslint-config-prettier": "catalog:",
     "eslint-plugin-import": "catalog:",
     "eslint-plugin-prettier": "catalog:",
-    "eslint-plugin-vue": "^8.2.0",
+    "eslint-plugin-vue": "catalog:",
     "gray-matter": "catalog:",
     "jsdom": "catalog:",
     "less": "catalog:",

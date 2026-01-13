@@ -124,7 +124,7 @@
     "eslint-plugin-react": "catalog:",
     "eslint-plugin-react-hooks": "catalog:",
     "eslint-plugin-tailwindcss": "catalog:",
-    "eslint-plugin-vue": "9.14.0",
+    "eslint-plugin-vue": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
     "vue": "catalog:",
