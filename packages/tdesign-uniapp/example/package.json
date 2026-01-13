@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "private": "true",
   "scripts": {
-    "postbuild:h5": "mkdir -p ../site/dist/mobile && cp -r dist/build/h5/* ../site/dist/mobile",
+    "postbuild:h5": "mkdir -p ../site/dist/live && cp -r dist/build/h5/* ../site/dist/live",
     "dev:custom": "uni -p",
     "dev:h5": "uni",
     "dev:h5:ssr": "uni --ssr",

@@ -1,10 +1,7 @@
 import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 import uni from '@dcloudio/vite-plugin-uni';
-import {
-  genVersionMpVitePlugin,
-} from '@plugin-light/vite-plugin-gen-version';
-
+import { genVersionMpVitePlugin } from '@plugin-light/vite-plugin-gen-version';
 
 const diffPlugins: any[] = [];
 if (process.env.UNI_PLATFORM !== 'h5') {
@@ -15,7 +12,6 @@ if (process.env.UNI_PLATFORM !== 'h5') {
 // import Components from 'unplugin-vue-components/vite';
 // import { TDesignResolver } from 'tdesign-uniapp-auto-import-resolver';
 
-
 const baseAlias = {
   'tdesign-site': path.resolve(__dirname).replace(/\\/g, '/'),
   packages: path.resolve(__dirname, '../').replace(/\\/g, '/'),
@@ -24,7 +20,6 @@ const baseAlias = {
 };
 const ENV_PREFIX = ['VITE_', 'VUE_APP'];
 const root: string = process.cwd();
-
 
 export default ({ mode }) => {
   const env = loadEnv(mode, root, ENV_PREFIX);
@@ -52,7 +47,7 @@ export default ({ mode }) => {
         ...baseAlias,
       },
     },
-    base: vueAppBase || '/uniapp/mobile',
+    base: vueAppBase || '/uniapp/live',
     server: {
       port: 11111,
       hmr: true,
