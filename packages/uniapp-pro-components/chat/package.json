@@ -112,7 +112,7 @@
     "@typescript-eslint/parser": "7.18.0",
     "@vue/runtime-core": "^3.4.21",
     "@vue/tsconfig": "catalog:",
-    "eslint": "8.57.1",
+    "eslint": "catalog:",
     "eslint-config-light": "latest",
     "eslint-config-light-vue3": "latest",
     "eslint-import-resolver-alias": "catalog:",

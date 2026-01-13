@@ -469,7 +469,7 @@
     "concurrently": "catalog:",
     "dotenv": "catalog:",
     "echarts": "catalog:",
-    "eslint": "8.57.1",
+    "eslint": "catalog:",
     "eslint-config-light": "latest",
     "eslint-config-light-vue3": "latest",
     "eslint-import-resolver-alias": "catalog:",

@@ -68,7 +68,7 @@
     "cz-conventional-changelog": "catalog:",
     "dayjs": "catalog:",
     "del": "catalog:",
-    "eslint": "^7.0.0",
+    "eslint": "catalog:",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "catalog:",
