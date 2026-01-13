@@ -40,6 +40,7 @@ catalog:
   '@use-gesture/vanilla': ^10.3.0
   '@vitejs/plugin-vue': ^5.2.4
   '@vitejs/plugin-vue-jsx': ^4.2.0
+  '@vitest/coverage-v8': ^3.2.4
   '@vitest/ui': ^3.2.4
   '@vue/babel-plugin-jsx': 1.1.1
   '@vue/compiler-sfc': ^3.2.4
@@ -155,6 +156,7 @@ catalog:
   validator: ^13.5.1
   vite: ^6.3.5
   vite-plugin-tdoc: ^2.0.1
+  vitest: ^3.2.4
   vue: ^3.5.20
   vue-eslint-parser: ^8.0.1
   vue-i18n: ^9.1.9
