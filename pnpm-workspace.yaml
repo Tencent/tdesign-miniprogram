@@ -132,6 +132,7 @@ catalog:
   rollup-pluginutils: ^2.8.2
   sass: ^1.90.0
   standard-changelog: ^2.0.27
+  stylelint: ^13.13.1
   stylelint-config-common: 1.0.10
   stylelint-less: ^3.0.1
   stylelint-scss: 6.10.0

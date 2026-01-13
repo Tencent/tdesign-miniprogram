@@ -105,7 +105,7 @@
     "playwright": "catalog:",
     "prettier": "catalog:",
     "standard-changelog": "catalog:",
-    "stylelint": "^13.13.1",
+    "stylelint": "catalog:",
     "tdesign-publish-cli": "catalog:tdesign",
     "tinycolor2": "catalog:",
     "tslib": "catalog:",

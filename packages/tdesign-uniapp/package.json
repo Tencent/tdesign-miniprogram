@@ -488,7 +488,7 @@
     "miniprogram-api-typings": "catalog:miniprogram",
     "postcss-less": "catalog:",
     "postcss-rpx-transform": "catalog:",
-    "stylelint": "14.16.1",
+    "stylelint": "catalog:",
     "stylelint-config-common": "catalog:",
     "stylelint-config-standard": "^39.0.1",
     "stylelint-less": "catalog:",
