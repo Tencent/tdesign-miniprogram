@@ -120,7 +120,7 @@
     "eslint-plugin-import": "catalog:",
     "eslint-plugin-jest": "catalog:",
     "eslint-plugin-light": "latest",
-    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-prettier": "catalog:",
     "eslint-plugin-react": "catalog:",
     "eslint-plugin-react-hooks": "catalog:",
     "eslint-plugin-tailwindcss": "catalog:",
