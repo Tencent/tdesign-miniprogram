@@ -447,6 +447,7 @@
     "build:mp-jd": "pnpm --filter=\"./example\" build:mp-jd",
     "build:mp-baidu": "pnpm --filter=\"./example\" build:mp-baidu",
     "build:mp": "npm run build:mp-weixin",
+    "site": "pnpm run init && pnpm --filter=\"./site\" run build && pnpm --filter=\"./example\" build:h5",
     "site:dev": "pnpm --filter=\"./site\" run dev",
     "preview": "pnpm --filter=\"./site\" run site:preview && pnpm --filter=\"./example\" build:h5",
     "preview:chat": "pnpm --filter=\"./site-chat\" run site:preview && pnpm --filter=\"./example\" build:h5",
