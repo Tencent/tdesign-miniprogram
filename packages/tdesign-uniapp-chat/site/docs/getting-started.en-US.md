@@ -9,7 +9,7 @@ spline: explain
 Please use WeChat to scan the QR code to preview the TDesign UniApp example. ↓
 <br/>
 
-<img src="https://cdn.uwayfly.com/tdesign-uniapp/tdesign-uniapp-qrcodes.png?a=3" width="600" />
+<img src="https://tdesign.gtimg.com/miniprogram/uniapp/tdesign-uniapp-qrcodes.png" width="600" />
 
 ## Before use
 
@@ -86,7 +86,7 @@ Minimum base library version `^2.12.0`
 ### Correspondence between component and basic library versions
 
 | 组件   | API  | 最低基础库 | 描述 |
-| -- | -- | -- | -- | 
+| -- | -- | -- | -- |
 | Upload | [wx.previewMedia](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.previewMedia.html)                                   | 2.12.0     | -    |
 | Upload | [wx.chooseMedia](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html)                                     | 2.10.0     | -    |
 | Upload | [wx.chooseMessageFile](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseMessageFile.html)                         | 2.5.0      | -    |

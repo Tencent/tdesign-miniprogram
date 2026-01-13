@@ -8,7 +8,7 @@ spline: explain
 
 扫码查看 ↓
 
-<img src="https://cdn.uwayfly.com/tdesign-uniapp/tdesign-uniapp-qrcodes.png?a=3" width="600" />
+<img src="https://tdesign.gtimg.com/miniprogram/uniapp/tdesign-uniapp-qrcodes.png" width="600" />
 
 > 其他平台同样支持，仅因平台审核等原因未能上架预览，不影响组件库正常使用。
 
@@ -138,7 +138,7 @@ npm run dev:mp
 ### 组件与微信小程序基础库版本对应关系
 
 | 组件   | API | 最低基础库 | 描述 |
-| -- | -- | -- | -- | 
+| -- | -- | -- | -- |
 | Upload | [wx.previewMedia](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.previewMedia.html)                                   | 2.12.0     | -    |
 | Upload | [wx.chooseMedia](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html)                                     | 2.10.0     | -    |
 | Upload | [wx.chooseMessageFile](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseMessageFile.html)                         | 2.5.0      | -    |
