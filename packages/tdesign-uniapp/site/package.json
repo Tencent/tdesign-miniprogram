@@ -66,8 +66,8 @@
     "@types/prismjs": "catalog:",
     "@types/tinycolor2": "catalog:",
     "@types/validator": "catalog:",
-    "@typescript-eslint/eslint-plugin": "^5.5.0",
-    "@typescript-eslint/parser": "~5.34.0",
+    "@typescript-eslint/eslint-plugin": "catalog:",
+    "@typescript-eslint/parser": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
     "@vitejs/plugin-vue-jsx": "catalog:",
     "@vitest/coverage-v8": "^3.2.4",
@@ -120,13 +120,13 @@
     "rollup-plugin-vue": "catalog:",
     "rollup-pluginutils": "catalog:",
     "tslib": "catalog:",
-    "typescript": "~4.7.2",
+    "typescript": "catalog:",
     "vite": "catalog:",
     "vite-plugin-tdoc": "catalog:",
     "vitest": "^3.2.4",
     "vue": "catalog:",
     "vue-eslint-parser": "catalog:",
     "vue-router": "4.0.11",
-    "vue-tsc": "^0.40.0"
+    "vue-tsc": "catalog:"
   }
 }

@@ -462,8 +462,8 @@
     "@dcloudio/types": "catalog:uni",
     "@stylistic/eslint-plugin-jsx": "catalog:",
     "@types/node": "catalog:",
-    "@typescript-eslint/eslint-plugin": "^5.6.0",
-    "@typescript-eslint/parser": "~5.35.0",
+    "@typescript-eslint/eslint-plugin": "catalog:",
+    "@typescript-eslint/parser": "catalog:",
     "@vue/runtime-core": "^3.4.21",
     "@vue/tsconfig": "catalog:",
     "concurrently": "catalog:",
@@ -495,9 +495,9 @@
     "stylelint-scss": "catalog:",
     "t-comm": "catalog:",
     "tslib": "catalog:",
-    "typescript": "5.1",
+    "typescript": "catalog:",
     "vite": "catalog:",
-    "vue-tsc": "^1.0.24",
+    "vue-tsc": "catalog:",
     "zrender": "catalog:"
   },
   "lint-staged": {

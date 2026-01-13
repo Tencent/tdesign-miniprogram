@@ -60,8 +60,8 @@
     "@commitlint/cli": "catalog:",
     "@commitlint/config-conventional": "catalog:",
     "@types/node": "catalog:",
-    "@typescript-eslint/eslint-plugin": "^5.6.0",
-    "@typescript-eslint/parser": "~5.35.0",
+    "@typescript-eslint/eslint-plugin": "catalog:",
+    "@typescript-eslint/parser": "catalog:",
     "@vue/compiler-sfc": "catalog:",
     "commitizen": "catalog:",
     "cross-env": "catalog:",
@@ -109,7 +109,7 @@
     "tdesign-publish-cli": "catalog:tdesign",
     "tinycolor2": "catalog:",
     "tslib": "catalog:",
-    "typescript": "~4.7.2"
+    "typescript": "catalog:"
   },
   "config": {
     "commitizen": {
