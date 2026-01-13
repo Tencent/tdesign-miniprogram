@@ -464,7 +464,7 @@
     "@types/node": "catalog:",
     "@typescript-eslint/eslint-plugin": "catalog:",
     "@typescript-eslint/parser": "catalog:",
-    "@vue/runtime-core": "^3.4.21",
+    "@vue/runtime-core": "catalog:",
     "@vue/tsconfig": "catalog:",
     "concurrently": "catalog:",
     "dotenv": "catalog:",

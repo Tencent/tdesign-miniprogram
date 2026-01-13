@@ -74,7 +74,7 @@
     "@vitest/ui": "catalog:",
     "@vue/babel-plugin-jsx": "catalog:",
     "@vue/eslint-config-typescript": "catalog:",
-    "@vue/runtime-core": "^3.2.41",
+    "@vue/runtime-core": "catalog:",
     "@vue/shared": "catalog:",
     "@vue/test-utils": "catalog:",
     "autoprefixer": "catalog:",

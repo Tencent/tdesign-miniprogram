@@ -66,7 +66,7 @@
     "@dcloudio/uni-stacktracey": "catalog:uni",
     "@dcloudio/vite-plugin-uni": "catalog:uni",
     "@plugin-light/vite-plugin-gen-version": "catalog:",
-    "@vue/runtime-core": "^3.4.21",
+    "@vue/runtime-core": "catalog:",
     "@vue/tsconfig": "catalog:",
     "chokidar": "catalog:",
     "cos-nodejs-sdk-v5": "catalog:",
