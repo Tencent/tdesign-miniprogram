@@ -490,7 +490,7 @@
     "postcss-rpx-transform": "catalog:",
     "stylelint": "catalog:",
     "stylelint-config-common": "catalog:",
-    "stylelint-config-standard": "^39.0.1",
+    "stylelint-config-standard": "catalog:",
     "stylelint-less": "catalog:",
     "stylelint-scss": "catalog:",
     "t-comm": "catalog:",

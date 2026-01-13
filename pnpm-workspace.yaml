@@ -140,6 +140,7 @@ catalog:
   standard-changelog: ^2.0.27
   stylelint: ^13.13.1
   stylelint-config-common: 1.0.10
+  stylelint-config-standard: ^39.0.1
   stylelint-less: ^3.0.1
   stylelint-scss: 6.10.0
   t-comm: ^2.0.26
