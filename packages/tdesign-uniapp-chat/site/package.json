@@ -126,7 +126,7 @@
     "vitest": "^3.2.4",
     "vue": "catalog:",
     "vue-eslint-parser": "catalog:",
-    "vue-router": "4.0.11",
+    "vue-router": "catalog:",
     "vue-tsc": "catalog:"
   }
 }
