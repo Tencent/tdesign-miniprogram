@@ -124,7 +124,7 @@
     "vite": "catalog:",
     "vite-plugin-tdoc": "catalog:",
     "vitest": "^3.2.4",
-    "vue": "3.3.8",
+    "vue": "catalog:",
     "vue-eslint-parser": "catalog:",
     "vue-router": "4.0.11",
     "vue-tsc": "^0.40.0"

@@ -56,7 +56,7 @@
     "dayjs": "catalog:",
     "t-comm": "catalog:",
     "tinycolor2": "catalog:",
-    "vue": "^3.4.21",
+    "vue": "catalog:",
     "vue-i18n": "catalog:"
   },
   "devDependencies": {
