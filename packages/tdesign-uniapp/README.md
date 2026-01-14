@@ -33,7 +33,7 @@
 
 扫码查看 ↓
 
-<img src="https://tdesign.gtimg.com/miniprogram/uniapp/tdesign-uniapp-qrcodes.png" width="600" />
+<img src="https://tdesign.gtimg.com/uniapp/example-qrcode.png" width="600" />
 
 > 其他平台同样支持，仅因平台审核等原因未能上架预览，不影响组件库正常使用。
 

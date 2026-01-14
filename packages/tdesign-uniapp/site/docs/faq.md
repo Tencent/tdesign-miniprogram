@@ -63,9 +63,9 @@ uniapp 给的脚手架工程配置有问题，`src/env.d.ts` 文件的 `vue` 声
 1. 注释掉 `src/env.d.ts` 文件中 `vue` 的声明
 2. `tsconfig.json` 中配置 `"moduleResolution": "bundler"`
 
-<img src="https://mike-1255355338.cos.ap-guangzhou.myqcloud.com/article/2025/11/own_mike_XeC8BMxSQKPdc2GY.png" width="600" />
+<img src="https://tdesign.gtimg.com/uniapp/docs/faq-1.png" width="600" />
 
-<img src="https://mike-1255355338.cos.ap-guangzhou.myqcloud.com/article/2025/11/own_mike_Askm5PSWT8rMmh3G.png" width="600" />
+<img src="https://tdesign.gtimg.com/uniapp/docs/faq-2.png" width="600" />
 
 另外，它这个脚手架太老了，自己的 `tsconfig.json` 还飘红，升级下 `@vue/tsconfig` 可解决。
 

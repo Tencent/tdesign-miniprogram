@@ -9,7 +9,7 @@ spline: explain
 Please use WeChat to scan the QR code to preview the TDesign UniApp example. ↓
 <br/>
 
-<img src="https://tdesign.gtimg.com/miniprogram/uniapp/tdesign-uniapp-qrcodes.png" width="600" />
+<img src="https://tdesign.gtimg.com/uniapp/example-qrcode.png" width="600" />
 
 ## Before use
 
