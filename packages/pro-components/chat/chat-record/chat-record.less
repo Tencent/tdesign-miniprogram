@@ -1,0 +1,113 @@
+@import '../../../components/common/style/base.less';
+
+@chat-record: ~'@{prefix}-chat-record';
+
+@chat-record-bg-color: @bg-color-page;
+@chat-record-padding: 24rpx;
+
+@chat-record-empty-padding: 120rpx 48rpx;
+@chat-record-empty-text-color: @text-color-placeholder;
+@chat-record-empty-text-font: @font-body-large;
+
+@chat-record-time-padding: 24rpx 0;
+@chat-record-time-text-align: center;
+@chat-record-time-text-color: @text-color-placeholder;
+@chat-record-time-text-font: @font-body-small;
+
+@chat-record-item-margin-bottom: 24rpx;
+
+@chat-record-loadmore-padding: 32rpx 0;
+@chat-record-loadmore-text-align: center;
+@chat-record-loadmore-text-color: @text-color-placeholder;
+@chat-record-loadmore-text-font: @font-body-medium;
+@chat-record-loadmore-text-margin-left: 16rpx;
+
+@chat-record-finished-padding: 32rpx 0;
+@chat-record-finished-text-align: center;
+@chat-record-finished-text-color: @text-color-placeholder;
+@chat-record-finished-text-font: @font-body-small;
+
+.@{chat-record} {
+  width: 100%;
+  height: 100%;
+  background-color: @chat-record-bg-color;
+  position: relative;
+
+  // 空状态
+  &__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: @chat-record-empty-padding;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__empty-text {
+    color: @chat-record-empty-text-color;
+    font: @chat-record-empty-text-font;
+  }
+
+  // 滚动容器
+  &__scroll {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  // 列表容器
+  &__list {
+    padding: @chat-record-padding;
+  }
+
+  // 记录项
+  &__item {
+    margin-bottom: @chat-record-item-margin-bottom;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  // 时间分组
+  &__time {
+    padding: @chat-record-time-padding;
+    text-align: @chat-record-time-text-align;
+    color: @chat-record-time-text-color;
+    font: @chat-record-time-text-font;
+  }
+
+  // 消息容器
+  &__message {
+    width: 100%;
+  }
+
+  // 加载更多
+  &__loadmore {
+    padding: @chat-record-loadmore-padding;
+    text-align: @chat-record-loadmore-text-align;
+  }
+
+  &__loadmore-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__loadmore-text {
+    color: @chat-record-loadmore-text-color;
+    font: @chat-record-loadmore-text-font;
+    margin-left: @chat-record-loadmore-text-margin-left;
+  }
+
+  // 加载完成
+  &__finished {
+    padding: @chat-record-finished-padding;
+    text-align: @chat-record-finished-text-align;
+  }
+
+  &__finished-text {
+    color: @chat-record-finished-text-color;
+    font: @chat-record-finished-text-font;
+  }
+}

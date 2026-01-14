@@ -1,0 +1,69 @@
+<wxs src="./chat-record.wxs" module="utils" />
+
+<view class="{{classPrefix}}">
+  <!-- 空状态 -->
+  <view wx:if="{{!processedRecords || processedRecords.length === 0}}" class="{{classPrefix}}__empty">
+    <slot name="empty">
+      <view class="{{classPrefix}}__empty-text">{{emptyText}}</view>
+    </slot>
+  </view>
+
+  <!-- 记录列表 -->
+  <scroll-view
+    wx:else
+    class="{{classPrefix}}__scroll"
+    style="height: {{scrollViewHeight}}"
+    scroll-y="{{true}}"
+    scroll-into-view="{{scrollIntoView}}"
+    scroll-top="{{scrollTop}}"
+    bindscrolltoupper="handleScrollToUpper"
+    bindscroll="handleScroll"
+    upper-threshold="50"
+  >
+    <!-- 加载更多提示 -->
+    <view wx:if="{{!finished}}" class="{{classPrefix}}__loadmore">
+      <view wx:if="{{loading}}" class="{{classPrefix}}__loadmore-loading">
+        <t-loading size="40rpx" />
+        <text class="{{classPrefix}}__loadmore-text">{{loadingText}}</text>
+      </view>
+    </view>
+
+    <!-- 消息列表 -->
+    <view class="{{classPrefix}}__list">
+      <block wx:for="{{processedRecords}}" wx:key="id">
+        <view id="record-{{item.id}}" class="{{classPrefix}}__item">
+          <!-- 时间分组 -->
+          <view wx:if="{{item.showTime}}" class="{{classPrefix}}__time">
+            {{item.timeText}}
+          </view>
+
+          <!-- 消息内容 -->
+          <view
+            class="{{classPrefix}}__message"
+            data-record="{{item}}"
+            bindtap="handleMessageClick"
+            bindlongpress="handleMessageLongPress"
+          >
+            <slot name="message" record="{{item}}">
+              <t-chat-message
+                chat-id="{{item.id}}"
+                role="{{item.role}}"
+                content="{{item.content}}"
+                avatar="{{item.avatar}}"
+                name="{{item.name}}"
+                status="{{item.status}}"
+                variant="{{item.variant}}"
+                placement="{{item.placement}}"
+              />
+            </slot>
+          </view>
+        </view>
+      </block>
+    </view>
+
+    <!-- 加载完成提示 -->
+    <view wx:if="{{finished && processedRecords.length > 0}}" class="{{classPrefix}}__finished">
+      <text class="{{classPrefix}}__finished-text">{{finishedText}}</text>
+    </view>
+  </scroll-view>
+</view>
