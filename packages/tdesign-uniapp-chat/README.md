@@ -27,13 +27,13 @@
 
 ## 文档
 
-[点此查看](https://uwayfly.com/tdesign-uniapp-chat/)
+[点此查看](https://tdesign.tencent.com/uniapp-chat/)
 
 ## 预览
 
 扫码查看 ↓
 
-<img src="https://cdn.uwayfly.com/tdesign-uniapp/tdesign-uniapp-qrcodes.png?a=3" width="600" />
+<img src="https://tdesign.gtimg.com/uniapp/example-qrcode.png" width="600" />
 
 > 其他平台同样支持，仅因平台审核等原因未能上架预览，不影响组件库正常使用。
 
