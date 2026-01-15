@@ -18,8 +18,7 @@ import packageJson from '../../../tdesign-uniapp-chat/package.json';
 import siteConfig from '../docs.config';
 import { filterVersions, sortDocs } from './utils';
 
-const registryUrl =
-  'https://service-edbzjd6y-1257786608.hk.apigw.tencentcs.com/release/npm/versions/tdesign-mobile-vue';
+const registryUrl = 'https://service-edbzjd6y-1257786608.hk.apigw.tencentcs.com/release/npm/versions/tdesign-uniapp';
 const currentVersion = packageJson.version.replace(/\./g, '_');
 
 // eslint-disable-next-line light/json-parse-try-catch
