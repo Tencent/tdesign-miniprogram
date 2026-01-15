@@ -23,6 +23,7 @@ exports[`collapse :defaultExpandAll 1`] = `
           <t-cell
             tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
             tClassHover="class-header-hover"
+            tClassLeftIcon="class-left-icon "
             tClassNote="class-note "
             tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
             tClassTitle="class-title "
@@ -109,6 +110,7 @@ exports[`collapse :defaultExpandAll 1`] = `
           <t-cell
             tClass="t-collapse-panel__header t-collapse-panel__header--bottom t-collapse-panel__header--expanded t-class-header"
             tClassHover="class-header-hover"
+            tClassLeftIcon="class-left-icon "
             tClassNote="class-note "
             tClassRightIcon="class-right-icon t-collapse-panel__arrow--bottom "
             tClassTitle="class-title "

@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="ImageViewer" leftArrow />
+<t-navbar class="demo-navbar" title="ImageViewer" leftArrow placeholder />
 <view class="demo">
   <t-demo-header
     title="ImageViewer 图片预览"

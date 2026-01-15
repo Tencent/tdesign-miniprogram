@@ -1,0 +1,55 @@
+@import '../_variables.less';
+
+.hairline-base() {
+  position: absolute;
+  box-sizing: border-box;
+  content: ' ';
+  pointer-events: none;
+}
+
+.hairline(@color: @border-level-1-color) {
+  .hairline-base();
+  top: -50%;
+  right: -50%;
+  bottom: -50%;
+  left: -50%;
+  border: 1px solid @color;
+  transform: scale(0.5);
+}
+
+.hairline-top(@color: @border-level-1-color) {
+  .hairline-base();
+  right: 0;
+  left: 0;
+  top: 0;
+  border-top: 1px solid @color;
+  transform: scaleY(0.5);
+  transform-origin: 0 0;
+}
+
+.hairline-bottom(@color: @border-level-1-color, @width: 1px) {
+  .hairline-base();
+  right: 0;
+  left: 0;
+  bottom: 0;
+  border-bottom: @width solid @color;
+  transform: scaleY(0.5);
+}
+
+.hairline-left(@color: @border-level-1-color) {
+  .hairline-base();
+  top: 0;
+  bottom: 0;
+  left: 0;
+  border-left: 1px solid @color;
+  transform: scaleX(0.5);
+}
+
+.hairline-right(@color: @border-level-1-color) {
+  .hairline-base();
+  top: 0;
+  bottom: 0;
+  right: 0;
+  border-right: 1px solid @color;
+  transform: scaleX(0.5);
+}

@@ -31,8 +31,10 @@ export default class Picker extends SuperComponent {
 
   observers = {
     'value, visible'(value, visible) {
-      // 只在打开弹窗或value变化时更新，关闭时不更新避免滚动
-      if (visible) {
+      const { usePopup } = this.properties;
+      // 平铺模式（usePopup=false）：始终响应 value 变化
+      // 弹窗模式（usePopup=true）：只在打开弹窗时更新，关闭时不更新避免回弹
+      if (!usePopup || visible) {
         this.updateChildren();
         this.updateIndicatorPosition();
       }

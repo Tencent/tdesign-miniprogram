@@ -88,7 +88,7 @@ const generateDemoSnippets = (componentName) => {
 
   const VERSION = getPackageVersion();
   const filterFiles = ['skyline']; // 需要过滤的示例文件夹
-  const saveFileTypes = ['js', 'json', 'wxml', 'wxss']; // 需要保存的文件类型
+  const saveFileTypes = ['js', 'json', 'wxml', 'wxss', 'wxs']; // 需要保存的文件类型
 
   const baseDemoPath = path.resolve(__dirname, './templates');
   const snippetsTargetPath = path.resolve(__dirname, './__snippets__/');

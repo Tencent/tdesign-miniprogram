@@ -1,0 +1,17 @@
+:deep(.chat-sender-placeholder) {
+    --demo-chat-sender-placeholder: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :deep(.chat-sender-placeholder) {
+        --demo-chat-sender-placeholder: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.t-button {
+    margin-right: 32rpx;
+}
+
+.t-button:last-child {
+    margin-right: 0;
+}

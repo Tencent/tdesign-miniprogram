@@ -1,5 +1,5 @@
 import { prefix } from './config';
-import { isString, isNumber, isDef, isBoolean, isObject } from './validator';
+import { isString, isNumeric, isDef, isBoolean, isObject } from './validator';
 import { getWindowInfo, getAppBaseInfo, getDeviceInfo } from './wechat';
 
 interface WxWorkSystemInfo extends WechatMiniprogram.SystemInfo {
@@ -152,7 +152,7 @@ export const addUnit = function (value?: string | number): string | undefined {
     return undefined;
   }
   value = String(value);
-  return isNumber(value) ? `${value}px` : value;
+  return isNumeric(value) ? `${value}px` : value;
 };
 
 /**

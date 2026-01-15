@@ -161,50 +161,59 @@ export default class Popover extends SuperComponent {
       return start + triggerSize / 2 - contentSize / 2;
     },
 
-    calcPlacement(placement: string, triggerRect: any, contentRect: any) {
-      const { isHorizontal, isVertical } = this.getToward(placement);
-      // 获取内容大小
-      const { width: contentWidth, height: contentHeight } = contentRect;
-      // 获取所在位置
-      const { left: triggerLeft, top: triggerTop, right: triggerRight, bottom: triggerBottom } = triggerRect;
-      // 是否能正常放置
-      let canPlace = true;
-      const { windowWidth, windowHeight } = getWindowInfo();
-      let finalPlacement = placement;
+    calcPlacement(isFixed: boolean, placement: string, triggerRect: any, contentRect: any) {
+      return new Promise<{ placement: string; top: number; left: number }>((resolve) => {
+        // 选取当前组件节点所在的组件实例，以支持 fixed 定位的元素计算位置
+        const owner = this.selectOwnerComponent().createSelectorQuery();
+        owner.select(`.${name}-wrapper--fixed`).boundingClientRect();
+        owner.exec((b) => {
+          const [triggerChildRect] = b;
+          if (triggerChildRect && isFixed) {
+            triggerRect = triggerChildRect;
+          }
 
-      if (isHorizontal) {
-        if (placement.startsWith('top')) {
-          canPlace = triggerTop - contentHeight >= 0;
-        } else if (placement.startsWith('bottom')) {
-          canPlace = triggerBottom + contentHeight <= windowHeight;
-        }
-      } else if (isVertical) {
-        if (placement.startsWith('left')) {
-          canPlace = triggerLeft - contentWidth >= 0;
-        } else if (placement.startsWith('right')) {
-          canPlace = triggerRight + contentWidth <= windowWidth;
-        }
-      }
+          const { isHorizontal, isVertical } = this.getToward(placement);
+          // 获取内容大小
+          const { width: contentWidth, height: contentHeight } = contentRect;
+          // 获取所在位置
+          const { left: triggerLeft, top: triggerTop, right: triggerRight, bottom: triggerBottom } = triggerRect;
+          // 是否能正常放置
+          let canPlace = true;
+          const { windowWidth, windowHeight } = getWindowInfo();
+          let finalPlacement = placement;
 
-      if (!canPlace) {
-        // 反向
-        if (isHorizontal) {
-          finalPlacement = placement.startsWith('top')
-            ? placement.replace('top', 'bottom')
-            : placement.replace('bottom', 'top');
-        } else if (isVertical) {
-          finalPlacement = placement.startsWith('left')
-            ? placement.replace('left', 'right')
-            : placement.replace('right', 'left');
-        }
-      }
+          if (isHorizontal) {
+            if (placement.startsWith('top')) {
+              canPlace = triggerTop - contentHeight >= 0;
+            } else if (placement.startsWith('bottom')) {
+              canPlace = triggerBottom + contentHeight <= windowHeight;
+            }
+          } else if (isVertical) {
+            if (placement.startsWith('left')) {
+              canPlace = triggerLeft - contentWidth >= 0;
+            } else if (placement.startsWith('right')) {
+              canPlace = triggerRight + contentWidth <= windowWidth;
+            }
+          }
 
-      const basePos = this.calcContentPosition(finalPlacement, triggerRect, contentRect);
+          if (!canPlace) {
+            // 反向
+            if (isHorizontal) {
+              finalPlacement = placement.startsWith('top')
+                ? placement.replace('top', 'bottom')
+                : placement.replace('bottom', 'top');
+            } else if (isVertical) {
+              finalPlacement = placement.startsWith('left')
+                ? placement.replace('left', 'right')
+                : placement.replace('right', 'left');
+            }
+          }
 
-      return {
-        placement: finalPlacement,
-        ...basePos,
-      };
+          const basePos = this.calcContentPosition(finalPlacement, triggerRect, contentRect);
+
+          resolve({ placement: finalPlacement, ...basePos });
+        });
+      });
     },
 
     async computePosition() {
@@ -217,18 +226,27 @@ export default class Popover extends SuperComponent {
       query.select(`#${name}-content`).boundingClientRect();
 
       query.selectViewport().scrollOffset();
-      query.exec((res) => {
+      query.exec(async (res) => {
         const [triggerRect, contentRect, viewportOffset] = res;
         if (!triggerRect || !contentRect) return;
 
+        // 如果 fixed 定位，不需要加上滚动偏移量
+        const isFixed = this.properties.fixed;
         // 最终放置位置
-        const { placement: finalPlacement, ...basePos } = this.calcPlacement(_placement, triggerRect, contentRect);
-        // TODO 优化：滚动时可能导致箭头闪烁
+        const { placement: finalPlacement, ...basePos } = await this.calcPlacement(
+          isFixed,
+          _placement,
+          triggerRect,
+          contentRect,
+        );
+
+        // TODO 优化：滚动时切换placement可能导致箭头闪烁
         this.setData({ _placement: finalPlacement });
 
-        const { scrollTop = 0, scrollLeft = 0 } = viewportOffset;
-        const top = basePos.top + scrollTop;
-        const left = basePos.left + scrollLeft;
+        const { scrollTop = 0, scrollLeft = 0 } = viewportOffset || {};
+
+        const top = isFixed ? basePos.top : basePos.top + scrollTop;
+        const left = isFixed ? basePos.left : basePos.left + scrollLeft;
 
         const style = `top:${Math.max(top, 0)}px;left:${Math.max(left, 0)}px;`;
         const arrowStyle = this.calcArrowStyle(_placement, triggerRect, contentRect);

@@ -35,12 +35,6 @@ var getBadgeStyles = function (props) {
   return styleStr;
 };
 
-var getBadgeOuterClass = function (props) {
-  var baseClass = props.classPrefix;
-  var classNames = [baseClass, props.shape === 'ribbon' ? baseClass + '__ribbon-outer' : ''];
-  return classNames.join(' ');
-};
-
 var getBadgeInnerClass = function (props) {
   var baseClass = props.classPrefix;
   var classNames = [
@@ -66,6 +60,5 @@ var isShowBadge = function (props) {
 
 module.exports.getBadgeValue = getBadgeValue;
 module.exports.getBadgeStyles = getBadgeStyles;
-module.exports.getBadgeOuterClass = getBadgeOuterClass;
 module.exports.getBadgeInnerClass = getBadgeInnerClass;
 module.exports.isShowBadge = isShowBadge;

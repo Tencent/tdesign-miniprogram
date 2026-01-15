@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="Overlay" leftArrow />
+<t-navbar class="demo-navbar" title="Overlay" leftArrow placeholder />
 <view class="demo">
   <t-demo-header
     title="Overlay 遮罩层"

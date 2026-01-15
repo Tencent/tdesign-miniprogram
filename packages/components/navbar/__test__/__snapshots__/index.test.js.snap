@@ -5,11 +5,8 @@ exports[`navbar :base 1`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed t-navbar--visible-animation class t-class"
-      style="--td-navbar-padding-top: 20px; --td-navbar-right: 94px; --td-navbar-left-max-width: 281px; --td-navbar-capsule-height: 32px; --td-navbar-capsule-width: 87px; --td-navbar-height: 40px; --td-navbar-center-left: 94px; --td-navbar-center-width: 187px;"
+      style="--td-navbar-padding-top: 20px; --td-navbar-right: 94px; --td-navbar-left-max-width: 281px; --td-navbar-capsule-height: 32px; --td-navbar-capsule-width: 87px; --td-navbar-height: 40px; z-index: 1; --td-navbar-center-left: 94px; --td-navbar-center-width: 187px;"
     >
-      <wx-view
-        class="t-navbar__placeholder t-class-placeholder"
-      />
       <wx-view
         class="t-navbar__content t-class-content"
       >
@@ -40,11 +37,8 @@ exports[`navbar :base 2`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed t-navbar--hide-animation class t-class"
-      style="--td-navbar-padding-top: 20px; --td-navbar-right: 94px; --td-navbar-left-max-width: 281px; --td-navbar-capsule-height: 32px; --td-navbar-capsule-width: 87px; --td-navbar-height: 40px; --td-navbar-center-left: 94px; --td-navbar-center-width: 187px;"
+      style="--td-navbar-padding-top: 20px; --td-navbar-right: 94px; --td-navbar-left-max-width: 281px; --td-navbar-capsule-height: 32px; --td-navbar-capsule-width: 87px; --td-navbar-height: 40px; z-index: 1; --td-navbar-center-left: 94px; --td-navbar-center-width: 187px;"
     >
-      <wx-view
-        class="t-navbar__placeholder t-class-placeholder"
-      />
       <wx-view
         class="t-navbar__content t-class-content"
       >
@@ -75,11 +69,8 @@ exports[`navbar :base 3`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed t-navbar--hide class t-class"
-      style="--td-navbar-padding-top: 20px; --td-navbar-right: 94px; --td-navbar-left-max-width: 281px; --td-navbar-capsule-height: 32px; --td-navbar-capsule-width: 87px; --td-navbar-height: 40px; --td-navbar-center-left: 94px; --td-navbar-center-width: 187px;"
+      style="--td-navbar-padding-top: 20px; --td-navbar-right: 94px; --td-navbar-left-max-width: 281px; --td-navbar-capsule-height: 32px; --td-navbar-capsule-width: 87px; --td-navbar-height: 40px; z-index: 1; --td-navbar-center-left: 94px; --td-navbar-center-width: 187px;"
     >
-      <wx-view
-        class="t-navbar__placeholder t-class-placeholder"
-      />
       <wx-view
         class="t-navbar__content t-class-content"
       >
@@ -110,11 +101,8 @@ exports[`navbar :fixed 1`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed t-navbar--visible-animation class t-class"
-      style="--td-navbar-padding-top: 20px; --td-navbar-right: 94px; --td-navbar-left-max-width: 281px; --td-navbar-capsule-height: 32px; --td-navbar-capsule-width: 87px; --td-navbar-height: 40px; --td-navbar-center-left: 94px; --td-navbar-center-width: 187px;"
+      style="--td-navbar-padding-top: 20px; --td-navbar-right: 94px; --td-navbar-left-max-width: 281px; --td-navbar-capsule-height: 32px; --td-navbar-capsule-width: 87px; --td-navbar-height: 40px; z-index: 1; --td-navbar-center-left: 94px; --td-navbar-center-width: 187px;"
     >
-      <wx-view
-        class="t-navbar__placeholder t-class-placeholder"
-      />
       <wx-view
         class="t-navbar__content t-class-content"
       >
@@ -145,11 +133,8 @@ exports[`navbar :menu button 1`] = `
   <t-navbar>
     <wx-view
       class="t-navbar t-navbar--fixed  class t-class"
-      style="--td-navbar-padding-top: 20px; --td-navbar-right: 375px; --td-navbar-left-max-width: 0px; --td-navbar-capsule-height: 10px; --td-navbar-capsule-width: 40px; --td-navbar-height: -10px; --td-navbar-center-left: 375px; --td-navbar-center-width: 0px;"
+      style="--td-navbar-padding-top: 20px; --td-navbar-right: 375px; --td-navbar-left-max-width: 0px; --td-navbar-capsule-height: 10px; --td-navbar-capsule-width: 40px; --td-navbar-height: -10px; z-index: 1; --td-navbar-center-left: 375px; --td-navbar-center-width: 0px;"
     >
-      <wx-view
-        class="t-navbar__placeholder t-class-placeholder"
-      />
       <wx-view
         class="t-navbar__content t-class-content"
       >

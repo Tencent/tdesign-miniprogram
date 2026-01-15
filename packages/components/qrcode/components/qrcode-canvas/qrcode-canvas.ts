@@ -24,7 +24,7 @@ export default class QRCode extends SuperComponent {
 
   methods = {
     async initCanvas() {
-      const query = wx.createSelectorQuery().in(this);
+      const query = this.createSelectorQuery();
       query
         .select('#qrcodeCanvas')
         .fields({ node: true, size: true })
@@ -140,7 +140,7 @@ export default class QRCode extends SuperComponent {
     // 暴露 canvas 节点给父组件
     getCanvasNode() {
       return new Promise((resolve) => {
-        const query = wx.createSelectorQuery().in(this);
+        const query = this.createSelectorQuery();
         query
           .select('#qrcodeCanvas')
           .fields({ node: true, size: true })

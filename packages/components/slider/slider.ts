@@ -177,10 +177,11 @@ export default class Slider extends SuperComponent {
   }
 
   triggerValue(value?: SliderValue) {
-    if (this.preval === value) return;
-    this.preval = value;
+    const trimmedValue = trimValue(value, this.properties);
+    if (JSON.stringify(this.preval) === JSON.stringify(trimmedValue)) return;
+    this.preval = trimmedValue;
     this._trigger('change', {
-      value: trimValue(value, this.properties),
+      value: trimmedValue,
     });
   }
 
@@ -215,7 +216,10 @@ export default class Slider extends SuperComponent {
     const value = trimValue(newValue, this.properties);
     const realLabel = this.getLabelByValue(value);
 
-    this.triggerValue(value);
+    // 避免受控模式下死循环，同时不影响初始化后的首次点击
+    if (this.preval !== undefined) {
+      this.preval = value;
+    }
 
     const setValueAndTrigger = () => {
       this.setData({

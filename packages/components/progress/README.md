@@ -28,7 +28,7 @@ isComponent: true
 
 ## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/qua7YimQ7tSx" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/32zr7MmR8054" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -95,7 +95,7 @@ t-class-label | 标签样式类
 --td-progress-inner-bg-color-success | @success-color | -
 --td-progress-inner-bg-color-warning | @warning-color | -
 --td-progress-circle-icon-size | 96rpx | -
---td-progress-circle-inner-bg-color | @text-color-anti | -
+--td-progress-circle-inner-bg-color | @bg-color-container | -
 --td-progress-circle-label-font | @font-title-extraLarge | -
 --td-progress-circle-width | 224rpx | -
 --td-progress-inner-bg-color | @brand-color | -

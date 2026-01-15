@@ -27,7 +27,7 @@ isComponent: true
 
 ## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/P67sAimx75Sy" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/d6Xg3Nmp8W5B" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -126,11 +126,13 @@ t-class-header | 头部样式类
 --td-collapse-content-font | @font-body-medium | -
 --td-collapse-content-padding | 32rpx | -
 --td-collapse-content-text-color | @text-color-primary | -
+--td-collapse-disabled-color | @text-color-disabled | -
 --td-collapse-extra-font | @font-body-large | -
 --td-collapse-header-height | auto | -
 --td-collapse-header-text-color | @text-color-primary | -
---td-collapse-header-text-disabled-color | @text-color-disabled | -
+--td-collapse-header-text-disabled-color | @collapse-disabled-color | -
 --td-collapse-horizontal-padding | 32rpx | -
---td-collapse-icon-color | @font-gray-3 | -
+--td-collapse-icon-color | @text-color-placeholder | -
+--td-collapse-left-icon-color | @brand-color | -
 --td-collapse-panel-bg-color | @bg-color-container | -
 --td-collapse-title-font | @font-body-large | -

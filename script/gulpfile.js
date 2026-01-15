@@ -5,7 +5,7 @@ const wechatide = require('./gulpfile.wechatide');
 /** `gulp build`
  * 构建
  * */
-const build = gulp.series(dist.build, example.build);
+const build = gulp.series(dist.build, example.build('all'));
 
 /** `gulp watch`
  * 监听

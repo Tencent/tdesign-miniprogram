@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="Button" leftArrow />
+<t-navbar class="demo-navbar" title="Button" leftArrow placeholder />
 <view class="demo">
   <t-demo-header
     title="Button 按钮"
