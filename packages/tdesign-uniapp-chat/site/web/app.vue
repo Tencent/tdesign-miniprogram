@@ -1,28 +1,14 @@
 <!-- eslint-disable vue/no-deprecated-slot-attribute -->
 <template>
   <td-doc-layout>
-    <td-header
-      slot="header"
-      platform="mobile"
-      framework="uniapp"
-    >
-      <td-doc-search
-        slot="search"
-        ref="tdDocSearch"
-      />
+    <td-header slot="header" platform="mobile" framework="uniapp">
+      <td-doc-search slot="search" ref="tdDocSearch" />
     </td-header>
-    <td-doc-aside
-      ref="tdDocAside"
-      title="Uni App Chat"
-    >
+    <td-doc-aside ref="tdDocAside" title="Uni App Chat">
       <!-- <td-select ref="tdSelect" :value="version" slot="extra"></td-select> -->
     </td-doc-aside>
 
-    <router-view
-      :style="contentStyle"
-      :doc-type="docType"
-      @loaded="contentLoaded"
-    />
+    <router-view :style="contentStyle" :doc-type="docType" @loaded="contentLoaded" />
   </td-doc-layout>
 </template>
 
@@ -32,7 +18,8 @@ import packageJson from '../../../tdesign-uniapp-chat/package.json';
 import siteConfig from '../docs.config';
 import { filterVersions, sortDocs } from './utils';
 
-const registryUrl =  'https://service-edbzjd6y-1257786608.hk.apigw.tencentcs.com/release/npm/versions/tdesign-mobile-vue';
+const registryUrl =
+  'https://service-edbzjd6y-1257786608.hk.apigw.tencentcs.com/release/npm/versions/tdesign-mobile-vue';
 const currentVersion = packageJson.version.replace(/\./g, '_');
 
 // eslint-disable-next-line light/json-parse-try-catch
@@ -91,7 +78,7 @@ export default defineComponent({
   methods: {
     initHistoryVersions() {
       fetch(registryUrl)
-        .then(res => res.json())
+        .then((res) => res.json())
         .then((res) => {
           const options = [];
           const versions = filterVersions(Object.keys(res.versions));
@@ -109,7 +96,7 @@ export default defineComponent({
     },
     initThemeGenerator() {
       const generator = document.createElement('td-theme-generator');
-      generator.setAttribute('device', 'uniapp');
+      generator.setAttribute('device', 'uni-app');
       document.body.appendChild(generator);
     },
     contentLoaded(callback) {

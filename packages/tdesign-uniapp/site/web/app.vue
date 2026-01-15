@@ -109,7 +109,7 @@ export default defineComponent({
     },
     initThemeGenerator() {
       const generator = document.createElement('td-theme-generator');
-      generator.setAttribute('device', 'uniapp');
+      generator.setAttribute('device', 'uni-app');
       document.body.appendChild(generator);
     },
     contentLoaded(callback) {

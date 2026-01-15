@@ -69,10 +69,16 @@ export default ({ mode }) => {
       },
     },
     server: {
-      host: '0.0.0.0',
+      host: '127.0.0.1',
       port: 19003,
       open: '/',
       https: false as any,
+      proxy: {
+        '/uniapp/live': {
+          target: 'http://127.0.0.1:11111',
+          changeOrigin: true,
+        },
+      },
     },
     build: {
       outDir: './dist',

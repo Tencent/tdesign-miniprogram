@@ -22,9 +22,7 @@ function getMobilePrefix(mode) {
   if (mode === 'preview') {
     return 'https://tdesign.tencent.com/uniapp/live';
   }
-  if (process.env.NODE_ENV === 'development') {
-    return 'http://localhost:11111/uniapp/live';
-  }
+
   return '/uniapp/live';
 }
 

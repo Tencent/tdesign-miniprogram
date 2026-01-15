@@ -49,6 +49,7 @@ export default ({ mode }) => {
     },
     base: vueAppBase || '/uniapp/live',
     server: {
+      host: '127.0.0.1',
       port: 11111,
       hmr: true,
       watch: {
