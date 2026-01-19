@@ -118,7 +118,10 @@ export default uniComponent({
       this.scrollViewTop = scrollTop;
     },
     scrollToBottom() {
-      this.setScrollTop();
+      // reverse 为 true 时，滚动到 0 即为底部
+      // reverse 为 false 时，需要滚动到一个很大的值才能到底部
+      const scrollTop = this.reverse ? 0 : 999999;
+      this.setScrollTop(scrollTop);
     },
     onScroll(e) {
       this.$emit('scroll', e);
