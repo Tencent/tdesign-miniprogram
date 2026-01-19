@@ -14,10 +14,12 @@ fixed | Boolean | true | \- | N
 home-icon | String | - | `deprecated`。homeIcon | N
 left-arrow | Boolean | false | \- | N
 left-icon | String | - | `deprecated` | N
+placeholder | Boolean | false | \- | N
 safe-area-inset-top | Boolean | true | \- | N
 title | String | - | page title | N
 title-max-length | Number | - | \- | N
 visible | Boolean | true | \- | N
+z-index | Number | 1 | \- | N
 
 ### Navbar Events
 

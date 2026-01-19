@@ -4,6 +4,7 @@
       t-class="t-tab-bar"
       :value="value"
       theme="tag"
+      :fixed="false"
       :split="false"
       @change="onChange"
     >

@@ -4,7 +4,7 @@
     :style="tools._style([boxStyle, customStyle])"
   >
     <view
-      v-if="fixed"
+      v-if="fixed && placeholder"
       :class="classPrefix + '__placeholder ' + tClassPlaceholder"
     />
     <view :class="classPrefix + '__content ' + tClassContent">
