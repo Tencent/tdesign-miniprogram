@@ -85,30 +85,26 @@ header | 顶部插槽，仅在 `usePopup` 为 `true` 时有效
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-color-picker-background | #fff | - |
-| --td-color-picker-border-radius-circle | 50% | - |
-| --td-color-picker-format-background-color | @gray-color-1 | - |
-| --td-color-picker-gradient-preview-height | 56rpx | - |
-| --td-color-picker-gradient-preview-radius | 6rpx | - |
-| --td-color-picker-gradient-preview-width | 56rpx | - |
-| --td-color-picker-input-format-margin-left | 48rpx | - |
-| --td-color-picker-margin | 24rpx | - |
-| --td-color-picker-panel-padding | 32rpx | - |
-| --td-color-picker-panel-radius | 24rpx | - |
-| --td-color-picker-panel-width | 750rpx | - |
-| --td-color-picker-saturation-height | 288rpx | - |
-| --td-color-picker-saturation-radius | 12rpx | - |
-| --td-color-picker-saturation-thumb-size | 48rpx | - |
-| --td-color-picker-slider-height | 16rpx | - |
-| --td-color-picker-slider-thumb-padding | 6rpx | - |
-| --td-color-picker-slider-thumb-size | 48rpx | - |
-| --td-color-picker-slider-thumb-transform-x | -18rpx | - |
-| --td-color-picker-slider-wrapper-padding | 0 18rpx | - |
-| --td-color-picker-swatch-active | rgba(0, 0, 0, 0.2) | - |
-| --td-color-picker-swatch-border-radius | 6rpx | - |
-| --td-color-picker-swatch-height | 48rpx | - |
-| --td-color-picker-swatch-padding | 0 | - |
-| --td-color-picker-swatch-width | 48rpx | - |
-| --td-color-picker-swatches-title-font | 32rpx | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-color-picker-gradient-preview-height | 56rpx | -
+--td-color-picker-gradient-preview-radius | 6rpx | -
+--td-color-picker-gradient-preview-width | 56rpx | -
+--td-color-picker-input-format-margin-left | 48rpx | -
+--td-color-picker-panel-background | @bg-color-container | -
+--td-color-picker-panel-padding | 32rpx | -
+--td-color-picker-panel-radius | 24rpx | -
+--td-color-picker-panel-width | 750rpx | -
+--td-color-picker-saturation-height | 288rpx | -
+--td-color-picker-saturation-radius | 12rpx | -
+--td-color-picker-saturation-thumb-size | 48rpx | -
+--td-color-picker-slider-height | 16rpx | -
+--td-color-picker-slider-thumb-padding | 6rpx | -
+--td-color-picker-slider-thumb-size | 48rpx | -
+--td-color-picker-slider-thumb-transform-x | -18rpx | -
+--td-color-picker-slider-wrapper-padding | 0 18rpx | -
+--td-color-picker-swatch-border-radius | @radius-small | -
+--td-color-picker-swatch-height | 48rpx | -
+--td-color-picker-swatch-padding | 0 | -
+--td-color-picker-swatch-width | 48rpx | -
+--td-color-picker-swatches-title-font | @font-title-medium | -

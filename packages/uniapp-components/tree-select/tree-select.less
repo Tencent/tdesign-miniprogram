@@ -13,12 +13,9 @@
   display: flex;
   background-color: @tree-bg-color;
 
-  :deep(&__column) {
+  &__column {
     width: @tree-colum-width;
     color: @tree-colum-text-color;
-
-    height: 100%;
-    overflow: auto;
 
     &--left {
       background: @tree-root-bg-color;
@@ -28,7 +25,7 @@
       flex: 1;
     }
 
-     &::-webkit-scrollbar {
+    &::-webkit-scrollbar {
       display: none;
       width: 0;
       height: 0;
@@ -56,7 +53,7 @@
     }
   }
 
-  :deep(&-column) {
+  &-column {
     width: 100%;
     height: auto;
   }

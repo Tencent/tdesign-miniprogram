@@ -389,3 +389,15 @@ export default uniComponent({
 <style scoped>
 @import './dropdown-item.css';
 </style>
+<style scoped>
+.t-dropdown-item__scroll {
+  width: 100%;
+}
+:deep(.t-dropdown-item__footer-btn) {
+  flex: 1;
+}
+
+:deep(.t-dropdown-item__footer-btn + .t-dropdown-item__footer-btn) {
+  margin-left: 32rpx;
+}
+</style>

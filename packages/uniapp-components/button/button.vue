@@ -234,4 +234,11 @@ export default uniComponent({
   margin-left: 4px;
 }
 /* #endif */
+
+
+.t-button {
+  /* support my-alipay */
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>

@@ -67,10 +67,10 @@ t-class-split | 分隔线样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-countdown-bg-color | @error-color | - |
-| --td-countdown-default-color | @text-color-primary | - |
-| --td-countdown-round-border-radius | @radius-circle | - |
-| --td-countdown-round-color | @text-color-anti | - |
-| --td-countdown-square-border-radius | @radius-small | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-countdown-bg-color | @error-color | -
+--td-countdown-default-color | @text-color-primary | -
+--td-countdown-round-border-radius | @radius-circle | -
+--td-countdown-round-color | @text-color-anti | -
+--td-countdown-square-border-radius | @radius-small | -

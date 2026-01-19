@@ -28,13 +28,12 @@
     padding: 0 @spacer-2;
   }
 
-  :deep(&__icon) {
+  &__icon {
     font-size: @font-size-xl;
   }
 
-  :deep(&__icon) + &__text:not(:empty) {
+  &__icon + &__text:not(:empty) {
     margin-left: @spacer;
-    font-size: @font-size-base;
-    line-height: 44rpx;
+    font: @font-body-medium;
   }
 }

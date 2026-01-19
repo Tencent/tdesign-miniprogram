@@ -114,36 +114,34 @@ t-class-title | 标题样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-cell-group-border-color | @component-stroke | - |
-| --td-cell-group-title-bg-color | @bg-color-secondarycontainer | - |
-| --td-cell-group-title-color | @text-color-placeholder | - |
-| --td-cell-group-title-font-size | 28rpx | - |
-| --td-cell-group-title-line-height | 90rpx | - |
-| --td-cell-group-title-padding-left | 32rpx | - |
-| --td-cell-bg-color | @bg-color-container | - |
-| --td-cell-border-color | @component-stroke | - |
-| --td-cell-border-left-space | @cell-horizontal-padding | - |
-| --td-cell-border-right-space | 0 | - |
-| --td-cell-border-width | 1px | - |
-| --td-cell-description-color | @text-color-secondary | - |
-| --td-cell-description-font-size | @font-size-base | - |
-| --td-cell-description-line-height | 44rpx | - |
-| --td-cell-height | auto | - |
-| --td-cell-horizontal-padding | 32rpx | - |
-| --td-cell-hover-color | @bg-color-secondarycontainer | - |
-| --td-cell-image-height | 96rpx | - |
-| --td-cell-image-width | 96rpx | - |
-| --td-cell-left-icon-color | @brand-color | - |
-| --td-cell-left-icon-font-size | 48rpx | - |
-| --td-cell-line-height | 48rpx | - |
-| --td-cell-note-color | @text-color-placeholder | - |
-| --td-cell-note-font-size | @font-size-m | - |
-| --td-cell-required-color | @error-color | - |
-| --td-cell-required-font-size | @font-size-m | - |
-| --td-cell-right-icon-color | @text-color-placeholder | - |
-| --td-cell-right-icon-font-size | 48rpx | - |
-| --td-cell-title-color | @text-color-primary | - |
-| --td-cell-title-font-size | @font-size-m | - |
-| --td-cell-vertical-padding | 32rpx | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-cell-group-border-color | @component-stroke | -
+--td-cell-group-title-bg-color | @bg-color-secondarycontainer | -
+--td-cell-group-title-color | @text-color-placeholder | -
+--td-cell-group-title-font-size | 28rpx | -
+--td-cell-group-title-line-height | 90rpx | -
+--td-cell-group-title-padding-left | 32rpx | -
+--td-cell-bg-color | @bg-color-container | -
+--td-cell-border-color | @component-stroke | -
+--td-cell-border-left-space | @cell-horizontal-padding | -
+--td-cell-border-right-space | 0 | -
+--td-cell-border-width | 1px | -
+--td-cell-description-color | @text-color-secondary | -
+--td-cell-description-font | @font-body-medium | -
+--td-cell-height | auto | -
+--td-cell-horizontal-padding | 32rpx | -
+--td-cell-hover-color | @bg-color-secondarycontainer | -
+--td-cell-image-height | 96rpx | -
+--td-cell-image-width | 96rpx | -
+--td-cell-left-icon-color | @brand-color | -
+--td-cell-left-icon-size | 48rpx | -
+--td-cell-note-color | @text-color-placeholder | -
+--td-cell-note-font-size | @font-size-m | -
+--td-cell-required-color | @error-color | -
+--td-cell-required-font-size | @font-size-m | -
+--td-cell-right-icon-color | @text-color-placeholder | -
+--td-cell-right-icon-size | 48rpx | -
+--td-cell-title-color | @text-color-primary | -
+--td-cell-title-font | @font-body-large | -
+--td-cell-vertical-padding | 32rpx | -

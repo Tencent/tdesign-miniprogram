@@ -172,3 +172,17 @@ export default uniComponent({
 <style scoped>
 @import './dropdown-menu.css';
 </style>
+<style scoped>
+:deep(.t-dropdown-menu__icon) {
+  font-size: var(--td-dropdown-menu-icon-size, 20px);
+  padding: 2px;
+  box-sizing: border-box;
+  transition: transform 240ms ease;
+}
+:deep(.t-dropdown-menu__icon)--active {
+  transform: rotate(180deg);
+}
+:deep(.t-dropdown-menu__icon):not(:empty) {
+  margin-left: 4px;
+}
+</style>

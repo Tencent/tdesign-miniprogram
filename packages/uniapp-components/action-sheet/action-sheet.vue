@@ -332,3 +332,13 @@ export default uniComponent({
 <style scoped>
 @import './action-sheet.css';
 </style>
+<style scoped>
+:deep(.t-action-sheet__grid) {
+  /* support mp-alipay */
+  padding-bottom: 8px;
+}
+:deep(.t-action-sheet__grid)--swiper {
+  /* support mp-alipay */
+  padding-bottom: 24px;
+}
+</style>

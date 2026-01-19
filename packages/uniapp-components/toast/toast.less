@@ -2,8 +2,8 @@
 
 @toast-color: var(--td-toast-color, @text-color-anti);
 @toast-bg-color: var(--td-toast-bg-color, @mask-active);
-@toast-max-width: var(--td-toast-max-width, 374rpx);
-@toast-radius: var(--td-toast-radius, 8rpx);
+@toast-max-width: var(--td-toast-max-width, 370rpx);
+@toast-radius: var(--td-toast-radius, @radius-default);
 @toast-row-icon-size: var(--td-toast-row-icon-size, 48rpx);
 @toast-column-icon-size: var(--td-toast-column-icon-size, 64rpx);
 
@@ -16,7 +16,6 @@
   transition: opacity 300ms ease;
   background-color: @toast-bg-color;
   border-radius: @toast-radius;
-  font-size: 28rpx;
   color: @toast-color;
   max-width: @toast-max-width;
   min-height: 0; // 防止 flex 容器被意外拉伸
@@ -45,7 +44,7 @@
 
   &__content {
     align-items: center;
-    line-height: 44rpx;
+    font: @font-body-medium;
 
     &--row {
       display: flex;
@@ -61,7 +60,7 @@
     }
   }
 
-  :deep(&__icon) {
+  &__icon {
     &--row {
       display: flex;
       font-size: @toast-row-icon-size;

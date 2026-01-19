@@ -68,11 +68,11 @@ t-class | 根节点样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-toast-bg-color | @mask-active | - |
-| --td-toast-color | @text-color-anti | - |
-| --td-toast-column-icon-size | 64rpx | - |
-| --td-toast-max-width | 374rpx | - |
-| --td-toast-radius | 8rpx | - |
-| --td-toast-row-icon-size | 48rpx | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-toast-bg-color | @mask-active | -
+--td-toast-color | @text-color-anti | -
+--td-toast-column-icon-size | 64rpx | -
+--td-toast-max-width | 370rpx | -
+--td-toast-radius | @radius-default | -
+--td-toast-row-icon-size | 48rpx | -

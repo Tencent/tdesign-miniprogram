@@ -93,24 +93,19 @@ label-suffix-index | 列表子项后置插槽，用于自定义标签文本之�
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-picker-bg-color | @bg-color-container | - |
-| --td-picker-border-radius | 24rpx | - |
-| --td-picker-button-font-size | 32rpx | - |
-| --td-picker-cancel-color | @text-color-secondary | - |
-| --td-picker-confirm-color | @brand-color | - |
-| --td-picker-indicator-bg-color | @bg-color-secondarycontainer | - |
-| --td-picker-indicator-border-radius | 12rpx | - |
-| --td-picker-mask-color-bottom | hsla(0, 0%, 100%, 0.4) | - |
-| --td-picker-mask-color-top | hsla(0, 0%, 100%, 0.92) | - |
-| --td-picker-title-color | @text-color-primary | - |
-| --td-picker-title-font-size | 36rpx | - |
-| --td-picker-title-font-weight | 600 | - |
-| --td-picker-title-line-height | 52rpx | - |
-| --td-picker-toolbar-height | 116rpx | - |
-| --td-picker-transparent-color | --td-picker-transparent-color | - |
-| --td-picker-group-height | 400rpx | - |
-| --td-picker-item-active-color | @text-color-primary | - |
-| --td-picker-item-color | @text-color-secondary | - |
-| --td-picker-item-font-size | @font-size-m | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-picker-bg-color | @bg-color-container | -
+--td-picker-border-radius | 24rpx | -
+--td-picker-button-font | @font-body-large | -
+--td-picker-cancel-color | @text-color-secondary | -
+--td-picker-confirm-color | @brand-color | -
+--td-picker-indicator-bg-color | @bg-color-secondarycontainer | -
+--td-picker-indicator-border-radius | 12rpx | -
+--td-picker-title-color | @text-color-primary | -
+--td-picker-title-font | @font-title-large | -
+--td-picker-toolbar-height | 116rpx | -
+--td-picker-transparent-color | --td-picker-transparent-color | -
+--td-picker-item-active-color | @text-color-primary | -
+--td-picker-item-color | @text-color-secondary | -
+--td-picker-item-font-size | @font-size-m | -

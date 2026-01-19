@@ -101,18 +101,19 @@ t-class-header | 头部样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-collapse-border-color | @border-level-1-color | - |
-| --td-collapse-content-font-size | @font-size-base | - |
-| --td-collapse-content-line-height | 1.5 | - |
-| --td-collapse-content-padding | 32rpx | - |
-| --td-collapse-content-text-color | @text-color-primary | - |
-| --td-collapse-extra-font-size | @font-size-m | - |
-| --td-collapse-header-height | auto | - |
-| --td-collapse-header-text-color | @text-color-primary | - |
-| --td-collapse-header-text-disabled-color | @text-color-disabled | - |
-| --td-collapse-horizontal-padding | 32rpx | - |
-| --td-collapse-icon-color | @font-gray-3 | - |
-| --td-collapse-panel-bg-color | @bg-color-container | - |
-| --td-collapse-title-font-size | @font-size-m | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-collapse-border-color | @border-level-1-color | -
+--td-collapse-content-font | @font-body-medium | -
+--td-collapse-content-padding | 32rpx | -
+--td-collapse-content-text-color | @text-color-primary | -
+--td-collapse-disabled-color | @text-color-disabled | -
+--td-collapse-extra-font | @font-body-large | -
+--td-collapse-header-height | auto | -
+--td-collapse-header-text-color | @text-color-primary | -
+--td-collapse-header-text-disabled-color | @collapse-disabled-color | -
+--td-collapse-horizontal-padding | 32rpx | -
+--td-collapse-icon-color | @text-color-placeholder | -
+--td-collapse-left-icon-color | @brand-color | -
+--td-collapse-panel-bg-color | @bg-color-container | -
+--td-collapse-title-font | @font-body-large | -

@@ -73,10 +73,10 @@ t-class-content | 内容样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-popup-bg-color | @bg-color-container | - |
-| --td-popup-border-radius | @radius-extraLarge | - |
-| --td-popup-close-btn-color | @text-color-primary | - |
-| --td-popup-distance-top | 0) | - |
-| --td-popup-transition | all 300ms ease | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-popup-bg-color | @bg-color-container | -
+--td-popup-border-radius | @radius-extraLarge | -
+--td-popup-close-btn-color | @text-color-primary | -
+--td-popup-distance-top | 0 | -
+--td-popup-transition | all 300ms ease | -

@@ -532,5 +532,17 @@ export default uniComponent({
 </script>
 <style scoped>
 @import './guide.css';
+</style>
+<style scoped>
+.t-guide__footer :deep(.t-guide__button + .t-guide__button) {
+  margin-left: var(--td-guide-footer-button-space, var(--td-spacer-1, 12px));
+}
+.t-guide__footer--dialog :deep(.t-guide__button:last-child) {
+  flex-grow: 1;
+  display: inline-flex;
+}
+.t-guide__footer--dialog :deep(.t-guide__button:last-child) .t-button {
+  flex-grow: 1;
+}
 
 </style>

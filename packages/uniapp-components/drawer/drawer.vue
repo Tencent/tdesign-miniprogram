@@ -136,3 +136,8 @@ export default uniComponent({
 <style scoped>
 @import './drawer.css';
 </style>
+<style>
+.t-drawer__sidebar {
+  width: 100%;
+}
+</style>

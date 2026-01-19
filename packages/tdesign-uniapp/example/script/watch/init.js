@@ -30,7 +30,6 @@ async function copyOneProject({
 
 async function main() {
   deleteFolder(config.targetDir);
-  deleteFolder(config.rawTargetDir);
   deleteFolder(config.rawTargetDirInApp);
   deleteFolder(config.demoDir);
 

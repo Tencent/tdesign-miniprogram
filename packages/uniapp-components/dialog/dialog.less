@@ -9,13 +9,11 @@
 @dialog-body-max-height: var(--td-dialog-body-max-height, 912rpx);
 
 // color
-@dialog-title-font-size: var(--td-dialog-title-font-size, 36rpx);
+@dialog-title-font: var(--td-dialog-title-font, @font-title-large);
 @dialog-title-color: var(--td-dialog-title-color, @text-color-primary);
-@dialog-title-line-height: var(--td-dialog-title-line-height, 52rpx);
 
-@dialog-content-font-size: var(--td-dialog-content-font-size, 32rpx);
+@dialog-content-font: var(--td-dialog-content-font, @font-body-large);
 @dialog-content-color: var(--td-dialog-content-color, @text-color-secondary);
-@dialog-content-line-height: var(--td-dialog-content-line-height, 48rpx);
 
 @dialog-close-color: var(--td-dialog-close-color, @text-color-placeholder);
 
@@ -56,9 +54,7 @@
 
   &__header {
     text-align: center;
-    font-weight: bold;
-    font-size: @dialog-title-font-size;
-    line-height: @dialog-title-line-height;
+    font: @dialog-title-font;
     color: @dialog-title-color;
   }
 
@@ -70,9 +66,8 @@
     overflow-y: scroll;
     text-align: center;
     -webkit-overflow-scrolling: touch;
-    font-size: @dialog-content-font-size;
+    font: @dialog-content-font;
     color: @dialog-content-color;
-    line-height: @dialog-content-line-height;
 
     &-text {
       word-wrap: break-word;
@@ -94,7 +89,7 @@
     &--column {
       flex-flow: column-reverse;
 
-      :deep(.@{dialog}__button) {
+      .@{dialog}__button {
         width: 100%;
       }
     }
@@ -104,18 +99,18 @@
     }
   }
 
-  :deep(&__button) {
+  &__button {
     position: relative;
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    &--horizontal:not(:first-child) {
+    &--horizontal + &--horizontal {
       margin-left: @spacer-1;
     }
 
-    &--vertical:not(:first-child)  {
+    &--vertical + &--vertical {
       margin-bottom: @spacer-1;
     }
 

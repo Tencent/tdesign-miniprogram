@@ -2,14 +2,13 @@
 
 @indexes-sidebar-color: var(--td-indexes-sidebar-color, @text-color-primary);
 @indexes-sidebar-item-size: var(--td-indexes-sidebar-item-size, 40rpx);
-@indexes-sidebar-font-size: var(--td-indexes-sidebar-font-size, 24rpx);
-@indexes-sidebar-line-height: var(--td-indexes-sidebar-line-height, 40rpx);
+@indexes-sidebar-font: var(--td-indexes-sidebar-font, @font-body-small);
 @indexes-sidebar-active-color: var(--td-indexes-sidebar-active-color, @text-color-anti);
 @indexes-sidebar-active-bg-color: var(--td-indexes-sidebar-active-bg-color, @brand-color);
 @indexes-sidebar-right: var(--td-indexes-sidebar-right, 16rpx);
 
 @indexes-sidebar-tips-size: var(--td-indexes-sidebar-tips-size, 96rpx);
-@indexes-sidebar-tips-font-size: var(--td-indexes-sidebar-tips-font-size, 40rpx);
+@indexes-sidebar-tips-font: var(--td-indexes-sidebar-tips-font, @font-title-extraLarge);
 @indexes-sidebar-tips-color: var(--td-indexes-sidebar-tips-color, @brand-color);
 @indexes-sidebar-tips-bg-color: var(--td-indexes-sidebar-tips-bg-color, @brand-color-light);
 @indexes-sidebar-tips-right: var(--td-indexes-sidebar-tips-right, calc(100% + 32rpx));
@@ -23,8 +22,7 @@
     right: @indexes-sidebar-right;
     width: @indexes-sidebar-item-size;
     color: @indexes-sidebar-color;
-    font-size: @indexes-sidebar-font-size;
-    line-height: @indexes-sidebar-line-height;
+    font: @indexes-sidebar-font;
     display: flex;
     flex-flow: column nowrap;
     top: 50%;
@@ -47,6 +45,9 @@
     }
 
     &-tips {
+      display: flex;
+      align-items: center;
+      justify-content: center;
       min-width: @indexes-sidebar-tips-size;
       max-width: 198rpx;
       padding: 0 32rpx;
@@ -55,10 +56,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       height: @indexes-sidebar-tips-size;
-      line-height: @indexes-sidebar-tips-size;
-      text-align: center;
-      font-size: @indexes-sidebar-tips-font-size;
-      font-weight: 700;
+      font: @indexes-sidebar-tips-font;
       color: @indexes-sidebar-tips-color;
       background-color: @indexes-sidebar-tips-bg-color;
       border-radius: @indexes-sidebar-tips-size;

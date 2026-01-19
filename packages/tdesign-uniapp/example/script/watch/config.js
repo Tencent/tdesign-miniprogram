@@ -4,7 +4,6 @@ const PACKAGES_ROOT = path.resolve(__dirname, '../../../../');
 
 const config = {
   targetDir: path.resolve(__dirname, '../../src/_tdesign'),
-  rawTargetDir: path.resolve(__dirname, '../../src/_tdesign-raw'),
   rawTargetDirInApp: path.resolve(__dirname, '../../../app/tdesign-uniapp-raw'),
 
   sourceDir: path.resolve(PACKAGES_ROOT, 'uniapp-components'),

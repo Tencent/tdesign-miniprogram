@@ -56,12 +56,12 @@ t-class-text | 文本样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-back-top-half-round-border-radius | @radius-round | - |
-| --td-back-top-round-bg-color | @bg-color-container | - |
-| --td-back-top-round-border-color | @component-border | - |
-| --td-back-top-round-border-radius | @radius-circle | - |
-| --td-back-top-round-color | @text-color-primary | - |
-| --td-back-top-round-dark-bg-color | @gray-color-13 | - |
-| --td-back-top-round-dark-color | @text-color-anti | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-back-top-half-round-border-radius | @radius-round | -
+--td-back-top-round-bg-color | @bg-color-container | -
+--td-back-top-round-border-color | @component-border | -
+--td-back-top-round-border-radius | @radius-circle | -
+--td-back-top-round-color | @text-color-primary | -
+--td-back-top-round-dark-bg-color | @gray-color-13 | -
+--td-back-top-round-dark-color | @text-color-anti | -

@@ -187,6 +187,7 @@ export default uniComponent({
       const maxSpacing = Math.max(leftRect.right, systemInfo.windowWidth - menuRect.left);
       const _boxStyle = {
         ...defaultStyle,
+        'z-index': this.zIndex,
         '--td-navbar-center-left': `${maxSpacing}px`, // 标题左侧距离
         '--td-navbar-center-width': `${Math.max(menuRect.left - maxSpacing, 0)}px`, // 标题宽度
       };

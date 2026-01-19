@@ -13,7 +13,9 @@ const CONFIG = {
     path.resolve(PACKAGES_ROOT, 'uniapp-components/common/style/mixins/'),
     path.resolve(PACKAGES_ROOT, 'uniapp-components/common/style/theme/raw/'),
   ],
+  useRpxTransform: false,
 };
+
 
 // 配置参数（通常 1rpx=0.5px，设计稿 750px 宽时）
 const options = {
@@ -45,8 +47,9 @@ async function processLess(inputFile, rawOutputFile, rawOutputFileInApp) {
     });
 
     const postcssResult = await postcss([
-      rpxTransform(options),
-    ]).process(cssResult.css, { from: undefined });
+      CONFIG.useRpxTransform ? rpxTransform(options) : null,
+    ].filter(Boolean))
+      .process(cssResult.css, { from: undefined });
 
 
     const getOutputFile = (rawOutputFile) => {

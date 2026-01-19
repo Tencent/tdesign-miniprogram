@@ -4,14 +4,14 @@
 @upload-add-bg-color: var(--td-upload-add-bg-color, @bg-color-secondarycontainer);
 @upload-add-disabled-bg-color: var(--td-upload-add-disabled-bg-color, @bg-color-component-disabled);
 @upload-radius: var(--td-upload-radius, @radius-default);
-@upload-add-icon-font-size: var(--td-upload-add-icon-font-size, 56rpx);
+@upload-add-icon-size: var(--td-upload-add-icon-size, 56rpx);
 @upload-add-icon-disabled-color: var(--td-upload-add-icon-disabled-color, @text-color-disabled);
 @upload-disabled-mask: var(--td-upload-disabled-mask, rgba(0, 0.6));
 @upload-drag-z-index: var(--td-upload-drag-z-index, 999);
 
 .@{prefix}-upload {
   position: relative;
-  :deep(&__grid) {
+  &__grid {
     &-content {
       padding: 0;
     }
@@ -27,7 +27,7 @@
     display: none;
     align-items: center;
     justify-content: center;
-    font-size: @upload-add-icon-font-size;
+    font-size: @upload-add-icon-size;
     background-color: @upload-add-bg-color;
     color: @upload-add-color;
     border-radius: @upload-radius;
@@ -42,7 +42,7 @@
     }
   }
 
-  :deep(&__thumbnail) {
+  &__thumbnail {
     width: 100%;
     height: 100%;
     max-height: 100%;
@@ -99,12 +99,11 @@
     }
 
     &-text {
-      font-size: 24rpx;
-      line-height: 40rpx;
+      font: @font-body-small;
       margin-top: 8rpx;
     }
 
-    :deep(&-loading) {
+    &-loading {
       animation: spin infinite linear 0.6s;
     }
   }

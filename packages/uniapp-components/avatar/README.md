@@ -125,28 +125,28 @@ t-class-image | 图片样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-avatar-group-init-z-index | @avatar-group-init-zIndex) - @i | - |
-| --td-avatar-group-line-spacing | 4rpx | - |
-| --td-avatar-group-margin-left-large | -16rpx | - |
-| --td-avatar-group-margin-left-medium | -16rpx | - |
-| --td-avatar-group-margin-left-small | -16rpx | - |
-| --td-avatar-bg-color | @brand-color-light-active | - |
-| --td-avatar-border-color | #fff | - |
-| --td-avatar-border-width-large | 6rpx | - |
-| --td-avatar-border-width-medium | 4rpx | - |
-| --td-avatar-border-width-small | 2rpx | - |
-| --td-avatar-circle-border-radius | @radius-circle | - |
-| --td-avatar-content-color | @brand-color | - |
-| --td-avatar-icon-large-font-size | 64rpx | - |
-| --td-avatar-icon-medium-font-size | 48rpx | - |
-| --td-avatar-icon-small-font-size | 40rpx | - |
-| --td-avatar-large-width | 128rpx | - |
-| --td-avatar-margin-left | 0 | - |
-| --td-avatar-medium-width | 96rpx | - |
-| --td-avatar-round-border-radius | @radius-default | - |
-| --td-avatar-small-width | 80rpx | - |
-| --td-avatar-text-large-font-size | @font-size-xl | - |
-| --td-avatar-text-medium-font-size | @font-size-m | - |
-| --td-avatar-text-small-font-size | @font-size-base | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-avatar-group-init-z-index | @avatar-group-init-zIndex | -
+--td-avatar-group-line-spacing | 4rpx | -
+--td-avatar-group-margin-left-large | -16rpx | -
+--td-avatar-group-margin-left-medium | -16rpx | -
+--td-avatar-group-margin-left-small | -16rpx | -
+--td-avatar-bg-color | @brand-color-light-active | -
+--td-avatar-border-color | #fff | -
+--td-avatar-border-width-large | 6rpx | -
+--td-avatar-border-width-medium | 4rpx | -
+--td-avatar-border-width-small | 2rpx | -
+--td-avatar-circle-border-radius | @radius-circle | -
+--td-avatar-content-color | @brand-color | -
+--td-avatar-icon-large-font-size | 64rpx | -
+--td-avatar-icon-medium-font-size | 48rpx | -
+--td-avatar-icon-small-font-size | 40rpx | -
+--td-avatar-large-width | 128rpx | -
+--td-avatar-margin-left | 0 | -
+--td-avatar-medium-width | 96rpx | -
+--td-avatar-round-border-radius | @radius-default | -
+--td-avatar-small-width | 80rpx | -
+--td-avatar-text-large-font-size | @font-size-xl | -
+--td-avatar-text-medium-font-size | @font-size-m | -
+--td-avatar-text-small-font-size | @font-size-base | -

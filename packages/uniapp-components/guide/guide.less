@@ -18,22 +18,16 @@
 @guide-popover-title-text-align: var(--td-guide-popover-title-text-align, left);
 @guide-dialog-title-text-align: var(--td-guide-dialog-title-text-align, center);
 @guide-title-color: var(--td-guide-title-color, @text-color-primary);
-@guide-popover-title-font-size: var(--td-guide-popover-title-font-size, @font-size-m);
-@guide-dialog-title-font-size: var(--td-guide-dialog-title-font-size, 36rpx);
-@guide-title-font-weight: var(--td-guide-title-font-weight, 600);
-@guide-popover-title-line-height: var(--td-guide-popover-title-line-height, 48rpx);
-@guide-dialog-title-line-height: var(--td-guide-dialog-title-line-height, 52rpx);
+@guide-popover-title-font: var(--td-guide-popover-title-font, @font-title-medium);
+@guide-dialog-title-font: var(--td-guide-dialog-title-font, @font-title-large);
 
 @guide-popover-body-margin-top: var(--td-guide-popover-body-margin-top, 8rpx);
 @guide-dialog-body-margin-top: var(--td-guide-dialog-body-margin-top, 16rpx);
 @guide-popover-body-text-align: var(--td-guide-popover-body-text-align, left);
 @guide-dialog-body-text-align: var(--td-guide-dialog-body-text-align, center);
 @guide-body-color: var(--td-guide-body-color, @text-color-secondary);
-@guide-popover-body-font-size: var(--td-guide-popover-body-font-size, @font-size-base);
-@guide-dialog-body-font-size: var(--td-guide-dialog-body-font-size, @font-size-m);
-@guide-body-font-weight: var(--td-guide-body-font-weight, 400);
-@guide-popover-body-line-height: var(--td-guide-popover-body-line-height, 44rpx);
-@guide-dialog-body-line-height: var(--td-guide-dialog-body-line-height, 48rpx);
+@guide-popover-body-font: var(--td-guide-popover-body-font, @font-body-medium);
+@guide-dialog-body-font: var(--td-guide-dialog-body-font, @font-body-large);
 
 @guide-footer-text-align: var(--td-guide-footer-text-align, right);
 @guide-footer-margin-top: var(--td-guide-footer-margin-top, @spacer-3);
@@ -77,42 +71,34 @@
   &__title--popover {
     text-align: @guide-popover-title-text-align;
     color: @guide-title-color;
-    font-size: @guide-popover-title-font-size;
-    font-weight: @guide-title-font-weight;
-    line-height: @guide-popover-title-line-height;
+    font: @guide-popover-title-font;
   }
 
   &__title--dialog {
     text-align: @guide-dialog-title-text-align;
     color: @guide-title-color;
-    font-size: @guide-dialog-title-font-size;
-    font-weight: @guide-title-font-weight;
-    line-height: @guide-dialog-title-line-height;
+    font: @guide-dialog-title-font;
   }
 
   &__body--popover {
     margin-top: @guide-popover-body-margin-top;
     text-align: @guide-popover-body-text-align;
     color: @guide-body-color;
-    font-size: @guide-popover-body-font-size;
-    font-weight: @guide-body-font-weight;
-    line-height: @guide-popover-body-line-height;
+    font: @guide-popover-body-font;
   }
 
   &__body--dialog {
     margin-top: @guide-dialog-body-margin-top;
     text-align: @guide-dialog-body-text-align;
     color: @guide-body-color;
-    font-size: @guide-dialog-body-font-size;
-    font-weight: @guide-body-font-weight;
-    line-height: @guide-dialog-body-line-height;
+    font: @guide-dialog-body-font;
   }
 
   &__footer {
     text-align: @guide-footer-text-align;
     margin-top: @guide-footer-margin-top;
 
-    :deep(.@{prefix}-guide__button + .@{prefix}-guide__button) {
+    .@{prefix}-guide__button + .@{prefix}-guide__button {
       margin-left: @guide-footer-button-space;
     }
 
@@ -120,14 +106,8 @@
       display: flex;
       padding: @guide-dialog-footer-button-padding;
 
-      :deep(.@{prefix}-guide__button:last-child) {
+      .@{prefix}-guide__button:last-child {
         flex-grow: 1;
-        
-        // 适配 QQ 小程序等
-        display: inline-flex;
-        .t-button {
-          flex-grow: 1;
-        }
       }
     }
   }

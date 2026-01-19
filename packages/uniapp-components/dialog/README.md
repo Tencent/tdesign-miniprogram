@@ -108,15 +108,13 @@ t-class-content | 内容样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-dialog-body-max-height | 912rpx | - |
-| --td-dialog-border-radius | @radius-extraLarge | - |
-| --td-dialog-close-color | @text-color-placeholder | - |
-| --td-dialog-content-color | @text-color-secondary | - |
-| --td-dialog-content-font-size | 32rpx | - |
-| --td-dialog-content-line-height | 48rpx | - |
-| --td-dialog-title-color | @text-color-primary | - |
-| --td-dialog-title-font-size | 36rpx | - |
-| --td-dialog-title-line-height | 52rpx | - |
-| --td-dialog-width | 622rpx | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-dialog-body-max-height | 912rpx | -
+--td-dialog-border-radius | @radius-extraLarge | -
+--td-dialog-close-color | @text-color-placeholder | -
+--td-dialog-content-color | @text-color-secondary | -
+--td-dialog-content-font | @font-body-large | -
+--td-dialog-title-color | @text-color-primary | -
+--td-dialog-title-font | @font-title-large | -
+--td-dialog-width | 622rpx | -

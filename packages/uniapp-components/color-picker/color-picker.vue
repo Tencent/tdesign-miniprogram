@@ -12,10 +12,13 @@
       @visible-change="onVisibleChange"
     >
       <slot name="header" />
+
+      <!-- 防止转成 px 后，尺寸没铺满 -->
+      <!-- 750rpx => 100% -->
       <TemplateVue
         ref="templateVue"
         :class-prefix="classPrefix"
-        :custom-style="tools._style([customStyle])"
+        :custom-style="tools._style(['width: 100%', customStyle])"
         :is-multiple="isMultiple"
         :type="type"
         :slider-info="sliderInfo"
