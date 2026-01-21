@@ -189,6 +189,7 @@ var touchEnd = function (event, ownerInstance) {
 
   if (!st.dragging) return;
   triggerCustomEvent(st.list, 'sortend', ownerInstance);
+  ins.removeClass(classPrefix + '__drag--cur');
   ins.addClass(classPrefix + '__drag--tran');
   ins.setStyle({
     transform: 'translate3d(' + st.list[st.cur].tranX + ',' + st.list[st.cur].tranY + ', 0)',
