@@ -4,12 +4,12 @@
       <t-tab-panel
         label="选项"
         value="0"
-        :badge-props="{ dot: true, offset: ['4px', '4px'] }"
+        :badge-props="{ dot: true, offset: [0, 1] }"
       />
       <t-tab-panel
         label="选项"
         value="1"
-        :badge-props="{ count: 8, offset: ['8px', '8px'] }"
+        :badge-props="{ count: 8, offset: [0, 1] }"
       />
       <t-tab-panel
         label="选项"

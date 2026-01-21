@@ -1,10 +1,7 @@
 <template>
   <view
     :style="tools._style([customStyle])"
-    :class="[
-      getBadgeOuterClass({ shape }),
-      tClass
-    ]"
+    :class="classPrefix + ' ' + (useOuterClass ? classPrefix + '__' + shape + '-outer' : '') + tClass"
     :aria-labelledby="labelID"
     :aria-describedby="descriptionID"
     :aria-role="ariaRole || 'option'"
@@ -37,32 +34,35 @@
       </text>
     </view>
     <view
-      v-if="isShowBadge({ dot, count, showZero })"
+      v-if="isShowBadge({ dot, count, showZero }) || count === null"
       :id="descriptionID"
       :aria-hidden="true"
       :aria-label="ariaLabel || tools.getBadgeAriaLabel({ dot, count, maxCount })"
       :class="[
-        getBadgeInnerClass({ dot, size, shape, count }) + ' ' + prefix + '-has-count ',
+        getBadgeInnerClass({ classPrefix, dot, size, shape, count }) + ' ' + prefix + '-has-count ',
         tClassCount
       ]"
       :style="tools._style([getBadgeStyles({ color, offset })])"
     >
-      {{ getBadgeValue({ dot, count, maxCount }) }}
+      <view :class="classPrefix + '__count'">
+        <template v-if="isShowBadge({ dot, count, showZero })">
+            {{ getBadgeValue({ dot, count, maxCount }) }}
+        </template>
+        <slot else name="count" />
+      </view>
     </view>
-    <slot name="count" />
   </view>
 </template>
 <script>
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import { uniqueFactory } from '../common/utils';
+import { uniqueFactory, getRect } from '../common/utils';
 import tools from '../common/utils.wxs';
 
 import {
   getBadgeValue,
   getBadgeStyles,
-  getBadgeOuterClass,
   getBadgeInnerClass,
   isShowBadge,
 } from './computed.js';
@@ -93,6 +93,7 @@ export default uniComponent({
       labelID: '',
       descriptionID: '',
       tools,
+      useOuterClass: false,
     };
   },
   computed: {
@@ -104,13 +105,24 @@ export default uniComponent({
     const e = getUniqueID();
     this.labelID = `${e}_label`;
     this.descriptionID = `${e}_description`;
+    this.checkForActualContent();
   },
   methods: {
     getBadgeValue,
     getBadgeStyles,
-    getBadgeOuterClass,
     getBadgeInnerClass,
     isShowBadge,
+    checkForActualContent() {
+      const target = ['ribbon', 'ribbon-right', 'ribbon-left', 'triangle-right', 'triangle-left'];
+      if (this.content || !target.includes(this.shape)) {
+        this.useOuterClass = false
+        return;
+      }
+      return getRect(this, `.${name}__content`).then(rect => {
+        const hasSlotContent = rect.width > 0 || rect.height > 0;
+        this.useOuterClass = !hasSlotContent;
+      });
+    }
   },
 });
 </script>

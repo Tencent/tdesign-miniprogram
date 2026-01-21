@@ -13,7 +13,7 @@
     </view>
 
     <view class="demo-desc">
-      Middle
+      Medium
     </view>
 
     <view class="block">
