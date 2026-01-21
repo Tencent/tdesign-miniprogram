@@ -1,6 +1,6 @@
 {
   "name": "tdesign-miniprogram",
-  "version": "1.12.1",
+  "version": "1.12.2",
   "title": "tdesign-miniprogram",
   "description": "TDesign Component for miniprogram",
   "main": "miniprogram_dist/index.js",
