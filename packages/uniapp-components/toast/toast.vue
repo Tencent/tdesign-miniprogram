@@ -45,7 +45,7 @@
     </view>
     <t-overlay
       :custom-style="(overlayProps && overlayProps.style) || ''"
-      :visible="realVisible && (showOverlay || dataPreventScrollThrough)"
+      :visible="visible && (showOverlay || dataPreventScrollThrough)"
       :z-index="(overlayProps && overlayProps.zIndex) || 11000"
       :duration="(overlayProps && overlayProps.duration) || 300"
       :using-custom-navbar="(overlayProps && overlayProps.usingCustomNavbar) || usingCustomNavbar"
@@ -160,6 +160,7 @@ export default uniComponent({
         placement: props.placement.default,
         preventScrollThrough: props.preventScrollThrough.default,
         theme: props.theme.default,
+        close: null,
       };
 
       const data = {
