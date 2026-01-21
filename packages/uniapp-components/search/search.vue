@@ -40,6 +40,7 @@
           :selection-end="selectionEnd"
           :hold-keyboard="holdKeyboard"
           :cursor-spacing="cursorSpacing"
+          :cursor-color="cursorColor"
           :placeholder="placeholder"
           :placeholder-style="placeholderStyle"
           :placeholder-class="placeholderClass + ' ' + classPrefix + '__placeholder ' + classPrefix + '__placeholder--' + (center ? 'center' : 'normal')"
@@ -53,7 +54,7 @@
           :class="classPrefix + '__clear hotspot-expanded ' + tClassClear"
           aria-role="button"
           aria-label="清除"
-          @click.stop.prevent="handleClear"
+          @touchstart.stop.prevent="handleClear"
         >
           <t-icon
             name="close-circle-filled"
