@@ -19,8 +19,7 @@
       v-if="realVisible"
       :id="classPrefix + '-content'"
       :style="contentStyle + ' ' + customStyle"
-      :class="classPrefix + ' '+ transitionClass + ' ' + tClass"
-      :data-placement="innerPlacement"
+      :class="classPrefix + ' ' + transitionClass + ' ' + tClass + ' ' + classPrefix + '--placement-' + innerPlacement + ' ' + (fixed ? classPrefix + '--fixed' : '')"
     >
       <view :class="classPrefix + '__content ' + classPrefix + '--' + theme + ' ' + tClassContent + ' ' + (showArrow ? classPrefix + '__content--arrow' : '')">
         <slot name="content" />
@@ -239,52 +238,71 @@ export default uniComponent({
       return start + triggerSize / 2 - contentSize / 2;
     },
 
-    calcPlacement(placement, triggerRect, contentRect) {
-      const { isHorizontal, isVertical } = this.getToward(placement);
-      // 获取内容大小
-      const { width: contentWidth, height: contentHeight } = contentRect;
-      // 获取所在位置
-      const { left: triggerLeft, top: triggerTop, right: triggerRight, bottom: triggerBottom } = triggerRect;
-      // 是否能正常放置
-      let canPlace = true;
-      const { windowWidth, windowHeight } = getWindowInfo();
-      let finalPlacement = placement;
-
-      if (isHorizontal) {
-        if (placement.startsWith('top')) {
-          canPlace = triggerTop - contentHeight >= 0;
-        } else if (placement.startsWith('bottom')) {
-          canPlace = triggerBottom + contentHeight <= windowHeight;
-        }
-      } else if (isVertical) {
-        if (placement.startsWith('left')) {
-          canPlace = triggerLeft - contentWidth >= 0;
-        } else if (placement.startsWith('right')) {
-          canPlace = triggerRight + contentWidth <= windowWidth;
-        }
-      }
-
-      if (!canPlace) {
-        // 反向
-        if (isHorizontal) {
-          finalPlacement = placement.startsWith('top')
-            ? placement.replace('top', 'bottom')
-            : placement.replace('bottom', 'top');
-        } else if (isVertical) {
-          finalPlacement = placement.startsWith('left')
-            ? placement.replace('left', 'right')
-            : placement.replace('right', 'left');
-        }
-      }
-
-      const basePos = this.calcContentPosition(finalPlacement, triggerRect, contentRect);
-
-      return {
-        placement: finalPlacement,
-        ...basePos,
-      };
+    calcPlacement(isFixed, placement, triggerRect, contentRect) {
+      return new Promise(resolve => {
+        const owner = uni.createSelectorQuery().in(this);
+        owner.select(`.${name}-wrapper--fixed`).boundingClientRect();
+        owner.exec(b => {
+          
+          const [triggerChildRect] = b;
+          if (triggerChildRect && isFixed) {
+            triggerRect = triggerChildRect;
+          }
+          
+          const {
+            isHorizontal,
+            isVertical
+          } = this.getToward(placement);
+          const {
+            width: contentWidth,
+            height: contentHeight
+          } = contentRect;
+          const {
+            left: triggerLeft,
+            top: triggerTop,
+            right: triggerRight,
+            bottom: triggerBottom
+          } = triggerRect;
+          let canPlace = true;
+          const {
+            windowWidth,
+            windowHeight
+          } = getWindowInfo();
+          let finalPlacement = placement;
+          if (isHorizontal) {
+            if (placement.startsWith('top')) {
+              canPlace = triggerTop - contentHeight >= 0;
+            } else if (placement.startsWith('bottom')) {
+              canPlace = triggerBottom + contentHeight <= windowHeight;
+            }
+          } else if (isVertical) {
+            if (placement.startsWith('left')) {
+              canPlace = triggerLeft - contentWidth >= 0;
+            } else if (placement.startsWith('right')) {
+              canPlace = triggerRight + contentWidth <= windowWidth;
+            }
+          }
+          if (!canPlace) {
+          // 反向
+            if (isHorizontal) {
+              finalPlacement = placement.startsWith('top') 
+                ? placement.replace('top', 'bottom') 
+                : placement.replace('bottom', 'top');
+            } else if (isVertical) {
+              finalPlacement = placement.startsWith('left') 
+                ? placement.replace('left', 'right') 
+                : placement.replace('right', 'left');
+            }
+          }
+          const basePos = this.calcContentPosition(finalPlacement, triggerRect, contentRect);
+          
+          resolve({
+            placement: finalPlacement,
+            ...basePos,
+          });
+        });
+      });
     },
-
     async computePosition() {
       const { placement } = this;
       const innerPlacement = placement
@@ -297,21 +315,27 @@ export default uniComponent({
 
       query.select(`#${name}-wrapper`).boundingClientRect();
       query.select(`#${name}-content`).boundingClientRect();
-
       query.selectViewport().scrollOffset();
-      query.exec((res) => {
+      query.exec(async (res) => {
         const [triggerRect, contentRect, viewportOffset] = res;
         if (!triggerRect || !contentRect) return;
-
+        const isFixed = this.fixed;
         // 最终放置位置
-        const { placement: finalPlacement, ...basePos } = this.calcPlacement(innerPlacement, triggerRect, contentRect);
+        const { placement: finalPlacement, ...basePos } = await this.calcPlacement(
+          isFixed, 
+          innerPlacement, 
+          triggerRect, 
+          contentRect
+        );
         // TODO 优化：滚动时可能导致箭头闪烁
         this.innerPlacement = finalPlacement;
 
-        const { scrollTop = 0, scrollLeft = 0 } = viewportOffset;
-        const top = basePos.top + scrollTop;
-        const left = basePos.left + scrollLeft;
-
+        const {
+          scrollTop = 0,
+          scrollLeft = 0
+        } = viewportOffset || {};
+        const top = isFixed ? basePos.top : basePos.top + scrollTop;
+        const left = isFixed ? basePos.left : basePos.left + scrollLeft;
         const style = `top:${Math.max(top, 0)}px;left:${Math.max(left, 0)}px;`;
         const arrowStyle = this.calcArrowStyle(innerPlacement, triggerRect, contentRect);
 

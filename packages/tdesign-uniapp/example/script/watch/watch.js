@@ -27,30 +27,41 @@ async function main() {
   const server = net.createServer();
   server.listen(port);
 
+  const WATCH_CONFIG = {
+    backList: [
+      'node_modules',
+    ],
+    list: [
+      {
+        prefix: 'uniapp-components',
+      },
+      {
+        prefix: 'uniapp-pro-components/chat',
+      },
+    ],
+  };
+
 
   watch(config.baseAndChatSourceGlob, async (e) => {
     const { event, history, base } = e || {};
 
-    if (event !== 'unlink' && history?.[0]
-       && (history[0].includes('tdesign-uniapp/components') || history[0].includes('tdesign-uniapp-chat/components'))) {
-      const filePath = history[0];
-      let relativePath = path.relative(base, filePath);
-      console.log('relativePath', relativePath);
-      if (relativePath.startsWith(`tdesign${path.sep}`) || relativePath.startsWith(`tdesign-uniapp-chat${path.sep}`)) {
-        relativePath = relativePath.split(path.sep).slice(1)
-          .join(path.sep);
-      }
+    if (event === 'unlink') return;
+    if (!history?.[0]) return;
 
-      console.log('base', base);
-      console.log('history', history);
+    if (WATCH_CONFIG.backList.some(item => history[0].includes(item))) return;
 
-      const { relativeTargetByCwd, relativeSourceByCwd } = await copy({
-        relativePath,
-        filePath,
-        config,
-      });
-      console.log(`[Wrote] done! \nFrom ${relativeSourceByCwd} to ${relativeTargetByCwd}`);
-    }
+    const targetItem = WATCH_CONFIG.list.find(item => history[0].includes(item.prefix));
+    if (!targetItem) return;
+
+    const filePath = history[0];
+    const relativePath = path.relative(path.resolve(base, targetItem.prefix), filePath);
+
+    const { relativeTargetByCwd, relativeSourceByCwd } = await copy({
+      relativePath,
+      filePath,
+      config,
+    });
+    console.log(`[Wrote] done! \nFrom ${relativeSourceByCwd} to ${relativeTargetByCwd}`);
   });
 
   // 监听进程终止信号

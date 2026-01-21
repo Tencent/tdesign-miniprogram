@@ -9,6 +9,7 @@ name | type | default | description | required
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
 close-on-click-outside | Boolean | true | \- | N
 content | String | - | \- | N
+fixed | Boolean | false | \- | N
 placement | String | top | options: top/left/right/bottom/top-left/top-right/bottom-left/bottom-right/left-top/left-bottom/right-top/right-bottom | N
 show-arrow | Boolean | true | \- | N
 theme | String | dark | options: dark/light/brand/success/warning/error | N
