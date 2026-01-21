@@ -1,0 +1,167 @@
+// @import (css) '../common/index.wxss';
+@import '../common/style/base.less';
+
+@navbar-color: var(--td-navbar-color, @text-color-primary);
+@navbar-bg-color: var(--td-navbar-bg-color, @bg-color-container);
+@navbar-background: var(--td-navbar-background, @navbar-bg-color);
+@navbar-height: var(--td-navbar-height, 48px);
+@navbar-right: var(
+  --td-navbar-right,
+  95px
+); // 默认右上角胶囊按钮宽度，组件会在初始化时尝试自动获取胶囊按钮宽度并覆写该值
+@navbar-padding-top: var(
+  --td-navbar-padding-top,
+  20px
+); // 导航栏顶部间距，组件会在初始化时尝试取右侧系统胶囊位置进行覆盖
+@navbar-title-font-size: var(--td-navbar-title-font-size, 18px);
+@navbar-title-font-weight: var(--td-navbar-title-font-weight, 600);
+@navbar-left-arrow-size: var(--td-navbar-left-arrow-size, 24px);
+
+// capsule
+@navbar-capsule-border-color: var(--td-navbar-capsule-border-color, @border-level-1-color);
+@navbar-capsule-border-radius: var(--td-navbar-capsule-border-radius, 16px);
+@navbar-capsule-width: var(--td-navbar-capsule-width, 88px);
+@navbar-capsule-height: var(--td-navbar-capsule-height, 32px);
+
+.@{prefix}-navbar {
+  &--fixed {
+    .@{prefix}-navbar__content {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 5001;
+    }
+  }
+
+  &--visible {
+    display: '';
+  }
+
+  &--visible-animation {
+    opacity: 1;
+    transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  &--hide-animation {
+    opacity: 0;
+    transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+
+  &--hide {
+    display: none;
+  }
+
+  &__placeholder {
+    height: @navbar-height;
+    padding-top: @navbar-padding-top;
+    position: relative;
+    visibility: hidden;
+    box-sizing: content-box;
+  }
+
+  &__content {
+    position: relative;
+    z-index: 1;
+    height: @navbar-height;
+    width: calc(100% - @navbar-right);
+    padding-right: @navbar-right;
+    padding-top: @navbar-padding-top;
+    color: @navbar-color;
+    background: @navbar-background;
+    display: flex;
+    align-items: center;
+    box-sizing: content-box;
+  }
+
+  &__left {
+    position: relative;
+    box-sizing: border-box;
+    max-width: var(--td-navbar-left-max-width);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin-left: @spacer-1;
+    transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    :deep(&-arrow) {
+      font-size: @navbar-left-arrow-size;
+    }
+
+    &--hide {
+      opacity: 0;
+    }
+  }
+
+  &__right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin-right: @spacer-1;
+  }
+
+  &__capsule {
+    box-sizing: border-box;
+    width: @navbar-capsule-width;
+    height: @navbar-capsule-height;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      width: 200%;
+      height: 200%;
+      transform: scale(0.5);
+      transform-origin: 0 0;
+      box-sizing: border-box;
+      border-radius: calc(@navbar-capsule-border-radius * 2);
+      border: 2rpx solid @navbar-capsule-border-color;
+    }
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__center {
+    font-size: 18px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: var(--td-navbar-center-left, @navbar-right);
+    width: var(--td-navbar-center-width, 187px); // 默认值取 Iphone6/7/8 屏幕计算的值
+    height: @navbar-height;
+    line-height: @navbar-height;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
+    &:empty {
+      display: none;
+    }
+
+    &-title {
+      font-size: @navbar-title-font-size;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      font-weight: @navbar-title-font-weight;
+    }
+
+    &--hide {
+      opacity: 0;
+    }
+  }
+}

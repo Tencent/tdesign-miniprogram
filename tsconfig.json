@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "resolveJsonModule": true,
     "experimentalDecorators": true,
     "target": "es6",
     "lib": ["es6", "dom", "ES2016.Array.Include"],
@@ -17,5 +18,8 @@
       "tdesign-miniprogram/*": ["packages/components/*"]
     }
   },
-  "include": ["packages/**/*", "typing.d.ts"]
+  "include": ["packages/**/*", "typing.d.ts"],
+  "exclude": [
+    "packages/uniapp-components/npm/**/*"
+  ]
 }

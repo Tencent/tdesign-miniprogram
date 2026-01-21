@@ -1,0 +1,61 @@
+@import '../common/style/base.less';
+
+@image-color: var(--td-image-color, @text-color-placeholder);
+@image-loading-bg-color: var(--td-image-loading-bg-color, @bg-color-secondarycontainer);
+@image-loading-color: var(--td-image-loading-color, @text-color-placeholder);
+@image-round-radius: var(--td-image-round-radius, @radius-default);
+
+.@{prefix}-image {
+  position: relative;
+  display: inline-block;
+
+  &__mask,
+  &__img {
+    color: @image-color;
+    vertical-align: top;
+    width: inherit;
+    height: inherit;
+  }
+
+  &__mask {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: @image-loading-bg-color;
+    color: @image-loading-color;
+  }
+
+  &--loading-text {
+    width: 0;
+    height: 0;
+  }
+
+  &__common {
+    width: 100%;
+    height: 100%;
+  }
+
+  &--lazy {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  &--shape {
+    &-circle {
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    &-round {
+      border-radius: @image-round-radius;
+      overflow: hidden;
+    }
+
+    &-square {
+      border-radius: 0;
+      overflow: hidden;
+    }
+  }
+}

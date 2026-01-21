@@ -32,9 +32,28 @@
 从用户角度描述具体变化，以及可能的 breaking change 和其他风险。
 -->
 
-- fix(组件名称): 处理问题或特性描述 ...
-
 - [ ] 本条 PR 不需要纳入 Changelog
+
+#### tdesign-miniprogram
+<!--
+- feat(组件名称): 处理问题或特性描述
+--> 
+
+
+
+#### tdesign-uniapp
+<!--
+- feat(组件名称): 处理问题或特性描述
+-->
+
+
+
+#### tdesign-uniapp-chat
+<!--
+- feat(组件名称): 处理问题或特性描述
+-->
+
+
 
 ### ☑️ 请求合并前的自查清单
 

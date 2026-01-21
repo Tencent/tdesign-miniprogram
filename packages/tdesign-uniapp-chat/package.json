@@ -1,0 +1,134 @@
+{
+  "name": "tdesign-uniapp-chat",
+  "version": "0.1.3",
+  "id": "tdesign-uniapp-chat",
+  "title": "tdesign-uniapp-chat",
+  "description": "TDesign Chat Component for uniapp",
+  "keywords": [
+    "tdesign",
+    "miniprogram",
+    "uniapp",
+    "vue"
+  ],
+  "typings": "./dist/types/index.d.ts",
+  "exports": {
+    "./*": "./dist/*",
+    "./attachments/attachments.vue": {
+      "types": "./dist/types/attachments.d.ts",
+      "import": "./dist/attachments/attachments.vue",
+      "default": "./dist/attachments/attachments.vue"
+    },
+    "./chat-actionbar/chat-actionbar.vue": {
+      "types": "./dist/types/chat-actionbar.d.ts",
+      "import": "./dist/chat-actionbar/chat-actionbar.vue",
+      "default": "./dist/chat-actionbar/chat-actionbar.vue"
+    },
+    "./chat-content/chat-content.vue": {
+      "types": "./dist/types/chat-content.d.ts",
+      "import": "./dist/chat-content/chat-content.vue",
+      "default": "./dist/chat-content/chat-content.vue"
+    },
+    "./chat-list/chat-list.vue": {
+      "types": "./dist/types/chat-list.d.ts",
+      "import": "./dist/chat-list/chat-list.vue",
+      "default": "./dist/chat-list/chat-list.vue"
+    },
+    "./chat-loading/chat-loading.vue": {
+      "types": "./dist/types/chat-loading.d.ts",
+      "import": "./dist/chat-loading/chat-loading.vue",
+      "default": "./dist/chat-loading/chat-loading.vue"
+    },
+    "./chat-markdown/chat-markdown.vue": {
+      "types": "./dist/types/chat-markdown.d.ts",
+      "import": "./dist/chat-markdown/chat-markdown.vue",
+      "default": "./dist/chat-markdown/chat-markdown.vue"
+    },
+    "./chat-message/chat-message.vue": {
+      "types": "./dist/types/chat-message.d.ts",
+      "import": "./dist/chat-message/chat-message.vue",
+      "default": "./dist/chat-message/chat-message.vue"
+    },
+    "./chat-sender/chat-sender.vue": {
+      "types": "./dist/types/chat-sender.d.ts",
+      "import": "./dist/chat-sender/chat-sender.vue",
+      "default": "./dist/chat-sender/chat-sender.vue"
+    },
+    "./chat-thinking/chat-thinking.vue": {
+      "types": "./dist/types/chat-thinking.d.ts",
+      "import": "./dist/chat-thinking/chat-thinking.vue",
+      "default": "./dist/chat-thinking/chat-thinking.vue"
+    }
+  },
+  "files": [
+    "dist",
+    "global.d.ts",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "bugs": {
+    "url": "https://github.com/Tencent/tdesign-miniprogram/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tencent/tdesign-miniprogram.git"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "scripts": {
+    "site": "pnpm --filter=\"./site\" build",
+    "site:dev": "pnpm --filter=\"./site\" run dev",
+    "site:preview": "pnpm --filter=\"./site\" run site:preview",
+    "type-check": "vue-tsc --noEmit"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "catalog:",
+    "@commitlint/config-conventional": "catalog:",
+    "@dcloudio/types": "catalog:uni",
+    "@stylistic/eslint-plugin-jsx": "catalog:",
+    "@types/node": "catalog:",
+    "@typescript-eslint/eslint-plugin": "catalog:",
+    "@typescript-eslint/parser": "catalog:",
+    "@vue/runtime-core": "catalog:",
+    "@vue/tsconfig": "catalog:",
+    "concurrently": "catalog:",
+    "dotenv": "catalog:",
+    "echarts": "catalog:",
+    "eslint": "catalog:",
+    "eslint-config-light": "latest",
+    "eslint-config-light-vue3": "latest",
+    "eslint-import-resolver-alias": "catalog:",
+    "eslint-import-resolver-node": "catalog:",
+    "eslint-plugin-import": "catalog:",
+    "eslint-plugin-jest": "catalog:",
+    "eslint-plugin-light": "latest",
+    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-react": "catalog:",
+    "eslint-plugin-react-hooks": "catalog:",
+    "eslint-plugin-tailwindcss": "catalog:",
+    "eslint-plugin-vue": "catalog:",
+    "glob": "catalog:",
+    "less": "catalog:",
+    "lint-staged": "catalog:",
+    "miniprogram-api-typings": "catalog:miniprogram",
+    "postcss-less": "catalog:",
+    "postcss-rpx-transform": "catalog:",
+    "stylelint": "catalog:",
+    "stylelint-config-common": "catalog:",
+    "stylelint-config-standard": "catalog:",
+    "stylelint-less": "catalog:",
+    "stylelint-scss": "catalog:",
+    "t-comm": "catalog:",
+    "tslib": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vue-tsc": "catalog:",
+    "zrender": "catalog:"
+  },
+  "lint-staged": {
+    "*.{ts,js,vue}": [
+      "eslint --fix"
+    ]
+  }
+}

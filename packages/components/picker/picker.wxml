@@ -1,4 +1,5 @@
 <wxs src="../common/utils.wxs" module="_" />
+<wxs src="./picker.wxs" module="_this" />
 
 <t-popup
   wx:if="{{usePopup}}"
@@ -6,6 +7,7 @@
   close-on-overlay-click="{{autoClose}}"
   visible="{{visible}}"
   placement="bottom"
+  show-overlay="{{_this.isShowOverlay(popupProps.showOverlay, true)}}"
   using-custom-navbar="{{usingCustomNavbar || popupProps.usingCustomNavbar}}"
   z-index="{{ popupProps.zIndex || defaultPopUpzIndex }}"
   overlay-props="{{ popupProps.overlayProps || defaultPopUpProps }}"

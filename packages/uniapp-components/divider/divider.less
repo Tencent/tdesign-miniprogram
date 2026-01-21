@@ -1,0 +1,79 @@
+@import '../common/style/base.less';
+
+@divider-color: var(--td-divider-color, @bg-color-component);
+@divider-border-width: var(--td-divider-border-width, 2rpx);
+@divider-horizontal-margin: var(--td-divider-horizontal-margin, 20rpx);
+@divider-vertical-margin: var(--td-divider-vertical-margin, @spacer);
+@divider-content-color: var(--td-divider-content-color, @text-color-placeholder);
+@divider-content-font-size: var(--td-divider-content-font-size, @font-size-s);
+@divider-content-line-height: var(--td-divider-content-line-height, 40rpx);
+@divider-content-line-style: var(--td-divider-content-line-style, solid);
+@divider-content-margin: var(--td-divider-content-margin, @spacer-1);
+
+.@{prefix}-divider {
+  display: flex;
+  color: @divider-color;
+  border-color: @divider-color;
+  border-style: @divider-content-line-style;
+  border-width: 0;
+
+  &::before,
+  &::after {
+    content: '';
+    display: block;
+    flex: 1;
+    box-sizing: border-box;
+    border: inherit;
+    border-color: inherit;
+    border-style: inherit;
+  }
+
+  &--horizontal {
+    align-items: center;
+    margin: @divider-horizontal-margin 0;
+
+    &::before,
+    &::after {
+      border-top-width: @divider-border-width;
+      transform: scaleY(0.5);
+      transform-origin: center;
+    }
+
+    .@{prefix}-divider__content:not(:empty) {
+      margin: 0 @divider-content-margin;
+    }
+  }
+
+  &--vertical {
+    flex-direction: column;
+    height: 28rpx;
+    margin: 0 @divider-vertical-margin;
+
+    &::before,
+    &::after {
+      border-left-width: @divider-border-width;
+      transform: scaleX(0.5);
+      transform-origin: center;
+    }
+
+    &-center {
+      align-items: center;
+      height: 100%;
+    }
+  }
+
+  &--dashed {
+    border-style: dashed;
+  }
+
+  &__content {
+    font-size: @divider-content-font-size;
+    line-height: @divider-content-line-height;
+    color: @divider-content-color;
+  }
+
+  &--left::before,
+  &--right::after {
+    max-width: 60rpx;
+  }
+}
