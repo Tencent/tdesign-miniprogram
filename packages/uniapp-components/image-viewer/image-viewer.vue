@@ -12,7 +12,7 @@
     <view
       :class="classPrefix + '__mask'"
       data-source="overlay"
-      :style="'background-color: ' + backgroundColor"
+      :style="tools._style([backgroundColor && '--td-image-viewer-mask-bg-color: ' + backgroundColor])"
       aria-role="button"
       aria-label="关闭"
       @click="(e) => onClose(e, 'overlay')"
