@@ -1,4 +1,4 @@
-function getPopupStyles({ zIndex, distanceTop, placement, duration }) {
+function getPopupStyles(zIndex, distanceTop, placement, duration) {
   var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
   if ((placement === 'top' || placement === 'left' || placement === 'right') && distanceTop) {
     zIndexStyle = zIndexStyle + 'top:' + distanceTop + 'px;' + '--td-popup-distance-top:' + distanceTop + 'px;';

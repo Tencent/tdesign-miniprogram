@@ -98,7 +98,7 @@ exports[`dropdown-menu :base 1`] = `
           >
             <wx-view
               class="t-popup t-popup--top t-fade-enter-active t-fade-enter-to class t-class"
-              style="z-index:11601; position: absolute;"
+              style="z-index:11601;--td-popup-transition:all 200ms ease; position: absolute;"
               bind:transitionend="onTransitionEnd"
             >
               <wx-view

@@ -3,7 +3,7 @@
 
 <view
   wx:if="{{realVisible}}"
-  style="{{_._style([popup.getPopupStyles({ zIndex, distanceTop, placement, duration }), style, customStyle])}}"
+  style="{{_._style([popup.getPopupStyles(zIndex, distanceTop, placement, duration), style, customStyle])}}"
   class="{{_.cls(classPrefix, [placement])}} {{transitionClass}} class {{prefix}}-class"
   bind:transitionend="onTransitionEnd"
 >
