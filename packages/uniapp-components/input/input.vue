@@ -73,6 +73,7 @@
           :aria-label="label"
           :aria-roledescription="label"
           @input="onInput"
+          @change="onChange"
           @focus="onFocus"
           @blur="onBlur"
           @confirm="onConfirm"
