@@ -35,12 +35,17 @@
           >
             <t-image
               v-if="!lazy || shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes)"
-              t-class="t-image--external"
-              :custom-style="(imagesStyle[index] && imagesStyle[index].style) || ''"
-              mode="aspectFit"
-              :src="item"
-              :data-index="index"
+              :t-class="prefix + '-image--external'"
               :class="classPrefix + '__image'"
+              :custom-style="(imagesStyle[index] && imagesStyle[index].style) || ''"
+              :data-index="index"
+              :src="item"
+              :mode="(imageProps && imageProps.mode) || 'aspectFit'"
+              :lazy="(imageProps && imageProps.lazy) || false"
+              :loading="(imageProps && imageProps.loading) || 'default'"
+              :shape="(imageProps && imageProps.shape) || 'square'"
+              :webp="(imageProps && imageProps.webp) || false"
+              :show-menu-by-longpress="(imageProps && imageProps.showMenuByLongpress) || false"
               @load="onImageLoadSuccess($event, { index })"
             />
           </swiper-item>

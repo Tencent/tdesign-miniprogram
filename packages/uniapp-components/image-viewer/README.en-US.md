@@ -10,8 +10,9 @@ custom-style | Object | - | CSS(Cascading Style Sheets) | N
 background-color | String | - | \- | N
 close-btn | String / Boolean / Object | false | \- | N
 delete-btn | String / Boolean / Object | false | \- | N
-images | Array | [] | Typescript：`Array<string>` | N
-initial-index | Number | 0 | Typescript：`Number` | N
+image-props | Object | - | Typescript: `ImageProps`，[Image API Documents](./image?tab=api)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/image-viewer/type.ts) | N
+images | Array | [] | Typescript: `Array<string>` | N
+initial-index | Number | 0 | Typescript: `Number` | N
 lazy | Boolean | true | \- | N
 show-index | Boolean | false | \- | N
 using-custom-navbar | Boolean | false | \- | N
@@ -23,8 +24,8 @@ default-visible | Boolean | false | hide or show image viewer。uncontrolled pro
 name | params | description
 -- | -- | --
 change | `(context: { index: number })` | \-
-close | `(context: { trigger: 'overlay' \| 'button', visible: Boolean, index: Number })` | \-
-delete | `(context: { index: number })` | \-
+close | `(context: { trigger: 'overlay' \| 'button', visible: Boolean, index: Number } )` | \-
+delete | `(context: { index: number } )` | \-
 
 ### ImageViewer Slots
 
