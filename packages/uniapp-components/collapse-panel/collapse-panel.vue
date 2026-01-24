@@ -22,6 +22,7 @@
         :t-class="tools.cls(classPrefix + '__header', [placement, ['expanded', expanded]]) + ' ' + tClassHeader"
         :t-class-title="'class-title ' + (ultimateDisabled ? 'class-title--disabled' : '')"
         :t-class-note="'class-note ' + (ultimateDisabled ? 'class-note--disabled' : '')"
+        :t-class-left-icon="'class-left-icon ' + (ultimateDisabled ? 'class-left-icon--disabled' : '')"
         :t-class-right-icon="'class-right-icon ' + classPrefix + '__arrow--' + placement + ' ' + (ultimateDisabled ? 'class-right-icon--disabled' : '')"
         t-class-hover="class-header-hover"
         :title-style="titleCustomStyle"
