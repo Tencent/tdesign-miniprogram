@@ -61,6 +61,7 @@
     <block v-else>
       {{ label }}
     </block>
+    <slot />
   </view>
 </template>
 <script>
