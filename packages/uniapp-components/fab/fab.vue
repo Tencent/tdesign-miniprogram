@@ -194,7 +194,7 @@ export default uniComponent({
     },
     onMove(e) {
       const {
-        yBounds,
+        yBounds = [],
         distanceTop,
         systemInfo,
       } = this;
