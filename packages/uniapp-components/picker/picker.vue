@@ -5,6 +5,7 @@
       :visible="dataVisible"
       placement="bottom"
       :close-on-overlay-click="autoClose"
+      :show-overlay="isShowOverlay(popupProps && popupProps.showOverlay, true)"
       :using-custom-navbar="usingCustomNavbar || (popupProps && popupProps.usingCustomNavbar)"
       :custom-navbar-height="coalesce(customNavbarHeight, popupProps && popupProps.usingCustomNavbar)"
       :z-index="(popupProps && popupProps.zIndex) || defaultPopUpzIndex"
@@ -200,9 +201,11 @@ export default uniComponent({
   },
   methods: {
     coalesce,
+
     innerAfterLinked() {
       this.updateChildren();
     },
+    
     updateChildren() {
       const { pickItemHeight } = this;
       const { value, defaultValue, keys, visibleItemCount, itemHeight } = this;
@@ -285,7 +288,11 @@ export default uniComponent({
         this.updateChildren();
         this.updateIndicatorPosition();
       }
-    }
+    },
+
+    isShowOverlay(value, defaultValue) {
+      return tools.isBoolean(value) ? value : defaultValue;
+    },
   },
 });
 </script>
