@@ -9,10 +9,10 @@ name | type | default | description | required
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
 check-strictly | Boolean | false | \- | N
 close-btn | Boolean | true | \- | N
-keys | Object | - | Typescript：`KeysType`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/common.ts) | N
-options | Array | [] | Typescript：`Array<CascaderOption>` | N
+keys | Object | - | Typescript: `CascaderKeysType` `type CascaderKeysType = TreeKeysType`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/common/common.ts)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/cascader/type.ts) | N
+options | Array | [] | Typescript: `Array<CascaderOption>` | N
 placeholder | String | 选择选项 | \- | N
-sub-titles | Array | [] | Typescript：`Array<string>` | N
+sub-titles | Array | [] | Typescript: `Array<string>` | N
 theme | String | step | options: step/tab | N
 title | String | - | \- | N
 value | String / Number | - | `v-model:value` is supported | N
@@ -24,7 +24,7 @@ visible | Boolean | false | \- | N
 name | params | description
 -- | -- | --
 change | `(context: { value: string \| number, selectedOptions: string[] })` | \-
-close | `(context: { trigger: CascaderTriggerSource })` | [see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/cascader/type.ts)。<br/>`type CascaderTriggerSource = 'overlay' \| 'close-btn' \| 'finish'`<br/>
+close | `(context: { trigger: CascaderTriggerSource })` | [see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/cascader/type.ts)。<br/>`type CascaderTriggerSource = 'overlay' \| 'close-btn' \| 'finish'`<br/>
 pick | `(context: { value: string \| number, label: string, index: number, level: number })` | \-
 
 ### Cascader Slots

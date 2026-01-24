@@ -2,7 +2,7 @@
   <view
     :id="tId"
     :style="tools._style([customStyle])"
-    :class="tools.cls(classPrefix, [_placement, ['block', block]]) + ' ' + tClass"
+    :class="tools.cls(classPrefix, [_placement, ['block', block], ['disabled', _disabled]]) + ' ' + tClass"
     :disabled="_disabled"
     aria-role="radio"
     :aria-checked="dataChecked"
