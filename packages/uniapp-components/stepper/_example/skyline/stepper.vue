@@ -1,12 +1,9 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       class="block"
       title="Stepper"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"

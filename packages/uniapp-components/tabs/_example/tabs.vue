@@ -1,14 +1,9 @@
 <template>
   <view class="demo-wrap">
     <view class="custom-navbar">
-      <!-- #ifndef MP-ALIPAY -->
-      <t-navbar
+      <t-demo-navbar
         title="Tabs"
-        left-arrow
-        :delta="-1"
-        @go-back="onDemoGoBack"
       />
-    <!-- #endif -->
     </view>
     <view class="demo">
       <t-demo-header

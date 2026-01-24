@@ -1,13 +1,10 @@
 <template>
   <view>
     <view class="custom-navbar">
-      <!-- #ifndef MP-ALIPAY -->
-      <t-navbar
+      <t-demo-navbar
         class="demo-navbar"
         title="TDesign"
-        left-arrow
       />
-      <!-- #endif -->
     </view>
 
     <view

@@ -117,7 +117,7 @@ export default {
   computed: {
     stickyProps() {
       return {
-        zIndex: 2,
+        zIndex: 100,
         offsetTop: this.stickyOffset,
 
       };

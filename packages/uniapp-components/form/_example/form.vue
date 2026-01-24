@@ -1,14 +1,9 @@
 <template>
   <view class="tdesign-mobile-demo">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       class="demo-navbar"
       title="Form"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <t-demo-header
       title="Form 表单"
       desc="用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。"

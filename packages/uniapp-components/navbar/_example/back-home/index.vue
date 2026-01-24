@@ -1,9 +1,8 @@
 <template>
   <view>
     <t-navbar
-      t-class-placeholder="t-navbar-placeholder"
-      t-class-content="t-navbar-content"
       title="标题文字"
+      :fixed="false"
     >
       <template
         #capsule

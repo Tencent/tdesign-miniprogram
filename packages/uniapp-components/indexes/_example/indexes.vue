@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       class="demo-navbar"
       title="Indexes"
-      left-arrow
-      ta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="indexes">
       <t-demo-header
         title="Indexes 索引"

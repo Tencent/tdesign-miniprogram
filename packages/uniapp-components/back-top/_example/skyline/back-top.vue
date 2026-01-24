@@ -1,12 +1,9 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       class="block"
       title="BackTop"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -146,7 +143,7 @@ export default {
     };
   },
   methods: {
-    onScroll(e: any) {
+    onScroll(e) {
       const { scrollTop } = e.detail;
       this.scrollTop = scrollTop;
     },
@@ -155,7 +152,7 @@ export default {
       this.scrollTo = 0;
     },
 
-    onBtnClick(e: any, { source: type }) {
+    onBtnClick(e, { source: type }) {
       this.type = type;
       this.scrollTo = 100;
     },

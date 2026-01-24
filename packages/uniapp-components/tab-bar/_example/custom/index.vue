@@ -4,6 +4,7 @@
       t-class="t-tab-bar"
       :value="value"
       @change="onChange"
+      :fixed="false"
     >
       <t-tab-bar-item
         v-for="(item, index) in list"

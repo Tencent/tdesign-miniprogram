@@ -1,11 +1,10 @@
 <template>
   <view>
     <t-navbar
-      t-class-placeholder="t-navbar-placeholder"
-      t-class-content="t-navbar-content"
       t-class="custom-navbar"
       left-arrow
       title="标题文字"
+      :fixed="false"
       @right-click="handleRightClick"
     >
       <template #right>

@@ -1,12 +1,9 @@
 <template>
   <view class="skyline">
     <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       class="demo-navbar"
       title="Avatar"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
     <!-- #endif -->
     <scroll-view

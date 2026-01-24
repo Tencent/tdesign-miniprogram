@@ -5,6 +5,7 @@
       :value="value"
       theme="tag"
       :split="false"
+      :fixed="false"
       @change="onChange"
     >
       <t-tab-bar-item

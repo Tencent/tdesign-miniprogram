@@ -2,20 +2,18 @@
   <view>
     <view class="block">
       <t-navbar
-        t-class-placeholder="t-navbar-placeholder"
-        t-class-content="t-navbar-content"
         title="标题文字"
         t-class-title="nav-title"
+        :fixed="false"
       />
     </view>
 
     <view class="block">
       <t-navbar
-        t-class-placeholder="t-navbar-placeholder"
-        t-class-content="t-navbar-content"
         class="block"
         title="标题文字"
         left-arrow
+        :fixed="false"
         @go-back="handleBack"
       />
     </view>

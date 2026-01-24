@@ -1,9 +1,8 @@
 <template>
   <view>
-    <t-navbar
+    <t-demo-navbar
       class="demo-navbar"
       title="Popover"
-      left-arrow
     />
     <t-demo-header
       title="Popover 弹出气泡"

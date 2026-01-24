@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="ActionSheet"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="ActionSheet 动作面板"

@@ -5,6 +5,7 @@
       default-value="user"
       theme="tag"
       :split="false"
+      :fixed="false"
     >
       <t-tab-bar-item
         v-for="(item, index) in list"

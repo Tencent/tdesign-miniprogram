@@ -1,8 +1,7 @@
 <template>
   <view>
     <t-navbar
-      t-class-placeholder="t-navbar-placeholder"
-      t-class-content="t-navbar-content"
+      :fixed="false"
     >
       <template #left>
         <view>

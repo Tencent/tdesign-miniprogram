@@ -1,6 +1,6 @@
 <template>
   <view class="skyline">
-    <t-navbar
+    <t-demo-navbar
       title="Cell"
       left-arrow
     />

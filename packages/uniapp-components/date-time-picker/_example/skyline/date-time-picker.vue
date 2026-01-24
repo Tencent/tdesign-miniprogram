@@ -1,8 +1,7 @@
 <template>
   <view class="skyline">
-    <t-navbar
+    <t-demo-navbar
       title="DateTimePicker"
-      left-arrow
     />
     <scroll-view
       scroll-y

@@ -1,14 +1,9 @@
 <template>
   <view>
     <view class="custom-navbar">
-      <!-- #ifndef MP-ALIPAY -->
-      <t-navbar
+      <t-demo-navbar
         title="Sticky"
-        left-arrow
-        :delta="-1"
-        @go-back="onDemoGoBack"
       />
-    <!-- #endif -->
     </view>
     <view class="demo tdesign-demo-sticky-base">
       <t-demo-header
