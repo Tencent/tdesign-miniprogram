@@ -1,5 +1,5 @@
 import { prefix } from './config';
-import { isString, isNumber, isDef, isBoolean, isObject } from './validator';
+import { isString, isNumeric, isDef, isBoolean, isObject } from './validator';
 import { getWindowInfo, getAppBaseInfo, getDeviceInfo } from './wechat';
 
 export { getWindowInfo };
@@ -9,6 +9,24 @@ export const systemInfo = getWindowInfo();
 export const appBaseInfo = getAppBaseInfo();
 
 export const deviceInfo = getDeviceInfo();
+
+
+/**
+ * 多参数空值合并函数
+ * @param {...any} args - 任意数量的参数
+ * @returns {any} 第一个非null/undefined的参数值
+ */
+export function coalesce(...args) {
+  // 遍历所有参数
+  for (let i = 0; i < args.length; i+=1) {
+    // 返回第一个非null且非undefined的值
+    if (args[i] !== null && args[i] !== undefined) {
+      return args[i];
+    }
+  }
+  // 如果所有参数都是null/undefined，返回最后一个参数
+  return args[args.length - 1];
+}
 
 
 export const debounce = function (func, wait = 500) {
@@ -142,12 +160,21 @@ export const isIOS = function () {
   return !!(deviceInfo?.system?.toLowerCase().search('ios') + 1);
 };
 
+/**
+ * 判断是否是为企微环境
+ * 企微环境 wx.getSystemInfoSync() 接口会额外返回 environment 字段（微信中不返回）
+ * https://developer.work.weixin.qq.com/document/path/91511
+ */
+export const isWxWork = deviceInfo?.environment === 'wxwork';
+
+export const isPC = ['mac', 'windows'].includes(deviceInfo?.platform);
+
 export const addUnit = function (value) {
   if (!isDef(value)) {
     return undefined;
   }
   value = String(value);
-  return isNumber(value) ? `${value}px` : value;
+  return isNumeric(value) ? `${value}px` : value;
 };
 
 /**
@@ -329,19 +356,3 @@ export const nextTick = () => new Promise((resolve) => {
   }, 33);
 });
 
-/**
- * 多参数空值合并函数
- * @param {...any} args - 任意数量的参数
- * @returns {any} 第一个非null/undefined的参数值
- */
-export function coalesce(...args) {
-  // 遍历所有参数
-  for (let i = 0; i < args.length; i++) {
-    // 返回第一个非null且非undefined的值
-    if (args[i] !== null && args[i] !== undefined) {
-      return args[i];
-    }
-  }
-  // 如果所有参数都是null/undefined，返回最后一个参数
-  return args[args.length - 1];
-}

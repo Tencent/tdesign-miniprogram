@@ -2,7 +2,7 @@
   <view
     :style="tools._style([customStyle])"
     :class="tools.cls(classPrefix, [
-      ['split', split], ['text-only', !icon],
+      ['split', split],
       ['crowded', crowded], shape]
     ) + ' ' + tClass"
   >

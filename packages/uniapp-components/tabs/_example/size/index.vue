@@ -69,6 +69,6 @@ export default {
 </script>
 <style>
 .bigger {
-    --td-tab-font-size: 32rpx;
+  --td-tab-font: var(--td-font-body-large);
 }
 </style>

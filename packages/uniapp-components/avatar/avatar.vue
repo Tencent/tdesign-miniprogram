@@ -26,7 +26,7 @@
           utils.getClass(classPrefix, dataSize || 'medium', dataShape, dataBordered),
           tClassImage
         ]"
-        :style="utils.getSize(dataSize, systemInfo)"
+        :style="utils.getSize(dataSize, windowWidth)"
         :aria-label="ariaLabel || alt || '头像'"
         :aria-role="ariaRole || 'img'"
         :aria-hidden="ariaHidden"
@@ -85,7 +85,7 @@ import { prefix } from '../common/config';
 import avatarProps from './props';
 import { setIcon, systemInfo } from '../common/utils';
 import tools from '../common/utils.wxs';
-import { utils } from './computed.js';
+import * as utils from './computed.js';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 
@@ -119,7 +119,7 @@ export default uniComponent({
       classPrefix: name,
       isShow: true,
       zIndex: 0,
-      systemInfo,
+      windowWidth: systemInfo.windowWidth,
       utils,
       tools,
 

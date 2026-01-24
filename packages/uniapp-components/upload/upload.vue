@@ -271,7 +271,7 @@ import tImage from '../image/image';
 import { uniComponent } from '../common/src/index';
 import props from './props';
 import { prefix } from '../common/config';
-import { isOverSize, coalesce } from '../common/utils';
+import { isOverSize, coalesce, isWxWork, isPC } from '../common/utils';
 import { isObject } from '../common/validator';
 import tools from '../common/utils.wxs';
 import {
@@ -455,6 +455,20 @@ export default uniComponent({
       return parseInt(`${Date.now()}${Math.floor(Math.random() * 900 + 100)}`, 10).toString(36) + extName;
     },
 
+    checkFileSize(size, sizeLimit, fileType) {
+      if (isOverSize(size, sizeLimit)) {
+        let title = `${fileType === 'video' ? '视频' : '图片'}大小超过限制`;
+
+        if (isObject(sizeLimit)) {
+          const { size: limitSize, message: limitMessage } = sizeLimit;
+          title = limitMessage?.replace('{sizeLimit}', String(limitSize));
+        }
+        uni.showToast({ icon: 'none', title });
+        return true;
+      }
+      return false;
+    },
+
     onDelete(e) {
       const { index } = e.currentTarget.dataset;
       this.deleteHandle(index);
@@ -475,9 +489,18 @@ export default uniComponent({
       this.column = column;
     },
 
+    resetDragLayout() {
+      this.dragBaseData = {};
+      this.dragWrapStyle = '';
+      this.dragLayout = false;
+    },
+
     initDragLayout() {
-      const { draggable, disabled } = this;
-      if (!draggable || disabled) return;
+      const { draggable, disabled, customFiles } = this;
+      if (!draggable || disabled || customFiles.length === 0) {
+        this.resetDragLayout();
+        return;
+      }
       this.initDragList();
       setTimeout(() => {
         this.initDragBaseData();
@@ -515,13 +538,7 @@ export default uniComponent({
     },
 
     initDragBaseData() {
-      const { classPrefix, rows, column, customFiles } = this;
-      if (customFiles.length === 0) {
-        this.dragBaseData = {};
-        this.dragWrapStyle = '';
-        this.dragLayout = false;
-        return;
-      }
+      const { classPrefix, rows, column } = this;
 
       let query;
       // #ifdef H5 || APP-PLUS
@@ -627,13 +644,13 @@ export default uniComponent({
     },
 
     uploadFiles(files) {
-      return new Promise((resolve) => {
+      return Promise.resolve().then(() => {
         // 开始调用上传函数
-        const task = this.requestMethod(files);
+        const task = this.data.requestMethod(files);
         if (task instanceof Promise) {
           return task;
         }
-        resolve({});
+        return Promise.resolve({});
       });
     },
 
@@ -680,6 +697,11 @@ export default uniComponent({
       // #ifdef H5 || MP-ALIPAY
       func = 'chooseImage';
       // #endif
+      // #ifdef MP-WEIXIN
+      if (isPC || isWxWork) {
+        func = 'chooseImage';
+      }
+      // #endif
       uni[func]({
         count: Math.min(20, customLimit),
         mediaType,
@@ -691,15 +713,8 @@ export default uniComponent({
           res.tempFiles.forEach((temp) => {
             const { size, fileType, tempFilePath, width, height, duration, thumbTempFilePath, ...res } = temp;
 
-            if (isOverSize(size, sizeLimit)) {
-              let title = `${fileType === 'image' ? '图片' : '视频'}大小超过限制`;
+            if (this.checkFileSize(size, sizeLimit, fileType)) return;
 
-              if (typeof sizeLimit !== 'number') {
-                title = sizeLimit.message.replace('{sizeLimit}', sizeLimit?.size);
-              }
-              uni.showToast({ icon: 'none', title });
-              return;
-            }
 
             const name = temp.name || this.getRandFileName(tempFilePath);
             files.push({
@@ -740,15 +755,7 @@ export default uniComponent({
           res.tempFiles.forEach((temp) => {
             const { size, type: fileType, path: tempFilePath, ...res } = temp;
 
-            if (isOverSize(size, sizeLimit)) {
-              let title = `${fileType === 'image' ? '图片' : '视频'}大小超过限制`;
-
-              if (typeof sizeLimit !== 'number') {
-                title = sizeLimit.message.replace('{sizeLimit}', sizeLimit?.size);
-              }
-              uni.showToast({ icon: 'none', title });
-              return;
-            }
+            if (this.checkFileSize(size, sizeLimit, fileType)) return;
 
             const name = this.getRandFileName(tempFilePath);
             files.push({
