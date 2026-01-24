@@ -45,11 +45,12 @@ export default class TCalendar {
     const { year: maxYear, month: maxMonth, time: maxTime } = getDateRect(maxDate);
     const calcType = (year, month, date) => {
       const curDate = new Date(year, month, date, 23, 59, 59);
+
       if (type === 'single' && selectedDate) {
         if (isSameDate({ year, month, date }, selectedDate)) return 'selected';
       }
       if (type === 'multiple' && selectedDate) {
-        const hit = selectedDate.some(item => isSameDate({ year, month, date }, item));
+        const hit = selectedDate.some((item) => isSameDate({ year, month, date }, item));
         if (hit) {
           return 'selected';
         }
@@ -59,18 +60,22 @@ export default class TCalendar {
           const [startDate, endDate] = selectedDate;
           const compareWithStart = startDate && isSameDate({ year, month, date }, startDate);
           const compareWithEnd = endDate && isSameDate({ year, month, date }, endDate);
+
           if (compareWithStart && compareWithEnd && allowSameDay) return 'start-end';
           if (compareWithStart) return 'start';
           if (compareWithEnd) return 'end';
-          if (startDate && endDate && curDate.getTime() > startDate.getTime() && curDate.getTime() < endDate.getTime()) return 'centre';
+          if (startDate && endDate && curDate.getTime() > startDate.getTime() && curDate.getTime() < endDate.getTime())
+            return 'centre';
         }
       }
+
       const minCurDate = new Date(year, month, date, 0, 0, 0);
       if (curDate.getTime() < minTime || minCurDate.getTime() > maxTime) {
         return 'disabled';
       }
       return '';
     };
+
     while (minYear < maxYear || (minYear === maxYear && minMonth <= maxMonth)) {
       const target = getMonthDateRect(new Date(minYear, minMonth, 1));
       const months = [];
@@ -93,6 +98,7 @@ export default class TCalendar {
       minYear = curDate.year;
       minMonth = curDate.month;
     }
+  
     return ans;
   }
 

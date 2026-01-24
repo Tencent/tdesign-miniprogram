@@ -1,6 +1,6 @@
 export type TCalendarValue = number | Date;
 
-export type TDateType = 'selected' | 'disabled' | 'start' | 'centre' | 'end' | '';
+export type TDateType = 'selected' | 'disabled' | 'start-end' | 'start' | 'centre' | 'end' | '';
 
 export type TCalendarType = 'single' | 'multiple' | 'range';
 
