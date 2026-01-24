@@ -4,6 +4,7 @@
       v-if="usePopup"
       :visible="dataVisible"
       placement="bottom"
+      :close-on-overlay-click="autoClose"
       :using-custom-navbar="usingCustomNavbar || (popupProps && popupProps.usingCustomNavbar)"
       :custom-navbar-height="coalesce(customNavbarHeight, popupProps && popupProps.usingCustomNavbar)"
       :z-index="(popupProps && popupProps.zIndex) || defaultPopUpzIndex"
@@ -46,10 +47,7 @@
             <slot />
             <view :class="classPrefix + '__mask ' + classPrefix + '__mask--top'" />
             <view :class="classPrefix + '__mask ' + classPrefix + '__mask--bottom'" />
-            <view
-              :class="classPrefix + '__indicator'"
-              :style="'height: ' + pickItemHeight + 'px'"
-            />
+            <view :class="classPrefix + '__indicator'" :style="'height: ' + itemHeight + 'px; top: ' + indicatorTop + 'px'"></view>
           </view>
           <slot name="footer" />
         </view>
@@ -92,10 +90,7 @@
           <slot />
           <view :class="classPrefix + '__mask ' + classPrefix + '__mask--top'" />
           <view :class="classPrefix + '__mask ' + classPrefix + '__mask--bottom'" />
-          <view
-            :class="classPrefix + '__indicator'"
-            :style="'height: ' + pickItemHeight + 'px'"
-          />
+          <view :class="classPrefix + '__indicator'" :style="'height: ' + itemHeight + 'px; top: ' + indicatorTop + 'px'"></view>
         </view>
         <slot name="footer" />
       </view>
@@ -105,7 +100,7 @@
 <script>
 import tPopup from '../popup/popup';
 import { uniComponent } from '../common/src/index';
-import { rpx2px, coalesce } from '../common/utils';
+import { coalesce } from '../common/utils';
 import { prefix } from '../common/config';
 import props from './props';
 import useCustomNavbar from '../mixins/using-custom-navbar';
@@ -114,6 +109,7 @@ import { ParentMixin, RELATION_MAP } from '../common/relation';
 
 const name = `${prefix}-picker`;
 
+const DEFAULT_KEYS = { value: 'value', label: 'label', icon: 'icon' };
 
 export default uniComponent({
   name,
@@ -146,7 +142,8 @@ export default uniComponent({
       classPrefix: name,
       defaultPopUpProps: {},
       defaultPopUpzIndex: 11500,
-      pickItemHeight: 0,
+      indicatorTop: 72, // 默认indicator位置，会动态计算
+
       tools,
 
       dataValue: coalesce(this.value, this.defaultValue),
@@ -168,24 +165,35 @@ export default uniComponent({
     },
     dataVisible: {
       handler() {
-        this.updateChildren();
+        this.onWatchVisible();
         setTimeout(() => {
-          this.updateChildren();
+          this.onWatchVisible();
         });
       },
       immediate: true,
     },
     dataValue: {
       handler() {
-        this.updateChildren();
+        this.onWatchVisible();
+      },
+      immediate: true,
+    },
+    itemHeight: {
+      handler() {
+        this.updateIndicatorPosition();
+      },
+      immediate: true,
+    },
+    visibleItemCount: {
+      handler() {
+        this.updateIndicatorPosition();
       },
       immediate: true,
     },
   },
   mounted() {
     this.children?.map((column, index) => (column.columnIndex = index));
-
-    this.pickItemHeight = rpx2px(this.itemHeight);
+    this.updateIndicatorPosition();
     setTimeout(() => {
       this.updateChildren();
     });
@@ -197,12 +205,15 @@ export default uniComponent({
     },
     updateChildren() {
       const { pickItemHeight } = this;
-      const { value, defaultValue } = this;
+      const { value, defaultValue, keys, visibleItemCount, itemHeight } = this;
 
       this.children?.forEach((child, index) => {
         child.value = coalesce(value?.[index], defaultValue?.[index], '');
         child.columnIndex = index;
         child.pickItemHeight = pickItemHeight;
+        child.itemHeight = itemHeight;
+        child.visibleItemCount = visibleItemCount;
+        child.keys = { ...DEFAULT_KEYS, ...(keys || {}) };
 
         child.update();
       });
@@ -258,6 +269,23 @@ export default uniComponent({
       }
       this.$emit('close', { trigger });
     },
+
+    updateIndicatorPosition() {
+      const { itemHeight, visibleItemCount } = this;
+      const indicatorTop = ((visibleItemCount - 1) / 2) * itemHeight;
+      this.indicatorTop = indicatorTop;
+    },
+
+    onWatchVisible() {
+      const {
+        usePopup,
+        dataVisible,
+      } = this;
+      if (!usePopup || dataVisible) {
+        this.updateChildren();
+        this.updateIndicatorPosition();
+      }
+    }
   },
 });
 </script>
