@@ -186,6 +186,8 @@ export function touchEnd(event, index) {
   if (!st.dragging) return;
   triggerCustomEvent(st.list, 'sortend', this);
 
+  ins.removeClass(`${classPrefix}__drag--cur`);
+
   this.setDragItemClass(index, 'add', `${classPrefix}__drag--tran`);
   this.setDragItemStyle(index, `transform: translate3d(${st.list[st.cur].tranX},${st.list[st.cur].tranY}, 0)`);
 
