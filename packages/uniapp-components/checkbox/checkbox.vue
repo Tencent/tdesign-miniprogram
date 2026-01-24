@@ -23,7 +23,6 @@
         <image
           :src="dataChecked ? (dataIndeterminate && icon[2] ? icon[2] : icon[0]) : icon[1]"
           :class="classPrefix + '__icon-image'"
-          webp
         />
       </view>
       <block v-else>
