@@ -2,7 +2,7 @@
   <view>
     <view
       v-if="realVisible"
-      :style="tools._style([popup.getPopupStyles(zIndex, distanceTop, placement), customStyle])"
+      :style="tools._style([popup.getPopupStyles({ zIndex, distanceTop, placement, duration }), customStyle])"
       :class="tools.cls(classPrefix, [placement]) + ' ' + transitionClass + ' ' + tClass"
       @transitionend="onTransitionEnd"
     >
