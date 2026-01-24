@@ -30,6 +30,7 @@
         v-for="(item, index) in columns"
         :key="index"
         :class="tools.cls(classPrefix + '__item', [['roomly', columns.length >= 5 && index == 0]])"
+        :use-slots="false"
         :options="item"
         index="index"
         :format="formatter"
