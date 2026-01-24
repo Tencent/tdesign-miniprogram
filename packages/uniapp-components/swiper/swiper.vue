@@ -121,10 +121,6 @@ export default uniComponent({
     isPrev,
     isNext,
     getImageClass,
-    getImageSize(column) {
-      if (column >= 5) return 'small';
-      if (column === 4) return 'middle';
-    },
 
     updateNav(currentValue) {
       if (this.navigation) return;

@@ -2,7 +2,7 @@
   <view
     :id="tId"
     :style="tools._style([customStyle])"
-    :class="tools.cls(classPrefix, [placement, theme, ['checked', dataChecked], ['block', block]]) + ' ' + tClass"
+    :class="tools.cls(classPrefix, [placement, theme, ['checked', dataChecked], ['block', block], ['disabled', _disabled]]) + ' ' + tClass"
     aria-role="checkbox"
     :aria-checked="dataChecked ? (dataIndeterminate ? 'mixed' : true) : false"
     :aria-disabled="_disabled ? true : false"
