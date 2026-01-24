@@ -2,7 +2,7 @@
   <view
     :id="classPrefix"
     :style="tools._style([customStyle])"
-    :class="classPrefix + ' ' + tClass"
+    :class="tools.cls(classPrefix, [dataAlign, dataTheme, ['no-description', !description]]) + ' ' + tClass"
   >
     <t-popup
       :visible="dataVisible"
@@ -14,17 +14,8 @@
       :overlay-props="(dataPopupProps && dataPopupProps.overlayProps) || defaultPopUpProps"
       @visible-change="onPopupVisibleChange"
     >
-      <view
-        :class="tools.cls(classPrefix + '__content', [['grid', gridThemeItems.length]]) + ' ' + tClassContent"
-        tabindex="0"
-      >
-        <view
-          v-if="dataDescription"
-          tabindex="0"
-          :class="tools.cls(classPrefix + '__description', [dataAlign])"
-        >
-          {{ dataDescription }}
-        </view>
+      <view :class="classPrefix + '__content ' + tClassContent" tabindex="0">
+        <view v-if="dataDescription" tabindex="0" :class="classPrefix + '__description'">{{ dataDescription }}</view>
         <block v-if="gridThemeItems.length">
           <block v-if="gridThemeItems.length === 1">
             <t-grid
@@ -40,6 +31,7 @@
                 :data-index="index"
                 :icon="{ name: item.icon, color: item.color }"
                 :text="item.label || ''"
+                :description="item.description || ''"
                 :image="item.image || ''"
                 :style="'--td-grid-item-text-color: ' + item.color"
                 @click="onSelect($event, { index })"
@@ -72,6 +64,7 @@
                       :data-index="index"
                       :icon="{ name: item.icon, color: item.color }"
                       :text="item.label || ''"
+                      :description="item.description || ''"
                       :image="item.image || ''"
                       :style="'--td-grid-item-text-color: ' + item.color"
                       @click="onSelect($event, { index })"
@@ -102,30 +95,29 @@
             <view
               :data-index="index"
               :style="item.color ? 'color: ' + item.color : ''"
-              :class="tools.cls(classPrefix + '__list-item', [dataAlign, ['disabled', item.disabled]])"
+              :class="tools.cls(classPrefix + '__list-item', [['disabled', item.disabled]])"
               :aria-role="ariaRole || 'button'"
               :aria-label="item.label || item"
               tabindex="0"
               @click="() => onSelect(item, { index })"
             >
-              <t-icon
-                v-if="item.icon"
-                :name="item.icon"
-                :t-class="classPrefix + '__list-item-icon'"
-                size="48rpx"
-                :custom-style="iconCustomStyle"
-              />
-              <view :class="classPrefix + '__list-item-text'">
-                {{ item.label || item }}
+              <view :class="classPrefix + '__list-item-content'">
+                <t-icon 
+                  v-if="item.icon" 
+                  :name="item.icon" 
+                  :t-class="classPrefix + '__list-item-icon'" 
+                  :custom-style="iconCustomStyle" 
+                />
+                <view :class="classPrefix + '__list-item-text'">{{ item.label || item }}</view>
+                <t-icon 
+                  v-if="item.suffixIcon" 
+                  :name="item.suffixIcon" 
+                  :t-class="classPrefix + '__list-item-icon ' + classPrefix + '__list-item-icon--suffix'" 
+                  style="margin-left: auto;"
+                  :custom-style="suffixIconCustomStyle"
+                />
               </view>
-              <t-icon
-                v-if="item.suffixIcon"
-                :name="item.suffixIcon"
-                :t-class="classPrefix + '__list-item-icon ' + classPrefix + '__list-item-icon--suffix'"
-                size="48rpx"
-                style="margin-left: auto;"
-                :custom-style="suffixIconCustomStyle"
-              />
+              <view v-if="item.description" :class="classPrefix + '__list-item-desc'">{{ item.description }}</view>
             </view>
           </block>
           <!-- </block> -->
