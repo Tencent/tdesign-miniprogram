@@ -19,7 +19,7 @@
         desc="基础选择器"
       >
         <BaseDemo />
-        <area>
+        <AreaDemo/>
       </t-demo>
       <t-demo
         title="02 组件样式"
@@ -27,9 +27,6 @@
       >
         <with-title />
       </t-demo>
-
-      <!-- <areaDemo /> -->
-      <!-- <withoutPopup /> -->
     </view>
   </view>
 </template>
@@ -38,14 +35,13 @@
 
 import BaseDemo from './base/index.vue';
 import withTitle from './with-title/index.vue';
-// import areaDemo from './area/index.vue';
-// import withoutPopup from './without-popup/index.vue';
+import AreaDemo from './area/index.vue';
+
 export default {
   components: {
     BaseDemo,
     withTitle,
-    // areaDemo,
-    // withoutPopup,
+    AreaDemo,
   },
   data() {
     return {};
