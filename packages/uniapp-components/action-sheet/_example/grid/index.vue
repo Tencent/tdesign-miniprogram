@@ -6,25 +6,9 @@
       @selected="handleSelected($event, { tagId: 't-action-sheet' })"
     />
 
-    <TButton
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="handleAction"
-    >
-      常规宫格型
-    </TButton>
-
-    <TButton
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="handleMultiAction"
-    >
-      带翻页宫格型
-    </TButton>
+    <t-button size="large" variant="outline" @click="handleAction" block theme="primary">常规宫格型</t-button>
+    <t-button size="large" variant="outline" @click="handleActionWithDesc" block theme="primary">常描述宫格型</t-button>
+    <t-button size="large" variant="outline" @click="handleMultiAction" block theme="primary">带翻页宫格型</t-button>
   </view>
 </template>
 
@@ -95,6 +79,15 @@ export default {
           label: '标题文字',
           icon: 'image',
         })),
+      });
+    },
+    handleActionWithDesc() {
+      ActionSheet.show({
+        theme: ActionSheetTheme.Grid,
+        selector: '#t-action-sheet',
+        context: this,
+        items: firstGrid,
+        description: '动作面板描述文字'
       });
     },
     handleSelected(e) {

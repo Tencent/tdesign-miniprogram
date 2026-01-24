@@ -5,16 +5,8 @@
       :using-custom-navbar="!isMPAlipay"
       @selected="handleSelected($event, { tagId: 't-action-sheet' })"
     />
-
-    <TButton
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="handleAction"
-    >
-      左对齐列表型
-    </TButton>
+    <t-button size="large" variant="outline" custom-dataset="center" @click="handleAction" block theme="primary">居中列表型</t-button>
+    <t-button size="large" variant="outline" custom-dataset="left" @click="handleAction" block theme="primary">左对齐列表型</t-button>
   </view>
 </template>
 
@@ -33,35 +25,34 @@ export default {
   },
   created() {},
   methods: {
-    handleAction() {
+    handleAction(e) {
+      console.log('e',e)
+      const align = e.currentTarget.dataset.custom;
       ActionSheet.show({
         theme: ActionSheetTheme.List,
         selector: '#t-action-sheet',
         context: this,
-        align: 'left',
-        description: '动作面板描述文字',
+        cancelText: 'cancel',
+        align,
+        description: 'Email Settings',
         items: [
           {
-            label: '选项一',
-            icon: 'app',
-            suffixIcon: 'chevron-right',
+              label: 'Move',
+              icon: 'enter'
           },
           {
-            label: '选项二',
-            icon: 'app',
-            suffixIcon: 'chevron-right',
+              label: 'Mark as important',
+              icon: 'bookmark'
           },
           {
-            label: '选项三',
-            icon: 'app',
-            suffixIcon: 'chevron-right',
+              label: 'Unsubscribe',
+              icon: 'pin'
           },
           {
-            label: '选项四',
-            icon: 'app',
-            suffixIcon: 'chevron-right',
-          },
-        ],
+              label: 'Add to Tasks',
+              icon: 'cloud-upload'
+          }
+        ]
       });
     },
     handleSelected(e) {
