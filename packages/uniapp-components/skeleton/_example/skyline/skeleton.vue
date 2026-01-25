@@ -20,7 +20,7 @@
           title="01 骨架屏类型"
           padding
         >
-          <theme />
+          <theme-demo />
         </t-demo>
 
         <t-demo
@@ -34,7 +34,7 @@
           desc="宫格骨架屏"
           padding
         >
-          <grid />
+          <grid-demo />
         </t-demo>
 
         <t-demo
@@ -48,7 +48,7 @@
           title="02 组件动效"
           padding
         >
-          <animation />
+          <animation-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -56,21 +56,19 @@
 </template>
 
 <script>
+import ThemeDemo from '../theme/index.vue';
+import GridDemo from '../grid/index.vue';
+import CellGroup from '../cell-group/index.vue';
+import ImageGroup from '../image-group/index.vue';
+import AnimationDemo from '../animation/index.vue';
 
-import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import theme from '../theme/index.vue';
-import grid from '../grid/index.vue';
-import cellGroup from '../cell-group/index.vue';
-import imageGroup from '../image-group/index.vue';
-import animation from '../animation/index.vue';
 export default {
   components: {
-    TNavbar,
-    theme,
-    grid,
-    cellGroup,
-    imageGroup,
-    animation,
+    ThemeDemo,
+    GridDemo,
+    CellGroup,
+    ImageGroup,
+    AnimationDemo,
   },
   data() {
     return {};

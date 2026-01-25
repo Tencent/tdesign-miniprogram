@@ -1,12 +1,30 @@
 <template>
   <view>
-    <TActionSheet
+    <t-action-sheet
       ref="t-action-sheet"
       :using-custom-navbar="!isMPAlipay"
       @selected="handleSelected($event, { tagId: 't-action-sheet' })"
     />
-    <t-button size="large" variant="outline" custom-dataset="center" @click="handleAction" block theme="primary">居中列表型</t-button>
-    <t-button size="large" variant="outline" custom-dataset="left" @click="handleAction" block theme="primary">左对齐列表型</t-button>
+    <t-button
+      size="large"
+      variant="outline"
+      custom-dataset="center"
+      block
+      theme="primary"
+      @click="handleAction"
+    >
+      居中列表型
+    </t-button>
+    <t-button
+      size="large"
+      variant="outline"
+      custom-dataset="left"
+      block
+      theme="primary"
+      @click="handleAction"
+    >
+      左对齐列表型
+    </t-button>
   </view>
 </template>
 
@@ -26,7 +44,6 @@ export default {
   created() {},
   methods: {
     handleAction(e) {
-      console.log('e',e)
       const align = e.currentTarget.dataset.custom;
       ActionSheet.show({
         theme: ActionSheetTheme.List,
@@ -37,22 +54,22 @@ export default {
         description: 'Email Settings',
         items: [
           {
-              label: 'Move',
-              icon: 'enter'
+            label: 'Move',
+            icon: 'enter',
           },
           {
-              label: 'Mark as important',
-              icon: 'bookmark'
+            label: 'Mark as important',
+            icon: 'bookmark',
           },
           {
-              label: 'Unsubscribe',
-              icon: 'pin'
+            label: 'Unsubscribe',
+            icon: 'pin',
           },
           {
-              label: 'Add to Tasks',
-              icon: 'cloud-upload'
-          }
-        ]
+            label: 'Add to Tasks',
+            icon: 'cloud-upload',
+          },
+        ],
       });
     },
     handleSelected(e) {

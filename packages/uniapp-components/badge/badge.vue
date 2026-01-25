@@ -46,9 +46,12 @@
     >
       <view :class="classPrefix + '__count'">
         <template v-if="isShowBadge({ dot, count, showZero })">
-            {{ getBadgeValue({ dot, count, maxCount }) }}
+          {{ getBadgeValue({ dot, count, maxCount }) }}
         </template>
-        <slot else name="count" />
+        <slot
+          else
+          name="count"
+        />
       </view>
     </view>
   </view>
@@ -115,14 +118,14 @@ export default uniComponent({
     checkForActualContent() {
       const target = ['ribbon', 'ribbon-right', 'ribbon-left', 'triangle-right', 'triangle-left'];
       if (this.content || !target.includes(this.shape)) {
-        this.useOuterClass = false
+        this.useOuterClass = false;
         return;
       }
-      return getRect(this, `.${name}__content`).then(rect => {
+      return getRect(this, `.${name}__content`).then((rect) => {
         const hasSlotContent = rect.width > 0 || rect.height > 0;
         this.useOuterClass = !hasSlotContent;
       });
-    }
+    },
   },
 });
 </script>

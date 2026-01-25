@@ -15,25 +15,25 @@
         desc="基础示例"
         padding
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
       <t-demo
         desc="自定义动画"
         padding
       >
-        <custom />
+        <custom-demo />
       </t-demo>
       <t-demo
         desc="首次出现动画"
         padding
       >
-        <appear />
+        <appear-demo />
       </t-demo>
       <t-demo
         desc="隐藏不渲染"
         padding
       >
-        <destroy />
+        <destroy-demo />
       </t-demo>
     </view>
   </view>
@@ -42,15 +42,15 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import custom from './custom/index.vue';
-import destroy from './destroy/index.vue';
-import appear from './appear/index.vue';
+import CustomDemo from './custom/index.vue';
+import DestroyDemo from './destroy/index.vue';
+import AppearDemo from './appear/index.vue';
 export default {
   components: {
     BaseDemo,
-    custom,
-    destroy,
-    appear,
+    CustomDemo,
+    DestroyDemo,
+    AppearDemo,
   },
   data() {
     return {

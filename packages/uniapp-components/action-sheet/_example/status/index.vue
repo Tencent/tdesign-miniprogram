@@ -41,22 +41,22 @@ export default {
         items: [
           {
             label: 'Move',
-            icon: 'enter'
+            icon: 'enter',
           },
           {
             label: 'Mark as important',
             icon: 'bookmark',
-            color: '#0052D9'
+            color: '#0052D9',
           },
           {
             label: 'Unsubscribe',
             icon: 'pin',
-            color: '#E34D59'
+            color: '#E34D59',
           },
           {
             label: 'Add to Tasks',
             icon: 'cloud-upload',
-            disabled: true
+            disabled: true,
           },
         ],
       });

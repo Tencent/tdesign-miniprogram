@@ -1,90 +1,90 @@
 <template>
   <view>
     <view class="button-example">
-      <TButton size="large">
+      <t-button size="large">
         填充按钮
-      </TButton>
-      <TButton
+      </t-button>
+      <t-button
         size="large"
         variant="outline"
       >
         描边按钮
-      </TButton>
-      <TButton
+      </t-button>
+      <t-button
         size="large"
         variant="text"
       >
         文字按钮
-      </TButton>
+      </t-button>
     </view>
 
     <view class="button-example">
-      <TButton
+      <t-button
         size="large"
         theme="primary"
       >
         填充按钮
-      </TButton>
-      <TButton
+      </t-button>
+      <t-button
         size="large"
         theme="primary"
         variant="outline"
       >
         描边按钮
-      </TButton>
-      <TButton
+      </t-button>
+      <t-button
         size="large"
         theme="primary"
         variant="text"
       >
         文字按钮
-      </TButton>
+      </t-button>
     </view>
 
     <view class="button-example">
-      <TButton
+      <t-button
         size="large"
         theme="danger"
       >
         填充按钮
-      </TButton>
-      <TButton
+      </t-button>
+      <t-button
         size="large"
         theme="danger"
         variant="outline"
       >
         描边按钮
-      </TButton>
-      <TButton
+      </t-button>
+      <t-button
         size="large"
         theme="danger"
         variant="text"
       >
         文字按钮
-      </TButton>
+      </t-button>
     </view>
 
     <view class="button-example">
-      <TButton
+      <t-button
         size="large"
         theme="light"
       >
         填充按钮
-      </TButton>
-      <TButton
+      </t-button>
+      <t-button
         size="large"
         theme="light"
         variant="outline"
       >
         描边按钮
-      </TButton>
-      <TButton
+      </t-button>
+      <t-button
         size="large"
         theme="light"
         variant="text"
       >
         文字按钮
-      </TButton>
+      </t-button>
     </view>
   </view>
 </template>

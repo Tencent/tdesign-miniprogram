@@ -13,7 +13,7 @@
         title="01 类型"
         desc=""
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
       <t-demo desc="选项卡风格">
         <theme-tab />
@@ -27,7 +27,7 @@
       </t-demo>
 
       <t-demo desc="自定义 keys">
-        <keys />
+        <keys-demo />
       </t-demo>
 
       <t-demo desc="使用次级标题">
@@ -43,19 +43,19 @@
 
 <script>
 import BaseDemo from './base';
-import themeTab from './theme-tab';
-import withValue from './with-value';
-import keys from './keys';
-import withTitle from './with-title';
-import checkStrictly from './check-strictly';
+import ThemeTab from './theme-tab';
+import WithValue from './with-value';
+import KeysDemo from './keys';
+import WithTitle from './with-title';
+import CheckStrictly from './check-strictly';
 export default {
   components: {
     BaseDemo,
-    themeTab,
-    withValue,
-    keys,
-    withTitle,
-    checkStrictly,
+    ThemeTab,
+    WithValue,
+    KeysDemo,
+    WithTitle,
+    CheckStrictly,
   },
   data() {
     return {};

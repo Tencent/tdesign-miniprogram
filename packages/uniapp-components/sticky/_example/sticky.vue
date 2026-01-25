@@ -16,19 +16,19 @@
         desc="基础吸顶"
         padding
       >
-        <BaseDemo :navbar-height="navbarHeight" />
+        <base-demo :navbar-height="navbarHeight" />
       </t-demo>
       <t-demo
         title=""
         desc="吸顶距离"
       >
-        <offset :navbar-height="navbarHeight" />
+        <offset-demo :navbar-height="navbarHeight" />
       </t-demo>
       <t-demo
         title=""
         desc="指定容器"
       >
-        <container :navbar-height="navbarHeight" />
+        <container-demo :navbar-height="navbarHeight" />
       </t-demo>
     </view>
   </view>
@@ -37,8 +37,8 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import offset from './offset/index.vue';
-import container from './container/index.vue';
+import OffsetDemo from './offset/index.vue';
+import ContainerDemo from './container/index.vue';
 import { handlePageScroll } from 'tdesign-uniapp/mixins/page-scroll';
 
 
@@ -48,8 +48,8 @@ export default {
   },
   components: {
     BaseDemo,
-    offset,
-    container,
+    OffsetDemo,
+    ContainerDemo,
   },
   data() {
     return {

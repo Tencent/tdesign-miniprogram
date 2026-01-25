@@ -19,25 +19,25 @@
           desc="纯图标"
           padding
         >
-          <BaseComp />
+          <base-comp />
         </t-demo>
         <t-demo
           desc="图标加文字横向"
           padding
         >
-          <HorizontalDemo />
+          <horizontal-demo />
         </t-demo>
         <t-demo
           desc="图标加文字竖向"
           padding
         >
-          <VerticalDemo />
+          <vertical-demo />
         </t-demo>
         <t-demo
           desc="纯文字"
           padding
         >
-          <TextComp />
+          <text-comp />
         </t-demo>
 
         <t-demo
@@ -45,7 +45,7 @@
           desc="大尺寸"
           padding
         >
-          <SizeDemo />
+          <size-demo />
         </t-demo>
 
         <t-demo
@@ -53,7 +53,7 @@
           desc="加载速度调整"
           padding
         >
-          <DurationDemo />
+          <duration-demo />
         </t-demo>
       </view>
     </scroll-view>

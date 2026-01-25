@@ -4,12 +4,12 @@
       class="chat-box"
       :style="'height: ' + contentHeight + ';'"
     >
-      <TChatList>
+      <t-chat-list>
         <block
           v-for="(item) in chatList"
           :key="item.key"
         >
-          <TChatMessage
+          <t-chat-message
             :avatar="item.avatar || ''"
             :name="item.name || ''"
             :datetime="item.datetime || ''"
@@ -18,16 +18,16 @@
             :placement="item.message.role === 'user' ? 'right' : 'left'"
           >
             <template #actionbar>
-              <TChatActionbar
+              <t-chat-actionbar
                 v-if="chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'"
                 placement="end"
                 @actions="handleAction"
               />
             </template>
-          </TChatMessage>
+          </t-chat-message>
         </block>
         <template #footer>
-          <TChatSender
+          <t-chat-sender
             :value="value"
             :loading="loading"
             :disabled="disabled"
@@ -38,9 +38,9 @@
             @focus="onFocus"
           />
         </template>
-      </TChatList>
+      </t-chat-list>
     </view>
-    <TToast ref="t-toast" />
+    <t-toast ref="t-toast" />
   </view>
 </template>
 

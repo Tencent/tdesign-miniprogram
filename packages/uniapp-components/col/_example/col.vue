@@ -13,11 +13,11 @@
         title="01 组件类型"
         desc="基础用法"
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
 
       <t-demo desc="在列元素之间增加间距">
-        <OffsetDemo />
+        <offset-demo />
       </t-demo>
     </view>
   </view>

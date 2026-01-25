@@ -1,5 +1,5 @@
 <template>
-  <TQrcode
+  <t-qrcode
     value="https://tdesign.tencent.com/"
     level="M"
     status="active"

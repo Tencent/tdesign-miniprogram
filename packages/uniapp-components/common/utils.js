@@ -18,7 +18,7 @@ export const deviceInfo = getDeviceInfo();
  */
 export function coalesce(...args) {
   // 遍历所有参数
-  for (let i = 0; i < args.length; i+=1) {
+  for (let i = 0; i < args.length; i += 1) {
     // 返回第一个非null且非undefined的值
     if (args[i] !== null && args[i] !== undefined) {
       return args[i];

@@ -1,8 +1,8 @@
 <template>
   <view>
-    <TToast ref="t-toast" />
+    <t-toast ref="t-toast" />
     <view class="container">
-      <TChatActionbar
+      <t-chat-actionbar
         :content="content"
         :comment="comment"
         @actions="handleAction"

@@ -2,11 +2,11 @@
   <view>
     <!-- theme 为 logo -->
     <view class="footer-example">
-      <TFooter :logo="logo" />
+      <t-footer :logo="logo" />
     </view>
 
     <view class="footer-example">
-      <TFooter
+      <t-footer
         :logo="{url:
           theme === 'dark'
             ? 'https://tdesign.gtimg.com/mobile/demos/footer-logo-dark.png'

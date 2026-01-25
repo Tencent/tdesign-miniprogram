@@ -15,7 +15,7 @@
         desc="基础弹出层"
         padding
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
       <t-demo
         title="02 组件示例"
@@ -31,13 +31,13 @@
 
 <script>
 import BaseDemo from './base/index.vue';
-import withTitle from './with-title/index.vue';
-import customClose from './custom-close/index.vue';
+import WithTitle from './with-title/index.vue';
+import CustomClose from './custom-close/index.vue';
 export default {
   components: {
     BaseDemo,
-    withTitle,
-    customClose,
+    WithTitle,
+    CustomClose,
   },
   data() {
     return {

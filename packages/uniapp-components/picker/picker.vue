@@ -48,7 +48,10 @@
             <slot />
             <view :class="classPrefix + '__mask ' + classPrefix + '__mask--top'" />
             <view :class="classPrefix + '__mask ' + classPrefix + '__mask--bottom'" />
-            <view :class="classPrefix + '__indicator'" :style="'height: ' + itemHeight + 'px; top: ' + indicatorTop + 'px'"></view>
+            <view
+              :class="classPrefix + '__indicator'"
+              :style="'height: ' + itemHeight + 'px; top: ' + indicatorTop + 'px'"
+            />
           </view>
           <slot name="footer" />
         </view>
@@ -91,7 +94,10 @@
           <slot />
           <view :class="classPrefix + '__mask ' + classPrefix + '__mask--top'" />
           <view :class="classPrefix + '__mask ' + classPrefix + '__mask--bottom'" />
-          <view :class="classPrefix + '__indicator'" :style="'height: ' + itemHeight + 'px; top: ' + indicatorTop + 'px'"></view>
+          <view
+            :class="classPrefix + '__indicator'"
+            :style="'height: ' + itemHeight + 'px; top: ' + indicatorTop + 'px'"
+          />
         </view>
         <slot name="footer" />
       </view>
@@ -205,7 +211,7 @@ export default uniComponent({
     innerAfterLinked() {
       this.updateChildren();
     },
-    
+
     updateChildren() {
       const { pickItemHeight } = this;
       const { value, defaultValue, keys, visibleItemCount, itemHeight } = this;

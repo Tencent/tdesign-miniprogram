@@ -2,21 +2,21 @@
   <view class="chat-example">
     <!-- 附件消息 -->
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         :content="pic1.content"
         :role="pic1.role"
         :chat-content-props="chatContentProps"
       />
     </view>
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         :content="pic2.content"
         :role="pic2.role"
         :chat-content-props="chatContentProps"
       />
     </view>
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         :content="pic3.content"
         :role="pic3.role"
         placement="right"
@@ -24,14 +24,14 @@
       />
     </view>
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         :content="fileMessage.content"
         :role="fileMessage.role"
         :chat-content-props="chatContentProps"
       />
     </view>
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         :content="fileMessage.content"
         :role="fileMessage.role"
         placement="right"
@@ -40,16 +40,16 @@
     </view>
     <!-- 思考过程消息 -->
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         :content="aiMessage.content"
         :role="aiMessage.role"
         :status="aiMessage.status"
         variant="text"
       >
         <template #actionbar>
-          <TChatActionbar />
+          <t-chat-actionbar />
         </template>
-      </TChatMessage>
+      </t-chat-message>
     </view>
   </view>
 </template>

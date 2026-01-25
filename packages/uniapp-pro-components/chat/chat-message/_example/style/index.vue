@@ -1,21 +1,21 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         :content="userMessage.content"
         :role="userMessage.role"
         variant="text"
       />
     </view>
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         :content="userMessage.content"
         :role="userMessage.role"
         variant="base"
       />
     </view>
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         :content="userMessage.content"
         :role="userMessage.role"
         variant="outline"

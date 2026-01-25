@@ -11,17 +11,17 @@
         notice="渲染框架支持情况：WebView"
       />
       <t-demo title="01 组件类型">
-        <baseDemo />
+        <base-demo />
       </t-demo>
     </view>
   </view>
 </template>
 
 <script>
-import baseDemo from './base/index.vue';
+import BaseDemo from './base/index.vue';
 export default {
   components: {
-    baseDemo,
+    BaseDemo,
   },
   data() {
     return {};

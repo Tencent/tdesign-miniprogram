@@ -15,7 +15,7 @@
       desc="侧边导航用法"
       padding
     >
-      <TButton
+      <t-button
         variant="outline"
         theme="primary"
         size="large"
@@ -24,9 +24,9 @@
         @click="toNavigation($event, { target: 'base' })"
       >
         锚点用法
-      </TButton>
+      </t-button>
 
-      <TButton
+      <t-button
         variant="outline"
         theme="primary"
         size="large"
@@ -35,14 +35,14 @@
         @click="toNavigation($event, { target: 'switch' })"
       >
         切页用法
-      </TButton>
+      </t-button>
     </t-demo>
 
     <t-demo
       desc="带图标侧边导航"
       padding
     >
-      <TButton
+      <t-button
         variant="outline"
         theme="primary"
         size="large"
@@ -51,7 +51,7 @@
         @click="toNavigation($event, { target: 'with-icon' })"
       >
         带图标侧边导航
-      </TButton>
+      </t-button>
     </t-demo>
 
     <t-demo
@@ -59,7 +59,7 @@
       desc="侧边导航样式"
       padding
     >
-      <TButton
+      <t-button
         variant="outline"
         theme="primary"
         size="large"
@@ -68,7 +68,7 @@
         @click="toNavigation($event, { target: 'custom' })"
       >
         自定义样式
-      </TButton>
+      </t-button>
     </t-demo>
   </view>
 </template>

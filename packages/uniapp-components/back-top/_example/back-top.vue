@@ -86,7 +86,7 @@
         </view>
       </t-demo>
 
-      <BaseDemo
+      <base-demo
         v-if="type == 'round'"
         :scroll-top="scrollTop"
       />
@@ -103,13 +103,13 @@
 import TButton from 'tdesign-uniapp/button/button.vue';
 import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
 import BaseDemo from './base/index.vue';
-import halfRound from './half-round/index.vue';
+import HalfRound from './half-round/index.vue';
 export default {
   components: {
     TButton,
     TSkeleton,
     BaseDemo,
-    halfRound,
+    HalfRound,
   },
   data() {
     return {

@@ -9,7 +9,7 @@
       @palette-bar-change="onPaletteBarChange"
     />
 
-    <TButton
+    <t-button
       block
       size="large"
       variant="outline"
@@ -18,7 +18,7 @@
       @click="handlePopup"
     >
       弹窗形式的颜色选择器
-    </TButton>
+    </t-button>
   </view>
 </template>
 

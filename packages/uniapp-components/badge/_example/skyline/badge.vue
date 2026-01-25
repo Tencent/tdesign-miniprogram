@@ -16,13 +16,13 @@
         用于告知用户，该区域的状态变化或者待处理任务的数量。
       </view>
       <t-demo title="01 组件类型">
-        <baseDemo />
+        <base-demo />
       </t-demo>
       <t-demo title="02 组件样式">
-        <theme />
+        <theme-demo />
       </t-demo>
       <t-demo title="03 组件尺寸">
-        <size />
+        <size-demo />
       </t-demo>
     </scroll-view>
   </view>
@@ -30,16 +30,15 @@
 
 <script>
 
-import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import theme from '../theme/index.vue';
-import size from '../size/index.vue';
+import BaseDemo from '../base/index.vue';
+import ThemeDemo from '../theme/index.vue';
+import SizeDemo from '../size/index.vue';
+
 export default {
   components: {
-    TNavbar,
-    baseDemo,
-    theme,
-    size,
+    BaseDemo,
+    ThemeDemo,
+    SizeDemo,
   },
   data() {
     return {};

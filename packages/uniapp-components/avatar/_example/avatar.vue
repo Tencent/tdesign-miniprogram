@@ -21,26 +21,26 @@
           desc="图片头像"
           padding
         >
-          <imageAvatar />
+          <image-avatar />
         </t-demo>
         <t-demo
           desc="字符头像"
           padding
         >
-          <characterAvatar />
+          <character-avatar />
         </t-demo>
         <t-demo
           desc="图标头像"
           padding
         >
-          <iconAvatar />
+          <icon-avatar />
         </t-demo>
 
         <t-demo
           desc="带徽标头像"
           padding
         >
-          <badgeAvatar />
+          <badge-avatar />
         </t-demo>
 
         <t-demo
@@ -48,13 +48,13 @@
           desc="纯展示的头像组"
           padding
         >
-          <exhibition />
+          <exhibition-demo />
         </t-demo>
         <t-demo
           desc="带操作的头像组"
           padding
         >
-          <action />
+          <action-demo />
         </t-demo>
 
         <t-demo
@@ -62,7 +62,7 @@
           desc="组件尺寸"
           padding
         >
-          <size />
+          <size-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -71,22 +71,22 @@
 
 <script>
 
-import imageAvatar from './image-avatar/index.vue';
-import characterAvatar from './character-avatar/index.vue';
-import iconAvatar from './icon-avatar/index.vue';
-import badgeAvatar from './badge-avatar/index.vue';
-import size from './size/index.vue';
-import exhibition from './exhibition/index.vue';
-import action from './action/index.vue';
+import ImageAvatar from './image-avatar/index.vue';
+import CharacterAvatar from './character-avatar/index.vue';
+import IconAvatar from './icon-avatar/index.vue';
+import BadgeAvatar from './badge-avatar/index.vue';
+import SizeDemo from './size/index.vue';
+import ExhibitionDemo from './exhibition/index.vue';
+import ActionDemo from './action/index.vue';
 export default {
   components: {
-    imageAvatar,
-    characterAvatar,
-    iconAvatar,
-    badgeAvatar,
-    size,
-    exhibition,
-    action,
+    ImageAvatar,
+    CharacterAvatar,
+    IconAvatar,
+    BadgeAvatar,
+    SizeDemo,
+    ExhibitionDemo,
+    ActionDemo,
   },
   data() {
     return {};

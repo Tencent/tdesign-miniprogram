@@ -16,21 +16,21 @@
           padding
         >
           <!-- 受控属性示例 -->
-          <BaseDemo />
+          <base-demo />
         </t-demo>
 
         <t-demo
           desc="点条状（dots-bar）"
           padding
         >
-          <custom />
+          <custom-demo />
         </t-demo>
 
         <t-demo
           desc="分式（fraction）"
           padding
         >
-          <fraction />
+          <fraction-demo />
         </t-demo>
 
         <t-demo
@@ -41,14 +41,14 @@
         </t-demo>
 
         <t-demo desc="卡片式（cards）">
-          <cards />
+          <cards-demo />
         </t-demo>
 
         <t-demo
           title="02 组件样式"
           desc="垂直模式"
         >
-          <vertical />
+          <vertical-demo />
         </t-demo>
       </view>
     </view>
@@ -58,19 +58,19 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import fraction from './fraction/index.vue';
-import navBtn from './nav-btn/index.vue';
-import custom from './custom/index.vue';
-import cards from './cards/index.vue';
-import vertical from './vertical/index.vue';
+import FractionDemo from './fraction/index.vue';
+import NavBtn from './nav-btn/index.vue';
+import CustomDemo from './custom/index.vue';
+import CardsDemo from './cards/index.vue';
+import VerticalDemo from './vertical/index.vue';
 export default {
   components: {
     BaseDemo,
-    fraction,
-    navBtn,
-    custom,
-    cards,
-    vertical,
+    FractionDemo,
+    NavBtn,
+    CustomDemo,
+    CardsDemo,
+    VerticalDemo,
   },
   data() {
     return {};

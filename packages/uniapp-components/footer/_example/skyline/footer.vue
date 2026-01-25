@@ -19,27 +19,25 @@
         title="01 类型"
         desc="基础页脚"
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
       <t-demo desc="基础加链接页脚">
-        <LinkDemo />
+        <link-demo />
       </t-demo>
       <t-demo desc="品牌页脚">
-        <LogoDemo />
+        <logo-demo />
       </t-demo>
     </scroll-view>
   </view>
 </template>
 
 <script>
-
-import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import BaseDemo from '../base/index.vue';
 import LinkDemo from '../link/index.vue';
 import LogoDemo from '../logo/index.vue';
+
 export default {
   components: {
-    TNavbar,
     BaseDemo,
     LinkDemo,
     LogoDemo,

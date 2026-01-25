@@ -3,8 +3,8 @@
     <t-tab-bar
       t-class="t-tab-bar"
       :value="value"
-      @change="onChange"
       :fixed="false"
+      @change="onChange"
     >
       <t-tab-bar-item
         v-for="(item, index) in list"

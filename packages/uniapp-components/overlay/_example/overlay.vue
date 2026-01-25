@@ -15,7 +15,7 @@
         desc="基础遮罩层"
         padding
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
     </view>
   </view>

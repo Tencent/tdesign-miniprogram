@@ -95,7 +95,7 @@
           </view>
         </t-demo>
 
-        <baseDemo
+        <base-demo
           v-if="type == 'round'"
           :scroll-top="scrollTop"
           @to-top="onToTop"
@@ -111,19 +111,17 @@
 </template>
 
 <script>
-
-import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import TButton from 'tdesign-uniapp/button/button.vue';
 import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
-import baseDemo from '../base/index.vue';
-import halfRound from '../half-round/index.vue';
+import BaseDemo from '../base/index.vue';
+import HalfRound from '../half-round/index.vue';
+
 export default {
   components: {
-    TNavbar,
     TButton,
     TSkeleton,
-    baseDemo,
-    halfRound,
+    BaseDemo,
+    HalfRound,
   },
   data() {
     return {

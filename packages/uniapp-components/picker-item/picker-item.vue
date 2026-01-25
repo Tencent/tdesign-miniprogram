@@ -14,20 +14,32 @@
       "
     >
       <!-- 虚拟滚动：占位容器（撑开总高度） -->
-      <view v-if="enableVirtualScroll" :style="'height: ' + totalHeight + 'px; position: relative;'">
+      <view
+        v-if="enableVirtualScroll"
+        :style="'height: ' + totalHeight + 'px; position: relative;'"
+      >
         <!-- 可见区域（绝对定位） -->
         <view :style="'position: absolute; top: ' + virtualOffsetY + 'px; left: 0; right: 0;'">
           <view
+            v-for="(option, index) in visibleOptions"
+            :key="index"
             :class="tools.cls(classPrefix + '__item', [['active', curIndex == virtualStartIndex + index]])"
             :style="'height: ' + itemHeight + 'px'"
             :data-index="virtualStartIndex + index"
             @tap="onClickItem"
-            v-for="(option, index) in visibleOptions"
-            :key="index"
           >
-            <t-icon v-if="option[keys.icon]" :class="classPrefix + '__item-icon'" :name="option[keys.icon]" />
-            <text :class="classPrefix + '__item-label'">{{ option[keys.label] }}</text>
-            <slot v-if="useSlots" :name="'label-suffix--' + (virtualStartIndex + index)"></slot>
+            <t-icon
+              v-if="option[keys.icon]"
+              :class="classPrefix + '__item-icon'"
+              :name="option[keys.icon]"
+            />
+            <text :class="classPrefix + '__item-label'">
+              {{ option[keys.label] }}
+            </text>
+            <slot
+              v-if="useSlots"
+              :name="'label-suffix--' + (virtualStartIndex + index)"
+            />
           </view>
         </view>
       </view>
@@ -42,13 +54,22 @@
           :data-index="index"
           @click="onClickItem"
         >
-          <t-icon v-if="option[keys.icon]" :class="classPrefix + '__item-icon'" :name="option[keys.icon]" />
-          <text :class="classPrefix + '__item-label'">{{ option[keys.label] }}</text>
-          <slot v-if="useSlots" :name="'label-suffix--' + index"></slot>
+          <t-icon
+            v-if="option[keys.icon]"
+            :class="classPrefix + '__item-icon'"
+            :name="option[keys.icon]"
+          />
+          <text :class="classPrefix + '__item-label'">
+            {{ option[keys.label] }}
+          </text>
+          <slot
+            v-if="useSlots"
+            :name="'label-suffix--' + index"
+          />
         </view>
       </template>
+    </view>
   </view>
-</view>
 </template>
 
 <script>
@@ -137,7 +158,7 @@ export default uniComponent({
       totalHeight: 0,
       itemHeight: 40,
       visibleItemCount: 5,
-      wrapperPaddingY: 72
+      wrapperPaddingY: 72,
     };
   },
   watch: {
@@ -171,7 +192,7 @@ export default uniComponent({
       this._animationTimer = null;
     }
   },
-  
+
   methods: {
     onClickItem(event) {
       const { index: clickIndex } = event.currentTarget.dataset;
@@ -286,9 +307,7 @@ export default uniComponent({
     formatOption(options, columnIndex, format) {
       if (typeof format !== 'function') return options;
 
-      return options.map((ele) => {
-        return format(ele, columnIndex);
-      });
+      return options.map(ele => format(ele, columnIndex));
     },
 
     updateSelected(index, trigger) {
@@ -322,7 +341,7 @@ export default uniComponent({
         const valueMap = new Map(formatOptions.map((item, idx) => [item[keys?.value], idx]));
         index = valueMap.get(value) ?? -1;
       } else {
-        index = formatOptions.findIndex((item) => item[keys?.value] === value);
+        index = formatOptions.findIndex(item => item[keys?.value] === value);
       }
       const selectedIndex = index > 0 ? index : 0;
 
@@ -396,8 +415,8 @@ export default uniComponent({
 
       // 只有当可见范围发生变化时才更新
       if (
-        visibleRange.startIndex !== this.virtualStartIndex ||
-        visibleRange.endIndex !== this.virtualStartIndex + this.visibleOptions.length
+        visibleRange.startIndex !== this.virtualStartIndex
+        || visibleRange.endIndex !== this.virtualStartIndex + this.visibleOptions.length
       ) {
         this.visibleOptions = formatOptions.slice(visibleRange.startIndex, visibleRange.endIndex);
         this.virtualStartIndex = visibleRange.startIndex;

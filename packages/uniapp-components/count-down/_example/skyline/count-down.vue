@@ -20,7 +20,7 @@
         padding
         title="01 组件类型"
       >
-        <baseDemo />
+        <base-demo />
       </t-demo>
 
       <t-demo
@@ -28,7 +28,7 @@
         title="02 组件尺寸"
         desc="倒计时 large/medium/small 尺寸"
       >
-        <size />
+        <size-demo />
       </t-demo>
     </scroll-view>
   </view>
@@ -36,14 +36,13 @@
 
 <script>
 
-import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import size from '../size/index.vue';
+import BaseDemo from '../base/index.vue';
+import SizeDemo from '../size/index.vue';
+
 export default {
   components: {
-    TNavbar,
-    baseDemo,
-    size,
+    BaseDemo,
+    SizeDemo,
   },
   data() {
     return {};

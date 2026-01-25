@@ -1,18 +1,22 @@
 <template>
   <!-- #ifdef VUE2 -->
   <view>
-  <!-- #endif -->
-  <view v-if="fixed && placeholder" :class="classPrefix + '__placeholder'" :style="'height: ' + placeholderHeight + 'px;'" />
-  <view
-    :style="tools._style(['z-index: ' + zIndex, customStyle])"
-    :class="tools.cls(classPrefix, [
-      ['border', bordered], ['fixed', fixed],
-      ['safe', safeAreaInsetBottom], shape]
-    ) + ' ' + tClass"
-    aria-role="tablist"
-  >
-    <slot />
-  </view>
+    <!-- #endif -->
+    <view
+      v-if="fixed && placeholder"
+      :class="classPrefix + '__placeholder'"
+      :style="'height: ' + placeholderHeight + 'px;'"
+    />
+    <view
+      :style="tools._style(['z-index: ' + zIndex, customStyle])"
+      :class="tools.cls(classPrefix, [
+        ['border', bordered], ['fixed', fixed],
+        ['safe', safeAreaInsetBottom], shape]
+      ) + ' ' + tClass"
+      aria-role="tablist"
+    >
+      <slot />
+    </view>
   <!-- #ifdef VUE2 -->
   </view>
   <!-- #endif -->
@@ -21,10 +25,9 @@
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import { coalesce } from '../common/utils';
+import { coalesce, getRect, nextTick } from '../common/utils';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 import tools from '../common/utils.wxs';
-import { getRect, nextTick } from '../common/utils';
 
 const classPrefix = `${prefix}-tab-bar`;
 
@@ -80,16 +83,16 @@ export default uniComponent({
     this.showChildren();
   },
   methods: {
-      setPlaceholderHeight() {
-        if (!this.fixed || !this.placeholder) {
-          return;
-        }
-        nextTick().then(() => {
-          getRect(this, `.${classPrefix}`).then(res => {
-            this.placeholderHeight = res.height;
-          });
+    setPlaceholderHeight() {
+      if (!this.fixed || !this.placeholder) {
+        return;
+      }
+      nextTick().then(() => {
+        getRect(this, `.${classPrefix}`).then((res) => {
+          this.placeholderHeight = res.height;
         });
-      },
+      });
+    },
     showChildren() {
       const { dataValue } = this;
 

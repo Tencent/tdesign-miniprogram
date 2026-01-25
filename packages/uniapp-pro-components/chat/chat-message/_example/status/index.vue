@@ -1,7 +1,7 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
         :content="message.content"
         :role="message.role"
@@ -10,7 +10,7 @@
       />
     </view>
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
         :content="message.content"
         :role="message.role"

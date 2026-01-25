@@ -14,22 +14,22 @@
         title="01 组件类型"
         padding
       >
-        <baseDemo />
+        <base-demo />
       </t-demo>
       <t-demo title="02 组件样式">
-        <theme />
+        <theme-demo />
       </t-demo>
       <t-demo>
-        <placement />
+        <placement-demo />
       </t-demo>
     </view>
   </view>
 </template>
 
 <script>
-import baseDemo from './base';
-import theme from './theme';
-import placement from './placement';
+import BaseDemo from './base';
+import ThemeDemo from './theme';
+import PlacementDemo from './placement';
 
 
 export default {
@@ -37,9 +37,9 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    baseDemo,
-    theme,
-    placement,
+    BaseDemo,
+    ThemeDemo,
+    PlacementDemo,
   },
   data() {
     return {};

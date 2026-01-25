@@ -8,7 +8,7 @@
       :duration="2000 - duration"
     />
     <view class="slider-container">
-      <TSlider
+      <t-slider
         t-class="slider-class"
         style="flex-grow: 1;"
         :value="duration"

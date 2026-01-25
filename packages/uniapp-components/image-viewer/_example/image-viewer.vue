@@ -15,14 +15,14 @@
         description="基础图片预览"
         padding
       >
-        <BaseComp />
+        <base-comp />
       </t-demo>
 
       <t-demo
         title="带操作图片预览"
         padding
       >
-        <DeleteDemo />
+        <delete-demo />
       </t-demo>
     </view>
   </view>

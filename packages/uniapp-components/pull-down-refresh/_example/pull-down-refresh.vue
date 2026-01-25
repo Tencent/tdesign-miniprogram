@@ -4,7 +4,7 @@
       custom-class="demo-navbar"
       title="PullDownRefresh"
     />
-    <BaseDemo />
+    <base-demo />
   </view>
 </template>
 

@@ -58,27 +58,67 @@
       </t-badge>
     </view>
 
-    <view class="demo-desc" style="margin-bottom: 32rpx">角标</view>
-    <t-cell title="单行标题" t-class="t-class-cell">
-       <template #note>
-        <t-badge count="NEW" :offset="skylineRender ? ['-18rpx', '-32rpx'] : [0, 0]" shape="ribbon-left" />
+    <view
+      class="demo-desc"
+      style="margin-bottom: 32rpx"
+    >
+      角标
+    </view>
+    <t-cell
+      title="单行标题"
+      t-class="t-class-cell"
+    >
+      <template #note>
+        <t-badge
+          count="NEW"
+          :offset="skylineRender ? ['-18rpx', '-32rpx'] : [0, 0]"
+          shape="ribbon-left"
+        />
       </template>
     </t-cell>
-    <t-cell title="单行标题" :bordered="false" t-class="t-class-cell">
-       <template #note>
-      <t-badge count="NEW" :offset="skylineRender ? ['-18rpx', '-32rpx'] : [0, 0]" shape="ribbon"/>
+    <t-cell
+      title="单行标题"
+      :bordered="false"
+      t-class="t-class-cell"
+    >
+      <template #note>
+        <t-badge
+          count="NEW"
+          :offset="skylineRender ? ['-18rpx', '-32rpx'] : [0, 0]"
+          shape="ribbon"
+        />
       </template>
     </t-cell>
 
-    <view class="demo-desc" style="margin-bottom: 32rpx">三角角标</view>
-    <t-cell title="单行标题" t-class="t-class-cell">
-       <template #note>
-        <t-badge count="NEW" :offset="skylineRender ? ['-24rpx', '-32rpx'] : [0, 0]" shape="triangle-left"/>
+    <view
+      class="demo-desc"
+      style="margin-bottom: 32rpx"
+    >
+      三角角标
+    </view>
+    <t-cell
+      title="单行标题"
+      t-class="t-class-cell"
+    >
+      <template #note>
+        <t-badge
+          count="NEW"
+          :offset="skylineRender ? ['-24rpx', '-32rpx'] : [0, 0]"
+          shape="triangle-left"
+        />
       </template>
     </t-cell>
-    <t-cell title="单行标题" :bordered="false" t-class="t-class-cell">
-       <template #note>
-        <t-badge count="NEW" :offset="skylineRender ? ['-24rpx', '-32rpx'] : [0, 0]" shape="triangle-right" />
+    <t-cell
+      title="单行标题"
+      :bordered="false"
+      t-class="t-class-cell"
+    >
+      <template #note>
+        <t-badge
+          count="NEW"
+          :offset="skylineRender ? ['-24rpx', '-32rpx'] : [0, 0]"
+          shape="triangle-right"
+        />
       </template>
     </t-cell>
   </view>

@@ -4,13 +4,13 @@
     <t-chat-loading animation="skeleton" />
   </view> -->
     <view class="chat-example-block">
-      <TChatLoading animation="gradient" />
+      <t-chat-loading animation="gradient" />
     </view>
     <view class="chat-example-block">
-      <TChatLoading animation="moving" />
+      <t-chat-loading animation="moving" />
     </view>
     <view class="chat-example-block">
-      <TChatLoading animation="dots" />
+      <t-chat-loading animation="dots" />
     </view>
   </view>
 </template>

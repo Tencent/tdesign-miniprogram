@@ -20,13 +20,13 @@
           title="01 组件类型"
           desc="水平分割线"
         >
-          <baseDemo />
+          <base-demo />
         </t-demo>
         <t-demo
           title="02 组件状态"
           desc="虚线样式"
         >
-          <theme />
+          <theme-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -35,14 +35,13 @@
 
 <script>
 
-import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import theme from '../theme/index.vue';
+import BaseDemo from '../base/index.vue';
+import ThemeDemo from '../theme/index.vue';
+
 export default {
   components: {
-    TNavbar,
-    baseDemo,
-    theme,
+    BaseDemo,
+    ThemeDemo,
   },
   data() {
     return {};

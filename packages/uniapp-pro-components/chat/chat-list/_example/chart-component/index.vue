@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import ecCanvas from '../ec-canvas/ec-canvas';
+import EcCanvas from '../ec-canvas/ec-canvas';
 import * as echarts from 'echarts';
 function onInitNormalLine(opt) {
   console.log('contentItem数据:', opt);
@@ -41,7 +41,7 @@ function onInitNormalLine(opt) {
 }
 export default {
   components: {
-    ecCanvas,
+    EcCanvas,
   },
   props: {
     options: {

@@ -1,20 +1,20 @@
 <template>
   <view>
-    <TDropdownMenu relation-key="relationKey">
-      <TDropdownItem
+    <t-dropdown-menu relation-key="relationKey">
+      <t-dropdown-item
         :options="product.options"
         placement="right"
         :value="product.value"
         :relation-key="relationKey"
         @change="onChange"
       />
-      <TDropdownItem
+      <t-dropdown-item
         :options="sorter.options"
         placement="right"
         :default-value="sorter.value"
         :relation-key="relationKey"
       />
-    </TDropdownMenu>
+    </t-dropdown-menu>
   </view>
 </template>
 

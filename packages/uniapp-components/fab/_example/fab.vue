@@ -94,10 +94,10 @@
       </view>
     </t-demo>
 
-    <BaseDemo v-if="type == 'base'" />
-    <advance v-else-if="type == 'advance'" />
-    <draggable v-else-if="type == 'draggable'" />
-    <collapsible v-else-if="type == 'collapsible'" />
+    <base-demo v-if="type == 'base'" />
+    <advance-demo v-else-if="type == 'advance'" />
+    <draggable-demo v-else-if="type == 'draggable'" />
+    <collapsible-demo v-else-if="type == 'collapsible'" />
   </view>
 </template>
 
@@ -106,9 +106,9 @@
 import TButton from 'tdesign-uniapp/button/button.vue';
 import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
 import BaseDemo from './base/index.vue';
-import advance from './advance/index.vue';
-import draggable from './draggable/index.vue';
-import collapsible from './collapsible/index.vue';
+import AdvanceDemo from './advance/index.vue';
+import DraggableDemo from './draggable/index.vue';
+import CollapsibleDemo from './collapsible/index.vue';
 import { handlePageScroll } from 'tdesign-uniapp/mixins/page-scroll';
 
 export default {
@@ -116,9 +116,9 @@ export default {
     TButton,
     TSkeleton,
     BaseDemo,
-    advance,
-    draggable,
-    collapsible,
+    AdvanceDemo,
+    DraggableDemo,
+    CollapsibleDemo,
   },
   data() {
     return {

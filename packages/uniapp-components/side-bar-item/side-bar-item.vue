@@ -22,8 +22,14 @@
   >
     <block v-if="active">
       <view :class="classPrefix + '__line'" />
-      <view v-if="!isFirstChild" :class="classPrefix + '__prefix'" />
-      <view v-if="!isLastChild" :class="classPrefix + '__suffix'" />
+      <view
+        v-if="!isFirstChild"
+        :class="classPrefix + '__prefix'"
+      />
+      <view
+        v-if="!isLastChild"
+        :class="classPrefix + '__suffix'"
+      />
     </block>
     <block
       v-if="_icon"

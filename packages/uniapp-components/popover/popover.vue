@@ -239,34 +239,33 @@ export default uniComponent({
     },
 
     calcPlacement(isFixed, placement, triggerRect, contentRect) {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         const owner = uni.createSelectorQuery().in(this);
         owner.select(`.${name}-wrapper--fixed`).boundingClientRect();
-        owner.exec(b => {
-          
+        owner.exec((b) => {
           const [triggerChildRect] = b;
           if (triggerChildRect && isFixed) {
             triggerRect = triggerChildRect;
           }
-          
+
           const {
             isHorizontal,
-            isVertical
+            isVertical,
           } = this.getToward(placement);
           const {
             width: contentWidth,
-            height: contentHeight
+            height: contentHeight,
           } = contentRect;
           const {
             left: triggerLeft,
             top: triggerTop,
             right: triggerRight,
-            bottom: triggerBottom
+            bottom: triggerBottom,
           } = triggerRect;
           let canPlace = true;
           const {
             windowWidth,
-            windowHeight
+            windowHeight,
           } = getWindowInfo();
           let finalPlacement = placement;
           if (isHorizontal) {
@@ -285,17 +284,17 @@ export default uniComponent({
           if (!canPlace) {
           // 反向
             if (isHorizontal) {
-              finalPlacement = placement.startsWith('top') 
-                ? placement.replace('top', 'bottom') 
+              finalPlacement = placement.startsWith('top')
+                ? placement.replace('top', 'bottom')
                 : placement.replace('bottom', 'top');
             } else if (isVertical) {
-              finalPlacement = placement.startsWith('left') 
-                ? placement.replace('left', 'right') 
+              finalPlacement = placement.startsWith('left')
+                ? placement.replace('left', 'right')
                 : placement.replace('right', 'left');
             }
           }
           const basePos = this.calcContentPosition(finalPlacement, triggerRect, contentRect);
-          
+
           resolve({
             placement: finalPlacement,
             ...basePos,
@@ -322,17 +321,17 @@ export default uniComponent({
         const isFixed = this.fixed;
         // 最终放置位置
         const { placement: finalPlacement, ...basePos } = await this.calcPlacement(
-          isFixed, 
-          innerPlacement, 
-          triggerRect, 
-          contentRect
+          isFixed,
+          innerPlacement,
+          triggerRect,
+          contentRect,
         );
         // TODO 优化：滚动时可能导致箭头闪烁
         this.innerPlacement = finalPlacement;
 
         const {
           scrollTop = 0,
-          scrollLeft = 0
+          scrollLeft = 0,
         } = viewportOffset || {};
         const top = isFixed ? basePos.top : basePos.top + scrollTop;
         const left = isFixed ? basePos.left : basePos.left + scrollLeft;

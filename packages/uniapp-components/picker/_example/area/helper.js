@@ -85,7 +85,7 @@ const generateCities = () => {
   };
 
   // 生成广东省1000个城市
-  for (let i = 1; i <= 1000; i+=1) {
+  for (let i = 1; i <= 1000; i += 1) {
     const cityCode = 440000 + i * 100;
     cities[cityCode] = `广东城市${i}`;
   }
@@ -115,7 +115,7 @@ const generateCounties = () => {
   };
 
   // 生成广州市(440100)10000个地区
-  for (let i = 1; i <= 10000; i+=1) {
+  for (let i = 1; i <= 10000; i += 1) {
     const countyCode = 44010000 + i;
     counties[countyCode] = `广州地区${i}`;
   }

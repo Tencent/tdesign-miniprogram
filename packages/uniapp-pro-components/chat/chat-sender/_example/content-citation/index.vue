@@ -9,7 +9,7 @@
         高度限制：最大高度为132px
       </view>
       <view class="chat-sender-wrapper">
-        <TChatSender
+        <t-chat-sender
           :value="value"
           :loading="loading"
           :disabled="disabled"
@@ -41,7 +41,7 @@
               class="demo-header"
             >
               <view style="padding: 4rpx; height: 40rpx; color: var(--td-text-color-disabled)">
-                <TIcon
+                <t-icon
                   name="enter"
                   size="40rpx"
                   style="transform: scaleX(-1)"
@@ -51,7 +51,7 @@
                 {{ headerText }}
               </view>
               <view style="padding: 4rpx; height: 40rpx; margin-left: auto; color: var(--td-text-color-placeholder)">
-                <TIcon
+                <t-icon
                   name="close"
                   size="40rpx"
                   @click="handleCLoseCite"
@@ -69,7 +69,7 @@
                 :class="'deep-think-block ' + (deepThinkActive ? 'active' : '')"
                 @click.stop="onDeepThinkTap"
               >
-                <TIcon
+                <t-icon
                   name="system-sum"
                   size="40rpx"
                 />
@@ -81,14 +81,14 @@
                 :class="'net-search-block ' + (netSearchActive ? 'active' : '')"
                 @click.stop="onNetSearchTap"
               >
-                <TIcon
+                <t-icon
                   name="internet"
                   size="40rpx"
                 />
               </view>
             </view>
           </template>
-        </TChatSender>
+        </t-chat-sender>
       </view>
       <view class="demo-content-citation-footer">
         内容由AI生成，仅供参考

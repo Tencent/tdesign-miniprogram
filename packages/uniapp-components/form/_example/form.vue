@@ -15,7 +15,7 @@
     >
       <view class="option">
         <view class="select-button-group">
-          <TButton
+          <t-button
             :theme="isActive1 ? 'light' : 'default'"
             shape="round"
             data-name="isActive1"
@@ -24,8 +24,8 @@
             @click="() => onClick()"
           >
             水平排布
-          </TButton>
-          <TButton
+          </t-button>
+          <t-button
             :theme="isActive2 ? 'light' : 'default'"
             shape="round"
             data-name="isActive2"
@@ -34,32 +34,32 @@
             @click="() => onClick()"
           >
             竖向排布
-          </TButton>
+          </t-button>
         </view>
       </view>
     </t-demo>
 
     <view v-if="isActive1">
-      <Horizontal :disabled="switchValue" />
+      <horizontal-demo :disabled="switchValue" />
     </view>
 
     <view v-if="isActive2">
-      <Vertical :disabled="switchValue" />
+      <vertical-demo :disabled="switchValue" />
     </view>
   </view>
 </template>
 
 <script>
 
-import Horizontal from './horizontal/index.vue';
-import Vertical from './vertical/index.vue';
+import HorizontalDemo from './horizontal/index.vue';
+import VerticalDemo from './vertical/index.vue';
 import TButton from 'tdesign-uniapp/button/button.vue';
 import { canUseVirtualHost } from 'tdesign-uniapp/common/version';
 
 export default {
   components: {
-    Horizontal,
-    Vertical,
+    HorizontalDemo,
+    VerticalDemo,
     TButton,
   },
   data() {

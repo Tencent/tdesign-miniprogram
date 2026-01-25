@@ -80,19 +80,19 @@ export default {
         items: [
           {
             label: 'Move',
-            icon: 'enter'
+            icon: 'enter',
           },
           {
             label: 'Mark as important',
-            icon: 'bookmark'
+            icon: 'bookmark',
           },
           {
             label: 'Unsubscribe',
-            icon: 'pin'
+            icon: 'pin',
           },
           {
             label: 'Add to Tasks',
-            icon: 'cloud-upload'
+            icon: 'cloud-upload',
           },
         ],
       });

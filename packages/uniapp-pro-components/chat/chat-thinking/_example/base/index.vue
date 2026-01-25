@@ -1,6 +1,6 @@
 <template>
   <view class="chat-example-block">
-    <TChatThinking
+    <t-chat-thinking
       :content="content"
       layout="block"
       :status="status"

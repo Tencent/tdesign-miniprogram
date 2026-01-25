@@ -53,7 +53,7 @@
         <view
           class="content"
         >
-          <TIcon
+          <t-icon
             name="arrow-up"
             size="64rpx"
             color="#fff"
@@ -108,7 +108,7 @@
         <view
           class="content"
         >
-          <TIcon
+          <t-icon
             name="arrow-up"
             size="64rpx"
             color="#fff"
@@ -164,7 +164,7 @@
         <view
           class="content"
         >
-          <TIcon
+          <t-icon
             name="arrow-up"
             size="64rpx"
             color="#fff"

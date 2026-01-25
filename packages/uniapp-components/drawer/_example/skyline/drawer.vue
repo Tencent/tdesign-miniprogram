@@ -21,7 +21,7 @@
           desc="基础抽屉"
           padding
         >
-          <baseDemo />
+          <base-demo />
         </t-demo>
         <t-demo
           desc="带图标抽屉"
@@ -34,13 +34,13 @@
           desc="带标题样式"
           padding
         >
-          <titleDemo />
+          <title-demo />
         </t-demo>
         <t-demo
           desc="带底部插槽样式"
           padding
         >
-          <footerDemo />
+          <footer-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -49,18 +49,17 @@
 
 <script>
 
-import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import titleDemo from '../title/index.vue';
-import iconDrawer from '../icon-drawer/index.vue';
-import footerDemo from '../footer/index.vue';
+import BaseDemo from '../base/index.vue';
+import TitleDemo from '../title/index.vue';
+import IconDrawer from '../icon-drawer/index.vue';
+import FooterDemo from '../footer/index.vue';
+
 export default {
   components: {
-    TNavbar,
-    baseDemo,
-    titleDemo,
-    iconDrawer,
-    footerDemo,
+    BaseDemo,
+    TitleDemo,
+    IconDrawer,
+    FooterDemo,
   },
   data() {
     return {};

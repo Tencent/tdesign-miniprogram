@@ -13,18 +13,18 @@
         title="01 组件类型"
         desc="基础树形选择器"
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
 
       <t-demo desc="多选树形选择器">
-        <multiple />
+        <multiple-demo />
       </t-demo>
 
       <t-demo
         title="02 组件状态"
         desc="树形选择器-三列"
       >
-        <normal />
+        <normal-demo />
       </t-demo>
     </view>
   </view>
@@ -32,13 +32,13 @@
 
 <script>
 import BaseDemo from './base';
-import multiple from './multiple';
-import normal from './normal';
+import MultipleDemo from './multiple';
+import NormalDemo from './normal';
 export default {
   components: {
     BaseDemo,
-    multiple,
-    normal,
+    MultipleDemo,
+    NormalDemo,
   },
   data() {
     return {};

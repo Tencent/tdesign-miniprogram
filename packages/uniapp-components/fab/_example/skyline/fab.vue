@@ -65,26 +65,25 @@
       </scroll-view>
     </view>
 
-    <baseDemo v-if="type == 'base'" />
-    <advance v-else-if="type == 'advance'" />
-    <draggable v-else />
+    <BaseDemo v-if="type == 'base'" />
+    <AdvanceDemo v-else-if="type == 'advance'" />
+    <DraggableDemo v-else />
   </view>
 </template>
 
 <script>
 
-import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import TButton from 'tdesign-uniapp/button/button.vue';
-import baseDemo from '../base/index.vue';
-import advance from '../advance/index.vue';
-import draggable from '../draggable/index.vue';
+import BaseDemo from '../base/index.vue';
+import Advance from '../advance/index.vue';
+import Draggable from '../draggable/index.vue';
+
 export default {
   components: {
-    TNavbar,
     TButton,
-    baseDemo,
-    advance,
-    draggable,
+    BaseDemo,
+    AdvanceDemo,
+    DraggableDemo,
   },
   data() {
     return {

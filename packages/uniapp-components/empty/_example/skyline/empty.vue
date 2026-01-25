@@ -20,13 +20,13 @@
           title="01 类型"
           desc="图标空状态"
         >
-          <baseDemo />
+          <base-demo />
         </t-demo>
         <t-demo desc="自定义图片空状态">
-          <imageEmpty />
+          <image-empty />
         </t-demo>
         <t-demo desc="带操作空状态">
-          <buttonEmpty />
+          <button-empty />
         </t-demo>
       </view>
     </scroll-view>
@@ -35,22 +35,15 @@
 
 <script>
 
-import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import imageEmpty from '../imageEmpty/index.vue';
-import buttonEmpty from '../buttonEmpty/index.vue';
-/*
- * @Author: shiyanzhang
- * @Date: 2021-08-24 15:56:07
- * @Description:
- * @FilePath: /tdesign-miniprogram/example/pages/empty/empty.ts
- */
+import BaseDemo from '../base/index.vue';
+import ImageEmpty from '../imageEmpty/index.vue';
+import ButtonEmpty from '../buttonEmpty/index.vue';
+
 export default {
   components: {
-    TNavbar,
-    baseDemo,
-    imageEmpty,
-    buttonEmpty,
+    BaseDemo,
+    ImageEmpty,
+    ButtonEmpty,
   },
   data() {
     return {};

@@ -37,7 +37,7 @@
           v-if="current < steps.length - 1 && !hideSkip"
           name="button"
         >
-          <TButton
+          <t-button
             :t-id="skipButton.tId"
             :custom-style="skipButton.style"
             :block="skipButton.block"
@@ -83,7 +83,7 @@
           v-else-if="current === steps.length - 1 && !hideBack"
           name="button"
         >
-          <TButton
+          <t-button
             :t-id="backButton.tId"
             :custom-style="backButton.style"
             :block="backButton.block"
@@ -129,7 +129,7 @@
           v-if="current < steps.length - 1"
           name="button"
         >
-          <TButton
+          <t-button
             :t-id="nextButton.tId"
             :custom-style="nextButton.style"
             :block="nextButton.block"
@@ -175,7 +175,7 @@
           v-else
           name="button"
         >
-          <TButton
+          <t-button
             :t-id="finishButton.tId"
             :custom-style="finishButton.style"
             :block="finishButton.block"

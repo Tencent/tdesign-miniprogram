@@ -1,14 +1,38 @@
 <template>
   <view>
-    <TActionSheet
+    <t-action-sheet
       ref="t-action-sheet"
       :using-custom-navbar="!isMPAlipay"
       @selected="handleSelected($event, { tagId: 't-action-sheet' })"
     />
 
-    <t-button size="large" variant="outline" @click="handleAction" block theme="primary">常规宫格型</t-button>
-    <t-button size="large" variant="outline" @click="handleActionWithDesc" block theme="primary">常描述宫格型</t-button>
-    <t-button size="large" variant="outline" @click="handleMultiAction" block theme="primary">带翻页宫格型</t-button>
+    <t-button
+      size="large"
+      variant="outline"
+      block
+      theme="primary"
+      @click="handleAction"
+    >
+      常规宫格型
+    </t-button>
+    <t-button
+      size="large"
+      variant="outline"
+      block
+      theme="primary"
+      @click="handleActionWithDesc"
+    >
+      常描述宫格型
+    </t-button>
+    <t-button
+      size="large"
+      variant="outline"
+      block
+      theme="primary"
+      @click="handleMultiAction"
+    >
+      带翻页宫格型
+    </t-button>
   </view>
 </template>
 
@@ -87,7 +111,7 @@ export default {
         selector: '#t-action-sheet',
         context: this,
         items: firstGrid,
-        description: '动作面板描述文字'
+        description: '动作面板描述文字',
       });
     },
     handleSelected(e) {

@@ -28,13 +28,13 @@
         </t-step-item>
       </t-steps>
 
-      <TButton
+      <t-button
         :style="`margin-top: 32rpx; display: block`"
         block
         @click="toNext"
       >
         下一步
-      </TButton>
+      </t-button>
     </view>
 
     <view class="demo-desc">

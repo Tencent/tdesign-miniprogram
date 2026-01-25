@@ -13,8 +13,8 @@
         title="01 组件类型"
         desc="基础选择器"
       >
-        <BaseDemo />
-        <AreaDemo/>
+        <base-demo />
+        <area-demo />
       </t-demo>
       <t-demo
         title="02 组件样式"
@@ -29,13 +29,13 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import withTitle from './with-title/index.vue';
+import WithTitle from './with-title/index.vue';
 import AreaDemo from './area/index.vue';
 
 export default {
   components: {
     BaseDemo,
-    withTitle,
+    WithTitle,
     AreaDemo,
   },
   data() {

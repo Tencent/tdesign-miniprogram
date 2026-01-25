@@ -14,27 +14,27 @@
         title="01 组件类型"
         desc="基础类型"
       >
-        <baseDemo />
+        <base-demo />
       </t-demo>
       <t-demo
         title="02 组件状态"
         desc="手动初始化状态"
       >
-        <comment />
+        <comment-demo />
       </t-demo>
     </view>
   </view>
 </template>
 
 <script>
-import baseDemo from './base/index.vue';
-import comment from './comment/index.vue';
+import BaseDemo from './base/index.vue';
+import CommentDemo from './comment/index.vue';
 
 
 export default {
   components: {
-    baseDemo,
-    comment,
+    BaseDemo,
+    CommentDemo,
   },
   data() {
     return {};

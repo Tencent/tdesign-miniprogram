@@ -1,7 +1,7 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <TAttachments
+      <t-attachments
         :items="items"
         @fileClick="onFileClick"
         @remove="onRemove"

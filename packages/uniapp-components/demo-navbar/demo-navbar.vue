@@ -11,8 +11,8 @@
   />
   <!-- #endif -->
   <!-- #ifdef MP-ALIPAY -->
-  <view /> 
-   <!-- #endif -->
+  <view />
+  <!-- #endif -->
 </template>
 <script>
 import TNavbar from '../navbar/navbar.vue';
@@ -38,5 +38,5 @@ export default {
       goBackOrGoHome();
     },
   },
-}
+};
 </script>

@@ -77,7 +77,7 @@
           <!-- #endif -->
 
           <!-- #ifndef MP-WEIXIN -->
-          <TIcon
+          <t-icon
             name="user"
             size="36"
           />

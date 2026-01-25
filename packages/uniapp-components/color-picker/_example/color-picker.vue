@@ -15,25 +15,25 @@
         title="01 组件类型"
         desc="基础颜色选择器"
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
 
       <t-demo desc="带色板的颜色选择器">
-        <multiple />
+        <multiple-demo />
       </t-demo>
 
       <t-demo
         desc="弹窗形式的颜色选择器"
         padding
       >
-        <usePopup />
+        <use-popup />
       </t-demo>
 
       <t-demo
         title="02 组件状态"
         desc="组件模式选择"
       >
-        <format />
+        <format-demo />
       </t-demo>
     </view>
   </view>
@@ -42,15 +42,15 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import multiple from './multiple/index.vue';
-import format from './format/index.vue';
-import usePopup from './use-popup/index.vue';
+import MultipleDemo from './multiple/index.vue';
+import FormatDemo from './format/index.vue';
+import UsePopup from './use-popup/index.vue';
 export default {
   components: {
     BaseDemo,
-    multiple,
-    format,
-    usePopup,
+    MultipleDemo,
+    FormatDemo,
+    UsePopup,
   },
   data() {
     return {};

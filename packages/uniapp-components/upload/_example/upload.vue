@@ -28,7 +28,7 @@
           <view class="upload-demo__title">
             上传图片
           </view>
-          <single />
+          <single-demo />
         </view>
       </t-demo>
       <t-demo
@@ -39,7 +39,7 @@
           <view class="upload-demo__title">
             上传图片
           </view>
-          <multiple />
+          <multiple-demo />
         </view>
       </t-demo>
       <t-demo
@@ -50,7 +50,7 @@
           <view class="upload-demo__title">
             上传图片
           </view>
-          <drag />
+          <drag-demo />
         </view>
       </t-demo>
       <t-demo
@@ -61,7 +61,7 @@
           <view class="upload-demo__title">
             上传图片
           </view>
-          <status />
+          <status-demo />
         </view>
       </t-demo>
       <!-- #ifdef MP-WEIXIN -->
@@ -73,7 +73,7 @@
           <view class="upload-demo__title">
             上传图片
           </view>
-          <messageFile />
+          <message-file />
         </view>
       </t-demo>
       <!-- #endif -->
@@ -83,18 +83,18 @@
 
 <script>
 
-import single from './single/index.vue';
-import multiple from './multiple/index.vue';
-import status from './status/index.vue';
-import messageFile from './messageFile/index.vue';
-import drag from './drag/index.vue';
+import SingleDemo from './single/index.vue';
+import MultipleDemo from './multiple/index.vue';
+import StatusDemo from './status/index.vue';
+import MessageFile from './messageFile/index.vue';
+import DragDemo from './drag/index.vue';
 export default {
   components: {
-    single,
-    multiple,
-    status,
-    messageFile,
-    drag,
+    SingleDemo,
+    MultipleDemo,
+    StatusDemo,
+    MessageFile,
+    DragDemo,
   },
   data() {
     return {};

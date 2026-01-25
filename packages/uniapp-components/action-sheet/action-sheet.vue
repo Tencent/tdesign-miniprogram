@@ -14,8 +14,17 @@
       :overlay-props="(dataPopupProps && dataPopupProps.overlayProps) || defaultPopUpProps"
       @visible-change="onPopupVisibleChange"
     >
-      <view :class="classPrefix + '__content ' + tClassContent" tabindex="0">
-        <view v-if="dataDescription" tabindex="0" :class="classPrefix + '__description'">{{ dataDescription }}</view>
+      <view
+        :class="classPrefix + '__content ' + tClassContent"
+        tabindex="0"
+      >
+        <view
+          v-if="dataDescription"
+          tabindex="0"
+          :class="classPrefix + '__description'"
+        >
+          {{ dataDescription }}
+        </view>
         <block v-if="gridThemeItems.length">
           <block v-if="gridThemeItems.length === 1">
             <t-grid
@@ -102,22 +111,29 @@
               @click="() => onSelect(item, { index })"
             >
               <view :class="classPrefix + '__list-item-content'">
-                <t-icon 
-                  v-if="item.icon" 
-                  :name="item.icon" 
-                  :t-class="classPrefix + '__list-item-icon'" 
-                  :custom-style="iconCustomStyle" 
+                <t-icon
+                  v-if="item.icon"
+                  :name="item.icon"
+                  :t-class="classPrefix + '__list-item-icon'"
+                  :custom-style="iconCustomStyle"
                 />
-                <view :class="classPrefix + '__list-item-text'">{{ item.label || item }}</view>
-                <t-icon 
-                  v-if="item.suffixIcon" 
-                  :name="item.suffixIcon" 
-                  :t-class="classPrefix + '__list-item-icon ' + classPrefix + '__list-item-icon--suffix'" 
+                <view :class="classPrefix + '__list-item-text'">
+                  {{ item.label || item }}
+                </view>
+                <t-icon
+                  v-if="item.suffixIcon"
+                  :name="item.suffixIcon"
+                  :t-class="classPrefix + '__list-item-icon ' + classPrefix + '__list-item-icon--suffix'"
                   style="margin-left: auto;"
                   :custom-style="suffixIconCustomStyle"
                 />
               </view>
-              <view v-if="item.description" :class="classPrefix + '__list-item-desc'">{{ item.description }}</view>
+              <view
+                v-if="item.description"
+                :class="classPrefix + '__list-item-desc'"
+              >
+                {{ item.description }}
+              </view>
             </view>
           </block>
           <!-- </block> -->
