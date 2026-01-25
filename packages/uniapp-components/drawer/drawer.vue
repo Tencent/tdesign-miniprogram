@@ -62,8 +62,8 @@
   </view>
 </template>
 <script>
-import tPopup from '../popup/popup';
-import tIcon from '../icon/icon';
+import TPopup from '../popup/popup';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import { coalesce } from '../common/utils';
@@ -84,8 +84,8 @@ export default uniComponent({
     useCustomNavbar,
   ],
   components: {
-    tPopup,
-    tIcon,
+    TPopup,
+    TIcon,
   },
   props: {
     ...props,

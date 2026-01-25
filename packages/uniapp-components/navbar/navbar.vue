@@ -47,7 +47,7 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { getRect, systemInfo } from '../common/utils';
 import { prefix } from '../common/config';
@@ -83,7 +83,7 @@ export default uniComponent({
     `${prefix}-class-nav-btn`,
   ],
   components: {
-    tIcon,
+    TIcon,
   },
   props: {
     ...props,

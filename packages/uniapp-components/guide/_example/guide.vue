@@ -2,7 +2,7 @@
   <view>
     <view class="custom-navbar">
       <t-demo-navbar
-        class="demo-navbar"
+        custom-class="demo-navbar"
         title="Guide"
       />
     </view>
@@ -140,8 +140,8 @@
 
 <script>
 
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tPopup from 'tdesign-uniapp/popup/popup.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TPopup from 'tdesign-uniapp/popup/popup.vue';
 import BaseDemo from './base/index.vue';
 import noMask from './no-mask/index.vue';
 import dialogDemo from './dialog/index.vue';
@@ -150,8 +150,8 @@ import contentDemo from './content/index.vue';
 
 export default {
   components: {
-    tButton,
-    tPopup,
+    TButton,
+    TPopup,
     BaseDemo,
     noMask,
     dialogDemo,

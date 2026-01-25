@@ -1,7 +1,7 @@
 <template>
   <view>
     <t-demo-navbar
-      class="demo-navbar"
+      custom-class="demo-navbar"
       title="Result Page"
     />
     <view class="page">
@@ -29,12 +29,12 @@
 
 <script>
 
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tResult from 'tdesign-uniapp/result/result.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TResult from 'tdesign-uniapp/result/result.vue';
 export default {
   components: {
-    tButton,
-    tResult,
+    TButton,
+    TResult,
   },
   data() {
     return {};

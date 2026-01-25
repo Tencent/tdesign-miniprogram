@@ -30,10 +30,10 @@
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 export default {
   components: {
-    tButton,
+    TButton,
   },
   data() {
     return {};

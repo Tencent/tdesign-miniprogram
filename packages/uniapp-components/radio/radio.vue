@@ -91,7 +91,7 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
+import TIcon from '../icon/icon';
 import { prefix, ISOLATED_RELATION_KEY } from '../common/config';
 import { coalesce } from '../common/utils';
 import { uniComponent } from '../common/src/index';
@@ -122,7 +122,7 @@ export default uniComponent({
   ],
   mixins: [ChildrenMixin(RELATION_MAP.Radio)],
   components: {
-    tIcon,
+    TIcon,
   },
   props: {
     ...props,

@@ -83,8 +83,8 @@
   </view>
 </template>
 <script>
-import tLoading from '../loading/loading';
-import tIcon from '../icon/icon';
+import TLoading from '../loading/loading';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import ImageProps from './props';
 import { prefix } from '../common/config';
@@ -106,8 +106,8 @@ export default uniComponent({
     `${prefix}-class-error`,
   ],
   components: {
-    tLoading,
-    tIcon,
+    TLoading,
+    TIcon,
   },
   props: {
     ...ImageProps,

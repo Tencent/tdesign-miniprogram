@@ -1,7 +1,7 @@
 <template>
   <view class="skyline">
     <t-demo-navbar
-      class="block demo-navbar"
+      custom-class="block demo-navbar"
       title="Dialog"
     />
     <scroll-view
@@ -73,7 +73,7 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import baseDemo from '../base/index.vue';
 import confirm from '../confirm/index.vue';
 import withInput from '../with-input/index.vue';
@@ -83,7 +83,7 @@ import status from '../status/index.vue';
 import buttonDemo from '../button/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     baseDemo,
     confirm,
     withInput,

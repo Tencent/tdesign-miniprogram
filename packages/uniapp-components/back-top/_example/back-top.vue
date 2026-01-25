@@ -1,7 +1,7 @@
 <template>
   <view>
     <t-demo-navbar
-      class="demo-navbar"
+      custom-class="demo-navbar"
       title="BackTop"
     />
     <view class="demo">
@@ -100,14 +100,14 @@
 
 <script>
 
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
 import BaseDemo from './base/index.vue';
 import halfRound from './half-round/index.vue';
 export default {
   components: {
-    tButton,
-    tSkeleton,
+    TButton,
+    TSkeleton,
     BaseDemo,
     halfRound,
   },

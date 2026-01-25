@@ -1,7 +1,7 @@
 <template>
   <view class="skyline">
     <t-demo-navbar
-      class="demo-navbar"
+      custom-class="demo-navbar"
       title="Overlay"
     />
     <scroll-view
@@ -30,11 +30,11 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import baseDemo from '../base/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     baseDemo,
   },
   data() {

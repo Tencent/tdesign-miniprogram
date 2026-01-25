@@ -34,12 +34,12 @@
 </template>
 
 <script>
-import tColorPicker from 'tdesign-uniapp/color-picker/color-picker.vue';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
+import TColorPicker from 'tdesign-uniapp/color-picker/color-picker.vue';
+import TIcon from 'tdesign-uniapp/icon/icon.vue';
 export default {
   components: {
-    tColorPicker,
-    tIcon,
+    TColorPicker,
+    TIcon,
   },
   data() {
     return {

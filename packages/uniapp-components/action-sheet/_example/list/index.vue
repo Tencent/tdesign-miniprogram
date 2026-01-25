@@ -39,13 +39,13 @@
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tActionSheet from 'tdesign-uniapp/action-sheet/action-sheet.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TActionSheet from 'tdesign-uniapp/action-sheet/action-sheet.vue';
 import ActionSheet, { ActionSheetTheme } from 'tdesign-uniapp/action-sheet/index';
 export default {
   components: {
-    tButton,
-    tActionSheet,
+    TButton,
+    TActionSheet,
   },
   data() {
     return {};

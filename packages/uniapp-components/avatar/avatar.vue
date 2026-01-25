@@ -77,9 +77,9 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tBadge from '../badge/badge';
-import tImage from '../image/image';
+import TIcon from '../icon/icon';
+import TBadge from '../badge/badge';
+import TImage from '../image/image';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import avatarProps from './props';
@@ -106,9 +106,9 @@ export default uniComponent({
   ],
   mixins: [ChildrenMixin(RELATION_MAP.Avatar)],
   components: {
-    tIcon,
-    tBadge,
-    tImage,
+    TIcon,
+    TBadge,
+    TImage,
   },
   props: {
     ...avatarProps,

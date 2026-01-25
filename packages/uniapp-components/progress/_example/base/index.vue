@@ -48,11 +48,11 @@
 </template>
 
 <script>
-import tProgress from 'tdesign-uniapp/progress/progress.vue';
+import TProgress from 'tdesign-uniapp/progress/progress.vue';
 import SkylineBehavior from 'tdesign-uniapp/mixins/skyline.js';
 export default {
   components: {
-    tProgress,
+    TProgress,
   },
   mixins: [SkylineBehavior],
   data() {

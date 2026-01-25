@@ -1,7 +1,7 @@
 <template>
   <view>
     <t-demo-navbar
-      class="demo-navbar"
+      custom-class="demo-navbar"
       title="NoticeBar"
     />
     <view class="demo">
@@ -51,7 +51,7 @@
 
 <script>
 
-// import tNoticeBar from 'tdesign-uniapp/notice-bar/notice-bar.vue';
+// import TNoticeBar from 'tdesign-uniapp/notice-bar/notice-bar.vue';
 import BaseDemo from './base/index.vue';
 import iconDemo from './iconDemo/index.vue';
 import suffixIcon from './suffixIcon/index.vue';
@@ -62,7 +62,7 @@ import scrolling from './scrolling/index.vue';
 import customization from './customization/index.vue';
 export default {
   components: {
-    // tNoticeBar,
+    // TNoticeBar,
     BaseDemo,
     iconDemo,
     suffixIcon,

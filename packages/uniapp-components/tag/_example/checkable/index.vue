@@ -24,13 +24,13 @@
 </template>
 
 <script>
-import tCheckTag from 'tdesign-uniapp/check-tag/check-tag.vue';
+import TCheckTag from 'tdesign-uniapp/check-tag/check-tag.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tCheckTag,
+    TCheckTag,
   },
   data() {
     return {

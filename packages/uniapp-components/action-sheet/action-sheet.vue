@@ -143,10 +143,10 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tPopup from '../popup/popup';
-import tGrid from '../grid/grid';
-import tGridItem from '../grid-item/grid-item';
+import TIcon from '../icon/icon';
+import TPopup from '../popup/popup';
+import TGrid from '../grid/grid';
+import TGridItem from '../grid-item/grid-item';
 import { chunk } from '../common/utils';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
@@ -176,10 +176,10 @@ export default uniComponent({
   ],
   mixins: [getFunctionalMixin(props), useCustomNavbar],
   components: {
-    tIcon,
-    tPopup,
-    tGrid,
-    tGridItem,
+    TIcon,
+    TPopup,
+    TGrid,
+    TGridItem,
   },
   props: {
     ...props,

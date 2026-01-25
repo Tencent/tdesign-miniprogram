@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import tTabBar from 'tdesign-uniapp/tab-bar/tab-bar.vue';
-import tTabBarItem from 'tdesign-uniapp/tab-bar-item/tab-bar-item.vue';
+import TTabBar from 'tdesign-uniapp/tab-bar/tab-bar.vue';
+import TTabBarItem from 'tdesign-uniapp/tab-bar-item/tab-bar-item.vue';
 const list = [
   {
     value: 'home',
@@ -56,8 +56,8 @@ const list = [
 ];
 export default {
   components: {
-    tTabBar,
-    tTabBarItem,
+    TTabBar,
+    TTabBarItem,
   },
   data() {
     return {

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import tTreeSelect from 'tdesign-uniapp/tree-select/tree-select.vue';
+import TTreeSelect from 'tdesign-uniapp/tree-select/tree-select.vue';
 const areaList = {
   provinces: {
     110000: '北京市',
@@ -124,7 +124,7 @@ const generateTree = () => {
 };
 export default {
   components: {
-    tTreeSelect,
+    TTreeSelect,
   },
   data() {
     return {

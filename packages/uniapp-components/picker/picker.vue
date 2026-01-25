@@ -99,7 +99,7 @@
   </view>
 </template>
 <script>
-import tPopup from '../popup/popup';
+import TPopup from '../popup/popup';
 import { uniComponent } from '../common/src/index';
 import { coalesce } from '../common/utils';
 import { prefix } from '../common/config';
@@ -124,7 +124,7 @@ export default uniComponent({
     `${prefix}-class-title`,
   ],
   components: {
-    tPopup,
+    TPopup,
   },
   mixins: [
     ParentMixin(RELATION_MAP.PickerItem),

@@ -1,7 +1,7 @@
 <template>
   <view>
     <t-demo-navbar
-      class="demo-navbar"
+      custom-class="demo-navbar"
       title="Result"
     />
     <view class="demo">
@@ -41,13 +41,13 @@
 
 <script>
 
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 import theme from './theme/index.vue';
 import description from './description/index.vue';
 import custom from './custom/index.vue';
 export default {
   components: {
-    tButton,
+    TButton,
     theme,
     description,
     custom,

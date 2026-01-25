@@ -1,7 +1,7 @@
 <template>
   <view class="skyline">
     <t-demo-navbar
-      class="block demo-navbar"
+      custom-class="block demo-navbar"
       title="Footer"
     />
     <scroll-view
@@ -33,13 +33,13 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import BaseDemo from '../base/index.vue';
 import LinkDemo from '../link/index.vue';
 import LogoDemo from '../logo/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     BaseDemo,
     LinkDemo,
     LogoDemo,

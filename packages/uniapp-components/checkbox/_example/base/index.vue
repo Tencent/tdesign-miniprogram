@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import tCheckboxGroup from 'tdesign-uniapp/checkbox-group/checkbox-group.vue';
+import TCheckboxGroup from 'tdesign-uniapp/checkbox-group/checkbox-group.vue';
 
 export default {
   components: {
-    tCheckboxGroup,
+    TCheckboxGroup,
   },
   data() {
     return {

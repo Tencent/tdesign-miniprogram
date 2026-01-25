@@ -24,13 +24,13 @@
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 import { canUseVirtualHost } from 'tdesign-uniapp/common/version';
 
 
 export default {
   components: {
-    tButton,
+    TButton,
   },
   data() {
     return {

@@ -70,9 +70,9 @@
   </view>
 </template>
 <script>
-import tPopup from '../popup/popup';
-import tButton from '../button/button';
-import tIcon from '../icon/icon';
+import TPopup from '../popup/popup';
+import TButton from '../button/button';
+import TIcon from '../icon/icon';
 import CalendarTemplate from './template.vue';
 
 import { uniComponent } from '../common/src/index';
@@ -122,9 +122,9 @@ export default uniComponent({
   ],
   mixins: [useCustomNavbar],
   components: {
-    tPopup,
-    tButton,
-    tIcon,
+    TPopup,
+    TButton,
+    TIcon,
     CalendarTemplate,
   },
   props: {

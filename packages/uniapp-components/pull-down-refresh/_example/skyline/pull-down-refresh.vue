@@ -1,7 +1,7 @@
 <template>
   <view>
     <t-demo-navbar
-      class="demo-navbar"
+      custom-class="demo-navbar"
       title="PullDownRefresh"
     />
     <baseComp />
@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import baseComp from '../base';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     baseComp,
   },
   data() {

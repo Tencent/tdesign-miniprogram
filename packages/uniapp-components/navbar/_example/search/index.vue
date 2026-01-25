@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import tSearch from 'tdesign-uniapp/search/search.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TSearch from 'tdesign-uniapp/search/search.vue';
 export default {
   components: {
-    tNavbar,
-    tSearch,
+    TNavbar,
+    TSearch,
   },
   data() {
     return {};

@@ -38,13 +38,13 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import baseDemo from '../base/index.vue';
 import multiple from '../multiple/index.vue';
 import theme from '../theme/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     baseDemo,
     multiple,
     theme,

@@ -1,7 +1,7 @@
 <template>
   <view>
     <t-demo-navbar
-      class="demo-navbar"
+      custom-class="demo-navbar"
       title="Skeleton"
     />
     <view class="demo">
@@ -49,7 +49,7 @@
 
 <script>
 
-// import tSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
+// import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
 import theme from './theme/index.vue';
 import grid from './grid/index.vue';
 import cellGroup from './cell-group/index.vue';
@@ -57,7 +57,7 @@ import imageGroup from './image-group/index.vue';
 import animation from './animation/index.vue';
 export default {
   components: {
-    // tSkeleton,
+    // TSkeleton,
     theme,
     grid,
     cellGroup,

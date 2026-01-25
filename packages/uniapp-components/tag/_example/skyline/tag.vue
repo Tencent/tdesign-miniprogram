@@ -1,7 +1,7 @@
 <template>
   <view class="skyline">
     <t-demo-navbar
-      class="block demo-navbar"
+      custom-class="block demo-navbar"
       title="Tag"
     />
     <scroll-view
@@ -41,7 +41,7 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import theme from '../theme/index.vue';
 import size from '../size/index.vue';
 import type from '../type/index.vue';
@@ -49,7 +49,7 @@ import closable from '../closable/index.vue';
 import checkable from '../checkable/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     theme,
     size,
     type,

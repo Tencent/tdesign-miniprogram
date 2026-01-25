@@ -89,8 +89,8 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tLink from '../link/link';
+import TIcon from '../icon/icon';
+import TLink from '../link/link';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import { getRect, unitConvert, calcIcon } from '../common/utils';
@@ -138,8 +138,8 @@ export default uniComponent({
     `${prefix}-class-close-btn`,
   ],
   components: {
-    tIcon,
-    tLink,
+    TIcon,
+    TLink,
   },
   props: {
   },

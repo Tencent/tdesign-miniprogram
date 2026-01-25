@@ -63,17 +63,17 @@
 </template>
 
 <script>
-import tSwipeCell from 'tdesign-uniapp/swipe-cell/swipe-cell.vue';
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
+import TSwipeCell from 'tdesign-uniapp/swipe-cell/swipe-cell.vue';
+import TCell from 'tdesign-uniapp/cell/cell.vue';
+import TIcon from 'tdesign-uniapp/icon/icon.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tSwipeCell,
-    tCell,
-    tIcon,
+    TSwipeCell,
+    TCell,
+    TIcon,
   },
   data() {
     return {

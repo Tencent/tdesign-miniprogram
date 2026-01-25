@@ -102,8 +102,8 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tCell from '../cell/cell';
+import TIcon from '../icon/icon';
+import TCell from '../cell/cell';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -129,8 +129,8 @@ export default uniComponent({
     `${prefix}-class-clear`,
   ],
   components: {
-    tIcon,
-    tCell,
+    TIcon,
+    TCell,
   },
   props: {
     ...props,

@@ -34,14 +34,14 @@
 </template>
 
 <script>
-import tNoticeBar from 'tdesign-uniapp/notice-bar/notice-bar.vue';
-import tLink from 'tdesign-uniapp/link/link.vue';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
+import TNoticeBar from 'tdesign-uniapp/notice-bar/notice-bar.vue';
+import TLink from 'tdesign-uniapp/link/link.vue';
+import TIcon from 'tdesign-uniapp/icon/icon.vue';
 export default {
   components: {
-    tNoticeBar,
-    tLink,
-    tIcon,
+    TNoticeBar,
+    TLink,
+    TIcon,
   },
   data() {
     return {

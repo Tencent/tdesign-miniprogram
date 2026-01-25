@@ -40,14 +40,14 @@
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tLoading from 'tdesign-uniapp/loading/loading.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TLoading from 'tdesign-uniapp/loading/loading.vue';
 import SkylineBehavior from 'tdesign-uniapp/mixins/skyline.js';
 
 export default {
   components: {
-    tButton,
-    tLoading,
+    TButton,
+    TLoading,
   },
   mixins: [SkylineBehavior],
   data() {

@@ -102,7 +102,7 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon.vue';
+import TIcon from '../icon/icon.vue';
 import { uniComponent } from '../common/src/index';
 import { getRect, getAnimationFrame, calcIcon } from '../common/utils';
 import props from './props';
@@ -131,7 +131,7 @@ export default uniComponent({
     `${prefix}-class-suffix-icon`,
   ],
   components: {
-    tIcon,
+    TIcon,
   },
   props: {
     ...props,

@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import tSwipeCell from 'tdesign-uniapp/swipe-cell/swipe-cell.vue';
-import tCell from 'tdesign-uniapp/cell/cell.vue';
+import TSwipeCell from 'tdesign-uniapp/swipe-cell/swipe-cell.vue';
+import TCell from 'tdesign-uniapp/cell/cell.vue';
 export default {
   components: {
-    tSwipeCell,
-    tCell,
+    TSwipeCell,
+    TCell,
   },
   data() {
     return {};

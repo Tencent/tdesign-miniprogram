@@ -264,10 +264,10 @@
   </view>
 </template>
 <script>
-import tGrid from '../grid/grid';
-import tGridItem from '../grid-item/grid-item';
-import tIcon from '../icon/icon';
-import tImage from '../image/image';
+import TGrid from '../grid/grid';
+import TGridItem from '../grid-item/grid-item';
+import TIcon from '../icon/icon';
+import TImage from '../image/image';
 import { uniComponent } from '../common/src/index';
 import props from './props';
 import { prefix } from '../common/config';
@@ -320,10 +320,10 @@ export default uniComponent({
   ],
   externalClasses: [`${prefix}-class`],
   components: {
-    tGrid,
-    tGridItem,
-    tIcon,
-    tImage,
+    TGrid,
+    TGridItem,
+    TIcon,
+    TImage,
   },
   props: {
     ...props,

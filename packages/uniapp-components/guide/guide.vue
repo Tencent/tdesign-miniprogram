@@ -210,9 +210,9 @@
 </template>
 
 <script>
-import tOverlay from '../overlay/overlay';
-import tButton from '../button/button';
-import tPopup from '../popup/popup';
+import TOverlay from '../overlay/overlay';
+import TButton from '../button/button';
+import TPopup from '../popup/popup';
 import { uniComponent } from '../common/src/index';
 import props from './props';
 import { prefix } from '../common/config';
@@ -256,9 +256,9 @@ export default uniComponent({
     useCustomNavbar,
   ],
   components: {
-    tOverlay,
-    tButton,
-    tPopup,
+    TOverlay,
+    TButton,
+    TPopup,
     ContentComp,
   },
   props: {

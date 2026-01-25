@@ -23,12 +23,12 @@
 </template>
 
 <script>
-import tColorPicker from 'tdesign-uniapp/color-picker/color-picker.vue';
+import TColorPicker from 'tdesign-uniapp/color-picker/color-picker.vue';
 import TButton from 'tdesign-uniapp/button/button.vue';
 
 export default {
   components: {
-    tColorPicker,
+    TColorPicker,
     TButton,
   },
   data() {

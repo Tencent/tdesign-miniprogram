@@ -111,8 +111,8 @@
   </view>
 </template>
 <script>
-import tImage from '../image/image';
-import tIcon from '../icon/icon';
+import TImage from '../image/image';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { styles, calcIcon, systemInfo } from '../common/utils';
 import { prefix } from '../common/config';
@@ -138,8 +138,8 @@ export default uniComponent({
   externalClasses: [`${prefix}-class`],
   mixins: [useCustomNavbar],
   components: {
-    tImage,
-    tIcon,
+    TImage,
+    TIcon,
   },
   props: {
     ...props,

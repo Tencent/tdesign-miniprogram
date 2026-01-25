@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import tLoading from 'tdesign-uniapp/loading/loading.vue';
+import TLoading from 'tdesign-uniapp/loading/loading.vue';
 import TSlider from 'tdesign-uniapp/slider/slider.vue';
 import SkylineBehavior from 'tdesign-uniapp/mixins/skyline.js';
 
@@ -32,7 +32,7 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tLoading,
+    TLoading,
     TSlider,
   },
   mixins: [SkylineBehavior],

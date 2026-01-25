@@ -118,9 +118,9 @@
   </view>
 </template>
 <script>
-import tImage from '../image/image';
-import tIcon from '../icon/icon';
-import tBadge from '../badge/badge';
+import TImage from '../image/image';
+import TIcon from '../icon/icon';
+import TBadge from '../badge/badge';
 
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
@@ -156,9 +156,9 @@ export default uniComponent({
   ],
   mixins: [ChildrenMixin(RELATION_MAP.GridItem)],
   components: {
-    tImage,
-    tIcon,
-    tBadge,
+    TImage,
+    TIcon,
+    TBadge,
   },
   props: {
     ...props,

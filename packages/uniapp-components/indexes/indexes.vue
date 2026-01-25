@@ -37,9 +37,9 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tCell from '../cell/cell';
-import tCellGroup from '../cell-group/cell-group';
+import TIcon from '../icon/icon';
+import TCell from '../cell/cell';
+import TCellGroup from '../cell-group/cell-group';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -74,9 +74,9 @@ export default uniComponent({
     ParentMixin(RELATION_MAP.IndexesAnchor),
   ],
   components: {
-    tIcon,
-    tCell,
-    tCellGroup,
+    TIcon,
+    TCell,
+    TCellGroup,
   },
   props: {
     ...props,

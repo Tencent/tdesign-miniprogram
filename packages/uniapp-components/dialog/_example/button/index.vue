@@ -17,13 +17,13 @@
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tDialog from 'tdesign-uniapp/dialog/dialog.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TDialog from 'tdesign-uniapp/dialog/dialog.vue';
 import Dialog from 'tdesign-uniapp/dialog/index';
 export default {
   components: {
-    tButton,
-    tDialog,
+    TButton,
+    TDialog,
   },
   data() {
     return {};

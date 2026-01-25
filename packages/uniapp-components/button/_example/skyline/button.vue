@@ -1,7 +1,7 @@
 <template>
   <view class="skyline">
     <t-demo-navbar
-      class="block"
+      custom-class="block"
       title="Button"
     />
     <scroll-view
@@ -66,7 +66,7 @@
 </template>
 
 <script>
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import baseDemo from '../base/index.vue';
 import size from '../size/index.vue';
 import iconBtn from '../icon-btn/index.vue';
@@ -82,7 +82,7 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tNavbar,
+    TNavbar,
     baseDemo,
     size,
     iconBtn,

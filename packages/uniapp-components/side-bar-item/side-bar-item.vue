@@ -65,8 +65,8 @@
   </view>
 </template>
 <script>
-import tBadge from '../badge/badge';
-import tIcon from '../icon/icon';
+import TBadge from '../badge/badge';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -87,8 +87,8 @@ export default uniComponent({
   ],
   mixins: [ChildrenMixin(RELATION_MAP.SideBarItem)],
   components: {
-    tBadge,
-    tIcon,
+    TBadge,
+    TIcon,
   },
   props: {
     ...props,

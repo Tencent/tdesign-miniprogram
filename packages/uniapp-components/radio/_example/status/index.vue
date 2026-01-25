@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import tRadioGroup from 'tdesign-uniapp/radio-group/radio-group.vue';
-import tRadio from 'tdesign-uniapp/radio/radio.vue';
+import TRadioGroup from 'tdesign-uniapp/radio-group/radio-group.vue';
+import TRadio from 'tdesign-uniapp/radio/radio.vue';
 export default {
   components: {
-    tRadioGroup,
-    tRadio,
+    TRadioGroup,
+    TRadio,
   },
   /**
      * 组件的属性列表

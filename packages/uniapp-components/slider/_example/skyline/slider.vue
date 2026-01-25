@@ -1,7 +1,7 @@
 <template>
   <view class="skyline">
     <t-demo-navbar
-      class="block"
+      custom-class="block"
       title="Slider"
     />
     <scroll-view
@@ -64,7 +64,7 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import baseDemo from '../base/index.vue';
 import labelDemo from '../label/index.vue';
 import step from '../step/index.vue';
@@ -74,7 +74,7 @@ import capsule from '../capsule/index.vue';
 // import verticalDemo from '../vertical/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     baseDemo,
     labelDemo,
     step,

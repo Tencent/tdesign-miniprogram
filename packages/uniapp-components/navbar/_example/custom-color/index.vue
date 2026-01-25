@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 
 
 export default {
@@ -23,7 +23,7 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tNavbar,
+    TNavbar,
   },
   data() {
     return {};

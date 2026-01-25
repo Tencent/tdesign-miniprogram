@@ -46,13 +46,13 @@
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tButton,
+    TButton,
   },
   data() {
     return {};

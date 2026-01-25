@@ -2,7 +2,7 @@
   <view>
     <view class="custom-navbar">
       <t-demo-navbar
-        class="demo-navbar"
+        custom-class="demo-navbar"
         title="TDesign"
       />
     </view>
@@ -70,11 +70,11 @@
 </template>
 
 <script>
-import tSideBar from 'tdesign-uniapp/side-bar/side-bar.vue';
-import tSideBarItem from 'tdesign-uniapp/side-bar-item/side-bar-item.vue';
-import tCellGroup from 'tdesign-uniapp/cell-group/cell-group.vue';
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tImage from 'tdesign-uniapp/image/image.vue';
+import TSideBar from 'tdesign-uniapp/side-bar/side-bar.vue';
+import TSideBarItem from 'tdesign-uniapp/side-bar-item/side-bar-item.vue';
+import TCellGroup from 'tdesign-uniapp/cell-group/cell-group.vue';
+import TCell from 'tdesign-uniapp/cell/cell.vue';
+import TImage from 'tdesign-uniapp/image/image.vue';
 
 const image = 'https://tdesign.gtimg.com/mobile/demos/example2.png';
 const items = new Array(12).fill(
@@ -91,11 +91,11 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tSideBar,
-    tSideBarItem,
-    tCellGroup,
-    tCell,
-    tImage,
+    TSideBar,
+    TSideBarItem,
+    TCellGroup,
+    TCell,
+    TImage,
   },
   data() {
     return {

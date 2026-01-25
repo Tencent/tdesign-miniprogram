@@ -73,15 +73,15 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 import baseDemo from '../base/index.vue';
 import advance from '../advance/index.vue';
 import draggable from '../draggable/index.vue';
 export default {
   components: {
-    tNavbar,
-    tButton,
+    TNavbar,
+    TButton,
     baseDemo,
     advance,
     draggable,

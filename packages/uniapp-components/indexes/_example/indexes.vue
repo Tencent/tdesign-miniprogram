@@ -1,7 +1,7 @@
 <template>
   <view>
     <t-demo-navbar
-      class="demo-navbar"
+      custom-class="demo-navbar"
       title="Indexes"
     />
     <view class="indexes">
@@ -46,10 +46,10 @@
 
 <script>
 
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 export default {
   components: {
-    tButton,
+    TButton,
   },
   data() {
     return {};

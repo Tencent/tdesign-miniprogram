@@ -38,14 +38,14 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import labelDemo from '../base/index.vue';
 import withTitle from '../with-title/index.vue';
 import areaDemo from '../area/index.vue';
 import withoutPopup from '../without-popup/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     labelDemo,
     withTitle,
     areaDemo,

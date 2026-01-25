@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import tSwiper from 'tdesign-uniapp/swiper/swiper.vue';
+import TSwiper from 'tdesign-uniapp/swiper/swiper.vue';
 const imageCdn = 'https://tdesign.gtimg.com/mobile/demos';
 const swiperList = [
   {
@@ -36,7 +36,7 @@ const swiperList = [
 ];
 export default {
   components: {
-    tSwiper,
+    TSwiper,
   },
   data() {
     return {

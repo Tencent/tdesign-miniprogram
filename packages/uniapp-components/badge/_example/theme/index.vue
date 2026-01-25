@@ -85,10 +85,10 @@
 </template>
 
 <script>
-import tBadge from 'tdesign-uniapp/badge/badge.vue';
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TBadge from 'tdesign-uniapp/badge/badge.vue';
+import TCell from 'tdesign-uniapp/cell/cell.vue';
+import TIcon from 'tdesign-uniapp/icon/icon.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 import SkylineBehavior from 'tdesign-uniapp/mixins/skyline.js';
 
 export default {
@@ -96,10 +96,10 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tBadge,
-    tCell,
-    tIcon,
-    tButton,
+    TBadge,
+    TCell,
+    TIcon,
+    TButton,
   },
   mixins: [SkylineBehavior],
   data() {

@@ -45,7 +45,7 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import yearMonthDate from '../year-month-date/index.vue';
 import yearMonth from '../year-month/index.vue';
 import timeDemo from '../time/index.vue';
@@ -54,7 +54,7 @@ import steps from '../steps/index.vue';
 import withoutPopup from '../without-popup/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     yearMonthDate,
     yearMonth,
     timeDemo,

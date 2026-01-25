@@ -66,9 +66,9 @@
 </template>
 
 <script>
-import tRadioGroup from 'tdesign-uniapp/radio-group/radio-group.vue';
-import tRadio from 'tdesign-uniapp/radio/radio.vue';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
+import TRadioGroup from 'tdesign-uniapp/radio-group/radio-group.vue';
+import TRadio from 'tdesign-uniapp/radio/radio.vue';
+import TIcon from 'tdesign-uniapp/icon/icon.vue';
 import { canUseVirtualHost } from 'tdesign-uniapp/common/version';
 import tools from 'tdesign-uniapp/common/utils.wxs';
 
@@ -78,9 +78,9 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tRadioGroup,
-    tRadio,
-    tIcon,
+    TRadioGroup,
+    TRadio,
+    TIcon,
   },
   data() {
     return {

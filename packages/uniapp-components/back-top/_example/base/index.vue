@@ -10,10 +10,10 @@
 </template>
 
 <script>
-import tBackTop from 'tdesign-uniapp/back-top/back-top.vue';
+import TBackTop from 'tdesign-uniapp/back-top/back-top.vue';
 export default {
   components: {
-    tBackTop,
+    TBackTop,
   },
   props: {
     scrollTop: {

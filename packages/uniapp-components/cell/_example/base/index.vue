@@ -55,14 +55,14 @@
 </template>
 
 <script>
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tBadge from 'tdesign-uniapp/badge/badge.vue';
-import tSwitch from 'tdesign-uniapp/switch/switch.vue';
+import TCell from 'tdesign-uniapp/cell/cell.vue';
+import TBadge from 'tdesign-uniapp/badge/badge.vue';
+import TSwitch from 'tdesign-uniapp/switch/switch.vue';
 export default {
   components: {
-    tCell,
-    tBadge,
-    tSwitch,
+    TCell,
+    TBadge,
+    TSwitch,
   },
   data() {
     return {};

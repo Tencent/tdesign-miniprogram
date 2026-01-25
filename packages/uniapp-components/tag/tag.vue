@@ -53,7 +53,7 @@
   </view>
 </template>
 <script>
-import tIcon from '.././icon/icon';
+import TIcon from '.././icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -74,7 +74,7 @@ export default uniComponent({
     `${prefix}-class`,
   ],
   components: {
-    tIcon,
+    TIcon,
   },
   props: {
     ...props,

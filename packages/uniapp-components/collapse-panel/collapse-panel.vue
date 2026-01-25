@@ -73,7 +73,7 @@
   </view>
 </template>
 <script>
-import tCell from '../cell/cell';
+import TCell from '../cell/cell';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -97,7 +97,7 @@ export default uniComponent({
   ],
   mixins: [ChildrenMixin(RELATION_MAP.CollapsePanel)],
   components: {
-    tCell,
+    TCell,
   },
   props: {
     ...props,

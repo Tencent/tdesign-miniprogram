@@ -116,12 +116,12 @@
   </view>
 </template>
 <script>
-import tButton from '../button/button';
-import tRadio from '../radio/radio';
-import tRadioGroup from '../radio-group/radio-group';
-import tCheckbox from '../checkbox/checkbox';
-import tCheckboxGroup from '../checkbox-group/checkbox-group';
-import tPopup from '../popup/popup';
+import TButton from '../button/button';
+import TRadio from '../radio/radio';
+import TRadioGroup from '../radio-group/radio-group';
+import TCheckbox from '../checkbox/checkbox';
+import TCheckboxGroup from '../checkbox-group/checkbox-group';
+import TPopup from '../popup/popup';
 
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
@@ -156,12 +156,12 @@ export default uniComponent({
   ],
   mixins: [ChildrenMixin(RELATION_MAP.DropdownItem)],
   components: {
-    tButton,
-    tRadio,
-    tRadioGroup,
-    tCheckbox,
-    tCheckboxGroup,
-    tPopup,
+    TButton,
+    TRadio,
+    TRadioGroup,
+    TCheckbox,
+    TCheckboxGroup,
+    TPopup,
   },
   props: {
     ...props,

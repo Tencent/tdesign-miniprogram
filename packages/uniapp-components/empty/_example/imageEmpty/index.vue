@@ -10,14 +10,14 @@
 </template>
 
 <script>
-import tEmpty from 'tdesign-uniapp/empty/empty.vue';
+import TEmpty from 'tdesign-uniapp/empty/empty.vue';
 
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tEmpty,
+    TEmpty,
   },
   data() {
     return {

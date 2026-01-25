@@ -1,7 +1,7 @@
 <template>
   <view class="tdesign-mobile-demo">
     <t-demo-navbar
-      class="demo-navbar"
+      custom-class="demo-navbar"
       title="Form"
     />
     <t-demo-header

@@ -1,7 +1,7 @@
 <template>
   <view class="skyline">
     <t-demo-navbar
-      class="demo-navbar"
+      custom-class="demo-navbar"
       title="Result"
     />
     <scroll-view
@@ -48,15 +48,15 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 import theme from '../theme/index.vue';
 import description from '../description/index.vue';
 import custom from '../custom/index.vue';
 export default {
   components: {
-    tNavbar,
-    tButton,
+    TNavbar,
+    TButton,
     theme,
     description,
     custom,

@@ -19,15 +19,15 @@
 </template>
 
 <script>
-import tToast from 'tdesign-uniapp/toast/toast.vue';
+import TToast from 'tdesign-uniapp/toast/toast.vue';
 import Toast from 'tdesign-uniapp/toast/index';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 
 
 export default {
   components: {
-    tToast,
-    tButton,
+    TToast,
+    TButton,
   },
   data() {
     return {};

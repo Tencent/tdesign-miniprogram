@@ -1,7 +1,7 @@
 <template>
   <view class="skyline">
     <t-demo-navbar
-      class="block"
+      custom-class="block"
       title="Input"
     />
     <scroll-view
@@ -70,7 +70,7 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import baseDemo from '../base/index.vue';
 import suffix from '../suffix/index.vue';
 import prefix from '../prefix/index.vue';
@@ -85,7 +85,7 @@ import labelDemo from '../label/index.vue';
 import banner from '../banner/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     baseDemo,
     suffix,
     prefix,

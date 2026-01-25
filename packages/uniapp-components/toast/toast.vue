@@ -56,9 +56,9 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tLoading from '../loading/loading';
-import tOverlay from '../overlay/overlay';
+import TIcon from '../icon/icon';
+import TLoading from '../loading/loading';
+import TOverlay from '../overlay/overlay';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -90,9 +90,9 @@ export default uniComponent({
   ],
   mixins: [transitionMixins, useCustomNavbar],
   components: {
-    tIcon,
-    tLoading,
-    tOverlay,
+    TIcon,
+    TLoading,
+    TOverlay,
   },
   props: {
     ...props,

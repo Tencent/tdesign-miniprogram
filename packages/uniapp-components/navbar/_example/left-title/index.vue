@@ -49,10 +49,10 @@
 </template>
 
 <script>
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
   },
   data() {
     return {};

@@ -19,12 +19,12 @@
 </template>
 
 <script>
-import tPicker from 'tdesign-uniapp/picker/picker.vue';
-import tPickerItem from 'tdesign-uniapp/picker-item/picker-item.vue';
+import TPicker from 'tdesign-uniapp/picker/picker.vue';
+import TPickerItem from 'tdesign-uniapp/picker-item/picker-item.vue';
 export default {
   components: {
-    tPicker,
-    tPickerItem,
+    TPicker,
+    TPickerItem,
   },
   data() {
     return {

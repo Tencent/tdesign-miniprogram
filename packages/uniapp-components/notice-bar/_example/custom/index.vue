@@ -12,13 +12,13 @@
 </template>
 
 <script>
-import tNoticeBar from 'tdesign-uniapp/notice-bar/notice-bar.vue';
+import TNoticeBar from 'tdesign-uniapp/notice-bar/notice-bar.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tNoticeBar,
+    TNoticeBar,
   },
   data() {
     return {};

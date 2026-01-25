@@ -41,10 +41,10 @@
 </template>
 
 <script>
-import tIndexes from 'tdesign-uniapp/indexes/indexes.vue';
-import tIndexesAnchor from 'tdesign-uniapp/indexes-anchor/indexes-anchor.vue';
-import tCellGroup from 'tdesign-uniapp/cell-group/cell-group.vue';
-import tCell from 'tdesign-uniapp/cell/cell.vue';
+import TIndexes from 'tdesign-uniapp/indexes/indexes.vue';
+import TIndexesAnchor from 'tdesign-uniapp/indexes-anchor/indexes-anchor.vue';
+import TCellGroup from 'tdesign-uniapp/cell-group/cell-group.vue';
+import TCell from 'tdesign-uniapp/cell/cell.vue';
 import { handlePageScroll } from 'tdesign-uniapp/mixins/page-scroll';
 
 const children = new Array(5).fill('列表内容');
@@ -87,10 +87,10 @@ export default {
     handlePageScroll(e);
   },
   components: {
-    tIndexes,
-    tIndexesAnchor,
-    tCellGroup,
-    tCell,
+    TIndexes,
+    TIndexesAnchor,
+    TCellGroup,
+    TCell,
   },
   data() {
     return {

@@ -1,7 +1,7 @@
 <template>
   <view class="skyline">
     <t-demo-navbar
-      class="block"
+      custom-class="block"
       title="Stepper"
     />
     <scroll-view
@@ -47,7 +47,7 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import baseDemo from '../base/index.vue';
 import minMax from '../min-max/index.vue';
 import status from '../status/index.vue';
@@ -55,7 +55,7 @@ import theme from '../theme/index.vue';
 import size from '../size/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     baseDemo,
     minMax,
     status,

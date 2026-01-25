@@ -48,7 +48,7 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import baseDemo from '../base/index.vue';
 import search from '../search/index.vue';
 import backHome from '../back-home/index.vue';
@@ -57,7 +57,7 @@ import leftTitle from '../left-title/index.vue';
 import customColor from '../custom-color/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     baseDemo,
     search,
     backHome,

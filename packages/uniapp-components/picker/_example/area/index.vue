@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tPicker from 'tdesign-uniapp/picker/picker.vue';
-import tPickerItem from 'tdesign-uniapp/picker-item/picker-item.vue';
+import TCell from 'tdesign-uniapp/cell/cell.vue';
+import TPicker from 'tdesign-uniapp/picker/picker.vue';
+import TPickerItem from 'tdesign-uniapp/picker-item/picker-item.vue';
 import { areaList } from './helper';
 
 const getOptions = (obj, filter) => {
@@ -45,9 +45,9 @@ const getOptions = (obj, filter) => {
 const match = (v1, v2, size) => v1.toString().slice(0, size) === v2.toString().slice(0, size);
 export default {
   components: {
-    tCell,
-    tPicker,
-    tPickerItem,
+    TCell,
+    TPicker,
+    TPickerItem,
   },
   data() {
     return {

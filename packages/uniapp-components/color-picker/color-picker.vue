@@ -64,7 +64,7 @@
   </view>
 </template>
 <script>
-import tPopup from '../popup/popup';
+import TPopup from '../popup/popup';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -137,7 +137,7 @@ export default uniComponent({
     styleIsolation: 'shared',
   },
   components: {
-    tPopup,
+    TPopup,
     TemplateVue,
   },
   props: {

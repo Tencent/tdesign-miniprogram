@@ -28,15 +28,15 @@
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tToast from 'tdesign-uniapp/toast/toast.vue';
-import tImageViewer from 'tdesign-uniapp/image-viewer/image-viewer.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TToast from 'tdesign-uniapp/toast/toast.vue';
+import TImageViewer from 'tdesign-uniapp/image-viewer/image-viewer.vue';
 import Toast from 'tdesign-uniapp/toast/index';
 export default {
   components: {
-    tButton,
-    tToast,
-    tImageViewer,
+    TButton,
+    TToast,
+    TImageViewer,
   },
   data() {
     return {

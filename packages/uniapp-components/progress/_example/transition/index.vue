@@ -26,12 +26,12 @@
 </template>
 
 <script>
-import tProgress from 'tdesign-uniapp/progress/progress.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TProgress from 'tdesign-uniapp/progress/progress.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 export default {
   components: {
-    tProgress,
-    tButton,
+    TProgress,
+    TButton,
   },
   data() {
     return {

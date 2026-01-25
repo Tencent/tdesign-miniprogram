@@ -1,7 +1,7 @@
 <template>
   <view class="skyline">
     <t-demo-navbar
-      class="block"
+      custom-class="block"
       title="BackTop"
     />
     <scroll-view
@@ -112,16 +112,16 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
 import baseDemo from '../base/index.vue';
 import halfRound from '../half-round/index.vue';
 export default {
   components: {
-    tNavbar,
-    tButton,
-    tSkeleton,
+    TNavbar,
+    TButton,
+    TSkeleton,
     baseDemo,
     halfRound,
   },

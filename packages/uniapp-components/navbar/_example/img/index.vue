@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import tImage from 'tdesign-uniapp/image/image.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TImage from 'tdesign-uniapp/image/image.vue';
 import { themeMixin } from 'tdesign-uniapp/mixins/theme-change';
 
 export default {
@@ -27,8 +27,8 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tNavbar,
-    tImage,
+    TNavbar,
+    TImage,
   },
   mixins: [themeMixin],
   data() {

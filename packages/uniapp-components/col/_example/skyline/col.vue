@@ -32,12 +32,12 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import baseDemo from '../base/index.vue';
 import offset from '../offset/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     baseDemo,
     offset,
   },

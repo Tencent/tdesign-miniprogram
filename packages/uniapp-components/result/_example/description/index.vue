@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import tResult from 'tdesign-uniapp/result/result.vue';
+import TResult from 'tdesign-uniapp/result/result.vue';
 export default {
   components: {
-    tResult,
+    TResult,
   },
   data() {
     return {

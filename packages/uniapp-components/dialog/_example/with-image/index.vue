@@ -178,17 +178,17 @@
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tImage from 'tdesign-uniapp/image/image.vue';
-import tDialog from 'tdesign-uniapp/dialog/dialog.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TImage from 'tdesign-uniapp/image/image.vue';
+import TDialog from 'tdesign-uniapp/dialog/dialog.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tButton,
-    tImage,
-    tDialog,
+    TButton,
+    TImage,
+    TDialog,
   },
   data() {
     return {

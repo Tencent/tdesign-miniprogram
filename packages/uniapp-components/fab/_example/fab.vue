@@ -1,7 +1,7 @@
 <template>
   <view>
     <t-demo-navbar
-      class="demo-navbar"
+      custom-class="demo-navbar"
       title="Fab"
     />
     <t-demo-header
@@ -103,8 +103,8 @@
 
 <script>
 
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
 import BaseDemo from './base/index.vue';
 import advance from './advance/index.vue';
 import draggable from './draggable/index.vue';
@@ -113,8 +113,8 @@ import { handlePageScroll } from 'tdesign-uniapp/mixins/page-scroll';
 
 export default {
   components: {
-    tButton,
-    tSkeleton,
+    TButton,
+    TSkeleton,
     BaseDemo,
     advance,
     draggable,

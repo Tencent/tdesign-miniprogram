@@ -1,7 +1,7 @@
 <template>
   <view class="skyline">
     <t-demo-navbar
-      class="demo-navbar"
+      custom-class="demo-navbar"
       title="Skeleton"
     />
     <scroll-view
@@ -57,7 +57,7 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import theme from '../theme/index.vue';
 import grid from '../grid/index.vue';
 import cellGroup from '../cell-group/index.vue';
@@ -65,7 +65,7 @@ import imageGroup from '../image-group/index.vue';
 import animation from '../animation/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     theme,
     grid,
     cellGroup,

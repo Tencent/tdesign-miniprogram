@@ -14,15 +14,15 @@
 </template>
 
 <script>
-import tSticky from 'tdesign-uniapp/sticky/sticky.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TSticky from 'tdesign-uniapp/sticky/sticky.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tSticky,
-    tButton,
+    TSticky,
+    TButton,
   },
   props: {
     navbarHeight: {

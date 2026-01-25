@@ -1,7 +1,7 @@
 <template>
   <view class="skyline">
     <t-demo-navbar
-      class="demo-navbar"
+      custom-class="demo-navbar"
       title="Icon"
     />
     <scroll-view
@@ -32,13 +32,13 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import baseDemo from '../base/index.vue';
 import custom from '../custom/index.vue';
 import iconImage from '../iconImage/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     baseDemo,
     custom,
     iconImage,

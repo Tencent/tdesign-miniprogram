@@ -28,15 +28,15 @@
   </view>
 </template>
 <script>
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
-import tCalendar from 'tdesign-uniapp/calendar/calendar.vue';
+import TIcon from 'tdesign-uniapp/icon/icon.vue';
+import TCalendar from 'tdesign-uniapp/calendar/calendar.vue';
 import { formatTimestamp } from '../computed';
 
 
 export default {
   components: {
-    tIcon,
-    tCalendar,
+    TIcon,
+    TCalendar,
   },
   data() {
     return {

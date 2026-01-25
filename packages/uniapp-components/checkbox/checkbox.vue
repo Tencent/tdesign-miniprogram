@@ -85,7 +85,7 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { coalesce } from '../common/utils';
 import { prefix, ISOLATED_RELATION_KEY } from '../common/config';
@@ -116,7 +116,7 @@ export default uniComponent({
   ],
   mixins: [ChildrenMixin(RELATION_MAP.Checkbox)],
   components: {
-    tIcon,
+    TIcon,
   },
   props: {
     ...props,

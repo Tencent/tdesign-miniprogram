@@ -1,7 +1,7 @@
 <template>
   <view class="skyline">
     <t-demo-navbar
-      class="block"
+      custom-class="block"
       title="TabBar"
     />
     <scroll-view
@@ -61,7 +61,7 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 import textOnly from '../text-only/index.vue';
 import iconOnly from '../icon-only/index.vue';
 import baseDemo from '../base/index.vue';
@@ -71,7 +71,7 @@ import round from '../round/index.vue';
 import custom from '../custom/index.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
     textOnly,
     iconOnly,
     baseDemo,
@@ -87,7 +87,7 @@ export default {
     };
   },
   methods: {
-    onChange(event: any) {
+    onChange(event) {
       console.log(event);
     },
 
