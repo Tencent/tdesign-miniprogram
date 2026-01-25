@@ -96,12 +96,12 @@
     }
   }
   &__result-item {
-    &--highLight {
+    :deep(&--highLight) {
       color: @search-result-high-light-color;
     }
   }
 
-  &__result-list &__result-item {
+  &__result-list :deep(&__result-item) {
     padding-left: 0;
 
     &::after {

@@ -89,7 +89,7 @@
     &--column {
       flex-flow: column-reverse;
 
-      .@{dialog}__button {
+      :deep(.@{dialog}__button) {
         width: 100%;
       }
     }
@@ -99,18 +99,18 @@
     }
   }
 
-  &__button {
+  :deep(&__button) {
     position: relative;
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 
-    &--horizontal + &--horizontal {
+    &--horizontal:not(:first-child) {
       margin-left: @spacer-1;
     }
 
-    &--vertical + &--vertical {
+    &--vertical:not(:first-child)  {
       margin-bottom: @spacer-1;
     }
 

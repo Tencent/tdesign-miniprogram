@@ -28,11 +28,11 @@
     padding: 0 @spacer-2;
   }
 
-  &__icon {
+  :deep(&__icon) {
     font-size: @font-size-xl;
   }
 
-  &__icon + &__text:not(:empty) {
+  :deep(&__icon) + &__text:not(:empty) {
     margin-left: @spacer;
     font: @font-body-medium;
   }

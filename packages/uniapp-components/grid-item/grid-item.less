@@ -82,7 +82,7 @@
     }
   }
 
-  &__image {
+  :deep(&__image) {
     &:not(:empty) {
       width: @grid-item-image-width;
       height: @grid-item-image-width;
@@ -103,7 +103,7 @@
       }
     }
 
-    &--icon {
+    :deep(&--icon) {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -148,7 +148,7 @@
     }
   }
 
-  &__icon {
+  :deep(&__icon) {
     font-size: @grid-item-icon-size;
   }
 }

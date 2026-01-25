@@ -11,7 +11,7 @@
 
 .@{prefix}-upload {
   position: relative;
-  &__grid {
+  :deep(&__grid) {
     &-content {
       padding: 0;
     }
@@ -42,7 +42,7 @@
     }
   }
 
-  &__thumbnail {
+  :deep(&__thumbnail) {
     width: 100%;
     height: 100%;
     max-height: 100%;
@@ -103,7 +103,7 @@
       margin-top: 8rpx;
     }
 
-    &-loading {
+    :deep(&-loading) {
       animation: spin infinite linear 0.6s;
     }
   }

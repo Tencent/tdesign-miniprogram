@@ -60,11 +60,11 @@
     padding: 32rpx;
     .border(top, @component-border);
 
-    &-btn {
+    :deep(&-btn) {
       flex: 1;
     }
 
-    &-btn + &-btn {
+    :deep(&-btn + &-btn) {
       margin-left: 32rpx;
     }
   }

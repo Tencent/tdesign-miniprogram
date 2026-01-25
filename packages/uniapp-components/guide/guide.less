@@ -98,7 +98,7 @@
     text-align: @guide-footer-text-align;
     margin-top: @guide-footer-margin-top;
 
-    .@{prefix}-guide__button + .@{prefix}-guide__button {
+    :deep(.@{prefix}-guide__button + .@{prefix}-guide__button) {
       margin-left: @guide-footer-button-space;
     }
 
@@ -106,7 +106,7 @@
       display: flex;
       padding: @guide-dialog-footer-button-padding;
 
-      .@{prefix}-guide__button:last-child {
+      :deep(.@{prefix}-guide__button:last-child) {
         flex-grow: 1;
       }
     }

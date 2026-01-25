@@ -13,7 +13,7 @@
   display: flex;
   background-color: @tree-bg-color;
 
-  &__column {
+  :deep(&__column) {
     width: @tree-colum-width;
     color: @tree-colum-text-color;
 
@@ -53,7 +53,7 @@
     }
   }
 
-  &-column {
+  :deep(&-column) {
     width: 100%;
     height: auto;
   }

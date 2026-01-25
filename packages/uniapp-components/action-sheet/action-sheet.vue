@@ -1,7 +1,7 @@
 <template>
   <view
     :id="classPrefix"
-    :style="tools._style([customStyle])"
+    :style="tools._style([rootCustomStyle])"
     :class="tools.cls(classPrefix, [dataAlign, dataTheme, ['no-description', !description]]) + ' ' + tClass"
   >
     <t-popup
@@ -63,7 +63,7 @@
                     align="center"
                     :t-class="classPrefix + '__grid ' + classPrefix + '__grid--swiper'"
                     :column="dataCount / 2"
-                    :custom-style="heightStyle"
+                    :custom-style="gridStyle"
                   >
                     <t-grid-item
                       v-for="(item, index1) in item"
@@ -136,7 +136,6 @@
               </view>
             </view>
           </block>
-          <!-- </block> -->
         </view>
       </view>
       <slot />
@@ -214,15 +213,24 @@ export default uniComponent({
       defaultPopUpzIndex: 11500,
       tools,
 
-      heightStyle: 'height: 228px;',
+      heightStyle: 'height: 456rpx;',
     };
   },
   computed: {
+    rootCustomStyle() {
+      return tools._style([
+        this.customStyle,
+        this.dataTheme === 'grid' ? 'padding-bottom: 16rpx' : '',
+      ]);
+    },
     iconCustomStyle() {
       return 'margin-right: 8px;';
     },
     suffixIconCustomStyle() {
       return 'margin-right: 8px;margin-left: auto;';
+    },
+    gridStyle() {
+      return `${this.heightStyle}padding-bottom: 48rpx;`;
     },
   },
   watch: {
@@ -339,14 +347,4 @@ export default uniComponent({
 
 <style scoped>
 @import './action-sheet.css';
-</style>
-<style scoped>
-:deep(.t-action-sheet__grid) {
-  /* support mp-alipay */
-  padding-bottom: 8px;
-}
-:deep(.t-action-sheet__grid)--swiper {
-  /* support mp-alipay */
-  padding-bottom: 24px;
-}
 </style>
