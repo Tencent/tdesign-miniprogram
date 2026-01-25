@@ -1,11 +1,8 @@
 <template>
   <view>
-    <t-navbar
+    <t-demo-navbar
       class="demo-navbar"
       title="Attachments"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
     <view class="demo">
       <t-demo-header
