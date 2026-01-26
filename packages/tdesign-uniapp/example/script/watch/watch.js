@@ -1,7 +1,7 @@
 const watch = require('gulp-watch');
 const path = require('path');
 const { config } = require('./config');
-const { copy } = require('./core');
+const { copyComponents } = require('./helper');
 const net = require('net');
 const port = 12345; // 选择一个空闲端口
 
@@ -56,10 +56,9 @@ async function main() {
     const filePath = history[0];
     const relativePath = path.relative(path.resolve(base, targetItem.prefix), filePath);
 
-    const { relativeTargetByCwd, relativeSourceByCwd } = await copy({
+    const { relativeTargetByCwd, relativeSourceByCwd } = await copyComponents({
       relativePath,
       filePath,
-      config,
     });
     console.log(`[Wrote] done! \nFrom ${relativeSourceByCwd} to ${relativeTargetByCwd}`);
   });

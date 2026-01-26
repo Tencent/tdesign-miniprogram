@@ -3,7 +3,7 @@ const path = require('path');
 const less = require('less');
 const postcss = require('postcss');
 const rpxTransform = require('postcss-rpx-transform');
-const PACKAGES_ROOT = path.resolve(__dirname, '../../../../');
+const { PACKAGES_ROOT } = require('./config');
 
 const CONFIG = {
   whiteList: [
@@ -25,7 +25,7 @@ const options = {
 };
 
 // 处理流程
-async function processLess(inputFile, rawOutputFile, rawOutputFileInApp) {
+async function processLess(inputFile, rawOutputFile) {
   if (!inputFile.endsWith('.less')) return;
   if (CONFIG.whiteList.find(item => inputFile.startsWith(item))) {
     return;
@@ -67,13 +67,6 @@ async function processLess(inputFile, rawOutputFile, rawOutputFileInApp) {
     const outputFile = getOutputFile(rawOutputFile);
     fs.writeFileSync(outputFile, postcssResult.css);
     console.log(`✅ 转换完成: ${outputFile}`);
-
-    if (rawOutputFileInApp) {
-      const outputFile = getOutputFile(rawOutputFileInApp);
-
-      fs.writeFileSync(outputFile, postcssResult.css);
-      console.log(`✅ 转换完成: ${outputFile}`);
-    }
     return true;
   } catch (err) {
     console.error('❌ 处理失败:', err);
