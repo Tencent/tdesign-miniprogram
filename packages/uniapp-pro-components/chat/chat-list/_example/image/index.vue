@@ -93,7 +93,7 @@ import TAttachments from 'tdesign-uniapp-chat/attachments/attachments.vue';
 import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
 import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
 import TToast from 'tdesign-uniapp/toast/toast.vue';
-import Toast from 'tdesign-uniapp/toast';
+import Toast from 'tdesign-uniapp/toast/index';
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;

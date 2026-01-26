@@ -14,7 +14,7 @@
 <script>
 import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
 import TToast from 'tdesign-uniapp/toast/toast.vue';
-import Toast from 'tdesign-uniapp/toast';
+import Toast from 'tdesign-uniapp/toast/index';
 
 export default {
   components: {
