@@ -132,10 +132,10 @@ export default {
 </script>
 <style scoped>
 /* #ifdef H5 */
-.wrap {
+/* .wrap {
   height: 100%;
   overflow: auto;
-}
+} */
 /* #endif */
 
 

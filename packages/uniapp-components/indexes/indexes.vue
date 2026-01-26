@@ -252,20 +252,14 @@ export default uniComponent({
 
       const target = this.groupTop.find(item => item.anchor === current);
 
-      // 寻求与 小程序 一致逻辑
-      // this.activeAnchor = current;
       if (target) {
         const scrollTop = target.top - stickyOffset;
 
-        // if (scrollTop === 0 && source === 'init') {
-        // 与当前小程序逻辑不同
         this.setAnchorOnScroll(scrollTop);
-        // } else {
         uni.pageScrollTo({
           scrollTop,
           duration: 0,
         });
-        // }
 
         if (['click', 'touch'].includes(source)) {
           this.toggleTips(true);
