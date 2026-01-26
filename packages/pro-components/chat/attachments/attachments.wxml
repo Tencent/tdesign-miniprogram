@@ -6,7 +6,7 @@
   <view class="file-image {{classPrefix}}__file {{removable ? classPrefix + '__file--removable' : ''}}">
     <block wx:if="{{item.status==='pending' || item.status==='fail' || item.status==='error'}}">
       <view class="{{item.status}} {{classPrefix}}__file--{{item.status}}">
-        <t-loading theme="circular" size="48rpx" />
+        <t-loading theme="{{isSkyline ? 'spinner' : 'circular'}}" size="48rpx" />
       </view>
     </block>
     <block wx:else>
@@ -31,17 +31,17 @@
     <view class="image">
       <block wx:if="{{item.status==='pending'}}">
         <view class="loading {{classPrefix}}__file--pending">
-          <t-loading theme="circular" size="48rpx" />
+          <t-loading theme="{{isSkyline ? 'spinner' : 'circular'}}" size="48rpx" />
         </view>
       </block>
       <block wx:elif="{{item.status==='fail'}}">
         <view class="fail {{classPrefix}}__file--fail">
-          <t-loading theme="circular" size="48rpx" />
+          <t-loading theme="{{isSkyline ? 'spinner' : 'circular'}}" size="48rpx" />
         </view>
       </block>
       <block wx:elif="{{item.status==='error'}}">
         <view class="error {{classPrefix}}__file--error">
-          <t-loading theme="circular" size="48rpx" />
+          <t-loading theme="{{isSkyline ? 'spinner' : 'circular'}}" size="48rpx" />
         </view>
       </block>
       <block wx:else>
