@@ -1,35 +1,16 @@
 <template>
-  <view
-    :class="chatItemClass"
-    :style="_._style([customStyle])"
-    @longpress="handleLongPress"
-  >
-    <view
-      v-if="avatar"
-      :class="classPrefix + '__avatar'"
-    >
+  <view :class="chatItemClass" :style="_._style([customStyle])" @longpress="handleLongPress">
+    <view v-if="avatar" :class="classPrefix + '__avatar'">
       <block v-if="avatar">
-        <image
-          :src="avatar"
-          :class="classPrefix + '__avatar-image'"
-        />
+        <image :src="avatar" :class="classPrefix + '__avatar-image'" />
       </block>
     </view>
     <view :class="contentClasses">
-      <view
-        v-if="name || datetime"
-        :class="classPrefix + '__base'"
-      >
-        <text
-          v-if="name"
-          :class="classPrefix + '__name'"
-        >
+      <view v-if="name || datetime" :class="classPrefix + '__base'">
+        <text v-if="name" :class="classPrefix + '__name'">
           {{ name }}
         </text>
-        <text
-          v-if="datetime"
-          :class="classPrefix + '__time'"
-        >
+        <text v-if="datetime" :class="classPrefix + '__time'">
           {{ datetime }}
         </text>
       </view>
@@ -42,10 +23,7 @@
         <view :class="classPrefix + '__detail'">
           <!-- 属性传值优先级高于content插槽 -->
           <block v-if="content && content.length > 0">
-            <block
-              v-for="(item, index) in content"
-              :key="index"
-            >
+            <block v-for="(item, index) in content" :key="index">
               <attachments
                 v-if="item.type === 'attachment' && role === 'user'"
                 :items="item.data"
@@ -73,10 +51,7 @@
           </block>
         </view>
       </block>
-      <view
-        v-if="role === 'assistant'"
-        :class="classPrefix + '__actionbar'"
-      >
+      <view v-if="role === 'assistant'" :class="classPrefix + '__actionbar'">
         <slot name="actionbar" />
       </view>
     </view>
@@ -92,7 +67,6 @@ import props from './props';
 import { prefix } from 'tdesign-uniapp/common/config';
 import _ from 'tdesign-uniapp/common/utils.wxs';
 import { uniComponent } from 'tdesign-uniapp/common/src/index';
-
 
 const name = `${prefix}-chat-message`;
 
@@ -149,9 +123,13 @@ export default uniComponent({
 
   methods: {
     handleLongPress(e) {
-      this.$emit('longpress', {
+      this.$emit('message-longpress', {
         e,
         id: this.chatId,
+        longPressPosition: {
+          x: e.detail.x,
+          y: e.detail.y,
+        },
       });
     },
 

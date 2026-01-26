@@ -22,8 +22,7 @@ variant | String | base | options: base/outline/text | N
 
 name | params | description
 -- | -- | --
-longpress | `(context: { e: MouseEvent, id: string })` | \-
-
+message-longpress | `(detail: { id: string, longPressPosition: { x: number, y: number } })` | longpress-event
 ### ChatMessage Slots
 
 name | \-
