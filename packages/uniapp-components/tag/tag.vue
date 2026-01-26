@@ -58,7 +58,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { classNames, calcIcon } from '../common/utils';
-import { isNumber } from '../common/validator';
+import { isNumeric } from '../common/validator';
 import tools from '../common/utils.wxs';
 
 
@@ -138,7 +138,7 @@ export default uniComponent({
       if (!maxWidth) {
         return '';
       }
-      const width = isNumber(maxWidth) ? `${maxWidth}px` : maxWidth;
+      const width = isNumeric(maxWidth) ? `${maxWidth}px` : maxWidth;
       this.tagStyle = `max-width:${width};`;
     },
 
