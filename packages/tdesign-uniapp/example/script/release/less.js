@@ -3,7 +3,7 @@ const path = require('path');
 const less = require('less');
 const postcss = require('postcss');
 const rpxTransform = require('postcss-rpx-transform');
-const { PACKAGES_ROOT } = require('./config');
+const { PACKAGES_ROOT, PROJECT_ROOT } = require('./config');
 
 const CONFIG = {
   whiteList: [
@@ -66,7 +66,7 @@ async function processLess(inputFile, rawOutputFile) {
 
     const outputFile = getOutputFile(rawOutputFile);
     fs.writeFileSync(outputFile, postcssResult.css);
-    console.log(`✅ 转换完成: ${outputFile}`);
+    console.log(`✅ 转换完成: ${path.relative(PROJECT_ROOT, outputFile)}`);
     return true;
   } catch (err) {
     console.error('❌ 处理失败:', err);
