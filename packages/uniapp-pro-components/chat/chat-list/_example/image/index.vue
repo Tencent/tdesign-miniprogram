@@ -1,14 +1,8 @@
 <template>
   <view>
-    <view
-      class="chat-box image-chat"
-      :style="'height: ' + contentHeight + ';'"
-    >
+    <view class="chat-box image-chat" :style="'height: ' + contentHeight + ';'">
       <TChatList>
-        <block
-          v-for="(item, chatIndex) in chatList"
-          :key="item.key"
-        >
+        <block v-for="(item, chatIndex) in chatList" :key="item.key">
           <TChatMessage
             :avatar="item.avatar || ''"
             :name="item.name || ''"
@@ -17,50 +11,34 @@
             :placement="item.message.role === 'user' ? 'right' : 'left'"
           >
             <template #content>
-              <view
-                v-if="item.message.role === 'user'"
-              >
-                <block
-                  v-for="(contentItem, contentIndex) in item.message.content"
-                  :key="contentIndex"
-                >
+              <view v-if="item.message.role === 'user'">
+                <block v-for="(contentItem, contentIndex) in item.message.content" :key="contentIndex">
                   <TChatContent
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
-                    :role="item.message.role"
                   />
                 </block>
               </view>
-              <view
-                v-else
-                style="width: 100%"
-              >
-                <block
-                  v-for="(contentItem, contentIndex) in item.message.content"
-                  :key="contentIndex"
-                >
+              <view v-else style="width: 100%">
+                <block v-for="(contentItem, contentIndex) in item.message.content" :key="contentIndex">
                   <TChatContent
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
-                    :role="item.message.role"
                   />
 
-                  <view
-                    v-else
-                    class="attachment-slide"
-                  >
-                    <TAttachments
-                      :items="contentItem.data"
-                      :in-chat="true"
-                      :removable="false"
-                    />
+                  <view v-else class="attachment-slide">
+                    <TAttachments :items="contentItem.data" :in-chat="true" :removable="false" />
                   </view>
                 </block>
               </view>
             </template>
             <template #actionbar>
               <TChatActionbar
-                v-if="chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'"
+                v-if="
+                  chatIndex !== chatList.length - 1 &&
+                  item.message.status === 'complete' &&
+                  item.message.role === 'assistant'
+                "
                 placement="end"
                 @actions="handleAction"
               />
@@ -102,7 +80,7 @@ const getUniqueKey = () => {
   return `key-${uniqueId}`;
 };
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
   const arr = str.split('');
@@ -411,50 +389,52 @@ export default {
 };
 </script>
 <style>
-
 .chat-box {
-    padding-top: 32rpx;
-    box-sizing: border-box;
+  padding-top: 32rpx;
+  box-sizing: border-box;
 }
 
 .image-chat .t-chat__list {
-    padding: 0 0 0 0;
-    box-sizing: border-box;
+  padding: 0 0 0 0;
+  box-sizing: border-box;
 }
 
 .t-chat-message {
-    padding: 0 32rpx;
-}
-
-.image-chat .t-chat__inner.assistant .t-chat__avatar {
-    padding-left: 32rpx;
+  padding: 0 32rpx;
 }
 
 .image-chat .assistant,
 .image-chat .assistant .t-chat__detail {
-    width: 100%;
+  width: 100%;
+}
+
+.image-chat .assistant .t-chat-content {
+  padding-right: 64rpx !important;
 }
 
 .attachment-slide {
-    height: 274rpx;
-    width: 100%;
+  height: calc(128px + 24rpx);
+  width: 100%;
 }
 
 .attachment-slide .t-attachments {
-    padding-right: 32rpx;
-    padding-top: 24rpx;
-    box-sizing: border-box;
-    position: fixed;
-    z-index: 2;
-    left: 0;
-    right: 0;
+  padding-top: 24rpx;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  right: 0;
 }
 
 :deep(.attachment-slide .t-attachments .t-attachments__files:first-child) {
-    padding-left: 120rpx;
+  padding-left: 120rpx;
 }
 
 :deep(.attachment-slide .t-attachments .t-attachments__files:last-child) {
-    padding-right: 32rpx;
+  padding-right: 96rpx;
+}
+
+.image-chat .t-chat-message__actionbar {
+  --chat-actionbar-padding: 16rpx 0 0 0 !important;
 }
 </style>
