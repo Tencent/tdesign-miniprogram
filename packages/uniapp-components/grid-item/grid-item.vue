@@ -285,14 +285,8 @@ export default uniComponent({
 @import './grid-item.css';
 </style>
 <style scoped>
-:deep(.t-grid-item__image--icon) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--td-bg-color-secondarycontainer, var(--td-gray-color-1, #f3f3f3));
-  border-radius: var(--td-radius-default, 6px);
-}
-:deep(.t-grid-item__icon) {
-  font-size: 24px;
+.t-grid-item__content--left {
+  width: 100%;
+  box-sizing: border-box;
 }
 </style>
