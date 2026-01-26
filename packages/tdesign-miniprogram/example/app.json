@@ -98,79 +98,127 @@
   "subpackages": [
     {
       "root": "pages/chat-list/",
-      "pages": ["chat-list"]
+      "pages": [
+        "chat-list"
+      ]
     },
     {
       "root": "pages/chat-content/",
-      "pages": ["chat-content"]
+      "pages": [
+        "chat-content"
+      ]
     },
     {
       "root": "pages/chat-actionbar/",
-      "pages": ["chat-actionbar"]
+      "pages": [
+        "chat-actionbar"
+      ]
     },
     {
       "root": "pages/chat-loading/",
-      "pages": ["chat-loading"]
+      "pages": [
+        "chat-loading"
+      ]
     },
     {
       "root": "pages/chat-thinking/",
-      "pages": ["chat-thinking"]
+      "pages": [
+        "chat-thinking"
+      ]
     },
     {
       "root": "pages/attachments/",
-      "pages": ["attachments"]
+      "pages": [
+        "attachments"
+      ]
     },
     {
       "root": "pages/chat-markdown/",
-      "pages": ["chat-markdown"]
+      "pages": [
+        "chat-markdown"
+      ]
     },
     {
       "root": "pages/chat-sender/",
-      "pages": ["chat-sender"]
+      "pages": [
+        "chat-sender"
+      ]
     },
     {
       "root": "pages/side-bar/",
-      "pages": ["side-bar", "base/index", "switch/index", "custom/index", "with-icon/index"]
+      "pages": [
+        "side-bar",
+        "base/index",
+        "switch/index",
+        "custom/index",
+        "with-icon/index"
+      ]
     },
     {
       "root": "pages/action-sheet/",
-      "pages": ["action-sheet"]
+      "pages": [
+        "action-sheet"
+      ]
     },
     {
       "root": "pages/avatar/",
-      "pages": ["avatar", "skyline/avatar"]
+      "pages": [
+        "avatar",
+        "skyline/avatar"
+      ]
     },
     {
       "root": "pages/calendar/",
-      "pages": ["calendar"]
+      "pages": [
+        "calendar"
+      ]
     },
     {
       "root": "pages/dialog/",
-      "pages": ["dialog", "skyline/dialog"]
+      "pages": [
+        "dialog",
+        "skyline/dialog"
+      ]
     },
     {
       "root": "pages/picker/",
-      "pages": ["picker", "skyline/picker"]
+      "pages": [
+        "picker",
+        "skyline/picker"
+      ]
     },
     {
       "root": "pages/rate/",
-      "pages": ["rate"]
+      "pages": [
+        "rate"
+      ]
     },
     {
       "root": "pages/swiper/",
-      "pages": ["swiper", "skyline/swiper"]
+      "pages": [
+        "swiper",
+        "skyline/swiper"
+      ]
     },
     {
       "root": "pages/swipe-cell/",
-      "pages": ["swipe-cell"]
+      "pages": [
+        "swipe-cell"
+      ]
     },
     {
       "root": "pages/tree-select/",
-      "pages": ["tree-select"]
+      "pages": [
+        "tree-select"
+      ]
     },
     {
       "root": "pages/indexes/",
-      "pages": ["indexes", "base/index", "custom/index"]
+      "pages": [
+        "indexes",
+        "base/index",
+        "custom/index"
+      ]
     }
   ],
   "themeLocation": "theme.json",
@@ -191,13 +239,17 @@
   },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
+  "renderer": "skyline",
+  "componentFramework": "glass-easel",
+  "disableScroll": true,
   "rendererOptions": {
     "skyline": {
       "disableABTest": true,
       "defaultDisplayBlock": true,
       "defaultContentBox": true,
       "sdkVersionBegin": "3.4.3",
-      "sdkVersionEnd": "15.255.255"
+      "sdkVersionEnd": "15.255.255",
+      "enableScrollViewAutoSize": true
     }
   }
 }

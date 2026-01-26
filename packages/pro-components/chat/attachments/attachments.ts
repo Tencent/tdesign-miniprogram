@@ -27,11 +27,17 @@ export default class Attachments extends SuperComponent {
   data = {
     classPrefix: name,
     files: [],
+    isSkyline: false,
+    scrollViewHeight: 0, // 新增：scroll-view的高度
   };
 
   observers = {
     items() {
       this.setFiles();
+      // 新增：文件列表变化时重新计算高度
+      wx.nextTick(() => {
+        this.getScrollViewHeight();
+      });
     },
   };
 
@@ -51,6 +57,13 @@ export default class Attachments extends SuperComponent {
         this.handleRemove(item, index);
       }
     },
+    // 新增：图片加载完成回调
+    onImageLoad() {
+      // 图片加载完成后重新计算高度
+      wx.nextTick(() => {
+        this.getScrollViewHeight();
+      });
+    },
     handleFileClick(item) {
       if (this.data.imageViewer && item.fileType === 'image') {
         wx.previewImage({
@@ -61,6 +74,20 @@ export default class Attachments extends SuperComponent {
     },
     handleRemove(item, index) {
       this.triggerEvent('remove', { item, index });
+    },
+    // 修改：获取所有文件元素的最大高度
+    getScrollViewHeight() {
+      const query = this.createSelectorQuery();
+      query.selectAll('.t-attachments__files').boundingClientRect();
+      query.exec((res) => {
+        if (res[0] && res[0].length > 0) {
+          // 获取所有文件元素的最大高度
+          const maxFileHeight = Math.max(...res[0].map((rect) => rect.height));
+          this.setData({
+            scrollViewHeight: maxFileHeight,
+          });
+        }
+      });
     },
     renderDesc(item) {
       const sizeInBytes = item.size || 0;
@@ -187,9 +214,15 @@ export default class Attachments extends SuperComponent {
       this.data.renderIcon = this.renderIcon.bind(this);
       this.data.renderFileType = this.renderFileType.bind(this);
       this.data.renderExtension = this.renderExtension.bind(this);
+      // 检测 Skyline 模式
+      this.setData({ isSkyline: this.renderer === 'skyline' });
     },
     attached() {
       this.setFiles();
+      // 新增：组件挂载时计算高度
+      wx.nextTick(() => {
+        this.getScrollViewHeight();
+      });
     },
     detached() {},
   };

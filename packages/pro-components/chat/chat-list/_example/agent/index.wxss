@@ -54,11 +54,11 @@
 }
 
 .t-steps-item__circle--finish {
-  background-color: transparent;
-  color: var(--td-text-color-primary);
-  border: 1px solid var(--td-text-color-primary);
-  width: 16px;
-  height: 16px;
+  background-color: transparent !important;
+  color: var(--td-text-color-primary) !important;
+  border: 1px solid var(--td-text-color-primary) !important;
+  width: 16px !important;
+  height: 16px !important;
 }
 
 .t-steps-item__circle--finish .t-icon {
@@ -66,10 +66,10 @@
 }
 
 .t-steps-item__line--finish {
-  background-color: var(--td-component-border);
+  background-color: var(--td-component-border) !important;
 }
 
 .t-steps-item__title--finish {
-  color: var(--td-text-color-primary);
-  font-weight: 600;
+  color: var(--td-text-color-primary) !important;
+  font-weight: 600 !important;
 }

@@ -43,6 +43,8 @@ export default class ChatSender extends SuperComponent {
       },
     },
     uploadNames: [],
+    textareaAutoHeight: true, // 动态控制 auto-height
+    currentLineCount: 1, // 当前行数
   };
 
   observers = {
@@ -61,6 +63,20 @@ export default class ChatSender extends SuperComponent {
   };
 
   methods = {
+    onLineChange(e) {
+      const { lineCount, height } = e.detail;
+      const maxHeight = this.data.textareaProps?.autosize?.maxHeight || 264;
+      
+      // 当高度达到或超过最大高度时，禁用 auto-height 并启用滚动
+      // 当高度小于最大高度时，启用 auto-height
+      const shouldAutoHeight = height < maxHeight;
+      if (this.data.textareaAutoHeight !== shouldAutoHeight) {
+        this.setData({ textareaAutoHeight: shouldAutoHeight });
+      }
+      
+      this.setData({ currentLineCount: lineCount });
+    },
+
     onkeyboardheightchange(e) {
       // 业务侧控制键盘顶起高度，如果用fix布局，不需要监听键盘高度变化
       this.triggerEvent('keyboardheightchange', e.detail);
@@ -138,10 +154,17 @@ export default class ChatSender extends SuperComponent {
     },
 
     textChange(e) {
+      const { value } = e.detail;
       this.setData({
-        value: e.detail.value,
+        value,
       });
-      this.triggerEvent('change', { value: e.detail.value, context: e });
+      
+      // 当内容清空或变少时，重新启用 auto-height
+      if (!value || value.length === 0) {
+        this.setData({ textareaAutoHeight: true });
+      }
+      
+      this.triggerEvent('change', { value, context: e });
     },
 
     handleUploadClick(e) {

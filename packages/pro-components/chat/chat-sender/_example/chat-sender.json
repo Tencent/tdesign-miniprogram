@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "ChatSender",
+  "disableScroll": true,
   "usingComponents": {
     "t-tabs": "tdesign-miniprogram/tabs/tabs",
     "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",

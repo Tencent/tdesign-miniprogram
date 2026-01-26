@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "ChatMarkdown 聊天 Markdown 渲染器",
+  "disableScroll": true,
   "usingComponents": {
     "base": "./base",
     "list": "./list",

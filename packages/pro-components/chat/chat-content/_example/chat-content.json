@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "ChatContent",
+  "disableScroll": true,
   "usingComponents": {
     "base": "./base"
   }

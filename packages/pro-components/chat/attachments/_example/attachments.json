@@ -1,5 +1,6 @@
 {
   "navigationBarTitleText": "Attachments 聊天附件",
+  "disableScroll": true,
   "usingComponents": {
     "base": "./base",
     "fileLoading": "./file-loading",

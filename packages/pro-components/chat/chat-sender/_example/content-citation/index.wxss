@@ -70,6 +70,7 @@
 }
 
 .header-content {
+  flex: 1;
   padding: 2rpx 24rpx;
   box-sizing: border-box;
   white-space: nowrap;

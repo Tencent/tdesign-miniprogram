@@ -1,17 +1,20 @@
-<t-navbar class="demo-navbar" title="ChatThinking" leftArrow placeholder />
-
-<view class="demo">
-  <t-demo-header title="ChatThinking 思考过程" desc="用于展示思考过程的组件。" notice="渲染框架支持情况：WebView" />
-  <t-demo title="01 组件类型" desc="支持多种加载动效类型，包括gradient、moving、dots">
-    <base />
-  </t-demo>
-  <t-demo title="02 组件状态" desc="思考中">
-    <pending />
-  </t-demo>
-  <t-demo desc="思考完成">
-    <complete />
-  </t-demo>
-  <t-demo title="03 组件样式" desc="">
-    <layout />
-  </t-demo>
+<view class="skyline">
+  <t-navbar class="demo-navbar" title="ChatThinking" leftArrow placeholder />
+  <scroll-view scroll-y type="list" class="scroll-view">
+    <view class="demo">
+      <t-demo-header title="ChatThinking 思考过程" desc="用于展示思考过程的组件。" notice="渲染框架支持情况：WebView" />
+      <t-demo title="01 组件类型" desc="支持多种加载动效类型，包括gradient、moving、dots">
+        <base />
+      </t-demo>
+      <t-demo title="02 组件状态" desc="思考中">
+        <pending />
+      </t-demo>
+      <t-demo desc="思考完成">
+        <complete />
+      </t-demo>
+      <t-demo title="03 组件样式" desc="">
+        <layout />
+      </t-demo>
+    </view>
+  </scroll-view>
 </view>

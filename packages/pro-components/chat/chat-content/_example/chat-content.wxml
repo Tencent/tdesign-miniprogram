@@ -1,7 +1,15 @@
-<t-navbar class="demo-navbar" title="ChatContent" leftArrow placeholder />
-<view class="demo">
-  <t-demo-header title="ChatContent 对话正文" desc="支持 markdown 格式的渲染。" notice="渲染框架支持情况：WebView" />
-  <t-demo title="01 组件类型">
-    <base />
-  </t-demo>
+<view class="skyline">
+  <t-navbar class="demo-navbar" title="ChatContent" leftArrow placeholder />
+  <scroll-view scroll-y type="list" class="scroll-view">
+    <view class="demo">
+      <t-demo-header
+        title="ChatContent 对话正文"
+        desc="支持 markdown 格式的渲染。"
+        notice="渲染框架支持情况：WebView"
+      />
+      <t-demo title="01 组件类型">
+        <base />
+      </t-demo>
+    </view>
+  </scroll-view>
 </view>
