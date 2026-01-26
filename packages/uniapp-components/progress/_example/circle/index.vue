@@ -1,7 +1,6 @@
 <template>
   <view>
     <t-demo
-      v-if="!skylineRender"
       desc="环形进度条"
       padding
     >
@@ -30,13 +29,11 @@
 
 <script>
 import TProgress from 'tdesign-uniapp/progress/progress.vue';
-import SkylineBehavior from 'tdesign-uniapp/mixins/skyline.js';
 
 export default {
   components: {
     TProgress,
   },
-  mixins: [SkylineBehavior],
   data() {
     return {
     };

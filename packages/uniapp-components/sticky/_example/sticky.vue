@@ -7,7 +7,7 @@
     </view>
     <view class="demo tdesign-demo-sticky-base">
       <t-demo-header
-        title="Sticky 吸顶"
+        title="Sticky 吸顶容器"
         desc="用于常驻页面顶部的信息、操作展示。"
         notice="渲染框架支持情况：WebView"
       />

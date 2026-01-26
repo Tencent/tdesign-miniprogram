@@ -208,7 +208,7 @@ export default uniComponent({
     bindload() {},
     getImageSize(column) {
       if (!column || column == 4) return 'middle';
-      return column > 4 ? 'large' : 'small';
+      return column > 4 ? 'small' : 'large';
     },
     updateStyle() {
       const { hover, align } = this[RELATION_MAP.GridItem];

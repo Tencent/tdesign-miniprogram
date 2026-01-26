@@ -7,7 +7,7 @@
 
     <t-demo-header
       title="SideBar 侧边栏"
-      desc="用于内容分类后的展示切换。"
+      desc="用于信息分类后的展示切换或锚点，位于页面左侧。"
       notice="渲染框架支持情况：WebView"
     />
     <t-demo

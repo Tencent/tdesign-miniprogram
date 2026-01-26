@@ -21,7 +21,6 @@
       环形进度条
     </view>
     <view
-      v-if="!skylineRender"
       class="demo-wrapper"
     >
       <t-progress
@@ -34,7 +33,6 @@
       微型环形进度条
     </view>
     <view
-      v-if="!skylineRender"
       class="demo-wrapper"
     >
       <t-progress
@@ -49,12 +47,10 @@
 
 <script>
 import TProgress from 'tdesign-uniapp/progress/progress.vue';
-import SkylineBehavior from 'tdesign-uniapp/mixins/skyline.js';
 export default {
   components: {
     TProgress,
   },
-  mixins: [SkylineBehavior],
   data() {
     return {
     };

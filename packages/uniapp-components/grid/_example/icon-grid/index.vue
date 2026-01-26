@@ -69,8 +69,6 @@ export default {
 }
 
 :deep(.grid-item__image) {
-    --td-button-medium-icon-font-size: 48rpx;
-
     height: 100%;
     display: flex;
     align-items: center;

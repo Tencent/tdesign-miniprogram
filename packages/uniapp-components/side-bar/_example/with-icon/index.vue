@@ -215,7 +215,7 @@ page .round-image {
     display: flex;
     height: 100vh;
 
-    --td-grid-item-text-font-size: 24rpx;
+    --td-grid-item-text-font: var(--td-font-body-small);
 }
 
 .side-bar-wrapper .content {
@@ -229,8 +229,7 @@ page .round-image {
 .side-bar-wrapper .title {
     padding-left: 40rpx;
     margin-bottom: 8rpx;
-    font-size: 28rpx;
-    line-height: 44rpx;
+    font: var(--td-font-body-medium);
     color: var(--td-text-color-primary);
 }
 

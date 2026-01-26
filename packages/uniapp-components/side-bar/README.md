@@ -1,6 +1,6 @@
 ---
 title: SideBar 侧边栏
-description: 用于内容分类后的展示切换。
+description: 用于信息分类后的展示切换或锚点，位于页面左侧。
 spline: navigation
 isComponent: true
 ---
