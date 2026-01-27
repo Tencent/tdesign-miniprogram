@@ -1,11 +1,8 @@
 <template>
   <view>
-    <t-navbar
+    <t-demo-navbar
       class="demo-navbar"
       title="ChatMessage"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
     <view class="demo">
       <t-demo-header
@@ -17,49 +14,49 @@
         title="01 组件类型"
         desc="基础类型"
       >
-        <baseDemo />
+        <base-demo />
       </t-demo>
       <t-demo desc="可配置昵称、头像、对齐方式">
-        <configure />
+        <configure-demo />
       </t-demo>
       <t-demo desc="配置消息属性">
-        <contentDemo />
+        <content-demo />
       </t-demo>
       <t-demo
         title="02 组件状态"
         desc="加载状态"
       >
-        <status />
+        <status-demo />
       </t-demo>
       <t-demo desc="出错状态">
-        <error />
+        <error-demo />
       </t-demo>
       <t-demo
         title="03 组件样式"
         desc="气泡样式"
       >
-        <styleDemo />
+        <style-demo />
       </t-demo>
     </view>
   </view>
 </template>
 
 <script>
-import baseDemo from './base/index.vue';
-import styleDemo from './style/index.vue';
-import configure from './configure/index.vue';
-import status from './status/index.vue';
-import contentDemo from './content/index.vue';
-import error from './error/index.vue';
+import BaseDemo from './base/index.vue';
+import StyleDemo from './style/index.vue';
+import ConfigureDemo from './configure/index.vue';
+import StatusDemo from './status/index.vue';
+import ContentDemo from './content/index.vue';
+import ErrorDemo from './error/index.vue';
 
 export default {
   components: {
-    baseDemo,
-    styleDemo,
-    configure,
-    status,
-    contentDemo,
-    error,
+    BaseDemo,
+    StyleDemo,
+    ConfigureDemo,
+    StatusDemo,
+    ContentDemo,
+    ErrorDemo,
   },
   data() {
     return {};

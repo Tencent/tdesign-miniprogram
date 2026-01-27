@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Result Page"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="page">
       <view class="demo-section__wrapper">
         <t-result
@@ -34,12 +29,12 @@
 
 <script>
 
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tResult from 'tdesign-uniapp/result/result.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TResult from 'tdesign-uniapp/result/result.vue';
 export default {
   components: {
-    tButton,
-    tResult,
+    TButton,
+    TResult,
   },
   data() {
     return {};

@@ -44,8 +44,6 @@ async function prepareOne({ targetDir, sourceGlob, sourceDir }) {
       filePath: item,
       config: {
         targetDir,
-        sourceGlob,
-        sourceDir,
       },
     });
     console.log(`[Wrote] done! \nFrom ${relativeSourceByCwd} to ${relativeTargetByCwd}`);

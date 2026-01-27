@@ -17,12 +17,12 @@
 </template>
 
 <script>
-import tNoticeBar from 'tdesign-uniapp/notice-bar/notice-bar.vue';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
+import TNoticeBar from 'tdesign-uniapp/notice-bar/notice-bar.vue';
+import TIcon from 'tdesign-uniapp/icon/icon.vue';
 export default {
   components: {
-    tNoticeBar,
-    tIcon,
+    TNoticeBar,
+    TIcon,
   },
   data() {
     return {

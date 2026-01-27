@@ -99,3 +99,17 @@ text | String | - | 水印文本内容 | N
 -- | -- | -- | -- | --
 is-grayscale | Boolean | false | 水印图片是否需要灰阶显示 | N
 url | String | - | 水印图片源地址，为了显示清楚，建议导出 2 倍或 3 倍图 | N
+
+### CSS Variables
+
+组件提供了下列 CSS 变量，可用于自定义样式。
+名称 | 默认值 | 描述 
+-- | -- | --
+--watermark-left-0 | --watermark-left-0 | -
+--watermark-left-25 | --watermark-left-25 | -
+--watermark-left-50 | --watermark-left-50 | -
+--watermark-left-75 | --watermark-left-75 | -
+--watermark-top-0 | --watermark-top-0 | -
+--watermark-top-25 | --watermark-top-25 | -
+--watermark-top-50 | --watermark-top-50 | -
+--watermark-top-75 | --watermark-top-75 | -

@@ -39,17 +39,17 @@
 </template>
 
 <script>
-import tGrid from 'tdesign-uniapp/grid/grid.vue';
-import tGridItem from 'tdesign-uniapp/grid-item/grid-item.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TGrid from 'tdesign-uniapp/grid/grid.vue';
+import TGridItem from 'tdesign-uniapp/grid-item/grid-item.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tGrid,
-    tGridItem,
-    tButton,
+    TGrid,
+    TGridItem,
+    TButton,
   },
   data() {
     return {};
@@ -69,8 +69,6 @@ export default {
 }
 
 :deep(.grid-item__image) {
-    --td-button-medium-icon-font-size: 48rpx;
-
     height: 100%;
     display: flex;
     align-items: center;

@@ -15,7 +15,9 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "tdesign-miniprogram/*": ["packages/components/*"]
+      "tdesign-miniprogram/*": ["packages/components/*"],
+      "tdesign-uniapp/*": ["packages/uniapp-components/*"],
+      "tdesign-uniapp-chat/*": ["packages/uniapp-pro-components/chat/*"]
     }
   },
   "include": ["packages/**/*", "typing.d.ts"],

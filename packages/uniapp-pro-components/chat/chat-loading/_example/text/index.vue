@@ -1,7 +1,7 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <TChatLoading
+      <t-chat-loading
         animation="dots"
         text="加载中..."
       />

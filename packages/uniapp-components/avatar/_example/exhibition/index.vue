@@ -14,12 +14,12 @@
 </template>
 
 <script>
-import tAvatar from 'tdesign-uniapp/avatar/avatar.vue';
-import tAvatarGroup from 'tdesign-uniapp/avatar-group/avatar-group.vue';
+import TAvatar from 'tdesign-uniapp/avatar/avatar.vue';
+import TAvatarGroup from 'tdesign-uniapp/avatar-group/avatar-group.vue';
 export default {
   components: {
-    tAvatar,
-    tAvatarGroup,
+    TAvatar,
+    TAvatarGroup,
   },
   data() {
     return {

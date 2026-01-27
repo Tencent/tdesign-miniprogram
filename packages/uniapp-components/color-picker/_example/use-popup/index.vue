@@ -9,7 +9,7 @@
       @palette-bar-change="onPaletteBarChange"
     />
 
-    <TButton
+    <t-button
       block
       size="large"
       variant="outline"
@@ -18,17 +18,17 @@
       @click="handlePopup"
     >
       弹窗形式的颜色选择器
-    </TButton>
+    </t-button>
   </view>
 </template>
 
 <script>
-import tColorPicker from 'tdesign-uniapp/color-picker/color-picker.vue';
+import TColorPicker from 'tdesign-uniapp/color-picker/color-picker.vue';
 import TButton from 'tdesign-uniapp/button/button.vue';
 
 export default {
   components: {
-    tColorPicker,
+    TColorPicker,
     TButton,
   },
   data() {

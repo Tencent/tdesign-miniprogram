@@ -8,6 +8,11 @@ import type { TdButtonProps as ButtonProps } from '../button/type';
 
 export interface TdCalendarProps {
   /**
+   * 是否允许区间选择日历的起止时间相同，仅当 `type='range'` 时有效
+   * @default false
+   */
+  allowSameDay?: boolean;
+  /**
    * 自动关闭；在点击关闭按钮、确认按钮、遮罩层时自动关闭，不需要手动设置 visible
    * @default true
    */
@@ -53,7 +58,7 @@ export interface TdCalendarProps {
   title?: string;
   /**
    * 日历的选择类型，single = 单选；multiple = 多选; range = 区间选择
-   * @default 'single'
+   * @default single
    */
   type?: 'single' | 'multiple' | 'range';
   /**
@@ -114,7 +119,7 @@ export interface TdCalendarProps {
 
 export type CalendarFormatType = (day: TDate) => TDate;
 
-export type TDateType = 'selected' | 'disabled' | 'start' | 'centre' | 'end' | '';
+export type TDateType = 'selected' | 'disabled' | 'start' | 'start-end' | 'centre' | 'end' | '';
 
 export interface TDate {
   date: Date;

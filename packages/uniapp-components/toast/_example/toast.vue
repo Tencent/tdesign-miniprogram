@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Toast"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="Toast 轻提示"
@@ -20,28 +15,28 @@
         desc="基础提示"
         padding
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
       <t-demo
         title="02 组件状态"
         desc="内置主题"
         padding
       >
-        <theme />
+        <theme-demo />
       </t-demo>
       <t-demo
         title="03 显示遮罩"
         desc="弹窗可显示遮罩，禁止滑动和点击"
         padding
       >
-        <cover />
+        <cover-demo />
       </t-demo>
       <t-demo
         title="04 手动关闭"
         desc="手动关闭轻提示"
         padding
       >
-        <close />
+        <close-demo />
       </t-demo>
     </view>
   </view>
@@ -50,18 +45,18 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import theme from './theme/index.vue';
-import cover from './cover/index.vue';
-import close from './close/index.vue';
+import ThemeDemo from './theme/index.vue';
+import CoverDemo from './cover/index.vue';
+import CloseDemo from './close/index.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
     BaseDemo,
-    theme,
-    cover,
-    close,
+    ThemeDemo,
+    CoverDemo,
+    CloseDemo,
   },
   data() {
     return {};

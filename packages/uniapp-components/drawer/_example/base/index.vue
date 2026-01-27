@@ -23,14 +23,14 @@
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tDrawer from 'tdesign-uniapp/drawer/drawer.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TDrawer from 'tdesign-uniapp/drawer/drawer.vue';
 import SkylineBehavior from 'tdesign-uniapp/mixins/skyline.js';
 
 export default {
   components: {
-    tButton,
-    tDrawer,
+    TButton,
+    TDrawer,
   },
   mixins: [SkylineBehavior],
   data() {

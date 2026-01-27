@@ -53,7 +53,7 @@
         <view
           class="content"
         >
-          <TIcon
+          <t-icon
             name="arrow-up"
             size="64rpx"
             color="#fff"
@@ -108,7 +108,7 @@
         <view
           class="content"
         >
-          <TIcon
+          <t-icon
             name="arrow-up"
             size="64rpx"
             color="#fff"
@@ -164,7 +164,7 @@
         <view
           class="content"
         >
-          <TIcon
+          <t-icon
             name="arrow-up"
             size="64rpx"
             color="#fff"
@@ -218,10 +218,10 @@
 </template>
 
 <script>
-import tGuide from 'tdesign-uniapp/guide/guide.vue';
-import tInput from 'tdesign-uniapp/input/input.vue';
+import TGuide from 'tdesign-uniapp/guide/guide.vue';
+import TInput from 'tdesign-uniapp/input/input.vue';
 import TIcon from 'tdesign-uniapp/icon/icon.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 import { getRect } from 'tdesign-uniapp/common/utils';
 import { canUseVirtualHost } from 'tdesign-uniapp/common/version';
 
@@ -231,9 +231,9 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tGuide,
-    tInput,
-    tButton,
+    TGuide,
+    TInput,
+    TButton,
     TIcon,
   },
   data() {

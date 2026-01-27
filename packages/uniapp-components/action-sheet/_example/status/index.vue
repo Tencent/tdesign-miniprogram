@@ -19,13 +19,13 @@
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tActionSheet from 'tdesign-uniapp/action-sheet/action-sheet.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TActionSheet from 'tdesign-uniapp/action-sheet/action-sheet.vue';
 import ActionSheet, { ActionSheetTheme } from 'tdesign-uniapp/action-sheet/index';
 export default {
   components: {
-    tButton,
-    tActionSheet,
+    TButton,
+    TActionSheet,
   },
   data() {
     return {};
@@ -37,25 +37,26 @@ export default {
         theme: ActionSheetTheme.List,
         selector: '#t-action-sheet',
         context: this,
+        cancelText: 'cancel',
         items: [
           {
-            label: '默认选项',
-            icon: 'app',
+            label: 'Move',
+            icon: 'enter',
           },
           {
-            label: '自定义选项',
-            icon: 'app',
+            label: 'Mark as important',
+            icon: 'bookmark',
             color: '#0052D9',
           },
           {
-            label: '失效选项',
-            disabled: true,
-            icon: 'app',
+            label: 'Unsubscribe',
+            icon: 'pin',
+            color: '#E34D59',
           },
           {
-            label: '警告选项',
-            color: '#e34d59',
-            icon: 'app',
+            label: 'Add to Tasks',
+            icon: 'cloud-upload',
+            disabled: true,
           },
         ],
       });

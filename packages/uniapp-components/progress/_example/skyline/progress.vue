@@ -6,10 +6,10 @@
 
 <script>
 
-import demoProgress from '../progress.vue';
+import DemoProgress from '../progress.vue';
 export default {
   components: {
-    demoProgress,
+    DemoProgress,
   },
   data() {
     return {};

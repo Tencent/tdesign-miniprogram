@@ -1,15 +1,10 @@
 <template>
   <view>
     <view class="custom-navbar">
-      <!-- #ifndef MP-ALIPAY -->
-      <t-navbar
-        class="demo-navbar"
+      <t-demo-navbar
+        custom-class="demo-navbar"
         title="Guide"
-        left-arrow
-        :delta="-1"
-        @go-back="onDemoGoBack"
       />
-    <!-- #endif -->
     </view>
 
     <view class="demo">
@@ -36,7 +31,7 @@
           :show-overlay="false"
         >
           <view :style="'height: calc(100vh - ' + navbarHeight + 'px)'">
-            <BaseDemo
+            <base-demo
               v-if="visibleBase"
               @close="handleBaseClose"
             />
@@ -84,7 +79,7 @@
           :show-overlay="false"
         >
           <view :style="'height: calc(100vh - ' + navbarHeight + 'px)'">
-            <dialogDemo
+            <dialog-demo
               v-if="visibleDialog"
               @close="handleDialogClose"
             />
@@ -108,7 +103,7 @@
           :show-overlay="false"
         >
           <view :style="'height: calc(100vh - ' + navbarHeight + 'px)'">
-            <multiple
+            <multiple-demo
               v-if="visibleDialog1"
               @close="handleDialog1Close"
             />
@@ -132,7 +127,7 @@
           :show-overlay="false"
         >
           <view :style="'height: calc(100vh - ' + navbarHeight + 'px)'">
-            <contentDemo
+            <content-demo
               v-if="visibleContent"
               @close="handleContentClose"
             />
@@ -145,23 +140,23 @@
 
 <script>
 
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tPopup from 'tdesign-uniapp/popup/popup.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TPopup from 'tdesign-uniapp/popup/popup.vue';
 import BaseDemo from './base/index.vue';
-import noMask from './no-mask/index.vue';
-import dialogDemo from './dialog/index.vue';
-import multiple from './multiple/index.vue';
-import contentDemo from './content/index.vue';
+import NoMask from './no-mask/index.vue';
+import DialogDemo from './dialog/index.vue';
+import MultipleDemo from './multiple/index.vue';
+import ContentDemo from './content/index.vue';
 
 export default {
   components: {
-    tButton,
-    tPopup,
+    TButton,
+    TPopup,
     BaseDemo,
-    noMask,
-    dialogDemo,
-    multiple,
-    contentDemo,
+    NoMask,
+    DialogDemo,
+    MultipleDemo,
+    ContentDemo,
   },
   data() {
     return {

@@ -127,23 +127,22 @@ change | `(context: { value: RadioValue })` | 选中值发生变化时触发
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-radio-bg-color | @bg-color-container | - |
-| --td-radio-border-color | @component-stroke | - |
-| --td-radio-content-checked-color | @text-color-secondary | - |
-| --td-radio-content-color | @text-color-secondary | - |
-| --td-radio-content-disabled-color | @text-color-disabled | - |
-| --td-radio-content-font-size | 28rpx | - |
-| --td-radio-content-line-height | 44rpx | - |
-| --td-radio-font-size | 32rpx | - |
-| --td-radio-icon-checked-color | @brand-color | - |
-| --td-radio-icon-color | @component-border | - |
-| --td-radio-icon-disabled-bg-color | @bg-color-component-disabled | - |
-| --td-radio-icon-disabled-color | @brand-color-disabled | - |
-| --td-radio-icon-size | 48rpx | - |
-| --td-radio-label-checked-color | @text-color-primary | - |
-| --td-radio-label-color | @text-color-primary | - |
-| --td-radio-label-disabled-color | @text-color-disabled | - |
-| --td-radio-label-line-height | 48rpx | - |
-| --td-radio-vertical-padding | 32rpx | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-radio-bg-color | @bg-color-container | -
+--td-radio-border-color | @component-stroke | -
+--td-radio-content-checked-color | @text-color-secondary | -
+--td-radio-content-color | @text-color-secondary | -
+--td-radio-content-disabled-color | @text-color-disabled | -
+--td-radio-content-font | @font-body-medium | -
+--td-radio-font | @font-body-large | -
+--td-radio-icon-checked-color | @brand-color | -
+--td-radio-icon-color | @component-border | -
+--td-radio-icon-disabled-bg-color | @bg-color-component-disabled | -
+--td-radio-icon-disabled-color | @brand-color-disabled | -
+--td-radio-icon-size | 48rpx | -
+--td-radio-label-checked-color | @text-color-primary | -
+--td-radio-label-color | @text-color-primary | -
+--td-radio-label-disabled-color | @text-color-disabled | -
+--td-radio-label-line-height | 48rpx | -
+--td-radio-vertical-padding | 32rpx | -

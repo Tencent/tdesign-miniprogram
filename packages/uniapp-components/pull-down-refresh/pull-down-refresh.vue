@@ -60,7 +60,7 @@
   </scroll-view>
 </template>
 <script>
-import tLoading from '../loading/loading';
+import TLoading from '../loading/loading';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -96,7 +96,7 @@ export default uniComponent({
     ParentMixin(RELATION_MAP.BackTop),
   ],
   components: {
-    tLoading,
+    TLoading,
   },
   props: {
     ...props,

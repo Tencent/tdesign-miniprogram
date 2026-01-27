@@ -25,12 +25,12 @@
 </template>
 
 <script>
-import tDivider from 'tdesign-uniapp/divider/divider.vue';
+import TDivider from 'tdesign-uniapp/divider/divider.vue';
 import SkylineBehavior from 'tdesign-uniapp/mixins/skyline.js';
 
 export default {
   components: {
-    tDivider,
+    TDivider,
   },
   mixins: [SkylineBehavior],
   data() {

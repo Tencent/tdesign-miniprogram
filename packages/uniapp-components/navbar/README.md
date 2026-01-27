@@ -59,10 +59,12 @@ fixed | Boolean | true | 是否固定在顶部 | N
 home-icon | String | - | 已废弃。首页图标地址。值为 '' 或者 undefined 则表示不显示返回图标，值为 'circle' 表示显示默认图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址 | N
 left-arrow | Boolean | false | 是否展示左侧箭头 | N
 left-icon | String | - | 已废弃。左侧图标地址，值为 '' 或者 undefined 则表示不显示返回图标，值为 'arrow-left' 表示显示返回图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址 | N
+placeholder | Boolean | false | 固定在顶部时是否开启占位 | N
 safe-area-inset-top | Boolean | true | 是否开启顶部安全区适配 | N
 title | String | - | 页面标题 | N
 title-max-length | Number | - | 标题文字最大长度，超出的范围使用 `...` 表示 | N
 visible | Boolean | true | 是否显示 | N
+z-index | Number | 1 | 导航栏栏层级 | N
 
 ### Navbar Events
 
@@ -100,21 +102,20 @@ t-class-title | 标题样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-navbar-padding-top | 20px | - |
-| --td-navbar-right | 95px | - |
-| --td-navbar-background | @navbar-bg-color | - |
-| --td-navbar-bg-color | @bg-color-container | - |
-| --td-navbar-capsule-border-color | @border-level-1-color | - |
-| --td-navbar-capsule-border-radius | 16px | - |
-| --td-navbar-capsule-height | 32px | - |
-| --td-navbar-capsule-width | 88px | - |
-| --td-navbar-center-left | @navbar-right | - |
-| --td-navbar-center-width | 187px | - |
-| --td-navbar-color | @text-color-primary | - |
-| --td-navbar-height | 48px | - |
-| --td-navbar-left-arrow-size | 24px | - |
-| --td-navbar-left-max-width | --td-navbar-left-max-width | - |
-| --td-navbar-title-font-size | 18px | - |
-| --td-navbar-title-font-weight | 600 | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-navbar-padding-top | 20px | -
+--td-navbar-right | 95px | -
+--td-navbar-background | @navbar-bg-color | -
+--td-navbar-bg-color | @bg-color-container | -
+--td-navbar-capsule-border-color | @border-level-1-color | -
+--td-navbar-capsule-border-radius | 16px | -
+--td-navbar-capsule-height | 32px | -
+--td-navbar-capsule-width | 88px | -
+--td-navbar-center-left | @navbar-right | -
+--td-navbar-center-width | 187px | -
+--td-navbar-color | @text-color-primary | -
+--td-navbar-height | 48px | -
+--td-navbar-left-arrow-size | 24px | -
+--td-navbar-left-max-width | --td-navbar-left-max-width | -
+--td-navbar-title-font | @font-title-large | -

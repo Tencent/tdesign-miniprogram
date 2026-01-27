@@ -14,10 +14,10 @@
 </template>
 
 <script>
-import tUpload from 'tdesign-uniapp/upload/upload.vue';
+import TUpload from 'tdesign-uniapp/upload/upload.vue';
 export default {
   components: {
-    tUpload,
+    TUpload,
   },
   data() {
     return {

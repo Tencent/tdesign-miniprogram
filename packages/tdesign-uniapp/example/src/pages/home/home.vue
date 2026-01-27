@@ -4,7 +4,7 @@
     <!-- #endif -->
     <!-- #ifndef H5 -->
     <!-- #ifndef MP-ALIPAY -->
-    <t-navbar title="TDesign UI" />
+    <t-demo-navbar title="TDesign UI" />
     <!-- #endif -->
     <!-- #endif -->
     <view class="main">
@@ -26,7 +26,7 @@
           try skyline
         </text>
       </view>
-      <PullDownList
+      <pull-down-list
         v-for="item of list"
         :key="item.name"
         :name="item.name"
@@ -42,10 +42,10 @@
       >
         《TDesign组件库服务声明》
       </view>
-      <TFooter text="该小程序仅演示示例，不收集个人信息。" />
-      <TFooter :text="`Copyright © 1998 - ${currentYear} All Rights Reserved`" />
+      <t-footer text="该小程序仅演示示例，不收集个人信息。" />
+      <t-footer :text="`Copyright © 1998 - ${currentYear} All Rights Reserved`" />
     </view>
-    <TrdPrivacy
+    <trd-privacy
       ref="trdPrivacy"
       name="TDesign组件库"
       date="2023年11月14日"

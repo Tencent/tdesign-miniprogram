@@ -14,3 +14,12 @@ options | Array | [] | Typescript：`PickerItemOption[]` `interface PickerItemOp
 name | Description
 -- | --
 label-suffix--[index] | \-
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-picker-item-active-color | @text-color-primary | -
+--td-picker-item-color | @text-color-secondary | -
+--td-picker-item-font-size | @font-size-m | -

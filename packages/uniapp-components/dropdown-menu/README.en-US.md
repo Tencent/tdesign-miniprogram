@@ -84,18 +84,12 @@ t-class-footer | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-dropdown-menu-active-color | @brand-color | - 
---td-dropdown-menu-bg-color | @bg-color-container | - 
---td-dropdown-menu-border-width | 1px | - 
---td-dropdown-menu-color | @text-color-primary | - 
---td-dropdown-menu-disabled-color | @text-color-disabled | - 
---td-dropdown-menu-font-size | 28rpx | - 
---td-dropdown-menu-height | 96rpx | - 
---td-dropdown-menu-icon-size | 40rpx | - 
---td-dropdown-body-max-height | 560rpx | - 
---td-dropdown-menu-bg-color | @bg-color-container | - 
---td-tree-bg-color | @bg-color-container | - 
---td-tree-item-active-color | @brand-color | - 
---td-tree-item-font-size | 32rpx | - 
---td-tree-item-height | 96rpx | - 
---td-tree-root-bg-color | @bg-color-secondarycontainer | -
+--td-dropdown-menu-active-color | @brand-color | -
+--td-dropdown-menu-bg-color | @bg-color-container | -
+--td-dropdown-menu-border-width | 1px | -
+--td-dropdown-menu-color | @text-color-primary | -
+--td-dropdown-menu-disabled-color | @text-color-disabled | -
+--td-dropdown-menu-font-size | 28rpx | -
+--td-dropdown-menu-height | 96rpx | -
+--td-dropdown-menu-icon-size | 40rpx | -
+--td-dropdown-body-max-height | 560rpx | -

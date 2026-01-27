@@ -3,8 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const { writeFileSync } = require('t-comm');
 const { toPascal } = require('../utils/utils');
-
-const PACKAGES_ROOT = path.resolve(__dirname, '../../../../');
+const { PACKAGES_ROOT } = require('../release/config');
 
 const CONFIG = {
   pkgJsonPath: path.resolve(PACKAGES_ROOT, 'uniapp-components/package.json'),

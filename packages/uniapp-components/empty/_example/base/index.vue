@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import tEmpty from 'tdesign-uniapp/empty/empty.vue';
+import TEmpty from 'tdesign-uniapp/empty/empty.vue';
 export default {
   components: {
-    tEmpty,
+    TEmpty,
   },
   data() {
     return {};

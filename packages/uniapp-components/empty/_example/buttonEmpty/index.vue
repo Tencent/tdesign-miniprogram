@@ -19,14 +19,14 @@
 </template>
 
 <script>
-import tEmpty from 'tdesign-uniapp/empty/empty.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TEmpty from 'tdesign-uniapp/empty/empty.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 
 
 export default {
   components: {
-    tEmpty,
-    tButton,
+    TEmpty,
+    TButton,
   },
   data() {
     return {};

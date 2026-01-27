@@ -2,17 +2,15 @@
   <view>
     <view class="block">
       <t-navbar
-        t-class-placeholder="t-navbar-placeholder"
-        t-class-content="t-navbar-content"
         left-arrow
         title="标题居中"
+        :fixed="false"
       />
     </view>
 
     <t-navbar
-      t-class-placeholder="t-navbar-placeholder"
-      t-class-content="t-navbar-content"
       left-arrow
+      :fixed="false"
     >
       <template
         #left
@@ -30,9 +28,8 @@
     </view>
 
     <t-navbar
-      t-class-placeholder="t-navbar-placeholder"
-      t-class-content="t-navbar-content"
       left-arrow
+      :fixed="false"
     >
       <template
         #left
@@ -52,10 +49,10 @@
 </template>
 
 <script>
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
 export default {
   components: {
-    tNavbar,
+    TNavbar,
   },
   data() {
     return {};

@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import tRadio from 'tdesign-uniapp/radio/radio.vue';
+import TRadio from 'tdesign-uniapp/radio/radio.vue';
 export default {
   components: {
-    tRadio,
+    TRadio,
   },
   /**
      * 组件的属性列表

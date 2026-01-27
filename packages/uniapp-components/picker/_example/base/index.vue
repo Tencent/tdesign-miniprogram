@@ -72,19 +72,19 @@
 </template>
 
 <script>
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tPicker from 'tdesign-uniapp/picker/picker.vue';
-import tPickerItem from 'tdesign-uniapp/picker-item/picker-item.vue';
-import tTag from 'tdesign-uniapp/tag/tag.vue';
+import TCell from 'tdesign-uniapp/cell/cell.vue';
+import TPicker from 'tdesign-uniapp/picker/picker.vue';
+import TPickerItem from 'tdesign-uniapp/picker-item/picker-item.vue';
+import TTag from 'tdesign-uniapp/tag/tag.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tCell,
-    tPicker,
-    tPickerItem,
-    tTag,
+    TCell,
+    TPicker,
+    TPickerItem,
+    TTag,
   },
   data() {
     return {

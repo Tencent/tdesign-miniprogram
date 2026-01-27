@@ -34,12 +34,12 @@
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tInput from 'tdesign-uniapp/input/input.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TInput from 'tdesign-uniapp/input/input.vue';
 export default {
   components: {
-    tButton,
-    tInput,
+    TButton,
+    TInput,
   },
   data() {
     return {};

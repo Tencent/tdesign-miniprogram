@@ -30,9 +30,9 @@
 </template>
 
 <script>
-import tPopup from 'tdesign-uniapp/popup/popup.vue';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TPopup from 'tdesign-uniapp/popup/popup.vue';
+import TIcon from 'tdesign-uniapp/icon/icon.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 import tools from 'tdesign-uniapp/common/utils.wxs';
 
 export default {
@@ -40,9 +40,9 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tPopup,
-    tIcon,
-    tButton,
+    TPopup,
+    TIcon,
+    TButton,
   },
   data() {
     return {

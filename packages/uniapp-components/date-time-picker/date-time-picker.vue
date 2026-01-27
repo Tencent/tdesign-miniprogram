@@ -30,6 +30,7 @@
         v-for="(item, index) in columns"
         :key="index"
         :class="tools.cls(classPrefix + '__item', [['roomly', columns.length >= 5 && index == 0]])"
+        :use-slots="false"
         :options="item"
         index="index"
         :format="formatter"
@@ -45,8 +46,8 @@
   </view>
 </template>
 <script>
-import tPicker from '../picker/picker';
-import tPickerItem from '../picker-item/picker-item';
+import TPicker from '../picker/picker';
+import TPickerItem from '../picker-item/picker-item';
 import { prefix } from '../common/config';
 import { coalesce } from '../common/utils';
 import { uniComponent } from '../common/src/index';
@@ -99,8 +100,8 @@ export default uniComponent({
     `${prefix}-class-title`,
   ],
   components: {
-    tPicker,
-    tPickerItem,
+    TPicker,
+    TPickerItem,
   },
   props: {
     ...props,

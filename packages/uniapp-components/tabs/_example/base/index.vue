@@ -94,15 +94,15 @@
 </template>
 
 <script>
-import tTabs from 'tdesign-uniapp/tabs/tabs.vue';
-import tTabPanel from 'tdesign-uniapp/tab-panel/tab-panel.vue';
+import TTabs from 'tdesign-uniapp/tabs/tabs.vue';
+import TTabPanel from 'tdesign-uniapp/tab-panel/tab-panel.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tTabs,
-    tTabPanel,
+    TTabs,
+    TTabPanel,
   },
   props: {
     stickyOffset: {
@@ -117,7 +117,7 @@ export default {
   computed: {
     stickyProps() {
       return {
-        zIndex: 2,
+        zIndex: 100,
         offsetTop: this.stickyOffset,
 
       };

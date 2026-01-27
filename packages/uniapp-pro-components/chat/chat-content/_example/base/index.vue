@@ -5,7 +5,7 @@
         用户内容纯文本支持HTML转义
       </view>
       <view class="chat-example-block">
-        <TChatContent
+        <t-chat-content
           :content="userContent"
           role="user"
         />
@@ -17,7 +17,7 @@
         助手内容（Markdown）
       </view>
       <view class="chat-example-block">
-        <TChatContent
+        <t-chat-content
           :content="assistantContent"
           role="assistant"
         />

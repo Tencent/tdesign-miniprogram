@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Fab"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <t-demo-header
       title="Fab 悬浮按钮"
       desc="当功能使用图标即可表意清楚时，可使用纯图标悬浮按钮，例如：添加、发布。"
@@ -99,31 +94,31 @@
       </view>
     </t-demo>
 
-    <BaseDemo v-if="type == 'base'" />
-    <advance v-else-if="type == 'advance'" />
-    <draggable v-else-if="type == 'draggable'" />
-    <collapsible v-else-if="type == 'collapsible'" />
+    <base-demo v-if="type == 'base'" />
+    <advance-demo v-else-if="type == 'advance'" />
+    <draggable-demo v-else-if="type == 'draggable'" />
+    <collapsible-demo v-else-if="type == 'collapsible'" />
   </view>
 </template>
 
 <script>
 
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
 import BaseDemo from './base/index.vue';
-import advance from './advance/index.vue';
-import draggable from './draggable/index.vue';
-import collapsible from './collapsible/index.vue';
+import AdvanceDemo from './advance/index.vue';
+import DraggableDemo from './draggable/index.vue';
+import CollapsibleDemo from './collapsible/index.vue';
 import { handlePageScroll } from 'tdesign-uniapp/mixins/page-scroll';
 
 export default {
   components: {
-    tButton,
-    tSkeleton,
+    TButton,
+    TSkeleton,
     BaseDemo,
-    advance,
-    draggable,
-    collapsible,
+    AdvanceDemo,
+    DraggableDemo,
+    CollapsibleDemo,
   },
   data() {
     return {

@@ -1,14 +1,9 @@
 <template>
   <view class="demo-wrap">
     <view class="custom-navbar">
-      <!-- #ifndef MP-ALIPAY -->
-      <t-navbar
+      <t-demo-navbar
         title="Tabs"
-        left-arrow
-        :delta="-1"
-        @go-back="onDemoGoBack"
       />
-    <!-- #endif -->
     </view>
     <view class="demo">
       <t-demo-header
@@ -20,10 +15,10 @@
         title="01 组件类型"
         desc="基础选项卡"
       >
-        <BaseDemo :sticky-offset="stickyOffset" />
+        <base-demo :sticky-offset="stickyOffset" />
       </t-demo>
       <t-demo desc="等距选项卡">
-        <scroll />
+        <scroll-demo />
       </t-demo>
       <t-demo desc="带图标选项卡">
         <with-icon />
@@ -38,16 +33,16 @@
         title="02 组件状态"
         desc="选项卡状态"
       >
-        <status />
+        <status-demo />
       </t-demo>
       <t-demo
         title="03 组件样式"
         desc="选项卡尺寸"
       >
-        <size />
+        <size-demo />
       </t-demo>
       <t-demo desc="选项卡样式">
-        <theme />
+        <theme-demo />
       </t-demo>
     </view>
   </view>
@@ -56,13 +51,13 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import scroll from './scroll/index.vue';
-import size from './size/index.vue';
-import status from './status/index.vue';
-import withIcon from './with-icon/index.vue';
-import withBadge from './with-badge/index.vue';
-import theme from './theme/index.vue';
-import withContent from './with-content/index.vue';
+import ScrollDemo from './scroll/index.vue';
+import SizeDemo from './size/index.vue';
+import StatusDemo from './status/index.vue';
+import WithIcon from './with-icon/index.vue';
+import WithBadge from './with-badge/index.vue';
+import ThemeDemo from './theme/index.vue';
+import WithContent from './with-content/index.vue';
 import { handlePageScroll } from 'tdesign-uniapp/mixins/page-scroll';
 
 
@@ -72,13 +67,13 @@ export default {
   },
   components: {
     BaseDemo,
-    scroll,
-    size,
-    status,
-    withIcon,
-    withBadge,
-    theme,
-    withContent,
+    ScrollDemo,
+    SizeDemo,
+    StatusDemo,
+    WithIcon,
+    WithBadge,
+    ThemeDemo,
+    WithContent,
   },
   data() {
     return {

@@ -1,13 +1,10 @@
 <template>
   <view>
     <view class="custom-navbar">
-      <!-- #ifndef MP-ALIPAY -->
-      <t-navbar
-        class="demo-navbar"
+      <t-demo-navbar
+        custom-class="demo-navbar"
         title="TDesign"
-        left-arrow
       />
-      <!-- #endif -->
     </view>
 
     <view
@@ -65,10 +62,10 @@
 </template>
 
 <script>
-import tSideBar from 'tdesign-uniapp/side-bar/side-bar.vue';
-import tSideBarItem from 'tdesign-uniapp/side-bar-item/side-bar-item.vue';
-import tGrid from 'tdesign-uniapp/grid/grid.vue';
-import tGridItem from 'tdesign-uniapp/grid-item/grid-item.vue';
+import TSideBar from 'tdesign-uniapp/side-bar/side-bar.vue';
+import TSideBarItem from 'tdesign-uniapp/side-bar-item/side-bar-item.vue';
+import TGrid from 'tdesign-uniapp/grid/grid.vue';
+import TGridItem from 'tdesign-uniapp/grid-item/grid-item.vue';
 
 const image = 'https://tdesign.gtimg.com/mobile/demos/example2.png';
 const items = new Array(12).fill()
@@ -82,10 +79,10 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tSideBar,
-    tSideBarItem,
-    tGrid,
-    tGridItem,
+    TSideBar,
+    TSideBarItem,
+    TGrid,
+    TGridItem,
   },
   data() {
     return {
@@ -216,7 +213,7 @@ page .round-image {
     display: flex;
     height: 100vh;
 
-    --td-grid-item-text-font-size: 24rpx;
+    --td-grid-item-text-font: var(--td-font-body-small);
 }
 
 .side-bar-wrapper .content {

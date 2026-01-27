@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Button"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="Button 按钮"
@@ -19,7 +14,7 @@
         title="01 组件类型"
         desc="基础按钮"
       >
-        <baseComp />
+        <base-comp />
       </t-demo>
 
       <t-demo desc="图标按钮">
@@ -42,37 +37,37 @@
         title="02 组件状态"
         desc="按钮禁用态"
       >
-        <disabled />
+        <disabled-demo />
       </t-demo>
 
       <t-demo
         title="03 组件样式"
         desc="按钮尺寸"
       >
-        <size />
+        <size-demo />
       </t-demo>
 
       <t-demo desc="按钮形状">
-        <shape />
+        <shape-demo />
       </t-demo>
 
       <t-demo desc="按钮主题">
-        <theme />
+        <theme-demo />
       </t-demo>
     </view>
   </view>
 </template>
 
 <script>
-import baseComp from './base/index.vue';
-import size from './size/index.vue';
-import iconBtn from './icon-btn/index.vue';
-import groupBtn from './group-btn/index.vue';
-import blockBtn from './block-btn/index.vue';
-import ghostBtn from './ghost-btn/index.vue';
-import shape from './shape/index.vue';
-import theme from './theme/index.vue';
-import disabled from './disabled/index.vue';
+import BaseComp from './base/index.vue';
+import SizeDemo from './size/index.vue';
+import IconBtn from './icon-btn/index.vue';
+import GroupBtn from './group-btn/index.vue';
+import BlockBtn from './block-btn/index.vue';
+import GhostBtn from './ghost-btn/index.vue';
+import ShapeDemo from './shape/index.vue';
+import ThemeDemo from './theme/index.vue';
+import DisabledDemo from './disabled/index.vue';
 
 
 export default {
@@ -80,15 +75,15 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    baseComp,
-    size,
-    iconBtn,
-    groupBtn,
-    blockBtn,
-    ghostBtn,
-    shape,
-    theme,
-    disabled,
+    BaseComp,
+    SizeDemo,
+    IconBtn,
+    GroupBtn,
+    BlockBtn,
+    GhostBtn,
+    ShapeDemo,
+    ThemeDemo,
+    DisabledDemo,
   },
   data() {
     return {};

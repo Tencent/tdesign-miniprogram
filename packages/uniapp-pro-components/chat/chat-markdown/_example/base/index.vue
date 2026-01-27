@@ -1,6 +1,6 @@
 <template>
   <view class="chat-example-block">
-    <TChatMarkdown
+    <t-chat-markdown
       :content="markdownContent"
       @click="handleLinkTap"
     />

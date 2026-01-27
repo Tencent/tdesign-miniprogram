@@ -10,7 +10,7 @@
       :key="index"
       class="chat-example-block"
     >
-      <TAttachments
+      <t-attachments
         :items="[item]"
         @fileClick="onFileClick"
         @remove="onRemove"

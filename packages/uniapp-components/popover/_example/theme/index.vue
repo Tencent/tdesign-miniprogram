@@ -131,15 +131,15 @@
 </template>
 
 <script>
-import tPopover from 'tdesign-uniapp/popover/popover.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TPopover from 'tdesign-uniapp/popover/popover.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tPopover,
-    tButton,
+    TPopover,
+    TButton,
   },
   data() {
     return {

@@ -15,7 +15,7 @@
       :theme="skylineRender ? 'spinner' : 'circular'"
       size="56rpx"
       text="加载中..."
-      t-class="middle"
+      t-class="medium"
     />
 
     <view class="demo-desc">
@@ -31,11 +31,11 @@
 </template>
 
 <script>
-import tLoading from 'tdesign-uniapp/loading/loading.vue';
+import TLoading from 'tdesign-uniapp/loading/loading.vue';
 import SkylineBehavior from 'tdesign-uniapp/mixins/skyline.js';
 export default {
   components: {
-    tLoading,
+    TLoading,
   },
   mixins: [SkylineBehavior],
   data() {
@@ -48,11 +48,11 @@ export default {
 </script>
 <style>
 .large {
-    --td-loading-text-font-size: 32rpx;
+  --td-loading-text-font: var(--td-font-body-large);
 }
 
-.middle {
-    --td-loading-text-font-size: 28rpx;
+.medium {
+  --td-loading-text-font: var(--td-font-body-medium);
 }
 
 .loading-size-demo .demo-desc {

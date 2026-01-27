@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import tStepper from 'tdesign-uniapp/stepper/stepper.vue';
+import TStepper from 'tdesign-uniapp/stepper/stepper.vue';
 export default {
   components: {
-    tStepper,
+    TStepper,
   },
   data() {
     return {

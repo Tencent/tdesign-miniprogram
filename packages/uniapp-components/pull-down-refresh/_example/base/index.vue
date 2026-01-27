@@ -70,14 +70,14 @@
 </template>
 
 <script>
-import tPullDownRefresh from 'tdesign-uniapp/pull-down-refresh/pull-down-refresh.vue';
-import tSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
-import tBackTop from 'tdesign-uniapp/back-top/back-top.vue';
+import TPullDownRefresh from 'tdesign-uniapp/pull-down-refresh/pull-down-refresh.vue';
+import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
+import TBackTop from 'tdesign-uniapp/back-top/back-top.vue';
 export default {
   components: {
-    tPullDownRefresh,
-    tSkeleton,
-    tBackTop,
+    TPullDownRefresh,
+    TSkeleton,
+    TBackTop,
   },
   data() {
     return {

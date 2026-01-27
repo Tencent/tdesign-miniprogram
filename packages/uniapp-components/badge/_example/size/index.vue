@@ -13,7 +13,7 @@
     </view>
 
     <view class="demo-desc">
-      Middle
+      Medium
     </view>
 
     <view class="block">
@@ -26,12 +26,12 @@
 </template>
 
 <script>
-// import tBadge from 'tdesign-uniapp/badge/badge.vue';
-import tAvatar from 'tdesign-uniapp/avatar/avatar.vue';
+// import TBadge from 'tdesign-uniapp/badge/badge.vue';
+import TAvatar from 'tdesign-uniapp/avatar/avatar.vue';
 export default {
   components: {
-    // tBadge,
-    tAvatar,
+    // TBadge,
+    TAvatar,
   },
   data() {
     return {};

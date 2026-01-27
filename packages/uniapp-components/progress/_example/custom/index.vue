@@ -14,13 +14,13 @@
 </template>
 
 <script>
-import tProgress from 'tdesign-uniapp/progress/progress.vue';
+import TProgress from 'tdesign-uniapp/progress/progress.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tProgress,
+    TProgress,
   },
   data() {
     return {};

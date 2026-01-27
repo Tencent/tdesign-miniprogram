@@ -3,7 +3,7 @@
     <view class="demo-block__header-desc">
       带箭头的弹出气泡
     </view>
-    <TPopover
+    <t-popover
       v-model:visible="visible.normal"
       placement="top"
       theme="dark"
@@ -17,7 +17,7 @@
       </template>
 
       <view class="popover-example__content">
-        <TButton
+        <t-button
           theme="primary"
           variant="outline"
           size="large"
@@ -25,9 +25,9 @@
           @click="showPopover($event, { target: 'normal' })"
         >
           带箭头
-        </TButton>
+        </t-button>
       </view>
-    </TPopover>
+    </t-popover>
 
     <view
       class="demo-block__header-desc"
@@ -35,7 +35,7 @@
     >
       不带箭头的弹出气泡
     </view>
-    <TPopover
+    <t-popover
       v-model:visible="visible.noArrow"
       placement="top"
       theme="dark"
@@ -44,7 +44,7 @@
       data-target="noArrow"
     >
       <view class="popover-example__content">
-        <TButton
+        <t-button
           theme="primary"
           variant="outline"
           size="large"
@@ -52,9 +52,9 @@
           @click="showPopover($event, { target: 'noArrow' })"
         >
           不带箭头
-        </TButton>
+        </t-button>
       </view>
-    </TPopover>
+    </t-popover>
 
     <view
       class="demo-block__header-desc"
@@ -63,7 +63,7 @@
       自定义内容弹出气泡
     </view>
     <view class="custom">
-      <TPopover
+      <t-popover
         v-model:visible="visible.custom"
         placement="top"
         theme="dark"
@@ -83,7 +83,7 @@
 
 
         <view class="popover-example__content">
-          <TButton
+          <t-button
             theme="primary"
             variant="outline"
             size="large"
@@ -91,9 +91,9 @@
             @click="showPopover($event, { target: 'custom' })"
           >
             自定义内容
-          </TButton>
+          </t-button>
         </view>
-      </TPopover>
+      </t-popover>
     </view>
   </view>
 </template>

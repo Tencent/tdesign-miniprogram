@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="BackTop"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="BackTop 返回顶部"
@@ -91,7 +86,7 @@
         </view>
       </t-demo>
 
-      <BaseDemo
+      <base-demo
         v-if="type == 'round'"
         :scroll-top="scrollTop"
       />
@@ -105,16 +100,16 @@
 
 <script>
 
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
 import BaseDemo from './base/index.vue';
-import halfRound from './half-round/index.vue';
+import HalfRound from './half-round/index.vue';
 export default {
   components: {
-    tButton,
-    tSkeleton,
+    TButton,
+    TSkeleton,
     BaseDemo,
-    halfRound,
+    HalfRound,
   },
   data() {
     return {

@@ -39,12 +39,12 @@
 </template>
 
 <script>
-import tPopup from 'tdesign-uniapp/popup/popup.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TPopup from 'tdesign-uniapp/popup/popup.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 export default {
   components: {
-    tPopup,
-    tButton,
+    TPopup,
+    TButton,
   },
   data() {
     return {

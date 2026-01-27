@@ -74,15 +74,15 @@
 </template>
 
 <script>
-import tGrid from 'tdesign-uniapp/grid/grid.vue';
-import tGridItem from 'tdesign-uniapp/grid-item/grid-item.vue';
+import TGrid from 'tdesign-uniapp/grid/grid.vue';
+import TGridItem from 'tdesign-uniapp/grid-item/grid-item.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tGrid,
-    tGridItem,
+    TGrid,
+    TGridItem,
   },
   data() {
     return {

@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Skeleton"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="Skeleton 骨架屏"
@@ -18,7 +13,7 @@
         title="01 骨架屏类型"
         padding
       >
-        <theme />
+        <theme-demo />
       </t-demo>
 
       <t-demo
@@ -32,7 +27,7 @@
         desc="宫格骨架屏"
         padding
       >
-        <grid />
+        <grid-demo />
       </t-demo>
 
       <t-demo
@@ -46,7 +41,7 @@
         title="02 组件动效"
         padding
       >
-        <animation />
+        <animation-demo />
       </t-demo>
     </view>
   </view>
@@ -54,20 +49,20 @@
 
 <script>
 
-// import tSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
-import theme from './theme/index.vue';
-import grid from './grid/index.vue';
-import cellGroup from './cell-group/index.vue';
-import imageGroup from './image-group/index.vue';
-import animation from './animation/index.vue';
+// import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
+import ThemeDemo from './theme/index.vue';
+import GridDemo from './grid/index.vue';
+import CellGroup from './cell-group/index.vue';
+import ImageGroup from './image-group/index.vue';
+import AnimationDemo from './animation/index.vue';
 export default {
   components: {
-    // tSkeleton,
-    theme,
-    grid,
-    cellGroup,
-    imageGroup,
-    animation,
+    // TSkeleton,
+    ThemeDemo,
+    GridDemo,
+    CellGroup,
+    ImageGroup,
+    AnimationDemo,
   },
   data() {
     return {};

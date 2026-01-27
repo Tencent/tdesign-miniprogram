@@ -1,13 +1,10 @@
 <template>
   <view>
     <view class="custom-navbar">
-      <!-- #ifndef MP-ALIPAY -->
-      <t-navbar
-        class="demo-navbar"
+      <t-demo-navbar
+        custom-class="demo-navbar"
         title="TDesign"
-        left-arrow
       />
-      <!-- #endif -->
     </view>
 
     <view
@@ -73,11 +70,11 @@
 </template>
 
 <script>
-import tSideBar from 'tdesign-uniapp/side-bar/side-bar.vue';
-import tSideBarItem from 'tdesign-uniapp/side-bar-item/side-bar-item.vue';
-import tCellGroup from 'tdesign-uniapp/cell-group/cell-group.vue';
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tImage from 'tdesign-uniapp/image/image.vue';
+import TSideBar from 'tdesign-uniapp/side-bar/side-bar.vue';
+import TSideBarItem from 'tdesign-uniapp/side-bar-item/side-bar-item.vue';
+import TCellGroup from 'tdesign-uniapp/cell-group/cell-group.vue';
+import TCell from 'tdesign-uniapp/cell/cell.vue';
+import TImage from 'tdesign-uniapp/image/image.vue';
 
 const image = 'https://tdesign.gtimg.com/mobile/demos/example2.png';
 const items = new Array(12).fill(
@@ -94,11 +91,11 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tSideBar,
-    tSideBarItem,
-    tCellGroup,
-    tCell,
-    tImage,
+    TSideBar,
+    TSideBarItem,
+    TCellGroup,
+    TCell,
+    TImage,
   },
   data() {
     return {
@@ -189,8 +186,6 @@ page .round-image {
     display: flex;
     height: 100vh;
     overflow: hidden;
-
-    --td-grid-item-text-font-size: 24rpx;
 }
 
 .side-bar-wrapper .content {
@@ -207,8 +202,7 @@ page .round-image {
 .side-bar-wrapper .title {
     padding-left: 40rpx;
     margin-bottom: 8rpx;
-    font-size: 28rpx;
-    line-height: 44rpx;
+    font: var(--td-font-body-medium);
     color: var(--td-text-color-primary);
 }
 

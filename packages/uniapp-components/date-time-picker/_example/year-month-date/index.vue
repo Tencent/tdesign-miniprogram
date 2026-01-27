@@ -32,13 +32,13 @@
 </template>
 
 <script>
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tDateTimePicker from 'tdesign-uniapp/date-time-picker/date-time-picker.vue';
+import TCell from 'tdesign-uniapp/cell/cell.vue';
+import TDateTimePicker from 'tdesign-uniapp/date-time-picker/date-time-picker.vue';
 const calendarMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 export default {
   components: {
-    tCell,
-    tDateTimePicker,
+    TCell,
+    TDateTimePicker,
   },
   data() {
     let usingCustomNavbar = true;

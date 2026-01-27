@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tCascader from 'tdesign-uniapp/cascader/cascader.vue';
+import TCell from 'tdesign-uniapp/cell/cell.vue';
+import TCascader from 'tdesign-uniapp/cascader/cascader.vue';
 const data = {
   areaList: [
     {
@@ -180,8 +180,8 @@ const data = {
 };
 export default {
   components: {
-    tCell,
-    tCascader,
+    TCell,
+    TCascader,
   },
   data() {
     return {

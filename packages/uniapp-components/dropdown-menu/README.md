@@ -112,20 +112,14 @@ t-class-footer | 底部样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-dropdown-menu-active-color | @brand-color | - |
-| --td-dropdown-menu-bg-color | @bg-color-container | - |
-| --td-dropdown-menu-border-width | 1px | - |
-| --td-dropdown-menu-color | @text-color-primary | - |
-| --td-dropdown-menu-disabled-color | @text-color-disabled | - |
-| --td-dropdown-menu-font-size | 28rpx | - |
-| --td-dropdown-menu-height | 96rpx | - |
-| --td-dropdown-menu-icon-size | 40rpx | - |
-| --td-dropdown-body-max-height | 560rpx | - |
-| --td-dropdown-menu-bg-color | @bg-color-container | - |
-| --td-tree-bg-color | @bg-color-container | - |
-| --td-tree-item-active-color | @brand-color | - |
-| --td-tree-item-font-size | 32rpx | - |
-| --td-tree-item-height | 96rpx | - |
-| --td-tree-root-bg-color | @bg-color-secondarycontainer | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-dropdown-menu-active-color | @brand-color | -
+--td-dropdown-menu-bg-color | @bg-color-container | -
+--td-dropdown-menu-border-width | 1px | -
+--td-dropdown-menu-color | @text-color-primary | -
+--td-dropdown-menu-disabled-color | @text-color-disabled | -
+--td-dropdown-menu-font-size | 28rpx | -
+--td-dropdown-menu-height | 96rpx | -
+--td-dropdown-menu-icon-size | 40rpx | -
+--td-dropdown-body-max-height | 560rpx | -

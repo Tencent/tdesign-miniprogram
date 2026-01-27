@@ -97,6 +97,15 @@ export default uniComponent({
         this.canvasNode = canvas;
       }
     },
+
+    // 用于外部调用，重新绘制二维码
+    init() {
+      const canvasComp = this.$refs.qrcodeCanvas;
+      if (canvasComp) {
+        canvasComp.initCanvas();
+      }
+    },
+
     handleDrawCompleted() {
       this.canvasReady = true;
     },

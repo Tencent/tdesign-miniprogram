@@ -1,7 +1,7 @@
 <template>
   <view>
-    <TDropdownMenu relation-key="relationKey">
-      <TDropdownItem
+    <t-dropdown-menu relation-key="relationKey">
+      <t-dropdown-item
         label="单列多选"
         :options="multipleSelect.options"
         :value="multipleSelect.value"
@@ -9,7 +9,7 @@
         :relation-key="relationKey"
         @change="handleMultipleSelect"
       />
-      <TDropdownItem
+      <t-dropdown-item
         label="双列多选"
         options-columns="2"
         :options="doubleColumnsOptions"
@@ -17,7 +17,7 @@
         multiple
         :relation-key="relationKey"
       />
-      <TDropdownItem
+      <t-dropdown-item
         label="三列多选"
         options-columns="3"
         :options="tripleColumnsOptions"
@@ -25,7 +25,7 @@
         multiple
         :relation-key="relationKey"
       />
-    </TDropdownMenu>
+    </t-dropdown-menu>
   </view>
 </template>
 

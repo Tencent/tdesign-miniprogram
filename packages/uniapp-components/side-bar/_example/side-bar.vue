@@ -1,18 +1,13 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="SideBar"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
 
     <t-demo-header
       title="SideBar 侧边栏"
-      desc="用于内容分类后的展示切换。"
+      desc="用于信息分类后的展示切换或锚点，位于页面左侧。"
       notice="渲染框架支持情况：WebView"
     />
     <t-demo
@@ -20,7 +15,7 @@
       desc="侧边导航用法"
       padding
     >
-      <TButton
+      <t-button
         variant="outline"
         theme="primary"
         size="large"
@@ -29,9 +24,9 @@
         @click="toNavigation($event, { target: 'base' })"
       >
         锚点用法
-      </TButton>
+      </t-button>
 
-      <TButton
+      <t-button
         variant="outline"
         theme="primary"
         size="large"
@@ -40,14 +35,14 @@
         @click="toNavigation($event, { target: 'switch' })"
       >
         切页用法
-      </TButton>
+      </t-button>
     </t-demo>
 
     <t-demo
       desc="带图标侧边导航"
       padding
     >
-      <TButton
+      <t-button
         variant="outline"
         theme="primary"
         size="large"
@@ -56,7 +51,7 @@
         @click="toNavigation($event, { target: 'with-icon' })"
       >
         带图标侧边导航
-      </TButton>
+      </t-button>
     </t-demo>
 
     <t-demo
@@ -64,7 +59,7 @@
       desc="侧边导航样式"
       padding
     >
-      <TButton
+      <t-button
         variant="outline"
         theme="primary"
         size="large"
@@ -73,7 +68,7 @@
         @click="toNavigation($event, { target: 'custom' })"
       >
         自定义样式
-      </TButton>
+      </t-button>
     </t-demo>
   </view>
 </template>

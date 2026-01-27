@@ -1,7 +1,7 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         datetime="16:38"
         name="张三"
         :content="message.content"
@@ -9,7 +9,7 @@
       />
     </view>
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
         datetime="16:38"
         name="TDesignAI"
@@ -18,7 +18,7 @@
       />
     </view>
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
         datetime="16:38"
         name="TDesignAI"

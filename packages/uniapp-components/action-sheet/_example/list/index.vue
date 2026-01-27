@@ -13,7 +13,7 @@
       theme="primary"
       @click="handleAction"
     >
-      列表型
+      常规列表型
     </t-button>
 
     <t-button
@@ -39,13 +39,13 @@
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tActionSheet from 'tdesign-uniapp/action-sheet/action-sheet.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TActionSheet from 'tdesign-uniapp/action-sheet/action-sheet.vue';
 import ActionSheet, { ActionSheetTheme } from 'tdesign-uniapp/action-sheet/index';
 export default {
   components: {
-    tButton,
-    tActionSheet,
+    TButton,
+    TActionSheet,
   },
   data() {
     return {};
@@ -57,20 +57,8 @@ export default {
         theme: ActionSheetTheme.List,
         selector: '#t-action-sheet',
         context: this,
-        items: [
-          {
-            label: '选项一',
-          },
-          {
-            label: '选项二',
-          },
-          {
-            label: '选项三',
-          },
-          {
-            label: '选项四',
-          },
-        ],
+        cancelText: 'cancel',
+        items: ['Move', 'Mark as important', 'Unsubscribe', 'Add to Tasks'],
       });
     },
     showDescAction() {
@@ -78,18 +66,9 @@ export default {
         theme: ActionSheetTheme.List,
         selector: '#t-action-sheet',
         context: this,
-        description: '动作面板描述文字',
-        items: [
-          {
-            label: '选项一',
-          },
-          {
-            label: '选项二',
-          },
-          {
-            label: '选项三',
-          },
-        ],
+        cancelText: 'cancel',
+        description: 'Email Settings',
+        items: ['Move', 'Mark as important', 'Unsubscribe', 'Add to Tasks'],
       });
     },
     showIconAction() {
@@ -97,22 +76,23 @@ export default {
         theme: ActionSheetTheme.List,
         selector: '#t-action-sheet',
         context: this,
+        cancelText: 'cancel',
         items: [
           {
-            label: '选项一',
-            icon: 'app',
+            label: 'Move',
+            icon: 'enter',
           },
           {
-            label: '选项二',
-            icon: 'app',
+            label: 'Mark as important',
+            icon: 'bookmark',
           },
           {
-            label: '选项三',
-            icon: 'app',
+            label: 'Unsubscribe',
+            icon: 'pin',
           },
           {
-            label: '选项四',
-            icon: 'app',
+            label: 'Add to Tasks',
+            icon: 'cloud-upload',
           },
         ],
       });

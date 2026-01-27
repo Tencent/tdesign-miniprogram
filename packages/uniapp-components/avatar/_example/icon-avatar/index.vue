@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import tAvatar from 'tdesign-uniapp/avatar/avatar.vue';
+import TAvatar from 'tdesign-uniapp/avatar/avatar.vue';
 export default {
   components: {
-    tAvatar,
+    TAvatar,
   },
   data() {
     return {

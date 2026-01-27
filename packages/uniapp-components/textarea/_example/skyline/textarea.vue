@@ -6,10 +6,10 @@
 
 <script>
 
-import textareaDemo from '../textarea.vue';
+import TextareaDemo from '../textarea.vue';
 export default {
   components: {
-    textareaDemo,
+    TextareaDemo,
   },
   data() {
     return {};

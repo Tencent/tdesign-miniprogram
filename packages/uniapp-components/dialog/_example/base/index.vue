@@ -95,15 +95,15 @@
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tDialog from 'tdesign-uniapp/dialog/dialog.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TDialog from 'tdesign-uniapp/dialog/dialog.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tButton,
-    tDialog,
+    TButton,
+    TDialog,
   },
   data() {
     return {

@@ -72,12 +72,12 @@
 </template>
 
 <script>
-import tImage from 'tdesign-uniapp/image/image.vue';
-import tLoading from 'tdesign-uniapp/loading/loading.vue';
+import TImage from 'tdesign-uniapp/image/image.vue';
+import TLoading from 'tdesign-uniapp/loading/loading.vue';
 export default {
   components: {
-    tImage,
-    tLoading,
+    TImage,
+    TLoading,
   },
   data() {
     return {

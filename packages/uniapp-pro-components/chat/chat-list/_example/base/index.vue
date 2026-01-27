@@ -4,7 +4,7 @@
       class="chat-box"
       :style="'height: ' + contentHeight + ';'"
     >
-      <TChatList
+      <t-chat-list
         id="chatList"
         @scroll="onScroll($event, { tagId: 'chatList' })"
       >
@@ -12,7 +12,7 @@
           v-for="(item) in chatList"
           :key="item.key"
         >
-          <TChatMessage
+          <t-chat-message
             :avatar="item.avatar || ''"
             :name="item.name || ''"
             :datetime="item.datetime || ''"
@@ -22,17 +22,17 @@
             :status="item.status || ''"
           >
             <template #actionbar>
-              <TChatActionbar
+              <t-chat-actionbar
                 v-if="chatIndex !== chatList.length - 1 && item.status === 'complete' && item.role === 'assistant'"
                 placement="end"
                 @actions="handleAction"
               />
             </template>
-          </TChatMessage>
+          </t-chat-message>
         </block>
 
         <template #footer>
-          <TChatSender
+          <t-chat-sender
             v-model:value="value"
             :loading="loading"
             :disabled="disabled"
@@ -43,11 +43,11 @@
             @focus="onFocus"
           />
         </template>
-      </TChatList>
+      </t-chat-list>
       <!-- 内置虚拟列表优化性能仅在data属性中使用 -->
       <!-- <TChatList id="chatList" bindscroll="onScroll" data="{{chatList}}"></TChatList> -->
     </view>
-    <TToast ref="t-toast" />
+    <t-toast ref="t-toast" />
   </view>
 </template>
 
@@ -57,7 +57,7 @@ import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
 import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
 import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
 import TToast from 'tdesign-uniapp/toast/toast.vue';
-import Toast from 'tdesign-uniapp/toast';
+import Toast from 'tdesign-uniapp/toast/index';
 import { getNavigationBarHeight } from '../utils';
 
 

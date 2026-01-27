@@ -1,14 +1,9 @@
 <template>
   <view class="tdesign-mobile-demo">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Form"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <t-demo-header
       title="Form 表单"
       desc="用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。"
@@ -20,7 +15,7 @@
     >
       <view class="option">
         <view class="select-button-group">
-          <TButton
+          <t-button
             :theme="isActive1 ? 'light' : 'default'"
             shape="round"
             data-name="isActive1"
@@ -29,8 +24,8 @@
             @click="() => onClick()"
           >
             水平排布
-          </TButton>
-          <TButton
+          </t-button>
+          <t-button
             :theme="isActive2 ? 'light' : 'default'"
             shape="round"
             data-name="isActive2"
@@ -39,32 +34,32 @@
             @click="() => onClick()"
           >
             竖向排布
-          </TButton>
+          </t-button>
         </view>
       </view>
     </t-demo>
 
     <view v-if="isActive1">
-      <Horizontal :disabled="switchValue" />
+      <horizontal-demo :disabled="switchValue" />
     </view>
 
     <view v-if="isActive2">
-      <Vertical :disabled="switchValue" />
+      <vertical-demo :disabled="switchValue" />
     </view>
   </view>
 </template>
 
 <script>
 
-import Horizontal from './horizontal/index.vue';
-import Vertical from './vertical/index.vue';
+import HorizontalDemo from './horizontal/index.vue';
+import VerticalDemo from './vertical/index.vue';
 import TButton from 'tdesign-uniapp/button/button.vue';
 import { canUseVirtualHost } from 'tdesign-uniapp/common/version';
 
 export default {
   components: {
-    Horizontal,
-    Vertical,
+    HorizontalDemo,
+    VerticalDemo,
     TButton,
   },
   data() {

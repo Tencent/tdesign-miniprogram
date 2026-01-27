@@ -24,10 +24,10 @@
 </template>
 
 <script>
-import tLink from 'tdesign-uniapp/link/link.vue';
+import TLink from 'tdesign-uniapp/link/link.vue';
 export default {
   components: {
-    tLink,
+    TLink,
   },
   data() {
     return {};

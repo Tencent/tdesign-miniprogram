@@ -1,11 +1,26 @@
 const path = require('path');
+const { PACKAGES_ROOT } = require('../release/config');
 
-const PACKAGES_ROOT = path.resolve(__dirname, '../../../../');
+const VUE3_CLI_ROOT = path.resolve(__dirname, '../..');
+const APP_ROOT = path.resolve(__dirname, '../../../app');
+const VUE2_CLI_ROOT = path.resolve(PACKAGES_ROOT, '../../tdesign-uniapp-vue2-cli-demo');
+
 
 const config = {
-  targetDir: path.resolve(__dirname, '../../src/_tdesign'),
-  rawTargetDir: path.resolve(__dirname, '../../src/_tdesign-raw'),
-  rawTargetDirInApp: path.resolve(__dirname, '../../../app/tdesign-uniapp-raw'),
+  vue3CliRoot: VUE3_CLI_ROOT,
+  appRoot: APP_ROOT,
+  vue2CliRoot: VUE2_CLI_ROOT,
+
+  componentTargetDirInVue3Cli: path.resolve(VUE3_CLI_ROOT, 'src/_tdesign'),
+  componentTargetDirInApp: path.resolve(APP_ROOT, 'uni_modules/tdesign-uniapp/components'),
+  componentTargetDirInVue2Cli: path.resolve(VUE2_CLI_ROOT, 'src/_tdesign'),
+
+  pagesMoreDirInVue3Cli: path.resolve(VUE3_CLI_ROOT, 'src/pages-more'),
+  pagesMoreDirInApp: path.resolve(APP_ROOT, 'pages-more'),
+  pagesMoreDirInVue2Cli: path.resolve(VUE2_CLI_ROOT, 'src/pages-more'),
+
+  infraDirInApp: APP_ROOT,
+  infraDirInVue2Cli: path.resolve(VUE2_CLI_ROOT, 'src'),
 
   sourceDir: path.resolve(PACKAGES_ROOT, 'uniapp-components'),
   chatSourceDir: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat'),
@@ -14,17 +29,7 @@ const config = {
   chatSourceGlob: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat/**/*'),
   baseAndChatSourceGlob: path.resolve(PACKAGES_ROOT, '{uniapp-components,uniapp-pro-components}/**/*'),
 
-  demoDir: path.resolve(__dirname, '../../src/pages-more'),
-
-  demoRealDir: path.resolve(__dirname, '../../'),
-
-  demoPagesGlob: path.resolve(__dirname, '../../src/pages/**/*'),
-  demoComponentsGlob: path.resolve(__dirname, '../../src/components/**/*'),
-
-  appDir: path.resolve(__dirname, '../../../app'),
-  appPagesMoreDir: path.resolve(__dirname, '../../../app/pages-more'),
-  appComponentsDir: path.resolve(__dirname, '../../../app/components'),
-  appPagesDir: path.resolve(__dirname, '../../../app/pages'),
+  demoPagesGlob: path.resolve(VUE3_CLI_ROOT, 'src/{pages,components,mixins,style}/**/*'),
 };
 
 

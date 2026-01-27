@@ -6,18 +6,14 @@
 @form-item-vertical-padding: var(--td-form-item-vertical-padding, 32rpx);
 @form-item-label-width: var(--td-form-item-label-width, 160rpx);
 @form-item-justify-content: var(--td-form-item-justify-content, space-between);
-@form-bg-color: var(--td-form-bg-color, @bg-color-container);
-
-
 .@{form-item-prefix} {
   position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: @form-item-justify-content;
   width: 100%;
-  padding: @form-item-vertical-padding @form-item-horizontal-padding;
-  background-color: @form-bg-color;
-
+  padding: @form-item-horizontal-padding @form-item-vertical-padding;
+  background-color: #ffffff;
   --td-input-vertical-padding: 0rpx;
   --td-textarea-vertical-padding: 0rpx;
   --td-textarea-horizontal-padding: 0rpx;
@@ -88,28 +84,6 @@
     width: 100%;
     margin-top: 8rpx;
 
-    &-content {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-
-      &--left {
-        justify-content: flex-start;
-      }
-
-      &--right {
-        justify-content: flex-end;
-      }
-    }
-  }
-
-  &__help {
-    font-size: @font-size-s;
-
-    color: @text-color-disabled;
-    line-height: 1.4;
-
     &--left {
       text-align: left;
     }
@@ -117,6 +91,21 @@
     &--right {
       text-align: right;
     }
+
+    &-content {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__help {
+    // margin: 4rpx 0 8rpx;
+    font-size: @font-size-m;
+
+    color: @font-gray-1;
+    line-height: 1.4;
   }
 
   &__desc-link {

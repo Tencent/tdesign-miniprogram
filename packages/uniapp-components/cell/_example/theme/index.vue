@@ -24,12 +24,12 @@
 </template>
 
 <script>
-import tCellGroup from 'tdesign-uniapp/cell-group/cell-group.vue';
-import tCell from 'tdesign-uniapp/cell/cell.vue';
+import TCellGroup from 'tdesign-uniapp/cell-group/cell-group.vue';
+import TCell from 'tdesign-uniapp/cell/cell.vue';
 export default {
   components: {
-    tCellGroup,
-    tCell,
+    TCellGroup,
+    TCell,
   },
   data() {
     return {};

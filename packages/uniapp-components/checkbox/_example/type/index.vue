@@ -32,10 +32,10 @@
 </template>
 
 <script>
-import tCheckbox from 'tdesign-uniapp/checkbox/checkbox.vue';
+import TCheckbox from 'tdesign-uniapp/checkbox/checkbox.vue';
 export default {
   components: {
-    tCheckbox,
+    TCheckbox,
   },
   data() {
     return {

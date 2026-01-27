@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Indexes"
-      left-arrow
-      ta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="indexes">
       <t-demo-header
         title="Indexes 索引"
@@ -51,10 +46,10 @@
 
 <script>
 
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 export default {
   components: {
-    tButton,
+    TButton,
   },
   data() {
     return {};

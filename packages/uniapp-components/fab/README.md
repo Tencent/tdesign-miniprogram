@@ -76,6 +76,6 @@ drag-start | `(context: { e: TouchEvent })` | 开始拖拽时触发
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-fab-shadow | @shadow-2 | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-fab-shadow | @shadow-2 | -

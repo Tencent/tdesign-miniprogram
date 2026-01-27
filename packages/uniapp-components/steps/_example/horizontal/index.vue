@@ -59,14 +59,14 @@
 </template>
 
 <script>
-import tSteps from 'tdesign-uniapp/steps/steps.vue';
-import tStepItem from 'tdesign-uniapp/step-item/step-item.vue';
+import TSteps from 'tdesign-uniapp/steps/steps.vue';
+import TStepItem from 'tdesign-uniapp/step-item/step-item.vue';
 
 
 export default {
   components: {
-    tSteps,
-    tStepItem,
+    TSteps,
+    TStepItem,
   },
   data() {
     return {

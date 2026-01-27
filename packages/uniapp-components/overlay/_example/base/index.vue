@@ -19,12 +19,12 @@
 </template>
 
 <script>
-import tOverlay from 'tdesign-uniapp/overlay/overlay.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TOverlay from 'tdesign-uniapp/overlay/overlay.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 export default {
   components: {
-    tOverlay,
-    tButton,
+    TOverlay,
+    TButton,
   },
   data() {
     return {

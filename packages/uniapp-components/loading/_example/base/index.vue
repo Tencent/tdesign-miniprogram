@@ -33,16 +33,16 @@
 </template>
 
 <script>
-import tLoading from 'tdesign-uniapp/loading/loading.vue';
-import tImage from 'tdesign-uniapp/image/image.vue';
+import TLoading from 'tdesign-uniapp/loading/loading.vue';
+import TImage from 'tdesign-uniapp/image/image.vue';
 import SkylineBehavior from 'tdesign-uniapp/mixins/skyline.js';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tLoading,
-    tImage,
+    TLoading,
+    TImage,
   },
   mixins: [SkylineBehavior],
   data() {

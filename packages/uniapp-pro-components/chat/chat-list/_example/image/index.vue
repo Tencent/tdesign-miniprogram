@@ -4,12 +4,12 @@
       class="chat-box image-chat"
       :style="'height: ' + contentHeight + ';'"
     >
-      <TChatList>
+      <t-chat-list>
         <block
           v-for="(item, chatIndex) in chatList"
           :key="item.key"
         >
-          <TChatMessage
+          <t-chat-message
             :avatar="item.avatar || ''"
             :name="item.name || ''"
             :datetime="item.datetime || ''"
@@ -24,7 +24,7 @@
                   v-for="(contentItem, contentIndex) in item.message.content"
                   :key="contentIndex"
                 >
-                  <TChatContent
+                  <t-chat-content
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
                     :role="item.message.role"
@@ -39,7 +39,7 @@
                   v-for="(contentItem, contentIndex) in item.message.content"
                   :key="contentIndex"
                 >
-                  <TChatContent
+                  <t-chat-content
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
                     :role="item.message.role"
@@ -49,7 +49,7 @@
                     v-else
                     class="attachment-slide"
                   >
-                    <TAttachments
+                    <t-attachments
                       :items="contentItem.data"
                       :in-chat="true"
                       :removable="false"
@@ -59,16 +59,16 @@
               </view>
             </template>
             <template #actionbar>
-              <TChatActionbar
+              <t-chat-actionbar
                 v-if="chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'"
                 placement="end"
                 @actions="handleAction"
               />
             </template>
-          </TChatMessage>
+          </t-chat-message>
         </block>
         <template #footer>
-          <TChatSender
+          <t-chat-sender
             :value="value"
             :loading="loading"
             :disabled="disabled"
@@ -79,9 +79,9 @@
             @focus="onFocus"
           />
         </template>
-      </TChatList>
+      </t-chat-list>
     </view>
-    <TToast ref="t-toast" />
+    <t-toast ref="t-toast" />
   </view>
 </template>
 
@@ -93,7 +93,7 @@ import TAttachments from 'tdesign-uniapp-chat/attachments/attachments.vue';
 import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
 import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
 import TToast from 'tdesign-uniapp/toast/toast.vue';
-import Toast from 'tdesign-uniapp/toast';
+import Toast from 'tdesign-uniapp/toast/index';
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;

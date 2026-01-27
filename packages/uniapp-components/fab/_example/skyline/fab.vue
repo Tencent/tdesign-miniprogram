@@ -1,12 +1,9 @@
 <template>
   <view>
     <view class="skyline">
-      <!-- #ifndef MP-ALIPAY -->
-      <t-navbar
+      <t-demo-navbar
         title="Fab"
-        left-arrow
       />
-      <!-- #endif -->
       <scroll-view
         scroll-y
         type="list"
@@ -68,26 +65,25 @@
       </scroll-view>
     </view>
 
-    <baseDemo v-if="type == 'base'" />
-    <advance v-else-if="type == 'advance'" />
-    <draggable v-else />
+    <BaseDemo v-if="type == 'base'" />
+    <AdvanceDemo v-else-if="type == 'advance'" />
+    <DraggableDemo v-else />
   </view>
 </template>
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
-import baseDemo from '../base/index.vue';
-import advance from '../advance/index.vue';
-import draggable from '../draggable/index.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import BaseDemo from '../base/index.vue';
+import Advance from '../advance/index.vue';
+import Draggable from '../draggable/index.vue';
+
 export default {
   components: {
-    tNavbar,
-    tButton,
-    baseDemo,
-    advance,
-    draggable,
+    TButton,
+    BaseDemo,
+    AdvanceDemo,
+    DraggableDemo,
   },
   data() {
     return {

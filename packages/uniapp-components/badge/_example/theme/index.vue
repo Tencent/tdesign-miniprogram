@@ -68,13 +68,56 @@
       title="单行标题"
       t-class="t-class-cell"
     >
-      <template
-        #note
-      >
+      <template #note>
         <t-badge
-          count="New"
-          :offset="skylineRender ? ['-16rpx', '-56rpx'] : [0, 0]"
+          count="NEW"
+          :offset="skylineRender ? ['-18rpx', '-32rpx'] : [0, 0]"
+          shape="ribbon-left"
+        />
+      </template>
+    </t-cell>
+    <t-cell
+      title="单行标题"
+      :bordered="false"
+      t-class="t-class-cell"
+    >
+      <template #note>
+        <t-badge
+          count="NEW"
+          :offset="skylineRender ? ['-18rpx', '-32rpx'] : [0, 0]"
           shape="ribbon"
+        />
+      </template>
+    </t-cell>
+
+    <view
+      class="demo-desc"
+      style="margin-bottom: 32rpx"
+    >
+      三角角标
+    </view>
+    <t-cell
+      title="单行标题"
+      t-class="t-class-cell"
+    >
+      <template #note>
+        <t-badge
+          count="NEW"
+          :offset="skylineRender ? ['-24rpx', '-32rpx'] : [0, 0]"
+          shape="triangle-left"
+        />
+      </template>
+    </t-cell>
+    <t-cell
+      title="单行标题"
+      :bordered="false"
+      t-class="t-class-cell"
+    >
+      <template #note>
+        <t-badge
+          count="NEW"
+          :offset="skylineRender ? ['-24rpx', '-32rpx'] : [0, 0]"
+          shape="triangle-right"
         />
       </template>
     </t-cell>
@@ -82,10 +125,10 @@
 </template>
 
 <script>
-import tBadge from 'tdesign-uniapp/badge/badge.vue';
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TBadge from 'tdesign-uniapp/badge/badge.vue';
+import TCell from 'tdesign-uniapp/cell/cell.vue';
+import TIcon from 'tdesign-uniapp/icon/icon.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 import SkylineBehavior from 'tdesign-uniapp/mixins/skyline.js';
 
 export default {
@@ -93,10 +136,10 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tBadge,
-    tCell,
-    tIcon,
-    tButton,
+    TBadge,
+    TCell,
+    TIcon,
+    TButton,
   },
   mixins: [SkylineBehavior],
   data() {

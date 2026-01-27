@@ -8,10 +8,10 @@
 </template>
 
 <script>
-import tLoading from 'tdesign-uniapp/loading/loading.vue';
+import TLoading from 'tdesign-uniapp/loading/loading.vue';
 export default {
   components: {
-    tLoading,
+    TLoading,
   },
   data() {
     return {};

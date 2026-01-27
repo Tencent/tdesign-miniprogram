@@ -21,13 +21,13 @@
 </template>
 
 <script>
-import tAvatar from 'tdesign-uniapp/avatar/avatar.vue';
+import TAvatar from 'tdesign-uniapp/avatar/avatar.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tAvatar,
+    TAvatar,
   },
   data() {
     return {

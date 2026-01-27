@@ -8,13 +8,13 @@
 
 @avatar-group-init-zIndex: 50;
 
-// .generate-z-index(@n, @i: 1) when (@i =< @n) {
-//   & :deep(.@{prefix}-avatar__wrapper):nth-child(@{i}) {
-//     z-index: calc(var(--td-avatar-group-init-z-index, @avatar-group-init-zIndex) - @i);
-//   }
+.generate-z-index(@n, @i: 1) when (@i =< @n) {
+  & .@{prefix}-avatar__wrapper:nth-child(@{i}) {
+    z-index: calc(var(--td-avatar-group-init-z-index, @avatar-group-init-zIndex) - @i);
+  }
 
-//   .generate-z-index(@n, (@i + 1));
-// }
+  .generate-z-index(@n, (@i + 1));
+}
 
 .@{prefix}-avatar-group {
   display: inline-flex;
@@ -23,9 +23,9 @@
 
   &-offset-left,
   &-offset-right {
-    // & :deep(.@{prefix}-avatar__wrapper) {
-    //   padding: @avatar-group-line-spacing 0;
-    // }
+    & .@{prefix}-avatar__wrapper {
+      padding: @avatar-group-line-spacing 0;
+    }
 
     &-small {
       --td-avatar-margin-left: @avatar-group-offset-small; // ‘small’尺寸组合头像偏移间距
@@ -40,9 +40,9 @@
     }
   }
 
-  // &-offset-left {
-  //   .generate-z-index(@avatar-group-init-zIndex);
-  // }
+  &-offset-left {
+    .generate-z-index(@avatar-group-init-zIndex);
+  }
 
   &__collapse--slot,
   &__collapse--default {

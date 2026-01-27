@@ -12,7 +12,7 @@
         {{ title || realLocalText.title }}
       </text>
     </view>
-    <TIcon
+    <t-icon
       v-if="usePopup"
       name="close"
       :t-class="classPrefix + '__close-btn'"
@@ -26,7 +26,7 @@
       v-if="switchMode !== 'none'"
       name="calendar-header"
     >
-      <CalendarHeader
+      <calendar-header
         :class-prefix="classPrefix + '-header'"
         :switch-mode="switchMode"
         :title="getMonthTitle(
@@ -69,7 +69,7 @@
           v-if="switchMode === 'none'"
           name="calendar-header"
         >
-          <CalendarHeader
+          <calendar-header
             :t-class="classPrefix + '__month'"
             :class-prefix="classPrefix + '-header'"
             :switch-mode="switchMode"
@@ -129,7 +129,7 @@
         name="confirm-btn"
       />
       <block v-else-if="innerConfirmBtn">
-        <TButton
+        <t-button
           :t-id="innerConfirmBtn.tId"
           :custom-style="innerConfirmBtn.style"
           :block="coalesce(innerConfirmBtn.block, true)"
@@ -171,7 +171,7 @@
           @agreeprivacyauthorization="onTplButtonTap"
         >
           <slot v-if="innerConfirmBtn.useDefaultSlot" />
-        </TButton>
+        </t-button>
       </block>
     </view>
   </view>

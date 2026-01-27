@@ -68,37 +68,37 @@ t-class-label | 开关内容样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-switch-checked-color | @brand-color | - |
-| --td-switch-checked-disabled-color | @brand-color-disabled | - |
-| --td-switch-dot-disabled-color | @font-white-1 | - |
-| --td-switch-dot-horizontal-margin | 6rpx | - |
-| --td-switch-dot-large-size | 52rpx | - |
-| --td-switch-dot-plain-horizontal-margin | 10rpx | - |
-| --td-switch-dot-plain-large-size | 44rpx | - |
-| --td-switch-dot-plain-size | 36rpx | - |
-| --td-switch-dot-plain-small-size | 28rpx | - |
-| --td-switch-dot-shadow | @shadow-1 | - |
-| --td-switch-dot-size | 44rpx | - |
-| --td-switch-dot-small-size | 36rpx | - |
-| --td-switch-height | 56rpx | - |
-| --td-switch-icon-large-size | 48rpx | - |
-| --td-switch-icon-size | 40rpx | - |
-| --td-switch-icon-small-size | 32rpx | - |
-| --td-switch-label-checked-color | @switch-checked-color | - |
-| --td-switch-label-color | @bg-color-secondarycontainer-active | - |
-| --td-switch-label-font-size | 28rpx | - |
-| --td-switch-label-large-font-size | 32rpx | - |
-| --td-switch-label-small-font-size | 24rpx | - |
-| --td-switch-large-height | 64rpx | - |
-| --td-switch-large-radius | calc(@switch-large-height / 2) | - |
-| --td-switch-large-width | 104rpx | - |
-| --td-switch-loading-color | @brand-color | - |
-| --td-switch-radius | calc(@switch-height / 2) | - |
-| --td-switch-small-height | 48rpx | - |
-| --td-switch-small-radius | calc(@switch-small-height / 2) | - |
-| --td-switch-small-width | 78rpx | - |
-| --td-switch-unchecked-color | @bg-color-secondarycontainer-active | - |
-| --td-switch-unchecked-disabled-color | @bg-color-component-disabled | - |
-| --td-switch-width | 90rpx | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-switch-checked-color | @brand-color | -
+--td-switch-checked-disabled-color | @brand-color-disabled | -
+--td-switch-dot-disabled-color | @font-white-1 | -
+--td-switch-dot-horizontal-margin | 6rpx | -
+--td-switch-dot-large-size | 52rpx | -
+--td-switch-dot-plain-horizontal-margin | 10rpx | -
+--td-switch-dot-plain-large-size | 44rpx | -
+--td-switch-dot-plain-size | 36rpx | -
+--td-switch-dot-plain-small-size | 28rpx | -
+--td-switch-dot-shadow | @shadow-1 | -
+--td-switch-dot-size | 44rpx | -
+--td-switch-dot-small-size | 36rpx | -
+--td-switch-height | 56rpx | -
+--td-switch-icon-large-size | 48rpx | -
+--td-switch-icon-size | 40rpx | -
+--td-switch-icon-small-size | 32rpx | -
+--td-switch-label-checked-color | @switch-checked-color | -
+--td-switch-label-color | @bg-color-secondarycontainer-active | -
+--td-switch-label-font-size | 28rpx | -
+--td-switch-label-large-font-size | 32rpx | -
+--td-switch-label-small-font-size | 24rpx | -
+--td-switch-large-height | 64rpx | -
+--td-switch-large-radius | calc(@switch-large-height / 2) | -
+--td-switch-large-width | 104rpx | -
+--td-switch-loading-color | @brand-color | -
+--td-switch-radius | calc(@switch-height / 2) | -
+--td-switch-small-height | 48rpx | -
+--td-switch-small-radius | calc(@switch-small-height / 2) | -
+--td-switch-small-width | 78rpx | -
+--td-switch-unchecked-color | @bg-color-secondarycontainer-active | -
+--td-switch-unchecked-disabled-color | @bg-color-component-disabled | -
+--td-switch-width | 90rpx | -

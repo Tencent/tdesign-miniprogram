@@ -35,12 +35,12 @@
 </template>
 
 <script>
-import tCollapse from 'tdesign-uniapp/collapse/collapse.vue';
-import tCollapsePanel from 'tdesign-uniapp/collapse-panel/collapse-panel.vue';
+import TCollapse from 'tdesign-uniapp/collapse/collapse.vue';
+import TCollapsePanel from 'tdesign-uniapp/collapse-panel/collapse-panel.vue';
 export default {
   components: {
-    tCollapse,
-    tCollapsePanel,
+    TCollapse,
+    TCollapsePanel,
   },
   data() {
     return {};

@@ -1,12 +1,9 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Drawer"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -24,7 +21,7 @@
           desc="基础抽屉"
           padding
         >
-          <baseDemo />
+          <base-demo />
         </t-demo>
         <t-demo
           desc="带图标抽屉"
@@ -37,13 +34,13 @@
           desc="带标题样式"
           padding
         >
-          <titleDemo />
+          <title-demo />
         </t-demo>
         <t-demo
           desc="带底部插槽样式"
           padding
         >
-          <footerDemo />
+          <footer-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -52,18 +49,17 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import titleDemo from '../title/index.vue';
-import iconDrawer from '../icon-drawer/index.vue';
-import footerDemo from '../footer/index.vue';
+import BaseDemo from '../base/index.vue';
+import TitleDemo from '../title/index.vue';
+import IconDrawer from '../icon-drawer/index.vue';
+import FooterDemo from '../footer/index.vue';
+
 export default {
   components: {
-    tNavbar,
-    baseDemo,
-    titleDemo,
-    iconDrawer,
-    footerDemo,
+    BaseDemo,
+    TitleDemo,
+    IconDrawer,
+    FooterDemo,
   },
   data() {
     return {};

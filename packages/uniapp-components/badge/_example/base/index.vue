@@ -80,17 +80,17 @@
 </template>
 
 <script>
-import tBadge from 'tdesign-uniapp/badge/badge.vue';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TBadge from 'tdesign-uniapp/badge/badge.vue';
+import TIcon from 'tdesign-uniapp/icon/icon.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tBadge,
-    tIcon,
-    tButton,
+    TBadge,
+    TIcon,
+    TButton,
   },
   data() {
     return {};

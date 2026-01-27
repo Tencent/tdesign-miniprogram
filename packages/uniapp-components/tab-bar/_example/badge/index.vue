@@ -5,6 +5,7 @@
       <t-tab-bar
         t-class="t-tab-bar"
         default-value="label1"
+        :fixed="false"
       >
         <t-tab-bar-item
           :badge-props="{count: 16, offset: [16, 0]} "
@@ -43,6 +44,7 @@
         t-class="t-tab-bar"
         default-value="label1"
         :split="false"
+        :fixed="false"
       >
         <t-tab-bar-item
           :badge-props="{count: 16}"
@@ -77,6 +79,7 @@
         t-class="t-tab-bar"
         default-value="label1"
         :split="false"
+        :fixed="false"
       >
         <t-tab-bar-item
           :badge-props="{count: 16}"
@@ -116,12 +119,12 @@
 </template>
 
 <script>
-import tTabBar from 'tdesign-uniapp/tab-bar/tab-bar.vue';
-import tTabBarItem from 'tdesign-uniapp/tab-bar-item/tab-bar-item.vue';
+import TTabBar from 'tdesign-uniapp/tab-bar/tab-bar.vue';
+import TTabBarItem from 'tdesign-uniapp/tab-bar-item/tab-bar-item.vue';
 export default {
   components: {
-    tTabBar,
-    tTabBarItem,
+    TTabBar,
+    TTabBarItem,
   },
   data() {
     return {

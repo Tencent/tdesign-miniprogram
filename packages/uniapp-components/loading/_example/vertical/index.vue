@@ -20,14 +20,14 @@
 </template>
 
 <script>
-import tLoading from 'tdesign-uniapp/loading/loading.vue';
+import TLoading from 'tdesign-uniapp/loading/loading.vue';
 import SkylineBehavior from 'tdesign-uniapp/mixins/skyline.js';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tLoading,
+    TLoading,
   },
   mixins: [SkylineBehavior],
   data() {

@@ -1,12 +1,9 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="block"
+    <t-demo-navbar
+      custom-class="block"
       title="BackTop"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -98,7 +95,7 @@
           </view>
         </t-demo>
 
-        <baseDemo
+        <base-demo
           v-if="type == 'round'"
           :scroll-top="scrollTop"
           @to-top="onToTop"
@@ -114,19 +111,17 @@
 </template>
 
 <script>
+import TButton from 'tdesign-uniapp/button/button.vue';
+import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
+import BaseDemo from '../base/index.vue';
+import HalfRound from '../half-round/index.vue';
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
-import baseDemo from '../base/index.vue';
-import halfRound from '../half-round/index.vue';
 export default {
   components: {
-    tNavbar,
-    tButton,
-    tSkeleton,
-    baseDemo,
-    halfRound,
+    TButton,
+    TSkeleton,
+    BaseDemo,
+    HalfRound,
   },
   data() {
     return {
@@ -146,7 +141,7 @@ export default {
     };
   },
   methods: {
-    onScroll(e: any) {
+    onScroll(e) {
       const { scrollTop } = e.detail;
       this.scrollTop = scrollTop;
     },
@@ -155,7 +150,7 @@ export default {
       this.scrollTo = 0;
     },
 
-    onBtnClick(e: any, { source: type }) {
+    onBtnClick(e, { source: type }) {
       this.type = type;
       this.scrollTo = 100;
     },

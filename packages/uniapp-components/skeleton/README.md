@@ -68,16 +68,15 @@ t-class-row | 列样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-skeleton-circle-border-radius | @skeleton-circle-border-radius | - |
-| --td-skeleton-animation-flashed | rgba(90%, 90%, 90%, 0.3) | - |
-| --td-skeleton-animation-gradient | rgba(0, 0, 0, 4%) | - |
-| --td-skeleton-bg-color | @bg-color-secondarycontainer | - |
-| --td-skeleton-circle-border-radius | @radius-circle | - |
-| --td-skeleton-circle-height | 96rpx | - |
-| --td-skeleton-rect-border-radius | @radius-default | - |
-| --td-skeleton-rect-height | 32rpx | - |
-| --td-skeleton-row-spacing | @spacer-2 | - |
-| --td-skeleton-text-border-radius | @radius-small | - |
-| --td-skeleton-text-height | 32rpx | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-skeleton-circle-border-radius | @skeleton-circle-border-radius | -
+--td-skeleton-animation-flashed | rgba(90%, 90%, 90%, 0.3) | -
+--td-skeleton-animation-gradient | rgba(0, 0, 0, 4%) | -
+--td-skeleton-bg-color | @bg-color-secondarycontainer | -
+--td-skeleton-circle-height | 96rpx | -
+--td-skeleton-rect-border-radius | @radius-default | -
+--td-skeleton-rect-height | 32rpx | -
+--td-skeleton-row-spacing | @spacer-2 | -
+--td-skeleton-text-border-radius | @radius-small | -
+--td-skeleton-text-height | 32rpx | -

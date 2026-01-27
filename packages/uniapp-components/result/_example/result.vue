@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Result"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="Result 结果"
@@ -19,13 +14,13 @@
         title="组件类型"
         desc="基础结果"
       >
-        <theme />
+        <theme-demo />
       </t-demo>
       <t-demo desc="带描述的结果">
-        <description />
+        <description-demo />
       </t-demo>
       <t-demo desc="自定义结果">
-        <custom />
+        <custom-demo />
       </t-demo>
       <t-demo desc="页面示例">
         <view class="demo-section__wrapper">
@@ -46,16 +41,16 @@
 
 <script>
 
-import tButton from 'tdesign-uniapp/button/button.vue';
-import theme from './theme/index.vue';
-import description from './description/index.vue';
-import custom from './custom/index.vue';
+import TButton from 'tdesign-uniapp/button/button.vue';
+import ThemeDemo from './theme/index.vue';
+import DescriptionDemo from './description/index.vue';
+import CustomDemo from './custom/index.vue';
 export default {
   components: {
-    tButton,
-    theme,
-    description,
-    custom,
+    TButton,
+    ThemeDemo,
+    DescriptionDemo,
+    CustomDemo,
   },
   data() {
     return {};

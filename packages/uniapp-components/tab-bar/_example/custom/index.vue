@@ -3,6 +3,7 @@
     <t-tab-bar
       t-class="t-tab-bar"
       :value="value"
+      :fixed="false"
       @change="onChange"
     >
       <t-tab-bar-item
@@ -17,12 +18,12 @@
 </template>
 
 <script>
-import tTabBar from 'tdesign-uniapp/tab-bar/tab-bar.vue';
-import tTabBarItem from 'tdesign-uniapp/tab-bar-item/tab-bar-item.vue';
+import TTabBar from 'tdesign-uniapp/tab-bar/tab-bar.vue';
+import TTabBarItem from 'tdesign-uniapp/tab-bar-item/tab-bar-item.vue';
 export default {
   components: {
-    tTabBar,
-    tTabBarItem,
+    TTabBar,
+    TTabBarItem,
   },
   data() {
     return {

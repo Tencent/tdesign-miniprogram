@@ -46,12 +46,12 @@
 </template>
 
 <script>
-import tTabs from 'tdesign-uniapp/tabs/tabs.vue';
-import tTabPanel from 'tdesign-uniapp/tab-panel/tab-panel.vue';
+import TTabs from 'tdesign-uniapp/tabs/tabs.vue';
+import TTabPanel from 'tdesign-uniapp/tab-panel/tab-panel.vue';
 export default {
   components: {
-    tTabs,
-    tTabPanel,
+    TTabs,
+    TTabPanel,
   },
   data() {
     return {};
@@ -69,6 +69,6 @@ export default {
 </script>
 <style>
 .bigger {
-    --td-tab-font-size: 32rpx;
+  --td-tab-font: var(--td-font-body-large);
 }
 </style>

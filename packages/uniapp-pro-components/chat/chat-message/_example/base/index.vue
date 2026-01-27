@@ -1,7 +1,7 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         :content="userMessage.content"
         :role="userMessage.role"
       />

@@ -14,7 +14,7 @@
         data-type="pre-year"
         @click="handleSwitchModeChange"
       >
-        <TIcon name="chevron-left-double" />
+        <t-icon name="chevron-left-double" />
       </view>
       <view
         :class="utils.cls(classPrefix + '__icon', [['disabled', prevMonthBtnDisable]])"
@@ -22,7 +22,7 @@
         data-type="pre-month"
         @click="handleSwitchModeChange"
       >
-        <TIcon name="chevron-left" />
+        <t-icon name="chevron-left" />
       </view>
     </view>
     <view :class="classPrefix + '__title'">
@@ -38,7 +38,7 @@
         data-type="next-month"
         @click="handleSwitchModeChange"
       >
-        <TIcon name="chevron-right" />
+        <t-icon name="chevron-right" />
       </view>
       <view
         v-if="switchMode === 'year-month'"
@@ -47,7 +47,7 @@
         data-type="next-year"
         @click="handleSwitchModeChange"
       >
-        <TIcon name="chevron-right-double" />
+        <t-icon name="chevron-right-double" />
       </view>
     </view>
   </view>

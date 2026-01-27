@@ -1,18 +1,13 @@
 <template>
   <view>
     <view class="custom-navbar">
-      <!-- #ifndef MP-ALIPAY -->
-      <t-navbar
+      <t-demo-navbar
         title="Sticky"
-        left-arrow
-        :delta="-1"
-        @go-back="onDemoGoBack"
       />
-    <!-- #endif -->
     </view>
     <view class="demo tdesign-demo-sticky-base">
       <t-demo-header
-        title="Sticky 吸顶"
+        title="Sticky 吸顶容器"
         desc="用于常驻页面顶部的信息、操作展示。"
         notice="渲染框架支持情况：WebView"
       />
@@ -21,19 +16,19 @@
         desc="基础吸顶"
         padding
       >
-        <BaseDemo :navbar-height="navbarHeight" />
+        <base-demo :navbar-height="navbarHeight" />
       </t-demo>
       <t-demo
         title=""
         desc="吸顶距离"
       >
-        <offset :navbar-height="navbarHeight" />
+        <offset-demo :navbar-height="navbarHeight" />
       </t-demo>
       <t-demo
         title=""
         desc="指定容器"
       >
-        <container :navbar-height="navbarHeight" />
+        <container-demo :navbar-height="navbarHeight" />
       </t-demo>
     </view>
   </view>
@@ -42,8 +37,8 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import offset from './offset/index.vue';
-import container from './container/index.vue';
+import OffsetDemo from './offset/index.vue';
+import ContainerDemo from './container/index.vue';
 import { handlePageScroll } from 'tdesign-uniapp/mixins/page-scroll';
 
 
@@ -53,8 +48,8 @@ export default {
   },
   components: {
     BaseDemo,
-    offset,
-    container,
+    OffsetDemo,
+    ContainerDemo,
   },
   data() {
     return {

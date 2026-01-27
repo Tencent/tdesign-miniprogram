@@ -1,6 +1,6 @@
 <template>
   <view>
-    <TQrcode
+    <t-qrcode
       value="https://tdesign.tencent.com/"
       level="M"
       status="active"
@@ -12,7 +12,7 @@
       二维码背景颜色
     </view>
 
-    <TQrcode
+    <t-qrcode
       value="https://tdesign.tencent.com/"
       level="M"
       status="active"

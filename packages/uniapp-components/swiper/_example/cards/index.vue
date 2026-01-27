@@ -39,12 +39,12 @@
 </template>
 
 <script>
-import tSwiper from 'tdesign-uniapp/swiper/swiper.vue';
+import TSwiper from 'tdesign-uniapp/swiper/swiper.vue';
 const imageCdn = 'https://tdesign.gtimg.com/mobile/demos';
 const swiperList = [`${imageCdn}/swiper1.png`, `${imageCdn}/swiper2.png`, `${imageCdn}/swiper1.png`, `${imageCdn}/swiper2.png`, `${imageCdn}/swiper1.png`];
 export default {
   components: {
-    tSwiper,
+    TSwiper,
   },
   data() {
     return {

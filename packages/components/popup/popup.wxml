@@ -3,7 +3,7 @@
 
 <view
   wx:if="{{realVisible}}"
-  style="{{_._style([popup.getPopupStyles(zIndex, distanceTop, placement), style, customStyle])}}"
+  style="{{_._style([popup.getPopupStyles(zIndex, distanceTop, placement, duration), style, customStyle])}}"
   class="{{_.cls(classPrefix, [placement])}} {{transitionClass}} class {{prefix}}-class"
   bind:transitionend="onTransitionEnd"
 >
@@ -28,7 +28,7 @@
   visible="{{visible}}"
   usingCustomNavbar="{{usingCustomNavbar}}"
   z-index="{{overlayProps && overlayProps.zIndex || 11000}}"
-  duration="{{overlayProps && overlayProps.duration || 300}}"
+  duration="{{overlayProps && overlayProps.duration || duration || 300}}"
   background-color="{{overlayProps && overlayProps.backgroundColor || ''}}"
   prevent-scroll-through="{{preventScrollThrough || (overlayProps ? !!overlayProps.preventScrollThrough : false)}}"
   bind:tap="handleOverlayClick"
