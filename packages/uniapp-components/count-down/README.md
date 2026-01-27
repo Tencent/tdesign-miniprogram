@@ -15,7 +15,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TCountDown from 'tdesign-uniapp/count-down/count-down.vue';
+import TCountDown from '@tdesign/uniapp/count-down/count-down.vue';
 ```
 
 ### 基础倒计时
@@ -46,7 +46,7 @@ time | Number | 0 | 必需。倒计时时长，单位毫秒 | Y
 
 名称 | 参数 | 描述
 -- | -- | --
-change | `(time: TimeData)` | 时间变化时触发。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/count-down/type.ts)。<br/>`interface TimeData {  days: number; hours: number; minutes: number; seconds: number; milliseconds: number }`<br/>
+change | `(time: TimeData)` | 时间变化时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/count-down/type.ts)。<br/>`interface TimeData {  days: number; hours: number; minutes: number; seconds: number; milliseconds: number }`<br/>
 finish | \- | 倒计时结束时触发
 
 ### CountDown Slots

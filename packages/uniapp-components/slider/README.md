@@ -11,7 +11,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TSlider from 'tdesign-uniapp/slider/slider.vue';
+import TSlider from '@tdesign/uniapp/slider/slider.vue';
 ```
 
 ### 组件类型
@@ -82,8 +82,8 @@ range | Boolean | false | 双游标滑块 | N
 show-extreme-value | Boolean | false | 是否边界值 | N
 step | Number | 1 | 步长 | N
 theme | String | default | 滑块风格。可选项：default/capsule | N
-value | Number / Array | 0 | 滑块值。支持语法糖 `v-model:value`。TS 类型：`SliderValue` `type SliderValue = number \| Array<number>`。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/slider/type.ts) | N
-default-value | Number / Array | 0 | 滑块值。非受控属性。TS 类型：`SliderValue` `type SliderValue = number \| Array<number>`。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/slider/type.ts) | N
+value | Number / Array | 0 | 滑块值。支持语法糖 `v-model:value`。TS 类型：`SliderValue` `type SliderValue = number \| Array<number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/slider/type.ts) | N
+default-value | Number / Array | 0 | 滑块值。非受控属性。TS 类型：`SliderValue` `type SliderValue = number \| Array<number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/slider/type.ts) | N
 vertical | Boolean | false | 是否是垂直的滑块（渲染垂直滑块时，默认高度为400rpx，可通过修改`--td-slider-bar-height`来自定义高度） | N
 
 ### Slider Events

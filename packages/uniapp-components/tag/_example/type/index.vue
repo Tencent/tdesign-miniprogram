@@ -86,8 +86,8 @@
 </template>
 
 <script>
-import TTag from 'tdesign-uniapp/tag/tag.vue';
-import SkylineBehavior from 'tdesign-uniapp/mixins/skyline.js';
+import TTag from '@tdesign/uniapp/tag/tag.vue';
+import SkylineBehavior from '@tdesign/uniapp/mixins/skyline.js';
 
 export default {
   options: {

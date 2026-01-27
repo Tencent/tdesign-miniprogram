@@ -11,7 +11,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TStepper from 'tdesign-uniapp/stepper/stepper.vue';
+import TStepper from '@tdesign/uniapp/stepper/stepper.vue';
 ```
 
 ### 组件类型
@@ -54,7 +54,7 @@ input-width | Number | - | 输入框宽度，默认单位 `px` | N
 integer | Boolean | true | 是否整型 | N
 max | Number | 100 | 最大值 | N
 min | Number | 0 | 最小值 | N
-size | String | medium | 组件尺寸。可选项：small/medium/large。TS 类型：`SizeEnum`。[通用类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/common.ts) | N
+size | String | medium | 组件尺寸。可选项：small/medium/large。TS 类型：`SizeEnum`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts) | N
 step | Number | 1 | 步长 | N
 theme | String | normal | 组件风格。可选项：normal/filled/outline | N
 value | String / Number | 0 | 值。支持语法糖 `v-model:value` | N

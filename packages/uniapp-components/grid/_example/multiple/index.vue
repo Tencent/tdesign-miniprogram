@@ -48,8 +48,8 @@
 </template>
 
 <script>
-import TGrid from 'tdesign-uniapp/grid/grid.vue';
-import TGridItem from 'tdesign-uniapp/grid-item/grid-item.vue';
+import TGrid from '@tdesign/uniapp/grid/grid.vue';
+import TGridItem from '@tdesign/uniapp/grid-item/grid-item.vue';
 export default {
   options: {
     styleIsolation: 'shared',

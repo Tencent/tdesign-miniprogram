@@ -12,7 +12,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TImageViewer from 'tdesign-uniapp/image-viewer/image-viewer.vue';
+import TImageViewer from '@tdesign/uniapp/image-viewer/image-viewer.vue';
 ```
 
 ### 类型

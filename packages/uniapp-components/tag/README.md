@@ -11,8 +11,8 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TTag from 'tdesign-uniapp/tag/tag.vue';
-import TCheckTag from 'tdesign-uniapp/check-tag/check-tag.vue';
+import TTag from '@tdesign/uniapp/tag/tag.vue';
+import TCheckTag from '@tdesign/uniapp/check-tag/check-tag.vue';
 ```
 
 ### 组件类型
@@ -88,7 +88,7 @@ content | String / Number / Array | - | 组件子元素；传入数组时：[选
 disabled | Boolean | false | 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态 | N
 icon | String / Object | - | 标签图标 | N
 shape | String | square | 标签类型，有三种：方形、圆角方形、标记型。可选项：square/round/mark | N
-size | String | medium | 标签尺寸。可选项：small/medium/large。TS 类型：`SizeEnum`。[通用类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/common.ts) | N
+size | String | medium | 标签尺寸。可选项：small/medium/large。TS 类型：`SizeEnum`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts) | N
 variant | String | dark | 标签风格变体。可选项：dark/light/outline/light-outline | N
 
 ### CheckTag Events

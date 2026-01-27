@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import TTag from 'tdesign-uniapp/tag/tag.vue';
+import TTag from '@tdesign/uniapp/tag/tag.vue';
 export default {
   options: {
     styleIsolation: 'shared',

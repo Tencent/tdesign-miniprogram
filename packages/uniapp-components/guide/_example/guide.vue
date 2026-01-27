@@ -140,8 +140,8 @@
 
 <script>
 
-import TButton from 'tdesign-uniapp/button/button.vue';
-import TPopup from 'tdesign-uniapp/popup/popup.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
+import TPopup from '@tdesign/uniapp/popup/popup.vue';
 import BaseDemo from './base/index.vue';
 import NoMask from './no-mask/index.vue';
 import DialogDemo from './dialog/index.vue';

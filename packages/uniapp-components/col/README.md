@@ -12,8 +12,8 @@ isComponent: true
 
 
 ```js
-import TRow from 'tdesign-uniapp/row/row.vue';
-import TCol from 'tdesign-uniapp/col/col.vue';
+import TRow from '@tdesign/uniapp/row/row.vue';
+import TCol from '@tdesign/uniapp/col/col.vue';
 ```
 
 ### 组件类型

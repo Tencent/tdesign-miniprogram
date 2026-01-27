@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import TCountDown from 'tdesign-uniapp/count-down/count-down.vue';
+import TCountDown from '@tdesign/uniapp/count-down/count-down.vue';
 export default {
   components: {
     TCountDown,

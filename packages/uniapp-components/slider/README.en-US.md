@@ -18,8 +18,8 @@ range | Boolean | false | \- | N
 show-extreme-value | Boolean | false | \- | N
 step | Number | 1 | \- | N
 theme | String | default | options: default/capsule | N
-value | Number / Array | 0 | `v-model:value` is supported。Typescript：`SliderValue` `type SliderValue = number \| Array<number>`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/slider/type.ts) | N
-default-value | Number / Array | 0 | uncontrolled property。Typescript：`SliderValue` `type SliderValue = number \| Array<number>`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/slider/type.ts) | N
+value | Number / Array | 0 | `v-model:value` is supported。Typescript：`SliderValue` `type SliderValue = number \| Array<number>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/slider/type.ts) | N
+default-value | Number / Array | 0 | uncontrolled property。Typescript：`SliderValue` `type SliderValue = number \| Array<number>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/slider/type.ts) | N
 vertical | Boolean | false | \- | N
 
 ### Slider Events

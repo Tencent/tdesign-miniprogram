@@ -23,8 +23,8 @@ width | String / Number | - | \- | N
 
 name | params | description
 -- | -- | --
-error | `(context: { e: ImageEvent })` | trigger on image load failed。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/common.ts)
-load | `(context: { e: ImageEvent })` | trigger on image loaded。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/common.ts)
+error | `(context: { e: ImageEvent })` | trigger on image load failed。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts)
+load | `(context: { e: ImageEvent })` | trigger on image loaded。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts)
 
 ### Image Slots
 

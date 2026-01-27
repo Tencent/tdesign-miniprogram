@@ -23,8 +23,8 @@
 </template>
 
 <script>
-import TButton from 'tdesign-uniapp/button/button.vue';
-import TDrawer from 'tdesign-uniapp/drawer/drawer.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
+import TDrawer from '@tdesign/uniapp/drawer/drawer.vue';
 export default {
   components: {
     TButton,

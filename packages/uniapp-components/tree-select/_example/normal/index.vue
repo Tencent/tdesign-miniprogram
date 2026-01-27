@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import TTreeSelect from 'tdesign-uniapp/tree-select/tree-select.vue';
+import TTreeSelect from '@tdesign/uniapp/tree-select/tree-select.vue';
 const areaList = {
   provinces: {
     110000: '北京市',

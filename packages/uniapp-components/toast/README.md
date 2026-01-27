@@ -11,7 +11,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TToast from 'tdesign-uniapp/toast/toast.vue';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
 ```
 
 ### 基础提示
@@ -38,7 +38,7 @@ direction | String | row | 图标排列方式。可选项：row/column | N
 duration | Number | 2000 | 弹窗显示毫秒数 | N
 icon | String / Object | - | 自定义图标。传入对象则透传至 Icon 组件 | N
 message | String | - | 弹窗显示文字 | N
-overlay-props | Object | - | 遮罩层属性，透传至 Overlay。TS 类型：`OverlayProps `，[Overlay API Documents](./overlay?tab=api)。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/toast/type.ts) | N
+overlay-props | Object | - | 遮罩层属性，透传至 Overlay。TS 类型：`OverlayProps `，[Overlay API Documents](./overlay?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/toast/type.ts) | N
 placement | String | middle | 弹窗展示位置。可选项： top/middle/bottom | N
 prevent-scroll-through | Boolean | false | 防止滚动穿透，即不允许点击和滚动 | N
 show-overlay | Boolean | false | 是否显示遮罩层 | N

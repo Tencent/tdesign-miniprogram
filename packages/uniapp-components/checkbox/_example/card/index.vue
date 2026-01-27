@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import TCheckboxGroup from 'tdesign-uniapp/checkbox-group/checkbox-group.vue';
-import TCheckbox from 'tdesign-uniapp/checkbox/checkbox.vue';
-import tools from 'tdesign-uniapp/common/utils.wxs';
+import TCheckboxGroup from '@tdesign/uniapp/checkbox-group/checkbox-group.vue';
+import TCheckbox from '@tdesign/uniapp/checkbox/checkbox.vue';
+import tools from '@tdesign/uniapp/common/utils.wxs';
 
 
 export default {

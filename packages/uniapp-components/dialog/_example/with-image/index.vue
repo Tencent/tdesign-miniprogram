@@ -178,9 +178,9 @@
 </template>
 
 <script>
-import TButton from 'tdesign-uniapp/button/button.vue';
-import TImage from 'tdesign-uniapp/image/image.vue';
-import TDialog from 'tdesign-uniapp/dialog/dialog.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
+import TImage from '@tdesign/uniapp/image/image.vue';
+import TDialog from '@tdesign/uniapp/dialog/dialog.vue';
 export default {
   options: {
     styleIsolation: 'shared',

@@ -11,8 +11,8 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TTabs from 'tdesign-uniapp/tabs/tabs.vue';
-import TTabsPanel from 'tdesign-uniapp/tab-panel/tab-panel.vue';
+import TTabs from '@tdesign/uniapp/tabs/tabs.vue';
+import TTabsPanel from '@tdesign/uniapp/tab-panel/tab-panel.vue';
 ```
 
 ### 基础选项卡
@@ -116,17 +116,17 @@ export default {
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
-animation | Object | - | 动画效果设置。其中 duration 表示动画时长。（单位：秒）。TS 类型：`TabAnimation` `type TabAnimation = { duration: number } & Record<string, any>`。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/tabs/type.ts) | N
+animation | Object | - | 动画效果设置。其中 duration 表示动画时长。（单位：秒）。TS 类型：`TabAnimation` `type TabAnimation = { duration: number } & Record<string, any>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/tabs/type.ts) | N
 bottom-line-mode | String | fixed | 激活下划线的模式。可选项：fixed/auto/full | N
 show-bottom-line | Boolean | true | 是否展示底部激活线条 | N
 space-evenly | Boolean | true | 选项卡头部空间是否均分 | N
 split | Boolean | true | `1.1.10`。是否展示分割线 | N
 sticky | Boolean | false | 是否开启粘性布局 | N
-sticky-props | Object | - | 透传至 Sticky 组件。TS 类型：`StickyProps`，[Sticky API Documents](./sticky?tab=api)。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/tabs/type.ts) | N
+sticky-props | Object | - | 透传至 Sticky 组件。TS 类型：`StickyProps`，[Sticky API Documents](./sticky?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/tabs/type.ts) | N
 swipeable | Boolean | true | 是否可以滑动切换 | N
 theme | String | line | 标签的样式。可选项：line/tag/card | N
-value | String / Number | - | 激活的选项卡值。支持语法糖 `v-model:value`。TS 类型：`TabValue` `type TabValue = string \| number`。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/tabs/type.ts) | N
-default-value | String / Number | - | 激活的选项卡值。非受控属性。TS 类型：`TabValue` `type TabValue = string \| number`。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/tabs/type.ts) | N
+value | String / Number | - | 激活的选项卡值。支持语法糖 `v-model:value`。TS 类型：`TabValue` `type TabValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/tabs/type.ts) | N
+default-value | String / Number | - | 激活的选项卡值。非受控属性。TS 类型：`TabValue` `type TabValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/tabs/type.ts) | N
 
 ### Tabs Events
 
@@ -165,7 +165,7 @@ icon | String / Object | - | `1.0.0-rc.1`。图标，传对象则透传至 Icon 
 label | String | - | 选项卡名称 | N
 lazy | Boolean | false | 是否启用选项卡懒加载 | N
 panel | String | - | 用于自定义选项卡面板内容 | N
-value | String / Number | - | 选项卡的值，唯一标识。TS 类型：`TabValue`，[Tabs API Documents](./tabs?tab=api)。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/tab-panel/type.ts) | N
+value | String / Number | - | 选项卡的值，唯一标识。TS 类型：`TabValue`，[Tabs API Documents](./tabs?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/tab-panel/type.ts) | N
 
 ### TabPanel Slots
 

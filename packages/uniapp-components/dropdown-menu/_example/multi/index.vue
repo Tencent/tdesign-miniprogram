@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import TDropdownMenu from 'tdesign-uniapp/dropdown-menu/dropdown-menu.vue';
-import TDropdownItem from 'tdesign-uniapp/dropdown-item/dropdown-item.vue';
+import TDropdownMenu from '@tdesign/uniapp/dropdown-menu/dropdown-menu.vue';
+import TDropdownItem from '@tdesign/uniapp/dropdown-item/dropdown-item.vue';
 
 
 const chineseNumber = '一二三四五六七八九十'.split('');

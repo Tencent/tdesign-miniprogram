@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TTreeSelect from 'tdesign-uniapp/tree-select/tree-select.vue';
+import TTreeSelect from '@tdesign/uniapp/tree-select/tree-select.vue';
 const chineseNumber = '一二三四五六七八九十'.split('');
 const generateTree = function (deep = 0, count = 10, prefix) {
   const ans = [];

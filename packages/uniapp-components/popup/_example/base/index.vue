@@ -27,8 +27,8 @@
 </template>
 
 <script>
-import TPopup from 'tdesign-uniapp/popup/popup.vue';
-import TButton from 'tdesign-uniapp/button/button.vue';
+import TPopup from '@tdesign/uniapp/popup/popup.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
 export default {
   options: {
     styleIsolation: 'shared',

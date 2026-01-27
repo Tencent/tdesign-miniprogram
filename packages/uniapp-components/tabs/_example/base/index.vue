@@ -94,8 +94,8 @@
 </template>
 
 <script>
-import TTabs from 'tdesign-uniapp/tabs/tabs.vue';
-import TTabPanel from 'tdesign-uniapp/tab-panel/tab-panel.vue';
+import TTabs from '@tdesign/uniapp/tabs/tabs.vue';
+import TTabPanel from '@tdesign/uniapp/tab-panel/tab-panel.vue';
 export default {
   options: {
     styleIsolation: 'shared',

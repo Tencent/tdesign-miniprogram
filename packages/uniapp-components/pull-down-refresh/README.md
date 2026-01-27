@@ -12,7 +12,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TPullDownRefresh from 'tdesign-uniapp/pull-down-refresh/pull-down-refresh.vue';
+import TPullDownRefresh from '@tdesign/uniapp/pull-down-refresh/pull-down-refresh.vue';
 ```
 
 ### 顶部下拉刷新
@@ -34,7 +34,7 @@ disabled | Boolean | false | 是否禁用下拉刷新 | N
 enable-back-to-top | Boolean | true | iOS点击顶部状态栏、安卓双击标题栏时，滚动条返回顶部，只支持竖向。自 2.27.3 版本开始，若非显式设置为 false，则在显示尺寸大于屏幕 90% 时自动开启 | N
 enable-passive | Boolean | false | 开启 passive 特性，能优化一定的滚动性能 | N
 loading-bar-height | String / Number | 50 | 加载中下拉高度，如果值为数字则单位是：'px' | N
-loading-props | Object | {} | 加载loading样式。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/pull-down-refresh/type.ts) | N
+loading-props | Object | {} | 加载loading样式。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/pull-down-refresh/type.ts) | N
 loading-texts | Array | [] | 提示语，组件内部默认值为 ['下拉刷新', '松手刷新', '正在刷新', '刷新完成']。TS 类型：`string[]` | N
 lower-threshold | String / Number | 50 | 距底部/右边多远时，触发 scrolltolower 事件 | N
 max-bar-height | String / Number | 80 | 最大下拉高度，如果值为数字则单位是：'px' | N

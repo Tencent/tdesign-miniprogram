@@ -81,10 +81,10 @@
 </template>
 
 <script>
-import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import TToast from 'tdesign-uniapp/toast/toast.vue';
-import Toast from 'tdesign-uniapp/toast/index';
-import TIcon from 'tdesign-uniapp/icon/icon.vue';
+import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
+import Toast from '@tdesign/uniapp/toast/index';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
 
 export default {
   components: {

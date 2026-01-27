@@ -82,9 +82,9 @@
 </template>
 
 <script>
-import TButton from 'tdesign-uniapp/button/button.vue';
-import TMessage from 'tdesign-uniapp/message/message.vue';
-import Message from 'tdesign-uniapp/message/index';
+import TButton from '@tdesign/uniapp/button/button.vue';
+import TMessage from '@tdesign/uniapp/message/message.vue';
+import Message from '@tdesign/uniapp/message/index';
 export default {
   options: {
     styleIsolation: 'shared',

@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import TRadioGroup from 'tdesign-uniapp/radio-group/radio-group.vue';
+import TRadioGroup from '@tdesign/uniapp/radio-group/radio-group.vue';
 
 export default {
   components: {

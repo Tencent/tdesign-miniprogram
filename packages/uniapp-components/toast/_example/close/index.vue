@@ -30,9 +30,9 @@
 </template>
 
 <script>
-import TToast from 'tdesign-uniapp/toast/toast.vue';
-import Toast, { hideToast } from 'tdesign-uniapp/toast/index';
-import TButton from 'tdesign-uniapp/button/button.vue';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
+import Toast, { hideToast } from '@tdesign/uniapp/toast/index';
+import TButton from '@tdesign/uniapp/button/button.vue';
 
 
 export default {

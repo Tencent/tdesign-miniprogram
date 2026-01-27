@@ -12,7 +12,7 @@ isComponent: true
 
 
 ```js
-import TLoading from 'tdesign-uniapp/loading/loading.vue';
+import TLoading from '@tdesign/uniapp/loading/loading.vue';
 ```
 
 ### 纯icon

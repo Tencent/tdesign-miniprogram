@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import TRadio from 'tdesign-uniapp/radio/radio.vue';
+import TRadio from '@tdesign/uniapp/radio/radio.vue';
 export default {
   components: {
     TRadio,

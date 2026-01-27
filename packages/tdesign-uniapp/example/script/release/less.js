@@ -34,7 +34,7 @@ async function processLess(inputFile, rawOutputFile) {
   try {
     let lessCode = fs.readFileSync(inputFile, 'utf8');
 
-    lessCode = lessCode.replace('@import \'tdesign-uniapp/common/style/base.less\'', '@import \'../common/style/base.less\'');
+    lessCode = lessCode.replace('@import \'@tdesign/uniapp/common/style/base.less\'', '@import \'../common/style/base.less\'');
 
     const cssResult = await less.render(lessCode, {
       // 设置导入路径

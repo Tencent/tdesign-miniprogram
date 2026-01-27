@@ -10,7 +10,7 @@ custom-style | Object | - | CSS(Cascading Style Sheets) | N
 current | String / Number | - | `v-model:current` is supported | N
 default-current | String / Number | - | uncontrolled property | N
 index-list | Array | - | Typescript：`Array<string \| number>` | N
-list | Array | [] | `deprecated`。Typescript：`ListItem[] ` `interface ListItem { title: string;  index: string;  children: { title: string; [key: string]: any} [] }`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/indexes/type.ts) | N
+list | Array | [] | `deprecated`。Typescript：`ListItem[] ` `interface ListItem { title: string;  index: string;  children: { title: string; [key: string]: any} [] }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/indexes/type.ts) | N
 sticky | Boolean | true | Typescript：`Boolean` | N
 sticky-offset | Number | 0 | \- | N
 

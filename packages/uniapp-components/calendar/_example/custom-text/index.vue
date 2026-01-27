@@ -30,8 +30,8 @@
   </view>
 </template>
 <script>
-import TCell from 'tdesign-uniapp/cell/cell.vue';
-import TCalendar from 'tdesign-uniapp/calendar/calendar.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TCalendar from '@tdesign/uniapp/calendar/calendar.vue';
 import { formatTimestamp } from '../computed';
 
 export default {

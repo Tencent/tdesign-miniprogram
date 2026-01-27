@@ -49,7 +49,7 @@
 </template>
 
 <script>
-import TButton from 'tdesign-uniapp/button/button.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
 
 
 export default {

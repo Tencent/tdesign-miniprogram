@@ -53,8 +53,8 @@
 
 import HorizontalDemo from './horizontal/index.vue';
 import VerticalDemo from './vertical/index.vue';
-import TButton from 'tdesign-uniapp/button/button.vue';
-import { canUseVirtualHost } from 'tdesign-uniapp/common/version';
+import TButton from '@tdesign/uniapp/button/button.vue';
+import { canUseVirtualHost } from '@tdesign/uniapp/common/version';
 
 export default {
   components: {

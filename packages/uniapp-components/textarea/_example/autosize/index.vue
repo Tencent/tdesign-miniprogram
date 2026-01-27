@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import TTextarea from 'tdesign-uniapp/textarea/textarea.vue';
+import TTextarea from '@tdesign/uniapp/textarea/textarea.vue';
 export default {
   components: {
     TTextarea,

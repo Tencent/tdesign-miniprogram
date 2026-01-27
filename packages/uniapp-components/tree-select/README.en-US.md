@@ -9,17 +9,17 @@ name | type | default | description | required
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
 custom-value | String / Number / Array | - | Typescript：`TreeSelectValue` | N
 height | String / Number | 336 | \- | N
-keys | Object | - | alias filed name in options。Typescript：`TreeKeysType`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/common.ts) | N
+keys | Object | - | alias filed name in options。Typescript：`TreeKeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts) | N
 multiple | Boolean | false | \- | N
 options | Array | [] | Typescript：`Array<DataOption>` | N
-value | String / Number / Array | - | `v-model:value` is supported。Typescript：`TreeSelectValue` `type TreeSelectValue = string \| number \| Array<TreeSelectValue>`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/tree-select/type.ts) | N
-default-value | String / Number / Array | - | uncontrolled property。Typescript：`TreeSelectValue` `type TreeSelectValue = string \| number \| Array<TreeSelectValue>`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/tree-select/type.ts) | N
+value | String / Number / Array | - | `v-model:value` is supported。Typescript：`TreeSelectValue` `type TreeSelectValue = string \| number \| Array<TreeSelectValue>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/tree-select/type.ts) | N
+default-value | String / Number / Array | - | uncontrolled property。Typescript：`TreeSelectValue` `type TreeSelectValue = string \| number \| Array<TreeSelectValue>`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/tree-select/type.ts) | N
 
 ### TreeSelect Events
 
 name | params | description
 -- | -- | --
-change | `(context: { value: TreeSelectValue, level: TreeLevel })` | [see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/tree-select/type.ts)。<br/>`type TreeLevel = 0 \| 1 \| 2`<br/>
+change | `(context: { value: TreeSelectValue, level: TreeLevel })` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/tree-select/type.ts)。<br/>`type TreeLevel = 0 \| 1 \| 2`<br/>
 
 ### TreeSelect External Classes
 

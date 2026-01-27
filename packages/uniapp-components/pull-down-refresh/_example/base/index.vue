@@ -70,9 +70,9 @@
 </template>
 
 <script>
-import TPullDownRefresh from 'tdesign-uniapp/pull-down-refresh/pull-down-refresh.vue';
-import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
-import TBackTop from 'tdesign-uniapp/back-top/back-top.vue';
+import TPullDownRefresh from '@tdesign/uniapp/pull-down-refresh/pull-down-refresh.vue';
+import TSkeleton from '@tdesign/uniapp/skeleton/skeleton.vue';
+import TBackTop from '@tdesign/uniapp/back-top/back-top.vue';
 export default {
   components: {
     TPullDownRefresh,

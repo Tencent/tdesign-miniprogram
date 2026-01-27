@@ -96,8 +96,8 @@
 </template>
 
 <script>
-import TSteps from 'tdesign-uniapp/steps/steps.vue';
-import TStepItem from 'tdesign-uniapp/step-item/step-item.vue';
+import TSteps from '@tdesign/uniapp/steps/steps.vue';
+import TStepItem from '@tdesign/uniapp/step-item/step-item.vue';
 
 
 export default {

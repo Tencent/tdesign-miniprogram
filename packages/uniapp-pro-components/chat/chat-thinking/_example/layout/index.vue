@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import TChatThinking from 'tdesign-uniapp-chat/chat-thinking/chat-thinking.vue';
+import TChatThinking from '@tdesign/uniapp-chat/chat-thinking/chat-thinking.vue';
 
 
 export default {

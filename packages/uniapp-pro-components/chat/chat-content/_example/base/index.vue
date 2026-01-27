@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import TChatContent from 'tdesign-uniapp-chat/chat-content/chat-content.vue';
+import TChatContent from '@tdesign/uniapp-chat/chat-content/chat-content.vue';
 
 
 const markdownData = `# Markdown功能测试 (H1标题)
