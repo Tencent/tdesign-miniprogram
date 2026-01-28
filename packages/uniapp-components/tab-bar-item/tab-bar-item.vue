@@ -2,7 +2,7 @@
   <view
     :style="tools._style([customStyle])"
     :class="tools.cls(classPrefix, [
-      ['split', split], ['text-only', !icon],
+      ['split', split],
       ['crowded', crowded], shape]
     ) + ' ' + tClass"
   >
@@ -111,8 +111,8 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tBadge from '../badge/badge';
+import TIcon from '../icon/icon';
+import TBadge from '../badge/badge';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -132,8 +132,8 @@ export default uniComponent({
   externalClasses: [`${prefix}-class`],
   mixins: [ChildrenMixin(RELATION_MAP.TabBarItem)],
   components: {
-    tIcon,
-    tBadge,
+    TIcon,
+    TBadge,
   },
   props: {
     ...props,

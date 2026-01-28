@@ -105,13 +105,13 @@
   </view>
 </template>
 <script>
-import tRadio from '../radio/radio';
-import tRadioGroup from '../radio-group/radio-group';
-import tCheckbox from '../checkbox/checkbox';
-import tCheckboxGroup from '../checkbox-group/checkbox-group';
-import tSideBar from '../side-bar/side-bar';
-import tSideBarItem from '../side-bar-item/side-bar-item';
-import tScrollView from '../scroll-view/scroll-view.vue';
+import TRadio from '../radio/radio';
+import TRadioGroup from '../radio-group/radio-group';
+import TCheckbox from '../checkbox/checkbox';
+import TCheckboxGroup from '../checkbox-group/checkbox-group';
+import TSideBar from '../side-bar/side-bar';
+import TSideBarItem from '../side-bar-item/side-bar-item';
+import TScrollView from '../scroll-view/scroll-view.vue';
 
 import { uniComponent } from '../common/src/index';
 import { isDef } from '../common/validator';
@@ -145,13 +145,13 @@ export default uniComponent({
     `${prefix}-class-right-item-label`,
   ],
   components: {
-    tRadio,
-    tRadioGroup,
-    tCheckbox,
-    tCheckboxGroup,
-    tSideBar,
-    tSideBarItem,
-    tScrollView,
+    TRadio,
+    TRadioGroup,
+    TCheckbox,
+    TCheckboxGroup,
+    TSideBar,
+    TSideBarItem,
+    TScrollView,
   },
   props: {
     ...props,

@@ -9,8 +9,9 @@
       :custom-navbar-height="customNavbarHeight"
       :placement="placement == 'right' ? 'right' : 'left'"
       :show-overlay="showOverlay"
+      :overlay-props="overlayProps"
       :close-on-overlay-click="closeOnOverlayClick"
-      @visible-change="visibleChange"
+      @visible-change="onVisibleChange"
     >
       <view :class="classPrefix">
         <slot name="title" />
@@ -37,7 +38,7 @@
             :data-index="index"
             :aria-role="ariaRole || 'button'"
             :aria-label="item.title"
-            @click="itemClick"
+            @click="onItemClick"
           >
             <view
               v-if="item.icon"
@@ -61,8 +62,8 @@
   </view>
 </template>
 <script>
-import tPopup from '../popup/popup';
-import tIcon from '../icon/icon';
+import TPopup from '../popup/popup';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import { coalesce } from '../common/utils';
@@ -83,8 +84,8 @@ export default uniComponent({
     useCustomNavbar,
   ],
   components: {
-    tPopup,
-    tIcon,
+    TPopup,
+    TIcon,
   },
   props: {
     ...props,
@@ -109,7 +110,7 @@ export default uniComponent({
   },
   methods: {
     // closeOnOverlayClick 为 true 时才能触发 popup 的 visible-change 事件
-    visibleChange(detail) {
+    onVisibleChange(detail) {
       const { visible } = detail;
       const { showOverlay } = this;
 
@@ -125,7 +126,7 @@ export default uniComponent({
       this.$emit('update:visible', visible);
     },
 
-    itemClick(detail) {
+    onItemClick(detail) {
       const { index, item } = detail.currentTarget.dataset;
 
       this.$emit('item-click', { index, item });
@@ -135,4 +136,9 @@ export default uniComponent({
 </script>
 <style scoped>
 @import './drawer.css';
+</style>
+<style>
+.t-drawer__sidebar {
+  width: 100%;
+}
 </style>

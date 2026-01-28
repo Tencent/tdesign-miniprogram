@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Drawer"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="Drawer 抽屉"
@@ -20,7 +15,7 @@
         desc="基础抽屉"
         padding
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
       <t-demo
         desc="带图标抽屉"
@@ -33,13 +28,13 @@
         desc="带标题样式"
         padding
       >
-        <titleDemo />
+        <title-demo />
       </t-demo>
       <t-demo
         desc="带底部插槽样式"
         padding
       >
-        <footerDemo />
+        <footer-demo />
       </t-demo>
     </view>
   </view>
@@ -48,15 +43,15 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import titleDemo from './title/index.vue';
-import iconDrawer from './icon-drawer/index.vue';
-import footerDemo from './footer/index.vue';
+import TitleDemo from './title/index.vue';
+import IconDrawer from './icon-drawer/index.vue';
+import FooterDemo from './footer/index.vue';
 export default {
   components: {
     BaseDemo,
-    titleDemo,
-    iconDrawer,
-    footerDemo,
+    TitleDemo,
+    IconDrawer,
+    FooterDemo,
   },
   data() {
     return {};

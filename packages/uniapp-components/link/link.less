@@ -27,16 +27,13 @@
 @link-danger-disabled-color: var(--td-link-danger-disabled-color, @error-color-disabled); // danger 主题禁用态颜色
 
 // 字号
-@link-content-small-font-size: 24rpx;
-@link-content-small-line-height: 40rpx;
+@link-content-small-font: @font-body-small;
 @link-icon-small-font-size: 28rpx;
 
-@link-content-medium-font-size: 28rpx;
-@link-content-medium-line-height: 44rpx;
+@link-content-medium-font: @font-body-medium;
 @link-icon-medium-font-size: 32rpx;
 
-@link-content-large-font-size: 32rpx;
-@link-content-large-line-height: 48rpx;
+@link-content-large-font: @font-body-large;
 @link-icon-large-font-size: 36rpx;
 
 @themes: primary, success, warning, default, danger;
@@ -44,14 +41,12 @@
 @link: ~'@{prefix}-link';
 
 .link-size(@size) {
-  @contentFontSize: 'link-content-@{size}-font-size';
-  @contentLineHeight: 'link-content-@{size}-line-height';
+  @contentFont: 'link-content-@{size}-font';
   @iconSize: 'link-icon-@{size}-font-size';
 
   .@{link}--@{size} {
     .@{link}__content {
-      font-size: @@contentFontSize;
-      line-height: @@contentLineHeight;
+      font: @@contentFont;
     }
     .@{link}__prefix-icon,
     .@{link}__suffix-icon {

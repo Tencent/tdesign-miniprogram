@@ -32,13 +32,13 @@ export default {
   offset: {
     type: Array,
   },
-  /** 形状 */
+  /** 徽标形状，其中 ribbon 和 ribbon-right 等效 */
   shape: {
     type: String,
     default: 'circle' as TdBadgeProps['shape'],
     validator(val: TdBadgeProps['shape']): boolean {
       if (!val) return true;
-      return ['circle', 'square', 'bubble', 'ribbon'].includes(val);
+      return ['circle', 'square', 'bubble', 'ribbon', 'ribbon-right', 'ribbon-left', 'triangle-right', 'triangle-left'].includes(val);
     },
   },
   /** 当数值为 0 时，是否展示徽标 */

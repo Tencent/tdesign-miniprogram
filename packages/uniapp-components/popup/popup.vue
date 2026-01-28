@@ -2,7 +2,7 @@
   <view>
     <view
       v-if="realVisible"
-      :style="tools._style([popup.getPopupStyles(zIndex, distanceTop, placement), customStyle])"
+      :style="tools._style([popup.getPopupStyles({ zIndex, distanceTop, placement, duration }), customStyle])"
       :class="tools.cls(classPrefix, [placement]) + ' ' + transitionClass + ' ' + tClass"
       @transitionend="onTransitionEnd"
     >
@@ -67,8 +67,8 @@
   </view>
 </template>
 <script>
-import tOverlay from '../overlay/overlay';
-import tIcon from '../icon/icon';
+import TOverlay from '../overlay/overlay';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -93,8 +93,8 @@ export default uniComponent({
   ],
   mixins: [transitionMixins, useCustomNavbar],
   components: {
-    tOverlay,
-    tIcon,
+    TOverlay,
+    TIcon,
   },
   props: {
     ...props,

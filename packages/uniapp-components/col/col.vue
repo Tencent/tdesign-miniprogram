@@ -49,3 +49,10 @@ export default uniComponent({
 <style scoped>
 @import './col.css';
 </style>
+<style scoped>
+.t-col {
+  /* 适配 qq 小程序等 */
+  display: unset;
+  float: left;
+}
+</style>

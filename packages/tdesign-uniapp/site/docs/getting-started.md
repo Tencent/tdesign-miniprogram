@@ -17,7 +17,7 @@ spline: explain
 ### NPM 方式
 
 ```bash
-npm i tdesign-uniapp
+npm i @tdesign/uniapp
 ```
 
 ### UNI_MODULES 方式
@@ -30,7 +30,7 @@ npm i tdesign-uniapp
 
 ```js
 // CLI 模式
-import 'tdesign-uniapp/common/style/theme/index.css';
+import '@tdesign/uniapp/common/style/theme/index.css';
 
 // HBuilderX 模式
 // import './uni_modules/tdesign-uniapp/components/common/style/theme/index.css';
@@ -40,7 +40,7 @@ import 'tdesign-uniapp/common/style/theme/index.css';
 
 ```js
 // CLI 模式
-import 'tdesign-uniapp/common/style/theme/index.less';
+import '@tdesign/uniapp/common/style/theme/index.less';
 
 // HBuilderX 模式
 // import './uni_modules/tdesign-uniapp/components/common/style/theme/index.less';
@@ -54,7 +54,7 @@ import 'tdesign-uniapp/common/style/theme/index.less';
 </template>
 
 <script lang="ts" setup>
-import TLoading from 'tdesign-uniapp/loading/loading.vue';
+import TLoading from '@tdesign/uniapp/loading/loading.vue';
 </script>
 ```
 
@@ -66,13 +66,13 @@ import TLoading from 'tdesign-uniapp/loading/loading.vue';
 
 ### CLI 模式
 
-使用 CLI 模式，即使用 `node_modules` 下的 `tdesign-uniapp` 时，配置如下。
+使用 CLI 模式，即使用 `node_modules` 下的 `@tdesign/uniapp` 时，配置如下。
 
 ```json
 {
   "easycom": {
     "custom": {
-      "^t-(.*)": "tdesign-uniapp/$1/$1.vue"
+      "^t-(.*)": "@tdesign/uniapp/$1/$1.vue"
     }
   }
 }
@@ -96,7 +96,7 @@ import TLoading from 'tdesign-uniapp/loading/loading.vue';
 
 安装注册 TDesign 之后，在开发项目时，可以配合插件在VSCode等主流编辑器中达到提示组件名及API的效果。
 
-推荐安装 `Volar`，并在项目的 `tsconfig.json` 的 `includes` 属性中增加 `node_modules/tdesign-uniapp/global.d.ts`，即可实现该效果。
+推荐安装 `Volar`，并在项目的 `tsconfig.json` 的 `includes` 属性中增加 `node_modules/@tdesign/uniapp/global.d.ts`，即可实现该效果。
 
 ## 平台兼容性
 

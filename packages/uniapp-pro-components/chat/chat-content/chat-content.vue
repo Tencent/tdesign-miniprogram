@@ -23,10 +23,10 @@
 </template>
 <script>
 import TChatMarkdown from '../chat-markdown/chat-markdown.vue';
-import { prefix } from 'tdesign-uniapp/common/config';
+import { prefix } from '@tdesign/uniapp/common/config';
 import props from './props';
-import _ from 'tdesign-uniapp/common/utils.wxs';
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
+import _ from '@tdesign/uniapp/common/utils.wxs';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
 const name = `${prefix}-chat-content`;
 

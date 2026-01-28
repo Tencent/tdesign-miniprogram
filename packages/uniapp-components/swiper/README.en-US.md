@@ -16,9 +16,9 @@ easing-function | String | default | options: default/linear/easeInCubic/easeOut
 height | String / Number | 192 | \- | N
 image-props | Object | {} | \- | N
 interval | Number | 5000 | \- | N
-list | Array | - | Typescript：`string[] \| SwiperList[]` `interface SwiperList { value: string, ariaLabel: string }`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/swiper/type.ts) | N
+list | Array | - | Typescript：`string[] \| SwiperList[]` `interface SwiperList { value: string, ariaLabel: string }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/swiper/type.ts) | N
 loop | Boolean | true | \- | N
-navigation | Boolean / Object | true | Typescript：`SwiperNavProps \| boolean`，[SwiperNav API Documents](./swiper-nav?tab=api)。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/swiper/type.ts) | N
+navigation | Boolean / Object | true | Typescript：`SwiperNavProps \| boolean`，[SwiperNav API Documents](./swiper-nav?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/swiper/type.ts) | N
 next-margin | String / Number | 0 | \- | N
 pagination-position | String | bottom | options: top-left/top/top-right/bottom-left/bottom/bottom-right/left/right | N
 previous-margin | String / Number | 0 | \- | N
@@ -29,7 +29,7 @@ snap-to-edge | Boolean | false | \- | N
 name | params | description
 -- | -- | --
 animationfinish | `(context: { current: number, source: SwiperChangeSource })` | 动画结束时会触发 animationfinish 事件
-change | `(context: { current: number, source: SwiperChangeSource })` | [see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/swiper/type.ts)。<br/>`type SwiperChangeSource = 'autoplay' \| 'touch' \| 'nav'`<br/>
+change | `(context: { current: number, source: SwiperChangeSource })` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/swiper/type.ts)。<br/>`type SwiperChangeSource = 'autoplay' \| 'touch' \| 'nav'`<br/>
 click | `(context: { index: number })` | \-
 image-load | `(context: { index: number})` | \-
 
@@ -61,7 +61,7 @@ min-show-num | Number | 2 | \- | N
 pagination-position | String | bottom | options: top-left/top/top-right/bottom-left/bottom/bottom-right/left/right | N
 show-controls | Boolean | false | \- | N
 total | Number | 0 | \- | N
-type | String | dots | Typescript：`SwiperNavigationType` `type SwiperNavigationType = 'dots' \| 'dots-bar' \| 'fraction'`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/swiper-nav/type.ts) | N
+type | String | dots | Typescript：`SwiperNavigationType` `type SwiperNavigationType = 'dots' \| 'dots-bar' \| 'fraction'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/swiper-nav/type.ts) | N
 
 ### SwiperNav External Classes
 
@@ -74,16 +74,16 @@ t-class | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-swiper-item-padding | 0 | - 
---td-swiper-radius | @radius-large | - 
---td-swiper-nav-btn-bg-color | @font-gray-3 | - 
---td-swiper-nav-btn-color | @text-color-anti | - 
---td-swiper-nav-btn-size | 48rpx | - 
---td-swiper-nav-dot-active-color | @text-color-anti | - 
---td-swiper-nav-dot-color | @font-white-2 | - 
---td-swiper-nav-dot-size | 12rpx | - 
---td-swiper-nav-dots-bar-active-width | 40rpx | - 
---td-swiper-nav-fraction-bg-color | @font-gray-3 | - 
---td-swiper-nav-fraction-color | @text-color-anti | - 
---td-swiper-nav-fraction-font-size | 24rpx | - 
+--td-swiper-item-padding | 0 | -
+--td-swiper-radius | @radius-large | -
+--td-swiper-nav-btn-bg-color | @font-gray-3 | -
+--td-swiper-nav-btn-color | @text-color-anti | -
+--td-swiper-nav-btn-size | 48rpx | -
+--td-swiper-nav-dot-active-color | @text-color-anti | -
+--td-swiper-nav-dot-color | @font-white-2 | -
+--td-swiper-nav-dot-size | 12rpx | -
+--td-swiper-nav-dots-bar-active-width | 40rpx | -
+--td-swiper-nav-fraction-bg-color | @font-gray-3 | -
+--td-swiper-nav-fraction-color | @text-color-anti | -
+--td-swiper-nav-fraction-font | @font-body-small | -
 --td-swiper-nav-fraction-height | 48rpx | -

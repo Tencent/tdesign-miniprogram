@@ -1,13 +1,8 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="Calendar"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="Calendar 日历"
@@ -18,11 +13,11 @@
         title="01 组件类型"
         desc="基础日历"
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
 
       <t-demo desc="">
-        <multiple />
+        <multiple-demo />
       </t-demo>
 
       <t-demo desc="带单行描述的日历">
@@ -34,7 +29,7 @@
       </t-demo>
 
       <t-demo desc="可选择区间日期的日历">
-        <range />
+        <range-demo />
       </t-demo>
 
       <t-demo
@@ -57,23 +52,23 @@
 
 <script>
 import BaseDemo from './base';
-import multiple from './multiple';
-import customText from './custom-text';
-import switchMode from './switch-mode';
-import range from './range';
-import localText from './local-text';
-import customRange from './custom-range';
-import withoutPopup from './without-popup';
+import MultipleDemo from './multiple';
+import CustomText from './custom-text';
+import SwitchMode from './switch-mode';
+import RangeDemo from './range';
+import LocalText from './local-text';
+import CustomRange from './custom-range';
+import WithoutPopup from './without-popup';
 export default {
   components: {
     BaseDemo,
-    multiple,
-    customText,
-    switchMode,
-    range,
-    localText,
-    customRange,
-    withoutPopup,
+    MultipleDemo,
+    CustomText,
+    SwitchMode,
+    RangeDemo,
+    LocalText,
+    CustomRange,
+    WithoutPopup,
   },
   data() {
     return {};

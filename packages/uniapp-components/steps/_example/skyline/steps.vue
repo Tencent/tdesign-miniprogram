@@ -1,15 +1,15 @@
 <template>
   <view>
-    <steps />
+    <steps-demo />
   </view>
 </template>
 
 <script>
 
-import steps from '../steps.vue';
+import StepsDemo from '../steps.vue';
 export default {
   components: {
-    steps,
+    StepsDemo,
   },
   data() {
     return {};

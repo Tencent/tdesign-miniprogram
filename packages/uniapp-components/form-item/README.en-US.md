@@ -31,7 +31,7 @@ label | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-form-item-horizontal-padding | 32rpx | - 
---td-form-item-justify-content | space-between | - 
---td-form-item-label-width | 160rpx | - 
+--td-form-item-horizontal-padding | 32rpx | -
+--td-form-item-justify-content | space-between | -
+--td-form-item-label-width | 160rpx | -
 --td-form-item-vertical-padding | 32rpx | -

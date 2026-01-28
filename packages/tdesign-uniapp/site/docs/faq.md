@@ -45,7 +45,7 @@ APP-PLUS 下，需要业务自己在页面中监听 `pageScroll` 事件，这是
 ```js
 // 页面 Vue 文件下，引入组件库提供的监听方法
 // 该方法内部会通过 event-bus，传递参数给对应的组件
-import { handlePageScroll } from 'tdesign-uniapp/mixins/page-scroll';
+import { handlePageScroll } from '@tdesign/uniapp/mixins/page-scroll';
 
 export default {
   onPageScroll(e) {

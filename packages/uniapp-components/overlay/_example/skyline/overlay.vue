@@ -1,12 +1,9 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Overlay"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -24,7 +21,7 @@
           desc="基础遮罩层"
           padding
         >
-          <baseDemo />
+          <base-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -32,13 +29,11 @@
 </template>
 
 <script>
+import BaseDemo from '../base/index.vue';
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
 export default {
   components: {
-    tNavbar,
-    baseDemo,
+    BaseDemo,
   },
   data() {
     return {};

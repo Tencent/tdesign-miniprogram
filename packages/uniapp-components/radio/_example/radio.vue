@@ -1,13 +1,8 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="Radio"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -27,43 +22,43 @@
           title="01 组件类型"
           desc="纵向单选框"
         >
-          <BaseDemo />
+          <base-demo />
         </t-demo>
 
         <t-demo
           title=""
           desc="横向单选框"
         >
-          <horizontal />
+          <horizontal-demo />
         </t-demo>
 
         <t-demo
           title="02 组件状态"
           desc="单选框状态"
         >
-          <status />
+          <status-demo />
         </t-demo>
 
         <t-demo
           title="03 组件样式"
           desc="勾选样式"
         >
-          <theme />
+          <theme-demo />
         </t-demo>
 
         <t-demo desc="勾选显示位置">
-          <align />
+          <align-demo />
         </t-demo>
 
         <t-demo desc="非通栏单选样式">
-          <card />
+          <card-demo />
         </t-demo>
 
         <t-demo
           title="04 特殊样式"
           desc="纵向卡片单选框"
         >
-          <special />
+          <special-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -73,21 +68,21 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import horizontal from './horizontal/index.vue';
-import align from './align/index.vue';
-import card from './card/index.vue';
-import status from './status/index.vue';
-import theme from './theme/index.vue';
-import special from './special/index.vue';
+import HorizontalDemo from './horizontal/index.vue';
+import AlignDemo from './align/index.vue';
+import CardDemo from './card/index.vue';
+import StatusDemo from './status/index.vue';
+import ThemeDemo from './theme/index.vue';
+import SpecialDemo from './special/index.vue';
 export default {
   components: {
-    horizontal,
+    HorizontalDemo,
     BaseDemo,
-    align,
-    card,
-    status,
-    theme,
-    special,
+    AlignDemo,
+    CardDemo,
+    StatusDemo,
+    ThemeDemo,
+    SpecialDemo,
   },
   data() {
     return {};

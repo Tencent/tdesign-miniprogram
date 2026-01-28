@@ -22,8 +22,14 @@
   >
     <block v-if="active">
       <view :class="classPrefix + '__line'" />
-      <view :class="classPrefix + '__prefix'" />
-      <view :class="classPrefix + '__suffix'" />
+      <view
+        v-if="!isFirstChild"
+        :class="classPrefix + '__prefix'"
+      />
+      <view
+        v-if="!isLastChild"
+        :class="classPrefix + '__suffix'"
+      />
     </block>
     <block
       v-if="_icon"
@@ -61,11 +67,12 @@
     <block v-else>
       {{ label }}
     </block>
+    <slot />
   </view>
 </template>
 <script>
-import tBadge from '../badge/badge';
-import tIcon from '../icon/icon';
+import TBadge from '../badge/badge';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -86,8 +93,8 @@ export default uniComponent({
   ],
   mixins: [ChildrenMixin(RELATION_MAP.SideBarItem)],
   components: {
-    tBadge,
-    tIcon,
+    TBadge,
+    TIcon,
   },
   props: {
     ...props,
@@ -104,6 +111,8 @@ export default uniComponent({
       isPre: false,
       isNext: false,
       tools,
+      isFirstChild: false,
+      isLastChild: false,
     };
   },
   computed: {

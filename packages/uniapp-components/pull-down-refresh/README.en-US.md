@@ -11,7 +11,7 @@ disabled | Boolean | false | disabled pull down refresh | N
 enable-back-to-top | Boolean | true | \- | N
 enable-passive | Boolean | false | \- | N
 loading-bar-height | String / Number | 50 | \- | N
-loading-props | Object | {} | Typescript：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/pull-down-refresh/type.ts) | N
+loading-props | Object | {} | Typescript：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/pull-down-refresh/type.ts) | N
 loading-texts | Array | [] | Typescript：`string[]` | N
 lower-threshold | String / Number | 50 | \- | N
 max-bar-height | String / Number | 80 | \- | N

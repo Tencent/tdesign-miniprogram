@@ -1,14 +1,13 @@
 @import '../common/style/base.less';
 
 @drawer-width: var(--td-drawer-width, 560rpx);
-@drawer-title-font-size: var(--td-drawer-title-font-size, 36rpx);
+@drawer-title-font: var(--td-drawer-title-font, @font-title-large);
 @drawer-title-padding: var(--td-drawer-title-padding, 48rpx 32rpx 16rpx);
 @drawer-bg-color: var(--td-drawer-bg-color, @bg-color-container);
 @drawer-border-color: var(--td-drawer-border-color, @border-level-1-color);
 @drawer-title-color: var(--td-drawer-title-color, @text-color-primary);
 @drawer-item-icon-color: var(--td-drawer-item-icon-color, @drawer-title-color);
 @drawer-item-padding: var(--td-drawer-item-padding, 32rpx);
-@drawer-item-height: var(--td-drawer-item-height, 48rpx);
 @drawer-item-icon-size: var(--td-drawer-item-icon-size, 48rpx);
 @drawer-sidebar-height: var(--td-drawer-sidebar-height, 70vh);
 @drawer-footer-padding-bottom: var(--td-drawer-footer-padding-bottom, 40rpx);
@@ -26,15 +25,13 @@
   }
 
   &__title {
-    font-weight: 600;
-    font-size: @drawer-title-font-size;
+    font: @drawer-title-font;
     padding: 48rpx 32rpx 16rpx;
     color: @drawer-title-color;
   }
 
   &__sidebar {
     height: @drawer-sidebar-height;
-    width: 100%;
 
     &-item {
       display: flex;
@@ -44,7 +41,7 @@
       padding-right: 0;
       padding-bottom: @drawer-item-padding;
       padding-left: @drawer-item-padding;
-      line-height: @drawer-item-height;
+      font: @font-body-large;
 
       &::after {
         left: @drawer-item-padding;

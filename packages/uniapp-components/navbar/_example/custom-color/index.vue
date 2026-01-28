@@ -1,11 +1,10 @@
 <template>
   <view>
     <t-navbar
-      t-class-placeholder="t-navbar-placeholder"
-      t-class-content="t-navbar-content"
       t-class="custom-navbar"
       left-arrow
       title="标题文字"
+      :fixed="false"
       @right-click="handleRightClick"
     >
       <template #right>
@@ -16,7 +15,7 @@
 </template>
 
 <script>
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from '@tdesign/uniapp/navbar/navbar.vue';
 
 
 export default {
@@ -24,7 +23,7 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tNavbar,
+    TNavbar,
   },
   data() {
     return {};
