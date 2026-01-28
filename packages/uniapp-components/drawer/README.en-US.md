@@ -9,8 +9,8 @@ name | type | default | description | required
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
 close-on-overlay-click | Boolean | true | \- | N
 destroy-on-close | Boolean | false | \- | N
-items | Array | - | Typescript：`DrawerItem[]` `interface DrawerItem { title: string; icon: string; }`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/drawer/type.ts) | N
-overlay-props | Object | {} | Typescript：`OverlayProps`，[Overlay API Documents](./overlay?tab=api)。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/drawer/type.ts) | N
+items | Array | - | Typescript：`DrawerItem[]` `interface DrawerItem { title: string; icon: string; }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/drawer/type.ts) | N
+overlay-props | Object | {} | Typescript：`OverlayProps`，[Overlay API Documents](./overlay?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/drawer/type.ts) | N
 placement | String | right | options: left/right | N
 show-overlay | Boolean | true | \- | N
 title | String | - | \- | N
@@ -22,7 +22,7 @@ z-index | Number | 11500 | \- | N
 
 name | params | description
 -- | -- | --
-close | `(context: { trigger: DrawerTriggerSource })` | [see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/drawer/type.ts)。<br/>`type DrawerTriggerSource = 'overlay'`<br/>
+close | `(context: { trigger: DrawerTriggerSource })` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/drawer/type.ts)。<br/>`type DrawerTriggerSource = 'overlay'`<br/>
 item-click | `(context: { index: number; item: DrawerItem })` | \-
 overlay-click | \- | \-
 update-visible | `(context: { visible: boolean })` | \-

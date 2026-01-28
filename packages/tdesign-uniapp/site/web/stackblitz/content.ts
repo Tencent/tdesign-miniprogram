@@ -24,7 +24,7 @@ export const HTML_CONTENT = `
 `;
 
 export const MAN_JS_CONTENT = `
-import 'tdesign-uniapp/common/style/theme/index.css';
+import '@tdesign/uniapp/common/style/theme/index.css';
 
 import {
   createSSRApp,
@@ -218,7 +218,7 @@ export const PACKAGE_JSON_CONTENT = JSON.stringify(
       '@dcloudio/uni-mp-weixin': '3.0.0-4070620250821001',
       '@dcloudio/uni-mp-xhs': '3.0.0-4070620250821001',
       '@dcloudio/uni-quickapp-webview': '3.0.0-4070620250821001',
-      'tdesign-uniapp': orgPkg.version,
+      '@tdesign/uniapp': orgPkg.version,
       vue: '^3.4.21',
       'vue-router': '4.5.1',
     },

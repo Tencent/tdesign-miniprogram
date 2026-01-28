@@ -58,8 +58,8 @@
 </template>
 
 <script>
-import tTabs from 'tdesign-uniapp/tabs/tabs.vue';
-import tTabPanel from 'tdesign-uniapp/tab-panel/tab-panel.vue';
+import tTabs from '@tdesign/uniapp/tabs/tabs.vue';
+import tTabPanel from '@tdesign/uniapp/tab-panel/tab-panel.vue';
 import BaseDemo from './base/index.vue';
 import HookComponent from './hook-component/index.vue';
 import DocsDemo from './docs/index.vue';

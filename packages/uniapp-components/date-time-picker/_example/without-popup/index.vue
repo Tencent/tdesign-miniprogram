@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import TDateTimePicker from 'tdesign-uniapp/date-time-picker/date-time-picker.vue';
+import TDateTimePicker from '@tdesign/uniapp/date-time-picker/date-time-picker.vue';
 export default {
   components: {
     TDateTimePicker,

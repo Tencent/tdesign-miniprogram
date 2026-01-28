@@ -58,7 +58,7 @@ import WithIcon from './with-icon/index.vue';
 import WithBadge from './with-badge/index.vue';
 import ThemeDemo from './theme/index.vue';
 import WithContent from './with-content/index.vue';
-import { handlePageScroll } from 'tdesign-uniapp/mixins/page-scroll';
+import { handlePageScroll } from '@tdesign/uniapp/mixins/page-scroll';
 
 
 export default {

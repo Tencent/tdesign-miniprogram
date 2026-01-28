@@ -97,10 +97,10 @@
 </template>
 
 <script>
-import TCell from 'tdesign-uniapp/cell/cell.vue';
-import TBadge from 'tdesign-uniapp/badge/badge.vue';
-import TSwitch from 'tdesign-uniapp/switch/switch.vue';
-import TIcon from 'tdesign-uniapp/icon/icon.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TBadge from '@tdesign/uniapp/badge/badge.vue';
+import TSwitch from '@tdesign/uniapp/switch/switch.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
 
 
 export default {

@@ -11,8 +11,8 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TPicker from 'tdesign-uniapp/picker/picker.vue';
-import TPickerItem from 'tdesign-uniapp/picker-item/picker-item.vue';
+import TPicker from '@tdesign/uniapp/picker/picker.vue';
+import TPickerItem from '@tdesign/uniapp/picker-item/picker-item.vue';
 ```
 
 ### 组件类型

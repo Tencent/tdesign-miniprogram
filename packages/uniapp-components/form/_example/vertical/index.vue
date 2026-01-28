@@ -199,18 +199,18 @@
 </template>
 
 <script>
-import TForm from 'tdesign-uniapp/form/form.vue';
-import TFormItem from 'tdesign-uniapp/form-item/form-item.vue';
-import TInput from 'tdesign-uniapp/input/input.vue';
-import TRadioGroup from 'tdesign-uniapp/radio-group/radio-group.vue';
-import TRadio from 'tdesign-uniapp/radio/radio.vue';
-import TCascader from 'tdesign-uniapp/cascader/cascader.vue';
-import TStepper from 'tdesign-uniapp/stepper/stepper.vue';
-import TRate from 'tdesign-uniapp/rate/rate.vue';
-import TTextarea from 'tdesign-uniapp/textarea/textarea.vue';
-import TUpload from 'tdesign-uniapp/upload/upload.vue';
-import TButton from 'tdesign-uniapp/button/button.vue';
-import { canUseVirtualHost } from 'tdesign-uniapp/common/version';
+import TForm from '@tdesign/uniapp/form/form.vue';
+import TFormItem from '@tdesign/uniapp/form-item/form-item.vue';
+import TInput from '@tdesign/uniapp/input/input.vue';
+import TRadioGroup from '@tdesign/uniapp/radio-group/radio-group.vue';
+import TRadio from '@tdesign/uniapp/radio/radio.vue';
+import TCascader from '@tdesign/uniapp/cascader/cascader.vue';
+import TStepper from '@tdesign/uniapp/stepper/stepper.vue';
+import TRate from '@tdesign/uniapp/rate/rate.vue';
+import TTextarea from '@tdesign/uniapp/textarea/textarea.vue';
+import TUpload from '@tdesign/uniapp/upload/upload.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
+import { canUseVirtualHost } from '@tdesign/uniapp/common/version';
 
 
 export default {

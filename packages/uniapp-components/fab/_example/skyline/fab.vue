@@ -73,7 +73,7 @@
 
 <script>
 
-import TButton from 'tdesign-uniapp/button/button.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
 import BaseDemo from '../base/index.vue';
 import Advance from '../advance/index.vue';
 import Draggable from '../draggable/index.vue';

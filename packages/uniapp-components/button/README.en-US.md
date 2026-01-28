@@ -85,7 +85,7 @@ hover-stop-propagation | Boolean | false | \- | N
 icon | String / Object | - | icon name | N
 lang | String | - | message language。options: en/zh_CN/zh_TW | N
 loading | Boolean | false | set button to be loading state | N
-loading-props | Object | {} | Typescript：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/button/type.ts) | N
+loading-props | Object | {} | Typescript：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/button/type.ts) | N
 open-type | String | - | open type of button, [Miniprogram Button](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)。options: contact/share/getPhoneNumber/getUserInfo/launchApp/openSetting/feedback/chooseAvatar/agreePrivacyAuthorization | N
 phone-number-no-quota-toast | Boolean | true | \- | N
 send-message-img | String | 截图 | \- | N

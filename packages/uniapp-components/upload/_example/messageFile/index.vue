@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import TUpload from 'tdesign-uniapp/upload/upload.vue';
+import TUpload from '@tdesign/uniapp/upload/upload.vue';
 export default {
   components: {
     TUpload,

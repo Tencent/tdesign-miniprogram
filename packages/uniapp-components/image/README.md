@@ -12,7 +12,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TImage from 'tdesign-uniapp/image/image.vue';
+import TImage from '@tdesign/uniapp/image/image.vue';
 ```
 
 ### 裁切样式
@@ -58,8 +58,8 @@ width | String / Number | - | 宽度，默认单位为`px` | N
 
 名称 | 参数 | 描述
 -- | -- | --
-error | `(context: { e: ImageEvent })` | 图片加载失败时触发。[通用类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/common.ts)
-load | `(context: { e: ImageEvent })` | 图片加载完成时触发。[通用类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/common.ts)
+error | `(context: { e: ImageEvent })` | 图片加载失败时触发。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts)
+load | `(context: { e: ImageEvent })` | 图片加载完成时触发。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts)
 
 ### Image Slots
 

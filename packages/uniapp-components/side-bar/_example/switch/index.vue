@@ -70,11 +70,11 @@
 </template>
 
 <script>
-import TSideBar from 'tdesign-uniapp/side-bar/side-bar.vue';
-import TSideBarItem from 'tdesign-uniapp/side-bar-item/side-bar-item.vue';
-import TCellGroup from 'tdesign-uniapp/cell-group/cell-group.vue';
-import TCell from 'tdesign-uniapp/cell/cell.vue';
-import TImage from 'tdesign-uniapp/image/image.vue';
+import TSideBar from '@tdesign/uniapp/side-bar/side-bar.vue';
+import TSideBarItem from '@tdesign/uniapp/side-bar-item/side-bar-item.vue';
+import TCellGroup from '@tdesign/uniapp/cell-group/cell-group.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TImage from '@tdesign/uniapp/image/image.vue';
 
 const image = 'https://tdesign.gtimg.com/mobile/demos/example2.png';
 const items = new Array(12).fill(

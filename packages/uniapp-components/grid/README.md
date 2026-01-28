@@ -11,8 +11,8 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TGrid from 'tdesign-uniapp/grid/grid.vue';
-import TGridItem from 'tdesign-uniapp/grid-item/grid-item.vue';
+import TGrid from '@tdesign/uniapp/grid/grid.vue';
+import TGridItem from '@tdesign/uniapp/grid-item/grid-item.vue';
 ```
 
 ### 组件类型
@@ -83,11 +83,11 @@ t-class | 根节点样式类
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
-badge-props | Object | {} | 透传至 Badge 属性。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/grid-item/type.ts) | N
+badge-props | Object | {} | 透传至 Badge 属性。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/grid-item/type.ts) | N
 description | String | - | 文本以外的更多描述，辅助信息。可以通过 Props 传入文本，也可以自定义标题节点 | N
 icon | String / Object | - | 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon` | N
 image | String | - | 图片，可以是图片地址，也可以自定义图片节点，值为 slot 的时候才能使用插槽 | N
-image-props | Object | {} | 透传至 Image 组件。TS 类型：`ImageProps`，[Image API Documents](./image?tab=api)。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/grid-item/type.ts) | N
+image-props | Object | {} | 透传至 Image 组件。TS 类型：`ImageProps`，[Image API Documents](./image?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/grid-item/type.ts) | N
 jump-type | String | navigate-to | 链接跳转类型。可选项：redirect-to/switch-tab/relaunch/navigate-to | N
 layout | String | vertical | 内容布局方式。可选项：vertical/horizontal | N
 text | String | - | 文本，可以通过 Props 传入文本，也可以自定义标题节点 | N

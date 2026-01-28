@@ -12,7 +12,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TResult from 'tdesign-uniapp/result/result.vue';
+import TResult from '@tdesign/uniapp/result/result.vue';
 ```
 
 ### 组件类型

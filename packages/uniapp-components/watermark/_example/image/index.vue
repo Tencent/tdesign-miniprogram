@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import TWatermark from 'tdesign-uniapp/watermark/watermark.vue';
+import TWatermark from '@tdesign/uniapp/watermark/watermark.vue';
 
 export default {
   components: {

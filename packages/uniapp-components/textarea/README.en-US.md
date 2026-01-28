@@ -33,8 +33,8 @@ readonly | Boolean | undefined | \- | N
 selection-end | Number | -1 | \- | N
 selection-start | Number | -1 | \- | N
 show-confirm-bar | Boolean | true | \- | N
-value | String / Number | - | `v-model:value` is supported。Typescript：`TextareaValue` `type TextareaValue = string \| number`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/textarea/type.ts) | N
-default-value | String / Number | - | uncontrolled property。Typescript：`TextareaValue` `type TextareaValue = string \| number`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/textarea/type.ts) | N
+value | String / Number | - | `v-model:value` is supported。Typescript：`TextareaValue` `type TextareaValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/textarea/type.ts) | N
+default-value | String / Number | - | uncontrolled property。Typescript：`TextareaValue` `type TextareaValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/textarea/type.ts) | N
 
 ### Textarea Events
 

@@ -49,7 +49,7 @@
 
 <script>
 
-// import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
+// import TSkeleton from '@tdesign/uniapp/skeleton/skeleton.vue';
 import ThemeDemo from './theme/index.vue';
 import GridDemo from './grid/index.vue';
 import CellGroup from './cell-group/index.vue';

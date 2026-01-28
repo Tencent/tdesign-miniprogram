@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import TChatMarkdown from 'tdesign-uniapp-chat/chat-markdown/chat-markdown.vue';
+import TChatMarkdown from '@tdesign/uniapp-chat/chat-markdown/chat-markdown.vue';
 
 const markdownData = `
 下面是引用示例

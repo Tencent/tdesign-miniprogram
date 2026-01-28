@@ -130,13 +130,13 @@
   </view>
 </template>
 <script>
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
-import tImage from 'tdesign-uniapp/image/image.vue';
-import tLoading from 'tdesign-uniapp/loading/loading.vue';
-import { prefix } from 'tdesign-uniapp/common/config';
+import tIcon from '@tdesign/uniapp/icon/icon.vue';
+import tImage from '@tdesign/uniapp/image/image.vue';
+import tLoading from '@tdesign/uniapp/loading/loading.vue';
+import { prefix } from '@tdesign/uniapp/common/config';
 import props from './props';
-import _ from 'tdesign-uniapp/common/utils.wxs';
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
+import _ from '@tdesign/uniapp/common/utils.wxs';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
 import { imageStyle, getFileTypeClass, getImageMode } from './computed';
 
 

@@ -11,8 +11,8 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TSideBar from 'tdesign-uniapp/side-bar/side-bar.vue';
-import TSideBarItem from 'tdesign-uniapp/side-bar-item/side-bar-item.vue';
+import TSideBar from '@tdesign/uniapp/side-bar/side-bar.vue';
+import TSideBarItem from '@tdesign/uniapp/side-bar-item/side-bar-item.vue';
 ```
 
 ### 锚点用法
@@ -60,7 +60,7 @@ click | `(context: { value: number \| string; label: string })` | 点击选项�
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
-badge-props | Object | - | 透传至 Badge 组件。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/side-bar-item/type.ts) | N
+badge-props | Object | - | 透传至 Badge 组件。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/side-bar-item/type.ts) | N
 disabled | Boolean | false | 是否禁用 | N
 icon | String / Object | - | 图标，传对象则透传至 Icon | N
 label | String | - | 展示的标签 | N

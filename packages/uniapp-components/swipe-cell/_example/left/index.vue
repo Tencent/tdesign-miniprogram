@@ -80,8 +80,8 @@
 </template>
 
 <script>
-import TSwipeCell from 'tdesign-uniapp/swipe-cell/swipe-cell.vue';
-import TCell from 'tdesign-uniapp/cell/cell.vue';
+import TSwipeCell from '@tdesign/uniapp/swipe-cell/swipe-cell.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
 export default {
   components: {
     TSwipeCell,

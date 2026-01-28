@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import TIcon from 'tdesign-uniapp/icon/icon.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
 export default {
   components: {
     TIcon,

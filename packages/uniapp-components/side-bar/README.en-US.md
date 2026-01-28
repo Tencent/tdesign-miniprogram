@@ -29,7 +29,7 @@ name | Description
 name | type | default | description | required
 -- | -- | -- | -- | --
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
-badge-props | Object | - | Typescript：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/side-bar-item/type.ts) | N
+badge-props | Object | - | Typescript：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/side-bar-item/type.ts) | N
 disabled | Boolean | false | \- | N
 icon | String / Object | - | \- | N
 label | String | - | \- | N

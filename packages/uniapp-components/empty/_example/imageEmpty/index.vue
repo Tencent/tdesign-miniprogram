@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TEmpty from 'tdesign-uniapp/empty/empty.vue';
+import TEmpty from '@tdesign/uniapp/empty/empty.vue';
 
 export default {
   options: {

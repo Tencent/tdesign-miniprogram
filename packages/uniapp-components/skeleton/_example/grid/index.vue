@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import TSkeleton from 'tdesign-uniapp/skeleton/skeleton.vue';
+import TSkeleton from '@tdesign/uniapp/skeleton/skeleton.vue';
 export default {
   components: {
     TSkeleton,

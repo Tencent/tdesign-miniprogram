@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import TFooter from 'tdesign-uniapp/footer/footer.vue';
-import { themeMixin } from 'tdesign-uniapp/mixins/theme-change';
+import TFooter from '@tdesign/uniapp/footer/footer.vue';
+import { themeMixin } from '@tdesign/uniapp/mixins/theme-change';
 
 const logo = {
   icon: 'https://tdesign.gtimg.com/mobile/demos/logo2.png',

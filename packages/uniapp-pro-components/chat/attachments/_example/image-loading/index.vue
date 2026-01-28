@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import TAttachments from 'tdesign-uniapp-chat/attachments/attachments.vue';
+import TAttachments from '@tdesign/uniapp-chat/attachments/attachments.vue';
 export default {
   components: {
     TAttachments,

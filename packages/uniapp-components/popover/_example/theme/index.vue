@@ -131,8 +131,8 @@
 </template>
 
 <script>
-import TPopover from 'tdesign-uniapp/popover/popover.vue';
-import TButton from 'tdesign-uniapp/button/button.vue';
+import TPopover from '@tdesign/uniapp/popover/popover.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
 export default {
   options: {
     styleIsolation: 'shared',

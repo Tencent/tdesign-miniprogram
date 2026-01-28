@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import TCheckboxGroup from 'tdesign-uniapp/checkbox-group/checkbox-group.vue';
-import TCheckbox from 'tdesign-uniapp/checkbox/checkbox.vue';
+import TCheckboxGroup from '@tdesign/uniapp/checkbox-group/checkbox-group.vue';
+import TCheckbox from '@tdesign/uniapp/checkbox/checkbox.vue';
 export default {
   components: {
     TCheckboxGroup,

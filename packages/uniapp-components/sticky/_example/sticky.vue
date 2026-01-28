@@ -39,7 +39,7 @@
 import BaseDemo from './base/index.vue';
 import OffsetDemo from './offset/index.vue';
 import ContainerDemo from './container/index.vue';
-import { handlePageScroll } from 'tdesign-uniapp/mixins/page-scroll';
+import { handlePageScroll } from '@tdesign/uniapp/mixins/page-scroll';
 
 
 export default {

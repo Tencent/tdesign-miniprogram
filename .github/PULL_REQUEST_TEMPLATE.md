@@ -41,14 +41,14 @@
 
 
 
-#### tdesign-uniapp
+#### @tdesign/uniapp
 <!--
 - feat(组件名称): 处理问题或特性描述
 -->
 
 
 
-#### tdesign-uniapp-chat
+#### @tdesign/uniapp-chat
 <!--
 - feat(组件名称): 处理问题或特性描述
 -->

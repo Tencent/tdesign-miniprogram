@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import TResult from 'tdesign-uniapp/result/result.vue';
+import TResult from '@tdesign/uniapp/result/result.vue';
 export default {
   components: {
     TResult,

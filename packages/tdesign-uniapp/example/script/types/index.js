@@ -24,7 +24,7 @@ const OTHER_EXPORTS = {
   './*': './*',
 };
 
-const getDTSTemplate = isChat => `import type { TransformEventHandlers, ExtractNonOnProps } from '${isChat ? 'tdesign-uniapp' : '..'}/common/common';
+const getDTSTemplate = isChat => `import type { TransformEventHandlers, ExtractNonOnProps } from '${isChat ? '@tdesign/uniapp' : '..'}/common/common';
 import type { Td{{Component}}Props } from '../{{component}}/type';
 
 export type {{Component}}Props = ExtractNonOnProps<Td{{Component}}Props>;
@@ -126,7 +126,7 @@ function genIndexContent(fileNames, indexPath) {
 
 function getGlobalDTS(fileNames, globalDTSPath) {
   const content = Array.from(new Set(fileNames))
-    .map(item => `T${toPascal(item)}: typeof import('tdesign-uniapp/${item}/${item}.vue').default;`);
+    .map(item => `T${toPascal(item)}: typeof import('@tdesign/uniapp/${item}/${item}.vue').default;`);
 
   const result = GLOBAL_DTS_TEMPLATE.replace('{{CONTENT}}', content.join('\n    '));
   writeFileSync(globalDTSPath, result);

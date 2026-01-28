@@ -10,7 +10,7 @@ custom-style | Object | - | CSS(Cascading Style Sheets) | N
 content | String / Array | - | \- | N
 direction | String | horizontal | options: horizontal/vertical | N
 interval | Number | 2000 | \- | N
-marquee | Boolean / Object | false | Typescript：`boolean \| NoticeBarMarquee` `interface NoticeBarMarquee { speed?: number; loop?: number; delay?: number }`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/notice-bar/type.ts) | N
+marquee | Boolean / Object | false | Typescript：`boolean \| NoticeBarMarquee` `interface NoticeBarMarquee { speed?: number; loop?: number; delay?: number }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/notice-bar/type.ts) | N
 operation | String | - | \- | N
 prefix-icon | String / Boolean / Object | true | \- | N
 suffix-icon | String / Object | - | \- | N
@@ -23,7 +23,7 @@ default-visible | Boolean | false | uncontrolled property | N
 name | params | description
 -- | -- | --
 change | `(context: { current: number, source: '' \| 'autoplay' \| 'touch' })` | \-
-click | `(context: { trigger: NoticeBarTrigger })` | [see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/notice-bar/type.ts)。<br/>`type NoticeBarTrigger = 'prefix-icon' \| 'content' \| 'operation' \| 'suffix-icon';`<br/>
+click | `(context: { trigger: NoticeBarTrigger })` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/notice-bar/type.ts)。<br/>`type NoticeBarTrigger = 'prefix-icon' \| 'content' \| 'operation' \| 'suffix-icon';`<br/>
 
 ### NoticeBar Slots
 

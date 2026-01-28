@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import TCell from 'tdesign-uniapp/cell/cell.vue';
-import TDateTimePicker from 'tdesign-uniapp/date-time-picker/date-time-picker.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TDateTimePicker from '@tdesign/uniapp/date-time-picker/date-time-picker.vue';
 export default {
   components: {
     TCell,

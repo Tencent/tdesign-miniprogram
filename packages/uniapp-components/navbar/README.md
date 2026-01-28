@@ -11,7 +11,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
+import TNavbar from '@tdesign/uniapp/navbar/navbar.vue';
 ```
 
 

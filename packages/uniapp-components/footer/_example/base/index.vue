@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import TFooter from 'tdesign-uniapp/footer/footer.vue';
+import TFooter from '@tdesign/uniapp/footer/footer.vue';
 export default {
   components: {
     TFooter,

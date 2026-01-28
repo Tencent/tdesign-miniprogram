@@ -12,7 +12,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TSearch from 'tdesign-uniapp/search/search.vue';
+import TSearch from '@tdesign/uniapp/search/search.vue';
 ```
 
 ### 01 组件类型

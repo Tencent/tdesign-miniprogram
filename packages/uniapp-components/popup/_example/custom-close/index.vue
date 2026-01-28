@@ -30,10 +30,10 @@
 </template>
 
 <script>
-import TPopup from 'tdesign-uniapp/popup/popup.vue';
-import TIcon from 'tdesign-uniapp/icon/icon.vue';
-import TButton from 'tdesign-uniapp/button/button.vue';
-import tools from 'tdesign-uniapp/common/utils.wxs';
+import TPopup from '@tdesign/uniapp/popup/popup.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
+import tools from '@tdesign/uniapp/common/utils.wxs';
 
 export default {
   options: {

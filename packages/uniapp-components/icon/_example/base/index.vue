@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import TIcon from 'tdesign-uniapp/icon/icon.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
 import icons from '../data';
 
 export default {

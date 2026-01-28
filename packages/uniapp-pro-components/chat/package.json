@@ -132,7 +132,7 @@
     "vue-tsc": "catalog:"
   },
   "dependencies": {
-    "tdesign-uniapp": "workspace:*"
+    "@tdesign/uniapp": "workspace:*"
   },
   "license": "MIT"
 }

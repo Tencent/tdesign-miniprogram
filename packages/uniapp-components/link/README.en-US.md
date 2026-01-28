@@ -12,7 +12,7 @@ disabled | Boolean | false | make link to be disabled | N
 hover | Boolean | - | \- | N
 navigator-props | Object | {} | \- | N
 prefix-icon | String / Object | - | \- | N
-size | String | medium | options: small/medium/large。Typescript：`SizeEnum`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/common.ts) | N
+size | String | medium | options: small/medium/large。Typescript：`SizeEnum`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts) | N
 status | String | normal | `deprecated`。options: normal/active/disabled | N
 suffix-icon | String / Object | - | \- | N
 theme | String | default | options: default/primary/danger/warning/success | N

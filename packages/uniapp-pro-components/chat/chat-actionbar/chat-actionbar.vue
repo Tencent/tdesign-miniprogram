@@ -45,11 +45,11 @@
   </view>
 </template>
 <script>
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
-import { prefix } from 'tdesign-uniapp/common/config';
+import tIcon from '@tdesign/uniapp/icon/icon.vue';
+import { prefix } from '@tdesign/uniapp/common/config';
 import props from './props';
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
-import _ from 'tdesign-uniapp/common/utils.wxs';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
+import _ from '@tdesign/uniapp/common/utils.wxs';
 
 
 const name = `${prefix}-chat-actionbar`;

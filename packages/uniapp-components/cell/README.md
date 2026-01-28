@@ -11,8 +11,8 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TCell from 'tdesign-uniapp/cell/cell.vue';
-import TCellGroup from 'tdesign-uniapp/cell-group/cell-group.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TCellGroup from '@tdesign/uniapp/cell-group/cell-group.vue';
 ```
 
 ### 类型

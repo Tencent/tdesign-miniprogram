@@ -12,7 +12,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TOverlay from 'tdesign-uniapp/overlay/overlay.vue';
+import TOverlay from '@tdesign/uniapp/overlay/overlay.vue';
 ```
 
 ### 基础使用

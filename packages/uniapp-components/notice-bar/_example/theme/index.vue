@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import TNoticeBar from 'tdesign-uniapp/notice-bar/notice-bar.vue';
+import TNoticeBar from '@tdesign/uniapp/notice-bar/notice-bar.vue';
 export default {
   components: {
     TNoticeBar,

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import TQrcode from 'tdesign-uniapp/qrcode/qrcode.vue';
+import TQrcode from '@tdesign/uniapp/qrcode/qrcode.vue';
 
 export default {
   name: 'QRCodeIcon',

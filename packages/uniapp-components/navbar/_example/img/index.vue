@@ -18,9 +18,9 @@
 </template>
 
 <script>
-import TNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import TImage from 'tdesign-uniapp/image/image.vue';
-import { themeMixin } from 'tdesign-uniapp/mixins/theme-change';
+import TNavbar from '@tdesign/uniapp/navbar/navbar.vue';
+import TImage from '@tdesign/uniapp/image/image.vue';
+import { themeMixin } from '@tdesign/uniapp/mixins/theme-change';
 
 export default {
   options: {

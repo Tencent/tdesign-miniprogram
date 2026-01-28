@@ -13,8 +13,8 @@ icon | Array | [] | Typescript：`string[]` | N
 label | Array | [] | Typescript：`string[]` | N
 loading | Boolean | false | \- | N
 size | String | medium | options: small/medium/large | N
-value | String / Number / Boolean | - | `v-model:value` is supported。Typescript：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/switch/type.ts) | N
-default-value | String / Number / Boolean | - | uncontrolled property。Typescript：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/switch/type.ts) | N
+value | String / Number / Boolean | - | `v-model:value` is supported。Typescript：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/switch/type.ts) | N
+default-value | String / Number / Boolean | - | uncontrolled property。Typescript：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/switch/type.ts) | N
 
 ### Switch Events
 

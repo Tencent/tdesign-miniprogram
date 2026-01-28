@@ -11,8 +11,8 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TSteps from 'tdesign-uniapp/steps/steps.vue';
-import TStepsItem from 'tdesign-uniapp/steps-item/steps-item.vue';
+import TSteps from '@tdesign/uniapp/steps/steps.vue';
+import TStepsItem from '@tdesign/uniapp/steps-item/steps-item.vue';
 ```
 
 ## 代码演示
@@ -100,8 +100,8 @@ custom-style | Object | - | 自定义样式 | N
 content | String | '' | 步骤描述 | N
 extra | String | - | 步骤条自定义内容 | N
 icon | String | - | 图标。传入 slot 代表使用插槽，其他字符串代表使用内置图标 | N
-status | String | default | 当前步骤的状态：默认状态（未开始）、进行中状态、完成状态、错误状态。可选项：default/process/finish/error。TS 类型：`StepStatus` `type StepStatus = 'default' \| 'process' \| 'finish' \| 'error'`。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/step-item/type.ts) | N
-sub-step-items | Array | [] | 已废弃。子步骤条，仅支持 layout  = 'vertical' 时。TS 类型：`SubStepItem[]` `interface SubStepItem { status: StepStatus, title: string }`。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/step-item/type.ts) | N
+status | String | default | 当前步骤的状态：默认状态（未开始）、进行中状态、完成状态、错误状态。可选项：default/process/finish/error。TS 类型：`StepStatus` `type StepStatus = 'default' \| 'process' \| 'finish' \| 'error'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/step-item/type.ts) | N
+sub-step-items | Array | [] | 已废弃。子步骤条，仅支持 layout  = 'vertical' 时。TS 类型：`SubStepItem[]` `interface SubStepItem { status: StepStatus, title: string }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/step-item/type.ts) | N
 title | String | '' | 标题 | N
 
 ### StepItem Slots

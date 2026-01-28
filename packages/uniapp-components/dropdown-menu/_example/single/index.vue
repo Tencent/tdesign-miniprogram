@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import TDropdownMenu from 'tdesign-uniapp/dropdown-menu/dropdown-menu.vue';
-import TDropdownItem from 'tdesign-uniapp/dropdown-item/dropdown-item.vue';
+import TDropdownMenu from '@tdesign/uniapp/dropdown-menu/dropdown-menu.vue';
+import TDropdownItem from '@tdesign/uniapp/dropdown-item/dropdown-item.vue';
 
 
 export default {
