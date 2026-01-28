@@ -19,7 +19,7 @@
     "build:dist": "gulp --gulpfile script/gulpfile.dist.js --cwd ./",
     "build:example": "gulp --gulpfile script/gulpfile.example.js --cwd ./",
     "build:assets": "cross-env NODE_ENV=production gulp assets:build --gulpfile script/gulpfile.dist.js --cwd ./",
-    "update:icons": "pnpm -C packages/tdesign-miniprogram/site update:icons",
+    "update:icons": "node script/update-icons.mjs",
     "api:css": "node packages/common/scripts/generate-css-vars.mjs Miniprogram",
     "api:css:uni": "node packages/common/scripts/generate-css-vars.mjs Uniapp",
     "lintfix": "eslint '{packages/components,packages/pro-components,packages/tdesign-miniprogram/example}/**/*.{js,ts}' --fix",
