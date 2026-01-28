@@ -53,62 +53,67 @@ const getNewPageList = (list) => {
 };
 
 const getUnlimitedQRCodeImage = (appid, appSecret) => {
-  getAccessToken(appid, appSecret).then((e) => {
-    if (e.access_token) {
-      const token = e.access_token;
-      console.log('access_token 2h内有效：', token);
-      const baseParameter = {
-        width: 280, // 小程序码大小
-      };
-      const baseConfig = {
-        responseType: 'arraybuffer',
-      };
-
-      const pageList = getNewPageList(pages.concat(subpackages));
-
-      // 循环 pages, 获取相应小程序码
-      pageList.forEach((item) => {
-        const temp = [...new Set(item.split('/').slice(1))];
-        const fileName = temp.join('-');
-
-        const specialParameter = {
-          page: item, // 扫码进入的小程序页面路径
-          scene: `name=${temp[0]}`, // 标识
-          check_path: false,
+  getAccessToken(appid, appSecret)
+    .then((e) => {
+      const result = typeof e === 'string' ? JSON.parse(e) : e;
+      if (result.access_token) {
+        const token = result.access_token;
+        console.log('access_token 2h内有效：', token);
+        const baseParameter = {
+          width: 280, // 小程序码大小
+        };
+        const baseConfig = {
+          responseType: 'arraybuffer',
         };
 
-        getUnlimitedQRCode(token, JSON.stringify({ ...specialParameter, ...baseParameter }), { ...baseConfig })
-          .then((res) => {
-            // 因为微信接口 getwxacodeunlimit 成功时返回的是 Buffer ，失败时返回 JSON 结构。这里把返回数据全部当成 Buffer 处理，所以 res.length < 200， 则表示获取失败。
-            if (res.length < 200) {
-              const { errcode, errmsg } = JSON.parse(res.toString());
-              console.log('===小程序码获取失败===', item, { errcode, errmsg });
-              process.exit(1);
-            }
+        const pageList = getNewPageList(pages.concat(subpackages));
 
-            const buffer = Buffer.from(res, 'base64');
-            const destPath = resolveCwd(`../site/public/assets/qrcode/${fileName}.png`);
+        // 循环 pages, 获取相应小程序码
+        pageList.forEach((item) => {
+          const temp = [...new Set(item.split('/').slice(1))];
+          const fileName = temp.join('-');
 
-            fs.writeFile(
-              destPath,
-              buffer,
-              {
-                encoding: 'binary',
-                flag: 'w+',
-              },
-              (err) => {
-                if (err) {
-                  console.log('===小程序码图片存储错误===', err);
-                }
-              },
-            );
-          })
-          .catch((e) => {
-            console.log(e);
-          });
-      });
-    }
-  });
+          const specialParameter = {
+            page: item, // 扫码进入的小程序页面路径
+            scene: `name=${temp[0]}`, // 标识
+            check_path: false,
+          };
+
+          getUnlimitedQRCode(token, JSON.stringify({ ...specialParameter, ...baseParameter }), { ...baseConfig })
+            .then((res) => {
+              // 因为微信接口 getwxacodeunlimit 成功时返回的是 Buffer ，失败时返回 JSON 结构。这里把返回数据全部当成 Buffer 处理，所以 res.length < 200， 则表示获取失败。
+              if (res.length < 200) {
+                const { errcode, errmsg } = JSON.parse(res.toString());
+                console.log('===小程序码获取失败===', item, { errcode, errmsg });
+                process.exit(1);
+              }
+
+              const buffer = Buffer.isBuffer(res) ? res : Buffer.from(res, 'base64');
+              const destPath = resolveCwd(`../site/public/assets/qrcode/${fileName}.png`);
+
+              fs.writeFile(
+                destPath,
+                buffer,
+                {
+                  encoding: 'binary',
+                  flag: 'w+',
+                },
+                (err) => {
+                  if (err) {
+                    console.log('===小程序码图片存储错误===', err);
+                  }
+                },
+              );
+            })
+            .catch((e) => {
+              console.log(e);
+            });
+        });
+      }
+    })
+    .catch((error) => {
+      console.log('getAccessToken 错误：', error);
+    });
 };
 
 /**
