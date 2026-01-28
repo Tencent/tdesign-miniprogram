@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'fs/promises';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -43,32 +43,15 @@ const fetchCss = async (url) => {
   return res.text();
 };
 
-const saveFile = (filename, content) => {
-  return new Promise((resolve, reject) => {
-    const absolutePath = path.resolve(__dirname, '..', filename);
-    fs.writeFile(absolutePath, content, (err) => {
-      if (err) {
-        console.error(`Error writing file: ${filename}`, err);
-        reject(err);
-      } else {
-        console.log(`✓ File saved: ${filename}`);
-        resolve();
-      }
-    });
-  });
+const saveFile = async (filename, content) => {
+  const absolutePath = path.resolve(__dirname, '..', filename);
+  await fs.writeFile(absolutePath, content);
+  console.log(`✓ File saved: ${filename}`);
 };
 
-const readFile = (filename) => {
-  return new Promise((resolve, reject) => {
-    const absolutePath = path.resolve(__dirname, '..', filename);
-    fs.readFile(absolutePath, 'utf-8', (err, data) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(data);
-      }
-    });
-  });
+const readFile = async (filename) => {
+  const absolutePath = path.resolve(__dirname, '..', filename);
+  return fs.readFile(absolutePath, 'utf-8');
 };
 
 // 处理单个目录的图标更新
