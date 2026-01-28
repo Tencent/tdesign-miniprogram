@@ -43,8 +43,13 @@ export default {
     default: 'start' as TdChatActionbarProps['placement'],
     validator(val: TdChatActionbarProps['placement']): boolean {
       if (!val) return true;
-      return ['start', 'end', 'space-around', 'space-between'].includes(val);
+      return ['start', 'end', 'space-around', 'space-between', 'longpress'].includes(val);
     },
+  },
+  /** 【实验】长按触发点的位置信息，用于定位 popover */
+  longPressPosition: {
+    type: Object,
+    value: null,
   },
   /** 点击点赞，点踩，复制，分享，重新生成按钮时触发发 */
   onActions: {
