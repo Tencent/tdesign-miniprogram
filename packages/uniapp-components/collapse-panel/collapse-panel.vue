@@ -22,6 +22,7 @@
         :t-class="tools.cls(classPrefix + '__header', [placement, ['expanded', expanded]]) + ' ' + tClassHeader"
         :t-class-title="'class-title ' + (ultimateDisabled ? 'class-title--disabled' : '')"
         :t-class-note="'class-note ' + (ultimateDisabled ? 'class-note--disabled' : '')"
+        :t-class-left-icon="'class-left-icon ' + (ultimateDisabled ? 'class-left-icon--disabled' : '')"
         :t-class-right-icon="'class-right-icon ' + classPrefix + '__arrow--' + placement + ' ' + (ultimateDisabled ? 'class-right-icon--disabled' : '')"
         t-class-hover="class-header-hover"
         :title-style="titleCustomStyle"
@@ -72,7 +73,7 @@
   </view>
 </template>
 <script>
-import tCell from '../cell/cell';
+import TCell from '../cell/cell';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -96,7 +97,7 @@ export default uniComponent({
   ],
   mixins: [ChildrenMixin(RELATION_MAP.CollapsePanel)],
   components: {
-    tCell,
+    TCell,
   },
   props: {
     ...props,

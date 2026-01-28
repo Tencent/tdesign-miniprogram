@@ -64,9 +64,9 @@ import chatLoading from '../chat-loading/chat-loading.vue';
 import attachments from '../attachments/attachments.vue';
 
 import props from './props';
-import { prefix } from 'tdesign-uniapp/common/config';
-import _ from 'tdesign-uniapp/common/utils.wxs';
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
+import { prefix } from '@tdesign/uniapp/common/config';
+import _ from '@tdesign/uniapp/common/utils.wxs';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
 const name = `${prefix}-chat-message`;
 

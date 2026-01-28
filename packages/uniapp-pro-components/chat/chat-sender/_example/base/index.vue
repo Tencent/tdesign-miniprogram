@@ -8,7 +8,7 @@
       </view>
       <view class="chat-sender-placeholder"> 高度限制：最大高度为132px </view>
       <view class="chat-sender-wrapper">
-        <TChatSender
+        <t-chat-sender
           :value="value"
           :loading="loading"
           :disabled="disabled"
@@ -35,15 +35,15 @@
           <template #footer-prefix>
             <view class="demo-footer-prefix">
               <view :class="'deep-think-block ' + (deepThinkActive ? 'active' : '')" @click.stop="onDeepThinkTap">
-                <TIcon name="system-sum" size="36rpx" />
+                <t-icon name="system-sum" size="36rpx" />
                 <text class="deep-think-text"> 深度思考 </text>
               </view>
               <view :class="'net-search-block ' + (netSearchActive ? 'active' : '')" @click.stop="onNetSearchTap">
-                <TIcon name="internet" size="36rpx" />
+                <t-icon name="internet" size="36rpx" />
               </view>
             </view>
           </template>
-        </TChatSender>
+        </t-chat-sender>
       </view>
       <view class="demo-footer"> 内容由AI生成，仅供参考 </view>
     </view>
@@ -51,9 +51,9 @@
 </template>
 
 <script>
-import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import TIcon from 'tdesign-uniapp/icon/icon.vue';
-import Toast from 'tdesign-uniapp/toast';
+import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
+import Toast from '@tdesign/uniapp/toast/index';
 
 export default {
   components: {

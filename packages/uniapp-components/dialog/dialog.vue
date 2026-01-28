@@ -216,9 +216,9 @@
   </t-popup>
 </template>
 <script>
-import tPopup from '../popup/popup';
-import tIcon from '../icon/icon';
-import tButton from '../button/button';
+import TPopup from '../popup/popup';
+import TIcon from '../icon/icon';
+import TButton from '../button/button';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -247,9 +247,9 @@ export default uniComponent({
   ],
   mixins: [getFunctionalMixin(props), useCustomNavbar],
   components: {
-    tPopup,
-    tIcon,
-    tButton,
+    TPopup,
+    TIcon,
+    TButton,
   },
   props: {
     ...props,

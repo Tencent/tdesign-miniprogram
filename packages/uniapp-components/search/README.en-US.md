@@ -15,6 +15,7 @@ clearable | Boolean | true | \- | N
 confirm-hold | Boolean | false | \- | N
 confirm-type | String | search | options: send/search/next/go/done | N
 cursor | Number | -1 | \- | N
+cursor-color | String | #0052d9 | \- | N
 cursor-spacing | Number | 0 | \- | N
 disabled | Boolean | false | \- | N
 focus | Boolean | false | \- | N
@@ -27,7 +28,7 @@ placeholder | String | '' | \- | N
 placeholder-class | String | input-placeholder | \- | N
 placeholder-style | String | - | \- | N
 readonly | Boolean | undefined | \- | N
-result-list | Array | [] | Typescript：`Array<string>` | N
+result-list | Array | [] | Typescript: `Array<string>` | N
 right-icon | String | 'close-circle-filled' | `deprecated` | N
 selection-end | Number | -1 | \- | N
 selection-start | Number | -1 | \- | N
@@ -70,18 +71,18 @@ t-class-left | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-search-action-color | @brand-color | - 
---td-search-bg-color | @bg-color-secondarycontainer | - 
---td-search-clear-icon-color | @text-color-placeholder | - 
---td-search-clear-icon-font-size | 48rpx | - 
---td-search-disabled-text-color | @text-color-disabled | - 
---td-search-font-size | @font-size-m | - 
---td-search-height | 80rpx | - 
---td-search-icon-color | @text-color-placeholder | - 
---td-search-icon-font-size | 48rpx | - 
---td-search-label-color | @text-color-primary | - 
---td-search-padding | 16rpx 24rpx | - 
---td-search-placeholder-color | @text-color-placeholder | - 
---td-search-result-high-light-color | @brand-color | - 
---td-search-square-radius | @radius-default | - 
+--td-search-action-color | @brand-color | -
+--td-search-bg-color | @bg-color-secondarycontainer | -
+--td-search-clear-icon-color | @text-color-placeholder | -
+--td-search-clear-icon-size | 48rpx | -
+--td-search-disabled-text-color | @text-color-disabled | -
+--td-search-font | @font-body-large | -
+--td-search-height | 80rpx | -
+--td-search-icon-color | @text-color-placeholder | -
+--td-search-icon-size | 48rpx | -
+--td-search-label-color | @text-color-primary | -
+--td-search-padding | 16rpx 24rpx | -
+--td-search-placeholder-color | @text-color-placeholder | -
+--td-search-result-high-light-color | @brand-color | -
+--td-search-square-radius | @radius-default | -
 --td-search-text-color | @text-color-primary | -

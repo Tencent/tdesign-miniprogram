@@ -210,13 +210,13 @@
 </template>
 
 <script>
-import tOverlay from '../overlay/overlay';
-import tButton from '../button/button';
-import tPopup from '../popup/popup';
+import TOverlay from '../overlay/overlay';
+import TButton from '../button/button';
+import TPopup from '../popup/popup';
 import { uniComponent } from '../common/src/index';
 import props from './props';
 import { prefix } from '../common/config';
-import { isFunction, isNumber } from '../common/validator';
+import { isFunction, isNumeric } from '../common/validator';
 import { debounce, getRect, rpx2px, styles, unitConvert, nextTick, systemInfo, coalesce } from '../common/utils';
 import ContentComp from './content.vue';
 
@@ -256,9 +256,9 @@ export default uniComponent({
     useCustomNavbar,
   ],
   components: {
-    tOverlay,
-    tButton,
-    tPopup,
+    TOverlay,
+    TButton,
+    TPopup,
     ContentComp,
   },
   props: {
@@ -464,8 +464,8 @@ export default uniComponent({
     },
     getPlacement() {
       const space = rpx2px(32);
-      const offsetLeft = offset => unitConvert(isNumber(offset?.[0]) ? `${offset?.[0]}rpx` : offset?.[0] || 0);
-      const offsetTop = offset => unitConvert(isNumber(offset?.[1]) ? `${offset?.[1]}rpx` : offset?.[1] || 0);
+      const offsetLeft = offset => unitConvert(isNumeric(offset?.[0]) ? `${offset?.[0]}rpx` : offset?.[0] || 0);
+      const offsetTop = offset => unitConvert(isNumeric(offset?.[1]) ? `${offset?.[1]}rpx` : offset?.[1] || 0);
       const left = place => parseFloat(place.left);
       const right = place => parseFloat(place.right);
       const top = place => parseFloat(place.top);
@@ -532,5 +532,13 @@ export default uniComponent({
 </script>
 <style scoped>
 @import './guide.css';
-
+</style>
+<style scoped lang="less">
+.t-guide__footer--dialog {
+  // 适配 QQ 小程序等
+  display: inline-flex;
+  .t-button {
+    flex-grow: 1;
+  }
+}
 </style>

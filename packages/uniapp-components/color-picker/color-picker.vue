@@ -12,10 +12,13 @@
       @visible-change="onVisibleChange"
     >
       <slot name="header" />
+
+      <!-- 防止转成 px 后，尺寸没铺满 -->
+      <!-- 750rpx => 100% -->
       <TemplateVue
         ref="templateVue"
         :class-prefix="classPrefix"
-        :custom-style="tools._style([customStyle])"
+        :custom-style="tools._style(['width: 100%', customStyle])"
         :is-multiple="isMultiple"
         :type="type"
         :slider-info="sliderInfo"
@@ -61,7 +64,7 @@
   </view>
 </template>
 <script>
-import tPopup from '../popup/popup';
+import TPopup from '../popup/popup';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -134,7 +137,7 @@ export default uniComponent({
     styleIsolation: 'shared',
   },
   components: {
-    tPopup,
+    TPopup,
     TemplateVue,
   },
   props: {

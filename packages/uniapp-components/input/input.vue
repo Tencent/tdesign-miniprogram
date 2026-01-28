@@ -73,6 +73,7 @@
           :aria-label="label"
           :aria-roledescription="label"
           @input="onInput"
+          @change="onChange"
           @focus="onFocus"
           @blur="onBlur"
           @confirm="onConfirm"
@@ -142,7 +143,7 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -177,7 +178,7 @@ export default uniComponent({
     `${prefix}-class-tips`,
   ],
   components: {
-    tIcon,
+    TIcon,
   },
   props: {
     ...props,

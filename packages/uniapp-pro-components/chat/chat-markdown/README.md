@@ -10,7 +10,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TChatMarkdown from 'tdesign-uniapp-chat/chat-markdown/chat-markdown.vue';
+import TChatMarkdown from '@tdesign/uniapp-chat/chat-markdown/chat-markdown.vue';
 ```
 
 ### 01 基础 Markdown 样式
@@ -51,7 +51,7 @@ import TChatMarkdown from 'tdesign-uniapp-chat/chat-markdown/chat-markdown.vue';
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
 content | String | - | 必需。markdown 内容文本 | Y
-options | Object | () => ({ gfm: true, pedantic: false, breaks: true }) | Markdown 解析器基础配置。TS 类型：`TdChatContentMDOptions ` `interface TdChatContentMDOptions {gfm?: boolean; pedantic?: boolean; smartLists?: boolean; breaks?: boolean}`。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign-uniapp-chat/chat-markdown/type.ts) | N
+options | Object | () => ({ gfm: true, pedantic: false, breaks: true }) | Markdown 解析器基础配置。TS 类型：`TdChatContentMDOptions ` `interface TdChatContentMDOptions {gfm?: boolean; pedantic?: boolean; smartLists?: boolean; breaks?: boolean}`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-pro-components/chat/chat-markdown/type.ts) | N
 
 ### ChatMarkdown Events
 

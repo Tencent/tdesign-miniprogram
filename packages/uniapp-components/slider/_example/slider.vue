@@ -1,13 +1,8 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="Slider"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="Slider 滑动选择器"
@@ -18,41 +13,41 @@
         title="01 组件类型"
         desc="单游标滑块"
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
 
       <t-demo desc="双游标滑块">
-        <range />
+        <range-demo />
       </t-demo>
 
       <t-demo desc="带数值滑动选择器">
-        <labelDemo />
+        <label-demo />
       </t-demo>
 
       <t-demo desc="起始非零滑动选择器">
-        <maxDemo />
+        <max-demo />
       </t-demo>
 
       <t-demo desc="带刻度滑动选择器">
-        <step />
+        <step-demo />
       </t-demo>
 
       <t-demo
         title="02 组件状态"
         desc="滑块禁用状态"
       >
-        <disabled />
+        <disabled-demo />
       </t-demo>
 
       <t-demo
         title="03 特殊样式"
         desc="胶囊型滑块"
       >
-        <capsule />
+        <capsule-demo />
       </t-demo>
 
       <t-demo title="04 垂直状态">
-        <vertical />
+        <vertical-demo />
       </t-demo>
     </view>
   </view>
@@ -61,23 +56,23 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import range from './range/index.vue';
-import labelDemo from './label/index.vue';
-import maxDemo from './max/index.vue';
-import step from './step/index.vue';
-import disabled from './disabled/index.vue';
-import capsule from './capsule/index.vue';
-import vertical from './vertical/index.vue';
+import RangeDemo from './range/index.vue';
+import LabelDemo from './label/index.vue';
+import MaxDemo from './max/index.vue';
+import StepDemo from './step/index.vue';
+import DisabledDemo from './disabled/index.vue';
+import CapsuleDemo from './capsule/index.vue';
+import VerticalDemo from './vertical/index.vue';
 export default {
   components: {
     BaseDemo,
-    range,
-    labelDemo,
-    maxDemo,
-    step,
-    disabled,
-    capsule,
-    vertical,
+    RangeDemo,
+    LabelDemo,
+    MaxDemo,
+    StepDemo,
+    DisabledDemo,
+    CapsuleDemo,
+    VerticalDemo,
   },
   data() {
     return {};

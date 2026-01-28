@@ -60,8 +60,8 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tImage from '../image/image';
+import TIcon from '../icon/icon';
+import TImage from '../image/image';
 import { uniComponent } from '../common/src/index';
 import props from './props';
 import { prefix } from '../common/config';
@@ -85,8 +85,8 @@ export default uniComponent({
     `${prefix}-class-actions`,
   ],
   components: {
-    tIcon,
-    tImage,
+    TIcon,
+    TImage,
   },
   props: {
     ...props,

@@ -1,11 +1,8 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="NavBar"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -23,17 +20,17 @@
           desc="基础小程序导航栏"
         >
           <view class="base">
-            <baseDemo />
+            <base-demo />
           </view>
           <view class="base">
             <back-home />
           </view>
         </t-demo>
         <t-demo desc="带搜索的导航栏">
-          <search />
+          <search-demo />
         </t-demo>
         <t-demo desc="带图片的导航栏">
-          <imgDemo />
+          <img-demo />
         </t-demo>
         <t-demo
           title="02 组件样式"
@@ -50,23 +47,21 @@
 </template>
 
 <script>
+import BaseDemo from '../base/index.vue';
+import SearchDemo from '../search/index.vue';
+import BackHome from '../back-home/index.vue';
+import ImgDemo from '../img/index.vue';
+import LeftTitle from '../left-title/index.vue';
+import CustomColor from '../custom-color/index.vue';
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import search from '../search/index.vue';
-import backHome from '../back-home/index.vue';
-import imgDemo from '../img/index.vue';
-import leftTitle from '../left-title/index.vue';
-import customColor from '../custom-color/index.vue';
 export default {
   components: {
-    tNavbar,
-    baseDemo,
-    search,
-    backHome,
-    imgDemo,
-    leftTitle,
-    customColor,
+    BaseDemo,
+    SearchDemo,
+    BackHome,
+    ImgDemo,
+    LeftTitle,
+    CustomColor,
   },
   data() {
     return {};

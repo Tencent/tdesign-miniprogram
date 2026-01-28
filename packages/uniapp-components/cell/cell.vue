@@ -127,8 +127,8 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tImage from '../image/image';
+import TIcon from '../icon/icon';
+import TImage from '../image/image';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -164,8 +164,8 @@ export default uniComponent({
   ],
   mixins: [ChildrenMixin(RELATION_MAP.Cell)],
   components: {
-    tIcon,
-    tImage,
+    TIcon,
+    TImage,
   },
   props: {
     ...props,

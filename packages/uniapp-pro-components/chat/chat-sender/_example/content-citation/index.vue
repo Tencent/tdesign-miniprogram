@@ -7,7 +7,7 @@
       </view>
       <view class="chat-sender-placeholder"> 高度限制：最大高度为132px </view>
       <view class="chat-sender-wrapper">
-        <TChatSender
+        <t-chat-sender
           :value="value"
           :loading="loading"
           :disabled="disabled"
@@ -34,28 +34,28 @@
           <template #header>
             <view v-if="headerText" class="demo-header">
               <view style="padding: 4rpx; height: 40rpx; color: var(--td-text-color-disabled)">
-                <TIcon name="enter" size="40rpx" style="transform: scaleX(-1)" />
+                <t-icon name="enter" size="40rpx" style="transform: scaleX(-1)" />
               </view>
               <view class="header-content">
                 {{ headerText }}
               </view>
               <view style="padding: 4rpx; height: 40rpx; margin-left: auto; color: var(--td-text-color-placeholder)">
-                <TIcon name="close" size="40rpx" @click="handleCLoseCite" />
+                <t-icon name="close" size="40rpx" @click="handleCLoseCite" />
               </view>
             </view>
           </template>
           <template #footer-prefix>
             <view class="demo-footer-prefix">
               <view :class="'deep-think-block ' + (deepThinkActive ? 'active' : '')" @click.stop="onDeepThinkTap">
-                <TIcon name="system-sum" size="36rpx" />
+                <t-icon name="system-sum" size="36rpx" />
                 <text class="deep-think-text"> 深度思考 </text>
               </view>
               <view :class="'net-search-block ' + (netSearchActive ? 'active' : '')" @click.stop="onNetSearchTap">
-                <TIcon name="internet" size="36rpx" />
+                <t-icon name="internet" size="36rpx" />
               </view>
             </view>
           </template>
-        </TChatSender>
+        </t-chat-sender>
       </view>
       <view class="demo-content-citation-footer"> 内容由AI生成，仅供参考 </view>
     </view>
@@ -63,8 +63,8 @@
 </template>
 
 <script>
-import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import TIcon from 'tdesign-uniapp/icon/icon.vue';
+import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
 
 export default {
   components: {

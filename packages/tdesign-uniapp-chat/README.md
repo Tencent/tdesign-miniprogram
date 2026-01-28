@@ -6,19 +6,19 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/novlan1/tdesign-uniapp-chat/blob/develop/LICENSE">
-    <img src="https://img.shields.io/npm/l/tdesign-uniapp-chat.svg?sanitize=true" alt="License">
+  <a href="https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/tdesign-uniapp-chat/LICENSE">
+    <img src="https://img.shields.io/npm/l/@tdesign/uniapp-chat.svg?sanitize=true" alt="License">
   </a>
-  <a href="https://www.npmjs.com/package/tdesign-uniapp-chat">
-    <img src="https://img.shields.io/npm/v/tdesign-uniapp-chat.svg?sanitize=true" alt="Version">
+  <a href="https://www.npmjs.com/package/@tdesign/uniapp-chat">
+    <img src="https://img.shields.io/npm/v/@tdesign/uniapp-chat.svg?sanitize=true" alt="Version">
   </a>
-  <a href="https://www.npmjs.com/package/tdesign-uniapp-chat">
-    <img src="https://img.shields.io/npm/dm/tdesign-uniapp-chat" alt="Downloads">
+  <a href="https://www.npmjs.com/package/@tdesign/uniapp-chat">
+    <img src="https://img.shields.io/npm/dm/@tdesign/uniapp-chat" alt="Downloads">
   </a>
-  <a href="https://pkg.pr.new/~/novlan1/tdesign-uniapp-chat">
-    <img src="https://pkg.pr.new/badge/novlan1/tdesign-uniapp-chat?style=flat&color=000&logoSize=auto" alt="Downloads">
+  <a href="https://pkg.pr.new/~/Tencent/tdesign-miniprogram">
+    <img src="https://pkg.pr.new/badge/Tencent/tdesign-miniprogram?style=flat&color=000&logoSize=auto" alt="Downloads">
   </a>
-  <a href="https://deepwiki.com/novlan1/tdesign-uniapp-chat">
+  <a href="https://deepwiki.com/Tencent/tdesign-miniprogram">
     <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki">
   </a>
 </p>
@@ -42,7 +42,7 @@
 ### NPM 方式
 
 ```bash
-npm i tdesign-uniapp-chat
+npm i @tdesign/uniapp-chat
 ```
 
 ### UNI_MODULES 方式
@@ -54,13 +54,13 @@ npm i tdesign-uniapp-chat
 1. 在 `main.ts` 中引入样式文件
 
 ```js
-import 'tdesign-uniapp/common/style/theme/index.css';
+import '@tdesign/uniapp/common/style/theme/index.css';
 ```
 
 也可以引入 `rpx` 单位的 `less` 文件，该文件与 `tdesign-miniprogram` 完全一致。
 
 ```js
-import 'tdesign-uniapp/common/style/theme/index.less';
+import '@tdesign/uniapp/common/style/theme/index.less';
 ```
 
 2. 在文件中使用
@@ -71,7 +71,7 @@ import 'tdesign-uniapp/common/style/theme/index.less';
 </template>
 
 <script lang="ts" setup>
-import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
+import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
 </script>
 ```
 
@@ -81,7 +81,7 @@ import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
 
 安装注册 TDesign 之后，在开发项目时，可以配合插件在VSCode等主流编辑器中达到提示组件名及API的效果。
 
-推荐安装 `Volar`，并在项目的 `tsconfig.json` 的 `includes` 属性中增加 `node_modules/tdesign-uniapp-chat/global.d.ts`，即可实现该效果。
+推荐安装 `Volar`，并在项目的 `tsconfig.json` 的 `includes` 属性中增加 `node_modules/@tdesign/uniapp-chat/global.d.ts`，即可实现该效果。
 
 ## 平台兼容性
 
@@ -99,10 +99,10 @@ import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
 
 ## 反馈
 
-有任何问题，建议通过 [Github issues](https://github.com/novlan1/tdesign-uniapp/issues) 反馈或扫码加入用户微信群。
+有任何问题，建议通过 [Github issues](https://github.com/Tencent/tdesign-miniprogram/issues) 反馈或扫码加入用户微信群。
 
 <img src="https://raw.githubusercontent.com/Tencent/tdesign/main/packages/site-components/src/images/groups/wx-group.png" width="200" />
 
 ## 开源协议
 
-TDesign 遵循 [MIT 协议](https://github.com/novlan1/tdesign-uniapp/blob/develop/LICENSE)。
+TDesign 遵循 [MIT 协议](https://github.com/Tencent/tdesign-miniprogram/tree/develop/LICENSE)。

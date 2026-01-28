@@ -95,8 +95,8 @@ import tIcon from 'tdesign-uniapp/icon/icon.vue';
 import tPopover from 'tdesign-uniapp/popover/popover.vue';
 import { prefix } from 'tdesign-uniapp/common/config';
 import props from './props';
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
-import _ from 'tdesign-uniapp/common/utils.wxs';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
+import _ from '@tdesign/uniapp/common/utils.wxs';
 
 const name = `${prefix}-chat-actionbar`;
 

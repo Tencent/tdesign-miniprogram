@@ -2,7 +2,6 @@
 
 @picker: ~'@{prefix}-picker';
 @item: ~'@{picker}-item';
-@picker-group-height: var(--td-picker-group-height, 400rpx);
 @picker-item-color: var(--td-picker-item-color, @text-color-secondary);
 @picker-item-active-color: var(--td-picker-item-active-color, @text-color-primary);
 @picker-item-font-size: var(--td-picker-item-font-size, @font-size-m);
@@ -14,14 +13,14 @@
 
 .@{item} {
   &__group {
-    height: @picker-group-height;
     overflow: hidden;
     flex: 1;
     z-index: 1;
   }
 
   &__wrapper {
-    padding: 144rpx 0;
+    // 虚拟滚动性能优化：使用 will-change 提示浏览器
+    will-change: transform;
   }
 
   &__item {
@@ -30,6 +29,8 @@
     align-items: center;
     color: @picker-item-color;
     font-size: @picker-item-font-size;
+    // 虚拟滚动性能优化：隔离渲染上下文
+    contain: layout style paint;
 
     &-icon {
       font-size: 36rpx;

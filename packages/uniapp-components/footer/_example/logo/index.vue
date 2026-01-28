@@ -2,11 +2,11 @@
   <view>
     <!-- theme 为 logo -->
     <view class="footer-example">
-      <TFooter :logo="logo" />
+      <t-footer :logo="logo" />
     </view>
 
     <view class="footer-example">
-      <TFooter
+      <t-footer
         :logo="{url:
           theme === 'dark'
             ? 'https://tdesign.gtimg.com/mobile/demos/footer-logo-dark.png'
@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import TFooter from 'tdesign-uniapp/footer/footer.vue';
-import { themeMixin } from 'tdesign-uniapp/mixins/theme-change';
+import TFooter from '@tdesign/uniapp/footer/footer.vue';
+import { themeMixin } from '@tdesign/uniapp/mixins/theme-change';
 
 const logo = {
   icon: 'https://tdesign.gtimg.com/mobile/demos/logo2.png',

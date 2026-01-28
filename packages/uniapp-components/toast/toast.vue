@@ -45,20 +45,20 @@
     </view>
     <t-overlay
       :custom-style="(overlayProps && overlayProps.style) || ''"
-      :visible="realVisible && (showOverlay || dataPreventScrollThrough)"
+      :visible="visible && (showOverlay || dataPreventScrollThrough)"
       :z-index="(overlayProps && overlayProps.zIndex) || 11000"
       :duration="(overlayProps && overlayProps.duration) || 300"
       :using-custom-navbar="(overlayProps && overlayProps.usingCustomNavbar) || usingCustomNavbar"
       :custom-navbar-height="(overlayProps && overlayProps.customNavbarHeight) || customNavbarHeight"
-      :background-color="dataPreventScrollThrough ? 'transparent' : (overlayProps && overlayProps.backgroundColor) || ''"
+      :background-color="!showOverlay && dataPreventScrollThrough ? 'transparent' : (overlayProps && overlayProps.backgroundColor) || ''"
       :prevent-scroll-through="dataPreventScrollThrough || (overlayProps && overlayProps.preventScrollThrough)"
     />
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tLoading from '../loading/loading';
-import tOverlay from '../overlay/overlay';
+import TIcon from '../icon/icon';
+import TLoading from '../loading/loading';
+import TOverlay from '../overlay/overlay';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -90,9 +90,9 @@ export default uniComponent({
   ],
   mixins: [transitionMixins, useCustomNavbar],
   components: {
-    tIcon,
-    tLoading,
-    tOverlay,
+    TIcon,
+    TLoading,
+    TOverlay,
   },
   props: {
     ...props,
@@ -160,6 +160,7 @@ export default uniComponent({
         placement: props.placement.default,
         preventScrollThrough: props.preventScrollThrough.default,
         theme: props.theme.default,
+        close: null,
       };
 
       const data = {

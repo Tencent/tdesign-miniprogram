@@ -8,7 +8,7 @@
       :duration="2000 - duration"
     />
     <view class="slider-container">
-      <TSlider
+      <t-slider
         t-class="slider-class"
         style="flex-grow: 1;"
         :value="duration"
@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import tLoading from 'tdesign-uniapp/loading/loading.vue';
-import TSlider from 'tdesign-uniapp/slider/slider.vue';
-import SkylineBehavior from 'tdesign-uniapp/mixins/skyline.js';
+import TLoading from '@tdesign/uniapp/loading/loading.vue';
+import TSlider from '@tdesign/uniapp/slider/slider.vue';
+import SkylineBehavior from '@tdesign/uniapp/mixins/skyline.js';
 
 
 export default {
@@ -32,7 +32,7 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tLoading,
+    TLoading,
     TSlider,
   },
   mixins: [SkylineBehavior],

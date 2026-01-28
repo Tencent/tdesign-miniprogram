@@ -1,12 +1,9 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="CountDown"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -23,7 +20,7 @@
         padding
         title="01 组件类型"
       >
-        <baseDemo />
+        <base-demo />
       </t-demo>
 
       <t-demo
@@ -31,7 +28,7 @@
         title="02 组件尺寸"
         desc="倒计时 large/medium/small 尺寸"
       >
-        <size />
+        <size-demo />
       </t-demo>
     </scroll-view>
   </view>
@@ -39,14 +36,13 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import size from '../size/index.vue';
+import BaseDemo from '../base/index.vue';
+import SizeDemo from '../size/index.vue';
+
 export default {
   components: {
-    tNavbar,
-    baseDemo,
-    size,
+    BaseDemo,
+    SizeDemo,
   },
   data() {
     return {};
