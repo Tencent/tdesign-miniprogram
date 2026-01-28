@@ -9,36 +9,6 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="a-b-filled"
-        name="a-b-filled"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        a-b-filled
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
-        data-name="a-b"
-        name="a-b"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        a-b
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
         data-name="ability-open"
         name="ability-open"
         size="48rpx"
@@ -324,21 +294,6 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="ai-2"
-        name="ai-2"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        ai-2
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
         data-name="ai-article-filled"
         name="ai-article-filled"
         size="48rpx"
@@ -504,21 +459,6 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="ai-edit-2-filled"
-        name="ai-edit-2-filled"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        ai-edit-2-filled
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
         data-name="ai-edit-filled"
         name="ai-edit-filled"
         size="48rpx"
@@ -573,21 +513,6 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         ai-education
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
-        data-name="ai-git-branch-1"
-        name="ai-git-branch-1"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        ai-git-branch-1
       </wx-view>
     </wx-view>
     <wx-view
@@ -708,36 +633,6 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         ai-layout
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
-        data-name="ai-more-2-filled"
-        name="ai-more-2-filled"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        ai-more-2-filled
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
-        data-name="ai-more-2"
-        name="ai-more-2"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        ai-more-2
       </wx-view>
     </wx-view>
     <wx-view
@@ -2418,21 +2313,6 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         audio
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
-        data-name="authorize-filled"
-        name="authorize-filled"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        authorize-filled
       </wx-view>
     </wx-view>
     <wx-view
@@ -6558,21 +6438,6 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         chat-heart
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
-        data-name="chat-history-filled"
-        name="chat-history-filled"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        chat-history-filled
       </wx-view>
     </wx-view>
     <wx-view
@@ -12243,21 +12108,6 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         fahrenheit-scale
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
-        data-name="feedback-filled"
-        name="feedback-filled"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        feedback-filled
       </wx-view>
     </wx-view>
     <wx-view
@@ -18114,21 +17964,6 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="ipod-ipod"
-        name="ipod-ipod"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        ipod-ipod
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
         data-name="ipod"
         name="ipod"
         size="48rpx"
@@ -20004,36 +19839,6 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="logo-draw-io-filled"
-        name="logo-draw-io-filled"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        logo-draw-io-filled
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
-        data-name="logo-draw-io"
-        name="logo-draw-io"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        logo-draw-io
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
         data-name="logo-dribbble-filled"
         name="logo-dribbble-filled"
         size="48rpx"
@@ -20544,21 +20349,6 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="logo-tencent-meeting-filled"
-        name="logo-tencent-meeting-filled"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        logo-tencent-meeting-filled
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
         data-name="logo-tencentcode"
         name="logo-tencentcode"
         size="48rpx"
@@ -20658,21 +20448,6 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         logo-wechat-stroke
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
-        data-name="logo-wechat-work-docs-filled"
-        name="logo-wechat-work-docs-filled"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        logo-wechat-work-docs-filled
       </wx-view>
     </wx-view>
     <wx-view
@@ -20793,21 +20568,6 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         logo-windows
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
-        data-name="logo-xiaoma-report-filled"
-        name="logo-xiaoma-report-filled"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        logo-xiaoma-report-filled
       </wx-view>
     </wx-view>
     <wx-view
@@ -26763,21 +26523,6 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         robot-2
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
-        data-name="robot-3"
-        name="robot-3"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        robot-3
       </wx-view>
     </wx-view>
     <wx-view
