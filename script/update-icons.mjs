@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import https from 'https';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -35,23 +34,13 @@ const targetDirs = [
   },
 ];
 
-// 使用 https 模块获取远程 CSS 文件
-const fetchCss = (url) => {
-  return new Promise((resolve, reject) => {
-    https
-      .get(url, (res) => {
-        let data = '';
-        res.on('data', (chunk) => {
-          data += chunk;
-        });
-        res.on('end', () => {
-          resolve(data);
-        });
-      })
-      .on('error', (err) => {
-        reject(err);
-      });
-  });
+// 使用 fetch 获取远程 CSS 文件
+const fetchCss = async (url) => {
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+  }
+  return res.text();
 };
 
 const saveFile = (filename, content) => {
