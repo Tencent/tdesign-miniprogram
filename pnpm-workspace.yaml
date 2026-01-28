@@ -50,7 +50,6 @@ catalog:
   '@vue/tsconfig': ^0.7.0
   '@vueuse/core': 10.7.0
   autoprefixer: ^10.2.4
-  axios: ^1.11.0
   babel-jest: ^26.6.3
   camelcase: ~6.3.0
   chokidar: ^4.0.3

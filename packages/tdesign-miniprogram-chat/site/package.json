@@ -21,7 +21,6 @@
     "@types/prismjs": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
     "@vitejs/plugin-vue-jsx": "catalog:",
-    "axios": "catalog:",
     "gray-matter": "catalog:",
     "playwright": "catalog:",
     "prismjs": "catalog:",

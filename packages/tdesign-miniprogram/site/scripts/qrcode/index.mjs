@@ -1,9 +1,10 @@
-import fs from 'fs';
+import fs from 'fs/promises';
+import { existsSync } from 'fs';
 import resolveCwd from '../utils.mjs';
 import { getAccessToken, getUnlimitedQRCode } from './api.mjs';
 
 // 去读 app.json 中 pages && subpackages 字段
-const APP_JSON = JSON.parse(fs.readFileSync(resolveCwd('../example/app.json'), 'utf-8'));
+const APP_JSON = JSON.parse(await fs.readFile(resolveCwd('../example/app.json'), 'utf-8'));
 
 const { pages, subpackages } = APP_JSON;
 
@@ -24,25 +25,23 @@ const isSkylinePage = (str) => {
   return str.includes('skyline');
 };
 
-const getImageList = () => {
+const getImageList = async () => {
   const imageFolderDir = resolveCwd('../site/public/assets/qrcode');
-  const images = fs.readdirSync(imageFolderDir);
-  const imageOldList = [];
-  images.forEach((item) => {
-    imageOldList.push(item.split('.')[0]);
-  });
-  return imageOldList;
+  if (!existsSync(imageFolderDir)) return [];
+  const images = await fs.readdir(imageFolderDir);
+  return images.map((item) => item.split('.')[0]);
 };
 
-const getNewPageList = (list) => {
+const getNewPageList = async (list) => {
   const pageList = [];
-  const imageOldList = getImageList();
+  const imageOldList = await getImageList();
 
   list.forEach((item) => {
     if (Object.prototype.toString.call(item) === '[object Object]') {
       const pageName = item.root.split('/')[1];
-      if (!isExistStr(`${item.root}${pageName}`, imageOldList) && !isSkylinePage(`${item.root}${pageName}`)) {
-        pageList.push(`${item.root}${pageName}`);
+      const pagePath = `${item.root}${pageName}`;
+      if (!isExistStr(pagePath, imageOldList) && !isSkylinePage(pagePath)) {
+        pageList.push(pagePath);
       }
     } else if (!isExistStr(item, imageOldList) && !isSkylinePage(item)) {
       pageList.push(item);
@@ -52,63 +51,73 @@ const getNewPageList = (list) => {
   return pageList;
 };
 
-const getUnlimitedQRCodeImage = (appid, appSecret) => {
-  getAccessToken(appid, appSecret).then((e) => {
-    if (e.access_token) {
-      const token = e.access_token;
-      console.log('access_token 2h内有效：', token);
-      const baseParameter = {
-        width: 280, // 小程序码大小
-      };
-      const baseConfig = {
-        responseType: 'arraybuffer',
-      };
+const getUnlimitedQRCodeImage = async (appid, appSecret) => {
+  try {
+    const tokenRes = await getAccessToken(appid, appSecret);
+    const result = typeof tokenRes === 'string' ? JSON.parse(tokenRes) : tokenRes;
 
-      const pageList = getNewPageList(pages.concat(subpackages));
+    if (!result.access_token) {
+      console.error('获取 access_token 失败');
+      return;
+    }
 
-      // 循环 pages, 获取相应小程序码
-      pageList.forEach((item) => {
+    const token = result.access_token;
+    console.log('access_token 2h内有效：', token);
+
+    const baseParameter = {
+      width: 280,
+    };
+    const baseConfig = {
+      responseType: 'arraybuffer',
+    };
+
+    const pageList = await getNewPageList(pages.concat(subpackages));
+    console.log(`待生成小程序码的页面数量：${pageList.length}`);
+
+    // 并发获取所有小程序码
+    const results = await Promise.allSettled(
+      pageList.map(async (item) => {
         const temp = [...new Set(item.split('/').slice(1))];
         const fileName = temp.join('-');
 
         const specialParameter = {
-          page: item, // 扫码进入的小程序页面路径
-          scene: `name=${temp[0]}`, // 标识
+          page: item,
+          scene: `name=${temp[0]}`,
           check_path: false,
         };
 
-        getUnlimitedQRCode(token, JSON.stringify({ ...specialParameter, ...baseParameter }), { ...baseConfig })
-          .then((res) => {
-            // 因为微信接口 getwxacodeunlimit 成功时返回的是 Buffer ，失败时返回 JSON 结构。这里把返回数据全部当成 Buffer 处理，所以 res.length < 200， 则表示获取失败。
-            if (res.length < 200) {
-              const { errcode, errmsg } = JSON.parse(res.toString());
-              console.log('===小程序码获取失败===', item, { errcode, errmsg });
-              process.exit(1);
-            }
-
-            const buffer = Buffer.from(res, 'base64');
-            const destPath = resolveCwd(`../site/public/assets/qrcode/${fileName}.png`);
-
-            fs.writeFile(
-              destPath,
-              buffer,
-              {
-                encoding: 'binary',
-                flag: 'w+',
-              },
-              (err) => {
-                if (err) {
-                  console.log('===小程序码图片存储错误===', err);
-                }
-              },
-            );
-          })
-          .catch((e) => {
-            console.log(e);
+        try {
+          const res = await getUnlimitedQRCode(token, JSON.stringify({ ...specialParameter, ...baseParameter }), {
+            ...baseConfig,
           });
-      });
+
+          // 微信接口成功时返回 Buffer，失败时返回 JSON 结构
+          if (res.length < 200) {
+            const { errcode, errmsg } = JSON.parse(res.toString());
+            console.error('===小程序码获取失败===', item, { errcode, errmsg });
+            process.exit(1);
+          }
+
+          const buffer = Buffer.isBuffer(res) ? res : Buffer.from(res, 'base64');
+          const destPath = resolveCwd(`../site/public/assets/qrcode/${fileName}.png`);
+          await fs.writeFile(destPath, buffer);
+          console.log(`✓ 小程序码已生成：${fileName}.png`);
+        } catch (e) {
+          console.error(`✗ 生成小程序码失败：${item}`, e);
+          throw e;
+        }
+      }),
+    );
+
+    const failed = results.filter((r) => r.status === 'rejected');
+    if (failed.length > 0) {
+      console.error(`\n有 ${failed.length} 个页面生成失败`);
+    } else {
+      console.log('\n=== 所有小程序码生成完成 ===');
     }
-  });
+  } catch (error) {
+    console.error('getAccessToken 错误：', error);
+  }
 };
 
 /**
