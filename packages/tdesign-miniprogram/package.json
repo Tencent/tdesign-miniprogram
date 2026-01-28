@@ -18,7 +18,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Tencent/tdesign-miniprogram"
+    "url": "https://github.com/Tencent/tdesign-miniprogram",
+    "directory": "packages/tdesign-miniprogram"
   },
   "homepage": "https://tdesign.tencent.com/miniprogram",
   "bugs": {
