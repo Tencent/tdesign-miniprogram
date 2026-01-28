@@ -69,7 +69,7 @@
     data-index="{{index}}"
     class="{{classPrefix}}__result-item"
     hover
-    bind:tap="onSelectResultItem"
+    bind:tap="onSelectOption"
     aria-role="option"
   >
     <rich-text slot="title" nodes="{{_this.highLight(item, value)}}"></rich-text>
