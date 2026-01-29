@@ -4,6 +4,13 @@ description: TDesign UniApp Chat is a UI component library for Uni App.
 spline: explain
 ---
 
+<div style="background: #ecf2fe; display: flex; align-items: center; line-height: 20px; padding: 14px 24px; border-radius: 3px; color: #555a65">
+  <svg fill="none" viewBox="0 0 16 16" width="16px" height="16px" style="margin-right: 5px">
+    <path fill="#0052d9" d="M8 15A7 7 0 108 1a7 7 0 000 14zM7.4 4h1.2v1.2H7.4V4zm.1 2.5h1V12h-1V6.5z" fillOpacity="0.9"></path>
+  </svg>
+  Starting from version 0.2.0, the npm package name for the TDesign UniApp Chat component library has changed from tdesign-uniapp-chat to @tdesign/uniapp-chat.
+</div>
+
 ## Preview
 
 Please use WeChat to scan the QR code to preview the TDesign UniApp example. ↓
