@@ -1,6 +1,6 @@
 {
   "name": "tdesign-miniprogram",
-  "version": "1.12.1",
+  "version": "1.12.2",
   "title": "tdesign-miniprogram",
   "description": "TDesign Component for miniprogram",
   "main": "miniprogram_dist/index.js",
@@ -18,7 +18,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Tencent/tdesign-miniprogram"
+    "url": "https://github.com/Tencent/tdesign-miniprogram",
+    "directory": "packages/tdesign-miniprogram"
   },
   "homepage": "https://tdesign.tencent.com/miniprogram",
   "bugs": {

@@ -8,7 +8,6 @@
       placement="bottom"
       @visible-change="onVisibleChange"
     >
-      <!-- parse <include src="./template.wxml"/> -->
       <CalendarTemplate
         :class-prefix="classPrefix"
         :use-popup="usePopup"
@@ -39,7 +38,6 @@
       </CalendarTemplate>
     </t-popup>
     <block v-else>
-      <!-- parse <include src="./template.wxml"/> -->
       <CalendarTemplate
         :class-prefix="classPrefix"
         :use-popup="usePopup"
@@ -72,9 +70,9 @@
   </view>
 </template>
 <script>
-import tPopup from '../popup/popup';
-import tButton from '../button/button';
-import tIcon from '../icon/icon';
+import TPopup from '../popup/popup';
+import TButton from '../button/button';
+import TIcon from '../icon/icon';
 import CalendarTemplate from './template.vue';
 
 import { uniComponent } from '../common/src/index';
@@ -124,9 +122,9 @@ export default uniComponent({
   ],
   mixins: [useCustomNavbar],
   components: {
-    tPopup,
-    tButton,
-    tIcon,
+    TPopup,
+    TButton,
+    TIcon,
     CalendarTemplate,
   },
   props: {
@@ -164,6 +162,10 @@ export default uniComponent({
       },
     },
 
+    allowSameDay(v) {
+      this.base.allowSameDay = v;
+    },
+
     confirmBtn: {
       handler(v) {
         if (typeof v === 'string') {
@@ -198,9 +200,8 @@ export default uniComponent({
       handler(v) {
         this.base.value = v;
         this.calcMonths();
-        this.updateCurrentMonth(v);
+        this.updateCurrentMonth(Array.isArray(v) ? v[0] : v);
       },
-      // immediate: true,
       deep: true,
     },
 
@@ -292,14 +293,16 @@ export default uniComponent({
     updateActionButton(value) {
       const _min = this.getCurrentYearAndMonth(this.base.minDate);
       const _max = this.getCurrentYearAndMonth(this.base.maxDate);
+      const _value = this.getCurrentYearAndMonth(value);
 
       const _minTimestamp = new Date(_min.year, _min.month, 1).getTime();
       const _maxTimestamp = new Date(_max.year, _max.month, 1).getTime();
+      const _dateValue = new Date(_value.year, _value.month, 1);
 
-      const _prevYearTimestamp = getPrevYear(value).getTime();
-      const _prevMonthTimestamp = getPrevMonth(value).getTime();
-      const _nextMonthTimestamp = getNextMonth(value).getTime();
-      const _nextYearTimestamp = getNextYear(value).getTime();
+      const _prevYearTimestamp = getPrevYear(_dateValue).getTime();
+      const _prevMonthTimestamp = getPrevMonth(_dateValue).getTime();
+      const _nextMonthTimestamp = getNextMonth(_dateValue).getTime();
+      const _nextYearTimestamp = getNextYear(_dateValue).getTime();
 
       const preYearBtnDisable = _prevYearTimestamp < _minTimestamp || _prevMonthTimestamp < _minTimestamp;
       const prevMonthBtnDisable = _prevMonthTimestamp < _minTimestamp;
@@ -442,4 +445,10 @@ export default uniComponent({
 </script>
 <style scoped>
 @import './calendar.css';
+</style>
+<style scoped>
+.t-calendar-switch-mode--none > .t-calendar__months {
+  /* support mp-alipay */
+  width: 100%;
+}
 </style>

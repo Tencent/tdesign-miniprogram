@@ -1,11 +1,8 @@
 {
   "name": "@tdesign/uniapp-components",
   "private": true,
-  "id": "tdesign-uniapp",
-  "version": "0.6.3",
-  "author": "novlan1",
-  "title": "tdesign-uniapp",
-  "description": "TDesign Component for uniapp",
+  "license": "MIT",
+  "author": "tdesign",
   "typings": "./types/index.d.ts",
   "exports": {
     "./*": "./*",
@@ -400,20 +397,6 @@
       "default": "./watermark/watermark.vue"
     }
   },
-  "keywords": [
-    "tdesign",
-    "miniprogram",
-    "uniapp",
-    "vue"
-  ],
-  "homepage": "https://uwayfly.com/tdesign-uniapp/",
-  "bugs": {
-    "url": "https://github.com/Tencent/tdesign-miniprogram/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Tencent/tdesign-miniprogram.git"
-  },
   "scripts": {
     "dev:custom": "uni -p",
     "dev:h5": "uni",
@@ -448,6 +431,5 @@
     "type-check": "vue-tsc --noEmit",
     "postinstall": "node ./script/postinstall",
     "publish": "node ../example/script/release/publish-tdesign-uniapp.js"
-  },
-  "license": "MIT"
+  }
 }

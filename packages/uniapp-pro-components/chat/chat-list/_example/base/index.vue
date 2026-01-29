@@ -1,18 +1,10 @@
 <template>
   <view>
-    <view
-      class="chat-box"
-      :style="'height: ' + contentHeight + ';'"
-    >
-      <TChatList
-        id="chatList"
-        @scroll="onScroll($event, { tagId: 'chatList' })"
-      >
-        <block
-          v-for="(item) in chatList"
-          :key="item.key"
-        >
-          <TChatMessage
+    <view class="chat-box" :style="'height: ' + contentHeight + ';'">
+      <t-chat-list id="chatList" @scroll="onScroll($event, { tagId: 'chatList' })">
+        <block v-for="(item, index) in chatList" :key="item.chatId">
+          <t-chat-message
+            :chat-id="item.chatId"
             :avatar="item.avatar || ''"
             :name="item.name || ''"
             :datetime="item.datetime || ''"
@@ -20,19 +12,22 @@
             :role="item.role"
             :placement="item.role === 'user' ? 'right' : 'left'"
             :status="item.status || ''"
+            @message-longpress="showPopover"
           >
             <template #actionbar>
-              <TChatActionbar
-                v-if="chatIndex !== chatList.length - 1 && item.status === 'complete' && item.role === 'assistant'"
-                placement="end"
+              <t-chat-actionbar
+                v-if="index !== chatList.length - 1 && item.status === 'complete' && item.role === 'assistant'"
+                :ref="`actionbar-${item.chatId}`"
+                :chat-id="`actionbar-${item.chatId}`"
+                :comment="item.comment"
                 @actions="handleAction"
               />
             </template>
-          </TChatMessage>
+          </t-chat-message>
         </block>
 
         <template #footer>
-          <TChatSender
+          <t-chat-sender
             v-model:value="value"
             :loading="loading"
             :disabled="disabled"
@@ -43,23 +38,30 @@
             @focus="onFocus"
           />
         </template>
-      </TChatList>
+      </t-chat-list>
+      <!-- 长按弹出操作栏 -->
+      <t-chat-actionbar
+        ref="popoverActionbar"
+        class="popover-actionbar"
+        placement="longpress"
+        :long-press-position="longPressPosition"
+        @actions="handlePopoverAction"
+      />
       <!-- 内置虚拟列表优化性能仅在data属性中使用 -->
       <!-- <TChatList id="chatList" bindscroll="onScroll" data="{{chatList}}"></TChatList> -->
     </view>
-    <TToast ref="t-toast" />
+    <t-toast ref="t-toast" />
   </view>
 </template>
 
 <script>
-import TChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
-import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
-import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
-import TToast from 'tdesign-uniapp/toast/toast.vue';
-import Toast from 'tdesign-uniapp/toast';
+import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
+import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
+import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
+import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
+import Toast from '@tdesign/uniapp/toast/index';
 import { getNavigationBarHeight } from '../utils';
-
 
 let uniqueId = 0;
 const getUniqueKey = () => {
@@ -76,8 +78,7 @@ const mockData = `南极的自动提款机并没有一个特定的专属名称�
 
 南极作为非主权领土，其基础设施以科研和生活支持为主，商业金融服务非常有限。若有类似设施，通常是临时或实验性质的。`;
 
-
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
   const arr = str.split('');
@@ -88,7 +89,6 @@ const fetchStream = async (str, options) => {
   }
   complete();
 };
-
 
 export default {
   components: {
@@ -112,7 +112,8 @@ export default {
           avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
           role: 'assistant',
           status: 'complete',
-          key: getUniqueKey(),
+          chatId: getUniqueKey(),
+          comment: '',
           content: [
             {
               type: 'text',
@@ -122,7 +123,8 @@ export default {
         },
         {
           role: 'user',
-          key: getUniqueKey(),
+          chatId: getUniqueKey(),
+          comment: '',
           content: [
             {
               type: 'text',
@@ -150,6 +152,8 @@ export default {
       animation: 'dots',
 
       chatIndex: '',
+      activePopoverId: '', // 当前打开悬浮actionbar的chatId
+      longPressPosition: null, // 长按位置对象
     };
   },
   options: {
@@ -201,7 +205,7 @@ export default {
       // 创建用户消息对象
       const userMessage = {
         role: 'user',
-        key: getUniqueKey(),
+        chatId: getUniqueKey(),
         content: [
           {
             type: 'text',
@@ -231,10 +235,8 @@ export default {
     // 获取当前时间
     getCurrentTime() {
       const now = new Date();
-      const hours = now.getHours().toString()
-        .padStart(2, '0');
-      const minutes = now.getMinutes().toString()
-        .padStart(2, '0');
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
       return `${hours}:${minutes}`;
     },
 
@@ -245,7 +247,8 @@ export default {
       // 请求中
       const assistantMessage = {
         role: 'assistant',
-        key: getUniqueKey(),
+        chatId: getUniqueKey(),
+        comment: '',
         content: [
           {
             type: 'markdown',
@@ -280,7 +283,7 @@ export default {
     },
 
     handleAction(e) {
-      const { name, active, data } = e;
+      const { name, active, data, chatId } = e;
       let message = '';
       switch (name) {
         case 'replay':
@@ -308,23 +311,56 @@ export default {
         message,
         theme: 'success',
       });
+
+      if (name === 'good' || name === 'bad') {
+        this.chatList.forEach((item) => {
+          if (item.chatId === chatId) {
+            item.comment = active ? name : '';
+          }
+        });
+      }
+    },
+
+    // 显示长按弹出操作栏
+    showPopover(e) {
+      const { id, longPressPosition } = e;
+
+      let role = '';
+      this.chatList.forEach((item) => {
+        if (item.chatId === id) {
+          role = item.role;
+        }
+      });
+
+      // 仅当 role 为 user 时才显示 popover
+      if (role !== 'user') {
+        return;
+      }
+
+      this.activePopoverId = id;
+      this.longPressPosition = longPressPosition;
+    },
+
+    // 处理弹出操作栏的事件
+    handlePopoverAction(e) {
+      e.chatId = this.activePopoverId;
+      this.handleAction(e);
     },
   },
 };
 </script>
 <style>
-
 .chat-box {
-    padding-top: 32rpx;
-    box-sizing: border-box;
+  padding-top: 32rpx;
+  box-sizing: border-box;
 }
 
 .t-chat__list {
-    padding: 0 0 0 32rpx;
-    box-sizing: border-box;
+  padding: 0 0 0 32rpx;
+  box-sizing: border-box;
 }
 
 .t-chat-message {
-    padding: 0 32rpx;
+  padding: 0 32rpx;
 }
 </style>

@@ -1,12 +1,9 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="block"
+    <t-demo-navbar
+      custom-class="block"
       title="TabBar"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -29,7 +26,7 @@
         </t-demo>
 
         <t-demo desc="图标加文字标签栏">
-          <baseDemo />
+          <base-demo />
         </t-demo>
 
         <t-demo desc="纯图标标签栏">
@@ -37,25 +34,25 @@
         </t-demo>
 
         <t-demo desc="双层级纯文本标签栏">
-          <subDemo />
+          <sub-demo />
         </t-demo>
 
         <t-demo
           title="02 组件样式"
           desc="弱选中标签栏"
         >
-          <badge />
+          <badge-demo />
         </t-demo>
 
         <t-demo desc="悬浮胶囊标签栏">
-          <round />
+          <round-demo />
         </t-demo>
 
         <t-demo
           title="03 自定义"
           desc="自定义样式"
         >
-          <custom />
+          <custom-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -63,25 +60,23 @@
 </template>
 
 <script>
+import TextOnly from '../text-only/index.vue';
+import IconOnly from '../icon-only/index.vue';
+import BaseDemo from '../base/index.vue';
+import SubDemo from '../sub/index.vue';
+import BadgeDemo from '../badge/index.vue';
+import RoundDemo from '../round/index.vue';
+import CustomDemo from '../custom/index.vue';
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import textOnly from '../text-only/index.vue';
-import iconOnly from '../icon-only/index.vue';
-import baseDemo from '../base/index.vue';
-import subDemo from '../sub/index.vue';
-import badge from '../badge/index.vue';
-import round from '../round/index.vue';
-import custom from '../custom/index.vue';
 export default {
   components: {
-    tNavbar,
-    textOnly,
-    iconOnly,
-    baseDemo,
-    subDemo,
-    badge,
-    round,
-    custom,
+    TextOnly,
+    IconOnly,
+    BaseDemo,
+    SubDemo,
+    BadgeDemo,
+    RoundDemo,
+    CustomDemo,
   },
   data() {
     return {
@@ -90,7 +85,7 @@ export default {
     };
   },
   methods: {
-    onChange(event: any) {
+    onChange(event) {
       console.log(event);
     },
 

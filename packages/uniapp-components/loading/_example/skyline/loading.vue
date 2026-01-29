@@ -6,10 +6,10 @@
 
 <script>
 
-import demoLoading from '../loading';
+import DemoLoading from '../loading';
 export default {
   components: {
-    demoLoading,
+    DemoLoading,
   },
   data() {
     return {};

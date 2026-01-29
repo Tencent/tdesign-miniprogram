@@ -12,7 +12,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TOverlay from 'tdesign-uniapp/overlay/overlay.vue';
+import TOverlay from '@tdesign/uniapp/overlay/overlay.vue';
 ```
 
 ### 基础使用
@@ -48,7 +48,7 @@ click | `(context: { visible: boolean })` | 点击遮罩时触发
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-overlay-bg-color | @mask-active | - |
-| --td-overlay-transition-duration | 300ms | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-overlay-bg-color | @mask-active | -
+--td-overlay-transition-duration | 300ms | -

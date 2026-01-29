@@ -1,28 +1,21 @@
 <template>
   <view>
-    <view
-      class="chat-box chart-chat"
-      :style="'height: ' + contentHeight + ';'"
-    >
-      <TChatList>
-        <block
-          v-for="(item, chatIndex) in chatList"
-          :key="item.key"
-        >
-          <TChatMessage
+    <view class="chat-box chart-chat" :style="'height: ' + contentHeight + ';'">
+      <t-chat-list>
+        <block v-for="(item, chatIndex) in chatList" :key="item.key">
+          <t-chat-message
+            :chat-id="item.key"
             :class="item.message.role"
             :avatar="item.avatar || ''"
             :name="item.name || ''"
             :datetime="item.datetime || ''"
             :role="item.message.role || 'assistant'"
             :placement="item.message.role === 'user' ? 'right' : 'left'"
+            @message-longpress="showPopover"
           >
             <template #content>
-              <block
-                v-for="(contentItem, contentIndex) in item.message.content"
-                :key="contentIndex"
-              >
-                <TChatContent
+              <block v-for="(contentItem, contentIndex) in item.message.content" :key="contentIndex">
+                <t-chat-content
                   v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                   :content="contentItem"
                   :role="item.message.role"
@@ -30,24 +23,24 @@
 
                 <!-- 封装的图表组件见源码 -->
 
-                <ChartComponent
-                  v-if="contentItem.type === 'chart'"
-                  el="normalLine"
-                  :options="contentItem"
-                />
+                <chart-component v-if="contentItem.type === 'chart'" el="normalLine" :options="contentItem" />
               </block>
             </template>
             <template #actionbar>
-              <TChatActionbar
-                v-if="chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'"
+              <t-chat-actionbar
+                v-if="
+                  chatIndex !== chatList.length - 1 &&
+                  item.message.status === 'complete' &&
+                  item.message.role === 'assistant'
+                "
                 placement="end"
                 @actions="handleAction"
               />
             </template>
-          </TChatMessage>
+          </t-chat-message>
         </block>
         <template #footer>
-          <TChatSender
+          <t-chat-sender
             :value="value"
             :loading="loading"
             :disabled="disabled"
@@ -58,20 +51,28 @@
             @focus="onFocus"
           />
         </template>
-      </TChatList>
+      </t-chat-list>
+      <!-- 长按弹出操作栏 -->
+      <t-chat-actionbar
+        ref="popoverActionbar"
+        class="popover-actionbar"
+        placement="longpress"
+        :long-press-position="longPressPosition"
+        @actions="handlePopoverAction"
+      />
     </view>
-    <TToast ref="t-toast" />
+    <t-toast ref="t-toast" />
   </view>
 </template>
 
 <script>
-import TChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
-import TChatContent from 'tdesign-uniapp-chat/chat-content/chat-content.vue';
-import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
-import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
-import TToast from 'tdesign-uniapp/toast/toast.vue';
-import Toast from 'tdesign-uniapp/toast';
+import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
+import TChatContent from '@tdesign/uniapp-chat/chat-content/chat-content.vue';
+import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
+import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
+import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
+import Toast from '@tdesign/uniapp/toast/index';
 import { getNavigationBarHeight } from '../utils';
 import ChartComponent from '../chart-component';
 
@@ -81,7 +82,7 @@ const getUniqueKey = () => {
   return `key-${uniqueId}`;
 };
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
   const arr = str.split('');
@@ -154,6 +155,8 @@ export default {
       contentItem: {
         type: '',
       },
+      activePopoverId: '', // 当前打开悬浮actionbar的chatId
+      longPressPosition: null, // 长按位置对象
     };
   },
   options: {
@@ -162,7 +165,7 @@ export default {
   watch: {
     isActive: {
       handler(v) {
-        this.value = v ? '南极的自动提款机叫什么名字' : '';// 输入框的值
+        this.value = v ? '南极的自动提款机叫什么名字' : ''; // 输入框的值
       },
 
       immediate: true,
@@ -234,10 +237,8 @@ export default {
     // 获取当前时间
     getCurrentTime() {
       const now = new Date();
-      const hours = now.getHours().toString()
-        .padStart(2, '0');
-      const minutes = now.getMinutes().toString()
-        .padStart(2, '0');
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
       return `${hours}:${minutes}`;
     },
 
@@ -261,15 +262,18 @@ export default {
       this.chatList = list;
       const that = this;
       this.$nextTick(async () => {
-        await fetchStream('今日上午北京道路车辆通行状况9:00的峰值（1320),可能显示早高峰拥堵最严重时段10:00后缓慢回落，可以得出如下折线图：', {
-          success(result) {
-            if (!that.loading) {
-              return;
-            }
-            that.chatList[0].message.content[0].data += result;
+        await fetchStream(
+          '今日上午北京道路车辆通行状况9:00的峰值（1320),可能显示早高峰拥堵最严重时段10:00后缓慢回落，可以得出如下折线图：',
+          {
+            success(result) {
+              if (!that.loading) {
+                return;
+              }
+              that.chatList[0].message.content[0].data += result;
+            },
+            complete() {},
           },
-          complete() {},
-        });
+        );
         if (!that.loading) {
           return;
         }
@@ -302,15 +306,18 @@ export default {
             data: '',
           },
         );
-        await fetchStream('今日晚上北京道路车辆通行状况18:00的峰值（1322),可能显示早高峰拥堵最严重时段21:00后缓慢回落，可以得出如下折线图：', {
-          success(result) {
-            if (!that.loading) {
-              return;
-            }
-            that.chatList[0].message.content[2].data += result;
+        await fetchStream(
+          '今日晚上北京道路车辆通行状况18:00的峰值（1322),可能显示早高峰拥堵最严重时段21:00后缓慢回落，可以得出如下折线图：',
+          {
+            success(result) {
+              if (!that.loading) {
+                return;
+              }
+              that.chatList[0].message.content[2].data += result;
+            },
+            complete() {},
           },
-          complete() {},
-        });
+        );
         if (!that.loading) {
           return;
         }
@@ -374,26 +381,51 @@ export default {
         theme: 'success',
       });
     },
+
+    // 显示长按弹出操作栏
+    showPopover(e) {
+      const { id, longPressPosition } = e;
+
+      let role = '';
+      this.chatList.forEach((item) => {
+        if (item.key === id) {
+          role = item.message.role;
+        }
+      });
+
+      // 仅当 role 为 user 时才显示 popover
+      if (role !== 'user') {
+        return;
+      }
+
+      this.activePopoverId = id;
+      this.longPressPosition = longPressPosition;
+    },
+
+    // 处理弹出操作栏的事件
+    handlePopoverAction(e) {
+      e.chatId = this.activePopoverId;
+      this.handleAction(e);
+    },
   },
 };
 </script>
 <style>
 .chat-box {
-    padding-top: 32rpx;
-    box-sizing: border-box;
+  padding-top: 32rpx;
+  box-sizing: border-box;
 }
 
 .t-chat__list {
-    padding: 0 0 0 32rpx;
-    box-sizing: border-box;
+  padding: 0 0 0 32rpx;
+  box-sizing: border-box;
 }
 
 .t-chat-message {
-    padding: 0 32rpx;
+  padding: 0 32rpx;
 }
 
 .chart-chat .assistant .t-chat__detail {
-    width: 100%;
+  width: 100%;
 }
-
 </style>

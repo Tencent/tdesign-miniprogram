@@ -58,8 +58,11 @@ export default uniComponent({
     },
     dataValue: {
       handler(v) {
-        this.children?.forEach((item) => {
+        const sideBarItems = this.children || [];
+        sideBarItems.forEach((item, index) => {
           item.updateActive(v);
+          item.isFirstChild = index === 0;
+          item.isLastChild = index === sideBarItems.length - 1;
         });
       },
       immediate: true,

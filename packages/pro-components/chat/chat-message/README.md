@@ -79,7 +79,7 @@ variant | String | base | 气泡框样式，支持基础、线框、文字三种
 
 名称 | 参数 | 描述
 -- | -- | --
-longpress | `(detail: { id: string })` | \-
+message-longpress | `(detail: { id: string, longPressPosition: { x: number, y: number } })` | 长按事件
 
 ### ChatMessage Slots
 

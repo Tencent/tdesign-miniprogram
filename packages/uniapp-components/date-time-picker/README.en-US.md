@@ -12,19 +12,19 @@ cancel-btn | String | 取消 | \- | N
 confirm-btn | String | - | \- | N
 custom-locale | String | zh | \- | N
 end | String / Number | - | \- | N
-filter | Function | - | Typescript：`(type: TimeModeValues, columns: DateTimePickerColumn) => DateTimePickerColumn` `type DateTimePickerColumn = DateTimePickerColumnItem[]` `interface DateTimePickerColumnItem { label: string,value: string}`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/date-time-picker/type.ts) | N
+filter | Function | - | Typescript：`(type: TimeModeValues, columns: DateTimePickerColumn) => DateTimePickerColumn` `type DateTimePickerColumn = DateTimePickerColumnItem[]` `interface DateTimePickerColumnItem { label: string,value: string}`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/date-time-picker/type.ts) | N
 format | String | 'YYYY-MM-DD HH:mm:ss' | \- | N
 formatter | Function | - | Typescript：`(option: DateTimePickerColumnItem, columnIndex: number) => DateTimePickerColumnItem` | N
 header | Boolean | true | \- | N
-mode | String / Array | 'date' | Typescript：`DateTimePickerMode` `type DateTimePickerMode = TimeModeValues \| Array<TimeModeValues> ` `type TimeModeValues = 'year' \| 'month' \| 'date' \| 'hour' \| 'minute' \| 'second' \| 'null'`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/date-time-picker/type.ts) | N
-popup-props | Object | {} | popup properties。Typescript：`PopupProps`，[Popup API Documents](./popup?tab=api)。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/date-time-picker/type.ts) | N
+mode | String / Array | 'date' | Typescript：`DateTimePickerMode` `type DateTimePickerMode = TimeModeValues \| Array<TimeModeValues> ` `type TimeModeValues = 'year' \| 'month' \| 'date' \| 'hour' \| 'minute' \| 'second' \| 'null'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/date-time-picker/type.ts) | N
+popup-props | Object | {} | popup properties。Typescript：`PopupProps`，[Popup API Documents](./popup?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/date-time-picker/type.ts) | N
 show-week | Boolean | false | \- | N
 start | String / Number | - | \- | N
 steps | Object | {} | Typescript：`{ [key in TimeModeValues]?: number }` | N
 title | String | - | title of picker | N
 use-popup | Boolean | true | \- | N
-value | String / Number | - | `v-model:value` is supported。Typescript：`DateValue` `type DateValue = string \| number`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/date-time-picker/type.ts) | N
-default-value | String / Number | - | uncontrolled property。Typescript：`DateValue` `type DateValue = string \| number`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/date-time-picker/type.ts) | N
+value | String / Number | - | `v-model:value` is supported。Typescript：`DateValue` `type DateValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/date-time-picker/type.ts) | N
+default-value | String / Number | - | uncontrolled property。Typescript：`DateValue` `type DateValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/date-time-picker/type.ts) | N
 visible | Boolean | false | \- | N
 
 ### DateTimePicker Events
@@ -33,7 +33,7 @@ name | params | description
 -- | -- | --
 cancel | \- | \-
 change | `(context: { value: DateValue })` | \-
-close | `(context: { trigger: DateTimePickerTriggerSource })` | [see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/date-time-picker/type.ts)。<br/>`type DateTimePickerTriggerSource = 'overlay' \| 'cancel-btn' \| 'confirm-btn'`<br/>
+close | `(context: { trigger: DateTimePickerTriggerSource })` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/date-time-picker/type.ts)。<br/>`type DateTimePickerTriggerSource = 'overlay' \| 'cancel-btn' \| 'confirm-btn'`<br/>
 confirm | `(context: { value: DateValue })` | \-
 pick | `(context: { value: DateValue })` | \-
 

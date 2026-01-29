@@ -149,14 +149,14 @@
   </view>
 </template>
 <script>
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
+import tIcon from '@tdesign/uniapp/icon/icon.vue';
 import attachments from '../attachments/attachments.vue';
-import { prefix } from 'tdesign-uniapp/common/config';
+import { prefix } from '@tdesign/uniapp/common/config';
 import props from './props';
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
 import { textareaStyle } from './computed';
-import _ from 'tdesign-uniapp/common/utils.wxs';
-import { nextTick } from 'tdesign-uniapp/common/utils';
+import _ from '@tdesign/uniapp/common/utils.wxs';
+import { nextTick } from '@tdesign/uniapp/common/utils';
 
 const name = `${prefix}-chat-sender`;
 

@@ -2,7 +2,7 @@
   <view
     :id="tId"
     :style="tools._style([customStyle])"
-    :class="tools.cls(classPrefix, [placement, theme, ['checked', dataChecked], ['block', block]]) + ' ' + tClass"
+    :class="tools.cls(classPrefix, [placement, theme, ['checked', dataChecked], ['block', block], ['disabled', _disabled]]) + ' ' + tClass"
     aria-role="checkbox"
     :aria-checked="dataChecked ? (dataIndeterminate ? 'mixed' : true) : false"
     :aria-disabled="_disabled ? true : false"
@@ -23,7 +23,6 @@
         <image
           :src="dataChecked ? (dataIndeterminate && icon[2] ? icon[2] : icon[0]) : icon[1]"
           :class="classPrefix + '__icon-image'"
-          webp
         />
       </view>
       <block v-else>
@@ -86,7 +85,7 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { coalesce } from '../common/utils';
 import { prefix, ISOLATED_RELATION_KEY } from '../common/config';
@@ -117,7 +116,7 @@ export default uniComponent({
   ],
   mixins: [ChildrenMixin(RELATION_MAP.Checkbox)],
   components: {
-    tIcon,
+    TIcon,
   },
   props: {
     ...props,

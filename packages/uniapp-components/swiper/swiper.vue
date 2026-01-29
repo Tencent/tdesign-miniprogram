@@ -67,8 +67,8 @@
   </view>
 </template>
 <script>
-import tSwiperNav from '../swiper-nav/swiper-nav';
-import tImage from '../image/image';
+import TSwiperNav from '../swiper-nav/swiper-nav';
+import TImage from '../image/image';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -87,8 +87,8 @@ export default uniComponent({
   externalClasses: [`${prefix}-class`, `${prefix}-class-nav`, `${prefix}-class-image`, `${prefix}-class-prev-image`, `${prefix}-class-next-image`],
   mixins: [ParentMixin(RELATION_MAP.SwiperNav)],
   components: {
-    tSwiperNav,
-    tImage,
+    TSwiperNav,
+    TImage,
   },
   props: {
     ...props,
@@ -121,10 +121,6 @@ export default uniComponent({
     isPrev,
     isNext,
     getImageClass,
-    getImageSize(column) {
-      if (column >= 5) return 'small';
-      if (column === 4) return 'middle';
-    },
 
     updateNav(currentValue) {
       if (this.navigation) return;

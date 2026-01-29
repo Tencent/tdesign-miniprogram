@@ -114,7 +114,7 @@
 </template>
 
 <script>
-import tButton from '../button/button';
+import TButton from '../button/button';
 import TDraggable from '../draggable/draggable.vue';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
@@ -140,7 +140,7 @@ export default uniComponent({
   externalClasses: [`${prefix}-class`, `${prefix}-class-button`],
   mixins: [useCustomNavbar],
   components: {
-    tButton,
+    TButton,
     TDraggable,
   },
   props: {
@@ -194,7 +194,7 @@ export default uniComponent({
     },
     onMove(e) {
       const {
-        yBounds,
+        yBounds = [],
         distanceTop,
         systemInfo,
       } = this;

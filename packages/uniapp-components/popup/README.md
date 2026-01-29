@@ -12,7 +12,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TPopup from 'tdesign-uniapp/popup/popup.vue';
+import TPopup from '@tdesign/uniapp/popup/popup.vue';
 ```
 
 ### 组件类型
@@ -40,7 +40,7 @@ close-btn | Boolean | - | 关闭按钮，值类型为 Boolean 时表示是否显
 close-on-overlay-click | Boolean | true | 点击遮罩层是否关闭 | N
 content | String | - | 浮层里面的内容 | N
 duration | Number | 240 | 动画过渡时间 | N
-overlay-props | Object | {} | 遮罩层的属性，透传至 overlay。TS 类型：`OverlayProps`，[Overlay API Documents](./overlay?tab=api)。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/popup/type.ts) | N
+overlay-props | Object | {} | 遮罩层的属性，透传至 overlay。TS 类型：`OverlayProps`，[Overlay API Documents](./overlay?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/popup/type.ts) | N
 placement | String | top | 浮层出现位置。可选项：top/left/right/bottom/center | N
 prevent-scroll-through | Boolean | true | 是否阻止背景滚动 | N
 show-overlay | Boolean | true | 是否显示遮罩层 | N
@@ -53,7 +53,7 @@ z-index | Number | 11500 | 组件层级，Web 侧样式默认为 5500，移动�
 
 名称 | 参数 | 描述
 -- | -- | --
-visible-change | `(context: { visible: boolean, trigger: PopupSource }) ` | 当浮层隐藏时触发。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/popup/type.ts)。<br/>`type PopupSource = 'close-btn' \| 'overlay'`<br/>
+visible-change | `(context: { visible: boolean, trigger: PopupSource }) ` | 当浮层隐藏时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/popup/type.ts)。<br/>`type PopupSource = 'close-btn' \| 'overlay'`<br/>
 
 ### Popup Slots
 
@@ -73,10 +73,10 @@ t-class-content | 内容样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-popup-bg-color | @bg-color-container | - |
-| --td-popup-border-radius | @radius-extraLarge | - |
-| --td-popup-close-btn-color | @text-color-primary | - |
-| --td-popup-distance-top | 0) | - |
-| --td-popup-transition | all 300ms ease | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-popup-bg-color | @bg-color-container | -
+--td-popup-border-radius | @radius-extraLarge | -
+--td-popup-close-btn-color | @text-color-primary | -
+--td-popup-distance-top | 0 | -
+--td-popup-transition | all 300ms ease | -

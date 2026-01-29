@@ -11,7 +11,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TButton from 'tdesign-uniapp/button/button.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
 ```
 
 ### 01 组件类型
@@ -76,7 +76,7 @@ hover-stop-propagation | Boolean | false | 指定是否阻止本节点的祖先�
 icon | String / Object | - | 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon` | N
 lang | String | - | 指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文。<br />具体释义：<br />`en` 英文；<br />`zh_CN` 简体中文；<br />`zh_TW` 繁体中文。<br />[小程序官方文档](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)。可选项：en/zh_CN/zh_TW | N
 loading | Boolean | false | 是否显示为加载状态 | N
-loading-props | Object | {} | 透传 Loading 组件全部属性。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/button/type.ts) | N
+loading-props | Object | {} | 透传 Loading 组件全部属性。TS 类型：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/button/type.ts) | N
 open-type | String | - | 微信开放能力。<br />具体释义：<br />`contact` 打开客服会话，如果用户在会话中点击消息卡片后返回小程序，可以从 bindcontact 回调中获得具体信息，<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/customer-message/customer-message.html">具体说明</a> （*鸿蒙 OS 暂不支持*）；<br />`liveActivity` 通过前端获取<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/subscribe-message-2.html">新的一次性订阅消息下发机制</a>使用的 code；<br />`share` 触发用户转发，使用前建议先阅读<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/share.html#使用指引">使用指引</a>；<br />`getPhoneNumber` 获取用户手机号，可以从 bindgetphonenumber 回调中获取到用户信息，<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/getPhoneNumber.html">具体说明</a> （*小程序插件中不能使用*）；<br />`getUserInfo` 获取用户信息，可以从 bindgetuserinfo 回调中获取到用户信息 （*小程序插件中不能使用*）；<br />`launchApp` 打开APP，可以通过 app-parameter 属性设定向 APP 传的参数<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/open-ability/launchApp.html">具体说明</a>；<br />`openSetting` 打开授权设置页；<br />`feedback` 打开“意见反馈”页面，用户可提交反馈内容并上传<a href="https://developers.weixin.qq.com/miniprogram/dev/api/base/debug/wx.getLogManager.html">日志</a>，开发者可以登录<a href="https://mp.weixin.qq.com/">小程序管理后台</a>后进入左侧菜单“客服反馈”页面获取到反馈内容；<br />`chooseAvatar` 获取用户头像，可以从 bindchooseavatar 回调中获取到头像信息；<br />`agreePrivacyAuthorization`用户同意隐私协议按钮。用户点击一次此按钮后，所有隐私接口可以正常调用。可通过`bindagreeprivacyauthorization`监听用户同意隐私协议事件。隐私合规开发指南详情可见《<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/user-privacy/PrivacyAuthorize.html">小程序隐私协议开发指南</a>》。<br />[小程序官方文档](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)。可选项：contact/share/getPhoneNumber/getUserInfo/launchApp/openSetting/feedback/chooseAvatar/agreePrivacyAuthorization | N
 phone-number-no-quota-toast | Boolean | true | 原生按钮属性，当手机号快速验证或手机号实时验证额度用尽时，是否对用户展示“申请获取你的手机号，但该功能使用次数已达当前小程序上限，暂时无法使用”的提示，默认展示，open-type="getPhoneNumber" 或 open-type="getRealtimePhoneNumber" 时有效 | N
 send-message-img | String | 截图 | 会话内消息卡片图片，open-type="contact"时有效 | N
@@ -126,104 +126,104 @@ t-class-loading | 加载样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-button-border-radius | @radius-default | - |
-| --td-button-border-width | 4rpx | - |
-| --td-button-danger-active-bg-color | @error-color-active | - |
-| --td-button-danger-active-border-color | @error-color-active | - |
-| --td-button-danger-bg-color | @error-color | - |
-| --td-button-danger-border-color | @error-color | - |
-| --td-button-danger-color | @text-color-anti | - |
-| --td-button-danger-dashed-border-color | @button-danger-dashed-color | - |
-| --td-button-danger-dashed-color | @error-color | - |
-| --td-button-danger-dashed-disabled-color | @button-danger-disabled-color | - |
-| --td-button-danger-disabled-bg | @error-color-3 | - |
-| --td-button-danger-disabled-border-color | @error-color-3 | - |
-| --td-button-danger-disabled-color | @font-white-1 | - |
-| --td-button-danger-outline-active-bg-color | @bg-color-container-active | - |
-| --td-button-danger-outline-active-border-color | @error-color-active | - |
-| --td-button-danger-outline-border-color | @button-danger-outline-color | - |
-| --td-button-danger-outline-color | @error-color | - |
-| --td-button-danger-outline-disabled-color | @error-color-3 | - |
-| --td-button-danger-text-active-bg-color | @bg-color-container-active | - |
-| --td-button-danger-text-color | @error-color | - |
-| --td-button-danger-text-disabled-color | @button-danger-disabled-color | - |
-| --td-button-default-active-bg-color | @bg-color-component-active | - |
-| --td-button-default-active-border-color | @bg-color-component-active | - |
-| --td-button-default-bg-color | @bg-color-component | - |
-| --td-button-default-border-color | @bg-color-component | - |
-| --td-button-default-color | @text-color-primary | - |
-| --td-button-default-disabled-bg | @bg-color-component-disabled | - |
-| --td-button-default-disabled-border-color | @bg-color-component-disabled | - |
-| --td-button-default-disabled-color | @text-color-disabled | - |
-| --td-button-default-outline-active-bg-color | @bg-color-container-active | - |
-| --td-button-default-outline-active-border-color | @component-border | - |
-| --td-button-default-outline-border-color | @component-border | - |
-| --td-button-default-outline-color | @text-color-primary | - |
-| --td-button-default-outline-disabled-color | @component-border | - |
-| --td-button-default-text-active-bg-color | @bg-color-container-active | - |
-| --td-button-extra-small-font-size | @font-size-base | - |
-| --td-button-extra-small-height | 56rpx | - |
-| --td-button-extra-small-icon-font-size | 36rpx | - |
-| --td-button-extra-small-padding-horizontal | 16rpx | - |
-| --td-button-font-weight | 600 | - |
-| --td-button-ghost-border-color | @button-ghost-color | - |
-| --td-button-ghost-color | @text-color-anti | - |
-| --td-button-ghost-danger-border-color | @error-color | - |
-| --td-button-ghost-danger-color | @error-color | - |
-| --td-button-ghost-danger-hover-color | @error-color-active | - |
-| --td-button-ghost-disabled-color | @font-white-4 | - |
-| --td-button-ghost-hover-color | @font-white-2 | - |
-| --td-button-ghost-primary-border-color | @brand-color | - |
-| --td-button-ghost-primary-color | @brand-color | - |
-| --td-button-ghost-primary-hover-color | @brand-color-active | - |
-| --td-button-icon-border-radius | 8rpx | - |
-| --td-button-icon-spacer | @spacer | - |
-| --td-button-large-font-size | @font-size-m | - |
-| --td-button-large-height | 96rpx | - |
-| --td-button-large-icon-font-size | 48rpx | - |
-| --td-button-large-padding-horizontal | 40rpx | - |
-| --td-button-light-active-bg-color | @brand-color-light-active | - |
-| --td-button-light-active-border-color | @brand-color-light-active | - |
-| --td-button-light-bg-color | @brand-color-light | - |
-| --td-button-light-border-color | @brand-color-light | - |
-| --td-button-light-color | @brand-color | - |
-| --td-button-light-disabled-bg | @brand-color-light | - |
-| --td-button-light-disabled-border-color | @brand-color-light | - |
-| --td-button-light-disabled-color | @brand-color-disabled | - |
-| --td-button-light-outline-active-bg-color | @brand-color-light-active | - |
-| --td-button-light-outline-active-border-color | @brand-color-active | - |
-| --td-button-light-outline-bg-color | @brand-color-light | - |
-| --td-button-light-outline-border-color | @button-light-outline-color | - |
-| --td-button-light-outline-color | @brand-color | - |
-| --td-button-light-outline-disabled-color | @brand-color-disabled | - |
-| --td-button-light-text-active-bg-color | @bg-color-container-active | - |
-| --td-button-light-text-color | @brand-color | - |
-| --td-button-medium-font-size | @font-size-m | - |
-| --td-button-medium-height | 80rpx | - |
-| --td-button-medium-icon-font-size | 40rpx | - |
-| --td-button-medium-padding-horizontal | 32rpx | - |
-| --td-button-primary-active-bg-color | @brand-color-active | - |
-| --td-button-primary-active-border-color | @brand-color-active | - |
-| --td-button-primary-bg-color | @brand-color | - |
-| --td-button-primary-border-color | @brand-color | - |
-| --td-button-primary-color | @text-color-anti | - |
-| --td-button-primary-dashed-border-color | @button-primary-dashed-color | - |
-| --td-button-primary-dashed-color | @brand-color | - |
-| --td-button-primary-dashed-disabled-color | @brand-color-disabled | - |
-| --td-button-primary-disabled-bg | @brand-color-disabled | - |
-| --td-button-primary-disabled-border-color | @brand-color-disabled | - |
-| --td-button-primary-disabled-color | @text-color-anti | - |
-| --td-button-primary-outline-active-bg-color | @bg-color-container-active | - |
-| --td-button-primary-outline-active-border-color | @brand-color-active | - |
-| --td-button-primary-outline-border-color | @button-primary-outline-color | - |
-| --td-button-primary-outline-color | @brand-color | - |
-| --td-button-primary-outline-disabled-color | @brand-color-disabled | - |
-| --td-button-primary-text-active-bg-color | @bg-color-container-active | - |
-| --td-button-primary-text-color | @brand-color | - |
-| --td-button-primary-text-disabled-color | @brand-color-disabled | - |
-| --td-button-small-font-size | @font-size-base | - |
-| --td-button-small-height | 64rpx | - |
-| --td-button-small-icon-font-size | 36rpx | - |
-| --td-button-small-padding-horizontal | 24rpx | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-button-border-radius | @radius-default | -
+--td-button-border-width | 4rpx | -
+--td-button-danger-active-bg-color | @error-color-active | -
+--td-button-danger-active-border-color | @error-color-active | -
+--td-button-danger-bg-color | @error-color | -
+--td-button-danger-border-color | @error-color | -
+--td-button-danger-color | @text-color-anti | -
+--td-button-danger-dashed-border-color | @button-danger-dashed-color | -
+--td-button-danger-dashed-color | @error-color | -
+--td-button-danger-dashed-disabled-color | @button-danger-disabled-color | -
+--td-button-danger-disabled-bg | @error-color-3 | -
+--td-button-danger-disabled-border-color | @error-color-3 | -
+--td-button-danger-disabled-color | @font-white-1 | -
+--td-button-danger-outline-active-bg-color | @bg-color-container-active | -
+--td-button-danger-outline-active-border-color | @error-color-active | -
+--td-button-danger-outline-border-color | @button-danger-outline-color | -
+--td-button-danger-outline-color | @error-color | -
+--td-button-danger-outline-disabled-color | @error-color-3 | -
+--td-button-danger-text-active-bg-color | @bg-color-container-active | -
+--td-button-danger-text-color | @error-color | -
+--td-button-danger-text-disabled-color | @button-danger-disabled-color | -
+--td-button-default-active-bg-color | @bg-color-component-active | -
+--td-button-default-active-border-color | @bg-color-component-active | -
+--td-button-default-bg-color | @bg-color-component | -
+--td-button-default-border-color | @bg-color-component | -
+--td-button-default-color | @text-color-primary | -
+--td-button-default-disabled-bg | @bg-color-component-disabled | -
+--td-button-default-disabled-border-color | @bg-color-component-disabled | -
+--td-button-default-disabled-color | @text-color-disabled | -
+--td-button-default-outline-active-bg-color | @bg-color-container-active | -
+--td-button-default-outline-active-border-color | @component-border | -
+--td-button-default-outline-border-color | @component-border | -
+--td-button-default-outline-color | @text-color-primary | -
+--td-button-default-outline-disabled-color | @component-border | -
+--td-button-default-text-active-bg-color | @bg-color-container-active | -
+--td-button-extra-small-font-size | @font-size-base | -
+--td-button-extra-small-height | 56rpx | -
+--td-button-extra-small-icon-size | 36rpx | -
+--td-button-extra-small-padding-horizontal | 16rpx | -
+--td-button-font-weight | 600 | -
+--td-button-ghost-border-color | @button-ghost-color | -
+--td-button-ghost-color | @text-color-anti | -
+--td-button-ghost-danger-border-color | @error-color | -
+--td-button-ghost-danger-color | @error-color | -
+--td-button-ghost-danger-hover-color | @error-color-active | -
+--td-button-ghost-disabled-color | @font-white-4 | -
+--td-button-ghost-hover-color | @font-white-2 | -
+--td-button-ghost-primary-border-color | @brand-color | -
+--td-button-ghost-primary-color | @brand-color | -
+--td-button-ghost-primary-hover-color | @brand-color-active | -
+--td-button-icon-border-radius | 8rpx | -
+--td-button-icon-spacer | @spacer | -
+--td-button-large-font-size | @font-size-m | -
+--td-button-large-height | 96rpx | -
+--td-button-large-icon-size | 48rpx | -
+--td-button-large-padding-horizontal | 40rpx | -
+--td-button-light-active-bg-color | @brand-color-light-active | -
+--td-button-light-active-border-color | @brand-color-light-active | -
+--td-button-light-bg-color | @brand-color-light | -
+--td-button-light-border-color | @brand-color-light | -
+--td-button-light-color | @brand-color | -
+--td-button-light-disabled-bg | @brand-color-light | -
+--td-button-light-disabled-border-color | @brand-color-light | -
+--td-button-light-disabled-color | @brand-color-disabled | -
+--td-button-light-outline-active-bg-color | @brand-color-light-active | -
+--td-button-light-outline-active-border-color | @brand-color-active | -
+--td-button-light-outline-bg-color | @brand-color-light | -
+--td-button-light-outline-border-color | @button-light-outline-color | -
+--td-button-light-outline-color | @brand-color | -
+--td-button-light-outline-disabled-color | @brand-color-disabled | -
+--td-button-light-text-active-bg-color | @bg-color-container-active | -
+--td-button-light-text-color | @brand-color | -
+--td-button-medium-font-size | @font-size-m | -
+--td-button-medium-height | 80rpx | -
+--td-button-medium-icon-size | 40rpx | -
+--td-button-medium-padding-horizontal | 32rpx | -
+--td-button-primary-active-bg-color | @brand-color-active | -
+--td-button-primary-active-border-color | @brand-color-active | -
+--td-button-primary-bg-color | @brand-color | -
+--td-button-primary-border-color | @brand-color | -
+--td-button-primary-color | @text-color-anti | -
+--td-button-primary-dashed-border-color | @button-primary-dashed-color | -
+--td-button-primary-dashed-color | @brand-color | -
+--td-button-primary-dashed-disabled-color | @brand-color-disabled | -
+--td-button-primary-disabled-bg | @brand-color-disabled | -
+--td-button-primary-disabled-border-color | @brand-color-disabled | -
+--td-button-primary-disabled-color | @text-color-anti | -
+--td-button-primary-outline-active-bg-color | @bg-color-container-active | -
+--td-button-primary-outline-active-border-color | @brand-color-active | -
+--td-button-primary-outline-border-color | @button-primary-outline-color | -
+--td-button-primary-outline-color | @brand-color | -
+--td-button-primary-outline-disabled-color | @brand-color-disabled | -
+--td-button-primary-text-active-bg-color | @bg-color-container-active | -
+--td-button-primary-text-color | @brand-color | -
+--td-button-primary-text-disabled-color | @brand-color-disabled | -
+--td-button-small-font-size | @font-size-base | -
+--td-button-small-height | 64rpx | -
+--td-button-small-icon-size | 36rpx | -
+--td-button-small-padding-horizontal | 24rpx | -

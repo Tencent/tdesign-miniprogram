@@ -4,12 +4,12 @@ import { createApp } from 'vue';
 // import TDesign from '@/index';
 // import 'tdesign-mobile-vue/style/index.js';
 
-import { registerLocaleChange } from 'tdesign-site-components-uniapp';
-import 'tdesign-site-components-uniapp/lib/styles/prism-theme-dark.less';
-import 'tdesign-site-components-uniapp/lib/styles/prism-theme.less';
-import 'tdesign-site-components-uniapp/lib/styles/style.css';
+import { registerLocaleChange } from '@tdesign/site-components';
+import '@tdesign/site-components/lib/styles/prism-theme-dark.less';
+import '@tdesign/site-components/lib/styles/prism-theme.less';
+import '@tdesign/site-components/lib/styles/style.css';
 
-import 'tdesign-uniapp-theme-generator';
+import '@tdesign/theme-generator';
 
 import App from './app.vue';
 import router from './router';

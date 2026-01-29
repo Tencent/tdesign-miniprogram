@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="ActionSheet"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="ActionSheet 动作面板"
@@ -20,14 +15,14 @@
         desc="列表型动作面板"
         padding
       >
-        <list />
+        <list-demo />
       </t-demo>
 
       <t-demo
         desc="宫格型动作面板"
         padding
       >
-        <grid />
+        <grid-demo />
       </t-demo>
 
       <t-demo
@@ -35,7 +30,7 @@
         desc="列表型选项状态"
         padding
       >
-        <status />
+        <status-demo />
       </t-demo>
 
       <t-demo
@@ -43,7 +38,7 @@
         desc="列表型对齐方式"
         padding
       >
-        <align />
+        <align-demo />
       </t-demo>
     </view>
   </view>
@@ -51,10 +46,10 @@
 
 <script>
 
-import list from './list/index.vue';
-import status from './status/index.vue';
-import grid from './grid/index.vue';
-import align from './align/index.vue';
+import ListDemo from './list/index.vue';
+import StatusDemo from './status/index.vue';
+import GridDemo from './grid/index.vue';
+import AlignDemo from './align/index.vue';
 
 
 export default {
@@ -62,10 +57,10 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    list,
-    status,
-    grid,
-    align,
+    ListDemo,
+    StatusDemo,
+    GridDemo,
+    AlignDemo,
   },
   data() {
     return {};

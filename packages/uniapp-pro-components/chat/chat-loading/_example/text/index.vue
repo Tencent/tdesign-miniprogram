@@ -1,7 +1,7 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <TChatLoading
+      <t-chat-loading
         animation="dots"
         text="加载中..."
       />
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TChatLoading from 'tdesign-uniapp-chat/chat-loading/chat-loading.vue';
+import TChatLoading from '@tdesign/uniapp-chat/chat-loading/chat-loading.vue';
 export default {
   components: {
     TChatLoading,

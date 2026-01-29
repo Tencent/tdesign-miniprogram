@@ -1,9 +1,8 @@
 <template>
   <view>
     <t-navbar
-      t-class-placeholder="t-navbar-placeholder"
-      t-class-content="t-navbar-content"
       title="标题文字"
+      :fixed="false"
     >
       <template
         #capsule
@@ -36,9 +35,9 @@
 </template>
 
 <script>
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
-import { canUseVirtualHost } from 'tdesign-uniapp/common/version';
+import TNavbar from '@tdesign/uniapp/navbar/navbar.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
+import { canUseVirtualHost } from '@tdesign/uniapp/common/version';
 
 
 export default {
@@ -46,8 +45,8 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tNavbar,
-    tIcon,
+    TNavbar,
+    TIcon,
   },
   data() {
     return {};

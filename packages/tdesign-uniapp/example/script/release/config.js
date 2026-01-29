@@ -1,6 +1,7 @@
 const path = require('path');
 
 const PACKAGES_ROOT = path.resolve(__dirname, '../../../../');
+const PROJECT_ROOT = path.resolve(PACKAGES_ROOT, '../');
 
 const config = {
   targetDir: path.resolve(PACKAGES_ROOT, 'tdesign-uniapp/dist'),
@@ -17,4 +18,5 @@ const config = {
 module.exports = {
   config,
   PACKAGES_ROOT,
+  PROJECT_ROOT,
 };

@@ -5,11 +5,9 @@
         <view class="chat-sender-height-left-limit" />
         <view class="chat-sender-height-right-limit" />
       </view>
-      <view class="chat-sender-placeholder">
-        高度限制：最大高度为132px
-      </view>
+      <view class="chat-sender-placeholder"> 高度限制：最大高度为132px </view>
       <view class="chat-sender-wrapper">
-        <TChatSender
+        <t-chat-sender
           :value="value"
           :loading="loading"
           :disabled="disabled"
@@ -33,86 +31,49 @@
           @updateVisible="onUpdateVisible"
           @keyboardheightchange="onKeyboardHeightChange"
         >
-          <template
-            #header
-          >
-            <view
-              v-if="headerText"
-              class="demo-header"
-            >
+          <template #header>
+            <view v-if="headerText" class="demo-header">
               <view style="padding: 4rpx; height: 40rpx; color: var(--td-text-color-disabled)">
-                <TIcon
-                  name="enter"
-                  size="40rpx"
-                  style="transform: scaleX(-1)"
-                />
+                <t-icon name="enter" size="40rpx" style="transform: scaleX(-1)" />
               </view>
               <view class="header-content-wrapper">
-                <TIcon
+                <t-icon
                   name="file-word-filled"
                   color="var(--td-brand-color)"
                   size="32rpx"
                   style="margin-top: 8rpx; margin-right: 16rpx"
                 />
-                <view
-                  class="header-file-content"
-                  hover-class="none"
-                  :hover-stop-propagation="false"
-                >
+                <view class="header-file-content" hover-class="none" :hover-stop-propagation="false">
                   {{ headerText }}
                 </view>
               </view>
               <view style="padding: 4rpx; height: 40rpx; margin-left: auto; color: var(--td-text-color-placeholder)">
-                <TIcon
-                  name="close"
-                  size="40rpx"
-                  @click="handleCLoseCite"
-                />
+                <t-icon name="close" size="40rpx" @click="handleCLoseCite" />
               </view>
             </view>
           </template>
 
-          <template
-            #footer-prefix
-          >
-            <view
-              class="demo-footer-prefix"
-            >
-              <view
-                :class="'deep-think-block ' + (deepThinkActive ? 'active' : '')"
-                @click.stop="onDeepThinkTap"
-              >
-                <TIcon
-                  name="system-sum"
-                  size="40rpx"
-                />
-                <text class="deep-think-text">
-                  深度思考
-                </text>
+          <template #footer-prefix>
+            <view class="demo-footer-prefix">
+              <view :class="'deep-think-block ' + (deepThinkActive ? 'active' : '')" @click.stop="onDeepThinkTap">
+                <t-icon name="system-sum" size="36rpx" />
+                <text class="deep-think-text"> 深度思考 </text>
               </view>
-              <view
-                :class="'net-search-block ' + (netSearchActive ? 'active' : '')"
-                @click.stop="onNetSearchTap"
-              >
-                <TIcon
-                  name="internet"
-                  size="40rpx"
-                />
+              <view :class="'net-search-block ' + (netSearchActive ? 'active' : '')" @click.stop="onNetSearchTap">
+                <t-icon name="internet" size="36rpx" />
               </view>
             </view>
           </template>
-        </TChatSender>
+        </t-chat-sender>
       </view>
-      <view class="demo-file-citation-footer">
-        内容由AI生成，仅供参考
-      </view>
+      <view class="demo-file-citation-footer"> 内容由AI生成，仅供参考 </view>
     </view>
   </view>
 </template>
 
 <script>
-import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import TIcon from 'tdesign-uniapp/icon/icon.vue';
+import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
 
 export default {
   components: {
@@ -298,149 +259,146 @@ export default {
 </script>
 <style>
 .demo-content-citation-container {
-    padding: 56rpx 0 0 0;
-    background-color: var(--td-bg-color-container);
-    height: 568rpx;
-    position: relative;
+  padding: 56rpx 0 0 0;
+  background-color: var(--td-bg-color-container);
+  height: 568rpx;
+  position: relative;
 }
 
 /* 聊天发送器包装器 */
 .chat-sender-demo-wrapper {
-    margin-bottom: 32rpx;
-    /* border: 2rpx solid #e5e5e5; */
-    border-radius: 8rpx;
-    overflow: hidden;
+  margin-bottom: 32rpx;
+  /* border: 2rpx solid #e5e5e5; */
+  border-radius: 8rpx;
+  overflow: hidden;
 }
 
 .chat-sender-height-limit {
-    height: 72rpx;
-    padding: 0 24rpx;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  height: 72rpx;
+  padding: 0 24rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .chat-sender-height-left-limit {
-    height: 70rpx;
-    width: 70rpx;
-    border-top: 1px var(--td-component-stroke) dashed;
-    border-left: 1px var(--td-component-stroke) dashed;
-    border-top-left-radius: 32rpx;
+  height: 70rpx;
+  width: 70rpx;
+  border-top: 1px var(--td-component-stroke) dashed;
+  border-left: 1px var(--td-component-stroke) dashed;
+  border-top-left-radius: 32rpx;
 }
 .chat-sender-height-right-limit {
-    height: 70rpx;
-    width: 70rpx;
-    border-top: 1px var(--td-component-stroke) dashed;
-    border-right: 1px var(--td-component-stroke) dashed;
-    border-top-right-radius: 32rpx;
+  height: 70rpx;
+  width: 70rpx;
+  border-top: 1px var(--td-component-stroke) dashed;
+  border-right: 1px var(--td-component-stroke) dashed;
+  border-top-right-radius: 32rpx;
 }
 .chat-sender-placeholder {
-    font-size: 32rpx;
-    font-weight: 600;
-    color: var(--demo-chat-sender-placeholder);
-    text-align: center;
-    height: 48rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--demo-chat-sender-placeholder);
+  text-align: center;
+  height: 48rpx;
 }
 
-
 .show-upload-menu {
-    height: 780rpx;
+  height: 780rpx;
 }
 
 .demo-attachments-footer {
-    height: 32rpx;
-    width: 100%;
-    text-align: center;
-    font-size: 20rpx;
-    line-height: 32rpx;
-    color: rgba(0, 0, 0, 0.4);
-    position: absolute;
-    bottom: 32rpx;
+  height: 32rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 20rpx;
+  line-height: 32rpx;
+  color: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  bottom: 32rpx;
 }
 
 .chat-sender-wrapper {
-    position: absolute;
-    width: 100%;
-    bottom: 0rpx;
-    background-color: var(--td-bg-color-container);
+  position: absolute;
+  width: 100%;
+  bottom: 0rpx;
+  background-color: var(--td-bg-color-container);
 }
-
 
 .demo-file-citation-footer {
-    height: 32rpx;
-    width: 100%;
-    text-align: center;
-    font-size: 20rpx;
-    line-height: 32rpx;
-    color: var(--td-text-color-placeholder);
-    position: absolute;
-    bottom: 32rpx;
+  height: 32rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 20rpx;
+  line-height: 32rpx;
+  color: var(--td-text-color-placeholder);
+  position: absolute;
+  bottom: 32rpx;
 }
 
 .chat-sender-wrapper {
-    /* border: 2rpx solid #e5e5e5; */
-    border-radius: 8rpx;
-    overflow: hidden;
-    background-color: var(--td-bg-color-container);
+  /* border: 2rpx solid #e5e5e5; */
+  border-radius: 8rpx;
+  overflow: hidden;
+  background-color: var(--td-bg-color-container);
 }
 
 .demo-footer-prefix {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .deep-think-block {
-    padding: 0 24rpx;
-    height: 60rpx;
-    margin-right: 16rpx;
+  padding: 0 24rpx;
+  height: 60rpx;
+  margin-right: 16rpx;
 }
 
 .deep-think-text {
-    margin-left: 8rpx;
+  margin-left: 8rpx;
 }
 
 .deep-think-block,
 .net-search-block {
-    color: var(--td-text-color-primary);
-    border-radius: 200rpx;
-    border: 2rpx solid var(--td-component-border);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  color: var(--td-text-color-primary);
+  border-radius: 200rpx;
+  border: 2rpx solid var(--td-component-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .net-search-block {
-    width: 64rpx;
-    height: 60rpx;
+  width: 64rpx;
+  height: 60rpx;
 }
 
 .active {
-    border-color: var(--td-brand-color-light-active);
-    color: var(--td-brand-color);
-    background-color: var(--td-brand-color-light);
+  border-color: var(--td-brand-color-light-active);
+  color: var(--td-brand-color);
+  background-color: var(--td-brand-color-light);
 }
 
 .demo-header {
-    display: flex;
-    width: calc(100% - 48rpx);
-    margin-left: 24rpx;
-    height: 62rpx;
-    border-bottom: 2rpx solid var(--td-component-stroke);
+  display: flex;
+  width: calc(100% - 48rpx);
+  margin-left: 24rpx;
+  height: 62rpx;
+  border-bottom: 2rpx solid var(--td-component-stroke);
 }
 
 .header-content-wrapper {
-    padding: 0 24rpx;
-    display: flex;
+  padding: 0 24rpx;
+  display: flex;
 }
 
 .header-file-content {
-    padding: 2rpx 0;
-    line-height: 44rpx;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: var(--td-font-size-body-medium);
-    color: var(--td-text-color-placeholder);
+  padding: 2rpx 0;
+  line-height: 44rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: var(--td-font-size-body-medium);
+  color: var(--td-text-color-placeholder);
 }
-
 </style>

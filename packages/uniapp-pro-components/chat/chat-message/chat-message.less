@@ -1,4 +1,4 @@
-@import 'tdesign-uniapp/common/style/base.less';
+@import '@tdesign/uniapp/common/style/base.less';
 
 @chat-list: ~'@{prefix}-chat-list';
 @chat-content-pure: ~'@{prefix}-chat-content';
@@ -19,7 +19,7 @@
 }
 
 :deep(.@{attachments} + @{chat-content-pure}:not(:empty)),
-:deep(.@{chat-thinking} + @{chat-content-pure}:not(:empty)){
+:deep(.@{chat-thinking} + @{chat-content-pure}:not(:empty)) {
   margin-top: 24rpx;
 }
 
@@ -62,10 +62,6 @@
   &.user {
     .@{chat-message}__base {
       padding-right: @spacer-2;
-    }
-
-    @{chat-content} {
-      max-width: 90%;
     }
   }
 

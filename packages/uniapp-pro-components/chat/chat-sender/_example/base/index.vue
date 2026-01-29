@@ -6,11 +6,9 @@
         <view class="chat-sender-height-left-limit" />
         <view class="chat-sender-height-right-limit" />
       </view>
-      <view class="chat-sender-placeholder">
-        高度限制：最大高度为132px
-      </view>
+      <view class="chat-sender-placeholder"> 高度限制：最大高度为132px </view>
       <view class="chat-sender-wrapper">
-        <TChatSender
+        <t-chat-sender
           :value="value"
           :loading="loading"
           :disabled="disabled"
@@ -34,48 +32,28 @@
           @updateVisible="onUpdateVisible"
           @keyboardheightchange="onKeyboardHeightChange"
         >
-          <template
-            #footer-prefix
-          >
-            <view
-              class="demo-footer-prefix"
-            >
-              <view
-                :class="'deep-think-block ' + (deepThinkActive ? 'active' : '')"
-                @click.stop="onDeepThinkTap"
-              >
-                <TIcon
-                  name="system-sum"
-                  size="40rpx"
-                />
-                <text class="deep-think-text">
-                  深度思考
-                </text>
+          <template #footer-prefix>
+            <view class="demo-footer-prefix">
+              <view :class="'deep-think-block ' + (deepThinkActive ? 'active' : '')" @click.stop="onDeepThinkTap">
+                <t-icon name="system-sum" size="36rpx" />
+                <text class="deep-think-text"> 深度思考 </text>
               </view>
-              <view
-                :class="'net-search-block ' + (netSearchActive ? 'active' : '')"
-                @click.stop="onNetSearchTap"
-              >
-                <TIcon
-                  name="internet"
-                  size="40rpx"
-                />
+              <view :class="'net-search-block ' + (netSearchActive ? 'active' : '')" @click.stop="onNetSearchTap">
+                <t-icon name="internet" size="36rpx" />
               </view>
             </view>
           </template>
-        </TChatSender>
+        </t-chat-sender>
       </view>
-      <view class="demo-footer">
-        内容由AI生成，仅供参考
-      </view>
+      <view class="demo-footer"> 内容由AI生成，仅供参考 </view>
     </view>
   </view>
 </template>
 
 <script>
-import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import TIcon from 'tdesign-uniapp/icon/icon.vue';
-import Toast from 'tdesign-uniapp/toast';
+import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
+import Toast from '@tdesign/uniapp/toast/index';
 
 export default {
   components: {
@@ -131,7 +109,7 @@ export default {
       setTimeout(() => {
         if (this.loading) {
           this.loading = false;
-          this.value = '';// 清空输入框
+          this.value = ''; // 清空输入框
 
           uni.showToast({
             title: '发送成功',
@@ -266,101 +244,101 @@ export default {
 </script>
 <style>
 .demo-base-container {
-    padding: 56rpx 0 0 0;
-    background-color: var(--td-bg-color-container);
-    height: 488rpx;
-    position: relative;
+  padding: 56rpx 0 0 0;
+  background-color: var(--td-bg-color-container);
+  height: 488rpx;
+  position: relative;
 }
 
 /* 聊天发送器包装器 */
 .chat-sender-demo-wrapper {
-    margin-bottom: 32rpx;
-    /* border: 2rpx solid #e5e5e5; */
-    border-radius: 8rpx;
-    overflow: hidden;
+  margin-bottom: 32rpx;
+  /* border: 2rpx solid #e5e5e5; */
+  border-radius: 8rpx;
+  overflow: hidden;
 }
 
 .chat-sender-height-limit {
-    height: 72rpx;
-    padding: 0 24rpx;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  height: 72rpx;
+  padding: 0 24rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .chat-sender-height-left-limit {
-    height: 70rpx;
-    width: 70rpx;
-    border-top: 1px var(--td-component-stroke) dashed;
-    border-left: 1px var(--td-component-stroke) dashed;
-    border-top-left-radius: 32rpx;
+  height: 70rpx;
+  width: 70rpx;
+  border-top: 1px var(--td-component-stroke) dashed;
+  border-left: 1px var(--td-component-stroke) dashed;
+  border-top-left-radius: 32rpx;
 }
 .chat-sender-height-right-limit {
-    height: 70rpx;
-    width: 70rpx;
-    border-top: 1px var(--td-component-stroke) dashed;
-    border-right: 1px var(--td-component-stroke) dashed;
-    border-top-right-radius: 32rpx;
+  height: 70rpx;
+  width: 70rpx;
+  border-top: 1px var(--td-component-stroke) dashed;
+  border-right: 1px var(--td-component-stroke) dashed;
+  border-top-right-radius: 32rpx;
 }
 .chat-sender-placeholder {
-    font-size: 32rpx;
-    font-weight: 600;
-    color: var(--demo-chat-sender-placeholder);
-    text-align: center;
-    height: 48rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--demo-chat-sender-placeholder);
+  text-align: center;
+  height: 48rpx;
 }
 
 .chat-sender-wrapper {
-    position: absolute;
-    width: 100%;
-    bottom: 0rpx;
-    background-color: var(--td-bg-color-container);
+  position: absolute;
+  width: 100%;
+  bottom: 0rpx;
+  background-color: var(--td-bg-color-container);
 }
 
 .demo-footer {
-    height: 32rpx;
-    width: 100%;
-    text-align: center;
-    font-size: 20rpx;
-    line-height: 32rpx;
-    color: var(--td-text-color-placeholder);
-    position: absolute;
-    bottom: 32rpx;
+  height: 32rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 20rpx;
+  line-height: 32rpx;
+  color: var(--td-text-color-placeholder);
+  position: absolute;
+  bottom: 32rpx;
 }
 
 .demo-footer-prefix {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .deep-think-block {
-    padding: 0 24rpx;
-    height: 60rpx;
-    margin-right: 16rpx;
+  padding: 0 24rpx;
+  height: 60rpx;
+  margin-right: 16rpx;
 }
 
 .deep-think-text {
-    margin-left: 8rpx;
+  margin-left: 8rpx;
 }
 
 .deep-think-block,
 .net-search-block {
-    color: var(--td-text-color-primary);
-    border-radius: 200rpx;
-    border: 2rpx solid var(--td-component-border);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  color: var(--td-text-color-primary);
+  border-radius: 200rpx;
+  border: 2rpx solid var(--td-component-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .net-search-block {
-    width: 64rpx;
-    height: 60rpx;
+  width: 64rpx;
+  height: 60rpx;
 }
 
 .active {
-    border-color: var(--td-brand-color-light-active);
-    color: var(--td-brand-color);
-    background-color: var(--td-brand-color-light);
+  border-color: var(--td-brand-color-light-active);
+  color: var(--td-brand-color);
+  background-color: var(--td-brand-color-light);
 }
 </style>

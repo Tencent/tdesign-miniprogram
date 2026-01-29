@@ -45,7 +45,7 @@ APP-PLUS 下，需要业务自己在页面中监听 `pageScroll` 事件，这是
 ```js
 // 页面 Vue 文件下，引入组件库提供的监听方法
 // 该方法内部会通过 event-bus，传递参数给对应的组件
-import { handlePageScroll } from 'tdesign-uniapp/mixins/page-scroll';
+import { handlePageScroll } from '@tdesign/uniapp/mixins/page-scroll';
 
 export default {
   onPageScroll(e) {
@@ -63,9 +63,9 @@ uniapp 给的脚手架工程配置有问题，`src/env.d.ts` 文件的 `vue` 声
 1. 注释掉 `src/env.d.ts` 文件中 `vue` 的声明
 2. `tsconfig.json` 中配置 `"moduleResolution": "bundler"`
 
-<img src="https://mike-1255355338.cos.ap-guangzhou.myqcloud.com/article/2025/11/own_mike_XeC8BMxSQKPdc2GY.png" width="600" />
+<img src="https://tdesign.gtimg.com/uniapp/docs/faq-1.png" width="600" />
 
-<img src="https://mike-1255355338.cos.ap-guangzhou.myqcloud.com/article/2025/11/own_mike_Askm5PSWT8rMmh3G.png" width="600" />
+<img src="https://tdesign.gtimg.com/uniapp/docs/faq-2.png" width="600" />
 
 另外，它这个脚手架太老了，自己的 `tsconfig.json` 还飘红，升级下 `@vue/tsconfig` 可解决。
 

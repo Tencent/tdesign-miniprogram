@@ -12,7 +12,7 @@
     <view
       :class="classPrefix + '__mask'"
       data-source="overlay"
-      :style="'background-color: ' + backgroundColor"
+      :style="tools._style([backgroundColor && '--td-image-viewer-mask-bg-color: ' + backgroundColor])"
       aria-role="button"
       aria-label="关闭"
       @click="(e) => onClose(e, 'overlay')"
@@ -35,12 +35,17 @@
           >
             <t-image
               v-if="!lazy || shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes)"
-              t-class="t-image--external"
-              :custom-style="(imagesStyle[index] && imagesStyle[index].style) || ''"
-              mode="aspectFit"
-              :src="item"
-              :data-index="index"
+              :t-class="prefix + '-image--external'"
               :class="classPrefix + '__image'"
+              :custom-style="(imagesStyle[index] && imagesStyle[index].style) || ''"
+              :data-index="index"
+              :src="item"
+              :mode="(imageProps && imageProps.mode) || 'aspectFit'"
+              :lazy="(imageProps && imageProps.lazy) || false"
+              :loading="(imageProps && imageProps.loading) || 'default'"
+              :shape="(imageProps && imageProps.shape) || 'square'"
+              :webp="(imageProps && imageProps.webp) || false"
+              :show-menu-by-longpress="(imageProps && imageProps.showMenuByLongpress) || false"
               @load="onImageLoadSuccess($event, { index })"
             />
           </swiper-item>
@@ -106,8 +111,8 @@
   </view>
 </template>
 <script>
-import tImage from '../image/image';
-import tIcon from '../icon/icon';
+import TImage from '../image/image';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { styles, calcIcon, systemInfo } from '../common/utils';
 import { prefix } from '../common/config';
@@ -133,8 +138,8 @@ export default uniComponent({
   externalClasses: [`${prefix}-class`],
   mixins: [useCustomNavbar],
   components: {
-    tImage,
-    tIcon,
+    TImage,
+    TIcon,
   },
   props: {
     ...props,

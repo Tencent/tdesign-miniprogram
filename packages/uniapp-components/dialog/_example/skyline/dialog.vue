@@ -1,12 +1,9 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="block demo-navbar"
+    <t-demo-navbar
+      custom-class="block demo-navbar"
       title="Dialog"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -24,14 +21,14 @@
           desc="反馈类对话框"
           padding
         >
-          <baseDemo />
+          <base-demo />
         </t-demo>
 
         <t-demo
           desc="确认类对话框"
           padding
         >
-          <confirm />
+          <confirm-demo />
         </t-demo>
 
         <t-demo
@@ -52,7 +49,7 @@
           title="02 组件状态"
           padding
         >
-          <status />
+          <status-demo />
         </t-demo>
 
         <t-demo
@@ -60,14 +57,14 @@
           desc="命令调用"
           padding
         >
-          <commandDemo />
+          <command-demo />
         </t-demo>
 
         <t-demo
           desc="自定义按钮"
           padding
         >
-          <buttonDemo />
+          <button-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -76,24 +73,23 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import confirm from '../confirm/index.vue';
-import withInput from '../with-input/index.vue';
-import withImage from '../with-image/index.vue';
-import commandDemo from '../command/index.vue';
-import status from '../status/index.vue';
-import buttonDemo from '../button/index.vue';
+import BaseDemo from '../base/index.vue';
+import ConfirmDemo from '../confirm/index.vue';
+import WithInput from '../with-input/index.vue';
+import WithImage from '../with-image/index.vue';
+import CommandDemo from '../command/index.vue';
+import StatusDemo from '../status/index.vue';
+import ButtonDemo from '../button/index.vue';
+
 export default {
   components: {
-    tNavbar,
-    baseDemo,
-    confirm,
-    withInput,
-    withImage,
-    commandDemo,
-    status,
-    buttonDemo,
+    BaseDemo,
+    ConfirmDemo,
+    WithInput,
+    WithImage,
+    CommandDemo,
+    StatusDemo,
+    ButtonDemo,
   },
   data() {
     return {};

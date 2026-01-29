@@ -1,17 +1,14 @@
 @import '../common/style/base.less';
 
 @textarea-padding: var(--td-textarea-padding, 32rpx);
-@textarea-text-line-height: 48rpx; // 输入框文本行高
-@textarea-label-line-height: 44rpx; // 标签文本行高
 @textarea-label-padding-bottom: @spacer;
-@textarea-indicator-text-line-height: 40rpx; // 计数器文本行高
 @textarea-indicator-text-padding-top: @spacer; // 计数器文本顶部间距
 @textarea-indicator-text-align: right; // 计数器文本对齐方式
 @textarea-border-width: 2rpx; // 文本框边框大小
-@textarea-indicator-text-font-size: @spacer-1; // 计数器文本大小
-@textarea-label-font-size: @font-size-base; // 标签文本大小
-@textarea-text-font-size: @font-size-m; // 输入框文本大小
-@textarea-placeholder-font-size: @font-size-m; // 占位符文本大小
+@textarea-indicator-text-font: @font-body-small; // 计数器文本大小
+@textarea-label-font: @font-body-medium; // 标签文本大小
+@textarea-text-font: @font-body-large; // 输入框文本大小
+@textarea-placeholder-font: @font-body-medium; // 占位符文本大小
 
 // 文本框背景颜色
 @textarea-background-color: var(--td-textarea-background-color, @bg-color-container);
@@ -38,10 +35,9 @@
   background-color: @textarea-background-color;
 
   &__label:not(:empty) {
-    font-size: @textarea-label-font-size;
+    font: @textarea-label-font;
     color: @textarea-label-color;
     flex-shrink: 0;
-    line-height: @textarea-label-line-height;
     padding-bottom: @textarea-label-padding-bottom;
     overflow: hidden;
     white-space: nowrap;
@@ -67,23 +63,21 @@
       background-color: transparent;
       border: 0;
       resize: none;
-      font-size: @textarea-text-font-size;
+      font: @textarea-text-font;
       color: @textarea-text-color;
-      line-height: @textarea-text-line-height;
     }
   }
 
   &__placeholder {
     color: @textarea-placeholder-color;
-    font-size: @textarea-placeholder-font-size;
+    font: @textarea-placeholder-font;
   }
 
   &__indicator:not(:empty) {
     flex-shrink: 0;
     color: @textarea-indicator-text-color;
-    font-size: @textarea-indicator-text-font-size;
+    font: @textarea-indicator-text-font;
     text-align: @textarea-indicator-text-align;
-    line-height: @textarea-indicator-text-line-height;
     padding-top: @textarea-indicator-text-padding-top;
   }
 

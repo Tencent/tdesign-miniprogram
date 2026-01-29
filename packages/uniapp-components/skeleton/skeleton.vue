@@ -39,7 +39,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import { classNames } from '../common/utils';
-import { isNumber } from '../common/validator';
+import { isInteger, isNumeric } from '../common/validator';
 import tools from '../common/utils.wxs';
 
 
@@ -120,12 +120,13 @@ export default uniComponent({
       }
 
       const parsedRowCols = rowCols.map((item) => {
-        if (isNumber(item)) {
+        if (isInteger(item) && item >= 0) {
           return new Array(item).fill({
             class: this.getColItemClass({ type: 'text' }),
             style: {},
           });
         }
+
         if (Array.isArray(item)) {
           return item.map(col => ({
             ...col,
@@ -170,7 +171,7 @@ export default uniComponent({
       const style = {};
       styleName.forEach((name) => {
         if (name in obj) {
-          const px = isNumber(obj[name]) ? `${obj[name]}px` : obj[name];
+          const px = isNumeric(obj[name]) ? `${obj[name]}px` : obj[name];
           if (name === 'size') {
             [style.width, style.height] = [px, px];
           } else {

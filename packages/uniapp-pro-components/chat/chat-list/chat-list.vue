@@ -50,11 +50,11 @@
 </template>
 <script>
 import ChatMessage from '../chat-message/chat-message.vue';
-import { prefix } from 'tdesign-uniapp/common/config';
+import { prefix } from '@tdesign/uniapp/common/config';
 import props from './props';
 
-import _ from 'tdesign-uniapp/common/utils.wxs';
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
+import _ from '@tdesign/uniapp/common/utils.wxs';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
 
 const name = `${prefix}-chat-list`;
@@ -118,7 +118,10 @@ export default uniComponent({
       this.scrollViewTop = scrollTop;
     },
     scrollToBottom() {
-      this.setScrollTop();
+      // reverse 为 true 时，滚动到 0 即为底部
+      // reverse 为 false 时，需要滚动到一个很大的值才能到底部
+      const scrollTop = this.reverse ? 0 : 999999;
+      this.setScrollTop(scrollTop);
     },
     onScroll(e) {
       this.$emit('scroll', e);

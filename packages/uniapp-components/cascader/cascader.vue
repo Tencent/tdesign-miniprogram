@@ -86,6 +86,8 @@
             </TTabs>
           </block>
 
+          <slot name="middle-content" />
+
           <view
             v-if="subTitles && subTitles[stepIndex]"
             :class="name + '__options-title'"
@@ -144,10 +146,12 @@ const name = `${prefix}-cascader`;
 function parseOptions(options, keys) {
   const label = coalesce(keys?.label, 'label');
   const value = coalesce(keys?.value, 'value');
+  const disabled = coalesce(keys?.disabled, 'disabled');
 
   return options.map(item => ({
     [label]: item[label],
     [value]: item[value],
+    [disabled]: item[disabled],
   }));
 }
 
@@ -471,7 +475,7 @@ export default uniComponent({
         item = item[coalesce(keys?.children, 'children')][index];
       }
 
-      if (item.disabled) {
+      if (item[coalesce(keys?.disabled, 'disabled')]) {
         return;
       }
       this.$emit('pick', {

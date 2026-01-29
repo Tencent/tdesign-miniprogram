@@ -42,14 +42,14 @@ jobs:
 
       - run: pnpm build
 
-      - name: extract version
+      - uses: actions/github-script@v7
         id: version
-        run: |
-          const tagName = '${{ github.event.release.tag_name }}'
-          const lastIndex = tagName.lastIndexOf('@');
-          const version = tagName.slice(lastIndex + 1);
-          echo "version=$version" >> $GITHUB_OUTPUT
-        shell: bash
+        with:
+          script: |
+            const tagName = '${{ github.event.release.tag_name }}'
+            const lastIndex = tagName.lastIndexOf('@');
+            const version = tagName.slice(lastIndex + 1);
+            core.setOutput('version', version);
 
       - name: release miniprogram
         uses: LeeJim/setup-miniprogram@main

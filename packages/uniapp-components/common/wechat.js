@@ -1,6 +1,8 @@
 export const getObserver = (context, selector) => new Promise((resolve) => {
   uni
-    .createIntersectionObserver(context)
+    .createIntersectionObserver(context, {
+      nativeMode: true,
+    })
     .relativeToViewport()
     .observe(selector, (res) => {
       resolve(res);

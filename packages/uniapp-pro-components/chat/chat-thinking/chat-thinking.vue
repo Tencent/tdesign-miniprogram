@@ -38,11 +38,11 @@
 </template>
 <script>
 import TChatLoading from '../chat-loading/chat-loading.vue';
-import TIcon from 'tdesign-uniapp/icon/icon.vue';
-import { prefix } from 'tdesign-uniapp/common/config';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
+import { prefix } from '@tdesign/uniapp/common/config';
 import props from './props';
-import _ from 'tdesign-uniapp/common/utils.wxs';
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
+import _ from '@tdesign/uniapp/common/utils.wxs';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
 
 const name = `${prefix}-chat-thinking`;
