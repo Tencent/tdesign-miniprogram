@@ -4,6 +4,8 @@
   "id": "tdesign-uniapp-chat",
   "title": "tdesign-uniapp-chat",
   "description": "TDesign Chat Component for UniApp",
+  "author": "tdesign",
+  "license": "MIT",
   "keywords": [
     "tdesign",
     "miniprogram",
