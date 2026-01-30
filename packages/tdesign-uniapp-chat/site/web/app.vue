@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/no-deprecated-slot-attribute -->
 <template>
   <td-doc-layout>
-    <td-header framework="miniprogram">
+    <td-header slot="header" framework="miniprogram">
       <!-- <td-doc-search slot="search" ref="tdDocSearch" /> -->
     </td-header>
     <td-doc-aside ref="tdDocAside" title="Uni App Chat">
