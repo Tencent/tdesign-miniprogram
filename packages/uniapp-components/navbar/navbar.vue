@@ -4,7 +4,7 @@
     :style="tools._style([boxStyle, customStyle])"
   >
     <view
-      v-if="fixed"
+      v-if="fixed && placeholder"
       :class="classPrefix + '__placeholder ' + tClassPlaceholder"
     />
     <view :class="classPrefix + '__content ' + tClassContent">
@@ -47,7 +47,7 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { getRect, systemInfo } from '../common/utils';
 import { prefix } from '../common/config';
@@ -83,7 +83,7 @@ export default uniComponent({
     `${prefix}-class-nav-btn`,
   ],
   components: {
-    tIcon,
+    TIcon,
   },
   props: {
     ...props,
@@ -187,6 +187,7 @@ export default uniComponent({
       const maxSpacing = Math.max(leftRect.right, systemInfo.windowWidth - menuRect.left);
       const _boxStyle = {
         ...defaultStyle,
+        'z-index': this.zIndex,
         '--td-navbar-center-left': `${maxSpacing}px`, // 标题左侧距离
         '--td-navbar-center-width': `${Math.max(menuRect.left - maxSpacing, 0)}px`, // 标题宽度
       };

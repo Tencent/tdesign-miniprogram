@@ -359,18 +359,19 @@ export default uniComponent({
     },
 
     triggerValue(value) {
-      if (this.preval === value) return;
       const { min, max, range } = this;
-
-      this.preval = value;
-      const parsed = trimValue(value, {
+      const trimmedValue = trimValue(value, {
         min, max, range,
       });
+
+      if (JSON.stringify(this.preval) === JSON.stringify(trimmedValue)) return;
+      this.preval = value;
+
       this._trigger('change', {
-        value: parsed,
+        value: trimmedValue,
       });
       if (this._selfControlled) {
-        this._value = parsed;
+        this._value = trimmedValue;
       }
     },
 
@@ -408,10 +409,12 @@ export default uniComponent({
         min, max, range,
       });
 
-
       const realLabel = this.getLabelByValue(value);
 
-      this.triggerValue(value);
+      // 避免受控模式下死循环，同时不影响初始化后的首次点击
+      if (this.preval !== undefined) {
+        this.preval = value;
+      }
 
       const setValueAndTrigger = () => {
         this._value = value;

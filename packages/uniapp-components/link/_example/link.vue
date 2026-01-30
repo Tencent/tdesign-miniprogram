@@ -1,14 +1,8 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="Link"
-      left-arrow
-      :capsule="false"
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -24,31 +18,31 @@
           title="01 组件类型"
           desc="基础文字链接"
         >
-          <contentDemo />
+          <content-demo />
         </t-demo>
         <t-demo desc="下划线文字链接">
-          <underline />
+          <underline-demo />
         </t-demo>
         <t-demo desc="前置图标文字链接">
-          <prefix />
+          <prefix-demo />
         </t-demo>
         <t-demo desc="后置图标文字链接">
-          <suffix />
+          <suffix-demo />
         </t-demo>
         <t-demo
           title="02 组件状态"
           desc="不同主题"
         >
-          <theme />
+          <theme-demo />
         </t-demo>
         <t-demo desc="禁用状态">
-          <disabled />
+          <disabled-demo />
         </t-demo>
         <t-demo
           title="03 组件样式"
           desc="链接尺寸"
         >
-          <size />
+          <size-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -57,22 +51,22 @@
 
 <script>
 
-import contentDemo from './content/index.vue';
-import underline from './underline/index.vue';
-import prefix from './prefix/index.vue';
-import suffix from './suffix/index.vue';
-import theme from './theme/index.vue';
-import disabled from './disabled/index.vue';
-import size from './size/index.vue';
+import ContentDemo from './content/index.vue';
+import UnderlineDemo from './underline/index.vue';
+import PrefixDemo from './prefix/index.vue';
+import SuffixDemo from './suffix/index.vue';
+import ThemeDemo from './theme/index.vue';
+import DisabledDemo from './disabled/index.vue';
+import SizeDemo from './size/index.vue';
 export default {
   components: {
-    contentDemo,
-    underline,
-    prefix,
-    suffix,
-    theme,
-    disabled,
-    size,
+    ContentDemo,
+    UnderlineDemo,
+    PrefixDemo,
+    SuffixDemo,
+    ThemeDemo,
+    DisabledDemo,
+    SizeDemo,
   },
   data() {
     return {};

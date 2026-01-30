@@ -78,7 +78,6 @@
     "@vue/shared": "catalog:",
     "@vue/test-utils": "catalog:",
     "autoprefixer": "catalog:",
-    "axios": "catalog:",
     "camelcase": "catalog:",
     "commitizen": "catalog:",
     "concurrently": "catalog:",

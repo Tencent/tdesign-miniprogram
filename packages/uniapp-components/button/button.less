@@ -25,10 +25,10 @@
 @button-large-padding-horizontal: var(--td-button-large-padding-horizontal, 40rpx);
 
 // 图标大小
-@button-extra-small-icon-font-size: var(--td-button-extra-small-icon-font-size, 36rpx);
-@button-small-icon-font-size: var(--td-button-small-icon-font-size, 36rpx);
-@button-medium-icon-font-size: var(--td-button-medium-icon-font-size, 40rpx);
-@button-large-icon-font-size: var(--td-button-large-icon-font-size, 48rpx);
+@button-extra-small-icon-size: var(--td-button-extra-small-icon-size, 36rpx);
+@button-small-icon-size: var(--td-button-small-icon-size, 36rpx);
+@button-medium-icon-size: var(--td-button-medium-icon-size, 40rpx);
+@button-large-icon-size: var(--td-button-large-icon-size, 48rpx);
 
 // default
 @button-default-color: var(--td-button-default-color, @text-color-primary);
@@ -131,7 +131,7 @@
   @fontSize: 'button-@{size}-font-size';
   @padding: 'button-@{size}-padding-horizontal';
   @height: 'button-@{size}-height';
-  @iconSize: 'button-@{size}-icon-font-size';
+  @iconSize: 'button-@{size}-icon-size';
 
   .@{button}--size-@{size} {
     font-size: @@fontSize;
@@ -140,11 +140,9 @@
     height: @@height;
     line-height: @@height;
 
-    // --td-icon-font-size: @@iconSize;
-
-    // & :deep(.@{button}__icon) {
-    //   font-size: @@iconSize;
-    // }
+    & .@{button}__icon {
+      font-size: @@iconSize;
+    }
   }
 }
 
@@ -257,9 +255,6 @@
   font-weight: @button-font-weight;
   vertical-align: top;
   box-sizing: border-box;
-  
-  margin-left: auto;
-  margin-right: auto;
 
   .cursor-pointer();
 
@@ -518,15 +513,14 @@
     .ghost-theme(default);
   }
 
-  // :deep(&__loading) + &__content:not(:empty),
-  // :deep(&__icon) + &__content:not(:empty),
-  &__content--has-icon {
+  &__loading + &__content:not(:empty),
+  &__icon + &__content:not(:empty) {
     margin-left: 8rpx;
   }
 
-  // :deep(&__icon) {
-  //   border-radius: @button-icon-border-radius;
-  // }
+  &__icon {
+    border-radius: @button-icon-border-radius;
+  }
 
   // 圆角长方形
   &--round {
@@ -631,13 +625,13 @@
     cursor: not-allowed;
   }
 
-  // :deep(&__loading) {
-  //   &--wrapper {
-  //     display: flex;
-  //     align-items: center;
-  //     justify-content: center;
-  //   }
-  // }
+  &__loading {
+    &--wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
 
   &.@{button}--hover::after {
     z-index: -1;

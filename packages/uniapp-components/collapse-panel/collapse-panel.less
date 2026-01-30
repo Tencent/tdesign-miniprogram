@@ -1,19 +1,20 @@
 @import '../common/style/base.less';
 
+@collapse-disabled-color: var(--td-collapse-disabled-color, @text-color-disabled);
 @collapse-header-text-color: var(--td-collapse-header-text-color, @text-color-primary);
 @collapse-content-text-color: var(--td-collapse-content-text-color, @text-color-primary);
-@collapse-header-text-disabled-color: var(--td-collapse-header-text-disabled-color, @text-color-disabled);
+@collapse-header-text-disabled-color: var(--td-collapse-header-text-disabled-color, @collapse-disabled-color);
 
 // font-size
-@collapse-title-font-size: var(--td-collapse-title-font-size, @font-size-m);
-@collapse-extra-font-size: var(--td-collapse-extra-font-size, @font-size-m);
-@collapse-content-font-size: var(--td-collapse-content-font-size, @font-size-base);
+@collapse-title-font: var(--td-collapse-title-font, @font-body-large);
+@collapse-extra-font: var(--td-collapse-extra-font, @font-body-large);
+@collapse-content-font: var(--td-collapse-content-font, @font-body-medium);
 
 @collapse-header-height: var(--td-collapse-header-height, auto);
 @collapse-horizontal-padding: var(--td-collapse-horizontal-padding, 32rpx);
 @collapse-content-padding: var(--td-collapse-content-padding, 32rpx);
-@collapse-content-line-height: var(--td-collapse-content-line-height, 1.5);
 @collapse-border-color: var(--td-collapse-border-color, @border-level-1-color);
+@collapse-left-icon-color: var(--td-collapse-left-icon-color, @brand-color);
 @collapse-icon-color: var(--td-collapse-icon-color, @text-color-placeholder);
 
 @collapse-panel-bg-color: var(--td-collapse-panel-bg-color, @bg-color-container);
@@ -42,8 +43,6 @@
     align-items: center;
     padding-left: @collapse-horizontal-padding;
     height: @collapse-header-height;
-    --td-cell-title-color: @collapse-header-text-color;
-    --td-cell-left-icon-color: @collapse-icon-color;
 
     &--top {
       .border(top, @collapse-border-color);
@@ -54,27 +53,12 @@
     }
 
     &::after {
-      left: 32rpx;
-    }
-
-    &-right {
-      display: inline-flex;
-      align-items: center;
-      height: 100%;
-    }
-
-    &-icon {
-      // 增大热区
-      height: 100%;
-      padding-left: 8px;
-      width: 44px;
-      padding-right: 8px;
-      color: @collapse-icon-color;
+      left: @spacer-2;
     }
   }
 
   &__extra {
-    font-size: @collapse-extra-font-size;
+    font: @collapse-extra-font;
   }
 
   &__body {
@@ -88,12 +72,11 @@
 
   &__content {
     color: @collapse-content-text-color;
-    font-size: @collapse-content-font-size;
+    font: @collapse-content-font;
     padding: @collapse-content-padding;
-    line-height: @collapse-content-line-height;
 
     &--disabled {
-      color: @text-color-disabled;
+      color: @collapse-disabled-color;
     }
 
     &--expanded&--bottom {
@@ -110,24 +93,27 @@
   }
 }
 
-// :deep(.class) {
-//   &-title {
-//     font-size: @collapse-title-font-size;
+// cell: 统一用外部样式类自定义样式
+.class {
+  &-title {
+    font: @collapse-title-font;
+    color: @collapse-header-text-color;
+  }
 
-//     &--disabled {
-//       color: @text-color-disabled;
-//     }
-//   }
+  &-left-icon {
+    color: @collapse-left-icon-color;
+  }
 
-//   &-note {
-//     &--disabled {
-//       color: @text-color-disabled;
-//     }
-//   }
+  &-right-icon {
+    color: @collapse-icon-color;
+  }
 
-//   &-right-icon {
-//     &--disabled {
-//       color: @text-color-disabled;
-//     }
-//   }
-// }
+  &-title,
+  &-note,
+  &-left-icon,
+  &-right-icon {
+    &--disabled {
+      color: @collapse-disabled-color;
+    }
+  }
+}

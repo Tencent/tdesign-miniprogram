@@ -1,13 +1,8 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="SwipeCell"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="SwipeCell 滑动操作"
@@ -18,16 +13,16 @@
         title="01 组件类型"
         desc="左滑单操作"
       >
-        <left />
+        <left-demo />
       </t-demo>
       <t-demo desc="右滑单操作">
-        <right />
+        <right-demo />
       </t-demo>
       <t-demo desc="左右滑操作">
-        <double />
+        <double-demo />
       </t-demo>
       <t-demo desc="带图标的滑动操作">
-        <iconDemo />
+        <icon-demo />
       </t-demo>
     </view>
   </view>
@@ -35,16 +30,16 @@
 
 <script>
 
-import left from './left/index.vue';
-import right from './right/index.vue';
-import double from './double/index.vue';
-import iconDemo from './icon/index.vue';
+import LeftDemo from './left/index.vue';
+import RightDemo from './right/index.vue';
+import DoubleDemo from './double/index.vue';
+import IconDemo from './icon/index.vue';
 export default {
   components: {
-    left,
-    right,
-    double,
-    iconDemo,
+    LeftDemo,
+    RightDemo,
+    DoubleDemo,
+    IconDemo,
   },
   data() {
     return {};

@@ -1,13 +1,8 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="Stepper"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="Stepper 步进器"
@@ -18,7 +13,7 @@
         title="01 组件类型"
         desc="基础步进器"
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
       <t-demo
         title="02 组件状态"
@@ -27,16 +22,16 @@
         <min-max />
       </t-demo>
       <t-demo desc="禁用状态">
-        <status />
+        <status-demo />
       </t-demo>
       <t-demo
         title="03 组件样式"
         desc="步进器样式"
       >
-        <theme />
+        <theme-demo />
       </t-demo>
       <t-demo desc="步进器尺寸">
-        <size />
+        <size-demo />
       </t-demo>
     </view>
   </view>
@@ -45,17 +40,17 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import minMax from './min-max/index.vue';
-import status from './status/index.vue';
-import theme from './theme/index.vue';
-import size from './size/index.vue';
+import MinMax from './min-max/index.vue';
+import StatusDemo from './status/index.vue';
+import ThemeDemo from './theme/index.vue';
+import SizeDemo from './size/index.vue';
 export default {
   components: {
     BaseDemo,
-    minMax,
-    status,
-    theme,
-    size,
+    MinMax,
+    StatusDemo,
+    ThemeDemo,
+    SizeDemo,
   },
   data() {
     return {};

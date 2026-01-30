@@ -26,17 +26,17 @@
 </template>
 
 <script>
-import tCheckboxGroup from 'tdesign-uniapp/checkbox-group/checkbox-group.vue';
-import tCheckbox from 'tdesign-uniapp/checkbox/checkbox.vue';
-import tools from 'tdesign-uniapp/common/utils.wxs';
+import TCheckboxGroup from '@tdesign/uniapp/checkbox-group/checkbox-group.vue';
+import TCheckbox from '@tdesign/uniapp/checkbox/checkbox.vue';
+import tools from '@tdesign/uniapp/common/utils.wxs';
 
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tCheckboxGroup,
-    tCheckbox,
+    TCheckboxGroup,
+    TCheckbox,
   },
   data() {
     return {

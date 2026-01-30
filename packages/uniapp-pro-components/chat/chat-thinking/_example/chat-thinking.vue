@@ -1,11 +1,8 @@
 <template>
   <view>
-    <t-navbar
+    <t-demo-navbar
       class="demo-navbar"
       title="ChatThinking"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
 
     <view class="demo">
@@ -18,40 +15,40 @@
         title="01 组件类型"
         desc="支持多种加载动效类型，包括 gradient、moving、dots"
       >
-        <baseDemo />
+        <base-demo />
       </t-demo>
       <t-demo
         title="02 组件状态"
         desc="思考中"
       >
-        <pending />
+        <pending-demo />
       </t-demo>
       <t-demo desc="思考完成">
-        <complete />
+        <complete-demo />
       </t-demo>
       <t-demo
         title="03 组件样式"
         desc=""
       >
-        <layout />
+        <layout-demo />
       </t-demo>
     </view>
   </view>
 </template>
 
 <script>
-import baseDemo from './base/index.vue';
-import layout from './layout/index.vue';
-import pending from './pending/index.vue';
-import complete from './complete/index.vue';
+import BaseDemo from './base/index.vue';
+import LayoutDemo from './layout/index.vue';
+import PendingDemo from './pending/index.vue';
+import CompleteDemo from './complete/index.vue';
 
 
 export default {
   components: {
-    baseDemo,
-    layout,
-    pending,
-    complete,
+    BaseDemo,
+    LayoutDemo,
+    PendingDemo,
+    CompleteDemo,
   },
   data() {
     return {};

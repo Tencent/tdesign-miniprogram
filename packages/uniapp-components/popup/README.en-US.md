@@ -11,7 +11,7 @@ close-btn | Boolean | - | \- | N
 close-on-overlay-click | Boolean | true | \- | N
 content | String | - | \- | N
 duration | Number | 240 | \- | N
-overlay-props | Object | {} | Typescript：`OverlayProps`，[Overlay API Documents](./overlay?tab=api)。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/popup/type.ts) | N
+overlay-props | Object | {} | Typescript：`OverlayProps`，[Overlay API Documents](./overlay?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/popup/type.ts) | N
 placement | String | top | options: top/left/right/bottom/center | N
 prevent-scroll-through | Boolean | true | \- | N
 show-overlay | Boolean | true | \- | N
@@ -24,7 +24,7 @@ z-index | Number | 11500 | \- | N
 
 name | params | description
 -- | -- | --
-visible-change | `(context: { visible: boolean, trigger: PopupSource }) ` | [see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/popup/type.ts)。<br/>`type PopupSource = 'close-btn' \| 'overlay'`<br/>
+visible-change | `(context: { visible: boolean, trigger: PopupSource }) ` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/popup/type.ts)。<br/>`type PopupSource = 'close-btn' \| 'overlay'`<br/>
 
 ### Popup Slots
 
@@ -46,8 +46,8 @@ t-class-content | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-popup-bg-color | @bg-color-container | - 
---td-popup-border-radius | @radius-extraLarge | - 
---td-popup-close-btn-color | @text-color-primary | - 
---td-popup-distance-top | 0) | - 
+--td-popup-bg-color | @bg-color-container | -
+--td-popup-border-radius | @radius-extraLarge | -
+--td-popup-close-btn-color | @text-color-primary | -
+--td-popup-distance-top | 0 | -
 --td-popup-transition | all 300ms ease | -

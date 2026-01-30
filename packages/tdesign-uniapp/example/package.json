@@ -77,7 +77,7 @@
     "postcss": "catalog:",
     "postcss-rpx-transform": "catalog:",
     "sass": "catalog:",
-    "tdesign-uniapp": "workspace:*",
+    "@tdesign/uniapp": "workspace:*",
     "tdesign-uniapp-auto-import-resolver": "catalog:",
     "unplugin-auto-import": "catalog:",
     "unplugin-vue-components": "catalog:",

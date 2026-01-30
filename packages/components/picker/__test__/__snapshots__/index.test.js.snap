@@ -14,7 +14,7 @@ exports[`picker :base 1`] = `
   >
     <wx-view
       class="t-popup t-popup--bottom t-fade-enter t-fade-enter-active class t-class"
-      style="z-index:11500;"
+      style="z-index:11500;--td-popup-transition:all 240ms ease;"
       bind:transitionend="onTransitionEnd"
     >
       <wx-view
@@ -194,7 +194,7 @@ exports[`picker :base 1`] = `
         ariaLabel="关闭"
         ariaRole="button"
         class="t-overlay t-fade-enter t-fade-enter-active class"
-        style="--td-overlay-transition-duration:300ms; z-index:11000; top:0px;"
+        style="--td-overlay-transition-duration:240ms; z-index:11000; top:0px;"
         bind:tap="handleClick"
         catch:touchmove="noop"
         bind:transitionend="onTransitionEnd"

@@ -102,7 +102,7 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon.vue';
+import TIcon from '../icon/icon.vue';
 import { uniComponent } from '../common/src/index';
 import { getRect, getAnimationFrame, calcIcon } from '../common/utils';
 import props from './props';
@@ -114,7 +114,7 @@ const name = `${prefix}-notice-bar`;
 const THEME_ICON = {
   info: 'info-circle-filled',
   success: 'check-circle-filled',
-  warning: 'info-circle-filled',
+  warning: 'error-circle-filled',
   error: 'error-circle-filled',
 };
 
@@ -131,7 +131,7 @@ export default uniComponent({
     `${prefix}-class-suffix-icon`,
   ],
   components: {
-    tIcon,
+    TIcon,
   },
   props: {
     ...props,

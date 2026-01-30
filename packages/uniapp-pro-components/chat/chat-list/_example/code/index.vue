@@ -1,36 +1,26 @@
 <template>
   <view>
-    <view
-      class="chat-box"
-      :style="'height: ' + contentHeight + ';'"
-    >
-      <TChatList>
-        <block
-          v-for="(item, chatIndex) in chatList"
-          :key="item.key"
-        >
-          <TChatMessage
+    <view class="chat-box" :style="'height: ' + contentHeight + ';'">
+      <t-chat-list>
+        <block v-for="(item, chatIndex) in chatList" :key="item.key">
+          <t-chat-message
+            :chat-id="item.key"
             :avatar="item.avatar || ''"
             :name="item.name || ''"
             :datetime="item.datetime || ''"
             :role="item.message.role"
             :placement="item.message.role === 'user' ? 'right' : 'left'"
+            @message-longpress="showPopover"
           >
             <template #content>
-              <block
-                v-for="(contentItem, contentIndex) in item.message.content"
-                :key="contentIndex"
-              >
+              <block v-for="(contentItem, contentIndex) in item.message.content" :key="contentIndex">
                 <t-chat-content
                   v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                   :content="contentItem"
                 />
 
                 <!-- :slot="'custom-' + contentIndex" -->
-                <view
-                  v-if="contentItem.type === 'preview'"
-                  class="preview"
-                >
+                <view v-if="contentItem.type === 'preview'" class="preview">
                   <view>{{ contentItem.data.enName }}</view>
                   <view>
                     <span class="btn">复制代码</span>
@@ -40,16 +30,20 @@
               </block>
             </template>
             <template #actionbar>
-              <TChatActionbar
-                v-if="chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'"
+              <t-chat-actionbar
+                v-if="
+                  chatIndex !== chatList.length - 1 &&
+                  item.message.status === 'complete' &&
+                  item.message.role === 'assistant'
+                "
                 placement="end"
                 @actions="handleAction"
               />
             </template>
-          </TChatMessage>
+          </t-chat-message>
         </block>
         <template #footer>
-          <TChatSender
+          <t-chat-sender
             :value="value"
             :loading="loading"
             :disabled="disabled"
@@ -59,19 +53,27 @@
             @focus="onFocus"
           />
         </template>
-      </TChatList>
+      </t-chat-list>
+      <!-- 长按弹出操作栏 -->
+      <t-chat-actionbar
+        ref="popoverActionbar"
+        class="popover-actionbar"
+        placement="longpress"
+        :long-press-position="longPressPosition"
+        @actions="handlePopoverAction"
+      />
     </view>
-    <TToast ref="t-toast" />
+    <t-toast ref="t-toast" />
   </view>
 </template>
 
 <script>
-import TChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
-import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
-import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
-import TToast from 'tdesign-uniapp/toast/toast.vue';
-import Toast from 'tdesign-uniapp/toast';
+import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
+import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
+import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
+import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
+import Toast from '@tdesign/uniapp/toast/index';
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;
@@ -80,8 +82,9 @@ const getUniqueKey = () => {
   return `key-${uniqueId}`;
 };
 
-const mockData1 = '```jsx\nimport { Form, Input, Button, Message } from \'tdesign-react\';\n\nconst LoginForm = () => {\n  const [loading, setLoading] = useState(false);\n\n  const onSubmit = async ({ validateResult }) => {\n    if (validateResult === true) {\n      setLoading(true);\n      try {\n        // 登录逻辑\n        Message.success(\'登录成功\');\n      } catch {\n        Message.error(\'登录失败\');\n      } finally {\n        setLoading(false);\n      }\n    }\n  };\n\n  return (\n    <Form onSubmit={onSubmit}>\n      <Form.FormItem name="username" label="用户名" rules={[{ required: true }]}>\n        <Input placeholder="请输入用户名" />\n      </Form.FormItem>\n\n      <Form.FormItem name="password" label="密码" rules={[{ required: true }]}>\n        <Input type="password" />\n      </Form.FormItem>\n\n      <Form.FormItem>\n        <Button theme="primary" type="submit" loading={loading} block>\n          登录\n        </Button>\n      </Form.FormItem>\n    </Form>\n  );\n};\n```\n\n';
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const mockData1 =
+  '```jsx\nimport { Form, Input, Button, Message } from \'tdesign-react\';\n\nconst LoginForm = () => {\n  const [loading, setLoading] = useState(false);\n\n  const onSubmit = async ({ validateResult }) => {\n    if (validateResult === true) {\n      setLoading(true);\n      try {\n        // 登录逻辑\n        Message.success(\'登录成功\');\n      } catch {\n        Message.error(\'登录失败\');\n      } finally {\n        setLoading(false);\n      }\n    }\n  };\n\n  return (\n    <Form onSubmit={onSubmit}>\n      <Form.FormItem name="username" label="用户名" rules={[{ required: true }]}>\n        <Input placeholder="请输入用户名" />\n      </Form.FormItem>\n\n      <Form.FormItem name="password" label="密码" rules={[{ required: true }]}>\n        <Input type="password" />\n      </Form.FormItem>\n\n      <Form.FormItem>\n        <Button theme="primary" type="submit" loading={loading} block>\n          登录\n        </Button>\n      </Form.FormItem>\n    </Form>\n  );\n};\n```\n\n';
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
   const arr = str.split('');
@@ -145,6 +148,8 @@ export default {
           enName: '',
         },
       },
+      activePopoverId: '', // 当前打开悬浮actionbar的chatId
+      longPressPosition: null, // 长按位置对象
     };
   },
   mounted() {
@@ -155,9 +160,9 @@ export default {
   methods: {
     attached() {
       /**
-             * 计算内容区域高度
-             * 生成CSS calc表达式：calc(100vh - 96rpx - 导航高度 - 底部安全区域高度)
-             */
+       * 计算内容区域高度
+       * 生成CSS calc表达式：calc(100vh - 96rpx - 导航高度 - 底部安全区域高度)
+       */
       try {
         // 获取当前的导航栏高度和安全区域高度
         const navigationBarHeight = getNavigationBarHeight() || 0;
@@ -301,31 +306,34 @@ export default {
         that.setData({
           chatList: that.chatList,
         });
-        await fetchStream('这个版本都包含了：\n1. 用户名和密码输入框\n2. 必填验证\n3. 加载状态\n4. 基本的登录提交逻辑\n5. 消息提示功能', {
-          success(result) {
-            if (!that.loading) {
-              return;
-            }
-            that.chatList[0].message.content[3].data += result;
-            that.setData({
-              chatList: that.chatList,
-            });
+        await fetchStream(
+          '这个版本都包含了：\n1. 用户名和密码输入框\n2. 必填验证\n3. 加载状态\n4. 基本的登录提交逻辑\n5. 消息提示功能',
+          {
+            success(result) {
+              if (!that.loading) {
+                return;
+              }
+              that.chatList[0].message.content[3].data += result;
+              that.setData({
+                chatList: that.chatList,
+              });
+            },
+            complete() {
+              that.chatList[0].message.status = 'complete';
+              that.setData({
+                chatList: that.chatList,
+              });
+              that.setData({
+                loading: false,
+              });
+            },
           },
-          complete() {
-            that.chatList[0].message.status = 'complete';
-            that.setData({
-              chatList: that.chatList,
-            });
-            that.setData({
-              loading: false,
-            });
-          },
-        });
+        );
       });
     },
 
     handleAction(e) {
-      const { name, active, data } = e.detail;
+      const { name, active, data } = e.detail || e;
       let message = '';
       switch (name) {
         case 'replay':
@@ -354,36 +362,61 @@ export default {
         theme: 'success',
       });
     },
+
+    // 显示长按弹出操作栏
+    showPopover(e) {
+      const { id, longPressPosition } = e;
+
+      let role = '';
+      this.chatList.forEach((item) => {
+        if (item.key === id) {
+          role = item.message.role;
+        }
+      });
+
+      // 仅当 role 为 user 时才显示 popover
+      if (role !== 'user') {
+        return;
+      }
+
+      this.activePopoverId = id;
+      this.longPressPosition = longPressPosition;
+    },
+
+    // 处理弹出操作栏的事件
+    handlePopoverAction(e) {
+      e.chatId = this.activePopoverId;
+      this.handleAction(e);
+    },
   },
 };
 </script>
 <style>
 .chat-box {
-    padding-top: 32rpx;
-    box-sizing: border-box;
+  padding-top: 32rpx;
+  box-sizing: border-box;
 }
 
 .t-chat__list {
-    padding: 0 0 0 32rpx;
-    box-sizing: border-box;
+  padding: 0 0 0 32rpx;
+  box-sizing: border-box;
 }
 
 .t-chat-message {
-    padding: 0 32rpx;
+  padding: 0 32rpx;
 }
 
 .preview {
-    padding: 8rpx 16rpx;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid #c5c5c5;
-    border-radius: 6rpx;
-    color: #181818;
+  padding: 8rpx 16rpx;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #c5c5c5;
+  border-radius: 6rpx;
+  color: #181818;
 }
 
 .preview .btn {
-    color: #366ef4;
-    margin-left: 32rpx;
+  color: #366ef4;
+  margin-left: 32rpx;
 }
-
 </style>

@@ -1,8 +1,7 @@
 <template>
   <view class="skyline">
-    <t-navbar
+    <t-demo-navbar
       title="Layout"
-      left-arrow
     />
     <scroll-view
       scroll-y
@@ -20,11 +19,11 @@
           title="01 组件类型"
           desc="基础用法"
         >
-          <baseDemo />
+          <base-demo />
         </t-demo>
 
         <t-demo desc="在列元素之间增加间距">
-          <offset />
+          <offset-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -33,14 +32,13 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import offset from '../offset/index.vue';
+import BaseDemo from '../base/index.vue';
+import OffsetDemo from '../offset/index.vue';
+
 export default {
   components: {
-    tNavbar,
-    baseDemo,
-    offset,
+    BaseDemo,
+    OffsetDemo,
   },
   data() {
     return {};

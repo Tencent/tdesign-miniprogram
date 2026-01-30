@@ -40,6 +40,7 @@
           :selection-end="selectionEnd"
           :hold-keyboard="holdKeyboard"
           :cursor-spacing="cursorSpacing"
+          :cursor-color="cursorColor"
           :placeholder="placeholder"
           :placeholder-style="placeholderStyle"
           :placeholder-class="placeholderClass + ' ' + classPrefix + '__placeholder ' + classPrefix + '__placeholder--' + (center ? 'center' : 'normal')"
@@ -53,7 +54,7 @@
           :class="classPrefix + '__clear hotspot-expanded ' + tClassClear"
           aria-role="button"
           aria-label="清除"
-          @click.stop.prevent="handleClear"
+          @touchstart.stop.prevent="handleClear"
         >
           <t-icon
             name="close-circle-filled"
@@ -101,8 +102,8 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tCell from '../cell/cell';
+import TIcon from '../icon/icon';
+import TCell from '../cell/cell';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -128,8 +129,8 @@ export default uniComponent({
     `${prefix}-class-clear`,
   ],
   components: {
-    tIcon,
-    tCell,
+    TIcon,
+    TCell,
   },
   props: {
     ...props,

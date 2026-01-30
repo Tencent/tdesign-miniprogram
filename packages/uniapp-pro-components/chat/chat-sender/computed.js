@@ -1,5 +1,5 @@
-import utils from 'tdesign-uniapp/common/utils.wxs';
-import { getRegExp } from 'tdesign-uniapp/common/runtime/wxs-polyfill';
+import utils from '@tdesign/uniapp/common/utils.wxs';
+import { getRegExp } from '@tdesign/uniapp/common/runtime/wxs-polyfill';
 
 
 export function textareaStyle(autosize) {

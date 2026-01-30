@@ -1,4 +1,4 @@
-import type { TransformEventHandlers, ExtractNonOnProps } from 'tdesign-uniapp/common/common';
+import type { TransformEventHandlers, ExtractNonOnProps } from '@tdesign/uniapp/common/common';
 import type { TdAttachmentsProps } from '../attachments/type';
 
 export type AttachmentsProps = ExtractNonOnProps<TdAttachmentsProps>;
