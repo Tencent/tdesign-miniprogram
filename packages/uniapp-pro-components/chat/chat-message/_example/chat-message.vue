@@ -35,7 +35,7 @@
         title="03 组件样式"
         desc="气泡样式"
       >
-        <style-demo />
+        <chat-style-demo />
       </t-demo>
     </view>
   </view>
@@ -43,7 +43,7 @@
 
 <script>
 import BaseDemo from './base/index.vue';
-import StyleDemo from './style/index.vue';
+import ChatStyleDemo from './style/index.vue';
 import ConfigureDemo from './configure/index.vue';
 import StatusDemo from './status/index.vue';
 import ContentDemo from './content/index.vue';
@@ -52,7 +52,7 @@ import ErrorDemo from './error/index.vue';
 export default {
   components: {
     BaseDemo,
-    StyleDemo,
+    ChatStyleDemo,
     ConfigureDemo,
     StatusDemo,
     ContentDemo,
