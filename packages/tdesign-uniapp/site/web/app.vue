@@ -1,14 +1,24 @@
 <!-- eslint-disable vue/no-deprecated-slot-attribute -->
 <template>
   <td-doc-layout>
-    <td-header slot="header" framework="miniprogram">
+    <td-header
+      slot="header"
+      framework="miniprogram"
+    >
       <!-- <td-doc-search slot="search" ref="tdDocSearch" /> -->
     </td-header>
-    <td-doc-aside ref="tdDocAside" title="Uni App">
+    <td-doc-aside
+      ref="tdDocAside"
+      title="Uni App"
+    >
       <!-- <td-select ref="tdSelect" :value="version" slot="extra"></td-select> -->
     </td-doc-aside>
 
-    <router-view :style="contentStyle" :doc-type="docType" @loaded="contentLoaded" />
+    <router-view
+      :style="contentStyle"
+      :doc-type="docType"
+      @loaded="contentLoaded"
+    />
   </td-doc-layout>
 </template>
 
@@ -77,7 +87,7 @@ export default defineComponent({
   methods: {
     initHistoryVersions() {
       fetch(registryUrl)
-        .then((res) => res.json())
+        .then(res => res.json())
         .then((res) => {
           const options = [];
           const versions = filterVersions(Object.keys(res.versions));

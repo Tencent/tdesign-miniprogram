@@ -15,8 +15,14 @@ const config = {
   demoDir: path.resolve(__dirname, '../../src/pages-more'),
 };
 
+const DIST_BLACK_LIST = [
+  'tsconfig.eslint.json',
+  '.eslintrc.js',
+];
+
 module.exports = {
   config,
   PACKAGES_ROOT,
   PROJECT_ROOT,
+  DIST_BLACK_LIST,
 };
