@@ -1,11 +1,18 @@
 <template>
   <!-- 普通模式 -->
-  <view v-if="placement !== 'longpress'" :class="[classPrefix, placement]" :style="_._style([customStyle])">
+  <view
+    v-if="placement !== 'longpress'"
+    :class="[classPrefix, placement]"
+    :style="_._style([customStyle])"
+  >
     <view :class="classPrefix + '__inner ' + classPrefix + '__inner--column'">
       <view :class="classPrefix + '__left ' + classPrefix + '__item'">
         <slot name="prefix" />
       </view>
-      <block v-for="(item, index) in actions" :key="index">
+      <block
+        v-for="(item, index) in actions"
+        :key="index"
+      >
         <!-- 分享按钮使用 button 标签 -->
         <button
           v-if="item.name === 'share'"
@@ -15,7 +22,10 @@
           :data-chat-id="chatId"
           @click="handleActionClick"
         >
-          <t-icon :name="item.isActive ? iconActiveMap[item.name] : iconMap[item.name]" size="40rpx" />
+          <t-icon
+            :name="item.isActive ? iconActiveMap[item.name] : iconMap[item.name]"
+            size="40rpx"
+          />
         </button>
 
         <!-- 其他按钮使用 view 标签 -->
@@ -25,14 +35,21 @@
           :class="_.cls(classPrefix + '__item', [['active', item.isActive]])"
           @click="handleActionClick"
         >
-          <t-icon :name="item.isActive ? iconActiveMap[item.name] : iconMap[item.name]" size="40rpx" />
+          <t-icon
+            :name="item.isActive ? iconActiveMap[item.name] : iconMap[item.name]"
+            size="40rpx"
+          />
         </view>
       </block>
     </view>
   </view>
 
   <!-- 长按弹出层模式 -->
-  <view v-else :class="[classPrefix, classPrefix + '__popover-skeleton']" :style="popoverPosition">
+  <view
+    v-else
+    :class="[classPrefix, classPrefix + '__popover-skeleton']"
+    :style="popoverPosition"
+  >
     <t-popover
       ref="popover"
       placement="bottom"
@@ -51,7 +68,10 @@
             <view :class="classPrefix + '__left ' + classPrefix + '__item--popover'">
               <slot name="prefix" />
             </view>
-            <block v-for="(item, index) in actions" :key="index">
+            <block
+              v-for="(item, index) in actions"
+              :key="index"
+            >
               <!-- 分享按钮使用 button 标签 -->
               <button
                 v-if="item.name === 'share'"
@@ -61,7 +81,10 @@
                 :data-chat-id="chatId"
                 @click="handleActionClick"
               >
-                <t-icon :name="iconMap[item.name]" size="40rpx" />
+                <t-icon
+                  :name="iconMap[item.name]"
+                  size="40rpx"
+                />
                 <view :class="classPrefix + '__item__text'">
                   {{ item.text }}
                 </view>
@@ -91,9 +114,9 @@
   </view>
 </template>
 <script>
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
-import tPopover from 'tdesign-uniapp/popover/popover.vue';
-import { prefix } from 'tdesign-uniapp/common/config';
+import tIcon from '@tdesign/uniapp/icon/icon.vue';
+import tPopover from '@tdesign/uniapp/popover/popover.vue';
+import { prefix } from '@tdesign/uniapp/common/config';
 import props from './props';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
 import _ from '@tdesign/uniapp/common/utils.wxs';

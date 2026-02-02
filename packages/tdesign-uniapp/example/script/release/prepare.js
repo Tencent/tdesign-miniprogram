@@ -2,7 +2,7 @@ const path = require('path');
 const glob = require('glob');
 const { deleteFolder } = require('t-comm');
 
-const { config } = require('./config');
+const { config, DIST_BLACK_LIST } = require('./config');
 const { copy } = require('./core.js');
 
 async function main() {
@@ -39,6 +39,10 @@ async function prepareOne({ targetDir, sourceGlob, sourceDir }) {
 
   for (const item of list) {
     const relativePath = path.relative(sourceDir, item);
+    const isBlack = DIST_BLACK_LIST.some(black => relativePath.endsWith(black));
+    if (isBlack) {
+      continue;
+    }
     const { relativeTargetByCwd, relativeSourceByCwd } = await copy({
       relativePath,
       filePath: item,

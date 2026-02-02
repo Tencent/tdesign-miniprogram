@@ -7,6 +7,7 @@ const { copy } = require('../release/core');
 async function copyComponents({
   relativePath,
   filePath,
+  isChat,
 }) {
   const {
     relativeTargetByCwd,
@@ -38,12 +39,25 @@ async function copyComponents({
         demoDir: config.pagesMoreDirInVue2Cli,
       },
     });
-
-    return {
-      relativeTargetByCwd,
-      relativeSourceByCwd,
-    };
   }
+
+  if (checkVue3HxExist()) {
+    await copy({
+      relativePath,
+      filePath,
+      config: {
+        targetDir: isChat
+          ? config.componentChatTargetDirInVue3Hx
+          : config.componentTargetDirInVue3Hx,
+        demoDir: config.pagesMoreDirInVue3Hx,
+      },
+    });
+  }
+
+  return {
+    relativeTargetByCwd,
+    relativeSourceByCwd,
+  };
 }
 
 
@@ -51,7 +65,12 @@ function checkVue2CliExist() {
   return fs.existsSync(config.vue2CliRoot);
 }
 
+function checkVue3HxExist() {
+  return fs.existsSync(config.vue3HxRoot);
+}
+
 module.exports = {
   copyComponents,
   checkVue2CliExist,
+  checkVue3HxExist,
 };
