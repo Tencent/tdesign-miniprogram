@@ -5,6 +5,21 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.12.3 `2026-02-03`
+
+### 🚀 Features
+
+- `ActionSheet`: 为 `items` 子项的 `icon` 字段新增 `object` 类型，支持透传到 `TIcon` 组件 @anlyyao ([#4251](https://github.com/Tencent/tdesign-miniprogram/pull/4251))
+- `Button`: 新增 `activity-type`，`entrance-path` 和 `need-show-entrance` 属性 @anlyyao ([#4220](https://github.com/Tencent/tdesign-miniprogram/pull/4220))
+- `ChatActionbar`: 支持长按展示 @mimaoxiao ([#4071](https://github.com/Tencent/tdesign-miniprogram/pull/4071))
+- `Icon`: 新增 217 个与人工智能、文档、徽标和文件相关的图标 @uyarn ([#4207](https://github.com/Tencent/tdesign-miniprogram/pull/4207))
+- `Search`: 为 `change` 事件新增 `trigger` 参数，表示触发源 @anlyyao ([#4223](https://github.com/Tencent/tdesign-miniprogram/pull/4223))
+
+### 🐞 Bug Fixes
+
+- `ChatContent`: 修复英文单词在换行时被截断的问题 @mimaoxiao ([#4226](https://github.com/Tencent/tdesign-miniprogram/pull/4226))
+- `Popup`: 修复 `duration` 参数无效的问题 @novlan1 ([#4201](https://github.com/Tencent/tdesign-miniprogram/pull/4201))
+
 ## 🌈 1.12.2 `2026-01-21`
 
 ### 🚀 Features
