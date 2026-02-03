@@ -21,7 +21,7 @@ using-custom-navbar | Boolean | false | \- | N
 value | Array | - | Typescript: `Array<PickerValue>` `type PickerValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/picker/type.ts) | N
 default-value | Array | undefined | uncontrolled property。Typescript: `Array<PickerValue>` `type PickerValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/picker/type.ts) | N
 visible | Boolean | false | \- | N
-visible-item-count | Number | 5 | \- | N
+visible-item-count | Number | 5 | `1.11.2` | N
 
 ### Picker Events
 

@@ -1,7 +1,7 @@
 <wxs src="./action-sheet.wxs" module="_this" />
 <wxs src="../common/utils.wxs" module="_" />
-<import src="./template/list.wxml" />
 <import src="./template/grid.wxml" />
+<import src="../common/template/icon.wxml" />
 
 <view
   id="{{classPrefix}}"
@@ -24,10 +24,30 @@
       </block>
       <view wx:elif="{{items && items.length}}" class="{{classPrefix}}__list">
         <block wx:for="{{ items }}" wx:key="index">
-          <template
-            is="list"
-            data="{{index, classPrefix, listThemeItemClass: _.cls(classPrefix + '__list-item', [['disabled', item.disabled]]), item}}"
-          />
+          <view
+            data-index="{{index}}"
+            style="{{ item.color ? 'color: ' + item.color : '' }}"
+            class="{{_.cls(classPrefix + '__list-item', [['disabled', item.disabled]])}}"
+            bind:tap="onSelect"
+            aria-role="{{ariaRole || 'button'}}"
+            aria-label="{{item.label || item}}"
+            tabindex="0"
+          >
+            <view class="{{classPrefix}}__list-item-content">
+              <template
+                wx:if="{{_this.getIconData(item.icon)}}"
+                is="icon"
+                data="{{tClass: classPrefix + '__list-item-icon', ..._this.getIconData(item.icon)}}"
+              />
+              <view class="{{classPrefix}}__list-item-text">{{item.label || item}}</view>
+              <template
+                wx:if="{{_this.getIconData(item.suffixIcon)}}"
+                is="icon"
+                data="{{tClass: classPrefix + '__list-item-icon--suffix', ..._this.getIconData(item.suffixIcon)}}"
+              />
+            </view>
+            <view wx:if="{{item.description}}" class="{{classPrefix}}__list-item-desc">{{item.description}}</view>
+          </view>
         </block>
       </view>
     </view>

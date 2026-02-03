@@ -1,3 +1,5 @@
+<wxs src="../action-sheet.wxs" module="_this" />
+
 <template name="grid">
   <block wx:if="{{gridThemeItems.length === 1}}">
     <t-grid align="center" t-class="{{classPrefix}}__grid" column="{{count / 2}}" class="{{classPrefix}}__single-wrap">
@@ -8,7 +10,7 @@
         wx:key="index"
         bind:tap="onSelect"
         data-index="{{index}}"
-        icon="{{ { name: item.icon, color: item.color } }}"
+        icon="{{ { color: item.color, ..._this.getIconData(item.icon) } }}"
         text="{{item.label || ''}}"
         description="{{item.description || ''}}"
         image="{{item.image || ''}}"
@@ -29,7 +31,7 @@
               wx:key="index"
               data-index="{{index}}"
               bind:tap="onSelect"
-              icon="{{ { name: item.icon, color: item.color } }}"
+              icon="{{ { color: item.color, ..._this.getIconData(item.icon) } }}"
               text="{{item.label || ''}}"
               description="{{item.description || ''}}"
               image="{{item.image || ''}}"
