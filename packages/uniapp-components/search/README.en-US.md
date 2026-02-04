@@ -42,7 +42,7 @@ name | params | description
 -- | -- | --
 action-click | \- | \-
 blur | `(context: { value: string })` | \-
-change | `(context: { value: string })` | \-
+change | `(context: { value: string, trigger: 'input-change' \| 'option-click' \| 'clear' })` | \-
 clear | `(context: { value: string })` | \-
 focus | `(context: { value: string })` | \-
 submit | `(context: { value: string })` | \-
