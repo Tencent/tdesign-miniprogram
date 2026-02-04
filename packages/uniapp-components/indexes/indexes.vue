@@ -12,7 +12,7 @@
       @touchend.stop.prevent="onTouchEnd"
     >
       <view
-        v-for="(item, index) in _indexList"
+        v-for="(item, index) in innerIndexList"
         :key="index"
         :class="tools.cls(classPrefix + '__sidebar-item', [['active', dataCurrent === item]]) + ' ' + tClassSidebarItem"
         :data-index="index"
@@ -90,7 +90,7 @@ export default uniComponent({
       prefix,
       classPrefix: name,
       _height: 0,
-      _indexList: [],
+      innerIndexList: [],
       scrollTop: 0,
       activeAnchor: this.current,
       showTips: false,
@@ -181,9 +181,9 @@ export default uniComponent({
           alphabet.push(String.fromCharCode(i));
         }
 
-        this._indexList = alphabet;
+        this.innerIndexList = alphabet;
       } else {
-        this._indexList = list;
+        this.innerIndexList = list;
       }
     },
 
@@ -194,7 +194,7 @@ export default uniComponent({
           item.totalHeight = (next?.top || Infinity) - item.top;
         });
 
-        const current = this.dataCurrent || this._indexList[0];
+        const current = this.dataCurrent || this.innerIndexList[0];
         this.setAnchorByCurrent(current, 'init');
       })
         .catch((err) => {
@@ -221,7 +221,7 @@ export default uniComponent({
     getSidebarRect() {
       getRect(this, `#id-${name}__bar`).then((rect) => {
         const { top, height } = rect;
-        const { length } = this._indexList;
+        const { length } = this.innerIndexList;
 
         this.sidebar = {
           top,
@@ -288,7 +288,7 @@ export default uniComponent({
     onAnchorTouch: throttle(function (e) {
       const getAnchorIndex = (clientY) => {
         const offsetY = clientY - this.sidebar.top;
-        const max = this._indexList.length - 1;
+        const max = this.innerIndexList.length - 1;
 
         if (offsetY <= 0) {
           return 0;
@@ -302,7 +302,7 @@ export default uniComponent({
       };
       const index = getAnchorIndex(e.changedTouches[0].clientY);
 
-      this.setAnchorByCurrent(this._indexList[index], 'touch');
+      this.setAnchorByCurrent(this.innerIndexList[index], 'touch');
     }, 1000 / 30), // 30 frame
 
     setAnchorOnScroll(scrollTop) {

@@ -10,12 +10,13 @@
     />
 
     <t-date-time-picker
-      v-model:visible="visible"
+      :visible="visible"
       title="选择时间"
       :value="value"
       format="HH:mm:ss"
       :mode="['null', 'second']"
       :steps="{ minute: 5 }"
+      @update:visible="visible = $event"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"

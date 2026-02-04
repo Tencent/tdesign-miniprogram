@@ -1,9 +1,10 @@
 <template>
   <view>
     <t-calendar
-      v-model:visible="visible"
+      :visible="visible"
       :value="value"
       type="multiple"
+      @update:visible="visible = $event"
       @confirm="handleConfirm"
     />
     <t-cell

@@ -1,7 +1,7 @@
 <template>
   <view>
     <t-picker
-      v-model:visible="cityVisible"
+      :visible="cityVisible"
       :value="cityValue"
       :use-popup="false"
       data-key="city"
@@ -9,6 +9,7 @@
       cancel-btn="取消"
       confirm-btn="确认"
       :using-custom-navbar="!isMPAlipay"
+      @update:visible="cityVisible = $event"
       @change="onPickerChange($event, { key: 'city' })"
       @pick="onColumnChange($event, { key: 'city' })"
       @cancel="onPickerCancel($event, { key: 'city' })"

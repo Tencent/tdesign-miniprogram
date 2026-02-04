@@ -3,11 +3,12 @@
     <view class="row">
       <view class="popover-example__content">
         <t-popover
-          v-model:visible="visible.dark"
+          :visible="visible.dark"
           placement="top"
           theme="dark"
           content="弹出气泡内容"
           data-target="dark"
+          @update:visible="visible.dark = $event"
         >
           <t-button
             class="button-width--small"
@@ -23,11 +24,12 @@
       </view>
       <view class="popover-example__content">
         <t-popover
-          v-model:visible="visible.light"
+          :visible="visible.light"
           placement="top"
           theme="light"
           content="弹出气泡内容"
           data-target="light"
+          @update:visible="visible.light = $event"
         >
           <t-button
             class="button-width--small"
@@ -43,11 +45,12 @@
       </view>
       <view class="popover-example__content">
         <t-popover
-          v-model:visible="visible.brand"
+          :visible="visible.brand"
           placement="top"
           theme="brand"
           content="弹出气泡内容"
           data-target="brand"
+          @update:visible="visible.brand = $event"
         >
           <t-button
             class="button-width--small"
@@ -68,11 +71,12 @@
     >
       <view class="popover-example__content">
         <t-popover
-          v-model:visible="visible.success"
+          :visible="visible.success"
           placement="top"
           theme="success"
           content="弹出气泡内容"
           data-target="success"
+          @update:visible="visible.success = $event"
         >
           <t-button
             class="button-width--small"
@@ -88,11 +92,12 @@
       </view>
       <view class="popover-example__content">
         <t-popover
-          v-model:visible="visible.warning"
+          :visible="visible.warning"
           placement="top"
           theme="warning"
           content="弹出气泡内容"
           data-target="warning"
+          @update:visible="visible.warning = $event"
         >
           <t-button
             class="button-width--small"
@@ -108,11 +113,12 @@
       </view>
       <view class="popover-example__content">
         <t-popover
-          v-model:visible="visible.error"
+          :visible="visible.error"
           placement="top"
           theme="error"
           content="弹出气泡内容"
           data-target="error"
+          @update:visible="visible.error = $event"
         >
           <t-button
             class="button-width--small"
@@ -161,7 +167,7 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss">
+<style scoped lang="less">
 .row {
     display: flex;
     padding: 0 32rpx;

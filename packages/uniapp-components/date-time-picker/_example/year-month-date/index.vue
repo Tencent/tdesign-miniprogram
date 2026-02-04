@@ -13,7 +13,7 @@
 
     <!-- 年月日 -->
     <t-date-time-picker
-      v-model:visible="dateVisible"
+      :visible="dateVisible"
       auto-close
       title="选择日期"
       show-week
@@ -23,6 +23,7 @@
       :filter="filter"
       :formatter="formatter"
       :popup-props="popupProps"
+      @update:visible="dateVisible = $event"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"

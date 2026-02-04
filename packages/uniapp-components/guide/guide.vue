@@ -20,7 +20,7 @@
           <ContentComp
             :title="title"
             :body="body"
-            :current="_current"
+            :current="iCurrent"
             :class-prefix="classPrefix"
             :prefix="prefix"
             :skip-button="skipButton"
@@ -120,7 +120,7 @@
           <ContentComp
             :title="title"
             :body="body"
-            :current="_current"
+            :current="iCurrent"
             :class-prefix="classPrefix"
             :prefix="prefix"
             :skip-button="skipButton"
@@ -269,7 +269,7 @@ export default uniComponent({
       prefix,
       classPrefix: name,
       visible: false,
-      _current: -1,
+      iCurrent: -1,
       _steps: [],
       referenceStyle: '',
       popoverStyle: '',
@@ -287,33 +287,31 @@ export default uniComponent({
   watch: {
     steps: {
       handler() {
-        this._init();
+        this.innerInit();
       },
       deep: true,
     },
     current: {
       handler(v) {
-        this._current = v;
+        this.iCurrent = v;
       },
     },
-    _current: '_init',
-    showOverlay: '_init',
+    iCurrent: 'innerInit',
+    showOverlay: 'innerInit',
   },
   created() {
     that = this;
-    // this._init =
     this._getPlacement = this.getPlacement();
   },
   mounted() {
-    this._init();
+    this.innerInit();
   },
   methods: {
-    _init: debounce(() => that.init(), 20),
+    innerInit: debounce(() => that.init(), 20),
     async init() {
-      console.log('doing init');
       const { steps } = this;
-      const { _current } = this;
-      const step = steps[_current];
+      const { iCurrent } = this;
+      const step = steps[iCurrent];
       if (!step) {
         this.visible = false;
         return;
@@ -325,10 +323,9 @@ export default uniComponent({
       this.modeType = modeType;
 
 
-      // if (current === _current) return;
       if (modeType === 'popover') {
         const rect = await step.element();
-        console.log('rect', rect);
+
         if (!rect) return;
         const highlightPadding = rpx2px(coalesce(step.highlightPadding, this.highlightPadding));
         const referenceTop = rect.top - highlightPadding;
@@ -345,7 +342,6 @@ export default uniComponent({
           height: `${referenceHeight}px`,
         };
         this._steps = this.steps;
-        // this._current = this.current;
         this.visible = true;
         this.referenceStyle = styles(style);
         this.title = coalesce(step.title, '');
@@ -356,7 +352,6 @@ export default uniComponent({
         this.popoverStyle = popoverStyle;
       } else {
         this._steps = this.steps;
-        // this._current = this.current;
         this.visible = true;
         this.title = coalesce(step.title, '');
         this.body = coalesce(step.body, '');
@@ -422,9 +417,9 @@ export default uniComponent({
       this.finishButton = finishButton;
     },
     renderCounter() {
-      const { steps, _current, counter } = this;
+      const { steps, iCurrent, counter } = this;
       const stepsTotal = steps.length;
-      const innerCurrent = _current + 1;
+      const innerCurrent = iCurrent + 1;
       const popupSlotCounter = isFunction(counter) ? counter({ total: stepsTotal, current: innerCurrent }) : counter;
       return counter ? popupSlotCounter : `(${innerCurrent}/${stepsTotal})`;
     },
@@ -433,34 +428,29 @@ export default uniComponent({
       return `${button.content.replace(/ \(.*?\)/, '')} ${hideCounter ? '' : this.renderCounter()}`;
     },
     onTplButtonTap(e, { type }) {
-      console.log('onTplButtonTap.type', type);
-      const params = { e, current: this._current, total: this.steps.length };
+      const params = { e, current: this.iCurrent, total: this.steps.length };
       switch (type) {
         case 'next':
-          this.$emit('next-step-click', { next: this._current + 1, ...params });
-          // this.setData({ current: this..current + 1 });
-          this._current = this._current + 1;
+          this.$emit('next-step-click', { next: this.iCurrent + 1, ...params });
+          this.iCurrent = this.iCurrent + 1;
           break;
         case 'skip':
           this.$emit('skip', params);
-          // this.setData({ current: -1 });
-          this._current = -1;
+          this.iCurrent = -1;
           break;
         case 'back':
           this.$emit('back', params);
-          // this.setData({ current: 0 });
-          this._current = 0;
+          this.iCurrent = 0;
           break;
         case 'finish':
           this.$emit('finish', params);
-          // this.setData({ current: -1 });
-          this._current = -1;
+          this.iCurrent = -1;
           break;
         default:
           break;
       }
-      console.log('_current', this._current);
-      this.$emit('change', { current: this._current });
+
+      this.$emit('change', { current: this.iCurrent });
     },
     getPlacement() {
       const space = rpx2px(32);

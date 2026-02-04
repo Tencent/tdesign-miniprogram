@@ -8,12 +8,13 @@
     />
 
     <t-cascader
-      v-model:visible="visible"
+      :visible="visible"
       class="demo"
       :keys="keys"
       :options="options"
       title="请选择地址"
       placeholder="未选中时的提示文案"
+      @update:visible="visible = $event"
       @change="onChange"
     />
   </view>

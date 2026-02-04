@@ -12,13 +12,14 @@
 
     <!-- 年月 -->
     <t-date-time-picker
-      v-model:visible="monthVisible"
+      :visible="monthVisible"
       title="选择日期"
       mode="month"
       :value="month"
       format="YYYY-MM"
       :start="start"
       :end="end"
+      @update:visible="monthVisible = $event"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"

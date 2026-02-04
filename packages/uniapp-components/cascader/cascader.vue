@@ -106,7 +106,7 @@
               scroll-y
               :scroll-top="scrollTopList[index]"
               type="list"
-              :style="'height: ' + _optionsHeight + 'px'"
+              :style="'height: ' + optionsHeight + 'px'"
             >
               <view :class="'cascader-radio-group-' + index">
                 <TRadioGroup
@@ -199,7 +199,7 @@ export default uniComponent({
       selectedValue: [],
       scrollTopList: [],
       steps: [],
-      _optionsHeight: 0,
+      optionsHeight: 0,
       tools,
 
       dataVisible: this.visible,
@@ -258,6 +258,7 @@ export default uniComponent({
         this.initWithValue();
       },
       immediate: true,
+      deep: true,
     },
 
     options: {
@@ -330,7 +331,7 @@ export default uniComponent({
     },
     updateOptionsHeight(steps) {
       const { contentHeight, stepsInitHeight, stepHeight, subTitlesHeight } = this.state;
-      this._optionsHeight = contentHeight - stepsInitHeight - subTitlesHeight - (steps - 1) * stepHeight;
+      this.optionsHeight = contentHeight - stepsInitHeight - subTitlesHeight - (steps - 1) * stepHeight;
     },
 
     async initOptionsHeight(steps) {
@@ -358,7 +359,7 @@ export default uniComponent({
       }
 
       const optionsInitHeight = this.state.contentHeight - this.state.subTitlesHeight;
-      this._optionsHeight = theme === 'step'
+      this.optionsHeight = theme === 'step'
         ? optionsInitHeight - this.state.stepsInitHeight - (steps - 1) * this.state.stepHeight
         : optionsInitHeight - this.state.tabsHeight;
     },
@@ -503,6 +504,9 @@ export default uniComponent({
 
         this.hide('finish');
       }
+      // #ifdef VUE2
+      this.$set(this, 'selectedIndexes', JSON.parse(JSON.stringify(selectedIndexes)));
+      // #endif
     },
     triggerChange() {
       const { items, selectedValue, selectedIndexes } = this;

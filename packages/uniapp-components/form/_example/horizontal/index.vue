@@ -21,11 +21,12 @@
           用户名
         </template>
         <t-input
-          v-model:value="formData.name"
+          :value="formData.name"
           borderless
           placeholder="请输入用户名"
           data-field="name"
           style="flex: 1;"
+          @update:value="formData.name = $event"
         />
       </t-form-item>
 
@@ -111,10 +112,11 @@
         />
 
         <t-cascader
-          v-model:visible="visibleCascader"
+          :visible="visibleCascader"
           :value="address"
           title="选择地址"
           :options="options"
+          @update:visible="visibleCascader = $event"
           @change="onChangeCascader"
           @visible-change="onCascaderVisibleChange"
         />
@@ -151,12 +153,13 @@
         name="resume"
       >
         <t-textarea
-          v-model:value="formData.resume"
+          :value="formData.resume"
           t-class="textarea"
           indicator
           :maxlength="50"
           placeholder="请输入个人简介"
           style="flex: 1;"
+          @update:value="formData.resume = $event"
         />
       </t-form-item>
 
