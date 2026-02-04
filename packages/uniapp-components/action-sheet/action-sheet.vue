@@ -25,6 +25,7 @@
         >
           {{ dataDescription }}
         </view>
+
         <block v-if="gridThemeItems.length">
           <block v-if="gridThemeItems.length === 1">
             <t-grid
@@ -38,7 +39,7 @@
                 :key="index"
                 :t-class="classPrefix + '__grid-item ' + classPrefix + '__square'"
                 :data-index="index"
-                :icon="{ name: item.icon, color: item.color }"
+                :icon="{ color: item.color, ...getIconData(item.icon) }"
                 :text="item.label || ''"
                 :description="item.description || ''"
                 :image="item.image || ''"
@@ -47,6 +48,7 @@
               />
             </t-grid>
           </block>
+
           <block v-else-if="gridThemeItems.length > 1">
             <view :class="classPrefix + '__swiper-wrap'">
               <swiper
@@ -71,7 +73,7 @@
                       :t-class="classPrefix + '__grid-item'"
                       :class="classPrefix + '__square'"
                       :data-index="index"
-                      :icon="{ name: item.icon, color: item.color }"
+                      :icon="{ color: item.color, ...getIconData(item.icon) }"
                       :text="item.label || ''"
                       :description="item.description || ''"
                       :image="item.image || ''"
@@ -93,6 +95,7 @@
             </view>
           </block>
         </block>
+
         <view
           v-else-if="dataItems && dataItems.length"
           :class="classPrefix + '__list'"
@@ -112,8 +115,14 @@
             >
               <view :class="classPrefix + '__list-item-content'">
                 <t-icon
-                  v-if="item.icon"
-                  :name="item.icon"
+                  v-if="getIconData(item.icon)"
+                  :prefix="getIconData(item.icon).prefix"
+                  :name="getIconData(item.icon).name"
+                  :size="getIconData(item.icon).size"
+                  :color="getIconData(item.icon).color"
+                  :aria-hidden="getIconData(item.icon).ariaHidden"
+                  :aria-label="getIconData(item.icon).ariaLabel"
+                  :aria-role="getIconData(item.icon).ariaRole"
                   :t-class="classPrefix + '__list-item-icon'"
                   :custom-style="iconCustomStyle"
                 />
@@ -121,8 +130,14 @@
                   {{ item.label || item }}
                 </view>
                 <t-icon
-                  v-if="item.suffixIcon"
-                  :name="item.suffixIcon"
+                  v-if="getIconData(item.suffixIcon)"
+                  :prefix="getIconData(item.suffixIcon).prefix"
+                  :name="getIconData(item.suffixIcon).name"
+                  :size="getIconData(item.suffixIcon).size"
+                  :color="getIconData(item.suffixIcon).color"
+                  :aria-hidden="getIconData(item.suffixIcon).ariaHidden"
+                  :aria-label="getIconData(item.suffixIcon).ariaLabel"
+                  :aria-role="getIconData(item.suffixIcon).ariaRole"
                   :t-class="classPrefix + '__list-item-icon ' + classPrefix + '__list-item-icon--suffix'"
                   style="margin-left: auto;"
                   :custom-style="suffixIconCustomStyle"
@@ -170,7 +185,7 @@ import props from './props';
 import useCustomNavbar from '../mixins/using-custom-navbar';
 import tools from '../common/utils.wxs';
 import { getFunctionalMixin } from '../common/functional/mixin';
-
+import { getIconData } from './computed';
 
 const name = `${prefix}-action-sheet`;
 
@@ -256,6 +271,8 @@ export default uniComponent({
       this.memoInitialData();
       this.splitGridThemeActions();
     },
+
+    getIconData,
 
     memoInitialData() {
       this.initialData = {
