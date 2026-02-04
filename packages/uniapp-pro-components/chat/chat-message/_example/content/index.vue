@@ -222,7 +222,7 @@ export default {
         ],
       },
 
-      chatContentProps: [],
+      chatContentProps: {},
     };
   },
   created() {},

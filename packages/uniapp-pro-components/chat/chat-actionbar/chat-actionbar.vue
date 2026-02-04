@@ -3,7 +3,7 @@
   <view
     v-if="placement !== 'longpress'"
     :class="[classPrefix, placement]"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
   >
     <view :class="classPrefix + '__inner ' + classPrefix + '__inner--column'">
       <view :class="classPrefix + '__left ' + classPrefix + '__item'">
@@ -17,7 +17,7 @@
         <button
           v-if="item.name === 'share'"
           :data-name="item.name"
-          :class="_.cls(classPrefix + '__item', [['active', item.isActive]])"
+          :class="tools.cls(classPrefix + '__item', [['active', item.isActive]])"
           :open-type="content ? 'share' : 'none'"
           :data-chat-id="chatId"
           @click="handleActionClick"
@@ -32,7 +32,7 @@
         <view
           v-else
           :data-name="item.name"
-          :class="_.cls(classPrefix + '__item', [['active', item.isActive]])"
+          :class="tools.cls(classPrefix + '__item', [['active', item.isActive]])"
           @click="handleActionClick"
         >
           <t-icon
@@ -62,7 +62,7 @@
       <template #content>
         <view
           :class="[classPrefix, classPrefix + '--popover', 'popover-visible']"
-          :style="_._style([customStyle, widthStyle])"
+          :style="tools._style([customStyle, widthStyle])"
         >
           <view :class="classPrefix + '__inner ' + classPrefix + '__inner--column'">
             <view :class="classPrefix + '__left ' + classPrefix + '__item--popover'">
@@ -76,7 +76,7 @@
               <button
                 v-if="item.name === 'share'"
                 :data-name="item.name"
-                :class="_.cls(classPrefix + '__item--popover', [['active', item.isActive]])"
+                :class="tools.cls(classPrefix + '__item--popover', [['active', item.isActive]])"
                 :open-type="content ? 'share' : 'none'"
                 :data-chat-id="chatId"
                 @click="handleActionClick"
@@ -94,7 +94,7 @@
               <view
                 v-else
                 :data-name="item.name"
-                :class="_.cls(classPrefix + '__item--popover', [['active', item.isActive]])"
+                :class="tools.cls(classPrefix + '__item--popover', [['active', item.isActive]])"
                 @click="handleActionClick"
               >
                 <t-icon
@@ -119,7 +119,7 @@ import tPopover from '@tdesign/uniapp/popover/popover.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
 import props from './props';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
-import _ from '@tdesign/uniapp/common/utils.wxs';
+import tools from '@tdesign/uniapp/common/utils.wxs';
 
 const name = `${prefix}-chat-actionbar`;
 
@@ -161,7 +161,7 @@ export default uniComponent({
       popoverPosition: '',
       longpressVisible: false,
 
-      _,
+      tools,
     };
   },
 

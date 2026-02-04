@@ -1,7 +1,7 @@
 <template>
   <view
     :class="[classPrefix, inChat ? classPrefix + '--chatting' : '', getFileTypeClass(inChat, files)]"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
   >
     <view :class="classPrefix + '__left'">
       <view :class="classPrefix + '__scrollable scroll-x'">
@@ -135,7 +135,7 @@ import tImage from '@tdesign/uniapp/image/image.vue';
 import tLoading from '@tdesign/uniapp/loading/loading.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
 import props from './props';
-import _ from '@tdesign/uniapp/common/utils.wxs';
+import tools from '@tdesign/uniapp/common/utils.wxs';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
 import { imageStyle, getFileTypeClass, getImageMode } from './computed';
 
@@ -172,7 +172,7 @@ export default uniComponent({
   data() {
     return {
       classPrefix: name,
-      _,
+      tools,
       files: [],
     };
   },
