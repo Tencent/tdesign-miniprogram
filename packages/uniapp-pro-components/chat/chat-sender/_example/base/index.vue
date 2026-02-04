@@ -6,7 +6,9 @@
         <view class="chat-sender-height-left-limit" />
         <view class="chat-sender-height-right-limit" />
       </view>
-      <view class="chat-sender-placeholder"> 高度限制：最大高度为132px </view>
+      <view class="chat-sender-placeholder">
+        高度限制：最大高度为132px
+      </view>
       <view class="chat-sender-wrapper">
         <t-chat-sender
           :value="value"
@@ -34,18 +36,34 @@
         >
           <template #footer-prefix>
             <view class="demo-footer-prefix">
-              <view :class="'deep-think-block ' + (deepThinkActive ? 'active' : '')" @click.stop="onDeepThinkTap">
-                <t-icon name="system-sum" size="36rpx" />
-                <text class="deep-think-text"> 深度思考 </text>
+              <view
+                :class="'deep-think-block ' + (deepThinkActive ? 'active' : '')"
+                @click.stop="onDeepThinkTap"
+              >
+                <t-icon
+                  name="system-sum"
+                  size="36rpx"
+                />
+                <text class="deep-think-text">
+                  深度思考
+                </text>
               </view>
-              <view :class="'net-search-block ' + (netSearchActive ? 'active' : '')" @click.stop="onNetSearchTap">
-                <t-icon name="internet" size="36rpx" />
+              <view
+                :class="'net-search-block ' + (netSearchActive ? 'active' : '')"
+                @click.stop="onNetSearchTap"
+              >
+                <t-icon
+                  name="internet"
+                  size="36rpx"
+                />
               </view>
             </view>
           </template>
         </t-chat-sender>
       </view>
-      <view class="demo-footer"> 内容由AI生成，仅供参考 </view>
+      <view class="demo-footer">
+        内容由AI生成，仅供参考
+      </view>
     </view>
   </view>
 </template>

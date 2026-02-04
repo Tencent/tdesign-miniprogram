@@ -171,10 +171,18 @@ function filterProps(props, controlledProps) {
        || unControlledKeys.indexOf(key) > -1
     ) {
       const newType = Array.isArray(curType) ? curType : [curType];
+      // #ifdef VUE3
       newProps[key] = {
         type: [null, ...newType],
         default: null,
       };
+      // #endif
+      // #ifdef VUE2
+      newProps[key] = {
+        type: [...newType],
+        default: null,
+      };
+      // #endif
     } else if (
       [Boolean, String].indexOf(props[key].type) > -1
       && props[key].default === undefined

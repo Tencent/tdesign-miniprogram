@@ -1,10 +1,10 @@
 <template>
   <view
     :class="[classPrefix, classes]"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
   >
     <scroll-view
-      :class="_.cls(classPrefix + '__content', [['reverse', reverse]])"
+      :class="tools.cls(classPrefix + '__content', [['reverse', reverse]])"
       :scroll-y="true"
       :enable-flex="true"
       :enhanced="true"
@@ -53,7 +53,7 @@ import ChatMessage from '../chat-message/chat-message.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
 import props from './props';
 
-import _ from '@tdesign/uniapp/common/utils.wxs';
+import tools from '@tdesign/uniapp/common/utils.wxs';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
 
@@ -91,7 +91,7 @@ export default uniComponent({
       listClasses: [],
       startIndex: 0,
       endIndex: 0,
-      _,
+      tools,
     };
   },
 

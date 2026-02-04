@@ -1,3 +1,5 @@
+import utils from '../common/utils.wxs';
+
 export const getListThemeItemClass = function (props) {
   const { classPrefix } = props;
   const { item } = props;
@@ -7,6 +9,18 @@ export const getListThemeItemClass = function (props) {
     classList.push(`${prefix}-is-disabled`);
   }
   return classList.join(' ');
+};
+
+export const getIconData = function (icon) {
+  if (utils.isString(icon)) {
+    return { name: icon };
+  }
+
+  if (utils.isNoEmptyObj(icon)) {
+    return icon;
+  }
+
+  return null;
 };
 
 export const isImage = function (name) {

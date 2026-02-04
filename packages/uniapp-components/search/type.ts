@@ -149,7 +149,7 @@ export interface TdSearchProps {
   /**
    * 值发生变化时触发
    */
-  onChange?: (context: { value: string }) => void;
+  onChange?: (context: { value: string; trigger: 'input-change' | 'option-click' | 'clear' }) => void;
   /**
    * 点击清除时触发
    */

@@ -1,8 +1,14 @@
 <template>
   <view>
-    <view class="chat-box chart-chat" :style="'height: ' + contentHeight + ';'">
+    <view
+      class="chat-box chart-chat"
+      :style="'height: ' + contentHeight + ';'"
+    >
       <t-chat-list>
-        <block v-for="(item, chatIndex) in chatList" :key="item.key">
+        <block
+          v-for="(item, chatIndex) in chatList"
+          :key="item.key"
+        >
           <t-chat-message
             :chat-id="item.key"
             :class="item.message.role"
@@ -14,7 +20,10 @@
             @message-longpress="showPopover"
           >
             <template #content>
-              <block v-for="(contentItem, contentIndex) in item.message.content" :key="contentIndex">
+              <block
+                v-for="(contentItem, contentIndex) in item.message.content"
+                :key="contentIndex"
+              >
                 <t-chat-content
                   v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                   :content="contentItem"
@@ -23,15 +32,19 @@
 
                 <!-- 封装的图表组件见源码 -->
 
-                <chart-component v-if="contentItem.type === 'chart'" el="normalLine" :options="contentItem" />
+                <chart-component
+                  v-if="contentItem.type === 'chart'"
+                  el="normalLine"
+                  :options="contentItem"
+                />
               </block>
             </template>
             <template #actionbar>
               <t-chat-actionbar
                 v-if="
                   chatIndex !== chatList.length - 1 &&
-                  item.message.status === 'complete' &&
-                  item.message.role === 'assistant'
+                    item.message.status === 'complete' &&
+                    item.message.role === 'assistant'
                 "
                 placement="end"
                 @actions="handleAction"
@@ -82,7 +95,7 @@ const getUniqueKey = () => {
   return `key-${uniqueId}`;
 };
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
   const arr = str.split('');
@@ -237,8 +250,10 @@ export default {
     // 获取当前时间
     getCurrentTime() {
       const now = new Date();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const hours = now.getHours().toString()
+        .padStart(2, '0');
+      const minutes = now.getMinutes().toString()
+        .padStart(2, '0');
       return `${hours}:${minutes}`;
     },
 

@@ -72,11 +72,13 @@ For global import, configure it in `app.json` in the root directory of the minip
 name | type | default | description | required
 -- | -- | -- | -- | --
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
+activity-type | Number | - | \- | N
 app-parameter | String | - | \- | N
 block | Boolean | false | make button to be a block-level element | N
 content | String | - | button's children elements | N
-custom-dataset | String / Number / Boolean / Object / Array | {} | Typescript：`string \| number \| boolean \| object \| Array<string \| number \| boolean \| object>` | N
+custom-dataset | String / Number / Boolean / Object / Array | {} | \- | N
 disabled | Boolean | undefined | disable the button, make it can not be clicked | N
+entrance-path | String | - | \- | N
 ghost | Boolean | false | make background-color to be transparent | N
 hover-class | String | - | \- | N
 hover-start-time | Number | 20 | \- | N
@@ -85,7 +87,8 @@ hover-stop-propagation | Boolean | false | \- | N
 icon | String / Object | - | icon name | N
 lang | String | - | message language。options: en/zh_CN/zh_TW | N
 loading | Boolean | false | set button to be loading state | N
-loading-props | Object | {} | Typescript：`LoadingProps`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/button/type.ts) | N
+loading-props | Object | {} | Typescript: `LoadingProps`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/button/type.ts) | N
+need-show-entrance | Boolean | true | \- | N
 open-type | String | - | open type of button, [Miniprogram Button](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)。options: contact/share/getPhoneNumber/getUserInfo/launchApp/openSetting/feedback/chooseAvatar/agreePrivacyAuthorization | N
 phone-number-no-quota-toast | Boolean | true | \- | N
 send-message-img | String | 截图 | \- | N

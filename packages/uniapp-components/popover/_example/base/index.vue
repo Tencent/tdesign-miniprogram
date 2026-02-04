@@ -4,11 +4,12 @@
       带箭头的弹出气泡
     </view>
     <t-popover
-      v-model:visible="visible.normal"
+      :visible="visible.normal"
       placement="top"
       theme="dark"
       data-target="normal"
       :close-on-click-outside="false"
+      @update:visible="visible.normal = $event"
     >
       <template #content>
         <view>
@@ -36,12 +37,13 @@
       不带箭头的弹出气泡
     </view>
     <t-popover
-      v-model:visible="visible.noArrow"
+      :visible="visible.noArrow"
       placement="top"
       theme="dark"
       content="弹出气泡内容"
       :show-arrow="false"
       data-target="noArrow"
+      @update:visible="visible.noArrow = $event"
     >
       <view class="popover-example__content">
         <t-button
@@ -64,10 +66,11 @@
     </view>
     <view class="custom">
       <t-popover
-        v-model:visible="visible.custom"
+        :visible="visible.custom"
         placement="top"
         theme="dark"
         data-target="custom"
+        @update:visible="visible.custom = $event"
       >
         <template #content>
           <view class="custom__list">
@@ -127,7 +130,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .row {
     display: flex;
     flex-direction: column;

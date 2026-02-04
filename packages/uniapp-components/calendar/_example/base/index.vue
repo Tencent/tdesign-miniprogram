@@ -1,8 +1,8 @@
 <template>
   <view>
     <t-calendar
-      v-model:visible="visible"
-      :value="value"
+      :visible="visible"
+      @update:visible="visible = $event"
       @confirm="handleConfirm"
       @close="onClose"
     />

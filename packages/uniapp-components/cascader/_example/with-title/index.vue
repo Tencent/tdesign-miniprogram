@@ -8,10 +8,11 @@
     />
 
     <t-cascader
-      v-model:visible="visible"
+      :visible="visible"
       :options="options"
       title="请选择地址"
       :sub-titles="subTitles"
+      @update:visible="visible = $event"
       @change="onChange"
     />
   </view>

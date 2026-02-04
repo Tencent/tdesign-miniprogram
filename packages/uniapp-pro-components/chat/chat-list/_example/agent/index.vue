@@ -1,8 +1,14 @@
 <template>
   <view>
-    <view class="chat-box" :style="'height: ' + contentHeightClone + ';'">
+    <view
+      class="chat-box"
+      :style="'height: ' + contentHeightClone + ';'"
+    >
       <t-chat-list>
-        <block v-for="(item, chatIndex) in chatList" :key="item.key">
+        <block
+          v-for="(item, chatIndex) in chatList"
+          :key="item.key"
+        >
           <t-chat-message
             :chat-id="item.key"
             :avatar="item.avatar || ''"
@@ -13,16 +19,29 @@
             @message-longpress="showPopover"
           >
             <template #content>
-              <block v-for="(contentItem, contentIndex) in item.message.content" :key="contentIndex">
+              <block
+                v-for="(contentItem, contentIndex) in item.message.content"
+                :key="contentIndex"
+              >
                 <t-chat-content
                   v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                   :content="contentItem"
                   :role="item.message.role"
                 />
 
-                <view v-if="contentItem.type === 'agent'" class="step">
-                  <t-steps layout="vertical" :current="contentItem.content.steps.length">
-                    <t-step-item v-for="(item, index) in contentItem.content.steps" :key="index" :title="item.step">
+                <view
+                  v-if="contentItem.type === 'agent'"
+                  class="step"
+                >
+                  <t-steps
+                    layout="vertical"
+                    :current="contentItem.content.steps.length"
+                  >
+                    <t-step-item
+                      v-for="(item, index) in contentItem.content.steps"
+                      :key="index"
+                      :title="item.step"
+                    >
                       <template #content>
                         <view class="step-text-list">
                           <view
@@ -50,8 +69,8 @@
               <t-chat-actionbar
                 v-if="
                   chatIndex !== chatList.length - 1 &&
-                  item.message.status === 'complete' &&
-                  item.message.role === 'assistant'
+                    item.message.status === 'complete' &&
+                    item.message.role === 'assistant'
                 "
                 placement="end"
                 @actions="handleAction"
@@ -104,7 +123,7 @@ const getUniqueKey = () => {
   return `key-${uniqueId}`;
 };
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
   const arr = str.split('');

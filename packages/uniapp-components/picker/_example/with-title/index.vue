@@ -18,13 +18,14 @@
     />
 
     <t-picker
-      v-model:visible="cityVisible"
+      :visible="cityVisible"
       :value="cityValue"
       data-key="city"
       :title="cityTitle"
       cancel-btn="取消"
       confirm-btn="确认"
       :using-custom-navbar="!isMPAlipay"
+      @update:visible="cityVisible = $event"
       @change="onPickerChange($event, { key: 'city' })"
       @pick="onColumnChange($event, { key: 'city' })"
       @cancel="onPickerCancel($event, { key: 'city' })"
@@ -33,13 +34,14 @@
     </t-picker>
 
     <t-picker
-      v-model:visible="city2Visible"
+      :visible="city2Visible"
       :value="city2Value"
       data-key="city2"
       :title="city2Title"
       cancel-btn="取消"
       confirm-btn="确认"
       :using-custom-navbar="!isMPAlipay"
+      @update:visible="city2Visible = $event"
       @change="onPickerChange($event, { key: 'city2' })"
       @pick="onColumnChange($event, { key: 'city2' })"
       @cancel="onPickerCancel($event, { key: 'city2' })"

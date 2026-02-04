@@ -1,7 +1,7 @@
 <template>
   <view
     :class="classPrefix"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
   >
     <!-- 动态加载动画 -->
     <view
@@ -56,7 +56,7 @@ import { prefix } from '@tdesign/uniapp/common/config';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
 import props from './props';
-import _ from '@tdesign/uniapp/common/utils.wxs';
+import tools from '@tdesign/uniapp/common/utils.wxs';
 
 
 const name = `${prefix}-chat-loading`;
@@ -81,7 +81,7 @@ export default uniComponent({
   data() {
     return {
       classPrefix: name,
-      _,
+      tools,
     };
   },
 });
