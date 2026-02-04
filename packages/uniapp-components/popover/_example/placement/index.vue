@@ -7,10 +7,11 @@
       <view class="row">
         <view class="popover-example__content">
           <t-popover
-            v-model:visible="visible.topLeft"
+            :visible="visible.topLeft"
             placement="top-left"
             theme="dark"
             data-target="topLeft"
+            @update:visible="visible.topLeft = $event"
           >
             <template #content>
               <view>
@@ -34,10 +35,11 @@
         </view>
         <view class="popover-example__content">
           <t-popover
-            v-model:visible="visible.top"
+            :visible="visible.top"
             placement="top"
             theme="dark"
             data-target="top"
+            @update:visible="visible.top = $event"
           >
             <template #content>
               <view>
@@ -61,10 +63,11 @@
         </view>
         <view class="popover-example__content">
           <t-popover
-            v-model:visible="visible.topRight"
+            :visible="visible.topRight"
             placement="top-right"
             theme="dark"
             data-target="topRight"
+            @update:visible="visible.topRight = $event"
           >
             <template #content>
               <view>
@@ -96,10 +99,11 @@
       <view class="row">
         <view class="popover-example__content">
           <t-popover
-            v-model:visible="visible.bottomLeft"
+            :visible="visible.bottomLeft"
             placement="bottom-left"
             theme="dark"
             data-target="bottomLeft"
+            @update:visible="visible.bottomLeft = $event"
           >
             <template #content>
               <view>
@@ -123,10 +127,11 @@
         </view>
         <view class="popover-example__content">
           <t-popover
-            v-model:visible="visible.bottom"
+            :visible="visible.bottom"
             placement="bottom"
             theme="dark"
             data-target="bottom"
+            @update:visible="visible.bottom = $event"
           >
             <template #content>
               <view>
@@ -151,10 +156,11 @@
 
         <view class="popover-example__content">
           <t-popover
-            v-model:visible="visible.bottomRight"
+            :visible="visible.bottomRight"
             placement="bottom-right"
             theme="dark"
             data-target="bottomRight"
+            @update:visible="visible.bottomRight = $event"
           >
             <template #content>
               <view>
@@ -187,10 +193,11 @@
       <view class="column">
         <view class="popover-example__content">
           <t-popover
-            v-model:visible="visible.rightTop"
+            :visible="visible.rightTop"
             placement="right-top"
             theme="dark"
             data-target="rightTop"
+            @update:visible="visible.rightTop = $event"
           >
             <template #content>
               <view>
@@ -215,10 +222,11 @@
         </view>
         <view class="popover-example__content">
           <t-popover
-            v-model:visible="visible.right"
+            :visible="visible.right"
             placement="right"
             theme="dark"
             data-target="right"
+            @update:visible="visible.right = $event"
           >
             <template #content>
               <view>
@@ -241,10 +249,11 @@
         </view>
         <view class="popover-example__content">
           <t-popover
-            v-model:visible="visible.rightBottom"
+            :visible="visible.rightBottom"
             placement="right-bottom"
             theme="dark"
             data-target="rightBottom"
+            @update:visible="visible.rightBottom = $event"
           >
             <template #content>
               <view>
@@ -275,10 +284,11 @@
       <view class="column">
         <view class="popover-example__content">
           <t-popover
-            v-model:visible="visible.leftTop"
+            :visible="visible.leftTop"
             placement="left-top"
             theme="dark"
             data-target="leftTop"
+            @update:visible="visible.leftTop = $event"
           >
             <template #content>
               <view>
@@ -301,10 +311,11 @@
         </view>
         <view class="popover-example__content">
           <t-popover
-            v-model:visible="visible.left"
+            :visible="visible.left"
             placement="left"
             theme="dark"
             data-target="left"
+            @update:visible="visible.left = $event"
           >
             <template #content>
               <view>
@@ -327,10 +338,11 @@
         </view>
         <view class="popover-example__content">
           <t-popover
-            v-model:visible="visible.leftBottom"
+            :visible="visible.leftBottom"
             placement="left-bottom"
             theme="dark"
             data-target="leftBottom"
+            @update:visible="visible.leftBottom = $event"
           >
             <template #content>
               <view>
@@ -393,7 +405,7 @@ export default {
   },
 };
 </script>
-<style scoped lang="scss">
+<style scoped lang="less">
 .popover-example-row {
     display: flex;
     flex-direction: column;

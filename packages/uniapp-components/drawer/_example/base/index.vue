@@ -11,11 +11,12 @@
     </t-button>
 
     <t-drawer
-      v-model:visible="visible"
+      :visible="visible"
       :placement="placement"
       :items="sidebar"
       :using-custom-navbar="!isMPAlipay"
       :custom-navbar-height="gCustomNavbarHeight"
+      @update:visible="visible = $event"
       @overlay-click="overlayClick"
       @item-click="itemClick"
     />

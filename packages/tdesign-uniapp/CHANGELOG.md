@@ -5,6 +5,15 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.7.1 `2026-02-04`
+
+### 🚀 Features
+
+- `ActionSheet`: 为 `items` 子项的 `icon` 字段新增 `object` 类型，支持透传到 `TIcon` 组件 @novlan1 ([#4255](https://github.com/Tencent/tdesign-miniprogram/pull/4255))
+- `Button`: 新增 `activity-type`，`entrance-path` 和 `need-show-entrance` 属性 @novlan1 ([#4255](https://github.com/Tencent/tdesign-miniprogram/pull/4255))
+- `Icon`: 新增 217 个与人工智能、文档、徽标和文件相关的图标 @novlan1 ([#4255](https://github.com/Tencent/tdesign-miniprogram/pull/4255))
+- `Search`: 为 `change` 事件新增 `trigger` 参数，表示触发源 @novlan1 ([#4255](https://github.com/Tencent/tdesign-miniprogram/pull/4255))
+
 ## 🌈 0.7.0 `2026-01-30`
 
 ### 🚀 Features

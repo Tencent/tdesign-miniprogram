@@ -12,12 +12,13 @@
       带双行描述的日历
     </view>
     <t-calendar
-      v-model:visible="visible"
+      :visible="visible"
       :value="type === 'single' ? singleValue : value"
       :min-date="minDate"
       :max-date="maxDate"
       :format="type === 'single' ? singleFormat : format"
       :data-type="type"
+      @update:visible="visible = $event"
       @confirm="handleConfirm($event, { type })"
     />
     <t-cell

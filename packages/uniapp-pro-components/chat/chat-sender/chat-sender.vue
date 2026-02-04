@@ -2,7 +2,7 @@
   <view>
     <view
       :class="classPrefix"
-      :style="_._style([customStyle, inputStyle])"
+      :style="tools._style([customStyle, inputStyle])"
       @click.stop="handleOutsideClick"
     >
       <view
@@ -155,7 +155,7 @@ import { prefix } from '@tdesign/uniapp/common/config';
 import props from './props';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
 import { textareaStyle } from './computed';
-import _ from '@tdesign/uniapp/common/utils.wxs';
+import tools from '@tdesign/uniapp/common/utils.wxs';
 import { nextTick } from '@tdesign/uniapp/common/utils';
 
 const name = `${prefix}-chat-sender`;
@@ -214,7 +214,7 @@ export default uniComponent({
       },
       uploadNames: [],
 
-      _,
+      tools,
 
       innerValue: this.value,
     };

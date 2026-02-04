@@ -2,7 +2,7 @@
   <view
     :id="tId"
     :style="tools._style([customStyle])"
-    :class="tools.cls(classPrefix, [_placement, ['block', block], ['disabled', _disabled]]) + ' ' + tClass"
+    :class="tools.cls(classPrefix, [innerPlacement, ['block', block], ['disabled', _disabled]]) + ' ' + tClass"
     :disabled="_disabled"
     aria-role="radio"
     :aria-checked="dataChecked"
@@ -10,7 +10,7 @@
     :aria-disabled="_disabled"
     @click.stop="handleTap"
   >
-    <view :class="tools.cls(classPrefix + '__icon', [_placement, ['checked', dataChecked], ['disabled', _disabled]]) + ' ' + tClassIcon">
+    <view :class="tools.cls(classPrefix + '__icon', [innerPlacement, ['checked', dataChecked], ['disabled', _disabled]]) + ' ' + tClassIcon">
       <slot
         v-if="slotIcon"
         name="icon"
@@ -86,7 +86,7 @@
     </view>
     <view
       v-if="!borderless"
-      :class="tools.cls(classPrefix + '__border', [_placement]) + ' ' + tClassBorder"
+      :class="tools.cls(classPrefix + '__border', [innerPlacement]) + ' ' + tClassBorder"
     />
   </view>
 </template>
@@ -142,7 +142,7 @@ export default uniComponent({
       slotIcon: false,
       optionLinked: false,
       iconVal: [],
-      _placement: '',
+      innerPlacement: '',
       _disabled: false,
       _readonly: false,
       tools,
@@ -207,7 +207,7 @@ export default uniComponent({
       this.customIcon = isIdArr;
       this.slotIcon = icon === 'slot';
       this.iconVal = isIdArr ? parent?.icon || icon : [];
-      this._placement = this.placement || parent?.placement || 'left';
+      this.innerPlacement = this.placement || parent?.placement || 'left';
     },
 
     setDisabled(disabled) {

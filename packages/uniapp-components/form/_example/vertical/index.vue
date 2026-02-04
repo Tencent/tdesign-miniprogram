@@ -102,10 +102,11 @@
           @click="showCascader"
         />
         <t-cascader
-          v-model:visible="visibleCascader"
+          :visible="visibleCascader"
           :value="address"
           title="选择地址"
           :options="options"
+          @update:visible="visibleCascader = $event"
           @change="onChangeCascader"
           @visible-change="onCascaderVisibleChange"
         />

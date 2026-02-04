@@ -1,8 +1,14 @@
 <template>
   <view>
-    <view class="chat-box image-chat" :style="'height: ' + contentHeight + ';'">
+    <view
+      class="chat-box image-chat"
+      :style="'height: ' + contentHeight + ';'"
+    >
       <t-chat-list>
-        <block v-for="(item, chatIndex) in chatList" :key="item.key">
+        <block
+          v-for="(item, chatIndex) in chatList"
+          :key="item.key"
+        >
           <t-chat-message
             :chat-id="item.key"
             :avatar="item.avatar || ''"
@@ -14,22 +20,38 @@
           >
             <template #content>
               <view v-if="item.message.role === 'user'">
-                <block v-for="(contentItem, contentIndex) in item.message.content" :key="contentIndex">
+                <block
+                  v-for="(contentItem, contentIndex) in item.message.content"
+                  :key="contentIndex"
+                >
                   <t-chat-content
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
                   />
                 </block>
               </view>
-              <view v-else style="width: 100%">
-                <block v-for="(contentItem, contentIndex) in item.message.content" :key="contentIndex">
+              <view
+                v-else
+                style="width: 100%"
+              >
+                <block
+                  v-for="(contentItem, contentIndex) in item.message.content"
+                  :key="contentIndex"
+                >
                   <t-chat-content
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
                   />
 
-                  <view v-else class="attachment-slide">
-                    <t-attachments :items="contentItem.data" :in-chat="true" :removable="false" />
+                  <view
+                    v-else
+                    class="attachment-slide"
+                  >
+                    <t-attachments
+                      :items="contentItem.data"
+                      :in-chat="true"
+                      :removable="false"
+                    />
                   </view>
                 </block>
               </view>
@@ -38,8 +60,8 @@
               <t-chat-actionbar
                 v-if="
                   chatIndex !== chatList.length - 1 &&
-                  item.message.status === 'complete' &&
-                  item.message.role === 'assistant'
+                    item.message.status === 'complete' &&
+                    item.message.role === 'assistant'
                 "
                 placement="end"
                 @actions="handleAction"
@@ -90,7 +112,7 @@ const getUniqueKey = () => {
   return `key-${uniqueId}`;
 };
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
   const arr = str.split('');

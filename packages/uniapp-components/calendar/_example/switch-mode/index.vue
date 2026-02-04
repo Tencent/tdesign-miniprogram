@@ -1,11 +1,12 @@
 <template>
   <view>
     <t-calendar
-      v-model:visible="visible"
+      :visible="visible"
       :value="value"
       switch-mode="year-month"
       :min-date="minDate"
       :max-date="maxDate"
+      @update:visible="visible = $event"
       @confirm="handleConfirm"
       @panel-change="handlePanelChange"
     />

@@ -58,7 +58,7 @@
       :using-custom-navbar="usingCustomNavbar"
       :custom-navbar-height="customNavbarHeight"
       :z-index="(overlayProps && overlayProps.zIndex) || 11000"
-      :duration="(overlayProps && overlayProps.duration) || 300"
+      :duration="(overlayProps && overlayProps.duration) || duration || 300"
       :background-color="(overlayProps && overlayProps.backgroundColor) || ''"
       :prevent-scroll-through="preventScrollThrough || (overlayProps ? !!overlayProps.preventScrollThrough : false)"
       :custom-style="(overlayProps && overlayProps.style) || ''"

@@ -17,19 +17,19 @@
         mode="aspectFit"
       />
       <block
-        v-else-if="_icon"
+        v-else-if="innerIcon"
         name="icon"
       >
         <t-icon
-          :custom-style="_icon.style || ''"
-          :t-class="classPrefix + '__icon ' + classPrefix + '__icon--' + (_icon.activeIdx == _icon.index ? 'active ' : ' ')"
-          :prefix="_icon.prefix"
-          :name="_icon.name"
-          :size="_icon.size"
-          :color="_icon.color"
-          :aria-hidden="!!_icon.ariaHidden"
-          :aria-label="_icon.ariaLabel"
-          :aria-role="_icon.ariaRole"
+          :custom-style="innerIcon.style || ''"
+          :t-class="classPrefix + '__icon ' + classPrefix + '__icon--' + (innerIcon.activeIdx == innerIcon.index ? 'active ' : ' ')"
+          :prefix="innerIcon.prefix"
+          :name="innerIcon.name"
+          :size="innerIcon.size"
+          :color="innerIcon.color"
+          :aria-hidden="!!innerIcon.ariaHidden"
+          :aria-label="innerIcon.ariaLabel"
+          :aria-role="innerIcon.ariaRole"
         />
       </block>
       <slot name="image" />
@@ -102,7 +102,7 @@ export default uniComponent({
       classPrefix: name,
       tools,
 
-      _icon: null,
+      innerIcon: null,
     };
   },
   watch: {
@@ -118,7 +118,7 @@ export default uniComponent({
         icon,
         theme,
       } = this;
-      this._icon = calcIcon(icon, THEME_ICON[theme]);
+      this.innerIcon = calcIcon(icon, THEME_ICON[theme]);
     },
   },
 });

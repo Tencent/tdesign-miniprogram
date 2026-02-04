@@ -59,7 +59,7 @@ export default {
   /** 支持上传的文件类型，图片或视频 */
   mediaType: {
     type: Array,
-    default: ['image', 'video'],
+    default: () => ['image', 'video'],
   },
   /** 是否支持图片预览，文件没有预览 */
   preview: {
