@@ -178,7 +178,7 @@ catalogs:
     '@dcloudio/types': ^3.4.28
     '@dcloudio/uni-app': 3.0.0-4030620241128001
     '@dcloudio/uni-app-harmony': 3.0.0-4030620241128001
-    '@dcloudio/uni-app-plus': 3.0.0-4030620241128001
+    '@dcloudio/uni-app-plus': 3.0.0-4080720251210001
     '@dcloudio/uni-automator': 3.0.0-4030620241128001
     '@dcloudio/uni-cli-shared': 3.0.0-4030620241128001
     '@dcloudio/uni-components': 3.0.0-4030620241128001
