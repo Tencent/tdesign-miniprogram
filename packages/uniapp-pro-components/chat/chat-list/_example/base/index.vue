@@ -37,11 +37,12 @@
 
         <template #footer>
           <t-chat-sender
-            v-model:value="value"
+            :value="value"
             :loading="loading"
             :disabled="disabled"
             :auto-rise-with-keyboard="true"
             :render-presets="renderPresets"
+            @update:value="value = $event"
             @send="onSend"
             @stop="onStop"
             @focus="onFocus"

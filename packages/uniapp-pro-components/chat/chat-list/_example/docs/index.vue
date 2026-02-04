@@ -35,7 +35,7 @@
         </block>
         <template #footer>
           <t-chat-sender
-            v-model:visible="visible"
+            :visible="visible"
             :value="value"
             :loading="loading"
             :disabled="disabled"
@@ -43,6 +43,7 @@
             :attachments-props="attachmentsProps"
             :render-presets="renderPresets"
             :auto-rise-with-keyboard="true"
+            @update:visible="visible = $event"
             @send="onSend"
             @stop="onStop"
             @focus="onFocus"
