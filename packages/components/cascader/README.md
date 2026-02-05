@@ -69,7 +69,7 @@ check-strictly | Boolean | false | 父子节点选中状态不再关联，可各
 close-btn | Boolean | true | 关闭按钮 | N
 keys | Object | - | 用来定义 value / label / children / disabled 在 `options` 中对应的字段别名。TS 类型：`CascaderKeysType` `type CascaderKeysType = TreeKeysType`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/cascader/type.ts) | N
 options | Array | [] | 可选项数据源。TS 类型：`Array<CascaderOption>` | N
-placeholder | String | 选择选项 | 未选中时的提示文案 | N
+placeholder | String | - | 未选中时的提示文案。组件内置默认值为：'选择选项' | N
 sub-titles | Array | [] | 每级展示的次标题。TS 类型：`Array<string>` | N
 theme | String | step | 展示风格。可选项：step/tab | N
 title | String | - | 标题 | N

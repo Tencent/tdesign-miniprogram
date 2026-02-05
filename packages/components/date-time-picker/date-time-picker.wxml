@@ -5,7 +5,7 @@
   visible="{{visible}}"
   value="{{columnsValue}}"
   header="{{header}}"
-  title="{{title}}"
+  title="{{title || globalConfig.title}}"
   auto-close="{{autoClose}}"
   confirm-btn="{{confirmBtn || locale.confirm}}"
   cancel-btn="{{cancelBtn || locale.cancel}}"
