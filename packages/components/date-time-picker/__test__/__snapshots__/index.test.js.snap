@@ -49,7 +49,7 @@ exports[`date-time-picker :base 1`] = `
                   class="t-picker__confirm t-class-confirm"
                   bind:tap="onConfirm"
                 >
-                  确定
+                  确认
                 </wx-view>
               </wx-view>
               <wx-view
@@ -351,7 +351,7 @@ exports[`date-time-picker :base 1`] = `
                         <wx-text
                           class="t-picker-item__item-label"
                         >
-                          1月
+                          1 月
                         </wx-text>
                       </wx-view>
                       <wx-view
@@ -363,7 +363,7 @@ exports[`date-time-picker :base 1`] = `
                         <wx-text
                           class="t-picker-item__item-label"
                         >
-                          2月
+                          2 月
                         </wx-text>
                       </wx-view>
                       <wx-view
@@ -375,7 +375,7 @@ exports[`date-time-picker :base 1`] = `
                         <wx-text
                           class="t-picker-item__item-label"
                         >
-                          3月
+                          3 月
                         </wx-text>
                       </wx-view>
                       <wx-view
@@ -387,7 +387,7 @@ exports[`date-time-picker :base 1`] = `
                         <wx-text
                           class="t-picker-item__item-label"
                         >
-                          4月
+                          4 月
                         </wx-text>
                       </wx-view>
                       <wx-view
@@ -399,7 +399,7 @@ exports[`date-time-picker :base 1`] = `
                         <wx-text
                           class="t-picker-item__item-label"
                         >
-                          5月
+                          5 月
                         </wx-text>
                       </wx-view>
                       <wx-view
@@ -411,7 +411,7 @@ exports[`date-time-picker :base 1`] = `
                         <wx-text
                           class="t-picker-item__item-label"
                         >
-                          6月
+                          6 月
                         </wx-text>
                       </wx-view>
                       <wx-view
@@ -423,7 +423,7 @@ exports[`date-time-picker :base 1`] = `
                         <wx-text
                           class="t-picker-item__item-label"
                         >
-                          7月
+                          7 月
                         </wx-text>
                       </wx-view>
                       <wx-view
@@ -435,7 +435,7 @@ exports[`date-time-picker :base 1`] = `
                         <wx-text
                           class="t-picker-item__item-label"
                         >
-                          8月
+                          8 月
                         </wx-text>
                       </wx-view>
                       <wx-view
@@ -447,7 +447,7 @@ exports[`date-time-picker :base 1`] = `
                         <wx-text
                           class="t-picker-item__item-label"
                         >
-                          9月
+                          9 月
                         </wx-text>
                       </wx-view>
                       <wx-view
@@ -459,7 +459,7 @@ exports[`date-time-picker :base 1`] = `
                         <wx-text
                           class="t-picker-item__item-label"
                         >
-                          10月
+                          10 月
                         </wx-text>
                       </wx-view>
                       <wx-view
@@ -471,7 +471,7 @@ exports[`date-time-picker :base 1`] = `
                         <wx-text
                           class="t-picker-item__item-label"
                         >
-                          11月
+                          11 月
                         </wx-text>
                       </wx-view>
                       <wx-view
@@ -483,7 +483,7 @@ exports[`date-time-picker :base 1`] = `
                         <wx-text
                           class="t-picker-item__item-label"
                         >
-                          12月
+                          12 月
                         </wx-text>
                       </wx-view>
                     </wx-view>
