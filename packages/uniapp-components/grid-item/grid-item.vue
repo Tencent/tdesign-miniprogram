@@ -281,9 +281,7 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './grid-item.css';
-</style>
+<style scoped src="./grid-item.css"></style>
 <style scoped>
 .t-grid-item__content--left {
   width: 100%;

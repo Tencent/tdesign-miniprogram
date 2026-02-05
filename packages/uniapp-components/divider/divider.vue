@@ -74,6 +74,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './divider.css';
-</style>
+<style scoped src="./divider.css"></style>

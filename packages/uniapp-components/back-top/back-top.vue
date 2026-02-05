@@ -117,6 +117,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './back-top.css';
-</style>
+<style scoped src="./back-top.css"></style>

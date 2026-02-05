@@ -195,6 +195,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './avatar.css';
-</style>
+<style scoped src="./avatar.css"></style>

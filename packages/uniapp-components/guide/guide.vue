@@ -520,9 +520,7 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './guide.css';
-</style>
+<style scoped src="./guide.css"></style>
 <style scoped lang="less">
 .t-guide__footer--dialog {
   // 适配 QQ 小程序等

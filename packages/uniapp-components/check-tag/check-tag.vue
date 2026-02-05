@@ -143,7 +143,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './check-tag.css';
-
-</style>
+<style scoped src="./check-tag.css"></style>

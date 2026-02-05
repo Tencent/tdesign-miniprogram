@@ -311,7 +311,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './image-viewer.css';
-
-</style>
+<style scoped src="./image-viewer.css"></style>

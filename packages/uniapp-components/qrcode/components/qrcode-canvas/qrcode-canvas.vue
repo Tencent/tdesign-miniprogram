@@ -408,6 +408,4 @@ export default uniComponent({
 });
 </script>
 
-<style lang="less" scoped>
-@import './qrcode-canvas.css';
-</style>
+<style scoped src="./qrcode-canvas.css"></style>

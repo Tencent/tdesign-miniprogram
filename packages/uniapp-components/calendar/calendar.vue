@@ -443,9 +443,7 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './calendar.css';
-</style>
+<style scoped src="./calendar.css"></style>
 <style scoped>
 .t-calendar-switch-mode--none > .t-calendar__months {
   /* support mp-alipay */

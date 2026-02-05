@@ -366,6 +366,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './indexes.css';
-</style>
+<style scoped src="./indexes.css"></style>

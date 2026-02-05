@@ -320,6 +320,4 @@ export default {
   },
 };
 </script>
-<style scoped>
-@import './guide.css';
-</style>
+<style scoped src="./guide.css"></style>

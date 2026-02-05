@@ -417,6 +417,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './dialog.css';
-</style>
+<style scoped src="./dialog.css"></style>

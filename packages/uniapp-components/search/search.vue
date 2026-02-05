@@ -294,6 +294,4 @@ export default uniComponent({
 
 
 </script>
-<style scoped>
-@import './search.css';
-</style>
+<style scoped src="./search.css"></style>

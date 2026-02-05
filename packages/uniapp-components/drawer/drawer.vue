@@ -134,9 +134,7 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './drawer.css';
-</style>
+<style scoped src="./drawer.css"></style>
 <style>
 .t-drawer__sidebar {
   width: 100%;

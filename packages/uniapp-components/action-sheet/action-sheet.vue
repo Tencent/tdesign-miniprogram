@@ -362,6 +362,4 @@ export default uniComponent({
 });
 </script>
 
-<style scoped>
-@import './action-sheet.css';
-</style>
+<style scoped src="./action-sheet.css"></style>

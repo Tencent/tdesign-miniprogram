@@ -88,6 +88,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './swiper-nav.css';
-</style>
+<style scoped src="./swiper-nav.css"></style>

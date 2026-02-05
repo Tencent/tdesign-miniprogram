@@ -208,6 +208,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './toast.css';
-</style>
+<style scoped src="./toast.css"></style>

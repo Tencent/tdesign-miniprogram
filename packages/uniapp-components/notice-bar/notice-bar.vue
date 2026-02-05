@@ -321,6 +321,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './notice-bar.css';
-</style>
+<style scoped src="./notice-bar.css"></style>

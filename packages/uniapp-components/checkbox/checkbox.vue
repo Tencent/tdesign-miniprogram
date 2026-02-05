@@ -233,6 +233,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './checkbox.css';
-</style>
+<style scoped src="./checkbox.css"></style>

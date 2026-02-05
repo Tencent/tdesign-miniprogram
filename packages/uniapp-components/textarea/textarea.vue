@@ -222,6 +222,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './textarea.css';
-</style>
+<style scoped src="./textarea.css"></style>

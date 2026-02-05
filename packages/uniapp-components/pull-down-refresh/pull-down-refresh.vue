@@ -361,6 +361,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './pull-down-refresh.css';
-</style>
+<style scoped src="./pull-down-refresh.css"></style>

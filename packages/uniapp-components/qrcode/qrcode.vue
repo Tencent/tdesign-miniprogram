@@ -139,6 +139,4 @@ export default uniComponent({
 });
 </script>
 
-<style lang="less" scoped>
-@import './qrcode.css';
-</style>
+<style scoped src="./qrcode.css"></style>

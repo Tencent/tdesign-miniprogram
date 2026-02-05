@@ -255,6 +255,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './cell.css';
-</style>
+<style scoped src="./cell.css"></style>

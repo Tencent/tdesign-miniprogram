@@ -93,6 +93,4 @@ export default {
 
 </script>
 
-<style scoped>
-@import './calendar.css';
-</style>
+<style scoped src="./calendar.css"></style>

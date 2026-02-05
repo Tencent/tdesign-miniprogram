@@ -222,6 +222,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './radio.css';
-</style>
+<style scoped src="./radio.css"></style>

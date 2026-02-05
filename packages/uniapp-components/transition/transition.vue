@@ -46,6 +46,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './transition.css';
-</style>
+<style scoped src="./transition.css"></style>

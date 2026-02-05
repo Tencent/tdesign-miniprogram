@@ -100,6 +100,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './overlay.css';
-</style>
+<style scoped src="./overlay.css"></style>

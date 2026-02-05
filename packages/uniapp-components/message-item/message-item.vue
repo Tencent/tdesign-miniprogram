@@ -348,6 +348,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './message-item.css';
-</style>
+<style scoped src="./message-item.css"></style>

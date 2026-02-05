@@ -288,6 +288,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './navbar.css';
-</style>
+<style scoped src="./navbar.css"></style>

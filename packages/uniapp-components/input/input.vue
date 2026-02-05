@@ -390,8 +390,8 @@ export default uniComponent({
 });
 
 </script>
+<style scoped src="./input.css"></style>
 <style scoped>
-@import './input.css';
 /* #ifdef H5 */
 .t-input--disabled {
   :deep(input) {

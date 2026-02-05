@@ -314,6 +314,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './tree-select.css';
-</style>
+<style scoped src="./tree-select.css"></style>

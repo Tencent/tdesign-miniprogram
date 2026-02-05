@@ -163,9 +163,8 @@ export default uniComponent({
   },
 });
 </script>
+<style scoped src="./link.css"></style>
 <style scoped>
-@import './link.css';
-
 /* #ifdef H5 */
 :deep(.navigator-wrap) {
   display: flex;

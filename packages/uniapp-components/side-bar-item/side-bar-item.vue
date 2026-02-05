@@ -162,7 +162,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './side-bar-item.css';
-
-</style>
+<style scoped src="./side-bar-item.css"></style>

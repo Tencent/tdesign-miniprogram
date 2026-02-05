@@ -169,9 +169,7 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './dropdown-menu.css';
-</style>
+<style scoped src="./dropdown-menu.css"></style>
 <style scoped>
 :deep(.t-dropdown-menu__icon) {
   font-size: var(--td-dropdown-menu-icon-size, 20px);

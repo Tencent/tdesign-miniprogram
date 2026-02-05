@@ -347,6 +347,4 @@ export default uniComponent({
 
 
 </script>
-<style scoped>
-@import './popover.css';
-</style>
+<style scoped src="./popover.css"></style>

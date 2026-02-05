@@ -214,9 +214,8 @@ export default uniComponent({
   },
 });
 </script>
+<style scoped src="./button.css"></style>
 <style scoped>
-@import './button.css';
-
 /* #ifdef MP-QQ */
 /* 适配 qq 小程序 */
 .t-button--outline {
