@@ -1,4 +1,33 @@
-:: BASE_DOC ::
+---
+title: ConfigProvider 全局特性配置
+description: 全局特性配置包含各个组件的文本语言配置及其他通用配置，可以减少重复的通用配置。
+spline: data
+isComponent: true
+---
+
+
+## 引入
+
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
+
+```json
+"usingComponents": {
+  "t-config-provider": "tdesign-miniprogram/config-provider/config-provider"
+}
+```
+
+## 代码演示
+
+<!-- <a href="https://developers.weixin.qq.com/s/TAsNNMmh875W" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+
+<blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
+<p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
+</blockquote> -->
+
+### 01 配置示例
+
+{{ base }}
+
 
 ## API
 
