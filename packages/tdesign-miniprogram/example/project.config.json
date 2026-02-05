@@ -137,6 +137,12 @@
           "scene": null
         },
         {
+          "name": "config-provider",
+          "pathName": "pages/config-provider/config-provider",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "dialog",
           "pathName": "pages/dialog/dialog",
           "query": "",

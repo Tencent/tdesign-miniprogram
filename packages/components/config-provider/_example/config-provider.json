@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "ConfigProvider",
+  "usingComponents": {
+    "t-config-provider": "tdesign-miniprogram/config-provider/config-provider",
+    "base": "./base"
+  }
+}
