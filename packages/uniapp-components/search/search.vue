@@ -170,6 +170,13 @@ export default uniComponent({
       immediate: true,
     },
 
+    value: {
+      handler(val) {
+        this.dataValue = val;
+      },
+      immediate: true,
+    },
+
     dataValue: {
       handler() {
         // this.updateInnerMaxLen();
