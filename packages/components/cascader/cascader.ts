@@ -3,9 +3,10 @@ import config from '../common/config';
 import props from './props';
 import { TdCascaderProps } from './type';
 import { getRect } from '../common/utils';
+import usingConfig from '../mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-cascader`;
+const componentName = 'cascader';
 
 export interface CascaderProps extends TdCascaderProps {}
 
@@ -36,6 +37,8 @@ const defaultState = {
 
 @wxComponent()
 export default class Cascader extends SuperComponent {
+  behaviors = [usingConfig({ componentName })];
+
   externalClasses = [`${prefix}-class`];
 
   options: WechatMiniprogram.Component.ComponentOptions = {
@@ -58,7 +61,7 @@ export default class Cascader extends SuperComponent {
 
   data = {
     prefix,
-    name,
+    classPrefix: `${prefix}-${componentName}`,
     stepIndex: 0,
     selectedIndexes: [],
     selectedValue: [],
@@ -135,13 +138,14 @@ export default class Cascader extends SuperComponent {
     },
 
     async initOptionsHeight(steps: number) {
+      const { classPrefix } = this.data;
       const { theme, subTitles } = this.properties;
 
-      const { height } = await getRect(this, `.${name}__content`);
+      const { height } = await getRect(this, `.${classPrefix}__content`);
       this.state.contentHeight = height;
 
       if (theme === 'step') {
-        await Promise.all([getRect(this, `.${name}__steps`), getRect(this, `.${name}__step`)]).then(
+        await Promise.all([getRect(this, `.${classPrefix}__steps`), getRect(this, `.${classPrefix}__step`)]).then(
           ([stepsRect, stepRect]) => {
             this.state.stepsInitHeight = stepsRect.height - (steps - 1) * stepRect.height;
             this.state.stepHeight = stepRect.height;
@@ -150,7 +154,7 @@ export default class Cascader extends SuperComponent {
       }
 
       if (subTitles.length > 0) {
-        const { height } = await getRect(this, `.${name}__options-title`);
+        const { height } = await getRect(this, `.${classPrefix}__options-title`);
         this.state.subTitlesHeight = height;
       }
 
@@ -229,7 +233,7 @@ export default class Cascader extends SuperComponent {
       });
     },
     genItems() {
-      const { options, selectedIndexes, keys, placeholder } = this.data;
+      const { options, selectedIndexes, keys, placeholder, globalConfig } = this.data;
       const selectedValue = [];
       const steps = [];
       const items = [parseOptions(options, keys)];
@@ -251,7 +255,7 @@ export default class Cascader extends SuperComponent {
       }
 
       if (steps.length < items.length) {
-        steps.push(placeholder);
+        steps.push(placeholder || globalConfig.placeholder);
       }
 
       return {

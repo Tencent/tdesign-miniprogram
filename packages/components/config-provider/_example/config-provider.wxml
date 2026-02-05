@@ -1,0 +1,19 @@
+<t-navbar class="demo-navbar" title="ConfigProvider" leftArrow placeholder />
+
+<view class="demo">
+  <t-demo-header
+    title="ConfigProvider 全局特性配置"
+    desc="全局特性配置包含各个组件的文本语言配置及其他通用配置，可以减少重复的通用配置。"
+    notice="渲染框架支持情况：WebView、Skyline"
+  />
+
+  <t-config-provider global-config="{{globalConfig}}" themeVars="{{themeVars}}">
+    <t-button theme="primary" bind:tap="switchLocale">
+      切换语言 ({{currentLocale === 'zhCN' ?'English': '中文'}})
+    </t-button>
+
+    <t-demo title="01 配置示例">
+      <base />
+    </t-demo>
+  </t-config-provider>
+</view>

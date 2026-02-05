@@ -21,7 +21,12 @@
 
   <block wx:if="{{showMask && canvasReady}}">
     <view class="{{prefix}}-mask">
-      <qrcode-status status="{{status}}" bind:refresh="handleRefresh" status-render="{{statusRender}}">
+      <qrcode-status
+        status="{{status}}"
+        bind:refresh="handleRefresh"
+        status-render="{{statusRender}}"
+        locale="{{globalConfig}}"
+      >
         <slot name="statusRender" slot="statusRender"> </slot>
       </qrcode-status>
     </view>

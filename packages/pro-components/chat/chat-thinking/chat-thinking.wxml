@@ -12,7 +12,7 @@
       <block wx:else>
         <t-chat-loading animation="{{animation}}"></t-chat-loading>
       </block>
-      <view class="{{classPrefix}}__txt">{{content.title || "正在思考中..."}}</view>
+      <view class="{{classPrefix}}__txt">{{content.title || globalConfig.status[status]}}</view>
       <view data-event-opts="{{[['tap',[['handleCollapse',['$event']]]]]}}">
         <t-icon
           style="{{localCollapsed ? 'transform: rotate(180deg)' : ''}}"
@@ -22,6 +22,8 @@
         />
       </view>
     </view>
-    <view hidden="{{!(!localCollapsed)}}" class="{{_.cls(classPrefix + '__bd', [layout])}}" style="{{contentStyle}}">{{content.text||""}}</view>
+    <view hidden="{{!(!localCollapsed)}}" class="{{_.cls(classPrefix + '__bd', [layout])}}" style="{{contentStyle}}"
+      >{{content.text || ''}}</view
+    >
   </view>
 </view>

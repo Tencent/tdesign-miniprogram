@@ -4,13 +4,17 @@ import props from './props';
 import menuProps from '../dropdown-menu/props';
 import type { TdDropdownItemProps } from './type';
 import { getRect } from '../common/utils';
+import usingConfig from '../mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-dropdown-item`;
+const parentComponentName = 'dropdown-menu';
+const componentName = 'dropdown-item';
 
 export interface DropdownItemProps extends TdDropdownItemProps {}
 @wxComponent()
 export default class DropdownMenuItem extends SuperComponent {
+  behaviors = [usingConfig({ componentName: parentComponentName })];
+
   options = {
     multipleSlots: true,
   };
@@ -28,7 +32,7 @@ export default class DropdownMenuItem extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     show: false,
     top: 0,
     maskHeight: 0,

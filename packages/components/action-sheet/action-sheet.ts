@@ -4,15 +4,16 @@ import config from '../common/config';
 import { ActionSheetTheme, show } from './show';
 import props from './props';
 import useCustomNavbar from '../mixins/using-custom-navbar';
+import usingConfig from '../mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-action-sheet`;
+const componentName = 'action-sheet';
 
 @wxComponent()
 export default class ActionSheet extends SuperComponent {
   static show = show;
 
-  behaviors = [useCustomNavbar];
+  behaviors = [useCustomNavbar, usingConfig({ componentName })];
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-content`, `${prefix}-class-cancel`];
 
@@ -22,7 +23,7 @@ export default class ActionSheet extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     gridThemeItems: [],
     currentSwiperIndex: 0,
     defaultPopUpProps: {},
@@ -40,6 +41,9 @@ export default class ActionSheet extends SuperComponent {
     items() {
       this.splitGridThemeActions();
     },
+    globalConfig() {
+      this.updateInitialData();
+    },
   };
 
   lifetimes = {
@@ -55,6 +59,10 @@ export default class ActionSheet extends SuperComponent {
     },
 
     memoInitialData() {
+      this.updateInitialData();
+    },
+
+    updateInitialData() {
       this.initialData = {
         ...this.properties,
         ...this.data,
