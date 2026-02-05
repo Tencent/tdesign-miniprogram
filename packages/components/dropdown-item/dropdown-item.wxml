@@ -91,7 +91,7 @@
           block
           class="{{classPrefix}}__footer-btn {{classPrefix}}__reset-btn"
           theme="light"
-          content="重置"
+          content="{{globalConfig.reset}}"
           disabled="{{value.length == 0}}"
           bindtap="handleReset"
         />
@@ -99,7 +99,7 @@
           block
           class="{{classPrefix}}__footer-btn {{classPrefix}}__confirm-btn"
           theme="primary"
-          content="确定"
+          content="{{globalConfig.confirm}}"
           disabled="{{value.length == 0}}"
           bindtap="handleConfirm"
         />

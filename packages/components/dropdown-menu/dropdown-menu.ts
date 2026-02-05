@@ -5,7 +5,7 @@ import type { TdDropdownMenuProps } from './type';
 import { calcIcon } from '../common/utils';
 
 const { prefix } = config;
-const name = `${prefix}-dropdown-menu`;
+const componentName = 'dropdown-menu';
 
 export interface DropdownMenuProps extends TdDropdownMenuProps {}
 
@@ -19,7 +19,7 @@ export default class DropdownMenu extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     menus: null,
     activeIdx: -1,
     bottom: 0,

@@ -1,10 +1,10 @@
 module.exports = {
-  getText: function (texts, val, defaultTexts) {
+  getText: function (texts, val, globalConfig) {
     if (!texts.length) {
-      texts = defaultTexts;
+      texts = globalConfig.texts;
     }
     var curVal = Math.floor(val - 1);
-    return texts[curVal] || '未评分';
+    return texts[curVal] || globalConfig.noValueText;
   },
 
   getIconName: function (defaultValue, value, index, icon) {

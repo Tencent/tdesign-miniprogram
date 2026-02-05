@@ -50,7 +50,9 @@
         bindconfirm="handleSendClick"
       >
       </textarea>
-      <view class="{{classPrefix}}__textarea--placeholder {{focusFlag || value ? 'hide' : ''}}">{{placeholder}}</view>
+      <view class="{{classPrefix}}__textarea--placeholder {{focusFlag || value ? 'hide' : ''}}"
+        >{{placeholder || globalConfig.placeholder}}</view
+      >
     </view>
 
     <view class="{{classPrefix}}__footer">
@@ -65,11 +67,7 @@
                 <block wx:if="{{item.name === 'upload'}}">
                   <view class="plus-btn {{item.status === 'disabled' ? 'disabled' : ''}}">
                     <block>
-                      <view
-                        class="btn-func"
-                        data-status="{{item.status}}"
-                        catchtap="handleUploadClick"
-                      >
+                      <view class="btn-func" data-status="{{item.status}}" catchtap="handleUploadClick">
                         <t-icon name="{{visible? 'close' : 'add'}}" size="40rpx" />
                       </view>
                     </block>
@@ -82,7 +80,7 @@
                       class="send-btn-{{item.type}} {{value || loading ? 'active' : 'disabled'}}"
                       bindtap="handleSendClick"
                     >
-                      {{loading ? '停止' : '发送'}}
+                      {{loading ? globalConfig.sendTexts[0] : globalConfig.sendTexts[1]}}
                     </view>
                   </block>
                   <block wx:else>

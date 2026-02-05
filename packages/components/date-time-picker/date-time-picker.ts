@@ -1,10 +1,9 @@
 import type { Dayjs } from 'dayjs';
-
 import config from '../common/config';
 import { SuperComponent, wxComponent } from '../common/src/index';
+import usingConfig from '../mixins/using-config';
 
 import props from './props';
-import dayjsLocaleMap from './locale/dayjs';
 
 const dayjs = require('dayjs');
 const localeData = require('dayjs/plugin/localeData');
@@ -15,11 +14,8 @@ const localeData = require('dayjs/plugin/localeData');
 dayjs.extend(localeData);
 dayjs.locale('zh-cn');
 
-// const defaultLocale = dayjsLocaleMap.default.key;
-const defaultLocale = dayjsLocaleMap[dayjs.locale()]?.key || dayjsLocaleMap.default?.key;
-
 const { prefix } = config;
-const name = `${prefix}-date-time-picker`;
+const componentName = 'date-time-picker';
 
 enum ModeItem {
   YEAR = 'year',
@@ -41,6 +37,8 @@ interface ColumnItemValue {
 
 @wxComponent()
 export default class DateTimePicker extends SuperComponent {
+  behaviors = [usingConfig({ componentName })];
+
   properties = props;
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-confirm`, `${prefix}-class-cancel`, `${prefix}-class-title`];
@@ -50,16 +48,8 @@ export default class DateTimePicker extends SuperComponent {
   };
 
   observers = {
-    'start, end, value': function () {
+    'start, end, value, globalConfig'() {
       this.updateColumns();
-    },
-
-    customLocale(v) {
-      if (!v || !dayjsLocaleMap[v].key) return;
-      this.setData({
-        locale: dayjsLocaleMap[v].i18n,
-        dayjsLocale: dayjsLocaleMap[v].key,
-      });
     },
 
     mode(m) {
@@ -75,12 +65,10 @@ export default class DateTimePicker extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     columns: [],
     columnsValue: [],
     fullModes: [],
-    locale: dayjsLocaleMap[defaultLocale].i18n, // 国际化语言包
-    dayjsLocale: dayjsLocaleMap[defaultLocale].key, // dayjs 自适应的 key
   };
 
   controlledProps = [
@@ -102,19 +90,20 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     getDaysOfWeekInMonth(date: Dayjs, type: string): Array<{ value: string; label: string }> {
-      const { locale, steps, dayjsLocale } = this.data;
+      const { globalConfig, steps } = this.data;
       const startOfMonth = date.startOf('month');
       const minEdge = this.getOptionEdge('min', type);
       const maxEdge = this.getOptionEdge('max', type);
       const step = steps?.[type] ?? 1;
       const daysOfWeek = [];
+      const dayjsLocale = globalConfig?.dayjsLocale || 'zh-cn';
 
       for (let i = minEdge; i <= maxEdge; i += step) {
-        const currentDate = startOfMonth.date(i).locale(dayjsLocale);
-        const dayName = currentDate.format('ddd');
+        const week = startOfMonth.date(i).locale(dayjsLocale).format('ddd');
+
         daysOfWeek.push({
           value: `${i}`,
-          label: `${i}${locale.date || ''} ${dayName}`,
+          label: `${i}${globalConfig?.dateLabel} ${week}`,
         });
       }
 
@@ -209,13 +198,12 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     getOptionByType(type: string) {
-      const { locale, steps, showWeek } = this.data;
+      const { globalConfig, steps, showWeek } = this.data;
       const options: ColumnItemValue[] = [];
 
       const minEdge = this.getOptionEdge('min', type);
       const maxEdge = this.getOptionEdge('max', type);
       const step = steps?.[type] ?? 1;
-      const dayjsMonthsShort = dayjs().locale(this.data.dayjsLocale).localeData().monthsShort();
 
       if (type === 'date' && showWeek) {
         return this.getDaysOfWeekInMonth(this.date, type);
@@ -224,7 +212,7 @@ export default class DateTimePicker extends SuperComponent {
       for (let i = minEdge; i <= maxEdge; i += step) {
         options.push({
           value: `${i}`,
-          label: type === 'month' ? dayjsMonthsShort[i] : `${i + locale[type]}`,
+          label: type === 'month' ? globalConfig.months[i] : `${i}${globalConfig[`${type}Label`]}`,
         });
       }
 
@@ -232,14 +220,14 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     getYearOptions(dateParams): ColumnItemValue[] {
-      const { locale } = this.data;
+      const { globalConfig } = this.data;
       const { minDateYear, maxDateYear } = dateParams;
 
       const years: ColumnItemValue[] = [];
       for (let i = minDateYear; i <= maxDateYear; i += 1) {
         years.push({
           value: `${i}`,
-          label: `${i + locale.year}`,
+          label: `${i}${globalConfig.yearLabel}`,
         });
       }
       return years;
@@ -265,16 +253,16 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     getMonthOptions(): ColumnItemValue[] {
+      const { globalConfig } = this.data;
       const months: ColumnItemValue[] = [];
 
       const minMonth = this.getOptionEdge('min', 'month');
       const maxMonth = this.getOptionEdge('max', 'month');
-      const dayjsMonthsShort = dayjs.monthsShort();
 
       for (let i = minMonth; i <= maxMonth; i += 1) {
         months.push({
           value: `${i}`,
-          label: dayjsMonthsShort[i],
+          label: globalConfig.months[i],
         });
       }
 
@@ -282,7 +270,7 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     getDayOptions(): ColumnItemValue[] {
-      const { locale } = this.data;
+      const { globalConfig } = this.data;
       const days: ColumnItemValue[] = [];
       const minDay = this.getOptionEdge('min', 'date');
       const maxDay = this.getOptionEdge('max', 'date');
@@ -290,7 +278,7 @@ export default class DateTimePicker extends SuperComponent {
       for (let i = minDay; i <= maxDay; i += 1) {
         days.push({
           value: `${i}`,
-          label: `${i + locale.day}`,
+          label: `${i}${globalConfig.dateLabel}`,
         });
       }
 
@@ -298,7 +286,7 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     getHourOptions() {
-      const { locale } = this.data;
+      const { globalConfig } = this.data;
       const hours: ColumnItemValue[] = [];
       const minHour = this.getOptionEdge('min', 'hour');
       const maxHour = this.getOptionEdge('max', 'hour');
@@ -306,7 +294,7 @@ export default class DateTimePicker extends SuperComponent {
       for (let i = minHour; i <= maxHour; i += 1) {
         hours.push({
           value: `${i}`,
-          label: `${i + locale.hour}`,
+          label: `${i}${globalConfig.hourLabel}`,
         });
       }
 
@@ -314,7 +302,7 @@ export default class DateTimePicker extends SuperComponent {
     },
 
     getMinuteOptions() {
-      const { locale } = this.data;
+      const { globalConfig } = this.data;
       const minutes: ColumnItemValue[] = [];
       const minMinute = this.getOptionEdge('min', 'minute');
       const maxMinute = this.getOptionEdge('max', 'minute');
@@ -322,7 +310,7 @@ export default class DateTimePicker extends SuperComponent {
       for (let i = minMinute; i <= maxMinute; i += 1) {
         minutes.push({
           value: `${i}`,
-          label: `${i + locale.minute}`,
+          label: `${i}${globalConfig.minuteLabel}`,
         });
       }
 
