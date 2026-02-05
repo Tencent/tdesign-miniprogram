@@ -56,6 +56,7 @@ export default uniComponent({
       tools,
 
       dataValue: coalesce(this.value, this.defaultValue),
+      placeholderHeight: 56,
     };
   },
   watch: {
