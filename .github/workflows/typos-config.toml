@@ -10,9 +10,10 @@ loosing = "loosing"
 
 [files]
 extend-exclude = [
-  "CHANGELOG*.md", 
-  "changelog.json", 
+  "CHANGELOG*.md",
+  "changelog.json",
   "echarts.js",
+  "packages/components/locale/*",
   "packages/uniapp-components/npm/**/*",
   "packages/uniapp-pro-components/chat/npm/**/*",
   "packages/tdesign-uniapp/app/common/uni.css",
