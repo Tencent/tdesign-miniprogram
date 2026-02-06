@@ -161,6 +161,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './count-down.css';
-</style>
+<style scoped src="./count-down.css"></style>

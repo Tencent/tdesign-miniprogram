@@ -117,6 +117,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './switch.css';
-</style>
+<style scoped src="./switch.css"></style>

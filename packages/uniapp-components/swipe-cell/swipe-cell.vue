@@ -239,7 +239,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './swipe-cell.css';
-
-</style>
+<style scoped src="./swipe-cell.css"></style>

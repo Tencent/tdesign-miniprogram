@@ -459,6 +459,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './chat-sender.css';
-</style>
+<style scoped src="./chat-sender.css"></style>

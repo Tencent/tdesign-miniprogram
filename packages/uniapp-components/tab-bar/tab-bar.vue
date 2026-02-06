@@ -56,6 +56,7 @@ export default uniComponent({
       tools,
 
       dataValue: coalesce(this.value, this.defaultValue),
+      placeholderHeight: 56,
     };
   },
   watch: {
@@ -131,8 +132,8 @@ export default uniComponent({
   },
 });
 </script>
+<style scoped src="./tab-bar.css"></style>
 <style scoped>
-@import './tab-bar.css';
 /* #ifndef MP-WEIXIN */
 :deep(t-tab-bar-item) {
   flex: 1;

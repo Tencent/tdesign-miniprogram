@@ -86,6 +86,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './chat-loading.css';
-</style>
+<style scoped src="./chat-loading.css"></style>

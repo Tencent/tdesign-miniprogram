@@ -95,6 +95,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './tab-panel.css';
-</style>
+<style scoped src="./tab-panel.css"></style>

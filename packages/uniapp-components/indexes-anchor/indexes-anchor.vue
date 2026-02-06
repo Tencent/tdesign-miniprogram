@@ -68,6 +68,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './indexes-anchor.css';
-</style>
+<style scoped src="./indexes-anchor.css"></style>

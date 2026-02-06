@@ -344,6 +344,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './attachments.css';
-</style>
+<style scoped src="./attachments.css"></style>

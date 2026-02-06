@@ -1,7 +1,7 @@
 import { MessageProps } from './message.interface';
 declare type Context = any;
 declare type Instance = any;
-interface MessageActionOptionsType extends Optional<MessageProps> {
+interface MessageActionOptionsType extends Partial<MessageProps> {
   context?: Context;
   selector?: string;
 }

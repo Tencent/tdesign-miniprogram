@@ -391,6 +391,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './form-item.css';
-</style>
+<style scoped src="./form-item.css"></style>

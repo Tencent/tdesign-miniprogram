@@ -478,9 +478,8 @@ export default uniComponent({
   },
 });
 </script>
+<style scoped src="./tabs.css"></style>
 <style scoped>
-@import './tabs.css';
-
 /* #ifndef MP-WEIXIN */
 :deep(t-tab-panel) {
   flex-shrink: 0;

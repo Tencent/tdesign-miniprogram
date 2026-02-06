@@ -270,7 +270,6 @@ export default uniComponent({
       classPrefix: name,
       visible: false,
       iCurrent: -1,
-      _steps: [],
       referenceStyle: '',
       popoverStyle: '',
       title: '',
@@ -301,7 +300,7 @@ export default uniComponent({
   },
   created() {
     that = this;
-    this._getPlacement = this.getPlacement();
+    this.getPlacementResult = this.getPlacement();
   },
   mounted() {
     this.innerInit();
@@ -341,7 +340,6 @@ export default uniComponent({
           width: `${referenceWidth}px`,
           height: `${referenceHeight}px`,
         };
-        this._steps = this.steps;
         this.visible = true;
         this.referenceStyle = styles(style);
         this.title = coalesce(step.title, '');
@@ -351,7 +349,6 @@ export default uniComponent({
         const popoverStyle = await this.placementOffset(step, style);
         this.popoverStyle = popoverStyle;
       } else {
-        this._steps = this.steps;
         this.visible = true;
         this.title = coalesce(step.title, '');
         this.body = coalesce(step.body, '');
@@ -361,7 +358,7 @@ export default uniComponent({
     async placementOffset({ placement, offset }, place) {
       await nextTick();
       const rect = await getRect(this, `.${name}__container`);
-      const style = this._getPlacement[placement]?.(rect, place, offset);
+      const style = this.getPlacementResult[placement]?.(rect, place, offset);
       return styles({ position: 'absolute', ...style });
     },
     makeButtonProps(step, mode) {
@@ -520,9 +517,7 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './guide.css';
-</style>
+<style scoped src="./guide.css"></style>
 <style scoped lang="less">
 .t-guide__footer--dialog {
   // 适配 QQ 小程序等
