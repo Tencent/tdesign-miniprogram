@@ -9,7 +9,7 @@
       :using-custom-navbar="usingCustomNavbar || (popupProps && popupProps.usingCustomNavbar)"
       :custom-navbar-height="coalesce(customNavbarHeight, popupProps && popupProps.usingCustomNavbar)"
       :z-index="(popupProps && popupProps.zIndex) || defaultPopUpzIndex"
-      :overlay-props="(popupProps && popupProps.overlayProps) || defaultPopUpProps"
+      :overlay-props="(popupProps && popupProps.overlayProps) || defaultOverlayProps"
       @visible-change="onPopupChange"
     >
       <template #content>
@@ -147,7 +147,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      defaultPopUpProps: {},
+      defaultOverlayProps: {},
       defaultPopUpzIndex: 11500,
       indicatorTop: 72, // 默认indicator位置，会动态计算
 

@@ -3,9 +3,12 @@
     <t-popup
       v-if="usePopup"
       :visible="visible"
-      :using-custom-navbar="usingCustomNavbar"
-      :custom-navbar-height="customNavbarHeight"
       placement="bottom"
+      :show-overlay="isShowOverlay(popupProps && popupProps.showOverlay, true)"
+      :using-custom-navbar="usingCustomNavbar || (popupProps && popupProps.usingCustomNavbar)"
+      :custom-navbar-height="coalesce(customNavbarHeight, popupProps && popupProps.usingCustomNavbar)"
+      :z-index="(popupProps && popupProps.zIndex)"
+      :overlay-props="(popupProps && popupProps.overlayProps) || defaultOverlayProps"
       @visible-change="onVisibleChange"
     >
       <CalendarTemplate
@@ -153,6 +156,8 @@ export default uniComponent({
       dataVisible: this.visible,
       dataValue: coalesce(this.value, this.defaultValue),
       days: [],
+
+      defaultOverlayProps: {},
     };
   },
   watch: {
@@ -253,6 +258,8 @@ export default uniComponent({
     }
   },
   methods: {
+    coalesce,
+
     getMonthTitle,
     getDateLabel,
     isDateSelected,
@@ -439,6 +446,10 @@ export default uniComponent({
       minDate && (this.base.minDate = minDate);
       maxDate && (this.base.maxDate = maxDate);
       this.calcMonths();
+    },
+
+    isShowOverlay(value, defaultValue) {
+      return tools.isBoolean(value) ? value : defaultValue;
     },
   },
 });
