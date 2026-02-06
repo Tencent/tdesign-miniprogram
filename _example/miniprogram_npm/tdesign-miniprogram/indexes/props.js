@@ -1,0 +1,1 @@
+const props={current:{type:null,value:null},defaultCurrent:{type:null},indexList:{type:Array},sticky:{type:Boolean,value:!0},stickyOffset:{type:Number,value:0}};export default props;

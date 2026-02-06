@@ -1,0 +1,5 @@
+<t-button size="large" variant="outline" bind:tap="onTriggerClick" block theme="primary">Toggle</t-button>
+
+<t-transition name="translate" visible="{{ visible }}">
+  <view class="block"></view>
+</t-transition>

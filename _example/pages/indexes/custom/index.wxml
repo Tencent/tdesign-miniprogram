@@ -1,0 +1,21 @@
+<view class="custom-navbar">
+  <t-navbar title="TDesign" leftArrow />
+</view>
+<view class="indexes">
+  <t-indexes bind:change="onChange" index-list="{{indexList}}" sticky-offset="{{stickyOffset + 8}}" t-class="wrapper">
+    <block wx:for="{{list}}" wx:key="index">
+      <t-indexes-anchor index="{{item.index}}" t-class="anchor-wrapper">
+        <view class="capsule{{curIndex == item.index ? ' capsule--active' : ''}}">{{item.index}}</view>
+      </t-indexes-anchor>
+      <t-cell-group>
+        <t-cell
+          wx:for="{{item.children}}"
+          wx:key="city"
+          wx:for-item="city"
+          title="{{city}}"
+          bordered="{{item.children.length - 1 != index}}"
+        />
+      </t-cell-group>
+    </block>
+  </t-indexes>
+</view>

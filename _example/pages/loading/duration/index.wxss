@@ -1,0 +1,9 @@
+.slider-container {
+  display: flex;
+  align-items: center;
+  width: 718rpx;
+}
+
+.slider-class {
+  flex-grow: 1;
+}

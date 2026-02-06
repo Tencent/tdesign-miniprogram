@@ -3,7 +3,7 @@ miniprogram_dist
 __snippets__
 
 _wechatide
-_example
+# _example
 !packages/components/**/_example/
 !packages/pro-components/**/_example/
 !packages/uniapp-components/**/_example/
@@ -17,7 +17,7 @@ packages/tdesign-miniprogram/test/e2e
 packages/tdesign-miniprogram/test/unit
 packages/tdesign-miniprogram/test/unit-virtualHost
 
-# about uniapp 
+# about uniapp
 packages/tdesign-uniapp/example/src/_tdesign*
 packages/tdesign-uniapp/example/src/pages-more/
 packages/tdesign-uniapp/npm_dist/

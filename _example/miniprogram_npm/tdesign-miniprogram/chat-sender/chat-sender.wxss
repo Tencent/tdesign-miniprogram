@@ -1,0 +1,26 @@
+@import '../common/style/index.wxss';.t-chat-sender{position:relative;border-radius:32rpx;padding:22rpx 0;border:2rpx solid var(--td-component-border,var(--td-gray-color-4,#dcdcdc));box-sizing:border-box;margin:24rpx 24rpx 80rpx 24rpx;box-shadow:var(--td-shadow-3,0 6px 30px 5px rgba(0,0,0,.05),0 16px 24px 2px rgba(0,0,0,.04),0 8px 10px -5px rgba(0,0,0,.08));transition:margin-bottom .3s ease;background-color:var(--td-bg-color-specialcomponent,#fff);}
+.t-chat-sender__header{padding-bottom:16rpx;width:100%;overflow:hidden;}
+.t-chat-sender__header:empty{display:none;}
+.t-chat-sender__attachments{padding:0 24rpx;}
+.t-chat-sender__actions{position:relative;display:flex;flex-direction:column;padding:0 24rpx;}
+.t-chat-sender__textarea{position:relative;flex:1;padding-bottom:16rpx;max-height:280rpx;}
+.t-chat-sender__textarea--control{max-height:264rpx;display:block;width:100%;color:var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9)));font:var(--td-font-body-large,32rpx / 48rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular));word-break:break-word;caret-color:var(--td-brand-color,var(--td-primary-color-7,#0052d9));letter-spacing:5%;padding-bottom:16rpx;}
+.t-chat-sender__textarea--placeholder{color:var(--td-text-color-disabled,var(--td-font-gray-4,rgba(0,0,0,.26)));font:var(--td-font-body-large,32rpx / 48rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular));position:absolute;left:0;top:0;transform:translateY(1%);z-index:1;pointer-events:none;opacity:1;transition:opacity .25s linear;}
+.t-chat-sender__textarea--placeholder.hide{opacity:0;}
+.t-chat-sender__footer{display:flex;justify-content:space-between;position:relative;z-index:2;}
+.t-chat-sender__upload{display:flex;margin-top:-40rpx;margin-bottom:24rpx;align-items:center;justify-content:flex-start;transition:all .3s ease;}
+.t-chat-sender__upload-item{display:flex;flex-direction:column;align-items:center;justify-content:center;border-radius:8rpx;flex-shrink:0;flex-grow:1;color:var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9)));}
+.t-chat-sender__upload-item__icon{width:96rpx;height:96rpx;border-radius:var(--td-radius-default,12rpx);margin-bottom:16rpx;background-color:var(--td-bg-color-secondarycontainer,var(--td-gray-color-1,#f3f3f3));display:flex;align-items:center;justify-content:center;}
+.t-chat-sender__upload-item__text{font:var(--td-font-body-medium,28rpx / 44rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular));}
+.t-chat-sender__sendbtn{display:flex;align-items:center;justify-content:center;}
+.t-chat-sender__sendbtn--default{display:flex;align-items:center;justify-content:center;}
+.t-chat-sender__sendbtn--default .plus-btn{color:var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9)));}
+.t-chat-sender__sendbtn--default .plus-btn .btn-icon{display:block;}
+.t-chat-sender__sendbtn--default .plus-btn.disabled{pointer-events:none;opacity:.24;}
+.t-chat-sender__sendbtn--default .plus-btn.disabled .btn-func:after{background:#c9ccd2;}
+.t-chat-sender__sendbtn--default .send-btn-text{color:var(--td-brand-color,var(--td-primary-color-7,#0052d9));}
+.t-chat-sender__sendbtn--default .send-btn-text.disabled{color:var(--td-text-color-disabled,var(--td-font-gray-4,rgba(0,0,0,.26)));}
+.t-chat-sender__sendbtn--default .send-btn-icon{color:var(--td-bg-color-container,var(--td-font-white-1,#fff));width:64rpx;height:64rpx;margin-left:16rpx;border-radius:999rpx;background-color:var(--td-brand-color,var(--td-primary-color-7,#0052d9));display:flex;align-items:center;justify-content:center;transform:rotate(-90deg);transition:all .3s ease;}
+.t-chat-sender__sendbtn--default .send-btn-icon.active{color:var(--td-text-color-anti,var(--td-font-white-1,#fff));}
+.t-chat-sender__sendbtn--default .send-btn-icon.disabled{background-color:var(--td-bg-color-secondarycomponent,var(--td-gray-color-4,#dcdcdc));color:var(--td-bg-color-container,var(--td-font-white-1,#fff));}
+.t-chat-sender .btn-func{width:58rpx;height:58rpx;position:relative;z-index:2;background-color:var(--td-bg-color-container,var(--td-font-white-1,#fff));border-radius:999rpx;border:2rpx solid var(--td-component-border,var(--td-gray-color-4,#dcdcdc));display:flex;justify-content:center;align-items:center;}

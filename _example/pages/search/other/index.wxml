@@ -1,0 +1,3 @@
+<view class="example-search">
+  <t-search model:value="{{value}}" center placeholder="搜索预设文案" bind:change="onChange" />
+</view>

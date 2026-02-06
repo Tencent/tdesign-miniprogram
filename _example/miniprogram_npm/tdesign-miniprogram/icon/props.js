@@ -1,0 +1,1 @@
+const props={color:{type:String,value:""},name:{type:String,value:"",required:!0},prefix:{type:String,value:""},size:{type:null}};export default props;

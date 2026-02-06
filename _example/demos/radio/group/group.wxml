@@ -1,0 +1,12 @@
+<t-radio-group class="radio-group" bind:change="onChange" value="{{value}}">
+  <t-radio
+    wx:for="{{items}}"
+    class="{{item.disabled ? 'radio-disabled' : ''}}"
+    wx:key="index"
+    title="{{item.title}}"
+    name="{{item.name}}"
+    disabled="{{item.disabled}}"
+    data-bordered="{{item.bordered}}"
+    label="{{item.label}}"
+  ></t-radio>
+</t-radio-group>

@@ -1,0 +1,1 @@
+<import src="./template/view.wxml"/><import src="./template/draggable.wxml"/><template is="{{draggable ? 'draggable' : 'view'}}" data="{{prefix, classPrefix, style, customStyle, moveStyle, draggable, buttonData}}"/>

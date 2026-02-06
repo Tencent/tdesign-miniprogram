@@ -1,0 +1,7 @@
+<t-textarea
+  label="标签文字"
+  placeholder="请输入文字"
+  disableDefaultPadding="{{true}}"
+  autosize="{{autosize}}"
+  bind:line-change="onLineChange"
+/>

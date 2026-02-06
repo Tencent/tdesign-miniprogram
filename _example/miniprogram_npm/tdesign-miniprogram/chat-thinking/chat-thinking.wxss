@@ -1,0 +1,21 @@
+@import '../common/style/index.wxss';.t-chat-thinking{width:100%;box-sizing:border-box;}
+.t-chat-thinking__inner--block{background-color:var(--td-bg-color-page,var(--td-gray-color-1,#f3f3f3));border-radius:var(--td-radius-default,12rpx);padding:var(--td-spacer,16rpx) var(--td-spacer-1,24rpx);}
+.t-chat-thinking__inner--border{padding:var(--td-spacer,16rpx) var(--td-spacer-1,24rpx);}
+.t-chat-thinking__hd{height:48rpx;overflow:hidden;display:flex;align-items:center;}
+.t-chat-thinking__hd .t-chat-thinking__icon{font-size:var(--td-font-size-xl,40rpx);}
+.t-chat-thinking__hd .t-chat-thinking__icon--close{color:var(--td-text-color-secondary,var(--td-font-gray-2,rgba(0,0,0,.6)));}
+.t-chat-thinking__hd .t-chat-thinking__icon--complete,.t-chat-thinking__hd .t-chat-thinking__icon--stop{color:var(--td-success-color,var(--td-success-color-5,#2ba471));}
+.t-chat-thinking__hd .t-chat-thinking__icon--collapse{color:var(--td-text-color-secondary,var(--td-font-gray-2,rgba(0,0,0,.6)));transition:transform .3s ease-in-out;}
+.t-chat-thinking__hd .t-chat-thinking__txt{color:var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9)));font-size:var(--td-font-size-base,28rpx);line-height:32rpx;flex:1;margin-left:var(--td-spacer,16rpx);}
+.t-chat-thinking__bd{color:var(--td-text-color-placeholder,var(--td-font-gray-3,rgba(0,0,0,.4)));font-size:var(--td-font-size-base,28rpx);line-height:170%;margin-top:var(--td-spacer-1,24rpx);white-space:pre-wrap;overflow-y:auto;}
+.t-chat-thinking__bd--border{border-left:4rpx solid var(--td-component-stroke,var(--td-gray-color-3,#e7e7e7));padding-left:var(--td-spacer,16rpx);}
+@keyframes scale{
+0%{transform:scale(1.333) translateY(-50%);}
+33%{transform:scale(1.333) translateY(-50%);}
+34%{transform:scale(1) translateY(-50%);}
+100%{transform:scale(1) translateY(-50%);}}
+@-webkit-keyframes scale{
+0%{-webkit-transform:scale(1.333) translateY(-50%);transform:scale(1.333) translateY(-50%);}
+33%{-webkit-transform:scale(1.333) translateY(-50%);transform:scale(1.333) translateY(-50%);}
+34%{-webkit-transform:scale(1) translateY(-50%);transform:scale(1) translateY(-50%);}
+100%{-webkit-transform:scale(1) translateY(-50%);transform:scale(1) translateY(-50%);}}

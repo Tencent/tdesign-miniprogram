@@ -1,0 +1,50 @@
+<view class="chat-box" style="height: {{contentHeight}};">
+  <t-chat>
+    <block wx:for="{{chatList}}" wx:key="index" wx:for-index="chatIndex">
+      <t-chat-message
+        chat-id="{{item.chatId}}"
+        avatar="{{item.avatar || ''}}"
+        name="{{item.name || ''}}"
+        datetime="{{item.datetime || ''}}"
+        content="{{item.message.content}}"
+        role="{{item.message.role}}"
+        chatContentProps="{{chatContentProps}}"
+        placement="{{item.message.role === 'user' ? 'right' : 'left'}}"
+        bind:message-longpress="showPopover"
+      >
+        <t-chat-actionbar
+          wx:if="{{chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'}}"
+          slot="actionbar"
+          actionBar="{{customActionBar}}"
+          bind:actions="handleAction"
+        />
+      </t-chat-message>
+    </block>
+    <view slot="footer">
+      <t-chat-sender
+        value="{{value}}"
+        loading="{{loading}}"
+        disabled="{{disabled}}"
+        bind:send="onSend"
+        fileList="{{fileList}}"
+        bind:stop="onStop"
+        bind:focus="onFocus"
+        bind:keyboardheightchange="onkeyboardheightchange"
+        bind:updateVisible="onUpdateVisible"
+        bind:fileDelete="onFileDelete"
+        bind:fileChange="onFileChange"
+        attachmentsProps="{{attachmentsProps}}"
+        renderPresets="{{renderPresets}}"
+        autoRiseWithKeyboard="{{true}}"
+        visible="{{visible}}"
+      />
+    </view>
+  </t-chat>
+  <t-chat-actionbar
+    class="popover-actionbar"
+    placement="longpress"
+    bind:actions="handlePopoverAction"
+    longPressPosition="{{longPressPosition}}"
+  />
+</view>
+<t-toast id="t-toast" />

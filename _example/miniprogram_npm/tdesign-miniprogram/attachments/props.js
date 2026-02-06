@@ -1,0 +1,1 @@
+const props={addable:{type:Boolean,value:!0},imageViewer:{type:Boolean,value:!0},items:{type:Array,value:[],required:!0},removable:{type:Boolean,value:!0}};export default props;

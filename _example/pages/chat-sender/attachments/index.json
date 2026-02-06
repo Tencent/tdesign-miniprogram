@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "styleIsolation": "shared",
+  "usingComponents": {
+    "t-navbar": "tdesign-miniprogram/navbar/navbar",
+    "t-chat-sender": "tdesign-miniprogram/chat-sender/chat-sender",
+    "t-toast": "tdesign-miniprogram/toast/toast"
+  }
+}
