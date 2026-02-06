@@ -300,7 +300,7 @@ export default uniComponent({
   },
   created() {
     that = this;
-    this._getPlacement = this.getPlacement();
+    this.getPlacementResult = this.getPlacement();
   },
   mounted() {
     this.innerInit();
@@ -358,7 +358,7 @@ export default uniComponent({
     async placementOffset({ placement, offset }, place) {
       await nextTick();
       const rect = await getRect(this, `.${name}__container`);
-      const style = this._getPlacement[placement]?.(rect, place, offset);
+      const style = this.getPlacementResult[placement]?.(rect, place, offset);
       return styles({ position: 'absolute', ...style });
     },
     makeButtonProps(step, mode) {

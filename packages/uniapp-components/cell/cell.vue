@@ -93,15 +93,15 @@
       ]"
     >
       <t-icon
-        v-if="innerArrow"
+        v-if="rightArrow"
         :custom-style="rightArrowCustomStyle"
         :t-class=" classPrefix + '__right-icon ' + tClassRightIcon"
-        :name="innerArrow.name || ''"
-        :size="innerArrow.size"
-        :color="innerArrow.color"
+        :name="rightArrow.name || ''"
+        :size="rightArrow.size"
+        :color="rightArrow.color"
         :aria-hidden="true"
-        :aria-label="innerArrow.ariaLabel"
-        :aria-role="innerArrow.ariaRole"
+        :aria-label="rightArrow.ariaLabel"
+        :aria-role="rightArrow.ariaRole"
         @click="'handleClose' || ''"
       />
       <block v-else>
@@ -132,7 +132,7 @@ import TImage from '../image/image';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import { calcIcon } from '../common/utils';
+import { calcIcon, addUnit } from '../common/utils';
 import tools from '../common/utils.wxs';
 
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
@@ -177,7 +177,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      innerArrow: null,
+      rightArrow: null,
       iRightIcon: null,
       iLeftIcon: null,
       isLastChild: false,
@@ -187,14 +187,28 @@ export default uniComponent({
   computed: {
     rightArrowCustomStyle() {
       return tools._style([
-        COMMON_RIGHT_ICON_STYLE,
+        {
+          color: this.rightArrow.color
+            ? this.rightArrow.color
+            : COMMON_RIGHT_ICON_STYLE.color,
+          fontSize: this.rightArrow.size
+            ? addUnit(this.rightArrow.size)
+            : COMMON_RIGHT_ICON_STYLE.fontSize,
+        },
         this.rightIconStyle || '',
-        this.innerArrow.style || '',
+        this.rightArrow.style || '',
       ]);
     },
     rightIconCustomStyle() {
       return tools._style([
-        COMMON_RIGHT_ICON_STYLE,
+        {
+          color: this.iRightIcon.color
+            ? this.iRightIcon.color
+            : COMMON_RIGHT_ICON_STYLE.color,
+          fontSize: this.iRightIcon.size
+            ? addUnit(this.iRightIcon.size)
+            : COMMON_RIGHT_ICON_STYLE.fontSize,
+        },
         this.rightIconStyle || '',
         this.iRightIcon.style || '',
       ]);
@@ -202,8 +216,12 @@ export default uniComponent({
     leftIconCustomStyle() {
       return tools._style([
         {
-          color: 'var(--td-cell-left-icon-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)))',
-          fontSize: 'var(--td-cell-left-icon-font-size, 24px)',
+          color: this.iLeftIcon.color
+            ? this.iLeftIcon.color
+            : 'var(--td-cell-left-icon-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)))',
+          fontSize: this.iLeftIcon.size
+            ? addUnit(this.iLeftIcon.size)
+            : 'var(--td-cell-left-icon-font-size, 24px)',
         },
         this.iLeftIcon.style || '',
       ]);
@@ -230,7 +248,7 @@ export default uniComponent({
     },
     arrow: {
       handler(e) {
-        this.setIcon('innerArrow', e, 'chevron-right');
+        this.setIcon('rightArrow', e, 'chevron-right');
       },
       immediate: true,
     },

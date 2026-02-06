@@ -82,7 +82,7 @@ import TLoading from '../loading/loading';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import { calcIcon } from '../common/utils';
+import { calcIcon, addUnit } from '../common/utils';
 import tools from '../common/utils.wxs';
 
 
@@ -129,7 +129,9 @@ export default uniComponent({
 
       return tools._style([
         {
-          fontSize: fontSize[this.size || 'medium'],
+          fontSize: this.innerIcon.size
+            ? addUnit(this.innerIcon.size)
+            : fontSize[this.size || 'medium'],
           borderRadius: 'var(--td-button-icon-border-radius, 4px)',
         },
         this.innerIcon.style || '',
