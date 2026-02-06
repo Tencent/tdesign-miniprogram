@@ -270,7 +270,6 @@ export default uniComponent({
       classPrefix: name,
       visible: false,
       iCurrent: -1,
-      _steps: [],
       referenceStyle: '',
       popoverStyle: '',
       title: '',
@@ -341,7 +340,6 @@ export default uniComponent({
           width: `${referenceWidth}px`,
           height: `${referenceHeight}px`,
         };
-        this._steps = this.steps;
         this.visible = true;
         this.referenceStyle = styles(style);
         this.title = coalesce(step.title, '');
@@ -351,7 +349,6 @@ export default uniComponent({
         const popoverStyle = await this.placementOffset(step, style);
         this.popoverStyle = popoverStyle;
       } else {
-        this._steps = this.steps;
         this.visible = true;
         this.title = coalesce(step.title, '');
         this.body = coalesce(step.body, '');

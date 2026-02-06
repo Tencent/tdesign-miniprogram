@@ -62,20 +62,20 @@
         >
           <slot name="close-btn" />
           <block
-            v-if="_closeBtn"
+            v-if="iCloseBtn"
             name="icon"
           >
             <t-icon
-              :custom-style="_closeBtn.style || ''"
-              :t-class="_closeBtn.tClass"
-              :prefix="_closeBtn.prefix"
-              :name="_closeBtn.name"
-              :size="_closeBtn.size"
-              :color="_closeBtn.color"
-              :aria-hidden="!!_closeBtn.ariaHidden"
-              :aria-label="_closeBtn.ariaLabel"
-              :aria-role="_closeBtn.ariaRole"
-              @click="_closeBtn.click || ''"
+              :custom-style="iCloseBtn.style || ''"
+              :t-class="iCloseBtn.tClass"
+              :prefix="iCloseBtn.prefix"
+              :name="iCloseBtn.name"
+              :size="iCloseBtn.size"
+              :color="iCloseBtn.color"
+              :aria-hidden="!!iCloseBtn.ariaHidden"
+              :aria-label="iCloseBtn.ariaLabel"
+              :aria-role="iCloseBtn.ariaRole"
+              @click="iCloseBtn.click || ''"
             />
           </block>
         </view>
@@ -93,17 +93,17 @@
         >
           <slot name="delete-btn" />
           <t-icon
-            v-if="_deleteBtn"
-            :custom-style="_deleteBtn.style || ''"
-            :t-class="_deleteBtn.tClass"
-            :prefix="_deleteBtn.prefix"
-            :name="_deleteBtn.name"
-            :size="_deleteBtn.size"
-            :color="_deleteBtn.color"
-            :aria-hidden="!!_deleteBtn.ariaHidden"
-            :aria-label="_deleteBtn.ariaLabel"
-            :aria-role="_deleteBtn.ariaRole"
-            @click="_deleteBtn.click || ''"
+            v-if="iDeleteBtn"
+            :custom-style="iDeleteBtn.style || ''"
+            :t-class="iDeleteBtn.tClass"
+            :prefix="iDeleteBtn.prefix"
+            :name="iDeleteBtn.name"
+            :size="iDeleteBtn.size"
+            :color="iDeleteBtn.color"
+            :aria-hidden="!!iDeleteBtn.ariaHidden"
+            :aria-label="iDeleteBtn.ariaLabel"
+            :aria-role="iDeleteBtn.ariaRole"
+            @click="iDeleteBtn.click || ''"
           />
         </view>
       </view>
@@ -157,8 +157,8 @@ export default uniComponent({
       maskTop: 0,
       tools,
 
-      _deleteBtn: null,
-      _closeBtn: null,
+      iDeleteBtn: null,
+      iCloseBtn: null,
       dataVisible: this.visible,
     };
   },
@@ -174,14 +174,14 @@ export default uniComponent({
 
     closeBtn: {
       handler(v) {
-        this._closeBtn = calcIcon(v, 'close');
+        this.iCloseBtn = calcIcon(v, 'close');
       },
       immediate: true,
     },
 
     deleteBtn: {
       handler(v) {
-        this._deleteBtn =  calcIcon(v, 'delete');
+        this.iDeleteBtn =  calcIcon(v, 'delete');
       },
       immediate: true,
     },

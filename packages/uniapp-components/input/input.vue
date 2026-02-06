@@ -9,20 +9,20 @@
       <view :class="classPrefix + '__icon--prefix'">
         <slot name="prefix-icon" />
         <block
-          v-if="_prefixIcon"
+          v-if="iPrefixIcon"
           name="icon"
         >
           <t-icon
-            :custom-style="_prefixIcon.style || ''"
+            :custom-style="iPrefixIcon.style || ''"
             :t-class="tClassPrefixIcon"
-            :prefix="_prefixIcon.prefix"
-            :name="_prefixIcon.name"
-            :size="_prefixIcon.size"
-            :color="_prefixIcon.color"
+            :prefix="iPrefixIcon.prefix"
+            :name="iPrefixIcon.name"
+            :size="iPrefixIcon.size"
+            :color="iPrefixIcon.color"
             :aria-hidden="true"
-            :aria-label="_prefixIcon.ariaLabel"
-            :aria-role="_prefixIcon.ariaRole"
-            @click="_prefixIcon.click || ''"
+            :aria-label="iPrefixIcon.ariaLabel"
+            :aria-role="iPrefixIcon.ariaRole"
+            @click="iPrefixIcon.click || ''"
           />
         </block>
       </view>
@@ -81,21 +81,21 @@
           @nicknamereview="onNickNameReview"
         >
         <view
-          v-if="_clearIcon && dataValue && dataValue.length && showClearIcon"
+          v-if="iClearIcon && dataValue && dataValue.length && showClearIcon"
           :class="classPrefix + '__wrap--clearable-icon'"
           @click.stop="clearInput"
         >
           <t-icon
-            :custom-style="_clearIcon.style || ''"
+            :custom-style="iClearIcon.style || ''"
             :t-class="tClassClearable"
-            :prefix="_clearIcon.prefix"
-            :name="_clearIcon.name"
-            :size="_clearIcon.size"
-            :color="_clearIcon.color"
+            :prefix="iClearIcon.prefix"
+            :name="iClearIcon.name"
+            :size="iClearIcon.size"
+            :color="iClearIcon.color"
             :aria-hidden="false"
-            :aria-label="_clearIcon.ariaLabel || '清除'"
-            :aria-role="_clearIcon.ariaRole || 'button'"
-            @click="_clearIcon.click || ''"
+            :aria-label="iClearIcon.ariaLabel || '清除'"
+            :aria-role="iClearIcon.ariaRole || 'button'"
+            @click="iClearIcon.click || ''"
           />
         </view>
         <view
@@ -113,20 +113,20 @@
         >
           <slot name="suffix-icon" />
           <block
-            v-if="_suffixIcon"
+            v-if="iSuffixIcon"
             name="icon"
           >
             <t-icon
-              :custom-style="_suffixIcon.style || ''"
+              :custom-style="iSuffixIcon.style || ''"
               :t-class="tClassSuffixIcon"
-              :prefix="_suffixIcon.prefix"
-              :name="_suffixIcon.name"
-              :size="_suffixIcon.size"
-              :color="_suffixIcon.color"
+              :prefix="iSuffixIcon.prefix"
+              :name="iSuffixIcon.name"
+              :size="iSuffixIcon.size"
+              :color="iSuffixIcon.color"
               :aria-hidden="true"
-              :aria-label="_suffixIcon.ariaLabel"
-              :aria-role="_suffixIcon.ariaRole || 'button'"
-              @click="_suffixIcon.click || ''"
+              :aria-label="iSuffixIcon.ariaLabel"
+              :aria-role="iSuffixIcon.ariaRole || 'button'"
+              @click="iSuffixIcon.click || ''"
             />
           </block>
         </view>
@@ -214,21 +214,21 @@ export default uniComponent({
   watch: {
     prefixIcon: {
       handler(v) {
-        this._prefixIcon = calcIcon(v);
+        this.iPrefixIcon = calcIcon(v);
       },
       immediate: true,
     },
 
     suffixIcon: {
       handler(v) {
-        this._suffixIcon = calcIcon(v);
+        this.iSuffixIcon = calcIcon(v);
       },
       immediate: true,
     },
 
     clearable: {
       handler(v) {
-        this._clearIcon = calcIcon(v, 'close-circle-filled');
+        this.iClearIcon = calcIcon(v, 'close-circle-filled');
       },
       immediate: true,
     },

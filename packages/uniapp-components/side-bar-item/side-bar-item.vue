@@ -32,20 +32,20 @@
       />
     </block>
     <block
-      v-if="_icon"
+      v-if="innerIcon"
       name="icon"
     >
       <t-icon
         :custom-style="iconCustomStyle"
         :t-class="classPrefix + '__icon'"
-        :prefix="_icon.prefix"
-        :name="_icon.name"
-        :size="_icon.size"
-        :color="_icon.color"
-        :aria-hidden="!!_icon.ariaHidden"
-        :aria-label="_icon.ariaLabel"
-        :aria-role="_icon.ariaRole"
-        @click="_icon.click || ''"
+        :prefix="innerIcon.prefix"
+        :name="innerIcon.name"
+        :size="innerIcon.size"
+        :color="innerIcon.color"
+        :aria-hidden="!!innerIcon.ariaHidden"
+        :aria-label="innerIcon.ariaLabel"
+        :aria-role="innerIcon.ariaRole"
+        @click="innerIcon.click || ''"
       />
     </block>
     <block v-if="badgeProps">
@@ -122,14 +122,14 @@ export default uniComponent({
           fontSize: 'var(--td-side-bar-icon-size, 20px)',
           marginRight: '2px',
         },
-        this._icon.style || '',
+        this.innerIcon.style || '',
       ]);
     },
   },
   watch: {
     icon: {
       handler(v) {
-        this._icon = typeof v === 'string' ? { name: v } : v;
+        this.innerIcon = typeof v === 'string' ? { name: v } : v;
       },
       immediate: true,
     },

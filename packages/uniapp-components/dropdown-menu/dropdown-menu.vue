@@ -29,21 +29,21 @@
       </view>
 
       <block
-        v-if="_arrowIcon"
+        v-if="iArrowIcon"
         name="icon"
       >
         <t-icon
-          :custom-style="_arrowIcon.style || ''"
+          :custom-style="iArrowIcon.style || ''"
           :t-class="getIconTClass(index)"
           :class="getIconClass(index)"
-          :prefix="_arrowIcon.prefix"
-          :name="_arrowIcon.name"
-          :size="_arrowIcon.size"
-          :color="_arrowIcon.color"
+          :prefix="iArrowIcon.prefix"
+          :name="iArrowIcon.name"
+          :size="iArrowIcon.size"
+          :color="iArrowIcon.color"
           :aria-hidden="true"
-          :aria-label="_arrowIcon.ariaLabel"
-          :aria-role="_arrowIcon.ariaRole"
-          @click="_arrowIcon.click || ''"
+          :aria-label="iArrowIcon.ariaLabel"
+          :aria-role="iArrowIcon.ariaRole"
+          @click="iArrowIcon.click || ''"
         />
       </block>
     </view>
@@ -91,7 +91,7 @@ export default uniComponent({
       menus: null,
       activeIdx: -1,
       bottom: 0,
-      _arrowIcon: {
+      iArrowIcon: {
         name: props.arrowIcon.default,
       },
       tools,
@@ -100,7 +100,7 @@ export default uniComponent({
   watch: {
     arrowIcon: {
       handler(v) {
-        this._arrowIcon = calcIcon(v);
+        this.iArrowIcon = calcIcon(v);
       },
       immediate: true,
     },

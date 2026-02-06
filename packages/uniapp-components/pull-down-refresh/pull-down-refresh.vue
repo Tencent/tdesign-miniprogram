@@ -122,8 +122,8 @@ export default uniComponent({
       loosing: false,
       enableToRefresh: true,
       scrollTop: 0,
-      _maxBarHeight: 0,
-      _loadingBarHeight: 0,
+      iMaxBarHeight: 0,
+      iLoadingBarHeight: 0,
 
       pixelRatio: 1,
       startPoint: null,
@@ -171,15 +171,15 @@ export default uniComponent({
         }, 240);
       }
 
-      this.tipsHeight = Math.min(val, this._loadingBarHeight);
+      this.tipsHeight = Math.min(val, this.iLoadingBarHeight);
     },
 
     maxBarHeight(v) {
-      this._maxBarHeight = unitConvert(v);
+      this.iMaxBarHeight = unitConvert(v);
     },
 
     loadingBarHeight(v) {
-      this._loadingBarHeight = unitConvert(v);
+      this.iLoadingBarHeight = unitConvert(v);
     },
   },
   mounted() {
@@ -187,8 +187,8 @@ export default uniComponent({
     const { loadingTexts, maxBarHeight, loadingBarHeight } = this;
     const isCustomLoadingTexts = Array.isArray(loadingTexts) && loadingTexts.length >= 4;
 
-    this._maxBarHeight = unitConvert(maxBarHeight);
-    this._loadingBarHeight = unitConvert(loadingBarHeight);
+    this.iMaxBarHeight = unitConvert(maxBarHeight);
+    this.iLoadingBarHeight = unitConvert(loadingBarHeight);
     this.dataLoadingTexts = isCustomLoadingTexts ? loadingTexts : defaultLoadingTexts;
 
     this.pixelRatio = 750 / screenWidth;
@@ -287,7 +287,7 @@ export default uniComponent({
       this.loosing = true;
 
       // 松开时高度超过阈值则触发刷新
-      if (barHeight > this._loadingBarHeight) {
+      if (barHeight > this.iLoadingBarHeight) {
         this._trigger('change', { value: true });
         this.$emit('refresh');
       } else {
@@ -299,7 +299,7 @@ export default uniComponent({
 
     doRefresh() {
       if (this.disabled) return;
-      this.barHeight = this._loadingBarHeight;
+      this.barHeight = this.iLoadingBarHeight;
       this.refreshStatus = REFRESH_STATUS_MAP.LOADING;
       this.loosing = true;
 
@@ -315,10 +315,10 @@ export default uniComponent({
     },
 
     setRefreshBarHeight(value) {
-      const barHeight = Math.min(value, this._maxBarHeight);
+      const barHeight = Math.min(value, this.iMaxBarHeight);
       const data = { barHeight };
 
-      if (barHeight >= this._loadingBarHeight) {
+      if (barHeight >= this.iLoadingBarHeight) {
         data.refreshStatus = REFRESH_STATUS_MAP.LOSING;
       } else {
         data.refreshStatus = REFRESH_STATUS_MAP.PULLING;

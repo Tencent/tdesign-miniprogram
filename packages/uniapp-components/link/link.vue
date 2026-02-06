@@ -24,20 +24,20 @@
       <view :class="classPrefix + '__prefix-icon ' + tClassPrefixIcon">
         <slot name="prefix-icon" />
         <block
-          v-if="_prefixIcon"
+          v-if="iPrefixIcon"
           name="icon"
         >
           <t-icon
-            :custom-style="_prefixIcon.style || ''"
-            :t-class="_prefixIcon.tClass"
-            :prefix="_prefixIcon.prefix"
-            :name="_prefixIcon.name"
-            :size="_prefixIcon.size"
-            :color="_prefixIcon.color"
+            :custom-style="iPrefixIcon.style || ''"
+            :t-class="iPrefixIcon.tClass"
+            :prefix="iPrefixIcon.prefix"
+            :name="iPrefixIcon.name"
+            :size="iPrefixIcon.size"
+            :color="iPrefixIcon.color"
             :aria-hidden="true"
-            :aria-label="_prefixIcon.ariaLabel"
-            :aria-role="_prefixIcon.arialRole"
-            @click="_suffixIcon.click || ''"
+            :aria-label="iPrefixIcon.ariaLabel"
+            :aria-role="iPrefixIcon.arialRole"
+            @click="iSuffixIcon.click || ''"
           />
         </block>
       </view>
@@ -51,20 +51,20 @@
       <view :class="classPrefix + '__suffix-icon ' + tClassSuffixIcon">
         <slot name="suffix-icon" />
         <block
-          v-if="_suffixIcon"
+          v-if="iSuffixIcon"
           name="icon"
         >
           <t-icon
-            :custom-style="_suffixIcon.style || ''"
-            :t-class="_suffixIcon.tClass"
-            :prefix="_suffixIcon.prefix || ''"
-            :name="_suffixIcon.name"
-            :size="_suffixIcon.size"
-            :color="_suffixIcon.color"
+            :custom-style="iSuffixIcon.style || ''"
+            :t-class="iSuffixIcon.tClass"
+            :prefix="iSuffixIcon.prefix || ''"
+            :name="iSuffixIcon.name"
+            :size="iSuffixIcon.size"
+            :color="iSuffixIcon.color"
             :aria-hidden="true"
-            :aria-label="_suffixIcon.ariaLabel"
-            :aria-role="_suffixIcon.arialRole"
-            @click="_suffixIcon.click || ''"
+            :aria-label="iSuffixIcon.ariaLabel"
+            :aria-role="iSuffixIcon.arialRole"
+            @click="iSuffixIcon.click || ''"
           />
         </block>
       </view>
@@ -105,21 +105,21 @@ export default uniComponent({
       prefix,
       classPrefix: name,
       tools,
-      _prefixIcon: null,
-      _suffixIcon: null,
+      iPrefixIcon: null,
+      iSuffixIcon: null,
       className: '',
     };
   },
   watch: {
     prefixIcon: {
       handler(value) {
-        this._prefixIcon = calcIcon(value);
+        this.iPrefixIcon = calcIcon(value);
       },
       immediate: true,
     },
     suffixIcon: {
       handler(value) {
-        this._suffixIcon = calcIcon(value);
+        this.iSuffixIcon = calcIcon(value);
       },
       immediate: true,
     },

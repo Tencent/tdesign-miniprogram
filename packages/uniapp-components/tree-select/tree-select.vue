@@ -252,13 +252,12 @@ export default uniComponent({
     getScrollIntoView(status) {
       const { innerValue: value, customValue, scrollIntoView } = this;
       if (status === 'init') {
-        const _value = customValue || value;
-        const scrollIntoView = Array.isArray(_value)
-          ? _value.map(item => (Array.isArray(item) ? item[0] : item))
-          : [_value];
-        // setTimeout(() => {
+        const innerValue = customValue || value;
+        const scrollIntoView = Array.isArray(innerValue)
+          ? innerValue.map(item => (Array.isArray(item) ? item[0] : item))
+          : [innerValue];
+
         this.scrollIntoView = scrollIntoView;
-        // }, 1000);
       } else {
         if (scrollIntoView === null) return;
         this.scrollIntoView = null;

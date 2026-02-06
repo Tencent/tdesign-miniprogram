@@ -5,7 +5,7 @@
       :class="prefix + '-overlay ' + transitionClass"
       :style="tools._style([
         '--td-overlay-transition-duration:' + duration + 'ms',
-        'z-index:' + _zIndex, 'top:' + distanceTop + 'px',
+        'z-index:' + iZIndex, 'top:' + distanceTop + 'px',
         computedStyle,
         customStyle
       ])"
@@ -22,7 +22,7 @@
       v-else-if="realVisible"
       :class="prefix + '-overlay ' + transitionClass "
       :style="tools._style([
-        'z-index:' + _zIndex,
+        'z-index:' + iZIndex,
         'top:' + distanceTop + 'px',
         computedStyle,
         customStyle
@@ -69,7 +69,7 @@ export default uniComponent({
       prefix,
       classPrefix: name,
       computedStyle: '',
-      _zIndex: 11000,
+      iZIndex: 11000,
       tools,
     };
   },
@@ -83,7 +83,7 @@ export default uniComponent({
     zIndex: {
       handler(v) {
         if (v !== 0) {
-          this._zIndex = v;
+          this.iZIndex = v;
         }
       },
       immediate: true,

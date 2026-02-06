@@ -104,9 +104,9 @@ export default uniComponent({
       showTitle: '',
       hideLeft: false,
       hideCenter: false,
-      _menuRect: null,
-      _leftRect: null,
-      _boxStyle: {},
+      iMenuRect: null,
+      iLeftRect: null,
+      iBoxStyle: {},
       tools,
 
       visibleClass: '',
@@ -152,23 +152,23 @@ export default uniComponent({
     initStyle() {
       this.getMenuRect();
 
-      const { _menuRect, _leftRect } = this;
+      const { iMenuRect, iLeftRect } = this;
 
-      if (!_menuRect || !_leftRect || !systemInfo) return;
+      if (!iMenuRect || !iLeftRect || !systemInfo) return;
 
-      const _boxStyle = {
+      const iBoxStyle = {
         '--td-navbar-padding-top': `${systemInfo.statusBarHeight}px`,
-        '--td-navbar-right': `${systemInfo.windowWidth - _menuRect.left}px`, // 导航栏右侧小程序胶囊按钮宽度
-        '--td-navbar-left-max-width': `${_menuRect.left}px`, // 左侧内容最大宽度
-        '--td-navbar-capsule-height': `${_menuRect.height}px`, // 胶囊高度
-        '--td-navbar-capsule-width': `${_menuRect.width}px`, // 胶囊宽度
-        '--td-navbar-height': `${(_menuRect.top - systemInfo.statusBarHeight) * 2 + _menuRect.height}px`,
+        '--td-navbar-right': `${systemInfo.windowWidth - iMenuRect.left}px`, // 导航栏右侧小程序胶囊按钮宽度
+        '--td-navbar-left-max-width': `${iMenuRect.left}px`, // 左侧内容最大宽度
+        '--td-navbar-capsule-height': `${iMenuRect.height}px`, // 胶囊高度
+        '--td-navbar-capsule-width': `${iMenuRect.width}px`, // 胶囊宽度
+        '--td-navbar-height': `${(iMenuRect.top - systemInfo.statusBarHeight) * 2 + iMenuRect.height}px`,
       };
       // #ifdef H5 || APP-PLUS
-      delete _boxStyle['--td-navbar-height'];
+      delete iBoxStyle['--td-navbar-height'];
       // #endif
 
-      this.calcCenterStyle(_leftRect, _menuRect, _boxStyle);
+      this.calcCenterStyle(iLeftRect, iMenuRect, iBoxStyle);
     },
     onWatchTitle() {
       const { title } = this;
@@ -185,25 +185,25 @@ export default uniComponent({
       defaultStyle,
     ) {
       const maxSpacing = Math.max(leftRect.right, systemInfo.windowWidth - menuRect.left);
-      const _boxStyle = {
+      const iBoxStyle = {
         ...defaultStyle,
         'z-index': this.zIndex,
         '--td-navbar-center-left': `${maxSpacing}px`, // 标题左侧距离
         '--td-navbar-center-width': `${Math.max(menuRect.left - maxSpacing, 0)}px`, // 标题宽度
       };
 
-      const boxStyle = Object.entries(_boxStyle)
+      const boxStyle = Object.entries(iBoxStyle)
         .map(([k, v]) => `${k}: ${v}`)
         .join('; ');
 
       this.boxStyle = boxStyle;
-      this._boxStyle = _boxStyle;
+      this.iBoxStyle = iBoxStyle;
     },
 
     getLeftRect() {
       getRect(this, `.${name}__left`).then((res) => {
-        if (res.right > this._leftRect.right) {
-          this.calcCenterStyle(res, this._menuRect, this._boxStyle);
+        if (res.right > this.iLeftRect.right) {
+          this.calcCenterStyle(res, this.iMenuRect, this.iBoxStyle);
         }
       });
     },
@@ -222,8 +222,8 @@ export default uniComponent({
         rect = uni.getMenuButtonBoundingClientRect() || {};
       }
 
-      this._menuRect = rect;
-      this._leftRect = {
+      this.iMenuRect = rect;
+      this.iLeftRect = {
         right: systemInfo.windowWidth - rect.left,
       };
     },

@@ -12,19 +12,19 @@
       <view :class="classPrefix + '__icon--left'">
         <slot name="icon" />
         <block
-          v-if="_icon"
+          v-if="innerIcon"
           name="icon"
         >
           <t-icon
-            :custom-style="_icon.style || ''"
+            :custom-style="innerIcon.style || ''"
             :t-class="tClassIcon"
-            :prefix="_icon.prefix"
-            :name="_icon.name"
-            :size="_icon.size"
-            :color="_icon.color"
+            :prefix="innerIcon.prefix"
+            :name="innerIcon.name"
+            :size="innerIcon.size"
+            :color="innerIcon.color"
             :aria-hidden="true"
-            :aria-label="_icon.ariaLabel"
-            :aria-role="_icon.ariaRole"
+            :aria-label="innerIcon.ariaLabel"
+            :aria-role="innerIcon.ariaRole"
           />
         </block>
       </view>
@@ -48,18 +48,18 @@
         </view>
       </view>
       <t-link
-        v-if="_link && _link.content"
+        v-if="innerLink && innerLink.content"
         :t-class="classPrefix + '__link ' + tClassLink"
-        :custom-style="tools._style([_link.style, _link.customStyle])"
-        :disabled="_link.disabled || false"
-        :hover="_link.hover || true"
-        :theme="_link.theme || 'primary'"
-        :size="_link.size || 'medium'"
-        :prefix-icon="_link.prefixIcon || ''"
-        :suffix-icon="_link.suffixIcon || ''"
-        :underline="_link.underline || false"
-        :content="_link.content || ''"
-        :navigator-props="_link.navigatorProps || null"
+        :custom-style="tools._style([innerLink.style, innerLink.customStyle])"
+        :disabled="innerLink.disabled || false"
+        :hover="innerLink.hover || true"
+        :theme="innerLink.theme || 'primary'"
+        :size="innerLink.size || 'medium'"
+        :prefix-icon="innerLink.prefixIcon || ''"
+        :suffix-icon="innerLink.suffixIcon || ''"
+        :underline="innerLink.underline || false"
+        :content="innerLink.content || ''"
+        :navigator-props="innerLink.navigatorProps || null"
         @complete="handleLinkClick"
       />
       <slot name="link" />
@@ -69,19 +69,19 @@
       >
         <slot name="close-btn" />
         <block
-          v-if="_closeBtn"
+          v-if="iCloseBtn"
           name="icon"
         >
           <t-icon
-            :custom-style="_closeBtn.style || ''"
+            :custom-style="iCloseBtn.style || ''"
             :t-class="tClassCloseBtn"
-            :prefix="_closeBtn.prefix"
-            :name="_closeBtn.name"
-            :size="_closeBtn.size"
-            :color="_closeBtn.color"
+            :prefix="iCloseBtn.prefix"
+            :name="iCloseBtn.name"
+            :size="iCloseBtn.size"
+            :color="iCloseBtn.color"
             :aria-hidden="false"
-            :aria-label="_closeBtn.ariaLabel || '关闭'"
-            :aria-role="_closeBtn.ariaRole || 'button'"
+            :aria-label="iCloseBtn.ariaLabel || '关闭'"
+            :aria-role="iCloseBtn.ariaRole || 'button'"
           />
         </block>
       </view>
@@ -173,13 +173,13 @@ export default uniComponent({
   watch: {
     theme: {
       handler(theme) {
-        this._icon = calcIcon(this.icon, THEME_ICON[theme]);
+        this.innerIcon = calcIcon(this.icon, THEME_ICON[theme]);
       },
       immediate: true,
     },
     icon: {
       handler(icon) {
-        this._icon = calcIcon(icon, THEME_ICON[this.theme]);
+        this.innerIcon = calcIcon(icon, THEME_ICON[this.theme]);
       },
       immediate: true,
     },
@@ -187,15 +187,15 @@ export default uniComponent({
 
     link: {
       handler(v) {
-        const _link = isObject(v) ? { ...v } : { content: v };
-        this._link = _link;
+        const innerLink = isObject(v) ? { ...v } : { content: v };
+        this.innerLink = innerLink;
       },
       immediate: true,
     },
 
     closeBtn: {
       handler(v) {
-        this._closeBtn = calcIcon(v, 'close');
+        this.iCloseBtn = calcIcon(v, 'close');
       },
       immediate: true,
     },

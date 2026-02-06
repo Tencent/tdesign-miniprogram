@@ -89,7 +89,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _height: 0,
+      innerHeight: 0,
       innerIndexList: [],
       scrollTop: 0,
       activeAnchor: this.current,
@@ -110,7 +110,7 @@ export default uniComponent({
       handler(v, pre) {
         const cb = () => {
           this.setIndexList(v);
-          this.setHeight(this._height);
+          this.setHeight(this.innerHeight);
         };
         if (!pre?.length) {
           // 防止抖音小程序报错
@@ -150,7 +150,7 @@ export default uniComponent({
     this.groupTop = [];
     this.sidebar = null;
 
-    if (this._height === 0) {
+    if (this.innerHeight === 0) {
       this.setHeight();
     }
 
@@ -165,7 +165,7 @@ export default uniComponent({
         const { windowHeight } = systemInfo;
         height = windowHeight;
       }
-      this._height = height;
+      this.innerHeight = height;
 
       setTimeout(() => {
         this.getAllRect();

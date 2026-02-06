@@ -33,20 +33,20 @@
           :t-class-count="prefix + '-badge-class'"
         >
           <block
-            v-if="_icon"
+            v-if="innerIcon"
             name="icon"
           >
             <t-icon
-              :custom-style="_icon.style || ''"
-              :t-class="_icon.tClass || ''"
-              :prefix="_icon.prefix"
-              :name="_icon.name"
-              :size="_icon.size || (iconOnly ? 24 : 20)"
-              :color="_icon.color"
-              :aria-hidden="_icon.ariaHidden"
-              :aria-label="_icon.ariaLabel"
-              :aria-role="_icon.ariaRole"
-              @click="_icon.click || ''"
+              :custom-style="innerIcon.style || ''"
+              :t-class="innerIcon.tClass || ''"
+              :prefix="innerIcon.prefix"
+              :name="innerIcon.name"
+              :size="innerIcon.size || (iconOnly ? 24 : 20)"
+              :color="innerIcon.color"
+              :aria-hidden="innerIcon.ariaHidden"
+              :aria-label="innerIcon.ariaLabel"
+              :aria-role="innerIcon.ariaRole"
+              @click="innerIcon.click || ''"
             />
           </block>
           <!-- 避免被 badge 组件识别为空，t-badge__content:not(:empty) -->
@@ -57,16 +57,16 @@
           name="icon"
         >
           <t-icon
-            :custom-style="_icon.style || ''"
-            :t-class="_icon.tClass || ''"
-            :prefix="_icon.prefix"
-            :name="_icon.name"
-            :size="_icon.size || (iconOnly ? 24 : 20)"
-            :color="_icon.color"
+            :custom-style="innerIcon.style || ''"
+            :t-class="innerIcon.tClass || ''"
+            :prefix="innerIcon.prefix"
+            :name="innerIcon.name"
+            :size="innerIcon.size || (iconOnly ? 24 : 20)"
+            :color="innerIcon.color"
             :aria-hidden="!iconOnly"
-            :aria-label="_icon.ariaLabel"
-            :aria-role="_icon.ariaRole"
-            @click="_icon.click || ''"
+            :aria-label="innerIcon.ariaLabel"
+            :aria-role="innerIcon.ariaRole"
+            @click="innerIcon.click || ''"
           />
         </block>
         <slot name="icon" />
@@ -148,7 +148,7 @@ export default uniComponent({
     },
     icon: {
       handler(v) {
-        this._icon = calcIcon(v);
+        this.innerIcon = calcIcon(v);
       },
       immediate: true,
     },

@@ -2,15 +2,15 @@
   <view
     :id="tId"
     :style="tools._style([customStyle])"
-    :class="tools.cls(classPrefix, [innerPlacement, ['block', block], ['disabled', _disabled]]) + ' ' + tClass"
-    :disabled="_disabled"
+    :class="tools.cls(classPrefix, [innerPlacement, ['block', block], ['disabled', iDisabled]]) + ' ' + tClass"
+    :disabled="iDisabled"
     aria-role="radio"
     :aria-checked="dataChecked"
     :aria-label="label + content"
-    :aria-disabled="_disabled"
+    :aria-disabled="iDisabled"
     @click.stop="handleTap"
   >
-    <view :class="tools.cls(classPrefix + '__icon', [innerPlacement, ['checked', dataChecked], ['disabled', _disabled]]) + ' ' + tClassIcon">
+    <view :class="tools.cls(classPrefix + '__icon', [innerPlacement, ['checked', dataChecked], ['disabled', iDisabled]]) + ' ' + tClassIcon">
       <slot
         v-if="slotIcon"
         name="icon"
@@ -33,11 +33,11 @@
         />
         <view
           v-if="dataChecked && icon == 'dot'"
-          :class="tools.cls(classPrefix + '__icon-' + icon, [['disabled', _disabled]])"
+          :class="tools.cls(classPrefix + '__icon-' + icon, [['disabled', iDisabled]])"
         />
         <view
           v-if="!dataChecked && (icon == 'circle' || icon == 'dot')"
-          :class="tools.cls(classPrefix + '__icon-circle', [['disabled', _disabled]])"
+          :class="tools.cls(classPrefix + '__icon-circle', [['disabled', iDisabled]])"
         />
         <view
           v-if="!dataChecked && icon == 'line'"
@@ -53,7 +53,7 @@
       <view
         :class="
           tools.cls(classPrefix + '__title', [
-            ['disabled', _disabled],
+            ['disabled', iDisabled],
             ['checked', dataChecked]
           ]) +
             ' ' +
@@ -70,7 +70,7 @@
       <view
         :class="
           tools.cls(classPrefix + '__description', [
-            ['disabled', _disabled],
+            ['disabled', iDisabled],
             ['checked', dataChecked]
           ]) +
             ' ' +
@@ -143,8 +143,8 @@ export default uniComponent({
       optionLinked: false,
       iconVal: [],
       innerPlacement: '',
-      _disabled: false,
-      _readonly: false,
+      iDisabled: false,
+      iReadonly: false,
       tools,
 
       dataChecked: coalesce(this.checked, this.defaultChecked),
@@ -164,13 +164,13 @@ export default uniComponent({
     },
     disabled: {
       handler(v) {
-        this._disabled = v;
+        this.iDisabled = v;
       },
       immediate: true,
     },
     readonly: {
       handler(v) {
-        this._readonly = v;
+        this.iReadonly = v;
       },
       immediate: true,
     },
@@ -180,10 +180,10 @@ export default uniComponent({
   },
   methods: {
     handleTap(e) {
-      const { _disabled, _readonly, contentDisabled } = this;
+      const { iDisabled, iReadonly, contentDisabled } = this;
       const { target } = e.currentTarget.dataset;
 
-      if (_disabled || _readonly || (target === 'text' && contentDisabled)) return;
+      if (iDisabled || iReadonly || (target === 'text' && contentDisabled)) return;
 
       this.doChange();
     },
@@ -213,11 +213,11 @@ export default uniComponent({
     setDisabled(disabled) {
       if (this.isIsolated) return;
 
-      this._disabled = this.disabled || disabled;
+      this.iDisabled = this.disabled || disabled;
     },
 
     setReadonly(readonly) {
-      this._readonly = this.readonly || readonly;
+      this.iReadonly = this.readonly || readonly;
     },
   },
 });

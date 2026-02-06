@@ -12,20 +12,20 @@
     >
       <slot name="icon" />
       <block
-        v-if="_icon"
+        v-if="innerIcon"
         name="icon"
       >
         <t-icon
-          :custom-style="_icon.style || ''"
+          :custom-style="innerIcon.style || ''"
           :t-class="tClassIcon"
-          :prefix="_icon.prefix"
-          :name="_icon.name"
-          :size="_icon.size"
-          :color="_icon.color"
-          :aria-hidden="!!_icon.ariaHidden"
-          :aria-label="_icon.ariaLabel"
-          :aria-role="_icon.ariaRole"
-          @click="_icon.click || ''"
+          :prefix="innerIcon.prefix"
+          :name="innerIcon.name"
+          :size="innerIcon.size"
+          :color="innerIcon.color"
+          :aria-hidden="!!innerIcon.ariaHidden"
+          :aria-label="innerIcon.ariaLabel"
+          :aria-role="innerIcon.ariaRole"
+          @click="innerIcon.click || ''"
         />
       </block>
     </view>
@@ -90,7 +90,7 @@ export default uniComponent({
   },
   methods: {
     setIcon(v) {
-      this._icon = calcIcon(v, 'backtop');
+      this.innerIcon = calcIcon(v, 'backtop');
     },
 
     toTop() {
@@ -110,7 +110,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _icon: null,
+      innerIcon: null,
       hidden: true,
       tools,
     };

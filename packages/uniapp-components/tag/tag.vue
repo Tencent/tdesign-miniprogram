@@ -9,19 +9,19 @@
       :class="classPrefix + '__icon'"
     >
       <block
-        v-if="_icon"
+        v-if="innerIcon"
         name="icon"
       >
         <t-icon
-          :custom-style="_icon.style || ''"
+          :custom-style="innerIcon.style || ''"
           :t-class="prefix + '-icon'"
-          :prefix="_icon.prefix"
-          :name="_icon.name"
-          :size="_icon.size"
-          :color="_icon.color"
-          :aria-hidden="!!_icon.ariaHidden"
-          :aria-label="_icon.ariaLabel"
-          :aria-role="_icon.ariaRole"
+          :prefix="innerIcon.prefix"
+          :name="innerIcon.name"
+          :size="innerIcon.size"
+          :color="innerIcon.color"
+          :aria-hidden="!!innerIcon.ariaHidden"
+          :aria-label="innerIcon.ariaLabel"
+          :aria-role="innerIcon.ariaRole"
         />
       </block>
       <slot name="icon" />
@@ -30,19 +30,19 @@
       <slot />
     </view>
     <block
-      v-if="_closable"
+      v-if="innerClosable"
       name="icon"
     >
       <t-icon
-        :custom-style="_closable.style || ''"
+        :custom-style="innerClosable.style || ''"
         :t-class="classPrefix + '__icon-close ' + prefix + '-icon'"
-        :prefix="_closable.prefix"
-        :name="_closable.name"
-        :size="_closable.size"
-        :color="_closable.color"
-        :aria-hidden="!!_closable.ariaHidden"
-        :aria-label="_closable.ariaLabel || '关闭'"
-        :aria-role="_closable.ariaRole"
+        :prefix="innerClosable.prefix"
+        :name="innerClosable.name"
+        :size="innerClosable.size"
+        :color="innerClosable.color"
+        :aria-hidden="!!innerClosable.ariaHidden"
+        :aria-label="innerClosable.ariaLabel || '关闭'"
+        :aria-role="innerClosable.ariaRole"
         @click="handleClose"
       />
     </block>
@@ -87,8 +87,8 @@ export default uniComponent({
       tagStyle: '',
       tools,
 
-      _icon: null,
-      _closable: null,
+      innerIcon: null,
+      innerClosable: null,
     };
   },
   watch: {
@@ -100,14 +100,14 @@ export default uniComponent({
     maxWidth: 'setTagStyle',
     icon: {
       handler(s) {
-        this._icon = calcIcon(s);
+        this.innerIcon = calcIcon(s);
       },
       immediate: true,
     },
     closable: {
       handler(s) {
         this.setClass();
-        this._closable = calcIcon(s, 'close');
+        this.innerClosable = calcIcon(s, 'close');
       },
       immediate: true,
     },

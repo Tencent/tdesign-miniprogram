@@ -291,23 +291,23 @@ export default uniComponent({
     },
 
     updateActionButton(value) {
-      const _min = this.getCurrentYearAndMonth(this.base.minDate);
-      const _max = this.getCurrentYearAndMonth(this.base.maxDate);
-      const _value = this.getCurrentYearAndMonth(value);
+      const iMin = this.getCurrentYearAndMonth(this.base.minDate);
+      const iMax = this.getCurrentYearAndMonth(this.base.maxDate);
+      const iValue = this.getCurrentYearAndMonth(value);
 
-      const _minTimestamp = new Date(_min.year, _min.month, 1).getTime();
-      const _maxTimestamp = new Date(_max.year, _max.month, 1).getTime();
-      const _dateValue = new Date(_value.year, _value.month, 1);
+      const iMinTimestamp = new Date(iMin.year, iMin.month, 1).getTime();
+      const iMaxTimestamp = new Date(iMax.year, iMax.month, 1).getTime();
+      const iDateValue = new Date(iValue.year, iValue.month, 1);
 
-      const _prevYearTimestamp = getPrevYear(_dateValue).getTime();
-      const _prevMonthTimestamp = getPrevMonth(_dateValue).getTime();
-      const _nextMonthTimestamp = getNextMonth(_dateValue).getTime();
-      const _nextYearTimestamp = getNextYear(_dateValue).getTime();
+      const iPrevYearTimestamp = getPrevYear(iDateValue).getTime();
+      const iPrevMonthTimestamp = getPrevMonth(iDateValue).getTime();
+      const iNextMonthTimestamp = getNextMonth(iDateValue).getTime();
+      const iNextYearTimestamp = getNextYear(iDateValue).getTime();
 
-      const preYearBtnDisable = _prevYearTimestamp < _minTimestamp || _prevMonthTimestamp < _minTimestamp;
-      const prevMonthBtnDisable = _prevMonthTimestamp < _minTimestamp;
-      const nextYearBtnDisable = _nextMonthTimestamp > _maxTimestamp || _nextYearTimestamp > _maxTimestamp;
-      const nextMonthBtnDisable = _nextMonthTimestamp > _maxTimestamp;
+      const preYearBtnDisable = iPrevYearTimestamp < iMinTimestamp || iPrevMonthTimestamp < iMinTimestamp;
+      const prevMonthBtnDisable = iPrevMonthTimestamp < iMinTimestamp;
+      const nextYearBtnDisable = iNextMonthTimestamp > iMaxTimestamp || iNextYearTimestamp > iMaxTimestamp;
+      const nextMonthBtnDisable = iNextMonthTimestamp > iMaxTimestamp;
 
       this.actionButtons = {
         preYearBtnDisable,

@@ -17,20 +17,20 @@
           layout="vertical"
         />
         <block
-          v-else-if="_icon"
+          v-else-if="innerIcon"
           name="icon"
         >
           <t-icon
-            :custom-style="_icon.style || ''"
+            :custom-style="innerIcon.style || ''"
             :t-class="iconTClass"
             :class="iconClass"
-            :prefix="_icon.prefix"
-            :name="_icon.name"
-            :size="_icon.size"
-            :color="_icon.color"
+            :prefix="innerIcon.prefix"
+            :name="innerIcon.name"
+            :size="innerIcon.size"
+            :color="innerIcon.color"
             :aria-hidden="true"
-            :aria-label="_icon.ariaLabel"
-            :aria-role="_icon.ariaRole"
+            :aria-label="innerIcon.ariaLabel"
+            :aria-role="innerIcon.ariaRole"
           />
         </block>
         <slot name="icon" />
@@ -111,7 +111,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _icon: null,
+      innerIcon: null,
       ...info,
 
       isLoading: false,
@@ -168,7 +168,7 @@ export default uniComponent({
         ...options,
         realVisible: true,
         isLoading: options?.theme === 'loading',
-        _icon: calcIcon(coalesce(typeMapIcon, options.icon)),
+        innerIcon: calcIcon(coalesce(typeMapIcon, options.icon)),
       };
 
       const { duration } = data;
