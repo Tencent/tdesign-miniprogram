@@ -46,6 +46,8 @@ export default function mdToVue(options) {
             slot="doc-header"
             ref="tdDocHeader"
             platform="mobile"
+            changelog="false"
+            changelogEn="false"
             spline="${mdSegment.spline}"
             component-name="${mdSegment.isComponent ? mdSegment.componentName : ''}"
           >

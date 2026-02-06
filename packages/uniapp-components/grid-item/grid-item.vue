@@ -60,8 +60,8 @@
                 :webp="imageProps.webp"
                 :show-menu-by-longpress="imageProps.showMenuByLongpress"
                 :data-custom="imageProps.dataset"
-                @error="binderror($event, { custom: dataset || null })"
-                @load="bindload($event, { custom: dataset || null })"
+                @error="binderror($event)"
+                @load="bindload($event)"
               />
             </block>
             <slot name="image" />

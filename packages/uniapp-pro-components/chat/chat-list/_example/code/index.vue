@@ -1,8 +1,14 @@
 <template>
   <view>
-    <view class="chat-box" :style="'height: ' + contentHeight + ';'">
+    <view
+      class="chat-box"
+      :style="'height: ' + contentHeight + ';'"
+    >
       <t-chat-list>
-        <block v-for="(item, chatIndex) in chatList" :key="item.key">
+        <block
+          v-for="(item, chatIndex) in chatList"
+          :key="item.key"
+        >
           <t-chat-message
             :chat-id="item.key"
             :avatar="item.avatar || ''"
@@ -13,14 +19,20 @@
             @message-longpress="showPopover"
           >
             <template #content>
-              <block v-for="(contentItem, contentIndex) in item.message.content" :key="contentIndex">
+              <block
+                v-for="(contentItem, contentIndex) in item.message.content"
+                :key="contentIndex"
+              >
                 <t-chat-content
                   v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                   :content="contentItem"
                 />
 
                 <!-- :slot="'custom-' + contentIndex" -->
-                <view v-if="contentItem.type === 'preview'" class="preview">
+                <view
+                  v-if="contentItem.type === 'preview'"
+                  class="preview"
+                >
                   <view>{{ contentItem.data.enName }}</view>
                   <view>
                     <span class="btn">复制代码</span>
@@ -33,8 +45,8 @@
               <t-chat-actionbar
                 v-if="
                   chatIndex !== chatList.length - 1 &&
-                  item.message.status === 'complete' &&
-                  item.message.role === 'assistant'
+                    item.message.status === 'complete' &&
+                    item.message.role === 'assistant'
                 "
                 placement="end"
                 @actions="handleAction"
@@ -82,9 +94,8 @@ const getUniqueKey = () => {
   return `key-${uniqueId}`;
 };
 
-const mockData1 =
-  '```jsx\nimport { Form, Input, Button, Message } from \'tdesign-react\';\n\nconst LoginForm = () => {\n  const [loading, setLoading] = useState(false);\n\n  const onSubmit = async ({ validateResult }) => {\n    if (validateResult === true) {\n      setLoading(true);\n      try {\n        // 登录逻辑\n        Message.success(\'登录成功\');\n      } catch {\n        Message.error(\'登录失败\');\n      } finally {\n        setLoading(false);\n      }\n    }\n  };\n\n  return (\n    <Form onSubmit={onSubmit}>\n      <Form.FormItem name="username" label="用户名" rules={[{ required: true }]}>\n        <Input placeholder="请输入用户名" />\n      </Form.FormItem>\n\n      <Form.FormItem name="password" label="密码" rules={[{ required: true }]}>\n        <Input type="password" />\n      </Form.FormItem>\n\n      <Form.FormItem>\n        <Button theme="primary" type="submit" loading={loading} block>\n          登录\n        </Button>\n      </Form.FormItem>\n    </Form>\n  );\n};\n```\n\n';
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const mockData1 =  '```jsx\nimport { Form, Input, Button, Message } from \'tdesign-react\';\n\nconst LoginForm = () => {\n  const [loading, setLoading] = useState(false);\n\n  const onSubmit = async ({ validateResult }) => {\n    if (validateResult === true) {\n      setLoading(true);\n      try {\n        // 登录逻辑\n        Message.success(\'登录成功\');\n      } catch {\n        Message.error(\'登录失败\');\n      } finally {\n        setLoading(false);\n      }\n    }\n  };\n\n  return (\n    <Form onSubmit={onSubmit}>\n      <Form.FormItem name="username" label="用户名" rules={[{ required: true }]}>\n        <Input placeholder="请输入用户名" />\n      </Form.FormItem>\n\n      <Form.FormItem name="password" label="密码" rules={[{ required: true }]}>\n        <Input type="password" />\n      </Form.FormItem>\n\n      <Form.FormItem>\n        <Button theme="primary" type="submit" loading={loading} block>\n          登录\n        </Button>\n      </Form.FormItem>\n    </Form>\n  );\n};\n```\n\n';
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
   const arr = str.split('');

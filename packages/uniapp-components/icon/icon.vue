@@ -88,7 +88,7 @@ export default uniComponent({
         classPrefix,
       } = this;
       const isImage = name.indexOf('/') !== -1;
-      const sizeValue = addUnit(size);
+      const sizeValue = size !== null && size !== '' ? addUnit(size) : undefined;
       const colorStyle = color ? {
         color,
       } : {};

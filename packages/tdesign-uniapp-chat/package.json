@@ -1,9 +1,11 @@
 {
   "name": "@tdesign/uniapp-chat",
-  "version": "0.1.3",
+  "version": "0.2.0",
   "id": "tdesign-uniapp-chat",
   "title": "tdesign-uniapp-chat",
   "description": "TDesign Chat Component for UniApp",
+  "author": "tdesign",
+  "license": "MIT",
   "keywords": [
     "tdesign",
     "miniprogram",

@@ -88,7 +88,7 @@
         :t-class="classPrefix + '__result-item'"
         hover
         aria-role="option"
-        @click="onSelectResultItem($event, { index })"
+        @click="onSelectOption($event, { index })"
       >
         <template
           #title
@@ -136,7 +136,6 @@ export default uniComponent({
     ...props,
   },
   emits: [
-    'selectresult',
   ],
   data() {
     return {
@@ -214,7 +213,10 @@ export default uniComponent({
 
       nextTick().then(() => {
         this.dataValue = value;
-        this.$emit('change', { value });
+        this.$emit('change', {
+          value,
+          trigger: 'input-change',
+        });
       });
       // this.updateInnerMaxLen();
     },
@@ -234,7 +236,10 @@ export default uniComponent({
     handleClear() {
       this.dataValue = '';
       this.$emit('clear', { value: '' });
-      this.$emit('change', { value: '' });
+      this.$emit('change', {
+        value: '',
+        trigger: 'clear',
+      });
     },
 
     onConfirm(e) {
@@ -246,13 +251,15 @@ export default uniComponent({
       this.$emit('action-click');
     },
 
-    onSelectResultItem(tools, { index }) {
+    onSelectOption(tools, { index }) {
       const item = this.resultList[index];
       this.dataValue = item;
       this.isSelected = true;
 
-      this.$emit('change', { value: item });
-      this.$emit('selectresult', { index, item });
+      this.$emit('change', {
+        value: item,
+        trigger: 'option-click',
+      });
     },
     highLight,
     // updateInnerMaxLen() {

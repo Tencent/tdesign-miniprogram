@@ -1,10 +1,11 @@
 <template>
   <view>
     <t-color-picker
-      v-model:visible="visible"
+      :visible="visible"
       use-popup
       enable-alpha
       type="multiple"
+      @update:visible="visible = $event"
       @change="onChange"
       @palette-bar-change="onPaletteBarChange"
     />

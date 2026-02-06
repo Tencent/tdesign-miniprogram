@@ -164,7 +164,7 @@ catalog:
 catalogMode: prefer
 catalogs:
   miniprogram:
-    miniprogram-api-typings: ^4.1.0
+    miniprogram-api-typings: ^3.12.3
     miniprogram-automator: ^0.10.0
     miniprogram-computed: ^5.0.0
     miniprogram-simulate: ^1.6.0

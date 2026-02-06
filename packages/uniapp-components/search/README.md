@@ -80,7 +80,7 @@ value | String | '' | 值 | N
 -- | -- | --
 action-click | \- | 点击右侧操作按钮文字时触发
 blur | `(context: { value: string })` | 失去焦点时触发
-change | `(context: { value: string })` | 值发生变化时触发
+change | `(context: { value: string, trigger: 'input-change' \| 'option-click' \| 'clear' })` | 值发生变化时触发
 clear | `(context: { value: string })` | 点击清除时触发
 focus | `(context: { value: string })` | 聚焦时触发
 submit | `(context: { value: string })` | 提交时触发

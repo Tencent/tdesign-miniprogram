@@ -1,8 +1,14 @@
 <template>
   <view>
-    <view class="chat-box" :style="'height: ' + contentHeight + ';'">
+    <view
+      class="chat-box"
+      :style="'height: ' + contentHeight + ';'"
+    >
       <t-chat-list>
-        <block v-for="item in chatList" :key="item.key">
+        <block
+          v-for="item in chatList"
+          :key="item.key"
+        >
           <t-chat-message
             :chat-id="item.key"
             :avatar="item.avatar || ''"
@@ -17,8 +23,8 @@
               <t-chat-actionbar
                 v-if="
                   chatIndex !== chatList.length - 1 &&
-                  item.message.status === 'complete' &&
-                  item.message.role === 'assistant'
+                    item.message.status === 'complete' &&
+                    item.message.role === 'assistant'
                 "
                 placement="end"
                 @actions="handleAction"
@@ -84,11 +90,9 @@ const mockData = {
     ],
   },
 };
-const mockData1 =
-  '嗯，用户问的是南极的自动提款机叫什么名字。这个问题有点有趣，因为南极是一个极端寒冷的地方，而且大部分地区都是无人居住的科研站。\n';
-const mockData2 =
-  '\n\n南极的自动提款机并没有一个特定的专属名称，但历史上确实有一台ATM机曾短暂存在于南极的**麦克默多站**（McMurdo Station）。这台ATM由美国**富兰克林国家银行**（Wells Fargo）于1998年安装，主要供驻扎在该站的科研人员使用。不过，由于南极的极端环境和极低的人口密度，这台ATM机并未长期运行，最终被移除。\n\n**背景补充：**\n- **麦克默多站**是美国在南极最大的科研基地，夏季人口可达约1,000人，冬季约200人。\n- 该ATM机更多是作为一种象征性服务存在，实际使用频率极低，因为南极科考人员通常依靠预支资金或电子支付。\n- 目前南极已无长期运行的ATM机，现代科考站更多依赖非现金交易方式。\n\n南极作为非主权领土，其基础设施以科研和生活支持为主，商业金融服务非常有限。若有类似设施，通常是临时或实验性质的。';
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const mockData1 =  '嗯，用户问的是南极的自动提款机叫什么名字。这个问题有点有趣，因为南极是一个极端寒冷的地方，而且大部分地区都是无人居住的科研站。\n';
+const mockData2 =  '\n\n南极的自动提款机并没有一个特定的专属名称，但历史上确实有一台ATM机曾短暂存在于南极的**麦克默多站**（McMurdo Station）。这台ATM由美国**富兰克林国家银行**（Wells Fargo）于1998年安装，主要供驻扎在该站的科研人员使用。不过，由于南极的极端环境和极低的人口密度，这台ATM机并未长期运行，最终被移除。\n\n**背景补充：**\n- **麦克默多站**是美国在南极最大的科研基地，夏季人口可达约1,000人，冬季约200人。\n- 该ATM机更多是作为一种象征性服务存在，实际使用频率极低，因为南极科考人员通常依靠预支资金或电子支付。\n- 目前南极已无长期运行的ATM机，现代科考站更多依赖非现金交易方式。\n\n南极作为非主权领土，其基础设施以科研和生活支持为主，商业金融服务非常有限。若有类似设施，通常是临时或实验性质的。';
+const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
   const arr = str.split('');
@@ -249,8 +253,10 @@ export default {
     // 获取当前时间
     getCurrentTime() {
       const now = new Date();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const hours = now.getHours().toString()
+        .padStart(2, '0');
+      const minutes = now.getMinutes().toString()
+        .padStart(2, '0');
       return `${hours}:${minutes}`;
     },
 

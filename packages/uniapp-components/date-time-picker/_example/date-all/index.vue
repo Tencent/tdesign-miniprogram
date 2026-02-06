@@ -12,11 +12,12 @@
 
     <!-- 年月日时分 -->
     <t-date-time-picker
-      v-model:visible="datetimeVisible"
+      :visible="datetimeVisible"
       title="选择日期和时间"
       mode="second"
       :value="datetime"
       format="YYYY-MM-DD HH:mm:ss"
+      @update:visible="datetimeVisible = $event"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"

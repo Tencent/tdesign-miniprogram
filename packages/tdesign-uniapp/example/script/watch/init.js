@@ -4,12 +4,13 @@ const glob = require('glob');
 const { deleteFolder } = require('t-comm');
 
 const { config } = require('./config');
-const { copyComponents, checkVue2CliExist } = require('./helper');
+const { copyComponents, checkVue2CliExist, checkVue3HxExist } = require('./helper');
 
 
 async function copyOneProject({
   globMode,
   sourceDir,
+  isChat,
 }) {
   const list = glob.sync(globMode, {
     ignore: '**/node_modules/**/*',
@@ -21,6 +22,7 @@ async function copyOneProject({
     await copyComponents({
       relativePath,
       filePath: item,
+      isChat,
     });
   }
 
@@ -38,6 +40,11 @@ function clearTargetDir() {
     deleteFolder(config.componentTargetDirInVue2Cli);
     deleteFolder(config.pagesMoreDirInVue2Cli);
   }
+
+  if (checkVue3HxExist()) {
+    deleteFolder(config.componentTargetDirInVue3Hx);
+    deleteFolder(config.pagesMoreDirInVue3Hx);
+  }
 }
 
 
@@ -54,14 +61,22 @@ async function main() {
     });
   }
 
+  if (checkVue3HxExist()) {
+    await copyInfra({
+      infraDir: config.infraDirInVue3Hx,
+    });
+  }
+
   await copyOneProject({
     globMode: config.sourceGlob,
     sourceDir: config.sourceDir,
+    isChat: false,
   });
 
   await copyOneProject({
     globMode: config.chatSourceGlob,
     sourceDir: config.chatSourceDir,
+    isChat: true,
   });
 }
 
