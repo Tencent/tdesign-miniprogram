@@ -342,14 +342,14 @@ export default uniComponent({
 
         // 防止气泡超出屏幕左侧
         const finalLeft = Math.max(left, screenGap);
-        // 防止气泡超出屏幕右侧
-        const maxLeft = windowWidth - contentRect.width - screenGap;
+        // 防止气泡超出屏幕右侧，处理气泡宽度大于屏幕宽度的情况
+        const maxLeft = Math.max(screenGap, windowWidth - contentRect.width - screenGap);
         const constrainedLeft = Math.min(finalLeft, maxLeft);
 
         // 防止气泡超出屏幕顶部
         const finalTop = Math.max(top, screenGap);
-        // 防止气泡超出屏幕底部
-        const maxTop = windowHeight - contentRect.height - screenGap;
+        // 防止气泡超出屏幕底部，处理气泡高度大于屏幕高度的情况
+        const maxTop = Math.max(screenGap, windowHeight - contentRect.height - screenGap);
         const constrainedTop = Math.min(finalTop, maxTop);
 
         const style = `top:${constrainedTop}px;left:${constrainedLeft}px;`;
