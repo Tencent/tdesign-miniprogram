@@ -335,7 +335,24 @@ export default uniComponent({
         } = viewportOffset || {};
         const top = isFixed ? basePos.top : basePos.top + scrollTop;
         const left = isFixed ? basePos.left : basePos.left + scrollLeft;
-        const style = `top:${Math.max(top, 0)}px;left:${Math.max(left, 0)}px;`;
+
+        // 获取屏幕宽度和高度，以及配置的间距
+        const { windowWidth, windowHeight } = getWindowInfo();
+        const screenGap = this.screenGap || 0;
+
+        // 防止气泡超出屏幕左侧
+        const finalLeft = Math.max(left, screenGap);
+        // 防止气泡超出屏幕右侧
+        const maxLeft = windowWidth - contentRect.width - screenGap;
+        const constrainedLeft = Math.min(finalLeft, maxLeft);
+
+        // 防止气泡超出屏幕顶部
+        const finalTop = Math.max(top, screenGap);
+        // 防止气泡超出屏幕底部
+        const maxTop = windowHeight - contentRect.height - screenGap;
+        const constrainedTop = Math.min(finalTop, maxTop);
+
+        const style = `top:${constrainedTop}px;left:${constrainedLeft}px;`;
         const arrowStyle = this.calcArrowStyle(innerPlacement, triggerRect, contentRect);
 
         this.contentStyle = style;

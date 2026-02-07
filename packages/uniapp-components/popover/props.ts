@@ -26,6 +26,11 @@ export default {
       return ['top', 'left', 'right', 'bottom', 'top-left', 'top-right', 'bottom-left', 'bottom-right', 'left-top', 'left-bottom', 'right-top', 'right-bottom'].includes(val);
     },
   },
+  /** 气泡紧靠屏幕边缘时与屏幕的间距（单位：px） */
+  screenGap: {
+    type: Number,
+    default: 0,
+  },
   /** 是否显示浮层箭头 */
   showArrow: {
     type: Boolean,

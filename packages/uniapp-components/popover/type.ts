@@ -37,6 +37,11 @@ export interface TdPopoverProps {
     | 'right-top'
     | 'right-bottom';
   /**
+   * 气泡紧靠屏幕边缘时与屏幕的间距（单位：px）
+   * @default 0
+   */
+  screenGap?: number;
+  /**
    * 是否显示浮层箭头
    * @default true
    */
