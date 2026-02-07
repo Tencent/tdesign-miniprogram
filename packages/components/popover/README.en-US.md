@@ -12,6 +12,7 @@ close-on-click-outside | Boolean | true | \- | N
 content | String | - | \- | N
 fixed | Boolean | false | `1.12.1` | N
 placement | String | top | options: top/left/right/bottom/top-left/top-right/bottom-left/bottom-right/left-top/left-bottom/right-top/right-bottom | N
+screen-gap | Number | 0 | Gap between popover and screen edge when sticking to screen (unit: px) | N
 show-arrow | Boolean | true | \- | N
 theme | String | dark | options: dark/light/brand/success/warning/error | N
 visible | Boolean | - | \- | N

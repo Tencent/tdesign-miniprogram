@@ -50,6 +50,7 @@ close-on-click-outside | Boolean | true | 是否在点击外部元素后关闭�
 content | String | - | 确认框内容 | N
 fixed | Boolean | false | `1.12.1`。如果触发元素为 `fixed` 场景，需要显示指定 `fixed` 属性为 `true`，同时需在触发元素层添加 `t-popover-wrapper--fixed` 类，用于定位触发元素  | N
 placement | String | top | 浮层出现位置。可选项：top/left/right/bottom/top-left/top-right/bottom-left/bottom-right/left-top/left-bottom/right-top/right-bottom | N
+screen-gap | Number | 0 | 气泡紧靠屏幕边缘时与屏幕的间距（单位：px） | N
 show-arrow | Boolean | true | 是否显示浮层箭头 | N
 theme | String | dark | 弹出气泡主题。可选项：dark/light/brand/success/warning/error | N
 visible | Boolean | - | 是否显示气泡确认框 | N

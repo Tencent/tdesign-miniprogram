@@ -25,6 +25,11 @@ const props: TdPopoverProps = {
     type: String,
     value: 'top',
   },
+  /** 气泡紧靠屏幕边缘时与屏幕的间距（单位：px） */
+  screenGap: {
+    type: Number,
+    value: 0,
+  },
   /** 是否显示浮层箭头 */
   showArrow: {
     type: Boolean,
