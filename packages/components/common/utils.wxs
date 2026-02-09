@@ -110,7 +110,7 @@ function _style(styles) {
         return item != null && item !== '';
       })
       .map(function (item) {
-        return isArray(item) ? _style(item) : endsWith(item, ';');
+        return isString(item) ? endsWith(item, ';') : _style(item);
       })
       .join(' ');
   }

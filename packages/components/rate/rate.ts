@@ -2,12 +2,15 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { unitConvert, getRect } from '../common/utils';
+import usingConfig from '../mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-rate`;
+const componentName = 'rate';
 
 @wxComponent()
 export default class Rate extends SuperComponent {
+  behaviors = [usingConfig({ componentName })];
+
   externalClasses = [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-text`];
 
   properties = props;
@@ -21,8 +24,7 @@ export default class Rate extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix: name,
-    defaultTexts: ['极差', '失望', '一般', '满意', '惊喜'],
+    classPrefix: `${prefix}-${componentName}`,
     tipsVisible: false,
     tipsLeft: 0,
     actionType: '',
@@ -32,10 +34,11 @@ export default class Rate extends SuperComponent {
 
   methods = {
     onTouch(e: WechatMiniprogram.TouchEvent, eventType: 'tap' | 'move') {
+      const { classPrefix } = this.data;
       const { count, allowHalf, gap, value: currentValue, size } = this.properties;
       const [touch] = e.changedTouches;
       const margin = unitConvert(gap);
-      getRect(this, `.${name}__wrapper`).then((rect) => {
+      getRect(this, `.${classPrefix}__wrapper`).then((rect) => {
         const { width, left } = rect;
         const starWidth = (width - (count - 1) * margin) / count;
         const offsetX = touch.pageX - left;

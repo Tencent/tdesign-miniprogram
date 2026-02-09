@@ -102,22 +102,23 @@ describe('Rate', () => {
 
     const box = comp.querySelector('.box');
     const text = box.querySelector('.t-rate__text');
+    const globalConfig = ['极差', '失望', '一般', '满意', '惊喜'];
     expect(text.dom.textContent).toBe('未评分');
 
     comp.setData({ value: 1 });
-    expect(text.dom.textContent).toBe(box.data.defaultTexts[0]);
+    expect(text.dom.textContent).toBe(globalConfig[0]);
 
     comp.setData({ value: 2 });
-    expect(text.dom.textContent).toBe(box.data.defaultTexts[1]);
+    expect(text.dom.textContent).toBe(globalConfig[1]);
 
     comp.setData({ value: 3 });
-    expect(text.dom.textContent).toBe(box.data.defaultTexts[2]);
+    expect(text.dom.textContent).toBe(globalConfig[2]);
 
     comp.setData({ value: 4 });
-    expect(text.dom.textContent).toBe(box.data.defaultTexts[3]);
+    expect(text.dom.textContent).toBe(globalConfig[3]);
 
     comp.setData({ value: 5 });
-    expect(text.dom.textContent).toBe(box.data.defaultTexts[4]);
+    expect(text.dom.textContent).toBe(globalConfig[4]);
   });
 
   it(':show-text custom texts', async () => {

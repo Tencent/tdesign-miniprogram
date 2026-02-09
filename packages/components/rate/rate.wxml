@@ -14,7 +14,7 @@
     aria-valuemax="{{count}}"
     aria-valuemin="{{0}}"
     aria-valuenow="{{value}}"
-    aria-valuetext="{{utils.getText(texts,value,defaultTexts)}}"
+    aria-valuetext="{{utils.getText(texts,value,globalConfig)}}"
   >
     <t-icon
       wx:for="{{ count }}"
@@ -31,14 +31,14 @@
     wx:if="{{showText}}"
     class="{{_.cls(classPrefix + '__text', [['active', value > 0]])}} {{prefix}}-class-text"
     aria-hidden="{{true}}"
-    >{{utils.getText(texts,value,defaultTexts)}}</text
+    >{{utils.getText(texts,value,globalConfig)}}</text
   >
   <text
     wx:if="{{isVisibleToScreenReader}}"
     class="{{_.cls(classPrefix + '__text', [['active', value > 0], ['sr-only', isVisibleToScreenReader]])}} {{prefix}}-class-text"
     aria-role="alert"
     aria-live="assertive"
-    >{{value+'星'}} {{utils.getText(texts,value,defaultTexts)}}</text
+    >{{value+'星'}} {{utils.getText(texts,value,globalConfig)}}</text
   >
   <view
     wx:if="{{tipsVisible && placement}}"

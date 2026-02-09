@@ -62,6 +62,14 @@ export const docs = [
     type: 'document',
     children: [
       {
+        title: '全局特性配置',
+        titleEn: 'Global Configuration',
+        name: 'config-provider',
+        path: '/miniprogram/components/config-provider',
+        component: () => import('@/config-provider/README.md'),
+        componentEn: () => import('@/config-provider/README.en-US.md'),
+      },
+      {
         title: '深色模式',
         titleEn: 'Dark Mode',
         name: 'dark-mode',
