@@ -37,7 +37,9 @@
 .@{prefix}-guide {
   &__reference {
     position: absolute;
-    box-shadow: 0 0 0 0 @guide-reference-mask-color, @guide-reference-mask-color 0 0 0 5000px;
+    box-shadow:
+      0 0 0 0 @guide-reference-mask-color,
+      @guide-reference-mask-color 0 0 0 5000px;
     border-radius: @guide-reference-border-radius;
     transition: all @anim-duration-base @anim-time-fn-ease-out;
 
