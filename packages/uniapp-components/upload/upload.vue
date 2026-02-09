@@ -882,6 +882,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './upload.css';
-</style>
+<style scoped src="./upload.css"></style>

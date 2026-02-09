@@ -153,5 +153,5 @@ export default uniComponent({
 });
 
 </script>
-<style src="./loading.css"  scoped>
+<style src="./loading.css" scoped>
 </style>

@@ -3,7 +3,7 @@ import { getInstance } from '../common/utils';
 
 type Context = WechatMiniprogram.Page.TrivialInstance | WechatMiniprogram.Component.TrivialInstance;
 
-interface MessageActionOptionsType extends Optional<MessageProps> {
+interface MessageActionOptionsType extends Partial<MessageProps> {
   context?: Context;
   selector?: string;
 }

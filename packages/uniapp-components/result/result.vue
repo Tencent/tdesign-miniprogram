@@ -123,6 +123,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './result.css';
-</style>
+<style scoped src="./result.css"></style>

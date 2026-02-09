@@ -202,6 +202,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './image.css';
-</style>
+<style scoped src="./image.css"></style>

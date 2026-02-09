@@ -83,7 +83,7 @@ import TImage from '../image/image';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import avatarProps from './props';
-import { setIcon, systemInfo } from '../common/utils';
+import { setIcon, systemInfo, addUnit } from '../common/utils';
 import tools from '../common/utils.wxs';
 import * as utils from './computed.js';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
@@ -139,10 +139,12 @@ export default uniComponent({
         medium: 'var(--td-avatar-icon-medium-font-size, 24px)',
         large: 'var(--td-avatar-icon-large-font-size, 32px)',
       };
-      if (!fontSize[this.dataSize]) return '';
+
       return tools._style([
         {
-          fontSize: fontSize[this.dataSize],
+          fontSize: this.iconData.size
+            ? addUnit(this.iconData.size)
+            : fontSize[this.dataSize],
         },
         this.iconData.style || '',
       ]);
@@ -195,6 +197,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './avatar.css';
-</style>
+<style scoped src="./avatar.css"></style>

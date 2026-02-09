@@ -5,6 +5,7 @@
  * */
 
 import type { TdButtonProps as ButtonProps } from '../button/type';
+import type { TdPopupProps as PopupProps } from '../popup/type';
 
 export interface TdCalendarProps {
   /**
@@ -43,6 +44,11 @@ export interface TdCalendarProps {
    * 最小可选的日期，不传则默认今天
    */
   minDate?: number;
+  /**
+   * 透传 Popup 组件全部属性
+   * @default {}
+   */
+  popupProps?: PopupProps;
   /**
    * 是否只读，只读状态下不能选择日期
    */

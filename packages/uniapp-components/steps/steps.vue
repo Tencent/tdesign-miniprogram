@@ -110,9 +110,8 @@ export default uniComponent({
   },
 });
 </script>
+<style scoped src="./steps.css"></style>
 <style scoped>
-@import './steps.css';
-
 /* #ifndef MP-WEIXIN */
 /* 适配 qq 小程序等 */
 :deep(t-step-item) {

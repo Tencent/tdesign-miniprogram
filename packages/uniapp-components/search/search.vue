@@ -170,6 +170,13 @@ export default uniComponent({
       immediate: true,
     },
 
+    value: {
+      handler(val) {
+        this.dataValue = val;
+      },
+      immediate: true,
+    },
+
     dataValue: {
       handler() {
         // this.updateInnerMaxLen();
@@ -287,6 +294,4 @@ export default uniComponent({
 
 
 </script>
-<style scoped>
-@import './search.css';
-</style>
+<style scoped src="./search.css"></style>

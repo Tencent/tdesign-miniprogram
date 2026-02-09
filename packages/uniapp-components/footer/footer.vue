@@ -112,6 +112,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './footer.css';
-</style>
+<style scoped src="./footer.css"></style>

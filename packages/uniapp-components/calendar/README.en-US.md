@@ -15,6 +15,7 @@ format | Function | - | Typescript: `CalendarFormatType ` `type CalendarFormatTy
 locale-text | Object | - | Typescript: `CalendarLocaleText` `interface CalendarLocaleText {title?: string; weekdays?: string[]; monthTitle?: string; months?: string[]; confirm?: string;}`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/calendar/type.ts) | N
 max-date | Number | - | \- | N
 min-date | Number | - | \- | N
+popup-props | Object | {} | popup properties。Typescript: `PopupProps`，[Popup API Documents](./popup?tab=api)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/calendar/type.ts) | N
 readonly | Boolean | - | \- | N
 switch-mode | String | none | options: none/month/year-month | N
 title | String | - | \- | N
