@@ -31,7 +31,7 @@
         :class="tools.cls(classPrefix + '__bd', [layout])"
         :style="contentStyle"
       >
-        <view v-if="content.text" :class="tools.cls(classPrefix + '__bd__inner')">
+        <view v-if="content.text" :class="tools.cls(classPrefix + '__bd__inner', [])">
           {{ content.text }}
         </view>
         <slot v-else name="content" />
