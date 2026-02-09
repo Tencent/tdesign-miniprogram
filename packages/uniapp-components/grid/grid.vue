@@ -89,6 +89,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './grid.css';
-</style>
+<style scoped src="./grid.css"></style>

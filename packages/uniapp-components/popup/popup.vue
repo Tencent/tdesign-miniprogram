@@ -136,6 +136,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './popup.css';
-</style>
+<style scoped src="./popup.css"></style>

@@ -118,39 +118,39 @@
             </t-button>
           </template>
           <slot name="actions" />
-          <template v-if="_cancel">
+          <template v-if="innerCancel">
             <t-button
-              :t-id="_cancel.tId"
-              :custom-style="_cancel.style"
-              :block="_cancel.block"
-              :t-class="_cancel.tClass"
-              :class="_cancel.class"
-              :disabled="_cancel.disabled"
+              :t-id="innerCancel.tId"
+              :custom-style="innerCancel.style"
+              :block="innerCancel.block"
+              :t-class="innerCancel.tClass"
+              :class="innerCancel.class"
+              :disabled="innerCancel.disabled"
               :data-type="'cancel'"
-              :data-extra="_cancel.index"
-              :custom-dataset="_cancel.customDataset"
-              :content="_cancel.content"
-              :icon="_cancel.icon"
-              :loading="_cancel.loading"
-              :loading-props="_cancel.loadingProps"
-              :theme="_cancel.theme"
-              :ghost="_cancel.ghost"
-              :shape="_cancel.shape"
-              :size="_cancel.size"
-              :variant="_cancel.variant"
-              :open-type="_cancel.openType"
-              :hover-class="_cancel.hoverClass"
-              :hover-stop-propagation="_cancel.hoverStopPropagation"
-              :hover-start-time="_cancel.hoverStartTime"
-              :hover-stay-time="_cancel.hoverStayTime"
-              :lang="_cancel.lang"
-              :session-from="_cancel.sessionFrom"
-              :send-message-title="_cancel.sendMessageTitle"
-              :send-message-path="_cancel.sendMessagePath"
-              :send-message-img="_cancel.sendMessageImg"
-              :app-parameter="_cancel.appParameter"
-              :show-message-card="_cancel.showMessageCard"
-              :aria-label="_cancel.ariaLabel"
+              :data-extra="innerCancel.index"
+              :custom-dataset="innerCancel.customDataset"
+              :content="innerCancel.content"
+              :icon="innerCancel.icon"
+              :loading="innerCancel.loading"
+              :loading-props="innerCancel.loadingProps"
+              :theme="innerCancel.theme"
+              :ghost="innerCancel.ghost"
+              :shape="innerCancel.shape"
+              :size="innerCancel.size"
+              :variant="innerCancel.variant"
+              :open-type="innerCancel.openType"
+              :hover-class="innerCancel.hoverClass"
+              :hover-stop-propagation="innerCancel.hoverStopPropagation"
+              :hover-start-time="innerCancel.hoverStartTime"
+              :hover-stay-time="innerCancel.hoverStayTime"
+              :lang="innerCancel.lang"
+              :session-from="innerCancel.sessionFrom"
+              :send-message-title="innerCancel.sendMessageTitle"
+              :send-message-path="innerCancel.sendMessagePath"
+              :send-message-img="innerCancel.sendMessageImg"
+              :app-parameter="innerCancel.appParameter"
+              :show-message-card="innerCancel.showMessageCard"
+              :aria-label="innerCancel.ariaLabel"
               @click="onCancel($event, { type: 'action', extra: 0 })"
               @getuserinfo="onCancel($event, { type: 'action', extra: 0 })"
               @contact="onCancel($event, { type: 'action', extra: 0 })"
@@ -160,43 +160,43 @@
               @launchapp="onCancel($event, { type: 'action', extra: 0 })"
               @agreeprivacyauthorization="onCancel($event, { type: 'action', extra: 0 })"
             >
-              <slot v-if="_cancel.useDefaultSlot || false" />
+              <slot v-if="innerCancel.useDefaultSlot || false" />
             </t-button>
           </template>
           <slot name="cancel-btn" />
-          <template v-if="_confirm">
+          <template v-if="innerConfirm">
             <t-button
-              :t-id="_confirm.tId"
-              :custom-style="_confirm.style"
-              :block="_confirm.block"
-              :t-class="_confirm.tClass"
-              :class="_confirm.class"
-              :disabled="_confirm.disabled"
+              :t-id="innerConfirm.tId"
+              :custom-style="innerConfirm.style"
+              :block="innerConfirm.block"
+              :t-class="innerConfirm.tClass"
+              :class="innerConfirm.class"
+              :disabled="innerConfirm.disabled"
               :data-type="'confirm'"
-              :data-extra="_confirm.index"
-              :custom-dataset="_confirm.customDataset"
-              :content="_confirm.content"
-              :icon="_confirm.icon"
-              :loading="_confirm.loading"
-              :loading-props="_confirm.loadingProps"
-              :theme="_confirm.theme || 'primary'"
-              :ghost="_confirm.ghost"
-              :shape="_confirm.shape"
-              :size="_confirm.size"
-              :variant="_confirm.variant"
-              :open-type="_confirm.openType"
-              :hover-class="_confirm.hoverClass"
-              :hover-stop-propagation="_confirm.hoverStopPropagation"
-              :hover-start-time="_confirm.hoverStartTime"
-              :hover-stay-time="_confirm.hoverStayTime"
-              :lang="_confirm.lang"
-              :session-from="_confirm.sessionFrom"
-              :send-message-title="_confirm.sendMessageTitle"
-              :send-message-path="_confirm.sendMessagePath"
-              :send-message-img="_confirm.sendMessageImg"
-              :app-parameter="_confirm.appParameter"
-              :show-message-card="_confirm.showMessageCard"
-              :aria-label="_confirm.ariaLabel"
+              :data-extra="innerConfirm.index"
+              :custom-dataset="innerConfirm.customDataset"
+              :content="innerConfirm.content"
+              :icon="innerConfirm.icon"
+              :loading="innerConfirm.loading"
+              :loading-props="innerConfirm.loadingProps"
+              :theme="innerConfirm.theme || 'primary'"
+              :ghost="innerConfirm.ghost"
+              :shape="innerConfirm.shape"
+              :size="innerConfirm.size"
+              :variant="innerConfirm.variant"
+              :open-type="innerConfirm.openType"
+              :hover-class="innerConfirm.hoverClass"
+              :hover-stop-propagation="innerConfirm.hoverStopPropagation"
+              :hover-start-time="innerConfirm.hoverStartTime"
+              :hover-stay-time="innerConfirm.hoverStayTime"
+              :lang="innerConfirm.lang"
+              :session-from="innerConfirm.sessionFrom"
+              :send-message-title="innerConfirm.sendMessageTitle"
+              :send-message-path="innerConfirm.sendMessagePath"
+              :send-message-img="innerConfirm.sendMessageImg"
+              :app-parameter="innerConfirm.appParameter"
+              :show-message-card="innerConfirm.showMessageCard"
+              :aria-label="innerConfirm.ariaLabel"
               @click="onConfirm($event, { type: 'action', extra: 0 })"
               @getuserinfo="onConfirm($event, { type: 'action', extra: 0 })"
               @contact="onConfirm($event, { type: 'action', extra: 0 })"
@@ -206,7 +206,7 @@
               @launchapp="onConfirm($event, { type: 'action', extra: 0 })"
               @agreeprivacyauthorization="onConfirm($event, { type: 'action', extra: 0 })"
             >
-              <slot v-if="_confirm.useDefaultSlot || false" />
+              <slot v-if="innerConfirm.useDefaultSlot || false" />
             </t-button>
           </template>
           <slot name="confirm-btn" />
@@ -261,8 +261,8 @@ export default uniComponent({
       buttonVariant: 'text',
       tools,
 
-      _confirm: null,
-      _cancel: null,
+      innerConfirm: null,
+      innerCancel: null,
       useVirtualHost: canUseVirtualHost(),
     };
   },
@@ -417,6 +417,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './dialog.css';
-</style>
+<style scoped src="./dialog.css"></style>

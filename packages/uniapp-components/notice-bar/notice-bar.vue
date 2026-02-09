@@ -13,20 +13,20 @@
     >
       <slot name="prefix-icon" />
       <block
-        v-if="_prefixIcon"
+        v-if="iPrefixIcon"
         name="icon"
       >
         <t-icon
-          :custom-style="_prefixIcon.style || ''"
+          :custom-style="iPrefixIcon.style || ''"
           :t-class="tClassPrefixIcon"
-          :prefix="_prefixIcon.prefix"
-          :name="_prefixIcon.name"
-          :size="_prefixIcon.size"
-          :color="_prefixIcon.color"
-          :aria-hidden="!!_prefixIcon.ariaHidden"
-          :aria-label="_prefixIcon.ariaLabel"
-          :aria-role="_prefixIcon.ariaRole"
-          @click="_prefixIcon.bindclick || ''"
+          :prefix="iPrefixIcon.prefix"
+          :name="iPrefixIcon.name"
+          :size="iPrefixIcon.size"
+          :color="iPrefixIcon.color"
+          :aria-hidden="!!iPrefixIcon.ariaHidden"
+          :aria-label="iPrefixIcon.ariaLabel"
+          :aria-role="iPrefixIcon.ariaRole"
+          @click="iPrefixIcon.bindclick || ''"
         />
       </block>
     </view>
@@ -82,20 +82,20 @@
     >
       <slot name="suffix-icon" />
       <block
-        v-if="_suffixIcon"
+        v-if="iSuffixIcon"
         name="icon"
       >
         <t-icon
-          :custom-style="_suffixIcon.style || ''"
+          :custom-style="iSuffixIcon.style || ''"
           :t-class="tClassSuffixIcon"
-          :prefix="_suffixIcon.prefix"
-          :name="_suffixIcon.name"
-          :size="_suffixIcon.size"
-          :color="_suffixIcon.color"
-          :aria-hidden="!!_suffixIcon.ariaHidden"
-          :aria-label="_suffixIcon.ariaLabel"
-          :aria-role="_suffixIcon.ariaRole"
-          @click="_suffixIcon.bindclick || ''"
+          :prefix="iSuffixIcon.prefix"
+          :name="iSuffixIcon.name"
+          :size="iSuffixIcon.size"
+          :color="iSuffixIcon.color"
+          :aria-hidden="!!iSuffixIcon.ariaHidden"
+          :aria-label="iSuffixIcon.ariaLabel"
+          :aria-role="iSuffixIcon.ariaRole"
+          @click="iSuffixIcon.bindclick || ''"
         />
       </block>
     </view>
@@ -185,7 +185,7 @@ export default uniComponent({
 
     suffixIcon: {
       handler(v) {
-        this._suffixIcon = calcIcon(v);
+        this.iSuffixIcon = calcIcon(v);
       },
       immediate: true,
     },
@@ -295,7 +295,7 @@ export default uniComponent({
 
     setPrefixIcon(v) {
       const { theme } = this;
-      this._prefixIcon = calcIcon(v, THEME_ICON[theme]);
+      this.iPrefixIcon = calcIcon(v, THEME_ICON[theme]);
     },
 
     onChange(e) {
@@ -321,6 +321,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './notice-bar.css';
-</style>
+<style scoped src="./notice-bar.css"></style>

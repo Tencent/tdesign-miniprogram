@@ -65,6 +65,7 @@ format | Function | - | 用于格式化日期的函数。TS 类型：`CalendarFo
 locale-text | Object | - | 国际化文案。TS 类型：`CalendarLocaleText` `interface CalendarLocaleText {title?: string; weekdays?: string[]; monthTitle?: string; months?: string[]; confirm?: string;}`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/calendar/type.ts) | N
 max-date | Number | - | 最大可选的日期，不传则默认半年后 | N
 min-date | Number | - | 最小可选的日期，不传则默认今天 | N
+popup-props | Object | {} | 透传 Popup 组件全部属性。TS 类型：`PopupProps`，[Popup API Documents](./popup?tab=api)。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/calendar/type.ts) | N
 readonly | Boolean | - | 是否只读，只读状态下不能选择日期 | N
 switch-mode | String | none | 切换模式。 `none` 表示平铺展示所有月份； `month` 表示支持按月切换， `year-month` 表示既按年切换，也支持按月切换。可选项：none/month/year-month | N
 title | String | - | 标题，不传默认为“请选择日期” | N

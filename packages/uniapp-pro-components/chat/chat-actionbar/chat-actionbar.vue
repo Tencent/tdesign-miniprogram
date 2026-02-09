@@ -383,6 +383,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './chat-actionbar.css';
-</style>
+<style scoped src="./chat-actionbar.css"></style>

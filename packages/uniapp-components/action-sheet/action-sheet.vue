@@ -11,7 +11,7 @@
       :custom-navbar-height="customNavbarHeight"
       :show-overlay="dataShowOverlay"
       :z-index="(dataPopupProps && dataPopupProps.zIndex) || defaultPopUpzIndex"
-      :overlay-props="(dataPopupProps && dataPopupProps.overlayProps) || defaultPopUpProps"
+      :overlay-props="(dataPopupProps && dataPopupProps.overlayProps) || defaultOverlayProps"
       @visible-change="onPopupVisibleChange"
     >
       <view
@@ -224,7 +224,7 @@ export default uniComponent({
       classPrefix: name,
       gridThemeItems: [],
       currentSwiperIndex: 0,
-      defaultPopUpProps: {},
+      defaultOverlayProps: {},
       defaultPopUpzIndex: 11500,
       tools,
 
@@ -362,6 +362,4 @@ export default uniComponent({
 });
 </script>
 
-<style scoped>
-@import './action-sheet.css';
-</style>
+<style scoped src="./action-sheet.css"></style>

@@ -3,9 +3,12 @@
     <t-popup
       v-if="usePopup"
       :visible="visible"
-      :using-custom-navbar="usingCustomNavbar"
-      :custom-navbar-height="customNavbarHeight"
       placement="bottom"
+      :show-overlay="isShowOverlay(popupProps && popupProps.showOverlay, true)"
+      :using-custom-navbar="usingCustomNavbar || (popupProps && popupProps.usingCustomNavbar)"
+      :custom-navbar-height="coalesce(customNavbarHeight, popupProps && popupProps.usingCustomNavbar)"
+      :z-index="(popupProps && popupProps.zIndex)"
+      :overlay-props="(popupProps && popupProps.overlayProps) || defaultOverlayProps"
       @visible-change="onVisibleChange"
     >
       <CalendarTemplate
@@ -153,6 +156,8 @@ export default uniComponent({
       dataVisible: this.visible,
       dataValue: coalesce(this.value, this.defaultValue),
       days: [],
+
+      defaultOverlayProps: {},
     };
   },
   watch: {
@@ -253,6 +258,8 @@ export default uniComponent({
     }
   },
   methods: {
+    coalesce,
+
     getMonthTitle,
     getDateLabel,
     isDateSelected,
@@ -291,23 +298,23 @@ export default uniComponent({
     },
 
     updateActionButton(value) {
-      const _min = this.getCurrentYearAndMonth(this.base.minDate);
-      const _max = this.getCurrentYearAndMonth(this.base.maxDate);
-      const _value = this.getCurrentYearAndMonth(value);
+      const iMin = this.getCurrentYearAndMonth(this.base.minDate);
+      const iMax = this.getCurrentYearAndMonth(this.base.maxDate);
+      const iValue = this.getCurrentYearAndMonth(value);
 
-      const _minTimestamp = new Date(_min.year, _min.month, 1).getTime();
-      const _maxTimestamp = new Date(_max.year, _max.month, 1).getTime();
-      const _dateValue = new Date(_value.year, _value.month, 1);
+      const iMinTimestamp = new Date(iMin.year, iMin.month, 1).getTime();
+      const iMaxTimestamp = new Date(iMax.year, iMax.month, 1).getTime();
+      const iDateValue = new Date(iValue.year, iValue.month, 1);
 
-      const _prevYearTimestamp = getPrevYear(_dateValue).getTime();
-      const _prevMonthTimestamp = getPrevMonth(_dateValue).getTime();
-      const _nextMonthTimestamp = getNextMonth(_dateValue).getTime();
-      const _nextYearTimestamp = getNextYear(_dateValue).getTime();
+      const iPrevYearTimestamp = getPrevYear(iDateValue).getTime();
+      const iPrevMonthTimestamp = getPrevMonth(iDateValue).getTime();
+      const iNextMonthTimestamp = getNextMonth(iDateValue).getTime();
+      const iNextYearTimestamp = getNextYear(iDateValue).getTime();
 
-      const preYearBtnDisable = _prevYearTimestamp < _minTimestamp || _prevMonthTimestamp < _minTimestamp;
-      const prevMonthBtnDisable = _prevMonthTimestamp < _minTimestamp;
-      const nextYearBtnDisable = _nextMonthTimestamp > _maxTimestamp || _nextYearTimestamp > _maxTimestamp;
-      const nextMonthBtnDisable = _nextMonthTimestamp > _maxTimestamp;
+      const preYearBtnDisable = iPrevYearTimestamp < iMinTimestamp || iPrevMonthTimestamp < iMinTimestamp;
+      const prevMonthBtnDisable = iPrevMonthTimestamp < iMinTimestamp;
+      const nextYearBtnDisable = iNextMonthTimestamp > iMaxTimestamp || iNextYearTimestamp > iMaxTimestamp;
+      const nextMonthBtnDisable = iNextMonthTimestamp > iMaxTimestamp;
 
       this.actionButtons = {
         preYearBtnDisable,
@@ -440,12 +447,14 @@ export default uniComponent({
       maxDate && (this.base.maxDate = maxDate);
       this.calcMonths();
     },
+
+    isShowOverlay(value, defaultValue) {
+      return tools.isBoolean(value) ? value : defaultValue;
+    },
   },
 });
 </script>
-<style scoped>
-@import './calendar.css';
-</style>
+<style scoped src="./calendar.css"></style>
 <style scoped>
 .t-calendar-switch-mode--none > .t-calendar__months {
   /* support mp-alipay */

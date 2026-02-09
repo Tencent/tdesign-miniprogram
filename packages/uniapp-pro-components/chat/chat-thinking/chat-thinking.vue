@@ -120,6 +120,4 @@ export default uniComponent({
 
 
 </script>
-<style scoped>
-@import './chat-thinking.css';
-</style>
+<style scoped src="./chat-thinking.css"></style>

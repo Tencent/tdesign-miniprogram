@@ -441,6 +441,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './picker-item.css';
-</style>
+<style scoped src="./picker-item.css"></style>
