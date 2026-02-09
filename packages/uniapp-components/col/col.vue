@@ -46,9 +46,7 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './col.css';
-</style>
+<style scoped src="./col.css"></style>
 <style scoped>
 .t-col {
   /* 适配 qq 小程序等 */

@@ -53,6 +53,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './chat-markdown-code.css';
-</style>
+<style scoped src="./chat-markdown-code.css"></style>

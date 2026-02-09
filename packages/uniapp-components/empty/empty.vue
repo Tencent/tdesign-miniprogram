@@ -135,6 +135,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './empty.css';
-</style>
+<style scoped src="./empty.css"></style>

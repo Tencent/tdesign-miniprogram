@@ -139,6 +139,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './sticky.css';
-</style>
+<style scoped src="./sticky.css"></style>

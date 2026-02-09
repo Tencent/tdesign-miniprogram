@@ -170,6 +170,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './step-item.css';
-</style>
+<style scoped src="./step-item.css"></style>

@@ -206,6 +206,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './skeleton.css';
-</style>
+<style scoped src="./skeleton.css"></style>

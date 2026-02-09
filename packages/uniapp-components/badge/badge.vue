@@ -129,6 +129,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './badge.css';
-</style>
+<style scoped src="./badge.css"></style>

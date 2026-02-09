@@ -87,6 +87,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './draggable.css';
-</style>
+<style scoped src="./draggable.css"></style>

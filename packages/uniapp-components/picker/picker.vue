@@ -9,7 +9,7 @@
       :using-custom-navbar="usingCustomNavbar || (popupProps && popupProps.usingCustomNavbar)"
       :custom-navbar-height="coalesce(customNavbarHeight, popupProps && popupProps.usingCustomNavbar)"
       :z-index="(popupProps && popupProps.zIndex) || defaultPopUpzIndex"
-      :overlay-props="(popupProps && popupProps.overlayProps) || defaultPopUpProps"
+      :overlay-props="(popupProps && popupProps.overlayProps) || defaultOverlayProps"
       @visible-change="onPopupChange"
     >
       <template #content>
@@ -147,7 +147,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      defaultPopUpProps: {},
+      defaultOverlayProps: {},
       defaultPopUpzIndex: 11500,
       indicatorTop: 72, // 默认indicator位置，会动态计算
 
@@ -302,9 +302,8 @@ export default uniComponent({
   },
 });
 </script>
+<style scoped src="./picker.css"></style>
 <style scoped>
-@import './picker.css';
-
 /* #ifndef MP-WEIXIN */
 /* 适配 qq 小程序等 */
 :deep(t-picker-item) {

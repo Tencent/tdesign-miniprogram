@@ -496,6 +496,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './color-picker.css';
-</style>
+<style scoped src="./color-picker.css"></style>

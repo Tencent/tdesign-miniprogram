@@ -79,6 +79,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './side-bar.css';
-</style>
+<style scoped src="./side-bar.css"></style>

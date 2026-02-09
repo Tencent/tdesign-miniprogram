@@ -2,15 +2,15 @@
   <view
     :id="tId"
     :style="tools._style([customStyle])"
-    :class="tools.cls(classPrefix, [placement, theme, ['checked', dataChecked], ['block', block], ['disabled', _disabled]]) + ' ' + tClass"
+    :class="tools.cls(classPrefix, [placement, theme, ['checked', dataChecked], ['block', block], ['disabled', iDisabled]]) + ' ' + tClass"
     aria-role="checkbox"
     :aria-checked="dataChecked ? (dataIndeterminate ? 'mixed' : true) : false"
-    :aria-disabled="_disabled ? true : false"
+    :aria-disabled="iDisabled ? true : false"
     @click.stop="handleTap"
   >
     <view
       v-if="theme == 'default'"
-      :class="tools.cls(classPrefix + '__icon', [placement, ['checked', dataChecked], ['disabled', _disabled]]) + ' ' + tClassIcon"
+      :class="tools.cls(classPrefix + '__icon', [placement, ['checked', dataChecked], ['disabled', iDisabled]]) + ' ' + tClassIcon"
     >
       <slot
         v-if="icon === 'slot'"
@@ -38,7 +38,7 @@
         />
         <view
           v-else-if="!dataChecked && (icon == 'circle' || icon == 'rectangle')"
-          :class="tools.cls(classPrefix + '__icon-' + icon, [['disabled', _disabled]])"
+          :class="tools.cls(classPrefix + '__icon-' + icon, [['disabled', iDisabled]])"
         />
         <view
           v-if="!dataChecked && icon == 'line'"
@@ -54,7 +54,7 @@
       <view
         :class="
           tools.cls(classPrefix + '__title', [
-            ['disabled', _disabled],
+            ['disabled', iDisabled],
             ['checked', dataChecked]
           ]) +
             ' ' +
@@ -69,7 +69,7 @@
         <slot name="label" />
       </view>
       <view
-        :class="tools.cls(classPrefix + '__description', [['disabled', _disabled]]) + ' ' + tClassContent"
+        :class="tools.cls(classPrefix + '__description', [['disabled', iDisabled]]) + ' ' + tClassContent"
         :style="'-webkit-line-clamp:' + maxContentRow"
       >
         <block v-if="content">
@@ -132,7 +132,7 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _disabled: false,
+      iDisabled: false,
       tools,
 
       dataBorderless: this.borderless,
@@ -166,7 +166,7 @@ export default uniComponent({
     },
     disabled: {
       handler(v) {
-        this._disabled = v;
+        this.iDisabled = v;
       },
       immediate: true,
     },
@@ -183,7 +183,7 @@ export default uniComponent({
       const valueSet = new Set(value);
       const checkedFromParent = valueSet.has(this.value);
       const data = {
-        _disabled: this.disabled == null ? disabled : this.disabled,
+        iDisabled: this.disabled == null ? disabled : this.disabled,
       };
 
       data.dataBorderless = !!(coalesce(this.borderless, borderless));
@@ -210,10 +210,10 @@ export default uniComponent({
       });
     },
     handleTap(e) {
-      const { _disabled, readonly, contentDisabled } = this;
+      const { iDisabled, readonly, contentDisabled } = this;
       const { target } = e.currentTarget.dataset;
 
-      if (_disabled || readonly || (target === 'text' && contentDisabled)) return;
+      if (iDisabled || readonly || (target === 'text' && contentDisabled)) return;
 
       const { value, label, checkAll, dataIndeterminate } = this;
       const checked = !this.dataChecked;
@@ -228,11 +228,9 @@ export default uniComponent({
     },
 
     setDisabled(disabled) {
-      this._disabled = this.disabled || disabled;
+      this.iDisabled = this.disabled || disabled;
     },
   },
 });
 </script>
-<style scoped>
-@import './checkbox.css';
-</style>
+<style scoped src="./checkbox.css"></style>

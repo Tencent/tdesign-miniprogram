@@ -116,6 +116,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './icon.css';
-</style>
+<style scoped src="./icon.css"></style>

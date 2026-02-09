@@ -233,6 +233,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './collapse-panel.css';
-</style>
+<style scoped src="./collapse-panel.css"></style>

@@ -714,6 +714,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './slider.css';
-</style>
+<style scoped src="./slider.css"></style>
