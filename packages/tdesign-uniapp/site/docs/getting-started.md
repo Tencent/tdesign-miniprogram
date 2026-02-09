@@ -99,20 +99,9 @@ import TLoading from '@tdesign/uniapp/loading/loading.vue';
 }
 ```
 
-### 基于 vite 配置自动引入组件
-如果不熟悉 `easycom`，也可以通过 [@uni-helper/vite-plugin-uni-components](https://github.com/uni-helper/vite-plugin-uni-components) 实现组件的自动引入。
+### Vite 配置
 
-<div style="background: #ecf2fe; display: flex; align-items: center; line-height: 20px; padding: 14px 24px; border-radius: 3px; color: #555a65">
-  <ul style="list-style-position: outside; margin: 0; padding-left: 20px;">
-    <li style="color: #0052d9;"><span style="color: #555a65;">推荐使用 @uni-helper/vite-plugin-uni-components@0.2.10+ 版本，该版本内置了 @tdesign/uniapp 的 resolver</span></li>
-    <li style="color: #0052d9;"><span style="color: #555a65;">自动引入样式文件，无需手动引入</span></li>
-    <li style="color: #0052d9;"><span style="color: #555a65;">提供完备的组件类型支持，无需手动配置</span></li>
-  </ul>
-</div>
-
-```bash
-npm i @uni-helper/vite-plugin-uni-components less -D
-```
+也可以通过 [@uni-helper/vite-plugin-uni-components](https://github.com/uni-helper/vite-plugin-uni-components) 实现组件的自动引入。
 
 ```js
 // vite.config.ts
@@ -138,13 +127,6 @@ export default defineConfig({
 安装注册 TDesign 之后，在开发项目时，可以配合插件在VSCode等主流编辑器中达到提示组件名及API的效果。
 
 推荐安装 `Volar`，并在项目的 `tsconfig.json` 的 `includes` 属性中增加 `node_modules/@tdesign/uniapp/global.d.ts`，即可实现该效果。
-
-## 脚手架
-
-你也可以使用 [create-uni](https://github.com/uni-helper/create-uni)，通过以下命令快速创建一个包含 TDesign 的起手项目：
-```bash
-npm create uni@latest <你的项目名称> -- -u tdesign
-```
 
 ## 平台兼容性
 
