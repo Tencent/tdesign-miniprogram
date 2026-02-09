@@ -34,7 +34,7 @@ import TChatThinking from '@tdesign/uniapp-chat/chat-thinking/chat-thinking.vue'
 ### 03 组件样式
 
 支持通过`layout`来设置思考过程的布局方式
-
+支持通过`content`插槽自定义思考过程显示内容
 {{ layout }}
 
 ## API
@@ -56,6 +56,12 @@ status | String | pending | 必需。思考状态。可选项：complete/stop/er
 名称 | 参数 | 描述
 -- | -- | --
 collapsed-change | `(value: Boolean)` | 切换折叠面板时触发
+
+### ChatThinking Slots
+
+名称 | 描述
+-- | --
+content | 自定义 `content` 显示内容
 
 ### CSS Variables
 
