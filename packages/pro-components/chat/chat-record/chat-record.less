@@ -2,112 +2,576 @@
 
 @chat-record: ~'@{prefix}-chat-record';
 
-@chat-record-bg-color: @bg-color-page;
-@chat-record-padding: 24rpx;
-
-@chat-record-empty-padding: 120rpx 48rpx;
-@chat-record-empty-text-color: @text-color-placeholder;
-@chat-record-empty-text-font: @font-body-large;
-
-@chat-record-time-padding: 24rpx 0;
-@chat-record-time-text-align: center;
-@chat-record-time-text-color: @text-color-placeholder;
-@chat-record-time-text-font: @font-body-small;
-
-@chat-record-item-margin-bottom: 24rpx;
-
-@chat-record-loadmore-padding: 32rpx 0;
-@chat-record-loadmore-text-align: center;
-@chat-record-loadmore-text-color: @text-color-placeholder;
-@chat-record-loadmore-text-font: @font-body-medium;
-@chat-record-loadmore-text-margin-left: 16rpx;
-
-@chat-record-finished-padding: 32rpx 0;
-@chat-record-finished-text-align: center;
-@chat-record-finished-text-color: @text-color-placeholder;
-@chat-record-finished-text-font: @font-body-small;
-
 .@{chat-record} {
-  width: 100%;
-  height: 100%;
-  background-color: @chat-record-bg-color;
-  position: relative;
-
-  // 空状态
-  &__empty {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: @chat-record-empty-padding;
+  .@{chat-record}-hook {
     width: 100%;
-    height: 100%;
+    padding: 24rpx 0;
+    color: rgba(0, 0, 0, 0.9);
+    text-align: center;
+    font-size: 34rpx;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 42rpx;
+    letter-spacing: 1.02rpx;
+    border-radius: 16px;
+    border: 2rpx solid #fff;
+    background: #f5f5f5;
   }
 
-  &__empty-text {
-    color: @chat-record-empty-text-color;
-    font: @chat-record-empty-text-font;
-  }
+  //语音输入
+  .@{chat-record}-audio-input {
+    &.show {
+      .@{chat-record}-audio-input__mask {
+        opacity: 1;
+        pointer-events: auto;
+      }
 
-  // 滚动容器
-  &__scroll {
-    width: 100%;
-    height: 100%;
-    overflow-y: auto;
-  }
-
-  // 列表容器
-  &__list {
-    padding: @chat-record-padding;
-  }
-
-  // 记录项
-  &__item {
-    margin-bottom: @chat-record-item-margin-bottom;
-
-    &:last-child {
-      margin-bottom: 0;
+      .@{chat-record}-audio-input__main {
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
-  }
 
-  // 时间分组
-  &__time {
-    padding: @chat-record-time-padding;
-    text-align: @chat-record-time-text-align;
-    color: @chat-record-time-text-color;
-    font: @chat-record-time-text-font;
-  }
+    &.unknow {
+      .@{chat-record}-audio-input__ft__tips {
+        color: #126dff;
+      }
 
-  // 消息容器
-  &__message {
-    width: 100%;
-  }
+      .@{chat-record}-audio-input__ft__tips__inner {
+        display: none;
+      }
 
-  // 加载更多
-  &__loadmore {
-    padding: @chat-record-loadmore-padding;
-    text-align: @chat-record-loadmore-text-align;
-  }
+      .speak-btn {
+        display: flex;
+      }
 
-  &__loadmore-loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+      .speak-close-btn {
+        display: flex;
+      }
 
-  &__loadmore-text {
-    color: @chat-record-loadmore-text-color;
-    font: @chat-record-loadmore-text-font;
-    margin-left: @chat-record-loadmore-text-margin-left;
-  }
+      .audio-loading-icon {
+        display: none;
+      }
+    }
 
-  // 加载完成
-  &__finished {
-    padding: @chat-record-finished-padding;
-    text-align: @chat-record-finished-text-align;
-  }
+    &.cancel {
+      .@{chat-record}-audio-input__ft__tips__inner {
+        color: #ff5729;
+      }
 
-  &__finished-text {
-    color: @chat-record-finished-text-color;
-    font: @chat-record-finished-text-font;
+      .@{chat-record}-audio-input__ft__tips {
+        color: #ff5729;
+      }
+
+      .@{chat-record}-audio-input__ft__bg {
+        background: url(https://static.wecity.qq.com/webrebuildmysscard-mini/250702-aigc-audio/img-ctrl-bg-red.png) no-repeat center;
+        background-size: cover;
+      }
+
+      .audio-loading-icon {
+        .audio-loading-dot {
+          background: linear-gradient(180deg, #ff5729 0%, rgba(255, 87, 41, 0.6) 100%);
+        }
+      }
+    }
+
+    &.complete {
+      .@{chat-record}-audio-input__ft__tips__inner {
+        display: none;
+      }
+
+      .@{chat-record}-audio-input__ft__bg {
+        display: none;
+      }
+
+      .@{chat-record}-audio-input__ft__ct {
+        display: flex;
+      }
+
+      .audio-loading-icon {
+        display: none;
+      }
+
+      .@{chat-record}-audio-inputt__ft__tips {
+        display: none;
+      }
+    }
+
+    &.cover-ng-bar {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 99999999;
+    }
+
+    &__mask {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 98;
+      background: rgba(255, 255, 255, 0.54);
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s linear;
+    }
+
+    &__main {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 99;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s linear;
+    }
+
+    &-ani {
+      display: flex;
+      align-items: center;
+      width: 256rpx;
+      height: 256rpx;
+      margin: 0 auto 60rpx;
+      position: relative;
+      overflow: hidden;
+
+      .ani-cir {
+        width: 256rpx;
+        height: 256rpx;
+        position: relative;
+        z-index: 3;
+
+        &.diff-start {
+          .ani-cir-2 {
+            animation: diff 1s linear infinite;
+          }
+
+          .ani-cir-3 {
+            animation: diff 1s linear 0.5s infinite;
+          }
+
+          .ani-cir-4 {
+            animation: diff 1s linear 1s infinite;
+          }
+        }
+
+        .ani-cir-1,
+        .ani-cir-2,
+        .ani-cir-3,
+        .ani-cir-4 {
+          position: absolute;
+          left: 48rpx;
+          top: 48rpx;
+          width: 160rpx;
+          height: 160rpx;
+          background: url(https://static.wecity.qq.com/webrebuildmysscard-mini/250702-aigc-audio/img-border.png) no-repeat center;
+          background-size: contain;
+        }
+
+        .ani-cir-1 {
+          animation: bg-turn 3s linear infinite;
+        }
+
+        @keyframes diff {
+          0% {
+            transform: scale(1);
+            opacity: 0.33;
+          }
+
+          100% {
+            transform: scale(1.61);
+            opacity: 0;
+          }
+        }
+      }
+
+      .ani-wrap {
+        width: 160rpx;
+        height: 160rpx;
+        z-index: 2;
+        position: absolute;
+        left: 48rpx;
+        top: 48rpx;
+        overflow: hidden;
+        border-radius: 50%;
+
+        .ani-inner {
+          width: 160rpx;
+          height: 160rpx;
+          position: absolute;
+          left: 0;
+          top: 0;
+          border-radius: 50%;
+          z-index: 2;
+          background: url(https://static.wecity.qq.com/webrebuildmysscard-mini/250702-aigc-audio/img-clr-bg.png) no-repeat center;
+          background-size: contain;
+          animation: bg-turn 5s linear infinite;
+        }
+
+        @keyframes bg-turn {
+          0% {
+            transform: rotateZ(0deg);
+          }
+
+          100% {
+            transform: rotateZ(360deg);
+          }
+        }
+
+        .ani-mask {
+          width: 160rpx;
+          height: 160rpx;
+          position: absolute;
+          left: 0;
+          top: 0;
+          z-index: 3;
+          background: url(https://static.wecity.qq.com/webrebuildmysscard-mini/250702-aigc-audio/img-ani-mask.png) no-repeat center;
+          background-size: contain;
+        }
+
+        .ani-main {
+          width: 176rpx;
+          height: 176rpx;
+          position: absolute;
+          left: -8rpx;
+          top: 11rpx;
+          z-index: 4;
+          background: url(https://static.wecity.qq.com/webrebuildmysscard-mini/250702-aigc-audio/img-ani-spirit-new.png) no-repeat center 0;
+          background-size: 100% auto;
+
+          &.ani-start {
+            animation: spirit-start 0.6s steps(14) forwards;
+          }
+
+          &.ani-end {
+            background: url(https://static.wecity.qq.com/webrebuildmysscard-mini/250702-aigc-audio/img-ani-spirit-new.png) no-repeat center 100%;
+            background-size: 176rpx auto;
+            animation: spirit-end 0.6s steps(14) forwards;
+          }
+        }
+
+        @keyframes spirit-start {
+          0% {
+            background-position: center 0;
+          }
+
+          100% {
+            background-position: center -2464rpx;
+          }
+        }
+
+        @keyframes spirit-end {
+          0% {
+            background-position: center -2464rpx;
+          }
+
+          100% {
+            background-position: center 0;
+          }
+        }
+
+        @keyframes spirit-start-1 {
+          0% {
+            background-position: center 0;
+          }
+
+          100% {
+            background-position: center -2436rpx;
+          }
+        }
+
+        @keyframes spirit-end-1 {
+          0% {
+            background-position: center -2436rpx;
+          }
+
+          100% {
+            background-position: center 0;
+          }
+        }
+      }
+    }
+
+    &__con {
+      margin: 0 40rpx 88rpx;
+      overflow-y: scroll;
+
+      &.disabled {
+        .@{chat-record}-audio-input__con__inner {
+          color: rgba(0, 0, 0, 0.4);
+        }
+
+        .@{chat-record}-audio-input__con__ta {
+          color: rgba(0, 0, 0, 0.4);
+        }
+      }
+
+      &__inner {
+        color: rgba(0, 0, 0, 0.9);
+        font-size: 34rpx;
+        font-weight: 500;
+        line-height: 58rpx;
+        min-height: 116rpx;
+        text-align: center;
+      }
+
+      &__ta {
+        color: rgba(0, 0, 0, 0.9);
+        font-size: 34rpx;
+        font-weight: 500;
+        line-height: 58rpx;
+        min-height: 116rpx;
+        text-align: left;
+        display: block;
+        width: 100%;
+        overflow: scroll;
+
+        // height: auto;
+        &.txt-limit-5 {
+          max-height: 120rpx;
+        }
+
+        &.txt-limit-9 {
+          max-height: 522rpx;
+        }
+      }
+    }
+
+    .audio-loading-icon {
+      display: flex;
+      align-items: center;
+      height: 24rpx;
+      position: absolute;
+      top: 218rpx;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .audio-loading-dot {
+      height: 10rpx;
+      width: 7rpx;
+      background: linear-gradient(180deg, #126dff 0%, rgba(18, 109, 255, 0.6) 100%);
+      border-radius: 4rpx;
+
+      &+.audio-loading-dot {
+        margin-left: 7rpx;
+      }
+
+      &.dot-1 {
+        animation: dot-scale 1.5s linear infinite;
+      }
+
+      &.dot-2 {
+        transform: scaleY(1.6);
+        animation: dot-scale-2 1.5s linear infinite;
+      }
+
+      &.dot-3 {
+        transform: scaleY(2.4);
+        animation: dot-scale-3 1.5s linear infinite;
+      }
+    }
+
+    @keyframes dot-scale {
+      0% {
+        transform: scaleY(1);
+      }
+
+      50% {
+        transform: scaleY(2.4);
+      }
+
+      100% {
+        transform: scaleY(1);
+      }
+    }
+
+    @keyframes dot-scale-2 {
+      0% {
+        transform: scaleY(1.6);
+      }
+
+      25% {
+        transform: scaleY(2.4);
+      }
+
+      75% {
+        transform: scaleY(1);
+      }
+
+      100% {
+        transform: scaleY(1.6);
+      }
+    }
+
+    @keyframes dot-scale-3 {
+      0% {
+        transform: scaleY(2.4);
+      }
+
+      50% {
+        transform: scaleY(1);
+      }
+
+      100% {
+        transform: scaleY(2.4);
+      }
+    }
+
+    &__ft {
+      position: relative;
+
+      &__bg {
+        width: 100%;
+        height: 348rpx;
+        display: block;
+        background: url(https://static.wecity.qq.com/webrebuildmysscard-mini/250702-aigc-audio/img-ctrl-bg-new.png) no-repeat center;
+        background-size: cover;
+      }
+
+      &__tips {
+        color: rgba(0, 0, 0, 0.26);
+        text-align: center;
+        font-size: 28rpx;
+        line-height: 36rpx;
+      }
+
+      &__tips__inner {
+        position: absolute;
+        left: 3rpx;
+        right: 3rpx;
+        top: 146rpx;
+        color: #126dff;
+        text-align: center;
+        font-size: 28rpx;
+        line-height: 36rpx;
+      }
+
+      &__ct {
+        display: flex;
+        align-items: center;
+        height: 300rpx;
+        margin-top: 48rpx;
+        padding: 0 40rpx;
+        display: none;
+
+        &.keyboard-cover {
+          height: fit-content;
+          padding: 0 32rpx 32rpx;
+        }
+      }
+
+      &__btn {
+        border-radius: 48rpx;
+        height: 96rpx;
+        background: #fff;
+        box-shadow: 0 8rpx 32rpx 0 rgba(18, 109, 255, 0.12);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &+.@{chat-record}-audio-input__ft__btn {
+          margin-left: 24rpx;
+        }
+
+        &.btn-send {
+          flex: 1;
+          font-size: 40rpx;
+          font-weight: 500;
+          background: linear-gradient(180deg, #126dff 0%, rgba(18, 109, 255, 0.6) 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+
+        &.btn-close {
+          width: 96rpx;
+          flex-shrink: 0;
+
+          .close-icon {
+            width: 48rpx;
+            height: 48rpx;
+            mask: url(https://static.wecity.qq.com/webrebuildmysscard-mini/250702-aigc-audio/icon-close.svg) no-repeat center;
+            mask-size: contain;
+            background: rgba(0, 0, 0, 0.26);
+          }
+        }
+      }
+
+      .speak-close-btn {
+        position: absolute;
+        left: 40rpx;
+        top: 202rpx;
+        width: 64rpx;
+        height: 64rpx;
+        border-radius: 48rpx;
+        border: 2rpx solid #fff;
+        background: rgba(0, 0, 0, 0.03);
+        box-sizing: border-box;
+        display: none;
+        align-items: center;
+        justify-content: center;
+
+        .close-icon {
+          width: 48rpx;
+          height: 48rpx;
+          border-radius: 50%;
+          mask: url(https://static.wecity.qq.com/webrebuildmysscard-mini/250702-aigc-audio/icon-close.svg) no-repeat center;
+          mask-size: contain;
+          background: rgba(0, 0, 0, 0.26);
+        }
+      }
+
+      .speak-btn {
+        position: absolute;
+        left: 50%;
+        top: 210rpx;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        display: none;
+        // pointer-events: none;
+
+        .speak-icon {
+          width: 48rpx;
+          height: 48rpx;
+          background: url(https://static.wecity.qq.com/webrebuildmysscard-mini/250702-aigc-audio/icon-vol.svg) no-repeat center;
+          background-size: contain;
+          margin-right: 4rpx;
+        }
+
+        .tips-txt {
+          font-size: 34rpx;
+          font-weight: 500;
+          background: linear-gradient(180deg, #126dff 0%, rgba(18, 109, 255, 0.6) 100%);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+
+      .audio-volume-icon {
+        width: 48rpx;
+        height: 48rpx;
+        position: absolute;
+        top: 60rpx;
+        left: 50%;
+        z-index: 2;
+        transform: translateX(-50%);
+        mask: url(https://static.wecity.qq.com/webrebuildmysscard-mini/250702-aigc-audio/icon-play.svg) no-repeat center;
+        mask-size: contain;
+        background: rgba(0, 0, 0, 0.4);
+
+        &.volume-w {
+          mask: url(https://static.wecity.qq.com/webrebuildmysscard-mini/250702-aigc-audio/icon-play.svg) no-repeat center;
+          mask-size: contain;
+          background: #ffffff;
+        }
+      }
+    }
   }
 }

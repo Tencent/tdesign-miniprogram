@@ -1,8 +1,4 @@
 {
-    "component": true,
-    "styleIsolation": "apply-shared",
-    "usingComponents": {
-        "t-loading": "tdesign-miniprogram/loading/loading",
-        "t-chat-message": "tdesign-miniprogram/chat-message/chat-message"
-    }
+  "component": true,
+  "styleIsolation": "apply-shared"
 }

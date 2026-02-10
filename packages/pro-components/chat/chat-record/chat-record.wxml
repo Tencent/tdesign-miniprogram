@@ -1,69 +1,87 @@
 <wxs src="./chat-record.wxs" module="utils" />
 
 <view class="{{classPrefix}}">
-  <!-- 空状态 -->
-  <view wx:if="{{!processedRecords || processedRecords.length === 0}}" class="{{classPrefix}}__empty">
-    <slot name="empty">
-      <view class="{{classPrefix}}__empty-text">{{emptyText}}</view>
-    </slot>
+  <!-- 录音触发区域：已授权 -->
+  <view wx:if="{{recordAuthStatus}}" class="{{classPrefix}}-hook" bindtouchstart="startRecord" bindtouchend="stopRecord" bindtouchmove="touchmove" bindtouchcancel="touchcancel">
+    <slot name="speechInput"></slot>
+    <view wx:if="{{!hasSlotSpeechInput}}">按住 说话</view>
   </view>
 
-  <!-- 记录列表 -->
-  <scroll-view
-    wx:else
-    class="{{classPrefix}}__scroll"
-    style="height: {{scrollViewHeight}}"
-    scroll-y="{{true}}"
-    scroll-into-view="{{scrollIntoView}}"
-    scroll-top="{{scrollTop}}"
-    bindscrolltoupper="handleScrollToUpper"
-    bindscroll="handleScroll"
-    upper-threshold="50"
-  >
-    <!-- 加载更多提示 -->
-    <view wx:if="{{!finished}}" class="{{classPrefix}}__loadmore">
-      <view wx:if="{{loading}}" class="{{classPrefix}}__loadmore-loading">
-        <t-loading size="40rpx" />
-        <text class="{{classPrefix}}__loadmore-text">{{loadingText}}</text>
+  <!-- 录音触发区域：未授权 -->
+  <view wx:else class="{{classPrefix}}-hook" bindtap="openVoiceSetting">
+    <slot name="speechNoAuth"></slot>
+    <view wx:if="{{!hasSlotSpeechNoAuth}}">请授权麦克风权限</view>
+  </view>
+
+  <!-- 覆盖层操作面板 -->
+  <view class="cover-ng-bar {{classPrefix}}-audio-input {{status}} {{showMask ? 'show' : ''}}">
+    <view class="{{classPrefix}}-audio-input__mask"></view>
+    <view class="{{classPrefix}}-audio-input__main">
+      <!-- 动画图标 -->
+      <view class="{{classPrefix}}-audio-input-ani">
+        <view class="ani-cir diff-start">
+          <view class="ani-cir-1"></view>
+          <view class="ani-cir-2"></view>
+          <view class="ani-cir-3"></view>
+          <view class="ani-cir-4"></view>
+        </view>
+        <view class="ani-wrap">
+          <view class="ani-inner"></view>
+          <view class="ani-mask"></view>
+          <view class="ani-main {{status === 'recording' ? 'ani-start' : 'ani-end'}}"></view>
+        </view>
+      </view>
+
+      <!-- 内容区域 -->
+      <view class="{{classPrefix}}-audio-input__con {{status === 'cancel' ? 'disabled' : ''}}">
+        <view wx:if="{{status !== 'recording' && !translateSuccess && touchStatus !== 'top'}}" class="{{classPrefix}}-audio-input__con__inner">
+          {{ status === 'unknow' ? '不好意思，未能识别您的语音' : '我在听，请说话' }}
+        </view>
+        <textarea wx:else class="{{classPrefix}}-audio-input__con__ta {{bottomHeight === 0 ? 'txt-limit-9' : 'txt-limit-5'}}" maxlength="10000" auto-height value="{{translateResult}}" bindfocus="focusTextarea" bindblur="blurTextarea" />
+      </view>
+
+      <!-- 底部区域 -->
+      <view class="{{classPrefix}}-audio-input__ft">
+        <view wx:if="{{status === 'cancel'}}" class="{{classPrefix}}-audio-input__ft__tips">松开手指 即可取消</view>
+        <view wx:elif="{{status === 'unknow'}}" class="{{classPrefix}}-audio-input__ft__tips">点击下方重新开始说话</view>
+        <view wx:elif="{{status === 'normal'}}" class="{{classPrefix}}-audio-input__ft__tips">松手完成 上滑取消</view>
+
+        <view wx:if="{{showRecordCountDown}}" class="{{classPrefix}}-audio-input__ft__tips__inner">{{recordCountDown}}秒后停止语音输入</view>
+
+        <!-- 加载动画 -->
+        <view class="audio-loading-icon">
+          <view class="audio-loading-dot dot-1"></view>
+          <view class="audio-loading-dot dot-1"></view>
+          <view class="audio-loading-dot dot-2"></view>
+          <view class="audio-loading-dot dot-2"></view>
+          <view class="audio-loading-dot dot-3"></view>
+          <view class="audio-loading-dot dot-2"></view>
+          <view class="audio-loading-dot dot-3"></view>
+          <view class="audio-loading-dot dot-2"></view>
+          <view class="audio-loading-dot dot-1"></view>
+          <view class="audio-loading-dot dot-1"></view>
+          <view class="audio-loading-dot dot-1"></view>
+        </view>
+
+        <!-- 操作按钮 -->
+        <view class="speak-close-btn" bindtap="handleCancelSend">
+          <view class="close-icon"></view>
+        </view>
+        <view class="speak-btn" bindtouchstart="startRecord" bindtouchend="stopRecord" bindtouchmove="touchmove" bindtouchcancel="touchcancel">
+          <view class="speak-icon"></view>
+          <view class="tips-txt">按住说话</view>
+        </view>
+
+        <!-- 发送控制 -->
+        <view class="keyboard-cover {{classPrefix}}-audio-input__ft__ct" style="margin-bottom: {{bottomHeight}}px;">
+          <view class="{{classPrefix}}-audio-input__ft__btn btn-close" bindtap="handleCancelSend">
+            <view class="close-icon"></view>
+          </view>
+          <view class="{{classPrefix}}-audio-input__ft__btn btn-send" bindtap="handleSendVoiceMsg">发送</view>
+        </view>
+        <view class="{{classPrefix}}-audio-input__ft__bg"></view>
       </view>
     </view>
-
-    <!-- 消息列表 -->
-    <view class="{{classPrefix}}__list">
-      <block wx:for="{{processedRecords}}" wx:key="id">
-        <view id="record-{{item.id}}" class="{{classPrefix}}__item">
-          <!-- 时间分组 -->
-          <view wx:if="{{item.showTime}}" class="{{classPrefix}}__time">
-            {{item.timeText}}
-          </view>
-
-          <!-- 消息内容 -->
-          <view
-            class="{{classPrefix}}__message"
-            data-record="{{item}}"
-            bindtap="handleMessageClick"
-            bindlongpress="handleMessageLongPress"
-          >
-            <slot name="message" record="{{item}}">
-              <t-chat-message
-                chat-id="{{item.id}}"
-                role="{{item.role}}"
-                content="{{item.content}}"
-                avatar="{{item.avatar}}"
-                name="{{item.name}}"
-                status="{{item.status}}"
-                variant="{{item.variant}}"
-                placement="{{item.placement}}"
-              />
-            </slot>
-          </view>
-        </view>
-      </block>
-    </view>
-
-    <!-- 加载完成提示 -->
-    <view wx:if="{{finished && processedRecords.length > 0}}" class="{{classPrefix}}__finished">
-      <text class="{{classPrefix}}__finished-text">{{finishedText}}</text>
-    </view>
-  </scroll-view>
+  </view>
 </view>
+
