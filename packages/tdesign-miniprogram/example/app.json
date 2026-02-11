@@ -243,6 +243,17 @@
   "resolveAlias": {
     "@behaviors/*": "behaviors/*"
   },
+  "plugins": {
+    "WechatSI": {
+      "version": "0.3.6",
+      "provider": "wx069ba97219f66d99"
+    }
+  },
+  "permission": {
+    "scope.record": {
+      "desc": "你的信息将用于录音功能的效果展示"
+    }
+  },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",
   "rendererOptions": {

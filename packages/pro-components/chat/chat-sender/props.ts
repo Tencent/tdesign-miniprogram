@@ -25,6 +25,11 @@ const props: TdChatSenderProps = {
     type: Boolean,
     value: false,
   },
+  /** 输入模式：text-文本输入模式（显示textarea），voice-语音输入模式（显示语音按钮） */
+  inputMode: {
+    type: String,
+    value: 'text',
+  },
   /** 附件文件列表 */
   fileList: {
     type: Array,

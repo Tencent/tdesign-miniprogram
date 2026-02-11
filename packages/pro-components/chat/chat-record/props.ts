@@ -7,6 +7,18 @@
 import { TdChatRecordProps } from './type';
 
 const props: TdChatRecordProps = {
+  useSpeechInputSlot: {
+    type: Boolean,
+    value: false,
+  },
+  useSpeechNoAuthSlot: {
+    type: Boolean,
+    value: false,
+  },
+  autoSendHeight: {
+    type: Boolean,
+    value: true,
+  },
 };
 
 export default props;

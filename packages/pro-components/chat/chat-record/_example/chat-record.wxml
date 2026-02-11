@@ -1,4 +1,4 @@
-<t-navbar class="demo-navbar" title="ChatSender" leftArrow placeholder zIndex="{{99}}" />
+<t-navbar class="demo-navbar" title="ChatRecord" leftArrow placeholder zIndex="{{99}}" />
 <view class="demo">
   <t-demo-header
     title="ChatSender 语音输入"

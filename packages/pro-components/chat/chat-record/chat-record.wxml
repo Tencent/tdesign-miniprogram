@@ -1,19 +1,21 @@
 <wxs src="./chat-record.wxs" module="utils" />
 
 <view class="{{classPrefix}}">
-  <!-- 录音触发区域：已授权 -->
-  <view wx:if="{{recordAuthStatus}}" class="{{classPrefix}}-hook" bindtouchstart="startRecord" bindtouchend="stopRecord" bindtouchmove="touchmove" bindtouchcancel="touchcancel">
-    <slot name="speechInput"></slot>
-    <view wx:if="{{!hasSlotSpeechInput}}">按住 说话</view>
+  <view
+    wx:if="{{recordAuthStatus}}"
+    class="{{classPrefix}}-hook"
+    bindtouchstart="startRecord"
+    bindtouchend="stopRecord"
+    bindtouchmove="touchmove"
+    catchtouchcancel="touchcancel"
+  >
+    <slot wx:if="{{useSpeechInputSlot}}" name="speechInput"></slot>
+    <view wx:else> 按住 说话 </view>
   </view>
-
-  <!-- 录音触发区域：未授权 -->
   <view wx:else class="{{classPrefix}}-hook" bindtap="openVoiceSetting">
-    <slot name="speechNoAuth"></slot>
-    <view wx:if="{{!hasSlotSpeechNoAuth}}">请授权麦克风权限</view>
+    <slot wx:if="{{useSpeechNoAuthSlot}}" name="speechNoAuth"></slot>
+    <view wx:else> 请授权麦克风权限 </view>
   </view>
-
-  <!-- 覆盖层操作面板 -->
   <view class="cover-ng-bar {{classPrefix}}-audio-input {{status}} {{showMask ? 'show' : ''}}">
     <view class="{{classPrefix}}-audio-input__mask"></view>
     <view class="{{classPrefix}}-audio-input__main">
@@ -34,19 +36,34 @@
 
       <!-- 内容区域 -->
       <view class="{{classPrefix}}-audio-input__con {{status === 'cancel' ? 'disabled' : ''}}">
-        <view wx:if="{{status !== 'recording' && !translateSuccess && touchStatus !== 'top'}}" class="{{classPrefix}}-audio-input__con__inner">
-          {{ status === 'unknow' ? '不好意思，未能识别您的语音' : '我在听，请说话' }}
+        <view
+          wx:if="{{status !== 'recording' && !translateSuccess && touchStatus !== 'top'}}"
+          class="{{classPrefix}}-audio-input__con__inner"
+        >
+          {{status === 'unknow' ? '不好意思，未能识别您的语音' : '我在听，请说话'}}
         </view>
-        <textarea wx:else class="{{classPrefix}}-audio-input__con__ta {{bottomHeight === 0 ? 'txt-limit-9' : 'txt-limit-5'}}" maxlength="10000" auto-height value="{{translateResult}}" bindfocus="focusTextarea" bindblur="blurTextarea" />
+        <textarea
+          wx:else
+          class="{{classPrefix}}-audio-input__con__ta {{bottomHeight === 0 ? 'txt-limit-9' : 'txt-limit-5'}}"
+          maxlength="-1"
+          auto-height="{{true}}"
+          value="{{translateResult}}"
+          bindfocus="focusTextarea"
+          bindblur="blurTextarea"
+        ></textarea>
       </view>
 
       <!-- 底部区域 -->
       <view class="{{classPrefix}}-audio-input__ft">
-        <view wx:if="{{status === 'cancel'}}" class="{{classPrefix}}-audio-input__ft__tips">松开手指 即可取消</view>
-        <view wx:elif="{{status === 'unknow'}}" class="{{classPrefix}}-audio-input__ft__tips">点击下方重新开始说话</view>
-        <view wx:elif="{{status === 'normal'}}" class="{{classPrefix}}-audio-input__ft__tips">松手完成 上滑取消</view>
+        <view wx:if="{{status === 'cancel'}}" class="{{classPrefix}}-audio-input__ft__tips"> 松开手指 即可取消 </view>
+        <view wx:elif="{{status === 'unknow'}}" class="{{classPrefix}}-audio-input__ft__tips">
+          点击下方重新开始说话
+        </view>
+        <view wx:elif="{{status === 'normal'}}" class="{{classPrefix}}-audio-input__ft__tips"> 松手完成 上滑取消 </view>
 
-        <view wx:if="{{showRecordCountDown}}" class="{{classPrefix}}-audio-input__ft__tips__inner">{{recordCountDown}}秒后停止语音输入</view>
+        <view wx:if="{{showRecordCountDown}}" class="{{classPrefix}}-audio-input__ft__tips__inner">
+          {{recordCountDown}}秒后停止语音输入
+        </view>
 
         <!-- 加载动画 -->
         <view class="audio-loading-icon">
@@ -67,9 +84,15 @@
         <view class="speak-close-btn" bindtap="handleCancelSend">
           <view class="close-icon"></view>
         </view>
-        <view class="speak-btn" bindtouchstart="startRecord" bindtouchend="stopRecord" bindtouchmove="touchmove" bindtouchcancel="touchcancel">
+        <view
+          class="speak-btn"
+          bindtouchstart="startRecord"
+          bindtouchend="stopRecord"
+          bindtouchmove="touchmove"
+          catchtouchcancel="touchcancel"
+        >
           <view class="speak-icon"></view>
-          <view class="tips-txt">按住说话</view>
+          <view class="tips-txt"> 按住说话 </view>
         </view>
 
         <!-- 发送控制 -->
@@ -77,11 +100,10 @@
           <view class="{{classPrefix}}-audio-input__ft__btn btn-close" bindtap="handleCancelSend">
             <view class="close-icon"></view>
           </view>
-          <view class="{{classPrefix}}-audio-input__ft__btn btn-send" bindtap="handleSendVoiceMsg">发送</view>
+          <view class="{{classPrefix}}-audio-input__ft__btn btn-send" bindtap="handleSendVoiceMsg"> 发送 </view>
         </view>
         <view class="{{classPrefix}}-audio-input__ft__bg"></view>
       </view>
     </view>
   </view>
 </view>
-
