@@ -19,6 +19,7 @@
 @chat-sender-textarea-gap: 10rpx;
 @chat-sender-textarea-padding: 0 24rpx;
 @chat-sender-textarea-hook-padding-bottom: 16rpx;
+@chat-sender-textarea-hook-min-height: 134rpx;
 @chat-sender-textarea-hook-max-height: 280rpx;
 
 @chat-sender-input-max-height: 264rpx;
@@ -98,7 +99,7 @@
     position: relative;
     flex: 1;
     padding-bottom: @chat-sender-textarea-hook-padding-bottom;
-    min-height: 134rpx;
+    min-height: @chat-sender-textarea-hook-min-height;
     max-height: @chat-sender-textarea-hook-max-height;
 
     // 输入框
