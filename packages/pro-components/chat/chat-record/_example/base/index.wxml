@@ -8,10 +8,10 @@
     <!-- <view class="chat-sender-placeholder"> 文本输入模式：最大高度为132px </view> -->
     <view class="chat-sender-wrapper">
       <t-chat-sender
-        value="{{value}}"
+        value="{{query}}"
         loading="{{loading}}"
         placeholder="{{placeholder}}"
-        inputMode="voice"
+        inputMode="{{showVoice ? 'voice' : 'text'}}"
         bind:send="onSend"
         bind:keyboardheightchange="onKeyboardHeightChange"
       >
@@ -22,6 +22,22 @@
               请授权麦克风权限
             </view>
           </t-chat-record>
+        </view>
+        <view slot="footer-prefix" class="demo-footer-prefix">
+          <view
+            style="
+              width: 40px;
+              height: 40px;
+              background-color: red;
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            "
+            bind:tap="handleVoice"
+          >
+            <text style="color: white; font-size: 20px"> + </text>
+          </view>
         </view>
       </t-chat-sender>
     </view>

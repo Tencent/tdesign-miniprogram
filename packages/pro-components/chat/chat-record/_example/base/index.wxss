@@ -66,37 +66,6 @@
   align-items: center;
 }
 
-.deep-think-block {
-  padding: 0 24rpx;
-  height: 60rpx;
-  margin-right: 16rpx;
-}
-
-.deep-think-text {
-  margin-left: 8rpx;
-}
-
-.deep-think-block,
-.net-search-block {
-  color: var(--td-text-color-primary);
-  border-radius: 200rpx;
-  border: 2rpx solid var(--td-component-border);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.net-search-block {
-  width: 64rpx;
-  height: 60rpx;
-}
-
-.active {
-  border-color: var(--td-brand-color-light-active);
-  color: var(--td-brand-color);
-  background-color: var(--td-brand-color-light);
-}
-
 /* 语音输入按钮样式 */
 .voice-input-button {
   width: 100%;
@@ -112,17 +81,4 @@
 
 .voice-input-text {
   margin-left: 8rpx;
-}
-
-/* 切换模式按钮样式 */
-.switch-mode-block {
-  width: 64rpx;
-  height: 60rpx;
-  color: var(--td-text-color-primary);
-  border-radius: 200rpx;
-  border: 2rpx solid var(--td-component-border);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 16rpx;
 }

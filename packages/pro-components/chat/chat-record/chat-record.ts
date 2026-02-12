@@ -9,13 +9,19 @@ declare function requirePlugin(name: string): any;
 const { prefix } = config;
 const name = `${prefix}-chat-record`;
 
-const plugin = requirePlugin('WechatSI');
-const manager = plugin.getRecordRecognitionManager();
-
-/** 语音录制定时器-模拟长按 */
-let startRecordTimer: ReturnType<typeof setTimeout> | null = null;
-/** 录音计时器 */
-let recordTimer: ReturnType<typeof setInterval> | null = null;
+// 插件管理器（延迟加载，错误处理）
+let manager: any = null;
+const getManager = () => {
+  if (!manager) {
+    try {
+      const plugin = requirePlugin('WechatSI');
+      manager = plugin?.getRecordRecognitionManager?.() || null;
+    } catch (e) {
+      console.error('WechatSI 插件加载失败:', e);
+    }
+  }
+  return manager;
+};
 
 @wxComponent()
 export default class ChatRecord extends SuperComponent {
@@ -24,6 +30,10 @@ export default class ChatRecord extends SuperComponent {
   };
 
   properties = props;
+
+  // 实例变量，避免多组件间共享
+  private startRecordTimer: ReturnType<typeof setTimeout> | null = null;
+  private recordTimer: ReturnType<typeof setInterval> | null = null;
 
   data = {
     classPrefix: name,
@@ -89,16 +99,17 @@ export default class ChatRecord extends SuperComponent {
       this.getWindowHeight();
     },
     detached() {
-      if (recordTimer) {
-        clearInterval(recordTimer);
-        recordTimer = null;
+      if (this.recordTimer) {
+        clearInterval(this.recordTimer);
+        this.recordTimer = null;
       }
-      if (startRecordTimer) {
-        clearTimeout(startRecordTimer);
-        startRecordTimer = null;
+      if (this.startRecordTimer) {
+        clearTimeout(this.startRecordTimer);
+        this.startRecordTimer = null;
       }
-      if (manager) {
-        manager.stop();
+      const mgr = getManager();
+      if (mgr) {
+        mgr.stop();
       }
     },
   };
@@ -107,7 +118,13 @@ export default class ChatRecord extends SuperComponent {
    * 初始化同声传译插件
    */
   initRecorderManager(): void {
-    manager.onStop = (res): void => {
+    const mgr = getManager();
+    if (!mgr) {
+      console.warn('语音插件未加载，语音功能不可用');
+      return;
+    }
+
+    mgr.onStop = (res): void => {
       const { tempFilePath, duration } = res;
 
       if (this.data.touchStatus === 'top') {
@@ -123,13 +140,13 @@ export default class ChatRecord extends SuperComponent {
       });
     };
 
-    manager.onStart = (): void => {
+    mgr.onStart = (): void => {
       this.setData({
         recordStatus: 'thinking' as RecordStatus,
       });
     };
 
-    manager.onRecognize = (res): void => {
+    mgr.onRecognize = (res): void => {
       if (res.result && !res.end) {
         this.setData({
           recordStatus: 'recording' as RecordStatus,
@@ -138,7 +155,7 @@ export default class ChatRecord extends SuperComponent {
       }
     };
 
-    manager.onError = (res): void => {
+    mgr.onError = (res): void => {
       this.setData({
         recordStatus: 'error' as RecordStatus,
         touchStatus: '' as TouchStatus,
@@ -384,8 +401,22 @@ export default class ChatRecord extends SuperComponent {
   /**
    * 开始录音
    */
-  async startRecord(): Promise<void> {
+  async startRecord(e?: CustomTouchEvent): Promise<void> {
     if (this.data.isStarted) {
+      return;
+    }
+
+    // 阻止默认行为，防止冒泡
+    if (e?.preventDefault) {
+      e.preventDefault();
+    }
+
+    const mgr = getManager();
+    if (!mgr) {
+      wx.showToast({
+        title: '语音功能暂不可用',
+        icon: 'none',
+      });
       return;
     }
 
@@ -409,20 +440,22 @@ export default class ChatRecord extends SuperComponent {
       startTime: new Date().getTime(),
     });
 
-    startRecordTimer = setTimeout(() => {
+    this.startRecordTimer = setTimeout(() => {
       if (!this.data.isStarted) {
         return;
       }
 
       this.setData({ showMask: true });
 
-      if (!manager) {
-        this.initRecorderManager();
+      const currentMgr = getManager();
+      if (!currentMgr) {
+        this.setData({ isStarted: false });
+        return;
       }
 
-      manager.start({ duration: 30000, lang: 'zh_CN' });
+      currentMgr.start({ duration: 30000, lang: 'zh_CN' });
 
-      recordTimer = setInterval(() => {
+      this.recordTimer = setInterval(() => {
         const recordTime = new Date().getTime() - this.data.startTime;
         if (recordTime > 50000) {
           if (this.data.recordCountDown === -1) {
@@ -444,13 +477,13 @@ export default class ChatRecord extends SuperComponent {
   stopRecord(): void {
     this.setData({ isStarted: false });
 
-    if (recordTimer) {
-      clearInterval(recordTimer);
-      recordTimer = null;
+    if (this.recordTimer) {
+      clearInterval(this.recordTimer);
+      this.recordTimer = null;
     }
-    if (startRecordTimer) {
-      clearTimeout(startRecordTimer);
-      startRecordTimer = null;
+    if (this.startRecordTimer) {
+      clearTimeout(this.startRecordTimer);
+      this.startRecordTimer = null;
     }
 
     this.setData({ recordCountDown: -1 });
@@ -468,10 +501,11 @@ export default class ChatRecord extends SuperComponent {
     }
 
     const recordTime = new Date().getTime() - this.data.startTime;
+    const mgr = getManager();
 
     if (this.data.touchStatus === 'top') {
-      if (manager) {
-        manager.stop();
+      if (mgr) {
+        mgr.stop();
       }
       this.resetRecordState();
       this.setData({ startTime: 0 });
@@ -489,16 +523,16 @@ export default class ChatRecord extends SuperComponent {
         startTime: 0,
       });
 
-      if (manager) {
-        manager.stop();
+      if (mgr) {
+        mgr.stop();
       }
     } else {
       this.setData({
         showMask: false,
         startTime: 0,
       });
-      if (manager) {
-        manager.stop();
+      if (mgr) {
+        mgr.stop();
       }
       wx.showToast({
         icon: 'none',
@@ -540,17 +574,18 @@ export default class ChatRecord extends SuperComponent {
    * 录音过程中被系统事件打断，结束录音
    */
   touchcancel(): void {
-    if (manager) {
-      manager.stop();
+    const mgr = getManager();
+    if (mgr) {
+      mgr.stop();
     }
 
-    if (recordTimer) {
-      clearInterval(recordTimer);
-      recordTimer = null;
+    if (this.recordTimer) {
+      clearInterval(this.recordTimer);
+      this.recordTimer = null;
     }
-    if (startRecordTimer) {
-      clearTimeout(startRecordTimer);
-      startRecordTimer = null;
+    if (this.startRecordTimer) {
+      clearTimeout(this.startRecordTimer);
+      this.startRecordTimer = null;
     }
 
     this.resetRecordState();
