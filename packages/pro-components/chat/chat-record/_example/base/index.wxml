@@ -1,0 +1,45 @@
+<view class="demo-base-container">
+  <!-- 聊天发送器组件 - 文本输入模式 -->
+  <view class="chat-sender-demo-wrapper">
+    <view class="chat-sender-height-limit">
+      <view class="chat-sender-height-left-limit"> </view>
+      <view class="chat-sender-height-right-limit"> </view>
+    </view>
+    <!-- <view class="chat-sender-placeholder"> 文本输入模式：最大高度为132px </view> -->
+    <view class="chat-sender-wrapper">
+      <t-chat-sender
+        value="{{query}}"
+        loading="{{loading}}"
+        placeholder="{{placeholder}}"
+        inputMode="{{showVoice ? 'voice' : 'text'}}"
+        bind:send="onSend"
+        bind:keyboardheightchange="onKeyboardHeightChange"
+      >
+        <view slot="voice-input">
+          <t-chat-record useSpeechInputSlot useSpeechNoAuthSlot bind:recognize="onVoiceRecognize">
+            <view slot="speechInput" style="padding: 10px; background: #f0f0f0; border-radius: 8px"> 按住说话 </view>
+            <view slot="speechNoAuth" style="padding: 10px; background: #ffebee; border-radius: 8px; color: #d32f2f">
+              请授权麦克风权限
+            </view>
+          </t-chat-record>
+        </view>
+        <view slot="footer-prefix" class="demo-footer-prefix">
+          <view
+            style="
+              width: 40px;
+              height: 40px;
+              background-color: red;
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+            "
+            bind:tap="handleVoice"
+          >
+            <text style="color: white; font-size: 20px"> + </text>
+          </view>
+        </view>
+      </t-chat-sender>
+    </view>
+  </view>
+</view>
