@@ -71,7 +71,7 @@ export interface TdCheckboxProps {
    */
   icon?: {
     type: null;
-    value?: 'circle' | 'line' | 'rectangle' | string[];
+    value?: CheckboxIconType;
   };
   /**
    * 是否为半选
@@ -135,3 +135,5 @@ export interface TdCheckboxProps {
     value?: string | number | boolean;
   };
 }
+
+export type CheckboxIconType = 'circle' | 'line' | 'rectangle' | string[];
