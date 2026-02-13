@@ -32,6 +32,9 @@ export default class Message extends SuperComponent {
   // 两条message之间的间距，单位px
   gap = 12;
 
+  // Promise 队列，用于串行化 message 添加
+  addMessageQueue: Promise<void> = Promise.resolve();
+
   observers = {
     visible(value) {
       if (value) {
@@ -70,9 +73,9 @@ export default class Message extends SuperComponent {
    * @param theme
    */
   setMessage(msg: MessageProps, theme: MessageType = MessageType.info) {
-    let id = `${name}_${this.index}`;
-    if (msg.single) {
-      id = name;
+    const id = msg.single ? name : `${name}_${this.index}`;
+    if (!msg.single) {
+      this.index += 1;
     }
     this.gap = unitConvert(msg.gap || this.gap);
     const msgObj = {
@@ -87,9 +90,11 @@ export default class Message extends SuperComponent {
     } else {
       // 更新消息
       const instance = this.instances[instanceIndex];
-      const offsetHeight = this.getOffsetHeight(instanceIndex);
+      const offsetHeight = msg.single ? 0 : this.getOffsetHeight(instanceIndex);
       instance.resetData(() => {
-        instance.setData(msgObj, instance.show.bind(instance, offsetHeight));
+        instance.setData(msgObj, () => {
+          instance.show(offsetHeight);
+        });
         instance.onHide = () => {
           this.close(id);
         };
@@ -102,20 +107,25 @@ export default class Message extends SuperComponent {
    * @param msgObj
    */
   addMessage(msgObj: MessageProps) {
-    const list = [...this.data.messageList, { id: msgObj.id }];
-    this.setData(
-      {
-        messageList: list,
-      },
-      () => {
-        const offsetHeight = this.getOffsetHeight();
-        const instance = this.showMessageItem(msgObj, msgObj.id, offsetHeight);
-        if (this.instances) {
-          this.instances.push(instance);
-          this.index += 1;
-        }
-      },
-    );
+    this.addMessageQueue = this.addMessageQueue
+      .then(
+        () =>
+          new Promise<void>((resolve) => {
+            this.setData({ messageList: [...this.data.messageList, { id: msgObj.id }] }, () => {
+              const offsetHeight = msgObj.single ? 0 : this.getOffsetHeight();
+              this.showMessageItem(msgObj, msgObj.id, offsetHeight)
+                .then((instance) => {
+                  if (instance) this.instances.push(instance);
+                  resolve();
+                })
+                .catch(() => resolve());
+            });
+          }),
+      )
+      .catch((error) => {
+        console.error('addMessage error:', error);
+        return Promise.resolve();
+      });
   }
 
   /**
@@ -124,16 +134,14 @@ export default class Message extends SuperComponent {
    * @returns
    */
   getOffsetHeight(index: number = -1) {
-    let offsetHeight = 0;
     let len = index;
     if (len === -1 || len > this.instances.length) {
       len = this.instances.length;
     }
-    for (let i = 0; i < len; i += 1) {
-      const instance = this.instances[i];
-      offsetHeight += instance.data.height + instance.data.gap;
-    }
-    return offsetHeight;
+    return this.instances.slice(0, len).reduce((offset, instance) => {
+      // 跳过 single 消息（id 为 `${prefix}-message`）
+      return instance.id === name ? offset : offset + instance.data.height + instance.data.gap;
+    }, 0);
   }
 
   /**
@@ -144,18 +152,23 @@ export default class Message extends SuperComponent {
    * @returns
    */
   showMessageItem(options: MessageProps, id: string, offsetHeight: number) {
-    const instance = this.selectComponent(`#${id}`);
-    if (instance) {
-      instance.resetData(() => {
-        instance.setData(options, instance.show.bind(instance, offsetHeight));
-        instance.onHide = () => {
-          this.close(id);
-        };
-      });
+    return new Promise((resolve) => {
+      const instance = this.selectComponent(`#${id}`);
+      if (!instance) {
+        console.error('未找到组件,请确认 selector && context 是否正确');
+        return resolve(null);
+      }
 
-      return instance;
-    }
-    console.error('未找到组件,请确认 selector && context 是否正确');
+      instance.resetData(() => {
+        instance.setData(options, () => {
+          instance
+            .show(offsetHeight)
+            .then(() => resolve(instance))
+            .catch(() => resolve(instance));
+        });
+        instance.onHide = () => this.close(id);
+      });
+    });
   }
 
   close(id) {
@@ -197,13 +210,22 @@ export default class Message extends SuperComponent {
     const index = this.instances.findIndex((x) => x.id === id);
     if (index < 0) return;
     const instance = this.instances[index];
-    const removedHeight = instance.data.height;
+    const isSingleMessage = instance.id === name;
+    const removedHeight = isSingleMessage ? 0 : instance.data.height + instance.data.gap;
+
     this.instances.splice(index, 1);
-    for (let i = index; i < this.instances.length; i += 1) {
-      const instance = this.instances[i];
-      instance.setData({
-        wrapTop: instance.data.wrapTop - removedHeight - instance.data.gap,
-      });
+
+    // 只有非 single 消息被移除时，才需要更新后续消息的位置
+    if (removedHeight > 0) {
+      for (let i = index; i < this.instances.length; i += 1) {
+        const instance = this.instances[i];
+        // 跳过 single 消息，single 消息始终在顶部
+        if (instance.id !== name) {
+          instance.setData({
+            wrapTop: instance.data.wrapTop - removedHeight,
+          });
+        }
+      }
     }
   }
 
