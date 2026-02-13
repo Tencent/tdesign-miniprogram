@@ -1,9 +1,13 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
+import { TdCheckboxProps } from './type';
 import Props from './props';
 
 const { prefix } = config;
 const name = `${prefix}-checkbox`;
+
+export type CheckboxProps = TdCheckboxProps;
+
 @wxComponent()
 export default class CheckBox extends SuperComponent {
   externalClasses = [
