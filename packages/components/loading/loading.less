@@ -73,13 +73,29 @@
           from 180deg at 50% 50%,
           rgba(255, 255, 255, 0) 0deg,
           rgba(255, 255, 255, 0) 60deg,
-          currentColor 330deg,
+          @loading-color 330deg,
           rgba(255, 255, 255, 0) 360deg
         );
-        mask: radial-gradient(transparent calc(50% - 1rpx), #fff 50%);
 
-        /* stylelint-disable-next-line */
-        -webkit-mask: radial-gradient(transparent calc(50% - 1rpx), #fff 50%);
+        // skyline 下，1. mask 不支持渐变只支持图片；2. conic-gradient() 多层渐变效果不符合预期。问题一：改用伪元素+背景色实现，背景色灵活性会降低，待支持渐变后建议恢复用 mask 实现。问题二：待定
+        // skyline: ✅ mask-image: image(url("xx"));
+        // skyline: ❌ mask-image: linear-gradient(x);
+
+        // mask: radial-gradient(transparent calc(50% - 1rpx), #fff 50%);
+        // /* stylelint-disable-next-line */
+        // -webkit-mask: radial-gradient(transparent calc(50% - 1rpx), #fff 50%);
+
+        &::after {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          border-radius: 100%;
+          background-color: @bg-color-container;
+          width: 70%;
+          height: 70%;
+        }
       }
     }
 
