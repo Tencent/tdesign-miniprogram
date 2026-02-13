@@ -22,6 +22,9 @@
         />
       </view>
     </view>
-    <view hidden="{{!(!localCollapsed)}}" class="{{_.cls(classPrefix + '__bd', [layout])}}" style="{{contentStyle}}">{{content.text||""}}</view>
+    <view hidden="{{!(!localCollapsed)}}" class="{{_.cls(classPrefix + '__bd', [layout])}}">
+      <block wx:if="{{content.text}}" class="{{_.cls(classPrefix + '__bd__inner')}}">{{content.text}}</block>
+      <slot wx:else name="content" />
+    </view>
   </view>
 </view>

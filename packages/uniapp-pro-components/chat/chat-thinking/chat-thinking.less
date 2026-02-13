@@ -56,8 +56,11 @@
     font-size: @font-size-base;
     line-height: 170%;
     margin-top: @spacer-1;
-    white-space: pre-wrap;
     overflow-y: auto;
+
+    &__inner {
+      white-space: pre-wrap;
+    }
 
     &--border {
       border-left: 4rpx solid @component-stroke;
