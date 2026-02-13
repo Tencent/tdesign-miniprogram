@@ -99,6 +99,29 @@ import TLoading from '@tdesign/uniapp/loading/loading.vue';
 }
 ```
 
+### Vite 配置
+
+也可以通过 [@uni-helper/vite-plugin-uni-components](https://github.com/uni-helper/vite-plugin-uni-components) 实现组件的自动引入。
+
+```js
+// vite.config.ts
+import { defineConfig } from "vite";
+import uni from "@dcloudio/vite-plugin-uni";
+
+import Components from '@uni-helper/vite-plugin-uni-components'
+import { TDesignUniappResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
+
+
+export default defineConfig({
+  plugins: [
+    Components({
+      resolvers: [TDesignUniappResolver()]
+    }),
+    uni(),
+  ],
+});
+```
+
 ## 编辑器提示
 
 安装注册 TDesign 之后，在开发项目时，可以配合插件在VSCode等主流编辑器中达到提示组件名及API的效果。
