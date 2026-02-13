@@ -33,6 +33,7 @@ export default class ChatRecord extends SuperComponent {
 
   // 实例变量，避免多组件间共享
   private startRecordTimer: ReturnType<typeof setTimeout> | null = null;
+
   private recordTimer: ReturnType<typeof setInterval> | null = null;
 
   data = {
