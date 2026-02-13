@@ -65,7 +65,6 @@ isComponent: true
    - 模拟器无法测试录音功能
    - 必须使用真机预览或体验版测试
 
-
 ## API
 
 ### ChatRecord Props
