@@ -65,11 +65,7 @@
                 <block wx:if="{{item.name === 'upload'}}">
                   <view class="plus-btn {{item.status === 'disabled' ? 'disabled' : ''}}">
                     <block>
-                      <view
-                        class="btn-func"
-                        data-status="{{item.status}}"
-                        catchtap="handleUploadClick"
-                      >
+                      <view class="btn-func" data-status="{{item.status}}" catchtap="handleUploadClick">
                         <t-icon name="{{visible? 'close' : 'add'}}" size="40rpx" />
                       </view>
                     </block>
