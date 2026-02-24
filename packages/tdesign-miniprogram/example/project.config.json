@@ -489,8 +489,20 @@
           "name": "chat-sender",
           "pathName": "pages/chat-sender/chat-sender",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "chat-record",
+          "pathName": "pages/chat-record/chat-record",
+          "scene": null
         }
-      ]
+      ],
+      "plugins": {
+        "WechatSI": {
+          "version": "0.3.6",
+          "provider": "wx069ba97219f66d99"
+        }
+      }
     }
   }
 }

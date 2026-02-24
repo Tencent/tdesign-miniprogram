@@ -30,27 +30,34 @@
   <view class="{{classPrefix}}__actions">
     <view class="{{classPrefix}}__textarea">
       <slot name="input-prefix" />
-      <textarea
-        class="{{classPrefix}}__textarea--control"
-        style="{{_this.textareaStyle(textareaProps.autosize)}}"
-        disabled="{{disabled}}"
-        auto-height="{{!!textareaProps.autosize}}"
-        confirm-type="send"
-        adjust-position="{{adjustPosition}}"
-        disable-default-padding="{{false}}"
-        cursor-spacing="30"
-        maxlength="-1"
-        value="{{value}}"
-        bindchange="textChange"
-        bindfocus="focusFn"
-        bindblur="blurFn"
-        bindtap="handlerClick"
-        bindinput="textChange"
-        bindkeyboardheightchange="onkeyboardheightchange"
-        bindconfirm="handleSendClick"
-      >
-      </textarea>
-      <view class="{{classPrefix}}__textarea--placeholder {{focusFlag || value ? 'hide' : ''}}">{{placeholder}}</view>
+      <!-- 文本输入模式 -->
+      <block wx:if="{{inputMode === 'text'}}">
+        <textarea
+          class="{{classPrefix}}__textarea--control"
+          style="{{_this.textareaStyle(textareaProps.autosize)}}"
+          disabled="{{disabled}}"
+          auto-height="{{!!textareaProps.autosize}}"
+          confirm-type="send"
+          adjust-position="{{adjustPosition}}"
+          disable-default-padding="{{false}}"
+          cursor-spacing="30"
+          maxlength="-1"
+          value="{{value}}"
+          bindchange="textChange"
+          bindfocus="focusFn"
+          bindblur="blurFn"
+          bindtap="handlerClick"
+          bindinput="textChange"
+          bindkeyboardheightchange="onkeyboardheightchange"
+          bindconfirm="handleSendClick"
+        >
+        </textarea>
+        <view class="{{classPrefix}}__textarea--placeholder {{focusFlag || value ? 'hide' : ''}}">{{placeholder}}</view>
+      </block>
+      <!-- 语音输入模式 -->
+      <block wx:else>
+        <slot name="voice-input" />
+      </block>
     </view>
 
     <view class="{{classPrefix}}__footer">

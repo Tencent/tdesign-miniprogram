@@ -1,0 +1,14 @@
+var utils = require('../../../components/common/utils.wxs');
+
+function getRecordClass(classPrefix, record) {
+  var classes = [classPrefix + '__record'];
+  if (record.placement) {
+    classes.push(classPrefix + '__record--' + record.placement);
+  }
+  return classes.join(' ');
+}
+
+module.exports = {
+  getRecordClass: getRecordClass,
+  _style: utils._style,
+};

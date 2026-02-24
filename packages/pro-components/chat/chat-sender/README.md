@@ -59,6 +59,7 @@ adjust-position | Boolean | false | 默认键盘弹起不会把页面顶起来 |
 attachments-props | Object | - | 附件列表属性。TS 类型：`AttachmentsProps`，[Attachments API Documents](./attachments?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/pro-components/chat/chat-sender/type.ts) | N
 auto-rise-with-keyboard | Boolean | false | 键盘弹起时自动顶起来输入框 | N
 disabled | Boolean | false | 是否禁用输入框 | N
+input-mode | String | text | 输入模式：text-文本输入模式（显示textarea），voice-语音输入模式（显示语音按钮）。可选项：text/voice | N
 file-list | Array | [] | 附件文件列表。TS 类型：`FileItem[]` | N
 loading | Boolean | false | 发送按钮是否处于加载状态 | N
 placeholder | String | 请输入消息... | 输入框默认文案 | N
