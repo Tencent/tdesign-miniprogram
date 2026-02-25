@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfigProvider ConfigProvider base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="chat-example-block"
+  >
+    <t-chat-thinking
+      animation="moving"
+      content="{{
+        Object {
+          "text": "",
+        }
+      }}"
+      layout="block"
+      status="pending"
+      bind:expandChange="handleExpandChange"
+    />
+  </wx-view>
+</base>
+`;
