@@ -15,6 +15,9 @@
         竖向排布
       </t-button>
     </view>
+    <t-cell title="禁用态">
+      <t-switch defaultValue="{{switchValue}}" slot="note" bind:change="onChangeSwitch" />
+    </t-cell>
   </view>
 
   <view wx:if="{{isActive1}}">

@@ -16,7 +16,7 @@ export default class Form extends SuperComponent {
     `${prefix}-class-extra`,
   ];
 
-  properties = props as any;
+  properties = props;
 
   options = {
     multipleSlots: true,

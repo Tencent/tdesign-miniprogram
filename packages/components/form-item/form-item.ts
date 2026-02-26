@@ -16,7 +16,7 @@ export default class FormItem extends SuperComponent {
     `${prefix}-class-extra`,
   ];
 
-  properties = props as any;
+  properties = props;
 
   data = {
     prefix,
@@ -60,7 +60,7 @@ export default class FormItem extends SuperComponent {
           },
           () => {
             this.setData({
-              errorPosition: this.data.labelAlign !== 'top' && 'text-align: right;',
+              errorPosition: this.data.labelAlign !== 'top' && 'text-align: left;',
             });
           },
         );

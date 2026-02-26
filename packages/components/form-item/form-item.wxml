@@ -1,5 +1,7 @@
+<wxs src="../common/utils.wxs" module="_" />
+
 <view
-  class="{{classPrefix}} {{classPrefix}}--{{labelAlign}} {{classPrefix}}--bordered {{classPrefix}}--{{verifyStatus === 2 ? 'error' : verifyStatus === 1 ? 'success' : ''}} {{prefix}}-class {{className}}"
+  class="{{classPrefix}} {{classPrefix}}--{{labelAlign}} {{classPrefix}}--bordered {{classPrefix}}--{{verifyStatus === 2 ? 'error' : verifyStatus === 1 ? 'success' : ''}} {{prefix}}-class"
   style="{{_._style([style, customStyle])}}"
 >
   <!-- 标签区域 -->
@@ -39,8 +41,8 @@
     <view class="{{classPrefix}}__controls-content">
       <slot />
       <!-- 右侧箭头 -->
-      <view wx:if="{{false}}" class="{{classPrefix}}__arrow">
-        <t-icon name="chevron-right" size="16" />
+      <view wx:if="{{arrow}}" class="{{classPrefix}}__arrow">
+        <t-icon name="chevron-right" size="24" />
       </view>
     </view>
 

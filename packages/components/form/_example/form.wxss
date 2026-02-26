@@ -49,7 +49,6 @@
   justify-content: space-between;
   position: relative;
   border-bottom: 1rpx solid #e7e7e7;
-  margin-bottom: 16rpx;
 }
 
 .select-button-group .t-button {
