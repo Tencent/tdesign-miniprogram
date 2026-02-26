@@ -1,21 +1,501 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ConfigProvider ConfigProvider base demo works fine 1`] = `
-<base>
-  <wx-view
-    class="chat-example-block"
+exports[`ConfigProvider ConfigProvider chat-en demo works fine 1`] = `
+<chat-en>
+  <t-config-provider
+    globalConfig="{{
+      Object {
+        "actionSheet": Object {
+          "cancel": "Cancel",
+        },
+        "attachments": Object {
+          "status": Object {
+            "fail": "upload failed",
+            "pending": "uploading...",
+          },
+        },
+        "calendar": Object {
+          "confirm": "Confirm",
+          "monthTitle": "{month} {year}",
+          "months": Array [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ],
+          "title": "Select Date",
+          "weekdays": Array [
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+          ],
+        },
+        "cascader": Object {
+          "placeholder": "Select options",
+          "title": "Title",
+        },
+        "chatActionbar": Object {
+          "actionBar": Object {
+            "bad": "bad",
+            "copy": "copy",
+            "good": "good",
+            "quote": "quote",
+            "replay": "refresh",
+            "share": "share",
+          },
+        },
+        "chatSender": Object {
+          "placeholder": "please enter message...",
+          "sendText": "send",
+          "stopText": "stop",
+        },
+        "chatThinking": Object {
+          "status": Object {
+            "complete": "thinking process completed",
+            "pending": "thinking...",
+            "stop": "thinking has stopped",
+          },
+        },
+        "dateTimePicker": Object {
+          "cancel": "Cancel",
+          "confirm": "Confirm",
+          "dateLabel": "",
+          "dayjsLocale": "en",
+          "format": "YYYY-MM-DD",
+          "hourLabel": "",
+          "minuteLabel": "",
+          "monthLabel": "",
+          "months": Array [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+          "secondLabel": "",
+          "title": "Select Date",
+          "yearLabel": "",
+        },
+        "dropdownMenu": Object {
+          "confirm": "Confirm",
+          "reset": "Reset",
+        },
+        "form": Object {
+          "colonText": ":",
+          "errorMessage": Object {
+            "boolean": "\${name} is not a boolean",
+            "date": "\${name} is invalid",
+            "enum": "\${name} must be one of \${validate}",
+            "idcard": "\${name} is invalid",
+            "len": "\${name} must be exactly \${validate} characters",
+            "max": "\${name} cannot be longer than \${validate} characters",
+            "min": "\${name} must be at least \${validate} characters",
+            "number": "\${name} must be a number",
+            "pattern": "\${name} is invalid",
+            "required": "\${name} is required",
+            "telnumber": "\${name} is invalid",
+            "url": "\${name} is invalid",
+            "validator": "\${name} is invalid",
+            "whitespace": "\${name} cannot be empty",
+          },
+        },
+        "guide": Object {
+          "back": "Back",
+          "finish": "Finish",
+          "next": "Next",
+          "skip": "Skip",
+        },
+        "list": Object {
+          "loading": "Loading...",
+          "loadingMoreText": "Click to load more",
+          "loosing": "Loose to refresh...",
+          "pulling": "Pull to refresh...",
+          "success": "Refresh successful",
+        },
+        "picker": Object {
+          "cancel": "Cancel",
+          "confirm": "Confirm",
+        },
+        "pullDownRefresh": Object {
+          "loadingTexts": Array [
+            "Pull to refresh",
+            "Loose to refresh",
+            "Refreshing ",
+            "Refresh completed",
+          ],
+        },
+        "qrcode": Object {
+          "expiredText": "expired",
+          "refreshText": "refresh",
+          "scannedText": "scanned",
+        },
+        "rate": Object {
+          "noValueText": "No score",
+          "texts": Array [
+            "Poor",
+            "Fair",
+            "Average",
+            "Good",
+            "Excellent",
+          ],
+          "valueText": "{value} score",
+        },
+        "tabBar": Object {
+          "haveMoreNewsAriaLabel": "There are {value}+ news",
+          "haveNewsAriaLabel": "There are {value} news",
+          "moreNewsAriaLabel": "There is a lot of news",
+          "newsAriaLabel": "There is new news",
+        },
+        "table": Object {
+          "empty": "Empty Data",
+        },
+        "upload": Object {
+          "progress": Object {
+            "failText": "Failed",
+            "reloadText": "Reload",
+            "successText": "Success",
+            "uploadingText": "Uploading...",
+            "waitingText": "Waiting",
+          },
+        },
+      }
+    }}"
+    themeVars="{{
+      Object {
+        "button-primary-bg-color": "#ff6a0094",
+        "button-primary-color": "#ff6b00",
+        "buttonPrimaryBorderColor": "#ff6b00",
+      }
+    }}"
   >
-    <t-chat-thinking
-      animation="moving"
-      content="{{
+    <wx-view
+      class="chat-demo"
+    >
+      <t-chat-thinking
+        animation="moving"
+        content="{{
+          Object {
+            "text": "",
+          }
+        }}"
+        layout="block"
+        status="pending"
+        bind:expandChange="handleExpandChange"
+      />
+    </wx-view>
+  </t-config-provider>
+</chat-en>
+`;
+
+exports[`ConfigProvider ConfigProvider other-en demo works fine 1`] = `
+<other-en>
+  <t-config-provider
+    :global-config="globalConfig"
+  >
+    <wx-view
+      class="rate-demo-cell"
+    >
+      <wx-view
+        class="rate-demo-cell__title"
+      >
+        Rating
+      </wx-view>
+      <t-rate
+        showText="{{true}}"
+        value="{{3}}"
+        bind:change="onRateChange"
+      />
+    </wx-view>
+    <t-calendar
+      value="{{null}}"
+      visible="{{false}}"
+      bind:close="onCalendarClose"
+      bind:confirm="handleCalendarConfirm"
+    />
+    <t-cell
+      arrow="{{true}}"
+      note=""
+      title="Single select date"
+      bind:tap="handleCalendar"
+    />
+    <t-cell
+      arrow="{{true}}"
+      class="test"
+      data-mode="date"
+      hover="{{true}}"
+      note="YY-MM-DD"
+      tClass="panel-item"
+      title="Select time"
+      bind:tap="showPicker"
+    />
+    <t-date-time-picker
+      autoClose="{{true}}"
+      defaultValue="{{1640217600000}}"
+      filter=""
+      format="YYYY-MM-DD ddd"
+      formatter=""
+      mode="date"
+      popupProps="{{
         Object {
-          "text": "",
+          "usingCustomNavbar": true,
         }
       }}"
-      layout="block"
-      status="pending"
-      bind:expandChange="handleExpandChange"
+      showWeek="{{true}}"
+      visible="{{false}}"
+      bind:cancel="hidePicker"
+      bind:change="onConfirm"
+      bind:close="handleClose"
+      bind:pick="onColumnChange"
     />
-  </wx-view>
-</base>
+  </t-config-provider>
+</other-en>
+`;
+
+exports[`ConfigProvider ConfigProvider upload-en demo works fine 1`] = `
+<upload-en>
+  <t-config-provider
+    globalConfig="{{
+      Object {
+        "actionSheet": Object {
+          "cancel": "Cancel",
+        },
+        "attachments": Object {
+          "status": Object {
+            "fail": "upload failed",
+            "pending": "uploading...",
+          },
+        },
+        "calendar": Object {
+          "confirm": "Confirm",
+          "monthTitle": "{month} {year}",
+          "months": Array [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ],
+          "title": "Select Date",
+          "weekdays": Array [
+            "Sun",
+            "Mon",
+            "Tue",
+            "Wed",
+            "Thu",
+            "Fri",
+            "Sat",
+          ],
+        },
+        "cascader": Object {
+          "placeholder": "Select options",
+          "title": "Title",
+        },
+        "chatActionbar": Object {
+          "actionBar": Object {
+            "bad": "bad",
+            "copy": "copy",
+            "good": "good",
+            "quote": "quote",
+            "replay": "refresh",
+            "share": "share",
+          },
+        },
+        "chatSender": Object {
+          "placeholder": "please enter message...",
+          "sendText": "send",
+          "stopText": "stop",
+        },
+        "chatThinking": Object {
+          "status": Object {
+            "complete": "thinking process completed",
+            "pending": "thinking...",
+            "stop": "thinking has stopped",
+          },
+        },
+        "dateTimePicker": Object {
+          "cancel": "Cancel",
+          "confirm": "Confirm",
+          "dateLabel": "",
+          "dayjsLocale": "en",
+          "format": "YYYY-MM-DD",
+          "hourLabel": "",
+          "minuteLabel": "",
+          "monthLabel": "",
+          "months": Array [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+          "secondLabel": "",
+          "title": "Select Date",
+          "yearLabel": "",
+        },
+        "dropdownMenu": Object {
+          "confirm": "Confirm",
+          "reset": "Reset",
+        },
+        "form": Object {
+          "colonText": ":",
+          "errorMessage": Object {
+            "boolean": "\${name} is not a boolean",
+            "date": "\${name} is invalid",
+            "enum": "\${name} must be one of \${validate}",
+            "idcard": "\${name} is invalid",
+            "len": "\${name} must be exactly \${validate} characters",
+            "max": "\${name} cannot be longer than \${validate} characters",
+            "min": "\${name} must be at least \${validate} characters",
+            "number": "\${name} must be a number",
+            "pattern": "\${name} is invalid",
+            "required": "\${name} is required",
+            "telnumber": "\${name} is invalid",
+            "url": "\${name} is invalid",
+            "validator": "\${name} is invalid",
+            "whitespace": "\${name} cannot be empty",
+          },
+        },
+        "guide": Object {
+          "back": "Back",
+          "finish": "Finish",
+          "next": "Next",
+          "skip": "Skip",
+        },
+        "list": Object {
+          "loading": "Loading...",
+          "loadingMoreText": "Click to load more",
+          "loosing": "Loose to refresh...",
+          "pulling": "Pull to refresh...",
+          "success": "Refresh successful",
+        },
+        "picker": Object {
+          "cancel": "Cancel",
+          "confirm": "Confirm",
+        },
+        "pullDownRefresh": Object {
+          "loadingTexts": Array [
+            "Pull to refresh",
+            "Loose to refresh",
+            "Refreshing ",
+            "Refresh completed",
+          ],
+        },
+        "qrcode": Object {
+          "expiredText": "expired",
+          "refreshText": "refresh",
+          "scannedText": "scanned",
+        },
+        "rate": Object {
+          "noValueText": "No score",
+          "texts": Array [
+            "Poor",
+            "Fair",
+            "Average",
+            "Good",
+            "Excellent",
+          ],
+          "valueText": "{value} score",
+        },
+        "tabBar": Object {
+          "haveMoreNewsAriaLabel": "There are {value}+ news",
+          "haveNewsAriaLabel": "There are {value} news",
+          "moreNewsAriaLabel": "There is a lot of news",
+          "newsAriaLabel": "There is new news",
+        },
+        "table": Object {
+          "empty": "Empty Data",
+        },
+        "upload": Object {
+          "progress": Object {
+            "failText": "Failed",
+            "reloadText": "Reload",
+            "successText": "Success",
+            "uploadingText": "Uploading...",
+            "waitingText": "Waiting",
+          },
+        },
+      }
+    }}"
+  >
+    <wx-view
+      class="upload-demo"
+    >
+      <t-upload
+        disabled="{{true}}"
+        files="{{
+          Array [
+            Object {
+              "name": "uploaded1.png",
+              "status": "loading",
+              "type": "image",
+              "url": "https://tdesign.gtimg.com/mobile/demos/example4.png",
+            },
+            Object {
+              "name": "uploaded2.png",
+              "percent": 68,
+              "status": "loading",
+              "type": "image",
+              "url": "https://tdesign.gtimg.com/mobile/demos/example5.png",
+            },
+            Object {
+              "name": "uploaded4.png",
+              "status": "failed",
+              "type": "image",
+              "url": "https://tdesign.gtimg.com/mobile/demos/example5.png",
+            },
+          ]
+        }}"
+        gridConfig="{{
+          Object {
+            "column": 4,
+            "height": 160,
+            "width": 160,
+          }
+        }}"
+        mediaType="{{
+          Array [
+            "video",
+            "image",
+          ]
+        }}"
+        bind:click="handleClick"
+        bind:remove="handleRemove"
+        bind:success="handleSuccess"
+      />
+    </wx-view>
+  </t-config-provider>
+</upload-en>
 `;

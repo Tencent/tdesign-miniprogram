@@ -7,13 +7,13 @@
     notice="渲染框架支持情况：WebView、Skyline"
   />
 
-  <t-config-provider global-config="{{globalConfig}}" themeVars="{{themeVars}}">
-    <t-button theme="primary" bind:tap="switchLocale">
-      切换语言 ({{currentLocale === 'zhCN' ?'English': '中文'}})
-    </t-button>
-
-    <t-demo title="01 配置示例">
-      <base />
-    </t-demo>
-  </t-config-provider>
+  <t-demo title="01 配置示例" desc="Upload">
+    <upload-en />
+  </t-demo>
+  <t-demo desc="Chat">
+    <chat-en />
+  </t-demo>
+  <t-demo desc="其他组件">
+    <other-en />
+  </t-demo>
 </view>

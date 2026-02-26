@@ -1,3 +1,5 @@
+import enUS from 'tdesign-miniprogram/locale/en_US';
+
 Component({
   data: {
     thinking: true,
@@ -11,6 +13,14 @@ Component({
     typeSpeed: 50,
     status: 'pending',
     startTime: 0,
+
+    // 全部配置
+    globalConfig: enUS,
+    themeVars: {
+      buttonPrimaryBorderColor: '#ff6b00',
+      'button-primary-color': '#ff6b00',
+      'button-primary-bg-color': '#ff6a0094',
+    },
   },
 
   lifetimes: {

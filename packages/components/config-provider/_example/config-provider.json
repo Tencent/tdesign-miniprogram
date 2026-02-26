@@ -1,7 +1,8 @@
 {
   "navigationBarTitleText": "ConfigProvider",
   "usingComponents": {
-    "t-config-provider": "tdesign-miniprogram/config-provider/config-provider",
-    "base": "./base"
+    "upload-en": "./upload-en",
+    "chat-en": "./chat-en",
+    "other-en": "./other-en"
   }
 }

@@ -5,7 +5,7 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['base'];
+const mapper = ['chat-en', 'other-en', 'upload-en'];
 
 describe('ConfigProvider', () => {
   mapper.forEach((demoName) => {
