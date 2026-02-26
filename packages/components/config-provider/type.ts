@@ -87,6 +87,13 @@ export interface ActionSheetConfig {
   cancel?: string;
 }
 
+export interface AttachmentsConfig {
+  /**
+   * 语言配置，附件上传状态描述文本
+   */
+  status?: { pending: string; fail: string };
+}
+
 export interface CalendarConfig {
   /**
    * 语言配置，“确定” 按钮描述文本
@@ -124,6 +131,38 @@ export interface CascaderConfig {
    * @default ''
    */
   title?: string;
+}
+
+export interface ChatActionbarConfig {
+  /**
+   * 语言配置，对话操作栏描述文本
+   */
+  actionBar?: { replay: string; copy: string; good: string; bad: string; share: string; quote: string };
+}
+
+export interface ChatSenderConfig {
+  /**
+   * 语言配置，占位符描述文本
+   * @default ''
+   */
+  placeholder?: string;
+  /**
+   * 语言配置，发送按钮描述文本
+   * @default ''
+   */
+  sendText?: string;
+  /**
+   * 语言配置，停止发送按钮描述文本
+   * @default ''
+   */
+  stopText?: string;
+}
+
+export interface ChatThinkingConfig {
+  /**
+   * 语言配置，思考状态描述文本
+   */
+  status?: { pending: string; complete: string; stop: string };
 }
 
 export interface DateTimePickerConfig {

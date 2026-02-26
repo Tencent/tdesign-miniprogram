@@ -35,6 +35,12 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 cancel | String | - | cancel text | N
 
+### AttachmentsConfig
+
+name | type | default | description | required
+-- | -- | -- | -- | --
+status | Object | - | Typescript: `{ pending: string; fail: string; }` | N
+
 ### CalendarConfig
 
 name | type | default | description | required
@@ -51,6 +57,26 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 placeholder | String | - | \- | N
 title | String | - | \- | N
+
+### ChatActionbarConfig
+
+name | type | default | description | required
+-- | -- | -- | -- | --
+action-bar | Object | - | Typescript: `{ replay: string; copy: string; good: string; bad: string; share: string; quote: string; }` | N
+
+### ChatSenderConfig
+
+name | type | default | description | required
+-- | -- | -- | -- | --
+placeholder | String | - | \- | N
+send-text | String | - | \- | N
+stop-text | String | - | \- | N
+
+### ChatThinkingConfig
+
+name | type | default | description | required
+-- | -- | -- | -- | --
+status | Object | - | Typescript: `{ pending: string; complete: string; stop: string; }` | N
 
 ### DateTimePickerConfig
 
