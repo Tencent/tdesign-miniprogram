@@ -121,7 +121,7 @@ export default {
     },
   },
   chatActionbar: {
-    actionTexts: {
+    actionBar: {
       replay: 'Aggiorna',
       copy: 'Copia',
       good: 'Mi piace',
@@ -132,7 +132,8 @@ export default {
   },
   chatSender: {
     placeholder: 'Inserisci il messaggio...',
-    sendTexts: ['Invia', 'Ferma'],
+    sendText: 'Invia',
+    stopText: 'Ferma',
   },
   chatThinking: {
     status: {

@@ -122,7 +122,7 @@ export default {
     },
   },
   chatActionbar: {
-    actionTexts: {
+    actionBar: {
       replay: 'refresh',
       copy: 'copy',
       good: 'good',
@@ -133,7 +133,8 @@ export default {
   },
   chatSender: {
     placeholder: 'please enter message...',
-    sendTexts: ['send', 'stop'],
+    sendText: 'send',
+    stopText: 'stop',
   },
   chatThinking: {
     status: {

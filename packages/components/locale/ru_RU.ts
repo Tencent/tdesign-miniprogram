@@ -133,7 +133,7 @@ export default {
     },
   },
   chatActionbar: {
-    actionTexts: {
+    actionBar: {
       replay: 'Обновить',
       copy: 'Копировать',
       good: 'Нравится',
@@ -144,7 +144,8 @@ export default {
   },
   chatSender: {
     placeholder: 'Введите сообщение...',
-    sendTexts: ['Отправить', 'Остановить'],
+    sendText: 'Отправить',
+    stopText: 'Остановить',
   },
   chatThinking: {
     status: {

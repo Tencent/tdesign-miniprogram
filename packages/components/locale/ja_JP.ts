@@ -108,7 +108,7 @@ export default {
     },
   },
   chatActionbar: {
-    actionTexts: {
+    actionBar: {
       replay: '更新',
       copy: 'コピー',
       good: 'いいね',
@@ -119,7 +119,8 @@ export default {
   },
   chatSender: {
     placeholder: 'メッセージを入力してください...',
-    sendTexts: ['送信', '停止'],
+    sendText: '送信',
+    stopText: '停止',
   },
   chatThinking: {
     status: {

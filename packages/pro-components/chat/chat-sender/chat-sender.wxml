@@ -80,7 +80,7 @@
                       class="send-btn-{{item.type}} {{value || loading ? 'active' : 'disabled'}}"
                       bindtap="handleSendClick"
                     >
-                      {{loading ? globalConfig.sendTexts[0] : globalConfig.sendTexts[1]}}
+                      {{loading ? globalConfig.sendText : globalConfig.stopText}}
                     </view>
                   </block>
                   <block wx:else>

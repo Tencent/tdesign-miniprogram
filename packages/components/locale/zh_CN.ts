@@ -109,7 +109,7 @@ export default {
     },
   },
   chatActionbar: {
-    actionTexts: {
+    actionBar: {
       replay: '刷新',
       copy: '复制',
       good: '点赞',
@@ -120,7 +120,8 @@ export default {
   },
   chatSender: {
     placeholder: '请输入消息...',
-    sendTexts: ['发送', '停止'],
+    sendText: '发送',
+    stopText: '停止',
   },
   chatThinking: {
     status: {

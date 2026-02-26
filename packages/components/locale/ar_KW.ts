@@ -133,7 +133,7 @@ export default {
     },
   },
   chatActionbar: {
-    actionTexts: {
+    actionBar: {
       replay: 'تحديث',
       copy: 'نسخ',
       good: 'إعجاب',
@@ -144,7 +144,8 @@ export default {
   },
   chatSender: {
     placeholder: 'الرجاء إدخال الرسالة...',
-    sendTexts: ['إرسال', 'إيقاف'],
+    sendText: 'إرسال',
+    stopText: 'إيقاف',
   },
   chatThinking: {
     status: {

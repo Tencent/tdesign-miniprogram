@@ -108,7 +108,7 @@ export default {
     },
   },
   chatActionbar: {
-    actionTexts: {
+    actionBar: {
       replay: '刷新',
       copy: '複製',
       good: '點讚',
@@ -119,7 +119,8 @@ export default {
   },
   chatSender: {
     placeholder: '請輸入消息...',
-    sendTexts: ['發送', '停止'],
+    sendText: '發送',
+    stopText: '停止',
   },
   chatThinking: {
     status: {

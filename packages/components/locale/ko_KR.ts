@@ -108,7 +108,7 @@ export default {
     },
   },
   chatActionbar: {
-    actionTexts: {
+    actionBar: {
       replay: '새로고침',
       copy: '복사',
       good: '좋아요',
@@ -119,7 +119,8 @@ export default {
   },
   chatSender: {
     placeholder: '메시지를 입력하세요...',
-    sendTexts: ['보내기', '중지'],
+    sendText: '보내기',
+    stopText: '중지',
   },
   chatThinking: {
     status: {
