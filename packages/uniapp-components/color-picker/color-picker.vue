@@ -234,7 +234,7 @@ export default uniComponent({
     }, 33);
     this.debouncedUpdateEleRect = debounce(e => this.updateEleRect(e), 150);
   },
-  beforeUnMount() {
+  beforeUnmount() {
     clearTimeout(this.timer);
   },
   methods: {
@@ -496,6 +496,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './color-picker.css';
-</style>
+<style scoped src="./color-picker.css"></style>

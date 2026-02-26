@@ -83,7 +83,7 @@ export default uniComponent({
   mounted() {
 
   },
-  beforeUnMount() {
+  beforeUnmount() {
     if (this.timeoutId) {
       clearTimeout(this.timeoutId);
       this.timeoutId = null;
@@ -161,6 +161,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './count-down.css';
-</style>
+<style scoped src="./count-down.css"></style>

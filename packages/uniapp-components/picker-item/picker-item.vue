@@ -185,7 +185,7 @@ export default uniComponent({
 
   },
 
-  beforeUnMount() {
+  beforeUnmount() {
     // 清理定时器，防止内存泄漏
     if (this._animationTimer) {
       clearInterval(this._animationTimer);
@@ -441,6 +441,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './picker-item.css';
-</style>
+<style scoped src="./picker-item.css"></style>

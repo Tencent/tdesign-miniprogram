@@ -9,19 +9,19 @@
       :class="classPrefix + '__icon'"
     >
       <block
-        v-if="_icon"
+        v-if="innerIcon"
         name="icon"
       >
         <t-icon
-          :custom-style="_icon.style || ''"
+          :custom-style="innerIcon.style || ''"
           :t-class="prefix + '-icon'"
-          :prefix="_icon.prefix"
-          :name="_icon.name"
-          :size="_icon.size"
-          :color="_icon.color"
-          :aria-hidden="!!_icon.ariaHidden"
-          :aria-label="_icon.ariaLabel"
-          :aria-role="_icon.ariaRole"
+          :prefix="innerIcon.prefix"
+          :name="innerIcon.name"
+          :size="innerIcon.size"
+          :color="innerIcon.color"
+          :aria-hidden="!!innerIcon.ariaHidden"
+          :aria-label="innerIcon.ariaLabel"
+          :aria-role="innerIcon.ariaRole"
         />
       </block>
       <slot name="icon" />
@@ -84,7 +84,7 @@ export default uniComponent({
       classPrefix: name,
       className: '',
       tools,
-      _icon: null,
+      innerIcon: null,
 
       dataChecked: coalesce(this.checked, this.defaultChecked),
     };
@@ -95,7 +95,7 @@ export default uniComponent({
     dataChecked: 'setClass',
     icon: {
       handler(e) {
-        this._icon = calcIcon(e);
+        this.innerIcon = calcIcon(e);
       },
       immediate: true,
     },
@@ -143,7 +143,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './check-tag.css';
-
-</style>
+<style scoped src="./check-tag.css"></style>

@@ -89,6 +89,4 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-@import './qrcode-status.css';
-</style>
+<style scoped src="./qrcode-status.css"></style>

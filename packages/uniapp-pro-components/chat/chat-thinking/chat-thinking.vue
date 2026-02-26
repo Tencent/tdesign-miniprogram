@@ -31,7 +31,10 @@
         :class="tools.cls(classPrefix + '__bd', [layout])"
         :style="contentStyle"
       >
-        {{ content.text || '' }}
+        <view v-if="content.text" :class="tools.cls(classPrefix + '__bd__inner', [])">
+          {{ content.text }}
+        </view>
+        <slot v-else name="content" />
       </view>
     </view>
   </view>
@@ -117,6 +120,4 @@ export default uniComponent({
 
 
 </script>
-<style scoped>
-@import './chat-thinking.css';
-</style>
+<style scoped src="./chat-thinking.css"></style>

@@ -169,13 +169,10 @@ export default uniComponent({
   created() {
     // this.initFormItem();
   },
-  onBeforeUnmount() {
+  beforeUnmount() {
     if (this.form) {
       this.form.unregisterChild(this.name);
     }
-  },
-  mounted() {
-
   },
   methods: {
     innerAfterLinked() {
@@ -391,6 +388,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './form-item.css';
-</style>
+<style scoped src="./form-item.css"></style>

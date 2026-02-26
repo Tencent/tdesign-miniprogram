@@ -190,7 +190,7 @@ export default uniComponent({
     ARRAY.push(this);
     this.setSwipeWidth();
   },
-  beforeUnMount() {
+  beforeUnmount() {
     ARRAY = ARRAY.filter(e => e !== this);
   },
   methods: {
@@ -239,7 +239,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './swipe-cell.css';
-
-</style>
+<style scoped src="./swipe-cell.css"></style>

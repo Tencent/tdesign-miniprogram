@@ -254,6 +254,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './progress.css';
-</style>
+<style scoped src="./progress.css"></style>

@@ -4,6 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { CheckboxIconType } from '../checkbox/index';
 import { KeysType } from '../common/common';
 
 export interface TdCheckboxGroupProps<T = CheckboxGroupValue> {
@@ -83,6 +84,7 @@ export interface CheckboxOptionObj {
   label?: string;
   value?: string | number;
   disabled?: boolean;
+  icon?: CheckboxIconType;
   checkAll?: true;
 }
 

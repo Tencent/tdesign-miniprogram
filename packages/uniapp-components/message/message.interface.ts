@@ -1,3 +1,4 @@
+import type { TdMessageProps } from './type';
 
 export const MessageType = {
   info: 'info',
@@ -21,7 +22,7 @@ export interface MessageProps {
   closeBtn?: boolean;
   action?: string;
   marquee?: MessageMarquee;
-  offset?: object;
+  offset?: TdMessageProps['offset'];
   duration?: number;
   zIndex?: number;
   id?: string;

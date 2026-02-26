@@ -142,7 +142,7 @@ export default uniComponent({
       immediate: true,
     },
   },
-  beforeUnMount() {
+  beforeUnmount() {
     clearTimeout(this.timer);
   },
   methods: {
@@ -153,5 +153,5 @@ export default uniComponent({
 });
 
 </script>
-<style src="./loading.css"  scoped>
+<style src="./loading.css" scoped>
 </style>

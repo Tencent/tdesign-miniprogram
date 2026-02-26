@@ -53,7 +53,7 @@ export default (funcName = 'onScroll', useBus = true) => {
       page.onPageScroll = onPageScroll;
     },
 
-    beforeUnMount() {
+    beforeUnmount() {
       if (useBus) {
         bus.off(PAGE_SCROLL_EVENT_NAME, this[funcName]);
         return;

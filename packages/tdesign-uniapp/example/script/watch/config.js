@@ -3,8 +3,8 @@ const { PACKAGES_ROOT } = require('../release/config');
 
 const VUE3_CLI_ROOT = path.resolve(__dirname, '../..');
 const APP_ROOT = path.resolve(__dirname, '../../../app');
-const VUE2_CLI_ROOT = path.resolve(PACKAGES_ROOT, '../../tdesign-uniapp-vue2-cli-demo');
-const VUE3_HX_ROOT = path.resolve(PACKAGES_ROOT, '../../tdesign-uniapp-vue3-hx-demo');
+const VUE2_CLI_ROOT = path.resolve(PACKAGES_ROOT, '../../tdesign-uniapp-starter-vue2-cli');
+const VUE3_HX_ROOT = path.resolve(PACKAGES_ROOT, '../../tdesign-uniapp-starter-vue3-hx');
 
 
 const config = {

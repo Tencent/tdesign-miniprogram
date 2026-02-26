@@ -58,7 +58,7 @@ const watchSrcExample = (type = 'all') => {
 
 // 包装 gulp.lastRun, 引入文件 ctime 作为文件变动判断另一标准
 // https://github.com/gulpjs/vinyl-fs/issues/226
-const since = (task) => (file) => gulp.lastRun(task) > file.stat.ctime ? gulp.lastRun(task) : 0;
+const since = (task) => (file) => (gulp.lastRun(task) > file.stat.ctime ? gulp.lastRun(task) : 0);
 
 /** `gulp syncDist`
  * 将 packages/tdesign-miniprogram/miniprogram_dist 同步至 _example/miniprogram_npm

@@ -386,9 +386,7 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './dropdown-item.css';
-</style>
+<style scoped src="./dropdown-item.css"></style>
 <style scoped>
 .t-dropdown-item__scroll {
   width: 100%;
