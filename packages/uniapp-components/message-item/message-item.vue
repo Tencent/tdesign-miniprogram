@@ -203,7 +203,7 @@ export default uniComponent({
   mounted() {
     this.memoInitialData();
   },
-  beforeUnMount() {
+  beforeUnmount() {
     this.clearMessageAnimation();
   },
   methods: {

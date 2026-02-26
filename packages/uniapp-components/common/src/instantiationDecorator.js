@@ -80,6 +80,12 @@ export const toComponent = function (options) {
     });
   };
 
+  // #ifdef Vue2
+  if (options.beforeUnmount) {
+    options.beforeDestroy = options.beforeUnmount;
+  }
+  // #endif
+
   options.methods._trigger = function (evtName, detail, opts) {
     const target = controlledProps.find(item => item.event === evtName);
 

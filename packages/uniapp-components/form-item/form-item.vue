@@ -169,13 +169,10 @@ export default uniComponent({
   created() {
     // this.initFormItem();
   },
-  onBeforeUnmount() {
+  beforeUnmount() {
     if (this.form) {
       this.form.unregisterChild(this.name);
     }
-  },
-  mounted() {
-
   },
   methods: {
     innerAfterLinked() {

@@ -196,7 +196,7 @@ export default uniComponent({
     this.updateDistanceTop();
   },
 
-  beforeUnMount() {
+  beforeUnmount() {
     clearTimeout(this.maxRefreshAnimateTimeFlag);
     clearTimeout(this.closingAnimateTimeFlag);
     this.resetTimer();

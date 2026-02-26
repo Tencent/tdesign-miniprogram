@@ -234,7 +234,7 @@ export default uniComponent({
     }, 33);
     this.debouncedUpdateEleRect = debounce(e => this.updateEleRect(e), 150);
   },
-  beforeUnMount() {
+  beforeUnmount() {
     clearTimeout(this.timer);
   },
   methods: {

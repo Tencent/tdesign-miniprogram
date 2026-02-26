@@ -209,7 +209,7 @@ export default uniComponent({
     this.show();
     this.__ready = true;
   },
-  beforeUnMount() {
+  beforeUnmount() {
     this.clearNoticeBarAnimation();
   },
   methods: {
