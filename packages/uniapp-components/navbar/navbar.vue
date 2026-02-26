@@ -49,7 +49,7 @@
 <script>
 import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
-import { getRect, systemInfo } from '../common/utils';
+import { getRect, getWindowInfo } from '../common/utils';
 import { prefix } from '../common/config';
 import props from './props';
 import tools from '../common/utils.wxs';
@@ -61,7 +61,7 @@ const BASE_MENU_RECT = {
   width: 87,
   height: 32,
   top: 24,
-  right: systemInfo.windowWidth - 10,
+  right: 10, // 距离右侧的间距，实际 right 值在 getMenuRect 中动态计算
 };
 
 
@@ -143,32 +143,43 @@ export default uniComponent({
     this.initStyle();
     this.getLeftRect();
     this.onMenuButtonBoundingClientRectWeightChange();
+
+    this.onWindowResizeCallback = () => {
+      this.initStyle();
+      this.getLeftRect();
+    };
+    uni.onWindowResize(this.onWindowResizeCallback);
   },
 
-  beforeUnMount() {
+  beforeUnmount() {
     this.offMenuButtonBoundingClientRectWeightChange();
+    if (this.onWindowResizeCallback) {
+      uni.offWindowResize(this.onWindowResizeCallback);
+    }
   },
   methods: {
     initStyle() {
-      this.getMenuRect();
+      // 每次重新获取最新的窗口信息，避免 H5 下窗口大小变化后使用缓存值
+      const windowInfo = getWindowInfo();
+      this.getMenuRect(windowInfo);
 
       const { iMenuRect, iLeftRect } = this;
 
-      if (!iMenuRect || !iLeftRect || !systemInfo) return;
+      if (!iMenuRect || !iLeftRect || !windowInfo) return;
 
       const iBoxStyle = {
-        '--td-navbar-padding-top': `${systemInfo.statusBarHeight}px`,
-        '--td-navbar-right': `${systemInfo.windowWidth - iMenuRect.left}px`, // 导航栏右侧小程序胶囊按钮宽度
+        '--td-navbar-padding-top': `${windowInfo.statusBarHeight}px`,
+        '--td-navbar-right': `${windowInfo.windowWidth - iMenuRect.left}px`, // 导航栏右侧小程序胶囊按钮宽度
         '--td-navbar-left-max-width': `${iMenuRect.left}px`, // 左侧内容最大宽度
         '--td-navbar-capsule-height': `${iMenuRect.height}px`, // 胶囊高度
         '--td-navbar-capsule-width': `${iMenuRect.width}px`, // 胶囊宽度
-        '--td-navbar-height': `${(iMenuRect.top - systemInfo.statusBarHeight) * 2 + iMenuRect.height}px`,
+        '--td-navbar-height': `${(iMenuRect.top - windowInfo.statusBarHeight) * 2 + iMenuRect.height}px`,
       };
       // #ifdef H5 || APP-PLUS
       delete iBoxStyle['--td-navbar-height'];
       // #endif
 
-      this.calcCenterStyle(iLeftRect, iMenuRect, iBoxStyle);
+      this.calcCenterStyle(iLeftRect, iMenuRect, iBoxStyle, windowInfo);
     },
     onWatchTitle() {
       const { title } = this;
@@ -183,8 +194,10 @@ export default uniComponent({
       leftRect,
       menuRect,
       defaultStyle,
+      windowInfo,
     ) {
-      const maxSpacing = Math.max(leftRect.right, systemInfo.windowWidth - menuRect.left);
+      const curWindowInfo = windowInfo || getWindowInfo();
+      const maxSpacing = Math.max(leftRect.right, curWindowInfo.windowWidth - menuRect.left);
       const iBoxStyle = {
         ...defaultStyle,
         'z-index': this.zIndex,
@@ -208,23 +221,25 @@ export default uniComponent({
       });
     },
 
-    getMenuRect() {
+    getMenuRect(windowInfo) {
+      const curWindowInfo = windowInfo || getWindowInfo();
       // 场景值为1177（视频号直播间）和1175 （视频号profile页）时，小程序禁用了 uni.getMenuButtonBoundingClientRect
       let rect = {
         ...BASE_MENU_RECT,
+        right: curWindowInfo.windowWidth - BASE_MENU_RECT.right, // 动态计算，避免 H5 下缓存
         bottom: BASE_MENU_RECT.top + BASE_MENU_RECT.height,
-        left: BASE_MENU_RECT.right - BASE_MENU_RECT.width,
+        left: curWindowInfo.windowWidth - BASE_MENU_RECT.right - BASE_MENU_RECT.width,
       };
       if (uni.getMenuButtonBoundingClientRect
          && typeof uni.getMenuButtonBoundingClientRect === 'function'
-         && typeof uni.getMenuButtonBoundingClientRect()  === 'object'
+         && typeof uni.getMenuButtonBoundingClientRect() === 'object'
       ) {
         rect = uni.getMenuButtonBoundingClientRect() || {};
       }
 
       this.iMenuRect = rect;
       this.iLeftRect = {
-        right: systemInfo.windowWidth - rect.left,
+        right: curWindowInfo.windowWidth - rect.left,
       };
     },
 
