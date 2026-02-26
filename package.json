@@ -11,6 +11,7 @@
     "url": "https://github.com/Tencent/tdesign-miniprogram/issues"
   },
   "scripts": {
+    "init": "git submodule init && git submodule update && gulp copyLocale --gulpfile script/gulpfile.locale.js --cwd ./",
     "start": "npm run dev",
     "dev": "cross-env NODE_ENV=development gulp dev --gulpfile script/gulpfile.js --cwd ./",
     "uniapp": "pnpm -C packages/tdesign-uniapp",

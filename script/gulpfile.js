@@ -3,16 +3,10 @@ const dist = require('./gulpfile.dist');
 const example = require('./gulpfile.example');
 const wechatide = require('./gulpfile.wechatide');
 
-/** `gulp copyLocale`
- * 复制 packages/common/js/global-config/mobile/locale 的 ts 文件到 packages/components/locale
- * */
-const copyLocale = () =>
-  gulp.src('packages/common/js/global-config/mobile/locale/*.ts').pipe(gulp.dest('packages/components/locale'));
-
 /** `gulp build`
  * 构建
  * */
-const build = gulp.series(copyLocale, dist.build, example.build('all'));
+const build = gulp.series(dist.build, example.build('all'));
 
 /** `gulp watch`
  * 监听
