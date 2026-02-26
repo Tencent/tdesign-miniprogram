@@ -105,7 +105,7 @@ export default uniComponent({
     this.init();
     this.isShowSkeleton();
   },
-  beforeUnMount() {
+  beforeUnmount() {
     this.clearTimer();
   },
   methods: {

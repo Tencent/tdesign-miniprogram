@@ -185,7 +185,7 @@ export default uniComponent({
 
   },
 
-  beforeUnMount() {
+  beforeUnmount() {
     // 清理定时器，防止内存泄漏
     if (this._animationTimer) {
       clearInterval(this._animationTimer);

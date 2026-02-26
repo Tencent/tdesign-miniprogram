@@ -190,7 +190,7 @@ export default uniComponent({
     ARRAY.push(this);
     this.setSwipeWidth();
   },
-  beforeUnMount() {
+  beforeUnmount() {
     ARRAY = ARRAY.filter(e => e !== this);
   },
   methods: {
