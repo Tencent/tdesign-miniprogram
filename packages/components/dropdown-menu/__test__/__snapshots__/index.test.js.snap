@@ -9,14 +9,14 @@ exports[`dropdown-menu :base 1`] = `
       class="t-dropdown-menu class t-class"
       id="t-bar"
       style="font-size: 9px;"
-      catch:touchmove="noop"
+      catch:touchmove=""
     >
       <wx-view
         ariaDisabled="{{false}}"
-        ariaExpanded="{{true}}"
+        ariaExpanded="{{false}}"
         ariaHaspopup="menu"
         ariaRole="button"
-        class="t-dropdown-menu__item t-dropdown-menu__item--active t-dropdown-menu__item--0 t-class-item"
+        class="t-dropdown-menu__item t-dropdown-menu__item--0 t-class-item"
         data-index="{{0}}"
         bind:tap="handleToggle"
       >
@@ -26,7 +26,7 @@ exports[`dropdown-menu :base 1`] = `
           菜单
         </wx-view>
         <t-icon
-          tClass="t-dropdown-menu__icon t-dropdown-menu__icon--active t-class-icon"
+          tClass="t-dropdown-menu__icon t-dropdown-menu__icon-- t-class-icon"
           bind:click=""
         >
           <wx-view
@@ -85,7 +85,7 @@ exports[`dropdown-menu :base 1`] = `
         >
           <wx-view
             class="t-dropdown-item__mask"
-            hidden="{{false}}"
+            hidden="{{true}}"
             style="height:0px;"
             bind:tap="handleMaskClick"
             catch:touchmove="closeDropdown"
@@ -97,7 +97,7 @@ exports[`dropdown-menu :base 1`] = `
             bind:visible-change="handleMaskClick"
           >
             <wx-view
-              class="t-popup t-popup--top t-fade-enter t-fade-enter-active class t-class"
+              class="t-popup t-popup--top t-fade-leave-active t-fade-leave-to class t-class"
               style="z-index:11601;--td-popup-transition:all 200ms ease; position: absolute;"
               bind:transitionend="onTransitionEnd"
             >
@@ -608,7 +608,7 @@ exports[`dropdown-menu :base 1`] = `
               <wx-view
                 ariaLabel="关闭"
                 ariaRole="button"
-                class="t-overlay t-fade-enter t-fade-enter-active class"
+                class="t-overlay t-fade-leave-active t-fade-leave-to class"
                 style="--td-overlay-transition-duration:200ms; z-index:11000; top:0px; position: absolute;"
                 bind:tap="handleClick"
                 catch:touchmove="noop"
