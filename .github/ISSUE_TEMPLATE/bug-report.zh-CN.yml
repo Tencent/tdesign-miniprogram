@@ -1,6 +1,6 @@
 name: 反馈 Bug
 description: 通过 GitHub 模板进行 Bug 反馈。
-title: "[组件名称] 描述问题的标题"
+title: '[组件名称] 描述问题的标题'
 labels: [🐞 bug, 🧐 unconfirmed]
 body:
   - type: markdown
@@ -13,14 +13,31 @@ body:
         - 在 [常见问题](https://tdesign.tencent.com/about/faq)、[更新日志](https://tdesign.tencent.com/about/release) 和 [旧Issue列表](https://github.com/Tencent/tdesign-miniprogram/issues?q=is%3Aissue) 中搜索过你的问题。（你的问题可能已有人提出，也可能已在最新版本中被修正）
         - 如果你发现一个已经关闭的旧 Issue 在最新版本中仍然存在，不要在旧 Issue 下面留言，请建一个新的 Issue。
 
+  - type: dropdown
+    id: framework
+    attributes:
+      label: 选择框架
+      description: 请选择出现问题的框架包
+      multiple: true
+      options:
+        - tdesign-miniprogram
+        - '@tdesign/uniapp'
+        - '@tdesign/uniapp-chat'
+
   - type: input
     id: version
     attributes:
-      label: tdesign-miniprogram 版本
+      label: NPM 包版本
       description: 请检查在最新项目版本中能否重现此 Issue。
       placeholder: 请填写
     validations:
       required: true
+
+  - type: input
+    id: systemVersion
+    attributes:
+      label: 基础库调试库版本（如果出现问题的框架为 tdesign-miniprogram，请提供基础调试库版本）
+      placeholder: 3.5.0
 
   - type: input
     id: reproduce
@@ -47,12 +64,6 @@ body:
     attributes:
       label: 实际结果
       placeholder: 请填写
-
-  - type: input
-    id: systemVersion
-    attributes:
-      label: 基础库版本
-      placeholder: 3.5.0
 
   - type: textarea
     id: remarks
