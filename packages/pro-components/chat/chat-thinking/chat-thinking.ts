@@ -1,12 +1,15 @@
 import { SuperComponent, wxComponent } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
 import props from './props';
+import usingConfig from '../../../components/mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-chat-thinking`;
+const componentName = 'chat-thinking';
 
 @wxComponent()
 export default class ChatThinking extends SuperComponent {
+  behaviors = [usingConfig({ componentName })];
+
   options = {
     multipleSlots: true,
   };
@@ -16,7 +19,7 @@ export default class ChatThinking extends SuperComponent {
   data = {
     localCollapsed: false,
     contentStyle: '',
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
   };
 
   observers = {

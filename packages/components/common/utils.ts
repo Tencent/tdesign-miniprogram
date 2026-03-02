@@ -262,6 +262,19 @@ export const setIcon = (iconName, icon, defaultIcon) => {
 
 export const toCamel = (str) => str.replace(/-(\w)/g, (match, m1) => m1.toUpperCase());
 
+/**
+ * 将 camelCase 转换为 kebab-case
+ * @param str 需要转换的字符串
+ * @returns kebab-case 格式的字符串
+ */
+export function toKebabCase(str: string): string {
+  return str
+    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    .replace(/([A-Z])([A-Z][a-z])/g, '$1-$2')
+    .replace(/([0-9])([a-zA-Z])/g, '$1-$2')
+    .toLowerCase();
+}
+
 export const getCurrentPage = function <T>() {
   const pages = getCurrentPages();
   return pages[pages.length - 1] as T & WechatMiniprogram.Page.TrivialInstance;

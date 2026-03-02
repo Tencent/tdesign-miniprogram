@@ -4,10 +4,10 @@ import config from '../common/config';
 import props from './props';
 import { getRect, systemInfo, unitConvert } from '../common/utils';
 import { canUseProxyScrollView } from '../common/version';
+import usingConfig from '../mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-pull-down-refresh`;
-const defaultLoadingTexts = ['下拉刷新', '松手刷新', '正在刷新', '刷新完成'];
+const componentName = 'pull-down-refresh';
 
 @wxComponent()
 export default class PullDownRefresh extends SuperComponent {
@@ -28,7 +28,9 @@ export default class PullDownRefresh extends SuperComponent {
 
   externalClasses = [`${prefix}-class`, `${prefix}-class-loading`, `${prefix}-class-text`, `${prefix}-class-indicator`];
 
-  behaviors = canUseProxyScrollView() ? ['wx://proxy-scroll-view'] : [];
+  behaviors = canUseProxyScrollView()
+    ? ['wx://proxy-scroll-view', usingConfig({ componentName })]
+    : [usingConfig({ componentName })];
 
   options = {
     multipleSlots: true,
@@ -45,7 +47,7 @@ export default class PullDownRefresh extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     distanceTop: 0,
     barHeight: 0,
     tipsHeight: 0,
@@ -60,13 +62,11 @@ export default class PullDownRefresh extends SuperComponent {
   lifetimes = {
     attached() {
       const { screenWidth } = systemInfo;
-      const { loadingTexts, maxBarHeight, loadingBarHeight } = this.properties;
-      const isCustomLoadingTexts = Array.isArray(loadingTexts) && loadingTexts.length >= 4;
+      const { maxBarHeight, loadingBarHeight } = this.properties;
 
       this.setData({
         _maxBarHeight: unitConvert(maxBarHeight),
         _loadingBarHeight: unitConvert(loadingBarHeight),
-        loadingTexts: isCustomLoadingTexts ? loadingTexts : defaultLoadingTexts,
       });
 
       this.pixelRatio = 750 / screenWidth;
@@ -113,27 +113,42 @@ export default class PullDownRefresh extends SuperComponent {
     loadingBarHeight(v) {
       this.setData({ _loadingBarHeight: unitConvert(v) });
     },
+
+    globalConfig() {
+      this.updateLoadingTexts();
+    },
   };
 
   methods = {
     updateDistanceTop() {
+      const { classPrefix } = this.data;
       const update = (top: number) => {
         this.setData({
           distanceTop: top,
         });
       };
 
-      getRect(this, `.${name}`).then((rect) => {
+      getRect(this, `.${classPrefix}`).then((rect) => {
         if (rect.top) {
           update(rect.top);
           return;
         }
 
-        getObserver(this, `.${name}`).then((res) => {
+        getObserver(this, `.${classPrefix}`).then((res) => {
           if (res.intersectionRatio > 0) {
             update(res.boundingClientRect.top);
           }
         });
+      });
+    },
+
+    updateLoadingTexts() {
+      const { loadingTexts } = this.properties;
+      const { globalConfig } = this.data;
+      const isCustomLoadingTexts = Array.isArray(loadingTexts) && loadingTexts.length >= 4;
+
+      this.setData({
+        realLoadingTexts: isCustomLoadingTexts ? loadingTexts : globalConfig.loadingTexts,
       });
     },
 

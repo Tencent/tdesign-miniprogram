@@ -43,6 +43,10 @@ const base = {
     //   name: 'Typography',
     //   label: '字体',
     // },
+    {
+      name: 'ConfigProvider',
+      label: '全局特性配置',
+    },
   ],
 };
 
