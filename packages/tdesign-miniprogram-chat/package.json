@@ -14,7 +14,8 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Tencent/tdesign-miniprogram"
+    "url": "git+https://github.com/Tencent/tdesign-miniprogram",
+    "directory": "packages/tdesign-miniprogram-chat"
   },
   "homepage": "https://tdesign.tencent.com/miniprogram",
   "bugs": {
