@@ -2,15 +2,16 @@ import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/ind
 import config from '../common/config';
 import props from './props';
 import useCustomNavbar from '../mixins/using-custom-navbar';
+import usingConfig from '../mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-picker`;
+const componentName = 'picker';
 
 const DEFAULT_KEYS = { value: 'value', label: 'label', icon: 'icon' };
 
 @wxComponent()
 export default class Picker extends SuperComponent {
-  behaviors = [useCustomNavbar];
+  behaviors = [useCustomNavbar, usingConfig({ componentName })];
 
   properties = props;
 
@@ -46,7 +47,7 @@ export default class Picker extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     defaultPopUpProps: {},
     defaultPopUpzIndex: 11500,
     indicatorTop: 72, // 默认indicator位置，会动态计算

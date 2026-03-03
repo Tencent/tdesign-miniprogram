@@ -10,7 +10,7 @@ module.exports = {
     '^@behaviors/(.*)': '<rootDir>/packages/tdesign-miniprogram/example/behaviors/$1',
   },
   testMatch: ['<rootDir>/packages/(components|pro-components)/**/__test__/**/*.test.{js,ts}'],
-  collectCoverageFrom: ['<rootDir>/packages/(components|pro-components)/**/*.{js,ts}', '!**/__test__/**', '!**/_example/**'],
+  collectCoverageFrom: ['<rootDir>/packages/(components|pro-components)/**/*.{js,ts}', '!**/__test__/**', '!**/_example/**', '!**/type.ts', '!**/props.ts'],
   collectCoverage: true,
   coverageProvider: 'v8',
   coverageDirectory: '<rootDir>/packages/tdesign-miniprogram/test/unit/coverage',

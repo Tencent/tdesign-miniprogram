@@ -32,14 +32,6 @@ export interface TdDateTimePickerProps {
     value?: string;
   };
   /**
-   *  组件国际化语言，目前支持: 简体中文(zh)、(tc)、英文(en)、日语(ja)、韩语(ko)、俄语(ru)等六种语言
-   * @default zh
-   */
-  customLocale?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 选择器的最大可选时间，默认为当前时间+10年
    */
   end?: {

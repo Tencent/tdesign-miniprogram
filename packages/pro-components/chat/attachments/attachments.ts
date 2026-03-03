@@ -1,16 +1,19 @@
-import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
+import { SuperComponent, wxComponent } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
 import props from './props';
 import { TdAttachmentsProps } from './type';
+import usingConfig from '../../../components/mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-attachments`;
+const componentName = 'attachments';
 
 export interface AttachmentsProps extends TdAttachmentsProps {}
 
 @wxComponent()
 export default class Attachments extends SuperComponent {
-  options: ComponentsOptionsType = {
+  behaviors = [usingConfig({ componentName })];
+
+  options = {
     multipleSlots: true,
   };
 
@@ -25,7 +28,7 @@ export default class Attachments extends SuperComponent {
   };
 
   data = {
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     files: [],
   };
 

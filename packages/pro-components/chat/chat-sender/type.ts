@@ -55,8 +55,8 @@ export interface TdChatSenderProps {
     value?: boolean;
   };
   /**
-   * 输入框默认文案
-   * @default 请输入消息...
+   * 输入框默认文案。组件内置默认值为：'请输入消息...'
+   * @default ''
    */
   placeholder?: {
     type: StringConstructor;

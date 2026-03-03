@@ -35,10 +35,10 @@ const props: TdChatSenderProps = {
     type: Boolean,
     value: false,
   },
-  /** 输入框默认文案 */
+  /** 输入框默认文案。组件内置默认值为：'请输入消息...' */
   placeholder: {
     type: String,
-    value: '请输入消息...',
+    value: '',
   },
   /** 预设发送区渲染配置，用于灵活配置发送区的上传入口和发送按钮，支持自定义类型、顺序、样式 */
   renderPresets: {
