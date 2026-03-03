@@ -124,7 +124,7 @@ export default uniComponent({
       this.setScrollTop(scrollTop);
     },
     onScroll(e) {
-      this.$emit('scroll', e);
+      this.$emit('scroll', e.detail);
     },
 
     handlerScrollToUpper() {
