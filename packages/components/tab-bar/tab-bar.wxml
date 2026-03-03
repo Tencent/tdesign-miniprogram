@@ -6,7 +6,7 @@
   style="height: {{ placeholderHeight }}px;"
 />
 <view
-  style="{{_._style(['z-index: ' + zIndex, style, customStyle])}}"
+  style="{{_._style(['z-index: ' + zIndex, style, customStyle, '--safe-area-inset-bottom: ' + (safeAreaBottomHeight ? safeAreaBottomHeight + 'px' : 'env(safe-area-inset-bottom)')])}}"
   class="{{_.cls(classPrefix, [['border', bordered], ['fixed', fixed], ['safe', safeAreaInsetBottom], shape])}} class {{prefix}}-class"
   aria-role="tablist"
 >
