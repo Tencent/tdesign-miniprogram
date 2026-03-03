@@ -58,7 +58,7 @@
             class="guide-demo-image"
             src="https://tdesign.gtimg.com/demo/demo-image-1.png"
             mode="scaleToFill"
-            width="100%"
+            width="100%;height:480rpx"
           />
         </view>
       </template>

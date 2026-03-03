@@ -178,7 +178,7 @@ export default {
   },
 };
 </script>
-<style>
+<style scoped>
 .demo-desc {
     margin: 0 0 32rpx;
 }
