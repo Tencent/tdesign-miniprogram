@@ -161,7 +161,7 @@ export default uniComponent({
     loading: 'setClass',
     variant: 'setClass',
   },
-  mounted() {
+  created() {
     this.setClass();
   },
   methods: {
