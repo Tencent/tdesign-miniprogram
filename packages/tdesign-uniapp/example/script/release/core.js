@@ -8,12 +8,14 @@ async function copy({
   filePath,
   config,
 }) {
-  const isDemo = relativePath.split(path.sep)[1] === '_example';
+  // 兼容 Windows：glob 返回 / 分隔的路径，统一用 / 分割
+  const normalizedRelativePath = relativePath.split(path.sep).join('/');
+  const isDemo = normalizedRelativePath.split('/')[1] === '_example';
 
   let targetPath = path.resolve(config.targetDir, relativePath);
 
   if (isDemo && config.demoDir) {
-    targetPath = path.resolve(config.demoDir, relativePath.replace(`${path.sep}_example`, ''));
+    targetPath = path.resolve(config.demoDir, relativePath.replace(`${path.sep}_example`, '').replace('/_example', ''));
   }
 
   fs.mkdirSync(path.dirname(targetPath), { recursive: true });
