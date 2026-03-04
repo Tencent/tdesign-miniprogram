@@ -121,7 +121,17 @@ import TLoading from '@tdesign/uniapp/loading/loading.vue';
 
 安装注册 TDesign 之后，在开发项目时，可以配合插件在VSCode等主流编辑器中达到提示组件名及API的效果。
 
-推荐安装 `Volar`，并在项目的 `tsconfig.json` 的 `includes` 属性中增加 `node_modules/@tdesign/uniapp/global.d.ts`，即可实现该效果。
+推荐安装 [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 插件，并在项目的 `tsconfig.json` 的 `compilerOptions.types` 属性中增加 `@tdesign/uniapp/global`，即可实现提示效果。
+
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "@tdesign/uniapp/global",
+    ]
+  }
+}
+```
 
 ## 平台兼容性
 

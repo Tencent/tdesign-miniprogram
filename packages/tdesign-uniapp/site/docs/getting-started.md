@@ -126,7 +126,7 @@ export default defineConfig({
 
 安装注册 TDesign 之后，在开发项目时，可以配合插件在VSCode等主流编辑器中达到提示组件名及API的效果。
 
-推荐安装 [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (之前是 Volar)，并在项目的 `tsconfig.json` 的 `compilerOptions.types` 属性中增加 `@tdesign/uniapp/global`，即可实现提示效果。
+推荐安装 [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 插件，并在项目的 `tsconfig.json` 的 `compilerOptions.types` 属性中增加 `@tdesign/uniapp/global`，即可实现提示效果。
 
 ```json
 {
@@ -160,16 +160,19 @@ export default defineConfig({
 
 ```bash
 # 安装项目依赖
-npm install
+pnpm install
 
-# 执行组件编译
-npm run dev
+# H5
+npm run uniapp -- run dev:h5
 
-# 小程序
-npm run dev:mp
+# 其他平台类似，比如微信小程序
+npm run uniapp -- run dev:mp-weixin
+
+# uniapp-chat 项目开发
+npm run uniapp:chat -- run site:dev
 ```
 
-打开[微信开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)，把 `packages/demo/dist/dev` 目录添加进去就可以预览示例了。
+打开[微信开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)，把 `packages/tdesign-uniapp/example/dist/build/mp-weixin` 目录添加进去就可以预览示例了。
 
 ## 小程序基础库版本
 
