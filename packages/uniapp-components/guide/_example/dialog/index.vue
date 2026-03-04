@@ -59,7 +59,7 @@
             t-class="guide-demo-image"
             src="https://tdesign.gtimg.com/demo/demo-image-1.png"
             mode="scaleToFill"
-            width="100%"
+            width="100%;height:380rpx"
           />
         </view>
       </template>
@@ -74,7 +74,7 @@
             t-class="guide-demo-image"
             src="https://tdesign.gtimg.com/demo/demo-image-1.png"
             mode="scaleToFill"
-            width="100%"
+            width="100%;height:380rpx"
           />
         </view>
       </template>
@@ -90,7 +90,7 @@
             t-class="guide-demo-image"
             src="https://tdesign.gtimg.com/demo/demo-image-1.png"
             mode="scaleToFill"
-            width="100%"
+            width="100%;height:380rpx"
           />
         </view>
       </template>
@@ -104,6 +104,9 @@ import TInput from '@tdesign/uniapp/input/input.vue';
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TImage from '@tdesign/uniapp/image/image.vue';
 export default {
+  options: {
+    styleIsolation: 'shared',
+  },
   components: {
     TGuide,
     TInput,

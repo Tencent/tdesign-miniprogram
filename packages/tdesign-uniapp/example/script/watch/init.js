@@ -4,7 +4,7 @@ const glob = require('glob');
 const { deleteFolder } = require('t-comm');
 
 const { config } = require('./config');
-const { copyComponents, checkVue2CliExist, checkVue3HxExist } = require('./helper');
+const { copyComponents, checkVue2CliExist, checkVue2HxExist, checkVue3HxExist } = require('./helper');
 
 
 async function copyOneProject({
@@ -41,6 +41,11 @@ function clearTargetDir() {
     deleteFolder(config.pagesMoreDirInVue2Cli);
   }
 
+  if (checkVue2HxExist()) {
+    deleteFolder(config.componentTargetDirInVue2Hx);
+    deleteFolder(config.pagesMoreDirInVue2Hx);
+  }
+
   if (checkVue3HxExist()) {
     deleteFolder(config.componentTargetDirInVue3Hx);
     deleteFolder(config.pagesMoreDirInVue3Hx);
@@ -58,6 +63,12 @@ async function main() {
   if (checkVue2CliExist()) {
     await copyInfra({
       infraDir: config.infraDirInVue2Cli,
+    });
+  }
+
+  if (checkVue2HxExist()) {
+    await copyInfra({
+      infraDir: config.infraDirInVue2Hx,
     });
   }
 

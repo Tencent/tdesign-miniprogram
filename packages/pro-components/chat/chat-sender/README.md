@@ -6,6 +6,7 @@ isComponent: true
 ---
 
 
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-0%25-red" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -61,7 +62,7 @@ auto-rise-with-keyboard | Boolean | false | 键盘弹起时自动顶起来输入
 disabled | Boolean | false | 是否禁用输入框 | N
 file-list | Array | [] | 附件文件列表。TS 类型：`FileItem[]` | N
 loading | Boolean | false | 发送按钮是否处于加载状态 | N
-placeholder | String | 请输入消息... | 输入框默认文案 | N
+placeholder | String | - | 输入框默认文案。组件内置默认值为：'请输入消息...' | N
 render-presets | Array | [{name: 'upload', presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'], status: ''},{ name: 'send', type: 'icon'}] | 预设发送区渲染配置，用于灵活配置发送区的上传入口和发送按钮，支持自定义类型、顺序、样式。TS 类型：`ChatActionButtons` `type ChatActionButtons = Array<ChatActionButton>` `type ChatActionButton = UploadButton \| SendButton` `interface UploadButton { name: 'upload'; presets: string[]; status?: string; }` `interface SendButton { name: 'send'; type: 'icon' \| 'text';}`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/pro-components/chat/chat-sender/type.ts) | N
 textarea-props | Boolean / Object | { autosize: { maxHeight: 264, minHeight: 48 } } | 透传给 Textarea 组件的属性，autosize数值单位为 rpx | N
 value | String | - | 输入框的值 | N

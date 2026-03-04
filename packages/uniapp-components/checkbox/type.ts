@@ -43,7 +43,7 @@ export interface TdCheckboxProps {
    * 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标，半选中态图标]`。使用 String 时，值为 circle 表示填充圆形图标、值为 line 表示描边型图标、值为 rectangle 表示填充矩形图标
    * @default 'circle'
    */
-  icon?: 'circle' | 'line' | 'rectangle' | string[];
+  icon?: CheckboxIconType;
   /**
    * 是否为半选
    * @default false
@@ -94,3 +94,5 @@ export interface TdCheckboxProps {
     context: { value: boolean | number | string; label: boolean | number | string };
   }) => void;
 }
+
+export type CheckboxIconType = 'circle' | 'line' | 'rectangle' | string[];

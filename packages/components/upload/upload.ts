@@ -4,11 +4,15 @@ import { UploadFile, SizeLimitObj } from './type';
 import config from '../common/config';
 import { isOverSize, isWxWork, isPC } from '../common/utils';
 import { isObject } from '../common/validator';
+import usingConfig from '../mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-upload`;
+const componentName = 'upload';
+
 @wxComponent()
 export default class Upload extends SuperComponent {
+  behaviors = [usingConfig({ componentName })];
+
   externalClasses = [`${prefix}-class`];
 
   options = {
@@ -16,7 +20,7 @@ export default class Upload extends SuperComponent {
   };
 
   data = {
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     prefix,
     current: false,
     proofs: [],

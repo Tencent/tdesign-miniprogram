@@ -93,6 +93,7 @@
     "pages/color-picker/color-picker",
     "pages/guide/guide",
     "pages/watermark/watermark",
+    "pages/config-provider/config-provider",
     "pages/chat-message/chat-message"
   ],
   "subpackages": [

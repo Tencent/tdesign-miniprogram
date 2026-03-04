@@ -222,7 +222,7 @@ import TButton from '../button/button';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import { toCamel, coalesce } from '../common/utils';
+import { toCamel, coalesce, toPascal } from '../common/utils';
 import { isObject } from '../common/validator';
 import useCustomNavbar from '../mixins/using-custom-navbar';
 import tools from '../common/utils.wxs';
@@ -320,13 +320,14 @@ export default uniComponent({
         if (key === 'cancel' && rect.buttonVariant === 'base') {
           base.theme = 'light';
         }
+        const parsedKey = `inner${toPascal(key)}`;
 
         if (typeof btn === 'string') {
-          rect[`_${key}`] = { ...base, content: btn };
+          rect[`${parsedKey}`] = { ...base, content: btn };
         } else if (btn && typeof btn === 'object') {
-          rect[`_${key}`] = { ...base, ...btn };
+          rect[`${parsedKey}`] = { ...base, ...btn };
         } else {
-          rect[`_${key}`] = null;
+          rect[`${parsedKey}`] = null;
         }
       });
 

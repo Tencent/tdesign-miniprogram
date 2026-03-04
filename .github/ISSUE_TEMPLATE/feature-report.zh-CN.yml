@@ -1,6 +1,6 @@
 name: 反馈新功能
 description: 通过 GitHub 模板进行新功能反馈。
-title: "[组件名称] 描述问题的标题"
+title: '[组件名称] 描述问题的标题'
 labels: [💪🏻 enhancement, 🧐 unconfirmed]
 body:
   - type: markdown
@@ -12,6 +12,17 @@ body:
         在发布一个 Issue 前，请确保：
         - 在 [常见问题](https://tdesign.tencent.com/about/faq)、[更新日志](https://tdesign.tencent.com/about/release) 和 [旧Issue列表](https://github.com/Tencent/tdesign-miniprogram/issues?q=is%3Aissue) 中搜索过你的问题。（你的问题可能已有人提出，也可能已在最新版本中被修正）
         - 如果你发现一个已经关闭的旧 Issue 在最新版本中仍然存在，不要在旧 Issue 下面留言，请建一个新的 Issue。
+
+  - type: dropdown
+    id: framework
+    attributes:
+      label: 选择框架
+      description: 请选择你希望添加新功能的框架包
+      multiple: true
+      options:
+        - tdesign-miniprogram
+        - '@tdesign/uniapp'
+        - '@tdesign/uniapp-chat'
 
   - type: textarea
     id: functionContent
