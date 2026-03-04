@@ -1,0 +1,699 @@
+@import 'tdesign-uniapp/common/style/base.less';
+
+@chat-record: ~'@{prefix}-chat-record';
+
+// ==================== 动画定义 ====================
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(1.857);
+  }
+}
+
+// ==================== 变量配置 ====================
+
+// 录音按钮
+@chat-record-hook-padding: 24rpx 0;
+@chat-record-hook-font-size: 34rpx;
+@chat-record-hook-line-height: 42rpx;
+@chat-record-hook-letter-spacing: 1.02rpx;
+@chat-record-hook-border-radius: 16px;
+@chat-record-hook-border: 2rpx solid #fff;
+@chat-record-hook-bg: #f5f5f5;
+
+// 遮罩层
+@chat-record-mask-z-index: 5100;
+@chat-record-mask-bg: rgba(0, 0, 0, 0.8);
+@chat-record-mask-blur: blur(5px);
+
+// 主容器
+@chat-record-main-z-index: 5101;
+
+// 气泡样式
+@chat-record-bubble-border-radius: 24rpx;
+@chat-record-bubble-padding: 40rpx 48rpx;
+@chat-record-bubble-min-width: 300rpx;
+@chat-record-bubble-min-height: 120rpx;
+@chat-record-bubble-max-height: 584rpx;
+@chat-record-bubble-margin-bottom: 268rpx;
+@chat-record-bubble-padding-horizontal: 48rpx;
+
+// 气泡颜色
+@chat-record-color-blue: #2979ff;
+@chat-record-color-red: #ff5252;
+@chat-record-color-white: #ffffff;
+
+@chat-record-cancel-font-size: 32rpx;
+
+// 红色气泡（取消）
+@chat-record-bubble-red-min-width: 160rpx;
+@chat-record-bubble-red-padding: 24rpx 32rpx;
+@chat-record-bubble-red-translate-x: -230rpx;
+
+// 宽气泡（转文字）
+@chat-record-bubble-wide-min-width: calc(100% - 96rpx);
+@chat-record-bubble-tail-right: calc(100% - 66rpx);
+
+// 波浪条
+@chat-record-wave-height: 28rpx;
+@chat-record-wave-gap: 8rpx;
+@chat-record-wave-item-width: 8rpx;
+@chat-record-wave-item-height: 14rpx;
+@chat-record-wave-item-radius: 90rpx;
+
+// 省略号圆点
+@chat-record-dot-size: 8rpx;
+@chat-record-dot-gap: 6rpx;
+@chat-record-dot-shadow-offset: 14rpx;
+@chat-record-dot-margin-right: 56rpx;
+
+// 转文字输入框
+@chat-record-textarea-min-height: 112rpx;
+@chat-record-textarea-max-height: 504rpx;
+@chat-record-textarea-font-size: 40rpx;
+@chat-record-textarea-line-height: 56rpx;
+
+// 底部操作区
+@chat-record-footer-height: 400rpx;
+@chat-record-tips-top: 148rpx;
+@chat-record-tips-font-size: 32rpx;
+@chat-record-tips-line-height: 48rpx;
+
+// 大圆背景
+@chat-record-circle-size: 2000rpx;
+@chat-record-circle-border-radius: 2000rpx;
+@chat-record-circle-bottom: -1700rpx;
+@chat-record-circle-border: 4rpx solid #ffffff;
+@chat-record-circle-bg-default: #dcdcdc;
+@chat-record-circle-bg-active: #4a4a4a;
+
+// 异形按钮
+@chat-record-shape-btn-width: 340rpx;
+@chat-record-shape-btn-height: 338rpx;
+@chat-record-shape-btn-bottom: 120rpx;
+@chat-record-shape-btn-padding-bottom: 180rpx;
+@chat-record-shape-btn-hint-top: -50rpx;
+@chat-record-shape-btn-hint-font-size: 24rpx;
+@chat-record-shape-btn-hint-color: #a3a3a3;
+@chat-record-shape-btn-label-font-size: 28rpx;
+@chat-record-shape-btn-label-line-height: 44rpx;
+@chat-record-shape-btn-label-color: #fff;
+@chat-record-shape-btn-label-color-active: #000;
+
+// 确认按钮区域
+@chat-record-confirm-bottom: 120rpx;
+@chat-record-confirm-height: 300rpx;
+@chat-record-confirm-padding: 20rpx 48rpx 40rpx;
+@chat-record-cancel-icon-size: 144rpx;
+@chat-record-cancel-icon-margin: 16rpx;
+@chat-record-cancel-text-font-size: 24rpx;
+@chat-record-cancel-text-line-height: 40rpx;
+@chat-record-send-btn-width: 224rpx;
+@chat-record-send-btn-height: 144rpx;
+@chat-record-send-btn-radius: 1998rpx;
+@chat-record-send-btn-bg: #e0e0e0;
+@chat-record-send-btn-bg-active: #b0b0b0;
+@chat-record-send-btn-font-size: 28rpx;
+@chat-record-send-btn-line-height: 44rpx;
+
+// 过渡动画
+@chat-record-transition-ease: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+@chat-record-transition-fast: 0.15s ease;
+@chat-record-transition-opacity: 0.25s linear;
+
+// ==================== 主容器 ====================
+
+.@{chat-record} {
+  // 录音按钮
+  &-hook {
+    width: 100%;
+    padding: @chat-record-hook-padding;
+    color: rgba(0, 0, 0, 0.9);
+    text-align: center;
+    font-size: @chat-record-hook-font-size;
+    font-weight: 500;
+    line-height: @chat-record-hook-line-height;
+    letter-spacing: @chat-record-hook-letter-spacing;
+    border-radius: @chat-record-hook-border-radius;
+    border: @chat-record-hook-border;
+    background: @chat-record-hook-bg;
+  }
+
+  // ==================== 遮罩层和主容器 ====================
+
+  &-audio-input {
+    &.show {
+      .@{chat-record}-audio-input__mask,
+      .@{chat-record}-audio-input__main {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    // 遮罩层
+    &__mask {
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: @chat-record-mask-z-index;
+      background: @chat-record-mask-bg;
+      backdrop-filter: @chat-record-mask-blur;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity @chat-record-transition-opacity;
+    }
+
+    // 主容器
+    &__main {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: @chat-record-main-z-index;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity @chat-record-transition-opacity;
+    }
+
+    // ==================== 气泡动画容器 ====================
+
+    &-ani {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: @chat-record-bubble-margin-bottom;
+      padding: 0 @chat-record-bubble-padding-horizontal;
+      box-sizing: border-box;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      animation: fadeIn 0.3s ease;
+
+      // 气泡容器
+      .bubble-container {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: @chat-record-bubble-padding;
+        border-radius: @chat-record-bubble-border-radius;
+        min-width: @chat-record-bubble-min-width;
+        min-height: @chat-record-bubble-min-height;
+        width: auto;
+        // 只对特定属性做过渡，避免 height 变化时闪烁
+        transition: background-color @chat-record-transition-ease, transform @chat-record-transition-ease,
+          min-width @chat-record-transition-ease, padding @chat-record-transition-ease;
+
+        // 气泡尾巴 mixin
+        .bubble-tail(@color, @left: 50%, @transform: translateX(-50%)) {
+          content: '';
+          position: absolute;
+          bottom: -14rpx;
+          left: @left;
+          transform: @transform;
+          border-left: 16rpx solid transparent;
+          border-right: 16rpx solid transparent;
+          border-top: 16rpx solid @color;
+          transition: all @chat-record-transition-ease;
+        }
+
+        // 蓝色气泡（默认）
+        &.bubble-blue {
+          background-color: @chat-record-color-blue;
+          color: @chat-record-color-white;
+
+          &::after {
+            .bubble-tail(@chat-record-color-blue);
+          }
+        }
+
+        // 红色气泡（取消状态）
+        &.bubble-red {
+          background-color: @chat-record-color-red;
+          color: @chat-record-color-white;
+          min-width: @chat-record-bubble-red-min-width;
+          padding: @chat-record-bubble-red-padding;
+          transform: translateX(@chat-record-bubble-red-translate-x);
+
+          &::after {
+            .bubble-tail(@chat-record-color-red);
+          }
+        }
+
+        // 宽气泡（转文字状态）
+        &.bubble-wide {
+          background-color: @chat-record-color-blue;
+          color: @chat-record-color-white;
+          min-width: @chat-record-bubble-wide-min-width;
+          max-width: none;
+          justify-content: flex-start;
+
+          &::after {
+            .bubble-tail(@chat-record-color-blue, @chat-record-bubble-tail-right);
+          }
+        }
+      }
+    }
+
+    // ==================== 气泡内容 ====================
+
+    // 音量波浪条
+    .audio-wave {
+      display: flex;
+      align-items: center;
+      height: @chat-record-wave-height;
+      gap: @chat-record-wave-gap;
+
+      .wave-item {
+        width: @chat-record-wave-item-width;
+        height: @chat-record-wave-item-height;
+        background: @chat-record-color-white;
+        border-radius: @chat-record-wave-item-radius;
+        transform-origin: center;
+        will-change: transform;
+        animation: wave 1.5s infinite ease-in-out;
+      }
+
+      // LESS 循环生成 13 个波浪条的动画延迟
+      .generate-wave-delays(@n, @i: 1) when (@i =< @n) {
+        .wave-item:nth-child(@{i}) {
+          animation-delay: unit((-1.2 + (@i - 1) * 0.1), s);
+        }
+
+        .generate-wave-delays(@n, (@i + 1));
+      }
+
+      .generate-wave-delays(13);
+    }
+
+    // 取消图标（省略号）
+    .cancel-icon {
+      display: flex;
+      align-items: center;
+      gap: @chat-record-dot-gap;
+      font-size: 0;
+
+      &::before {
+        content: '';
+        display: block;
+        width: @chat-record-dot-size;
+        height: @chat-record-dot-size;
+        background: @chat-record-color-white;
+        border-radius: 50%;
+        box-shadow: @chat-record-dot-shadow-offset 0 0 @chat-record-color-white,
+          (@chat-record-dot-shadow-offset * 2) 0 0 @chat-record-color-white,
+          (@chat-record-dot-shadow-offset * 3) 0 0 @chat-record-color-white,
+          (@chat-record-dot-shadow-offset * 4) 0 0 @chat-record-color-white;
+        margin-right: @chat-record-dot-margin-right;
+      }
+    }
+
+    .cancel-text {
+      color: @chat-record-color-white;
+      font-size: @chat-record-cancel-font-size;
+      font-weight: 600;
+    }
+
+    // 转文字内容
+    .convert-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+
+      .editable-textarea {
+        width: 100%;
+        height: @chat-record-textarea-min-height;
+        background: transparent;
+        border: none;
+        color: @chat-record-color-white;
+        font-family: 'PingFang SC';
+        font-size: @chat-record-textarea-font-size;
+        font-weight: 600;
+        line-height: @chat-record-textarea-line-height;
+        outline: none;
+        resize: none;
+        overflow-y: auto;
+        -webkit-appearance: none;
+      }
+
+      .convert-dots {
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+        gap: @chat-record-dot-gap;
+        font-size: 0;
+
+        &::before {
+          content: '';
+          display: block;
+          width: @chat-record-dot-size;
+          height: @chat-record-dot-size;
+          background: @chat-record-color-white;
+          border-radius: 50%;
+          box-shadow: @chat-record-dot-shadow-offset 0 0 @chat-record-color-white,
+            (@chat-record-dot-shadow-offset * 2) 0 0 @chat-record-color-white,
+            (@chat-record-dot-shadow-offset * 3) 0 0 @chat-record-color-white,
+            (@chat-record-dot-shadow-offset * 4) 0 0 @chat-record-color-white;
+          margin-right: @chat-record-dot-margin-right;
+        }
+      }
+    }
+
+    // ==================== 底部操作区 ====================
+
+    &__ft {
+      position: relative;
+      width: 100%;
+      height: @chat-record-footer-height;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      animation: fadeIn 0.3s ease;
+
+      // 提示文字
+      .tips-text {
+        position: absolute;
+        top: @chat-record-tips-top;
+        width: 100%;
+        text-align: center;
+        color: rgba(0, 0, 0, 0.9);
+        font-size: @chat-record-tips-font-size;
+        font-weight: 600;
+        line-height: @chat-record-tips-line-height;
+        z-index: 10;
+        pointer-events: none;
+      }
+
+      // 状态变化：文字变白色
+      &.release_cancel .tips-text,
+      &.release_convert .tips-text {
+        color: @chat-record-color-white;
+      }
+
+      // 大圆弧背景
+      &__bg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        bottom: 0;
+        pointer-events: none;
+
+        &::before {
+          content: '';
+          position: absolute;
+          left: 50%;
+          bottom: @chat-record-circle-bottom;
+          transform: translateX(-50%);
+          width: @chat-record-circle-size;
+          height: @chat-record-circle-size;
+          border-radius: @chat-record-circle-border-radius;
+          background: @chat-record-circle-bg-default;
+          border: @chat-record-circle-border;
+          transition: background-color 0.3s ease;
+        }
+      }
+
+      // 状态变化：大圆变深色
+      &.release_cancel .@{chat-record}-audio-input__ft__bg::before,
+      &.release_convert .@{chat-record}-audio-input__ft__bg::before {
+        background-color: @chat-record-circle-bg-active;
+        border-color: @chat-record-circle-bg-active;
+      }
+
+      // ==================== 异形按钮 ====================
+
+      .shape-btn {
+        position: absolute;
+        bottom: @chat-record-shape-btn-bottom;
+        width: @chat-record-shape-btn-width;
+        height: @chat-record-shape-btn-height;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: @chat-record-shape-btn-padding-bottom;
+        box-sizing: border-box;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        z-index: 1;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position: center center;
+          z-index: -1;
+          transition: all 0.3s ease;
+          transform-origin: center 20%;
+        }
+
+        .btn-hint {
+          position: absolute;
+          top: @chat-record-shape-btn-hint-top;
+          font-size: @chat-record-shape-btn-hint-font-size;
+          font-weight: 400;
+          color: @chat-record-shape-btn-hint-color;
+          white-space: nowrap;
+
+          .word {
+            display: inline-block;
+            margin-right: 8rpx;
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+
+        .btn-label {
+          font-family: 'PingFang SC';
+          font-size: @chat-record-shape-btn-label-font-size;
+          font-weight: 600;
+          line-height: @chat-record-shape-btn-label-line-height;
+          color: @chat-record-shape-btn-label-color;
+
+          .word {
+            display: inline-block;
+            margin-right: 8rpx;
+
+            &:last-child {
+              margin-right: 0;
+            }
+          }
+        }
+
+        &.active {
+          .btn-label {
+            color: @chat-record-shape-btn-label-color-active;
+          }
+
+          &::before {
+            transform: scale(1.1);
+          }
+        }
+      }
+
+      // 左侧按钮
+      .left-btn {
+        left: 0;
+
+        &::before {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='169' viewBox='0 0 170 169' fill='none'%3E%3Cpath d='M142.225 59.8918C158.733 58.4737 170.966 43.9418 169.548 27.4343C168.13 10.9265 153.598 -1.30612 137.09 0.111923C25.1861 9.72467 -81.5199 51.6215 -170.069 120.715L-133.159 168.019C-53.7697 106.073 41.8976 68.5101 142.225 59.8918Z' fill='%234B4B4B'/%3E%3C/svg%3E");
+        }
+
+        // btn-hint: "Release" + "to cancel"
+        .btn-hint {
+          transform: translateZ(0); // 触发重绘防止文字残影
+
+          .word-1 {
+            transform: rotate(-10deg) translateY(6rpx);
+          }
+
+          .word-2 {
+            transform: rotate(-7deg) translateY(-10rpx);
+          }
+        }
+
+        // btn-label: "Cancel"
+        .btn-label {
+          transform: rotate(-12deg);
+        }
+
+        &.active::before {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='169' viewBox='0 0 170 169' fill='none'%3E%3Cpath d='M142.225 59.8918C158.733 58.4737 170.966 43.9418 169.548 27.4343C168.13 10.9265 153.598 -1.30612 137.09 0.111923C25.1861 9.72467 -81.5199 51.6215 -170.069 120.715L-133.159 168.019C-53.7697 106.073 41.8976 68.5101 142.225 59.8918Z' fill='%23DCDCDC'/%3E%3C/svg%3E");
+          transform: scale(1.1);
+        }
+      }
+
+      // 右侧按钮
+      .right-btn {
+        right: 0;
+        transform: scaleX(-1);
+
+        &::before {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='169' viewBox='0 0 170 169' fill='none'%3E%3Cpath d='M142.225 59.8918C158.733 58.4737 170.966 43.9418 169.548 27.4343C168.13 10.9265 153.598 -1.30612 137.09 0.111923C25.1861 9.72467 -81.5199 51.6215 -170.069 120.715L-133.159 168.019C-53.7697 106.073 41.8976 68.5101 142.225 59.8918Z' fill='%234B4B4B'/%3E%3C/svg%3E");
+        }
+
+        // btn-hint: "Release" + "to edit" + "text"
+        .btn-hint {
+          transform: scaleX(-1) translateZ(0); // 触发重绘防止文字残影
+
+          .word-1 {
+            transform: rotate(7deg) translateY(-10rpx);
+          }
+
+          .word-2 {
+            transform: rotate(12deg) translateY(5rpx);
+          }
+
+          .word-3 {
+            transform: rotate(17deg) translateY(20rpx);
+          }
+        }
+
+        // btn-label: "Convert" + "to Text"
+        .btn-label {
+          transform: scaleX(-1);
+
+          .word-1 {
+            transform: rotate(9deg) translateY(-12rpx);
+          }
+
+          .word-2 {
+            transform: rotate(16deg) translateY(10rpx);
+          }
+        }
+
+        &.active::before {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='169' viewBox='0 0 170 169' fill='none'%3E%3Cpath d='M142.225 59.8918C158.733 58.4737 170.966 43.9418 169.548 27.4343C168.13 10.9265 153.598 -1.30612 137.09 0.111923C25.1861 9.72467 -81.5199 51.6215 -170.069 120.715L-133.159 168.019C-53.7697 106.073 41.8976 68.5101 142.225 59.8918Z' fill='%23DCDCDC'/%3E%3C/svg%3E");
+          transform: scale(1.1);
+        }
+      }
+
+      // ==================== 确认按钮区域 ====================
+
+      .confirm-actions {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: @chat-record-confirm-bottom;
+        height: @chat-record-confirm-height;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: @chat-record-confirm-padding;
+        z-index: 20;
+
+        .action-btn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          transition: all @chat-record-transition-fast;
+
+          // Cancel 按钮
+          &.btn-cancel {
+            .icon-wrapper {
+              width: @chat-record-cancel-icon-size;
+              height: @chat-record-cancel-icon-size;
+              border-radius: 50%;
+              background-color: rgba(255, 255, 255, 0.2);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: @chat-record-cancel-icon-margin;
+              transition: background-color @chat-record-transition-fast;
+            }
+
+            .btn-text {
+              color: #fff;
+              text-align: center;
+              font-family: 'PingFang SC';
+              font-size: @chat-record-cancel-text-font-size;
+              font-weight: 600;
+              line-height: @chat-record-cancel-text-line-height;
+            }
+
+            &.active .icon-wrapper {
+              background-color: rgba(255, 255, 255, 0.4);
+            }
+          }
+
+          // Send 按钮
+          &.btn-send {
+            width: @chat-record-send-btn-width;
+            height: @chat-record-send-btn-height;
+            background-color: @chat-record-send-btn-bg;
+            border-radius: @chat-record-send-btn-radius;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color @chat-record-transition-fast;
+
+            text {
+              color: rgba(0, 0, 0, 0.9);
+              font-family: 'PingFang SC';
+              font-size: @chat-record-send-btn-font-size;
+              font-weight: 600;
+              line-height: @chat-record-send-btn-line-height;
+            }
+
+            &.active {
+              background-color: @chat-record-send-btn-bg-active;
+            }
+
+            // 禁用状态
+            &.disabled {
+              background-color: #999;
+              opacity: 0.5;
+              pointer-events: none;
+
+              text {
+                color: rgba(255, 255, 255, 0.6);
+              }
+            }
+          }
+
+          // Cancel 按钮禁用状态
+          &.btn-cancel.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+
+            .icon-wrapper {
+              background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .btn-text {
+              color: rgba(255, 255, 255, 0.6);
+            }
+          }
+        }
+      }
+    }
+  }
+}

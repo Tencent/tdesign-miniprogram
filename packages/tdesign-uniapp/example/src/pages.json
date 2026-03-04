@@ -297,6 +297,14 @@
       ]
     },
     {
+      "root": "pages-more/chat-record",
+      "pages": [
+        {
+          "path": "chat-record"
+        }
+      ]
+    },
+    {
       "root": "pages-more/chat-sender",
       "pages": [
         {
@@ -620,6 +628,10 @@
         "pathName": "pages-more/chat-message/chat-message"
       },
       {
+        "name": "chat-record",
+        "pathName": "pages-more/chat-record/chat-record"
+      },
+      {
         "name": "chat-sender",
         "pathName": "pages-more/chat-sender/chat-sender"
       },
@@ -668,6 +680,7 @@
         "pages-more/toast",
         "pages-more/chat-list",
         "pages-more/chat-message",
+        "pages-more/chat-record",
         "pages-more/chat-sender",
         "pages-more/chat-markdown",
         "pages-more/chat-content",
