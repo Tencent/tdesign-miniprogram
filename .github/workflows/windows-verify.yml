@@ -1,0 +1,63 @@
+name: Windows Verify
+
+on:
+  # 手动触发，可在任意分支上执行
+  workflow_dispatch:
+    inputs:
+      commands:
+        description: '要验证的命令（逗号分隔），默认全部验证'
+        required: false
+        default: 'init,release:prepare'
+        type: string
+      node-version:
+        description: 'Node.js 版本'
+        required: false
+        default: '18'
+        type: choice
+        options:
+          - '18'
+          - '20'
+          - '22'
+          - '24'
+  # push 到任意分支也可触发（排除 develop 和 main，避免与其他 CI 重复）
+  push:
+    branches:
+      - 'feature/**'
+      - 'fix/**'
+      - 'test/**'
+
+# 同一分支只保留最新的运行
+concurrency:
+  group: windows-verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: ${{ inputs.node-version || '18' }}
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Verify - init
+        if: >-
+          github.event_name == 'push' ||
+          contains(inputs.commands, 'init')
+        run: npm run uniapp -- run init
+
+      - name: Verify - release:prepare
+        if: >-
+          github.event_name == 'push' ||
+          contains(inputs.commands, 'release:prepare')
+        run: npm run uniapp -- run release:prepare
