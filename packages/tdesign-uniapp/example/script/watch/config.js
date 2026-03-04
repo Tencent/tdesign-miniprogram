@@ -1,5 +1,5 @@
 const path = require('path');
-const { PACKAGES_ROOT } = require('../release/config');
+const { PACKAGES_ROOT, toGlobPattern } = require('../release/config');
 
 const VUE3_CLI_ROOT = path.resolve(__dirname, '../..');
 const APP_ROOT = path.resolve(__dirname, '../../../app');
@@ -37,11 +37,11 @@ const config = {
   sourceDir: path.resolve(PACKAGES_ROOT, 'uniapp-components'),
   chatSourceDir: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat'),
 
-  sourceGlob: path.resolve(PACKAGES_ROOT, 'uniapp-components/**/*'),
-  chatSourceGlob: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat/**/*'),
-  baseAndChatSourceGlob: path.resolve(PACKAGES_ROOT, '{uniapp-components,uniapp-pro-components}/**/*'),
+  sourceGlob: toGlobPattern(path.resolve(PACKAGES_ROOT, 'uniapp-components/**/*')),
+  chatSourceGlob: toGlobPattern(path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat/**/*')),
+  baseAndChatSourceGlob: toGlobPattern(path.resolve(PACKAGES_ROOT, '{uniapp-components,uniapp-pro-components}/**/*')),
 
-  demoPagesGlob: path.resolve(VUE3_CLI_ROOT, 'src/{pages,components,mixins,style}/**/*'),
+  demoPagesGlob: toGlobPattern(path.resolve(VUE3_CLI_ROOT, 'src/{pages,components,mixins,style}/**/*')),
 };
 
 
