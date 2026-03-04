@@ -7,14 +7,11 @@ docClass: timeline
 
 ## 🌈 0.7.3 `2026-03-04`
 
-### 🚀 Features
-
-- `Theme`: 修复 `index.css` 尺寸值错误的问题 @liweijie0812 ([#4290](https://github.com/Tencent/tdesign-miniprogram/pull/4290))
-
 ### 🐞 Bug Fixes
 
 - `Button`: 去除多余动画效果 @novlan1 ([#4305](https://github.com/Tencent/tdesign-miniprogram/pull/4305))
 - `Dialog`: 修复确认/取消按钮不显示问题 @novlan1 ([#4305](https://github.com/Tencent/tdesign-miniprogram/pull/4305))
+- `Theme`: 修复 `index.css` 尺寸值错误的问题 @liweijie0812 ([#4290](https://github.com/Tencent/tdesign-miniprogram/pull/4290))
 
 ## 🌈 0.7.2 `2026-02-26`
 
