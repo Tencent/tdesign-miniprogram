@@ -12,13 +12,13 @@ export interface TdChatMarkdownProps {
   content: string;
   /**
    * Markdown 解析器基础配置
-   * @default () => ({ gfm: true, pedantic: false, breaks: true })
+   * @default { gfm: true, pedantic: false, breaks: true }
    */
   options?: TdChatContentMDOptions;
   /**
    * 点击链接时触发
    */
-  onClick?: (context: { detail: { event; node }; currentTarget; target }) => void;
+  onClick?: (context: TdMarkdownClickContext) => void;
 }
 
 export interface TdChatContentMDOptions {
@@ -26,4 +26,19 @@ export interface TdChatContentMDOptions {
   pedantic?: boolean;
   smartLists?: boolean;
   breaks?: boolean;
+}
+
+export interface TdMarkdownClickContext {
+  event: TouchEvent;
+  node: TdMarkdownNode;
+}
+
+export interface TdMarkdownNode {
+  type: string;
+  raw?: string;
+  text?: string;
+  href?: string;
+  title?: string;
+  tokens?: TdMarkdownNode[];
+  [key: string]: unknown;
 }

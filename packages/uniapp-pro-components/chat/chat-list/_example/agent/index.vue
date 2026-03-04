@@ -4,7 +4,9 @@
       class="chat-box"
       :style="'height: ' + contentHeightClone + ';'"
     >
-      <t-chat-list>
+      <t-chat-list
+        @scroll="onScroll"
+      >
         <block
           v-for="(item, chatIndex) in chatList"
           :key="item.key"
@@ -564,6 +566,10 @@ export default {
     handlePopoverAction(e) {
       e.chatId = this.activePopoverId;
       this.handleAction(e);
+    },
+
+    onScroll(e) {
+      console.log('onScroll', e);
     },
   },
 };

@@ -121,7 +121,17 @@ import TLoading from '@tdesign/uniapp/loading/loading.vue';
 
 安装注册 TDesign 之后，在开发项目时，可以配合插件在VSCode等主流编辑器中达到提示组件名及API的效果。
 
-推荐安装 `Volar`，并在项目的 `tsconfig.json` 的 `includes` 属性中增加 `node_modules/@tdesign/uniapp/global.d.ts`，即可实现该效果。
+推荐安装 [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 插件，并在项目的 `tsconfig.json` 的 `compilerOptions.types` 属性中增加 `@tdesign/uniapp/global`，即可实现提示效果。
+
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "@tdesign/uniapp/global",
+    ]
+  }
+}
+```
 
 ## 平台兼容性
 
@@ -140,6 +150,18 @@ import TLoading from '@tdesign/uniapp/loading/loading.vue';
 | Firefox >=104| Chrome >=105| iOS Safari >=12.2| Samsung >=10.2 | Opera >=64 | Android Browser >=105 |
 
 详情参见[移动端组件库浏览器兼容性说明](https://github.com/Tencent/tdesign/wiki/Browser-Compatibility)
+
+## 模板项目
+
+我们提供了多种开箱即用的模板项目，帮助你快速开始开发。
+
+| 模板 | 描述 | 预览 |
+| --- | --- | --- |
+| [TDesign UniApp Starter](https://github.com/TDesignOteam/tdesign-uniapp-starter/) | Vue3 + CLI 模式模板 - 通用类 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-h5.png" height="100" /> |
+| [TDesign UniApp Starter Apply](https://github.com/TDesignOteam/tdesign-uniapp-starter-apply/) | Vue3 + CLI 模式模板 - 活动报名 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-apply-h5.png" height="100" /> |
+| [TDesign UniApp Starter Vue3 HX](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue3-hx/) | Vue3 + HBuilderX 模式模板 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue3-hx-h5.png" height="100" /> |
+| [TDesign UniApp Starter Vue2 CLI](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue2-cli/) | Vue2 + CLI 模式模板 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue2-cli-h5.png" height="100" /> |
+| [TDesign UniApp Starter Vue2 HX](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue2-hx/) | Vue2 + HBuilderX 模式模板 |<img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue2-hx-h5.png" height="100" /> |
 
 ## 反馈
 

@@ -126,7 +126,7 @@ export default defineConfig({
 
 安装注册 TDesign 之后，在开发项目时，可以配合插件在VSCode等主流编辑器中达到提示组件名及API的效果。
 
-推荐安装 [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (之前是 Volar)，并在项目的 `tsconfig.json` 的 `compilerOptions.types` 属性中增加 `@tdesign/uniapp/global`，即可实现提示效果。
+推荐安装 [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 插件，并在项目的 `tsconfig.json` 的 `compilerOptions.types` 属性中增加 `@tdesign/uniapp/global`，即可实现提示效果。
 
 ```json
 {
@@ -156,20 +156,35 @@ export default defineConfig({
 
 详情参见[移动端组件库浏览器兼容性说明](https://github.com/Tencent/tdesign/wiki/Browser-Compatibility)
 
+## 模板项目
+
+我们提供了多种开箱即用的模板项目，帮助你快速开始开发。
+
+| 模板 | 描述 | 预览 |
+| --- | --- | --- |
+| [TDesign UniApp Starter](https://github.com/TDesignOteam/tdesign-uniapp-starter/) | Vue3 + CLI 模式模板 - 通用类 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-h5.png" height="100" /> |
+| [TDesign UniApp Starter Apply](https://github.com/TDesignOteam/tdesign-uniapp-starter-apply/) | Vue3 + CLI 模式模板 - 活动报名 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-apply-h5.png" height="100" /> |
+| [TDesign UniApp Starter Vue3 HX](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue3-hx/) | Vue3 + HBuilderX 模式模板 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue3-hx-h5.png" height="100" /> |
+| [TDesign UniApp Starter Vue2 CLI](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue2-cli/) | Vue2 + CLI 模式模板 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue2-cli-h5.png" height="100" /> |
+| [TDesign UniApp Starter Vue2 HX](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue2-hx/) | Vue2 + HBuilderX 模式模板 |<img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue2-hx-h5.png" height="100" /> |
+
 ## 开发
 
 ```bash
 # 安装项目依赖
-npm install
+pnpm install
 
-# 执行组件编译
-npm run dev
+# H5
+npm run uniapp -- run dev:h5
 
-# 小程序
-npm run dev:mp
+# 其他平台类似，比如微信小程序
+npm run uniapp -- run dev:mp-weixin
+
+# uniapp-chat 项目开发
+npm run uniapp:chat -- run site:dev
 ```
 
-打开[微信开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)，把 `packages/demo/dist/dev` 目录添加进去就可以预览示例了。
+打开[微信开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)，把 `packages/tdesign-uniapp/example/dist/build/mp-weixin` 目录添加进去就可以预览示例了。
 
 ## 小程序基础库版本
 

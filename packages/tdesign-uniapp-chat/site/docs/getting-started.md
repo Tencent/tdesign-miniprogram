@@ -71,7 +71,7 @@ import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
 
 安装注册 TDesign 之后，在开发项目时，可以配合插件在VSCode等主流编辑器中达到提示组件名及API的效果。
 
-推荐安装 [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (之前是 Volar)，并在项目的 `tsconfig.json` 的 `compilerOptions.types` 属性中增加 `@tdesign/uniapp-chat/global`，即可实现提示效果。
+推荐安装 [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 插件，并在项目的 `tsconfig.json` 的 `compilerOptions.types` 属性中增加 `@tdesign/uniapp-chat/global`，即可实现提示效果。
 
 ```json
 {
@@ -81,6 +81,7 @@ import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
     ]
   }
 }
+```
 
 ## 平台兼容性
 
