@@ -5,6 +5,7 @@
  * */
 
 import type { TdChatMarkdownProps as ChatMarkdownProps } from '../chat-markdown/type';
+import type { TdMarkdownClickContext as MarkdownClickContext } from '../chat-markdown/type';
 
 export interface TdChatContentProps {
   /**
@@ -26,7 +27,7 @@ export interface TdChatContentProps {
   /**
    * 点击链接时触发
    */
-  onClick?: (context: { detail: { event; node }; currentTarget; target }) => void;
+  onClick?: (context: MarkdownClickContext) => void;
 }
 
 export interface TdChatContentType {

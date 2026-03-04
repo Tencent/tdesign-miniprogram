@@ -55,10 +55,10 @@
         >
           <p>用户引导的说明文案 1</p>
           <t-image
-            class="guide-demo-image"
+            t-class="guide-demo-image"
             src="https://tdesign.gtimg.com/demo/demo-image-1.png"
             mode="scaleToFill"
-            width="100%"
+            width="100%;height:380rpx"
           />
         </view>
       </template>
@@ -74,6 +74,9 @@ import TImage from '@tdesign/uniapp/image/image.vue';
 import { getRect } from '@tdesign/uniapp/common/utils';
 
 export default {
+  options: {
+    styleIsolation: 'shared',
+  },
   components: {
     TGuide,
     TInput,
@@ -163,7 +166,8 @@ export default {
     line-height: 48rpx;
 }
 
-.slot-body .guide-demo-image {
+.slot-body :deep(.guide-demo-image) {
     margin-top: 48rpx;
+    width: 100%;
 }
 </style>

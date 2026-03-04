@@ -36,5 +36,5 @@ export interface TdChatThinkingProps {
   /**
    * 切换折叠面板时触发
    */
-  onCollapsedChange?: (value: Boolean) => void;
+  onCollapsedChange?: (value: boolean) => void;
 }
