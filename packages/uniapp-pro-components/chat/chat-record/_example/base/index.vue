@@ -2,21 +2,19 @@
   <view class="demo-base-container">
     <!-- 聊天发送器组件 -->
     <view class="chat-sender-demo-wrapper">
-      <!-- <view class="chat-sender-height-limit">
+      <view class="chat-sender-height-limit">
         <view class="chat-sender-height-left-limit" />
         <view class="chat-sender-height-right-limit" />
       </view>
-      <view class="chat-sender-placeholder">
-        高度限制：最大高度为132px
-      </view> -->
+      <view class="chat-sender-placeholder"> 高度限制：最大高度为132px </view>
       <view class="chat-sender-wrapper">
         <t-chat-sender
           v-model="query"
-          :render-presets="renderSend"
           :loading="loading"
           :placeholder="placeholder"
           :textarea-props="textareaProps"
-          :sender-type="'speech'"
+          :sender-type="senderType"
+          :render-presets="renderPresets"
           @send="onSend"
         >
           <template #speech>
@@ -31,21 +29,12 @@
               </template>
             </t-chat-record>
           </template>
-          <template #footerPrefix>
-            <div
-              style="
-                width: 40px;
-                height: 40px;
-                background-color: red;
-                border-radius: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-              "
-              @click="handleVoice"
-            >
-              <text style="color: white; font-size: 20px"> + </text>
-            </div>
+          <template #footer-prefix>
+            <view class="demo-footer-prefix">
+              <view class="speech-block" @click="toggleSenderType">
+                <TIcon name="microphone" size="40rpx" />
+              </view>
+            </view>
           </template>
         </t-chat-sender>
       </view>
@@ -57,19 +46,23 @@
 <script>
 import tChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
 import tChatRecord from 'tdesign-uniapp-chat/chat-record/chat-record.vue';
+import TIcon from 'tdesign-uniapp/icon/icon.vue';
 
 export default {
   components: {
     tChatSender,
     tChatRecord,
+    TIcon,
   },
   data() {
     return {
       query: '',
       placeholder: '请输入内容',
       textareaProps: {
-        autoSize: true,
-        maxHeight: 132,
+        autosize: {
+          maxHeight: 264,
+          minHeight: 48, // 设置为0时，用自动计算height的高度
+        }, // 默认为false
       },
       renderSend: [
         {
@@ -80,6 +73,13 @@ export default {
       loading: false,
       showVoice: false,
       autoSendHeight: 0,
+      senderType: 'keyboard',
+      renderPresets: [
+        {
+          name: 'send',
+          type: 'icon',
+        },
+      ],
     };
   },
   methods: {
@@ -91,6 +91,10 @@ export default {
     },
     handleVoice() {
       this.showVoice = !this.showVoice;
+    },
+    toggleSenderType() {
+      console.log('toggleSenderType', this.senderType);
+      this.senderType = this.senderType === 'keyboard' ? 'speech' : 'keyboard';
     },
     onSend(_value, { e: _e }) {
       console.log('onSend', _e, _value);
@@ -112,6 +116,8 @@ export default {
 
 /* 聊天发送器包装器 */
 .chat-sender-demo-wrapper {
+  margin-bottom: 32rpx;
+  /* border: 2rpx solid #e5e5e5; */
   border-radius: 8rpx;
   overflow: hidden;
 }
@@ -162,5 +168,19 @@ export default {
   color: var(--td-text-color-placeholder);
   position: absolute;
   bottom: 32rpx;
+}
+
+.demo-footer-prefix {
+  display: flex;
+  align-items: center;
+}
+
+.speech-block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 24rpx;
+  height: 60rpx;
+  margin-right: 16rpx;
 }
 </style>
