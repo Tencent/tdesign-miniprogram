@@ -1,7 +1,7 @@
 ---
 title: ColorPicker 颜色选择器
 description: 用于颜色选择，支持多种格式。
-spline: data
+spline: form
 isComponent: true
 ---
 

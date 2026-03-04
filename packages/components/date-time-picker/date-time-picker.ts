@@ -212,7 +212,7 @@ export default class DateTimePicker extends SuperComponent {
       for (let i = minEdge; i <= maxEdge; i += step) {
         options.push({
           value: `${i}`,
-          label: type === 'month' ? globalConfig.months[i] : `${i}${globalConfig[`${type}Label`]}`,
+          label: type === 'month' ? globalConfig.months?.[i] : `${i}${globalConfig[`${type}Label`]}`,
         });
       }
 
