@@ -297,18 +297,18 @@
       ]
     },
     {
-      "root": "pages-more/chat-record",
-      "pages": [
-        {
-          "path": "chat-record"
-        }
-      ]
-    },
-    {
       "root": "pages-more/chat-sender",
       "pages": [
         {
           "path": "chat-sender"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/chat-record",
+      "pages": [
+        {
+          "path": "chat-record"
         }
       ]
     },
@@ -628,12 +628,12 @@
         "pathName": "pages-more/chat-message/chat-message"
       },
       {
-        "name": "chat-record",
-        "pathName": "pages-more/chat-record/chat-record"
-      },
-      {
         "name": "chat-sender",
         "pathName": "pages-more/chat-sender/chat-sender"
+      },
+      {
+        "name": "chat-record",
+        "pathName": "pages-more/chat-record/chat-record"
       },
       {
         "name": "chat-markdown",
@@ -680,8 +680,8 @@
         "pages-more/toast",
         "pages-more/chat-list",
         "pages-more/chat-message",
-        "pages-more/chat-record",
         "pages-more/chat-sender",
+        "pages-more/chat-record",
         "pages-more/chat-markdown",
         "pages-more/chat-content",
         "pages-more/chat-thinking",
