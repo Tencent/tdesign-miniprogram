@@ -16,7 +16,9 @@
   "types": "./dist/types/index.d.ts",
   "exports": {
     "./*": "./dist/*",
-    "./global": "./global.d.ts",
+    "./global": {
+      "types": "./global.d.ts"
+    },
     "./attachments/attachments.vue": {
       "types": "./dist/types/attachments.d.ts",
       "import": "./dist/attachments/attachments.vue",
