@@ -236,7 +236,6 @@ export const chunk = (arr, size) => Array.from({ length: Math.ceil(arr.length / 
 const getPageContext = () => {
   const pages = getCurrentPages();
   const page = pages[pages.length - 1];
-  // page.$vm 是 uni-app 中页面对应的 Vue 实例，拥有 $refs 等属性
   return page?.$vm || page;
 };
 
