@@ -1,7 +1,7 @@
 ---
 title: Attachments 文件附件
 description: 用于聊天场景中上传、预览和管理附件的组件。
-spline: base
+spline: chat
 isComponent: true
 ---
 

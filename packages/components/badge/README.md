@@ -92,3 +92,5 @@ t-class-count | 计数样式类
 --td-badge-large-height | 40rpx | -
 --td-badge-large-padding | 10rpx | -
 --td-badge-text-color | @text-color-anti | -
+--td-line-height-mark-extraSmall | 32rpx | -
+--td-line-height-mark-small | 40rpx | -
