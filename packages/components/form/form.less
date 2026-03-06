@@ -9,23 +9,8 @@
 @form-readonly-bg-color: var(--td-form-readonly-bg-color, @bg-color-secondarycontainer);
 
 .@{form} {
-  position: relative;
-  width: 100%;
+  display: block;
   background-color: @form-bg-color;
   padding: @form-padding;
   border-radius: @form-border-radius;
-  box-sizing: border-box;
-  min-height: 100%;
-
-  // 禁用状态
-  &--disabled {
-    opacity: 0.6;
-    pointer-events: none;
-    cursor: not-allowed;
-  }
-
-  // 只读状态
-  &--readonly {
-    background-color: @form-readonly-bg-color;
-  }
 }

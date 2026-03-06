@@ -4,6 +4,8 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import { FormRule } from '../form/type';
+
 export interface TdFormItemProps {
   /**
    * 是否显示右侧箭头
@@ -14,16 +16,7 @@ export interface TdFormItemProps {
     value?: boolean;
   };
   /**
-   * label 原生属性
-   * @default ''
-   */
-  for?: {
-    type: StringConstructor;
-    value?: string;
-  };
-  /**
    * 表单项说明内容
-
    */
   help?: {
     type: StringConstructor;
@@ -71,11 +64,10 @@ export interface TdFormItemProps {
    */
   rules?: {
     type: ArrayConstructor;
-    value?: Array<any>;
+    value?: Array<FormRule>;
   };
   /**
    * 校验不通过时，是否显示错误提示信息，优先级高于 `Form.showErrorMessage`
-
    */
   showErrorMessage?: {
     type: BooleanConstructor;

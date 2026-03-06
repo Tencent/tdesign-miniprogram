@@ -1,8 +1,5 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<form
-  class="{{classPrefix}} {{classPrefix}}--{{labelAlign}} {{classPrefix}}--{{disabled ? 'disabled' : ''}} {{classPrefix}}--{{readonly ? 'readonly' : ''}} {{prefix}}-class"
-  style="{{_._style([style, customStyle])}}"
->
+<form class="{{classPrefix}}  {{prefix}}-class" style="{{_._style([style, customStyle])}}">
   <slot />
 </form>

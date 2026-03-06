@@ -16,11 +16,6 @@ const props: TdFormProps = {
     type: Object,
     value: {},
   },
-  /** 是否禁用整个表单 */
-  disabled: {
-    type: null,
-    value: undefined,
-  },
   /** 表单错误信息配置，示例：`{ idcard: '请输入正确的身份证号码', max: '字符长度不能超过 ${max}' }` */
   errorMessage: {
     type: Object,
@@ -35,11 +30,6 @@ const props: TdFormProps = {
     type: null,
     value: '81px',
   },
-  /** 是否整个表单只读 */
-  readonly: {
-    type: null,
-    value: undefined,
-  },
   /** 是否显示必填符号（*），默认显示 */
   requiredMark: {
     type: null,
@@ -48,6 +38,7 @@ const props: TdFormProps = {
   /** 表单必填符号（*）显示位置 */
   requiredMarkPosition: {
     type: String,
+    value: 'left',
   },
   /** 重置表单的方式，值为 empty 表示重置表单为空，值为 initial 表示重置表单数据为初始值 */
   resetType: {

@@ -1,134 +1,125 @@
 @import '../common/style/base.less';
 
 /* Less 支持测试 - 监听功能验证 */
-@form-item: ~'@{prefix}-form-item';
+@form-item: ~'@{prefix}-form__item';
 @form-item-horizontal-padding: var(--td-form-item-horizontal-padding, 32rpx);
 @form-item-vertical-padding: var(--td-form-item-vertical-padding, 32rpx);
-@form-item-label-width: var(--td-form-item-label-width, 160rpx);
-@form-item-justify-content: var(--td-form-item-justify-content, space-between);
+@form-item-border-color: var(--td-form-item-border-color, @component-stroke);
+@form-item-border-left-space: var(--td-form-item-border-left-space, @form-item-vertical-padding);
+@form-item-border-right-space: var(--td-form-item-border-right-space, 0);
 .@{form-item} {
-  position: relative;
   display: flex;
-  align-items: center;
-  justify-content: @form-item-justify-content;
-  width: 100%;
-  padding: @form-item-horizontal-padding @form-item-vertical-padding;
-  background-color: #ffffff;
-  --td-input-vertical-padding: 0rpx;
-  --td-textarea-vertical-padding: 0rpx;
-  --td-textarea-horizontal-padding: 0rpx;
   box-sizing: border-box;
-  &--top {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+  padding: @form-item-vertical-padding @form-item-horizontal-padding;
+  position: relative;
 
-    .@{form-item}__controls {
-      margin-top: 16rpx;
-    }
-  }
+  // 覆盖 slot 内子组件的 padding
+  --td-input-vertical-padding: 0rpx;
+  --td-textarea-padding: 0rpx;
 
-  &--bordered::after {
-    .hairline-bottom(@border-color, 1px);
-    transform-origin: bottom;
-    left: @form-item-horizontal-padding;
-    right: 0;
-  }
+  &:not(:last-child)::after {
+    .hairline-bottom(@form-item-border-color);
 
-  &--error {
-    align-items: flex-start;
-
-    .@{form-item}__error {
-      font-size: @font-size-s;
-      color: @error-color;
-    }
-  }
-
-  &--success {
-    .@{form-item}__success {
-      color: @success-color;
-    }
-  }
-
-  &__label {
-    position: relative;
-    display: flex;
-    align-items: center;
-    width: @form-item-label-width;
-    min-height: 48rpx;
-    margin-right: 16rpx;
-    font-size: @font-size-m;
-
-    color: @text-color-primary;
-    line-height: 1.5;
-
-    &--required {
-      color: @error-color;
-      margin-right: 4rpx;
-    }
-
-    &--colon {
-      margin-left: 4rpx;
-    }
-
-    &--left {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-    }
-
-    &--right {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
-
-    &--top {
-      position: relative;
-      margin-right: 0;
-      width: 100%;
-    }
+    left: @form-item-border-left-space;
+    right: @form-item-border-right-space;
   }
 
   &__controls {
     flex: 1;
-    width: 100%;
-
-    text-align: left;
-
-    &-content {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      min-height: 48rpx;
-    }
   }
 
-  &__error {
-    margin-top: 8rpx;
-    font-size: @font-size-s;
-    line-height: 1.5;
-
-    &--error {
-      color: @error-color;
-    }
-
-    &--warning {
-      color: @warning-color;
-    }
+  &__controls-row {
+    display: flex;
+    align-items: center;
   }
 
-  &__success {
-    margin-top: 4rpx;
-    font-size: @font-size-s;
-    color: @success-color;
-    line-height: 1.5;
+  &__controls-content {
+    flex: 1;
+    min-width: 0;
   }
 
   &__arrow {
+    flex-shrink: 0;
     display: flex;
     align-items: center;
     margin-left: 8rpx;
-    color: @text-color-placeholder;
+  }
+
+  &-help,
+  &-extra {
+    display: flex;
+    font-size: 24rpx;
+    margin: 0;
+    width: 100%;
+    height: auto;
+    min-height: 40rpx;
+    margin-top: 8rpx;
+  }
+
+  &-help {
+    color: @text-color-disabled;
+  }
+
+  &-extra--error {
+    color: @error-color-6;
+  }
+
+  &-extra--warning {
+    color: @warning-color-5;
+  }
+
+  &-extra--success {
+    color: @success-color-5;
+  }
+
+  &-wrap {
+    width: 100%;
+  }
+
+  &--top {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    padding-right: 32rpx;
+    vertical-align: middle;
+    line-height: 48rpx;
+    color: @text-color-primary;
+    box-sizing: border-box;
+    word-break: break-all;
+
+    &--top {
+      padding-bottom: 16rpx;
+    }
+
+    &--left {
+      text-align: left;
+    }
+
+    &--right {
+      text-align: right;
+    }
+
+    &--required:not(.@{form-item}__label--required-right) {
+      label::before {
+        display: inline;
+        margin-right: calc(@spacer / 2);
+        color: @error-color-6;
+        content: '*';
+      }
+    }
+
+    &--required-right {
+      label::after {
+        display: inline;
+        margin-left: calc(@spacer / 2);
+        color: @error-color-6;
+        content: '*';
+      }
+    }
+    &--colon {
+      margin: 0 4rpx;
+    }
   }
 }

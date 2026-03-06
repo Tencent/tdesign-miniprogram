@@ -1,198 +1,114 @@
-// 验证结果接口
 interface ValidateResult {
   result: boolean;
   message?: string;
   type?: string;
+  [key: string]: any;
 }
 
-// 工具函数：安全获取rule属性的实际值
-function getRuleValue(field: any, key?: string): any {
-  if (field && typeof field === 'object' && 'type' in field) {
-    // 针对type字段，过滤掉'error'和'warning'
-    if (key === 'type') {
-      const { value } = field;
-      if (value === 'error' || value === 'warning') {
-        return undefined;
-      }
-      return value;
-    }
-    return field.value;
-  }
-  // type字段只允许string
-  if (key === 'type') {
-    if (field === 'error' || field === 'warning') {
-      return undefined;
-    }
-  }
-  return field;
-}
-
-// 验证状态枚举
 export const ValidateStatus = {
   TO_BE_VALIDATED: 0,
   SUCCESS: 1,
   FAIL: 2,
 };
 
-// 执行单个验证规则
-async function executeRule(value: any, rule: any): Promise<ValidateResult> {
-  const result: ValidateResult = {
-    result: true,
-  };
-
-  // 必填验证
-  const required = getRuleValue(rule.required);
-  if (required && (value === undefined || value === null || value === '' || value.length === 0)) {
-    result.result = false;
-    result.message = getRuleValue(rule.message) || '此字段为必填项';
-    result.type = 'error';
-    return result;
-  }
-
-  // 如果值为空且不是必填，则跳过其他验证
-  if (value === undefined || value === null || value === '' || value.length === 0) {
-    return result;
-  }
-
-  // 列表最小值验证
-  const min = getRuleValue(rule.min);
-  if (min !== undefined) {
-    const val = Array.isArray(value) ? value.length : Number(value);
-    if (val < Number(min)) {
-      result.result = false;
-      result.message = getRuleValue(rule.message) || `不能小于 ${min}`;
-      result.type = 'error';
-      return result;
-    }
-  }
-
-  // 列表最大值验证
-  const max = getRuleValue(rule.max);
-  if (max !== undefined) {
-    const val = Array.isArray(value) ? value.length : Number(value);
-    if (val > Number(max)) {
-      result.result = false;
-      result.message = getRuleValue(rule.message) || `不能大于 ${max}`;
-      result.type = 'error';
-      return result;
-    }
-  }
-  // 字符串最大长度验证
-  const maxLength = getRuleValue(rule.maxLength);
-  if (maxLength !== undefined) {
-    const len = String(value).length;
-    if (len > Number(maxLength)) {
-      result.result = false;
-      result.message = getRuleValue(rule.message) || `长度不能超过 ${maxLength}`;
-      result.type = 'error';
-      return result;
-    }
-  }
-
-  // 字符串最小长度验证
-  const minLength = getRuleValue(rule.minLength);
-  if (minLength !== undefined) {
-    const len = String(value).length;
-    if (len < Number(minLength)) {
-      result.result = false;
-      result.message = getRuleValue(rule.message) || `长度不能少于 ${minLength}`;
-      result.type = 'error';
-      return result;
-    }
-  }
-
-  // 固定长度验证
-  const len = getRuleValue(rule.len);
-  if (len !== undefined) {
-    const strValue = String(value);
-    if (strValue.length !== Number(len)) {
-      result.result = false;
-      result.message = getRuleValue(rule.message) || `长度必须为 ${len}`;
-      result.type = 'error';
-      return result;
-    }
-  }
-
-  // 正则验证
-  const pattern = getRuleValue(rule.pattern);
-  if (pattern) {
-    let regex;
-    if (pattern instanceof RegExp) {
-      regex = pattern;
-    } else if (typeof pattern === 'string') {
-      regex = new RegExp(pattern);
-    } else if (pattern && typeof pattern === 'object' && 'test' in pattern) {
-      regex = pattern;
-    } else {
-      result.result = false;
-      result.message = getRuleValue(rule.message) || '格式不正确';
-      result.type = 'error';
-      return result;
-    }
-    if (!regex.test(String(value))) {
-      result.result = false;
-      result.message = getRuleValue(rule.message) || '格式不正确';
-      result.type = 'error';
-      return result;
-    }
-  }
-
-  // 类型验证
-  const type = getRuleValue(rule.type, 'type');
-  if (typeof type === 'string') {
-    let isValid = true;
-    if (type === 'email') {
-      isValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value));
-      if (!isValid) {
-        result.result = false;
-        result.message = getRuleValue(rule.message) || `${type} 格式不正确`;
-        result.type = 'error';
-        return result;
-      }
-    } else if (type === 'url') {
-      try {
-        const url = new URL(String(value));
-        isValid = !!url;
-      } catch (err) {
-        isValid = false;
-      }
-      if (!isValid) {
-        result.result = false;
-        result.message = getRuleValue(rule.message) || `${type} 格式不正确`;
-        result.type = 'error';
-        return result;
-      }
-    } else if (type === 'number') {
-      isValid = !Number.isNaN(Number(value));
-      if (!isValid) {
-        result.result = false;
-        result.message = getRuleValue(rule.message) || `${type} 格式不正确`;
-        result.type = 'error';
-        return result;
-      }
-    }
-  }
-  // 自定义验证
-  const validator = getRuleValue(rule.validator);
-  if (validator) {
-    const validateResult = await validator(value);
-    if (!validateResult) {
-      result.result = false;
-      result.message = getRuleValue(rule.message) || '验证失败';
-      result.type = 'error';
-      return result;
-    }
-  }
-  return result;
+export function isEmpty(value: any): boolean {
+  if (value === undefined || value === null || value === '') return true;
+  if (Array.isArray(value) && value.length === 0) return true;
+  return false;
 }
 
-// 验证函数
-export async function validate(value: any, rules: any[]): Promise<ValidateResult[]> {
-  const results: ValidateResult[] = [];
+export function getRuleValue(field: any): any {
+  if (field && typeof field === 'object' && 'value' in field) {
+    return field.value;
+  }
+  return field;
+}
 
-  const promises = rules.map((rule) => executeRule(value, rule));
-  const ruleResults = await Promise.all(promises);
-  results.push(...ruleResults);
+export function getResultType(rule: any): string {
+  const t = rule.type;
+  if (t === 'warning') return 'warning';
+  if (t && typeof t === 'object' && 'value' in t && t.value === 'warning') return 'warning';
+  return 'error';
+}
 
-  return results;
+function fail(rule: any, resultType: string): ValidateResult {
+  return { ...rule, result: false, message: getRuleValue(rule.message) || '', type: resultType };
+}
+
+export function getCharLength(str: string): number {
+  let length = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    const code = str.charCodeAt(i);
+    const isCJK =
+      (code >= 0x4e00 && code <= 0x9fff) ||
+      (code >= 0x3400 && code <= 0x4dbf) ||
+      (code >= 0xf900 && code <= 0xfaff) ||
+      (code >= 0xff00 && code <= 0xffef);
+    length += isCJK ? 2 : 1;
+  }
+  return length;
+}
+
+function getComparableLength(value: any): number {
+  if (typeof value === 'number') return value;
+  if (Array.isArray(value)) return value.length;
+  return getCharLength(String(value));
+}
+
+function toRegExp(pattern: any): RegExp | null {
+  if (pattern instanceof RegExp) return pattern;
+  if (typeof pattern === 'string') return new RegExp(pattern);
+  if (pattern && typeof pattern === 'object' && 'test' in pattern) return pattern;
+  return null;
+}
+
+type ValidateFn = (value: any, ruleValue: any) => boolean;
+
+const VALIDATE_MAP: Record<string, ValidateFn> = {
+  required: (value) => !isEmpty(value),
+  whitespace: (value) => !(typeof value === 'string' && value.trim() === ''),
+  boolean: (value) => typeof value === 'boolean',
+  number: (value) => !Number.isNaN(Number(value)),
+  email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value)),
+  url: (value) => /^https?:\/\/[^\s]+$/.test(String(value)),
+  date: (value) => !Number.isNaN(new Date(value).getTime()),
+  idcard: (value) => /^(\d{18}|\d{15}|\d{17}[xX])$/.test(String(value)),
+  telnumber: (value) => /^1[3-9]\d{9}$/.test(String(value)),
+  enum: (value, list) => !Array.isArray(list) || list.includes(value),
+  min: (value, limit) => getComparableLength(value) >= Number(limit),
+  max: (value, limit) => getComparableLength(value) <= Number(limit),
+  len: (value, length) => getCharLength(String(value)) === Number(length),
+  pattern: (value, pat) => {
+    const regex = toRegExp(pat);
+    return regex ? regex.test(String(value)) : false;
+  },
+};
+
+export const RULE_KEYS = [...Object.keys(VALIDATE_MAP), 'validator'];
+
+export async function executeRule(value: any, rule: any, context?: any): Promise<ValidateResult> {
+  const resultType = getResultType(rule);
+
+  if (getRuleValue(rule.required) && isEmpty(value)) return fail(rule, resultType);
+  if (isEmpty(value)) return { result: true };
+
+  const keys = Object.keys(rule);
+  for (let i = 0; i < keys.length; i += 1) {
+    const key = keys[i];
+    const validateFn = VALIDATE_MAP[key];
+    const ruleValue = getRuleValue(rule[key]);
+    if (validateFn && ruleValue !== undefined && ruleValue !== false) {
+      const options = ruleValue === true ? undefined : ruleValue;
+      if (!validateFn(value, options)) return fail(rule, resultType);
+    }
+  }
+
+  const validator = getRuleValue(rule.validator);
+  if (validator && !(await validator(value, context))) return fail(rule, resultType);
+
+  return { result: true };
+}
+
+export async function validateRules(value: any, rules: any[], context?: any): Promise<ValidateResult[]> {
+  return Promise.all(rules.map((rule) => executeRule(value, rule, context)));
 }

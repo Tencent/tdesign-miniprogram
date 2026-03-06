@@ -91,13 +91,18 @@ export default class Form extends SuperComponent {
 
     // 验证表单
     async validate() {
-      const { children } = this.data;
-      const { data } = this.properties;
-      const validatePromises = children.map((child) => child.validate(data, 'all', this.properties.showErrorMessage));
+      const { children, formData } = this.data;
+      const validatePromises = children.map((child) =>
+        child.validate(formData, 'all', this.properties.showErrorMessage),
+      );
 
       try {
         const results = await Promise.all(validatePromises);
         const validateResult = this.formatValidateResult(results);
+
+        if (validateResult !== true) {
+          this.scrollToError(validateResult);
+        }
 
         this.triggerEvent('validate', {
           validateResult,
@@ -107,6 +112,21 @@ export default class Form extends SuperComponent {
       } catch (error) {
         return false;
       }
+    },
+
+    // 滚动到第一个校验不通过的字段
+    scrollToError(validateResult) {
+      const { scrollToFirstError } = this.properties;
+      if (!scrollToFirstError) return;
+
+      const firstErrorKey = Object.keys(validateResult)[0];
+      if (!firstErrorKey) return;
+
+      const { children } = this.data;
+      const errorChild = children.find((child) => child.properties.name === firstErrorKey);
+      if (!errorChild) return;
+
+      errorChild.scrollIntoView(scrollToFirstError);
     },
 
     // 纯净验证（不显示错误信息）

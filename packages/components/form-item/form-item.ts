@@ -1,10 +1,10 @@
 import props from './props';
-import { validate, ValidateStatus } from './form-model';
+import { validateRules, ValidateStatus, RULE_KEYS } from './form-model';
 import config from '../common/config';
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 
 const { prefix } = config;
-const name = `${prefix}-form-item`;
+const name = `${prefix}-form__item`;
 
 @wxComponent()
 export default class FormItem extends SuperComponent {
@@ -77,6 +77,7 @@ export default class FormItem extends SuperComponent {
     ready() {
       this.initFormItem();
     },
+    /* istanbul ignore next */
     detached() {
       if (this.form) {
         this.form.unregisterChild(this.properties.name);
@@ -85,6 +86,22 @@ export default class FormItem extends SuperComponent {
   };
 
   methods = {
+    // 滚动到当前 form-item
+    scrollIntoView(type) {
+      this.createSelectorQuery()
+        .select(`.${this.data.classPrefix}`)
+        .boundingClientRect()
+        .selectViewport()
+        .scrollOffset()
+        .exec((res) => {
+          if (!res[0] || !res[1]) return;
+          wx.pageScrollTo({
+            scrollTop: res[0].top + res[1].scrollTop,
+            duration: type === 'smooth' ? 300 : 0,
+          });
+        });
+    },
+
     // 处理描述信息链接点击事件
     handlePreviewImage(e) {
       const { url } = e.currentTarget.dataset;
@@ -156,7 +173,8 @@ export default class FormItem extends SuperComponent {
       }
 
       const value = data[this.properties.name];
-      const results = await validate(value, filteredRules);
+      const context = { formData: data, name: this.properties.name };
+      const results = await validateRules(value, filteredRules, context);
 
       // 分析验证结果
       const analysis = this.analysisValidateResult(results);
@@ -172,12 +190,32 @@ export default class FormItem extends SuperComponent {
 
     // 纯净验证（不显示错误信息）
     async validateOnly(trigger) {
-      return this.validate(trigger, false);
+      return this.validate(this.getFormData(), trigger, false);
     },
 
     // 分析验证结果
     analysisValidateResult(results) {
-      const errorList = results.filter((item) => item.result !== true);
+      const errorMessage = (this.form && this.form.properties.errorMessage) || {};
+      const labelName = this.properties.label || this.properties.name;
+
+      const errorList = results
+        .filter((item) => item.result !== true)
+        .map((item) => {
+          if (item.message) return item;
+
+          for (let i = 0; i < RULE_KEYS.length; i += 1) {
+            const key = RULE_KEYS[i];
+            if (item[key] !== undefined && errorMessage[key]) {
+              const template = errorMessage[key];
+              item.message = template
+                .replace(/\$\{name\}/g, labelName || '')
+                .replace(/\$\{validate\}/g, String(item[key] === true ? '' : item[key]));
+              break;
+            }
+          }
+          return item;
+        });
+
       const successList = results.filter((item) => item.result === true && item.message && item.type === 'success');
 
       return {
@@ -255,14 +293,14 @@ export default class FormItem extends SuperComponent {
         this.form.updateFormData(name, value);
 
         // 触发change验证
-        this.validate('change');
+        this.validate(this.getFormData(), 'change', this.data.showErrorMessage);
       }
     },
 
     // 处理失焦事件
     onBlur() {
       // 触发blur验证
-      this.validate('blur');
+      this.validate(this.getFormData(), 'blur', this.data.showErrorMessage);
     },
   };
 }
