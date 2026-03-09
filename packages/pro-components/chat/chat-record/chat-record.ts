@@ -176,13 +176,20 @@ export default class ChatRecord extends SuperComponent {
       return new Promise<boolean>((resolve, reject) => {
         wx.getSetting({
           success: (res) => {
-            const authSettings = Object.keys(res.authSetting || {});
-            const recordAuthSetting = authSettings.includes('scope.record');
-            const recordAuthStatus = !!res.authSetting?.['scope.record'];
-            this.setData({ recordAuthSetting, recordAuthStatus });
+            const authSetting = res.authSetting || {};
+            // scope.record key 存在且值为 true：已授权
+            // scope.record key 存在且值为 false：已永久拒绝
+            // scope.record key 不存在：从未申请过
+            const hasRequested = Object.prototype.hasOwnProperty.call(authSetting, 'scope.record');
+            const recordAuthStatus = !!authSetting['scope.record'];
+            // recordAuthSetting：true 表示已授权，false 表示未授权（含从未申请和已拒绝）
+            const recordAuthSetting = recordAuthStatus;
+            // recordAuthDenied：true 表示已永久拒绝（需引导去设置页）
+            const recordAuthDenied = hasRequested && !recordAuthStatus;
+            this.setData({ recordAuthSetting, recordAuthStatus, recordAuthDenied } as any);
             resolve(recordAuthSetting);
           },
-          fail: () => reject(false),
+          fail: () => reject(new Error('getSetting failed')),
         });
       });
     },
@@ -197,28 +204,18 @@ export default class ChatRecord extends SuperComponent {
           },
           fail: (err) => {
             this.setData({ recordAuthSetting: false, recordAuthStatus: false });
-            reject(err);
+            reject(new Error(err?.errMsg || 'authorize failed'));
           },
         });
       });
     },
 
-    openVoiceSetting() {
-      wx.showModal({
-        title: '提示',
-        content: '即将跳转到设置页',
-        success: (res) => {
-          if (res.confirm) {
-            wx.openSetting({
-              success: (r) => {
-                const recordAuthSetting = !!r.authSetting?.['scope.record'];
-                const recordAuthStatus = !!r.authSetting?.['scope.record'];
-                this.setData({ recordAuthSetting, recordAuthStatus });
-              },
-            });
-          }
-        },
-      });
+    // 用户从设置页返回后的回调（button open-type="openSetting" 触发）
+    onOpenSetting(e: any) {
+      const authSetting = e?.detail?.authSetting || {};
+      const recordAuthSetting = !!authSetting['scope.record'];
+      const recordAuthStatus = recordAuthSetting;
+      this.setData({ recordAuthSetting, recordAuthStatus });
     },
 
     // ==================== 录音流程 ====================
@@ -239,11 +236,16 @@ export default class ChatRecord extends SuperComponent {
       try {
         await this.getVoiceAuthSetting();
         if (!this.data.recordAuthSetting) {
+          // 已永久拒绝：button open-type="openSetting" 会自动引导用户去设置页，这里只退出即可
+          if ((this.data as any).recordAuthDenied) {
+            this.setData({ isStarted: false });
+            return;
+          }
+          // 从未申请过：弹出系统授权弹窗
           await this.applyAuth();
-          this.setData({ isStarted: false });
-          return;
         }
       } catch (error) {
+        // 授权弹窗被拒绝，退出
         this.setData({ isStarted: false });
         return;
       }
@@ -461,7 +463,7 @@ export default class ChatRecord extends SuperComponent {
       this.data.updateBubbleClass = this.updateBubbleClass.bind(this);
       this.data.getVoiceAuthSetting = this.getVoiceAuthSetting.bind(this);
       this.data.applyAuth = this.applyAuth.bind(this);
-      this.data.openVoiceSetting = this.openVoiceSetting.bind(this);
+      this.data.onOpenSetting = this.onOpenSetting.bind(this);
       this.data.startRecord = this.startRecord.bind(this);
       this.data.touchmove = this.touchmove.bind(this);
       this.data.stopRecord = this.stopRecord.bind(this);

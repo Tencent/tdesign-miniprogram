@@ -25,11 +25,6 @@ const props: TdChatSenderProps = {
     type: Boolean,
     value: false,
   },
-  /** 输入模式：text-文本输入模式（显示textarea），voice-语音输入模式（显示语音按钮） */
-  inputMode: {
-    type: String,
-    value: 'text',
-  },
   /** 附件文件列表 */
   fileList: {
     type: Array,
@@ -48,7 +43,10 @@ const props: TdChatSenderProps = {
   /** 预设发送区渲染配置，用于灵活配置发送区的上传入口和发送按钮，支持自定义类型、顺序、样式 */
   renderPresets: {
     type: Array,
-    value: [{name: 'upload', presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'], status: ''},{ name: 'send', type: 'icon'}],
+    value: [
+      { name: 'upload', presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'], status: '' },
+      { name: 'send', type: 'icon' },
+    ],
   },
   /** 透传给 Textarea 组件的属性，autosize数值单位为 rpx */
   textareaProps: {
@@ -59,6 +57,11 @@ const props: TdChatSenderProps = {
   value: {
     type: String,
     value: '',
+  },
+  // 输入类型， keyboard-键盘输入，speech-语音输入
+  senderType: {
+    type: String,
+    value: 'keyboard',
   },
   /** 上传面板是否可见 */
   visible: {

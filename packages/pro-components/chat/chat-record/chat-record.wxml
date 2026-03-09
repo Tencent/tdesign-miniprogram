@@ -13,11 +13,16 @@
     </slot>
   </view>
 
-  <view wx:else class="{{classPrefix}}-hook" bindtap="openVoiceSetting">
+  <button
+    wx:else
+    class="{{classPrefix}}-hook {{classPrefix}}-hook--no-auth"
+    open-type="openSetting"
+    bindopensetting="onOpenSetting"
+  >
     <slot name="speechNoAuth">
       <view>请授权麦克风权限</view>
     </slot>
-  </view>
+  </button>
 
   <!-- 遮罩 + 录音面板 -->
   <view class="cover-ng-bar {{classPrefix}}-audio-input {{showMask ? 'show' : ''}}">

@@ -7,12 +7,6 @@
 import { TdChatRecordProps } from './type';
 
 const props: TdChatRecordProps = {
-  /** 是否自动发送（预留扩展） */
-  autoSend: {
-    type: Boolean,
-    value: false,
-  },
-
   /** 识别语言（WechatSI 插件参数） */
   lang: {
     type: String,
@@ -23,6 +17,11 @@ const props: TdChatRecordProps = {
   duration: {
     type: Number,
     value: 60000,
+  },
+  /** 是否自动发送（预留扩展） */
+  autoSend: {
+    type: Boolean,
+    value: false,
   },
 };
 

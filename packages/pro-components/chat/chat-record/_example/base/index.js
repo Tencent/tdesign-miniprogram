@@ -7,6 +7,7 @@ Page({
     placeholder: '请输入内容', // 输入框占位符
     loading: false, // 发送按钮加载状态
     showVoice: false, // 是否显示语音输入组件
+    senderType: 'keyboard',
   },
 
   /**
@@ -31,9 +32,22 @@ Page({
    * 切换语音输入显示状态
    */
   handleVoice() {
+    const showVoice = !this.data.showVoice;
     this.setData({
-      showVoice: !this.data.showVoice,
+      showVoice,
+      senderType: showVoice ? 'speech' : 'keyboard',
     });
+  },
+
+  toggleVoiceIcon() {
+    this.setData({
+      senderType: this.data.senderType === 'keyboard' ? 'speech' : 'keyboard',
+    });
+  },
+
+  // 键盘高度变化
+  onKeyboardHeightChange(e) {
+    console.log('键盘高度变化:', e.detail);
   },
 
   /**

@@ -39,14 +39,6 @@ export interface TdChatSenderProps {
     value?: boolean;
   };
   /**
-   * 输入模式：text-文本输入模式（显示textarea），voice-语音输入模式（显示语音按钮）
-   * @default text
-   */
-  inputMode?: {
-    type: StringConstructor;
-    value?: 'text' | 'voice';
-  };
-  /**
    * 附件文件列表
    * @default []
    */
@@ -93,6 +85,10 @@ export interface TdChatSenderProps {
   value?: {
     type: StringConstructor;
     value?: string;
+  };
+  senderType?: {
+    type: StringConstructor;
+    value?: 'keyboard' | 'speech';
   };
   /**
    * 上传面板是否可见
