@@ -26,10 +26,10 @@ export default {
     type: Boolean,
     default: true as TdPickerProps['header'],
   },
-  /** PickerItem 的子项高度，单位 rpx */
+  /** PickerItem 的子项高度，单位 `px` */
   itemHeight: {
     type: Number,
-    default: 80,
+    default: 40,
   },
   /** 用来定义 value / label / icon 在 `options` 中对应的字段别名 */
   keys: {
@@ -62,6 +62,11 @@ export default {
   },
   /** 是否显示。支持语法糖 `v-model:visible` */
   visible: Boolean,
+  /** 可视区域 PickerItem 的子项个数 */
+  visibleItemCount: {
+    type: Number,
+    default: 5,
+  },
   /** 点击取消按钮时触发 */
   onCancel: {
     type: Function,

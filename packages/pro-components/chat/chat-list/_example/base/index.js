@@ -1,6 +1,12 @@
 import Toast from 'tdesign-miniprogram/toast';
 import { getNavigationBarHeight } from '../../../utils/utils';
 
+let uniqueId = 0;
+const getUniqueKey = () => {
+  uniqueId += 1;
+  return `key-${uniqueId}`;
+};
+
 const mockData = `南极的自动提款机并没有一个特定的专属名称，但历史上确实有一台ATM机曾短暂存在于南极的**麦克默多站**（McMurdo Station）。这台ATM由美国**富兰克林国家银行**（Wells Fargo）于1998年安装，主要供驻扎在该站的科研人员使用。不过，由于南极的极端环境和极低的人口密度，这台ATM机并未长期运行，最终被移除。
 
 **背景补充：**
@@ -40,20 +46,23 @@ Component({
         role: 'assistant',
         status: 'complete',
         content: [
-            {
-              type: 'text',
-              data: '它叫 McMurdo Station ATM，是美国富国银行安装在南极洲最大科学中心麦克默多站的一台自动提款机。',
-            },
-          ],
+          {
+            type: 'text',
+            data: '它叫 McMurdo Station ATM，是美国富国银行安装在南极洲最大科学中心麦克默多站的一台自动提款机。',
+          },
+        ],
+        chatId: getUniqueKey(),
+        comment: '',
       },
       {
-          role: 'user',
-          content: [
-            {
-              type: 'text',
-              data: '牛顿第一定律是否适用于所有参考系？',
-            },
-          ],
+        role: 'user',
+        content: [
+          {
+            type: 'text',
+            data: '牛顿第一定律是否适用于所有参考系？',
+          },
+        ],
+        chatId: getUniqueKey(),
       },
     ],
     value: '', // 输入框的值
@@ -62,6 +71,8 @@ Component({
     inputStyle: '', // 输入框样式
     contentHeight: '100vh', // 内容高度
     animation: 'dots',
+    activePopoverId: '', // 当前打开悬浮actionbar的chatId
+    longPressPosition: null, // 长按位置对象
   },
 
   methods: {
@@ -89,6 +100,7 @@ Component({
             data: value.trim(),
           },
         ],
+        chatId: getUniqueKey(),
       };
 
       // 将用户消息插入到chatList的开头（因为reverse为true，所以用unshift）
@@ -122,7 +134,7 @@ Component({
 
     // 模拟助手回复
     simulateAssistantReply() {
-      this.setData({ loading: true});
+      this.setData({ loading: true });
       // 请求中
       const assistantMessage = {
         role: 'assistant',
@@ -134,6 +146,8 @@ Component({
         ],
         avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
         status: 'pending',
+        chatId: getUniqueKey(),
+        comment: '',
       };
       this.setData({
         chatList: [assistantMessage, ...this.data.chatList],
@@ -141,15 +155,15 @@ Component({
       const that = this;
       wx.nextTick(() => {
         fetchStream(mockData, {
-      success(result) {
-        // 生文中
-        that.data.chatList[0].status = 'streaming';
-        if (!that.data.loading) return;
-        that.data.chatList[0].content[0].data += result;
-        that.setData({
-          chatList: that.data.chatList,
-        });
-      },
+          success(result) {
+            // 生文中
+            that.data.chatList[0].status = 'streaming';
+            if (!that.data.loading) return;
+            that.data.chatList[0].content[0].data += result;
+            that.setData({
+              chatList: that.data.chatList,
+            });
+          },
           complete() {
             that.data.chatList[0].status = 'complete';
             that.setData({
@@ -163,7 +177,7 @@ Component({
       });
     },
     handleAction(e) {
-      const { name, active, data } = e.detail;
+      const { name, active, data, chatId } = e.detail;
 
       let message = '';
       switch (name) {
@@ -193,6 +207,41 @@ Component({
         message,
         theme: 'success',
       });
+
+      if (name === 'good' || name === 'bad') {
+        this.data.chatList.forEach((item) => {
+          if (item.chatId === chatId) {
+            item.comment = active ? name : '';
+          }
+        });
+        this.setData({
+          chatList: this.data.chatList,
+        });
+      }
+    },
+    showPopover(e) {
+      const { id, longPressPosition } = e.detail;
+
+      let role = '';
+      this.data.chatList.forEach((item) => {
+        if (item.chatId === id) {
+          role = item.role;
+        }
+      });
+
+      // 仅当 role 为 user 时才显示 popover
+      if (role !== 'user') {
+        return;
+      }
+
+      this.setData({
+        activePopoverId: id,
+        longPressPosition,
+      });
+    },
+    handlePopoverAction(e) {
+      e.detail.chatId = this.data.activePopoverId;
+      this.handleAction(e);
     },
   },
   lifetimes: {

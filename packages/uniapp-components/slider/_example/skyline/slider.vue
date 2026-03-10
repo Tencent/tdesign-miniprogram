@@ -1,12 +1,9 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="block"
+    <t-demo-navbar
+      custom-class="block"
       title="Slider"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -23,15 +20,15 @@
           title="01 组件类型"
           desc="单游标滑块"
         >
-          <baseDemo />
+          <base-demo />
         </t-demo>
 
         <t-demo desc="双游标滑块">
-          <range />
+          <range-demo />
         </t-demo>
 
         <t-demo desc="带数值滑动选择器">
-          <labelDemo />
+          <label-demo />
         </t-demo>
         <!--
       <t-demo desc="起始非零滑动选择器">
@@ -39,21 +36,21 @@
       </t-demo> -->
 
         <t-demo desc="带刻度滑动选择器">
-          <step />
+          <step-demo />
         </t-demo>
 
         <t-demo
           title="02 组件状态"
           desc="滑块禁用状态"
         >
-          <disabled />
+          <disabled-demo />
         </t-demo>
 
         <t-demo
           title="03 特殊样式"
           desc="胶囊型滑块"
         >
-          <capsule />
+          <capsule-demo />
         </t-demo>
 
         <!-- skylne模式下，e.changedTouches返回的坐标为0 -->
@@ -66,25 +63,21 @@
 </template>
 
 <script>
+import BaseDemo from '../base/index.vue';
+import LabelDemo from '../label/index.vue';
+import StepDemo from '../step/index.vue';
+import RangeDemo from '../range/index.vue';
+import DisabledDemo from '../disabled/index.vue';
+import CapsuleDemo from '../capsule/index.vue';
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import labelDemo from '../label/index.vue';
-import step from '../step/index.vue';
-import range from '../range/index.vue';
-import disabled from '../disabled/index.vue';
-import capsule from '../capsule/index.vue';
-// import verticalDemo from '../vertical/index.vue';
 export default {
   components: {
-    tNavbar,
-    baseDemo,
-    labelDemo,
-    step,
-    range,
-    disabled,
-    capsule,
-    // verticalDemo,
+    BaseDemo,
+    LabelDemo,
+    StepDemo,
+    RangeDemo,
+    DisabledDemo,
+    CapsuleDemo,
   },
   data() {
     return {};

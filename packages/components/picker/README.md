@@ -66,7 +66,7 @@ using-custom-navbar | Boolean | false | 是否使用了自定义导航栏 | N
 value | Array | - | 选中值。TS 类型：`Array<PickerValue>` `type PickerValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/picker/type.ts) | N
 default-value | Array | undefined | 选中值。非受控属性。TS 类型：`Array<PickerValue>` `type PickerValue = string \| number`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/picker/type.ts) | N
 visible | Boolean | false | 是否显示 | N
-visible-item-count | Number | 5 | 可视区域 PickerItem 的子项个数 | N
+visible-item-count | Number | 5 | `1.11.2`。可视区域 PickerItem 的子项个数 | N
 
 ### Picker Events
 

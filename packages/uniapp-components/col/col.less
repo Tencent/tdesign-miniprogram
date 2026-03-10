@@ -1,12 +1,9 @@
 @import '../common/style/base.less';
 
 .@{prefix}-col {
+  display: block;
   box-sizing: border-box;
   min-height: 1px;
-
-  // 适配 qq 小程序等
-  // display: block;
-  float: left;
 }
 
 .col-generate(@n, @i: 1) when(@i <= @n) {

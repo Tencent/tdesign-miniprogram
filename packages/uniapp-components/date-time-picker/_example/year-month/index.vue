@@ -12,13 +12,14 @@
 
     <!-- 年月 -->
     <t-date-time-picker
-      v-model:visible="monthVisible"
+      :visible="monthVisible"
       title="选择日期"
       mode="month"
       :value="month"
       format="YYYY-MM"
       :start="start"
       :end="end"
+      @update:visible="monthVisible = $event"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"
@@ -27,12 +28,12 @@
 </template>
 
 <script>
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tDateTimePicker from 'tdesign-uniapp/date-time-picker/date-time-picker.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TDateTimePicker from '@tdesign/uniapp/date-time-picker/date-time-picker.vue';
 export default {
   components: {
-    tCell,
-    tDateTimePicker,
+    TCell,
+    TDateTimePicker,
   },
   data() {
     return {

@@ -4,12 +4,13 @@
       class="chat-box"
       :style="'height: ' + contentHeight + ';'"
     >
-      <TChatList>
+      <t-chat-list>
         <block
           v-for="(item, chatIndex) in chatList"
           :key="item.key"
         >
-          <TChatMessage
+          <t-chat-message
+            :chat-id="item.key"
             :avatar="item.avatar || ''"
             :name="item.name || ''"
             :datetime="item.datetime || ''"
@@ -17,19 +18,24 @@
             :role="item.message.role"
             :chat-content-props="chatContentProps"
             :placement="item.message.role === 'user' ? 'right' : 'left'"
+            @message-longpress="showPopover"
           >
             <template #actionbar>
-              <TChatActionbar
-                v-if="chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'"
+              <t-chat-actionbar
+                v-if="
+                  chatIndex !== chatList.length - 1 &&
+                    item.message.status === 'complete' &&
+                    item.message.role === 'assistant'
+                "
                 :action-bar="customActionBar"
                 @actions="handleAction"
               />
             </template>
-          </TChatMessage>
+          </t-chat-message>
         </block>
         <template #footer>
-          <TChatSender
-            v-model:visible="visible"
+          <t-chat-sender
+            :visible="visible"
             :value="value"
             :loading="loading"
             :disabled="disabled"
@@ -37,6 +43,7 @@
             :attachments-props="attachmentsProps"
             :render-presets="renderPresets"
             :auto-rise-with-keyboard="true"
+            @update:visible="visible = $event"
             @send="onSend"
             @stop="onStop"
             @focus="onFocus"
@@ -46,19 +53,27 @@
             @fileChange="onFileChange"
           />
         </template>
-      </TChatList>
+      </t-chat-list>
+      <!-- 长按弹出操作栏 -->
+      <t-chat-actionbar
+        ref="popoverActionbar"
+        class="popover-actionbar"
+        placement="longpress"
+        :long-press-position="longPressPosition"
+        @actions="handlePopoverAction"
+      />
     </view>
-    <TToast ref="t-toast" />
+    <t-toast ref="t-toast" />
   </view>
 </template>
 
 <script>
-import TChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
-import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
-import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
-import TToast from 'tdesign-uniapp/toast/toast.vue';
-import Toast from 'tdesign-uniapp/toast';
+import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
+import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
+import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
+import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
+import Toast from '@tdesign/uniapp/toast/index';
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;
@@ -67,8 +82,7 @@ const getUniqueKey = () => {
   return `key-${uniqueId}`;
 };
 
-
-const mockData1 = '🌼宝子们，春天来啦，这些户外郊游打卡地你必须知道👏\n\n🌟郊野公园\n这里有大片的草地和各种花卉，随便一拍都是大片既视感📷。还能放风筝、野餐，享受惬意的春日时光。\n\n🌳植物园\n各种珍稀植物汇聚于此，仿佛置身于绿色的海洋。漫步其中，感受大自然的神奇与美丽。\n\n💧湖边湿地\n湖水清澈，周围生态环境优越。能看到很多候鸟和水生植物，是亲近自然的好去处。\n\n宝子们，赶紧收拾行囊，去这些地方打卡吧😜。\n\n#春天郊游 #打卡目的地 #户外之旅 #春日美景';
+const mockData1 =  '🌼宝子们，春天来啦，这些户外郊游打卡地你必须知道👏\n\n🌟郊野公园\n这里有大片的草地和各种花卉，随便一拍都是大片既视感📷。还能放风筝、野餐，享受惬意的春日时光。\n\n🌳植物园\n各种珍稀植物汇聚于此，仿佛置身于绿色的海洋。漫步其中，感受大自然的神奇与美丽。\n\n💧湖边湿地\n湖水清澈，周围生态环境优越。能看到很多候鸟和水生植物，是亲近自然的好去处。\n\n宝子们，赶紧收拾行囊，去这些地方打卡吧😜。\n\n#春天郊游 #打卡目的地 #户外之旅 #春日美景';
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
@@ -160,6 +174,8 @@ export default {
       contentHeight: '100vh',
 
       chatIndex: 0,
+      activePopoverId: '', // 当前打开悬浮actionbar的chatId
+      longPressPosition: null, // 长按位置对象
     };
   },
   watch: {
@@ -245,7 +261,7 @@ export default {
     // 停止事件处理
     onStop() {
       console.log('停止发送');
-      this.loading =  false;
+      this.loading = false;
     },
 
     // 聚焦事件处理
@@ -341,6 +357,32 @@ export default {
       });
     },
 
+    // 显示长按弹出操作栏
+    showPopover(e) {
+      const { id, longPressPosition } = e;
+
+      let role = '';
+      this.chatList.forEach((item) => {
+        if (item.key === id) {
+          role = item.message.role;
+        }
+      });
+
+      // 仅当 role 为 user 时才显示 popover
+      if (role !== 'user') {
+        return;
+      }
+
+      this.activePopoverId = id;
+      this.longPressPosition = longPressPosition;
+    },
+
+    // 处理弹出操作栏的事件
+    handlePopoverAction(e) {
+      e.chatId = this.activePopoverId;
+      this.handleAction(e);
+    },
+
     onkeyboardheightchange() {
       console.log('占位：函数 onkeyboardheightchange 未声明');
     },
@@ -348,26 +390,24 @@ export default {
 };
 </script>
 <style>
-
 .chat-box {
-    padding-top: 32rpx;
-    box-sizing: border-box;
+  padding-top: 32rpx;
+  box-sizing: border-box;
 }
 
 .t-chat__list {
-    padding: 0 0 0 32rpx;
-    box-sizing: border-box;
+  padding: 0 0 0 32rpx;
+  box-sizing: border-box;
 }
 
 .t-chat-message {
-    padding: 0 32rpx;
+  padding: 0 32rpx;
 }
 
 .preview {
-    padding: 16rpx;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid black;
+  padding: 16rpx;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid black;
 }
-
 </style>

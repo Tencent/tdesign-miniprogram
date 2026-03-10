@@ -12,8 +12,8 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TCollapse from 'tdesign-uniapp/collapse/collapse.vue';
-import TCollapsePanel from 'tdesign-uniapp/collapse-panel/collapse-panel.vue';
+import TCollapse from '@tdesign/uniapp/collapse/collapse.vue';
+import TCollapsePanel from '@tdesign/uniapp/collapse-panel/collapse-panel.vue';
 ```
 
 ### 类型
@@ -49,8 +49,8 @@ disabled | Boolean | - | 是否禁用面板展开/收起操作 | N
 expand-icon | Boolean | true | 展开图标 | N
 expand-mutex | Boolean | false | 每个面板互斥展开，每次只展开一个面板 | N
 theme | String | default | 折叠面板风格。可选项：default/card | N
-value | Array | - | 展开的面板集合。支持语法糖 `v-model:value`。TS 类型：`CollapseValue` `type CollapseValue = Array<string \| number>`。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/collapse/type.ts) | N
-default-value | Array | - | 展开的面板集合。非受控属性。TS 类型：`CollapseValue` `type CollapseValue = Array<string \| number>`。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/collapse/type.ts) | N
+value | Array | - | 展开的面板集合。支持语法糖 `v-model:value`。TS 类型：`CollapseValue` `type CollapseValue = Array<string \| number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/collapse/type.ts) | N
+default-value | Array | - | 展开的面板集合。非受控属性。TS 类型：`CollapseValue` `type CollapseValue = Array<string \| number>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/collapse/type.ts) | N
 
 ### Collapse Events
 
@@ -101,18 +101,19 @@ t-class-header | 头部样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-collapse-border-color | @border-level-1-color | - |
-| --td-collapse-content-font-size | @font-size-base | - |
-| --td-collapse-content-line-height | 1.5 | - |
-| --td-collapse-content-padding | 32rpx | - |
-| --td-collapse-content-text-color | @text-color-primary | - |
-| --td-collapse-extra-font-size | @font-size-m | - |
-| --td-collapse-header-height | auto | - |
-| --td-collapse-header-text-color | @text-color-primary | - |
-| --td-collapse-header-text-disabled-color | @text-color-disabled | - |
-| --td-collapse-horizontal-padding | 32rpx | - |
-| --td-collapse-icon-color | @font-gray-3 | - |
-| --td-collapse-panel-bg-color | @bg-color-container | - |
-| --td-collapse-title-font-size | @font-size-m | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-collapse-border-color | @border-level-1-color | -
+--td-collapse-content-font | @font-body-medium | -
+--td-collapse-content-padding | 32rpx | -
+--td-collapse-content-text-color | @text-color-primary | -
+--td-collapse-disabled-color | @text-color-disabled | -
+--td-collapse-extra-font | @font-body-large | -
+--td-collapse-header-height | auto | -
+--td-collapse-header-text-color | @text-color-primary | -
+--td-collapse-header-text-disabled-color | @collapse-disabled-color | -
+--td-collapse-horizontal-padding | 32rpx | -
+--td-collapse-icon-color | @text-color-placeholder | -
+--td-collapse-left-icon-color | @brand-color | -
+--td-collapse-panel-bg-color | @bg-color-container | -
+--td-collapse-title-font | @font-body-large | -

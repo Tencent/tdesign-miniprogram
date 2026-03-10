@@ -1,12 +1,9 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="block demo-navbar"
+    <t-demo-navbar
+      custom-class="block demo-navbar"
       title="Toast"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -23,25 +20,25 @@
           title="01 组件类型"
           desc="基础提示"
         >
-          <baseDemo />
+          <base-demo />
         </t-demo>
         <t-demo
           title="02 组件状态"
           desc="内置主题"
         >
-          <theme />
+          <theme-demo />
         </t-demo>
         <t-demo
           title="03 显示遮罩"
           desc="弹窗可显示遮罩，禁止滑动和点击"
         >
-          <cover />
+          <cover-demo />
         </t-demo>
         <t-demo
           title="04 手动关闭"
           desc="手动关闭轻提示"
         >
-          <close />
+          <close-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -49,19 +46,18 @@
 </template>
 
 <script>
+import BaseDemo from '../base/index.vue';
+import ThemeDemo from '../theme/index.vue';
+import CoverDemo from '../cover/index.vue';
+import CloseDemo from '../close/index.vue';
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import theme from '../theme/index.vue';
-import cover from '../cover/index.vue';
-import close from '../close/index.vue';
+
 export default {
   components: {
-    tNavbar,
-    baseDemo,
-    theme,
-    cover,
-    close,
+    BaseDemo,
+    ThemeDemo,
+    CoverDemo,
+    CloseDemo,
   },
   data() {
     return {};

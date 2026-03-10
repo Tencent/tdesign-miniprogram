@@ -22,6 +22,8 @@ export default {
   },
   /** 是否展示左侧箭头 */
   leftArrow: Boolean,
+  /** 固定在顶部时是否开启占位 */
+  placeholder: Boolean,
   /** 是否开启顶部安全区适配 */
   safeAreaInsetTop: {
     type: Boolean,
@@ -39,6 +41,11 @@ export default {
   visible: {
     type: Boolean,
     default: true,
+  },
+  /** 导航栏栏层级 */
+  zIndex: {
+    type: Number,
+    default: 1,
   },
   /** navigateBack 执行完成后触发（失败或成功均会触发） */
   onComplete: {

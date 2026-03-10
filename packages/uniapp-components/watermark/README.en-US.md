@@ -47,3 +47,17 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 is-grayscale | Boolean | false | \- | N
 url | String | - | \- | N
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--watermark-left-0 | --watermark-left-0 | -
+--watermark-left-25 | --watermark-left-25 | -
+--watermark-left-50 | --watermark-left-50 | -
+--watermark-left-75 | --watermark-left-75 | -
+--watermark-top-0 | --watermark-top-0 | -
+--watermark-top-25 | --watermark-top-25 | -
+--watermark-top-50 | --watermark-top-50 | -
+--watermark-top-75 | --watermark-top-75 | -

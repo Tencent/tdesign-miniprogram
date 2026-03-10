@@ -116,12 +116,12 @@
   </view>
 </template>
 <script>
-import tButton from '../button/button';
-import tRadio from '../radio/radio';
-import tRadioGroup from '../radio-group/radio-group';
-import tCheckbox from '../checkbox/checkbox';
-import tCheckboxGroup from '../checkbox-group/checkbox-group';
-import tPopup from '../popup/popup';
+import TButton from '../button/button';
+import TRadio from '../radio/radio';
+import TRadioGroup from '../radio-group/radio-group';
+import TCheckbox from '../checkbox/checkbox';
+import TCheckboxGroup from '../checkbox-group/checkbox-group';
+import TPopup from '../popup/popup';
 
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
@@ -156,12 +156,12 @@ export default uniComponent({
   ],
   mixins: [ChildrenMixin(RELATION_MAP.DropdownItem)],
   components: {
-    tButton,
-    tRadio,
-    tRadioGroup,
-    tCheckbox,
-    tCheckboxGroup,
-    tPopup,
+    TButton,
+    TRadio,
+    TRadioGroup,
+    TCheckbox,
+    TCheckboxGroup,
+    TPopup,
   },
   props: {
     ...props,
@@ -386,6 +386,16 @@ export default uniComponent({
 });
 
 </script>
+<style scoped src="./dropdown-item.css"></style>
 <style scoped>
-@import './dropdown-item.css';
+.t-dropdown-item__scroll {
+  width: 100%;
+}
+:deep(.t-dropdown-item__footer-btn) {
+  flex: 1;
+}
+
+:deep(.t-dropdown-item__footer-btn + .t-dropdown-item__footer-btn) {
+  margin-left: 32rpx;
+}
 </style>

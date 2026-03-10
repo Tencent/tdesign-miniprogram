@@ -48,7 +48,7 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import { coalesce } from '../common/utils';
@@ -77,7 +77,7 @@ export default uniComponent({
     `${prefix}-class-plus`,
   ],
   components: {
-    tIcon,
+    TIcon,
   },
   props: {
     ...props,
@@ -218,6 +218,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './stepper.css';
-</style>
+<style scoped src="./stepper.css"></style>

@@ -4,6 +4,12 @@ import { getNavigationBarHeight } from '../../../utils/utils';
 const mockData1 =
   '```jsx\nimport { Form, Input, Button, Message } from \'tdesign-react\';\n\nconst LoginForm = () => {\n  const [loading, setLoading] = useState(false);\n\n  const onSubmit = async ({ validateResult }) => {\n    if (validateResult === true) {\n      setLoading(true);\n      try {\n        // 登录逻辑\n        Message.success(\'登录成功\');\n      } catch {\n        Message.error(\'登录失败\');\n      } finally {\n        setLoading(false);\n      }\n    }\n  };\n\n  return (\n    <Form onSubmit={onSubmit}>\n      <Form.FormItem name="username" label="用户名" rules={[{ required: true }]}>\n        <Input placeholder="请输入用户名" />\n      </Form.FormItem>\n\n      <Form.FormItem name="password" label="密码" rules={[{ required: true }]}>\n        <Input type="password" />\n      </Form.FormItem>\n\n      <Form.FormItem>\n        <Button theme="primary" type="submit" loading={loading} block>\n          登录\n        </Button>\n      </Form.FormItem>\n    </Form>\n  );\n};\n```\n\n';
 
+let uniqueId = 0;
+const getUniqueKey = () => {
+  uniqueId += 1;
+  return `key-${uniqueId}`;
+};
+
 const sleep = (ms) => {
   return new Promise((resolve) => setTimeout(resolve, ms));
 };
@@ -37,6 +43,7 @@ Component({
             },
           ],
         },
+        chatId: getUniqueKey(),
       },
     ],
     value: '使用tdesign组件库实现一个登录表单的例子', // 输入框的值
@@ -44,6 +51,8 @@ Component({
     disabled: false, // 禁用状态
     inputStyle: '', // 动态样式
     contentHeight: '100vh', // 内容高度
+    activePopoverId: '', // 当前打开悬浮actionbar的chatId
+    longPressPosition: null, // 长按位置对象
   },
 
   methods: {
@@ -63,6 +72,7 @@ Component({
             },
           ],
         },
+        chatId: getUniqueKey(),
       };
 
       // 将用户消息插入到chatList的开头（因为reverse为true，所以用unshift）
@@ -103,6 +113,7 @@ Component({
             },
           ],
         },
+        chatId: getUniqueKey(),
       };
 
       this.setData({
@@ -219,6 +230,30 @@ Component({
         message,
         theme: 'success',
       });
+    },
+    showPopover(e) {
+      const { id, longPressPosition } = e.detail;
+
+      let role = '';
+      this.data.chatList.forEach((item) => {
+        if (item.chatId === id) {
+          role = item.message.role;
+        }
+      });
+
+      // 仅当 role 为 user 时才显示 popover
+      if (role !== 'user') {
+        return;
+      }
+
+      this.setData({
+        activePopoverId: id,
+        longPressPosition,
+      });
+    },
+    handlePopoverAction(e) {
+      e.detail.chatId = this.data.activePopoverId;
+      this.handleAction(e);
     },
   },
   lifetimes: {

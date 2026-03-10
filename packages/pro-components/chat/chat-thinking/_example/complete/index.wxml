@@ -1,3 +1,8 @@
 <view class="chat-example-block">
-  <t-chat-thinking content="{{content}}" layout="block" status="{{status}}" bind:collapsedChange="handleCollapsedChange" />
+  <t-chat-thinking
+    content="{{content}}"
+    layout="block"
+    status="{{status}}"
+    bind:collapsedChange="handleCollapsedChange"
+  />
 </view>

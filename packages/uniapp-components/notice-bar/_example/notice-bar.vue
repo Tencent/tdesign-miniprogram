@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="NoticeBar"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="NoticeBar 公告栏"
@@ -19,36 +14,36 @@
         title="01 组件类型"
         desc="纯文字的公告栏"
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
       <t-demo desc="带图标的公告栏">
-        <iconDemo />
+        <icon-demo />
       </t-demo>
       <t-demo desc="带关闭的公告栏">
-        <suffixIcon />
+        <suffix-icon />
       </t-demo>
       <t-demo desc="带入口的公告栏">
-        <event />
+        <event-demo />
       </t-demo>
       <t-demo desc="自定义样式的公告栏">
-        <custom />
+        <custom-demo />
       </t-demo>
       <t-demo desc="自定义内容的公告栏">
-        <customization />
+        <customization-demo />
       </t-demo>
 
       <t-demo
         title="02 组件状态"
         desc="公告栏类型有普通（info）、警示（warning）、成功（success）、错误（error）"
       >
-        <theme />
+        <theme-demo />
       </t-demo>
 
       <t-demo
         title="03 可滚动公告栏"
         desc="可滚动公告栏有水平（horizontal）和垂直（vertical）"
       >
-        <scrolling />
+        <scrolling-demo />
       </t-demo>
     </view>
   </view>
@@ -56,26 +51,24 @@
 
 <script>
 
-// import tNoticeBar from 'tdesign-uniapp/notice-bar/notice-bar.vue';
 import BaseDemo from './base/index.vue';
-import iconDemo from './iconDemo/index.vue';
-import suffixIcon from './suffixIcon/index.vue';
-import event from './event/index.vue';
-import custom from './custom/index.vue';
-import theme from './theme/index.vue';
-import scrolling from './scrolling/index.vue';
-import customization from './customization/index.vue';
+import IconDemo from './iconDemo/index.vue';
+import SuffixIcon from './suffixIcon/index.vue';
+import EventDemo from './event/index.vue';
+import CustomDemo from './custom/index.vue';
+import ThemeDemo from './theme/index.vue';
+import ScrollingDemo from './scrolling/index.vue';
+import CustomizationDemo from './customization/index.vue';
 export default {
   components: {
-    // tNoticeBar,
     BaseDemo,
-    iconDemo,
-    suffixIcon,
-    event,
-    custom,
-    theme,
-    scrolling,
-    customization,
+    IconDemo,
+    SuffixIcon,
+    EventDemo,
+    CustomDemo,
+    ThemeDemo,
+    ScrollingDemo,
+    CustomizationDemo,
   },
   data() {
     return {};

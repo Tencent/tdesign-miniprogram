@@ -8,7 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       'tdesign-uniapp': path.resolve(__dirname, './uni_modules/tdesign-uniapp/components'),
-      'tdesign-uniapp-raw': path.resolve(__dirname, './tdesign-uniapp-raw'),
+      '@tdesign/uniapp': path.resolve(__dirname, './uni_modules/tdesign-uniapp/components'),
     },
   },
 });

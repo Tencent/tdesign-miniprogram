@@ -190,7 +190,7 @@ async function executeRule(value: any, rule: any): Promise<ValidateResult> {
 export async function validate(value: any, rules: any[]): Promise<ValidateResult[]> {
   const results: ValidateResult[] = [];
 
-  const promises = rules.map((rule) => executeRule(value, rule));
+  const promises = rules.map(rule => executeRule(value, rule));
   const ruleResults = await Promise.all(promises);
   results.push(...ruleResults);
 

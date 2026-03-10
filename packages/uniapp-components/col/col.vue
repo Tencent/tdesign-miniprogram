@@ -46,6 +46,11 @@ export default uniComponent({
 });
 
 </script>
+<style scoped src="./col.css"></style>
 <style scoped>
-@import './col.css';
+.t-col {
+  /* 适配 qq 小程序等 */
+  display: unset;
+  float: left;
+}
 </style>

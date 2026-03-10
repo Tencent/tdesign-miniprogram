@@ -1,11 +1,8 @@
 <template>
   <view>
-    <t-navbar
+    <t-demo-navbar
       class="demo-navbar"
       title="ChatLoading"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
     <view class="demo">
       <t-demo-header
@@ -17,23 +14,23 @@
         title="01 组件类型"
         desc="支持多种加载中动效类型，包括 gradient、moving、dots"
       >
-        <baseDemo />
+        <base-demo />
       </t-demo>
       <t-demo desc="带文案描述的类型">
-        <textDemo />
+        <text-demo />
       </t-demo>
     </view>
   </view>
 </template>
 
 <script>
-import baseDemo from './base/index.vue';
-import textDemo from './text/index.vue';
+import BaseDemo from './base/index.vue';
+import TextDemo from './text/index.vue';
 
 export default {
   components: {
-    baseDemo,
-    textDemo,
+    BaseDemo,
+    TextDemo,
   },
   data() {
     return {

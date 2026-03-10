@@ -1,9 +1,10 @@
 <template>
   <view>
     <t-popup
-      v-model:visible="visible"
+      :visible="visible"
       :using-custom-navbar="!isMPAlipay"
       :placement="cur.value || 'top'"
+      @update:visible="visible = $event"
     >
       <view :class="'block block--' + cur.value">
         {{ cur.text }}
@@ -27,15 +28,15 @@
 </template>
 
 <script>
-import tPopup from 'tdesign-uniapp/popup/popup.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
+import TPopup from '@tdesign/uniapp/popup/popup.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tPopup,
-    tButton,
+    TPopup,
+    TButton,
   },
   data() {
     return {

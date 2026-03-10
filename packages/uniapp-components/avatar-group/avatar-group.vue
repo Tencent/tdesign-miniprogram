@@ -26,7 +26,7 @@
   </view>
 </template>
 <script>
-import tAvatar from '../avatar/avatar';
+import TAvatar from '../avatar/avatar';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import avatarGroupProps from './props';
@@ -51,7 +51,7 @@ export default uniComponent({
   ],
   mixins: [ParentMixin(RELATION_MAP.Avatar)],
   components: {
-    tAvatar,
+    TAvatar,
   },
   props: {
     ...avatarGroupProps,
@@ -116,6 +116,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './avatar-group.css';
-</style>
+<style scoped src="./avatar-group.css"></style>

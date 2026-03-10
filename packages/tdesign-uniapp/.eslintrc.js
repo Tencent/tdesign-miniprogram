@@ -12,7 +12,6 @@ module.exports = {
   },
   parserOptions: {
     project: 'tsconfig.eslint.json',
-    // https://stackoverflow.com/questions/77792745/fatalerror-error-ts6046-argument-for-moduleresolution-option-must-be-nod
     tsconfigRootDir: __dirname,
 
     ecmaVersion: 'latest',
@@ -20,5 +19,12 @@ module.exports = {
   },
   rules: {
     'vue/no-v-text-v-html-on-component': 0,
+    'vue/component-name-in-template-casing': [
+      2,
+      'kebab-case',
+      {
+        registeredComponentsOnly: true,
+      },
+    ],
   },
 };

@@ -3,7 +3,7 @@ const path = require('path');
 const less = require('less');
 const postcss = require('postcss');
 const rpxTransform = require('postcss-rpx-transform');
-const PACKAGES_ROOT = path.resolve(__dirname, '../../../../');
+const { PACKAGES_ROOT, PROJECT_ROOT } = require('./config');
 
 const CONFIG = {
   whiteList: [
@@ -13,26 +13,30 @@ const CONFIG = {
     path.resolve(PACKAGES_ROOT, 'uniapp-components/common/style/mixins/'),
     path.resolve(PACKAGES_ROOT, 'uniapp-components/common/style/theme/raw/'),
   ],
+  useRpxTransform: false,
 };
 
 // 配置参数（通常 1rpx=0.5px，设计稿 750px 宽时）
 const options = {
   transformType: 'rpx',
-  rpxUnit: 0.5,      // 转换比例 1rpx = 0.5px
-  rpxPrecision: 6,    // 输出精度
+  rpxUnit: 0.5, // 转换比例 1rpx = 0.5px
+  rpxPrecision: 6, // 输出精度
 };
 
 // 处理流程
-async function processLess(inputFile, rawOutputFile, rawOutputFileInApp) {
+async function processLess(inputFile, rawOutputFile) {
   if (!inputFile.endsWith('.less')) return;
-  if (CONFIG.whiteList.find(item => inputFile.startsWith(item))) {
+  if (CONFIG.whiteList.find((item) => inputFile.startsWith(item))) {
     return;
   }
 
   try {
     let lessCode = fs.readFileSync(inputFile, 'utf8');
 
-    lessCode = lessCode.replace('@import \'tdesign-uniapp/common/style/base.less\'', '@import \'../common/style/base.less\'');
+    lessCode = lessCode.replace(
+      "@import '@tdesign/uniapp/common/style/base.less'",
+      "@import '../common/style/base.less'",
+    );
 
     const cssResult = await less.render(lessCode, {
       // 设置导入路径
@@ -44,15 +48,12 @@ async function processLess(inputFile, rawOutputFile, rawOutputFileInApp) {
       ],
     });
 
-    const postcssResult = await postcss([
-      rpxTransform(options),
-    ]).process(cssResult.css, { from: undefined });
-
+    const postcssResult = await postcss(
+      [CONFIG.useRpxTransform ? rpxTransform(options) : null].filter(Boolean),
+    ).process(cssResult.css, { from: undefined });
 
     const getOutputFile = (rawOutputFile) => {
-      const filename = `${path
-        .basename(rawOutputFile, path.extname(rawOutputFile))
-        .replace(/^_/, '')}.css`;
+      const filename = `${path.basename(rawOutputFile, path.extname(rawOutputFile)).replace(/^_/, '')}.css`;
 
       const outputFile = path.resolve(path.dirname(rawOutputFile), filename);
       console.log('filename', filename);
@@ -60,17 +61,9 @@ async function processLess(inputFile, rawOutputFile, rawOutputFileInApp) {
       return outputFile;
     };
 
-
     const outputFile = getOutputFile(rawOutputFile);
     fs.writeFileSync(outputFile, postcssResult.css);
-    console.log(`✅ 转换完成: ${outputFile}`);
-
-    if (rawOutputFileInApp) {
-      const outputFile = getOutputFile(rawOutputFileInApp);
-
-      fs.writeFileSync(outputFile, postcssResult.css);
-      console.log(`✅ 转换完成: ${outputFile}`);
-    }
+    console.log(`✅ 转换完成: ${path.relative(PROJECT_ROOT, outputFile)}`);
     return true;
   } catch (err) {
     console.error('❌ 处理失败:', err);

@@ -4,30 +4,29 @@
       class="chat-box image-chat"
       :style="'height: ' + contentHeight + ';'"
     >
-      <TChatList>
+      <t-chat-list>
         <block
           v-for="(item, chatIndex) in chatList"
           :key="item.key"
         >
-          <TChatMessage
+          <t-chat-message
+            :chat-id="item.key"
             :avatar="item.avatar || ''"
             :name="item.name || ''"
             :datetime="item.datetime || ''"
             :role="item.message.role"
             :placement="item.message.role === 'user' ? 'right' : 'left'"
+            @message-longpress="showPopover"
           >
             <template #content>
-              <view
-                v-if="item.message.role === 'user'"
-              >
+              <view v-if="item.message.role === 'user'">
                 <block
                   v-for="(contentItem, contentIndex) in item.message.content"
                   :key="contentIndex"
                 >
-                  <TChatContent
+                  <t-chat-content
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
-                    :role="item.message.role"
                   />
                 </block>
               </view>
@@ -39,17 +38,16 @@
                   v-for="(contentItem, contentIndex) in item.message.content"
                   :key="contentIndex"
                 >
-                  <TChatContent
+                  <t-chat-content
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
-                    :role="item.message.role"
                   />
 
                   <view
                     v-else
                     class="attachment-slide"
                   >
-                    <TAttachments
+                    <t-attachments
                       :items="contentItem.data"
                       :in-chat="true"
                       :removable="false"
@@ -59,16 +57,20 @@
               </view>
             </template>
             <template #actionbar>
-              <TChatActionbar
-                v-if="chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'"
+              <t-chat-actionbar
+                v-if="
+                  chatIndex !== chatList.length - 1 &&
+                    item.message.status === 'complete' &&
+                    item.message.role === 'assistant'
+                "
                 placement="end"
                 @actions="handleAction"
               />
             </template>
-          </TChatMessage>
+          </t-chat-message>
         </block>
         <template #footer>
-          <TChatSender
+          <t-chat-sender
             :value="value"
             :loading="loading"
             :disabled="disabled"
@@ -79,21 +81,29 @@
             @focus="onFocus"
           />
         </template>
-      </TChatList>
+      </t-chat-list>
+      <!-- 长按弹出操作栏 -->
+      <t-chat-actionbar
+        ref="popoverActionbar"
+        class="popover-actionbar"
+        placement="longpress"
+        :long-press-position="longPressPosition"
+        @actions="handlePopoverAction"
+      />
     </view>
-    <TToast ref="t-toast" />
+    <t-toast ref="t-toast" />
   </view>
 </template>
 
 <script>
-import TChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
-import TChatContent from 'tdesign-uniapp-chat/chat-content/chat-content.vue';
-import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
-import TAttachments from 'tdesign-uniapp-chat/attachments/attachments.vue';
-import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
-import TToast from 'tdesign-uniapp/toast/toast.vue';
-import Toast from 'tdesign-uniapp/toast';
+import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
+import TChatContent from '@tdesign/uniapp-chat/chat-content/chat-content.vue';
+import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
+import TAttachments from '@tdesign/uniapp-chat/attachments/attachments.vue';
+import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
+import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
+import Toast from '@tdesign/uniapp/toast/index';
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;
@@ -185,6 +195,8 @@ export default {
         type: '',
         data: '',
       },
+      activePopoverId: '', // 当前打开悬浮actionbar的chatId
+      longPressPosition: null, // 长按位置对象
     };
   },
   options: {
@@ -407,54 +419,82 @@ export default {
         theme: 'success',
       });
     },
+
+    // 显示长按弹出操作栏
+    showPopover(e) {
+      const { id, longPressPosition } = e;
+
+      let role = '';
+      this.chatList.forEach((item) => {
+        if (item.key === id) {
+          role = item.message.role;
+        }
+      });
+
+      // 仅当 role 为 user 时才显示 popover
+      if (role !== 'user') {
+        return;
+      }
+
+      this.activePopoverId = id;
+      this.longPressPosition = longPressPosition;
+    },
+
+    // 处理弹出操作栏的事件
+    handlePopoverAction(e) {
+      e.chatId = this.activePopoverId;
+      this.handleAction(e);
+    },
   },
 };
 </script>
 <style>
-
 .chat-box {
-    padding-top: 32rpx;
-    box-sizing: border-box;
+  padding-top: 32rpx;
+  box-sizing: border-box;
 }
 
 .image-chat .t-chat__list {
-    padding: 0 0 0 0;
-    box-sizing: border-box;
+  padding: 0 0 0 0;
+  box-sizing: border-box;
 }
 
 .t-chat-message {
-    padding: 0 32rpx;
-}
-
-.image-chat .t-chat__inner.assistant .t-chat__avatar {
-    padding-left: 32rpx;
+  padding: 0 32rpx;
 }
 
 .image-chat .assistant,
 .image-chat .assistant .t-chat__detail {
-    width: 100%;
+  width: 100%;
+}
+
+.image-chat .assistant .t-chat-content {
+  padding-right: 64rpx !important;
 }
 
 .attachment-slide {
-    height: 274rpx;
-    width: 100%;
+  height: calc(128px + 24rpx);
+  width: 100%;
 }
 
 .attachment-slide .t-attachments {
-    padding-right: 32rpx;
-    padding-top: 24rpx;
-    box-sizing: border-box;
-    position: fixed;
-    z-index: 2;
-    left: 0;
-    right: 0;
+  padding-top: 24rpx;
+  box-sizing: border-box;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  right: 0;
 }
 
 :deep(.attachment-slide .t-attachments .t-attachments__files:first-child) {
-    padding-left: 120rpx;
+  padding-left: 120rpx;
 }
 
 :deep(.attachment-slide .t-attachments .t-attachments__files:last-child) {
-    padding-right: 32rpx;
+  padding-right: 96rpx;
+}
+
+.image-chat .t-chat-message__actionbar {
+  --chat-actionbar-padding: 16rpx 0 0 0 !important;
 }
 </style>

@@ -24,7 +24,7 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version-file: .node-version
 
       - run: pnpm install
 
@@ -47,7 +47,7 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version-file: .node-version
 
       - run: pnpm install
 
@@ -70,7 +70,7 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version-file: .node-version
 
       - run: pnpm install
 
@@ -93,7 +93,7 @@ jobs:
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 18
+          node-version-file: .node-version
 
       - run: pnpm install
 

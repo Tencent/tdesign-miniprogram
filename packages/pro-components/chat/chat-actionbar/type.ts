@@ -59,6 +59,20 @@ export interface TdChatActionbarProps {
    */
   placement?: {
     type: StringConstructor;
-    value?: 'start' | 'end' | 'space-around' | 'space-between';
+    value?: 'start' | 'end' | 'space-around' | 'space-between' | 'longpress';
+  };
+  /**
+   * 【实验】长按触发点的位置信息，用于定位 popover
+   */
+  longPressPosition?: {
+    type: ObjectConstructor;
+    value?: {
+      pageX: number;
+      pageY: number;
+      clientX: number;
+      clientY: number;
+      x: number;
+      y: number;
+    };
   };
 }

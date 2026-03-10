@@ -10,7 +10,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TChatLoading from 'tdesign-uniapp-chat/chat-loading/chat-loading.vue';
+import TChatLoading from '@tdesign/uniapp-chat/chat-loading/chat-loading.vue';
 ```
 
 ### 01 组件类型

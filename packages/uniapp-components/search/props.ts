@@ -50,6 +50,11 @@ export default {
     type: Number,
     default: -1,
   },
+  /** 光标颜色。iOS 下的格式为十六进制颜色值 #000000，安卓下的只支持 default 和 green，Skyline 下无限制 */
+  cursorColor: {
+    type: String,
+    default: '#0052d9',
+  },
   /** 搜索框聚焦时底部与键盘的距离 */
   cursorSpacing: {
     type: Number,

@@ -51,8 +51,8 @@
 </template>
 
 <script>
-import tIcon from '../../../icon/icon';
-import tLoading from '../../../loading/loading';
+import TIcon from '../../../icon/icon';
+import TLoading from '../../../loading/loading';
 import props from './props';
 import { prefix } from '../../../common/config';
 
@@ -64,8 +64,8 @@ export default {
     styleIsolation: 'shared',
   },
   components: {
-    tIcon,
-    tLoading,
+    TIcon,
+    TLoading,
   },
   props: {
     ...props,
@@ -89,6 +89,4 @@ export default {
 };
 </script>
 
-<style lang="less" scoped>
-@import './qrcode-status.css';
-</style>
+<style scoped src="./qrcode-status.css"></style>

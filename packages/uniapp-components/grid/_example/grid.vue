@@ -1,13 +1,8 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="Grid"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="Grid 宫格"
@@ -18,19 +13,19 @@
         title="01 组件类型"
         desc="基础宫格"
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
       <t-demo desc="带说明的宫格">
-        <description />
+        <description-demo />
       </t-demo>
       <t-demo desc="带边框的宫格">
-        <border />
+        <border-demo />
       </t-demo>
       <t-demo desc="带徽标的宫格">
-        <badge />
+        <badge-demo />
       </t-demo>
       <t-demo desc="可滑动的宫格">
-        <scroll />
+        <scroll-demo />
       </t-demo>
       <t-demo
         title="02 组件样式"
@@ -39,10 +34,10 @@
         <icon-grid />
       </t-demo>
       <t-demo desc="通栏宫格">
-        <multiple />
+        <multiple-demo />
       </t-demo>
       <t-demo desc="卡片宫格">
-        <card />
+        <card-demo />
       </t-demo>
     </view>
   </view>
@@ -51,24 +46,24 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import border from './border/index.vue';
-import description from './description/index.vue';
-import badge from './badge/index.vue';
-import scroll from './scroll/index.vue';
-import multiple from './multiple/index.vue';
-import card from './card/index.vue';
-import iconGrid from './icon-grid/index.vue';
+import BorderDemo from './border/index.vue';
+import DescriptionDemo from './description/index.vue';
+import BadgeDemo from './badge/index.vue';
+import ScrollDemo from './scroll/index.vue';
+import MultipleDemo from './multiple/index.vue';
+import CardDemo from './card/index.vue';
+import IconGrid from './icon-grid/index.vue';
 
 export default {
   components: {
     BaseDemo,
-    border,
-    description,
-    badge,
-    scroll,
-    multiple,
-    card,
-    iconGrid,
+    BorderDemo,
+    DescriptionDemo,
+    BadgeDemo,
+    ScrollDemo,
+    MultipleDemo,
+    CardDemo,
+    IconGrid,
   },
   data() {
     return {};

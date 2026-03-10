@@ -12,7 +12,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TImage from 'tdesign-uniapp/image/image.vue';
+import TImage from '@tdesign/uniapp/image/image.vue';
 ```
 
 ### 裁切样式
@@ -58,8 +58,8 @@ width | String / Number | - | 宽度，默认单位为`px` | N
 
 名称 | 参数 | 描述
 -- | -- | --
-error | `(context: { e: ImageEvent })` | 图片加载失败时触发。[通用类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/common.ts)
-load | `(context: { e: ImageEvent })` | 图片加载完成时触发。[通用类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/common.ts)
+error | `(context: { e: ImageEvent })` | 图片加载失败时触发。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts)
+load | `(context: { e: ImageEvent })` | 图片加载完成时触发。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts)
 
 ### Image Slots
 
@@ -78,9 +78,9 @@ t-class-load | 加载样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-image-color | @text-color-placeholder | - |
-| --td-image-loading-bg-color | @bg-color-secondarycontainer | - |
-| --td-image-loading-color | @text-color-placeholder | - |
-| --td-image-round-radius | @radius-default | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-image-color | @text-color-placeholder | -
+--td-image-loading-bg-color | @bg-color-secondarycontainer | -
+--td-image-loading-color | @text-color-placeholder | -
+--td-image-round-radius | @radius-default | -

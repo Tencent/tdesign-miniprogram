@@ -220,8 +220,8 @@
 <script>
 // import chatMarkdownTable from '../chat-markdown-table/chat-markdown-table.vue';
 import chatMarkdownCode from '../chat-markdown-code/chat-markdown-code.vue';
-import { prefix } from 'tdesign-uniapp/common/config';
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
+import { prefix } from '@tdesign/uniapp/common/config';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
 // #ifdef MP
 import { TChatMarkdownNode } from './chat-markdown-node.vue';
 // #endif

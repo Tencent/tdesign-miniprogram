@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Icon"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="Icon 图标"
@@ -16,27 +11,27 @@
         notice="渲染框架支持情况：Skyline、WebView"
       />
       <t-demo title="01 基础组件图标">
-        <baseComp />
+        <base-comp />
       </t-demo>
       <t-demo title="02 自定义组件图标">
-        <custom />
+        <custom-demo />
       </t-demo>
       <t-demo title="03 图片链接">
-        <iconImage />
+        <icon-image />
       </t-demo>
     </view>
   </view>
 </template>
 
 <script>
-import baseComp from './base/index.vue';
-import custom from './custom/index.vue';
-import iconImage from './iconImage/index.vue';
+import BaseComp from './base/index.vue';
+import CustomDemo from './custom/index.vue';
+import IconImage from './iconImage/index.vue';
 export default {
   components: {
-    baseComp,
-    custom,
-    iconImage,
+    BaseComp,
+    CustomDemo,
+    IconImage,
   },
   data() {
     return {};

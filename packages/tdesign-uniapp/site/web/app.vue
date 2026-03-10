@@ -3,13 +3,9 @@
   <td-doc-layout>
     <td-header
       slot="header"
-      platform="mobile"
-      framework="uniapp"
+      framework="miniprogram"
     >
-      <td-doc-search
-        slot="search"
-        ref="tdDocSearch"
-      />
+      <!-- <td-doc-search slot="search" ref="tdDocSearch" /> -->
     </td-header>
     <td-doc-aside
       ref="tdDocAside"
@@ -32,7 +28,7 @@ import packageJson from '../../../tdesign-uniapp/package.json';
 import siteConfig from '../docs.config';
 import { filterVersions, sortDocs } from './utils';
 
-const registryUrl =  'https://service-edbzjd6y-1257786608.hk.apigw.tencentcs.com/release/npm/versions/tdesign-mobile-vue';
+const registryUrl = 'https://service-edbzjd6y-1257786608.hk.apigw.tencentcs.com/release/npm/versions/tdesign-uniapp';
 const currentVersion = packageJson.version.replace(/\./g, '_');
 
 // eslint-disable-next-line light/json-parse-try-catch
@@ -69,7 +65,7 @@ export default defineComponent({
 
   mounted() {
     this.docType = this.$route.meta.docType;
-    this.$refs.tdDocSearch.docsearchInfo = { indexName: 'tdesign_doc_vue_mobile' };
+    // this.$refs.tdDocSearch.docsearchInfo = { indexName: 'tdesign_doc_vue_mobile' };
     this.$refs.tdDocAside.routerList = docsMap[this.$route?.meta?.lang || 'zh'];
     this.$refs.tdDocAside.onchange = ({ detail }) => {
       if (this.$route.path === detail) return;
@@ -104,12 +100,12 @@ export default defineComponent({
             this.version = options[0].value;
           }
 
-          this.$refs.tdSelect.options = options;
+          // this.$refs.tdSelect.options = options;
         });
     },
     initThemeGenerator() {
       const generator = document.createElement('td-theme-generator');
-      generator.setAttribute('device', 'uniapp');
+      generator.setAttribute('device', 'uni-app');
       document.body.appendChild(generator);
     },
     contentLoaded(callback) {

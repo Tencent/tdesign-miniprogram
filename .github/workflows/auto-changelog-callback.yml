@@ -27,5 +27,5 @@ jobs:
         uses: TDesignOteam/flow-pilot-action@develop
         with:
           token: ${{ secrets.TDESIGN_BOT_TOKEN }}
-          packages: 'tdesign-miniprogram,tdesign-uniapp,tdesign-uniapp-chat'
+          packages: 'tdesign-miniprogram,@tdesign/uniapp,@tdesign/uniapp-chat'
           pr_number: ${{ steps.pr.outputs.id }}

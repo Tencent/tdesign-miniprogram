@@ -23,12 +23,7 @@
   user-select: none;
   position: relative;
   margin: 16rpx 0;
-  background-color: @tab-bar-bg-color;
   padding: 0 24rpx;
-
-  &--text-only {
-    font-size: 32rpx;
-  }
 
   &--split {
     & + &::before {
@@ -57,8 +52,11 @@
     color: @tab-bar-color;
 
     &--checked {
-      color: @tab-bar-active-color;
-      font-weight: 600;
+      .@{item}__text,
+      .@{item}__icon {
+        color: @tab-bar-active-color;
+        font-weight: 600;
+      }
     }
 
     &--tag {
@@ -85,10 +83,10 @@
   &__text {
     display: flex;
     align-items: center;
+    font: @font-body-large;
 
     &--small {
-      font-size: 20rpx;
-      line-height: 32rpx;
+      font: @font-body-extraSmall;
     }
   }
 

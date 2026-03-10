@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Popup"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <t-demo-header
       title="Popup 弹出层"
       desc="由其他控件触发，屏幕滑出或弹出一块自定义内容区域。"
@@ -20,7 +15,7 @@
         desc="基础弹出层"
         padding
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
       <t-demo
         title="02 组件示例"
@@ -36,13 +31,13 @@
 
 <script>
 import BaseDemo from './base/index.vue';
-import withTitle from './with-title/index.vue';
-import customClose from './custom-close/index.vue';
+import WithTitle from './with-title/index.vue';
+import CustomClose from './custom-close/index.vue';
 export default {
   components: {
     BaseDemo,
-    withTitle,
-    customClose,
+    WithTitle,
+    CustomClose,
   },
   data() {
     return {

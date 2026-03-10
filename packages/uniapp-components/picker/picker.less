@@ -7,17 +7,13 @@
 
 @picker-cancel-color: var(--td-picker-cancel-color, @text-color-secondary);
 @picker-confirm-color: var(--td-picker-confirm-color, @brand-color);
-@picker-button-font-size: var(--td-picker-button-font-size, 32rpx);
+@picker-button-font: var(--td-picker-button-font, @font-body-large);
 
-@picker-title-font-size: var(--td-picker-title-font-size, 36rpx);
-@picker-title-font-weight: var(--td-picker-title-font-weight, 600);
-@picker-title-line-height: var(--td-picker-title-line-height, 52rpx);
+@picker-title-font: var(--td-picker-title-font, @font-title-large);
 @picker-title-color: var(--td-picker-title-color, @text-color-primary);
 
 @picker-bg-color: var(--td-picker-bg-color, @bg-color-container);
 @picker-mask-color: var(--td-picker-transparent-color);
-@picker-mask-color-top: var(--td-picker-mask-color-top, hsla(0, 0%, 100%, 0.92));
-@picker-mask-color-bottom: var(--td-picker-mask-color-bottom, hsla(0, 0%, 100%, 0.4));
 
 @picker-indicator-bg-color: var(--td-picker-indicator-bg-color, @bg-color-secondarycontainer);
 @picker-indicator-border-radius: var(--td-picker-indicator-border-radius, 12rpx);
@@ -43,9 +39,7 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     color: @picker-title-color;
-    line-height: @picker-title-line-height;
-    font-weight: @picker-title-font-weight;
-    font-size: @picker-title-font-size;
+    font: @picker-title-font;
   }
 
   &__cancel,
@@ -54,7 +48,7 @@
     align-items: center;
     justify-content: center;
     user-select: none;
-    font-size: @picker-button-font-size;
+    font: @picker-button-font;
     height: 100%;
     padding: 0 32rpx;
   }
@@ -100,7 +94,6 @@
     position: absolute;
     left: 32rpx;
     right: 32rpx;
-    top: 144rpx;
     pointer-events: none;
     background-color: @picker-indicator-bg-color;
     border-radius: @picker-indicator-border-radius;

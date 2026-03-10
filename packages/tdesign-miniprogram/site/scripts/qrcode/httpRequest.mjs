@@ -1,33 +1,51 @@
-/** axios封装
- * 请求拦截、响应拦截、错误统一处理
- */
-import axios from 'axios';
+import { URL } from 'url';
 
-// axios.defaults.timeout = 10000; // 超时抛出异常
-// axios.defaults.withCredentials = true;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8'; // post请求头
-axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'; // 默认异步请求
+// 默认请求头配置
+const defaultHeaders = {
+  'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+  'X-Requested-With': 'XMLHttpRequest',
+};
 
-// 请求拦截
-axios.interceptors.request.use(
-  (config) => config,
-  (error) => Promise.error(error),
-);
-// 响应拦截
-axios.interceptors.response.use(
-  (response) => {
-    if (response.status === 200) {
-      return Promise.resolve(response);
+// 处理响应错误
+const handleResponseError = async (res) => {
+  const error = new Error(`HTTP ${res.status}`);
+  error.statusCode = res.status;
+  error.data = await res.text();
+  throw error;
+};
+
+// 处理响应数据
+const handleResponse = async (res, config) => {
+  if (!res.ok) {
+    await handleResponseError(res);
+  }
+
+  if (config?.responseType === 'arraybuffer') {
+    const buffer = await res.arrayBuffer();
+    return Buffer.from(buffer);
+  }
+
+  return res.text();
+};
+
+// 处理 POST 数据
+const processPostData = (parameter) => {
+  if (!parameter) return { data: '', contentType: 'application/x-www-form-urlencoded; charset=UTF-8' };
+
+  if (typeof parameter === 'string') {
+    try {
+      JSON.parse(parameter);
+      return { data: parameter, contentType: 'application/json' };
+    } catch {
+      return { data: parameter, contentType: 'application/x-www-form-urlencoded; charset=UTF-8' };
     }
-    return Promise.reject(response);
-  },
-  // 服务器状态码不是200的情况
-  (error) => {
-    if (error.response.status) {
-      return Promise.reject(error.response);
-    }
-  },
-);
+  }
+
+  return {
+    data: new URLSearchParams(parameter).toString(),
+    contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+  };
+};
 
 /**
  * @description get请求
@@ -35,17 +53,24 @@ axios.interceptors.response.use(
  * @parameter {Object} parameter [请求时携带的参数]
  * @parameter {Object} config [其他配置信息]
  */
-const get = (url, parameter, config) => {
-  return new Promise((resolve, reject) => {
-    axios
-      .get(url, parameter, config)
-      .then((res) => {
-        resolve(res.data);
-      })
-      .catch((err) => {
-        reject(err.data);
-      });
+const get = async (url, parameter, config) => {
+  let requestUrl = url;
+  if (parameter) {
+    const urlObj = new URL(url);
+    const params = new URLSearchParams(parameter);
+    urlObj.search += (urlObj.search ? '&' : '') + params.toString();
+    requestUrl = urlObj.toString();
+  }
+
+  const res = await fetch(requestUrl, {
+    method: 'GET',
+    headers: {
+      ...defaultHeaders,
+      ...(config?.headers || {}),
+    },
   });
+
+  return handleResponse(res, config);
 };
 
 /**
@@ -54,18 +79,22 @@ const get = (url, parameter, config) => {
  * @parameter {Object} parameter [请求时携带的参数]
  * @parameter {Object} config [其他配置信息]
  */
+const post = async (url, parameter, config) => {
+  const { data: postData, contentType } = processPostData(parameter);
 
-const post = (url, parameter, config) => {
-  return new Promise((resolve, reject) => {
-    axios
-      .post(url, parameter, config)
-      .then((res) => {
-        resolve(res.data);
-      })
-      .catch((err) => {
-        reject(err.data);
-      });
+  const headers = {
+    ...defaultHeaders,
+    'Content-Type': contentType,
+    ...(config?.headers || {}),
+  };
+
+  const res = await fetch(url, {
+    method: 'POST',
+    headers,
+    body: postData,
   });
+
+  return handleResponse(res, config);
 };
 
 export { get, post };

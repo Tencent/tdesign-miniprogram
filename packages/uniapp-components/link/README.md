@@ -11,7 +11,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TLink from 'tdesign-uniapp/link/link.vue';
+import TLink from '@tdesign/uniapp/link/link.vue';
 ```
 
 ### 组件类型
@@ -60,7 +60,7 @@ disabled | Boolean | false | 是否为禁用态 | N
 hover | Boolean | - | 是否开启点击反馈 | N
 navigator-props | Object | {} | 与 navigator 原生组件属性保持一致，具体使用参考：[微信开放文档](https://developers.weixin.qq.com/miniprogram/dev/component/navigator.html)。使用时请将形如 `open-type` 风格的属性名改为 `openType` 风格 | N
 prefix-icon | String / Object | - | 前置图标 | N
-size | String | medium | 尺寸。可选项：small/medium/large。TS 类型：`SizeEnum`。[通用类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/common.ts) | N
+size | String | medium | 尺寸。可选项：small/medium/large。TS 类型：`SizeEnum`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts) | N
 status | String | normal | 已废弃。组件状态。可选项：normal/active/disabled | N
 suffix-icon | String / Object | - | 后置图标 | N
 theme | String | default | 组件风格，依次为默认色、品牌色、危险色、警告色、成功色。可选项：default/primary/danger/warning/success | N
@@ -96,20 +96,20 @@ t-class-suffix-icon | 后置图标样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-link-danger-active-color | @error-color-active | - |
-| --td-link-danger-color | @error-color | - |
-| --td-link-danger-disabled-color | @error-color-disabled | - |
-| --td-link-default-active-color | @brand-color-active | - |
-| --td-link-default-color | @text-color-primary | - |
-| --td-link-default-disabled-color | @text-color-disabled | - |
-| --td-link-primary-active-color | @brand-color-active | - |
-| --td-link-primary-color | @brand-color | - |
-| --td-link-primary-disabled-color | @brand-color-disabled | - |
-| --td-link-success-active-color | @success-color-active | - |
-| --td-link-success-color | @success-color | - |
-| --td-link-success-disabled-color | @success-color-disabled | - |
-| --td-link-warning-active-color | @warning-color-active | - |
-| --td-link-warning-color | @warning-color | - |
-| --td-link-warning-disabled-color | @warning-color-disabled | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-link-danger-active-color | @error-color-active | -
+--td-link-danger-color | @error-color | -
+--td-link-danger-disabled-color | @error-color-disabled | -
+--td-link-default-active-color | @brand-color-active | -
+--td-link-default-color | @text-color-primary | -
+--td-link-default-disabled-color | @text-color-disabled | -
+--td-link-primary-active-color | @brand-color-active | -
+--td-link-primary-color | @brand-color | -
+--td-link-primary-disabled-color | @brand-color-disabled | -
+--td-link-success-active-color | @success-color-active | -
+--td-link-success-color | @success-color | -
+--td-link-success-disabled-color | @success-color-disabled | -
+--td-link-warning-active-color | @warning-color-active | -
+--td-link-warning-color | @warning-color | -
+--td-link-warning-disabled-color | @warning-color-disabled | -

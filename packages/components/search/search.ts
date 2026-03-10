@@ -79,7 +79,7 @@ export default class Search extends SuperComponent {
       value,
     });
 
-    this.triggerEvent('change', { value });
+    this.triggerEvent('change', { value, trigger: 'input-change' });
   }
 
   onFocus(e) {
@@ -97,7 +97,7 @@ export default class Search extends SuperComponent {
   handleClear() {
     this.setData({ value: '' });
     this.triggerEvent('clear', { value: '' });
-    this.triggerEvent('change', { value: '' });
+    this.triggerEvent('change', { value: '', trigger: 'clear' });
   }
 
   onConfirm(e) {
@@ -109,7 +109,7 @@ export default class Search extends SuperComponent {
     this.triggerEvent('action-click');
   }
 
-  onSelectResultItem(e) {
+  onSelectOption(e) {
     const { index } = e.currentTarget.dataset;
     const item = this.properties.resultList[index];
     this.setData({
@@ -117,7 +117,6 @@ export default class Search extends SuperComponent {
       isSelected: true,
     });
 
-    this.triggerEvent('change', { value: item });
-    this.triggerEvent('selectresult', { index, item });
+    this.triggerEvent('change', { value: item, trigger: 'option-click' });
   }
 }

@@ -1,23 +1,19 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="PullDownRefresh"
-      left-arrow
     />
-    <!-- #endif -->
-    <baseComp />
+    <base-comp />
   </view>
 </template>
 
 <script>
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseComp from '../base';
+import BaseComp from '../base';
+
 export default {
   components: {
-    tNavbar,
-    baseComp,
+    BaseComp,
   },
   data() {
     return {};

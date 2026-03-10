@@ -21,6 +21,10 @@ export default {
     type: [String, Boolean, Object],
     default: false as TdImageViewerProps['deleteBtn'],
   },
+  /** 透传至 Image 组件 */
+  imageProps: {
+    type: Object,
+  },
   /** 图片数组 */
   images: {
     type: Array,

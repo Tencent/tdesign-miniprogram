@@ -1,10 +1,10 @@
 <template>
   <view
     :class="[classPrefix, classes]"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
   >
     <scroll-view
-      :class="_.cls(classPrefix + '__content', [['reverse', reverse]])"
+      :class="tools.cls(classPrefix + '__content', [['reverse', reverse]])"
       :scroll-y="true"
       :enable-flex="true"
       :enhanced="true"
@@ -50,11 +50,11 @@
 </template>
 <script>
 import ChatMessage from '../chat-message/chat-message.vue';
-import { prefix } from 'tdesign-uniapp/common/config';
+import { prefix } from '@tdesign/uniapp/common/config';
 import props from './props';
 
-import _ from 'tdesign-uniapp/common/utils.wxs';
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
+import tools from '@tdesign/uniapp/common/utils.wxs';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
 
 const name = `${prefix}-chat-list`;
@@ -91,7 +91,7 @@ export default uniComponent({
       listClasses: [],
       startIndex: 0,
       endIndex: 0,
-      _,
+      tools,
     };
   },
 
@@ -118,7 +118,10 @@ export default uniComponent({
       this.scrollViewTop = scrollTop;
     },
     scrollToBottom() {
-      this.setScrollTop();
+      // reverse 为 true 时，滚动到 0 即为底部
+      // reverse 为 false 时，需要滚动到一个很大的值才能到底部
+      const scrollTop = this.reverse ? 0 : 999999;
+      this.setScrollTop(scrollTop);
     },
     onScroll(e) {
       this.$emit('scroll', e);
@@ -165,9 +168,8 @@ export default uniComponent({
 
 });
 </script>
+<style scoped src="./chat-list.css"></style>
 <style scoped>
-@import './chat-list.css';
-
 /* #ifdef H5 || APP-PLUS */
 .t-chat-list__content :deep(.uni-scroll-view-content) {
   display: flex;;

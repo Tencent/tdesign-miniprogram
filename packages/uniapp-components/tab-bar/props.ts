@@ -16,6 +16,8 @@ export default {
     type: Boolean,
     default: true,
   },
+  /** 固定在底部时是否开启占位 */
+  placeholder: Boolean,
   /** 是否开启底部安全区适配 */
   safeAreaInsetBottom: {
     type: Boolean,
@@ -52,9 +54,9 @@ export default {
   defaultValue: {
     type: [String, Number, Array],
   },
-  /** 选中标签切换时触发 */
-  onChange: {
-    type: Function,
-    default: () => ({}),
+  /** 标签栏层级 */
+  zIndex: {
+    type: Number,
+    default: 1,
   },
 };

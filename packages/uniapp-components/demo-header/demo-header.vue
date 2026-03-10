@@ -1,6 +1,6 @@
 <template>
   <div>
-    <TNoticeBar
+    <t-notice-bar
       :visible="noticeVisible"
       :content="notice"
     />

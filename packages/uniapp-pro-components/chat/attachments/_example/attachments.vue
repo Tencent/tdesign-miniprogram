@@ -1,11 +1,8 @@
 <template>
   <view>
-    <t-navbar
+    <t-demo-navbar
       class="demo-navbar"
       title="Attachments"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
     <view class="demo">
       <t-demo-header
@@ -17,36 +14,36 @@
         title="01 组件类型"
         desc="图片类型"
       >
-        <baseDemo />
+        <base-demo />
       </t-demo>
       <t-demo desc="文件类型">
-        <file />
+        <file-demo />
       </t-demo>
       <t-demo
         title="02 组件状态"
         desc="图片类型加载状态"
       >
-        <imageLoading />
+        <image-loading />
       </t-demo>
       <t-demo desc="文件类型加载状态">
-        <fileLoading />
+        <file-loading />
       </t-demo>
     </view>
   </view>
 </template>
 
 <script>
-import baseDemo from './base/index.vue';
-import fileLoading from './file-loading/index.vue';
-import imageLoading from './image-loading/index.vue';
-import file from './file/index.vue';
+import BaseDemo from './base/index.vue';
+import FileLoading from './file-loading/index.vue';
+import ImageLoading from './image-loading/index.vue';
+import FileDemo from './file/index.vue';
 
 export default {
   components: {
-    baseDemo,
-    fileLoading,
-    imageLoading,
-    file,
+    BaseDemo,
+    FileLoading,
+    ImageLoading,
+    FileDemo,
   },
   data() {
     return {};

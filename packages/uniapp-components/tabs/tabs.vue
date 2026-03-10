@@ -132,9 +132,9 @@
   </view>
 </template>
 <script>
-import tSticky from '../sticky/sticky';
-import tBadge from '../badge/badge';
-import tIcon from '../icon/icon';
+import TSticky from '../sticky/sticky';
+import TBadge from '../badge/badge';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import props from './props';
 import { prefix } from '../common/config';
@@ -167,9 +167,9 @@ export default uniComponent({
   ],
   mixins: [touch, ParentMixin(RELATION_MAP.TabPanel)],
   components: {
-    tSticky,
-    tBadge,
-    tIcon,
+    TSticky,
+    TBadge,
+    TIcon,
   },
   props: {
     ...props,
@@ -478,9 +478,8 @@ export default uniComponent({
   },
 });
 </script>
+<style scoped src="./tabs.css"></style>
 <style scoped>
-@import './tabs.css';
-
 /* #ifndef MP-WEIXIN */
 :deep(t-tab-panel) {
   flex-shrink: 0;

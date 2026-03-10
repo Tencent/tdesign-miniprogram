@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Dialog"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="Dialog 对话框"
@@ -20,14 +15,14 @@
         desc="反馈类对话框"
         padding
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
 
       <t-demo
         desc="确认类对话框"
         padding
       >
-        <confirm />
+        <confirm-demo />
       </t-demo>
 
       <t-demo
@@ -48,7 +43,7 @@
         title="02 组件类型"
         padding
       >
-        <status />
+        <status-demo />
       </t-demo>
 
       <t-demo
@@ -56,14 +51,14 @@
         desc="命令调用"
         padding
       >
-        <commandDemo />
+        <command-demo />
       </t-demo>
 
       <t-demo
         desc="自定义按钮"
         padding
       >
-        <buttonDemo />
+        <button-demo />
       </t-demo>
     </view>
   </view>
@@ -72,23 +67,23 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import confirm from './confirm/index.vue';
-import withInput from './with-input/index.vue';
-import withImage from './with-image/index.vue';
-import commandDemo from './command/index.vue';
-import status from './status/index.vue';
-import buttonDemo from './button/index.vue';
+import ConfirmDemo from './confirm/index.vue';
+import WithInput from './with-input/index.vue';
+import WithImage from './with-image/index.vue';
+import CommandDemo from './command/index.vue';
+import StatusDemo from './status/index.vue';
+import ButtonDemo from './button/index.vue';
 
 
 export default {
   components: {
     BaseDemo,
-    confirm,
-    withInput,
-    withImage,
-    commandDemo,
-    status,
-    buttonDemo,
+    ConfirmDemo,
+    WithInput,
+    WithImage,
+    CommandDemo,
+    StatusDemo,
+    ButtonDemo,
   },
   data() {
     return {};

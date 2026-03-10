@@ -1,15 +1,15 @@
 <template>
   <view>
-    <linkDemo />
+    <link-demo />
   </view>
 </template>
 
 <script>
 
-import linkDemo from '../link.vue';
+import LinkDemo from '../link.vue';
 export default {
   components: {
-    linkDemo,
+    LinkDemo,
   },
   data() {
     return {};

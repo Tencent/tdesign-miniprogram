@@ -1,4 +1,4 @@
-import { goBackOrGoHome } from 'tdesign-uniapp/common/route';
+import { goBackOrGoHome } from '@tdesign/uniapp/common/route';
 
 const SHARE_INFO = {
   title: 'TDesign UI',

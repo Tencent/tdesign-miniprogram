@@ -12,7 +12,7 @@
     <view
       :class="classPrefix + '__mask'"
       data-source="overlay"
-      :style="'background-color: ' + backgroundColor"
+      :style="tools._style([backgroundColor && '--td-image-viewer-mask-bg-color: ' + backgroundColor])"
       aria-role="button"
       aria-label="关闭"
       @click="(e) => onClose(e, 'overlay')"
@@ -35,12 +35,17 @@
           >
             <t-image
               v-if="!lazy || shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes)"
-              t-class="t-image--external"
-              :custom-style="(imagesStyle[index] && imagesStyle[index].style) || ''"
-              mode="aspectFit"
-              :src="item"
-              :data-index="index"
+              :t-class="prefix + '-image--external'"
               :class="classPrefix + '__image'"
+              :custom-style="(imagesStyle[index] && imagesStyle[index].style) || ''"
+              :data-index="index"
+              :src="item"
+              :mode="(imageProps && imageProps.mode) || 'aspectFit'"
+              :lazy="(imageProps && imageProps.lazy) || false"
+              :loading="(imageProps && imageProps.loading) || 'default'"
+              :shape="(imageProps && imageProps.shape) || 'square'"
+              :webp="(imageProps && imageProps.webp) || false"
+              :show-menu-by-longpress="(imageProps && imageProps.showMenuByLongpress) || false"
               @load="onImageLoadSuccess($event, { index })"
             />
           </swiper-item>
@@ -57,20 +62,20 @@
         >
           <slot name="close-btn" />
           <block
-            v-if="_closeBtn"
+            v-if="iCloseBtn"
             name="icon"
           >
             <t-icon
-              :custom-style="_closeBtn.style || ''"
-              :t-class="_closeBtn.tClass"
-              :prefix="_closeBtn.prefix"
-              :name="_closeBtn.name"
-              :size="_closeBtn.size"
-              :color="_closeBtn.color"
-              :aria-hidden="!!_closeBtn.ariaHidden"
-              :aria-label="_closeBtn.ariaLabel"
-              :aria-role="_closeBtn.ariaRole"
-              @click="_closeBtn.click || ''"
+              :custom-style="iCloseBtn.style || ''"
+              :t-class="iCloseBtn.tClass"
+              :prefix="iCloseBtn.prefix"
+              :name="iCloseBtn.name"
+              :size="iCloseBtn.size"
+              :color="iCloseBtn.color"
+              :aria-hidden="!!iCloseBtn.ariaHidden"
+              :aria-label="iCloseBtn.ariaLabel"
+              :aria-role="iCloseBtn.ariaRole"
+              @click="iCloseBtn.click || ''"
             />
           </block>
         </view>
@@ -88,17 +93,17 @@
         >
           <slot name="delete-btn" />
           <t-icon
-            v-if="_deleteBtn"
-            :custom-style="_deleteBtn.style || ''"
-            :t-class="_deleteBtn.tClass"
-            :prefix="_deleteBtn.prefix"
-            :name="_deleteBtn.name"
-            :size="_deleteBtn.size"
-            :color="_deleteBtn.color"
-            :aria-hidden="!!_deleteBtn.ariaHidden"
-            :aria-label="_deleteBtn.ariaLabel"
-            :aria-role="_deleteBtn.ariaRole"
-            @click="_deleteBtn.click || ''"
+            v-if="iDeleteBtn"
+            :custom-style="iDeleteBtn.style || ''"
+            :t-class="iDeleteBtn.tClass"
+            :prefix="iDeleteBtn.prefix"
+            :name="iDeleteBtn.name"
+            :size="iDeleteBtn.size"
+            :color="iDeleteBtn.color"
+            :aria-hidden="!!iDeleteBtn.ariaHidden"
+            :aria-label="iDeleteBtn.ariaLabel"
+            :aria-role="iDeleteBtn.ariaRole"
+            @click="iDeleteBtn.click || ''"
           />
         </view>
       </view>
@@ -106,8 +111,8 @@
   </view>
 </template>
 <script>
-import tImage from '../image/image';
-import tIcon from '../icon/icon';
+import TImage from '../image/image';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { styles, calcIcon, systemInfo } from '../common/utils';
 import { prefix } from '../common/config';
@@ -133,8 +138,8 @@ export default uniComponent({
   externalClasses: [`${prefix}-class`],
   mixins: [useCustomNavbar],
   components: {
-    tImage,
-    tIcon,
+    TImage,
+    TIcon,
   },
   props: {
     ...props,
@@ -152,8 +157,8 @@ export default uniComponent({
       maskTop: 0,
       tools,
 
-      _deleteBtn: null,
-      _closeBtn: null,
+      iDeleteBtn: null,
+      iCloseBtn: null,
       dataVisible: this.visible,
     };
   },
@@ -169,14 +174,14 @@ export default uniComponent({
 
     closeBtn: {
       handler(v) {
-        this._closeBtn = calcIcon(v, 'close');
+        this.iCloseBtn = calcIcon(v, 'close');
       },
       immediate: true,
     },
 
     deleteBtn: {
       handler(v) {
-        this._deleteBtn =  calcIcon(v, 'delete');
+        this.iDeleteBtn =  calcIcon(v, 'delete');
       },
       immediate: true,
     },
@@ -306,7 +311,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './image-viewer.css';
-
-</style>
+<style scoped src="./image-viewer.css"></style>

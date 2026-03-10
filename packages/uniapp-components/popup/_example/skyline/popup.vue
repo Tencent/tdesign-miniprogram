@@ -1,12 +1,9 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Popup"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -24,7 +21,7 @@
           desc="基础弹出层"
           padding
         >
-          <baseDemo />
+          <base-demo />
         </t-demo>
         <t-demo
           title="02 组件示例"
@@ -41,16 +38,15 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import withTitle from '../with-title/index.vue';
-import customClose from '../custom-close/index.vue';
+import BaseDemo from '../base/index.vue';
+import WithTitle from '../with-title/index.vue';
+import CustomClose from '../custom-close/index.vue';
+
 export default {
   components: {
-    tNavbar,
-    baseDemo,
-    withTitle,
-    customClose,
+    BaseDemo,
+    WithTitle,
+    CustomClose,
   },
   data() {
     return {};

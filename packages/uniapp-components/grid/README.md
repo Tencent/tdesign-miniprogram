@@ -11,8 +11,8 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TGrid from 'tdesign-uniapp/grid/grid.vue';
-import TGridItem from 'tdesign-uniapp/grid-item/grid-item.vue';
+import TGrid from '@tdesign/uniapp/grid/grid.vue';
+import TGridItem from '@tdesign/uniapp/grid-item/grid-item.vue';
 ```
 
 ### 组件类型
@@ -83,11 +83,11 @@ t-class | 根节点样式类
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
-badge-props | Object | {} | 透传至 Badge 属性。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/grid-item/type.ts) | N
+badge-props | Object | {} | 透传至 Badge 属性。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/grid-item/type.ts) | N
 description | String | - | 文本以外的更多描述，辅助信息。可以通过 Props 传入文本，也可以自定义标题节点 | N
 icon | String / Object | - | 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon` | N
 image | String | - | 图片，可以是图片地址，也可以自定义图片节点，值为 slot 的时候才能使用插槽 | N
-image-props | Object | {} | 透传至 Image 组件。TS 类型：`ImageProps`，[Image API Documents](./image?tab=api)。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/grid-item/type.ts) | N
+image-props | Object | {} | 透传至 Image 组件。TS 类型：`ImageProps`，[Image API Documents](./image?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/grid-item/type.ts) | N
 jump-type | String | navigate-to | 链接跳转类型。可选项：redirect-to/switch-tab/relaunch/navigate-to | N
 layout | String | vertical | 内容布局方式。可选项：vertical/horizontal | N
 text | String | - | 文本，可以通过 Props 传入文本，也可以自定义标题节点 | N
@@ -121,25 +121,23 @@ t-class-text | 文本样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-grid-bg-color | @bg-color-container | - |
-| --td-grid-card-radius | @radius-large | - |
-| --td-grid-item-bg-color | @bg-color-container | - |
-| --td-grid-item-description-color | @text-color-placeholder | - |
-| --td-grid-item-description-font-size | 24rpx | - |
-| --td-grid-item-description-line-height | 40rpx | - |
-| --td-grid-item-description-padding-top | 0 | - |
-| --td-grid-item-horizontal-text-description-top | 0 | - |
-| --td-grid-item-horizontal-text-padding-left | 0 | - |
-| --td-grid-item-hover-bg-color | @bg-color-secondarycontainer | - |
-| --td-grid-item-image-middle-width | 80rpx | - |
-| --td-grid-item-image-small-width | 64rpx | - |
-| --td-grid-item-image-width | 96rpx | - |
-| --td-grid-item-padding | 32rpx | - |
-| --td-grid-item-text-color | @text-color-primary | - |
-| --td-grid-item-text-font-size | 28rpx | - |
-| --td-grid-item-text-line-height | 44rpx | - |
-| --td-grid-item-text-middle-font-size | 24rpx | - |
-| --td-grid-item-text-padding-top | 16rpx | - |
-| --td-grid-item-text-small-font-size | 24rpx | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-grid-bg-color | @bg-color-container | -
+--td-grid-card-radius | @radius-large | -
+--td-grid-item-bg-color | @bg-color-container | -
+--td-grid-item-description-color | @text-color-placeholder | -
+--td-grid-item-description-font | @font-body-small | -
+--td-grid-item-description-padding-top | 0 | -
+--td-grid-item-horizontal-text-description-top | 0 | -
+--td-grid-item-horizontal-text-padding-left | 0 | -
+--td-grid-item-hover-bg-color | @bg-color-secondarycontainer | -
+--td-grid-item-image-middle-width | 80rpx | -
+--td-grid-item-image-small-width | 64rpx | -
+--td-grid-item-image-width | 96rpx | -
+--td-grid-item-padding | 32rpx | -
+--td-grid-item-text-color | @text-color-primary | -
+--td-grid-item-text-font | @font-body-medium | -
+--td-grid-item-text-middle-font | @font-body-small | -
+--td-grid-item-text-padding-top | 16rpx | -
+--td-grid-item-text-small-font | @font-body-extraSmall | -

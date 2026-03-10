@@ -1,7 +1,7 @@
 <template>
   <view
     :class="classPrefix + ' ' + classPrefix + '--normal'"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
   >
     <chat-markdown-node :nodes="nodes" />
   </view>
@@ -17,10 +17,10 @@ import { Lexer as LexerUni } from '../npm/marked/uniapp';
 import { Lexer } from '../npm/marked';
 // #endif
 
-import { prefix } from 'tdesign-uniapp/common/config';
+import { prefix } from '@tdesign/uniapp/common/config';
 import props from './props';
-import _ from 'tdesign-uniapp/common/utils.wxs';
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
+import tools from '@tdesign/uniapp/common/utils.wxs';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
 
 const name = `${prefix}-chat-markdown`;
@@ -45,7 +45,7 @@ export default uniComponent({
       classPrefix: name,
       nodes: [], // 解析后的节点
       name, // 用于子组件查询父组件时的标识符
-      _,
+      tools,
     };
   },
 
@@ -90,6 +90,4 @@ export default uniComponent({
 
 });
 </script>
-<style scoped>
-@import './chat-markdown.css';
-</style>
+<style scoped src="./chat-markdown.css"></style>

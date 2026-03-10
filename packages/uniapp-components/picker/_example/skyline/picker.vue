@@ -1,11 +1,8 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="Picker"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -22,8 +19,8 @@
           title="01 组件类型"
           desc="基础选择器"
         >
-          <labelDemo />
-          <areaDemo />
+          <label-demo />
+          <area-demo />
         </t-demo>
         <t-demo
           title="02 组件样式"
@@ -41,18 +38,17 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import labelDemo from '../base/index.vue';
-import withTitle from '../with-title/index.vue';
-import areaDemo from '../area/index.vue';
-import withoutPopup from '../without-popup/index.vue';
+import LabelDemo from '../base/index.vue';
+import WithTitle from '../with-title/index.vue';
+import AreaDemo from '../area/index.vue';
+import WithoutPopup from '../without-popup/index.vue';
+
 export default {
   components: {
-    tNavbar,
-    labelDemo,
-    withTitle,
-    areaDemo,
-    withoutPopup,
+    LabelDemo,
+    WithTitle,
+    AreaDemo,
+    WithoutPopup,
   },
   data() {
     return {};

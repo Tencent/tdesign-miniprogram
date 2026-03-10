@@ -23,17 +23,17 @@
 </template>
 
 <script>
-import tRadioGroup from 'tdesign-uniapp/radio-group/radio-group.vue';
-import tRadio from 'tdesign-uniapp/radio/radio.vue';
-import tools from 'tdesign-uniapp/common/utils.wxs';
+import TRadioGroup from '@tdesign/uniapp/radio-group/radio-group.vue';
+import TRadio from '@tdesign/uniapp/radio/radio.vue';
+import tools from '@tdesign/uniapp/common/utils.wxs';
 
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tRadioGroup,
-    tRadio,
+    TRadioGroup,
+    TRadio,
   },
   /**
      * 组件的属性列表

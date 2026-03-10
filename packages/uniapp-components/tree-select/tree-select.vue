@@ -105,13 +105,13 @@
   </view>
 </template>
 <script>
-import tRadio from '../radio/radio';
-import tRadioGroup from '../radio-group/radio-group';
-import tCheckbox from '../checkbox/checkbox';
-import tCheckboxGroup from '../checkbox-group/checkbox-group';
-import tSideBar from '../side-bar/side-bar';
-import tSideBarItem from '../side-bar-item/side-bar-item';
-import tScrollView from '../scroll-view/scroll-view.vue';
+import TRadio from '../radio/radio';
+import TRadioGroup from '../radio-group/radio-group';
+import TCheckbox from '../checkbox/checkbox';
+import TCheckboxGroup from '../checkbox-group/checkbox-group';
+import TSideBar from '../side-bar/side-bar';
+import TSideBarItem from '../side-bar-item/side-bar-item';
+import TScrollView from '../scroll-view/scroll-view.vue';
 
 import { uniComponent } from '../common/src/index';
 import { isDef } from '../common/validator';
@@ -145,13 +145,13 @@ export default uniComponent({
     `${prefix}-class-right-item-label`,
   ],
   components: {
-    tRadio,
-    tRadioGroup,
-    tCheckbox,
-    tCheckboxGroup,
-    tSideBar,
-    tSideBarItem,
-    tScrollView,
+    TRadio,
+    TRadioGroup,
+    TCheckbox,
+    TCheckboxGroup,
+    TSideBar,
+    TSideBarItem,
+    TScrollView,
   },
   props: {
     ...props,
@@ -252,13 +252,12 @@ export default uniComponent({
     getScrollIntoView(status) {
       const { innerValue: value, customValue, scrollIntoView } = this;
       if (status === 'init') {
-        const _value = customValue || value;
-        const scrollIntoView = Array.isArray(_value)
-          ? _value.map(item => (Array.isArray(item) ? item[0] : item))
-          : [_value];
-        // setTimeout(() => {
+        const innerValue = customValue || value;
+        const scrollIntoView = Array.isArray(innerValue)
+          ? innerValue.map(item => (Array.isArray(item) ? item[0] : item))
+          : [innerValue];
+
         this.scrollIntoView = scrollIntoView;
-        // }, 1000);
       } else {
         if (scrollIntoView === null) return;
         this.scrollIntoView = null;
@@ -314,6 +313,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './tree-select.css';
-</style>
+<style scoped src="./tree-select.css"></style>

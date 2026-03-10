@@ -1,14 +1,9 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="QRCode"
-      :left-arrow="true"
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="QRCode 二维码"
@@ -28,25 +23,25 @@
         desc="基本用法"
         :padding="true"
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
 
       <t-demo
         desc="带 Icon 的二维码"
         :padding="true"
       >
-        <Icon />
+        <icon-demo />
       </t-demo>
 
       <t-demo
         desc="无边框的二维码"
         :padding="true"
       >
-        <Borderless />
+        <borderless-demo />
       </t-demo>
 
       <t-demo desc="二维码纠错等级">
-        <Level />
+        <level-demo />
       </t-demo>
 
       <t-demo
@@ -54,7 +49,7 @@
         desc="active"
         :padding="true"
       >
-        <Status />
+        <status-demo />
       </t-demo>
 
       <t-demo
@@ -62,14 +57,14 @@
         desc="二维码颜色"
         :padding="true"
       >
-        <Color />
+        <color-demo />
       </t-demo>
 
       <t-demo
         desc="二维码尺寸"
         :padding="true"
       >
-        <Size />
+        <size-demo />
       </t-demo>
     </view>
   </view>
@@ -77,23 +72,23 @@
 
 <script>
 import BaseDemo from './base/index.vue';
-import Size from './size/index.vue';
-import Icon from './icon/index.vue';
-import Color from './color/index.vue';
-import Level from './level/index.vue';
-import Status from './status/index.vue';
-import Borderless from './borderless/index.vue';
+import SizeDemo from './size/index.vue';
+import IconDemo from './icon/index.vue';
+import ColorDemo from './color/index.vue';
+import LevelDemo from './level/index.vue';
+import StatusDemo from './status/index.vue';
+import BorderlessDemo from './borderless/index.vue';
 
 export default {
   name: 'QRCodeExample',
   components: {
     BaseDemo,
-    Size,
-    Icon,
-    Color,
-    Level,
-    Status,
-    Borderless,
+    SizeDemo,
+    IconDemo,
+    ColorDemo,
+    LevelDemo,
+    StatusDemo,
+    BorderlessDemo,
   },
 };
 </script>

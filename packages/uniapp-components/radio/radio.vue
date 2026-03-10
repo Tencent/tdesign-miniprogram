@@ -2,15 +2,15 @@
   <view
     :id="tId"
     :style="tools._style([customStyle])"
-    :class="tools.cls(classPrefix, [_placement, ['block', block]]) + ' ' + tClass"
-    :disabled="_disabled"
+    :class="tools.cls(classPrefix, [innerPlacement, ['block', block], ['disabled', iDisabled]]) + ' ' + tClass"
+    :disabled="iDisabled"
     aria-role="radio"
     :aria-checked="dataChecked"
     :aria-label="label + content"
-    :aria-disabled="_disabled"
+    :aria-disabled="iDisabled"
     @click.stop="handleTap"
   >
-    <view :class="tools.cls(classPrefix + '__icon', [_placement, ['checked', dataChecked], ['disabled', _disabled]]) + ' ' + tClassIcon">
+    <view :class="tools.cls(classPrefix + '__icon', [innerPlacement, ['checked', dataChecked], ['disabled', iDisabled]]) + ' ' + tClassIcon">
       <slot
         v-if="slotIcon"
         name="icon"
@@ -33,11 +33,11 @@
         />
         <view
           v-if="dataChecked && icon == 'dot'"
-          :class="tools.cls(classPrefix + '__icon-' + icon, [['disabled', _disabled]])"
+          :class="tools.cls(classPrefix + '__icon-' + icon, [['disabled', iDisabled]])"
         />
         <view
           v-if="!dataChecked && (icon == 'circle' || icon == 'dot')"
-          :class="tools.cls(classPrefix + '__icon-circle', [['disabled', _disabled]])"
+          :class="tools.cls(classPrefix + '__icon-circle', [['disabled', iDisabled]])"
         />
         <view
           v-if="!dataChecked && icon == 'line'"
@@ -53,7 +53,7 @@
       <view
         :class="
           tools.cls(classPrefix + '__title', [
-            ['disabled', _disabled],
+            ['disabled', iDisabled],
             ['checked', dataChecked]
           ]) +
             ' ' +
@@ -70,7 +70,7 @@
       <view
         :class="
           tools.cls(classPrefix + '__description', [
-            ['disabled', _disabled],
+            ['disabled', iDisabled],
             ['checked', dataChecked]
           ]) +
             ' ' +
@@ -86,12 +86,12 @@
     </view>
     <view
       v-if="!borderless"
-      :class="tools.cls(classPrefix + '__border', [_placement]) + ' ' + tClassBorder"
+      :class="tools.cls(classPrefix + '__border', [innerPlacement]) + ' ' + tClassBorder"
     />
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
+import TIcon from '../icon/icon';
 import { prefix, ISOLATED_RELATION_KEY } from '../common/config';
 import { coalesce } from '../common/utils';
 import { uniComponent } from '../common/src/index';
@@ -122,7 +122,7 @@ export default uniComponent({
   ],
   mixins: [ChildrenMixin(RELATION_MAP.Radio)],
   components: {
-    tIcon,
+    TIcon,
   },
   props: {
     ...props,
@@ -142,9 +142,9 @@ export default uniComponent({
       slotIcon: false,
       optionLinked: false,
       iconVal: [],
-      _placement: '',
-      _disabled: false,
-      _readonly: false,
+      innerPlacement: '',
+      iDisabled: false,
+      iReadonly: false,
       tools,
 
       dataChecked: coalesce(this.checked, this.defaultChecked),
@@ -164,13 +164,13 @@ export default uniComponent({
     },
     disabled: {
       handler(v) {
-        this._disabled = v;
+        this.iDisabled = v;
       },
       immediate: true,
     },
     readonly: {
       handler(v) {
-        this._readonly = v;
+        this.iReadonly = v;
       },
       immediate: true,
     },
@@ -180,10 +180,10 @@ export default uniComponent({
   },
   methods: {
     handleTap(e) {
-      const { _disabled, _readonly, contentDisabled } = this;
+      const { iDisabled, iReadonly, contentDisabled } = this;
       const { target } = e.currentTarget.dataset;
 
-      if (_disabled || _readonly || (target === 'text' && contentDisabled)) return;
+      if (iDisabled || iReadonly || (target === 'text' && contentDisabled)) return;
 
       this.doChange();
     },
@@ -207,21 +207,19 @@ export default uniComponent({
       this.customIcon = isIdArr;
       this.slotIcon = icon === 'slot';
       this.iconVal = isIdArr ? parent?.icon || icon : [];
-      this._placement = this.placement || parent?.placement || 'left';
+      this.innerPlacement = this.placement || parent?.placement || 'left';
     },
 
     setDisabled(disabled) {
       if (this.isIsolated) return;
 
-      this._disabled = this.disabled || disabled;
+      this.iDisabled = this.disabled || disabled;
     },
 
     setReadonly(readonly) {
-      this._readonly = this.readonly || readonly;
+      this.iReadonly = this.readonly || readonly;
     },
   },
 });
 </script>
-<style scoped>
-@import './radio.css';
-</style>
+<style scoped src="./radio.css"></style>

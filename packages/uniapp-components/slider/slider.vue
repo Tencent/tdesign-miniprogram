@@ -31,7 +31,7 @@
             :key="index"
             :class="
               tools.cls(classPrefix + '__scale-item', [
-                ['active', _value >= item.val],
+                ['active', innerValue >= item.val],
                 ['disabled', disabled],
                 theme,
                 ['hidden', ((index == 0 || index == scaleArray.length - 1) && theme == 'capsule') || value == item.val]
@@ -67,7 +67,7 @@
               aria-live="assertive"
               :aria-hidden="!isVisibleToScreenReader"
             >
-              {{ getValue(label, _value) || _value }}
+              {{ getValue(label, innerValue) || innerValue }}
             </view>
             <view
               :class="classPrefix + '__dot-slider'"
@@ -75,8 +75,8 @@
               :aria-disabled="disabled"
               :aria-valuemax="max"
               :aria-valuemin="min"
-              :aria-valuenow="_value"
-              :aria-valuetext="getValue(label, _value) || _value"
+              :aria-valuenow="innerValue"
+              :aria-valuetext="getValue(label, innerValue) || innerValue"
             />
           </view>
         </view>
@@ -240,7 +240,7 @@ export default uniComponent({
       lineLeft: 0,
       lineRight: 0,
       dotTopValue: [0, 0],
-      _value: 0,
+      innerValue: 0,
       blockSize: 20,
       isScale: false,
       scaleArray: [],
@@ -264,7 +264,7 @@ export default uniComponent({
       // immediate: true,
       deep: true,
     },
-    _value: {
+    innerValue: {
       handler(newValue) {
         this.bus.on('initial', () => this.renderLine(newValue));
         this.toggleA11yTips();
@@ -294,7 +294,7 @@ export default uniComponent({
     this.bus.on('initial', () => this.handleMark(this.marks));
     this.bus.on('initial', () => {
       nextTick().then(() => {
-        this.renderLine(this._value);
+        this.renderLine(this.innerValue);
       });
     });
     this.toggleA11yTips();
@@ -359,18 +359,19 @@ export default uniComponent({
     },
 
     triggerValue(value) {
-      if (this.preval === value) return;
       const { min, max, range } = this;
-
-      this.preval = value;
-      const parsed = trimValue(value, {
+      const trimmedValue = trimValue(value, {
         min, max, range,
       });
+
+      if (JSON.stringify(this.preval) === JSON.stringify(trimmedValue)) return;
+      this.preval = value;
+
       this._trigger('change', {
-        value: parsed,
+        value: trimmedValue,
       });
       if (this._selfControlled) {
-        this._value = parsed;
+        this.innerValue = trimmedValue;
       }
     },
 
@@ -408,13 +409,15 @@ export default uniComponent({
         min, max, range,
       });
 
-
       const realLabel = this.getLabelByValue(value);
 
-      this.triggerValue(value);
+      // 避免受控模式下死循环，同时不影响初始化后的首次点击
+      if (this.preval !== undefined) {
+        this.preval = value;
+      }
 
       const setValueAndTrigger = () => {
-        this._value = value;
+        this.innerValue = value;
         this.realLabel = realLabel;
       };
 
@@ -606,7 +609,7 @@ export default uniComponent({
         // 当前leftdot中心 + 左侧偏移量 = 目标左侧中心距离
           const left = pagePosition - initialLeft - offset;
           const leftValue = this.convertPosToValue(left, 0);
-          this.triggerValue([this.stepValue(leftValue), this._value[1]]);
+          this.triggerValue([this.stepValue(leftValue), this.innerValue[1]]);
         } else {
           let right = -(pagePosition - initialRight);
           if (vertical) {
@@ -614,7 +617,7 @@ export default uniComponent({
           }
           const rightValue = this.convertPosToValue(right, 1);
 
-          this.triggerValue([this._value[0], this.stepValue(rightValue)]);
+          this.triggerValue([this.innerValue[0], this.stepValue(rightValue)]);
         }
       });
     },
@@ -632,7 +635,7 @@ export default uniComponent({
 
     onTouchMoveLeft(e) {
       const { disabled, theme } = this;
-      const { initialLeft, _value, blockSize } = this;
+      const { initialLeft, innerValue, blockSize } = this;
       if (disabled) return;
 
       const touch = e.changedTouches.find(item => item.identifier === this.identifier[0]);
@@ -644,7 +647,7 @@ export default uniComponent({
       }
       const currentLeft = pagePosition - initialLeft - offset;
 
-      const newData = [...(_value)];
+      const newData = [...(innerValue)];
       const leftValue = this.convertPosToValue(currentLeft, 0);
 
       newData[0] = this.stepValue(leftValue);
@@ -654,7 +657,7 @@ export default uniComponent({
 
     onTouchMoveRight(e) {
       const { disabled, vertical, theme } = this;
-      const { initialRight, _value } = this;
+      const { initialRight, innerValue } = this;
       if (disabled) return;
 
       const touch = e.changedTouches.find(item => item.identifier === this.identifier[1]);
@@ -668,7 +671,7 @@ export default uniComponent({
       }
       const currentRight = -(pagePosition - initialRight - offset);
 
-      const newData = [...(_value)];
+      const newData = [...(innerValue)];
       const rightValue = this.convertPosToValue(currentRight, 1);
       newData[1] = this.stepValue(rightValue);
 
@@ -679,7 +682,7 @@ export default uniComponent({
       const { theme } = this;
       const { blockSize, maxRange } = this;
       const halfBlock = (theme) === 'capsule' ? Number(blockSize) / 2 : 0;
-      const [a, b] = this._value ;
+      const [a, b] = this.innerValue ;
       const cut = v => parseInt(v, 10);
 
       this.dotTopValue = [a, b];
@@ -695,7 +698,7 @@ export default uniComponent({
     },
 
     onTouchEnd(e) {
-      this.$emit('dragend', { e, value: this._value });
+      this.$emit('dragend', { e, value: this.innerValue });
       if (e.currentTarget.id === 'rightDot') {
         this.identifier[1] = -1;
       } else {
@@ -711,6 +714,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './slider.css';
-</style>
+<style scoped src="./slider.css"></style>

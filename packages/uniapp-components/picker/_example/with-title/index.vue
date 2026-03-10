@@ -18,13 +18,14 @@
     />
 
     <t-picker
-      v-model:visible="cityVisible"
+      :visible="cityVisible"
       :value="cityValue"
       data-key="city"
       :title="cityTitle"
       cancel-btn="取消"
       confirm-btn="确认"
       :using-custom-navbar="!isMPAlipay"
+      @update:visible="cityVisible = $event"
       @change="onPickerChange($event, { key: 'city' })"
       @pick="onColumnChange($event, { key: 'city' })"
       @cancel="onPickerCancel($event, { key: 'city' })"
@@ -33,13 +34,14 @@
     </t-picker>
 
     <t-picker
-      v-model:visible="city2Visible"
+      :visible="city2Visible"
       :value="city2Value"
       data-key="city2"
       :title="city2Title"
       cancel-btn="取消"
       confirm-btn="确认"
       :using-custom-navbar="!isMPAlipay"
+      @update:visible="city2Visible = $event"
       @change="onPickerChange($event, { key: 'city2' })"
       @pick="onColumnChange($event, { key: 'city2' })"
       @cancel="onPickerCancel($event, { key: 'city2' })"
@@ -50,17 +52,17 @@
 </template>
 
 <script>
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tPicker from 'tdesign-uniapp/picker/picker.vue';
-import tPickerItem from 'tdesign-uniapp/picker-item/picker-item.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TPicker from '@tdesign/uniapp/picker/picker.vue';
+import TPickerItem from '@tdesign/uniapp/picker-item/picker-item.vue';
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tCell,
-    tPicker,
-    tPickerItem,
+    TCell,
+    TPicker,
+    TPickerItem,
   },
   data() {
     return {

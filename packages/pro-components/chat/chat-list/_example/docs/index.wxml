@@ -2,6 +2,7 @@
   <t-chat>
     <block wx:for="{{chatList}}" wx:key="index" wx:for-index="chatIndex">
       <t-chat-message
+        chat-id="{{item.chatId}}"
         avatar="{{item.avatar || ''}}"
         name="{{item.name || ''}}"
         datetime="{{item.datetime || ''}}"
@@ -9,6 +10,7 @@
         role="{{item.message.role}}"
         chatContentProps="{{chatContentProps}}"
         placement="{{item.message.role === 'user' ? 'right' : 'left'}}"
+        bind:message-longpress="showPopover"
       >
         <t-chat-actionbar
           wx:if="{{chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'}}"
@@ -38,5 +40,11 @@
       />
     </view>
   </t-chat>
+  <t-chat-actionbar
+    class="popover-actionbar"
+    placement="longpress"
+    bind:actions="handlePopoverAction"
+    longPressPosition="{{longPressPosition}}"
+  />
 </view>
 <t-toast id="t-toast" />

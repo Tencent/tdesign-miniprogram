@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="Overlay"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="Overlay 遮罩层"
@@ -20,7 +15,7 @@
         desc="基础遮罩层"
         padding
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
     </view>
   </view>

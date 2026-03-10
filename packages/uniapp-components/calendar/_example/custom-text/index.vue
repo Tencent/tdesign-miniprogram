@@ -12,12 +12,13 @@
       带双行描述的日历
     </view>
     <t-calendar
-      v-model:visible="visible"
+      :visible="visible"
       :value="type === 'single' ? singleValue : value"
       :min-date="minDate"
       :max-date="maxDate"
       :format="type === 'single' ? singleFormat : format"
       :data-type="type"
+      @update:visible="visible = $event"
       @confirm="handleConfirm($event, { type })"
     />
     <t-cell
@@ -30,14 +31,14 @@
   </view>
 </template>
 <script>
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tCalendar from 'tdesign-uniapp/calendar/calendar.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TCalendar from '@tdesign/uniapp/calendar/calendar.vue';
 import { formatTimestamp } from '../computed';
 
 export default {
   components: {
-    tCell,
-    tCalendar,
+    TCell,
+    TCalendar,
   },
   data() {
     return {

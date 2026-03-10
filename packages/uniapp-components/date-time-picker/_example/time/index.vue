@@ -28,11 +28,12 @@
 
     <!-- 时分 -->
     <t-date-time-picker
-      v-model:visible="secondVisible"
+      :visible="secondVisible"
       title="选择时间"
       :mode="['null', 'second']"
       :value="second"
       format="HH:mm:ss"
+      @update:visible="secondVisible = $event"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"
@@ -40,12 +41,13 @@
 
     <!-- 时分 -->
     <t-date-time-picker
-      v-model:visible="minuteVisible"
+      :visible="minuteVisible"
       title="选择时间"
       :mode="['null', 'minute']"
       :start="start"
       :value="minute"
       format="HH:mm"
+      @update:visible="minuteVisible = $event"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"
@@ -54,12 +56,12 @@
 </template>
 
 <script>
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tDateTimePicker from 'tdesign-uniapp/date-time-picker/date-time-picker.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TDateTimePicker from '@tdesign/uniapp/date-time-picker/date-time-picker.vue';
 export default {
   components: {
-    tCell,
-    tDateTimePicker,
+    TCell,
+    TDateTimePicker,
   },
   data() {
     return {

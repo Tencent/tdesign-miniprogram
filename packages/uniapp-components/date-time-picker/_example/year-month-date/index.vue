@@ -13,7 +13,7 @@
 
     <!-- 年月日 -->
     <t-date-time-picker
-      v-model:visible="dateVisible"
+      :visible="dateVisible"
       auto-close
       title="选择日期"
       show-week
@@ -23,6 +23,7 @@
       :filter="filter"
       :formatter="formatter"
       :popup-props="popupProps"
+      @update:visible="dateVisible = $event"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"
@@ -32,13 +33,13 @@
 </template>
 
 <script>
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tDateTimePicker from 'tdesign-uniapp/date-time-picker/date-time-picker.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TDateTimePicker from '@tdesign/uniapp/date-time-picker/date-time-picker.vue';
 const calendarMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 export default {
   components: {
-    tCell,
-    tDateTimePicker,
+    TCell,
+    TDateTimePicker,
   },
   data() {
     let usingCustomNavbar = true;

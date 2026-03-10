@@ -21,11 +21,12 @@
           用户名
         </template>
         <t-input
-          v-model:value="formData.name"
+          :value="formData.name"
           borderless
           placeholder="请输入用户名"
           data-field="name"
           style="flex: 1;"
+          @update:value="formData.name = $event"
         />
       </t-form-item>
 
@@ -111,10 +112,11 @@
         />
 
         <t-cascader
-          v-model:visible="visibleCascader"
+          :visible="visibleCascader"
           :value="address"
           title="选择地址"
           :options="options"
+          @update:visible="visibleCascader = $event"
           @change="onChangeCascader"
           @visible-change="onCascaderVisibleChange"
         />
@@ -151,12 +153,13 @@
         name="resume"
       >
         <t-textarea
-          v-model:value="formData.resume"
+          :value="formData.resume"
           t-class="textarea"
           indicator
           :maxlength="50"
           placeholder="请输入个人简介"
           style="flex: 1;"
+          @update:value="formData.resume = $event"
         />
       </t-form-item>
 
@@ -208,37 +211,37 @@
 </template>
 
 <script>
-import tForm from 'tdesign-uniapp/form/form.vue';
-import tFormItem from 'tdesign-uniapp/form-item/form-item.vue';
-import tInput from 'tdesign-uniapp/input/input.vue';
-import tRadioGroup from 'tdesign-uniapp/radio-group/radio-group.vue';
-import tRadio from 'tdesign-uniapp/radio/radio.vue';
-// import tPopup from 'tdesign-uniapp/popup/popup.vue';
-import tCascader from 'tdesign-uniapp/cascader/cascader.vue';
-import tStepper from 'tdesign-uniapp/stepper/stepper.vue';
-import tRate from 'tdesign-uniapp/rate/rate.vue';
-import tTextarea from 'tdesign-uniapp/textarea/textarea.vue';
-import tUpload from 'tdesign-uniapp/upload/upload.vue';
-import tButton from 'tdesign-uniapp/button/button.vue';
-import { canUseVirtualHost } from 'tdesign-uniapp/common/version';
+import TForm from '@tdesign/uniapp/form/form.vue';
+import TFormItem from '@tdesign/uniapp/form-item/form-item.vue';
+import TInput from '@tdesign/uniapp/input/input.vue';
+import TRadioGroup from '@tdesign/uniapp/radio-group/radio-group.vue';
+import TRadio from '@tdesign/uniapp/radio/radio.vue';
+// import TPopup from '@tdesign/uniapp/popup/popup.vue';
+import TCascader from '@tdesign/uniapp/cascader/cascader.vue';
+import TStepper from '@tdesign/uniapp/stepper/stepper.vue';
+import TRate from '@tdesign/uniapp/rate/rate.vue';
+import TTextarea from '@tdesign/uniapp/textarea/textarea.vue';
+import TUpload from '@tdesign/uniapp/upload/upload.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
+import { canUseVirtualHost } from '@tdesign/uniapp/common/version';
 
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tForm,
-    tFormItem,
-    tInput,
-    tRadioGroup,
-    tRadio,
-    // tPopup,
-    tCascader,
-    tStepper,
-    tRate,
-    tTextarea,
-    tUpload,
-    tButton,
+    TForm,
+    TFormItem,
+    TInput,
+    TRadioGroup,
+    TRadio,
+    // TPopup,
+    TCascader,
+    TStepper,
+    TRate,
+    TTextarea,
+    TUpload,
+    TButton,
   },
   props: {
     disabled: {

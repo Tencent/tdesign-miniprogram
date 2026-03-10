@@ -1,4 +1,4 @@
-import utils from 'tdesign-uniapp/common/utils.wxs';
+import utils from '@tdesign/uniapp/common/utils.wxs';
 
 export function imageStyle(imageProps) {
   if (imageProps && imageProps.width && imageProps.height) {

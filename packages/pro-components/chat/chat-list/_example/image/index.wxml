@@ -2,11 +2,13 @@
   <t-chat>
     <block wx:for="{{chatList}}" wx:key="index" wx:for-index="chatIndex">
       <t-chat-message
+        chat-id="{{item.chatId}}"
         avatar="{{item.avatar || ''}}"
         name="{{item.name || ''}}"
         datetime="{{item.datetime || ''}}"
         role="{{item.message.role}}"
         placement="{{item.message.role === 'user' ? 'right' : 'left'}}"
+        bind:message-longpress="showPopover"
       >
         <view wx:if="{{item.message.role === 'user'}}" slot="content">
           <block
@@ -58,5 +60,11 @@
       />
     </view>
   </t-chat>
+  <t-chat-actionbar
+    class="popover-actionbar"
+    placement="longpress"
+    bind:actions="handlePopoverAction"
+    longPressPosition="{{longPressPosition}}"
+  />
 </view>
 <t-toast id="t-toast" />

@@ -51,6 +51,11 @@ export interface TdSearchProps {
    */
   cursor?: number;
   /**
+   * 光标颜色。iOS 下的格式为十六进制颜色值 #000000，安卓下的只支持 default 和 green，Skyline 下无限制
+   * @default #0052d9
+   */
+  cursorColor?: string;
+  /**
    * 搜索框聚焦时底部与键盘的距离
    * @default 0
    */
@@ -144,7 +149,7 @@ export interface TdSearchProps {
   /**
    * 值发生变化时触发
    */
-  onChange?: (context: { value: string }) => void;
+  onChange?: (context: { value: string; trigger: 'input-change' | 'option-click' | 'clear' }) => void;
   /**
    * 点击清除时触发
    */

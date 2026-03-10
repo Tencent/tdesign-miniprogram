@@ -1,7 +1,7 @@
 <template>
   <view
     :class="chatItemClass"
-    :style="_._style([customStyle])"
+    :style="tools._style([customStyle])"
     @longpress="handleLongPress"
   >
     <view
@@ -89,10 +89,9 @@ import chatLoading from '../chat-loading/chat-loading.vue';
 import attachments from '../attachments/attachments.vue';
 
 import props from './props';
-import { prefix } from 'tdesign-uniapp/common/config';
-import _ from 'tdesign-uniapp/common/utils.wxs';
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
-
+import { prefix } from '@tdesign/uniapp/common/config';
+import tools from '@tdesign/uniapp/common/utils.wxs';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
 const name = `${prefix}-chat-message`;
 
@@ -121,7 +120,7 @@ export default uniComponent({
       contentClasses: [],
       chatItemClass: [],
 
-      _,
+      tools,
     };
   },
 
@@ -149,9 +148,13 @@ export default uniComponent({
 
   methods: {
     handleLongPress(e) {
-      this.$emit('longpress', {
+      this.$emit('message-longpress', {
         e,
         id: this.chatId,
+        longPressPosition: {
+          x: e.detail.x,
+          y: e.detail.y,
+        },
       });
     },
 
@@ -171,6 +174,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './chat-message.css';
-</style>
+<style scoped src="./chat-message.css"></style>

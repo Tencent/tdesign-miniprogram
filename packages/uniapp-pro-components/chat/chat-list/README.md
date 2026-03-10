@@ -11,7 +11,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
+import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
 ```
 
 
@@ -51,7 +51,7 @@ import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
 animation | String | skeleton | 动画效果，支持「渐变加载动画」,「闪烁加载动画」, 「骨架屏」三种。可选项：skeleton/moving/gradient/dot | N
-data | Array | - | 对话列表的数据。TS 类型：`Array<TdChatItemMeta>` ` interface TdChatItemMeta { avatar?: string; name?:string; role?:string; datetime?: string; content?: string; status?: string }`。[详细类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign-uniapp-chat/chat-list/type.ts) | N
+data | Array | - | 对话列表的数据。TS 类型：`Array<TdChatItemMeta>` ` interface TdChatItemMeta { avatar?: string; name?:string; role?:string; datetime?: string; content?: string; status?: string }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-pro-components/chat/chat-list/type.ts) | N
 layout | String | both | 对话布局形式，支持两侧对齐与左对齐。使用插槽自定义对话内容时不生效，得用`t-chat-message`的`placement`属性。可选项：both/single | N
 reverse | Boolean | true | 是否表现为倒序 | N
 

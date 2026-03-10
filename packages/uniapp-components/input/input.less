@@ -17,10 +17,11 @@
 @input-border-left-space: var(--td-input-border-left-space, 32rpx);
 @input-border-right-space: var(--td-input-border-right-space, 0);
 @input-placeholder-text-color: var(--td-input-placeholder-text-color, @text-color-placeholder); // 输入框占位符文本颜色
-@input-placeholder-text-font-size: var(--td-input-placeholder-text-font-size, @font-size-m); // 输入框占位符文本字体大小
+@input-placeholder-text-font: var(--td-input-placeholder-text-font, @font-body-large); // 输入框占位符文本字体大小
 @input-prefix-icon-color: var(--td-input-prefix-icon-color, @text-color-primary); // // 输入框前缀图标颜色
 @input-suffix-icon-color: var(--td-input-suffix-icon-color, @text-color-placeholder); // 输入框后缀图标颜色
 @input-label-text-color: var(--td-input-label-text-color, @text-color-primary); // 左侧文本颜色
+@input-label-text-font: var(--td-input-label-text-font, @font-body-large); // 左侧文本字体大小
 @input-label-min-width: var(--td-input-label-min-width, 2em);
 @input-label-max-width: var(--td-input-label-max-width, 5em);
 @input-suffix-text-color: var(--td-input-suffix-text-color, @text-color-primary); // 后置图标前的后置内容文本颜色
@@ -62,8 +63,7 @@
   &__label:not(:empty) {
     min-width: @input-label-min-width;
     max-width: @input-label-max-width;
-    font-size: @font-size-m;
-    line-height: 48rpx;
+    font: @input-label-text-font;
     color: @input-label-text-color;
     margin-right: @spacer-2;
     word-wrap: break-word;
@@ -99,8 +99,7 @@
       display: flex;
       width: 100%;
       align-items: center;
-      line-height: 48rpx;
-      font-size: @font-size-m;
+      font: @font-body-large;
     }
 
     &--clearable-icon,
@@ -177,7 +176,7 @@
 
   &__placeholder {
     color: @input-placeholder-text-color;
-    font-size: @input-placeholder-text-font-size;
+    font: @input-placeholder-text-font;
 
     &--disabled {
       color: @input-disabled-text-color;
@@ -185,8 +184,7 @@
   }
 
   &__tips {
-    font-size: @font-size-s;
-    line-height: 40rpx;
+    font: @font-body-small;
     padding-top: 8rpx;
   }
 }

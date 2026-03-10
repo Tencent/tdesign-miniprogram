@@ -11,13 +11,13 @@ jobs:
       next_action: ${{ steps.get-action.outputs.next_action }}
     if: ${{ github.event.issue.pull_request }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           repository: Tencent/tdesign
           sparse-checkout: |
             .github/.pr-comment-ci-whitelist
           sparse-checkout-cone-mode: false
-          
+
       - uses: actions/github-script@v7
         id: get-action
         with:
@@ -65,7 +65,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ needs.check.outputs.next_action == 'update-common' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           token: ${{ secrets.PERSONAL_TOKEN }}
       - name: gh checkout pr
@@ -86,7 +86,7 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ needs.check.outputs.next_action == 'update-snapshot' }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
         with:
           token: ${{ secrets.PERSONAL_TOKEN }}
 
@@ -110,11 +110,14 @@ jobs:
             })
             return comment.id
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 18
+      - uses: pnpm/action-setup@v4
 
-      - uses: ./.github/actions/install-dep
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+
+      - run: pnpm install
+
       - run: npm run test:snap-update
 
       - name: Commit Snapshot
