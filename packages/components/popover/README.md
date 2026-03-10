@@ -1,7 +1,7 @@
 ---
 title: Popover 弹出气泡
 description: 用于文字提示的气泡框。
-spline: data
+spline: message
 isComponent: true
 ---
 
@@ -80,16 +80,16 @@ t-class-content | 内容样式类
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
---td-popover-padding | 24rpx | -
---td-popover-dark-color | @text-color-anti | -
---td-popover-dark-bg-color | @font-gray-1 | -
---td-popover-light-color | @text-color-primary | -
---td-popover-light-bg-color | @bg-color-container | -
---td-popover-brand-color | @primary-color-7 | -
 --td-popover-brand-bg-color | @primary-color-1 | -
---td-popover-success-color | @success-color-5 | -
---td-popover-success-bg-color | @success-color-1 | -
---td-popover-warning-color | @warning-color-5 | -
---td-popover-warning-bg-color | @warning-color-1 | -
---td-popover-error-color | @error-color-6 | -
+--td-popover-brand-color | @primary-color-7 | -
+--td-popover-dark-bg-color | @font-gray-1 | -
+--td-popover-dark-color | @text-color-anti | -
 --td-popover-error-bg-color | @error-color-1 | -
+--td-popover-error-color | @error-color-6 | -
+--td-popover-light-bg-color | @bg-color-container | -
+--td-popover-light-color | @text-color-primary | -
+--td-popover-padding | 24rpx | -
+--td-popover-success-bg-color | @success-color-1 | -
+--td-popover-success-color | @success-color-5 | -
+--td-popover-warning-bg-color | @warning-color-1 | -
+--td-popover-warning-color | @warning-color-5 | -

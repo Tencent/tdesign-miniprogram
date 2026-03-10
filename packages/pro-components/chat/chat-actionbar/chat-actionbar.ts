@@ -156,13 +156,13 @@ export default class ChatActionbar extends SuperComponent {
           baseActions.push({
             name: item,
             isActive: this.data.pComment === item,
-            text: globalConfig.actionBar[item] || item,
+            text: globalConfig.actionBar?.[item] || item,
           });
         } else {
           baseActions.push({
             name: item,
             isActive: false,
-            text: globalConfig.actionBar[item] || item,
+            text: globalConfig.actionBar?.[item] || item,
           });
         }
       });
