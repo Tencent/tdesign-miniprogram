@@ -142,6 +142,7 @@ export default uniComponent({
   emits: [
     'visible-change',
     'update:visible',
+    'update:value',
   ],
   data() {
     return {
@@ -251,6 +252,7 @@ export default uniComponent({
 
       if (JSON.stringify(this.dataValue) === JSON.stringify(value)) return;
       this.$emit('change', { value, label, columns });
+      this.$emit('update:value', value);
     },
 
     triggerColumnChange({ column, index }) {
