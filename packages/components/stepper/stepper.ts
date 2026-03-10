@@ -121,8 +121,11 @@ export default class Stepper extends SuperComponent {
     },
 
     updateCurrentValue(value) {
+      // 当字符串转数字不丢失信息时（如 "88" → 88），用数字类型，保持模板渲染一致性
+      // 当会丢失信息时（如 "1.0" → 1），保留字符串以维持小数末尾0
+      const numValue = Number(value);
       this.setData({
-        currentValue: value,
+        currentValue: String(numValue) === String(value) ? numValue : value,
       });
     },
 
