@@ -39,6 +39,11 @@
       "import": "./chat-message/chat-message.vue",
       "default": "./chat-message/chat-message.vue"
     },
+    "./chat-record/chat-record.vue": {
+      "types": "./types/chat-record.d.ts",
+      "import": "./chat-record/chat-record.vue",
+      "default": "./chat-record/chat-record.vue"
+    },
     "./chat-sender/chat-sender.vue": {
       "types": "./types/chat-sender.d.ts",
       "import": "./chat-sender/chat-sender.vue",

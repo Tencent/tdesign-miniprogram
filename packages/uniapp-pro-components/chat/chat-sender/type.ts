@@ -62,6 +62,11 @@ export interface TdChatSenderProps {
    */
   visible?: boolean;
   /**
+   * 输入框的类型 keyboard | speech
+   * @default text
+   */
+  senderType?: 'keyboard' | 'speech';
+  /**
    * 输入框聚焦时触发
    */
   onBlur?: (value: string, context: { e: FocusEvent }) => void;
