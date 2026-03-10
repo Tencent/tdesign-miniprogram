@@ -1,6 +1,6 @@
 {
   "name": "@tdesign/uniapp",
-  "version": "0.7.1",
+  "version": "0.7.3",
   "id": "tdesign-uniapp",
   "title": "tdesign-uniapp",
   "description": "TDesign Component for UniApp",
@@ -32,8 +32,12 @@
     "registry": "https://registry.npmjs.org/"
   },
   "typings": "./dist/types/index.d.ts",
+  "types": "./dist/types/index.d.ts",
   "exports": {
     "./*": "./dist/*",
+    "./global": {
+      "types": "./global.d.ts"
+    },
     "./action-sheet/action-sheet.vue": {
       "types": "./dist/types/action-sheet.d.ts",
       "import": "./dist/action-sheet/action-sheet.vue",

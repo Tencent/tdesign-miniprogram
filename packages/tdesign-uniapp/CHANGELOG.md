@@ -5,6 +5,27 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.7.3 `2026-03-04`
+
+### 🐞 Bug Fixes
+
+- `Button`: 去除多余动画效果 @novlan1 ([#4305](https://github.com/Tencent/tdesign-miniprogram/pull/4305))
+- `Dialog`: 修复确认/取消按钮不显示问题 @novlan1 ([#4305](https://github.com/Tencent/tdesign-miniprogram/pull/4305))
+- `Theme`: 修复 `index.css` 尺寸值错误的问题 @liweijie0812 ([#4290](https://github.com/Tencent/tdesign-miniprogram/pull/4290))
+
+## 🌈 0.7.2 `2026-02-26`
+
+### 🚀 Features
+
+- `Calendar`: 新增 `PopupProps` 属性，透传至 `Popup` @novlan1 ([#4264](https://github.com/Tencent/tdesign-miniprogram/pull/4264))
+- `Navbar`: 支持监听页面变化，重新计算尺寸 @novlan1 ([#4282](https://github.com/Tencent/tdesign-miniprogram/pull/4282))
+
+### 🐞 Bug Fixes
+
+- `Button`: 修复 `icon.size` 不生效问题 @novlan1 ([#4264](https://github.com/Tencent/tdesign-miniprogram/pull/4264))
+- `Form`: 修改边距错误问题 @novlan1 ([#4282](https://github.com/Tencent/tdesign-miniprogram/pull/4282))
+- `Search`: 修复 `value` 未监听问题 @novlan1 ([#4264](https://github.com/Tencent/tdesign-miniprogram/pull/4264))
+
 ## 🌈 0.7.1 `2026-02-04`
 
 ### 🚀 Features

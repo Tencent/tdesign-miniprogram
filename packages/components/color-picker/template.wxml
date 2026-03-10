@@ -75,7 +75,7 @@
     <view class="{{classPrefix}}__swatches-wrap" wx:if="{{innerSwatchList.length}}">
       <view class="{{classPrefix}}__swatches">
         <view class="{{classPrefix}}__swatches-title" wx:if="{{isMultiple}}"> 系统预设色彩 </view>
-        <view class="{{classPrefix}}__swatches-items">
+        <scroll-view class="{{classPrefix}}__swatches-items" scroll-x enable-flex scroll-anchoring type="list">
           <view
             wx:for="{{innerSwatchList}}"
             wx:for-item="swatch"
@@ -86,7 +86,7 @@
           >
             <view class="{{classPrefix}}__swatches-inner" style="background-color: {{swatch}};"> </view>
           </view>
-        </view>
+        </scroll-view>
       </view>
     </view>
   </view>

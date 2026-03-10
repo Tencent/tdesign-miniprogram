@@ -4,24 +4,23 @@ import props from './props';
 import TCalendar from '../common/shared/calendar/index';
 import { TdCalendarProps } from './type';
 import useCustomNavbar from '../mixins/using-custom-navbar';
+import usingConfig from '../mixins/using-config';
 import { getPrevMonth, getPrevYear, getNextMonth, getNextYear } from './utils';
 
 const { prefix } = config;
-const name = `${prefix}-calendar`;
-
-const defaultLocaleText = {
-  title: '请选择日期',
-  weekdays: ['日', '一', '二', '三', '四', '五', '六'],
-  monthTitle: '{year} 年 {month}',
-  months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
-  confirm: '确认',
-};
+const componentName = 'calendar';
 
 export interface CalendarProps extends TdCalendarProps {}
 
 @wxComponent()
 export default class Calendar extends SuperComponent {
-  behaviors = [useCustomNavbar];
+  behaviors = [
+    useCustomNavbar,
+    usingConfig({
+      componentName,
+      localeTextPropName: 'localeText',
+    }),
+  ];
 
   externalClasses = [`${prefix}-class`];
 
@@ -33,7 +32,7 @@ export default class Calendar extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     months: [],
     scrollIntoView: '',
     innerConfirmBtn: {},
@@ -64,13 +63,7 @@ export default class Calendar extends SuperComponent {
     },
 
     ready() {
-      const realLocalText = { ...defaultLocaleText, ...this.properties.localeText };
       this.initialValue();
-
-      this.setData({
-        days: this.base.getDays(realLocalText.weekdays),
-        realLocalText,
-      });
 
       this.calcMonths();
       this.updateCurrentMonth();
@@ -82,6 +75,18 @@ export default class Calendar extends SuperComponent {
   };
 
   observers = {
+    localeText() {
+      this.updateLocale?.();
+    },
+
+    globalConfig() {
+      const { globalConfig } = this.data;
+      this.setData({
+        days: this.base.getDays(globalConfig.weekdays),
+        realLocalText: globalConfig,
+      });
+    },
+
     type(v) {
       this.base.type = v;
     },

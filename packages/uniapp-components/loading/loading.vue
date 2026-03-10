@@ -142,7 +142,7 @@ export default uniComponent({
       immediate: true,
     },
   },
-  beforeUnMount() {
+  beforeUnmount() {
     clearTimeout(this.timer);
   },
   methods: {

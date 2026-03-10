@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const dist = require('./gulpfile.dist');
 const example = require('./gulpfile.example');
 const wechatide = require('./gulpfile.wechatide');
+
 /** `gulp build`
  * 构建
  * */

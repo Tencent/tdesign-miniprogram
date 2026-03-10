@@ -1,11 +1,11 @@
 ---
 title: QRCode 二维码
 description: 二维码能够将文本转换生成二维码的组件，支持自定义配色和 Logo 配置。
-spline: message
+spline: data
 isComponent: true
 ---
 
-<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-55%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-42%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-55%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-82%25-blue" /></span>
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-61%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-52%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-61%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-95%25-blue" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -101,7 +101,7 @@ status-render | 自定义状态渲染器
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
---td-brand-color-hover | --td-brand-color-hover | - 
+--td-brand-color-hover | --td-brand-color-hover | -
 --td-success-color | --td-success-color | -

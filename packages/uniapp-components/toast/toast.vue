@@ -139,7 +139,7 @@ export default uniComponent({
     },
   },
 
-  beforeUnMount() {
+  beforeUnmount() {
     this.destroyed();
   },
   methods: {

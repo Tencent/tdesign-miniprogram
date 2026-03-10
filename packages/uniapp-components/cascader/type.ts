@@ -4,6 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import type { TdPopupProps as PopupProps } from '../popup/type';
 import type { TreeOptionData, TreeKeysType } from '../common/common';
 
 export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOptionData> {
@@ -31,6 +32,11 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
    * @default 选择选项
    */
   placeholder?: string;
+  /**
+   * 透传 Popup 组件全部属性
+   * @default {}
+   */
+  popupProps?: PopupProps;
   /**
    * 每级展示的次标题
    * @default []

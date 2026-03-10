@@ -1,17 +1,19 @@
 import props from './props';
 import config from '../common/config';
 import { SuperComponent, wxComponent } from '../common/src/index';
+import usingConfig from '../mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-qrcode`;
+const componentName = 'qrcode';
 
 @wxComponent()
 export default class QRCode extends SuperComponent {
+  behaviors = [usingConfig({ componentName })];
+
   externalClasses = [`${prefix}-class`, `${prefix}-class-canvas`];
 
   options = {
     multipleSlots: true,
-    virtualHost: true,
   };
 
   properties = {
@@ -20,20 +22,12 @@ export default class QRCode extends SuperComponent {
       type: Boolean,
       value: false,
     },
-    style: {
-      type: String,
-      value: '',
-    },
-    customStyle: {
-      type: String,
-      value: '',
-    },
   };
 
   data = {
     prefix,
     showMask: false,
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     canvasReady: false,
   };
 

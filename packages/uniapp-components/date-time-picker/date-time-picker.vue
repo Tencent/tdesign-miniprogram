@@ -218,7 +218,17 @@ export default uniComponent({
         currentValue = dayjs(`${dateStr} ${currentValue}`);
       }
 
-      const parseDate = dayjs(currentValue || minDate);
+      let parseDate = dayjs(currentValue || minDate);
+
+      // 当直接解析失败时（如 "2021-12-23 周四"），尝试提取日期时间数字部分进行解析
+      if (!parseDate.isValid() && typeof currentValue === 'string') {
+        // 匹配常见的日期时间格式：YYYY-MM-DD 或 YYYY-MM-DD HH:mm:ss 等
+        const dateMatch = currentValue.match(/(\d{4}[-/]\d{1,2}[-/]\d{1,2}(\s+\d{1,2}:\d{1,2}(:\d{1,2})?)?)/);
+        if (dateMatch) {
+          parseDate = dayjs(dateMatch[1]);
+        }
+      }
+
       const isDateValid = parseDate.isValid();
 
       return isDateValid ? parseDate : minDate;

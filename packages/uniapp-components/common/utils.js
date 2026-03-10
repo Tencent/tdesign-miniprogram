@@ -236,7 +236,7 @@ export const chunk = (arr, size) => Array.from({ length: Math.ceil(arr.length / 
 const getPageContext = () => {
   const pages = getCurrentPages();
   const page = pages[pages.length - 1];
-  return (page).$$basePage || page;
+  return page?.$vm || page;
 };
 
 
@@ -244,9 +244,14 @@ const findInstance = (context, pageContext, pureSelector) => {
   if (context && context.$refs[pureSelector]) {
     return context.$refs[pureSelector];
   }
-  if (pageContext && pageContext.$refs[pureSelector]) {
+
+  if (pageContext
+    && pageContext.$refs
+    && pageContext.$refs[pureSelector]
+  ) {
     return pageContext.$refs[pureSelector];
   }
+
   return null;
 };
 

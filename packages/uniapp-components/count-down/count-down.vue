@@ -83,7 +83,7 @@ export default uniComponent({
   mounted() {
 
   },
-  beforeUnMount() {
+  beforeUnmount() {
     if (this.timeoutId) {
       clearTimeout(this.timeoutId);
       this.timeoutId = null;

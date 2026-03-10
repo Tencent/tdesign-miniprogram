@@ -1,12 +1,15 @@
 import { SuperComponent, wxComponent } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
 import props from './props';
+import usingConfig from '../../../components/mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-chat-sender`;
+const componentName = 'chat-sender';
 
 @wxComponent()
 export default class ChatSender extends SuperComponent {
+  behaviors = [usingConfig({ componentName })];
+
   options = {
     multipleSlots: true,
   };
@@ -14,7 +17,7 @@ export default class ChatSender extends SuperComponent {
   properties = props;
 
   data = {
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     scrollViewTop: 0,
     focusFlag: false,
     isSending: false,

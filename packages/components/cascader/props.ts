@@ -25,10 +25,10 @@ const props: TdCascaderProps = {
     type: Array,
     value: [],
   },
-  /** 未选中时的提示文案 */
+  /** 未选中时的提示文案。组件内置默认值为：'选择选项' */
   placeholder: {
     type: String,
-    value: '选择选项',
+    value: '',
   },
   /** 每级展示的次标题 */
   subTitles: {

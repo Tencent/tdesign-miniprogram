@@ -711,10 +711,9 @@ export default uniComponent({
 
           // 支持单/多文件
           res.tempFiles.forEach((temp) => {
-            const { size, fileType, tempFilePath, width, height, duration, thumbTempFilePath, ...res } = temp;
-
+            const { size, fileType, tempFilePath: tTempFilePath, path: tPath, width, height, duration, thumbTempFilePath, ...res } = temp;
+            const tempFilePath = tTempFilePath || tPath;
             if (this.checkFileSize(size, sizeLimit, fileType)) return;
-
 
             const name = temp.name || this.getRandFileName(tempFilePath);
             files.push({

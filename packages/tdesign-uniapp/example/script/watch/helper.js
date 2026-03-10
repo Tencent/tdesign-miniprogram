@@ -41,6 +41,19 @@ async function copyComponents({
     });
   }
 
+  if (checkVue2HxExist()) {
+    await copy({
+      relativePath,
+      filePath,
+      config: {
+        targetDir: isChat
+          ? config.componentChatTargetDirInVue2Hx
+          : config.componentTargetDirInVue2Hx,
+        demoDir: config.pagesMoreDirInVue2Hx,
+      },
+    });
+  }
+
   if (checkVue3HxExist()) {
     await copy({
       relativePath,
@@ -65,6 +78,10 @@ function checkVue2CliExist() {
   return fs.existsSync(config.vue2CliRoot);
 }
 
+function checkVue2HxExist() {
+  return fs.existsSync(config.vue2HxRoot);
+}
+
 function checkVue3HxExist() {
   return fs.existsSync(config.vue3HxRoot);
 }
@@ -72,5 +89,6 @@ function checkVue3HxExist() {
 module.exports = {
   copyComponents,
   checkVue2CliExist,
+  checkVue2HxExist,
   checkVue3HxExist,
 };

@@ -21,6 +21,7 @@
 
     <t-picker
       :visible="cityVisible"
+      :value="cityValue"
       data-key="city"
       title="选择城市"
       cancel-btn="取消"
@@ -56,6 +57,7 @@
     </t-picker>
 
     <t-picker
+      :value="dateValue"
       :visible="dateVisible"
       data-key="date"
       title="选择时间"
