@@ -86,6 +86,14 @@ export const docs = [
         component: () => import('@/chat-sender/README.md'),
       },
       {
+        title: 'ChatRecord 对话记录',
+        titleEn: 'ChatRecord',
+        name: 'ChatRecord 对话记录',
+        meta: { docType: 'base' },
+        path: '/tdesign-uniapp-chat/components/chat-record',
+        component: () => import('@/chat-record/README.md'),
+      },
+      {
         title: 'ChatMessage 对话消息体',
         titleEn: 'ChatMessage',
         name: 'ChatMessage 对话消息体',

@@ -50,6 +50,11 @@
       "import": "./dist/chat-message/chat-message.vue",
       "default": "./dist/chat-message/chat-message.vue"
     },
+    "./chat-record/chat-record.vue": {
+      "types": "./dist/types/chat-record.d.ts",
+      "import": "./dist/chat-record/chat-record.vue",
+      "default": "./dist/chat-record/chat-record.vue"
+    },
     "./chat-sender/chat-sender.vue": {
       "types": "./dist/types/chat-sender.d.ts",
       "import": "./dist/chat-sender/chat-sender.vue",
