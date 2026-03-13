@@ -6,21 +6,29 @@
         <view class="chat-sender-height-left-limit" />
         <view class="chat-sender-height-right-limit" />
       </view>
-      <view class="chat-sender-placeholder"> 高度限制：最大高度为132px </view>
+      <view class="chat-sender-placeholder">
+        高度限制：最大高度为132px
+      </view>
       <view class="chat-sender-wrapper">
         <t-chat-sender
           v-model="query"
           :loading="loading"
           :placeholder="placeholder"
           :textarea-props="textareaProps"
-          :sender-type="senderType"
+          :allow-speech="allowSpeech"
           :render-presets="renderPresets"
           @send="onSend"
         >
           <template #speech>
-            <t-chat-record :auto-send-height="autoSendHeight" style="margin: 10px 0" @recognize="onRecognize">
+            <t-chat-record
+              :auto-send-height="autoSendHeight"
+              style="margin: 10px 0"
+              @recognize="onRecognize"
+            >
               <template #speechInput>
-                <div style="padding: 10px; background: #f0f0f0; border-radius: 8px">按住说话</div>
+                <div style="padding: 10px; background: #f0f0f0; border-radius: 8px">
+                  按住说话
+                </div>
               </template>
               <template #speechNoAuth>
                 <div style="padding: 10px; background: #ffebee; border-radius: 8px; color: #d32f2f">
@@ -31,14 +39,22 @@
           </template>
           <template #footer-prefix>
             <view class="demo-footer-prefix">
-              <view class="speech-block" @click="toggleSenderType">
-                <TIcon name="microphone" size="40rpx" />
+              <view
+                class="speech-block"
+                @click="toggleSenderType"
+              >
+                <t-icon
+                  name="microphone"
+                  size="40rpx"
+                />
               </view>
             </view>
           </template>
         </t-chat-sender>
       </view>
-      <view class="demo-footer"> 内容由AI生成，仅供参考 </view>
+      <view class="demo-footer">
+        内容由AI生成，仅供参考
+      </view>
     </view>
   </view>
 </template>
@@ -73,7 +89,7 @@ export default {
       loading: false,
       showVoice: false,
       autoSendHeight: 0,
-      senderType: 'keyboard',
+      allowSpeech: false,
       renderPresets: [
         {
           name: 'send',
@@ -93,8 +109,8 @@ export default {
       this.showVoice = !this.showVoice;
     },
     toggleSenderType() {
-      console.log('toggleSenderType', this.senderType);
-      this.senderType = this.senderType === 'keyboard' ? 'speech' : 'keyboard';
+      console.log('toggleSenderType', this.allowSpeech);
+      this.allowSpeech = !this.allowSpeech;
     },
     onSend(_value, { e: _e }) {
       console.log('onSend', _e, _value);
