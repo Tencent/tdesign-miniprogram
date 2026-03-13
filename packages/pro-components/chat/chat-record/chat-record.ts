@@ -1,3 +1,4 @@
+import { show } from 'tdesign-miniprogram/action-sheet/show';
 import { SuperComponent, wxComponent } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
 import props from './props';
@@ -128,11 +129,17 @@ export default class ChatRecord extends SuperComponent {
           },
           translateResult: voiceText,
           processStatus: 'confirm',
+          activeBtnCancel: true,
         });
         this.updateBubbleClass();
       };
 
       manager.onError = (err: any) => {
+          wx.showToast({
+          icon: 'none',
+          title: '录音识别失败，请重试',
+          duration: 2000,
+        });
         this.setData({
           isManagerBusy: false,
           managerRecording: false,
@@ -141,14 +148,9 @@ export default class ChatRecord extends SuperComponent {
           translateResult: '',
           activeBtnCancel: false,
           activeBtnSend: false,
+          showMask: false,
         });
         this.updateBubbleClass();
-
-        wx.showToast({
-          icon: 'none',
-          title: '录音识别失败，请重试',
-          duration: 2000,
-        });
 
         this.triggerEvent('error', err);
       };
@@ -416,14 +418,22 @@ export default class ChatRecord extends SuperComponent {
         startRecordTimer = null;
       }
 
-      // 只有在录音真正开始后，才调用 stop
-      if (this.manager && this.data.managerRecording) {
-        this.manager.stop();
+      // 停止录音
+      if (this.manager) {
+        if (this.data.managerRecording) {
+          this.manager.stop();
+        } else {
+          // 录音尚未开始，取消启动
+          this.setData({ ignoreNextOnStop: true });
+        }
       }
 
       if (this.data.interactStatus === 'release_cancel') {
         // 取消时不让 onStop 把 UI 推到 confirm
-        this.setData({ ignoreNextOnStop: true });
+        this.setData({ 
+          ignoreNextOnStop: true,
+          activeBtnCancel: true,
+         });
         this.cancelRecord();
       } else if (this.data.interactStatus === 'release_convert') {
         // 转文字：直接进入 confirm（最终文本以 onStop 为准）
@@ -454,7 +464,7 @@ export default class ChatRecord extends SuperComponent {
 
     sendVoice() {
       // 发送语音原始信息（按原组件逻辑保留）
-      this.triggerEvent('send', {
+      this.triggerEvent('recognize', {
         voicePath: this.data.voiceInfo.voicePath,
         voiceText: this.data.voiceInfo.voiceText,
         duration: this.data.voiceInfo.duration,
@@ -466,11 +476,14 @@ export default class ChatRecord extends SuperComponent {
     },
 
     handleSendVoiceMsg() {
-      console.error('点击发送按钮=========')
-      if (this.data.processStatus === 'error') return;
+      console.log('[chat-record] 点击发送按钮');
+      if (this.data.processStatus === 'error') {
+        console.log('[chat-record] 当前状态为 error，不发送');
+        return;
+      }
       
       // 发送语音消息，包含语音文件和转文字结果
-      this.triggerEvent('send', {
+      this.triggerEvent('recognize', {
         voicePath: this.data.voiceInfo.voicePath,
         voiceText: this.data.translateResult || this.data.voiceInfo.voiceText,
         duration: this.data.voiceInfo.duration,
@@ -485,7 +498,7 @@ export default class ChatRecord extends SuperComponent {
     },
 
     handleCancelSend() {
-      console.error('点击取消按钮=========')
+      console.log('[chat-record] 点击取消按钮');
       if (this.data.processStatus === 'error') {
         this.resetState();
         return;
@@ -500,22 +513,6 @@ export default class ChatRecord extends SuperComponent {
 
     onTranslateInput(e: WechatMiniprogram.Input) {
       this.setData({ translateResult: (e.detail?.value ?? '') as string });
-    },
-
-    // ============= 按钮按压态（用于 class active） =============
-    onCancelBtnTouchStart() {
-      if (this.data.processStatus === 'error') return;
-      this.setData({ activeBtnCancel: true });
-    },
-    onCancelBtnTouchEnd() {
-      this.setData({ activeBtnCancel: false });
-    },
-    onSendBtnTouchStart() {
-      if (this.data.processStatus === 'error') return;
-      this.setData({ activeBtnSend: true });
-    },
-    onSendBtnTouchEnd() {
-      this.setData({ activeBtnSend: false });
     },
 
     // ==================== 状态管理 ====================
@@ -572,10 +569,6 @@ export default class ChatRecord extends SuperComponent {
       this.data.handleSendVoiceMsg = this.handleSendVoiceMsg.bind(this);
       this.data.handleCancelSend = this.handleCancelSend.bind(this);
       this.data.onTranslateInput = this.onTranslateInput.bind(this);
-      this.data.onCancelBtnTouchStart = this.onCancelBtnTouchStart.bind(this);
-      this.data.onCancelBtnTouchEnd = this.onCancelBtnTouchEnd.bind(this);
-      this.data.onSendBtnTouchStart = this.onSendBtnTouchStart.bind(this);
-      this.data.onSendBtnTouchEnd = this.onSendBtnTouchEnd.bind(this);
       this.data.onOpenSetting = this.onOpenSetting.bind(this);
       this.data.resetState = this.resetState.bind(this);
       this.data.requestRecordAuth = this.requestRecordAuth.bind(this);

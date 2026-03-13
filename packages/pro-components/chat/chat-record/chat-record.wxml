@@ -83,9 +83,6 @@
           <view
             class="action-btn btn-cancel {{activeBtnCancel ? 'active' : ''}} {{processStatus === 'error' ? 'disabled' : ''}}"
             bindtap="handleCancelSend"
-            catchtouchstart="onCancelBtnTouchStart"
-            catchtouchend="onCancelBtnTouchEnd"
-            catchtouchcancel="onCancelBtnTouchEnd"
           >
             <view class="icon-wrapper">
               <text class="rollback-icon">↩</text>
@@ -95,9 +92,6 @@
           <view
             class="action-btn btn-send {{activeBtnSend ? 'active' : ''}} {{processStatus === 'error' ? 'disabled' : ''}}"
             bindtap="handleSendVoiceMsg"
-            catchtouchstart="onSendBtnTouchStart"
-            catchtouchend="onSendBtnTouchEnd"
-            catchtouchcancel="onSendBtnTouchEnd"
           >
             <text class="send-btn-text">Send</text>
           </view>
