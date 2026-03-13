@@ -55,10 +55,11 @@ Page({
     console.log('语音识别结果:', voiceMsg);
 
     // 将语音识别结果设置到输入框中
-    // this.setData({
-    //   query: voiceMsg,
-    //   showVoice: false, // 识别完成后隐藏语音输入组件
-    // });
+    this.setData({
+      query: voiceMsg.voiceText,
+      showVoice: false, // 识别完成后隐藏语音输入组件
+      allowSpeech: 'keyboard',
+    });
 
     // 提示用户
     wx.showToast({
