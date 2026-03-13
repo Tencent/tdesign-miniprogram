@@ -15,7 +15,7 @@
         bind:send="onSend"
         bind:keyboardheightchange="onKeyboardHeightChange"
       >
-        <view slot="voice-input">
+        <view slot="speech-input">
           <t-chat-record useSpeechInputSlot useSpeechNoAuthSlot bind:recognize="onVoiceRecognize">
             <view slot="speechInput" style="padding: 10px; background: #f0f0f0; border-radius: 8px"> 按住说话 </view>
             <view slot="speechNoAuth" style="padding: 10px; background: #ffebee; border-radius: 8px; color: #d32f2f">

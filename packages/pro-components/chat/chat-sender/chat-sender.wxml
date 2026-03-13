@@ -56,7 +56,7 @@
       </block>
       <!-- 语音输入模式 -->
       <block wx:else>
-        <slot name="voice-input" />
+        <slot name="speech-input" />
       </block>
     </view>
 
