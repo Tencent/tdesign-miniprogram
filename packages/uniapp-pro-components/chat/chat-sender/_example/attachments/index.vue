@@ -32,7 +32,6 @@
             @fileClick="onFileClick"
             @fileDelete="onFileDelete"
             @fileChange="onFileChange"
-            @fileAdd="onFileAdd"
             @fileSelect="onFileSelect"
             @updateVisible="onUpdateVisible"
             @keyboardheightchange="onKeyboardHeightChange"

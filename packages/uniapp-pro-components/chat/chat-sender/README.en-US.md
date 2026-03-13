@@ -25,7 +25,6 @@ name | params | description
 -- | -- | --
 blur | `(value:string, context: { e: FocusEvent })` | \-
 change | `(value:string, context: { e: InputEvent \| MouseEvent \| KeyboardEvent })` | \-
-file-add | \- | \-
 file-change | `(file:FileItem)` | \-
 file-click | `(file:FileItem)` | \-
 file-delete | `(file:FileItem)` | \-

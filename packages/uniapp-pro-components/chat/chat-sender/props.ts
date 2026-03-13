@@ -55,11 +55,6 @@ export default {
     type: Function,
     default: () => ({}),
   },
-  /** 添加附件时触发 */
-  onFileAdd: {
-    type: Function,
-    default: () => ({}),
-  },
   /** 附件列表变化时触发 */
   onFileChange: {
     type: Function,

@@ -74,7 +74,6 @@ visible | Boolean | false | 上传面板是否可见 | N
 -- | -- | --
 blur | `(value:string, context: { e: FocusEvent })` | 输入框聚焦时触发
 change | `(value:string, context: { e: InputEvent \| MouseEvent \| KeyboardEvent })` | 输入框值发生变化时触发
-file-add | \- | 添加附件时触发
 file-change | `(file:FileItem)` | 附件列表变化时触发
 file-click | `(file:FileItem)` | 点击附件时触发
 file-delete | `(file:FileItem)` | 删除附件时触发
