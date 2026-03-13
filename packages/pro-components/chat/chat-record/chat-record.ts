@@ -32,7 +32,8 @@ export default class ChatRecord extends SuperComponent {
 
     // 权限
     recordAuthSetting: false,
-    recordAuthStatus: true,
+    // 是否已授权 scope.record（未授权时应展示去设置/授权引导）
+    recordAuthStatus: false,
 
     // UI 状态
     showMask: false,
@@ -52,26 +53,18 @@ export default class ChatRecord extends SuperComponent {
 
     // 转文字结果
     translateResult: '',
-
-    // 手势追踪
     startTouch: { x: 0, y: 0 },
-
-    // 运行标记
     isStarted: false,
     isManagerBusy: false,
     ignoreNextOnStop: false,
     managerRecording: false,
-
-    // UI 渲染辅助
     waveList: Array.from({ length: 13 }).map((_, i) => i + 1),
     bubbleStatusClass: 'bubble-blue',
   };
 
-  // WechatSI 插件识别管理器
   private manager: any = null;
 
   methods = {
-    // ==================== 初始化 ====================
     initRecordManager() {
       try {
         // WechatSI 插件需要你在 app.json 里配置 plugins: { WechatSI: { ... } }
@@ -82,7 +75,7 @@ export default class ChatRecord extends SuperComponent {
         this.manager = null;
       }
 
-      const { manager } = this;
+      const {manager} = this;
       if (!manager) return;
 
       manager.onStart = () => {
@@ -170,31 +163,53 @@ export default class ChatRecord extends SuperComponent {
       }
       this.setData({ bubbleStatusClass });
     },
-
-    // ==================== 权限管理 ====================
     async getVoiceAuthSetting() {
       return new Promise<boolean>((resolve, reject) => {
         wx.getSetting({
           success: (res) => {
             const authSetting = res.authSetting || {};
-            // scope.record key 存在且值为 true：已授权
-            // scope.record key 存在且值为 false：已永久拒绝
-            // scope.record key 不存在：从未申请过
             const hasRequested = Object.prototype.hasOwnProperty.call(authSetting, 'scope.record');
             const recordAuthStatus = !!authSetting['scope.record'];
-            // recordAuthSetting：true 表示已授权，false 表示未授权（含从未申请和已拒绝）
             const recordAuthSetting = recordAuthStatus;
-            // recordAuthDenied：true 表示已永久拒绝（需引导去设置页）
             const recordAuthDenied = hasRequested && !recordAuthStatus;
+
             this.setData({ recordAuthSetting, recordAuthStatus, recordAuthDenied } as any);
             resolve(recordAuthSetting);
           },
-          fail: () => reject(new Error('getSetting failed')),
+          fail: () => reject(new Error('获取录音权限设置失败')),
         });
       });
     },
 
+    async requestRecordAuth() {
+      // 系统层检测：如果系统把“微信-麦克风”关了，这里会提示去系统设置
+      const sysOk = await this.checkSystemMicPermission();
+      if (!sysOk) return;
+
+      try {
+        // 先尝试直接弹授权框（必须在用户点击事件里调用）
+        await wx.authorize({ scope: 'scope.record' });
+
+        // 授权成功后刷新状态
+        await this.getVoiceAuthSetting();
+      } catch (e) {
+        // 用户拒绝 / 或已拒绝不再询问 -> 才引导去设置页
+        this.openVoiceSetting();
+      }
+    },
+
+    /**
+     * 申请小程序录音权限（scope.record）
+     * 同时检测"系统层面是否禁用了微信麦克风"。
+     */
     async applyAuth() {
+      // 先检测系统层面的麦克风权限（如果系统禁用，openSetting 里通常也不会出现开关）
+      const sysOk = await this.checkSystemMicPermission();
+      if (!sysOk) {
+        this.setData({ recordAuthSetting: false, recordAuthStatus: false });
+        return false;
+      }
+
       return new Promise<boolean>((resolve, reject) => {
         wx.authorize({
           scope: 'scope.record',
@@ -202,20 +217,83 @@ export default class ChatRecord extends SuperComponent {
             this.setData({ recordAuthSetting: true, recordAuthStatus: true });
             resolve(true);
           },
-          fail: (err) => {
+          fail: (err: any) => {
+            // 这里通常是用户拒绝（或已拒绝且不再询问）
             this.setData({ recordAuthSetting: false, recordAuthStatus: false });
-            reject(new Error(err?.errMsg || 'authorize failed'));
+            reject(err);
           },
         });
       });
     },
 
-    // 用户从设置页返回后的回调（button open-type="openSetting" 触发）
-    onOpenSetting(e: any) {
-      const authSetting = e?.detail?.authSetting || {};
-      const recordAuthSetting = !!authSetting['scope.record'];
-      const recordAuthStatus = recordAuthSetting;
-      this.setData({ recordAuthSetting, recordAuthStatus });
+    /**
+     * 检测系统层面的麦克风权限是否允许"微信"使用。
+     * - iOS/Android 在系统设置里关闭微信麦克风时：
+     *   openSetting 页面可能没有"录音"开关，因此必须给出明确引导。
+     */
+    async checkSystemMicPermission() {
+      // 低版本基础库可能没有该 API，缺失时默认继续走授权流程
+      // @ts-ignore
+      if (typeof wx.getAppAuthorizeSetting !== 'function') return true;
+
+      try {
+        // @ts-ignore
+        const res = wx.getAppAuthorizeSetting();
+        const mic = res?.microphoneAuthorized; // 'authorized' | 'denied' | 'not determined'
+
+        if (mic === 'denied') {
+          this.showSystemMicGuide();
+          return false;
+        }
+        return true;
+      } catch (e) {
+        return true;
+      }
+    },
+
+    /** 系统麦克风被关闭时的明确引导 */
+    showSystemMicGuide() {
+      wx.showModal({
+        title: '无法使用麦克风',
+        content:
+          '检测到手机系统已关闭"微信"的麦克风权限。\n\n请到系统设置中开启：\n- iOS：设置 > 微信 > 麦克风\n- Android：设置 > 应用管理 > 微信 > 权限 > 麦克风\n\n开启后返回小程序再试。',
+        showCancel: false,
+      });
+    },
+
+    async openVoiceSetting() {
+      // 先判断是否系统层禁用了微信麦克风；如果是，直接提示去系统设置
+      const sysOk = await this.checkSystemMicPermission();
+      if (!sysOk) return;
+
+      wx.openSetting({
+        success: (r) => {
+          const recordAuthSetting = !!r.authSetting?.['scope.record'];
+          const recordAuthStatus = !!r.authSetting?.['scope.record'];
+          this.setData({ recordAuthSetting, recordAuthStatus });
+        },
+        fail: () => {
+          wx.showToast({ icon: 'none', title: '打开设置失败' });
+        },
+      });
+    },
+
+    // ==================== 授权设置回调 ====================
+    onOpenSetting(e: WechatMiniprogram.OpenSettingSuccessCallbackResult) {
+      const { authSetting } = e;
+      if (authSetting?.['scope.record']) {
+        // 用户授权了录音权限
+        this.setData({
+          recordAuthSetting: true,
+          recordAuthStatus: true,
+        });
+      } else {
+        // 用户未授权录音权限
+        this.setData({
+          recordAuthSetting: false,
+          recordAuthStatus: false,
+        });
+      }
     },
 
     // ==================== 录音流程 ====================
@@ -236,16 +314,15 @@ export default class ChatRecord extends SuperComponent {
       try {
         await this.getVoiceAuthSetting();
         if (!this.data.recordAuthSetting) {
-          // 已永久拒绝：button open-type="openSetting" 会自动引导用户去设置页，这里只退出即可
-          if ((this.data as any).recordAuthDenied) {
+          const ok = await this.applyAuth();
+          if (!ok) {
             this.setData({ isStarted: false });
             return;
           }
-          // 从未申请过：弹出系统授权弹窗
-          await this.applyAuth();
+          this.setData({ isStarted: false });
+          return;
         }
       } catch (error) {
-        // 授权弹窗被拒绝，退出
         this.setData({ isStarted: false });
         return;
       }
@@ -362,7 +439,7 @@ export default class ChatRecord extends SuperComponent {
 
     // ==================== 业务逻辑 ====================
     cancelRecord() {
-      this.triggerEvent('cancel');
+      this.setData({ showMask: false });
       this.resetState();
     },
 
@@ -382,22 +459,43 @@ export default class ChatRecord extends SuperComponent {
         voiceText: this.data.voiceInfo.voiceText,
         duration: this.data.voiceInfo.duration,
       });
-      this.resetState();
+      // 延迟重置状态，确保事件能够正确触发
+      setTimeout(() => {
+        this.resetState();
+      }, 100);
     },
 
     handleSendVoiceMsg() {
+      console.error('点击发送按钮=========')
       if (this.data.processStatus === 'error') return;
-      this.triggerEvent('recognize', this.data.translateResult);
-      this.resetState();
+      
+      // 发送语音消息，包含语音文件和转文字结果
+      this.triggerEvent('send', {
+        voicePath: this.data.voiceInfo.voicePath,
+        voiceText: this.data.translateResult || this.data.voiceInfo.voiceText,
+        duration: this.data.voiceInfo.duration,
+      });
+      
+      // 关闭弹窗
+      this.setData({ showMask: false });
+      // 延迟重置状态，确保事件能够正确触发
+      setTimeout(() => {
+        this.resetState();
+      }, 100);
     },
 
     handleCancelSend() {
+      console.error('点击取消按钮=========')
       if (this.data.processStatus === 'error') {
         this.resetState();
         return;
       }
-      this.triggerEvent('cancel');
-      this.resetState();
+      // 关闭弹窗
+      this.setData({ showMask: false });
+      // 延迟重置状态，确保事件能够正确触发
+      setTimeout(() => {
+        this.resetState();
+      }, 100);
     },
 
     onTranslateInput(e: WechatMiniprogram.Input) {
@@ -463,7 +561,7 @@ export default class ChatRecord extends SuperComponent {
       this.data.updateBubbleClass = this.updateBubbleClass.bind(this);
       this.data.getVoiceAuthSetting = this.getVoiceAuthSetting.bind(this);
       this.data.applyAuth = this.applyAuth.bind(this);
-      this.data.onOpenSetting = this.onOpenSetting.bind(this);
+      this.data.openVoiceSetting = this.openVoiceSetting.bind(this);
       this.data.startRecord = this.startRecord.bind(this);
       this.data.touchmove = this.touchmove.bind(this);
       this.data.stopRecord = this.stopRecord.bind(this);
@@ -478,7 +576,9 @@ export default class ChatRecord extends SuperComponent {
       this.data.onCancelBtnTouchEnd = this.onCancelBtnTouchEnd.bind(this);
       this.data.onSendBtnTouchStart = this.onSendBtnTouchStart.bind(this);
       this.data.onSendBtnTouchEnd = this.onSendBtnTouchEnd.bind(this);
+      this.data.onOpenSetting = this.onOpenSetting.bind(this);
       this.data.resetState = this.resetState.bind(this);
+      this.data.requestRecordAuth = this.requestRecordAuth.bind(this);
 
       this.initRecordManager();
     },

@@ -16,8 +16,7 @@
   <button
     wx:else
     class="{{classPrefix}}-hook {{classPrefix}}-hook--no-auth"
-    open-type="openSetting"
-    bindopensetting="onOpenSetting"
+    bindtap="requestRecordAuth"
   >
     <slot name="speechNoAuth">
       <view>请授权麦克风权限</view>
@@ -100,7 +99,7 @@
             catchtouchend="onSendBtnTouchEnd"
             catchtouchcancel="onSendBtnTouchEnd"
           >
-            <text>Send</text>
+            <text class="send-btn-text">Send</text>
           </view>
         </view>
 

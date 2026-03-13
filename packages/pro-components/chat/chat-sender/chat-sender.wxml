@@ -31,7 +31,7 @@
     <view class="{{classPrefix}}__textarea">
       <slot name="input-prefix" />
       <!-- 文本输入模式 -->
-      <block wx:if="{{senderType === 'keyboard'}}">
+      <block wx:if="{{allowSpeech === 'keyboard'}}">
         <textarea
           class="{{classPrefix}}__textarea--control"
           style="{{_this.textareaStyle(textareaProps.autosize)}}"

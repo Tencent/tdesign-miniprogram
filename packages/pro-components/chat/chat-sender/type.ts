@@ -86,7 +86,7 @@ export interface TdChatSenderProps {
     type: StringConstructor;
     value?: string;
   };
-  senderType?: {
+  allowSpeech?: {
     type: StringConstructor;
     value?: 'keyboard' | 'speech';
   };

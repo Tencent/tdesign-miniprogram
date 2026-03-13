@@ -59,7 +59,7 @@ const props: TdChatSenderProps = {
     value: '',
   },
   // 输入类型， keyboard-键盘输入，speech-语音输入
-  senderType: {
+  allowSpeech: {
     type: String,
     value: 'keyboard',
   },

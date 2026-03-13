@@ -7,7 +7,7 @@ Page({
     placeholder: '请输入内容', // 输入框占位符
     loading: false, // 发送按钮加载状态
     showVoice: false, // 是否显示语音输入组件
-    senderType: 'keyboard',
+    allowSpeech: 'keyboard',
   },
 
   /**
@@ -35,20 +35,16 @@ Page({
     const showVoice = !this.data.showVoice;
     this.setData({
       showVoice,
-      senderType: showVoice ? 'speech' : 'keyboard',
+      allowSpeech: showVoice ? 'speech' : 'keyboard',
     });
   },
 
   toggleVoiceIcon() {
     this.setData({
-      senderType: this.data.senderType === 'keyboard' ? 'speech' : 'keyboard',
+      allowSpeech: this.data.allowSpeech === 'keyboard' ? 'speech' : 'keyboard',
     });
   },
 
-  // 键盘高度变化
-  onKeyboardHeightChange(e) {
-    console.log('键盘高度变化:', e.detail);
-  },
 
   /**
    * 语音识别回调

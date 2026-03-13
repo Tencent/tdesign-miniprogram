@@ -11,19 +11,19 @@
         value="{{query}}"
         loading="{{loading}}"
         placeholder="{{placeholder}}"
-        senderType="{{senderType}}"
+        allowSpeech="{{allowSpeech}}"
         bind:send="onSend"
         bind:keyboardheightchange="onKeyboardHeightChange"
       >
         <view slot="voice-input">
-          <t-chat-record bind:recognize="onVoiceRecognize">
+          <t-chat-record bind:recognize="handleRecognize">
             <view slot="speechInput" class="speech-slot-btn"> 按住说话 </view>
             <view slot="speechNoAuth" class="speech-btn-error"> 请授权麦克风权限 </view>
           </t-chat-record>
         </view>
         <view slot="footer-prefix" class="demo-footer-prefix">
           <t-icon
-            wx:if="{{senderType === 'speech'}}"
+            wx:if="{{allowSpeech === 'speech'}}"
             class="voice-input-button"
             name="sound"
             bind:tap="toggleVoiceIcon"
