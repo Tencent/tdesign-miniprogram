@@ -15,7 +15,7 @@
           <block wx:if="{{li.tokens && li.tokens.length}}">
             <chat-markdown-node nodes="{{li.tokens}}" />
           </block>
-          <block wx:else>{{''+item.text+''}}</block>
+          <block wx:else>{{''+li.text+''}}</block>
         </view>
       </block>
     </view>
