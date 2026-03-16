@@ -62,20 +62,25 @@ export default class Stepper extends SuperComponent {
     add(a: number, b: number) {
       const maxLen = Math.max(this.getLen(a), this.getLen(b));
       const base = 10 ** maxLen;
-      return Math.round(a * base + b * base) / base;
+      const result = Math.round(a * base + b * base) / base;
+      // 保留运算涉及的最大小数位数，避免精度信息丢失
+      return maxLen > 0 ? result.toFixed(maxLen) : result;
     },
 
     format(value) {
       const { min, max, step } = this.properties as any;
-      const len = Math.max(this.getLen(step), this.getLen(value));
+      // 使用字符串形式计算小数位数，避免数字隐式转换导致末尾0丢失
+      const len = Math.max(this.getLen(step), this.getLen(String(value)));
       // 超过边界取边界值
       return Math.max(Math.min(max, value, Number.MAX_SAFE_INTEGER), min, Number.MIN_SAFE_INTEGER).toFixed(len);
     },
 
     setValue(value) {
-      const newValue = Number(this.format(value));
+      const formattedStr = this.format(value);
+      const newValue = Number(formattedStr);
 
-      this.updateCurrentValue(newValue);
+      // 使用 format 返回的字符串更新显示值，避免 Number() 转换丢失末尾0
+      this.updateCurrentValue(formattedStr);
 
       if (this.preValue === newValue) return;
 
@@ -116,8 +121,11 @@ export default class Stepper extends SuperComponent {
     },
 
     updateCurrentValue(value) {
+      // 当字符串转数字不丢失信息时（如 "88" → 88），用数字类型，保持模板渲染一致性
+      // 当会丢失信息时（如 "1.0" → 1），保留字符串以维持小数末尾0
+      const numValue = Number(value);
       this.setData({
-        currentValue: value,
+        currentValue: String(numValue) === String(value) ? numValue : value,
       });
     },
 
@@ -139,14 +147,15 @@ export default class Stepper extends SuperComponent {
 
       this.updateCurrentValue(this.data.integer ? newValue : formatted);
 
-      if (this.data.integer || /\.\d+/.test(formatted)) {
+      if (this.data.integer || /\.\d*[1-9]/.test(formatted)) {
         this.setValue(formatted);
       }
     },
 
     handleBlur(e) {
       const { value: rawValue } = e.detail;
-      const value = this.format(rawValue);
+      const formatted = this.filterIllegalChar(rawValue);
+      const value = this.format(formatted);
 
       this.setValue(value);
       this.triggerEvent('blur', { value });
