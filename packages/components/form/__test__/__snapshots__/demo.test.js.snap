@@ -421,7 +421,6 @@ exports[`Form Form horizontal demo works fine 1`] = `
     </t-form-item>
     <t-form-item
       label="上传照片"
-      labelAlign="top"
       name="photo"
     >
       <t-upload
@@ -444,7 +443,7 @@ exports[`Form Form horizontal demo works fine 1`] = `
         }}"
         gridConfig="{{
           Object {
-            "column": 4,
+            "column": 3,
           }
         }}"
         max="{{6}}"
