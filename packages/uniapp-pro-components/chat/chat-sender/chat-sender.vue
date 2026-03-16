@@ -17,7 +17,6 @@
               :image-viewer="attachmentsProps.imageViewer"
               @fileClick="handleFileClick"
               @remove="handleFileRemove"
-              @add="handleFileAdd"
             />
           </view>
         </block>
@@ -363,10 +362,6 @@ export default uniComponent({
       this.$emit('fileChange', {
         files,
       }); // 确保传递新数组
-    },
-
-    handleFileAdd() {
-      this.$emit('fileAdd');
     },
 
     async handleImageUpload(e) {

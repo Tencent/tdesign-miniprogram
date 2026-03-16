@@ -28,7 +28,6 @@
           @fileClick="onFileClick"
           @fileDelete="onFileDelete"
           @fileChange="onFileChange"
-          @fileAdd="onFileAdd"
           @fileSelect="onFileSelect"
           @updateVisible="onUpdateVisible"
           @keyboardheightchange="onKeyboardHeightChange"
@@ -118,7 +117,6 @@ export default {
         items: [],
         removable: true,
         imageViewer: true,
-        addable: false,
       },
       renderPresets: [
         {
@@ -220,11 +218,6 @@ export default {
       const { files } = e;
       console.log('文件列表变化:', files);
       this.fileList = files;
-    },
-
-    // 添加文件
-    onFileAdd() {
-      console.log('添加文件');
     },
 
     // 选择文件

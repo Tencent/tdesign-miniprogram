@@ -25,7 +25,6 @@
         bind:fileClick="onFileClick"
         bind:fileDelete="onFileDelete"
         bind:fileChange="onFileChange"
-        bind:fileAdd="onFileAdd"
         bind:fileSelect="onFileSelect"
         bind:updateVisible="onUpdateVisible"
         bind:keyboardheightchange="onKeyboardHeightChange"

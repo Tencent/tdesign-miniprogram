@@ -17,7 +17,6 @@
           imageViewer="{{attachmentsProps.imageViewer}}"
           bind:fileClick="handleFileClick"
           bind:remove="handleFileRemove"
-          bind:add="handleFileAdd"
         >
         </attachments>
       </view>
