@@ -131,7 +131,6 @@ export default {
         ],
         removable: true,
         imageViewer: true,
-        addable: false,
       },
       renderPresets: [
         {
@@ -246,11 +245,6 @@ export default {
       };
 
       this.fileList = files;
-    },
-
-    // 添加文件
-    onFileAdd() {
-      console.log('添加文件');
     },
 
     // 选择文件
