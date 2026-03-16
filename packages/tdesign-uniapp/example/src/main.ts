@@ -8,6 +8,9 @@ import TNavbar from '@tdesign/uniapp/navbar/navbar.vue';
 import TDemoHeader from '@tdesign/uniapp/demo-header/demo-header.vue';
 import TDemoNavbar from '@tdesign/uniapp/demo-navbar/demo-navbar.vue';
 
+const chooseImage = uni.chooseImage || {};
+// @ts-ignore
+uni.chooseImage = chooseImage;
 
 export function createApp() {
   const app = createSSRApp(App);
