@@ -24,14 +24,14 @@ visible | Boolean | false | \- | N
 
 name | params | description
 -- | -- | --
-blur | `(value:string, context: { e: FocusEvent })` | \-
-change | `(value:string, context: { e: InputEvent \| MouseEvent \| KeyboardEvent })` | \-
-file-change | `(file:FileItem)` | \-
-file-click | `(file:FileItem)` | \-
-file-delete | `(file:FileItem)` | \-
-file-select | `(detail: {files: FileList, name: UploadActionType})` | \-
-focus | `(value:string, context: { e: FocusEvent }) ` | \-
+blur | `(value: string, context: { e: FocusEvent })` | \-
+change | `(value: string, context: { e: InputEvent \| MouseEvent \| KeyboardEvent })` | \-
+file-change | `(file: FileItem)` | \-
+file-click | `(file: FileItem)` | \-
+file-delete | `(file: FileItem)` | \-
+file-select | `(detail: {files: FileList, name: UploadActionType}) ` | [see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/chat-sender/type.ts)。<br/>`type UploadActionType = 'uploadAttachment' \| 'uploadImage'`<br/>
+focus | `(value: string, context: { e: FocusEvent }) ` | \-
 keyboardheightchange | `(detail: {height: number, duration: number})` | \-
-send | `(value:string, context: {\| KeyboardEvent })` | \-
-stop | `(value:string)` | \-
+send | `(value: string, context: {\| KeyboardEvent })` | \-
+stop | `(value: string)` | \-
 upload-click | \- | \-
