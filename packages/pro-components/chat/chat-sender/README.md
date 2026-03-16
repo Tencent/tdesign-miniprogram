@@ -72,15 +72,14 @@ visible | Boolean | false | 上传面板是否可见 | N
 
 名称 | 参数 | 描述
 -- | -- | --
-blur | `(value:string, context: { e: FocusEvent })` | 输入框聚焦时触发
-change | `(value:string, context: { e: InputEvent \| MouseEvent \| KeyboardEvent })` | 输入框值发生变化时触发
-file-add | \- | 添加附件时触发
-file-change | `(file:FileItem)` | 附件列表变化时触发
-file-click | `(file:FileItem)` | 点击附件时触发
-file-delete | `(file:FileItem)` | 删除附件时触发
-file-select | `(detail: {files: FileList, name: UploadActionType})` | 选择文件（图片/微信文件）时触发
-focus | `(value:string, context: { e: FocusEvent }) ` | 输入框聚焦时触发
+blur | `(value: string, context: { e: FocusEvent })` | 输入框聚焦时触发
+change | `(value: string, context: { e: InputEvent \| MouseEvent \| KeyboardEvent })` | 输入框值发生变化时触发
+file-change | `(file: FileItem)` | 附件列表变化时触发
+file-click | `(file: FileItem)` | 点击附件时触发
+file-delete | `(file: FileItem)` | 删除附件时触发
+file-select | `(detail: {files: FileList, name: UploadActionType}) ` | 选择文件（图片/微信文件）时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/chat-sender/type.ts)。<br/>`type UploadActionType = 'uploadAttachment' \| 'uploadImage'`<br/>
+focus | `(value: string, context: { e: FocusEvent }) ` | 输入框聚焦时触发
 keyboardheightchange | `(detail: {height: number, duration: number})` | 选择文件（图片/微信文件）时触发
-send | `(value:string, context: {\| KeyboardEvent })` | 点击消息发送的回调方法
-stop | `(value:string)` | 点击消息终止的回调方法
+send | `(value: string, context: {\| KeyboardEvent })` | 点击消息发送的回调方法
+stop | `(value: string)` | 点击消息终止的回调方法
 upload-click | \- | 【实验】点击上传按钮时触发

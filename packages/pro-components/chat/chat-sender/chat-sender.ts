@@ -174,10 +174,6 @@ export default class ChatSender extends SuperComponent {
       this.triggerEvent('fileChange', { files }); // 确保传递新数组
     },
 
-    handleFileAdd() {
-      this.triggerEvent('fileAdd');
-    },
-
     async handleImageUpload(e) {
       const { type } = e.currentTarget.dataset;
       const sourceType = [type];

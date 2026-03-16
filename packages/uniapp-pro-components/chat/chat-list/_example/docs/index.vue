@@ -144,7 +144,6 @@ export default {
         items: [],
         removable: true,
         imageViewer: true,
-        addable: false,
       },
 
       renderPresets: [

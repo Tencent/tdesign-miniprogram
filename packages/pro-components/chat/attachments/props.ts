@@ -6,11 +6,6 @@
 
 import { TdAttachmentsProps } from './type';
 const props: TdAttachmentsProps = {
-  /** 【讨论中】是否显示添加按钮 */
-  addable: {
-    type: Boolean,
-    value: true,
-  },
   /** 是否启用图片预览功能 */
   imageViewer: {
     type: Boolean,
