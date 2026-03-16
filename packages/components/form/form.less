@@ -2,15 +2,9 @@
 
 @form: ~'@{prefix}-form';
 
-// Form 变量定义
 @form-bg-color: var(--td-form-bg-color, @bg-color-container);
-@form-padding: var(--td-form-padding, 0);
-@form-border-radius: var(--td-form-border-radius, 0);
-@form-readonly-bg-color: var(--td-form-readonly-bg-color, @bg-color-secondarycontainer);
 
 .@{form} {
   display: block;
   background-color: @form-bg-color;
-  padding: @form-padding;
-  border-radius: @form-border-radius;
 }

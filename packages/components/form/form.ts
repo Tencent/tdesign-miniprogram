@@ -1,12 +1,13 @@
 import props from './props';
 import config from '../common/config';
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
+import useCustomNavbar from '../mixins/using-custom-navbar';
 
 const { prefix } = config;
 const name = `${prefix}-form`;
 @wxComponent()
 export default class Form extends SuperComponent {
-  behaviors = ['wx://component-export'];
+  behaviors = ['wx://component-export', useCustomNavbar];
 
   externalClasses = [
     `${prefix}-class`,
@@ -116,6 +117,7 @@ export default class Form extends SuperComponent {
 
     // 滚动到第一个校验不通过的字段
     scrollToError(validateResult) {
+      const { distanceTop } = this.data;
       const { scrollToFirstError } = this.properties;
       if (!scrollToFirstError) return;
 
@@ -126,7 +128,7 @@ export default class Form extends SuperComponent {
       const errorChild = children.find((child) => child.properties.name === firstErrorKey);
       if (!errorChild) return;
 
-      errorChild.scrollIntoView(scrollToFirstError);
+      errorChild.scrollIntoView(scrollToFirstError, distanceTop);
     },
 
     // 纯净验证（不显示错误信息）

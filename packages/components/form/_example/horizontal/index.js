@@ -35,7 +35,7 @@ Component({
     rateGap: 8,
     action: 'https://service-bv448zsw-1257786608.gz.apigw.tencentcs.com/api/upload-demo',
     gridConfig: {
-      column: 4,
+      column: 3,
     },
     options: [
       {

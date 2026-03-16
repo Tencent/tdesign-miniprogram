@@ -5,6 +5,8 @@
   rules="{{rules}}"
   reset-type="initial"
   show-error-message
+  using-custom-navbar
+  scrollToFirstError="smooth"
   label-align="left"
   bind:reset="onReset"
   bind:submit="onSubmit"
@@ -114,7 +116,7 @@
     />
   </t-form-item>
 
-  <t-form-item label="上传照片" name="photo" label-align="top">
+  <t-form-item label="上传照片" name="photo">
     <t-upload
       class="upload"
       files="{{formData.photo}}"

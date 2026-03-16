@@ -1,12 +1,14 @@
 @import '../common/style/base.less';
 
 /* Less 支持测试 - 监听功能验证 */
+@form: ~'@{prefix}-form';
 @form-item: ~'@{prefix}-form__item';
 @form-item-horizontal-padding: var(--td-form-item-horizontal-padding, 32rpx);
 @form-item-vertical-padding: var(--td-form-item-vertical-padding, 32rpx);
 @form-item-border-color: var(--td-form-item-border-color, @component-stroke);
 @form-item-border-left-space: var(--td-form-item-border-left-space, @form-item-vertical-padding);
 @form-item-border-right-space: var(--td-form-item-border-right-space, 0);
+
 .@{form-item} {
   display: flex;
   box-sizing: border-box;
@@ -14,8 +16,10 @@
   position: relative;
 
   // 覆盖 slot 内子组件的 padding
-  --td-input-vertical-padding: 0rpx;
-  --td-textarea-padding: 0rpx;
+  --td-cell-vertical-padding: 0;
+  --td-cell-horizontal-padding: 0;
+  --td-input-vertical-padding: 0;
+  --td-textarea-padding: 0;
 
   &:not(:last-child)::after {
     .hairline-bottom(@form-item-border-color);
@@ -24,31 +28,10 @@
     right: @form-item-border-right-space;
   }
 
-  &__controls {
-    flex: 1;
-  }
-
-  &__controls-row {
-    display: flex;
-    align-items: center;
-  }
-
-  &__controls-content {
-    flex: 1;
-    min-width: 0;
-  }
-
-  &__arrow {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    margin-left: 8rpx;
-  }
-
   &-help,
   &-extra {
     display: flex;
-    font-size: 24rpx;
+    font-size: @font-size-s;
     margin: 0;
     width: 100%;
     height: auto;
@@ -60,25 +43,28 @@
     color: @text-color-disabled;
   }
 
-  &-extra--error {
+  &--error {
     color: @error-color-6;
   }
 
-  &-extra--warning {
+  &--warning {
     color: @warning-color-5;
-  }
-
-  &-extra--success {
-    color: @success-color-5;
   }
 
   &-wrap {
     width: 100%;
+    display: flex;
   }
 
   &--top {
     display: flex;
     flex-direction: column;
+  }
+}
+
+.@{form} {
+  &--top {
+    align-items: center;
   }
 
   &__label {
@@ -101,7 +87,7 @@
       text-align: right;
     }
 
-    &--required:not(.@{form-item}__label--required-right) {
+    &--required:not(.@{form}__label--required-right) {
       label::before {
         display: inline;
         margin-right: calc(@spacer / 2);
@@ -119,7 +105,30 @@
       }
     }
     &--colon {
-      margin: 0 4rpx;
+      label::after {
+        content: ':';
+        position: relative;
+        margin: 0 4rpx;
+      }
+    }
+  }
+
+  &__controls {
+    flex: 1;
+    position: relative;
+
+    &-content {
+      display: flex;
+      align-items: center;
+      min-height: 48rpx;
+    }
+
+    &--left {
+      justify-content: flex-start;
+    }
+
+    &--right {
+      justify-content: flex-end;
     }
   }
 }

@@ -109,7 +109,9 @@ exports[`Form Form horizontal demo works fine 1`] = `
         ],
       }
     }}"
+    scrollToFirstError="smooth"
     showErrorMessage="{{true}}"
+    usingCustomNavbar="{{true}}"
     bind:reset="onReset"
     bind:submit="onSubmit"
   >
@@ -584,7 +586,9 @@ exports[`Form Form vertical demo works fine 1`] = `
         ],
       }
     }}"
+    scrollToFirstError="smooth"
     showErrorMessage="{{true}}"
+    usingCustomNavbar="{{true}}"
     bind:reset="onReset"
     bind:submit="onSubmit"
   >

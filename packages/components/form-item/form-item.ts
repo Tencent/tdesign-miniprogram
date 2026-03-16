@@ -4,7 +4,7 @@ import config from '../common/config';
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 
 const { prefix } = config;
-const name = `${prefix}-form__item`;
+const componentName = `form-item`;
 
 @wxComponent()
 export default class FormItem extends SuperComponent {
@@ -20,7 +20,11 @@ export default class FormItem extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
+    formClass: `${prefix}-form`,
+    formItemClass: `${prefix}-form__item`,
+    labelClass: `${prefix}-form__label`,
+    errorClasses: '',
     errorList: [],
     successList: [],
     verifyStatus: ValidateStatus.TO_BE_VALIDATED,
@@ -40,30 +44,23 @@ export default class FormItem extends SuperComponent {
         this.form = target;
         const { requiredMark, labelAlign, labelWidth, showErrorMessage } = this.properties;
         const isRequired = target.data.rules[this.properties.name]?.some((rule) => rule.required);
-        this.setData(
-          {
-            rules: target.data.rules[this.properties.name],
-            colon: target.data.colon,
-            labelAlign: labelAlign || target.data.labelAlign || 'right',
-            labelWidth: labelWidth || target.data.labelWidth,
-            requiredMark: (() => {
-              if (!isRequired) {
-                return false;
-              }
-              if (typeof requiredMark === 'boolean') {
-                return requiredMark;
-              }
-              return target.data.requiredMark || false;
-            })(),
-            showErrorMessage: typeof showErrorMessage === 'boolean' ? showErrorMessage : target.data.showErrorMessage,
-            requiredMarkPosition: target.data.requiredMarkPosition,
-          },
-          () => {
-            this.setData({
-              errorPosition: this.data.labelAlign !== 'top' && 'text-align: left;',
-            });
-          },
-        );
+        this.setData({
+          rules: target.data.rules[this.properties.name],
+          colon: target.data.colon,
+          labelAlign: labelAlign || target.data.labelAlign || 'right',
+          labelWidth: labelWidth || target.data.labelWidth,
+          requiredMark: (() => {
+            if (!isRequired) {
+              return false;
+            }
+            if (typeof requiredMark === 'boolean') {
+              return requiredMark;
+            }
+            return target.data.requiredMark || false;
+          })(),
+          showErrorMessage: typeof showErrorMessage === 'boolean' ? showErrorMessage : target.data.showErrorMessage,
+          requiredMarkPosition: target.data.requiredMarkPosition,
+        });
       },
       unlinked() {
         if (this.form) {
@@ -86,8 +83,15 @@ export default class FormItem extends SuperComponent {
   };
 
   methods = {
+    calcErrorClasses(errorList = this.data.errorList) {
+      if (!this.data.showErrorMessage) return '';
+      if (!errorList || errorList.length === 0) return '';
+      const type = errorList[0].type || 'error';
+      return type === 'error' ? `${this.data.formItemClass}--error` : `${this.data.formItemClass}--warning`;
+    },
+
     // 滚动到当前 form-item
-    scrollIntoView(type) {
+    scrollIntoView(type: string, distanceTop = 0) {
       this.createSelectorQuery()
         .select(`.${this.data.classPrefix}`)
         .boundingClientRect()
@@ -96,23 +100,12 @@ export default class FormItem extends SuperComponent {
         .exec((res) => {
           if (!res[0] || !res[1]) return;
           wx.pageScrollTo({
-            scrollTop: res[0].top + res[1].scrollTop,
+            scrollTop: res[0].top + res[1].scrollTop - distanceTop,
             duration: type === 'smooth' ? 300 : 0,
           });
         });
     },
 
-    // 处理描述信息链接点击事件
-    handlePreviewImage(e) {
-      const { url } = e.currentTarget.dataset;
-      const urls = url.map((item) => item.url) || [];
-      if (url) {
-        wx.previewImage({
-          urls: urls,
-          current: urls[0],
-        });
-      }
-    },
     // 初始化表单项
     initFormItem() {
       this.setInitialValue();
@@ -230,6 +223,7 @@ export default class FormItem extends SuperComponent {
       const { errorList, successList } = analysis;
 
       this.setData({
+        errorClasses: this.calcErrorClasses(errorList),
         errorList,
         successList,
         verifyStatus: errorList.length > 0 ? ValidateStatus.FAIL : ValidateStatus.SUCCESS,
@@ -239,6 +233,7 @@ export default class FormItem extends SuperComponent {
     // 清空验证结果
     clearValidate() {
       this.setData({
+        errorClasses: '',
         errorList: [],
         successList: [],
         verifyStatus: ValidateStatus.TO_BE_VALIDATED,
@@ -263,10 +258,19 @@ export default class FormItem extends SuperComponent {
 
     // 设置验证信息
     setValidateMessage(validateMessage) {
+      const errorList = validateMessage.filter((item) => item.type !== 'success');
+      const successList = validateMessage.filter((item) => item.type === 'success');
+
+      let verifyStatus = ValidateStatus.SUCCESS;
+      if (validateMessage.length > 0) {
+        verifyStatus = errorList.length > 0 ? ValidateStatus.FAIL : ValidateStatus.SUCCESS;
+      }
+
       this.setData({
-        errorList: validateMessage.filter((item) => item.type === 'error'),
-        successList: validateMessage.filter((item) => item.type === 'warning'),
-        verifyStatus: validateMessage.length > 0 ? ValidateStatus.FAIL : ValidateStatus.SUCCESS,
+        errorClasses: this.calcErrorClasses(errorList),
+        errorList,
+        successList,
+        verifyStatus,
       });
     },
 

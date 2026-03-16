@@ -4,6 +4,8 @@
   rules="{{rules}}"
   reset-type="empty"
   show-error-message
+  using-custom-navbar
+  scrollToFirstError="smooth"
   label-align="top"
   bind:reset="onReset"
   bind:submit="onSubmit"
