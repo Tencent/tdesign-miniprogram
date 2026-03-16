@@ -44,7 +44,6 @@ Page({
       ],
       removable: true,
       imageViewer: true,
-      addable: false,
     },
     renderPresets: [
       {
@@ -157,10 +156,6 @@ Page({
     this.setData({ fileList: files });
   },
 
-  // 添加文件
-  onFileAdd() {
-    console.log('添加文件');
-  },
 
   // 选择文件
   onFileSelect(e) {

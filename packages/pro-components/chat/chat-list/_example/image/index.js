@@ -71,7 +71,6 @@ Component({
       items: [],
       removable: true,
       imageViewer: true,
-      addable: false,
     },
     contentHeight: '100vh', // 内容高度
     activePopoverId: '', // 当前打开悬浮actionbar的chatId
