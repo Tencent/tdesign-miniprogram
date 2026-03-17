@@ -95,46 +95,21 @@ Component({
         ],
       },
     ],
-    rules: {
-      name: [
-        { required: true, message: '只能输入8个字符英文' },
-        { pattern: '^[a-zA-Z]+$', message: '只能输入8个字符英文' },
-        { maxLength: 8, message: '只能输入8个字符英文' },
-      ],
-      password: [
-        { required: true, message: '只能输入数字' },
-        { pattern: '^[0-9]+$', message: '只能输入数字' },
-      ],
-      gender: [{ required: true, message: '不能为空' }],
-      birth: [{ required: true, message: '不能为空' }],
-      age: [{ required: true, message: '年限不能为空' }],
-      place: [{ required: true, message: '不能为空' }],
-      description: [
-        { required: true, message: '分数过低会影响整体评价' },
-        { min: 2.5, message: '分数过低会影响整体评价' },
-      ],
-      resume: [{ required: true, message: '简介不能为空' }],
-      photo: [{ required: true, message: '上传照片不能为空' }],
-    },
+    rules: {},
   },
 
   lifetimes: {
     attached() {
       this.setData({
-        'rules.age': [
-          { required: true, message: '年限不能为空' },
-          {
-            validator: (value) => {
-              const { birth } = this.data.formData;
-              if (!birth) return true;
-              const birthYear = new Date(birth).getFullYear();
-              const currentYear = new Date().getFullYear();
-              const maxAge = currentYear - birthYear;
-              return value <= maxAge;
-            },
-            message: '输入的数字不能大于所填生日对应的年龄',
-          },
+        'rules.name': [
+          { pattern: '[a-zA-Z]{8}', validator: (val) => val.length === 8, message: '只能输入8个字符英文' },
         ],
+        'rules.password': [{ validator: (val) => val.length > 6, message: '长度大于6个字符' }],
+        'rules.description': [{ validator: (val) => val > 3, message: '分数过低会影响整体评价' }],
+        'rules.gender': [{ validator: (val) => val !== '', message: '不能为空' }],
+        'rules.birth': [{ validator: (val) => val !== '', message: '不能为空' }],
+        'rules.place': [{ validator: (val) => val !== '', message: '不能为空' }],
+        'rules.resume': [{ validator: (val) => val !== '', message: '不能为空' }],
       });
     },
   },
