@@ -8,10 +8,11 @@
     <!-- 标签区域 -->
     <view
       wx:if="{{label}}"
-      class="{{_.cls(labelClass, [labelAlign, ['required', requiredMark], ['required-right', requiredMark && requiredMarkPosition === 'right'], ['colon', colon]])}}  {{prefix}}-class-label"
+      class="{{_.cls(labelClass, [labelAlign, ['required', innerRequiredMark], ['required-right', innerRequiredMark && requiredMarkPosition === 'right']])}}  {{prefix}}-class-label"
       style="width: {{labelWidth}}"
     >
       <label for="{{for}}">{{label}}</label>
+      <block wx:if="{{colon}}">{{globalConfig.colonText}}</block>
     </view>
 
     <!-- 内容区域 -->

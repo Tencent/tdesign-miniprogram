@@ -33,78 +33,47 @@ exports[`Form Form horizontal demo works fine 1`] = `
     resetType="initial"
     rules="{{
       Object {
-        "age": Array [
-          Object {
-            "message": "年限不能为空",
-            "required": true,
-          },
-          Object {
-            "message": "输入的数字不能大于所填生日对应的年龄",
-            "validator": [Function],
-          },
-        ],
         "birth": Array [
           Object {
             "message": "不能为空",
-            "required": true,
+            "validator": [Function],
           },
         ],
         "description": Array [
           Object {
             "message": "分数过低会影响整体评价",
-            "required": true,
-          },
-          Object {
-            "message": "分数过低会影响整体评价",
-            "min": 2.5,
+            "validator": [Function],
           },
         ],
         "gender": Array [
           Object {
             "message": "不能为空",
-            "required": true,
+            "validator": [Function],
           },
         ],
         "name": Array [
           Object {
             "message": "只能输入8个字符英文",
-            "required": true,
-          },
-          Object {
-            "message": "只能输入8个字符英文",
-            "pattern": "^[a-zA-Z]+$",
-          },
-          Object {
-            "maxLength": 8,
-            "message": "只能输入8个字符英文",
+            "pattern": "[a-zA-Z]{8}",
+            "validator": [Function],
           },
         ],
         "password": Array [
           Object {
-            "message": "只能输入数字",
-            "required": true,
-          },
-          Object {
-            "message": "只能输入数字",
-            "pattern": "^[0-9]+$",
-          },
-        ],
-        "photo": Array [
-          Object {
-            "message": "上传照片不能为空",
-            "required": true,
+            "message": "长度大于6个字符",
+            "validator": [Function],
           },
         ],
         "place": Array [
           Object {
             "message": "不能为空",
-            "required": true,
+            "validator": [Function],
           },
         ],
         "resume": Array [
           Object {
-            "message": "简介不能为空",
-            "required": true,
+            "message": "不能为空",
+            "validator": [Function],
           },
         ],
       }
@@ -513,74 +482,47 @@ exports[`Form Form vertical demo works fine 1`] = `
     resetType="empty"
     rules="{{
       Object {
-        "age": Array [
-          Object {
-            "message": "年限不能为空",
-            "required": true,
-          },
-        ],
         "birth": Array [
           Object {
             "message": "不能为空",
-            "required": true,
+            "validator": [Function],
           },
         ],
         "description": Array [
           Object {
             "message": "分数过低会影响整体评价",
-            "required": true,
-          },
-          Object {
-            "message": "分数过低会影响整体评价",
-            "min": 2.5,
+            "validator": [Function],
           },
         ],
         "gender": Array [
           Object {
             "message": "不能为空",
-            "required": true,
+            "validator": [Function],
           },
         ],
         "name": Array [
           Object {
             "message": "只能输入8个字符英文",
-            "required": true,
-          },
-          Object {
-            "message": "只能输入8个字符英文",
-            "pattern": "^[a-zA-Z]+$",
-          },
-          Object {
-            "maxLength": 8,
-            "message": "只能输入8个字符英文",
+            "pattern": "[a-zA-Z]{8}",
+            "validator": [Function],
           },
         ],
         "password": Array [
           Object {
-            "message": "只能输入数字",
-            "required": true,
-          },
-          Object {
-            "message": "只能输入数字",
-            "pattern": "^[0-9]+$",
-          },
-        ],
-        "photo": Array [
-          Object {
-            "message": "上传照片不能为空",
-            "required": true,
+            "message": "长度大于6个字符",
+            "validator": [Function],
           },
         ],
         "place": Array [
           Object {
             "message": "不能为空",
-            "required": true,
+            "validator": [Function],
           },
         ],
         "resume": Array [
           Object {
-            "message": "简介不能为空",
-            "required": true,
+            "message": "不能为空",
+            "validator": [Function],
           },
         ],
       }

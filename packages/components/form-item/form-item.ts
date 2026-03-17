@@ -2,8 +2,10 @@ import props from './props';
 import { validateRules, ValidateStatus, RULE_KEYS } from './form-model';
 import config from '../common/config';
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
+import usingConfig from '../mixins/using-config';
 
 const { prefix } = config;
+const parentComponentName = 'form';
 const componentName = `form-item`;
 
 @wxComponent()
@@ -15,6 +17,8 @@ export default class FormItem extends SuperComponent {
     `${prefix}-class-help`,
     `${prefix}-class-extra`,
   ];
+
+  behaviors = [usingConfig({ componentName: parentComponentName })];
 
   properties = props;
 
@@ -42,25 +46,19 @@ export default class FormItem extends SuperComponent {
       linked(target) {
         target.registerChild(this);
         this.form = target;
+        const { globalConfig } = this.data;
         const { requiredMark, labelAlign, labelWidth, showErrorMessage } = this.properties;
         const isRequired = target.data.rules[this.properties.name]?.some((rule) => rule.required);
+
         this.setData({
           formRules: target.data.rules[this.properties.name],
           colon: target.data.colon,
           labelAlign: labelAlign || target.data.labelAlign || 'right',
           labelWidth: labelWidth || target.data.labelWidth,
-          requiredMark: (() => {
-            if (!isRequired) {
-              return false;
-            }
-            if (typeof requiredMark === 'boolean') {
-              return requiredMark;
-            }
-            return target.data.requiredMark || false;
-          })(),
+          innerRequiredMark: requiredMark || target.data.requiredMark || globalConfig.requiredMark || isRequired,
           innerShowErrorMessage:
             typeof showErrorMessage === 'boolean' ? showErrorMessage : target.properties.showErrorMessage,
-          requiredMarkPosition: target.data.requiredMarkPosition,
+          requiredMarkPosition: target.data.requiredMarkPosition || globalConfig.requiredMarkPosition,
         });
       },
       unlinked() {
@@ -189,7 +187,8 @@ export default class FormItem extends SuperComponent {
 
     // 分析验证结果
     analysisValidateResult(results) {
-      const errorMessage = (this.form && this.form.properties.errorMessage) || {};
+      const { globalConfig } = this.data;
+      const errorMessage = (this.form && this.form.properties.errorMessage) || globalConfig.errorMessage;
       const labelName = this.properties.label || this.properties.name;
 
       const errorList = results
