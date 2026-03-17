@@ -11,11 +11,6 @@ const props: TdFormItemProps = {
     type: Boolean,
     value: false,
   },
-  /** label 原生属性 */
-  for: {
-    type: String,
-    value: '',
-  },
   /** 表单项说明内容 */
   help: {
     type: String,

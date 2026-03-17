@@ -1,7 +1,7 @@
 module.exports = {
   getText: function (texts, val, globalConfig) {
     if (!texts.length) {
-      texts = globalConfig.texts;
+      texts = globalConfig.texts || [];
     }
     var curVal = Math.floor(val - 1);
     return texts[curVal] || globalConfig.noValueText;

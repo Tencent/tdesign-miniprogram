@@ -45,7 +45,7 @@ describe('form', () => {
       comp.attach(document.createElement('parent-wrapper'));
 
       const component = comp.querySelector('.form');
-      expect(component.instance.data.formData).toEqual({
+      expect(component.instance.properties.data).toEqual({
         name: 'tdesign',
         age: 18,
       });
