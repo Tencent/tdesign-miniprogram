@@ -125,9 +125,8 @@ Component({
         await fetchStream('下面是一个使用TDesign组件库实现的登录表单组件，以React版本为例：\n\n', {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[0].data += result;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[0].data': that.data.chatList[0].message.content[0].data + result,
             });
           },
           complete() {},
@@ -158,9 +157,8 @@ Component({
         await fetchStream(mockData1, {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[2].data += result;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[2].data': that.data.chatList[0].message.content[2].data + result,
             });
           },
           complete() {},
@@ -181,17 +179,13 @@ Component({
           {
             success(result) {
               if (!that.data.loading) return;
-              that.data.chatList[0].message.content[3].data += result;
               that.setData({
-                chatList: that.data.chatList,
+                'chatList[0].message.content[3].data': that.data.chatList[0].message.content[3].data + result,
               });
             },
             complete() {
-              that.data.chatList[0].message.status = 'complete';
               that.setData({
-                chatList: that.data.chatList,
-              });
-              that.setData({
+                'chatList[0].message.status': 'complete',
                 loading: false,
               });
             },

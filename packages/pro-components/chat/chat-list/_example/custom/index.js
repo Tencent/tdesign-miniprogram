@@ -153,9 +153,8 @@ Component({
           {
             success(result) {
               if (!that.data.loading) return;
-              that.data.chatList[0].message.content[0].data += result;
               that.setData({
-                chatList: that.data.chatList,
+                'chatList[0].message.content[0].data': that.data.chatList[0].message.content[0].data + result,
               });
             },
             complete() {},
@@ -202,9 +201,8 @@ Component({
           {
             success(result) {
               if (!that.data.loading) return;
-              that.data.chatList[0].message.content[2].data += result;
               that.setData({
-                chatList: that.data.chatList,
+                'chatList[0].message.content[2].data': that.data.chatList[0].message.content[2].data + result,
               });
             },
             complete() {},
@@ -213,6 +211,7 @@ Component({
 
         if (!that.data.loading) return;
 
+        const secondChartIndex = that.data.chatList[0].message.content.length;
         that.data.chatList[0].message.content.push({
           type: 'chart',
           data: {
@@ -238,9 +237,9 @@ Component({
           strategy: 'append',
           status: 'complete',
         });
-        that.data.chatList[0].message.status = 'complete';
         that.setData({
-          chatList: that.data.chatList,
+          [`chatList[0].message.content[${secondChartIndex}]`]: that.data.chatList[0].message.content[secondChartIndex],
+          'chatList[0].message.status': 'complete',
           loading: false,
         });
       });
