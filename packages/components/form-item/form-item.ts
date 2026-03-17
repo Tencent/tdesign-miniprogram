@@ -1,5 +1,5 @@
 import props from './props';
-import { validateRules, ValidateStatus, RULE_KEYS } from './form-model';
+import { validateRules, ValidateStatus } from './form-model';
 import config from '../common/config';
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import usingConfig from '../mixins/using-config';
@@ -196,16 +196,14 @@ export default class FormItem extends SuperComponent {
         .map((item) => {
           if (item.message) return item;
 
-          for (let i = 0; i < RULE_KEYS.length; i += 1) {
-            const key = RULE_KEYS[i];
-            if (item[key] !== undefined && errorMessage[key]) {
+          Object.keys(item).forEach((key) => {
+            if (!item.message && errorMessage[key]) {
               const template = errorMessage[key];
               item.message = template
                 .replace(/\$\{name\}/g, labelName || '')
                 .replace(/\$\{validate\}/g, String(item[key] === true ? '' : item[key]));
-              break;
             }
-          }
+          });
           return item;
         });
 

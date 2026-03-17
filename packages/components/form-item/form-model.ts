@@ -1,9 +1,13 @@
-interface ValidateResult {
-  result: boolean;
-  message?: string;
-  type?: string;
-  [key: string]: any;
-}
+import { isNumber, isBoolean, isObject, isEmpty, isDate, isEmail, isURL } from '../common/validator';
+import {
+  CustomValidator,
+  ValueType,
+  FormRule,
+  AllValidateResult,
+  CustomValidateResolveType,
+  ValidateResultType,
+  Data,
+} from '../form/type';
 
 export const ValidateStatus = {
   TO_BE_VALIDATED: 0,
@@ -11,104 +15,149 @@ export const ValidateStatus = {
   FAIL: 2,
 };
 
-export function isEmpty(value: any): boolean {
-  if (value === undefined || value === null || value === '') return true;
-  if (Array.isArray(value) && value.length === 0) return true;
-  return false;
-}
-
-export function getRuleValue(field: any): any {
-  if (field && typeof field === 'object' && 'value' in field) {
-    return field.value;
+/**
+ * 计算字符串字符的长度并可以截取字符串。
+ * @param str 传入字符串
+ * @param maxCharacter 规定最大字符串长度
+ * @returns 当没有传入maxCharacter时返回字符串字符长度，当传入maxCharacter时返回截取之后的字符串和长度。
+ */
+function getCharacterLength(str: string, maxCharacter?: number) {
+  const hasMaxCharacter = isNumber(maxCharacter);
+  if (!str || str.length === 0) {
+    if (hasMaxCharacter) {
+      return {
+        length: 0,
+        characters: str,
+      };
+    }
+    return 0;
   }
-  return field;
-}
-
-export function getResultType(rule: any): string {
-  const t = rule.type;
-  if (t === 'warning') return 'warning';
-  if (t && typeof t === 'object' && 'value' in t && t.value === 'warning') return 'warning';
-  return 'error';
-}
-
-function fail(rule: any, resultType: string): ValidateResult {
-  return { ...rule, result: false, message: getRuleValue(rule.message) || '', type: resultType };
-}
-
-export function getCharLength(str: string): number {
-  let length = 0;
+  let len = 0;
   for (let i = 0; i < str.length; i += 1) {
-    const code = str.charCodeAt(i);
-    const isCJK =
-      (code >= 0x4e00 && code <= 0x9fff) ||
-      (code >= 0x3400 && code <= 0x4dbf) ||
-      (code >= 0xf900 && code <= 0xfaff) ||
-      (code >= 0xff00 && code <= 0xffef);
-    length += isCJK ? 2 : 1;
+    let currentStringLength = 0;
+    if (str.charCodeAt(i) > 127 || str.charCodeAt(i) === 94) {
+      currentStringLength = 2;
+    } else {
+      currentStringLength = 1;
+    }
+    if (hasMaxCharacter && len + currentStringLength > maxCharacter) {
+      return {
+        length: len,
+        characters: str.slice(0, i),
+      };
+    }
+    len += currentStringLength;
   }
-  return length;
+  if (hasMaxCharacter) {
+    return {
+      length: len,
+      characters: str,
+    };
+  }
+  return len;
 }
 
-function getComparableLength(value: any): number {
-  if (typeof value === 'number') return value;
-  if (Array.isArray(value)) return value.length;
-  return getCharLength(String(value));
+// `{} / [] / '' / undefined / null` 等内容被认为是空； 0 和 false 被认为是正常数据，部分数据的值就是 0 或者 false
+export function isValueEmpty(val: any): boolean {
+  const type: string = Object.prototype.toString.call(val);
+  const typeMap: Record<string, any> = {
+    Date: '[object Date]',
+  };
+  if (type === typeMap.Date) {
+    return false;
+  }
+  return isObject(val) ? isEmpty(val) : ['', undefined, null].includes(val);
 }
 
-function toRegExp(pattern: any): RegExp | null {
-  if (pattern instanceof RegExp) return pattern;
-  if (typeof pattern === 'string') return new RegExp(pattern);
-  if (pattern && typeof pattern === 'object' && 'test' in pattern) return pattern;
-  return null;
-}
-
-type ValidateFn = (value: any, ruleValue: any) => boolean;
-
-const VALIDATE_MAP: Record<string, ValidateFn> = {
-  required: (value) => !isEmpty(value),
-  whitespace: (value) => !(typeof value === 'string' && value.trim() === ''),
-  boolean: (value) => typeof value === 'boolean',
-  number: (value) => !Number.isNaN(Number(value)),
-  email: (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value)),
-  url: (value) => /^https?:\/\/[^\s]+$/.test(String(value)),
-  date: (value) => !Number.isNaN(new Date(value).getTime()),
-  idcard: (value) => /^(\d{18}|\d{15}|\d{17}[xX])$/.test(String(value)),
-  telnumber: (value) => /^1[3-9]\d{9}$/.test(String(value)),
-  enum: (value, list) => !Array.isArray(list) || list.includes(value),
-  min: (value, limit) => getComparableLength(value) >= Number(limit),
-  max: (value, limit) => getComparableLength(value) <= Number(limit),
-  len: (value, length) => getCharLength(String(value)) === Number(length),
-  pattern: (value, pat) => {
-    const regex = toRegExp(pat);
-    return regex ? regex.test(String(value)) : false;
+const VALIDATE_MAP = {
+  date: isDate,
+  url: isURL,
+  email: isEmail,
+  required: (val: ValueType): boolean => !isValueEmpty(val),
+  whitespace: (val: ValueType): boolean => !(/^\s+$/.test(val) || val === ''),
+  boolean: (val: ValueType): boolean => isBoolean(val),
+  max: (val: ValueType, num: number): boolean =>
+    isNumber(val) ? val <= num : (getCharacterLength(val) as number) <= num,
+  min: (val: ValueType, num: number): boolean =>
+    isNumber(val) ? val >= num : (getCharacterLength(val) as number) >= num,
+  len: (val: ValueType, num: number): boolean => getCharacterLength(val) === num,
+  number: (val: ValueType): boolean => isNumber(val),
+  enum: (val: ValueType, strs: Array<string>): boolean => strs.includes(val),
+  idcard: (val: ValueType): boolean => /^(\d{18,18}|\d{15,15}|\d{17,17}x)$/i.test(val),
+  telnumber: (val: ValueType): boolean => /^1[3-9]\d{9}$/.test(val),
+  pattern: (val: ValueType, regexp: RegExp | string): boolean => {
+    const reg = typeof regexp === 'string' ? new RegExp(regexp) : regexp;
+    return reg.test(val);
   },
+  // 自定义校验规则，可能是异步校验
+  validator: (
+    val: ValueType,
+    validate: CustomValidator,
+    context?: { formData: Data; name: string },
+  ): ReturnType<CustomValidator> => validate(val, context),
 };
 
-export const RULE_KEYS = [...Object.keys(VALIDATE_MAP), 'validator'];
+export type ValidateFuncType = (typeof VALIDATE_MAP)[keyof typeof VALIDATE_MAP];
 
-export async function executeRule(value: any, rule: any, context?: any): Promise<ValidateResult> {
-  const resultType = getResultType(rule);
-
-  if (getRuleValue(rule.required) && isEmpty(value)) return fail(rule, resultType);
-  if (isEmpty(value)) return { result: true };
-
+/**
+ * 校验某一条数据的某一条规则，一种校验规则不满足则不再进行校验。
+ * @param value 值
+ * @param rule 校验规则
+ * @param context 表单上下文，包含 formData 和 name，供自定义校验器使用
+ * @returns 两种校验结果，一种是内置校验规则的校验结果哦，二种是自定义校验规则（validator）的校验结果
+ */
+export async function validateOneRule(
+  value: ValueType,
+  rule: FormRule,
+  context?: { formData: Data; name: string },
+): Promise<AllValidateResult> {
+  let validateResult: CustomValidateResolveType | ValidateResultType = { result: true };
   const keys = Object.keys(rule);
+  let vOptions: any;
+  let vValidateFun: ValidateFuncType | undefined;
+  let isValidatorRule = false;
   for (let i = 0; i < keys.length; i += 1) {
     const key = keys[i];
-    const validateFn = VALIDATE_MAP[key];
-    const ruleValue = getRuleValue(rule[key]);
-    if (validateFn && ruleValue !== undefined && ruleValue !== false) {
-      const options = ruleValue === true ? undefined : ruleValue;
-      if (!validateFn(value, options)) return fail(rule, resultType);
+    // 非必填选项，值为空，非自定义规则：无需校验，直接返回 true
+    if (!rule.required && isValueEmpty(value) && !rule.validator) {
+      return validateResult;
+    }
+    const validateRule: ValidateFuncType = VALIDATE_MAP[key as keyof typeof VALIDATE_MAP];
+    const ruleItem = rule[key as keyof FormRule];
+    // 找到一个校验规则，则无需再找，因为参数只允许对一个规则进行校验
+    if (validateRule && (ruleItem || ruleItem === 0)) {
+      // rule 值为 true 则表示没有校验参数，只是对值进行默认规则校验
+      vOptions = ruleItem === true ? undefined : ruleItem;
+      vValidateFun = validateRule;
+      isValidatorRule = key === 'validator';
+      break;
     }
   }
-
-  const validator = getRuleValue(rule.validator);
-  if (validator && !(await validator(value, context))) return fail(rule, resultType);
-
-  return { result: true };
+  if (vValidateFun) {
+    validateResult = isValidatorRule
+      ? await (vValidateFun as typeof VALIDATE_MAP.validator)(value, vOptions, context)
+      : await vValidateFun(value, vOptions);
+    // 如果校验不通过，则返回校验不通过的规则
+    if (isBoolean(validateResult)) {
+      return { ...rule, result: validateResult };
+    }
+    // 校验结果为对象，只有自定义校验规则会存在这种情况
+    if (isObject(validateResult)) {
+      return validateResult;
+    }
+  }
+  return validateResult;
 }
 
-export async function validateRules(value: any, rules: any[], context?: any): Promise<ValidateResult[]> {
-  return Promise.all(rules.map((rule) => executeRule(value, rule, context)));
+/**
+ * 单个数据进行全规则校验
+ * 保留 validateRules 别名以兼容已有调用
+ */
+export async function validate(value: any, rules: any[], context?: { formData: Data; name: string }): Promise<any[]> {
+  const all = rules.map((rule) => validateOneRule(value, rule, context));
+  const r = await Promise.all(all);
+  return r;
 }
+
+// 兼容已有导入
+export const validateRules = validate;
