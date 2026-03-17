@@ -116,15 +116,15 @@ export default class FormItem extends SuperComponent {
     setInitialValue() {
       const { name } = this.properties;
       if (name && this.form) {
-        const { formData } = this.form.data;
-        this.initialValue = formData[name];
+        const data = this.form.properties.data || {};
+        this.initialValue = data[name];
       }
     },
 
     // 获取表单数据
     getFormData() {
       if (this.form) {
-        return this.form.data.formData;
+        return this.form.properties.data || {};
       }
       return {};
     },
@@ -133,8 +133,8 @@ export default class FormItem extends SuperComponent {
     getValue() {
       const { name } = this.properties;
       if (name && this.form) {
-        const { formData } = this.form.data;
-        return formData[name];
+        const data = this.form.properties.data || {};
+        return data[name];
       }
       return undefined;
     },
@@ -243,17 +243,6 @@ export default class FormItem extends SuperComponent {
 
     // 重置字段
     resetField() {
-      const { name } = this.properties;
-      if (name && this.form) {
-        const { resetType } = this.form.properties;
-
-        if (resetType === 'initial') {
-          this.form.updateFormData(name, this.initialValue);
-        } else {
-          this.form.updateFormData(name, this.getEmptyValue());
-        }
-      }
-
       this.clearValidate();
     },
 
@@ -273,39 +262,6 @@ export default class FormItem extends SuperComponent {
         successList,
         verifyStatus,
       });
-    },
-
-    // 获取空值
-    getEmptyValue() {
-      const value = this.getValue();
-
-      if (Array.isArray(value)) {
-        return [];
-      }
-      if (typeof value === 'object' && value !== null) {
-        return {};
-      }
-      if (typeof value === 'number') {
-        return 0;
-      }
-      return '';
-    },
-
-    // 处理值变化
-    onValueChange(value) {
-      const { name } = this.properties;
-      if (name && this.form) {
-        this.form.updateFormData(name, value);
-
-        // 触发change验证
-        this.validate(this.getFormData(), 'change', this.data.innerShowErrorMessage);
-      }
-    },
-
-    // 处理失焦事件
-    onBlur() {
-      // 触发blur验证
-      this.validate(this.getFormData(), 'blur', this.data.innerShowErrorMessage);
     },
   };
 }

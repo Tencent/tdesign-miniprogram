@@ -34,7 +34,6 @@ export default class Form extends SuperComponent {
     prefix,
     classPrefix: name,
     children: [],
-    formData: {},
     initialData: {},
     fields: [],
   };
@@ -51,11 +50,9 @@ export default class Form extends SuperComponent {
       const { data } = this.properties;
       // 确保 data 不为 undefined 或 null
       const safeData = data || {};
-      const formData = { ...safeData };
       const initialData = { ...safeData };
       const fields = Object.keys(safeData);
       this.setData({
-        formData,
         initialData,
         fields,
       });
@@ -80,19 +77,11 @@ export default class Form extends SuperComponent {
       }
     },
 
-    // 更新表单数据
-    updateFormData(name, value) {
-      const { formData } = this.data;
-      formData[name] = value;
-      this.setData({ formData });
-    },
-
     // 验证表单
     async validate() {
-      const { children, formData } = this.data;
-      const validatePromises = children.map((child) =>
-        child.validate(formData, 'all', this.properties.showErrorMessage),
-      );
+      const { children } = this.data;
+      const { data } = this.properties;
+      const validatePromises = children.map((child) => child.validate(data, 'all', this.properties.showErrorMessage));
 
       try {
         const results = await Promise.all(validatePromises);
@@ -213,23 +202,40 @@ export default class Form extends SuperComponent {
         return false;
       }
     },
+    // 获取空值
+    getEmptyValue(name) {
+      const currentValue = this.properties.data[name];
+
+      if (Array.isArray(currentValue)) {
+        return [];
+      }
+      if (typeof currentValue === 'object' && currentValue !== null) {
+        return {};
+      }
+      if (typeof currentValue === 'number') {
+        return 0;
+      }
+      return '';
+    },
+
     // 重置表单
     reset() {
-      const { children, initialData, formData, fields } = this.data;
+      const { children, initialData, fields } = this.data;
+      const resetData = {};
 
       children.forEach((child) => {
         if (fields && fields.includes(child.data.name)) {
           if (this.properties.resetType === 'empty') {
-            this.updateFormData(child.data.name, this.getEmptyValue(child.data.name));
+            resetData[child.data.name] = this.getEmptyValue(child.data.name);
           } else if (this.properties.resetType === 'initial') {
-            this.updateFormData(child.data.name, initialData[child.data.name]);
+            resetData[child.data.name] = initialData[child.data.name];
           }
           child.resetField();
         }
       });
 
       this.triggerEvent('reset', {
-        formData,
+        formData: resetData,
       });
     },
 
@@ -253,23 +259,6 @@ export default class Form extends SuperComponent {
           child.setValidateMessage(validateMessage[child.data.name]);
         }
       });
-    },
-
-    // 获取空值
-    getEmptyValue(name) {
-      const { formData } = this.data;
-      const currentValue = formData[name];
-
-      if (Array.isArray(currentValue)) {
-        return [];
-      }
-      if (typeof currentValue === 'object' && currentValue !== null) {
-        return {};
-      }
-      if (typeof currentValue === 'number') {
-        return 0;
-      }
-      return '';
     },
 
     // 表单提交事件处理
