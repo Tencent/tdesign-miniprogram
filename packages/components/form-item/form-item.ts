@@ -30,10 +30,10 @@ export default class FormItem extends SuperComponent {
     verifyStatus: ValidateStatus.TO_BE_VALIDATED,
     needResetField: false,
     resetValidating: false,
-    rules: [],
+    formRules: [],
     form: {},
     colon: false,
-    showErrorMessage: true,
+    innerShowErrorMessage: true,
   };
 
   relations: RelationsOptions = {
@@ -45,7 +45,7 @@ export default class FormItem extends SuperComponent {
         const { requiredMark, labelAlign, labelWidth, showErrorMessage } = this.properties;
         const isRequired = target.data.rules[this.properties.name]?.some((rule) => rule.required);
         this.setData({
-          rules: target.data.rules[this.properties.name],
+          formRules: target.data.rules[this.properties.name],
           colon: target.data.colon,
           labelAlign: labelAlign || target.data.labelAlign || 'right',
           labelWidth: labelWidth || target.data.labelWidth,
@@ -58,7 +58,8 @@ export default class FormItem extends SuperComponent {
             }
             return target.data.requiredMark || false;
           })(),
-          showErrorMessage: typeof showErrorMessage === 'boolean' ? showErrorMessage : target.data.showErrorMessage,
+          innerShowErrorMessage:
+            typeof showErrorMessage === 'boolean' ? showErrorMessage : target.properties.showErrorMessage,
           requiredMarkPosition: target.data.requiredMarkPosition,
         });
       },
@@ -84,7 +85,7 @@ export default class FormItem extends SuperComponent {
 
   methods = {
     calcErrorClasses(errorList = this.data.errorList) {
-      if (!this.data.showErrorMessage) return '';
+      if (!this.data.innerShowErrorMessage) return '';
       if (!errorList || errorList.length === 0) return '';
       const type = errorList[0].type || 'error';
       return type === 'error' ? `${this.data.formItemClass}--error` : `${this.data.formItemClass}--warning`;
@@ -148,7 +149,7 @@ export default class FormItem extends SuperComponent {
       }
 
       // 使用表单的规则
-      return this.data.rules || [];
+      return this.data.formRules || [];
     },
 
     // 验证表单项
@@ -297,14 +298,14 @@ export default class FormItem extends SuperComponent {
         this.form.updateFormData(name, value);
 
         // 触发change验证
-        this.validate(this.getFormData(), 'change', this.data.showErrorMessage);
+        this.validate(this.getFormData(), 'change', this.data.innerShowErrorMessage);
       }
     },
 
     // 处理失焦事件
     onBlur() {
       // 触发blur验证
-      this.validate(this.getFormData(), 'blur', this.data.showErrorMessage);
+      this.validate(this.getFormData(), 'blur', this.data.innerShowErrorMessage);
     },
   };
 }

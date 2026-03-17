@@ -36,9 +36,7 @@ export default class Form extends SuperComponent {
     children: [],
     formData: {},
     initialData: {},
-    rules: {},
     fields: [],
-    showErrorMessage: true,
   };
 
   lifetimes = {
@@ -60,7 +58,6 @@ export default class Form extends SuperComponent {
         formData,
         initialData,
         fields,
-        showErrorMessage: this.properties.showErrorMessage,
       });
     },
 

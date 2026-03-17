@@ -29,10 +29,10 @@
 
       <!-- 校验提示信息 -->
       <view
-        wx:if="{{(errorList.length > 0 && showErrorMessage) || successList.length > 0}}"
+        wx:if="{{(errorList.length > 0 && innerShowErrorMessage) || successList.length > 0}}"
         class="{{formItemClass}}-extra {{formClass}}__controls--{{contentAlign}} {{prefix}}-class-extra"
       >
-        {{errorList.length > 0 && showErrorMessage ? errorList[0].message : successList[0].message}}
+        {{errorList.length > 0 && innerShowErrorMessage ? errorList[0].message : successList[0].message}}
       </view>
     </view>
   </view>
