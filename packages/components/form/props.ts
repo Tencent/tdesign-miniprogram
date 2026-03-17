@@ -38,7 +38,6 @@ const props: TdFormProps = {
   /** 表单必填符号（*）显示位置 */
   requiredMarkPosition: {
     type: String,
-    value: 'left',
   },
   /** 重置表单的方式，值为 empty 表示重置表单为空，值为 initial 表示重置表单数据为初始值 */
   resetType: {

@@ -13,7 +13,7 @@ data | Object | {} | Typescript: `FormData` | N
 error-message | Object | - | Typescript: `FormErrorMessage` | N
 label-align | String | right | options: left/right/top | N
 label-width | String / Number | '81px' | \- | N
-required-mark | Boolean | undefined | \- | N
+required-mark | Boolean | true | \- | N
 required-mark-position | String | left | Display position of required symbols。options: left/right | N
 reset-type | String | empty | options: empty/initial | N
 rules | Object | - | Typescript: `FormRules<FormData>` `type FormRules<T extends Data = any> = { [field in keyof T]?: Array<FormRule> }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/form/type.ts) | N
@@ -37,7 +37,7 @@ clear-validate | `(fields?: Array<keyof FormData>)` | \- | required
 reset | `(params?: FormResetParams<FormData>)` | \- | required。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/form/type.ts)。<br/>`interface FormResetParams<FormData> { type?: 'initial' \| 'empty'; fields?: Array<keyof FormData> }`<br/>
 set-validate-message | `(message: FormValidateMessage<FormData>)` | \- | required。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/form/type.ts)。<br/>`type FormValidateMessage<FormData> = { [field in keyof FormData]: FormItemValidateMessage[] }`<br/><br/>`interface FormItemValidateMessage { type: 'warning' \| 'error'; message: string }`<br/>
 submit | `(params?: { showErrorMessage?: boolean })` | \- | required
-validate | `(params?: FormValidateParams)` | `Promise<FormValidateResult<FormData>>` | required。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/form/type.ts)。<br/>`interface FormValidateParams { fields?: Array<string>; showErrorMessage?: boolean; trigger?: ValidateTriggerType }`<br/><br/>`type ValidateTriggerType = 'blur' \| 'change' \| 'submit' \| 'all'`<br/>
+validate | `(params?: FormValidateParams)` | `Promise<FormValidateResult<FormData>> ` | required。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/form/type.ts)。<br/>`interface FormValidateParams { fields?: Array<string>; showErrorMessage?: boolean; trigger?: ValidateTriggerType }`<br/><br/>`type ValidateTriggerType = 'blur' \| 'change' \| 'submit' \| 'all'`<br/><br/>`type FormValidateResult<T> = boolean \| ValidateResultObj<T>`<br/><br/>`type ValidateResultObj<T> = { [key in keyof T]: boolean \| ValidateResultList }`<br/><br/>`type ValidateResultList = Array<AllValidateResult>`<br/><br/>`type AllValidateResult = CustomValidateObj \| ValidateResultType`<br/><br/>`interface ValidateResultType extends FormRule { result: boolean }`<br/>
 
 
 ### FormItem Props
@@ -53,7 +53,7 @@ label-align | String | - | options: left/right/top | N
 label-width | String / Number | - | \- | N
 name | String | - | \- | N
 required-mark | Boolean | undefined | \- | N
-rules | Array | - | Typescript: `Array<FormRule>` | N
+rules | Array | - | Typescript: `Array<FormRule> `，[Form API Documents](./form?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/form-item/type.ts) | N
 show-error-message | Boolean | undefined | \- | N
 
 ### FormItem Slots

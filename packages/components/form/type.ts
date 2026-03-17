@@ -56,7 +56,6 @@ export interface TdFormProps<FormData extends Data = Data> {
   };
   /**
    * 表单必填符号（*）显示位置
-   * @default left
    */
   requiredMarkPosition?: {
     type: StringConstructor;
@@ -299,18 +298,6 @@ export interface FormErrorMessage {
 
 export type FormRules<T extends Data = any> = { [field in keyof T]?: Array<FormRule> };
 
-export type FormValidateResult<T> = boolean | ValidateResultObj<T>;
-
-export type ValidateResultObj<T> = { [key in keyof T]: boolean | ValidateResultList };
-
-export type ValidateResultList = Array<AllValidateResult>;
-
-export type AllValidateResult = CustomValidateObj | ValidateResultType;
-
-export interface ValidateResultType extends FormRule {
-  result: boolean;
-}
-
 export interface FormResetParams<FormData> {
   type?: 'initial' | 'empty';
   fields?: Array<keyof FormData>;
@@ -330,6 +317,18 @@ export interface FormValidateParams {
 }
 
 export type ValidateTriggerType = 'blur' | 'change' | 'submit' | 'all';
+
+export type FormValidateResult<T> = boolean | ValidateResultObj<T>;
+
+export type ValidateResultObj<T> = { [key in keyof T]: boolean | ValidateResultList };
+
+export type ValidateResultList = Array<AllValidateResult>;
+
+export type AllValidateResult = CustomValidateObj | ValidateResultType;
+
+export interface ValidateResultType extends FormRule {
+  result: boolean;
+}
 
 export type Data = { [key: string]: any };
 
