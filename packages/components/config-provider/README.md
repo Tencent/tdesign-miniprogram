@@ -6,7 +6,7 @@ isComponent: true
 ---
 
 
-<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-99%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-99%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-94%25-blue" /></span>
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-99%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-100%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-99%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-93%25-blue" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -25,9 +25,36 @@ isComponent: true
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
 </blockquote>
 
+### 国际化配置
+
+TDesign 支持国际化/多语言配置，目前支持的语言包括:
+
+| 语言     | 对应文件 |
+| -------- | -------- |
+| 简体中文 | `zh_CN`  |
+| 繁体中文 | `zh_TW`  |
+| 英语     | `en_US`  |
+| 韩语     | `ko_KR`  |
+| 日语     | `ja_JP`  |
+| 俄语     | `ru_RU`  |
+| 意大利语 | `it_IT`  |
+| 阿拉伯语 | `ar_KW`  |
+
+如果你想贡献更多语言包，欢迎参考 [如何新增语言包](https://github.com/Tencent/tdesign-common/blob/develop/js/global-config/locale/CONTRIBUTING.md) 发起 PR。
+
 ### 01 配置示例
 
-{{ base }}
+### Upload
+
+{{ upload-en }}
+
+### Chat
+
+{{ chat-en }}
+
+### 其他组件
+
+{{ other-en }}
 
 
 ## API
@@ -129,6 +156,15 @@ year-label | String | - | 语言配置，“年” 描述文本 | N
 -- | -- | -- | -- | --
 confirm | String | - | 语言配置，“确定” 按钮描述文本 | N
 reset | String | - | 语言配置，“重置” 按钮描述文本 | N
+
+### FormConfig
+
+名称 | 类型 | 默认值 | 描述 | 必传
+-- | -- | -- | -- | --
+colon-text | String | - | 字段旁边的冒号，中文为“：” | N
+error-message | Object | - | 表单错误信息配置，示例：`{ idcard: '请输入正确的身份证号码', max: '字符长度不能超过 ${max}' }`。TS 类型：`FormErrorMessage`，[Form API Documents](./form?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/config-provider/type.ts) | N
+required-mark | Boolean | true | 是否显示必填符号（*），默认显示 | N
+required-mark-position | String | left | 表单必填符号（*）显示位置。可选项：left/right | N
 
 ### GuideConfig
 

@@ -270,6 +270,14 @@ export const docs = [
         component: () => import('@/date-time-picker/README.md'),
       },
       {
+        title: 'Form 表单',
+        titleEn: 'Form',
+        name: 'form',
+        meta: { docType: 'form' },
+        path: '/miniprogram/components/form',
+        component: () => import('@/form/README.md'),
+      },
+      {
         title: 'Input 输入框',
         titleEn: 'Input',
         name: 'input',
