@@ -306,7 +306,7 @@ export default uniComponent({
       const baseActions = [];
       let dataActions = [];
       if (this.placement === 'longpress') {
-        dataActions = ['quote', 'copy', 'share'];
+        dataActions = this.actionBar || ['quote', 'copy', 'share'];
       } else if (Array.isArray(this.actionBar)) {
         dataActions = this.actionBar;
       }
