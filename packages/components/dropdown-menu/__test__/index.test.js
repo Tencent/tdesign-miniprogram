@@ -36,7 +36,6 @@ describe('dropdown-menu', () => {
     expect($first.instance.data.wrapperVisible).toBeTruthy();
 
     $item.dispatchEvent('tap');
-    await simulate.sleep(50);
     expect(comp.toJSON()).toMatchSnapshot();
   });
 
