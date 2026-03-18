@@ -22,8 +22,8 @@ else
 fi
 
 # 执行构建命令
-npx cross-env NODE_ENV=production gulp --gulpfile script/gulpfile.dist.js --cwd ./
-npx cross-env NODE_ENV=production TYPE=$TYPE SKIP_SKYLINE=true gulp --gulpfile script/gulpfile.example.js --cwd ./
+# npx cross-env NODE_ENV=production gulp --gulpfile script/gulpfile.dist.js --cwd ./
+# npx cross-env NODE_ENV=production TYPE=$TYPE SKIP_SKYLINE=true gulp --gulpfile script/gulpfile.example.js --cwd ./
 
 # 切换到 _example 目录
 cd _example
