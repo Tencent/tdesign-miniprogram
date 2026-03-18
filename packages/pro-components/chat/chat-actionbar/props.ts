@@ -9,17 +9,16 @@ const props: TdChatActionbarProps = {
   /** 操作栏配置 */
   actionBar: {
     type: Array,
-    value: ['replay', 'copy', 'good', 'bad', 'share'],
+    value: ['replay', 'copy', 'good', 'bad', 'share', 'quote'],
   },
   /** 【实验】聊天消息的唯一标识 */
   chatId: {
     type: String,
     value: '',
   },
-  /** 评价内容 */
+  /** 评价类型， 可选 'good'（点赞） 或者 'bad'（点踩）， 默认为空 */
   comment: {
     type: String,
-    value: '',
   },
   /** 被复制的内容 */
   content: {
@@ -40,11 +39,6 @@ const props: TdChatActionbarProps = {
   placement: {
     type: String,
     value: 'start',
-  },
-  /** 【实验】长按触发点的位置信息，用于定位 popover */
-  longPressPosition: {
-    type: Object,
-    value: null,
   },
 };
 
