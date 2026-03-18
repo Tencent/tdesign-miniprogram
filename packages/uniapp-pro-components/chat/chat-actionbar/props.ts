@@ -40,6 +40,10 @@ export default {
   },
   /** 【讨论中】操作按钮是否可点击 */
   disabled: Boolean,
+  /** 【实验】长按操作栏位置 */
+  longPressPosition: {
+    type: Object,
+  },
   /** 【实验】操作栏位置 */
   placement: {
     type: String,
@@ -48,11 +52,6 @@ export default {
       if (!val) return true;
       return ['start', 'end', 'space-around', 'space-between', 'longpress'].includes(val);
     },
-  },
-  /** 【实验】长按触发点的位置信息，用于定位 popover */
-  longPressPosition: {
-    type: Object,
-    default: null,
   },
   /** 点击点赞，点踩，复制，分享，重新生成按钮时触发发 */
   onActions: {
