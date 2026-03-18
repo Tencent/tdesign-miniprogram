@@ -7,6 +7,7 @@ exports[`Indexes Indexes base demo works fine 1`] = `
   >
     <t-navbar
       leftArrow="{{true}}"
+      placeholder="{{true}}"
       title="TDesign"
     />
   </wx-view>
@@ -433,6 +434,7 @@ exports[`Indexes Indexes custom demo works fine 1`] = `
   >
     <t-navbar
       leftArrow="{{true}}"
+      placeholder="{{true}}"
       title="TDesign"
     />
   </wx-view>

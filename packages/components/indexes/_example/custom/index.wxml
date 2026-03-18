@@ -1,5 +1,5 @@
 <view class="custom-navbar">
-  <t-navbar title="TDesign" leftArrow />
+  <t-navbar title="TDesign" leftArrow placeholder />
 </view>
 <view class="indexes">
   <t-indexes bind:change="onChange" index-list="{{indexList}}" sticky-offset="{{stickyOffset + 8}}" t-class="wrapper">
