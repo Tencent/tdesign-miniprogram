@@ -1,0 +1,1 @@
+<t-textarea t-class="external-class" placeholder="请输入文字" disableDefaultPadding="{{true}}" />

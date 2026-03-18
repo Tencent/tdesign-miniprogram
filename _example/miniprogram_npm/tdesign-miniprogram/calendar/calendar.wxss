@@ -1,0 +1,39 @@
+@import '../common/style/index.wxss';.t-calendar{width:inherit;position:relative;z-index:9999;background:var(--td-calendar-bg-color,var(--td-bg-color-container,var(--td-font-white-1,#fff)));overflow-x:hidden;}
+.t-calendar--popup{border-top-left-radius:var(--td-calendar-radius,24rpx);border-top-right-radius:var(--td-calendar-radius,24rpx);}
+.t-calendar__title{display:flex;align-items:center;justify-content:center;font:var(--td-calendar-title-font,var(--td-font-title-large,600 36rpx / 52rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular)));color:var(--td-calendar-title-color,var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9))));padding:var(--td-spacer-2,32rpx);}
+.t-calendar__title:focus{outline:0;}
+.t-calendar__close-btn{position:absolute;top:var(--td-spacer-2,32rpx);right:var(--td-spacer-2,32rpx);margin:calc(-1 * var(--td-spacer-1,24rpx));padding:var(--td-spacer-1,24rpx);color:var(--td-calendar-title-color,var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9))));}
+.t-calendar__days{display:grid;grid-template-columns:repeat(7,1fr);grid-column-gap:8rpx;padding:0 32rpx;text-align:center;line-height:92rpx;}
+.t-calendar__days-item{height:92rpx;font-size:28rpx;color:var(--td-calendar-days-color,var(--td-text-color-secondary,var(--td-font-gray-2,rgba(0,0,0,.6))));}
+.t-calendar__content{min-height:400rpx;display:flex;flex-direction:column;}
+.t-calendar__month{font:var(--td-font-title-small,600 28rpx / 44rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular));color:var(--td-calendar-title-color,var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9))));padding:32rpx 0 0;}
+.t-calendar__months{height:712rpx;padding:0 32rpx 32rpx;box-sizing:border-box;}
+.t-calendar__months::-webkit-scrollbar{display:none;}
+.t-calendar__dates{flex:1;display:grid;grid-template-columns:repeat(7,1fr);grid-column-gap:8rpx;}
+.t-calendar__dates-item{position:relative;display:flex;align-items:center;justify-content:center;font:var(--td-font-title-medium,600 32rpx / 48rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular));border-radius:var(--td-calendar-selected-border-radius,var(--td-radius-default,12rpx));height:120rpx;margin-top:16rpx;color:var(--td-calendar-title-color,var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9))));cursor:pointer;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;}
+.t-calendar__dates-item-prefix,.t-calendar__dates-item-suffix{position:absolute;font:var(--td-font-body-extraSmall,20rpx / 32rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular));width:100%;text-align:center;}
+.t-calendar__dates-item-prefix{top:8rpx;}
+.t-calendar__dates-item-suffix{bottom:8rpx;color:var(--td-calendar-item-suffix-color,var(--td-text-color-placeholder,var(--td-font-gray-3,rgba(0,0,0,.4))));}
+.t-calendar__dates-item-suffix--end,.t-calendar__dates-item-suffix--selected,.t-calendar__dates-item-suffix--start{color:var(--td-calendar-selected-color,var(--td-text-color-anti,var(--td-font-white-1,#fff)));}
+.t-calendar__dates-item-suffix--disabled{color:var(--td-calendar-item-disabled-color,var(--td-text-color-disabled,var(--td-font-gray-4,rgba(0,0,0,.26))));}
+.t-calendar__dates-item--end,.t-calendar__dates-item--selected,.t-calendar__dates-item--start,.t-calendar__dates-item--start-end{background:var(--td-calendar-active-color,var(--td-brand-color,var(--td-primary-color-7,#0052d9)));color:var(--td-calendar-selected-color,var(--td-text-color-anti,var(--td-font-white-1,#fff)));border-radius:var(--td-calendar-selected-border-radius,var(--td-radius-default,12rpx));}
+.t-calendar__dates-item--start{border-radius:var(--td-calendar-selected-border-radius,var(--td-radius-default,12rpx)) 0 0 var(--td-calendar-selected-border-radius,var(--td-radius-default,12rpx));}
+.t-calendar__dates-item--end{border-radius:0 var(--td-calendar-selected-border-radius,var(--td-radius-default,12rpx)) var(--td-calendar-selected-border-radius,var(--td-radius-default,12rpx)) 0;}
+.t-calendar__dates-item--start+.t-calendar__dates-item--end::before{content:'';display:block;position:absolute;top:0;width:8rpx;height:100%;background:var(--td-calendar-active-color,var(--td-brand-color,var(--td-primary-color-7,#0052d9)));}
+.t-calendar__dates-item--start+.t-calendar__dates-item--end:before{left:-8rpx;}
+.t-calendar__dates-item--centre{border-radius:0;background-color:var(--td-calendar-item-centre-color,var(--td-brand-color-light,var(--td-primary-color-1,#f2f3ff)));}
+.t-calendar__dates-item--centre::after,.t-calendar__dates-item--centre::before{content:'';display:block;position:absolute;top:0;width:8rpx;height:100%;background-color:var(--td-calendar-item-centre-color,var(--td-brand-color-light,var(--td-primary-color-1,#f2f3ff)));}
+.t-calendar__dates-item--centre:before{left:-8rpx;}
+.t-calendar__dates-item--centre:after{right:-8rpx;}
+.t-calendar__dates-item--disabled{color:var(--td-calendar-item-disabled-color,var(--td-text-color-disabled,var(--td-font-gray-4,rgba(0,0,0,.26))));cursor:default;}
+.t-calendar__footer{padding:32rpx;}
+.t-calendar-switch-mode--none>.t-calendar__months{height:60vh;}
+.t-calendar-header{display:flex;justify-content:space-between;align-items:center;}
+.t-calendar-header__with-action{padding:0rpx 32rpx 16rpx 32rpx;box-sizing:border-box;position:relative;}
+.t-calendar-header__with-action::after{content:'';display:block;position:absolute;top:unset;bottom:0;left:unset;right:unset;background-color:var(--td-border-color,var(--td-gray-color-3,#e7e7e7));}
+.t-calendar-header__with-action::after{height:1px;left:0;right:0;transform:scaleY(.5);}
+.t-calendar-header__with-action .t-calendar-header__title{flex:1;text-align:center;font:var(--td-font-title-small,600 28rpx / 44rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular));}
+.t-calendar-header__action{display:flex;font-size:40rpx;color:var(--td-calendar-switch-mode-icon-color,var(--td-text-color-secondary,var(--td-font-gray-2,rgba(0,0,0,.6))));}
+.t-calendar-header__icon{padding:16rpx;}
+.t-calendar-header__icon--disabled{color:var(--td-calendar-switch-mode-icon-disabled-color,var(--td-text-color-disabled,var(--td-font-gray-4,rgba(0,0,0,.26))));}
+.t-calendar-header__title{text-align:left;}

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "ChatContent",
+  "usingComponents": {
+    "base": "./base"
+  }
+}

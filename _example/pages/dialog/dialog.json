@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "Dialog",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "base": "./base",
+    "confirm": "./confirm",
+    "with-input": "./with-input",
+    "with-image": "./with-image",
+    "command": "./command",
+    "status": "./status",
+    "buttonDemo": "./button"
+  }
+}

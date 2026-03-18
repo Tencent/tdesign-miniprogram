@@ -1,0 +1,4 @@
+.custom-navbar {
+  --td-navbar-color: #fff;
+  --td-navbar-bg-color: #0052d9;
+}

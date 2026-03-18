@@ -1,0 +1,7 @@
+.box {
+  display: flex;
+}
+
+.wrapper {
+  margin-right: 64px;
+}

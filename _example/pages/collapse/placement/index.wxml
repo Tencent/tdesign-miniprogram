@@ -1,0 +1,7 @@
+<view class="wrapper">
+  <t-collapse value="{{activeValues}}" bind:change="handleChange">
+    <t-collapse-panel header="折叠面板标题" placement="top" value="{{0}}" expandIcon>
+      此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容
+    </t-collapse-panel>
+  </t-collapse>
+</view>

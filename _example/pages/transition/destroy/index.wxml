@@ -1,0 +1,5 @@
+<t-button size="large" variant="outline" bind:tap="onTriggerClick" block theme="primary">Toggle attach</t-button>
+
+<t-transition visible="{{ visible }}" destroy-on-hide>
+  <view class="block"></view>
+</t-transition>

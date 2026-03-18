@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-upload": "tdesign-miniprogram/upload/upload"
+  }
+}

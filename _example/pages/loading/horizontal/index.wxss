@@ -1,0 +1,10 @@
+.loading-container-flex {
+  display: flex;
+  align-items: center;
+  color: #000;
+}
+
+.wrapper {
+  display: flex;
+  margin-right: 64px;
+}

@@ -1,0 +1,4 @@
+@import '../common/style/index.wxss';.t-transition-enter{opacity:0;}
+.t-transition-enter-to{opacity:1;transition:opacity 1s;}
+.t-transition-leave{opacity:1;}
+.t-transition-leave-to{opacity:0;transition:opacity 1s;}

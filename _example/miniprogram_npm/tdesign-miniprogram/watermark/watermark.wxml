@@ -1,0 +1,1 @@
+<wxs module="_" src="../common/utils.wxs"/><view class="{{classPrefix}} class {{prefix}}-class" style="{{_._style([style, customStyle])}}"><block wx:if="{{content}}">{{content}}</block><slot name="content"/><slot/><canvas type="2d" id="watermarkCanvas" style="display: none; width: 100%; height: 100%"/><view id="watermark" style="{{_._style(watermarkStyle)}}"></view></view>

@@ -1,0 +1,24 @@
+<t-fab
+  customStyle="{{scrolling ? 'right: 0;bottom:64px;' : 'right:16px;bottom:24px'}}"
+  bind:click="handleClick"
+  bind:dragstart="handleDragStart"
+  bind:dragend="handleDragEnd"
+>
+  <view wx:if="{{!scrolling}}" class="wrap">
+    <view class="item">
+      <t-icon name="add-circle" size="20" />
+      <view class="text">添加</view>
+    </view>
+    <view class="item">
+      <t-icon name="star" size="20" />
+      <view class="text">收藏</view>
+    </view>
+    <view class="item">
+      <t-icon name="jump" size="20" />
+      <view class="text">分享</view>
+    </view>
+  </view>
+  <view wx:else class="symbol">
+    <t-icon name="chevron-left" size="20" />
+  </view>
+</t-fab>

@@ -1,0 +1,1 @@
+const props={content:{type:null},direction:{type:String,value:"horizontal"},interval:{type:Number,value:2e3},marquee:{type:null,value:!1},operation:{type:String},prefixIcon:{type:null,value:!0},suffixIcon:{type:null},theme:{type:String,value:"info"},visible:{type:Boolean,value:null},defaultVisible:{type:Boolean,value:!1}};export default props;

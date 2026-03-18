@@ -1,0 +1,1 @@
+export var MessageType;!function(e){e.info="info",e.success="success",e.warning="warning",e.error="error"}(MessageType||(MessageType={}));

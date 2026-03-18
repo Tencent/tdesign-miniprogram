@@ -1,0 +1,19 @@
+@import '../common/style/index.wxss';.t-form__item{display:flex;box-sizing:border-box;padding:var(--td-form-item-vertical-padding,32rpx) var(--td-form-item-horizontal-padding,32rpx);position:relative;--td-cell-vertical-padding:0;--td-cell-horizontal-padding:0;--td-input-vertical-padding:0;--td-textarea-padding:0;}
+.t-form__item:not(:last-child)::after{position:absolute;box-sizing:border-box;content:' ';pointer-events:none;right:0;left:0;bottom:0;border-bottom:1px solid var(--td-form-item-border-color,var(--td-component-stroke,var(--td-gray-color-3,#e7e7e7)));transform:scaleY(.5);left:var(--td-form-item-border-left-space,var(--td-form-item-vertical-padding,32rpx));right:var(--td-form-item-border-right-space,0);}
+.t-form__item-extra,.t-form__item-help{display:flex;font-size:var(--td-font-size-s,24rpx);margin:0;width:100%;height:auto;min-height:40rpx;margin-top:8rpx;}
+.t-form__item-help{color:var(--td-text-color-disabled,var(--td-font-gray-4,rgba(0,0,0,.26)));}
+.t-form__item--error{color:var(--td-error-color-6,#d54941);}
+.t-form__item--warning{color:var(--td-warning-color-5,#e37318);}
+.t-form__item-wrap{width:100%;display:flex;}
+.t-form__item--top{display:flex;flex-direction:column;}
+.t-form--top{align-items:center;}
+.t-form__label{padding-right:32rpx;vertical-align:middle;line-height:48rpx;color:var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9)));box-sizing:border-box;word-break:break-all;}
+.t-form__label--top{padding-bottom:16rpx;}
+.t-form__label--left{text-align:left;}
+.t-form__label--right{text-align:right;}
+.t-form__label--required:not(.t-form__label--required-right) label::before{display:inline;margin-right:calc(var(--td-spacer,16rpx)/ 2);color:var(--td-error-color-6,#d54941);content:'*';}
+.t-form__label--required-right label::after{display:inline;margin-left:calc(var(--td-spacer,16rpx)/ 2);color:var(--td-error-color-6,#d54941);content:'*';}
+.t-form__controls{flex:1;position:relative;}
+.t-form__controls-content{display:flex;align-items:center;min-height:48rpx;}
+.t-form__controls--left{justify-content:flex-start;}
+.t-form__controls--right{justify-content:flex-end;}

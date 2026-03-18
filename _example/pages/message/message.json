@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "Message",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "base": "./base",
+    "theme": "./theme"
+  }
+}

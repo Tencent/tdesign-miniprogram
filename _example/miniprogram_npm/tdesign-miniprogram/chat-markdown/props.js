@@ -1,0 +1,1 @@
+const props={content:{type:String,value:"",required:!0},options:{type:Object,value:{gfm:!0,pedantic:!1,breaks:!0}}};export default props;

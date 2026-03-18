@@ -1,0 +1,16 @@
+<t-dropdown-menu>
+  <t-dropdown-item
+    label="树形双列"
+    optionsLayout="tree"
+    options="{{doubleColumnsTree.options}}"
+    value="{{doubleColumnsTree.value}}"
+    bindchange="handleTreeSelect"
+  />
+  <t-dropdown-item
+    label="选项最多八字树形三列"
+    optionsLayout="tree"
+    options="{{tripleColumnsTree.options}}"
+    defaultValue="{{tripleColumnsTree.value}}"
+    multiple
+  />
+</t-dropdown-menu>

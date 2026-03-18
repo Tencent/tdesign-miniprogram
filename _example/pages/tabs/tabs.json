@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "Tabs",
+  "usingComponents": {
+    "base": "./base",
+    "scroll": "./scroll",
+    "size": "./size",
+    "status": "./status",
+    "with-icon": "./with-icon",
+    "with-badge": "./with-badge",
+    "theme": "./theme",
+    "with-content": "./with-content"
+  }
+}

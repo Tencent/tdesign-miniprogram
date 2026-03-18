@@ -1,0 +1,4 @@
+<view class="demo">
+  <t-tag wx:if="{{show[0]}}" class="margin-16" bind:close="handleClose0" closable variant="light">文字标签</t-tag>
+  <t-tag wx:if="{{show[1]}}" class="margin-16" bind:close="handleClose1" closable variant="outline">文字标签</t-tag>
+</view>

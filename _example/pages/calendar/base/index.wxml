@@ -1,0 +1,4 @@
+<wxs src="../calendar.wxs" module="_this" />
+
+<t-calendar visible="{{visible}}" value="{{value}}" bind:confirm="handleConfirm" bind:close="onClose" />
+<t-cell arrow title="单个选择日历" note="{{_this.formatTimestamp(value)}}" bind:tap="handleCalendar" />

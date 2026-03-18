@@ -1,0 +1,10 @@
+.demo-steps {
+  padding-top: 80rpx;
+}
+.group {
+  padding-bottom: 80rpx;
+  margin-top: 32rpx;
+}
+.group + .demo-section__desc {
+  margin-top: 32rpx;
+}

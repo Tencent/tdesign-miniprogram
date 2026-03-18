@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "Checkbox",
+  "usingComponents": {
+    "base": "./base",
+    "right": "./right",
+    "all": "./all",
+    "horizontal": "./horizontal",
+    "status": "./status",
+    "type": "./type",
+    "special": "./special",
+    "card": "./card"
+  }
+}

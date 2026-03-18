@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "Skeleton",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
+    "theme": "./theme",
+    "grid": "./grid",
+    "cell-group": "./cell-group",
+    "image-group": "./image-group",
+    "animation": "./animation"
+  }
+}

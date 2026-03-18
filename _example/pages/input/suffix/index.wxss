@@ -1,0 +1,3 @@
+.extra {
+  --td-input-align-items: start;
+}

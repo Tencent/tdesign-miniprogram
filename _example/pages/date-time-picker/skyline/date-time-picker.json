@@ -1,0 +1,15 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "t-navbar": "tdesign-miniprogram/navbar/navbar",
+    "year-month-date": "../year-month-date",
+    "year-month": "../year-month",
+    "time": "../time",
+    "date-all": "../date-all",
+    "steps": "../steps",
+    "without-popup": "../without-popup"
+  },
+  "renderer": "skyline",
+  "componentFramework": "glass-easel",
+  "disableScroll": true
+}

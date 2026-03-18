@@ -1,0 +1,6 @@
+<view wx:for="{{animationList}}" wx:for-item="animationItem" wx:key="index">
+  <view class="demo-section__desc">{{animationItem.title}}</view>
+  <view class="demo-section__content">
+    <t-skeleton theme="paragraph" animation="{{animationItem.value}}" loading="{{animationItem.loading}}"></t-skeleton>
+  </view>
+</view>

@@ -1,0 +1,21 @@
+<t-notice-bar
+  visible="{{visible}}"
+  prefixIcon="{{false}}"
+  marquee="{{marquee1}}"
+  content="提示文字描述提示文字描述提示文字描述提示文字描述文"
+></t-notice-bar>
+
+<t-notice-bar
+  visible="{{visible}}"
+  marquee="{{marquee2}}"
+  content="提示文字描述提示文字描述提示文字描述提示文字描述文"
+></t-notice-bar>
+
+<t-notice-bar
+  visible="{{true}}"
+  direction="vertical"
+  interval="{{3000}}"
+  content="{{content}}"
+  prefixIcon="sound"
+  bind:click="click"
+></t-notice-bar>

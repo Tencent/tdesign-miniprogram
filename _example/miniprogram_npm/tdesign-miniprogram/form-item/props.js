@@ -1,0 +1,1 @@
+const props={arrow:{type:Boolean,value:!1},help:{type:String},label:{type:String,value:""},labelAlign:{type:String},labelWidth:{type:null},name:{type:String,value:""},requiredMark:{type:null,value:void 0},rules:{type:Array},showErrorMessage:{type:null,value:void 0}};export default props;

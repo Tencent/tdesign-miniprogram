@@ -1,0 +1,1 @@
+const props={defaultExpandAll:{type:Boolean,value:!1},disabled:{type:Boolean},expandIcon:{type:Boolean,value:!0},expandMutex:{type:Boolean,value:!1},theme:{type:String,value:"default"},value:{type:Array,value:null},defaultValue:{type:Array,value:[]}};export default props;

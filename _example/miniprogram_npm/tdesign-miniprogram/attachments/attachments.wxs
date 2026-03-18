@@ -1,0 +1,53 @@
+var utils = require('../common/utils.wxs');
+
+function imageStyle(imageProps) {
+  if (imageProps && imageProps.width && imageProps.height) {
+    return utils._style({
+      width: utils.addUnit(imageProps.width),
+      height: utils.addUnit(imageProps.height),
+    });
+  }
+  // 兜底逻辑：没有传入 width 和 height 时，使用默认最大宽高尺寸
+  return utils._style({
+    width: '400rpx',
+    height: '400rpx',
+  });
+}
+
+function getImageMode(imageProps) {
+  if (imageProps && imageProps.width && imageProps.height) {
+    return imageProps.width > imageProps.height ? 'widthFix' : 'heightFix';
+  }
+  // 兜底逻辑：没有传入 width 和 height 时，使用 aspectFit 保持图片比例
+  return imageProps && imageProps.mode ? imageProps.mode : 'scaleToFill';
+}
+
+function getFileTypeClass(inChat, files) {
+  // 如果 inChat 不为 true，返回空字符串
+  if (!inChat) {
+    return '';
+  }
+
+  // 如果 files 为空或不存在，返回空字符串
+  if (!files || files.length === 0) {
+    return '';
+  }
+
+  // 检查是否所有文件的 fileType 都是 'image'
+  var allImages = true;
+  for (var i = 0; i < files.length; i++) {
+    if (files[i].fileType !== 'image') {
+      allImages = false;
+      break;
+    }
+  }
+
+  // 根据判断结果返回相应的类名
+  return allImages ? 'all_images' : 'all_files';
+}
+
+module.exports = {
+  imageStyle: imageStyle,
+  getImageMode: getImageMode,
+  getFileTypeClass: getFileTypeClass,
+};
