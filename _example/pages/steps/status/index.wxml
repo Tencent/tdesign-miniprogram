@@ -1,0 +1,22 @@
+<wxs module="_">
+  module.exports.getText = function(value, curr) { if (value > curr) return '已完成'; if (value == curr)
+  return'错误步骤'; return '未完成'; }
+</wxs>
+
+<view class="block">
+  <t-steps current="{{first}}" bind:change="onFirstChange" current-status="error">
+    <t-step-item wx:for="{{4}}" wx:key="index" title="{{_.getText(first, index)}}" content="辅助信息" />
+  </t-steps>
+</view>
+
+<view class="block">
+  <t-steps current="{{second}}" bind:change="onSecondChange" current-status="error">
+    <t-step-item wx:for="{{4}}" wx:key="index" title="{{_.getText(second, index)}}" content="辅助信息" icon="cart" />
+  </t-steps>
+</view>
+
+<view class="block">
+  <t-steps theme="dot" current="{{third}}" bind:change="onThirdChange" current-status="error">
+    <t-step-item wx:for="{{4}}" wx:key="index" title="{{_.getText(third, index)}}" content="辅助信息" />
+  </t-steps>
+</view>

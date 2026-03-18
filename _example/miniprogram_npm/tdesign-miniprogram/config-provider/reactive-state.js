@@ -1,0 +1,1 @@
+export default class ReactiveState{constructor(e){this._listeners=new Set,this._value=e}get value(){return this._value}set value(e){this._value!==e&&(this._value=e,this._notify())}subscribe(e){return this._listeners.add(e),e(this._value),()=>{this._listeners.delete(e)}}_notify(){this._listeners.forEach(e=>{try{e(this._value)}catch(e){console.error("State listener error:",e)}})}}

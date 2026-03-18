@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "Overlay",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "base": "./base"
+  }
+}

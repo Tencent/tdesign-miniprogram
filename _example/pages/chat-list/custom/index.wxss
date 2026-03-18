@@ -1,0 +1,17 @@
+.chat-box {
+  padding-top: 32rpx;
+  box-sizing: border-box;
+}
+
+.t-chat__list {
+  padding: 0 0 0 32rpx;
+  box-sizing: border-box;
+}
+
+.t-chat-message {
+  padding: 0 32rpx;
+}
+
+.chart-chat .assistant .t-chat__detail {
+  width: 100%;
+}

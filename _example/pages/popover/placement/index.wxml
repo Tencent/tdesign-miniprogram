@@ -1,0 +1,299 @@
+<view class="popover-example-row">
+  <view class="demo-block__header-desc">顶部弹出气泡</view>
+  <view class="row">
+    <view class="popover-example__content">
+      <t-popover
+        placement="top-left"
+        theme="dark"
+        bind:visible-change="onVisibleChange"
+        data-target="topLeft"
+        visible="{{visible.topLeft}}"
+      >
+        <view slot="content">弹出气泡内容</view>
+        <view class="popover-example__content">
+          <t-button
+            class="button-width--small"
+            theme="primary"
+            variant="outline"
+            size="large"
+            data-target="topLeft"
+            bind:tap="showPopover"
+          >
+            顶部左
+          </t-button>
+        </view>
+      </t-popover>
+    </view>
+    <view class="popover-example__content">
+      <t-popover
+        placement="top"
+        theme="dark"
+        bind:visible-change="onVisibleChange"
+        data-target="top"
+        visible="{{visible.top}}"
+      >
+        <view slot="content">弹出气泡内容</view>
+        <view class="popover-example__content">
+          <t-button
+            class="button-width--small"
+            theme="primary"
+            variant="outline"
+            size="large"
+            data-target="top"
+            bind:tap="showPopover"
+          >
+            顶部中
+          </t-button>
+        </view>
+      </t-popover>
+    </view>
+    <view class="popover-example__content">
+      <t-popover
+        placement="top-right"
+        theme="dark"
+        bind:visible-change="onVisibleChange"
+        data-target="topRight"
+        visible="{{visible.topRight}}"
+      >
+        <view slot="content">弹出气泡内容</view>
+        <view class="popover-example__content">
+          <t-button
+            class="button-width--small"
+            theme="primary"
+            variant="outline"
+            size="large"
+            data-target="topRight"
+            bind:tap="showPopover"
+          >
+            顶部右
+          </t-button>
+        </view>
+      </t-popover>
+    </view>
+  </view>
+</view>
+
+<view class="popover-example-row">
+  <view class="demo-block__header-desc">底部弹出气泡</view>
+  <view class="row">
+    <view class="popover-example__content">
+      <t-popover
+        placement="bottom-left"
+        theme="dark"
+        bind:visible-change="onVisibleChange"
+        data-target="bottomLeft"
+        visible="{{visible.bottomLeft}}"
+      >
+        <view slot="content">弹出气泡内容</view>
+        <view class="popover-example__content">
+          <t-button
+            class="button-width--small"
+            theme="primary"
+            variant="outline"
+            size="large"
+            data-target="bottomLeft"
+            bind:tap="showPopover"
+          >
+            底部左
+          </t-button>
+        </view>
+      </t-popover>
+    </view>
+    <view class="popover-example__content">
+      <t-popover
+        placement="bottom"
+        theme="dark"
+        bind:visible-change="onVisibleChange"
+        data-target="bottom"
+        visible="{{visible.bottom}}"
+      >
+        <view slot="content">弹出气泡内容</view>
+        <view class="popover-example__content">
+          <t-button
+            class="button-width--small"
+            theme="primary"
+            variant="outline"
+            size="large"
+            data-target="bottom"
+            bind:tap="showPopover"
+          >
+            底部中
+          </t-button>
+        </view>
+      </t-popover>
+    </view>
+    <view class="popover-example__content">
+      <t-popover
+        placement="bottom-right"
+        theme="dark"
+        bind:visible-change="onVisibleChange"
+        data-target="bottomRight"
+        visible="{{visible.bottomRight}}"
+      >
+        <view slot="content">弹出气泡内容</view>
+        <view class="popover-example__content">
+          <t-button
+            class="button-width--small"
+            theme="primary"
+            variant="outline"
+            size="large"
+            data-target="bottomRight"
+            bind:tap="showPopover"
+          >
+            底部右
+          </t-button>
+        </view>
+      </t-popover>
+    </view>
+  </view>
+</view>
+
+<view class="popover-example-row">
+  <view class="demo-block__header-desc">右侧弹出气泡</view>
+  <view class="column">
+    <view class="popover-example__content">
+      <t-popover
+        placement="right-top"
+        theme="dark"
+        bind:visible-change="onVisibleChange"
+        data-target="rightTop"
+        visible="{{visible.rightTop}}"
+      >
+        <view slot="content">气泡内容</view>
+        <view class="popover-example__content">
+          <t-button
+            class="button-with--large"
+            theme="primary"
+            variant="outline"
+            size="large"
+            data-target="rightTop"
+            bind:tap="showPopover"
+          >
+            右侧上
+          </t-button>
+        </view>
+      </t-popover>
+    </view>
+    <view class="popover-example__content">
+      <t-popover
+        placement="right"
+        theme="dark"
+        bind:visible-change="onVisibleChange"
+        data-target="right"
+        visible="{{visible.right}}"
+      >
+        <view slot="content">气泡内容</view>
+        <view class="popover-example__content">
+          <t-button
+            class="button-with--large"
+            theme="primary"
+            variant="outline"
+            size="large"
+            data-target="right"
+            bind:tap="showPopover"
+          >
+            右侧中
+          </t-button>
+        </view>
+      </t-popover>
+    </view>
+    <view class="popover-example__content">
+      <t-popover
+        placement="right-bottom"
+        theme="dark"
+        bind:visible-change="onVisibleChange"
+        data-target="rightBottom"
+        visible="{{visible.rightBottom}}"
+      >
+        <view slot="content">气泡内容</view>
+        <view class="popover-example__content">
+          <t-button
+            class="button-with--large"
+            theme="primary"
+            variant="outline"
+            size="large"
+            data-target="rightBottom"
+            bind:tap="showPopover"
+          >
+            右侧下
+          </t-button>
+        </view>
+      </t-popover>
+    </view>
+  </view>
+</view>
+
+<view class="flex-end popover-example-row">
+  <view class="demo-block__header-desc">左侧弹出气泡</view>
+  <view class="column">
+    <view class="popover-example__content">
+      <t-popover
+        placement="left-top"
+        theme="dark"
+        bind:visible-change="onVisibleChange"
+        data-target="leftTop"
+        visible="{{visible.leftTop}}"
+      >
+        <view slot="content">气泡内容</view>
+        <view class="popover-example__content">
+          <t-button
+            class="button-with--large"
+            theme="primary"
+            variant="outline"
+            size="large"
+            data-target="leftTop"
+            bind:tap="showPopover"
+          >
+            左侧上
+          </t-button>
+        </view>
+      </t-popover>
+    </view>
+    <view class="popover-example__content">
+      <t-popover
+        placement="left"
+        theme="dark"
+        bind:visible-change="onVisibleChange"
+        data-target="left"
+        visible="{{visible.left}}"
+      >
+        <view slot="content">气泡内容</view>
+        <view class="popover-example__content">
+          <t-button
+            class="button-with--large"
+            theme="primary"
+            variant="outline"
+            size="large"
+            data-target="left"
+            bind:tap="showPopover"
+          >
+            左侧中
+          </t-button>
+        </view>
+      </t-popover>
+    </view>
+    <view class="popover-example__content">
+      <t-popover
+        placement="left-bottom"
+        theme="dark"
+        bind:visible-change="onVisibleChange"
+        data-target="leftBottom"
+        visible="{{visible.leftBottom}}"
+      >
+        <view slot="content">气泡内容</view>
+        <view class="popover-example__content">
+          <t-button
+            class="button-with--large"
+            theme="primary"
+            variant="outline"
+            size="large"
+            data-target="leftBottom"
+            bind:tap="showPopover"
+          >
+            左侧下
+          </t-button>
+        </view>
+      </t-popover>
+    </view>
+  </view>
+</view>

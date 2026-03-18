@@ -1,0 +1,13 @@
+<wxs module="_"> module.exports.contains = function(arr, target) { return arr.indexOf(target) > -1; } </wxs>
+<view class="wrapper">
+  <t-collapse value="{{activeValues}}" bind:change="handleChange">
+    <t-collapse-panel
+      header="折叠面板标题"
+      header-right-content="{{_.contains(activeValues, 0) ? '收起' : '展开'}}"
+      value="{{0}}"
+      expandIcon
+    >
+      此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容
+    </t-collapse-panel>
+  </t-collapse>
+</view>

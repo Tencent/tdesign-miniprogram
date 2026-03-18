@@ -1,0 +1,10 @@
+<t-swiper
+  current="{{current}}"
+  autoplay="{{autoplay}}"
+  duration="{{duration}}"
+  interval="{{interval}}"
+  navigation="{{navigation}}"
+  paginationPosition="{{paginationPosition}}"
+  list="{{swiperList}}"
+>
+</t-swiper>

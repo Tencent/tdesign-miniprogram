@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "ChatActionbar 聊天操作栏",
+  "usingComponents": {
+    "base": "./base",
+    "comment": "./comment"
+  }
+}

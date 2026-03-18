@@ -1,0 +1,1 @@
+const props={content:{type:Object,required:!0},markdownProps:{type:Object},role:{type:String,required:!0},status:{type:String}};export default props;

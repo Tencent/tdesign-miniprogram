@@ -1,0 +1,14 @@
+<t-cell title="地址" note="{{note}}" bind:click="showCascader" arrow />
+
+<t-cascader
+  close-btn="{{false}}"
+  check-strictly="{{true}}"
+  visible="{{visible}}"
+  value="{{value}}"
+  options="{{options}}"
+  title="请选择地址"
+  bind:change="onChange"
+  bind:pick="onPick"
+>
+  <text class="confirm-btn" slot="close-btn">确定</text>
+</t-cascader>

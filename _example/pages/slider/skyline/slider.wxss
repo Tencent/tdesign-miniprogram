@@ -1,0 +1,15 @@
+page {
+  padding-bottom: 32rpx;
+}
+.t-slider {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 32rpx 0;
+}
+.t-slider {
+  flex: 1;
+}
+.t-slider + .t-slider {
+  margin-top: 32rpx;
+}

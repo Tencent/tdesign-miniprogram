@@ -1,0 +1,1 @@
+const props={format:{type:null},options:{type:Array,value:[]}};export default props;

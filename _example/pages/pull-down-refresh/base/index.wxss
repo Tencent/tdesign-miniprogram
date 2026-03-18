@@ -1,0 +1,41 @@
+.demo {
+  padding-bottom: 56rpx;
+  overflow: hidden;
+}
+
+.demo-title {
+  font-size: 48rpx;
+  font-weight: 700;
+  line-height: 64rpx;
+  margin: 48rpx 32rpx 0;
+  color: var(--td-text-color-primary);
+}
+
+.demo-desc {
+  font-size: 28rpx;
+  color: var(--td-text-color-secondary);
+  margin: 16rpx 32rpx 0;
+  line-height: 44rpx;
+}
+
+.pulldown-refresh__content {
+  margin: 64rpx 32rpx 0;
+  position: relative;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32rpx;
+}
+
+.text {
+  position: absolute;
+  top: 152rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-size: 32rpx;
+  color: var(--td-text-color-disabled);
+  width: 686rpx;
+}

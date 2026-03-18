@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "Sticky",
+  "usingComponents": {
+    "base": "./base",
+    "offset": "./offset",
+    "container": "./container"
+  }
+}

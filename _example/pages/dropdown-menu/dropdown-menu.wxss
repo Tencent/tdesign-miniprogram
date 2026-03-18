@@ -1,0 +1,8 @@
+.wrapper {
+  width: 100%;
+  height: 300px;
+}
+.buttons .t-button {
+  display: flex;
+  margin: 30rpx;
+}
