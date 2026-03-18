@@ -1,0 +1,24 @@
+.block {
+  margin-top: 10px;
+  width: 100px;
+  height: 100px;
+  background: #0052d9;
+}
+.translate-enter {
+  opacity: 0;
+  transform: translateX(40px);
+}
+.translate-enter-to {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: all 1s;
+}
+.translate-leave {
+  opacity: 1;
+  transform: translateY(0%);
+}
+.translate-leave-to {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: all 1s;
+}

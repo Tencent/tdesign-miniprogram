@@ -1,0 +1,1 @@
+<t-empty t-class="empty-cls" t-class-image="t-empty__image" image="{{image}}" description="描述文字" />

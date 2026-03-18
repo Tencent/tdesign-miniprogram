@@ -1,0 +1,1 @@
+const props={bordered:{type:Boolean,value:!0},fixed:{type:Boolean,value:!0},placeholder:{type:Boolean,value:!1},safeAreaInsetBottom:{type:Boolean,value:!0},shape:{type:String,value:"normal"},split:{type:Boolean,value:!0},theme:{type:String,value:"normal"},value:{type:null,value:null},defaultValue:{type:null},zIndex:{type:Number,value:1}};export default props;

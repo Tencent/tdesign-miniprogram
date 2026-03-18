@@ -1,0 +1,1 @@
+@import '../common/style/index.wxss';.t-form{display:block;background-color:var(--td-form-bg-color,var(--td-bg-color-container,var(--td-font-white-1,#fff)));}

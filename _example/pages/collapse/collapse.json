@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "Collapse",
+  "usingComponents": {
+    "base": "./base",
+    "placement": "./placement",
+    "action": "./action",
+    "accordion": "./accordion",
+    "theme": "./theme"
+  }
+}

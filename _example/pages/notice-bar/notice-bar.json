@@ -1,0 +1,15 @@
+{
+  "navigationBarTitleText": "NoticeBar",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar",
+    "base": "./base",
+    "iconDemo": "./iconDemo",
+    "suffixIcon": "./suffixIcon",
+    "event": "./event",
+    "custom": "./custom",
+    "theme": "./theme",
+    "scrolling": "./scrolling",
+    "customization": "./customization"
+  }
+}

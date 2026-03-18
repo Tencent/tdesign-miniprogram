@@ -1,0 +1,5 @@
+<t-checkbox-group
+  options="{{options}}"
+  defaultValue="{{checkAllValues}}"
+  bind:change="onCheckAllChange"
+></t-checkbox-group>

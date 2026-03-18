@@ -1,0 +1,98 @@
+.demo-base-container {
+  padding: 56rpx 0 0 0;
+  background-color: var(--td-bg-color-container);
+  height: 488rpx;
+  position: relative;
+}
+
+/* 聊天发送器包装器 */
+.chat-sender-demo-wrapper {
+  margin-bottom: 32rpx;
+  /* border: 2rpx solid #e5e5e5; */
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.chat-sender-height-limit {
+  height: 72rpx;
+  padding: 0 24rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-sender-height-left-limit {
+  height: 70rpx;
+  width: 70rpx;
+  border-top: 1px var(--td-component-stroke) dashed;
+  border-left: 1px var(--td-component-stroke) dashed;
+  border-top-left-radius: 32rpx;
+}
+.chat-sender-height-right-limit {
+  height: 70rpx;
+  width: 70rpx;
+  border-top: 1px var(--td-component-stroke) dashed;
+  border-right: 1px var(--td-component-stroke) dashed;
+  border-top-right-radius: 32rpx;
+}
+.chat-sender-placeholder {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: var(--demo-chat-sender-placeholder);
+  text-align: center;
+  height: 48rpx;
+}
+
+.chat-sender-wrapper {
+  position: absolute;
+  width: 100%;
+  bottom: 0rpx;
+  background-color: var(--td-bg-color-container);
+}
+
+.demo-footer {
+  height: 32rpx;
+  width: 100%;
+  text-align: center;
+  font-size: 20rpx;
+  line-height: 32rpx;
+  color: var(--td-text-color-placeholder);
+  position: absolute;
+  bottom: 32rpx;
+}
+
+.demo-footer-prefix {
+  display: flex;
+  align-items: center;
+}
+
+.deep-think-block {
+  padding: 0 24rpx;
+  height: 60rpx;
+  margin-right: 16rpx;
+}
+
+.deep-think-text {
+  margin-left: 8rpx;
+}
+
+.deep-think-block,
+.net-search-block {
+  color: var(--td-text-color-primary);
+  border-radius: 200rpx;
+  border: 2rpx solid var(--td-component-border);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.net-search-block {
+  width: 64rpx;
+  height: 60rpx;
+}
+
+.active {
+  border-color: var(--td-brand-color-light-active);
+  color: var(--td-brand-color);
+  background-color: var(--td-brand-color-light);
+}

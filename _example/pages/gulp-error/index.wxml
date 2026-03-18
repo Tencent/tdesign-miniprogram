@@ -1,0 +1,1 @@
+<view>gulp编译错误：</view> <view style="color: red; word-break: break-word">{{gulpError}}</view>

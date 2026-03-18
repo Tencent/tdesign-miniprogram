@@ -1,0 +1,7 @@
+@import '../../common/style/index.wxss';.t-chat-markdown-code{margin:16rpx 0;border-radius:8rpx;background-color:#f6f8fa;border:1rpx solid #e1e4e8;overflow:hidden;}
+.t-chat-markdown-code__header{padding:8rpx 16rpx;background-color:#e1e4e8;border-bottom:1rpx solid #d0d7de;}
+.t-chat-markdown-code__lang{font-size:24rpx;color:#656d76;font-weight:500;}
+.t-chat-markdown-code__content{padding:16rpx;overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;white-space:nowrap;height:auto;}
+.t-chat-markdown-code__text{font:var(--td-font-body-medium,28rpx / 44rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular));font-family:'SF Mono',Monaco,'Cascadia Code','Roboto Mono',Consolas,'Courier New',monospace;color:#24292f;white-space:pre;word-wrap:normal;word-break:normal;overflow-wrap:normal;display:inline-block;vertical-align:top;min-width:100%;}
+.t-chat-markdown-code-light .t-chat-markdown-code-block{background-color:#fff;border-color:#d0d7de;}
+.t-chat-markdown-code-light .t-chat-markdown-code-header{background-color:#f6f8fa;border-bottom-color:#d0d7de;}

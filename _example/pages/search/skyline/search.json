@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "Search",
+  "usingComponents": {
+    "base": "../base",
+    "maxlength": "../maxlength",
+    "action": "../action",
+    "shape": "../shape",
+    "other": "../other"
+  }
+}

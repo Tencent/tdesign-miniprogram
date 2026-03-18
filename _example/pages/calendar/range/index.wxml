@@ -1,0 +1,16 @@
+<wxs src="../calendar.wxs" module="_this" />
+
+<t-calendar
+  visible="{{visible}}"
+  value="{{value}}"
+  minDate="{{minDate}}"
+  maxDate="{{maxDate}}"
+  type="range"
+  bind:confirm="handleConfirm"
+/>
+
+<view class="wrapper" bind:tap="handleCalendar">
+  <view class="wrapper__left">{{_this.formatTimestamp(value[0])}}</view>
+  <t-icon class="wrapper__center" name="swap-right" size="40rpx" />
+  <view class="wrapper__right">{{_this.formatTimestamp(value[1])}}</view>
+</view>

@@ -1,0 +1,3 @@
+.demo-wrapper {
+  padding: 0 32rpx;
+}

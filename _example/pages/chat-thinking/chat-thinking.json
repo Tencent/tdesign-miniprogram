@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "ChatThinking 聊天思考状态",
+  "usingComponents": {
+    "base": "./base",
+    "layout": "./layout",
+    "pending": "./pending",
+    "complete": "./complete"
+  }
+}

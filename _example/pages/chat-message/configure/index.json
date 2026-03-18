@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-chat-message": "tdesign-miniprogram/chat-message/chat-message",
+    "t-chat-actionbar": "tdesign-miniprogram/chat-actionbar/chat-actionbar",
+    "t-divider": "tdesign-miniprogram/divider/divider"
+  }
+}
