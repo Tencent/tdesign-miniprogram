@@ -6,12 +6,21 @@ import { canUseVirtualHost } from '../../../components/common/version';
 
 global.getApp = () => null;
 global.Page = (options) => Component(options);
-global.load = (path, demoName) => {
-  return simulate.load(path, demoName, {
+global.load = (filePath, demoName) => {
+  // pro-components 的 wxml 中通过相对路径引用了 components 下的 wxs 文件（如 ../../../components/common/utils.wxs），
+  // 因此 rootPath 需要设为能同时包含 components 和 pro-components 的公共父目录 packages/，
+  // 这样 wcc 编译器才能正确扫描并解析跨目录的 wxs 引用。
+  const resolvedPath = String(filePath);
+  const isProComponent = resolvedPath.includes('pro-components');
+  const rootPath = isProComponent
+    ? Path.resolve(__dirname, '../../../')
+    : Path.resolve(__dirname, '../../../components');
+
+  return simulate.load(filePath, demoName, {
     less: true,
-    rootPath: Path.resolve(__dirname, '../../../components'),
+    rootPath,
     compilerOptions: {
-      maxBuffer: 1024 * 1024 * 2,
+      maxBuffer: 1024 * 1024 * 8,
     },
   });
 };
