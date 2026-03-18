@@ -1,0 +1,6 @@
+.search-box {
+  --td-search-height: 32px;
+  --td-search-font: var(--td-font-body-medium);
+  --td-search-icon-size: 40rpx;
+  width: 252px;
+}

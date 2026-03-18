@@ -1,0 +1,4 @@
+<t-swipe-cell>
+  <t-cell title="右滑单操作" note="辅助信息" bordered="{{false}}" />
+  <view slot="left" class="btn favor-btn" bind:tap="onChoice">选择</view>
+</t-swipe-cell>

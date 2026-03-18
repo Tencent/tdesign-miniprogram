@@ -1,0 +1,3 @@
+@import '../common/style/index.wxss';.t-grid{position:relative;overflow:hidden;background-color:var(--td-grid-bg-color,var(--td-bg-color-container,var(--td-font-white-1,#fff)));}
+.t-grid__content{width:auto;}
+.t-grid--card{margin:0 32rpx;border-radius:var(--td-grid-card-radius,var(--td-radius-large,18rpx));overflow:hidden;}

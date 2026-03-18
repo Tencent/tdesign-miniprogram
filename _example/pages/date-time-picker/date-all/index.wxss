@@ -1,0 +1,3 @@
+.panel-item {
+  margin-bottom: 32rpx;
+}

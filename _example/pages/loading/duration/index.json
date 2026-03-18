@@ -1,0 +1,7 @@
+{
+  "components": true,
+  "usingComponents": {
+    "t-loading": "tdesign-miniprogram/loading/loading",
+    "t-slider": "tdesign-miniprogram/slider/slider"
+  }
+}

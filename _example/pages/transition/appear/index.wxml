@@ -1,0 +1,7 @@
+<t-button size="large" variant="outline" bind:tap="onTriggerClick" block theme="primary">Toggle attach</t-button>
+
+<view wx:if="{{ visible }}">
+  <t-transition visible appear>
+    <view class="block"></view>
+  </t-transition>
+</view>

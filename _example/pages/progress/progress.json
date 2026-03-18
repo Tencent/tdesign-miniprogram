@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "Progress",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "base": "./base",
+    "line": "./line",
+    "plump": "./plump",
+    "circle": "./circle"
+  }
+}

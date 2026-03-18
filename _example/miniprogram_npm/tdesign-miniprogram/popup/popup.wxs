@@ -1,0 +1,21 @@
+function getPopupStyles(zIndex, distanceTop, placement, duration) {
+  var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
+  if ((placement === 'top' || placement === 'left' || placement === 'right') && distanceTop) {
+    zIndexStyle = zIndexStyle + 'top:' + distanceTop + 'px;' + '--td-popup-distance-top:' + distanceTop + 'px;';
+  }
+  if (duration) {
+    zIndexStyle = zIndexStyle + '--td-popup-transition:all ' + duration + 'ms ease;';
+  }
+  return zIndexStyle;
+}
+
+function onContentTouchMove(e) {
+  if (e.target && e.target.dataset.prevention) {
+    return false;
+  }
+}
+
+module.exports = {
+  getPopupStyles: getPopupStyles,
+  onContentTouchMove: onContentTouchMove,
+};

@@ -1,0 +1,5 @@
+@import '../common/style/index.wxss';.t-chat-list{display:flex;flex-direction:column;height:100%;width:100%;color:var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9)));}
+.t-chat-list__content{flex:1;overflow-y:auto;overflow-x:hidden;width:100%;}
+.t-chat-list__content--reverse{display:flex;flex-direction:column;transform:scaleY(-1);}
+.t-chat-list__content--reverse::-webkit-scrollbar{transform:scaleY(-1);}
+.t-chat-list__content .placeholder{flex-grow:1;flex-shrink:1;}

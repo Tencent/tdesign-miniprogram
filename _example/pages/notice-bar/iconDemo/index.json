@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-notice-bar": "tdesign-miniprogram/notice-bar/notice-bar",
+    "t-icon": "tdesign-miniprogram/icon/icon"
+  }
+}

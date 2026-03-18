@@ -1,0 +1,7 @@
+@import '../common/style/index.wxss';.t-watermark{position:relative;overflow:hidden;width:100%;}
+@keyframes watermark{
+0%{left:var(--watermark-left-0);top:var(--watermark-top-0);}
+25%{left:var(--watermark-left-25);top:var(--watermark-top-25);}
+50%{left:var(--watermark-left-50);top:var(--watermark-top-50);transform:translateX(-100%);}
+75%{left:var(--watermark-left-75);top:var(--watermark-top-75);}
+100%{left:var(--watermark-left-0);top:var(--watermark-top-0);}}

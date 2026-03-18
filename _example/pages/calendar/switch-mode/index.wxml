@@ -1,0 +1,12 @@
+<wxs src="../calendar.wxs" module="_this" />
+
+<t-calendar
+  visible="{{visible}}"
+  value="{{value}}"
+  switch-mode="year-month"
+  minDate="{{minDate}}"
+  maxDate="{{maxDate}}"
+  bind:confirm="handleConfirm"
+  bind:panel-change="handlePanelChange"
+/>
+<t-cell arrow title="带翻页功能的日历" note="{{_this.formatTimestamp(value)}}" bind:tap="handleCalendar" />

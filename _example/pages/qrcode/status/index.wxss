@@ -1,0 +1,9 @@
+.demo-summary {
+  padding-top: 48rpx;
+  padding-bottom: 32rpx;
+  box-sizing: border-box;
+
+  line-height: 22px;
+  color: var(--bg-color-demo-desc);
+  font-size: var(--td-font-size-base, 28rpx);
+}

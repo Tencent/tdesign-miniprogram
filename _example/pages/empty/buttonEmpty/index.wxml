@@ -1,0 +1,3 @@
+<t-empty icon="info-circle-filled" description="描述文字">
+  <t-button slot="action" theme="primary" size="large">操作按钮</t-button>
+</t-empty>

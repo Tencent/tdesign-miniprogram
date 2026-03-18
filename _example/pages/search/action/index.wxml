@@ -1,0 +1,12 @@
+<view class="example-search">
+  <t-search
+    value="{{value}}"
+    center
+    placeholder="搜索预设文案"
+    action="{{actionText}}"
+    bind:blur="blurHandle"
+    bind:focus="focusHandle"
+    bind:action-click="actionHandle"
+    bind:change="changeHandle"
+  />
+</view>

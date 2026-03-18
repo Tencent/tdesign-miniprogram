@@ -1,0 +1,8 @@
+@import '../common/style/index.wxss';.t-chat-content{font:var(--td-font-body-large,32rpx / 48rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular));word-break:break-word;word-wrap:break-word;overflow-wrap:break-word;box-sizing:border-box;width:fit-content;}
+.t-chat-content__system,.t-chat-content__user{color:var(--td-chat-content-user-text-color,var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9))));}
+.t-chat-content__system ._pre,.t-chat-content__user ._pre{margin:0;white-space:pre-wrap;}
+.t-chat-content__assistant{color:var(--td-chat-content-assistant-text-color,var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9))));}
+.t-chat-content__assistant ._ol{-webkit-padding-start:40rpx;padding-inline-start:40rpx;}
+.t-chat-content__assistant ._ol ._li{list-style:decimal;}
+.t-chat-content__assistant ._img{max-width:100%;margin:8rpx 0;border-radius:var(--td-radius-small,6rpx);}
+.t-chat-content__error{color:var(--td-chat-content-error-text-color,var(--td-error-color,var(--td-error-color-6,#d54941)));}

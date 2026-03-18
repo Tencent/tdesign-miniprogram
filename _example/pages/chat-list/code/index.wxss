@@ -1,0 +1,27 @@
+.chat-box {
+  padding-top: 32rpx;
+  box-sizing: border-box;
+}
+
+.t-chat__list {
+  padding: 0 0 0 32rpx;
+  box-sizing: border-box;
+}
+
+.t-chat-message {
+  padding: 0 32rpx;
+}
+
+.preview {
+  padding: 8rpx 16rpx;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid #c5c5c5;
+  border-radius: 6rpx;
+  color: #181818;
+}
+
+.preview .btn {
+  color: #366ef4;
+  margin-left: 32rpx;
+}

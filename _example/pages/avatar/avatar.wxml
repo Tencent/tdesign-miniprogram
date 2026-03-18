@@ -1,0 +1,36 @@
+<view class="skyline">
+  <t-navbar class="demo-navbar" title="Avatar" leftArrow placeholder zIndex="{{99}}" />
+  <scroll-view scroll-y type="list" class="scroll-view">
+    <view class="demo">
+      <t-demo-header
+        title="Avatar 头像"
+        desc="用于展示用户头像信息，除了纯展示也可点击进入个人详情等操作。"
+        notice="渲染框架支持情况：Skyline、WebView"
+      />
+      <t-demo title="01 组件类型" desc="图片头像" padding>
+        <imageAvatar />
+      </t-demo>
+      <t-demo desc="字符头像" padding>
+        <characterAvatar />
+      </t-demo>
+      <t-demo desc="图标头像" padding>
+        <iconAvatar />
+      </t-demo>
+
+      <t-demo desc="带徽标头像" padding>
+        <badgeAvatar />
+      </t-demo>
+
+      <t-demo title="02 特殊类型" desc="纯展示的头像组" padding>
+        <exhibition />
+      </t-demo>
+      <t-demo desc="带操作的头像组" padding>
+        <action />
+      </t-demo>
+
+      <t-demo title="03 组件尺寸" desc="组件尺寸" padding>
+        <size />
+      </t-demo>
+    </view>
+  </scroll-view>
+</view>

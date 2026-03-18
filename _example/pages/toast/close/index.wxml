@@ -1,0 +1,8 @@
+<t-toast id="t-toast" />
+
+<view class="box">
+  <view class="toast-example">
+    <t-button theme="primary" size="large" variant="outline" bind:tap="handleShow">显示提示</t-button>
+    <t-button theme="primary" size="large" variant="outline" bind:tap="handleHide">关闭提示</t-button>
+  </view>
+</view>

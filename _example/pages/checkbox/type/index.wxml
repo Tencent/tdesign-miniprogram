@@ -1,0 +1,9 @@
+<t-checkbox label="多选" icon="line" default-checked />
+
+<view class="box" style="height: 32rpx"></view>
+
+<t-checkbox label="多选" icon="rectangle" default-checked />
+
+<view class="box" style="height: 32rpx"></view>
+
+<t-checkbox value="checkbox1" label="图片图标" icon="{{[activeImage,inActiveImage]}}" />

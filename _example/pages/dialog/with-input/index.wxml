@@ -1,0 +1,57 @@
+<t-button
+  t-class="wrapper"
+  size="large"
+  theme="primary"
+  variant="outline"
+  data-key="showWithInput"
+  bind:tap="showDialog"
+  block
+>
+  输入类-无描述
+</t-button>
+<t-dialog
+  visible="{{showWithInput}}"
+  title="带输入框对话框"
+  confirm-btn="确定"
+  cancel-btn="取消"
+  bind:confirm="closeDialog"
+  bind:cancel="closeDialog"
+>
+  <t-input
+    borderless
+    class="dialog-input"
+    clearable
+    slot="content"
+    placeholder="输入12文案"
+    placeholder-class="placeholder"
+  />
+</t-dialog>
+
+<t-button
+  t-class="wrapper"
+  theme="primary"
+  size="large"
+  variant="outline"
+  data-key="showTextAndTitleWithInput"
+  bind:tap="showDialog"
+  block
+  >输入类-带描述</t-button
+>
+<t-dialog
+  visible="{{showTextAndTitleWithInput}}"
+  title="带输入框对话框"
+  content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+  confirm-btn="确定"
+  cancel-btn="取消"
+  bind:confirm="closeDialog"
+  bind:cancel="closeDialog"
+>
+  <t-input
+    borderless
+    class="dialog-input"
+    clearable
+    slot="content"
+    placeholder="输入12文案"
+    placeholder-class="placeholder"
+  />
+</t-dialog>

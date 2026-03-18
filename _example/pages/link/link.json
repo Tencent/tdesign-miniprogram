@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "Link",
+  "usingComponents": {
+    "content": "./content",
+    "underline": "./underline",
+    "prefix": "./prefix",
+    "suffix": "./suffix",
+    "theme": "./theme",
+    "disabled": "./disabled",
+    "size": "./size"
+  }
+}

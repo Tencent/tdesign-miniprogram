@@ -1,0 +1,14 @@
+<t-navbar class="demo-navbar" title="ImageViewer" leftArrow placeholder />
+<view class="demo">
+  <t-demo-header
+    title="ImageViewer 图片预览"
+    desc="用于图片内容的缩略展示与查看。"
+    notice="渲染框架支持情况：Skyline、WebView"
+  />
+  <t-demo title="01 组件类型" desc="基础图片预览" padding>
+    <base />
+  </t-demo>
+  <t-demo desc="带操作图片预览" padding>
+    <delete />
+  </t-demo>
+</view>

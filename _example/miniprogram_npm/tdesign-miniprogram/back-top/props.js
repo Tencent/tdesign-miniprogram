@@ -1,0 +1,1 @@
+const props={fixed:{type:Boolean,value:!0},icon:{type:null,value:!0},scrollTop:{type:Number,value:0},text:{type:String,value:""},theme:{type:String,value:"round"},visibilityHeight:{type:Number,value:200}};export default props;
