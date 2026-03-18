@@ -7,7 +7,7 @@
 export interface TdChatActionbarProps {
   /**
    * 操作栏配置
-   * @default ['replay', 'copy', 'good', 'bad', 'share', 'quote']
+   * @default ['replay', 'copy', 'good', 'bad', 'share']
    */
   actionBar?: {
     type: ArrayConstructor;
@@ -59,5 +59,19 @@ export interface TdChatActionbarProps {
   placement?: {
     type: StringConstructor;
     value?: 'start' | 'end' | 'space-around' | 'space-between' | 'longpress';
+  };
+    /**
+   * 【实验】长按触发点的位置信息，用于定位 popover
+   */
+  longPressPosition?: {
+    type: ObjectConstructor;
+    value?: {
+      pageX: number;
+      pageY: number;
+      clientX: number;
+      clientY: number;
+      x: number;
+      y: number;
+    };
   };
 }

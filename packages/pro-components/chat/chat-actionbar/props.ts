@@ -9,7 +9,7 @@ const props: TdChatActionbarProps = {
   /** 操作栏配置 */
   actionBar: {
     type: Array,
-    value: ['replay', 'copy', 'good', 'bad', 'share', 'quote'],
+    value: ['replay', 'copy', 'good', 'bad', 'share'],
   },
   /** 【实验】聊天消息的唯一标识 */
   chatId: {
@@ -39,6 +39,11 @@ const props: TdChatActionbarProps = {
   placement: {
     type: String,
     value: 'start',
+  },
+    /** 【实验】长按触发点的位置信息，用于定位 popover */
+  longPressPosition: {
+    type: Object,
+    value: null,
   },
 };
 

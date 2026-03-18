@@ -7,7 +7,7 @@
 export interface TdChatActionbarProps {
   /**
    * 操作栏配置
-   * @default ['replay', 'copy', 'good', 'bad', 'share', 'quote']
+   * @default ['replay', 'copy', 'good', 'bad', 'share']
    */
   actionBar?: Array<'replay' | 'copy' | 'good' | 'bad' | 'share' | 'quote'>;
   /**
@@ -39,6 +39,17 @@ export interface TdChatActionbarProps {
    * @default start
    */
   placement?: 'start' | 'end' | 'space-around' | 'space-between' | 'longpress';
+  /**
+   * 【实验】长按触发点的位置信息，用于定位 popover
+   */
+  longPressPosition?: {
+    pageX: number;
+    pageY: number;
+    clientX: number;
+    clientY: number;
+    x: number;
+    y: number;
+  };
   /**
    * 点击点赞，点踩，复制，分享，重新生成按钮时触发发
    */

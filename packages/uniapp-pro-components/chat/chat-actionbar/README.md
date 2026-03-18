@@ -41,7 +41,7 @@ content | String | - | 被复制的内容 | N
 copy-mode | String | markdown | 【实验】复制内容的模式，可选 'markdown'（复制markdown原文）或 'text'（复制纯文本）。可选项：markdown/text | N
 disabled | Boolean | false | 【讨论中】操作按钮是否可点击 | N
 placement | String | start | 【实验】操作栏位置。可选项：start/end/space-around/space-between/longpress | N
-
+long-press-position | Object | - | 长按操作栏位置。TS 类型：`{ pageX: number, pageY: number, clientX: number, clientY: number, x: number, y: number }` | N
 ### ChatActionbar Events
 
 名称 | 参数 | 描述
