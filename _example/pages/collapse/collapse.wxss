@@ -1,0 +1,39 @@
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.collapse-content-item {
+  margin: 16rpx 0;
+}
+.collapse-content-item-title {
+  width: 176rpx;
+  display: inline-flex;
+  font-size: 28rpx;
+  color: #666;
+}
+.collapse-content-item-val {
+  display: inline-flex;
+  justify-content: right;
+  font-size: 28rpx;
+  color: #333;
+  align-items: center;
+}
+.copy-button {
+  margin-left: 16rpx;
+}
+.copy-button .t-btn {
+  width: 80rpx !important;
+  height: 40rpx !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  border: 2rpx solid #ddd !important;
+  font-size: 24rpx !important;
+  color: #333 !important;
+  border-radius: 24rpx !important;
+  background-color: #fff !important;
+  white-space: nowrap;
+}
+.collapse-demo {
+  margin-top: 32rpx;
+}

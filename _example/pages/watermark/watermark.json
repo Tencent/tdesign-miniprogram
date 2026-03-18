@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "Watermark",
+  "usingComponents": {
+    "base": "./base",
+    "image-watermark": "./image",
+    "multi-line-watermark": "./multi-line",
+    "multi-line-gray-watermark": "./multi-line-gray",
+    "move-text-watermark": "./move-text",
+    "move-image-watermark": "./move-image",
+    "gray-watermark": "./gray",
+    "layout": "./layout"
+  }
+}

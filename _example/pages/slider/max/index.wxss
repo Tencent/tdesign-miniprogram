@@ -1,0 +1,4 @@
+.wrapper {
+  padding: 40rpx 12rpx 0;
+  background: var(--bg-color-demo);
+}

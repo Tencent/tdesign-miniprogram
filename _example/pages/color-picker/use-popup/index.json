@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-color-picker": "tdesign-miniprogram/color-picker/color-picker",
+    "t-popup": "tdesign-miniprogram/popup/popup"
+  }
+}

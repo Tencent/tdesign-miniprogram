@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "t-chat-markdown": "tdesign-miniprogram/chat-markdown/chat-markdown"
+  }
+}

@@ -1,0 +1,1 @@
+<view class="{{classPrefix}}"><view class="{{classPrefix}}__header" wx:if="{{node.lang}}"><text class="{{classPrefix}}__lang">{{node.lang}}</text></view><scroll-view class="{{classPrefix}}__content" scroll-x="{{true}}"><text class="{{classPrefix}}__text" decode="{{true}}">{{node.text}}</text></scroll-view></view>

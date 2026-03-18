@@ -1,0 +1,43 @@
+.popover-example-row {
+  display: flex;
+  flex-direction: column;
+  padding: 0 32rpx;
+  margin-bottom: 48rpx;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  gap: 32rpx;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
+}
+
+.flex-end .column {
+  align-items: flex-end;
+}
+
+.demo-block__header-desc {
+  margin-top: var(--td-spacer, 16rpx);
+  margin-bottom: 32rpx;
+  font-size: var(--td-font-size-base, 28rpx);
+  white-space: pre-line;
+  color: var(--bg-color-demo-desc);
+  line-height: 22px;
+}
+
+.popover-example__content {
+  flex: 1;
+}
+
+.button-width--small {
+  width: 204rpx;
+}
+
+.button-with--large {
+  width: 446rpx;
+}

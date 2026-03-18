@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "Avatar",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "imageAvatar": "./image-avatar",
+    "characterAvatar": "./character-avatar",
+    "iconAvatar": "./icon-avatar",
+    "badgeAvatar": "./badge-avatar",
+    "size": "./size",
+    "exhibition": "./exhibition",
+    "action": "./action"
+  }
+}

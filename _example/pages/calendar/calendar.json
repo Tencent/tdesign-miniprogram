@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "Calendar",
+  "usingComponents": {
+    "base": "./base",
+    "multiple": "./multiple",
+    "range": "./range",
+    "custom-text": "./custom-text",
+    "custom-range": "./custom-range",
+    "local-text": "./local-text",
+    "without-popup": "./without-popup",
+    "switch-mode": "./switch-mode"
+  }
+}

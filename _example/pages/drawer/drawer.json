@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "Drawer",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "base": "./base",
+    "title": "./title",
+    "icon-drawer": "./icon-drawer",
+    "footer": "./footer"
+  }
+}

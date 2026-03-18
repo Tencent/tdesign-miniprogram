@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "TreeSelect",
+  "usingComponents": {
+    "base": "./base",
+    "normal": "./normal",
+    "multiple": "./multiple"
+  }
+}

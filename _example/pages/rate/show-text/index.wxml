@@ -1,0 +1,15 @@
+<view class="demo-rate">
+  <view class="demo-rate__title">带描述评分</view>
+  <!-- 自定义带描述评分，设置属性：texts -->
+  <t-rate value="{{value[0]}}" data-index="{{0}}" bind:change="onChange" showText="{{true}}" texts="{{texts}}" />
+</view>
+<view class="demo-rate">
+  <view class="demo-rate__title">带描述评分</view>
+  <!-- 带描述评分，设置属性：showText-->
+  <t-rate value="{{value[1]}}" data-index="{{1}}" bind:change="onChange" showText="{{true}}" />
+</view>
+
+<view class="demo-rate">
+  <view class="demo-rate__title">带描述评分</view>
+  <t-rate value="{{value[2]}}" data-index="{{2}}" bind:change="onChange" showText="{{true}}" />
+</view>

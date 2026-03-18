@@ -1,0 +1,11 @@
+<t-row gutter="16">
+  <t-col span="8">
+    <view class="dark">col-8</view>
+  </t-col>
+  <t-col span="8">
+    <view class="dark">col-8</view>
+  </t-col>
+  <t-col span="8">
+    <view class="dark">col-8</view>
+  </t-col>
+</t-row>

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-qrcode": "tdesign-miniprogram/qrcode/qrcode",
+    "t-slider": "tdesign-miniprogram/slider/slider"
+  }
+}

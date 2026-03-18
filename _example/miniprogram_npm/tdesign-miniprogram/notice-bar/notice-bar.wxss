@@ -1,0 +1,18 @@
+@import '../common/style/index.wxss';.t-notice-bar{display:flex;align-items:flex-start;padding:26rpx 32rpx;}
+.t-notice-bar__content-wrap{flex:1;overflow-x:hidden;font:var(--td-font-body-medium,28rpx / 44rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular));color:var(--td-notice-bar-font-color,var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9))));}
+.t-notice-bar__content{display:inline-block;white-space:nowrap;}
+.t-notice-bar__content-wrapable{white-space:normal;}
+.t-notice-bar__content--vertical{display:block;height:44rpx;line-height:44rpx;}
+.t-notice-bar__content--vertical-item{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.t-notice-bar__prefix-icon{color:inherit;}
+.t-notice-bar__prefix-icon:not(:empty){padding-right:var(--td-spacer,16rpx);width:44rpx;}
+.t-notice-bar__suffix-icon{color:var(--td-notice-bar-suffix-icon-color,var(--td-text-color-placeholder,var(--td-font-gray-3,rgba(0,0,0,.4))));}
+.t-notice-bar__prefix-icon,.t-notice-bar__suffix-icon{font-size:44rpx;}
+.t-notice-bar__prefix-icon:empty,.t-notice-bar__suffix-icon:empty{display:none;}
+.t-notice-bar__operation{display:inline-flex;vertical-align:top;color:var(--td-notice-bar-operation-font-color,var(--td-brand-color,var(--td-primary-color-7,#0052d9)));font-weight:700;}
+.t-notice-bar__operation:empty{display:none;}
+.t-notice-bar__suffix-icon:not(:empty){padding-left:var(--td-spacer,16rpx);width:44rpx;}
+.t-notice-bar--info{color:var(--td-notice-bar-info-color,var(--td-brand-color,var(--td-primary-color-7,#0052d9)));background-color:var(--td-notice-bar-info-bg-color,var(--td-brand-color-light,var(--td-primary-color-1,#f2f3ff)));}
+.t-notice-bar--success{color:var(--td-notice-bar-success-color,var(--td-success-color,var(--td-success-color-5,#2ba471)));background-color:var(--td-notice-bar-success-bg-color,var(--td-success-color-1,#e3f9e9));}
+.t-notice-bar--warning{color:var(--td-notice-bar-warning-color,var(--td-warning-color,var(--td-warning-color-5,#e37318)));background-color:var(--td-notice-bar-warning-bg-color,var(--td-warning-color-1,#fff1e9));}
+.t-notice-bar--error{color:var(--td-notice-bar-error-color,var(--td-error-color,var(--td-error-color-6,#d54941)));background-color:var(--td-notice-bar-error-bg-color,var(--td-error-color-1,#fff0ed));}

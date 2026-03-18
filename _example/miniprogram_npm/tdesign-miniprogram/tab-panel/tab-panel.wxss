@@ -1,0 +1,3 @@
+@import '../common/style/index.wxss';.t-tab-panel{flex-shrink:0;width:100%;height:100%;box-sizing:border-box;overflow-y:auto;-webkit-overflow-scrolling:touch;}
+.t-tab-panel--active{height:auto;}
+.t-tab-panel--inactive{height:0;overflow:visible;}

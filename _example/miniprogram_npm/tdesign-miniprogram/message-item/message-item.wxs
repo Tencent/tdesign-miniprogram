@@ -1,0 +1,29 @@
+var isEmptyObj = function (obj) {
+  return JSON.stringify(obj) === '{}';
+};
+
+var changeNumToStr = function (arr) {
+  return arr.map(function (item) {
+    return typeof item === 'number' ? item + 'rpx' : item;
+  });
+};
+
+var getMessageStyles = function (zIndex, offset, wrapTop) {
+  var arr = changeNumToStr(offset || [0, 0]);
+  var left = arr[1] || 0;
+  var right = arr[1] || 0;
+
+  var zIndexStyle = zIndex ? 'z-index:' + zIndex + ';' : '';
+  var styleOffset = '';
+
+  styleOffset += 'top:' + wrapTop + 'px;';
+  styleOffset += 'left:' + left + ';';
+  styleOffset += 'right:' + right + ';';
+
+  return zIndexStyle + styleOffset;
+};
+
+module.exports = {
+  getMessageStyles: getMessageStyles,
+  isEmptyObj: isEmptyObj,
+};

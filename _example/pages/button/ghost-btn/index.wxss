@@ -1,0 +1,6 @@
+.button-example {
+  display: flex;
+  justify-content: space-between;
+  background-color: #181818;
+  padding: 32rpx;
+}

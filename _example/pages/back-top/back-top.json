@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "BackTop",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
+    "base": "./base",
+    "half-round": "./half-round"
+  }
+}

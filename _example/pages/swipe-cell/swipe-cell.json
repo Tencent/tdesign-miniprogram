@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "SwipeCell",
+  "usingComponents": {
+    "left": "./left",
+    "right": "./right",
+    "double": "./double",
+    "iconDemo": "./icon"
+  }
+}

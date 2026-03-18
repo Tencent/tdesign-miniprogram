@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-watermark": "tdesign-miniprogram/watermark/watermark"
+  }
+}

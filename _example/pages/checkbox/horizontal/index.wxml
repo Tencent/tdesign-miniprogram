@@ -1,0 +1,5 @@
+<t-checkbox-group t-class="box" borderless bind:change="onChange" defaultValue="{{demoCheckboxMax}}">
+  <t-checkbox block="{{false}}" value="checkbox1" label="多选标题" />
+  <t-checkbox block="{{false}}" value="checkbox2" label="多选标题" />
+  <t-checkbox block="{{false}}" value="checkbox3" label="上限四字" />
+</t-checkbox-group>

@@ -1,0 +1,8 @@
+<!-- theme 为 text，含有底部链接 -->
+<view class="footer-example">
+  <t-footer text="{{text}}" links="{{links[0]}}" />
+</view>
+
+<view class="footer-example">
+  <t-footer text="{{text}}" links="{{links[1]}}" />
+</view>

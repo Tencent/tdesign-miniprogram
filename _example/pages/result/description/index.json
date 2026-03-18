@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-result": "tdesign-miniprogram/result/result"
+  }
+}

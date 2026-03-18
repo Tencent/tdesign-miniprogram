@@ -1,0 +1,5 @@
+@import '../common/style/index.wxss';.t-swiper{position:relative;}
+.t-swiper-host{border-radius:var(--td-swiper-radius,var(--td-radius-large,18rpx));overflow:hidden;transform:translateY(0);}
+.t-swiper__item{display:flex;align-items:center;box-sizing:border-box;padding:var(--td-swiper-item-padding,0);}
+.t-swiper__image{width:100%;transition:all .3s ease;}
+.t-swiper__image-host{width:100%;}

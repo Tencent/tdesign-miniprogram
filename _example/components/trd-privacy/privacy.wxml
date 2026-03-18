@@ -1,0 +1,39 @@
+<view wx:if="{{privacy}}" class="privacy_wrap">
+  <view class="privacy_safe_area">
+    <view class="privacy_top">
+      <view class="privacy_title">{{name}}服务声明</view>
+      <view class="privacy_right">发布日期：{{date}}</view>
+      <view class="privacy_right">生效日期：{{date}}</view>
+    </view>
+    <view class="privacy_content">
+      <text class="privacy_bold">引言</text>
+      <text decode="{{true}}" class="privacy_normal"
+        >{{name}}是由深圳市腾讯计算机系统有限公司（以下简称“我们”）提供的产品，我们的注册地为深圳市南山区粤海街道麻岭社区科技中一路腾讯大厦35层。</text
+      >
+      <text decode="{{true}}" class="privacy_bold"
+        >我们在此特别声明：\n1.本小程序产品功能的实现不涉及收集和处理用户（以下简称“您”）的任何个人信息。\n2.如果我们更新、改进或修改小程序产品功能，并因此导致我们需要处理您的个人信息的，我们将会依据适用法律的要求对本声明进行修订，并将修订后的内容通过弹框等形式通知您并获得您同意。</text
+      >
+      <text decode="{{true}}" class="privacy_normal">
+        3.如果您对本声明有任何疑问或建议，您可以通过以下方式与我们取得联系：\n（1）将问题发送至Dataprivacy@tencent.com;\n（2）通过https://kf.qq.com/与我们联系；\n（3）将您的问题邮寄至下列地址：\n\n中国广东省深圳市南山区海天二路33号腾讯滨海大厦\n数据隐私保护部（收）\n邮编：518054\n\n我们将尽快审核所涉问题，并在15个工作日或法律法规规定的期限内予以反馈。
+      </text>
+    </view>
+    <view class="footer">
+      <t-button class="t-design-button" theme="primary" bindtap="privacyConfirm">我已知晓</t-button>
+    </view>
+  </view>
+</view>
+<view wx:if="{{win}}" class="privacy_tips_win">
+  <view class="privacy_win_content {{winStyle?'privacy_middle':''}}">
+    <view class="privacy_tips_content"
+      >我们将严格按照<text class="privacy_url" bindtap="showPrivacyDetail">《{{name}}服务声明》</text
+      >向您提供服务，不会收集和处理您的个人信息。</view
+    >
+    <view class="privacy_tips_content"
+      >如您对<text class="privacy_url" bindtap="showPrivacyDetail">《{{name}}服务声明》</text
+      >有任何疑问或建议，可以通过声明内的联系方式向我们反馈。</view
+    >
+    <view class="footer">
+      <t-button class="t-design-button" theme="primary" bindtap="privacyConfirm">我已知晓</t-button>
+    </view>
+  </view>
+</view>

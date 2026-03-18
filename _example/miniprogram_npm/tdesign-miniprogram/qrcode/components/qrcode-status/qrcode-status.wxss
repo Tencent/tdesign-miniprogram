@@ -1,0 +1,5 @@
+@import '../../../common/style/index.wxss';.t-expired__text{color:var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9)));font-weight:600;}
+.t-expired__button{display:flex;color:var(--td-brand-color,var(--td-primary-color-7,#0052d9));box-shadow:none;cursor:pointer;column-gap:8px;align-items:center;height:32px;transition:all .2s cubic-bezier(.215,.61,.355,1);}
+.t-expired__button:hover{color:var(--td-brand-color-active,var(--td-primary-color-8,#003cab));}
+.t-scanned{display:flex;column-gap:8px;align-items:center;}
+.t-scanned__icon{color:var(--td-success-color,var(--td-success-color-5,#2ba471));}
