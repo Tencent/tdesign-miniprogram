@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatActionbar ChatActionbar base demo works fine 1`] = `
+<base>
+  <t-toast
+    id="t-toast"
+  />
+  <wx-view
+    class="container"
+  >
+    <t-chat-actionbar
+      content="这是一段可以被复制的内容，支持markdown格式。
+
+**粗体文本**
+*斜体文本*
+
+- 列表项1
+- 列表项2"
+      bind:actions="handleAction"
+    />
+  </wx-view>
+</base>
+`;
+
+exports[`ChatActionbar ChatActionbar comment demo works fine 1`] = `
+<comment>
+  <t-toast
+    id="t-toast"
+  />
+  <wx-view
+    class="container"
+  >
+    <t-chat-actionbar
+      comment="good"
+      content="这是一段可以被复制的内容，支持markdown格式。
+
+**粗体文本**
+*斜体文本*
+
+- 列表项1
+- 列表项2"
+      bind:actions="handleAction"
+    />
+  </wx-view>
+</comment>
+`;
