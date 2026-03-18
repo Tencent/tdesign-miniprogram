@@ -1,0 +1,27 @@
+<view class="demo-desc">水平带序号步骤条</view>
+<wxs module="_">
+  module.exports.getText = function(value, curr) { if (value > curr) return '已完成'; if (value == curr)
+  return'当前步骤'; return '未完成'; }
+</wxs>
+
+<view class="block">
+  <t-steps current="{{first}}" bind:change="onFirstChange">
+    <t-step-item wx:for="{{4}}" wx:key="index" title="{{_.getText(first, index)}}" content="辅助信息" />
+  </t-steps>
+</view>
+
+<view class="demo-desc">水平带图标步骤条</view>
+
+<view class="block">
+  <t-steps current="{{second}}" bind:change="onSecondChange">
+    <t-step-item wx:for="{{4}}" wx:key="index" title="{{_.getText(second, index)}}" content="辅助信息" icon="cart" />
+  </t-steps>
+</view>
+
+<view class="demo-desc">水平简略步骤条</view>
+
+<view class="block">
+  <t-steps theme="dot" current="{{third}}" bind:change="onThirdChange">
+    <t-step-item wx:for="{{4}}" wx:key="index" title="{{_.getText(third, index)}}" content="辅助信息" />
+  </t-steps>
+</view>

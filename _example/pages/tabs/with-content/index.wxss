@@ -1,0 +1,17 @@
+.custom-tabs {
+  margin-bottom: 32rpx;
+}
+
+.custom-panel {
+  color: var(--td-text-color-primary);
+}
+
+.custom-panel__content {
+  height: 240rpx;
+  font-size: 28rpx;
+  color: var(--td-text-color-placeholder);
+  padding: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

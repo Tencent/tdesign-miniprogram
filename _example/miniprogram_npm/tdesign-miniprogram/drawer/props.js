@@ -1,0 +1,1 @@
+const props={closeOnOverlayClick:{type:Boolean,value:!0},destroyOnClose:{type:Boolean,value:!1},items:{type:Array},overlayProps:{type:Object,value:{}},placement:{type:String,value:"right"},showOverlay:{type:Boolean,value:!0},title:{type:String},usingCustomNavbar:{type:Boolean,value:!1},visible:{type:Boolean,value:!1},zIndex:{type:Number,value:11500}};export default props;

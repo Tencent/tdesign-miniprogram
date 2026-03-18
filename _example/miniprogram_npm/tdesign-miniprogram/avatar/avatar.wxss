@@ -1,0 +1,17 @@
+@import '../common/style/index.wxss';.t-avatar{display:flex;align-items:center;justify-content:center;box-sizing:border-box;background-color:var(--td-avatar-bg-color,var(--td-brand-color-light-active,var(--td-primary-color-2,#d9e1ff)));color:var(--td-avatar-content-color,var(--td-brand-color,var(--td-primary-color-7,#0052d9)));}
+.t-avatar__wrapper{display:inline-flex;position:relative;vertical-align:top;margin-left:var(--td-avatar-margin-left,0);}
+.t-avatar--large{width:var(--td-avatar-large-width,128rpx);height:var(--td-avatar-large-width,128rpx);font-size:var(--td-avatar-text-large-font-size,var(--td-font-size-xl,40rpx));}
+.t-avatar--large .t-avatar__icon{font-size:var(--td-avatar-icon-large-font-size,64rpx);}
+.t-avatar--medium{width:var(--td-avatar-medium-width,96rpx);height:var(--td-avatar-medium-width,96rpx);font-size:var(--td-avatar-text-medium-font-size,var(--td-font-size-m,32rpx));}
+.t-avatar--medium .t-avatar__icon{font-size:var(--td-avatar-icon-medium-font-size,48rpx);}
+.t-avatar--small{width:var(--td-avatar-small-width,80rpx);height:var(--td-avatar-small-width,80rpx);font-size:var(--td-avatar-text-small-font-size,var(--td-font-size-base,28rpx));}
+.t-avatar--small .t-avatar__icon{font-size:var(--td-avatar-icon-small-font-size,40rpx);}
+.t-avatar .t-image,.t-avatar__image{width:100%;height:100%;}
+.t-avatar--circle{border-radius:var(--td-avatar-circle-border-radius,var(--td-radius-circle,50%));overflow:hidden;}
+.t-avatar--round{border-radius:var(--td-avatar-round-border-radius,var(--td-radius-default,12rpx));overflow:hidden;}
+.t-avatar__icon,.t-avatar__text{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+.t-avatar__icon:empty,.t-avatar__text:empty{width:0;height:0;}
+.t-avatar--border{border-color:var(--td-avatar-border-color,#fff);border-style:solid;}
+.t-avatar--border-small{border-width:var(--td-avatar-border-width-small,2rpx);}
+.t-avatar--border-medium{border-width:var(--td-avatar-border-width-medium,4rpx);}
+.t-avatar--border-large{border-width:var(--td-avatar-border-width-large,6rpx);}

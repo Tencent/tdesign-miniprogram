@@ -1,0 +1,8 @@
+.loading-container-flex {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper {
+  margin-right: 40px;
+}

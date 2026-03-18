@@ -1,0 +1,1 @@
+@import '../common/style/index.wxss';.t-collapse--card{margin:0 32rpx;border-radius:var(--td-radius-large,18rpx);overflow:hidden;}

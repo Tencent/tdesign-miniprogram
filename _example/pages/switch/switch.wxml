@@ -1,0 +1,27 @@
+<t-navbar title="Switch" leftArrow placeholder />
+<view class="demo">
+  <t-demo-header
+    title="Switch 开关"
+    desc="用于控制某个功能的开启和关闭。"
+    notice="渲染框架支持情况：Skyline、WebView"
+  />
+  <t-demo title="01 组件类型" desc="基础开关">
+    <base />
+  </t-demo>
+
+  <t-demo desc="带描述开关">
+    <label />
+  </t-demo>
+
+  <t-demo desc="自定义颜色开关">
+    <color />
+  </t-demo>
+
+  <t-demo title="02 组件状态">
+    <status />
+  </t-demo>
+
+  <t-demo title="03 组件样式" desc="开关尺寸">
+    <size />
+  </t-demo>
+</view>

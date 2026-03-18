@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "Toast",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "base": "./base",
+    "theme": "./theme",
+    "cover": "./cover",
+    "close": "./close"
+  }
+}

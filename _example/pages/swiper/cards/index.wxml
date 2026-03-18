@@ -1,0 +1,34 @@
+<view class="card-theme">
+  <t-swiper
+    current="{{current}}"
+    autoplay="{{autoplay}}"
+    duration="{{duration}}"
+    interval="{{interval}}"
+    bindchange="onChange"
+    navigation="{{ { type: 'dots' } }}"
+    list="{{swiperList}}"
+    image-props="{{ { shape: 'round' } }}"
+    previousMargin="34px"
+    nextMargin="34px"
+    t-class-nav="card-theme-nav"
+  />
+
+  <view class="box" style="height: 42px" />
+
+  <t-swiper
+    class="scale-card-theme"
+    current="{{current}}"
+    autoplay="{{autoplay}}"
+    duration="{{duration}}"
+    interval="{{interval}}"
+    bindchange="onChange"
+    navigation="{{ { type: 'dots' } }}"
+    list="{{swiperList}}"
+    image-props="{{ { shape: 'round' } }}"
+    previousMargin="34px"
+    nextMargin="34px"
+    t-class-nav="card-theme-nav"
+    t-class-prev-image="scale-candidate"
+    t-class-next-image="scale-candidate"
+  />
+</view>

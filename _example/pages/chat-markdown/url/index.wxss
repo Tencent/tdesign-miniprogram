@@ -1,0 +1,9 @@
+.demo-container {
+  padding: 32rpx;
+  background-color: #fff;
+}
+
+.text {
+  margin-left: 10rpx;
+  margin-bottom: 32rpx;
+}

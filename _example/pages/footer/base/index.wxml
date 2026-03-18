@@ -1,0 +1,2 @@
+<!-- 基础页脚 只有版权信息 -->
+<t-footer text="{{text}}"></t-footer>

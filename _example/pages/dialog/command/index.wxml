@@ -1,0 +1,2 @@
+<t-button size="large" variant="outline" theme="primary" bind:tap="showDialog" block> 命令行操作 </t-button>
+<t-dialog id="t-dialog" />

@@ -1,0 +1,18 @@
+<view class="demo-block {{!title && 'demo-block_notitle'}}">
+  <view wx:if="{{ title || desc }}" class="demo-block__header">
+    <view wx:if="{{ title }}" class="demo-block__header-title">{{ title }}</view>
+    <view wx:if="{{ desc }}" class="demo-block__header-desc {{!title && 'demo-block_subtitle' }}">{{ desc }}</view>
+    <!-- <slot name="title-right" /> -->
+  </view>
+  <view wx:for="{{ operList }}" wx:for-item="operItem" wx:key="oper" class="demo-block__oper">
+    <view wx:if="{{ operItem.title }}" class="demo-block__oper-subtitle">{{ operItem.title }}</view>
+    <view wx:for="{{ operItem.btns }}" wx:for-item="btnItem" wx:key="btn">
+      <t-button t-class="demo-block__oper-btn" size="large" block data-type="{{ btnItem.type }}" bind:tap="clickHandle">
+        {{ btnItem.text }}
+      </t-button>
+    </view>
+  </view>
+  <view class="demo-block__slot {{padding ? 'with-padding' : ''}}">
+    <slot />
+  </view>
+</view>

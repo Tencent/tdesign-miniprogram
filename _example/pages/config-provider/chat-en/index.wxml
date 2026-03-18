@@ -1,0 +1,11 @@
+<t-config-provider global-config="{{globalConfig}}" themeVars="{{themeVars}}">
+  <view class="chat-demo">
+    <t-chat-thinking
+      content="{{content}}"
+      layout="block"
+      status="{{status}}"
+      animation="moving"
+      bind:expandChange="handleExpandChange"
+    />
+  </view>
+</t-config-provider>

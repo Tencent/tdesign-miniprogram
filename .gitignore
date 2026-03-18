@@ -3,7 +3,7 @@ miniprogram_dist
 __snippets__
 
 _wechatide
-_example
+# _example
 !packages/components/**/_example/
 !packages/pro-components/**/_example/
 !packages/uniapp-components/**/_example/

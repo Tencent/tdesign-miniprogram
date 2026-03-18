@@ -1,0 +1,36 @@
+@import '../common/style/index.wxss';.t-chat-loading{display:flex;align-items:center;}
+.t-chat-loading::after,.t-chat-loading::before{box-sizing:border-box;}
+.t-chat-loading__icon--with-padding{padding:6rpx;box-sizing:border-box;}
+.t-chat-loading__icon .t-chat-loading__skeleton{width:100%;}
+.t-chat-loading__text{color:var(--td-text-color-placeholder,var(--td-font-gray-3,rgba(0,0,0,.4)));font-size:var(--td-font-size-base,28rpx);}
+.t-chat-loading__text:not(:empty){margin-left:var(--td-spacer,16rpx);}
+.t-chat-loading__moving{position:relative;width:28rpx;height:28rpx;}
+.t-chat-loading__moving--left,.t-chat-loading__moving--right,.t-chat-loading__moving--top{position:absolute;width:14rpx;height:14rpx;border-radius:50%;background-color:var(--td-brand-color,var(--td-primary-color-7,#0052d9));}
+.t-chat-loading__moving--top{top:-6rpx;left:7rpx;animation:dot-moving-top .6s ease-in-out alternate infinite;}
+.t-chat-loading__moving--left{bottom:-6rpx;left:-6rpx;animation:dot-moving-left .6s ease-in-out alternate infinite;}
+.t-chat-loading__moving--right{bottom:-6rpx;right:-6rpx;animation:dot-moving-right .6s ease-in-out alternate infinite;}
+.t-chat-loading__gradient{width:28rpx;height:28rpx;background-color:transparent;border-radius:50%;border:3rpx solid var(--td-brand-color,var(--td-primary-color-7,#0052d9));animation:border-gradient-color .6s ease-in-out alternate infinite;box-sizing:border-box;padding:0 6rpx;}
+.t-chat-loading__dots{width:100%;height:100%;display:flex;align-items:center;justify-content:center;}
+.t-chat-loading__skeleton{width:100%;}
+@keyframes dot-moving-top{
+0%{transform:scale(1);top:-6rpx;}
+to{transform:scale(2);top:7rpx;}}
+@keyframes dot-moving-left{
+0%{transform:scale(1);bottom:-6rpx;left:-6rpx;}
+to{transform:scale(2);bottom:7rpx;left:7rpx;}}
+@keyframes dot-moving-right{
+0%{transform:scale(1);bottom:-6rpx;right:-6rpx;}
+to{transform:scale(2);bottom:7rpx;right:7rpx;}}
+@keyframes border-gradient-color{
+0%{border-color:var(--td-brand-color,var(--td-primary-color-7,#0052d9));border-width:1.5px;}
+50%{border-color:var(--td-brand-color-active,var(--td-primary-color-8,#003cab));border-width:3px;}
+100%{border-color:var(--td-primary-color-6,#366ef4);border-width:4px;}}
+@keyframes a_tick{
+0%{width:0;}
+100%{width:14rpx;}}
+@keyframes a_tick-1{
+0%{transform:rotate(45deg) scale(0,1);}
+100%{transform:rotate(45deg) scale(1,1);}}
+@keyframes a_tick-2{
+0%{transform:rotate(-45deg) scale(0,1);}
+100%{transform:rotate(-45deg) scale(1,1);}}

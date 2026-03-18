@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "Grid",
+  "usingComponents": {
+    "base": "./base",
+    "border": "./border",
+    "description": "./description",
+    "badge": "./badge",
+    "scroll": "./scroll",
+    "multiple": "./multiple",
+    "card": "./card",
+    "icon-grid": "./icon-grid"
+  }
+}

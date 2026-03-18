@@ -1,0 +1,4 @@
+<!--index.wxml-->
+<view wx:if="{{ec}}" class="container">
+  <ec-canvas canvas-id="mychart-line" ec="{{ ec }}"></ec-canvas>
+</view>

@@ -1,0 +1,7 @@
+page .demo {
+  min-height: 100vh;
+  overflow: hidden;
+}
+page .demo-section__wrapper {
+  margin: 32rpx 0;
+}
