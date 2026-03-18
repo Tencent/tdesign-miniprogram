@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "styleIsolation": "shared",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-switch": "tdesign-miniprogram/switch/switch",
+    "horizontal": "./horizontal/index",
+    "vertical": "./vertical/index"
+  }
+}

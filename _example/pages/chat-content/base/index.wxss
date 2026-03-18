@@ -1,0 +1,15 @@
+.chat-example {
+  margin-bottom: 32rpx;
+}
+
+.chat-example-block {
+  padding: 32rpx;
+  background-color: var(--td-bg-color-container);
+}
+
+.title {
+  padding: 0 32rpx 32rpx;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: var(--bg-color-demo-desc);
+}

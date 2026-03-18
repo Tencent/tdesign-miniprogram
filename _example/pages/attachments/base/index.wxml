@@ -1,0 +1,5 @@
+<view class="chat-example">
+  <view class="chat-example-block">
+    <t-attachments items="{{items}}" bind:fileClick="onFileClick" bind:remove="onRemove" bind:add="onAdd" />
+  </view>
+</view>

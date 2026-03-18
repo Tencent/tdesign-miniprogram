@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "ChatLoading 聊天加载状态",
+  "usingComponents": {
+    "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
+    "base": "./base",
+    "text": "./text"
+  }
+}

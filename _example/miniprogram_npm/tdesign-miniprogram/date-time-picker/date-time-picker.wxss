@@ -1,0 +1,1 @@
+@import '../common/style/index.wxss';.t-date-time-picker__item--roomly{width:var(--td-data-time-picker-year-width,128rpx);flex:0 0 var(--td-data-time-picker-year-width,128rpx);}

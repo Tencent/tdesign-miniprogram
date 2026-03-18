@@ -1,0 +1,14 @@
+@import '../common/style/index.wxss';.t-popup{position:fixed;z-index:11500;max-height:calc(100vh - var(--td-popup-distance-top,0));transition:var(--td-popup-transition,all 300ms ease);background-color:var(--td-popup-bg-color,var(--td-bg-color-container,var(--td-font-white-1,#fff)));}
+.t-popup__content{position:relative;height:100%;z-index:1;}
+.t-popup__close{position:absolute;top:0;right:0;padding:20rpx;line-height:1;color:var(--td-popup-close-btn-color,var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9))));}
+.t-popup--top{top:0;left:0;width:100%;border-bottom-left-radius:var(--td-popup-border-radius,var(--td-radius-extraLarge,24rpx));border-bottom-right-radius:var(--td-popup-border-radius,var(--td-radius-extraLarge,24rpx));}
+.t-popup--bottom{bottom:0;left:0;width:100%;border-top-left-radius:var(--td-popup-border-radius,var(--td-radius-extraLarge,24rpx));border-top-right-radius:var(--td-popup-border-radius,var(--td-radius-extraLarge,24rpx));padding-bottom:constant(safe-area-inset-bottom);padding-bottom:env(safe-area-inset-bottom);}
+.t-popup--left{top:0;left:0;height:100%;}
+.t-popup--right{top:0;right:0;height:100%;}
+.t-popup--center{top:50%;left:50%;transform:scale(1) translate3d(-50%,-50%,0);transform-origin:0 0;border-radius:var(--td-popup-border-radius,var(--td-radius-extraLarge,24rpx));}
+.t-popup.t-fade-enter.t-popup--top,.t-popup.t-fade-leave-to.t-popup--top{transform:translateY(-100%);transform-origin:0 0;}
+.t-popup.t-fade-enter.t-popup--bottom,.t-popup.t-fade-leave-to.t-popup--bottom{transform:translateY(100%);}
+.t-popup.t-fade-enter.t-popup--left,.t-popup.t-fade-leave-to.t-popup--left{transform:translateX(-100%);}
+.t-popup.t-fade-enter.t-popup--right,.t-popup.t-fade-leave-to.t-popup--right{transform:translateX(100%);}
+.t-popup.t-fade-enter.t-popup--center,.t-popup.t-fade-leave-to.t-popup--center{transform:scale(.6) translate3d(-50%,-50%,0);opacity:0;}
+.t-popup.t-dialog-enter.t-popup--center,.t-popup.t-dialog-leave-to.t-popup--center{transform:scale(.6) translate3d(-50%,-50%,0);opacity:0;}

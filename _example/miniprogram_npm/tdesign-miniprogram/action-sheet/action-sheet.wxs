@@ -1,0 +1,34 @@
+var utils = require('../common/utils.wxs');
+
+var getListThemeItemClass = function (props) {
+  var classPrefix = props.classPrefix;
+  var item = props.item;
+  var prefix = props.prefix;
+  var classList = [classPrefix + '__list-item'];
+  if (item.disabled) {
+    classList.push(prefix + '-is-disabled');
+  }
+  return classList.join(' ');
+};
+
+var getIconData = function (icon) {
+  if (utils.isString(icon)) {
+    return { name: icon };
+  }
+
+  if (utils.isNoEmptyObj(icon)) {
+    return icon;
+  }
+
+  return null;
+};
+
+var isImage = function (name) {
+  return name.indexOf('/') !== -1;
+};
+
+module.exports = {
+  getListThemeItemClass: getListThemeItemClass,
+  getIconData: getIconData,
+  isImage: isImage,
+};

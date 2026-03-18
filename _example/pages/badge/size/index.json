@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "styleIsolation": "apply-shared",
+  "usingComponents": {
+    "t-badge": "tdesign-miniprogram/badge/badge",
+    "t-avatar": "tdesign-miniprogram/avatar/avatar"
+  }
+}

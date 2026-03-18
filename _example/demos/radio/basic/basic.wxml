@@ -1,0 +1,4 @@
+<view>
+  <t-radio class="basic-radio" title="单行标题" name="radio1"></t-radio>
+  <t-radio title="双行标题，长文本自动换行，该选项的描述是一段很长的内容" name="radio2"></t-radio>
+</view>

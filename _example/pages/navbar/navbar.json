@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "NavBar",
+  "usingComponents": {
+    "base": "./base",
+    "search": "./search",
+    "back-home": "./back-home",
+    "img": "./img",
+    "left-title": "./left-title",
+    "custom-color": "./custom-color"
+  }
+}

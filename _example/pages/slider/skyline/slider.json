@@ -1,0 +1,16 @@
+{
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "t-navbar": "tdesign-miniprogram/navbar/navbar",
+    "base": "../base",
+    "label": "../label",
+    "step": "../step",
+    "range": "../range",
+    "disabled": "../disabled",
+    "capsule": "../capsule",
+    "vertical": "../vertical"
+  },
+  "renderer": "skyline",
+  "componentFramework": "glass-easel",
+  "disableScroll": true
+}

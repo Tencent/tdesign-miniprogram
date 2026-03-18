@@ -1,0 +1,12 @@
+<view class="textarea-example">
+  <text class="textarea-example__label">标签文字</text>
+  <t-textarea
+    t-class="external-class"
+    placeholder="请输入文字"
+    bordered
+    maxlength="100"
+    disableDefaultPadding="{{true}}"
+    indicator
+    style="{{style}}"
+  />
+</view>

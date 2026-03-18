@@ -1,0 +1,6 @@
+page {
+  background-color: var(--td-bg-color-container);
+}
+.wrapper {
+  padding: 0 32rpx;
+}

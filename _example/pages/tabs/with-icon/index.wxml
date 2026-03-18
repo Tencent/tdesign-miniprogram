@@ -1,0 +1,3 @@
+<t-tabs defaultValue="{{0}}">
+  <t-tab-panel wx:for="{{3}}" wx:key="index" icon="app" label="选项" value="{{index}}" />
+</t-tabs>

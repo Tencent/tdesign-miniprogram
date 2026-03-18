@@ -1,0 +1,9 @@
+<t-grid class="block" column="{{0}}">
+  <t-grid-item
+    wx:for="{{gridItemList}}"
+    wx:key="index"
+    t-class-image="image"
+    text="{{item.text}}"
+    image="{{item.img}}"
+  />
+</t-grid>

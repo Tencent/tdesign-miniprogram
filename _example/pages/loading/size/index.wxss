@@ -1,0 +1,11 @@
+.large {
+  --td-loading-text-font: var(--td-font-body-large);
+}
+
+.medium {
+  --td-loading-text-font: var(--td-font-body-medium);
+}
+
+.loading-size-demo .demo-desc {
+  margin: 48rpx 0 32rpx;
+}

@@ -1,0 +1,1 @@
+@import '../../../common/style/index.wxss';canvas{width:100%;height:100%;align-self:stretch;min-width:0;flex:auto;}

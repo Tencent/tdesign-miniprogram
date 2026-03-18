@@ -1,0 +1,13 @@
+.demo .t-navbar__content {
+  padding-top: 0;
+}
+.block {
+  display: block;
+}
+.block + .block {
+  margin-top: 48rpx;
+}
+.demo {
+  --td-navbar-bg-color: var(--td-bg-color-container);
+  --td-navbar-color: var(--text-color-primary);
+}

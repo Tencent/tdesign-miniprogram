@@ -1,0 +1,1 @@
+const props={buttonProps:{type:Object},draggable:{type:null,value:!1},icon:{type:String,value:""},style:{type:String,value:"right: 16px; bottom: 32px;"},text:{type:String,value:""},usingCustomNavbar:{type:Boolean,value:!1},yBounds:{type:Array}};export default props;

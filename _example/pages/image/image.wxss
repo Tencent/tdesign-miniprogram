@@ -1,0 +1,48 @@
+page {
+  background-color: var(--td-bg-color-container);
+}
+.title {
+  margin: 0rpx 32rpx;
+  padding-top: 48rpx;
+  font-size: 44rpx;
+  font-weight: bold;
+  line-height: 64rpx;
+}
+.desc {
+  margin-top: 10rpx;
+  margin-bottom: 10rpx;
+  margin-left: 32rpx;
+  margin-right: 32rpx;
+  color: #999;
+  font-size: 26rpx;
+  line-height: 36rpx;
+}
+.row {
+  display: flex;
+  align-items: flex-end;
+}
+.gutter-row {
+  height: 32rpx;
+}
+.gutter-column-24 {
+  width: 48rpx;
+  display: inline-block;
+}
+.gutter-column-32 {
+  width: 64rpx;
+  display: inline-block;
+}
+.image-example {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.image-example .text {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: var(--td-text-color-placeholder);
+}
+.bottom-row {
+  padding-bottom: constant(safe-area-inset-bottom);
+  padding-bottom: env(safe-area-inset-bottom);
+}

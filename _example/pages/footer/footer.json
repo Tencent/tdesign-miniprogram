@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "Footer",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "base": "./base",
+    "link": "./link",
+    "logo": "./logo"
+  }
+}

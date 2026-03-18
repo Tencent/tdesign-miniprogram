@@ -1,0 +1,11 @@
+<t-date-time-picker
+  usePopup="{{false}}"
+  title="选择日期"
+  mode="date"
+  value="{{value}}"
+  format="YYYY-MM-DD"
+  bindchange="onConfirm"
+  bindpick="onColumnChange"
+  start="{{start}}"
+  end="{{end}}"
+/>

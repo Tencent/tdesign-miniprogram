@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "QRCode",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "base": "./base",
+    "size": "./size",
+    "icon": "./icon",
+    "color": "./color",
+    "level": "./level",
+    "status": "./status",
+    "borderless": "./borderless"
+  }
+}

@@ -1,0 +1,1 @@
+@import '../common/style/index.wxss';.t-row{display:flex;flex-direction:row;flex-wrap:wrap;box-sizing:border-box;}

@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "Fab",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-skeleton": "tdesign-miniprogram/skeleton/skeleton",
+    "base": "./base",
+    "advance": "./advance",
+    "draggable": "./draggable",
+    "collapsible": "./collapsible"
+  }
+}

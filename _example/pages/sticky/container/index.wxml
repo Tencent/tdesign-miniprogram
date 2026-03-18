@@ -1,0 +1,5 @@
+<view class="wrapper">
+  <t-sticky container="{{ container }}" offset-top="{{navbarHeight}}">
+    <t-button size="large" t-class="external-class green-button" hover-class="hover-class ">指定容器</t-button>
+  </t-sticky>
+</view>

@@ -1,0 +1,30 @@
+module.exports = {
+  getClass: function (classPrefix, size, shape, bordered) {
+    var hasPx = (size || '').indexOf('px') > -1;
+    var borderSize = hasPx ? 'medium' : size;
+    var classNames = [
+      classPrefix,
+      classPrefix + (shape === 'round' ? '--round' : '--circle'),
+      bordered ? classPrefix + '--border' + ' ' + classPrefix + '--border-' + borderSize : '',
+      hasPx ? '' : classPrefix + '--' + size,
+    ];
+    return classNames.join(' ');
+  },
+
+  getSize: function (size = 'medium', windowWidth) {
+    var res = getRegExp('^([0-9]+)(px|rpx)$').exec(size);
+
+    if (res && res.length >= 3) {
+      var px = res[1];
+      if (res[2] === 'rpx') {
+        px = Math.floor((windowWidth * res[1]) / 750);
+      }
+
+      return 'width:' + size + ';height:' + size + ';font-size:' + ((px / 8) * 3 + 2) + 'px';
+    }
+  },
+
+  getStyles: function (isShow) {
+    return isShow ? '' : 'display: none;';
+  },
+};

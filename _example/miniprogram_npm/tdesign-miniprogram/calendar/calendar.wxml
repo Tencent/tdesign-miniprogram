@@ -1,0 +1,1 @@
+<wxs src="./calendar.wxs" module="_this"/><wxs src="../common/utils.wxs" module="_"/><t-popup wx:if="{{usePopup}}" class="class" visible="{{visible}}" usingCustomNavbar="{{usingCustomNavbar}}" bind:visible-change="onVisibleChange" placement="bottom"><include src="./template.wxml"/></t-popup><block wx:else><include src="./template.wxml"/></block>

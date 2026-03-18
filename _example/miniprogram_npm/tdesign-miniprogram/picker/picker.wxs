@@ -1,0 +1,9 @@
+var utils = require('../common/utils.wxs');
+
+function isShowOverlay(value, defaultValue) {
+  return utils.isBoolean(value) ? value : defaultValue;
+}
+
+module.exports = {
+  isShowOverlay: isShowOverlay,
+};

@@ -1,0 +1,3 @@
+@import '../common/style/index.wxss';.t-overlay{position:fixed;top:0;left:0;width:100%;bottom:0;background-color:var(--td-overlay-bg-color,var(--td-mask-active,rgba(0,0,0,.6)));transition-property:opacity;transition-duration:var(--td-overlay-transition-duration,300ms);transition-timing-function:ease;}
+.t-fade-enter{opacity:0;}
+.t-fade-leave-to{opacity:0;}

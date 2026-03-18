@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "styleIsolation": "apply-shared",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-transition": "tdesign-miniprogram/transition/transition"
+  }
+}

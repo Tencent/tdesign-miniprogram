@@ -1,0 +1,1 @@
+const props={animation:{type:String,value:"moving"},collapsed:{type:Boolean,value:!1},content:{type:Object,required:!0},layout:{type:String,value:"block"},maxHeight:{type:Number},status:{type:String,value:"pending",required:!0}};export default props;

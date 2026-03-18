@@ -1,0 +1,4 @@
+<t-radio-group defaultValue="radio1" disabled="{{true}}">
+  <t-radio value="radio1" label="单选" />
+  <t-radio value="radio2" label="单选" />
+</t-radio-group>

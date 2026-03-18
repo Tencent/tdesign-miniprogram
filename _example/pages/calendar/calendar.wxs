@@ -1,0 +1,25 @@
+function getDateByTimestamp(val) {
+  var date = getDate(val);
+  var month = date.getMonth() + 1;
+  var day = date.getDate();
+  return [date.getFullYear(), month < 10 ? '0' + month : month, day < 10 ? '0' + day : day].join('-');
+}
+
+function formatTimestamp(val) {
+  if (!val) return '';
+
+  var i = 0;
+  if (val.constructor && val.constructor == 'Array') {
+    var _str = '';
+    for (var len = val.length; i < len; i++) {
+      _str += getDateByTimestamp(val[i]) + '、';
+    }
+    return _str;
+  }
+
+  return getDateByTimestamp(val);
+}
+
+module.exports = {
+  formatTimestamp: formatTimestamp,
+};
