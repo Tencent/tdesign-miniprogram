@@ -29,7 +29,7 @@
                 <TChatMarkdownNode :nodes="li.tokens" />
               </block>
               <block v-else>
-                {{ item.text }}
+                {{ li.text }}
               </block>
             </view>
           </block>

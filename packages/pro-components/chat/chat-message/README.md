@@ -1,7 +1,7 @@
 ---
 title: ChatMessage 对话消息体
 description: 用于在聊天对话中显示单个消息项。它可以展示用户的头像、昵称、时间、聊天内容，支持多种消息状态和样式变体。
-spline: base
+spline: chat
 isComponent: true
 ---
 

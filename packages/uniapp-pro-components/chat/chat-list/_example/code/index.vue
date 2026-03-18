@@ -26,6 +26,7 @@
                 <t-chat-content
                   v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                   :content="contentItem"
+                  :role="item.message.role"
                 />
 
                 <!-- :slot="'custom-' + contentIndex" -->

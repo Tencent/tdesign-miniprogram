@@ -51,7 +51,7 @@
 import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import { coalesce } from '../common/utils';
+import { coalesce, nextTick } from '../common/utils';
 import props from './props';
 import tools from '../common/utils.wxs';
 
@@ -128,20 +128,27 @@ export default uniComponent({
     add(a, b) {
       const maxLen = Math.max(this.getLen(a), this.getLen(b));
       const base = 10 ** maxLen;
-      return Math.round(a * base + b * base) / base;
+      const result = Math.round(a * base + b * base) / base;
+      // 保留运算涉及的最大小数位数，避免精度信息丢失
+      return maxLen > 0 ? result.toFixed(maxLen) : result;
     },
 
     format(value) {
       const { min, max, step } = this;
-      const len = Math.max(this.getLen(step), this.getLen(value));
+      // 使用字符串形式计算小数位数，避免数字隐式转换导致末尾0丢失
+      const len = Math.max(this.getLen(step), this.getLen(String(value)));
       // 超过边界取边界值
       return Math.max(Math.min(max, value, Number.MAX_SAFE_INTEGER), min, Number.MIN_SAFE_INTEGER).toFixed(len);
     },
 
     setValue(value) {
-      const newValue = Number(this.format(value));
+      const formattedStr = this.format(value);
+      const newValue = Number(formattedStr);
 
-      this.updateCurrentValue(newValue);
+      nextTick().then(() => {
+        // 使用 format 返回的字符串更新显示值，避免 Number() 转换丢失末尾0
+        this.updateCurrentValue(formattedStr);
+      });
 
       if (this.preValue === newValue) return;
 
@@ -201,16 +208,26 @@ export default uniComponent({
       const formatted = this.filterIllegalChar(value);
       const newValue = this.format(formatted);
 
-      this.updateCurrentValue(this.integer ? newValue : formatted);
+      const displayValue = this.integer ? newValue : formatted;
+      // 当过滤后的值与当前值相同时，需要先清空再回填，强制触发视图更新
+      if (String(this.currentValue) === String(displayValue)) {
+        this.updateCurrentValue('');
+        nextTick().then(() => {
+          this.updateCurrentValue(displayValue);
+        });
+      } else {
+        this.updateCurrentValue(displayValue);
+      }
 
-      if (this.integer || /\.\d+/.test(formatted)) {
+      if (this.integer || /\.\d*[1-9]/.test(formatted)) {
         this.setValue(formatted);
       }
     },
 
     handleBlur(e) {
       const { value: rawValue } = e.detail;
-      const value = this.format(rawValue);
+      const formatted = this.filterIllegalChar(rawValue);
+      const value = this.format(formatted);
 
       this.setValue(value);
       this.$emit('blur', { value });

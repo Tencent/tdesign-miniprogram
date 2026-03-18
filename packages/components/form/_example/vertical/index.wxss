@@ -7,6 +7,7 @@
 .textarea {
   height: 200rpx;
   width: 100%;
+  --td-textarea-padding: 0;
 }
 
 .button-group {

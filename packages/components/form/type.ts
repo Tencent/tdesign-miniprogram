@@ -25,13 +25,6 @@ export interface TdFormProps<FormData extends Data = Data> {
     value?: FormData;
   };
   /**
-   * 是否禁用整个表单
-   */
-  disabled?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
    * 表单错误信息配置，示例：`{ idcard: '请输入正确的身份证号码', max: '字符长度不能超过 ${max}' }`
    */
   errorMessage?: {
@@ -53,13 +46,6 @@ export interface TdFormProps<FormData extends Data = Data> {
   labelWidth?: {
     type: null;
     value?: string | number;
-  };
-  /**
-   * 是否整个表单只读
-   */
-  readonly?: {
-    type: BooleanConstructor;
-    value?: boolean;
   };
   /**
    * 是否显示必填符号（*），默认显示
@@ -154,7 +140,7 @@ export interface FormInstanceFunctions<FormData extends Data = Data> {
    */
   validate: {
     type: undefined;
-    value?: (params?: FormValidateParams) => void;
+    value?: (params?: FormValidateParams) => Promise<FormValidateResult<FormData>>;
     required?: boolean;
   };
 }
@@ -228,7 +214,7 @@ export interface FormRule {
    */
   url?: boolean | IsURLOptions;
   /**
-   * 自定义校验规则，示例：`{ validator: (val) => val.length > 0, message: '请输入内容'}`
+   * 自定义校验规则，context 中 formData 为当前完整表单值，name为该字段的标识，示例：`{ validator: (val) => val.length > 0, message: '请输入内容'}`
    */
   validator?: CustomValidator;
   /**
@@ -332,6 +318,18 @@ export interface FormValidateParams {
 
 export type ValidateTriggerType = 'blur' | 'change' | 'submit' | 'all';
 
+export type FormValidateResult<T> = boolean | ValidateResultObj<T>;
+
+export type ValidateResultObj<T> = { [key in keyof T]: boolean | ValidateResultList };
+
+export type ValidateResultList = Array<AllValidateResult>;
+
+export type AllValidateResult = CustomValidateObj | ValidateResultType;
+
+export interface ValidateResultType extends FormRule {
+  result: boolean;
+}
+
 export type Data = { [key: string]: any };
 
 export interface IsDateOptions {
@@ -340,7 +338,10 @@ export interface IsDateOptions {
   delimiters: string[];
 }
 
-export type CustomValidator = (val: ValueType) => CustomValidateResolveType | Promise<CustomValidateResolveType>;
+export type CustomValidator = (
+  val: ValueType,
+  context?: { formData: Data; name: string },
+) => CustomValidateResolveType | Promise<CustomValidateResolveType>;
 
 export type CustomValidateResolveType = boolean | CustomValidateObj;
 

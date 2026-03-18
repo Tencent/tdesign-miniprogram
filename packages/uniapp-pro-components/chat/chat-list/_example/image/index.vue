@@ -27,6 +27,7 @@
                   <t-chat-content
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
+                    :role="item.message.role"
                   />
                 </block>
               </view>
@@ -41,6 +42,7 @@
                   <t-chat-content
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
+                    :role="item.message.role"
                   />
 
                   <view
@@ -182,7 +184,6 @@ export default {
         items: [],
         removable: true,
         imageViewer: true,
-        addable: false,
       },
 
       // 内容高度

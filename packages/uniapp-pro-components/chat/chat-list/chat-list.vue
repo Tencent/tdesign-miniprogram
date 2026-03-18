@@ -35,6 +35,7 @@
             :name="item.name || ''"
             :datetime="item.datetime || ''"
             :content="item.content"
+            :role="item.role || 'user'"
             :placement="layout === 'both' ? (item.role === 'user' ? 'right' : 'left') : 'left'"
             :animation="animation"
             :status="item.status || ''"

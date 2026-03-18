@@ -34,8 +34,14 @@
   "typings": "./dist/types/index.d.ts",
   "types": "./dist/types/index.d.ts",
   "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/index.js"
+    },
     "./*": "./dist/*",
-    "./global": "./global.d.ts",
+    "./global": {
+      "types": "./global.d.ts"
+    },
     "./action-sheet/action-sheet.vue": {
       "types": "./dist/types/action-sheet.d.ts",
       "import": "./dist/action-sheet/action-sheet.vue",

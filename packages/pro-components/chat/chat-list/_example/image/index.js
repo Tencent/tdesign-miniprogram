@@ -71,7 +71,6 @@ Component({
       items: [],
       removable: true,
       imageViewer: true,
-      addable: false,
     },
     contentHeight: '100vh', // 内容高度
     activePopoverId: '', // 当前打开悬浮actionbar的chatId
@@ -177,9 +176,9 @@ Component({
         await fetchStream('接下来我将生成符合要求的图片', {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[0].data += result;
+            const currentData = that.data.chatList[0].message.content[0].data;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[0].data': currentData + result,
             });
           },
           complete() {},
@@ -238,9 +237,8 @@ Component({
             },
           ],
         });
-        that.data.chatList[0].message.status = 'complete';
         that.setData({
-          chatList: that.data.chatList,
+          'chatList[0].message.status': 'complete',
           loading: false,
         });
       });

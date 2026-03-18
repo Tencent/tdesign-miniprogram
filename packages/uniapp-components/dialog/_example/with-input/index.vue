@@ -13,6 +13,7 @@
     </t-button>
     <t-dialog
       :visible="showWithInput"
+      :custom-style="dialogCustomStyle"
       title="带输入框对话框"
       confirm-btn="确定"
       cancel-btn="取消"
@@ -48,6 +49,7 @@
     <t-dialog
       :visible="showTextAndTitleWithInput"
       title="带输入框对话框"
+      :custom-style="dialogCustomStyle"
       content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
       confirm-btn="确定"
       cancel-btn="取消"
@@ -85,10 +87,15 @@ export default {
     TDialog,
   },
   data() {
+    let dialogCustomStyle = '';
+    // #ifdef MP-WEIXIN
+    dialogCustomStyle = 'transition: none';
+    // #endif
     return {
       dialogKey: '',
       showWithInput: false,
       showTextAndTitleWithInput: false,
+      dialogCustomStyle,
 
       inputStyle: 'background-color: var(--td-bg-color-page);padding-top: 12px;padding-bottom: 12px;',
       placeholderStyle: 'color: var(--td-text-color-placeholder);height: 24px;line-height: 24px;display: flex;align-items: center;',
@@ -109,22 +116,14 @@ export default {
 </script>
 <style>
 .wrapper {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 
-/* :deep(.placeholder) {
-     color: var(--td-text-color-placeholder);
-     line-height: 96rpx;
-     height: 96rpx;
-     display: flex;
-     align-items: center;
-} */
-
 :deep(.dialog-input) {
-    text-align: left;
-    margin-top: 32rpx;
-    border-radius: 8rpx;
-    background-color: var(--td-bg-color-page);
-    box-sizing: border-box;
+  text-align: left;
+  margin-top: 32rpx;
+  border-radius: 8rpx;
+  background-color: var(--td-bg-color-page);
+  box-sizing: border-box;
 }
 </style>

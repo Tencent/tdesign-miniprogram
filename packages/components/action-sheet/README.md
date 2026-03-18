@@ -1,7 +1,7 @@
 ---
 title: ActionSheet 动作面板
 description: 由用户操作后触发的一种特定的模态弹出框 ，呈现一组与当前情境相关的两个或多个选项。
-spline: data
+spline: message
 isComponent: true
 ---
 

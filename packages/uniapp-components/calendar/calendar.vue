@@ -7,7 +7,7 @@
       :show-overlay="isShowOverlay(popupProps && popupProps.showOverlay, true)"
       :using-custom-navbar="usingCustomNavbar || (popupProps && popupProps.usingCustomNavbar)"
       :custom-navbar-height="coalesce(customNavbarHeight, popupProps && popupProps.usingCustomNavbar)"
-      :z-index="(popupProps && popupProps.zIndex)"
+      :z-index="popupProps && popupProps.zIndex"
       :overlay-props="(popupProps && popupProps.overlayProps) || defaultOverlayProps"
       @visible-change="onVisibleChange"
     >

@@ -21,7 +21,14 @@ const CONFIG = {
 };
 
 const OTHER_EXPORTS = {
+  '.': {
+    types: './types/index.d.ts',
+    default: './index.js',
+  },
   './*': './*',
+  './global': {
+    types: './global.d.ts',
+  },
 };
 
 const getDTSTemplate = isChat => `import type { TransformEventHandlers, ExtractNonOnProps } from '${isChat ? '@tdesign/uniapp' : '..'}/common/common';

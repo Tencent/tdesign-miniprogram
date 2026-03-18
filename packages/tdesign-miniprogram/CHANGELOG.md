@@ -5,6 +5,30 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.13.0 `2026-03-18`
+
+### 🚨 Breaking Changes
+
+- `ChatSender`: 附件末尾没有添加入口，移除无实际意义的 `fileAdd` 事件 @zydemail ([#4331](https://github.com/Tencent/tdesign-miniprogram/pull/4331))
+- `DateTimePicker`: 废弃 `custom-locale` 属性，请用 `ConfigProvider` 替换该功能 @anlyyao ([#4261](https://github.com/Tencent/tdesign-miniprogram/pull/4261))
+
+### 🚀 Features
+
+- `Form`: 新增 `Form` 表单组件 @Jay2138 ([#3912](https://github.com/Tencent/tdesign-miniprogram/pull/3912)) @Boomkaa ([#4283](https://github.com/Tencent/tdesign-miniprogram/pull/4283)) 
+- `ConfigProvider`: 新增 `ConfigProvider` 全局特性配置组件 @anlyyao ([#4261](https://github.com/Tencent/tdesign-miniprogram/pull/4261))
+- `ChatThinking`: 新增 `content` 插槽 @zydemail ([#4270](https://github.com/Tencent/tdesign-miniprogram/pull/4270))
+
+### 🐞 Bug Fixes
+
+- `ColorPicker`: 修复弹窗模式下预设颜色（swatch-colors）无法横向滚动 @anlyyao ([#4288](https://github.com/Tencent/tdesign-miniprogram/pull/4288))
+- `DateTimePicker`: 修复 `format` 含非日期 `token`（如 `ddd`）时，格式化后的值回传导致 `Invalid Date` 的问题 @novlan1 ([#4320](https://github.com/Tencent/tdesign-miniprogram/pull/4320))
+- `Grid`: 修复右侧 `border` 边框在浏览器及部分机型上渲染错误 @anlyyao ([#4280](https://github.com/Tencent/tdesign-miniprogram/pull/4280))
+- `Upload`: 修复 `@upload-disabled-mask` 变量默认值错误 @anlyyao ([#4303](https://github.com/Tencent/tdesign-miniprogram/pull/4303))
+
+### 📝 Documentation
+
+- `Attachments`: 移除 `addable` 属性相关文档描述 @zydemail ([#4331](https://github.com/Tencent/tdesign-miniprogram/pull/4331))
+
 ## 🌈 1.12.3 `2026-02-03`
 
 ### 🚀 Features

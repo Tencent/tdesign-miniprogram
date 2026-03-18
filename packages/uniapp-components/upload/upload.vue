@@ -693,8 +693,20 @@ export default uniComponent({
     chooseMedia(mediaType) {
       const { customLimit } = this;
       const { config, sizeLimit } = this;
+
+      let parsed = false;
+
+      // #ifdef H5
+      this.chooseFileH5(mediaType, customLimit, sizeLimit);
+      parsed = true;
+      // #endif
+
+      if (parsed) {
+        return;
+      }
+
       let func = 'chooseMedia';
-      // #ifdef H5 || MP-ALIPAY
+      // #ifdef MP-ALIPAY
       func = 'chooseImage';
       // #endif
       // #ifdef MP-WEIXIN
@@ -711,10 +723,9 @@ export default uniComponent({
 
           // 支持单/多文件
           res.tempFiles.forEach((temp) => {
-            const { size, fileType, tempFilePath, width, height, duration, thumbTempFilePath, ...res } = temp;
-
+            const { size, fileType, tempFilePath: tTempFilePath, path: tPath, width, height, duration, thumbTempFilePath, ...res } = temp;
+            const tempFilePath = tTempFilePath || tPath;
             if (this.checkFileSize(size, sizeLimit, fileType)) return;
-
 
             const name = temp.name || this.getRandFileName(tempFilePath);
             files.push({
@@ -740,6 +751,150 @@ export default uniComponent({
         },
       });
     },
+
+    // #ifdef H5
+    /**
+     * H5 平台使用原生 input[type=file] 选择文件，支持图片和视频
+     */
+    chooseFileH5(mediaType, customLimit, sizeLimit) {
+      const input = document.createElement('input');
+      input.type = 'file';
+
+      // 根据 mediaType 生成 accept
+      const acceptTypes = [];
+      if (mediaType.includes('image')) acceptTypes.push('image/*');
+      if (mediaType.includes('video')) acceptTypes.push('video/*');
+      input.accept = acceptTypes.join(',') || 'image/*,video/*';
+
+      if (customLimit > 1) {
+        input.multiple = true;
+      }
+
+      input.onchange = (e) => {
+        const selectedFiles = Array.from(e.target.files || []);
+        if (selectedFiles.length === 0) {
+          this.$emit('complete', {});
+          return;
+        }
+
+        // 限制数量
+        const limitedFiles = selectedFiles.slice(0, Math.min(20, customLimit));
+        const files = [];
+        let processed = 0;
+
+        limitedFiles.forEach((file) => {
+          const fileType = file.type.startsWith('video/') ? 'video' : 'image';
+
+          if (this.checkFileSize(file.size, sizeLimit, fileType)) {
+            processed += 1;
+            if (processed === limitedFiles.length) {
+              this.afterSelect(files);
+              this.$emit('complete', {});
+            }
+            return;
+          }
+
+          const url = URL.createObjectURL(file);
+          const name = file.name || this.getRandFileName(url);
+
+          if (fileType === 'image') {
+            // 图片：获取宽高
+            const img = new Image();
+            img.onload = () => {
+              files.push({
+                name,
+                type: 'image',
+                url,
+                size: file.size,
+                width: img.width,
+                height: img.height,
+                percent: 0,
+              });
+              processed += 1;
+              if (processed === limitedFiles.length) {
+                this.afterSelect(files);
+                this.$emit('complete', {});
+              }
+            };
+            img.onerror = () => {
+              files.push({
+                name,
+                type: 'image',
+                url,
+                size: file.size,
+                percent: 0,
+              });
+              processed += 1;
+              if (processed === limitedFiles.length) {
+                this.afterSelect(files);
+                this.$emit('complete', {});
+              }
+            };
+            img.src = url;
+          } else {
+            // 视频：获取时长、宽高和封面
+            const video = document.createElement('video');
+            video.preload = 'metadata';
+            video.onloadedmetadata = () => {
+              const { duration } = video;
+              const width = video.videoWidth;
+              const height = video.videoHeight;
+
+              // 尝试截取第一帧作为封面
+              video.currentTime = 0.1;
+              video.onseeked = () => {
+                let thumb = '';
+                try {
+                  const canvas = document.createElement('canvas');
+                  canvas.width = width;
+                  canvas.height = height;
+                  canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+                  thumb = canvas.toDataURL('image/jpeg', 0.7);
+                } catch (err) {
+                  // 跨域等情况下可能截图失败，忽略
+                }
+
+                files.push({
+                  name,
+                  type: 'video',
+                  url,
+                  size: file.size,
+                  width,
+                  height,
+                  duration: Math.round(duration),
+                  thumb,
+                  percent: 0,
+                });
+                processed += 1;
+                if (processed === limitedFiles.length) {
+                  this.afterSelect(files);
+                  this.$emit('complete', {});
+                }
+                URL.revokeObjectURL(video.src);
+              };
+            };
+            video.onerror = () => {
+              files.push({
+                name,
+                type: 'video',
+                url,
+                size: file.size,
+                percent: 0,
+              });
+              processed += 1;
+              if (processed === limitedFiles.length) {
+                this.afterSelect(files);
+                this.$emit('complete', {});
+              }
+            };
+            video.src = url;
+          }
+        });
+      };
+
+      input.click();
+    },
+    // #endif
 
     chooseMessageFile(mediaType) {
       const { customLimit } = this;

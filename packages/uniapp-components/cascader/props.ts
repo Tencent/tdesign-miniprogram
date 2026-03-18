@@ -27,6 +27,11 @@ export default {
     type: String,
     default: '选择选项',
   },
+  /** 透传 Popup 组件全部属性 */
+  popupProps: {
+    type: Object,
+    default: () => ({}),
+  },
   /** 每级展示的次标题 */
   subTitles: {
     type: Array,

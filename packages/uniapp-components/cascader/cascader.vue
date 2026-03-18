@@ -4,6 +4,10 @@
       :class="tClass"
       :visible="dataVisible"
       placement="bottom"
+      :show-overlay="isShowOverlay(popupProps && popupProps.showOverlay, true)"
+      :using-custom-navbar="popupProps && popupProps.usingCustomNavbar"
+      :z-index="popupProps && popupProps.zIndex"
+      :overlay-props="(popupProps && popupProps.overlayProps) || {}"
       @visible-change="onVisibleChange"
     >
       <view
@@ -514,6 +518,9 @@ export default uniComponent({
         value: coalesce(selectedValue[selectedValue.length - 1], ''),
         selectedOptions: items.map((item, index) => item[selectedIndexes[index]]).filter(Boolean),
       });
+    },
+    isShowOverlay(value, defaultValue) {
+      return tools.isBoolean(value) ? value : defaultValue;
     },
   },
 });

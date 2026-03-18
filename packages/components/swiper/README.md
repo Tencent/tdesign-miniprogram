@@ -1,7 +1,7 @@
 ---
 title: Swiper 轮播图
 description: 用于循环轮播一组图片或内容，也可以滑动进行切换，轮播动效时间可以设置。
-spline: message
+spline: data
 isComponent: true
 ---
 
