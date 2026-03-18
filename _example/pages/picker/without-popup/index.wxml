@@ -1,0 +1,15 @@
+<t-picker
+  visible="{{cityVisible}}"
+  value="{{cityValue}}"
+  usePopup="{{false}}"
+  data-key="city"
+  title="{{cityTitle}}"
+  cancelBtn="取消"
+  confirmBtn="确认"
+  usingCustomNavbar
+  bindchange="onPickerChange"
+  bindpick="onColumnChange"
+  bindcancel="onPickerCancel"
+>
+  <t-picker-item options="{{citys}}"></t-picker-item>
+</t-picker>

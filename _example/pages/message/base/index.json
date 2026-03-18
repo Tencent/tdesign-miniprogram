@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-message": "tdesign-miniprogram/message/message"
+  }
+}

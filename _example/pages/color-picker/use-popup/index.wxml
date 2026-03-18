@@ -1,0 +1,12 @@
+<t-color-picker
+  visible="{{visible}}"
+  use-popup
+  enableAlpha
+  type="multiple"
+  bind:change="onChange"
+  bind:palette-bar-change="onPaletteBarChange"
+/>
+
+<t-button block size="large" variant="outline" theme="primary" bind:tap="handlePopup" t-class="wrapper">
+  弹窗形式的颜色选择器
+</t-button>

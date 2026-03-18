@@ -1,0 +1,1 @@
+const props={color:{type:null,value:""},label:{type:null,value:!0},percentage:{type:Number,value:0},size:{type:null,value:"default"},status:{type:String},strokeWidth:{type:null},theme:{type:String,value:"line"},trackColor:{type:String,value:""}};export default props;

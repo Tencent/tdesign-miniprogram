@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "Switch",
+  "usingComponents": {
+    "t-demo": "../../components/demo-block",
+    "base": "./base",
+    "label": "./label",
+    "color": "./color",
+    "status": "./status",
+    "size": "./size"
+  }
+}

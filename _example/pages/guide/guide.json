@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "Guide",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "t-popup": "tdesign-miniprogram/popup/popup",
+    "base": "./base",
+    "no-mask": "./no-mask",
+    "dialog": "./dialog",
+    "multiple": "./multiple",
+    "content": "./content"
+  }
+}

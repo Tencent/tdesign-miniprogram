@@ -1,0 +1,15 @@
+<view class="wrapper">
+  <block wx:for="{{items}}" wx:key="index">
+    <view class="block">
+      <text>{{item}}</text>
+      <t-check-tag class="margin-16" size="large" variant="{{item}}" content="{{ ['已选中态', '未选中态'] }}" />
+      <t-check-tag
+        class="margin-16"
+        default-checked
+        size="large"
+        variant="{{item}}"
+        content="{{ ['已选中态', '未选中态'] }}"
+      />
+    </view>
+  </block>
+</view>

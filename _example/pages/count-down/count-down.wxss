@@ -1,0 +1,41 @@
+page {
+  background-color: var(--td-bg-color-container);
+}
+.flex {
+  display: flex;
+  align-items: center;
+}
+.base-time {
+  margin-top: 52rpx;
+  justify-content: space-between;
+}
+.base-time-text {
+  font-size: 20rpx;
+  color: rgba(0, 0, 0, 0.4);
+  width: 60%;
+}
+.base-time-cls {
+  color: #333;
+  font-weight: 700;
+}
+.spec-item {
+  justify-content: space-between;
+  margin-top: 32rpx;
+}
+.spec-item-right {
+  width: 236rpx;
+}
+.spec-item-left {
+  width: 352rpx;
+}
+.spec-item-after {
+  font-size: 20rpx;
+  color: rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  display: inline-flex;
+  align-items: center;
+  width: 30%;
+}
+.last-padding {
+  padding-bottom: 80rpx;
+}

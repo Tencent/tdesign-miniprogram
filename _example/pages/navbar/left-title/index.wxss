@@ -1,0 +1,30 @@
+.custom-title {
+  margin-left: 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.block {
+  display: block;
+  margin-bottom: 48rpx;
+}
+
+.demo-desc {
+  margin-top: 48rpx;
+  margin-bottom: 32rpx;
+}
+
+.left-text {
+  display: block;
+  margin-left: 4px;
+  font-size: 16px;
+}
+
+.header-title {
+  font-size: 28px;
+  line-height: 36px;
+  padding: 8rpx 32rpx 16rpx;
+  background-color: var(--td-bg-color-container);
+  font-weight: 600;
+  color: var(--td-text-color-primary);
+}

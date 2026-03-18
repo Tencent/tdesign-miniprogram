@@ -1,0 +1,137 @@
+/* components/privacy/privacy.wxss */
+.privacy_wrap {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  background-color: #fff;
+  color: #222;
+  font-size: 24rpx;
+}
+.privacy_safe_area {
+  width: 750rpx;
+  height: 1180rpx;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+.privacy_top {
+  padding: 50rpx 40rpx;
+  position: relative;
+  overflow: hidden;
+}
+.privacy_btn_back::before {
+  content: '<<';
+}
+.privacy_title {
+  height: 100%;
+  font-size: 32rpx;
+  font-weight: 700;
+  text-align: center;
+  line-height: 60rpx;
+}
+.privacy_right {
+  height: 48rpx;
+  line-height: 48rpx;
+  text-align: right;
+}
+.privacy_content {
+  height: 790rpx;
+  padding: 0 40rpx;
+  overflow: auto;
+  line-height: 32rpx;
+}
+.privacy_bold {
+  font-weight: 700;
+  display: inline-block;
+  padding-bottom: 12rpx;
+}
+.privacy_normal {
+  text-indent: 2em;
+  display: inline-block;
+  padding-bottom: 12rpx;
+}
+.privacy_btn_confirm {
+  width: 150rpx;
+  height: 92rpx;
+  padding: 0 85rpx;
+  border-radius: 16rpx;
+  border: #ccc solid 2rpx;
+  background-color: #06c15f;
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 92rpx;
+  color: #fff;
+  margin: 30rpx auto 0;
+  text-indent: 0;
+}
+.privacy_tips_win {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  background: rgba(0, 0, 0, 0.75);
+  color: #222;
+  font-size: 28rpx;
+}
+.privacy_win_content {
+  width: 100vw;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #fff;
+  border-radius: 24rpx 24rpx 0 0;
+  padding: 50rpx 40rpx;
+  text-indent: 2em;
+  animation: privacy_up 0.2s forwards;
+  transform: translateY(100%);
+}
+@keyframes privacy_up {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.privacy_line {
+  display: inline-block;
+  vertical-align: middle;
+}
+.privacy_url {
+  color: #576b95;
+  text-indent: 0;
+  display: inline;
+  vertical-align: middle;
+}
+.privacy_tips_content {
+  line-height: 40rpx;
+  vertical-align: middle;
+}
+.privacy_middle {
+  width: 650rpx;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%, 50%);
+  border-radius: 24rpx;
+  animation: none;
+}
+
+.footer {
+  width: 100%;
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-indent: 0;
+}
+.t-design-button {
+  width: 300rpx;
+}
