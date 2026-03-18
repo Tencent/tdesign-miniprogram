@@ -1,0 +1,6 @@
+page {
+  background-color: var(--td-bg-color-container);
+}
+page .demo-section__wrapper {
+  padding: 48rpx 32rpx;
+}

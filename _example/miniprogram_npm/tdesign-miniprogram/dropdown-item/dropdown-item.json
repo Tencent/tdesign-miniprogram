@@ -1,0 +1,1 @@
+{"component":true,"styleIsolation":"apply-shared","usingComponents":{"t-button":"../button/button","t-radio":"../radio/radio","t-radio-group":"../radio-group/radio-group","t-checkbox":"../checkbox/checkbox","t-checkbox-group":"../checkbox-group/checkbox-group","t-popup":"../popup/popup"}}

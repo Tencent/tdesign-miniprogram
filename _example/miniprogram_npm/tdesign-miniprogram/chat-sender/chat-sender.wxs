@@ -1,0 +1,25 @@
+var utils = require('../common/utils.wxs');
+
+function textareaStyle(autosize) {
+  if (autosize && autosize.constructor === 'Object') {
+    return utils._style({
+      'min-height': addUnit(autosize.minHeight),
+      'max-height': addUnit(autosize.maxHeight),
+    });
+  }
+  return '';
+}
+
+function addUnit(value) {
+  // prettier-ignore
+  var REGEXP = getRegExp('^-?\d+(.\d+)?$');
+  if (value == null) {
+    return undefined;
+  }
+  return REGEXP.test('' + value) ? value + 'rpx' : value;
+}
+
+module.exports = {
+  textareaStyle: textareaStyle,
+  _style: utils._style,
+};

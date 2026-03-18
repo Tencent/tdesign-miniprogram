@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-swiper": "tdesign-miniprogram/swiper/swiper",
+    "t-switch": "tdesign-miniprogram/switch/switch",
+    "t-slider": "tdesign-miniprogram/slider/slider"
+  }
+}

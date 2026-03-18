@@ -1,0 +1,6 @@
+<view class="demo-rate">
+  <view class="rate-wrapper">
+    <t-rate value="{{value}}" size="60rpx" bind:change="onChange" texts="{{texts}}" />
+  </view>
+  <view class="desc desc--{{value > 3 ? 'active' : ''}}">{{texts[value - 1]}}</view>
+</view>

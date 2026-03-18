@@ -1,0 +1,3 @@
+.is-holiday:not(.t-calendar__dates-item--selected) {
+  color: #e34d59 !important;
+}

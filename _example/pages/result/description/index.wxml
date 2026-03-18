@@ -1,0 +1,5 @@
+<view wx:for="{{resultList}}" wx:for-item="item" wx:key="index">
+  <view class="demo-section__content">
+    <t-result theme="{{item.theme}}" title="{{item.title}}" description="{{item.description}}" />
+  </view>
+</view>

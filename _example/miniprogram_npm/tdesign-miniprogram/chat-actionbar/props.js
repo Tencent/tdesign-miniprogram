@@ -1,0 +1,1 @@
+const props={actionBar:{type:Array,value:["replay","copy","good","bad","share"]},chatId:{type:String,value:""},comment:{type:String,value:""},content:{type:String,value:""},copyMode:{type:String,value:"markdown"},disabled:{type:Boolean,value:!1},placement:{type:String,value:"start"},longPressPosition:{type:Object,value:null}};export default props;

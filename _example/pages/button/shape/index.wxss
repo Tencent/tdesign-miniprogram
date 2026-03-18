@@ -1,0 +1,9 @@
+.button-example {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 32rpx 32rpx;
+}
+
+.external-class {
+  border-radius: 0 !important;
+}

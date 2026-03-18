@@ -1,0 +1,12 @@
+{
+  "navigationStyle": "custom",
+  "renderer": "skyline",
+  "componentFramework": "glass-easel",
+  "usingComponents": {
+    "t-navbar": "tdesign-miniprogram/navbar/navbar",
+    "base": "../base",
+    "with-title": "../with-title",
+    "area": "../area",
+    "without-popup": "../without-popup"
+  }
+}

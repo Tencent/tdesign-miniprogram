@@ -1,0 +1,28 @@
+.suffix {
+  display: flex;
+  align-items: center;
+}
+
+.suffix--line {
+  width: 1px;
+  height: 24px;
+  background-color: var(--td-component-stroke, #f3f3f3);
+  margin-right: 16px;
+}
+
+.image {
+  width: 72px;
+  height: 36px;
+  display: block;
+  margin-top: -6px;
+  margin-bottom: -6px;
+}
+
+.tips {
+  text-align: right !important;
+}
+
+.verify {
+  color: var(--td-brand-color, #0052d9);
+  font-size: 32rpx;
+}

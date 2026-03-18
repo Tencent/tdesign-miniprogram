@@ -1,0 +1,29 @@
+<t-navbar title="TDesign UI" placeholder zIndex="{{99}}" />
+<view class="main">
+  <view class="title-wrap">
+    <image
+      class="title-icon"
+      mode="aspectFit"
+      src="/assets/{{theme === 'dark' ? 'TDesign-logo_dark' : 'TDesign-logo_light'}}.png"
+      aria-label="TDesign Logo"
+    />
+  </view>
+  <view class="desc">
+    TDesign 适配微信小程序的组件库{{isSkyline?' (skyline render)':''}}
+    <text wx:if="{{!isSkyline}}" class="skyline-entry" bindtap="goSkyline">try skyline</text></view
+  >
+  <pull-down-list
+    wx:for="{{list}}"
+    name="{{item.name}}"
+    icon="{{item.icon}}"
+    wx:key="name"
+    childArr="{{item.childArr}}"
+    bind:click="clickHandle"
+  />
+</view>
+<view class="footer">
+  <view class="show_privacy" bindtap="showPrivacyWin">《TDesign组件库服务声明》</view>
+  <t-footer text="该小程序仅演示示例，不收集个人信息。"></t-footer>
+  <t-footer text="Copyright © 1998 - {{currentYear}} Tencent. All Rights Reserved. 腾讯公司 版权所有"></t-footer>
+</view>
+<trd-privacy id="trdPrivacy" name="TDesign组件库" date="2023年11月14日" winStyle="{{winStyle}}"></trd-privacy>

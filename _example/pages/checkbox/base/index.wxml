@@ -1,0 +1,1 @@
+<t-checkbox-group value="{{current}}" bind:change="handleGroupChange" options="{{options}}" />

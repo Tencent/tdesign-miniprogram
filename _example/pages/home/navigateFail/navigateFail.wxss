@@ -1,0 +1,22 @@
+.demo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1000rpx;
+}
+.demo .fail-error {
+  margin-top: 48rpx;
+  margin-bottom: 96rpx;
+  width: 100%;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 28rpx;
+  font-weight: 400;
+  text-align: center;
+}
+.demo .t-button--default {
+  width: 320rpx;
+  height: 80rpx;
+  color: rgba(0, 0, 0, 0.9);
+  font-weight: 700;
+  font-size: 28rpx;
+}

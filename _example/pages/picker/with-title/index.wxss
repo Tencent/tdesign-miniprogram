@@ -1,0 +1,3 @@
+.mb-16 {
+  margin-bottom: 32rpx;
+}

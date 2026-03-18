@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-slider": "tdesign-miniprogram/slider/slider"
+  }
+}

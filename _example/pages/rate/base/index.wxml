@@ -1,0 +1,5 @@
+<view class="demo-rate">
+  <view class="demo-rate__title">实心评分</view>
+
+  <t-rate value="{{value}}" bind:change="onChange" />
+</view>

@@ -1,0 +1,13 @@
+<view class="wrapper">
+  <t-upload
+    disabled
+    media-type="{{['video','image']}}"
+    files="{{originFiles}}"
+    gridConfig="{{gridConfig}}"
+    removeBtn="{{false}}"
+    bind:success="handleSuccess"
+    bind:remove="handleRemove"
+    bind:click="handleClick"
+    bind:sort-end="handleSortEnd"
+  />
+</view>

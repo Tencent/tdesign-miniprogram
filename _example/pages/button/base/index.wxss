@@ -1,0 +1,10 @@
+.button-example {
+  margin: 32rpx;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-example:after {
+  content: '';
+  flex: auto;
+}

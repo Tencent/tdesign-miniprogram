@@ -1,0 +1,11 @@
+<t-fab
+  icon="gesture-press"
+  text="拖我"
+  aria-label="增加"
+  usingCustomNavbar
+  draggable
+  y-bounds="{{[0, 32]}}"
+  bind:click="handleClick"
+  bind:dragstart="handleDragStart"
+  bind:dragend="handleDragEnd"
+></t-fab>

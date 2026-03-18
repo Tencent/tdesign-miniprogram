@@ -1,0 +1,8 @@
+<block>
+  <t-notice-bar visible content="{{notice}}" />
+  <view class="demo-title">{{title}}</view>
+  <view class="demo-desc">
+    {{desc}}
+    <slot name="desc" />
+  </view>
+</block>

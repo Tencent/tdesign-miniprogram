@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-avatar": "tdesign-miniprogram/avatar/avatar",
+    "t-avatar-group": "tdesign-miniprogram/avatar-group/avatar-group"
+  }
+}

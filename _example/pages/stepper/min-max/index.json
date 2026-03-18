@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-stepper": "tdesign-miniprogram/stepper/stepper"
+  }
+}

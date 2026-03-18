@@ -1,0 +1,21 @@
+<view class="demo-desc">加载状态</view>
+
+<view class="group">
+  <t-cell title="加载状态">
+    <t-switch defaultValue="{{false}}" loading slot="note" />
+  </t-cell>
+  <t-cell title="加载状态" bordered="{{false}}">
+    <t-switch defaultValue="{{true}}" loading slot="note" />
+  </t-cell>
+</view>
+
+<view class="demo-desc">禁用状态</view>
+
+<view class="group">
+  <t-cell title="禁用状态">
+    <t-switch disabled slot="note" />
+  </t-cell>
+  <t-cell title="禁用状态" bordered="{{false}}">
+    <t-switch default-value="{{true}}" disabled slot="note" />
+  </t-cell>
+</view>

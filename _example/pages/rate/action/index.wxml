@@ -1,0 +1,13 @@
+<view class="demo-desc">只可选全星时</view>
+
+<view class="demo-rate">
+  <view class="demo-rate__title">点击或滑动</view>
+  <t-rate value="{{value}}" bind:change="onChange" />
+</view>
+
+<view class="demo-desc">只可选半星时</view>
+
+<view class="demo-rate">
+  <view class="demo-rate__title">点击或滑动</view>
+  <t-rate default-value="{{3}}" allowHalf />
+</view>

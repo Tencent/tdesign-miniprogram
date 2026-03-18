@@ -1,0 +1,3 @@
+<t-tabs defaultValue="{{0}}" space-evenly="{{false}}" bind:change="onTabsChange" bind:click="onTabsClick">
+  <t-tab-panel wx:for="{{8}}" wx:key="index" label="选项" value="{{index}}" />
+</t-tabs>

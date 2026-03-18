@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-divider": "tdesign-miniprogram/divider/divider"
+  }
+}

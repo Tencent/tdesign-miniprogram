@@ -1,0 +1,18 @@
+.translate-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+.translate-enter-to {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: all 1s;
+}
+.translate-leave {
+  opacity: 1;
+  transform: translateX(0%);
+}
+.translate-leave-to {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 1s;
+}

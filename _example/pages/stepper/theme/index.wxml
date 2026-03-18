@@ -1,0 +1,5 @@
+<view class="stepper-example">
+  <t-stepper defaultValue="3" theme="filled" />
+  <t-stepper defaultValue="3" theme="outline" />
+  <t-stepper defaultValue="3" />
+</view>
