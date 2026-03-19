@@ -78,6 +78,13 @@ exports[`ChatList ChatList base demo works fine 1`] = `
       </wx-view>
     </t-chat>
     <t-chat-actionbar
+      actionBar="{{
+        Array [
+          "quote",
+          "copy",
+          "share",
+        ]
+      }}"
       class="popover-actionbar"
       longPressPosition="{{null}}"
       placement="longpress"
