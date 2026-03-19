@@ -21,7 +21,7 @@ export interface TdRadioGroupProps<T = RadioValue> {
   /**
    * 是否禁用全部子单选框
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。使用 String 时，值为 circle 表示填充型图标、值为 line 表示描边型图标、值为 dot 表示圆点图标；仅在使用 options 时生效
    * @default 'circle'
@@ -48,7 +48,7 @@ export interface TdRadioGroupProps<T = RadioValue> {
   /**
    * 只读状态
    */
-  readonly?: boolean;
+  readonly?: boolean | null;
   /**
    * -1 时代表独立，不再寻找 parent，用于头条小程序
    * @default ''
@@ -73,7 +73,7 @@ export type RadioOption = string | number | RadioOptionObj;
 export interface RadioOptionObj {
   label?: string;
   value?: string | number;
-  readonly?: boolean;
-  disabled?: boolean;
+  readonly?: boolean | null;
+  disabled?: boolean | null;
   allowUncheck?: boolean;
 }

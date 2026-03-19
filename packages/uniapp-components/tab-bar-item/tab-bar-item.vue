@@ -1,13 +1,13 @@
 <template>
   <view
-    :style="tools._style([customStyle])"
-    :class="tools.cls(classPrefix, [
+    :style="'' + tools._style([customStyle])"
+    :class="'' + tools.cls(classPrefix, [
       ['split', split],
       ['crowded', crowded], shape]
     ) + ' ' + tClass"
   >
     <view
-      :class="tools.cls(classPrefix + '__content', [['checked', isChecked], theme])"
+      :class="'' + tools.cls(classPrefix + '__content', [['checked', isChecked], theme])"
       :hover-class="classPrefix + '__content--active'"
       :hover-stay-time="200"
       :aria-selected="(!hasChildren || !isSpread) && isChecked ? true : false"
@@ -71,7 +71,7 @@
         </block>
         <slot name="icon" />
       </view>
-      <view :class="tools.cls(classPrefix + '__text', [['small', !!icon]])">
+      <view :class="'' + tools.cls(classPrefix + '__text', [['small', !!icon]])">
         <t-icon
           v-if="hasChildren"
           name="view-list"
@@ -123,97 +123,104 @@ import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 const classPrefix = `${prefix}-tab-bar-item`;
 
 
-export default uniComponent({
-  name: classPrefix,
-  options: {
-    styleIsolation: 'shared',
-    virtualHost: true,
-  },
-  externalClasses: [`${prefix}-class`],
-  mixins: [ChildrenMixin(RELATION_MAP.TabBarItem)],
+export default {
   components: {
     TIcon,
     TBadge,
   },
-  props: {
-    ...props,
-  },
-  emits: [],
-  watch: {
-    subTabBar: {
-      handler(value) {
-        this.hasChildren = value?.length > 0;
+  ...uniComponent({
+    name: classPrefix,
+    options: {
+      styleIsolation: 'shared',
+      virtualHost: true,
+    },
+    externalClasses: [`${prefix}-class`],
+    mixins: [ChildrenMixin(RELATION_MAP.TabBarItem)],
+    components: {
+      TIcon,
+      TBadge,
+    },
+    props: {
+      ...props,
+    },
+    emits: [],
+    watch: {
+      subTabBar: {
+        handler(value) {
+          this.hasChildren = value?.length > 0;
+        },
+        immediate: true,
       },
-      immediate: true,
-    },
-    icon: {
-      handler(v) {
-        this.innerIcon = calcIcon(v);
+      icon: {
+        handler(v) {
+          this.innerIcon = calcIcon(v);
+        },
+        immediate: true,
       },
-      immediate: true,
     },
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix,
-      isSpread: false,
-      isChecked: false,
-      hasChildren: false,
-      currentName: '',
-      split: true,
-      iconOnly: false,
-      theme: '',
-      crowded: false,
-      shape: 'normal',
-      tools,
-    };
-  },
-  async mounted() {
-    const res = await getRect(this, `.${classPrefix}__text`);
+    data() {
+      return {
+        prefix,
+        classPrefix,
+        isSpread: false,
+        isChecked: false,
+        hasChildren: false,
+        currentName: '',
+        split: true,
+        iconOnly: false,
+        theme: '',
+        crowded: false,
+        shape: 'normal',
+        tools,
+        innerIcon: null,
+      };
+    },
+    async mounted() {
+      const res = await getRect(this, `.${classPrefix}__text`);
 
-    this.iconOnly = res.height === 0;
-  },
-  methods: {
-    innerAfterLinked() {
-      const parent = this[RELATION_MAP.TabBarItem];
-      const { theme, split, shape } = parent;
+      this.iconOnly = res.height === 0;
+    },
+    methods: {
+      innerAfterLinked() {
+        const parent = this[RELATION_MAP.TabBarItem];
+        const { theme, split, shape } = parent;
 
-      this.theme = theme;
-      this.split = split;
-      this.shape = shape;
-      this.currentName = this.value ? this.value : parent.initName();
+        this.theme = theme;
+        this.split = split;
+        this.shape = shape;
+        this.currentName = this.value ? this.value : parent.initName();
 
-      parent.updateChildren();
-    },
-    showSpread() {
-      this.isSpread = true;
-    },
-    toggle() {
-      const { currentName, hasChildren, isSpread } = this;
+        parent.updateChildren();
+      },
+      showSpread() {
+        this.isSpread = true;
+      },
+      toggle() {
+        const { currentName, hasChildren, isSpread } = this;
 
-      if (hasChildren) {
-        this.isSpread = !isSpread;
-      }
-      this[RELATION_MAP.TabBarItem].updateValue(currentName);
-      this[RELATION_MAP.TabBarItem].changeOtherSpread(currentName);
-    },
-    selectChild(event) {
-      const { value } = event.target.dataset;
+        if (hasChildren) {
+          this.isSpread = !isSpread;
+        }
+        this[RELATION_MAP.TabBarItem].updateValue(currentName);
+        this[RELATION_MAP.TabBarItem].changeOtherSpread(currentName);
+      },
+      selectChild(event) {
+        const { value } = event.target.dataset;
 
-      this[RELATION_MAP.TabBarItem].updateValue(value);
-      this.isSpread = false;
-    },
-    checkActive(value) {
-      const { currentName, subTabBar = [] } = this;
-      const isChecked = subTabBar?.some(item => item.value === value) || currentName === value;
+        this[RELATION_MAP.TabBarItem].updateValue(value);
+        this.isSpread = false;
+      },
+      checkActive(value) {
+        const { currentName, subTabBar = [] } = this;
+        const isChecked = subTabBar?.some(item => item.value === value) || currentName === value;
 
-      this.isChecked = isChecked;
+        this.isChecked = isChecked;
+      },
+      closeSpread() {
+        this.isSpread = false;
+      },
     },
-    closeSpread() {
-      this.isSpread = false;
-    },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./tab-bar-item.css"></style>

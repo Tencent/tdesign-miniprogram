@@ -9,10 +9,10 @@
       cancel-btn="取消"
       confirm-btn="确认"
       :using-custom-navbar="!isMPAlipay"
-      @update:visible="cityVisible = $event"
-      @change="onPickerChange($event, { key: 'city' })"
-      @pick="onColumnChange($event, { key: 'city' })"
-      @cancel="onPickerCancel($event, { key: 'city' })"
+      @update:visible="(e) => cityVisible = e"
+      @change="(e) => onPickerChange(e, { key: 'city' })"
+      @pick="(e) => onColumnChange(e, { key: 'city' })"
+      @cancel="(e) => onPickerCancel(e, { key: 'city' })"
     >
       <t-picker-item :options="citys" />
     </t-picker>

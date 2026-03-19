@@ -9,8 +9,8 @@
       show-error-message
       label-align="left"
       required-mark
-      @reset="onReset($event, { tagId: 'form' })"
-      @submit="onSubmit($event, { tagId: 'form' })"
+      @reset="(e) => onReset(e, { tagId: 'form' })"
+      @submit="(e) => onSubmit(e, { tagId: 'form' })"
     >
       <t-form-item
         label="用户名"
@@ -26,7 +26,7 @@
           placeholder="请输入用户名"
           data-field="name"
           style="flex: 1;"
-          @update:value="formData.name = $event"
+          @update:value="(e) => formData.name = e"
         />
       </t-form-item>
 
@@ -42,7 +42,7 @@
           placeholder="请输入密码"
           data-field="password"
           style="flex: 1;"
-          @change="onInputChange($event, { field: 'password' })"
+          @change="(e) => onInputChange(e, { field: 'password' })"
         />
       </t-form-item>
 
@@ -90,7 +90,7 @@
           placeholder="请输入生日"
           data-field="birth"
           style="flex: 1;"
-          @change="onInputChange($event, { field: 'birth' })"
+          @change="(e) => onInputChange(e, { field: 'birth' })"
         />
       </t-form-item>
 
@@ -116,7 +116,7 @@
           :value="address"
           title="选择地址"
           :options="options"
-          @update:visible="visibleCascader = $event"
+          @update:visible="(e) => visibleCascader = e"
           @change="onChangeCascader"
           @visible-change="onCascaderVisibleChange"
         />
@@ -159,7 +159,7 @@
           :maxlength="50"
           placeholder="请输入个人简介"
           style="flex: 1;"
-          @update:value="formData.resume = $event"
+          @update:value="(e) => formData.resume = e"
         />
       </t-form-item>
 

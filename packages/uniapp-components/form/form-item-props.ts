@@ -41,8 +41,8 @@ export default {
   },
   /** 是否显示必填符号（*），优先级高于 Form.requiredMark */
   requiredMark: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdFormItemProps['requiredMark'],
   },
   /** 表单字段校验规则 */
   rules: {
@@ -50,7 +50,7 @@ export default {
   },
   /** 校验不通过时，是否显示错误提示信息，优先级高于 `Form.showErrorMessage` */
   showErrorMessage: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdFormItemProps['showErrorMessage'],
   },
 };

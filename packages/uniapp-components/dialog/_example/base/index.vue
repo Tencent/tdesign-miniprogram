@@ -7,7 +7,7 @@
       variant="outline"
       data-key="showTextAndTitle"
       block
-      @click="showDialog($event, { key: 'showTextAndTitle' })"
+      @click="(e) => showDialog(e, { key: 'showTextAndTitle' })"
     >
       反馈类-带标题
     </t-button>
@@ -26,7 +26,7 @@
       variant="outline"
       data-key="showContentOnly"
       block
-      @click="showDialog($event, { key: 'showContentOnly' })"
+      @click="(e) => showDialog(e, { key: 'showContentOnly' })"
     >
       反馈类-无标题
     </t-button>
@@ -44,7 +44,7 @@
       variant="outline"
       data-key="showTitleOnly"
       block
-      @click="showDialog($event, { key: 'showTitleOnly' })"
+      @click="(e) => showDialog(e, { key: 'showTitleOnly' })"
     >
       反馈类-纯标题
     </t-button>
@@ -62,7 +62,7 @@
       variant="outline"
       data-key="showMultiTextAndTitle"
       block
-      @click="showDialog($event, { key: 'showMultiTextAndTitle' })"
+      @click="(e) => showDialog(e, { key: 'showMultiTextAndTitle' })"
     >
       反馈类-内容超长
     </t-button>

@@ -23,8 +23,8 @@ export default {
   },
   /** 是否禁用组件 */
   disabled: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdUploadProps['disabled'],
   },
   /** 是否支持拖拽排序。长按时是否振动，碰撞时是否振动。示例一：`true`。示例二：`{ vibrate: true, collisionVibrate: true }` */
   draggable: {

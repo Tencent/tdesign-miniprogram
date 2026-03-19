@@ -8,7 +8,7 @@
       data-mode="date"
       class="test"
       t-class="panel-item"
-      @click="showPicker($event, { mode: 'date' })"
+      @click="(e) => showPicker(e, { mode: 'date' })"
     />
 
     <!-- 年月日 -->
@@ -23,7 +23,7 @@
       :filter="filter"
       :formatter="formatter"
       :popup-props="popupProps"
-      @update:visible="dateVisible = $event"
+      @update:visible="(e) => dateVisible = e"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"

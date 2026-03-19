@@ -1,8 +1,8 @@
 <template>
   <view
     :id="classPrefix"
-    :style="tools._style([rootCustomStyle])"
-    :class="tools.cls(classPrefix, [dataAlign, dataTheme, ['no-description', !description]]) + ' ' + tClass"
+    :style="'' + tools._style([rootCustomStyle])"
+    :class="'' + tools.cls(classPrefix, [dataAlign, dataTheme, ['no-description', !description]]) + ' ' + tClass"
   >
     <t-popup
       :visible="dataVisible"
@@ -44,7 +44,7 @@
                 :description="item.description || ''"
                 :image="item.image || ''"
                 :style="'--td-grid-item-text-color: ' + item.color"
-                @click="onSelect($event, { index })"
+                @click="(e) => onSelect(e, { index })"
               />
             </t-grid>
           </block>
@@ -78,7 +78,7 @@
                       :description="item.description || ''"
                       :image="item.image || ''"
                       :style="'--td-grid-item-text-color: ' + item.color"
-                      @click="onSelect($event, { index })"
+                      @click="(e) => onSelect(e, { index })"
                     />
                   </t-grid>
                 </swiper-item>
@@ -107,7 +107,7 @@
             <view
               :data-index="index"
               :style="item.color ? 'color: ' + item.color : ''"
-              :class="tools.cls(classPrefix + '__list-item', [['disabled', item.disabled]])"
+              :class="'' + tools.cls(classPrefix + '__list-item', [['disabled', item.disabled]])"
               :aria-role="ariaRole || 'button'"
               :aria-label="item.label || item"
               tabindex="0"
@@ -190,176 +190,184 @@ import { getIconData } from './computed';
 const name = `${prefix}-action-sheet`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  controlledProps: [{
-    key: 'visible',
-    event: 'visible-change',
-  }],
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-content`,
-    `${prefix}-class-cancel`,
-  ],
-  mixins: [getFunctionalMixin(props), useCustomNavbar],
+export default {
   components: {
     TIcon,
     TPopup,
     TGrid,
     TGridItem,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'visible-change',
-    'update:visible',
-  ],
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      gridThemeItems: [],
-      currentSwiperIndex: 0,
-      defaultOverlayProps: {},
-      defaultPopUpzIndex: 11500,
-      tools,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    controlledProps: [{
+      key: 'visible',
+      event: 'visible-change',
+    }],
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-content`,
+      `${prefix}-class-cancel`,
+    ],
+    mixins: [getFunctionalMixin(props), useCustomNavbar],
+    components: {
+      TIcon,
+      TPopup,
+      TGrid,
+      TGridItem,
+    },
+    props: {
+      ...props,
+    },
+    emits: [
+      'visible-change',
+      'update:visible',
+    ],
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        gridThemeItems: [],
+        currentSwiperIndex: 0,
+        defaultOverlayProps: {},
+        defaultPopUpzIndex: 11500,
+        tools,
 
-      heightStyle: 'height: 456rpx;',
-    };
-  },
-  computed: {
-    rootCustomStyle() {
-      return tools._style([
-        this.customStyle,
-        this.dataTheme === 'grid' ? 'padding-bottom: 16rpx' : '',
-      ]);
-    },
-    iconCustomStyle() {
-      return 'margin-right: 8px;';
-    },
-    suffixIconCustomStyle() {
-      return 'margin-right: 8px;margin-left: auto;';
-    },
-    gridStyle() {
-      return `${this.heightStyle}padding-bottom: 48rpx;`;
-    },
-  },
-  watch: {
-    dataVisible: {
-      handler(e) {
-        if (e) {
-          this.init();
-        }
-      },
-      immediate: true,
-    },
-    dataItems: {
-      handler() {
-        if (this.dataVisible) {
-          this.init();
-        }
-      },
-      immediate: true,
-    },
-  },
-  methods: {
-    init() {
-      this.memoInitialData();
-      this.splitGridThemeActions();
-    },
-
-    getIconData,
-
-    memoInitialData() {
-      this.initialData = {
+        heightStyle: 'height: 456rpx;',
       };
     },
-
-    splitGridThemeActions() {
-      if (this.dataTheme !== actionSheetTheme.Grid) return;
-      this.gridThemeItems = chunk(this.dataItems, this.dataCount);
+    computed: {
+      rootCustomStyle() {
+        return tools._style([
+          this.customStyle,
+          this.dataTheme === 'grid' ? 'padding-bottom: 16rpx' : '',
+        ]);
+      },
+      iconCustomStyle() {
+        return 'margin-right: 8px;';
+      },
+      suffixIconCustomStyle() {
+        return 'margin-right: 8px;margin-left: auto;';
+      },
+      gridStyle() {
+        return `${this.heightStyle}padding-bottom: 48rpx;`;
+      },
     },
-
-    /** 指令调用显示 */
-    show(options) {
-      const defaultOptions = [
-        'align',
-        'cancelText',
-        'count',
-        'description',
-        'items',
-        'popupProps',
-        'showCancel',
-        'showOverlay',
-        'theme',
-        'usingCustomNavbar',
-      ].reduce((acc, key) => ({
-        ...acc,
-        [key]: props[key].default,
-      }));
-
-      this.setData({
-        ...defaultOptions,
-        ...options,
-        visible: true,
-      });
-      this.splitGridThemeActions();
-      this.autoClose = true;
-      this._trigger('visible-change', { visible: true });
+    watch: {
+      dataVisible: {
+        handler(e) {
+          if (e) {
+            this.init();
+          }
+        },
+        immediate: true,
+      },
+      dataItems: {
+        handler() {
+          if (this.dataVisible) {
+            this.init();
+          }
+        },
+        immediate: true,
+      },
     },
+    methods: {
+      init() {
+        this.memoInitialData();
+        this.splitGridThemeActions();
+      },
 
-    /** 指令调用隐藏 */
-    close() {
-      this.$emit('close', { trigger: 'command' });
-      this._trigger('visible-change', { visible: false });
-    },
+      getIconData,
 
-    /** 默认点击遮罩关闭 */
-    onPopupVisibleChange(detail) {
-      if (!detail.visible) {
-        this.$emit('close', { trigger: 'overlay' });
+      memoInitialData() {
+        this.initialData = {
+        };
+      },
+
+      splitGridThemeActions() {
+        if (this.dataTheme !== actionSheetTheme.Grid) return;
+        this.gridThemeItems = chunk(this.dataItems, this.dataCount);
+      },
+
+      /** 指令调用显示 */
+      show(options) {
+        const defaultOptions = [
+          'align',
+          'cancelText',
+          'count',
+          'description',
+          'items',
+          'popupProps',
+          'showCancel',
+          'showOverlay',
+          'theme',
+          'usingCustomNavbar',
+        ].reduce((acc, key) => ({
+          ...acc,
+          [key]: props[key].default,
+        }));
+
+        this.setData({
+          ...defaultOptions,
+          ...options,
+          visible: true,
+        });
+        this.splitGridThemeActions();
+        this.autoClose = true;
+        this._trigger('visible-change', { visible: true });
+      },
+
+      /** 指令调用隐藏 */
+      close() {
+        this.$emit('close', { trigger: 'command' });
         this._trigger('visible-change', { visible: false });
-      }
-      if (this.autoClose) {
-        this.dataVisible = false;
-        this.autoClose = false;
-      }
-    },
+      },
 
-    onSwiperChange(e) {
-      const { current } = e.detail;
-      this.currentSwiperIndex = current;
-    },
-
-    onSelect(event, { index }) {
-      const { currentSwiperIndex, dataItems, gridThemeItems, dataCount, dataTheme } = this;
-      const isSwiperMode = dataTheme === actionSheetTheme.Grid;
-      const item = isSwiperMode ? gridThemeItems[currentSwiperIndex][index] : dataItems[index];
-      const realIndex = isSwiperMode ? index + currentSwiperIndex * dataCount : index;
-
-      if (item) {
-        this.$emit('selected', { selected: item, index: realIndex });
-
-        if (!item.disabled) {
-          this.$emit('close', { trigger: 'select' });
+      /** 默认点击遮罩关闭 */
+      onPopupVisibleChange(detail) {
+        if (!detail.visible) {
+          this.$emit('close', { trigger: 'overlay' });
           this._trigger('visible-change', { visible: false });
         }
-      }
-    },
+        if (this.autoClose) {
+          this.dataVisible = false;
+          this.autoClose = false;
+        }
+      },
 
-    onCancel() {
-      this.$emit('cancel');
-      if (this.autoClose) {
-        this.dataVisible = false;
-        this.autoClose = false;
-      }
+      onSwiperChange(e) {
+        const { current } = e.detail;
+        this.currentSwiperIndex = current;
+      },
+
+      onSelect(event, { index }) {
+        const { currentSwiperIndex, dataItems, gridThemeItems, dataCount, dataTheme } = this;
+        const isSwiperMode = dataTheme === actionSheetTheme.Grid;
+        const item = isSwiperMode ? gridThemeItems[currentSwiperIndex][index] : dataItems[index];
+        const realIndex = isSwiperMode ? index + currentSwiperIndex * dataCount : index;
+
+        if (item) {
+          this.$emit('selected', { selected: item, index: realIndex });
+
+          if (!item.disabled) {
+            this.$emit('close', { trigger: 'select' });
+            this._trigger('visible-change', { visible: false });
+          }
+        }
+      },
+
+      onCancel() {
+        this.$emit('cancel');
+        if (this.autoClose) {
+          this.dataVisible = false;
+          this.autoClose = false;
+        }
+      },
     },
-  },
-});
+  }),
+};
 </script>
 
 <style scoped src="./action-sheet.css"></style>

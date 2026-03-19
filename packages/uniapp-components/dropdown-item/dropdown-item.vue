@@ -2,12 +2,12 @@
   <view
     v-if="wrapperVisible"
     :class="classPrefix + ' ' + tClass"
-    :style="tools._style([getStyles(top, zIndex), customStyle])"
+    :style="'' + tools._style([getStyles(top, zIndex), customStyle])"
   >
     <view
       v-if="show"
       :class="classPrefix + '__mask'"
-      :style="tools._style(['height:' + maskHeight + 'px', customStyle])"
+      :style="'' + tools._style(['height:' + maskHeight + 'px', customStyle])"
       @click="handleMaskClick"
       @touchmove.stop.prevent="closeDropdown"
     />
@@ -137,24 +137,7 @@ import { canUseVirtualHost } from '../common/version';
 const name = `${prefix}-dropdown-item`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  controlledProps: [{
-    key: 'value',
-    event: 'change',
-  }],
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-content`,
-    `${prefix}-class-column`,
-    `${prefix}-class-column-item`,
-    `${prefix}-class-column-item-label`,
-    `${prefix}-class-footer`,
-  ],
-  mixins: [ChildrenMixin(RELATION_MAP.DropdownItem)],
+export default {
   components: {
     TButton,
     TRadio,
@@ -163,227 +146,254 @@ export default uniComponent({
     TCheckboxGroup,
     TPopup,
   },
-  props: {
-    ...props,
-  },
-  emits: ['close', 'closed', 'change', 'reset', 'confirm', 'opened', 'open'],
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      show: false,
-      top: 0,
-      maskHeight: 0,
-      initValue: null,
-      hasChanged: false,
-      duration: menuProps.duration.default,
-      zIndex: menuProps.zIndex.default,
-      overlay: menuProps.showOverlay.default,
-      labelAlias: 'label',
-      valueAlias: 'value',
-      computedLabel: '',
-      firstCheckedValue: '',
-
-      dataValue: coalesce(this.value, this.defaultValue),
-
-      wrapperVisible: false,
-      tools,
-
-      windowTop: 0,
-    };
-  },
-  computed: {
-    footerBtnTClass() {
-      return canUseVirtualHost() ? this.footerBtnRealClass : '';
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-    footerBtnClass() {
-      return !canUseVirtualHost() ? this.footerBtnRealClass : '';
+    controlledProps: [{
+      key: 'value',
+      event: 'change',
+    }],
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-content`,
+      `${prefix}-class-column`,
+      `${prefix}-class-column-item`,
+      `${prefix}-class-column-item-label`,
+      `${prefix}-class-footer`,
+    ],
+    mixins: [ChildrenMixin(RELATION_MAP.DropdownItem)],
+    components: {
+      TButton,
+      TRadio,
+      TRadioGroup,
+      TCheckbox,
+      TCheckboxGroup,
+      TPopup,
     },
-    footerBtnRealClass() {
-      const { classPrefix } = this;
-      return `${classPrefix}__footer-btn ${classPrefix}__reset-btn`;
+    props: {
+      ...props,
     },
+    emits: ['close', 'closed', 'change', 'reset', 'confirm', 'opened', 'open'],
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        show: false,
+        top: 0,
+        maskHeight: 0,
+        initValue: null,
+        hasChanged: false,
+        duration: menuProps.duration.default,
+        zIndex: menuProps.zIndex.default,
+        overlay: menuProps.showOverlay.default,
+        labelAlias: 'label',
+        valueAlias: 'value',
+        computedLabel: '',
+        firstCheckedValue: '',
 
-    confirmBtnTClass() {
-      return canUseVirtualHost() ? this.confirmBtnRealClass : '';
-    },
-    confirmBtnClass() {
-      return !canUseVirtualHost() ? this.confirmBtnRealClass : '';
-    },
-    confirmBtnRealClass() {
-      const { classPrefix } = this;
-      return `${classPrefix}__footer-btn ${classPrefix}__confirm-btn`;
-    },
+        dataValue: coalesce(this.value, this.defaultValue),
 
-    radioGroupCustomStyle() {
-      return tools._style([
-        {
-          width: '100%',
-          overflow: 'scroll',
-          boxSizing: 'border-box',
+        wrapperVisible: false,
+        tools,
 
-          display: 'grid',
-          gridGap: '0px',
+        windowTop: 0,
+      };
+    },
+    computed: {
+      footerBtnTClass() {
+        return canUseVirtualHost() ? this.footerBtnRealClass : '';
+      },
+      footerBtnClass() {
+        return !canUseVirtualHost() ? this.footerBtnRealClass : '';
+      },
+      footerBtnRealClass() {
+        const { classPrefix } = this;
+        return `${classPrefix}__footer-btn ${classPrefix}__reset-btn`;
+      },
 
-          gridTemplateColumns: `repeat(${this.optionsColumns}, 1fr)`,
+      confirmBtnTClass() {
+        return canUseVirtualHost() ? this.confirmBtnRealClass : '';
+      },
+      confirmBtnClass() {
+        return !canUseVirtualHost() ? this.confirmBtnRealClass : '';
+      },
+      confirmBtnRealClass() {
+        const { classPrefix } = this;
+        return `${classPrefix}__footer-btn ${classPrefix}__confirm-btn`;
+      },
+
+      radioGroupCustomStyle() {
+        return tools._style([
+          {
+            width: '100%',
+            overflow: 'scroll',
+            boxSizing: 'border-box',
+
+            display: 'grid',
+            gridGap: '0px',
+
+            gridTemplateColumns: `repeat(${this.optionsColumns}, 1fr)`,
+          },
+        ]);
+      },
+      checkboxGroupCustomStyle() {
+        return tools._style([
+          {
+            width: '100%',
+            overflow: 'scroll',
+            boxSizing: 'border-box',
+
+            display: 'grid',
+            gridGap: '12px',
+
+            gridTemplateColumns: `repeat(${this.optionsColumns}, 1fr)`,
+            padding: '16px',
+          },
+        ]);
+      },
+    },
+    watch: {
+      keys: {
+        handler(obj) {
+          this.labelAlias = obj?.label || 'label';
+          this.valueAlias = obj?.value || 'value';
         },
-      ]);
-    },
-    checkboxGroupCustomStyle() {
-      return tools._style([
-        {
-          width: '100%',
-          overflow: 'scroll',
-          boxSizing: 'border-box',
-
-          display: 'grid',
-          gridGap: '12px',
-
-          gridTemplateColumns: `repeat(${this.optionsColumns}, 1fr)`,
-          padding: '16px',
+        immediate: true,
+      },
+      value: {
+        handler(value) {
+          this.dataValue = value;
         },
-      ]);
-    },
-  },
-  watch: {
-    keys: {
-      handler(obj) {
-        this.labelAlias = obj?.label || 'label';
-        this.valueAlias = obj?.value || 'value';
+        immediate: true,
       },
-      immediate: true,
-    },
-    value: {
-      handler(value) {
-        this.dataValue = value;
-      },
-      immediate: true,
-    },
-    dataValue: {
-      handler(v) {
-        const { options, labelAlias, valueAlias } = this;
+      dataValue: {
+        handler(v) {
+          const { options, labelAlias, valueAlias } = this;
 
-        if (this.multiple) {
-          if (v && !Array.isArray(v)) throw TypeError('应传入数组类型的 value');
+          if (this.multiple) {
+            if (v && !Array.isArray(v)) throw TypeError('应传入数组类型的 value');
+          }
+
+          const target = options.find(item => item[valueAlias] === v);
+
+          if (target) {
+            this.computedLabel = target[labelAlias];
+          }
+        },
+        immediate: true,
+      },
+      label: 'getParentAllItems',
+      computedLabel: 'getParentAllItems',
+      disabled: 'getParentAllItems',
+      show: {
+        handler(visible) {
+          if (visible) {
+            this.getParentBottom(() => {
+              this.wrapperVisible = true;
+            });
+          }
+        },
+        immediate: true,
+      },
+    },
+    mounted() {
+      const {  windowTop } = getWindowInfo();
+      this.windowTop = windowTop || 0;
+    },
+    methods: {
+      getStyles,
+      innerAfterLinked(target) {
+        const { zIndex, duration, showOverlay } = target;
+
+        this.zIndex = zIndex;
+        this.duration = duration;
+        this.showOverlay = showOverlay;
+      },
+      getParentAllItems() {
+        this[RELATION_MAP.DropdownItem]?.getAllItems();
+      },
+      closeDropdown() {
+        this[RELATION_MAP.DropdownItem].activeIdx = -1;
+        this.show = false;
+        this.$emit('close');
+      },
+
+      getParentBottom(cb) {
+        getRect(this[RELATION_MAP.DropdownItem], `#${prefix}-bar`).then((rect) => {
+          this.top = rect.bottom + (this.windowTop || 0);
+          this.maskHeight = rect.top;
+
+          setTimeout(() => {
+            cb();
+          }, 20);
+        });
+      },
+
+      handleTreeClick(e) {
+        const { level, value: itemValue } = e.currentTarget.dataset;
+        const { dataValue } = this;
+
+        dataValue[level] = itemValue;
+        this._trigger('change', { value: dataValue });
+      },
+
+      onRadioChange(e, curValue) {
+        this.handleRadioChange({ value: curValue });
+      },
+      onCheckboxChange(e) {
+        const { checkAll, dataIndeterminate } = this.$refs.checkboxGroupRef;
+        const { context: { value, label }, checked } = e;
+        this.$refs.checkboxGroupRef.updateValue({
+          value,
+          checkAll,
+          indeterminate: dataIndeterminate,
+          checked,
+          item: { label, value, checked },
+          validChildren: false,
+        });
+      },
+
+      handleRadioChange(e) {
+        const { value } = e;
+
+        this._trigger('change', { value });
+
+        if (!this.multiple) {
+          this.closeDropdown();
+        } else {
+          const firstChecked = this.options.find(item => value.includes(item.value));
+          if (firstChecked) {
+            this.firstCheckedValue = firstChecked.value;
+          }
         }
+      },
 
-        const target = options.find(item => item[valueAlias] === v);
-
-        if (target) {
-          this.computedLabel = target[labelAlias];
+      handleMaskClick() {
+        if (this[RELATION_MAP.DropdownItem]?.closeOnClickOverlay) {
+          this.closeDropdown();
         }
       },
-      immediate: true,
-    },
-    label: 'getParentAllItems',
-    computedLabel: 'getParentAllItems',
-    disabled: 'getParentAllItems',
-    show: {
-      handler(visible) {
-        if (visible) {
-          this.getParentBottom(() => {
-            this.wrapperVisible = true;
-          });
-        }
+
+      handleReset() {
+        this._trigger('change', { value: [] });
+        this._trigger('reset');
       },
-      immediate: true,
-    },
-  },
-  mounted() {
-    const {  windowTop } = getWindowInfo();
-    this.windowTop = windowTop || 0;
-  },
-  methods: {
-    getStyles,
-    innerAfterLinked(target) {
-      const { zIndex, duration, showOverlay } = target;
 
-      this.zIndex = zIndex;
-      this.duration = duration;
-      this.showOverlay = showOverlay;
-    },
-    getParentAllItems() {
-      this[RELATION_MAP.DropdownItem]?.getAllItems();
-    },
-    closeDropdown() {
-      this[RELATION_MAP.DropdownItem].activeIdx = -1;
-      this.show = false;
-      this.$emit('close');
-    },
-
-    getParentBottom(cb) {
-      getRect(this[RELATION_MAP.DropdownItem], `#${prefix}-bar`).then((rect) => {
-        this.top = rect.bottom + (this.windowTop || 0);
-        this.maskHeight = rect.top;
-
-        setTimeout(() => {
-          cb();
-        }, 20);
-      });
-    },
-
-    handleTreeClick(e) {
-      const { level, value: itemValue } = e.currentTarget.dataset;
-      const { dataValue } = this;
-
-      dataValue[level] = itemValue;
-      this._trigger('change', { value: dataValue });
-    },
-
-    onRadioChange(e, curValue) {
-      this.handleRadioChange({ value: curValue });
-    },
-    onCheckboxChange(e) {
-      const { checkAll, dataIndeterminate } = this.$refs.checkboxGroupRef;
-      const { context: { value, label }, checked } = e;
-      this.$refs.checkboxGroupRef.updateValue({
-        value,
-        checkAll,
-        indeterminate: dataIndeterminate,
-        checked,
-        item: { label, value, checked },
-        validChildren: false,
-      });
-    },
-
-    handleRadioChange(e) {
-      const { value } = e;
-
-      this._trigger('change', { value });
-
-      if (!this.multiple) {
+      handleConfirm() {
+        this._trigger('confirm', { value: this.dataValue });
         this.closeDropdown();
-      } else {
-        const firstChecked = this.options.find(item => value.includes(item.value));
-        if (firstChecked) {
-          this.firstCheckedValue = firstChecked.value;
-        }
-      }
-    },
-
-    handleMaskClick() {
-      if (this[RELATION_MAP.DropdownItem]?.closeOnClickOverlay) {
-        this.closeDropdown();
-      }
-    },
-
-    handleReset() {
-      this._trigger('change', { value: [] });
-      this._trigger('reset');
-    },
-
-    handleConfirm() {
-      this._trigger('confirm', { value: this.dataValue });
-      this.closeDropdown();
       // 在关闭 popup 后才自动滚动到首个选项
       // this.firstCheckedValue = this.firstCheckedValue;
-    },
+      },
 
-    onLeaved() {
-      this.wrapperVisible = false;
+      onLeaved() {
+        this.wrapperVisible = false;
+      },
     },
-  },
-});
+  }),
+};
 
 </script>
 <style scoped src="./dropdown-item.css"></style>

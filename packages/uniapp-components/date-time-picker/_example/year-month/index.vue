@@ -7,7 +7,7 @@
       arrow
       data-mode="month"
       t-class="panel-item"
-      @click="showPicker($event, { mode: 'month' })"
+      @click="(e) => showPicker(e, { mode: 'month' })"
     />
 
     <!-- 年月 -->
@@ -19,7 +19,7 @@
       format="YYYY-MM"
       :start="start"
       :end="end"
-      @update:visible="monthVisible = $event"
+      @update:visible="(e) => monthVisible = e"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"

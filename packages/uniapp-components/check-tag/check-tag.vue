@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     :class="className + ' ' + tClass"
     @click="onClick"
   >
@@ -59,88 +59,93 @@ import tools from '../common/utils.wxs';
 const name = `${prefix}-tag`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  controlledProps: [{
-    key: 'checked',
-    event: 'change',
-  }],
-  externalClasses: [
-    `${prefix}-class`,
-
-  ],
+export default {
   components: {
     TIcon,
   },
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      className: '',
-      tools,
-      innerIcon: null,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    controlledProps: [{
+      key: 'checked',
+      event: 'change',
+    }],
+    externalClasses: [
+      `${prefix}-class`,
 
-      dataChecked: coalesce(this.checked, this.defaultChecked),
-    };
-  },
-  watch: {
-    size: 'setClass',
-    disabled: 'setClass',
-    dataChecked: 'setClass',
-    icon: {
-      handler(e) {
-        this.innerIcon = calcIcon(e);
+    ],
+    components: {
+      TIcon,
+    },
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        className: '',
+        tools,
+        innerIcon: null,
+
+        dataChecked: coalesce(this.checked, this.defaultChecked),
+      };
+    },
+    watch: {
+      size: 'setClass',
+      disabled: 'setClass',
+      dataChecked: 'setClass',
+      icon: {
+        handler(e) {
+          this.innerIcon = calcIcon(e);
+        },
+        immediate: true,
       },
-      immediate: true,
-    },
-    checked: {
-      handler(value) {
-        this.dataChecked = value;
+      checked: {
+        handler(value) {
+          this.dataChecked = value;
+        },
+        immediate: true,
       },
-      immediate: true,
     },
-  },
-  mounted() {
-    this.setClass();
-  },
-  methods: {
-    setClass() {
-      const { classPrefix } = this;
-      const { size, variant, disabled, dataChecked, shape } = this;
-      const tagClass = [
-        classPrefix,
-        `${classPrefix}--checkable`,
-        disabled ? `${classPrefix}--disabled` : '',
-        dataChecked ? `${classPrefix}--checked` : '',
-        `${classPrefix}--${dataChecked ? 'primary' : 'default'}`,
-        `${classPrefix}--${size}`,
-        `${classPrefix}--${variant}`,
-        `${classPrefix}--${shape}`,
-      ];
-      const className = classNames(tagClass);
-      this.className = className;
+    mounted() {
+      this.setClass();
     },
+    methods: {
+      setClass() {
+        const { classPrefix } = this;
+        const { size, variant, disabled, dataChecked, shape } = this;
+        const tagClass = [
+          classPrefix,
+          `${classPrefix}--checkable`,
+          disabled ? `${classPrefix}--disabled` : '',
+          dataChecked ? `${classPrefix}--checked` : '',
+          `${classPrefix}--${dataChecked ? 'primary' : 'default'}`,
+          `${classPrefix}--${size}`,
+          `${classPrefix}--${variant}`,
+          `${classPrefix}--${shape}`,
+        ];
+        const className = classNames(tagClass);
+        this.className = className;
+      },
 
-    onClick() {
-      if (this.disabled) return;
-      const { dataChecked } = this;
+      onClick() {
+        if (this.disabled) return;
+        const { dataChecked } = this;
 
-      this._trigger('click');
-      this._trigger('change', { checked: !dataChecked });
-    },
+        this._trigger('click');
+        this._trigger('change', { checked: !dataChecked });
+      },
 
-    onClose(e) {
-      if (this.disabled) return;
-      this._trigger('close', e);
+      onClose(e) {
+        if (this.disabled) return;
+        this._trigger('close', e);
+      },
     },
-  },
-});
+  }),
+};
 
 </script>
 <style scoped src="./check-tag.css"></style>

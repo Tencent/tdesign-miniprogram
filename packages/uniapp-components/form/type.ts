@@ -27,7 +27,7 @@ export interface TdFormProps<FormData extends Data = Data> {
   /**
    * 是否禁用整个表单
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * 表单错误信息配置，示例：`{ idcard: '请输入正确的身份证号码', max: '字符长度不能超过 ${max}' }`
    */
@@ -45,11 +45,11 @@ export interface TdFormProps<FormData extends Data = Data> {
   /**
    * 是否整个表单只读
    */
-  readonly?: boolean;
+  readonly?: boolean | null;
   /**
    * 是否显示必填符号（*），默认显示
    */
-  requiredMark?: boolean;
+  requiredMark?: boolean | null;
   /**
    * 表单必填符号（*）显示位置
    */
@@ -156,7 +156,7 @@ export interface TdFormItemProps {
   /**
    * 是否显示必填符号（*），优先级高于 Form.requiredMark
    */
-  requiredMark?: boolean;
+  requiredMark?: boolean | null;
   /**
    * 表单字段校验规则
    */
@@ -164,7 +164,7 @@ export interface TdFormItemProps {
   /**
    * 校验不通过时，是否显示错误提示信息，优先级高于 `Form.showErrorMessage`
    */
-  showErrorMessage?: boolean;
+  showErrorMessage?: boolean | null;
 }
 
 export interface FormRule {

@@ -17,7 +17,7 @@
           :class="tClassPopover + ' ' + classPrefix + '__container ' + (title || body ? classPrefix + '__container--' + modeType : '')"
           :style="popoverStyle"
         >
-          <ContentComp
+          <content-comp
             :title="title"
             :body="body"
             :current="iCurrent"
@@ -102,7 +102,7 @@
             <template #body-6>
               <slot name="body-6" />
             </template>
-          </ContentComp>
+          </content-comp>
         </view>
       </view>
     </t-overlay>
@@ -117,7 +117,7 @@
     >
       <view :class="tClass + ' ' + classPrefix">
         <view :class="tClassPopover + ' ' + classPrefix + '__container ' + (title || body ? classPrefix + '__container--' + modeType : '')">
-          <ContentComp
+          <content-comp
             :title="title"
             :body="body"
             :current="iCurrent"
@@ -202,7 +202,7 @@
             <template #body-6>
               <slot name="body-6" />
             </template>
-          </ContentComp>
+          </content-comp>
         </view>
       </view>
     </t-popup>
@@ -211,7 +211,6 @@
 
 <script>
 import TOverlay from '../overlay/overlay';
-import TButton from '../button/button';
 import TPopup from '../popup/popup';
 import { uniComponent } from '../common/src/index';
 import props from './props';
@@ -226,295 +225,301 @@ const name = `${prefix}-guide`;
 
 let that;
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  controlledProps: [
-    {
-      key: 'current',
-      event: 'change',
-    },
-  ],
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-reference`,
-    `${prefix}-class-popover`,
-
-    `${prefix}-class-tooltip`,
-    `${prefix}-class-title`,
-    `${prefix}-class-body`,
-    `${prefix}-class-footer`,
-
-    `${prefix}-class-skip`,
-    `${prefix}-class-next`,
-    `${prefix}-class-back`,
-    `${prefix}-class-finish`,
-  ],
-  mixins: [
-    useCustomNavbar,
-  ],
+export default {
   components: {
     TOverlay,
-    TButton,
     TPopup,
     ContentComp,
   },
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      visible: false,
-      iCurrent: -1,
-      referenceStyle: '',
-      popoverStyle: '',
-      title: '',
-      body: '',
-      nonOverlay: false,
-      modeType: '',
-
-      skipButton: {},
-      backButton: {},
-      nextButton: {},
-      finishButton: {},
-    };
-  },
-  watch: {
-    steps: {
-      handler() {
-        this.innerInit();
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    controlledProps: [
+      {
+        key: 'current',
+        event: 'change',
       },
-      deep: true,
-    },
-    current: {
-      handler(v) {
-        this.iCurrent = v;
-      },
-    },
-    iCurrent: 'innerInit',
-    showOverlay: 'innerInit',
-  },
-  created() {
-    that = this;
-    this.getPlacementResult = this.getPlacement();
-  },
-  mounted() {
-    this.innerInit();
-  },
-  methods: {
-    innerInit: debounce(() => that.init(), 20),
-    async init() {
-      const { steps } = this;
-      const { iCurrent } = this;
-      const step = steps[iCurrent];
-      if (!step) {
-        this.visible = false;
-        return;
-      }
+    ],
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-reference`,
+      `${prefix}-class-popover`,
 
-      const modeType = (coalesce(step.mode, this.mode)) === 'dialog' ? 'dialog' : 'popover';
-      const showOverlay = coalesce(step.showOverlay, this.showOverlay);
-      this.nonOverlay = !showOverlay;
-      this.modeType = modeType;
+      `${prefix}-class-tooltip`,
+      `${prefix}-class-title`,
+      `${prefix}-class-body`,
+      `${prefix}-class-footer`,
 
-
-      if (modeType === 'popover') {
-        const rect = await step.element();
-
-        if (!rect) return;
-        const highlightPadding = rpx2px(coalesce(step.highlightPadding, this.highlightPadding));
-        const referenceTop = rect.top - highlightPadding;
-        const referenceRight = systemInfo.windowWidth - rect.right - highlightPadding;
-        const referenceLeft = rect.left - highlightPadding;
-        const referenceWidth = rect.width + 2 * highlightPadding;
-        const referenceHeight = rect.height + 2 * highlightPadding;
-
-        const style = {
-          top: `${referenceTop}px`,
-          right: `${referenceRight}px`,
-          left: `${referenceLeft}px`,
-          width: `${referenceWidth}px`,
-          height: `${referenceHeight}px`,
-        };
-        this.visible = true;
-        this.referenceStyle = styles(style);
-        this.title = coalesce(step.title, '');
-        this.body = coalesce(step.body, '');
-        this.makeButtonProps(step, 'popover');
-
-        const popoverStyle = await this.placementOffset(step, style);
-        this.popoverStyle = popoverStyle;
-      } else {
-        this.visible = true;
-        this.title = coalesce(step.title, '');
-        this.body = coalesce(step.body, '');
-        this.makeButtonProps(step, 'dialog');
-      }
+      `${prefix}-class-skip`,
+      `${prefix}-class-next`,
+      `${prefix}-class-back`,
+      `${prefix}-class-finish`,
+    ],
+    mixins: [
+      useCustomNavbar,
+    ],
+    components: {
+      TOverlay,
+      TPopup,
+      ContentComp,
     },
-    async placementOffset({ placement, offset }, place) {
-      await nextTick();
-      const rect = await getRect(this, `.${name}__container`);
-      const style = this.getPlacementResult[placement]?.(rect, place, offset);
-      return styles({ position: 'absolute', ...style });
+    props: {
+      ...props,
     },
-    makeButtonProps(step, mode) {
-      const {
-        tClassSkip,
-        tClassNext,
-        tClassBack,
-        tClassFinish,
-      } = this;
-      let skipButton = coalesce(step.skipButtonProps, this.skipButtonProps);
-      const size = mode === 'popover' ? 'extra-small' : 'medium';
-      skipButton = {
-        theme: 'light',
-        content: '跳过',
-        size,
-        ...skipButton,
-        tClass: `${tClassSkip} ${name}__button ${skipButton?.class || ''}`,
-        type: 'skip',
-      };
-      let nextButton = coalesce(step.nextButtonProps, this.nextButtonProps);
-      nextButton = {
-        theme: 'primary',
-        content: '下一步',
-        size,
-        ...nextButton,
-        tClass: `${tClassNext} ${name}__button ${nextButton?.class || ''}`,
-        type: 'next',
-      };
-      nextButton = { ...nextButton, content: this.buttonContent(nextButton) };
-      let backButton = coalesce(step.backButtonProps, this.backButtonProps);
-      backButton = {
-        theme: 'light',
-        content: '返回',
-        size,
-        ...backButton,
-        tClass: `${tClassBack} ${name}__button ${backButton?.class || ''}`,
-        type: 'back',
-      };
-      let finishButton = coalesce(step.finishButtonProps, this.finishButtonProps);
-      finishButton = {
-        theme: 'primary',
-        content: '完成',
-        size,
-        ...finishButton,
-        tClass: `${tClassFinish} ${name}__button ${finishButton?.class || ''}`,
-        type: 'finish',
-      };
-      finishButton = { ...finishButton, content: this.buttonContent(finishButton) };
-
-      this.skipButton = skipButton;
-      this.nextButton = nextButton;
-      this.backButton = backButton;
-      this.finishButton = finishButton;
-    },
-    renderCounter() {
-      const { steps, iCurrent, counter } = this;
-      const stepsTotal = steps.length;
-      const innerCurrent = iCurrent + 1;
-      const popupSlotCounter = isFunction(counter) ? counter({ total: stepsTotal, current: innerCurrent }) : counter;
-      return counter ? popupSlotCounter : `(${innerCurrent}/${stepsTotal})`;
-    },
-    buttonContent(button) {
-      const { hideCounter } = this;
-      return `${button.content.replace(/ \(.*?\)/, '')} ${hideCounter ? '' : this.renderCounter()}`;
-    },
-    onTplButtonTap(e, { type }) {
-      const params = { e, current: this.iCurrent, total: this.steps.length };
-      switch (type) {
-        case 'next':
-          this.$emit('next-step-click', { next: this.iCurrent + 1, ...params });
-          this.iCurrent = this.iCurrent + 1;
-          break;
-        case 'skip':
-          this.$emit('skip', params);
-          this.iCurrent = -1;
-          break;
-        case 'back':
-          this.$emit('back', params);
-          this.iCurrent = 0;
-          break;
-        case 'finish':
-          this.$emit('finish', params);
-          this.iCurrent = -1;
-          break;
-        default:
-          break;
-      }
-
-      this.$emit('change', { current: this.iCurrent });
-    },
-    getPlacement() {
-      const space = rpx2px(32);
-      const offsetLeft = offset => unitConvert(isNumeric(offset?.[0]) ? `${offset?.[0]}rpx` : offset?.[0] || 0);
-      const offsetTop = offset => unitConvert(isNumeric(offset?.[1]) ? `${offset?.[1]}rpx` : offset?.[1] || 0);
-      const left = place => parseFloat(place.left);
-      const right = place => parseFloat(place.right);
-      const top = place => parseFloat(place.top);
-      const height = place => parseFloat(place.height);
-      const width = place => parseFloat(place.width);
+    data() {
       return {
-        center: (rect, place, offset) => ({
-          top: `${Math.max(height(place) + top(place) + space + offsetTop(offset), 1)}px`,
-          left: `${Math.max(width(place) / 2 + left(place) - rect.width / 2 + offsetLeft(offset), 1)}px`,
-        }),
-        bottom: (rect, place, offset) => ({
-          top: `${Math.max(height(place) + top(place) + space + offsetTop(offset), 1)}px`,
-          left: `${Math.max(width(place) / 2 + left(place) - rect.width / 2 + offsetLeft(offset), 1)}px`,
-        }),
-        'bottom-left': (rect, place, offset) => ({
-          top: `${Math.max(height(place) + top(place) + space + offsetTop(offset), 1)}px`,
-          left: `${Math.max(left(place) + offsetLeft(offset), 1)}px`,
-        }),
-        'bottom-right': (rect, place, offset) => ({
-          top: `${Math.max(height(place) + top(place) + space + offsetTop(offset), 1)}px`,
-          right: `${Math.max(right(place) - offsetLeft(offset), 1)}px`,
-        }),
-        left: (rect, place, offset) => ({
-          top: `${Math.max(height(place) / 2 + top(place) - rect.height / 2 + offsetTop(offset), 1)}px`,
-          right: `${Math.max(width(place) + right(place) + space - offsetLeft(offset), 1)}px`,
-        }),
-        'left-top': (rect, place, offset) => ({
-          top: `${Math.max(top(place) + offsetTop(offset), 1)}px`,
-          right: `${Math.max(width(place) + right(place) + space - offsetLeft(offset), 1)}px`,
-        }),
-        'left-bottom': (rect, place, offset) => ({
-          top: `${Math.max(top(place) + height(place) - rect.height - offsetTop(offset), 1)}px`,
-          right: `${Math.max(width(place) + right(place) + space - offsetLeft(offset), 1)}px`,
-        }),
-        right: (rect, place, offset) => ({
-          top: `${Math.max(height(place) / 2 + top(place) - rect.height / 2 + offsetTop(offset), 1)}px`,
-          left: `${Math.max(left(place) + width(place) + space + offsetLeft(offset), 1)}px`,
-        }),
-        'right-top': (rect, place, offset) => ({
-          top: `${Math.max(top(place) + offsetTop(offset), 1)}px`,
-          left: `${Math.max(left(place) + width(place) + space + offsetLeft(offset), 1)}px`,
-        }),
-        'right-bottom': (rect, place, offset) => ({
-          top: `${Math.max(top(place) + height(place) - rect.height - offsetTop(offset), 1)}px`,
-          left: `${Math.max(left(place) + width(place) + space + offsetLeft(offset), 1)}px`,
-        }),
-        top: (rect, place, offset) => ({
-          top: `${Math.max(top(place) - rect.height - space + offsetTop(offset), 1)}px`,
-          left: `${Math.max(width(place) / 2 + left(place) - rect.width / 2 + offsetLeft(offset), 1)}px`,
-        }),
-        'top-left': (rect, place, offset) => ({
-          top: `${Math.max(top(place) - rect.height - space + offsetTop(offset), 1)}px`,
-          left: `${Math.max(left(place) + offsetLeft(offset), 1)}px`,
-        }),
-        'top-right': (rect, place, offset) => ({
-          top: `${Math.max(top(place) - rect.height - space + offsetTop(offset), 1)}px`,
-          right: `${Math.max(right(place) - offsetLeft(offset), 1)}px`,
-        }),
+        prefix,
+        classPrefix: name,
+        visible: false,
+        iCurrent: -1,
+        referenceStyle: '',
+        popoverStyle: '',
+        title: '',
+        body: '',
+        nonOverlay: false,
+        modeType: '',
+
+        skipButton: {},
+        backButton: {},
+        nextButton: {},
+        finishButton: {},
       };
     },
-  },
-});
+    watch: {
+      steps: {
+        handler() {
+          this.innerInit();
+        },
+        deep: true,
+      },
+      current: {
+        handler(v) {
+          this.iCurrent = v;
+        },
+      },
+      iCurrent: 'innerInit',
+      showOverlay: 'innerInit',
+    },
+    created() {
+      that = this;
+      this.getPlacementResult = this.getPlacement();
+    },
+    mounted() {
+      this.innerInit();
+    },
+    methods: {
+      innerInit: debounce(() => that.init(), 20),
+      async init() {
+        const { steps } = this;
+        const { iCurrent } = this;
+        const step = steps[iCurrent];
+        if (!step) {
+          this.visible = false;
+          return;
+        }
+
+        const modeType = (coalesce(step.mode, this.mode)) === 'dialog' ? 'dialog' : 'popover';
+        const showOverlay = coalesce(step.showOverlay, this.showOverlay);
+        this.nonOverlay = !showOverlay;
+        this.modeType = modeType;
+
+
+        if (modeType === 'popover') {
+          const rect = await step.element();
+
+          if (!rect) return;
+          const highlightPadding = rpx2px(coalesce(step.highlightPadding, this.highlightPadding));
+          const referenceTop = rect.top - highlightPadding;
+          const referenceRight = systemInfo.windowWidth - rect.right - highlightPadding;
+          const referenceLeft = rect.left - highlightPadding;
+          const referenceWidth = rect.width + 2 * highlightPadding;
+          const referenceHeight = rect.height + 2 * highlightPadding;
+
+          const style = {
+            top: `${referenceTop}px`,
+            right: `${referenceRight}px`,
+            left: `${referenceLeft}px`,
+            width: `${referenceWidth}px`,
+            height: `${referenceHeight}px`,
+          };
+          this.visible = true;
+          this.referenceStyle = styles(style);
+          this.title = coalesce(step.title, '');
+          this.body = coalesce(step.body, '');
+          this.makeButtonProps(step, 'popover');
+
+          const popoverStyle = await this.placementOffset(step, style);
+          this.popoverStyle = popoverStyle;
+        } else {
+          this.visible = true;
+          this.title = coalesce(step.title, '');
+          this.body = coalesce(step.body, '');
+          this.makeButtonProps(step, 'dialog');
+        }
+      },
+      async placementOffset({ placement, offset }, place) {
+        await nextTick();
+        const rect = await getRect(this, `.${name}__container`);
+        const style = this.getPlacementResult[placement]?.(rect, place, offset);
+        return styles({ position: 'absolute', ...style });
+      },
+      makeButtonProps(step, mode) {
+        const {
+          tClassSkip,
+          tClassNext,
+          tClassBack,
+          tClassFinish,
+        } = this;
+        let skipButton = coalesce(step.skipButtonProps, this.skipButtonProps);
+        const size = mode === 'popover' ? 'extra-small' : 'medium';
+        skipButton = {
+          theme: 'light',
+          content: '跳过',
+          size,
+          ...skipButton,
+          tClass: `${tClassSkip} ${name}__button ${skipButton?.class || ''}`,
+          type: 'skip',
+        };
+        let nextButton = coalesce(step.nextButtonProps, this.nextButtonProps);
+        nextButton = {
+          theme: 'primary',
+          content: '下一步',
+          size,
+          ...nextButton,
+          tClass: `${tClassNext} ${name}__button ${nextButton?.class || ''}`,
+          type: 'next',
+        };
+        nextButton = { ...nextButton, content: this.buttonContent(nextButton) };
+        let backButton = coalesce(step.backButtonProps, this.backButtonProps);
+        backButton = {
+          theme: 'light',
+          content: '返回',
+          size,
+          ...backButton,
+          tClass: `${tClassBack} ${name}__button ${backButton?.class || ''}`,
+          type: 'back',
+        };
+        let finishButton = coalesce(step.finishButtonProps, this.finishButtonProps);
+        finishButton = {
+          theme: 'primary',
+          content: '完成',
+          size,
+          ...finishButton,
+          tClass: `${tClassFinish} ${name}__button ${finishButton?.class || ''}`,
+          type: 'finish',
+        };
+        finishButton = { ...finishButton, content: this.buttonContent(finishButton) };
+
+        this.skipButton = skipButton;
+        this.nextButton = nextButton;
+        this.backButton = backButton;
+        this.finishButton = finishButton;
+      },
+      renderCounter() {
+        const { steps, iCurrent, counter } = this;
+        const stepsTotal = steps.length;
+        const innerCurrent = iCurrent + 1;
+        const popupSlotCounter = isFunction(counter) ? counter({ total: stepsTotal, current: innerCurrent }) : counter;
+        return counter ? popupSlotCounter : `(${innerCurrent}/${stepsTotal})`;
+      },
+      buttonContent(button) {
+        const { hideCounter } = this;
+        return `${button.content.replace(/ \(.*?\)/, '')} ${hideCounter ? '' : this.renderCounter()}`;
+      },
+      onTplButtonTap(e, { type }) {
+        const params = { e, current: this.iCurrent, total: this.steps.length };
+        switch (type) {
+          case 'next':
+            this.$emit('next-step-click', { next: this.iCurrent + 1, ...params });
+            this.iCurrent = this.iCurrent + 1;
+            break;
+          case 'skip':
+            this.$emit('skip', params);
+            this.iCurrent = -1;
+            break;
+          case 'back':
+            this.$emit('back', params);
+            this.iCurrent = 0;
+            break;
+          case 'finish':
+            this.$emit('finish', params);
+            this.iCurrent = -1;
+            break;
+          default:
+            break;
+        }
+
+        this.$emit('change', { current: this.iCurrent });
+      },
+      getPlacement() {
+        const space = rpx2px(32);
+        const offsetLeft = offset => unitConvert(isNumeric(offset?.[0]) ? `${offset?.[0]}rpx` : offset?.[0] || 0);
+        const offsetTop = offset => unitConvert(isNumeric(offset?.[1]) ? `${offset?.[1]}rpx` : offset?.[1] || 0);
+        const left = place => parseFloat(place.left);
+        const right = place => parseFloat(place.right);
+        const top = place => parseFloat(place.top);
+        const height = place => parseFloat(place.height);
+        const width = place => parseFloat(place.width);
+        return {
+          center: (rect, place, offset) => ({
+            top: `${Math.max(height(place) + top(place) + space + offsetTop(offset), 1)}px`,
+            left: `${Math.max(width(place) / 2 + left(place) - rect.width / 2 + offsetLeft(offset), 1)}px`,
+          }),
+          bottom: (rect, place, offset) => ({
+            top: `${Math.max(height(place) + top(place) + space + offsetTop(offset), 1)}px`,
+            left: `${Math.max(width(place) / 2 + left(place) - rect.width / 2 + offsetLeft(offset), 1)}px`,
+          }),
+          'bottom-left': (rect, place, offset) => ({
+            top: `${Math.max(height(place) + top(place) + space + offsetTop(offset), 1)}px`,
+            left: `${Math.max(left(place) + offsetLeft(offset), 1)}px`,
+          }),
+          'bottom-right': (rect, place, offset) => ({
+            top: `${Math.max(height(place) + top(place) + space + offsetTop(offset), 1)}px`,
+            right: `${Math.max(right(place) - offsetLeft(offset), 1)}px`,
+          }),
+          left: (rect, place, offset) => ({
+            top: `${Math.max(height(place) / 2 + top(place) - rect.height / 2 + offsetTop(offset), 1)}px`,
+            right: `${Math.max(width(place) + right(place) + space - offsetLeft(offset), 1)}px`,
+          }),
+          'left-top': (rect, place, offset) => ({
+            top: `${Math.max(top(place) + offsetTop(offset), 1)}px`,
+            right: `${Math.max(width(place) + right(place) + space - offsetLeft(offset), 1)}px`,
+          }),
+          'left-bottom': (rect, place, offset) => ({
+            top: `${Math.max(top(place) + height(place) - rect.height - offsetTop(offset), 1)}px`,
+            right: `${Math.max(width(place) + right(place) + space - offsetLeft(offset), 1)}px`,
+          }),
+          right: (rect, place, offset) => ({
+            top: `${Math.max(height(place) / 2 + top(place) - rect.height / 2 + offsetTop(offset), 1)}px`,
+            left: `${Math.max(left(place) + width(place) + space + offsetLeft(offset), 1)}px`,
+          }),
+          'right-top': (rect, place, offset) => ({
+            top: `${Math.max(top(place) + offsetTop(offset), 1)}px`,
+            left: `${Math.max(left(place) + width(place) + space + offsetLeft(offset), 1)}px`,
+          }),
+          'right-bottom': (rect, place, offset) => ({
+            top: `${Math.max(top(place) + height(place) - rect.height - offsetTop(offset), 1)}px`,
+            left: `${Math.max(left(place) + width(place) + space + offsetLeft(offset), 1)}px`,
+          }),
+          top: (rect, place, offset) => ({
+            top: `${Math.max(top(place) - rect.height - space + offsetTop(offset), 1)}px`,
+            left: `${Math.max(width(place) / 2 + left(place) - rect.width / 2 + offsetLeft(offset), 1)}px`,
+          }),
+          'top-left': (rect, place, offset) => ({
+            top: `${Math.max(top(place) - rect.height - space + offsetTop(offset), 1)}px`,
+            left: `${Math.max(left(place) + offsetLeft(offset), 1)}px`,
+          }),
+          'top-right': (rect, place, offset) => ({
+            top: `${Math.max(top(place) - rect.height - space + offsetTop(offset), 1)}px`,
+            right: `${Math.max(right(place) - offsetLeft(offset), 1)}px`,
+          }),
+        };
+      },
+    },
+  }),
+};
 
 </script>
 <style scoped src="./guide.css"></style>

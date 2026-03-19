@@ -1,7 +1,7 @@
 <template>
   <view
-    :class="tools.cls(classPrefix, [['fixed', fixed]]) + ' ' + visibleClass + ' ' + tClass"
-    :style="tools._style([boxStyle, customStyle])"
+    :class="'' + tools.cls(classPrefix, [['fixed', fixed]]) + ' ' + visibleClass + ' ' + tClass"
+    :style="'' + tools._style([boxStyle, customStyle])"
   >
     <view
       v-if="fixed && placeholder"
@@ -65,242 +65,247 @@ const BASE_MENU_RECT = {
 };
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-placeholder`,
-    `${prefix}-class-content`,
-    `${prefix}-class-title`,
-    `${prefix}-class-left`,
-    `${prefix}-class-center`,
-    `${prefix}-class-left-icon`,
-    `${prefix}-class-home-icon`,
-    `${prefix}-class-capsule`,
-    `${prefix}-class-nav-btn`,
-  ],
+export default {
   components: {
     TIcon,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'fail',
-    'complete',
-    'success',
-    'go-back',
-    'right-click',
-  ],
-  data() {
-    return {
-      timer: null,
-      prefix,
-      classPrefix: name,
-      boxStyle: '',
-      showTitle: '',
-      hideLeft: false,
-      hideCenter: false,
-      iMenuRect: null,
-      iLeftRect: null,
-      iBoxStyle: {},
-      tools,
-
-      visibleClass: '',
-
-    };
-  },
-  computed: {
-    leftArrowCustomStyle() {
-      return 'font-size: var(--td-navbar-left-arrow-size, 24px);';
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-  },
-  watch: {
-    visible(visible) {
-      const { animation } = this;
-      const visibleClass = `${name}${visible ? '--visible' : '--hide'}`;
-      this.visibleClass = `${visibleClass}${animation ? '-animation' : ''}`;
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-placeholder`,
+      `${prefix}-class-content`,
+      `${prefix}-class-title`,
+      `${prefix}-class-left`,
+      `${prefix}-class-center`,
+      `${prefix}-class-left-icon`,
+      `${prefix}-class-home-icon`,
+      `${prefix}-class-capsule`,
+      `${prefix}-class-nav-btn`,
+    ],
+    components: {
+      TIcon,
+    },
+    props: {
+      ...props,
+    },
+    emits: [
+      'fail',
+      'complete',
+      'success',
+      'go-back',
+      'right-click',
+    ],
+    data() {
+      return {
+        timer: null,
+        prefix,
+        classPrefix: name,
+        boxStyle: '',
+        showTitle: '',
+        hideLeft: false,
+        hideCenter: false,
+        iMenuRect: null,
+        iLeftRect: null,
+        iBoxStyle: {},
+        tools,
 
-      if (this.timer) {
-        clearTimeout(this.timer);
-      }
-      if (animation) {
-        this.timer = setTimeout(() => {
-          this.visibleClass = visibleClass;
-        }, 300);
-      }
+        visibleClass: '',
+
+      };
+    },
+    computed: {
+      leftArrowCustomStyle() {
+        return 'font-size: var(--td-navbar-left-arrow-size, 24px);';
+      },
+    },
+    watch: {
+      visible(visible) {
+        const { animation } = this;
+        const visibleClass = `${name}${visible ? '--visible' : '--hide'}`;
+        this.visibleClass = `${visibleClass}${animation ? '-animation' : ''}`;
+
+        if (this.timer) {
+          clearTimeout(this.timer);
+        }
+        if (animation) {
+          this.timer = setTimeout(() => {
+            this.visibleClass = visibleClass;
+          }, 300);
+        }
+      },
+
+      title: 'onWatchTitle',
+      titleMaxLength: 'onWatchTitle',
     },
 
-    title: 'onWatchTitle',
-    titleMaxLength: 'onWatchTitle',
-  },
-
-  mounted() {
-    this.onWatchTitle();
-    this.initStyle();
-    this.getLeftRect();
-    this.onMenuButtonBoundingClientRectWeightChange();
-
-    this.onWindowResizeCallback = () => {
+    mounted() {
+      this.onWatchTitle();
       this.initStyle();
       this.getLeftRect();
-    };
-    uni.onWindowResize(this.onWindowResizeCallback);
-  },
+      this.onMenuButtonBoundingClientRectWeightChange();
 
-  beforeUnmount() {
-    this.offMenuButtonBoundingClientRectWeightChange();
-    if (this.onWindowResizeCallback) {
-      uni.offWindowResize(this.onWindowResizeCallback);
-    }
-  },
-  methods: {
-    initStyle() {
+      this.onWindowResizeCallback = () => {
+        this.initStyle();
+        this.getLeftRect();
+      };
+      uni.onWindowResize(this.onWindowResizeCallback);
+    },
+
+    beforeUnmount() {
+      this.offMenuButtonBoundingClientRectWeightChange();
+      if (this.onWindowResizeCallback) {
+        uni.offWindowResize(this.onWindowResizeCallback);
+      }
+    },
+    methods: {
+      initStyle() {
       // 每次重新获取最新的窗口信息，避免 H5 下窗口大小变化后使用缓存值
-      const windowInfo = getWindowInfo();
-      this.getMenuRect(windowInfo);
+        const windowInfo = getWindowInfo();
+        this.getMenuRect(windowInfo);
 
-      const { iMenuRect, iLeftRect } = this;
+        const { iMenuRect, iLeftRect } = this;
 
-      if (!iMenuRect || !iLeftRect || !windowInfo) return;
+        if (!iMenuRect || !iLeftRect || !windowInfo) return;
 
-      const iBoxStyle = {
-        '--td-navbar-padding-top': `${windowInfo.statusBarHeight}px`,
-        '--td-navbar-right': `${windowInfo.windowWidth - iMenuRect.left}px`, // 导航栏右侧小程序胶囊按钮宽度
-        '--td-navbar-left-max-width': `${iMenuRect.left}px`, // 左侧内容最大宽度
-        '--td-navbar-capsule-height': `${iMenuRect.height}px`, // 胶囊高度
-        '--td-navbar-capsule-width': `${iMenuRect.width}px`, // 胶囊宽度
-        '--td-navbar-height': `${(iMenuRect.top - windowInfo.statusBarHeight) * 2 + iMenuRect.height}px`,
-      };
-      // #ifdef H5 || APP-PLUS
-      delete iBoxStyle['--td-navbar-height'];
-      // #endif
+        const iBoxStyle = {
+          '--td-navbar-padding-top': `${windowInfo.statusBarHeight}px`,
+          '--td-navbar-right': `${windowInfo.windowWidth - iMenuRect.left}px`, // 导航栏右侧小程序胶囊按钮宽度
+          '--td-navbar-left-max-width': `${iMenuRect.left}px`, // 左侧内容最大宽度
+          '--td-navbar-capsule-height': `${iMenuRect.height}px`, // 胶囊高度
+          '--td-navbar-capsule-width': `${iMenuRect.width}px`, // 胶囊宽度
+          '--td-navbar-height': `${(iMenuRect.top - windowInfo.statusBarHeight) * 2 + iMenuRect.height}px`,
+        };
+        // #ifdef H5 || APP-PLUS
+        delete iBoxStyle['--td-navbar-height'];
+        // #endif
 
-      this.calcCenterStyle(iLeftRect, iMenuRect, iBoxStyle, windowInfo);
-    },
-    onWatchTitle() {
-      const { title } = this;
-      const titleMaxLength = this.titleMaxLength || Number.MAX_SAFE_INTEGER;
-      let temp = title.slice(0, titleMaxLength);
-      if (titleMaxLength < title.length) temp += '...';
+        this.calcCenterStyle(iLeftRect, iMenuRect, iBoxStyle, windowInfo);
+      },
+      onWatchTitle() {
+        const { title } = this;
+        const titleMaxLength = this.titleMaxLength || Number.MAX_SAFE_INTEGER;
+        let temp = title.slice(0, titleMaxLength);
+        if (titleMaxLength < title.length) temp += '...';
 
-      this.showTitle = temp;
-    },
+        this.showTitle = temp;
+      },
 
-    calcCenterStyle(
-      leftRect,
-      menuRect,
-      defaultStyle,
-      windowInfo,
-    ) {
-      const curWindowInfo = windowInfo || getWindowInfo();
-      const maxSpacing = Math.max(leftRect.right, curWindowInfo.windowWidth - menuRect.left);
-      const iBoxStyle = {
-        ...defaultStyle,
-        'z-index': this.zIndex,
-        '--td-navbar-center-left': `${maxSpacing}px`, // 标题左侧距离
-        '--td-navbar-center-width': `${Math.max(menuRect.left - maxSpacing, 0)}px`, // 标题宽度
-      };
+      calcCenterStyle(
+        leftRect,
+        menuRect,
+        defaultStyle,
+        windowInfo,
+      ) {
+        const curWindowInfo = windowInfo || getWindowInfo();
+        const maxSpacing = Math.max(leftRect.right, curWindowInfo.windowWidth - menuRect.left);
+        const iBoxStyle = {
+          ...defaultStyle,
+          'z-index': this.zIndex,
+          '--td-navbar-center-left': `${maxSpacing}px`, // 标题左侧距离
+          '--td-navbar-center-width': `${Math.max(menuRect.left - maxSpacing, 0)}px`, // 标题宽度
+        };
 
-      const boxStyle = Object.entries(iBoxStyle)
-        .map(([k, v]) => `${k}: ${v}`)
-        .join('; ');
+        const boxStyle = Object.entries(iBoxStyle)
+          .map(([k, v]) => `${k}: ${v}`)
+          .join('; ');
 
-      this.boxStyle = boxStyle;
-      this.iBoxStyle = iBoxStyle;
-    },
+        this.boxStyle = boxStyle;
+        this.iBoxStyle = iBoxStyle;
+      },
 
-    getLeftRect() {
-      getRect(this, `.${name}__left`).then((res) => {
-        if (res.right > this.iLeftRect.right) {
-          this.calcCenterStyle(res, this.iMenuRect, this.iBoxStyle);
-        }
-      });
-    },
+      getLeftRect() {
+        getRect(this, `.${name}__left`).then((res) => {
+          if (res.right > this.iLeftRect.right) {
+            this.calcCenterStyle(res, this.iMenuRect, this.iBoxStyle);
+          }
+        });
+      },
 
-    getMenuRect(windowInfo) {
-      const curWindowInfo = windowInfo || getWindowInfo();
-      // 场景值为1177（视频号直播间）和1175 （视频号profile页）时，小程序禁用了 uni.getMenuButtonBoundingClientRect
-      let rect = {
-        ...BASE_MENU_RECT,
-        right: curWindowInfo.windowWidth - BASE_MENU_RECT.right, // 动态计算，避免 H5 下缓存
-        bottom: BASE_MENU_RECT.top + BASE_MENU_RECT.height,
-        left: curWindowInfo.windowWidth - BASE_MENU_RECT.right - BASE_MENU_RECT.width,
-      };
-      if (uni.getMenuButtonBoundingClientRect
+      getMenuRect(windowInfo) {
+        const curWindowInfo = windowInfo || getWindowInfo();
+        // 场景值为1177（视频号直播间）和1175 （视频号profile页）时，小程序禁用了 uni.getMenuButtonBoundingClientRect
+        let rect = {
+          ...BASE_MENU_RECT,
+          right: curWindowInfo.windowWidth - BASE_MENU_RECT.right, // 动态计算，避免 H5 下缓存
+          bottom: BASE_MENU_RECT.top + BASE_MENU_RECT.height,
+          left: curWindowInfo.windowWidth - BASE_MENU_RECT.right - BASE_MENU_RECT.width,
+        };
+        if (uni.getMenuButtonBoundingClientRect
          && typeof uni.getMenuButtonBoundingClientRect === 'function'
          && typeof uni.getMenuButtonBoundingClientRect() === 'object'
-      ) {
-        rect = uni.getMenuButtonBoundingClientRect() || {};
-      }
+        ) {
+          rect = uni.getMenuButtonBoundingClientRect() || {};
+        }
 
-      this.iMenuRect = rect;
-      this.iLeftRect = {
-        right: curWindowInfo.windowWidth - rect.left,
-      };
-    },
+        this.iMenuRect = rect;
+        this.iLeftRect = {
+          right: curWindowInfo.windowWidth - rect.left,
+        };
+      },
 
-    onMenuButtonBoundingClientRectWeightChange() {
-      if (uni.onMenuButtonBoundingClientRectWeightChange) {
-        this.onMenuButtonBoundingClientRectWeightChangeCallback = res => this.queryElements(res);
+      onMenuButtonBoundingClientRectWeightChange() {
+        if (uni.onMenuButtonBoundingClientRectWeightChange) {
+          this.onMenuButtonBoundingClientRectWeightChangeCallback = res => this.queryElements(res);
 
-        uni.onMenuButtonBoundingClientRectWeightChange(this.onMenuButtonBoundingClientRectWeightChangeCallback);
-      }
-    },
+          uni.onMenuButtonBoundingClientRectWeightChange(this.onMenuButtonBoundingClientRectWeightChangeCallback);
+        }
+      },
 
-    offMenuButtonBoundingClientRectWeightChange() {
-      if (this.onMenuButtonBoundingClientRectWeightChangeCallback) {
-        uni.offMenuButtonBoundingClientRectWeightChange(this.onMenuButtonBoundingClientRectWeightChangeCallback);
-      }
-    },
+      offMenuButtonBoundingClientRectWeightChange() {
+        if (this.onMenuButtonBoundingClientRectWeightChangeCallback) {
+          uni.offMenuButtonBoundingClientRectWeightChange(this.onMenuButtonBoundingClientRectWeightChangeCallback);
+        }
+      },
 
-    /**
+      /**
      * 比较胶囊条和navbar内容，决定是否隐藏
      * @param capsuleRect API返回值，胶囊条的位置信息
      */
-    queryElements(capsuleRect) {
-      Promise.all([
-        getRect(this, `.${this.classPrefix}__left`),
-        getRect(this, `.${this.classPrefix}__center`),
-      ]).then(([leftRect, centerRect]) => {
+      queryElements(capsuleRect) {
+        Promise.all([
+          getRect(this, `.${this.classPrefix}__left`),
+          getRect(this, `.${this.classPrefix}__center`),
+        ]).then(([leftRect, centerRect]) => {
         // 部分安卓机型中（目前仅在Magic6/7中复现），仍存在精度问题，暂使用 Math.round() 取整规避
-        const leftRight = Math.round(leftRect.right);
-        const centerRight = Math.round(centerRect.right);
-        const capsuleLeft = capsuleRect.left;
+          const leftRight = Math.round(leftRect.right);
+          const centerRight = Math.round(centerRect.right);
+          const capsuleLeft = capsuleRect.left;
 
-        this.hideLeft = leftRight > capsuleLeft;
-        this.hideCenter = leftRight > capsuleLeft ? true : centerRight > capsuleLeft;
-      });
-    },
-
-    goBack() {
-      const { delta } = this;
-      // eslint-disable-next-line
-      const that = this;
-      this.$emit('go-back');
-      if (delta > 0) {
-        uni.navigateBack({
-          delta,
-          fail(e) {
-            that.$emit('fail', e);
-          },
-          complete(e) {
-            that.$emit('complete', e);
-          },
-          success(e) {
-            that.$emit('success', e);
-          },
+          this.hideLeft = leftRight > capsuleLeft;
+          this.hideCenter = leftRight > capsuleLeft ? true : centerRight > capsuleLeft;
         });
-      }
-    },
+      },
 
-    onClickRight() {
-      this.$emit('right-click');
+      goBack() {
+        const { delta } = this;
+        // eslint-disable-next-line
+      const that = this;
+        this.$emit('go-back');
+        if (delta > 0) {
+          uni.navigateBack({
+            delta,
+            fail(e) {
+              that.$emit('fail', e);
+            },
+            complete(e) {
+              that.$emit('complete', e);
+            },
+            success(e) {
+              that.$emit('success', e);
+            },
+          });
+        }
+      },
+
+      onClickRight() {
+        this.$emit('right-click');
+      },
     },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./navbar.css"></style>

@@ -1,7 +1,7 @@
 <template>
   <view
     v-if="!hidden"
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     :class="tClass + ' ' + tools.cls(classPrefix, [['fixed', fixed], theme])"
     aria-role="button"
     @click="toTop"
@@ -50,71 +50,76 @@ import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 const name = `${prefix}-back-top`;
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-icon`,
-    `${prefix}-class-text`,
-  ],
-  mixins: [
-    ChildrenMixin(RELATION_MAP.BackTop),
-  ],
+export default {
   components: {
     TIcon,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'to-top',
-  ],
-  watch: {
-    icon() {
-      this.setIcon();
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-    scrollTop: {
-      handler(value) {
-        const { visibilityHeight } = this;
-        this.hidden = value < visibilityHeight;
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-icon`,
+      `${prefix}-class-text`,
+    ],
+    mixins: [
+      ChildrenMixin(RELATION_MAP.BackTop),
+    ],
+    components: {
+      TIcon,
+    },
+    props: {
+      ...props,
+    },
+    emits: [
+      'to-top',
+    ],
+    watch: {
+      icon() {
+        this.setIcon();
       },
-      immediate: true,
+      scrollTop: {
+        handler(value) {
+          const { visibilityHeight } = this;
+          this.hidden = value < visibilityHeight;
+        },
+        immediate: true,
+      },
     },
-  },
-  mounted() {
-    const { icon } = this;
-    this.setIcon(icon);
-  },
-  methods: {
-    setIcon(v) {
-      this.innerIcon = calcIcon(v, 'backtop');
+    mounted() {
+      const { icon } = this;
+      this.setIcon(icon);
     },
+    methods: {
+      setIcon(v) {
+        this.innerIcon = calcIcon(v, 'backtop');
+      },
 
-    toTop() {
-      this.$emit('to-top');
-      if (this[RELATION_MAP.BackTop]) {
-        this[RELATION_MAP.BackTop]?.scrollToTop();
-        this.hidden = true;
-      } else {
-        uni.pageScrollTo({
-          scrollTop: 0,
-          duration: 300,
-        });
-      }
+      toTop() {
+        this.$emit('to-top');
+        if (this[RELATION_MAP.BackTop]) {
+          this[RELATION_MAP.BackTop]?.scrollToTop();
+          this.hidden = true;
+        } else {
+          uni.pageScrollTo({
+            scrollTop: 0,
+            duration: 300,
+          });
+        }
+      },
     },
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      innerIcon: null,
-      hidden: true,
-      tools,
-    };
-  },
-});
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        innerIcon: null,
+        hidden: true,
+        tools,
+      };
+    },
+  }),
+};
 </script>
 <style scoped src="./back-top.css"></style>

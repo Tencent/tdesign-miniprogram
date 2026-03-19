@@ -11,7 +11,7 @@
       :overlay-props="(popupProps && popupProps.overlayProps) || defaultOverlayProps"
       @visible-change="onVisibleChange"
     >
-      <CalendarTemplate
+      <calendar-template
         :class-prefix="classPrefix"
         :use-popup="usePopup"
         :switch-mode="switchMode"
@@ -38,10 +38,10 @@
         <template #title>
           <slot name="title" />
         </template>
-      </CalendarTemplate>
+      </calendar-template>
     </t-popup>
     <block v-else>
-      <CalendarTemplate
+      <calendar-template
         :class-prefix="classPrefix"
         :use-popup="usePopup"
         :switch-mode="switchMode"
@@ -68,14 +68,12 @@
         <template #title>
           <slot name="title" />
         </template>
-      </CalendarTemplate>
+      </calendar-template>
     </block>
   </view>
 </template>
 <script>
 import TPopup from '../popup/popup';
-import TButton from '../button/button';
-import TIcon from '../icon/icon';
 import CalendarTemplate from './template.vue';
 
 import { uniComponent } from '../common/src/index';
@@ -105,354 +103,354 @@ const defaultLocaleText = {
   confirm: '确认',
 };
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  controlledProps: [
-    {
-      key: 'value',
-      event: 'confirm',
-    },
-    {
-      key: 'value',
-      event: 'change',
-    },
-  ],
-  externalClasses: [
-    `${prefix}-class`,
-  ],
-  mixins: [useCustomNavbar],
+export default {
   components: {
     TPopup,
-    TButton,
-    TIcon,
     CalendarTemplate,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'update:visible',
-  ],
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      months: [],
-      scrollIntoView: '',
-      innerConfirmBtn: {},
-      realLocalText: {},
-      currentMonth: {},
-      actionButtons: {
-        preYearBtnDisable: false,
-        prevMonthBtnDisable: false,
-        nextMonthBtnDisable: false,
-        nextYearBtnDisable: false,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    controlledProps: [
+      {
+        key: 'value',
+        event: 'confirm',
       },
-      tools,
-
-      dataVisible: this.visible,
-      dataValue: coalesce(this.value, this.defaultValue),
-      days: [],
-
-      defaultOverlayProps: {},
-    };
-  },
-  watch: {
-    type: {
-      handler(v) {
-        this.base.type = v;
+      {
+        key: 'value',
+        event: 'change',
       },
+    ],
+    externalClasses: [
+      `${prefix}-class`,
+    ],
+    mixins: [useCustomNavbar],
+    props: {
+      ...props,
     },
+    emits: [
+      'update:visible',
+    ],
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        months: [],
+        scrollIntoView: '',
+        innerConfirmBtn: {},
+        realLocalText: {},
+        currentMonth: {},
+        actionButtons: {
+          preYearBtnDisable: false,
+          prevMonthBtnDisable: false,
+          nextMonthBtnDisable: false,
+          nextYearBtnDisable: false,
+        },
+        tools,
 
-    allowSameDay(v) {
-      this.base.allowSameDay = v;
-    },
+        dataVisible: this.visible,
+        dataValue: coalesce(this.value, this.defaultValue),
+        days: [],
 
-    confirmBtn: {
-      handler(v) {
-        if (typeof v === 'string') {
-          this.innerConfirmBtn = v === 'slot' ? 'slot' : { content: v };
-        } else if (typeof v === 'object') {
-          this.innerConfirmBtn = v;
-        }
-      },
-      immediate: true,
-    },
-
-    firstDayOfWeek: 'onWatchMinMaxDate',
-    minDate: 'onWatchMinMaxDate',
-    maxDate: 'onWatchMinMaxDate',
-
-    value: {
-      handler(v) {
-        this.dataValue = v;
-      },
-      immediate: true,
-      deep: true,
-    },
-
-    visible: {
-      handler(v) {
-        this.dataVisible = v;
-      },
-      immediate: true,
-    },
-
-    dataValue: {
-      handler(v) {
-        this.base.value = v;
-        this.calcMonths();
-        this.updateCurrentMonth(Array.isArray(v) ? v[0] : v);
-      },
-      deep: true,
-    },
-
-    dataVisible: {
-      handler(v) {
-        if (v) {
-          this.onScrollIntoView();
-          this.base.value = this.dataValue;
-          this.calcMonths();
-        }
-      },
-      immediate: true,
-    },
-    format: {
-      handler(v) {
-        const { usePopup, dataVisible: visible } = this;
-
-        if (this.base) {
-          this.base.format = v;
-        }
-
-        if (!usePopup || visible) {
-          this.calcMonths();
-        }
-      },
-      immediate: true,
-    },
-  },
-  created() {
-    const values = Object.keys(props).reduce((acc, key) => ({
-      ...acc,
-      [key]: this[key],
-    }));
-    this.base = new TCalendar(values);
-  },
-
-  mounted() {
-    const realLocalText = { ...defaultLocaleText, ...this.localeText };
-    this.initialValue();
-    this.onWatchMinMaxDate();
-    this.days = this.base.getDays(realLocalText.weekdays);
-    this.realLocalText = realLocalText;
-
-    this.calcMonths();
-    this.updateCurrentMonth();
-
-    if (!this.usePopup) {
-      this.onScrollIntoView();
-    }
-  },
-  methods: {
-    coalesce,
-
-    getMonthTitle,
-    getDateLabel,
-    isDateSelected,
-    initialValue() {
-      const { dataValue: value, type, minDate } = this;
-
-      if (!value) {
-        const today = new Date();
-        const now = minDate || new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime(); // 获取 0 点的时间戳
-        const initialValue = type === 'single' ? now : [now];
-
-        if (type === 'range') {
-          initialValue[1] = now + 24 * 3600 * 1000; // 第二天
-        }
-
-        this.dataValue = initialValue;
-        this.base.value = initialValue;
-      }
-    },
-
-    onScrollIntoView() {
-      const { dataValue: value } = this;
-
-      if (!value) return;
-
-      const date = new Date(Array.isArray(value) ? value[0] : value);
-
-      if (date) {
-        this.scrollIntoView = `year_${date.getFullYear()}_month_${date.getMonth()}`;
-      }
-    },
-
-    getCurrentYearAndMonth(v) {
-      const date = new Date(v);
-      return { year: date.getFullYear(), month: date.getMonth() };
-    },
-
-    updateActionButton(value) {
-      const iMin = this.getCurrentYearAndMonth(this.base.minDate);
-      const iMax = this.getCurrentYearAndMonth(this.base.maxDate);
-      const iValue = this.getCurrentYearAndMonth(value);
-
-      const iMinTimestamp = new Date(iMin.year, iMin.month, 1).getTime();
-      const iMaxTimestamp = new Date(iMax.year, iMax.month, 1).getTime();
-      const iDateValue = new Date(iValue.year, iValue.month, 1);
-
-      const iPrevYearTimestamp = getPrevYear(iDateValue).getTime();
-      const iPrevMonthTimestamp = getPrevMonth(iDateValue).getTime();
-      const iNextMonthTimestamp = getNextMonth(iDateValue).getTime();
-      const iNextYearTimestamp = getNextYear(iDateValue).getTime();
-
-      const preYearBtnDisable = iPrevYearTimestamp < iMinTimestamp || iPrevMonthTimestamp < iMinTimestamp;
-      const prevMonthBtnDisable = iPrevMonthTimestamp < iMinTimestamp;
-      const nextYearBtnDisable = iNextMonthTimestamp > iMaxTimestamp || iNextYearTimestamp > iMaxTimestamp;
-      const nextMonthBtnDisable = iNextMonthTimestamp > iMaxTimestamp;
-
-      this.actionButtons = {
-        preYearBtnDisable,
-        prevMonthBtnDisable,
-        nextYearBtnDisable,
-        nextMonthBtnDisable,
+        defaultOverlayProps: {},
       };
     },
+    watch: {
+      type: {
+        handler(v) {
+          this.base.type = v;
+        },
+      },
 
-    updateCurrentMonth(newValue) {
-      if (this.switchMode === 'none') return;
-      this.calcCurrentMonth(newValue);
+      allowSameDay(v) {
+        this.base.allowSameDay = v;
+      },
+
+      confirmBtn: {
+        handler(v) {
+          if (typeof v === 'string') {
+            this.innerConfirmBtn = v === 'slot' ? 'slot' : { content: v };
+          } else if (typeof v === 'object') {
+            this.innerConfirmBtn = v;
+          }
+        },
+        immediate: true,
+      },
+
+      firstDayOfWeek: 'onWatchMinMaxDate',
+      minDate: 'onWatchMinMaxDate',
+      maxDate: 'onWatchMinMaxDate',
+
+      value: {
+        handler(v) {
+          this.dataValue = v;
+        },
+        immediate: true,
+        deep: true,
+      },
+
+      visible: {
+        handler(v) {
+          this.dataVisible = v;
+        },
+        immediate: true,
+      },
+
+      dataValue: {
+        handler(v) {
+          this.base.value = v;
+          this.calcMonths();
+          this.updateCurrentMonth(Array.isArray(v) ? v[0] : v);
+        },
+        deep: true,
+      },
+
+      dataVisible: {
+        handler(v) {
+          if (v) {
+            this.onScrollIntoView();
+            this.base.value = this.dataValue;
+            this.calcMonths();
+          }
+        },
+        immediate: true,
+      },
+      format: {
+        handler(v) {
+          const { usePopup, dataVisible: visible } = this;
+
+          if (this.base) {
+            this.base.format = v;
+          }
+
+          if (!usePopup || visible) {
+            this.calcMonths();
+          }
+        },
+        immediate: true,
+      },
+    },
+    created() {
+      const values = Object.keys(props).reduce((acc, key) => ({
+        ...acc,
+        [key]: this[key],
+      }));
+      this.base = new TCalendar(values);
     },
 
-    calcCurrentMonth(newValue) {
-      const date = newValue || this.getCurrentDate();
-      const { year, month } = this.getCurrentYearAndMonth(date);
-      const currentMonth = this.months.filter(item => item.year === year && item.month === month);
-
-      this.updateActionButton(date);
-
-      this.currentMonth = currentMonth.length > 0 ? currentMonth : [this.months[0]];
-    },
-
-    calcMonths() {
-      if (!this.base) return;
-
-      const months = this.base.getMonths();
-
-      this.months = months;
-    },
-
-    close(trigger) {
-      if (this.autoClose) {
-        this.$emit('update:visible', false);
-        this.dataVisible = false;
-      }
-      this.$emit('close', { trigger });
-    },
-
-    onVisibleChange() {
-      this.close('overlay');
-    },
-
-    handleClose() {
-      this.close('close-btn');
-    },
-
-    handleSelect(e) {
-      const { readonly } = this;
-      const { date, year, month } = e.currentTarget.dataset;
-
-      if (date.type === 'disabled' || readonly) return;
-
-      const rawValue = this.base.select({ cellType: date.type, year, month, date: date.day });
-
-      const value = this.toTime(rawValue);
+    mounted() {
+      const realLocalText = { ...defaultLocaleText, ...this.localeText };
+      this.initialValue();
+      this.onWatchMinMaxDate();
+      this.days = this.base.getDays(realLocalText.weekdays);
+      this.realLocalText = realLocalText;
 
       this.calcMonths();
       this.updateCurrentMonth();
 
-      if (this.confirmBtn == null) {
-        // 不显示确认按钮，则选择完即关闭 popup
-        if (this.type === 'single' || rawValue.length === 2) {
-          this.dataVisible = false;
-          this._trigger('change', { value }); // 受控
+      if (!this.usePopup) {
+        this.onScrollIntoView();
+      }
+    },
+    methods: {
+      coalesce,
+
+      getMonthTitle,
+      getDateLabel,
+      isDateSelected,
+      initialValue() {
+        const { dataValue: value, type, minDate } = this;
+
+        if (!value) {
+          const today = new Date();
+          const now = minDate || new Date(today.getFullYear(), today.getMonth(), today.getDate()).getTime(); // 获取 0 点的时间戳
+          const initialValue = type === 'single' ? now : [now];
+
+          if (type === 'range') {
+            initialValue[1] = now + 24 * 3600 * 1000; // 第二天
+          }
+
+          this.dataValue = initialValue;
+          this.base.value = initialValue;
         }
-      }
+      },
 
-      this.$emit('select', { value });
+      onScrollIntoView() {
+        const { dataValue: value } = this;
+
+        if (!value) return;
+
+        const date = new Date(Array.isArray(value) ? value[0] : value);
+
+        if (date) {
+          this.scrollIntoView = `year_${date.getFullYear()}_month_${date.getMonth()}`;
+        }
+      },
+
+      getCurrentYearAndMonth(v) {
+        const date = new Date(v);
+        return { year: date.getFullYear(), month: date.getMonth() };
+      },
+
+      updateActionButton(value) {
+        const iMin = this.getCurrentYearAndMonth(this.base.minDate);
+        const iMax = this.getCurrentYearAndMonth(this.base.maxDate);
+        const iValue = this.getCurrentYearAndMonth(value);
+
+        const iMinTimestamp = new Date(iMin.year, iMin.month, 1).getTime();
+        const iMaxTimestamp = new Date(iMax.year, iMax.month, 1).getTime();
+        const iDateValue = new Date(iValue.year, iValue.month, 1);
+
+        const iPrevYearTimestamp = getPrevYear(iDateValue).getTime();
+        const iPrevMonthTimestamp = getPrevMonth(iDateValue).getTime();
+        const iNextMonthTimestamp = getNextMonth(iDateValue).getTime();
+        const iNextYearTimestamp = getNextYear(iDateValue).getTime();
+
+        const preYearBtnDisable = iPrevYearTimestamp < iMinTimestamp || iPrevMonthTimestamp < iMinTimestamp;
+        const prevMonthBtnDisable = iPrevMonthTimestamp < iMinTimestamp;
+        const nextYearBtnDisable = iNextMonthTimestamp > iMaxTimestamp || iNextYearTimestamp > iMaxTimestamp;
+        const nextMonthBtnDisable = iNextMonthTimestamp > iMaxTimestamp;
+
+        this.actionButtons = {
+          preYearBtnDisable,
+          prevMonthBtnDisable,
+          nextYearBtnDisable,
+          nextMonthBtnDisable,
+        };
+      },
+
+      updateCurrentMonth(newValue) {
+        if (this.switchMode === 'none') return;
+        this.calcCurrentMonth(newValue);
+      },
+
+      calcCurrentMonth(newValue) {
+        const date = newValue || this.getCurrentDate();
+        const { year, month } = this.getCurrentYearAndMonth(date);
+        const currentMonth = this.months.filter(item => item.year === year && item.month === month);
+
+        this.updateActionButton(date);
+
+        this.currentMonth = currentMonth.length > 0 ? currentMonth : [this.months[0]];
+      },
+
+      calcMonths() {
+        if (!this.base) return;
+
+        const months = this.base.getMonths();
+
+        this.months = months;
+      },
+
+      close(trigger) {
+        if (this.autoClose) {
+          this.$emit('update:visible', false);
+          this.dataVisible = false;
+        }
+        this.$emit('close', { trigger });
+      },
+
+      onVisibleChange() {
+        this.close('overlay');
+      },
+
+      handleClose() {
+        this.close('close-btn');
+      },
+
+      handleSelect(e) {
+        const { readonly } = this;
+        const { date, year, month } = e.currentTarget.dataset;
+
+        if (date.type === 'disabled' || readonly) return;
+
+        const rawValue = this.base.select({ cellType: date.type, year, month, date: date.day });
+
+        const value = this.toTime(rawValue);
+
+        this.calcMonths();
+        this.updateCurrentMonth();
+
+        if (this.confirmBtn == null) {
+        // 不显示确认按钮，则选择完即关闭 popup
+          if (this.type === 'single' || rawValue.length === 2) {
+            this.dataVisible = false;
+            this._trigger('change', { value }); // 受控
+          }
+        }
+
+        this.$emit('select', { value });
+      },
+
+      onTplButtonTap() {
+        const rawValue = this.base.getTrimValue();
+        const value = this.toTime(rawValue);
+
+        this.close('confirm-btn');
+        this._trigger('confirm', { value });
+      },
+
+      toTime(val) {
+        if (!val) return null;
+        if (Array.isArray(val)) {
+          return val.map(item => item.getTime());
+        }
+        return val.getTime();
+      },
+
+      onScroll(e) {
+        this.$emit('scroll', e.detail);
+      },
+
+      getCurrentDate() {
+        let time = Array.isArray(this.base.value) ? this.base.value[0] : this.base.value;
+
+        if (this.currentMonth.length > 0) {
+          const year = this.currentMonth[0]?.year;
+          const month = this.currentMonth[0]?.month;
+          time = new Date(year, month, 1).getTime();
+        }
+
+        return time;
+      },
+
+      handleSwitchModeChange(e) {
+        const { type, disabled } = e.currentTarget.dataset;
+        if (disabled) return;
+
+        const date = this.getCurrentDate();
+
+        const funcMap = {
+          'pre-year': () => getPrevYear(date),
+          'pre-month': () => getPrevMonth(date),
+          'next-month': () => getNextMonth(date),
+          'next-year': () => getNextYear(date),
+        };
+        const newValue = funcMap[type]();
+        if (!newValue) return;
+
+        const { year, month } = this.getCurrentYearAndMonth(newValue);
+        this.$emit('panel-change', { year, month: month + 1 });
+
+        this.calcCurrentMonth(newValue);
+      },
+
+      onWatchMinMaxDate() {
+        const { firstDayOfWeek, minDate, maxDate } = this;
+        firstDayOfWeek && (this.base.firstDayOfWeek = firstDayOfWeek);
+        minDate && (this.base.minDate = minDate);
+        maxDate && (this.base.maxDate = maxDate);
+        this.calcMonths();
+      },
+
+      isShowOverlay(value, defaultValue) {
+        return tools.isBoolean(value) ? value : defaultValue;
+      },
     },
-
-    onTplButtonTap() {
-      const rawValue = this.base.getTrimValue();
-      const value = this.toTime(rawValue);
-
-      this.close('confirm-btn');
-      this._trigger('confirm', { value });
-    },
-
-    toTime(val) {
-      if (!val) return null;
-      if (Array.isArray(val)) {
-        return val.map(item => item.getTime());
-      }
-      return val.getTime();
-    },
-
-    onScroll(e) {
-      this.$emit('scroll', e.detail);
-    },
-
-    getCurrentDate() {
-      let time = Array.isArray(this.base.value) ? this.base.value[0] : this.base.value;
-
-      if (this.currentMonth.length > 0) {
-        const year = this.currentMonth[0]?.year;
-        const month = this.currentMonth[0]?.month;
-        time = new Date(year, month, 1).getTime();
-      }
-
-      return time;
-    },
-
-    handleSwitchModeChange(e) {
-      const { type, disabled } = e.currentTarget.dataset;
-      if (disabled) return;
-
-      const date = this.getCurrentDate();
-
-      const funcMap = {
-        'pre-year': () => getPrevYear(date),
-        'pre-month': () => getPrevMonth(date),
-        'next-month': () => getNextMonth(date),
-        'next-year': () => getNextYear(date),
-      };
-      const newValue = funcMap[type]();
-      if (!newValue) return;
-
-      const { year, month } = this.getCurrentYearAndMonth(newValue);
-      this.$emit('panel-change', { year, month: month + 1 });
-
-      this.calcCurrentMonth(newValue);
-    },
-
-    onWatchMinMaxDate() {
-      const { firstDayOfWeek, minDate, maxDate } = this;
-      firstDayOfWeek && (this.base.firstDayOfWeek = firstDayOfWeek);
-      minDate && (this.base.minDate = minDate);
-      maxDate && (this.base.maxDate = maxDate);
-      this.calcMonths();
-    },
-
-    isShowOverlay(value, defaultValue) {
-      return tools.isBoolean(value) ? value : defaultValue;
-    },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./calendar.css"></style>
 <style scoped>

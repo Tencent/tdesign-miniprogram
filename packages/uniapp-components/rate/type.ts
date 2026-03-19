@@ -23,7 +23,7 @@ export interface TdRateProps {
   /**
    * 是否禁用评分
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * 评分图标的间距
    * @default 8
@@ -36,7 +36,7 @@ export interface TdRateProps {
   /**
    * 定义图标前缀
    */
-  iconPrefix?: string;
+  iconPrefix?: string | null;
   /**
    * 选择评分弹框的位置，值为空字符表示不显示评分弹框
    * @default top

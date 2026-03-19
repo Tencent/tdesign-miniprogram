@@ -4,7 +4,7 @@
       classPrefix + '__wrapper',
       tClass
     ]"
-    :style="tools._style([utils.getStyles(isShow), customStyle, innerStyle])"
+    :style="'' + tools._style([utils.getStyles(isShow), customStyle, innerStyle])"
   >
     <t-badge
       v-if="badgeProps"
@@ -26,7 +26,7 @@
           utils.getClass(classPrefix, dataSize || 'medium', dataShape, dataBordered),
           tClassImage
         ]"
-        :style="utils.getSize(dataSize, windowWidth)"
+        :style="'' + utils.getSize(dataSize, windowWidth)"
         :aria-label="ariaLabel || alt || '头像'"
         :aria-role="ariaRole || 'img'"
         :aria-hidden="ariaHidden"
@@ -92,109 +92,116 @@ import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 const name = `${prefix}-avatar`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-image`,
-    `${prefix}-class-icon`,
-    `${prefix}-class-alt`,
-    `${prefix}-class-content`,
-  ],
-  mixins: [ChildrenMixin(RELATION_MAP.Avatar)],
+export default {
   components: {
     TIcon,
     TBadge,
     TImage,
   },
-  props: {
-    ...avatarProps,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      isShow: true,
-      zIndex: 0,
-      windowWidth: systemInfo.windowWidth,
-      utils,
-      tools,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-image`,
+      `${prefix}-class-icon`,
+      `${prefix}-class-alt`,
+      `${prefix}-class-content`,
+    ],
+    mixins: [ChildrenMixin(RELATION_MAP.Avatar)],
+    components: {
+      TIcon,
+      TBadge,
+      TImage,
+    },
+    props: {
+      ...avatarProps,
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        isShow: true,
+        zIndex: 0,
+        windowWidth: systemInfo.windowWidth,
+        utils,
+        tools,
 
-      iconName: '',
-      iconData: {},
+        iconName: '',
+        iconData: {},
 
-      dataShape: this.shape,
-      dataSize: this.size,
-      dataBordered: this.bordered,
-      innerStyle: '',
-    };
-  },
-  computed: {
-    iconCustomStyle() {
-      const fontSize = {
-        small: 'var(--td-avatar-icon-small-font-size, 20px)',
-        medium: 'var(--td-avatar-icon-medium-font-size, 24px)',
-        large: 'var(--td-avatar-icon-large-font-size, 32px)',
+        dataShape: this.shape,
+        dataSize: this.size,
+        dataBordered: this.bordered,
+        innerStyle: '',
       };
-
-      return tools._style([
-        {
-          fontSize: this.iconData.size
-            ? addUnit(this.iconData.size)
-            : fontSize[this.dataSize],
-        },
-        this.iconData.style || '',
-      ]);
     },
-    imageCustomStyle() {
-      return tools._style([
-        {
-          width: '100%',
-          height: '100%',
-        },
-        this.imageProps?.style || '',
-      ]);
-    },
-  },
-  watch: {
-    icon: {
-      handler(t) {
-        const obj = setIcon('icon', t, '');
+    computed: {
+      iconCustomStyle() {
+        const fontSize = {
+          small: 'var(--td-avatar-icon-small-font-size, 20px)',
+          medium: 'var(--td-avatar-icon-medium-font-size, 24px)',
+          large: 'var(--td-avatar-icon-large-font-size, 32px)',
+        };
 
-        Object.keys(obj).forEach((key) => {
-          this[key] = obj[key];
-        });
+        return tools._style([
+          {
+            fontSize: this.iconData.size
+              ? addUnit(this.iconData.size)
+              : fontSize[this.dataSize],
+          },
+          this.iconData.style || '',
+        ]);
       },
-      immediate: true,
+      imageCustomStyle() {
+        return tools._style([
+          {
+            width: '100%',
+            height: '100%',
+          },
+          this.imageProps?.style || '',
+        ]);
+      },
     },
+    watch: {
+      icon: {
+        handler(t) {
+          const obj = setIcon('icon', t, '');
 
-  },
-  mounted() {
+          Object.keys(obj).forEach((key) => {
+            this[key] = obj[key];
+          });
+        },
+        immediate: true,
+      },
 
-  },
-  methods: {
-    innerAfterLinked() {
-      this.dataShape = this.shape || this[RELATION_MAP.Avatar]?.shape || 'circle';
-      this.dataSize = this.size || this[RELATION_MAP.Avatar]?.size;
-      this.dataBordered = true;
     },
-    hide() {
-      this.isShow = false;
+    mounted() {
+
     },
-    onLoadError(e) {
-      if (this.hideOnLoadFailed) {
+    methods: {
+      innerAfterLinked() {
+        this.dataShape = this.shape || this[RELATION_MAP.Avatar]?.shape || 'circle';
+        this.dataSize = this.size || this[RELATION_MAP.Avatar]?.size;
+        this.dataBordered = true;
+      },
+      hide() {
         this.isShow = false;
-      }
-      this.$emit('error', e && e.e);
+      },
+      onLoadError(e) {
+        if (this.hideOnLoadFailed) {
+          this.isShow = false;
+        }
+        this.$emit('error', e && e.e);
+      },
+      setStyle(val = '') {
+        this.innerStyle = val;
+      },
     },
-    setStyle(val = '') {
-      this.innerStyle = val;
-    },
-  },
-});
+  }),
+};
 
 </script>
 <style scoped src="./avatar.css"></style>

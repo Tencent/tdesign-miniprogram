@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     :class="classPrefix + ' ' + tClass"
   >
     <t-grid
@@ -38,7 +38,7 @@
               :shape="(imageProps && imageProps.shape) || 'round'"
               :webp="(imageProps && imageProps.webp) || false"
               :show-menu-by-longpress="(imageProps && imageProps.showMenuByLongpress) || false"
-              @click="onPreview($event, { file, index })"
+              @click="(e) => onPreview(e, { file, index })"
             />
             <video
               v-if="file.type === 'video'"
@@ -133,12 +133,12 @@
             v-for="(file, index) in customFiles"
             :key="index"
             :ref="classPrefix + '__drag-item'"
-            :class="getDragItemClass(index)"
-            :style="getDragItemStyle(index)"
+            :class="'' + getDragItemClass(index)"
+            :style="'' + getDragItemStyle(index)"
             :data-index="index"
-            @longpress="parseEventDynamicCode($event, 'longPress', index)"
-            @touchmove.stop.prevent="parseEventDynamicCode($event, dragging ? 'touchMove' : '', index)"
-            @touchend.stop.prevent="parseEventDynamicCode($event, dragging ? 'touchEnd' : '', index)"
+            @longpress="(e) => parseEventDynamicCode(e, 'longPress', index)"
+            @touchmove.stop.prevent="(e) => parseEventDynamicCode(e, dragging ? 'touchMove' : '', index)"
+            @touchend.stop.prevent="(e) => parseEventDynamicCode(e, dragging ? 'touchEnd' : '', index)"
           >
             <t-grid-item
               :t-class="classPrefix + '__grid ' + classPrefix + '__grid-file'"
@@ -166,7 +166,7 @@
                   :shape="(imageProps && imageProps.shape) || 'round'"
                   :webp="(imageProps && imageProps.webp) || false"
                   :show-menu-by-longpress="(imageProps && imageProps.showMenuByLongpress) || false"
-                  @click="onPreview($event, { file, index })"
+                  @click="(e) => onPreview(e, { file, index })"
                 />
                 <video
                   v-if="file.type === 'video'"
@@ -231,8 +231,8 @@
           <view
             v-if="addBtn && customLimit > 0"
             :ref="classPrefix + '__drag-item'"
-            :class="getDragItemClass(customFiles.length)"
-            :style="getDragItemStyle(customFiles.length)"
+            :class="''+getDragItemClass(customFiles.length)"
+            :style="''+getDragItemStyle(customFiles.length)"
           >
             <t-grid-item
               :t-class="classPrefix + '__grid'"
@@ -307,562 +307,514 @@ const makeMethods = () => [
 }, {});
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  controlledProps: [
-    {
-      key: 'files',
-      event: 'success',
-    },
-  ],
-  externalClasses: [`${prefix}-class`],
+export default {
   components: {
     TGrid,
     TGridItem,
     TIcon,
     TImage,
   },
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      classPrefix: name,
-      prefix,
-      current: false,
-      proofs: [],
-      customFiles: [], // 内部动态修改的files
-      customLimit: 0, // 内部动态修改的limit
-      column: 4,
-      dragBaseData: {}, // 拖拽所需要页面数据
-      rows: 0, // 行数
-      dragWrapStyle: '', // 拖拽容器的样式
-      dragList: [], // 拖拽的数据列
-      dragging: true, // 是否开始拖拽
-      dragLayout: false, // 是否开启拖拽布局
-      tools,
-
-      gridItemStyle: '',
-
-      fakeState: {},
-
-      dragItemClassList: [],
-      dragItemStyleList: [],
-    };
-  },
-  watch: {
-    files: {
-      handler() {
-        this.onWatchFilesLimit();
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    controlledProps: [
+      {
+        key: 'files',
+        event: 'success',
       },
-      deep: true,
+    ],
+    externalClasses: [`${prefix}-class`],
+    components: {
+      TGrid,
+      TGridItem,
+      TIcon,
+      TImage,
     },
-    max: 'onWatchFilesLimit',
-    draggable: {
-      handler() {
-        this.onWatchFilesLimit();
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        classPrefix: name,
+        prefix,
+        current: false,
+        proofs: [],
+        customFiles: [], // 内部动态修改的files
+        customLimit: 0, // 内部动态修改的limit
+        column: 4,
+        dragBaseData: {}, // 拖拽所需要页面数据
+        rows: 0, // 行数
+        dragWrapStyle: '', // 拖拽容器的样式
+        dragList: [], // 拖拽的数据列
+        dragging: true, // 是否开始拖拽
+        dragLayout: false, // 是否开启拖拽布局
+        tools,
+
+        gridItemStyle: '',
+
+        fakeState: {},
+
+        dragItemClassList: [],
+        dragItemStyleList: [],
+      };
+    },
+    watch: {
+      files: {
+        handler() {
+          this.onWatchFilesLimit();
+        },
+        deep: true,
       },
-      deep: true,
-    },
-
-    gridConfig: {
-      handler() {
-        this.updateGrid();
+      max: 'onWatchFilesLimit',
+      draggable: {
+        handler() {
+          this.onWatchFilesLimit();
+        },
+        deep: true,
       },
-      deep: true,
-    },
-    dragList: {
-      handler(val) {
-        setTimeout(() => {
-          this.listObserver(val);
-        }, 33);
+
+      gridConfig: {
+        handler() {
+          this.updateGrid();
+        },
+        deep: true,
       },
-      deep: true,
-      immediate: true,
-    },
-    dragBaseData: {
-      handler(val) {
-        this.baseDataObserver(val);
+      dragList: {
+        handler(val) {
+          setTimeout(() => {
+            this.listObserver(val);
+          }, 33);
+        },
+        deep: true,
+        immediate: true,
       },
-      deep: true,
-      immediate: true,
+      dragBaseData: {
+        handler(val) {
+          this.baseDataObserver(val);
+        },
+        deep: true,
+        immediate: true,
+      },
     },
-  },
-  mounted() {
-    this.handleLimit(this.files, this.max);
-    this.updateGrid();
-  },
-  methods: {
-    getWrapperAriaRole,
-    getWrapperAriaLabel,
-
-    ...makeMethods(),
-
-    handleLimit(customFiles, max) {
-      if (max === 0) {
-        max = Number.MAX_SAFE_INTEGER;
-      }
-      this.customFiles = customFiles.length > max ? customFiles.slice(0, max) : customFiles;
-      this.customLimit = max - customFiles.length;
-      this.dragging = true;
-
-      this.initDragLayout();
+    mounted() {
+      this.handleLimit(this.files, this.max);
+      this.updateGrid();
     },
+    methods: {
+      getWrapperAriaRole,
+      getWrapperAriaLabel,
 
-    triggerSuccessEvent(files) {
-      this._trigger('success', { files: [...this.customFiles, ...files] });
-    },
+      ...makeMethods(),
 
-    triggerFailEvent(err) {
-      this.$emit('fail', err);
-    },
+      handleLimit(customFiles, max) {
+        if (max === 0) {
+          max = Number.MAX_SAFE_INTEGER;
+        }
+        this.customFiles = customFiles.length > max ? customFiles.slice(0, max) : customFiles;
+        this.customLimit = max - customFiles.length;
+        this.dragging = true;
 
-    onFileClick(e) {
-      const { file, index } = e.currentTarget.dataset;
-      this.$emit('click', { index, file });
-    },
+        this.initDragLayout();
+      },
 
-    /**
+      triggerSuccessEvent(files) {
+        this._trigger('success', { files: [...this.customFiles, ...files] });
+      },
+
+      triggerFailEvent(err) {
+        this.$emit('fail', err);
+      },
+
+      onFileClick(e) {
+        const { file, index } = e.currentTarget.dataset;
+        this.$emit('click', { index, file });
+      },
+
+      /**
    * 由于小程序暂时在ios上不支持返回上传文件的fileType，这里用文件的后缀来判断
    * @param mediaType
    * @param tempFilePath
    * @returns string
    * @link https://developers.weixin.qq.com/community/develop/doc/00042820b28ee8fb41fc4d0c254c00
    */
-    getFileType(mediaType, tempFilePath, fileType) {
-      if (fileType) return fileType; // 如果有返回fileType就直接用
-      if (mediaType.length === 1) {
-      // 在单选媒体类型的时候直接使用单选媒体类型
-        return mediaType[0];
-      }
-      // 否则根据文件后缀进行判读
-      const videoType = ['avi', 'wmv', 'mkv', 'mp4', 'mov', 'rm', '3gp', 'flv', 'mpg', 'rmvb'];
-      const temp = tempFilePath.split('.');
-      const postfix = temp[temp.length - 1];
-      if (videoType.includes(postfix.toLocaleLowerCase())) {
-        return 'video';
-      }
-      return 'image';
-    },
-
-    // 选中文件之后，计算一个随机的短文件名
-    getRandFileName(filePath) {
-      const extIndex = filePath.lastIndexOf('.');
-      const extName = extIndex === -1 ? '' : filePath.substr(extIndex);
-      return parseInt(`${Date.now()}${Math.floor(Math.random() * 900 + 100)}`, 10).toString(36) + extName;
-    },
-
-    checkFileSize(size, sizeLimit, fileType) {
-      if (isOverSize(size, sizeLimit)) {
-        let title = `${fileType === 'video' ? '视频' : '图片'}大小超过限制`;
-
-        if (isObject(sizeLimit)) {
-          const { size: limitSize, message: limitMessage } = sizeLimit;
-          title = limitMessage?.replace('{sizeLimit}', String(limitSize));
+      getFileType(mediaType, tempFilePath, fileType) {
+        if (fileType) return fileType; // 如果有返回fileType就直接用
+        if (mediaType.length === 1) {
+          // 在单选媒体类型的时候直接使用单选媒体类型
+          return mediaType[0];
         }
-        uni.showToast({ icon: 'none', title });
-        return true;
-      }
-      return false;
-    },
+        // 否则根据文件后缀进行判读
+        const videoType = ['avi', 'wmv', 'mkv', 'mp4', 'mov', 'rm', '3gp', 'flv', 'mpg', 'rmvb'];
+        const temp = tempFilePath.split('.');
+        const postfix = temp[temp.length - 1];
+        if (videoType.includes(postfix.toLocaleLowerCase())) {
+          return 'video';
+        }
+        return 'image';
+      },
 
-    onDelete(e) {
-      const { index } = e.currentTarget.dataset;
-      this.deleteHandle(index);
-    },
+      // 选中文件之后，计算一个随机的短文件名
+      getRandFileName(filePath) {
+        const extIndex = filePath.lastIndexOf('.');
+        const extName = extIndex === -1 ? '' : filePath.substr(extIndex);
+        return parseInt(`${Date.now()}${Math.floor(Math.random() * 900 + 100)}`, 10).toString(36) + extName;
+      },
 
-    deleteHandle(index) {
-      const { customFiles } = this;
-      const delFile = customFiles[index];
-      this.$emit('remove', { index, file: delFile });
-    },
+      checkFileSize(size, sizeLimit, fileType) {
+        if (isOverSize(size, sizeLimit)) {
+          let title = `${fileType === 'video' ? '视频' : '图片'}大小超过限制`;
 
-    updateGrid() {
-      let { gridConfig = {} } = this;
-      if (!isObject(gridConfig)) gridConfig = {};
-      const { column = 4, width = 160, height = 160 } = gridConfig;
+          if (isObject(sizeLimit)) {
+            const { size: limitSize, message: limitMessage } = sizeLimit;
+            title = limitMessage?.replace('{sizeLimit}', String(limitSize));
+          }
+          uni.showToast({ icon: 'none', title });
+          return true;
+        }
+        return false;
+      },
 
-      this.gridItemStyle = `width:${width}rpx;height:${height}rpx`;
-      this.column = column;
-    },
+      onDelete(e) {
+        const { index } = e.currentTarget.dataset;
+        this.deleteHandle(index);
+      },
 
-    resetDragLayout() {
-      this.dragBaseData = {};
-      this.dragWrapStyle = '';
-      this.dragLayout = false;
-    },
+      deleteHandle(index) {
+        const { customFiles } = this;
+        const delFile = customFiles[index];
+        this.$emit('remove', { index, file: delFile });
+      },
 
-    initDragLayout() {
-      const { draggable, disabled, customFiles } = this;
-      if (!draggable || disabled || customFiles.length === 0) {
-        this.resetDragLayout();
-        return;
-      }
-      this.initDragList();
-      setTimeout(() => {
-        this.initDragBaseData();
-      }, 33)
-      ;
-    },
+      updateGrid() {
+        let { gridConfig = {} } = this;
+        if (!isObject(gridConfig)) gridConfig = {};
+        const { column = 4, width = 160, height = 160 } = gridConfig;
 
-    initDragList() {
-      let i = 0;
-      const { column, customFiles, customLimit } = this;
-      const dragList = [];
-      customFiles.forEach((item, index) => {
-        dragList.push({
-          realKey: i, // 真实顺序
-          sortKey: index, // 整体顺序
-          tranX: `${(index % column) * 100}%`,
-          tranY: `${Math.floor(index / column) * 100}%`,
-          data: { ...item },
+        this.gridItemStyle = `width:${width}rpx;height:${height}rpx`;
+        this.column = column;
+      },
+
+      resetDragLayout() {
+        this.dragBaseData = {};
+        this.dragWrapStyle = '';
+        this.dragLayout = false;
+      },
+
+      initDragLayout() {
+        const { draggable, disabled, customFiles } = this;
+        if (!draggable || disabled || customFiles.length === 0) {
+          this.resetDragLayout();
+          return;
+        }
+        this.initDragList();
+        setTimeout(() => {
+          this.initDragBaseData();
+        }, 33)
+        ;
+      },
+
+      initDragList() {
+        let i = 0;
+        const { column, customFiles, customLimit } = this;
+        const dragList = [];
+        customFiles.forEach((item, index) => {
+          dragList.push({
+            realKey: i, // 真实顺序
+            sortKey: index, // 整体顺序
+            tranX: `${(index % column) * 100}%`,
+            tranY: `${Math.floor(index / column) * 100}%`,
+            data: { ...item },
+          });
+          i += 1;
         });
-        i += 1;
-      });
-      if (customLimit > 0) {
-        const listLength = dragList.length;
-        dragList.push({
-          realKey: listLength, // 真实顺序
-          sortKey: listLength, // 整体顺序
-          tranX: `${(listLength % column) * 100}%`,
-          tranY: `${Math.floor(listLength / column) * 100}%`,
-          fixed: true,
+        if (customLimit > 0) {
+          const listLength = dragList.length;
+          dragList.push({
+            realKey: listLength, // 真实顺序
+            sortKey: listLength, // 整体顺序
+            tranX: `${(listLength % column) * 100}%`,
+            tranY: `${Math.floor(listLength / column) * 100}%`,
+            fixed: true,
+          });
+        }
+        this.rows = Math.ceil(dragList.length / column);
+
+        this.dragList = dragList;
+      },
+
+      initDragBaseData() {
+        const { classPrefix, rows, column } = this;
+
+        let query;
+        // #ifdef H5 || APP-PLUS
+        query = uni.createSelectorQuery().in(this);
+        // #endif
+        if (!query) {
+          query = this.createSelectorQuery();
+        }
+
+
+        let selectorGridItem;
+        let selectorGrid;
+        // #ifdef H5 || APP-PLUS
+        selectorGridItem = '.t-grid-item';
+        selectorGrid = '.t-grid';
+        // #endif
+
+        if (!selectorGridItem) {
+          selectorGridItem = `.${classPrefix} >>> .t-grid-item`;
+          selectorGrid = `.${classPrefix} >>> .t-grid`;
+        }
+
+        query.select(selectorGridItem).boundingClientRect();
+        query.select(selectorGrid).boundingClientRect();
+        query.selectViewport().scrollOffset();
+        query.exec((res) => {
+          const [{ width, height }, { left, top }, { scrollTop }] = res;
+          const dragBaseData = {
+            rows,
+            classPrefix,
+            itemWidth: width,
+            itemHeight: height,
+            wrapLeft: left,
+            wrapTop: top + scrollTop,
+            columns: column,
+          };
+          const dragWrapStyle = `height: ${rows * height}px`;
+
+          this.dragBaseData = dragBaseData;
+          this.dragWrapStyle = dragWrapStyle;
+          this.dragLayout = true;
+
+
+          // 为了给拖拽元素加上拖拽方法，同时控制不拖拽时不取消穿透
+          const timer = setTimeout(() => {
+            this.dragging = false;
+            clearTimeout(timer);
+          }, 0);
         });
-      }
-      this.rows = Math.ceil(dragList.length / column);
+      },
 
-      this.dragList = dragList;
-    },
+      getPreviewMediaSources() {
+        const previewMediaSources = [];
+        this.customFiles.forEach((ele) => {
+          const mediaSource = {
+            url: ele.url,
+            type: ele.type,
+            poster: ele.thumb || undefined,
+          };
+          previewMediaSources.push(mediaSource);
+        });
 
-    initDragBaseData() {
-      const { classPrefix, rows, column } = this;
+        return previewMediaSources;
+      },
 
-      let query;
-      // #ifdef H5 || APP-PLUS
-      query = uni.createSelectorQuery().in(this);
-      // #endif
-      if (!query) {
-        query = this.createSelectorQuery();
-      }
+      onPreview(e) {
+        this.onFileClick(e);
+        const { preview } = this;
 
+        if (!preview) return;
 
-      let selectorGridItem;
-      let selectorGrid;
-      // #ifdef H5 || APP-PLUS
-      selectorGridItem = '.t-grid-item';
-      selectorGrid = '.t-grid';
-      // #endif
+        const usePreviewMedia = this.customFiles.some(file => file.type === 'video');
+        if (usePreviewMedia) {
+          this.onPreviewMedia(e);
+        } else {
+          this.onPreviewImage(e);
+        }
+      },
 
-      if (!selectorGridItem) {
-        selectorGridItem = `.${classPrefix} >>> .t-grid-item`;
-        selectorGrid = `.${classPrefix} >>> .t-grid`;
-      }
+      onPreviewImage(e) {
+        const { index } = e.currentTarget.dataset;
+        const urls = this.customFiles.filter(file => file.percent !== -1).map(file => file.url);
+        const current = this.customFiles[index]?.url;
+        uni.previewImage({
+          urls,
+          current,
+          fail() {
+            uni.showToast({ title: '预览图片失败', icon: 'none' });
+          },
+        });
+      },
 
-      query.select(selectorGridItem).boundingClientRect();
-      query.select(selectorGrid).boundingClientRect();
-      query.selectViewport().scrollOffset();
-      query.exec((res) => {
-        const [{ width, height }, { left, top }, { scrollTop }] = res;
-        const dragBaseData = {
-          rows,
-          classPrefix,
-          itemWidth: width,
-          itemHeight: height,
-          wrapLeft: left,
-          wrapTop: top + scrollTop,
-          columns: column,
-        };
-        const dragWrapStyle = `height: ${rows * height}px`;
+      onPreviewMedia(e) {
+        const { index: current } = e.currentTarget.dataset;
+        const sources = this.getPreviewMediaSources();
+        uni.previewMedia({
+          sources,
+          current,
+          fail() {
+            uni.showToast({ title: '预览视频失败', icon: 'none' });
+          },
+        });
+      },
 
-        this.dragBaseData = dragBaseData;
-        this.dragWrapStyle = dragWrapStyle;
-        this.dragLayout = true;
-
-
-        // 为了给拖拽元素加上拖拽方法，同时控制不拖拽时不取消穿透
-        const timer = setTimeout(() => {
-          this.dragging = false;
-          clearTimeout(timer);
-        }, 0);
-      });
-    },
-
-    getPreviewMediaSources() {
-      const previewMediaSources = [];
-      this.customFiles.forEach((ele) => {
-        const mediaSource = {
-          url: ele.url,
-          type: ele.type,
-          poster: ele.thumb || undefined,
-        };
-        previewMediaSources.push(mediaSource);
-      });
-
-      return previewMediaSources;
-    },
-
-    onPreview(e) {
-      this.onFileClick(e);
-      const { preview } = this;
-
-      if (!preview) return;
-
-      const usePreviewMedia = this.customFiles.some(file => file.type === 'video');
-      if (usePreviewMedia) {
-        this.onPreviewMedia(e);
-      } else {
-        this.onPreviewImage(e);
-      }
-    },
-
-    onPreviewImage(e) {
-      const { index } = e.currentTarget.dataset;
-      const urls = this.customFiles.filter(file => file.percent !== -1).map(file => file.url);
-      const current = this.customFiles[index]?.url;
-      uni.previewImage({
-        urls,
-        current,
-        fail() {
-          uni.showToast({ title: '预览图片失败', icon: 'none' });
-        },
-      });
-    },
-
-    onPreviewMedia(e) {
-      const { index: current } = e.currentTarget.dataset;
-      const sources = this.getPreviewMediaSources();
-      uni.previewMedia({
-        sources,
-        current,
-        fail() {
-          uni.showToast({ title: '预览视频失败', icon: 'none' });
-        },
-      });
-    },
-
-    uploadFiles(files) {
-      return Promise.resolve().then(() => {
+      uploadFiles(files) {
+        return Promise.resolve().then(() => {
         // 开始调用上传函数
-        const task = this.data.requestMethod(files);
-        if (task instanceof Promise) {
-          return task;
-        }
-        return Promise.resolve({});
-      });
-    },
+          const task = this.data.requestMethod(files);
+          if (task instanceof Promise) {
+            return task;
+          }
+          return Promise.resolve({});
+        });
+      },
 
-    startUpload(files) {
+      startUpload(files) {
       // 如果传入了上传函数，则进度设为0并开始上传，否则跳过上传
-      if (typeof this.requestMethod === 'function') {
-        return this.uploadFiles(files)
-          .then(() => {
-            files.forEach((file) => {
-              file.percent = 100;
+        if (typeof this.requestMethod === 'function') {
+          return this.uploadFiles(files)
+            .then(() => {
+              files.forEach((file) => {
+                file.percent = 100;
+              });
+              this.triggerSuccessEvent(files);
+            })
+            .catch((err) => {
+              this.triggerFailEvent(err);
             });
-            this.triggerSuccessEvent(files);
-          })
-          .catch((err) => {
-            this.triggerFailEvent(err);
-          });
-      }
+        }
 
-      // 如果没有上传函数，success事件与微信api上传成功关联
-      this.triggerSuccessEvent(files);
+        // 如果没有上传函数，success事件与微信api上传成功关联
+        this.triggerSuccessEvent(files);
 
-      this.handleLimit(this.customFiles, this.max);
-      return Promise.resolve();
-    },
+        this.handleLimit(this.customFiles, this.max);
+        return Promise.resolve();
+      },
 
-    onWatchFilesLimit() {
-      this.handleLimit(this.files, this.max);
-    },
+      onWatchFilesLimit() {
+        this.handleLimit(this.files, this.max);
+      },
 
-    onAddTap() {
-      const { disabled, mediaType, source } = this;
-      if (disabled) return;
-      if (source === 'media') {
-        this.chooseMedia(mediaType);
-      } else {
-        this.chooseMessageFile(mediaType);
-      }
-    },
+      onAddTap() {
+        const { disabled, mediaType, source } = this;
+        if (disabled) return;
+        if (source === 'media') {
+          this.chooseMedia(mediaType);
+        } else {
+          this.chooseMessageFile(mediaType);
+        }
+      },
 
-    chooseMedia(mediaType) {
-      const { customLimit } = this;
-      const { config, sizeLimit } = this;
+      chooseMedia(mediaType) {
+        const { customLimit } = this;
+        const { config, sizeLimit } = this;
 
-      let parsed = false;
+        let parsed = false;
 
-      // #ifdef H5
-      this.chooseFileH5(mediaType, customLimit, sizeLimit);
-      parsed = true;
-      // #endif
+        // #ifdef H5
+        this.chooseFileH5(mediaType, customLimit, sizeLimit);
+        parsed = true;
+        // #endif
 
-      if (parsed) {
-        return;
-      }
-
-      let func = 'chooseMedia';
-      // #ifdef MP-ALIPAY
-      func = 'chooseImage';
-      // #endif
-      // #ifdef MP-WEIXIN
-      if (isPC || isWxWork) {
-        func = 'chooseImage';
-      }
-      // #endif
-      uni[func]({
-        count: Math.min(20, customLimit),
-        mediaType,
-        ...config,
-        success: (res) => {
-          const files = [];
-
-          // 支持单/多文件
-          res.tempFiles.forEach((temp) => {
-            const { size, fileType, tempFilePath: tTempFilePath, path: tPath, width, height, duration, thumbTempFilePath, ...res } = temp;
-            const tempFilePath = tTempFilePath || tPath;
-            if (this.checkFileSize(size, sizeLimit, fileType)) return;
-
-            const name = temp.name || this.getRandFileName(tempFilePath);
-            files.push({
-              name,
-              type: this.getFileType(mediaType, temp.name || tempFilePath, fileType),
-              url: tempFilePath,
-              size,
-              width,
-              height,
-              duration,
-              thumb: thumbTempFilePath,
-              percent: 0,
-              ...res,
-            });
-          });
-          this.afterSelect(files);
-        },
-        fail: (err) => {
-          this.triggerFailEvent(err);
-        },
-        complete: (res) => {
-          this.$emit('complete', res);
-        },
-      });
-    },
-
-    // #ifdef H5
-    /**
-     * H5 平台使用原生 input[type=file] 选择文件，支持图片和视频
-     */
-    chooseFileH5(mediaType, customLimit, sizeLimit) {
-      const input = document.createElement('input');
-      input.type = 'file';
-
-      // 根据 mediaType 生成 accept
-      const acceptTypes = [];
-      if (mediaType.includes('image')) acceptTypes.push('image/*');
-      if (mediaType.includes('video')) acceptTypes.push('video/*');
-      input.accept = acceptTypes.join(',') || 'image/*,video/*';
-
-      if (customLimit > 1) {
-        input.multiple = true;
-      }
-
-      input.onchange = (e) => {
-        const selectedFiles = Array.from(e.target.files || []);
-        if (selectedFiles.length === 0) {
-          this.$emit('complete', {});
+        if (parsed) {
           return;
         }
 
-        // 限制数量
-        const limitedFiles = selectedFiles.slice(0, Math.min(20, customLimit));
-        const files = [];
-        let processed = 0;
+        let func = 'chooseMedia';
+        // #ifdef MP-ALIPAY
+        func = 'chooseImage';
+        // #endif
+        // #ifdef MP-WEIXIN
+        if (isPC || isWxWork) {
+          func = 'chooseImage';
+        }
+        // #endif
+        uni[func]({
+          count: Math.min(20, customLimit),
+          mediaType,
+          ...config,
+          success: (res) => {
+            const files = [];
 
-        limitedFiles.forEach((file) => {
-          const fileType = file.type.startsWith('video/') ? 'video' : 'image';
+            // 支持单/多文件
+            res.tempFiles.forEach((temp) => {
+              const { size, fileType, tempFilePath: tTempFilePath, path: tPath, width, height, duration, thumbTempFilePath, ...res } = temp;
+              const tempFilePath = tTempFilePath || tPath;
+              if (this.checkFileSize(size, sizeLimit, fileType)) return;
 
-          if (this.checkFileSize(file.size, sizeLimit, fileType)) {
-            processed += 1;
-            if (processed === limitedFiles.length) {
-              this.afterSelect(files);
-              this.$emit('complete', {});
-            }
+              const name = temp.name || this.getRandFileName(tempFilePath);
+              files.push({
+                name,
+                type: this.getFileType(mediaType, temp.name || tempFilePath, fileType),
+                url: tempFilePath,
+                size,
+                width,
+                height,
+                duration,
+                thumb: thumbTempFilePath,
+                percent: 0,
+                ...res,
+              });
+            });
+            this.afterSelect(files);
+          },
+          fail: (err) => {
+            this.triggerFailEvent(err);
+          },
+          complete: (res) => {
+            this.$emit('complete', res);
+          },
+        });
+      },
+
+      // #ifdef H5
+      /**
+     * H5 平台使用原生 input[type=file] 选择文件，支持图片和视频
+     */
+      chooseFileH5(mediaType, customLimit, sizeLimit) {
+        const input = document.createElement('input');
+        input.type = 'file';
+
+        // 根据 mediaType 生成 accept
+        const acceptTypes = [];
+        if (mediaType.includes('image')) acceptTypes.push('image/*');
+        if (mediaType.includes('video')) acceptTypes.push('video/*');
+        input.accept = acceptTypes.join(',') || 'image/*,video/*';
+
+        if (customLimit > 1) {
+          input.multiple = true;
+        }
+
+        input.onchange = (e) => {
+          const selectedFiles = Array.from(e.target.files || []);
+          if (selectedFiles.length === 0) {
+            this.$emit('complete', {});
             return;
           }
 
-          const url = URL.createObjectURL(file);
-          const name = file.name || this.getRandFileName(url);
+          // 限制数量
+          const limitedFiles = selectedFiles.slice(0, Math.min(20, customLimit));
+          const files = [];
+          let processed = 0;
 
-          if (fileType === 'image') {
+          limitedFiles.forEach((file) => {
+            const fileType = file.type.startsWith('video/') ? 'video' : 'image';
+
+            if (this.checkFileSize(file.size, sizeLimit, fileType)) {
+              processed += 1;
+              if (processed === limitedFiles.length) {
+                this.afterSelect(files);
+                this.$emit('complete', {});
+              }
+              return;
+            }
+
+            const url = URL.createObjectURL(file);
+            const name = file.name || this.getRandFileName(url);
+
+            if (fileType === 'image') {
             // 图片：获取宽高
-            const img = new Image();
-            img.onload = () => {
-              files.push({
-                name,
-                type: 'image',
-                url,
-                size: file.size,
-                width: img.width,
-                height: img.height,
-                percent: 0,
-              });
-              processed += 1;
-              if (processed === limitedFiles.length) {
-                this.afterSelect(files);
-                this.$emit('complete', {});
-              }
-            };
-            img.onerror = () => {
-              files.push({
-                name,
-                type: 'image',
-                url,
-                size: file.size,
-                percent: 0,
-              });
-              processed += 1;
-              if (processed === limitedFiles.length) {
-                this.afterSelect(files);
-                this.$emit('complete', {});
-              }
-            };
-            img.src = url;
-          } else {
-            // 视频：获取时长、宽高和封面
-            const video = document.createElement('video');
-            video.preload = 'metadata';
-            video.onloadedmetadata = () => {
-              const { duration } = video;
-              const width = video.videoWidth;
-              const height = video.videoHeight;
-
-              // 尝试截取第一帧作为封面
-              video.currentTime = 0.1;
-              video.onseeked = () => {
-                let thumb = '';
-                try {
-                  const canvas = document.createElement('canvas');
-                  canvas.width = width;
-                  canvas.height = height;
-                  canvas.getContext('2d').drawImage(video, 0, 0, width, height);
-                  thumb = canvas.toDataURL('image/jpeg', 0.7);
-                } catch (err) {
-                  // 跨域等情况下可能截图失败，忽略
-                }
-
+              const img = new Image();
+              img.onload = () => {
                 files.push({
                   name,
-                  type: 'video',
+                  type: 'image',
                   url,
                   size: file.size,
-                  width,
-                  height,
-                  duration: Math.round(duration),
-                  thumb,
+                  width: img.width,
+                  height: img.height,
                   percent: 0,
                 });
                 processed += 1;
@@ -870,171 +822,227 @@ export default uniComponent({
                   this.afterSelect(files);
                   this.$emit('complete', {});
                 }
-                URL.revokeObjectURL(video.src);
               };
-            };
-            video.onerror = () => {
+              img.onerror = () => {
+                files.push({
+                  name,
+                  type: 'image',
+                  url,
+                  size: file.size,
+                  percent: 0,
+                });
+                processed += 1;
+                if (processed === limitedFiles.length) {
+                  this.afterSelect(files);
+                  this.$emit('complete', {});
+                }
+              };
+              img.src = url;
+            } else {
+            // 视频：获取时长、宽高和封面
+              const video = document.createElement('video');
+              video.preload = 'metadata';
+              video.onloadedmetadata = () => {
+                const { duration } = video;
+                const width = video.videoWidth;
+                const height = video.videoHeight;
+
+                // 尝试截取第一帧作为封面
+                video.currentTime = 0.1;
+                video.onseeked = () => {
+                  let thumb = '';
+                  try {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = width;
+                    canvas.height = height;
+                    canvas.getContext('2d').drawImage(video, 0, 0, width, height);
+                    thumb = canvas.toDataURL('image/jpeg', 0.7);
+                  } catch (err) {
+                  // 跨域等情况下可能截图失败，忽略
+                  }
+
+                  files.push({
+                    name,
+                    type: 'video',
+                    url,
+                    size: file.size,
+                    width,
+                    height,
+                    duration: Math.round(duration),
+                    thumb,
+                    percent: 0,
+                  });
+                  processed += 1;
+                  if (processed === limitedFiles.length) {
+                    this.afterSelect(files);
+                    this.$emit('complete', {});
+                  }
+                  URL.revokeObjectURL(video.src);
+                };
+              };
+              video.onerror = () => {
+                files.push({
+                  name,
+                  type: 'video',
+                  url,
+                  size: file.size,
+                  percent: 0,
+                });
+                processed += 1;
+                if (processed === limitedFiles.length) {
+                  this.afterSelect(files);
+                  this.$emit('complete', {});
+                }
+              };
+              video.src = url;
+            }
+          });
+        };
+
+        input.click();
+      },
+      // #endif
+
+      chooseMessageFile(mediaType) {
+        const { customLimit } = this;
+        const { config, sizeLimit } = this;
+        uni.chooseMessageFile({
+          count: Math.min(100, customLimit),
+          type: Array.isArray(mediaType) ? 'all' : mediaType,
+          ...config,
+          success: (res) => {
+            const files = [];
+
+            // 支持单/多文件
+            res.tempFiles.forEach((temp) => {
+              const { size, type: fileType, path: tempFilePath, ...res } = temp;
+
+              if (this.checkFileSize(size, sizeLimit, fileType)) return;
+
+              const name = this.getRandFileName(tempFilePath);
               files.push({
                 name,
-                type: 'video',
-                url,
-                size: file.size,
+                type: this.getFileType(mediaType, tempFilePath, fileType),
+                url: tempFilePath,
+                size,
                 percent: 0,
+                ...res,
               });
-              processed += 1;
-              if (processed === limitedFiles.length) {
-                this.afterSelect(files);
-                this.$emit('complete', {});
-              }
-            };
-            video.src = url;
-          }
-        });
-      };
-
-      input.click();
-    },
-    // #endif
-
-    chooseMessageFile(mediaType) {
-      const { customLimit } = this;
-      const { config, sizeLimit } = this;
-      uni.chooseMessageFile({
-        count: Math.min(100, customLimit),
-        type: Array.isArray(mediaType) ? 'all' : mediaType,
-        ...config,
-        success: (res) => {
-          const files = [];
-
-          // 支持单/多文件
-          res.tempFiles.forEach((temp) => {
-            const { size, type: fileType, path: tempFilePath, ...res } = temp;
-
-            if (this.checkFileSize(size, sizeLimit, fileType)) return;
-
-            const name = this.getRandFileName(tempFilePath);
-            files.push({
-              name,
-              type: this.getFileType(mediaType, tempFilePath, fileType),
-              url: tempFilePath,
-              size,
-              percent: 0,
-              ...res,
             });
-          });
-          this.afterSelect(files);
-        },
-        fail: err => this.triggerFailEvent(err),
-        complete: res => this.$emit('complete', res),
-      });
-    },
-
-    afterSelect(files) {
-      this._trigger('select-change', {
-        files: [...this.customFiles],
-        currentSelectedFiles: [files],
-      });
-      this._trigger('add', { files });
-      this.startUpload(files);
-    },
-
-    dragVibrate(e) {
-      const { vibrateType } = e;
-      const { draggable } = this;
-      const dragVibrate = coalesce(draggable?.vibrate, true);
-      const dragCollisionVibrate = draggable?.collisionVibrate;
-      if ((dragVibrate && vibrateType === 'longPress') || (dragCollisionVibrate && vibrateType === 'touchMove')) {
-        uni.vibrateShort({
-          type: 'light',
+            this.afterSelect(files);
+          },
+          fail: err => this.triggerFailEvent(err),
+          complete: res => this.$emit('complete', res),
         });
-      }
-    },
+      },
 
-    dragStatusChange(e) {
-      const { dragging } = e;
-      this.dragging = dragging;
-    },
+      afterSelect(files) {
+        this._trigger('select-change', {
+          files: [...this.customFiles],
+          currentSelectedFiles: [files],
+        });
+        this._trigger('add', { files });
+        this.startUpload(files);
+      },
 
-    dragEnd(e) {
-      const { dragCollisionList } = e;
-      let files = [];
-      if (dragCollisionList.length === 0) {
-        files = this.customFiles;
-      } else {
-        files = dragCollisionList.reduce((list, item) => {
-          const { realKey, data, fixed } = item;
-          if (!fixed) {
-            list[realKey] = {
-              ...data,
-            };
-          }
-          return list;
-        }, []);
-      }
-      this.triggerDropEvent(files);
-    },
+      dragVibrate(e) {
+        const { vibrateType } = e;
+        const { draggable } = this;
+        const dragVibrate = coalesce(draggable?.vibrate, true);
+        const dragCollisionVibrate = draggable?.collisionVibrate;
+        if ((dragVibrate && vibrateType === 'longPress') || (dragCollisionVibrate && vibrateType === 'touchMove')) {
+          uni.vibrateShort({
+            type: 'light',
+          });
+        }
+      },
 
-    triggerDropEvent(files) {
-      const { transition } = this;
-      if (transition.backTransition) {
-        const timer = setTimeout(() => {
+      dragStatusChange(e) {
+        const { dragging } = e;
+        this.dragging = dragging;
+      },
+
+      dragEnd(e) {
+        const { dragCollisionList } = e;
+        let files = [];
+        if (dragCollisionList.length === 0) {
+          files = this.customFiles;
+        } else {
+          files = dragCollisionList.reduce((list, item) => {
+            const { realKey, data, fixed } = item;
+            if (!fixed) {
+              list[realKey] = {
+                ...data,
+              };
+            }
+            return list;
+          }, []);
+        }
+        this.triggerDropEvent(files);
+      },
+
+      triggerDropEvent(files) {
+        const { transition } = this;
+        if (transition.backTransition) {
+          const timer = setTimeout(() => {
+            this.$emit('drop', { files });
+            clearTimeout(timer);
+          }, transition.duration);
+        } else {
           this.$emit('drop', { files });
-          clearTimeout(timer);
-        }, transition.duration);
-      } else {
-        this.$emit('drop', { files });
-      }
-    },
-    getState() {
-      return this.fakeState || {};
-    },
-    callMethod(...args) {
-      return this[args[0]]?.(...args.slice(1));
-    },
-    parseEventDynamicCode,
-    setDragItemClass(index, operation, val) {
-      if (!this.dragItemClassList[index]) {
-        this.dragItemClassList[index] = [];
-      }
-      const valList = Array.isArray(val) ? val : [val];
-      if (operation === 'add') {
-        this.dragItemClassList[index].push(...valList);
-        return;
-      }
-      if (operation === 'remove') {
-        this.dragItemClassList[index] = this.dragItemClassList[index].filter(item => !valList.includes(item));
-      }
-    },
-    getDragItemClass(index) {
-      const { classPrefix } = this;
-      const base = [
-        `${classPrefix}__drag-item`,
-      ];
-      return [
-        ...base,
-        ...(this.dragItemClassList[index] || []),
-      ].join(' ');
-    },
-    setDragItemStyle(index, val) {
-      if (!this.dragItemStyleList[index]) {
-        this.dragItemStyleList[index] = [];
-      }
-      this.dragItemStyleList[index].push(val);
-    },
-    getDragItemStyle(index) {
-      const { column, transition } = this;
-      const base = [
-        `width: ${100 / column}%`,
-        `--td-upload-drag-transition-duration: ${transition.duration}ms`,
-        `--td-upload-drag-transition-timing-function: ${transition.timingFunction}`,
-      ];
+        }
+      },
+      getState() {
+        return this.fakeState || {};
+      },
+      callMethod(...args) {
+        return this[args[0]]?.(...args.slice(1));
+      },
+      parseEventDynamicCode,
+      setDragItemClass(index, operation, val) {
+        if (!this.dragItemClassList[index]) {
+          this.dragItemClassList[index] = [];
+        }
+        const valList = Array.isArray(val) ? val : [val];
+        if (operation === 'add') {
+          this.dragItemClassList[index].push(...valList);
+          return;
+        }
+        if (operation === 'remove') {
+          this.dragItemClassList[index] = this.dragItemClassList[index].filter(item => !valList.includes(item));
+        }
+      },
+      getDragItemClass(index) {
+        const { classPrefix } = this;
+        const base = [
+          `${classPrefix}__drag-item`,
+        ];
+        return [
+          ...base,
+          ...(this.dragItemClassList[index] || []),
+        ].join(' ');
+      },
+      setDragItemStyle(index, val) {
+        if (!this.dragItemStyleList[index]) {
+          this.dragItemStyleList[index] = [];
+        }
+        this.dragItemStyleList[index].push(val);
+      },
+      getDragItemStyle(index) {
+        const { column, transition } = this;
+        const base = [
+          `width: ${100 / column}%`,
+          `--td-upload-drag-transition-duration: ${transition.duration}ms`,
+          `--td-upload-drag-transition-timing-function: ${transition.timingFunction}`,
+        ];
 
-      return [
-        ...base,
-        ...(this.dragItemStyleList[index] || []),
-      ].join(';');
+        return [
+          ...base,
+          ...(this.dragItemStyleList[index] || []),
+        ].join(';');
+      },
     },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./upload.css"></style>

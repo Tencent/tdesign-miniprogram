@@ -1,7 +1,7 @@
 <template>
   <view
     :class="chatItemClass"
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     @longpress="handleLongPress"
   >
     <view
@@ -95,83 +95,90 @@ import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
 const name = `${prefix}-chat-message`;
 
-export default uniComponent({
-  name,
-  options: {
-    multipleSlots: true,
-    styleIsolation: 'shared',
-  },
-
+export default {
   components: {
     chatContent,
     chatThinking,
     chatLoading,
     attachments,
   },
+  ...uniComponent({
+    name,
+    options: {
+      multipleSlots: true,
+      styleIsolation: 'shared',
+    },
 
-  props: {
-    ...props,
-  },
+    components: {
+      chatContent,
+      chatThinking,
+      chatLoading,
+      attachments,
+    },
 
-  data() {
-    return {
-      classPrefix: name,
-      article: '',
-      contentClasses: [],
-      chatItemClass: [],
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        classPrefix: name,
+        article: '',
+        contentClasses: [],
+        chatItemClass: [],
 
-      tools,
-    };
-  },
+        tools,
+      };
+    },
 
-  watch: {
-    classPrefix() {
+    watch: {
+      classPrefix() {
+        this.setContentClasses();
+        this.setChatItemClass();
+      },
+      variant: {
+        handler() {
+          this.setChatItemClass();
+        },
+      },
+      placement: {
+        handler() {
+          this.setChatItemClass();
+        },
+      },
+    },
+
+    mounted() {
       this.setContentClasses();
       this.setChatItemClass();
     },
-    variant: {
-      handler() {
-        this.setChatItemClass();
+
+    methods: {
+      handleLongPress(e) {
+        this.$emit('message-longpress', {
+          e,
+          id: this.chatId,
+          longPressPosition: {
+            x: e.detail.x,
+            y: e.detail.y,
+          },
+        });
+      },
+
+      setContentClasses() {
+        this.contentClasses = [`${this.classPrefix}__content`];
+      },
+
+      setChatItemClass() {
+        const { classPrefix, datetime } = this;
+        const { variant, role, placement } = this;
+        const baseClass = [`${classPrefix}`, `${classPrefix}--${variant}`, role, placement];
+        if (datetime) {
+          baseClass.push(`${classPrefix}__header`);
+        }
+        this.chatItemClass = baseClass;
       },
     },
-    placement: {
-      handler() {
-        this.setChatItemClass();
-      },
-    },
-  },
-
-  mounted() {
-    this.setContentClasses();
-    this.setChatItemClass();
-  },
-
-  methods: {
-    handleLongPress(e) {
-      this.$emit('message-longpress', {
-        e,
-        id: this.chatId,
-        longPressPosition: {
-          x: e.detail.x,
-          y: e.detail.y,
-        },
-      });
-    },
-
-    setContentClasses() {
-      this.contentClasses = [`${this.classPrefix}__content`];
-    },
-
-    setChatItemClass() {
-      const { classPrefix, datetime } = this;
-      const { variant, role, placement } = this;
-      const baseClass = [`${classPrefix}`, `${classPrefix}--${variant}`, role, placement];
-      if (datetime) {
-        baseClass.push(`${classPrefix}__header`);
-      }
-      this.chatItemClass = baseClass;
-    },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./chat-message.css"></style>

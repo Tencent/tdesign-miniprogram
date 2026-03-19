@@ -28,7 +28,7 @@ export interface TdUploadProps {
   /**
    * 是否禁用组件
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * 是否支持拖拽排序。长按时是否振动，碰撞时是否振动。示例一：`true`。示例二：`{ vibrate: true, collisionVibrate: true }`
    */

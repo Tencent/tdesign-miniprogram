@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     :class="classPrefix + ' ' + classPrefix + '--' + theme + ' ' + classPrefix + '--' + size + ' ' + tClass"
     aria-role="option"
   >
@@ -32,7 +32,6 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -44,121 +43,123 @@ import { format as formatUtil } from './computed.js';
 const name = `${prefix}-count-down`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-count`,
-    `${prefix}-class-split`,
-  ],
+export default {
   components: {
-    TIcon,
   },
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      timeDataUnit: TimeDataUnit,
-      timeData: parseTimeData(0),
-      formattedTime: '0',
-      tools,
-      timeoutId: null,
-      isInitialTime: false,
-    };
-  },
-  watch: {
-    time: {
-      handler() {
-        this.reset();
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-count`,
+      `${prefix}-class-split`,
+    ],
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        timeDataUnit: TimeDataUnit,
+        timeData: parseTimeData(0),
+        formattedTime: '0',
+        tools,
+        timeoutId: null,
+        isInitialTime: false,
+        timeRange: [],
+      };
+    },
+    watch: {
+      time: {
+        handler() {
+          this.reset();
+        },
+        immediate: true,
       },
-      immediate: true,
     },
-  },
-  mounted() {
+    mounted() {
 
-  },
-  beforeUnmount() {
-    if (this.timeoutId) {
-      clearTimeout(this.timeoutId);
-      this.timeoutId = null;
-    }
-  },
-  methods: {
-    formatUtil,
-    start() {
-      if (this.counting) {
-        return;
+    },
+    beforeUnmount() {
+      if (this.timeoutId) {
+        clearTimeout(this.timeoutId);
+        this.timeoutId = null;
       }
-
-      this.counting = true;
-      this.endTime = Date.now() + this.remain;
-      this.doCount();
     },
+    methods: {
+      formatUtil,
+      start() {
+        if (this.counting) {
+          return;
+        }
 
-    pause() {
-      this.counting = false;
-      this.timeoutId && clearTimeout(this.timeoutId);
-    },
+        this.counting = true;
+        this.endTime = Date.now() + this.remain;
+        this.doCount();
+      },
 
-    reset() {
-      this.pause();
-      this.remain = this.time;
-      this.updateTime(this.remain);
-
-      if (this.autoStart && this.remain > 0) {
-        this.start();
-      }
-
-      this.isInitialTime = true;
-    },
-
-    getTime() {
-      return Math.max(this.endTime - Date.now(), 0);
-    },
-
-    updateTime(remain) {
-      const { format } = this;
-      this.remain = remain;
-      const timeData = parseTimeData(remain);
-      this.$emit('change', timeData);
-
-      const { timeText } = parseFormat(remain, format);
-
-      const timeRange = format.split(':');
-
-      this.timeRange = timeRange;
-      this.timeData = timeData;
-      this.formattedTime = timeText.replace(/:/g, ' : ');
-
-      if (remain === 0 && (this.counting || this.isInitialTime)) {
-        this.pause();
-        this.$emit('finish');
+      pause() {
         this.counting = false;
-      }
-    },
+        this.timeoutId && clearTimeout(this.timeoutId);
+      },
 
-    doCount() {
-      this.timeoutId = setTimeout(() => {
-        const time = this.getTime();
+      reset() {
+        this.pause();
+        this.remain = this.time;
+        this.updateTime(this.remain);
 
-        if (this.millisecond) {
-          this.updateTime(time);
-        } else if (!isSameSecond(time, this.remain) || time === 0) {
-          this.updateTime(time);
+        if (this.autoStart && this.remain > 0) {
+          this.start();
         }
 
-        if (time !== 0) {
-          this.doCount();
+        this.isInitialTime = true;
+      },
+
+      getTime() {
+        return Math.max(this.endTime - Date.now(), 0);
+      },
+
+      updateTime(remain) {
+        const { format } = this;
+        this.remain = remain;
+        const timeData = parseTimeData(remain);
+        this.$emit('change', timeData);
+
+        const { timeText } = parseFormat(remain, format);
+
+        const timeRange = format.split(':');
+
+        this.timeRange = timeRange;
+        this.timeData = timeData;
+        this.formattedTime = timeText.replace(/:/g, ' : ');
+
+        if (remain === 0 && (this.counting || this.isInitialTime)) {
+          this.pause();
+          this.$emit('finish');
+          this.counting = false;
         }
-      }, 33); // 30 帧，因此 1000 / 30 = 33
+      },
+
+      doCount() {
+        this.timeoutId = setTimeout(() => {
+          const time = this.getTime();
+
+          if (this.millisecond) {
+            this.updateTime(time);
+          } else if (!isSameSecond(time, this.remain) || time === 0) {
+            this.updateTime(time);
+          }
+
+          if (time !== 0) {
+            this.doCount();
+          }
+        }, 33); // 30 帧，因此 1000 / 30 = 33
+      },
     },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./count-down.css"></style>

@@ -12,7 +12,7 @@
       :options="options"
       title="请选择地址"
       :sub-titles="subTitles"
-      @update:visible="visible = $event"
+      @update:visible="(e) => visible = e"
       @change="onChange"
     />
   </view>

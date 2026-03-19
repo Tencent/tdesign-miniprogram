@@ -3,7 +3,7 @@
     <view
       v-if="realVisible && preventScrollThrough"
       :class="prefix + '-overlay ' + transitionClass"
-      :style="tools._style([
+      :style="'' + tools._style([
         '--td-overlay-transition-duration:' + duration + 'ms',
         'z-index:' + iZIndex, 'top:' + distanceTop + 'px',
         computedStyle,
@@ -21,7 +21,7 @@
     <view
       v-else-if="realVisible"
       :class="prefix + '-overlay ' + transitionClass "
-      :style="tools._style([
+      :style="'' + tools._style([
         'z-index:' + iZIndex,
         'top:' + distanceTop + 'px',
         computedStyle,
@@ -48,56 +48,58 @@ import tools from '../common/utils.wxs';
 const name = `${prefix}-overlay`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  mixins: [
-    transition(),
-    useCustomNavbar,
-  ],
-  props: {
-    ...props,
-  },
-  emits: [
-    'click',
-    'leaved',
-  ],
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      computedStyle: '',
-      iZIndex: 11000,
-      tools,
-    };
-  },
-  watch: {
-    backgroundColor: {
-      handler(v) {
-        this.computedStyle = v ? `background-color: ${v};` : '';
-      },
-      immediate: true,
+export default {
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-    zIndex: {
-      handler(v) {
-        if (v !== 0) {
-          this.iZIndex = v;
-        }
+    mixins: [
+      transition(),
+      useCustomNavbar,
+    ],
+    props: {
+      ...props,
+    },
+    emits: [
+      'click',
+      'leaved',
+    ],
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        computedStyle: '',
+        iZIndex: 11000,
+        tools,
+      };
+    },
+    watch: {
+      backgroundColor: {
+        handler(v) {
+          this.computedStyle = v ? `background-color: ${v};` : '';
+        },
+        immediate: true,
       },
-      immediate: true,
+      zIndex: {
+        handler(v) {
+          if (v !== 0) {
+            this.iZIndex = v;
+          }
+        },
+        immediate: true,
 
+      },
     },
-  },
-  methods: {
-    handleClick() {
-      this.$emit('click', {
-        visible: !this.visible,
-      });
+    methods: {
+      handleClick() {
+        this.$emit('click', {
+          visible: !this.visible,
+        });
+      },
+      noop() {},
     },
-    noop() {},
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./overlay.css"></style>

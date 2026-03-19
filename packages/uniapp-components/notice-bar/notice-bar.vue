@@ -1,7 +1,7 @@
 <template>
   <view
     v-if="visible"
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     :class="[
       classPrefix + ' ' + classPrefix + '--' + theme,
       tClass
@@ -118,207 +118,214 @@ const THEME_ICON = {
   error: 'error-circle-filled',
 };
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-content`,
-    `${prefix}-class-prefix-icon`,
-    `${prefix}-class-operation`,
-    `${prefix}-class-suffix-icon`,
-  ],
+export default {
   components: {
     TIcon,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'click',
-    'change',
-  ],
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      loop: -1,
-      __ready: false,
-      animationData: null,
-      tools,
-    };
-  },
-  watch: {
-    marquee: {
-      handler(val) {
-        if (JSON.stringify(val) === '{}' || JSON.stringify(val) === 'true') {
-          this.dataMarquee = {
-            speed: 50,
-            loop: -1,
-            delay: 0,
-          };
-        }
-      },
-      immediate: true,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-content`,
+      `${prefix}-class-prefix-icon`,
+      `${prefix}-class-operation`,
+      `${prefix}-class-suffix-icon`,
+    ],
+    components: {
+      TIcon,
+    },
+    props: {
+      ...props,
+    },
+    emits: [
+      'click',
+      'change',
+    ],
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        loop: -1,
+        __ready: false,
+        animationData: null,
+        tools,
+        iSuffixIcon: null,
+        iPrefixIcon: null,
+      };
+    },
+    watch: {
+      marquee: {
+        handler(val) {
+          if (JSON.stringify(val) === '{}' || JSON.stringify(val) === 'true') {
+            this.dataMarquee = {
+              speed: 50,
+              loop: -1,
+              delay: 0,
+            };
+          }
+        },
+        immediate: true,
+      },
 
-    visible: {
-      handler(visible) {
-        if (!this.__ready) return;
-        if (visible) {
-          this.show();
-        } else {
+      visible: {
+        handler(visible) {
+          if (!this.__ready) return;
+          if (visible) {
+            this.show();
+          } else {
+            this.clearNoticeBarAnimation();
+          }
+        },
+        immediate: true,
+      },
+
+      prefixIcon: {
+        handler(prefixIcon) {
+          this.setPrefixIcon(prefixIcon);
+        },
+        immediate: true,
+      },
+
+      suffixIcon: {
+        handler(v) {
+          this.iSuffixIcon = calcIcon(v);
+        },
+        immediate: true,
+      },
+
+      content: {
+        handler() {
+          if (!this.__ready) return;
           this.clearNoticeBarAnimation();
-        }
+          this.initAnimation();
+        },
+        immediate: true,
       },
-      immediate: true,
     },
-
-    prefixIcon: {
-      handler(prefixIcon) {
-        this.setPrefixIcon(prefixIcon);
-      },
-      immediate: true,
-    },
-
-    suffixIcon: {
-      handler(v) {
-        this.iSuffixIcon = calcIcon(v);
-      },
-      immediate: true,
-    },
-
-    content: {
-      handler() {
-        if (!this.__ready) return;
-        this.clearNoticeBarAnimation();
-        this.initAnimation();
-      },
-      immediate: true,
-    },
-  },
-  created() {
-    this.resetAnimation = uni.createAnimation({
-      duration: 0,
-      timingFunction: 'linear',
-    });
-  },
-  mounted() {
-    this.show();
-    this.__ready = true;
-  },
-  beforeUnmount() {
-    this.clearNoticeBarAnimation();
-  },
-  methods: {
-    initAnimation() {
-      // 获取外部容器和滚动内容的宽度
-      const warpID = `.${name}__content-wrap`;
-      const nodeID = `.${name}__content`;
-      getAnimationFrame(this, () => {
-        Promise.all([getRect(this, nodeID), getRect(this, warpID)])
-          .then(([nodeRect, wrapRect]) => {
-            const { marquee } = this;
-
-            if (nodeRect == null || wrapRect == null || !nodeRect.width || !wrapRect.width || marquee === false) {
-              return;
-            }
-
-            if (marquee || wrapRect.width < nodeRect.width) {
-              const speeding = marquee.speed || 50;
-              const delaying = marquee.delay || 0;
-              const animationDuration = ((wrapRect.width + nodeRect.width) / speeding) * 1000;
-              const firstAnimationDuration = (nodeRect.width / speeding) * 1000;
-
-              this.wrapWidth = Number(wrapRect.width);
-              this.nodeWidth = Number(nodeRect.width);
-              this.animationDuration = animationDuration;
-              this.delay = delaying;
-              this.loop = marquee.loop - 1;
-              this.firstAnimationDuration = firstAnimationDuration;
-              marquee.loop !== 0 && this.startScrollAnimation(true);
-            }
-          })
-          .catch(() => {});
+    created() {
+      this.resetAnimation = uni.createAnimation({
+        duration: 0,
+        timingFunction: 'linear',
       });
     },
-
-    startScrollAnimation(isFirstScroll = false) {
+    mounted() {
+      this.show();
+      this.__ready = true;
+    },
+    beforeUnmount() {
       this.clearNoticeBarAnimation();
+    },
+    methods: {
+      initAnimation() {
+      // 获取外部容器和滚动内容的宽度
+        const warpID = `.${name}__content-wrap`;
+        const nodeID = `.${name}__content`;
+        getAnimationFrame(this, () => {
+          Promise.all([getRect(this, nodeID), getRect(this, warpID)])
+            .then(([nodeRect, wrapRect]) => {
+              const { marquee } = this;
 
-      const { wrapWidth, nodeWidth, firstAnimationDuration, animationDuration, delay } = this;
-      const delayTime = isFirstScroll ? delay : 0;
-      const durationTime = isFirstScroll ? firstAnimationDuration : animationDuration;
-      // 滚动内容: 初始位置
-      this.animationData = this.resetAnimation
-        .translateX(isFirstScroll ? 0 : wrapWidth)
-        .step()
-        .export(),
+              if (nodeRect == null || wrapRect == null || !nodeRect.width || !wrapRect.width || marquee === false) {
+                return;
+              }
 
-      setTimeout(() => {
-        // 滚动内容: 最终位置
-        this.animationData = uni
-          .createAnimation({ duration: durationTime, timingFunction: 'linear', delay: delayTime })
-          .translateX(-nodeWidth)
+              if (marquee || wrapRect.width < nodeRect.width) {
+                const speeding = marquee.speed || 50;
+                const delaying = marquee.delay || 0;
+                const animationDuration = ((wrapRect.width + nodeRect.width) / speeding) * 1000;
+                const firstAnimationDuration = (nodeRect.width / speeding) * 1000;
+
+                this.wrapWidth = Number(wrapRect.width);
+                this.nodeWidth = Number(nodeRect.width);
+                this.animationDuration = animationDuration;
+                this.delay = delaying;
+                this.loop = marquee.loop - 1;
+                this.firstAnimationDuration = firstAnimationDuration;
+                marquee.loop !== 0 && this.startScrollAnimation(true);
+              }
+            })
+            .catch(() => {});
+        });
+      },
+
+      startScrollAnimation(isFirstScroll = false) {
+        this.clearNoticeBarAnimation();
+
+        const { wrapWidth, nodeWidth, firstAnimationDuration, animationDuration, delay } = this;
+        const delayTime = isFirstScroll ? delay : 0;
+        const durationTime = isFirstScroll ? firstAnimationDuration : animationDuration;
+        // 滚动内容: 初始位置
+        this.animationData = this.resetAnimation
+          .translateX(isFirstScroll ? 0 : wrapWidth)
           .step()
-          .export();
-      }, 20);
+          .export(),
 
-      // 滚动一次完成, 开启下一次的滚动
-      this.nextAnimationContext = setTimeout(() => {
-        if (this.loop > 0) {
-          this.loop -= 1;
-          this.startScrollAnimation();
-        } else if (this.loop === 0) {
-          // 动画回到初始位置
-          this.animationData = this.resetAnimation.translateX(0).step()
+        setTimeout(() => {
+        // 滚动内容: 最终位置
+          this.animationData = uni
+            .createAnimation({ duration: durationTime, timingFunction: 'linear', delay: delayTime })
+            .translateX(-nodeWidth)
+            .step()
             .export();
-        } else if (this.loop < 0) {
-          this.startScrollAnimation();
-        }
-      }, durationTime + delayTime);
-    },
+        }, 20);
 
-    show() {
-      this.clearNoticeBarAnimation();
-      this.setPrefixIcon(this.prefixIcon);
-      this.initAnimation();
-    },
+        // 滚动一次完成, 开启下一次的滚动
+        this.nextAnimationContext = setTimeout(() => {
+          if (this.loop > 0) {
+            this.loop -= 1;
+            this.startScrollAnimation();
+          } else if (this.loop === 0) {
+          // 动画回到初始位置
+            this.animationData = this.resetAnimation.translateX(0).step()
+              .export();
+          } else if (this.loop < 0) {
+            this.startScrollAnimation();
+          }
+        }, durationTime + delayTime);
+      },
 
-    /** 清除动画 */
-    clearNoticeBarAnimation() {
-      this.nextAnimationContext && clearTimeout(this.nextAnimationContext);
-      this.nextAnimationContext = null;
-    },
+      show() {
+        this.clearNoticeBarAnimation();
+        this.setPrefixIcon(this.prefixIcon);
+        this.initAnimation();
+      },
 
-    setPrefixIcon(v) {
-      const { theme } = this;
-      this.iPrefixIcon = calcIcon(v, THEME_ICON[theme]);
-    },
+      /** 清除动画 */
+      clearNoticeBarAnimation() {
+        this.nextAnimationContext && clearTimeout(this.nextAnimationContext);
+        this.nextAnimationContext = null;
+      },
 
-    onChange(e) {
-      const { current, source } = e.detail;
-      this.$emit('change', { current, source });
-    },
+      setPrefixIcon(v) {
+        const { theme } = this;
+        this.iPrefixIcon = calcIcon(v, THEME_ICON[theme]);
+      },
 
-    clickPrefixIcon() {
-      this.$emit('click', { trigger: 'prefix-icon' });
-    },
+      onChange(e) {
+        const { current, source } = e.detail;
+        this.$emit('change', { current, source });
+      },
 
-    clickContent() {
-      this.$emit('click', { trigger: 'content' });
-    },
+      clickPrefixIcon() {
+        this.$emit('click', { trigger: 'prefix-icon' });
+      },
 
-    clickSuffixIcon() {
-      this.$emit('click', { trigger: 'suffix-icon' });
-    },
+      clickContent() {
+        this.$emit('click', { trigger: 'content' });
+      },
 
-    clickOperation() {
-      this.$emit('click', { trigger: 'operation' });
+      clickSuffixIcon() {
+        this.$emit('click', { trigger: 'suffix-icon' });
+      },
+
+      clickOperation() {
+        this.$emit('click', { trigger: 'operation' });
+      },
     },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./notice-bar.css"></style>

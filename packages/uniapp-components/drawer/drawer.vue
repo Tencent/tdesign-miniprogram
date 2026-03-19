@@ -75,64 +75,70 @@ import tools from '../common/utils.wxs';
 const name = `${prefix}-drawer`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  mixins: [
-    useCustomNavbar,
-  ],
+export default {
   components: {
     TPopup,
     TIcon,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'update:visible',
-    'close',
-    'overlay-click',
-    'item-click',
-  ],
-  data() {
-    return {
-      classPrefix: name,
-      tools,
-      dataVisible: coalesce(this.visible, this.defaultVisible),
-    };
-  },
-  watch: {
-    visible(e) {
-      this.dataVisible = e;
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-  },
-  methods: {
+    mixins: [
+      useCustomNavbar,
+    ],
+    components: {
+      TPopup,
+      TIcon,
+    },
+    props: {
+      ...props,
+    },
+    emits: [
+      'update:visible',
+      'close',
+      'overlay-click',
+      'item-click',
+    ],
+    data() {
+      return {
+        classPrefix: name,
+        tools,
+        dataVisible: coalesce(this.visible, this.defaultVisible),
+      };
+    },
+    watch: {
+      visible(e) {
+        this.dataVisible = e;
+      },
+    },
+    methods: {
     // closeOnOverlayClick 为 true 时才能触发 popup 的 visible-change 事件
-    onVisibleChange(detail) {
-      const { visible } = detail;
-      const { showOverlay } = this;
+      onVisibleChange(detail) {
+        const { visible } = detail;
+        const { showOverlay } = this;
 
-      this.dataVisible = visible;
+        this.dataVisible = visible;
 
-      if (!visible) {
-        this.$emit('close', { trigger: 'overlay' });
-      }
+        if (!visible) {
+          this.$emit('close', { trigger: 'overlay' });
+        }
 
-      if (showOverlay) {
-        this.$emit('overlay-click', { visible });
-      }
-      this.$emit('update:visible', visible);
+        if (showOverlay) {
+          this.$emit('overlay-click', { visible });
+        }
+        this.$emit('update:visible', visible);
+      },
+
+      onItemClick(detail) {
+        const { index, item } = detail.currentTarget.dataset;
+
+        this.$emit('item-click', { index, item });
+      },
     },
-
-    onItemClick(detail) {
-      const { index, item } = detail.currentTarget.dataset;
-
-      this.$emit('item-click', { index, item });
-    },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./drawer.css"></style>
 <style>

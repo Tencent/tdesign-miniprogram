@@ -21,13 +21,11 @@
           <base-demo />
         </t-demo>
         <t-demo
-          title=""
           desc="带标题多行文本框"
         >
           <label-demo />
         </t-demo>
         <t-demo
-          title=""
           desc="自动增高多行文本框"
         >
           <autosize-demo />

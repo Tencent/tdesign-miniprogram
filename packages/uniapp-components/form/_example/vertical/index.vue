@@ -8,8 +8,8 @@
       show-error-message
       label-align="top"
       required-mark
-      @reset="onReset($event, { tagId: 'form' })"
-      @submit="onSubmit($event, { tagId: 'form' })"
+      @reset="(e) => onReset(e, { tagId: 'form' })"
+      @submit="(e) => onSubmit(e, { tagId: 'form' })"
     >
       <t-form-item
         label="用户名"
@@ -22,7 +22,7 @@
           placeholder="请输入用户名"
           data-field="name"
           style="flex: 1;"
-          @change="onInputChange($event, { field: 'name' })"
+          @change="(e) => onInputChange(e, { field: 'name' })"
         />
       </t-form-item>
 
@@ -38,7 +38,7 @@
           placeholder="请输入密码"
           data-field="password"
           style="flex: 1;"
-          @change="onInputChange($event, { field: 'password' })"
+          @change="(e) => onInputChange(e, { field: 'password' })"
         />
       </t-form-item>
 
@@ -84,7 +84,7 @@
           placeholder="请输入生日"
           data-field="birth"
           style="flex: 1;"
-          @change="onInputChange($event, { field: 'birth' })"
+          @change="(e) => onInputChange(e, { field: 'birth' })"
         />
       </t-form-item>
 
@@ -106,7 +106,7 @@
           :value="address"
           title="选择地址"
           :options="options"
-          @update:visible="visibleCascader = $event"
+          @update:visible="(e) => visibleCascader = e"
           @change="onChangeCascader"
           @visible-change="onCascaderVisibleChange"
         />

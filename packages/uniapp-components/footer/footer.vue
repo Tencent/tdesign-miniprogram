@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     :class="[
       classPrefix,
       tClass
@@ -73,43 +73,48 @@ import tools from '../common/utils.wxs';
 const name = `${prefix}-footer`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-  ],
+export default {
   components: {
     TImage,
   },
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      tools,
-    };
-  },
-  computed: {
-    iconCustomStyle() {
-      return tools._style({
-        width: 'var(--td-footer-logo-icon-width, 24px)',
-        height: 'var(--td-footer-logo-icon-height, 24px)',
-        marginRight: 'var(--td-footer-logo-icon-margin-right, var(--td-spacer, 8px))',
-      });
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-    titleUrlCustomStyle() {
-      return tools._style({
-        width: 'var(--td-footer-logo-title-url-width, 128px)',
-      });
+    externalClasses: [
+      `${prefix}-class`,
+    ],
+    components: {
+      TImage,
     },
-  },
-  methods: {
-  },
-});
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        tools,
+      };
+    },
+    computed: {
+      iconCustomStyle() {
+        return tools._style({
+          width: 'var(--td-footer-logo-icon-width, 24px)',
+          height: 'var(--td-footer-logo-icon-height, 24px)',
+          marginRight: 'var(--td-footer-logo-icon-margin-right, var(--td-spacer, 8px))',
+        });
+      },
+      titleUrlCustomStyle() {
+        return tools._style({
+          width: 'var(--td-footer-logo-title-url-width, 128px)',
+        });
+      },
+    },
+    methods: {
+    },
+  }),
+};
 </script>
 <style scoped src="./footer.css"></style>

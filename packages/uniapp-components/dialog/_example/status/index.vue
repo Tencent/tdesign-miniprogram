@@ -10,7 +10,7 @@
       variant="outline"
       data-key="showConfirm"
       block
-      @click="showDialog($event, { key: 'showConfirm' })"
+      @click="(e) => showDialog(e, { key: 'showConfirm' })"
     >
       文字按钮
     </t-button>
@@ -34,7 +34,7 @@
       variant="outline"
       data-key="showWarnConfirm"
       block
-      @click="showDialog($event, { key: 'showWarnConfirm' })"
+      @click="(e) => showDialog(e, { key: 'showWarnConfirm' })"
     >
       水平基础按钮
     </t-button>
@@ -57,7 +57,7 @@
       variant="outline"
       data-key="showTooLongBtnContent"
       block
-      @click="showDialog($event, { key: 'showTooLongBtnContent' })"
+      @click="(e) => showDialog(e, { key: 'showTooLongBtnContent' })"
     >
       垂直基础按钮
     </t-button>
@@ -82,7 +82,7 @@
       variant="outline"
       data-key="showMultiBtn"
       block
-      @click="showDialog($event, { key: 'showMultiBtn' })"
+      @click="(e) => showDialog(e, { key: 'showMultiBtn' })"
     >
       多按钮
     </t-button>
@@ -105,7 +105,7 @@
       variant="outline"
       data-key="showCloseBtn"
       block
-      @click="showDialog($event, { key: 'showCloseBtn' })"
+      @click="(e) => showDialog(e, { key: 'showCloseBtn' })"
     >
       带关闭按钮的对话框
     </t-button>

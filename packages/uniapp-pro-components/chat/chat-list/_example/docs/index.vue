@@ -43,7 +43,7 @@
             :attachments-props="attachmentsProps"
             :render-presets="renderPresets"
             :auto-rise-with-keyboard="true"
-            @update:visible="visible = $event"
+            @update:visible="(e) => visible = e"
             @send="onSend"
             @stop="onStop"
             @focus="onFocus"

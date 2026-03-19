@@ -21,7 +21,7 @@
           block
           variant="outline"
           data-source="round"
-          @click="onBtnClick($event, { source: 'round' })"
+          @click="(e) => onBtnClick(e, { source: 'round' })"
         >
           圆形返回顶部
         </t-button>
@@ -36,7 +36,7 @@
           block
           variant="outline"
           data-source="half-round"
-          @click="onBtnClick($event, { source: 'half-round' })"
+          @click="(e) => onBtnClick(e, { source: 'half-round' })"
         >
           半圆形返回顶部
         </t-button>

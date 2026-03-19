@@ -1,6 +1,6 @@
 <template>
   <scroll-view
-    :style="tools._style([customStyle, 'max-height: calc(100vh - ' + distanceTop + 'px)'])"
+    :style="'' + tools._style([customStyle, 'max-height: calc(100vh - ' + distanceTop + 'px)'])"
     :class="classPrefix + ' ' + tClass"
     type="list"
     :scroll-top="scrollTop"
@@ -81,284 +81,290 @@ const REFRESH_STATUS_MAP = {
 };
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-loading`,
-    `${prefix}-class-text`,
-    `${prefix}-class-indicator`,
-  ],
-  mixins: [
-    ParentMixin(RELATION_MAP.BackTop),
-  ],
+export default {
   components: {
     TLoading,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'scrolltolower',
-    'scroll',
-    'change',
-    'refresh',
-    'dragstart',
-    'dragging',
-    'dragend',
-    'timeout',
-  ],
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      distanceTop: 0,
-      barHeight: 0,
-      tipsHeight: 0,
-      refreshStatus: REFRESH_STATUS_MAP.INITIAL,
-      loosing: false,
-      enableToRefresh: true,
-      scrollTop: 0,
-      iMaxBarHeight: 0,
-      iLoadingBarHeight: 0,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-loading`,
+      `${prefix}-class-text`,
+      `${prefix}-class-indicator`,
+    ],
+    mixins: [
+      ParentMixin(RELATION_MAP.BackTop),
+    ],
+    components: {
+      TLoading,
+    },
+    props: {
+      ...props,
+    },
+    emits: [
+      'scrolltolower',
+      'scroll',
+      'change',
+      'refresh',
+      'dragstart',
+      'dragging',
+      'dragend',
+      'timeout',
+    ],
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        distanceTop: 0,
+        barHeight: 0,
+        tipsHeight: 0,
+        refreshStatus: REFRESH_STATUS_MAP.INITIAL,
+        loosing: false,
+        enableToRefresh: true,
+        scrollTop: 0,
+        iMaxBarHeight: 0,
+        iLoadingBarHeight: 0,
 
-      pixelRatio: 1,
-      startPoint: null,
-      isPulling: false,
-      maxRefreshAnimateTimeFlag: 0,
-      closingAnimateTimeFlag: 0,
-      refreshStatusTimer: null,
+        pixelRatio: 1,
+        startPoint: null,
+        isPulling: false,
+        maxRefreshAnimateTimeFlag: 0,
+        closingAnimateTimeFlag: 0,
+        refreshStatusTimer: null,
 
-      tools,
-      REFRESH_STATUS_MAP,
-    };
-  },
-  computed: {
-    touchEnable() {
-      return this.refreshStatus !== REFRESH_STATUS_MAP.LOADING
+        tools,
+        REFRESH_STATUS_MAP,
+        dataLoadingTexts: [],
+      };
+    },
+    computed: {
+      touchEnable() {
+        return this.refreshStatus !== REFRESH_STATUS_MAP.LOADING
         && this.refreshStatus !== REFRESH_STATUS_MAP.SUCCESS
         && !this.disabled;
+      },
     },
-  },
-  watch: {
-    value(val) {
-      if (!val) {
-        clearTimeout(this.maxRefreshAnimateTimeFlag);
+    watch: {
+      value(val) {
+        if (!val) {
+          clearTimeout(this.maxRefreshAnimateTimeFlag);
 
-        if (this.refreshStatus > REFRESH_STATUS_MAP.PULLING) {
-          this.refreshStatus = REFRESH_STATUS_MAP.SUCCESS;
-        }
-
-        clearTimeout(this.successTimer);
-
-        this.successTimer = setTimeout(() => {
-          this.barHeight = 0;
-          this.refreshStatus = REFRESH_STATUS_MAP.INITIAL;
-        }, unitConvert(this.successDuration));
-      } else {
-        this.doRefresh();
-      }
-    },
-
-    barHeight(val) {
-      this.resetTimer();
-      if (val === 0 && this.refreshStatus !== REFRESH_STATUS_MAP.INITIAL) {
-        this.refreshStatusTimer = setTimeout(() => {
-          this.refreshStatus = REFRESH_STATUS_MAP.INITIAL;
-        }, 240);
-      }
-
-      this.tipsHeight = Math.min(val, this.iLoadingBarHeight);
-    },
-
-    maxBarHeight(v) {
-      this.iMaxBarHeight = unitConvert(v);
-    },
-
-    loadingBarHeight(v) {
-      this.iLoadingBarHeight = unitConvert(v);
-    },
-  },
-  mounted() {
-    const { screenWidth } = systemInfo;
-    const { loadingTexts, maxBarHeight, loadingBarHeight } = this;
-    const isCustomLoadingTexts = Array.isArray(loadingTexts) && loadingTexts.length >= 4;
-
-    this.iMaxBarHeight = unitConvert(maxBarHeight);
-    this.iLoadingBarHeight = unitConvert(loadingBarHeight);
-    this.dataLoadingTexts = isCustomLoadingTexts ? loadingTexts : defaultLoadingTexts;
-
-    this.pixelRatio = 750 / screenWidth;
-
-    this.updateDistanceTop();
-  },
-
-  beforeUnmount() {
-    clearTimeout(this.maxRefreshAnimateTimeFlag);
-    clearTimeout(this.closingAnimateTimeFlag);
-    this.resetTimer();
-  },
-  methods: {
-    updateDistanceTop() {
-      const update = (top) => {
-        this.distanceTop = top;
-      };
-
-      getRect(this, `.${name}`).then((rect) => {
-        if (rect.top) {
-          update(rect.top);
-          return;
-        }
-
-        getObserver(this, `.${name}`).then((res) => {
-          if (res.intersectionRatio > 0) {
-            update(res.boundingClientRect.top);
+          if (this.refreshStatus > REFRESH_STATUS_MAP.PULLING) {
+            this.refreshStatus = REFRESH_STATUS_MAP.SUCCESS;
           }
-        });
-      });
-    },
 
-    resetTimer() {
-      if (this.refreshStatusTimer) {
-        clearTimeout(this.refreshStatusTimer);
-        this.refreshStatusTimer = null;
-      }
-    },
+          clearTimeout(this.successTimer);
 
-    onScrollToBottom() {
-      this.$emit('scrolltolower');
-    },
-
-    onScrollToTop() {
-      this.enableToRefresh = true;
-    },
-
-    onScroll(e) {
-      const { scrollTop } = e.detail;
-
-      this.enableToRefresh = scrollTop === 0;
-      this.$emit('scroll', { scrollTop });
-    },
-
-    onTouchStart(e) {
-      if (this.isPulling || !this.enableToRefresh || !this.touchEnable) return;
-
-      const { touches } = e;
-      this.$emit('dragstart', e);
-
-      if (touches.length !== 1) return;
-      const { pageX, pageY } = touches[0];
-
-      this.loosing = false;
-      this.startPoint = { pageX, pageY };
-      this.isPulling = true;
-    },
-
-    onTouchMove(e) {
-      if (!this.startPoint || !this.touchEnable) return;
-
-
-      const { touches } = e;
-
-      if (touches.length !== 1) return;
-
-      const { pageY } = touches[0];
-      const offset = pageY - this.startPoint.pageY;
-
-      if (offset > 0) {
-        this.setRefreshBarHeight(offset);
-      }
-      this.$emit('dragging', e);
-    },
-
-    onTouchEnd(e) {
-      if (!this.startPoint || this.disabled) return;
-      const { changedTouches } = e;
-      if (changedTouches.length !== 1) return;
-      const { pageY } = changedTouches[0];
-
-      const barHeight = pageY - this.startPoint.pageY;
-      this.startPoint = null; // 清掉起点，之后将忽略touchMove、touchEnd事件
-      this.isPulling = false;
-
-      this.loosing = true;
-
-      // 松开时高度超过阈值则触发刷新
-      if (barHeight > this.iLoadingBarHeight) {
-        this._trigger('change', { value: true });
-        this.$emit('refresh');
-      } else {
-        this.barHeight = 0;
-      }
-
-      this.$emit('dragend', e);
-    },
-
-    doRefresh() {
-      if (this.disabled) return;
-      this.barHeight = this.iLoadingBarHeight;
-      this.refreshStatus = REFRESH_STATUS_MAP.LOADING;
-      this.loosing = true;
-
-      this.maxRefreshAnimateTimeFlag = setTimeout(() => {
-        this.maxRefreshAnimateTimeFlag = null;
-
-        if (this.refreshStatus === REFRESH_STATUS_MAP.LOADING) {
-          // 超时回调
-          this.$emit('timeout');
-          this._trigger('change', { value: false });
+          this.successTimer = setTimeout(() => {
+            this.barHeight = 0;
+            this.refreshStatus = REFRESH_STATUS_MAP.INITIAL;
+          }, unitConvert(this.successDuration));
+        } else {
+          this.doRefresh();
         }
-      }, this.refreshTimeout);
+      },
+
+      barHeight(val) {
+        this.resetTimer();
+        if (val === 0 && this.refreshStatus !== REFRESH_STATUS_MAP.INITIAL) {
+          this.refreshStatusTimer = setTimeout(() => {
+            this.refreshStatus = REFRESH_STATUS_MAP.INITIAL;
+          }, 240);
+        }
+
+        this.tipsHeight = Math.min(val, this.iLoadingBarHeight);
+      },
+
+      maxBarHeight(v) {
+        this.iMaxBarHeight = unitConvert(v);
+      },
+
+      loadingBarHeight(v) {
+        this.iLoadingBarHeight = unitConvert(v);
+      },
+    },
+    mounted() {
+      const { screenWidth } = systemInfo;
+      const { loadingTexts, maxBarHeight, loadingBarHeight } = this;
+      const isCustomLoadingTexts = Array.isArray(loadingTexts) && loadingTexts.length >= 4;
+
+      this.iMaxBarHeight = unitConvert(maxBarHeight);
+      this.iLoadingBarHeight = unitConvert(loadingBarHeight);
+      this.dataLoadingTexts = isCustomLoadingTexts ? loadingTexts : defaultLoadingTexts;
+
+      this.pixelRatio = 750 / screenWidth;
+
+      this.updateDistanceTop();
     },
 
-    setRefreshBarHeight(value) {
-      const barHeight = Math.min(value, this.iMaxBarHeight);
-      const data = { barHeight };
+    beforeUnmount() {
+      clearTimeout(this.maxRefreshAnimateTimeFlag);
+      clearTimeout(this.closingAnimateTimeFlag);
+      this.resetTimer();
+    },
+    methods: {
+      updateDistanceTop() {
+        const update = (top) => {
+          this.distanceTop = top;
+        };
 
-      if (barHeight >= this.iLoadingBarHeight) {
-        data.refreshStatus = REFRESH_STATUS_MAP.LOSING;
-      } else {
-        data.refreshStatus = REFRESH_STATUS_MAP.PULLING;
-      }
-      return new Promise((resolve) => {
-        Object.keys(data).forEach((key) => {
-          this[key] = data[key];
+        getRect(this, `.${name}`).then((rect) => {
+          if (rect.top) {
+            update(rect.top);
+            return;
+          }
+
+          getObserver(this, `.${name}`).then((res) => {
+            if (res.intersectionRatio > 0) {
+              update(res.boundingClientRect.top);
+            }
+          });
         });
+      },
+
+      resetTimer() {
+        if (this.refreshStatusTimer) {
+          clearTimeout(this.refreshStatusTimer);
+          this.refreshStatusTimer = null;
+        }
+      },
+
+      onScrollToBottom() {
+        this.$emit('scrolltolower');
+      },
+
+      onScrollToTop() {
+        this.enableToRefresh = true;
+      },
+
+      onScroll(e) {
+        const { scrollTop } = e.detail;
+
+        this.enableToRefresh = scrollTop === 0;
+        this.$emit('scroll', { scrollTop });
+      },
+
+      onTouchStart(e) {
+        if (this.isPulling || !this.enableToRefresh || !this.touchEnable) return;
+
+        const { touches } = e;
+        this.$emit('dragstart', e);
+
+        if (touches.length !== 1) return;
+        const { pageX, pageY } = touches[0];
+
+        this.loosing = false;
+        this.startPoint = { pageX, pageY };
+        this.isPulling = true;
+      },
+
+      onTouchMove(e) {
+        if (!this.startPoint || !this.touchEnable) return;
+
+
+        const { touches } = e;
+
+        if (touches.length !== 1) return;
+
+        const { pageY } = touches[0];
+        const offset = pageY - this.startPoint.pageY;
+
+        if (offset > 0) {
+          this.setRefreshBarHeight(offset);
+        }
+        this.$emit('dragging', e);
+      },
+
+      onTouchEnd(e) {
+        if (!this.startPoint || this.disabled) return;
+        const { changedTouches } = e;
+        if (changedTouches.length !== 1) return;
+        const { pageY } = changedTouches[0];
+
+        const barHeight = pageY - this.startPoint.pageY;
+        this.startPoint = null; // 清掉起点，之后将忽略touchMove、touchEnd事件
+        this.isPulling = false;
+
+        this.loosing = true;
+
+        // 松开时高度超过阈值则触发刷新
+        if (barHeight > this.iLoadingBarHeight) {
+          this._trigger('change', { value: true });
+          this.$emit('refresh');
+        } else {
+          this.barHeight = 0;
+        }
+
+        this.$emit('dragend', e);
+      },
+
+      doRefresh() {
+        if (this.disabled) return;
+        this.barHeight = this.iLoadingBarHeight;
+        this.refreshStatus = REFRESH_STATUS_MAP.LOADING;
+        this.loosing = true;
+
+        this.maxRefreshAnimateTimeFlag = setTimeout(() => {
+          this.maxRefreshAnimateTimeFlag = null;
+
+          if (this.refreshStatus === REFRESH_STATUS_MAP.LOADING) {
+          // 超时回调
+            this.$emit('timeout');
+            this._trigger('change', { value: false });
+          }
+        }, this.refreshTimeout);
+      },
+
+      setRefreshBarHeight(value) {
+        const barHeight = Math.min(value, this.iMaxBarHeight);
+        const data = { barHeight };
+
+        if (barHeight >= this.iLoadingBarHeight) {
+          data.refreshStatus = REFRESH_STATUS_MAP.LOSING;
+        } else {
+          data.refreshStatus = REFRESH_STATUS_MAP.PULLING;
+        }
+        return new Promise((resolve) => {
+          Object.keys(data).forEach((key) => {
+            this[key] = data[key];
+          });
+          setTimeout(() => {
+            resolve(barHeight);
+          }, 20);
+        });
+      },
+
+      setScrollTop(scrollTop) {
+        this.scrollTop = scrollTop;
+      },
+
+      scrollToTop() {
+        let parsed = false;
+
+        // #ifdef APP-PLUS || MP
+        this.scrollTop = 0;
         setTimeout(() => {
-          resolve(barHeight);
-        }, 20);
-      });
+          this.scrollTop = 0.01;
+        });
+        parsed = true;
+        // #endif
+
+        // #ifdef H5
+        // https://yuanbao.tencent.com/chat/naQivTmsDa/c10ae37f-c66f-4489-ac4e-e72710a3f65a
+        this.scrollTop = this.scrollTop === 0 ? 0.01 : 0;
+        parsed = true;
+        // #endif
+
+        if (!parsed) {
+          this.setScrollTop(0);
+        }
+      },
     },
-
-    setScrollTop(scrollTop) {
-      this.scrollTop = scrollTop;
-    },
-
-    scrollToTop() {
-      let parsed = false;
-
-      // #ifdef APP-PLUS || MP
-      this.scrollTop = 0;
-      setTimeout(() => {
-        this.scrollTop = 0.01;
-      });
-      parsed = true;
-      // #endif
-
-      // #ifdef H5
-      // https://yuanbao.tencent.com/chat/naQivTmsDa/c10ae37f-c66f-4489-ac4e-e72710a3f65a
-      this.scrollTop = this.scrollTop === 0 ? 0.01 : 0;
-      parsed = true;
-      // #endif
-
-      if (!parsed) {
-        this.setScrollTop(0);
-      }
-    },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./pull-down-refresh.css"></style>

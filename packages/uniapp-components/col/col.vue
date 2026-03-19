@@ -5,7 +5,7 @@
       tools.cls(classPrefix, [span]),
       (offset ? classPrefix + '--offset-' + offset : '')
     ]"
-    :style="getColStyles(gutter, customStyle)"
+    :style="'' + getColStyles(gutter, customStyle)"
   >
     <slot />
   </view>
@@ -21,29 +21,31 @@ import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 const name = `${prefix}-col`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-    virtualHost: true,
-  },
-  externalClasses: [`${prefix}-class`],
-  mixins: [ChildrenMixin(RELATION_MAP.Col)],
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      tools,
-      gutter: '',
-    };
-  },
-  methods: {
-    getColStyles,
-  },
-});
+export default {
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+      virtualHost: true,
+    },
+    externalClasses: [`${prefix}-class`],
+    mixins: [ChildrenMixin(RELATION_MAP.Col)],
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        tools,
+        gutter: '',
+      };
+    },
+    methods: {
+      getColStyles,
+    },
+  }),
+};
 
 </script>
 <style scoped src="./col.css"></style>

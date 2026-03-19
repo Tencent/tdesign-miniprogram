@@ -9,7 +9,7 @@
         :name="item"
         size="48rpx"
         :data-name="item"
-        @click="onIconTap($event, { name: item })"
+        @click="(e) => onIconTap(e, { name: item })"
       />
 
       <view class="demo__card-name">

@@ -1,7 +1,7 @@
 <template>
   <view
     :class="classPrefix"
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
   >
     <!-- 动态加载动画 -->
     <view
@@ -62,28 +62,33 @@ import tools from '@tdesign/uniapp/common/utils.wxs';
 const name = `${prefix}-chat-loading`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    multipleSlots: true,
-    styleIsolation: 'shared',
-  },
-
+export default {
   components: {
     tSkeleton,
     tLoading,
   },
+  ...uniComponent({
+    name,
+    options: {
+      multipleSlots: true,
+      styleIsolation: 'shared',
+    },
 
-  props: {
-    ...props,
-  },
+    components: {
+      tSkeleton,
+      tLoading,
+    },
 
-  data() {
-    return {
-      classPrefix: name,
-      tools,
-    };
-  },
-});
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        classPrefix: name,
+        tools,
+      };
+    },
+  }),
+};
 </script>
 <style scoped src="./chat-loading.css"></style>

@@ -5,7 +5,7 @@
       use-popup
       enable-alpha
       type="multiple"
-      @update:visible="visible = $event"
+      @update:visible="(e) => visible = e"
       @change="onChange"
       @palette-bar-change="onPaletteBarChange"
     />

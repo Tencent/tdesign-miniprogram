@@ -29,257 +29,259 @@ const needValidate = (name, fields) => {
   return fields.indexOf(`${name}`) !== -1;
 };
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-  ],
-  mixins: [ParentMixin(RELATION_MAP.FormItem)],
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      children: [],
-      formData: {},
-      initialData: {},
-      fields: [],
-    };
-  },
-  created() {
-    this.initFormData();
-  },
+export default {
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    externalClasses: [
+      `${prefix}-class`,
+    ],
+    mixins: [ParentMixin(RELATION_MAP.FormItem)],
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        formData: {},
+        initialData: {},
+        fields: [],
+      };
+    },
+    created() {
+      this.children = [];
+      this.initFormData();
+    },
 
-  methods: {
+    methods: {
     // 初始化表单数据
-    initFormData() {
-      const { data } = this;
-      // 确保 data 不为 undefined 或 null
-      const safeData = data || {};
-      const formData = { ...safeData };
-      const initialData = { ...safeData };
-      const fields = Object.keys(safeData);
+      initFormData() {
+        const { data } = this;
+        // 确保 data 不为 undefined 或 null
+        const safeData = data || {};
+        const formData = { ...safeData };
+        const initialData = { ...safeData };
+        const fields = Object.keys(safeData);
 
-      this.formData = formData;
-      this.initialData = initialData;
-      this.fields = fields;
-    },
+        this.formData = formData;
+        this.initialData = initialData;
+        this.fields = fields;
+      },
 
-    // 注册子组件
-    registerChild(child) {
-      const { children } = this;
-      if (!children.find(item => item.name === child.name)) {
-        children.push(child);
-        this.children = children;
-      }
-    },
+      // 注册子组件
+      registerChild(child) {
+        const { children } = this;
+        if (!children.find(item => item.name === child.name)) {
+          children.push(child);
+          this.children = children;
+        }
+      },
 
-    // 注销子组件
-    unregisterChild(childName) {
-      const { children } = this;
-      const index = children.findIndex(item => item.name === childName);
-      if (index > -1) {
-        children.splice(index, 1);
-        this.children = children;
-      }
-    },
+      // 注销子组件
+      unregisterChild(childName) {
+        const { children } = this;
+        const index = children.findIndex(item => item.name === childName);
+        if (index > -1) {
+          children.splice(index, 1);
+          this.children = children;
+        }
+      },
 
-    // 更新表单数据
-    updateFormData(name, value) {
-      const { formData } = this;
-      formData[name] = value;
-      this.formData = formData;
-    },
+      // 更新表单数据
+      updateFormData(name, value) {
+        const { formData } = this;
+        formData[name] = value;
+        this.formData = formData;
+      },
 
-    // 验证表单
-    async validate(params = {}) {
-      const { fields, trigger = 'all' } = params;
-      const showErrorMessage = coalesce(params.showErrorMessage, this.showErrorMessage);
+      // 验证表单
+      async validate(params = {}) {
+        const { fields, trigger = 'all' } = params;
+        const showErrorMessage = coalesce(params.showErrorMessage, this.showErrorMessage);
 
-      const { children } = this;
-      const { data } = this;
-      const validatePromises = children
-        .filter(child => needValidate(`${child.name}`, fields))
-        .map(child => child.validate(data, trigger, showErrorMessage));
+        const { children } = this;
+        const { data } = this;
+        const validatePromises = children
+          .filter(child => needValidate(`${child.name}`, fields))
+          .map(child => child.validate(data, trigger, showErrorMessage));
 
-      try {
-        const results = await Promise.all(validatePromises);
-        const validateResult = this.formatValidateResult(results);
+        try {
+          const results = await Promise.all(validatePromises);
+          const validateResult = this.formatValidateResult(results);
 
-        this.$emit('validate', {
-          validateResult,
-        });
-
-        return validateResult;
-      } catch (error) {
-        return false;
-      }
-    },
-
-    // 纯净验证（不显示错误信息）
-    async validateOnly(params) {
-      const { fields, trigger = 'all' } = params;
-      const { children } = this;
-
-      const validatePromises = children
-        .filter((child) => {
-          if (fields && fields.length > 0) {
-            return fields.includes(child.name);
-          }
-          return true;
-        })
-        .map(child => child.validateOnly(trigger));
-
-      try {
-        const results = await Promise.all(validatePromises);
-        return this.formatValidateResult(results);
-      } catch (error) {
-        return false;
-      }
-    },
-
-    // 格式化验证结果
-    formatValidateResult(validateResultList) {
-      const result = {};
-      let hasError = false;
-
-      validateResultList.forEach((item) => {
-        if (item && typeof item === 'object') {
-          Object.keys(item).forEach((key) => {
-            if (item[key] !== true) {
-              result[key] = item[key];
-              hasError = true;
-            }
+          this.$emit('validate', {
+            validateResult,
           });
+
+          return validateResult;
+        } catch (error) {
+          return false;
         }
-      });
+      },
 
-      return hasError ? result : true;
-    },
+      // 纯净验证（不显示错误信息）
+      async validateOnly(params) {
+        const { fields, trigger = 'all' } = params;
+        const { children } = this;
 
-    // 获取第一个错误信息
-    getFirstError(validateResult) {
-      if (validateResult === true) return '';
-      const firstKey = Object.keys(validateResult)[0];
-      if (!firstKey) return '';
+        const validatePromises = children
+          .filter((child) => {
+            if (fields && fields.length > 0) {
+              return fields.includes(child.name);
+            }
+            return true;
+          })
+          .map(child => child.validateOnly(trigger));
 
-      const errorList = validateResult[firstKey];
-      if (Array.isArray(errorList) && errorList.length > 0) {
-        return errorList[0].message || '';
-      }
+        try {
+          const results = await Promise.all(validatePromises);
+          return this.formatValidateResult(results);
+        } catch (error) {
+          return false;
+        }
+      },
 
-      return '';
-    },
+      // 格式化验证结果
+      formatValidateResult(validateResultList) {
+        const result = {};
+        let hasError = false;
 
-    // 提交表单
-    async submit(options) {
-      try {
-        const validateResult = await this.validate({
-          showErrorMessage: coalesce(options?.showErrorMessage, this.showErrorMessage),
-        });
-        const firstError = this.getFirstError(validateResult);
-        this.$emit('submit', {
-          validateResult,
-          firstError,
-        });
-
-        return validateResult;
-      } catch (error) {
-        return false;
-      }
-    },
-    // 获取表单提交信息
-    async getValidate() {
-      try {
-        const validateResult = await this.validate();
-        const firstError = this.getFirstError(validateResult);
-        // this.$emit('getFormData', {
-        //   validateResult,
-        //   firstError,
-        // });
-
-        return { validateResult, firstError };
-      } catch (error) {
-        return false;
-      }
-    },
-    // 重置表单
-    reset(params = {}) {
-      const { fields } = params;
-      const resetType = coalesce(params.resetType, this.resetType);
-      const { children, initialData, formData } = this;
-
-      children
-        .filter(child => needValidate(`${child.name}`, fields))
-        .forEach((child) => {
-          if (resetType === 'empty') {
-            this.updateFormData(child.name, this.getEmptyValue(child.name));
-          } else if (resetType === 'initial') {
-            this.updateFormData(child.name, initialData[child.name]);
+        validateResultList.forEach((item) => {
+          if (item && typeof item === 'object') {
+            Object.keys(item).forEach((key) => {
+              if (item[key] !== true) {
+                result[key] = item[key];
+                hasError = true;
+              }
+            });
           }
-          child.resetField();
         });
 
-      this.$emit('reset', {
-        formData,
-      });
-    },
+        return hasError ? result : true;
+      },
 
-    // 清空验证结果
-    clearValidate(fields) {
-      const { children } = this;
+      // 获取第一个错误信息
+      getFirstError(validateResult) {
+        if (validateResult === true) return '';
+        const firstKey = Object.keys(validateResult)[0];
+        if (!firstKey) return '';
 
-      children.forEach((child) => {
-        if (!fields || fields.includes(child.name)) {
-          child.clearValidate();
+        const errorList = validateResult[firstKey];
+        if (Array.isArray(errorList) && errorList.length > 0) {
+          return errorList[0].message || '';
         }
-      });
-    },
 
-    // 设置验证信息
-    setValidateMessage(validateMessage) {
-      const { children } = this;
+        return '';
+      },
 
-      children.forEach((child) => {
-        if (validateMessage[child.name]) {
-          child.setValidateMessage(validateMessage[child.name]);
+      // 提交表单
+      async submit(options) {
+        try {
+          const validateResult = await this.validate({
+            showErrorMessage: coalesce(options?.showErrorMessage, this.showErrorMessage),
+          });
+          const firstError = this.getFirstError(validateResult);
+          this.$emit('submit', {
+            validateResult,
+            firstError,
+          });
+
+          return validateResult;
+        } catch (error) {
+          return false;
         }
-      });
-    },
+      },
+      // 获取表单提交信息
+      async getValidate() {
+        try {
+          const validateResult = await this.validate();
+          const firstError = this.getFirstError(validateResult);
+          // this.$emit('getFormData', {
+          //   validateResult,
+          //   firstError,
+          // });
 
-    // 获取空值
-    getEmptyValue(name) {
-      const { formData } = this;
-      const currentValue = formData[name];
+          return { validateResult, firstError };
+        } catch (error) {
+          return false;
+        }
+      },
+      // 重置表单
+      reset(params = {}) {
+        const { fields } = params;
+        const resetType = coalesce(params.resetType, this.resetType);
+        const { children, initialData, formData } = this;
 
-      if (Array.isArray(currentValue)) {
-        return [];
-      }
-      if (typeof currentValue === 'object' && currentValue !== null) {
-        return {};
-      }
-      if (typeof currentValue === 'number') {
-        return 0;
-      }
-      return '';
-    },
+        children
+          .filter(child => needValidate(`${child.name}`, fields))
+          .forEach((child) => {
+            if (resetType === 'empty') {
+              this.updateFormData(child.name, this.getEmptyValue(child.name));
+            } else if (resetType === 'initial') {
+              this.updateFormData(child.name, initialData[child.name]);
+            }
+            child.resetField();
+          });
 
-    // 表单提交事件处理
-    onSubmit() {
-      this.submit();
-    },
+        this.$emit('reset', {
+          formData,
+        });
+      },
 
-    // 表单重置事件处理
-    onReset() {
-      this.reset();
+      // 清空验证结果
+      clearValidate(fields) {
+        const { children } = this;
+
+        children.forEach((child) => {
+          if (!fields || fields.includes(child.name)) {
+            child.clearValidate();
+          }
+        });
+      },
+
+      // 设置验证信息
+      setValidateMessage(validateMessage) {
+        const { children } = this;
+
+        children.forEach((child) => {
+          if (validateMessage[child.name]) {
+            child.setValidateMessage(validateMessage[child.name]);
+          }
+        });
+      },
+
+      // 获取空值
+      getEmptyValue(name) {
+        const { formData } = this;
+        const currentValue = formData[name];
+
+        if (Array.isArray(currentValue)) {
+          return [];
+        }
+        if (typeof currentValue === 'object' && currentValue !== null) {
+          return {};
+        }
+        if (typeof currentValue === 'number') {
+          return 0;
+        }
+        return '';
+      },
+
+      // 表单提交事件处理
+      onSubmit() {
+        this.submit();
+      },
+
+      // 表单重置事件处理
+      onReset() {
+        this.reset();
+      },
     },
-  },
-});
+  }),
+};
 
 </script>
 <style scoped src="./form.css"></style>

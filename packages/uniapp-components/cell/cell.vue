@@ -1,9 +1,9 @@
 <template>
   <view
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     :class="[
       tClass,
-      tools.cls(classPrefix, [['bordered', bordered || isLastChild]])
+      tools.cls(classPrefix, [['bordered', bordered || isLastChild]]),
     ]"
     :hover-class="hover ? classPrefix + '--hover' : ''"
     hover-stay-time="70"
@@ -44,7 +44,7 @@
           classPrefix + '__title-text ',
           tClassTitle
         ]"
-        :style="tools._style(titleStyle)"
+        :style="'' + tools._style(titleStyle)"
       >
         <block v-if="title">
           {{ title }}
@@ -79,7 +79,7 @@
         classPrefix + '__note ',
         tClassNote
       ]"
-      :style="tools._style(noteStyle)"
+      :style="'' + tools._style(noteStyle)"
     >
       <text v-if="note">
         {{ note }}
@@ -88,8 +88,8 @@
     </view>
     <view
       :class="[
-        tools.cls(classPrefix + '__right', [align]),
-        tClassRight
+        tools.cls(`${classPrefix}__right`, [align]),
+        tClassRight,
       ]"
     >
       <t-icon
@@ -144,133 +144,143 @@ const COMMON_RIGHT_ICON_STYLE = {
   fontSize: 'var(--td-cell-right-icon-font-size, 24px)',
 };
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-title`,
-    `${prefix}-class-description`,
-    `${prefix}-class-note`,
-    `${prefix}-class-hover`,
-    `${prefix}-class-image`,
-    `${prefix}-class-left`,
-    `${prefix}-class-left-icon`,
-    `${prefix}-class-center`,
-    `${prefix}-class-right`,
-    `${prefix}-class-right-icon`,
-  ],
-  mixins: [ChildrenMixin(RELATION_MAP.Cell)],
+export default {
   components: {
     TIcon,
     TImage,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'click',
-  ],
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      rightArrow: null,
-      iRightIcon: null,
-      iLeftIcon: null,
-      isLastChild: false,
-      tools,
-    };
-  },
-  computed: {
-    rightArrowCustomStyle() {
-      return tools._style([
-        {
-          color: this.rightArrow.color
-            ? this.rightArrow.color
-            : COMMON_RIGHT_ICON_STYLE.color,
-          fontSize: this.rightArrow.size
-            ? addUnit(this.rightArrow.size)
-            : COMMON_RIGHT_ICON_STYLE.fontSize,
-        },
-        this.rightIconStyle || '',
-        this.rightArrow.style || '',
-      ]);
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-    rightIconCustomStyle() {
-      return tools._style([
-        {
-          color: this.iRightIcon.color
-            ? this.iRightIcon.color
-            : COMMON_RIGHT_ICON_STYLE.color,
-          fontSize: this.iRightIcon.size
-            ? addUnit(this.iRightIcon.size)
-            : COMMON_RIGHT_ICON_STYLE.fontSize,
-        },
-        this.rightIconStyle || '',
-        this.iRightIcon.style || '',
-      ]);
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-title`,
+      `${prefix}-class-description`,
+      `${prefix}-class-note`,
+      `${prefix}-class-hover`,
+      `${prefix}-class-image`,
+      `${prefix}-class-left`,
+      `${prefix}-class-left-icon`,
+      `${prefix}-class-center`,
+      `${prefix}-class-right`,
+      `${prefix}-class-right-icon`,
+    ],
+    mixins: [ChildrenMixin(RELATION_MAP.Cell)],
+    components: {
+      TIcon,
+      TImage,
     },
-    leftIconCustomStyle() {
-      return tools._style([
-        {
-          color: this.iLeftIcon.color
-            ? this.iLeftIcon.color
-            : 'var(--td-cell-left-icon-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)))',
-          fontSize: this.iLeftIcon.size
-            ? addUnit(this.iLeftIcon.size)
-            : 'var(--td-cell-left-icon-font-size, 24px)',
-        },
-        this.iLeftIcon.style || '',
-      ]);
+    props: {
+      ...props,
     },
-    leftImageCustomStyle() {
-      return tools._style({
-        height: 'var(--td-cell-image-height, 48px)',
-        width: 'var(--td-cell-image-width, 48px)',
-      });
+    emits: [
+      'click',
+    ],
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        rightArrow: null,
+        iRightIcon: null,
+        iLeftIcon: null,
+        isLastChild: false,
+        tools,
+      };
     },
-  },
-  watch: {
-    leftIcon: {
-      handler(e) {
-        this.setIcon('iLeftIcon', e, '');
+    computed: {
+      rightArrowCustomStyle() {
+        if (!this.rightArrow) return '';
+        return tools._style([
+          {
+            color: this.rightArrow.color
+              ? this.rightArrow.color
+              : COMMON_RIGHT_ICON_STYLE.color,
+            fontSize: this.rightArrow.size
+              ? addUnit(this.rightArrow.size)
+              : COMMON_RIGHT_ICON_STYLE.fontSize,
+          },
+          this.rightIconStyle || '',
+          this.rightArrow.style || '',
+        ]);
       },
-      immediate: true,
-    },
-    rightIcon: {
-      handler(e) {
-        this.setIcon('iRightIcon', e, '');
+      rightIconCustomStyle() {
+        if (!this.iRightIcon) return '';
+        return tools._style([
+          {
+            color: this.iRightIcon.color
+              ? this.iRightIcon.color
+              : COMMON_RIGHT_ICON_STYLE.color,
+            fontSize: this.iRightIcon.size
+              ? addUnit(this.iRightIcon.size)
+              : COMMON_RIGHT_ICON_STYLE.fontSize,
+          },
+          this.rightIconStyle || '',
+          this.iRightIcon.style || '',
+        ]);
       },
-      immediate: true,
-    },
-    arrow: {
-      handler(e) {
-        this.setIcon('rightArrow', e, 'chevron-right');
+      leftIconCustomStyle() {
+        if (!this.iLeftIcon) return '';
+
+        return tools._style([
+          {
+            color: this.iLeftIcon.color
+              ? this.iLeftIcon.color
+              : 'var(--td-cell-left-icon-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)))',
+            fontSize: this.iLeftIcon.size
+              ? addUnit(this.iLeftIcon.size)
+              : 'var(--td-cell-left-icon-font-size, 24px)',
+          },
+          this.iLeftIcon.style || '',
+        ]);
       },
-      immediate: true,
-    },
-  },
-  methods: {
-    setIcon(e, t, s) {
-      this[e] = calcIcon(t, s);
-    },
-    onClick(e) {
-      this.$emit('click', e);
-      this.jumpLink();
-    },
-    jumpLink(e = 'url', t = 'jumpType') {
-      const s = this[e];
-      const i = this[t];
-      if (s) {
-        uni[i]({
-          url: s,
+      leftImageCustomStyle() {
+        return tools._style({
+          height: 'var(--td-cell-image-height, 48px)',
+          width: 'var(--td-cell-image-width, 48px)',
         });
-      }
+      },
     },
-  },
-});
+    watch: {
+      leftIcon: {
+        handler(e) {
+          this.setIcon('iLeftIcon', e, '');
+        },
+        immediate: true,
+      },
+      rightIcon: {
+        handler(e) {
+          this.setIcon('iRightIcon', e, '');
+        },
+        immediate: true,
+      },
+      arrow: {
+        handler(e) {
+          this.setIcon('rightArrow', e, 'chevron-right');
+        },
+        immediate: true,
+      },
+    },
+    methods: {
+      setIcon(e, t, s) {
+        this[e] = calcIcon(t, s);
+      },
+      onClick(e) {
+        this.$emit('click', e);
+        this.jumpLink();
+      },
+      jumpLink(e = 'url', t = 'jumpType') {
+        const s = this[e];
+        const i = this[t];
+        if (s) {
+          uni[i]({
+            url: s,
+          });
+        }
+      },
+    },
+  }),
+};
 </script>
 <style scoped src="./cell.css"></style>

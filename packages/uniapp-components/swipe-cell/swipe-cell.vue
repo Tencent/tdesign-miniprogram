@@ -1,16 +1,16 @@
 <template>
   <view
     :class="tClass + ' ' + classPrefix"
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     data-key="cell"
     :opened="state.opened"
     :left-width="state.leftWidth"
     :right-width="state.rightWidth"
     @click="onTap"
-    @touchstart="parseEventDynamicCode($event, disabled || 'startDrag')"
-    @touchmove="parseEventDynamicCode($event, skipMove ? '' : disabled || 'onDrag')"
-    @touchend="parseEventDynamicCode($event, skipMove ? '' : disabled || 'endDrag')"
-    @touchcancel="parseEventDynamicCode($event, disabled || 'endDrag')"
+    @touchstart="(e) => parseEventDynamicCode(e, disabled || 'startDrag')"
+    @touchmove="(e) => parseEventDynamicCode(e, skipMove ? '' : disabled || 'onDrag')"
+    @touchend="(e) => parseEventDynamicCode(e, skipMove ? '' : disabled || 'endDrag')"
+    @touchcancel="(e) => parseEventDynamicCode(e, disabled || 'endDrag')"
   >
     <view
       id="wrapper"
@@ -140,103 +140,108 @@ const makeMethods = () => [
 }, {});
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-  ],
+export default {
   components: {
     TIcon,
   },
-  props: {
-    ...props,
-  },
-  emits: ['click', 'dragend', 'dragstart'],
-  data() {
-    return {
-      prefix,
-      wrapperStyle: '',
-      closed: true,
-      classPrefix: name,
-      skipMove: false,
-      tools,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    externalClasses: [
+      `${prefix}-class`,
+    ],
+    components: {
+      TIcon,
+    },
+    props: {
+      ...props,
+    },
+    emits: ['click', 'dragend', 'dragstart'],
+    data() {
+      return {
+        prefix,
+        wrapperStyle: '',
+        closed: true,
+        classPrefix: name,
+        skipMove: false,
+        tools,
 
-      state: {
-        leftWidth: 0,
-        rightWidth: 0,
-        offset: 0,
-        startOffset: 0,
-        opened: this.opened,
+        state: {
+          leftWidth: 0,
+          rightWidth: 0,
+          offset: 0,
+          startOffset: 0,
+          opened: this.opened,
+        },
+      };
+    },
+    watch: {
+      left: 'setSwipeWidth',
+      right: 'setSwipeWidth',
+      'state.leftWidth': 'initLeftWidth',
+      'state.rightWidth': 'initRightWidth',
+      'state.opened': 'onOpenedChange',
+      opened: {
+        handler(v) {
+          this.state.opened = v;
+        },
+        immediate: true,
       },
-    };
-  },
-  watch: {
-    left: 'setSwipeWidth',
-    right: 'setSwipeWidth',
-    'state.leftWidth': 'initLeftWidth',
-    'state.rightWidth': 'initRightWidth',
-    'state.opened': 'onOpenedChange',
-    opened: {
-      handler(v) {
-        this.state.opened = v;
+    },
+    mounted() {
+      ARRAY.push(this);
+      this.setSwipeWidth();
+    },
+    beforeUnmount() {
+      ARRAY = ARRAY.filter(e => e !== this);
+    },
+    methods: {
+      ...makeMethods(),
+      parseEventDynamicCode,
+      setSwipeWidth() {
+        Promise.all([getRect(this, `${ContainerClass}__left`), getRect(this, `${ContainerClass}__right`)]).then(([leftRect, rightRect]) => {
+          if (leftRect.width === 0 && rightRect.width === 0 && !this._hasObserved) {
+            this._hasObserved = true;
+            getObserver(this, `.${name}`).then(() => {
+              this.setSwipeWidth();
+            });
+          }
+          this.state.leftWidth = leftRect.width;
+          this.state.rightWidth = rightRect.width;
+        });
       },
-      immediate: true,
-    },
-  },
-  mounted() {
-    ARRAY.push(this);
-    this.setSwipeWidth();
-  },
-  beforeUnmount() {
-    ARRAY = ARRAY.filter(e => e !== this);
-  },
-  methods: {
-    ...makeMethods(),
-    parseEventDynamicCode,
-    setSwipeWidth() {
-      Promise.all([getRect(this, `${ContainerClass}__left`), getRect(this, `${ContainerClass}__right`)]).then(([leftRect, rightRect]) => {
-        if (leftRect.width === 0 && rightRect.width === 0 && !this._hasObserved) {
-          this._hasObserved = true;
-          getObserver(this, `.${name}`).then(() => {
-            this.setSwipeWidth();
-          });
-        }
-        this.state.leftWidth = leftRect.width;
-        this.state.rightWidth = rightRect.width;
-      });
-    },
 
-    onSkipMove() {
-      this.skipMove = true;
-    },
+      onSkipMove() {
+        this.skipMove = true;
+      },
 
-    catchMove() {
-      this.skipMove = false;
-    },
+      catchMove() {
+        this.skipMove = false;
+      },
 
-    open() {
-      this.state.opened = true;
-    },
+      open() {
+        this.state.opened = true;
+      },
 
-    close() {
-      this.state.opened = false;
-    },
+      close() {
+        this.state.opened = false;
+      },
 
-    closeOther() {
-      ARRAY.filter(item => item !== this).forEach(item => item.close());
-    },
+      closeOther() {
+        ARRAY.filter(item => item !== this).forEach(item => item.close());
+      },
 
-    onTap() {
-      this.close();
-    },
+      onTap() {
+        this.close();
+      },
 
-    onActionTap(action, source) {
-      this.$emit('click', action, source);
+      onActionTap(action, source) {
+        this.$emit('click', action, source);
+      },
     },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./swipe-cell.css"></style>

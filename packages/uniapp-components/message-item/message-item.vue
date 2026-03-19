@@ -5,7 +5,7 @@
       :id="id || classPrefix"
       :ref="id || classPrefix"
       :class="classPrefix + ' ' + tClass + ' ' + classPrefix + '--' + theme + ' ' + fadeClass"
-      :style="tools._style([getMessageStyles(zIndex, offset, wrapTop), customStyle])"
+      :style="'' + tools._style([getMessageStyles(zIndex, offset, wrapTop), customStyle])"
       :animation="showAnimation"
       aria-role="alert"
     >
@@ -125,227 +125,239 @@ const rawData = {
   }),
 };
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-content`,
-    `${prefix}-class-icon`,
-    `${prefix}-class-link`,
-    `${prefix}-class-close-btn`,
-  ],
+export default {
   components: {
     TIcon,
     TLink,
   },
-  props: {
-  },
-  emits: [
-    'duration-end',
-    'close-btn-click',
-    'link-click',
-  ],
-  data() {
-    return {
-      ...rawData,
-      ...messageDefaultData,
-      animation: [],
-
-      tools,
-    };
-  },
-  computed: {
-    innerMarquee() {
-      const { marquee } = this;
-      if (JSON.stringify(marquee) === '{}' || JSON.stringify(marquee) === 'true') {
-        return {
-          speed: 50,
-          loop: -1,
-          delay: 0,
-        };
-      }
-      return this.marquee;
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-  },
-  watch: {
-    theme: {
-      handler(theme) {
-        this.innerIcon = calcIcon(this.icon, THEME_ICON[theme]);
-      },
-      immediate: true,
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-content`,
+      `${prefix}-class-icon`,
+      `${prefix}-class-link`,
+      `${prefix}-class-close-btn`,
+    ],
+    components: {
+      TIcon,
+      TLink,
     },
-    icon: {
-      handler(icon) {
-        this.innerIcon = calcIcon(icon, THEME_ICON[this.theme]);
-      },
-      immediate: true,
+    props: {
     },
-
-
-    link: {
-      handler(v) {
-        const innerLink = isObject(v) ? { ...v } : { content: v };
-        this.innerLink = innerLink;
-      },
-      immediate: true,
-    },
-
-    closeBtn: {
-      handler(v) {
-        this.iCloseBtn = calcIcon(v, 'close');
-      },
-      immediate: true,
-    },
-  },
-  mounted() {
-    this.memoInitialData();
-  },
-  beforeUnmount() {
-    this.clearMessageAnimation();
-  },
-  methods: {
-    getMessageStyles,
-    /** 记录组件设置的项目 */
-    memoInitialData() {
-      this.initialData = {
+    emits: [
+      'duration-end',
+      'close-btn-click',
+      'link-click',
+    ],
+    data() {
+      return {
         ...rawData,
         ...messageDefaultData,
         animation: [],
+
+        tools,
+        innerIcon: null,
+        innerLink: null,
+        iCloseBtn: null,
+        id: '',
+        height: 48,
+        onHide: null,
       };
     },
-
-    resetData(cb) {
-      const { initialData = {} } = this;
-      Object.keys(initialData).forEach((key) => {
-        this[key] = initialData[key];
-      });
-      setTimeout(cb);
+    computed: {
+      innerMarquee() {
+        const { marquee } = this;
+        if (marquee && (JSON.stringify(marquee) === '{}' || JSON.stringify(marquee) === 'true')) {
+          return {
+            speed: 50,
+            loop: -1,
+            delay: 0,
+          };
+        }
+        return this.marquee;
+      },
     },
+    watch: {
+      theme: {
+        handler(theme) {
+          this.innerIcon = calcIcon(this.icon, THEME_ICON[theme]);
+        },
+        immediate: true,
+      },
+      icon: {
+        handler(icon) {
+          this.innerIcon = calcIcon(icon, THEME_ICON[this.theme]);
+        },
+        immediate: true,
+      },
 
-    /** 检查是否需要开启一个新的动画循环 */
-    checkAnimation() {
-      const { innerMarquee } = this;
-      if (!innerMarquee || innerMarquee.loop === 0) {
-        return;
-      }
 
-      const speeding = innerMarquee.speed;
+      link: {
+        handler(v) {
+          const innerLink = isObject(v) ? { ...v } : { content: v };
+          this.innerLink = innerLink;
+        },
+        immediate: true,
+      },
 
-      if (this.loop > 0) {
-        this.loop -= 1;
-      } else if (this.loop === 0) {
-      // 动画回到初始位置
-        this.animation = this.resetAnimation
-          .translateX(0)
-          .step()
-          .export();
-        return;
-      }
+      closeBtn: {
+        handler(v) {
+          this.iCloseBtn = calcIcon(v, 'close');
+        },
+        immediate: true,
+      },
+    },
+    mounted() {
+      this.memoInitialData();
+    },
+    beforeUnmount() {
+      this.clearMessageAnimation();
+    },
+    methods: {
+      getMessageStyles,
+      /** 记录组件设置的项目 */
+      memoInitialData() {
+        this.initialData = {
+          ...rawData,
+          ...messageDefaultData,
+          animation: [],
+        };
+      },
 
-      if (this.nextAnimationContext) {
-        this.clearMessageAnimation();
-      }
+      resetData(cb) {
+        const { initialData = {} } = this;
+        Object.keys(initialData).forEach((key) => {
+          this[key] = initialData[key];
+        });
+        setTimeout(cb);
+      },
 
-      const warpID = `#${name}__text-wrap`;
-      const nodeID = `#${name}__text`;
-      Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeRect, wrapRect]) => {
-        this.animation = this.resetAnimation.translateX(wrapRect.width).step()
-          .export();
+      /** 检查是否需要开启一个新的动画循环 */
+      checkAnimation() {
+        const { innerMarquee } = this;
+        if (!innerMarquee || innerMarquee.loop === 0) {
+          return;
+        }
 
-        setTimeout(() => {
-          const durationTime = ((nodeRect.width + wrapRect.width) / speeding) * 1000;
-          const nextAnimation = uni
-            .createAnimation({
-            // 默认50px/s
-              duration: durationTime,
-            })
-            .translateX(-nodeRect.width)
+        const speeding = innerMarquee.speed;
+
+        if (this.loop > 0) {
+          this.loop -= 1;
+        } else if (this.loop === 0) {
+          // 动画回到初始位置
+          this.animation = this.resetAnimation
+            .translateX(0)
             .step()
             .export();
+          return;
+        }
 
-          // 这里就只能用 setTimeout/20, nextTick 没用
-          // 不用这个的话会出现reset动画没跑完就开始跑这个等的奇怪问题
+        if (this.nextAnimationContext) {
+          this.clearMessageAnimation();
+        }
+
+        const warpID = `#${name}__text-wrap`;
+        const nodeID = `#${name}__text`;
+        Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeRect, wrapRect]) => {
+          this.animation = this.resetAnimation.translateX(wrapRect.width).step()
+            .export();
+
           setTimeout(() => {
-            this.nextAnimationContext = setTimeout(this.checkAnimation.bind(this), durationTime);
-            this.animation = nextAnimation;
-          }, 20);
-        });
-      });
-    },
+            const durationTime = ((nodeRect.width + wrapRect.width) / speeding) * 1000;
+            const nextAnimation = uni
+              .createAnimation({
+                // 默认50px/s
+                duration: durationTime,
+              })
+              .translateX(-nodeRect.width)
+              .step()
+              .export();
 
-    /** 清理动画循环 */
-    clearMessageAnimation() {
-      clearTimeout(this.nextAnimationContext);
-      this.nextAnimationContext = 0;
-    },
-
-    show(offsetHeight = 0) {
-      const { duration, innerMarquee, offset, id } = this;
-      this.visible = true;
-      this.loop = innerMarquee.loop || this.loop;
-      this.fadeClass = `${name}__fade`;
-      this.wrapTop = unitConvert(offset[0]) + offsetHeight;
-
-      this.reset();
-      setTimeout(() => {
-        this.checkAnimation();
-      });
-
-      if (duration && duration > 0) {
-        this.closeTimeoutContext = setTimeout(() => {
-          this.hide();
-          this.$emit('duration-end', { self: this });
-        }, duration);
-      }
-      const wrapID = id ? `#${id}` : `#${name}`;
-
-      setTimeout(() => {
-        getRect(this, wrapID)
-          .then((wrapRect) => {
-            this.height = wrapRect.height;
+            // 这里就只能用 setTimeout/20, nextTick 没用
+            // 不用这个的话会出现reset动画没跑完就开始跑这个等的奇怪问题
             setTimeout(() => {
-              this.fadeClass = '';
-            });
-          })
-          .catch(() => {
+              this.nextAnimationContext = setTimeout(this.checkAnimation.bind(this), durationTime);
+              this.animation = nextAnimation;
+            }, 20);
           });
-      });
-    },
+        });
+      },
 
-    hide() {
-      this.reset();
-      this.fadeClass = `${name}__fade`;
+      /** 清理动画循环 */
+      clearMessageAnimation() {
+        clearTimeout(this.nextAnimationContext);
+        this.nextAnimationContext = 0;
+      },
 
-      setTimeout(() => {
-        this.visible = false;
-        this.animation = [];
-      }, SHOW_DURATION);
-      if (typeof this.onHide === 'function') {
-        this.onHide();
-      }
-    },
+      show(offsetHeight = 0) {
+        const { duration, innerMarquee, offset, id } = this;
+        this.visible = true;
+        this.loop = innerMarquee.loop || this.loop;
+        this.fadeClass = `${name}__fade`;
+        this.wrapTop = unitConvert(offset[0]) + offsetHeight;
 
-    // 重置定时器
-    reset() {
-      if (this.nextAnimationContext) {
-        this.clearMessageAnimation();
-      }
-      clearTimeout(this.closeTimeoutContext);
-      this.closeTimeoutContext = 0;
-    },
+        this.reset();
+        setTimeout(() => {
+          this.checkAnimation();
+        });
 
-    handleClose() {
-      this.hide();
-      this.$emit('close-btn-click');
-    },
+        if (duration && duration > 0) {
+          this.closeTimeoutContext = setTimeout(() => {
+            this.hide();
+            this.$emit('duration-end', { self: this });
+          }, duration);
+        }
+        const wrapID = id ? `#${id}` : `#${name}`;
 
-    handleLinkClick() {
-      this.$emit('link-click');
+        setTimeout(() => {
+          getRect(this, wrapID)
+            .then((wrapRect) => {
+              this.height = wrapRect.height;
+              setTimeout(() => {
+                this.fadeClass = '';
+              });
+            })
+            .catch(() => {
+            });
+        });
+      },
+
+      hide() {
+        this.reset();
+        this.fadeClass = `${name}__fade`;
+
+        setTimeout(() => {
+          this.visible = false;
+          this.animation = [];
+        }, SHOW_DURATION);
+        if (typeof this.onHide === 'function') {
+          this.onHide();
+        }
+      },
+
+      // 重置定时器
+      reset() {
+        if (this.nextAnimationContext) {
+          this.clearMessageAnimation();
+        }
+        clearTimeout(this.closeTimeoutContext);
+        this.closeTimeoutContext = 0;
+      },
+
+      handleClose() {
+        this.hide();
+        this.$emit('close-btn-click');
+      },
+
+      handleLinkClick() {
+        this.$emit('link-click');
+      },
     },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./message-item.css"></style>
