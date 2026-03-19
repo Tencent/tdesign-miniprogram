@@ -117,9 +117,6 @@ export default {
       `${prefix}-class-border`,
     ],
     mixins: [ChildrenMixin(RELATION_MAP.Checkbox)],
-    components: {
-      TIcon,
-    },
     props: {
       ...props,
       theme: {

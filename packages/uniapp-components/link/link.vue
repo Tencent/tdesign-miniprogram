@@ -98,9 +98,6 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    components: {
-      TIcon,
-    },
     props: {
       ...props,
     },

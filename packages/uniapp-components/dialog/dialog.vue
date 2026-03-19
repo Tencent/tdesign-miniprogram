@@ -252,11 +252,6 @@ export default {
       `${prefix}-class-action`,
     ],
     mixins: [getFunctionalMixin(props), useCustomNavbar],
-    components: {
-      TPopup,
-      TIcon,
-      TButton,
-    },
     props: {
       ...props,
     },

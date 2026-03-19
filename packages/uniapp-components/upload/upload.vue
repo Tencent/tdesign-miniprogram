@@ -326,12 +326,6 @@ export default {
       },
     ],
     externalClasses: [`${prefix}-class`],
-    components: {
-      TGrid,
-      TGridItem,
-      TIcon,
-      TImage,
-    },
     props: {
       ...props,
     },

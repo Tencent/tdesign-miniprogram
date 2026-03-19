@@ -142,10 +142,6 @@ export default {
     ],
     externalClasses: [`${prefix}-class`],
     mixins: [useCustomNavbar],
-    components: {
-      TImage,
-      TIcon,
-    },
     props: {
       ...props,
     },

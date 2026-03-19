@@ -121,9 +121,6 @@ export default {
       `${prefix}-class-border`,
     ],
     mixins: [ChildrenMixin(RELATION_MAP.Radio)],
-    components: {
-      TIcon,
-    },
     props: {
       ...props,
       borderless: {

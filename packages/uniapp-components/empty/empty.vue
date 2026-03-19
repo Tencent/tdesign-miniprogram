@@ -89,10 +89,6 @@ export default {
       `${prefix}-class-image`,
       `${prefix}-class-actions`,
     ],
-    components: {
-      TIcon,
-      TImage,
-    },
     props: {
       ...props,
     },

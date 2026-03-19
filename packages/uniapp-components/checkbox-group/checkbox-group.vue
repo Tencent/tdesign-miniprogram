@@ -70,9 +70,6 @@ export default {
     },
 
     mixins: [ParentMixin(RELATION_MAP.Checkbox)],
-    components: {
-      TCheckbox,
-    },
     props: {
       ...props,
     },

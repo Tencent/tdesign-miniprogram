@@ -144,10 +144,6 @@ export default {
     },
     externalClasses: [`${prefix}-class`, `${prefix}-class-button`],
     mixins: [useCustomNavbar],
-    components: {
-      TButton,
-      TDraggable,
-    },
     props: {
       ...props,
     },

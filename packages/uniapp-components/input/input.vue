@@ -181,9 +181,6 @@ export default {
       `${prefix}-class-suffix-icon`,
       `${prefix}-class-tips`,
     ],
-    components: {
-      TIcon,
-    },
     props: {
       ...props,
     },

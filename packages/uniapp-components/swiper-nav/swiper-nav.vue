@@ -62,7 +62,6 @@ export default {
     },
     externalClasses: [`${prefix}-class`],
     mixins: [ChildrenMixin(RELATION_MAP.SwiperNav)],
-    components: { },
     props: {
       ...props,
     },

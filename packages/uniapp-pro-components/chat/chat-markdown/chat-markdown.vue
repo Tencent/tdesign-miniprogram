@@ -36,10 +36,6 @@ export default {
       styleIsolation: 'shared',
     },
 
-    components: {
-      chatMarkdownNode,
-    },
-
     props: {
       ...props,
     },
@@ -78,7 +74,6 @@ export default {
 
           this.nodes = tokens;
         } catch (error) {
-          console.error('Markdown parsing error:', error);
           // 解析失败时，将原始文本作为普通文本显示
           this.nodes = [
             {

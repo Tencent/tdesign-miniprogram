@@ -97,10 +97,6 @@ export default {
       `${prefix}-class-content`,
     ],
     mixins: [transitionMixins, useCustomNavbar],
-    components: {
-      TOverlay,
-      TIcon,
-    },
     props: {
       ...props,
     },

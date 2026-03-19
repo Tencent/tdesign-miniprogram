@@ -80,9 +80,6 @@ export default {
       `${prefix}-class-minus`,
       `${prefix}-class-plus`,
     ],
-    components: {
-      TIcon,
-    },
     props: {
       ...props,
     },

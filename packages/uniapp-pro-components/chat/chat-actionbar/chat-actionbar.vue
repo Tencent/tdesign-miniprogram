@@ -135,11 +135,6 @@ export default {
       styleIsolation: 'shared',
     },
 
-    components: {
-      tIcon,
-      tPopover,
-    },
-
     props: {
       ...props,
     },
@@ -350,7 +345,6 @@ export default {
             query.select('.t-popover').boundingClientRect();
             query.exec((res) => {
               const [rect] = res;
-              console.log('meowres', res);
               if (rect) {
               // 获取屏幕宽度
                 const systemInfo = uni.getSystemInfoSync();

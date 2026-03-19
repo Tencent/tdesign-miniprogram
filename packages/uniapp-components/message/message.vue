@@ -54,9 +54,6 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    components: {
-      TMessageItem,
-    },
     props: {
       ...props,
     },

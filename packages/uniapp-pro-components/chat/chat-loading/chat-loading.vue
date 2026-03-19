@@ -74,11 +74,6 @@ export default {
       styleIsolation: 'shared',
     },
 
-    components: {
-      tSkeleton,
-      tLoading,
-    },
-
     props: {
       ...props,
     },

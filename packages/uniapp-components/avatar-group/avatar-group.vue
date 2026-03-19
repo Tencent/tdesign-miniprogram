@@ -54,9 +54,6 @@ export default {
       `${prefix}-class-image`,
     ],
     mixins: [ParentMixin(RELATION_MAP.Avatar)],
-    components: {
-      TAvatar,
-    },
     props: {
       ...avatarGroupProps,
     },

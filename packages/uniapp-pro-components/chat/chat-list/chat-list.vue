@@ -72,10 +72,6 @@ export default {
       styleIsolation: 'shared',
     },
 
-    components: {
-      ChatMessage,
-    },
-
     props: {
       ...props,
       virtualList: {

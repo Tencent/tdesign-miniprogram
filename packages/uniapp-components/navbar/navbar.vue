@@ -86,9 +86,6 @@ export default {
       `${prefix}-class-capsule`,
       `${prefix}-class-nav-btn`,
     ],
-    components: {
-      TIcon,
-    },
     props: {
       ...props,
     },

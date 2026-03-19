@@ -143,9 +143,6 @@ export default {
       `${prefix}-class-icon`,
       `${prefix}-class-text`,
     ],
-    components: {
-      TIcon,
-    },
     props: {
       ...props,
     },

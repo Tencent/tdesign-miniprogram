@@ -134,9 +134,6 @@ export default {
       `${prefix}-class-operation`,
       `${prefix}-class-suffix-icon`,
     ],
-    components: {
-      TIcon,
-    },
     props: {
       ...props,
     },

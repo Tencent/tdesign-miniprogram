@@ -161,11 +161,6 @@ export default {
       `${prefix}-class-description`,
     ],
     mixins: [ChildrenMixin(RELATION_MAP.GridItem)],
-    components: {
-      TImage,
-      TIcon,
-      TBadge,
-    },
     props: {
       ...props,
     },

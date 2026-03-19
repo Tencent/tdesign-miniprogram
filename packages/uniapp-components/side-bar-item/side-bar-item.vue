@@ -93,10 +93,6 @@ export default {
       `${prefix}-class`,
     ],
     mixins: [ChildrenMixin(RELATION_MAP.SideBarItem)],
-    components: {
-      TBadge,
-      TIcon,
-    },
     props: {
       ...props,
       tId: {

@@ -58,10 +58,6 @@ export default {
       `${prefix}-class`,
       `${prefix}-class-canvas`,
     ],
-    components: {
-      QrcodeCanvas,
-      QrcodeStatus,
-    },
     props: {
       ...props,
     },

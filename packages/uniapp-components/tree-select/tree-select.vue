@@ -154,15 +154,6 @@ export default {
       `${prefix}-class-right-item`,
       `${prefix}-class-right-item-label`,
     ],
-    components: {
-      TRadio,
-      TRadioGroup,
-      TCheckbox,
-      TCheckboxGroup,
-      TSideBar,
-      TSideBarItem,
-      TScrollView,
-    },
     props: {
       ...props,
     },

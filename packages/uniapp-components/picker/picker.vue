@@ -133,9 +133,6 @@ export default {
       `${prefix}-class-cancel`,
       `${prefix}-class-title`,
     ],
-    components: {
-      TPopup,
-    },
     mixins: [
       ParentMixin(RELATION_MAP.PickerItem),
       useCustomNavbar,

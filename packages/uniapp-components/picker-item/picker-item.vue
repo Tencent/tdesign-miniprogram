@@ -120,9 +120,6 @@ export default {
   },
   ...uniComponent({
     name,
-    components: {
-      TIcon,
-    },
     options: {
       styleIsolation: 'shared',
       virtualHost: true,

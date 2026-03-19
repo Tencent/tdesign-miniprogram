@@ -91,10 +91,6 @@ export default {
     },
     externalClasses: [`${prefix}-class`, `${prefix}-class-nav`, `${prefix}-class-image`, `${prefix}-class-prev-image`, `${prefix}-class-next-image`],
     mixins: [ParentMixin(RELATION_MAP.SwiperNav)],
-    components: {
-      TSwiperNav,
-      TImage,
-    },
     props: {
       ...props,
     },

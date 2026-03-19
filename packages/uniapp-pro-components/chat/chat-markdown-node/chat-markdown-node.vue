@@ -218,7 +218,6 @@
 </template>
 
 <script>
-// import chatMarkdownTable from '../chat-markdown-table/chat-markdown-table.vue';
 import chatMarkdownCode from '../chat-markdown-code/chat-markdown-code.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
@@ -232,7 +231,6 @@ const tableName = `${prefix}-chat-markdown-table`;
 
 export default {
   components: {
-    // chatMarkdownTable,
     chatMarkdownCode,
     // #ifdef MP
     TChatMarkdownNode,
@@ -243,14 +241,6 @@ export default {
     options: {
       multipleSlots: true,
       styleIsolation: 'shared',
-    },
-
-    components: {
-    // chatMarkdownTable,
-      chatMarkdownCode,
-      // #ifdef MP
-      TChatMarkdownNode,
-    // #endif
     },
 
     props: {

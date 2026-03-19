@@ -109,13 +109,6 @@ export default {
       styleIsolation: 'shared',
     },
 
-    components: {
-      chatContent,
-      chatThinking,
-      chatLoading,
-      attachments,
-    },
-
     props: {
       ...props,
     },

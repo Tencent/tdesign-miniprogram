@@ -70,10 +70,6 @@ export default {
       `${prefix}-class-body`,
       `${prefix}-class-dot`,
     ],
-    components: {
-      TIcon,
-      TLoading,
-    },
     props: {
       ...props,
     },

@@ -212,12 +212,6 @@ export default {
       `${prefix}-class-cancel`,
     ],
     mixins: [getFunctionalMixin(props), useCustomNavbar],
-    components: {
-      TIcon,
-      TPopup,
-      TGrid,
-      TGridItem,
-    },
     props: {
       ...props,
     },

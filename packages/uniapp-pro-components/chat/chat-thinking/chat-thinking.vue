@@ -68,11 +68,6 @@ export default {
       styleIsolation: 'shared',
     },
 
-    components: {
-      TIcon,
-      TChatLoading,
-    },
-
     props: {
       ...props,
     },

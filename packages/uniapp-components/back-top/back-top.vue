@@ -67,9 +67,6 @@ export default {
     mixins: [
       ChildrenMixin(RELATION_MAP.BackTop),
     ],
-    components: {
-      TIcon,
-    },
     props: {
       ...props,
     },

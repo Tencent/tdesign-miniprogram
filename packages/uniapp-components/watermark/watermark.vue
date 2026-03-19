@@ -182,8 +182,8 @@ export default {
               () => {
                 this.initialed = true;
               },
-            ).catch((e) => {
-              console.log('e', e);
+            ).catch((err) => {
+              console.error('render watermark failed', err);
             });
           });
       },

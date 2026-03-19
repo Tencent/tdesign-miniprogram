@@ -168,10 +168,6 @@ export default {
       `${prefix}-class-right-icon`,
     ],
     mixins: [ChildrenMixin(RELATION_MAP.Cell)],
-    components: {
-      TIcon,
-      TImage,
-    },
     props: {
       ...props,
     },

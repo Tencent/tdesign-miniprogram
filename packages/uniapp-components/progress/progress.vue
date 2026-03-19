@@ -186,9 +186,6 @@ export default {
       `${prefix}-class-bar`,
       `${prefix}-class-label`,
     ],
-    components: {
-      TIcon,
-    },
     props: {
       ...props,
     },

@@ -194,7 +194,7 @@ export default {
           this.setAnchorByCurrent(current, 'init');
         })
           .catch((err) => {
-            console.log('err', err);
+            console.warn('err', err);
           });
         this.getSidebarRect();
       },
@@ -210,7 +210,7 @@ export default {
               });
             })
             .catch((err) => {
-              console.log('err', err);
+              console.warn('err', err);
             })));
       },
 
@@ -226,7 +226,7 @@ export default {
           };
         })
           .catch((err) => {
-            console.log('err', err);
+            console.warn('err', err);
           });
       },
 

@@ -114,9 +114,6 @@ export default {
     props: {
       ...props,
     },
-    components: {
-      TIcon,
-    },
     data() {
       return {
         classPrefix: name,

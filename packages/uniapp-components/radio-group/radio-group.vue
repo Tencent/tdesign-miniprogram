@@ -70,9 +70,6 @@ export default {
       },
     },
     mixins: [ParentMixin(RELATION_MAP.Radio)],
-    components: {
-      TRadio,
-    },
     props: {
       ...props,
     },

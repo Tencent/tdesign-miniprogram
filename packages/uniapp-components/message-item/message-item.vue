@@ -142,10 +142,6 @@ export default {
       `${prefix}-class-link`,
       `${prefix}-class-close-btn`,
     ],
-    components: {
-      TIcon,
-      TLink,
-    },
     props: {
     },
     emits: [

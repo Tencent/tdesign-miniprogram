@@ -100,9 +100,6 @@ export default {
       `${prefix}-class-header`,
     ],
     mixins: [ChildrenMixin(RELATION_MAP.CollapsePanel)],
-    components: {
-      TCell,
-    },
     props: {
       ...props,
     },

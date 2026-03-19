@@ -152,9 +152,6 @@ export default {
     externalClasses: [
       `${prefix}-class`,
     ],
-    components: {
-      TIcon,
-    },
     props: {
       ...props,
     },

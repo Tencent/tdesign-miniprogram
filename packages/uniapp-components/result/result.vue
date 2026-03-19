@@ -94,10 +94,6 @@ export default {
       `${prefix}-class-title`,
       `${prefix}-class-description`,
     ],
-    components: {
-      TIcon,
-      TImage,
-    },
     props: {
       ...props,
     },

@@ -104,10 +104,6 @@ export default {
       `${prefix}-class-icon`,
       `${prefix}-class-loading`,
     ],
-    components: {
-      TIcon,
-      TLoading,
-    },
     props: {
       ...props,
     },

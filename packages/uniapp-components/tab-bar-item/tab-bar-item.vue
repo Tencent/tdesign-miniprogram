@@ -136,10 +136,6 @@ export default {
     },
     externalClasses: [`${prefix}-class`],
     mixins: [ChildrenMixin(RELATION_MAP.TabBarItem)],
-    components: {
-      TIcon,
-      TBadge,
-    },
     props: {
       ...props,
     },

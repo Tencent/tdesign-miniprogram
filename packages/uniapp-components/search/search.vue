@@ -133,10 +133,6 @@ export default {
       `${prefix}-class-left`,
       `${prefix}-class-clear`,
     ],
-    components: {
-      TIcon,
-      TCell,
-    },
     props: {
       ...props,
     },

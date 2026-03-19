@@ -104,10 +104,6 @@ export default {
       `${prefix}-class-cancel`,
       `${prefix}-class-title`,
     ],
-    components: {
-      TPicker,
-      TPickerItem,
-    },
     props: {
       ...props,
     },

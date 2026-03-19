@@ -110,10 +110,6 @@ export default {
       `${prefix}-class-image`,
       `${prefix}-class-error`,
     ],
-    components: {
-      TLoading,
-      TIcon,
-    },
     props: {
       ...ImageProps,
     },

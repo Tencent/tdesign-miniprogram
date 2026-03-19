@@ -111,11 +111,6 @@ export default {
       `${prefix}-class-content`,
     ],
     mixins: [ChildrenMixin(RELATION_MAP.Avatar)],
-    components: {
-      TIcon,
-      TBadge,
-      TImage,
-    },
     props: {
       ...avatarProps,
     },

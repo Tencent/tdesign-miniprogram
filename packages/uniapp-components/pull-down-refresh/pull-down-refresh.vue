@@ -99,9 +99,6 @@ export default {
     mixins: [
       ParentMixin(RELATION_MAP.BackTop),
     ],
-    components: {
-      TLoading,
-    },
     props: {
       ...props,
     },

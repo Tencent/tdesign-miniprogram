@@ -172,11 +172,6 @@ export default {
       `${prefix}-class-content`,
     ],
     mixins: [touch, ParentMixin(RELATION_MAP.TabPanel)],
-    components: {
-      TSticky,
-      TBadge,
-      TIcon,
-    },
     props: {
       ...props,
     },

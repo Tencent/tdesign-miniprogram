@@ -76,9 +76,6 @@ export default {
       `${prefix}-class`,
 
     ],
-    components: {
-      TIcon,
-    },
     props: {
       ...props,
     },

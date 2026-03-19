@@ -73,9 +73,6 @@ export default {
       `${prefix}-class-icon`,
     ],
     mixins: [ParentMixin(RELATION_MAP.DropdownItem)],
-    components: {
-      TIcon,
-    },
     props: {
       ...props,
     },

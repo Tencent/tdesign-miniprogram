@@ -88,10 +88,6 @@ export default {
     mixins: [
       useCustomNavbar,
     ],
-    components: {
-      TPopup,
-      TIcon,
-    },
     props: {
       ...props,
     },

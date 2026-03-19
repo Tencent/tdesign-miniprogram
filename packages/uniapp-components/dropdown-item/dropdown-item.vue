@@ -164,14 +164,6 @@ export default {
       `${prefix}-class-footer`,
     ],
     mixins: [ChildrenMixin(RELATION_MAP.DropdownItem)],
-    components: {
-      TButton,
-      TRadio,
-      TRadioGroup,
-      TCheckbox,
-      TCheckboxGroup,
-      TPopup,
-    },
     props: {
       ...props,
     },

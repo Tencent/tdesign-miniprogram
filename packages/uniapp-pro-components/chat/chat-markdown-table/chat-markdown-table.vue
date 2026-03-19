@@ -61,10 +61,6 @@ export default {
       styleIsolation: 'shared',
     },
 
-    components: {
-      chatMarkdownNode,
-    },
-
     props: {
       node: {
         type: Object,

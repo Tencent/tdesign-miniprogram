@@ -260,11 +260,6 @@ export default {
     mixins: [
       useCustomNavbar,
     ],
-    components: {
-      TOverlay,
-      TPopup,
-      ContentComp,
-    },
     props: {
       ...props,
     },

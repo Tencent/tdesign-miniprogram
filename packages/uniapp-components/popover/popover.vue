@@ -79,10 +79,6 @@ export default {
       pageScrollMixin(),
     ],
 
-    components: {
-      TOverlay,
-    },
-
     props: {
       ...props,
     },

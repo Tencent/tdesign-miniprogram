@@ -172,11 +172,6 @@ export default {
       styleIsolation: 'shared',
     },
 
-    components: {
-      tIcon,
-      attachments,
-    },
-
     props: {
       ...props,
     },

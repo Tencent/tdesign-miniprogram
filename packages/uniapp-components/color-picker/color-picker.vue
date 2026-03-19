@@ -141,10 +141,6 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    components: {
-      TPopup,
-      TemplateVue,
-    },
     props: {
       ...props,
     },

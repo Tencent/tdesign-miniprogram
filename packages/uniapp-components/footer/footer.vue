@@ -85,9 +85,6 @@ export default {
     externalClasses: [
       `${prefix}-class`,
     ],
-    components: {
-      TImage,
-    },
     props: {
       ...props,
     },

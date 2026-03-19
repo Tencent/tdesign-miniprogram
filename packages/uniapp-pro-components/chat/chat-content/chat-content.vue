@@ -42,10 +42,6 @@ export default {
       styleIsolation: 'shared',
     },
 
-    components: {
-      TChatMarkdown,
-    },
-
     props: {
       ...props,
     },
