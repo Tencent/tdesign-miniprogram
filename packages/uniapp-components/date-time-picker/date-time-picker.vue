@@ -6,10 +6,10 @@
       :visible="visible"
       :value="columnsValue"
       :header="header"
-      :title="title"
+      :title="title || globalConfig.title || ''"
       :auto-close="autoClose"
-      :confirm-btn="confirmBtn || locale.confirm"
-      :cancel-btn="cancelBtn || locale.cancel"
+      :confirm-btn="confirmBtn || globalConfig.confirm"
+      :cancel-btn="cancelBtn || globalConfig.cancel"
       :use-popup="usePopup"
       :popup-props="popupProps"
       @pick="onColumnChange"
@@ -57,6 +57,7 @@ import tools from '../common/utils.wxs';
 import dayjs from '../npm/dayjs/esm/index.js';
 import localeData from '../npm/dayjs/esm/plugin/localeData';
 
+import usingConfig from '../mixins/using-config';
 /**
  * dayjs LocaleData 插件
  * https://dayjs.fenxianglu.cn/category/plugin.html#localedata
@@ -67,7 +68,8 @@ dayjs.locale('zh-cn');
 const defaultLocale = dayjsLocaleMap[dayjs.locale()]?.key || dayjsLocaleMap.default?.key;
 
 
-const name = `${prefix}-date-time-picker`;
+const componentName = 'date-time-picker';
+const name = `${prefix}-${componentName}`;
 
 const ModeItem = {
   YEAR: 'year',
@@ -89,6 +91,7 @@ export default {
   },
   ...uniComponent({
     name,
+    mixins: [usingConfig({ componentName })],
     options: {
       styleIsolation: 'shared',
     },

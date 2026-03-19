@@ -1,101 +1,70 @@
 <template>
   <view
-    :class="
-      classPrefix +
-        ' ' + classPrefix + '--' + dataLabelAlign +
-        ' ' + classPrefix + '--bordered' +
-        ' ' + classPrefix + '--' + (verifyStatus === 2 ? 'error' : verifyStatus === 1 ? 'success' : '') +
-        ' ' + tClass
-    "
-    :style="'' + tools._style([customStyle])"
+    :class="classPrefix + ' ' + formItemClass + ' ' + formClass + '--' + dataLabelAlign + ' ' + formItemClass + '__' + name + ' ' + errorClasses + ' ' + tClass"
+    :style="tools._style([style, customStyle])"
   >
-    <view
-      v-if="label"
-      :class="classPrefix + '__label ' + classPrefix + '__label--' + dataLabelAlign + ' ' + tClassLabel"
-      :style="'width: ' + dataLabelWidth"
-    >
-      <text
-        v-if="dataRequiredMark && requiredMarkPosition === 'left'"
-        :class="classPrefix + '__label--required'"
+    <view :class="formItemClass + '-wrap ' + formItemClass + '--' + dataLabelAlign + ' ' + tClassWrap">
+      <!-- 标签区域 -->
+      <view
+        v-if="label"
+        :class="labelClass + ' ' + labelClass + '--' + dataLabelAlign
+          + (dataRequiredMark ? ' ' + labelClass + '--required' : '')
+          + (dataRequiredMark && requiredMarkPosition === 'right' ? ' ' + labelClass + '--required-right' : '')
+          + ' ' + tClassLabel"
+        :style="'width: ' + dataLabelWidth"
       >
-        *
-      </text>
-      <slot
-        name="label"
-      >
-        <text>
-          {{ label }}
-        </text>
-      </slot>
-      <text
-        v-if="dataRequiredMark && requiredMarkPosition === 'right'"
-        :class="classPrefix + '__label--required'"
-      >
-        *
-      </text>
-      <text
-        v-if="colon"
-        :class="classPrefix + '__label--colon'"
-      >
-        :
-      </text>
-    </view>
-    <view
-      :class="classPrefix + '__controls ' + tClassControls"
-      :style="contentStyle"
-    >
-      <view :class="classPrefix + '__controls-content ' + classPrefix + '__controls-content--' + dataContentAlign">
-        <slot />
+        <label :for="forId">{{ label }}</label>
+        <template v-if="colon">
+          {{ globalConfig.colonText }}
+        </template>
+      </view>
+
+      <!-- 内容区域 -->
+      <view :class="formClass + '__controls ' + errorClasses + ' ' + tClassControls">
         <view
-          v-if="arrow"
-          :class="classPrefix + '__arrow'"
+:class="formClass + '__controls-content ' + formClass + '__controls--' + dataContentAlign"
+              :style="contentStyle"
+>
+          <slot />
+        </view>
+        <!-- 帮助信息 -->
+        <view
+          v-if="help"
+          :class="formItemClass + '-help ' + formClass + '__controls--' + dataContentAlign + ' ' + tClassHelp"
         >
-          <t-icon
-            name="chevron-right"
-            size="16"
-          />
+          {{ help }}
+        </view>
+
+        <!-- 校验提示信息 -->
+        <view
+          v-if="(errorList.length > 0 && dataShowErrorMessage) || successList.length > 0"
+          :class="formItemClass + '-extra ' + formClass + '__controls--' + dataContentAlign + ' ' + tClassExtra"
+        >
+          {{ errorList.length > 0 && dataShowErrorMessage ? errorList[0].message : successList[0].message }}
         </view>
       </view>
-
-      <view
-        :class="classPrefix + '__help ' + classPrefix + '__help--' + dataContentAlign + tClassHelp"
-        :style="errorPosition"
-      >
-        <slot name="help">
-          {{ help }}
-        </slot>
-      </view>
-
-      <view
-        v-if="errorList.length > 0 && dataShowErrorMessage"
-        :class="classPrefix + '__error ' + classPrefix + '__error--' + (errorList[0].type || 'error')"
-      >
-        {{ errorList[0].message }}
-      </view>
-      <view
-        v-if="successList.length > 0"
-        :class="classPrefix + '__success'"
-      >
-        {{ successList[0].message }}
-      </view>
     </view>
 
-    <view :class="classPrefix + '__extra ' + tClassExtra">
-      <slot name="extra" />
-    </view>
+    <t-icon
+v-if="arrow"
+            name="chevron-right"
+size="24" color="rgba(0, 0, 0, 0.4)"
+/>
   </view>
 </template>
 <script>
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import { validate, ValidateStatus } from './form-model';
+import { validateRules, ValidateStatus } from './form-model';
 import TIcon from '../icon/icon.vue';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 import tools from '../common/utils.wxs';
-import { isNumber } from '../common/validator';
+import usingConfig from '../mixins/using-config';
 
-const name = `${prefix}-form-item`;
+const parentComponentName = 'form';
+const componentName = 'form-item';
+const name = `${prefix}-${componentName}`;
 
 export default {
   components: {
@@ -108,6 +77,7 @@ export default {
     },
     externalClasses: [
       `${prefix}-class`,
+      `${prefix}-class-wrap`,
       `${prefix}-class-label`,
       `${prefix}-class-controls`,
       `${prefix}-class-help`,
@@ -118,7 +88,10 @@ export default {
         [RELATION_MAP.FormKey]: this,
       };
     },
-    mixins: [ChildrenMixin(RELATION_MAP.FormItem)],
+    mixins: [
+      ChildrenMixin(RELATION_MAP.FormItem),
+      usingConfig({ componentName: parentComponentName }),
+    ],
 
     props: {
       ...props,
@@ -127,15 +100,17 @@ export default {
       return {
         prefix,
         classPrefix: name,
+        formClass: `${prefix}-form`,
+        formItemClass: `${prefix}-form__item`,
+        labelClass: `${prefix}-form__label`,
+        errorClasses: '',
         errorList: [],
         successList: [],
         verifyStatus: ValidateStatus.TO_BE_VALIDATED,
         needResetField: false,
         resetValidating: false,
-        // rules: [],
         form: {},
         colon: false,
-        // showErrorMessage: true,
 
         tools,
         dataRules: this.rules,
@@ -145,22 +120,13 @@ export default {
         dataShowErrorMessage: this.showErrorMessage,
         dataContentAlign: this.contentAlign,
 
-        errorPosition: '',
+        forId: this.for || '',
       };
     },
     computed: {
       contentStyle() {
-        const { labelWidth, labelAlign } = this;
-        let contentStyle = {};
-        if (labelWidth && labelAlign !== 'top') {
-          if (isNumber(labelWidth)) {
-            contentStyle = { marginLeft: `${labelWidth}px` };
-          } else {
-            contentStyle = { marginLeft: labelWidth };
-          }
-        }
-
-        return tools._style(contentStyle);
+        const contentAlign = this.dataContentAlign;
+        return contentAlign ? `text-align: ${contentAlign}` : '';
       },
     },
     watch: {
@@ -181,6 +147,7 @@ export default {
         this.form = target;
         this.initFormItem();
 
+        const { globalConfig } = this;
         const { requiredMark, labelAlign, labelWidth, showErrorMessage, contentAlign } = this;
         const isRequired = target.rules[this.name]?.some(rule => rule.required);
 
@@ -188,22 +155,10 @@ export default {
         this.colon = target.colon;
         this.dataLabelAlign = labelAlign || target.labelAlign || 'right';
         this.dataLabelWidth = labelWidth || target.labelWidth;
-        this.dataContentAlign = contentAlign || target.contentAlign,
-        this.dataRequiredMark = (() => {
-          if (!isRequired) {
-            return false;
-          }
-          if (typeof requiredMark === 'boolean') {
-            return requiredMark;
-          }
-          return target.requiredMark || false;
-        })();
+        this.dataContentAlign = contentAlign || target.contentAlign;
+        this.dataRequiredMark = requiredMark || target.requiredMark || globalConfig.requiredMark || isRequired;
         this.dataShowErrorMessage = typeof showErrorMessage === 'boolean' ? showErrorMessage : target.showErrorMessage;
-        this.requiredMarkPosition = target.requiredMarkPosition;
-
-        setTimeout(() => {
-          this.errorPosition = this.dataLabelAlign !== 'top' && `text-align: ${this.dataContentAlign}`;
-        }, 33);
+        this.requiredMarkPosition = target.requiredMarkPosition || globalConfig.requiredMarkPosition;
       },
       innerAfterUnlinked() {
         if (this.form) {
@@ -283,7 +238,8 @@ export default {
         }
 
         const value = data[this.name];
-        const results = await validate(value, filteredRules);
+        const context = { formData: data, name: this.name };
+        const results = await validateRules(value, filteredRules, context);
 
         // 分析验证结果
         const analysis = this.analysisValidateResult(results);
@@ -304,7 +260,26 @@ export default {
 
       // 分析验证结果
       analysisValidateResult(results) {
-        const errorList = results.filter(item => item.result !== true);
+        const { globalConfig } = this;
+        const errorMessage = (this.form && this.form.errorMessage) || (globalConfig && globalConfig.errorMessage) || {};
+        const labelName = this.label || this.name;
+
+        const errorList = results
+          .filter(item => item.result !== true)
+          .map((item) => {
+            if (item.message) return item;
+
+            Object.keys(item).forEach((key) => {
+              if (!item.message && errorMessage[key]) {
+                const template = errorMessage[key];
+                item.message = template
+                  .replace(/\$\{name\}/g, labelName || '')
+                  .replace(/\$\{validate\}/g, String(item[key] === true ? '' : item[key]));
+              }
+            });
+            return item;
+          });
+
         const successList = results.filter(item => item.result === true && item.message && item.type === 'success');
 
         return {
@@ -314,10 +289,19 @@ export default {
         };
       },
 
+      // 计算错误样式类
+      calcErrorClasses(errorList = this.errorList) {
+        if (!this.dataShowErrorMessage) return '';
+        if (!errorList || errorList.length === 0) return '';
+        const type = errorList[0].type || 'error';
+        return type === 'error' ? `${this.formItemClass}--error` : `${this.formItemClass}--warning`;
+      },
+
       // 更新验证状态
       updateValidateStatus(analysis) {
         const { errorList, successList } = analysis;
 
+        this.errorClasses = this.calcErrorClasses(errorList);
         this.errorList = errorList;
         this.successList = successList;
         this.verifyStatus = errorList.length > 0 ? ValidateStatus.FAIL : ValidateStatus.SUCCESS;
@@ -325,6 +309,7 @@ export default {
 
       // 清空验证结果
       clearValidate() {
+        this.errorClasses = '';
         this.errorList = [];
         this.successList = [];
         this.verifyStatus = ValidateStatus.TO_BE_VALIDATED;
@@ -332,58 +317,23 @@ export default {
 
       // 重置字段
       resetField() {
-        const { name } = this;
-        if (name && this.form) {
-          const { resetType } = this.form;
-
-          if (resetType === 'initial') {
-            this.form.updateFormData(name, this.initialValue);
-          } else {
-            this.form.updateFormData(name, this.getEmptyValue());
-          }
-        }
-
         this.clearValidate();
       },
 
       // 设置验证信息
       setValidateMessage(validateMessage) {
-        this.errorList = validateMessage.filter(item => item.type === 'error');
-        this.successList = validateMessage.filter(item => item.type === 'warning');
-        this.verifyStatus = validateMessage.length > 0 ? ValidateStatus.FAIL : ValidateStatus.SUCCESS;
-      },
+        const errorList = validateMessage.filter(item => item.type !== 'success');
+        const successList = validateMessage.filter(item => item.type === 'success');
 
-      // 获取空值
-      getEmptyValue() {
-        const value = this.getValue();
-
-        if (Array.isArray(value)) {
-          return [];
+        let verifyStatus = ValidateStatus.SUCCESS;
+        if (validateMessage.length > 0) {
+          verifyStatus = errorList.length > 0 ? ValidateStatus.FAIL : ValidateStatus.SUCCESS;
         }
-        if (typeof value === 'object' && value !== null) {
-          return {};
-        }
-        if (typeof value === 'number') {
-          return 0;
-        }
-        return '';
-      },
 
-      // 处理值变化
-      onValueChange(value) {
-        const { name } = this;
-        if (name && this.form) {
-          this.form.updateFormData(name, value);
-
-          // 触发change验证
-          this.validate(this.getFormData(), 'change', true);
-        }
-      },
-
-      // 处理失焦事件
-      onBlur() {
-      // 触发blur验证
-        this.validate(this.getFormData(), 'blur', true);
+        this.errorClasses = this.calcErrorClasses(errorList);
+        this.errorList = errorList;
+        this.successList = successList;
+        this.verifyStatus = verifyStatus;
       },
     },
   }),

@@ -85,6 +85,7 @@ import TCalendar from '../common/shared/calendar/index';
 import useCustomNavbar from '../mixins/using-custom-navbar';
 import { getPrevMonth, getPrevYear, getNextMonth, getNextYear } from './utils';
 import tools from '../common/utils.wxs';
+import usingConfig from '../mixins/using-config';
 import {
   getMonthTitle,
   getDateLabel,
@@ -92,16 +93,8 @@ import {
 } from './computed.js';
 
 
-const name = `${prefix}-calendar`;
-
-
-const defaultLocaleText = {
-  title: '请选择日期',
-  weekdays: ['日', '一', '二', '三', '四', '五', '六'],
-  monthTitle: '{year} 年 {month}',
-  months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
-  confirm: '确认',
-};
+const componentName = 'calendar';
+const name = `${prefix}-${componentName}`;
 
 export default {
   components: {
@@ -126,7 +119,13 @@ export default {
     externalClasses: [
       `${prefix}-class`,
     ],
-    mixins: [useCustomNavbar],
+    mixins: [
+      useCustomNavbar,
+      usingConfig({
+        componentName,
+        localeTextPropName: 'localeText',
+      }),
+    ],
     props: {
       ...props,
     },
@@ -158,6 +157,21 @@ export default {
       };
     },
     watch: {
+      localeText: {
+        handler() {
+          this.updateLocale?.();
+        },
+        deep: true,
+      },
+
+      globalConfig: {
+        handler(globalConfig) {
+          this.days = this.base.getDays(globalConfig.weekdays);
+          this.realLocalText = globalConfig;
+        },
+        deep: true,
+      },
+
       type: {
         handler(v) {
           this.base.type = v;
@@ -241,11 +255,10 @@ export default {
     },
 
     mounted() {
-      const realLocalText = { ...defaultLocaleText, ...this.localeText };
       this.initialValue();
       this.onWatchMinMaxDate();
-      this.days = this.base.getDays(realLocalText.weekdays);
-      this.realLocalText = realLocalText;
+      this.days = this.base.getDays(this.globalConfig.weekdays);
+      this.realLocalText = this.globalConfig;
 
       this.calcMonths();
       this.updateCurrentMonth();

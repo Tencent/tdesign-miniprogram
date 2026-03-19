@@ -24,6 +24,7 @@
       <qrcode-status
         :status="status"
         :status-render="statusRender"
+        :locale="globalConfig"
         @refresh="handleRefresh"
       >
         <template #statusRender>
@@ -42,7 +43,9 @@ import props from './props';
 import { uniComponent } from '../common/src/index';
 import tools from '../common/utils.wxs';
 
-const name = `${prefix}-qrcode`;
+import usingConfig from '../mixins/using-config';
+const componentName = 'qrcode';
+const name = `${prefix}-${componentName}`;
 
 export default {
   components: {
@@ -51,6 +54,7 @@ export default {
   },
   ...uniComponent({
     name,
+    mixins: [usingConfig({ componentName })],
     options: {
       styleIsolation: 'shared',
     },

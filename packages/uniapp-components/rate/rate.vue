@@ -10,9 +10,9 @@
       :aria-valuemax="count"
       :aria-valuemin="0"
       :aria-valuenow="dataValue"
-      :aria-valuetext="'' + utils.getText(texts, dataValue, defaultTexts)"
-      @touchstart="(e) => parseEventDynamicCode(e, !disabled ? 'onTouchStart' : '')"
-      @touchmove="(e) => parseEventDynamicCode(e, !disabled ? 'onTouchMove' : '')"
+      :aria-valuetext="utils.getText(texts, dataValue, globalConfig)"
+      @touchstart="parseEventDynamicCode($event, !disabled ? 'onTouchStart' : '')"
+      @touchmove="parseEventDynamicCode($event, !disabled ? 'onTouchMove' : '')"
       @click="onTap"
       @touchend="(e) => parseEventDynamicCode(e, !disabled ? 'onTouchEnd' : '')"
       @touchcancel="(e) => parseEventDynamicCode(e, !disabled ? 'onTouchEnd' : '')"
@@ -32,7 +32,7 @@
       :class="'' + tools.cls(classPrefix + '__text', [['active', dataValue > 0]]) + ' ' + tClassText"
       :aria-hidden="true"
     >
-      {{ utils.getText(texts, dataValue, defaultTexts) }}
+      {{ utils.getText(texts, dataValue, globalConfig) }}
     </text>
     <text
       v-if="isVisibleToScreenReader"
@@ -45,7 +45,7 @@
       aria-role="alert"
       aria-live="assertive"
     >
-      {{ dataValue + '星' }} {{ utils.getText(texts, dataValue, defaultTexts) }}
+      {{ dataValue + '星' }} {{ utils.getText(texts, dataValue, globalConfig) }}
     </text>
     <!-- TODO -->
     <view
@@ -120,7 +120,9 @@ import utils from './computed.js';
 import { parseEventDynamicCode } from '../common/event/dynamic';
 
 
-const name = `${prefix}-rate`;
+import usingConfig from '../mixins/using-config';
+const componentName = 'rate';
+const name = `${prefix}-${componentName}`;
 
 
 export default {
@@ -129,6 +131,7 @@ export default {
   },
   ...uniComponent({
     name,
+    mixins: [usingConfig({ componentName })],
     options: {
       styleIsolation: 'shared',
     },

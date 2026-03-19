@@ -1,18 +1,10 @@
 <template>
-  <view>
-    <form
-      :class="
-        classPrefix +
-          ' ' + classPrefix + '--' + labelAlign +
-          ' ' + classPrefix + '--' + (disabled ? 'disabled' : '') +
-          ' ' + classPrefix + '--' + (readonly ? 'readonly' : '') +
-          ' ' + tClass
-      "
-      :style="customStyle"
-    >
-      <slot />
-    </form>
-  </view>
+  <form
+    :class="classPrefix + ' ' + tClass"
+    :style="tools._style([style, customStyle])"
+  >
+    <slot />
+  </form>
 </template>
 <script>
 
@@ -21,6 +13,7 @@ import { prefix } from '../common/config';
 import props from './props';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 import { coalesce } from '../common/utils';
+import tools from '../common/utils.wxs';
 
 const name = `${prefix}-form`;
 
@@ -49,6 +42,7 @@ export default {
         formData: {},
         initialData: {},
         fields: [],
+        tools,
       };
     },
     created() {

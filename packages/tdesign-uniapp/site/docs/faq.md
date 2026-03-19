@@ -8,10 +8,6 @@ spline: explain
 
 TDesign UniApp 的实现原理，可以查看[这篇文章](https://juejin.cn/post/7571650164844068898)。
 
-尽管 TDesign UniApp 已尽最大可能让开发者减少心智负担，但实际上，受限于 [uniapp](https://github.com/dcloudio/uni-app) 自己的[问题](https://github.com/dcloudio/uni-app/issues)就比较多，加上各个平台差异很大，所以做 uniapp 项目前就应该想到会踩一些坑。不过，我还是尽量解答大家疑惑，给一些业务合适的解决方案。
-
-> 虽然 uniapp 仍存在一些问题，但不妨碍它是一个伟大的框架，节省了大量开发者的大量工作量（国内百花齐放的环境），使用条件编译，适配多平台而不增加包体积。理解 uniapp，成为 uniapp。从心里认可 uniapp 的实现方式和价值，是我做这个库的原因之一。
-
 ### 外部样式类
 
 `tdesign-miniprogram` 中的 `externalClasses`，在 `tdesign-uniapp` 中被转成了 `props`。

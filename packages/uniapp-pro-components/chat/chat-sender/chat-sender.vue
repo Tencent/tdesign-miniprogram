@@ -48,7 +48,7 @@
             @confirm="handleSendClick"
           />
           <view :class="classPrefix + '__textarea--placeholder ' + (focusFlag || innerValue ? 'hide' : '')">
-            {{ placeholder }}
+            {{ placeholder || globalConfig.placeholder }}
           </view>
         </view>
 
@@ -86,7 +86,7 @@
                           :class="'send-btn-' + item.type + ' ' + (innerValue || loading ? 'active' : 'disabled')"
                           @click.stop="handleSendClick"
                         >
-                          {{ loading ? '停止' : '发送' }}
+                          {{ loading ? globalConfig.stopText : globalConfig.sendText }}
                         </view>
                       </block>
                       <block v-else>
@@ -157,7 +157,9 @@ import { textareaStyle } from './computed';
 import tools from '@tdesign/uniapp/common/utils.wxs';
 import { nextTick } from '@tdesign/uniapp/common/utils';
 
-const name = `${prefix}-chat-sender`;
+import usingConfig from '../mixins/using-config';
+const componentName = 'chat-sender';
+const name = `${prefix}-${componentName}`;
 
 
 export default {
@@ -167,6 +169,7 @@ export default {
   },
   ...uniComponent({
     name,
+    mixins: [usingConfig({ componentName })],
     options: {
       multipleSlots: true,
       styleIsolation: 'shared',

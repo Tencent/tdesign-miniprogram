@@ -121,7 +121,9 @@ import props from './props';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
 import tools from '@tdesign/uniapp/common/utils.wxs';
 
-const name = `${prefix}-chat-actionbar`;
+import usingConfig from '../mixins/using-config';
+const componentName = 'chat-actionbar';
+const name = `${prefix}-${componentName}`;
 
 export default {
   components: {
@@ -130,6 +132,7 @@ export default {
   },
   ...uniComponent({
     name,
+    mixins: [usingConfig({ componentName })],
     options: {
       multipleSlots: true,
       styleIsolation: 'shared',

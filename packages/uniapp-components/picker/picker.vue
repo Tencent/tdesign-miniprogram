@@ -26,7 +26,7 @@
               :class="classPrefix + '__cancel ' + tClassCancel"
               @click="onCancel"
             >
-              {{ cancelBtn }}
+              {{ globalConfig.cancel }}
             </view>
             <view :class="classPrefix + '__title ' + tClassTitle">
               {{ title }}
@@ -36,7 +36,7 @@
               :class="classPrefix + '__confirm ' + tClassConfirm"
               @click="onConfirm"
             >
-              {{ confirmBtn }}
+              {{ globalConfig.confirm }}
             </view>
           </view>
           <slot name="header" />
@@ -72,7 +72,7 @@
             :class="classPrefix + '__cancel ' + tClassCancel"
             @click="onCancel"
           >
-            {{ cancelBtn }}
+            {{ globalConfig.cancel }}
           </view>
           <view :class="classPrefix + '__title ' + tClassTitle">
             {{ title }}
@@ -82,7 +82,7 @@
             :class="classPrefix + '__confirm ' + tClassConfirm"
             @click="onConfirm"
           >
-            {{ confirmBtn }}
+            {{ globalConfig.confirm }}
           </view>
         </view>
         <slot name="header" />
@@ -114,7 +114,9 @@ import useCustomNavbar from '../mixins/using-custom-navbar';
 import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 
-const name = `${prefix}-picker`;
+import usingConfig from '../mixins/using-config';
+const componentName = 'picker';
+const name = `${prefix}-${componentName}`;
 
 const DEFAULT_KEYS = { value: 'value', label: 'label', icon: 'icon' };
 
@@ -136,6 +138,7 @@ export default {
     mixins: [
       ParentMixin(RELATION_MAP.PickerItem),
       useCustomNavbar,
+      usingConfig({ componentName }),
     ],
     props: {
       ...props,

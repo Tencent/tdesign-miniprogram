@@ -127,7 +127,13 @@
           >
             系统预设色彩
           </view>
-          <view :class="classPrefix + '__swatches-items'">
+          <scroll-view
+            :class="classPrefix + '__swatches-items'"
+            scroll-x
+            enable-flex
+            scroll-anchoring
+            type="list"
+          >
             <view
               v-for="(swatch, index) in innerSwatchList"
               :key="index"
@@ -140,7 +146,7 @@
                 :style="'background-color: ' + swatch + ';'"
               />
             </view>
-          </view>
+          </scroll-view>
         </view>
       </view>
     </view>

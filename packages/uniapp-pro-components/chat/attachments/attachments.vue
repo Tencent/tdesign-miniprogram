@@ -89,13 +89,13 @@
                     v-if="item.status === 'pending'"
                     :class="classPrefix + '__desc'"
                   >
-                    上传中...{{ item.progress || 0 + '%' }}
+                    {{ globalConfig.status['pending'] }} {{ item.progress || 0 + '%' }}
                   </view>
                   <view
                     v-else-if="item.status === 'fail'"
                     :class="classPrefix + '__desc'"
                   >
-                    上传失败
+                    {{ globalConfig.status['fail'] }}
                   </view>
                   <view
                     v-else-if="item.status === 'error'"
@@ -137,9 +137,11 @@ import props from './props';
 import tools from '@tdesign/uniapp/common/utils.wxs';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
 import { imageStyle, getFileTypeClass, getImageMode } from './computed';
+import usingConfig from '../mixins/using-config';
 
 
-const name = `${prefix}-attachments`;
+const componentName = 'attachments';
+const name = `${prefix}-${componentName}`;
 
 
 export default {
@@ -149,6 +151,7 @@ export default {
   },
   ...uniComponent({
     name,
+    mixins: [usingConfig({ componentName })],
     options: {
       multipleSlots: true,
       styleIsolation: 'shared',

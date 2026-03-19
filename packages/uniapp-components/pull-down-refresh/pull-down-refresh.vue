@@ -70,7 +70,9 @@ import { getObserver } from '../common/wechat';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 
 
-const name = `${prefix}-pull-down-refresh`;
+import usingConfig from '../mixins/using-config';
+const componentName = 'pull-down-refresh';
+const name = `${prefix}-${componentName}`;
 const defaultLoadingTexts = ['下拉刷新', '松手刷新', '正在刷新', '刷新完成'];
 const REFRESH_STATUS_MAP = {
   INITIAL: -1,
@@ -98,6 +100,7 @@ export default {
     ],
     mixins: [
       ParentMixin(RELATION_MAP.BackTop),
+      usingConfig({ componentName }),
     ],
     props: {
       ...props,

@@ -15,7 +15,7 @@
           <t-chat-loading :animation="animation" />
         </block>
         <view :class="classPrefix + '__txt'">
-          {{ content.title || '正在思考中...' }}
+          {{ content.title || globalConfig.status[status] }}
         </view>
         <view>
           <t-icon
@@ -28,12 +28,12 @@
       </view>
       <view
         v-if="!localCollapsed"
-        :class="'' + tools.cls(classPrefix + '__bd', [layout])"
+        :class="tools.cls(classPrefix + '__bd', [layout])"
         :style="contentStyle"
       >
         <view
           v-if="content.text"
-          :class="'' + tools.cls(classPrefix + '__bd__inner', [])"
+          :class="tools.cls(classPrefix + '__bd__inner', [])"
         >
           {{ content.text }}
         </view>
@@ -54,7 +54,9 @@ import tools from '@tdesign/uniapp/common/utils.wxs';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
 
-const name = `${prefix}-chat-thinking`;
+import usingConfig from '../mixins/using-config';
+const componentName = 'chat-thinking';
+const name = `${prefix}-${componentName}`;
 
 export default {
   components: {
@@ -63,6 +65,7 @@ export default {
   },
   ...uniComponent({
     name,
+    mixins: [usingConfig({ componentName })],
     options: {
       multipleSlots: true,
       styleIsolation: 'shared',

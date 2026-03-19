@@ -66,7 +66,7 @@
                   aria-hidden
                 />
                 <view :class="classPrefix + '__progress-text'">
-                  {{ file.percent ? file.percent + '%' : '上传中...' }}
+                  {{ file.percent ? file.percent + '%' : globalConfig.progress.uploadingText }}
                 </view>
               </block>
               <t-icon
@@ -79,7 +79,7 @@
                 v-if="file.status == 'reload' || file.status == 'failed'"
                 :class="classPrefix + '__progress-text'"
               >
-                {{ file.status == 'reload' ? '重新上传' : '上传失败' }}
+                {{ file.status == 'reload' ? globalConfig.progress.reloadText : globalConfig.progress.failText }}
               </view>
             </view>
             <view
@@ -194,7 +194,7 @@
                       aria-hidden
                     />
                     <view :class="classPrefix + '__progress-text'">
-                      {{ file.percent ? file.percent + '%' : '上传中...' }}
+                      {{ file.percent ? file.percent + '%' : globalConfig.progress.uploadingText }}
                     </view>
                   </block>
                   <t-icon
@@ -207,7 +207,7 @@
                     v-if="file.status == 'reload' || file.status == 'failed'"
                     :class="classPrefix + '__progress-text'"
                   >
-                    {{ file.status == 'reload' ? '重新上传' : '上传失败' }}
+                    {{ file.status == 'reload' ? globalConfig.progress.reloadText : globalConfig.progress.failText }}
                   </view>
                 </view>
                 <view
@@ -288,7 +288,9 @@ import {
 import { parseEventDynamicCode } from '../common/event/dynamic';
 
 
-const name = `${prefix}-upload`;
+import usingConfig from '../mixins/using-config';
+const componentName = 'upload';
+const name = `${prefix}-${componentName}`;
 
 const makeMethods = () => [
   [longPress, 'longPress'],
@@ -316,6 +318,7 @@ export default {
   },
   ...uniComponent({
     name,
+    mixins: [usingConfig({ componentName })],
     options: {
       styleIsolation: 'shared',
     },

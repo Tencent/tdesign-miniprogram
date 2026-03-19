@@ -1,7 +1,7 @@
 ---
 title: ChatMarkdown Markdown内容
 description: 用于聊天场景中渲染 Markdown 格式文本的组件，内置 marked 解析器，支持多种 Markdown 语法和配置选项。
-spline: base
+spline: chat
 isComponent: true
 ---
 

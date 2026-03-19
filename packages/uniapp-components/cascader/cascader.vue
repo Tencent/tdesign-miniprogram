@@ -12,14 +12,14 @@
     >
       <view
         :style="'' + tools._style([customStyle])"
-        :class="name"
+        :class="classPrefix"
       >
-        <view :class="name + '__title'">
+        <view :class="classPrefix + '__title'">
           <slot name="title" />
-          {{ title }}
+          {{ title || globalConfig.title }}
         </view>
         <view
-          :class="name + '__close-btn'"
+          :class="classPrefix + '__close-btn'"
           @click="onClose"
         >
           <slot name="close-btn" />
@@ -32,41 +32,41 @@
 
         <slot name="header" />
 
-        <view :class="name + '__content'">
+        <view :class="classPrefix + '__content'">
           <block v-if="steps && steps.length">
             <view
               v-if="theme == 'step'"
-              :class="name + '__steps'"
+              :class="classPrefix + '__steps'"
             >
               <view
                 v-for="(item, index) in steps"
                 :key="index"
-                :class="name + '__step'"
+                :class="classPrefix + '__step'"
                 :data-index="index"
                 @click="() => onStepClick(index)"
               >
                 <view
                   :class="
-                    name +
+                    classPrefix +
                       '__step-dot ' +
-                      name +
+                      classPrefix +
                       '__step-dot--' +
                       (item !== placeholder ? 'active' : '') +
                       ' ' +
-                      name +
+                      classPrefix +
                       '__step-dot--' +
                       (index === steps.length - 1 ? 'last' : '')
                   "
                 />
 
-                <view :class="name + '__step-label ' + name + '__step-label--' + (index === stepIndex ? 'active' : '')">
+                <view :class="classPrefix + '__step-label ' + classPrefix + '__step-label--' + (index === stepIndex ? 'active' : '')">
                   {{ item }}
                 </view>
 
                 <t-icon
                   name="chevron-right"
                   size="44rpx"
-                  :t-class="name + '__step-arrow'"
+                  :t-class="classPrefix + '__step-arrow'"
                   :custom-style="stepArrowCustomStyle"
                   style="margin-left: auto"
                 />
@@ -94,19 +94,19 @@
 
           <view
             v-if="subTitles && subTitles[stepIndex]"
-            :class="name + '__options-title'"
+            :class="classPrefix + '__options-title'"
           >
             {{ subTitles[stepIndex] }}
           </view>
 
           <view
-            :class="name + '__options-container'"
-            :style="'' + `width: ${ items.length + 1 }00vw; transform: translateX(-${ stepIndex }00vw)`"
+            :class="classPrefix + '__options-container'"
+            :style="'' + `width: ${items.length + 1 }00vw; transform: translateX(-${stepIndex}00vw)`"
           >
             <scroll-view
               v-for="(options, index) in items"
               :key="index"
-              :class="name + '__options'"
+              :class="classPrefix + '__options'"
               scroll-y
               :scroll-top="scrollTopList[index]"
               type="list"
@@ -142,9 +142,11 @@ import props from './props';
 import { getRect, coalesce, nextTick } from '../common/utils';
 
 import tools from '../common/utils.wxs';
+import usingConfig from '../mixins/using-config';
 
 
-const name = `${prefix}-cascader`;
+const componentName = 'cascader';
+const name = `${prefix}-${componentName}`;
 
 function parseOptions(options, keys) {
   const label = coalesce(keys?.label, 'label');
@@ -175,6 +177,7 @@ export default {
   },
   ...uniComponent({
     name,
+    mixins: [usingConfig({ componentName })],
     options: {
       styleIsolation: 'shared',
     },
@@ -428,7 +431,7 @@ export default {
         this.stepIndex = value;
       },
       genItems() {
-        const { options, selectedIndexes, keys, placeholder } = this;
+        const { options, selectedIndexes, keys, placeholder, globalConfig } = this;
         const selectedValue = [];
         const steps = [];
         const items = [parseOptions(options, keys)];
@@ -450,7 +453,7 @@ export default {
         }
 
         if (steps.length < items.length) {
-          steps.push(placeholder);
+          steps.push(placeholder || globalConfig.placeholder);
         }
 
         return {

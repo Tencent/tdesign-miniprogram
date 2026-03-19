@@ -36,6 +36,11 @@
             竖向排布
           </t-button>
         </view>
+        <t-cell title="禁用态">
+          <template #note>
+            <t-switch :value="switchValue" @change="onChangeSwitch" />
+          </template>
+        </t-cell>
       </view>
     </t-demo>
 
@@ -54,6 +59,8 @@
 import HorizontalDemo from './horizontal/index.vue';
 import VerticalDemo from './vertical/index.vue';
 import TButton from '@tdesign/uniapp/button/button.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TSwitch from '@tdesign/uniapp/switch/switch.vue';
 import { canUseVirtualHost } from '@tdesign/uniapp/common/version';
 
 export default {
@@ -61,6 +68,8 @@ export default {
     HorizontalDemo,
     VerticalDemo,
     TButton,
+    TCell,
+    TSwitch,
   },
   data() {
     return {
@@ -79,6 +88,9 @@ export default {
   methods: {
     onClick() {
       this.isActive1 = !this.isActive1;
+    },
+    onChangeSwitch(e) {
+      this.switchValue = e.value;
     },
   },
 };

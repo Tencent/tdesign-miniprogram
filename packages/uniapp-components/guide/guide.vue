@@ -221,7 +221,9 @@ import ContentComp from './content.vue';
 
 import useCustomNavbar from '../mixins/using-custom-navbar';
 
-const name = `${prefix}-guide`;
+import usingConfig from '../mixins/using-config';
+const componentName = 'guide';
+const name = `${prefix}-${componentName}`;
 
 let that;
 
@@ -259,6 +261,7 @@ export default {
     ],
     mixins: [
       useCustomNavbar,
+      usingConfig({ componentName }),
     ],
     props: {
       ...props,
@@ -366,12 +369,13 @@ export default {
           tClassNext,
           tClassBack,
           tClassFinish,
+          globalConfig,
         } = this;
         let skipButton = coalesce(step.skipButtonProps, this.skipButtonProps);
         const size = mode === 'popover' ? 'extra-small' : 'medium';
         skipButton = {
           theme: 'light',
-          content: '跳过',
+          content: globalConfig.skip,
           size,
           ...skipButton,
           tClass: `${tClassSkip} ${name}__button ${skipButton?.class || ''}`,
@@ -380,7 +384,7 @@ export default {
         let nextButton = coalesce(step.nextButtonProps, this.nextButtonProps);
         nextButton = {
           theme: 'primary',
-          content: '下一步',
+          content: globalConfig.next,
           size,
           ...nextButton,
           tClass: `${tClassNext} ${name}__button ${nextButton?.class || ''}`,
@@ -390,7 +394,7 @@ export default {
         let backButton = coalesce(step.backButtonProps, this.backButtonProps);
         backButton = {
           theme: 'light',
-          content: '返回',
+          content: globalConfig.back,
           size,
           ...backButton,
           tClass: `${tClassBack} ${name}__button ${backButton?.class || ''}`,
@@ -399,7 +403,7 @@ export default {
         let finishButton = coalesce(step.finishButtonProps, this.finishButtonProps);
         finishButton = {
           theme: 'primary',
-          content: '完成',
+          content: globalConfig.finish,
           size,
           ...finishButton,
           tClass: `${tClassFinish} ${name}__button ${finishButton?.class || ''}`,

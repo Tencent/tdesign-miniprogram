@@ -166,7 +166,7 @@
           aria-role="button"
           @click="onCancel"
         >
-          {{ dataCancelText || '取消' }}
+          {{ dataCancelText || globalConfig.cancel }}
         </view>
       </view>
     </t-popup>
@@ -185,9 +185,11 @@ import props from './props';
 import useCustomNavbar from '../mixins/using-custom-navbar';
 import tools from '../common/utils.wxs';
 import { getFunctionalMixin } from '../common/functional/mixin';
+import usingConfig from '../mixins/using-config';
 import { getIconData } from './computed';
 
-const name = `${prefix}-action-sheet`;
+const componentName = 'action-sheet';
+const name = `${prefix}-${componentName}`;
 
 
 export default {
@@ -211,7 +213,11 @@ export default {
       `${prefix}-class-content`,
       `${prefix}-class-cancel`,
     ],
-    mixins: [getFunctionalMixin(props), useCustomNavbar],
+    mixins: [
+      getFunctionalMixin(props),
+      useCustomNavbar,
+      usingConfig({ componentName }),
+    ],
     props: {
       ...props,
     },
