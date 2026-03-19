@@ -413,7 +413,7 @@ page,
   --td-font-display-large: 600 var(--td-font-size-display-large) / var(--td-line-height-display-large)
     var(--td-font-family);
 
-  --td-font-size: 40px;
+  --td-font-size: 10px;
   --td-font-size-xs: var(--td-font-size-body-extraSmall);
   --td-font-size-s: var(--td-font-size-body-small);
   --td-font-size-base: var(--td-font-size-title-small);

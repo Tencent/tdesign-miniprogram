@@ -22,9 +22,9 @@
       <!-- 内容区域 -->
       <view :class="formClass + '__controls ' + errorClasses + ' ' + tClassControls">
         <view
-:class="formClass + '__controls-content ' + formClass + '__controls--' + dataContentAlign"
-              :style="contentStyle"
->
+          :class="formClass + '__controls-content ' + formClass + '__controls--' + dataContentAlign"
+          :style="contentStyle"
+        >
           <slot />
         </view>
         <!-- 帮助信息 -->
@@ -46,10 +46,11 @@
     </view>
 
     <t-icon
-v-if="arrow"
-            name="chevron-right"
-size="24" color="rgba(0, 0, 0, 0.4)"
-/>
+      v-if="arrow"
+      name="chevron-right"
+      size="24"
+      color="rgba(0, 0, 0, 0.4)"
+    />
   </view>
 </template>
 <script>
@@ -119,6 +120,7 @@ export default {
         dataRequiredMark: this.requiredMark,
         dataShowErrorMessage: this.showErrorMessage,
         dataContentAlign: this.contentAlign,
+        requiredMarkPosition: '',
 
         forId: this.for || '',
       };

@@ -197,6 +197,12 @@ export default {
         immediate: true,
         deep: true,
       },
+      globalConfig: {
+        handler() {
+          this.setActions();
+        },
+        deep: true,
+      },
       longPressPosition(newVal) {
         if (this.placement === 'longpress') {
           if (newVal) {
@@ -297,14 +303,7 @@ export default {
       },
 
       setActions() {
-        const text = {
-          replay: '刷新',
-          copy: '复制',
-          good: '点赞',
-          bad: '点踩',
-          share: '分享',
-          quote: '引用',
-        };
+        const { globalConfig } = this;
 
         const baseActions = [];
         let dataActions = [];
@@ -314,13 +313,13 @@ export default {
             baseActions.push({
               name: item,
               isActive: this.pComment === item,
-              text: text[item] || item,
+              text: globalConfig.actionBar?.[item] || item,
             });
           } else {
             baseActions.push({
               name: item,
               isActive: false,
-              text: text[item] || item,
+              text: globalConfig.actionBar?.[item] || item,
             });
           }
         });
