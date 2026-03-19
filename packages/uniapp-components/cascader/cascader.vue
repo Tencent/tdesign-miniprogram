@@ -80,7 +80,7 @@
               :space-evenly="false"
               @change="({value}) => onTabChange(value)"
             >
-              <TT<t-tab-panel
+              <t-tab-panel
                 v-for="(item, index) in steps"
                 :key="index"
                 :ref="`tab-${index}`"
@@ -199,7 +199,7 @@ export default {
     data() {
       return {
         prefix,
-        name,
+        cascader: name,
         stepIndex: 0,
         selectedIndexes: [],
         selectedValue: [],
@@ -341,15 +341,15 @@ export default {
       },
 
       async initOptionsHeight(steps) {
-        const { theme, subTitles } = this;
+        const { theme, subTitles, cascader } = this;
 
-        const { height } = await getRect(this, `.${name}__content`);
+        const { height } = await getRect(this, `.${cascader}__content`);
         this.state.contentHeight = height;
 
         if (theme === 'step') {
           await Promise.all([
-            getRect(this, `.${name}__steps`),
-            getRect(this, `.${name}__step`),
+            getRect(this, `.${cascader}__steps`),
+            getRect(this, `.${cascader}__step`),
           ])
             .then(([stepsRect, stepRect]) => {
               this.state.stepsInitHeight = stepsRect.height - (steps - 1) * stepRect.height;
@@ -360,7 +360,7 @@ export default {
         }
 
         if (subTitles.length > 0) {
-          const { height } = await getRect(this, `.${name}__options-title`);
+          const { height } = await getRect(this, `.${cascader}__options-title`);
           this.state.subTitlesHeight = height;
         }
 
