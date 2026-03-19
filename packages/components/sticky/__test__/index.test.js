@@ -1,16 +1,6 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-beforeAll(() => {
-  global.getCurrentPages = jest.fn(() => {
-    return [
-      {
-        pageScroller: [jest.fn()],
-      },
-    ];
-  });
-});
-
 describe('Sticky Props', () => {
   const id = load(path.resolve(__dirname, './index'));
 

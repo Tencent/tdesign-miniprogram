@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatThinking ChatThinking base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="chat-example-block"
+  >
+    <t-chat-thinking
+      animation="moving"
+      content="{{
+        Object {
+          "text": "",
+          "title": "思考过程",
+        }
+      }}"
+      layout="block"
+      status="pending"
+      bind:expandChange="handleExpandChange"
+    />
+  </wx-view>
+</base>
+`;
+
+exports[`ChatThinking ChatThinking complete demo works fine 1`] = `
+<complete>
+  <wx-view
+    class="chat-example-block"
+  >
+    <t-chat-thinking
+      content="{{
+        Object {
+          "text": "嗯，用户问牛顿第一定律是不是适用于所有参考系。首先，我得先回忆一下牛顿第一定律的内容。牛顿第一定律，也就是惯性定律，说物体在没有外力作用时会保持静止或匀速直线运动。也就是说， 保持原来的运动状态。",
+          "title": "已深度思考(用时19秒)",
+        }
+      }}"
+      layout="block"
+      status="complete"
+      bind:collapsedChange="handleCollapsedChange"
+    />
+  </wx-view>
+</complete>
+`;
+
+exports[`ChatThinking ChatThinking layout demo works fine 1`] = `
+<layout>
+  <wx-view
+    class="chat-example-desc"
+  >
+    block 样式
+  </wx-view>
+  <wx-view
+    class="chat-example-block"
+  >
+    <t-chat-thinking
+      animation="moving"
+      content="{{
+        Object {
+          "title": "已深度思考(用时19秒)",
+        }
+      }}"
+      layout="block"
+      status="complete"
+    >
+      <wx-view
+        slot="content"
+      >
+        
+        嗯，用户问牛顿第一定律是不是适用于所有参考系。首先，我得先回忆一下牛顿第一定律的内容。牛顿第一定律，也就是惯性定律，说物体在没有外力作用时会保持静止或匀速直线运动。也就是说， 保持原来的运动状态。
+      
+      </wx-view>
+    </t-chat-thinking>
+  </wx-view>
+  <wx-view
+    class="chat-example-desc"
+  >
+    border 样式
+  </wx-view>
+  <wx-view
+    class="chat-example-block"
+  >
+    <t-chat-thinking
+      animation="moving"
+      content="{{
+        Object {
+          "text": "嗯，用户问牛顿第一定律是不是适用于所有参考系。首先，我得先回忆一下牛顿第一定律的内容。牛顿第一定律，也就是惯性定律，说物体在没有外力作用时会保持静止或匀速直线运动。也就是说， 保持原来的运动状态。",
+          "title": "已深度思考(用时19秒)",
+        }
+      }}"
+      layout="border"
+      status="complete"
+    />
+  </wx-view>
+</layout>
+`;
+
+exports[`ChatThinking ChatThinking pending demo works fine 1`] = `
+<pending>
+  <wx-view
+    class="chat-example-block"
+  >
+    <t-chat-thinking
+      content="{{
+        Object {
+          "text": "嗯，用户问牛顿第一定律是不是适用于所有参考系。首先，我得先回忆一下牛顿第一定律的内容。牛顿第一定律",
+          "title": "思考中···",
+        }
+      }}"
+      layout="block"
+      status="pending"
+      bind:collapsedChange="handleCollapsedChange"
+    />
+  </wx-view>
+</pending>
+`;
