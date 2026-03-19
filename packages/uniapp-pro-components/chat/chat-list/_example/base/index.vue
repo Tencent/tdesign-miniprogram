@@ -55,6 +55,7 @@
         class="popover-actionbar"
         placement="longpress"
         :long-press-position="longPressPosition"
+        :action-bar="['quote', 'copy', 'share']"
         @actions="handlePopoverAction"
       />
       <!-- 内置虚拟列表优化性能仅在data属性中使用 -->

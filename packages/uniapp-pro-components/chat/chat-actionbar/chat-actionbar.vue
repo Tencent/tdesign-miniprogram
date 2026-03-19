@@ -17,7 +17,7 @@
         <button
           v-if="item.name === 'share'"
           :data-name="item.name"
-          :class="[classPrefix + '__item', item.isActive ? classPrefix + '__item' + '--active' : '']"
+          :class="'' + tools.cls(classPrefix + '__item', [['active', item.isActive]])"
           :open-type="content ? 'share' : 'none'"
           :data-chat-id="chatId"
           @click="handleActionClick"
@@ -32,7 +32,7 @@
         <view
           v-else
           :data-name="item.name"
-          :class="[classPrefix + '__item', item.isActive ? classPrefix + '__item' + '--active' : '']"
+          :class="'' + tools.cls(classPrefix + '__item', [['active', item.isActive]])"
           @click="handleActionClick"
         >
           <t-icon
@@ -138,6 +138,7 @@ export default {
     props: {
       ...props,
     },
+
     data() {
       return {
         actions: [],
@@ -304,11 +305,7 @@ export default {
 
         const baseActions = [];
         let dataActions = [];
-        if (this.placement === 'longpress') {
-          dataActions = ['quote', 'copy', 'share'];
-        } else if (Array.isArray(this.actionBar)) {
-          dataActions = this.actionBar;
-        }
+        dataActions = this.actionBar;
         dataActions.forEach((item) => {
           if (item === 'good' || item === 'bad') {
             baseActions.push({

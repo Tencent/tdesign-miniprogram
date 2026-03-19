@@ -1,0 +1,542 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatSender ChatSender attachments demo works fine 1`] = `
+<attachments>
+  <wx-view
+    class="demo-attachments-container show-upload-menu"
+  >
+    <wx-view
+      class="chat-sender-demo-wrapper"
+    >
+      <wx-view
+        class="chat-sender-height-limit"
+      >
+        <wx-view
+          class="chat-sender-height-left-limit"
+        />
+        <wx-view
+          class="chat-sender-height-right-limit"
+        />
+      </wx-view>
+      <wx-view
+        class="chat-sender-placeholder"
+      >
+         高度限制：最大高度为132px 
+      </wx-view>
+      <wx-view
+        class="chat-sender-wrapper"
+        style="bottom:32rpx;"
+      >
+        <t-chat-sender
+          attachmentsProps="{{
+            Object {
+              "imageViewer": true,
+              "items": Array [
+                Object {
+                  "fileType": "image",
+                  "name": "图片1.png",
+                  "url": "https://tdesign.gtimg.com/site/square.png",
+                },
+                Object {
+                  "fileType": "pdf",
+                  "name": "文档.pdf",
+                  "size": 3072,
+                  "status": "pending",
+                  "url": "https://example.com/document.pdf",
+                },
+              ],
+              "removable": true,
+            }
+          }}"
+          disabled="{{false}}"
+          fileList="{{
+            Array [
+              Object {
+                "fileType": "image",
+                "name": "图片1.png",
+                "url": "https://tdesign.gtimg.com/site/square.png",
+              },
+              Object {
+                "fileType": "pdf",
+                "name": "文档.pdf",
+                "size": 3072,
+                "status": "pending",
+                "url": "https://example.com/document.pdf",
+              },
+            ]
+          }}"
+          loading="{{false}}"
+          placeholder="请输入消息..."
+          renderPresets="{{
+            Array [
+              Object {
+                "name": "upload",
+                "presets": Array [
+                  "uploadCamera",
+                  "uploadImage",
+                  "uploadAttachment",
+                ],
+                "status": "",
+                "type": "bottom",
+              },
+              Object {
+                "name": "send",
+                "type": "icon",
+              },
+            ]
+          }}"
+          textareaProps="{{
+            Object {
+              "autosize": Object {
+                "maxHeight": 264,
+                "minHeight": 48,
+              },
+            }
+          }}"
+          value=""
+          visible="{{true}}"
+          bind:blur="onBlur"
+          bind:change="onChange"
+          bind:fileChange="onFileChange"
+          bind:fileClick="onFileClick"
+          bind:fileDelete="onFileDelete"
+          bind:fileSelect="onFileSelect"
+          bind:focus="onFocus"
+          bind:keyboardheightchange="onKeyboardHeightChange"
+          bind:send="onSend"
+          bind:stop="onStop"
+          bind:updateVisible="onUpdateVisible"
+          bind:uploadClick="onUploadClick"
+        >
+          <wx-view
+            class="demo-footer-prefix"
+            slot="footer-prefix"
+          >
+            <wx-view
+              class="deep-think-block "
+              bind:tap="onDeepThinkTap"
+            >
+              <t-icon
+                name="system-sum"
+                size="36rpx"
+              />
+              <wx-text
+                class="deep-think-text"
+              >
+                深度思考
+              </wx-text>
+            </wx-view>
+            <wx-view
+              class="net-search-block "
+              bind:tap="onNetSearchTap"
+            >
+              <t-icon
+                name="internet"
+                size="36rpx"
+              />
+            </wx-view>
+          </wx-view>
+        </t-chat-sender>
+      </wx-view>
+    </wx-view>
+  </wx-view>
+  <t-toast
+    id="t-toast"
+  />
+</attachments>
+`;
+
+exports[`ChatSender ChatSender base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="demo-base-container"
+  >
+    <wx-view
+      class="chat-sender-demo-wrapper"
+    >
+      <wx-view
+        class="chat-sender-height-limit"
+      >
+        <wx-view
+          class="chat-sender-height-left-limit"
+        />
+        <wx-view
+          class="chat-sender-height-right-limit"
+        />
+      </wx-view>
+      <wx-view
+        class="chat-sender-placeholder"
+      >
+         高度限制：最大高度为132px 
+      </wx-view>
+      <wx-view
+        class="chat-sender-wrapper"
+      >
+        <t-chat-sender
+          attachmentsProps="{{
+            Object {
+              "imageViewer": true,
+              "items": Array [],
+              "removable": true,
+            }
+          }}"
+          disabled="{{false}}"
+          fileList="{{Array []}}"
+          loading="{{false}}"
+          placeholder="请输入消息..."
+          renderPresets="{{
+            Array [
+              Object {
+                "name": "send",
+                "type": "icon",
+              },
+            ]
+          }}"
+          textareaProps="{{
+            Object {
+              "autosize": Object {
+                "maxHeight": 264,
+                "minHeight": 48,
+              },
+            }
+          }}"
+          value=""
+          visible="{{false}}"
+          bind:blur="onBlur"
+          bind:change="onChange"
+          bind:fileChange="onFileChange"
+          bind:fileClick="onFileClick"
+          bind:fileDelete="onFileDelete"
+          bind:fileSelect="onFileSelect"
+          bind:focus="onFocus"
+          bind:keyboardheightchange="onKeyboardHeightChange"
+          bind:send="onSend"
+          bind:stop="onStop"
+          bind:updateVisible="onUpdateVisible"
+          bind:uploadClick="onUploadClick"
+        >
+          <wx-view
+            class="demo-footer-prefix"
+            slot="footer-prefix"
+          >
+            <wx-view
+              class="deep-think-block "
+              bind:tap="onDeepThinkTap"
+            >
+              <t-icon
+                name="system-sum"
+                size="36rpx"
+              />
+              <wx-text
+                class="deep-think-text"
+              >
+                深度思考
+              </wx-text>
+            </wx-view>
+            <wx-view
+              class="net-search-block "
+              bind:tap="onNetSearchTap"
+            >
+              <t-icon
+                name="internet"
+                size="36rpx"
+              />
+            </wx-view>
+          </wx-view>
+        </t-chat-sender>
+      </wx-view>
+      <wx-view
+        class="demo-footer"
+      >
+         内容由AI生成，仅供参考 
+      </wx-view>
+    </wx-view>
+  </wx-view>
+</base>
+`;
+
+exports[`ChatSender ChatSender content-citation demo works fine 1`] = `
+<content-citation>
+  <wx-view
+    class="demo-content-citation-container"
+  >
+    <wx-view
+      class="chat-sender-demo-wrapper"
+    >
+      <wx-view
+        class="chat-sender-height-limit"
+      >
+        <wx-view
+          class="chat-sender-height-left-limit"
+        />
+        <wx-view
+          class="chat-sender-height-right-limit"
+        />
+      </wx-view>
+      <wx-view
+        class="chat-sender-placeholder"
+      >
+         高度限制：最大高度为132px 
+      </wx-view>
+      <wx-view
+        class="chat-sender-wrapper"
+      >
+        <t-chat-sender
+          attachmentsProps="{{
+            Object {
+              "imageViewer": true,
+              "items": Array [],
+              "removable": true,
+            }
+          }}"
+          disabled="{{false}}"
+          fileList="{{Array []}}"
+          loading="{{false}}"
+          placeholder="请输入消息..."
+          renderPresets="{{
+            Array [
+              Object {
+                "name": "send",
+                "type": "icon",
+              },
+            ]
+          }}"
+          textareaProps="{{
+            Object {
+              "autosize": Object {
+                "maxHeight": 264,
+                "minHeight": 48,
+              },
+            }
+          }}"
+          value=""
+          visible="{{false}}"
+          bind:blur="onBlur"
+          bind:change="onChange"
+          bind:fileChange="onFileChange"
+          bind:fileClick="onFileClick"
+          bind:fileDelete="onFileDelete"
+          bind:fileSelect="onFileSelect"
+          bind:focus="onFocus"
+          bind:keyboardheightchange="onKeyboardHeightChange"
+          bind:send="onSend"
+          bind:stop="onStop"
+          bind:updateVisible="onUpdateVisible"
+          bind:uploadClick="onUploadClick"
+        >
+          <wx-view
+            class="demo-header"
+            slot="header"
+          >
+            <wx-view
+              style="padding: 4rpx; height: 40rpx; color: var(--td-text-color-disabled)"
+            >
+              <t-icon
+                name="enter"
+                size="40rpx"
+                style="transform: scaleX(-1)"
+              />
+            </wx-view>
+            <wx-view
+              class="header-content"
+            >
+               牛顿第一定律并不适用于所有参考系，它只适用于惯性参考系。在质点不受外力作用时，能够判断出质点静止或作匀速直线运动的参考系一定是惯性参考系，因此只有在惯性参考系中牛顿第一定律才适用。 
+            </wx-view>
+            <wx-view
+              style="padding: 4rpx; height: 40rpx; margin-left: auto; color: var(--td-text-color-placeholder)"
+            >
+              <t-icon
+                name="close"
+                size="40rpx"
+                bind:tap="handleCLoseCite"
+              />
+            </wx-view>
+          </wx-view>
+          <wx-view
+            class="demo-footer-prefix"
+            slot="footer-prefix"
+          >
+            <wx-view
+              class="deep-think-block "
+              bind:tap="onDeepThinkTap"
+            >
+              <t-icon
+                name="system-sum"
+                size="36rpx"
+              />
+              <wx-text
+                class="deep-think-text"
+              >
+                深度思考
+              </wx-text>
+            </wx-view>
+            <wx-view
+              class="net-search-block "
+              bind:tap="onNetSearchTap"
+            >
+              <t-icon
+                name="internet"
+                size="36rpx"
+              />
+            </wx-view>
+          </wx-view>
+        </t-chat-sender>
+      </wx-view>
+      <wx-view
+        class="demo-content-citation-footer"
+      >
+         内容由AI生成，仅供参考 
+      </wx-view>
+    </wx-view>
+  </wx-view>
+</content-citation>
+`;
+
+exports[`ChatSender ChatSender file-citation demo works fine 1`] = `
+<file-citation>
+  <wx-view
+    class="demo-content-citation-container"
+  >
+    <wx-view
+      class="chat-sender-demo-wrapper"
+    >
+      <wx-view
+        class="chat-sender-height-limit"
+      >
+        <wx-view
+          class="chat-sender-height-left-limit"
+        />
+        <wx-view
+          class="chat-sender-height-right-limit"
+        />
+      </wx-view>
+      <wx-view
+        class="chat-sender-placeholder"
+      >
+         高度限制：最大高度为132px 
+      </wx-view>
+      <wx-view
+        class="chat-sender-wrapper"
+      >
+        <t-chat-sender
+          attachmentsProps="{{
+            Object {
+              "imageViewer": true,
+              "items": Array [],
+              "removable": true,
+            }
+          }}"
+          disabled="{{false}}"
+          fileList="{{Array []}}"
+          loading="{{false}}"
+          placeholder="请输入消息..."
+          renderPresets="{{
+            Array [
+              Object {
+                "name": "send",
+                "type": "icon",
+              },
+            ]
+          }}"
+          textareaProps="{{
+            Object {
+              "autosize": Object {
+                "maxHeight": 264,
+                "minHeight": 48,
+              },
+            }
+          }}"
+          value=""
+          visible="{{false}}"
+          bind:blur="onBlur"
+          bind:change="onChange"
+          bind:fileChange="onFileChange"
+          bind:fileClick="onFileClick"
+          bind:fileDelete="onFileDelete"
+          bind:fileSelect="onFileSelect"
+          bind:focus="onFocus"
+          bind:keyboardheightchange="onKeyboardHeightChange"
+          bind:send="onSend"
+          bind:stop="onStop"
+          bind:updateVisible="onUpdateVisible"
+          bind:uploadClick="onUploadClick"
+        >
+          <wx-view
+            class="demo-header"
+            slot="header"
+          >
+            <wx-view
+              style="padding: 4rpx; height: 40rpx; color: var(--td-text-color-disabled)"
+            >
+              <t-icon
+                name="enter"
+                size="40rpx"
+                style="transform: scaleX(-1)"
+              />
+            </wx-view>
+            <wx-view
+              class="header-content-wrapper"
+            >
+              <t-icon
+                color="var(--td-brand-color)"
+                name="file-word-filled"
+                size="32rpx"
+                style="margin-top: 8rpx; margin-right: 16rpx"
+              />
+              <wx-view
+                class="header-file-content"
+                hoverClass="none"
+                hoverStopPropagation="false"
+              >
+                 word文件.docx 
+              </wx-view>
+            </wx-view>
+            <wx-view
+              style="padding: 4rpx; height: 40rpx; margin-left: auto; color: var(--td-text-color-placeholder)"
+            >
+              <t-icon
+                name="close"
+                size="40rpx"
+                bind:tap="handleCLoseCite"
+              />
+            </wx-view>
+          </wx-view>
+          <wx-view
+            class="demo-footer-prefix"
+            slot="footer-prefix"
+          >
+            <wx-view
+              class="deep-think-block "
+              bind:tap="onDeepThinkTap"
+            >
+              <t-icon
+                name="system-sum"
+                size="36rpx"
+              />
+              <wx-text
+                class="deep-think-text"
+              >
+                深度思考
+              </wx-text>
+            </wx-view>
+            <wx-view
+              class="net-search-block "
+              bind:tap="onNetSearchTap"
+            >
+              <t-icon
+                name="internet"
+                size="36rpx"
+              />
+            </wx-view>
+          </wx-view>
+        </t-chat-sender>
+      </wx-view>
+      <wx-view
+        class="demo-file-citation-footer"
+      >
+         内容由AI生成，仅供参考 
+      </wx-view>
+    </wx-view>
+  </wx-view>
+</file-citation>
+`;

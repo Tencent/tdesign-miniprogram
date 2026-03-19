@@ -3,7 +3,7 @@ import { defineConfig, loadEnv } from 'vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
-// import changelog2Json from './web/plugins/changelog-to-json';
+import changelog2Json from './web/plugins/changelog-to-json';
 import tdocPlugin from './web/plugins/plugin-tdoc';
 
 const resolvePath = (r) => path.resolve(__dirname, r);
@@ -100,7 +100,7 @@ export default ({ mode }) => {
         isCustomElement,
       }),
       tdocPlugin(mode),
-      // changelog2Json(),
+      changelog2Json(),
       disableTreeShakingPlugin(['style/', 'toast/']),
     ],
   });

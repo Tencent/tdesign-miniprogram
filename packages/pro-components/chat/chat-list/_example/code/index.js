@@ -1,5 +1,5 @@
 import Toast from 'tdesign-miniprogram/toast';
-import { getNavigationBarHeight } from '../../../utils/utils';
+import getNavigationBarHeight from '../utils';
 
 const mockData1 =
   '```jsx\nimport { Form, Input, Button, Message } from \'tdesign-react\';\n\nconst LoginForm = () => {\n  const [loading, setLoading] = useState(false);\n\n  const onSubmit = async ({ validateResult }) => {\n    if (validateResult === true) {\n      setLoading(true);\n      try {\n        // 登录逻辑\n        Message.success(\'登录成功\');\n      } catch {\n        Message.error(\'登录失败\');\n      } finally {\n        setLoading(false);\n      }\n    }\n  };\n\n  return (\n    <Form onSubmit={onSubmit}>\n      <Form.FormItem name="username" label="用户名" rules={[{ required: true }]}>\n        <Input placeholder="请输入用户名" />\n      </Form.FormItem>\n\n      <Form.FormItem name="password" label="密码" rules={[{ required: true }]}>\n        <Input type="password" />\n      </Form.FormItem>\n\n      <Form.FormItem>\n        <Button theme="primary" type="submit" loading={loading} block>\n          登录\n        </Button>\n      </Form.FormItem>\n    </Form>\n  );\n};\n```\n\n';
@@ -125,9 +125,8 @@ Component({
         await fetchStream('下面是一个使用TDesign组件库实现的登录表单组件，以React版本为例：\n\n', {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[0].data += result;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[0].data': that.data.chatList[0].message.content[0].data + result,
             });
           },
           complete() {},
@@ -158,9 +157,8 @@ Component({
         await fetchStream(mockData1, {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[2].data += result;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[2].data': that.data.chatList[0].message.content[2].data + result,
             });
           },
           complete() {},
@@ -181,17 +179,13 @@ Component({
           {
             success(result) {
               if (!that.data.loading) return;
-              that.data.chatList[0].message.content[3].data += result;
               that.setData({
-                chatList: that.data.chatList,
+                'chatList[0].message.content[3].data': that.data.chatList[0].message.content[3].data + result,
               });
             },
             complete() {
-              that.data.chatList[0].message.status = 'complete';
               that.setData({
-                chatList: that.data.chatList,
-              });
-              that.setData({
+                'chatList[0].message.status': 'complete',
                 loading: false,
               });
             },

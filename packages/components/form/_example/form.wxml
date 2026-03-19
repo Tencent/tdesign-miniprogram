@@ -1,20 +1,23 @@
-<view class="tdesign-mobile-demo">
-  <view class="demo-block">
-    <view class="title">Form 表单</view>
-    <view class="summary">用于开启一个闭环的操作任务，如"删除"对象、"购买"商品等。</view>
+<t-navbar class="demo-navbar" title="Form" leftArrow placeholder zIndex="{{99}}" />
+<t-demo-header
+  title="Form 表单"
+  desc="用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。"
+  notice="渲染框架支持情况：WebView"
+/>
 
-    <view class="demo-block-title">01 组件类型</view>
-    <view class="demo-block-summary">基础表单</view>
-  </view>
+<t-demo title="01 组件类型" desc="基础表单">
   <view class="option">
     <view class="select-button-group">
       <t-button theme="{{isActive1 ? 'light' : 'default'}}" shape="round" data-name="isActive1" bind:tap="onClick">
         水平排布
       </t-button>
       <t-button theme="{{isActive2 ? 'light' : 'default'}}" shape="round" data-name="isActive2" bind:tap="onClick">
-        竖向排布
+        竖直排布
       </t-button>
     </view>
+    <t-cell title="禁用态">
+      <t-switch defaultValue="{{switchValue}}" slot="note" bind:change="onChangeSwitch" />
+    </t-cell>
   </view>
 
   <view wx:if="{{isActive1}}">
@@ -24,4 +27,4 @@
   <view wx:if="{{isActive2}}">
     <vertical disabled="{{switchValue}}" />
   </view>
-</view>
+</t-demo>

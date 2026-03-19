@@ -13,8 +13,7 @@
 .textarea {
   height: 200rpx;
   width: 100%;
-  --textarea-vertical-padding: 0;
-  --td-textarea-horizontal-padding: 0;
+  --td-textarea-padding: 0;
 }
 page .textarea .t-textarea {
   padding: 0 !important;
@@ -37,4 +36,8 @@ page .textarea .t-textarea {
 
 .button-group .t-button:not(:last-child) {
   margin-right: 32rpx;
+}
+
+.my-label {
+  align-self: flex-start;
 }
