@@ -1,4 +1,4 @@
-name: MP_PREVIEW
+name: UNI_MP_PREVIEW
 
 on:
   pull_request:
