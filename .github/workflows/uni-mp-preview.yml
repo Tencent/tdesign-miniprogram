@@ -25,7 +25,7 @@ jobs:
           mini_app_private_key: ${{ secrets.TDESIGN_UNI_MINI_KEY }}
           allowed_users: '{"novlan1":26,"anlyyao":27}'
           install_command: 'pnpm install'
-          build_command: 'pnpm run uniapp -- run build:mp-weixin'
+          build_command: 'pnpm run uniapp -- run init && pnpm run uniapp -- run build:mp-weixin'
           project_path: 'packages/tdesign-uniapp/example/dist/build/mp-weixin'
           cos_secret_id: ${{ secrets.UNI_TENCENT_COS_SECRET_ID }}
           cos_secret_key: ${{ secrets.UNI_TENCENT_COS_SECRET_KEY }}
