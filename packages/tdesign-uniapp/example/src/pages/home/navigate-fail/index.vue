@@ -19,9 +19,16 @@
   </view>
 </template>
 <script>
+import TButton from '@tdesign/uniapp/button/button.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
+
 
 export default {
   name: 'NavigateFail',
+  components: {
+    TButton,
+    TIcon,
+  },
   data() {
     return {
       failImage: 'error-circle-filled',

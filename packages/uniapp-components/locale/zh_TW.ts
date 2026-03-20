@@ -1,6 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
 // 文件有效，为国际化做准备
-import 'dayjs/locale/zh-tw';
+import '../npm/dayjs/esm/locale/zh-tw';
 
 export default {
   actionSheet: {

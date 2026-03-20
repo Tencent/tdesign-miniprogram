@@ -1,5 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
-import 'dayjs/locale/ru';
+import '../npm/dayjs/esm/locale/ru';
 
 export default {
   actionSheet: {
