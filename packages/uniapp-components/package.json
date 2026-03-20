@@ -5,7 +5,14 @@
   "author": "tdesign",
   "typings": "./types/index.d.ts",
   "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "default": "./index.js"
+    },
     "./*": "./*",
+    "./global": {
+      "types": "./global.d.ts"
+    },
     "./action-sheet/action-sheet.vue": {
       "types": "./types/action-sheet.d.ts",
       "import": "./action-sheet/action-sheet.vue",
@@ -90,6 +97,11 @@
       "types": "./types/color-picker.d.ts",
       "import": "./color-picker/color-picker.vue",
       "default": "./color-picker/color-picker.vue"
+    },
+    "./config-provider/config-provider.vue": {
+      "types": "./types/config-provider.d.ts",
+      "import": "./config-provider/config-provider.vue",
+      "default": "./config-provider/config-provider.vue"
     },
     "./count-down/count-down.vue": {
       "types": "./types/count-down.d.ts",
@@ -235,6 +247,11 @@
       "types": "./types/picker-item.d.ts",
       "import": "./picker-item/picker-item.vue",
       "default": "./picker-item/picker-item.vue"
+    },
+    "./popover/popover.vue": {
+      "types": "./types/popover.d.ts",
+      "import": "./popover/popover.vue",
+      "default": "./popover/popover.vue"
     },
     "./popup/popup.vue": {
       "types": "./types/popup.d.ts",

@@ -15,8 +15,6 @@ export default {
   addContent: {
     type: String,
   },
-  /** 是否允许重复上传相同文件名的文件 */
-  allowUploadDuplicateFile: Boolean,
   /** 图片上传配置，视频上传配置，文件上传配置等，包含图片尺寸、图片来源、视频来源、视频拍摄最长时间等。更多细节查看小程序官网。[图片上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)。[视频上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseVideo.html) */
   config: {
     type: Object,

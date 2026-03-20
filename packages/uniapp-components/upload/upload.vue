@@ -650,7 +650,7 @@ export default {
       uploadFiles(files) {
         return Promise.resolve().then(() => {
         // 开始调用上传函数
-          const task = this.data.requestMethod(files);
+          const task = this.requestMethod(files);
           if (task instanceof Promise) {
             return task;
           }

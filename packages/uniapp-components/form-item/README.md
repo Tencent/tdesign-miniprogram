@@ -8,15 +8,13 @@
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
 arrow | Boolean | false | 是否显示右侧箭头 | N
-content-align | String | - | 表单内容对齐方式，优先级高于 Form.contentAlign。可选项：left/right | N
-for | String | - | label 原生属性 | N
 help | String | - | 表单项说明内容 | N
 label | String | '' | 字段标签名称 | N
 label-align | String | - | 表单字段标签对齐方式：左对齐、右对齐、顶部对齐。默认使用 Form 的对齐方式，优先级高于 Form.labelAlign。可选项：left/right/top | N
 label-width | String / Number | - | 可以整体设置标签宽度，优先级高于 Form.labelWidth | N
 name | String | - | 表单字段名称 | N
 required-mark | Boolean | undefined | 是否显示必填符号（*），优先级高于 Form.requiredMark | N
-rules | Array | - | 表单字段校验规则。TS 类型：`Array<FormRule>` | N
+rules | Array | - | 表单字段校验规则。TS 类型：`Array<FormRule> `，[Form API Documents](./form?tab=api)。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/form-item/type.ts) | N
 show-error-message | Boolean | undefined | 校验不通过时，是否显示错误提示信息，优先级高于 `Form.showErrorMessage` | N
 
 ### FormItem Slots

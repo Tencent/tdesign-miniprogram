@@ -6,8 +6,7 @@
 
 name | type | default | description | required
 -- | -- | -- | -- | --
-style | Object | - | CSS(Cascading Style Sheets) | N
-custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
+custom-style | Object | - | CSS(Cascading Style Sheets) | N
 global-config | Object | - | global config。Typescript: `GlobalConfigProvider` | N
 theme-vars | Object | - | theme Variables | N
 
@@ -105,7 +104,7 @@ reset | String | - | reset text | N
 name | type | default | description | required
 -- | -- | -- | -- | --
 colon-text | String | - | colon on the right of label ":" | N
-error-message | Object | - | Typescript: `FormErrorMessage`，[Form API Documents](./form?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/config-provider/type.ts) | N
+error-message | Object | - | Typescript: `FormErrorMessage`，[Form API Documents](./form?tab=api)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/config-provider/type.ts) | N
 required-mark | Boolean | true | \- | N
 required-mark-position | String | left | Display position of required symbols。options: left/right | N
 
@@ -124,7 +123,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 error-text | String | - | loading text, default value is "Error" | N
 loading-text | String | - | loading text, default value is "loading" | N
-replace-image-src | Function | - | replace all `src` attribute of images。Typescript: `(params: ImageProps) => string`，[Image API Documents](./image?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/config-provider/type.ts) | N
+replace-image-src | Function | - | replace all `src` attribute of images。Typescript: `(params: ImageProps) => string`，[Image API Documents](./image?tab=api)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/config-provider/type.ts) | N
 
 ### InputConfig
 

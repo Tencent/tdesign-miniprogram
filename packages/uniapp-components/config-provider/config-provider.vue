@@ -18,11 +18,13 @@ import themeVarsToCSS from './utils';
 const componentName = 'config-provider';
 const name = `${prefix}-${componentName}`;
 
-export default uniComponent({
-  name,
-  externalClasses: [
-    `${prefix}-class`,
-  ],
+export default {
+  ...uniComponent({
+    name,
+    externalClasses: [
+      `${prefix}-class`,
+    ],
+  }),
   props: {
     ...props,
   },
@@ -55,15 +57,6 @@ export default uniComponent({
     this.initStore();
     this.updateConfig();
   },
-  beforeDestroy() {
-    if (this.iUnsubscribeLocale) {
-      this.iUnsubscribeLocale();
-    }
-    if (this.iComponentId) {
-      configStore.resetPageState(this.iComponentId);
-    }
-  },
-  // #ifdef VUE3
   beforeUnmount() {
     if (this.iUnsubscribeLocale) {
       this.iUnsubscribeLocale();
@@ -72,7 +65,6 @@ export default uniComponent({
       configStore.resetPageState(this.iComponentId);
     }
   },
-  // #endif
   methods: {
     /**
      * 初始化 Store 并订阅状态变化
@@ -106,5 +98,5 @@ export default uniComponent({
       this.cssVars = themeVarsToCSS(themeVars || {});
     },
   },
-});
+};
 </script>

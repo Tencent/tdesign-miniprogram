@@ -17,11 +17,6 @@ export interface TdUploadProps {
    */
   addContent?: string;
   /**
-   * 是否允许重复上传相同文件名的文件
-   * @default false
-   */
-  allowUploadDuplicateFile?: boolean;
-  /**
    * 图片上传配置，视频上传配置，文件上传配置等，包含图片尺寸、图片来源、视频来源、视频拍摄最长时间等。更多细节查看小程序官网。[图片上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)。[视频上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseVideo.html)
    */
   config?: UploadMpConfig;
@@ -77,7 +72,7 @@ export interface TdUploadProps {
   /**
    * 自定义上传方法
    */
-  requestMethod?: any;
+  requestMethod?: (files: UploadFile | UploadFile[]) => Promise<RequestMethodResponse>;
   /**
    * 图片文件大小限制，默认单位 KB。可选单位有：`'B' | 'KB' | 'MB' | 'GB'`。示例一：`1000`。示例二：`{ size: 2, unit: 'MB', message: '图片大小不超过 {sizeLimit} MB' }`
    */
@@ -89,7 +84,7 @@ export interface TdUploadProps {
   source?: 'media' | 'messageFile';
   /**
    * 拖拽位置移动时的过渡参数,`duration`单位为ms
-   * @default `{backTransition: true, duration: 300, timingFunction: 'ease'}`
+   * @default { backTransition: true, duration: 300, timingFunction: 'ease' }
    */
   transition?: Transition;
   /**
@@ -126,9 +121,9 @@ export interface TdUploadProps {
   onSuccess?: (context: { files: MediaContext }) => void;
 }
 
-export type UploadMpConfig = ImageConfig | VideoConfig;
+export type UploadMpConfig = UploadImageConfig | UploadVideoConfig;
 
-export interface ImageConfig {
+export interface UploadImageConfig {
   count?: number;
   sizeType?: Array<SizeTypeValues>;
   sourceType?: Array<SourceTypeValues>;
@@ -138,7 +133,7 @@ export type SizeTypeValues = 'original' | 'compressed';
 
 export type SourceTypeValues = 'album' | 'camera';
 
-export interface VideoConfig {
+export interface UploadVideoConfig {
   sourceType?: Array<SourceTypeValues>;
   compressed?: boolean;
   maxDuration?: number;
@@ -155,6 +150,12 @@ export interface UploadFile {
 }
 
 export type MediaType = 'image' | 'video';
+
+export interface RequestMethodResponse {
+  status: 'success' | 'fail';
+  error?: string;
+  response: { url?: string; files?: UploadFile[]; [key: string]: any };
+}
 
 export interface SizeLimitObj {
   size: number;

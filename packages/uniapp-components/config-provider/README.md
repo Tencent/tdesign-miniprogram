@@ -56,8 +56,7 @@ TDesign 支持国际化/多语言配置，目前支持的语言包括:
 
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
-style | Object | - | 样式 | N
-custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
+custom-style | Object | - | 自定义样式 | N
 global-config | Object | - | 全局配置。TS 类型：`GlobalConfigProvider` | N
 theme-vars | Object | - | 全局配置 | N
 
@@ -155,7 +154,7 @@ reset | String | - | 语言配置，“重置” 按钮描述文本 | N
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
 colon-text | String | - | 字段旁边的冒号，中文为“：” | N
-error-message | Object | - | 表单错误信息配置，示例：`{ idcard: '请输入正确的身份证号码', max: '字符长度不能超过 ${max}' }`。TS 类型：`FormErrorMessage`，[Form API Documents](./form?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/config-provider/type.ts) | N
+error-message | Object | - | 表单错误信息配置，示例：`{ idcard: '请输入正确的身份证号码', max: '字符长度不能超过 ${max}' }`。TS 类型：`FormErrorMessage`，[Form API Documents](./form?tab=api)。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/config-provider/type.ts) | N
 required-mark | Boolean | true | 是否显示必填符号（*），默认显示 | N
 required-mark-position | String | left | 表单必填符号（*）显示位置。可选项：left/right | N
 
@@ -174,7 +173,7 @@ skip | String | - | 语言配置， “跳过” 描述文本 | N
 -- | -- | -- | -- | --
 error-text | String | - | 图片加载失败显示的文本，中文默认为“图片无法显示” | N
 loading-text | String | - | 图片加载中显示的文本，中文默认为“图片加载中” | N
-replace-image-src | Function | - | 统一替换图片 `src` 地址，参数为组件的全部属性，返回值为新的图片地址。TS 类型：`(params: ImageProps) => string`，[Image API Documents](./image?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/config-provider/type.ts) | N
+replace-image-src | Function | - | 统一替换图片 `src` 地址，参数为组件的全部属性，返回值为新的图片地址。TS 类型：`(params: ImageProps) => string`，[Image API Documents](./image?tab=api)。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/config-provider/type.ts) | N
 
 ### InputConfig
 

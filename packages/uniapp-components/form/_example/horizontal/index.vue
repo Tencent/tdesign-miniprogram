@@ -443,25 +443,25 @@ export default {
       ],
       rules: {
         name: [
-          { pattern: '[a-zA-Z]{8}', validator: (val) => val.length === 8, message: '只能输入8个字符英文' },
+          { pattern: '[a-zA-Z]{8}', validator: val => val.length === 8, message: '只能输入8个字符英文' },
         ],
         password: [
-          { validator: (val) => val.length > 6, message: '长度大于6个字符' },
+          { validator: val => val.length > 6, message: '长度大于6个字符' },
         ],
         description: [
-          { validator: (val) => val > 3, message: '分数过低会影响整体评价' },
+          { validator: val => val > 3, message: '分数过低会影响整体评价' },
         ],
         gender: [
-          { validator: (val) => val !== '', message: '不能为空' },
+          { validator: val => val !== '', message: '不能为空' },
         ],
         birth: [
-          { validator: (val) => val !== '', message: '不能为空' },
+          { validator: val => val !== '', message: '不能为空' },
         ],
         place: [
-          { validator: (val) => val !== '', message: '不能为空' },
+          { validator: val => val !== '', message: '不能为空' },
         ],
         resume: [
-          { validator: (val) => val !== '', message: '不能为空' },
+          { validator: val => val !== '', message: '不能为空' },
         ],
       },
     };
@@ -482,22 +482,10 @@ export default {
     submit() {
       const { form } = this.$refs;
       form.submit();
-
-      // form.validate({
-      //   fields: ['name', 'password', 'gender'],
-      //   trigger: 'blur',
-      // }).then((result) => {
-      //   console.log('[submit] result: ', result);
-      // });
     },
     reset() {
       const { form } = this.$refs;
       form.reset();
-
-      // form.reset({
-      //   resetType: 'initial',
-      //   fields: ['name', 'password', 'gender'],
-      // });
     },
     onInputChange(e, { field }) {
       this.formData[`${field}`] = e.value;
