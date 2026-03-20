@@ -55,6 +55,7 @@
 </template>
 <script>
 import { uniComponent } from '../common/src/index';
+import { getRect } from '../common/utils';
 import { prefix } from '../common/config';
 import props from './props';
 import { validateRules, ValidateStatus } from './form-model';
@@ -298,6 +299,22 @@ export default {
           successList,
           resultList: results,
         };
+      },
+
+      // 滚动到当前 form-item
+      scrollIntoView(type, distanceTop = 0) {
+        getRect(this, `.${this.classPrefix}`).then((rect) => {
+          if (!rect) return;
+          const query = uni.createSelectorQuery();
+          query.selectViewport().scrollOffset()
+            .exec((res) => {
+              if (!res[0]) return;
+              uni.pageScrollTo({
+                scrollTop: rect.top + res[0].scrollTop - distanceTop,
+                duration: type === 'smooth' ? 300 : 0,
+              });
+            });
+        });
       },
 
       // 计算错误样式类

@@ -106,6 +106,10 @@ export default {
           const results = await Promise.all(validatePromises);
           const validateResult = this.formatValidateResult(results);
 
+          if (validateResult !== true) {
+            this.scrollToError(validateResult);
+          }
+
           this.$emit('validate', {
             validateResult,
           });
@@ -114,6 +118,21 @@ export default {
         } catch (error) {
           return false;
         }
+      },
+
+      // 滚动到第一个校验不通过的字段
+      scrollToError(validateResult) {
+        const { scrollToFirstError } = this;
+        if (!scrollToFirstError) return;
+
+        const firstErrorKey = Object.keys(validateResult)[0];
+        if (!firstErrorKey) return;
+
+        const { children } = this;
+        const errorChild = children.find(child => child.name === firstErrorKey);
+        if (!errorChild) return;
+
+        errorChild.scrollIntoView(scrollToFirstError);
       },
 
       // 纯净验证（不显示错误信息）
