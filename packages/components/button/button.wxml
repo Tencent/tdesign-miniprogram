@@ -33,6 +33,7 @@
   bind:launchapp="launchapp"
   bind:chooseavatar="chooseavatar"
   bind:agreeprivacyauthorization="agreeprivacyauthorization"
+  bindphoneoneclicklogin="phoneoneclicklogin"
   aria-label="{{ariaLabel}}"
 >
   <template
