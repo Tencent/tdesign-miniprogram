@@ -1,5 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
-// Интернационализация языкового пакета - Русский
+import 'dayjs/locale/ru';
+
 export default {
   actionSheet: {
     cancel: 'Отмена',

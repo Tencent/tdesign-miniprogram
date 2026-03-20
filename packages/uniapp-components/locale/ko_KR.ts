@@ -1,5 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
-// 국제화 언어 팩 - 한국어
+// 文件有效，为国际化做准备
+import 'dayjs/locale/ko';
+
 export default {
   actionSheet: {
     cancel: '취소',

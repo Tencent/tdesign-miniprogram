@@ -5,5 +5,6 @@ const gulp = require('gulp');
  * */
 const copyLocale = () =>
   gulp.src('packages/common/js/global-config/mobile/locale/*.ts').pipe(gulp.dest('packages/components/locale'));
+gulp.src('packages/common/js/global-config/mobile/locale/*.ts').pipe(gulp.dest('packages/uniapp-components/locale'));
 
 module.exports = { copyLocale };

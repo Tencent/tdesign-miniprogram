@@ -1,5 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
-// 国際化言語パック - 日本語
+// 文件有效，为国际化做准备
+import 'dayjs/locale/ja';
+
 export default {
   actionSheet: {
     cancel: 'キャンセル',

@@ -62,10 +62,18 @@ import TIcon from '../icon/icon.vue';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 import tools from '../common/utils.wxs';
 import usingConfig from '../mixins/using-config';
+import { isNumeric } from '../common/validator';
 
 const parentComponentName = 'form';
 const componentName = 'form-item';
 const name = `${prefix}-${componentName}`;
+
+/** 规范化 labelWidth，确保输出带有 CSS 单位 */
+function normalizeLabelWidth(value) {
+  if (!value) return '';
+  if (isNumeric(value)) return `${value}px`;
+  return String(value);
+}
 
 export default {
   components: {
@@ -151,12 +159,13 @@ export default {
 
         const { globalConfig } = this;
         const { requiredMark, labelAlign, labelWidth, showErrorMessage, contentAlign } = this;
-        const isRequired = target.rules[this.name]?.some(rule => rule.required);
+        const formRules = target.rules?.[this.name];
+        const isRequired = formRules?.some(rule => rule.required);
 
-        this.dataRules = target.rules[this.name];
+        this.dataRules = formRules;
         this.colon = target.colon;
-        this.dataLabelAlign = labelAlign || target.labelAlign || 'right';
-        this.dataLabelWidth = labelWidth || target.labelWidth;
+        this.dataLabelAlign = labelAlign || target.labelAlign;
+        this.dataLabelWidth = normalizeLabelWidth(labelWidth || target.labelWidth);
         this.dataContentAlign = contentAlign || target.contentAlign;
         this.dataRequiredMark = requiredMark || target.requiredMark || globalConfig.requiredMark || isRequired;
         this.dataShowErrorMessage = typeof showErrorMessage === 'boolean' ? showErrorMessage : target.showErrorMessage;

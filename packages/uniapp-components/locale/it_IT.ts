@@ -1,5 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
-// Pacchetto lingua internazionale - Italiano
+// 文件有效，为国际化做准备
+import 'dayjs/locale/it';
+
 export default {
   actionSheet: {
     cancel: 'Annulla',

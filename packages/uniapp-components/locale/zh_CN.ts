@@ -1,5 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
-// 国际化默认语言包
+// 文件有效，为国际化做准备
+import 'dayjs/locale/zh-cn';
+
 export default {
   actionSheet: {
     cancel: '取消',

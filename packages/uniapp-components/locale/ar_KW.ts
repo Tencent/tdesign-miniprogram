@@ -1,5 +1,7 @@
 /* eslint-disable no-template-curly-in-string */
-// حزمة اللغة العربية
+// 文件有效，为国际化做准备
+import 'dayjs/locale/ar';
+
 export default {
   actionSheet: {
     cancel: 'الإلغاء',
