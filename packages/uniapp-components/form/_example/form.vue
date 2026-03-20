@@ -38,7 +38,10 @@
         </view>
         <t-cell title="禁用态">
           <template #note>
-            <t-switch :value="switchValue" @change="onChangeSwitch" />
+            <t-switch
+              :value="switchValue"
+              @change="onChangeSwitch"
+            />
           </template>
         </t-cell>
       </view>

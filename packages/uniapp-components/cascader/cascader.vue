@@ -135,6 +135,7 @@
 import TIcon from '../icon/icon';
 import TPopup from '../popup/popup';
 import TTabs from '../tabs/tabs';
+import TTabPanel from '../tab-panel/tab-panel.vue';
 import TRadioGroup from '../radio-group/radio-group';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
@@ -173,6 +174,7 @@ export default {
     TIcon,
     TPopup,
     TTabs,
+    TTabPanel,
     TRadioGroup,
   },
   ...uniComponent({

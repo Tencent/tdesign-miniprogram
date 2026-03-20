@@ -9,7 +9,6 @@
       show-error-message
       scroll-to-first-error="smooth"
       label-align="left"
-      required-mark
       @reset="(e) => onReset(e, { tagId: 'form' })"
       @submit="(e) => onSubmit(e, { tagId: 'form' })"
     >

@@ -8,7 +8,6 @@
       show-error-message
       scroll-to-first-error="smooth"
       label-align="top"
-      required-mark
       @reset="(e) => onReset(e, { tagId: 'form' })"
       @submit="(e) => onSubmit(e, { tagId: 'form' })"
     >
