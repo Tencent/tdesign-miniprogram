@@ -22,6 +22,7 @@
   send-message-img="{{sendMessageImg}}"
   app-parameter="{{appParameter}}"
   show-message-card="{{showMessageCard}}"
+  phone-number-no-quota-toast="{{phoneNumberNoQuotaToast}}"
   catch:tap="handleTap"
   bind:getuserinfo="getuserinfo"
   bind:contact="contact"
