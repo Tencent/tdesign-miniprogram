@@ -29,7 +29,8 @@ label | 自定义 `label` 显示内容
 组件提供了下列 CSS 变量，可用于自定义样式。
 名称 | 默认值 | 描述 
 -- | -- | --
+--td-form-item-border-color | @component-stroke | -
+--td-form-item-border-left-space | @form-item-vertical-padding | -
+--td-form-item-border-right-space | 0 | -
 --td-form-item-horizontal-padding | 32rpx | -
---td-form-item-justify-content | space-between | -
---td-form-item-label-width | 160rpx | -
 --td-form-item-vertical-padding | 32rpx | -
