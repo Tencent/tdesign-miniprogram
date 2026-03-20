@@ -16,7 +16,7 @@
       >
         <view :class="classPrefix + '__title'">
           <slot name="title" />
-          {{ title || globalConfig.title }}
+          {{ title || globalConfig.title || '' }}
         </view>
         <view
           :class="classPrefix + '__close-btn'"
@@ -201,7 +201,7 @@ export default {
     data() {
       return {
         prefix,
-        cascader: name,
+        classPrefix: name,
         stepIndex: 0,
         selectedIndexes: [],
         selectedValue: [],
@@ -343,15 +343,15 @@ export default {
       },
 
       async initOptionsHeight(steps) {
-        const { theme, subTitles, cascader } = this;
+        const { theme, subTitles, classPrefix } = this;
 
-        const { height } = await getRect(this, `.${cascader}__content`);
+        const { height } = await getRect(this, `.${classPrefix}__content`);
         this.state.contentHeight = height;
 
         if (theme === 'step') {
           await Promise.all([
-            getRect(this, `.${cascader}__steps`),
-            getRect(this, `.${cascader}__step`),
+            getRect(this, `.${classPrefix}__steps`),
+            getRect(this, `.${classPrefix}__step`),
           ])
             .then(([stepsRect, stepRect]) => {
               this.state.stepsInitHeight = stepsRect.height - (steps - 1) * stepRect.height;
@@ -362,7 +362,7 @@ export default {
         }
 
         if (subTitles.length > 0) {
-          const { height } = await getRect(this, `.${cascader}__options-title`);
+          const { height } = await getRect(this, `.${classPrefix}__options-title`);
           this.state.subTitlesHeight = height;
         }
 

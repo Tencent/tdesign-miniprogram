@@ -24,79 +24,82 @@ export default {
     externalClasses: [
       `${prefix}-class`,
     ],
-  }),
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      tools,
-      classPrefix: name,
-      cssVars: {},
-      iComponentId: null,
-    };
-  },
-  watch: {
-    themeVars: {
-      handler() {
-        this.updateConfig();
-      },
-      deep: true,
+    options: {
+      styleIsolation: 'shared',
     },
-    globalConfig: {
-      handler() {
-        this.updateConfig();
-      },
-      deep: true,
+    props: {
+      ...props,
     },
-  },
-  mounted() {
-    this.iComponentId = `${Date.now()}-${Math.random().toString(36)
-      .slice(2)}`;
-    this.initStore();
-    this.updateConfig();
-  },
-  beforeUnmount() {
-    if (this.iUnsubscribeLocale) {
-      this.iUnsubscribeLocale();
-    }
-    if (this.iComponentId) {
-      configStore.resetPageState(this.iComponentId);
-    }
-  },
-  methods: {
+    data() {
+      return {
+        prefix,
+        tools,
+        classPrefix: name,
+        cssVars: {},
+        iComponentId: null,
+      };
+    },
+    watch: {
+      themeVars: {
+        handler() {
+          this.updateConfig();
+        },
+        deep: true,
+      },
+      globalConfig: {
+        handler() {
+          this.updateConfig();
+        },
+        deep: true,
+      },
+    },
+    mounted() {
+      this.iComponentId = `${Date.now()}-${Math.random().toString(36)
+        .slice(2)}`;
+      this.initStore();
+      this.updateConfig();
+    },
+    beforeUnmount() {
+      if (this.iUnsubscribeLocale) {
+        this.iUnsubscribeLocale();
+      }
+      if (this.iComponentId) {
+        configStore.resetPageState(this.iComponentId);
+      }
+    },
+    methods: {
     /**
      * 初始化 Store 并订阅状态变化
      */
-    initStore() {
-      this.iUnsubscribeLocale = configStore.currentLocale.subscribe(() => {});
-    },
+      initStore() {
+        this.iUnsubscribeLocale = configStore.currentLocale.subscribe(() => {});
+      },
 
-    /**
+      /**
      * 更新配置
      */
-    updateConfig() {
-      const { themeVars, globalConfig } = this;
+      updateConfig() {
+        const { themeVars, globalConfig } = this;
 
-      // 切换语言包
-      if (globalConfig) {
-        configStore.switchLocale(globalConfig, this.iComponentId);
-      }
+        // 切换语言包
+        if (globalConfig) {
+          configStore.switchLocale(globalConfig, this.iComponentId);
+        }
 
-      // 更新主题变量
-      if (themeVars) {
-        configStore.updateThemeVars(themeVars);
-      }
+        // 更新主题变量
+        if (themeVars) {
+          configStore.updateThemeVars(themeVars);
+        }
 
-      // 应用主题变量
-      this.applyTheme();
+        // 应用主题变量
+        this.applyTheme();
+      },
+
+      applyTheme() {
+        const { themeVars } = this;
+        this.cssVars = themeVarsToCSS(themeVars || {});
+      },
     },
-
-    applyTheme() {
-      const { themeVars } = this;
-      this.cssVars = themeVarsToCSS(themeVars || {});
-    },
-  },
+  }),
 };
 </script>
