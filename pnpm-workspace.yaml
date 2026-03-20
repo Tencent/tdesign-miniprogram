@@ -143,7 +143,7 @@ catalog:
   stylelint-config-common: 1.0.10
   stylelint-config-standard: ^39.0.1
   stylelint-less: ^3.0.1
-  stylelint-scss: 6.10.0
+  stylelint-scss: 7.0.0
   t-comm: ^2.0.26
   tdesign-uniapp-auto-import-resolver: 0.1.3
   tinycolor2: ^1.6.0
