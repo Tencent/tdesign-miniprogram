@@ -31,10 +31,16 @@
         :class="tools.cls(classPrefix + '__bd', [layout])"
         :style="contentStyle"
       >
-        <view v-if="content.text" :class="tools.cls(classPrefix + '__bd__inner', [])">
+        <view
+          v-if="content.text"
+          :class="tools.cls(classPrefix + '__bd__inner', [])"
+        >
           {{ content.text }}
         </view>
-        <slot v-else name="content" />
+        <slot
+          v-else
+          name="content"
+        />
       </view>
     </view>
   </view>
@@ -82,19 +88,16 @@ export default uniComponent({
       },
       immediate: true,
     },
+    collapsed(val) {
+      this.localCollapsed = val;
+    },
   },
 
   created() {
+    this.localCollapsed = this.collapsed;
   },
 
   mounted() {
-    const createdFn = function __anonymous() {
-      // 初始化折叠状态
-      this.localCollapsed = this.collapsed || false;
-    };
-    createdFn.call(this);
-
-
     // 调用新增的函数
     this.setContentStyle();
   },

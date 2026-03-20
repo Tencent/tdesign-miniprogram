@@ -26,6 +26,9 @@ export default class ChatThinking extends SuperComponent {
     maxHeight() {
       this.setContentStyle();
     },
+    collapsed(val: boolean) {
+      this.setData({ localCollapsed: val });
+    },
   };
 
   methods = {
@@ -55,14 +58,9 @@ export default class ChatThinking extends SuperComponent {
       this.data.handleCollapse = this.handleCollapse.bind(this);
     },
     attached() {
-      const createdFn = function __anonymous() {
-        // 初始化折叠状态
-        this.setData({
-          localCollapsed: this.properties.collapsed || false,
-        });
-      };
-      createdFn.call(this);
-
+      this.setData({
+        localCollapsed: this.properties.collapsed,
+      });
       // 调用新增的函数
       this.setContentStyle();
     },
