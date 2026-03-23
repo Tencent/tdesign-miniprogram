@@ -11,10 +11,10 @@ spline: explain
 样式文件从 TDesign UniApp 引入一份即可。
 
 ```js
-import '@tdesign/uniapp/common/style/theme/index.css';
+import '@tdesign/uniapp/theme.css';
 
 // 或者引入与 tdesign-miniprogram 完全一致的文件，单位为 rpx
-import '@tdesign/uniapp/common/style/theme/index.less';
+import '@tdesign/uniapp/theme.less';
 ```
 
 ### ChatList 抖动问题
