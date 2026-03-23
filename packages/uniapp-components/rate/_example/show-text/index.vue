@@ -10,7 +10,7 @@
         :data-index="0"
         :show-text="true"
         :texts="texts"
-        @change="onChange($event, { index: 0 })"
+        @change="(e) => onChange(e, { index: 0 })"
       />
     </view>
     <view class="demo-rate">
@@ -22,7 +22,7 @@
         :value="value[1]"
         :data-index="1"
         :show-text="true"
-        @change="onChange($event, { index: 1 })"
+        @change="(e) => onChange(e, { index: 1 })"
       />
     </view>
 
@@ -34,7 +34,7 @@
         :value="value[2]"
         :data-index="2"
         :show-text="true"
-        @change="onChange($event, { index: 2 })"
+        @change="(e) => onChange(e, { index: 2 })"
       />
     </view>
   </view>

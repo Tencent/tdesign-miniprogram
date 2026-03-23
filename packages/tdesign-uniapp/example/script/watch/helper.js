@@ -1,7 +1,19 @@
 const fs = require('fs');
+const path = require('path');
 
 const { config } = require('./config');
 const { copy } = require('../release/core');
+
+// 不同步到 vue3-hx 的文件黑名单
+const VUE3_HX_BLACK_LIST = [
+  'package.json',
+  'tsconfig.eslint.json',
+];
+
+function isInVue3HxBlackList(relativePath) {
+  const fileName = path.basename(relativePath);
+  return VUE3_HX_BLACK_LIST.includes(fileName);
+}
 
 
 async function copyComponents({
@@ -54,7 +66,7 @@ async function copyComponents({
     });
   }
 
-  if (checkVue3HxExist()) {
+  if (checkVue3HxExist() && !isInVue3HxBlackList(relativePath)) {
     await copy({
       relativePath,
       filePath,

@@ -12,13 +12,13 @@ export default {
   },
   /** 禁止当前面板展开，优先级大于 Collapse 的同名属性 */
   disabled: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdCollapsePanelProps['disabled'],
   },
   /** 当前折叠面板展开图标，优先级大于 Collapse 的同名属性 */
   expandIcon: {
-    type: Boolean,
-    default: undefined as TdCollapsePanelProps['expandIcon'],
+    type: [Boolean, null],
+    default: null as TdCollapsePanelProps['expandIcon'],
   },
   /** 面板头内容 */
   header: {

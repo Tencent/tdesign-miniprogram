@@ -7,7 +7,7 @@
       variant="outline"
       data-key="showConfirm"
       block
-      @click="showDialog($event, { key: 'showConfirm' })"
+      @click="(e) => showDialog(e, { key: 'showConfirm' })"
     >
       确认类-带标题
     </t-button>
@@ -28,7 +28,7 @@
       variant="outline"
       data-key="showWarnConfirm"
       block
-      @click="showDialog($event, { key: 'showWarnConfirm' })"
+      @click="(e) => showDialog(e, { key: 'showWarnConfirm' })"
     >
       确认类-无标题
     </t-button>
@@ -48,7 +48,7 @@
       variant="outline"
       data-key="showLightConfirm"
       block
-      @click="showDialog($event, { key: 'showLightConfirm' })"
+      @click="(e) => showDialog(e, { key: 'showLightConfirm' })"
     >
       确认类-纯标题
     </t-button>

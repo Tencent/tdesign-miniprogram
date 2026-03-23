@@ -6,7 +6,7 @@
       variant="outline"
       data-type="hasCancelBtn"
       block
-      @click="showDialog($event, { type: 'hasCancelBtn' })"
+      @click="(e) => showDialog(e, { type: 'hasCancelBtn' })"
     >
       开放能力按钮
     </t-button>

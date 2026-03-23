@@ -15,7 +15,7 @@
       cancel-btn="取消"
       confirm-btn="确认"
       :using-custom-navbar="!isMPAlipay"
-      @update:visible="areaVisible = $event"
+      @update:visible="(e) => areaVisible = e"
       @change="onPickerChange"
       @pick="onColumnChange"
       @cancel="onPickerCancel"

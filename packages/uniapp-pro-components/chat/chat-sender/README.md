@@ -1,7 +1,7 @@
 ---
 title: ChatSender 对话输入
 description: 用于聊天对话的输入框，可以扩展模型、多模态等能力。
-spline: base
+spline: chat
 isComponent: true
 ---
 

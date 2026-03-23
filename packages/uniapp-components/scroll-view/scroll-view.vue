@@ -20,33 +20,35 @@ import { prefix } from '../common/config';
 const name = `${prefix}-scroll-view`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [`${prefix}-class`],
-  props: {
-    scrollIntoView: {
-      type: [String, Number, null],
-      default: null,
+export default {
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-  },
-  data() {
-    return {
+    externalClasses: [`${prefix}-class`],
+    props: {
+      scrollIntoView: {
+        type: [String, Number, null],
+        default: null,
+      },
+    },
+    data() {
+      return {
 
-    };
-  },
-  watch: {
+      };
+    },
+    watch: {
 
-  },
-  mounted() {
+    },
+    mounted() {
 
-  },
-  methods: {
+    },
+    methods: {
 
-  },
-});
+    },
+  }),
+};
 </script>
 <style scoped>
 </style>

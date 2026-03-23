@@ -327,10 +327,10 @@
 /* ./raw/_radius.less */
 page,
 .page {
-  --td-radius-small: 12px;
-  --td-radius-default: 24px;
-  --td-radius-large: 36px;
-  --td-radius-extraLarge: 48px;
+  --td-radius-small: 3px;
+  --td-radius-default: 6px;
+  --td-radius-large: 9px;
+  --td-radius-extraLarge: 12px;
   --td-radius-round: 999px;
   --td-radius-circle: 50%;
 }
@@ -413,7 +413,7 @@ page,
   --td-font-display-large: 600 var(--td-font-size-display-large) / var(--td-line-height-display-large)
     var(--td-font-family);
 
-  --td-font-size: 40px;
+  --td-font-size: 10px;
   --td-font-size-xs: var(--td-font-size-body-extraSmall);
   --td-font-size-s: var(--td-font-size-body-small);
   --td-font-size-base: var(--td-font-size-title-small);

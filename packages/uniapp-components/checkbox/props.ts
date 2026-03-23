@@ -13,8 +13,8 @@ export default {
   },
   /** 是否开启无边框模式 */
   borderless: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdCheckboxProps['borderless'],
   },
   /** 用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用 */
   checkAll: Boolean,
@@ -30,8 +30,8 @@ export default {
   contentDisabled: Boolean,
   /** 是否禁用组件。如果父组件存在 CheckboxGroup，默认值由 CheckboxGroup.disabled 控制。优先级：Checkbox.disabled > CheckboxGroup.disabled > Form.disabled */
   disabled: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdCheckboxProps['disabled'],
   },
   /** 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标，半选中态图标]`。使用 String 时，值为 circle 表示填充圆形图标、值为 line 表示描边型图标、值为 rectangle 表示填充矩形图标 */
   icon: {
@@ -70,8 +70,8 @@ export default {
   },
   /** 只读状态 */
   readonly: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdCheckboxProps['readonly'],
   },
   /** -1 时代表独立，不再寻找 parent，用于头条小程序 */
   relationKey: {

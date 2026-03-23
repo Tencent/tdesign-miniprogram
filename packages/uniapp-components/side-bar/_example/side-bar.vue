@@ -21,7 +21,7 @@
         size="large"
         block
         data-target="base"
-        @click="toNavigation($event, { target: 'base' })"
+        @click="(e) => toNavigation(e, { target: 'base' })"
       >
         锚点用法
       </t-button>
@@ -32,7 +32,7 @@
         size="large"
         block
         data-target="switch"
-        @click="toNavigation($event, { target: 'switch' })"
+        @click="(e) => toNavigation(e, { target: 'switch' })"
       >
         切页用法
       </t-button>
@@ -48,7 +48,7 @@
         size="large"
         block
         data-target="with-icon"
-        @click="toNavigation($event, { target: 'with-icon' })"
+        @click="(e) => toNavigation(e, { target: 'with-icon' })"
       >
         带图标侧边导航
       </t-button>
@@ -65,7 +65,7 @@
         size="large"
         block
         data-target="custom"
-        @click="toNavigation($event, { target: 'custom' })"
+        @click="(e) => toNavigation(e, { target: 'custom' })"
       >
         自定义样式
       </t-button>

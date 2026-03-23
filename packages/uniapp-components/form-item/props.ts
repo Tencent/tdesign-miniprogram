@@ -8,19 +8,6 @@ import type { TdFormItemProps } from './type';
 export default {
   /** 是否显示右侧箭头 */
   arrow: Boolean,
-  /** 表单内容对齐方式，优先级高于 Form.contentAlign */
-  contentAlign: {
-    type: String,
-    validator(val: TdFormItemProps['contentAlign']): boolean {
-      if (!val) return true;
-      return ['left', 'right'].includes(val);
-    },
-  },
-  /** label 原生属性 */
-  for: {
-    type: String,
-    default: '',
-  },
   /** 表单项说明内容 */
   help: {
     type: String,
@@ -49,8 +36,8 @@ export default {
   },
   /** 是否显示必填符号（*），优先级高于 Form.requiredMark */
   requiredMark: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdFormItemProps['requiredMark'],
   },
   /** 表单字段校验规则 */
   rules: {
@@ -58,7 +45,7 @@ export default {
   },
   /** 校验不通过时，是否显示错误提示信息，优先级高于 `Form.showErrorMessage` */
   showErrorMessage: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdFormItemProps['showErrorMessage'],
   },
 };

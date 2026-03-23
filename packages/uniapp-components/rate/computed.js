@@ -1,7 +1,7 @@
 export default {
-  getText(texts, val, defaultTexts) {
+  getText(texts, val, globalConfig) {
     if (!texts.length) {
-      texts = defaultTexts;
+      texts = globalConfig.texts || [];
     }
     const curVal = Math.floor(val - 1);
     return texts[curVal] || '未评分';

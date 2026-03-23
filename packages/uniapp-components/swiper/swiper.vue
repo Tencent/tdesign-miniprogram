@@ -1,7 +1,7 @@
 <template>
   <view
     :class="classPrefix + ' ' + tClass"
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
   >
     <swiper
       :class="classPrefix + '-host'"
@@ -24,7 +24,7 @@
         v-for="(item, index) in list"
         :key="index"
         :class="
-          tools.cls(classPrefix + '__item', [
+          '' + tools.cls(classPrefix + '__item', [
             ['preview', isPrev(navCurrent, index, list)],
             ['next', isNext(navCurrent, index, list)]
           ])
@@ -33,7 +33,7 @@
         :aria-hidden="navCurrent !== index"
         aria-role="image"
         :aria-label="tools.isObject(item) ? item.ariaLabel : ''"
-        @click="onTap($event, { index })"
+        @click="(e) => onTap(e, { index })"
       >
         <t-image
           :t-class="getImageClass(prefix, navCurrent, index, list, tClassImage, tClassPrevImage, tClassNextImage)"
@@ -46,7 +46,7 @@
           :mode="imageProps.mode || 'aspectFill'"
           :webp="imageProps.webp || false"
           :show-menu-by-longpress="imageProps.showMenuByLongpress || false"
-          @load="onImageLoad($event, { custom: index || null })"
+          @load="(e) => onImageLoad(e, { custom: index || null })"
         />
       </swiper-item>
     </swiper>
@@ -78,114 +78,116 @@ import { ParentMixin, RELATION_MAP } from '../common/relation';
 
 const name = `${prefix}-swiper`;
 
-export default uniComponent({
-  name,
-  options: {
-    multipleSlots: true,
-    styleIsolation: 'shared',
-  },
-  externalClasses: [`${prefix}-class`, `${prefix}-class-nav`, `${prefix}-class-image`, `${prefix}-class-prev-image`, `${prefix}-class-next-image`],
-  mixins: [ParentMixin(RELATION_MAP.SwiperNav)],
+export default {
   components: {
     TSwiperNav,
     TImage,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'click',
-    'change',
-    'animationfinish',
-    'image-load',
-  ],
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      tools,
-      navCurrent: 0,
-    };
-  },
-  watch: {
-    navCurrent(t) {
-      this.updateNav(t);
+  ...uniComponent({
+    name,
+    options: {
+      multipleSlots: true,
+      styleIsolation: 'shared',
     },
-  },
-
-  mounted() {
-    this.navCurrent = this.current;
-  },
-
-  methods: {
-    isPrev,
-    isNext,
-    getImageClass,
-
-    updateNav(currentValue) {
-      if (this.navigation) return;
-      const $nav = this.getRelationNodes('./swiper-nav')?.[0];
-      if (!$nav) return;
-      const { direction, paginationPosition, list } = this;
-
-      this.current = currentValue;
-      this.total = list.length;
-      this.direction = direction;
-      this.paginationPosition = paginationPosition;
+    externalClasses: [`${prefix}-class`, `${prefix}-class-nav`, `${prefix}-class-image`, `${prefix}-class-prev-image`, `${prefix}-class-next-image`],
+    mixins: [ParentMixin(RELATION_MAP.SwiperNav)],
+    props: {
+      ...props,
+    },
+    emits: [
+      'click',
+      'change',
+      'animationfinish',
+      'image-load',
+    ],
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        tools,
+        navCurrent: 0,
+      };
+    },
+    watch: {
+      navCurrent(t) {
+        this.updateNav(t);
+      },
     },
 
-    onTap(e, dataset) {
-      const { index } = dataset;
-      this.$emit('click', { index });
+    mounted() {
+      this.navCurrent = this.current;
     },
 
-    onChange(e) {
-      const { current, source } = e.detail;
+    methods: {
+      isPrev,
+      isNext,
+      getImageClass,
 
-      if (!source) return;
+      updateNav(currentValue) {
+        if (this.navigation) return;
+        const $nav = this.getRelationNodes('./swiper-nav')?.[0];
+        if (!$nav) return;
+        const { direction, paginationPosition, list } = this;
 
-      this.navCurrent = current;
-      this.triggerSource = source;
+        this.current = currentValue;
+        this.total = list.length;
+        this.direction = direction;
+        this.paginationPosition = paginationPosition;
+      },
 
-      this.$emit('change', { current, source });
+      onTap(e, dataset) {
+        const { index } = dataset;
+        this.$emit('click', { index });
+      },
+
+      onChange(e) {
+        const { current, source } = e.detail;
+
+        if (!source) return;
+
+        this.navCurrent = current;
+        this.triggerSource = source;
+
+        this.$emit('change', { current, source });
+      },
+
+      onAnimationFinish(e) {
+        const { current, source } = e.detail;
+
+        this.$emit('animationfinish', { current, source: source || this.triggerSource });
+      },
+
+      onNavBtnChange(e) {
+        const { dir, source } = e;
+
+        this.doNavBtnChange(dir, source);
+      },
+
+      doNavBtnChange(dir, source) {
+        const { current, list, loop, navCurrent } = this;
+        const count = list.length;
+        let nextPos = dir === 'next' ? current + 1 : current - 1;
+
+        if (loop) {
+          nextPos = dir === 'next' ? (current + 1) % count : (current - 1 + count) % count;
+        } else {
+          nextPos = nextPos < 0 || nextPos >= count ? current : nextPos;
+        }
+
+        if (nextPos === navCurrent) return;
+
+        this.navCurrent = nextPos;
+        this.triggerSource = source;
+
+        this.$emit('change', { current: nextPos, source });
+      },
+
+      onImageLoad(e, dataset) {
+        this.$emit('image-load', { index: dataset.custom });
+      },
     },
-
-    onAnimationFinish(e) {
-      const { current, source } = e.detail;
-
-      this.$emit('animationfinish', { current, source: source || this.triggerSource });
-    },
-
-    onNavBtnChange(e) {
-      const { dir, source } = e;
-
-      this.doNavBtnChange(dir, source);
-    },
-
-    doNavBtnChange(dir, source) {
-      const { current, list, loop, navCurrent } = this;
-      const count = list.length;
-      let nextPos = dir === 'next' ? current + 1 : current - 1;
-
-      if (loop) {
-        nextPos = dir === 'next' ? (current + 1) % count : (current - 1 + count) % count;
-      } else {
-        nextPos = nextPos < 0 || nextPos >= count ? current : nextPos;
-      }
-
-      if (nextPos === navCurrent) return;
-
-      this.navCurrent = nextPos;
-      this.triggerSource = source;
-
-      this.$emit('change', { current: nextPos, source });
-    },
-
-    onImageLoad(e, dataset) {
-      this.$emit('image-load', { index: dataset.custom });
-    },
-  },
-});
+  }),
+};
 
 </script>
 <style scoped src="./swiper.css"></style>

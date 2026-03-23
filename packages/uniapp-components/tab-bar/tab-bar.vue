@@ -8,8 +8,8 @@
       :style="'height: ' + placeholderHeight + 'px;'"
     />
     <view
-      :style="tools._style(['z-index: ' + zIndex, customStyle])"
-      :class="tools.cls(classPrefix, [
+      :style="'' + tools._style(['z-index: ' + zIndex, customStyle])"
+      :class="'' + tools.cls(classPrefix, [
         ['border', bordered], ['fixed', fixed],
         ['safe', safeAreaInsetBottom], shape]
       ) + ' ' + tClass"
@@ -32,105 +32,107 @@ import tools from '../common/utils.wxs';
 const classPrefix = `${prefix}-tab-bar`;
 
 
-export default uniComponent({
-  name: classPrefix,
-  options: {
-    styleIsolation: 'shared',
-  },
-  controlledProps: [{
-    key: 'value',
-    event: 'change',
-  }],
-  externalClasses: [`${prefix}-class`],
-  mixins: [ParentMixin(RELATION_MAP.TabBarItem)],
-  props: {
-    ...props,
-  },
-  emits: [
-    'change',
-  ],
-  data() {
-    return {
-      prefix,
-      classPrefix,
-      tools,
+export default {
+  ...uniComponent({
+    name: classPrefix,
+    options: {
+      styleIsolation: 'shared',
+    },
+    controlledProps: [{
+      key: 'value',
+      event: 'change',
+    }],
+    externalClasses: [`${prefix}-class`],
+    mixins: [ParentMixin(RELATION_MAP.TabBarItem)],
+    props: {
+      ...props,
+    },
+    emits: [
+      'change',
+    ],
+    data() {
+      return {
+        prefix,
+        classPrefix,
+        tools,
 
-      dataValue: coalesce(this.value, this.defaultValue),
-      placeholderHeight: 56,
-    };
-  },
-  watch: {
-    value: {
-      handler(e) {
-        this.dataValue = e;
+        dataValue: coalesce(this.value, this.defaultValue),
+        placeholderHeight: 56,
+      };
+    },
+    watch: {
+      value: {
+        handler(e) {
+          this.dataValue = e;
+        },
+        immediate: true,
       },
-      immediate: true,
-    },
-    dataValue: {
-      handler() {
-        this.updateChildren();
+      dataValue: {
+        handler() {
+          this.updateChildren();
+        },
+        immediate: true,
       },
-      immediate: true,
+      'fixed'() {
+        this.setPlaceholderHeight();
+      },
+      placeholder() {
+        this.setPlaceholderHeight();
+      },
     },
-    'fixed'() {
+    mounted() {
       this.setPlaceholderHeight();
+      this.showChildren();
     },
-    placeholder() {
-      this.setPlaceholderHeight();
-    },
-  },
-  mounted() {
-    this.setPlaceholderHeight();
-    this.showChildren();
-  },
-  methods: {
-    setPlaceholderHeight() {
-      if (!this.fixed || !this.placeholder) {
-        return;
-      }
-      nextTick().then(() => {
-        getRect(this, `.${classPrefix}`).then((res) => {
-          this.placeholderHeight = res.height;
+    methods: {
+      setPlaceholderHeight() {
+        if (!this.fixed || !this.placeholder) {
+          return;
+        }
+        nextTick().then(() => {
+          getRect(this, `.${classPrefix}`).then((res) => {
+            this.placeholderHeight = res.height;
+          });
         });
-      });
+      },
+      showChildren() {
+        const { dataValue } = this;
+
+        this.children.forEach((child) => {
+          this.crowded = this.children.length > 3;
+
+          if (child.value === dataValue) {
+            child.showSpread();
+          }
+        });
+      },
+
+      updateChildren() {
+        const { dataValue } = this;
+
+        this.children?.forEach((child) => {
+          child.checkActive(dataValue);
+        });
+      },
+
+      updateValue(value) {
+        this._trigger('change', { value });
+      },
+
+      changeOtherSpread(value) {
+        this.children.forEach((child) => {
+          if (child.value !== value) {
+            child.closeSpread();
+          }
+        });
+      },
+
+      initName() {
+        return (this.backupValue += 1);
+      },
     },
-    showChildren() {
-      const { dataValue } = this;
-
-      this.children.forEach((child) => {
-        this.crowded = this.children.length > 3;
-
-        if (child.value === dataValue) {
-          child.showSpread();
-        }
-      });
-    },
-
-    updateChildren() {
-      const { dataValue } = this;
-
-      this.children?.forEach((child) => {
-        child.checkActive(dataValue);
-      });
-    },
-
-    updateValue(value) {
-      this._trigger('change', { value });
-    },
-
-    changeOtherSpread(value) {
-      this.children.forEach((child) => {
-        if (child.value !== value) {
-          child.closeSpread();
-        }
-      });
-    },
-
-    initName() {
-      return (this.backupValue += 1);
-    },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./tab-bar.css"></style>
 <style scoped>

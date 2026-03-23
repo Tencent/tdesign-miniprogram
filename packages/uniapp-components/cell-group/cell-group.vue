@@ -10,7 +10,7 @@
       {{ title }}
     </view>
     <view
-      :style="tools._style([customStyle])"
+      :style="'' + tools._style([customStyle])"
       :class="[
         tools.cls(classPrefix, [['bordered', bordered], theme]),
         tClass
@@ -31,37 +31,39 @@ import { ParentMixin, RELATION_MAP } from '../common/relation';
 const name = `${prefix}-cell-group`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [`${prefix}-class`, `${prefix}-class-title`],
-  mixins: [ParentMixin(RELATION_MAP.Cell)],
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      tools,
-    };
-  },
-  methods: {
-    innerAfterLinked() {
-      this.updateLastChid();
+export default {
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-    innerAfterUnLinked() {
-      this.updateLastChid();
+    externalClasses: [`${prefix}-class`, `${prefix}-class-title`],
+    mixins: [ParentMixin(RELATION_MAP.Cell)],
+    props: {
+      ...props,
     },
-    updateLastChid() {
-      const { children } = this;
-      children.forEach((child, index) => {
-        child.isLastChild = index === children.length - 1;
-      });
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        tools,
+      };
     },
-  },
-});
+    methods: {
+      innerAfterLinked() {
+        this.updateLastChid();
+      },
+      innerAfterUnLinked() {
+        this.updateLastChid();
+      },
+      updateLastChid() {
+        const { children } = this;
+        children.forEach((child, index) => {
+          child.isLastChild = index === children.length - 1;
+        });
+      },
+    },
+  }),
+};
 </script>
 <style scoped src="./cell-group.css"></style>

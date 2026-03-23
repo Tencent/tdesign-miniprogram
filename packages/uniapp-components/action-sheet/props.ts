@@ -63,8 +63,8 @@ export default {
   usingCustomNavbar: Boolean,
   /** 显示与隐藏 */
   visible: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdActionSheetProps['visible'],
   },
   /** 显示与隐藏，非受控属性 */
   defaultVisible: Boolean,

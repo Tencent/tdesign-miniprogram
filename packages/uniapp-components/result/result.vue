@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     :class="[
       classPrefix + ' ' + classPrefix + '--theme-' + theme,
       tClass
@@ -78,49 +78,51 @@ const THEME_ICON = {
 };
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-image`,
-    `${prefix}-class-title`,
-    `${prefix}-class-description`,
-  ],
+export default {
   components: {
     TIcon,
     TImage,
   },
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      tools,
-
-      innerIcon: null,
-    };
-  },
-  watch: {
-    icon: 'initIcon',
-    theme: 'initIcon',
-  },
-  mounted() {
-    this.initIcon();
-  },
-  methods: {
-    initIcon() {
-      const {
-        icon,
-        theme,
-      } = this;
-      this.innerIcon = calcIcon(icon, THEME_ICON[theme]);
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-  },
-});
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-image`,
+      `${prefix}-class-title`,
+      `${prefix}-class-description`,
+    ],
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        tools,
+
+        innerIcon: null,
+      };
+    },
+    watch: {
+      icon: 'initIcon',
+      theme: 'initIcon',
+    },
+    mounted() {
+      this.initIcon();
+    },
+    methods: {
+      initIcon() {
+        const {
+          icon,
+          theme,
+        } = this;
+        this.innerIcon = calcIcon(icon, THEME_ICON[theme]);
+      },
+    },
+  }),
+};
 </script>
 <style scoped src="./result.css"></style>
