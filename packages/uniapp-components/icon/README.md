@@ -75,8 +75,6 @@ import TIcon from '@tdesign/uniapp/icon/icon.vue';
 
 {{ iconImage }}
 
-<td-icons-view framework-content/>
-
 ## API
 
 ### Icon Props
@@ -105,5 +103,5 @@ t-class | 根节点样式类
 
 组件提供了下列 CSS 变量，可用于自定义样式。
 | 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
+| -- | -- | -- |
 | ant: norma | ant: norma | - |
