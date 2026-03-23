@@ -7,7 +7,7 @@
       variant="outline"
       data-key="showWithInput"
       block
-      @click="showDialog($event, { key: 'showWithInput' })"
+      @click="(e) => showDialog(e, { key: 'showWithInput' })"
     >
       输入类-无描述
     </t-button>
@@ -42,7 +42,7 @@
       variant="outline"
       data-key="showTextAndTitleWithInput"
       block
-      @click="showDialog($event, { key: 'showTextAndTitleWithInput' })"
+      @click="(e) => showDialog(e, { key: 'showTextAndTitleWithInput' })"
     >
       输入类-带描述
     </t-button>

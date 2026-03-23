@@ -42,13 +42,13 @@ export default {
   },
   /** 是否显示气泡确认框 */
   visible: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdPopoverProps['visible'],
   },
   /** 是否显示气泡确认框，非受控属性 */
   defaultVisible: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdPopoverProps['defaultVisible'],
   },
   /** 确认框显示或隐藏时触发 */
   onVisibleChange: {

@@ -33,7 +33,7 @@ export interface TdButtonProps {
   /**
    * 禁用状态。优先级：Button.disabled > Form.disabled
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * 从消息小程序入口打开小程序的路径，默认为聊天工具启动路径
    * @default ''

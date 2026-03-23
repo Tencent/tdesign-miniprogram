@@ -4,6 +4,7 @@ const { display, skylineDisplay } = require('../../src/pages/home/data/display.j
 const { form, skylineForm } = require('../../src/pages/home/data/form.json');
 const { ux, skylineUx } = require('../../src/pages/home/data/ux.json');
 const { chat, skylineChat } = require('../../src/pages/home/data/chat.json');
+const { other, skylineOther } = require('../../src/pages/home/data/other.json');
 
 
 module.exports = {
@@ -20,5 +21,7 @@ module.exports = {
     skylineUx,
     chat,
     skylineChat,
+    other,
+    skylineOther,
   },
 };

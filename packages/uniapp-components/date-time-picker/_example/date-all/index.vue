@@ -7,7 +7,7 @@
       arrow
       data-mode="datetime"
       t-class="panel-item"
-      @click="showPicker($event, { mode: 'datetime' })"
+      @click="(e) => showPicker(e, { mode: 'datetime' })"
     />
 
     <!-- 年月日时分 -->
@@ -17,7 +17,7 @@
       mode="second"
       :value="datetime"
       format="YYYY-MM-DD HH:mm:ss"
-      @update:visible="datetimeVisible = $event"
+      @update:visible="(e) => datetimeVisible = e"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"

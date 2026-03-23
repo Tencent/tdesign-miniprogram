@@ -9,7 +9,7 @@
       theme="dark"
       data-target="normal"
       :close-on-click-outside="false"
-      @update:visible="visible.normal = $event"
+      @update:visible="(e) => visible.normal = e"
     >
       <template #content>
         <view>
@@ -23,7 +23,7 @@
           variant="outline"
           size="large"
           data-target="normal"
-          @click="showPopover($event, { target: 'normal' })"
+          @click="(e) => showPopover(e, { target: 'normal' })"
         >
           带箭头
         </t-button>
@@ -43,7 +43,7 @@
       content="弹出气泡内容"
       :show-arrow="false"
       data-target="noArrow"
-      @update:visible="visible.noArrow = $event"
+      @update:visible="(e) => visible.noArrow = e"
     >
       <view class="popover-example__content">
         <t-button
@@ -51,7 +51,7 @@
           variant="outline"
           size="large"
           data-target="noArrow"
-          @click="showPopover($event, { target: 'noArrow' })"
+          @click="(e) => showPopover(e, { target: 'noArrow' })"
         >
           不带箭头
         </t-button>
@@ -70,7 +70,7 @@
         placement="top"
         theme="dark"
         data-target="custom"
-        @update:visible="visible.custom = $event"
+        @update:visible="(e) => visible.custom = e"
       >
         <template #content>
           <view class="custom__list">
@@ -91,7 +91,7 @@
             variant="outline"
             size="large"
             data-target="custom"
-            @click="showPopover($event, { target: 'custom' })"
+            @click="(e) => showPopover(e, { target: 'custom' })"
           >
             自定义内容
           </t-button>

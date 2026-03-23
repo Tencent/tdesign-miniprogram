@@ -12,11 +12,11 @@ export interface TdCollapsePanelProps {
   /**
    * 禁止当前面板展开，优先级大于 Collapse 的同名属性
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * 当前折叠面板展开图标，优先级大于 Collapse 的同名属性
    */
-  expandIcon?: boolean;
+  expandIcon?: boolean | null;
   /**
    * 面板头内容
    */

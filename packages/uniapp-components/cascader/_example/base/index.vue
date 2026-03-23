@@ -12,7 +12,7 @@
       :value="value"
       :options="options"
       title="请选择地址"
-      @update:visible="visible = $event"
+      @update:visible="(e) => visible = e"
       @change="onChange"
       @pick="onPick"
     />

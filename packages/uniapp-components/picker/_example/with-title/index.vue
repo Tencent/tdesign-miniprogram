@@ -25,10 +25,10 @@
       cancel-btn="取消"
       confirm-btn="确认"
       :using-custom-navbar="!isMPAlipay"
-      @update:visible="cityVisible = $event"
-      @change="onPickerChange($event, { key: 'city' })"
-      @pick="onColumnChange($event, { key: 'city' })"
-      @cancel="onPickerCancel($event, { key: 'city' })"
+      @update:visible="(e) => cityVisible = e"
+      @change="(e) => onPickerChange(e, { key: 'city' })"
+      @pick="(e) => onColumnChange(e, { key: 'city' })"
+      @cancel="(e) => onPickerCancel(e, { key: 'city' })"
     >
       <t-picker-item :options="citys" />
     </t-picker>
@@ -41,10 +41,10 @@
       cancel-btn="取消"
       confirm-btn="确认"
       :using-custom-navbar="!isMPAlipay"
-      @update:visible="city2Visible = $event"
-      @change="onPickerChange($event, { key: 'city2' })"
-      @pick="onColumnChange($event, { key: 'city2' })"
-      @cancel="onPickerCancel($event, { key: 'city2' })"
+      @update:visible="(e) => city2Visible = e"
+      @change="(e) => onPickerChange(e, { key: 'city2' })"
+      @pick="(e) => onColumnChange(e, { key: 'city2' })"
+      @cancel="(e) => onPickerCancel(e, { key: 'city2' })"
     >
       <t-picker-item :options="citys" />
     </t-picker>

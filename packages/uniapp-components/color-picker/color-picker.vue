@@ -15,7 +15,7 @@
 
       <!-- 防止转成 px 后，尺寸没铺满 -->
       <!-- 750rpx => 100% -->
-      <TemplateVue
+      <template-vue
         ref="templateVue"
         :class-prefix="classPrefix"
         :custom-style="tools._style(['width: 100%', customStyle])"
@@ -39,7 +39,7 @@
       <slot name="footer" />
     </t-popup>
     <block v-else>
-      <TemplateVue
+      <template-vue
         ref="templateVue"
         :class-prefix="classPrefix"
         :custom-style="tools._style([customStyle])"
@@ -122,7 +122,7 @@ const getFormatList = (format, color) => {
 };
 
 const genSwatchList = (prop) => {
-  if (prop === undefined) {
+  if (prop == undefined) {
     return DEFAULT_SYSTEM_SWATCH_COLORS;
   }
   if (!prop || !prop.length) {
@@ -131,369 +131,371 @@ const genSwatchList = (prop) => {
   return prop;
 };
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
+export default {
   components: {
     TPopup,
     TemplateVue,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'palette-bar-change',
-    'close',
-    'change',
-    'update:visible',
-  ],
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      panelRect: {
-        width: SATURATION_PANEL_DEFAULT_WIDTH,
-        height: SATURATION_PANEL_DEFAULT_HEIGHT,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    props: {
+      ...props,
+    },
+    emits: [
+      'palette-bar-change',
+      'close',
+      'change',
+      'update:visible',
+    ],
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        panelRect: {
+          width: SATURATION_PANEL_DEFAULT_WIDTH,
+          height: SATURATION_PANEL_DEFAULT_HEIGHT,
+        },
+        sliderRect: {
+          width: SLIDER_DEFAULT_WIDTH,
+          left: 0,
+        },
+        saturationInfo: {
+          saturation: 0,
+          value: 0,
+        },
+        saturationThumbStyle: {
+          left: 0,
+          top: 0,
+        },
+        sliderInfo: {
+          value: 0, // hue
+        },
+        hueSliderStyle: {
+          left: 0,
+        },
+        alphaSliderStyle: {
+          left: 0,
+        },
+        innerValue: props.defaultValue.default || props.value.default,
+        showPrimaryColorPreview: false,
+        previewColor: props.defaultValue.default || props.value.default,
+        formatList: [],
+        innerSwatchList: genSwatchList(props.swatchColors.default),
+        isMultiple: props.type.default === 'multiple',
+        defaultOverlayProps: {},
+        tools,
+        color: {},
+        dataVisible: this.visible,
+      };
+    },
+    watch: {
+      format: {
+        handler() {
+          this.setCoreStyle();
+        },
+        deep: true,
       },
-      sliderRect: {
-        width: SLIDER_DEFAULT_WIDTH,
-        left: 0,
+      swatchColors: {
+        handler(value) {
+          this.innerSwatchList = genSwatchList(value);
+        },
+        immediate: true,
       },
-      saturationInfo: {
-        saturation: 0,
-        value: 0,
+      type: {
+        handler(value) {
+          this.isMultiple = value === 'multiple';
+        },
+        immediate: true,
       },
-      saturationThumbStyle: {
-        left: 0,
-        top: 0,
+      visible: {
+        handler(v) {
+          this.dataVisible = v;
+        },
+        immediate: true,
       },
-      sliderInfo: {
-        value: 0, // hue
+      usePopup: 'onWatchPopupVisible',
+      dataVisible: 'onWatchPopupVisible',
+
+      value(v) {
+        if (v) {
+          this.init();
+        }
       },
-      hueSliderStyle: {
-        left: 0,
+    },
+    created() {
+      this.color = new Color(props.defaultValue.default || props.value.default || DEFAULT_COLOR);
+      this.formatList =  getFormatList(props.format.default, this.color);
+    },
+    mounted() {
+      setTimeout(() => {
+        this.init();
+      }, 33);
+      this.debouncedUpdateEleRect = debounce(e => this.updateEleRect(e), 150);
+    },
+    beforeUnmount() {
+      clearTimeout(this.timer);
+    },
+    methods: {
+      init() {
+        const { value, defaultValue } = this;
+        const innerValue = value || defaultValue;
+        if (innerValue) {
+          this.innerValue = innerValue;
+        }
+        this.color = new Color(innerValue || DEFAULT_COLOR);
+        this.updateColor();
+        this.getEleReact();
       },
-      alphaSliderStyle: {
-        left: 0,
+
+      updateEleRect(e) {
+        if (!e) return;
+
+        const { scrollTop } = e.detail;
+        const { width, height, left, initTop } = this.panelRect;
+        this.panelRect = {
+          width,
+          height,
+          left,
+          top: initTop - scrollTop,
+          initTop,
+        };
       },
-      innerValue: props.defaultValue.default || props.value.default,
-      showPrimaryColorPreview: false,
-      previewColor: props.defaultValue.default || props.value.default,
-      formatList: [],
-      innerSwatchList: genSwatchList(props.swatchColors.default),
-      isMultiple: props.type.default === 'multiple',
-      defaultOverlayProps: {},
-      tools,
-      color: {},
-      dataVisible: this.visible,
-    };
-  },
-  watch: {
-    format: {
-      handler() {
+
+      getEleReact() {
+        const saturationSelector = `.${name}__saturation`;
+        const sliderSelector = `.${name}__slider`;
+        // }
+        if (!this.$refs.templateVue) return;
+
+        Promise.all([
+          this.$refs.templateVue.getRect(saturationSelector),
+          this.$refs.templateVue.getRect(sliderSelector),
+        ])
+          .then(([saturationRect, sliderRect]) => {
+            this.panelRect = {
+              width: saturationRect.width || SATURATION_PANEL_DEFAULT_WIDTH,
+              height: saturationRect.height || SATURATION_PANEL_DEFAULT_HEIGHT,
+              left: saturationRect.left || 0,
+              top: saturationRect.top || 0,
+              initTop: saturationRect.top || 0,
+            };
+            this.sliderRect = {
+              left: sliderRect.left || 0,
+              width: sliderRect.width || SLIDER_DEFAULT_WIDTH,
+            };
+
+            setTimeout(() => {
+              this.setCoreStyle();
+            }, 33);
+          })
+          .catch(() => {
+          });
+      },
+
+      clickSwatch(e) {
+        const swatch = e.currentTarget.dataset.value;
+        this.color.update(swatch);
+        this.emitColorChange('preset');
         this.setCoreStyle();
       },
-      deep: true,
-    },
-    swatchColors: {
-      handler(value) {
-        this.innerSwatchList = genSwatchList(value);
-      },
-      immediate: true,
-    },
-    type: {
-      handler(value) {
-        this.isMultiple = value === 'multiple';
-      },
-      immediate: true,
-    },
-    visible: {
-      handler(v) {
-        this.dataVisible = v;
-      },
-      immediate: true,
-    },
-    usePopup: 'onWatchPopupVisible',
-    dataVisible: 'onWatchPopupVisible',
 
-    value(v) {
-      if (v) {
-        this.init();
-      }
-    },
-  },
-  created() {
-    this.color = new Color(props.defaultValue.default || props.value.default || DEFAULT_COLOR);
-    this.formatList =  getFormatList(props.format.default, this.color);
-  },
-  mounted() {
-    setTimeout(() => {
-      this.init();
-    }, 33);
-    this.debouncedUpdateEleRect = debounce(e => this.updateEleRect(e), 150);
-  },
-  beforeUnmount() {
-    clearTimeout(this.timer);
-  },
-  methods: {
-    init() {
-      const { value, defaultValue } = this;
-      const innerValue = value || defaultValue;
-      if (innerValue) {
-        this.innerValue = innerValue;
-      }
-      this.color = new Color(innerValue || DEFAULT_COLOR);
-      this.updateColor();
-      this.getEleReact();
-    },
-
-    updateEleRect(e) {
-      if (!e) return;
-
-      const { scrollTop } = e.detail;
-      const { width, height, left, initTop } = this.panelRect;
-      this.panelRect = {
-        width,
-        height,
-        left,
-        top: initTop - scrollTop,
-        initTop,
-      };
-    },
-
-    getEleReact() {
-      const saturationSelector = `.${name}__saturation`;
-      const sliderSelector = `.${name}__slider`;
-      // }
-      if (!this.$refs.templateVue) return;
-
-      Promise.all([
-        this.$refs.templateVue.getRect(saturationSelector),
-        this.$refs.templateVue.getRect(sliderSelector),
-      ])
-        .then(([saturationRect, sliderRect]) => {
-          this.panelRect = {
-            width: saturationRect.width || SATURATION_PANEL_DEFAULT_WIDTH,
-            height: saturationRect.height || SATURATION_PANEL_DEFAULT_HEIGHT,
-            left: saturationRect.left || 0,
-            top: saturationRect.top || 0,
-            initTop: saturationRect.top || 0,
-          };
-          this.sliderRect = {
-            left: sliderRect.left || 0,
-            width: sliderRect.width || SLIDER_DEFAULT_WIDTH,
-          };
-
-          setTimeout(() => {
-            this.setCoreStyle();
-          }, 33);
-        })
-        .catch(() => {
+      setCoreStyle() {
+        this.sliderInfo = {
+          value: this.color.hue,
+        };
+        this.hueSliderStyle = this.getSliderThumbStyle({ value: this.color.hue, maxValue: HUE_MAX });
+        this.alphaSliderStyle = this.getSliderThumbStyle({ value: this.color.alpha * 100, maxValue: ALPHA_MAX });
+        this.saturationInfo = {
+          saturation: this.color.saturation,
+          value: this.color.value,
+        };
+        this.saturationThumbStyle = this.getSaturationThumbStyle({
+          saturation: this.color.saturation,
+          value: this.color.value,
         });
-    },
+        this.previewColor = this.color.rgba;
+        this.formatList = getFormatList(this.format, this.color);
+      },
 
-    clickSwatch(e) {
-      const swatch = e.currentTarget.dataset.value;
-      this.color.update(swatch);
-      this.emitColorChange('preset');
-      this.setCoreStyle();
-    },
+      emitColorChange(trigger) {
+        this.innerValue = this.formatValue();
 
-    setCoreStyle() {
-      this.sliderInfo = {
-        value: this.color.hue,
-      };
-      this.hueSliderStyle = this.getSliderThumbStyle({ value: this.color.hue, maxValue: HUE_MAX });
-      this.alphaSliderStyle = this.getSliderThumbStyle({ value: this.color.alpha * 100, maxValue: ALPHA_MAX });
-      this.saturationInfo = {
-        saturation: this.color.saturation,
-        value: this.color.value,
-      };
-      this.saturationThumbStyle = this.getSaturationThumbStyle({
-        saturation: this.color.saturation,
-        value: this.color.value,
-      });
-      this.previewColor = this.color.rgba;
-      this.formatList = getFormatList(this.format, this.color);
-    },
+        this.$emit('change', {
+          value: this.formatValue(),
+          context: {
+            trigger,
+            color: getColorObject(this.color),
+          },
+        });
+      },
 
-    emitColorChange(trigger) {
-      this.innerValue = this.formatValue();
+      defaultEmptyColor() {
+        return DEFAULT_COLOR;
+      },
 
-      this.$emit('change', {
-        value: this.formatValue(),
-        context: {
-          trigger,
+      updateColor() {
+        const result = this.innerValue || this.defaultEmptyColor();
+        this.color.update(result);
+      },
+
+      getSaturationAndValueByCoordinate(coordinate) {
+        const { width, height } = this.panelRect;
+        const { x, y } = coordinate;
+        let saturation = x / width;
+        let value = 1 - y / height;
+        saturation = Math.min(1, Math.max(0, saturation));
+        value = Math.min(1, Math.max(0, value));
+
+        return {
+          saturation,
+          value,
+        };
+      },
+
+      getSaturationThumbStyle({ saturation, value }) {
+        const { width, height } = this.panelRect;
+        const top = Math.round((1 - value) * height);
+        const left = Math.round(saturation * width);
+        return {
+          color: this.color.rgb,
+          left: `${left}px`,
+          top: `${top}px`,
+        };
+      },
+
+      getSliderThumbStyle({ value, maxValue }) {
+        const { width } = this.sliderRect;
+        if (!width) {
+          return;
+        }
+        const left = Math.round((value / maxValue) * 100);
+        return {
+          left: `${left}%`,
+          color: this.color.rgb,
+        };
+      },
+
+      onChangeSaturation({ saturation, value }) {
+        const { saturation: sat, value: val } = this.color;
+        let changeTrigger = 'palette-saturation-brightness';
+        if (value !== val && saturation !== sat) {
+          this.color.saturation = saturation;
+          this.color.value = value;
+          changeTrigger = 'palette-saturation-brightness';
+        } else if (saturation !== sat) {
+          this.color.saturation = saturation;
+          changeTrigger = 'palette-saturation';
+        } else if (value !== val) {
+          this.color.value = value;
+          changeTrigger = 'palette-brightness';
+        } else {
+          return;
+        }
+
+        this.$emit('palette-bar-change', {
           color: getColorObject(this.color),
-        },
-      });
-    },
+        });
 
-    defaultEmptyColor() {
-      return DEFAULT_COLOR;
-    },
+        this.emitColorChange(changeTrigger);
+        this.setCoreStyle();
+      },
 
-    updateColor() {
-      const result = this.innerValue || this.defaultEmptyColor();
-      this.color.update(result);
-    },
+      formatValue() {
+        return this.color.getFormatsColorMap()[this.format] || this.color.css;
+      },
 
-    getSaturationAndValueByCoordinate(coordinate) {
-      const { width, height } = this.panelRect;
-      const { x, y } = coordinate;
-      let saturation = x / width;
-      let value = 1 - y / height;
-      saturation = Math.min(1, Math.max(0, saturation));
-      value = Math.min(1, Math.max(0, value));
+      onChangeSlider({ value, isAlpha }) {
+        if (isAlpha) {
+          this.color.alpha = value / 100;
+        } else {
+          this.color.hue = value;
+        }
 
-      return {
-        saturation,
-        value,
-      };
-    },
+        this.emitColorChange(isAlpha ? 'palette-alpha-bar' : 'palette-hue-bar');
 
-    getSaturationThumbStyle({ saturation, value }) {
-      const { width, height } = this.panelRect;
-      const top = Math.round((1 - value) * height);
-      const left = Math.round(saturation * width);
-      return {
-        color: this.color.rgb,
-        left: `${left}px`,
-        top: `${top}px`,
-      };
-    },
+        this.setCoreStyle();
+      },
 
-    getSliderThumbStyle({ value, maxValue }) {
-      const { width } = this.sliderRect;
-      if (!width) {
-        return;
-      }
-      const left = Math.round((value / maxValue) * 100);
-      return {
-        left: `${left}%`,
-        color: this.color.rgb,
-      };
-    },
+      handleSaturationDrag(e) {
+        const { usePopup, fixed } = this;
+        const coordinate = getCoordinate(e, this.panelRect, usePopup || fixed);
+        const { saturation, value } = this.getSaturationAndValueByCoordinate(coordinate);
+        this.onChangeSaturation({ saturation, value });
+      },
 
-    onChangeSaturation({ saturation, value }) {
-      const { saturation: sat, value: val } = this.color;
-      let changeTrigger = 'palette-saturation-brightness';
-      if (value !== val && saturation !== sat) {
-        this.color.saturation = saturation;
-        this.color.value = value;
-        changeTrigger = 'palette-saturation-brightness';
-      } else if (saturation !== sat) {
-        this.color.saturation = saturation;
-        changeTrigger = 'palette-saturation';
-      } else if (value !== val) {
-        this.color.value = value;
-        changeTrigger = 'palette-brightness';
-      } else {
-        return;
-      }
+      handleSliderDrag(e, isAlpha = false) {
+        const { width } = this.sliderRect;
+        const coordinate = getCoordinate(e, this.sliderRect);
+        const { x } = coordinate;
+        const maxValue = isAlpha ? ALPHA_MAX : HUE_MAX;
 
-      this.$emit('palette-bar-change', {
-        color: getColorObject(this.color),
-      });
+        let value = Math.round((x / width) * maxValue * 100) / 100;
+        if (value < 0) value = 0;
+        if (value > maxValue) value = maxValue;
+        this.onChangeSlider({ value, isAlpha });
+      },
 
-      this.emitColorChange(changeTrigger);
-      this.setCoreStyle();
-    },
+      handleDiffDrag(e) {
+        const dragType = e.target.dataset.type || e.currentTarget.dataset.type;
+        switch (dragType) {
+          case 'saturation':
+            this.handleSaturationDrag(e);
+            break;
+          case 'hue-slider':
+            this.handleSliderDrag(e);
+            break;
+          case 'alpha-slider':
+            this.handleSliderDrag(e, true);
+            break;
+          default:
+            break;
+        }
+      },
 
-    formatValue() {
-      return this.color.getFormatsColorMap()[this.format] || this.color.css;
-    },
-
-    onChangeSlider({ value, isAlpha }) {
-      if (isAlpha) {
-        this.color.alpha = value / 100;
-      } else {
-        this.color.hue = value;
-      }
-
-      this.emitColorChange(isAlpha ? 'palette-alpha-bar' : 'palette-hue-bar');
-
-      this.setCoreStyle();
-    },
-
-    handleSaturationDrag(e) {
-      const { usePopup, fixed } = this;
-      const coordinate = getCoordinate(e, this.panelRect, usePopup || fixed);
-      const { saturation, value } = this.getSaturationAndValueByCoordinate(coordinate);
-      this.onChangeSaturation({ saturation, value });
-    },
-
-    handleSliderDrag(e, isAlpha = false) {
-      const { width } = this.sliderRect;
-      const coordinate = getCoordinate(e, this.sliderRect);
-      const { x } = coordinate;
-      const maxValue = isAlpha ? ALPHA_MAX : HUE_MAX;
-
-      let value = Math.round((x / width) * maxValue * 100) / 100;
-      if (value < 0) value = 0;
-      if (value > maxValue) value = maxValue;
-      this.onChangeSlider({ value, isAlpha });
-    },
-
-    handleDiffDrag(e) {
-      const dragType = e.target.dataset.type || e.currentTarget.dataset.type;
-      switch (dragType) {
-        case 'saturation':
-          this.handleSaturationDrag(e);
-          break;
-        case 'hue-slider':
-          this.handleSliderDrag(e);
-          break;
-        case 'alpha-slider':
-          this.handleSliderDrag(e, true);
-          break;
-        default:
-          break;
-      }
-    },
-
-    onTouchStart(e) {
-      this.handleDiffDrag(e);
-    },
-
-    onTouchMove(e) {
-      this.handleDiffDrag(e);
-    },
-
-    onTouchEnd(e) {
-      nextTick().then(() => {
+      onTouchStart(e) {
         this.handleDiffDrag(e);
-      });
+      },
+
+      onTouchMove(e) {
+        this.handleDiffDrag(e);
+      },
+
+      onTouchEnd(e) {
+        nextTick().then(() => {
+          this.handleDiffDrag(e);
+        });
+      },
+
+      close(trigger) {
+        if (this.autoClose) {
+          this.dataVisible = false;
+          this.$emit('update:visible', false);
+        }
+
+        this.$emit('close', { trigger });
+      },
+
+      onVisibleChange() {
+        this.close('overlay');
+      },
+
+      onWatchPopupVisible() {
+        if (this.timer) {
+          clearTimeout(this.timer);
+        }
+
+        if (this.usePopup && this.dataVisible) {
+          this.timer = setTimeout(() => {
+            this.getEleReact();
+          }, 350); // popup 的 transition-duration 为 300ms，为保证 popup 已渲染完毕，故使用 350ms
+        }
+      },
     },
-
-    close(trigger) {
-      if (this.autoClose) {
-        this.dataVisible = false;
-        this.$emit('update:visible', false);
-      }
-
-      this.$emit('close', { trigger });
-    },
-
-    onVisibleChange() {
-      this.close('overlay');
-    },
-
-    onWatchPopupVisible() {
-      if (this.timer) {
-        clearTimeout(this.timer);
-      }
-
-      if (this.usePopup && this.dataVisible) {
-        this.timer = setTimeout(() => {
-          this.getEleReact();
-        }, 350); // popup 的 transition-duration 为 300ms，为保证 popup 已渲染完毕，故使用 350ms
-      }
-    },
-  },
-});
+  }),
+};
 
 </script>
 <style scoped src="./color-picker.css"></style>

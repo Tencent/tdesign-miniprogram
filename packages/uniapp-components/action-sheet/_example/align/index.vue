@@ -3,7 +3,7 @@
     <t-action-sheet
       ref="t-action-sheet"
       :using-custom-navbar="!isMPAlipay"
-      @selected="handleSelected($event, { tagId: 't-action-sheet' })"
+      @selected="(e) => handleSelected(e, { tagId: 't-action-sheet' })"
     />
     <t-button
       size="large"

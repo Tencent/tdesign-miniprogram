@@ -8,12 +8,12 @@
     <template v-else>
       <view
         v-if="status === 'expired'"
-        :class="`${prefix}-expired`"
+        :class="'' + `${prefix}-expired`"
       >
-        <view :class="`${prefix}-expired__text`">
+        <view :class="'' + `${prefix}-expired__text`">
           {{ locale.expiredText }}
           <view
-            :class="`${prefix}-expired__button`"
+            :class="'' + `${prefix}-expired__button`"
             @click="handleRefresh"
           >
             <t-icon
@@ -27,7 +27,7 @@
 
       <view
         v-else-if="status === 'loading'"
-        :class="`${prefix}-loading-container`"
+        :class="'' + `${prefix}-loading-container`"
       >
         <t-loading
           size="64rpx"
@@ -37,11 +37,11 @@
 
       <view
         v-else-if="status === 'scanned'"
-        :class="`${prefix}-scanned`"
+        :class="'' + `${prefix}-scanned`"
       >
         <t-icon
           name="check-circle-filled"
-          :class="`${prefix}-scanned__icon`"
+          :class="'' + `${prefix}-scanned__icon`"
           size="44rpx"
         />
         {{ locale.scannedText }}

@@ -16,7 +16,7 @@ export interface TdCheckboxGroupProps<T = CheckboxGroupValue> {
   /**
    * 是否禁用组件。优先级：Form.disabled < CheckboxGroup.disabled < Checkbox.disabled
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * 用来定义 value / label / disabled 在 `options` 中对应的字段别名
    */
@@ -24,7 +24,7 @@ export interface TdCheckboxGroupProps<T = CheckboxGroupValue> {
   /**
    * 支持最多选中的数量
    */
-  max?: number;
+  max?: number | null;
   /**
    * 统一设置内部复选框 HTML 属性
    * @default ''
@@ -38,7 +38,7 @@ export interface TdCheckboxGroupProps<T = CheckboxGroupValue> {
   /**
    * 只读状态
    */
-  readonly?: boolean;
+  readonly?: boolean | null;
   /**
    * -1 时代表独立，不再寻找 parent，用于头条小程序
    * @default ''
@@ -66,7 +66,7 @@ export type CheckboxOption = string | number | CheckboxOptionObj;
 export interface CheckboxOptionObj {
   label?: string;
   value?: string | number;
-  disabled?: boolean;
+  disabled?: boolean | null;
   icon?: CheckboxIconType;
   checkAll?: true;
 }

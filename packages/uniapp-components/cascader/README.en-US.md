@@ -11,7 +11,7 @@ check-strictly | Boolean | false | \- | N
 close-btn | Boolean | true | \- | N
 keys | Object | - | Typescript: `CascaderKeysType` `type CascaderKeysType = TreeKeysType`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/common/common.ts)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/cascader/type.ts) | N
 options | Array | [] | Typescript: `Array<CascaderOption>` | N
-placeholder | String | 选择选项 | \- | N
+placeholder | String | - | \- | N
 popup-props | Object | {} | popup properties。Typescript: `PopupProps`，[Popup API Documents](./popup?tab=api)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/cascader/type.ts) | N
 sub-titles | Array | [] | Typescript: `Array<string>` | N
 theme | String | step | options: step/tab | N

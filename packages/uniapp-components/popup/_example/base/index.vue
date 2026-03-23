@@ -4,7 +4,7 @@
       :visible="visible"
       :using-custom-navbar="!isMPAlipay"
       :placement="cur.value || 'top'"
-      @update:visible="visible = $event"
+      @update:visible="(e) => visible = e"
     >
       <view :class="'block block--' + cur.value">
         {{ cur.text }}
@@ -20,7 +20,7 @@
       theme="primary"
       :data-item="item"
       :custom-style="index === item.length - 1 ? '' : 'margin-bottom: 16px;'"
-      @click="handlePopup($event, { item })"
+      @click="(e) => handlePopup(e, { item })"
     >
       {{ item.text }}
     </t-button>

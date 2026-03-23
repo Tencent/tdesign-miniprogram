@@ -31,26 +31,28 @@ import { prefix } from '@tdesign/uniapp/common/config';
 
 const name = `${prefix}-chat-markdown-code`;
 
-export default uniComponent({
-  name,
-  options: {
-    multipleSlots: true,
-    styleIsolation: 'shared',
-  },
-
-  props: {
-    node: {
-      type: Object,
-      default: () => ({}),
+export default {
+  ...uniComponent({
+    name,
+    options: {
+      multipleSlots: true,
+      styleIsolation: 'shared',
     },
-  },
 
-  data() {
-    return {
-      classPrefix: name,
-    };
-  },
-});
+    props: {
+      node: {
+        type: Object,
+        default: () => ({}),
+      },
+    },
+
+    data() {
+      return {
+        classPrefix: name,
+      };
+    },
+  }),
+};
 
 </script>
 <style scoped src="./chat-markdown-code.css"></style>

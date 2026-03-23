@@ -28,7 +28,6 @@
       </t-demo>
       <t-demo
         title="03 组件样式"
-        desc=""
       >
         <layout-demo />
       </t-demo>

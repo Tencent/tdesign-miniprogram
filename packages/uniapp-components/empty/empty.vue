@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     :class="[
       tClass,
       classPrefix
@@ -73,37 +73,37 @@ import { canUseVirtualHost } from '../common/version';
 const name = `${prefix}-empty`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-description`,
-    `${prefix}-class-image`,
-    `${prefix}-class-actions`,
-  ],
+export default {
   components: {
     TIcon,
     TImage,
   },
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-description`,
+      `${prefix}-class-image`,
+      `${prefix}-class-actions`,
+    ],
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
 
-      iconName: '',
-      iconData: {},
+        iconName: '',
+        iconData: {},
 
-      tools,
-    };
-  },
-  computed: {
-    iconTClass() {
+        tools,
+      };
+    },
+    computed: { iconTClass() {
       return canUseVirtualHost() ? this.iconRealClass : '';
     },
     iconClass() {
@@ -113,26 +113,27 @@ export default uniComponent({
       const { classPrefix, iconData } = this;
       return `${classPrefix}__icon ${classPrefix}__icon--${iconData.activeIdx == iconData.index ? 'active ' : ' '}`;
     },
-  },
-  watch: {
-    icon: {
-      handler(t) {
-        const obj = setIcon('icon', t, '');
-
-        Object.keys(obj).forEach((key) => {
-          this[key] = obj[key];
-        });
-      },
-      immediate: true,
     },
+    watch: {
+      icon: {
+        handler(t) {
+          const obj = setIcon('icon', t, '');
 
-  },
-  mounted() {
+          Object.keys(obj).forEach((key) => {
+            this[key] = obj[key];
+          });
+        },
+        immediate: true,
+      },
 
-  },
-  methods: {
+    },
+    mounted() {
 
-  },
-});
+    },
+    methods: {
+
+    },
+  }),
+};
 </script>
 <style scoped src="./empty.css"></style>

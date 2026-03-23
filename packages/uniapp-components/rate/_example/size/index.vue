@@ -7,7 +7,7 @@
       <t-rate
         :value="value[0]"
         :data-index="0"
-        @change="onChange($event, { index: 0 })"
+        @change="(e) => onChange(e, { index: 0 })"
       />
     </view>
     <view class="demo-rate">
@@ -18,7 +18,7 @@
         :value="value[1]"
         :data-index="1"
         :size="20"
-        @change="onChange($event, { index: 1 })"
+        @change="(e) => onChange(e, { index: 1 })"
       />
     </view>
   </view>

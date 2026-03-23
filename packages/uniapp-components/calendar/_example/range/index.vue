@@ -6,7 +6,7 @@
       :min-date="minDate"
       :max-date="maxDate"
       type="range"
-      @update:visible="visible = $event"
+      @update:visible="(e) => visible = e"
       @confirm="handleConfirm"
     />
 
