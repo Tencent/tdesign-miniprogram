@@ -95,4 +95,10 @@ async function prepareOne({ targetDir, sourceGlob, sourceDir }) {
   console.log(`[Wrote] done! Length is ${list.length}!`);
 }
 
-main();
+if (require.main === module) {
+  main();
+}
+
+module.exports = {
+  generateStyleShortcuts,
+};

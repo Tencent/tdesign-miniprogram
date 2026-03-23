@@ -5,6 +5,7 @@ const { deleteFolder } = require('t-comm');
 
 const { config } = require('./config');
 const { copyComponents, checkVue2CliExist, checkVue2HxExist, checkVue3HxExist } = require('./helper');
+const { generateStyleShortcuts } = require('../release/prepare');
 
 
 async function copyOneProject({
@@ -89,6 +90,22 @@ async function main() {
     sourceDir: config.chatSourceDir,
     isChat: true,
   });
+
+  // 为各目标目录生成快捷样式入口文件（theme.css / theme.less）
+  generateStyleShortcuts(config.componentTargetDirInVue3Cli);
+  generateStyleShortcuts(config.componentTargetDirInApp);
+
+  if (checkVue2CliExist()) {
+    generateStyleShortcuts(config.componentTargetDirInVue2Cli);
+  }
+
+  if (checkVue2HxExist()) {
+    generateStyleShortcuts(config.componentTargetDirInVue2Hx);
+  }
+
+  if (checkVue3HxExist()) {
+    generateStyleShortcuts(config.componentTargetDirInVue3Hx);
+  }
 }
 
 
