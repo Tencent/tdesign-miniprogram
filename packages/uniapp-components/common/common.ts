@@ -96,6 +96,7 @@ export interface IsURLOptions {
   disallow_auth?: boolean;
   validate_length?: boolean;
 }
+
 /**
  * 通用全局类型
  * */

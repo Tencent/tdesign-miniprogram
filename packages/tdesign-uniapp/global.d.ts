@@ -17,6 +17,7 @@ declare module 'vue' {
     TCollapse: typeof import('@tdesign/uniapp/collapse/collapse.vue').default;
     TCollapsePanel: typeof import('@tdesign/uniapp/collapse-panel/collapse-panel.vue').default;
     TColorPicker: typeof import('@tdesign/uniapp/color-picker/color-picker.vue').default;
+    TConfigProvider: typeof import('@tdesign/uniapp/config-provider/config-provider.vue').default;
     TCountDown: typeof import('@tdesign/uniapp/count-down/count-down.vue').default;
     TDateTimePicker: typeof import('@tdesign/uniapp/date-time-picker/date-time-picker.vue').default;
     TDialog: typeof import('@tdesign/uniapp/dialog/dialog.vue').default;
@@ -46,6 +47,7 @@ declare module 'vue' {
     TOverlay: typeof import('@tdesign/uniapp/overlay/overlay.vue').default;
     TPicker: typeof import('@tdesign/uniapp/picker/picker.vue').default;
     TPickerItem: typeof import('@tdesign/uniapp/picker-item/picker-item.vue').default;
+    TPopover: typeof import('@tdesign/uniapp/popover/popover.vue').default;
     TPopup: typeof import('@tdesign/uniapp/popup/popup.vue').default;
     TProgress: typeof import('@tdesign/uniapp/progress/progress.vue').default;
     TPullDownRefresh: typeof import('@tdesign/uniapp/pull-down-refresh/pull-down-refresh.vue').default;

@@ -8,7 +8,7 @@
         :fixed="false"
       >
         <t-tab-bar-item
-          :badge-props="{count: 16, offset: [16, 0]} "
+          :badge-props="{count: 16, offset: [16, 0]}"
           aria-label="首页，有16条消息"
           value="label1"
         >

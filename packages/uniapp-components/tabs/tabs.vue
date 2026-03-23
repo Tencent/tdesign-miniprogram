@@ -1,7 +1,7 @@
 <template>
   <view
-    :style="tools._style([customStyle])"
-    :class="tools.cls(classPrefix, [placement]) + ' ' + tClass"
+    :style="'' + tools._style([customStyle])"
+    :class="'' + tools.cls(classPrefix, [placement]) + ' ' + tClass"
   >
     <t-sticky
       :t-class="tools.cls(classPrefix + '__sticky', [placement])"
@@ -11,9 +11,9 @@
       :container="stickyProps && stickyProps.container"
       @scroll="onTouchScroll"
     >
-      <view :class="tools.cls(classPrefix + '__wrapper', [theme])">
+      <view :class="'' + tools.cls(classPrefix + '__wrapper', [theme])">
         <scroll-view
-          :class="tools.cls(classPrefix + '__scroll', [placement, ['split', split]])"
+          :class="'' + tools.cls(classPrefix + '__scroll', [placement, ['split', split]])"
           enhanced
           enable-flex
           :scroll-left="offset"
@@ -26,7 +26,7 @@
           @scroll="onScroll"
         >
           <view
-            :class="tools.cls(classPrefix + '__nav', [placement, ['evenly', spaceEvenly]])"
+            :class="'' + tools.cls(classPrefix + '__nav', [placement, ['evenly', spaceEvenly]])"
             aria-role="tablist"
           >
             <view
@@ -34,7 +34,7 @@
               :key="index"
               :data-index="index"
               :class="
-                tools.cls(classPrefix + '__item', [theme, ['evenly', spaceEvenly], placement, ['disabled', item.disabled], ['active', currentIndex === index]]) +
+                '' + tools.cls(classPrefix + '__item', [theme, ['evenly', spaceEvenly], placement, ['disabled', item.disabled], ['active', currentIndex === index]]) +
                   ' ' +
                   (currentIndex === index ? tClassActive : '') +
                   ' ' +
@@ -48,7 +48,7 @@
               @click="onTabTap"
             >
               <view
-                :class="tools.cls(classPrefix + '__item-inner', [theme, ['active', currentIndex === index]])"
+                :class="'' + tools.cls(classPrefix + '__item-inner', [theme, ['active', currentIndex === index]])"
                 :aria-hidden="item.badgeProps.dot || item.badgeProps.count"
               >
                 <block
@@ -107,8 +107,8 @@
             </view>
             <view
               v-if="theme == 'line' && showBottomLine"
-              :class="tools.cls(classPrefix + '__track', [placement]) + ' ' + tClassTrack"
-              :style="trackStyle(trackOption)"
+              :class="'' + tools.cls(classPrefix + '__track', [placement]) + ' ' + tClassTrack"
+              :style="''+trackStyle(trackOption)"
             />
           </view>
         </scroll-view>
@@ -116,7 +116,7 @@
     </t-sticky>
     <slot name="middle" />
     <view
-      :class="tools.cls(classPrefix + '__content', [['animated', animation]])"
+      :class="'' + tools.cls(classPrefix + '__content', [['animated', animation]])"
       @touchstart="onTouchStart"
       @touchmove="onTouchMove"
       @touchend="onTouchEnd"
@@ -124,7 +124,7 @@
     >
       <view
         :class="classPrefix + '__content-inner ' + tClassContent"
-        :style="animate({ duration: animation && animation.duration, currentIndex: currentIndex })"
+        :style="''+animate({ duration: animation && animation.duration, currentIndex: currentIndex })"
       >
         <slot />
       </view>
@@ -149,334 +149,341 @@ const name = `${prefix}-tabs`;
 const getUniqueID = uniqueFactory('tabs');
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  controlledProps: [{
-    key: 'value',
-    event: 'change',
-  }],
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-item`,
-    `${prefix}-class-active`,
-    `${prefix}-class-track`,
-    `${prefix}-class-content`,
-  ],
-  mixins: [touch, ParentMixin(RELATION_MAP.TabPanel)],
+export default {
   components: {
     TSticky,
     TBadge,
     TIcon,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'change',
-    'scroll',
-    'error',
-    'click',
-  ],
-  watch: {
-    value: {
-      handler(e) {
-        this.dataValue = e;
-      },
-      immediate: true,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-    dataValue(name) {
-      if (name !== this.getCurrentName()) {
-        this.setCurrentIndexByName(name);
-      }
+    controlledProps: [{
+      key: 'value',
+      event: 'change',
+    }],
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-item`,
+      `${prefix}-class-active`,
+      `${prefix}-class-track`,
+      `${prefix}-class-content`,
+    ],
+    mixins: [touch, ParentMixin(RELATION_MAP.TabPanel)],
+    props: {
+      ...props,
     },
-  },
-  created() {
-    this.children = this.children || [];
-  },
-
-  mounted() {
-    nextTick().then(() => {
-      this.setTrack();
-    });
-    getRect(this, `.${name}`).then((rect) => {
-      this.containerWidth = rect.width;
-    });
-    this.tabID = getUniqueID();
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      tabs: [],
-      currentLabels: [],
-      currentIndex: -1,
-      trackOption: {
-        lineWidth: 0,
-        distance: 0,
-        isInit: true,
+    emits: [
+      'change',
+      'scroll',
+      'error',
+      'click',
+    ],
+    watch: {
+      value: {
+        handler(e) {
+          this.dataValue = e;
+        },
+        immediate: true,
       },
-      offset: 0,
-      scrollLeft: 0,
-      tabID: '',
-      placement: 'top',
-      tools,
+      dataValue(name) {
+        if (name !== this.getCurrentName()) {
+          this.setCurrentIndexByName(name);
+        }
+      },
+    },
+    created() {
+      this.children = this.children || [];
+    },
 
-      dataValue: coalesce(this.value, this.defaultValue),
-    };
-  },
-  methods: {
-    trackStyle,
-    animate,
-    innerAfterLinked(target) {
+    mounted() {
+      nextTick().then(() => {
+        this.setTrack();
+      });
+      getRect(this, `.${name}`).then((rect) => {
+        this.containerWidth = rect.width;
+      });
+      this.tabID = getUniqueID();
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        tabs: [],
+        currentLabels: [],
+        currentIndex: -1,
+        trackOption: {
+          lineWidth: 0,
+          distance: 0,
+          isInit: true,
+        },
+        offset: 0,
+        scrollLeft: 0,
+        tabID: '',
+        placement: 'top',
+        tools,
+
+        dataValue: coalesce(this.value, this.defaultValue),
+      };
+    },
+    methods: {
+      trackStyle,
+      animate,
+      innerAfterLinked(target) {
       // mixin 中已注入
       // this.children.push(target);
-      this.initChildId();
-      target.dataIndex = this.children.length - 1;
-      this.updateTabs();
-    },
-    innerAfterUnlinked(target) {
-      this.children = this.children.filter(item => item.index !== target.dataIndex);
-      this.updateTabs(() => this.setTrack());
-      this.initChildId();
-    },
-    initChildId() {
-      this.children.forEach((item, index) => {
-        item.setId(`${this.tabID}_panel_${index}`);
-      });
-    },
-    onScroll(e = {}) {
-      const { scrollLeft } = e.detail || {};
-      this.scrollLeft = scrollLeft;
-    },
-    updateTabs(cb) {
-      const { children } = this;
-      const tabs = children.map((child) => {
-        const { label, badgeProps, disabled, icon, panel, value, lazy } = child;
-        return {
-          label, badgeProps, disabled, icon, panel, value, lazy,
-        };
-      });
-
-      tabs.forEach((item) => {
-        if (typeof item.icon === 'string') {
-          item.icon = { name: item.icon };
-        }
-      });
-
-      this.tabs = tabs;
-      if (typeof cb === 'function') {
-        setTimeout(cb, 33);
-      }
-
-      this.setCurrentIndexByName(this.dataValue);
-    },
-
-    setCurrentIndexByName(name) {
-      const { children } = this;
-      const index = children.findIndex(child => child.getComputedName() === `${name}`);
-      if (index > -1) {
-        this.setCurrentIndex(index);
-      }
-    },
-
-    setCurrentIndex(index) {
-      if (index <= -1 || index >= this.children.length) return;
-      const Labels = [];
-      this.children.forEach((child, idx) => {
-        const isActive = index === idx;
-        if (isActive !== child.active || !child.initialized) {
-          child.render(isActive, this);
-        }
-        Labels.push(child.label);
-      });
-
-      const { currentIndex, currentLabels } = this;
-      if (currentIndex === index && currentLabels.join('') === Labels.join('')) return;
-
-      this.currentIndex = index;
-      this.currentLabels = Labels;
-
-
-      setTimeout(() => {
-        this.setTrack();
-      }, 33);
-    },
-
-    getCurrentName() {
-      if (this.children) {
-        const activeTab = this.children[this.currentIndex];
-        if (activeTab) {
-          return activeTab.getComputedName();
-        }
-      }
-    },
-
-    calcScrollOffset(containerWidth, targetLeft, targetWidth, offset) {
-      return offset + targetLeft - (1 / 2) * containerWidth + targetWidth / 2;
-    },
-
-    // 外部无法获取虚拟组件节点位置信息
-    getTabHeight() {
-      return getRect(this, `.${name}`);
-    },
-
-    getTrackSize() {
-      const { bottomLineMode } = this;
-      const targetMap = {
-        fixed: `.${prefix}-tabs__track`,
-        auto: `.${prefix}-tabs__item--active .${prefix}-tabs__item-inner`,
-        full: `.${prefix}-tabs__item--active`,
-      };
-      return new Promise((resolve, reject) => {
-        if (this.trackWidth) {
-          resolve(this.trackWidth);
-          return;
-        }
-        getRect(this, targetMap[bottomLineMode] || targetMap.fixed)
-          .then((res) => {
-            if (res) {
-              resolve(res.width);
-            }
-          })
-          .catch(reject);
-      });
-    },
-
-    async setTrack() {
-      const { children } = this;
-      if (!children) return;
-      const { currentIndex } = this;
-      if (currentIndex <= -1) return;
-
-      try {
-        const res = await getRect(this, `.${prefix}-tabs__item`, true);
-        const rect = res[currentIndex];
-        if (!rect) return;
-        let count = 0;
-        let distance = 0;
-        let totalSize = 0;
-
-        res.forEach((item) => {
-          if (count < currentIndex) {
-            distance += item.width;
-            count += 1;
-          }
-          totalSize += item.width;
+        this.initChildId();
+        target.dataIndex = this.children.length - 1;
+        this.updateTabs();
+      },
+      innerAfterUnlinked(target) {
+        this.children = this.children.filter(item => item.index !== target.dataIndex);
+        this.updateTabs(() => this.setTrack());
+        this.initChildId();
+      },
+      initChildId() {
+        this.children.forEach((item, index) => {
+          item.setId(`${this.tabID}_panel_${index}`);
+        });
+      },
+      onScroll(e = {}) {
+        const { scrollLeft } = e.detail || {};
+        this.scrollLeft = scrollLeft;
+      },
+      updateTabs(cb) {
+        const { children } = this;
+        const tabs = children.map((child) => {
+          const { label, badgeProps, disabled, icon, panel, value, lazy } = child;
+          return {
+            label, badgeProps, disabled, icon, panel, value, lazy,
+          };
         });
 
-        if (this.containerWidth) {
-          const offset = this.calcScrollOffset(this.containerWidth, rect.left, rect.width, this.scrollLeft);
-          const maxOffset = totalSize - this.containerWidth;
-          this.offset = Math.min(Math.max(offset, 0), maxOffset);
-        } else if (!this._hasObserved) {
-          this._hasObserved = true;
-          getObserver(this, `.${name}`).then(() => this.setTrack());
+        tabs.forEach((item) => {
+          if (typeof item.icon === 'string') {
+            item.icon = { name: item.icon };
+          }
+        });
+
+        this.tabs = tabs;
+        if (typeof cb === 'function') {
+          setTimeout(cb, 33);
         }
 
-        const lineWidth = await this.getTrackSize();
-        if (this.theme === 'line') {
-          distance += (rect.width - lineWidth) / 2;
-        }
+        this.setCurrentIndexByName(this.dataValue);
+      },
 
-        const isInit = this.previousIndex === undefined;
-        if (isInit
+      setCurrentIndexByName(name) {
+        const { children } = this;
+        const index = children.findIndex(child => child.getComputedName() === `${name}`);
+        if (index > -1) {
+          this.setCurrentIndex(index);
+        }
+      },
+
+      setCurrentIndex(index) {
+        if (index <= -1 || index >= this.children.length) return;
+        const Labels = [];
+        this.children.forEach((child, idx) => {
+          const isActive = index === idx;
+          if (isActive !== child.active || !child.initialized) {
+            child.render(isActive, this);
+          }
+          // 当存在 animation 时，translate 偏移依赖所有 panel 占位，
+          // 需确保目标 index 及之前的 panel 都已激活 DOM
+          if (this.animation && idx <= index && !child.hasActivated) {
+            child.hasActivated = true;
+          }
+          Labels.push(child.label);
+        });
+
+        const { currentIndex, currentLabels } = this;
+        if (currentIndex === index && currentLabels.join('') === Labels.join('')) return;
+
+        this.currentIndex = index;
+        this.currentLabels = Labels;
+
+
+        setTimeout(() => {
+          this.setTrack();
+        }, 33);
+      },
+
+      getCurrentName() {
+        if (this.children) {
+          const activeTab = this.children[this.currentIndex];
+          if (activeTab) {
+            return activeTab.getComputedName();
+          }
+        }
+      },
+
+      calcScrollOffset(containerWidth, targetLeft, targetWidth, offset) {
+        return offset + targetLeft - (1 / 2) * containerWidth + targetWidth / 2;
+      },
+
+      // 外部无法获取虚拟组件节点位置信息
+      getTabHeight() {
+        return getRect(this, `.${name}`);
+      },
+
+      getTrackSize() {
+        const { bottomLineMode } = this;
+        const targetMap = {
+          fixed: `.${prefix}-tabs__track`,
+          auto: `.${prefix}-tabs__item--active .${prefix}-tabs__item-inner`,
+          full: `.${prefix}-tabs__item--active`,
+        };
+        return new Promise((resolve, reject) => {
+          if (this.trackWidth) {
+            resolve(this.trackWidth);
+            return;
+          }
+          getRect(this, targetMap[bottomLineMode] || targetMap.fixed)
+            .then((res) => {
+              if (res) {
+                resolve(res.width);
+              }
+            })
+            .catch(reject);
+        });
+      },
+
+      async setTrack() {
+        const { children } = this;
+        if (!children) return;
+        const { currentIndex } = this;
+        if (currentIndex <= -1) return;
+
+        try {
+          const res = await getRect(this, `.${prefix}-tabs__item`, true);
+          const rect = res[currentIndex];
+          if (!rect) return;
+          let count = 0;
+          let distance = 0;
+          let totalSize = 0;
+
+          res.forEach((item) => {
+            if (count < currentIndex) {
+              distance += item.width;
+              count += 1;
+            }
+            totalSize += item.width;
+          });
+
+          if (this.containerWidth) {
+            const offset = this.calcScrollOffset(this.containerWidth, rect.left, rect.width, this.scrollLeft);
+            const maxOffset = totalSize - this.containerWidth;
+            this.offset = Math.min(Math.max(offset, 0), maxOffset);
+          } else if (!this._hasObserved) {
+            this._hasObserved = true;
+            getObserver(this, `.${name}`).then(() => this.setTrack());
+          }
+
+          const lineWidth = await this.getTrackSize();
+          if (this.theme === 'line') {
+            distance += (rect.width - lineWidth) / 2;
+          }
+
+          const isInit = this.previousIndex === undefined;
+          if (isInit
           || this.previousIndex !== currentIndex
           || this.lastDistance !== distance
-        ) {
-          this.previousIndex = currentIndex;
-          this.trackOption = { lineWidth, distance, isInit };
-          this.lastDistance = distance;
-        }
-      } catch (err) {
-        this.$emit('error', err);
-      }
-    },
-
-    onTabTap(event) {
-      const { index } = event.currentTarget.dataset;
-
-      this.changeIndex(index);
-    },
-
-    onTouchStart(event) {
-      if (!this.swipeable) return;
-
-      this.touchStart(event);
-    },
-
-    onTouchMove(event) {
-      if (!this.swipeable) return;
-
-      this.touchMove(event);
-    },
-
-    onTouchEnd() {
-      if (!this.swipeable) return;
-
-      const { direction, deltaX, offsetX } = this;
-      const minSwipeDistance = 50;
-      if (direction === 'horizontal' && offsetX >= minSwipeDistance) {
-        const index = this.getAvailableTabIndex(deltaX);
-        if (index !== -1) {
-          this.changeIndex(index);
-        }
-      }
-    },
-
-    onTouchScroll(event) {
-      this._trigger('scroll', event);
-    },
-
-    changeIndex(index) {
-      const currentTab = this.tabs[index];
-      const { value, label } = currentTab;
-      if (!currentTab?.disabled && index !== this.currentIndex) {
-        this._trigger('change', { value, label });
-      }
-      this._trigger('click', { value, label });
-    },
-
-    getAvailableTabIndex(deltaX) {
-      const step = deltaX > 0 ? -1 : 1;
-      const { currentIndex, tabs } = this;
-      const len = tabs.length;
-      for (let i = step; currentIndex + step >= 0 && currentIndex + step < len; i += step) {
-        const newIndex = currentIndex + i;
-        if (newIndex >= 0 && newIndex < len && tabs[newIndex]) {
-          if (!tabs[newIndex].disabled) {
-            return newIndex;
+          ) {
+            this.previousIndex = currentIndex;
+            this.trackOption = { lineWidth, distance, isInit };
+            this.lastDistance = distance;
           }
-        } else {
-          return currentIndex;
+        } catch (err) {
+          this.$emit('error', err);
         }
-      }
-      return -1;
-    },
+      },
 
-    getBadgeCustomStyle(item, index) {
-      if (item.disabled) {
-        return '--td-badge-content-text-color: var(--td-tab-item-disabled-color, var(--td-text-color-disabled, var(--td-font-gray-4, rgba(0, 0, 0, .26))))';
-      }
-      if (this.currentIndex === index) {
-        return '--td-badge-content-text-color: var(--td-tab-item-active-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)));';
-      }
-      return '';
-    },
+      onTabTap(event) {
+        const { index } = event.currentTarget.dataset;
 
-    getIconCustomStyle(item) {
-      return tools._style([
-        {
-          fontSize: 'var(--td-tab-icon-size, 18px)',
-          marginRight: 'calc(var(--td-spacer, 8px) / 4)',
-        },
-        item.icon.style || '',
-      ]);
+        this.changeIndex(index);
+      },
+
+      onTouchStart(event) {
+        if (!this.swipeable) return;
+
+        this.touchStart(event);
+      },
+
+      onTouchMove(event) {
+        if (!this.swipeable) return;
+
+        this.touchMove(event);
+      },
+
+      onTouchEnd() {
+        if (!this.swipeable) return;
+
+        const { direction, deltaX, offsetX } = this;
+        const minSwipeDistance = 50;
+        if (direction === 'horizontal' && offsetX >= minSwipeDistance) {
+          const index = this.getAvailableTabIndex(deltaX);
+          if (index !== -1) {
+            this.changeIndex(index);
+          }
+        }
+      },
+
+      onTouchScroll(event) {
+        this._trigger('scroll', event);
+      },
+
+      changeIndex(index) {
+        const currentTab = this.tabs[index];
+        const { value, label } = currentTab;
+        if (!currentTab?.disabled && index !== this.currentIndex) {
+          this._trigger('change', { value, label });
+        }
+        this._trigger('click', { value, label });
+      },
+
+      getAvailableTabIndex(deltaX) {
+        const step = deltaX > 0 ? -1 : 1;
+        const { currentIndex, tabs } = this;
+        const len = tabs.length;
+        for (let i = step; currentIndex + step >= 0 && currentIndex + step < len; i += step) {
+          const newIndex = currentIndex + i;
+          if (newIndex >= 0 && newIndex < len && tabs[newIndex]) {
+            if (!tabs[newIndex].disabled) {
+              return newIndex;
+            }
+          } else {
+            return currentIndex;
+          }
+        }
+        return -1;
+      },
+
+      getBadgeCustomStyle(item, index) {
+        if (item.disabled) {
+          return '--td-badge-content-text-color: var(--td-tab-item-disabled-color, var(--td-text-color-disabled, var(--td-font-gray-4, rgba(0, 0, 0, .26))))';
+        }
+        if (this.currentIndex === index) {
+          return '--td-badge-content-text-color: var(--td-tab-item-active-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)));';
+        }
+        return '';
+      },
+
+      getIconCustomStyle(item) {
+        return tools._style([
+          {
+            fontSize: 'var(--td-tab-icon-size, 18px)',
+            marginRight: 'calc(var(--td-spacer, 8px) / 4)',
+          },
+          item.icon.style || '',
+        ]);
+      },
     },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./tabs.css"></style>
 <style scoped>

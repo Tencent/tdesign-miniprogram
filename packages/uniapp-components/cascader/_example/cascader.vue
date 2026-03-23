@@ -11,7 +11,6 @@
       />
       <t-demo
         title="01 类型"
-        desc=""
       >
         <base-demo />
       </t-demo>

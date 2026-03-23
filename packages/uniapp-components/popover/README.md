@@ -1,7 +1,7 @@
 ---
 title: Popover 弹出气泡
 description: 用于文字提示的气泡框。
-spline: data
+spline: message
 isComponent: true
 ---
 

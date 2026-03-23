@@ -1,7 +1,7 @@
 <template>
   <view>
     <view
-      :style="tools._style([customStyle])"
+      :style="'' + tools._style([customStyle])"
       :class="classPrefix + ' ' + tClass"
     >
       <view
@@ -88,7 +88,7 @@
         :t-class="classPrefix + '__result-item'"
         hover
         aria-role="option"
-        @click="onSelectOption($event, { index })"
+        @click="(e) => onSelectOption(e, { index })"
       >
         <template
           #title
@@ -115,160 +115,161 @@ import { highLight } from './computed.js';
 const name = `${prefix}-search`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-input-container`,
-    `${prefix}-class-input`,
-    `${prefix}-class-action`,
-    `${prefix}-class-left`,
-    `${prefix}-class-clear`,
-  ],
+export default {
   components: {
     TIcon,
     TCell,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-  ],
-  data() {
-    return {
-      classPrefix: name,
-      prefix,
-      isShowResultList: false,
-      isSelected: false,
-      showClearIcon: false,
-      tools,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-input-container`,
+      `${prefix}-class-input`,
+      `${prefix}-class-action`,
+      `${prefix}-class-left`,
+      `${prefix}-class-clear`,
+    ],
+    props: {
+      ...props,
+    },
+    emits: [
+    ],
+    data() {
+      return {
+        classPrefix: name,
+        prefix,
+        isShowResultList: false,
+        isSelected: false,
+        showClearIcon: false,
+        tools,
 
-      dataValue: this.value,
+        dataValue: this.value,
       // innerMaxLen: -1,
       // rawValue: '',
-    };
-  },
-  watch: {
-    resultList: {
-      handler(val) {
-        const { isSelected } = this;
-        if (val.length) {
-          if (isSelected) {
-          // 已选择
-            this.isShowResultList = false;
-            this.isSelected = false;
+      };
+    },
+    watch: {
+      resultList: {
+        handler(val) {
+          const { isSelected } = this;
+          if (val.length) {
+            if (isSelected) {
+              // 已选择
+              this.isShowResultList = false;
+              this.isSelected = false;
+            } else {
+              this.isShowResultList = true;
+            }
           } else {
-            this.isShowResultList = true;
+            this.isShowResultList = false;
           }
-        } else {
-          this.isShowResultList = false;
-        }
+        },
+        immediate: true,
       },
-      immediate: true,
-    },
 
-    value: {
-      handler(val) {
-        this.dataValue = val;
+      value: {
+        handler(val) {
+          this.dataValue = val;
+        },
+        immediate: true,
       },
-      immediate: true,
-    },
 
-    dataValue: {
-      handler() {
+      dataValue: {
+        handler() {
         // this.updateInnerMaxLen();
-        this.updateClearIconVisible();
+          this.updateClearIconVisible();
+        },
       },
-    },
-    clearTrigger: 'updateClearIconVisible',
-    clearable: 'updateClearIconVisible',
-    disabled: 'updateClearIconVisible',
-    readonly: 'updateClearIconVisible',
+      clearTrigger: 'updateClearIconVisible',
+      clearable: 'updateClearIconVisible',
+      disabled: 'updateClearIconVisible',
+      readonly: 'updateClearIconVisible',
 
     // maxcharacter: 'updateInnerMaxLen',
     // maxlength: 'updateInnerMaxLen',
-  },
-  mounted() {
-    this.updateClearIconVisible();
-  },
-  methods: {
-    updateClearIconVisible(value = false) {
-      const { clearTrigger, disabled, readonly, dataValue } = this;
-      if (disabled || readonly || !dataValue) {
-        this.showClearIcon = false;
-        return;
-      }
-
-      this.showClearIcon = value || String(clearTrigger) === 'always';
     },
-
-    onInput(e) {
-      let { value } = e.detail;
-      // this.rawValue = value;
-      this.dataValue = value;
-
-      const { maxcharacter } = this;
-      if (maxcharacter && typeof maxcharacter === 'number' && maxcharacter > 0) {
-        const { characters } = getCharacterLength('maxcharacter', value, maxcharacter);
-
-        value = characters;
-      }
-
-
-      nextTick().then(() => {
-        this.dataValue = value;
-        this.$emit('change', {
-          value,
-          trigger: 'input-change',
-        });
-      });
-      // this.updateInnerMaxLen();
-    },
-
-    onFocus(e) {
-      const { value } = e.detail;
-      this.updateClearIconVisible(true);
-      this.$emit('focus', { value });
-    },
-
-    onBlur(e) {
-      const { value } = e.detail;
+    mounted() {
       this.updateClearIconVisible();
-      this.$emit('blur', { value });
     },
+    methods: {
+      updateClearIconVisible(value = false) {
+        const { clearTrigger, disabled, readonly, dataValue } = this;
+        if (disabled || readonly || !dataValue) {
+          this.showClearIcon = false;
+          return;
+        }
 
-    handleClear() {
-      this.dataValue = '';
-      this.$emit('clear', { value: '' });
-      this.$emit('change', {
-        value: '',
-        trigger: 'clear',
-      });
-    },
+        this.showClearIcon = value || String(clearTrigger) === 'always';
+      },
 
-    onConfirm(e) {
-      const { value } = e.detail;
-      this.$emit('submit', { value });
-    },
+      onInput(e) {
+        let { value } = e.detail;
+        // this.rawValue = value;
+        this.dataValue = value;
 
-    onActionClick() {
-      this.$emit('action-click');
-    },
+        const { maxcharacter } = this;
+        if (maxcharacter && typeof maxcharacter === 'number' && maxcharacter > 0) {
+          const { characters } = getCharacterLength('maxcharacter', value, maxcharacter);
 
-    onSelectOption(tools, { index }) {
-      const item = this.resultList[index];
-      this.dataValue = item;
-      this.isSelected = true;
+          value = characters;
+        }
 
-      this.$emit('change', {
-        value: item,
-        trigger: 'option-click',
-      });
-    },
-    highLight,
+
+        nextTick().then(() => {
+          this.dataValue = value;
+          this.$emit('change', {
+            value,
+            trigger: 'input-change',
+          });
+        });
+      // this.updateInnerMaxLen();
+      },
+
+      onFocus(e) {
+        const { value } = e.detail;
+        this.updateClearIconVisible(true);
+        this.$emit('focus', { value });
+      },
+
+      onBlur(e) {
+        const { value } = e.detail;
+        this.updateClearIconVisible();
+        this.$emit('blur', { value });
+      },
+
+      handleClear() {
+        this.dataValue = '';
+        this.$emit('clear', { value: '' });
+        this.$emit('change', {
+          value: '',
+          trigger: 'clear',
+        });
+      },
+
+      onConfirm(e) {
+        const { value } = e.detail;
+        this.$emit('submit', { value });
+      },
+
+      onActionClick() {
+        this.$emit('action-click');
+      },
+
+      onSelectOption(tools, { index }) {
+        const item = this.resultList[index];
+        this.dataValue = item;
+        this.isSelected = true;
+
+        this.$emit('change', {
+          value: item,
+          trigger: 'option-click',
+        });
+      },
+      highLight,
     // updateInnerMaxLen() {
     //   // this.innerMaxLen = this.getInnerMaxLen();
     // },
@@ -289,8 +290,9 @@ export default uniComponent({
     //     count,
     //   });
     // },
-  },
-});
+    },
+  }),
+};
 
 
 </script>

@@ -27,7 +27,7 @@
                 block
                 variant="outline"
                 data-type="base"
-                @click="handleChange($event, { type: 'base' })"
+                @click="(e) => handleChange(e, { type: 'base' })"
               >
                 纯图标悬浮按钮
               </t-button>
@@ -41,7 +41,7 @@
                 block
                 variant="outline"
                 data-type="advance"
-                @click="handleChange($event, { type: 'advance' })"
+                @click="(e) => handleChange(e, { type: 'advance' })"
               >
                 图标加文字悬浮按钮
               </t-button>
@@ -55,7 +55,7 @@
                 block
                 variant="outline"
                 data-type="movable"
-                @click="handleChange($event, { type: 'movable' })"
+                @click="(e) => handleChange(e, { type: 'movable' })"
               >
                 可移动悬浮按钮
               </t-button>
@@ -65,9 +65,9 @@
       </scroll-view>
     </view>
 
-    <BaseDemo v-if="type == 'base'" />
-    <AdvanceDemo v-else-if="type == 'advance'" />
-    <DraggableDemo v-else />
+    <base-demo v-if="type == 'base'" />
+    <advance-demo v-else-if="type == 'advance'" />
+    <draggable-demo v-else />
   </view>
 </template>
 
@@ -75,15 +75,11 @@
 
 import TButton from '@tdesign/uniapp/button/button.vue';
 import BaseDemo from '../base/index.vue';
-import Advance from '../advance/index.vue';
-import Draggable from '../draggable/index.vue';
 
 export default {
   components: {
     TButton,
     BaseDemo,
-    AdvanceDemo,
-    DraggableDemo,
   },
   data() {
     return {

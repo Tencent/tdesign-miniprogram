@@ -20,7 +20,7 @@
           block
           variant="outline"
           data-type="base"
-          @click="handleChange($event, { type: 'base' })"
+          @click="(e) => handleChange(e, { type: 'base' })"
         >
           纯图标悬浮按钮
         </t-button>
@@ -34,7 +34,7 @@
           block
           variant="outline"
           data-type="advance"
-          @click="handleChange($event, { type: 'advance' })"
+          @click="(e) => handleChange(e, { type: 'advance' })"
         >
           图标加文字悬浮按钮
         </t-button>
@@ -51,7 +51,7 @@
           block
           variant="outline"
           data-type="draggable"
-          @click="handleChange($event, { type: 'draggable' })"
+          @click="(e) => handleChange(e, { type: 'draggable' })"
         >
           可移动悬浮按钮
         </t-button>
@@ -65,7 +65,7 @@
           block
           variant="outline"
           data-type="collapsible"
-          @click="handleChange($event, { type: 'collapsible' })"
+          @click="(e) => handleChange(e, { type: 'collapsible' })"
         >
           带自动收缩功能
         </t-button>

@@ -15,8 +15,8 @@ export default {
   },
   /** 是否选中 */
   checked: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdRadioProps['checked'],
   },
   /** 是否选中，非受控属性 */
   defaultChecked: Boolean,
@@ -28,8 +28,8 @@ export default {
   contentDisabled: Boolean,
   /** 是否为禁用态 */
   disabled: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdRadioProps['disabled'],
   },
   /** 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 circle 表示填充型图标、值为 line 表示描边型图标、值为 dot 表示圆点图标，值为 slot 时使用插槽 */
   icon: {
@@ -65,8 +65,8 @@ export default {
   },
   /** 只读状态 */
   readonly: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdRadioProps['readonly'],
   },
   /** -1 时代表独立，不再寻找 parent，用于头条小程序 */
   relationKey: {

@@ -1,6 +1,6 @@
 {
   "name": "@tdesign/uniapp",
-  "version": "0.7.3",
+  "version": "0.8.0",
   "id": "tdesign-uniapp",
   "title": "tdesign-uniapp",
   "description": "TDesign Component for UniApp",
@@ -121,6 +121,11 @@
       "types": "./dist/types/collapse-panel.d.ts",
       "import": "./dist/collapse-panel/collapse-panel.vue",
       "default": "./dist/collapse-panel/collapse-panel.vue"
+    },
+    "./config-provider/config-provider.vue": {
+      "types": "./dist/types/config-provider.d.ts",
+      "import": "./dist/config-provider/config-provider.vue",
+      "default": "./dist/config-provider/config-provider.vue"
     },
     "./color-picker/color-picker.vue": {
       "types": "./dist/types/color-picker.d.ts",
@@ -467,6 +472,7 @@
     "init": "node ./example/script/watch/init.js && node ./example/script/pages/index.js",
     "watch": "node ./example/script/watch/watch.js",
     "release:prepare": "node ./example/script/release/prepare.js",
+    "gen:types": "node ./example/script/types/index.js",
     "commit": "git-cz"
   },
   "devDependencies": {

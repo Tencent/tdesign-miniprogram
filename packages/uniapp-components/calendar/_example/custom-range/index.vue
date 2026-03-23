@@ -5,7 +5,7 @@
       :value="value"
       :min-date="minDate"
       :max-date="maxDate"
-      @update:visible="visible = $event"
+      @update:visible="(e) => visible = e"
       @confirm="handleConfirm"
     />
     <t-cell

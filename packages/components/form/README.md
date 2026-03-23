@@ -1,4 +1,47 @@
-:: BASE_DOC ::
+---
+title: Form 表单
+description: 用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。
+spline: form
+isComponent: true
+toc: false
+---
+
+<div style="background: #ecf2fe; display: flex; align-items: center; line-height: 20px; padding: 14px 24px; border-radius: 3px; color: #555a65">
+  <svg fill="none" viewBox="0 0 16 16" width="16px" height="16px" style="margin-right: 5px">
+    <path fill="#0052d9" d="M8 15A7 7 0 108 1a7 7 0 000 14zM7.4 4h1.2v1.2H7.4V4zm.1 2.5h1V12h-1V6.5z" fillOpacity="0.9"></path>
+  </svg>
+  该组件于 1.13.0 版本上线，请留意版本。
+</div>
+
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-43%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-15%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-43%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-60%25-red" /></span>
+## 引入
+
+全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
+
+```json
+"usingComponents": {
+  "t-form": "tdesign-miniprogram/form/form",
+  "t-form-item": "tdesign-miniprogram/form-item/form-item"
+}
+```
+
+## 代码演示
+
+<a href="https://developers.weixin.qq.com/s/HX1m0HmX8A7M" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+
+<blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
+<p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
+</blockquote>
+
+
+### 01 组件类型
+
+#### 基础表单
+
+{{ horizontal }}
+
+{{ vertical }}
+
 
 ## API
 
@@ -108,7 +151,7 @@ whitespace | String | - | 值为空格校验不通过时表单项显示文案，
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-form-bg-color | @bg-color-container | -
 --td-form-item-border-color | @component-stroke | -

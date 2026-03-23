@@ -11,7 +11,7 @@
           theme === 'dark'
             ? 'https://tdesign.gtimg.com/mobile/demos/footer-logo-dark.png'
             : 'https://tdesign.gtimg.com/mobile/demos/logo1.png'
-        } "
+        }"
       />
     </view>
   </view>

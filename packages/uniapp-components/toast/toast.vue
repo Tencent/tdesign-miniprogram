@@ -2,8 +2,8 @@
   <view>
     <view
       v-if="realVisible"
-      :class="tools.cls(classPrefix, [dataDirection, dataTheme, ['with-text', dataMessage]]) + ' ' + tClass + ' ' + transitionClass"
-      :style="tools._style(['top:' + (dataPlacement === 'top' ? '25%' : dataPlacement === 'bottom' ? '75%' : '45%'), customStyle])"
+      :class="'' + tools.cls(classPrefix, [dataDirection, dataTheme, ['with-text', dataMessage]]) + ' ' + tClass + ' ' + transitionClass"
+      :style="'' + tools._style(['top:' + (dataPlacement === 'top' ? '25%' : dataPlacement === 'bottom' ? '75%' : '45%'), customStyle])"
       @transitionend="onTransitionEnd"
       @touchstart.stop.prevent="loop"
     >
@@ -80,48 +80,48 @@ const needTransformKeys = [
   'theme',
 ];
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-  ],
-  mixins: [transitionMixins, useCustomNavbar],
+export default {
   components: {
     TIcon,
     TLoading,
     TOverlay,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'leaved',
-    'destory',
-    'close',
-  ],
-  data() {
-    const info = needTransformKeys.reduce((acc, key) => ({
-      ...acc,
-      [toCamel(`data-${key}`)]: props[key].default,
-    }), {});
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    externalClasses: [
+      `${prefix}-class`,
+    ],
+    mixins: [transitionMixins, useCustomNavbar],
+    props: {
+      ...props,
+    },
+    emits: [
+      'leaved',
+      'destory',
+      'close',
+    ],
+    data() {
+      const info = needTransformKeys.reduce((acc, key) => ({
+        ...acc,
+        [toCamel(`data-${key}`)]: props[key].default,
+      }), {});
 
-    return {
-      prefix,
-      classPrefix: name,
-      innerIcon: null,
-      ...info,
+      return {
+        prefix,
+        classPrefix: name,
+        innerIcon: null,
+        ...info,
 
-      isLoading: false,
-      hideTimer: null,
-      tools,
-    };
-  },
+        isLoading: false,
+        hideTimer: null,
+        tools,
+      };
+    },
 
-  computed: {
-    iconTClass() {
+    computed: { iconTClass() {
       return canUseVirtualHost() ? this.iconRealClass : '';
     },
     iconClass() {
@@ -131,81 +131,82 @@ export default uniComponent({
       const { classPrefix, dataDirection } = this;
       return `${classPrefix}__icon ${classPrefix}__icon--${dataDirection}`;
     },
-  },
-
-  pageLifetimes: {
-    hide() {
-      this.hide();
     },
-  },
 
-  beforeUnmount() {
-    this.destroyed();
-  },
-  methods: {
-    show(options) {
-      if (this.hideTimer) clearTimeout(this.hideTimer);
-      const iconMap = {
-        loading: 'loading',
-        success: 'check-circle',
-        warning: 'error-circle',
-        error: 'close-circle',
-      };
-      const typeMapIcon = iconMap[options?.theme];
-      const defaultOptions = {
-        direction: props.direction.default,
-        duration: props.duration.default,
-        icon: props.icon.default,
-        message: props.message.default,
-        placement: props.placement.default,
-        preventScrollThrough: props.preventScrollThrough.default,
-        theme: props.theme.default,
-        close: null,
-      };
+    pageLifetimes: {
+      hide() {
+        this.hide();
+      },
+    },
 
-      const data = {
-        ...defaultOptions,
-        ...options,
-        realVisible: true,
-        isLoading: options?.theme === 'loading',
-        innerIcon: calcIcon(coalesce(typeMapIcon, options.icon)),
-      };
+    beforeUnmount() {
+      this.destroyed();
+    },
+    methods: {
+      show(options) {
+        if (this.hideTimer) clearTimeout(this.hideTimer);
+        const iconMap = {
+          loading: 'loading',
+          success: 'check-circle',
+          warning: 'error-circle',
+          error: 'close-circle',
+        };
+        const typeMapIcon = iconMap[options?.theme];
+        const defaultOptions = {
+          direction: props.direction.default,
+          duration: props.duration.default,
+          icon: props.icon.default,
+          message: props.message.default,
+          placement: props.placement.default,
+          preventScrollThrough: props.preventScrollThrough.default,
+          theme: props.theme.default,
+          close: null,
+        };
 
-      const { duration } = data;
+        const data = {
+          ...defaultOptions,
+          ...options,
+          realVisible: true,
+          isLoading: options?.theme === 'loading',
+          innerIcon: calcIcon(coalesce(typeMapIcon, options.icon)),
+        };
 
-      Object.keys(data).forEach((key) => {
-        if (needTransformKeys.includes(key)) {
-          this[toCamel(`data-${key}`)] = data[key];
-        } else {
-          this[key] = data[key];
+        const { duration } = data;
+
+        Object.keys(data).forEach((key) => {
+          if (needTransformKeys.includes(key)) {
+            this[toCamel(`data-${key}`)] = data[key];
+          } else {
+            this[key] = data[key];
+          }
+        });
+
+        if (duration > 0) {
+          this.hideTimer = setTimeout(() => {
+            this.hide();
+          }, duration);
         }
-      });
+      },
 
-      if (duration > 0) {
-        this.hideTimer = setTimeout(() => {
-          this.hide();
-        }, duration);
-      }
+      hide() {
+        if (!this.realVisible) return; // 避免重复触发（页面关闭、定时关闭都会触发）
+        this.realVisible = false;
+        this?.close?.();
+        this.$emit('close');
+      },
+
+      destroyed() {
+        if (this.hideTimer) {
+          clearTimeout(this.hideTimer);
+          this.hideTimer = null;
+        }
+        this.$emit('destory');
+      },
+
+      loop() {},
     },
-
-    hide() {
-      if (!this.realVisible) return; // 避免重复触发（页面关闭、定时关闭都会触发）
-      this.realVisible = false;
-      this?.close?.();
-      this.$emit('close');
-    },
-
-    destroyed() {
-      if (this.hideTimer) {
-        clearTimeout(this.hideTimer);
-        this.hideTimer = null;
-      }
-      this.$emit('destory');
-    },
-
-    loop() {},
-  },
-});
+  }),
+};
 
 </script>
 <style scoped src="./toast.css"></style>

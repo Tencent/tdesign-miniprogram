@@ -81,7 +81,7 @@ export interface TdPullDownRefreshProps {
    * 组件状态，值为 `true` 表示下拉状态，值为 `false` 表示收起状态
    * @default false
    */
-  value?: boolean;
+  value?: boolean | null;
   /**
    * 组件状态，值为 `true` 表示下拉状态，值为 `false` 表示收起状态，非受控属性
    * @default false

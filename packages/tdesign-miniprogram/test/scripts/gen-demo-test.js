@@ -5,17 +5,25 @@ const upperFirst = require('lodash/upperFirst');
 
 // const fixedDateComponentList = ['config-provider', 'time-picker', 'date-picker', 'table', 'form', 'calendar']; // 需要在测试阶段固定日期的组件，table中因为有filter例子 渲染datepicker需要固定
 
-// // TODO 过滤掉一些导致挂掉的demo
-// const filterCom = ['table'];
-// const filterDemo = {
-//   table: ['virtual-scroll'],
-// };
-
-const CONFIG = {
-  sourcePath: path.resolve(__dirname, '../../../components'),
-  targetPath: path.resolve(__dirname, '../../../components'),
-  defaultTemplate: ["import path from 'path';", "import simulate from 'miniprogram-simulate';"].join('\n'),
+// 过滤掉一些导致测试挂掉的 demo，key 为组件名，value 为需要跳过的 demo 名称列表
+// value 为 '*' 时表示跳过该组件的所有 demo，为数组时表示跳过指定的 demo
+const filterDemo = {
+  'chat-list': ['ec-canvas', 'agent'],
 };
+
+const defaultTemplate = ["import path from 'path';", "import simulate from 'miniprogram-simulate';"].join('\n');
+
+// 需要扫描的组件目录列表，每项的 sourcePath/targetPath 指向包含各组件子目录的文件夹
+const COMPONENT_DIRS = [
+  {
+    sourcePath: path.resolve(__dirname, '../../../components'),
+    targetPath: path.resolve(__dirname, '../../../components'),
+  },
+  {
+    sourcePath: path.resolve(__dirname, '../../../pro-components/chat'),
+    targetPath: path.resolve(__dirname, '../../../pro-components/chat'),
+  },
+];
 
 /*
 import simulate from 'miniprogram-simulate';
@@ -35,8 +43,6 @@ describe('radio basic demo', () => {
   });
 });
 */
-
-const { sourcePath, targetPath, defaultTemplate } = CONFIG;
 
 const data = `/**
  * 该文件为由脚本 \`npm run test:demo\` 自动生成，如需修改，执行脚本命令即可。请勿手写直接修改，否则会被覆盖
@@ -62,15 +68,18 @@ describe('${newComponent}', () => {
 });`;
 }
 
-function outputOneComponentTestFile(component, demoFiles) {
+function outputOneComponentTestFile(component, demoFiles, srcPath, targetPath) {
+  // 整个组件被过滤，直接跳过
+  if (filterDemo[component] === '*') return;
+
   const outputPath = `${targetPath}/${component}/__test__`;
   const imports = [];
   const demos = [];
   let hasDemo = false;
 
   demoFiles.forEach((demo) => {
-    const fp = path.resolve(`${sourcePath}/${component}/_example/${demo}`);
-    // if (filterCom.includes(component) && filterDemo[component].includes(demo.replace('.vue', ''))) return;
+    const fp = path.resolve(`${srcPath}/${component}/_example/${demo}`);
+    if (Array.isArray(filterDemo[component]) && filterDemo[component].includes(demo)) return;
     if (fs.statSync(fp).isDirectory() && demo !== 'skyline') {
       // const name = camelCase(demo);
       // imports.push(`import ${name} from '@/examples/${component}/demos/${demo}';`);
@@ -101,24 +110,30 @@ function outputOneComponentTestFile(component, demoFiles) {
   });
 }
 
-function main() {
-  fs.readdir(sourcePath, (err, files) => {
+function generateForDirectory(srcPath, targetPath) {
+  fs.readdir(srcPath, (err, files) => {
     if (err) {
       console.log('Error', err);
     } else {
       const generation = (componentFolder) => {
-        const demoPath = `${sourcePath}/${componentFolder}/_example`;
+        const demoPath = `${srcPath}/${componentFolder}/_example`;
         if (!fs.existsSync(demoPath)) return;
         fs.readdir(demoPath, (err1, demoFiles) => {
           if (err1) {
             console.log('Error', err1);
           } else {
-            outputOneComponentTestFile(componentFolder, demoFiles);
+            outputOneComponentTestFile(componentFolder, demoFiles, srcPath, targetPath);
           }
         });
       };
       files.forEach(generation);
     }
+  });
+}
+
+function main() {
+  COMPONENT_DIRS.forEach(({ sourcePath, targetPath }) => {
+    generateForDirectory(sourcePath, targetPath);
   });
 }
 

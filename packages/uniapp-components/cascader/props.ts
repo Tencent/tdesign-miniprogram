@@ -25,7 +25,7 @@ export default {
   /** 未选中时的提示文案 */
   placeholder: {
     type: String,
-    default: '选择选项',
+    default: '',
   },
   /** 透传 Popup 组件全部属性 */
   popupProps: {

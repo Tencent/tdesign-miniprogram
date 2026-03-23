@@ -6,7 +6,7 @@
     >
       <t-chat-list
         id="chatList"
-        @scroll="onScroll($event, { tagId: 'chatList' })"
+        @scroll="(e) => onScroll(e, { tagId: 'chatList' })"
       >
         <block
           v-for="(item, index) in chatList"
@@ -42,7 +42,7 @@
             :disabled="disabled"
             :auto-rise-with-keyboard="true"
             :render-presets="renderPresets"
-            @update:value="value = $event"
+            @update:value="(e) => value = e"
             @send="onSend"
             @stop="onStop"
             @focus="onFocus"
@@ -55,6 +55,7 @@
         class="popover-actionbar"
         placement="longpress"
         :long-press-position="longPressPosition"
+        :action-bar="['quote', 'copy', 'share']"
         @actions="handlePopoverAction"
       />
       <!-- 内置虚拟列表优化性能仅在data属性中使用 -->

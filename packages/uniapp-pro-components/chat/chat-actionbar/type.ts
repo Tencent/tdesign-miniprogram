@@ -7,19 +7,18 @@
 export interface TdChatActionbarProps {
   /**
    * 操作栏配置
-   * @default () => ['replay', 'copy', 'good', 'bad', 'share']
+   * @default ['replay', 'copy', 'good', 'bad', 'share']
    */
-  actionBar?: Array<'replay' | 'copy' | 'good' | 'bad' | 'share'>;
+  actionBar?: Array<'replay' | 'copy' | 'good' | 'bad' | 'share' | 'quote'>;
   /**
    * 【实验】聊天消息的唯一标识
    * @default ''
    */
   chatId?: string;
   /**
-   * 评价内容
-   * @default ''
+   * 评价类型， 可选 'good'（点赞） 或者 'bad'（点踩）， 默认为空
    */
-  comment?: string;
+  comment?: 'good' | 'bad';
   /**
    * 被复制的内容
    * @default ''
@@ -36,26 +35,30 @@ export interface TdChatActionbarProps {
    */
   disabled?: boolean;
   /**
+   * 【实验】长按操作栏位置
+   */
+  longPressPosition?: ChatActionbarLongPressPosition;
+  /**
    * 【实验】操作栏位置
    * @default start
    */
   placement?: 'start' | 'end' | 'space-around' | 'space-between' | 'longpress';
   /**
-   * 【实验】长按触发点的位置信息，用于定位 popover
-   */
-  longPressPosition?: {
-    type: ObjectConstructor;
-    value?: {
-      pageX: number;
-      pageY: number;
-      clientX: number;
-      clientY: number;
-      x: number;
-      y: number;
-    };
-  };
-  /**
    * 点击点赞，点踩，复制，分享，重新生成按钮时触发发
    */
-  onActions?: (context: { name: string; active: boolean }) => void;
+  onActions?: (context: { name: string; active: boolean; chatId: string }) => void;
+}
+
+export interface ChatActionbarLongPressPosition {
+  type?: object;
+  value?: LongPressPositionValue;
+}
+
+export interface LongPressPositionValue {
+  pageX?: number;
+  pageY?: number;
+  clientX?: number;
+  clientY?: number;
+  x?: number;
+  y?: number;
 }

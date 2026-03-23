@@ -1,6 +1,6 @@
 <template>
   <view
-    :class="utils.cls(classPrefix, [['popup', usePopup]]) + ' ' + classPrefix + '-switch-mode--' + switchMode + ' ' + tClass"
+    :class="'' + utils.cls(classPrefix, [['popup', usePopup]]) + ' ' + classPrefix + '-switch-mode--' + switchMode + ' ' + tClass"
     :style="customStyle"
   >
     <view

@@ -50,29 +50,30 @@ import { uniComponent } from '@tdesign/uniapp/common/src/index';
 const name = `${prefix}-chat-markdown-table`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    multipleSlots: true,
-    styleIsolation: 'shared',
-  },
-
+export default {
   components: {
     chatMarkdownNode,
   },
-
-  props: {
-    node: {
-      type: Object,
-      default: () => ({}),
+  ...uniComponent({
+    name,
+    options: {
+      multipleSlots: true,
+      styleIsolation: 'shared',
     },
-  },
 
-  data() {
-    return {
-      classPrefix: name,
-    };
-  },
-});
+    props: {
+      node: {
+        type: Object,
+        default: () => ({}),
+      },
+    },
+
+    data() {
+      return {
+        classPrefix: name,
+      };
+    },
+  }),
+};
 </script>
 <style scoped src="./chat-markdown-table.css"></style>

@@ -41,6 +41,7 @@
     placement="longpress"
     bind:actions="handlePopoverAction"
     longPressPosition="{{longPressPosition}}"
+    action-bar="{{['quote', 'copy', 'share']}}"
   />
   <!-- 内置虚拟列表优化性能仅在data属性中使用 -->
   <!-- <t-chat id="chatList" bindscroll="onScroll" data="{{chatList}}"></t-chat> -->

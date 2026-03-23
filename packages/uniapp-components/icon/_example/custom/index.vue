@@ -11,7 +11,7 @@
         prefix="icon"
         :data-name="item"
         data-type="prefix"
-        @click="onIconTap($event, { name: item, type: 'prefix' })"
+        @click="(e) => onIconTap(e, { name: item, type: 'prefix' })"
       />
 
       <view class="demo__card-name">
