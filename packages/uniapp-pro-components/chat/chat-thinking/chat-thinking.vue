@@ -94,16 +94,15 @@ export default {
     collapsed(val) {
       this.localCollapsed = val;
     },
-  },
 
-  created() {
-    this.localCollapsed = this.collapsed;
-  },
+    created() {
+      this.localCollapsed = this.collapsed;
+    },
 
-  mounted() {
+    mounted() {
     // 调用新增的函数
-    this.setContentStyle();
-  },
+      this.setContentStyle();
+    },
 
     methods: {
       handleCollapse() {
