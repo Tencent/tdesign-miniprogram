@@ -28,12 +28,12 @@
       </view>
       <view
         v-if="!localCollapsed"
-        :class="tools.cls(classPrefix + '__bd', [layout])"
+        :class="'' + tools.cls(classPrefix + '__bd', [layout])"
         :style="contentStyle"
       >
         <view
           v-if="content.text"
-          :class="tools.cls(classPrefix + '__bd__inner', [])"
+          :class="'' + tools.cls(classPrefix + '__bd__inner', [])"
         >
           {{ content.text }}
         </view>
