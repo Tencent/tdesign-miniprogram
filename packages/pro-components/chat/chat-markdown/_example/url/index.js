@@ -4,11 +4,8 @@ Page({
   data: {
     markdownContent: markdownData,
   },
-  handleLinkTap(e) {
-    // 打开链接
-    console.log('监听点击', e);
-    wx.navigateTo({
-      url: e.detail.node.href,
-    });
+  handleNodeTap(e) {
+    // 打印节点信息
+    console.log('点击节点', e.detail.node);
   },
 });
