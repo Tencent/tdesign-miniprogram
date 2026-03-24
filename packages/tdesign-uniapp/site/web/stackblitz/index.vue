@@ -70,6 +70,7 @@
         </svg>
       </div>
     </form>
+    <!-- eslint-disable-next-line vue/no-deprecated-slot-attribute -->
     <span slot="content">在 Stackblitz 中打开</span>
   </td-tooltip>
 </template>
