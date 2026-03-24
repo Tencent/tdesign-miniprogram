@@ -2,7 +2,7 @@
   <view class="chat-example-block">
     <t-chat-markdown
       :content="markdownContent"
-      @click="handleLinkTap"
+      @click="handleNodeTap"
     />
   </view>
 </template>
@@ -42,12 +42,8 @@ export default {
     };
   },
   methods: {
-    handleLinkTap(e) {
-      // 打开链接
-      console.log('监听点击', e);
-      uni.navigateTo({
-        url: e.node.href,
-      });
+    handleNodeTap(e) {
+      console.log('节点信息', e.node);
     },
   },
 };
