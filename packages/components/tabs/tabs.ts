@@ -136,6 +136,11 @@ export default class Tabs extends SuperComponent {
         if (isActive !== child.data.active || !child.initialized) {
           child.render(isActive, this);
         }
+        // 当存在 animation 时，translate 偏移依赖所有 panel 占位，
+        // 需确保目标 index 及之前的 panel 都已激活 DOM
+        if (this.data.animation && idx <= index && !child.data.hasActivated) {
+          child.setData({ hasActivated: true });
+        }
         Labels.push(child.data.label);
       });
 

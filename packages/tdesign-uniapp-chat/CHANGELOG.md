@@ -5,6 +5,22 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.2.2 `2026-03-23`
+
+### 🚨 Breaking Changes
+
+- `ChatSender`: 附件末尾没有添加入口，移除无实际意义的 `fileAdd` 事件 @zydemail ([#4331](https://github.com/Tencent/tdesign-miniprogram/pull/4331))
+
+### 🐞 Bug Fixes
+
+- `Attachments`: 修复小程序下使用标签选择器的警告问题 @novlan1 ([#4320](https://github.com/Tencent/tdesign-miniprogram/pull/4320))
+- `ChatActionbar`: 修复 `actionBar` 属性无效以及长按气泡框不显示浮层的问题 @zydemail ([#4348](https://github.com/Tencent/tdesign-miniprogram/pull/4348))
+- `ChatMarkdown`: 修复组件输入值为一个空项的列表时出现 `undefined` 的问题 @mimaoxiao ([#4334](https://github.com/Tencent/tdesign-miniprogram/pull/4334))
+
+### 📝 Documentation
+
+- `Attachments`: 移除 `addable` 属性相关文档描述 @zydemail ([#4331](https://github.com/Tencent/tdesign-miniprogram/pull/4331))
+
 ## 🌈 0.2.1 `2026-03-04`
 
 ### 🚀 Features
