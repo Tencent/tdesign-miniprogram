@@ -43,7 +43,16 @@ export default {
   },
   methods: {
     handleNodeTap(e) {
-      console.log('节点信息', e.node);
+      const node = e.node;
+      // 打印节点信息
+      console.log('节点信息', node);
+      // 图片节点预览
+      if (node && node.type === 'image') {
+        uni.previewImage({
+          urls: [node.href],
+          current: node.href,
+        });
+      }
     },
   },
 };
