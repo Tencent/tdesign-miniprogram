@@ -3,10 +3,18 @@ import { validateRules, ValidateStatus } from './form-model';
 import config from '../common/config';
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import usingConfig from '../mixins/using-config';
+import { isNumeric } from '../common/validator';
 
 const { prefix } = config;
 const parentComponentName = 'form';
 const componentName = `form-item`;
+
+/** 规范化 labelWidth，确保输出带有 CSS 单位 */
+function normalizeLabelWidth(value: string | number | undefined): string {
+  if (!value) return '';
+  if (isNumeric(value)) return `${value}px`;
+  return String(value);
+}
 
 @wxComponent()
 export default class FormItem extends SuperComponent {
@@ -35,6 +43,8 @@ export default class FormItem extends SuperComponent {
     needResetField: false,
     resetValidating: false,
     formRules: [],
+    innerLabelAlign: '',
+    innerLabelWidth: '',
     form: {},
     colon: false,
     innerShowErrorMessage: true,
@@ -48,13 +58,14 @@ export default class FormItem extends SuperComponent {
         this.form = target;
         const { globalConfig } = this.data;
         const { requiredMark, labelAlign, labelWidth, showErrorMessage } = this.properties;
-        const isRequired = target.data.rules[this.properties.name]?.some((rule) => rule.required);
+        const formRules = target.data.rules?.[this.properties.name];
+        const isRequired = formRules?.some((rule) => rule.required);
 
         this.setData({
-          formRules: target.data.rules[this.properties.name],
+          formRules,
           colon: target.data.colon,
-          labelAlign: labelAlign || target.data.labelAlign || 'right',
-          labelWidth: labelWidth || target.data.labelWidth,
+          innerLabelAlign: labelAlign || target.data.labelAlign,
+          innerLabelWidth: normalizeLabelWidth(labelWidth || target.data.labelWidth),
           innerRequiredMark: requiredMark || target.data.requiredMark || globalConfig.requiredMark || isRequired,
           innerShowErrorMessage:
             typeof showErrorMessage === 'boolean' ? showErrorMessage : target.properties.showErrorMessage,

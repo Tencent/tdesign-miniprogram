@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="tools._style([
+    :style="'' + tools._style([
       customStyle,
       show ? '' : 'display: none',
       inheritColor ? 'color: inherit' : ''
@@ -19,15 +19,13 @@
         classPrefix + '__spinner ' +
           classPrefix + '__spinner--' + theme + ' ' + (reverse ? 'reverse' : '')
       ]"
-      :style="
-        'width: ' +tools.addUnit(size) +
-          '; height: ' + tools.addUnit(size) +
-          '; ' + (inheritColor ? 'color: inherit;' : '') +
-          ' ' + (indicator ? '' : 'display: none;') +
-          ' ' + (duration ? 'animation-duration: ' + duration / 1000 + 's;' : '') +
-          ' animation-play-state: ' + (pause ? 'paused' : 'running') +
-          ';'
-      "
+      :style="'width: ' +tools.addUnit(size) +
+        '; height: ' + tools.addUnit(size) +
+        '; ' + (inheritColor ? 'color: inherit;' : '') +
+        ' ' + (indicator ? '' : 'display: none;') +
+        ' ' + (duration ? 'animation-duration: ' + duration / 1000 + 's;' : '') +
+        ' animation-play-state: ' + (pause ? 'paused' : 'running') +
+        ';'"
       :aria-role="ariaRole || 'img'"
       :aria-label="ariaLabel || text || '加载中'"
     >
@@ -77,7 +75,7 @@
       <slot name="indicator" />
     </view>
     <view
-      :class="[tools.cls(classPrefix + '__text', [layout]), tClassText]"
+      :class="['' + tools.cls(classPrefix + '__text', [layout]), tClassText]"
       :aria-hidden="indicator"
       :aria-label="ariaLabel || text"
     >
@@ -99,58 +97,60 @@ import tools from '../common/utils.wxs';
 const name = `${prefix}-loading`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    multipleSlots: true,
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-text`,
-    `${prefix}-class-indicator`,
-  ],
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      show: true,
-      tools,
-    };
-  },
-  watch: {
-    loading: {
-      handler(value) {
-        const {
-          delay,
-        } = this;
-        if (this.timer) {
-          clearTimeout(this.timer);
-        }
-        if (value && delay) {
-          this.timer = setTimeout(() => {
+export default {
+  ...uniComponent({
+    name,
+    options: {
+      multipleSlots: true,
+      styleIsolation: 'shared',
+    },
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-text`,
+      `${prefix}-class-indicator`,
+    ],
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        show: true,
+        tools,
+      };
+    },
+    watch: {
+      loading: {
+        handler(value) {
+          const {
+            delay,
+          } = this;
+          if (this.timer) {
+            clearTimeout(this.timer);
+          }
+          if (value && delay) {
+            this.timer = setTimeout(() => {
+              this.show = value;
+              this.timer = null;
+            }, delay);
+          } else {
             this.show = value;
-            this.timer = null;
-          }, delay);
-        } else {
-          this.show = value;
-        }
+          }
+        },
+        immediate: true,
       },
-      immediate: true,
     },
-  },
-  beforeUnmount() {
-    clearTimeout(this.timer);
-  },
-  methods: {
-    refreshPage() {
-      this.$emit('reload');
+    beforeUnmount() {
+      clearTimeout(this.timer);
     },
-  },
-});
+    methods: {
+      refreshPage() {
+        this.$emit('reload');
+      },
+    },
+  }),
+};
 
 </script>
 <style src="./loading.css" scoped>

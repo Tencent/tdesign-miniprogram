@@ -9,7 +9,7 @@
     >
       <view
         v-if="switchMode === 'year-month'"
-        :class="utils.cls(classPrefix + '__icon', [['disabled', preYearBtnDisable]])"
+        :class="'' + utils.cls(classPrefix + '__icon', [['disabled', preYearBtnDisable]])"
         :data-disabled="preYearBtnDisable"
         data-type="pre-year"
         @click="handleSwitchModeChange"
@@ -17,7 +17,7 @@
         <t-icon name="chevron-left-double" />
       </view>
       <view
-        :class="utils.cls(classPrefix + '__icon', [['disabled', prevMonthBtnDisable]])"
+        :class="'' + utils.cls(classPrefix + '__icon', [['disabled', prevMonthBtnDisable]])"
         :data-disabled="prevMonthBtnDisable"
         data-type="pre-month"
         @click="handleSwitchModeChange"
@@ -33,7 +33,7 @@
       :class="classPrefix + '__action'"
     >
       <view
-        :class="utils.cls(classPrefix + '__icon', [['disabled', nextMonthBtnDisable]])"
+        :class="'' + utils.cls(classPrefix + '__icon', [['disabled', nextMonthBtnDisable]])"
         :data-disabled="nextMonthBtnDisable"
         data-type="next-month"
         @click="handleSwitchModeChange"
@@ -42,7 +42,7 @@
       </view>
       <view
         v-if="switchMode === 'year-month'"
-        :class="utils.cls(classPrefix + '__icon', [['disabled', nextYearBtnDisable]])"
+        :class="'' + utils.cls(classPrefix + '__icon', [['disabled', nextYearBtnDisable]])"
         :data-disabled="nextYearBtnDisable"
         data-type="next-year"
         @click="handleSwitchModeChange"

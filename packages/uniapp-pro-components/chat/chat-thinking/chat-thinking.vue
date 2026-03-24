@@ -1,9 +1,9 @@
 <template>
   <view
     :class="classPrefix"
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
   >
-    <view :class="tools.cls(classPrefix + '__inner', [layout])">
+    <view :class="'' + tools.cls(classPrefix + '__inner', [layout])">
       <view :class="classPrefix + '__hd'">
         <block v-if="status === 'error' || status === 'complete' || status === 'stop'">
           <t-icon
@@ -12,12 +12,12 @@
           />
         </block>
         <block v-else>
-          <TChatLoading :animation="animation" />
+          <t-chat-loading :animation="animation" />
         </block>
         <view :class="classPrefix + '__txt'">
-          {{ content.title || '正在思考中...' }}
+          {{ content.title || globalConfig.status[status] }}
         </view>
-        <view :data-event-opts="[['tap', [['handleCollapse', ['$event']]]]]">
+        <view>
           <t-icon
             :custom-style="localCollapsed ? 'transform: rotate(180deg)' : ''"
             :t-class="tools.cls(classPrefix + '__icon', [['collapse', true]])"
@@ -54,39 +54,42 @@ import tools from '@tdesign/uniapp/common/utils.wxs';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
 
-const name = `${prefix}-chat-thinking`;
+import usingConfig from '../mixins/using-config';
+const componentName = 'chat-thinking';
+const name = `${prefix}-${componentName}`;
 
-export default uniComponent({
-  name,
-  options: {
-    multipleSlots: true,
-    styleIsolation: 'shared',
-  },
-
+export default {
   components: {
     TIcon,
     TChatLoading,
   },
+  ...uniComponent({
+    name,
+    mixins: [usingConfig({ componentName })],
+    options: {
+      multipleSlots: true,
+      styleIsolation: 'shared',
+    },
 
-  props: {
-    ...props,
-  },
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        localCollapsed: false,
+        contentStyle: '',
+        classPrefix: name,
+        tools,
+      };
+    },
 
-  data() {
-    return {
-      localCollapsed: false,
-      contentStyle: '',
-      classPrefix: name,
-      tools,
-    };
-  },
-
-  watch: {
-    maxHeight: {
-      handler() {
-        this.setContentStyle();
+    watch: {
+      maxHeight: {
+        handler() {
+          this.setContentStyle();
+        },
+        immediate: true,
       },
-      immediate: true,
     },
     collapsed(val) {
       this.localCollapsed = val;
@@ -102,24 +105,25 @@ export default uniComponent({
     this.setContentStyle();
   },
 
-  methods: {
-    handleCollapse() {
+    methods: {
+      handleCollapse() {
       // 切换内部折叠状态
-      this.localCollapsed = !this.localCollapsed;
+        this.localCollapsed = !this.localCollapsed;
 
-      // 通知父组件状态变化
-      this.$emit('collapsedChange',  this.localCollapsed);
+        // 通知父组件状态变化
+        this.$emit('collapsedChange',  this.localCollapsed);
+      },
+      setContentStyle() {
+        if (this.maxHeight) {
+          this.contentStyle = `max-height: ${this.maxHeight}px;`;
+        } else {
+          this.contentStyle = '';
+        }
+      },
     },
-    setContentStyle() {
-      if (this.maxHeight) {
-        this.contentStyle = `max-height: ${this.maxHeight}px;`;
-      } else {
-        this.contentStyle = '';
-      }
-    },
-  },
 
-});
+  }),
+};
 
 
 </script>

@@ -3,15 +3,13 @@
     <t-date-time-picker
       :use-popup="false"
       title="选择日期"
-      :visible="dateVisible"
       mode="date"
-      :default-value="date"
+      :value="value"
       format="YYYY-MM-DD"
       :start="start"
       :end="end"
       @change="onConfirm"
       @pick="onColumnChange"
-      @cancel="hidePicker"
     />
   </view>
 </template>
@@ -24,9 +22,7 @@ export default {
   },
   data() {
     return {
-      mode: '',
-      dateVisible: false,
-      date: new Date('2021-12-23').getTime(),
+      value: new Date('2021-12-23').getTime(),
       // 支持时间戳传入
 
       // 指定选择区间起始值
@@ -35,18 +31,10 @@ export default {
     };
   },
   methods: {
-    hidePicker() {
-      const { mode } = this;
-      this[`${mode}Visible`] = false;
-    },
-
     onConfirm(e) {
       const { value } = e;
-      const { mode } = this;
       console.log('confirm', value);
-      this[mode] = value;
-      this[`${mode}Text`] = value;
-      this.hidePicker();
+      this.value = value;
     },
 
     onColumnChange(e) {

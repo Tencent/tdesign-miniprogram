@@ -1,7 +1,7 @@
 <template>
   <view
-    :style="tools._style([customStyle])"
-    :class="tools.cls(classPrefix, [['border', !borderless], ['readonly', readonly], ['disabled', disabled]])
+    :style="'' + tools._style([customStyle])"
+    :class="'' + tools.cls(classPrefix, [['border', !borderless], ['readonly', readonly], ['disabled', disabled]])
       + ' ' + classPrefix + '--layout-' + layout + ' ' + tClass"
     aria-describedby
   >
@@ -42,7 +42,7 @@
         @click="onClick"
       >
         <input
-          :class="getInputClass(classPrefix, suffix, align, disabled) + ' ' + tClassInput"
+          :class="''+ getInputClass(classPrefix, suffix, align, disabled) + ' ' + tClassInput"
           :maxlength="allowInputOverMax ? -1 : maxlength"
           :disabled="disabled || readonly"
           :placeholder="placeholder"
@@ -157,237 +157,237 @@ import { RELATION_MAP } from '../common/relation/parent-map.js';
 const name = `${prefix}-input`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  inject: {
-    [RELATION_MAP.FormKey]: {
-      default: null,
-    },
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-prefix-icon`,
-    `${prefix}-class-label`,
-    `${prefix}-class-input`,
-    `${prefix}-class-clearable`,
-    `${prefix}-class-suffix`,
-    `${prefix}-class-suffix-icon`,
-    `${prefix}-class-tips`,
-  ],
+export default {
   components: {
     TIcon,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'blur',
-    'change',
-    'clear',
-    'click',
-    'enter',
-    'focus',
-    'keyboardheightchange',
-    'nicknamereview',
-    'validate',
-    'update:value',
-  ],
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      classBasePrefix: prefix,
-      showClearIcon: true,
-      tools,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    inject: {
+      [RELATION_MAP.FormKey]: {
+        default: null,
+      },
+    },
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-prefix-icon`,
+      `${prefix}-class-label`,
+      `${prefix}-class-input`,
+      `${prefix}-class-clearable`,
+      `${prefix}-class-suffix`,
+      `${prefix}-class-suffix-icon`,
+      `${prefix}-class-tips`,
+    ],
+    props: {
+      ...props,
+    },
+    emits: [
+      'blur',
+      'change',
+      'clear',
+      'click',
+      'enter',
+      'focus',
+      'keyboardheightchange',
+      'nicknamereview',
+      'validate',
+      'update:value',
+    ],
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        classBasePrefix: prefix,
+        showClearIcon: true,
+        tools,
 
-      dataValue: coalesce(this.value, this.defaultValue),
+        dataValue: coalesce(this.value, this.defaultValue),
 
       // rawValue: '',
       // innerMaxLen: -1,
-    };
-  },
-  computed: {
-  },
-  watch: {
-    prefixIcon: {
-      handler(v) {
-        this.iPrefixIcon = calcIcon(v);
-      },
-      immediate: true,
+      };
     },
-
-    suffixIcon: {
-      handler(v) {
-        this.iSuffixIcon = calcIcon(v);
+    watch: {
+      prefixIcon: {
+        handler(v) {
+          this.iPrefixIcon = calcIcon(v);
+        },
+        immediate: true,
       },
-      immediate: true,
-    },
 
-    clearable: {
-      handler(v) {
-        this.iClearIcon = calcIcon(v, 'close-circle-filled');
+      suffixIcon: {
+        handler(v) {
+          this.iSuffixIcon = calcIcon(v);
+        },
+        immediate: true,
       },
-      immediate: true,
-    },
 
-    clearTrigger: 'updateClearIconVisible',
-    disabled: 'updateClearIconVisible',
-    readonly: 'updateClearIconVisible',
+      clearable: {
+        handler(v) {
+          this.iClearIcon = calcIcon(v, 'close-circle-filled');
+        },
+        immediate: true,
+      },
 
-    value: {
-      handler(v) {
-        this.dataValue = v;
-        nextTick().then(() => {
+      clearTrigger: 'updateClearIconVisible',
+      disabled: 'updateClearIconVisible',
+      readonly: 'updateClearIconVisible',
+
+      value: {
+        handler(v) {
           this.dataValue = v;
+          nextTick().then(() => {
+            this.dataValue = v;
 
-          if (this[RELATION_MAP.FormKey]
+            if (this[RELATION_MAP.FormKey]
             && this[RELATION_MAP.FormKey].onValueChange) {
-            this[RELATION_MAP.FormKey].onValueChange(v);
-          }
-        });
+              this[RELATION_MAP.FormKey].onValueChange(v);
+            }
+          });
+        },
       },
     },
-  },
-  mounted() {
-    const { value, defaultValue } = this;
-    this.updateValue(coalesce(value, defaultValue, ''));
+    mounted() {
+      const { value, defaultValue } = this;
+      this.updateValue(coalesce(value, defaultValue, ''));
 
-    this.updateClearIconVisible();
-  },
-  methods: {
-    getInputClass,
-    updateValue(value) {
+      this.updateClearIconVisible();
+    },
+    methods: {
+      getInputClass,
+      updateValue(value) {
       // this.rawValue = value;
-      this.dataValue = value;
-
-      const { allowInputOverMax, maxcharacter, maxlength } = this;
-      if (!allowInputOverMax && maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
-        const { length, characters } = getCharacterLength('maxcharacter', value, maxcharacter);
-        nextTick().then(() => {
-          this.dataValue = characters;
-        });
-        this.count = length;
-      } else if (!allowInputOverMax && maxlength && maxlength > 0 && !Number.isNaN(maxlength)) {
-        const { length, characters } = getCharacterLength('maxlength', value, maxlength);
-        nextTick().then(() => {
-          this.dataValue = characters;
-        });
-        this.count = length;
-      } else {
-        nextTick().then(() => {
-          this.dataValue = value;
-        });
         this.dataValue = value;
-        this.count = isDef(value) ? String(value).length : 0;
-      }
+
+        const { allowInputOverMax, maxcharacter, maxlength } = this;
+        if (!allowInputOverMax && maxcharacter && maxcharacter > 0 && !Number.isNaN(maxcharacter)) {
+          const { length, characters } = getCharacterLength('maxcharacter', value, maxcharacter);
+          nextTick().then(() => {
+            this.dataValue = characters;
+          });
+          this.count = length;
+        } else if (!allowInputOverMax && maxlength && maxlength > 0 && !Number.isNaN(maxlength)) {
+          const { length, characters } = getCharacterLength('maxlength', value, maxlength);
+          nextTick().then(() => {
+            this.dataValue = characters;
+          });
+          this.count = length;
+        } else {
+          nextTick().then(() => {
+            this.dataValue = value;
+          });
+          this.dataValue = value;
+          this.count = isDef(value) ? String(value).length : 0;
+        }
 
       // this.updateInnerMaxLen();
-    },
-    // updateInnerMaxLen() {
-    // this.innerMaxLen = this.getInnerMaxLen();
-    // },
-    // getInnerMaxLen() {
-    //   const {
-    //     allowInputOverMax,
-    //     maxcharacter,
-    //     maxlength,
-    //     dataValue,
-    //     rawValue,
-    //     count,
-    //   } = this;
-    //   return getInnerMaxLen({
-    //     allowInputOverMax,
-    //     maxcharacter,
-    //     maxlength,
-    //     dataValue,
-    //     rawValue,
-    //     count,
-    //   });
-    // },
+      },
+      // updateInnerMaxLen() {
+      // this.innerMaxLen = this.getInnerMaxLen();
+      // },
+      // getInnerMaxLen() {
+      //   const {
+      //     allowInputOverMax,
+      //     maxcharacter,
+      //     maxlength,
+      //     dataValue,
+      //     rawValue,
+      //     count,
+      //   } = this;
+      //   return getInnerMaxLen({
+      //     allowInputOverMax,
+      //     maxcharacter,
+      //     maxlength,
+      //     dataValue,
+      //     rawValue,
+      //     count,
+      //   });
+      // },
 
-    updateClearIconVisible(value = false) {
-      const { clearTrigger, disabled, readonly } = this;
-      if (disabled || readonly) {
-        this.showClearIcon = false;
-        return;
-      }
-      this.showClearIcon = value || clearTrigger === 'always';
-    },
+      updateClearIconVisible(value = false) {
+        const { clearTrigger, disabled, readonly } = this;
+        if (disabled || readonly) {
+          this.showClearIcon = false;
+          return;
+        }
+        this.showClearIcon = value || clearTrigger === 'always';
+      },
 
-    onInput(e) {
-      const { value, cursor, keyCode } = e.detail;
-      this.updateValue(value);
-      this.emitChange({ value: this.dataValue, cursor, keyCode });
-    },
+      onInput(e) {
+        const { value, cursor, keyCode } = e.detail;
+        this.updateValue(value);
+        this.emitChange({ value: this.dataValue, cursor, keyCode });
+      },
 
-    onChange(e) {
-      if (this.type !== 'nickname') return;
-      const { value } = e.detail;
-      this.updateValue(value);
-      this.emitChange({ value: this.dataValue });
-    },
+      onChange(e) {
+        if (this.type !== 'nickname') return;
+        const { value } = e.detail;
+        this.updateValue(value);
+        this.emitChange({ value: this.dataValue });
+      },
 
-    emitChange(data) {
-      this.$emit('change', data);
-      this.$emit('update:value', data.value);
-    },
+      emitChange(data) {
+        this.$emit('change', data);
+        this.$emit('update:value', data.value);
+      },
 
-    onFocus(e) {
-      this.updateClearIconVisible(true);
-      this.$emit('focus', e.detail);
-    },
+      onFocus(e) {
+        this.updateClearIconVisible(true);
+        this.$emit('focus', e.detail);
+      },
 
-    onBlur(e) {
-      this.updateClearIconVisible();
+      onBlur(e) {
+        this.updateClearIconVisible();
 
-      if (this[RELATION_MAP.FormKey]
+        if (this[RELATION_MAP.FormKey]
         && this[RELATION_MAP.FormKey].onBlur) {
-        this[RELATION_MAP.FormKey].onBlur(this.dataValue);
-      }
+          this[RELATION_MAP.FormKey].onBlur(this.dataValue);
+        }
 
-      // 失焦时处理 format
-      if (typeof this.format === 'function') {
-        const v = this.format(e.detail.value);
-        this.updateValue(v);
-        this.$emit('blur', { value: this.dataValue, cursor: this.count });
-        return;
-      }
-      this.$emit('blur', e.detail);
-    },
+        // 失焦时处理 format
+        if (typeof this.format === 'function') {
+          const v = this.format(e.detail.value);
+          this.updateValue(v);
+          this.$emit('blur', { value: this.dataValue, cursor: this.count });
+          return;
+        }
+        this.$emit('blur', e.detail);
+      },
 
-    onConfirm(e) {
-      this.$emit('enter', e.detail);
-    },
+      onConfirm(e) {
+        this.$emit('enter', e.detail);
+      },
 
-    onSuffixClick() {
-      this.$emit('click', { trigger: 'suffix' });
-    },
+      onSuffixClick() {
+        this.$emit('click', { trigger: 'suffix' });
+      },
 
-    onSuffixIconClick() {
-      this.$emit('click', { trigger: 'suffix-icon' });
-    },
+      onSuffixIconClick() {
+        this.$emit('click', { trigger: 'suffix-icon' });
+      },
 
-    clearInput(e) {
-      this.$emit('clear', e.detail);
-      this.dataValue = '';
-    },
+      clearInput(e) {
+        this.$emit('clear', e.detail);
+        this.dataValue = '';
+      },
 
-    onKeyboardHeightChange(e) {
-      this.$emit('keyboardheightchange', e.detail);
-    },
+      onKeyboardHeightChange(e) {
+        this.$emit('keyboardheightchange', e.detail);
+      },
 
-    onNickNameReview(e) {
-      this.$emit('nicknamereview', e.detail);
-    },
+      onNickNameReview(e) {
+        this.$emit('nicknamereview', e.detail);
+      },
 
-    onClick() {
-      this.$emit('click', { trigger: 'input' });
+      onClick() {
+        this.$emit('click', { trigger: 'input' });
+      },
     },
-  },
-});
+  }),
+};
 
 </script>
 <style scoped src="./input.css"></style>

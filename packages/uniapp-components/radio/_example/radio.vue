@@ -26,7 +26,6 @@
         </t-demo>
 
         <t-demo
-          title=""
           desc="横向单选框"
         >
           <horizontal-demo />

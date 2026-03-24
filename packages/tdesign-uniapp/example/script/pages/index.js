@@ -20,6 +20,8 @@ const {
   skylineUx,
   chat,
   skylineChat,
+  other,
+  skylineOther,
 } = components;
 
 const getComponentPages = (list,  isSkyline) => list.reduce((acc, item) => [
@@ -42,6 +44,7 @@ function main() {
     nav,
     form,
     display,
+    other,
   ];
 
   const skylineList = SHOW_SKYLINE_PAGES ? [
@@ -51,6 +54,7 @@ function main() {
     skylineForm,
     skylineDisplay,
     skylineUx,
+    skylineOther,
   ] : [];
 
   const componentPages = getComponentPages(list, false);

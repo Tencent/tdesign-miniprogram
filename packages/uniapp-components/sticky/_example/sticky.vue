@@ -19,13 +19,11 @@
         <base-demo :navbar-height="navbarHeight" />
       </t-demo>
       <t-demo
-        title=""
         desc="吸顶距离"
       >
         <offset-demo :navbar-height="navbarHeight" />
       </t-demo>
       <t-demo
-        title=""
         desc="指定容器"
       >
         <container-demo :navbar-height="navbarHeight" />

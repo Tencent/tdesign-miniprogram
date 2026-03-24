@@ -15,7 +15,6 @@
     />
     <t-progress
       :percentage="88"
-      color=""
       status="active"
     />
   </view>

@@ -1,7 +1,7 @@
 <template>
   <view
     :class="tClass + ' ' + classPrefix + ' ' + transitionClass"
-    :style="tools._style([visible ? '' : 'display: none', customStyle])"
+    :style="'' + tools._style([visible ? '' : 'display: none', customStyle])"
     @transitionend="onTransitionEnd"
   >
     <slot />
@@ -17,33 +17,35 @@ import tools from '../common/utils.wxs';
 const name = `${prefix}-transition`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-  ],
-  mixins: [transition()],
-  props: {
-  },
-  data() {
-    return {
-      classPrefix: name,
-      tools,
-    };
-  },
-  watch: {
+export default {
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    externalClasses: [
+      `${prefix}-class`,
+    ],
+    mixins: [transition()],
+    props: {
+    },
+    data() {
+      return {
+        classPrefix: name,
+        tools,
+      };
+    },
+    watch: {
 
-  },
-  mounted() {
+    },
+    mounted() {
 
-  },
-  methods: {
+    },
+    methods: {
 
-  },
-});
+    },
+  }),
+};
 
 </script>
 <style scoped src="./transition.css"></style>

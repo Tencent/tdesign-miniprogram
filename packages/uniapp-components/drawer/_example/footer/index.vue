@@ -17,7 +17,7 @@
       :items="sidebar"
       :using-custom-navbar="!isMPAlipay"
       :custom-navbar-height="gCustomNavbarHeight"
-      @update:visible="visible = $event"
+      @update:visible="(e) => visible = e"
       @overlay-click="overlayClick"
       @item-click="itemClick"
     >

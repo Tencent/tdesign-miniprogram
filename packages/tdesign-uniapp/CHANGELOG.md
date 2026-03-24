@@ -5,6 +5,29 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.8.0 `2026-03-23`
+
+### 🚨 Breaking Changes
+
+- `DateTimePicker`: 废弃 `custom-locale` 属性，请用 `ConfigProvider` 替换该功能 @novlan1 ([#4350](https://github.com/Tencent/tdesign-miniprogram/pull/4350))
+
+### 🚀 Features
+
+- `Cascader`: 新增 `PopupProps` 属性，透传至 `Popup` @novlan1 ([#4320](https://github.com/Tencent/tdesign-miniprogram/pull/4320))
+- `ConfigProvider`: 新增 `ConfigProvider` 全局特性配置组件 @novlan1 ([#4350](https://github.com/Tencent/tdesign-miniprogram/pull/4350))
+- `Picker`: 支持 `v-model:value` 语法糖 @novlan1 ([#4320](https://github.com/Tencent/tdesign-miniprogram/pull/4320))
+
+### 🐞 Bug Fixes
+
+- `ColorPicker`: 修复弹窗模式下预设颜色（swatch-colors）无法横向滚动 @novlan1 ([#4350](https://github.com/Tencent/tdesign-miniprogram/pull/4350))
+- `DateTimePicker`: 修复 `format` 含非日期 `token`（如 `ddd`）时，格式化后的值回传导致 `Invalid Date` 的问题 @novlan1 ([#4320](https://github.com/Tencent/tdesign-miniprogram/pull/4320))
+- `Form`: 修复 `required-mark` 无效问题 @novlan1 ([#4350](https://github.com/Tencent/tdesign-miniprogram/pull/4350))
+- `Tabs`: 修复开启 `animation` 和 `lazy` 时，跳跃切换选项卡内容区域显示异常的问题 @novlan1 ([#4350](https://github.com/Tencent/tdesign-miniprogram/pull/4350))
+- `Toast`: 修复 `setup` 语法下，函数式调用时找不到实例的问题 @novlan1 ([#4312](https://github.com/Tencent/tdesign-miniprogram/pull/4312))
+- `Upload`: 
+  - 修复 `@upload-disabled-mask` 变量默认值错误 @anlyyao ([#4303](https://github.com/Tencent/tdesign-miniprogram/pull/4303))
+  - 修复 H5 环境下回调中 URL 错误问题 @novlan1 ([#4320](https://github.com/Tencent/tdesign-miniprogram/pull/4320))
+
 ## 🌈 0.7.3 `2026-03-04`
 
 ### 🐞 Bug Fixes

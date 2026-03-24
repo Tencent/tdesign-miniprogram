@@ -46,8 +46,8 @@ export default {
   usingCustomNavbar: Boolean,
   /** 隐藏/显示预览 */
   visible: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdImageViewerProps['visible'],
   },
   /** 隐藏/显示预览，非受控属性 */
   defaultVisible: Boolean,

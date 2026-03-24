@@ -1,15 +1,15 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  class="{{classPrefix}} {{formItemClass}} {{formClass}}--{{labelAlign}} {{formClass}}-item__{{name}} {{prefix}}-class"
+  class="{{classPrefix}} {{formItemClass}} {{formClass}}--{{innerLabelAlign}} {{formClass}}-item__{{name}} {{prefix}}-class"
   style="{{_._style([style, customStyle])}}"
 >
-  <view class="{{formItemClass}}-wrap {{formItemClass}}--{{labelAlign}} {{prefix}}-class-wrap">
+  <view class="{{formItemClass}}-wrap {{formItemClass}}--{{innerLabelAlign}} {{prefix}}-class-wrap">
     <!-- 标签区域 -->
     <view
       wx:if="{{label}}"
-      class="{{_.cls(labelClass, [labelAlign, ['required', innerRequiredMark], ['required-right', innerRequiredMark && requiredMarkPosition === 'right']])}}  {{prefix}}-class-label"
-      style="width: {{labelWidth}}"
+      class="{{_.cls(labelClass, [innerLabelAlign, ['required', innerRequiredMark], ['required-right', innerRequiredMark && requiredMarkPosition === 'right']])}}  {{prefix}}-class-label"
+      style="width: {{innerLabelWidth}}"
     >
       <label for="{{for}}">{{label}}</label>
       <block wx:if="{{colon}}">{{globalConfig.colonText}}</block>

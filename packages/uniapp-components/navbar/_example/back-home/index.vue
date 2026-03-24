@@ -16,7 +16,7 @@
             aria-label="返回"
             name="chevron-left"
             :t-class="getIconTClass('back')"
-            :class="getIconClass('back')"
+            :class="''+getIconClass('back')"
             @click="onBack"
           />
           <t-icon
@@ -25,7 +25,7 @@
             aria-label="首页"
             name="home"
             :t-class="getIconTClass('home')"
-            :class="getIconClass('home')"
+            :class="''+getIconClass('home')"
             @click="onGoHome"
           />
         </view>

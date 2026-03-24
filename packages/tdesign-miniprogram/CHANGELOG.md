@@ -24,6 +24,7 @@ docClass: timeline
 - `DateTimePicker`: 修复 `format` 含非日期 `token`（如 `ddd`）时，格式化后的值回传导致 `Invalid Date` 的问题 @novlan1 ([#4320](https://github.com/Tencent/tdesign-miniprogram/pull/4320))
 - `Grid`: 修复右侧 `border` 边框在浏览器及部分机型上渲染错误 @anlyyao ([#4280](https://github.com/Tencent/tdesign-miniprogram/pull/4280))
 - `Upload`: 修复 `@upload-disabled-mask` 变量默认值错误 @anlyyao ([#4303](https://github.com/Tencent/tdesign-miniprogram/pull/4303))
+- `ChatMarkdown`: 修复组件输入值为一个空项的列表时出现 `undefined` 的问题 @mimaoxiao ([#4334](https://github.com/Tencent/tdesign-miniprogram/pull/4334))
 
 ### 📝 Documentation
 

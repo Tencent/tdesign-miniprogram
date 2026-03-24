@@ -29,7 +29,7 @@
       </t-steps>
 
       <t-button
-        :style="`margin-top: 32rpx; display: block`"
+        :style="'' +`margin-top: 32rpx; display: block`"
         block
         @click="toNext"
       >

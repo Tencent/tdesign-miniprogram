@@ -44,11 +44,11 @@ export interface TdDropdownItemProps {
   /**
    * 选中值
    */
-  value?: DropdownValue;
+  value?: DropdownValue | null;
   /**
    * 选中值，非受控属性
    */
-  defaultValue?: DropdownValue;
+  defaultValue?: DropdownValue | null;
   /**
    * 值改变时触发
    */
@@ -70,7 +70,7 @@ export interface TdDropdownItemProps {
 export interface DropdownOption {
   label: string;
   disabled: boolean;
-  value: DropdownValue;
+  value: DropdownValue | null;
 }
 
 export type DropdownValue = string | number | Array<DropdownValue>;

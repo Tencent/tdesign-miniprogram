@@ -1,6 +1,6 @@
 <template>
   <view
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     :class="classPrefix"
   >
     <view
@@ -110,17 +110,15 @@
         :aria-valuenow="computedProgress"
         :aria-label="ariaLabel || (isIOS ? getIOSAriaLabel(status) : getAndroidAriaLabel(status))"
         aria-live="polite"
-        :class="tools.cls(classPrefix + '__canvas--circle', [[size, true]])"
-        :style="
-          getCircleStyle(size, heightBar) +
-            '; background-image: conic-gradient(from var(--td-progress-circle-from), ' +
-            (colorCircle || STATUS_COLOR[status] || 'var(--td-progress-inner-bg-color)') +
-            ' ' +
-            computedProgress +
-            '%, ' +
-            (bgColorBar || 'var(--td-progress-track-bg-color)') +
-            ' 0%);'
-        "
+        :class="'' + tools.cls(classPrefix + '__canvas--circle', [[size, true]])"
+        :style="getCircleStyle(size, heightBar) +
+          '; background-image: conic-gradient(from var(--td-progress-circle-from), ' +
+          (colorCircle || STATUS_COLOR[status] || 'var(--td-progress-inner-bg-color)') +
+          ' ' +
+          computedProgress +
+          '%, ' +
+          (bgColorBar || 'var(--td-progress-track-bg-color)') +
+          ' 0%);'"
       >
         <view :class="classPrefix + '__canvas--inner ' + tClassBar">
           <view
@@ -174,84 +172,86 @@ import {
 
 const name = `${prefix}-progress`;
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-bar`,
-    `${prefix}-class-label`,
-  ],
+export default {
   components: {
     TIcon,
   },
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      colorBar: '',
-      heightBar: '',
-      computedStatus: '',
-      computedProgress: 0,
-      isIOS: isIOSValidator(),
-      STATUS,
-      STATUS_TEXT,
-      PRO_THEME,
-
-      STATUS_COLOR,
-      LINE_STATUS_ICON,
-      CIRCLE_STATUS_ICON,
-
-      getCircleStyle,
-      getIOSAriaLabel,
-      getAndroidAriaLabel,
-      tools,
-    };
-  },
-  watch: {
-    percentage: {
-      handler(percentage) {
-        percentage = Math.max(0, Math.min(percentage, 100));
-
-        this.computedStatus = percentage === 100 ? 'success' : '';
-        this.computedProgress = percentage;
-      },
-      immediate: true,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-
-    color: {
-      handler(color) {
-        this.colorBar = getBackgroundColor(color);
-        this.colorCircle = typeof color === 'object' ? '' : color; // 环形不支持渐变，单独处理
-      },
-      immediate: true,
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-bar`,
+      `${prefix}-class-label`,
+    ],
+    props: {
+      ...props,
     },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        colorBar: '',
+        heightBar: '',
+        computedStatus: '',
+        computedProgress: 0,
+        isIOS: isIOSValidator(),
+        STATUS,
+        STATUS_TEXT,
+        PRO_THEME,
 
-    strokeWidth: {
-      handler(strokeWidth) {
-        if (!strokeWidth) {
-          return '';
-        }
-        this.heightBar = unitConvert(strokeWidth);
-      },
-      immediate: true,
+        STATUS_COLOR,
+        LINE_STATUS_ICON,
+        CIRCLE_STATUS_ICON,
+
+        getCircleStyle,
+        getIOSAriaLabel,
+        getAndroidAriaLabel,
+        tools,
+      };
     },
+    watch: {
+      percentage: {
+        handler(percentage) {
+          percentage = Math.max(0, Math.min(percentage, 100));
 
-    trackColor: {
-      handler(trackColor) {
-        this.bgColorBar = trackColor;
+          this.computedStatus = percentage === 100 ? 'success' : '';
+          this.computedProgress = percentage;
+        },
+        immediate: true,
       },
-      immediate: true,
-    },
-  },
-  methods: {
 
-  },
-});
+      color: {
+        handler(color) {
+          this.colorBar = getBackgroundColor(color);
+          this.colorCircle = typeof color === 'object' ? '' : color; // 环形不支持渐变，单独处理
+        },
+        immediate: true,
+      },
+
+      strokeWidth: {
+        handler(strokeWidth) {
+          if (!strokeWidth) {
+            return '';
+          }
+          this.heightBar = unitConvert(strokeWidth);
+        },
+        immediate: true,
+      },
+
+      trackColor: {
+        handler(trackColor) {
+          this.bgColorBar = trackColor;
+        },
+        immediate: true,
+      },
+    },
+    methods: {
+
+    },
+  }),
+};
 </script>
 <style scoped src="./progress.css"></style>

@@ -32,7 +32,6 @@
         </view>
       </t-demo>
       <t-demo
-        title=""
         desc="多选上传图片"
       >
         <view class="upload-demo">
@@ -43,7 +42,6 @@
         </view>
       </t-demo>
       <t-demo
-        title=""
         desc="长按拖拽排序图片"
       >
         <view class="upload-demo">
@@ -66,7 +64,6 @@
       </t-demo>
       <!-- #ifdef MP-WEIXIN -->
       <t-demo
-        title=""
         desc="从聊天记录上选"
       >
         <view class="upload-demo">

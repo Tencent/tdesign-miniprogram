@@ -7,7 +7,7 @@
       variant="outline"
       data-key="imageOnTop"
       block
-      @click="showDialog($event, { key: 'imageOnTop' })"
+      @click="(e) => showDialog(e, { key: 'imageOnTop' })"
     >
       图片置顶-带标题描述
     </t-button>
@@ -37,7 +37,7 @@
       variant="outline"
       data-key="imageOnTopWithContent"
       block
-      @click="showDialog($event, { key: 'imageOnTopWithContent' })"
+      @click="(e) => showDialog(e, { key: 'imageOnTopWithContent' })"
     >
       图片置顶-无标题
     </t-button>
@@ -66,7 +66,7 @@
       variant="outline"
       data-key="imageOnTopWithTitle"
       block
-      @click="showDialog($event, { key: 'imageOnTopWithTitle' })"
+      @click="(e) => showDialog(e, { key: 'imageOnTopWithTitle' })"
     >
       图片置顶-纯标题
     </t-button>
@@ -95,7 +95,7 @@
       variant="outline"
       data-key="imageOnMiddleWithImage"
       block
-      @click="showDialog($event, { key: 'imageOnMiddleWithImage' })"
+      @click="(e) => showDialog(e, { key: 'imageOnMiddleWithImage' })"
     >
       图片置顶-纯图片
     </t-button>
@@ -123,7 +123,7 @@
       variant="outline"
       data-key="imageOnMiddle"
       block
-      @click="showDialog($event, { key: 'imageOnMiddle' })"
+      @click="(e) => showDialog(e, { key: 'imageOnMiddle' })"
     >
       图片居中-带标题描述
     </t-button>
@@ -153,7 +153,7 @@
       variant="outline"
       data-key="imageOnMiddleWithTitle"
       block
-      @click="showDialog($event, { key: 'imageOnMiddleWithTitle' })"
+      @click="(e) => showDialog(e, { key: 'imageOnMiddleWithTitle' })"
     >
       图片居中-纯标题
     </t-button>

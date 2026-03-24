@@ -8,7 +8,7 @@
           theme="dark"
           content="弹出气泡内容"
           data-target="dark"
-          @update:visible="visible.dark = $event"
+          @update:visible="(e) => visible.dark = e"
         >
           <t-button
             class="button-width--small"
@@ -16,7 +16,7 @@
             variant="outline"
             size="large"
             data-target="dark"
-            @click="showPopover($event, { target: 'dark' })"
+            @click="(e) => showPopover(e, { target: 'dark' })"
           >
             深色
           </t-button>
@@ -29,7 +29,7 @@
           theme="light"
           content="弹出气泡内容"
           data-target="light"
-          @update:visible="visible.light = $event"
+          @update:visible="(e) => visible.light = e"
         >
           <t-button
             class="button-width--small"
@@ -37,7 +37,7 @@
             variant="outline"
             size="large"
             data-target="light"
-            @click="showPopover($event, { target: 'light' })"
+            @click="(e) => showPopover(e, { target: 'light' })"
           >
             浅色
           </t-button>
@@ -50,7 +50,7 @@
           theme="brand"
           content="弹出气泡内容"
           data-target="brand"
-          @update:visible="visible.brand = $event"
+          @update:visible="(e) => visible.brand = e"
         >
           <t-button
             class="button-width--small"
@@ -58,7 +58,7 @@
             variant="outline"
             size="large"
             data-target="brand"
-            @click="showPopover($event, { target: 'brand' })"
+            @click="(e) => showPopover(e, { target: 'brand' })"
           >
             品牌色
           </t-button>
@@ -76,7 +76,7 @@
           theme="success"
           content="弹出气泡内容"
           data-target="success"
-          @update:visible="visible.success = $event"
+          @update:visible="(e) => visible.success = e"
         >
           <t-button
             class="button-width--small"
@@ -84,7 +84,7 @@
             variant="outline"
             size="large"
             data-target="success"
-            @click="showPopover($event, { target: 'success' })"
+            @click="(e) => showPopover(e, { target: 'success' })"
           >
             成功色
           </t-button>
@@ -97,7 +97,7 @@
           theme="warning"
           content="弹出气泡内容"
           data-target="warning"
-          @update:visible="visible.warning = $event"
+          @update:visible="(e) => visible.warning = e"
         >
           <t-button
             class="button-width--small"
@@ -105,7 +105,7 @@
             variant="outline"
             size="large"
             data-target="warning"
-            @click="showPopover($event, { target: 'warning' })"
+            @click="(e) => showPopover(e, { target: 'warning' })"
           >
             警告色
           </t-button>
@@ -118,7 +118,7 @@
           theme="error"
           content="弹出气泡内容"
           data-target="error"
-          @update:visible="visible.error = $event"
+          @update:visible="(e) => visible.error = e"
         >
           <t-button
             class="button-width--small"
@@ -126,7 +126,7 @@
             variant="outline"
             size="large"
             data-target="error"
-            @click="showPopover($event, { target: 'error' })"
+            @click="(e) => showPopover(e, { target: 'error' })"
           >
             错误色
           </t-button>

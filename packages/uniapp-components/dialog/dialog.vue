@@ -64,7 +64,7 @@
         <slot name="middle" />
         <view
           :class="
-            tools.cls(classPrefix + '__footer', [
+            '' + tools.cls(classPrefix + '__footer', [
               ['column', dataButtonLayout === 'vertical'],
               ['full', buttonVariant == 'text' && (!dataActions || dataActions.length == 0)]
             ])
@@ -105,14 +105,14 @@
               :app-parameter="actionItem.appParameter"
               :show-message-card="actionItem.showMessageCard"
               :aria-label="actionItem.ariaLabel"
-              @click="onTplButtonTap($event, { type: 'action', extra: index })"
-              @getuserinfo="onTplButtonTap($event, { type: 'action', extra: index })"
-              @contact="onTplButtonTap($event, { type: 'action', extra: index })"
-              @getphonenumber="onTplButtonTap($event, { type: 'action', extra: index })"
-              @error="onTplButtonTap($event, { type: 'action', extra: index })"
-              @opensetting="onTplButtonTap($event, { type: 'action', extra: index })"
-              @launchapp="onTplButtonTap($event, { type: 'action', extra: index })"
-              @agreeprivacyauthorization="onTplButtonTap($event, { type: 'action', extra: index })"
+              @click="(e) => onTplButtonTap(e, { type: 'action', extra: index })"
+              @getuserinfo="(e) => onTplButtonTap(e, { type: 'action', extra: index })"
+              @contact="(e) => onTplButtonTap(e, { type: 'action', extra: index })"
+              @getphonenumber="(e) => onTplButtonTap(e, { type: 'action', extra: index })"
+              @error="(e) => onTplButtonTap(e, { type: 'action', extra: index })"
+              @opensetting="(e) => onTplButtonTap(e, { type: 'action', extra: index })"
+              @launchapp="(e) => onTplButtonTap(e, { type: 'action', extra: index })"
+              @agreeprivacyauthorization="(e) => onTplButtonTap(e, { type: 'action', extra: index })"
             >
               <slot v-if="actionItem.useDefaultSlot || false" />
             </t-button>
@@ -151,14 +151,14 @@
               :app-parameter="innerCancel.appParameter"
               :show-message-card="innerCancel.showMessageCard"
               :aria-label="innerCancel.ariaLabel"
-              @click="onCancel($event, { type: 'action', extra: 0 })"
-              @getuserinfo="onCancel($event, { type: 'action', extra: 0 })"
-              @contact="onCancel($event, { type: 'action', extra: 0 })"
-              @getphonenumber="onCancel($event, { type: 'action', extra: 0 })"
-              @error="onCancel($event, { type: 'action', extra: 0 })"
-              @opensetting="onCancel($event, { type: 'action', extra: 0 })"
-              @launchapp="onCancel($event, { type: 'action', extra: 0 })"
-              @agreeprivacyauthorization="onCancel($event, { type: 'action', extra: 0 })"
+              @click="(e) => onCancel(e, { type: 'action', extra: 0 })"
+              @getuserinfo="(e) => onCancel(e, { type: 'action', extra: 0 })"
+              @contact="(e) => onCancel(e, { type: 'action', extra: 0 })"
+              @getphonenumber="(e) => onCancel(e, { type: 'action', extra: 0 })"
+              @error="(e) => onCancel(e, { type: 'action', extra: 0 })"
+              @opensetting="(e) => onCancel(e, { type: 'action', extra: 0 })"
+              @launchapp="(e) => onCancel(e, { type: 'action', extra: 0 })"
+              @agreeprivacyauthorization="(e) => onCancel(e, { type: 'action', extra: 0 })"
             >
               <slot v-if="innerCancel.useDefaultSlot || false" />
             </t-button>
@@ -197,14 +197,14 @@
               :app-parameter="innerConfirm.appParameter"
               :show-message-card="innerConfirm.showMessageCard"
               :aria-label="innerConfirm.ariaLabel"
-              @click="onConfirm($event, { type: 'action', extra: 0 })"
-              @getuserinfo="onConfirm($event, { type: 'action', extra: 0 })"
-              @contact="onConfirm($event, { type: 'action', extra: 0 })"
-              @getphonenumber="onConfirm($event, { type: 'action', extra: 0 })"
-              @error="onTplButtonConfirmonTap($event, { type: 'action', extra: 0 })"
-              @opensetting="onConfirm($event, { type: 'action', extra: 0 })"
-              @launchapp="onConfirm($event, { type: 'action', extra: 0 })"
-              @agreeprivacyauthorization="onConfirm($event, { type: 'action', extra: 0 })"
+              @click="(e) => onConfirm(e, { type: 'action', extra: 0 })"
+              @getuserinfo="(e) => onConfirm(e, { type: 'action', extra: 0 })"
+              @contact="(e) => onConfirm(e, { type: 'action', extra: 0 })"
+              @getphonenumber="(e) => onConfirm(e, { type: 'action', extra: 0 })"
+              @error="(e) => onTplButtonConfirmonTap(e, { type: 'action', extra: 0 })"
+              @opensetting="(e) => onConfirm(e, { type: 'action', extra: 0 })"
+              @launchapp="(e) => onConfirm(e, { type: 'action', extra: 0 })"
+              @agreeprivacyauthorization="(e) => onConfirm(e, { type: 'action', extra: 0 })"
             >
               <slot v-if="innerConfirm.useDefaultSlot || false" />
             </t-button>
@@ -233,189 +233,191 @@ import { canUseVirtualHost } from '../common/version';
 const name = `${prefix}-dialog`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-content`,
-    `${prefix}-class-confirm`,
-    `${prefix}-class-cancel`,
-    `${prefix}-class-action`,
-  ],
-  mixins: [getFunctionalMixin(props), useCustomNavbar],
+export default {
   components: {
     TPopup,
     TIcon,
     TButton,
   },
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      buttonVariant: 'text',
-      tools,
-
-      innerConfirm: null,
-      innerCancel: null,
-      useVirtualHost: canUseVirtualHost(),
-    };
-  },
-  watch: {
-    dataConfirmBtn: {
-      handler() {
-        this.onWatchBtn(this.dataConfirmBtn, this.dataCancelBtn);
-      },
-      immediate: true,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-    dataCancelBtn: {
-      handler() {
-        this.onWatchBtn(this.dataConfirmBtn, this.dataCancelBtn);
-      },
-      immediate: true,
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-content`,
+      `${prefix}-class-confirm`,
+      `${prefix}-class-cancel`,
+      `${prefix}-class-action`,
+    ],
+    mixins: [getFunctionalMixin(props), useCustomNavbar],
+    props: {
+      ...props,
     },
-  },
-  methods: {
-    coalesce,
-    getActionClass,
-    onWatchBtn(confirm, cancel) {
-      const { prefix, classPrefix, dataButtonLayout } = this;
-      const rect = { buttonVariant: 'text' };
-      const useBaseVariant = [confirm, cancel].some(item => isObject(item) && item.variant && item.variant !== 'text');
-      const buttonMap = { confirm, cancel };
-      const cls = [`${classPrefix}__button`];
-      const externalCls = [];
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        buttonVariant: 'text',
+        tools,
 
-      if (useBaseVariant) {
-        rect.buttonVariant = 'base';
-        cls.push(`${classPrefix}__button--${dataButtonLayout}`);
-      } else {
-        cls.push(`${classPrefix}__button--text`);
-        externalCls.push(`${classPrefix}-button`);
-      }
+        innerConfirm: null,
+        innerCancel: null,
+        useVirtualHost: canUseVirtualHost(),
+      };
+    },
+    watch: {
+      dataConfirmBtn: {
+        handler() {
+          this.onWatchBtn(this.dataConfirmBtn, this.dataCancelBtn);
+        },
+        immediate: true,
+      },
+      dataCancelBtn: {
+        handler() {
+          this.onWatchBtn(this.dataConfirmBtn, this.dataCancelBtn);
+        },
+        immediate: true,
+      },
+    },
+    methods: {
+      coalesce,
+      getActionClass,
+      onWatchBtn(confirm, cancel) {
+        const { prefix, classPrefix, dataButtonLayout } = this;
+        const rect = { buttonVariant: 'text' };
+        const useBaseVariant = [confirm, cancel].some(item => isObject(item) && item.variant && item.variant !== 'text');
+        const buttonMap = { confirm, cancel };
+        const cls = [`${classPrefix}__button`];
+        const externalCls = [];
 
-      const useVirtualHost = canUseVirtualHost();
-
-      Object.keys(buttonMap).forEach((key) => {
-        const btn = buttonMap[key];
-        const rootClass = [...cls, `${classPrefix}__button--${key}`];
-        const tClass = [...externalCls, this[toCamel(`${prefix}-class-${key}`)], ...rootClass].join(' ');
-
-        const base = {
-          block: true,
-          rootClass,
-
-          tClass: useVirtualHost ? tClass : '',
-          class: !useVirtualHost ? tClass : '',
-
-          variant: rect.buttonVariant,
-          openType: '',
-        };
-
-        if (key === 'cancel' && rect.buttonVariant === 'base') {
-          base.theme = 'light';
-        }
-        const parsedKey = `inner${toPascal(key)}`;
-
-        if (typeof btn === 'string') {
-          rect[`${parsedKey}`] = { ...base, content: btn };
-        } else if (btn && typeof btn === 'object') {
-          rect[`${parsedKey}`] = { ...base, ...btn };
+        if (useBaseVariant) {
+          rect.buttonVariant = 'base';
+          cls.push(`${classPrefix}__button--${dataButtonLayout}`);
         } else {
-          rect[`${parsedKey}`] = null;
+          cls.push(`${classPrefix}__button--text`);
+          externalCls.push(`${classPrefix}-button`);
         }
-      });
 
-      Object.keys(rect).forEach((key) => {
-        this[key] = rect[key];
-      });
-    },
-    onTplButtonTap(e, { type, extra }) {
-      const evtType = e.type;
-      const button = this[`_${type}`];
-      const cbName = `bind${evtType}`;
+        const useVirtualHost = canUseVirtualHost();
 
-      if (type === 'action') {
-        this.onActionTap(extra);
-        return;
-      }
+        Object.keys(buttonMap).forEach((key) => {
+          const btn = buttonMap[key];
+          const rootClass = [...cls, `${classPrefix}__button--${key}`];
+          const tClass = [...externalCls, this[toCamel(`${prefix}-class-${key}`)], ...rootClass].join(' ');
 
-      if (typeof button?.[cbName] === 'function') {
-        const closeFlag = button[cbName](e);
-        if (closeFlag) {
+          const base = {
+            block: true,
+            rootClass,
+
+            tClass: useVirtualHost ? tClass : '',
+            class: !useVirtualHost ? tClass : '',
+
+            variant: rect.buttonVariant,
+            openType: '',
+          };
+
+          if (key === 'cancel' && rect.buttonVariant === 'base') {
+            base.theme = 'light';
+          }
+          const parsedKey = `inner${toPascal(key)}`;
+
+          if (typeof btn === 'string') {
+            rect[`${parsedKey}`] = { ...base, content: btn };
+          } else if (btn && typeof btn === 'object') {
+            rect[`${parsedKey}`] = { ...base, ...btn };
+          } else {
+            rect[`${parsedKey}`] = null;
+          }
+        });
+
+        Object.keys(rect).forEach((key) => {
+          this[key] = rect[key];
+        });
+      },
+      onTplButtonTap(e, { type, extra }) {
+        const evtType = e.type;
+        const button = this[`_${type}`];
+        const cbName = `bind${evtType}`;
+
+        if (type === 'action') {
+          this.onActionTap(extra);
+          return;
+        }
+
+        if (typeof button?.[cbName] === 'function') {
+          const closeFlag = button[cbName](e);
+          if (closeFlag) {
+            this.close();
+          }
+        }
+
+        const hasOpenType = !!button?.openType;
+        if (!hasOpenType && ['confirm', 'cancel'].includes(type)) {
+          this[toCamel(`on-${type}`)]?.(type);
+        }
+
+        if (evtType !== 'click') {
+          const success = e.detail?.errMsg?.indexOf('ok') > -1;
+          this.$emit(success ? 'open-type-event' : 'open-type-error-event', e.detail);
+        }
+      },
+
+      onConfirm(e) {
+        this.$emit('confirm', { e });
+
+        if (this._onConfirm) {
+          this._onConfirm({ trigger: 'confirm' });
           this.close();
         }
-      }
+      },
 
-      const hasOpenType = !!button?.openType;
-      if (!hasOpenType && ['confirm', 'cancel'].includes(type)) {
-        this[toCamel(`on-${type}`)]?.(type);
-      }
+      onCancel(e) {
+        const trigger = { trigger: 'cancel' };
 
-      if (evtType !== 'click') {
-        const success = e.detail?.errMsg?.indexOf('ok') > -1;
-        this.$emit(success ? 'open-type-event' : 'open-type-error-event', e.detail);
-      }
-    },
+        this.$emit('cancel', { e });
+        this.$emit('close', trigger);
 
-    onConfirm(e) {
-      this.$emit('confirm', { e });
+        if (this._onCancel) {
+          this._onCancel(trigger);
+          this.close();
+        }
+      },
 
-      if (this._onConfirm) {
-        this._onConfirm({ trigger: 'confirm' });
-        this.close();
-      }
-    },
-
-    onCancel(e) {
-      const trigger = { trigger: 'cancel' };
-
-      this.$emit('cancel', { e });
-      this.$emit('close', trigger);
-
-      if (this._onCancel) {
-        this._onCancel(trigger);
-        this.close();
-      }
-    },
-
-    onClose() {
-      const trigger = { trigger: 'close-btn' };
-
-      this.$emit('close', trigger);
-      this._onCancel?.(trigger);
-      this.close();
-    },
-
-    close() {
-      this.dataVisible = false;
-    },
-
-    overlayClick(e) {
-      this.$emit('overlay-click', { e });
-
-      if (this.dataCloseOnOverlayClick) {
-        const trigger = { trigger: 'overlay' };
+      onClose() {
+        const trigger = { trigger: 'close-btn' };
 
         this.$emit('close', trigger);
         this._onCancel?.(trigger);
         this.close();
-      }
-    },
+      },
 
-    onActionTap(index) {
-      this.$emit('action', { index });
-      if (this._onAction) {
-        this._onAction({ index });
-        this.close();
-      }
+      close() {
+        this.dataVisible = false;
+      },
+
+      overlayClick(e) {
+        this.$emit('overlay-click', { e });
+
+        if (this.dataCloseOnOverlayClick) {
+          const trigger = { trigger: 'overlay' };
+
+          this.$emit('close', trigger);
+          this._onCancel?.(trigger);
+          this.close();
+        }
+      },
+
+      onActionTap(index) {
+        this.$emit('action', { index });
+        if (this._onAction) {
+          this._onAction({ index });
+          this.close();
+        }
+      },
     },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./dialog.css"></style>
