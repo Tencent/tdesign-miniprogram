@@ -28,6 +28,14 @@ export const docs = [
         componentEn: () => import('@docs/overview.en-US.md'),
       },
       {
+        title: 'MCP',
+        titleEn: 'MCP',
+        name: 'MCP',
+        path: '/uniapp/mcp',
+        component: () => import('@common/docs/mcp.md'),
+        componentEn: () => import('@common/docs/mcp.en-US.md'),
+      },
+      {
         title: '常见问题',
         titleEn: 'FAQ',
         name: 'faq',

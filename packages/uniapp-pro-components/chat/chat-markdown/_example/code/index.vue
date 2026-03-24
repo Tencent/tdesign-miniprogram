@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     handleNodeTap(e) {
-      const node = e.node;
+      const { node } = e;
       // 打印节点信息
       console.log('节点信息', node);
       // 图片节点预览

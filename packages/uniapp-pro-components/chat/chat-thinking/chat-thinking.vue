@@ -91,21 +91,19 @@ export default {
         immediate: true,
       },
     },
-
-    created() {
+    collapsed(val) {
+      this.localCollapsed = val;
     },
+  },
 
-    mounted() {
-      const createdFn = function __anonymous() {
-      // 初始化折叠状态
-        this.localCollapsed = this.collapsed || false;
-      };
-      createdFn.call(this);
+  created() {
+    this.localCollapsed = this.collapsed;
+  },
 
-
-      // 调用新增的函数
-      this.setContentStyle();
-    },
+  mounted() {
+    // 调用新增的函数
+    this.setContentStyle();
+  },
 
     methods: {
       handleCollapse() {
