@@ -3,7 +3,8 @@ const path = require('path');
 
 
 function switchVersion(version) {
-  const pkg = require('../package.json');
+  const pkgPath = path.resolve(__dirname, '../../package.json');
+  const pkg = require(pkgPath);
   if (version != 2) {
     return;
   }
@@ -12,7 +13,7 @@ function switchVersion(version) {
 
   const pkgStr = JSON.stringify(pkg, null, 2);
 
-  fs.writeFileSync(path.resolve(__dirname, '../package.json'), pkgStr, 'utf-8');
+  fs.writeFileSync(pkgPath, pkgStr, 'utf-8');
 }
 
 function printVue2PostCSSWarning() {
