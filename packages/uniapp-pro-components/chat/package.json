@@ -126,7 +126,7 @@
     "eslint-import-resolver-node": "catalog:",
     "eslint-plugin-import": "catalog:",
     "eslint-plugin-jest": "catalog:",
-    "eslint-plugin-light": "latest",
+    "eslint-plugin-light": "catalog:",
     "eslint-plugin-prettier": "catalog:",
     "eslint-plugin-react": "catalog:",
     "eslint-plugin-react-hooks": "catalog:",
