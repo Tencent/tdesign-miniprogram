@@ -2,32 +2,6 @@ const fs = require('fs');
 const path = require('path');
 
 
-function switchVersion(version) {
-  const pkgPath = path.resolve(__dirname, '../../package.json');
-  const pkg = require(pkgPath);
-  if (version != 2) {
-    return;
-  }
-
-  // Vue2 + Webpack4 不支持条件导出（exports map 中的 { types, import, default } 形式）
-  // 将条件导出简化为直接路径映射，保留路径解析能力
-  if (pkg.exports) {
-    const simplified = {};
-    for (const [key, value] of Object.entries(pkg.exports)) {
-      if (typeof value === 'string') {
-        simplified[key] = value;
-      } else if (typeof value === 'object' && value !== null) {
-        simplified[key] = value.default || value.import || value.types;
-      }
-    }
-    pkg.exports = simplified;
-  }
-
-  const pkgStr = JSON.stringify(pkg, null, 2);
-
-  fs.writeFileSync(pkgPath, pkgStr, 'utf-8');
-}
-
 function printVue2PostCSSWarning() {
   console.warn('\n');
   console.warn('⚠️  [TDesign UniApp] 检测到当前使用 Vue2 环境');
@@ -87,11 +61,8 @@ function main() {
   }
 
   if (isVue2(version)) {
-    switchVersion(2);
     printVue2PostCSSWarning();
-  } else if (isVue3(version)) {
-    switchVersion(3);
-  } else {
+  } else if (!isVue3(version)) {
     console.warn(`[TDesign UniApp] Vue version ${version} is not supported.`);
   }
 }
