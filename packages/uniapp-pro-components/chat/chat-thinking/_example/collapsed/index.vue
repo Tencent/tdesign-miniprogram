@@ -5,6 +5,7 @@
       layout="block"
       :status="status"
       animation="moving"
+      :collapsed="collapsed"
       @collapsedChange="handleCollapsedChange"
     />
   </view>
@@ -13,7 +14,6 @@
 <script>
 import TChatThinking from '@tdesign/uniapp-chat/chat-thinking/chat-thinking.vue';
 
-
 export default {
   components: {
     TChatThinking,
@@ -21,8 +21,9 @@ export default {
   data() {
     return {
       thinking: true,
+      collapsed: false,
       fullText:
-                '嗯，用户问牛顿第一定律是不是适用于所有参考系。首先，我得先回忆一下牛顿第一定律的内容。牛顿第一定律，也就是惯性定律，说物体在没有外力作用时会保持静止或匀速直线运动。也就是说， 保持原来的运动状态。',
+        '嗯，用户问牛顿第一定律是不是适用于所有参考系。首先，我得先回忆一下牛顿第一定律的内容。牛顿第一定律，也就是惯性定律，说物体在没有外力作用时会保持静止或匀速直线运动。也就是说， 保持原来的运动状态。',
       currentText: '',
       isTyping: true,
       content: {
@@ -34,23 +35,23 @@ export default {
       startTime: 0,
     };
   },
+  watch: {
+    status(val) {
+      if (val === 'complete') {
+        this.collapsed = true;
+      }
+    },
+  },
   mounted() {
-    // 处理小程序 attached 生命周期
-    this.attached();
+    this.startTime = Date.now();
+    this.startTyping();
   },
   unmounted() {
     if (this.typingTimer) {
       clearTimeout(this.typingTimer);
     }
   },
-  created() {},
   methods: {
-    attached() {
-      this.startTime = Date.now();
-
-      this.startTyping();
-    },
-
     startTyping() {
       const { fullText, typeSpeed } = this;
       let currentIndex = 0;
@@ -61,7 +62,6 @@ export default {
           if (currentIndex === fullText.length) {
             const endTime = Date.now();
             const duration = Math.round((endTime - this.startTime) / 1000);
-
             this.currentText = currentText;
             this.content = {
               text: currentText,
@@ -86,42 +86,6 @@ export default {
       };
       typeNextChar();
     },
-
-    replayTyping() {
-      if (this.typingTimer) {
-        clearTimeout(this.typingTimer);
-      }
-      this.currentText = '';
-      this.content = {
-        text: '',
-        title: '思考过程',
-      };
-      this.isTyping = true;
-      this.startTime = Date.now();
-      this.startTyping();
-    },
-
-    onStop() {
-      console.log('停止思考');
-      this.thinking = false;
-      uni.showToast({
-        title: '已停止思考',
-        icon: 'success',
-      });
-    },
-
-    toggleThinking() {
-      this.thinking = !this.thinking;
-    },
-
-    resetThinking() {
-      this.thinking = true;
-      uni.showToast({
-        title: '已重置',
-        icon: 'success',
-      });
-    },
-
     handleCollapsedChange(e) {
       console.log('展开状态变化:', e);
     },
