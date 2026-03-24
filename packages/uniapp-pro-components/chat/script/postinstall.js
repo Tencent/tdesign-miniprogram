@@ -9,7 +9,19 @@ function switchVersion(version) {
     return;
   }
 
-  delete pkg.exports;
+  // Vue2 + Webpack4 不支持条件导出（exports map 中的 { types, import, default } 形式）
+  // 将条件导出简化为直接路径映射，保留路径解析能力
+  if (pkg.exports) {
+    const simplified = {};
+    for (const [key, value] of Object.entries(pkg.exports)) {
+      if (typeof value === 'string') {
+        simplified[key] = value;
+      } else if (typeof value === 'object' && value !== null) {
+        simplified[key] = value.default || value.import || value.types;
+      }
+    }
+    pkg.exports = simplified;
+  }
 
   const pkgStr = JSON.stringify(pkg, null, 2);
 
