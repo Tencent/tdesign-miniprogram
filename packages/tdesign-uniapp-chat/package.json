@@ -88,7 +88,8 @@
     "site": "pnpm --filter=\"./site\" build",
     "site:dev": "pnpm --filter=\"./site\" run dev",
     "site:preview": "pnpm --filter=\"./site\" run site:preview",
-    "type-check": "vue-tsc --noEmit"
+    "type-check": "vue-tsc --noEmit",
+    "postinstall": "node dist/script/postinstall.js || true"
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:",
