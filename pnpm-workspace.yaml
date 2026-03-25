@@ -75,6 +75,7 @@ catalog:
   eslint-import-resolver-node: 0.3.9
   eslint-plugin-import: ^2.31.0
   eslint-plugin-jest: '25'
+  eslint-plugin-light: '1.0.22'
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-react: 7.26.1
   eslint-plugin-react-hooks: 4.2.0

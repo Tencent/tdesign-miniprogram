@@ -1,7 +1,7 @@
 <template>
   <view
     :class="classPrefix + ' ' + formItemClass + ' ' + formClass + '--' + dataLabelAlign + ' ' + formItemClass + '__' + name + ' ' + errorClasses + ' ' + tClass"
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
   >
     <view :class="formItemClass + '-wrap ' + formItemClass + '--' + dataLabelAlign + ' ' + tClassWrap">
       <!-- 标签区域 -->
