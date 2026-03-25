@@ -151,7 +151,7 @@ import { getCharacterLength, calcIcon, coalesce, nextTick } from '../common/util
 import { isDef } from '../common/validator';
 import { getInputClass } from './computed.js';
 import tools from '../common/utils.wxs';
-import { RELATION_MAP } from '../common/relation/parent-map.js';
+import { RELATION_MAP } from '../common/relation/parent-map';
 
 
 const name = `${prefix}-input`;
@@ -205,9 +205,6 @@ export default {
         tools,
 
         dataValue: coalesce(this.value, this.defaultValue),
-
-      // rawValue: '',
-      // innerMaxLen: -1,
       };
     },
     watch: {
@@ -282,30 +279,7 @@ export default {
           this.dataValue = value;
           this.count = isDef(value) ? String(value).length : 0;
         }
-
-      // this.updateInnerMaxLen();
       },
-      // updateInnerMaxLen() {
-      // this.innerMaxLen = this.getInnerMaxLen();
-      // },
-      // getInnerMaxLen() {
-      //   const {
-      //     allowInputOverMax,
-      //     maxcharacter,
-      //     maxlength,
-      //     dataValue,
-      //     rawValue,
-      //     count,
-      //   } = this;
-      //   return getInnerMaxLen({
-      //     allowInputOverMax,
-      //     maxcharacter,
-      //     maxlength,
-      //     dataValue,
-      //     rawValue,
-      //     count,
-      //   });
-      // },
 
       updateClearIconVisible(value = false) {
         const { clearTrigger, disabled, readonly } = this;
