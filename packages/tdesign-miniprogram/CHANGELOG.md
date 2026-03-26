@@ -5,6 +5,21 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.13.1 `2026-03-26`
+
+### 🚀 Features
+
+- `Button`: `open-type` 补充 `phoneOneClickLogin` 可选项，同时新增 `phoneoneclicklogin` 事件 @anlyyao ([#4357](https://github.com/Tencent/tdesign-miniprogram/pull/4357))
+- `ChatMarkdown`: 扩展 `click` 事件触发源，从点击链接触发，改为所有事件冒泡到的节点都会触发 @mimaoxiao ([#4372](https://github.com/Tencent/tdesign-miniprogram/pull/4372))
+- `ChatThinking`: 修复 `collapsed` 属性无效，支持内容输出结束后自动收起 @zydemail ([#4354](https://github.com/Tencent/tdesign-miniprogram/pull/4354))
+
+### 🐞 Bug Fixes
+
+- `Button`: 修复 `phoneNumberNoQuotaToast` 属性无效 @anlyyao ([#4357](https://github.com/Tencent/tdesign-miniprogram/pull/4357))
+- `ChatActionbar`: 修复 `actionBar` 属性无效以及长按气泡框不显示浮层的问题 @zydemail ([#4348](https://github.com/Tencent/tdesign-miniprogram/pull/4348))
+- `Form`: 修复 `rules` 属性为空时，`labelWidth` 属性无效以及控制台报错的问题 @anlyyao ([#4353](https://github.com/Tencent/tdesign-miniprogram/pull/4353))
+- `Tabs`: 修复开启 `animation` 和 `lazy` 时，跳跃切换选项卡内容区域显示异常的问题 @novlan1 ([#4367](https://github.com/Tencent/tdesign-miniprogram/pull/4367))
+
 ## 🌈 1.13.0 `2026-03-18`
 
 ### 🚨 Breaking Changes
