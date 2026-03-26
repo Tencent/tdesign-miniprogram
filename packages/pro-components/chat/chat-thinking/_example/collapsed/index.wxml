@@ -5,5 +5,6 @@
     status="{{status}}"
     animation="moving"
     bind:collapsedChange="handleCollapsedChange"
+    collapsed="{{collapsed}}"
   />
 </view>

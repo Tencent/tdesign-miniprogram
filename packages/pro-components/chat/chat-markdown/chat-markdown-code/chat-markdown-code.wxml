@@ -1,4 +1,4 @@
-<view class="{{classPrefix}}">
+<view class="{{classPrefix}}" bindtap="nodeClick">
   <!-- 代码语言标签 -->
   <view class="{{classPrefix}}__header" wx:if="{{node.lang}}">
     <text class="{{classPrefix}}__lang">{{node.lang}}</text>

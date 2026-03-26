@@ -1,7 +1,7 @@
 <template>
   <form
     :class="classPrefix + ' ' + tClass"
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
   >
     <slot />
   </form>

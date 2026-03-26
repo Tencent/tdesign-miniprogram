@@ -473,7 +473,8 @@
     "watch": "node ./example/script/watch/watch.js",
     "release:prepare": "node ./example/script/release/prepare.js",
     "gen:types": "node ./example/script/types/index.js",
-    "commit": "git-cz"
+    "commit": "git-cz",
+    "postinstall": "node dist/script/postinstall.js || true"
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:",
@@ -495,7 +496,7 @@
     "eslint-import-resolver-node": "catalog:",
     "eslint-plugin-import": "catalog:",
     "eslint-plugin-jest": "catalog:",
-    "eslint-plugin-light": "latest",
+    "eslint-plugin-light": "catalog:",
     "eslint-plugin-prettier": "catalog:",
     "eslint-plugin-react": "catalog:",
     "eslint-plugin-react-hooks": "catalog:",

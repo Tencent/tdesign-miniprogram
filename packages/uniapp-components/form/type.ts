@@ -4,8 +4,8 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import type { IsEmailOptions } from 'validator/es/lib/isEmail';
-import type { IsURLOptions } from 'validator/es/lib/isURL';
+import type { IsEmailOptions } from '../common/common';
+import type { IsURLOptions } from '../common/common';
 import type { FormResetEvent, FormSubmitEvent } from '../common/common';
 
 export interface TdFormProps<FormData extends Data = Data> {
@@ -36,7 +36,7 @@ export interface TdFormProps<FormData extends Data = Data> {
   /**
    * 是否显示必填符号（*），默认显示
    */
-  requiredMark?: boolean;
+  requiredMark?: boolean | null;
   /**
    * 表单必填符号（*）显示位置
    */

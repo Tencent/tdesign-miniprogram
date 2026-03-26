@@ -1,4 +1,4 @@
-<view class="{{classPrefix}}">
+<view class="{{classPrefix}}" bindtap="nodeClick">
   <view class="{{classPrefix}}__container">
     <view class="{{classPrefix}}__thead">
       <view class="{{classPrefix}}__tr">

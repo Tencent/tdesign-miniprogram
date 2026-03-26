@@ -21,6 +21,10 @@ import TChatThinking from '@tdesign/uniapp-chat/chat-thinking/chat-thinking.vue'
 
 {{ base }}
 
+支持通过collapsed来控制面板是否折叠，示例中展示了当内容输出结束时自动收起的效果
+
+{{ collapsed }}
+
 ### 02 组件状态
 
 #### 思考中
