@@ -65,6 +65,7 @@
                 :content="item"
                 :role="role"
                 :status="status === 'error' ? 'error' : ''"
+                @click.stop="onContentClick"
               />
             </block>
           </block>
@@ -112,6 +113,12 @@ export default {
     props: {
       ...props,
     },
+
+    emits: [
+      'message-longpress',
+      'click',
+    ],
+
     data() {
       return {
         classPrefix: name,
@@ -146,6 +153,10 @@ export default {
     },
 
     methods: {
+      onContentClick(e) {
+        this.$emit('click', e);
+      },
+
       handleLongPress(e) {
         this.$emit('message-longpress', {
           e,

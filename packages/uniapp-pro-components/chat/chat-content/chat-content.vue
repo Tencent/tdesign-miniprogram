@@ -2,6 +2,7 @@
   <view
     :class="classPrefix"
     :style="'' + tools._style([customStyle])"
+    @click.stop
   >
     <block v-if="status === 'error' || content.type === 'text'">
       <view :class="classPrefix + '__' + role + ' ' + classPrefix + '__' + status">
