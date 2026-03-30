@@ -16,6 +16,11 @@ export default {
     type: Object,
     default: () => ({ gfm: true, pedantic: false, breaks: true }),
   },
+  /** 流式输出配置 */
+  streaming: {
+    type: Object,
+    default: () => null,
+  },
   /** 点击链接时触发 */
   onClick: {
     type: Function,

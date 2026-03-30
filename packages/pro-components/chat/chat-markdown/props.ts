@@ -17,6 +17,11 @@ const props: TdChatMarkdownProps = {
     type: Object,
     value: { gfm: true, pedantic: false, breaks: true },
   },
+  /** 流式输出配置 */
+  streaming: {
+    type: Object,
+    value: null,
+  },
 };
 
 export default props;

@@ -1,0 +1,4 @@
+<view class="chat-example-block">
+  <t-chat-markdown content="{{content}}" streaming="{{streaming}}" bind:click="handleNodeTap" />
+  <button bindtap="handleReplay" style="margin-top: 16px">重新播放</button>
+</view>
