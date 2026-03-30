@@ -15,6 +15,7 @@
         <t-chat-markdown
           :content="textInfo"
           :options="markdownProps && markdownProps.options"
+          :streaming="markdownProps && markdownProps.streaming"
           @click="onClick"
         />
       </view>
