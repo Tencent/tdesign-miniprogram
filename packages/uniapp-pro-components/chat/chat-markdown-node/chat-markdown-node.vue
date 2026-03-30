@@ -149,6 +149,12 @@
           </block>
           <block v-else>
             {{ '' + item.raw + '' }}
+            <text
+              v-if="item.isTail"
+              :class="classPrefix + '-tail'"
+            >
+              {{ item.tailContent }}
+            </text>
           </block>
         </view>
       </block>

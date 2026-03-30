@@ -22,8 +22,43 @@ import props from './props';
 import tools from '@tdesign/uniapp/common/utils.wxs';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
-
 const name = `${prefix}-chat-markdown`;
+
+const DEFAULT_TAIL_CONTENT = '▋';
+
+function resolveTailContent(tail) {
+  if (!tail) return null;
+  if (typeof tail === 'boolean') return DEFAULT_TAIL_CONTENT;
+  return tail.content || DEFAULT_TAIL_CONTENT;
+}
+
+function flatListItems(items) {
+  return items.reduce((result, item) => {
+    if (item.tokens?.length) result.push(...item.tokens);
+    return result;
+  }, []);
+}
+
+function injectTailToTokens(tokens, tailChar) {
+  for (let i = tokens.length - 1; i >= 0; i -= 1) {
+    const token = tokens[i];
+    let children = null;
+    if (token.tokens?.length) {
+      children = token.tokens;
+    } else if (token.items?.length) {
+      children = flatListItems(token.items);
+    }
+    if (children?.length) {
+      if (injectTailToTokens(children, tailChar)) return true;
+    }
+    if (token.type === 'text' && (token.text || token.raw)?.trim()) {
+      token.isTail = true;
+      token.tailContent = tailChar;
+      return true;
+    }
+  }
+  return false;
+}
 
 export default {
   components: {
@@ -56,6 +91,12 @@ export default {
         immediate: true,
         deep: true,
       },
+      streaming: {
+        handler() {
+          this.parseMarkdown(this.content);
+        },
+        deep: true,
+      },
     },
 
     methods: {
@@ -71,6 +112,12 @@ export default {
           // #endif
 
           const tokens = lexer.lex(markdown);
+
+          // 尾部光标注入
+          const tailChar = resolveTailContent(this.streaming?.tail);
+          if (this.streaming?.hasNextChunk && tailChar) {
+            injectTailToTokens(tokens, tailChar);
+          }
 
           this.nodes = tokens;
         } catch (error) {

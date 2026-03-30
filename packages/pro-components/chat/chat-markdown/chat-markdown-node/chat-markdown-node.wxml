@@ -55,7 +55,10 @@
       <block wx:if="{{item.tokens && item.tokens.length}}">
         <chat-markdown-node nodes="{{item.tokens}}" />
       </block>
-      <block wx:else>{{''+item.raw+''}}</block>
+      <block wx:else>
+        {{''+item.raw+''}}
+        <text wx:if="{{item.isTail}}" class="{{classPrefix}}-tail">{{item.tailContent}}</text>
+      </block>
     </view>
   </block>
   <block wx:elif="{{item.type==='strong'}}">
