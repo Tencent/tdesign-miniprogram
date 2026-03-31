@@ -16,4 +16,12 @@ export interface TdChatRecordProps {
     type: BooleanConstructor;
     value: false;
   };
+  bottomHeight?: {
+    type: NumberConstructor;
+    value: 0;
+  };
+  autoHeight?: {
+    type: BooleanConstructor;
+    value: false;
+  };
 }

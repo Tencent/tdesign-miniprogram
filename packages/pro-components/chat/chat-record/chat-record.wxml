@@ -28,11 +28,12 @@
     <!-- mask -->
     <view class="{{classPrefix}}-audio-input__mask" bindtap="handleCancelSend" />
 
-    <view class="{{classPrefix}}-audio-input__main">
+<view class="{{classPrefix}}-audio-input__main">
       <!-- 气泡/动画区 -->
       <view
         wx:if="{{processStatus === 'recording' || processStatus === 'confirm'}}"
         class="{{classPrefix}}-audio-input-ani fade-in"
+        style="margin-bottom: {{bottomHeight > 0 ? bottomHeight + 20 : 268}}rpx;"
       >
         <view class="bubble-container {{bubbleStatusClass}}">
           <!-- 录音中：音量条 -->
@@ -51,12 +52,15 @@
             wx:elif="{{interactStatus === 'release_convert' || processStatus === 'confirm'}}"
             class="convert-content"
           >
-            <textarea
-              class="editable-textarea"
-              value="{{translateResult}}"
-              maxlength="-1"
-              bindinput="onTranslateInput"
-            />
+          <textarea
+            class="editable-textarea"
+            style="max-height: {{bottomHeight === 0 ? '522rpx' : '112rpx'}}"
+            value="{{translateResult}}"
+            maxlength="-1"
+            bindinput="onTranslateInput"
+            bindfocus="focusTextarea"
+            bindblur="blurTextarea"
+          />
             <view wx:if="{{interactStatus === 'release_convert'}}" class="convert-dots" />
           </view>
         </view>
@@ -66,6 +70,7 @@
       <view
         wx:if="{{processStatus === 'recording' || processStatus === 'confirm'}}"
         class="{{classPrefix}}-audio-input__ft {{processStatus}} {{interactStatus}} fade-in"
+        style="bottom: {{bottomHeight}}rpx;"
       >
         <view class="tips-text">
           <block wx:if="{{processStatus === 'recording'}}">

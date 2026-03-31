@@ -15,6 +15,7 @@
 }
 
 @keyframes wave {
+
   0%,
   100% {
     transform: scaleY(1);
@@ -38,7 +39,7 @@
 
 // 遮罩层
 @chat-record-mask-z-index: 5100;
-@chat-record-mask-bg: rgba(0, 0, 0, 0.8);
+@chat-record-mask-bg: rgba(0, 0, 0, 0.80);
 @chat-record-mask-blur: blur(5px);
 
 // 主容器
@@ -56,7 +57,7 @@
 // 气泡颜色
 @chat-record-color-blue: #2979ff;
 @chat-record-color-red: #ff5252;
-@chat-record-color-white: #ffffff;
+@chat-record-color-white: #FFFFFF;
 
 @chat-record-cancel-font-size: 32rpx;
 
@@ -98,8 +99,8 @@
 @chat-record-circle-size: 2000rpx;
 @chat-record-circle-border-radius: 2000rpx;
 @chat-record-circle-bottom: -1700rpx;
-@chat-record-circle-border: 4rpx solid #ffffff;
-@chat-record-circle-bg-default: #dcdcdc;
+@chat-record-circle-border: 4rpx solid #FFFFFF;
+@chat-record-circle-bg-default: #DCDCDC;
 @chat-record-circle-bg-active: #4a4a4a;
 
 // 异形按钮
@@ -109,7 +110,7 @@
 @chat-record-shape-btn-padding-bottom: 180rpx;
 @chat-record-shape-btn-hint-top: -50rpx;
 @chat-record-shape-btn-hint-font-size: 24rpx;
-@chat-record-shape-btn-hint-color: #a3a3a3;
+@chat-record-shape-btn-hint-color: #A3A3A3;
 @chat-record-shape-btn-label-font-size: 28rpx;
 @chat-record-shape-btn-label-line-height: 44rpx;
 @chat-record-shape-btn-label-color: #fff;
@@ -139,6 +140,7 @@
 // ==================== 主容器 ====================
 
 .@{chat-record} {
+
   // 录音按钮
   &-hook {
     width: 100%;
@@ -157,7 +159,9 @@
   // ==================== 遮罩层和主容器 ====================
 
   &-audio-input {
+
     &.show {
+
       .@{chat-record}-audio-input__mask,
       .@{chat-record}-audio-input__main {
         opacity: 1;
@@ -220,8 +224,10 @@
         min-height: @chat-record-bubble-min-height;
         width: auto;
         // 只对特定属性做过渡，避免 height 变化时闪烁
-        transition: background-color @chat-record-transition-ease, transform @chat-record-transition-ease,
-          min-width @chat-record-transition-ease, padding @chat-record-transition-ease;
+        transition: background-color @chat-record-transition-ease,
+          transform @chat-record-transition-ease,
+          min-width @chat-record-transition-ease,
+          padding @chat-record-transition-ease;
 
         // 气泡尾巴 mixin
         .bubble-tail(@color, @left: 50%, @transform: translateX(-50%)) {
@@ -319,13 +325,15 @@
         height: @chat-record-dot-size;
         background: @chat-record-color-white;
         border-radius: 50%;
-        box-shadow: @chat-record-dot-shadow-offset 0 0 @chat-record-color-white,
+        box-shadow:
+          @chat-record-dot-shadow-offset 0 0 @chat-record-color-white,
           (@chat-record-dot-shadow-offset * 2) 0 0 @chat-record-color-white,
           (@chat-record-dot-shadow-offset * 3) 0 0 @chat-record-color-white,
           (@chat-record-dot-shadow-offset * 4) 0 0 @chat-record-color-white;
         margin-right: @chat-record-dot-margin-right;
       }
     }
+
 
     .cancel-text {
       color: @chat-record-color-white;
@@ -347,7 +355,7 @@
         background: transparent;
         border: none;
         color: @chat-record-color-white;
-        font-family: 'PingFang SC';
+        font-family: "PingFang SC";
         font-size: @chat-record-textarea-font-size;
         font-weight: 600;
         line-height: @chat-record-textarea-line-height;
@@ -371,7 +379,8 @@
           height: @chat-record-dot-size;
           background: @chat-record-color-white;
           border-radius: 50%;
-          box-shadow: @chat-record-dot-shadow-offset 0 0 @chat-record-color-white,
+          box-shadow:
+            @chat-record-dot-shadow-offset 0 0 @chat-record-color-white,
             (@chat-record-dot-shadow-offset * 2) 0 0 @chat-record-color-white,
             (@chat-record-dot-shadow-offset * 3) 0 0 @chat-record-color-white,
             (@chat-record-dot-shadow-offset * 4) 0 0 @chat-record-color-white;
@@ -396,7 +405,7 @@
         top: @chat-record-tips-top;
         width: 100%;
         text-align: center;
-        color: rgba(0, 0, 0, 0.9);
+        color: rgba(0, 0, 0, 0.90);
         font-size: @chat-record-tips-font-size;
         font-weight: 600;
         line-height: @chat-record-tips-line-height;
@@ -491,7 +500,7 @@
         }
 
         .btn-label {
-          font-family: 'PingFang SC';
+          font-family: "PingFang SC";
           font-size: @chat-record-shape-btn-label-font-size;
           font-weight: 600;
           line-height: @chat-record-shape-btn-label-line-height;
@@ -631,9 +640,9 @@
             }
 
             .btn-text {
-              color: #fff;
+              color: #FFF;
               text-align: center;
-              font-family: 'PingFang SC';
+              font-family: "PingFang SC";
               font-size: @chat-record-cancel-text-font-size;
               font-weight: 600;
               line-height: @chat-record-cancel-text-line-height;
@@ -655,9 +664,9 @@
             justify-content: center;
             transition: background-color @chat-record-transition-fast;
 
-            .send-btn-text {
-              color: rgba(0, 0, 0, 0.9);
-              font-family: 'PingFang SC';
+            text {
+              color: rgba(0, 0, 0, 0.90);
+              font-family: "PingFang SC";
               font-size: @chat-record-send-btn-font-size;
               font-weight: 600;
               line-height: @chat-record-send-btn-line-height;
@@ -673,7 +682,7 @@
               opacity: 0.5;
               pointer-events: none;
 
-              .disabled-btn-text {
+              text {
                 color: rgba(255, 255, 255, 0.6);
               }
             }

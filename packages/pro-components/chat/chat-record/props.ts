@@ -23,6 +23,16 @@ const props: TdChatRecordProps = {
     type: Boolean,
     value: false,
   },
+  /** 底部高度，用于适配键盘弹出时的布局 */
+  bottomHeight: {
+    type: Number,
+    value: 0,
+  },
+  /** 是否自动获取键盘高度更新 bottomHeight */
+  autoHeight: {
+    type: Boolean,
+    value: false,
+  },
 };
 
 export default props;

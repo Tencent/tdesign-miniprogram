@@ -1,4 +1,3 @@
-import { show } from 'tdesign-miniprogram/action-sheet/show';
 import { SuperComponent, wxComponent } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
 import props from './props';
@@ -164,6 +163,36 @@ export default class ChatRecord extends SuperComponent {
         bubbleStatusClass = 'bubble-wide';
       }
       this.setData({ bubbleStatusClass });
+    },
+
+    // 监听键盘高度变化
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    onKeyboardHeightChange(e: any) {
+      if (this.properties.autoHeight) {
+        this.setData({
+          bottomHeight: e.height || 0,
+        });
+      }
+    },
+
+    // 文本框获取焦点时触发
+    focusTextarea(e) {
+      console.error('focusTextarea===========', e)
+      // 如果开启了自动高度，键盘弹出时会通过 onKeyboardHeightChange 更新 bottomHeight
+      if (this.properties.autoHeight) {
+        this.setData({
+          bottomHeight: e.detail.height,
+        });
+      }
+    },
+
+    // 文本框失去焦点时触发
+    blurTextarea() {
+      if (this.properties.autoHeight) {
+        this.setData({
+          bottomHeight: 0,
+        });
+      }
     },
     async getVoiceAuthSetting() {
       return new Promise<boolean>((resolve, reject) => {
@@ -430,7 +459,7 @@ export default class ChatRecord extends SuperComponent {
 
       if (this.data.interactStatus === 'release_cancel') {
         // 取消时不让 onStop 把 UI 推到 confirm
-        this.setData({ 
+        this.setData({
           ignoreNextOnStop: true,
           activeBtnCancel: true,
          });
@@ -476,19 +505,17 @@ export default class ChatRecord extends SuperComponent {
     },
 
     handleSendVoiceMsg() {
-      console.log('[chat-record] 点击发送按钮');
       if (this.data.processStatus === 'error') {
-        console.log('[chat-record] 当前状态为 error，不发送');
         return;
       }
-      
+
       // 发送语音消息，包含语音文件和转文字结果
       this.triggerEvent('recognize', {
         voicePath: this.data.voiceInfo.voicePath,
         voiceText: this.data.translateResult || this.data.voiceInfo.voiceText,
         duration: this.data.voiceInfo.duration,
       });
-      
+
       // 关闭弹窗
       this.setData({ showMask: false });
       // 延迟重置状态，确保事件能够正确触发
@@ -498,7 +525,6 @@ export default class ChatRecord extends SuperComponent {
     },
 
     handleCancelSend() {
-      console.log('[chat-record] 点击取消按钮');
       if (this.data.processStatus === 'error') {
         this.resetState();
         return;
@@ -512,7 +538,11 @@ export default class ChatRecord extends SuperComponent {
     },
 
     onTranslateInput(e: WechatMiniprogram.Input) {
-      this.setData({ translateResult: (e.detail?.value ?? '') as string });
+      this.setData({
+        translateResult: (e.detail?.value ?? '') as string,
+        activeBtnCancel: !!e.detail?.value,
+        activeBtnSend: !!e.detail?.value,
+       });
     },
 
     // ==================== 状态管理 ====================
@@ -553,6 +583,11 @@ export default class ChatRecord extends SuperComponent {
 
   lifetimes = {
     created() {
+      // 确保 bottomHeight 有初始值
+      if (typeof this.properties.bottomHeight === 'undefined') {
+        this.setData({ bottomHeight: 0 });
+      }
+
       // 绑定方法到 this.data（对齐 chat-sender.ts 的写法）
       this.data.initRecordManager = this.initRecordManager.bind(this);
       this.data.updateBubbleClass = this.updateBubbleClass.bind(this);
@@ -572,8 +607,14 @@ export default class ChatRecord extends SuperComponent {
       this.data.onOpenSetting = this.onOpenSetting.bind(this);
       this.data.resetState = this.resetState.bind(this);
       this.data.requestRecordAuth = this.requestRecordAuth.bind(this);
+      this.data.onKeyboardHeightChange = this.onKeyboardHeightChange.bind(this);
+      this.data.focusTextarea = this.focusTextarea.bind(this);
+      this.data.blurTextarea = this.blurTextarea.bind(this);
 
       this.initRecordManager();
+
+      // 监听键盘高度变化
+      wx.onKeyboardHeightChange(this.data.onKeyboardHeightChange);
     },
 
     attached() {
@@ -589,6 +630,8 @@ export default class ChatRecord extends SuperComponent {
           // ignore
         }
       }
+      // 移除键盘高度监听
+      wx.offKeyboardHeightChange(this.data.onKeyboardHeightChange);
       this.resetState();
     },
   };
