@@ -54,13 +54,13 @@ npm i @tdesign/uniapp-chat
 1. 在 `main.ts` 中引入样式文件
 
 ```js
-import '@tdesign/uniapp/common/style/theme/index.css';
+import '@tdesign/uniapp/theme.css';
 ```
 
 也可以引入 `rpx` 单位的 `less` 文件，该文件与 `tdesign-miniprogram` 完全一致。
 
 ```js
-import '@tdesign/uniapp/common/style/theme/index.less';
+import '@tdesign/uniapp/theme.less';
 ```
 
 2. 在文件中使用

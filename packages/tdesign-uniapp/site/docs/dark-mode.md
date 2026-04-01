@@ -44,20 +44,20 @@ TDesign UniApp 基于 Design Token 变量和媒体查询 `prefers-color-scheme` 
 
 ```js
 // CLI 模式
-import '@tdesign/uniapp/common/style/theme/index.css';
+import '@tdesign/uniapp/theme.css';
 
 // HBuilderX 模式
-// import './uni_modules/tdesign-uniapp/components/common/style/theme/index.css';
+// import './uni_modules/tdesign-uniapp/components/theme.css';
 ```
 
 也可以引入 `rpx` 单位的 `less` 文件，该文件与 `tdesign-miniprogram` 完全一致。
 
 ```js
 // CLI 模式
-import '@tdesign/uniapp/common/style/theme/index.less';
+import '@tdesign/uniapp/theme.less';
 
 // HBuilderX 模式
-// import './uni_modules/tdesign-uniapp/components/common/style/theme/index.less';
+// import './uni_modules/tdesign-uniapp/components/theme.less';
 ```
 
 ### 3. 深色模式适配
