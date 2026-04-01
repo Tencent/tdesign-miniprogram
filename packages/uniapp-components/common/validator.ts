@@ -1,43 +1,45 @@
-export function isFunction(val) {
+import type { IsEmailOptions, IsURLOptions } from './common';
+
+export function isFunction(val: unknown): val is (...args: unknown[]) => unknown {
   return typeof val === 'function';
 }
 
-export const isString = val => typeof val === 'string';
+export const isString = (val: unknown): val is string => typeof val === 'string';
 
-export const isNull = value => value === null;
+export const isNull = (value: unknown): value is null => value === null;
 
-export const isUndefined = value => value === undefined;
+export const isUndefined = (value: unknown): value is undefined => value === undefined;
 
-export function isDef(value) {
+export function isDef<T>(value: T | undefined | null): value is T {
   return !isUndefined(value) && !isNull(value);
 }
 
-export function isInteger(value) {
+export function isInteger(value: unknown): boolean {
   return Number.isInteger(value);
 }
 
-export function isNumeric(value) {
+export function isNumeric(value: unknown): boolean {
   return !Number.isNaN(Number(value));
 }
 
-export function isNumber(value) {
+export function isNumber(value: unknown): value is number {
   return typeof value === 'number';
 }
 
-export function isBoolean(value) {
+export function isBoolean(value: unknown): value is boolean {
   return typeof value === 'boolean';
 }
 
-export function isObject(x) {
+export function isObject(x: unknown): x is Record<string, unknown> {
   const type = typeof x;
   return x !== null && (type === 'object' || type === 'function');
 }
 
-export function isPlainObject(val) {
+export function isPlainObject(val: unknown): val is Record<string, unknown> {
   return val !== null && typeof val === 'object' && Object.prototype.toString.call(val) === '[object Object]';
 }
 
-export function isEmpty(val) {
+export function isEmpty(val: unknown): boolean {
   if (val === null || val === undefined) return true;
   if (typeof val === 'string' || Array.isArray(val)) return val.length === 0;
   if (val instanceof Map || val instanceof Set) return val.size === 0;
@@ -46,11 +48,32 @@ export function isEmpty(val) {
 }
 
 /**
+ * 日期校验选项
+ */
+export interface IsDateOptions {
+  /**
+   * 日期格式
+   * @default 'YYYY/MM/DD'
+   */
+  format?: string;
+  /**
+   * 日期分隔符
+   * @default ['/', '-']
+   */
+  delimiters?: string[];
+  /**
+   * 是否启用严格模式
+   * @default false
+   */
+  strictMode?: boolean;
+}
+
+/**
  * 验证是否为有效日期
  * 支持字符串格式（YYYY/MM/DD、YYYY-MM-DD 等）和 Date 对象
  */
-export function isDate(input, options) {
-  const defaultOptions = {
+export function isDate(input: string | Date, options?: IsDateOptions): boolean {
+  const defaultOptions: Required<IsDateOptions> = {
     format: 'YYYY/MM/DD',
     delimiters: ['/', '-'],
     strictMode: false,
@@ -93,7 +116,7 @@ export function isDate(input, options) {
   }
 
   if (!opts.strictMode) {
-    if (Object.prototype.toString.call(input) === '[object Date]' && Number.isFinite(input.getTime())) {
+    if (Object.prototype.toString.call(input) === '[object Date]' && Number.isFinite((input as Date).getTime())) {
       return true;
     }
   }
@@ -104,8 +127,8 @@ export function isDate(input, options) {
 /**
  * 检查主机名是否匹配黑/白名单
  */
-function checkHost(host, list) {
-  if (!list || !list.length) return false;
+function checkHost(host: string, list: Array<string | RegExp>): boolean {
+  if (!list?.length) return false;
   return list.some((item) => {
     if (item instanceof RegExp) return item.test(host);
     return host === item;
@@ -115,15 +138,36 @@ function checkHost(host, list) {
 /**
  * 计算字符串的字节长度（UTF-8 编码）
  */
-function byteLength(str) {
+function byteLength(str: string): number {
   return encodeURI(str).split(/%..|./).length - 1;
+}
+
+/**
+ * FQDN 校验选项
+ */
+interface IsFQDNOptions {
+  /**
+   * 是否要求顶级域名
+   * @default true
+   */
+  require_tld?: boolean;
+  /**
+   * 是否允许下划线
+   * @default false
+   */
+  allow_underscores?: boolean;
+  /**
+   * 是否允许末尾的点
+   * @default false
+   */
+  allow_trailing_dot?: boolean;
 }
 
 /**
  * 检查是否为 FQDN（完全限定域名）
  */
-function isFQDN(str, options = {}) {
-  const opts = {
+function isFQDN(str: string, options: IsFQDNOptions = {}): boolean {
+  const opts: Required<IsFQDNOptions> = {
     require_tld: true,
     allow_underscores: false,
     allow_trailing_dot: false,
@@ -163,7 +207,7 @@ function isFQDN(str, options = {}) {
 /**
  * 检查是否为有效的 IPv4 或 IPv6 地址
  */
-function isIP(ipAddress, version) {
+function isIP(ipAddress: string, version?: number): boolean {
   const IPv4SegmentFormat = '(?:[0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])';
   const IPv4AddressFormat = `(${IPv4SegmentFormat}[.]){3}${IPv4SegmentFormat}`;
   const IPv4AddressRegExp = new RegExp(`^${IPv4AddressFormat}$`);
@@ -191,26 +235,13 @@ function isIP(ipAddress, version) {
 /**
  * 验证是否为有效邮箱地址
  * 参考 validator.js 的 isEmail 实现，支持 options 参数
- * @param {string} str - 待校验字符串
- * @param {object} [options] - 校验选项
- * @param {boolean} [options.allow_display_name=false] - 是否允许显示名称格式
- * @param {boolean} [options.require_display_name=false] - 是否要求必须包含显示名称
- * @param {boolean} [options.allow_utf8_local_part=true] - 是否允许 UTF8 本地部分
- * @param {boolean} [options.require_tld=true] - 是否要求顶级域名
- * @param {boolean} [options.ignore_max_length=false] - 是否忽略最大长度限制
- * @param {boolean} [options.allow_ip_domain=false] - 是否允许 IP 地址作为域名
- * @param {boolean} [options.domain_specific_validation=false] - 是否启用域名特定校验（如 Gmail）
- * @param {boolean} [options.allow_underscores=false] - 是否允许下划线
- * @param {Array} [options.host_blacklist] - 域名黑名单
- * @param {Array} [options.host_whitelist] - 域名白名单
- * @param {string} [options.blacklisted_chars] - 拒绝包含的字符
  */
-export function isEmail(str, options) {
+export function isEmail(str: string, options?: IsEmailOptions): boolean {
   if (typeof str !== 'string') return false;
 
   let email = str;
 
-  const defaultOpts = {
+  const defaultOpts: Required<IsEmailOptions> = {
     allow_display_name: false,
     allow_underscores: false,
     require_display_name: false,
@@ -220,6 +251,8 @@ export function isEmail(str, options) {
     ignore_max_length: false,
     host_blacklist: [],
     host_whitelist: [],
+    allow_ip_domain: false,
+    domain_specific_validation: false,
   };
   const opts = { ...defaultOpts, ...options };
 
@@ -246,7 +279,7 @@ export function isEmail(str, options) {
   if (!opts.ignore_max_length && email.length > 254) return false;
 
   const parts = email.split('@');
-  const domain = parts.pop();
+  const domain = parts.pop()!;
   const user = parts.join('@');
 
   if (!user || !domain) return false;
@@ -323,31 +356,13 @@ export function isEmail(str, options) {
 /**
  * 验证是否为有效 URL
  * 参考 validator.js 的 isURL 实现，支持完整 options 参数
- * @param {string} str - 待校验字符串
- * @param {object} [options] - 校验选项
- * @param {string[]} [options.protocols=['http','https','ftp']] - 允许的协议
- * @param {boolean} [options.require_tld=true] - 是否要求顶级域名
- * @param {boolean} [options.require_protocol=false] - 是否要求协议
- * @param {boolean} [options.require_host=true] - 是否要求主机名
- * @param {boolean} [options.require_port=false] - 是否要求端口
- * @param {boolean} [options.require_valid_protocol=true] - 是否要求有效协议
- * @param {boolean} [options.allow_underscores=false] - 是否允许下划线
- * @param {Array} [options.host_whitelist] - 主机名白名单
- * @param {Array} [options.host_blacklist] - 主机名黑名单
- * @param {boolean} [options.allow_trailing_dot=false] - 是否允许末尾的点
- * @param {boolean} [options.allow_protocol_relative_urls=false] - 是否允许协议相对 URL
- * @param {boolean} [options.disallow_auth=false] - 是否禁止认证信息
- * @param {boolean} [options.allow_fragments=true] - 是否允许片段（hash）
- * @param {boolean} [options.allow_query_components=true] - 是否允许查询参数
- * @param {boolean} [options.validate_length=true] - 是否校验长度
- * @param {number|false} [options.max_allowed_length=2084] - 最大允许长度
  */
-export function isURL(str, options) {
+export function isURL(str: string, options?: IsURLOptions): boolean {
   if (typeof str !== 'string') return false;
   if (!str || /[\s<>]/.test(str)) return false;
   if (str.indexOf('mailto:') === 0) return false;
 
-  const defaultOpts = {
+  const defaultOpts: Required<IsURLOptions> = {
     protocols: ['http', 'https', 'ftp'],
     require_tld: true,
     require_protocol: false,
@@ -362,6 +377,8 @@ export function isURL(str, options) {
     disallow_auth: false,
     validate_length: true,
     max_allowed_length: 2084,
+    host_whitelist: [],
+    host_blacklist: [],
   };
   const opts = { ...defaultOpts, ...options };
 
@@ -378,7 +395,7 @@ export function isURL(str, options) {
   }
 
   let url = str;
-  let protocol;
+  let protocol: string | undefined;
 
   // 协议解析
   const protocolRegex = /^([a-z][a-z0-9+\-.]*):\/\//i;
@@ -401,14 +418,14 @@ export function isURL(str, options) {
   if (url === '') return false;
 
   // 分离片段和查询参数
-  let split = url.split('#');
-  url = split.shift();
+  let split: string[] = url.split('#');
+  url = split.shift()!;
   split = url.split('?');
-  url = split.shift();
+  url = split.shift()!;
 
   // 分离路径
   split = url.split('/');
-  url = split.shift();
+  url = split.shift()!;
 
   if (url === '' && !opts.require_host) return true;
 
@@ -416,7 +433,7 @@ export function isURL(str, options) {
   split = url.split('@');
   if (split.length > 1) {
     if (opts.disallow_auth) return false;
-    const auth = split.shift();
+    const auth = split.shift()!;
     if (auth === '') return false;
     if (auth.indexOf(':') >= 0 && auth.split(':').length > 2) return false;
     const [authUser, authPassword] = auth.split(':');
@@ -424,9 +441,9 @@ export function isURL(str, options) {
   }
 
   const hostname = split.join('@');
-  let portStr = null;
-  let ipv6 = null;
-  let host;
+  let portStr: string | null = null;
+  let ipv6: string | null = null;
+  let host: string;
 
   // IPv6 包裹格式 [::1]:port
   const wrappedIpv6 = /^\[([^\]]+)\](?::([0-9]+))?$/;
@@ -453,7 +470,7 @@ export function isURL(str, options) {
   }
 
   // 白名单优先
-  if (opts.host_whitelist && opts.host_whitelist.length) {
+  if (opts?.host_whitelist?.length) {
     return checkHost(host, opts.host_whitelist);
   }
 
@@ -468,10 +485,10 @@ export function isURL(str, options) {
     return false;
   }
 
-  host = host || ipv6;
+  host = host || ipv6!;
 
   // 黑名单
-  if (opts.host_blacklist && opts.host_blacklist.length && checkHost(host, opts.host_blacklist)) {
+  if (opts?.host_blacklist?.length && checkHost(host, opts.host_blacklist)) {
     return false;
   }
 

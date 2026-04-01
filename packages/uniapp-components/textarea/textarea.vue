@@ -56,8 +56,7 @@ import props from './props';
 import { getCharacterLength, coalesce, nextTick } from '../common/utils';
 import tools from '../common/utils.wxs';
 import { textareaStyle } from './computed.js';
-// import { getInnerMaxLen } from '../input/utils';
-import { RELATION_MAP } from '../common/relation/parent-map.js';
+import { RELATION_MAP } from '../common/relation/parent-map';
 
 
 const name = `${prefix}-textarea`;
@@ -129,7 +128,6 @@ export default {
           this.dataValue = value;
           this.count = count;
         });
-      // this.updateInnerMaxLen();
       },
 
       calculateValue(value, maxcharacter, maxlength) {
@@ -197,28 +195,6 @@ export default {
       onKeyboardHeightChange(e) {
         this.$emit('keyboardheightchange', e.detail);
       },
-
-    // updateInnerMaxLen() {
-    //   this.innerMaxLen = this.getInnerMaxLen();
-    // },
-    // getInnerMaxLen() {
-    //   const {
-    //     allowInputOverMax,
-    //     maxcharacter,
-    //     maxlength,
-    //     dataValue,
-    //     rawValue,
-    //     count,
-    //   } = this;
-    //   return getInnerMaxLen({
-    //     allowInputOverMax,
-    //     maxcharacter,
-    //     maxlength,
-    //     dataValue,
-    //     rawValue,
-    //     count,
-    //   });
-    // },
     },
   }),
 };
