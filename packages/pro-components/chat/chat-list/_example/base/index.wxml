@@ -11,6 +11,7 @@
         placement="{{item.role === 'user' ? 'right' : 'left'}}"
         status="{{item.status || ''}}"
         bind:message-longpress="showPopover"
+        bind:click="onClick"
       >
         <t-chat-actionbar
           wx:if="{{index !== chatList.length - 1 && item.status === 'complete' && item.role === 'assistant'}}"
