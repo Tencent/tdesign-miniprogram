@@ -30909,21 +30909,6 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
-        data-name="test"
-        name="test"
-        size="48rpx"
-        bind:click="onIconTap"
-      />
-      <wx-view
-        class="demo__card-name"
-      >
-        test
-      </wx-view>
-    </wx-view>
-    <wx-view
-      class="demo__card"
-    >
-      <t-icon
         data-name="text-drawing-filled"
         name="text-drawing-filled"
         size="48rpx"

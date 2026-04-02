@@ -2059,7 +2059,6 @@ const icons = [
   'terminal-window-filled',
   'terminal-window',
   'terminal',
-  'test',
   'text-drawing-filled',
   'text-drawing',
   'text-style',
