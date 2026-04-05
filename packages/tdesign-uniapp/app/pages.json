@@ -175,6 +175,9 @@
 			"path": "pages-more/watermark/watermark"
 		},
 		{
+			"path": "pages-more/table/table"
+		},
+		{
 			"path": "pages-more/config-provider/config-provider"
 		},
 		{
@@ -419,6 +422,10 @@
 			{
 				"name": "watermark",
 				"pathName": "pages-more/watermark/watermark"
+			},
+			{
+				"name": "table",
+				"pathName": "pages-more/table/table"
 			},
 			{
 				"name": "config-provider",
