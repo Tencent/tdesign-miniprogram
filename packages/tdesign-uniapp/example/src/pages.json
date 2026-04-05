@@ -169,6 +169,9 @@
       "path": "pages-more/swiper/swiper"
     },
     {
+      "path": "pages-more/table/table"
+    },
+    {
       "path": "pages-more/tag/tag"
     },
     {
@@ -553,6 +556,10 @@
       {
         "name": "swiper",
         "pathName": "pages-more/swiper/swiper"
+      },
+      {
+        "name": "table",
+        "pathName": "pages-more/table/table"
       },
       {
         "name": "tag",
