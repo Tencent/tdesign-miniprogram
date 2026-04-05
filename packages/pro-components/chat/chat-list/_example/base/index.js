@@ -239,6 +239,10 @@ Component({
       e.detail.chatId = this.data.activePopoverId;
       this.handleAction(e);
     },
+    onClick(e) {
+      const { node } = e.detail;
+      console.log('点击节点', node);
+    },
   },
   lifetimes: {
     attached: function () {
