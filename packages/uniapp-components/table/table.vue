@@ -134,16 +134,17 @@ function getVal(obj, path) {
   if (!obj || !path) return undefined;
   const keys = path.split('.');
   let result = obj;
-  for (const key of keys) {
-    result = result?.[key];
-    if (result === undefined) return undefined;
-  }
+  keys.forEach((key) => {
+    if (result !== undefined && result !== null) {
+      result = result[key];
+    }
+  });
   return result;
 }
 
 function formatCSSUnit(unit) {
   if (!unit) return unit;
-  return isNaN(Number(unit)) ? unit : `${unit}px`;
+  return Number.isNaN(Number(unit)) ? unit : `${unit}px`;
 }
 
 export default {
@@ -298,7 +299,7 @@ export default {
           const fixedLeftOffsets = [];
           const fixedRightOffsets = [];
           let leftOffset = 0;
-          for (let i = 0; i < (columns || []).length; i++) {
+          for (let i = 0; i < (columns || []).length; i += 1) {
             fixedLeftOffsets[i] = leftOffset;
             const col = columns[i];
             if (col.fixed === 'left') {
@@ -306,7 +307,7 @@ export default {
             }
           }
           let rightOffset = 0;
-          for (let i = (columns || []).length - 1; i >= 0; i--) {
+          for (let i = (columns || []).length - 1; i >= 0; i -= 1) {
             fixedRightOffsets[i] = rightOffset;
             const col = columns[i];
             if (col.fixed === 'right') {
@@ -334,9 +335,9 @@ export default {
         // 计算合并单元格
         const skipSpansMap = new Map();
         if (rowspanAndColspan && data?.length && columns?.length) {
-          for (let i = 0; i < data.length; i++) {
+          for (let i = 0; i < data.length; i += 1) {
             const row = data[i];
-            for (let j = 0; j < columns.length; j++) {
+            for (let j = 0; j < columns.length; j += 1) {
               const col = columns[j];
               const cellKey = `${getVal(row, rowKey || 'id')}_${col.colKey || j}`;
               const state = skipSpansMap.get(cellKey) || {};
@@ -349,8 +350,8 @@ export default {
               if (state.rowspan || state.colspan) {
                 const maxRowIndex = i + (state.rowspan || 1);
                 const maxColIndex = j + (state.colspan || 1);
-                for (let ri = i; ri < maxRowIndex; ri++) {
-                  for (let ci = j; ci < maxColIndex; ci++) {
+                for (let ri = i; ri < maxRowIndex; ri += 1) {
+                  for (let ci = j; ci < maxColIndex; ci += 1) {
                     if (ri !== i || ci !== j) {
                       if (data[ri] && columns[ci]) {
                         const key = `${getVal(data[ri], rowKey || 'id')}_${columns[ci].colKey || ci}`;
@@ -469,7 +470,7 @@ export default {
 
           // 计算固定顶部行的 top 值
           let topOffset = headerHeight;
-          for (let i = 0; i < fixedTopRows && i < rowRects.length; i++) {
+          for (let i = 0; i < fixedTopRows && i < rowRects.length; i += 1) {
             const rd = this.renderData[i];
             if (rd) {
               rd.rowStyle = `position: sticky; top: ${topOffset}px; z-index: ${fixedRowZIndex};`;
@@ -479,7 +480,7 @@ export default {
 
           // 计算固定底部行的 bottom 值
           let bottomOffset = 0;
-          for (let i = dataLen - 1; i >= dataLen - fixedBottomRows && i >= 0; i--) {
+          for (let i = dataLen - 1; i >= dataLen - fixedBottomRows && i >= 0; i -= 1) {
             const rd = this.renderData[i];
             if (rd && i < rowRects.length) {
               rd.rowStyle = `position: sticky; bottom: ${bottomOffset}px; z-index: ${fixedRowZIndex};`;
