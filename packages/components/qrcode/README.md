@@ -66,6 +66,18 @@ isComponent: true
 #### 生成的二维码无法扫描？
 若二维码无法扫码识别，可能是因为链接地址过长导致像素过于密集，可以通过 `size` 配置二维码更大，或者通过短链接服务等方式将链接变短。
 
+#### `hidden` 元素中，二维码绘制失败？
+当 QRCode 外层使用 `hidden` 包裹，可以通过 `wx:if` 或者重新调用组件的 `init` 方法，确保组件正常渲染（在 t-popup/t-dialog 中同理）。如下：[可参考代码片段](https://developers.weixin.qq.com/s/OUlsk0mq8x6V)
+
+```html
+<t-qrcode id="qrcode" />
+```
+
+```js
+const $qrcode = this.selectComponent('#qrcode');
+
+$qrcode.init();
+```
 ##
 
 ## API
