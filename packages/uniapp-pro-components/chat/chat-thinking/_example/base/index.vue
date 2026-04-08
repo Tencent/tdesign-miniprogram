@@ -5,7 +5,7 @@
       layout="block"
       :status="status"
       animation="moving"
-      @expandChange="handleExpandChange"
+      @collapsedChange="handleCollapsedChange"
     />
   </view>
 </template>
@@ -122,8 +122,8 @@ export default {
       });
     },
 
-    handleExpandChange() {
-      console.log('占位：函数 handleExpandChange 未声明');
+    handleCollapsedChange(e) {
+      console.log('展开状态变化:', e);
     },
   },
 };

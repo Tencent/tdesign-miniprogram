@@ -1,7 +1,7 @@
 <template>
   <view
     :class="classPrefix + ' ' + formItemClass + ' ' + formClass + '--' + dataLabelAlign + ' ' + formItemClass + '__' + name + ' ' + errorClasses + ' ' + tClass"
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
   >
     <view :class="formItemClass + '-wrap ' + formItemClass + '--' + dataLabelAlign + ' ' + tClassWrap">
       <!-- 标签区域 -->
@@ -48,8 +48,7 @@
     <t-icon
       v-if="arrow"
       name="chevron-right"
-      size="24"
-      color="rgba(0, 0, 0, 0.4)"
+      :class="formItemClass + '__icon'"
     />
   </view>
 </template>

@@ -27,7 +27,7 @@ exports[`ChatMarkdown ChatMarkdown base demo works fine 1`] = `
 
 行内代码: \`console.log('Hello')\`
 "
-      bind:click="handleLinkTap"
+      bind:click="handleNodeTap"
     />
   </wx-view>
 </base>
@@ -45,7 +45,7 @@ import { Form, Input, Button, Message } from 'tdesign-react';
 const LoginForm = () => { const [loading, setLoading] = useState(false);
 \`\`\`
 "
-      bind:click="handleLinkTap"
+      bind:click="handleNodeTap"
     />
   </wx-view>
 </code>
@@ -66,7 +66,7 @@ exports[`ChatMarkdown ChatMarkdown list demo works fine 1`] = `
 1. 有序列表
 2. 有序列表
 "
-      bind:click="handleLinkTap"
+      bind:click="handleNodeTap"
     />
   </wx-view>
 </list>
@@ -83,7 +83,7 @@ exports[`ChatMarkdown ChatMarkdown refer demo works fine 1`] = `
 
 > TDesign distills Tencent's years of design experience into professional design guideline, providing universal design solutions that assist product managers, designers, developers, and other roles in efficiently completing the design and development of enterprise-level products, while maintaining consistent design language and style to meet user experience requirements.
 "
-      bind:click="handleLinkTap"
+      bind:click="handleNodeTap"
     />
   </wx-view>
 </refer>
@@ -102,7 +102,7 @@ exports[`ChatMarkdown ChatMarkdown sheet demo works fine 1`] = `
 | 长文本示例| 长文本示例长文本示例长文本示例 |   $100 | 文本内容 |
 | 文本示例 | 文本内容 | $100 |  文本内容 |
 "
-      bind:click="handleLinkTap"
+      bind:click="handleNodeTap"
     />
   </wx-view>
 </sheet>
@@ -118,7 +118,7 @@ exports[`ChatMarkdown ChatMarkdown url demo works fine 1`] = `
 ![示例](https://tdesign.gtimg.com/demo/demo-image-1.png \\"示例\\")
 这是一个链接 [Markdown语法](https://markdown.com.cn)。
 "
-      bind:click="handleLinkTap"
+      bind:click="handleNodeTap"
     />
   </wx-view>
 </url>

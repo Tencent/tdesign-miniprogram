@@ -26,6 +26,8 @@
     "update:locale": "gulp copyLocale --gulpfile script/gulpfile.locale.js --cwd ./",
     "lintfix": "eslint '{packages/components,packages/pro-components,packages/tdesign-miniprogram/example}/**/*.{js,ts}' --fix",
     "lint": "eslint '{packages/components,packages/pro-components,packages/tdesign-miniprogram/example}/**/*.{js,ts}'",
+    "lint:uniapp": "eslint '{packages/uniapp-components,packages/uniapp-pro-components,packages/tdesign-uniapp,packages/tdesign-uniapp-chat}/**/*.{ts,js,vue}' --no-error-on-unmatched-pattern --quiet",
+    "lintfix:uniapp": "eslint '{packages/uniapp-components,packages/uniapp-pro-components,packages/tdesign-uniapp,packages/tdesign-uniapp-chat}/**/*.{ts,js,vue}' --fix --no-error-on-unmatched-pattern --quiet",
     "format": "prettier {packages/components,packages/pro-components,packages/tdesign-miniprogram/example,script}/**/*.{js,ts,wxss,less,wxml,html,json,md,wxs} --write",
     "site": "pnpm -C packages/tdesign-miniprogram/site site",
     "site:dev": "pnpm -C packages/tdesign-miniprogram/site site:dev",
@@ -124,6 +126,9 @@
       "prettier --write"
     ],
     "{packages/components,example}/**/*.{js,ts}": [
+      "eslint --fix"
+    ],
+    "{packages/uniapp-components,packages/uniapp-pro-components,packages/tdesign-uniapp,packages/tdesign-uniapp-chat}/**/*.{ts,js,vue}": [
       "eslint --fix"
     ]
   }
