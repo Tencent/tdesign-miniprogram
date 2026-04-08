@@ -15,6 +15,7 @@
         options="{{markdownProps && markdownProps.options}}"
         streaming="{{markdownProps && markdownProps.streaming}}"
         generic:tail-component="tail-component"
+        bindclick="onMarkdownClick"
       ></t-chat-markdown>
     </view>
   </block>
