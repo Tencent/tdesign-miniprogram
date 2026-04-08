@@ -22,6 +22,7 @@
               content="{{contentItem}}"
               role="{{item.message.role}}"
               markdownProps="{{item.markdownProps}}"
+              generic:tail-component="custom-tail"
             />
           </block>
         </view>

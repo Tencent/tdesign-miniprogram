@@ -1,4 +1,18 @@
 <view class="chat-example-block">
-  <t-chat-markdown content="{{content}}" streaming="{{streaming}}" bind:click="handleNodeTap" />
+  <!-- 默认光标（使用内置 chat-markdown-tail 组件） -->
+  <view style="margin-bottom: 16px">
+    <view style="font-size: 12px; color: #888; margin-bottom: 8px">默认光标</view>
+    <t-chat-markdown content="{{content}}" streaming="{{streaming}}" bind:click="handleNodeTap" />
+  </view>
+  <!-- 自定义 tail-component（通过 generic:tail-component 传入） -->
+  <view>
+    <view style="font-size: 12px; color: #888; margin-bottom: 8px">自定义光标组件</view>
+    <t-chat-markdown
+      content="{{content}}"
+      streaming="{{streaming}}"
+      generic:tail-component="custom-tail"
+      bind:click="handleNodeTap"
+    />
+  </view>
   <button bindtap="handleReplay" style="margin-top: 16px">重新播放</button>
 </view>

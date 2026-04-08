@@ -1,0 +1,12 @@
+/* 自定义光标样式：蓝色渐变闪烁 */
+.custom-tail {
+  display: inline-block;
+  color: #0052d9;
+  font-weight: bold;
+  animation: custom-tail-blink 0.8s ease-in-out infinite;
+}
+
+@keyframes custom-tail-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.2; }
+}
