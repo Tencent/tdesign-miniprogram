@@ -34,9 +34,7 @@ catalog:
   '@types/tinycolor2': ^1.4.6
   '@types/validator': ^13.6.3
   '@typescript-eslint/eslint-plugin': ^5.62.0
-  '@typescript-eslint/experimental-utils': ^2.24.0
   '@typescript-eslint/parser': ~5.35.1
-  '@typescript-eslint/typescript-estree': ^8.8.0
   '@use-gesture/vanilla': ^10.3.0
   '@vitejs/plugin-vue': ^5.2.4
   '@vitejs/plugin-vue-jsx': ^4.2.0
@@ -55,9 +53,7 @@ catalog:
   camelcase: ~6.3.0
   chokidar: ^4.0.3
   commitizen: ^4.3.1
-  commitlint: ^17.0.3
   concurrently: ^9.2.1
-  conventional-changelog-cli: ^2.1.1
   cos-nodejs-sdk-v5: ^2.15.4
   cross-env: ^7.0.3
   cz-conventional-changelog: ^3.3.0
@@ -75,7 +71,7 @@ catalog:
   eslint-import-resolver-node: 0.3.9
   eslint-plugin-import: ^2.31.0
   eslint-plugin-jest: '25'
-  eslint-plugin-light: '1.0.22'
+  eslint-plugin-light: 1.0.22
   eslint-plugin-prettier: ^4.2.1
   eslint-plugin-react: 7.26.1
   eslint-plugin-react-hooks: 4.2.0
@@ -113,8 +109,6 @@ catalog:
   lodash.upperfirst: ^4.3.1
   marked: ^16.1.2
   merge2: ^1.4.1
-  min-indent: ^1.0.1
-  mitt: ^3.0.0
   mockdate: ^3.0.5
   npm-run-all2: ^8.0.4
   playwright: ^1.19.1
@@ -175,7 +169,7 @@ catalogs:
   tdesign:
     '@tdesign/site-components': ^0.18.2
     '@tdesign/theme-generator': ^1.2.3
-    tdesign-icons-vue-next: ^0.4.2
+    tdesign-icons-vue-next: ^0.4.4
     tdesign-publish-cli: ^0.0.12
   uni:
     '@dcloudio/types': ^3.4.28
@@ -199,5 +193,7 @@ catalogs:
     '@dcloudio/uni-quickapp-webview': 3.0.0-4030620241128001
     '@dcloudio/uni-stacktracey': 3.0.0-4030620241128001
     '@dcloudio/vite-plugin-uni': 3.0.0-4030620241128001
+
+cleanupUnusedCatalogs: true
 
 shamefullyHoist: true

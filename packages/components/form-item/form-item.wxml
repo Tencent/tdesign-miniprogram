@@ -38,5 +38,5 @@
     </view>
   </view>
 
-  <t-icon wx:if="{{arrow}}" name="chevron-right" size="24" color="rgba(0, 0, 0, 0.4)" />
+  <t-icon wx:if="{{arrow}}" name="chevron-right" class="{{formItemClass}}__icon" />
 </view>

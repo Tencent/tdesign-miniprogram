@@ -22,6 +22,7 @@
             :placement="item.role === 'user' ? 'right' : 'left'"
             :status="item.status || ''"
             @message-longpress="showPopover"
+            @click="onClick"
           >
             <template #actionbar>
               <t-chat-actionbar
@@ -358,6 +359,11 @@ export default {
     handlePopoverAction(e) {
       e.chatId = this.activePopoverId;
       this.handleAction(e);
+    },
+
+    onClick(e) {
+      const { node } = e;
+      console.log('点击节点', node);
     },
   },
 };
