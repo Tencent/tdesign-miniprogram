@@ -53,6 +53,9 @@ export default class ChatContent extends SuperComponent {
       return html;
     },
 
+    onMarkdownClick(e) {
+      this.triggerEvent('click', e.detail);
+    },
     setTextInfo() {
       // error 状态下统一按纯文本处理，避免走 markdown 渲染
       if (this.properties.content.type === 'text' || this.properties.status === 'error') {
