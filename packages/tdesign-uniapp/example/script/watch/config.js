@@ -16,8 +16,11 @@ const config = {
   vue3HxRoot: VUE3_HX_ROOT,
 
   componentTargetDirInVue3Cli: path.resolve(VUE3_CLI_ROOT, 'src/_tdesign'),
+  componentChatTargetDirInVue3Cli: path.resolve(VUE3_CLI_ROOT, 'src/_tdesign-chat'),
   componentTargetDirInApp: path.resolve(APP_ROOT, 'uni_modules/tdesign-uniapp/components'),
+  componentChatTargetDirInApp: path.resolve(APP_ROOT, 'uni_modules/tdesign-uniapp-chat/components'),
   componentTargetDirInVue2Cli: path.resolve(VUE2_CLI_ROOT, 'src/_tdesign'),
+  componentChatTargetDirInVue2Cli: path.resolve(VUE2_CLI_ROOT, 'src/_tdesign-chat'),
   componentTargetDirInVue2Hx: path.resolve(VUE2_HX_ROOT, 'uni_modules/tdesign-uniapp/components'),
   componentChatTargetDirInVue2Hx: path.resolve(VUE2_HX_ROOT, 'uni_modules/tdesign-uniapp-chat/components'),
   componentTargetDirInVue3Hx: path.resolve(VUE3_HX_ROOT, 'uni_modules/tdesign-uniapp/components'),

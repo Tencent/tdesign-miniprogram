@@ -28,7 +28,9 @@ async function copyComponents({
     relativePath,
     filePath,
     config: {
-      targetDir: config.componentTargetDirInVue3Cli,
+      targetDir: isChat
+        ? config.componentChatTargetDirInVue3Cli
+        : config.componentTargetDirInVue3Cli,
       demoDir: config.pagesMoreDirInVue3Cli,
     },
   });
@@ -37,7 +39,9 @@ async function copyComponents({
     relativePath,
     filePath,
     config: {
-      targetDir: config.componentTargetDirInApp,
+      targetDir: isChat
+        ? config.componentChatTargetDirInApp
+        : config.componentTargetDirInApp,
       demoDir: config.pagesMoreDirInApp,
     },
   });
@@ -47,7 +51,9 @@ async function copyComponents({
       relativePath,
       filePath,
       config: {
-        targetDir: config.componentTargetDirInVue2Cli,
+        targetDir: isChat
+          ? config.componentChatTargetDirInVue2Cli
+          : config.componentTargetDirInVue2Cli,
         demoDir: config.pagesMoreDirInVue2Cli,
       },
     });

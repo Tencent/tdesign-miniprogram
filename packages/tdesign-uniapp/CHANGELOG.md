@@ -5,6 +5,17 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.8.1 `2026-04-09`
+
+### 🚀 Features
+
+- `Icon`: 新增 `divider-1`, `voice-wave` 和 `keyboard-1`  图标 @uyarn ([#4395](https://github.com/Tencent/tdesign-miniprogram/pull/4395))
+
+### 🐞 Bug Fixes
+
+- `Form`: 修复 `FormItem` 右侧箭头深色模式颜色错误 @anlyyao ([#4384](https://github.com/Tencent/tdesign-miniprogram/pull/4384))
+- `Rate`: 修复提示框层级不够被覆盖的问题 @liweijie0812 ([#4386](https://github.com/Tencent/tdesign-miniprogram/pull/4386))
+
 ## 🌈 0.8.0 `2026-03-23`
 
 ### 🚨 Breaking Changes

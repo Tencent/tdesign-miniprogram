@@ -55,7 +55,8 @@
 <script>
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TMessage from '@tdesign/uniapp/message/message.vue';
-import Message from '@tdesign/uniapp/message/index';
+import { MessagePlugin } from '@tdesign/uniapp';
+
 export default {
   components: {
     TButton,
@@ -67,7 +68,7 @@ export default {
   created() {},
   methods: {
     showInfoMessage() {
-      Message.info({
+      MessagePlugin.info({
         context: this,
         offset: [90, 32],
         duration: 5000,
@@ -75,7 +76,7 @@ export default {
       });
     },
     showWarnMessage() {
-      Message.warning({
+      MessagePlugin.warning({
         context: this,
         offset: [90, 32],
         duration: 5000,
@@ -83,7 +84,7 @@ export default {
       });
     },
     showSuccessMessage() {
-      Message.success({
+      MessagePlugin.success({
         context: this,
         offset: [90, 32],
         duration: 5000,
@@ -91,7 +92,7 @@ export default {
       });
     },
     showErrorMessage() {
-      Message.error({
+      MessagePlugin.error({
         context: this,
         offset: [90, 32],
         duration: 5000,

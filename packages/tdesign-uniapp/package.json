@@ -1,6 +1,6 @@
 {
   "name": "@tdesign/uniapp",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "id": "tdesign-uniapp",
   "title": "tdesign-uniapp",
   "description": "TDesign Component for UniApp",
@@ -39,6 +39,39 @@
       "default": "./dist/index.js"
     },
     "./*": "./dist/*",
+    "./mixins/page-scroll": {
+      "types": "./dist/mixins/page-scroll.d.ts",
+      "import": "./dist/mixins/page-scroll.js",
+      "default": "./dist/mixins/page-scroll.js"
+    },
+    "./dialog": {
+      "types": "./dist/dialog/index.d.ts",
+      "import": "./dist/dialog/index.js",
+      "default": "./dist/dialog/index.js"
+    },
+    "./message": {
+      "types": "./dist/message/index.d.ts",
+      "import": "./dist/message/index.js",
+      "default": "./dist/message/index.js"
+    },
+    "./toast": {
+      "types": "./dist/toast/index.d.ts",
+      "import": "./dist/toast/index.js",
+      "default": "./dist/toast/index.js"
+    },
+    "./action-sheet": {
+      "types": "./dist/action-sheet/index.d.ts",
+      "import": "./dist/action-sheet/index.js",
+      "default": "./dist/action-sheet/index.js"
+    },
+    "./theme.css": {
+      "types": "./dist/theme.css.d.ts",
+      "default": "./dist/theme.css"
+    },
+    "./theme.less": {
+      "types": "./dist/theme.less.d.ts",
+      "default": "./dist/theme.less"
+    },
     "./global": {
       "types": "./global.d.ts"
     },
