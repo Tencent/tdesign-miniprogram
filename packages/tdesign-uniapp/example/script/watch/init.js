@@ -5,6 +5,7 @@ const { deleteFolder } = require('t-comm');
 
 const { config } = require('./config');
 const { copyComponents, checkVue2CliExist, checkVue2HxExist, checkVue3HxExist } = require('./helper');
+const { generateStyleShortcuts } = require('../release/prepare');
 const { generateDts } = require('../release/typescript');
 
 
@@ -32,13 +33,16 @@ async function copyOneProject({
 
 function clearTargetDir() {
   deleteFolder(config.componentTargetDirInVue3Cli);
+  deleteFolder(config.componentChatTargetDirInVue3Cli);
   deleteFolder(config.componentTargetDirInApp);
+  deleteFolder(config.componentChatTargetDirInApp);
 
   deleteFolder(config.pagesMoreDirInVue3Cli);
   deleteFolder(config.pagesMoreDirInApp);
 
   if (checkVue2CliExist()) {
     deleteFolder(config.componentTargetDirInVue2Cli);
+    deleteFolder(config.componentChatTargetDirInVue2Cli);
     deleteFolder(config.pagesMoreDirInVue2Cli);
   }
 
@@ -96,8 +100,23 @@ async function main() {
     isChat: true,
   });
 
+  // 为各目标目录生成快捷样式入口文件（theme.css / theme.less）
+  generateStyleShortcuts(config.componentTargetDirInVue3Cli);
+  generateStyleShortcuts(config.componentTargetDirInApp);
+
+  if (checkVue2CliExist()) {
+    generateStyleShortcuts(config.componentTargetDirInVue2Cli);
+  }
+
+  if (checkVue2HxExist()) {
+    generateStyleShortcuts(config.componentTargetDirInVue2Hx);
+  }
+
+  if (checkVue3HxExist()) {
+    generateStyleShortcuts(config.componentTargetDirInVue3Hx);
+  }
   // 为 chat 包生成 .d.ts 声明文件
-  generateDts(config.chatSourceDir, config.componentTargetDirInVue3Cli);
+  generateDts(config.chatSourceDir, config.componentChatTargetDirInVue3Cli);
 }
 
 
