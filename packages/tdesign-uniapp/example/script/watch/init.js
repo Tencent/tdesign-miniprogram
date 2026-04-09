@@ -6,6 +6,7 @@ const { deleteFolder } = require('t-comm');
 const { config } = require('./config');
 const { copyComponents, checkVue2CliExist, checkVue2HxExist, checkVue3HxExist } = require('./helper');
 const { generateStyleShortcuts } = require('../release/prepare');
+const { generateDts } = require('../release/typescript');
 
 
 async function copyOneProject({
@@ -44,11 +45,13 @@ function clearTargetDir() {
 
   if (checkVue2HxExist()) {
     deleteFolder(config.componentTargetDirInVue2Hx);
+    deleteFolder(config.componentChatTargetDirInVue2Hx);
     deleteFolder(config.pagesMoreDirInVue2Hx);
   }
 
   if (checkVue3HxExist()) {
     deleteFolder(config.componentTargetDirInVue3Hx);
+    deleteFolder(config.componentChatTargetDirInVue3Hx);
     deleteFolder(config.pagesMoreDirInVue3Hx);
   }
 }
@@ -85,6 +88,9 @@ async function main() {
     isChat: false,
   });
 
+  // 为主包生成 .d.ts 声明文件
+  generateDts(config.sourceDir, config.componentTargetDirInVue3Cli);
+
   await copyOneProject({
     globMode: config.chatSourceGlob,
     sourceDir: config.chatSourceDir,
@@ -106,6 +112,8 @@ async function main() {
   if (checkVue3HxExist()) {
     generateStyleShortcuts(config.componentTargetDirInVue3Hx);
   }
+  // 为 chat 包生成 .d.ts 声明文件
+  generateDts(config.chatSourceDir, config.componentTargetDirInVue3Cli);
 }
 
 

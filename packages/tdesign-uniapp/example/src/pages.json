@@ -70,57 +70,6 @@
       "path": "pages-more/tabs/tabs"
     },
     {
-      "path": "pages-more/calendar/calendar"
-    },
-    {
-      "path": "pages-more/cascader/cascader"
-    },
-    {
-      "path": "pages-more/checkbox/checkbox"
-    },
-    {
-      "path": "pages-more/color-picker/color-picker"
-    },
-    {
-      "path": "pages-more/date-time-picker/date-time-picker"
-    },
-    {
-      "path": "pages-more/form/form"
-    },
-    {
-      "path": "pages-more/input/input"
-    },
-    {
-      "path": "pages-more/picker/picker"
-    },
-    {
-      "path": "pages-more/radio/radio"
-    },
-    {
-      "path": "pages-more/rate/rate"
-    },
-    {
-      "path": "pages-more/search/search"
-    },
-    {
-      "path": "pages-more/slider/slider"
-    },
-    {
-      "path": "pages-more/stepper/stepper"
-    },
-    {
-      "path": "pages-more/switch/switch"
-    },
-    {
-      "path": "pages-more/textarea/textarea"
-    },
-    {
-      "path": "pages-more/tree-select/tree-select"
-    },
-    {
-      "path": "pages-more/upload/upload"
-    },
-    {
       "path": "pages-more/avatar/avatar"
     },
     {
@@ -179,6 +128,142 @@
     }
   ],
   "subPackages": [
+    {
+      "root": "pages-more/calendar",
+      "pages": [
+        {
+          "path": "calendar"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/cascader",
+      "pages": [
+        {
+          "path": "cascader"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/checkbox",
+      "pages": [
+        {
+          "path": "checkbox"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/color-picker",
+      "pages": [
+        {
+          "path": "color-picker"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/date-time-picker",
+      "pages": [
+        {
+          "path": "date-time-picker"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/form",
+      "pages": [
+        {
+          "path": "form"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/input",
+      "pages": [
+        {
+          "path": "input"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/picker",
+      "pages": [
+        {
+          "path": "picker"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/radio",
+      "pages": [
+        {
+          "path": "radio"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/rate",
+      "pages": [
+        {
+          "path": "rate"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/search",
+      "pages": [
+        {
+          "path": "search"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/slider",
+      "pages": [
+        {
+          "path": "slider"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/stepper",
+      "pages": [
+        {
+          "path": "stepper"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/switch",
+      "pages": [
+        {
+          "path": "switch"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/textarea",
+      "pages": [
+        {
+          "path": "textarea"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/tree-select",
+      "pages": [
+        {
+          "path": "tree-select"
+        }
+      ]
+    },
+    {
+      "root": "pages-more/upload",
+      "pages": [
+        {
+          "path": "upload"
+        }
+      ]
+    },
     {
       "root": "pages-more/action-sheet",
       "pages": [
@@ -423,74 +508,6 @@
         "pathName": "pages-more/tabs/tabs"
       },
       {
-        "name": "calendar",
-        "pathName": "pages-more/calendar/calendar"
-      },
-      {
-        "name": "cascader",
-        "pathName": "pages-more/cascader/cascader"
-      },
-      {
-        "name": "checkbox",
-        "pathName": "pages-more/checkbox/checkbox"
-      },
-      {
-        "name": "color-picker",
-        "pathName": "pages-more/color-picker/color-picker"
-      },
-      {
-        "name": "date-time-picker",
-        "pathName": "pages-more/date-time-picker/date-time-picker"
-      },
-      {
-        "name": "form",
-        "pathName": "pages-more/form/form"
-      },
-      {
-        "name": "input",
-        "pathName": "pages-more/input/input"
-      },
-      {
-        "name": "picker",
-        "pathName": "pages-more/picker/picker"
-      },
-      {
-        "name": "radio",
-        "pathName": "pages-more/radio/radio"
-      },
-      {
-        "name": "rate",
-        "pathName": "pages-more/rate/rate"
-      },
-      {
-        "name": "search",
-        "pathName": "pages-more/search/search"
-      },
-      {
-        "name": "slider",
-        "pathName": "pages-more/slider/slider"
-      },
-      {
-        "name": "stepper",
-        "pathName": "pages-more/stepper/stepper"
-      },
-      {
-        "name": "switch",
-        "pathName": "pages-more/switch/switch"
-      },
-      {
-        "name": "textarea",
-        "pathName": "pages-more/textarea/textarea"
-      },
-      {
-        "name": "tree-select",
-        "pathName": "pages-more/tree-select/tree-select"
-      },
-      {
-        "name": "upload",
-        "pathName": "pages-more/upload/upload"
-      },
-      {
         "name": "avatar",
         "pathName": "pages-more/avatar/avatar"
       },
@@ -565,6 +582,74 @@
       {
         "name": "config-provider",
         "pathName": "pages-more/config-provider/config-provider"
+      },
+      {
+        "name": "calendar",
+        "pathName": "pages-more/calendar/calendar"
+      },
+      {
+        "name": "cascader",
+        "pathName": "pages-more/cascader/cascader"
+      },
+      {
+        "name": "checkbox",
+        "pathName": "pages-more/checkbox/checkbox"
+      },
+      {
+        "name": "color-picker",
+        "pathName": "pages-more/color-picker/color-picker"
+      },
+      {
+        "name": "date-time-picker",
+        "pathName": "pages-more/date-time-picker/date-time-picker"
+      },
+      {
+        "name": "form",
+        "pathName": "pages-more/form/form"
+      },
+      {
+        "name": "input",
+        "pathName": "pages-more/input/input"
+      },
+      {
+        "name": "picker",
+        "pathName": "pages-more/picker/picker"
+      },
+      {
+        "name": "radio",
+        "pathName": "pages-more/radio/radio"
+      },
+      {
+        "name": "rate",
+        "pathName": "pages-more/rate/rate"
+      },
+      {
+        "name": "search",
+        "pathName": "pages-more/search/search"
+      },
+      {
+        "name": "slider",
+        "pathName": "pages-more/slider/slider"
+      },
+      {
+        "name": "stepper",
+        "pathName": "pages-more/stepper/stepper"
+      },
+      {
+        "name": "switch",
+        "pathName": "pages-more/switch/switch"
+      },
+      {
+        "name": "textarea",
+        "pathName": "pages-more/textarea/textarea"
+      },
+      {
+        "name": "tree-select",
+        "pathName": "pages-more/tree-select/tree-select"
+      },
+      {
+        "name": "upload",
+        "pathName": "pages-more/upload/upload"
       },
       {
         "name": "action-sheet",
@@ -660,6 +745,23 @@
     "pages/home/home": {
       "network": "all",
       "packages": [
+        "pages-more/calendar",
+        "pages-more/cascader",
+        "pages-more/checkbox",
+        "pages-more/color-picker",
+        "pages-more/date-time-picker",
+        "pages-more/form",
+        "pages-more/input",
+        "pages-more/picker",
+        "pages-more/radio",
+        "pages-more/rate",
+        "pages-more/search",
+        "pages-more/slider",
+        "pages-more/stepper",
+        "pages-more/switch",
+        "pages-more/textarea",
+        "pages-more/tree-select",
+        "pages-more/upload",
         "pages-more/action-sheet",
         "pages-more/dialog",
         "pages-more/dropdown-menu",

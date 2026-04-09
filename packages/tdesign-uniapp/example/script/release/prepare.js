@@ -5,6 +5,7 @@ const { deleteFolder } = require('t-comm');
 
 const { config, DIST_BLACK_LIST } = require('./config');
 const { copy } = require('./core.js');
+const { generateDts } = require('./typescript');
 
 // 在 dist 根目录生成快捷样式入口，方便用户直接引用
 // 例如：@import '@tdesign/uniapp/theme.css'
@@ -93,6 +94,9 @@ async function prepareOne({ targetDir, sourceGlob, sourceDir }) {
   }
 
   console.log(`[Wrote] done! Length is ${list.length}!`);
+
+  // 批量生成 .d.ts 声明文件
+  generateDts(sourceDir, targetDir);
 }
 
 if (require.main === module) {

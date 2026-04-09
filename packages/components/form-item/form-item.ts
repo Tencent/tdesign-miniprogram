@@ -62,14 +62,14 @@ export default class FormItem extends SuperComponent {
         const isRequired = formRules?.some((rule) => rule.required);
 
         this.setData({
-          formRules,
+          formRules: formRules || {},
           colon: target.data.colon,
           innerLabelAlign: labelAlign || target.data.labelAlign,
           innerLabelWidth: normalizeLabelWidth(labelWidth || target.data.labelWidth),
           innerRequiredMark: requiredMark || target.data.requiredMark || globalConfig.requiredMark || isRequired,
           innerShowErrorMessage:
             typeof showErrorMessage === 'boolean' ? showErrorMessage : target.properties.showErrorMessage,
-          requiredMarkPosition: target.data.requiredMarkPosition || globalConfig.requiredMarkPosition,
+          requiredMarkPosition: target.data.requiredMarkPosition || globalConfig.requiredMarkPosition || 'left',
         });
       },
       unlinked() {
