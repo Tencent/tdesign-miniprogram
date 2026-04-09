@@ -5,6 +5,24 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.13.2 `2026-04-09`
+
+### 🚀 Features
+
+- `ChatContent`: 透传 `click` 事件 @zydemail ([#4388](https://github.com/Tencent/tdesign-miniprogram/pull/4388))
+- `ChatMessage`: 透传 `click` 事件 @zydemail ([#4388](https://github.com/Tencent/tdesign-miniprogram/pull/4388))
+- `Fab`: 为 `icon` 属性新增 `Object` 类型，支持透传到图标组件 @anlyyao ([#4400](https://github.com/Tencent/tdesign-miniprogram/pull/4400))
+- `Icon`: 新增 `divider-1`, `voice-wave` 和 `keyboard-1`  图标 @uyarn ([#4395](https://github.com/Tencent/tdesign-miniprogram/pull/4395))
+- `Indexes`: 新增 `showFullIndex` 属性，表示是否显示完整的索引内容，默认显示首字符 @anlyyao ([#4405](https://github.com/Tencent/tdesign-miniprogram/pull/4405))
+
+### 🐞 Bug Fixes
+
+- `Fab`: 修复 `draggable` 为 `true` 时外部样式类（`class`、`t-class`）无效 @anlyyao ([#4404](https://github.com/Tencent/tdesign-miniprogram/pull/4404))
+- `Form`: 
+  - 修复 `FormItem` 右侧箭头深色模式颜色错误 @anlyyao ([#4384](https://github.com/Tencent/tdesign-miniprogram/pull/4384))
+  - 修复控制台告警 @anlyyao ([#4401](https://github.com/Tencent/tdesign-miniprogram/pull/4401))
+- `Rate`: 修复提示框层级不够被覆盖的问题 @liweijie0812 ([#4386](https://github.com/Tencent/tdesign-miniprogram/pull/4386))
+
 ## 🌈 1.13.1 `2026-03-26`
 
 ### 🚀 Features

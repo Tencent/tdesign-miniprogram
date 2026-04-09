@@ -11,7 +11,7 @@
       class="{{_.cls(labelClass, [innerLabelAlign, ['required', innerRequiredMark], ['required-right', innerRequiredMark && requiredMarkPosition === 'right']])}}  {{prefix}}-class-label"
       style="width: {{innerLabelWidth}}"
     >
-      <label for="{{for}}">{{label}}</label>
+      <label class="{{labelClass}}-text" for="{{for}}">{{label}}</label>
       <block wx:if="{{colon}}">{{globalConfig.colonText}}</block>
     </view>
 
@@ -38,5 +38,5 @@
     </view>
   </view>
 
-  <t-icon wx:if="{{arrow}}" name="chevron-right" size="24" color="rgba(0, 0, 0, 0.4)" />
+  <t-icon wx:if="{{arrow}}" name="chevron-right" class="{{formItemClass}}__icon" />
 </view>

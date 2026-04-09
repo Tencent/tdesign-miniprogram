@@ -453,6 +453,7 @@ exports[`Indexes Indexes custom demo works fine 1`] = `
           "#",
         ]
       }}"
+      showFullIndex="{{true}}"
       stickyOffset="{{8}}"
       tClass="wrapper"
       bind:change="onChange"

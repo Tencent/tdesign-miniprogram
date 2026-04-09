@@ -60,6 +60,11 @@
     display: flex;
     flex-direction: column;
   }
+
+  &__icon {
+    font-size: 48rpx;
+    color: @text-color-placeholder;
+  }
 }
 
 .@{form} {
@@ -88,7 +93,7 @@
     }
 
     &--required:not(.@{form}__label--required-right) {
-      label::before {
+      .@{form}__label-text::before {
         display: inline;
         margin-right: calc(@spacer / 2);
         color: @error-color-6;
@@ -97,7 +102,7 @@
     }
 
     &--required-right {
-      label::after {
+      .@{form}__label-text::after {
         display: inline;
         margin-left: calc(@spacer / 2);
         color: @error-color-6;

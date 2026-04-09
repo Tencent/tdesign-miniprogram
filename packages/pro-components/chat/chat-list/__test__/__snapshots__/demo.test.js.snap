@@ -26,6 +26,7 @@ exports[`ChatList ChatList base demo works fine 1`] = `
         placement="left"
         role="assistant"
         status="complete"
+        bind:click="onClick"
         bind:message-longpress="showPopover"
       >
         <t-chat-actionbar
@@ -53,6 +54,7 @@ exports[`ChatList ChatList base demo works fine 1`] = `
         placement="right"
         role="user"
         status=""
+        bind:click="onClick"
         bind:message-longpress="showPopover"
       />
       <wx-view

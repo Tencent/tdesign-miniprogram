@@ -578,7 +578,7 @@ export default {
     display: flex;
     justify-content: space-between;
     position: relative;
-    border-bottom: 1rpx solid #e7e7e7;
+    border-bottom: 1rpx solid var(--td-component-stroke, #e7e7e7);;
 }
 
 /* .button-group :deep(.t-button) {

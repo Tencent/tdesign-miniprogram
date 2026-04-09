@@ -48,8 +48,7 @@
     <t-icon
       v-if="arrow"
       name="chevron-right"
-      size="24"
-      color="rgba(0, 0, 0, 0.4)"
+      :class="formItemClass + '__icon'"
     />
   </view>
 </template>

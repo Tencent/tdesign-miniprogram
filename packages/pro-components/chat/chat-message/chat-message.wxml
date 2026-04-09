@@ -43,6 +43,7 @@
               content="{{item}}"
               role="{{role}}"
               status="{{status}}"
+              catchclick="onContentClick"
             ></chat-content>
           </block>
         </block>
