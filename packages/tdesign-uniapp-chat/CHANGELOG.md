@@ -5,6 +5,15 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.2.3 `2026-04-09`
+
+### 🚀 Features
+
+- `ChatContent`: 透传 `click` 事件 @zydemail ([#4388](https://github.com/Tencent/tdesign-miniprogram/pull/4388))
+- `ChatMarkdown`: 扩展 `click` 事件触发源，从点击链接触发，改为所有事件冒泡到的节点都会触发 @mimaoxiao ([#4372](https://github.com/Tencent/tdesign-miniprogram/pull/4372))
+- `ChatMessage`: 透传 `click` 事件 @zydemail ([#4388](https://github.com/Tencent/tdesign-miniprogram/pull/4388))
+- `ChatThinking`: 修复 `collapsed` 属性无效，支持内容输出结束后自动收起 @zydemail ([#4354](https://github.com/Tencent/tdesign-miniprogram/pull/4354))
+
 ## 🌈 0.2.2 `2026-03-23`
 
 ### 🚨 Breaking Changes
