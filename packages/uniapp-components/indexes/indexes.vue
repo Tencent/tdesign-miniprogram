@@ -12,7 +12,7 @@
       @touchend.stop.prevent="onTouchEnd"
     >
       <view
-        v-for="(item, index) in _indexList"
+        v-for="(item, index) in innerIndexList"
         :key="index"
         :class="tools.cls(classPrefix + '__sidebar-item', [['active', dataCurrent === item]]) + ' ' + tClassSidebarItem"
         :data-index="index"
@@ -37,9 +37,9 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tCell from '../cell/cell';
-import tCellGroup from '../cell-group/cell-group';
+import TIcon from '../icon/icon';
+import TCell from '../cell/cell';
+import TCellGroup from '../cell-group/cell-group';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -74,9 +74,9 @@ export default uniComponent({
     ParentMixin(RELATION_MAP.IndexesAnchor),
   ],
   components: {
-    tIcon,
-    tCell,
-    tCellGroup,
+    TIcon,
+    TCell,
+    TCellGroup,
   },
   props: {
     ...props,
@@ -89,8 +89,8 @@ export default uniComponent({
     return {
       prefix,
       classPrefix: name,
-      _height: 0,
-      _indexList: [],
+      innerHeight: 0,
+      innerIndexList: [],
       scrollTop: 0,
       activeAnchor: this.current,
       showTips: false,
@@ -110,7 +110,7 @@ export default uniComponent({
       handler(v, pre) {
         const cb = () => {
           this.setIndexList(v);
-          this.setHeight(this._height);
+          this.setHeight(this.innerHeight);
         };
         if (!pre?.length) {
           // 防止抖音小程序报错
@@ -150,7 +150,7 @@ export default uniComponent({
     this.groupTop = [];
     this.sidebar = null;
 
-    if (this._height === 0) {
+    if (this.innerHeight === 0) {
       this.setHeight();
     }
 
@@ -165,7 +165,7 @@ export default uniComponent({
         const { windowHeight } = systemInfo;
         height = windowHeight;
       }
-      this._height = height;
+      this.innerHeight = height;
 
       setTimeout(() => {
         this.getAllRect();
@@ -181,9 +181,9 @@ export default uniComponent({
           alphabet.push(String.fromCharCode(i));
         }
 
-        this._indexList = alphabet;
+        this.innerIndexList = alphabet;
       } else {
-        this._indexList = list;
+        this.innerIndexList = list;
       }
     },
 
@@ -194,7 +194,7 @@ export default uniComponent({
           item.totalHeight = (next?.top || Infinity) - item.top;
         });
 
-        const current = this.dataCurrent || this._indexList[0];
+        const current = this.dataCurrent || this.innerIndexList[0];
         this.setAnchorByCurrent(current, 'init');
       })
         .catch((err) => {
@@ -221,7 +221,7 @@ export default uniComponent({
     getSidebarRect() {
       getRect(this, `#id-${name}__bar`).then((rect) => {
         const { top, height } = rect;
-        const { length } = this._indexList;
+        const { length } = this.innerIndexList;
 
         this.sidebar = {
           top,
@@ -252,20 +252,14 @@ export default uniComponent({
 
       const target = this.groupTop.find(item => item.anchor === current);
 
-      // 寻求与 小程序 一致逻辑
-      // this.activeAnchor = current;
       if (target) {
         const scrollTop = target.top - stickyOffset;
 
-        // if (scrollTop === 0 && source === 'init') {
-        // 与当前小程序逻辑不同
         this.setAnchorOnScroll(scrollTop);
-        // } else {
         uni.pageScrollTo({
           scrollTop,
           duration: 0,
         });
-        // }
 
         if (['click', 'touch'].includes(source)) {
           this.toggleTips(true);
@@ -294,7 +288,7 @@ export default uniComponent({
     onAnchorTouch: throttle(function (e) {
       const getAnchorIndex = (clientY) => {
         const offsetY = clientY - this.sidebar.top;
-        const max = this._indexList.length - 1;
+        const max = this.innerIndexList.length - 1;
 
         if (offsetY <= 0) {
           return 0;
@@ -308,7 +302,7 @@ export default uniComponent({
       };
       const index = getAnchorIndex(e.changedTouches[0].clientY);
 
-      this.setAnchorByCurrent(this._indexList[index], 'touch');
+      this.setAnchorByCurrent(this.innerIndexList[index], 'touch');
     }, 1000 / 30), // 30 frame
 
     setAnchorOnScroll(scrollTop) {
@@ -372,6 +366,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './indexes.css';
-</style>
+<style scoped src="./indexes.css"></style>

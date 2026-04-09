@@ -1,4 +1,4 @@
-import { getDate } from 'tdesign-uniapp/common/runtime/wxs-polyfill';
+import { getDate } from '@tdesign/uniapp/common/runtime/wxs-polyfill';
 
 function getDateByTimestamp(val) {
   const date = getDate(val);

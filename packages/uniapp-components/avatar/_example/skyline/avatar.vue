@@ -6,10 +6,10 @@
 
 <script>
 
-import demoAvatar from '../avatar.vue';
+import DemoAvatar from '../avatar.vue';
 export default {
   components: {
-    demoAvatar,
+    DemoAvatar,
   },
   data() {
     return {};

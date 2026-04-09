@@ -6,10 +6,10 @@
 
 <script>
 
-import checkboxDemo from '../checkbox.vue';
+import CheckboxDemo from '../checkbox.vue';
 export default {
   components: {
-    checkboxDemo,
+    CheckboxDemo,
   },
   data() {
     return {};

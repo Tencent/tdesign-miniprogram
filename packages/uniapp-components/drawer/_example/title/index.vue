@@ -11,12 +11,13 @@
     </t-button>
 
     <t-drawer
-      v-model:visible="visible"
+      :visible="visible"
       :placement="placement"
       title="标题"
       :items="sidebar"
       :using-custom-navbar="!isMPAlipay"
       :custom-navbar-height="gCustomNavbarHeight"
+      @update:visible="visible = $event"
       @overlay-click="overlayClick"
       @item-click="itemClick"
     />
@@ -24,12 +25,12 @@
 </template>
 
 <script>
-import tButton from 'tdesign-uniapp/button/button.vue';
-import tDrawer from 'tdesign-uniapp/drawer/drawer.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
+import TDrawer from '@tdesign/uniapp/drawer/drawer.vue';
 export default {
   components: {
-    tButton,
-    tDrawer,
+    TButton,
+    TDrawer,
   },
   data() {
     return {

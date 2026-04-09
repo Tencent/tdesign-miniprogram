@@ -82,6 +82,15 @@
 @spacer-5: var(--td-spacer-5, 96rpx); // 间距-大-x
 @spacer-6: var(--td-spacer-6, 160rpx); // 间距-大-xx
 
+@text-line-height: var(--td-line-height-body-extraSmall, 16px);
+@text-line-height-xs: var(--td-line-height-body-extraSmall, @text-line-height);
+@text-line-height-s: var(--td-line-height-body-small, 20px);
+@text-line-height-base: var(--td-line-height-title-small, 22px);
+@text-line-height-m: var(--td-line-height-title-medium, 24px);
+@text-line-height-l: var(--td-line-height-title-large, 26px);
+@text-line-height-xl: var(--td-line-height-title-extraLarge, 28px);
+@text-line-height-xxl: var(--td-line-height-headline-large, 44px);
+
 // Font
 @font-size: var(--td-font-size, 20rpx);
 @font-size-xs: var(--td-font-size-xs, @font-size); // 字号-一级字号
@@ -94,6 +103,28 @@
 
 @font-family: var(--td-font-family, PingFang SC, Microsoft YaHei, Arial Regular); // 字体-磅数-常规
 @font-family-medium: var(--td-font-family-medium, PingFang SC, Microsoft YaHei, Arial Medium); // 字体-磅数-粗体
+
+// 使用以下与Design Token对应的font token开发组件对应字体、行高
+@font-link-small: var(--td-font-link-small, 24rpx / 40rpx @font-family);
+@font-link-medium: var(--td-font-link-medium, 28rpx / 44rpx @font-family);
+@font-link-large: var(--td-font-link-large, 32rpx / 48rpx @font-family);
+@font-mark-extraSmall: var(--td-font-mark-extraSmall, 600 20rpx / 32rpx @font-family);
+@font-mark-small: var(--td-font-mark-small, 600 24rpx / 40rpx @font-family);
+@font-mark-medium: var(--td-font-mark-medium, 600 28rpx / 44rpx @font-family);
+@font-mark-large: var(--td-font-mark-large, 600 32rpx / 48rpx @font-family);
+@font-body-extraSmall: var(--td-font-body-extraSmall, 20rpx / 32rpx @font-family);
+@font-body-small: var(--td-font-body-small, 24rpx / 40rpx @font-family);
+@font-body-medium: var(--td-font-body-medium, 28rpx / 44rpx @font-family);
+@font-body-large: var(--td-font-body-large, 32rpx / 48rpx @font-family);
+@font-title-small: var(--td-font-title-small, 600 28rpx / 44rpx @font-family);
+@font-title-medium: var(--td-font-title-medium, 600 32rpx / 48rpx @font-family);
+@font-title-large: var(--td-font-title-large, 600 36rpx / 52rpx @font-family);
+@font-title-extraLarge: var(--td-font-title-extraLarge, 600 40rpx / 56rpx @font-family);
+@font-headline-small: var(--td-font-headline-small, 600 48rpx / 64rpx @font-family);
+@font-headline-medium: var(--td-font-headline-medium, 600 56rpx / 72rpx @font-family);
+@font-headline-large: var(--td-font-headline-large, 600 72rpx / 88rpx @font-family);
+@font-display-medium: var(--td-font-display-medium, 600 96rpx / 112rpx @font-family);
+@font-display-large: var(--td-font-display-large, 600 128rpx / 144rpx @font-family);
 
 // 圆角
 @radius-small: var(--td-radius-small, 6rpx);
@@ -146,6 +177,9 @@
 
 @bg-color-secondarycomponent: var(--td-bg-color-secondarycomponent, @gray-color-4);
 @bg-color-secondarycomponent-active: var(--td-bg-color-secondarycomponent-active, @gray-color-6);
+
+// 特殊组件背景色，目前只用于 button、input 组件多主题场景，浅色主题下固定为白色，深色主题下为 transparent 适配背景颜色
+@bg-color-specialcomponent: var(--td-bg-color-specialcomponent, #fff);
 
 @component-stroke: var(--td-component-stroke, @gray-color-3);
 @border-level-1-color: var(--td-border-level-1-color, @gray-color-3);

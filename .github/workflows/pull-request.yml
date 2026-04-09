@@ -9,7 +9,7 @@ jobs:
   check-email:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - name: check_github_primary_email
         run: |
           # 获取最新提交的作者邮箱和提交者邮箱
@@ -30,8 +30,16 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: ./.github/actions/install-dep
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+
+      - run: pnpm install
+
       - name: lint 检查
         run: npm run lint
       - name: unit test

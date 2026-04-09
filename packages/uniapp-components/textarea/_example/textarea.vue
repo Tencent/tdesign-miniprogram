@@ -1,13 +1,8 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="Textarea"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -23,43 +18,43 @@
           title="01 组件类型"
           desc="基础多行文本框"
         >
-          <BaseDemo />
+          <base-demo />
         </t-demo>
         <t-demo
           title=""
           desc="带标题多行文本框"
         >
-          <labelDemo />
+          <label-demo />
         </t-demo>
         <t-demo
           title=""
           desc="自动增高多行文本框"
         >
-          <autosize />
+          <autosize-demo />
         </t-demo>
         <t-demo desc="设置字符数限制">
-          <maxlength />
+          <maxlength-demo />
         </t-demo>
         <t-demo>
-          <maxcharacter />
+          <maxcharacter-demo />
         </t-demo>
         <t-demo
           title="02 组件状态"
           desc="禁用状态"
         >
-          <disabled />
+          <disabled-demo />
         </t-demo>
         <t-demo
           title="03 组件样式"
           desc="卡片样式"
         >
-          <card />
+          <card-demo />
         </t-demo>
         <t-demo
           title="04 特殊样式"
           desc="标签外置输入框"
         >
-          <custom />
+          <custom-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -69,23 +64,23 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import labelDemo from './label/index.vue';
-import autosize from './autosize/index.vue';
-import maxlength from './maxlength/index.vue';
-import disabled from './disabled/index.vue';
-import maxcharacter from './maxcharacter/index.vue';
-import card from './card/index.vue';
-import custom from './custom/index.vue';
+import LabelDemo from './label/index.vue';
+import AutosizeDemo from './autosize/index.vue';
+import MaxlengthDemo from './maxlength/index.vue';
+import DisabledDemo from './disabled/index.vue';
+import MaxcharacterDemo from './maxcharacter/index.vue';
+import CardDemo from './card/index.vue';
+import CustomDemo from './custom/index.vue';
 export default {
   components: {
     BaseDemo,
-    labelDemo,
-    autosize,
-    disabled,
-    maxlength,
-    maxcharacter,
-    card,
-    custom,
+    LabelDemo,
+    AutosizeDemo,
+    DisabledDemo,
+    MaxlengthDemo,
+    MaxcharacterDemo,
+    CardDemo,
+    CustomDemo,
   },
   data() {
     return {};

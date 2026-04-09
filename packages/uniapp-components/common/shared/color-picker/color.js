@@ -236,7 +236,7 @@ export class Color {
       return false;
     }
     const index = gradientColors.findIndex(color => color.id === gradientSelectedId);
-    const newColor = {...current, color: this.rgba};
+    const newColor = { ...current, color: this.rgba };
     gradientColors.splice(index, 1, newColor);
     this.gradientColors = gradientColors.slice();
     return this;

@@ -26,6 +26,11 @@ export interface TdNavbarProps {
    */
   leftArrow?: boolean;
   /**
+   * 固定在顶部时是否开启占位
+   * @default false
+   */
+  placeholder?: boolean;
+  /**
    * 是否开启顶部安全区适配
    * @default true
    */
@@ -43,6 +48,11 @@ export interface TdNavbarProps {
    * @default true
    */
   visible?: boolean;
+  /**
+   * 导航栏栏层级
+   * @default 1
+   */
+  zIndex?: number;
   /**
    * navigateBack 执行完成后触发（失败或成功均会触发）
    */

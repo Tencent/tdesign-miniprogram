@@ -12,7 +12,11 @@ jobs:
         with:
           submodules: recursive
 
-      - uses: ./.github/actions/install-dep
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
 
       - uses: preactjs/compressed-size-action@v2
         with:
@@ -28,7 +32,11 @@ jobs:
         with:
           submodules: recursive
 
-      - uses: ./.github/actions/install-dep
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
 
       - uses: preactjs/compressed-size-action@v2
         with:
@@ -45,7 +53,11 @@ jobs:
         with:
           submodules: recursive
 
-      - uses: ./.github/actions/install-dep
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
 
       - uses: preactjs/compressed-size-action@v2
         with:

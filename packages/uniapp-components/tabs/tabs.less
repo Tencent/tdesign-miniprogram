@@ -3,7 +3,7 @@
 @tabs: ~'@{prefix}-tabs';
 @item: ~'@{tabs}__item';
 
-@tab-font-size: var(--td-tab-font-size, 28rpx);
+@tab-font: var(--td-tab-font, @font-body-medium);
 @tab-nav-bg-color: var(--td-tab-nav-bg-color, @bg-color-container);
 
 @tab-item-height: var(--td-tab-item-height, 96rpx);
@@ -30,7 +30,7 @@
 
 .@{prefix}-tabs {
   position: relative;
-  font-size: @tab-font-size;
+  font: @tab-font;
   background: @tab-nav-bg-color;
   flex-wrap: wrap;
 
@@ -160,20 +160,20 @@
     }
   }
 
-  // :deep(&__badge) {
-  //   &--active {
-  //     --td-badge-content-text-color: @tab-item-active-color;
-  //   }
+  &__badge {
+    &--active {
+      --td-badge-content-text-color: @tab-item-active-color;
+    }
 
-  //   &--disabled {
-  //     --td-badge-content-text-color: @tab-item-disabled-color;
-  //   }
-  // }
+    &--disabled {
+      --td-badge-content-text-color: @tab-item-disabled-color;
+    }
+  }
 
-  // :deep(&__icon) {
-  //   font-size: @tab-icon-size;
-  //   margin-right: calc(@spacer / 4);
-  // }
+  &__icon {
+    font-size: @tab-icon-size;
+    margin-right: calc(@spacer / 4);
+  }
 
   &__content {
     overflow: hidden;
@@ -206,7 +206,6 @@
 
   &__scroll {
     position: relative;
-    width: 100%;
     height: @tab-item-height;
 
     &--split {

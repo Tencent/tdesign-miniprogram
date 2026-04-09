@@ -86,6 +86,8 @@
             </TTabs>
           </block>
 
+          <slot name="middle-content" />
+
           <view
             v-if="subTitles && subTitles[stepIndex]"
             :class="name + '__options-title'"
@@ -104,7 +106,7 @@
               scroll-y
               :scroll-top="scrollTopList[index]"
               type="list"
-              :style="'height: ' + _optionsHeight + 'px'"
+              :style="'height: ' + optionsHeight + 'px'"
             >
               <view :class="'cascader-radio-group-' + index">
                 <TRadioGroup
@@ -144,10 +146,12 @@ const name = `${prefix}-cascader`;
 function parseOptions(options, keys) {
   const label = coalesce(keys?.label, 'label');
   const value = coalesce(keys?.value, 'value');
+  const disabled = coalesce(keys?.disabled, 'disabled');
 
   return options.map(item => ({
     [label]: item[label],
     [value]: item[value],
+    [disabled]: item[disabled],
   }));
 }
 
@@ -195,7 +199,7 @@ export default uniComponent({
       selectedValue: [],
       scrollTopList: [],
       steps: [],
-      _optionsHeight: 0,
+      optionsHeight: 0,
       tools,
 
       dataVisible: this.visible,
@@ -254,6 +258,7 @@ export default uniComponent({
         this.initWithValue();
       },
       immediate: true,
+      deep: true,
     },
 
     options: {
@@ -326,7 +331,7 @@ export default uniComponent({
     },
     updateOptionsHeight(steps) {
       const { contentHeight, stepsInitHeight, stepHeight, subTitlesHeight } = this.state;
-      this._optionsHeight = contentHeight - stepsInitHeight - subTitlesHeight - (steps - 1) * stepHeight;
+      this.optionsHeight = contentHeight - stepsInitHeight - subTitlesHeight - (steps - 1) * stepHeight;
     },
 
     async initOptionsHeight(steps) {
@@ -354,7 +359,7 @@ export default uniComponent({
       }
 
       const optionsInitHeight = this.state.contentHeight - this.state.subTitlesHeight;
-      this._optionsHeight = theme === 'step'
+      this.optionsHeight = theme === 'step'
         ? optionsInitHeight - this.state.stepsInitHeight - (steps - 1) * this.state.stepHeight
         : optionsInitHeight - this.state.tabsHeight;
     },
@@ -471,7 +476,7 @@ export default uniComponent({
         item = item[coalesce(keys?.children, 'children')][index];
       }
 
-      if (item.disabled) {
+      if (item[coalesce(keys?.disabled, 'disabled')]) {
         return;
       }
       this.$emit('pick', {
@@ -499,6 +504,9 @@ export default uniComponent({
 
         this.hide('finish');
       }
+      // #ifdef VUE2
+      this.$set(this, 'selectedIndexes', JSON.parse(JSON.stringify(selectedIndexes)));
+      // #endif
     },
     triggerChange() {
       const { items, selectedValue, selectedIndexes } = this;
@@ -510,6 +518,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './cascader.css';
-</style>
+<style scoped src="./cascader.css"></style>

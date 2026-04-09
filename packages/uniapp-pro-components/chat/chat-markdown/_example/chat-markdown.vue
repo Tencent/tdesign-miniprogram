@@ -1,11 +1,8 @@
 <template>
   <view>
-    <t-navbar
+    <t-demo-navbar
       class="demo-navbar"
       title="ChatMarkdown"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
     <view class="demo">
       <t-demo-header
@@ -17,47 +14,47 @@
         title="01 基础 Markdown 样式"
         desc="标题与文本"
       >
-        <baseDemo />
+        <base-demo />
       </t-demo>
       <t-demo desc="列表">
-        <list />
+        <list-demo />
       </t-demo>
       <t-demo
         title="02 代码块与表格"
         desc="代码块"
       >
-        <codeDemo />
+        <code-demo />
       </t-demo>
       <t-demo desc="表格">
-        <sheet />
+        <sheet-demo />
       </t-demo>
       <t-demo title="03 图片与超链接">
-        <url />
+        <url-demo />
       </t-demo>
       <t-demo title="04 引用">
-        <refer />
+        <refer-demo />
       </t-demo>
     </view>
   </view>
 </template>
 
 <script>
-import baseDemo from './base/index.vue';
-import list from './list/index.vue';
-import codeDemo from './code/index.vue';
-import sheet from './sheet/index.vue';
-import url from './url/index.vue';
-import refer from './refer/index.vue';
+import BaseDemo from './base/index.vue';
+import ListDemo from './list/index.vue';
+import CodeDemo from './code/index.vue';
+import SheetDemo from './sheet/index.vue';
+import UrlDemo from './url/index.vue';
+import ReferDemo from './refer/index.vue';
 
 
 export default {
   components: {
-    baseDemo,
-    list,
-    codeDemo,
-    sheet,
-    url,
-    refer,
+    BaseDemo,
+    ListDemo,
+    CodeDemo,
+    SheetDemo,
+    UrlDemo,
+    ReferDemo,
   },
   data() {
     return {};

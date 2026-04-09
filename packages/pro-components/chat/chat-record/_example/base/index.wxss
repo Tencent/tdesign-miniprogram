@@ -50,16 +50,6 @@
   background-color: var(--td-bg-color-container);
 }
 
-.speech-btn-error {
-  color: red;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8rpx;
-  font-size: 28rpx;
-  font-weight: 600;
-}
-
 .demo-footer {
   height: 32rpx;
   width: 100%;
@@ -78,6 +68,17 @@
 
 /* 语音输入按钮样式 */
 .voice-input-button {
-  font-size: 50rpx;
-  color: #0052d9;
+  width: 100%;
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--td-bg-color-container);
+  border-radius: 8rpx;
+  color: var(--td-text-color-primary);
+  font-size: 28rpx;
+}
+
+.voice-input-text {
+  margin-left: 8rpx;
 }

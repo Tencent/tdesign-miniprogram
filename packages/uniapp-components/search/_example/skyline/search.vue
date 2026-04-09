@@ -1,11 +1,8 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="Search"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -21,25 +18,25 @@
         title="01 组件类型"
         desc="基础搜索框"
       >
-        <baseDemo />
+        <base-demo />
       </t-demo>
       <t-demo desc="字数限制">
-        <maxlength />
+        <maxlength-demo />
       </t-demo>
       <t-demo desc="获取焦点后显示取消按钮">
-        <action />
+        <action-demo />
       </t-demo>
       <t-demo
         title="02 组件样式"
         desc="搜索框形状"
       >
-        <shape />
+        <shape-demo />
       </t-demo>
       <t-demo
         title="03 组件状态"
         desc="默认状态其他对齐方式"
       >
-        <other />
+        <other-demo />
       </t-demo>
     </scroll-view>
   </view>
@@ -47,18 +44,18 @@
 
 <script>
 
-import baseDemo from '../base/index.vue';
-import maxlength from '../maxlength/index.vue';
-import action from '../action/index.vue';
-import shape from '../shape/index.vue';
-import other from '../other/index.vue';
+import BaseDemo from '../base/index.vue';
+import MaxlengthDemo from '../maxlength/index.vue';
+import ActionDemo from '../action/index.vue';
+import ShapeDemo from '../shape/index.vue';
+import OtherDemo from '../other/index.vue';
 export default {
   components: {
-    baseDemo,
-    maxlength,
-    action,
-    shape,
-    other,
+    BaseDemo,
+    MaxlengthDemo,
+    ActionDemo,
+    ShapeDemo,
+    OtherDemo,
   },
   data() {
     return {};

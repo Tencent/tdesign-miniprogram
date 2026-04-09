@@ -91,7 +91,7 @@ pick | `(value: string \| number, label: string, index: number, level: number)` 
 -- | --
 close-btn | 自定义 `close-btn` 显示内容
 header | `1.9.1`。头部
-middle-content | 中间内容
+middle-content | `1.12.2`。中间内容
 title | 自定义 `title` 显示内容
 
 ### CSS Variables

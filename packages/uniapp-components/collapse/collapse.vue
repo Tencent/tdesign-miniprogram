@@ -114,6 +114,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './collapse.css';
-</style>
+<style scoped src="./collapse.css"></style>

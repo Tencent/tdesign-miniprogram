@@ -1,14 +1,8 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="Steps"
-      left-arrow
-      :capsule="false"
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -22,20 +16,20 @@
         />
         <t-demo title="01 组件类型" />
 
-        <horizontal />
+        <horizontal-demo />
 
-        <vertical />
+        <vertical-demo />
 
         <t-demo
           title="02 组件状态"
           desc="选项卡状态"
         />
 
-        <status />
+        <status-demo />
 
         <t-demo title="03 特殊类型" />
 
-        <special />
+        <special-demo />
       </view>
     </scroll-view>
   </view>
@@ -43,16 +37,16 @@
 
 <script>
 
-import horizontal from './horizontal/index.vue';
-import vertical from './vertical/index.vue';
-import special from './special/index.vue';
-import status from './status/index.vue';
+import HorizontalDemo from './horizontal/index.vue';
+import VerticalDemo from './vertical/index.vue';
+import SpecialDemo from './special/index.vue';
+import StatusDemo from './status/index.vue';
 export default {
   components: {
-    horizontal,
-    vertical,
-    special,
-    status,
+    HorizontalDemo,
+    VerticalDemo,
+    SpecialDemo,
+    StatusDemo,
   },
   data() {
     return {};

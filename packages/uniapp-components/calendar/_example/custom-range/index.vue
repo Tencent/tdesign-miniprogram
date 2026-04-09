@@ -1,10 +1,11 @@
 <template>
   <view>
     <t-calendar
-      v-model:visible="visible"
+      :visible="visible"
       :value="value"
       :min-date="minDate"
       :max-date="maxDate"
+      @update:visible="visible = $event"
       @confirm="handleConfirm"
     />
     <t-cell
@@ -16,15 +17,15 @@
   </view>
 </template>
 <script>
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tCalendar from 'tdesign-uniapp/calendar/calendar.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TCalendar from '@tdesign/uniapp/calendar/calendar.vue';
 import { formatTimestamp } from '../computed';
 
 
 export default {
   components: {
-    tCell,
-    tCalendar,
+    TCell,
+    TCalendar,
   },
   data() {
     return {

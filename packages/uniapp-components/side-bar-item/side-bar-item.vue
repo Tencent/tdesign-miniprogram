@@ -22,24 +22,30 @@
   >
     <block v-if="active">
       <view :class="classPrefix + '__line'" />
-      <view :class="classPrefix + '__prefix'" />
-      <view :class="classPrefix + '__suffix'" />
+      <view
+        v-if="!isFirstChild"
+        :class="classPrefix + '__prefix'"
+      />
+      <view
+        v-if="!isLastChild"
+        :class="classPrefix + '__suffix'"
+      />
     </block>
     <block
-      v-if="_icon"
+      v-if="innerIcon"
       name="icon"
     >
       <t-icon
         :custom-style="iconCustomStyle"
         :t-class="classPrefix + '__icon'"
-        :prefix="_icon.prefix"
-        :name="_icon.name"
-        :size="_icon.size"
-        :color="_icon.color"
-        :aria-hidden="!!_icon.ariaHidden"
-        :aria-label="_icon.ariaLabel"
-        :aria-role="_icon.ariaRole"
-        @click="_icon.click || ''"
+        :prefix="innerIcon.prefix"
+        :name="innerIcon.name"
+        :size="innerIcon.size"
+        :color="innerIcon.color"
+        :aria-hidden="!!innerIcon.ariaHidden"
+        :aria-label="innerIcon.ariaLabel"
+        :aria-role="innerIcon.ariaRole"
+        @click="innerIcon.click || ''"
       />
     </block>
     <block v-if="badgeProps">
@@ -61,11 +67,12 @@
     <block v-else>
       {{ label }}
     </block>
+    <slot />
   </view>
 </template>
 <script>
-import tBadge from '../badge/badge';
-import tIcon from '../icon/icon';
+import TBadge from '../badge/badge';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -86,8 +93,8 @@ export default uniComponent({
   ],
   mixins: [ChildrenMixin(RELATION_MAP.SideBarItem)],
   components: {
-    tBadge,
-    tIcon,
+    TBadge,
+    TIcon,
   },
   props: {
     ...props,
@@ -104,6 +111,8 @@ export default uniComponent({
       isPre: false,
       isNext: false,
       tools,
+      isFirstChild: false,
+      isLastChild: false,
     };
   },
   computed: {
@@ -113,14 +122,14 @@ export default uniComponent({
           fontSize: 'var(--td-side-bar-icon-size, 20px)',
           marginRight: '2px',
         },
-        this._icon.style || '',
+        this.innerIcon.style || '',
       ]);
     },
   },
   watch: {
     icon: {
       handler(v) {
-        this._icon = typeof v === 'string' ? { name: v } : v;
+        this.innerIcon = typeof v === 'string' ? { name: v } : v;
       },
       immediate: true,
     },
@@ -153,7 +162,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './side-bar-item.css';
-
-</style>
+<style scoped src="./side-bar-item.css"></style>

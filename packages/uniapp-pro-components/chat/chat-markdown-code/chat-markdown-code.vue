@@ -26,8 +26,8 @@
 </template>
 
 <script>
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
-import { prefix } from 'tdesign-uniapp/common/config';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
+import { prefix } from '@tdesign/uniapp/common/config';
 
 const name = `${prefix}-chat-markdown-code`;
 
@@ -53,6 +53,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './chat-markdown-code.css';
-</style>
+<style scoped src="./chat-markdown-code.css"></style>

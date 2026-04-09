@@ -1,20 +1,31 @@
 <template>
-  <view
-    :style="tools._style([customStyle])"
-    :class="tools.cls(classPrefix, [
-      ['border', bordered], ['fixed', fixed],
-      ['safe', safeAreaInsetBottom], shape]
-    ) + ' ' + tClass"
-    aria-role="tablist"
-  >
-    <slot />
+  <!-- #ifdef VUE2 -->
+  <view>
+    <!-- #endif -->
+    <view
+      v-if="fixed && placeholder"
+      :class="classPrefix + '__placeholder'"
+      :style="'height: ' + placeholderHeight + 'px;'"
+    />
+    <view
+      :style="tools._style(['z-index: ' + zIndex, customStyle])"
+      :class="tools.cls(classPrefix, [
+        ['border', bordered], ['fixed', fixed],
+        ['safe', safeAreaInsetBottom], shape]
+      ) + ' ' + tClass"
+      aria-role="tablist"
+    >
+      <slot />
+    </view>
+  <!-- #ifdef VUE2 -->
   </view>
+  <!-- #endif -->
 </template>
 <script>
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import { coalesce } from '../common/utils';
+import { coalesce, getRect, nextTick } from '../common/utils';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 import tools from '../common/utils.wxs';
 
@@ -45,6 +56,7 @@ export default uniComponent({
       tools,
 
       dataValue: coalesce(this.value, this.defaultValue),
+      placeholderHeight: 56,
     };
   },
   watch: {
@@ -60,11 +72,28 @@ export default uniComponent({
       },
       immediate: true,
     },
+    'fixed'() {
+      this.setPlaceholderHeight();
+    },
+    placeholder() {
+      this.setPlaceholderHeight();
+    },
   },
   mounted() {
+    this.setPlaceholderHeight();
     this.showChildren();
   },
   methods: {
+    setPlaceholderHeight() {
+      if (!this.fixed || !this.placeholder) {
+        return;
+      }
+      nextTick().then(() => {
+        getRect(this, `.${classPrefix}`).then((res) => {
+          this.placeholderHeight = res.height;
+        });
+      });
+    },
     showChildren() {
       const { dataValue } = this;
 
@@ -103,8 +132,8 @@ export default uniComponent({
   },
 });
 </script>
+<style scoped src="./tab-bar.css"></style>
 <style scoped>
-@import './tab-bar.css';
 /* #ifndef MP-WEIXIN */
 :deep(t-tab-bar-item) {
   flex: 1;

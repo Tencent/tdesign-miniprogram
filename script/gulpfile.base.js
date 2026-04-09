@@ -23,6 +23,7 @@ const config = require('./config');
 const baseCssPath = path.resolve(__dirname, '../packages/components/common/style/index.wxss');
 
 const isProduction = process.env.NODE_ENV === 'production';
+const ignoreTerser = process.argv.includes('--ignore-terser');
 
 const mpNpmOptions = { fullExtract: ['tdesign-miniprogram/common'] };
 
@@ -112,7 +113,7 @@ module.exports = (src, dist, moduleName) => {
 
   // 包装 gulp.lastRun, 引入文件 ctime 作为文件变动判断另一标准
   // https://github.com/gulpjs/vinyl-fs/issues/226
-  const since = (task) => (file) => gulp.lastRun(task) > file.stat.ctime ? gulp.lastRun(task) : 0;
+  const since = (task) => (file) => (gulp.lastRun(task) > file.stat.ctime ? gulp.lastRun(task) : 0);
 
   /* tasks */
   const tasks = {};
@@ -169,7 +170,7 @@ module.exports = (src, dist, moduleName) => {
       .pipe(tasks.replacePaths())
       .pipe(
         gulpIf(
-          isComponent(src) && isProduction,
+          isComponent(src) && isProduction && !ignoreTerser,
           wxmlmin({
             removeComments: true,
             collapseWhitespace: true,
@@ -201,7 +202,7 @@ module.exports = (src, dist, moduleName) => {
       tsResult.js
         .pipe(mpNpm())
         .pipe(tasks.replacePaths())
-        .pipe(gulpIf(isComponent(src) && isProduction, jsmin()))
+        .pipe(gulpIf(isComponent(src) && isProduction && !ignoreTerser, jsmin()))
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(dist)),
       tsResult.dts.pipe(gulp.dest(dist)), // 直接输出.d.ts文件
@@ -216,7 +217,7 @@ module.exports = (src, dist, moduleName) => {
       .src(globs.js, { ...srcOptions, since: since(tasks.js) })
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
       .pipe(mpNpm())
-      .pipe(gulpIf(isComponent(src) && isProduction, jsmin()))
+      .pipe(gulpIf(isComponent(src) && isProduction && !ignoreTerser, jsmin()))
       .pipe(gulp.dest(dist));
 
   /** `gulp wxs`
@@ -237,7 +238,7 @@ module.exports = (src, dist, moduleName) => {
       .src(globs.json, { ...srcOptions, dot: true, since: since(tasks.json) })
       .pipe(mpNpm(mpNpmOptions))
       .pipe(tasks.replacePaths())
-      .pipe(gulpIf(isComponent(src) && isProduction && isJsonFile, jsonmin()))
+      .pipe(gulpIf(isComponent(src) && isProduction && isJsonFile && !ignoreTerser, jsonmin()))
       .pipe(gulp.dest(dist));
 
   /** `gulp less`

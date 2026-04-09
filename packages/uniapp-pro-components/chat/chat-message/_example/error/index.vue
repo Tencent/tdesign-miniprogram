@@ -1,7 +1,7 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <TChatMessage
+      <t-chat-message
         avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
         :content="message.content"
         :role="message.role"
@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import TChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
+import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
 
 
 export default {

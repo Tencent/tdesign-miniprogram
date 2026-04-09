@@ -11,7 +11,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TBadge from 'tdesign-uniapp/badge/badge.vue';
+import TBadge from '@tdesign/uniapp/badge/badge.vue';
 ```
 
 ### 组件类型
@@ -44,7 +44,7 @@ count | String / Number | 0 | 徽标右上角内容。可以是数字，也可�
 dot | Boolean | false | 是否为红点 | N
 max-count | Number | 99 | 封顶的数字值 | N
 offset | Array | - | 设置状态点的位置偏移，示例：[-10, 20] 或 ['10em', '8rem']。TS 类型：`Array<string \| number>` | N
-shape | String | circle | 形状。可选项：circle/square/bubble/ribbon | N
+shape | String | circle | 徽标形状，其中 ribbon 和 ribbon-right 等效。可选项：circle/square/bubble/ribbon/ribbon-right/ribbon-left/triangle-right/triangle-left | N
 show-zero | Boolean | false | 当数值为 0 时，是否展示徽标 | N
 size | String | medium | 尺寸。可选项：medium/large | N
 
@@ -66,19 +66,20 @@ t-class-count | 计数样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-badge-basic-height | 32rpx | - |
-| --td-badge-basic-padding | 8rpx | - |
-| --td-badge-basic-width | 32rpx | - |
-| --td-badge-bg-color | @error-color | - |
-| --td-badge-border-radius | 4rpx | - |
-| --td-badge-bubble-border-radius | 20rpx 20rpx 20rpx 1px | - |
-| --td-badge-content-text-color | @text-color-primary | - |
-| --td-badge-dot-size | 16rpx | - |
-| --td-badge-font-size | @font-size-xs | - |
-| --td-badge-font-weight | 600 | - |
-| --td-badge-large-font-size | @font-size-s | - |
-| --td-badge-large-height | 40rpx | - |
-| --td-badge-large-padding | 10rpx | - |
-| --td-badge-text-color | @text-color-anti | - |
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-badge-basic-height | 32rpx | -
+--td-badge-basic-padding | 8rpx | -
+--td-badge-basic-width | 32rpx | -
+--td-badge-bg-color | @error-color | -
+--td-badge-border-radius | 4rpx | -
+--td-badge-bubble-border-radius | 20rpx 20rpx 20rpx 1px | -
+--td-badge-content-text-color | @text-color-primary | -
+--td-badge-dot-size | 16rpx | -
+--td-badge-font | @font-mark-extraSmall | -
+--td-badge-large-font | @font-mark-small | -
+--td-badge-large-height | 40rpx | -
+--td-badge-large-padding | 10rpx | -
+--td-badge-text-color | @text-color-anti | -
+--td-line-height-mark-extraSmall | 32rpx | -
+--td-line-height-mark-small | 40rpx | -

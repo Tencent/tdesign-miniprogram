@@ -29,21 +29,21 @@
       </view>
 
       <block
-        v-if="_arrowIcon"
+        v-if="iArrowIcon"
         name="icon"
       >
         <t-icon
-          :custom-style="_arrowIcon.style || ''"
+          :custom-style="iArrowIcon.style || ''"
           :t-class="getIconTClass(index)"
           :class="getIconClass(index)"
-          :prefix="_arrowIcon.prefix"
-          :name="_arrowIcon.name"
-          :size="_arrowIcon.size"
-          :color="_arrowIcon.color"
+          :prefix="iArrowIcon.prefix"
+          :name="iArrowIcon.name"
+          :size="iArrowIcon.size"
+          :color="iArrowIcon.color"
           :aria-hidden="true"
-          :aria-label="_arrowIcon.ariaLabel"
-          :aria-role="_arrowIcon.ariaRole"
-          @click="_arrowIcon.click || ''"
+          :aria-label="iArrowIcon.ariaLabel"
+          :aria-role="iArrowIcon.ariaRole"
+          @click="iArrowIcon.click || ''"
         />
       </block>
     </view>
@@ -51,7 +51,7 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -78,7 +78,7 @@ export default uniComponent({
   ],
   mixins: [ParentMixin(RELATION_MAP.DropdownItem)],
   components: {
-    tIcon,
+    TIcon,
   },
   props: {
     ...props,
@@ -91,7 +91,7 @@ export default uniComponent({
       menus: null,
       activeIdx: -1,
       bottom: 0,
-      _arrowIcon: {
+      iArrowIcon: {
         name: props.arrowIcon.default,
       },
       tools,
@@ -100,7 +100,7 @@ export default uniComponent({
   watch: {
     arrowIcon: {
       handler(v) {
-        this._arrowIcon = calcIcon(v);
+        this.iArrowIcon = calcIcon(v);
       },
       immediate: true,
     },
@@ -169,6 +169,18 @@ export default uniComponent({
   },
 });
 </script>
+<style scoped src="./dropdown-menu.css"></style>
 <style scoped>
-@import './dropdown-menu.css';
+:deep(.t-dropdown-menu__icon) {
+  font-size: var(--td-dropdown-menu-icon-size, 20px);
+  padding: 2px;
+  box-sizing: border-box;
+  transition: transform 240ms ease;
+}
+:deep(.t-dropdown-menu__icon)--active {
+  transform: rotate(180deg);
+}
+:deep(.t-dropdown-menu__icon):not(:empty) {
+  margin-left: 4px;
+}
 </style>

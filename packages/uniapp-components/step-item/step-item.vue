@@ -79,7 +79,7 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -111,7 +111,7 @@ export default uniComponent({
     ...props,
   },
   components: {
-    tIcon,
+    TIcon,
   },
   data() {
     return {
@@ -170,6 +170,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './step-item.css';
-</style>
+<style scoped src="./step-item.css"></style>

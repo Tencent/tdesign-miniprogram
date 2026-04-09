@@ -3,12 +3,13 @@
     <view class="demo-block__header-desc">
       带箭头的弹出气泡
     </view>
-    <TPopover
-      v-model:visible="visible.normal"
+    <t-popover
+      :visible="visible.normal"
       placement="top"
       theme="dark"
       data-target="normal"
       :close-on-click-outside="false"
+      @update:visible="visible.normal = $event"
     >
       <template #content>
         <view>
@@ -17,7 +18,7 @@
       </template>
 
       <view class="popover-example__content">
-        <TButton
+        <t-button
           theme="primary"
           variant="outline"
           size="large"
@@ -25,9 +26,9 @@
           @click="showPopover($event, { target: 'normal' })"
         >
           带箭头
-        </TButton>
+        </t-button>
       </view>
-    </TPopover>
+    </t-popover>
 
     <view
       class="demo-block__header-desc"
@@ -35,16 +36,17 @@
     >
       不带箭头的弹出气泡
     </view>
-    <TPopover
-      v-model:visible="visible.noArrow"
+    <t-popover
+      :visible="visible.noArrow"
       placement="top"
       theme="dark"
       content="弹出气泡内容"
       :show-arrow="false"
       data-target="noArrow"
+      @update:visible="visible.noArrow = $event"
     >
       <view class="popover-example__content">
-        <TButton
+        <t-button
           theme="primary"
           variant="outline"
           size="large"
@@ -52,9 +54,9 @@
           @click="showPopover($event, { target: 'noArrow' })"
         >
           不带箭头
-        </TButton>
+        </t-button>
       </view>
-    </TPopover>
+    </t-popover>
 
     <view
       class="demo-block__header-desc"
@@ -63,11 +65,12 @@
       自定义内容弹出气泡
     </view>
     <view class="custom">
-      <TPopover
-        v-model:visible="visible.custom"
+      <t-popover
+        :visible="visible.custom"
         placement="top"
         theme="dark"
         data-target="custom"
+        @update:visible="visible.custom = $event"
       >
         <template #content>
           <view class="custom__list">
@@ -83,7 +86,7 @@
 
 
         <view class="popover-example__content">
-          <TButton
+          <t-button
             theme="primary"
             variant="outline"
             size="large"
@@ -91,16 +94,16 @@
             @click="showPopover($event, { target: 'custom' })"
           >
             自定义内容
-          </TButton>
+          </t-button>
         </view>
-      </TPopover>
+      </t-popover>
     </view>
   </view>
 </template>
 
 <script>
-import TPopover from 'tdesign-uniapp/popover/popover.vue';
-import TButton from 'tdesign-uniapp/button/button.vue';
+import TPopover from '@tdesign/uniapp/popover/popover.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
 
 export default {
   options: {
@@ -127,7 +130,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .row {
     display: flex;
     flex-direction: column;

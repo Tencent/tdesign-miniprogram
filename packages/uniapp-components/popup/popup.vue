@@ -2,7 +2,7 @@
   <view>
     <view
       v-if="realVisible"
-      :style="tools._style([popup.getPopupStyles(zIndex, distanceTop, placement), customStyle])"
+      :style="tools._style([popup.getPopupStyles({ zIndex, distanceTop, placement, duration }), customStyle])"
       :class="tools.cls(classPrefix, [placement]) + ' ' + transitionClass + ' ' + tClass"
       @transitionend="onTransitionEnd"
     >
@@ -58,7 +58,7 @@
       :using-custom-navbar="usingCustomNavbar"
       :custom-navbar-height="customNavbarHeight"
       :z-index="(overlayProps && overlayProps.zIndex) || 11000"
-      :duration="(overlayProps && overlayProps.duration) || 300"
+      :duration="(overlayProps && overlayProps.duration) || duration || 300"
       :background-color="(overlayProps && overlayProps.backgroundColor) || ''"
       :prevent-scroll-through="preventScrollThrough || (overlayProps ? !!overlayProps.preventScrollThrough : false)"
       :custom-style="(overlayProps && overlayProps.style) || ''"
@@ -67,8 +67,8 @@
   </view>
 </template>
 <script>
-import tOverlay from '../overlay/overlay';
-import tIcon from '../icon/icon';
+import TOverlay from '../overlay/overlay';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -93,8 +93,8 @@ export default uniComponent({
   ],
   mixins: [transitionMixins, useCustomNavbar],
   components: {
-    tOverlay,
-    tIcon,
+    TOverlay,
+    TIcon,
   },
   props: {
     ...props,
@@ -136,6 +136,4 @@ export default uniComponent({
 });
 
 </script>
-<style scoped>
-@import './popup.css';
-</style>
+<style scoped src="./popup.css"></style>

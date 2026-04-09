@@ -63,7 +63,7 @@
   </view>
 </template>
 <script>
-import tImage from '../image/image';
+import TImage from '../image/image';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -82,7 +82,7 @@ export default uniComponent({
     `${prefix}-class`,
   ],
   components: {
-    tImage,
+    TImage,
   },
   props: {
     ...props,
@@ -112,6 +112,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './footer.css';
-</style>
+<style scoped src="./footer.css"></style>

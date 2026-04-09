@@ -39,8 +39,8 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tLoading from '../loading/loading';
+import TIcon from '../icon/icon';
+import TLoading from '../loading/loading';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import { coalesce } from '../common/utils';
@@ -68,8 +68,8 @@ export default uniComponent({
     `${prefix}-class-dot`,
   ],
   components: {
-    tIcon,
-    tLoading,
+    TIcon,
+    TLoading,
   },
   props: {
     ...props,
@@ -117,6 +117,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './switch.css';
-</style>
+<style scoped src="./switch.css"></style>

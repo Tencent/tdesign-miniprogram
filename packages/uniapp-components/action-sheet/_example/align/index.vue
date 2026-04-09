@@ -1,27 +1,37 @@
 <template>
   <view>
-    <TActionSheet
+    <t-action-sheet
       ref="t-action-sheet"
       :using-custom-navbar="!isMPAlipay"
       @selected="handleSelected($event, { tagId: 't-action-sheet' })"
     />
-
-    <TButton
+    <t-button
       size="large"
       variant="outline"
+      custom-dataset="center"
+      block
+      theme="primary"
+      @click="handleAction"
+    >
+      居中列表型
+    </t-button>
+    <t-button
+      size="large"
+      variant="outline"
+      custom-dataset="left"
       block
       theme="primary"
       @click="handleAction"
     >
       左对齐列表型
-    </TButton>
+    </t-button>
   </view>
 </template>
 
 <script>
-import { default as ActionSheet, ActionSheetTheme } from 'tdesign-uniapp/action-sheet/index';
-import TActionSheet from 'tdesign-uniapp/action-sheet/action-sheet.vue';
-import TButton from 'tdesign-uniapp/button/button.vue';
+import { default as ActionSheet, ActionSheetTheme } from '@tdesign/uniapp/action-sheet/index';
+import TActionSheet from '@tdesign/uniapp/action-sheet/action-sheet.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
 
 export default {
   components: {
@@ -33,33 +43,31 @@ export default {
   },
   created() {},
   methods: {
-    handleAction() {
+    handleAction(e) {
+      const align = e.currentTarget.dataset.custom;
       ActionSheet.show({
         theme: ActionSheetTheme.List,
         selector: '#t-action-sheet',
         context: this,
-        align: 'left',
-        description: '动作面板描述文字',
+        cancelText: 'cancel',
+        align,
+        description: 'Email Settings',
         items: [
           {
-            label: '选项一',
-            icon: 'app',
-            suffixIcon: 'chevron-right',
+            label: 'Move',
+            icon: 'enter',
           },
           {
-            label: '选项二',
-            icon: 'app',
-            suffixIcon: 'chevron-right',
+            label: 'Mark as important',
+            icon: 'bookmark',
           },
           {
-            label: '选项三',
-            icon: 'app',
-            suffixIcon: 'chevron-right',
+            label: 'Unsubscribe',
+            icon: 'pin',
           },
           {
-            label: '选项四',
-            icon: 'app',
-            suffixIcon: 'chevron-right',
+            label: 'Add to Tasks',
+            icon: 'cloud-upload',
           },
         ],
       });

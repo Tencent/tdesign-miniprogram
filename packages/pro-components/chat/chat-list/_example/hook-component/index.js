@@ -1,6 +1,12 @@
 import Toast from 'tdesign-miniprogram/toast';
 import { getNavigationBarHeight } from '../../../utils/utils';
 
+let uniqueId = 0;
+const getUniqueKey = () => {
+  uniqueId += 1;
+  return `key-${uniqueId}`;
+};
+
 const mockData = {
   avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
   message: {
@@ -74,6 +80,7 @@ Component({
             },
           ],
         },
+        chatId: getUniqueKey(),
       },
       {
         message: {
@@ -85,6 +92,7 @@ Component({
             },
           ],
         },
+        chatId: getUniqueKey(),
       },
     ],
 
@@ -93,6 +101,8 @@ Component({
     disabled: false, // 禁用状态
     inputStyle: '', // 动态样式
     contentHeight: '100vh', // 内容高度
+    activePopoverId: '', // 当前打开悬浮actionbar的chatId
+    longPressPosition: null, // 长按位置对象
   },
 
   methods: {
@@ -112,6 +122,7 @@ Component({
             },
           ],
         },
+        chatId: getUniqueKey(),
       };
 
       // 将用户消息插入到chatList的开头（因为reverse为true，所以用unshift）
@@ -150,6 +161,7 @@ Component({
       this.setData({ loading: true });
 
       const assistantMessage = mockData;
+      assistantMessage.chatId = getUniqueKey();
 
       this.setData({
         chatList: [assistantMessage, ...this.data.chatList],
@@ -234,6 +246,30 @@ Component({
         message,
         theme: 'success',
       });
+    },
+    showPopover(e) {
+      const { id, longPressPosition } = e.detail;
+
+      let role = '';
+      this.data.chatList.forEach((item) => {
+        if (item.chatId === id) {
+          role = item.message.role;
+        }
+      });
+
+      // 仅当 role 为 user 时才显示 popover
+      if (role !== 'user') {
+        return;
+      }
+
+      this.setData({
+        activePopoverId: id,
+        longPressPosition,
+      });
+    },
+    handlePopoverAction(e) {
+      e.detail.chatId = this.data.activePopoverId;
+      this.handleAction(e);
     },
   },
   lifetimes: {

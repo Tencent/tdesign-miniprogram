@@ -124,15 +124,13 @@ exports[`DateTimePicker DateTimePicker time demo works fine 1`] = `
 exports[`DateTimePicker DateTimePicker without-popup demo works fine 1`] = `
 <without-popup>
   <t-date-time-picker
-    defaultValue="{{1640217600000}}"
     end="2030-09-09 12:12:12"
     format="YYYY-MM-DD"
     mode="date"
     start="2000-01-01 00:00:00"
     title="选择日期"
     usePopup="{{false}}"
-    visible="{{false}}"
-    bind:cancel="hidePicker"
+    value=""
     bind:change="onConfirm"
     bind:pick="onColumnChange"
   />

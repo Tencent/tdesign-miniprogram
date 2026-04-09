@@ -1,13 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="Message"
       left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo message-example">
       <t-demo-header
         title="Message 消息通知"
@@ -18,13 +14,13 @@
         title="01 组件类型"
         desc="消息通知内容为文本、带操作按钮"
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
       <t-demo
         title="02 组件状态"
         desc="消息组件风格"
       >
-        <theme />
+        <theme-demo />
       </t-demo>
     </view>
   </view>
@@ -33,11 +29,11 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import theme from './theme/index.vue';
+import ThemeDemo from './theme/index.vue';
 export default {
   components: {
     BaseDemo,
-    theme,
+    ThemeDemo,
   },
   data() {
     return {};

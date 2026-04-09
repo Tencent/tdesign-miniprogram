@@ -37,7 +37,7 @@
         v-for="btnItem in operItem.btns"
         :key="btnItem.text"
       >
-        <TButton
+        <t-button
           t-class="demo-block__oper-btn"
           size="large"
           block
@@ -45,7 +45,7 @@
           bind:tap="clickHandle"
         >
           {{ btnItem.text }}
-        </TButton>
+        </t-button>
       </view>
     </view>
     <view

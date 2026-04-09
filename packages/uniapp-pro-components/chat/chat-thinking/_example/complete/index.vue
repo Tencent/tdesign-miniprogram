@@ -1,6 +1,6 @@
 <template>
   <view class="chat-example-block">
-    <TChatThinking
+    <t-chat-thinking
       :content="content"
       layout="block"
       :status="status"
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import TChatThinking from 'tdesign-uniapp-chat/chat-thinking/chat-thinking.vue';
+import TChatThinking from '@tdesign/uniapp-chat/chat-thinking/chat-thinking.vue';
 
 
 export default {

@@ -32,7 +32,7 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
+import TIcon from '../icon/icon';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -55,7 +55,7 @@ export default uniComponent({
     `${prefix}-class-split`,
   ],
   components: {
-    tIcon,
+    TIcon,
   },
   props: {
     ...props,
@@ -161,6 +161,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './count-down.css';
-</style>
+<style scoped src="./count-down.css"></style>

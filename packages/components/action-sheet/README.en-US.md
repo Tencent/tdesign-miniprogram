@@ -12,7 +12,7 @@ align | String | center | `0.29.0`。options: center/left | N
 cancel-text | String | - | \- | N
 count | Number | 8 | \- | N
 description | String | - | `0.29.0` | N
-items | Array | - | required。Typescript: `Array<string \| ActionSheetItem>` `interface ActionSheetItem { label: string; description?: string; color?: string; disabled?: boolean; icon?: string; suffixIcon?: string }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/action-sheet/type.ts) | Y
+items | Array | - | required。Typescript: `Array<string \| ActionSheetItem>` `interface ActionSheetItem { label: string; description?: string; color?: string; disabled?: boolean; icon?: string \| object; suffixIcon?: string \| object }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/action-sheet/type.ts) | Y
 popup-props | Object | {} | Typescript: `PopupProps`，[Popup API Documents](./popup?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/action-sheet/type.ts) | N
 show-cancel | Boolean | true | \- | N
 show-overlay | Boolean | true | \- | N

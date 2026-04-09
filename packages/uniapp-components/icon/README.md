@@ -12,7 +12,7 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TIcon from 'tdesign-uniapp/icon/icon.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
 ```
 
 ## 常见问题

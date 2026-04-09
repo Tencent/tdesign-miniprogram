@@ -1,12 +1,9 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="block"
+    <t-demo-navbar
+      custom-class="block"
       title="Stepper"
-      left-arrow
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -23,7 +20,7 @@
           title="01 组件类型"
           desc="基础步进器"
         >
-          <baseDemo />
+          <base-demo />
         </t-demo>
         <t-demo
           title="02 组件状态"
@@ -32,16 +29,16 @@
           <min-max />
         </t-demo>
         <t-demo desc="禁用状态">
-          <status />
+          <status-demo />
         </t-demo>
         <t-demo
           title="03 组件样式"
           desc="步进器样式"
         >
-          <theme />
+          <theme-demo />
         </t-demo>
         <t-demo desc="步进器尺寸">
-          <size />
+          <size-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -50,20 +47,19 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import minMax from '../min-max/index.vue';
-import status from '../status/index.vue';
-import theme from '../theme/index.vue';
-import size from '../size/index.vue';
+import BaseDemo from '../base/index.vue';
+import MinMax from '../min-max/index.vue';
+import StatusDemo from '../status/index.vue';
+import ThemeDemo from '../theme/index.vue';
+import SizeDemo from '../size/index.vue';
+
 export default {
   components: {
-    tNavbar,
-    baseDemo,
-    minMax,
-    status,
-    theme,
-    size,
+    BaseDemo,
+    MinMax,
+    StatusDemo,
+    ThemeDemo,
+    SizeDemo,
   },
   data() {
     return {};

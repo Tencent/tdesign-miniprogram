@@ -43,7 +43,7 @@ name | params | description
 -- | -- | --
 action-click | `({})` | \-
 blur | `({ value: string })` | \-
-change | `({ value: string })` | \-
+change | `({ value: string, trigger: 'input-change' \| 'option-click' \| 'clear' })` | \-
 clear | `({ value: string })` | \-
 focus | `({ value: string })` | \-
 submit | `({ value: string })` | \-

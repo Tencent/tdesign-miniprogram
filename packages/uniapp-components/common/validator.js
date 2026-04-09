@@ -12,8 +12,16 @@ export function isDef(value) {
   return !isUndefined(value) && !isNull(value);
 }
 
+export function isInteger(value) {
+  return Number.isInteger(value);
+}
+
+export function isNumeric(value) {
+  return !Number.isNaN(Number(value));
+}
+
 export function isNumber(value) {
-  return /^\d+(\.\d+)?$/.test(value);
+  return typeof value === 'number';
 }
 
 export function isBoolean(value) {

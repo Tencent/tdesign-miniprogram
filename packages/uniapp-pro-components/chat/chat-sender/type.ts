@@ -62,6 +62,11 @@ export interface TdChatSenderProps {
    */
   visible?: boolean;
   /**
+   * 是否允许语音输入
+   * @default false
+   */
+  allowSpeech?: boolean;
+  /**
    * 输入框聚焦时触发
    */
   onBlur?: (value: string, context: { e: FocusEvent }) => void;

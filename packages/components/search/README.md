@@ -91,7 +91,7 @@ value | String | '' | 值 | N
 -- | -- | --
 action-click | `({})` | 点击右侧操作按钮文字时触发
 blur | `({ value: string })` | 失去焦点时触发
-change | `({ value: string })` | 值发生变化时触发
+change | `({ value: string, trigger: 'input-change' \| 'option-click' \| 'clear' })` | 值发生变化时触发
 clear | `({ value: string })` | 点击清除时触发
 focus | `({ value: string })` | 聚焦时触发
 submit | `({ value: string })` | 提交时触发

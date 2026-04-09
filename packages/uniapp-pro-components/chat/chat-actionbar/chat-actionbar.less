@@ -1,4 +1,4 @@
-@import 'tdesign-uniapp/common/style/base.less';
+@import '@tdesign/uniapp/common/style/base.less';
 
 @chat-actionbar: ~'@{prefix}-chat-actionbar';
 
@@ -6,11 +6,17 @@
 @chat-actionbar-item-padding: var(--chat-actionbar-item-padding, 16rpx 28rpx);
 @chat-actionbar-item-color: @text-color-primary;
 @chat-actionbar-item-active: @brand-color;
+@chat-actionbar-item-gap: 4rpx;
 
-// TODO: 长按弹出层样式
-@chat-actionbar-popover-background: @mask-active;
-@chat-actionbar-popover-radius: 32rpx;
-@chat-actionbar-popover-padding: 45rpx;
+// 长按弹出层样式
+@chat-actionbar-popover-background: rgba(0, 0, 0, 0.9);
+@chat-actionbar-popover-radius: 6rpx;
+@chat-actionbar-popover-padding: 8rpx 16rpx;
+@chat-actionbar-popover-inner-size: 20rpx;
+@chat-actionbar-popover-item-width: 128rpx;
+@chat-actionbar-popover-item-height: 156rpx;
+@chat-actionbar-popover-item-gap: 8rpx;
+@chat-actionbar-popover-item-inner-gap: 8rpx;
 
 .@{chat-actionbar} {
   display: flex;
@@ -23,6 +29,40 @@
 
   &.end {
     justify-content: flex-end;
+  }
+
+  // 弹出层
+  &--popover {
+    color: @font-white-1;
+    border-radius: @chat-actionbar-popover-radius;
+
+    .@{chat-actionbar}__inner {
+      background-color: unset;
+      border: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: @chat-actionbar-item-gap;
+
+      &--column {
+        gap: @chat-actionbar-popover-item-gap;
+      }
+    }
+
+    .@{chat-actionbar}__item--popover {
+      color: #fff;
+      background-color: unset;
+      padding: 0;
+      margin: 0;
+      font-size: 28rpx;
+      line-height: 42rpx;
+      width: @chat-actionbar-popover-item-width;
+      height: @chat-actionbar-popover-item-height;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: @chat-actionbar-popover-item-inner-gap;
+    }
   }
 
   // 内部容器
@@ -42,14 +82,6 @@
       align-items: center;
       justify-content: space-between;
     }
-
-    // 弹出层
-    &--popover {
-      padding: @chat-actionbar-popover-padding;
-      background-color: @chat-actionbar-popover-background;
-      border-radius: @chat-actionbar-popover-radius;
-      color: @font-white-1;
-    }
   }
 
   // 左侧内容
@@ -62,8 +94,7 @@
   // 操作项
   &__item {
     color: @chat-actionbar-item-color;
-    margin: 12rpx 0;
-    padding: 4rpx 28rpx;
+    padding: @chat-actionbar-item-padding;
     border-right: 2rpx solid @component-stroke;
     background-color: unset;
     outline: none;
@@ -79,6 +110,16 @@
     // 激活状态
     &--active {
       color: @chat-actionbar-item-active;
+    }
+  }
+
+  &__popover-skeleton {
+    position: fixed;
+    --td-popover-padding: @chat-actionbar-popover-padding;
+
+    &__inner {
+      width: @chat-actionbar-popover-inner-size;
+      height: @chat-actionbar-popover-inner-size;
     }
   }
 }

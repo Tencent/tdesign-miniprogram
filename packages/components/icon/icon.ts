@@ -34,7 +34,7 @@ export default class Icon extends SuperComponent {
       const { name, color, size, classPrefix } = this.data;
       const isImage = name.indexOf('/') !== -1;
 
-      const sizeValue = addUnit(size);
+      const sizeValue = size !== null && size !== '' ? addUnit(size) : undefined;
       const colorStyle = color ? { color: color } : {};
       const fontStyle = size ? { 'font-size': sizeValue } : {};
       const iconStyle: Record<string, any> = { ...colorStyle, ...fontStyle };

@@ -2,705 +2,634 @@
 
 @chat-record: ~'@{prefix}-chat-record';
 
-// ==================== 动画定义 ====================
+@chat-record-primary-color: #126dff;
+@chat-record-primary-color-light: rgba(18, 109, 255, 0.6);
+@chat-record-primary-gradient: linear-gradient(
+  180deg,
+  @chat-record-primary-color 0%,
+  @chat-record-primary-color-light 100%
+);
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
+@chat-record-error-color: #ff5729;
+@chat-record-error-color-light: rgba(255, 87, 41, 0.6);
+@chat-record-error-gradient: linear-gradient(180deg, @chat-record-error-color 0%, @chat-record-error-color-light 100%);
 
-  to {
-    opacity: 1;
-  }
-}
+@chat-record-text-primary: rgba(0, 0, 0, 0.9);
+@chat-record-text-secondary: rgba(0, 0, 0, 0.4);
+@chat-record-text-tertiary: rgba(0, 0, 0, 0.26);
+@chat-record-text-white: #fff;
 
-@keyframes wave {
+@chat-record-bg-white: #fff;
+@chat-record-bg-mask: rgba(255, 255, 255, 0.54);
+@chat-record-bg-dark: rgba(0, 0, 0, 0.03);
 
-  0%,
-  100% {
-    transform: scaleY(1);
-  }
+@chat-record-padding-vertical: 24rpx;
+@chat-record-padding-horizontal: 40rpx;
+@chat-record-margin-bottom: 60rpx;
+@chat-record-margin-bottom-small: 48rpx;
 
-  50% {
-    transform: scaleY(1.857);
-  }
-}
+@chat-record-border-radius-small: 16px;
+@chat-record-border-radius-medium: 48rpx;
+@chat-record-border-radius-large: 64rpx;
+@chat-record-border-radius-full: 50%;
 
-// ==================== 变量配置 ====================
+@chat-record-border-width: 2rpx;
+@chat-record-border-color: @chat-record-bg-white;
 
-// 录音按钮
-@chat-record-hook-padding: 24rpx 0;
-@chat-record-hook-font-size: 34rpx;
-@chat-record-hook-line-height: 42rpx;
-@chat-record-hook-letter-spacing: 1.02rpx;
-@chat-record-hook-border-radius: 16px;
-@chat-record-hook-border: 2rpx solid #fff;
-@chat-record-hook-bg: #f5f5f5;
+@chat-record-font-size-large: 34rpx;
+@chat-record-font-size-medium: 28rpx;
+@chat-record-line-height: 42rpx;
+@chat-record-line-height-large: 58rpx;
+@chat-record-letter-spacing: 1.02rpx;
 
-// 遮罩层
-@chat-record-mask-z-index: 5100;
-@chat-record-mask-bg: rgba(0, 0, 0, 0.80);
-@chat-record-mask-blur: blur(5px);
+@chat-record-btn-height: 96rpx;
+@chat-record-btn-width-small: 64rpx;
+@chat-record-btn-icon-size: 48rpx;
 
-// 主容器
-@chat-record-main-z-index: 5101;
+@chat-record-ani-size: 256rpx;
+@chat-record-ani-inner-size: 160rpx;
+@chat-record-ani-main-size: 176rpx;
 
-// 气泡样式
-@chat-record-bubble-border-radius: 24rpx;
-@chat-record-bubble-padding: 40rpx 48rpx;
-@chat-record-bubble-min-width: 300rpx;
-@chat-record-bubble-min-height: 120rpx;
-@chat-record-bubble-max-height: 584rpx;
-@chat-record-bubble-margin-bottom: 268rpx;
-@chat-record-bubble-padding-horizontal: 48rpx;
+@chat-record-footer-height: 348rpx;
+@chat-record-footer-bg-height: 300rpx;
 
-// 气泡颜色
-@chat-record-color-blue: #2979ff;
-@chat-record-color-red: #ff5252;
-@chat-record-color-white: #FFFFFF;
+@chat-record-transition-fast: 0.25s linear;
+@chat-record-transition-normal: 0.6s;
+@chat-record-transition-slow: 1s;
+@chat-record-animation-duration: 1.5s;
 
-@chat-record-cancel-font-size: 32rpx;
+@chat-record-box-shadow: 0 8rpx 32rpx 0 rgba(18, 109, 255, 0.12);
 
-// 红色气泡（取消）
-@chat-record-bubble-red-min-width: 160rpx;
-@chat-record-bubble-red-padding: 24rpx 32rpx;
-@chat-record-bubble-red-translate-x: -230rpx;
-
-// 宽气泡（转文字）
-@chat-record-bubble-wide-min-width: calc(100% - 96rpx);
-@chat-record-bubble-tail-right: calc(100% - 66rpx);
-
-// 波浪条
-@chat-record-wave-height: 28rpx;
-@chat-record-wave-gap: 8rpx;
-@chat-record-wave-item-width: 8rpx;
-@chat-record-wave-item-height: 14rpx;
-@chat-record-wave-item-radius: 90rpx;
-
-// 省略号圆点
-@chat-record-dot-size: 8rpx;
-@chat-record-dot-gap: 6rpx;
-@chat-record-dot-shadow-offset: 14rpx;
-@chat-record-dot-margin-right: 56rpx;
-
-// 转文字输入框
-@chat-record-textarea-min-height: 112rpx;
-@chat-record-textarea-max-height: 504rpx;
-@chat-record-textarea-font-size: 40rpx;
-@chat-record-textarea-line-height: 56rpx;
-
-// 底部操作区
-@chat-record-footer-height: 400rpx;
-@chat-record-tips-top: 148rpx;
-@chat-record-tips-font-size: 32rpx;
-@chat-record-tips-line-height: 48rpx;
-
-// 大圆背景
-@chat-record-circle-size: 2000rpx;
-@chat-record-circle-border-radius: 2000rpx;
-@chat-record-circle-bottom: -1700rpx;
-@chat-record-circle-border: 4rpx solid #FFFFFF;
-@chat-record-circle-bg-default: #DCDCDC;
-@chat-record-circle-bg-active: #4a4a4a;
-
-// 异形按钮
-@chat-record-shape-btn-width: 340rpx;
-@chat-record-shape-btn-height: 338rpx;
-@chat-record-shape-btn-bottom: 120rpx;
-@chat-record-shape-btn-padding-bottom: 180rpx;
-@chat-record-shape-btn-hint-top: -50rpx;
-@chat-record-shape-btn-hint-font-size: 24rpx;
-@chat-record-shape-btn-hint-color: #A3A3A3;
-@chat-record-shape-btn-label-font-size: 28rpx;
-@chat-record-shape-btn-label-line-height: 44rpx;
-@chat-record-shape-btn-label-color: #fff;
-@chat-record-shape-btn-label-color-active: #000;
-
-// 确认按钮区域
-@chat-record-confirm-bottom: 120rpx;
-@chat-record-confirm-height: 300rpx;
-@chat-record-confirm-padding: 20rpx 48rpx 40rpx;
-@chat-record-cancel-icon-size: 144rpx;
-@chat-record-cancel-icon-margin: 16rpx;
-@chat-record-cancel-text-font-size: 24rpx;
-@chat-record-cancel-text-line-height: 40rpx;
-@chat-record-send-btn-width: 224rpx;
-@chat-record-send-btn-height: 144rpx;
-@chat-record-send-btn-radius: 1998rpx;
-@chat-record-send-btn-bg: #e0e0e0;
-@chat-record-send-btn-bg-active: #b0b0b0;
-@chat-record-send-btn-font-size: 28rpx;
-@chat-record-send-btn-line-height: 44rpx;
-
-// 过渡动画
-@chat-record-transition-ease: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-@chat-record-transition-fast: 0.15s ease;
-@chat-record-transition-opacity: 0.25s linear;
-
-// ==================== 主容器 ====================
+@chat-record-asset-base-url: 'https://static.wecity.qq.com/webrebuildmysscard-mini/250702-aigc-audio';
 
 .@{chat-record} {
+  padding: @chat-record-padding-vertical 0;
+  width: -webkit-fill-available;
 
-  // 录音按钮
-  &-hook {
+  .@{chat-record}-hook {
     width: 100%;
-    padding: @chat-record-hook-padding;
-    color: rgba(0, 0, 0, 0.9);
+    color: @chat-record-text-primary;
     text-align: center;
-    font-size: @chat-record-hook-font-size;
+    font-size: @chat-record-font-size-large;
+    font-style: normal;
     font-weight: 500;
-    line-height: @chat-record-hook-line-height;
-    letter-spacing: @chat-record-hook-letter-spacing;
-    border-radius: @chat-record-hook-border-radius;
-    border: @chat-record-hook-border;
-    background: @chat-record-hook-bg;
+    line-height: @chat-record-line-height;
+    letter-spacing: @chat-record-letter-spacing;
+    border-radius: @chat-record-border-radius-small;
+    border: @chat-record-border-width solid @chat-record-border-color;
   }
 
-  // ==================== 遮罩层和主容器 ====================
-
-  &-audio-input {
-
+  .@{chat-record}-audio-input {
     &.show {
+      .@{chat-record}-audio-input__mask {
+        opacity: 1;
+        pointer-events: auto;
+      }
 
-      .@{chat-record}-audio-input__mask,
       .@{chat-record}-audio-input__main {
         opacity: 1;
         pointer-events: auto;
       }
     }
 
-    // 遮罩层
-    &__mask {
+    &.unknow {
+      .@{chat-record}-audio-input__ft__tips {
+        color: @chat-record-primary-color;
+      }
+
+      .@{chat-record}-audio-input__ft__tips__inner {
+        display: none;
+      }
+
+      .speak-btn {
+        display: flex;
+      }
+
+      .speak-close-btn {
+        display: flex;
+      }
+
+      .audio-loading-icon {
+        display: none;
+      }
+    }
+
+    &.cancel {
+      .@{chat-record}-audio-input__ft__tips__inner {
+        color: @chat-record-error-color;
+      }
+
+      .@{chat-record}-audio-input__ft__tips {
+        color: @chat-record-error-color;
+      }
+
+      .@{chat-record}-audio-input__ft__bg {
+        background: url('@{chat-record-asset-base-url}/img-ctrl-bg-red.png') no-repeat center;
+        background-size: cover;
+      }
+
+      .audio-loading-icon {
+        .audio-loading-dot {
+          background: @chat-record-error-gradient;
+        }
+      }
+    }
+
+    &.complete {
+      .@{chat-record}-audio-input__ft__tips__inner {
+        display: none;
+      }
+
+      .@{chat-record}-audio-input__ft__bg {
+        display: none;
+      }
+
+      .@{chat-record}-audio-input__ft__ct {
+        display: flex;
+      }
+
+      .audio-loading-icon {
+        display: none;
+      }
+
+      .@{chat-record}-audio-inputt__ft__tips {
+        display: none;
+      }
+    }
+
+    &.cover-ng-bar {
       position: fixed;
       left: 0;
       top: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: @chat-record-mask-z-index;
-      background: @chat-record-mask-bg;
-      backdrop-filter: @chat-record-mask-blur;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity @chat-record-transition-opacity;
+      z-index: 99999999;
     }
 
-    // 主容器
+    &__mask {
+      width: 100vw;
+      height: 100vh;
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 98;
+      background: @chat-record-bg-mask;
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity @chat-record-transition-fast;
+    }
+
     &__main {
       position: fixed;
       left: 0;
       right: 0;
       bottom: 0;
-      z-index: @chat-record-main-z-index;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
+      z-index: 99;
       opacity: 0;
       pointer-events: none;
-      transition: opacity @chat-record-transition-opacity;
+      transition: opacity @chat-record-transition-fast;
     }
-
-    // ==================== 气泡动画容器 ====================
 
     &-ani {
       display: flex;
-      justify-content: center;
-      width: 100%;
-      margin-bottom: @chat-record-bubble-margin-bottom;
-      padding: 0 @chat-record-bubble-padding-horizontal;
-      box-sizing: border-box;
-      opacity: 1;
-      transition: opacity 0.3s ease;
-      animation: fadeIn 0.3s ease;
-
-      // 气泡容器
-      .bubble-container {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: @chat-record-bubble-padding;
-        border-radius: @chat-record-bubble-border-radius;
-        min-width: @chat-record-bubble-min-width;
-        min-height: @chat-record-bubble-min-height;
-        width: auto;
-        // 只对特定属性做过渡，避免 height 变化时闪烁
-        transition: background-color @chat-record-transition-ease,
-          transform @chat-record-transition-ease,
-          min-width @chat-record-transition-ease,
-          padding @chat-record-transition-ease;
-
-        // 气泡尾巴 mixin
-        .bubble-tail(@color, @left: 50%, @transform: translateX(-50%)) {
-          content: '';
-          position: absolute;
-          bottom: -14rpx;
-          left: @left;
-          transform: @transform;
-          border-left: 16rpx solid transparent;
-          border-right: 16rpx solid transparent;
-          border-top: 16rpx solid @color;
-          transition: all @chat-record-transition-ease;
-        }
-
-        // 蓝色气泡（默认）
-        &.bubble-blue {
-          background-color: @chat-record-color-blue;
-          color: @chat-record-color-white;
-
-          &::after {
-            .bubble-tail(@chat-record-color-blue);
-          }
-        }
-
-        // 红色气泡（取消状态）
-        &.bubble-red {
-          background-color: @chat-record-color-red;
-          color: @chat-record-color-white;
-          min-width: @chat-record-bubble-red-min-width;
-          padding: @chat-record-bubble-red-padding;
-          transform: translateX(@chat-record-bubble-red-translate-x);
-
-          &::after {
-            .bubble-tail(@chat-record-color-red);
-          }
-        }
-
-        // 宽气泡（转文字状态）
-        &.bubble-wide {
-          background-color: @chat-record-color-blue;
-          color: @chat-record-color-white;
-          min-width: @chat-record-bubble-wide-min-width;
-          max-width: none;
-          justify-content: flex-start;
-
-          &::after {
-            .bubble-tail(@chat-record-color-blue, @chat-record-bubble-tail-right);
-          }
-        }
-      }
-    }
-
-    // ==================== 气泡内容 ====================
-
-    // 音量波浪条
-    .audio-wave {
-      display: flex;
       align-items: center;
-      height: @chat-record-wave-height;
-      gap: @chat-record-wave-gap;
-
-      .wave-item {
-        width: @chat-record-wave-item-width;
-        height: @chat-record-wave-item-height;
-        background: @chat-record-color-white;
-        border-radius: @chat-record-wave-item-radius;
-        transform-origin: center;
-        will-change: transform;
-        animation: wave 1.5s infinite ease-in-out;
-      }
-
-      // LESS 循环生成 13 个波浪条的动画延迟
-      .generate-wave-delays(@n, @i: 1) when (@i =< @n) {
-        .wave-item:nth-child(@{i}) {
-          animation-delay: unit((-1.2 + (@i - 1) * 0.1), s);
-        }
-
-        .generate-wave-delays(@n, (@i + 1));
-      }
-
-      .generate-wave-delays(13);
-    }
-
-    // 取消图标（省略号）
-    .cancel-icon {
-      display: flex;
-      align-items: center;
-      gap: @chat-record-dot-gap;
-      font-size: 0;
-
-      &::before {
-        content: '';
-        display: block;
-        width: @chat-record-dot-size;
-        height: @chat-record-dot-size;
-        background: @chat-record-color-white;
-        border-radius: 50%;
-        box-shadow:
-          @chat-record-dot-shadow-offset 0 0 @chat-record-color-white,
-          (@chat-record-dot-shadow-offset * 2) 0 0 @chat-record-color-white,
-          (@chat-record-dot-shadow-offset * 3) 0 0 @chat-record-color-white,
-          (@chat-record-dot-shadow-offset * 4) 0 0 @chat-record-color-white;
-        margin-right: @chat-record-dot-margin-right;
-      }
-    }
-
-
-    .cancel-text {
-      color: @chat-record-color-white;
-      font-size: @chat-record-cancel-font-size;
-      font-weight: 600;
-    }
-
-    // 转文字内容
-    .convert-content {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      width: @chat-record-ani-size;
+      height: @chat-record-ani-size;
+      margin: 0 auto @chat-record-margin-bottom;
       position: relative;
+      overflow: hidden;
 
-      .editable-textarea {
-        width: 100%;
-        height: @chat-record-textarea-min-height;
-        background: transparent;
-        border: none;
-        color: @chat-record-color-white;
-        font-family: "PingFang SC";
-        font-size: @chat-record-textarea-font-size;
-        font-weight: 600;
-        line-height: @chat-record-textarea-line-height;
-        outline: none;
-        resize: none;
-        overflow-y: auto;
-        -webkit-appearance: none;
+      .ani-cir {
+        width: @chat-record-ani-size;
+        height: @chat-record-ani-size;
+        position: relative;
+        z-index: 3;
+
+        &.diff-start {
+          .ani-cir-2 {
+            animation: diff @chat-record-transition-slow linear infinite;
+          }
+
+          .ani-cir-3 {
+            animation: diff @chat-record-transition-slow linear 0.5s infinite;
+          }
+
+          .ani-cir-4 {
+            animation: diff @chat-record-transition-slow linear 1s infinite;
+          }
+        }
+
+        .ani-cir-1,
+        .ani-cir-2,
+        .ani-cir-3,
+        .ani-cir-4 {
+          position: absolute;
+          left: 48rpx;
+          top: 48rpx;
+          width: @chat-record-ani-inner-size;
+          height: @chat-record-ani-inner-size;
+          background: url('@{chat-record-asset-base-url}/img-border.png') no-repeat center;
+          background-size: contain;
+        }
+
+        .ani-cir-1 {
+          animation: bg-turn 3s linear infinite;
+        }
+
+        @keyframes diff {
+          0% {
+            transform: scale(1);
+            opacity: 0.33;
+          }
+
+          100% {
+            transform: scale(1.61);
+            opacity: 0;
+          }
+        }
       }
 
-      .convert-dots {
-        align-self: flex-end;
-        display: flex;
-        align-items: center;
-        gap: @chat-record-dot-gap;
-        font-size: 0;
+      .ani-wrap {
+        width: @chat-record-ani-inner-size;
+        height: @chat-record-ani-inner-size;
+        z-index: 2;
+        position: absolute;
+        left: 48rpx;
+        top: 48rpx;
+        overflow: hidden;
+        border-radius: @chat-record-border-radius-full;
 
-        &::before {
-          content: '';
-          display: block;
-          width: @chat-record-dot-size;
-          height: @chat-record-dot-size;
-          background: @chat-record-color-white;
-          border-radius: 50%;
-          box-shadow:
-            @chat-record-dot-shadow-offset 0 0 @chat-record-color-white,
-            (@chat-record-dot-shadow-offset * 2) 0 0 @chat-record-color-white,
-            (@chat-record-dot-shadow-offset * 3) 0 0 @chat-record-color-white,
-            (@chat-record-dot-shadow-offset * 4) 0 0 @chat-record-color-white;
-          margin-right: @chat-record-dot-margin-right;
+        .ani-inner {
+          width: @chat-record-ani-inner-size;
+          height: @chat-record-ani-inner-size;
+          position: absolute;
+          left: 0;
+          top: 0;
+          border-radius: @chat-record-border-radius-full;
+          z-index: 2;
+          background: url('@{chat-record-asset-base-url}/img-clr-bg.png') no-repeat center;
+          background-size: contain;
+          animation: bg-turn 5s linear infinite;
+        }
+
+        @keyframes bg-turn {
+          0% {
+            transform: rotateZ(0deg);
+          }
+
+          100% {
+            transform: rotateZ(360deg);
+          }
+        }
+
+        .ani-mask {
+          width: @chat-record-ani-inner-size;
+          height: @chat-record-ani-inner-size;
+          position: absolute;
+          left: 0;
+          top: 0;
+          z-index: 3;
+          background: url('@{chat-record-asset-base-url}/img-ani-mask.png') no-repeat center;
+          background-size: contain;
+        }
+
+        .ani-main {
+          width: @chat-record-ani-main-size;
+          height: @chat-record-ani-main-size;
+          position: absolute;
+          left: -8rpx;
+          top: 11rpx;
+          z-index: 4;
+          background: url('@{chat-record-asset-base-url}/img-ani-spirit-new.png') no-repeat center 0;
+          background-size: 100% auto;
+
+          &.ani-start {
+            animation: spirit-start @chat-record-transition-normal steps(14) forwards;
+          }
+
+          &.ani-end {
+            background: url('@{chat-record-asset-base-url}/img-ani-spirit-new.png') no-repeat center 100%;
+            background-size: @chat-record-ani-main-size auto;
+            animation: spirit-end @chat-record-transition-normal steps(14) forwards;
+          }
+        }
+
+        @keyframes spirit-start {
+          0% {
+            background-position: center 0;
+          }
+
+          100% {
+            background-position: center -2464rpx;
+          }
+        }
+
+        @keyframes spirit-end {
+          0% {
+            background-position: center -2464rpx;
+          }
+
+          100% {
+            background-position: center 0;
+          }
+        }
+
+        @keyframes spirit-start-1 {
+          0% {
+            background-position: center 0;
+          }
+
+          100% {
+            background-position: center -2436rpx;
+          }
+        }
+
+        @keyframes spirit-end-1 {
+          0% {
+            background-position: center -2436rpx;
+          }
+
+          100% {
+            background-position: center 0;
+          }
         }
       }
     }
 
-    // ==================== 底部操作区 ====================
+    &__con {
+      margin: 0 @chat-record-padding-horizontal 88rpx;
+      overflow-y: scroll;
+
+      &.disabled {
+        .@{chat-record}-audio-input__con__inner {
+          color: @chat-record-text-secondary;
+        }
+
+        .@{chat-record}-audio-input__con__ta {
+          color: @chat-record-text-secondary;
+        }
+      }
+
+      &__inner {
+        color: @chat-record-text-primary;
+        font-size: @chat-record-font-size-large;
+        font-weight: 500;
+        line-height: @chat-record-line-height-large;
+        min-height: 116rpx;
+        text-align: center;
+      }
+
+      &__ta {
+        color: @chat-record-text-primary;
+        font-size: @chat-record-font-size-large;
+        font-weight: 500;
+        line-height: @chat-record-line-height-large;
+        min-height: 116rpx;
+        text-align: left;
+        display: block;
+        width: 100%;
+        overflow: scroll;
+
+        // height: auto;
+        &.txt-limit-5 {
+          max-height: 120rpx;
+        }
+
+        &.txt-limit-9 {
+          max-height: 522rpx;
+        }
+      }
+    }
+
+    .audio-loading-icon {
+      display: flex;
+      align-items: center;
+      height: 24rpx;
+      position: absolute;
+      top: 218rpx;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .audio-loading-dot {
+      height: 10rpx;
+      width: 7rpx;
+      background: @chat-record-primary-gradient;
+      border-radius: 4rpx;
+
+      & + .audio-loading-dot {
+        margin-left: 7rpx;
+      }
+
+      &.dot-1 {
+        animation: dot-scale 1.5s linear infinite;
+      }
+
+      &.dot-2 {
+        transform: scaleY(1.6);
+        animation: dot-scale-2 1.5s linear infinite;
+      }
+
+      &.dot-3 {
+        transform: scaleY(2.4);
+        animation: dot-scale-3 1.5s linear infinite;
+      }
+    }
+
+    @keyframes dot-scale {
+      0% {
+        transform: scaleY(1);
+      }
+
+      50% {
+        transform: scaleY(2.4);
+      }
+
+      100% {
+        transform: scaleY(1);
+      }
+    }
+
+    @keyframes dot-scale-2 {
+      0% {
+        transform: scaleY(1.6);
+      }
+
+      25% {
+        transform: scaleY(2.4);
+      }
+
+      75% {
+        transform: scaleY(1);
+      }
+
+      100% {
+        transform: scaleY(1.6);
+      }
+    }
+
+    @keyframes dot-scale-3 {
+      0% {
+        transform: scaleY(2.4);
+      }
+
+      50% {
+        transform: scaleY(1);
+      }
+
+      100% {
+        transform: scaleY(2.4);
+      }
+    }
 
     &__ft {
       position: relative;
-      width: 100%;
-      height: @chat-record-footer-height;
-      opacity: 1;
-      transition: opacity 0.3s ease;
-      animation: fadeIn 0.3s ease;
 
-      // 提示文字
-      .tips-text {
-        position: absolute;
-        top: @chat-record-tips-top;
-        width: 100%;
-        text-align: center;
-        color: rgba(0, 0, 0, 0.90);
-        font-size: @chat-record-tips-font-size;
-        font-weight: 600;
-        line-height: @chat-record-tips-line-height;
-        z-index: 10;
-        pointer-events: none;
-      }
-
-      // 状态变化：文字变白色
-      &.release_cancel .tips-text,
-      &.release_convert .tips-text {
-        color: @chat-record-color-white;
-      }
-
-      // 大圆弧背景
       &__bg {
         width: 100%;
-        height: 100%;
-        position: absolute;
-        bottom: 0;
-        pointer-events: none;
+        height: @chat-record-footer-height;
+        display: block;
+        background: url('@{chat-record-asset-base-url}/img-ctrl-bg-new.png') no-repeat center;
+        background-size: cover;
+      }
 
-        &::before {
-          content: '';
-          position: absolute;
-          left: 50%;
-          bottom: @chat-record-circle-bottom;
-          transform: translateX(-50%);
-          width: @chat-record-circle-size;
-          height: @chat-record-circle-size;
-          border-radius: @chat-record-circle-border-radius;
-          background: @chat-record-circle-bg-default;
-          border: @chat-record-circle-border;
-          transition: background-color 0.3s ease;
+      &__tips {
+        color: @chat-record-text-tertiary;
+        text-align: center;
+        font-size: @chat-record-font-size-medium;
+        line-height: 36rpx;
+      }
+
+      &__tips__inner {
+        position: absolute;
+        left: 3rpx;
+        right: 3rpx;
+        top: 146rpx;
+        color: @chat-record-primary-color;
+        text-align: center;
+        font-size: @chat-record-font-size-medium;
+        line-height: 36rpx;
+      }
+
+      &__ct {
+        display: flex;
+        align-items: center;
+        height: 300rpx;
+        margin-top: 48rpx;
+        padding: 0 40rpx;
+        display: none;
+
+        &.keyboard-cover {
+          height: fit-content;
+          padding: 0 32rpx 32rpx;
         }
       }
 
-      // 状态变化：大圆变深色
-      &.release_cancel .@{chat-record}-audio-input__ft__bg::before,
-      &.release_convert .@{chat-record}-audio-input__ft__bg::before {
-        background-color: @chat-record-circle-bg-active;
-        border-color: @chat-record-circle-bg-active;
-      }
-
-      // ==================== 异形按钮 ====================
-
-      .shape-btn {
-        position: absolute;
-        bottom: @chat-record-shape-btn-bottom;
-        width: @chat-record-shape-btn-width;
-        height: @chat-record-shape-btn-height;
+      &__btn {
+        border-radius: @chat-record-border-radius-medium;
+        height: @chat-record-btn-height;
+        background: @chat-record-bg-white;
+        box-shadow: @chat-record-box-shadow;
         display: flex;
-        flex-direction: column;
         align-items: center;
         justify-content: center;
-        padding-bottom: @chat-record-shape-btn-padding-bottom;
-        box-sizing: border-box;
-        transition: all 0.3s ease;
-        pointer-events: none;
-        z-index: 1;
 
-        &::before {
-          content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-size: contain;
-          background-repeat: no-repeat;
-          background-position: center center;
-          z-index: -1;
-          transition: all 0.3s ease;
-          transform-origin: center 20%;
+        & + .@{chat-record}-audio-input__ft__btn {
+          margin-left: 24rpx;
         }
 
-        .btn-hint {
-          position: absolute;
-          top: @chat-record-shape-btn-hint-top;
-          font-size: @chat-record-shape-btn-hint-font-size;
-          font-weight: 400;
-          color: @chat-record-shape-btn-hint-color;
-          white-space: nowrap;
-
-          .word {
-            display: inline-block;
-            margin-right: 8rpx;
-
-            &:last-child {
-              margin-right: 0;
-            }
-          }
+        &.btn-send {
+          flex: 1;
+          font-size: 40rpx;
+          font-weight: 500;
+          background: @chat-record-primary-gradient;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
 
-        .btn-label {
-          font-family: "PingFang SC";
-          font-size: @chat-record-shape-btn-label-font-size;
-          font-weight: 600;
-          line-height: @chat-record-shape-btn-label-line-height;
-          color: @chat-record-shape-btn-label-color;
+        &.btn-close {
+          width: @chat-record-btn-height;
+          flex-shrink: 0;
 
-          .word {
-            display: inline-block;
-            margin-right: 8rpx;
-
-            &:last-child {
-              margin-right: 0;
-            }
-          }
-        }
-
-        &.active {
-          .btn-label {
-            color: @chat-record-shape-btn-label-color-active;
-          }
-
-          &::before {
-            transform: scale(1.1);
+          .close-icon {
+            width: @chat-record-btn-icon-size;
+            height: @chat-record-btn-icon-size;
+            mask: url('@{chat-record-asset-base-url}/icon-close.svg') no-repeat center;
+            mask-size: contain;
+            background: @chat-record-text-tertiary;
           }
         }
       }
 
-      // 左侧按钮
-      .left-btn {
-        left: 0;
-
-        &::before {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='169' viewBox='0 0 170 169' fill='none'%3E%3Cpath d='M142.225 59.8918C158.733 58.4737 170.966 43.9418 169.548 27.4343C168.13 10.9265 153.598 -1.30612 137.09 0.111923C25.1861 9.72467 -81.5199 51.6215 -170.069 120.715L-133.159 168.019C-53.7697 106.073 41.8976 68.5101 142.225 59.8918Z' fill='%234B4B4B'/%3E%3C/svg%3E");
-        }
-
-        // btn-hint: "Release" + "to cancel"
-        .btn-hint {
-          transform: translateZ(0); // 触发重绘防止文字残影
-
-          .word-1 {
-            transform: rotate(-10deg) translateY(6rpx);
-          }
-
-          .word-2 {
-            transform: rotate(-7deg) translateY(-10rpx);
-          }
-        }
-
-        // btn-label: "Cancel"
-        .btn-label {
-          transform: rotate(-12deg);
-        }
-
-        &.active::before {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='169' viewBox='0 0 170 169' fill='none'%3E%3Cpath d='M142.225 59.8918C158.733 58.4737 170.966 43.9418 169.548 27.4343C168.13 10.9265 153.598 -1.30612 137.09 0.111923C25.1861 9.72467 -81.5199 51.6215 -170.069 120.715L-133.159 168.019C-53.7697 106.073 41.8976 68.5101 142.225 59.8918Z' fill='%23DCDCDC'/%3E%3C/svg%3E");
-          transform: scale(1.1);
-        }
-      }
-
-      // 右侧按钮
-      .right-btn {
-        right: 0;
-        transform: scaleX(-1);
-
-        &::before {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='169' viewBox='0 0 170 169' fill='none'%3E%3Cpath d='M142.225 59.8918C158.733 58.4737 170.966 43.9418 169.548 27.4343C168.13 10.9265 153.598 -1.30612 137.09 0.111923C25.1861 9.72467 -81.5199 51.6215 -170.069 120.715L-133.159 168.019C-53.7697 106.073 41.8976 68.5101 142.225 59.8918Z' fill='%234B4B4B'/%3E%3C/svg%3E");
-        }
-
-        // btn-hint: "Release" + "to edit" + "text"
-        .btn-hint {
-          transform: scaleX(-1) translateZ(0); // 触发重绘防止文字残影
-
-          .word-1 {
-            transform: rotate(7deg) translateY(-10rpx);
-          }
-
-          .word-2 {
-            transform: rotate(12deg) translateY(5rpx);
-          }
-
-          .word-3 {
-            transform: rotate(17deg) translateY(20rpx);
-          }
-        }
-
-        // btn-label: "Convert" + "to Text"
-        .btn-label {
-          transform: scaleX(-1);
-
-          .word-1 {
-            transform: rotate(9deg) translateY(-12rpx);
-          }
-
-          .word-2 {
-            transform: rotate(16deg) translateY(10rpx);
-          }
-        }
-
-        &.active::before {
-          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='169' viewBox='0 0 170 169' fill='none'%3E%3Cpath d='M142.225 59.8918C158.733 58.4737 170.966 43.9418 169.548 27.4343C168.13 10.9265 153.598 -1.30612 137.09 0.111923C25.1861 9.72467 -81.5199 51.6215 -170.069 120.715L-133.159 168.019C-53.7697 106.073 41.8976 68.5101 142.225 59.8918Z' fill='%23DCDCDC'/%3E%3C/svg%3E");
-          transform: scale(1.1);
-        }
-      }
-
-      // ==================== 确认按钮区域 ====================
-
-      .confirm-actions {
+      .speak-close-btn {
         position: absolute;
-        left: 0;
-        right: 0;
-        bottom: @chat-record-confirm-bottom;
-        height: @chat-record-confirm-height;
+        left: @chat-record-padding-horizontal;
+        top: 202rpx;
+        width: @chat-record-btn-width-small;
+        height: @chat-record-btn-width-small;
+        border-radius: @chat-record-border-radius-medium;
+        border: @chat-record-border-width solid @chat-record-border-color;
+        background: @chat-record-bg-dark;
+        box-sizing: border-box;
+        display: none;
+        align-items: center;
+        justify-content: center;
+
+        .close-icon {
+          width: @chat-record-btn-icon-size;
+          height: @chat-record-btn-icon-size;
+          border-radius: @chat-record-border-radius-full;
+          mask: url('@{chat-record-asset-base-url}/icon-close.svg') no-repeat center;
+          mask-size: contain;
+          background: @chat-record-text-tertiary;
+        }
+      }
+
+      .speak-btn {
+        position: absolute;
+        left: 50%;
+        top: 210rpx;
+        transform: translateX(-50%);
         display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding: @chat-record-confirm-padding;
-        z-index: 20;
+        align-items: center;
+        justify-content: center;
+        display: none;
+        // pointer-events: none;
 
-        .action-btn {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: flex-start;
-          transition: all @chat-record-transition-fast;
+        .speak-icon {
+          width: @chat-record-btn-icon-size;
+          height: @chat-record-btn-icon-size;
+          background: url('@{chat-record-asset-base-url}/icon-vol.svg') no-repeat center;
+          background-size: contain;
+          margin-right: 4rpx;
+        }
 
-          // Cancel 按钮
-          &.btn-cancel {
-            .icon-wrapper {
-              width: @chat-record-cancel-icon-size;
-              height: @chat-record-cancel-icon-size;
-              border-radius: 50%;
-              background-color: rgba(255, 255, 255, 0.2);
-              display: flex;
-              align-items: center;
-              justify-content: center;
-              margin-bottom: @chat-record-cancel-icon-margin;
-              transition: background-color @chat-record-transition-fast;
-            }
+        .tips-txt {
+          font-size: @chat-record-font-size-large;
+          font-weight: 500;
+          background: @chat-record-primary-gradient;
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
 
-            .btn-text {
-              color: #FFF;
-              text-align: center;
-              font-family: "PingFang SC";
-              font-size: @chat-record-cancel-text-font-size;
-              font-weight: 600;
-              line-height: @chat-record-cancel-text-line-height;
-            }
+      .audio-volume-icon {
+        width: @chat-record-btn-icon-size;
+        height: @chat-record-btn-icon-size;
+        position: absolute;
+        top: 60rpx;
+        left: 50%;
+        z-index: 2;
+        transform: translateX(-50%);
+        mask: url('@{chat-record-asset-base-url}/icon-play.svg') no-repeat center;
+        mask-size: contain;
+        background: @chat-record-text-secondary;
 
-            &.active .icon-wrapper {
-              background-color: rgba(255, 255, 255, 0.4);
-            }
-          }
-
-          // Send 按钮
-          &.btn-send {
-            width: @chat-record-send-btn-width;
-            height: @chat-record-send-btn-height;
-            background-color: @chat-record-send-btn-bg;
-            border-radius: @chat-record-send-btn-radius;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color @chat-record-transition-fast;
-
-            text {
-              color: rgba(0, 0, 0, 0.90);
-              font-family: "PingFang SC";
-              font-size: @chat-record-send-btn-font-size;
-              font-weight: 600;
-              line-height: @chat-record-send-btn-line-height;
-            }
-
-            &.active {
-              background-color: @chat-record-send-btn-bg-active;
-            }
-
-            // 禁用状态
-            &.disabled {
-              background-color: #999;
-              opacity: 0.5;
-              pointer-events: none;
-
-              text {
-                color: rgba(255, 255, 255, 0.6);
-              }
-            }
-          }
-
-          // Cancel 按钮禁用状态
-          &.btn-cancel.disabled {
-            opacity: 0.5;
-            pointer-events: none;
-
-            .icon-wrapper {
-              background-color: rgba(255, 255, 255, 0.1);
-            }
-
-            .btn-text {
-              color: rgba(255, 255, 255, 0.6);
-            }
-          }
+        &.volume-w {
+          mask: url('@{chat-record-asset-base-url}/icon-play.svg') no-repeat center;
+          mask-size: contain;
+          background: @chat-record-text-white;
         }
       }
     }

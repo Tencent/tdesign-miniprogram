@@ -8,12 +8,13 @@
     />
 
     <t-cascader
-      v-model:visible="visible"
+      :visible="visible"
       :close-btn="false"
       :check-strictly="true"
       :value="value"
       :options="options"
       title="请选择地址"
+      @update:visible="visible = $event"
       @change="onChange"
       @pick="onPick"
     >
@@ -31,8 +32,8 @@
 </template>
 
 <script>
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tCascader from 'tdesign-uniapp/cascader/cascader.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TCascader from '@tdesign/uniapp/cascader/cascader.vue';
 const data = {
   areaList: [
     {
@@ -191,8 +192,8 @@ const data = {
 };
 export default {
   components: {
-    tCell,
-    tCascader,
+    TCell,
+    TCascader,
   },
   data() {
     return {

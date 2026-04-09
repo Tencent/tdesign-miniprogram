@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="CountDown"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <t-demo-header
       title="CountDown 倒计时"
       desc="用于实时展示倒计时数值。"
@@ -18,7 +13,7 @@
       padding
       title="01 组件类型"
     >
-      <BaseDemo />
+      <base-demo />
     </t-demo>
 
     <t-demo
@@ -26,7 +21,7 @@
       title="02 组件尺寸"
       desc="倒计时 large/medium/small 尺寸"
     >
-      <size />
+      <size-demo />
     </t-demo>
   </view>
 </template>
@@ -34,11 +29,11 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import size from './size/index.vue';
+import SizeDemo from './size/index.vue';
 export default {
   components: {
     BaseDemo,
-    size,
+    SizeDemo,
   },
   data() {
     return {

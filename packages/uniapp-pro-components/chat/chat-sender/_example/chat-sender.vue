@@ -1,11 +1,8 @@
 <template>
   <view>
-    <t-navbar
+    <t-demo-navbar
       class="demo-navbar"
       title="ChatSender"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
     <view class="demo">
       <t-demo-header
@@ -17,10 +14,10 @@
         title="01 组件类型"
         desc="基础类型"
       >
-        <baseDemo />
+        <base-demo />
       </t-demo>
       <t-demo desc="上传文件">
-        <attachments />
+        <attachments-demo />
       </t-demo>
       <t-demo desc="内容引用">
         <content-citation />
@@ -33,18 +30,18 @@
 </template>
 
 <script>
-import baseDemo from './base/index.vue';
-import attachments from './attachments/index.vue';
-import contentCitation from './content-citation/index.vue';
-import fileCitation from './file-citation/index.vue';
+import BaseDemo from './base/index.vue';
+import AttachmentsDemo from './attachments/index.vue';
+import ContentCitation from './content-citation/index.vue';
+import FileCitation from './file-citation/index.vue';
 
 
 export default {
   components: {
-    baseDemo,
-    attachments,
-    contentCitation,
-    fileCitation,
+    BaseDemo,
+    AttachmentsDemo,
+    ContentCitation,
+    FileCitation,
   },
   data() {
     return {};

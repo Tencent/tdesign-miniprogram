@@ -7,6 +7,7 @@ declare module 'vue' {
     TChatLoading: typeof import('tdesign-uniapp-chat/chat-loading/chat-loading.vue').default;
     TChatMarkdown: typeof import('tdesign-uniapp-chat/chat-markdown/chat-markdown.vue').default;
     TChatMessage: typeof import('tdesign-uniapp-chat/chat-message/chat-message.vue').default;
+    TChatRecord: typeof import('tdesign-uniapp-chat/chat-record/chat-record.vue').default;
     TChatSender: typeof import('tdesign-uniapp-chat/chat-sender/chat-sender.vue').default;
     TChatThinking: typeof import('tdesign-uniapp-chat/chat-thinking/chat-thinking.vue').default;
   }

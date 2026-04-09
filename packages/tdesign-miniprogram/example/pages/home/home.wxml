@@ -1,4 +1,4 @@
-<t-navbar title="TDesign UI" />
+<t-navbar title="TDesign UI" placeholder zIndex="{{99}}" />
 <view class="main">
   <view class="title-wrap">
     <image

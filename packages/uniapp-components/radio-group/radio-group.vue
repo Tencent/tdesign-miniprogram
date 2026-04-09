@@ -34,7 +34,7 @@
   </view>
 </template>
 <script>
-import tRadio from '../radio/radio';
+import TRadio from '../radio/radio';
 import { prefix } from '../common/config';
 import { coalesce } from '../common/utils';
 import { uniComponent } from '../common/src/index';
@@ -67,7 +67,7 @@ export default uniComponent({
   },
   mixins: [ParentMixin(RELATION_MAP.Radio)],
   components: {
-    tRadio,
+    TRadio,
   },
   props: {
     ...props,

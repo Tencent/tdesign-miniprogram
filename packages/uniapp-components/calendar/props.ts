@@ -6,6 +6,8 @@
 
 import type { TdCalendarProps } from './type';
 export default {
+  /** 是否允许区间选择日历的起止时间相同，仅当 `type='range'` 时有效 */
+  allowSameDay: Boolean,
   /** 自动关闭；在点击关闭按钮、确认按钮、遮罩层时自动关闭，不需要手动设置 visible */
   autoClose: {
     type: Boolean,
@@ -36,6 +38,11 @@ export default {
   /** 最小可选的日期，不传则默认今天 */
   minDate: {
     type: Number,
+  },
+  /** 透传 Popup 组件全部属性 */
+  popupProps: {
+    type: Object,
+    default: () => ({}),
   },
   /** 是否只读，只读状态下不能选择日期 */
   readonly: Boolean,

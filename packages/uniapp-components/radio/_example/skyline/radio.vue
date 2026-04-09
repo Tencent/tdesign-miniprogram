@@ -6,10 +6,10 @@
 
 <script>
 
-import radioDemo from '../radio.vue';
+import RadioDemo from '../radio.vue';
 export default {
   components: {
-    radioDemo,
+    RadioDemo,
   },
   data() {
     return {};

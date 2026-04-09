@@ -11,8 +11,8 @@ isComponent: true
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TTag from 'tdesign-uniapp/tag/tag.vue';
-import TCheckTag from 'tdesign-uniapp/check-tag/check-tag.vue';
+import TTag from '@tdesign/uniapp/tag/tag.vue';
+import TCheckTag from '@tdesign/uniapp/check-tag/check-tag.vue';
 ```
 
 ### 组件类型
@@ -88,7 +88,7 @@ content | String / Number / Array | - | 组件子元素；传入数组时：[选
 disabled | Boolean | false | 标签禁用态，失效标签不能触发事件。默认风格（theme=default）才有禁用态 | N
 icon | String / Object | - | 标签图标 | N
 shape | String | square | 标签类型，有三种：方形、圆角方形、标记型。可选项：square/round/mark | N
-size | String | medium | 标签尺寸。可选项：small/medium/large。TS 类型：`SizeEnum`。[通用类型定义](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/common.ts) | N
+size | String | medium | 标签尺寸。可选项：small/medium/large。TS 类型：`SizeEnum`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts) | N
 variant | String | dark | 标签风格变体。可选项：dark/light/outline/light-outline | N
 
 ### CheckTag Events
@@ -116,86 +116,36 @@ t-class | 根节点样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-| 名称 | 默认值 | 描述 |
-| -- | -- | -- | 
-| --td-tag-close-icon-color | @text-color-placeholder | - |
-| --td-tag-danger-color | @error-color | - |
-| --td-tag-danger-light-color | @error-color-1 | - |
-| --td-tag-default-color | @bg-color-component | - |
-| --td-tag-default-font-color | @text-color-primary | - |
-| --td-tag-default-light-color | @bg-color-secondarycontainer | - |
-| --td-tag-disabled-background-color | @bg-color-component-disabled | - |
-| --td-tag-disabled-border-color | @component-border | - |
-| --td-tag-disabled-color | @text-color-disabled | - |
-| --td-tag-extra-large-font-size | @font-size-base | - |
-| --td-tag-extra-large-height | 80rpx | - |
-| --td-tag-extra-large-icon-size | 32rpx | - |
-| --td-tag-extra-large-padding | 32rpx - 1px | - |
-| --td-tag-large-font-size | @font-size-base | - |
-| --td-tag-large-height | 56rpx | - |
-| --td-tag-large-icon-size | 32rpx | - |
-| --td-tag-large-padding | 16rpx - 1px | - |
-| --td-tag-mark-border-radius | @tag-round-border-radius | - |
-| --td-tag-medium-font-size | @font-size-s | - |
-| --td-tag-medium-height | 48rpx | - |
-| --td-tag-medium-icon-size | 28rpx | - |
-| --td-tag-medium-padding | 16rpx - 1px | - |
-| --td-tag-primary-color | @brand-color | - |
-| --td-tag-primary-light-color | @brand-color-light | - |
-| --td-tag-round-border-radius | 999px | - |
-| --td-tag-small-font-size | @font-size | - |
-| --td-tag-small-height | 40rpx | - |
-| --td-tag-small-icon-size | 24rpx | - |
-| --td-tag-small-padding | 12rpx - 1px | - |
-| --td-tag-square-border-radius | 8rpx | - |
-| --td-tag-success-color | @success-color | - |
-| --td-tag-success-light-color | @success-color-1 | - |
-| --td-tag-warning-color | @warning-color | - |
-| --td-tag-warning-light-color | @warning-color-1 | - |
-ant
-@tag-outline-bg-color: var(--td-tag-outline-bg-color | @bg-color-container | - 
-ant = dark | @@theme-color, @@theme-light-color | - 
-ant = dark | @text-color-anti, @@theme-color | - 
-ant = light | @@theme-light-color, @@theme-color | - 
-ant) {
- @themes: default | primary, success, warning, dange | - 
---td-tag-danger-color | @error-color | - 
---td-tag-danger-light-color | @error-color-1 | - 
---td-tag-default-color | @bg-color-component | - 
---td-tag-default-font-color | @text-color-primary | - 
---td-tag-default-light-color | @bg-color-secondarycontainer | - 
---td-tag-disabled-background-color | @bg-color-component-disabled | - 
---td-tag-disabled-border-color | @component-border | - 
---td-tag-disabled-color | @text-color-disabled | - 
---td-tag-extra-large-font-size | @font-size-base | - 
---td-tag-extra-large-height | 80rpx | - 
---td-tag-extra-large-icon-size | 32rpx | - 
---td-tag-extra-large-padding | 32rpx - 1px | - 
---td-tag-large-font-size | @font-size-base | - 
---td-tag-large-height | 56rpx | - 
---td-tag-large-icon-size | 32rpx | - 
---td-tag-large-padding | 16rpx - 1px | - 
---td-tag-mark-border-radius | @tag-round-border-radius | - 
---td-tag-medium-font-size | @font-size-s | - 
---td-tag-medium-height | 48rpx | - 
---td-tag-medium-icon-size | 28rpx | - 
---td-tag-medium-padding | 16rpx - 1px | - 
---td-tag-primary-color | @brand-color | - 
---td-tag-primary-light-color | @brand-color-light | - 
---td-tag-round-border-radius | 999px | - 
---td-tag-small-font-size | @font-size | - 
---td-tag-small-height | 40rpx | - 
---td-tag-small-icon-size | 24rpx | - 
---td-tag-small-padding | 12rpx - 1px | - 
---td-tag-square-border-radius | 8rpx | - 
---td-tag-success-color | @success-color | - 
---td-tag-success-light-color | @success-color-1 | - 
---td-tag-warning-color | @warning-color | - 
---td-tag-warning-light-color | @warning-color-1 | - 
-ant
-@tag-outline-bg-color: var(--td-tag-outline-bg-color | @bg-color-container | - 
-ant = dark | @@theme-color, @@theme-light-color | - 
-ant = dark | @text-color-anti, @@theme-color | - 
-ant = light | @@theme-light-color, @@theme-color | - 
-ant) {
- @themes: default | primary, success, warning, dange | -
+名称 | 默认值 | 描述 
+-- | -- | --
+--td-tag-close-icon-color | @text-color-placeholder | -
+--td-tag-danger-color | @error-color | -
+--td-tag-danger-light-color | @error-color-1 | -
+--td-tag-default-color | @bg-color-component | -
+--td-tag-default-font-color | @text-color-primary | -
+--td-tag-default-light-color | @bg-color-secondarycontainer | -
+--td-tag-disabled-background-color | @bg-color-component-disabled | -
+--td-tag-disabled-border-color | @component-border | -
+--td-tag-disabled-color | @text-color-disabled | -
+--td-tag-extra-large-font | @font-body-medium | -
+--td-tag-extra-large-icon-size | 32rpx | -
+--td-tag-extra-large-padding | 16rpx 30rpx | -
+--td-tag-large-font | @font-body-medium | -
+--td-tag-large-icon-size | 32rpx | -
+--td-tag-large-padding | 4rpx 14rpx | -
+--td-tag-mark-border-radius | @tag-round-border-radius | -
+--td-tag-medium-font | @font-body-small | -
+--td-tag-medium-icon-size | 28rpx | -
+--td-tag-medium-padding | 2rpx 14rpx | -
+--td-tag-outline-bg-color | @bg-color-container | -
+--td-tag-primary-color | @brand-color | -
+--td-tag-primary-light-color | @brand-color-light | -
+--td-tag-round-border-radius | 999px | -
+--td-tag-small-font | @font-body-extraSmall | -
+--td-tag-small-icon-size | 24rpx | -
+--td-tag-small-padding | 2rpx 10rpx | -
+--td-tag-square-border-radius | 8rpx | -
+--td-tag-success-color | @success-color | -
+--td-tag-success-light-color | @success-color-1 | -
+--td-tag-warning-color | @warning-color | -
+--td-tag-warning-light-color | @warning-color-1 | -

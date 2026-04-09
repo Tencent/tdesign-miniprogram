@@ -6,19 +6,19 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/novlan1/tdesign-uniapp/blob/develop/LICENSE">
-    <img src="https://img.shields.io/npm/l/tdesign-uniapp.svg?sanitize=true" alt="License">
+  <a href="https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/tdesign-uniapp/LICENSE">
+    <img src="https://img.shields.io/npm/l/@tdesign/uniapp.svg?sanitize=true" alt="License">
   </a>
-  <a href="https://www.npmjs.com/package/tdesign-uniapp">
-    <img src="https://img.shields.io/npm/v/tdesign-uniapp.svg?sanitize=true" alt="Version">
+  <a href="https://www.npmjs.com/package/@tdesign/uniapp">
+    <img src="https://img.shields.io/npm/v/@tdesign/uniapp.svg?sanitize=true" alt="Version">
   </a>
-  <a href="https://www.npmjs.com/package/tdesign-uniapp">
-    <img src="https://img.shields.io/npm/dm/tdesign-uniapp" alt="Downloads">
+  <a href="https://www.npmjs.com/package/@tdesign/uniapp">
+    <img src="https://img.shields.io/npm/dm/@tdesign/uniapp" alt="Downloads">
   </a>
-  <a href="https://pkg.pr.new/~/novlan1/tdesign-uniapp">
-    <img src="https://pkg.pr.new/badge/novlan1/tdesign-uniapp?style=flat&color=000&logoSize=auto" alt="Downloads">
+  <a href="https://pkg.pr.new/~/Tencent/tdesign-miniprogram">
+    <img src="https://pkg.pr.new/badge/Tencent/tdesign-miniprogram?style=flat&color=000&logoSize=auto" alt="Downloads">
   </a>
-  <a href="https://deepwiki.com/novlan1/tdesign-uniapp">
+  <a href="https://deepwiki.com/Tencent/tdesign-miniprogram">
     <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki">
   </a>
 </p>
@@ -27,13 +27,13 @@
 
 ## 文档
 
-[点此查看](https://uwayfly.com/tdesign-uniapp/)
+[点此查看](https://tdesign.tencent.com/uniapp/)
 
 ## 预览
 
 扫码查看 ↓
 
-<img src="https://cdn.uwayfly.com/tdesign-uniapp/tdesign-uniapp-qrcodes.png?a=3" width="600" />
+<img src="https://tdesign.gtimg.com/uniapp/example-qrcode.png" width="600" />
 
 > 其他平台同样支持，仅因平台审核等原因未能上架预览，不影响组件库正常使用。
 
@@ -42,7 +42,7 @@
 ### NPM 方式
 
 ```bash
-npm i tdesign-uniapp
+npm i @tdesign/uniapp
 ```
 
 ### UNI_MODULES 方式
@@ -54,13 +54,13 @@ npm i tdesign-uniapp
 1. 在 `main.ts` 中引入样式文件
 
 ```js
-import 'tdesign-uniapp/common/style/theme/index.css';
+import '@tdesign/uniapp/common/style/theme/index.css';
 ```
 
 也可以引入 `rpx` 单位的 `less` 文件，该文件与 `tdesign-miniprogram` 完全一致。
 
 ```js
-import 'tdesign-uniapp/common/style/theme/index.less';
+import '@tdesign/uniapp/common/style/theme/index.less';
 ```
 
 2. 在文件中使用
@@ -71,7 +71,7 @@ import 'tdesign-uniapp/common/style/theme/index.less';
 </template>
 
 <script lang="ts" setup>
-import TLoading from 'tdesign-uniapp/loading/loading.vue';
+import TLoading from '@tdesign/uniapp/loading/loading.vue';
 </script>
 ```
 
@@ -83,13 +83,13 @@ import TLoading from 'tdesign-uniapp/loading/loading.vue';
 
 ### CLI 模式
 
-使用 CLI 模式，即使用 `node_modules` 下的 `tdesign-uniapp` 时，配置如下。
+使用 CLI 模式，即使用 `node_modules` 下的 `@tdesign/uniapp` 时，配置如下。
 
 ```json
 {
   "easycom": {
     "custom": {
-      "^t-(.*)": "tdesign-uniapp/$1/$1.vue"
+      "^t-(.*)": "@tdesign/uniapp/$1/$1.vue"
     }
   }
 }
@@ -113,7 +113,7 @@ import TLoading from 'tdesign-uniapp/loading/loading.vue';
 
 安装注册 TDesign 之后，在开发项目时，可以配合插件在VSCode等主流编辑器中达到提示组件名及API的效果。
 
-推荐安装 `Volar`，并在项目的 `tsconfig.json` 的 `includes` 属性中增加 `node_modules/tdesign-uniapp/global.d.ts`，即可实现该效果。
+推荐安装 `Volar`，并在项目的 `tsconfig.json` 的 `includes` 属性中增加 `node_modules/@tdesign/uniapp/global.d.ts`，即可实现该效果。
 
 ## 平台兼容性
 
@@ -135,10 +135,10 @@ import TLoading from 'tdesign-uniapp/loading/loading.vue';
 
 ## 反馈
 
-有任何问题，建议通过 [Github issues](https://github.com/novlan1/tdesign-uniapp/issues) 反馈或扫码加入用户微信群。
+有任何问题，建议通过 [Github issues](https://github.com/Tencent/tdesign-miniprogram/issues) 反馈或扫码加入用户微信群。
 
 <img src="https://raw.githubusercontent.com/Tencent/tdesign/main/packages/site-components/src/images/groups/wx-group.png" width="200" />
 
 ## 开源协议
 
-TDesign 遵循 [MIT 协议](https://github.com/novlan1/tdesign-uniapp/blob/develop/LICENSE)。
+TDesign 遵循 [MIT 协议](https://github.com/Tencent/tdesign-miniprogram/blob/develop/LICENSE)。

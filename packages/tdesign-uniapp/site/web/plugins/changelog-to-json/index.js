@@ -1,9 +1,9 @@
 import { promises } from 'fs';
 import path from 'path';
 
-import generateChangelogJson from '../changelog-to-json-core';
+import generateChangelogJson from '../../../../../common/docs/plugins/changelog-to-json';
 
-const outputPath = path.resolve(__dirname, '../../../../_site/changelog.json');
+const outputPath = path.resolve(__dirname, '../../../dist/changelog.json');
 const changelogPath = path.resolve(__dirname, '../../../../CHANGELOG.md');
 
 export default function changelog2Json() {

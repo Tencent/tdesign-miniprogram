@@ -44,7 +44,7 @@ TDesign UniApp 基于 Design Token 变量和媒体查询 `prefers-color-scheme` 
 
 ```js
 // CLI 模式
-import 'tdesign-uniapp/common/style/theme/index.css';
+import '@tdesign/uniapp/common/style/theme/index.css';
 
 // HBuilderX 模式
 // import './uni_modules/tdesign-uniapp/components/common/style/theme/index.css';
@@ -54,7 +54,7 @@ import 'tdesign-uniapp/common/style/theme/index.css';
 
 ```js
 // CLI 模式
-import 'tdesign-uniapp/common/style/theme/index.less';
+import '@tdesign/uniapp/common/style/theme/index.less';
 
 // HBuilderX 模式
 // import './uni_modules/tdesign-uniapp/components/common/style/theme/index.less';
@@ -72,7 +72,7 @@ import 'tdesign-uniapp/common/style/theme/index.less';
 }
 ```
 
-> 💡Tips：所有的 [Design Token](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/style/_variables.less) 可以在这里找到。
+> 💡Tips：所有的 [Design Token](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/style/_variables.less) 可以在这里找到。
 
 ### 4. 体验深色模式
 

@@ -40,6 +40,7 @@
           :selection-end="selectionEnd"
           :hold-keyboard="holdKeyboard"
           :cursor-spacing="cursorSpacing"
+          :cursor-color="cursorColor"
           :placeholder="placeholder"
           :placeholder-style="placeholderStyle"
           :placeholder-class="placeholderClass + ' ' + classPrefix + '__placeholder ' + classPrefix + '__placeholder--' + (center ? 'center' : 'normal')"
@@ -53,7 +54,7 @@
           :class="classPrefix + '__clear hotspot-expanded ' + tClassClear"
           aria-role="button"
           aria-label="清除"
-          @click.stop.prevent="handleClear"
+          @touchstart.stop.prevent="handleClear"
         >
           <t-icon
             name="close-circle-filled"
@@ -87,7 +88,7 @@
         :t-class="classPrefix + '__result-item'"
         hover
         aria-role="option"
-        @click="onSelectResultItem($event, { index })"
+        @click="onSelectOption($event, { index })"
       >
         <template
           #title
@@ -101,8 +102,8 @@
   </view>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tCell from '../cell/cell';
+import TIcon from '../icon/icon';
+import TCell from '../cell/cell';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
@@ -128,14 +129,13 @@ export default uniComponent({
     `${prefix}-class-clear`,
   ],
   components: {
-    tIcon,
-    tCell,
+    TIcon,
+    TCell,
   },
   props: {
     ...props,
   },
   emits: [
-    'selectresult',
   ],
   data() {
     return {
@@ -166,6 +166,13 @@ export default uniComponent({
         } else {
           this.isShowResultList = false;
         }
+      },
+      immediate: true,
+    },
+
+    value: {
+      handler(val) {
+        this.dataValue = val;
       },
       immediate: true,
     },
@@ -213,7 +220,10 @@ export default uniComponent({
 
       nextTick().then(() => {
         this.dataValue = value;
-        this.$emit('change', { value });
+        this.$emit('change', {
+          value,
+          trigger: 'input-change',
+        });
       });
       // this.updateInnerMaxLen();
     },
@@ -233,7 +243,10 @@ export default uniComponent({
     handleClear() {
       this.dataValue = '';
       this.$emit('clear', { value: '' });
-      this.$emit('change', { value: '' });
+      this.$emit('change', {
+        value: '',
+        trigger: 'clear',
+      });
     },
 
     onConfirm(e) {
@@ -245,13 +258,15 @@ export default uniComponent({
       this.$emit('action-click');
     },
 
-    onSelectResultItem(tools, { index }) {
+    onSelectOption(tools, { index }) {
       const item = this.resultList[index];
       this.dataValue = item;
       this.isSelected = true;
 
-      this.$emit('change', { value: item });
-      this.$emit('selectresult', { index, item });
+      this.$emit('change', {
+        value: item,
+        trigger: 'option-click',
+      });
     },
     highLight,
     // updateInnerMaxLen() {
@@ -279,6 +294,4 @@ export default uniComponent({
 
 
 </script>
-<style scoped>
-@import './search.css';
-</style>
+<style scoped src="./search.css"></style>

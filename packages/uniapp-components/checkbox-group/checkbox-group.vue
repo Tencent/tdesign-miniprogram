@@ -32,7 +32,7 @@
   </view>
 </template>
 <script>
-import tCheckbox from '../checkbox/checkbox';
+import TCheckbox from '../checkbox/checkbox';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import { coalesce } from '../common/utils';
@@ -67,7 +67,7 @@ export default uniComponent({
 
   mixins: [ParentMixin(RELATION_MAP.Checkbox)],
   components: {
-    tCheckbox,
+    TCheckbox,
   },
   props: {
     ...props,

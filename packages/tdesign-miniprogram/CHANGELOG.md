@@ -5,6 +5,42 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.12.3 `2026-02-03`
+
+### 🚀 Features
+
+- `ActionSheet`: 为 `items` 子项的 `icon` 字段新增 `object` 类型，支持透传到 `TIcon` 组件 @anlyyao ([#4251](https://github.com/Tencent/tdesign-miniprogram/pull/4251))
+- `Button`: 新增 `activity-type`，`entrance-path` 和 `need-show-entrance` 属性 @anlyyao ([#4220](https://github.com/Tencent/tdesign-miniprogram/pull/4220))
+- `ChatActionbar`: 支持长按展示 @mimaoxiao ([#4071](https://github.com/Tencent/tdesign-miniprogram/pull/4071))
+- `Icon`: 新增 217 个与人工智能、文档、徽标和文件相关的图标 @uyarn ([#4207](https://github.com/Tencent/tdesign-miniprogram/pull/4207))
+- `Search`: 为 `change` 事件新增 `trigger` 参数，表示触发源 @anlyyao ([#4223](https://github.com/Tencent/tdesign-miniprogram/pull/4223))
+
+### 🐞 Bug Fixes
+
+- `ChatContent`: 修复英文单词在换行时被截断的问题 @mimaoxiao ([#4226](https://github.com/Tencent/tdesign-miniprogram/pull/4226))
+- `Popup`: 修复 `duration` 参数无效的问题 @novlan1 ([#4201](https://github.com/Tencent/tdesign-miniprogram/pull/4201))
+
+## 🌈 1.12.2 `2026-01-21`
+
+### 🚀 Features
+
+- `Cascader`: 新增 `middle-content` 插槽，用于自定义中间区域内容 @anlyyao ([#4194](https://github.com/Tencent/tdesign-miniprogram/pull/4194))
+- `CollapsePanel`: 新增 `--td-collapse-disabled-color` 和 `--td-collapse-left-icon-color`，用于自定义禁用态颜色和左侧图标颜色 @anlyyao @liweijie0812 ([#4185](https://github.com/Tencent/tdesign-miniprogram/pull/4185))
+- `Popover`: 新增 `--td-popover-[theme]-color` 和 `--td-popover-[theme]-bg-color` 系列 `CSS Vars` @Wesley-0808 ([#4169](https://github.com/Tencent/tdesign-miniprogram/pull/4169))
+- `QRCode`: 组件新增 `init()`，用于外部调用，重新绘制二维码 @anlyyao ([#4174](https://github.com/Tencent/tdesign-miniprogram/pull/4174))
+- `SideBarItem`: 完善激活项的前缀和后缀元素显示逻辑 @anlyyao ([#4175](https://github.com/Tencent/tdesign-miniprogram/pull/4175))
+- `Slider`: 修复受控 + 双游标滑块模式下陷入死循环的问题 @Boomkaa ([#4170](https://github.com/Tencent/tdesign-miniprogram/pull/4170))
+
+### 🐞 Bug Fixes
+
+- `ChatList`: 修复 `scrollToBottom` 在 `reverse` 为 `false` 时，滑动的方向错误 @zydemail ([#4191](https://github.com/Tencent/tdesign-miniprogram/pull/4191))
+- `CollapsePanel`: 
+  - 修复深色模式下面板右侧图标颜色错误 @liweijie0812 ([#4185](https://github.com/Tencent/tdesign-miniprogram/pull/4185))
+  - 修复左侧图标颜色错误，默认主题色，支持使用 `css vars` 自定义 @anlyyao @liweijie0812 ([#4185](https://github.com/Tencent/tdesign-miniprogram/pull/4185))
+- `Picker`: 修复 `popupProps.showOverlay` 无效 @anlyyao ([#4203](https://github.com/Tencent/tdesign-miniprogram/pull/4203))
+- `Popover`: 修复控制台告警问题 @Wesley-0808 ([#4169](https://github.com/Tencent/tdesign-miniprogram/pull/4169))
+- `Upload`: 修复拖拽结束后拖拽元素 `zIndex` 异常 @anlyyao ([#4199](https://github.com/Tencent/tdesign-miniprogram/pull/4199))
+
 ## 🌈 1.12.1 `2025-12-31`
 
 ### 🚀 Features

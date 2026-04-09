@@ -107,7 +107,10 @@ default-value | String / Number / Array | undefined | 选中值。非受控属�
 -- | -- | --
 change | `(value: DropdownValue)` | 值改变时触发
 close | \- | 关闭时触发
+closed | \- | 关闭且动画结束后触发
 confirm | `(value: DropdownValue)` | 点击确认时触发
+open | \- | 打开时触发
+opened | \- | 打开且动画结束后触发
 reset | \- | 点击重置时触发
 
 ### DropdownItem Slots

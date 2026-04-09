@@ -1,6 +1,6 @@
 <template>
   <view class="skyline">
-    <t-navbar
+    <t-demo-navbar
       title="Cell"
       left-arrow
     />
@@ -20,16 +20,16 @@
           title="01 组件类型"
           desc="单行单元格"
         >
-          <baseDemo />
+          <base-demo />
         </t-demo>
         <t-demo desc="多行单元格">
-          <multiple />
+          <multiple-demo />
         </t-demo>
         <t-demo
           title="02 组件样式"
           desc="卡片单元格"
         >
-          <theme />
+          <theme-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -38,16 +38,15 @@
 
 <script>
 
-import tNavbar from 'tdesign-uniapp/navbar/navbar.vue';
-import baseDemo from '../base/index.vue';
-import multiple from '../multiple/index.vue';
-import theme from '../theme/index.vue';
+import BaseDemo from '../base/index.vue';
+import MultipleDemo from '../multiple/index.vue';
+import ThemeDemo from '../theme/index.vue';
+
 export default {
   components: {
-    tNavbar,
-    baseDemo,
-    multiple,
-    theme,
+    BaseDemo,
+    MultipleDemo,
+    ThemeDemo,
   },
   data() {
     return {};

@@ -13,7 +13,7 @@ input-width | Number | - | \- | N
 integer | Boolean | true | \- | N
 max | Number | 100 | \- | N
 min | Number | 0 | \- | N
-size | String | medium | options: small/medium/large。Typescript：`SizeEnum`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/common/common.ts) | N
+size | String | medium | options: small/medium/large。Typescript：`SizeEnum`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts) | N
 step | Number | 1 | \- | N
 theme | String | normal | stylish。options: normal/filled/outline | N
 value | String / Number | 0 | `v-model:value` is supported | N
@@ -42,8 +42,8 @@ t-class-plus | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-stepper-input-disabled-bg | @bg-color-component-disabled | - 
---td-stepper-input-disabled-color | @text-color-disabled | - 
---td-stepper-border-color | @component-border | - 
---td-stepper-border-radius | @radius-small | - 
+--td-stepper-input-disabled-bg | @bg-color-component-disabled | -
+--td-stepper-input-disabled-color | @text-color-disabled | -
+--td-stepper-border-color | @component-border | -
+--td-stepper-border-radius | @radius-small | -
 --td-stepper-input-color | @text-color-primary | -

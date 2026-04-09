@@ -16,6 +16,11 @@ export interface TdTabBarProps {
    */
   fixed?: boolean;
   /**
+   * 固定在底部时是否开启占位
+   * @default false
+   */
+  placeholder?: boolean;
+  /**
    * 是否开启底部安全区适配
    * @default true
    */
@@ -44,7 +49,8 @@ export interface TdTabBarProps {
    */
   defaultValue?: string | number | Array<string | number>;
   /**
-   * 选中标签切换时触发
+   * 标签栏层级
+   * @default 1
    */
-  onChange?: (context: { value: string | number }) => void;
+  zIndex?: number;
 }

@@ -25,10 +25,10 @@
 </template>
 
 <script>
-import tRate from 'tdesign-uniapp/rate/rate.vue';
+import TRate from '@tdesign/uniapp/rate/rate.vue';
 export default {
   components: {
-    tRate,
+    TRate,
   },
   data() {
     return {
@@ -40,6 +40,9 @@ export default {
     onChange(e, { index }) {
       const { value } = e;
       this.value[index] = value;
+      // #ifdef VUE2
+      this.$set(this.value, index, value);
+      // #endif
     },
   },
 };

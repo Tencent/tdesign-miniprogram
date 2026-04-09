@@ -79,7 +79,7 @@ export const docs = [
         path: '/uniapp-chat',
         redirect: () => {
           const isTDesignHost = window.location.host.includes('tdesign');
-          const baseUrl = isTDesignHost ? `//${window.location.host}` : 'https://uwayfly.com';
+          const baseUrl = isTDesignHost ? `//${window.location.host}` : 'https://tdesign.tencent.com';
           window.open(`${baseUrl}/uniapp-chat`, '_blank');
         },
       },
@@ -619,10 +619,10 @@ export const docs = [
   },
 ];
 
-const enDocs = docs.map(doc => ({
+const enDocs = docs.map((doc) => ({
   ...doc,
   title: doc.titleEn,
-  children: doc?.children?.map(child => ({
+  children: doc?.children?.map((child) => ({
     title: child.titleEn,
     name: `${child.name}-en`,
     path: `${child.path}-en`,

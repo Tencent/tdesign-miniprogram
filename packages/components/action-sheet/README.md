@@ -100,7 +100,7 @@ align | String | center | `0.29.0`。水平对齐方式。可选项：center/lef
 cancel-text | String | - | 设置取消按钮的文本 | N
 count | Number | 8 | 设置每页展示菜单的数量，仅当 type=grid 时有效 | N
 description | String | - | `0.29.0`。动作面板描述文字 | N
-items | Array | - | 必需。菜单项。TS 类型：`Array<string \| ActionSheetItem>` `interface ActionSheetItem { label: string; description?: string; color?: string; disabled?: boolean; icon?: string; suffixIcon?: string }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/action-sheet/type.ts) | Y
+items | Array | - | 必需。菜单项。TS 类型：`Array<string \| ActionSheetItem>` `interface ActionSheetItem { label: string; description?: string; color?: string; disabled?: boolean; icon?: string \| object; suffixIcon?: string \| object }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/action-sheet/type.ts) | Y
 popup-props | Object | {} | 透传 Popup 组件全部属性。TS 类型：`PopupProps`，[Popup API Documents](./popup?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/action-sheet/type.ts) | N
 show-cancel | Boolean | true | 是否显示取消按钮 | N
 show-overlay | Boolean | true | 是否显示遮罩层 | N

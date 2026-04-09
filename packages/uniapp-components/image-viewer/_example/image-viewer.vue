@@ -1,14 +1,9 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
-      class="demo-navbar"
+    <t-demo-navbar
+      custom-class="demo-navbar"
       title="ImageViewer"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="ImageViewer 图片预览"
@@ -20,14 +15,14 @@
         description="基础图片预览"
         padding
       >
-        <BaseComp />
+        <base-comp />
       </t-demo>
 
       <t-demo
         title="带操作图片预览"
         padding
       >
-        <DeleteDemo />
+        <delete-demo />
       </t-demo>
     </view>
   </view>

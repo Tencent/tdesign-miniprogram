@@ -1,14 +1,16 @@
 const path = require('path');
 const fs = require('fs');
 const glob = require('glob');
-const { config } = require('./config');
-const { copy } = require('./core');
 const { deleteFolder } = require('t-comm');
+
+const { config } = require('./config');
+const { copyComponents, checkVue2CliExist, checkVue3HxExist } = require('./helper');
 
 
 async function copyOneProject({
   globMode,
   sourceDir,
+  isChat,
 }) {
   const list = glob.sync(globMode, {
     ignore: '**/node_modules/**/*',
@@ -17,50 +19,80 @@ async function copyOneProject({
 
   for (const item of list) {
     const relativePath = path.relative(sourceDir, item);
-    await copy({
+    await copyComponents({
       relativePath,
       filePath: item,
-      config,
+      isChat,
     });
   }
 
   console.log(`[Wrote] done! Length is ${list.length}!`);
 }
 
+function clearTargetDir() {
+  deleteFolder(config.componentTargetDirInVue3Cli);
+  deleteFolder(config.componentTargetDirInApp);
+
+  deleteFolder(config.pagesMoreDirInVue3Cli);
+  deleteFolder(config.pagesMoreDirInApp);
+
+  if (checkVue2CliExist()) {
+    deleteFolder(config.componentTargetDirInVue2Cli);
+    deleteFolder(config.pagesMoreDirInVue2Cli);
+  }
+
+  if (checkVue3HxExist()) {
+    deleteFolder(config.componentTargetDirInVue3Hx);
+    deleteFolder(config.pagesMoreDirInVue3Hx);
+  }
+}
+
 
 async function main() {
-  deleteFolder(config.targetDir);
-  deleteFolder(config.rawTargetDir);
-  deleteFolder(config.rawTargetDirInApp);
-  deleteFolder(config.demoDir);
+  await clearTargetDir();
 
-  deleteFolder(config.appComponentsDir);
-  deleteFolder(config.appPagesMoreDir);
-  deleteFolder(config.appPagesDir);
+  await copyInfra({
+    infraDir: config.infraDirInApp,
+  });
+
+  if (checkVue2CliExist()) {
+    await copyInfra({
+      infraDir: config.infraDirInVue2Cli,
+    });
+  }
+
+  if (checkVue3HxExist()) {
+    await copyInfra({
+      infraDir: config.infraDirInVue3Hx,
+    });
+  }
 
   await copyOneProject({
     globMode: config.sourceGlob,
     sourceDir: config.sourceDir,
+    isChat: false,
   });
+
   await copyOneProject({
     globMode: config.chatSourceGlob,
     sourceDir: config.chatSourceDir,
+    isChat: true,
   });
-
-  await copyDemoPagesToApp();
 }
 
 
-async function copyDemoPagesToApp() {
-  const list = glob.sync([config.demoPagesGlob, config.demoComponentsGlob], {
+async function copyInfra({
+  infraDir,
+}) {
+  const list = glob.sync([config.demoPagesGlob], {
     ignore: '**/node_modules/**/*',
     nodir: true,
   });
 
   for (const item of list) {
-    const relativePath = path.relative(path.resolve(config.demoRealDir, 'src'), item);
+    const relativePath = path.relative(path.resolve(config.vue3CliRoot, 'src'), item);
 
-    const targetPath = path.resolve(config.appDir, relativePath);
+    const targetPath = path.resolve(infraDir, relativePath);
 
     fs.mkdirSync(path.dirname(targetPath), { recursive: true });
     fs.copyFileSync(item, targetPath);
@@ -68,5 +100,6 @@ async function copyDemoPagesToApp() {
 
   console.log(`[Wrote] done! Length of App Files is ${list.length}!`);
 }
+
 
 main();

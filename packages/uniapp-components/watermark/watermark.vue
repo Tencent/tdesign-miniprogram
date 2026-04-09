@@ -190,6 +190,10 @@ export default uniComponent({
 });
 </script>
 
+<style scoped src="./watermark.css"></style>
 <style scoped>
-@import './watermark.css';
+/* diff with td-mini */
+.watermark-move {
+  animation: watermark var(--watermark-animation-duration, 100s) linear infinite;
+}
 </style>

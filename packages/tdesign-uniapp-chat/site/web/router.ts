@@ -1,8 +1,4 @@
-import {
-  type RouteRecordRaw,
-  createRouter,
-  createWebHistory,
-  type RouterOptions } from 'vue-router';
+import { type RouteRecordRaw, createRouter, createWebHistory, type RouterOptions } from 'vue-router';
 import * as config from '../docs.config';
 import { sortDocs } from './utils';
 
@@ -31,11 +27,11 @@ function getDocsRoutes(docs: any[], type: string): RouteRecordRaw[] {
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    redirect: '/tdesign-uniapp-chat/getting-started',
+    redirect: '/uniapp-chat/getting-started',
   },
   {
     path: '/:catchAll(.*)',
-    redirect: '/tdesign-uniapp-chat/getting-started',
+    redirect: '/uniapp-chat/getting-started',
   },
   ...getDocsRoutes(docs, 'document'),
   ...getDocsRoutes(docs, 'component'),

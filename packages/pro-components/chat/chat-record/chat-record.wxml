@@ -1,133 +1,108 @@
+<wxs src="./chat-record.wxs" module="utils" />
+
 <view class="{{classPrefix}}">
-  <!-- hook：授权时按住说话 / 未授权引导授权 -->
   <view
     wx:if="{{recordAuthStatus}}"
     class="{{classPrefix}}-hook"
-    catchtouchstart="startRecord"
-    catchtouchend="stopRecord"
-    catchtouchmove="touchmove"
+    bindtouchstart="startRecord"
+    bindtouchend="stopRecord"
+    bindtouchmove="touchmove"
     catchtouchcancel="touchcancel"
   >
-    <slot name="speechInput">
-      <view>按住 说话</view>
-    </slot>
+    <slot wx:if="{{useSpeechInputSlot}}" name="speechInput"></slot>
+    <view wx:else> 按住 说话 </view>
   </view>
-
-  <button
-    wx:else
-    class="{{classPrefix}}-hook {{classPrefix}}-hook--no-auth"
-    bindtap="requestRecordAuth"
-  >
-    <slot name="speechNoAuth">
-      <view>请授权麦克风权限</view>
-    </slot>
-  </button>
-
-  <!-- 遮罩 + 录音面板 -->
-  <view class="cover-ng-bar {{classPrefix}}-audio-input {{showMask ? 'show' : ''}}">
-    <!-- mask -->
-    <view class="{{classPrefix}}-audio-input__mask" bindtap="handleCancelSend" />
-
-<view class="{{classPrefix}}-audio-input__main">
-      <!-- 气泡/动画区 -->
-      <view
-        wx:if="{{processStatus === 'recording' || processStatus === 'confirm'}}"
-        class="{{classPrefix}}-audio-input-ani fade-in"
-        style="margin-bottom: {{bottomHeight > 0 ? bottomHeight + 20 : 268}}rpx;"
-      >
-        <view class="bubble-container {{bubbleStatusClass}}">
-          <!-- 录音中：音量条 -->
-          <view wx:if="{{processStatus === 'recording' && interactStatus === 'normal'}}" class="audio-wave">
-            <block wx:for="{{waveList}}" wx:key="*this">
-              <view class="wave-item" />
-            </block>
-          </view>
-
-          <!-- 取消/错误：红色气泡图标 -->
-          <view wx:elif="{{interactStatus === 'release_cancel' || processStatus === 'error'}}" class="cancel-icon" />
-          <view wx:if="{{processStatus === 'error'}}" class="cancel-text">未识别到语音</view>
-
-          <!-- 转文字/确认：可编辑文本 -->
-          <view
-            wx:elif="{{interactStatus === 'release_convert' || processStatus === 'confirm'}}"
-            class="convert-content"
-          >
-          <textarea
-            class="editable-textarea"
-            style="max-height: {{bottomHeight === 0 ? '522rpx' : '112rpx'}}"
-            value="{{translateResult}}"
-            maxlength="-1"
-            bindinput="onTranslateInput"
-            bindfocus="focusTextarea"
-            bindblur="blurTextarea"
-          />
-            <view wx:if="{{interactStatus === 'release_convert'}}" class="convert-dots" />
-          </view>
+  <view wx:else class="{{classPrefix}}-hook" bindtap="openVoiceSetting">
+    <slot wx:if="{{useSpeechNoAuthSlot}}" name="speechNoAuth"></slot>
+    <view wx:else> 请授权麦克风权限 </view>
+  </view>
+  <view class="cover-ng-bar {{classPrefix}}-audio-input {{status}} {{showMask ? 'show' : ''}}">
+    <view class="{{classPrefix}}-audio-input__mask"></view>
+    <view class="{{classPrefix}}-audio-input__main">
+      <!-- 动画图标 -->
+      <view class="{{classPrefix}}-audio-input-ani">
+        <view class="ani-cir diff-start">
+          <view class="ani-cir-1"></view>
+          <view class="ani-cir-2"></view>
+          <view class="ani-cir-3"></view>
+          <view class="ani-cir-4"></view>
+        </view>
+        <view class="ani-wrap">
+          <view class="ani-inner"></view>
+          <view class="ani-mask"></view>
+          <view class="ani-main {{status === 'recording' ? 'ani-start' : 'ani-end'}}"></view>
         </view>
       </view>
 
-      <!-- 底部区域 -->
-      <view
-        wx:if="{{processStatus === 'recording' || processStatus === 'confirm'}}"
-        class="{{classPrefix}}-audio-input__ft {{processStatus}} {{interactStatus}} fade-in"
-        style="bottom: {{bottomHeight}}rpx;"
-      >
-        <view class="tips-text">
-          <block wx:if="{{processStatus === 'recording'}}">
-            <text wx:if="{{interactStatus !== 'normal'}}">Audio</text>
-            <text wx:else>Release to send</text>
-          </block>
-          <block wx:elif="{{processStatus === 'processing'}}">Processing...</block>
-        </view>
-
-        <!-- 确认按钮区（Send/Cancel） -->
+      <!-- 内容区域 -->
+      <view class="{{classPrefix}}-audio-input__con {{status === 'cancel' ? 'disabled' : ''}}">
         <view
-          wx:if="{{processStatus === 'confirm' || processStatus === 'error'}}"
-          class="confirm-actions {{processStatus === 'error' ? 'is-error' : ''}}"
+          wx:if="{{status !== 'recording' && !translateSuccess && touchStatus !== 'top'}}"
+          class="{{classPrefix}}-audio-input__con__inner"
         >
-          <view
-            class="action-btn btn-cancel {{activeBtnCancel ? 'active' : ''}} {{processStatus === 'error' ? 'disabled' : ''}}"
-            bindtap="handleCancelSend"
-          >
-            <view class="icon-wrapper">
-              <text class="rollback-icon">↩</text>
-            </view>
-            <text class="btn-text">Cancel</text>
-          </view>
-          <view
-            class="action-btn btn-send {{activeBtnSend ? 'active' : ''}} {{processStatus === 'error' ? 'disabled' : ''}}"
-            bindtap="handleSendVoiceMsg"
-          >
-            <text class="send-btn-text">Send</text>
-          </view>
+          {{status === 'unknow' ? '不好意思，未能识别您的语音' : '我在听，请说话'}}
+        </view>
+        <textarea
+          wx:else
+          class="{{classPrefix}}-audio-input__con__ta {{bottomHeight === 0 ? 'txt-limit-9' : 'txt-limit-5'}}"
+          maxlength="-1"
+          auto-height="{{true}}"
+          value="{{translateResult}}"
+          bindfocus="focusTextarea"
+          bindblur="blurTextarea"
+        ></textarea>
+      </view>
+
+      <!-- 底部区域 -->
+      <view class="{{classPrefix}}-audio-input__ft">
+        <view wx:if="{{status === 'cancel'}}" class="{{classPrefix}}-audio-input__ft__tips"> 松开手指 即可取消 </view>
+        <view wx:elif="{{status === 'unknow'}}" class="{{classPrefix}}-audio-input__ft__tips">
+          点击下方重新开始说话
+        </view>
+        <view wx:elif="{{status === 'normal'}}" class="{{classPrefix}}-audio-input__ft__tips"> 松手完成 上滑取消 </view>
+
+        <view wx:if="{{showRecordCountDown}}" class="{{classPrefix}}-audio-input__ft__tips__inner">
+          {{recordCountDown}}秒后停止语音输入
         </view>
 
-        <!-- 录音阶段底部按钮提示（Cancel/Convert） -->
-        <block wx:if="{{processStatus === 'recording' || processStatus === 'processing'}}">
-          <view class="{{classPrefix}}-audio-input__ft__bg" />
+        <!-- 加载动画 -->
+        <view class="audio-loading-icon">
+          <view class="audio-loading-dot dot-1"></view>
+          <view class="audio-loading-dot dot-1"></view>
+          <view class="audio-loading-dot dot-2"></view>
+          <view class="audio-loading-dot dot-2"></view>
+          <view class="audio-loading-dot dot-3"></view>
+          <view class="audio-loading-dot dot-2"></view>
+          <view class="audio-loading-dot dot-3"></view>
+          <view class="audio-loading-dot dot-2"></view>
+          <view class="audio-loading-dot dot-1"></view>
+          <view class="audio-loading-dot dot-1"></view>
+          <view class="audio-loading-dot dot-1"></view>
+        </view>
 
-          <view
-            class="shape-btn left-btn {{(interactStatus === 'release_cancel' || processStatus === 'error') ? 'active' : ''}}"
-          >
-            <view wx:if="{{interactStatus === 'release_cancel' || processStatus === 'error'}}" class="btn-hint">
-              <text class="word word-1">Release</text>
-              <text class="word word-2">to cancel</text>
-            </view>
-            <view class="btn-label"><text class="word">Cancel</text></view>
-          </view>
+        <!-- 操作按钮 -->
+        <view class="speak-close-btn" bindtap="handleCancelSend">
+          <view class="close-icon"></view>
+        </view>
+        <view
+          class="speak-btn"
+          bindtouchstart="startRecord"
+          bindtouchend="stopRecord"
+          bindtouchmove="touchmove"
+          catchtouchcancel="touchcancel"
+        >
+          <view class="speak-icon"></view>
+          <view class="tips-txt"> 按住说话 </view>
+        </view>
 
-          <view class="shape-btn right-btn {{interactStatus === 'release_convert' ? 'active' : ''}}">
-            <view wx:if="{{interactStatus === 'release_convert'}}" class="btn-hint">
-              <text class="word word-1">Release</text>
-              <text class="word word-2">to edit</text>
-              <text class="word word-3">text</text>
-            </view>
-            <view class="btn-label">
-              <text class="word word-1">Convert</text>
-              <text class="word word-2">to Text</text>
-            </view>
+        <!-- 发送控制 -->
+        <view class="keyboard-cover {{classPrefix}}-audio-input__ft__ct" style="margin-bottom: {{bottomHeight}}px;">
+          <view class="{{classPrefix}}-audio-input__ft__btn btn-close" bindtap="handleCancelSend">
+            <view class="close-icon"></view>
           </view>
-        </block>
+          <view class="{{classPrefix}}-audio-input__ft__btn btn-send" bindtap="handleSendVoiceMsg"> 发送 </view>
+        </view>
+        <view class="{{classPrefix}}-audio-input__ft__bg"></view>
       </view>
     </view>
   </view>

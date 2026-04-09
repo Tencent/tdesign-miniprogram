@@ -1,13 +1,8 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="TabBar"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="TabBar 标签栏"
@@ -21,7 +16,7 @@
       </t-demo>
 
       <t-demo desc="图标加文本标签栏">
-        <BaseDemo />
+        <base-demo />
       </t-demo>
 
       <t-demo desc="纯图标标签栏">
@@ -29,25 +24,25 @@
       </t-demo>
 
       <t-demo desc="双层级文本标签栏">
-        <subDemo />
+        <sub-demo />
       </t-demo>
 
       <t-demo
         title="02 组件样式"
         desc="弱选中标签栏"
       >
-        <badge />
+        <badge-demo />
       </t-demo>
 
       <t-demo desc="悬浮胶囊标签栏">
-        <round />
+        <round-demo />
       </t-demo>
 
       <t-demo
         title="03 自定义"
         desc="自定义样式"
       >
-        <custom />
+        <custom-demo />
       </t-demo>
     </view>
   </view>
@@ -55,22 +50,22 @@
 
 <script>
 
-import textOnly from './text-only/index.vue';
-import iconOnly from './icon-only/index.vue';
+import TextOnly from './text-only/index.vue';
+import IconOnly from './icon-only/index.vue';
 import BaseDemo from './base/index.vue';
-import subDemo from './sub/index.vue';
-import badge from './badge/index.vue';
-import round from './round/index.vue';
-import custom from './custom/index.vue';
+import SubDemo from './sub/index.vue';
+import BadgeDemo from './badge/index.vue';
+import RoundDemo from './round/index.vue';
+import CustomDemo from './custom/index.vue';
 export default {
   components: {
-    textOnly,
-    iconOnly,
+    TextOnly,
+    IconOnly,
     BaseDemo,
-    subDemo,
-    badge,
-    round,
-    custom,
+    SubDemo,
+    BadgeDemo,
+    RoundDemo,
+    CustomDemo,
   },
   data() {
     return {

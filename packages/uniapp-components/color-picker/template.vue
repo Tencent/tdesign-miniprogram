@@ -193,6 +193,4 @@ export default {
 };
 </script>
 
-<style scoped>
-@import './color-picker.css';
-</style>
+<style scoped src="./color-picker.css"></style>

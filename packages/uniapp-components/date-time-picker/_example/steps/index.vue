@@ -10,12 +10,13 @@
     />
 
     <t-date-time-picker
-      v-model:visible="visible"
+      :visible="visible"
       title="选择时间"
       :value="value"
       format="HH:mm:ss"
       :mode="['null', 'second']"
       :steps="{ minute: 5 }"
+      @update:visible="visible = $event"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"
@@ -24,12 +25,12 @@
 </template>
 
 <script>
-import tCell from 'tdesign-uniapp/cell/cell.vue';
-import tDateTimePicker from 'tdesign-uniapp/date-time-picker/date-time-picker.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TDateTimePicker from '@tdesign/uniapp/date-time-picker/date-time-picker.vue';
 export default {
   components: {
-    tCell,
-    tDateTimePicker,
+    TCell,
+    TDateTimePicker,
   },
   data() {
     return {

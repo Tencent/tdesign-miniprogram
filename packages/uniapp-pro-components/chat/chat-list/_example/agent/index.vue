@@ -4,24 +4,26 @@
       class="chat-box"
       :style="'height: ' + contentHeightClone + ';'"
     >
-      <TChatList>
+      <t-chat-list>
         <block
           v-for="(item, chatIndex) in chatList"
           :key="item.key"
         >
-          <TChatMessage
+          <t-chat-message
+            :chat-id="item.key"
             :avatar="item.avatar || ''"
             :name="item.name || ''"
             :datetime="item.datetime || ''"
             :role="item.message.role"
             :placement="item.message.role === 'user' ? 'right' : 'left'"
+            @message-longpress="showPopover"
           >
             <template #content>
               <block
                 v-for="(contentItem, contentIndex) in item.message.content"
                 :key="contentIndex"
               >
-                <TChatContent
+                <t-chat-content
                   v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                   :content="contentItem"
                   :role="item.message.role"
@@ -31,25 +33,23 @@
                   v-if="contentItem.type === 'agent'"
                   class="step"
                 >
-                  <TSteps
+                  <t-steps
                     layout="vertical"
                     :current="contentItem.content.steps.length"
                   >
-                    <TStepItem
+                    <t-step-item
                       v-for="(item, index) in contentItem.content.steps"
                       :key="index"
                       :title="item.step"
                     >
                       <template #content>
-                        <view
-                          class="step-text-list"
-                        >
+                        <view class="step-text-list">
                           <view
                             v-for="(taskItem, index1) in item.tasks"
                             :key="index1"
                             :class="'step-text ' + taskItem.type"
                           >
-                            <TIcon
+                            <t-icon
                               v-if="taskItem.type === 'command'"
                               name="control-platform"
                               size="32rpx"
@@ -60,22 +60,26 @@
                           </view>
                         </view>
                       </template>
-                    </TStepItem>
-                  </TSteps>
+                    </t-step-item>
+                  </t-steps>
                 </view>
               </block>
             </template>
             <template #actionbar>
-              <TChatActionbar
-                v-if="chatIndex !== chatList.length - 1 && item.message.status === 'complete' && item.message.role === 'assistant'"
+              <t-chat-actionbar
+                v-if="
+                  chatIndex !== chatList.length - 1 &&
+                    item.message.status === 'complete' &&
+                    item.message.role === 'assistant'
+                "
                 placement="end"
                 @actions="handleAction"
               />
             </template>
-          </TChatMessage>
+          </t-chat-message>
         </block>
         <template #footer>
-          <TChatSender
+          <t-chat-sender
             :value="value"
             :loading="loading"
             :disabled="disabled"
@@ -86,23 +90,31 @@
             @focus="onFocus"
           />
         </template>
-      </TChatList>
+      </t-chat-list>
+      <!-- 长按弹出操作栏 -->
+      <t-chat-actionbar
+        ref="popoverActionbar"
+        class="popover-actionbar"
+        placement="longpress"
+        :long-press-position="longPressPosition"
+        @actions="handlePopoverAction"
+      />
     </view>
-    <TToast ref="t-toast" />
+    <t-toast ref="t-toast" />
   </view>
 </template>
 
 <script>
-import TChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
-import TChatContent from 'tdesign-uniapp-chat/chat-content/chat-content.vue';
-import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
-import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
-import TSteps from 'tdesign-uniapp/steps/steps.vue';
-import TStepItem from 'tdesign-uniapp/step-item/step-item.vue';
-import TIcon from 'tdesign-uniapp/icon/icon.vue';
-import TToast from 'tdesign-uniapp/toast/toast.vue';
-import Toast from 'tdesign-uniapp/toast';
+import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
+import TChatContent from '@tdesign/uniapp-chat/chat-content/chat-content.vue';
+import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
+import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
+import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import TSteps from '@tdesign/uniapp/steps/steps.vue';
+import TStepItem from '@tdesign/uniapp/step-item/step-item.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
+import Toast from '@tdesign/uniapp/toast/index';
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;
@@ -197,6 +209,8 @@ export default {
       },
 
       contentHeightClone: '',
+      activePopoverId: '', // 当前打开悬浮actionbar的chatId
+      longPressPosition: null, // 长按位置对象
     };
   },
   options: {
@@ -205,7 +219,7 @@ export default {
   watch: {
     isActive: {
       handler(v) {
-        this.value = v ? '请帮我做一个5岁儿童生日聚会的规划' : '';// 输入框的值
+        this.value = v ? '请帮我做一个5岁儿童生日聚会的规划' : ''; // 输入框的值
       },
 
       immediate: true,
@@ -420,15 +434,18 @@ export default {
           type: 'result',
           text: '',
         });
-        await fetchStream('推荐现场布置方案：餐具（一次性纸盘、刀叉套装）、杯子、纸巾、一次性桌布，装饰气球、横幅、礼帽等', {
-          success(result) {
-            if (!that.loading) {
-              return;
-            }
-            that.chatList[0].message.content[1].content.steps[1].tasks[1].text += result;
+        await fetchStream(
+          '推荐现场布置方案：餐具（一次性纸盘、刀叉套装）、杯子、纸巾、一次性桌布，装饰气球、横幅、礼帽等',
+          {
+            success(result) {
+              if (!that.loading) {
+                return;
+              }
+              that.chatList[0].message.content[1].content.steps[1].tasks[1].text += result;
+            },
+            complete() {},
           },
-          complete() {},
-        });
+        );
         if (!that.loading) {
           return;
         }
@@ -475,15 +492,18 @@ export default {
           type: 'result',
           text: '',
         });
-        await fetchStream('派对总时长建议控制在1.5小时，符合5岁儿童注意力持续时间，每位小朋友到达时可以在拍照区留影，可设置一个签到', {
-          success(result) {
-            if (!that.loading) {
-              return;
-            }
-            that.chatList[0].message.content[1].content.steps[2].tasks[2].text += result;
+        await fetchStream(
+          '派对总时长建议控制在1.5小时，符合5岁儿童注意力持续时间，每位小朋友到达时可以在拍照区留影，可设置一个签到',
+          {
+            success(result) {
+              if (!that.loading) {
+                return;
+              }
+              that.chatList[0].message.content[1].content.steps[2].tasks[2].text += result;
+            },
+            complete() {},
           },
-          complete() {},
-        });
+        );
         that.chatList[0].message.status = 'complete';
         that.loading = false;
       });
@@ -519,83 +539,109 @@ export default {
         theme: 'success',
       });
     },
+
+    // 显示长按弹出操作栏
+    showPopover(e) {
+      const { id, longPressPosition } = e;
+
+      let role = '';
+      this.chatList.forEach((item) => {
+        if (item.key === id) {
+          role = item.message.role;
+        }
+      });
+
+      // 仅当 role 为 user 时才显示 popover
+      if (role !== 'user') {
+        return;
+      }
+
+      this.activePopoverId = id;
+      this.longPressPosition = longPressPosition;
+    },
+
+    // 处理弹出操作栏的事件
+    handlePopoverAction(e) {
+      e.chatId = this.activePopoverId;
+      this.handleAction(e);
+    },
   },
 };
 </script>
 <style>
 .chat-box {
-    padding-top: 32rpx;
-    box-sizing: border-box;
+  padding-top: 32rpx;
+  box-sizing: border-box;
 }
 
 .t-chat__list {
-    padding: 0 0 0 32rpx;
-    box-sizing: border-box;
+  padding: 0 0 0 32rpx;
+  box-sizing: border-box;
 }
 .t-chat-message {
-    padding: 0 32rpx;
+  padding: 0 32rpx;
 }
 
 .preview {
-    padding: 16rpx;
-    display: flex;
-    justify-content: space-between;
-    border: 1px solid var(--td-component-border);
+  padding: 16rpx;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid var(--td-component-border);
 }
 
 .step {
-    padding-top: 24rpx;
+  padding-top: 24rpx;
 }
 
 .step-text-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
 }
 
 .step-text {
-    text-align: start;
+  text-align: start;
 }
 
 .step-text.command {
-    padding: 16rpx;
-    border-radius: 16rpx;
-    background-color: var(--td-bg-color-secondarycontainer);
-    display: flex;
-    font-size: 28rpx;
-    line-height: 44rpx;
-    color: var(--td-text-color-secondary);
+  padding: 16rpx;
+  border-radius: 16rpx;
+  background-color: var(--td-bg-color-secondarycontainer);
+  display: flex;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: var(--td-text-color-secondary);
 }
 
 .step-text.result {
-    font-size: 28rpx;
-    line-height: 44rpx;
-    color: var(--td-text-color-primary);
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: var(--td-text-color-primary);
 }
 
 .chat-box :deep(.step-icon) {
-    margin-right: 12rpx;
-    margin-top: 6rpx;
+  margin-right: 12rpx;
+  margin-top: 6rpx;
 }
 
 .chat-box :deep(.t-steps-item__circle--finish) {
-    background-color: transparent;
-    color: var(--td-text-color-primary);
-    border: 1px solid var(--td-text-color-primary);
-    width: 16px;
-    height: 16px;
+  background-color: transparent;
+  color: var(--td-text-color-primary);
+  border: 1px solid var(--td-text-color-primary);
+  width: 16px;
+  height: 16px;
 }
 
 .chat-box :deep(.t-steps-item__circle--finish) .t-icon {
-    font-size: 12px;
+  font-size: 12px;
 }
 
 .chat-box :deep(.t-steps-item__line--finish) {
-    background-color: var(--td-component-border);
+  background-color: var(--td-component-border);
 }
 
 .chat-box :deep(.t-steps-item__title--finish) {
-    color: var(--td-text-color-primary);
-    font-weight: 600;
+  color: var(--td-text-color-primary);
+  font-weight: 600;
 }
 </style>

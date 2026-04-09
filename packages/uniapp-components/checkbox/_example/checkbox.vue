@@ -1,13 +1,8 @@
 <template>
   <view class="skyline">
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="Checkbox"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <scroll-view
       scroll-y
       type="list"
@@ -23,44 +18,44 @@
           title="01 组件类型"
           desc="纵向多选框"
         >
-          <BaseDemo />
+          <base-demo />
         </t-demo>
 
         <t-demo desc="横向多选框">
-          <HorizontalDemo />
+          <horizontal-demo />
         </t-demo>
 
         <t-demo desc="带全选多选框">
-          <all />
+          <all-demo />
         </t-demo>
 
         <t-demo
           title="02 组件状态"
           desc="多选框状态"
         >
-          <status />
+          <status-demo />
         </t-demo>
 
         <t-demo
           title="03 组件样式"
           desc="勾选样式"
         >
-          <typeDemo />
+          <type-demo />
         </t-demo>
 
         <t-demo desc="勾选显示位置">
-          <right />
+          <right-demo />
         </t-demo>
 
         <t-demo desc="非通栏多选样式">
-          <card />
+          <card-demo />
         </t-demo>
 
         <t-demo
           title="04 组件规格"
           desc="多选框尺寸规格"
         >
-          <special />
+          <special-demo />
         </t-demo>
       </view>
     </scroll-view>
@@ -71,22 +66,22 @@
 
 import BaseDemo from './base/index.vue';
 import HorizontalDemo from './horizontal/index.vue';
-import all from './all/index.vue';
-import status from './status/index.vue';
-import typeDemo from './type/index.vue';
-import right from './right/index.vue';
-import card from './card/index.vue';
-import special from './special/index.vue';
+import AllDemo from './all/index.vue';
+import StatusDemo from './status/index.vue';
+import TypeDemo from './type/index.vue';
+import RightDemo from './right/index.vue';
+import CardDemo from './card/index.vue';
+import SpecialDemo from './special/index.vue';
 export default {
   components: {
     BaseDemo,
     HorizontalDemo,
-    all,
-    status,
-    typeDemo,
-    right,
-    card,
-    special,
+    AllDemo,
+    StatusDemo,
+    TypeDemo,
+    RightDemo,
+    CardDemo,
+    SpecialDemo,
   },
   data() {
     return {};

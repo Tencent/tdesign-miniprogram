@@ -6,9 +6,8 @@
 @cascader-active-color: var(--td-cascader-active-color, @brand-color);
 @cascader-disabled-color: var(--td-cascader-disabled-color, @text-color-disabled);
 @cascader-title-color: var(--td-cascader-title-color, @text-color-primary);
-@cascader-title-height: var(--td-cascader-title-height, 26rpx);
 @cascader-title-padding: var(--td-cascader-title-padding, @spacer-2);
-@cascader-title-font-size: var(--td-cascader-title-font-size, 36rpx);
+@cascader-title-font: var(--td-cascader-title-font, @font-title-large);
 @cascader-options-title-color: var(--td-cascader-options-title-color, @text-color-placeholder);
 @cascader-border-color: var(--td-cascader-border-color, @component-stroke);
 @cascader-content-height: var(--td-cascader-content-height, 78vh);
@@ -29,18 +28,16 @@
   --td-tab-track-color: @cascader-active-color;
 
   &__close-btn {
-    right: 32rpx;
-    top: 24rpx;
+    right: @spacer-2;
+    top: @spacer-2;
     position: absolute;
   }
 
   &__title {
     position: relative;
-    font-weight: 700;
+    font: @cascader-title-font;
     text-align: center;
-    line-height: @cascader-title-height;
     padding: @cascader-title-padding;
-    font-size: @cascader-title-font-size;
   }
 
   &__content {
@@ -55,8 +52,7 @@
 
     &-title {
       color: @cascader-options-title-color;
-      font-size: @font-size-base;
-      line-height: 44rpx;
+      font: @font-body-medium;
       padding-top: 40rpx;
       padding-left: @spacer-2;
       box-sizing: border-box;
@@ -107,7 +103,7 @@
 
     &-label {
       padding-left: @spacer-2;
-      font-size: @font-size-m;
+      font: @font-body-medium;
 
       &--active {
         color: @cascader-active-color;
@@ -115,9 +111,9 @@
       }
     }
 
-    // :deep(&-arrow) {
-    //   color: @cascader-step-arrow-color;
-    //   margin-left: auto;
-    // }
+    &-arrow {
+      color: @cascader-step-arrow-color;
+      margin-left: auto;
+    }
   }
 }

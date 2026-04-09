@@ -2,12 +2,14 @@
   <view>
     <view
       :class="classPrefix"
-      :style="_._style([customStyle, inputStyle])"
+      :style="tools._style([customStyle, inputStyle])"
       @click.stop="handleOutsideClick"
     >
       <view
         :class="classPrefix + '__header'"
-        :style="attachmentsProps && attachmentsProps.items && attachmentsProps.items.length > 0 ? 'margin-top:-8rpx;' : ''"
+        :style="
+          attachmentsProps && attachmentsProps.items && attachmentsProps.items.length > 0 ? 'margin-top:-8rpx;' : ''
+        "
       >
         <block v-if="attachmentsProps && attachmentsProps.items && attachmentsProps.items.length > 0">
           <view :class="classPrefix + '__attachments'">
@@ -28,28 +30,36 @@
 
       <view :class="classPrefix + '__actions'">
         <view :class="classPrefix + '__textarea'">
-          <slot name="input-prefix" />
-          <textarea
-            :class="classPrefix + '__textarea--control'"
-            :style="textareaStyle(textareaProps.autosize)"
-            :disabled="disabled"
-            :auto-height="!!textareaProps.autosize"
-            confirm-type="send"
-            :adjust-position="adjustPosition"
-            :disable-default-padding="false"
-            cursor-spacing="30"
-            maxlength="-1"
-            :value="innerValue"
-            @change="textChange"
-            @focus="focusFn"
-            @blur="blurFn"
-            @click="handlerClick"
-            @input="textChange"
-            @keyboardheightchange="onkeyboardheightchange"
-            @confirm="handleSendClick"
-          />
-          <view :class="classPrefix + '__textarea--placeholder ' + (focusFlag || innerValue ? 'hide' : '')">
-            {{ placeholder }}
+          <view v-if="allowSpeech">
+            <slot name="speech" />
+          </view>
+          <view
+            v-else
+            :class="classPrefix + '__textarea-hook'"
+          >
+            <slot name="input-prefix" />
+            <textarea
+              :class="classPrefix + '__textarea--control'"
+              :style="textareaStyle(textareaProps.autosize)"
+              :disabled="disabled"
+              :auto-height="!!textareaProps.autosize"
+              confirm-type="send"
+              :adjust-position="adjustPosition"
+              :disable-default-padding="false"
+              cursor-spacing="30"
+              maxlength="-1"
+              :value="innerValue"
+              @change="textChange"
+              @focus="focusFn"
+              @blur="blurFn"
+              @click="handlerClick"
+              @input="textChange"
+              @keyboardheightchange="onkeyboardheightchange"
+              @confirm="handleSendClick"
+            />
+            <view :class="classPrefix + '__textarea--placeholder ' + (focusFlag || innerValue ? 'hide' : '')">
+              {{ placeholder }}
+            </view>
           </view>
         </view>
 
@@ -93,7 +103,12 @@
                       <block v-else>
                         <view
                           :class="
-                            'send-btn-icon send-btn-' + item.type + ' ' + (innerValue || loading ? 'active' : 'disabled') + ' ' + (loading ? 'stop' : '')
+                            'send-btn-icon send-btn-' +
+                              item.type +
+                              ' ' +
+                              (innerValue || loading ? 'active' : 'disabled') +
+                              ' ' +
+                              (loading ? 'stop' : '')
                           "
                           @click.stop="handleSendClick"
                         >
@@ -149,17 +164,16 @@
   </view>
 </template>
 <script>
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
+import tIcon from '@tdesign/uniapp/icon/icon.vue';
 import attachments from '../attachments/attachments.vue';
-import { prefix } from 'tdesign-uniapp/common/config';
+import { prefix } from '@tdesign/uniapp/common/config';
 import props from './props';
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
 import { textareaStyle } from './computed';
-import _ from 'tdesign-uniapp/common/utils.wxs';
-import { nextTick } from 'tdesign-uniapp/common/utils';
+import tools from '@tdesign/uniapp/common/utils.wxs';
+import { nextTick } from '@tdesign/uniapp/common/utils';
 
 const name = `${prefix}-chat-sender`;
-
 
 export default uniComponent({
   name,
@@ -177,10 +191,7 @@ export default uniComponent({
     ...props,
   },
 
-  emits: [
-    'update:visible',
-    'update:value',
-  ],
+  emits: ['update:visible', 'update:value'],
 
   data() {
     return {
@@ -214,7 +225,7 @@ export default uniComponent({
       },
       uploadNames: [],
 
-      _,
+      tools,
 
       innerValue: this.value,
     };
@@ -232,7 +243,7 @@ export default uniComponent({
     },
     fileList: {
       handler(newVal) {
-      // 添加空值检查
+        // 添加空值检查
         this.files = newVal ? JSON.parse(JSON.stringify(newVal)) : [];
       },
       immediate: true,
@@ -459,6 +470,4 @@ export default uniComponent({
   },
 });
 </script>
-<style scoped>
-@import './chat-sender.css';
-</style>
+<style scoped src="./chat-sender.css"></style>

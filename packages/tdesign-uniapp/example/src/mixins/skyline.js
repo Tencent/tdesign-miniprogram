@@ -1,1 +1,1 @@
-export { default } from 'tdesign-uniapp/mixins/skyline.js';
+export { default } from '@tdesign/uniapp/mixins/skyline.js';

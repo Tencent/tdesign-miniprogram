@@ -33,8 +33,8 @@ readonly | Boolean | undefined | \- | N
 selection-end | Number | -1 | \- | N
 selection-start | Number | -1 | \- | N
 show-confirm-bar | Boolean | true | \- | N
-value | String / Number | - | `v-model:value` is supported。Typescript：`TextareaValue` `type TextareaValue = string \| number`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/textarea/type.ts) | N
-default-value | String / Number | - | uncontrolled property。Typescript：`TextareaValue` `type TextareaValue = string \| number`。[see more ts definition](https://github.com/novlan1/tdesign-uniapp/blob/develop/packages/tdesign/textarea/type.ts) | N
+value | String / Number | - | `v-model:value` is supported。Typescript：`TextareaValue` `type TextareaValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/textarea/type.ts) | N
+default-value | String / Number | - | uncontrolled property。Typescript：`TextareaValue` `type TextareaValue = string \| number`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/textarea/type.ts) | N
 
 ### Textarea Events
 
@@ -67,12 +67,12 @@ t-class-textarea | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description 
 -- | -- | --
---td-textarea-background-color | @bg-color-container | - 
---td-textarea-border-color | @component-border | - 
---td-textarea-border-radius | @radius-default | - 
---td-textarea-disabled-text-color | @text-color-disabled | - 
---td-textarea-indicator-text-color | @text-color-placeholder | - 
---td-textarea-label-color | @text-color-primary | - 
---td-textarea-padding | 32rpx | - 
---td-textarea-placeholder-color | @text-color-placeholder | - 
+--td-textarea-background-color | @bg-color-container | -
+--td-textarea-border-color | @component-border | -
+--td-textarea-border-radius | @radius-default | -
+--td-textarea-disabled-text-color | @text-color-disabled | -
+--td-textarea-indicator-text-color | @text-color-placeholder | -
+--td-textarea-label-color | @text-color-primary | -
+--td-textarea-padding | 32rpx | -
+--td-textarea-placeholder-color | @text-color-placeholder | -
 --td-textarea-text-color | @text-color-primary | -

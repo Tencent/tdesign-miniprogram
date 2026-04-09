@@ -1,4 +1,4 @@
-import type { TransformEventHandlers, ExtractNonOnProps } from 'tdesign-uniapp/common/common';
+import type { TransformEventHandlers, ExtractNonOnProps } from '@tdesign/uniapp/common/common';
 import type { TdChatThinkingProps } from '../chat-thinking/type';
 
 export type ChatThinkingProps = ExtractNonOnProps<TdChatThinkingProps>;

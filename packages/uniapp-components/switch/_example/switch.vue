@@ -1,13 +1,8 @@
 <template>
   <view>
-    <!-- #ifndef MP-ALIPAY -->
-    <t-navbar
+    <t-demo-navbar
       title="Switch"
-      left-arrow
-      :delta="-1"
-      @go-back="onDemoGoBack"
     />
-    <!-- #endif -->
     <view class="demo">
       <t-demo-header
         title="Switch 开关"
@@ -18,26 +13,26 @@
         title="01 组件类型"
         desc="基础开关"
       >
-        <BaseDemo />
+        <base-demo />
       </t-demo>
 
       <t-demo desc="带描述开关">
-        <labelDemo />
+        <label-demo />
       </t-demo>
 
       <t-demo desc="自定义颜色开关">
-        <color />
+        <color-demo />
       </t-demo>
 
       <t-demo title="02 组件状态">
-        <status />
+        <status-demo />
       </t-demo>
 
       <t-demo
         title="03 组件样式"
         desc="开关尺寸"
       >
-        <size />
+        <size-demo />
       </t-demo>
     </view>
   </view>
@@ -46,17 +41,17 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import labelDemo from './label/index.vue';
-import color from './color/index.vue';
-import status from './status/index.vue';
-import size from './size/index.vue';
+import LabelDemo from './label/index.vue';
+import ColorDemo from './color/index.vue';
+import StatusDemo from './status/index.vue';
+import SizeDemo from './size/index.vue';
 export default {
   components: {
     BaseDemo,
-    labelDemo,
-    color,
-    status,
-    size,
+    LabelDemo,
+    ColorDemo,
+    StatusDemo,
+    SizeDemo,
   },
   data() {
     return {};

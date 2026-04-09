@@ -66,20 +66,20 @@
   </view>
 </template>
 <script>
-import tCheckboxGroup from 'tdesign-uniapp/checkbox-group/checkbox-group.vue';
-import tCheckbox from 'tdesign-uniapp/checkbox/checkbox.vue';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
-import { canUseVirtualHost } from 'tdesign-uniapp/common/version';
-import tools from 'tdesign-uniapp/common/utils.wxs';
+import TCheckboxGroup from '@tdesign/uniapp/checkbox-group/checkbox-group.vue';
+import TCheckbox from '@tdesign/uniapp/checkbox/checkbox.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
+import { canUseVirtualHost } from '@tdesign/uniapp/common/version';
+import tools from '@tdesign/uniapp/common/utils.wxs';
 
 export default {
   options: {
     styleIsolation: 'shared',
   },
   components: {
-    tCheckboxGroup,
-    tCheckbox,
-    tIcon,
+    TCheckboxGroup,
+    TCheckbox,
+    TIcon,
   },
   data() {
     return {

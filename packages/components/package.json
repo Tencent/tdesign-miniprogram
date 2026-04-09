@@ -5,9 +5,9 @@
   "main": "index.ts",
   "license": "MIT",
   "devDependencies": {
-    "dayjs": "^1.10.7",
-    "tinycolor2": "^1.4.2",
-    "tslib": "^2.8.1",
-    "miniprogram-simulate": "^1.6.0"
+    "dayjs": "catalog:",
+    "tinycolor2": "catalog:",
+    "tslib": "catalog:",
+    "miniprogram-simulate": "catalog:miniprogram"
   }
 }

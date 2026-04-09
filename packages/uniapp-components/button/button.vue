@@ -4,12 +4,15 @@
     :style="tools._style([customStyle])"
     :data-custom="customDataset"
     :class="className"
+    :activity-type="activityType ? activityType : ''"
+    :entrance-path="entrancePath"
     :form-type="disabled || loading ? '' : type"
     :open-type="disabled || loading ? '' : openType"
     :hover-stop-propagation="hoverStopPropagation"
     :hover-start-time="hoverStartTime"
     :hover-stay-time="hoverStayTime"
     :lang="lang"
+    :need-show-entrance="needShowEntrance"
     :session-from="sessionFrom"
     :hover-class="disabled || loading ? '' : hoverClass || classPrefix + '--hover'"
     :send-message-title="sendMessageTitle"
@@ -29,16 +32,16 @@
     @agreeprivacyauthorization="agreeprivacyauthorization"
   >
     <block
-      v-if="_icon"
+      v-if="innerIcon"
       name="icon"
     >
       <t-icon
         :custom-style="iconCustomStyle"
-        :t-class="classPrefix + '__icon ' + classPrefix + '__icon--' + (_icon.activeIdx == _icon.index ? 'active ' : ' ') + tClassIcon"
-        :prefix="_icon.prefix"
-        :name="_icon.name || ''"
-        :size="_icon.size"
-        :color="_icon.color"
+        :t-class="classPrefix + '__icon ' + classPrefix + '__icon--' + (innerIcon.activeIdx == innerIcon.index ? 'active ' : ' ') + tClassIcon"
+        :prefix="innerIcon.prefix"
+        :name="innerIcon.name || ''"
+        :size="innerIcon.size"
+        :color="innerIcon.color"
         @click="'handleClose' || ''"
       />
     </block>
@@ -62,7 +65,7 @@
     />
     <view
       :class="classPrefix + '__content '
-        + ((_icon && _icon.name || loading) && content ? classPrefix + '__content--has-icon' : '')"
+        + ((innerIcon && innerIcon.name || loading) && content ? classPrefix + '__content--has-icon' : '')"
     >
       <slot name="content" />
       <block v-if="content">
@@ -74,12 +77,12 @@
   </button>
 </template>
 <script>
-import tIcon from '../icon/icon';
-import tLoading from '../loading/loading';
+import TIcon from '../icon/icon';
+import TLoading from '../loading/loading';
 import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
-import { calcIcon } from '../common/utils';
+import { calcIcon, addUnit } from '../common/utils';
 import tools from '../common/utils.wxs';
 
 
@@ -97,8 +100,8 @@ export default uniComponent({
     `${prefix}-class-loading`,
   ],
   components: {
-    tIcon,
-    tLoading,
+    TIcon,
+    TLoading,
   },
   props: {
     ...props,
@@ -112,7 +115,7 @@ export default uniComponent({
       prefix,
       className: '',
       classPrefix: name,
-      _icon: undefined,
+      innerIcon: undefined,
     };
   },
   computed: {
@@ -126,10 +129,12 @@ export default uniComponent({
 
       return tools._style([
         {
-          fontSize: fontSize[this.size || 'medium'],
+          fontSize: this.innerIcon.size
+            ? addUnit(this.innerIcon.size)
+            : fontSize[this.size || 'medium'],
           borderRadius: 'var(--td-button-icon-border-radius, 4px)',
         },
-        this._icon.style || '',
+        this.innerIcon.style || '',
       ]);
     },
     loadingCustomStyle() {
@@ -143,7 +148,7 @@ export default uniComponent({
   watch: {
     icon: {
       handler(value) {
-        this._icon = calcIcon(value, '');
+        this.innerIcon = calcIcon(value, '');
       },
       immediate: true,
     },
@@ -211,9 +216,8 @@ export default uniComponent({
   },
 });
 </script>
+<style scoped src="./button.css"></style>
 <style scoped>
-@import './button.css';
-
 /* #ifdef MP-QQ */
 /* 适配 qq 小程序 */
 .t-button--outline {
@@ -234,4 +238,11 @@ export default uniComponent({
   margin-left: 4px;
 }
 /* #endif */
+
+
+.t-button {
+  /* support my-alipay */
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>

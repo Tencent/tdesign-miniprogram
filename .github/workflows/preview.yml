@@ -27,9 +27,17 @@ jobs:
         with:
           ref: ${{ steps.comment-branch.outputs.head_ref }}
           repository: ${{ steps.comment-branch.outputs.head_repo_name_with_owner }}
-      - uses: ./.github/actions/install-dep
-      - run: npm run build
-        shell: bash
+
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+
+      - run: pnpm install
+
+      - run: pnpm run build
+
       - id: get-robot
         run: |
           comment=${{ env.comment }}
