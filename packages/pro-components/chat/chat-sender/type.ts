@@ -94,6 +94,10 @@ export interface TdChatSenderProps {
     type: StringConstructor;
     value?: string;
   };
+  allowSpeech?: {
+    type: StringConstructor;
+    value?: 'keyboard' | 'speech';
+  };
   /**
    * 上传面板是否可见
    * @default false
