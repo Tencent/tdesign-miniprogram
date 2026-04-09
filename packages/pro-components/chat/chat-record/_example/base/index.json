@@ -4,6 +4,7 @@
   "usingComponents": {
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "t-chat-sender": "tdesign-miniprogram/chat-sender/chat-sender",
-    "t-chat-record": "tdesign-miniprogram/chat-record/chat-record"
+    "t-chat-record": "tdesign-miniprogram/chat-record/chat-record",
+    "t-icon": "tdesign-miniprogram/icon/icon"
   }
 }

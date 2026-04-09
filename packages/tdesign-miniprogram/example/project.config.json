@@ -1,7 +1,8 @@
 {
   "description": "项目配置文件",
   "packOptions": {
-    "ignore": []
+    "ignore": [],
+    "include": []
   },
   "setting": {
     "urlCheck": false,
@@ -23,16 +24,28 @@
     "userConfirmedUseCompilerModuleSwitch": false,
     "showShadowRootInWxmlPanel": true,
     "skylineRenderEnable": true,
-    "bigPackageSizeSupport": true
+    "bigPackageSizeSupport": true,
+    "compileWorklet": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
   },
   "compileType": "miniprogram",
-  "libVersion": "widelyUsed",
+  "libVersion": "3.15.1",
   "appid": "wx6f3e38f61d138c04",
   "projectname": "TDesign",
-  "debugOptions": {
-    "hidedInDevtools": []
-  },
-  "scripts": {},
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
@@ -504,5 +517,6 @@
         }
       }
     }
-  }
+  },
+  "editorSetting": {}
 }
