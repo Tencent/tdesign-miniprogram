@@ -16,10 +16,10 @@ import TMessage from '@tdesign/uniapp/message/message.vue';
 
 ### 引入 API
 
-若以 API 形式调用 Message，则需在页面 `page.js` 中引入组件 API：
+若以 API 形式调用 Message，则需在页面中引入组件 API：
 
 ```js
-import Message from '@tdesign/uniapp/message/index';
+import { MessagePlugin } from '@tdesign/uniapp';
 ```
 
 ### 组件类型

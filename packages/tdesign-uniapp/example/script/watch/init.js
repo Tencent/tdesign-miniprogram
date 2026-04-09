@@ -33,13 +33,16 @@ async function copyOneProject({
 
 function clearTargetDir() {
   deleteFolder(config.componentTargetDirInVue3Cli);
+  deleteFolder(config.componentChatTargetDirInVue3Cli);
   deleteFolder(config.componentTargetDirInApp);
+  deleteFolder(config.componentChatTargetDirInApp);
 
   deleteFolder(config.pagesMoreDirInVue3Cli);
   deleteFolder(config.pagesMoreDirInApp);
 
   if (checkVue2CliExist()) {
     deleteFolder(config.componentTargetDirInVue2Cli);
+    deleteFolder(config.componentChatTargetDirInVue2Cli);
     deleteFolder(config.pagesMoreDirInVue2Cli);
   }
 
@@ -113,7 +116,7 @@ async function main() {
     generateStyleShortcuts(config.componentTargetDirInVue3Hx);
   }
   // 为 chat 包生成 .d.ts 声明文件
-  generateDts(config.chatSourceDir, config.componentTargetDirInVue3Cli);
+  generateDts(config.chatSourceDir, config.componentChatTargetDirInVue3Cli);
 }
 
 

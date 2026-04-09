@@ -40,6 +40,11 @@ function generateStyleShortcuts(targetDir) {
     }
 
     console.log(`[Style Shortcut] ${item.target} -> ${targetPath}`);
+
+    // 生成对应的 .d.ts 声明文件，避免 TypeScript 导入时报类型错误
+    const dtsPath = `${targetPath}.d.ts`;
+    fs.writeFileSync(dtsPath, 'declare const styles: string;\nexport default styles;\n');
+    console.log(`[Style Shortcut] ${item.target}.d.ts -> ${dtsPath}`);
   }
 }
 
