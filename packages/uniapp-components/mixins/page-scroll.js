@@ -74,7 +74,10 @@ export default (funcName = 'onScroll', useBus = true) => {
       _bindScroller(e) {
         let result;
         // #ifdef H5
-        result = this[funcName]?.call(this, e.target);
+        const target = e.target === document
+          ? (document.scrollingElement || document.documentElement)
+          : e.target;
+        result = this[funcName]?.call(this, target);
         // #endif
         // #ifndef H5
         result = this[funcName]?.call(this, e);
