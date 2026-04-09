@@ -36,13 +36,21 @@ onPickerChange(e) {
 
 ### onPageScroll
 
-APP-PLUS 下，需要业务自己在页面中监听 `pageScroll` 事件，这是因为动态的监听不生效。这里给出一个最佳实践之一。
+在小程序、APP-PLUS 等平台下，需要业务自己在页面中监听 `pageScroll` 事件，这是因为动态的监听不生效。这里给出一个最佳实践之一。
 
 ```js
 // 页面 Vue 文件下，引入组件库提供的监听方法
 // 该方法内部会通过 event-bus，传递参数给对应的组件
 import { handlePageScroll } from '@tdesign/uniapp/mixins/page-scroll';
 
+// Vue3
+defineOptions({
+  onPageScroll(e) {
+    handlePageScroll(e);
+  },
+});
+
+// Vue2
 export default {
   onPageScroll(e) {
     handlePageScroll(e);
@@ -59,13 +67,13 @@ uniapp 给的脚手架工程配置有问题，`src/env.d.ts` 文件的 `vue` 声
 1. 注释掉 `src/env.d.ts` 文件中 `vue` 的声明
 2. `tsconfig.json` 中配置 `"moduleResolution": "bundler"`
 
-<img src="https://tdesign.gtimg.com/uniapp/docs/faq-1.png" width="600" />
+<img src="https://tdesign.gtimg.com/uniapp/docs/faq-1.png" width="700" />
 
-<img src="https://tdesign.gtimg.com/uniapp/docs/faq-2.png" width="600" />
+<img src="https://tdesign.gtimg.com/uniapp/docs/faq-2.png" width="700" />
 
 另外，它这个脚手架太老了，自己的 `tsconfig.json` 还飘红，升级下 `@vue/tsconfig` 可解决。
 
-这里有一个开箱即用的 uniapp Vue3 [脚手架项目](https://github.com/novlan1/tdesign-uniapp-demo-cli)，支持自动导入、类型提示等，你可以打开看看。
+这里有一个开箱即用的 uniapp Vue3 [脚手架项目](https://github.com/TDesignOteam/tdesign-uniapp-starter)，支持自动导入、类型提示等，你可以打开看看。
 
 ### visible 受控
 
