@@ -33,47 +33,37 @@ npm i @tdesign/uniapp
 
 ## 使用
 
-1. 在 `main.ts` 中引入样式文件
+### 步骤一：引入样式文件
+
+在 `main.ts` 中引入组件库样式：
+
+#### CLI 模式
 
 ```js
-// CLI 模式
-import '@tdesign/uniapp/theme.css';
-
-// HBuilderX 模式
-// import './uni_modules/tdesign-uniapp/components/theme.css';
-```
-
-也可以引入 `rpx` 单位的 `less` 文件，该文件与 `tdesign-miniprogram` 完全一致。
-
-```js
-// CLI 模式
+// Less（推荐，rpx 单位，与 tdesign-miniprogram 完全一致）
 import '@tdesign/uniapp/theme.less';
 
-// HBuilderX 模式
-// import './uni_modules/tdesign-uniapp/components/theme.less';
+// 或者引入编译后的 CSS 文件
+import '@tdesign/uniapp/theme.css';
 ```
 
-2. 在文件中使用
+#### HBuilderX 模式
 
-```html
-<template>
-  <t-loading />
-</template>
+```js
+// Less（推荐，rpx 单位，与 tdesign-miniprogram 完全一致）
+import './uni_modules/tdesign-uniapp/components/theme.less';
 
-<script lang="ts" setup>
-import TLoading from '@tdesign/uniapp/loading/loading.vue';
-</script>
+// 或者引入编译后的 CSS 文件
+import './uni_modules/tdesign-uniapp/components/theme.css';
 ```
 
-只提供按需导入方式，不支持全量导入（全量导入在小程序下有兼容性问题）。
+### 步骤二：注册组件
 
-## 自动导入
+#### 自动导入（推荐）
 
-在 `pages.json` 配置 [easycom](https://uniapp.dcloud.net.cn/collocation/pages.html#easycom)，可实现自动导入。
+配置 [easycom](https://uniapp.dcloud.net.cn/collocation/pages.html#easycom) 后，无需手动引入组件即可直接在模板中使用，在 `pages.json` 中添加以下配置：
 
-### CLI 模式
-
-使用 CLI 模式，即使用 `node_modules` 下的 `@tdesign/uniapp` 时，配置如下。
+**CLI 模式**：使用 `node_modules` 下的 `@tdesign/uniapp` 时，配置如下。
 
 ```json
 {
@@ -85,9 +75,7 @@ import TLoading from '@tdesign/uniapp/loading/loading.vue';
 }
 ```
 
-### UNI_MODULES 模式
-
-使用 `uni_modules` 下的 `tdesign-uniapp` 时，配置如下。
+**HBuilderX 模式**：使用 `uni_modules` 下的 `tdesign-uniapp` 时，配置如下。
 
 ```json
 {
@@ -99,34 +87,33 @@ import TLoading from '@tdesign/uniapp/loading/loading.vue';
 }
 ```
 
-### Vite 配置
+配置完成后，可以直接在模板中使用组件：
 
-也可以通过 [@uni-helper/vite-plugin-uni-components](https://github.com/uni-helper/vite-plugin-uni-components) 实现组件的自动引入。
-
-```js
-// vite.config.ts
-import { defineConfig } from "vite";
-import uni from "@dcloudio/vite-plugin-uni";
-
-import Components from '@uni-helper/vite-plugin-uni-components'
-import { TDesignUniappResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
-
-
-export default defineConfig({
-  plugins: [
-    Components({
-      resolvers: [TDesignUniappResolver()]
-    }),
-    uni(),
-  ],
-});
+```html
+<template>
+  <t-loading />
+</template>
 ```
 
-## 编辑器提示
+#### 手动导入
 
-安装注册 TDesign 之后，在开发项目时，可以配合插件在VSCode等主流编辑器中达到提示组件名及API的效果。
+如果不使用 easycom，也可以在 `<script>` 中手动导入组件：
 
-推荐安装 [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 插件，并在项目的 `tsconfig.json` 的 `compilerOptions.types` 属性中增加 `@tdesign/uniapp/global`，即可实现提示效果。
+```html
+<template>
+  <t-loading />
+</template>
+
+<script lang="ts" setup>
+import TLoading from '@tdesign/uniapp/loading/loading.vue';
+</script>
+```
+
+> 只提供按需导入方式，不支持全量导入（全量导入在小程序下有兼容性问题）。
+
+### 步骤三：配置编辑器提示（可选）
+
+推荐安装 [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 插件，并在项目的 `tsconfig.json` 的 `compilerOptions.types` 属性中增加 `@tdesign/uniapp/global`，即可在 VSCode 等主流编辑器中获得组件名及 API 的智能提示。
 
 ```json
 {
@@ -174,14 +161,17 @@ export default defineConfig({
 # 安装项目依赖
 pnpm install
 
+# 站点
+pnpm run uniapp dev
+
 # H5
-npm run uniapp -- run dev:h5
+pnpm run uniapp dev:h5
 
 # 其他平台类似，比如微信小程序
-npm run uniapp -- run dev:mp-weixin
+pnpm run uniapp dev:mp-weixin
 
 # uniapp-chat 项目开发
-npm run uniapp:chat -- run site:dev
+pnpm run uniapp:chat site:dev
 ```
 
 打开[微信开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)，把 `packages/tdesign-uniapp/example/dist/build/mp-weixin` 目录添加进去就可以预览示例了。

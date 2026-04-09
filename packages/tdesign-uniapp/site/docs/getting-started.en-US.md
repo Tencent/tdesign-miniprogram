@@ -1,6 +1,6 @@
 ---
 title: Uni App
-description: TDesign MiniProgram is a UI component library for Uni App.
+description: TDesign UniApp is a UI component library for Uni App.
 spline: explain
 ---
 
@@ -13,87 +13,176 @@ spline: explain
 
 ## Preview
 
-Please use WeChat to scan the QR code to preview the TDesign MiniProgram example. ↓
-<br/>
+Scan the QR code to preview ↓
 
-<img width="260" src="https://tdesign.gtimg.com/site/qrcode.jpeg" />
+<img src="https://tdesign.gtimg.com/uniapp/example-qrcode.png" width="600" />
 
-
-## Before use
-
-Before using it, please make sure you have studied WeChat’s official [Simple Tutorial on Mini Programs](https://developers.weixin.qq.com/miniprogram/dev/framework/) and [Introduction to Custom Components](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/).
+> Other platforms are also supported. Due to platform review and other reasons, previews may not be available, but this does not affect the normal use of the component library.
 
 ## Installation
 
-### npm
-
-TDesign MiniProgram already supports using NPM to install third-party packages. For details, see [NPM Support](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html?search-key=npm)
+### NPM
 
 ```bash
-npm i tdesign-miniprogram -S --production
+npm i @tdesign/uniapp
 ```
 
-> After installation, npm needs to be built in WeChat developer tools: `tool -  build npm`.(If `NPM packages not found` appears during the build, please go to the `project.config.json` file to add the `packNpmManually` and `packNpmRelationList` configuration items. For details, see [NPM Support](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html?search-key=npm))
+### UNI_MODULES
 
-> After the build is successful, check the box `Compile JS to ES5`
-> <br/>
-><img width="200" src="https://tdesign.gtimg.com/miniprogram/docs/getting-started.png" />
+The plugin has been uploaded to the [DCloud Plugin Market](https://ext.dcloud.net.cn/plugin?name=tdesign-uniapp). Please open the plugin details page and click `Import plugin with HBuilderX`.
 
-## Modify app.json
+## Usage
 
-Remove `"style": "v2"` in `app.json`.
+### Step 1: Import Style Files
 
-> Because [v2 configuration](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#style) means enabling a new version of component styles, it will cause TDesign component styles to be disordered.
+Import the component library styles in `main.ts`:
 
-## Modify tsconfig.json
+#### CLI Mode
 
-If you use `typescript` to develop, you need to modify `tsconfig.json` to specify `paths`
+```js
+// Less (recommended, rpx units, fully consistent with tdesign-miniprogram)
+import '@tdesign/uniapp/theme.less';
+
+// Or import the compiled CSS file
+import '@tdesign/uniapp/theme.css';
+```
+
+#### HBuilderX Mode
+
+```js
+// Less (recommended, rpx units, fully consistent with tdesign-miniprogram)
+import './uni_modules/tdesign-uniapp/components/theme.less';
+
+// Or import the compiled CSS file
+import './uni_modules/tdesign-uniapp/components/theme.css';
+```
+
+### Step 2: Register Components
+
+#### Auto Import (Recommended)
+
+After configuring [easycom](https://uniapp.dcloud.net.cn/collocation/pages.html#easycom), you can use components directly in templates without manual imports. Add the following configuration in `pages.json`:
+
+**CLI Mode**: When using `@tdesign/uniapp` from `node_modules`, configure as follows:
 
 ```json
 {
-  "paths": {
-      "tdesign-miniprogram/*":["./miniprogram/miniprogram_npm/tdesign-miniprogram/*"]
+  "easycom": {
+    "custom": {
+      "^t-(.*)": "@tdesign/uniapp/$1/$1.vue"
     }
-}
-```
-
-## Use components
-
-Taking the button component as an example, you only need to introduce the custom component corresponding to the button in the `JSON` file.
-
-```json
-{
-  "usingComponents": {
-    "t-button": "tdesign-miniprogram/button/button"
   }
 }
 ```
 
-Then you can use the component directly in wxml.
+**HBuilderX Mode**: When using `tdesign-uniapp` from `uni_modules`, configure as follows:
 
-```html
-<t-button theme="primary">按钮</t-button>
+```json
+{
+  "easycom": {
+    "custom": {
+      "^t-(.*)": "@/uni_modules/tdesign-uniapp/components/$1/$1.vue"
+    }
+  }
+}
 ```
 
-## Preview in developer tools
+After configuration, you can use components directly in templates:
+
+```html
+<template>
+  <t-loading />
+</template>
+```
+
+#### Manual Import
+
+If you don't use easycom, you can also manually import components in `<script>`:
+
+```html
+<template>
+  <t-loading />
+</template>
+
+<script lang="ts" setup>
+import TLoading from '@tdesign/uniapp/loading/loading.vue';
+</script>
+```
+
+> Only on-demand imports are supported. Full imports are not supported (full imports have compatibility issues in mini programs).
+
+### Step 3: Configure Editor Hints (Optional)
+
+It is recommended to install the [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) plugin, and add `@tdesign/uniapp/global` to the `compilerOptions.types` property in your project's `tsconfig.json` to get intelligent hints for component names and APIs in VSCode and other mainstream editors.
+
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "@tdesign/uniapp/global",
+    ]
+  }
+}
+```
+
+## Platform Compatibility
+
+| Platform         | Vue2 | Vue3 | H5  | Android | iOS | App-nvue | WeChat Mini Program | QQ Mini Program |
+| ------------ | ---- | ---- | --- | ------- | --- | -------- | ---------- | -------- |
+| **Support** | ✅    | ✅    | ✅   | ✅       | ✅   | ⚠️        | ✅          | ✅        |
+
+| Platform         | Alipay Mini Program | Douyin Mini Program | Baidu Mini Program | Kuaishou Mini Program | Xiaohongshu Mini Program | JD Mini Program |
+| ------------ | ------------ | ---------- | ---------- | ---------- | ------------ | ---------- |
+| **Support** | ✅            | ✅          | ✅          | ✅          | ✅            | ✅          |
+
+## Browser Compatibility
+
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari-ios/safari-ios_48x48.png" alt="iOS Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/> iOS Safari| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/samsung-internet/samsung-internet_48x48.png" alt="Samsung" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Samsung | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera |<img src="https://user-images.githubusercontent.com/51158141/189169679-71e045f6-9b9b-4baf-8b9f-e045a40216f5.png" alt="Android Browser" width="24px" height="24px" /><br/>Android Browser|
+| --------- | --------- | --------- | --------- | --------- |--------- |
+| Firefox >=104| Chrome >=105| iOS Safari >=12.2| Samsung >=10.2 | Opera >=64 | Android Browser >=105 |
+
+For details, see [Mobile Component Library Browser Compatibility](https://github.com/Tencent/tdesign/wiki/Browser-Compatibility)
+
+## Template Projects
+
+We provide a variety of out-of-the-box template projects to help you get started quickly.
+
+| Template | Description | Preview |
+| --- | --- | --- |
+| [TDesign UniApp Starter](https://github.com/TDesignOteam/tdesign-uniapp-starter/) | Vue3 + CLI Mode - General | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-h5.png" height="100" /> |
+| [TDesign UniApp Starter Apply](https://github.com/TDesignOteam/tdesign-uniapp-starter-apply/) | Vue3 + CLI Mode - Event Registration | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-apply-h5.png" height="100" /> |
+| [TDesign UniApp Starter Vue3 HX](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue3-hx/) | Vue3 + HBuilderX Mode | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue3-hx-h5.png" height="100" /> |
+| [TDesign UniApp Starter Vue2 CLI](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue2-cli/) | Vue2 + CLI Mode | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue2-cli-h5.png" height="100" /> |
+| [TDesign UniApp Starter Vue2 HX](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue2-hx/) | Vue2 + HBuilderX Mode |<img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue2-hx-h5.png" height="100" /> |
+
+## Development
 
 ```bash
 # Install project dependencies
-npm install
+pnpm install
 
-# compile
-npm run dev
+# Site
+pnpm run uniapp dev
+
+# H5
+pnpm run uniapp dev:h5
+
+# Other platforms are similar, e.g. WeChat Mini Program
+pnpm run uniapp dev:mp-weixin
+
+# uniapp-chat project development
+pnpm run uniapp:chat site:dev
 ```
 
-Open [WeChat Developer Tools](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html) and add the `_example` directory to preview the example.
+Open [WeChat Developer Tools](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html) and add the `packages/tdesign-uniapp/example/dist/build/mp-weixin` directory to preview the examples.
 
-## Base library version
+## Mini Program Base Library Version
 
-Minimum base library version `^2.12.0`
+- WeChat Mini Program: Minimum base library version `^2.12.0`
 
-### Correspondence between component and basic library versions
+### Correspondence between Components and Base Library Versions
 
-| 组件   | API  | 最低基础库 | 描述 |
+| Component   | API | Min Base Library | Description |
 | -- | -- | -- | -- |
 | Upload | [wx.previewMedia](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.previewMedia.html)                                   | 2.12.0     | -    |
 | Upload | [wx.chooseMedia](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html)                                     | 2.10.0     | -    |

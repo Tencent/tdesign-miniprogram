@@ -33,27 +33,77 @@ npm i @tdesign/uniapp-chat
 
 ## 使用
 
-1. 在 `main.ts` 中引入样式文件
+> `@tdesign/uniapp-chat` 依赖 `@tdesign/uniapp`，请确保项目中已安装 `@tdesign/uniapp`。
+
+### 步骤一：引入样式文件
+
+在 `main.ts` 中引入组件库样式：
+
+#### CLI 模式
 
 ```js
-// CLI 模式
-import '@tdesign/uniapp/theme.css';
-
-// HBuilderX 模式
-// import './uni_modules/tdesign-uniapp/components/theme.css';
-```
-
-也可以引入 `rpx` 单位的 `less` 文件，该文件与 `tdesign-miniprogram` 完全一致。
-
-```js
-// CLI 模式
+// Less（推荐，rpx 单位，与 tdesign-miniprogram 完全一致）
 import '@tdesign/uniapp/theme.less';
 
-// HBuilderX 模式
-// import './uni_modules/tdesign-uniapp/components/theme.less';
+// 或者引入编译后的 CSS 文件
+import '@tdesign/uniapp/theme.css';
 ```
 
-2. 在文件中使用
+#### HBuilderX 模式
+
+```js
+// Less（推荐，rpx 单位，与 tdesign-miniprogram 完全一致）
+import './uni_modules/tdesign-uniapp/components/theme.less';
+
+// 或者引入编译后的 CSS 文件
+import './uni_modules/tdesign-uniapp/components/theme.css';
+```
+
+### 步骤二：注册组件
+
+#### 自动导入（推荐）
+
+配置 [easycom](https://uniapp.dcloud.net.cn/collocation/pages.html#easycom) 后，无需手动引入组件即可直接在模板中使用，在 `pages.json` 中添加以下配置：
+
+**CLI 模式**：使用 `node_modules` 下的 `@tdesign/uniapp-chat` 时，配置如下。
+
+```json
+{
+  "easycom": {
+    "custom": {
+      "^t-chat-(.*)": "@tdesign/uniapp-chat/chat-$1/chat-$1.vue",
+      "^t-attachments": "@tdesign/uniapp-chat/attachments/attachments.vue",
+      "^t-(.*)": "@tdesign/uniapp/$1/$1.vue"
+    }
+  }
+}
+```
+
+**HBuilderX 模式**：使用 `uni_modules` 下的 `tdesign-uniapp-chat` 时，配置如下。
+
+```json
+{
+  "easycom": {
+    "custom": {
+      "^t-chat-(.*)": "@/uni_modules/tdesign-uniapp-chat/components/chat-$1/chat-$1.vue",
+      "^t-attachments": "@/uni_modules/tdesign-uniapp-chat/components/attachments/attachments.vue",
+      "^t-(.*)": "@/uni_modules/tdesign-uniapp/components/$1/$1.vue"
+    }
+  }
+}
+```
+
+配置完成后，可以直接在模板中使用组件：
+
+```html
+<template>
+  <t-chat-list />
+</template>
+```
+
+#### 手动导入
+
+如果不使用 easycom，也可以在 `<script>` 中手动导入组件：
 
 ```html
 <template>
@@ -65,13 +115,11 @@ import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
 </script>
 ```
 
-只提供按需导入方式，不支持全量导入（全量导入在小程序下有兼容性问题）。
+> 只提供按需导入方式，不支持全量导入（全量导入在小程序下有兼容性问题）。
 
-## 编辑器提示
+### 步骤三：配置编辑器提示（可选）
 
-安装注册 TDesign 之后，在开发项目时，可以配合插件在VSCode等主流编辑器中达到提示组件名及API的效果。
-
-推荐安装 [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 插件，并在项目的 `tsconfig.json` 的 `compilerOptions.types` 属性中增加 `@tdesign/uniapp-chat/global`，即可实现提示效果。
+推荐安装 [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 插件，并在项目的 `tsconfig.json` 的 `compilerOptions.types` 属性中增加 `@tdesign/uniapp-chat/global`，即可在 VSCode 等主流编辑器中获得组件名及 API 的智能提示。
 
 ```json
 {
