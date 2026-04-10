@@ -9,6 +9,10 @@ const getUniqueKey = () => {
 
 const mockData = {
   avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
+  thinkingProps: {
+    animation: 'gradient',
+    collapsed: false,
+  },
   message: {
     role: 'assistant',
     content: [
@@ -70,6 +74,10 @@ Component({
     chatList: [
       {
         avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
+        thinkingProps: {
+          animation: 'gradient',
+          collapsed: false,
+        },
         message: {
           status: 'complete',
           role: 'assistant',
@@ -179,6 +187,7 @@ Component({
           complete() {
             that.setData({
               'chatList[0].message.content[0].data.title': '思考完成',
+              'chatList[0].thinkingProps.collapsed': true,
             });
           },
         });

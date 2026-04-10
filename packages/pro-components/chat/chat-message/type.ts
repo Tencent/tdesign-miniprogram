@@ -6,6 +6,7 @@
 
 import { ChatContentProps } from '../chat-content/index';
 import { FileItem } from '../attachments/index';
+import { TdChatThinkingProps } from '../chat-thinking/type';
 
 export interface TdChatMessageProps {
   /**
@@ -29,6 +30,13 @@ export interface TdChatMessageProps {
   chatContentProps?: {
     type: ObjectConstructor;
     value?: ChatContentProps;
+  };
+  /**
+   * thinking 内容组件的属性，透传给 ChatThinking 组件（content 和 status 由消息数据决定，无需传入）
+   */
+  thinkingProps?: {
+    type: ObjectConstructor;
+    value?: TdChatThinkingProps;
   };
   /**
    * 聊天消息的唯一标识

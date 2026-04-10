@@ -58,6 +58,10 @@
                 :content="item.data"
                 :role="role"
                 :status="['complete', 'stop', 'error', 'pending'].indexOf(status) < 0 ? 'pending' : status"
+                :layout="thinkingProps && thinkingProps.layout"
+                :max-height="thinkingProps && thinkingProps.maxHeight"
+                :animation="thinkingProps && thinkingProps.animation"
+                :collapsed="thinkingProps && thinkingProps.collapsed"
               />
 
               <chat-content
