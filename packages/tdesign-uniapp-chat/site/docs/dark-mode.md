@@ -103,3 +103,29 @@ import './uni_modules/tdesign-uniapp/components/theme.css';
 ```
 
 > 💡Tips：什么是虚拟节点请参考 [微信文档](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/wxml-wxss.html#%E8%99%9A%E6%8B%9F%E5%8C%96%E7%BB%84%E4%BB%B6%E8%8A%82%E7%82%B9)。
+
+## 禁用深色模式
+
+如果你不需要深色模式，希望应用始终保持浅色主题（即使用户系统切换到深色模式也不会变色），可以使用纯浅色版本的主题文件替代默认的主题文件：
+
+#### CLI 模式
+
+```js
+// Less（推荐）
+import '@tdesign/uniapp/theme-light.less';
+
+// 或者引入编译后的 CSS 文件
+import '@tdesign/uniapp/theme-light.css';
+```
+
+#### HBuilderX 模式
+
+```js
+// Less（推荐）
+import './uni_modules/tdesign-uniapp/components/theme-light.less';
+
+// 或者引入编译后的 CSS 文件
+import './uni_modules/tdesign-uniapp/components/theme-light.css';
+```
+
+> 💡Tips：`theme-light` 与 `theme` 的区别在于：`theme` 包含浅色和深色两套变量，通过 `@media (prefers-color-scheme)` 媒体查询自动切换；而 `theme-light` 仅包含浅色变量，不含任何媒体查询包裹，因此不会响应系统深色模式的切换。

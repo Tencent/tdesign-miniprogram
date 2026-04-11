@@ -72,6 +72,14 @@
       "types": "./dist/theme.less.d.ts",
       "default": "./dist/theme.less"
     },
+    "./theme-light.css": {
+      "types": "./dist/theme-light.css.d.ts",
+      "default": "./dist/theme-light.css"
+    },
+    "./theme-light.less": {
+      "types": "./dist/theme-light.less.d.ts",
+      "default": "./dist/theme-light.less"
+    },
     "./global": {
       "types": "./global.d.ts"
     },

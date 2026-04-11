@@ -72,6 +72,14 @@ const BASE_EXTRA_EXPORTS = {
     types: './theme.less.d.ts',
     default: './theme.less',
   },
+  './theme-light.css': {
+    types: './dist/theme-light.css.d.ts',
+    default: './dist/theme-light.css',
+  },
+  './theme-light.less': {
+    types: './dist/theme-light.less.d.ts',
+    default: './dist/theme-light.less',
+  },
 };
 
 function getOtherExports(isChat) {
