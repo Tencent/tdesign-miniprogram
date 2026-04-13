@@ -16,7 +16,7 @@
           v-if="isMultiple"
           :class="classPrefix + '__saturation'"
           data-type="saturation"
-          :style="'background: hsl(' + sliderInfo.value + ', 100%, 50%)'"
+          :style="'' + `background: hsl(${sliderInfo.value}, 100%, 50%)`"
           @touchstart.stop.prevent="onTouchStart"
           @touchmove.stop.prevent="onTouchMove"
           @touchend.stop.prevent="onTouchEnd"
@@ -24,7 +24,7 @@
           <view
             :class="classPrefix + '__thumb'"
             :tab-index="0"
-            :style="utils._style(saturationThumbStyle)"
+            :style="'' + utils._style(saturationThumbStyle)"
           />
         </view>
         <!-- #ifdef MP-ALIPAY -->
@@ -53,7 +53,7 @@
               <view :class="classPrefix + '__rail'" />
               <view
                 :class="classPrefix + '__thumb'"
-                :style="utils._style(hueSliderStyle)"
+                :style="'' + utils._style(hueSliderStyle)"
               />
             </view>
           </view>
@@ -64,9 +64,7 @@
           >
             <view
               :class="classPrefix + '__slider-padding'"
-              :style="
-                'background: linear-gradient(90deg, rgba(0,0,0,.0) 0%, rgba(0,0,0,.0) 93%, ' + alphaSliderStyle.color + ' 93%, ' + alphaSliderStyle.color + ' 100%)'
-              "
+              :style="'' + `background: linear-gradient(90deg, rgba(0,0,0,.0) 0%, rgba(0,0,0,.0) 93%, ${alphaSliderStyle.color} 93%, ${alphaSliderStyle.color} 100%)`"
               :disable-scroll="false"
             />
             <view
@@ -78,11 +76,11 @@
             >
               <view
                 :class="classPrefix + '__rail'"
-                :style="'background: linear-gradient(to right, rgba(0, 0, 0, 0), ' + alphaSliderStyle.color + ')'"
+                :style="'' + `background: linear-gradient(to right, rgba(0, 0, 0, 0), ${alphaSliderStyle.color})`"
               />
               <view
                 :class="classPrefix + '__thumb'"
-                :style="utils._style(alphaSliderStyle)"
+                :style="'' + utils._style(alphaSliderStyle)"
               />
             </view>
           </view>
@@ -129,7 +127,13 @@
           >
             系统预设色彩
           </view>
-          <view :class="classPrefix + '__swatches-items'">
+          <scroll-view
+            :class="classPrefix + '__swatches-items'"
+            scroll-x
+            enable-flex
+            scroll-anchoring
+            type="list"
+          >
             <view
               v-for="(swatch, index) in innerSwatchList"
               :key="index"
@@ -142,7 +146,7 @@
                 :style="'background-color: ' + swatch + ';'"
               />
             </view>
-          </view>
+          </scroll-view>
         </view>
       </view>
     </view>

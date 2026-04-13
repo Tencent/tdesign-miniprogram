@@ -10,8 +10,12 @@
       <!-- blocks -->
 
       <block v-if="item.type === 'heading'">
-        <view :class="classPrefix + '-h ' + classPrefix + '-h' + item.depth">
-          <TChatMarkdownNode :nodes="item.tokens" />
+        <view
+          :class="classPrefix + '-h ' + classPrefix + '-h' + item.depth"
+          :data-index="i"
+          @click="nodeClick"
+        >
+          <t-chat-markdown-node :nodes="item.tokens" />
         </view>
       </block>
 
@@ -19,6 +23,8 @@
         <view
           :class="classPrefix + '-list ' + (item.ordered ? classPrefix + '-list__decimal' : '')"
           :data-type="item.ordered"
+          :data-index="i"
+          @click="nodeClick"
         >
           <block
             v-for="(li, j) in item.items"
@@ -26,10 +32,10 @@
           >
             <view :class="classPrefix + '-list-item'">
               <block v-if="li.tokens && li.tokens.length">
-                <TChatMarkdownNode :nodes="li.tokens" />
+                <t-chat-markdown-node :nodes="li.tokens" />
               </block>
               <block v-else>
-                {{ item.text }}
+                {{ li.text }}
               </block>
             </view>
           </block>
@@ -37,13 +43,21 @@
       </block>
 
       <block v-else-if="item.type === 'paragraph'">
-        <view :class="classPrefix + '-p'">
-          <TChatMarkdownNode :nodes="item.tokens" />
+        <view
+          :class="classPrefix + '-p'"
+          :data-index="i"
+          @click="nodeClick"
+        >
+          <t-chat-markdown-node :nodes="item.tokens" />
         </view>
       </block>
 
       <block v-else-if="item.type === 'image'">
-        <view :class="classPrefix + '-image'">
+        <view
+          :class="classPrefix + '-image'"
+          :data-index="i"
+          @click="nodeClick"
+        >
           <image
             :src="item.href"
             :alt="item.title"
@@ -53,7 +67,11 @@
       </block>
 
       <block v-else-if="item.type === 'table'">
-        <view :class="tableName">
+        <view
+          :class="tableName"
+          :data-index="i"
+          @click="nodeClick"
+        >
           <view :class="tableName + '__container'">
             <view :class="tableName + '__thead'">
               <view :class="tableName + '__tr'">
@@ -65,7 +83,7 @@
                     :class="tableName + '__th'"
                     :style="'text-align:' + item.align[j] || 'left' + ';'"
                   >
-                    <TChatMarkdownNode :nodes="th.tokens" />
+                    <t-chat-markdown-node :nodes="th.tokens" />
                   </view>
                 </block>
               </view>
@@ -84,7 +102,7 @@
                       :class="tableName + '__td'"
                       :style="'text-align:' + item.align[l] || 'left' + ';'"
                     >
-                      <TChatMarkdownNode :nodes="cell.tokens" />
+                      <t-chat-markdown-node :nodes="cell.tokens" />
                     </view>
                   </block>
                 </view>
@@ -101,8 +119,12 @@
       </block>
 
       <block v-else-if="item.type === 'blockquote'">
-        <view :class="classPrefix + '-blockquote'">
-          <TChatMarkdownNode :nodes="item.tokens" />
+        <view
+          :class="classPrefix + '-blockquote'"
+          :data-index="i"
+          @click="nodeClick"
+        >
+          <t-chat-markdown-node :nodes="item.tokens" />
         </view>
       </block>
 
@@ -119,9 +141,11 @@
         <view
           :class="classPrefix + '-text ' + classPrefix + '-inline'"
           :data-raw="item.raw"
+          :data-index="i"
+          @click="nodeClick"
         >
           <block v-if="item.tokens && item.tokens.length">
-            <TChatMarkdownNode :nodes="item.tokens" />
+            <t-chat-markdown-node :nodes="item.tokens" />
           </block>
           <block v-else>
             {{ '' + item.raw + '' }}
@@ -130,9 +154,13 @@
       </block>
 
       <block v-else-if="item.type === 'strong'">
-        <view :class="classPrefix + '-strong ' + classPrefix + '-inline'">
+        <view
+          :class="classPrefix + '-strong ' + classPrefix + '-inline'"
+          :data-index="i"
+          @click="nodeClick"
+        >
           <block v-if="item.tokens && item.tokens.length">
-            <TChatMarkdownNode :nodes="item.tokens" />
+            <t-chat-markdown-node :nodes="item.tokens" />
           </block>
           <block v-else>
             {{ '' + item.text + '' }}
@@ -141,9 +169,13 @@
       </block>
 
       <block v-else-if="item.type === 'em'">
-        <view :class="classPrefix + '-em ' + classPrefix + '-inline'">
+        <view
+          :class="classPrefix + '-em ' + classPrefix + '-inline'"
+          :data-index="i"
+          @click="nodeClick"
+        >
           <block v-if="item.tokens && item.tokens.length">
-            <TChatMarkdownNode :nodes="item.tokens" />
+            <t-chat-markdown-node :nodes="item.tokens" />
           </block>
           <block v-else>
             {{ '' + item.text + '' }}
@@ -152,9 +184,13 @@
       </block>
 
       <block v-else-if="item.type === 'del'">
-        <view :class="classPrefix + '-del ' + classPrefix + '-inline'">
+        <view
+          :class="classPrefix + '-del ' + classPrefix + '-inline'"
+          :data-index="i"
+          @click="nodeClick"
+        >
           <block v-if="item.tokens && item.tokens.length">
-            <TChatMarkdownNode :nodes="item.tokens" />
+            <t-chat-markdown-node :nodes="item.tokens" />
           </block>
           <block v-else>
             {{ '' + item.text + '' }}
@@ -166,16 +202,20 @@
         <view
           :class="classPrefix + '-link ' + classPrefix + '-inline'"
           :data-index="i"
-          @click.stop="linkClick"
+          @click="nodeClick"
         >
           <block v-if="item.tokens && item.tokens.length">
-            <TChatMarkdownNode :nodes="item.tokens" />
+            <t-chat-markdown-node :nodes="item.tokens" />
           </block>
         </view>
       </block>
 
       <block v-else-if="item.type === 'ref'">
-        <view :class="classPrefix + '-ref ' + classPrefix + '-inline'">
+        <view
+          :class="classPrefix + '-ref ' + classPrefix + '-inline'"
+          :data-index="i"
+          @click="nodeClick"
+        >
           <text :class="classPrefix + '-ref-txt'">
             {{ '' + item.text + '' }}
           </text>
@@ -183,21 +223,35 @@
       </block>
 
       <block v-else-if="item.type === 'space'">
-        <view :class="classPrefix + '-space'" />
+        <view
+          :class="classPrefix + '-space'"
+          :data-index="i"
+          @click="nodeClick"
+        />
       </block>
 
       <block v-else-if="item.type === 'br'">
-        <view :class="classPrefix + '-br'" />
+        <view
+          :class="classPrefix + '-br'"
+          :data-index="i"
+          @click="nodeClick"
+        />
       </block>
 
       <block v-else-if="item.type === 'hr'">
-        <view :class="classPrefix + '-hr'" />
+        <view
+          :class="classPrefix + '-hr'"
+          :data-index="i"
+          @click="nodeClick"
+        />
       </block>
 
       <block v-else-if="item.type === 'codespan'">
         <view
           :class="classPrefix + '-codespan ' + classPrefix + '-inline'"
           :data-type="item.type"
+          :data-index="i"
+          @click="nodeClick"
         >
           {{ '' + (item.text || item.raw) + '' }}
         </view>
@@ -207,6 +261,8 @@
         <view
           :class="classPrefix + '-raw ' + classPrefix + '-inline'"
           :data-type="item.type"
+          :data-index="i"
+          @click="nodeClick"
         >
           {{ '' + (item.text || item.raw) + '' }}
         </view>
@@ -218,7 +274,6 @@
 </template>
 
 <script>
-// import chatMarkdownTable from '../chat-markdown-table/chat-markdown-table.vue';
 import chatMarkdownCode from '../chat-markdown-code/chat-markdown-code.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
@@ -230,68 +285,68 @@ const name = `${prefix}-chat-markdown`;
 const tableName = `${prefix}-chat-markdown-table`;
 
 
-export default uniComponent({
-  name: `${name}-node`,
-  options: {
-    multipleSlots: true,
-    styleIsolation: 'shared',
-  },
-
+export default {
   components: {
-    // chatMarkdownTable,
     chatMarkdownCode,
     // #ifdef MP
     TChatMarkdownNode,
     // #endif
   },
-
-  props: {
-    nodes: {
-      type: Array,
-      default: () => [],
-    },
-  },
-
-  data() {
-    return {
-      classPrefix: name,
-      tableName,
-      theme: '',
-    };
-  },
-
-  methods: {
-    linkClick(e) {
-      const { index } = e.currentTarget.dataset || {};
-      const token = this.nodes?.[index];
-      this.handleClick(e, 'link-tap', token);
+  ...uniComponent({
+    name: `${name}-node`,
+    options: {
+      multipleSlots: true,
+      styleIsolation: 'shared',
     },
 
-    getCareMarkdown() {
-      if (this.careMarkdown) {
+    props: {
+      nodes: {
+        type: Array,
+        default: () => [],
+      },
+    },
+
+    data() {
+      return {
+        classPrefix: name,
+        tableName,
+        theme: '',
+      };
+    },
+
+    methods: {
+      nodeClick(e) {
+        const { index } = e.currentTarget.dataset || {};
+        const token = this.nodes?.[index];
+        this.handleClick(e, 'node-tap', token);
+      },
+
+      getCareMarkdown() {
+        if (this.careMarkdown) {
+          return this.careMarkdown;
+        }
+        this.careMarkdown = this.$parent;
+        while (this.careMarkdown && this.careMarkdown.name !== name) {
+          this.careMarkdown = this.careMarkdown.$parent;
+        }
+
         return this.careMarkdown;
-      }
-      this.careMarkdown = this.$parent;
-      while (this.careMarkdown && this.careMarkdown.name !== name) {
-        this.careMarkdown = this.careMarkdown.$parent;
-      }
+      },
 
-      return this.careMarkdown;
-    },
-
-    handleClick(event, type, token) {
+      handleClick(event, type, token) {
       // 通用点击事件
-      const target = this.getCareMarkdown();
-      if (!target) return;
+        const target = this.getCareMarkdown();
+        if (!target) return;
 
-      target.$emit('click', {
-        event,
-        node: token,
-      });
+        target.$emit('click', {
+          event,
+          node: token,
+        });
+      },
     },
-  },
 
-});
+  }),
+};
 </script>
 <style scoped>
 @import '../chat-markdown/chat-markdown.css';

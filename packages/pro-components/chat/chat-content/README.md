@@ -1,10 +1,11 @@
 ---
 title: ChatContent 对话正文
 description: ChatContent 用于在聊天对话中渲染不同类型的聊天内容。它支持纯文本和Markdown格式的内容渲染，能够根据内容类型自动选择合适的渲染方式。
-spline: base
+spline: chat
 isComponent: true
 ---
 
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-0%25-red" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。

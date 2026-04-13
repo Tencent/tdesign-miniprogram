@@ -3,26 +3,26 @@
     <view
       v-if="showControls"
       :class="classPrefix + '__btn ' + ' ' + tClass"
-      :style="tools._style([customStyle])"
+      :style="'' + tools._style([customStyle])"
     >
       <view
         :class="classPrefix + '__btn--prev'"
         data-dir="prev"
         aria-role="button"
         aria-label="上一张"
-        @click="nav($event, { dir: 'prev'})"
+        @click="(e) => nav(e, { dir: 'prev'})"
       />
       <view
         :class="classPrefix + '__btn--next'"
         data-dir="next"
         aria-role="button"
         aria-label="下一张"
-        @click="nav($event, { dir: 'next'})"
+        @click="(e) => nav(e, { dir: 'next'})"
       />
     </view>
     <view
       v-if="total >= minShowNum"
-      :style="tools._style([customStyle])"
+      :style="'' + tools._style([customStyle])"
       :class="
         tClass +
           ' ' + classPrefix +
@@ -35,7 +35,7 @@
         <view
           v-for="(item, idx) in total"
           :key="idx"
-          :class="tools.cls(classPrefix + '__' + type + '-item', [['active', current === idx], direction])"
+          :class="[classPrefix + '__' + type + '-item', current === idx ? classPrefix + '__' + type + '-item' + '--active' : '', direction ? classPrefix + '__' + type + '-item' + '--' + direction : '']"
         />
       </block>
       <block v-if="type === 'fraction'">
@@ -53,39 +53,41 @@ import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 const name = `${prefix}-swiper-nav`;
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [`${prefix}-class`],
-  mixins: [ChildrenMixin(RELATION_MAP.SwiperNav)],
+export default {
   components: { },
-  props: {
-    ...props,
-  },
-  emits: [
-    'nav-btn-change',
-  ],
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      tools,
-    };
-  },
-
-  methods: {
-    nav(e, dataset) {
-      const { dir } = dataset;
-      const source = 'nav';
-      this.$emit('nav-btn-change', { dir, source });
-      const parent = this[RELATION_MAP.SwiperNav];
-      if (parent) {
-        parent.doNavBtnChange(dir, source);
-      }
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-  },
-});
+    externalClasses: [`${prefix}-class`],
+    mixins: [ChildrenMixin(RELATION_MAP.SwiperNav)],
+    props: {
+      ...props,
+    },
+    emits: [
+      'nav-btn-change',
+    ],
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        tools,
+      };
+    },
+
+    methods: {
+      nav(e, dataset) {
+        const { dir } = dataset;
+        const source = 'nav';
+        this.$emit('nav-btn-change', { dir, source });
+        const parent = this[RELATION_MAP.SwiperNav];
+        if (parent) {
+          parent.doNavBtnChange(dir, source);
+        }
+      },
+    },
+  }),
+};
 </script>
 <style scoped src="./swiper-nav.css"></style>

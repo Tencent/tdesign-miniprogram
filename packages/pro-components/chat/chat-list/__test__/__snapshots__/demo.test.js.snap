@@ -1,0 +1,459 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatList ChatList base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="chat-box"
+    style="height: calc(100vh - 96rpx - 60px);"
+  >
+    <t-chat
+      id="chatList"
+      bind:scroll="onScroll"
+    >
+      <t-chat-message
+        avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
+        chatId="key-1"
+        content="{{
+          Array [
+            Object {
+              "data": "它叫 McMurdo Station ATM，是美国富国银行安装在南极洲最大科学中心麦克默多站的一台自动提款机。",
+              "type": "text",
+            },
+          ]
+        }}"
+        datetime=""
+        name=""
+        placement="left"
+        role="assistant"
+        status="complete"
+        bind:click="onClick"
+        bind:message-longpress="showPopover"
+      >
+        <t-chat-actionbar
+          chatId="key-1"
+          comment=""
+          id="actionbar-key-1"
+          placement="end"
+          slot="actionbar"
+          bind:actions="handleAction"
+        />
+      </t-chat-message>
+      <t-chat-message
+        avatar=""
+        chatId="key-2"
+        content="{{
+          Array [
+            Object {
+              "data": "牛顿第一定律是否适用于所有参考系？",
+              "type": "text",
+            },
+          ]
+        }}"
+        datetime=""
+        name=""
+        placement="right"
+        role="user"
+        status=""
+        bind:click="onClick"
+        bind:message-longpress="showPopover"
+      />
+      <wx-view
+        slot="footer"
+      >
+        <t-chat-sender
+          autoRiseWithKeyboard="{{true}}"
+          disabled="{{false}}"
+          loading="{{false}}"
+          renderPresets="{{
+            Array [
+              Object {
+                "name": "send",
+                "type": "icon",
+              },
+            ]
+          }}"
+          value=""
+          bind:focus="onFocus"
+          bind:send="onSend"
+          bind:stop="onStop"
+        />
+      </wx-view>
+    </t-chat>
+    <t-chat-actionbar
+      actionBar="{{
+        Array [
+          "quote",
+          "copy",
+          "share",
+        ]
+      }}"
+      class="popover-actionbar"
+      longPressPosition="{{null}}"
+      placement="longpress"
+      bind:actions="handlePopoverAction"
+    />
+  </wx-view>
+  <t-toast
+    id="t-toast"
+  />
+</base>
+`;
+
+exports[`ChatList ChatList chart-component demo works fine 1`] = `<chart-component />`;
+
+exports[`ChatList ChatList code demo works fine 1`] = `
+<code>
+  <wx-view
+    class="chat-box"
+    style="height: calc(100vh - 96rpx - 60px);"
+  >
+    <t-chat>
+      <t-chat-message
+        avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
+        chatId="key-1"
+        datetime=""
+        name=""
+        placement="left"
+        role="assistant"
+        bind:message-longpress="showPopover"
+      >
+        <wx-view
+          slot="content"
+        >
+          <t-chat-content
+            content="{{
+              Object {
+                "data": "欢迎使用TDesign Chatbot智能代码助手，请输入你的问题",
+                "type": "text",
+              }
+            }}"
+          />
+        </wx-view>
+      </t-chat-message>
+      <wx-view
+        slot="footer"
+      >
+        <t-chat-sender
+          autoRiseWithKeyboard="{{true}}"
+          disabled="{{false}}"
+          loading="{{false}}"
+          value="使用tdesign组件库实现一个登录表单的例子"
+          bind:focus="onFocus"
+          bind:send="onSend"
+          bind:stop="onStop"
+        />
+      </wx-view>
+    </t-chat>
+    <t-chat-actionbar
+      class="popover-actionbar"
+      longPressPosition="{{null}}"
+      placement="longpress"
+      bind:actions="handlePopoverAction"
+    />
+  </wx-view>
+  <t-toast
+    id="t-toast"
+  />
+</code>
+`;
+
+exports[`ChatList ChatList custom demo works fine 1`] = `
+<custom>
+  <wx-view
+    class="chat-box chart-chat"
+    style="height: calc(100vh - 96rpx - 60px);"
+  >
+    <t-chat>
+      <t-chat-message
+        avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
+        chatId="key-1"
+        class="assistant"
+        datetime=""
+        name=""
+        placement="left"
+        role="assistant"
+        bind:message-longpress="showPopover"
+      >
+        <wx-view
+          slot="content"
+        >
+          <t-chat-content
+            content="{{
+              Object {
+                "data": "欢迎使用TDesign智能图表分析助手，请输入你的问题",
+                "type": "text",
+              }
+            }}"
+          />
+        </wx-view>
+      </t-chat-message>
+      <wx-view
+        slot="footer"
+      >
+        <t-chat-sender
+          autoRiseWithKeyboard="{{true}}"
+          disabled="{{false}}"
+          loading="{{false}}"
+          renderPresets="{{
+            Array [
+              Object {
+                "name": "send",
+                "type": "icon",
+              },
+            ]
+          }}"
+          value=""
+          bind:focus="onFocus"
+          bind:send="onSend"
+          bind:stop="onStop"
+        />
+      </wx-view>
+    </t-chat>
+    <t-chat-actionbar
+      class="popover-actionbar"
+      longPressPosition="{{null}}"
+      placement="longpress"
+      bind:actions="handlePopoverAction"
+    />
+  </wx-view>
+  <t-toast
+    id="t-toast"
+  />
+</custom>
+`;
+
+exports[`ChatList ChatList docs demo works fine 1`] = `
+<docs>
+  <wx-view
+    class="chat-box"
+    style="height: calc(100vh - 96rpx - 60px);"
+  >
+    <t-chat>
+      <t-chat-message
+        avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
+        chatContentProps="{{
+          Object {
+            "thinking": Object {
+              "collapsed": true,
+              "maxHeight": 100,
+            },
+          }
+        }}"
+        chatId="key-1"
+        content="{{
+          Array [
+            Object {
+              "data": "欢迎使用TDesign文案写作助手，可以先上传你需要参考的文件，输入你要撰写的主题~",
+              "type": "text",
+            },
+          ]
+        }}"
+        datetime=""
+        name=""
+        placement="left"
+        role="assistant"
+        bind:message-longpress="showPopover"
+      />
+      <wx-view
+        slot="footer"
+      >
+        <t-chat-sender
+          attachmentsProps="{{
+            Object {
+              "imageViewer": true,
+              "items": Array [],
+              "removable": true,
+            }
+          }}"
+          autoRiseWithKeyboard="{{true}}"
+          disabled="{{false}}"
+          fileList="{{Array []}}"
+          loading="{{false}}"
+          renderPresets="{{
+            Array [
+              Object {
+                "name": "upload",
+                "presets": Array [
+                  "uploadCamera",
+                  "uploadImage",
+                  "uploadAttachment",
+                ],
+                "status": "",
+              },
+              Object {
+                "name": "send",
+                "type": "icon",
+              },
+            ]
+          }}"
+          value=""
+          visible="{{false}}"
+          bind:fileChange="onFileChange"
+          bind:fileDelete="onFileDelete"
+          bind:focus="onFocus"
+          bind:keyboardheightchange="onkeyboardheightchange"
+          bind:send="onSend"
+          bind:stop="onStop"
+          bind:updateVisible="onUpdateVisible"
+        />
+      </wx-view>
+    </t-chat>
+    <t-chat-actionbar
+      class="popover-actionbar"
+      longPressPosition="{{null}}"
+      placement="longpress"
+      bind:actions="handlePopoverAction"
+    />
+  </wx-view>
+  <t-toast
+    id="t-toast"
+  />
+</docs>
+`;
+
+exports[`ChatList ChatList hook-component demo works fine 1`] = `
+<hook-component>
+  <wx-view
+    class="chat-box"
+    style="height: calc(100vh - 96rpx - 60px);"
+  >
+    <t-chat>
+      <t-chat-message
+        avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
+        chatId="key-1"
+        content="{{
+          Array [
+            Object {
+              "data": "它叫 McMurdo Station ATM，是美国富国银行安装在南极洲最大科学中心麦克默多站的一台自动提款机。",
+              "type": "text",
+            },
+          ]
+        }}"
+        datetime=""
+        name=""
+        placement="left"
+        role="assistant"
+        bind:message-longpress="showPopover"
+      >
+        <t-chat-actionbar
+          placement="end"
+          slot="actionbar"
+          bind:actions="handleAction"
+        />
+      </t-chat-message>
+      <t-chat-message
+        avatar=""
+        chatId="key-2"
+        content="{{
+          Array [
+            Object {
+              "data": "牛顿第一定律是否适用于所有参考系？",
+              "type": "text",
+            },
+          ]
+        }}"
+        datetime=""
+        name=""
+        placement="right"
+        role="user"
+        bind:message-longpress="showPopover"
+      />
+      <wx-view
+        slot="footer"
+      >
+        <t-chat-sender
+          autoRiseWithKeyboard="{{true}}"
+          disabled="{{false}}"
+          loading="{{false}}"
+          renderPresets="{{
+            Array [
+              Object {
+                "name": "send",
+                "type": "icon",
+              },
+            ]
+          }}"
+          value=""
+          bind:focus="onFocus"
+          bind:send="onSend"
+          bind:stop="onStop"
+        />
+      </wx-view>
+    </t-chat>
+    <t-chat-actionbar
+      class="popover-actionbar"
+      longPressPosition="{{null}}"
+      placement="longpress"
+      bind:actions="handlePopoverAction"
+    />
+  </wx-view>
+  <t-toast
+    id="t-toast"
+  />
+</hook-component>
+`;
+
+exports[`ChatList ChatList image demo works fine 1`] = `
+<wx-image>
+  <wx-view
+    class="chat-box image-chat"
+    style="height: calc(100vh - 96rpx - 60px);"
+  >
+    <t-chat>
+      <t-chat-message
+        avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
+        chatId="key-1"
+        datetime=""
+        name=""
+        placement="left"
+        role="assistant"
+        bind:message-longpress="showPopover"
+      >
+        <wx-view
+          slot="content"
+          style="width: 100%"
+        >
+          <t-chat-content
+            content="{{
+              Object {
+                "data": "欢迎使用TDesign智能生图助手，请先写下你的创意，可以试试上传参考图哦～",
+                "type": "text",
+              }
+            }}"
+          />
+        </wx-view>
+      </t-chat-message>
+      <wx-view
+        slot="footer"
+      >
+        <t-chat-sender
+          autoRiseWithKeyboard="{{true}}"
+          disabled="{{false}}"
+          loading="{{false}}"
+          renderPresets="{{
+            Array [
+              Object {
+                "name": "send",
+                "type": "icon",
+              },
+            ]
+          }}"
+          value=""
+          bind:focus="onFocus"
+          bind:send="onSend"
+          bind:stop="onStop"
+        />
+      </wx-view>
+    </t-chat>
+    <t-chat-actionbar
+      class="popover-actionbar"
+      longPressPosition="{{null}}"
+      placement="longpress"
+      bind:actions="handlePopoverAction"
+    />
+  </wx-view>
+  <t-toast
+    id="t-toast"
+  />
+</wx-image>
+`;

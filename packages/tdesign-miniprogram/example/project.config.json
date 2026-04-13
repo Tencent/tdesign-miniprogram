@@ -150,6 +150,12 @@
           "scene": null
         },
         {
+          "name": "config-provider",
+          "pathName": "pages/config-provider/config-provider",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "dialog",
           "pathName": "pages/dialog/dialog",
           "query": "",
@@ -194,6 +200,12 @@
         {
           "name": "footer",
           "pathName": "pages/footer/footer",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "form",
+          "pathName": "pages/form/form",
           "query": "",
           "scene": null
         },

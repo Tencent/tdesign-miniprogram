@@ -4,14 +4,16 @@
   rules="{{rules}}"
   reset-type="empty"
   show-error-message
+  using-custom-navbar
+  scrollToFirstError="smooth"
   label-align="top"
-  required-mark
   bind:reset="onReset"
   bind:submit="onSubmit"
 >
   <t-form-item label="用户名" name="name" help="输入用户名">
     <t-input
       value="{{formData.name}}"
+      disabled="{{disabled}}"
       borderless
       placeholder="请输入用户名"
       bind:change="onInputChange"
@@ -22,6 +24,7 @@
   <t-form-item label="密码" name="password">
     <t-input
       value="{{formData.password}}"
+      disabled="{{disabled}}"
       borderless
       type="password"
       clearable="{{false}}"
@@ -32,25 +35,50 @@
   </t-form-item>
 
   <t-form-item label="性别" name="gender">
-    <t-radio-group value="{{formData.gender}}" class="box" borderless bind:change="onRadioChange">
+    <t-radio-group
+      value="{{formData.gender}}"
+      disabled="{{disabled}}"
+      class="box"
+      borderless
+      bind:change="onRadioChange"
+    >
       <t-radio block="{{false}}" name="radio" value="man" label="男" />
       <t-radio block="{{false}}" name="radio" value="women" label="女" />
       <t-radio block="{{false}}" name="radio" value="secret" label="保密" />
     </t-radio-group>
   </t-form-item>
 
-  <t-form-item label="生日" name="birth">
+  <t-form-item label="生日" name="birth" arrow>
     <t-input
       value="{{formData.birth}}"
+      disabled="{{disabled}}"
       borderless
       placeholder="请输入生日"
-      bind:change="onInputChange"
+      readonly
+      bind:tap="showDatePicker"
       data-field="birth"
+    />
+    <t-date-time-picker
+      title="选择日期"
+      visible="{{dateVisible}}"
+      mode="date"
+      format="YYYY-MM-DD"
+      bind:change="onDatePickerConfirm"
+      bind:close="onDatePickerClose"
+      start="{{start}}"
+      end="{{end}}"
     />
   </t-form-item>
 
   <t-form-item arrow label="籍贯" name="place">
-    <t-input value="{{formData.place}}" borderless placeholder="请选择籍贯" bind:tap="showCascader" />
+    <t-input
+      value="{{formData.place}}"
+      disabled="{{disabled}}"
+      readonly
+      borderless
+      placeholder="请选择籍贯"
+      bind:tap="showCascader"
+    />
     <t-cascader
       visible="{{visibleCascader}}"
       value="{{address}}"
@@ -62,27 +90,37 @@
   </t-form-item>
 
   <t-form-item label="年限" name="age">
-    <t-stepper value="{{formData.age}}" theme="filled" bind:change="onChangeStepper" />
+    <t-stepper value="{{formData.age}}" disabled="{{disabled}}" theme="filled" bind:change="onChangeStepper" />
   </t-form-item>
 
   <t-form-item label="自我评价" name="description">
-    <t-rate value="{{formData.description}}" variant="filled" allow-half gap="{{rateGap}}" bind:change="onRateChange" />
+    <t-rate
+      value="{{formData.description}}"
+      disabled="{{disabled}}"
+      variant="filled"
+      allow-half
+      gap="{{rateGap}}"
+      bind:change="onRateChange"
+    />
   </t-form-item>
 
   <t-form-item label="个人简介" name="resume">
     <t-textarea
       value="{{formData.resume}}"
+      disabled="{{disabled}}"
       class="textarea"
       indicator
       maxlength="{{50}}"
       placeholder="请输入个人简介"
+      class="textarea"
       bind:change="onTextareaChange"
     />
   </t-form-item>
 
-  <t-form-item label="上传照片" name="photo">
+  <t-form-item label="上传照片" label-align="top" name="photo">
     <t-upload
       files="{{formData.photo}}"
+      disabled="{{disabled}}"
       multiple
       max="{{8}}"
       action="{{action}}"

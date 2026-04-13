@@ -5,6 +5,64 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.13.2 `2026-04-09`
+
+### 🚀 Features
+
+- `ChatContent`: 透传 `click` 事件 @zydemail ([#4388](https://github.com/Tencent/tdesign-miniprogram/pull/4388))
+- `ChatMessage`: 透传 `click` 事件 @zydemail ([#4388](https://github.com/Tencent/tdesign-miniprogram/pull/4388))
+- `Fab`: 为 `icon` 属性新增 `Object` 类型，支持透传到图标组件 @anlyyao ([#4400](https://github.com/Tencent/tdesign-miniprogram/pull/4400))
+- `Icon`: 新增 `divider-1`, `voice-wave` 和 `keyboard-1`  图标 @uyarn ([#4395](https://github.com/Tencent/tdesign-miniprogram/pull/4395))
+- `Indexes`: 新增 `showFullIndex` 属性，表示是否显示完整的索引内容，默认显示首字符 @anlyyao ([#4405](https://github.com/Tencent/tdesign-miniprogram/pull/4405))
+
+### 🐞 Bug Fixes
+
+- `Fab`: 修复 `draggable` 为 `true` 时外部样式类（`class`、`t-class`）无效 @anlyyao ([#4404](https://github.com/Tencent/tdesign-miniprogram/pull/4404))
+- `Form`: 
+  - 修复 `FormItem` 右侧箭头深色模式颜色错误 @anlyyao ([#4384](https://github.com/Tencent/tdesign-miniprogram/pull/4384))
+  - 修复控制台告警 @anlyyao ([#4401](https://github.com/Tencent/tdesign-miniprogram/pull/4401))
+- `Rate`: 修复提示框层级不够被覆盖的问题 @liweijie0812 ([#4386](https://github.com/Tencent/tdesign-miniprogram/pull/4386))
+
+## 🌈 1.13.1 `2026-03-26`
+
+### 🚀 Features
+
+- `Button`: `open-type` 补充 `phoneOneClickLogin` 可选项，同时新增 `phoneoneclicklogin` 事件 @anlyyao ([#4357](https://github.com/Tencent/tdesign-miniprogram/pull/4357))
+- `ChatMarkdown`: 扩展 `click` 事件触发源，从点击链接触发，改为所有事件冒泡到的节点都会触发 @mimaoxiao ([#4372](https://github.com/Tencent/tdesign-miniprogram/pull/4372))
+- `ChatThinking`: 修复 `collapsed` 属性无效，支持内容输出结束后自动收起 @zydemail ([#4354](https://github.com/Tencent/tdesign-miniprogram/pull/4354))
+
+### 🐞 Bug Fixes
+
+- `Button`: 修复 `phoneNumberNoQuotaToast` 属性无效 @anlyyao ([#4357](https://github.com/Tencent/tdesign-miniprogram/pull/4357))
+- `ChatActionbar`: 修复 `actionBar` 属性无效以及长按气泡框不显示浮层的问题 @zydemail ([#4348](https://github.com/Tencent/tdesign-miniprogram/pull/4348))
+- `Form`: 修复 `rules` 属性为空时，`labelWidth` 属性无效以及控制台报错的问题 @anlyyao ([#4353](https://github.com/Tencent/tdesign-miniprogram/pull/4353))
+- `Tabs`: 修复开启 `animation` 和 `lazy` 时，跳跃切换选项卡内容区域显示异常的问题 @novlan1 ([#4367](https://github.com/Tencent/tdesign-miniprogram/pull/4367))
+
+## 🌈 1.13.0 `2026-03-18`
+
+### 🚨 Breaking Changes
+
+- `ChatSender`: 附件末尾没有添加入口，移除无实际意义的 `fileAdd` 事件 @zydemail ([#4331](https://github.com/Tencent/tdesign-miniprogram/pull/4331))
+- `DateTimePicker`: 废弃 `custom-locale` 属性，请用 `ConfigProvider` 替换该功能 @anlyyao ([#4261](https://github.com/Tencent/tdesign-miniprogram/pull/4261))
+
+### 🚀 Features
+
+- `Form`: 新增 `Form` 表单组件 @Jay2138 ([#3912](https://github.com/Tencent/tdesign-miniprogram/pull/3912)) @Boomkaa ([#4283](https://github.com/Tencent/tdesign-miniprogram/pull/4283)) 
+- `ConfigProvider`: 新增 `ConfigProvider` 全局特性配置组件 @anlyyao ([#4261](https://github.com/Tencent/tdesign-miniprogram/pull/4261))
+- `ChatThinking`: 新增 `content` 插槽 @zydemail ([#4270](https://github.com/Tencent/tdesign-miniprogram/pull/4270))
+
+### 🐞 Bug Fixes
+
+- `ColorPicker`: 修复弹窗模式下预设颜色（swatch-colors）无法横向滚动 @anlyyao ([#4288](https://github.com/Tencent/tdesign-miniprogram/pull/4288))
+- `DateTimePicker`: 修复 `format` 含非日期 `token`（如 `ddd`）时，格式化后的值回传导致 `Invalid Date` 的问题 @novlan1 ([#4320](https://github.com/Tencent/tdesign-miniprogram/pull/4320))
+- `Grid`: 修复右侧 `border` 边框在浏览器及部分机型上渲染错误 @anlyyao ([#4280](https://github.com/Tencent/tdesign-miniprogram/pull/4280))
+- `Upload`: 修复 `@upload-disabled-mask` 变量默认值错误 @anlyyao ([#4303](https://github.com/Tencent/tdesign-miniprogram/pull/4303))
+- `ChatMarkdown`: 修复组件输入值为一个空项的列表时出现 `undefined` 的问题 @mimaoxiao ([#4334](https://github.com/Tencent/tdesign-miniprogram/pull/4334))
+
+### 📝 Documentation
+
+- `Attachments`: 移除 `addable` 属性相关文档描述 @zydemail ([#4331](https://github.com/Tencent/tdesign-miniprogram/pull/4331))
+
 ## 🌈 1.12.3 `2026-02-03`
 
 ### 🚀 Features

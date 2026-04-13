@@ -16,6 +16,9 @@
         desc="支持多种加载动效类型，包括 gradient、moving、dots"
       >
         <base-demo />
+        <t-demo desc="collapsed设置自动收起">
+          <collapsed-demo />
+        </t-demo>
       </t-demo>
       <t-demo
         title="02 组件状态"
@@ -28,7 +31,6 @@
       </t-demo>
       <t-demo
         title="03 组件样式"
-        desc=""
       >
         <layout-demo />
       </t-demo>
@@ -38,6 +40,7 @@
 
 <script>
 import BaseDemo from './base/index.vue';
+import CollapsedDemo from './collapsed/index.vue';
 import LayoutDemo from './layout/index.vue';
 import PendingDemo from './pending/index.vue';
 import CompleteDemo from './complete/index.vue';
@@ -46,6 +49,7 @@ import CompleteDemo from './complete/index.vue';
 export default {
   components: {
     BaseDemo,
+    CollapsedDemo,
     LayoutDemo,
     PendingDemo,
     CompleteDemo,

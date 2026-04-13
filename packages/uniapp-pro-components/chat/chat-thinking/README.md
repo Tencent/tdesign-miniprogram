@@ -1,14 +1,16 @@
 ---
 title: ChatThinking 思考过程
 description: 用于展示思考过程的组件。
-spline: base
+spline: chat
 isComponent: true
 ---
 
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-chat-thinking />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TChatThinking from '@tdesign/uniapp-chat/chat-thinking/chat-thinking.vue';
@@ -20,6 +22,10 @@ import TChatThinking from '@tdesign/uniapp-chat/chat-thinking/chat-thinking.vue'
 
 
 {{ base }}
+
+支持通过collapsed来控制面板是否折叠，示例中展示了当内容输出结束时自动收起的效果
+
+{{ collapsed }}
 
 ### 02 组件状态
 

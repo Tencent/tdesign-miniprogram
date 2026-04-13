@@ -97,8 +97,8 @@ export default {
   },
   /** 只读状态 */
   readonly: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdSearchProps['readonly'],
   },
   /** 预览结果列表 */
   resultList: {

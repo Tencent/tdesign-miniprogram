@@ -1,7 +1,7 @@
 ---
 title: Drawer 抽屉
 description: 用作一组平行关系页面/内容的切换器，相较于Tab，同屏可展示更多的选项数量。
-spline: message
+spline: navigation
 isComponent: true
 ---
 
@@ -9,7 +9,9 @@ isComponent: true
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-drawer />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TDrawer from '@tdesign/uniapp/drawer/drawer.vue';

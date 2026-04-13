@@ -15,16 +15,14 @@ export default {
   addContent: {
     type: String,
   },
-  /** 是否允许重复上传相同文件名的文件 */
-  allowUploadDuplicateFile: Boolean,
   /** 图片上传配置，视频上传配置，文件上传配置等，包含图片尺寸、图片来源、视频来源、视频拍摄最长时间等。更多细节查看小程序官网。[图片上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)。[视频上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseVideo.html) */
   config: {
     type: Object,
   },
   /** 是否禁用组件 */
   disabled: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdUploadProps['disabled'],
   },
   /** 是否支持拖拽排序。长按时是否振动，碰撞时是否振动。示例一：`true`。示例二：`{ vibrate: true, collisionVibrate: true }` */
   draggable: {

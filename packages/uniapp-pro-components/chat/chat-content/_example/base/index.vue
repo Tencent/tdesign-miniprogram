@@ -20,6 +20,7 @@
         <t-chat-content
           :content="assistantContent"
           role="assistant"
+          @click="onClick"
         />
       </view>
     </view>
@@ -83,7 +84,12 @@ export default {
     };
   },
   created() {},
-  methods: {},
+  methods: {
+    onClick(e) {
+      const { node } = e;
+      console.log('点击节点', node);
+    },
+  },
 };
 </script>
 <style>

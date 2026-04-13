@@ -8,24 +8,10 @@ import type { TdFormProps } from './type';
 export default {
   /** 是否在表单标签字段右侧显示冒号 */
   colon: Boolean,
-  /** 表单内容对齐方式：左对齐、右对齐 */
-  contentAlign: {
-    type: String,
-    default: 'left' as TdFormProps['contentAlign'],
-    validator(val: TdFormProps['contentAlign']): boolean {
-      if (!val) return true;
-      return ['left', 'right'].includes(val);
-    },
-  },
   /** 表单数据 */
   data: {
     type: Object,
     default: () => ({}),
-  },
-  /** 是否禁用整个表单 */
-  disabled: {
-    type: Boolean,
-    default: undefined,
   },
   /** 表单错误信息配置，示例：`{ idcard: '请输入正确的身份证号码', max: '字符长度不能超过 ${max}' }` */
   errorMessage: {
@@ -45,15 +31,10 @@ export default {
     type: [String, Number],
     default: '81px' as TdFormProps['labelWidth'],
   },
-  /** 是否整个表单只读 */
-  readonly: {
-    type: Boolean,
-    default: undefined,
-  },
   /** 是否显示必填符号（*），默认显示 */
   requiredMark: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdFormProps['requiredMark'],
   },
   /** 表单必填符号（*）显示位置 */
   requiredMarkPosition: {

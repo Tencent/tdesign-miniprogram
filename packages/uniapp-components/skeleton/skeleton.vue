@@ -2,7 +2,7 @@
   <view>
     <view
       v-if="isShow"
-      :style="tools._style([customStyle])"
+      :style="'' + tools._style([customStyle])"
       :class="[classPrefix + ' ', tClass]"
     >
       <view
@@ -21,7 +21,7 @@
             v-for="(col, index1) in row"
             :key="index1"
             :class="[col.class + ' ', tClassCol]"
-            :style="tools._style(col.style)"
+            :style="'' + tools._style(col.style)"
           />
         </view>
       </view>
@@ -68,142 +68,144 @@ const ThemeMap = {
   }],
 };
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-col`,
-    `${prefix}-class-row`,
-  ],
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      parsedRowCols: [],
-      isShow: false,
-      tools,
-      timer: null,
-    };
-  },
-  watch: {
-    rowCol: {
-      handler() {
-        this.init();
+export default {
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-col`,
+      `${prefix}-class-row`,
+    ],
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        parsedRowCols: [],
+        isShow: false,
+        tools,
+        timer: null,
+      };
+    },
+    watch: {
+      rowCol: {
+        handler() {
+          this.init();
+        },
+        immediate: true,
       },
-      immediate: true,
+      loading: 'isShowSkeleton',
+      delay: 'isShowSkeleton',
     },
-    loading: 'isShowSkeleton',
-    delay: 'isShowSkeleton',
-  },
-  mounted() {
-    this.init();
-    this.isShowSkeleton();
-  },
-  beforeUnMount() {
-    this.clearTimer();
-  },
-  methods: {
-    init() {
-      const { theme, rowCol } = this;
-      const rowCols = [];
-
-      if (rowCol &&  rowCol.length) {
-        rowCols.push(...rowCol);
-      } else {
-        rowCols.push(...ThemeMap[theme || 'text']);
-      }
-
-      const parsedRowCols = rowCols.map((item) => {
-        if (isInteger(item) && item >= 0) {
-          return new Array(item).fill({
-            class: this.getColItemClass({ type: 'text' }),
-            style: {},
-          });
-        }
-
-        if (Array.isArray(item)) {
-          return item.map(col => ({
-            ...col,
-            class: this.getColItemClass(col),
-            style: this.getColItemStyle(col),
-          }));
-        }
-
-        const nItem = item;
-        return [
-          {
-            ...nItem,
-            class: this.getColItemClass(nItem),
-            style: this.getColItemStyle(nItem),
-          },
-        ];
-      });
-
-      this.parsedRowCols = parsedRowCols;
+    mounted() {
+      this.init();
+      this.isShowSkeleton();
     },
-
-    getColItemClass(obj) {
-      return classNames([
-        `${name}__col`,
-        `${name}--type-${obj.type || 'text'}`,
-        `${name}--animation-${this.animation}`,
-      ]);
-    },
-
-    getColItemStyle(obj) {
-      const styleName = [
-        'width',
-        'height',
-        'marginRight',
-        'marginLeft',
-        'margin',
-        'size',
-        'background',
-        'backgroundColor',
-        'borderRadius',
-      ];
-      const style = {};
-      styleName.forEach((name) => {
-        if (name in obj) {
-          const px = isNumeric(obj[name]) ? `${obj[name]}px` : obj[name];
-          if (name === 'size') {
-            [style.width, style.height] = [px, px];
-          } else {
-            style[name] = px;
-          }
-        }
-      });
-      return style;
-    },
-
-    clearTimer() {
-      if (this.timer) {
-        clearTimeout(this.timer);
-        this.timer = null;
-      }
-    },
-
-    isShowSkeleton() {
+    beforeUnmount() {
       this.clearTimer();
-
-      const { loading, delay } = this;
-
-      if (!loading || delay === 0) {
-        this.isShow = loading;
-        return;
-      }
-
-      this.timer = setTimeout(() => {
-        this.isShow = this.loading;
-      }, delay);
     },
-  },
-});
+    methods: {
+      init() {
+        const { theme, rowCol } = this;
+        const rowCols = [];
+
+        if (rowCol &&  rowCol.length) {
+          rowCols.push(...rowCol);
+        } else {
+          rowCols.push(...ThemeMap[theme || 'text']);
+        }
+
+        const parsedRowCols = rowCols.map((item) => {
+          if (isInteger(item) && item >= 0) {
+            return new Array(item).fill({
+              class: this.getColItemClass({ type: 'text' }),
+              style: {},
+            });
+          }
+
+          if (Array.isArray(item)) {
+            return item.map(col => ({
+              ...col,
+              class: this.getColItemClass(col),
+              style: this.getColItemStyle(col),
+            }));
+          }
+
+          const nItem = item;
+          return [
+            {
+              ...nItem,
+              class: this.getColItemClass(nItem),
+              style: this.getColItemStyle(nItem),
+            },
+          ];
+        });
+
+        this.parsedRowCols = parsedRowCols;
+      },
+
+      getColItemClass(obj) {
+        return classNames([
+          `${name}__col`,
+          `${name}--type-${obj.type || 'text'}`,
+          `${name}--animation-${this.animation}`,
+        ]);
+      },
+
+      getColItemStyle(obj) {
+        const styleName = [
+          'width',
+          'height',
+          'marginRight',
+          'marginLeft',
+          'margin',
+          'size',
+          'background',
+          'backgroundColor',
+          'borderRadius',
+        ];
+        const style = {};
+        styleName.forEach((name) => {
+          if (name in obj) {
+            const px = isNumeric(obj[name]) ? `${obj[name]}px` : obj[name];
+            if (name === 'size') {
+              [style.width, style.height] = [px, px];
+            } else {
+              style[name] = px;
+            }
+          }
+        });
+        return style;
+      },
+
+      clearTimer() {
+        if (this.timer) {
+          clearTimeout(this.timer);
+          this.timer = null;
+        }
+      },
+
+      isShowSkeleton() {
+        this.clearTimer();
+
+        const { loading, delay } = this;
+
+        if (!loading || delay === 0) {
+          this.isShow = loading;
+          return;
+        }
+
+        this.timer = setTimeout(() => {
+          this.isShow = this.loading;
+        }, delay);
+      },
+    },
+  }),
+};
 </script>
 <style scoped src="./skeleton.css"></style>

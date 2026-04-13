@@ -4,7 +4,9 @@
       class="chat-box"
       :style="'height: ' + contentHeightClone + ';'"
     >
-      <t-chat-list>
+      <t-chat-list
+        @scroll="onScroll"
+      >
         <block
           v-for="(item, chatIndex) in chatList"
           :key="item.key"
@@ -114,7 +116,7 @@ import TSteps from '@tdesign/uniapp/steps/steps.vue';
 import TStepItem from '@tdesign/uniapp/step-item/step-item.vue';
 import TIcon from '@tdesign/uniapp/icon/icon.vue';
 import TToast from '@tdesign/uniapp/toast/toast.vue';
-import Toast from '@tdesign/uniapp/toast/index';
+import { Toast } from '@tdesign/uniapp';
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;
@@ -564,6 +566,10 @@ export default {
     handlePopoverAction(e) {
       e.chatId = this.activePopoverId;
       this.handleAction(e);
+    },
+
+    onScroll(e) {
+      console.log('onScroll', e);
     },
   },
 };

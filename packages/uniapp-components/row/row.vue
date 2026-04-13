@@ -1,7 +1,7 @@
 <template>
   <view
     :class="prefix + '-row'"
-    :style="getRowStyles(gutter, customStyle)"
+    :style="''+getRowStyles(gutter, customStyle)"
   >
     <slot />
   </view>
@@ -17,45 +17,47 @@ import { ParentMixin, RELATION_MAP } from '../common/relation';
 const name = `${prefix}-row`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  mixins: [ParentMixin(RELATION_MAP.Col)],
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      tools,
-    };
-  },
-  watch: {
-    gutter: {
-      handler() {
+export default {
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    mixins: [ParentMixin(RELATION_MAP.Col)],
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        prefix,
+        tools,
+      };
+    },
+    watch: {
+      gutter: {
+        handler() {
+          this.setGutter();
+        },
+        immediate: true,
+      },
+    },
+    methods: {
+      getRowStyles,
+      innerAfterLinked() {
         this.setGutter();
       },
-      immediate: true,
-    },
-  },
-  methods: {
-    getRowStyles,
-    innerAfterLinked() {
-      this.setGutter();
-    },
-    setGutter() {
-      const {
-        gutter,
-      } = this;
+      setGutter() {
+        const {
+          gutter,
+        } = this;
 
-      this.children?.forEach((o) => {
-        o.gutter = gutter;
-      });
+        this.children?.forEach((o) => {
+          o.gutter = gutter;
+        });
+      },
     },
-  },
-});
+  }),
+};
 
 </script>
 <style scoped src="./row.css"></style>

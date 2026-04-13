@@ -16,7 +16,7 @@
         <base-demo />
       </t-demo>
 
-      <t-demo desc="">
+      <t-demo>
         <multiple-demo />
       </t-demo>
 

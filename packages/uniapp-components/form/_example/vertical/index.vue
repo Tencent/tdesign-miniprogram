@@ -6,10 +6,10 @@
       :rules="rules"
       reset-type="empty"
       show-error-message
+      scroll-to-first-error="smooth"
       label-align="top"
-      required-mark
-      @reset="onReset($event, { tagId: 'form' })"
-      @submit="onSubmit($event, { tagId: 'form' })"
+      @reset="(e) => onReset(e, { tagId: 'form' })"
+      @submit="(e) => onSubmit(e, { tagId: 'form' })"
     >
       <t-form-item
         label="用户名"
@@ -18,11 +18,12 @@
       >
         <t-input
           :value="formData.name"
+          :disabled="disabled"
           borderless
           placeholder="请输入用户名"
           data-field="name"
           style="flex: 1;"
-          @change="onInputChange($event, { field: 'name' })"
+          @change="(e) => onInputChange(e, { field: 'name' })"
         />
       </t-form-item>
 
@@ -32,13 +33,14 @@
       >
         <t-input
           :value="formData.password"
+          :disabled="disabled"
           borderless
           type="password"
           :clearable="false"
           placeholder="请输入密码"
           data-field="password"
           style="flex: 1;"
-          @change="onInputChange($event, { field: 'password' })"
+          @change="(e) => onInputChange(e, { field: 'password' })"
         />
       </t-form-item>
 
@@ -48,6 +50,7 @@
       >
         <t-radio-group
           :value="formData.gender"
+          :disabled="disabled"
           t-class="box"
           borderless
           style="flex: 1;"
@@ -75,16 +78,18 @@
       </t-form-item>
 
       <t-form-item
+        arrow
         label="生日"
         name="birth"
       >
         <t-input
           :value="formData.birth"
+          :disabled="disabled"
           borderless
           placeholder="请输入生日"
           data-field="birth"
           style="flex: 1;"
-          @change="onInputChange($event, { field: 'birth' })"
+          @change="(e) => onInputChange(e, { field: 'birth' })"
         />
       </t-form-item>
 
@@ -95,6 +100,7 @@
       >
         <t-input
           :value="formData.place"
+          :disabled="disabled"
           borderless
           placeholder="请选择籍贯"
           :readonly="true"
@@ -106,7 +112,7 @@
           :value="address"
           title="选择地址"
           :options="options"
-          @update:visible="visibleCascader = $event"
+          @update:visible="(e) => visibleCascader = e"
           @change="onChangeCascader"
           @visible-change="onCascaderVisibleChange"
         />
@@ -118,6 +124,7 @@
       >
         <t-stepper
           :value="formData.age"
+          :disabled="disabled"
           theme="filled"
           @change="onChangeStepper"
         />
@@ -129,6 +136,7 @@
       >
         <t-rate
           :value="formData.description"
+          :disabled="disabled"
           variant="filled"
           allow-half
           :gap="rateGap"
@@ -142,6 +150,7 @@
       >
         <t-textarea
           :value="formData.resume"
+          :disabled="disabled"
           t-class="textarea"
           indicator
           :maxlength="50"
@@ -153,10 +162,12 @@
 
       <t-form-item
         label="上传照片"
+        label-align="top"
         name="photo"
       >
         <t-upload
           :files="formData.photo"
+          :disabled="disabled"
           multiple
           :max="8"
           :action="action"
@@ -424,62 +435,25 @@ export default {
       ],
       rules: {
         name: [
-          {
-            required: true,
-            message: '用户名不能为空',
-          },
-          {
-            maxLength: 3,
-            message: '用户名不能超过3个字符',
-          },
+          { pattern: '[a-zA-Z]{8}', validator: val => val.length === 8, message: '只能输入8个字符英文' },
         ],
         password: [
-          {
-            required: true,
-            message: '密码不能为空',
-          },
-        ],
-        gender: [
-          {
-            required: true,
-            message: '性别不能为空',
-          },
-        ],
-        birth: [
-          {
-            required: true,
-            message: '生日不能为空',
-          },
-        ],
-        age: [
-          {
-            required: true,
-            message: '年限不能为空',
-          },
-        ],
-        place: [
-          {
-            required: true,
-            message: '籍贯不能为空',
-          },
+          { validator: val => val.length > 6, message: '长度大于6个字符' },
         ],
         description: [
-          {
-            required: true,
-            message: '分数不能为空',
-          },
+          { validator: val => val > 3, message: '分数过低会影响整体评价' },
+        ],
+        gender: [
+          { validator: val => val !== '', message: '不能为空' },
+        ],
+        birth: [
+          { validator: val => val !== '', message: '不能为空' },
+        ],
+        place: [
+          { validator: val => val !== '', message: '不能为空' },
         ],
         resume: [
-          {
-            required: true,
-            message: '简介不能为空',
-          },
-        ],
-        photo: [
-          {
-            required: true,
-            message: '上传照片不能为空',
-          },
+          { validator: val => val !== '', message: '不能为空' },
         ],
       },
     };
@@ -586,7 +560,7 @@ export default {
     display: flex;
     justify-content: space-between;
     position: relative;
-    border-bottom: 1rpx solid #e7e7e7;
+    border-bottom: 1rpx solid var(--td-component-stroke, #e7e7e7);
 }
 
 :deep(.upload) {

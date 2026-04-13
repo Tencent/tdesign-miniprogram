@@ -26,7 +26,7 @@ export interface TdStepsProps {
   /**
    * 只读状态
    */
-  readonly?: boolean;
+  readonly?: boolean | null;
   /**
    * 步骤条顺序
    * @default positive

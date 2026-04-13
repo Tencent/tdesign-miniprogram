@@ -1,9 +1,17 @@
 {
   "name": "@tdesign/uniapp-pro-components-chat",
   "private": true,
-  "typings": "./types/index.d.ts",
+  "license": "MIT",
+  "author": "tdesign",
   "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "default": "./index.js"
+    },
     "./*": "./*",
+    "./global": {
+      "types": "./global.d.ts"
+    },
     "./attachments/attachments.vue": {
       "types": "./types/attachments.d.ts",
       "import": "./attachments/attachments.vue",

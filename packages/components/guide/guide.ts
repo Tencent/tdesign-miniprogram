@@ -4,15 +4,18 @@ import config from '../common/config';
 import { isFunction, isNumeric } from '../common/validator';
 import { TdGuideProps, GuideStep } from './type';
 import { debounce, getRect, rpx2px, styles, unitConvert, nextTick, systemInfo } from '../common/utils';
+import usingConfig from '../mixins/using-config';
 
 export interface GuideProps extends TdGuideProps {}
 export { GuideStep };
 
 const { prefix } = config;
-const name = `${prefix}-guide`;
+const componentName = 'guide';
 
 @wxComponent()
 export default class Guide extends SuperComponent {
+  behaviors = [usingConfig({ componentName })];
+
   externalClasses = [
     `${prefix}-class`,
     `${prefix}-class-reference`,
@@ -36,7 +39,7 @@ export default class Guide extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     visible: false,
     _current: -1,
     _steps: [],
@@ -124,48 +127,50 @@ export default class Guide extends SuperComponent {
       }
     },
     async placementOffset({ placement, offset }: GuideStep, place: CSSStyleDeclaration) {
+      const { classPrefix } = this.data;
       await nextTick();
-      const rect = await getRect(this, `.${name}__container`);
+      const rect = await getRect(this, `.${classPrefix}__container`);
       const style = this._getPlacement[placement]?.(rect, place, offset);
       return styles({ position: 'absolute', ...style });
     },
     buttonProps(step, mode) {
+      const { classPrefix, globalConfig } = this.data;
       let skipButton = step.skipButtonProps ?? this.data.skipButtonProps;
       const size = mode === 'popover' ? 'extra-small' : 'medium';
       skipButton = {
         theme: 'light',
-        content: '跳过',
+        content: globalConfig.skip,
         size,
         ...skipButton,
-        tClass: `${prefix}-class-skip ${name}__button ${skipButton?.class || ''}`,
+        tClass: `${prefix}-class-skip ${classPrefix}__button ${skipButton?.class || ''}`,
         type: 'skip',
       };
       let nextButton = step.nextButtonProps ?? this.data.nextButtonProps;
       nextButton = {
         theme: 'primary',
-        content: '下一步',
+        content: globalConfig.next,
         size,
         ...nextButton,
-        tClass: `${prefix}-class-next ${name}__button ${nextButton?.class || ''}`,
+        tClass: `${prefix}-class-next ${classPrefix}__button ${nextButton?.class || ''}`,
         type: 'next',
       };
       nextButton = { ...nextButton, content: this.buttonContent(nextButton) };
       let backButton = step.backButtonProps ?? this.data.backButtonProps;
       backButton = {
         theme: 'light',
-        content: '返回',
+        content: globalConfig.back,
         size,
         ...backButton,
-        tClass: `${prefix}-class-back ${name}__button ${backButton?.class || ''}`,
+        tClass: `${prefix}-class-back ${classPrefix}__button ${backButton?.class || ''}`,
         type: 'back',
       };
       let finishButton = step.finishButtonProps ?? this.data.finishButtonProps;
       finishButton = {
         theme: 'primary',
-        content: '完成',
+        content: globalConfig.finish,
         size,
         ...finishButton,
-        tClass: `${prefix}-class-finish ${name}__button ${finishButton?.class || ''}`,
+        tClass: `${prefix}-class-finish ${classPrefix}__button ${finishButton?.class || ''}`,
         type: 'finish',
       };
       finishButton = { ...finishButton, content: this.buttonContent(finishButton) };

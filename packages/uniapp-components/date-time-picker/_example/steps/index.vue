@@ -16,7 +16,7 @@
       format="HH:mm:ss"
       :mode="['null', 'second']"
       :steps="{ minute: 5 }"
-      @update:visible="visible = $event"
+      @update:visible="(e) => visible = e"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"

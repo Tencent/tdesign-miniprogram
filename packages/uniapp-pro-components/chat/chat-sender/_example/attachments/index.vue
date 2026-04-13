@@ -32,7 +32,6 @@
             @fileClick="onFileClick"
             @fileDelete="onFileDelete"
             @fileChange="onFileChange"
-            @fileAdd="onFileAdd"
             @fileSelect="onFileSelect"
             @updateVisible="onUpdateVisible"
             @keyboardheightchange="onKeyboardHeightChange"
@@ -79,7 +78,7 @@
 <script>
 import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
 import TToast from '@tdesign/uniapp/toast/toast.vue';
-import Toast from '@tdesign/uniapp/toast/index';
+import { Toast } from '@tdesign/uniapp';
 import TIcon from '@tdesign/uniapp/icon/icon.vue';
 
 export default {
@@ -132,7 +131,6 @@ export default {
         ],
         removable: true,
         imageViewer: true,
-        addable: false,
       },
       renderPresets: [
         {
@@ -247,11 +245,6 @@ export default {
       };
 
       this.fileList = files;
-    },
-
-    // 添加文件
-    onFileAdd() {
-      console.log('添加文件');
     },
 
     // 选择文件

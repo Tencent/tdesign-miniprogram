@@ -27,6 +27,7 @@
                   <t-chat-content
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
+                    :role="item.message.role"
                   />
                 </block>
               </view>
@@ -41,6 +42,7 @@
                   <t-chat-content
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
+                    :role="item.message.role"
                   />
 
                   <view
@@ -103,7 +105,7 @@ import TAttachments from '@tdesign/uniapp-chat/attachments/attachments.vue';
 import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
 import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
 import TToast from '@tdesign/uniapp/toast/toast.vue';
-import Toast from '@tdesign/uniapp/toast/index';
+import { Toast } from '@tdesign/uniapp';
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;
@@ -182,7 +184,6 @@ export default {
         items: [],
         removable: true,
         imageViewer: true,
-        addable: false,
       },
 
       // 内容高度

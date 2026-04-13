@@ -43,7 +43,7 @@
             :attachments-props="attachmentsProps"
             :render-presets="renderPresets"
             :auto-rise-with-keyboard="true"
-            @update:visible="visible = $event"
+            @update:visible="(e) => visible = e"
             @send="onSend"
             @stop="onStop"
             @focus="onFocus"
@@ -73,7 +73,7 @@ import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
 import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
 import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
 import TToast from '@tdesign/uniapp/toast/toast.vue';
-import Toast from '@tdesign/uniapp/toast/index';
+import { Toast } from '@tdesign/uniapp';
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;
@@ -144,7 +144,6 @@ export default {
         items: [],
         removable: true,
         imageViewer: true,
-        addable: false,
       },
 
       renderPresets: [

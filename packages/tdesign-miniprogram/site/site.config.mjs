@@ -54,6 +54,15 @@ export const docs = [
         component: () => import('@docs/overview.md'),
         componentEn: () => import('@docs/overview.en-US.md'),
       },
+      {
+        title: 'MCP',
+        titleEn: 'MCP',
+        name: 'MCP',
+        meta: { docType: 'explain' },
+        path: '/miniprogram/mcp',
+        component: () => import('@common/docs/mcp.md'),
+        componentEn: () => import('@common/docs/mcp.en-US.md'),
+      },
     ],
   },
   {
@@ -61,6 +70,14 @@ export const docs = [
     titleEn: 'Global Config',
     type: 'document',
     children: [
+      {
+        title: '全局特性配置',
+        titleEn: 'Global Configuration',
+        name: 'config-provider',
+        path: '/miniprogram/components/config-provider',
+        component: () => import('@/config-provider/README.md'),
+        componentEn: () => import('@/config-provider/README.en-US.md'),
+      },
       {
         title: '深色模式',
         titleEn: 'Dark Mode',
@@ -260,6 +277,14 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/miniprogram/components/date-time-picker',
         component: () => import('@/date-time-picker/README.md'),
+      },
+      {
+        title: 'Form 表单',
+        titleEn: 'Form',
+        name: 'form',
+        meta: { docType: 'form' },
+        path: '/miniprogram/components/form',
+        component: () => import('@/form/README.md'),
       },
       {
         title: 'Input 输入框',

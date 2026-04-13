@@ -2,7 +2,7 @@
   <view>
     <navigator
       :class="className + ' ' + tClass"
-      :style="tools._style([customStyle])"
+      :style="'' + tools._style([customStyle])"
       :target="navigatorProps.target"
       :url="!disabled ? (navigatorProps.url || '') : ''"
       :open-type="navigatorProps.openType || 'navigate'"
@@ -82,86 +82,88 @@ import tools from '../common/utils.wxs';
 
 const name = `${prefix}-link`;
 
-export default uniComponent({
-  name,
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-hover`,
-    `${prefix}-class-prefix-icon`,
-    `${prefix}-class-content`,
-    `${prefix}-class-suffix-icon`,
-  ],
-  options: {
-    styleIsolation: 'shared',
-  },
+export default {
   components: {
     TIcon,
   },
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      tools,
-      iPrefixIcon: null,
-      iSuffixIcon: null,
-      className: '',
-    };
-  },
-  watch: {
-    prefixIcon: {
-      handler(value) {
-        this.iPrefixIcon = calcIcon(value);
-      },
-      immediate: true,
+  ...uniComponent({
+    name,
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-hover`,
+      `${prefix}-class-prefix-icon`,
+      `${prefix}-class-content`,
+      `${prefix}-class-suffix-icon`,
+    ],
+    options: {
+      styleIsolation: 'shared',
     },
-    suffixIcon: {
-      handler(value) {
-        this.iSuffixIcon = calcIcon(value);
-      },
-      immediate: true,
+    props: {
+      ...props,
     },
-    theme: 'setClass',
-    disabled: 'setClass',
-    size: 'setClass',
-    underline: 'setClass',
-    navigatorProps: 'setClass',
-  },
-  mounted() {
-    this.setClass();
-  },
-  methods: {
-    setClass() {
-      const { theme, size, underline, navigatorProps, disabled } = this;
-      const classList = [name, `${name}--${theme}`, `${name}--${size}`];
-      const { url, appId, shortLink, target, openType } = coalesce(navigatorProps, {});
-      const condition = !(url || (target === 'miniProgram' && (appId || shortLink)));
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        tools,
+        iPrefixIcon: null,
+        iSuffixIcon: null,
+        className: '',
+      };
+    },
+    watch: {
+      prefixIcon: {
+        handler(value) {
+          this.iPrefixIcon = calcIcon(value);
+        },
+        immediate: true,
+      },
+      suffixIcon: {
+        handler(value) {
+          this.iSuffixIcon = calcIcon(value);
+        },
+        immediate: true,
+      },
+      theme: 'setClass',
+      disabled: 'setClass',
+      size: 'setClass',
+      underline: 'setClass',
+      navigatorProps: 'setClass',
+    },
+    mounted() {
+      this.setClass();
+    },
+    methods: {
+      setClass() {
+        const { theme, size, underline, navigatorProps, disabled } = this;
+        const classList = [name, `${name}--${theme}`, `${name}--${size}`];
+        const { url, appId, shortLink, target, openType } = coalesce(navigatorProps, {});
+        const condition = !(url || (target === 'miniProgram' && (appId || shortLink)));
 
-      if (underline) {
-        classList.push(`${name}--underline`);
-      }
-      if (
-        (Object.keys(navigatorProps).length && condition && !['navigateBack', 'exit'].includes(openType))
+        if (underline) {
+          classList.push(`${name}--underline`);
+        }
+        if (
+          (Object.keys(navigatorProps).length && condition && !['navigateBack', 'exit'].includes(openType))
         || disabled
-      ) {
-        classList.push(`${name}--disabled`);
-      }
+        ) {
+          classList.push(`${name}--disabled`);
+        }
 
-      this.className = classList.join(' ');
+        this.className = classList.join(' ');
+      },
+      onSuccess(e) {
+        this.$emit('success', e);
+      },
+      onFail(e) {
+        this.$emit('fail', e);
+      },
+      onComplete(e) {
+        this.$emit('complete', e);
+      },
     },
-    onSuccess(e) {
-      this.$emit('success', e);
-    },
-    onFail(e) {
-      this.$emit('fail', e);
-    },
-    onComplete(e) {
-      this.$emit('complete', e);
-    },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./link.css"></style>
 <style scoped>

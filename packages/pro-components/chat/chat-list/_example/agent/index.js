@@ -1,5 +1,5 @@
 import Toast from 'tdesign-miniprogram/toast';
-import { getNavigationBarHeight } from '../../../utils/utils';
+import getNavigationBarHeight from '../utils';
 
 let uniqueId = 0;
 const getUniqueKey = () => {
@@ -146,14 +146,12 @@ Component({
         await fetchStream('为5岁小朋友准备一场生日派对，我会根据要求准备合适方案，计划从以下几个步骤进行准备：', {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[0].data += result;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[0].data': that.data.chatList[0].message.content[0].data + result,
             });
           },
           complete() {},
         });
-
         if (!that.data.loading) return;
 
         that.data.chatList[0].message.content.push({
@@ -171,9 +169,9 @@ Component({
         await fetchStream('生日聚会规划任务已分解为3个执行阶段', {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[1].content.text += result;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[1].content.text':
+                that.data.chatList[0].message.content[1].content.text + result,
             });
           },
           complete() {},
@@ -199,9 +197,9 @@ Component({
         await fetchStream('调用智能搜索工具', {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[1].content.steps[0].tasks[0].text += result;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[1].content.steps[0].tasks[0].text':
+                that.data.chatList[0].message.content[1].content.steps[0].tasks[0].text + result,
             });
           },
           complete() {},
@@ -220,9 +218,9 @@ Component({
         await fetchStream('已筛选出3种高性价比菜单方案，开始进行营养匹配', {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[1].content.steps[0].tasks[1].text += result;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[1].content.steps[0].tasks[1].text':
+                that.data.chatList[0].message.content[1].content.steps[0].tasks[1].text + result,
             });
           },
           complete() {},
@@ -241,14 +239,13 @@ Component({
         await fetchStream('主菜是香草烤鸡（无麸质），准备耗时45分钟；', {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[1].content.steps[0].tasks[2].text += result;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[1].content.steps[0].tasks[2].text':
+                that.data.chatList[0].message.content[1].content.steps[0].tasks[2].text + result,
             });
           },
           complete() {},
         });
-
         if (!that.data.loading) return;
 
         that.data.chatList[0].message.content[1].content.steps.push({
@@ -269,9 +266,9 @@ Component({
         await fetchStream('调用智能搜索工具，搜索儿童派对用品清单', {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[1].content.steps[1].tasks[0].text += result;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[1].content.steps[1].tasks[0].text':
+                that.data.chatList[0].message.content[1].content.steps[1].tasks[0].text + result,
             });
           },
           complete() {},
@@ -292,9 +289,9 @@ Component({
           {
             success(result) {
               if (!that.data.loading) return;
-              that.data.chatList[0].message.content[1].content.steps[1].tasks[1].text += result;
               that.setData({
-                chatList: that.data.chatList,
+                'chatList[0].message.content[1].content.steps[1].tasks[1].text':
+                  that.data.chatList[0].message.content[1].content.steps[1].tasks[1].text + result,
               });
             },
             complete() {},
@@ -321,9 +318,9 @@ Component({
         await fetchStream('搜索儿童派对游戏', {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[1].content.steps[2].tasks[0].text += result;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[1].content.steps[2].tasks[0].text':
+                that.data.chatList[0].message.content[1].content.steps[2].tasks[0].text + result,
             });
           },
           complete() {},
@@ -342,9 +339,9 @@ Component({
         await fetchStream('整理信息并进行合理性分析，安全性评估', {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[1].content.steps[2].tasks[1].text += result;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[1].content.steps[2].tasks[1].text':
+                that.data.chatList[0].message.content[1].content.steps[2].tasks[1].text + result,
             });
           },
           complete() {},
@@ -365,19 +362,16 @@ Component({
           {
             success(result) {
               if (!that.data.loading) return;
-              that.data.chatList[0].message.content[1].content.steps[2].tasks[2].text += result;
               that.setData({
-                chatList: that.data.chatList,
+                'chatList[0].message.content[1].content.steps[2].tasks[2].text':
+                  that.data.chatList[0].message.content[1].content.steps[2].tasks[2].text + result,
               });
             },
             complete() {},
           },
         );
-        that.data.chatList[0].message.status = 'complete';
         that.setData({
-          chatList: that.data.chatList,
-        });
-        that.setData({
+          'chatList[0].message.status': 'complete',
           loading: false,
         });
       });

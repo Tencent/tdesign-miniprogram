@@ -1,13 +1,15 @@
 ---
 title: QRCode 二维码
 description: 二维码能够将文本转换生成二维码的组件，支持自定义配色和 Logo 配置。
-spline: message
+spline: data
 isComponent: true
 ---
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-qrcode />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TQRCode from '@tdesign/uniapp/qrcode/qrcode.vue';

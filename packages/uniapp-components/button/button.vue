@@ -1,7 +1,7 @@
 <template>
   <button
     :id="tId"
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     :data-custom="customDataset"
     :class="className"
     :activity-type="activityType ? activityType : ''"
@@ -89,132 +89,137 @@ import tools from '../common/utils.wxs';
 const name = `${prefix}-button`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-icon`,
-    `${prefix}-class-loading`,
-  ],
+export default {
   components: {
     TIcon,
     TLoading,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'click',
-  ],
-  data() {
-    return {
-      tools,
-      prefix,
-      className: '',
-      classPrefix: name,
-      innerIcon: undefined,
-    };
-  },
-  computed: {
-    iconCustomStyle() {
-      const fontSize = {
-        'extra-small': 'var(--td-button-extra-small-icon-font-size, 18px)',
-        small: 'var(--td-button-small-icon-font-size, 18px)',
-        medium: 'var(--td-button-medium-icon-font-size, 20px)',
-        large: 'var(--td-button-large-icon-font-size, 24px)',
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-icon`,
+      `${prefix}-class-loading`,
+    ],
+    props: {
+      ...props,
+    },
+    emits: [
+      'click',
+    ],
+    data() {
+      return {
+        tools,
+        prefix,
+        className: '',
+        classPrefix: name,
+        innerIcon: undefined,
       };
+    },
+    computed: {
+      iconCustomStyle() {
+        if (!this.innerIcon) {
+          return {};
+        }
+        const fontSize = {
+          'extra-small': 'var(--td-button-extra-small-icon-font-size, 18px)',
+          small: 'var(--td-button-small-icon-font-size, 18px)',
+          medium: 'var(--td-button-medium-icon-font-size, 20px)',
+          large: 'var(--td-button-large-icon-font-size, 24px)',
+        };
 
-      return tools._style([
-        {
-          fontSize: this.innerIcon.size
-            ? addUnit(this.innerIcon.size)
-            : fontSize[this.size || 'medium'],
-          borderRadius: 'var(--td-button-icon-border-radius, 4px)',
-        },
-        this.innerIcon.style || '',
-      ]);
-    },
-    loadingCustomStyle() {
-      return tools._style({
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      });
-    },
-  },
-  watch: {
-    icon: {
-      handler(value) {
-        this.innerIcon = calcIcon(value, '');
+        return tools._style([
+          {
+            fontSize: this.innerIcon.size
+              ? addUnit(this.innerIcon.size)
+              : fontSize[this.size || 'medium'],
+            borderRadius: 'var(--td-button-icon-border-radius, 4px)',
+          },
+          this.innerIcon.style || '',
+        ]);
       },
-      immediate: true,
+      loadingCustomStyle() {
+        return tools._style({
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        });
+      },
     },
-    theme: 'setClass',
-    size: 'setClass',
-    plain: 'setClass',
-    block: 'setClass',
-    shape: 'setClass',
-    disabled: 'setClass',
-    loading: 'setClass',
-    variant: 'setClass',
-  },
-  mounted() {
-    this.setClass();
-  },
-  methods: {
-    setClass() {
-      const t = [
-        name,
-        this.tClass,
-        `${name}--${this.variant || 'base'}`,
-        `${name}--${this.theme || 'default'}`,
-        `${name}--${this.shape || 'rectangle'}`,
-        `${name}--size-${this.size || 'medium'}`,
-      ];
-      if (this.block) {
-        t.push(`${name}--block`);
-      }
-      if (this.disabled) {
-        t.push(`${name}--disabled`);
-      }
-      if (this.ghost) {
-        t.push(`${name}--ghost`);
-      }
-      this.className = t.join(' ');
+    watch: {
+      icon: {
+        handler(value) {
+          this.innerIcon = calcIcon(value, '');
+        },
+        immediate: true,
+      },
+      theme: 'setClass',
+      size: 'setClass',
+      plain: 'setClass',
+      block: 'setClass',
+      shape: 'setClass',
+      disabled: 'setClass',
+      loading: 'setClass',
+      variant: 'setClass',
     },
-    getuserinfo(t) {
-      this.$emit('getuserinfo', t);
+    created() {
+      this.setClass();
     },
-    contact(t) {
-      this.$emit('contact', t);
+    methods: {
+      setClass() {
+        const t = [
+          name,
+          this.tClass,
+          `${name}--${this.variant || 'base'}`,
+          `${name}--${this.theme || 'default'}`,
+          `${name}--${this.shape || 'rectangle'}`,
+          `${name}--size-${this.size || 'medium'}`,
+        ];
+        if (this.block) {
+          t.push(`${name}--block`);
+        }
+        if (this.disabled) {
+          t.push(`${name}--disabled`);
+        }
+        if (this.ghost) {
+          t.push(`${name}--ghost`);
+        }
+        this.className = t.join(' ');
+      },
+      getuserinfo(t) {
+        this.$emit('getuserinfo', t);
+      },
+      contact(t) {
+        this.$emit('contact', t);
+      },
+      getphonenumber(t) {
+        this.$emit('getphonenumber', t);
+      },
+      error(t) {
+        this.$emit('error', t);
+      },
+      opensetting(t) {
+        this.$emit('opensetting', t);
+      },
+      launchapp(t) {
+        this.$emit('launchapp', t);
+      },
+      chooseavatar(t) {
+        this.$emit('chooseavatar', t);
+      },
+      agreeprivacyauthorization(t) {
+        this.$emit('agreeprivacyauthorization', t);
+      },
+      handleTap(t) {
+        if (this.disabled || this.loading) return;
+        this.$emit('click', t);
+      },
     },
-    getphonenumber(t) {
-      this.$emit('getphonenumber', t);
-    },
-    error(t) {
-      this.$emit('error', t);
-    },
-    opensetting(t) {
-      this.$emit('opensetting', t);
-    },
-    launchapp(t) {
-      this.$emit('launchapp', t);
-    },
-    chooseavatar(t) {
-      this.$emit('chooseavatar', t);
-    },
-    agreeprivacyauthorization(t) {
-      this.$emit('agreeprivacyauthorization', t);
-    },
-    handleTap(t) {
-      if (this.disabled || this.loading) return;
-      this.$emit('click', t);
-    },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./button.css"></style>
 <style scoped>

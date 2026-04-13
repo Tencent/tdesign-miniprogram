@@ -13,7 +13,7 @@ export interface TdCheckboxProps {
   /**
    * 是否开启无边框模式
    */
-  borderless?: boolean;
+  borderless?: boolean | null;
   /**
    * 用于标识是否为「全选选项」。单独使用无效，需在 CheckboxGroup 中使用
    * @default false
@@ -38,12 +38,12 @@ export interface TdCheckboxProps {
   /**
    * 是否禁用组件。如果父组件存在 CheckboxGroup，默认值由 CheckboxGroup.disabled 控制。优先级：Checkbox.disabled > CheckboxGroup.disabled > Form.disabled
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标，半选中态图标]`。使用 String 时，值为 circle 表示填充圆形图标、值为 line 表示描边型图标、值为 rectangle 表示填充矩形图标
    * @default 'circle'
    */
-  icon?: 'circle' | 'line' | 'rectangle' | string[];
+  icon?: CheckboxIconType;
   /**
    * 是否为半选
    * @default false
@@ -76,7 +76,7 @@ export interface TdCheckboxProps {
   /**
    * 只读状态
    */
-  readonly?: boolean;
+  readonly?: boolean | null;
   /**
    * -1 时代表独立，不再寻找 parent，用于头条小程序
    * @default ''
@@ -94,3 +94,5 @@ export interface TdCheckboxProps {
     context: { value: boolean | number | string; label: boolean | number | string };
   }) => void;
 }
+
+export type CheckboxIconType = 'circle' | 'line' | 'rectangle' | string[];

@@ -10,7 +10,7 @@
       arrow
       data-mode="second"
       t-class="panel-item"
-      @click="showPicker($event, { mode: 'second' })"
+      @click="(e) => showPicker(e, { mode: 'second' })"
     />
 
     <view class="demo-desc">
@@ -23,7 +23,7 @@
       arrow
       data-mode="minute"
       t-class="panel-item"
-      @click="showPicker($event, { mode: 'minute' })"
+      @click="(e) => showPicker(e, { mode: 'minute' })"
     />
 
     <!-- 时分 -->
@@ -33,7 +33,7 @@
       :mode="['null', 'second']"
       :value="second"
       format="HH:mm:ss"
-      @update:visible="secondVisible = $event"
+      @update:visible="(e) => secondVisible = e"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"
@@ -47,7 +47,7 @@
       :start="start"
       :value="minute"
       format="HH:mm"
-      @update:visible="minuteVisible = $event"
+      @update:visible="(e) => minuteVisible = e"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"

@@ -28,6 +28,14 @@ export const docs = [
         componentEn: () => import('@docs/overview.en-US.md'),
       },
       {
+        title: 'MCP',
+        titleEn: 'MCP',
+        name: 'MCP',
+        path: '/uniapp/mcp',
+        component: () => import('@common/docs/mcp.md'),
+        componentEn: () => import('@common/docs/mcp.en-US.md'),
+      },
+      {
         title: '常见问题',
         titleEn: 'FAQ',
         name: 'faq',
@@ -41,6 +49,14 @@ export const docs = [
     titleEn: 'Global Config',
     type: 'document',
     children: [
+      {
+        title: '全局特性配置',
+        titleEn: 'Global Configuration',
+        name: 'config-provider',
+        path: '/uniapp/components/config-provider',
+        component: () => import('@/config-provider/README.md'),
+        componentEn: () => import('@/config-provider/README.en-US.md'),
+      },
       {
         title: '样式覆盖',
         titleEn: 'Custom Style',
@@ -106,6 +122,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/divider',
         component: () => import('@/divider/README.md'),
+        componentEn: () => import('@/divider/README.en-US.md'),
       },
       {
         title: 'Fab 悬浮按钮',
@@ -114,6 +131,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/fab',
         component: () => import('@/fab/README.md'),
+        componentEn: () => import('@/fab/README.en-US.md'),
       },
       {
         title: 'Icon 图标',
@@ -122,6 +140,7 @@ export const docs = [
         meta: { docType: 'base' },
         path: '/uniapp/components/icon',
         component: () => import('@/icon/README.md'),
+        componentEn: () => import('@/icon/README.en-US.md'),
       },
       {
         title: 'Layout 布局',
@@ -130,6 +149,7 @@ export const docs = [
         meta: { docType: 'base' },
         path: '/uniapp/components/layout',
         component: () => import('@/col/README.md'),
+        componentEn: () => import('@/col/README.en-US.md'),
       },
       {
         title: 'Link 链接',
@@ -138,6 +158,7 @@ export const docs = [
         meta: { docType: 'base' },
         path: '/uniapp/components/link',
         component: () => import('@/link/README.md'),
+        componentEn: () => import('@/link/README.en-US.md'),
       },
     ],
   },
@@ -153,6 +174,7 @@ export const docs = [
         meta: { docType: 'navigation' },
         path: '/uniapp/components/back-top',
         component: () => import('@/back-top/README.md'),
+        componentEn: () => import('@/back-top/README.en-US.md'),
       },
       {
         title: 'Drawer 抽屉',
@@ -161,6 +183,7 @@ export const docs = [
         meta: { docType: 'navigation' },
         path: '/uniapp/components/drawer',
         component: () => import('@/drawer/README.md'),
+        componentEn: () => import('@/drawer/README.en-US.md'),
       },
       {
         title: 'Indexes 索引',
@@ -169,6 +192,7 @@ export const docs = [
         meta: { docType: 'navigation' },
         path: '/uniapp/components/indexes',
         component: () => import('@/indexes/README.md'),
+        componentEn: () => import('@/indexes/README.en-US.md'),
       },
       {
         title: 'Navbar 导航栏',
@@ -177,6 +201,7 @@ export const docs = [
         meta: { docType: 'navigation' },
         path: '/uniapp/components/navbar',
         component: () => import('@/navbar/README.md'),
+        componentEn: () => import('@/navbar/README.en-US.md'),
       },
       {
         title: 'SideBar 侧边栏',
@@ -185,6 +210,7 @@ export const docs = [
         meta: { docType: 'navigation' },
         path: '/uniapp/components/side-bar',
         component: () => import('@/side-bar/README.md'),
+        componentEn: () => import('@/side-bar/README.en-US.md'),
       },
       {
         title: 'Steps 步骤条',
@@ -193,6 +219,7 @@ export const docs = [
         meta: { docType: 'navigation' },
         path: '/uniapp/components/steps',
         component: () => import('@/steps/README.md'),
+        componentEn: () => import('@/steps/README.en-US.md'),
       },
       {
         title: 'TabBar 标签栏',
@@ -201,6 +228,7 @@ export const docs = [
         meta: { docType: 'navigation' },
         path: '/uniapp/components/tab-bar',
         component: () => import('@/tab-bar/README.md'),
+        componentEn: () => import('@/tab-bar/README.en-US.md'),
       },
       {
         title: 'Tabs 选项卡',
@@ -209,6 +237,7 @@ export const docs = [
         meta: { docType: 'navigation' },
         path: '/uniapp/components/tabs',
         component: () => import('@/tabs/README.md'),
+        componentEn: () => import('@/tabs/README.en-US.md'),
       },
     ],
   },
@@ -224,6 +253,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/calendar',
         component: () => import('@/calendar/README.md'),
+        componentEn: () => import('@/calendar/README.en-US.md'),
       },
       {
         title: 'Cascader 级联选择器',
@@ -232,6 +262,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/cascader',
         component: () => import('@/cascader/README.md'),
+        componentEn: () => import('@/cascader/README.en-US.md'),
       },
       {
         title: 'Checkbox 多选框',
@@ -240,6 +271,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/checkbox',
         component: () => import('@/checkbox/README.md'),
+        componentEn: () => import('@/checkbox/README.en-US.md'),
       },
       {
         title: 'ColorPicker 颜色选择器',
@@ -248,6 +280,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/color-picker',
         component: () => import('@/color-picker/README.md'),
+        componentEn: () => import('@/color-picker/README.en-US.md'),
       },
       {
         title: 'DateTimePicker 时间选择器',
@@ -256,6 +289,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/date-time-picker',
         component: () => import('@/date-time-picker/README.md'),
+        componentEn: () => import('@/date-time-picker/README.en-US.md'),
       },
       {
         title: 'Form 表单',
@@ -264,6 +298,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/form',
         component: () => import('@/form/README.md'),
+        componentEn: () => import('@/form/README.en-US.md'),
       },
       {
         title: 'Input 输入框',
@@ -272,6 +307,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/input',
         component: () => import('@/input/README.md'),
+        componentEn: () => import('@/input/README.en-US.md'),
       },
       {
         title: 'Picker 选择器',
@@ -280,6 +316,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/picker',
         component: () => import('@/picker/README.md'),
+        componentEn: () => import('@/picker/README.en-US.md'),
       },
       {
         title: 'Radio 单选框',
@@ -288,6 +325,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/radio',
         component: () => import('@/radio/README.md'),
+        componentEn: () => import('@/radio/README.en-US.md'),
       },
       {
         title: 'Rate 评分',
@@ -296,6 +334,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/rate',
         component: () => import('@/rate/README.md'),
+        componentEn: () => import('@/rate/README.en-US.md'),
       },
       {
         title: 'Search 搜索框',
@@ -304,6 +343,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/search',
         component: () => import('@/search/README.md'),
+        componentEn: () => import('@/search/README.en-US.md'),
       },
       {
         title: 'Slider 滑动选择器',
@@ -312,6 +352,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/slider',
         component: () => import('@/slider/README.md'),
+        componentEn: () => import('@/slider/README.en-US.md'),
       },
       {
         title: 'Stepper 步进器',
@@ -320,6 +361,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/stepper',
         component: () => import('@/stepper/README.md'),
+        componentEn: () => import('@/stepper/README.en-US.md'),
       },
       {
         title: 'Switch 开关',
@@ -328,6 +370,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/switch',
         component: () => import('@/switch/README.md'),
+        componentEn: () => import('@/switch/README.en-US.md'),
       },
       {
         title: 'Textarea 多行文本框',
@@ -336,6 +379,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/textarea',
         component: () => import('@/textarea/README.md'),
+        componentEn: () => import('@/textarea/README.en-US.md'),
       },
       {
         title: 'TreeSelect 树形选择',
@@ -344,6 +388,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/tree-select',
         component: () => import('@/tree-select/README.md'),
+        componentEn: () => import('@/tree-select/README.en-US.md'),
       },
       {
         title: 'Upload 上传',
@@ -352,6 +397,7 @@ export const docs = [
         meta: { docType: 'form' },
         path: '/uniapp/components/upload',
         component: () => import('@/upload/README.md'),
+        componentEn: () => import('@/upload/README.en-US.md'),
       },
     ],
   },
@@ -367,6 +413,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/avatar',
         component: () => import('@/avatar/README.md'),
+        componentEn: () => import('@/avatar/README.en-US.md'),
       },
       {
         title: 'Badge 徽标',
@@ -375,6 +422,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/badge',
         component: () => import('@/badge/README.md'),
+        componentEn: () => import('@/badge/README.en-US.md'),
       },
       {
         title: 'Cell 单元格',
@@ -383,6 +431,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/cell',
         component: () => import('@/cell/README.md'),
+        componentEn: () => import('@/cell/README.en-US.md'),
       },
       {
         title: 'Collapse 折叠面板',
@@ -391,6 +440,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/collapse',
         component: () => import('@/collapse/README.md'),
+        componentEn: () => import('@/collapse/README.en-US.md'),
       },
       {
         title: 'CountDown 倒计时',
@@ -399,6 +449,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/count-down',
         component: () => import('@/count-down/README.md'),
+        componentEn: () => import('@/count-down/README.en-US.md'),
       },
       {
         title: 'Empty 空状态',
@@ -407,6 +458,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/empty',
         component: () => import('@/empty/README.md'),
+        componentEn: () => import('@/empty/README.en-US.md'),
       },
       {
         title: 'Footer 页脚',
@@ -415,6 +467,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/footer',
         component: () => import('@/footer/README.md'),
+        componentEn: () => import('@/footer/README.en-US.md'),
       },
       {
         title: 'Image 图片',
@@ -423,6 +476,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/image',
         component: () => import('@/image/README.md'),
+        componentEn: () => import('@/image/README.en-US.md'),
       },
       {
         title: 'Grid 宫格',
@@ -431,6 +485,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/grid',
         component: () => import('@/grid/README.md'),
+        componentEn: () => import('@/grid/README.en-US.md'),
       },
       {
         title: 'ImageViewer 图片预览',
@@ -439,6 +494,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/image-viewer',
         component: () => import('@/image-viewer/README.md'),
+        componentEn: () => import('@/image-viewer/README.en-US.md'),
       },
       {
         title: 'Progress 进度条',
@@ -447,6 +503,7 @@ export const docs = [
         meta: { docType: 'message' },
         path: '/uniapp/components/progress',
         component: () => import('@/progress/README.md'),
+        componentEn: () => import('@/progress/README.en-US.md'),
       },
       {
         title: 'QRCode 二维码',
@@ -455,6 +512,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/qrcode',
         component: () => import('@/qrcode/README.md'),
+        componentEn: () => import('@/qrcode/README.en-US.md'),
       },
       {
         title: 'Result 结果',
@@ -463,6 +521,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/result',
         component: () => import('@/result/README.md'),
+        componentEn: () => import('@/result/README.en-US.md'),
       },
       {
         title: 'Skeleton 骨架屏',
@@ -471,6 +530,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/skeleton',
         component: () => import('@/skeleton/README.md'),
+        componentEn: () => import('@/skeleton/README.en-US.md'),
       },
       {
         title: 'Sticky 吸顶',
@@ -479,6 +539,7 @@ export const docs = [
         meta: { docType: 'navigation' },
         path: '/uniapp/components/sticky',
         component: () => import('@/sticky/README.md'),
+        componentEn: () => import('@/sticky/README.en-US.md'),
       },
       {
         title: 'Swiper 轮播图',
@@ -487,6 +548,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/swiper',
         component: () => import('@/swiper/README.md'),
+        componentEn: () => import('@/swiper/README.en-US.md'),
       },
       {
         title: 'Tag 标签',
@@ -495,6 +557,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/tag',
         component: () => import('@/tag/README.md'),
+        componentEn: () => import('@/tag/README.en-US.md'),
       },
       {
         title: 'Watermark 水印',
@@ -503,6 +566,7 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/uniapp/components/watermark',
         component: () => import('@/watermark/README.md'),
+        componentEn: () => import('@/watermark/README.en-US.md'),
       },
     ],
   },
@@ -518,6 +582,7 @@ export const docs = [
         meta: { docType: 'message' },
         path: '/uniapp/components/action-sheet',
         component: () => import('@/action-sheet/README.md'),
+        componentEn: () => import('@/action-sheet/README.en-US.md'),
       },
       {
         title: 'Dialog 对话框',
@@ -526,6 +591,7 @@ export const docs = [
         meta: { docType: 'message' },
         path: '/uniapp/components/dialog',
         component: () => import('@/dialog/README.md'),
+        componentEn: () => import('@/dialog/README.en-US.md'),
       },
       {
         title: 'DropdownMenu 下拉菜单',
@@ -534,6 +600,7 @@ export const docs = [
         meta: { docType: 'navigation' },
         path: '/uniapp/components/dropdown-menu',
         component: () => import('@/dropdown-menu/README.md'),
+        componentEn: () => import('@/dropdown-menu/README.en-US.md'),
       },
       {
         title: 'Guide 引导',
@@ -542,6 +609,7 @@ export const docs = [
         meta: { docType: 'navigation' },
         path: '/uniapp/components/guide',
         component: () => import('@/guide/README.md'),
+        componentEn: () => import('@/guide/README.en-US.md'),
       },
       {
         title: 'Loading 加载',
@@ -550,6 +618,7 @@ export const docs = [
         meta: { docType: 'message' },
         path: '/uniapp/components/loading',
         component: () => import('@/loading/README.md'),
+        componentEn: () => import('@/loading/README.en-US.md'),
       },
       {
         title: 'Message 消息通知',
@@ -558,6 +627,7 @@ export const docs = [
         meta: { docType: 'message' },
         path: '/uniapp/components/message',
         component: () => import('@/message/README.md'),
+        componentEn: () => import('@/message/README.en-US.md'),
       },
       {
         title: 'NoticeBar 公告栏',
@@ -566,6 +636,7 @@ export const docs = [
         meta: { docType: 'message' },
         path: '/uniapp/components/notice-bar',
         component: () => import('@/notice-bar/README.md'),
+        componentEn: () => import('@/notice-bar/README.en-US.md'),
       },
       {
         title: 'Overlay 遮罩层',
@@ -574,6 +645,7 @@ export const docs = [
         meta: { docType: 'message' },
         path: '/uniapp/components/overlay',
         component: () => import('@/overlay/README.md'),
+        componentEn: () => import('@/overlay/README.en-US.md'),
       },
       {
         title: 'Popover 弹出气泡',
@@ -582,6 +654,7 @@ export const docs = [
         meta: { docType: 'message' },
         path: '/uniapp/components/popover',
         component: () => import('@/popover/README.md'),
+        componentEn: () => import('@/popover/README.en-US.md'),
       },
       {
         title: 'Popup 弹出层',
@@ -590,6 +663,7 @@ export const docs = [
         meta: { docType: 'message' },
         path: '/uniapp/components/popup',
         component: () => import('@/popup/README.md'),
+        componentEn: () => import('@/popup/README.en-US.md'),
       },
       {
         title: 'PullDownRefresh 下拉刷新',
@@ -598,6 +672,7 @@ export const docs = [
         meta: { docType: 'message' },
         path: '/uniapp/components/pull-down-refresh',
         component: () => import('@/pull-down-refresh/README.md'),
+        componentEn: () => import('@/pull-down-refresh/README.en-US.md'),
       },
       {
         title: 'SwipeCell 滑动操作',
@@ -606,6 +681,7 @@ export const docs = [
         meta: { docType: 'message' },
         path: '/uniapp/components/swipe-cell',
         component: () => import('@/swipe-cell/README.md'),
+        componentEn: () => import('@/swipe-cell/README.en-US.md'),
       },
       {
         title: 'Toast 轻提示',
@@ -614,15 +690,16 @@ export const docs = [
         meta: { docType: 'message' },
         path: '/uniapp/components/toast',
         component: () => import('@/toast/README.md'),
+        componentEn: () => import('@/toast/README.en-US.md'),
       },
     ],
   },
 ];
 
-const enDocs = docs.map((doc) => ({
+const enDocs = docs.map(doc => ({
   ...doc,
   title: doc.titleEn,
-  children: doc?.children?.map((child) => ({
+  children: doc?.children?.map(child => ({
     title: child.titleEn,
     name: `${child.name}-en`,
     path: `${child.path}-en`,

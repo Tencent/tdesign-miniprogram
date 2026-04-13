@@ -1,12 +1,15 @@
 import { SuperComponent, wxComponent } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
 import props from './props';
+import usingConfig from '../../../components/mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-chat-sender`;
+const componentName = 'chat-sender';
 
 @wxComponent()
 export default class ChatSender extends SuperComponent {
+  behaviors = [usingConfig({ componentName })];
+
   options = {
     multipleSlots: true,
   };
@@ -14,7 +17,7 @@ export default class ChatSender extends SuperComponent {
   properties = props;
 
   data = {
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     scrollViewTop: 0,
     focusFlag: false,
     isSending: false,
@@ -171,10 +174,6 @@ export default class ChatSender extends SuperComponent {
       this.triggerEvent('fileChange', { files }); // 确保传递新数组
     },
 
-    handleFileAdd() {
-      this.triggerEvent('fileAdd');
-    },
-
     async handleImageUpload(e) {
       const { type } = e.currentTarget.dataset;
       const sourceType = [type];
@@ -273,7 +272,6 @@ export default class ChatSender extends SuperComponent {
       this.data.handleUploadClick = this.handleUploadClick.bind(this);
       this.data.handleFileClick = this.handleFileClick.bind(this);
       this.data.handleFileRemove = this.handleFileRemove.bind(this);
-      this.data.handleFileAdd = this.handleFileAdd.bind(this);
       this.data.handleImageUpload = this.handleImageUpload.bind(this);
       this.data.handleWechatFileUpload = this.handleWechatFileUpload.bind(this);
       this.data.handleUploadEntryClick = this.handleUploadEntryClick.bind(this);

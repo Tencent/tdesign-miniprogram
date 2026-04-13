@@ -8,7 +8,9 @@ isComponent: true
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-checkbox />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TCheckbox from '@tdesign/uniapp/checkbox/checkbox.vue';
@@ -70,7 +72,7 @@ default-checked | Boolean | - | 是否选中。非受控属性 | N
 content | String | - | 多选框内容 | N
 content-disabled | Boolean | - | 是否禁用组件内容（content）触发选中 | N
 disabled | Boolean | undefined | 是否禁用组件。如果父组件存在 CheckboxGroup，默认值由 CheckboxGroup.disabled 控制。优先级：Checkbox.disabled > CheckboxGroup.disabled > Form.disabled | N
-icon | String / Array | 'circle' | 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标，半选中态图标]`。使用 String 时，值为 circle 表示填充圆形图标、值为 line 表示描边型图标、值为 rectangle 表示填充矩形图标。TS 类型：`'circle' \| 'line' \| 'rectangle' \| string[]` | N
+icon | String / Array | 'circle' | 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标，半选中态图标]`。使用 String 时，值为 circle 表示填充圆形图标、值为 line 表示描边型图标、值为 rectangle 表示填充矩形图标。TS 类型：`CheckboxIconType` `type CheckboxIconType = 'circle' \| 'line' \| 'rectangle' \| string[];`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/checkbox/type.ts) | N
 indeterminate | Boolean | false | 是否为半选 | N
 label | String | - | 主文案 | N
 max-content-row | Number | 5 | 内容最大行数限制 | N
@@ -113,14 +115,14 @@ t-class-label | 标签样式类
 custom-style | Object | - | 自定义样式 | N
 borderless | Boolean | false | 是否开启无边框模式。优先级低于 Checkbox.borderless | N
 disabled | Boolean | undefined | 是否禁用组件。优先级：Form.disabled < CheckboxGroup.disabled < Checkbox.disabled | N
-keys | Object | - | 用来定义 value / label / disabled 在 `options` 中对应的字段别名。TS 类型：`KeysType`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts) | N
+keys | Object | - | 用来定义 value / label / disabled 在 `options` 中对应的字段别名。TS 类型：`KeysType`。[通用类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/common/common.ts) | N
 max | Number | undefined | 支持最多选中的数量 | N
 name | String | - | 统一设置内部复选框 HTML 属性 | N
-options | Array | [] | 以配置形式设置子元素。示例1：`['北京', '上海']` ，示例2: `[{ label: '全选', checkAll: true }, { label: '上海', value: 'shanghai' }]`。checkAll 值为 true 表示当前选项为「全选选项」。TS 类型：`Array<CheckboxOption>` `type CheckboxOption = string \| number \| CheckboxOptionObj` `interface CheckboxOptionObj { label?: string; value?: string \| number; disabled?: boolean; checkAll?: true }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/checkbox-group/type.ts) | N
+options | Array | [] | 以配置形式设置子元素。示例1：`['北京', '上海']` ，示例2: `[{ label: '全选', checkAll: true }, { label: '上海', value: 'shanghai' }]`。checkAll 值为 true 表示当前选项为「全选选项」。TS 类型：`Array<CheckboxOption>` `type CheckboxOption = string \| number \| CheckboxOptionObj` `interface CheckboxOptionObj { label?: string; value?: string \| number; disabled?: boolean;icon?:CheckboxIconType; checkAll?: true }`，[Checkbox API Documents](./checkbox?tab=api)。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/checkbox-group/type.ts) | N
 readonly | Boolean | undefined | 只读状态 | N
 relation-key | String | - | -1 时代表独立，不再寻找 parent，用于头条小程序 | N
-value | Array | - | 选中值。支持语法糖 `v-model:value`。TS 类型：`T` `type CheckboxGroupValue = Array<string \| number \| boolean>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/checkbox-group/type.ts) | N
-default-value | Array | - | 选中值。非受控属性。TS 类型：`T` `type CheckboxGroupValue = Array<string \| number \| boolean>`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/checkbox-group/type.ts) | N
+value | Array | - | 选中值。支持语法糖 `v-model:value`。TS 类型：`T` `type CheckboxGroupValue = Array<string \| number \| boolean>`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/checkbox-group/type.ts) | N
+default-value | Array | - | 选中值。非受控属性。TS 类型：`T` `type CheckboxGroupValue = Array<string \| number \| boolean>`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/checkbox-group/type.ts) | N
 
 ### CheckboxGroup Events
 

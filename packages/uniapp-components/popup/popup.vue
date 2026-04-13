@@ -2,8 +2,8 @@
   <view>
     <view
       v-if="realVisible"
-      :style="tools._style([popup.getPopupStyles({ zIndex, distanceTop, placement, duration }), customStyle])"
-      :class="tools.cls(classPrefix, [placement]) + ' ' + transitionClass + ' ' + tClass"
+      :style="'' + tools._style([popup.getPopupStyles({ zIndex: zIndex, distanceTop: distanceTop, placement: placement, duration: duration }), customStyle])"
+      :class="'' + tools.cls(classPrefix, [placement]) + ' ' + transitionClass + ' ' + tClass"
       @transitionend="onTransitionEnd"
     >
       <view
@@ -62,7 +62,7 @@
       :background-color="(overlayProps && overlayProps.backgroundColor) || ''"
       :prevent-scroll-through="preventScrollThrough || (overlayProps ? !!overlayProps.preventScrollThrough : false)"
       :custom-style="(overlayProps && overlayProps.style) || ''"
-      @click="handleOverlayClick($event, { tagId: 'popup-overlay' })"
+      @click="(e) => handleOverlayClick(e, { tagId: 'popup-overlay' })"
     />
   </view>
 </template>
@@ -82,58 +82,59 @@ delete props.visible;
 const name = `${prefix}-popup`;
 
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-content`,
-  ],
-  mixins: [transitionMixins, useCustomNavbar],
+export default {
   components: {
     TOverlay,
     TIcon,
   },
-  props: {
-    ...props,
-  },
-  emits: [
-    'visible-change',
-    'leaved',
-    'update:visible',
-  ],
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      popup,
-      tools,
-    };
-  },
-  computed: {
-    innerPreventScrollThrough() {
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-content`,
+    ],
+    mixins: [transitionMixins, useCustomNavbar],
+    props: {
+      ...props,
+    },
+    emits: [
+      'visible-change',
+      'leaved',
+      'update:visible',
+    ],
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        popup,
+        tools,
+      };
+    },
+    computed: { innerPreventScrollThrough() {
       const { preventScrollThrough, overlayProps } = this;
       return preventScrollThrough || (overlayProps ? !!overlayProps.preventScrollThrough : false);
     },
-  },
-  methods: {
-    noop() {},
-    handleOverlayClick() {
-      const { closeOnOverlayClick } = this;
-      if (closeOnOverlayClick) {
-        this.$emit('visible-change', { visible: false, trigger: 'overlay' });
-        this.$emit('update:visible', false);
-      }
     },
+    methods: {
+      noop() {},
+      handleOverlayClick() {
+        const { closeOnOverlayClick } = this;
+        if (closeOnOverlayClick) {
+          this.$emit('visible-change', { visible: false, trigger: 'overlay' });
+          this.$emit('update:visible', false);
+        }
+      },
 
-    handleClose() {
-      this.$emit('visible-change', { visible: false, trigger: 'close-btn' });
-      this.$emit('update:visible', false);
+      handleClose() {
+        this.$emit('visible-change', { visible: false, trigger: 'close-btn' });
+        this.$emit('update:visible', false);
+      },
     },
-  },
-});
+  }),
+};
 
 </script>
 <style scoped src="./popup.css"></style>

@@ -15,6 +15,7 @@ export * from '../col/type';
 export * from '../collapse/type';
 export * from '../collapse-panel/type';
 export * from '../color-picker/type';
+export * from '../config-provider/type';
 export * from '../count-down/type';
 export * from '../date-time-picker/type';
 export * from '../dialog/type';
@@ -43,6 +44,7 @@ export * from '../notice-bar/type';
 export * from '../overlay/type';
 export * from '../picker/type';
 export * from '../picker-item/type';
+export * from '../popover/type';
 export * from '../popup/type';
 export * from '../progress/type';
 export * from '../pull-down-refresh/type';
@@ -75,3 +77,18 @@ export * from '../toast/type';
 export * from '../tree-select/type';
 export * from '../upload/type';
 export * from '../watermark/type';
+
+// mixins
+export { handlePageScroll } from '../mixins/page-scroll';
+
+// 函数式调用
+export { default as DialogPlugin } from '../dialog/index';
+export { default as Dialog } from '../dialog/index';
+export { default as MessagePlugin } from '../message/index';
+export { default as Message } from '../message/index';
+export { default as Toast, showToast, hideToast } from '../toast/index';
+export { default as ToastPlugin } from '../toast/index';
+export type { ToastOptionsType } from '../toast/index';
+export { default as ActionSheetPlugin, ActionSheetTheme } from '../action-sheet/index';
+export { default as ActionSheet } from '../action-sheet/index';
+export type { ActionSheetShowOption } from '../action-sheet/show';

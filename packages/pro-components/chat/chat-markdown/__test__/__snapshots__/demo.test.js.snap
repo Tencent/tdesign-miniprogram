@@ -1,0 +1,125 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatMarkdown ChatMarkdown base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="chat-example-block"
+  >
+    <t-chat-markdown
+      content="
+# 一级标题
+
+## 二级标题
+
+### 三级标题
+
+#### 四级标题
+
+##### 五级标题
+
+###### 六级标题
+
+正文
+
+**加粗正文**
+
+~~删除线~~
+
+行内代码: \`console.log('Hello')\`
+"
+      bind:click="handleNodeTap"
+    />
+  </wx-view>
+</base>
+`;
+
+exports[`ChatMarkdown ChatMarkdown code demo works fine 1`] = `
+<code>
+  <wx-view
+    class="chat-example-block"
+  >
+    <t-chat-markdown
+      content="
+\`\`\`TDesign-登录表单.jsx
+import { Form, Input, Button, Message } from 'tdesign-react';
+const LoginForm = () => { const [loading, setLoading] = useState(false);
+\`\`\`
+"
+      bind:click="handleNodeTap"
+    />
+  </wx-view>
+</code>
+`;
+
+exports[`ChatMarkdown ChatMarkdown list demo works fine 1`] = `
+<list>
+  <wx-view
+    class="chat-example-block"
+  >
+    <t-chat-markdown
+      content="
+- 无序列表
+- 无序列表
+  - 嵌套列表
+  - 嵌套列表
+
+1. 有序列表
+2. 有序列表
+"
+      bind:click="handleNodeTap"
+    />
+  </wx-view>
+</list>
+`;
+
+exports[`ChatMarkdown ChatMarkdown refer demo works fine 1`] = `
+<refer>
+  <wx-view
+    class="chat-example-block"
+  >
+    <t-chat-markdown
+      content="
+下面是引用示例
+
+> TDesign distills Tencent's years of design experience into professional design guideline, providing universal design solutions that assist product managers, designers, developers, and other roles in efficiently completing the design and development of enterprise-level products, while maintaining consistent design language and style to meet user experience requirements.
+"
+      bind:click="handleNodeTap"
+    />
+  </wx-view>
+</refer>
+`;
+
+exports[`ChatMarkdown ChatMarkdown sheet demo works fine 1`] = `
+<sheet>
+  <wx-view
+    class="chat-example-block"
+  >
+    <t-chat-markdown
+      content="
+| 左对齐     | 居中对齐 | 右对齐 | 内容 |
+| :--------- | :------: | -----: | ----- |
+| 单元格     |  单元格  | 单元格 | 单元格 |
+| 长文本示例| 长文本示例长文本示例长文本示例 |   $100 | 文本内容 |
+| 文本示例 | 文本内容 | $100 |  文本内容 |
+"
+      bind:click="handleNodeTap"
+    />
+  </wx-view>
+</sheet>
+`;
+
+exports[`ChatMarkdown ChatMarkdown url demo works fine 1`] = `
+<url>
+  <wx-view
+    class="chat-example-block"
+  >
+    <t-chat-markdown
+      content="
+![示例](https://tdesign.gtimg.com/demo/demo-image-1.png \\"示例\\")
+这是一个链接 [Markdown语法](https://markdown.com.cn)。
+"
+      bind:click="handleNodeTap"
+    />
+  </wx-view>
+</url>
+`;

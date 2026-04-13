@@ -1,22 +1,24 @@
 import { SuperComponent, wxComponent, ComponentsOptionsType } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
 import props from './props';
+import usingConfig from '../../../components/mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-chat-actionbar`;
+const componentName = 'chat-actionbar';
 
 @wxComponent()
 export default class ChatActionbar extends SuperComponent {
+  behaviors = [usingConfig({ componentName })];
+
   options: ComponentsOptionsType = {
     multipleSlots: true,
-    styleIsolation: 'shared',
   };
 
   properties = props;
 
   data = {
     actions: [],
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     pComment: '',
     iconMap: {
       good: 'thumb-up',
@@ -140,34 +142,23 @@ export default class ChatActionbar extends SuperComponent {
     },
 
     setActions() {
-      const text = {
-        replay: '刷新',
-        copy: '复制',
-        good: '点赞',
-        bad: '点踩',
-        share: '分享',
-        quote: '引用',
-      };
+      const { globalConfig } = this.data;
 
       const baseActions = [];
       let dataActions = [];
-      if (this.properties.placement === 'longpress') {
-        dataActions = ['quote', 'copy', 'share'];
-      } else if (Array.isArray(this.properties.actionBar)) {
-        dataActions = this.properties.actionBar;
-      }
+      dataActions = this.properties.actionBar;
       dataActions.forEach((item) => {
         if (item === 'good' || item === 'bad') {
           baseActions.push({
             name: item,
             isActive: this.data.pComment === item,
-            text: text[item] || item,
+            text: globalConfig.actionBar?.[item] || item,
           });
         } else {
           baseActions.push({
             name: item,
             isActive: false,
-            text: text[item] || item,
+            text: globalConfig.actionBar?.[item] || item,
           });
         }
       });

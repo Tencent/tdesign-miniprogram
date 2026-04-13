@@ -1,13 +1,15 @@
 ---
 title: ChatMessage 对话消息体
 description: 用于在聊天对话中显示单个消息项。它可以展示用户的头像、昵称、时间、聊天内容，支持多种消息状态和样式变体。
-spline: base
+spline: chat
 isComponent: true
 ---
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-chat-message />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';

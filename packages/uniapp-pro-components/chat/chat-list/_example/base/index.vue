@@ -6,7 +6,7 @@
     >
       <t-chat-list
         id="chatList"
-        @scroll="onScroll($event, { tagId: 'chatList' })"
+        @scroll="(e) => onScroll(e, { tagId: 'chatList' })"
       >
         <block
           v-for="(item, index) in chatList"
@@ -22,6 +22,7 @@
             :placement="item.role === 'user' ? 'right' : 'left'"
             :status="item.status || ''"
             @message-longpress="showPopover"
+            @click="onClick"
           >
             <template #actionbar>
               <t-chat-actionbar
@@ -42,7 +43,7 @@
             :disabled="disabled"
             :auto-rise-with-keyboard="true"
             :render-presets="renderPresets"
-            @update:value="value = $event"
+            @update:value="(e) => value = e"
             @send="onSend"
             @stop="onStop"
             @focus="onFocus"
@@ -55,6 +56,7 @@
         class="popover-actionbar"
         placement="longpress"
         :long-press-position="longPressPosition"
+        :action-bar="['quote', 'copy', 'share']"
         @actions="handlePopoverAction"
       />
       <!-- 内置虚拟列表优化性能仅在data属性中使用 -->
@@ -70,7 +72,7 @@ import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
 import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
 import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
 import TToast from '@tdesign/uniapp/toast/toast.vue';
-import Toast from '@tdesign/uniapp/toast/index';
+import { Toast } from '@tdesign/uniapp';
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;
@@ -357,6 +359,11 @@ export default {
     handlePopoverAction(e) {
       e.chatId = this.activePopoverId;
       this.handleAction(e);
+    },
+
+    onClick(e) {
+      const { node } = e;
+      console.log('点击节点', node);
     },
   },
 };

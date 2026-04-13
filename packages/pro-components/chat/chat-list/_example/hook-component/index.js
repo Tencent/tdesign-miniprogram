@@ -1,5 +1,5 @@
 import Toast from 'tdesign-miniprogram/toast';
-import { getNavigationBarHeight } from '../../../utils/utils';
+import getNavigationBarHeight from '../utils';
 
 let uniqueId = 0;
 const getUniqueKey = () => {
@@ -172,15 +172,13 @@ Component({
         await fetchStream(mockData1, {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[0].data.text += result;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[0].data.text': that.data.chatList[0].message.content[0].data.text + result,
             });
           },
           complete() {
-            that.data.chatList[0].message.content[0].data.title = '思考完成';
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[0].data.title': '思考完成',
             });
           },
         });
@@ -198,17 +196,13 @@ Component({
         await fetchStream(mockData2, {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[1].data += result;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[1].data': that.data.chatList[0].message.content[1].data + result,
             });
           },
           complete() {
-            that.data.chatList[0].message.status = 'complete';
             that.setData({
-              chatList: that.data.chatList,
-            });
-            that.setData({
+              'chatList[0].message.status': 'complete',
               loading: false,
             });
           },

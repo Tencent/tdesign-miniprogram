@@ -3,7 +3,7 @@
     <t-action-sheet
       ref="t-action-sheet"
       :using-custom-navbar="!isMPAlipay"
-      @selected="handleSelected($event, { tagId: 't-action-sheet' })"
+      @selected="(e) => handleSelected(e, { tagId: 't-action-sheet' })"
     />
 
     <t-button
@@ -37,7 +37,7 @@
 </template>
 
 <script>
-import ActionSheet, { ActionSheetTheme } from '@tdesign/uniapp/action-sheet/index';
+import { ActionSheetPlugin, ActionSheetTheme } from '@tdesign/uniapp';
 import TActionSheet from '@tdesign/uniapp/action-sheet/action-sheet.vue';
 import TButton from '@tdesign/uniapp/button/button.vue';
 
@@ -87,7 +87,7 @@ export default {
   created() {},
   methods: {
     handleAction() {
-      ActionSheet.show({
+      ActionSheetPlugin.show({
         theme: ActionSheetTheme.Grid,
         selector: '#t-action-sheet',
         context: this,
@@ -95,7 +95,7 @@ export default {
       });
     },
     handleMultiAction() {
-      ActionSheet.show({
+      ActionSheetPlugin.show({
         theme: ActionSheetTheme.Grid,
         selector: '#t-action-sheet',
         context: this,
@@ -106,7 +106,7 @@ export default {
       });
     },
     handleActionWithDesc() {
-      ActionSheet.show({
+      ActionSheetPlugin.show({
         theme: ActionSheetTheme.Grid,
         selector: '#t-action-sheet',
         context: this,

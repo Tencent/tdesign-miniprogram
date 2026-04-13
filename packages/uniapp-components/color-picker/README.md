@@ -1,7 +1,7 @@
 ---
 title: ColorPicker 颜色选择器
 description: 用于颜色选择，支持多种格式。
-spline: data
+spline: form
 isComponent: true
 ---
 
@@ -9,7 +9,9 @@ isComponent: true
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-color-picker />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TColorPicker from '@tdesign/uniapp/color-picker/color-picker.vue';

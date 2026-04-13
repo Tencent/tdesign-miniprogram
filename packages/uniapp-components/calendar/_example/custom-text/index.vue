@@ -5,7 +5,7 @@
       title="带单行描述的日历"
       :note="formatTimestamp(singleValue)"
       data-type="single"
-      @click="handleCalendar($event, { type: 'single' })"
+      @click="(e) => handleCalendar(e, { type: 'single' })"
     />
 
     <view class="demo-desc">
@@ -18,15 +18,15 @@
       :max-date="maxDate"
       :format="type === 'single' ? singleFormat : format"
       :data-type="type"
-      @update:visible="visible = $event"
-      @confirm="handleConfirm($event, { type })"
+      @update:visible="(e) => visible = e"
+      @confirm="(e) => handleConfirm(e, { type })"
     />
     <t-cell
       arrow
       title="带双行描述的日历"
       :note="formatTimestamp(value)"
       data-type="multiple"
-      @click="handleCalendar($event, { type: 'multiple' })"
+      @click="(e) => handleCalendar(e, { type: 'multiple' })"
     />
   </view>
 </template>

@@ -1,12 +1,13 @@
 import props from './props';
 import config from '../common/config';
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
+import useCustomNavbar from '../mixins/using-custom-navbar';
 
 const { prefix } = config;
 const name = `${prefix}-form`;
 @wxComponent()
 export default class Form extends SuperComponent {
-  behaviors = ['wx://component-export'];
+  behaviors = ['wx://component-export', useCustomNavbar];
 
   externalClasses = [
     `${prefix}-class`,
@@ -16,7 +17,7 @@ export default class Form extends SuperComponent {
     `${prefix}-class-extra`,
   ];
 
-  properties = props as any;
+  properties = props;
 
   options = {
     multipleSlots: true,
@@ -33,11 +34,8 @@ export default class Form extends SuperComponent {
     prefix,
     classPrefix: name,
     children: [],
-    formData: {},
     initialData: {},
-    rules: {},
     fields: [],
-    showErrorMessage: true,
   };
 
   lifetimes = {
@@ -52,14 +50,11 @@ export default class Form extends SuperComponent {
       const { data } = this.properties;
       // 确保 data 不为 undefined 或 null
       const safeData = data || {};
-      const formData = { ...safeData };
       const initialData = { ...safeData };
       const fields = Object.keys(safeData);
       this.setData({
-        formData,
         initialData,
         fields,
-        showErrorMessage: this.properties.showErrorMessage,
       });
     },
 
@@ -82,13 +77,6 @@ export default class Form extends SuperComponent {
       }
     },
 
-    // 更新表单数据
-    updateFormData(name, value) {
-      const { formData } = this.data;
-      formData[name] = value;
-      this.setData({ formData });
-    },
-
     // 验证表单
     async validate() {
       const { children } = this.data;
@@ -99,6 +87,10 @@ export default class Form extends SuperComponent {
         const results = await Promise.all(validatePromises);
         const validateResult = this.formatValidateResult(results);
 
+        if (validateResult !== true) {
+          this.scrollToError(validateResult);
+        }
+
         this.triggerEvent('validate', {
           validateResult,
         });
@@ -107,6 +99,22 @@ export default class Form extends SuperComponent {
       } catch (error) {
         return false;
       }
+    },
+
+    // 滚动到第一个校验不通过的字段
+    scrollToError(validateResult) {
+      const { distanceTop } = this.data;
+      const { scrollToFirstError } = this.properties;
+      if (!scrollToFirstError) return;
+
+      const firstErrorKey = Object.keys(validateResult)[0];
+      if (!firstErrorKey) return;
+
+      const { children } = this.data;
+      const errorChild = children.find((child) => child.properties.name === firstErrorKey);
+      if (!errorChild) return;
+
+      errorChild.scrollIntoView(scrollToFirstError, distanceTop);
     },
 
     // 纯净验证（不显示错误信息）
@@ -194,23 +202,40 @@ export default class Form extends SuperComponent {
         return false;
       }
     },
+    // 获取空值
+    getEmptyValue(name) {
+      const currentValue = this.properties.data[name];
+
+      if (Array.isArray(currentValue)) {
+        return [];
+      }
+      if (typeof currentValue === 'object' && currentValue !== null) {
+        return {};
+      }
+      if (typeof currentValue === 'number') {
+        return 0;
+      }
+      return '';
+    },
+
     // 重置表单
     reset() {
-      const { children, initialData, formData, fields } = this.data;
+      const { children, initialData, fields } = this.data;
+      const resetData = {};
 
       children.forEach((child) => {
         if (fields && fields.includes(child.data.name)) {
           if (this.properties.resetType === 'empty') {
-            this.updateFormData(child.data.name, this.getEmptyValue(child.data.name));
+            resetData[child.data.name] = this.getEmptyValue(child.data.name);
           } else if (this.properties.resetType === 'initial') {
-            this.updateFormData(child.data.name, initialData[child.data.name]);
+            resetData[child.data.name] = initialData[child.data.name];
           }
           child.resetField();
         }
       });
 
       this.triggerEvent('reset', {
-        formData,
+        formData: resetData,
       });
     },
 
@@ -234,23 +259,6 @@ export default class Form extends SuperComponent {
           child.setValidateMessage(validateMessage[child.data.name]);
         }
       });
-    },
-
-    // 获取空值
-    getEmptyValue(name) {
-      const { formData } = this.data;
-      const currentValue = formData[name];
-
-      if (Array.isArray(currentValue)) {
-        return [];
-      }
-      if (typeof currentValue === 'object' && currentValue !== null) {
-        return {};
-      }
-      if (typeof currentValue === 'number') {
-        return 0;
-      }
-      return '';
     },
 
     // 表单提交事件处理

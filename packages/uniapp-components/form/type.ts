@@ -15,19 +15,10 @@ export interface TdFormProps<FormData extends Data = Data> {
    */
   colon?: boolean;
   /**
-   * 表单内容对齐方式：左对齐、右对齐
-   * @default left
-   */
-  contentAlign?: 'left' | 'right';
-  /**
    * 表单数据
    * @default {}
    */
   data?: FormData;
-  /**
-   * 是否禁用整个表单
-   */
-  disabled?: boolean;
   /**
    * 表单错误信息配置，示例：`{ idcard: '请输入正确的身份证号码', max: '字符长度不能超过 ${max}' }`
    */
@@ -43,13 +34,9 @@ export interface TdFormProps<FormData extends Data = Data> {
    */
   labelWidth?: string | number;
   /**
-   * 是否整个表单只读
-   */
-  readonly?: boolean;
-  /**
    * 是否显示必填符号（*），默认显示
    */
-  requiredMark?: boolean;
+  requiredMark?: boolean | null;
   /**
    * 表单必填符号（*）显示位置
    */
@@ -113,58 +100,6 @@ export interface FormInstanceFunctions<FormData extends Data = Data> {
    * 校验函数，包含错误文本提示等功能。泛型 `FormData` 表示表单数据 TS 类型。<br/>【关于参数】`params.fields` 表示校验字段，如果设置了 `fields`，本次校验将仅对这些字段进行校验。`params.trigger` 表示本次触发校验的范围，'params.trigger = blur' 表示只触发校验规则设定为 trigger='blur' 的字段，'params.trigger = change' 表示只触发校验规则设定为 trigger='change' 的字段，默认触发全范围校验。`params.showErrorMessage` 表示校验结束后是否显示错误文本提示，默认显示。<br />【关于返回值】返回值为 true 表示校验通过；如果校验不通过，返回值为校验结果列表
    */
   validate: (params?: FormValidateParams) => Promise<FormValidateResult<FormData>>;
-}
-
-
-export interface TdFormItemProps {
-  /**
-   * 是否显示右侧箭头
-   * @default false
-   */
-  arrow?: boolean;
-  /**
-   * 表单内容对齐方式，优先级高于 Form.contentAlign
-   */
-  contentAlign?: 'left' | 'right';
-  /**
-   * label 原生属性
-   * @default ''
-   */
-  for?: string;
-  /**
-   * 表单项说明内容
-   */
-  help?: string;
-  /**
-   * 字段标签名称
-   * @default ''
-   */
-  label?: string;
-  /**
-   * 表单字段标签对齐方式：左对齐、右对齐、顶部对齐。默认使用 Form 的对齐方式，优先级高于 Form.labelAlign
-   */
-  labelAlign?: 'left' | 'right' | 'top';
-  /**
-   * 可以整体设置标签宽度，优先级高于 Form.labelWidth
-   */
-  labelWidth?: string | number;
-  /**
-   * 表单字段名称
-   * @default ''
-   */
-  name?: string;
-  /**
-   * 是否显示必填符号（*），优先级高于 Form.requiredMark
-   */
-  requiredMark?: boolean;
-  /**
-   * 表单字段校验规则
-   */
-  rules?: Array<FormRule>;
-  /**
-   * 校验不通过时，是否显示错误提示信息，优先级高于 `Form.showErrorMessage`
-   */
-  showErrorMessage?: boolean;
 }
 
 export interface FormRule {
@@ -236,7 +171,7 @@ export interface FormRule {
    */
   url?: boolean | IsURLOptions;
   /**
-   * 自定义校验规则，示例：`{ validator: (val) => val.length > 0, message: '请输入内容'}`
+   * 自定义校验规则，context 中 formData 为当前完整表单值，name为该字段的标识，示例：`{ validator: (val) => val.length > 0, message: '请输入内容'}`
    */
   validator?: CustomValidator;
   /**
@@ -373,7 +308,10 @@ export interface IsDateOptions {
   delimiters: string[];
 }
 
-export type CustomValidator = (val: ValueType) => CustomValidateResolveType | Promise<CustomValidateResolveType>;
+export type CustomValidator = (
+  val: ValueType,
+  context?: { formData: Data; name: string },
+) => CustomValidateResolveType | Promise<CustomValidateResolveType>;
 
 export type CustomValidateResolveType = boolean | CustomValidateObj;
 
@@ -384,4 +322,3 @@ export interface CustomValidateObj {
 }
 
 export type ValueType = any;
-

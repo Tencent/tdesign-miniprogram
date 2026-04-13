@@ -1,5 +1,8 @@
 <template>
-  <view :class="classPrefix">
+  <view
+    :class="classPrefix"
+    @click="nodeClick"
+  >
     <!-- 代码语言标签 -->
     <view
       v-if="node.lang"
@@ -31,26 +34,49 @@ import { prefix } from '@tdesign/uniapp/common/config';
 
 const name = `${prefix}-chat-markdown-code`;
 
-export default uniComponent({
-  name,
-  options: {
-    multipleSlots: true,
-    styleIsolation: 'shared',
-  },
-
-  props: {
-    node: {
-      type: Object,
-      default: () => ({}),
+export default {
+  ...uniComponent({
+    name,
+    options: {
+      multipleSlots: true,
+      styleIsolation: 'shared',
     },
-  },
 
-  data() {
-    return {
-      classPrefix: name,
-    };
-  },
-});
+    props: {
+      node: {
+        type: Object,
+        default: () => ({}),
+      },
+    },
+
+    data() {
+      return {
+        classPrefix: name,
+      };
+    },
+
+    methods: {
+      nodeClick(e) {
+        const target = this.getCareMarkdown();
+        if (!target) return;
+        target.$emit('click', {
+          event: e,
+          node: this.node,
+        });
+      },
+
+      getCareMarkdown() {
+        if (this.careMarkdown) return this.careMarkdown;
+        const markdownName = `${prefix}-chat-markdown`;
+        this.careMarkdown = this.$parent;
+        while (this.careMarkdown && this.careMarkdown.name !== markdownName) {
+          this.careMarkdown = this.careMarkdown.$parent;
+        }
+        return this.careMarkdown;
+      },
+    },
+  }),
+};
 
 </script>
 <style scoped src="./chat-markdown-code.css"></style>

@@ -26,6 +26,7 @@
                 <t-chat-content
                   v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                   :content="contentItem"
+                  :role="item.message.role"
                 />
 
                 <!-- :slot="'custom-' + contentIndex" -->
@@ -85,7 +86,7 @@ import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
 import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
 import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
 import TToast from '@tdesign/uniapp/toast/toast.vue';
-import Toast from '@tdesign/uniapp/toast/index';
+import { Toast } from '@tdesign/uniapp';
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;

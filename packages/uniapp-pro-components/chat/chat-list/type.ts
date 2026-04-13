@@ -27,7 +27,7 @@ export interface TdChatListProps {
   /**
    * 滚动事件的回调
    */
-  onScroll?: (context: { scrollLeft; scrollTop; scrollHeight; scrollWidth; deltaX; deltaY }) => void;
+  onScroll?: (context: TdChatScrollContext) => void;
 }
 
 export interface TdChatItemMeta {
@@ -37,4 +37,13 @@ export interface TdChatItemMeta {
   datetime?: string;
   content?: string;
   status?: string;
+}
+
+export interface TdChatScrollContext {
+  scrollLeft: number;
+  scrollTop: number;
+  scrollHeight: number;
+  scrollWidth: number;
+  deltaX: number;
+  deltaY: number;
 }

@@ -144,9 +144,10 @@
     --td-component-border: var(--td-gray-color-4);
 
     --td-shadow-1: 0 1px 10px rgba(0, 0, 0, 5%), 0 4px 5px rgba(0, 0, 0, 8%), 0 2px 4px -1px rgba(0, 0, 0, 12%);
-    --td-shadow-2: 0 3px 14px 2px rgba(0, 0, 0, 5%), 0 8px 10px 1px rgba(0, 0, 0, 6%), 0 5px 5px -3px rgba(0, 0, 0, 10%);
-    --td-shadow-3: 0 6px 30px 5px rgba(0, 0, 0, 5%), 0 16px 24px 2px rgba(0, 0, 0, 4%),
-      0 8px 10px -5px rgba(0, 0, 0, 8%);
+    --td-shadow-2:
+      0 3px 14px 2px rgba(0, 0, 0, 5%), 0 8px 10px 1px rgba(0, 0, 0, 6%), 0 5px 5px -3px rgba(0, 0, 0, 10%);
+    --td-shadow-3:
+      0 6px 30px 5px rgba(0, 0, 0, 5%), 0 16px 24px 2px rgba(0, 0, 0, 4%), 0 8px 10px -5px rgba(0, 0, 0, 8%);
     --td-shadow-4: 0 2px 8px 0 rgba(0, 0, 0, 0.06);
 
     --td-shadow-inset-top: inset 0 0.5px 0 #dcdcdc;
@@ -161,7 +162,6 @@
     --td-scroll-track-color: #fff;
   }
 }
-
 
 /* ./raw/_dark.less */
 @media (prefers-color-scheme: dark) {
@@ -324,18 +324,16 @@
   }
 }
 
-
 /* ./raw/_radius.less */
 page,
 .page {
-  --td-radius-small: 12px;
-  --td-radius-default: 24px;
-  --td-radius-large: 36px;
-  --td-radius-extraLarge: 48px;
+  --td-radius-small: 3px;
+  --td-radius-default: 6px;
+  --td-radius-large: 9px;
+  --td-radius-extraLarge: 12px;
   --td-radius-round: 999px;
   --td-radius-circle: 50%;
 }
-
 
 /* ./raw/_font.less */
 page,
@@ -343,47 +341,47 @@ page,
   --td-font-family: PingFang SC, Microsoft YaHei, Arial Regular;
   --td-font-family-medium: PingFang SC, Microsoft YaHei, Arial Medium;
 
-  --td-font-size-link-small: 48px;
-  --td-font-size-link-medium: 56px;
-  --td-font-size-link-large: 64px;
-  --td-font-size-mark-extraSmall: 40px;
-  --td-font-size-mark-small: 48px;
-  --td-font-size-mark-medium: 56px;
-  --td-font-size-mark-large: 64px;
-  --td-font-size-body-extraSmall: 40px;
-  --td-font-size-body-small: 48px;
-  --td-font-size-body-medium: 56px;
-  --td-font-size-body-large: 64px;
-  --td-font-size-title-small: 56px;
-  --td-font-size-title-medium: 64px;
-  --td-font-size-title-large: 72px;
-  --td-font-size-title-extraLarge: 80px;
-  --td-font-size-headline-small: 96px;
-  --td-font-size-headline-medium: 112px;
-  --td-font-size-headline-large: 144px;
-  --td-font-size-display-medium: 192px;
-  --td-font-size-display-large: 256px;
+  --td-font-size-link-small: 12px;
+  --td-font-size-link-medium: 14px;
+  --td-font-size-link-large: 16px;
+  --td-font-size-mark-extraSmall: 10px;
+  --td-font-size-mark-small: 12px;
+  --td-font-size-mark-medium: 14px;
+  --td-font-size-mark-large: 16px;
+  --td-font-size-body-extraSmall: 10px;
+  --td-font-size-body-small: 12px;
+  --td-font-size-body-medium: 14px;
+  --td-font-size-body-large: 16px;
+  --td-font-size-title-small: 14px;
+  --td-font-size-title-medium: 16px;
+  --td-font-size-title-large: 18px;
+  --td-font-size-title-extraLarge: 20px;
+  --td-font-size-headline-small: 24px;
+  --td-font-size-headline-medium: 28px;
+  --td-font-size-headline-large: 36px;
+  --td-font-size-display-medium: 48px;
+  --td-font-size-display-large: 64px;
 
-  --td-line-height-link-small: 80px;
-  --td-line-height-link-medium: 88px;
-  --td-line-height-link-large: 96px;
-  --td-line-height-mark-extraSmall: 64px;
-  --td-line-height-mark-small: 80px;
-  --td-line-height-mark-medium: 88px;
-  --td-line-height-mark-large: 96px;
-  --td-line-height-body-extraSmall: 64px;
-  --td-line-height-body-small: 80px;
-  --td-line-height-body-medium: 88px;
-  --td-line-height-body-large: 96px;
-  --td-line-height-title-small: 88px;
-  --td-line-height-title-medium: 96px;
-  --td-line-height-title-large: 104px;
-  --td-line-height-title-extraLarge: 112px;
-  --td-line-height-headline-small: 128px;
-  --td-line-height-headline-medium: 144px;
-  --td-line-height-headline-large: 176px;
-  --td-line-height-display-medium: 224px;
-  --td-line-height-display-large: 288px;
+  --td-line-height-link-small: 20px;
+  --td-line-height-link-medium: 22px;
+  --td-line-height-link-large: 24px;
+  --td-line-height-mark-extraSmall: 16px;
+  --td-line-height-mark-small: 20px;
+  --td-line-height-mark-medium: 22px;
+  --td-line-height-mark-large: 24px;
+  --td-line-height-body-extraSmall: 16px;
+  --td-line-height-body-small: 20px;
+  --td-line-height-body-medium: 22px;
+  --td-line-height-body-large: 24px;
+  --td-line-height-title-small: 22px;
+  --td-line-height-title-medium: 24px;
+  --td-line-height-title-large: 26px;
+  --td-line-height-title-extraLarge: 28px;
+  --td-line-height-headline-small: 32px;
+  --td-line-height-headline-medium: 36px;
+  --td-line-height-headline-large: 44px;
+  --td-line-height-display-medium: 56px;
+  --td-line-height-display-large: 72px;
 
   --td-font-link-small: var(--td-font-size-link-small) / var(--td-line-height-link-small) var(--td-font-family);
   --td-font-link-medium: var(--td-font-size-link-medium) / var(--td-line-height-link-medium) var(--td-font-family);
@@ -415,7 +413,7 @@ page,
   --td-font-display-large: 600 var(--td-font-size-display-large) / var(--td-line-height-display-large)
     var(--td-font-family);
 
-  --td-font-size: 40px;
+  --td-font-size: 10px;
   --td-font-size-xs: var(--td-font-size-body-extraSmall);
   --td-font-size-s: var(--td-font-size-body-small);
   --td-font-size-base: var(--td-font-size-title-small);
@@ -425,19 +423,17 @@ page,
   --td-font-size-xxl: var(--td-font-size-headline-large);
 }
 
-
 /* ./raw/_spacer.less */
 page,
 .page {
-  --td-spacer: 32px;
-  --td-spacer-1: 48px;
-  --td-spacer-2: 64px;
-  --td-spacer-3: 96px;
-  --td-spacer-4: 128px;
-  --td-spacer-5: 192px;
-  --td-spacer-6: 320px;
+  --td-spacer: 8px;
+  --td-spacer-1: 12px;
+  --td-spacer-2: 16px;
+  --td-spacer-3: 24px;
+  --td-spacer-4: 32px;
+  --td-spacer-5: 48px;
+  --td-spacer-6: 80px;
 }
-
 
 /* ./raw/_components.less */
 @media (prefers-color-scheme: light) {

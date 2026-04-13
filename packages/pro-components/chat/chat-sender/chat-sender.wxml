@@ -17,7 +17,6 @@
           imageViewer="{{attachmentsProps.imageViewer}}"
           bind:fileClick="handleFileClick"
           bind:remove="handleFileRemove"
-          bind:add="handleFileAdd"
         >
         </attachments>
       </view>
@@ -30,34 +29,29 @@
   <view class="{{classPrefix}}__actions">
     <view class="{{classPrefix}}__textarea">
       <slot name="input-prefix" />
-      <!-- 文本输入模式 -->
-      <block wx:if="{{inputMode === 'text'}}">
-        <textarea
-          class="{{classPrefix}}__textarea--control"
-          style="{{_this.textareaStyle(textareaProps.autosize)}}"
-          disabled="{{disabled}}"
-          auto-height="{{!!textareaProps.autosize}}"
-          confirm-type="send"
-          adjust-position="{{adjustPosition}}"
-          disable-default-padding="{{false}}"
-          cursor-spacing="30"
-          maxlength="-1"
-          value="{{value}}"
-          bindchange="textChange"
-          bindfocus="focusFn"
-          bindblur="blurFn"
-          bindtap="handlerClick"
-          bindinput="textChange"
-          bindkeyboardheightchange="onkeyboardheightchange"
-          bindconfirm="handleSendClick"
-        >
-        </textarea>
-        <view class="{{classPrefix}}__textarea--placeholder {{focusFlag || value ? 'hide' : ''}}">{{placeholder}}</view>
-      </block>
-      <!-- 语音输入模式 -->
-      <block wx:else>
-        <slot name="speech-input" />
-      </block>
+      <textarea
+        class="{{classPrefix}}__textarea--control"
+        style="{{_this.textareaStyle(textareaProps.autosize)}}"
+        disabled="{{disabled}}"
+        auto-height="{{!!textareaProps.autosize}}"
+        confirm-type="send"
+        adjust-position="{{adjustPosition}}"
+        disable-default-padding="{{false}}"
+        cursor-spacing="30"
+        maxlength="-1"
+        value="{{value}}"
+        bindchange="textChange"
+        bindfocus="focusFn"
+        bindblur="blurFn"
+        bindtap="handlerClick"
+        bindinput="textChange"
+        bindkeyboardheightchange="onkeyboardheightchange"
+        bindconfirm="handleSendClick"
+      >
+      </textarea>
+      <view class="{{classPrefix}}__textarea--placeholder {{focusFlag || value ? 'hide' : ''}}"
+        >{{placeholder || globalConfig.placeholder}}</view
+      >
     </view>
 
     <view class="{{classPrefix}}__footer">
@@ -85,7 +79,7 @@
                       class="send-btn-{{item.type}} {{value || loading ? 'active' : 'disabled'}}"
                       bindtap="handleSendClick"
                     >
-                      {{loading ? '停止' : '发送'}}
+                      {{loading ? globalConfig.sendText : globalConfig.stopText}}
                     </view>
                   </block>
                   <block wx:else>

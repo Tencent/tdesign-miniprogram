@@ -1,11 +1,11 @@
 ---
 title: QRCode 二维码
 description: 二维码能够将文本转换生成二维码的组件，支持自定义配色和 Logo 配置。
-spline: message
+spline: data
 isComponent: true
 ---
 
-<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-55%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-42%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-55%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-82%25-blue" /></span>
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-61%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-52%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-61%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-95%25-blue" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -66,6 +66,18 @@ isComponent: true
 #### 生成的二维码无法扫描？
 若二维码无法扫码识别，可能是因为链接地址过长导致像素过于密集，可以通过 `size` 配置二维码更大，或者通过短链接服务等方式将链接变短。
 
+#### `hidden` 元素中，二维码绘制失败？
+当 QRCode 外层使用 `hidden` 包裹，可以通过 `wx:if` 或者重新调用组件的 `init` 方法，确保组件正常渲染（在 t-popup/t-dialog 中同理）。如下：[可参考代码片段](https://developers.weixin.qq.com/s/OUlsk0mq8x6V)
+
+```html
+<t-qrcode id="qrcode" />
+```
+
+```js
+const $qrcode = this.selectComponent('#qrcode');
+
+$qrcode.init();
+```
 ##
 
 ## API
@@ -101,7 +113,7 @@ status-render | 自定义状态渲染器
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
---td-brand-color-hover | --td-brand-color-hover | - 
+--td-brand-color-hover | --td-brand-color-hover | -
 --td-success-color | --td-success-color | -
