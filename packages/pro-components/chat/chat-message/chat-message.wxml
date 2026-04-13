@@ -37,10 +37,10 @@
               content="{{item.data}}"
               role="{{role}}"
               status="{{status}}"
-              layout="{{thinkingProps.layout}}"
-              max-height="{{thinkingProps.maxHeight}}"
-              animation="{{thinkingProps.animation}}"
-              collapsed="{{thinkingProps.collapsed}}"
+              layout="{{chatContentProps.thinkingProps.layout}}"
+              max-height="{{chatContentProps.thinkingProps.maxHeight}}"
+              animation="{{chatContentProps.thinkingProps.animation}}"
+              collapsed="{{chatContentProps.thinkingProps.collapsed}}"
             ></chat-thinking>
             <chat-content
               wx:elif="{{item.type === 'text' || item.type === 'markdown'}}"

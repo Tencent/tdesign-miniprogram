@@ -9,7 +9,7 @@
         content="{{item.message.content}}"
         role="{{item.message.role}}"
         placement="{{item.message.role === 'user' ? 'right' : 'left'}}"
-        thinkingProps="{{item.thinkingProps}}"
+        chat-content-props="{{item.chatContentProps}}"
         bind:message-longpress="showPopover"
       >
         <t-chat-actionbar

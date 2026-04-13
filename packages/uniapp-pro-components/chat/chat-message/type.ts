@@ -21,11 +21,7 @@ export interface TdChatMessageProps {
   /**
    * 聊天内容组件的属性
    */
-  chatContentProps?: ChatContentProps;
-  /**
-   * thinking 内容组件的属性，透传给 ChatThinking 组件（content 和 status 由消息数据决定，无需传入）
-   */
-  thinkingProps?: TdChatThinkingProps;
+  chatContentProps?: ChatMessageContentProps;
   /**
    * 聊天消息的唯一标识
    * @default ''
@@ -90,3 +86,10 @@ export interface ChatBaseContent<T extends ChatContentType, TData> {
 export type ChatMessageStatus = 'pending' | 'streaming' | 'complete' | 'stop' | 'error';
 
 export type ChatContentType = 'text' | 'markdown' | 'thinking' | 'attachment';
+
+export interface ChatMessageContentProps extends ChatContentProps {
+  /**
+   * thinking 内容组件的属性，透传给 ChatThinking 组件（content 和 status 由消息数据决定，无需传入）
+   */
+  thinkingProps?: TdChatThinkingProps;
+}

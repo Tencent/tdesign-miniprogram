@@ -17,7 +17,7 @@
             :content="item.message.content"
             :role="item.message.role"
             :placement="item.message.role === 'user' ? 'right' : 'left'"
-            :thinking-props="item.thinkingProps"
+            :chat-content-props="item.chatContentProps"
             @message-longpress="showPopover"
           >
             <template #actionbar>
@@ -76,9 +76,11 @@ const getUniqueKey = () => {
 
 const mockData = {
   avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
-  thinkingProps: {
-    animation: 'gradient',
-    collapsed: false,
+  chatContentProps: {
+    thinkingProps: {
+      animation: 'gradient',
+      collapsed: false,
+    },
   },
   key: getUniqueKey(),
   message: {
@@ -135,9 +137,11 @@ export default {
       chatList: [
         {
           avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
-          thinkingProps: {
-            animation: 'gradient',
-            collapsed: false,
+          chatContentProps: {
+            thinkingProps: {
+              animation: 'gradient',
+              collapsed: false,
+            },
           },
           key: getUniqueKey(),
           message: {
@@ -286,7 +290,7 @@ export default {
           },
           complete() {
             that.chatList[0].message.content[0].data.title = '思考完成';
-            that.chatList[0].thinkingProps.collapsed = true;
+            that.chatList[0].chatContentProps.thinkingProps.collapsed = true;
           },
         });
         if (!that.loading) {

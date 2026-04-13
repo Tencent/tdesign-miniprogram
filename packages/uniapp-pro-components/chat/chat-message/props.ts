@@ -65,10 +65,6 @@ export default {
       return ['pending', 'streaming', 'complete', 'stop', 'error'].includes(val);
     },
   },
-  /** thinking 内容组件的属性 */
-  thinkingProps: {
-    type: Object,
-  },
   /** 气泡框样式，支持基础、线框、文字三种类型 */
   variant: {
     type: String,
