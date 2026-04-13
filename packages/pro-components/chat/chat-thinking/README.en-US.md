@@ -19,4 +19,10 @@ status | String | pending | required。options: complete/stop/error/pending | Y
 
 name | params | description
 -- | -- | --
-collapsed-change | `(value: Boolean)` | \-
+collapsed-change | `(value: boolean)` | \-
+
+### ChatThinking Slots
+
+name | Description
+-- | --
+content | \-
