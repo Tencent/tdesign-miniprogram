@@ -9,7 +9,7 @@ export interface TdChatThinkingProps {
    * 加载动画类型
    * @default moving
    */
-  animation?: 'skeleton' | 'moving' | 'gradient' | 'dot';
+  animation?: 'skeleton' | 'moving' | 'gradient' | 'dots';
   /**
    * 是否折叠
    * @default false

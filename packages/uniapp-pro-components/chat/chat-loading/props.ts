@@ -15,9 +15,4 @@ export default {
       return ['skeleton', 'moving', 'gradient', 'dots'].includes(val);
     },
   },
-  /** 加载过程展示的文字内容 */
-  text: {
-    type: String,
-    default: '',
-  },
 };

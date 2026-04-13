@@ -50,7 +50,7 @@ import TChatThinking from '@tdesign/uniapp-chat/chat-thinking/chat-thinking.vue'
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
-animation | String | moving | 加载动画类型。可选项：skeleton/moving/gradient/dot | N
+animation | String | moving | 加载动画类型。可选项：skeleton/moving/gradient/dots | N
 collapsed | Boolean | false | 是否折叠 | N
 content | Object | - | 必需。思考内容对象。TS 类型：`{ text?: string; title?: string }` | Y
 layout | String | block | 布局方式。可选项：block/border | N
