@@ -6,7 +6,7 @@
 
 export interface TdChatThinkingProps {
   /**
-   * 内容区域最大高度，超出会自动滚动
+   * 加载动画类型
    * @default moving
    */
   animation?: 'skeleton' | 'moving' | 'gradient' | 'dot';
@@ -36,5 +36,5 @@ export interface TdChatThinkingProps {
   /**
    * 切换折叠面板时触发
    */
-  onCollapsedChange?: (value: boolean) => void;
+  onCollapsedChange?: (value: Boolean) => void;
 }
