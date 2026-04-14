@@ -121,5 +121,5 @@ export interface ChatMessageContentProps extends TdChatContentProps {
   /**
    * thinking 内容组件的属性，透传给 ChatThinking 组件（content 和 status 由消息数据决定，无需传入）
    */
-  thinkingProps?: TdChatThinkingProps;
+  thinking?: TdChatThinkingProps;
 }

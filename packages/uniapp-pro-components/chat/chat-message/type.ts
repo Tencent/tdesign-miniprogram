@@ -4,7 +4,6 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import type { TdChatContentProps as ChatContentProps } from '../chat-content/type';
 import type { FileItem } from '../attachments/type';
 import type { TdChatThinkingProps } from '../chat-thinking/type';
 
@@ -87,9 +86,9 @@ export type ChatMessageStatus = 'pending' | 'streaming' | 'complete' | 'stop' | 
 
 export type ChatContentType = 'text' | 'markdown' | 'thinking' | 'attachment';
 
-export interface ChatMessageContentProps extends ChatContentProps {
+export interface ChatMessageContentProps {
   /**
    * thinking 内容组件的属性，透传给 ChatThinking 组件（content 和 status 由消息数据决定，无需传入）
    */
-  thinkingProps?: TdChatThinkingProps;
+  thinking?: TdChatThinkingProps;
 }

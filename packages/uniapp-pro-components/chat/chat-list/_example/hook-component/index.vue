@@ -77,7 +77,7 @@ const getUniqueKey = () => {
 const mockData = {
   avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
   chatContentProps: {
-    thinkingProps: {
+    thinking: {
       animation: 'gradient',
       collapsed: false,
     },
@@ -138,7 +138,7 @@ export default {
         {
           avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
           chatContentProps: {
-            thinkingProps: {
+            thinking: {
               animation: 'gradient',
               collapsed: false,
             },
@@ -290,7 +290,7 @@ export default {
           },
           complete() {
             that.chatList[0].message.content[0].data.title = '思考完成';
-            that.chatList[0].chatContentProps.thinkingProps.collapsed = true;
+            that.chatList[0].chatContentProps.thinking.collapsed = true;
           },
         });
         if (!that.loading) {

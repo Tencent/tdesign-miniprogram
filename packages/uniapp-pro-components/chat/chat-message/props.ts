@@ -22,6 +22,7 @@ export default {
   /** 聊天内容组件的属性 */
   chatContentProps: {
     type: Object,
+    default: {} as TdChatMessageProps['chatContentProps'],
   },
   /** 聊天消息的唯一标识 */
   chatId: {
@@ -31,14 +32,17 @@ export default {
   /** 消息内容，数组中的每一项为一个消息内容对象 */
   content: {
     type: Array,
+    default: [] as TdChatMessageProps['content'],
   },
   /** 对话单元的时间配置 */
   datetime: {
     type: String,
+    default: '' as TdChatMessageProps['datetime'],
   },
   /** 自定义的昵称 */
   name: {
     type: String,
+    default: '' as TdChatMessageProps['name'],
   },
   /** 消息显示位置 */
   placement: {
