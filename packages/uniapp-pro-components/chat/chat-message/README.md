@@ -64,7 +64,19 @@ name | String | - | 自定义的昵称 | N
 placement | String | - | 消息显示位置。可选项：left/right | N
 role | String | user | 消息角色。可选项：user/assistant/system | N
 status | String | - | 消息状态。可选项：pending/streaming/complete/stop/error  | N
+chatContentProps | Object | - | 消息内容配置属性。TS 类型：TS 类型：`ChatMessageContentProps` `interface ChatMessageContentProps { thinking?: TdChatThinkingProps }`，[ChatThinking API Documents](./chat-thinking?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/uniapp-pro-components/chat/chat-message/type.ts) | N
 variant | String | base | 气泡框样式，支持基础、线框、文字三种类型。可选项：base/outline/text | N
+
+### chatContentProps 配置
+用于配置各类型内容的展示行为和交互逻辑：
+
+#### thinking 配置
+| 名称 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| maxHeight | Number | - | 思考内容最大高度（px） |
+| animation | String | - | 加载动画类型。可选项：skeleton/moving/gradient/dot |
+| collapsed | Boolean | - | 是否默认折叠 |
+| layout | String | - | 布局样式。可选项：block/border |
 
 ### ChatMessage Events
 
