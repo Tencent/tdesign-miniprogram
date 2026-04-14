@@ -192,6 +192,7 @@ Component({
             that.setData({
               'chatList[0].message.content[0].data.title': '思考完成',
               'chatList[0].chatContentProps.thinking.collapsed': true,
+              'chatList[0].message.status': 'complete',
             });
           },
         });
