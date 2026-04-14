@@ -6,7 +6,7 @@
 
 import { TdChatThinkingProps } from './type';
 const props: TdChatThinkingProps = {
-  /** 加载动画类型 */
+  /** 加载的状态形式 */
   animation: {
     type: String,
     value: 'moving',

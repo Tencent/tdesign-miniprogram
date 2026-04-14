@@ -6,7 +6,7 @@
 
 import type { TdChatThinkingProps } from './type';
 export default {
-  /** 加载动画类型 */
+  /** 加载的状态形式 */
   animation: {
     type: String,
     default: 'moving' as TdChatThinkingProps['animation'],

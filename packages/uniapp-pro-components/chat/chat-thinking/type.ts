@@ -6,7 +6,7 @@
 
 export interface TdChatThinkingProps {
   /**
-   * 加载动画类型
+   * 加载的状态形式
    * @default moving
    */
   animation?: 'skeleton' | 'moving' | 'gradient' | 'dots';
