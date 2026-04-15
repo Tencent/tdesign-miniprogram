@@ -6,12 +6,21 @@ exports[`Segmented Segmented base demo works fine 1`] = `
     class="example-segmented"
   >
     <t-segmented
-      defaultValue="home"
+      defaultValue="{{0}}"
       options="{{
         Array [
-          "home",
-          "categeray",
-          "min",
+          Object {
+            "label": "选项",
+            "value": 0,
+          },
+          Object {
+            "label": "选项",
+            "value": 1,
+          },
+          Object {
+            "label": "选项",
+            "value": 2,
+          },
         ]
       }}"
     />
@@ -24,22 +33,22 @@ exports[`Segmented Segmented base demo works fine 1`] = `
         Array [
           Object {
             "icon": "home",
-            "label": "home",
+            "label": "选项",
             "value": 0,
           },
           Object {
-            "icon": "app",
-            "label": "categeray",
+            "icon": "home",
+            "label": "选项",
             "value": 1,
           },
           Object {
-            "icon": "user",
-            "label": "mine",
+            "icon": "home",
+            "label": "选项",
             "value": 2,
           },
         ]
       }}"
-      value="{{1}}"
+      value="{{0}}"
       bind:change="onChangeWithIcon"
     />
   </wx-view>
@@ -53,21 +62,46 @@ exports[`Segmented Segmented block demo works fine 1`] = `
   >
     <t-segmented
       block="{{true}}"
+      defaultValue="{{0}}"
+      options="{{
+        Array [
+          Object {
+            "label": "选项",
+            "value": 0,
+          },
+          Object {
+            "label": "选项",
+            "value": 1,
+          },
+          Object {
+            "label": "选项",
+            "value": 2,
+          },
+        ]
+      }}"
+      bind:change="onChangeWithIcon"
+    />
+  </wx-view>
+  <wx-view
+    class="example-segmented"
+  >
+    <t-segmented
+      block="{{true}}"
       options="{{
         Array [
           Object {
             "icon": "home",
-            "label": "home",
+            "label": "选项",
             "value": 0,
           },
           Object {
-            "icon": "app",
-            "label": "categeray",
+            "icon": "home",
+            "label": "选项",
             "value": 1,
           },
           Object {
-            "icon": "user",
-            "label": "mine",
+            "icon": "home",
+            "label": "选项",
             "value": 2,
           },
         ]
@@ -85,49 +119,24 @@ exports[`Segmented Segmented disabled demo works fine 1`] = `
     class="example-segmented"
   >
     <t-segmented
-      disabled="{{true}}"
-      options="{{
-        Array [
-          "最近",
-          "推荐",
-          "热门",
-        ]
-      }}"
-      value="最近"
-      bind:change="onChange"
-    />
-  </wx-view>
-  <wx-view
-    class="example-segmented"
-  >
-    <t-segmented
       options="{{
         Array [
           Object {
-            "label": "周一",
+            "label": "选中",
             "value": 0,
           },
           Object {
-            "label": "周二",
+            "label": "默认",
             "value": 1,
           },
           Object {
             "disabled": true,
-            "label": "周三",
+            "label": "禁用",
             "value": 2,
-          },
-          Object {
-            "label": "周四",
-            "value": 3,
-          },
-          Object {
-            "disabled": true,
-            "label": "周五",
-            "value": 4,
           },
         ]
       }}"
-      value="{{1}}"
+      value="{{0}}"
       bind:change="onChangeWithDisabled"
     />
   </wx-view>

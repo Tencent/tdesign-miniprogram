@@ -11,7 +11,7 @@
   <t-demo desc="自适应宽度">
     <block-demo />
   </t-demo>
-  <t-demo title="组件状态" desc="控制器禁用态">
+  <t-demo title="组件状态" desc="控制器状态">
     <disabled />
   </t-demo>
 </view>

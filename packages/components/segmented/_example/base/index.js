@@ -1,10 +1,15 @@
 Component({
   data: {
-    valueWithIcon: 1,
+    options: [
+      { value: 0, label: '选项' },
+      { value: 1, label: '选项' },
+      { value: 2, label: '选项' },
+    ],
+    valueWithIcon: 0,
     optionsWithIcon: [
-      { value: 0, label: 'home', icon: 'home' },
-      { value: 1, label: 'categeray', icon: 'app' },
-      { value: 2, label: 'mine', icon: 'user' },
+      { value: 0, label: '选项', icon: 'home' },
+      { value: 1, label: '选项', icon: 'home' },
+      { value: 2, label: '选项', icon: 'home' },
     ],
   },
   methods: {

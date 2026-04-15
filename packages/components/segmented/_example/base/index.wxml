@@ -1,5 +1,5 @@
 <view class="example-segmented">
-  <t-segmented options="{{['home', 'categeray', 'min']}}" default-value="{{'home'}}" />
+  <t-segmented options="{{options}}" default-value="{{0}}" />
 </view>
 
 <view class="example-segmented">

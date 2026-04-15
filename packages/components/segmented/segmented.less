@@ -1,6 +1,6 @@
 @import '../common/style/base.less';
 
-@segmented-bg-color: var(--td-segmented-bg-color, @bg-color-component);
+@segmented-bg-color: var(--td-segmented-bg-color, @bg-color-component-disabled);
 @segmented-item-color: var(--td-segmented-item-color, @text-color-primary);
 @segmented-item-label-font: var(--td-segmented-item-label-font, @font-body-medium);
 @segmented-item-active-bg: var(--td-segmented-item-active-bg, @bg-color-container);
@@ -55,6 +55,7 @@
     padding: calc(@spacer-1 / 4) @spacer-1;
     text-align: center;
     cursor: pointer;
+    font: @segmented-item-label-font;
     color: @segmented-item-color;
 
     &-inner {
@@ -68,12 +69,12 @@
       margin-right: calc(@spacer / 2);
     }
 
-    &-icon,
-    &-label {
-      font: @segmented-item-label-font;
+    &-icon {
+      font-size: @font-size-m;
     }
 
     &--active {
+      font-weight: 600;
       color: @segmented-item-active-color;
     }
 

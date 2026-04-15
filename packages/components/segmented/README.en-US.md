@@ -27,3 +27,16 @@ className | Description
 t-class | \-
 t-class-item | \-
 t-class-thumb | \-
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-segmented-bg-color | @bg-color-component-disabled | -
+--td-segmented-item-active-bg | @bg-color-container | -
+--td-segmented-item-active-color | @brand-color | -
+--td-segmented-item-color | @text-color-primary | -
+--td-segmented-item-disabled-color | @text-color-disabled | -
+--td-segmented-item-label-font | @font-body-medium | -
+--td-segmented-transition | all @anim-duration-base @anim-time-fn-easing | -
