@@ -1,0 +1,3 @@
+<view class="example-segmented">
+  <t-segmented block options="{{optionsWithIcon}}" value="{{valueWithIcon}}" bind:change="onChangeWithIcon" />
+</view>

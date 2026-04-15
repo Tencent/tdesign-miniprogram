@@ -1,0 +1,28 @@
+<import src="../common/template/icon" />
+<wxs src="../common/utils.wxs" module="_" />
+
+<view
+  class="{{_.cls(classPrefix, [['block', block]])}} class {{prefix}}-class"
+  style="{{_._style([style, customStyle])}}"
+>
+  <view class="{{classPrefix}}__group">
+    <!-- thumb 动画背景 -->
+    <view class="{{classPrefix}}__thumb {{prefix}}-class-thumb" style="{{thumbStyle}}" />
+
+    <!-- 选项列表 -->
+    <view
+      wx:for="{{segmentItems}}"
+      wx:for-index="index"
+      wx:for-item="item"
+      wx:key="value"
+      class="{{_.cls(classPrefix + '__item', [['active', index === activeIndex], ['disabled', disabled || item.disabled]])}} {{classPrefix}}-item-{{index}} {{prefix}}-class-item"
+      data-index="{{index}}"
+      bind:tap="handleSelect"
+    >
+      <view class="{{classPrefix}}__item-inner">
+        <template wx:if="{{item.icon}}" is="icon" data="{{ tClass: classPrefix + '__item-icon', ...item.icon }}" />
+        <text wx:if="{{item.label}}" class="{{classPrefix}}__item-label">{{item.label}}</text>
+      </view>
+    </view>
+  </view>
+</view>

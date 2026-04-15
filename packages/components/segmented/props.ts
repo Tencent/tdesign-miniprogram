@@ -6,6 +6,11 @@
 
 import { TdSegmentedProps } from './type';
 const props: TdSegmentedProps = {
+  /** 是否撑满父元素宽度 */
+  block: {
+    type: Boolean,
+    value: false,
+  },
   /** 是否禁用 */
   disabled: {
     type: Boolean,

@@ -329,6 +329,12 @@
           "scene": null
         },
         {
+          "name": "segmented",
+          "pathName": "pages/segmented/segmented",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "slider",
           "pathName": "pages/slider/slider",
           "query": "",
