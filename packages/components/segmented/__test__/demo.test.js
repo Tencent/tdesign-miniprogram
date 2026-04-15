@@ -5,12 +5,12 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['base', 'collapsed', 'complete', 'layout', 'pending'];
+const mapper = ['base', 'block', 'disabled'];
 
-describe('ChatThinking', () => {
+describe('Segmented', () => {
   mapper.forEach((demoName) => {
-    it(`ChatThinking ${demoName} demo works fine`, () => {
-      const id = load(path.resolve(__dirname, `../../chat-thinking/_example/${demoName}/index`), demoName);
+    it(`Segmented ${demoName} demo works fine`, () => {
+      const id = load(path.resolve(__dirname, `../../segmented/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();
