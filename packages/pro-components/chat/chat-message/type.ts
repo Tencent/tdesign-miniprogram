@@ -94,10 +94,10 @@ export interface TdChatMessageProps {
 }
 
 export interface ChatMessageContentProps extends ChatContentProps {
-  thinking?: MessageThinking;
+  thinking?: ChatMessageThinking;
 }
 
-export type MessageThinking = Pick<ChatThinkingProps, 'animation' | 'collapsed' | 'layout' | 'maxHeight'>;
+export type ChatMessageThinking = Pick<ChatThinkingProps, 'animation' | 'collapsed' | 'layout' | 'maxHeight'>;
 
 export type ChatMessageContent = TextContent | MarkdownContent | ThinkingContent | AttachmentContent;
 
