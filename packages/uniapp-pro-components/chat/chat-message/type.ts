@@ -4,8 +4,9 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import type { TdChatContentProps as ChatContentProps } from '../chat-content/type';
+import type { TdChatThinkingProps as ChatThinkingProps } from '../chat-thinking/type';
 import type { FileItem } from '../attachments/type';
-import type { TdChatThinkingProps } from '../chat-thinking/type';
 
 export interface TdChatMessageProps {
   /**
@@ -18,7 +19,7 @@ export interface TdChatMessageProps {
    */
   avatar?: string;
   /**
-   * 聊天内容组件的属性
+   * 聊天内容组件的属性，支持通过 `thinking` 字段透传 ChatThinking 组件属性
    */
   chatContentProps?: ChatMessageContentProps;
   /**
@@ -32,6 +33,7 @@ export interface TdChatMessageProps {
   content?: ChatMessageContent[];
   /**
    * 对话单元的时间配置
+   * @default ''
    */
   datetime?: string;
   /**
@@ -57,10 +59,16 @@ export interface TdChatMessageProps {
    */
   variant?: 'base' | 'outline' | 'text';
   /**
-   * null
+   * 长按事件
    */
-  onLongpress?: (context: { e: MouseEvent; id: string }) => void;
+  onMessageLongpress?: (context: { e: MouseEvent; id: string; longPressPosition: { x: number; y: number } }) => void;
 }
+
+export interface ChatMessageContentProps extends ChatContentProps {
+  thinking?: MessageThinking;
+}
+
+export type MessageThinking = Pick<ChatThinkingProps, 'animation' | 'collapsed' | 'layout' | 'maxHeight'>;
 
 export type ChatMessageContent = TextContent | MarkdownContent | ThinkingContent | AttachmentContent;
 
@@ -85,10 +93,3 @@ export interface ChatBaseContent<T extends ChatContentType, TData> {
 export type ChatMessageStatus = 'pending' | 'streaming' | 'complete' | 'stop' | 'error';
 
 export type ChatContentType = 'text' | 'markdown' | 'thinking' | 'attachment';
-
-export interface ChatMessageContentProps {
-  /**
-   * thinking 内容组件的属性，透传给 ChatThinking 组件（content 和 status 由消息数据决定，无需传入）
-   */
-  thinking?: TdChatThinkingProps;
-}
