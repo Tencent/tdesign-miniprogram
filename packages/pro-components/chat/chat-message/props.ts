@@ -15,7 +15,7 @@ const props: TdChatMessageProps = {
   avatar: {
     type: String,
   },
-  /** 聊天内容组件的属性 */
+  /** 聊天内容组件的属性，支持通过 `thinking` 字段透传 ChatThinking 组件属性 */
   chatContentProps: {
     type: Object,
   },

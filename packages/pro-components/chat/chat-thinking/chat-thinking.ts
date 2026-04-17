@@ -2,9 +2,12 @@ import { SuperComponent, wxComponent } from '../../../components/common/src/inde
 import config from '../../../components/common/config';
 import props from './props';
 import usingConfig from '../../../components/mixins/using-config';
+import { TdChatThinkingProps } from './type';
 
 const { prefix } = config;
 const componentName = 'chat-thinking';
+
+export type ChatThinkingProps = TdChatThinkingProps;
 
 @wxComponent()
 export default class ChatThinking extends SuperComponent {

@@ -320,6 +320,14 @@ exports[`ChatList ChatList hook-component demo works fine 1`] = `
     <t-chat>
       <t-chat-message
         avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
+        chatContentProps="{{
+          Object {
+            "thinking": Object {
+              "animation": "gradient",
+              "collapsed": false,
+            },
+          }
+        }}"
         chatId="key-1"
         content="{{
           Array [
@@ -333,6 +341,7 @@ exports[`ChatList ChatList hook-component demo works fine 1`] = `
         name=""
         placement="left"
         role="assistant"
+        status="complete"
         bind:message-longpress="showPopover"
       >
         <t-chat-actionbar
@@ -343,6 +352,7 @@ exports[`ChatList ChatList hook-component demo works fine 1`] = `
       </t-chat-message>
       <t-chat-message
         avatar=""
+        chatContentProps=""
         chatId="key-2"
         content="{{
           Array [
@@ -356,6 +366,7 @@ exports[`ChatList ChatList hook-component demo works fine 1`] = `
         name=""
         placement="right"
         role="user"
+        status=""
         bind:message-longpress="showPopover"
       />
       <wx-view
