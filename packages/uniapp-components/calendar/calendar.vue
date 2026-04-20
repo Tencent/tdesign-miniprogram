@@ -224,9 +224,9 @@ export default {
       dataVisible: {
         handler(v) {
           if (v) {
-            this.onScrollIntoView();
             this.base.value = this.dataValue;
             this.calcMonths();
+            this.onScrollIntoView();
           }
         },
         immediate: true,
@@ -298,7 +298,11 @@ export default {
         const date = new Date(Array.isArray(value) ? value[0] : value);
 
         if (date) {
-          this.scrollIntoView = `year_${date.getFullYear()}_month_${date.getMonth()}`;
+          // 先置空再赋值，确保 scroll-view 在每次打开时都能响应 scroll-into-view 变化并滚动到目标月份
+          this.scrollIntoView = '';
+          this.$nextTick(() => {
+            this.scrollIntoView = `year_${date.getFullYear()}_month_${date.getMonth()}`;
+          });
         }
       },
 
