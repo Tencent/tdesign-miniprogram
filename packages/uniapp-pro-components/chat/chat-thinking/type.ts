@@ -6,10 +6,10 @@
 
 export interface TdChatThinkingProps {
   /**
-   * 内容区域最大高度，超出会自动滚动
+   * 加载的状态形式
    * @default moving
    */
-  animation?: 'skeleton' | 'moving' | 'gradient' | 'dot';
+  animation?: 'skeleton' | 'moving' | 'gradient' | 'dots';
   /**
    * 是否折叠
    * @default false
