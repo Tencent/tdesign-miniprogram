@@ -148,7 +148,7 @@ export default {
       },
       getAllItems() {
         const menus = this.children?.map(data => ({
-          label: data.label || data.computedLabel,
+          label: data.computedLabel || data.label,
           disabled: data.disabled,
         }));
 
