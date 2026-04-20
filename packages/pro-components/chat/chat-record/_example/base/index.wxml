@@ -15,20 +15,20 @@
         bind:send="onSend"
         bind:keyboardheightchange="onKeyboardHeightChange"
       >
-        <view slot="voice-input">
+        <view slot="speech-input">
           <t-chat-record autoHeight bind:recognize="handleRecognize">
             <view slot="speechInput" class="speech-slot-btn"> 按住说话 </view>
             <view slot="speechNoAuth" class="speech-btn-error"> 请授权麦克风权限 </view>
           </t-chat-record>
         </view>
         <view slot="footer-prefix" class="demo-footer-prefix">
-          <t-icon wx:if="{{allowSpeech === 'speech'}}" class="voice-input-button" name="keyboard-1" bind:tap="toggleVoiceIcon" />
           <t-icon
-            wx:else
+            wx:if="{{allowSpeech === 'speech'}}"
             class="voice-input-button"
-            name="voice-wave"
+            name="keyboard-1"
             bind:tap="toggleVoiceIcon"
           />
+          <t-icon wx:else class="voice-input-button" name="voice-wave" bind:tap="toggleVoiceIcon" />
         </view>
       </t-chat-sender>
     </view>

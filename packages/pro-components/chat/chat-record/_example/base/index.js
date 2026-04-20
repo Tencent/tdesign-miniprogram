@@ -7,7 +7,7 @@ Page({
     placeholder: '请输入内容', // 输入框占位符
     loading: false, // 发送按钮加载状态
     showVoice: false, // 是否显示语音输入组件
-    allowSpeech: 'keyboard',
+    allowSpeech: 'speech',
   },
 
   /**
@@ -44,7 +44,6 @@ Page({
       allowSpeech: this.data.allowSpeech === 'keyboard' ? 'speech' : 'keyboard',
     });
   },
-
 
   /**
    * 语音识别回调
