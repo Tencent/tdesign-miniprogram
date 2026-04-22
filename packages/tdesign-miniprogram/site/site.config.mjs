@@ -518,6 +518,14 @@ export const docs = [
         component: () => import('@/swiper/README.md'),
       },
       {
+        title: 'Table 表格',
+        titleEn: 'Table',
+        name: 'table',
+        meta: { docType: 'data' },
+        path: '/miniprogram/components/table',
+        component: () => import('@/table/README.md'),
+      },
+      {
         title: 'Tag 标签',
         titleEn: 'Tag',
         name: 'tag',

@@ -75,6 +75,10 @@ const display = {
       name: 'Swiper',
       label: '轮播图',
     },
+     {
+      name: 'Table',
+      label: '表格',
+    },
     {
       name: 'Tag',
       label: '标签',

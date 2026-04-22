@@ -395,6 +395,12 @@
           "scene": null
         },
         {
+          "name": "table",
+          "pathName": "pages/table/table",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "tabs",
           "pathName": "pages/tabs/tabs",
           "query": "",
