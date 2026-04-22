@@ -12,15 +12,15 @@
 @table-th-padding: var(--td-table-th-padding, 16rpx 24rpx);
 @table-font-size: var(--td-table-font-size, @font-body-medium);
 @table-loading-bg-color: var(--td-table-loading-bg-color, rgba(255, 255, 255, 0.55));
-@table-row-height: var(--td-table-row-height, 41px);
+@table-row-height: var(--td-table-row-height, 82rpx);
 @scrollbar-color: rgba(0, 0, 0, 10%);
 @scrollbar-hover-color: rgba(0, 0, 0, 30%);
 
 // 固定列相关变量
 @table-fixed-column-z-index: 30;
 @table-fixed-cell-border-color: var(--td-table-fixed-cell-border-color, @component-border);
-@table-fixed-cell-border-width: 4px;
-@table-fixed-cell-border-width-light: 2px;
+@table-fixed-cell-border-width: 8rpx;
+@table-fixed-cell-border-width-light: 4rpx;
 @table-fixed-cell-border: @table-fixed-cell-border-width solid @table-fixed-cell-border-color;
 @table-fixed-cell-border-light: @table-fixed-cell-border-width-light solid @table-fixed-cell-border-color;
 
@@ -40,15 +40,15 @@
     // scroll-view 在 H5 端内部会生成子滚动容器，需要同时匹配自身和后代元素
     &::-webkit-scrollbar,
     & ::-webkit-scrollbar {
-      width: 6px;
-      height: 6px;
+      width: 12rpx;
+      height: 12rpx;
     }
 
     &::-webkit-scrollbar-thumb,
     & ::-webkit-scrollbar-thumb {
       background-clip: content-box;
       background-color: @scrollbar-color;
-      border-radius: 11px;
+      border-radius: 22rpx;
     }
 
     &::-webkit-scrollbar-thumb:vertical:hover,
@@ -83,7 +83,7 @@
     box-sizing: border-box;
     overflow: hidden;
     min-width: 0;
-    border-bottom: 1px solid @table-border-color;
+    border-bottom: 2rpx solid @table-border-color;
   }
 
   &__th {
@@ -132,7 +132,7 @@
   &__bottom-content {
     padding: 16rpx 24rpx;
     background-color: @bg-color-container;
-    border-top: 1px solid @table-border-color;
+    border-top: 2rpx solid @table-border-color;
   }
 
   // 加载中
@@ -177,11 +177,11 @@
 
   // 边框
   &--bordered {
-    border: 1px solid @table-border-color;
+    border: 2rpx solid @table-border-color;
 
     .@{table-prefix}__th,
     .@{table-prefix}__td {
-      border-right: 1px solid @table-border-color;
+      border-right: 2rpx solid @table-border-color;
 
       &:last-child {
         border-right: none;
@@ -189,7 +189,7 @@
     }
 
     .@{table-prefix}__th {
-      border-bottom: 1px solid @table-border-color;
+      border-bottom: 2rpx solid @table-border-color;
     }
   }
 
@@ -293,7 +293,7 @@
 
   // 固定底部行的第一行加上边框
   &__row--fixed-bottom-first > .@{table-prefix}__td {
-    border-top: 1px solid @table-border-color;
+    border-top: 2rpx solid @table-border-color;
   }
 
   // 冻结表尾行时，最后一行非冻结行去除下边框

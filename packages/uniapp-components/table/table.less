@@ -8,8 +8,8 @@
 @table-header-text-color: var(--td-table-header-text-color, @text-color-placeholder);
 @table-body-text-color: var(--td-table-body-text-color, @text-color-primary);
 @table-stripe-bg-color: var(--td-table-stripe-bg-color, @bg-color-secondarycontainer);
-@table-td-padding: var(--td-table-td-padding, 16rpx 24rpx);
-@table-th-padding: var(--td-table-th-padding, 16rpx 24rpx);
+@table-td-padding: var(--td-table-td-padding, 8px 12px);
+@table-th-padding: var(--td-table-th-padding, 8px 12px);
 @table-font-size: var(--td-table-font-size, @font-body-medium);
 @table-loading-bg-color: var(--td-table-loading-bg-color, rgba(255, 255, 255, 0.55));
 @table-row-height: var(--td-table-row-height, 41px);
@@ -117,7 +117,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 48rpx 0;
+    padding: 24px 0;
     background-color: @bg-color-container;
     color: @text-color-placeholder;
   }
@@ -130,7 +130,7 @@
 
   // 表尾
   &__bottom-content {
-    padding: 16rpx 24rpx;
+    padding: 8px 12px;
     background-color: @bg-color-container;
     border-top: 1px solid @table-border-color;
   }

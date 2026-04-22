@@ -8,7 +8,6 @@ import type { TdLoadingProps as LoadingProps } from '../loading/type';
 import type { ClassName } from '../common/common';
 
 export interface TdBaseTableProps<T extends TableRowData = TableRowData> {
-  footerSummary?: string;
   /**
    * 是否显示表格边框
    * @default false
@@ -38,6 +37,10 @@ export interface TdBaseTableProps<T extends TableRowData = TableRowData> {
    */
   fixedRows?: Array<number>;
   /**
+   * 表尾总结行
+   */
+  footerSummary?: string;
+  /**
    * 表格高度，超出后会出现滚动条。示例：100,  '30%',  '300'。值为数字类型，会自动加上单位 px。如果不是绝对固定表格高度，建议使用 `maxHeight`
    */
   height?: string | number;
@@ -58,6 +61,10 @@ export interface TdBaseTableProps<T extends TableRowData = TableRowData> {
    * @default 'id'
    */
   rowKey: string;
+  /**
+   * 用于自定义合并单元格，泛型 T 指表格数据类型。示例：`({ row, col, rowIndex, colIndex }) => { rowspan: 2, colspan: 3 }`
+   */
+  rowspanAndColspan?: TableRowspanAndColspanFunc<T>;
   /**
    * 是否显示表头
    * @default true
@@ -125,6 +132,13 @@ export interface BaseTableCol<T extends TableRowData = TableRowData> {
    * 列宽，可以作为最小宽度使用。当列宽总和小于 `table` 元素时，浏览器根据宽度设置情况自动分配宽度；当列宽总和大于 `table` 元素，表现为定宽。可以同时调整 `table` 元素的宽度来达到自己想要的效果
    */
   width?: string | number;
+}
+
+export type TableRowspanAndColspanFunc<T> = (params: BaseTableCellParams<T>) => RowspanColspan;
+
+export interface RowspanColspan {
+  colspan?: number;
+  rowspan?: number;
 }
 
 export interface BaseTableCellEventContext<T> {

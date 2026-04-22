@@ -6,12 +6,6 @@
 
 import type { TdBaseTableProps } from '../table/type';
 export default {
-  rowspanAndColspan: {
-    type: Function,
-  },
-  footerSummary: {
-    type: String,
-  },
   /** 是否显示表格边框 */
   bordered: Boolean,
   /** 单元格数据为空时呈现的内容 */
@@ -37,6 +31,10 @@ export default {
   fixedRows: {
     type: Array,
   },
+  /** 表尾总结行 */
+  footerSummary: {
+    type: String,
+  },
   /** 表格高度，超出后会出现滚动条。示例：100,  '30%',  '300'。值为数字类型，会自动加上单位 px。如果不是绝对固定表格高度，建议使用 `maxHeight` */
   height: {
     type: [String, Number],
@@ -59,6 +57,10 @@ export default {
     type: String,
     default: 'id',
     required: true,
+  },
+  /** 用于自定义合并单元格，泛型 T 指表格数据类型。示例：`({ row, col, rowIndex, colIndex }) => { rowspan: 2, colspan: 3 }` */
+  rowspanAndColspan: {
+    type: Function,
   },
   /** 是否显示表头 */
   showHeader: {
