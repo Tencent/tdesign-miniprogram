@@ -54,6 +54,14 @@ spline: explain
       <p class="name">Link</p>
     </a>
   </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/typography-en">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-typography.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-typography-dark.png" />
+      <p class="name">Typography</p>
+    </a>
+  </div>
 </section>
 
 <h3>Navigation<em class="tag">8</em></h3>
