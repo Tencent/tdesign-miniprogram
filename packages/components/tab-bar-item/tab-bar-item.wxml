@@ -22,13 +22,15 @@
     >
       <t-badge
         wx:if="{{badgeProps.dot || badgeProps.count}}"
-        count="{{badgeProps.count || 0}}"
-        max-count="{{badgeProps.maxCount || 99}}"
-        dot="{{badgeProps.dot || false}}"
+        color="{{badgeProps.color || ''}}"
         content="{{badgeProps.content || ''}}"
+        count="{{badgeProps.count || 0}}"
+        dot="{{badgeProps.dot || false}}"
+        max-count="{{badgeProps.maxCount || 99}}"
+        offset="{{badgeProps.offset || [0,0]}}"
+        shape="{{badgeProps.shape || 'circle'}}"
         size="{{badgeProps.size || 'medium'}}"
         visible="{{badgeProps.visible}}"
-        offset="{{badgeProps.offset || [0,0]}}"
         t-class-count="{{prefix + '-badge-class'}}"
       >
         <template is="icon" data="{{ size: iconOnly ? 24 : 20, ..._icon }}" />
