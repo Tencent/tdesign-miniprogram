@@ -19,7 +19,7 @@ export default {
   avatar: {
     type: String,
   },
-  /** 聊天内容组件的属性 */
+  /** 聊天内容组件的属性，支持通过 `thinking` 字段透传 ChatThinking 组件属性 */
   chatContentProps: {
     type: Object,
   },
@@ -35,6 +35,7 @@ export default {
   /** 对话单元的时间配置 */
   datetime: {
     type: String,
+    default: '',
   },
   /** 自定义的昵称 */
   name: {
@@ -74,8 +75,8 @@ export default {
       return ['base', 'outline', 'text'].includes(val);
     },
   },
-  /** null */
-  onLongpress: {
+  /** 长按事件 */
+  onMessageLongpress: {
     type: Function,
     default: () => ({}),
   },

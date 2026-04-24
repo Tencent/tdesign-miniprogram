@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "Table",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "base": "./base",
+    "bordered": "./bordered",
+    "stripe": "./stripe",
+    "scroll": "./scroll",
+    "rowspan-colspan": "./rowspan-colspan"
+  }
+}

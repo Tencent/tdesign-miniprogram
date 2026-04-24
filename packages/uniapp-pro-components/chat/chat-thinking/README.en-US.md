@@ -7,7 +7,7 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
-animation | String | moving | options: skeleton/moving/gradient/dot | N
+animation | String | moving | options: skeleton/moving/gradient/dots | N
 collapsed | Boolean | false | \- | N
 content | Object | - | required。Typescript: `{ text?: string; title?: string }` | Y
 layout | String | block | options: block/border | N
@@ -18,4 +18,10 @@ status | String | pending | required。options: complete/stop/error/pending | Y
 
 name | params | description
 -- | -- | --
-collapsed-change | `(value: Boolean)` | \-
+collapsed-change | `(value: boolean)` | \-
+
+### ChatThinking Slots
+
+name | Description
+-- | --
+content | \-

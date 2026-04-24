@@ -486,6 +486,14 @@ export const docs = [
         component: () => import('@/result/README.md'),
       },
       {
+        title: 'Segmented 分段控制器',
+        titleEn: 'Segmented',
+        name: 'segmented',
+        meta: { docType: 'data' },
+        path: '/miniprogram/components/segmented',
+        component: () => import('@/segmented/README.md'),
+      },
+      {
         title: 'Skeleton 骨架屏',
         titleEn: 'Skeleton',
         name: 'skeleton',
@@ -508,6 +516,14 @@ export const docs = [
         meta: { docType: 'data' },
         path: '/miniprogram/components/swiper',
         component: () => import('@/swiper/README.md'),
+      },
+      {
+        title: 'Table 表格',
+        titleEn: 'Table',
+        name: 'table',
+        meta: { docType: 'data' },
+        path: '/miniprogram/components/table',
+        component: () => import('@/table/README.md'),
       },
       {
         title: 'Tag 标签',

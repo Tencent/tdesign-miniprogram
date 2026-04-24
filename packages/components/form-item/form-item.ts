@@ -62,7 +62,7 @@ export default class FormItem extends SuperComponent {
         const isRequired = formRules?.some((rule) => rule.required);
 
         this.setData({
-          formRules: formRules || {},
+          formRules: formRules || [],
           colon: target.data.colon,
           innerLabelAlign: labelAlign || target.data.labelAlign,
           innerLabelWidth: normalizeLabelWidth(labelWidth || target.data.labelWidth),
