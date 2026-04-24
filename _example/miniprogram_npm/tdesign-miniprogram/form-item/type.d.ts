@@ -4,6 +4,10 @@ export interface TdFormItemProps {
         type: BooleanConstructor;
         value?: boolean;
     };
+    contentAlign?: {
+        type: StringConstructor;
+        value?: 'left' | 'right';
+    };
     help?: {
         type: StringConstructor;
         value?: string;

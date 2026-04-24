@@ -11,6 +11,10 @@ export interface TdIndexesProps {
         type: ArrayConstructor;
         value?: Array<string | number>;
     };
+    showFullIndex?: {
+        type: BooleanConstructor;
+        value?: Boolean;
+    };
     sticky?: {
         type: BooleanConstructor;
         value?: Boolean;

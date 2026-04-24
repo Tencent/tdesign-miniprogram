@@ -15,3 +15,12 @@
 .t-cascader__step-label{padding-left:var(--td-spacer-2,32rpx);font:var(--td-font-body-medium,28rpx / 44rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular));}
 .t-cascader__step-label--active{color:var(--td-cascader-active-color,var(--td-brand-color,var(--td-primary-color-7,#0052d9)));font-weight:600;}
 .t-cascader__step-arrow{color:var(--td-cascader-step-arrow-color,var(--td-text-color-placeholder,var(--td-font-gray-3,rgba(0,0,0,.4))));margin-left:auto;}
+.t-cascader__filter{padding:var(--td-cascader-filter-padding,0 var(--td-spacer-2,32rpx) var(--td-spacer-1,24rpx));box-sizing:border-box;}
+.t-cascader__filter-result{flex:1;width:100%;box-sizing:border-box;}
+.t-cascader__filter-result-item{padding:var(--td-cascader-filter-item-padding,24rpx 32rpx);color:var(--td-cascader-filter-item-color,var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9))));font:var(--td-font-body-medium,28rpx / 44rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular));box-sizing:border-box;position:relative;}
+.t-cascader__filter-result-item::after{content:'';display:block;position:absolute;top:unset;bottom:0;left:unset;right:unset;background-color:var(--td-cascader-border-color,var(--td-component-stroke,var(--td-gray-color-3,#e7e7e7)));}
+.t-cascader__filter-result-item::after{height:1px;left:0;right:0;transform:scaleY(.5);}
+.t-cascader__filter-result-item--hover{background-color:var(--td-cascader-filter-item-hover-bg,var(--td-bg-color-secondarycontainer,var(--td-gray-color-1,#f3f3f3)));}
+.t-cascader__filter-result-item--disabled{color:var(--td-cascader-filter-item-disabled-color,var(--td-text-color-disabled,var(--td-font-gray-4,rgba(0,0,0,.26))));}
+.t-cascader__filter-highlight{color:var(--td-cascader-filter-highlight-color,var(--td-brand-color,var(--td-primary-color-7,#0052d9)));font-weight:600;}
+.t-cascader__filter-empty{padding:var(--td-cascader-filter-empty-padding,96rpx var(--td-spacer-2,32rpx));text-align:center;color:var(--td-cascader-filter-empty-color,var(--td-text-color-placeholder,var(--td-font-gray-3,rgba(0,0,0,.4))));font:var(--td-font-body-medium,28rpx / 44rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular));}

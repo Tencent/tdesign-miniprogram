@@ -79,20 +79,24 @@ export interface TdUploadProps {
         type: StringConstructor;
         value?: 'media' | 'messageFile';
     };
+    theme?: {
+        type: StringConstructor;
+        value?: 'grid' | 'list';
+    };
     transition?: {
         type: ObjectConstructor;
         value?: Transition;
     };
 }
-export declare type UploadMpConfig = ImageConfig | VideoConfig;
-export interface ImageConfig {
+export declare type UploadMpConfig = UploadImageConfig | UploadVideoConfig;
+export interface UploadImageConfig {
     count?: number;
     sizeType?: Array<SizeTypeValues>;
     sourceType?: Array<SourceTypeValues>;
 }
 export declare type SizeTypeValues = 'original' | 'compressed';
 export declare type SourceTypeValues = 'album' | 'camera';
-export interface VideoConfig {
+export interface UploadVideoConfig {
     sourceType?: Array<SourceTypeValues>;
     compressed?: boolean;
     maxDuration?: number;
@@ -106,7 +110,7 @@ export interface UploadFile {
     percent?: number;
     status: 'loading' | 'reload' | 'failed' | 'done';
 }
-export declare type MediaType = 'image' | 'video';
+export declare type MediaType = 'image' | 'video' | 'mix';
 export interface SizeLimitObj {
     size: number;
     unit: SizeUnit;

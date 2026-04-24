@@ -107,5 +107,8 @@ Component({
         icon: 'success',
       });
     },
+    handleCollapsedChange(e) {
+      console.log('展开状态变化:', e.detail);
+    },
   },
 });

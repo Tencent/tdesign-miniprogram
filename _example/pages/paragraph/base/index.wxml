@@ -1,0 +1,3 @@
+<view class="typography-example">
+  <t-typography-text content="TDesign 是腾讯各业务团队在服务业务过程中沉淀的一套企业级设计体系。" />
+</view>

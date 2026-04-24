@@ -1,4 +1,4 @@
-import { ShapeEnum } from '../common/common';
+import type { ShapeEnum } from '../common/common';
 export interface TdAvatarGroupProps {
     cascading?: {
         type: StringConstructor;

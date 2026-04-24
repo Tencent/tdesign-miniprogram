@@ -70,7 +70,7 @@ export interface TdButtonProps {
     };
     openType?: {
         type: StringConstructor;
-        value?: 'contact' | 'share' | 'getPhoneNumber' | 'getUserInfo' | 'launchApp' | 'openSetting' | 'feedback' | 'chooseAvatar' | 'agreePrivacyAuthorization';
+        value?: 'contact' | 'liveActivity' | 'share' | 'getPhoneNumber' | 'getRealtimePhoneNumber' | 'getUserInfo' | 'launchApp' | 'openSetting' | 'feedback' | 'chooseAvatar' | 'agreePrivacyAuthorization' | 'phoneOneClickLogin';
     };
     phoneNumberNoQuotaToast?: {
         type: BooleanConstructor;

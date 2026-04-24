@@ -4,11 +4,16 @@ Page({
   data: {
     markdownContent: markdownData,
   },
-  handleLinkTap(e) {
-    // 打开链接
-    console.log('监听点击', e);
-    wx.navigateTo({
-      url: e.detail.node.href,
-    });
+  handleNodeTap(e) {
+    const { node } = e.detail;
+    // 打印节点信息
+    console.log('点击节点', node);
+    // 图片节点预览
+    if (node && node.type === 'image') {
+      wx.previewImage({
+        urls: [node.href],
+        current: node.href,
+      });
+    }
   },
 });

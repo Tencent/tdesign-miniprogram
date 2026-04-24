@@ -1,0 +1,34 @@
+<view class="chat-example-block">
+  <!-- 分段组件 -->
+  <view style="margin-bottom: 16px">
+    <t-segmented options="{{segmentedOptions}}" value="{{selectedSegment}}" bind:change="handleSegmentChange" />
+  </view>
+
+  <scroll-view class="chat-example-scroll" scroll-y>
+    <!-- 圆点：使用自定义 tail-component -->
+    <t-chat-markdown
+      wx:if="{{selectedSegment === 1}}"
+      content="{{content}}"
+      streaming="{{streaming}}"
+      generic:tail-component="custom-tail"
+      bind:click="handleNodeTap"
+    />
+    <!-- 省略号：使用 custom-tail2 -->
+    <t-chat-markdown
+      wx:elif="{{selectedSegment === 2}}"
+      content="{{content}}"
+      streaming="{{streaming}}"
+      generic:tail-component="custom-tail2"
+      bind:click="handleNodeTap"
+    />
+    <!-- 无动画：不传 streaming -->
+    <t-chat-markdown wx:elif="{{selectedSegment === 3}}" content="{{content}}" bind:click="handleNodeTap" />
+    <!-- 其他（光标）：默认内置 tail 组件 -->
+    <t-chat-markdown
+      wx:elif="{{selectedSegment === 0}}"
+      content="{{content}}"
+      streaming="{{streaming}}"
+      bind:click="handleNodeTap"
+    />
+  </scroll-view>
+</view>

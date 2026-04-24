@@ -4,6 +4,6 @@
     layout="block"
     status="{{status}}"
     animation="moving"
-    bind:expandChange="handleExpandChange"
+    bind:collapsedChange="handleCollapsedChange"
   />
 </view>
