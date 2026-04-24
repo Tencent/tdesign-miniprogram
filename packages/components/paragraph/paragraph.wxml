@@ -1,0 +1,40 @@
+<wxs src="../common/utils.wxs" module="_" />
+
+<wxs module="computed">
+  function ellipsisStyle(ellipsis, isExpanded) { if (!ellipsis || isExpanded) return ''; var row = typeof ellipsis ===
+  'object' && ellipsis.row ? ellipsis.row : 1; return
+  'overflow:hidden;text-overflow:ellipsis;white-space:normal;display:-webkit-box;-webkit-line-clamp:' + row +
+  ';-webkit-box-orient:vertical;'; } module.exports = { ellipsisStyle: ellipsisStyle, };
+</wxs>
+
+<!-- 省略模式 -->
+<view
+  wx:if="{{ellipsis}}"
+  class="{{classPrefix}} {{prefix}}-class {{classPrefix}}__ellipsis-wrapper"
+  style="{{_._style([style, customStyle])}}"
+>
+  <view class="{{classPrefix}}__ellipsis-content" style="{{computed.ellipsisStyle(ellipsis, isExpanded)}}">
+    <text wx:if="{{content}}">{{content}}</text>
+    <slot wx:else />
+  </view>
+  <view
+    wx:if="{{!isExpanded && ellipsis.expandable}}"
+    class="{{classPrefix}}-ellipsis-symbol"
+    style="text-decoration: none; white-space: nowrap; flex: 1"
+    bind:tap="onExpand"
+    >展开</view
+  >
+  <view
+    wx:elif="{{isExpanded && ellipsis.expandable && ellipsis.collapsible}}"
+    class="{{classPrefix}}-ellipsis-symbol"
+    style="text-decoration: none; white-space: nowrap; flex: 1"
+    bind:tap="onCollapse"
+    >收起</view
+  >
+</view>
+
+<!-- 非省略模式 -->
+<view wx:else class="{{classPrefix}} {{prefix}}-class" style="{{_._style([style, customStyle])}}">
+  <text wx:if="{{content}}">{{content}}</text>
+  <slot wx:else />
+</view>

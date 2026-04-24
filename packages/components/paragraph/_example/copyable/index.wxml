@@ -1,0 +1,3 @@
+<view class="typography-example">
+  <t-typography-text copyable content="This is a copyable text." />
+</view>
