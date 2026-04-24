@@ -79,7 +79,6 @@ exports[`Segmented Segmented block demo works fine 1`] = `
           },
         ]
       }}"
-      bind:change="onChangeWithIcon"
     />
   </wx-view>
   <wx-view
