@@ -7,13 +7,16 @@
   ';-webkit-box-orient:vertical;'; } module.exports = { ellipsisStyle: ellipsisStyle, };
 </wxs>
 
-<!-- 省略模式 -->
+<!-- 省略模式  -->
 <view
   wx:if="{{ellipsis}}"
   class="{{classPrefix}} {{prefix}}-class {{classPrefix}}__ellipsis-wrapper"
   style="{{_._style([style, customStyle])}}"
 >
-  <view class="{{classPrefix}}__ellipsis-content" style="{{computed.ellipsisStyle(ellipsis, isExpanded)}}">
+  <view
+    class="{{classPrefix}}--{{level}} {{classPrefix}}__ellipsis-content"
+    style="{{computed.ellipsisStyle(ellipsis, isExpanded)}}"
+  >
     <text wx:if="{{content}}">{{content}}</text>
     <slot wx:else />
   </view>
@@ -34,7 +37,11 @@
 </view>
 
 <!-- 非省略模式 -->
-<view wx:else class="{{classPrefix}} {{prefix}}-class" style="{{_._style([style, customStyle])}}">
+<view
+  wx:else
+  class="{{classPrefix}} {{classPrefix}}--{{level}} {{prefix}}-class"
+  style="{{_._style([style, customStyle])}}"
+>
   <text wx:if="{{content}}">{{content}}</text>
   <slot wx:else />
 </view>

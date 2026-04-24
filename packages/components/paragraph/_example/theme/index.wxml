@@ -1,0 +1,8 @@
+<view class="typography-example typography-example--theme">
+  <t-typography-text theme="primary" content="常规" />
+  <t-typography-text theme="secondary" content="主色" />
+  <t-typography-text theme="success" content="成功" />
+  <t-typography-text theme="warning" content="警告" />
+  <t-typography-text theme="error" content="错误" />
+  <t-typography-text mark content="标记" />
+</view>

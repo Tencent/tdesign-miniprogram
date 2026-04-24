@@ -1,0 +1,23 @@
+<t-navbar class="demo-navbar" title="Typography" leftArrow placeholder />
+<view class="demo">
+  <t-demo-header
+    title="Typography 排版"
+    desc="排版用于文本基础编排和样式，使用排版组件，可以快速完成页面中的文本内容制作。"
+    notice="渲染框架支持情况：WebView"
+  />
+  <t-demo title="01 组件类型" desc="基础文本">
+    <base />
+  </t-demo>
+  <t-demo desc="组合用法">
+    <combination />
+  </t-demo>
+  <t-demo desc="主题样式">
+    <theme />
+  </t-demo>
+  <t-demo desc="可复制">
+    <copyable />
+  </t-demo>
+  <t-demo desc="文本省略">
+    <ellipsis />
+  </t-demo>
+</view>
