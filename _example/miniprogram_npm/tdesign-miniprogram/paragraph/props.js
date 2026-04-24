@@ -1,0 +1,1 @@
+const props={content:{type:String},ellipsis:{type:null,value:!1}};export default props;

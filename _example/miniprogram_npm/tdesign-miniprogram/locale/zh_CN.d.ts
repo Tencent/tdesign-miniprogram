@@ -13,6 +13,8 @@ declare const _default: {
     cascader: {
         title: string;
         placeholder: string;
+        filterPlaceholder: string;
+        empty: string;
     };
     dropdownMenu: {
         reset: string;
@@ -93,6 +95,11 @@ declare const _default: {
         skip: string;
         finish: string;
         back: string;
+    };
+    typography: {
+        expandText: string;
+        collapseText: string;
+        copiedText: string;
     };
     qrcode: {
         expiredText: string;

@@ -1,5 +1,5 @@
 import Toast from 'tdesign-miniprogram/toast';
-import { getNavigationBarHeight } from '../../../utils/utils';
+import getNavigationBarHeight from '../utils';
 
 let uniqueId = 0;
 const getUniqueKey = () => {
@@ -10,9 +10,7 @@ const getUniqueKey = () => {
 const mockData1 =
   '🌼宝子们，春天来啦，这些户外郊游打卡地你必须知道👏\n\n🌟郊野公园\n这里有大片的草地和各种花卉，随便一拍都是大片既视感📷。还能放风筝、野餐，享受惬意的春日时光。\n\n🌳植物园\n各种珍稀植物汇聚于此，仿佛置身于绿色的海洋。漫步其中，感受大自然的神奇与美丽。\n\n💧湖边湿地\n湖水清澈，周围生态环境优越。能看到很多候鸟和水生植物，是亲近自然的好去处。\n\n宝子们，赶紧收拾行囊，去这些地方打卡吧😜。\n\n#春天郊游 #打卡目的地 #户外之旅 #春日美景';
 
-const sleep = (ms) => {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-};
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
@@ -104,12 +102,10 @@ Component({
           data: value.trim(),
         },
       ];
-      const attachments = this.data.attachmentsProps.items.map((item) => {
-        return {
-          ...item,
-          status: 'success',
-        };
-      });
+      const attachments = this.data.attachmentsProps.items.map((item) => ({
+        ...item,
+        status: 'success',
+      }));
       content.unshift({
         type: 'attachment',
         data: attachments,
@@ -189,6 +185,7 @@ Component({
             },
           ],
         },
+        markdownProps: { streaming: { hasNextChunk: true, tail: true } },
         chatId: getUniqueKey(),
       };
 
@@ -208,6 +205,7 @@ Component({
           complete() {
             that.setData({
               'chatList[0].message.status': 'complete',
+              'chatList[0].markdownProps': {},
               loading: false,
             });
           },

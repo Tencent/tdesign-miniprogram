@@ -1,7 +1,7 @@
 export interface TdChatThinkingProps {
     animation?: {
         type: StringConstructor;
-        value?: 'skeleton' | 'moving' | 'gradient' | 'dot';
+        value?: 'skeleton' | 'moving' | 'gradient' | 'dots';
     };
     collapsed?: {
         type: BooleanConstructor;

@@ -16,9 +16,16 @@ export default class FormItem extends SuperComponent {
         needResetField: boolean;
         resetValidating: boolean;
         formRules: any[];
+        innerLabelAlign: string;
+        innerLabelWidth: string;
         form: {};
         colon: boolean;
         innerShowErrorMessage: boolean;
+        innerContentAlign: string;
+        contentStyle: string;
+    };
+    observers: {
+        contentAlign(val: string): void;
     };
     relations: RelationsOptions;
     lifetimes: {

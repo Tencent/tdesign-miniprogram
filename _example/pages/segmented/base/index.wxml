@@ -1,0 +1,7 @@
+<view class="example-segmented">
+  <t-segmented options="{{options}}" default-value="{{0}}" />
+</view>
+
+<view class="example-segmented">
+  <t-segmented options="{{optionsWithIcon}}" value="{{valueWithIcon}}" bind:change="onChangeWithIcon" />
+</view>
