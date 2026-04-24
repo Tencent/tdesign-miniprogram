@@ -1,1 +1,1 @@
-const props={content:{type:String,value:"",required:!0},options:{type:Object,value:{gfm:!0,pedantic:!1,breaks:!0}}};export default props;
+const props={content:{type:String,value:"",required:!0},options:{type:Object,value:{gfm:!0,pedantic:!1,breaks:!0}},streaming:{type:Object}};export default props;

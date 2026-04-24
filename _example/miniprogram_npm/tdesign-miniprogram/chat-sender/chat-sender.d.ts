@@ -35,12 +35,14 @@ export default class ChatSender extends SuperComponent {
             };
         };
         uploadNames: any[];
+        inputMode: string;
     };
     observers: {
         fileList(newVal: any): void;
         renderPresets(newVal: any): void;
     };
     methods: {
+        handleSpeechToggle(): void;
         onkeyboardheightchange(e: any): void;
         handleSendClick(e: any): void;
         handleOutsideClick(): void;

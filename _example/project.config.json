@@ -1,7 +1,8 @@
 {
   "description": "项目配置文件",
   "packOptions": {
-    "ignore": []
+    "ignore": [],
+    "include": []
   },
   "setting": {
     "urlCheck": false,
@@ -23,16 +24,28 @@
     "userConfirmedUseCompilerModuleSwitch": false,
     "showShadowRootInWxmlPanel": true,
     "skylineRenderEnable": true,
-    "bigPackageSizeSupport": true
+    "bigPackageSizeSupport": true,
+    "compileWorklet": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "minifyWXML": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    }
   },
   "compileType": "miniprogram",
-  "libVersion": "widelyUsed",
+  "libVersion": "3.15.1",
   "appid": "wx6f3e38f61d138c04",
   "projectname": "TDesign",
-  "debugOptions": {
-    "hidedInDevtools": []
-  },
-  "scripts": {},
   "simulatorType": "wechat",
   "simulatorPluginLibVersion": {},
   "condition": {
@@ -133,6 +146,12 @@
         {
           "name": "color-picker",
           "pathName": "pages/color-picker/color-picker",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "layout",
+          "pathName": "pages/col/col",
           "query": "",
           "scene": null
         },
@@ -329,6 +348,12 @@
           "scene": null
         },
         {
+          "name": "segmented",
+          "pathName": "pages/segmented/segmented",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "slider",
           "pathName": "pages/slider/slider",
           "query": "",
@@ -389,6 +414,12 @@
           "scene": null
         },
         {
+          "name": "table",
+          "pathName": "pages/table/table",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "tabs",
           "pathName": "pages/tabs/tabs",
           "query": "",
@@ -415,6 +446,12 @@
         {
           "name": "tree-select",
           "pathName": "pages/tree-select/tree-select",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "typography",
+          "pathName": "pages/paragraph/paragraph",
           "query": "",
           "scene": null
         },
@@ -501,8 +538,21 @@
           "name": "chat-sender",
           "pathName": "pages/chat-sender/chat-sender",
           "scene": null
+        },
+        {
+          "id": -1,
+          "name": "chat-record",
+          "pathName": "pages/chat-record/chat-record",
+          "scene": null
         }
-      ]
+      ],
+      "plugins": {
+        "WechatSI": {
+          "version": "0.3.6",
+          "provider": "wx069ba97219f66d99"
+        }
+      }
     }
-  }
+  },
+  "editorSetting": {}
 }

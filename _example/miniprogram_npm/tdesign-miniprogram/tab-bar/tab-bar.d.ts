@@ -7,6 +7,8 @@ export default class Tabbar extends SuperComponent {
         prefix: string;
         classPrefix: string;
         placeholderHeight: number;
+        safeAreaBottomHeight: number;
+        safeAreaBottomReady: boolean;
     };
     properties: import("./type").TdTabBarProps;
     controlledProps: {
@@ -15,12 +17,14 @@ export default class Tabbar extends SuperComponent {
     }[];
     observers: {
         value(): void;
-        'fixed, placeholder'(): void;
+        'fixed, placeholder, shape, safeAreaInsetBottom'(): void;
+        safeAreaInsetBottom(): void;
     };
     lifetimes: {
         ready(): void;
     };
     methods: {
+        setSafeAreaBottomHeight(): void;
         setPlaceholderHeight(): void;
         showChildren(): void;
         updateChildren(): void;

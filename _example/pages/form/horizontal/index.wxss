@@ -20,13 +20,13 @@ page .textarea .t-textarea {
 }
 
 .button-group {
-  background-color: #fff;
+  background-color: var(--bg-color-demo, #fff);
   box-sizing: border-box;
   padding: 32rpx;
   display: flex;
   justify-content: space-between;
   position: relative;
-  border-bottom: 1rpx solid #e7e7e7;
+  border-bottom: 1rpx solid var(--td-component-stroke);
 }
 
 .button-group .t-button {

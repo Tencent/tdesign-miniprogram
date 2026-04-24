@@ -12,6 +12,7 @@ export default class ChatMarkdown extends SuperComponent {
     };
     observers: {
         content: (markdown: string) => void;
+        streaming: () => void;
     };
     methods: {
         parseMarkdown(markdown: string): void;

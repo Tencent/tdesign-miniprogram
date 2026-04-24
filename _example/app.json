@@ -93,8 +93,11 @@
     "pages/color-picker/color-picker",
     "pages/guide/guide",
     "pages/watermark/watermark",
+    "pages/table/table",
     "pages/config-provider/config-provider",
     "pages/form/form",
+    "pages/segmented/segmented",
+    "pages/paragraph/paragraph",
     "pages/chat-message/chat-message"
   ],
   "subpackages": [
@@ -144,6 +147,12 @@
       "root": "pages/chat-sender/",
       "pages": [
         "chat-sender"
+      ]
+    },
+    {
+      "root": "pages/chat-record/",
+      "pages": [
+        "chat-record"
       ]
     },
     {
@@ -238,6 +247,17 @@
   },
   "resolveAlias": {
     "@behaviors/*": "behaviors/*"
+  },
+  "plugins": {
+    "WechatSI": {
+      "version": "0.3.6",
+      "provider": "wx069ba97219f66d99"
+    }
+  },
+  "permission": {
+    "scope.record": {
+      "desc": "你的信息将用于录音功能的效果展示"
+    }
   },
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents",

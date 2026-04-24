@@ -15,6 +15,7 @@ export default class ChatContent extends SuperComponent {
     methods: {
         getEscapeReplacement(ch: any): any;
         escape(html: any, encode?: boolean): any;
+        onMarkdownClick(e: any): void;
         setTextInfo(): void;
     };
     lifetimes: {

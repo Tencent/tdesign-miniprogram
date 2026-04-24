@@ -13,6 +13,8 @@ declare const _default: {
     cascader: {
         title: string;
         placeholder: string;
+        filterPlaceholder: string;
+        empty: string;
     };
     dropdownMenu: {
         reset: string;
@@ -49,6 +51,7 @@ declare const _default: {
             boolean: string;
             number: string;
         };
+        colonText: string;
     };
     picker: {
         cancel: string;
@@ -70,6 +73,11 @@ declare const _default: {
     };
     table: {
         empty: string;
+        confirmText: string;
+        resetText: string;
+        searchResultText: string;
+        clearFilterResultButtonText: string;
+        pullUpLoadingText: string;
     };
     list: {
         loading: string;
@@ -84,6 +92,7 @@ declare const _default: {
             waitingText: string;
             failText: string;
             successText: string;
+            reloadText: string;
         };
     };
     guide: {
@@ -91,6 +100,11 @@ declare const _default: {
         skip: string;
         finish: string;
         back: string;
+    };
+    typography: {
+        expandText: string;
+        collapseText: string;
+        copiedText: string;
     };
     qrcode: {
         expiredText: string;
@@ -112,6 +126,21 @@ declare const _default: {
             share: string;
             quote: string;
         };
+    };
+    chatRecord: {
+        holdToTalk: string;
+        requestAuth: string;
+        releaseToCancel: string;
+        releaseToSend: string;
+        cancelText: string;
+        sendText: string;
+        busyTip: string;
+        recognizeFailTip: string;
+        missingPluginTip: string;
+        authSettingFail: string;
+        openSettingFail: string;
+        systemMicTitle: string;
+        systemMicContent: string;
     };
     chatSender: {
         placeholder: string;
