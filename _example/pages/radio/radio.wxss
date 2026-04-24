@@ -1,9 +1,0 @@
-.t-radio-padding {
-  padding: 24rpx 32rpx !important;
-}
-.t-radio-demo {
-  margin-top: 16px;
-}
-.disable-border {
-  display: none;
-}

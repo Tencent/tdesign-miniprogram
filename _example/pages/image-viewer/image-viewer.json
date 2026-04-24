@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "ImageViewer",
-  "navigationBarBackgroundColor": "#fff",
-  "usingComponents": {
-    "base": "./base",
-    "delete": "./delete"
-  }
-}

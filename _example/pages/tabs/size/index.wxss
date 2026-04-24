@@ -1,3 +1,0 @@
-.bigger {
-  --td-tab-font: var(--td-font-body-large);
-}

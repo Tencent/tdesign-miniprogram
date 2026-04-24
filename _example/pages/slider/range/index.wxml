@@ -1,3 +1,0 @@
-<view class="wrapper">
-  <t-slider range defaultValue="{{[35, 65]}}" bind:dragstart="onDragstart" bind:dragend="onDragend" />
-</view>

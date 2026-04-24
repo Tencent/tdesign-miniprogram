@@ -13,5 +13,6 @@
 .t-search__placeholder{color:var(--td-search-placeholder-color,var(--td-text-color-placeholder,var(--td-font-gray-3,rgba(0,0,0,.4))));}
 .t-search__placeholder--center{text-align:center;}
 .t-search__result-item--highLight{color:var(--td-search-result-high-light-color,var(--td-brand-color,var(--td-primary-color-7,#0052d9)));}
+.t-search__result-list{max-height:560rpx;overflow-y:auto;-webkit-overflow-scrolling:touch;}
 .t-search__result-list .t-search__result-item{padding-left:0;}
 .t-search__result-list .t-search__result-item::after{left:0;}

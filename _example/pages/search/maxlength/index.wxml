@@ -1,6 +1,0 @@
-<view class="example-search">
-  <t-search placeholder="最大输入10个字符" maxlength="{{10}}" />
-</view>
-<view class="example-search">
-  <t-search placeholder="最大输入10个字符，汉字算两个" maxcharacter="{{10}}" />
-</view>

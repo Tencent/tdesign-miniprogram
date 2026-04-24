@@ -1,5 +1,0 @@
-Component({
-  data: {
-    visible: true,
-  },
-});

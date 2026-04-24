@@ -1,2 +1,0 @@
-<t-navbar class="demo-navbar" title="PullDownRefresh" left-arrow placeholder zIndex="{{99}}" />
-<base />

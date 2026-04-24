@@ -1,6 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "t-rate": "tdesign-miniprogram/rate/rate"
-  }
-}

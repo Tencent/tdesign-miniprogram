@@ -1,3 +1,0 @@
-.avatar-example:not(:last-child) {
-  margin-right: 64rpx;
-}

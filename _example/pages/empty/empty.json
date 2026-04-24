@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "Empty",
-  "navigationBarBackgroundColor": "#fff",
-  "usingComponents": {
-    "base": "./base",
-    "imageEmpty": "./imageEmpty",
-    "buttonEmpty": "./buttonEmpty"
-  }
-}

@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "t-overlay": "tdesign-miniprogram/overlay/overlay",
-    "t-button": "tdesign-miniprogram/button/button"
-  }
-}

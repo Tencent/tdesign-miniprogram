@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "styleIsolation": "apply-shared",
-  "usingComponents": {
-    "t-config-provider": "tdesign-miniprogram/config-provider/config-provider",
-    "t-chat-thinking": "tdesign-miniprogram/chat-thinking/chat-thinking"
-  }
-}

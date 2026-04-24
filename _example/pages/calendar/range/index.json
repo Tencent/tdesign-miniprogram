@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "t-icon": "tdesign-miniprogram/icon/icon",
-    "t-calendar": "tdesign-miniprogram/calendar/calendar"
-  }
-}

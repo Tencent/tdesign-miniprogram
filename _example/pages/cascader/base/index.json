@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "t-cell": "tdesign-miniprogram/cell/cell",
-    "t-cascader": "tdesign-miniprogram/cascader/cascader"
-  }
-}

@@ -1,6 +1,0 @@
-page {
-  background-color: var(--td-bg-color-container);
-}
-.t-notice-bar {
-  margin-bottom: 32rpx;
-}

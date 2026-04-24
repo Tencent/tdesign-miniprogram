@@ -1,4 +1,0 @@
-<view class="group">
-  <t-skeleton rowCol="{{rowCol}}" loading></t-skeleton>
-  <t-skeleton rowCol="{{rowCol}}" loading></t-skeleton>
-</view>

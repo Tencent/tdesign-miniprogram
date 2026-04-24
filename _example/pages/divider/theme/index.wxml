@@ -1,4 +1,0 @@
-<t-divider t-class="{{skylineRender?'skyline-dashed':''}}" dashed />
-<t-divider t-class="{{skylineRender?'skyline-dashed':''}}" dashed content="文字信息" align="left" />
-<t-divider t-class="{{skylineRender?'skyline-dashed':''}}" dashed content="文字信息" />
-<t-divider t-class="{{skylineRender?'skyline-dashed':''}}" dashed content="文字信息" align="right" />

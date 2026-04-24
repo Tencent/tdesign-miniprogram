@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "t-image": "tdesign-miniprogram/image/image",
-    "t-loading": "tdesign-miniprogram/loading/loading"
-  }
-}

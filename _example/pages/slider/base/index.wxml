@@ -1,3 +1,0 @@
-<view class="wrapper">
-  <t-slider default-value="{{23}}" step="{{0.1}}" bind:change="handleChange" />
-</view>

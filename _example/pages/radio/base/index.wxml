@@ -1,1 +1,0 @@
-<t-radio-group bind:change="onChange" allow-uncheck value="{{current}}" options="{{options}}" />

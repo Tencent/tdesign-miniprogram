@@ -1,3 +1,0 @@
-<view class="button-example">
-  <t-button theme="primary" size="large" block>填充按钮</t-button>
-</view>

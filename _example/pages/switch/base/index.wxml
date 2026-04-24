@@ -1,3 +1,0 @@
-<t-cell title="基础开关" bordered="{{false}}">
-  <t-switch defaultValue="{{true}}" slot="note" />
-</t-cell>

@@ -1,3 +1,0 @@
-page .demo {
-  --td-cascader-active-color: green;
-}

@@ -1,1 +1,0 @@
-<t-fab icon="add" button-props="{{fabButton}}" bind:click="handleClick" text="分享给朋友" />

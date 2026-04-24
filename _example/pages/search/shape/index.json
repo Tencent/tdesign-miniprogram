@@ -1,6 +1,0 @@
-{
-  "styleIsolation": "apply-shared",
-  "usingComponents": {
-    "t-search": "tdesign-miniprogram/search/search"
-  }
-}

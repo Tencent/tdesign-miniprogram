@@ -1,5 +1,5 @@
 import Toast from 'tdesign-miniprogram/toast';
-import { getNavigationBarHeight } from '../../../utils/utils';
+import getNavigationBarHeight from '../utils';
 
 let uniqueId = 0;
 const getUniqueKey = () => {
@@ -9,6 +9,12 @@ const getUniqueKey = () => {
 
 const mockData = {
   avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
+  chatContentProps: {
+    thinking: {
+      animation: 'gradient',
+      collapsed: false,
+    },
+  },
   message: {
     role: 'assistant',
     content: [
@@ -70,6 +76,12 @@ Component({
     chatList: [
       {
         avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
+        chatContentProps: {
+          thinking: {
+            animation: 'gradient',
+            collapsed: false,
+          },
+        },
         message: {
           status: 'complete',
           role: 'assistant',
@@ -179,6 +191,8 @@ Component({
           complete() {
             that.setData({
               'chatList[0].message.content[0].data.title': '思考完成',
+              'chatList[0].chatContentProps.thinking.collapsed': true,
+              'chatList[0].message.status': 'complete',
             });
           },
         });

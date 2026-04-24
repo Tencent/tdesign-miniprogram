@@ -1,1 +1,0 @@
-<t-tree-select options="{{options}}" value="{{value}}" bind:change="onChange" />

@@ -1,5 +1,0 @@
-<t-toast id="t-toast" />
-
-<view class="box">
-  <t-button theme="primary" size="large" variant="outline" bind:tap="handleToast" block>禁止滑动和点击</t-button>
-</view>

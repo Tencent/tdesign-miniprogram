@@ -1,4 +1,0 @@
-<view class="loading-container-flex">
-  <t-loading wx:if="{{!skylineRender}}" theme="circular" size="40rpx" text="加载中..." class="wrapper" />
-  <t-loading theme="spinner" size="40rpx" text="加载中..." inheritColor class="wrapper" />
-</view>

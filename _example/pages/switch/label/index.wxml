@@ -1,7 +1,0 @@
-<t-cell title="带文字开关">
-  <t-switch bindchange="handleChange" value="{{defaultVal}}" label="{{['开', '关']}}" slot="note" />
-</t-cell>
-
-<t-cell title="带图标开关" bordered="{{false}}">
-  <t-switch defaultValue="{{true}}" icon="{{['check', 'close']}}" slot="note" />
-</t-cell>

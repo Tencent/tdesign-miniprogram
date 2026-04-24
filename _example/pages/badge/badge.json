@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "Badge",
-  "usingComponents": {
-    "base": "./base",
-    "theme": "./theme",
-    "size": "./size"
-  }
-}

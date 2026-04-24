@@ -1,8 +1,0 @@
-<view class="button-example">
-  <t-button theme="primary" icon="app" content="填充按钮" size="large"></t-button>
-  <t-button wx:if="{{skylineRender}}" theme="light" size="large">
-    <t-loading t-class="loading" theme="spinner" size="40rpx" text="加载中..." />
-  </t-button>
-  <t-button wx:else theme="primary" size="large" loading>加载中</t-button>
-  <t-button theme="primary" icon="search" shape="square" size="large" aria-label="搜索"></t-button>
-</view>

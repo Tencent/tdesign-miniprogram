@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "Cell",
-  "usingComponents": {
-    "base": "./base",
-    "multiple": "./multiple",
-    "theme": "./theme"
-  }
-}

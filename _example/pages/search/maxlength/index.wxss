@@ -1,4 +1,0 @@
-.example-search {
-  background-color: var(--bg-color-demo);
-  padding: 16rpx 32rpx;
-}

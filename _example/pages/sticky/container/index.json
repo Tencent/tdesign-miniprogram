@@ -1,8 +1,0 @@
-{
-  "component": true,
-  "styleIsolation": "shared",
-  "usingComponents": {
-    "t-sticky": "tdesign-miniprogram/sticky/sticky",
-    "t-button": "tdesign-miniprogram/button/button"
-  }
-}

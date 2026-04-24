@@ -1,7 +1,0 @@
-.panel-item {
-  margin-bottom: 32rpx;
-}
-
-.panel-item::after {
-  border: 0;
-}

@@ -1,4 +1,0 @@
-<t-dropdown-menu>
-  <t-dropdown-item options="{{product.options}}" placement="right" value="{{product.value}}" bindchange="onChange" />
-  <t-dropdown-item options="{{sorter.options}}" placement="right" default-value="{{sorter.value}}" />
-</t-dropdown-menu>

@@ -1,3 +1,0 @@
-<t-sticky offset-top="{{navbarHeight}}">
-  <t-button size="large" theme="primary" t-class="external-class">基础吸顶</t-button>
-</t-sticky>

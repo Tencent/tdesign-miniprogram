@@ -1,9 +1,0 @@
-<t-tabs defaultValue="{{0}}" theme="tag">
-  <t-tab-panel wx:for="{{4}}" wx:key="index" label="选项" value="{{index}}" />
-</t-tabs>
-
-<view style="height: 16px" />
-
-<t-tabs defaultValue="{{0}}" theme="card">
-  <t-tab-panel wx:for="{{4}}" wx:key="index" label="选项" value="{{index}}" />
-</t-tabs>

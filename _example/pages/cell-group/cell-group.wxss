@@ -1,4 +1,0 @@
-page .t-cell-group__title {
-  line-height: 104rpx;
-  font-size: 24rpx;
-}

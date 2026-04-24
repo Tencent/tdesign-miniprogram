@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "t-swipe-cell": "tdesign-miniprogram/swipe-cell/swipe-cell",
-    "t-cell": "tdesign-miniprogram/cell/cell"
-  }
-}

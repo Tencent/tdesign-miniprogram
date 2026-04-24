@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "Popover",
-  "navigationBarBackgroundColor": "#fff",
-  "usingComponents": {
-    "base": "./base",
-    "theme": "./theme",
-    "placement": "./placement"
-  }
-}

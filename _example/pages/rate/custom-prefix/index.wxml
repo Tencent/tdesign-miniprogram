@@ -1,4 +1,0 @@
-<view class="demo-rate">
-  <view class="demo-rate__title">第三方图标</view>
-  <t-rate value="{{value}}" iconPrefix="icon" icon="a-1h" bind:change="onChange" />
-</view>

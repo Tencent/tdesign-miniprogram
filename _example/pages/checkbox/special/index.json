@@ -1,9 +1,0 @@
-{
-  "component": true,
-  "styleIsolation": "apply-shared",
-  "usingComponents": {
-    "t-checkbox-group": "tdesign-miniprogram/checkbox-group/checkbox-group",
-    "t-checkbox": "tdesign-miniprogram/checkbox/checkbox",
-    "t-icon": "tdesign-miniprogram/icon/icon"
-  }
-}

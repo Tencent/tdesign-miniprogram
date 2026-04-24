@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "ConfigProvider",
-  "usingComponents": {
-    "upload-en": "./upload-en",
-    "chat-en": "./chat-en",
-    "other-en": "./other-en"
-  }
-}

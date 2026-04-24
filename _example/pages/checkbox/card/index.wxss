@@ -1,5 +1,0 @@
-.theme-card {
-  border-radius: 24rpx;
-  margin: 32rpx;
-  overflow: hidden;
-}

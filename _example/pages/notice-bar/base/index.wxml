@@ -1,3 +1,0 @@
-<t-notice-bar visible="{{true}}" prefixIcon="{{false}}">
-  <view slot="content">这是一条普通的通知信息</view>
-</t-notice-bar>

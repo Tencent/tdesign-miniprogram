@@ -1,2 +1,0 @@
-<t-avatar class="avatar-example" image="{{image}}" />
-<t-avatar class="avatar-example" shape="round" image="{{image}}" />

@@ -1,8 +1,0 @@
-<t-swiper
-  current="{{current}}"
-  autoplay="{{autoplay}}"
-  duration="{{duration}}"
-  interval="{{interval}}"
-  list="{{swiperList}}"
-  navigation="{{ { type: 'dots-bar' } }}"
-/>

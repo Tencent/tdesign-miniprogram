@@ -1,8 +1,0 @@
-{
-  "navigationBarTitleText": "Layout",
-  "navigationBarBackgroundColor": "#f6f6f6",
-  "usingComponents": {
-    "base": "./base",
-    "offset": "./offset"
-  }
-}

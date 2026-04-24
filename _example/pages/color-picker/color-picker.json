@@ -1,9 +1,0 @@
-{
-  "navigationBarTitleText": "ColorPicker",
-  "usingComponents": {
-    "base": "./base",
-    "multiple": "./multiple",
-    "format": "./format",
-    "usePopup": "./use-popup"
-  }
-}

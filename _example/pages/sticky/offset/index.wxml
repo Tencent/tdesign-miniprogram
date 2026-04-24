@@ -1,3 +1,0 @@
-<t-sticky offset-top="{{ 40 + navbarHeight }}">
-  <t-button size="large" theme="danger" t-class="external-class">吸顶距离</t-button>
-</t-sticky>
