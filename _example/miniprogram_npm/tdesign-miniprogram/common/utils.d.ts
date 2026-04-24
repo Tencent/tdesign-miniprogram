@@ -32,9 +32,6 @@ export declare const getCharacterLength: (type: string, char: string | number, m
 export declare const chunk: (arr: any[], size: number) => any[][];
 export declare const getInstance: (context?: Context, selector?: string) => WechatMiniprogram.Component.TrivialInstance;
 export declare const unitConvert: (value: number | string | null | undefined) => number;
-export declare const setIcon: (iconName: any, icon: any, defaultIcon: any) => {
-    [x: string]: any;
-};
 export declare const toCamel: (str: any) => any;
 export declare function toKebabCase(str: string): string;
 export declare const getCurrentPage: <T>() => T & WechatMiniprogram.OptionalInterface<WechatMiniprogram.Page.ILifetime> & WechatMiniprogram.Page.InstanceProperties & WechatMiniprogram.Page.InstanceMethods<WechatMiniprogram.IAnyObject> & WechatMiniprogram.Page.Data<WechatMiniprogram.IAnyObject> & WechatMiniprogram.IAnyObject;

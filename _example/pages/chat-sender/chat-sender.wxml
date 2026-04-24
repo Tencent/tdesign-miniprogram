@@ -17,4 +17,7 @@
   <t-demo desc="文件引用">
     <file-citation />
   </t-demo>
+  <t-demo desc="语音输入">
+    <record />
+  </t-demo>
 </view>

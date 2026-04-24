@@ -93,5 +93,6 @@ export default class ImageViewer extends SuperComponent {
         onSwiperChange(e: WechatMiniprogram.TouchEvent): void;
         onClose(e: any): void;
         onDelete(): void;
+        noop(): void;
     };
 }

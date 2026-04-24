@@ -1,0 +1,12 @@
+<t-table
+  row-key="id"
+  fixed-rows="{{[1, 2]}}"
+  columns="{{columns}}"
+  data="{{data}}"
+  stripe="{{true}}"
+  max-height="{{400}}"
+  show-header="{{true}}"
+  cell-empty-content="-"
+  bind:row-click="handleRowClick"
+  bind:cell-click="handleCellClick"
+/>

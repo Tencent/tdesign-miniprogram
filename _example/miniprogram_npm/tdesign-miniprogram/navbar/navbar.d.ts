@@ -17,6 +17,7 @@ export default class Navbar extends SuperComponent {
         showTitle: string;
         hideLeft: boolean;
         hideCenter: boolean;
+        isSpecialScene: boolean;
         _menuRect: any;
         _leftRect: any;
         _boxStyle: {};

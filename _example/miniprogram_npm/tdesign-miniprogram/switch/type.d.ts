@@ -1,4 +1,4 @@
-export interface TdSwitchProps<T = SwitchValue> {
+export interface TdSwitchProps {
     customValue?: {
         type: ArrayConstructor;
         value?: Array<SwitchValue>;

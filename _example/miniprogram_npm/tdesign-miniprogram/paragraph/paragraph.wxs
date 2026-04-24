@@ -1,0 +1,49 @@
+/* typography 公共计算逻辑 */
+
+/* 计算省略内容的内联样式 */
+function ellipsisStyle(ellipsis, isExpanded) {
+  if (!ellipsis || isExpanded) return '';
+  var row = typeof ellipsis === 'object' && ellipsis.row ? ellipsis.row : 1;
+  return (
+    'overflow:hidden;text-overflow:ellipsis;white-space:normal;display:-webkit-box;-webkit-line-clamp:' +
+    row +
+    ';-webkit-box-orient:vertical;'
+  );
+}
+
+/* 计算外层容器 class */
+function wrapperClass(classPrefix, ellipsis) {
+  if (ellipsis) {
+    return classPrefix + '__ellipsis-wrapper';
+  }
+  return '';
+}
+
+/* 根据装饰属性拼接内层 class */
+function decorClass(classPrefix, strong, underline, del, code, mark, keyboard, italic) {
+  var list = [];
+  if (strong) list.push(classPrefix + '--strong');
+  if (underline) list.push(classPrefix + '--underline');
+  if (del) list.push(classPrefix + '--delete');
+  if (code) list.push(classPrefix + '--code');
+  if (mark) list.push(classPrefix + '--mark');
+  if (keyboard) list.push(classPrefix + '--keyboard');
+  if (italic) list.push(classPrefix + '--italic');
+  return list.join(' ');
+}
+
+/* mark 自定义颜色 */
+function markStyle(mark) {
+  if (!mark || mark === true || mark === 'true') return '';
+  if (mark && mark !== 'false' && mark !== false) {
+    return 'background-color:' + mark + ';';
+  }
+  return '';
+}
+
+module.exports = {
+  ellipsisStyle: ellipsisStyle,
+  wrapperClass: wrapperClass,
+  decorClass: decorClass,
+  markStyle: markStyle,
+};

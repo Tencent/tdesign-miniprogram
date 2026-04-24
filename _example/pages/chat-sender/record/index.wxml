@@ -1,0 +1,22 @@
+<view class="demo-base-container">
+  <!-- 聊天发送器组件 - 文本输入模式 -->
+  <view class="chat-sender-demo-wrapper">
+    <view class="chat-sender-wrapper" style="bottom: {{keyboardHeight}}px;">
+      <t-chat-sender
+        value="{{query}}"
+        loading="{{loading}}"
+        placeholder="{{placeholder}}"
+        allowSpeech="{{allowSpeech}}"
+        bind:send="onSend"
+        bind:keyboardheightchange="onKeyboardHeightChange"
+      >
+        <view slot="speech">
+          <t-chat-record bind:recognize="handleRecognize">
+            <view slot="speechInput" class="speech-slot-btn"> 按住说话 </view>
+            <view slot="speechNoAuth" class="speech-btn-error"> 请授权麦克风权限 </view>
+          </t-chat-record>
+        </view>
+      </t-chat-sender>
+    </view>
+  </view>
+</view>

@@ -1,6 +1,9 @@
 /// <reference types="miniprogram-api-typings" />
 import { SuperComponent } from '../common/src/index';
+import TCalendar from '../common/shared/calendar/index';
+import type { TCalendarValue } from '../common/shared/calendar/type';
 import { TdCalendarProps } from './type';
+declare type CalendarMonth = ReturnType<TCalendar['getMonths']>[number];
 export interface CalendarProps extends TdCalendarProps {
 }
 export default class Calendar extends SuperComponent {
@@ -45,14 +48,17 @@ export default class Calendar extends SuperComponent {
     methods: {
         initialValue(): void;
         scrollIntoView(): void;
-        getCurrentYearAndMonth(v: Date): {
+        getCurrentYearAndMonth(v: TCalendarValue): {
             year: number;
             month: number;
         };
         updateActionButton(value: Date): void;
-        updateCurrentMonth(newValue?: any): void;
-        calcCurrentMonth(newValue?: any): void;
-        calcMonths(): void;
+        getCurrentMonth(newValue?: TCalendarValue, months?: CalendarMonth[]): {
+            date: any;
+            currentMonth: any[];
+        };
+        calcCurrentMonth(newValue?: TCalendarValue): void;
+        calcMonths(newValue?: TCalendarValue): void;
         close(trigger: any): void;
         onVisibleChange(): void;
         handleClose(): void;
@@ -64,3 +70,4 @@ export default class Calendar extends SuperComponent {
         handleSwitchModeChange(e: any): void;
     };
 }
+export {};

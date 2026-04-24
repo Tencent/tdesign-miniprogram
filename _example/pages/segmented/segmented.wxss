@@ -1,0 +1,7 @@
+.example-segmented {
+  padding: 16rpx 32rpx;
+  background-color: var(--bg-color-demo);
+}
+.example-segmented + .example-segmented {
+  margin-top: 32rpx;
+}

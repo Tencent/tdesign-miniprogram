@@ -1,7 +1,7 @@
 export interface TdChatActionbarProps {
     actionBar?: {
         type: ArrayConstructor;
-        value?: Array<'replay' | 'copy' | 'good' | 'bad' | 'share'>;
+        value?: Array<'replay' | 'copy' | 'good' | 'bad' | 'share' | 'quote'>;
     };
     chatId?: {
         type: StringConstructor;
@@ -9,7 +9,7 @@ export interface TdChatActionbarProps {
     };
     comment?: {
         type: StringConstructor;
-        value?: string;
+        value?: 'good' | 'bad';
     };
     content?: {
         type: StringConstructor;
@@ -23,19 +23,24 @@ export interface TdChatActionbarProps {
         type: BooleanConstructor;
         value?: boolean;
     };
+    longPressPosition?: {
+        type: ObjectConstructor;
+        value?: ChatActionbarLongPressPosition;
+    };
     placement?: {
         type: StringConstructor;
         value?: 'start' | 'end' | 'space-around' | 'space-between' | 'longpress';
     };
-    longPressPosition?: {
-        type: ObjectConstructor;
-        value?: {
-            pageX: number;
-            pageY: number;
-            clientX: number;
-            clientY: number;
-            x: number;
-            y: number;
-        };
-    };
+}
+export interface ChatActionbarLongPressPosition {
+    type?: object;
+    value?: LongPressPositionValue;
+}
+export interface LongPressPositionValue {
+    pageX?: number;
+    pageY?: number;
+    clientX?: number;
+    clientY?: number;
+    x?: number;
+    y?: number;
 }

@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "Typography",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "base": "./base",
+    "theme": "./theme",
+    "copyable": "./copyable",
+    "ellipsis": "./ellipsis",
+    "combination": "./combination"
+  }
+}

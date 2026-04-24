@@ -4,6 +4,10 @@ export interface TdChatSenderProps {
         type: BooleanConstructor;
         value?: boolean;
     };
+    allowSpeech?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
     attachmentsProps?: {
         type: ObjectConstructor;
         value?: AttachmentsProps;

@@ -20,6 +20,7 @@ export default class ChatMessage extends SuperComponent {
     };
     methods: {
         handleLongPress(e: any): void;
+        onContentClick(e: any): void;
         setShowAvatar(): void;
         setShowName(): void;
         setShowDateTime(): void;

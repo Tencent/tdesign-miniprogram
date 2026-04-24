@@ -1,1 +1,1 @@
-{"component":true,"styleIsolation":"apply-shared","usingComponents":{}}
+{"component":true,"styleIsolation":"apply-shared","componentGenerics":{"tail-component":{"default":"../chat-markdown-tail/chat-markdown-tail"}},"usingComponents":{}}

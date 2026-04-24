@@ -87,6 +87,7 @@ export default class Radio extends SuperComponent {
         classPrefix: string;
         customIcon: boolean;
         slotIcon: boolean;
+        direction: string;
         optionLinked: boolean;
         iconVal: any[];
         _placement: string;

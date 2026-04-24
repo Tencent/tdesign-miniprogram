@@ -11,7 +11,7 @@ export default class ChatMarkdownNode extends SuperComponent {
         classPrefix: string;
     };
     methods: {
-        linkClick(e: any): void;
+        nodeClick(e: any): void;
         getCareMarkdown(): any;
         handleClick(event: any, type: any, token: any): void;
     };

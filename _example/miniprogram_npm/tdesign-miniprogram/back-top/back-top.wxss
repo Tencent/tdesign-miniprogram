@@ -6,5 +6,5 @@
 .t-back-top--half-round,.t-back-top--half-round-dark{width:120rpx;height:80rpx;border-radius:0;border-top-left-radius:var(--td-back-top-half-round-border-radius,var(--td-radius-round,999px));border-bottom-left-radius:var(--td-back-top-half-round-border-radius,var(--td-radius-round,999px));flex-direction:row;right:0;}
 .t-back-top__text--half-round,.t-back-top__text--half-round-dark,.t-back-top__text--round,.t-back-top__text--round-dark{font-weight:600;font-size:var(--td-font-size,20rpx);line-height:24rpx;}
 .t-back-top__text--half-round,.t-back-top__text--half-round-dark{width:48rpx;}
-.t-back-top__icon:not(:empty)+.t-back-top__text--half-round,.t-back-top__icon:not(:empty)+.t-back-top__text--half-round-dark{margin-left:8rpx;}
+.t-back-top__icon:not(:empty)+.t-back-top__text--half-round,.t-back-top__icon:not(:empty)+.t-back-top__text--half-round-dark{margin-left:calc(var(--td-spacer,16rpx)/ 2);}
 .t-back-top__icon{display:flex;justify-content:center;align-items:center;font-size:44rpx;}

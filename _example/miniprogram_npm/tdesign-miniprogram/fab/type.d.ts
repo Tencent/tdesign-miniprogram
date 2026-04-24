@@ -9,8 +9,8 @@ export interface TdFabProps {
         value?: boolean | FabDirectionEnum;
     };
     icon?: {
-        type: StringConstructor;
-        value?: string;
+        type: null;
+        value?: string | object;
     };
     style?: {
         type: StringConstructor;
