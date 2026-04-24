@@ -45,6 +45,10 @@ import TChatMarkdown from '@tdesign/uniapp-chat/chat-markdown/chat-markdown.vue'
 
 {{ refer }}
 
+### 05 流式输出光标
+
+{{ tail }}
+
 ## API
 
 ### ChatMarkdown Props
@@ -53,6 +57,7 @@ import TChatMarkdown from '@tdesign/uniapp-chat/chat-markdown/chat-markdown.vue'
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
 content | String | - | 必需。markdown 内容文本 | Y
+streaming | Object | - | 流式输出配置，控制光标显示。TS 类型：`TdChatStreamingConfig` `interface TdChatStreamingConfig { hasNextChunk?: boolean; tail?: boolean \| { content?: string } }`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-pro-components/chat/chat-markdown/type.ts) | N
 options | Object | { gfm: true, pedantic: false, breaks: true } | Markdown 解析器基础配置。TS 类型：`TdChatContentMDOptions ` `interface TdChatContentMDOptions {gfm?: boolean; pedantic?: boolean; smartLists?: boolean; breaks?: boolean}`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-pro-components/chat/chat-markdown/type.ts) | N
 
 ### ChatMarkdown Events

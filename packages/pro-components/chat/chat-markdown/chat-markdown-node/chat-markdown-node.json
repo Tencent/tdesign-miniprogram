@@ -1,6 +1,11 @@
 {
   "component": true,
   "styleIsolation": "apply-shared",
+  "componentGenerics": {
+    "tail-component": {
+      "default": "../chat-markdown-tail/chat-markdown-tail"
+    }
+  },
   "usingComponents": {
     "chat-markdown-table": "../chat-markdown-table/chat-markdown-table",
     "chat-markdown-code": "../chat-markdown-code/chat-markdown-code",

@@ -189,4 +189,20 @@
       border: 1rpx solid @component-border;
     }
   }
+
+  // 流式输出尾部光标
+  &-tail {
+    display: inline-block;
+    animation: chat-markdown-tail-blink 1s step-start infinite;
+  }
+}
+
+@keyframes chat-markdown-tail-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }

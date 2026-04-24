@@ -34,6 +34,9 @@
       <t-demo title="04 引用">
         <refer-demo />
       </t-demo>
+      <t-demo title="05 流式输出光标">
+        <tail-demo />
+      </t-demo>
     </view>
   </view>
 </template>
@@ -45,6 +48,7 @@ import CodeDemo from './code/index.vue';
 import SheetDemo from './sheet/index.vue';
 import UrlDemo from './url/index.vue';
 import ReferDemo from './refer/index.vue';
+import TailDemo from './tail/index.vue';
 
 
 export default {
@@ -55,6 +59,7 @@ export default {
     SheetDemo,
     UrlDemo,
     ReferDemo,
+    TailDemo,
   },
   data() {
     return {};

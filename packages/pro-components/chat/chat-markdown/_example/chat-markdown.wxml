@@ -23,4 +23,7 @@
   <t-demo title="04 引用">
     <refer />
   </t-demo>
+  <t-demo title="05 流式输出 Tail 光标">
+    <tail />
+  </t-demo>
 </view>

@@ -150,6 +150,12 @@
     border: 1rpx solid @component-border;
   }
 
+  // 流式输出尾部光标
+  &-tail {
+    display: inline-block;
+    animation: chat-markdown-tail-blink 1s step-start infinite;
+  }
+
   // 表格样式
   .@{chat-markdown-table}__container {
     display: table;
@@ -188,5 +194,16 @@
       padding: @chat-markdown-table-padding;
       border: 1rpx solid @component-border;
     }
+  }
+}
+
+@keyframes chat-markdown-tail-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
   }
 }

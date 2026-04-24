@@ -1,0 +1,2 @@
+<!-- 自定义光标组件示例：渲染一个彩色方块光标 -->
+<text class="custom-tail">●</text>

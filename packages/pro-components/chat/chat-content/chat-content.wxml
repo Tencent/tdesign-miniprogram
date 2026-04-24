@@ -10,7 +10,13 @@
   </block>
   <block wx:else>
     <view class="{{classPrefix}}__assistant">
-      <t-chat-markdown content="{{textInfo}}" options="{{markdownProps && markdownProps.options}}" bindclick="onMarkdownClick"></t-chat-markdown>
+      <t-chat-markdown
+        content="{{textInfo}}"
+        options="{{markdownProps && markdownProps.options}}"
+        streaming="{{markdownProps && markdownProps.streaming}}"
+        generic:tail-component="tail-component"
+        bindclick="onMarkdownClick"
+      ></t-chat-markdown>
     </view>
   </block>
 </view>
