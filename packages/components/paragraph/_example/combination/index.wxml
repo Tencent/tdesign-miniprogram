@@ -1,0 +1,41 @@
+<view class="typography-example typography-example--inline">
+  <t-typography-title content="What is TDesign" />
+  <t-typography-text
+    mark
+    content="TDesign is an enterprise-level design system accumulated by Tencent's various business teams."
+  />
+  <t-typography-paragraph>
+    <t-typography-text strong>
+      TDesign features a unified design values, consistent design language, and visual style, helping users form
+      continuous and coherent perceptions of the experience.
+    </t-typography-text>
+    Based on this, TDesign offers out-typography-of-the-box UI component libraries, design guidelines, and design
+    assets, elegantly and efficiently freeing design and development from repetitive tasks. Simultaneously, it
+    facilitates easy extension on top of TDesign, enabling a better alignment with business requirements.
+  </t-typography-paragraph>
+
+  <t-typography-title>Comprehensive</t-typography-title>
+  <t-typography-paragraph>
+    TDesign Support
+    <t-typography-text code>Vue 2</t-typography-text>, <t-typography-text code>Vue 3</t-typography-text>,
+    <t-typography-text code>React</t-typography-text>
+    components for Desktop Application and
+    <t-typography-text code>Vue 3</t-typography-text>,
+    <t-typography-text code>Wechat MiniProgram</t-typography-text>
+    components for Mobile Application.
+  </t-typography-paragraph>
+  <t-typography-paragraph>
+    <view>• Features</view>
+    <view>• Comprehensive</view>
+    <view style="padding-left: 24rpx">• Consistency</view>
+    <view style="padding-left: 24rpx">• Usability</view>
+    <view>• Join TDesign</view>
+  </t-typography-paragraph>
+  <t-typography-paragraph>
+    <view>1. Features</view>
+    <view>2. Comprehensive</view>
+    <view style="padding-left: 24rpx">1. Consistency</view>
+    <view style="padding-left: 24rpx">2. Usability</view>
+    <view>3. Join TDesign</view>
+  </t-typography-paragraph>
+</view>

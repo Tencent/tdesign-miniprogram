@@ -1,0 +1,189 @@
+@import '../common/style/base.less';
+
+// ==================== 变量定义（对应 _var.less） ====================
+@typography-text-primary-color: @text-color-primary;
+@typography-text-secondary-color: @text-color-secondary;
+@typography-text-disabled-color: @text-color-disabled;
+@typography-text-success-color: @success-color;
+@typography-text-error-color: @error-color;
+@typography-text-warning-color: @warning-color;
+@typography-text-mark-color: #fcdf47;
+@typography-icon-color: @brand-color;
+
+@typography-text-strong: 600;
+
+@typography-text-font: @font-body-medium;
+@typography-code-font: @font-body-small;
+@typography-h1-font: @font-headline-large;
+@typography-h2-font: @font-headline-medium;
+@typography-h3-font: @font-headline-small;
+@typography-h4-font: @font-title-large;
+@typography-h5-font: @font-title-medium;
+@typography-h6-font: @font-title-small;
+
+@typography-code-family:
+  Source Code Pro,
+  -apple-system,
+  BlinkMacSystemFont,
+  Segoe UI,
+  Roboto,
+  Hiragino Sans GB,
+  Microsoft YaHei UI,
+  Microsoft YaHei;
+
+// ==================== 主样式（对应 _index.less） ====================
+.@{prefix}-typography {
+  color: @typography-text-primary-color;
+  font: @font-body-medium;
+  margin: @spacer-2 0;
+
+  // 标题级别（小程序用 modifier 类名模拟 h1-h6 标签选择器）
+  &--h1 {
+    font: @typography-h1-font;
+    margin-top: @spacer-4;
+    margin-bottom: @spacer-3;
+  }
+
+  &--h2 {
+    font: @typography-h2-font;
+    margin-top: @spacer-4;
+    margin-bottom: @spacer-3;
+  }
+
+  &--h3 {
+    font: @typography-h3-font;
+    margin-top: @spacer-4;
+    margin-bottom: @spacer-2;
+  }
+
+  &--h4 {
+    font: @typography-h4-font;
+    margin-top: @spacer-3;
+    margin-bottom: @spacer-2;
+  }
+
+  &--h5 {
+    font: @typography-h5-font;
+    margin-top: @spacer-3;
+    margin-bottom: @spacer-2;
+  }
+
+  &--h6 {
+    font: @typography-h6-font;
+  }
+
+  strong,
+  &--strong {
+    font-weight: @typography-text-strong;
+  }
+
+  mark,
+  &--mark {
+    background-color: @typography-text-mark-color;
+  }
+
+  code,
+  &--code {
+    border-radius: @radius-default;
+    border: 1px solid @component-border;
+    margin: 0 @spacer;
+    background-color: @bg-color-secondarycontainer;
+    padding: 0 @spacer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+    font: @typography-code-font;
+    font-family: @typography-code-family;
+    display: inline-block;
+  }
+
+  kbd,
+  &--keyboard {
+    border-radius: @radius-default;
+    border: 1px solid @component-border;
+    margin: 0 calc(@spacer / 2);
+    background-color: @bg-color-secondarycontainer;
+    padding: 0 @spacer;
+    box-shadow: 0 1px 0 0 @component-border;
+    font: @typography-code-font;
+    font-family: @typography-code-family;
+    display: inline-block;
+  }
+
+  // 不可选样式
+  &--disabled {
+    color: @typography-text-disabled-color;
+    cursor: not-allowed;
+  }
+
+  // 主题样式
+  &--success {
+    color: @typography-text-success-color;
+  }
+
+  &--warning {
+    color: @typography-text-warning-color;
+  }
+
+  &--error {
+    color: @typography-text-error-color;
+  }
+
+  &--secondary {
+    color: @typography-text-secondary-color;
+  }
+
+  &-ellipsis-symbol,
+  .t-icon-copy {
+    color: @typography-icon-color;
+    cursor: pointer;
+  }
+
+  .t-icon-checked {
+    color: @success-color;
+  }
+
+  // ==================== 小程序适配补充 ====================
+
+  i,
+  &--italic {
+    font-style: italic;
+  }
+
+  u,
+  &--underline {
+    text-decoration: underline;
+  }
+
+  del,
+  &--delete {
+    text-decoration: line-through;
+  }
+
+  // 省略相关
+  &__ellipsis-wrapper {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__ellipsis-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+  }
+
+  &-ellipsis-symbol {
+    text-decoration: none;
+    white-space: nowrap;
+    flex: 1;
+  }
+
+  // 复制按钮
+  &__copy {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 16rpx;
+    flex-shrink: 0;
+  }
+}

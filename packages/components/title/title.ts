@@ -6,7 +6,7 @@ const { prefix } = config;
 const name = `${prefix}-typography`;
 
 @wxComponent()
-export default class Paragraph extends SuperComponent {
+export default class Title extends SuperComponent {
   externalClasses = [`${prefix}-class`];
 
   options = {
