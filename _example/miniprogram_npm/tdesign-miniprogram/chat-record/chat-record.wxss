@@ -1,0 +1,67 @@
+@import '../common/style/index.wxss';@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}}
+@keyframes wave{
+0%,100%{transform:scaleY(1);}
+50%{transform:scaleY(1.857);}}
+.t-chat-record-hook{width:100%;padding:24rpx 0;color:rgba(0,0,0,.9);text-align:center;font-size:34rpx;font-weight:500;line-height:42rpx;letter-spacing:1.02rpx;border-radius:16px;background:#f5f5f5;}
+.t-chat-record-audio-input.show .t-chat-record-audio-input__main,.t-chat-record-audio-input.show .t-chat-record-audio-input__mask{opacity:1;pointer-events:auto;}
+.t-chat-record-audio-input__mask{position:fixed;left:0;right:0;bottom:0;min-height:420rpx;z-index:5100;background:#fff;opacity:0;pointer-events:none;transition:opacity .25s linear;}
+.t-chat-record-audio-input__main{position:fixed;left:0;right:0;bottom:140rpx;z-index:5101;display:flex;flex-direction:column;justify-content:flex-end;opacity:0;pointer-events:none;transition:opacity .25s linear;}
+.t-chat-record-audio-input .audio-wave{display:flex;align-items:center;height:28rpx;gap:2rpx;}
+.t-chat-record-audio-input .audio-wave .wave-item{width:8rpx;height:14rpx;background:#fff;border-radius:90rpx;transform-origin:center;will-change:transform;animation:wave 1.5s infinite ease-in-out;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(1){animation-delay:-1.5s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(2){animation-delay:-1.45s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(3){animation-delay:-1.4s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(4){animation-delay:-1.35s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(5){animation-delay:-1.3s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(6){animation-delay:-1.25s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(7){animation-delay:-1.2s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(8){animation-delay:-1.15s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(9){animation-delay:-1.1s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(10){animation-delay:-1.05s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(11){animation-delay:-1s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(12){animation-delay:-.95s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(13){animation-delay:-.9s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(14){animation-delay:-.85s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(15){animation-delay:-.8s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(16){animation-delay:-.75s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(17){animation-delay:-.7s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(18){animation-delay:-.65s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(19){animation-delay:-.6s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(20){animation-delay:-.55s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(21){animation-delay:-.5s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(22){animation-delay:-.45s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(23){animation-delay:-.4s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(24){animation-delay:-.35s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(25){animation-delay:-.3s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(26){animation-delay:-.25s;}
+.t-chat-record-audio-input .audio-wave .wave-item:nth-child(27){animation-delay:-.2s;}
+.t-chat-record-audio-input__ft{position:relative;width:100%;height:260rpx;opacity:1;transition:opacity .3s ease;animation:fadeIn .3s ease;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding-bottom:48rpx;box-sizing:border-box;}
+.t-chat-record-audio-input__ft .audio-wave-outer{justify-content:space-between;width:calc(100% - 158rpx);margin-bottom:12rpx;pointer-events:none;gap:0;}
+.t-chat-record-audio-input__ft .audio-wave-outer.wave-blue .wave-item{background:#2979ff;}
+.t-chat-record-audio-input__ft .audio-wave-outer.wave-red .wave-item{background:#ff5252;}
+.t-chat-record-audio-input__ft .tips-text{position:relative;width:100%;height:44rpx;margin-bottom:24rpx;pointer-events:none;overflow:hidden;}
+.t-chat-record-audio-input__ft .tips-text .tips-item{position:absolute;left:0;right:0;top:0;width:100%;text-align:center;font-size:28rpx;font-weight:500;line-height:44rpx;will-change:transform,opacity;transition:transform .3s cubic-bezier(.25,.46,.45,.94),opacity .25s linear;}
+.t-chat-record-audio-input__ft .tips-text .tips-item.is-in{transform:translate3d(0,0,0);opacity:1;}
+.t-chat-record-audio-input__ft .tips-text .tips-item.is-out-up{transform:translate3d(0,-100%,0);opacity:0;}
+.t-chat-record-audio-input__ft .tips-text .tips-item.is-out-down{transform:translate3d(0,100%,0);opacity:0;}
+.t-chat-record-audio-input__ft .tips-text .tips-send{color:rgba(0,0,0,.6);}
+.t-chat-record-audio-input__ft .tips-text .tips-cancel{color:#ff5252;}
+.t-chat-record-audio-input__ft.release_cancel .tips-text{color:inherit;}
+.t-chat-record-audio-input__ft .record-main-btn{width:calc(100% - 64rpx);height:100rpx;border-radius:16px;display:flex;align-items:center;justify-content:center;transition:background-color .3s cubic-bezier(.25,.46,.45,.94);}
+.t-chat-record-audio-input__ft .record-main-btn.is-record{background-color:#2979ff;}
+.t-chat-record-audio-input__ft .record-main-btn.is-cancel{background-color:#ff5252;}
+.t-chat-record-audio-input__ft .confirm-actions{position:absolute;left:0;right:0;bottom:120rpx;height:300rpx;display:flex;justify-content:space-between;align-items:flex-start;padding:20rpx 48rpx 40rpx;z-index:20;}
+.t-chat-record-audio-input__ft .confirm-actions .action-btn{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;transition:all .15s ease;}
+.t-chat-record-audio-input__ft .confirm-actions .action-btn.btn-cancel .icon-wrapper{width:144rpx;height:144rpx;border-radius:50%;background-color:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;margin-bottom:16rpx;transition:background-color .15s ease;}
+.t-chat-record-audio-input__ft .confirm-actions .action-btn.btn-cancel .btn-text{color:#fff;text-align:center;font-family:'PingFang SC';font-size:24rpx;font-weight:600;line-height:40rpx;}
+.t-chat-record-audio-input__ft .confirm-actions .action-btn.btn-cancel.active .icon-wrapper{background-color:rgba(255,255,255,.4);}
+.t-chat-record-audio-input__ft .confirm-actions .action-btn.btn-send{width:224rpx;height:144rpx;background-color:#e0e0e0;border-radius:1998rpx;display:flex;align-items:center;justify-content:center;transition:background-color .15s ease;}
+.t-chat-record-audio-input__ft .confirm-actions .action-btn.btn-send text{color:rgba(0,0,0,.9);font-family:'PingFang SC';font-size:28rpx;font-weight:600;line-height:44rpx;}
+.t-chat-record-audio-input__ft .confirm-actions .action-btn.btn-send.active{background-color:#b0b0b0;}
+.t-chat-record-audio-input__ft .confirm-actions .action-btn.btn-send.disabled{background-color:#999;opacity:.5;pointer-events:none;}
+.t-chat-record-audio-input__ft .confirm-actions .action-btn.btn-send.disabled text{color:rgba(255,255,255,.6);}
+.t-chat-record-audio-input__ft .confirm-actions .action-btn.btn-cancel.disabled{opacity:.5;pointer-events:none;}
+.t-chat-record-audio-input__ft .confirm-actions .action-btn.btn-cancel.disabled .icon-wrapper{background-color:rgba(255,255,255,.1);}
+.t-chat-record-audio-input__ft .confirm-actions .action-btn.btn-cancel.disabled .btn-text{color:rgba(255,255,255,.6);}

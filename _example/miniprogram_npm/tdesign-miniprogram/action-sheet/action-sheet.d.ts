@@ -60,7 +60,6 @@ export default class ActionSheet extends SuperComponent {
         gridThemeItems: any[];
         currentSwiperIndex: number;
         defaultPopUpProps: {};
-        defaultPopUpzIndex: number;
     };
     controlledProps: {
         key: string;

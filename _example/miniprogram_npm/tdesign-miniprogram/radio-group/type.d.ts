@@ -1,4 +1,4 @@
-import { KeysType } from '../common/common';
+import type { KeysType } from '../common/common';
 export interface TdRadioGroupProps<T = RadioValue> {
     allowUncheck?: {
         type: BooleanConstructor;
@@ -7,6 +7,10 @@ export interface TdRadioGroupProps<T = RadioValue> {
     borderless?: {
         type: BooleanConstructor;
         value?: boolean;
+    };
+    direction?: {
+        type: StringConstructor;
+        value?: 'vertical' | 'horizontal';
     };
     disabled?: {
         type: BooleanConstructor;

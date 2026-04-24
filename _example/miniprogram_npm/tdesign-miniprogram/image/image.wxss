@@ -4,6 +4,6 @@
 .t-image--loading-text{width:0;height:0;}
 .t-image__common{width:100%;height:100%;}
 .t-image--lazy{position:absolute;top:0;left:0;z-index:-1;}
-.t-image--shape-circle{border-radius:50%;overflow:hidden;}
+.t-image--shape-circle{border-radius:var(--td-radius-circle,50%);overflow:hidden;}
 .t-image--shape-round{border-radius:var(--td-image-round-radius,var(--td-radius-default,12rpx));overflow:hidden;}
 .t-image--shape-square{border-radius:0;overflow:hidden;}

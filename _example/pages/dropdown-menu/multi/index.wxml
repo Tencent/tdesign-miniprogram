@@ -1,6 +1,7 @@
 <t-dropdown-menu>
   <t-dropdown-item
     label="单列多选"
+    keepLabelActive
     options="{{multipleSelect.options}}"
     value="{{multipleSelect.value}}"
     bindchange="handleMultipleSelect"
@@ -15,9 +16,10 @@
   />
   <t-dropdown-item
     label="三列多选"
+    keepLabelActive
     optionsColumns="3"
     options="{{tripleColumnsOptions}}"
-    defaultValue="{{['option_1', 'option_2', 'option_3']}}"
+    defaultValue="{{[]}}"
     multiple
   />
 </t-dropdown-menu>

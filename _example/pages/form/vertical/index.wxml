@@ -10,7 +10,7 @@
   bind:reset="onReset"
   bind:submit="onSubmit"
 >
-  <t-form-item label="用户名" name="name" help="输入用户名">
+  <t-form-item label="用户名" name="name">
     <t-input
       value="{{formData.name}}"
       disabled="{{disabled}}"

@@ -4,8 +4,6 @@
   usePopup="{{false}}"
   data-key="city"
   title="{{cityTitle}}"
-  cancelBtn="取消"
-  confirmBtn="确认"
   usingCustomNavbar
   bindchange="onPickerChange"
   bindpick="onColumnChange"

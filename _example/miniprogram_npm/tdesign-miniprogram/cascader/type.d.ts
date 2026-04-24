@@ -1,10 +1,22 @@
-import { TreeOptionData, TreeKeysType } from '../common/common';
+import type { TreeOptionData, TreeKeysType } from '../common/common';
 export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOptionData> {
     checkStrictly?: {
         type: BooleanConstructor;
         value?: boolean;
     };
     closeBtn?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
+    filter?: {
+        type: undefined;
+        value?: CascaderFilterFunction;
+    };
+    filterPlaceholder?: {
+        type: StringConstructor;
+        value?: string;
+    };
+    filterable?: {
         type: BooleanConstructor;
         value?: boolean;
     };
@@ -45,4 +57,5 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
         value?: boolean;
     };
 }
+export declare type CascaderFilterFunction<CascaderOption extends TreeOptionData = TreeOptionData> = (keyword: string, option: CascaderOption, path: CascaderOption[]) => boolean;
 export declare type CascaderKeysType = TreeKeysType;

@@ -1,0 +1,3 @@
+<view class="example-segmented">
+  <t-segmented options="{{optionsWithDisabled}}" value="{{valueWithDisabled}}" bind:change="onChangeWithDisabled" />
+</view>

@@ -1,5 +1,5 @@
 @import '../common/style/index.wxss';:host{display:flex;}
-.t-step--vertical{padding-right:32rpx;}
+.t-step--vertical{padding-right:var(--td-spacer-2,32rpx);}
 .t-steps{display:flex;width:100%;}
 .t-steps--vertical{flex-direction:column;}
 .t-steps--reverse{flex-direction:row-reverse;}

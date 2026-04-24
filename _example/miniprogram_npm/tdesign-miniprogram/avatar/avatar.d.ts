@@ -8,12 +8,14 @@ export default class Avatar extends SuperComponent {
         prefix: string;
         classPrefix: string;
         isShow: boolean;
+        isImgExist: boolean;
         zIndex: number;
         windowWidth: number;
     };
     relations: RelationsOptions;
     observers: {
         icon(icon: any): void;
+        image(image: any): void;
     };
     methods: {
         hide(): void;

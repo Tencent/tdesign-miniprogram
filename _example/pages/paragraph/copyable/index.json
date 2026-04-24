@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "styleIsolation": "apply-shared",
+  "usingComponents": {
+    "t-typography-text": "tdesign-miniprogram/text/text",
+    "t-icon": "tdesign-miniprogram/icon/icon"
+  }
+}

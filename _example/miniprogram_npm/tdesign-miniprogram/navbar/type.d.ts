@@ -11,6 +11,10 @@ export interface TdNavbarProps {
         type: BooleanConstructor;
         value?: boolean;
     };
+    isHiddenInSpecialScene?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
     leftArrow?: {
         type: BooleanConstructor;
         value?: boolean;

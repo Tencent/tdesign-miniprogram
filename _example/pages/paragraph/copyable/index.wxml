@@ -1,0 +1,9 @@
+<view class="typography-example typography-example--border">
+  <t-typography-text copyable content="这是一段可复制的文本" />
+</view>
+
+<view class="typography-example">
+  <t-typography-text copyable="{{copyableCustomSuffix}}" content="这是一段带自定义图标的可复制的文本">
+    <t-icon slot="suffix" name="smile" color="#0052D9" />
+  </t-typography-text>
+</view>

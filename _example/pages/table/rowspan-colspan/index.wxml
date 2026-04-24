@@ -1,0 +1,8 @@
+<t-table
+  row-key="id"
+  columns="{{columns}}"
+  data="{{data}}"
+  bordered="{{true}}"
+  rowspan-and-colspan="{{rowspanAndColspan}}"
+  cell-empty-content="-"
+/>

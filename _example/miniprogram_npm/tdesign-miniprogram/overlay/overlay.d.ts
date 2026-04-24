@@ -8,12 +8,6 @@ export default class Overlay extends SuperComponent {
     data: {
         prefix: string;
         classPrefix: string;
-        computedStyle: string;
-        _zIndex: number;
-    };
-    observers: {
-        backgroundColor(v: any): void;
-        zIndex(v: any): void;
     };
     methods: {
         handleClick(): void;
