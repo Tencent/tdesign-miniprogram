@@ -1,0 +1,11 @@
+/* 自定义光标样式：蓝色圆形 */
+.custom-tail {
+  display: inline-block;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  transform: translateY(-25%);
+  background-color: #003CAB;
+  vertical-align: middle;
+  margin-left: 4rpx;
+}

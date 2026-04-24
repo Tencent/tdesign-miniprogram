@@ -1,5 +1,5 @@
 import Toast from 'tdesign-miniprogram/toast';
-import { getNavigationBarHeight } from '../../../utils/utils';
+import getNavigationBarHeight from '../utils';
 
 let uniqueId = 0;
 const getUniqueKey = () => {

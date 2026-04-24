@@ -1,5 +1,5 @@
 import Toast from 'tdesign-miniprogram/toast';
-import { getNavigationBarHeight } from '../../../utils/utils';
+import getNavigationBarHeight from '../utils';
 
 let uniqueId = 0;
 const getUniqueKey = () => {
@@ -189,6 +189,7 @@ Component({
             },
           ],
         },
+        markdownProps: { streaming: { hasNextChunk: true, tail: true } },
         chatId: getUniqueKey(),
       };
 
@@ -208,6 +209,7 @@ Component({
           complete() {
             that.setData({
               'chatList[0].message.status': 'complete',
+              'chatList[0].markdownProps': {},
               loading: false,
             });
           },

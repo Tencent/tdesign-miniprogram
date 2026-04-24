@@ -1,5 +1,5 @@
 import Toast from 'tdesign-miniprogram/toast';
-import { getNavigationBarHeight } from '../../../utils/utils';
+import getNavigationBarHeight from '../utils';
 
 let uniqueId = 0;
 const getUniqueKey = () => {
@@ -238,6 +238,10 @@ Component({
     handlePopoverAction(e) {
       e.detail.chatId = this.data.activePopoverId;
       this.handleAction(e);
+    },
+    onClick(e) {
+      const { node } = e.detail;
+      console.log('点击节点', node);
     },
   },
   lifetimes: {

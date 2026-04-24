@@ -215,7 +215,10 @@ var baseDataObserver = function (newVal, oldVal, ownerInstance, ins) {
 
 var listObserver = function (newVal, oldVal, ownerInstance, ins) {
   var st = ownerInstance.getState();
-  st.itemsInstance = ownerInstance.selectAllComponents('.' + classPrefix + '__drag-item');
+  // 兼容 grid 拖拽（__drag-item）和 list 拖拽（__list-drag-item）
+  var gridItems = ownerInstance.selectAllComponents('.' + classPrefix + '__drag-item');
+  var listItems = ownerInstance.selectAllComponents('.' + classPrefix + '__list-drag-item');
+  st.itemsInstance = gridItems && gridItems.length > 0 ? gridItems : listItems;
   st.list = newVal || [];
   st.list.forEach(function (item, index) {
     var itemIns = st.itemsInstance[index];

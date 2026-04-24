@@ -26,3 +26,4 @@
 .t-chat-markdown .t-chat-markdown-table__container-tr{display:table-row;}
 .t-chat-markdown .t-chat-markdown-table__container-th{display:table-cell;vertical-align:middle;background-color:var(--td-bg-color-component,var(--td-gray-color-3,#e7e7e7));font-weight:700;padding:5rpx 10rpx;border:1rpx solid var(--td-component-border,var(--td-gray-color-4,#dcdcdc));}
 .t-chat-markdown .t-chat-markdown-table__container-td{display:table-cell;vertical-align:middle;padding:5rpx 10rpx;border:1rpx solid var(--td-component-border,var(--td-gray-color-4,#dcdcdc));}
+.t-chat-markdown-tail{display:inline-block;color:#d9d9d9;margin-left:8rpx;transform:scaleX(.25);transform-origin:left center;}
