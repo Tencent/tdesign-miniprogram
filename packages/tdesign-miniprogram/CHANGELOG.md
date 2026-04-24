@@ -5,6 +5,19 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.14.0 `2026-04-24`
+
+### 🚀 Features
+
+- `ChatMessage`: `chatContentProps` 属性新增 `thinking` 配置项，支持透传给 `ChatThinking` 组件 @mimaoxiao ([#4410](https://github.com/Tencent/tdesign-miniprogram/pull/4410))
+- `Segmented`: 新增 `Segmented` 分段控制器组件 @anlyyao ([#4416](https://github.com/Tencent/tdesign-miniprogram/pull/4416))
+- `Table`: 新增 `Table` 表格组件 @novlan1 ([#4397](https://github.com/Tencent/tdesign-miniprogram/pull/4397))
+
+### 🐞 Bug Fixes
+
+- `Form`: 修复 `submit` 的 `firstError` 返回值错误 @liweijie0812 ([#4423](https://github.com/Tencent/tdesign-miniprogram/pull/4423))
+- `TabBar`: 修复 `badgeProps` 属性中的 `color` 和 `shape` 字段无效 @liweijie0812 ([#4427](https://github.com/Tencent/tdesign-miniprogram/pull/4427))
+
 ## 🌈 1.13.2 `2026-04-09`
 
 ### 🚀 Features
