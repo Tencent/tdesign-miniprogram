@@ -1,1 +1,1 @@
-export const trimSingleValue=(r,e,i)=>r<e?e:r>i?i:r;export const trimValue=(r,e)=>{const{min:i,max:t,range:n}=e;return n&&Array.isArray(r)?(r[0]=trimSingleValue(r[0],i,t),r[1]=trimSingleValue(r[1],i,t),r[0]<=r[1]?r:[r[1],r[0]]):n?[i,t]:n?void 0:trimSingleValue(r,i,t)};
+export const trimSingleValue=(r,e,i)=>r<e?e:r>i?i:r;export const trimValue=(r,e)=>{const{min:i,max:a,range:t}=e;return t&&Array.isArray(r)?(r[0]=trimSingleValue(r[0],i,a),r[1]=trimSingleValue(r[1],i,a),r[0]<=r[1]?r:[r[1],r[0]]):t?[i,a]:t?void 0:trimSingleValue(Array.isArray(r)?r[0]:r,i,a)};

@@ -6,6 +6,7 @@
     "base": "./base",
     "attachments": "./attachments",
     "content-citation": "./content-citation",
-    "file-citation": "./file-citation"
+    "file-citation": "./file-citation",
+    "record": "./record"
   }
 }

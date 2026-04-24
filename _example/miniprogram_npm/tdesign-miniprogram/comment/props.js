@@ -1,0 +1,1 @@
+const props={actions:{type:Array},author:{type:String},avatar:{type:null},content:{type:String},datetime:{type:String},folds:{type:Object,value:null},defaultFolds:{type:Object},reply:{type:String}};export default props;

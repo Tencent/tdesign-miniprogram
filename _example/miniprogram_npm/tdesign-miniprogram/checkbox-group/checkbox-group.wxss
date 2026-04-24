@@ -1,1 +1,1 @@
-@import '../common/style/index.wxss';
+@import '../common/style/index.wxss';.t-checkbox-group--horizontal{display:flex;flex-wrap:wrap;}

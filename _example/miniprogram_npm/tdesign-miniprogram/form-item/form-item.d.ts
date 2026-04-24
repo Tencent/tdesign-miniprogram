@@ -16,19 +16,25 @@ export default class FormItem extends SuperComponent {
         needResetField: boolean;
         resetValidating: boolean;
         formRules: any[];
-        form: {};
+        innerLabelAlign: string;
+        innerLabelWidth: string;
         colon: boolean;
         innerShowErrorMessage: boolean;
+        innerContentAlign: string;
+        contentStyle: string;
+        isLastChild: boolean;
+    };
+    observers: {
+        contentAlign(val: string): void;
     };
     relations: RelationsOptions;
     lifetimes: {
         ready(): void;
-        detached(): void;
     };
     methods: {
+        syncFromParent(): void;
         calcErrorClasses(errorList?: any): string;
         scrollIntoView(type: string, distanceTop?: number): void;
-        initFormItem(): void;
         setInitialValue(): void;
         getFormData(): any;
         getValue(): any;

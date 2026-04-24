@@ -1,7 +1,13 @@
 {
   "component": true,
   "styleIsolation": "shared",
+  "componentGenerics": {
+    "tail-component": {
+      "default": "./custom-tail/custom-tail"
+    }
+  },
   "usingComponents": {
+    "custom-tail": "./custom-tail/custom-tail",
     "t-chat-message": "tdesign-miniprogram/chat-message/chat-message",
     "t-chat-content": "tdesign-miniprogram/chat-content/chat-content",
     "t-chat": "tdesign-miniprogram/chat-list/chat-list",

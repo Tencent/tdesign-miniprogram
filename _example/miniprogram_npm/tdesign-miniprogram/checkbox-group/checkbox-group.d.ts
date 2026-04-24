@@ -13,6 +13,7 @@ export default class CheckBoxGroup extends SuperComponent {
         value(): void;
         options(): void;
         disabled(v: any): void;
+        direction(v: any): void;
     };
     lifetimes: {
         ready(): void;

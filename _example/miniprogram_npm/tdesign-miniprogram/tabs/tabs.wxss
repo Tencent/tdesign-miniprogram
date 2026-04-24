@@ -22,7 +22,8 @@
 .t-tabs__item-prefix::after{border-bottom-right-radius:var(--td-radius-large,18rpx);}
 .t-tabs__item-suffix{left:0;}
 .t-tabs__item-suffix::after{border-bottom-left-radius:var(--td-radius-large,18rpx);}
-.t-tabs__badge--active{--td-badge-content-text-color:var(--td-tab-item-active-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)));}
+.t-tabs__badge{--td-badge-content-text-font:var(--td-tab-font, var(--td-font-body-medium, 28rpx / 44rpx var(--td-font-family, PingFang SC, Microsoft YaHei, Arial Regular)));}
+.t-tabs__badge--active{--td-badge-content-text-font:var(--td-font-mark-medium, 600 28rpx / 44rpx var(--td-font-family, PingFang SC, Microsoft YaHei, Arial Regular));--td-badge-content-text-color:var(--td-tab-item-active-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)));}
 .t-tabs__badge--disabled{--td-badge-content-text-color:var(--td-tab-item-disabled-color, var(--td-text-color-disabled, var(--td-font-gray-4, rgba(0, 0, 0, 0.26))));}
 .t-tabs__icon{font-size:var(--td-tab-icon-size,36rpx);margin-right:calc(var(--td-spacer,16rpx)/ 4);}
 .t-tabs__content{overflow:hidden;}
@@ -31,7 +32,7 @@
 .t-tabs__track{position:absolute;font-weight:600;z-index:1;opacity:0;background-color:var(--td-tab-track-color,var(--td-brand-color,var(--td-primary-color-7,#0052d9)));left:0;bottom:1rpx;width:var(--td-tab-track-width,32rpx);height:var(--td-tab-track-thickness,6rpx);border-radius:var(--td-tab-track-radius,8rpx);}
 .t-tabs__scroll{position:relative;height:var(--td-tab-item-height,96rpx);}
 .t-tabs__scroll--split{position:relative;}
-.t-tabs__scroll--split::after{content:'';display:block;position:absolute;top:unset;bottom:0;left:unset;right:unset;background-color:var(--td-tab-border-color,var(--td-component-stroke,var(--td-gray-color-3,#e7e7e7)));}
+.t-tabs__scroll--split::after{content:'';display:block;position:absolute;top:unset;bottom:0;left:unset;right:unset;background-color:var(--td-tab-border-color,var(--td-component-stroke,var(--td-gray-color-3,#e8e8e8)));}
 .t-tabs__scroll--split::after{height:1px;left:0;right:0;transform:scaleY(.5);}
 .t-tabs__scroll::-webkit-scrollbar{display:none;}
 .t-tabs__content{width:100%;}

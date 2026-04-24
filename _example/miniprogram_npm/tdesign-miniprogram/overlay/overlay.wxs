@@ -1,0 +1,14 @@
+function getOverlayStyle(backgroundColor, zIndex) {
+  var style = '';
+  if (zIndex) {
+    style += 'z-index:' + zIndex + ';';
+  }
+  if (backgroundColor) {
+    style += 'background-color:' + backgroundColor + ';';
+  }
+  return style;
+}
+
+module.exports = {
+  getOverlayStyle: getOverlayStyle,
+};

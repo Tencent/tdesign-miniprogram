@@ -1,6 +1,10 @@
-import { KeysType } from '../common/common';
+import type { KeysType } from '../common/common';
 export interface TdDropdownItemProps {
     disabled?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
+    keepLabelActive?: {
         type: BooleanConstructor;
         value?: boolean;
     };
@@ -39,7 +43,7 @@ export interface TdDropdownItemProps {
 }
 export interface DropdownOption {
     label: string;
-    disabled: boolean;
+    disabled?: boolean;
     value: DropdownValue;
 }
 export declare type DropdownValue = string | number | Array<DropdownValue>;

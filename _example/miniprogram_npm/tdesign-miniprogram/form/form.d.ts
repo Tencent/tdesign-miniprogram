@@ -10,17 +10,19 @@ export default class Form extends SuperComponent {
     data: {
         prefix: string;
         classPrefix: string;
-        children: any[];
         initialData: {};
         fields: any[];
+    };
+    observers: {
+        'labelAlign, labelWidth, colon, contentAlign, requiredMark, requiredMarkPosition, showErrorMessage, rules'(): void;
     };
     lifetimes: {
         ready(): void;
     };
     methods: {
         initFormData(): void;
-        registerChild(child: any): void;
-        unregisterChild(childName: any): void;
+        getChildren(): any;
+        syncLastChildFlags(): void;
         validate(): Promise<any>;
         scrollToError(validateResult: any): void;
         validateOnly(params: any): Promise<any>;

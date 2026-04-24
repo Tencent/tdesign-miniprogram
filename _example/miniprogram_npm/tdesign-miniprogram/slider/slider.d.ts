@@ -47,6 +47,9 @@ export default class Slider extends SuperComponent {
         created(): void;
         attached(): void;
     };
+    pageLifetimes: {
+        resize(): void;
+    };
     injectPageScroll(): void;
     observerScrollTop(rest: any): void;
     toggleA11yTips(): void;
@@ -58,6 +61,7 @@ export default class Slider extends SuperComponent {
     handleMark(marks: any): void;
     setSingleBarWidth(value: number): void;
     init(): Promise<void>;
+    handleResize(): void;
     stepValue(value: number): number;
     onSingleLineTap(e: WechatMiniprogram.TouchEvent): void;
     getSingleChangeValue(e: WechatMiniprogram.TouchEvent): number;

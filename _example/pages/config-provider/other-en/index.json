@@ -5,6 +5,7 @@
     "t-config-provider": "tdesign-miniprogram/config-provider/config-provider",
     "t-calendar": "tdesign-miniprogram/calendar/calendar",
     "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-comment": "tdesign-miniprogram/comment/comment",
     "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker",
     "t-rate": "tdesign-miniprogram/rate/rate"
   }

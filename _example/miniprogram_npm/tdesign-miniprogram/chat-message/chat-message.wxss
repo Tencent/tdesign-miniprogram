@@ -33,7 +33,7 @@
 .t-chat-message--base.user .t-chat-content{border-radius:0 var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx);}
 .t-chat-message--base.left .t-chat-content{border-radius:0 var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx);}
 .t-chat-message--base.right .t-chat-content{border-radius:var(--td-radius-extraLarge,24rpx) 0 var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx);}
-.t-chat-message--outline .t-chat-content{padding:24rpx 32rpx;border:1rpx solid var(--td-component-border,var(--td-gray-color-4,#dcdcdc));border-radius:0 var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx);}
+.t-chat-message--outline .t-chat-content{padding:24rpx 32rpx;border:1rpx solid var(--td-component-border,var(--td-gray-color-4,#ddd));border-radius:0 var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx);}
 .t-chat-message--outline.assistant .t-chat-content{border-radius:0 var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx);}
 .t-chat-message--outline.user .t-chat-content{border-radius:0 var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx);}
 .t-chat-message--outline.left .t-chat-content{border-radius:0 var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx) var(--td-radius-extraLarge,24rpx);}

@@ -44,4 +44,27 @@
     bindcancel="hidePicker"
     bindclose="handleClose"
   />
+
+  <!-- comment -->
+  <view class="comment-demo">
+    <t-comment
+      avatar="{{commentAvatar}}"
+      author="Name1"
+      content="This is a comment content."
+      datetime="Today 16:38"
+      folds="{{commentFold}}"
+      bind:folds="handleUpdateFold"
+    >
+      <view slot="reply">
+        <view wx:for="{{visibleReplies}}" wx:key="author">
+          <t-comment
+            avatar="{{item.avatar}}"
+            author="{{item.author}}"
+            content="{{item.content}}"
+            datetime="{{item.datetime}}"
+          />
+        </view>
+      </view>
+    </t-comment>
+  </view>
 </t-config-provider>

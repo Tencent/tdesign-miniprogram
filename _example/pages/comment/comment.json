@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "Comment",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "base": "./base",
+    "image-demo": "./image",
+    "mixed": "./mixed",
+    "collapse": "./collapse"
+  }
+}

@@ -156,7 +156,6 @@ Page({
     this.setData({ fileList: files });
   },
 
-
   // 选择文件
   onFileSelect(e) {
     const { name, files } = e.detail;

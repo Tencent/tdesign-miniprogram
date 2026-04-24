@@ -49,9 +49,7 @@ Page({
         }
         if (!path) {
             name = name.replace(/^[A-Z]/, (match) => `${match}`.toLocaleLowerCase());
-            name = name.replace(/[A-Z]/g, (match) => {
-                return `-${match.toLowerCase()}`;
-            });
+            name = name.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
             path = `/pages/${name}/${this.skyline ? 'skyline/' : ''}${name}`;
         }
         wx.navigateTo({

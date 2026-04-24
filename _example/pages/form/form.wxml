@@ -1,7 +1,7 @@
-<t-navbar class="demo-navbar" title="Fab" leftArrow placeholder zIndex="{{99}}" />
+<t-navbar class="demo-navbar" title="Form" leftArrow placeholder zIndex="{{99}}" />
 <t-demo-header
   title="Form 表单"
-  desc="用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。"
+  desc="用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。"
   notice="渲染框架支持情况：WebView"
 />
 

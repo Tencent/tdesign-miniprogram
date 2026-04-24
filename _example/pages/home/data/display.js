@@ -19,6 +19,10 @@ const display = {
             label: '折叠面板',
         },
         {
+            name: 'Comment',
+            label: '评论',
+        },
+        {
             name: 'CountDown',
             label: '倒计时',
         },
@@ -56,6 +60,10 @@ const display = {
             label: '结果',
         },
         {
+            name: 'Segmented',
+            label: '分段控制器',
+        },
+        {
             name: 'Skeleton',
             label: '骨架屏',
         },
@@ -66,6 +74,10 @@ const display = {
         {
             name: 'Swiper',
             label: '轮播图',
+        },
+        {
+            name: 'Table',
+            label: '表格',
         },
         {
             name: 'Tag',
@@ -94,6 +106,10 @@ const skylineDisplay = {
             label: '单元格',
         },
         {
+            name: 'Comment',
+            label: '评论',
+        },
+        {
             name: 'CountDown',
             label: '倒计时',
         },
@@ -120,6 +136,10 @@ const skylineDisplay = {
         {
             name: 'Result',
             label: '结果',
+        },
+        {
+            name: 'Segmented',
+            label: '分段控制器',
         },
         {
             name: 'Skeleton',

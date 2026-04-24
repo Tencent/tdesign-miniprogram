@@ -28,6 +28,10 @@ export interface TdImageViewerProps {
         type: BooleanConstructor;
         value?: boolean;
     };
+    loop?: {
+        type: BooleanConstructor;
+        value?: boolean;
+    };
     showIndex?: {
         type: BooleanConstructor;
         value?: boolean;

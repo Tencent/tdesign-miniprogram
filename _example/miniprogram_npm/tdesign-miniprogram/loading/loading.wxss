@@ -1,5 +1,5 @@
 @import '../common/style/index.wxss';.t-loading{display:inline-flex;align-items:center;justify-content:center;}
-.t-loading--fullscreen{position:fixed;display:flex;align-items:center;vertical-align:middle;justify-content:center;top:0;left:0;width:100%;height:100%;z-index:var(--td-loading-z-index,3500);background-color:var(--td-loading-full-bg-color,rgba(255,255,255,.6));}
+.t-loading--fullscreen{position:fixed;display:flex;align-items:center;vertical-align:middle;justify-content:center;top:0;left:0;width:100%;height:100%;z-index:var(--td-loading-z-index,var(--td-z-index-loading,13500));background-color:var(--td-loading-full-bg-color,rgba(255,255,255,.6));}
 .t-loading__spinner{position:relative;box-sizing:border-box;width:100%;height:100%;max-width:100%;max-height:100%;animation:rotate .8s linear infinite;color:var(--td-loading-color,var(--td-brand-color,var(--td-primary-color-7,#0052d9)));}
 .t-loading__spinner.reverse{animation-name:rotateReverse;}
 .t-loading__spinner--spinner{animation-timing-function:steps(12);color:var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9)));}
@@ -7,10 +7,10 @@
 .t-loading__spinner--spinner .t-loading__dot::before{display:block;width:5rpx;height:25%;margin:0 auto;background-color:var(--td-loading-color,var(--td-brand-color,var(--td-primary-color-7,#0052d9)));border-radius:40%;content:' ';}
 .t-loading__spinner--circular .t-loading__circular{border-radius:100%;width:100%;height:100%;background:conic-gradient(from 180deg at 50% 50%,rgba(255,255,255,0) 0deg,rgba(255,255,255,0) 60deg,currentColor 330deg,rgba(255,255,255,0) 360deg);mask:radial-gradient(transparent calc(50% - 1rpx),#fff 50%);-webkit-mask:radial-gradient(transparent calc(50% - 1rpx),#fff 50%);}
 .t-loading__spinner--dots{display:flex;justify-content:space-between;align-items:center;animation:none;}
-.t-loading__spinner--dots .t-loading__dot{width:20%;height:20%;border-radius:50%;background-color:var(--td-loading-color,var(--td-brand-color,var(--td-primary-color-7,#0052d9)));animation-duration:1.8s;animation-name:dotting;animation-timing-function:linear;animation-iteration-count:infinite;animation-fill-mode:both;}
+.t-loading__spinner--dots .t-loading__dot{width:20%;height:20%;border-radius:var(--td-radius-circle,50%);background-color:var(--td-loading-color,var(--td-brand-color,var(--td-primary-color-7,#0052d9)));animation-duration:1.8s;animation-name:dotting;animation-timing-function:linear;animation-iteration-count:infinite;animation-fill-mode:both;}
 .t-loading__text{color:var(--td-loading-text-color,var(--td-text-color-primary,var(--td-font-gray-1,rgba(0,0,0,.9))));font:var(--td-loading-text-font,var(--td-font-body-small,24rpx / 40rpx var(--td-font-family,PingFang SC,Microsoft YaHei,Arial Regular)));}
 .t-loading__text--vertical:not(:first-child):not(:empty){margin-top:12rpx;}
-.t-loading__text--horizontal:not(:first-child):not(:empty){margin-left:16rpx;}
+.t-loading__text--horizontal:not(:first-child):not(:empty){margin-left:var(--td-spacer,16rpx);}
 .t-loading--vertical{flex-direction:column;}
 .t-loading--horizontal{flex-direction:row;vertical-align:top;}
 @keyframes t-bar{

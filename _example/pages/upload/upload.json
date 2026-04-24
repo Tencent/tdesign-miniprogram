@@ -5,6 +5,7 @@
     "multiple": "./multiple",
     "status": "./status",
     "messageFile": "./messageFile",
-    "drag": "./drag"
+    "drag": "./drag",
+    "theme": "./theme"
   }
 }

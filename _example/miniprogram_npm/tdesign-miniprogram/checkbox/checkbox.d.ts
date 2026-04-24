@@ -86,6 +86,7 @@ export default class CheckBox extends SuperComponent {
     data: {
         prefix: string;
         classPrefix: string;
+        direction: string;
         _disabled: boolean;
     };
     observers: {

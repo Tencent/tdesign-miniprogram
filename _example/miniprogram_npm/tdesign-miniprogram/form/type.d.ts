@@ -5,6 +5,10 @@ export interface TdFormProps<FormData extends Data = Data> {
         type: BooleanConstructor;
         value?: boolean;
     };
+    contentAlign?: {
+        type: StringConstructor;
+        value?: 'left' | 'right';
+    };
     data?: {
         type: ObjectConstructor;
         value?: FormData;

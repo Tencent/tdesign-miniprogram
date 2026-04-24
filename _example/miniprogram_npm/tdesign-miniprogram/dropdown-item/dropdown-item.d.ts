@@ -24,6 +24,7 @@ export default class DropdownMenuItem extends SuperComponent {
         valueAlias: string;
         computedLabel: string;
         firstCheckedValue: string;
+        keepActive: boolean;
     };
     relations: RelationsOptions;
     controlledProps: {
@@ -34,6 +35,7 @@ export default class DropdownMenuItem extends SuperComponent {
         keys(obj: any): void;
         value(v: any): void;
         'label, computedLabel, disabled'(): void;
+        'keepLabelActive, multiple, value'(): void;
         show(visible: any): void;
     };
     methods: {

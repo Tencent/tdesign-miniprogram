@@ -33,6 +33,7 @@
   left: 1.5px;
   top: 1.5px;
   z-index: 1;
+  font-size: 28rpx;
 }
 
 /* 横向布局 */

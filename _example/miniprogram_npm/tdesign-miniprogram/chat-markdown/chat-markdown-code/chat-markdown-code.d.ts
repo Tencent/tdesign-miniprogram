@@ -10,4 +10,8 @@ export default class ChatMarkdownCode extends SuperComponent {
     data: {
         classPrefix: string;
     };
+    methods: {
+        nodeClick(e: any): void;
+        getCareMarkdown(): any;
+    };
 }

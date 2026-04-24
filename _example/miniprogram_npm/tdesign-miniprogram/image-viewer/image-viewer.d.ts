@@ -30,6 +30,10 @@ export default class ImageViewer extends SuperComponent {
             type: BooleanConstructor;
             value?: boolean;
         };
+        loop?: {
+            type: BooleanConstructor;
+            value?: boolean;
+        };
         showIndex?: {
             type: BooleanConstructor;
             value?: boolean;
@@ -93,5 +97,6 @@ export default class ImageViewer extends SuperComponent {
         onSwiperChange(e: WechatMiniprogram.TouchEvent): void;
         onClose(e: any): void;
         onDelete(): void;
+        noop(): void;
     };
 }

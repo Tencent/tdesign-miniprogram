@@ -1,4 +1,5 @@
 import { ChatContentProps } from '../chat-content/index';
+import { ChatThinkingProps } from '../chat-thinking/index';
 import { FileItem } from '../attachments/index';
 export interface TdChatMessageProps {
     animation?: {
@@ -11,7 +12,7 @@ export interface TdChatMessageProps {
     };
     chatContentProps?: {
         type: ObjectConstructor;
-        value?: ChatContentProps;
+        value?: ChatMessageContentProps;
     };
     chatId?: {
         type: StringConstructor;
@@ -46,6 +47,10 @@ export interface TdChatMessageProps {
         value?: 'base' | 'outline' | 'text';
     };
 }
+export interface ChatMessageContentProps extends ChatContentProps {
+    thinking?: ChatMessageThinking;
+}
+export declare type ChatMessageThinking = Pick<ChatThinkingProps, 'animation' | 'collapsed' | 'layout' | 'maxHeight'>;
 export declare type ChatMessageContent = TextContent | MarkdownContent | ThinkingContent | AttachmentContent;
 export declare type AttachmentContent = ChatBaseContent<'attachment', FileItem[]>;
 export declare type ThinkingContent = ChatBaseContent<'thinking', ThinkingContentData>;
