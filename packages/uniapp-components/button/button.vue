@@ -20,6 +20,7 @@
     :send-message-img="sendMessageImg"
     :app-parameter="appParameter"
     :show-message-card="showMessageCard"
+    :phone-number-no-quota-toast="phoneNumberNoQuotaToast"
     :aria-label="ariaLabel"
     @click.stop.prevent="handleTap"
     @getuserinfo="getuserinfo"
@@ -30,6 +31,7 @@
     @launchapp="launchapp"
     @chooseavatar="chooseavatar"
     @agreeprivacyauthorization="agreeprivacyauthorization"
+    @phoneoneclicklogin="phoneoneclicklogin"
   >
     <block
       v-if="innerIcon"
@@ -212,6 +214,9 @@ export default {
       },
       agreeprivacyauthorization(t) {
         this.$emit('agreeprivacyauthorization', t);
+      },
+      phoneoneclicklogin(t) {
+        this.$emit('phoneoneclicklogin', t);
       },
       handleTap(t) {
         if (this.disabled || this.loading) return;

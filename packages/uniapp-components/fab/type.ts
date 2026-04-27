@@ -20,7 +20,7 @@ export interface TdFabProps {
    * 图标
    * @default ''
    */
-  icon?: string;
+  icon?: string | Record<string, any>;
   /**
    * 悬浮按钮的样式，常用于调整位置（即将废弃，建议使用 `style`）
    * @default right: 16px; bottom: 32px;

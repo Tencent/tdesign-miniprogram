@@ -120,7 +120,7 @@ import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
 import props from './props';
 import useCustomNavbar from '../mixins/using-custom-navbar';
-import { unitConvert, getWindowInfo } from '../common/utils';
+import { unitConvert, getWindowInfo, calcIcon } from '../common/utils';
 import tools from '../common/utils.wxs';
 
 const name = `${prefix}-fab`;
@@ -167,7 +167,7 @@ export default {
           ...baseButtonProps,
           shape: this.text ? 'round' : 'circle',
           ...this.buttonProps,
-          icon: this.icon,
+          icon: calcIcon(this.icon),
           content: this.text,
           ariaLabel: this.ariaLabel,
         };
