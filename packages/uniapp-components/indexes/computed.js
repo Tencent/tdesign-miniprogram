@@ -1,4 +1,8 @@
-export function getFirstCharacter(str) {
-  return str.toString().substring(0, 1);
+export function getFirstCharacter(str, showFullIndex) {
+  const res = str.toString();
+  if (showFullIndex) {
+    return res;
+  }
+  return res.substring(0, 1);
 }
 

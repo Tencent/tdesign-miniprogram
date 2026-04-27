@@ -524,6 +524,15 @@ export const docs = [
         componentEn: () => import('@/result/README.en-US.md'),
       },
       {
+        title: 'Segmented 分段控制器',
+        titleEn: 'Segmented',
+        name: 'segmented',
+        meta: { docType: 'data' },
+        path: '/uniapp/components/segmented',
+        component: () => import('@/segmented/README.md'),
+        componentEn: () => import('@/segmented/README.en-US.md'),
+      },
+      {
         title: 'Skeleton 骨架屏',
         titleEn: 'Skeleton',
         name: 'skeleton',

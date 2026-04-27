@@ -67,6 +67,7 @@
   },
   "files": [
     "dist",
+    "script",
     "global.d.ts",
     "LICENSE",
     "README.md",
@@ -89,7 +90,7 @@
     "site:dev": "pnpm --filter=\"./site\" run dev",
     "site:preview": "pnpm --filter=\"./site\" run site:preview",
     "type-check": "vue-tsc --noEmit",
-    "postinstall": "node dist/script/postinstall.js || true"
+    "postinstall": "node script/postinstall.js || true"
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:",

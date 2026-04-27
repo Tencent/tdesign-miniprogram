@@ -1,6 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 
+/**
+ * 判断当前脚本是否以"用户侧安装"的形式被执行。
+ *
+ * 场景：
+ * - 用户安装：脚本物理位置在 node_modules/@tdesign/uniapp-chat/script/postinstall.js，
+ *   __dirname 必然包含 /node_modules/
+ * - 本仓库本地开发 monorepo install：脚本物理位置在 packages/tdesign-uniapp-chat/script/postinstall.js，
+ *   __dirname 不包含 /node_modules/，应直接跳过，避免误导性日志
+ */
+function isUserInstall() {
+  const { sep } = path;
+  return __dirname.split(sep).includes('node_modules');
+}
 
 function printVue2PostCSSWarning() {
   console.warn('\n');
@@ -11,7 +24,6 @@ function printVue2PostCSSWarning() {
   console.warn('   📦 Vue2 CLI 参考项目: https://github.com/TDesignOteam/tdesign-uniapp-starter-vue2-cli');
   console.warn('\n');
 }
-
 
 /**
  * 多重检测 Vue 版本，提升准确性
@@ -53,6 +65,11 @@ function isVue3(version) {
 }
 
 function main() {
+  // 仅当作为依赖被用户安装时才执行检测，避免本地 monorepo install 时产生噪音
+  if (!isUserInstall()) {
+    return;
+  }
+
   const version = detectVueVersion();
 
   if (!version) {
@@ -68,4 +85,3 @@ function main() {
 }
 
 main();
-

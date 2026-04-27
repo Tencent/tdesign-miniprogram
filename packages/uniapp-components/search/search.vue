@@ -77,7 +77,7 @@
       />
     </view>
     <view
-      v-if="isShowResultList && !isSelected"
+      v-if="isSearching && resultList.length > 0 && !isSelected"
       :class="classPrefix + '__result-list'"
       aria-role="listbox"
     >
@@ -142,8 +142,8 @@ export default {
       return {
         classPrefix: name,
         prefix,
-        isShowResultList: false,
         isSelected: false,
+        isSearching: false,
         showClearIcon: false,
         tools,
 
@@ -156,16 +156,8 @@ export default {
       resultList: {
         handler(val) {
           const { isSelected } = this;
-          if (val.length) {
-            if (isSelected) {
-              // 已选择
-              this.isShowResultList = false;
-              this.isSelected = false;
-            } else {
-              this.isShowResultList = true;
-            }
-          } else {
-            this.isShowResultList = false;
+          if (val.length && isSelected) {
+            this.isSelected = false;
           }
         },
         immediate: true,
@@ -231,6 +223,7 @@ export default {
 
       onFocus(e) {
         const { value } = e.detail;
+        this.isSearching = true;
         this.updateClearIconVisible(true);
         this.$emit('focus', { value });
       },
@@ -243,6 +236,7 @@ export default {
 
       handleClear() {
         this.dataValue = '';
+        this.isSearching = false;
         this.$emit('clear', { value: '' });
         this.$emit('change', {
           value: '',
@@ -256,6 +250,7 @@ export default {
       },
 
       onActionClick() {
+        this.isSearching = false;
         this.$emit('action-click');
       },
 

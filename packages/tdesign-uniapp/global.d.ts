@@ -58,6 +58,7 @@ declare module 'vue' {
     TResult: typeof import('@tdesign/uniapp/result/result.vue').default;
     TRow: typeof import('@tdesign/uniapp/row/row.vue').default;
     TSearch: typeof import('@tdesign/uniapp/search/search.vue').default;
+    TSegmented: typeof import('@tdesign/uniapp/segmented/segmented.vue').default;
     TSideBar: typeof import('@tdesign/uniapp/side-bar/side-bar.vue').default;
     TSideBarItem: typeof import('@tdesign/uniapp/side-bar-item/side-bar-item.vue').default;
     TSkeleton: typeof import('@tdesign/uniapp/skeleton/skeleton.vue').default;
@@ -73,6 +74,7 @@ declare module 'vue' {
     TTabBar: typeof import('@tdesign/uniapp/tab-bar/tab-bar.vue').default;
     TTabBarItem: typeof import('@tdesign/uniapp/tab-bar-item/tab-bar-item.vue').default;
     TTabPanel: typeof import('@tdesign/uniapp/tab-panel/tab-panel.vue').default;
+    TTable: typeof import('@tdesign/uniapp/table/table.vue').default;
     TTabs: typeof import('@tdesign/uniapp/tabs/tabs.vue').default;
     TTag: typeof import('@tdesign/uniapp/tag/tag.vue').default;
     TTextarea: typeof import('@tdesign/uniapp/textarea/textarea.vue').default;

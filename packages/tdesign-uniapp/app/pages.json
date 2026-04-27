@@ -103,6 +103,9 @@
 			"path": "pages-more/search/search"
 		},
 		{
+			"path": "pages-more/segmented/segmented"
+		},
+		{
 			"path": "pages-more/slider/slider"
 		},
 		{
@@ -326,6 +329,10 @@
 			{
 				"name": "search",
 				"pathName": "pages-more/search/search"
+			},
+			{
+				"name": "segmented",
+				"pathName": "pages-more/segmented/segmented"
 			},
 			{
 				"name": "slider",

@@ -17,7 +17,7 @@ export default {
   },
   /** 图标 */
   icon: {
-    type: String,
+    type: [String, Object],
     default: '',
   },
   /** 悬浮按钮的样式，常用于调整位置（即将废弃，建议使用 `style`） */

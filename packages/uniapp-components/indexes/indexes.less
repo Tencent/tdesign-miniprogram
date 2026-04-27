@@ -20,17 +20,22 @@
   &__sidebar {
     position: fixed;
     right: @indexes-sidebar-right;
-    width: @indexes-sidebar-item-size;
     color: @indexes-sidebar-color;
     font: @indexes-sidebar-font;
     display: flex;
+    align-items: center;
+    justify-content: center;
     flex-flow: column nowrap;
     top: 50%;
     transform: translateY(-50%);
     z-index: 1;
 
     &-item {
-      border-radius: 50%;
+      min-width: @indexes-sidebar-item-size;
+      height: @indexes-sidebar-item-size;
+      padding: 0 calc(@spacer / 2);
+      box-sizing: border-box;
+      border-radius: @indexes-sidebar-item-size;
       position: relative;
       text-align: center;
 

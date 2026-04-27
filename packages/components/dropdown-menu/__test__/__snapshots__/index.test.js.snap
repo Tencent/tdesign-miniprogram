@@ -23,7 +23,7 @@ exports[`dropdown-menu :base 1`] = `
         <wx-view
           class="t-dropdown-menu__title t-class-label"
         >
-          菜单
+          选项三
         </wx-view>
         <t-icon
           tClass="t-dropdown-menu__icon t-dropdown-menu__icon--active t-class-icon"

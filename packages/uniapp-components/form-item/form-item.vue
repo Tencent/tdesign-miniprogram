@@ -13,7 +13,10 @@
           + ' ' + tClassLabel"
         :style="'width: ' + dataLabelWidth"
       >
-        <label :for="forId">{{ label }}</label>
+        <label
+          :class="labelClass + '-text'"
+          :for="forId"
+        >{{ label }}</label>
         <template v-if="colon">
           {{ globalConfig.colonText }}
         </template>
@@ -162,14 +165,14 @@ export default {
         const formRules = target.rules?.[this.name];
         const isRequired = formRules?.some(rule => rule.required);
 
-        this.dataRules = formRules;
+        this.dataRules = formRules || [];
         this.colon = target.colon;
         this.dataLabelAlign = labelAlign || target.labelAlign;
         this.dataLabelWidth = normalizeLabelWidth(labelWidth || target.labelWidth);
         this.dataContentAlign = contentAlign || target.contentAlign;
         this.dataRequiredMark = requiredMark || target.requiredMark || globalConfig.requiredMark || isRequired;
         this.dataShowErrorMessage = typeof showErrorMessage === 'boolean' ? showErrorMessage : target.showErrorMessage;
-        this.requiredMarkPosition = target.requiredMarkPosition || globalConfig.requiredMarkPosition;
+        this.requiredMarkPosition = target.requiredMarkPosition || globalConfig.requiredMarkPosition || 'left';
       },
       innerAfterUnlinked() {
         if (this.form) {

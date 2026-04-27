@@ -14,6 +14,7 @@
   ],
   "files": [
     "dist",
+    "script",
     "global.d.ts",
     "LICENSE",
     "README.md",
@@ -71,6 +72,14 @@
     "./theme.less": {
       "types": "./dist/theme.less.d.ts",
       "default": "./dist/theme.less"
+    },
+    "./theme-light.css": {
+      "types": "./dist/theme-light.css.d.ts",
+      "default": "./dist/theme-light.css"
+    },
+    "./theme-light.less": {
+      "types": "./dist/theme-light.less.d.ts",
+      "default": "./dist/theme-light.less"
     },
     "./global": {
       "types": "./global.d.ts"
@@ -507,7 +516,7 @@
     "release:prepare": "node ./example/script/release/prepare.js",
     "gen:types": "node ./example/script/types/index.js",
     "commit": "git-cz",
-    "postinstall": "node dist/script/postinstall.js || true"
+    "postinstall": "node script/postinstall.js || true"
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:",
