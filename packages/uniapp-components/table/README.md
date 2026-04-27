@@ -18,7 +18,7 @@ toc: false
 可在 `main.ts` 或在需要使用的页面或组件中引入。
 
 ```js
-import TSwitch from '@tdesign/uniapp/table/table.vue';
+import TTable from '@tdesign/uniapp/table/table.vue';
 ```
 
 ## 代码演示

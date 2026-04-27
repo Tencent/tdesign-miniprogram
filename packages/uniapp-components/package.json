@@ -343,6 +343,11 @@
       "import": "./search/search.vue",
       "default": "./search/search.vue"
     },
+    "./segmented/segmented.vue": {
+      "types": "./types/segmented.d.ts",
+      "import": "./segmented/segmented.vue",
+      "default": "./segmented/segmented.vue"
+    },
     "./side-bar/side-bar.vue": {
       "types": "./types/side-bar.d.ts",
       "import": "./side-bar/side-bar.vue",
@@ -417,6 +422,11 @@
       "types": "./types/tab-panel.d.ts",
       "import": "./tab-panel/tab-panel.vue",
       "default": "./tab-panel/tab-panel.vue"
+    },
+    "./table/table.vue": {
+      "types": "./types/table.d.ts",
+      "import": "./table/table.vue",
+      "default": "./table/table.vue"
     },
     "./tabs/tabs.vue": {
       "types": "./types/tabs.d.ts",

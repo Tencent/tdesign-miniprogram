@@ -1,5 +1,8 @@
 <template>
-  <view :class="classPrefix">
+  <view
+    :class="classPrefix"
+    @click="nodeClick"
+  >
     <view :class="classPrefix + '__container'">
       <view :class="classPrefix + '__thead'">
         <view :class="classPrefix + '__tr'">
@@ -72,6 +75,27 @@ export default {
       return {
         classPrefix: name,
       };
+    },
+
+    methods: {
+      nodeClick(e) {
+        const target = this.getCareMarkdown();
+        if (!target) return;
+        target.$emit('click', {
+          event: e,
+          node: this.node,
+        });
+      },
+
+      getCareMarkdown() {
+        if (this.careMarkdown) return this.careMarkdown;
+        const markdownName = `${prefix}-chat-markdown`;
+        this.careMarkdown = this.$parent;
+        while (this.careMarkdown && this.careMarkdown.name !== markdownName) {
+          this.careMarkdown = this.careMarkdown.$parent;
+        }
+        return this.careMarkdown;
+      },
     },
   }),
 };
