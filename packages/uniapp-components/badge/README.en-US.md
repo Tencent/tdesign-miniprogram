@@ -44,6 +44,7 @@ Name | Default Value | Description
 --td-badge-border-radius | 4rpx | -
 --td-badge-bubble-border-radius | 20rpx 20rpx 20rpx 1px | -
 --td-badge-content-text-color | @text-color-primary | -
+--td-badge-content-text-font | @font-body-large | -
 --td-badge-dot-size | 16rpx | -
 --td-badge-font | @font-mark-extraSmall | -
 --td-badge-large-font | @font-mark-small | -

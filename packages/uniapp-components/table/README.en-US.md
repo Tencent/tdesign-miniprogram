@@ -53,3 +53,20 @@ col-key | String | - | unique key for column | N
 fixed | String | left | fixed current column to left or right。options: left/right | N
 min-width | String / Number | - | add CSS property `min-width` to HTML Element `<col>`，Browsers with [TablesNG](https://docs.google.com/document/d/16PFD1GtMI9Zgwu0jtPaKZJ75Q2wyZ9EZnVbBacOfiNA/preview)  support `minWidth` | N
 width | String / Number | - | column width | N
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles.
+Name | Default Value | Description 
+-- | -- | --
+--td-table-body-text-color | @text-color-primary | -
+--td-table-border-color | @component-border | -
+--td-table-fixed-cell-border-color | @component-border | -
+--td-table-font-size | @font-body-medium | -
+--td-table-header-bg-color | @bg-color-container | -
+--td-table-header-text-color | @text-color-placeholder | -
+--td-table-loading-bg-color | rgba(255, 255, 255, 0.55) | -
+--td-table-row-height | 41px | -
+--td-table-stripe-bg-color | @bg-color-secondarycontainer | -
+--td-table-td-padding | 8px 12px | -
+--td-table-th-padding | 8px 12px | -

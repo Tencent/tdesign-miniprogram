@@ -40,6 +40,9 @@
       "default": "./dist/index.js"
     },
     "./*": "./dist/*",
+    "./global": {
+      "types": "./global.d.ts"
+    },
     "./mixins/page-scroll": {
       "types": "./dist/mixins/page-scroll.d.ts",
       "import": "./dist/mixins/page-scroll.js",
@@ -80,9 +83,6 @@
     "./theme-light.less": {
       "types": "./dist/theme-light.less.d.ts",
       "default": "./dist/theme-light.less"
-    },
-    "./global": {
-      "types": "./global.d.ts"
     },
     "./action-sheet/action-sheet.vue": {
       "types": "./dist/types/action-sheet.d.ts",
@@ -164,15 +164,15 @@
       "import": "./dist/collapse-panel/collapse-panel.vue",
       "default": "./dist/collapse-panel/collapse-panel.vue"
     },
-    "./config-provider/config-provider.vue": {
-      "types": "./dist/types/config-provider.d.ts",
-      "import": "./dist/config-provider/config-provider.vue",
-      "default": "./dist/config-provider/config-provider.vue"
-    },
     "./color-picker/color-picker.vue": {
       "types": "./dist/types/color-picker.d.ts",
       "import": "./dist/color-picker/color-picker.vue",
       "default": "./dist/color-picker/color-picker.vue"
+    },
+    "./config-provider/config-provider.vue": {
+      "types": "./dist/types/config-provider.d.ts",
+      "import": "./dist/config-provider/config-provider.vue",
+      "default": "./dist/config-provider/config-provider.vue"
     },
     "./count-down/count-down.vue": {
       "types": "./dist/types/count-down.d.ts",
@@ -319,6 +319,11 @@
       "import": "./dist/picker-item/picker-item.vue",
       "default": "./dist/picker-item/picker-item.vue"
     },
+    "./popover/popover.vue": {
+      "types": "./dist/types/popover.d.ts",
+      "import": "./dist/popover/popover.vue",
+      "default": "./dist/popover/popover.vue"
+    },
     "./popup/popup.vue": {
       "types": "./dist/types/popup.d.ts",
       "import": "./dist/popup/popup.vue",
@@ -368,6 +373,11 @@
       "types": "./dist/types/search.d.ts",
       "import": "./dist/search/search.vue",
       "default": "./dist/search/search.vue"
+    },
+    "./segmented/segmented.vue": {
+      "types": "./dist/types/segmented.d.ts",
+      "import": "./dist/segmented/segmented.vue",
+      "default": "./dist/segmented/segmented.vue"
     },
     "./side-bar/side-bar.vue": {
       "types": "./dist/types/side-bar.d.ts",
@@ -443,6 +453,11 @@
       "types": "./dist/types/tab-panel.d.ts",
       "import": "./dist/tab-panel/tab-panel.vue",
       "default": "./dist/tab-panel/tab-panel.vue"
+    },
+    "./table/table.vue": {
+      "types": "./dist/types/table.d.ts",
+      "import": "./dist/table/table.vue",
+      "default": "./dist/table/table.vue"
     },
     "./tabs/tabs.vue": {
       "types": "./dist/types/tabs.d.ts",
