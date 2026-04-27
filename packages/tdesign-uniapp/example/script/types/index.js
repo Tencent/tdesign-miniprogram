@@ -11,8 +11,8 @@ const PROJECT_ROOT = path.resolve(__dirname, '../../../../../');
 
 
 const CONFIG = {
-  pkgJsonPath: path.resolve(PACKAGES_ROOT, 'uniapp-components/package.json'),
-  chatPkgJsonPath: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat/package.json'),
+  pkgJsonPath: path.resolve(PACKAGES_ROOT, 'tdesign-uniapp/package.json'),
+  chatPkgJsonPath: path.resolve(PACKAGES_ROOT, 'tdesign-uniapp-chat/package.json'),
 
   dtsDir: path.resolve(PACKAGES_ROOT, 'uniapp-components/types'),
   chatDtsDir: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat/types'),
@@ -28,10 +28,10 @@ const CONFIG = {
 // 基础 exports（base 和 chat 共用）
 const COMMON_EXPORTS = {
   '.': {
-    types: './types/index.d.ts',
-    default: './index.js',
+    types: './dist/types/index.d.ts',
+    default: './dist/index.js',
   },
-  './*': './*',
+  './*': './dist/*',
   './global': {
     types: './global.d.ts',
   },
@@ -40,37 +40,37 @@ const COMMON_EXPORTS = {
 // 仅 base 包需要的额外 exports（函数式调用、mixins、theme 等）
 const BASE_EXTRA_EXPORTS = {
   './mixins/page-scroll': {
-    types: './mixins/page-scroll.d.ts',
-    import: './mixins/page-scroll.js',
-    default: './mixins/page-scroll.js',
+    types: './dist/mixins/page-scroll.d.ts',
+    import: './dist/mixins/page-scroll.js',
+    default: './dist/mixins/page-scroll.js',
   },
   './dialog': {
-    types: './dialog/index.d.ts',
-    import: './dialog/index.js',
-    default: './dialog/index.js',
+    types: './dist/dialog/index.d.ts',
+    import: './dist/dialog/index.js',
+    default: './dist/dialog/index.js',
   },
   './message': {
-    types: './message/index.d.ts',
-    import: './message/index.js',
-    default: './message/index.js',
+    types: './dist/message/index.d.ts',
+    import: './dist/message/index.js',
+    default: './dist/message/index.js',
   },
   './toast': {
-    types: './toast/index.d.ts',
-    import: './toast/index.js',
-    default: './toast/index.js',
+    types: './dist/toast/index.d.ts',
+    import: './dist/toast/index.js',
+    default: './dist/toast/index.js',
   },
   './action-sheet': {
-    types: './action-sheet/index.d.ts',
-    import: './action-sheet/index.js',
-    default: './action-sheet/index.js',
+    types: './dist/action-sheet/index.d.ts',
+    import: './dist/action-sheet/index.js',
+    default: './dist/action-sheet/index.js',
   },
   './theme.css': {
-    types: './theme.css.d.ts',
-    default: './theme.css',
+    types: './dist/theme.css.d.ts',
+    default: './dist/theme.css',
   },
   './theme.less': {
-    types: './theme.less.d.ts',
-    default: './theme.less',
+    types: './dist/theme.less.d.ts',
+    default: './dist/theme.less',
   },
   './theme-light.css': {
     types: './dist/theme-light.css.d.ts',
@@ -185,12 +185,14 @@ function changePkgExports(fileNames, pkgJsonPath, isChat, label) {
   const otherExports = getOtherExports(isChat);
   const exportsType = fileNames.reduce((acc, item) => {
     const key = `./${item}/${item}.vue`;
+    const source = `./dist/${item}/${item}.vue`;
+
     return {
       ...acc,
       [key]: {
-        types: `./types/${item}.d.ts`,
-        import: key,
-        default: key,
+        types: `./dist/types/${item}.d.ts`,
+        import: source,
+        default: source,
       },
     };
   }, {
