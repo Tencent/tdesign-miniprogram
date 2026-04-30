@@ -90,10 +90,16 @@
 @chat-record-textarea-line-height: 56rpx;
 
 // 底部操作区
-@chat-record-footer-height: 400rpx;
-@chat-record-tips-top: 148rpx;
-@chat-record-tips-font-size: 32rpx;
-@chat-record-tips-line-height: 48rpx;
+@chat-record-footer-height: 260rpx;
+@chat-record-tips-top: 0rpx;
+@chat-record-tips-font-size: 28rpx;
+@chat-record-tips-line-height: 44rpx;
+
+// 全宽录音大按钮
+@chat-record-main-btn-height: 100rpx;
+@chat-record-main-btn-margin: 0 32rpx;
+@chat-record-main-btn-bg-record: #2979ff;
+@chat-record-main-btn-bg-cancel: #ff5252;
 
 // 大圆背景
 @chat-record-circle-size: 2000rpx;
@@ -177,7 +183,7 @@
       width: 100vw;
       height: 100vh;
       z-index: @chat-record-mask-z-index;
-      background: @chat-record-mask-bg;
+      // background: @chat-record-mask-bg;
       backdrop-filter: @chat-record-mask-blur;
       opacity: 0;
       pointer-events: none;
@@ -398,25 +404,80 @@
       opacity: 1;
       transition: opacity 0.3s ease;
       animation: fadeIn 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 48rpx;
+      box-sizing: border-box;
 
       // 提示文字
       .tips-text {
-        position: absolute;
-        top: @chat-record-tips-top;
         width: 100%;
         text-align: center;
         color: rgba(0, 0, 0, 0.90);
         font-size: @chat-record-tips-font-size;
-        font-weight: 600;
+        font-weight: 500;
         line-height: @chat-record-tips-line-height;
-        z-index: 10;
+        margin-bottom: 24rpx;
         pointer-events: none;
       }
 
-      // 状态变化：文字变白色
-      &.release_cancel .tips-text,
-      &.release_convert .tips-text {
+      // 取消状态：提示文字变白色
+      &.release_cancel .tips-text {
         color: @chat-record-color-white;
+      }
+
+      // 全宽录音大按钮
+      .record-main-btn {
+        width: calc(100% - 64rpx);
+        height: @chat-record-main-btn-height;
+        border-radius: @chat-record-hook-border-radius;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color @chat-record-transition-ease;
+
+        &.is-record {
+          background-color: @chat-record-main-btn-bg-record;
+        }
+
+        &.is-cancel {
+          background-color: @chat-record-main-btn-bg-cancel;
+        }
+
+        // 按钮内音波
+        .audio-wave {
+          display: flex;
+          align-items: center;
+          height: @chat-record-wave-height;
+          gap: @chat-record-wave-gap;
+
+          .wave-item {
+            width: @chat-record-wave-item-width;
+            height: @chat-record-wave-item-height;
+            border-radius: @chat-record-wave-item-radius;
+            transform-origin: center;
+            will-change: transform;
+            animation: wave 1.5s infinite ease-in-out;
+          }
+
+          &.wave-blue .wave-item {
+            background: @chat-record-color-white;
+          }
+
+          &.wave-red .wave-item {
+            background: @chat-record-color-white;
+          }
+
+          .generate-wave-delays(@n, @i: 1) when (@i =< @n) {
+            .wave-item:nth-child(@{i}) {
+              animation-delay: unit((-1.2 + (@i - 1) * 0.1), s);
+            }
+            .generate-wave-delays(@n, (@i + 1));
+          }
+          .generate-wave-delays(13);
+        }
       }
 
       // 大圆弧背景

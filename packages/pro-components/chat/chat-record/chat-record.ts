@@ -5,9 +5,8 @@ import props from './props';
 const { prefix } = config;
 const name = `${prefix}-chat-record`;
 
-// 交互阈值配置（单位：px，与 uniapp 逻辑保持一致）
+// 交互阈值配置（单位：px）
 const MOVE_THRESHOLD_Y = 60;
-const MOVE_THRESHOLD_X = 30;
 
 // 语音录制定时器-模拟长按
 let startRecordTimer: number | null = null;
@@ -42,7 +41,7 @@ export default class ChatRecord extends SuperComponent {
 
     // 流程状态
     processStatus: 'idle' as 'idle' | 'recording' | 'processing' | 'confirm' | 'error',
-    interactStatus: 'normal' as 'normal' | 'release_cancel' | 'release_convert',
+    interactStatus: 'normal' as 'normal' | 'release_cancel',
 
     // 录音数据
     voiceInfo: {
@@ -120,6 +119,7 @@ export default class ChatRecord extends SuperComponent {
         const duration = Math.floor(durationMs / 1000) || 1;
         const voiceText = res?.result || '';
 
+        // 直接发送，不进入 confirm 状态
         this.setData({
           voiceInfo: {
             voicePath: tempFilePath,
@@ -127,10 +127,18 @@ export default class ChatRecord extends SuperComponent {
             duration,
           },
           translateResult: voiceText,
-          processStatus: 'confirm',
-          activeBtnCancel: true,
         });
-        this.updateBubbleClass();
+
+        this.triggerEvent('recognize', {
+          voicePath: tempFilePath,
+          voiceText,
+          duration,
+        });
+
+        // 发送后重置状态
+        setTimeout(() => {
+          this.resetState();
+        }, 100);
       };
 
       manager.onError = (err: any) => {
@@ -156,44 +164,24 @@ export default class ChatRecord extends SuperComponent {
     },
 
     updateBubbleClass() {
-      const { interactStatus, processStatus } = this.data;
+      const { interactStatus, processStatus, translateResult, bottomHeight,
+              activeBtnCancel, activeBtnSend } = this.data;
       let bubbleStatusClass = 'bubble-blue';
       if (interactStatus === 'release_cancel' || processStatus === 'error') bubbleStatusClass = 'bubble-red';
-      else if (interactStatus === 'release_convert' || processStatus === 'processing' || processStatus === 'confirm') {
-        bubbleStatusClass = 'bubble-wide';
-      }
       this.setData({ bubbleStatusClass });
+
+      // 通知外部 speechBubble 插槽同步状态
+      this.triggerEvent('statechange', {
+        processStatus,
+        interactStatus,
+        translateResult,
+        bottomHeight,
+        activeBtnCancel,
+        activeBtnSend,
+      });
     },
 
-    // 监听键盘高度变化
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    onKeyboardHeightChange(e: any) {
-      if (this.properties.autoHeight) {
-        this.setData({
-          bottomHeight: e.height || 0,
-        });
-      }
-    },
-
-    // 文本框获取焦点时触发
-    focusTextarea(e) {
-      console.error('focusTextarea===========', e)
-      // 如果开启了自动高度，键盘弹出时会通过 onKeyboardHeightChange 更新 bottomHeight
-      if (this.properties.autoHeight) {
-        this.setData({
-          bottomHeight: e.detail.height,
-        });
-      }
-    },
-
-    // 文本框失去焦点时触发
-    blurTextarea() {
-      if (this.properties.autoHeight) {
-        this.setData({
-          bottomHeight: 0,
-        });
-      }
-    },
+    // 键盘高度监听已移至示例页面处理
     async getVoiceAuthSetting() {
       return new Promise<boolean>((resolve, reject) => {
         wx.getSetting({
@@ -418,13 +406,12 @@ export default class ChatRecord extends SuperComponent {
       const touch = (e.touches && e.touches[0]) || (e.changedTouches && e.changedTouches[0]);
       if (!touch) return;
 
-      const deltaX = touch.clientX - this.data.startTouch.x;
       const deltaY = touch.clientY - this.data.startTouch.y;
 
+      // 只有上滑取消，没有转文字
       let interactStatus: typeof this.data.interactStatus = 'normal';
       if (deltaY < -MOVE_THRESHOLD_Y) {
-        if (deltaX < -MOVE_THRESHOLD_X) interactStatus = 'release_cancel';
-        else if (deltaX > MOVE_THRESHOLD_X) interactStatus = 'release_convert';
+        interactStatus = 'release_cancel';
       }
 
       if (interactStatus !== this.data.interactStatus) {
@@ -464,15 +451,13 @@ export default class ChatRecord extends SuperComponent {
           activeBtnCancel: true,
          });
         this.cancelRecord();
-      } else if (this.data.interactStatus === 'release_convert') {
-        // 转文字：直接进入 confirm（最终文本以 onStop 为准）
-        this.convertToText();
       } else {
-        // 正常松手：等待 onStop
+        // 正常松手：等待 onStop 回调，自动进入 confirm 并发送
       }
     },
 
     touchcancel() {
+      console.log('松手转文字');
       this.cancelRecord();
     },
 
@@ -607,14 +592,8 @@ export default class ChatRecord extends SuperComponent {
       this.data.onOpenSetting = this.onOpenSetting.bind(this);
       this.data.resetState = this.resetState.bind(this);
       this.data.requestRecordAuth = this.requestRecordAuth.bind(this);
-      this.data.onKeyboardHeightChange = this.onKeyboardHeightChange.bind(this);
-      this.data.focusTextarea = this.focusTextarea.bind(this);
-      this.data.blurTextarea = this.blurTextarea.bind(this);
 
       this.initRecordManager();
-
-      // 监听键盘高度变化
-      wx.onKeyboardHeightChange(this.data.onKeyboardHeightChange);
     },
 
     attached() {
@@ -630,8 +609,6 @@ export default class ChatRecord extends SuperComponent {
           // ignore
         }
       }
-      // 移除键盘高度监听
-      wx.offKeyboardHeightChange(this.data.onKeyboardHeightChange);
       this.resetState();
     },
   };

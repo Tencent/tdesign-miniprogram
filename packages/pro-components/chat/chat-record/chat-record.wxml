@@ -29,55 +29,30 @@
     <view class="{{classPrefix}}-audio-input__mask" bindtap="handleCancelSend" />
 
 <view class="{{classPrefix}}-audio-input__main">
-      <!-- 气泡/动画区 -->
-      <view
-        wx:if="{{processStatus === 'recording' || processStatus === 'confirm'}}"
-        class="{{classPrefix}}-audio-input-ani fade-in"
-        style="margin-bottom: {{bottomHeight > 0 ? bottomHeight + 20 : 268}}rpx;"
-      >
-        <view class="bubble-container {{bubbleStatusClass}}">
-          <!-- 录音中：音量条 -->
-          <view wx:if="{{processStatus === 'recording' && interactStatus === 'normal'}}" class="audio-wave">
-            <block wx:for="{{waveList}}" wx:key="*this">
-              <view class="wave-item" />
-            </block>
-          </view>
-
-          <!-- 取消/错误：红色气泡图标 -->
-          <view wx:elif="{{interactStatus === 'release_cancel' || processStatus === 'error'}}" class="cancel-icon" />
-          <view wx:if="{{processStatus === 'error'}}" class="cancel-text">未识别到语音</view>
-
-          <!-- 转文字/确认：可编辑文本 -->
-          <view
-            wx:elif="{{interactStatus === 'release_convert' || processStatus === 'confirm'}}"
-            class="convert-content"
-          >
-          <textarea
-            class="editable-textarea"
-            style="max-height: {{bottomHeight === 0 ? '522rpx' : '112rpx'}}"
-            value="{{translateResult}}"
-            maxlength="-1"
-            bindinput="onTranslateInput"
-            bindfocus="focusTextarea"
-            bindblur="blurTextarea"
-          />
-            <view wx:if="{{interactStatus === 'release_convert'}}" class="convert-dots" />
-          </view>
-        </view>
-      </view>
-
       <!-- 底部区域 -->
       <view
         wx:if="{{processStatus === 'recording' || processStatus === 'confirm'}}"
         class="{{classPrefix}}-audio-input__ft {{processStatus}} {{interactStatus}} fade-in"
         style="bottom: {{bottomHeight}}rpx;"
       >
+        <!-- 提示文字 -->
         <view class="tips-text">
           <block wx:if="{{processStatus === 'recording'}}">
-            <text wx:if="{{interactStatus !== 'normal'}}">Audio</text>
-            <text wx:else>Release to send</text>
+            <text wx:if="{{interactStatus === 'release_cancel'}}">松开取消</text>
+            <text wx:else>松开发送，上滑取消</text>
           </block>
-          <block wx:elif="{{processStatus === 'processing'}}">Processing...</block>
+        </view>
+
+        <!-- 录音阶段：全宽大按钮 -->
+        <view wx:if="{{processStatus === 'recording'}}"
+          class="record-main-btn {{interactStatus === 'release_cancel' ? 'is-cancel' : 'is-record'}}"
+          catchtouchstart="startRecord" catchtouchend="stopRecord" catchtouchmove="touchmove" catchtouchcancel="touchcancel">
+          <!-- 音波动画 -->
+          <view class="audio-wave {{interactStatus === 'release_cancel' ? 'wave-red' : 'wave-blue'}}">
+            <block wx:for="{{waveList}}" wx:key="*this">
+              <view class="wave-item" />
+            </block>
+          </view>
         </view>
 
         <!-- 确认按钮区（Send/Cancel） -->
@@ -101,33 +76,6 @@
             <text class="send-btn-text">Send</text>
           </view>
         </view>
-
-        <!-- 录音阶段底部按钮提示（Cancel/Convert） -->
-        <block wx:if="{{processStatus === 'recording' || processStatus === 'processing'}}">
-          <view class="{{classPrefix}}-audio-input__ft__bg" />
-
-          <view
-            class="shape-btn left-btn {{(interactStatus === 'release_cancel' || processStatus === 'error') ? 'active' : ''}}"
-          >
-            <view wx:if="{{interactStatus === 'release_cancel' || processStatus === 'error'}}" class="btn-hint">
-              <text class="word word-1">Release</text>
-              <text class="word word-2">to cancel</text>
-            </view>
-            <view class="btn-label"><text class="word">Cancel</text></view>
-          </view>
-
-          <view class="shape-btn right-btn {{interactStatus === 'release_convert' ? 'active' : ''}}">
-            <view wx:if="{{interactStatus === 'release_convert'}}" class="btn-hint">
-              <text class="word word-1">Release</text>
-              <text class="word word-2">to edit</text>
-              <text class="word word-3">text</text>
-            </view>
-            <view class="btn-label">
-              <text class="word word-1">Convert</text>
-              <text class="word word-2">to Text</text>
-            </view>
-          </view>
-        </block>
       </view>
     </view>
   </view>
