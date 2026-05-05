@@ -5,22 +5,24 @@
   >
     <view :class="formItemClass + '-wrap ' + formItemClass + '--' + dataLabelAlign + ' ' + tClassWrap">
       <!-- 标签区域 -->
-      <view
-        v-if="label"
-        :class="labelClass + ' ' + labelClass + '--' + dataLabelAlign
-          + (dataRequiredMark ? ' ' + labelClass + '--required' : '')
-          + (dataRequiredMark && requiredMarkPosition === 'right' ? ' ' + labelClass + '--required-right' : '')
-          + ' ' + tClassLabel"
-        :style="'width: ' + dataLabelWidth"
-      >
-        <label
-          :class="labelClass + '-text'"
-          :for="forId"
-        >{{ label }}</label>
-        <template v-if="colon">
-          {{ globalConfig.colonText }}
-        </template>
-      </view>
+      <slot name="label">
+        <view
+          v-if="label"
+          :class="labelClass + ' ' + labelClass + '--' + dataLabelAlign
+            + (dataRequiredMark ? ' ' + labelClass + '--required' : '')
+            + (dataRequiredMark && requiredMarkPosition === 'right' ? ' ' + labelClass + '--required-right' : '')
+            + ' ' + tClassLabel"
+          :style="'width: ' + dataLabelWidth"
+        >
+          <label
+            :class="labelClass + '-text'"
+            :for="forId"
+          >{{ label }}</label>
+          <template v-if="colon">
+            {{ globalConfig.colonText }}
+          </template>
+        </view>
+      </slot>
 
       <!-- 内容区域 -->
       <view :class="formClass + '__controls ' + errorClasses + ' ' + tClassControls">
@@ -31,12 +33,14 @@
           <slot />
         </view>
         <!-- 帮助信息 -->
-        <view
-          v-if="help"
-          :class="formItemClass + '-help ' + formClass + '__controls--' + dataContentAlign + ' ' + tClassHelp"
-        >
-          {{ help }}
-        </view>
+        <slot name="help">
+          <view
+            v-if="help"
+            :class="formItemClass + '-help ' + formClass + '__controls--' + dataContentAlign + ' ' + tClassHelp"
+          >
+            {{ help }}
+          </view>
+        </slot>
 
         <!-- 校验提示信息 -->
         <view
