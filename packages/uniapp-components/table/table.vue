@@ -76,26 +76,40 @@
             :style="rowItem.rowStyle"
             @click="onRowClick(rowItem.rowIndex)"
           >
-            <template
-              v-for="(cell, tdIndex) in rowItem.cells"
-              :key="cell.colKey"
-            >
-              <view
-                v-if="!cell.skipped"
-                :class="[
-                  classPrefix + '__td',
-                  cell.className,
-                  cell.isLastRow ? classPrefix + '__td-last-row' : '',
-                  cell.isFirstCol ? classPrefix + '__td-first-col' : '',
-                ]"
-                :style="'' + getColStyle(columns[tdIndex], tdIndex)"
-                @click.stop="onCellClick(rowItem.rowIndex, tdIndex)"
+            <!-- #ifdef VUE2 -->
+            <!-- eslint-disable-next-line vue/no-unused-vars -->
+            <template v-for="(cell, tdIndex) in rowItem.cells">
+              <!-- #endif -->
+              <!-- #ifdef VUE3 -->
+              <template
+                v-for="(cell, tdIndex) in rowItem.cells"
+                :key="cell.colKey"
               >
-                <view :class="classPrefix + '__td-content'">
-                  {{ cell.content }}
+                <!-- #endif -->
+
+                <view
+                  v-if="!cell.skipped"
+                  :key="cell.colKey"
+                  :class="[
+                    classPrefix + '__td',
+                    cell.className,
+                    cell.isLastRow ? classPrefix + '__td-last-row' : '',
+                    cell.isFirstCol ? classPrefix + '__td-first-col' : '',
+                  ]"
+                  :style="'' + getColStyle(columns[tdIndex], tdIndex)"
+                  @click.stop="onCellClick(rowItem.rowIndex, tdIndex)"
+                >
+                  <view :class="classPrefix + '__td-content'">
+                    {{ cell.content }}
+                  </view>
                 </view>
-              </view>
+              <!-- #ifdef VUE3 -->
+              </template>
+            <!-- #endif -->
+
+            <!-- #ifdef VUE2 -->
             </template>
+            <!-- #endif -->
           </view>
         </view>
       </view>

@@ -19,7 +19,7 @@ loading | Boolean | undefined | loading state table | N
 loading-props | Object | - | Typescript: `Partial<LoadingProps>`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/table/type.ts) | N
 max-height | String / Number | - | table max height | N
 row-key | String | 'id' | required。unique key for each row data | Y
-rowspan-and-colspan | Function | - | rowspan and colspan。Typescript: `TableRowspanAndColspanFunc<T>` `type TableRowspanAndColspanFunc<T> = (params: BaseTableCellParams<T>) => RowspanColspan` `interface RowspanColspan { colspan?: number; rowspan?: number }`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/table/type.ts) | N
+rowspan-and-colspan | Function | - | rowspan and colspan。Typescript: `TableRowspanAndColspanFunc<T>` `type TableRowspanAndColspanFunc<T extends TableRowData = TableRowData> = (params: BaseTableCellParams<T>) => RowspanColspan` `interface RowspanColspan { colspan?: number; rowspan?: number }`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/table/type.ts) | N
 show-header | Boolean | true | show table header | N
 stripe | Boolean | false | show stripe style | N
 table-content-width | String | - | \- | N
@@ -30,8 +30,8 @@ vertical-align | String | middle | vertical align。options: top/middle/bottom |
 
 name | params | description
 -- | -- | --
-cell-click | `(context: BaseTableCellEventContext<T>)` | trigger on cell clicked。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/table/type.ts)。<br/>`interface BaseTableCellEventContext<T> { row: T; col: BaseTableCol; rowIndex: number; colIndex: number; e: MouseEvent }`<br/>
-row-click | `(context: RowEventContext<T>)` | trigger on row click。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/table/type.ts)。<br/>`interface RowEventContext<T> { row: T; index: number; e: MouseEvent }`<br/>
+cell-click | `(context: BaseTableCellEventContext<T>)` | trigger on cell clicked。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/table/type.ts)。<br/>`interface BaseTableCellEventContext<T extends TableRowData = TableRowData> { row: T; col: BaseTableCol<T>; rowIndex: number; colIndex: number; e: MouseEvent }`<br/>
+row-click | `(context: RowEventContext<T>)` | trigger on row click。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/table/type.ts)。<br/>`interface RowEventContext<T extends TableRowData = TableRowData> { row: T; index: number; e: MouseEvent }`<br/>
 
 ### BaseTable Slots
 
@@ -47,8 +47,8 @@ loading | loading state table
 name | type | default | description | required
 -- | -- | -- | -- | --
 align | String | left | align type。options: left/right/center | N
-cell | String / Function | - | use cell to render table cell。Typescript: `string \| ((params: BaseTableCellParams<T>) => string)` `interface BaseTableCellParams<T> { row: T; rowIndex: number; col: BaseTableCol<T>; colIndex: number }`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/table/type.ts) | N
-class-name | String / Object / Array / Function | - | cell classnames。Typescript: `TableColumnClassName<T> \| TableColumnClassName<T>[]` `type TableColumnClassName<T> = ClassName \| ((context: CellData<T>) => ClassName)` `interface CellData<T> extends BaseTableCellParams<T> { type: 'th' \| 'td' }`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/common/common.ts)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/table/type.ts) | N
+cell | String / Function | - | use cell to render table cell。Typescript: `string \| ((params: BaseTableCellParams<T>) => string)` `interface BaseTableCellParams<T extends TableRowData = TableRowData> { row: T; rowIndex: number; col: BaseTableCol<T>; colIndex: number }`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/table/type.ts) | N
+class-name | String / Object / Array / Function | - | cell classnames。Typescript: `TableColumnClassName<T> \| TableColumnClassName<T>[]` `type TableColumnClassName<T extends TableRowData = TableRowData> = ClassName \| ((context: CellData<T>) => ClassName)` `interface CellData<T extends TableRowData = TableRowData> extends BaseTableCellParams<T> { type: 'th' \| 'td' }`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/common/common.ts)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/table/type.ts) | N
 col-key | String | - | unique key for column | N
 fixed | String | left | fixed current column to left or right。options: left/right | N
 min-width | String / Number | - | add CSS property `min-width` to HTML Element `<col>`，Browsers with [TablesNG](https://docs.google.com/document/d/16PFD1GtMI9Zgwu0jtPaKZJ75Q2wyZ9EZnVbBacOfiNA/preview)  support `minWidth` | N
