@@ -1,40 +1,17 @@
 .demo-base-container {
   padding: 56rpx 0 0 0;
   background-color: var(--td-bg-color-container);
-  height: 488rpx;
+  height: 57vh;
   position: relative;
 }
 
 /* 聊天发送器包装器 */
 .chat-sender-demo-wrapper {
   margin-bottom: 32rpx;
-  /* border: 2rpx solid #e5e5e5; */
   border-radius: 8rpx;
   overflow: hidden;
 }
 
-.chat-sender-height-limit {
-  height: 72rpx;
-  padding: 0 24rpx;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chat-sender-height-left-limit {
-  height: 70rpx;
-  width: 70rpx;
-  border-top: 1px var(--td-component-stroke) dashed;
-  border-left: 1px var(--td-component-stroke) dashed;
-  border-top-left-radius: 32rpx;
-}
-.chat-sender-height-right-limit {
-  height: 70rpx;
-  width: 70rpx;
-  border-top: 1px var(--td-component-stroke) dashed;
-  border-right: 1px var(--td-component-stroke) dashed;
-  border-top-right-radius: 32rpx;
-}
 .chat-sender-placeholder {
   font-size: 32rpx;
   font-weight: 600;
