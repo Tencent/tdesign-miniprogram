@@ -134,22 +134,24 @@ export interface BaseTableCol<T extends TableRowData = TableRowData> {
   width?: string | number;
 }
 
-export type TableRowspanAndColspanFunc<T> = (params: BaseTableCellParams<T>) => RowspanColspan;
+export type TableRowspanAndColspanFunc<T extends TableRowData = TableRowData> = (
+  params: BaseTableCellParams<T>,
+) => RowspanColspan;
 
 export interface RowspanColspan {
   colspan?: number;
   rowspan?: number;
 }
 
-export interface BaseTableCellEventContext<T> {
+export interface BaseTableCellEventContext<T extends TableRowData = TableRowData> {
   row: T;
-  col: BaseTableCol;
+  col: BaseTableCol<T>;
   rowIndex: number;
   colIndex: number;
   e: MouseEvent;
 }
 
-export interface RowEventContext<T> {
+export interface RowEventContext<T extends TableRowData = TableRowData> {
   row: T;
   index: number;
   e: MouseEvent;
@@ -160,16 +162,18 @@ export interface TableRowData {
   children?: TableRowData[];
 }
 
-export interface BaseTableCellParams<T> {
+export interface BaseTableCellParams<T extends TableRowData = TableRowData> {
   row: T;
   rowIndex: number;
   col: BaseTableCol<T>;
   colIndex: number;
 }
 
-export type TableColumnClassName<T> = ClassName | ((context: CellData<T>) => ClassName);
+export type TableColumnClassName<T extends TableRowData = TableRowData> =
+  | ClassName
+  | ((context: CellData<T>) => ClassName);
 
-export interface CellData<T> extends BaseTableCellParams<T> {
+export interface CellData<T extends TableRowData = TableRowData> extends BaseTableCellParams<T> {
   type: 'th' | 'td';
 }
 

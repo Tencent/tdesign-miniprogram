@@ -34,11 +34,8 @@ async function copyOneProject({
 function clearTargetDir() {
   deleteFolder(config.componentTargetDirInVue3Cli);
   deleteFolder(config.componentChatTargetDirInVue3Cli);
-  deleteFolder(config.componentTargetDirInApp);
-  deleteFolder(config.componentChatTargetDirInApp);
 
   deleteFolder(config.pagesMoreDirInVue3Cli);
-  deleteFolder(config.pagesMoreDirInApp);
 
   if (checkVue2CliExist()) {
     deleteFolder(config.componentTargetDirInVue2Cli);
@@ -62,10 +59,6 @@ function clearTargetDir() {
 
 async function main() {
   await clearTargetDir();
-
-  await copyInfra({
-    infraDir: config.infraDirInApp,
-  });
 
   if (checkVue2CliExist()) {
     await copyInfra({
@@ -102,7 +95,6 @@ async function main() {
 
   // 为各目标目录生成快捷样式入口文件（theme.css / theme.less）
   generateStyleShortcuts(config.componentTargetDirInVue3Cli);
-  generateStyleShortcuts(config.componentTargetDirInApp);
 
   if (checkVue2CliExist()) {
     generateStyleShortcuts(config.componentTargetDirInVue2Cli);
