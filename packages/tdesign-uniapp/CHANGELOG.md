@@ -5,6 +5,20 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.9.0 `2026-05-08`
+
+### 🚀 Features
+
+- `Table`: 新增 `Table` 表格组件 @novlan1 ([#4397](https://github.com/Tencent/tdesign-miniprogram/pull/4397))
+- `Segmented`: 新增 `Segmented` 分段控制器组件 @novlan1 ([#4413](https://github.com/Tencent/tdesign-miniprogram/pull/4413))
+
+### 🐞 Bug Fixes
+
+- `Calendar`: 修复 `type` 为 `range` 时，未滚动到目标位置的问题 @novlan1 ([#4413](https://github.com/Tencent/tdesign-miniprogram/pull/4413))
+- `DropdownMenu`: 修复 `label` 回显错误问题 @novlan1 ([#4413](https://github.com/Tencent/tdesign-miniprogram/pull/4413))
+- `Input`: 修复 input clearable 点击后没有及时更新双向绑定的问题 @Kriac ([#4420](https://github.com/Tencent/tdesign-miniprogram/pull/4420))
+- `TabBar`: 修复 `badgeProps` 属性中的 `color` 和 `shape` 字段无效 @liweijie0812 ([#4427](https://github.com/Tencent/tdesign-miniprogram/pull/4427))
+
 ## 🌈 0.8.1 `2026-04-09`
 
 ### 🚀 Features
