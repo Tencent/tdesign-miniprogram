@@ -109,6 +109,9 @@
       "path": "pages-more/result/result"
     },
     {
+      "path": "pages-more/segmented/segmented"
+    },
+    {
       "path": "pages-more/skeleton/skeleton"
     },
     {
@@ -561,6 +564,10 @@
       {
         "name": "result",
         "pathName": "pages-more/result/result"
+      },
+      {
+        "name": "segmented",
+        "pathName": "pages-more/segmented/segmented"
       },
       {
         "name": "skeleton",

@@ -143,15 +143,16 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import { getCharacterLength, calcIcon, coalesce, nextTick } from '../common/utils';
-import { isDef } from '../common/validator';
-import { getInputClass } from './computed.js';
-import tools from '../common/utils.wxs';
 import { RELATION_MAP } from '../common/relation/parent-map';
+import { uniComponent } from '../common/src/index';
+import { getCharacterLength, calcIcon, coalesce, nextTick } from '../common/utils';
+import tools from '../common/utils.wxs';
+import { isDef } from '../common/validator';
+import TIcon from '../icon/icon';
+
+import { getInputClass } from './computed.js';
+import props from './props';
 
 
 const name = `${prefix}-input`;
@@ -344,8 +345,9 @@ export default {
       },
 
       clearInput(e) {
+        this.updateValue('');
+        this.emitChange({ value: this.dataValue });
         this.$emit('clear', e.detail);
-        this.dataValue = '';
       },
 
       onKeyboardHeightChange(e) {

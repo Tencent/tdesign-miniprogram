@@ -22,6 +22,18 @@ const STYLE_SHORTCUTS = [
     type: 'import',
     importPath: './common/style/theme/index.less',
   },
+  {
+    // 纯浅色模式 css（不含深色模式，不随系统主题切换）
+    source: 'common/style/theme/index-light.css',
+    target: 'theme-light.css',
+    type: 'copy',
+  },
+  {
+    // 纯浅色模式 less
+    target: 'theme-light.less',
+    type: 'import',
+    importPath: './common/style/theme/index-light.less',
+  },
 ];
 
 function generateStyleShortcuts(targetDir) {

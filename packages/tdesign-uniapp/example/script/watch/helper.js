@@ -35,17 +35,6 @@ async function copyComponents({
     },
   });
 
-  await copy({
-    relativePath,
-    filePath,
-    config: {
-      targetDir: isChat
-        ? config.componentChatTargetDirInApp
-        : config.componentTargetDirInApp,
-      demoDir: config.pagesMoreDirInApp,
-    },
-  });
-
   if (checkVue2CliExist()) {
     await copy({
       relativePath,

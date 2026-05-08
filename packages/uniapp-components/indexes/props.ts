@@ -17,6 +17,11 @@ export default {
   indexList: {
     type: Array,
   },
+  /** 索引是否完整展示 */
+  showFullIndex: {
+    type: Boolean,
+    default: false,
+  },
   /** 索引是否吸顶，默认为true */
   sticky: {
     type: Boolean,
