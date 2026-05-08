@@ -1,18 +1,32 @@
 <view class="chat-example-block">
-  <!-- 默认光标（使用内置 chat-markdown-tail 组件） -->
+  <!-- 分段组件 -->
   <view style="margin-bottom: 16px">
-    <view style="font-size: 12px; color: #888; margin-bottom: 8px">默认光标</view>
-    <t-chat-markdown content="{{content}}" streaming="{{streaming}}" bind:click="handleNodeTap" />
+    <t-segmented options="{{segmentedOptions}}" value="{{selectedSegment}}" bind:change="handleSegmentChange" />
   </view>
-  <!-- 自定义 tail-component（通过 generic:tail-component 传入） -->
-  <view>
-    <view style="font-size: 12px; color: #888; margin-bottom: 8px">自定义光标组件</view>
-    <t-chat-markdown
-      content="{{content}}"
-      streaming="{{streaming}}"
-      generic:tail-component="custom-tail"
-      bind:click="handleNodeTap"
-    />
-  </view>
-  <button bindtap="handleReplay" style="margin-top: 16px">重新播放</button>
+
+  <!-- 圆点：使用自定义 tail-component -->
+  <t-chat-markdown
+    wx:if="{{selectedSegment === 1}}"
+    content="{{content}}"
+    streaming="{{streaming}}"
+    generic:tail-component="custom-tail"
+    bind:click="handleNodeTap"
+  />
+  <!-- 省略号：使用 custom-tail2 -->
+  <t-chat-markdown
+    wx:elif="{{selectedSegment === 2}}"
+    content="{{content}}"
+    streaming="{{streaming}}"
+    generic:tail-component="custom-tail2"
+    bind:click="handleNodeTap"
+  />
+  <!-- 无动画：不传 streaming -->
+  <t-chat-markdown wx:elif="{{selectedSegment === 3}}" content="{{content}}" bind:click="handleNodeTap" />
+  <!-- 其他（光标）：默认内置 tail 组件 -->
+  <t-chat-markdown
+    wx:elif="{{selectedSegment === 0}}"
+    content="{{content}}"
+    streaming="{{streaming}}"
+    bind:click="handleNodeTap"
+  />
 </view>

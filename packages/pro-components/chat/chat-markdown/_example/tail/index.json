@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "t-chat-markdown": "tdesign-miniprogram/chat-markdown/chat-markdown",
-    "custom-tail": "./custom-tail/custom-tail"
+    "t-segmented": "tdesign-miniprogram/segmented/segmented",
+    "custom-tail": "./custom-tail/custom-tail",
+    "custom-tail2": "./custom-tail2/custom-tail2"
   }
 }
