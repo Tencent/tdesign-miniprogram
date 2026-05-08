@@ -90,9 +90,9 @@ export default {
         },
         immediate: true,
       },
-    },
-    collapsed(val) {
-      this.localCollapsed = val;
+      collapsed(val) {
+        this.localCollapsed = val;
+      },
     },
 
     created() {

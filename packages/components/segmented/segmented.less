@@ -1,0 +1,87 @@
+@import '../common/style/base.less';
+
+@segmented-bg-color: var(--td-segmented-bg-color, @bg-color-component-disabled);
+@segmented-item-color: var(--td-segmented-item-color, @text-color-primary);
+@segmented-item-label-font: var(--td-segmented-item-label-font, @font-body-medium);
+@segmented-item-active-bg: var(--td-segmented-item-active-bg, @bg-color-container);
+@segmented-item-active-color: var(--td-segmented-item-active-color, @brand-color);
+@segmented-item-disabled-color: var(--td-segmented-item-disabled-color, @text-color-disabled);
+@segmented-transition: var(--td-segmented-transition, all @anim-duration-base @anim-time-fn-easing);
+
+.@{prefix}-segmented {
+  display: inline-block;
+  padding: calc(@spacer / 4);
+  background-color: @segmented-bg-color;
+  border-radius: calc(@spacer / 2);
+
+  &--block {
+    display: flex;
+    width: 100%;
+
+    .@{prefix}-segmented__item {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .@{prefix}-segmented__item-inner {
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__group {
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    justify-items: flex-start;
+    width: 100%;
+  }
+
+  &__thumb {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: @segmented-item-active-bg;
+    border-radius: calc(@spacer / 2);
+    transition: @segmented-transition;
+    will-change: transform, width;
+  }
+
+  &__item {
+    position: relative;
+    z-index: 1;
+    flex: none;
+    padding: calc(@spacer-1 / 4) @spacer-1;
+    text-align: center;
+    cursor: pointer;
+    font: @segmented-item-label-font;
+    color: @segmented-item-color;
+
+    &-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      white-space: nowrap;
+    }
+
+    &-icon:not(:empty) {
+      margin-right: calc(@spacer / 2);
+    }
+
+    &-icon {
+      font-size: @font-size-m;
+    }
+
+    &--active {
+      font-weight: 600;
+      color: @segmented-item-active-color;
+    }
+
+    &--disabled {
+      cursor: not-allowed;
+      pointer-events: none;
+      color: @segmented-item-disabled-color;
+    }
+  }
+}

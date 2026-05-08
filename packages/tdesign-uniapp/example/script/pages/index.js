@@ -42,7 +42,6 @@ function main() {
   const list = [
     base,
     nav,
-    form,
     display,
     other,
   ];
@@ -86,6 +85,7 @@ function main() {
     };
   });
   rawData.subPackages = [
+    ...getSubPackages(form),
     ...getSubPackages(ux),
     ...getSubPackages(chat),
   ];
@@ -111,6 +111,7 @@ function main() {
     'pages/home/home': {
       network: 'all',
       packages: [
+        ...getSubPackages(form),
         ...getSubPackages(ux),
         ...getSubPackages(chat),
       ].map(item => item.root),

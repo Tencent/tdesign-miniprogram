@@ -17,6 +17,7 @@
             :content="item.message.content"
             :role="item.message.role"
             :placement="item.message.role === 'user' ? 'right' : 'left'"
+            :chat-content-props="item.chatContentProps"
             @message-longpress="showPopover"
           >
             <template #actionbar>
@@ -64,7 +65,7 @@ import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
 import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
 import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
 import TToast from '@tdesign/uniapp/toast/toast.vue';
-import Toast from '@tdesign/uniapp/toast/index';
+import { Toast } from '@tdesign/uniapp';
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;
@@ -75,6 +76,12 @@ const getUniqueKey = () => {
 
 const mockData = {
   avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
+  chatContentProps: {
+    thinking: {
+      animation: 'gradient',
+      collapsed: false,
+    },
+  },
   key: getUniqueKey(),
   message: {
     role: 'assistant',
@@ -130,6 +137,12 @@ export default {
       chatList: [
         {
           avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
+          chatContentProps: {
+            thinking: {
+              animation: 'gradient',
+              collapsed: false,
+            },
+          },
           key: getUniqueKey(),
           message: {
             status: 'complete',
@@ -277,6 +290,7 @@ export default {
           },
           complete() {
             that.chatList[0].message.content[0].data.title = '思考完成';
+            that.chatList[0].chatContentProps.thinking.collapsed = true;
           },
         });
         if (!that.loading) {

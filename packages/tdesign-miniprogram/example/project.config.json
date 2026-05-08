@@ -329,6 +329,12 @@
           "scene": null
         },
         {
+          "name": "segmented",
+          "pathName": "pages/segmented/segmented",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "slider",
           "pathName": "pages/slider/slider",
           "query": "",
@@ -385,6 +391,12 @@
         {
           "name": "tab-bar",
           "pathName": "pages/tab-bar/tab-bar",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "table",
+          "pathName": "pages/table/table",
           "query": "",
           "scene": null
         },

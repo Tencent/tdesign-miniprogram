@@ -55,10 +55,12 @@ async function main() {
 
     const filePath = history[0];
     const relativePath = path.relative(path.resolve(base, targetItem.prefix), filePath);
+    const isChat = targetItem.prefix.includes('chat');
 
     const { relativeTargetByCwd, relativeSourceByCwd } = await copyComponents({
       relativePath,
       filePath,
+      isChat,
     });
     console.log(`[Wrote] done! \nFrom ${relativeSourceByCwd} to ${relativeTargetByCwd}`);
   });

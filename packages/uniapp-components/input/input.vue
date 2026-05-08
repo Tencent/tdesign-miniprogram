@@ -143,15 +143,16 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { RELATION_MAP } from '../common/relation/parent-map';
+import { uniComponent } from '../common/src/index';
 import { getCharacterLength, calcIcon, coalesce, nextTick } from '../common/utils';
-import { isDef } from '../common/validator';
-import { getInputClass } from './computed.js';
 import tools from '../common/utils.wxs';
-import { RELATION_MAP } from '../common/relation/parent-map.js';
+import { isDef } from '../common/validator';
+import TIcon from '../icon/icon';
+
+import { getInputClass } from './computed.js';
+import props from './props';
 
 
 const name = `${prefix}-input`;
@@ -205,9 +206,6 @@ export default {
         tools,
 
         dataValue: coalesce(this.value, this.defaultValue),
-
-      // rawValue: '',
-      // innerMaxLen: -1,
       };
     },
     watch: {
@@ -282,30 +280,7 @@ export default {
           this.dataValue = value;
           this.count = isDef(value) ? String(value).length : 0;
         }
-
-      // this.updateInnerMaxLen();
       },
-      // updateInnerMaxLen() {
-      // this.innerMaxLen = this.getInnerMaxLen();
-      // },
-      // getInnerMaxLen() {
-      //   const {
-      //     allowInputOverMax,
-      //     maxcharacter,
-      //     maxlength,
-      //     dataValue,
-      //     rawValue,
-      //     count,
-      //   } = this;
-      //   return getInnerMaxLen({
-      //     allowInputOverMax,
-      //     maxcharacter,
-      //     maxlength,
-      //     dataValue,
-      //     rawValue,
-      //     count,
-      //   });
-      // },
 
       updateClearIconVisible(value = false) {
         const { clearTrigger, disabled, readonly } = this;
@@ -370,8 +345,9 @@ export default {
       },
 
       clearInput(e) {
+        this.updateValue('');
+        this.emitChange({ value: this.dataValue });
         this.$emit('clear', e.detail);
-        this.dataValue = '';
       },
 
       onKeyboardHeightChange(e) {

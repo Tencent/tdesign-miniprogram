@@ -272,6 +272,8 @@ export default {
 
           if (target) {
             this.computedLabel = target[labelAlias];
+          } else {
+            this.computedLabel = '';
           }
         },
         immediate: true,

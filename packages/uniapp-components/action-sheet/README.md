@@ -8,7 +8,9 @@ isComponent: true
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-action-sheet />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TActionSheet from '@tdesign/uniapp/action-sheet/action-sheet.vue';
@@ -40,7 +42,10 @@ import TActionSheet from '@tdesign/uniapp/action-sheet/action-sheet.vue';
 ### 支持指令调用
 
 ```javascript
-import ActionSheet, { ActionSheetTheme } from '@tdesign/uniapp/action-sheet/index';
+// ActionSheetPlugin 和 ActionSheet 均可使用
+import { ActionSheetPlugin, ActionSheetTheme } from '@tdesign/uniapp';
+// 或
+// import { ActionSheet, ActionSheetTheme } from '@tdesign/uniapp';
 
 // 指令调用不同于组件引用不需要传入visible
 const basicListOption: ActionSheetShowOption = {
@@ -61,7 +66,7 @@ const basicListOption: ActionSheetShowOption = {
   ],
 };
 
-const handler = ActionSheet.show(basicListOption);
+const handler = ActionSheetPlugin.show(basicListOption);
 ```
 
 指令调用的关闭如下

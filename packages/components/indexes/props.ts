@@ -19,6 +19,11 @@ const props: TdIndexesProps = {
   indexList: {
     type: Array,
   },
+  /** 是否显示完整的索引内容，默认只显示首字符 */
+  showFullIndex: {
+    type: Boolean,
+    value: false,
+  },
   /** 索引是否吸顶，默认为true */
   sticky: {
     type: Boolean,

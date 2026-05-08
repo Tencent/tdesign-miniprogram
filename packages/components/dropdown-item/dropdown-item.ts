@@ -89,6 +89,10 @@ export default class DropdownMenuItem extends SuperComponent {
         this.setData({
           computedLabel: target[labelAlias],
         });
+      } else {
+        this.setData({
+          computedLabel: '',
+        });
       }
     },
     'label, computedLabel, disabled'() {

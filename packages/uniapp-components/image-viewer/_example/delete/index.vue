@@ -33,7 +33,8 @@
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TActionSheet from '@tdesign/uniapp/action-sheet/action-sheet.vue';
 import TImageViewer from '@tdesign/uniapp/image-viewer/image-viewer.vue';
-import ActionSheet from '@tdesign/uniapp/action-sheet/index';
+import { ActionSheetPlugin } from '@tdesign/uniapp';
+
 export default {
   components: {
     TButton,
@@ -65,7 +66,7 @@ export default {
     onDelete(e) {
       const { index } = e;
       console.log(index);
-      ActionSheet.show({
+      ActionSheetPlugin.show({
         context: this,
         selector: '#t-action-sheet',
         description: '要删除这张照片吗？',

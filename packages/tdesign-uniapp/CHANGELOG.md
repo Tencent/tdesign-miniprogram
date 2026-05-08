@@ -5,6 +5,31 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.9.0 `2026-05-08`
+
+### 🚀 Features
+
+- `Table`: 新增 `Table` 表格组件 @novlan1 ([#4397](https://github.com/Tencent/tdesign-miniprogram/pull/4397))
+- `Segmented`: 新增 `Segmented` 分段控制器组件 @novlan1 ([#4413](https://github.com/Tencent/tdesign-miniprogram/pull/4413))
+
+### 🐞 Bug Fixes
+
+- `Calendar`: 修复 `type` 为 `range` 时，未滚动到目标位置的问题 @novlan1 ([#4413](https://github.com/Tencent/tdesign-miniprogram/pull/4413))
+- `DropdownMenu`: 修复 `label` 回显错误问题 @novlan1 ([#4413](https://github.com/Tencent/tdesign-miniprogram/pull/4413))
+- `Input`: 修复 input clearable 点击后没有及时更新双向绑定的问题 @Kriac ([#4420](https://github.com/Tencent/tdesign-miniprogram/pull/4420))
+- `TabBar`: 修复 `badgeProps` 属性中的 `color` 和 `shape` 字段无效 @liweijie0812 ([#4427](https://github.com/Tencent/tdesign-miniprogram/pull/4427))
+
+## 🌈 0.8.1 `2026-04-09`
+
+### 🚀 Features
+
+- `Icon`: 新增 `divider-1`, `voice-wave` 和 `keyboard-1`  图标 @uyarn ([#4395](https://github.com/Tencent/tdesign-miniprogram/pull/4395))
+
+### 🐞 Bug Fixes
+
+- `Form`: 修复 `FormItem` 右侧箭头深色模式颜色错误 @anlyyao ([#4384](https://github.com/Tencent/tdesign-miniprogram/pull/4384))
+- `Rate`: 修复提示框层级不够被覆盖的问题 @liweijie0812 ([#4386](https://github.com/Tencent/tdesign-miniprogram/pull/4386))
+
 ## 🌈 0.8.0 `2026-03-23`
 
 ### 🚨 Breaking Changes

@@ -21,6 +21,28 @@ exports[`ChatThinking ChatThinking base demo works fine 1`] = `
 </base>
 `;
 
+exports[`ChatThinking ChatThinking collapsed demo works fine 1`] = `
+<collapsed>
+  <wx-view
+    class="chat-example-block"
+  >
+    <t-chat-thinking
+      animation="moving"
+      collapsed="{{false}}"
+      content="{{
+        Object {
+          "text": "",
+          "title": "思考过程",
+        }
+      }}"
+      layout="block"
+      status="pending"
+      bind:collapsedChange="handleCollapsedChange"
+    />
+  </wx-view>
+</collapsed>
+`;
+
 exports[`ChatThinking ChatThinking complete demo works fine 1`] = `
 <complete>
   <wx-view

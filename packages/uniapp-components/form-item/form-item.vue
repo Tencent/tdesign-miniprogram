@@ -5,19 +5,24 @@
   >
     <view :class="formItemClass + '-wrap ' + formItemClass + '--' + dataLabelAlign + ' ' + tClassWrap">
       <!-- 标签区域 -->
-      <view
-        v-if="label"
-        :class="labelClass + ' ' + labelClass + '--' + dataLabelAlign
-          + (dataRequiredMark ? ' ' + labelClass + '--required' : '')
-          + (dataRequiredMark && requiredMarkPosition === 'right' ? ' ' + labelClass + '--required-right' : '')
-          + ' ' + tClassLabel"
-        :style="'width: ' + dataLabelWidth"
-      >
-        <label :for="forId">{{ label }}</label>
-        <template v-if="colon">
-          {{ globalConfig.colonText }}
-        </template>
-      </view>
+      <slot name="label">
+        <view
+          v-if="label"
+          :class="labelClass + ' ' + labelClass + '--' + dataLabelAlign
+            + (dataRequiredMark ? ' ' + labelClass + '--required' : '')
+            + (dataRequiredMark && requiredMarkPosition === 'right' ? ' ' + labelClass + '--required-right' : '')
+            + ' ' + tClassLabel"
+          :style="'width: ' + dataLabelWidth"
+        >
+          <label
+            :class="labelClass + '-text'"
+            :for="forId"
+          >{{ label }}</label>
+          <template v-if="colon">
+            {{ globalConfig.colonText }}
+          </template>
+        </view>
+      </slot>
 
       <!-- 内容区域 -->
       <view :class="formClass + '__controls ' + errorClasses + ' ' + tClassControls">
@@ -28,12 +33,14 @@
           <slot />
         </view>
         <!-- 帮助信息 -->
-        <view
-          v-if="help"
-          :class="formItemClass + '-help ' + formClass + '__controls--' + dataContentAlign + ' ' + tClassHelp"
-        >
-          {{ help }}
-        </view>
+        <slot name="help">
+          <view
+            v-if="help"
+            :class="formItemClass + '-help ' + formClass + '__controls--' + dataContentAlign + ' ' + tClassHelp"
+          >
+            {{ help }}
+          </view>
+        </slot>
 
         <!-- 校验提示信息 -->
         <view
@@ -162,14 +169,14 @@ export default {
         const formRules = target.rules?.[this.name];
         const isRequired = formRules?.some(rule => rule.required);
 
-        this.dataRules = formRules;
+        this.dataRules = formRules || [];
         this.colon = target.colon;
         this.dataLabelAlign = labelAlign || target.labelAlign;
         this.dataLabelWidth = normalizeLabelWidth(labelWidth || target.labelWidth);
         this.dataContentAlign = contentAlign || target.contentAlign;
         this.dataRequiredMark = requiredMark || target.requiredMark || globalConfig.requiredMark || isRequired;
         this.dataShowErrorMessage = typeof showErrorMessage === 'boolean' ? showErrorMessage : target.showErrorMessage;
-        this.requiredMarkPosition = target.requiredMarkPosition || globalConfig.requiredMarkPosition;
+        this.requiredMarkPosition = target.requiredMarkPosition || globalConfig.requiredMarkPosition || 'left';
       },
       innerAfterUnlinked() {
         if (this.form) {

@@ -20,7 +20,7 @@
 
 <script>
 import TToast from '@tdesign/uniapp/toast/toast.vue';
-import Toast from '@tdesign/uniapp/toast/index';
+import { Toast } from '@tdesign/uniapp';
 import TButton from '@tdesign/uniapp/button/button.vue';
 
 

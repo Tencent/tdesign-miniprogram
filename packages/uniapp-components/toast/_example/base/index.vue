@@ -58,7 +58,8 @@
 import TToast from '@tdesign/uniapp/toast/toast.vue';
 import TButton from '@tdesign/uniapp/button/button.vue';
 import SkylineBehavior from '@tdesign/uniapp/mixins/skyline.js';
-import { default as Toast } from '@tdesign/uniapp/toast/index';
+import { Toast } from '@tdesign/uniapp';
+
 export default {
   components: {
     TToast,

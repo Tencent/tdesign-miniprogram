@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { processLess } = require('./less');
+const { processTs } = require('./typescript');
 
 
 async function copy({
@@ -25,7 +26,13 @@ async function copy({
     lessResult = await processLess(filePath, targetPath);
   }
 
+  // 对 .ts 文件进行编译（排除 .d.ts）
+  let tsResult = false;
   if (!lessResult) {
+    tsResult = processTs(filePath, targetPath);
+  }
+
+  if (!lessResult && !tsResult) {
     fs.copyFileSync(filePath, targetPath);
   }
 

@@ -84,7 +84,8 @@
 <script>
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TMessage from '@tdesign/uniapp/message/message.vue';
-import Message from '@tdesign/uniapp/message/index';
+import { MessagePlugin } from '@tdesign/uniapp';
+
 export default {
   options: {
     styleIsolation: 'shared',
@@ -101,7 +102,7 @@ export default {
   created() {},
   methods: {
     showTextMessage() {
-      Message.info({
+      MessagePlugin.info({
         context: this,
         offset: [90, 32],
         duration: 5000,
@@ -111,7 +112,7 @@ export default {
       });
     },
     showIconMessage() {
-      Message.info({
+      MessagePlugin.info({
         context: this,
         offset: ['180rpx', '32rpx'],
         duration: 5000,
@@ -119,7 +120,7 @@ export default {
       });
     },
     showCloseMessage() {
-      Message.info({
+      MessagePlugin.info({
         context: this,
         offset: ['180rpx', 32],
         content: '这是一条带关闭的消息通知',
@@ -134,7 +135,7 @@ export default {
       });
     },
     showScrollMessage() {
-      Message.info({
+      MessagePlugin.info({
         context: this,
         offset: [90, 32],
         marquee: {
@@ -148,7 +149,7 @@ export default {
       });
     },
     showBtnMessage() {
-      Message.info({
+      MessagePlugin.info({
         context: this,
         offset: [90, 32],
         icon: 'notification-filled',
@@ -163,7 +164,7 @@ export default {
       });
     },
     showSingleMessage() {
-      Message.info({
+      MessagePlugin.info({
         context: this,
         offset: [90, 32],
         duration: 5000,

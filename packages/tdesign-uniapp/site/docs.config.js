@@ -524,6 +524,15 @@ export const docs = [
         componentEn: () => import('@/result/README.en-US.md'),
       },
       {
+        title: 'Segmented 分段控制器',
+        titleEn: 'Segmented',
+        name: 'segmented',
+        meta: { docType: 'data' },
+        path: '/uniapp/components/segmented',
+        component: () => import('@/segmented/README.md'),
+        componentEn: () => import('@/segmented/README.en-US.md'),
+      },
+      {
         title: 'Skeleton 骨架屏',
         titleEn: 'Skeleton',
         name: 'skeleton',
@@ -551,6 +560,15 @@ export const docs = [
         componentEn: () => import('@/swiper/README.en-US.md'),
       },
       {
+        title: 'Table 表格',
+        titleEn: 'Table',
+        name: 'table',
+        meta: { docType: 'data' },
+        path: '/uniapp/components/table',
+        component: () => import('@/table/README.md'),
+        componentEn: () => import('@/table/README.en-US.md'),
+      },
+      {
         title: 'Tag 标签',
         titleEn: 'Tag',
         name: 'tag',
@@ -568,6 +586,7 @@ export const docs = [
         component: () => import('@/watermark/README.md'),
         componentEn: () => import('@/watermark/README.en-US.md'),
       },
+
     ],
   },
   {

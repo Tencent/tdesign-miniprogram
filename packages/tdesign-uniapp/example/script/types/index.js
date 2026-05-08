@@ -11,8 +11,8 @@ const PROJECT_ROOT = path.resolve(__dirname, '../../../../../');
 
 
 const CONFIG = {
-  pkgJsonPath: path.resolve(PACKAGES_ROOT, 'uniapp-components/package.json'),
-  chatPkgJsonPath: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat/package.json'),
+  pkgJsonPath: path.resolve(PACKAGES_ROOT, 'tdesign-uniapp/package.json'),
+  chatPkgJsonPath: path.resolve(PACKAGES_ROOT, 'tdesign-uniapp-chat/package.json'),
 
   dtsDir: path.resolve(PACKAGES_ROOT, 'uniapp-components/types'),
   chatDtsDir: path.resolve(PACKAGES_ROOT, 'uniapp-pro-components/chat/types'),
@@ -25,16 +25,68 @@ const CONFIG = {
   filterTypes: ['form-item'],
 };
 
-const OTHER_EXPORTS = {
+// 基础 exports（base 和 chat 共用）
+const COMMON_EXPORTS = {
   '.': {
-    types: './types/index.d.ts',
-    default: './index.js',
+    types: './dist/types/index.d.ts',
+    default: './dist/index.js',
   },
-  './*': './*',
+  './*': './dist/*',
   './global': {
     types: './global.d.ts',
   },
 };
+
+// 仅 base 包需要的额外 exports（函数式调用、mixins、theme 等）
+const BASE_EXTRA_EXPORTS = {
+  './mixins/page-scroll': {
+    types: './dist/mixins/page-scroll.d.ts',
+    import: './dist/mixins/page-scroll.js',
+    default: './dist/mixins/page-scroll.js',
+  },
+  './dialog': {
+    types: './dist/dialog/index.d.ts',
+    import: './dist/dialog/index.js',
+    default: './dist/dialog/index.js',
+  },
+  './message': {
+    types: './dist/message/index.d.ts',
+    import: './dist/message/index.js',
+    default: './dist/message/index.js',
+  },
+  './toast': {
+    types: './dist/toast/index.d.ts',
+    import: './dist/toast/index.js',
+    default: './dist/toast/index.js',
+  },
+  './action-sheet': {
+    types: './dist/action-sheet/index.d.ts',
+    import: './dist/action-sheet/index.js',
+    default: './dist/action-sheet/index.js',
+  },
+  './theme.css': {
+    types: './dist/theme.css.d.ts',
+    default: './dist/theme.css',
+  },
+  './theme.less': {
+    types: './dist/theme.less.d.ts',
+    default: './dist/theme.less',
+  },
+  './theme-light.css': {
+    types: './dist/theme-light.css.d.ts',
+    default: './dist/theme-light.css',
+  },
+  './theme-light.less': {
+    types: './dist/theme-light.less.d.ts',
+    default: './dist/theme-light.less',
+  },
+};
+
+function getOtherExports(isChat) {
+  return isChat
+    ? { ...COMMON_EXPORTS }
+    : { ...COMMON_EXPORTS, ...BASE_EXTRA_EXPORTS };
+}
 
 const getDTSTemplate = isChat => `import type { TransformEventHandlers, ExtractNonOnProps } from '${isChat ? '@tdesign/uniapp' : '..'}/common/common';
 import type { Td{{Component}}Props } from '../{{component}}/type';
@@ -98,9 +150,9 @@ async function genOnProject({
 
   console.log(`[types][${label}] 找到 ${fileNames.length} 个组件: ${fileNames.join(', ')}`);
 
-  changePkgExports(fileNames, pkgJsonPath, label);
+  changePkgExports(fileNames, pkgJsonPath, isChat, label);
   genDTS({ list: fileNames, dtsDir, isChat, label });
-  genIndexContent(fileNames, indexPath, label);
+  genIndexContent(fileNames, indexPath, isChat, label);
   getGlobalDTS(fileNames, globalDTSPath, isChat, label);
 
   console.log(`[types][${label}] 生成完毕 ✅`);
@@ -129,19 +181,22 @@ async function main() {
 }
 
 
-function changePkgExports(fileNames, pkgJsonPath, label) {
+function changePkgExports(fileNames, pkgJsonPath, isChat, label) {
+  const otherExports = getOtherExports(isChat);
   const exportsType = fileNames.reduce((acc, item) => {
     const key = `./${item}/${item}.vue`;
+    const source = `./dist/${item}/${item}.vue`;
+
     return {
       ...acc,
       [key]: {
-        types: `./types/${item}.d.ts`,
-        import: key,
-        default: key,
+        types: `./dist/types/${item}.d.ts`,
+        import: source,
+        default: source,
       },
     };
   }, {
-    ...OTHER_EXPORTS,
+    ...otherExports,
   });
 
   const pkgJson = require(pkgJsonPath);
@@ -166,12 +221,36 @@ function genDTS({ list, dtsDir, isChat, label }) {
   console.log(`[types][${label}] 生成 ${list.length} 个 .d.ts 文件到 ${dtsDir}`);
 }
 
-function genIndexContent(fileNames, indexPath, label) {
+// 函数式调用和 mixins 的额外类型导出（追加到 types/index.d.ts 末尾）
+const EXTRA_INDEX_EXPORTS = [
+  '',
+  '// mixins',
+  'export { handlePageScroll } from \'../mixins/page-scroll\';',
+  '',
+  '// 函数式调用',
+  'export { default as DialogPlugin } from \'../dialog/index\';',
+  'export { default as Dialog } from \'../dialog/index\';',
+  'export { default as MessagePlugin } from \'../message/index\';',
+  'export { default as Message } from \'../message/index\';',
+  'export { default as Toast, showToast, hideToast } from \'../toast/index\';',
+  'export { default as ToastPlugin } from \'../toast/index\';',
+  'export type { ToastOptionsType } from \'../toast/index\';',
+  'export { default as ActionSheetPlugin, ActionSheetTheme } from \'../action-sheet/index\';',
+  'export { default as ActionSheet } from \'../action-sheet/index\';',
+  'export type { ActionSheetShowOption } from \'../action-sheet/show\';',
+];
+
+function genIndexContent(fileNames, indexPath, isChat, label) {
   const content = Array.from(new Set(fileNames))
     .filter(item => !CONFIG.filterTypes.includes(item))
     .map(item => `export * from '../${item}/type';`);
-  writeFileSync(indexPath, `${content.join('\n')}\n`);
-  console.log(`[types][${label}] 生成 index.d.ts: ${content.length} 条 export`);
+
+  // 仅 base 包追加函数式调用和 mixins 的额外导出
+  const fullContent = isChat ? content : [...content, ...EXTRA_INDEX_EXPORTS];
+  writeFileSync(indexPath, `${fullContent.join('\n')}\n`);
+
+  const extraCount = isChat ? 0 : EXTRA_INDEX_EXPORTS.filter(l => l.startsWith('export')).length;
+  console.log(`[types][${label}] 生成 index.d.ts: ${content.length} 条组件 export + ${extraCount} 条额外 export`);
 }
 
 function getGlobalDTS(fileNames, globalDTSPath, isChat, label) {

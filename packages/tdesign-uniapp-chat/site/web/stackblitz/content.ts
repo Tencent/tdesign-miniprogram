@@ -24,7 +24,7 @@ export const HTML_CONTENT = `
 `;
 
 export const MAN_JS_CONTENT = `
-import '@tdesign/uniapp/common/style/theme/index.css';
+import '@tdesign/uniapp/theme.css';
 
 import {
   createSSRApp,

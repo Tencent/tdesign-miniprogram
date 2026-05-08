@@ -22,7 +22,7 @@
           aria-role="button"
           :aria-label="dataCurrent === item ? '已选中' + item : ''"
         >
-          {{ getFirstCharacter(item) }}
+          {{ getFirstCharacter(item, showFullIndex) }}
         </view>
 
         <view

@@ -55,6 +55,7 @@ export * from '../rate/type';
 export * from '../result/type';
 export * from '../row/type';
 export * from '../search/type';
+export * from '../segmented/type';
 export * from '../side-bar/type';
 export * from '../side-bar-item/type';
 export * from '../skeleton/type';
@@ -70,6 +71,7 @@ export * from '../switch/type';
 export * from '../tab-bar/type';
 export * from '../tab-bar-item/type';
 export * from '../tab-panel/type';
+export * from '../table/type';
 export * from '../tabs/type';
 export * from '../tag/type';
 export * from '../textarea/type';
@@ -77,3 +79,18 @@ export * from '../toast/type';
 export * from '../tree-select/type';
 export * from '../upload/type';
 export * from '../watermark/type';
+
+// mixins
+export { handlePageScroll } from '../mixins/page-scroll';
+
+// 函数式调用
+export { default as DialogPlugin } from '../dialog/index';
+export { default as Dialog } from '../dialog/index';
+export { default as MessagePlugin } from '../message/index';
+export { default as Message } from '../message/index';
+export { default as Toast, showToast, hideToast } from '../toast/index';
+export { default as ToastPlugin } from '../toast/index';
+export type { ToastOptionsType } from '../toast/index';
+export { default as ActionSheetPlugin, ActionSheetTheme } from '../action-sheet/index';
+export { default as ActionSheet } from '../action-sheet/index';
+export type { ActionSheetShowOption } from '../action-sheet/show';

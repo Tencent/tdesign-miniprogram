@@ -11,7 +11,7 @@
       class="{{_.cls(labelClass, [innerLabelAlign, ['required', innerRequiredMark], ['required-right', innerRequiredMark && requiredMarkPosition === 'right']])}}  {{prefix}}-class-label"
       style="width: {{innerLabelWidth}}"
     >
-      <label for="{{for}}">{{label}}</label>
+      <label class="{{labelClass}}-text" for="{{for}}">{{label}}</label>
       <block wx:if="{{colon}}">{{globalConfig.colonText}}</block>
     </view>
 

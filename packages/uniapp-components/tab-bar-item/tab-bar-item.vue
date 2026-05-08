@@ -1,10 +1,7 @@
 <template>
   <view
     :style="'' + tools._style([customStyle])"
-    :class="'' + tools.cls(classPrefix, [
-      ['split', split],
-      ['crowded', crowded], shape]
-    ) + ' ' + tClass"
+    :class="'' + tools.cls(classPrefix, [['split', split], ['crowded', crowded], shape]) + ' ' + tClass"
   >
     <view
       :class="'' + tools.cls(classPrefix + '__content', [['checked', isChecked], theme])"
@@ -23,10 +20,12 @@
       >
         <t-badge
           v-if="badgeProps.dot || badgeProps.count"
+          :color="badgeProps.color || ''"
           :count="badgeProps.count || 0"
           :max-count="badgeProps.maxCount || 99"
           :dot="badgeProps.dot || false"
           :content="badgeProps.content || ''"
+          :shape="badgeProps.shape || 'circle'"
           :size="badgeProps.size || 'medium'"
           :visible="badgeProps.visible"
           :offset="badgeProps.offset || [0, 0]"
@@ -86,7 +85,7 @@
       :class="classPrefix + '__spread'"
     >
       <view
-        v-for="(child, index) in (subTabBar || [])"
+        v-for="(child, index) in subTabBar || []"
         :key="index"
         :class="classPrefix + '__spread-item'"
         :hover-class="classPrefix + '__spread-item--active'"
@@ -121,7 +120,6 @@ import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
 const classPrefix = `${prefix}-tab-bar-item`;
-
 
 export default {
   components: {

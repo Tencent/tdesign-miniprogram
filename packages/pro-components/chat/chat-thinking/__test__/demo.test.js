@@ -5,7 +5,7 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['base', 'complete', 'layout', 'pending'];
+const mapper = ['base', 'collapsed', 'complete', 'layout', 'pending'];
 
 describe('ChatThinking', () => {
   mapper.forEach((demoName) => {

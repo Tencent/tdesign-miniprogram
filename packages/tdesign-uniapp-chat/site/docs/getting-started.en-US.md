@@ -13,89 +13,134 @@ spline: explain
 
 ## Preview
 
-Please use WeChat to scan the QR code to preview the TDesign UniApp example. ↓
-<br/>
+Scan the QR code to preview ↓
 
 <img src="https://tdesign.gtimg.com/uniapp/example-qrcode.png" width="600" />
 
-## Before use
-
-Before using it, please make sure you have studied WeChat’s official [Simple Tutorial on Mini Programs](https://developers.weixin.qq.com/miniprogram/dev/framework/) and [Introduction to Custom Components](https://developers.weixin.qq.com/miniprogram/dev/framework/custom-component/).
+> Other platforms are also supported. Due to platform review and other reasons, previews may not be available, but this does not affect the normal use of the component library.
 
 ## Installation
 
-### npm
-
-TDesign MiniProgram already supports using NPM to install third-party packages. For details, see [NPM Support](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html?search-key=npm)
+### NPM
 
 ```bash
-npm i tdesign-miniprogram -S --production
+npm i @tdesign/uniapp-chat
 ```
 
-> After installation, npm needs to be built in WeChat developer tools: `tool -  build npm`.(If `NPM packages not found` appears during the build, please go to the `project.config.json` file to add the `packNpmManually` and `packNpmRelationList` configuration items. For details, see [NPM Support](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html?search-key=npm))
+### UNI_MODULES
 
-> After the build is successful, check the box `Compile JS to ES5`
-> <br/>
-><img width="200" src="https://tdesign.gtimg.com/miniprogram/docs/getting-started.png" />
+The plugin has been uploaded to the [DCloud Plugin Market](https://ext.dcloud.net.cn/plugin?name=tdesign-uniapp-chat). Please open the plugin details page and click `Import plugin with HBuilderX`.
 
-## Modify app.json
+## Usage
 
-Remove `"style": "v2"` in `app.json`.
+> `@tdesign/uniapp-chat` depends on `@tdesign/uniapp`. Please make sure `@tdesign/uniapp` is installed in your project.
 
-> Because [v2 configuration](https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/app.html#style) means enabling a new version of component styles, it will cause TDesign component styles to be disordered.
+### Step 1: Import Style Files
 
-## Modify tsconfig.json
+Import the component library styles in `main.ts`:
 
-If you use `typescript` to develop, you need to modify `tsconfig.json` to specify `paths`
+#### CLI Mode
+
+```js
+// Less (recommended, rpx units, fully consistent with tdesign-miniprogram)
+import '@tdesign/uniapp/theme.less';
+
+// Or import the compiled CSS file
+import '@tdesign/uniapp/theme.css';
+```
+
+#### HBuilderX Mode
+
+```js
+// Less (recommended, rpx units, fully consistent with tdesign-miniprogram)
+import './uni_modules/tdesign-uniapp/components/theme.less';
+
+// Or import the compiled CSS file
+import './uni_modules/tdesign-uniapp/components/theme.css';
+```
+
+### Step 2: Register Components
+
+#### Auto Import (Recommended)
+
+After configuring [easycom](https://uniapp.dcloud.net.cn/collocation/pages.html#easycom), you can use components directly in templates without manual imports. Add the following configuration in `pages.json`:
+
+**CLI Mode**: When using `@tdesign/uniapp-chat` from `node_modules`, configure as follows:
 
 ```json
 {
-  "paths": {
-      "tdesign-miniprogram/*":["./miniprogram/miniprogram_npm/tdesign-miniprogram/*"]
+  "easycom": {
+    "custom": {
+      "^t-chat-(.*)": "@tdesign/uniapp-chat/chat-$1/chat-$1.vue",
+      "^t-attachments": "@tdesign/uniapp-chat/attachments/attachments.vue",
+      "^t-(.*)": "@tdesign/uniapp/$1/$1.vue"
     }
-}
-```
-
-## Use components
-
-Taking the button component as an example, you only need to introduce the custom component corresponding to the button in the `JSON` file.
-
-```json
-{
-  "usingComponents": {
-    "t-button": "tdesign-miniprogram/button/button"
   }
 }
 ```
 
-Then you can use the component directly in wxml.
+**HBuilderX Mode**: When using `tdesign-uniapp-chat` from `uni_modules`, configure as follows:
+
+```json
+{
+  "easycom": {
+    "custom": {
+      "^t-chat-(.*)": "@/uni_modules/tdesign-uniapp-chat/components/chat-$1/chat-$1.vue",
+      "^t-attachments": "@/uni_modules/tdesign-uniapp-chat/components/attachments/attachments.vue",
+      "^t-(.*)": "@/uni_modules/tdesign-uniapp/components/$1/$1.vue"
+    }
+  }
+}
+```
+
+After configuration, you can use components directly in templates:
 
 ```html
-<t-button theme="primary">按钮</t-button>
+<template>
+  <t-chat-list />
+</template>
 ```
 
-## Preview in developer tools
+#### Manual Import
 
-```bash
-# Install project dependencies
-npm install
+If you don't use easycom, you can also manually import components in `<script>`:
 
-# compile
-npm run dev
+```html
+<template>
+  <t-chat-list />
+</template>
+
+<script lang="ts" setup>
+import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
+</script>
 ```
 
-Open [WeChat Developer Tools](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html) and add the `_example` directory to preview the example.
+> Only on-demand imports are supported. Full imports are not supported (full imports have compatibility issues in mini programs).
 
-## Base library version
+### Step 3: Configure Editor Hints (Optional)
 
-Minimum base library version `^2.12.0`
+It is recommended to install the [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) plugin, and add `@tdesign/uniapp-chat/global` to the `compilerOptions.types` property in your project's `tsconfig.json` to get intelligent hints for component names and APIs in VSCode and other mainstream editors.
 
-### Correspondence between component and basic library versions
+```json
+{
+  "compilerOptions": {
+    "types": [
+      "@tdesign/uniapp-chat/global",
+    ]
+  }
+}
+```
 
-| 组件   | API  | 最低基础库 | 描述 |
-| -- | -- | -- | -- |
-| Upload | [wx.previewMedia](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.previewMedia.html)                                   | 2.12.0     | -    |
-| Upload | [wx.chooseMedia](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html)                                     | 2.10.0     | -    |
-| Upload | [wx.chooseMessageFile](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseMessageFile.html)                         | 2.5.0      | -    |
-| Navbar | [wx.getMenuButtonBoundingClientRect](https://developers.weixin.qq.com/miniprogram/dev/api/ui/menu/wx.getMenuButtonBoundingClientRect.html) | 2.1.0      | -    |
+## Platform Compatibility
 
+| Platform         | Vue2 | Vue3 | H5  | Android | iOS | App-nvue | WeChat Mini Program | QQ Mini Program |
+| ------------ | ---- | ---- | --- | ------- | --- | -------- | ---------- | -------- |
+| **Support** | ✅    | ✅    | ✅   | ✅       | ✅   | ⚠️        | ✅          |  ⚠️        |
+
+## Browser Compatibility
+
+| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png" alt="Firefox" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Firefox | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png" alt="Chrome" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Chrome | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari-ios/safari-ios_48x48.png" alt="iOS Safari" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/> iOS Safari| [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/samsung-internet/samsung-internet_48x48.png" alt="Samsung" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Samsung | [<img src="https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png" alt="Opera" width="24px" height="24px" />](http://godban.github.io/browsers-support-badges/)<br/>Opera |<img src="https://user-images.githubusercontent.com/51158141/189169679-71e045f6-9b9b-4baf-8b9f-e045a40216f5.png" alt="Android Browser" width="24px" height="24px" /><br/>Android Browser|
+| --------- | --------- | --------- | --------- | --------- |--------- |
+| Firefox >=104| Chrome >=105| iOS Safari >=12.2| Samsung >=10.2 | Opera >=64 | Android Browser >=105 |
+
+For details, see [Mobile Component Library Browser Compatibility](https://github.com/Tencent/tdesign/wiki/Browser-Compatibility)
