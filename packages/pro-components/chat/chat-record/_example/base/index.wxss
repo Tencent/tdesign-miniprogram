@@ -30,10 +30,10 @@
 
 .speech-slot-btn,
 .speech-btn-error {
-  height: 48rpx;
+  /* 不设置 height，让 chat-sender 父容器的 min-height(134rpx) 自然撑起，
+     避免与 t-chat-record-hook 的 padding/line-height 叠加导致总高度超过 keyboard 模式 */
   width: 100%;
   text-align: center;
-  padding-bottom: 12rpx;
   gap: 8rpx;
   display: flex;
   align-items: center;

@@ -51,6 +51,8 @@ Page({
   },
 
   toggleVoiceIcon() {
+    // 切换前先收起键盘，避免 textarea 销毁失焦与模式切换叠加导致 chat-sender 闪烁
+    wx.hideKeyboard && wx.hideKeyboard();
     this.setData({
       allowSpeech: this.data.allowSpeech === 'keyboard' ? 'speech' : 'keyboard',
     });

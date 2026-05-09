@@ -17,16 +17,10 @@
           </t-chat-record>
         </view>
         <view slot="footer-prefix" class="demo-footer-prefix">
-          <view wx:if="{{allowSpeech === 'speech'}}" class="icon-wrapper" bind:tap="toggleVoiceIcon">
-             <t-icon
-              class="voice-input-button"
-              name="keyboard-1"
-            />
-          </view>
-          <view wx:else class="icon-wrapper" bind:tap="toggleVoiceIcon">
+          <view class="icon-wrapper" bind:tap="toggleVoiceIcon">
             <t-icon
               class="voice-input-button"
-              name="voice-wave"
+              name="{{allowSpeech === 'speech' ? 'keyboard-1' : 'voice-wave'}}"
             />
           </view>
         </view>
