@@ -33,10 +33,40 @@ function flatListItems(items: any[]): any[] {
  * - 末尾是 code / table / image 等非 text 节点时静默跳过，不注入
  * @returns 是否成功注入
  */
-function injectTailToTokens(tokens: any[], tailChar: string): boolean {
+function injectTailToTokens(tokens: any[], tailChar: string, depth = 0): boolean {
   for (let i = tokens.length - 1; i >= 0; i -= 1) {
     const token = tokens[i];
-    // 优先递归子节点
+
+    // code 块作为叶子节点，直接注入，不递归
+    if (token.type === 'code' && (token.text || token.raw)?.trim()) {
+      token.isTail = true;
+      token.tailContent = tailChar;
+      return true;
+    }
+
+    // 叶子文本节点且内容非空
+    if (token.type === 'text' && (token.text || token.raw)?.trim()) {
+      token.isTail = true;
+      token.tailContent = tailChar;
+      return true;
+    }
+
+    // table 节点：从后往前遍历 rows，再遍历 header
+    if (token.type === 'table') {
+      const allRows: any[][] = [...(token.header ? [token.header] : []), ...(token.rows || [])];
+      for (let r = allRows.length - 1; r >= 0; r -= 1) {
+        const row = allRows[r];
+        for (let c = row.length - 1; c >= 0; c -= 1) {
+          const cell = row[c];
+          if (cell.tokens?.length) {
+            if (injectTailToTokens(cell.tokens, tailChar, depth + 1)) return true;
+          }
+        }
+      }
+      continue;
+    }
+
+    // 有子节点时递归
     let children: any[] | null = null;
     if (token.tokens?.length) {
       children = token.tokens;
@@ -44,13 +74,7 @@ function injectTailToTokens(tokens: any[], tailChar: string): boolean {
       children = flatListItems(token.items);
     }
     if (children?.length) {
-      if (injectTailToTokens(children, tailChar)) return true;
-    }
-    // 叶子文本节点且内容非空
-    if (token.type === 'text' && (token.text || token.raw)?.trim()) {
-      token.isTail = true;
-      token.tailContent = tailChar;
-      return true;
+      if (injectTailToTokens(children, tailChar, depth + 1)) return true;
     }
   }
   return false;

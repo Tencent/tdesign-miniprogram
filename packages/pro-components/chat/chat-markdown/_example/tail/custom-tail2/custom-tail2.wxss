@@ -1,17 +1,5 @@
-/* 自定义光标样式：省略号逐字淡入 */
+/* 自定义光标样式：省略号 */
 .custom-tail2 {
   display: inline-block;
-  overflow: hidden;
-  animation: custom-tail2-ellipsis 1.2s steps(4, end) infinite;
-  width: 0;
-  vertical-align: bottom;
-  white-space: nowrap;
-}
-
-@keyframes custom-tail2-ellipsis {
-  0%  { width: 0; }
-  25% { width: 0.5em; }
-  50% { width: 1em; }
-  75% { width: 1.5em; }
-  100%{ width: 0; }
+  color: rgba(0, 0, 0, 0.90);
 }

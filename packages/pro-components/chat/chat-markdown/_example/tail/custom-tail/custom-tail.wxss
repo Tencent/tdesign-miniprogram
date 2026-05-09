@@ -1,8 +1,9 @@
-/* 自定义光标样式：蓝色渐变闪烁 */
+/* 自定义光标样式：蓝色圆形闪烁 */
 .custom-tail {
   display: inline-block;
-  color: black;
-  font-weight: bold;
+  color: #003CAB;
+  font-size: 0.25em;
+  vertical-align: middle;
   animation: custom-tail-blink 0.8s ease-in-out infinite;
 }
 

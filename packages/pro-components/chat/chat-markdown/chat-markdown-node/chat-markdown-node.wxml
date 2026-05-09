@@ -33,7 +33,7 @@
     </view>
   </block>
   <block wx:elif="{{item.type==='table'}}">
-    <chat-markdown-table node="{{item}}" />
+    <chat-markdown-table node="{{item}}" generic:tail-component="tail-component" />
   </block>
   <block wx:elif="{{item.type==='blockquote'}}">
     <view class="{{classPrefix}}-blockquote" data-index="{{i}}" bindtap="nodeClick"
@@ -41,7 +41,7 @@
     </view>
   </block>
   <block wx:elif="{{item.type==='code'}}">
-    <chat-markdown-code node="{{item}}" theme="{{theme}}" />
+    <chat-markdown-code node="{{item}}" theme="{{theme}}" generic:tail-component="tail-component" />
   </block>
 
   <!-- Inlines -->
