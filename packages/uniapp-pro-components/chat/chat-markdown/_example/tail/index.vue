@@ -1,21 +1,30 @@
 <template>
   <view class="chat-example-block">
+    <t-segmented
+      :options="segmentedOptions"
+      :value="segmentedValue"
+      style="margin-bottom: 16px"
+      @change="handleSegmentChange"
+    />
+    <!-- 光标：默认内置 tail 组件 -->
     <t-chat-markdown
+      v-if="segmentedValue === 'cursor'"
       :content="content"
       :streaming="streaming"
       @click="handleNodeTap"
     />
-    <button
-      style="margin-top: 16px"
-      @tap="handleReplay"
-    >
-      重新播放
-    </button>
+    <!-- 无动画：不传 streaming -->
+    <t-chat-markdown
+      v-else-if="segmentedValue === 'no-animation'"
+      :content="content"
+      @click="handleNodeTap"
+    />
   </view>
 </template>
 
 <script>
 import TChatMarkdown from '@tdesign/uniapp-chat/chat-markdown/chat-markdown.vue';
+import TSegmented from '@tdesign/uniapp/segmented/segmented.vue';
 import markdownData from '../base/mock2.js';
 
 const CHUNK_SIZE = 5;
@@ -24,32 +33,62 @@ const INTERVAL_MS = 80;
 export default {
   components: {
     TChatMarkdown,
+    TSegmented,
   },
   data() {
     return {
       content: '',
       streaming: { hasNextChunk: false, tail: true },
+      segmentedOptions: [
+        { value: 'cursor', label: '光标' },
+        { value: 'no-animation', label: '无动画' },
+      ],
+      segmentedValue: '',
+      timer: null,
     };
   },
-  mounted() {
-    this.startStreaming();
-  },
+
   methods: {
     startStreaming() {
-      let index = 0;
-      this.content = '';
-      this.streaming = { hasNextChunk: true, tail: true };
+      if (this.timer) {
+        clearInterval(this.timer);
+        this.timer = null;
+      }
 
-      const timer = setInterval(() => {
+      this.content = '';
+
+      if (this.segmentedValue === 'no-animation') {
+        let index = 0;
+        this.timer = setInterval(() => {
+          index += CHUNK_SIZE;
+          const isDone = index >= markdownData.length;
+          this.content = markdownData.slice(0, index);
+          if (isDone) {
+            clearInterval(this.timer);
+            this.timer = null;
+          }
+        }, INTERVAL_MS);
+        return;
+      }
+
+      this.streaming = { hasNextChunk: true, tail: true };
+      let index = 0;
+      this.timer = setInterval(() => {
         index += CHUNK_SIZE;
         const isDone = index >= markdownData.length;
         this.content = markdownData.slice(0, index);
         this.streaming = { hasNextChunk: !isDone, tail: true };
-        if (isDone) clearInterval(timer);
+        if (isDone) {
+          clearInterval(this.timer);
+          this.timer = null;
+        }
       }, INTERVAL_MS);
     },
-    handleReplay() {
-      this.startStreaming();
+    handleSegmentChange(e) {
+      this.segmentedValue = e.value;
+      this.$nextTick(() => {
+        this.startStreaming();
+      });
     },
     handleNodeTap(e) {
       const { node } = e;
