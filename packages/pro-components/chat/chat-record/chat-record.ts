@@ -86,6 +86,7 @@ export default class ChatRecord extends SuperComponent {
       };
 
       manager.onRecognize = (res: any) => {
+        console.error('输出语音识别结果================：', res);
         // res.result 实时识别结果；res.end 表示结束
         if (res?.result && !res?.end) {
           const voiceText = res.result;

@@ -1,7 +1,7 @@
 <view class="demo-base-container">
   <!-- 聊天发送器组件 - 文本输入模式 -->
   <view class="chat-sender-demo-wrapper">
-    <view class="chat-sender-wrapper">
+    <view class="chat-sender-wrapper" style="bottom: {{keyboardHeight}}px;">
       <t-chat-sender
         value="{{query}}"
         loading="{{loading}}"
@@ -17,13 +17,18 @@
           </t-chat-record>
         </view>
         <view slot="footer-prefix" class="demo-footer-prefix">
-          <t-icon
-            wx:if="{{allowSpeech === 'speech'}}"
-            class="voice-input-button"
-            name="keyboard-1"
-            bind:tap="toggleVoiceIcon"
-          />
-          <t-icon wx:else class="voice-input-button" name="voice-wave" bind:tap="toggleVoiceIcon" />
+          <view wx:if="{{allowSpeech === 'speech'}}" class="icon-wrapper" bind:tap="toggleVoiceIcon">
+             <t-icon
+              class="voice-input-button"
+              name="keyboard-1"
+            />
+          </view>
+          <view wx:else class="icon-wrapper" bind:tap="toggleVoiceIcon">
+            <t-icon
+              class="voice-input-button"
+              name="voice-wave"
+            />
+          </view>
         </view>
       </t-chat-sender>
     </view>
