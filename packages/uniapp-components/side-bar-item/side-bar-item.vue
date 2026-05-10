@@ -68,12 +68,13 @@
 </template>
 <script>
 import TBadge from '../badge/badge';
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+
+import props from './props';
 
 
 const name = `${prefix}-side-bar-item`;
@@ -118,8 +119,8 @@ export default {
 
         return tools._style([
           {
-            fontSize: 'var(--td-side-bar-icon-size, 20px)',
-            marginRight: '2px',
+            fontSize: 'var(--td-side-bar-icon-size, 40rpx)',
+            marginRight: '4rpx',
           },
           this.innerIcon.style || '',
         ]);
