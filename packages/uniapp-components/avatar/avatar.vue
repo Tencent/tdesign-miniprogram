@@ -51,6 +51,7 @@
           name="icon"
         >
           <t-icon
+            :custom-style="iconCustomStyle"
             :t-class="classPrefix + '__icon ' + classPrefix + '__icon--' + (iconData.activeIdx == iconData.index ? 'active ' : ' ') + tClassIcon"
             :prefix="iconData.prefix"
             :name="iconName || iconData.name"
@@ -59,7 +60,6 @@
             :aria-hidden="!!iconData.ariaHidden"
             :aria-label="iconData.ariaLabel"
             :aria-role="iconData.ariaRole"
-            :custom-style="iconCustomStyle"
             @click="iconData.click || ''"
           />
         </block>
@@ -77,16 +77,17 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
 import TBadge from '../badge/badge';
-import TImage from '../image/image';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import avatarProps from './props';
+import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
 import { setIcon, systemInfo, addUnit } from '../common/utils';
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+import TImage from '../image/image';
+
 import * as utils from './computed.js';
-import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import avatarProps from './props';
 
 
 const name = `${prefix}-avatar`;
@@ -136,9 +137,9 @@ export default {
     computed: {
       iconCustomStyle() {
         const fontSize = {
-          small: 'var(--td-avatar-icon-small-font-size, 20px)',
-          medium: 'var(--td-avatar-icon-medium-font-size, 24px)',
-          large: 'var(--td-avatar-icon-large-font-size, 32px)',
+          small: 'var(--td-avatar-icon-small-font-size, 40rpx)',
+          medium: 'var(--td-avatar-icon-medium-font-size, 48rpx)',
+          large: 'var(--td-avatar-icon-large-font-size, 64rpx)',
         };
 
         return tools._style([
