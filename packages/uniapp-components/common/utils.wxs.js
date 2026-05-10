@@ -106,7 +106,7 @@ function _style(styles) {
     return styles
       .filter(item => item != null && item !== '')
       .map(item => ((isArray(item) || isObject(item)) ? _style(item) : endsWith(item, ';')))
-      .join(' ');
+      .join(';');
   }
 
   if (isObject(styles)) {
