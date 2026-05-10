@@ -305,8 +305,8 @@ export default {
       },
 
       emitChange(data) {
-        this.$emit('change', data);
         this.$emit('update:value', data.value);
+        this.$emit('change', data);
       },
 
       onFocus(e) {
