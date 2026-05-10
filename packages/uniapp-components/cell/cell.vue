@@ -93,15 +93,15 @@
       ]"
     >
       <t-icon
-        v-if="rightArrow"
+        v-if="iRightArrow"
         :custom-style="rightArrowCustomStyle"
-        :t-class=" classPrefix + '__right-icon ' + tClassRightIcon"
-        :name="rightArrow.name || ''"
-        :size="rightArrow.size"
-        :color="rightArrow.color"
+        :t-class="classPrefix + '__right-icon ' + tClassRightIcon"
+        :name="iRightArrow.name || ''"
+        :size="iRightArrow.size"
+        :color="iRightArrow.color"
         :aria-hidden="true"
-        :aria-label="rightArrow.ariaLabel"
-        :aria-role="rightArrow.ariaRole"
+        :aria-label="iRightArrow.ariaLabel"
+        :aria-role="iRightArrow.ariaRole"
         @click="'handleClose' || ''"
       />
       <block v-else>
@@ -111,7 +111,7 @@
         >
           <t-icon
             :custom-style="rightIconCustomStyle"
-            :t-class=" classPrefix + '__right-icon ' + tClassRightIcon"
+            :t-class="classPrefix + '__right-icon ' + tClassRightIcon"
             :name="iRightIcon.name"
             :size="iRightIcon.size"
             :color="iRightIcon.color || ''"
@@ -127,21 +127,22 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import TImage from '../image/image';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
 import { calcIcon, addUnit } from '../common/utils';
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+import TImage from '../image/image';
 
-import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import props from './props';
 
 
 const name = `${prefix}-cell`;
+
 const COMMON_RIGHT_ICON_STYLE = {
   color: 'var(--td-cell-right-icon-color, var(--td-text-color-placeholder, var(--td-font-gray-3, rgba(0, 0, 0, .4))))',
-  fontSize: 'var(--td-cell-right-icon-font-size, 24px)',
+  fontSize: 'var(--td-cell-right-icon-font-size, 48rpx)',
 };
 
 export default {
@@ -178,27 +179,45 @@ export default {
       return {
         prefix,
         classPrefix: name,
-        rightArrow: null,
-        iRightIcon: null,
-        iLeftIcon: null,
-        isLastChild: false,
         tools,
+        isLastChild: false,
       };
     },
     computed: {
-      rightArrowCustomStyle() {
-        if (!this.rightArrow) return '';
+      leftIconCustomStyle() {
+        if (!this.iLeftIcon) return '';
+
         return tools._style([
           {
-            color: this.rightArrow.color
-              ? this.rightArrow.color
+            color: this.iLeftIcon.color
+              ? this.iLeftIcon.color
+              : 'var(--td-cell-left-icon-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)))',
+            fontSize: this.iLeftIcon.size
+              ? addUnit(this.iLeftIcon.size)
+              : 'var(--td-cell-left-icon-font-size, 48rpx)',
+          },
+          this.iLeftIcon.style || '',
+        ]);
+      },
+      leftImageCustomStyle() {
+        return tools._style({
+          width: 'var(--td-cell-image-width, 96rpx)',
+          height: 'var(--td-cell-image-height, 96rpx)',
+        });
+      },
+      rightArrowCustomStyle() {
+        if (!this.iRightArrow) return '';
+        return tools._style([
+          {
+            color: this.iRightArrow.color
+              ? this.iRightArrow.color
               : COMMON_RIGHT_ICON_STYLE.color,
-            fontSize: this.rightArrow.size
-              ? addUnit(this.rightArrow.size)
+            fontSize: this.iRightArrow.size
+              ? addUnit(this.iRightArrow.size)
               : COMMON_RIGHT_ICON_STYLE.fontSize,
           },
           this.rightIconStyle || '',
-          this.rightArrow.style || '',
+          this.iRightArrow.style || '',
         ]);
       },
       rightIconCustomStyle() {
@@ -216,52 +235,28 @@ export default {
           this.iRightIcon.style || '',
         ]);
       },
-      leftIconCustomStyle() {
-        if (!this.iLeftIcon) return '';
-
-        return tools._style([
-          {
-            color: this.iLeftIcon.color
-              ? this.iLeftIcon.color
-              : 'var(--td-cell-left-icon-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)))',
-            fontSize: this.iLeftIcon.size
-              ? addUnit(this.iLeftIcon.size)
-              : 'var(--td-cell-left-icon-font-size, 24px)',
-          },
-          this.iLeftIcon.style || '',
-        ]);
-      },
-      leftImageCustomStyle() {
-        return tools._style({
-          height: 'var(--td-cell-image-height, 48px)',
-          width: 'var(--td-cell-image-width, 48px)',
-        });
-      },
     },
     watch: {
       leftIcon: {
         handler(e) {
-          this.setIcon('iLeftIcon', e, '');
+          this.iLeftIcon = calcIcon(e, '');
         },
         immediate: true,
       },
       rightIcon: {
         handler(e) {
-          this.setIcon('iRightIcon', e, '');
+          this.iRightIcon = calcIcon(e, '');
         },
         immediate: true,
       },
       arrow: {
         handler(e) {
-          this.setIcon('rightArrow', e, 'chevron-right');
+          this.iRightArrow = calcIcon(e, 'chevron-right');
         },
         immediate: true,
       },
     },
     methods: {
-      setIcon(e, t, s) {
-        this[e] = calcIcon(t, s);
-      },
       onClick(e) {
         this.$emit('click', e);
         this.jumpLink();
