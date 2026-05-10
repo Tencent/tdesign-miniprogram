@@ -63,11 +63,12 @@
   </view>
 </template>
 <script>
-import TImage from '../image/image';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
 import tools from '../common/utils.wxs';
+import TImage from '../image/image';
+
+import props from './props';
 
 
 const name = `${prefix}-footer`;
@@ -98,14 +99,14 @@ export default {
     computed: {
       iconCustomStyle() {
         return tools._style({
-          width: 'var(--td-footer-logo-icon-width, 24px)',
-          height: 'var(--td-footer-logo-icon-height, 24px)',
-          marginRight: 'var(--td-footer-logo-icon-margin-right, var(--td-spacer, 8px))',
+          width: 'var(--td-footer-logo-icon-width, 48rpx)',
+          height: 'var(--td-footer-logo-icon-height, 48rpx)',
+          marginRight: 'var(--td-footer-logo-icon-margin-right, var(--td-spacer, 16rpx))',
         });
       },
       titleUrlCustomStyle() {
         return tools._style({
-          width: 'var(--td-footer-logo-title-url-width, 128px)',
+          width: 'var(--td-footer-logo-title-url-width, 256rpx)',
         });
       },
     },
