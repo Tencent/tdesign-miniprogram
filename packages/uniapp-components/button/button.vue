@@ -79,13 +79,14 @@
   </button>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import TLoading from '../loading/loading';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
 import { calcIcon, addUnit } from '../common/utils';
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+import TLoading from '../loading/loading';
+
+import props from './props';
 
 
 const name = `${prefix}-button`;
@@ -127,10 +128,10 @@ export default {
           return {};
         }
         const fontSize = {
-          'extra-small': 'var(--td-button-extra-small-icon-font-size, 18px)',
-          small: 'var(--td-button-small-icon-font-size, 18px)',
-          medium: 'var(--td-button-medium-icon-font-size, 20px)',
-          large: 'var(--td-button-large-icon-font-size, 24px)',
+          'extra-small': 'var(--td-button-extra-small-icon-font-size, 36rpx)',
+          small: 'var(--td-button-small-icon-font-size, 36rpx)',
+          medium: 'var(--td-button-medium-icon-font-size, 40rpx)',
+          large: 'var(--td-button-large-icon-font-size, 48rpx)',
         };
 
         return tools._style([
@@ -138,7 +139,7 @@ export default {
             fontSize: this.innerIcon.size
               ? addUnit(this.innerIcon.size)
               : fontSize[this.size || 'medium'],
-            borderRadius: 'var(--td-button-icon-border-radius, 4px)',
+            borderRadius: 'var(--td-button-icon-border-radius, 8rpx)',
           },
           this.innerIcon.style || '',
         ]);
@@ -242,10 +243,10 @@ export default {
 
 /* #ifdef H5 || MP-WEIXIN */
 :deep(.t-button__loading) + .t-button__content:not(:empty) {
-  margin-left: 4px;
+  margin-left: 8rpx;
 }
 :deep(.t-button__icon) + .t-button__content:not(:empty) {
-  margin-left: 4px;
+  margin-left: 8rpx;
 }
 /* #endif */
 
