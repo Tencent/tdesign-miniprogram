@@ -13,7 +13,7 @@ export const getListThemeItemClass = function (props) {
 
 export const getIconData = function (icon) {
   if (utils.isString(icon)) {
-    return { name: icon };
+    return { name: icon, size: '48rpx' };
   }
 
   if (utils.isNoEmptyObj(icon)) {
