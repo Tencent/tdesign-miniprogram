@@ -8,6 +8,17 @@ Page({
     loading: false, // 发送按钮加载状态
     showVoice: false, // 是否显示语音输入组件
     allowSpeech: 'speech',
+    keyboardHeight: 0, // 键盘高度（px）
+  },
+
+  /**
+   * 监听键盘高度变化，弹出键盘时将 chat-sender 往上推
+   */
+  onKeyboardHeightChange(e) {
+    const height = (e && e.detail && e.detail.height) || 0;
+    this.setData({
+      keyboardHeight: height,
+    });
   },
 
   /**
@@ -40,6 +51,8 @@ Page({
   },
 
   toggleVoiceIcon() {
+    // 切换前先收起键盘，避免 textarea 销毁失焦与模式切换叠加导致 chat-sender 闪烁
+    wx.hideKeyboard && wx.hideKeyboard();
     this.setData({
       allowSpeech: this.data.allowSpeech === 'keyboard' ? 'speech' : 'keyboard',
     });
@@ -54,18 +67,20 @@ Page({
     console.log('语音识别结果:', voiceMsg);
 
     // 将语音识别结果设置到输入框中
-    this.setData({
-      query: voiceMsg.voiceText,
-      showVoice: false, // 识别完成后隐藏语音输入组件
-      allowSpeech: 'keyboard',
-    });
+    if(voiceMsg.voiceText) {
+      this.setData({
+        query: voiceMsg.voiceText,
+        showVoice: false, // 识别完成后隐藏语音输入组件
+        allowSpeech: 'keyboard',
+      });
+    }
 
     // 提示用户
-    wx.showToast({
-      title: '识别成功',
-      icon: 'success',
-      duration: 1500,
-    });
+    // wx.showToast({
+    //   title: '识别成功',
+    //   icon: 'success',
+    //   duration: 1500,
+    // });
   },
 
   /**

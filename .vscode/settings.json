@@ -46,12 +46,29 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.words": [
-    "stylelint",
-    "cascader",
-    "tdesign",
-    "uniapp",
-    "backtop",
-    "miniprogram"
-  ]
+  "cSpell.words": ["stylelint", "cascader", "tdesign", "uniapp", "backtop", "miniprogram"],
+  "terminal.integrated.profiles.linux": {
+    "bash": {
+      "path": "bash",
+      "icon": "terminal-bash"
+    },
+    "zsh": {
+      "path": "zsh"
+    },
+    "fish": {
+      "path": "fish"
+    },
+    "tmux": {
+      "path": "tmux",
+      "icon": "terminal-tmux"
+    },
+    "pwsh": {
+      "path": "pwsh",
+      "icon": "terminal-powershell"
+    },
+    "supercode-sh": {
+      "path": "/bin/zsh",
+      "args": ["-l"]
+    }
+  }
 }

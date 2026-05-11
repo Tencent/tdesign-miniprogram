@@ -1,40 +1,17 @@
 .demo-base-container {
   padding: 56rpx 0 0 0;
   background-color: var(--td-bg-color-container);
-  height: 488rpx;
+  height: 57vh;
   position: relative;
 }
 
 /* 聊天发送器包装器 */
 .chat-sender-demo-wrapper {
   margin-bottom: 32rpx;
-  /* border: 2rpx solid #e5e5e5; */
   border-radius: 8rpx;
   overflow: hidden;
 }
 
-.chat-sender-height-limit {
-  height: 72rpx;
-  padding: 0 24rpx;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chat-sender-height-left-limit {
-  height: 70rpx;
-  width: 70rpx;
-  border-top: 1px var(--td-component-stroke) dashed;
-  border-left: 1px var(--td-component-stroke) dashed;
-  border-top-left-radius: 32rpx;
-}
-.chat-sender-height-right-limit {
-  height: 70rpx;
-  width: 70rpx;
-  border-top: 1px var(--td-component-stroke) dashed;
-  border-right: 1px var(--td-component-stroke) dashed;
-  border-top-right-radius: 32rpx;
-}
 .chat-sender-placeholder {
   font-size: 32rpx;
   font-weight: 600;
@@ -48,16 +25,26 @@
   width: 100%;
   bottom: 0rpx;
   background-color: var(--td-bg-color-container);
+  transition: bottom 0.2s ease-out;
+}
+
+.speech-slot-btn,
+.speech-btn-error {
+  /* 不设置 height，让 chat-sender 父容器的 min-height(134rpx) 自然撑起，
+     避免与 t-chat-record-hook 的 padding/line-height 叠加导致总高度超过 keyboard 模式 */
+  width: 100%;
+  text-align: center;
+  gap: 8rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: rgba(0, 0, 0, 0.9);
 }
 
 .speech-btn-error {
   color: red;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8rpx;
-  font-size: 28rpx;
-  font-weight: 600;
 }
 
 .demo-footer {
@@ -77,7 +64,17 @@
 }
 
 /* 语音输入按钮样式 */
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: 64rpx;
+  height: 64rpx;
+  background-color: #fff;
+  border: 1px solid #DCDCDC;
+}
 .voice-input-button {
-  font-size: 50rpx;
-  color: #0052d9;
+  font-size: 36rpx;
+  color: #000;
 }
