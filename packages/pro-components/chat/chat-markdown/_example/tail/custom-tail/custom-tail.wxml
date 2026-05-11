@@ -1,2 +1,2 @@
 <!-- 自定义光标组件示例：圆形光标 -->
-<text class="custom-tail">●</text>
+<view class="custom-tail"></view>

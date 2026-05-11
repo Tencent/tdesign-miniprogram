@@ -1,7 +1,7 @@
 import markdownData from '../base/mock2.js';
 
-const CHUNK_SIZE = 5;
-const INTERVAL_MS = 80;
+const CHUNK_SIZE = 1;
+const INTERVAL_MS = 100;
 
 Page({
   data: {

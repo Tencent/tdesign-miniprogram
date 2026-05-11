@@ -2,3 +2,10 @@
   background-color: var(--td-bg-color-container);
   padding: 32rpx;
 }
+
+.chat-example-scroll {
+  height: 400rpx;
+  padding: 16rpx;
+  width: 95%;
+  border: 1rpx solid gray;
+}
