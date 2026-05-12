@@ -154,9 +154,9 @@
   &-tail {
     display: inline-block;
     color: #d9d9d9;
+    margin-left: 8rpx;
     transform: scaleX(0.25);
     transform-origin: left center;
-    animation: chat-markdown-tail-blink 1s step-start infinite;
   }
 
   // 表格样式
@@ -197,16 +197,5 @@
       padding: @chat-markdown-table-padding;
       border: 1rpx solid @component-border;
     }
-  }
-}
-
-@keyframes chat-markdown-tail-blink {
-  0%,
-  100% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0;
   }
 }

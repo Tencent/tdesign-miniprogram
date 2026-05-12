@@ -4,7 +4,7 @@
 }
 
 .chat-example-scroll {
-  height: 400rpx;
+  height: 800rpx;
   padding: 16rpx;
   width: 95%;
   border: 1rpx solid gray;

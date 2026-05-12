@@ -6,19 +6,24 @@
       style="margin-bottom: 16px"
       @change="handleSegmentChange"
     />
-    <!-- 光标：默认内置 tail 组件 -->
-    <t-chat-markdown
-      v-if="segmentedValue === 'cursor'"
-      :content="content"
-      :streaming="streaming"
-      @click="handleNodeTap"
-    />
-    <!-- 无动画：不传 streaming -->
-    <t-chat-markdown
-      v-else-if="segmentedValue === 'no-animation'"
-      :content="content"
-      @click="handleNodeTap"
-    />
+    <scroll-view
+      class="chat-example-scroll"
+      scroll-y
+    >
+      <!-- 光标：默认内置 tail 组件 -->
+      <t-chat-markdown
+        v-if="segmentedValue === 'cursor'"
+        :content="content"
+        :streaming="streaming"
+        @click="handleNodeTap"
+      />
+      <!-- 无动画：不传 streaming -->
+      <t-chat-markdown
+        v-else-if="segmentedValue === 'no-animation'"
+        :content="content"
+        @click="handleNodeTap"
+      />
+    </scroll-view>
   </view>
 </template>
 
@@ -27,8 +32,8 @@ import TChatMarkdown from '@tdesign/uniapp-chat/chat-markdown/chat-markdown.vue'
 import TSegmented from '@tdesign/uniapp/segmented/segmented.vue';
 import markdownData from '../base/mock2.js';
 
-const CHUNK_SIZE = 5;
-const INTERVAL_MS = 80;
+const CHUNK_SIZE = 1;
+const INTERVAL_MS = 100;
 
 export default {
   components: {
@@ -101,7 +106,15 @@ export default {
 </script>
 <style>
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx;
+}
+
+.chat-example-scroll {
+  height: 800rpx;
+  margin-top: 16rpx;
+  padding: 16rpx;
+  width: 95%;
+  border: 1rpx solid gray;
 }
 </style>

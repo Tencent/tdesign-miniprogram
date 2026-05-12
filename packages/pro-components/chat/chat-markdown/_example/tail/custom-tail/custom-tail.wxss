@@ -1,4 +1,4 @@
-/* 自定义光标样式：蓝色圆形闪烁 */
+/* 自定义光标样式：蓝色圆形 */
 .custom-tail {
   display: inline-block;
   width: 16rpx;
@@ -7,10 +7,5 @@
   transform: translateY(-25%);
   background-color: #003CAB;
   vertical-align: middle;
-  animation: custom-tail-blink 0.8s ease-in-out infinite;
-}
-
-@keyframes custom-tail-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.2; }
+  margin-left: 4rpx;
 }
