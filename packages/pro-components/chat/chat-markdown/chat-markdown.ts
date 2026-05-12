@@ -7,6 +7,79 @@ import { TdChatMarkdownProps } from './type';
 const { prefix } = config;
 const name = `${prefix}-chat-markdown`;
 
+const DEFAULT_TAIL_CONTENT = '▋';
+
+/** 解析 tail 参数，返回光标字符；不需要显示时返回 null */
+function resolveTailContent(tail?: boolean | { content?: string }): string | null {
+  if (!tail) return null;
+  if (typeof tail === 'boolean') return DEFAULT_TAIL_CONTENT;
+  return tail.content || DEFAULT_TAIL_CONTENT;
+}
+
+/**
+ * 将列表项的子 tokens 展平，供 injectTailToTokens 递归使用。
+ * marked 的 list token 结构：list.items[].tokens（而非 list.tokens）
+ */
+function flatListItems(items: any[]): any[] {
+  return items.reduce((result: any[], item: any) => {
+    if (item.tokens?.length) result.push(...item.tokens);
+    return result;
+  }, []);
+}
+
+/**
+ * 从后往前遍历 token 树，找到最后一个非空 text 叶子节点，打上 isTail 标记。
+ * - 有子节点（tokens / items）时优先递归
+ * - 末尾是 code / table / image 等非 text 节点时静默跳过，不注入
+ * @returns 是否成功注入
+ */
+function injectTailToTokens(tokens: any[], tailChar: string, depth = 0): boolean {
+  for (let i = tokens.length - 1; i >= 0; i -= 1) {
+    const token = tokens[i];
+
+    // code 块作为叶子节点，直接注入，不递归
+    if (token.type === 'code' && (token.text || token.raw)?.trim()) {
+      token.isTail = true;
+      token.tailContent = tailChar;
+      return true;
+    }
+
+    // 叶子文本节点且内容非空
+    if (token.type === 'text' && (token.text || token.raw)?.trim()) {
+      token.isTail = true;
+      token.tailContent = tailChar;
+      return true;
+    }
+
+    // table 节点：从后往前遍历 rows，再遍历 header
+    if (token.type === 'table') {
+      const allRows: any[][] = [...(token.header ? [token.header] : []), ...(token.rows || [])];
+      for (let r = allRows.length - 1; r >= 0; r -= 1) {
+        const row = allRows[r];
+        for (let c = row.length - 1; c >= 0; c -= 1) {
+          const cell = row[c];
+          if (cell.tokens?.length) {
+            if (injectTailToTokens(cell.tokens, tailChar, depth + 1)) return true;
+          }
+        }
+      }
+      continue;
+    }
+
+    // 有子节点时递归
+    let children: any[] | null = null;
+    if (token.tokens?.length) {
+      children = token.tokens;
+    } else if (token.items?.length) {
+      children = flatListItems(token.items);
+    }
+    if (children?.length) {
+      if (injectTailToTokens(children, tailChar, depth + 1)) return true;
+    }
+  }
+  return false;
+}
+
 export interface ChatMarkdownProps extends TdChatMarkdownProps {}
 
 @wxComponent()
@@ -28,6 +101,10 @@ export default class ChatMarkdown extends SuperComponent {
     content: function (markdown: string) {
       this.parseMarkdown(markdown);
     },
+    // streaming 变化时重新解析（如 hasNextChunk 从 true 变 false，光标消失）
+    streaming: function () {
+      this.parseMarkdown(this.data.content);
+    },
   };
 
   methods = {
@@ -36,6 +113,13 @@ export default class ChatMarkdown extends SuperComponent {
       try {
         const lexer = new Lexer(this.data.options);
         const tokens = lexer.lex(markdown);
+
+        // 尾部光标注入
+        const { streaming } = this.data;
+        const tailChar = resolveTailContent(streaming?.tail);
+        if (streaming?.hasNextChunk && tailChar) {
+          injectTailToTokens(tokens, tailChar);
+        }
 
         this.setData({ nodes: tokens });
       } catch (error) {

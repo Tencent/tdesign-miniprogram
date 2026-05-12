@@ -148,7 +148,12 @@
             <t-chat-markdown-node :nodes="item.tokens" />
           </block>
           <block v-else>
-            {{ '' + item.raw + '' }}
+            {{ '' + item.raw + '' }}<text
+              v-if="item.isTail"
+              :class="classPrefix + '-tail'"
+            >
+              {{ item.tailContent }}
+            </text>
           </block>
         </view>
       </block>
