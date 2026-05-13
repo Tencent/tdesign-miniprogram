@@ -57,7 +57,7 @@ export default class ChatRecord extends SuperComponent {
     isManagerBusy: false,
     ignoreNextOnStop: false,
     managerRecording: false,
-    waveList: Array.from({ length: 13 }).map((_, i) => i + 1),
+      waveList: Array.from({ length: 27 }).map((_, i) => i + 1),
     bubbleStatusClass: 'bubble-blue',
   };
 

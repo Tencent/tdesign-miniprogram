@@ -28,13 +28,21 @@
     <!-- mask -->
     <view class="{{classPrefix}}-audio-input__mask" bindtap="handleCancelSend" />
 
-<view class="{{classPrefix}}-audio-input__main">
+    <view class="{{classPrefix}}-audio-input__main">
       <!-- 底部区域 -->
       <view
         wx:if="{{processStatus === 'recording' || processStatus === 'confirm'}}"
         class="{{classPrefix}}-audio-input__ft {{processStatus}} {{interactStatus}} fade-in"
         style="bottom: {{bottomHeight}}rpx;"
       >
+        <!-- 录音阶段：音波动画（独立在提示文字上方） -->
+        <view wx:if="{{processStatus === 'recording'}}"
+          class="audio-wave-outer audio-wave {{interactStatus === 'release_cancel' ? 'wave-red' : 'wave-blue'}}">
+          <block wx:for="{{waveList}}" wx:key="*this">
+            <view class="wave-item" />
+          </block>
+        </view>
+
         <!-- 提示文字 -->
         <view class="tips-text">
           <block wx:if="{{processStatus === 'recording'}}">
@@ -43,16 +51,10 @@
           </block>
         </view>
 
-        <!-- 录音阶段：全宽大按钮 -->
+        <!-- 录音阶段：全宽大按钮（纯色空按钮，仅承载手势） -->
         <view wx:if="{{processStatus === 'recording'}}"
           class="record-main-btn {{interactStatus === 'release_cancel' ? 'is-cancel' : 'is-record'}}"
           catchtouchstart="startRecord" catchtouchend="stopRecord" catchtouchmove="touchmove" catchtouchcancel="touchcancel">
-          <!-- 音波动画 -->
-          <view class="audio-wave {{interactStatus === 'release_cancel' ? 'wave-red' : 'wave-blue'}}">
-            <block wx:for="{{waveList}}" wx:key="*this">
-              <view class="wave-item" />
-            </block>
-          </view>
         </view>
 
         <!-- 确认按钮区（Send/Cancel） -->
