@@ -158,7 +158,6 @@
     line-height: @chat-record-hook-line-height;
     letter-spacing: @chat-record-hook-letter-spacing;
     border-radius: @chat-record-hook-border-radius;
-    border: @chat-record-hook-border;
     background: @chat-record-hook-bg;
   }
 
@@ -181,7 +180,7 @@
       left: 0;
       right: 0;
       bottom: 0;
-      min-height: 360rpx;
+      min-height: 420rpx;
       z-index: @chat-record-mask-z-index;
       background: #ffffff;
       opacity: 0;
@@ -203,89 +202,6 @@
       pointer-events: none;
       transition: opacity @chat-record-transition-opacity;
     }
-
-    // ==================== 气泡动画容器 ====================
-
-    &-ani {
-      display: flex;
-      justify-content: center;
-      width: 100%;
-      margin-bottom: @chat-record-bubble-margin-bottom;
-      padding: 0 @chat-record-bubble-padding-horizontal;
-      box-sizing: border-box;
-      opacity: 1;
-      transition: opacity 0.3s ease;
-      animation: fadeIn 0.3s ease;
-
-      // 气泡容器
-      .bubble-container {
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: @chat-record-bubble-padding;
-        border-radius: @chat-record-bubble-border-radius;
-        min-width: @chat-record-bubble-min-width;
-        min-height: @chat-record-bubble-min-height;
-        width: auto;
-        // 只对特定属性做过渡，避免 height 变化时闪烁
-        transition: background-color @chat-record-transition-ease,
-          transform @chat-record-transition-ease,
-          min-width @chat-record-transition-ease,
-          padding @chat-record-transition-ease;
-
-        // 气泡尾巴 mixin
-        .bubble-tail(@color, @left: 50%, @transform: translateX(-50%)) {
-          content: '';
-          position: absolute;
-          bottom: -14rpx;
-          left: @left;
-          transform: @transform;
-          border-left: 16rpx solid transparent;
-          border-right: 16rpx solid transparent;
-          border-top: 16rpx solid @color;
-          transition: all @chat-record-transition-ease;
-        }
-
-        // 蓝色气泡（默认）
-        &.bubble-blue {
-          background-color: @chat-record-color-blue;
-          color: @chat-record-color-white;
-
-          &::after {
-            .bubble-tail(@chat-record-color-blue);
-          }
-        }
-
-        // 红色气泡（取消状态）
-        &.bubble-red {
-          background-color: @chat-record-color-red;
-          color: @chat-record-color-white;
-          min-width: @chat-record-bubble-red-min-width;
-          padding: @chat-record-bubble-red-padding;
-          transform: translateX(@chat-record-bubble-red-translate-x);
-
-          &::after {
-            .bubble-tail(@chat-record-color-red);
-          }
-        }
-
-        // 宽气泡（转文字状态）
-        &.bubble-wide {
-          background-color: @chat-record-color-blue;
-          color: @chat-record-color-white;
-          min-width: @chat-record-bubble-wide-min-width;
-          max-width: none;
-          justify-content: flex-start;
-
-          &::after {
-            .bubble-tail(@chat-record-color-blue, @chat-record-bubble-tail-right);
-          }
-        }
-      }
-    }
-
-    // ==================== 气泡内容 ====================
 
     // 音量波浪条
     .audio-wave {
@@ -313,85 +229,7 @@
         .generate-wave-delays(@n, (@i + 1));
       }
 
-.generate-wave-delays(30);
-    }
-
-    // 取消图标（省略号）
-    .cancel-icon {
-      display: flex;
-      align-items: center;
-      gap: @chat-record-dot-gap;
-      font-size: 0;
-
-      &::before {
-        content: '';
-        display: block;
-        width: @chat-record-dot-size;
-        height: @chat-record-dot-size;
-        background: @chat-record-color-white;
-        border-radius: 50%;
-        box-shadow:
-          @chat-record-dot-shadow-offset 0 0 @chat-record-color-white,
-          (@chat-record-dot-shadow-offset * 2) 0 0 @chat-record-color-white,
-          (@chat-record-dot-shadow-offset * 3) 0 0 @chat-record-color-white,
-          (@chat-record-dot-shadow-offset * 4) 0 0 @chat-record-color-white;
-        margin-right: @chat-record-dot-margin-right;
-      }
-    }
-
-
-    .cancel-text {
-      color: @chat-record-color-white;
-      font-size: @chat-record-cancel-font-size;
-      font-weight: 600;
-    }
-
-    // 转文字内容
-    .convert-content {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-
-      .editable-textarea {
-        width: 100%;
-        height: @chat-record-textarea-min-height;
-        background: transparent;
-        border: none;
-        color: @chat-record-color-white;
-        font-family: "PingFang SC";
-        font-size: @chat-record-textarea-font-size;
-        font-weight: 600;
-        line-height: @chat-record-textarea-line-height;
-        outline: none;
-        resize: none;
-        overflow-y: auto;
-        -webkit-appearance: none;
-      }
-
-      .convert-dots {
-        align-self: flex-end;
-        display: flex;
-        align-items: center;
-        gap: @chat-record-dot-gap;
-        font-size: 0;
-
-        &::before {
-          content: '';
-          display: block;
-          width: @chat-record-dot-size;
-          height: @chat-record-dot-size;
-          background: @chat-record-color-white;
-          border-radius: 50%;
-          box-shadow:
-            @chat-record-dot-shadow-offset 0 0 @chat-record-color-white,
-            (@chat-record-dot-shadow-offset * 2) 0 0 @chat-record-color-white,
-            (@chat-record-dot-shadow-offset * 3) 0 0 @chat-record-color-white,
-            (@chat-record-dot-shadow-offset * 4) 0 0 @chat-record-color-white;
-          margin-right: @chat-record-dot-margin-right;
-        }
-      }
+      .generate-wave-delays(30);
     }
 
     // ==================== 底部操作区 ====================
@@ -445,8 +283,6 @@
       &.release_cancel .tips-text {
         color: @chat-record-color-red;
       }
-
-      // 全宽录音大按钮：纯色圆角空按钮（音波已移至外部）
       .record-main-btn {
         width: calc(100% - 64rpx);
         height: 100rpx;

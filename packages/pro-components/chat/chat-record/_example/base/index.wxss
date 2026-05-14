@@ -1,32 +1,17 @@
-.demo-base-container {
-  padding: 56rpx 0 0 0;
-  background-color: var(--td-bg-color-container);
-  height: 57vh;
-  position: relative;
+.chat-box {
+  padding-top: 32rpx;
+  box-sizing: border-box;
 }
 
-/* 聊天发送器包装器 */
-.chat-sender-demo-wrapper {
-  margin-bottom: 32rpx;
-  border-radius: 8rpx;
-  overflow: hidden;
+.t-chat__list {
+  padding: 0 0 0 32rpx;
+  box-sizing: border-box;
 }
 
-.chat-sender-placeholder {
-  font-size: 32rpx;
-  font-weight: 600;
-  color: var(--demo-chat-sender-placeholder);
-  text-align: center;
-  height: 48rpx;
+.t-chat-message {
+  padding: 0 32rpx;
 }
 
-.chat-sender-wrapper {
-  position: absolute;
-  width: 100%;
-  bottom: 0rpx;
-  background-color: var(--td-bg-color-container);
-  transition: bottom 0.2s ease-out;
-}
 
 .speech-slot-btn,
 .speech-btn-error {
@@ -77,4 +62,9 @@
 .voice-input-button {
   font-size: 36rpx;
   color: #000;
+}
+
+
+wx-button:after {
+  border: none;
 }

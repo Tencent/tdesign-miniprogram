@@ -5,6 +5,11 @@
     "t-navbar": "tdesign-miniprogram/navbar/navbar",
     "t-chat-sender": "tdesign-miniprogram/chat-sender/chat-sender",
     "t-chat-record": "tdesign-miniprogram/chat-record/chat-record",
-    "t-icon": "tdesign-miniprogram/icon/icon"
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-chat": "tdesign-miniprogram/chat-list/chat-list",
+    "t-chat-actionbar": "tdesign-miniprogram/chat-actionbar/chat-actionbar",
+    "t-toast": "tdesign-miniprogram/toast/toast",
+    "t-chat-message": "tdesign-miniprogram/chat-message/chat-message",
+    "t-chat-content": "tdesign-miniprogram/chat-content/chat-content"
   }
 }

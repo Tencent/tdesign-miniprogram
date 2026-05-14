@@ -1,30 +1,68 @@
-<view class="demo-base-container">
-  <!-- 聊天发送器组件 - 文本输入模式 -->
-  <view class="chat-sender-demo-wrapper">
-    <view class="chat-sender-wrapper" style="bottom: {{keyboardHeight}}px;">
-      <t-chat-sender
-        value="{{query}}"
-        loading="{{loading}}"
-        placeholder="{{placeholder}}"
-        allowSpeech="{{allowSpeech}}"
-        bind:send="onSend"
-        bind:keyboardheightchange="onKeyboardHeightChange"
+<view class="chat-box" style="height: {{contentHeight}};">
+  <t-chat id="chatList" bindscroll="onScroll">
+    <block wx:for="{{chatList}}" wx:key="chatId">
+      <t-chat-message
+        chat-id="{{item.chatId}}"
+        avatar="{{item.avatar || ''}}"
+        name="{{item.name || ''}}"
+        datetime="{{item.datetime || ''}}"
+        content="{{item.content}}"
+        role="{{item.role}}"
+        placement="{{item.role === 'user' ? 'right' : 'left'}}"
+        status="{{item.status || ''}}"
+        bind:message-longpress="showPopover"
+        bind:click="onClick"
       >
-        <view slot="speech-input">
-          <t-chat-record autoHeight bind:recognize="handleRecognize">
-            <view slot="speechInput" class="speech-slot-btn"> 按住说话 </view>
-            <view slot="speechNoAuth" class="speech-btn-error"> 请授权麦克风权限 </view>
-          </t-chat-record>
+        <t-chat-actionbar
+          wx:if="{{index !== chatList.length - 1 && item.status === 'complete' && item.role === 'assistant'}}"
+          id="{{'actionbar-'+item.chatId}}"
+          chat-id="{{item.chatId}}"
+          comment="{{item.comment}}"
+          slot="actionbar"
+          placement="end"
+          bind:actions="handleAction"
+        />
+      </t-chat-message>
+    </block>
+    <view slot="footer">
+      <t-chat-sender
+      value="{{value}}"
+      loading="{{loading}}"
+      disabled="{{disabled}}"
+      autoRiseWithKeyboard="{{true}}"
+      renderPresets="{{renderPresets}}"
+      allowSpeech="{{allowSpeech}}"
+      placeholder="{{placeholder}}"
+      bind:send="onSend"
+      bind:stop="onStop"
+      bind:focus="onFocus"
+      bind:keyboardheightchange="onKeyboardHeightChange"
+      >
+      <view slot="speech-input">
+        <t-chat-record autoHeight bind:recognize="handleRecognize">
+          <view slot="speechInput" class="speech-slot-btn"> 按住说话 </view>
+          <view slot="speechNoAuth" class="speech-btn-error"> 请授权麦克风权限 </view>
+        </t-chat-record>
+      </view>
+      <view slot="footer-prefix" class="demo-footer-prefix">
+        <view class="icon-wrapper" bind:tap="toggleVoiceIcon">
+          <t-icon
+          class="voice-input-button"
+          name="{{allowSpeech === 'speech' ? 'keyboard-1' : 'voice-wave'}}"
+          />
         </view>
-        <view slot="footer-prefix" class="demo-footer-prefix">
-          <view class="icon-wrapper" bind:tap="toggleVoiceIcon">
-            <t-icon
-              class="voice-input-button"
-              name="{{allowSpeech === 'speech' ? 'keyboard-1' : 'voice-wave'}}"
-            />
-          </view>
-        </view>
-      </t-chat-sender>
-    </view>
+      </view>
+    </t-chat-sender>
   </view>
+  </t-chat>
+  <!-- <t-chat-actionbar
+    class="popover-actionbar"
+    placement="longpress"
+    bind:actions="handlePopoverAction"
+    longPressPosition="{{longPressPosition}}"
+    action-bar="{{['quote', 'copy', 'share']}}"
+  /> -->
+  <!-- 内置虚拟列表优化性能仅在data属性中使用 -->
+  <!-- <t-chat id="chatList" bindscroll="onScroll" data="{{chatList}}"></t-chat> -->
 </view>
+<t-toast id="t-toast" />

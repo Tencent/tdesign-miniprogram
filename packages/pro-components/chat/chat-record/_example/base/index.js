@@ -1,122 +1,345 @@
-Page({
-  /**
-   * 页面的初始数据
-   */
+import Toast from 'tdesign-miniprogram/toast';
+
+let uniqueId = 0;
+const getUniqueKey = () => {
+  uniqueId += 1;
+  return `key-${uniqueId}`;
+};
+
+const mockData = `南极的自动提款机并没有一个特定的专属名称，但历史上确实有一台ATM机曾短暂存在于南极的**麦克默多站**（McMurdo Station）。这台ATM由美国**富兰克林国家银行**（Wells Fargo）于1998年安装，主要供驻扎在该站的科研人员使用。不过，由于南极的极端环境和极低的人口密度，这台ATM机并未长期运行，最终被移除。
+
+**背景补充：**
+- **麦克默多站**是美国在南极最大的科研基地，夏季人口可达约1,000人，冬季约200人。
+- 该ATM机更多是作为一种象征性服务存在，实际使用频率极低，因为南极科考人员通常依靠预支资金或电子支付。
+- 目前南极已无长期运行的ATM机，现代科考站更多依赖非现金交易方式。
+
+南极作为非主权领土，其基础设施以科研和生活支持为主，商业金融服务非常有限。若有类似设施，通常是临时或实验性质的。`;
+
+const sleep = (ms) => {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+};
+
+const fetchStream = async (str, options) => {
+  const { success, complete, delay = 100 } = options;
+
+  const arr = str.split('');
+
+  for (let i = 0; i < arr.length; i += 1) {
+    // eslint-disable-next-line no-await-in-loop
+    await sleep(delay);
+    success(arr[i]);
+  }
+
+  complete();
+};
+
+const getNavigationBarHeight = () => {
+  try {
+    const systemInfo = wx.getSystemInfoSync();
+
+    // 获取状态栏高度
+    const statusBarHeight = systemInfo.statusBarHeight || 0;
+
+    // 获取胶囊按钮位置信息
+    const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
+
+    if (menuButtonInfo) {
+      // 计算导航栏高度：胶囊按钮底部位置 + 胶囊按钮与底部的间距
+      const navigationBarHeight = menuButtonInfo.bottom + (menuButtonInfo.top - statusBarHeight);
+      return navigationBarHeight;
+    }
+    // 如果无法获取胶囊按钮信息，使用默认计算方式
+    // 一般情况下，导航栏高度 = 状态栏高度 + 44px（标准导航栏高度）
+    const navigationBarHeight = statusBarHeight + 44;
+
+    return navigationBarHeight;
+  } catch (error) {
+    console.error('获取导航栏高度失败:', error);
+    return 44;
+  }
+};
+
+
+Component({
+  options: {
+    styleIsolation: 'shared',
+  },
   data: {
-    query: '', // 输入框内容
-    placeholder: '请输入内容', // 输入框占位符
-    loading: false, // 发送按钮加载状态
+    renderPresets: [{ name: 'send', type: 'icon' }],
+    chatList: [
+      {
+        avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
+        role: 'assistant',
+        status: 'complete',
+        content: [
+          {
+            type: 'text',
+            data: '它叫 McMurdo Station ATM，是美国富国银行安装在南极洲最大科学中心麦克默多站的一台自动提款机。',
+          },
+        ],
+        chatId: getUniqueKey(),
+        comment: '',
+      },
+      {
+        role: 'user',
+        content: [
+          {
+            type: 'text',
+            data: '牛顿第一定律是否适用于所有参考系？',
+          },
+        ],
+        chatId: getUniqueKey(),
+      },
+    ],
+    value: '', // 输入框的值
+    loading: false, // 加载状态
+    disabled: false, // 禁用状态
+    inputStyle: '', // 输入框样式
+    contentHeight: '100vh', // 内容高度
+    animation: 'dots',
+    activePopoverId: '', // 当前打开悬浮actionbar的chatId
+    longPressPosition: null, // 长按位置对象
     showVoice: false, // 是否显示语音输入组件
     allowSpeech: 'speech',
     keyboardHeight: 0, // 键盘高度（px）
   },
 
-  /**
-   * 监听键盘高度变化，弹出键盘时将 chat-sender 往上推
-   */
-  onKeyboardHeightChange(e) {
-    const height = (e && e.detail && e.detail.height) || 0;
-    this.setData({
-      keyboardHeight: height,
-    });
-  },
-
-  /**
-   * 返回上一页
-   */
-  navigateBack() {
-    wx.navigateBack({
-      delta: 1,
-    });
-  },
-
-  /**
-   * 处理输入框内容变化
-   */
-  handleInput(e) {
-    this.setData({
-      query: e.detail.value,
-    });
-  },
-
-  /**
-   * 切换语音输入显示状态
-   */
-  handleVoice() {
-    const showVoice = !this.data.showVoice;
-    this.setData({
-      showVoice,
-      allowSpeech: showVoice ? 'speech' : 'keyboard',
-    });
-  },
-
-  toggleVoiceIcon() {
-    // 切换前先收起键盘，避免 textarea 销毁失焦与模式切换叠加导致 chat-sender 闪烁
-    wx.hideKeyboard && wx.hideKeyboard();
-    this.setData({
-      allowSpeech: this.data.allowSpeech === 'keyboard' ? 'speech' : 'keyboard',
-    });
-  },
-
-  /**
-   * 语音识别回调
-   * @param {Object} e - 事件对象
-   */
-  handleRecognize(e) {
-    const voiceMsg = e.detail;
-    console.log('语音识别结果:', voiceMsg);
-
-    // 将语音识别结果设置到输入框中
-    if(voiceMsg.voiceText) {
+  methods: {
+    // 调用chatList的滚动到底部方法
+    scrollToBottom() {
+      const chatListComponent = this.selectComponent('#chatList');
+      if (chatListComponent && typeof chatListComponent.scrollToBottom === 'function') {
+        chatListComponent.scrollToBottom();
+      }
+    },
+    onScroll(e) {
+      console.log('监听滚动', e);
+    },
+    /**
+     * 监听键盘高度变化，弹出键盘时将 chat-sender 往上推
+     */
+    onKeyboardHeightChange(e) {
+      const height = (e && e.detail && e.detail.height) || 0;
       this.setData({
-        query: voiceMsg.voiceText,
-        showVoice: false, // 识别完成后隐藏语音输入组件
-        allowSpeech: 'keyboard',
+        keyboardHeight: height,
       });
-    }
+    },
+    toggleVoiceIcon() {
+      // 切换前先收起键盘，避免 textarea 销毁失焦与模式切换叠加导致 chat-sender 闪烁
+      wx.hideKeyboard && wx.hideKeyboard();
+      this.setData({
+        allowSpeech: this.data.allowSpeech === 'keyboard' ? 'speech' : 'keyboard',
+      });
+    },
+    /**
+     * 切换语音输入显示状态
+     */
+    handleVoice() {
+      const showVoice = !this.data.showVoice;
+      this.setData({
+        showVoice,
+        allowSpeech: showVoice ? 'speech' : 'keyboard',
+      });
+    },
+    /**
+     * 语音识别回调
+     * @param {Object} e - 事件对象
+     */
+    handleRecognize(e) {
+      const voiceMsg = e.detail;
+      console.log('语音识别结果:', voiceMsg);
 
-    // 提示用户
-    // wx.showToast({
-    //   title: '识别成功',
-    //   icon: 'success',
-    //   duration: 1500,
-    // });
-  },
-
-  /**
-   * 发送消息
-   */
-  handleSend() {
-    const { query, loading } = this.data;
-
-    // 如果正在加载或内容为空，不处理
-    if (loading || !query.trim()) {
-      if (!query.trim()) {
-        wx.showToast({
-          title: '请输入内容',
-          icon: 'none',
-          duration: 1500,
+      // 将语音识别结果设置到输入框中
+      if(voiceMsg.voiceText) {
+        this.setData({
+          value: voiceMsg.voiceText,
+          showVoice: false, // 识别完成后隐藏语音输入组件
+          allowSpeech: 'keyboard',
         });
       }
-      return;
-    }
-    // 设置加载状态
-    this.setData({
-      loading: true,
-    });
+    },
+    // 发送消息事件处理
+    onSend(e) {
+      const { value } = e.detail;
+      if (!value || value.trim() === '') return;
 
-    // 模拟发送请求
-    setTimeout(() => {
+      // 创建用户消息对象
+      const userMessage = {
+        role: 'user',
+        content: [
+          {
+            type: 'text',
+            data: value.trim(),
+          },
+        ],
+        chatId: getUniqueKey(),
+      };
+
+      // 将用户消息插入到chatList的开头（因为reverse为true，所以用unshift）
+      this.setData({
+        chatList: [userMessage, ...this.data.chatList],
+        value: '', // 清空输入框
+      });
+
+      // 模拟助手回复（可选）
+      this.simulateAssistantReply(value.trim());
+    },
+
+    // 停止事件处理
+    onStop() {
       this.setData({
         loading: false,
-        query: '', // 清空输入框
+      });
+    },
+
+    // 聚焦事件处理
+    onFocus() {
+      console.log('输入框聚焦');
+    },
+    // 获取当前时间
+    getCurrentTime() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      return `${hours}:${minutes}`;
+    },
+
+    // 模拟助手回复
+    simulateAssistantReply() {
+      this.setData({ loading: true });
+      // 请求中
+      const assistantMessage = {
+        role: 'assistant',
+        content: [
+          {
+            type: 'markdown',
+            data: '',
+          },
+        ],
+        avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
+        status: 'pending',
+        chatId: getUniqueKey(),
+        comment: '',
+      };
+      this.setData({
+        chatList: [assistantMessage, ...this.data.chatList],
+      });
+      const that = this;
+      wx.nextTick(() => {
+        fetchStream(mockData, {
+          success(result) {
+            // 生文中
+            if (!that.data.loading) return;
+            that.setData({
+              'chatList[0].status': 'streaming',
+              'chatList[0].content[0].data': that.data.chatList[0].content[0].data + result,
+            });
+          },
+          complete() {
+            that.setData({
+              'chatList[0].status': 'complete',
+              loading: false,
+            });
+          },
+        });
+      });
+    },
+    handleAction(e) {
+      const { name, active, data, chatId } = e.detail;
+
+      let message = '';
+      switch (name) {
+        case 'replay':
+          message = '重新生成';
+          break;
+        case 'copy':
+          console.log(data);
+          message = '复制成功';
+          break;
+        case 'good':
+          message = active ? '点赞成功' : '取消点赞';
+          break;
+        case 'bad':
+          message = active ? '点踩成功' : '取消点踩';
+          break;
+        case 'share':
+          message = '分享功能';
+          break;
+        default:
+          message = `执行了${name}操作`;
+      }
+
+      Toast({
+        context: this,
+        selector: '#t-toast',
+        message,
+        theme: 'success',
       });
 
-      wx.showToast({
-        title: '发送成功',
-        icon: 'success',
-        duration: 1500,
+      if (name === 'good' || name === 'bad') {
+        this.data.chatList.forEach((item) => {
+          if (item.chatId === chatId) {
+            item.comment = active ? name : '';
+          }
+        });
+        this.setData({
+          chatList: this.data.chatList,
+        });
+      }
+    },
+    showPopover(e) {
+      const { id, longPressPosition } = e.detail;
+
+      let role = '';
+      this.data.chatList.forEach((item) => {
+        if (item.chatId === id) {
+          role = item.role;
+        }
       });
-    }, 1000);
+
+      // 仅当 role 为 user 时才显示 popover
+      if (role !== 'user') {
+        return;
+      }
+
+      this.setData({
+        activePopoverId: id,
+        longPressPosition,
+      });
+    },
+    handlePopoverAction(e) {
+      e.detail.chatId = this.data.activePopoverId;
+      this.handleAction(e);
+    },
+    onClick(e) {
+      const { node } = e.detail;
+      console.log('点击节点', node);
+    },
+  },
+  lifetimes: {
+    attached: function () {
+      /**
+       * 计算内容区域高度
+       * 生成CSS calc表达式：calc(100vh - 96rpx - 导航高度 - 底部安全区域高度)
+       */
+      try {
+        // 获取当前的导航栏高度和安全区域高度
+        const navigationBarHeight = getNavigationBarHeight() || 0;
+
+        // 生成CSS calc表达式字符串
+        const contentHeight = `calc(100vh - 96rpx - ${navigationBarHeight}px)`;
+
+        this.setData({
+          contentHeight: contentHeight,
+        });
+
+        console.log('内容区域高度CSS表达式:', contentHeight);
+      } catch (error) {
+        console.error('生成内容高度表达式失败:', error);
+        this.setData({
+          contentHeight: 'calc(100vh - 96rpx)',
+        });
+      }
+    },
   },
 });
