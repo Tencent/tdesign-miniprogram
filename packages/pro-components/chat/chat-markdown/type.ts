@@ -23,11 +23,11 @@ export interface TdChatMarkdownProps {
     value?: TdChatContentMDOptions;
   };
   /**
-   * 流式输出配置，控制尾部光标的显示与隐藏
+   * 流式输出配置，控制尾部光标的显示与隐藏。尾部光标配置，true 使用默认光标 ▋，传对象可自定义光标字符
    */
   streaming?: {
     type: ObjectConstructor;
-    value?: TdChatMarkdownStreamingOption;
+    value?: TdChatMarkdownStreamingOptions;
   };
 }
 
@@ -38,14 +38,7 @@ export interface TdChatContentMDOptions {
   breaks?: boolean;
 }
 
-export interface TdChatMarkdownTailOption {
-  /** 自定义光标字符，默认 '▋' */
-  content?: string;
-}
-
-export interface TdChatMarkdownStreamingOption {
-  /** 是否还有后续内容块，false 时光标消失 */
-  hasNextChunk: boolean;
-  /** 尾部光标配置，true 使用默认光标 ▋，false/不传则不显示 */
-  tail?: boolean | TdChatMarkdownTailOption;
+export interface TdChatMarkdownStreamingOptions {
+  hasNextChunk?: boolean;
+  tail?: boolean | { content?: string };
 }
