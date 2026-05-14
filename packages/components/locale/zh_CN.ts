@@ -123,6 +123,22 @@ export default {
     sendText: '发送',
     stopText: '停止',
   },
+  chatRecord: {
+    holdToTalk: '按住 说话',
+    requestAuth: '请授权麦克风权限',
+    releaseToCancel: '松开取消',
+    releaseToSend: '松开发送，上滑取消',
+    cancelText: '取消',
+    sendText: '发送',
+    busyTip: '识别中，请稍候…',
+    recognizeFailTip: '录音识别失败，请重试',
+    missingPluginTip: '缺少语音识别插件 WechatSI',
+    authSettingFail: '获取录音权限设置失败',
+    openSettingFail: '打开设置失败',
+    systemMicTitle: '无法使用麦克风',
+    systemMicContent:
+      '检测到手机系统已关闭"微信"的麦克风权限。\n\n请到系统设置中开启：\n- iOS：设置 > 微信 > 麦克风\n- Android：设置 > 应用管理 > 微信 > 权限 > 麦克风\n\n开启后返回小程序再试。',
+  },
   chatThinking: {
     status: {
       pending: '正在思考中...',

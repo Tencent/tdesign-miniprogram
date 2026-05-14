@@ -9,7 +9,7 @@
     catchtouchcancel="touchcancel"
   >
     <slot name="speechInput">
-      <view>按住 说话</view>
+      <view>{{globalConfig.holdToTalk}}</view>
     </slot>
   </view>
 
@@ -19,7 +19,7 @@
     bindtap="requestRecordAuth"
   >
     <slot name="speechNoAuth">
-      <view>请授权麦克风权限</view>
+      <view>{{globalConfig.requestAuth}}</view>
     </slot>
   </button>
 
@@ -46,8 +46,8 @@
         <!-- 提示文字 -->
         <view class="tips-text">
           <block wx:if="{{processStatus === 'recording'}}">
-            <text wx:if="{{interactStatus === 'release_cancel'}}">松开取消</text>
-            <text wx:else>松开发送，上滑取消</text>
+            <text wx:if="{{interactStatus === 'release_cancel'}}">{{globalConfig.releaseToCancel}}</text>
+            <text wx:else>{{globalConfig.releaseToSend}}</text>
           </block>
         </view>
 
@@ -69,13 +69,13 @@
             <view class="icon-wrapper">
               <text class="rollback-icon">↩</text>
             </view>
-            <text class="btn-text">Cancel</text>
+            <text class="btn-text">{{globalConfig.cancelText}}</text>
           </view>
           <view
             class="action-btn btn-send {{activeBtnSend ? 'active' : ''}} {{processStatus === 'error' ? 'disabled' : ''}}"
             bindtap="handleSendVoiceMsg"
           >
-            <text class="send-btn-text">Send</text>
+            <text class="send-btn-text">{{globalConfig.sendText}}</text>
           </view>
         </view>
       </view>

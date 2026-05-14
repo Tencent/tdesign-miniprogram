@@ -1,9 +1,11 @@
 import { SuperComponent, wxComponent } from '../../../components/common/src/index';
 import config from '../../../components/common/config';
+import usingConfig from '../../../components/mixins/using-config';
 import props from './props';
 
 const { prefix } = config;
-const name = `${prefix}-chat-record`;
+const componentName = 'chat-record';
+const name = `${prefix}-${componentName}`;
 
 // 交互阈值配置（单位：px）
 const MOVE_THRESHOLD_Y = 60;
@@ -20,6 +22,8 @@ type VoiceInfo = {
 
 @wxComponent()
 export default class ChatRecord extends SuperComponent {
+  behaviors = [usingConfig({ componentName })];
+
   options = {
     multipleSlots: true,
   };
@@ -145,7 +149,7 @@ export default class ChatRecord extends SuperComponent {
       manager.onError = (err: any) => {
           wx.showToast({
           icon: 'none',
-          title: '录音识别失败，请重试',
+          title: this.data.globalConfig?.recognizeFailTip || '录音识别失败，请重试',
           duration: 2000,
         });
         this.setData({
@@ -196,7 +200,10 @@ export default class ChatRecord extends SuperComponent {
             this.setData({ recordAuthSetting, recordAuthStatus, recordAuthDenied } as any);
             resolve(recordAuthSetting);
           },
-          fail: () => reject(new Error('获取录音权限设置失败')),
+          fail: () =>
+            reject(
+              new Error(this.data.globalConfig?.authSettingFail || '获取录音权限设置失败'),
+            ),
         });
       });
     },
@@ -273,9 +280,11 @@ export default class ChatRecord extends SuperComponent {
 
     /** 系统麦克风被关闭时的明确引导 */
     showSystemMicGuide() {
+      const { globalConfig } = this.data;
       wx.showModal({
-        title: '无法使用麦克风',
+        title: globalConfig?.systemMicTitle || '无法使用麦克风',
         content:
+          globalConfig?.systemMicContent ||
           '检测到手机系统已关闭"微信"的麦克风权限。\n\n请到系统设置中开启：\n- iOS：设置 > 微信 > 麦克风\n- Android：设置 > 应用管理 > 微信 > 权限 > 麦克风\n\n开启后返回小程序再试。',
         showCancel: false,
       });
@@ -293,7 +302,10 @@ export default class ChatRecord extends SuperComponent {
           this.setData({ recordAuthSetting, recordAuthStatus });
         },
         fail: () => {
-          wx.showToast({ icon: 'none', title: '打开设置失败' });
+          wx.showToast({
+            icon: 'none',
+            title: this.data.globalConfig?.openSettingFail || '打开设置失败',
+          });
         },
       });
     },
@@ -320,7 +332,10 @@ export default class ChatRecord extends SuperComponent {
     async startRecord(e: WechatMiniprogram.TouchEvent) {
       // 避免识别回调/stop 尚未完成又开始
       if (this.data.isManagerBusy) {
-        wx.showToast({ icon: 'none', title: '识别中，请稍候…' });
+        wx.showToast({
+          icon: 'none',
+          title: this.data.globalConfig?.busyTip || '识别中，请稍候…',
+        });
         return;
       }
 
@@ -384,7 +399,10 @@ export default class ChatRecord extends SuperComponent {
           this.manager.start({ duration, lang });
         } else {
           // 插件不可用
-          wx.showToast({ icon: 'none', title: '缺少语音识别插件 WechatSI' });
+          wx.showToast({
+            icon: 'none',
+            title: this.data.globalConfig?.missingPluginTip || '缺少语音识别插件 WechatSI',
+          });
           this.setData({ processStatus: 'error' });
           this.updateBubbleClass();
         }

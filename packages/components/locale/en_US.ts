@@ -136,6 +136,22 @@ export default {
     sendText: 'send',
     stopText: 'stop',
   },
+  chatRecord: {
+    holdToTalk: 'Hold to talk',
+    requestAuth: 'Please authorize microphone permission',
+    releaseToCancel: 'Release to cancel',
+    releaseToSend: 'Release to send, swipe up to cancel',
+    cancelText: 'Cancel',
+    sendText: 'Send',
+    busyTip: 'Recognizing, please wait...',
+    recognizeFailTip: 'Voice recognition failed, please try again',
+    missingPluginTip: 'Missing voice recognition plugin WechatSI',
+    authSettingFail: 'Failed to get recording permission settings',
+    openSettingFail: 'Failed to open settings',
+    systemMicTitle: 'Cannot use microphone',
+    systemMicContent:
+      'It is detected that the microphone permission of "WeChat" has been disabled in the system.\n\nPlease enable it in system settings:\n- iOS: Settings > WeChat > Microphone\n- Android: Settings > Apps > WeChat > Permissions > Microphone\n\nReturn to the mini program and try again after enabling.',
+  },
   chatThinking: {
     status: {
       pending: 'thinking...',
