@@ -63,18 +63,17 @@ function injectTailToTokens(tokens: any[], tailChar: string, depth = 0): boolean
           }
         }
       }
-      continue;
-    }
-
-    // 有子节点时递归
-    let children: any[] | null = null;
-    if (token.tokens?.length) {
-      children = token.tokens;
-    } else if (token.items?.length) {
-      children = flatListItems(token.items);
-    }
-    if (children?.length) {
-      if (injectTailToTokens(children, tailChar, depth + 1)) return true;
+    } else {
+      // 有子节点时递归
+      let children: any[] | null = null;
+      if (token.tokens?.length) {
+        children = token.tokens;
+      } else if (token.items?.length) {
+        children = flatListItems(token.items);
+      }
+      if (children?.length) {
+        if (injectTailToTokens(children, tailChar, depth + 1)) return true;
+      }
     }
   }
   return false;
