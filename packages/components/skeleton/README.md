@@ -79,7 +79,7 @@ t-class-row | 列样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-skeleton-circle-border-radius | @skeleton-circle-border-radius | -
 --td-skeleton-animation-flashed | rgba(90%, 90%, 90%, 0.3) | -

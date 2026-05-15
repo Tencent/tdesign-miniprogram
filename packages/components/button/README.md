@@ -143,7 +143,7 @@ t-class-loading | 加载样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-button-border-radius | @radius-default | -
 --td-button-border-width | 4rpx | -

@@ -48,7 +48,7 @@ t-class-suffix-icon | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-notice-bar-error-bg-color | @error-color-1 | -
 --td-notice-bar-error-color | @error-color | -

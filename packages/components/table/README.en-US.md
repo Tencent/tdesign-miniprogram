@@ -58,7 +58,7 @@ width | String / Number | - | column width | N
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-table-body-text-color | @text-color-primary | -
 --td-table-border-color | @component-border | -
