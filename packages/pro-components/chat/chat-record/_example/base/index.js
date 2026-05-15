@@ -149,13 +149,9 @@ Component({
       const voiceMsg = e.detail;
       console.log('语音识别结果:', voiceMsg);
 
-      // 将语音识别结果设置到输入框中
-      if(voiceMsg.voiceText) {
-        this.setData({
-          value: voiceMsg.voiceText,
-          showVoice: false, // 识别完成后隐藏语音输入组件
-          allowSpeech: 'keyboard',
-        });
+      if (voiceMsg.voiceText) {
+        // 自动发送识别到的文本
+        this.onSend({ detail: { value: voiceMsg.voiceText } });
       }
     },
     // 发送消息事件处理
