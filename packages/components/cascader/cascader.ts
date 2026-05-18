@@ -120,6 +120,7 @@ const defaultState = {
   tabsHeight: 0,
   subTitlesHeight: 0,
   stepsInitHeight: 0,
+  filterHeight: 0,
 };
 
 @wxComponent()
@@ -243,15 +244,15 @@ export default class Cascader extends SuperComponent {
 
   methods = {
     updateOptionsHeight(steps: number) {
-      const { contentHeight, stepsInitHeight, stepHeight, subTitlesHeight } = this.state;
+      const { contentHeight, stepsInitHeight, stepHeight, subTitlesHeight, filterHeight } = this.state;
       this.setData({
-        _optionsHeight: contentHeight - stepsInitHeight - subTitlesHeight - (steps - 1) * stepHeight,
+        _optionsHeight: contentHeight - stepsInitHeight - subTitlesHeight - filterHeight - (steps - 1) * stepHeight,
       });
     },
 
     async initOptionsHeight(steps: number) {
       const { classPrefix } = this.data;
-      const { theme, subTitles } = this.properties;
+      const { theme, subTitles, filterable } = this.properties;
 
       const { height } = await getRect(this, `.${classPrefix}__content`);
       this.state.contentHeight = height;
@@ -270,7 +271,12 @@ export default class Cascader extends SuperComponent {
         this.state.subTitlesHeight = height;
       }
 
-      const optionsInitHeight = this.state.contentHeight - this.state.subTitlesHeight;
+      if (filterable) {
+        const filterRect = await getRect(this, `.${classPrefix}__filter`);
+        this.state.filterHeight = filterRect.height;
+      }
+
+      const optionsInitHeight = this.state.contentHeight - this.state.subTitlesHeight - this.state.filterHeight;
       this.setData({
         _optionsHeight:
           theme === 'step'

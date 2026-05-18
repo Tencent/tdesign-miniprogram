@@ -13,16 +13,16 @@
 
     <slot name="header" />
 
-    <view wx:if="{{filterable}}" class="{{classPrefix}}__filter">
-      <t-search
-        value="{{filterKeyword}}"
-        placeholder="{{filterPlaceholder || globalConfig.filterPlaceholder}}"
-        bind:change="onFilterChange"
-        bind:clear="onFilterClear"
-      />
-    </view>
-
     <view class="{{classPrefix}}__content">
+      <view wx:if="{{filterable}}" class="{{classPrefix}}__filter">
+        <t-search
+          value="{{filterKeyword}}"
+          placeholder="{{filterPlaceholder || globalConfig.filterPlaceholder}}"
+          bind:change="onFilterChange"
+          bind:clear="onFilterClear"
+        />
+      </view>
+
       <block wx:if="{{!isSearching}}">
         <block wx:if="{{steps && steps.length}}">
           <view wx:if="{{theme == 'step'}}" class="{{classPrefix}}__steps">
