@@ -29,6 +29,8 @@ export default {
   cascader: {
     title: 'العنوان',
     placeholder: 'اختر الخيارات',
+    filterPlaceholder: 'بحث',
+    empty: 'لا توجد عناصر مطابقة',
   },
   dropdownMenu: {
     reset: 'إعادة الضبط',

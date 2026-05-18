@@ -12,6 +12,15 @@
 @cascader-border-color: var(--td-cascader-border-color, @component-stroke);
 @cascader-content-height: var(--td-cascader-content-height, 78vh);
 @cascader-options-height: var(--td-cascader-options-height, calc(100% - @cascader-step-height));
+// filter (search)
+@cascader-filter-padding: var(--td-cascader-filter-padding, 0 @spacer-2 @spacer-1);
+@cascader-filter-item-padding: var(--td-cascader-filter-item-padding, 24rpx 32rpx);
+@cascader-filter-item-color: var(--td-cascader-filter-item-color, @text-color-primary);
+@cascader-filter-item-hover-bg: var(--td-cascader-filter-item-hover-bg, @bg-color-secondarycontainer);
+@cascader-filter-item-disabled-color: var(--td-cascader-filter-item-disabled-color, @text-color-disabled);
+@cascader-filter-keyword-color: var(--td-cascader-filter-keyword-color, @brand-color);
+@cascader-filter-empty-color: var(--td-cascader-filter-empty-color, @text-color-placeholder);
+@cascader-filter-empty-padding: var(--td-cascader-filter-empty-padding, 96rpx @spacer-2);
 // steps
 @cascader-step-height: var(--td-cascader-step-height, 88rpx);
 @cascader-step-dot-size: var(--td-cascader-step-dot-size, 16rpx);
@@ -114,6 +123,45 @@
     &-arrow {
       color: @cascader-step-arrow-color;
       margin-left: auto;
+    }
+  }
+
+  &__filter {
+    padding: @cascader-filter-padding;
+    box-sizing: border-box;
+
+    &-result {
+      flex: 1;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    &-result-item {
+      padding: @cascader-filter-item-padding;
+      color: @cascader-filter-item-color;
+      font: @font-body-medium;
+      box-sizing: border-box;
+      .border(bottom, @cascader-border-color);
+
+      &--hover {
+        background-color: @cascader-filter-item-hover-bg;
+      }
+
+      &--disabled {
+        color: @cascader-filter-item-disabled-color;
+      }
+    }
+
+    &-keyword {
+      color: @cascader-filter-keyword-color;
+      font-weight: 600;
+    }
+
+    &-empty {
+      padding: @cascader-filter-empty-padding;
+      text-align: center;
+      color: @cascader-filter-empty-color;
+      font: @font-body-medium;
     }
   }
 }

@@ -24,6 +24,29 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
     value?: boolean;
   };
   /**
+   * 是否可搜索。开启后顶部会展示一个搜索框，输入关键字将层级面板切换为扁平的匹配路径列表
+   * @default false
+   */
+  filterable?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 自定义过滤函数。返回 true 表示匹配；签名为 `(keyword, option, path) => boolean`。未设置时使用内置匹配规则：对路径中所有 label/text 拼接后做大小写不敏感的 includes 匹配
+   */
+  filter?: {
+    type: null;
+    value?: CascaderFilterFunction;
+  };
+  /**
+   * 搜索框占位文案
+   * @default ''
+   */
+  filterPlaceholder?: {
+    type: StringConstructor;
+    value?: string;
+  };
+  /**
    * 用来定义 value / label / children / disabled 在 `options` 中对应的字段别名
    */
   keys?: {
@@ -96,3 +119,9 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
 }
 
 export type CascaderKeysType = TreeKeysType;
+
+export type CascaderFilterFunction<CascaderOption extends TreeOptionData = TreeOptionData> = (
+  keyword: string,
+  option: CascaderOption,
+  path: CascaderOption[],
+) => boolean;

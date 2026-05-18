@@ -16,6 +16,8 @@ export default {
   cascader: {
     title: '標題',
     placeholder: '選擇選項',
+    filterPlaceholder: '搜尋',
+    empty: '暫無匹配項',
   },
   dropdownMenu: {
     reset: '重置',

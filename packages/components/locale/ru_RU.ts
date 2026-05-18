@@ -28,6 +28,8 @@ export default {
   cascader: {
     title: 'Название',
     placeholder: 'Выберите опцию',
+    filterPlaceholder: 'Поиск',
+    empty: 'Совпадений не найдено',
   },
   dropdownMenu: {
     reset: 'Сброс',
