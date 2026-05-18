@@ -93,15 +93,15 @@
       ]"
     >
       <t-icon
-        v-if="iRightArrow"
+        v-if="rightArrow"
         :custom-style="rightArrowCustomStyle"
         :t-class="classPrefix + '__right-icon ' + tClassRightIcon"
-        :name="iRightArrow.name || ''"
-        :size="iRightArrow.size"
-        :color="iRightArrow.color"
+        :name="rightArrow.name || ''"
+        :size="rightArrow.size"
+        :color="rightArrow.color"
         :aria-hidden="true"
-        :aria-label="iRightArrow.ariaLabel"
-        :aria-role="iRightArrow.ariaRole"
+        :aria-label="rightArrow.ariaLabel"
+        :aria-role="rightArrow.ariaRole"
         @click="'handleClose' || ''"
       />
       <block v-else>
@@ -206,18 +206,18 @@ export default {
         });
       },
       rightArrowCustomStyle() {
-        if (!this.iRightArrow) return '';
+        if (!this.rightArrow) return '';
         return tools._style([
           {
-            color: this.iRightArrow.color
-              ? this.iRightArrow.color
+            color: this.rightArrow.color
+              ? this.rightArrow.color
               : COMMON_RIGHT_ICON_STYLE.color,
-            fontSize: this.iRightArrow.size
-              ? addUnit(this.iRightArrow.size)
+            fontSize: this.rightArrow.size
+              ? addUnit(this.rightArrow.size)
               : COMMON_RIGHT_ICON_STYLE.fontSize,
           },
           this.rightIconStyle || '',
-          this.iRightArrow.style || '',
+          this.rightArrow.style || '',
         ]);
       },
       rightIconCustomStyle() {
@@ -251,7 +251,7 @@ export default {
       },
       arrow: {
         handler(e) {
-          this.iRightArrow = calcIcon(e, 'chevron-right');
+          this.rightArrow = calcIcon(e, 'chevron-right');
         },
         immediate: true,
       },

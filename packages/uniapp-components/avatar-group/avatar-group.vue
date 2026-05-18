@@ -86,7 +86,7 @@ export default {
           name,
           this.tClass,
           `${name}-offset-${direction}`,
-          `${name}-offset-${direction}-${size.indexOf('px') > -1 ? 'medium' : size}`,
+          `${name}-offset-${direction}-${size.indexOf('px') > -1 ? 'medium' : size || 'medium'}`,
         ];
 
         this.className = classList.join(' ');
