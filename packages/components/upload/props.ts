@@ -88,6 +88,11 @@ const props: TdUploadProps = {
     type: String,
     value: 'media',
   },
+  /** 组件风格。提供宫格和列表两种布局风格 */
+  theme: {
+    type: String,
+    value: 'grid',
+  },
   /** 拖拽位置移动时的过渡参数,`duration`单位为ms */
   transition: {
     type: Object,

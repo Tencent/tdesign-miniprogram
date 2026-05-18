@@ -1,0 +1,25 @@
+<view class="wrapper">
+  <view class="upload-demo">
+    <view class="upload-demo__title">宫格布局上传）</view>
+    <t-upload
+      files="{{gridFiles}}"
+      draggable
+      theme="grid"
+      source="messageFile"
+      bind:add="handleAdd"
+      bind:remove="handleRemove"
+    />
+  </view>
+
+  <view class="upload-demo" style="margin-top: 32rpx">
+    <view class="upload-demo__title">列表布局上传</view>
+    <t-upload
+      files="{{listFiles}}"
+      draggable
+      theme="list"
+      source="messageFile"
+      bind:remove="handleListRemove"
+      bind:drop="handleListDrop"
+    />
+  </view>
+</view>

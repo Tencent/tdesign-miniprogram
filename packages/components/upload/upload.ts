@@ -55,8 +55,8 @@ export default class Upload extends SuperComponent {
 
   lifetimes = {
     ready() {
-      this.handleLimit(this.data.customFiles, this.data.max);
       this.updateGrid();
+      this.handleLimit(this.data.customFiles, this.data.max);
     },
   };
 
@@ -94,11 +94,11 @@ export default class Upload extends SuperComponent {
    */
   getFileType(mediaType: string[], tempFilePath: string, fileType?: string) {
     if (fileType) return fileType; // 如果有返回fileType就直接用
-    if (mediaType.length === 1) {
-      // 在单选媒体类型的时候直接使用单选媒体类型
+    if (mediaType.length === 1 && mediaType[0] !== 'mix') {
+      // 在单选媒体类型（非 mix）的时候直接使用单选媒体类型
       return mediaType[0];
     }
-    // 否则根据文件后缀进行判读
+    // 否则根据文件后缀进行判断
     const videoType = ['avi', 'wmv', 'mkv', 'mp4', 'mov', 'rm', '3gp', 'flv', 'mpg', 'rmvb'];
     const temp = tempFilePath.split('.');
     const postfix = temp[temp.length - 1];
@@ -177,28 +177,32 @@ export default class Upload extends SuperComponent {
   initDragList() {
     let i = 0;
     const { column, customFiles, customLimit } = this.data;
+    const theme = (this.properties as any).theme as string;
+    // list 布局固定单列
+    const dragColumn = theme === 'list' ? 1 : column;
     const dragList = [];
     customFiles.forEach((item, index) => {
       dragList.push({
         realKey: i, // 真实顺序
         sortKey: index, // 整体顺序
-        tranX: `${(index % column) * 100}%`,
-        tranY: `${Math.floor(index / column) * 100}%`,
+        tranX: `${(index % dragColumn) * 100}%`,
+        tranY: `${Math.floor(index / dragColumn) * 100}%`,
         data: { ...item },
       });
       i += 1;
     });
-    if (customLimit > 0) {
+    // list 布局下不添加 fixed 的"添加按钮"项，因为上传按钮在列表外部
+    if (customLimit > 0 && theme !== 'list') {
       const listLength = dragList.length;
       dragList.push({
         realKey: listLength, // 真实顺序
         sortKey: listLength, // 整体顺序
-        tranX: `${(listLength % column) * 100}%`,
-        tranY: `${Math.floor(listLength / column) * 100}%`,
+        tranX: `${(listLength % dragColumn) * 100}%`,
+        tranY: `${Math.floor(listLength / dragColumn) * 100}%`,
         fixed: true,
       });
     }
-    this.data.rows = Math.ceil(dragList.length / column);
+    this.data.rows = Math.ceil(dragList.length / dragColumn);
     this.setData({
       dragList,
     });
@@ -206,24 +210,45 @@ export default class Upload extends SuperComponent {
 
   initDragBaseData() {
     const { classPrefix, rows, column } = this.data;
+    const theme = (this.properties as any).theme as string;
     const query = this.createSelectorQuery();
-    const selectorGridItem = `.${classPrefix} >>> .t-grid-item`;
-    const selectorGrid = `.${classPrefix} >>> .t-grid`;
-    query.select(selectorGridItem).boundingClientRect();
-    query.select(selectorGrid).boundingClientRect();
+
+    // list 布局使用非拖拽态的 list-item 选择器获取尺寸（因为拖拽态 DOM 尚未渲染）
+    // grid 布局使用 grid-item 选择器（grid/grid-item 在两种态下都存在）
+    if (theme === 'list') {
+      const selectorListItem = `.${classPrefix}__list-item`;
+      const selectorListWrap = `.${classPrefix}__list`;
+      query.select(selectorListItem).boundingClientRect();
+      query.select(selectorListWrap).boundingClientRect();
+    } else {
+      const selectorGridItem = `.${classPrefix} >>> .t-grid-item`;
+      const selectorGrid = `.${classPrefix} >>> .t-grid`;
+      query.select(selectorGridItem).boundingClientRect();
+      query.select(selectorGrid).boundingClientRect();
+    }
+
     query.selectViewport().scrollOffset();
     query.exec((res) => {
+      if (!res || !res[0] || !res[1]) return;
       const [{ width, height }, { left, top }, { scrollTop }] = res;
+      const dragColumn = theme === 'list' ? 1 : column;
+
+      // list 布局下拖拽项包含 padding-bottom: 24rpx 作为间距
+      // 需要将间距加到 itemHeight 中，以确保拖拽定位计算正确
+      const systemInfo = wx.getSystemInfoSync();
+      const gap = theme === 'list' ? (systemInfo.windowWidth / 750) * 24 : 0;
+      const itemHeight = height + gap;
+
       const dragBaseData = {
         rows,
         classPrefix,
         itemWidth: width,
-        itemHeight: height,
+        itemHeight,
         wrapLeft: left,
         wrapTop: top + scrollTop,
-        columns: column,
+        columns: dragColumn,
       };
-      const dragWrapStyle = `height: ${rows * height}px`;
+      const dragWrapStyle = `height: ${rows * itemHeight}px`;
       this.setData(
         {
           dragBaseData,
@@ -242,9 +267,21 @@ export default class Upload extends SuperComponent {
   }
 
   methods = {
+    isMediaFile(file: UploadFile) {
+      return file.type === 'image' || file.type === 'video' || this.isImageUrl(file.url);
+    },
+
+    /**
+     * 判断文件是否可预览（仅上传成功或无状态的媒体文件可预览）
+     */
+    isPreviewable(file: UploadFile) {
+      return this.isMediaFile(file) && (!file.status || file.status === 'done');
+    },
+
     getPreviewMediaSources() {
       const previewMediaSources: WechatMiniprogram.MediaSource[] = [];
       this.data.customFiles.forEach((ele) => {
+        if (!this.isPreviewable(ele)) return;
         const mediaSource: WechatMiniprogram.MediaSource = {
           url: ele.url,
           type: ele.type,
@@ -256,11 +293,29 @@ export default class Upload extends SuperComponent {
       return previewMediaSources;
     },
 
+    /**
+     * 获取当前文件在可预览媒体列表中的索引
+     */
+    getMediaIndex(index: number) {
+      const { customFiles } = this.data;
+      let mediaIndex = 0;
+      for (let i = 0; i < index; i += 1) {
+        if (this.isPreviewable(customFiles[i])) {
+          mediaIndex += 1;
+        }
+      }
+      return mediaIndex;
+    },
+
     onPreview(e: WechatMiniprogram.BaseEvent) {
       this.onFileClick(e);
       const { preview } = this.properties;
 
       if (!preview) return;
+
+      const { file } = e.currentTarget.dataset;
+      // 非图片非视频文件没有预览功能，仅触发 click 事件
+      if (file && !this.isMediaFile(file)) return;
 
       const usePreviewMedia = this.data.customFiles.some((file: UploadFile) => file.type === 'video');
       if (usePreviewMedia) {
@@ -270,9 +325,17 @@ export default class Upload extends SuperComponent {
       }
     },
 
+    isImageUrl(url: string) {
+      if (!url) return false;
+      const imageExts = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg', 'tiff'];
+      const lowerUrl = url.toLowerCase();
+      return imageExts.some((ext) => lowerUrl.includes(`.${ext}`));
+    },
+
     onPreviewImage(e: WechatMiniprogram.BaseEvent) {
       const { index } = e.currentTarget.dataset;
-      const urls = this.data.customFiles.filter((file: UploadFile) => file.percent !== -1).map((file) => file.url);
+      const imageFiles = this.data.customFiles.filter((file: UploadFile) => this.isPreviewable(file));
+      const urls = imageFiles.map((file) => file.url);
       const current = this.data.customFiles[index]?.url;
       wx.previewImage({
         urls,
@@ -284,8 +347,9 @@ export default class Upload extends SuperComponent {
     },
 
     onPreviewMedia(e: WechatMiniprogram.BaseEvent) {
-      const { index: current } = e.currentTarget.dataset;
+      const { index } = e.currentTarget.dataset;
       const sources = this.getPreviewMediaSources();
+      const current = this.getMediaIndex(index);
       wx.previewMedia({
         sources,
         current,
@@ -383,7 +447,7 @@ export default class Upload extends SuperComponent {
 
             // 支持单/多文件
             res.tempFiles.forEach((temp) => {
-              const { size, fileType, tempFilePath, width, height, duration, thumbTempFilePath, ...res } = temp;
+              const { size, fileType, tempFilePath, width, height, duration, thumbTempFilePath, ...rest } = temp;
 
               if (this.checkFileSize(size, sizeLimit, fileType)) return;
 
@@ -398,7 +462,7 @@ export default class Upload extends SuperComponent {
                 duration: duration,
                 thumb: thumbTempFilePath,
                 percent: 0,
-                ...res,
+                ...rest,
               });
             });
 
@@ -416,17 +480,18 @@ export default class Upload extends SuperComponent {
 
     chooseMessageFile(mediaType) {
       const { customLimit } = this.data;
-      const { config, sizeLimit } = this.properties;
+      const { config, sizeLimit, extension } = this.properties;
       wx.chooseMessageFile({
         count: Math.min(100, customLimit),
         type: Array.isArray(mediaType) ? 'all' : mediaType,
+        ...(extension && extension.length > 0 ? { extension } : {}),
         ...config,
         success: (res) => {
           const files = [];
 
           // 支持单/多文件
           res.tempFiles.forEach((temp) => {
-            const { size, type: fileType, path: tempFilePath, ...res } = temp;
+            const { size, type: fileType, path: tempFilePath, ...rest } = temp;
 
             if (this.checkFileSize(size, sizeLimit, fileType)) return;
 
@@ -437,7 +502,7 @@ export default class Upload extends SuperComponent {
               url: tempFilePath,
               size: size,
               percent: 0,
-              ...res,
+              ...rest,
             });
           });
           this.afterSelect(files);

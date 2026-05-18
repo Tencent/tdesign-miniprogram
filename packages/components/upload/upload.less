@@ -8,6 +8,7 @@
 @upload-add-icon-disabled-color: var(--td-upload-add-icon-disabled-color, @text-color-disabled);
 @upload-disabled-mask: var(--td-upload-disabled-mask, rgba(0, 0, 0, 0.6));
 @upload-drag-z-index: var(--td-upload-drag-z-index, 999);
+@upload-list-bg-color: var(--td-upload-list-bg-color, @bg-color-secondarycontainer);
 
 .@{prefix}-upload {
   position: relative;
@@ -63,6 +64,65 @@
       height: 100%;
       background-color: @upload-disabled-mask;
       z-index: 1;
+    }
+
+    &--file {
+      background-color: @upload-add-bg-color;
+    }
+  }
+
+  &__file-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16rpx 8rpx;
+    box-sizing: border-box;
+  }
+
+  &__file-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8rpx;
+  }
+
+  &__file-name {
+    width: 100%;
+    font: @font-body-small;
+    color: @text-color-secondary;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    padding: 0 4rpx;
+    box-sizing: border-box;
+  }
+
+  &__file-type {
+    font-size: 24px;
+
+    &--pdf,
+    &--media {
+      color: @error-color;
+    }
+
+    &--excel {
+      color: @success-color;
+    }
+
+    &--word {
+      color: @brand-color;
+    }
+
+    &--ppt {
+      color: @warning-color;
+    }
+
+    &--other {
+      color: @text-color-primary;
     }
   }
 
@@ -131,6 +191,129 @@
     }
     &--cur {
       z-index: @upload-drag-z-index;
+    }
+  }
+
+  // ========== list 布局 ==========
+  &--list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24rpx;
+  }
+
+  &__list-trigger {
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24rpx;
+  }
+
+  &__list-drag {
+    position: relative;
+    width: 100%;
+  }
+
+  &__list-drag-item {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 24rpx;
+    box-sizing: border-box;
+
+    .@{prefix}-upload__list-item {
+      margin: 0;
+    }
+  }
+
+  &__list-item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 24rpx;
+    padding: 16rpx 24rpx;
+    background: @upload-list-bg-color;
+    border-radius: @upload-radius;
+    box-sizing: border-box;
+
+    &-loading {
+      flex-shrink: 0;
+      font-size: 48rpx;
+      color: @brand-color;
+      animation: spin infinite linear 0.6s;
+    }
+
+    &-error-icon {
+      flex-shrink: 0;
+      font-size: 48rpx;
+      color: @error-color;
+    }
+
+    &-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    &-thumbnail {
+      flex-shrink: 0;
+      width: 48rpx;
+      height: 48rpx;
+      border-radius: @radius-small;
+      overflow: hidden;
+    }
+
+    &-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &-name {
+      font: @font-body-medium;
+      color: @text-color-primary;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &-size {
+      font: @font-body-small;
+      color: @text-color-placeholder;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &-action {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      column-gap: 8rpx;
+    }
+
+    &-delete {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36rpx;
+      color: @text-color-placeholder;
+    }
+
+    &--progress &-name,
+    &--progress &-size {
+      color: @text-color-placeholder;
+    }
+
+    &--fail &-name {
+      color: @error-color;
     }
   }
 }

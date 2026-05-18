@@ -5,12 +5,12 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['base', 'code', 'list', 'refer', 'sheet', 'tail', 'url'];
+const mapper = ['base', 'bordered', 'rowspan-colspan', 'scroll', 'stripe'];
 
-describe('ChatMarkdown', () => {
+describe('Table', () => {
   mapper.forEach((demoName) => {
-    it(`ChatMarkdown ${demoName} demo works fine`, () => {
-      const id = load(path.resolve(__dirname, `../../chat-markdown/_example/${demoName}/index`), demoName);
+    it(`Table ${demoName} demo works fine`, () => {
+      const id = load(path.resolve(__dirname, `../../table/_example/${demoName}/index`), demoName);
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();
