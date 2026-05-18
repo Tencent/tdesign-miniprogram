@@ -1,13 +1,15 @@
 <view class="wrapper">
   <view class="upload-demo">
-    <view class="upload-demo__title">宫格布局上传）</view>
+    <view class="upload-demo__title">宫格布局上传</view>
     <t-upload
       files="{{gridFiles}}"
       draggable
+      disabled
       theme="grid"
       source="messageFile"
-      bind:add="handleAdd"
-      bind:remove="handleRemove"
+      bind:add="handleGridAdd"
+      bind:remove="handleGridRemove"
+      bind:drop="handleGridDrop"
     />
   </view>
 
@@ -16,8 +18,10 @@
     <t-upload
       files="{{listFiles}}"
       draggable
+      disabled
       theme="list"
       source="messageFile"
+      bind:add="handleListAdd"
       bind:remove="handleListRemove"
       bind:drop="handleListDrop"
     />

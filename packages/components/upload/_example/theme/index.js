@@ -136,20 +136,18 @@ Component({
     ],
   },
   methods: {
-    handleAdd(e) {
+    // 宫格布局 - 添加文件
+    handleGridAdd(e) {
       const { gridFiles } = this.data;
       const { files } = e.detail;
 
-      // 方法1：选择完所有图片之后，统一上传，因此选择完就直接展示
       this.setData({
-        gridFiles: [...gridFiles, ...files], // 此时设置了 gridFiles 之后才会展示选择的图片
+        gridFiles: [...gridFiles, ...files],
       });
-
-      // 方法2：每次选择图片都上传，展示每次上传图片的进度
-      // files.forEach(file => this.uploadFile(file))
     },
 
-    handleRemove(e) {
+    // 宫格布局 - 移除文件
+    handleGridRemove(e) {
       const { index } = e.detail;
       const { gridFiles } = this.data;
 
@@ -159,6 +157,25 @@ Component({
       });
     },
 
+    // 宫格布局 - 拖拽排序
+    handleGridDrop(e) {
+      const { files } = e.detail;
+      this.setData({
+        gridFiles: files,
+      });
+    },
+
+    // 列表布局 - 添加文件
+    handleListAdd(e) {
+      const { listFiles } = this.data;
+      const { files } = e.detail;
+
+      this.setData({
+        listFiles: [...listFiles, ...files],
+      });
+    },
+
+    // 列表布局 - 移除文件
     handleListRemove(e) {
       const { index } = e.detail;
       const { listFiles } = this.data;
@@ -169,6 +186,7 @@ Component({
       });
     },
 
+    // 列表布局 - 拖拽排序
     handleListDrop(e) {
       const { files } = e.detail;
       this.setData({

@@ -233,9 +233,11 @@ exports[`Upload Upload theme demo works fine 1`] = `
       <wx-view
         class="upload-demo__title"
       >
-        宫格布局上传）
+        宫格布局上传
       </wx-view>
       <t-upload
+        disabled="{{true}}"
+        draggable="{{true}}"
         files="{{
           Array [
             Object {
@@ -316,7 +318,11 @@ exports[`Upload Upload theme demo works fine 1`] = `
             },
           ]
         }}"
+        source="messageFile"
         theme="grid"
+        bind:add="handleGridAdd"
+        bind:drop="handleGridDrop"
+        bind:remove="handleGridRemove"
       />
     </wx-view>
     <wx-view
@@ -329,6 +335,8 @@ exports[`Upload Upload theme demo works fine 1`] = `
         列表布局上传
       </wx-view>
       <t-upload
+        disabled="{{true}}"
+        draggable="{{true}}"
         files="{{
           Array [
             Object {
@@ -384,7 +392,11 @@ exports[`Upload Upload theme demo works fine 1`] = `
             },
           ]
         }}"
+        source="messageFile"
         theme="list"
+        bind:add="handleListAdd"
+        bind:drop="handleListDrop"
+        bind:remove="handleListRemove"
       />
     </wx-view>
   </wx-view>
