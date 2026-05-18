@@ -176,11 +176,12 @@ export default class Upload extends SuperComponent {
 
   initDragList() {
     let i = 0;
-    const { column, customFiles, customLimit } = this.data;
+    const { customFiles, customLimit } = this.data;
     const theme = (this.properties as any).theme as string;
-    // list 布局固定单列
-    const dragColumn = theme === 'list' ? 1 : column;
+    const dragColumn = this.getDragColumn();
+    const isListTheme = theme === 'list';
     const dragList = [];
+
     customFiles.forEach((item, index) => {
       dragList.push({
         realKey: i, // 真实顺序
@@ -191,8 +192,9 @@ export default class Upload extends SuperComponent {
       });
       i += 1;
     });
+
     // list 布局下不添加 fixed 的"添加按钮"项，因为上传按钮在列表外部
-    if (customLimit > 0 && theme !== 'list') {
+    if (customLimit > 0 && !isListTheme) {
       const listLength = dragList.length;
       dragList.push({
         realKey: listLength, // 真实顺序
@@ -202,41 +204,63 @@ export default class Upload extends SuperComponent {
         fixed: true,
       });
     }
+
     this.data.rows = Math.ceil(dragList.length / dragColumn);
     this.setData({
       dragList,
     });
   }
 
-  initDragBaseData() {
-    const { classPrefix, rows, column } = this.data;
+  /**
+   * 获取拖拽布局相关的选择器配置
+   * 统一 list 和 grid 布局的选择器逻辑
+   */
+  getDragSelectors() {
+    const { classPrefix } = this.data;
     const theme = (this.properties as any).theme as string;
+    const isListTheme = theme === 'list';
+
+    return {
+      // list 布局使用非拖拽态的 list-item 选择器获取尺寸（因为拖拽态 DOM 尚未渲染）
+      // grid 布局使用 grid-item 选择器（grid/grid-item 在两种态下都存在）
+      itemSelector: isListTheme ? `.${classPrefix}__list-item` : `.${classPrefix} >>> .t-grid-item`,
+      wrapSelector: isListTheme ? `.${classPrefix}__list` : `.${classPrefix} >>> .t-grid`,
+    };
+  }
+
+  /**
+   * 获取当前布局的拖拽列数
+   */
+  getDragColumn() {
+    const theme = (this.properties as any).theme as string;
+    return theme === 'list' ? 1 : this.data.column;
+  }
+
+  /**
+   * 获取拖拽项的间距补偿（list 布局需要加上 padding-bottom 间距）
+   */
+  getDragItemGap() {
+    const theme = (this.properties as any).theme as string;
+    if (theme !== 'list') return 0;
+    const systemInfo = wx.getSystemInfoSync();
+    return (systemInfo.windowWidth / 750) * 24;
+  }
+
+  initDragBaseData() {
+    const { classPrefix, rows } = this.data;
+    const dragColumn = this.getDragColumn();
+    const { itemSelector, wrapSelector } = this.getDragSelectors();
     const query = this.createSelectorQuery();
 
-    // list 布局使用非拖拽态的 list-item 选择器获取尺寸（因为拖拽态 DOM 尚未渲染）
-    // grid 布局使用 grid-item 选择器（grid/grid-item 在两种态下都存在）
-    if (theme === 'list') {
-      const selectorListItem = `.${classPrefix}__list-item`;
-      const selectorListWrap = `.${classPrefix}__list`;
-      query.select(selectorListItem).boundingClientRect();
-      query.select(selectorListWrap).boundingClientRect();
-    } else {
-      const selectorGridItem = `.${classPrefix} >>> .t-grid-item`;
-      const selectorGrid = `.${classPrefix} >>> .t-grid`;
-      query.select(selectorGridItem).boundingClientRect();
-      query.select(selectorGrid).boundingClientRect();
-    }
-
+    query.select(itemSelector).boundingClientRect();
+    query.select(wrapSelector).boundingClientRect();
     query.selectViewport().scrollOffset();
+
     query.exec((res) => {
       if (!res || !res[0] || !res[1]) return;
       const [{ width, height }, { left, top }, { scrollTop }] = res;
-      const dragColumn = theme === 'list' ? 1 : column;
 
-      // list 布局下拖拽项包含 padding-bottom: 24rpx 作为间距
-      // 需要将间距加到 itemHeight 中，以确保拖拽定位计算正确
-      const systemInfo = wx.getSystemInfoSync();
-      const gap = theme === 'list' ? (systemInfo.windowWidth / 750) * 24 : 0;
+      const gap = this.getDragItemGap();
       const itemHeight = height + gap;
 
       const dragBaseData = {
