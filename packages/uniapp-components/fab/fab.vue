@@ -115,13 +115,16 @@
 
 <script>
 import TButton from '../button/button';
-import TDraggable from '../draggable/draggable.vue';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import useCustomNavbar from '../mixins/using-custom-navbar';
+import { uniComponent } from '../common/src/index';
+
+
 import { unitConvert, getWindowInfo, calcIcon } from '../common/utils';
 import tools from '../common/utils.wxs';
+import TDraggable from '../draggable/draggable.vue';
+import useCustomNavbar from '../mixins/using-custom-navbar';
+
+import props from './props';
 
 const name = `${prefix}-fab`;
 

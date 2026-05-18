@@ -136,11 +136,13 @@
   </view>
 </template>
 <script>
-import TLoading from '../loading/loading.vue';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './base-table-props';
+import { uniComponent } from '../common/src/index';
 import tools from '../common/utils.wxs';
+import TLoading from '../loading/loading.vue';
+
+import props from './base-table-props';
+
 
 const name = `${prefix}-table`;
 
@@ -262,7 +264,7 @@ export default {
         if (!col) return '';
         const defaultColWidth = this.tableLayout === 'fixed' ? '80px' : undefined;
         const width = formatCSSUnit(col.width || defaultColWidth);
-        const minWidth =          !formatCSSUnit(col.width || defaultColWidth) && !col.minWidth && this.tableLayout === 'fixed'           ? '80px'           : formatCSSUnit(col.minWidth);
+        const minWidth = !formatCSSUnit(col.width || defaultColWidth) && !col.minWidth && this.tableLayout === 'fixed' ? '80px' : formatCSSUnit(col.minWidth);
         const styles = [];
         // 当列设置了固定宽度时，使用 flex: 0 0 auto 防止被 flex 压缩，支持横向滚动
         if (col.width) {
@@ -428,14 +430,14 @@ export default {
           if (fixedTopRows > 0 && rowIndex < fixedTopRows) {
             rowClasses.push(`${name}__row--fixed-top`);
             // top/bottom 值将在 nextTick 中通过实际 DOM 测量来设置
-            rowStyle = `position: sticky; top: 0px; z-index: ${fixedRowZIndex};`;
+            rowStyle = `position: sticky; top: 0; z-index: ${fixedRowZIndex};`;
           }
           if (fixedBottomRows > 0 && rowIndex >= dataLen - fixedBottomRows) {
             rowClasses.push(`${name}__row--fixed-bottom`);
             if (rowIndex === dataLen - fixedBottomRows) {
               rowClasses.push(`${name}__row--fixed-bottom-first`);
             }
-            rowStyle = `position: sticky; bottom: 0px; z-index: ${fixedRowZIndex};`;
+            rowStyle = `position: sticky; bottom: 0; z-index: ${fixedRowZIndex};`;
           }
           // 冻结表尾行时，最后一行非冻结行去除下边框
           if (fixedBottomRows > 0 && rowIndex === dataLen - fixedBottomRows - 1) {
