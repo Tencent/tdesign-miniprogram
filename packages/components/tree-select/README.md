@@ -84,7 +84,7 @@ t-class-right-item-label | 右侧第一列子项标签样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-tree-bg-color | @bg-color-container | -
 --td-tree-colum-text-color | @text-color-primary | -

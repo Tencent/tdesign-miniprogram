@@ -183,7 +183,7 @@ panel | 自定义 `panel` 显示内容
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-tab-border-color | @component-stroke | -
 --td-tab-font | @font-body-medium | -
