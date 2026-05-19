@@ -1,9 +1,14 @@
+
+const path = require('path');
+
+const { writeFileSync, readFileSync, hyphenate } = require('t-comm');
+
+const pagesJson = path.resolve(__dirname, '../../src/pages.json');
+
 const {
   components,
 } = require('../utils/components.js');
-const path = require('path');
-const pagesJson = path.resolve(__dirname, '../../src/pages.json');
-const { writeFileSync, readFileSync, hyphenate } = require('t-comm');
+
 const { DEFAULT_PAGES, SHOW_SKYLINE_PAGES } = require('./config');
 
 

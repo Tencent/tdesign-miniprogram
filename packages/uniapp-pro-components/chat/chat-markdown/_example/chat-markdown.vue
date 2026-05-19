@@ -43,12 +43,12 @@
 
 <script>
 import BaseDemo from './base/index.vue';
-import ListDemo from './list/index.vue';
 import CodeDemo from './code/index.vue';
-import SheetDemo from './sheet/index.vue';
-import UrlDemo from './url/index.vue';
+import ListDemo from './list/index.vue';
 import ReferDemo from './refer/index.vue';
+import SheetDemo from './sheet/index.vue';
 import TailDemo from './tail/index.vue';
+import UrlDemo from './url/index.vue';
 
 
 export default {

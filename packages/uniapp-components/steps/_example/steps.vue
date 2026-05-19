@@ -38,9 +38,9 @@
 <script>
 
 import HorizontalDemo from './horizontal/index.vue';
-import VerticalDemo from './vertical/index.vue';
 import SpecialDemo from './special/index.vue';
 import StatusDemo from './status/index.vue';
+import VerticalDemo from './vertical/index.vue';
 export default {
   components: {
     HorizontalDemo,

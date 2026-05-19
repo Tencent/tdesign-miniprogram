@@ -36,14 +36,16 @@
 </template>
 
 <script>
-import QrcodeCanvas from './components/qrcode-canvas/qrcode-canvas.vue';
-import QrcodeStatus from './components/qrcode-status/qrcode-status.vue';
 import { prefix } from '../common/config';
-import props from './props';
+
 import { uniComponent } from '../common/src/index';
 import tools from '../common/utils.wxs';
 
 import usingConfig from '../mixins/using-config';
+
+import QrcodeCanvas from './components/qrcode-canvas/qrcode-canvas.vue';
+import QrcodeStatus from './components/qrcode-status/qrcode-status.vue';
+import props from './props';
 const componentName = 'qrcode';
 const name = `${prefix}-${componentName}`;
 

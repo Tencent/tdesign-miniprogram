@@ -36,8 +36,8 @@
 <script>
 
 import BaseDemo from '../base/index.vue';
-import ImageEmpty from '../imageEmpty/index.vue';
 import ButtonEmpty from '../buttonEmpty/index.vue';
+import ImageEmpty from '../imageEmpty/index.vue';
 
 export default {
   components: {

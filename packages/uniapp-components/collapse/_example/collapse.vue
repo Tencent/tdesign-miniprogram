@@ -38,10 +38,10 @@
 </template>
 
 <script>
+import AccordionDemo from './accordion/index.vue';
+import ActionDemo from './action/index.vue';
 import BaseComp from './base/index.vue';
 import PlacementDemo from './placement/index.vue';
-import ActionDemo from './action/index.vue';
-import AccordionDemo from './accordion/index.vue';
 import ThemeDemo from './theme/index.vue';
 
 

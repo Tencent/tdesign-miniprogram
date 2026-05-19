@@ -73,24 +73,26 @@
   </view>
 </template>
 <script>
-import TPopup from '../popup/popup';
-import CalendarTemplate from './template.vue';
 
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
+
+import TCalendar from '../common/shared/calendar/index';
+import { uniComponent } from '../common/src/index';
 import { coalesce } from '../common/utils';
 
-import props from './props';
-import TCalendar from '../common/shared/calendar/index';
-import useCustomNavbar from '../mixins/using-custom-navbar';
-import { getPrevMonth, getPrevYear, getNextMonth, getNextYear } from './utils';
 import tools from '../common/utils.wxs';
 import usingConfig from '../mixins/using-config';
+import useCustomNavbar from '../mixins/using-custom-navbar';
+import TPopup from '../popup/popup';
+
 import {
   getMonthTitle,
   getDateLabel,
   isDateSelected,
 } from './computed.js';
+import props from './props';
+import CalendarTemplate from './template.vue';
+import { getPrevMonth, getPrevYear, getNextMonth, getNextYear } from './utils';
 
 
 const componentName = 'calendar';

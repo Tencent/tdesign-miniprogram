@@ -105,22 +105,27 @@
   </view>
 </template>
 <script>
-import TRadio from '../radio/radio';
-import TRadioGroup from '../radio-group/radio-group';
 import TCheckbox from '../checkbox/checkbox';
 import TCheckboxGroup from '../checkbox-group/checkbox-group';
+
+import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
+import { getTreeDepth, coalesce, nextTick } from '../common/utils';
+
+import tools from '../common/utils.wxs';
+import { isDef } from '../common/validator';
+
+
+import { canUseVirtualHost } from '../common/version';
+import TRadio from '../radio/radio';
+import TRadioGroup from '../radio-group/radio-group';
+import TScrollView from '../scroll-view/scroll-view.vue';
 import TSideBar from '../side-bar/side-bar';
 import TSideBarItem from '../side-bar-item/side-bar-item';
-import TScrollView from '../scroll-view/scroll-view.vue';
 
-import { uniComponent } from '../common/src/index';
-import { isDef } from '../common/validator';
-import { prefix } from '../common/config';
-import { getTreeDepth, coalesce, nextTick } from '../common/utils';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { getTreeClass } from './computed.js';
-import { canUseVirtualHost } from '../common/version';
+
+import props from './props';
 
 const name = `${prefix}-tree-select`;
 

@@ -54,12 +54,15 @@
 </template>
 <script>
 import TIcon from '.././icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+
+
 import { classNames, calcIcon } from '../common/utils';
-import { isNumeric } from '../common/validator';
 import tools from '../common/utils.wxs';
+import { isNumeric } from '../common/validator';
+
+import props from './props';
 
 
 const name = `${prefix}-tag`;

@@ -35,12 +35,15 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+
+
 import { classNames } from '../common/utils';
-import { isInteger, isNumeric } from '../common/validator';
 import tools from '../common/utils.wxs';
+import { isInteger, isNumeric } from '../common/validator';
+
+import props from './props';
 
 
 const name = `${prefix}-skeleton`;

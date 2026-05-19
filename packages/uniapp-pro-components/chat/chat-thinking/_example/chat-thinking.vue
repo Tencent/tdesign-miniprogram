@@ -41,9 +41,9 @@
 <script>
 import BaseDemo from './base/index.vue';
 import CollapsedDemo from './collapsed/index.vue';
+import CompleteDemo from './complete/index.vue';
 import LayoutDemo from './layout/index.vue';
 import PendingDemo from './pending/index.vue';
-import CompleteDemo from './complete/index.vue';
 
 
 export default {

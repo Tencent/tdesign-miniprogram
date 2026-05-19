@@ -1,11 +1,11 @@
-import path from 'path';
 import fs from 'fs';
+import path from 'path';
 
 import mdToVue from './md-to-vue';
 
 let demoCodesImports = {};
 
-export default (mode) => ({
+export default mode => ({
   before({ source, file }) {
     const resourceDir = path.dirname(file);
     const reg = file.match(/([\w-]+)\.?([\w-]+)?\.md/);

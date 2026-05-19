@@ -1,5 +1,5 @@
-import type { TransformEventHandlers, ExtractNonOnProps } from '../common/common';
 import type { TdColProps } from '../col/type';
+import type { TransformEventHandlers, ExtractNonOnProps } from '../common/common';
 
 export type ColProps = ExtractNonOnProps<TdColProps>;
 export type ColEmits = TransformEventHandlers<TdColProps, true>;

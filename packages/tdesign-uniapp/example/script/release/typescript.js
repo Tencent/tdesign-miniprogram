@@ -1,7 +1,9 @@
+const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
+
 const ts = require('typescript');
+
 const { PROJECT_ROOT } = require('./config');
 
 const COMPILE_TS = false;

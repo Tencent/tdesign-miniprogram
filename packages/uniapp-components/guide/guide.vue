@@ -210,18 +210,19 @@
 </template>
 
 <script>
+import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
+import { debounce, getRect, rpx2px, styles, unitConvert, nextTick, systemInfo, coalesce } from '../common/utils';
+import { isFunction, isNumeric } from '../common/validator';
+import usingConfig from '../mixins/using-config';
+import useCustomNavbar from '../mixins/using-custom-navbar';
 import TOverlay from '../overlay/overlay';
 import TPopup from '../popup/popup';
-import { uniComponent } from '../common/src/index';
-import props from './props';
-import { prefix } from '../common/config';
-import { isFunction, isNumeric } from '../common/validator';
-import { debounce, getRect, rpx2px, styles, unitConvert, nextTick, systemInfo, coalesce } from '../common/utils';
+
 import ContentComp from './content.vue';
+import props from './props';
 
-import useCustomNavbar from '../mixins/using-custom-navbar';
 
-import usingConfig from '../mixins/using-config';
 const componentName = 'guide';
 const name = `${prefix}-${componentName}`;
 

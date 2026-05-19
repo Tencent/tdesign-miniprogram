@@ -53,9 +53,9 @@
 </template>
 
 <script>
+import { MessagePlugin } from '@tdesign/uniapp';
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TMessage from '@tdesign/uniapp/message/message.vue';
-import { MessagePlugin } from '@tdesign/uniapp';
 
 export default {
   components: {

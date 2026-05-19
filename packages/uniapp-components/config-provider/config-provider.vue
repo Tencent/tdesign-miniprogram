@@ -9,10 +9,12 @@
 
 <script>
 import { prefix } from '../common/config';
-import props from './props';
+
 import { uniComponent } from '../common/src/index';
 import tools from '../common/utils.wxs';
+
 import { configStore } from './config-store';
+import props from './props';
 import themeVarsToCSS from './utils';
 
 const componentName = 'config-provider';

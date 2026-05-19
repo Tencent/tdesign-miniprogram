@@ -1,5 +1,5 @@
-import type { TransformEventHandlers, ExtractNonOnProps } from '../common/common';
 import type { TdCheckboxGroupProps } from '../checkbox-group/type';
+import type { TransformEventHandlers, ExtractNonOnProps } from '../common/common';
 
 export type CheckboxGroupProps = ExtractNonOnProps<TdCheckboxGroupProps>;
 export type CheckboxGroupEmits = TransformEventHandlers<TdCheckboxGroupProps, true>;

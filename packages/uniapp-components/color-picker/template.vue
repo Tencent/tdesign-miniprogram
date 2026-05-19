@@ -154,9 +154,10 @@
 </template>
 
 <script>
-import utils from '../common/utils.wxs';
-import props from './template.props';
 import { getRect } from '../common/utils';
+import utils from '../common/utils.wxs';
+
+import props from './template.props';
 
 
 export default {

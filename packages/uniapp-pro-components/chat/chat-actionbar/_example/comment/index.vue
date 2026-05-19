@@ -12,9 +12,10 @@
 </template>
 
 <script>
-import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
-import TToast from '@tdesign/uniapp/toast/toast.vue';
 import { Toast } from '@tdesign/uniapp';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
+
+import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
 
 export default {
   components: {

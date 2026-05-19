@@ -48,9 +48,9 @@
 <script>
 import BaseDemo from './base/index.vue';
 import BorderedDemo from './bordered/index.vue';
-import StripeDemo from './stripe/index.vue';
-import ScrollDemo from './scroll/index.vue';
 import RowspanColspanDemo from './rowspan-colspan/index.vue';
+import ScrollDemo from './scroll/index.vue';
+import StripeDemo from './stripe/index.vue';
 
 export default {
   components: {

@@ -46,15 +46,18 @@
   </view>
 </template>
 <script>
-import TChatLoading from '../chat-loading/chat-loading.vue';
-import TIcon from '@tdesign/uniapp/icon/icon.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
-import props from './props';
-import tools from '@tdesign/uniapp/common/utils.wxs';
+
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
+import tools from '@tdesign/uniapp/common/utils.wxs';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
+
+import TChatLoading from '../chat-loading/chat-loading.vue';
 
 
 import usingConfig from '../mixins/using-config';
+
+import props from './props';
 const componentName = 'chat-thinking';
 const name = `${prefix}-${componentName}`;
 

@@ -34,12 +34,13 @@
 </template>
 
 <script>
-import TMessageItem from '../message-item/message-item.vue';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
+import { unitConvert } from '../common/utils';
+import TMessageItem from '../message-item/message-item.vue';
+
 import { MessageType } from './message.interface';
 import props from './props';
-import { unitConvert } from '../common/utils';
 
 
 const SHOW_DURATION = 400;

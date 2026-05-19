@@ -24,8 +24,8 @@
 </template>
 
 <script>
-import TColorPicker from '@tdesign/uniapp/color-picker/color-picker.vue';
 import TButton from '@tdesign/uniapp/button/button.vue';
+import TColorPicker from '@tdesign/uniapp/color-picker/color-picker.vue';
 
 export default {
   components: {

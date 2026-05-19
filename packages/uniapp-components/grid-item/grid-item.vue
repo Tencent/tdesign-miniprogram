@@ -118,17 +118,19 @@
   </view>
 </template>
 <script>
-import TImage from '../image/image';
-import TIcon from '../icon/icon';
 import TBadge from '../badge/badge';
 
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import { uniqueFactory, setIcon } from '../common/utils';
-import { isObject } from '../common/validator';
-import tools from '../common/utils.wxs';
+
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import { uniqueFactory, setIcon } from '../common/utils';
+import tools from '../common/utils.wxs';
+import { isObject } from '../common/validator';
+import TIcon from '../icon/icon';
+import TImage from '../image/image';
+
+import props from './props';
 
 
 const name = `${prefix}-grid-item`;

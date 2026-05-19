@@ -1,5 +1,5 @@
-import type { TransformEventHandlers, ExtractNonOnProps } from '../common/common';
 import type { TdCalendarProps } from '../calendar/type';
+import type { TransformEventHandlers, ExtractNonOnProps } from '../common/common';
 
 export type CalendarProps = ExtractNonOnProps<TdCalendarProps>;
 export type CalendarEmits = TransformEventHandlers<TdCalendarProps, true>;

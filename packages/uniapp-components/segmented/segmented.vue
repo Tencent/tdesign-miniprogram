@@ -40,12 +40,15 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+
+
 import { calcIcon, getRect, coalesce } from '../common/utils';
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+
+import props from './props';
 
 const name = `${prefix}-segmented`;
 

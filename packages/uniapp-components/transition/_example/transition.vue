@@ -41,10 +41,10 @@
 
 <script>
 
+import AppearDemo from './appear/index.vue';
 import BaseDemo from './base/index.vue';
 import CustomDemo from './custom/index.vue';
 import DestroyDemo from './destroy/index.vue';
-import AppearDemo from './appear/index.vue';
 export default {
   components: {
     BaseDemo,

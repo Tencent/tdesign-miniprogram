@@ -42,11 +42,11 @@
 
 <script>
 import BaseDemo from './base';
-import ThemeTab from './theme-tab';
-import WithValue from './with-value';
-import KeysDemo from './keys';
-import WithTitle from './with-title';
 import CheckStrictly from './check-strictly';
+import KeysDemo from './keys';
+import ThemeTab from './theme-tab';
+import WithTitle from './with-title';
+import WithValue from './with-value';
 export default {
   components: {
     BaseDemo,

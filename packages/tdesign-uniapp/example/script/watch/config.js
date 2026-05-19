@@ -1,4 +1,5 @@
 const path = require('path');
+
 const { PACKAGES_ROOT, toGlobPattern } = require('../release/config');
 
 const VUE3_CLI_ROOT = path.resolve(__dirname, '../..');

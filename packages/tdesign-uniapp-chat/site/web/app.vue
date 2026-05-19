@@ -1,21 +1,33 @@
 <!-- eslint-disable vue/no-deprecated-slot-attribute -->
 <template>
   <td-doc-layout>
-    <td-header slot="header" framework="miniprogram">
+    <td-header
+      slot="header"
+      framework="miniprogram"
+    >
       <!-- <td-doc-search slot="search" ref="tdDocSearch" /> -->
     </td-header>
-    <td-doc-aside ref="tdDocAside" title="Uni App Chat">
+    <td-doc-aside
+      ref="tdDocAside"
+      title="Uni App Chat"
+    >
       <!-- <td-select ref="tdSelect" :value="version" slot="extra"></td-select> -->
     </td-doc-aside>
 
-    <router-view :style="contentStyle" :doc-type="docType" @loaded="contentLoaded" />
+    <router-view
+      :style="contentStyle"
+      :doc-type="docType"
+      @loaded="contentLoaded"
+    />
   </td-doc-layout>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
+
 import packageJson from '../../../tdesign-uniapp-chat/package.json';
 import siteConfig from '../docs.config';
+
 import { filterVersions, sortDocs } from './utils';
 
 const registryUrl = 'https://service-edbzjd6y-1257786608.hk.apigw.tencentcs.com/release/npm/versions/tdesign-uniapp';
@@ -77,7 +89,7 @@ export default defineComponent({
   methods: {
     initHistoryVersions() {
       fetch(registryUrl)
-        .then((res) => res.json())
+        .then(res => res.json())
         .then((res) => {
           const options = [];
           const versions = filterVersions(Object.keys(res.versions));

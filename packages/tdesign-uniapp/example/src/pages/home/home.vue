@@ -57,11 +57,14 @@
 </template>
 
 <script>
-import { themeMixin } from '@tdesign/uniapp/mixins/theme-change';
 import TFooter from '@tdesign/uniapp/footer/footer.vue';
-import { list as dataList, skylineList } from './data/index';
+import { themeMixin } from '@tdesign/uniapp/mixins/theme-change';
+
+
 import PullDownList from '../../components/pull-down-list/index.vue';
 import TrdPrivacy from '../../components/trd-privacy/index.vue';
+
+import { list as dataList, skylineList } from './data/index';
 
 const SHARE_INFO = {
   title: 'TDesign UI',

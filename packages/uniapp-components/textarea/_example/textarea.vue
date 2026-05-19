@@ -61,14 +61,14 @@
 
 <script>
 
-import BaseDemo from './base/index.vue';
-import LabelDemo from './label/index.vue';
 import AutosizeDemo from './autosize/index.vue';
-import MaxlengthDemo from './maxlength/index.vue';
-import DisabledDemo from './disabled/index.vue';
-import MaxcharacterDemo from './maxcharacter/index.vue';
+import BaseDemo from './base/index.vue';
 import CardDemo from './card/index.vue';
 import CustomDemo from './custom/index.vue';
+import DisabledDemo from './disabled/index.vue';
+import LabelDemo from './label/index.vue';
+import MaxcharacterDemo from './maxcharacter/index.vue';
+import MaxlengthDemo from './maxlength/index.vue';
 export default {
   components: {
     BaseDemo,

@@ -191,15 +191,17 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
-import { prefix } from '../common/config';
-import { trimSingleValue, trimValue } from './tool';
-import props from './props';
-import { getRect, coalesce, nextTick } from '../common/utils';
 import Bus from '../common/bus';
+import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
+import { getRect, coalesce, nextTick } from '../common/utils';
 import tools from '../common/utils.wxs';
-import { getValue } from './computed.js';
+
 import { isString, isFunction } from '../common/validator';
+
+import { getValue } from './computed.js';
+import props from './props';
+import { trimSingleValue, trimValue } from './tool';
 
 
 const name = `${prefix}-slider`;

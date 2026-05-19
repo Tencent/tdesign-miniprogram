@@ -8,10 +8,10 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
-import transition from '../mixins/transition';
 import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
 import tools from '../common/utils.wxs';
+import transition from '../mixins/transition';
 
 
 const name = `${prefix}-transition`;

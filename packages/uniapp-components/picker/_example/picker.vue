@@ -28,9 +28,9 @@
 
 <script>
 
+import AreaDemo from './area/index.vue';
 import BaseDemo from './base/index.vue';
 import WithTitle from './with-title/index.vue';
-import AreaDemo from './area/index.vue';
 
 export default {
   components: {

@@ -63,15 +63,15 @@
 
 <script>
 
+import ActionDemo from './action/index.vue';
 import BaseDemo from './base/index.vue';
+import ColorDemo from './color/index.vue';
+import CountDemo from './count/index.vue';
 import CustomDemo from './custom/index.vue';
 import CustomPrefix from './custom-prefix/index.vue';
-import SpecialDemo from './special/index.vue';
-import CountDemo from './count/index.vue';
-import ActionDemo from './action/index.vue';
 import ShowText from './show-text/index.vue';
-import ColorDemo from './color/index.vue';
 import SizeDemo from './size/index.vue';
+import SpecialDemo from './special/index.vue';
 export default {
   components: {
     BaseDemo,

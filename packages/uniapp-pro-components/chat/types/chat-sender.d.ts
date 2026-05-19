@@ -1,5 +1,5 @@
-import type { TransformEventHandlers, ExtractNonOnProps } from '@tdesign/uniapp/common/common';
 import type { TdChatSenderProps } from '../chat-sender/type';
+import type { TransformEventHandlers, ExtractNonOnProps } from '@tdesign/uniapp/common/common';
 
 export type ChatSenderProps = ExtractNonOnProps<TdChatSenderProps>;
 export type ChatSenderEmits = TransformEventHandlers<TdChatSenderProps, true>;

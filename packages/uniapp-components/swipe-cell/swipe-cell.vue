@@ -96,12 +96,14 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { parseEventDynamicCode } from '../common/event/dynamic';
+import { uniComponent } from '../common/src/index';
 import { getRect } from '../common/utils';
+import tools from '../common/utils.wxs';
 import { getObserver } from '../common/wechat';
+import TIcon from '../icon/icon';
+
 import {
   initLeftWidth,
   initRightWidth,
@@ -111,8 +113,8 @@ import {
   onCloseChange,
   onOpenedChange,
 } from './computed';
-import tools from '../common/utils.wxs';
-import { parseEventDynamicCode } from '../common/event/dynamic';
+import props from './props';
+
 
 let ARRAY = [];
 

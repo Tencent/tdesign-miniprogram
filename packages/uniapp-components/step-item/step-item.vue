@@ -79,13 +79,14 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import tools from '../common/utils.wxs';
-import { getAriaLabel } from './computed.js';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+
+import { getAriaLabel } from './computed.js';
+import props from './props';
 
 
 const name = `${prefix}-steps-item`;

@@ -1,7 +1,7 @@
 /* eslint-disable no-param-reassign */
+import { toCamel, toPascal, hyphenate } from '../utils';
 import { isPlainObject } from '../validator';
 import { canUseVirtualHost } from '../version';
-import { toCamel, toPascal, hyphenate } from '../utils';
 
 const getInnerControlledValue = key => `data${key.replace(/^(\w)/, (e, t) => t.toUpperCase())}`;
 const getDefaultKey = key =>  `default${key.replace(/^(\w)/, (e, t) => t.toUpperCase())}`;

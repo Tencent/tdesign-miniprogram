@@ -50,13 +50,13 @@
 
 <script>
 
-import TextOnly from './text-only/index.vue';
-import IconOnly from './icon-only/index.vue';
-import BaseDemo from './base/index.vue';
-import SubDemo from './sub/index.vue';
 import BadgeDemo from './badge/index.vue';
-import RoundDemo from './round/index.vue';
+import BaseDemo from './base/index.vue';
 import CustomDemo from './custom/index.vue';
+import IconOnly from './icon-only/index.vue';
+import RoundDemo from './round/index.vue';
+import SubDemo from './sub/index.vue';
+import TextOnly from './text-only/index.vue';
 export default {
   components: {
     TextOnly,

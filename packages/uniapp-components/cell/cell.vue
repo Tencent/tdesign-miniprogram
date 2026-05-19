@@ -180,6 +180,9 @@ export default {
         prefix,
         classPrefix: name,
         tools,
+        rightArrow: null,
+        iRightIcon: null,
+        iLeftIcon: null,
         isLastChild: false,
       };
     },

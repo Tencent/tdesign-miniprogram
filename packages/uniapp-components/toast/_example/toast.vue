@@ -45,9 +45,9 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import ThemeDemo from './theme/index.vue';
-import CoverDemo from './cover/index.vue';
 import CloseDemo from './close/index.vue';
+import CoverDemo from './cover/index.vue';
+import ThemeDemo from './theme/index.vue';
 export default {
   options: {
     styleIsolation: 'shared',

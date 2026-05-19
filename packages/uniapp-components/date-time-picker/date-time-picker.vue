@@ -46,18 +46,20 @@
   </view>
 </template>
 <script>
-import TPicker from '../picker/picker';
-import TPickerItem from '../picker-item/picker-item';
 import { prefix } from '../common/config';
-import { coalesce } from '../common/utils';
 import { uniComponent } from '../common/src/index';
-import props from './props';
-import dayjsLocaleMap from './locale/dayjs';
+import { coalesce } from '../common/utils';
+
 import tools from '../common/utils.wxs';
+import usingConfig from '../mixins/using-config';
 import dayjs from '../npm/dayjs/esm/index.js';
 import localeData from '../npm/dayjs/esm/plugin/localeData';
 
-import usingConfig from '../mixins/using-config';
+import TPicker from '../picker/picker';
+import TPickerItem from '../picker-item/picker-item';
+
+import dayjsLocaleMap from './locale/dayjs';
+import props from './props';
 /**
  * dayjs LocaleData 插件
  * https://dayjs.fenxianglu.cn/category/plugin.html#localedata

@@ -64,14 +64,14 @@
 
 <script>
 
-import BaseDemo from './base/index.vue';
-import HorizontalDemo from './horizontal/index.vue';
 import AllDemo from './all/index.vue';
+import BaseDemo from './base/index.vue';
+import CardDemo from './card/index.vue';
+import HorizontalDemo from './horizontal/index.vue';
+import RightDemo from './right/index.vue';
+import SpecialDemo from './special/index.vue';
 import StatusDemo from './status/index.vue';
 import TypeDemo from './type/index.vue';
-import RightDemo from './right/index.vue';
-import CardDemo from './card/index.vue';
-import SpecialDemo from './special/index.vue';
 export default {
   components: {
     BaseDemo,

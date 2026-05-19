@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
 
-const { config } = require('./config');
 const { copy } = require('../release/core');
+
+const { config } = require('./config');
 
 // 不同步到 vue3-hx 的文件黑名单
 const VUE3_HX_BLACK_LIST = [

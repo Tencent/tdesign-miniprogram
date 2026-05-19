@@ -1,9 +1,12 @@
-const glob = require('glob');
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
+
+const glob = require('glob');
+
 const { writeFileSync } = require('t-comm');
-const { toPascal } = require('../utils/utils');
+
 const { PACKAGES_ROOT, toGlobPattern } = require('../release/config');
+const { toPascal } = require('../utils/utils');
 
 
 // 基于 __dirname 推算项目根目录（脚本位于 packages/tdesign-uniapp/example/script/types/）
