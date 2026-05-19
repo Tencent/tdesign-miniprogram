@@ -12,12 +12,15 @@
     <t-icon t-class="{{classPrefix}}__list-item-error-icon" name="error-circle-filled" aria-hidden />
   </block>
   <block wx:elif="{{_this.isImageType(file) && file.url}}">
-    <t-image
-      t-class="{{classPrefix}}__list-item-thumbnail"
-      src="{{file.thumb || file.url}}"
-      mode="{{imageProps && imageProps.mode || 'aspectFill'}}"
-      shape="round"
-    />
+    <view style="position: relative; flex-shrink: 0">
+      <t-image
+        t-class="{{classPrefix}}__list-item-thumbnail"
+        src="{{file.thumb || file.url}}"
+        mode="{{imageProps && imageProps.mode || 'aspectFill'}}"
+        shape="round"
+      />
+      <view wx:if="{{disabled}}" class="{{classPrefix}}__disabled-mask" />
+    </view>
   </block>
   <block wx:else>
     <view class="{{classPrefix}}__list-item-icon">
@@ -52,7 +55,7 @@
 <!-- ========== grid-item 公共模板 ========== -->
 <template name="grid-item-content">
   <view
-    class="{{classPrefix}}__wrapper {{disabled? classPrefix + '__wrapper--disabled' : '' }} {{!_this.isImageType(file) && file.type !== 'video' ? classPrefix + '__wrapper--file' : ''}}"
+    class="{{classPrefix}}__wrapper {{!_this.isImageType(file) && file.type !== 'video' ? classPrefix + '__wrapper--file' : ''}}"
     style="{{gridItemStyle}}"
     aria-role="{{ariaRole || _this.getWrapperAriaRole(file)}}"
     aria-label="{{ariaLabel || _this.getWrapperAriaLabel(file)}}"
@@ -144,6 +147,12 @@
       </view>
     </view>
 
+    <!-- 禁用遮罩：图片/视频且非 loading/失败时显示 -->
+    <view
+      wx:if="{{disabled && (_this.isImageType(file) || file.type === 'video') && file.status !== 'loading' && file.status !== 'failed' && file.status !== 'reload'}}"
+      class="{{classPrefix}}__disabled-mask"
+    />
+
     <!-- 删除 -->
     <view
       wx:if="{{ _.isBoolean(file.removeBtn) ? file.removeBtn : removeBtn}}"
@@ -160,7 +169,7 @@
 
 <view
   style="{{_._style([style, customStyle])}}"
-  class="{{classPrefix}} {{classPrefix}}--{{theme || 'grid'}} class {{prefix}}-class"
+  class="{{classPrefix}} {{classPrefix}}--{{theme || 'grid'}} {{disabled ? classPrefix + '--disabled' : ''}} class {{prefix}}-class"
 >
   <!-- ========== list 布局 ========== -->
   <block wx:if="{{theme === 'list'}}">
@@ -184,7 +193,10 @@
           data-index="{{index}}"
           bind:tap="onPreview"
         >
-          <template is="list-item-content" data="{{file, index, classPrefix, imageProps, removeBtn, globalConfig}}" />
+          <template
+            is="list-item-content"
+            data="{{file, index, classPrefix, disabled, imageProps, removeBtn, globalConfig}}"
+          />
         </view>
       </view>
     </block>
@@ -215,7 +227,10 @@
             data-index="{{index}}"
             bind:tap="onPreview"
           >
-            <template is="list-item-content" data="{{file, index, classPrefix, imageProps, removeBtn, globalConfig}}" />
+            <template
+              is="list-item-content"
+              data="{{file, index, classPrefix, disabled, imageProps, removeBtn, globalConfig}}"
+            />
           </view>
         </view>
       </view>
@@ -258,7 +273,7 @@
           <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
             <slot name="add-content" />
             <block wx:if="{{addContent}}">{{addContent}}</block>
-            <view wx:else class="{{classPrefix}}__add-icon {{disabled? classPrefix + '__add-icon--disabled' : '' }}">
+            <view wx:else class="{{classPrefix}}__add-icon">
               <t-icon name="add" />
             </view>
           </view>
@@ -312,10 +327,7 @@
               <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
                 <slot name="add-content" />
                 <block wx:if="{{addContent}}">{{addContent}}</block>
-                <view
-                  wx:else
-                  class="{{classPrefix}}__add-icon {{disabled? classPrefix + '__add-icon--disabled' : '' }}"
-                >
+                <view wx:else class="{{classPrefix}}__add-icon">
                   <t-icon name="add" />
                 </view>
               </view>
