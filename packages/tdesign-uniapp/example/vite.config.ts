@@ -1,5 +1,7 @@
 import path from 'path';
+
 import { defineConfig, loadEnv } from 'vite';
+
 import uni from '@dcloudio/vite-plugin-uni';
 import { genVersionMpVitePlugin } from '@plugin-light/vite-plugin-gen-version';
 

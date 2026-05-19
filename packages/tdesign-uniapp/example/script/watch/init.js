@@ -1,12 +1,15 @@
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
+
 const glob = require('glob');
 const { deleteFolder } = require('t-comm');
 
+const { generateStyleShortcuts } = require('../release/prepare');
+
+const { generateDts } = require('../release/typescript');
+
 const { config } = require('./config');
 const { copyComponents, checkVue2CliExist, checkVue2HxExist, checkVue3HxExist } = require('./helper');
-const { generateStyleShortcuts } = require('../release/prepare');
-const { generateDts } = require('../release/typescript');
 
 
 async function copyOneProject({

@@ -37,13 +37,14 @@
   </view>
 </template>
 <script>
+import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
+import { coalesce } from '../common/utils';
+import tools from '../common/utils.wxs';
 import TIcon from '../icon/icon';
 import TLoading from '../loading/loading';
-import { uniComponent } from '../common/src/index';
-import { prefix } from '../common/config';
-import { coalesce } from '../common/utils';
+
 import props from './props';
-import tools from '../common/utils.wxs';
 
 
 const name = `${prefix}-switch`;

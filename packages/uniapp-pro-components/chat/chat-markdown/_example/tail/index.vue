@@ -28,8 +28,10 @@
 </template>
 
 <script>
-import TChatMarkdown from '@tdesign/uniapp-chat/chat-markdown/chat-markdown.vue';
 import TSegmented from '@tdesign/uniapp/segmented/segmented.vue';
+
+import TChatMarkdown from '@tdesign/uniapp-chat/chat-markdown/chat-markdown.vue';
+
 import markdownData from '../base/mock2.js';
 
 const CHUNK_SIZE = 1;

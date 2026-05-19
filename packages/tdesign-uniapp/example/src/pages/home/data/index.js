@@ -1,10 +1,10 @@
 import baseData from './base.json';
-import navData from './nav.json';
+import chatData from './chat.json';
 import displayData from './display.json';
 import formData from './form.json';
-import uxData from './ux.json';
-import chatData from './chat.json';
+import navData from './nav.json';
 import otherData from './other.json';
+import uxData from './ux.json';
 
 const  { base, skylineBase } = baseData;
 const { nav, skylineNav } = navData;

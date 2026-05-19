@@ -113,6 +113,7 @@
 <script>
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TSkeleton from '@tdesign/uniapp/skeleton/skeleton.vue';
+
 import BaseDemo from '../base/index.vue';
 import HalfRound from '../half-round/index.vue';
 

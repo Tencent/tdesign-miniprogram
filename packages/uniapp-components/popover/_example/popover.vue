@@ -28,8 +28,8 @@
 
 <script>
 import BaseDemo from './base';
-import ThemeDemo from './theme';
 import PlacementDemo from './placement';
+import ThemeDemo from './theme';
 
 
 export default {

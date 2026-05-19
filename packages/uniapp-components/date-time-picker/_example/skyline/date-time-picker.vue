@@ -45,12 +45,12 @@
 
 <script>
 
-import YearMonthDate from '../year-month-date/index.vue';
-import YearMonth from '../year-month/index.vue';
-import TimeDemo from '../time/index.vue';
 import DateAll from '../date-all/index.vue';
 import StepsDemo from '../steps/index.vue';
+import TimeDemo from '../time/index.vue';
 import WithoutPopup from '../without-popup/index.vue';
+import YearMonth from '../year-month/index.vue';
+import YearMonthDate from '../year-month-date/index.vue';
 
 export default {
   components: {

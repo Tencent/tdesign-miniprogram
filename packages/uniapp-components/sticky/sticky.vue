@@ -12,12 +12,13 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
-import props from './props';
 import { prefix } from '../common/config';
-import pageScrollMixin from '../mixins/page-scroll';
+import { uniComponent } from '../common/src/index';
 import { getRect, nextTick } from '../common/utils';
 import tools from '../common/utils.wxs';
+import pageScrollMixin from '../mixins/page-scroll';
+
+import props from './props';
 
 
 const name = `${prefix}-sticky`;

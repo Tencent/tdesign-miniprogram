@@ -8,12 +8,14 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import { coalesce } from '../common/utils';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import { coalesce } from '../common/utils';
+
+import tools from '../common/utils.wxs';
+
+import props from './props';
 
 
 const name = `${prefix}-side-bar`;

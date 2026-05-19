@@ -148,16 +148,20 @@
   </view>
 </template>
 <script>
-import tIcon from '@tdesign/uniapp/icon/icon.vue';
-import attachments from '../attachments/attachments.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
-import props from './props';
+
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
-import { textareaStyle } from './computed';
-import tools from '@tdesign/uniapp/common/utils.wxs';
+
 import { nextTick } from '@tdesign/uniapp/common/utils';
+import tools from '@tdesign/uniapp/common/utils.wxs';
+import tIcon from '@tdesign/uniapp/icon/icon.vue';
+
+import attachments from '../attachments/attachments.vue';
 
 import usingConfig from '../mixins/using-config';
+
+import { textareaStyle } from './computed';
+import props from './props';
 const componentName = 'chat-sender';
 const name = `${prefix}-${componentName}`;
 

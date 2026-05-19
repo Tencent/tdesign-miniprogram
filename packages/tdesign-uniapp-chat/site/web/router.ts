@@ -1,5 +1,7 @@
 import { type RouteRecordRaw, createRouter, createWebHistory, type RouterOptions } from 'vue-router';
+
 import * as config from '../docs.config';
+
 import { sortDocs } from './utils';
 
 const docs = sortDocs(config.docs);

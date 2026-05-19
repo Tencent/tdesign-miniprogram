@@ -22,11 +22,12 @@
 </template>
 
 <script>
-import tools from '../common/utils.wxs';
-import watermarkProps from './props';
 import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 import { appBaseInfo, nextTick } from '../common/utils';
+import tools from '../common/utils.wxs';
+
+import watermarkProps from './props';
 import generateBase64Url from './utils/generateBase64Url';
 import randomMovingStyle from './utils/randomMovingStyle';
 

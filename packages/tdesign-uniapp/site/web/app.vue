@@ -24,8 +24,10 @@
 
 <script>
 import { defineComponent } from 'vue';
+
 import packageJson from '../../../tdesign-uniapp/package.json';
 import siteConfig from '../docs.config';
+
 import { filterVersions, sortDocs } from './utils';
 
 const registryUrl = 'https://service-edbzjd6y-1257786608.hk.apigw.tencentcs.com/release/npm/versions/tdesign-uniapp';

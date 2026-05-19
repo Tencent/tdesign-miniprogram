@@ -31,8 +31,8 @@
 <script>
 
 import BaseDemo from '../base/index.vue';
-import ThemeDemo from '../theme/index.vue';
 import SizeDemo from '../size/index.vue';
+import ThemeDemo from '../theme/index.vue';
 
 export default {
   components: {

@@ -1,4 +1,5 @@
 import tinyColor from '../../../npm/tinycolor2/esm/tinycolor.js';
+
 import { cmykInputToColor, rgb2cmyk } from './cmyk';
 import { parseGradientString, isGradientColor } from './gradient';
 

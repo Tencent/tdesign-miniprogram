@@ -264,20 +264,19 @@
   </view>
 </template>
 <script>
+import { prefix } from '../common/config';
+import { parseEventDynamicCode } from '../common/event/dynamic';
+import { uniComponent } from '../common/src/index';
+import { isOverSize, coalesce, isWxWork, isPC } from '../common/utils';
+import tools from '../common/utils.wxs';
+import { isObject } from '../common/validator';
 import TGrid from '../grid/grid';
 import TGridItem from '../grid-item/grid-item';
 import TIcon from '../icon/icon';
 import TImage from '../image/image';
-import { uniComponent } from '../common/src/index';
-import props from './props';
-import { prefix } from '../common/config';
-import { isOverSize, coalesce, isWxWork, isPC } from '../common/utils';
-import { isObject } from '../common/validator';
-import tools from '../common/utils.wxs';
-import {
-  getWrapperAriaRole,
-  getWrapperAriaLabel,
-} from './upload.computed.js';
+
+import usingConfig from '../mixins/using-config';
+
 import {
   longPress,
   touchMove,
@@ -285,10 +284,15 @@ import {
   baseDataObserver,
   listObserver,
 } from './drag.computed.js';
-import { parseEventDynamicCode } from '../common/event/dynamic';
+import props from './props';
 
 
-import usingConfig from '../mixins/using-config';
+import {
+  getWrapperAriaRole,
+  getWrapperAriaLabel,
+} from './upload.computed.js';
+
+
 const componentName = 'upload';
 const name = `${prefix}-${componentName}`;
 

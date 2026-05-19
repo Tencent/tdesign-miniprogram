@@ -89,15 +89,17 @@
   </view>
 </template>
 <script>
+import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
+import { getRect, unitConvert, calcIcon } from '../common/utils';
+import tools from '../common/utils.wxs';
+import { isObject } from '../common/validator';
 import TIcon from '../icon/icon';
 import TLink from '../link/link';
-import { uniComponent } from '../common/src/index';
-import { prefix } from '../common/config';
-import { getRect, unitConvert, calcIcon } from '../common/utils';
-import { isObject } from '../common/validator';
-import tools from '../common/utils.wxs';
-import { getMessageStyles } from './computed.js';
+
 import { messageDefaultData } from '../message/config';
+
+import { getMessageStyles } from './computed.js';
 
 
 const SHOW_DURATION = 400;

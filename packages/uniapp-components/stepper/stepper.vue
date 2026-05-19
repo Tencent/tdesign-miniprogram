@@ -48,12 +48,14 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
 import { coalesce, nextTick } from '../common/utils';
-import props from './props';
+
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+
+import props from './props';
 
 
 const name = `${prefix}-stepper`;

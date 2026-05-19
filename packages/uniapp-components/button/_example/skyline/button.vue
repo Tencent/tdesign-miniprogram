@@ -67,14 +67,14 @@
 
 <script>
 import BaseDemo from '../base/index.vue';
-import SizeDemo from '../size/index.vue';
-import IconBtn from '../icon-btn/index.vue';
-import GroupBtn from '../group-btn/index.vue';
 import BlockBtn from '../block-btn/index.vue';
-import GhostBtn from '../ghost-btn/index.vue';
-import ShapeDemo from '../shape/index.vue';
-import ThemeDemo from '../theme/index.vue';
 import DisabledDemo from '../disabled/index.vue';
+import GhostBtn from '../ghost-btn/index.vue';
+import GroupBtn from '../group-btn/index.vue';
+import IconBtn from '../icon-btn/index.vue';
+import ShapeDemo from '../shape/index.vue';
+import SizeDemo from '../size/index.vue';
+import ThemeDemo from '../theme/index.vue';
 
 export default {
   options: {

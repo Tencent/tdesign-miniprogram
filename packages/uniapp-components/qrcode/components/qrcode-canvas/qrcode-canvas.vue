@@ -15,13 +15,14 @@
 </template>
 
 <script>
-import props from './props';
-import useQRCode from '../../hooks/useQRCode';
+import { loadImage } from '../../../common/canvas/index';
+import { prefix } from '../../../common/config';
 import { DEFAULT_MINVERSION, excavateModules, isSupportPath2d, generatePath } from '../../../common/shared/qrcode/utils';
 import { uniComponent } from '../../../common/src/index';
-import { prefix } from '../../../common/config';
-import { loadImage } from '../../../common/canvas/index';
 import { getWindowInfo, nextTick } from '../../../common/utils';
+import useQRCode from '../../hooks/useQRCode';
+
+import props from './props';
 
 export default {
   ...uniComponent({

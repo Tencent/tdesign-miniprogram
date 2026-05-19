@@ -1,5 +1,5 @@
-import type { TransformEventHandlers, ExtractNonOnProps } from '../common/common';
 import type { TdColorPickerProps } from '../color-picker/type';
+import type { TransformEventHandlers, ExtractNonOnProps } from '../common/common';
 
 export type ColorPickerProps = ExtractNonOnProps<TdColorPickerProps>;
 export type ColorPickerEmits = TransformEventHandlers<TdColorPickerProps, true>;

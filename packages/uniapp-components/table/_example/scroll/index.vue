@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import TTable from '@tdesign/uniapp/table/table.vue';
 import SkylineBehavior from '@tdesign/uniapp/mixins/skyline.js';
+import TTable from '@tdesign/uniapp/table/table.vue';
 
 export default {
   components: {

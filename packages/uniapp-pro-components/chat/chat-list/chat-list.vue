@@ -50,12 +50,14 @@
   </view>
 </template>
 <script>
-import ChatMessage from '../chat-message/chat-message.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
-import props from './props';
 
-import tools from '@tdesign/uniapp/common/utils.wxs';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
+import tools from '@tdesign/uniapp/common/utils.wxs';
+
+import ChatMessage from '../chat-message/chat-message.vue';
+
+import props from './props';
 
 
 const name = `${prefix}-chat-list`;

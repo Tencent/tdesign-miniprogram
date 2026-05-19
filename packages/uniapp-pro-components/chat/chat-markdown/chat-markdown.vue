@@ -8,19 +8,22 @@
 </template>
 <script>
 import './polyfill';
-import chatMarkdownNode from '../chat-markdown-node/chat-markdown-node.vue';
-// #ifdef APP-PLUS
-import { Lexer as LexerUni } from '../npm/marked/uniapp';
-// #endif
+import { prefix } from '@tdesign/uniapp/common/config';
 
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
+import tools from '@tdesign/uniapp/common/utils.wxs';
+
+import chatMarkdownNode from '../chat-markdown-node/chat-markdown-node.vue';
 // #ifndef APP-PLUS
 import { Lexer } from '../npm/marked';
 // #endif
 
-import { prefix } from '@tdesign/uniapp/common/config';
+// #ifdef APP-PLUS
+import { Lexer as LexerUni } from '../npm/marked/uniapp';
+// #endif
+
 import props from './props';
-import tools from '@tdesign/uniapp/common/utils.wxs';
-import { uniComponent } from '@tdesign/uniapp/common/src/index';
+
 
 const name = `${prefix}-chat-markdown`;
 

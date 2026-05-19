@@ -39,8 +39,8 @@
 <script>
 
 import BaseDemo from '../base/index.vue';
-import WithTitle from '../with-title/index.vue';
 import CustomClose from '../custom-close/index.vue';
+import WithTitle from '../with-title/index.vue';
 
 export default {
   components: {

@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
 // import { canUseProxyScrollView } from '../common/version';
 
 

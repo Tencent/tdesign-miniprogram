@@ -1,5 +1,6 @@
-const { execCommand, readFileSync } = require('t-comm');
 const path = require('path');
+
+const { execCommand, readFileSync } = require('t-comm');
 
 
 function getTag(version) {

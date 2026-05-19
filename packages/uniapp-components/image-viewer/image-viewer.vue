@@ -111,15 +111,20 @@
   </view>
 </template>
 <script>
-import TImage from '../image/image';
-import TIcon from '../icon/icon';
+import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 import { styles, calcIcon, systemInfo } from '../common/utils';
-import { prefix } from '../common/config';
-import props from './props';
+
+
 import tools from '../common/utils.wxs';
-import { shouldLoadImage } from './computed.js';
+import TIcon from '../icon/icon';
+import TImage from '../image/image';
+
+
 import useCustomNavbar from '../mixins/using-custom-navbar';
+
+import { shouldLoadImage } from './computed.js';
+import props from './props';
 
 
 const name = `${prefix}-image-viewer`;

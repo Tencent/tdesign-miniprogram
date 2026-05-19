@@ -1,5 +1,8 @@
 <template>
-  <view :class="classPrefix" @click="nodeClick">
+  <view
+    :class="classPrefix"
+    @click="nodeClick"
+  >
     <!-- 代码语言标签 -->
     <view
       v-if="node.lang"
@@ -26,8 +29,8 @@
 </template>
 
 <script>
-import { uniComponent } from '@tdesign/uniapp/common/src/index';
 import { prefix } from '@tdesign/uniapp/common/config';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
 const name = `${prefix}-chat-markdown-code`;
 

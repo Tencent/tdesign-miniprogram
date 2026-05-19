@@ -27,9 +27,9 @@
 </template>
 
 <script>
-import UploadEn from './upload-en/index.vue';
-import OtherEn from './other-en/index.vue';
 import ChatEn from './chat-en/index.vue';
+import OtherEn from './other-en/index.vue';
+import UploadEn from './upload-en/index.vue';
 
 export default {
   components: {

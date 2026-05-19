@@ -46,10 +46,10 @@
 
 <script>
 
+import AlignDemo from './align/index.vue';
+import GridDemo from './grid/index.vue';
 import ListDemo from './list/index.vue';
 import StatusDemo from './status/index.vue';
-import GridDemo from './grid/index.vue';
-import AlignDemo from './align/index.vue';
 
 
 export default {

@@ -50,12 +50,12 @@
 </template>
 
 <script>
-import TConfigProvider from '@tdesign/uniapp/config-provider/config-provider.vue';
-import TRate from '@tdesign/uniapp/rate/rate.vue';
 import TCalendar from '@tdesign/uniapp/calendar/calendar.vue';
 import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TConfigProvider from '@tdesign/uniapp/config-provider/config-provider.vue';
 import TDateTimePicker from '@tdesign/uniapp/date-time-picker/date-time-picker.vue';
 import enUS from '@tdesign/uniapp/locale/en_US';
+import TRate from '@tdesign/uniapp/rate/rate.vue';
 
 function getDateByTimestamp(val) {
   const date = new Date(val);

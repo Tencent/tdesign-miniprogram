@@ -42,8 +42,8 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import MultipleDemo from './multiple/index.vue';
 import FormatDemo from './format/index.vue';
+import MultipleDemo from './multiple/index.vue';
 import UsePopup from './use-popup/index.vue';
 export default {
   components: {

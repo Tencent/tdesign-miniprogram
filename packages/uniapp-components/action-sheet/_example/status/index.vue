@@ -19,9 +19,9 @@
 </template>
 
 <script>
-import TButton from '@tdesign/uniapp/button/button.vue';
-import TActionSheet from '@tdesign/uniapp/action-sheet/action-sheet.vue';
 import { ActionSheetPlugin, ActionSheetTheme } from '@tdesign/uniapp';
+import TActionSheet from '@tdesign/uniapp/action-sheet/action-sheet.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
 
 export default {
   components: {

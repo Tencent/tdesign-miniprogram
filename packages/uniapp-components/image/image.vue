@@ -83,14 +83,15 @@
   </view>
 </template>
 <script>
-import TLoading from '../loading/loading';
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
-import ImageProps from './props';
 import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
 import { addUnit, getRect, appBaseInfo } from '../common/utils';
-import { compareVersion } from '../common/version';
 import tools from '../common/utils.wxs';
+import { compareVersion } from '../common/version';
+import TIcon from '../icon/icon';
+import TLoading from '../loading/loading';
+
+import ImageProps from './props';
 
 
 const name = `${prefix}-image`;

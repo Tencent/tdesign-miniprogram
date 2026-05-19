@@ -63,11 +63,11 @@
 <script>
 //
 import BaseComp from './base/index.vue';
-import HorizontalDemo from './horizontal/index.vue';
-import VerticalDemo from './vertical/index.vue';
-import TextComp from './text/index.vue';
 import DurationDemo from './duration/index.vue';
+import HorizontalDemo from './horizontal/index.vue';
 import SizeDemo from './size/index.vue';
+import TextComp from './text/index.vue';
+import VerticalDemo from './vertical/index.vue';
 export default {
   options: {
     styleIsolation: 'shared',

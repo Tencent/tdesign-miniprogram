@@ -60,16 +60,18 @@
   </view>
 </template>
 <script>
+import { prefix } from '../common/config';
+
+import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 import { uniComponent } from '../common/src/index';
 import { getRect } from '../common/utils';
-import { prefix } from '../common/config';
-import props from './props';
-import { validateRules, ValidateStatus } from './form-model';
-import TIcon from '../icon/icon.vue';
-import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 import tools from '../common/utils.wxs';
-import usingConfig from '../mixins/using-config';
 import { isNumeric } from '../common/validator';
+import TIcon from '../icon/icon.vue';
+import usingConfig from '../mixins/using-config';
+
+import { validateRules, ValidateStatus } from './form-model';
+import props from './props';
 
 const parentComponentName = 'form';
 const componentName = 'form-item';

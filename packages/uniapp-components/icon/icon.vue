@@ -24,11 +24,14 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+
+
 import { styles, addUnit, getRect } from '../common/utils';
 import tools from '../common/utils.wxs';
+
+import props from './props';
 
 
 const name = `${prefix}-icon`;

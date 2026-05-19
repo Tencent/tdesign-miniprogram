@@ -57,9 +57,10 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+
+
 import { uniqueFactory, getRect } from '../common/utils';
 import tools from '../common/utils.wxs';
 
@@ -69,6 +70,7 @@ import {
   getBadgeInnerClass,
   isShowBadge,
 } from './computed.js';
+import props from './props';
 
 
 const name = `${prefix}-badge`;
