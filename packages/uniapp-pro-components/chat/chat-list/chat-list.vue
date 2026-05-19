@@ -173,7 +173,7 @@ export default {
 </script>
 <style scoped src="./chat-list.css"></style>
 <style scoped>
-/* #ifdef H5 || APP-PLUS */
+/* #ifdef H5 || APP */
 .t-chat-list__content :deep(.uni-scroll-view-content) {
   display: flex;;
   flex-direction: column;

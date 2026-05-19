@@ -58,7 +58,7 @@ export default {
         let result = 'width: 100px; height: 100px;';
         let shouldHide = true;
 
-        // #ifdef APP-PLUS || MP-ALIPAY
+        // #ifdef APP || MP-ALIPAY
         if (!this.initialed) {
           shouldHide = false;
         }

@@ -549,7 +549,7 @@ export default {
         const { classPrefix, rows, column } = this;
 
         let query;
-        // #ifdef H5 || APP-PLUS
+        // #ifdef H5 || APP
         query = uni.createSelectorQuery().in(this);
         // #endif
         if (!query) {
@@ -559,7 +559,7 @@ export default {
 
         let selectorGridItem;
         let selectorGrid;
-        // #ifdef H5 || APP-PLUS
+        // #ifdef H5 || APP
         selectorGridItem = '.t-grid-item';
         selectorGrid = '.t-grid';
         // #endif

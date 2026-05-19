@@ -45,7 +45,7 @@ import TNavbar from '@tdesign/uniapp/navbar/navbar.vue';
 
 #### 高度说明
 
-`navbar` 组件可由 `--td-navbar-height` 控制。在 H5 或 APP-PLUS 平台下，`--td-navbar-height` 变量需要业务自己设置，小程序平台则会根据 `statusBarHeight` 等变量计算得到。
+`navbar` 组件可由 `--td-navbar-height` 控制。在 H5 或 APP 平台下，`--td-navbar-height` 变量需要业务自己设置，小程序平台则会根据 `statusBarHeight` 等变量计算得到。
 
 ## API
 

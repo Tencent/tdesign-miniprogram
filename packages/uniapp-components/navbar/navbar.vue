@@ -177,7 +177,7 @@ export default {
           '--td-navbar-capsule-width': `${iMenuRect.width}px`, // 胶囊宽度
           '--td-navbar-height': `${(iMenuRect.top - windowInfo.statusBarHeight) * 2 + iMenuRect.height}px`,
         };
-        // #ifdef H5 || APP-PLUS
+        // #ifdef H5 || APP
         delete iBoxStyle['--td-navbar-height'];
         // #endif
 

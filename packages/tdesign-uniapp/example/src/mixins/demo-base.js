@@ -15,7 +15,7 @@ export default {
   computed: {
     gCustomNavbarHeight() {
       let result = 0;
-      // #ifdef H5 || APP-PLUS
+      // #ifdef H5 || APP
       result = 48;
       // #endif
       return result;

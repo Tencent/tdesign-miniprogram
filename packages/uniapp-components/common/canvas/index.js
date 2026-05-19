@@ -23,7 +23,7 @@ export async function loadImage({
   }
   // #endif
 
-  // #ifdef APP-PLUS
+  // #ifdef APP
   result = new Promise((resolve) => {
     uni.getImageInfo({
       src,

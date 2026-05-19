@@ -14,11 +14,11 @@ import { uniComponent } from '@tdesign/uniapp/common/src/index';
 import tools from '@tdesign/uniapp/common/utils.wxs';
 
 import chatMarkdownNode from '../chat-markdown-node/chat-markdown-node.vue';
-// #ifndef APP-PLUS
+// #ifndef APP
 import { Lexer } from '../npm/marked';
 // #endif
 
-// #ifdef APP-PLUS
+// #ifdef APP
 import { Lexer as LexerUni } from '../npm/marked/uniapp';
 // #endif
 
@@ -107,10 +107,10 @@ export default {
       parseMarkdown(markdown) {
         try {
           let lexer;
-          // #ifdef APP-PLUS
+          // #ifdef APP
           lexer = new LexerUni(this.options);
           // #endif
-          // #ifndef APP-PLUS
+          // #ifndef APP
           lexer = new Lexer(this.options);
           // #endif
 

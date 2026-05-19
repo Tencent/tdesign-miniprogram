@@ -347,7 +347,7 @@ export default {
       scrollToTop() {
         let parsed = false;
 
-        // #ifdef APP-PLUS || MP
+        // #ifdef APP || MP
         this.scrollTop = 0;
         setTimeout(() => {
           this.scrollTop = 0.01;

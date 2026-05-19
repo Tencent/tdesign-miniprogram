@@ -77,7 +77,7 @@ export default {
     },
     mounted() {
       let interval = 0;
-      // #ifdef APP-PLUS
+      // #ifdef APP
       interval = 33;
       // #endif
       setTimeout(() => {
