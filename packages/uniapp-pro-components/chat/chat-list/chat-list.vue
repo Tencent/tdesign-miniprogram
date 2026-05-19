@@ -131,12 +131,16 @@ export default {
         if (!this.reverse && this.virtualList) {
           this.addFragment();
         }
+        //向父组件发射该事件，用于满足开发者滚动分页加载的需求
+        this.$emit('handlerScrollToUpper')
       },
 
       handlerScrollToLower() {
         if (this.reverse && this.virtualList) {
           this.addFragment();
         }
+        //向父组件发射该事件，用于满足开发者滚动分页加载的需求
+        this.$emit('handlerScrollToLower')
       },
 
       resetFragments() {
