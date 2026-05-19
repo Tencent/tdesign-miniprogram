@@ -1,0 +1,7 @@
+<view class="typography-example typography-example--border">
+  <t-typography-paragraph ellipsis content="{{content}}" />
+</view>
+
+<view class="typography-example">
+  <t-typography-paragraph ellipsis="{{ellipsisExpandable}}" content="{{content}}" />
+</view>

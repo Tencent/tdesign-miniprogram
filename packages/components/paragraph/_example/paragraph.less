@@ -1,0 +1,27 @@
+.typography-example {
+  display: flex;
+  padding: 0 32rpx;
+  background-color: var(--bg-color-demo, #fff);
+
+  &--inline {
+    display: inline-block;
+  }
+
+  &--theme {
+    gap: 24px;
+  }
+
+  &--border {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 16px;
+      right: 16px;
+      border-bottom: 1px solid var(--td-stroke-color, #e7e7e7);
+      transform: scaleY(0.5);
+    }
+  }
+}

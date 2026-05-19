@@ -1,0 +1,65 @@
+<wxs src="../common/utils.wxs" module="_" />
+
+<wxs module="computed">
+  /* 计算省略内容的内联样式 */ function ellipsisStyle(ellipsis, isExpanded) { if (!ellipsis || isExpanded) return '';
+  var row = typeof ellipsis === 'object' && ellipsis.row ? ellipsis.row : 1; return
+  'overflow:hidden;text-overflow:ellipsis;white-space:normal;display:-webkit-box;-webkit-line-clamp:' + row +
+  ';-webkit-box-orient:vertical;'; } /* 根据装饰属性拼接内层 class */ function decorClass(classPrefix, strong,
+  underline, del, code, mark, keyboard, italic) { var list = []; if (strong) list.push(classPrefix + '--strong'); if
+  (underline) list.push(classPrefix + '--underline'); if (del) list.push(classPrefix + '--delete'); if (code)
+  list.push(classPrefix + '--code'); if (mark) list.push(classPrefix + '--mark'); if (keyboard) list.push(classPrefix +
+  '--keyboard'); if (italic) list.push(classPrefix + '--italic'); return list.join(' '); } /* mark 自定义颜色 */
+  function markStyle(mark) { if (!mark || mark === true || mark === 'true') return ''; if (mark && mark !== 'false' &&
+  mark !== false) { return 'background-color:' + mark + ';'; } return ''; } module.exports = { ellipsisStyle:
+  ellipsisStyle, decorClass: decorClass, markStyle: markStyle, };
+</wxs>
+
+<!-- 省略模式 -->
+<view
+  wx:if="{{ellipsis}}"
+  class="{{className}} {{prefix}}-class {{classPrefix}}__ellipsis-wrapper"
+  style="{{_._style([style, customStyle])}}"
+>
+  <view
+    class="{{classPrefix}}__ellipsis-content {{computed.decorClass(classPrefix, strong, underline, delete, code, mark, keyboard, italic)}}"
+    style="{{computed.ellipsisStyle(ellipsis, isExpanded)}}{{computed.markStyle(mark)}}"
+  >
+    <text wx:if="{{content}}">{{content}}</text>
+    <slot wx:else />
+  </view>
+  <!-- 展开/收起按钮 -->
+  <view
+    wx:if="{{!isExpanded && ellipsis.expandable}}"
+    class="{{classPrefix}}-ellipsis-symbol"
+    style="text-decoration:none;white-space:nowrap;flex:1;{{copyable ? 'margin-right:16rpx;' : ''}}"
+    bind:tap="onExpand"
+    >展开</view
+  >
+  <view
+    wx:elif="{{isExpanded && ellipsis.expandable && ellipsis.collapsible}}"
+    class="{{classPrefix}}-ellipsis-symbol"
+    style="text-decoration:none;white-space:nowrap;flex:1;{{copyable ? 'margin-right:16rpx;' : ''}}"
+    bind:tap="onCollapse"
+    >收起</view
+  >
+  <!-- 复制按钮 -->
+  <view wx:if="{{copyable}}" class="{{classPrefix}}__copy {{prefix}}-class-copy" bind:tap="onCopy">
+    <t-icon wx:if="{{isCopied}}" name="check" size="32rpx" />
+    <t-icon wx:else name="file-copy" size="32rpx" />
+  </view>
+</view>
+
+<!-- 非省略模式 -->
+<view
+  wx:else
+  class="{{className}} {{prefix}}-class {{computed.decorClass(classPrefix, strong, underline, delete, code, mark, keyboard, italic)}}"
+  style="display:inline;{{_._style([style, customStyle])}}{{computed.markStyle(mark)}}"
+>
+  <text wx:if="{{content}}">{{content}}</text>
+  <slot wx:else />
+  <!-- 复制按钮 -->
+  <view wx:if="{{copyable}}" class="{{classPrefix}}__copy {{prefix}}-class-copy" bind:tap="onCopy">
+    <t-icon wx:if="{{isCopied}}" name="check" size="32rpx" />
+    <t-icon wx:else name="file-copy" size="32rpx" />
+  </view>
+</view>

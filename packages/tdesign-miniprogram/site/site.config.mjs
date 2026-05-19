@@ -160,6 +160,14 @@ export const docs = [
         path: '/miniprogram/components/link',
         component: () => import('@/link/README.md'),
       },
+      {
+        title: 'Typography 排版',
+        titleEn: 'Typography',
+        name: 'typography',
+        meta: { docType: 'base' },
+        path: '/miniprogram/components/paragraph',
+        component: () => import('@/paragraph/README.md'),
+      },
     ],
   },
   {

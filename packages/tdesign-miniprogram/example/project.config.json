@@ -137,6 +137,12 @@
           "scene": null
         },
         {
+          "name": "layout",
+          "pathName": "pages/col/col",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "config-provider",
           "pathName": "pages/config-provider/config-provider",
           "query": "",
@@ -427,6 +433,12 @@
         {
           "name": "tree-select",
           "pathName": "pages/tree-select/tree-select",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "typography",
+          "pathName": "pages/paragraph/paragraph",
           "query": "",
           "scene": null
         },
