@@ -57,6 +57,10 @@ isComponent: true
 
 {{ check-strictly }}
 
+#### 支持搜索
+
+{{ filterable }}
+
 ## API
 
 ### Cascader Props
@@ -67,6 +71,9 @@ style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 check-strictly | Boolean | false | 父子节点选中状态不再关联，可各自选中或取消 | N
 close-btn | Boolean | true | 关闭按钮 | N
+filterable | Boolean | false | 是否可搜索。开启后顶部展示搜索框，输入关键字将层级面板切换为扁平的匹配路径列表 | N
+filter | Function | - | 自定义过滤函数，返回 true 表示匹配。TS 类型：`(keyword: string, option: CascaderOption, path: CascaderOption[]) => boolean`。缺省时使用大小写不敏感的内置匹配规则（命中路径中任一 label 或叶子节点 text） | N
+filter-placeholder | String | - | 搜索框占位文案，缺省回退到全局语言包 | N
 keys | Object | - | 用来定义 value / label / children / disabled 在 `options` 中对应的字段别名。TS 类型：`CascaderKeysType` `type CascaderKeysType = TreeKeysType`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/cascader/type.ts) | N
 options | Array | [] | 可选项数据源。TS 类型：`Array<CascaderOption>` | N
 placeholder | String | - | 未选中时的提示文案。组件内置默认值为：'选择选项' | N
@@ -104,6 +111,14 @@ title | 自定义 `title` 显示内容
 --td-cascader-border-color | @component-stroke | -
 --td-cascader-content-height | 78vh | -
 --td-cascader-disabled-color | @text-color-disabled | -
+--td-cascader-filter-empty-color | @text-color-placeholder | -
+--td-cascader-filter-empty-padding | 96rpx @spacer-2 | -
+--td-cascader-filter-item-color | @text-color-primary | -
+--td-cascader-filter-item-disabled-color | @text-color-disabled | -
+--td-cascader-filter-item-hover-bg | @bg-color-secondarycontainer | -
+--td-cascader-filter-item-padding | 24rpx 32rpx | -
+--td-cascader-filter-keyword-color | @brand-color | -
+--td-cascader-filter-padding | 0 @spacer-2 @spacer-1 | -
 --td-cascader-options-height | calc(100% - @cascader-step-height) | -
 --td-cascader-options-title-color | @text-color-placeholder | -
 --td-cascader-step-arrow-color | @text-color-placeholder | -

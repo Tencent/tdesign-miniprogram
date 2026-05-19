@@ -16,6 +16,8 @@ export default {
   cascader: {
     title: 'タイトル',
     placeholder: 'オプションを選択',
+    filterPlaceholder: '検索',
+    empty: '該当する項目はありません',
   },
   dropdownMenu: {
     reset: 'リセット',
