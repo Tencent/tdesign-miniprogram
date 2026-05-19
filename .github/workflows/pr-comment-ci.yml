@@ -67,10 +67,10 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          token: ${{ secrets.PERSONAL_TOKEN }}
+          token: ${{ secrets.TDESIGN_BOT_TOKEN }}
       - name: gh checkout pr
         env:
-          GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          GH_TOKEN: ${{ secrets.TDESIGN_BOT_TOKEN }}
         run: gh pr checkout ${{ github.event.issue.number }} --recurse-submodules
       - run: git submodule update --remote --merge
       - name: Commit Common
@@ -88,11 +88,11 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
-          token: ${{ secrets.PERSONAL_TOKEN }}
+          token: ${{ secrets.TDESIGN_BOT_TOKEN }}
 
       - name: gh checkout pr
         env:
-          GH_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
+          GH_TOKEN: ${{ secrets.TDESIGN_BOT_TOKEN }}
         run: gh pr checkout ${{ github.event.issue.number }} --recurse-submodules
 
       - name: bot commtent
