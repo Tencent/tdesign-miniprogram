@@ -25,7 +25,7 @@ export interface TdTextProps {
    * @default false
    */
   copyable?: {
-    type: BooleanConstructor;
+    type: null;
     value?: boolean | TypographyCopyable;
   };
   /**
@@ -103,10 +103,12 @@ export interface TdTextProps {
 
 export interface TypographyCopyable {
   text?: string;
+  suffix?: boolean;
 }
 
 export interface TypographyEllipsis {
   collapsible?: boolean;
   expandable?: boolean;
   row?: number;
+  suffix?: boolean;
 }

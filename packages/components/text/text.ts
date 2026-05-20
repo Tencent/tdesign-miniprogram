@@ -72,7 +72,7 @@ export default class Text extends SuperComponent {
       const { copyable, content } = this.properties;
       let text = content || '';
 
-      if (typeof copyable === 'object' && copyable.text) {
+      if (typeof copyable === 'object' && copyable !== null && copyable.text) {
         text = copyable.text;
       }
 

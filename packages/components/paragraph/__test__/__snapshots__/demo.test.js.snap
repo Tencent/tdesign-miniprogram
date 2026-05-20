@@ -132,12 +132,30 @@ exports[`Paragraph Paragraph combination demo works fine 1`] = `
 exports[`Paragraph Paragraph copyable demo works fine 1`] = `
 <copyable>
   <wx-view
-    class="typography-example"
+    class="typography-example typography-example--border"
   >
     <t-typography-text
       content="这是一段可复制的文本"
       copyable="{{true}}"
     />
+  </wx-view>
+  <wx-view
+    class="typography-example"
+  >
+    <t-typography-text
+      content="这是一段带自定义图标的可复制的文本"
+      copyable="{{
+        Object {
+          "suffix": true,
+        }
+      }}"
+    >
+      <t-icon
+        color="#0052D9"
+        name="smile"
+        slot="suffix"
+      />
+    </t-typography-text>
   </wx-view>
 </copyable>
 `;
@@ -153,7 +171,7 @@ exports[`Paragraph Paragraph ellipsis demo works fine 1`] = `
     />
   </wx-view>
   <wx-view
-    class="typography-example"
+    class="typography-example typography-example--border"
   >
     <t-typography-paragraph
       content="TDesign 秉承开放的设计理念从创立之初就采用开源协作的方式进行设计和开发。协作方案讨论、组件设计以及 API 设计，包括源代码在内均在公司内部完全开放，赢得了内部开发者和设计师的广泛关注。TDesign 遵循平等、开放、严格的原则，不论参与者的角色如何。"
@@ -165,6 +183,26 @@ exports[`Paragraph Paragraph ellipsis demo works fine 1`] = `
         }
       }}"
     />
+  </wx-view>
+  <wx-view
+    class="typography-example"
+  >
+    <t-typography-paragraph
+      content="TDesign 秉承开放的设计理念从创立之初就采用开源协作的方式进行设计和开发。协作方案讨论、组件设计以及 API 设计，包括源代码在内均在公司内部完全开放，赢得了内部开发者和设计师的广泛关注。TDesign 遵循平等、开放、严格的原则，不论参与者的角色如何。"
+      ellipsis="{{
+        Object {
+          "collapsible": false,
+          "expandable": true,
+          "row": 1,
+          "suffix": true,
+        }
+      }}"
+    >
+      <t-icon
+        name="chevron-down"
+        slot="suffix"
+      />
+    </t-typography-paragraph>
   </wx-view>
 </ellipsis>
 `;

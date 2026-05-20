@@ -17,7 +17,7 @@ const props: TdTextProps = {
   },
   /** 是否可复制 */
   copyable: {
-    type: Boolean,
+    type: null,
     value: false,
   },
   /** 是否添加删除线样式 */

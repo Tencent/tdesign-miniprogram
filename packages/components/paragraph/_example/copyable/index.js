@@ -1,1 +1,7 @@
-Component({});
+Component({
+  data: {
+    copyableCustomSuffix: {
+      suffix: true,
+    },
+  },
+});

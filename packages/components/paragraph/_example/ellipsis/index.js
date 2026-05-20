@@ -7,5 +7,11 @@ Component({
       expandable: true,
       collapsible: true,
     },
+    ellipsisCustomSuffix: {
+      row: 1,
+      expandable: true,
+      collapsible: false,
+      suffix: true,
+    },
   },
 });
