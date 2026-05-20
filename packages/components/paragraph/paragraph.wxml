@@ -1,5 +1,4 @@
 <wxs src="../common/utils.wxs" module="_" />
-
 <wxs src="./paragraph.wxs" module="_this" />
 
 <import src="./ellipsis.wxml" />

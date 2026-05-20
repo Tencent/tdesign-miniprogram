@@ -165,7 +165,7 @@ export const docs = [
         titleEn: 'Typography',
         name: 'typography',
         meta: { docType: 'base' },
-        path: '/miniprogram/components/paragraph',
+        path: '/miniprogram/components/typography',
         component: () => import('@/paragraph/README.md'),
       },
     ],
