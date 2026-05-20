@@ -200,7 +200,10 @@ export default {
 
         this.showClearIcon = value || String(clearTrigger) === 'always';
       },
-
+      emitChange(data) {
+        this.$emit('update:value', data.value);
+        this.$emit('change', data);
+      },
       onInput(e) {
         let { value } = e.detail;
         // this.rawValue = value;
@@ -216,7 +219,7 @@ export default {
 
         nextTick().then(() => {
           this.dataValue = value;
-          this.$emit('change', {
+          this.emitChange({
             value,
             trigger: 'input-change',
           });
@@ -241,7 +244,7 @@ export default {
         this.dataValue = '';
         this.isSearching = false;
         this.$emit('clear', { value: '' });
-        this.$emit('change', {
+        this.emitChange({
           value: '',
           trigger: 'clear',
         });
@@ -261,8 +264,7 @@ export default {
         const item = this.resultList[index];
         this.dataValue = item;
         this.isSelected = true;
-
-        this.$emit('change', {
+        this.emitChange({
           value: item,
           trigger: 'option-click',
         });
