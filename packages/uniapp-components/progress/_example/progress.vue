@@ -52,11 +52,11 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import TransitionDemo from './transition/index.vue';
+import CircleDemo from './circle/index.vue';
 import CustomDemo from './custom/index.vue';
 import LineDemo from './line/index.vue';
 import PlumpDemo from './plump/index.vue';
-import CircleDemo from './circle/index.vue';
+import TransitionDemo from './transition/index.vue';
 export default {
   components: {
     BaseDemo,

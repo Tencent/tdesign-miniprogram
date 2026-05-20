@@ -186,7 +186,7 @@ export default {
             } else {
               let doAnimation = false;
 
-              // #ifdef H5 || APP-PLUS
+              // #ifdef H5 || APP
               animation
                 .height(height)
                 .top(1)
@@ -232,7 +232,7 @@ export default {
 
 
         let interval = 0;
-        // #ifdef APP-PLUS
+        // #ifdef APP
         interval = 33;
         // #endif
         setTimeout(() => {

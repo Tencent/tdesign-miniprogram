@@ -37,14 +37,17 @@
 </template>
 
 <script>
-import TOverlay from '../overlay/overlay';
-import { getWindowInfo } from '../common/wechat';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+
+
 import { debounce, nextTick, coalesce } from '../common/utils';
-import { transitionMixins } from '../mixins/transition';
+import { getWindowInfo } from '../common/wechat';
 import pageScrollMixin from '../mixins/page-scroll';
+import { transitionMixins } from '../mixins/transition';
+import TOverlay from '../overlay/overlay';
+
+import props from './props';
 
 delete props.visible;
 

@@ -44,11 +44,11 @@
 
 <script>
 
+import ActionDemo from '../action/index.vue';
 import BaseDemo from '../base/index.vue';
 import MaxlengthDemo from '../maxlength/index.vue';
-import ActionDemo from '../action/index.vue';
-import ShapeDemo from '../shape/index.vue';
 import OtherDemo from '../other/index.vue';
+import ShapeDemo from '../shape/index.vue';
 export default {
   components: {
     BaseDemo,

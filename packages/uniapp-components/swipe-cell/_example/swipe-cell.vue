@@ -30,10 +30,10 @@
 
 <script>
 
-import LeftDemo from './left/index.vue';
-import RightDemo from './right/index.vue';
 import DoubleDemo from './double/index.vue';
 import IconDemo from './icon/index.vue';
+import LeftDemo from './left/index.vue';
+import RightDemo from './right/index.vue';
 export default {
   components: {
     LeftDemo,

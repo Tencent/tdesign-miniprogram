@@ -47,12 +47,12 @@
 </template>
 
 <script>
-import BaseDemo from '../base/index.vue';
-import SearchDemo from '../search/index.vue';
 import BackHome from '../back-home/index.vue';
+import BaseDemo from '../base/index.vue';
+import CustomColor from '../custom-color/index.vue';
 import ImgDemo from '../img/index.vue';
 import LeftTitle from '../left-title/index.vue';
-import CustomColor from '../custom-color/index.vue';
+import SearchDemo from '../search/index.vue';
 
 export default {
   components: {

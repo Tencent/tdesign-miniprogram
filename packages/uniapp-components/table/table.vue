@@ -120,7 +120,21 @@
         :class="classPrefix + '__loading--full'"
       >
         <slot name="loading">
-          <t-loading v-bind="loadingProps" />
+          <t-loading
+            :delay="(loadingProps && loadingProps.delay) || 0"
+            :duration="(loadingProps && loadingProps.duration) || 800"
+            :fullscreen="!!(loadingProps && loadingProps.fullscreen)"
+            :indicator="loadingProps && loadingProps.indicator !== undefined ? loadingProps.indicator : true"
+            :inherit-color="!!(loadingProps && loadingProps.inheritColor)"
+            :layout="(loadingProps && loadingProps.layout) || 'horizontal'"
+            :loading="loadingProps && loadingProps.loading !== undefined ? loadingProps.loading : true"
+            :pause="!!(loadingProps && loadingProps.pause)"
+            :progress="loadingProps && loadingProps.progress"
+            :reverse="!!(loadingProps && loadingProps.reverse)"
+            :size="(loadingProps && loadingProps.size) || '20px'"
+            :text="(loadingProps && loadingProps.text) || ''"
+            :theme="(loadingProps && loadingProps.theme) || 'circular'"
+          />
         </slot>
       </view>
     </scroll-view>

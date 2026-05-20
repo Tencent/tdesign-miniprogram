@@ -1,6 +1,7 @@
 // 格式化文档，去掉多余空格
-const glob = require('glob');
 const path = require('path');
+
+const glob = require('glob');
 
 const { writeFileSync, readFileSync  } = require('t-comm');
 

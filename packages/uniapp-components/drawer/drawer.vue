@@ -62,14 +62,16 @@
   </view>
 </template>
 <script>
-import TPopup from '../popup/popup';
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
 import { coalesce } from '../common/utils';
-import props from './props';
-import useCustomNavbar from '../mixins/using-custom-navbar';
+
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+import useCustomNavbar from '../mixins/using-custom-navbar';
+import TPopup from '../popup/popup';
+
+import props from './props';
 
 
 const name = `${prefix}-drawer`;

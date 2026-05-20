@@ -60,14 +60,15 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import TImage from '../image/image';
-import { uniComponent } from '../common/src/index';
-import props from './props';
 import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
 import { setIcon } from '../common/utils';
 import tools from '../common/utils.wxs';
 import { canUseVirtualHost } from '../common/version';
+import TIcon from '../icon/icon';
+import TImage from '../image/image';
+
+import props from './props';
 
 
 const name = `${prefix}-empty`;

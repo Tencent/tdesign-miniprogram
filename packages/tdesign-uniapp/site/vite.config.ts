@@ -1,5 +1,7 @@
 import * as path from 'path';
-import { defineConfig, loadEnv } from 'vite';
+
+import { defineConfig, loadEnv, type UserConfig } from 'vite';
+
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
@@ -30,7 +32,7 @@ const disableTreeShakingPlugin = paths => ({
 const root: string = process.cwd();
 const ENV_PREFIX = ['VITE_', 'VUE_APP'];
 
-export default ({ mode }) => {
+const config: UserConfig | (({ mode }: { mode: string }) => UserConfig) = defineConfig(({ mode }): UserConfig => {
   const env = loadEnv(mode, root, ENV_PREFIX);
   const vueAppBase = env.VUE_APP_PUBLICPATH;
   const experimentalConfig = vueAppBase
@@ -58,7 +60,7 @@ export default ({ mode }) => {
     }
     : {};
 
-  const result = defineConfig({
+  return {
     base: publicPathMap[mode],
     ...experimentalConfig,
     root: '.',
@@ -104,7 +106,7 @@ export default ({ mode }) => {
       changelog2Json(),
       disableTreeShakingPlugin(['style/', 'toast/']),
     ],
-  });
+  };
+});
 
-  return result;
-};
+export default config;

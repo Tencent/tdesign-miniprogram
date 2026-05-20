@@ -75,8 +75,8 @@
 
 <script>
 import TButton from '@tdesign/uniapp/button/button.vue';
-import TInput from '@tdesign/uniapp/input/input.vue';
 import TDialog from '@tdesign/uniapp/dialog/dialog.vue';
+import TInput from '@tdesign/uniapp/input/input.vue';
 export default {
   options: {
     styleIsolation: 'shared',

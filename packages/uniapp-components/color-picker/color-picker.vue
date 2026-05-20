@@ -64,10 +64,12 @@
   </view>
 </template>
 <script>
-import TPopup from '../popup/popup';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+import { debounce, nextTick } from '../common/utils';
+import tools from '../common/utils.wxs';
+import TPopup from '../popup/popup';
+
 import {
   SATURATION_PANEL_DEFAULT_HEIGHT,
   SATURATION_PANEL_DEFAULT_WIDTH,
@@ -77,11 +79,11 @@ import {
   HUE_MAX,
   DEFAULT_SYSTEM_SWATCH_COLORS,
 } from './constants';
-import { debounce, nextTick } from '../common/utils';
-import { Color, getColorObject } from './utils';
-import TemplateVue from './template.vue';
+import props from './props';
 
-import tools from '../common/utils.wxs';
+
+import TemplateVue from './template.vue';
+import { Color, getColorObject } from './utils';
 
 
 const name = `${prefix}-color-picker`;

@@ -38,9 +38,9 @@
 
 <script>
 
+import AreaDemo from '../area/index.vue';
 import LabelDemo from '../base/index.vue';
 import WithTitle from '../with-title/index.vue';
-import AreaDemo from '../area/index.vue';
 import WithoutPopup from '../without-popup/index.vue';
 
 export default {

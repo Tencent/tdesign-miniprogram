@@ -81,8 +81,8 @@
 
 <script>
 import TBadge from '@tdesign/uniapp/badge/badge.vue';
-import TIcon from '@tdesign/uniapp/icon/icon.vue';
 import TButton from '@tdesign/uniapp/button/button.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
 export default {
   options: {
     styleIsolation: 'shared',

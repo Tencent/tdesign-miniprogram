@@ -52,12 +52,12 @@
 
 <script>
 import BaseDemo from './base';
-import MultipleDemo from './multiple';
-import CustomText from './custom-text';
-import SwitchMode from './switch-mode';
-import RangeDemo from './range';
-import LocalText from './local-text';
 import CustomRange from './custom-range';
+import CustomText from './custom-text';
+import LocalText from './local-text';
+import MultipleDemo from './multiple';
+import RangeDemo from './range';
+import SwitchMode from './switch-mode';
 import WithoutPopup from './without-popup';
 export default {
   components: {

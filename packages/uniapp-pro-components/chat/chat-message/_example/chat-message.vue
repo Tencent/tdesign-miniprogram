@@ -43,11 +43,11 @@
 
 <script>
 import BaseDemo from './base/index.vue';
-import ChatStyleDemo from './style/index.vue';
 import ConfigureDemo from './configure/index.vue';
-import StatusDemo from './status/index.vue';
 import ContentDemo from './content/index.vue';
 import ErrorDemo from './error/index.vue';
+import StatusDemo from './status/index.vue';
+import ChatStyleDemo from './style/index.vue';
 
 export default {
   components: {

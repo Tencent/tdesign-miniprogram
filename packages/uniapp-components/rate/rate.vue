@@ -110,17 +110,20 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+
+import { parseEventDynamicCode } from '../common/event/dynamic';
+import { uniComponent } from '../common/src/index';
 import { unitConvert, getRect, coalesce } from '../common/utils';
 import tools from '../common/utils.wxs';
-import utils from './computed.js';
-import { parseEventDynamicCode } from '../common/event/dynamic';
+import TIcon from '../icon/icon';
 
 
 import usingConfig from '../mixins/using-config';
+
+import utils from './computed.js';
+
+import props from './props';
 const componentName = 'rate';
 const name = `${prefix}-${componentName}`;
 

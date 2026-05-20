@@ -47,12 +47,13 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
+import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 import { getRect, getWindowInfo } from '../common/utils';
-import { prefix } from '../common/config';
-import props from './props';
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+
+import props from './props';
 
 
 const name = `${prefix}-navbar`;
@@ -176,7 +177,7 @@ export default {
           '--td-navbar-capsule-width': `${iMenuRect.width}px`, // 胶囊宽度
           '--td-navbar-height': `${(iMenuRect.top - windowInfo.statusBarHeight) * 2 + iMenuRect.height}px`,
         };
-        // #ifdef H5 || APP-PLUS
+        // #ifdef H5 || APP
         delete iBoxStyle['--td-navbar-height'];
         // #endif
 

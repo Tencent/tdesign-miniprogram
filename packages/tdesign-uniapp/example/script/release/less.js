@@ -1,8 +1,10 @@
 const fs = require('fs');
 const path = require('path');
+
 const less = require('less');
 const postcss = require('postcss');
 const rpxTransform = require('postcss-rpx-transform');
+
 const { PACKAGES_ROOT, PROJECT_ROOT } = require('./config');
 
 const CONFIG = {

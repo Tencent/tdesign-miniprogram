@@ -32,12 +32,14 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
+
+import tools from '../common/utils.wxs';
+
+import { format as formatUtil } from './computed.js';
 import props from './props';
 import { isSameSecond, parseFormat, parseTimeData, TimeDataUnit } from './utils';
-import tools from '../common/utils.wxs';
-import { format as formatUtil } from './computed.js';
 
 
 const name = `${prefix}-count-down`;

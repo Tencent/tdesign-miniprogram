@@ -70,18 +70,18 @@
 
 <script>
 
-import BaseDemo from '../base/index.vue';
-import SuffixDemo from '../suffix/index.vue';
-import PrefixDemo from '../prefix/index.vue';
-import LayoutDemo from '../layout/index.vue';
-import BorderedDemo from '../bordered/index.vue';
 import AlignDemo from '../align/index.vue';
-import MaxlengthDemo from '../maxlength/index.vue';
-import SpecialDemo from '../special/index.vue';
-import StatusDemo from '../status/index.vue';
+import BannerDemo from '../banner/index.vue';
+import BaseDemo from '../base/index.vue';
+import BorderedDemo from '../bordered/index.vue';
 import CustomDemo from '../custom/index.vue';
 import LabelDemo from '../label/index.vue';
-import BannerDemo from '../banner/index.vue';
+import LayoutDemo from '../layout/index.vue';
+import MaxlengthDemo from '../maxlength/index.vue';
+import PrefixDemo from '../prefix/index.vue';
+import SpecialDemo from '../special/index.vue';
+import StatusDemo from '../status/index.vue';
+import SuffixDemo from '../suffix/index.vue';
 
 export default {
   components: {

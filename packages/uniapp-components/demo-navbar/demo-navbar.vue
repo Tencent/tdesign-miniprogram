@@ -15,8 +15,8 @@
   <!-- #endif -->
 </template>
 <script>
-import TNavbar from '../navbar/navbar.vue';
 import { goBackOrGoHome } from '../common/route';
+import TNavbar from '../navbar/navbar.vue';
 
 
 export default {

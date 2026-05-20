@@ -71,13 +71,14 @@
 </template>
 
 <script>
-import TIcon from '../icon/icon.vue';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import tools from '../common/utils.wxs';
-import { nextTick } from '../common/utils';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import { nextTick } from '../common/utils';
+import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon.vue';
+
+import props from './props';
 
 
 const name = `${prefix}-picker-item`;

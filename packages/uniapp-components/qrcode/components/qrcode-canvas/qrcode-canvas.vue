@@ -15,13 +15,14 @@
 </template>
 
 <script>
-import props from './props';
-import useQRCode from '../../hooks/useQRCode';
+import { loadImage } from '../../../common/canvas/index';
+import { prefix } from '../../../common/config';
 import { DEFAULT_MINVERSION, excavateModules, isSupportPath2d, generatePath } from '../../../common/shared/qrcode/utils';
 import { uniComponent } from '../../../common/src/index';
-import { prefix } from '../../../common/config';
-import { loadImage } from '../../../common/canvas/index';
 import { getWindowInfo, nextTick } from '../../../common/utils';
+import useQRCode from '../../hooks/useQRCode';
+
+import props from './props';
 
 export default {
   ...uniComponent({
@@ -63,7 +64,7 @@ export default {
       },
       size() {
         let interval = 0;
-        // #ifdef APP-PLUS
+        // #ifdef APP
         interval = 33;
         // #endif
         setTimeout(() => {
@@ -239,7 +240,7 @@ export default {
           canvas.height = canvasSize;
           // 小程序环境：scale 计算方式（参考 TS 实现）
           scale = canvasSize / qrData.numCells;
-          // #ifdef APP-PLUS
+          // #ifdef APP
           scale /= pixelRatio;
           // #endif
           // #endif
@@ -297,7 +298,7 @@ export default {
             await this.drawIcon(qrData, pixelRatio);
           }
 
-          // #ifdef APP-PLUS
+          // #ifdef APP
           ctx.draw();
           // #endif
 

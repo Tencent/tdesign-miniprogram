@@ -74,12 +74,12 @@
 <script>
 
 import BaseDemo from '../base/index.vue';
-import ConfirmDemo from '../confirm/index.vue';
-import WithInput from '../with-input/index.vue';
-import WithImage from '../with-image/index.vue';
-import CommandDemo from '../command/index.vue';
-import StatusDemo from '../status/index.vue';
 import ButtonDemo from '../button/index.vue';
+import CommandDemo from '../command/index.vue';
+import ConfirmDemo from '../confirm/index.vue';
+import StatusDemo from '../status/index.vue';
+import WithImage from '../with-image/index.vue';
+import WithInput from '../with-input/index.vue';
 
 export default {
   components: {

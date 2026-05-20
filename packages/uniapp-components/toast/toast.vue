@@ -56,17 +56,18 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import TLoading from '../loading/loading';
-import TOverlay from '../overlay/overlay';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import { transitionMixins } from '../mixins/transition';
+import { uniComponent } from '../common/src/index';
 import { calcIcon, toCamel, coalesce } from '../common/utils';
-import useCustomNavbar from '../mixins/using-custom-navbar';
 import tools from '../common/utils.wxs';
 import { canUseVirtualHost } from '../common/version';
+import TIcon from '../icon/icon';
+import TLoading from '../loading/loading';
+import { transitionMixins } from '../mixins/transition';
+import useCustomNavbar from '../mixins/using-custom-navbar';
+import TOverlay from '../overlay/overlay';
+
+import props from './props';
 
 
 const name = `${prefix}-toast`;

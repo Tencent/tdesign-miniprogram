@@ -87,13 +87,14 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
 import { prefix, ISOLATED_RELATION_KEY } from '../common/config';
-import { coalesce } from '../common/utils';
-import { uniComponent } from '../common/src/index';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import { coalesce } from '../common/utils';
+import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+
+import props from './props';
 
 
 const name = `${prefix}-radio`;

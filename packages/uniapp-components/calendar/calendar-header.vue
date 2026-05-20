@@ -53,8 +53,9 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon.vue';
 import utils from '../common/utils.wxs';
+import TIcon from '../icon/icon.vue';
+
 import props from './calendar-header.props';
 import { getMonthTitle } from './computed';
 

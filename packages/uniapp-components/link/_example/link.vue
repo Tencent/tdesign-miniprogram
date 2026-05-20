@@ -52,12 +52,12 @@
 <script>
 
 import ContentDemo from './content/index.vue';
-import UnderlineDemo from './underline/index.vue';
+import DisabledDemo from './disabled/index.vue';
 import PrefixDemo from './prefix/index.vue';
+import SizeDemo from './size/index.vue';
 import SuffixDemo from './suffix/index.vue';
 import ThemeDemo from './theme/index.vue';
-import DisabledDemo from './disabled/index.vue';
-import SizeDemo from './size/index.vue';
+import UnderlineDemo from './underline/index.vue';
 export default {
   components: {
     ContentDemo,

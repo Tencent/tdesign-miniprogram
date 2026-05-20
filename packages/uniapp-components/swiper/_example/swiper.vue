@@ -58,10 +58,10 @@
 <script>
 
 import BaseDemo from './base/index.vue';
+import CardsDemo from './cards/index.vue';
+import CustomDemo from './custom/index.vue';
 import FractionDemo from './fraction/index.vue';
 import NavBtn from './nav-btn/index.vue';
-import CustomDemo from './custom/index.vue';
-import CardsDemo from './cards/index.vue';
 import VerticalDemo from './vertical/index.vue';
 export default {
   components: {

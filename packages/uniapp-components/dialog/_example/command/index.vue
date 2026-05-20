@@ -16,9 +16,9 @@
 </template>
 
 <script>
+import { DialogPlugin } from '@tdesign/uniapp';
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TDialog from '@tdesign/uniapp/dialog/dialog.vue';
-import { DialogPlugin } from '@tdesign/uniapp';
 
 export default {
   components: {

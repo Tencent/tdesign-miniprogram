@@ -44,11 +44,11 @@
 </template>
 
 <script>
-// 循环引用，未真正使用！
-import chatMarkdownNode from '../chat-markdown-node/chat-markdown-node';
 import { prefix } from '@tdesign/uniapp/common/config';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
+// 循环引用，未真正使用！
+import chatMarkdownNode from '../chat-markdown-node/chat-markdown-node';
 
 const name = `${prefix}-chat-markdown-table`;
 

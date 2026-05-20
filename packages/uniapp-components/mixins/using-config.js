@@ -1,8 +1,8 @@
 /**
  * 提供子组件从 config-provider 获取全局配置的能力
  */
-import { getComponentLocale, useConfig } from '../config-provider/use-config';
 import { toCamel } from '../common/utils';
+import { getComponentLocale, useConfig } from '../config-provider/use-config';
 import defaultLocale from '../locale/zh_CN';
 
 export default function usingConfig(options) {

@@ -14,11 +14,13 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
-import props from './props';
 import { prefix } from '../common/config';
-import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+
+import tools from '../common/utils.wxs';
+
+import props from './props';
 
 
 const name = `${prefix}-tab-panel`;

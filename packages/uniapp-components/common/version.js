@@ -54,7 +54,7 @@ export function canUseVirtualHost() {
   result = judgeByVersion('2.19.2');
   // #endif
 
-  // #ifdef H5 || APP-PLUS || MP-ALIPAY
+  // #ifdef H5 || APP || MP-ALIPAY
   result = true;
   // #endif
 

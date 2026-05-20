@@ -1,5 +1,5 @@
-import { getCurrentPage } from '../common/utils';
 import Bus from '../common/bus';
+import { getCurrentPage } from '../common/utils';
 
 const overflowScrollReg = /scroll|auto|overlay/i;
 

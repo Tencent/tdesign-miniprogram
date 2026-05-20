@@ -105,16 +105,18 @@
   </view>
 </template>
 <script>
-import TPopup from '../popup/popup';
+import { prefix } from '../common/config';
+
+import { ParentMixin, RELATION_MAP } from '../common/relation';
 import { uniComponent } from '../common/src/index';
 import { coalesce } from '../common/utils';
-import { prefix } from '../common/config';
-import props from './props';
-import useCustomNavbar from '../mixins/using-custom-navbar';
 import tools from '../common/utils.wxs';
-import { ParentMixin, RELATION_MAP } from '../common/relation';
 
 import usingConfig from '../mixins/using-config';
+import useCustomNavbar from '../mixins/using-custom-navbar';
+import TPopup from '../popup/popup';
+
+import props from './props';
 const componentName = 'picker';
 const name = `${prefix}-${componentName}`;
 

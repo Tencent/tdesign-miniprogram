@@ -41,11 +41,11 @@
 
 <script>
 
-import ThemeDemo from '../theme/index.vue';
-import SizeDemo from '../size/index.vue';
-import TypeDemo from '../type/index.vue';
-import ClosableDemo from '../closable/index.vue';
 import CheckableDemo from '../checkable/index.vue';
+import ClosableDemo from '../closable/index.vue';
+import SizeDemo from '../size/index.vue';
+import ThemeDemo from '../theme/index.vue';
+import TypeDemo from '../type/index.vue';
 
 export default {
   components: {

@@ -11,8 +11,9 @@
 </template>
 
 <script>
-import EcCanvas from '../ec-canvas/ec-canvas';
-import * as echarts from 'echarts';
+import EcCanvas from '../ec-canvas/ec-canvas.vue';
+import * as echarts from '../ec-canvas/echarts.js';
+
 function onInitNormalLine(opt) {
   console.log('contentItem数据:', opt);
 

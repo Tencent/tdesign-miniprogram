@@ -50,13 +50,16 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { RELATION_MAP } from '../common/relation/parent-map';
+import { uniComponent } from '../common/src/index';
+
+
 import { getCharacterLength, coalesce, nextTick } from '../common/utils';
 import tools from '../common/utils.wxs';
+
 import { textareaStyle } from './computed.js';
-import { RELATION_MAP } from '../common/relation/parent-map';
+import props from './props';
 
 
 const name = `${prefix}-textarea`;
