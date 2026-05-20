@@ -55,7 +55,7 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
-    <a class="item" href="/miniprogram/components/typography">
+    <a class="item" href="/miniprogram/components/paragraph">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-typography.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-typography-dark.png" />
       <p class="name">Typography 排版</p>
