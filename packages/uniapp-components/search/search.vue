@@ -243,11 +243,11 @@ export default {
       handleClear() {
         this.dataValue = '';
         this.isSearching = false;
-        this.$emit('clear', { value: '' });
         this.emitChange({
           value: '',
           trigger: 'clear',
         });
+        this.$emit('clear', { value: '' });
       },
 
       onConfirm(e) {
