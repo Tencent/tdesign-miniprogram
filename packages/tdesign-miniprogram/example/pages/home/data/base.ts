@@ -42,6 +42,7 @@ const base = {
     {
       name: 'Typography',
       label: '排版',
+      path: '/pages/paragraph/paragraph',
     },
   ],
 };
