@@ -93,6 +93,21 @@ isComponent: true
 
 {{ iconImage }}
 
+## FAQ
+
+#### 如何使用多色图标？
+
+请安装 `@mp-svg-icons/wechat`，已包含 TDesign 所有图标，支持 `任意的粗细调整` 和 `最多四种颜色填充` 功能，零依赖运行，支持无网络场景，具有更好的使用体验。
+
+```
+// 基础用法
+<t-icon name="add" size="{{48}}" />
+
+// 自定义颜色
+<t-icon name="send" size="{{32}}" stroke-color="#0766ff" fill-color="#e70d0d" />
+
+<t-icon name="robot-2" size="{{32}}" stroke-color="{{['#0052D9', '#e40a23']}}" fill-color="{{['#e1e50f', '#632bc9']}}" />
+```
 
 ## API
 
