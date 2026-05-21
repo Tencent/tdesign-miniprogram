@@ -1,0 +1,18 @@
+<template name="ellipsis-toggle">
+  <!-- 展开按钮 -->
+  <view
+    wx:if="{{ellipsis && !isExpanded && ellipsis.expandable}}"
+    class="{{classPrefix}}-ellipsis-symbol"
+    style="text-decoration: none; white-space: nowrap; flex: 1;{{extraStyle || ''}}"
+    bind:tap="onExpand"
+    >展开</view
+  >
+  <!-- 收起按钮 -->
+  <view
+    wx:elif="{{ellipsis && isExpanded && ellipsis.expandable && ellipsis.collapsible}}"
+    class="{{classPrefix}}-ellipsis-symbol"
+    style="text-decoration: none; white-space: nowrap; flex: 1;{{extraStyle || ''}}"
+    bind:tap="onCollapse"
+    >收起</view
+  >
+</template>
