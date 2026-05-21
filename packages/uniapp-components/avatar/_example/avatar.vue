@@ -71,13 +71,13 @@
 
 <script>
 
-import ImageAvatar from './image-avatar/index.vue';
-import CharacterAvatar from './character-avatar/index.vue';
-import IconAvatar from './icon-avatar/index.vue';
-import BadgeAvatar from './badge-avatar/index.vue';
-import SizeDemo from './size/index.vue';
-import ExhibitionDemo from './exhibition/index.vue';
 import ActionDemo from './action/index.vue';
+import BadgeAvatar from './badge-avatar/index.vue';
+import CharacterAvatar from './character-avatar/index.vue';
+import ExhibitionDemo from './exhibition/index.vue';
+import IconAvatar from './icon-avatar/index.vue';
+import ImageAvatar from './image-avatar/index.vue';
+import SizeDemo from './size/index.vue';
 export default {
   components: {
     ImageAvatar,

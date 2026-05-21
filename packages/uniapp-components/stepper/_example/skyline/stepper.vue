@@ -49,9 +49,9 @@
 
 import BaseDemo from '../base/index.vue';
 import MinMax from '../min-max/index.vue';
+import SizeDemo from '../size/index.vue';
 import StatusDemo from '../status/index.vue';
 import ThemeDemo from '../theme/index.vue';
-import SizeDemo from '../size/index.vue';
 
 export default {
   components: {

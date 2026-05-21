@@ -72,12 +72,12 @@
 
 <script>
 import BaseDemo from './base/index.vue';
-import SizeDemo from './size/index.vue';
-import IconDemo from './icon/index.vue';
-import ColorDemo from './color/index.vue';
-import LevelDemo from './level/index.vue';
-import StatusDemo from './status/index.vue';
 import BorderlessDemo from './borderless/index.vue';
+import ColorDemo from './color/index.vue';
+import IconDemo from './icon/index.vue';
+import LevelDemo from './level/index.vue';
+import SizeDemo from './size/index.vue';
+import StatusDemo from './status/index.vue';
 
 export default {
   name: 'QRCodeExample',

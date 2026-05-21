@@ -34,9 +34,9 @@
 
 <script>
 import BaseDemo from './base/index.vue';
+import FileDemo from './file/index.vue';
 import FileLoading from './file-loading/index.vue';
 import ImageLoading from './image-loading/index.vue';
-import FileDemo from './file/index.vue';
 
 export default {
   components: {

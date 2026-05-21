@@ -106,7 +106,7 @@ export default async function generateBase64Url(
   ctx.globalAlpha = alpha;
 
   // h5需要全局缩放
-  // #ifdef H5 || APP-PLUS
+  // #ifdef H5 || APP
   ctx.scale(1 / ratio, 1 / ratio);
   // #endif
 
@@ -152,7 +152,7 @@ export default async function generateBase64Url(
 
       // TODO：其他技术栈修复了「灰度效果只影响图片，不影响文字」的bug，因为小程序不能创建临时canvas，暂时没有想到比较优雅的解决方案
       if (isGrayscale) {
-        // #ifdef APP-PLUS
+        // #ifdef APP
         ctx.drawImage(
           img,
           offsetX,
@@ -162,7 +162,7 @@ export default async function generateBase64Url(
         );
         // #endif
 
-        // #ifndef APP-PLUS
+        // #ifndef APP
         ctx.drawImage(
           img,
           offsetX,
@@ -189,7 +189,7 @@ export default async function generateBase64Url(
           y: 0,
         });
       } else {
-        // #ifdef APP-PLUS
+        // #ifdef APP
         ctx.drawImage(
           img,
           offsetX,
@@ -199,7 +199,7 @@ export default async function generateBase64Url(
         );
         // #endif
 
-        // #ifndef APP-PLUS
+        // #ifndef APP
         ctx.drawImage(
           img,
           offsetX,
@@ -257,7 +257,7 @@ export default async function generateBase64Url(
       );
     }
   }
-  // #ifdef APP-PLUS
+  // #ifdef APP
   ctx.draw();
   // #endif
 

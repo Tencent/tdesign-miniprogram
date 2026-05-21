@@ -60,17 +60,19 @@
   </scroll-view>
 </template>
 <script>
-import TLoading from '../loading/loading';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+
+import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
 import { getRect, systemInfo, unitConvert } from '../common/utils';
 import tools from '../common/utils.wxs';
 import { getObserver } from '../common/wechat';
-import { ParentMixin, RELATION_MAP } from '../common/relation';
+import TLoading from '../loading/loading';
 
 
 import usingConfig from '../mixins/using-config';
+
+import props from './props';
 const componentName = 'pull-down-refresh';
 const name = `${prefix}-${componentName}`;
 const defaultLoadingTexts = ['下拉刷新', '松手刷新', '正在刷新', '刷新完成'];
@@ -345,7 +347,7 @@ export default {
       scrollToTop() {
         let parsed = false;
 
-        // #ifdef APP-PLUS || MP
+        // #ifdef APP || MP
         this.scrollTop = 0;
         setTimeout(() => {
           this.scrollTop = 0.01;

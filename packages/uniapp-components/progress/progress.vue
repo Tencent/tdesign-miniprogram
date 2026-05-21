@@ -147,13 +147,12 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import { getBackgroundColor } from './utils';
+import { uniComponent } from '../common/src/index';
+
 import { unitConvert, isIOS as isIOSValidator } from '../common/utils';
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
 
 import {
   STATUS,
@@ -168,6 +167,8 @@ import {
   getIOSAriaLabel,
   getAndroidAriaLabel,
 } from './computed.js';
+import props from './props';
+import { getBackgroundColor } from './utils';
 
 
 const name = `${prefix}-progress`;

@@ -1,8 +1,11 @@
-const watch = require('gulp-watch');
+const net = require('net');
 const path = require('path');
+
+const watch = require('gulp-watch');
+
 const { config } = require('./config');
 const { copyComponents } = require('./helper');
-const net = require('net');
+
 const port = 12345; // 选择一个空闲端口
 
 

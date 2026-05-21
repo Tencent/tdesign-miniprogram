@@ -15,11 +15,11 @@
     <t-icon
       v-if="usePopup"
       name="close"
+      :custom-style="closeBtnCustomStyle"
       :t-class="classPrefix + '__close-btn'"
       size="48rpx"
       aria-role="button"
       aria-label="关闭"
-      :custom-style="closeBtnCustomStyle"
       @click="handleClose"
     />
     <block
@@ -177,16 +177,19 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon.vue';
 import TButton from '../button/button.vue';
+
+import { prefix } from '../common/config';
+import { coalesce } from '../common/utils';
 import utils from '../common/utils.wxs';
+import TIcon from '../icon/icon.vue';
+
+import CalendarHeader from './calendar-header.vue';
 import {
   getDateLabel,
   getMonthTitle,
 } from './computed.js';
-import CalendarHeader from './calendar-header.vue';
-import { prefix } from '../common/config';
-import { coalesce } from '../common/utils';
+
 import props from './template.props';
 
 
@@ -220,10 +223,10 @@ export default {
     closeBtnCustomStyle() {
       return utils._style({
         position: 'absolute',
-        top: '16px',
-        right: '16px',
-        margin: '-12px',
-        padding: '12px',
+        top: '32rpx',
+        right: '32rpx',
+        margin: '-24rpx',
+        padding: '24rpx',
         color: 'var(--td-calendar-title-color, var(--td-text-color-primary, var(--td-font-gray-1, rgba(0, 0, 0, .9))))',
       });
     },

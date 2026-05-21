@@ -27,12 +27,12 @@
 </template>
 <script>
 import TAvatar from '../avatar/avatar';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import avatarGroupProps from './props';
-
-import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import tools from '../common/utils.wxs';
+
+import avatarGroupProps from './props';
 
 
 const name = `${prefix}-avatar-group`;

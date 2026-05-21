@@ -48,9 +48,10 @@
 
 <script>
 import TButton from '@tdesign/uniapp/button/button.vue';
-import ThemeDemo from '../theme/index.vue';
-import DescriptionDemo from '../description/index.vue';
+
 import CustomDemo from '../custom/index.vue';
+import DescriptionDemo from '../description/index.vue';
+import ThemeDemo from '../theme/index.vue';
 
 export default {
   components: {

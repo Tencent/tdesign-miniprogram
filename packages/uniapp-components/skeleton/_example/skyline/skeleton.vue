@@ -56,11 +56,11 @@
 </template>
 
 <script>
-import ThemeDemo from '../theme/index.vue';
-import GridDemo from '../grid/index.vue';
-import CellGroup from '../cell-group/index.vue';
-import ImageGroup from '../image-group/index.vue';
 import AnimationDemo from '../animation/index.vue';
+import CellGroup from '../cell-group/index.vue';
+import GridDemo from '../grid/index.vue';
+import ImageGroup from '../image-group/index.vue';
+import ThemeDemo from '../theme/index.vue';
 
 export default {
   components: {

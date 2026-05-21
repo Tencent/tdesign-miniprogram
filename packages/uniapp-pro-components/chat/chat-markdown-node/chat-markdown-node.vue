@@ -148,7 +148,12 @@
             <t-chat-markdown-node :nodes="item.tokens" />
           </block>
           <block v-else>
-            {{ '' + item.raw + '' }}
+            {{ '' + item.raw + '' }}<text
+              v-if="item.isTail"
+              :class="classPrefix + '-tail'"
+            >
+              {{ item.tailContent }}
+            </text>
           </block>
         </view>
       </block>
@@ -274,9 +279,11 @@
 </template>
 
 <script>
-import chatMarkdownCode from '../chat-markdown-code/chat-markdown-code.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
+
+import chatMarkdownCode from '../chat-markdown-code/chat-markdown-code.vue';
+
 // #ifdef MP
 import { TChatMarkdownNode } from './chat-markdown-node.vue';
 // #endif

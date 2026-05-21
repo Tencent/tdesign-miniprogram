@@ -56,12 +56,12 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import RangeDemo from './range/index.vue';
+import CapsuleDemo from './capsule/index.vue';
+import DisabledDemo from './disabled/index.vue';
 import LabelDemo from './label/index.vue';
 import MaxDemo from './max/index.vue';
+import RangeDemo from './range/index.vue';
 import StepDemo from './step/index.vue';
-import DisabledDemo from './disabled/index.vue';
-import CapsuleDemo from './capsule/index.vue';
 import VerticalDemo from './vertical/index.vue';
 export default {
   components: {

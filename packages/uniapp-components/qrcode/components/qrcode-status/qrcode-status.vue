@@ -51,10 +51,11 @@
 </template>
 
 <script>
+import { prefix } from '../../../common/config';
 import TIcon from '../../../icon/icon';
 import TLoading from '../../../loading/loading';
+
 import props from './props';
-import { prefix } from '../../../common/config';
 
 const name = `${prefix}-qrcode`;
 

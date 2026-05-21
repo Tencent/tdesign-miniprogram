@@ -173,20 +173,22 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import TPopup from '../popup/popup';
+import { prefix } from '../common/config';
+
+import { getFunctionalMixin } from '../common/functional/mixin';
+import { uniComponent } from '../common/src/index';
+import { chunk } from '../common/utils';
+import tools from '../common/utils.wxs';
 import TGrid from '../grid/grid';
 import TGridItem from '../grid-item/grid-item';
-import { chunk } from '../common/utils';
-import { uniComponent } from '../common/src/index';
-import { prefix } from '../common/config';
-import { actionSheetTheme } from './show';
-import props from './props';
-import useCustomNavbar from '../mixins/using-custom-navbar';
-import tools from '../common/utils.wxs';
-import { getFunctionalMixin } from '../common/functional/mixin';
+import TIcon from '../icon/icon';
 import usingConfig from '../mixins/using-config';
+import useCustomNavbar from '../mixins/using-custom-navbar';
+import TPopup from '../popup/popup';
+
 import { getIconData } from './computed';
+import props from './props';
+import { actionSheetTheme } from './show';
 
 const componentName = 'action-sheet';
 const name = `${prefix}-${componentName}`;
@@ -246,10 +248,10 @@ export default {
         ]);
       },
       iconCustomStyle() {
-        return 'margin-right: 8px;';
+        return 'margin-right: 16rpx;';
       },
       suffixIconCustomStyle() {
-        return 'margin-right: 8px;margin-left: auto;';
+        return 'margin-right: 16rpx;margin-left: auto;';
       },
       gridStyle() {
         return `${this.heightStyle}padding-bottom: 48rpx;`;

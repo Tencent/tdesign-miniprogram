@@ -102,12 +102,13 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon.vue';
+import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 import { getRect, getAnimationFrame, calcIcon } from '../common/utils';
-import props from './props';
-import { prefix } from '../common/config';
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon.vue';
+
+import props from './props';
 
 
 const name = `${prefix}-notice-bar`;

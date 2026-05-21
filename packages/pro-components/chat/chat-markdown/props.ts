@@ -17,6 +17,10 @@ const props: TdChatMarkdownProps = {
     type: Object,
     value: { gfm: true, pedantic: false, breaks: true },
   },
+  /** 流式输出配置，控制尾部光标的显示与隐藏。尾部光标配置，true 使用默认光标 ▋，传对象可自定义光标字符 */
+  streaming: {
+    type: Object,
+  },
 };
 
 export default props;

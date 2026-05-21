@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import BaseDemo from './base/index.vue';
 import AttachmentsDemo from './attachments/index.vue';
+import BaseDemo from './base/index.vue';
 import ContentCitation from './content-citation/index.vue';
 import FileCitation from './file-citation/index.vue';
 

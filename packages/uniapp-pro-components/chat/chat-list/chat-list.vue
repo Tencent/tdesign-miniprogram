@@ -50,12 +50,14 @@
   </view>
 </template>
 <script>
-import ChatMessage from '../chat-message/chat-message.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
-import props from './props';
 
-import tools from '@tdesign/uniapp/common/utils.wxs';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
+import tools from '@tdesign/uniapp/common/utils.wxs';
+
+import ChatMessage from '../chat-message/chat-message.vue';
+
+import props from './props';
 
 
 const name = `${prefix}-chat-list`;
@@ -171,7 +173,7 @@ export default {
 </script>
 <style scoped src="./chat-list.css"></style>
 <style scoped>
-/* #ifdef H5 || APP-PLUS */
+/* #ifdef H5 || APP */
 .t-chat-list__content :deep(.uni-scroll-view-content) {
   display: flex;;
   flex-direction: column;

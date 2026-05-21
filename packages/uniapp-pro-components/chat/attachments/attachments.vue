@@ -130,14 +130,16 @@
   </view>
 </template>
 <script>
+import { prefix } from '@tdesign/uniapp/common/config';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
+import tools from '@tdesign/uniapp/common/utils.wxs';
 import tIcon from '@tdesign/uniapp/icon/icon.vue';
 import tLoading from '@tdesign/uniapp/loading/loading.vue';
-import { prefix } from '@tdesign/uniapp/common/config';
-import props from './props';
-import tools from '@tdesign/uniapp/common/utils.wxs';
-import { uniComponent } from '@tdesign/uniapp/common/src/index';
-import { imageStyle, getFileTypeClass, getImageMode } from './computed';
+
 import usingConfig from '../mixins/using-config';
+
+import { imageStyle, getFileTypeClass, getImageMode } from './computed';
+import props from './props';
 
 
 const componentName = 'attachments';

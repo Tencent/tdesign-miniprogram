@@ -13,3 +13,117 @@ module.exports.getWrapperAriaLabel = function (file) {
     return file.type === 'video' ? '视频' : '图像';
   }
 };
+
+module.exports.isImageType = function (file) {
+  if (file.type === 'image') return true;
+  if (file.url) {
+    var imageExts = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp', 'svg', 'tiff'];
+    var url = file.url.toLowerCase();
+    for (var i = 0; i < imageExts.length; i++) {
+      if (url.indexOf('.' + imageExts[i]) !== -1) return true;
+    }
+  }
+  return false;
+};
+
+function getFileExt(file) {
+  var name = file.name || '';
+  var url = file.url || '';
+  var ext = '';
+  var dotIndex = name.lastIndexOf('.');
+  if (dotIndex !== -1) {
+    ext = name.substring(dotIndex).toLowerCase();
+  }
+  if (ext === '' && url) {
+    var urlDotIndex = url.lastIndexOf('.');
+    if (urlDotIndex !== -1) {
+      var qIndex = url.indexOf('?', urlDotIndex);
+      if (qIndex !== -1) {
+        ext = url.substring(urlDotIndex, qIndex).toLowerCase();
+      } else {
+        ext = url.substring(urlDotIndex).toLowerCase();
+      }
+    }
+  }
+  return ext;
+}
+
+function getFileCategory(ext) {
+  if (ext === '.pdf') return 'pdf';
+  if (
+    ext === '.xlsx' ||
+    ext === '.xls' ||
+    ext === '.csv' ||
+    ext === '.xlc' ||
+    ext === '.xlm' ||
+    ext === '.xlt' ||
+    ext === '.xlw'
+  )
+    return 'excel';
+  if (ext === '.pptx' || ext === '.ppt' || ext === '.key') return 'ppt';
+  if (ext === '.docx' || ext === '.doc' || ext === '.document' || ext === '.wps' || ext === '.wdb' || ext === '.msword')
+    return 'word';
+  if (
+    ext === '.avi' ||
+    ext === '.mp4' ||
+    ext === '.wmv' ||
+    ext === '.mpg' ||
+    ext === '.mpeg' ||
+    ext === '.mov' ||
+    ext === '.rm' ||
+    ext === '.ram' ||
+    ext === '.swf' ||
+    ext === '.flv' ||
+    ext === '.rmvb' ||
+    ext === '.3gp' ||
+    ext === '.mp2' ||
+    ext === '.mp3' ||
+    ext === '.ogg' ||
+    ext === '.3gpp' ||
+    ext === '.ac3' ||
+    ext === '.au'
+  )
+    return 'media';
+  if (
+    ext === '.zip' ||
+    ext === '.rar' ||
+    ext === '.7z' ||
+    ext === '.tar' ||
+    ext === '.gz' ||
+    ext === '.bz2' ||
+    ext === '.xz'
+  )
+    return 'zip';
+  return 'other';
+}
+
+var FILE_CATEGORY_ICON_MAP = {
+  pdf: 'file-pdf-filled',
+  excel: 'file-excel-filled',
+  ppt: 'file-powerpoint-filled',
+  word: 'file-word-filled',
+  media: 'video-filled',
+  zip: 'file-zip-filled',
+  other: 'file-1',
+};
+
+module.exports.getFileTypeIcon = function (file) {
+  var ext = getFileExt(file);
+  var category = getFileCategory(ext);
+  return FILE_CATEGORY_ICON_MAP[category];
+};
+
+module.exports.getFileTypeIconColorClass = function (file, classPrefix) {
+  var ext = getFileExt(file);
+  var category = getFileCategory(ext);
+  return classPrefix + '__file-type--' + category;
+};
+
+module.exports.formatSize = function (size) {
+  if (size == null || size === undefined) return '';
+  var num = +size;
+  if (num < 1024) return num + 'B';
+  if (num < 1024 * 1024) return (num / 1024).toFixed(1) + 'KB';
+  if (num < 1024 * 1024 * 1024) return (num / (1024 * 1024)).toFixed(1) + 'MB';
+  return (num / (1024 * 1024 * 1024)).toFixed(1) + 'GB';
+};

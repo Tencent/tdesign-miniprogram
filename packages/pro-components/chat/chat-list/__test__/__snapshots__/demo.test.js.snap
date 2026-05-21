@@ -231,29 +231,28 @@ exports[`ChatList ChatList docs demo works fine 1`] = `
     <t-chat>
       <t-chat-message
         avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
-        chatContentProps="{{
-          Object {
-            "thinking": Object {
-              "collapsed": true,
-              "maxHeight": 100,
-            },
-          }
-        }}"
         chatId="key-1"
-        content="{{
-          Array [
-            Object {
-              "data": "欢迎使用TDesign文案写作助手，可以先上传你需要参考的文件，输入你要撰写的主题~",
-              "type": "text",
-            },
-          ]
-        }}"
         datetime=""
         name=""
         placement="left"
         role="assistant"
         bind:message-longpress="showPopover"
-      />
+      >
+        <wx-view
+          slot="content"
+        >
+          <t-chat-content
+            content="{{
+              Object {
+                "data": "欢迎使用TDesign文案写作助手，可以先上传你需要参考的文件，输入你要撰写的主题~",
+                "type": "text",
+              }
+            }}"
+            markdownProps=""
+            role="assistant"
+          />
+        </wx-view>
+      </t-chat-message>
       <wx-view
         slot="footer"
       >

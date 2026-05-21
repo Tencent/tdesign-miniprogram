@@ -45,14 +45,14 @@
 
 <script>
 
+import BadgeDemo from './badge/index.vue';
 import BaseDemo from './base/index.vue';
 import BorderDemo from './border/index.vue';
-import DescriptionDemo from './description/index.vue';
-import BadgeDemo from './badge/index.vue';
-import ScrollDemo from './scroll/index.vue';
-import MultipleDemo from './multiple/index.vue';
 import CardDemo from './card/index.vue';
+import DescriptionDemo from './description/index.vue';
 import IconGrid from './icon-grid/index.vue';
+import MultipleDemo from './multiple/index.vue';
+import ScrollDemo from './scroll/index.vue';
 
 export default {
   components: {

@@ -1,5 +1,5 @@
-import type { TransformEventHandlers, ExtractNonOnProps } from '../common/common';
 import type { TdCellGroupProps } from '../cell-group/type';
+import type { TransformEventHandlers, ExtractNonOnProps } from '../common/common';
 
 export type CellGroupProps = ExtractNonOnProps<TdCellGroupProps>;
 export type CellGroupEmits = TransformEventHandlers<TdCellGroupProps, true>;

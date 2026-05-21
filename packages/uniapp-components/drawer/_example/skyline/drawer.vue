@@ -50,9 +50,9 @@
 <script>
 
 import BaseDemo from '../base/index.vue';
-import TitleDemo from '../title/index.vue';
-import IconDrawer from '../icon-drawer/index.vue';
 import FooterDemo from '../footer/index.vue';
+import IconDrawer from '../icon-drawer/index.vue';
+import TitleDemo from '../title/index.vue';
 
 export default {
   components: {

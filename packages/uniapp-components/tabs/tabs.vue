@@ -132,18 +132,20 @@
   </view>
 </template>
 <script>
-import TSticky from '../sticky/sticky';
 import TBadge from '../badge/badge';
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
-import props from './props';
+
 import { prefix } from '../common/config';
-import touch from '../mixins/touch';
-import { getRect, uniqueFactory, coalesce, nextTick } from '../common/utils';
-import { getObserver } from '../common/wechat';
-import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import { getRect, uniqueFactory, coalesce, nextTick } from '../common/utils';
+import tools from '../common/utils.wxs';
+import { getObserver } from '../common/wechat';
+import TIcon from '../icon/icon';
+import touch from '../mixins/touch';
+import TSticky from '../sticky/sticky';
+
 import { animate, trackStyle } from './computed';
+import props from './props';
 
 const name = `${prefix}-tabs`;
 const getUniqueID = uniqueFactory('tabs');
@@ -475,8 +477,8 @@ export default {
       getIconCustomStyle(item) {
         return tools._style([
           {
-            fontSize: 'var(--td-tab-icon-size, 18px)',
-            marginRight: 'calc(var(--td-spacer, 8px) / 4)',
+            fontSize: 'var(--td-tab-icon-size, 36rpx)',
+            marginRight: 'calc(var(--td-spacer, 16rpx) / 4)',
           },
           item.icon.style || '',
         ]);

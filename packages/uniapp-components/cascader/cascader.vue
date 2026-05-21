@@ -132,18 +132,18 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import TPopup from '../popup/popup';
-import TTabs from '../tabs/tabs';
-import TTabPanel from '../tab-panel/tab-panel.vue';
-import TRadioGroup from '../radio-group/radio-group';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
 import { getRect, coalesce, nextTick } from '../common/utils';
-
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
 import usingConfig from '../mixins/using-config';
+import TPopup from '../popup/popup';
+import TRadioGroup from '../radio-group/radio-group';
+import TTabPanel from '../tab-panel/tab-panel.vue';
+import TTabs from '../tabs/tabs';
+
+import props from './props';
 
 
 const componentName = 'cascader';

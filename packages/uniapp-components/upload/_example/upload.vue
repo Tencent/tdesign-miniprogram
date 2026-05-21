@@ -80,11 +80,11 @@
 
 <script>
 
-import SingleDemo from './single/index.vue';
-import MultipleDemo from './multiple/index.vue';
-import StatusDemo from './status/index.vue';
-import MessageFile from './messageFile/index.vue';
 import DragDemo from './drag/index.vue';
+import MessageFile from './messageFile/index.vue';
+import MultipleDemo from './multiple/index.vue';
+import SingleDemo from './single/index.vue';
+import StatusDemo from './status/index.vue';
 export default {
   components: {
     SingleDemo,

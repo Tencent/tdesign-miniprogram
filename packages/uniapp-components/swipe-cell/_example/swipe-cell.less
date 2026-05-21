@@ -17,4 +17,6 @@
 
 :deep(.t-swipe-cell) {
     margin-bottom: 32rpx;
+    /* 横滑时只允许浏览器处理纵向手势，防止 H5 端页面上下抖动 */
+    touch-action: pan-y;
 }

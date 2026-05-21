@@ -52,13 +52,13 @@
 <script>
 
 import BaseDemo from './base/index.vue';
-import IconDemo from './iconDemo/index.vue';
-import SuffixIcon from './suffixIcon/index.vue';
-import EventDemo from './event/index.vue';
 import CustomDemo from './custom/index.vue';
-import ThemeDemo from './theme/index.vue';
-import ScrollingDemo from './scrolling/index.vue';
 import CustomizationDemo from './customization/index.vue';
+import EventDemo from './event/index.vue';
+import IconDemo from './iconDemo/index.vue';
+import ScrollingDemo from './scrolling/index.vue';
+import SuffixIcon from './suffixIcon/index.vue';
+import ThemeDemo from './theme/index.vue';
 export default {
   components: {
     BaseDemo,

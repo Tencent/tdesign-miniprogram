@@ -37,12 +37,15 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import transition from '../mixins/transition';
-import useCustomNavbar from '../mixins/using-custom-navbar';
+import { uniComponent } from '../common/src/index';
+
 import tools from '../common/utils.wxs';
+import transition from '../mixins/transition';
+
+import useCustomNavbar from '../mixins/using-custom-navbar';
+
+import props from './props';
 
 
 const name = `${prefix}-overlay`;

@@ -102,14 +102,17 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
 import TCell from '../cell/cell';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+
+
 import { getCharacterLength, nextTick } from '../common/utils';
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+
 import { highLight } from './computed.js';
+import props from './props';
 // import { getInnerMaxLen } from '../input/utils';
 
 const name = `${prefix}-search`;

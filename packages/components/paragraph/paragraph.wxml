@@ -1,0 +1,36 @@
+<wxs src="../common/utils.wxs" module="_" />
+<wxs src="./paragraph.wxs" module="_this" />
+
+<import src="./ellipsis.wxml" />
+
+<view
+  class="{{classPrefix}} {{prefix}}-class {{_this.wrapperClass(classPrefix, ellipsis)}}"
+  style="{{_._style([style, customStyle])}}"
+>
+  <view
+    wx:if="{{ellipsis}}"
+    class="{{classPrefix}}__ellipsis-content"
+    style="{{_this.ellipsisStyle(ellipsis, isExpanded)}}"
+  >
+    <text wx:if="{{content}}">{{content}}</text>
+    <slot wx:else />
+  </view>
+  <block wx:else>
+    <text wx:if="{{content}}">{{content}}</text>
+    <slot wx:else />
+  </block>
+
+  <!-- 展开/收起按钮 -->
+  <block wx:if="{{ellipsis && !isExpanded && ellipsis.expandable && ellipsis.suffix}}">
+    <view
+      class="{{classPrefix}}-ellipsis-symbol"
+      style="text-decoration: none; white-space: nowrap; flex: 1"
+      bind:tap="onExpand"
+    >
+      <slot name="suffix" />
+    </view>
+  </block>
+  <block wx:else>
+    <template is="ellipsis-toggle" data="{{ellipsis, isExpanded, classPrefix}}" />
+  </block>
+</view>

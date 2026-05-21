@@ -11,12 +11,16 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import tools from '../common/utils.wxs';
-import { getColStyles } from './computed.js';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+
+
+import tools from '../common/utils.wxs';
+
+import { getColStyles } from './computed.js';
+import props from './props';
+
 
 const name = `${prefix}-col`;
 

@@ -6,7 +6,12 @@
  * - packages/uniapp-components
  * - packages/uniapp-pro-components
  */
+const path = require('path');
+
 module.exports = function createUniappEslintConfig(rootDir) {
+  const packagesDir = path.resolve(rootDir, '..');
+  const uniappComponentsDir = path.join(packagesDir, 'uniapp-components');
+
   return {
     root: true,
     extends: ['eslint-config-light-vue3'],
@@ -26,6 +31,14 @@ module.exports = function createUniappEslintConfig(rootDir) {
 
       ecmaVersion: 'latest',
       extraFileExtensions: ['.vue'],
+    },
+    settings: {
+      'import/resolver': {
+        alias: {
+          map: [['@tdesign/uniapp', path.join(uniappComponentsDir, '')]],
+          extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.json', '.node'],
+        },
+      },
     },
     rules: {
       'vue/no-v-text-v-html-on-component': 0,

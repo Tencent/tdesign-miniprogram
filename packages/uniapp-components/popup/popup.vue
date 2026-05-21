@@ -67,15 +67,18 @@
   </view>
 </template>
 <script>
-import TOverlay from '../overlay/overlay';
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+
+
+import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
 import { transitionMixins } from '../mixins/transition';
 import useCustomNavbar from '../mixins/using-custom-navbar';
-import tools from '../common/utils.wxs';
+import TOverlay from '../overlay/overlay';
+
 import popup from './computed.js';
+import props from './props';
 
 delete props.visible;
 

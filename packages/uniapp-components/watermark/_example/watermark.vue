@@ -41,13 +41,13 @@
 
 <script>
 import BaseWatermark from './base/index.vue';
-import ImageWatermark from './image/index.vue';
 import GrayWatermark from './gray/index.vue';
+import ImageWatermark from './image/index.vue';
+import LayoutDemo from './layout/index.vue';
+import MoveImageWatermark from './move-image/index.vue';
+import MoveTextWatermark from './move-text/index.vue';
 import MultiLineWatermark from './multi-line/index.vue';
 import MultiLineGrayWatermark from './multi-line-gray/index.vue';
-import MoveTextWatermark from './move-text/index.vue';
-import MoveImageWatermark from './move-image/index.vue';
-import LayoutDemo from './layout/index.vue';
 
 export default {
   components: {

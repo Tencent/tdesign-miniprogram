@@ -216,19 +216,22 @@
   </t-popup>
 </template>
 <script>
-import TPopup from '../popup/popup';
-import TIcon from '../icon/icon';
 import TButton from '../button/button';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import { toCamel, coalesce, toPascal } from '../common/utils';
-import { isObject } from '../common/validator';
-import useCustomNavbar from '../mixins/using-custom-navbar';
-import tools from '../common/utils.wxs';
-import { getActionClass } from './computed.js';
+
 import { getFunctionalMixin } from '../common/functional/mixin';
+import { uniComponent } from '../common/src/index';
+import { toCamel, coalesce, toPascal } from '../common/utils';
+import tools from '../common/utils.wxs';
+import { isObject } from '../common/validator';
 import { canUseVirtualHost } from '../common/version';
+import TIcon from '../icon/icon';
+import useCustomNavbar from '../mixins/using-custom-navbar';
+import TPopup from '../popup/popup';
+
+import { getActionClass } from './computed.js';
+
+import props from './props';
 
 const name = `${prefix}-dialog`;
 

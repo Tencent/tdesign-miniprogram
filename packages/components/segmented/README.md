@@ -14,6 +14,7 @@ isComponent: true
 </div>
 
 
+<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-0%25-red" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -67,7 +68,7 @@ default-value | String / Number | undefined | 当前选中的值。非受控属�
 
 名称 | 参数 | 描述
 -- | -- | --
-change | `(value: string \| number, selectedOption: SegmentedItem)` | 选项值发生变化时触发
+change | `(detail: { value: string \| number, selectedOption: SegmentedItem })` | 选项值发生变化时触发
 
 ### Segmented External Classes
 

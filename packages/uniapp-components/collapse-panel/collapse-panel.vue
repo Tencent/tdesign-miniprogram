@@ -30,6 +30,7 @@
         :right-icon-style="rightIconCustomStyle"
       >
         <template
+          v-if="$slots['header-left-icon']"
           #left-icon
         >
           <slot
@@ -37,6 +38,7 @@
           />
         </template>
         <template
+          v-if="$slots['header']"
           #title
         >
           <slot
@@ -44,6 +46,7 @@
           />
         </template>
         <template
+          v-if="$slots['header-right-content']"
           #note
         >
           <slot
@@ -51,6 +54,7 @@
           />
         </template>
         <template
+          v-if="$slots['expand-icon']"
           #right-icon
         >
           <slot
@@ -74,15 +78,16 @@
 </template>
 <script>
 import TCell from '../cell/cell';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
 import { getRect } from '../common/utils';
 import tools from '../common/utils.wxs';
-import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 
+import props from './props';
 
 const name = `${prefix}-collapse-panel`;
+
 const DISABLED_COLOR = 'var(--td-text-color-disabled, var(--td-font-gray-4, rgba(0, 0, 0, .26)))';
 
 export default {
@@ -154,7 +159,11 @@ export default {
 
         if (expanded === this.expanded) return;
 
-        this.expanded = expanded;
+        // 防止 innerAfterLinked 中调用 updateExpanded 时机过早导致图标状态异常
+        this.$nextTick(() => {
+          this.expanded = expanded;
+        });
+
         this.updateStyle(expanded);
       },
 
@@ -177,7 +186,7 @@ export default {
             } else {
               let doAnimation = false;
 
-              // #ifdef H5 || APP-PLUS
+              // #ifdef H5 || APP
               animation
                 .height(height)
                 .top(1)
@@ -223,7 +232,7 @@ export default {
 
 
         let interval = 0;
-        // #ifdef APP-PLUS
+        // #ifdef APP
         interval = 33;
         // #endif
         setTimeout(() => {

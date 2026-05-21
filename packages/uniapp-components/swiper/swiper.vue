@@ -67,14 +67,16 @@
   </view>
 </template>
 <script>
-import TSwiperNav from '../swiper-nav/swiper-nav';
-import TImage from '../image/image';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import tools from '../common/utils.wxs';
-import { isPrev, isNext, getImageClass } from './computed.js';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import tools from '../common/utils.wxs';
+import TImage from '../image/image';
+import TSwiperNav from '../swiper-nav/swiper-nav';
+
+import { isPrev, isNext, getImageClass } from './computed.js';
+import props from './props';
+
 
 const name = `${prefix}-swiper`;
 

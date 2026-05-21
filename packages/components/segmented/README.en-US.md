@@ -18,7 +18,7 @@ default-value | String / Number | undefined | uncontrolled property | N
 
 name | params | description
 -- | -- | --
-change | `(value: string \| number, selectedOption: SegmentedItem)` | \-
+change | `(detail: { value: string \| number, selectedOption: SegmentedItem })` | \-
 
 ### Segmented External Classes
 
@@ -31,7 +31,7 @@ t-class-thumb | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-segmented-bg-color | @bg-color-component-disabled | -
 --td-segmented-item-active-bg | @bg-color-container | -

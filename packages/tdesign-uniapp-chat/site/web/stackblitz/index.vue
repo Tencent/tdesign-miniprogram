@@ -77,6 +77,7 @@
 
 <script>
 import { defineComponent, ref } from 'vue';
+
 import {
   HTML_CONTENT,
   MAN_JS_CONTENT,

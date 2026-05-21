@@ -1,5 +1,5 @@
-import { MessageType } from '../message/message.interface';
 import { getInstance } from '../common/utils';
+import { MessageType } from '../message/message.interface';
 
 
 const showMessage = function (options, theme = MessageType.info) {

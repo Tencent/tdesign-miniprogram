@@ -5,6 +5,19 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.15.0 `2026-05-21`
+
+### 🚀 Features
+
+- `ChatMarkdown`: 新增 `streaming` 属性，表示流式输出配置项目，可用于控制尾部光标的显示与隐藏 @mimaoxiao ([#4390](https://github.com/Tencent/tdesign-miniprogram/pull/4390))
+- `Typography`: 新增 `Typography` 排版组件 @anlyyao ([#4428](https://github.com/Tencent/tdesign-miniprogram/pull/4428))
+- `Upload`: 新增 `theme` 属性，支持列表布局 @anlyyao ([#4454](https://github.com/Tencent/tdesign-miniprogram/pull/4454))
+
+### 🐞 Bug Fixes
+
+- `DropdownMenu`: 修复 `label` 回显错误问题 @novlan1 ([#4413](https://github.com/Tencent/tdesign-miniprogram/pull/4413))
+- `Upload`: 修复禁用态文件样式错误（禁用态下移除操作按钮）@anlyyao ([#4454](https://github.com/Tencent/tdesign-miniprogram/pull/4454))
+
 ## 🌈 1.14.0 `2026-04-24`
 
 ### 🚀 Features

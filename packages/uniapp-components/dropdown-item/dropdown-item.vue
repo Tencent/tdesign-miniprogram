@@ -117,21 +117,24 @@
 </template>
 <script>
 import TButton from '../button/button';
-import TRadio from '../radio/radio';
-import TRadioGroup from '../radio-group/radio-group';
 import TCheckbox from '../checkbox/checkbox';
 import TCheckboxGroup from '../checkbox-group/checkbox-group';
-import TPopup from '../popup/popup';
 
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import { coalesce, getRect, getWindowInfo } from '../common/utils';
-import props from './props';
-import menuProps from '../dropdown-menu/props';
-import tools from '../common/utils.wxs';
-import { getStyles } from './computed';
+
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import { coalesce, getRect, getWindowInfo } from '../common/utils';
+import tools from '../common/utils.wxs';
 import { canUseVirtualHost } from '../common/version';
+import menuProps from '../dropdown-menu/props';
+import TPopup from '../popup/popup';
+import TRadio from '../radio/radio';
+import TRadioGroup from '../radio-group/radio-group';
+
+import { getStyles } from './computed';
+
+import props from './props';
 
 
 const name = `${prefix}-dropdown-item`;
@@ -224,7 +227,7 @@ export default {
             boxSizing: 'border-box',
 
             display: 'grid',
-            gridGap: '0px',
+            gridGap: '0',
 
             gridTemplateColumns: `repeat(${this.optionsColumns}, 1fr)`,
           },
@@ -238,10 +241,10 @@ export default {
             boxSizing: 'border-box',
 
             display: 'grid',
-            gridGap: '12px',
+            gridGap: '24rpx',
 
             gridTemplateColumns: `repeat(${this.optionsColumns}, 1fr)`,
-            padding: '16px',
+            padding: '32rpx',
           },
         ]);
       },

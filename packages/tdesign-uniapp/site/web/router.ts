@@ -3,7 +3,9 @@ import {
   createRouter,
   createWebHistory,
   type RouterOptions } from 'vue-router';
+
 import config from '../docs.config';
+
 import { sortDocs, type DocType } from './utils';
 
 const docs = sortDocs(config.docs as unknown as DocType[]);
