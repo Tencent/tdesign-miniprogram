@@ -9,9 +9,10 @@ jobs:
   mark-duplicate:
     runs-on: ubuntu-latest
     steps:
-      - uses: wow-actions/auto-comment@v1
+      - uses: TDesignOteam/workflows/actions/issues-helper@main
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          issuesOpened: |
-            👋 @{{ author }}，感谢给 TDesign 提出了 issue。
+          actions: 'create-comment'
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            👋 @{{ github.event.issue.user.login }}，感谢给 TDesign 提出了 issue。
             请根据 issue 模版确保背景信息的完善，我们将调查并尽快回复你。

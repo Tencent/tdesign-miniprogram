@@ -11,9 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v3
+        uses: TDesignOteam/workflows/actions/issues-helper@main
         with:
-          actions: "mark-duplicate"
+          actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
-          duplicate-labels: "duplicate"
+          duplicate-labels: 'duplicate'
           close-issue: true
