@@ -8,7 +8,7 @@ jobs:
     if: contains(fromJSON('["easy", "middle", "hard"]'), github.event.label.name)
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
       - name: Get token
         id: token
         run: |
@@ -41,10 +41,22 @@ jobs:
             duration: ${{ steps.token.outputs.duration }}
             deadline: ${{ steps.token.outputs.deadline }}
       - name: Update issue
-        uses: actions-cool/issues-helper@v3
+        uses: actions/github-script@v7
+        env:
+          APPEND_CONTENT: ${{ steps.template.outputs.result }}
         with:
-          actions: 'update-issue'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.issue.number }}
-          body: ${{ steps.template.outputs.result }}
-          update-mode: 'append'
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const issue = await github.rest.issues.get({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number
+            });
+            const currentBody = issue.data.body || '';
+            const appendContent = process.env.APPEND_CONTENT;
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: currentBody + '\n' + appendContent
+            });

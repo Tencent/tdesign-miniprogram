@@ -11,9 +11,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v3
+        uses: actions/github-script@v7
         with:
-          actions: "mark-duplicate"
-          token: ${{ secrets.GITHUB_TOKEN }}
-          duplicate-labels: "duplicate"
-          close-issue: true
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const body = context.payload.comment.body || '';
+            const match = body.match(/[Dd]uplicate\s+of\s+#(\d+)/);
+            if (!match) return;
+
+            // Only allow collaborators to mark duplicates
+            const authorAssociation = context.payload.comment.author_association;
+            const allowedRoles = ['COLLABORATOR', 'MEMBER', 'OWNER'];
+            if (!allowedRoles.includes(authorAssociation)) {
+              core.info(`Skipping: commenter role "${authorAssociation}" is not allowed to mark duplicates.`);
+              return;
+            }
+
+            // Add 'duplicate' label
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              labels: ['duplicate']
+            });
+            // Close the issue
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            });
