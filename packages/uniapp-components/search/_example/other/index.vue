@@ -1,7 +1,7 @@
 <template>
   <view class="example-search">
     <t-search
-      v-model="value"
+      v-model:value="value"
       center
       placeholder="搜索预设文案"
       @change="onChange"
