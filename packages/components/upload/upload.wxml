@@ -2,121 +2,217 @@
 <wxs src="./upload.wxs" module="_this" />
 <wxs src="./drag.wxs" module="handler" />
 
-<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class">
-  <t-grid
-    gutter="{{gutter}}"
-    border="{{false}}"
-    align="center"
-    column="{{column}}"
-    style="{{draggable? 'overflow: visible' : ''}}"
+<!-- ========== list-item 公共模板 ========== -->
+<template name="list-item-content">
+  <!-- 左侧图标/缩略图 -->
+  <block wx:if="{{file.status == 'loading'}}">
+    <t-icon t-class="{{classPrefix}}__list-item-loading" name="loading" size="48rpx" aria-hidden />
+  </block>
+  <block wx:elif="{{file.status == 'failed' || file.status == 'reload'}}">
+    <t-icon t-class="{{classPrefix}}__list-item-error-icon" name="error-circle-filled" aria-hidden />
+  </block>
+  <block wx:elif="{{_this.isImageType(file) && file.url}}">
+    <view style="position: relative; flex-shrink: 0">
+      <t-image
+        t-class="{{classPrefix}}__list-item-thumbnail"
+        src="{{file.thumb || file.url}}"
+        mode="{{imageProps && imageProps.mode || 'aspectFill'}}"
+        shape="round"
+      />
+      <view wx:if="{{disabled}}" class="{{classPrefix}}__disabled-mask" />
+    </view>
+  </block>
+  <block wx:else>
+    <view class="{{classPrefix}}__list-item-icon">
+      <t-icon
+        t-class="{{classPrefix}}__file-type {{_this.getFileTypeIconColorClass(file, classPrefix)}}"
+        name="{{_this.getFileTypeIcon(file)}}"
+      />
+    </view>
+  </block>
+  <!-- 文件名与副文本 -->
+  <view class="{{classPrefix}}__list-item-content">
+    <view class="{{classPrefix}}__list-item-name">{{file.name || ''}}</view>
+    <view class="{{classPrefix}}__list-item-size">
+      {{file.status == 'loading' ? (file.percent ? globalConfig.progress.uploadingText + ' ' + file.percent + '%' :
+      globalConfig.progress.uploadingText) : file.status == 'failed' || file.status == 'reload' ?
+      globalConfig.progress.failText : _this.formatSize(file.size)}}
+    </view>
+  </view>
+  <!-- 删除按钮 -->
+  <view
+    wx:if="{{_.isBoolean(file.removeBtn) ? file.removeBtn : removeBtn}}"
+    class="{{classPrefix}}__list-item-action"
+    data-index="{{index}}"
+    aria-role="button"
+    aria-label="删除"
+    catchtap="onDelete"
   >
-    <block wx:if="{{!dragLayout}}">
-      <!-- 图片/视频 -->
-      <t-grid-item
-        wx:for="{{customFiles}}"
-        wx:key="url"
-        wx:for-item="file"
-        t-class="{{classPrefix}}__grid {{classPrefix}}__grid-file"
-        t-class-content="{{classPrefix}}__grid-content"
-        aria-role="presentation"
-      >
-        <view
-          class="{{classPrefix}}__wrapper {{disabled? classPrefix + '__wrapper--disabled' : '' }}"
-          style="{{gridItemStyle}}"
-          aria-role="{{ariaRole || _this.getWrapperAriaRole(file)}}"
-          aria-label="{{ariaLabel || _this.getWrapperAriaLabel(file)}}"
+    <t-icon t-class="{{classPrefix}}__list-item-delete" name="delete" />
+  </view>
+</template>
+
+<!-- ========== grid-item 公共模板 ========== -->
+<template name="grid-item-content">
+  <view
+    class="{{classPrefix}}__wrapper {{!_this.isImageType(file) && file.type !== 'video' ? classPrefix + '__wrapper--file' : ''}}"
+    style="{{gridItemStyle}}"
+    aria-role="{{ariaRole || _this.getWrapperAriaRole(file)}}"
+    aria-label="{{ariaLabel || _this.getWrapperAriaLabel(file)}}"
+  >
+    <!-- 图片 -->
+    <t-image
+      wx:if="{{_this.isImageType(file)}}"
+      data-file="{{file}}"
+      data-index="{{index}}"
+      t-class="{{classPrefix}}__thumbnail"
+      style="{{imageProps && imageProps.style || ''}}"
+      src="{{ file.thumb || file.url }}"
+      mode="{{imageProps && imageProps.mode || 'aspectFill'}}"
+      error="{{imageProps && imageProps.error || 'default'}}"
+      lazy="{{imageProps && imageProps.lazy || false}}"
+      loading="{{imageProps && imageProps.loading || 'default'}}"
+      shape="{{imageProps && imageProps.shape || 'round'}}"
+      webp="{{imageProps && imageProps.webp || false}}"
+      showMenuByLongpress="{{imageProps && imageProps.showMenuByLongpress || false}}"
+      bind:tap="onPreview"
+    />
+    <!-- 视频 -->
+    <video
+      wx:elif="{{file.type === 'video'}}"
+      class="{{classPrefix}}__thumbnail"
+      src="{{file.url}}"
+      poster="{{ file.thumb }}"
+      controls
+      autoplay="{{false}}"
+      objectFit="contain"
+      data-file="{{file}}"
+      data-index="{{index}}"
+      bind:tap="onPreview"
+    />
+    <!-- 非图片文件：上传成功时显示文件图标 + 文件名 -->
+    <view
+      wx:elif="{{!file.status || file.status == 'done'}}"
+      class="{{classPrefix}}__file-content"
+      data-file="{{file}}"
+      data-index="{{index}}"
+      bind:tap="onFileClick"
+    >
+      <view class="{{classPrefix}}__file-icon">
+        <t-icon
+          t-class="{{classPrefix}}__file-type {{_this.getFileTypeIconColorClass(file, classPrefix)}}"
+          name="{{_this.getFileTypeIcon(file)}}"
+        />
+      </view>
+      <view class="{{classPrefix}}__file-name">{{file.name || ''}}</view>
+    </view>
+
+    <!-- 非图片文件：上传中/失败/重试 -->
+    <view
+      wx:if="{{!_this.isImageType(file) && file.type !== 'video' && file.status && file.status != 'done'}}"
+      class="{{classPrefix}}__progress-mask {{classPrefix}}__progress-mask--file"
+      data-index="{{index}}"
+      data-file="{{file}}"
+      bind:tap="onFileClick"
+    >
+      <block wx:if="{{file.status == 'loading'}}">
+        <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="48rpx" aria-hidden />
+        <view class="{{classPrefix}}__progress-text"
+          >{{file.percent ? file.percent + '%' : globalConfig.progress.uploadingText}}</view
         >
-          <t-image
-            wx:if="{{file.type !== 'video'}}"
-            data-file="{{file}}"
-            data-index="{{index}}"
-            t-class="{{classPrefix}}__thumbnail"
-            style="{{imageProps && imageProps.style || ''}}"
-            src="{{ file.thumb || file.url }}"
-            mode="{{imageProps && imageProps.mode || 'aspectFill'}}"
-            error="{{imageProps && imageProps.error || 'default'}}"
-            lazy="{{imageProps && imageProps.lazy || false}}"
-            loading="{{imageProps && imageProps.loading || 'default'}}"
-            shape="{{imageProps && imageProps.shape || 'round'}}"
-            webp="{{imageProps && imageProps.webp || false}}"
-            showMenuByLongpress="{{imageProps && imageProps.showMenuByLongpress || false}}"
-            bind:tap="onPreview"
-          />
-          <video
-            wx:if="{{file.type === 'video'}}"
-            class="{{classPrefix}}__thumbnail"
-            src="{{file.url}}"
-            poster="{{ file.thumb }}"
-            controls
-            autoplay="{{false}}"
-            objectFit="contain"
-            data-file="{{file}}"
-            data-index="{{index}}"
-            bind:tap="onPreview"
-          />
-          <!-- 失败重试 -->
-          <view
-            wx:if="{{file.status && file.status != 'done'}}"
-            class="{{classPrefix}}__progress-mask"
-            data-index="{{index}}"
-            data-file="{{file}}"
-            bind:tap="onFileClick"
-          >
-            <block wx:if="{{file.status == 'loading'}}">
-              <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="48rpx" aria-hidden />
-              <view class="{{classPrefix}}__progress-text"
-                >{{file.percent ? file.percent + '%' : globalConfig.progress.uploadingText}}</view
-              >
-            </block>
-            <t-icon wx:else name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}" size="48rpx" aria-hidden />
-            <view wx:if="{{file.status == 'reload' || file.status == 'failed'}}" class="{{classPrefix}}__progress-text">
-              {{file.status == 'reload' ? globalConfig.progress.reloadText : globalConfig.progress.failText}}
-            </view>
-          </view>
+      </block>
+      <t-icon wx:else name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}" size="48rpx" aria-hidden />
+      <view wx:if="{{file.status == 'reload' || file.status == 'failed'}}" class="{{classPrefix}}__progress-text">
+        {{file.status == 'reload' ? globalConfig.progress.reloadText : globalConfig.progress.failText}}
+      </view>
+    </view>
 
-          <!-- 删除 -->
-          <view
-            wx:if="{{ _.isBoolean(file.removeBtn) ? file.removeBtn : removeBtn}}"
-            class="{{classPrefix}}__close-btn hotspot-expanded"
-            data-index="{{index}}"
-            aria-role="button"
-            aria-label="删除"
-            bindtap="onDelete"
-          >
-            <t-icon name="close" size="32rpx" color="#fff" />
-          </view>
-        </view>
-      </t-grid-item>
+    <!-- 图片/视频：失败重试遮罩 -->
+    <view
+      wx:if="{{(_this.isImageType(file) || file.type === 'video') && file.status && file.status != 'done'}}"
+      class="{{classPrefix}}__progress-mask"
+      data-index="{{index}}"
+      data-file="{{file}}"
+      bind:tap="onFileClick"
+    >
+      <block wx:if="{{file.status == 'loading'}}">
+        <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="48rpx" aria-hidden />
+        <view class="{{classPrefix}}__progress-text"
+          >{{file.percent ? file.percent + '%' : globalConfig.progress.uploadingText}}</view
+        >
+      </block>
+      <t-icon wx:else name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}" size="48rpx" aria-hidden />
+      <view wx:if="{{file.status == 'reload' || file.status == 'failed'}}" class="{{classPrefix}}__progress-text">
+        {{file.status == 'reload' ? globalConfig.progress.reloadText : globalConfig.progress.failText}}
+      </view>
+    </view>
 
-      <!-- 添加 -->
-      <t-grid-item
-        wx:if="{{ addBtn && customLimit > 0}}"
-        t-class="{{classPrefix}}__grid"
-        t-class-content="{{classPrefix}}__grid-content"
-        aria-label="上传"
-        bindclick="onAddTap"
+    <!-- 禁用遮罩：图片/视频且非 loading/失败时显示 -->
+    <view
+      wx:if="{{disabled && (_this.isImageType(file) || file.type === 'video') && file.status !== 'loading' && file.status !== 'failed' && file.status !== 'reload'}}"
+      class="{{classPrefix}}__disabled-mask"
+    />
+
+    <!-- 删除 -->
+    <view
+      wx:if="{{ _.isBoolean(file.removeBtn) ? file.removeBtn : removeBtn}}"
+      class="{{classPrefix}}__close-btn hotspot-expanded"
+      data-index="{{index}}"
+      aria-role="button"
+      aria-label="删除"
+      bindtap="onDelete"
+    >
+      <t-icon name="close" size="32rpx" color="#fff" />
+    </view>
+  </view>
+</template>
+
+<view
+  style="{{_._style([style, customStyle])}}"
+  class="{{classPrefix}} {{classPrefix}}--{{theme || 'grid'}} {{disabled ? classPrefix + '--disabled' : ''}} class {{prefix}}-class"
+>
+  <!-- ========== list 布局 ========== -->
+  <block wx:if="{{theme === 'list'}}">
+    <!-- 上传触发按钮 -->
+    <view wx:if="{{addBtn && customLimit > 0}}" class="{{classPrefix}}__list-trigger" bindtap="onAddTap">
+      <slot name="add-content" />
+      <block wx:if="{{addContent}}">{{addContent}}</block>
+      <t-button wx:else theme="primary" size="medium" disabled="{{disabled}}" icon="upload" bindtap="onAddTap"
+        >上传</t-button
       >
-        <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
-          <slot name="add-content" />
-          <block wx:if="{{addContent}}">{{addContent}}</block>
-          <view wx:else class="{{classPrefix}}__add-icon {{disabled? classPrefix + '__add-icon--disabled' : '' }}">
-            <t-icon name="add" />
-          </view>
+    </view>
+    <!-- 文件列表（非拖拽模式） -->
+    <block wx:if="{{!dragLayout}}">
+      <view wx:if="{{customFiles.length > 0}}" class="{{classPrefix}}__list">
+        <view
+          wx:for="{{customFiles}}"
+          wx:key="url"
+          wx:for-item="file"
+          class="{{classPrefix}}__list-item {{file.status == 'failed' || file.status == 'reload' ? classPrefix + '__list-item--fail' : ''}} {{file.status == 'loading' ? classPrefix + '__list-item--progress' : ''}}"
+          data-file="{{file}}"
+          data-index="{{index}}"
+          bind:tap="onPreview"
+        >
+          <template
+            is="list-item-content"
+            data="{{file, index, classPrefix, disabled, imageProps, removeBtn, globalConfig}}"
+          />
         </view>
-      </t-grid-item>
+      </view>
     </block>
+    <!-- 文件列表（拖拽模式） -->
     <block wx:else>
       <view
-        class="{{classPrefix}}__drag"
+        class="{{classPrefix}}__list-drag"
         list="{{dragList}}"
-        style="{{dragWrapStyle}};"
+        style="{{dragWrapStyle}}"
         dragBaseData="{{dragBaseData}}"
         change:list="{{handler.listObserver}}"
         change:dragBaseData="{{handler.baseDataObserver}}"
       >
         <view
-          class="{{classPrefix}}__drag-item"
-          style="width: {{100 / column}}%; --td-upload-drag-transition-duration: {{transition.duration}}ms; --td-upload-drag-transition-timing-function: {{transition.timingFunction}}"
+          class="{{classPrefix}}__list-drag-item"
+          style="--td-upload-drag-transition-duration: {{transition.duration}}ms; --td-upload-drag-transition-timing-function: {{transition.timingFunction}}"
           wx:for="{{customFiles}}"
           wx:key="url"
           wx:for-item="file"
@@ -125,109 +221,120 @@
           catch:touchmove="{{dragging ? handler.touchMove : ''}}"
           catch:touchend="{{dragging ? handler.touchEnd : ''}}"
         >
-          <!-- 图片/视频 -->
-          <t-grid-item
-            t-class="{{classPrefix}}__grid {{classPrefix}}__grid-file"
-            t-class-content="{{classPrefix}}__grid-content"
-            aria-role="presentation"
-            style="width: 100%"
+          <view
+            class="{{classPrefix}}__list-item {{file.status == 'failed' || file.status == 'reload' ? classPrefix + '__list-item--fail' : ''}} {{file.status == 'loading' ? classPrefix + '__list-item--progress' : ''}}"
+            data-file="{{file}}"
+            data-index="{{index}}"
+            bind:tap="onPreview"
           >
-            <view
-              class="{{classPrefix}}__wrapper {{disabled? classPrefix + '__wrapper--disabled' : '' }}"
-              style="{{gridItemStyle}};"
-              aria-role="{{ariaRole || _this.getWrapperAriaRole(file)}}"
-              aria-label="{{ariaLabel || _this.getWrapperAriaLabel(file)}}"
-            >
-              <t-image
-                wx:if="{{file.type !== 'video'}}"
-                data-file="{{file}}"
-                data-index="{{index}}"
-                t-class="{{classPrefix}}__thumbnail"
-                style="{{imageProps && imageProps.style || ''}}"
-                src="{{ file.thumb || file.url }}"
-                mode="{{imageProps && imageProps.mode || 'aspectFill'}}"
-                error="{{imageProps && imageProps.error || 'default'}}"
-                lazy="{{imageProps && imageProps.lazy || false}}"
-                loading="{{imageProps && imageProps.loading || 'default'}}"
-                shape="{{imageProps && imageProps.shape || 'round'}}"
-                webp="{{imageProps && imageProps.webp || false}}"
-                showMenuByLongpress="{{imageProps && imageProps.showMenuByLongpress || false}}"
-                bind:tap="onPreview"
-              />
-              <video
-                wx:if="{{file.type === 'video'}}"
-                class="{{classPrefix}}__thumbnail"
-                src="{{file.url}}"
-                poster="{{ file.thumb }}"
-                controls
-                autoplay="{{false}}"
-                objectFit="contain"
-                data-file="{{file}}"
-                data-index="{{index}}"
-                bind:tap="onPreview"
-              />
-              <!-- 失败重试 -->
-              <view
-                wx:if="{{file.status && file.status != 'done'}}"
-                class="{{classPrefix}}__progress-mask"
-                data-index="{{index}}"
-                data-file="{{file}}"
-                bind:tap="onFileClick"
-              >
-                <block wx:if="{{file.status == 'loading'}}">
-                  <t-icon t-class="{{classPrefix}}__progress-loading" name="loading" size="48rpx" aria-hidden />
-                  <view class="{{classPrefix}}__progress-text"
-                    >{{file.percent ? file.percent + '%' : globalConfig.progress.uploadingText}}</view
-                  >
-                </block>
-                <t-icon
-                  wx:else
-                  name="{{file.status == 'reload' ? 'refresh' : 'close-circle'}}"
-                  size="48rpx"
-                  aria-hidden
-                />
-                <view
-                  wx:if="{{file.status == 'reload' || file.status == 'failed'}}"
-                  class="{{classPrefix}}__progress-text"
-                >
-                  {{file.status == 'reload' ? globalConfig.progress.reloadText : globalConfig.progress.failText}}
-                </view>
-              </view>
-
-              <!-- 删除 -->
-              <view
-                wx:if="{{ _.isBoolean(file.removeBtn) ? file.removeBtn : removeBtn}}"
-                class="{{classPrefix}}__close-btn hotspot-expanded"
-                data-index="{{index}}"
-                data-url="{{file.url}}"
-                aria-role="button"
-                aria-label="删除"
-                bindtap="onDelete"
-              >
-                <t-icon name="close" size="32rpx" color="#fff" />
-              </view>
-            </view>
-          </t-grid-item>
-        </view>
-        <!-- 添加 -->
-        <view wx:if="{{addBtn && customLimit > 0}}" class="{{classPrefix}}__drag-item" style="width: {{100 / column}}%">
-          <t-grid-item
-            t-class="{{classPrefix}}__grid"
-            t-class-content="{{classPrefix}}__grid-content"
-            aria-label="上传"
-            style="width: 100%"
-            bindclick="onAddTap"
-          >
-            <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
-              <slot name="add-content" />
-              <block wx:if="{{addContent}}">{{addContent}}</block>
-              <view wx:else class="{{classPrefix}}__add-icon {{disabled? classPrefix + '__add-icon--disabled' : '' }}">
-                <t-icon name="add" />
-              </view>
-            </view>
-          </t-grid-item>
+            <template
+              is="list-item-content"
+              data="{{file, index, classPrefix, disabled, imageProps, removeBtn, globalConfig}}"
+            />
+          </view>
         </view>
       </view>
     </block>
-  </t-grid>
+  </block>
+
+  <!-- ========== grid 布局（默认） ========== -->
+  <block wx:else>
+    <t-grid
+      gutter="{{gutter}}"
+      border="{{false}}"
+      align="center"
+      column="{{column}}"
+      style="{{draggable? 'overflow: visible' : ''}}"
+    >
+      <block wx:if="{{!dragLayout}}">
+        <!-- 图片/视频/文件 -->
+        <t-grid-item
+          wx:for="{{customFiles}}"
+          wx:key="url"
+          wx:for-item="file"
+          t-class="{{classPrefix}}__grid {{classPrefix}}__grid-file"
+          t-class-content="{{classPrefix}}__grid-content"
+          aria-role="presentation"
+        >
+          <template
+            is="grid-item-content"
+            data="{{file, index, classPrefix, disabled, gridItemStyle, ariaRole, ariaLabel, imageProps, removeBtn, globalConfig}}"
+          />
+        </t-grid-item>
+
+        <!-- 添加 -->
+        <t-grid-item
+          wx:if="{{ addBtn && customLimit > 0}}"
+          t-class="{{classPrefix}}__grid"
+          t-class-content="{{classPrefix}}__grid-content"
+          aria-label="上传"
+          bindclick="onAddTap"
+        >
+          <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
+            <slot name="add-content" />
+            <block wx:if="{{addContent}}">{{addContent}}</block>
+            <view wx:else class="{{classPrefix}}__add-icon">
+              <t-icon name="add" />
+            </view>
+          </view>
+        </t-grid-item>
+      </block>
+      <block wx:else>
+        <view
+          class="{{classPrefix}}__drag"
+          list="{{dragList}}"
+          style="{{dragWrapStyle}}"
+          dragBaseData="{{dragBaseData}}"
+          change:list="{{handler.listObserver}}"
+          change:dragBaseData="{{handler.baseDataObserver}}"
+        >
+          <view
+            class="{{classPrefix}}__drag-item"
+            style="width: {{100 / column}}%; --td-upload-drag-transition-duration: {{transition.duration}}ms; --td-upload-drag-transition-timing-function: {{transition.timingFunction}}"
+            wx:for="{{customFiles}}"
+            wx:key="url"
+            wx:for-item="file"
+            data-index="{{index}}"
+            bind:longpress="{{handler.longPress}}"
+            catch:touchmove="{{dragging ? handler.touchMove : ''}}"
+            catch:touchend="{{dragging ? handler.touchEnd : ''}}"
+          >
+            <t-grid-item
+              t-class="{{classPrefix}}__grid {{classPrefix}}__grid-file"
+              t-class-content="{{classPrefix}}__grid-content"
+              aria-role="presentation"
+              style="width: 100%"
+            >
+              <template
+                is="grid-item-content"
+                data="{{file, index, classPrefix, disabled, gridItemStyle, ariaRole, ariaLabel, imageProps, removeBtn, globalConfig}}"
+              />
+            </t-grid-item>
+          </view>
+          <!-- 添加 -->
+          <view
+            wx:if="{{addBtn && customLimit > 0}}"
+            class="{{classPrefix}}__drag-item"
+            style="width: {{100 / column}}%"
+          >
+            <t-grid-item
+              t-class="{{classPrefix}}__grid"
+              t-class-content="{{classPrefix}}__grid-content"
+              aria-label="上传"
+              style="width: 100%"
+              bindclick="onAddTap"
+            >
+              <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
+                <slot name="add-content" />
+                <block wx:if="{{addContent}}">{{addContent}}</block>
+                <view wx:else class="{{classPrefix}}__add-icon">
+                  <t-icon name="add" />
+                </view>
+              </view>
+            </t-grid-item>
+          </view>
+        </view>
+      </block>
+    </t-grid>
+  </block>
 </view>

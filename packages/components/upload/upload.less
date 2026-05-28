@@ -6,7 +6,8 @@
 @upload-radius: var(--td-upload-radius, @radius-default);
 @upload-add-icon-size: var(--td-upload-add-icon-size, 56rpx);
 @upload-add-icon-disabled-color: var(--td-upload-add-icon-disabled-color, @text-color-disabled);
-@upload-disabled-mask: var(--td-upload-disabled-mask, rgba(0, 0, 0, 0.6));
+@upload-disabled-mask: var(--td-upload-disabled-mask, @mask-disabled);
+@upload-background: var(--td-upload-background, @upload-add-bg-color);
 @upload-drag-z-index: var(--td-upload-drag-z-index, 999);
 
 .@{prefix}-upload {
@@ -32,11 +33,6 @@
     color: @upload-add-color;
     border-radius: @upload-radius;
 
-    &--disabled {
-      background-color: @upload-add-disabled-bg-color;
-      color: @upload-add-icon-disabled-color;
-    }
-
     &:only-child {
       display: flex;
     }
@@ -54,15 +50,63 @@
     border-radius: @upload-radius;
     overflow: hidden;
 
-    &--disabled::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: @upload-disabled-mask;
-      z-index: 1;
+    &--file {
+      background-color: @upload-background;
+    }
+  }
+
+  &__file-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 16rpx 8rpx;
+    box-sizing: border-box;
+  }
+
+  &__file-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 8rpx;
+  }
+
+  &__file-name {
+    width: 100%;
+    font: @font-body-small;
+    color: @text-color-secondary;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    padding: 0 4rpx;
+    box-sizing: border-box;
+  }
+
+  &__file-type {
+    font-size: 48rpx;
+
+    &--pdf,
+    &--media {
+      color: @error-color;
+    }
+
+    &--excel {
+      color: @success-color;
+    }
+
+    &--word {
+      color: @brand-color;
+    }
+
+    &--ppt {
+      color: @warning-color;
+    }
+
+    &--other {
+      color: @text-color-primary;
     }
   }
 
@@ -102,10 +146,11 @@
       font: @font-body-small;
       margin-top: 8rpx;
     }
+  }
 
-    &-loading {
-      animation: spin infinite linear 0.6s;
-    }
+  &__progress-loading,
+  &__list-item-loading {
+    animation: spin infinite linear 0.6s;
   }
 
   &__drag {
@@ -116,21 +161,209 @@
     &-item {
       position: absolute;
       z-index: 1;
-      top: 0px;
-      left: 0px;
+      top: 0;
+      left: 0;
       height: auto;
       width: 100%;
     }
-    &--fixed {
-      z-index: 0;
+  }
+
+  // ========== list 布局 ==========
+  &--list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24rpx;
+  }
+
+  &__list-trigger {
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: 24rpx;
+  }
+
+  &__list-drag {
+    position: relative;
+    width: 100%;
+  }
+
+  &__list-drag-item {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-bottom: 24rpx;
+    box-sizing: border-box;
+
+    .@{prefix}-upload__list-item {
+      margin: 0;
     }
-    &--tran {
-      transition-property: transform;
-      transition-duration: var(--td-upload-drag-transition-duration);
-      transition-timing-function: var(--td-upload-drag-transition-timing-function);
+  }
+
+  // 拖拽状态（grid + list 共用，须置于 &__drag-item / &__list-drag-item 之后以确保优先级）
+  &__drag--fixed {
+    z-index: 0;
+  }
+
+  &__drag--tran {
+    transition-property: transform;
+    transition-duration: var(--td-upload-drag-transition-duration);
+    transition-timing-function: var(--td-upload-drag-transition-timing-function);
+  }
+
+  &__drag--cur {
+    z-index: @upload-drag-z-index;
+  }
+
+  &__list-item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 24rpx;
+    padding: 16rpx 24rpx;
+    background: @upload-background;
+    border-radius: @upload-radius;
+    box-sizing: border-box;
+
+    &-loading {
+      flex-shrink: 0;
+      font-size: 48rpx;
+      color: @brand-color;
     }
-    &--cur {
-      z-index: @upload-drag-z-index;
+
+    &-error-icon {
+      flex-shrink: 0;
+      font-size: 48rpx;
+      color: @error-color;
+    }
+
+    &-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    &-thumbnail {
+      flex-shrink: 0;
+      width: 48rpx;
+      height: 48rpx;
+      border-radius: @radius-small;
+      overflow: hidden;
+    }
+
+    &-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    &-name {
+      font: @font-body-medium;
+      color: @text-color-primary;
+    }
+
+    &-size {
+      font: @font-body-small;
+      color: @text-color-placeholder;
+    }
+
+    &-name,
+    &-size {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &-action {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      column-gap: 8rpx;
+    }
+
+    &-delete {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36rpx;
+      color: @text-color-placeholder;
+    }
+
+    &--progress &-name,
+    &--progress &-size {
+      color: @text-color-placeholder;
+    }
+
+    &--fail &-name {
+      color: @error-color;
+    }
+  }
+
+  // grid 布局：无 progress-mask 的图片加 disabled-mask 遮罩
+  // list 布局：缩略图加 disabled-mask 遮罩
+  &__disabled-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: @upload-disabled-mask;
+  }
+
+  &--disabled {
+    pointer-events: none;
+
+    // 文字
+    .@{prefix}-upload__add-icon,
+    .@{prefix}-upload__file-name,
+    .@{prefix}-upload__list-item-name,
+    .@{prefix}-upload__list-item-size {
+      color: @text-color-disabled;
+    }
+
+    // 文件类型图标
+    .@{prefix}-upload__file-type {
+      &--pdf,
+      &--media {
+        color: @error-color-disabled;
+      }
+
+      &--excel {
+        color: @success-color-disabled;
+      }
+
+      &--word {
+        color: @brand-color-disabled;
+      }
+
+      &--ppt {
+        color: @warning-color-disabled;
+      }
+
+      &--other {
+        color: @text-color-disabled;
+      }
+    }
+
+    // 隐藏删除/操作按钮
+    .@{prefix}-upload__close-btn,
+    .@{prefix}-upload__list-item-action {
+      display: none;
+    }
+
+    .@{prefix}-upload__list-item-loading {
+      color: @brand-color-disabled;
+    }
+
+    .@{prefix}-upload__list-item-error-icon {
+      color: @error-color-disabled;
     }
   }
 }
