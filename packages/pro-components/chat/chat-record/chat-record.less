@@ -267,21 +267,63 @@
         }
       }
 
-      // 提示文字
+      // 提示文字容器：固定高度，作为"滚轮"舞台
       .tips-text {
+        position: relative;
         width: 100%;
-        text-align: center;
-        color: rgba(0, 0, 0, 0.60);
-        font-size: @chat-record-tips-font-size;
-        font-weight: 500;
-        line-height: @chat-record-tips-line-height;
+        height: @chat-record-tips-line-height;
         margin-bottom: 24rpx;
         pointer-events: none;
+        overflow: hidden;
+
+        // 单条提示文字：绝对定位，通过 transform/opacity 做上下切换
+        .tips-item {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          width: 100%;
+          text-align: center;
+          font-size: @chat-record-tips-font-size;
+          font-weight: 500;
+          line-height: @chat-record-tips-line-height;
+          will-change: transform, opacity;
+          transition:
+            transform @chat-record-transition-ease,
+            opacity @chat-record-transition-opacity;
+
+          // 默认状态（在视图中）
+          &.is-in {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+          }
+
+          // 向上滑出（被上一条挤上去）
+          &.is-out-up {
+            transform: translate3d(0, -100%, 0);
+            opacity: 0;
+          }
+
+          // 在下方等待（从下方将要滑入）
+          &.is-out-down {
+            transform: translate3d(0, 100%, 0);
+            opacity: 0;
+          }
+        }
+
+        // 文案颜色：发送态黑色 60%，取消态红色
+        .tips-send {
+          color: rgba(0, 0, 0, 0.60);
+        }
+
+        .tips-cancel {
+          color: @chat-record-color-red;
+        }
       }
 
-      // 取消状态：提示文字变红色
+      // 取消状态保留兼容（其它地方若有依赖）：不再统一改色，颜色由 .tips-cancel 自带
       &.release_cancel .tips-text {
-        color: @chat-record-color-red;
+        color: inherit;
       }
       .record-main-btn {
         width: calc(100% - 64rpx);

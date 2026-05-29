@@ -43,11 +43,15 @@
           </block>
         </view>
 
-        <!-- 提示文字 -->
+        <!-- 提示文字：两条文字同时存在，通过位移+透明度做"跟手"上下切换动效 -->
         <view class="tips-text">
           <block wx:if="{{processStatus === 'recording'}}">
-            <text wx:if="{{interactStatus === 'release_cancel'}}">{{globalConfig.releaseToCancel}}</text>
-            <text wx:else>{{globalConfig.releaseToSend}}</text>
+            <view class="tips-item tips-send {{interactStatus === 'release_cancel' ? 'is-out-up' : 'is-in'}}">
+              <text>{{globalConfig.releaseToSend}}</text>
+            </view>
+            <view class="tips-item tips-cancel {{interactStatus === 'release_cancel' ? 'is-in' : 'is-out-down'}}">
+              <text>{{globalConfig.releaseToCancel}}</text>
+            </view>
           </block>
         </view>
 
