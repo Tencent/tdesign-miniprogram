@@ -28,11 +28,6 @@ const props: TdChatRecordProps = {
     type: Number,
     value: 0,
   },
-  /** 是否自动获取键盘高度更新 bottomHeight */
-  autoHeight: {
-    type: Boolean,
-    value: false,
-  },
 };
 
 export default props;

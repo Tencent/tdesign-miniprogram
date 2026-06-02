@@ -21,7 +21,6 @@
         >
           <template #speech>
             <t-chat-record
-              :auto-send-height="autoSendHeight"
               style="margin: 10px 0"
               @recognize="onRecognize"
             >
@@ -88,7 +87,6 @@ export default {
       ],
       loading: false,
       showVoice: false,
-      autoSendHeight: 0,
       allowSpeech: false,
       renderPresets: [
         {

@@ -67,15 +67,6 @@ isComponent: true
 
 ## API
 
-### ChatRecord Props
-
-名称 | 类型 | 默认值 | 描述 | 必传
--- | -- | -- | -- | --
-useSpeechNoAuthSlot | Boolean | false | 是否启用语音输入无权限时显示插槽 | N
-useSpeechInputSlot | Boolean | false | 是否启用语音输入时显示插槽 | N
-autoSendHeight| Number | 0 | 自动发送消息的高度 | N
-speechInput | slot | false |  语音输入按钮插槽 | N
-speechNoAuth | slot | false | 语音授权按钮插槽 | N
 
 
 ### ChatRecord Events

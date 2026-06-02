@@ -71,13 +71,6 @@ import TChatRecord from '@tdesign/uniapp-chat/chat-record/chat-record.vue';
 
 ## API
 
-### ChatRecord Props
-
-名称 | 类型 | 默认值 | 描述 | 必传
--- | -- | -- | -- | --
-useSpeechNoAuthSlot | Boolean | false | 是否启用语音输入无权限时显示插槽 | N
-useSpeechInputSlot | Boolean | false | 是否启用语音输入时显示插槽 | N
-
 ### ChatRecord Events
 
 名称 | 参数 | 描述
