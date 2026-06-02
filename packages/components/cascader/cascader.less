@@ -18,7 +18,7 @@
 @cascader-filter-item-color: var(--td-cascader-filter-item-color, @text-color-primary);
 @cascader-filter-item-hover-bg: var(--td-cascader-filter-item-hover-bg, @bg-color-secondarycontainer);
 @cascader-filter-item-disabled-color: var(--td-cascader-filter-item-disabled-color, @text-color-disabled);
-@cascader-filter-keyword-color: var(--td-cascader-filter-keyword-color, @brand-color);
+@cascader-filter-highlight-color: var(--td-cascader-filter-highlight-color, @brand-color);
 @cascader-filter-empty-color: var(--td-cascader-filter-empty-color, @text-color-placeholder);
 @cascader-filter-empty-padding: var(--td-cascader-filter-empty-padding, 96rpx @spacer-2);
 // steps
@@ -152,8 +152,8 @@
       }
     }
 
-    &-keyword {
-      color: @cascader-filter-keyword-color;
+    &-highlight {
+      color: @cascader-filter-highlight-color;
       font-weight: 600;
     }
 

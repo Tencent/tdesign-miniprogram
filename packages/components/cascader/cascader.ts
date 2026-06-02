@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { TdCascaderProps, CascaderFilterFunction } from './type';
-import { getRect } from '../common/utils';
+import { getRect, debounce } from '../common/utils';
 import usingConfig from '../mixins/using-config';
 
 const { prefix } = config;
@@ -121,6 +121,7 @@ const defaultState = {
   subTitlesHeight: 0,
   stepsInitHeight: 0,
   filterHeight: 0,
+  flatPaths: [] as FlatPath[],
 };
 
 @wxComponent()
@@ -131,10 +132,12 @@ export default class Cascader extends SuperComponent {
 
   options: WechatMiniprogram.Component.ComponentOptions = {
     multipleSlots: true,
-    pureDataPattern: /^(options|flatPaths)$/,
+    pureDataPattern: /^options$/,
   };
 
   properties = props;
+
+  filterDebounced: ((value: string) => void) | null = null;
 
   controlledProps = [
     {
@@ -159,7 +162,6 @@ export default class Cascader extends SuperComponent {
     filterKeyword: '',
     filterResults: [] as FilterResult[],
     isSearching: false,
-    flatPaths: [] as FlatPath[],
   };
 
   observers = {
@@ -339,14 +341,14 @@ export default class Cascader extends SuperComponent {
       this.hide('close-btn');
     },
     invalidateFlatPaths() {
-      this.setData({ flatPaths: [] });
+      this.state.flatPaths = [];
     },
     ensureFlatPaths() {
-      let { flatPaths } = this.data;
+      let { flatPaths } = this.state;
       if (!flatPaths || flatPaths.length === 0) {
         const { options, keys } = this.data;
         flatPaths = flattenPaths(options, keys);
-        this.setData({ flatPaths });
+        this.state.flatPaths = flatPaths;
       }
       return flatPaths;
     },
@@ -359,7 +361,10 @@ export default class Cascader extends SuperComponent {
     },
     onFilterChange(e: { detail?: { value?: string } }) {
       const value = e?.detail?.value ?? '';
-      this.applyFilter(value);
+      if (!this.filterDebounced) {
+        this.filterDebounced = debounce((kw: string) => this.applyFilter(kw), 200);
+      }
+      this.filterDebounced(value);
     },
     onFilterClear() {
       this.resetFilter();

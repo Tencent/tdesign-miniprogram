@@ -96,7 +96,7 @@
             bind:tap="onFilterResultTap"
           >
             <block wx:for="{{item.fragments}}" wx:for-item="frag" wx:key="id">
-              <text class="{{frag.highlight ? classPrefix + '__filter-keyword' : ''}}">{{frag.text}}</text>
+              <text class="{{frag.highlight ? classPrefix + '__filter-highlight' : ''}}">{{frag.text}}</text>
             </block>
           </view>
         </scroll-view>
