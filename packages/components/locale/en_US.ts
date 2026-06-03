@@ -29,6 +29,8 @@ export default {
   cascader: {
     title: 'Title',
     placeholder: 'Select options',
+    filterPlaceholder: 'Search',
+    empty: 'No matching options',
   },
   dropdownMenu: {
     reset: 'Reset',

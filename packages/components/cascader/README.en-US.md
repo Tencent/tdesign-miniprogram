@@ -10,6 +10,9 @@ style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 check-strictly | Boolean | false | \- | N
 close-btn | Boolean | true | \- | N
+filterable | Boolean | false | Enable searching. When on, a search box is shown at the top; typing switches the panel to a flat list of matched paths | N
+filter | Function | - | Custom filter function. Typescript: `(keyword: string, option: CascaderOption, path: CascaderOption[]) => boolean`. Falls back to a case-insensitive built-in matcher on label/text | N
+filter-placeholder | String | - | Placeholder text of the search box, falls back to global locale | N
 keys | Object | - | Typescript: `CascaderKeysType` `type CascaderKeysType = TreeKeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/cascader/type.ts) | N
 options | Array | [] | Typescript: `Array<CascaderOption>` | N
 placeholder | String | - | \- | N
@@ -47,6 +50,14 @@ Name | Default Value | Description
 --td-cascader-border-color | @component-stroke | -
 --td-cascader-content-height | 78vh | -
 --td-cascader-disabled-color | @text-color-disabled | -
+--td-cascader-filter-empty-color | @text-color-placeholder | -
+--td-cascader-filter-empty-padding | 96rpx @spacer-2 | -
+--td-cascader-filter-highlight-color | @brand-color | -
+--td-cascader-filter-item-color | @text-color-primary | -
+--td-cascader-filter-item-disabled-color | @text-color-disabled | -
+--td-cascader-filter-item-hover-bg | @bg-color-secondarycontainer | -
+--td-cascader-filter-item-padding | 24rpx 32rpx | -
+--td-cascader-filter-padding | 0 @spacer-2 @spacer-1 | -
 --td-cascader-options-height | calc(100% - @cascader-step-height) | -
 --td-cascader-options-title-color | @text-color-placeholder | -
 --td-cascader-step-arrow-color | @text-color-placeholder | -

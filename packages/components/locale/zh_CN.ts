@@ -16,6 +16,8 @@ export default {
   cascader: {
     title: '标题',
     placeholder: '选择选项',
+    filterPlaceholder: '搜索',
+    empty: '暂无匹配项',
   },
   dropdownMenu: {
     reset: '重置',

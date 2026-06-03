@@ -43,6 +43,8 @@ exports[`ConfigProvider ConfigProvider chat-en demo works fine 1`] = `
           ],
         },
         "cascader": Object {
+          "empty": "No matching options",
+          "filterPlaceholder": "Search",
           "placeholder": "Select options",
           "title": "Title",
         },
@@ -313,6 +315,8 @@ exports[`ConfigProvider ConfigProvider upload-en demo works fine 1`] = `
           ],
         },
         "cascader": Object {
+          "empty": "No matching options",
+          "filterPlaceholder": "Search",
           "placeholder": "Select options",
           "title": "Title",
         },

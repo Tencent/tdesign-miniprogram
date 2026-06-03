@@ -16,6 +16,21 @@ const props: TdCascaderProps = {
     type: Boolean,
     value: true,
   },
+  /** 是否可搜索。开启后顶部展示搜索框，输入关键字将层级面板切换为扁平的匹配路径列表 */
+  filterable: {
+    type: Boolean,
+    value: false,
+  },
+  /** 自定义过滤函数。返回 true 表示匹配；签名为 `(keyword, option, path) => boolean` */
+  filter: {
+    type: null,
+    value: null,
+  },
+  /** 搜索框占位文案 */
+  filterPlaceholder: {
+    type: String,
+    value: '',
+  },
   /** 用来定义 value / label / children / disabled 在 `options` 中对应的字段别名 */
   keys: {
     type: Object,
