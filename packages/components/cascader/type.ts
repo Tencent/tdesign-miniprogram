@@ -4,7 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import { TreeOptionData, TreeKeysType } from '../common/common';
+import type { TreeOptionData, TreeKeysType } from '../common/common';
 
 export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOptionData> {
   /**
@@ -24,27 +24,27 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
     value?: boolean;
   };
   /**
-   * 是否可搜索。开启后顶部会展示一个搜索框，输入关键字将层级面板切换为扁平的匹配路径列表
-   * @default false
-   */
-  filterable?: {
-    type: BooleanConstructor;
-    value?: boolean;
-  };
-  /**
-   * 自定义过滤函数。返回 true 表示匹配；签名为 `(keyword, option, path) => boolean`。未设置时使用内置匹配规则：对路径中所有 label/text 拼接后做大小写不敏感的 includes 匹配
+   *  自定义过滤函数。返回 true 表示匹配，未设置时使用内置匹配规则：对路径中所有 label 拼接后做大小写不敏感的 includes 匹配
    */
   filter?: {
-    type: null;
+    type: undefined;
     value?: CascaderFilterFunction;
   };
   /**
-   * 搜索框占位文案
+   * 搜索框占位符描述文本
    * @default ''
    */
   filterPlaceholder?: {
     type: StringConstructor;
     value?: string;
+  };
+  /**
+   * 是否可搜索，开启后顶部会展示一个搜索框
+   * @default false
+   */
+  filterable?: {
+    type: BooleanConstructor;
+    value?: boolean;
   };
   /**
    * 用来定义 value / label / children / disabled 在 `options` 中对应的字段别名
@@ -118,10 +118,10 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
   };
 }
 
-export type CascaderKeysType = TreeKeysType;
-
 export type CascaderFilterFunction<CascaderOption extends TreeOptionData = TreeOptionData> = (
   keyword: string,
   option: CascaderOption,
   path: CascaderOption[],
 ) => boolean;
+
+export type CascaderKeysType = TreeKeysType;

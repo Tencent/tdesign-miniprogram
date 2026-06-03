@@ -71,9 +71,9 @@ style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 check-strictly | Boolean | false | 父子节点选中状态不再关联，可各自选中或取消 | N
 close-btn | Boolean | true | 关闭按钮 | N
-filterable | Boolean | false | 是否可搜索。开启后顶部展示搜索框，输入关键字将层级面板切换为扁平的匹配路径列表 | N
-filter | Function | - | 自定义过滤函数，返回 true 表示匹配。TS 类型：`(keyword: string, option: CascaderOption, path: CascaderOption[]) => boolean`。缺省时使用大小写不敏感的内置匹配规则（命中路径中任一 label 或叶子节点 text） | N
-filter-placeholder | String | - | 搜索框占位文案，缺省回退到全局语言包 | N
+filter | Function | - |  自定义过滤函数。返回 true 表示匹配，未设置时使用内置匹配规则：对路径中所有 label 拼接后做大小写不敏感的 includes 匹配。TS 类型：`CascaderFilterFunction ` `type CascaderFilterFunction<CascaderOption extends TreeOptionData = TreeOptionData> = (keyword: string, option: CascaderOption, path: CascaderOption[]) => boolean`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/cascader/type.ts) | N
+filter-placeholder | String | - | 搜索框占位符描述文本 | N
+filterable | Boolean | false | 是否可搜索，开启后顶部会展示一个搜索框  | N
 keys | Object | - | 用来定义 value / label / children / disabled 在 `options` 中对应的字段别名。TS 类型：`CascaderKeysType` `type CascaderKeysType = TreeKeysType`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/cascader/type.ts) | N
 options | Array | [] | 可选项数据源。TS 类型：`Array<CascaderOption>` | N
 placeholder | String | - | 未选中时的提示文案。组件内置默认值为：'选择选项' | N
@@ -89,6 +89,7 @@ visible | Boolean | false | 是否展示 | N
 名称 | 参数 | 描述
 -- | -- | --
 change | `(value: string \| number, selectedOptions: string[])` | `1.0.1`。值发生变更时触发
+change | `(detail: { value: string \| number, selectedOptions: string[] })` | `1.0.1`。值发生变更时触发
 close | `(trigger: CascaderTriggerSource)` | `1.0.1`。关闭时触发。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/cascader/type.ts)。<br/>`type CascaderTriggerSource = 'overlay' \| 'close-btn' \| 'finish'`<br/>
 pick | `(value: string \| number, label: string, index: number, level: number)` | `1.0.1`。选择后触发
 
