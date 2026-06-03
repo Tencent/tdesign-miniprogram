@@ -98,6 +98,11 @@ export default {
     finish: '완료',
     back: '뒤로',
   },
+  typography: {
+    expandText: '더보기',
+    collapseText: '접기',
+    copiedText: '복사 성공',
+  },
   qrcode: {
     expiredText: '만료됨',
     refreshText: '새로 고치다',

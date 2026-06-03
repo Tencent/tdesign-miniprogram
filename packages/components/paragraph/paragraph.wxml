@@ -31,6 +31,6 @@
     </view>
   </block>
   <block wx:else>
-    <template is="ellipsis-toggle" data="{{ellipsis, isExpanded, classPrefix}}" />
+    <template is="ellipsis-toggle" data="{{ellipsis, isExpanded, classPrefix, globalConfig}}" />
   </block>
 </view>

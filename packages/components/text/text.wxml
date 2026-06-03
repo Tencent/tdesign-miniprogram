@@ -28,7 +28,7 @@
   <!-- 展开/收起按钮 -->
   <template
     is="ellipsis-toggle"
-    data="{{ellipsis, isExpanded, classPrefix, extraStyle: copyable ? 'margin-right:16rpx;' : ''}}"
+    data="{{ellipsis, isExpanded, classPrefix, globalConfig, extraStyle: copyable ? 'margin-right:16rpx;' : ''}}"
   />
 
   <!-- 复制按钮 -->
