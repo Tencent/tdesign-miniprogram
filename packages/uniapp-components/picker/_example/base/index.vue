@@ -24,8 +24,6 @@
       :value="cityValue"
       data-key="city"
       title="选择城市"
-      cancel-btn="取消"
-      confirm-btn="确认"
       :using-custom-navbar="!isMPAlipay"
       @update:visible="(e) => cityVisible = e"
       @change="(e) => onPickerChange(e, { key: 'city' })"

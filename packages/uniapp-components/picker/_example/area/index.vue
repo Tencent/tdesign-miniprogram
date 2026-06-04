@@ -12,8 +12,6 @@
       :visible="areaVisible"
       :value="areaValue"
       title="选择地区"
-      cancel-btn="取消"
-      confirm-btn="确认"
       :using-custom-navbar="!isMPAlipay"
       @update:visible="(e) => areaVisible = e"
       @change="onPickerChange"

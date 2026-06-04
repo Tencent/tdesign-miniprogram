@@ -6,8 +6,6 @@
       :use-popup="false"
       data-key="city"
       :title="cityTitle"
-      cancel-btn="取消"
-      confirm-btn="确认"
       :using-custom-navbar="!isMPAlipay"
       @update:visible="(e) => cityVisible = e"
       @change="(e) => onPickerChange(e, { key: 'city' })"
