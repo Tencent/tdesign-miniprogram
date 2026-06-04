@@ -26,7 +26,7 @@
               :class="classPrefix + '__cancel ' + tClassCancel"
               @click="onCancel"
             >
-              {{ globalConfig.cancel }}
+              {{ cancelBtn === true ? globalConfig.cancel : cancelBtn }}
             </view>
             <view :class="classPrefix + '__title ' + tClassTitle">
               {{ title }}
@@ -36,7 +36,7 @@
               :class="classPrefix + '__confirm ' + tClassConfirm"
               @click="onConfirm"
             >
-              {{ globalConfig.confirm }}
+              {{ confirmBtn === true ? globalConfig.confirm : confirmBtn }}
             </view>
           </view>
           <slot name="header" />
@@ -72,7 +72,7 @@
             :class="classPrefix + '__cancel ' + tClassCancel"
             @click="onCancel"
           >
-            {{ globalConfig.cancel }}
+            {{ cancelBtn === true ? globalConfig.cancel : cancelBtn }}
           </view>
           <view :class="classPrefix + '__title ' + tClassTitle">
             {{ title }}
@@ -82,7 +82,7 @@
             :class="classPrefix + '__confirm ' + tClassConfirm"
             @click="onConfirm"
           >
-            {{ globalConfig.confirm }}
+            {{ confirmBtn === true ? globalConfig.confirm : confirmBtn }}
           </view>
         </view>
         <slot name="header" />
