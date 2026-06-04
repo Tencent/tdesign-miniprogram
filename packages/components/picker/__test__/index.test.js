@@ -66,7 +66,7 @@ describe('picker', () => {
 
     const $cancel = $picker.querySelector('.t-picker__cancel');
     expect($cancel).toBeDefined();
-    expect($cancel.dom.textContent).toBe('取消');
+    expect($cancel.dom.textContent.trim()).toBe('取消');
   });
 
   it(': cancelBtn custom text', async () => {
@@ -80,7 +80,7 @@ describe('picker', () => {
 
     const $cancel = $picker.querySelector('.t-picker__cancel');
     expect($cancel).toBeDefined();
-    expect($cancel.dom.textContent).toBe('返回');
+    expect($cancel.dom.textContent.trim()).toBe('返回');
   });
 
   it(': confirmBtn false', async () => {
@@ -107,7 +107,7 @@ describe('picker', () => {
 
     const $confirm = $picker.querySelector('.t-picker__confirm');
     expect($confirm).toBeDefined();
-    expect($confirm.dom.textContent).toBe('确认');
+    expect($confirm.dom.textContent.trim()).toBe('确认');
   });
 
   it(': confirmBtn custom text', async () => {
@@ -121,7 +121,7 @@ describe('picker', () => {
 
     const $confirm = $picker.querySelector('.t-picker__confirm');
     expect($confirm).toBeDefined();
-    expect($confirm.dom.textContent).toBe('完成');
+    expect($confirm.dom.textContent.trim()).toBe('完成');
   });
 
   it(':change', async () => {
