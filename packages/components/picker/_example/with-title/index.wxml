@@ -20,8 +20,6 @@
   value="{{city2Value}}"
   data-key="city2"
   title="{{city2Title}}"
-  cancelBtn="取消"
-  confirmBtn="确认"
   usingCustomNavbar
   bindchange="onPickerChange"
   bindpick="onColumnChange"
