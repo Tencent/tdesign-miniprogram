@@ -42,6 +42,88 @@ describe('picker', () => {
     expect($city.toJSON()).toMatchSnapshot();
   });
 
+  it(': cancelBtn false', async () => {
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    const $picker = comp.querySelector('#city');
+    comp.setData({ cityVisible: true });
+    $picker.instance.setData({ cancelBtn: false });
+    await simulate.sleep();
+
+    expect($picker.querySelector('.t-picker__cancel')).toBeUndefined();
+    expect($picker.querySelector('.t-picker__confirm')).toBeDefined();
+  });
+
+  it(': cancelBtn true', async () => {
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    const $picker = comp.querySelector('#city');
+    comp.setData({ cityVisible: true });
+    $picker.instance.setData({ cancelBtn: true });
+    await simulate.sleep();
+
+    const $cancel = $picker.querySelector('.t-picker__cancel');
+    expect($cancel).toBeDefined();
+    expect($cancel.dom.textContent).toBe('取消');
+  });
+
+  it(': cancelBtn custom text', async () => {
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    const $picker = comp.querySelector('#city');
+    comp.setData({ cityVisible: true });
+    $picker.instance.setData({ cancelBtn: '返回' });
+    await simulate.sleep();
+
+    const $cancel = $picker.querySelector('.t-picker__cancel');
+    expect($cancel).toBeDefined();
+    expect($cancel.dom.textContent).toBe('返回');
+  });
+
+  it(': confirmBtn false', async () => {
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    const $picker = comp.querySelector('#city');
+    comp.setData({ cityVisible: true });
+    $picker.instance.setData({ confirmBtn: false });
+    await simulate.sleep();
+
+    expect($picker.querySelector('.t-picker__cancel')).toBeDefined();
+    expect($picker.querySelector('.t-picker__confirm')).toBeUndefined();
+  });
+
+  it(': confirmBtn true', async () => {
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    const $picker = comp.querySelector('#city');
+    comp.setData({ cityVisible: true });
+    $picker.instance.setData({ confirmBtn: true });
+    await simulate.sleep();
+
+    const $confirm = $picker.querySelector('.t-picker__confirm');
+    expect($confirm).toBeDefined();
+    expect($confirm.dom.textContent).toBe('确认');
+  });
+
+  it(': confirmBtn custom text', async () => {
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    const $picker = comp.querySelector('#city');
+    comp.setData({ cityVisible: true });
+    $picker.instance.setData({ confirmBtn: '完成' });
+    await simulate.sleep();
+
+    const $confirm = $picker.querySelector('.t-picker__confirm');
+    expect($confirm).toBeDefined();
+    expect($confirm.dom.textContent).toBe('完成');
+  });
+
   it(':change', async () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
