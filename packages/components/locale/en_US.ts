@@ -112,6 +112,11 @@ export default {
     finish: 'Finish',
     back: 'Back',
   },
+  typography: {
+    expandText: 'more',
+    collapseText: 'collapse',
+    copiedText: 'copied',
+  },
   qrcode: {
     expiredText: 'expired',
     refreshText: 'refresh',

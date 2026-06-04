@@ -170,6 +170,11 @@ exports[`ConfigProvider ConfigProvider chat-en demo works fine 1`] = `
         "table": Object {
           "empty": "Empty Data",
         },
+        "typography": Object {
+          "collapseText": "collapse",
+          "copiedText": "copied",
+          "expandText": "more",
+        },
         "upload": Object {
           "progress": Object {
             "failText": "Failed",
@@ -441,6 +446,11 @@ exports[`ConfigProvider ConfigProvider upload-en demo works fine 1`] = `
         },
         "table": Object {
           "empty": "Empty Data",
+        },
+        "typography": Object {
+          "collapseText": "collapse",
+          "copiedText": "copied",
+          "expandText": "more",
         },
         "upload": Object {
           "progress": Object {

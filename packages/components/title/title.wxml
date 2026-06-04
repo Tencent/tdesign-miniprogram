@@ -21,5 +21,5 @@
   </block>
 
   <!-- 展开/收起按钮 -->
-  <template is="ellipsis-toggle" data="{{ellipsis, isExpanded, classPrefix}}" />
+  <template is="ellipsis-toggle" data="{{ellipsis, isExpanded, classPrefix, globalConfig}}" />
 </view>
