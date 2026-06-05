@@ -135,6 +135,9 @@ export default class Stepper extends SuperComponent {
       this.triggerEvent('focus', { value });
     },
 
+    /**
+     *  输入过程中仅过滤非法字符并更新显示值，不做 min/max 边界约束。范围校验和 change 事件统一在 handleBlur 中处理
+     */
     handleInput(e) {
       const { value } = e.detail;
       // 允许输入空值
@@ -143,13 +146,8 @@ export default class Stepper extends SuperComponent {
       }
 
       const formatted = this.filterIllegalChar(value);
-      const newValue = this.format(formatted);
 
-      this.updateCurrentValue(this.data.integer ? newValue : formatted);
-
-      if (this.data.integer || /\.\d*[1-9]/.test(formatted)) {
-        this.setValue(formatted);
-      }
+      this.updateCurrentValue(formatted);
     },
 
     handleBlur(e) {
