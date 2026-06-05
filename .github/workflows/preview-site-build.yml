@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.event.number }} > pr-id.txt
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: pr-id
           path: pr-id.txt
@@ -30,7 +30,7 @@ jobs:
 
       - run: pnpm -C packages/tdesign-miniprogram/site run site:preview
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: tdesign-miniprogram-site
           path: packages/tdesign-miniprogram/site/dist
@@ -53,7 +53,7 @@ jobs:
 
       - run: pnpm -C packages/tdesign-miniprogram-chat/site run site:preview
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: tdesign-miniprogram-chat-site
           path: packages/tdesign-miniprogram-chat/site/dist
@@ -76,7 +76,7 @@ jobs:
 
       - run: pnpm -C packages/tdesign-uniapp/site run site:preview
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: tdesign-uniapp-site
           path: packages/tdesign-uniapp/site/dist
@@ -99,7 +99,7 @@ jobs:
 
       - run: pnpm -C packages/tdesign-uniapp-chat/site run site:preview
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: tdesign-uniapp-chat-site
           path: packages/tdesign-uniapp-chat/site/dist
