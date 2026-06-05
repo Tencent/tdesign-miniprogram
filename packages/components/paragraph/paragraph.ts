@@ -1,12 +1,15 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import usingConfig from '../mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-typography`;
+const componentName = 'typography';
 
 @wxComponent()
 export default class Paragraph extends SuperComponent {
+  behaviors = [usingConfig({ componentName })];
+
   externalClasses = [`${prefix}-class`];
 
   options = {
@@ -17,7 +20,7 @@ export default class Paragraph extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     isExpanded: false,
   };
 

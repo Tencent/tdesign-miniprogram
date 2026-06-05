@@ -5,6 +5,18 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.15.1 `2026-06-05`
+
+### 🚀 Features
+
+- `Cascader`: 新增 `filterable`、`filter` 和 `filter-placeholder` 属性，支持搜索功能 @kk-418 ([#4453](https://github.com/Tencent/tdesign-miniprogram/pull/4453))
+- `Typography`: 支持多语言配置 @anlyyao ([#4477](https://github.com/Tencent/tdesign-miniprogram/pull/4477))
+
+### 🐞 Bug Fixes
+
+- `Picker`: 修复按钮自定义文案无效 @liweijie0812 ([#4480](https://github.com/Tencent/tdesign-miniprogram/pull/4480))
+- `Stepper`: 调整手动输入逻辑，输入时仅过滤非法字符，范围校验&赋值移至失焦 @anlyyao ([#4484](https://github.com/Tencent/tdesign-miniprogram/pull/4484))
+
 ## 🌈 1.15.0 `2026-05-21`
 
 ### 🚀 Features

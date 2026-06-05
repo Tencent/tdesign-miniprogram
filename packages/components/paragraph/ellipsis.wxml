@@ -5,7 +5,7 @@
     class="{{classPrefix}}-ellipsis-symbol"
     style="text-decoration: none; white-space: nowrap; flex: 1;{{extraStyle || ''}}"
     bind:tap="onExpand"
-    >展开</view
+    >{{globalConfig.expandText}}</view
   >
   <!-- 收起按钮 -->
   <view
@@ -13,6 +13,6 @@
     class="{{classPrefix}}-ellipsis-symbol"
     style="text-decoration: none; white-space: nowrap; flex: 1;{{extraStyle || ''}}"
     bind:tap="onCollapse"
-    >收起</view
+    >{{globalConfig.collapseText}}</view
   >
 </template>

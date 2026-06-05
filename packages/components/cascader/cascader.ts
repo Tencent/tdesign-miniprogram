@@ -1,8 +1,8 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { TdCascaderProps } from './type';
-import { getRect } from '../common/utils';
+import { TdCascaderProps, CascaderFilterFunction } from './type';
+import { getRect, debounce } from '../common/utils';
 import usingConfig from '../mixins/using-config';
 
 const { prefix } = config;
@@ -12,6 +12,24 @@ export interface CascaderProps extends TdCascaderProps {}
 
 type OptionsType = TdCascaderProps['options']['value'];
 type KeysType = TdCascaderProps['keys']['value'];
+
+type FlatPath = {
+  key: string;
+  path: any[];
+  indexes: number[];
+  labels: string[];
+  text: string;
+  disabled: boolean;
+};
+
+type ResultFragment = { id: number; text: string; highlight: boolean };
+
+type FilterResult = {
+  key: string;
+  indexes: number[];
+  disabled: boolean;
+  fragments: ResultFragment[];
+};
 
 function parseOptions(options: OptionsType, keys: KeysType) {
   const label = keys?.label ?? 'label';
@@ -27,12 +45,83 @@ function parseOptions(options: OptionsType, keys: KeysType) {
   });
 }
 
+function flattenPaths(options: OptionsType, keys: KeysType): FlatPath[] {
+  const labelKey = keys?.label ?? 'label';
+  const valueKey = keys?.value ?? 'value';
+  const childrenKey = keys?.children ?? 'children';
+  const disabledKey = keys?.disabled ?? 'disabled';
+  const result: FlatPath[] = [];
+
+  const walk = (list: any[], path: any[], indexes: number[]) => {
+    list.forEach((item, idx) => {
+      const nextPath = [...path, item];
+      const nextIndexes = [...indexes, idx];
+      const children = item?.[childrenKey];
+      if (Array.isArray(children) && children.length > 0) {
+        walk(children, nextPath, nextIndexes);
+      } else {
+        const labels = nextPath.map((node) => String(node?.[labelKey] ?? ''));
+        const text = [labels.join(''), String(item?.text ?? '')].filter(Boolean).join('');
+        result.push({
+          key: nextPath.map((node) => String(node?.[valueKey] ?? '')).join('/'),
+          path: nextPath,
+          indexes: nextIndexes,
+          labels,
+          text,
+          disabled: nextPath.some((node) => node?.[disabledKey]),
+        });
+      }
+    });
+  };
+
+  walk(options || [], [], []);
+  return result;
+}
+
+function buildFragments(labels: string[], keyword: string): ResultFragment[] {
+  const joined = labels.join(' / ');
+  const push = (acc: ResultFragment[], text: string, highlight: boolean) => {
+    if (!text) return;
+    acc.push({ id: acc.length, text, highlight });
+  };
+
+  if (!keyword) return [{ id: 0, text: joined, highlight: false }];
+
+  const fragments: ResultFragment[] = [];
+  const haystack = joined.toLowerCase();
+  const needle = keyword.toLowerCase();
+  let cursor = 0;
+  while (cursor < joined.length) {
+    const hit = haystack.indexOf(needle, cursor);
+    if (hit === -1) {
+      push(fragments, joined.slice(cursor), false);
+      break;
+    }
+    push(fragments, joined.slice(cursor, hit), false);
+    push(fragments, joined.slice(hit, hit + needle.length), true);
+    cursor = hit + needle.length;
+  }
+  return fragments.length ? fragments : [{ id: 0, text: joined, highlight: false }];
+}
+
+function defaultFilter(keyword: string, _option: any, path: any[], labelKey: string) {
+  const lower = keyword.toLowerCase();
+  const joined = path
+    .map((node) => String(node?.[labelKey] ?? ''))
+    .join('')
+    .toLowerCase();
+  const text = String(path[path.length - 1]?.text ?? '').toLowerCase();
+  return joined.includes(lower) || (!!text && text.includes(lower));
+}
+
 const defaultState = {
   contentHeight: 0,
   stepHeight: 0,
   tabsHeight: 0,
   subTitlesHeight: 0,
   stepsInitHeight: 0,
+  filterHeight: 0,
+  flatPaths: [] as FlatPath[],
 };
 
 @wxComponent()
@@ -47,6 +136,8 @@ export default class Cascader extends SuperComponent {
   };
 
   properties = props;
+
+  filterDebounced: ((value: string) => void) | null = null;
 
   controlledProps = [
     {
@@ -68,6 +159,9 @@ export default class Cascader extends SuperComponent {
     scrollTopList: [],
     steps: [],
     _optionsHeight: 0,
+    filterKeyword: '',
+    filterResults: [] as FilterResult[],
+    isSearching: false,
   };
 
   observers = {
@@ -83,6 +177,9 @@ export default class Cascader extends SuperComponent {
         this.initWithValue();
       } else {
         this.state = { ...defaultState };
+        if (this.data.isSearching) {
+          this.resetFilter();
+        }
       }
     },
 
@@ -99,6 +196,24 @@ export default class Cascader extends SuperComponent {
         selectedValue,
         stepIndex: items.length - 1,
       });
+
+      this.invalidateFlatPaths();
+      if (this.data.isSearching) {
+        this.applyFilter(this.data.filterKeyword);
+      }
+    },
+
+    keys() {
+      this.invalidateFlatPaths();
+      if (this.data.isSearching) {
+        this.applyFilter(this.data.filterKeyword);
+      }
+    },
+
+    filterable(v: boolean) {
+      if (!v && this.data.isSearching) {
+        this.resetFilter();
+      }
     },
     selectedIndexes() {
       const { visible, theme } = this.properties;
@@ -131,15 +246,15 @@ export default class Cascader extends SuperComponent {
 
   methods = {
     updateOptionsHeight(steps: number) {
-      const { contentHeight, stepsInitHeight, stepHeight, subTitlesHeight } = this.state;
+      const { contentHeight, stepsInitHeight, stepHeight, subTitlesHeight, filterHeight } = this.state;
       this.setData({
-        _optionsHeight: contentHeight - stepsInitHeight - subTitlesHeight - (steps - 1) * stepHeight,
+        _optionsHeight: contentHeight - stepsInitHeight - subTitlesHeight - filterHeight - (steps - 1) * stepHeight,
       });
     },
 
     async initOptionsHeight(steps: number) {
       const { classPrefix } = this.data;
-      const { theme, subTitles } = this.properties;
+      const { theme, subTitles, filterable } = this.properties;
 
       const { height } = await getRect(this, `.${classPrefix}__content`);
       this.state.contentHeight = height;
@@ -158,7 +273,12 @@ export default class Cascader extends SuperComponent {
         this.state.subTitlesHeight = height;
       }
 
-      const optionsInitHeight = this.state.contentHeight - this.state.subTitlesHeight;
+      if (filterable) {
+        const filterRect = await getRect(this, `.${classPrefix}__filter`);
+        this.state.filterHeight = filterRect.height;
+      }
+
+      const optionsInitHeight = this.state.contentHeight - this.state.subTitlesHeight - this.state.filterHeight;
       this.setData({
         _optionsHeight:
           theme === 'step'
@@ -219,6 +339,117 @@ export default class Cascader extends SuperComponent {
         this.triggerChange();
       }
       this.hide('close-btn');
+    },
+    invalidateFlatPaths() {
+      this.state.flatPaths = [];
+    },
+    ensureFlatPaths() {
+      let { flatPaths } = this.state;
+      if (!flatPaths || flatPaths.length === 0) {
+        const { options, keys } = this.data;
+        flatPaths = flattenPaths(options, keys);
+        this.state.flatPaths = flatPaths;
+      }
+      return flatPaths;
+    },
+    resetFilter() {
+      this.setData({
+        filterKeyword: '',
+        filterResults: [],
+        isSearching: false,
+      });
+    },
+    onFilterChange(e: { detail?: { value?: string } }) {
+      const value = e?.detail?.value ?? '';
+      if (!this.filterDebounced) {
+        this.filterDebounced = debounce((kw: string) => this.applyFilter(kw), 200);
+      }
+      this.filterDebounced(value);
+    },
+    onFilterClear() {
+      this.resetFilter();
+    },
+    applyFilter(rawKeyword: string) {
+      const keyword = String(rawKeyword ?? '').trim();
+      if (!keyword) {
+        this.resetFilter();
+        return;
+      }
+
+      const { keys, filter } = this.data;
+      const labelKey = keys?.label ?? 'label';
+      const userFilter = filter as CascaderFilterFunction | null;
+      const flat = this.ensureFlatPaths();
+      const results: FilterResult[] = [];
+
+      flat.forEach((entry: FlatPath) => {
+        const leaf = entry.path[entry.path.length - 1];
+        const matched =
+          typeof userFilter === 'function'
+            ? !!userFilter(keyword, leaf, entry.path)
+            : defaultFilter(keyword, leaf, entry.path, labelKey);
+        if (matched) {
+          results.push({
+            key: entry.key,
+            indexes: entry.indexes,
+            disabled: entry.disabled,
+            fragments: buildFragments(entry.labels, keyword),
+          });
+        }
+      });
+
+      this.setData({
+        filterKeyword: rawKeyword,
+        filterResults: results,
+        isSearching: true,
+      });
+    },
+    onFilterResultTap(e: { currentTarget: { dataset: { key: string } } }) {
+      const { key } = e.currentTarget.dataset;
+      const target = this.data.filterResults.find((item: FilterResult) => item.key === key);
+      if (!target || target.disabled) return;
+
+      const { indexes } = target;
+      const { items: newItems } = this.regenItemsByIndexes(indexes);
+
+      this.resetFilter();
+      this.setData(
+        {
+          items: newItems,
+          selectedIndexes: indexes,
+          stepIndex: indexes.length - 1,
+        },
+        () => this.triggerChange(),
+      );
+      this.hide('finish');
+    },
+    regenItemsByIndexes(selectedIndexes: number[]) {
+      const { options, keys, placeholder, globalConfig } = this.data;
+      const selectedValue: any[] = [];
+      const steps: string[] = [];
+      const items: any[] = [parseOptions(options, keys)];
+      const labelKey = keys?.label ?? 'label';
+      const valueKey = keys?.value ?? 'value';
+      const childrenKey = keys?.children ?? 'children';
+
+      let current: any[] = options as any[];
+      for (let i = 0, size = selectedIndexes.length; i < size; i += 1) {
+        const index = selectedIndexes[i];
+        const next = current[index];
+        selectedValue.push(next[valueKey]);
+        steps.push(next[labelKey]);
+        const children = next[childrenKey];
+        if (Array.isArray(children) && children.length > 0) {
+          items.push(parseOptions(children, keys));
+          current = children;
+        }
+      }
+
+      if (steps.length < items.length) {
+        steps.push(placeholder || globalConfig.placeholder);
+      }
+
+      return { selectedValue, steps, items };
     },
     onStepClick(e) {
       const { index } = e.currentTarget.dataset;

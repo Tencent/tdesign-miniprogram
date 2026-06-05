@@ -16,6 +16,8 @@ export default {
   cascader: {
     title: '标题',
     placeholder: '选择选项',
+    filterPlaceholder: '搜索',
+    empty: '暂无匹配项',
   },
   dropdownMenu: {
     reset: '重置',
@@ -96,6 +98,11 @@ export default {
     skip: '跳过',
     finish: '完成',
     back: '返回',
+  },
+  typography: {
+    expandText: '展开',
+    collapseText: '收起',
+    copiedText: '复制成功',
   },
   qrcode: {
     expiredText: '二维码过期',

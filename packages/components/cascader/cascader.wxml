@@ -14,65 +14,94 @@
     <slot name="header" />
 
     <view class="{{classPrefix}}__content">
-      <block wx:if="{{steps && steps.length}}">
-        <view wx:if="{{theme == 'step'}}" class="{{classPrefix}}__steps">
-          <view
-            wx:for="{{steps}}"
-            wx:key="index"
-            class="{{classPrefix}}__step"
-            bind:tap="onStepClick"
-            data-index="{{index}}"
-          >
+      <view wx:if="{{filterable}}" class="{{classPrefix}}__filter">
+        <t-search
+          value="{{filterKeyword}}"
+          placeholder="{{filterPlaceholder || globalConfig.filterPlaceholder}}"
+          bind:change="onFilterChange"
+          bind:clear="onFilterClear"
+        />
+      </view>
+
+      <block wx:if="{{!isSearching}}">
+        <block wx:if="{{steps && steps.length}}">
+          <view wx:if="{{theme == 'step'}}" class="{{classPrefix}}__steps">
             <view
-              class="{{classPrefix}}__step-dot {{classPrefix}}__step-dot--{{item !== placeholder ? 'active' : ''}} {{classPrefix}}__step-dot--{{index === steps.length - 1 ? 'last' : ''}}"
-            ></view>
-            <view
-              class="{{classPrefix}}__step-label {{classPrefix}}__step-label--{{index === stepIndex ? 'active' : ''}}"
+              wx:for="{{steps}}"
+              wx:key="index"
+              class="{{classPrefix}}__step"
+              bind:tap="onStepClick"
+              data-index="{{index}}"
             >
-              {{ item }}
+              <view
+                class="{{classPrefix}}__step-dot {{classPrefix}}__step-dot--{{item !== placeholder ? 'active' : ''}} {{classPrefix}}__step-dot--{{index === steps.length - 1 ? 'last' : ''}}"
+              ></view>
+              <view
+                class="{{classPrefix}}__step-label {{classPrefix}}__step-label--{{index === stepIndex ? 'active' : ''}}"
+              >
+                {{ item }}
+              </view>
+              <t-icon name="chevron-right" size="44rpx" t-class="{{classPrefix}}__step-arrow" />
             </view>
-            <t-icon name="chevron-right" size="44rpx" t-class="{{classPrefix}}__step-arrow" />
           </view>
-        </view>
-        <block wx:if="{{theme == 'tab'}}">
-          <t-tabs id="tabs" value="{{stepIndex}}" bind:change="onTabChange" space-evenly="{{false}}">
-            <t-tab-panel wx:for="{{steps}}" wx:key="index" value="{{index}}" label="{{item}}" />
-          </t-tabs>
+          <block wx:if="{{theme == 'tab'}}">
+            <t-tabs id="tabs" value="{{stepIndex}}" bind:change="onTabChange" space-evenly="{{false}}">
+              <t-tab-panel wx:for="{{steps}}" wx:key="index" value="{{index}}" label="{{item}}" />
+            </t-tabs>
+          </block>
         </block>
-      </block>
-      <slot name="middle-content" />
-      <view wx:if="{{ subTitles && subTitles[stepIndex] }}" class="{{classPrefix}}__options-title"
-        >{{subTitles[stepIndex]}}</view
-      >
-      <view
-        class="{{classPrefix}}__options-container"
-        style="width: {{items.length + 1}}00vw; transform: translateX(-{{stepIndex}}00vw)"
-      >
-        <scroll-view
-          wx:for="{{items}}"
-          wx:for-item="options"
-          wx:key="index"
-          class="{{classPrefix}}__options"
-          scroll-y
-          scroll-top="{{scrollTopList[index]}}"
-          type="list"
-          style="height: {{_optionsHeight}}px"
+        <slot name="middle-content" />
+        <view wx:if="{{ subTitles && subTitles[stepIndex] }}" class="{{classPrefix}}__options-title"
+          >{{subTitles[stepIndex]}}</view
         >
-          <view class="cascader-radio-group-{{index}}">
-            <t-radio-group
-              value="{{selectedValue[index]}}"
-              keys="{{keys}}"
-              options="{{options}}"
-              bind:change="handleSelect"
-              data-level="{{index}}"
-              placement="right"
-              icon="line"
-              borderless
-            >
-            </t-radio-group>
+        <view
+          class="{{classPrefix}}__options-container"
+          style="width: {{items.length + 1}}00vw; transform: translateX(-{{stepIndex}}00vw)"
+        >
+          <scroll-view
+            wx:for="{{items}}"
+            wx:for-item="options"
+            wx:key="index"
+            class="{{classPrefix}}__options"
+            scroll-y
+            scroll-top="{{scrollTopList[index]}}"
+            type="list"
+            style="height: {{_optionsHeight}}px"
+          >
+            <view class="cascader-radio-group-{{index}}">
+              <t-radio-group
+                value="{{selectedValue[index]}}"
+                keys="{{keys}}"
+                options="{{options}}"
+                bind:change="handleSelect"
+                data-level="{{index}}"
+                placement="right"
+                icon="line"
+                borderless
+              >
+              </t-radio-group>
+            </view>
+          </scroll-view>
+        </view>
+      </block>
+
+      <block wx:else>
+        <scroll-view wx:if="{{filterResults.length}}" class="{{classPrefix}}__filter-result" scroll-y type="list">
+          <view
+            wx:for="{{filterResults}}"
+            wx:key="key"
+            class="{{classPrefix}}__filter-result-item {{item.disabled ? classPrefix + '__filter-result-item--disabled' : ''}}"
+            hover-class="{{item.disabled ? '' : classPrefix + '__filter-result-item--hover'}}"
+            data-key="{{item.key}}"
+            bind:tap="onFilterResultTap"
+          >
+            <block wx:for="{{item.fragments}}" wx:for-item="frag" wx:key="id">
+              <text class="{{frag.highlight ? classPrefix + '__filter-highlight' : ''}}">{{frag.text}}</text>
+            </block>
           </view>
         </scroll-view>
-      </view>
+        <view wx:else class="{{classPrefix}}__filter-empty">{{globalConfig.empty}}</view>
+      </block>
     </view>
   </view>
 </t-popup>
