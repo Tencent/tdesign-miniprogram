@@ -11,10 +11,8 @@ updates:
     schedule:
       interval: 'monthly'
 
-  # Enable version updates for Docker
-  - package-ecosystem: 'docker'
-    # Look for a `Dockerfile` in the `root` directory
+  # Enable version updates for github actions
+  - package-ecosystem: 'github-actions'
     directory: '/'
-    # Check for updates once a week
     schedule:
       interval: 'monthly'
