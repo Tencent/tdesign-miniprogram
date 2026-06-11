@@ -1,7 +1,7 @@
 {
   "name": "tdesign-miniprogram-mono",
   "private": true,
-  "packageManager": "pnpm@10.27.0",
+  "packageManager": "pnpm@10.34.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/Tencent/tdesign-miniprogram"
