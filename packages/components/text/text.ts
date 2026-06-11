@@ -22,6 +22,7 @@ export default class Text extends SuperComponent {
     prefix,
     classPrefix: `${prefix}-${componentName}`,
     className: '',
+    _delete: false,
     isExpanded: false,
     isCopied: false,
   };
@@ -35,6 +36,9 @@ export default class Text extends SuperComponent {
   observers = {
     'theme, disabled'() {
       this.updateClass();
+    },
+    delete(val: boolean) {
+      this.setData({ _delete: val });
     },
   };
 
