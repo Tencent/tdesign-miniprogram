@@ -71,7 +71,7 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version-file: .node-version
-
+      - run: pnpm view @vue/shared@3.5.36
       - run: pnpm install
 
       - run: pnpm -C packages/tdesign-uniapp/site run site:preview
