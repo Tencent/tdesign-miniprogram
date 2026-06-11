@@ -44,7 +44,7 @@ catalog:
   '@vue/compiler-sfc': ^3.2.4
   '@vue/eslint-config-typescript': ^9.1.0
   '@vue/runtime-core': ^3.5.21
-  '@vue/shared': 3.3.8
+  '@vue/shared': ^3.5.21
   '@vue/test-utils': 2.4.1
   '@vue/tsconfig': ^0.7.0
   '@vueuse/core': 10.7.0
