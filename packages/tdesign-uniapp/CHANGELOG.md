@@ -5,6 +5,23 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.9.1 `2026-06-12`
+
+### 🚀 Features
+
+- `ActionSheet`: 新增 `preventScrollThrough` 属性 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `Form`: 新增 `contentAlign` 属性，支持配置表单内容对齐方式 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `ImageViewer`: 新增 `maxZoom` 属性，支持缩放 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `Search`: 支持 `v-model` 语法糖写法 @Kriac ([#4459](https://github.com/Tencent/tdesign-miniprogram/pull/4459))
+
+### 🐞 Bug Fixes
+
+- `Button`: 修复图标尺寸变量错误问题 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `Input`: 将 `change` 事件放在值更新之后 @Kriac ([#4443](https://github.com/Tencent/tdesign-miniprogram/pull/4443))
+- `Picker`: 修复按钮自定义文案无效 @liweijie0812 ([#4480](https://github.com/Tencent/tdesign-miniprogram/pull/4480))
+- `Table`: 修复列配置中的类名选项无效的问题 @betavs ([#4500](https://github.com/Tencent/tdesign-miniprogram/pull/4500))
+- `Upload`: 修复预览图片不是当前问题 @novlan1 ([#4473](https://github.com/Tencent/tdesign-miniprogram/pull/4473))
+
 ## 🌈 0.9.0 `2026-05-08`
 
 ### 🚀 Features
