@@ -48,6 +48,20 @@ export default class FormItem extends SuperComponent {
     form: {},
     colon: false,
     innerShowErrorMessage: true,
+    innerContentAlign: '',
+    contentStyle: '',
+  };
+
+  observers = {
+    contentAlign(val: string) {
+      // 自身传了 contentAlign 时，优先使用自身值
+      if (val) {
+        this.setData({
+          innerContentAlign: val,
+          contentStyle: `text-align: ${val}`,
+        });
+      }
+    },
   };
 
   relations: RelationsOptions = {
@@ -61,11 +75,16 @@ export default class FormItem extends SuperComponent {
         const formRules = target.data.rules?.[this.properties.name];
         const isRequired = formRules?.some((rule) => rule.required);
 
+        const { contentAlign } = this.properties;
+        const innerContentAlign = contentAlign || target.data.contentAlign || '';
+
         this.setData({
           formRules: formRules || [],
           colon: target.data.colon,
           innerLabelAlign: labelAlign || target.data.labelAlign,
           innerLabelWidth: normalizeLabelWidth(labelWidth || target.data.labelWidth),
+          innerContentAlign,
+          contentStyle: innerContentAlign ? `text-align: ${innerContentAlign}` : '',
           innerRequiredMark: requiredMark || target.data.requiredMark || globalConfig.requiredMark || isRequired,
           innerShowErrorMessage:
             typeof showErrorMessage === 'boolean' ? showErrorMessage : target.properties.showErrorMessage,

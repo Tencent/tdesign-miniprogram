@@ -58,7 +58,8 @@ Name | Default Value | Description
 --td-upload-add-disabled-bg-color | @bg-color-component-disabled | -
 --td-upload-add-icon-disabled-color | @text-color-disabled | -
 --td-upload-add-icon-size | 56rpx | -
---td-upload-disabled-mask | rgba(0, 0, 0, 0.6) | -
+--td-upload-background | @upload-add-bg-color | -
+--td-upload-disabled-mask | @mask-disabled | -
 --td-upload-drag-transition-duration | --td-upload-drag-transition-duration | -
 --td-upload-drag-transition-timing-function | --td-upload-drag-transition-timing-function | -
 --td-upload-drag-z-index | 999 | -

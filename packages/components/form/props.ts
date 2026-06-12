@@ -11,6 +11,11 @@ const props: TdFormProps = {
     type: Boolean,
     value: false,
   },
+  /** 表单内容对齐方式：左对齐、右对齐 */
+  contentAlign: {
+    type: String,
+    value: 'left',
+  },
   /** 表单数据 */
   data: {
     type: Object,
