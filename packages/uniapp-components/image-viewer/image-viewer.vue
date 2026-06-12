@@ -7,7 +7,6 @@
     :aria-modal="true"
     aria-role="dialog"
     aria-label="图片查看器"
-    @touchmove.stop.prevent="true"
   >
     <view
       :class="classPrefix + '__mask'"
@@ -15,6 +14,7 @@
       :style="'' + tools._style([backgroundColor && '--td-image-viewer-mask-bg-color: ' + backgroundColor])"
       aria-role="button"
       aria-label="关闭"
+      @touchmove.prevent="() => {}"
       @click="(e) => onClose(e, 'overlay')"
     />
     <block v-if="images && images.length">
@@ -33,21 +33,42 @@
             :key="index"
             :class="classPrefix + '__preview-image'"
           >
-            <t-image
-              v-if="!lazy || shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes)"
-              :t-class="prefix + '-image--external'"
-              :class="classPrefix + '__image'"
-              :custom-style="(imagesStyle[index] && imagesStyle[index].style) || ''"
-              :data-index="index"
-              :src="item"
-              :mode="(imageProps && imageProps.mode) || 'aspectFit'"
-              :lazy="(imageProps && imageProps.lazy) || false"
-              :loading="(imageProps && imageProps.loading) || 'default'"
-              :shape="(imageProps && imageProps.shape) || 'square'"
-              :webp="(imageProps && imageProps.webp) || false"
-              :show-menu-by-longpress="(imageProps && imageProps.showMenuByLongpress) || false"
-              @load="(e) => onImageLoadSuccess(e, { index })"
-            />
+            <movable-area
+              :class="classPrefix + '__movable-area'"
+              scale-area
+              @touchmove="onAreaTouchMove"
+            >
+              <movable-view
+                :class="classPrefix + '__movable-view'"
+                direction="all"
+                :scale="true"
+                :scale-min="1"
+                :scale-max="maxZoom"
+                :scale-value="index === currentSwiperIndex ? currentScale : 1"
+                :damping="100"
+                :friction="20"
+                :out-of-bounds="false"
+                :disabled="false"
+                @scale="onMovableScale"
+                @tap.stop="onImageDoubleTap(index)"
+              >
+                <t-image
+                  v-if="!lazy || shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes)"
+                  :t-class="prefix + '-image--external'"
+                  :class="classPrefix + '__image'"
+                  :custom-style="(imagesStyle[index] && imagesStyle[index].style) || ''"
+                  :data-index="index"
+                  :src="item"
+                  :mode="(imageProps && imageProps.mode) || 'aspectFit'"
+                  :lazy="(imageProps && imageProps.lazy) || false"
+                  :loading="(imageProps && imageProps.loading) || 'default'"
+                  :shape="(imageProps && imageProps.shape) || 'square'"
+                  :webp="(imageProps && imageProps.webp) || false"
+                  :show-menu-by-longpress="(imageProps && imageProps.showMenuByLongpress) || false"
+                  @load="(e) => onImageLoadSuccess(e, { index })"
+                />
+              </movable-view>
+            </movable-area>
           </swiper-item>
         </swiper>
       </view>
@@ -166,6 +187,8 @@ export default {
         iDeleteBtn: null,
         iCloseBtn: null,
         dataVisible: this.visible,
+        currentScale: 1,
+        lastTapTime: 0,
       };
     },
     watch: {
@@ -302,9 +325,44 @@ export default {
         const {
           detail: { current },
         } = e;
+        // 切换图片时重置缩放，避免上一张的缩放状态影响当前图
+        this.currentScale = 1;
         this.currentSwiperIndex = current;
 
         this._trigger('change', { index: current });
+      },
+
+      onMovableScale(e) {
+        const scale = e?.detail?.scale ?? 1;
+        this.currentScale = scale;
+      },
+
+      onAreaTouchMove(e) {
+        // 当图片处于缩放状态时，阻止 touchmove 冒泡到 swiper，避免误触翻页（H5 端兜底）
+        // movable-view 自身仍会响应拖动/pinch，不受影响
+        // 注：小程序端原生 swiper 滑动手势底层接管，stopPropagation 无效，留作平台限制
+        if (this.currentScale > 1) {
+          if (e && typeof e.stopPropagation === 'function') {
+            e.stopPropagation();
+          }
+          if (e && typeof e.preventDefault === 'function') {
+            e.preventDefault();
+          }
+        }
+      },
+
+      onImageDoubleTap(index) {
+        // 仅响应当前图片，避免影响其它 swiper-item
+        if (index !== this.currentSwiperIndex) return;
+        const now = Date.now();
+        if (now - this.lastTapTime < 300) {
+          // 双击：在 1 与 maxZoom 之间切换
+          const max = Number(this.maxZoom) || 3;
+          this.currentScale = this.currentScale > 1 ? 1 : max;
+          this.lastTapTime = 0;
+        } else {
+          this.lastTapTime = now;
+        }
       },
 
       onClose(e, source) {
