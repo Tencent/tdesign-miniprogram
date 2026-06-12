@@ -14,7 +14,7 @@ module.exports = function createUniappEslintConfig(rootDir) {
 
   return {
     root: true,
-    extends: ['eslint-config-light-vue3'],
+    extends: ['eslint-config-light-vue3', 'plugin:prettier/recommended'],
     globals: {
       getCurrentPages: true,
       uni: true,
@@ -50,6 +50,18 @@ module.exports = function createUniappEslintConfig(rootDir) {
           registeredComponentsOnly: true,
         },
       ],
+      'import/namespace': 0,
+      'import/order': 0,
+      'import/default': 0,
+      'import/no-duplicates': 0,
+      'import/no-named-as-default': 0,
+      'import/no-named-as-default-member': 0,
+      '@typescript-eslint/indent': 0,
+      'vue/html-closing-bracket-newline': 0,
+      'vue/html-indent': 0,
+      'vue/html-self-closing': 0,
+      'vue/max-attributes-per-line': 0,
+      'vue/singleline-html-element-content-newline': 0,
     },
   };
 };
