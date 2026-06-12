@@ -2,12 +2,11 @@
 
 @button-border-width: var(--td-button-border-width, 4rpx);
 @button-border-radius: var(--td-button-border-radius, @radius-default);
-@button-font-weight: var(--td-button-font-weight, 600);
 
-@button-extra-small-font-size: var(--td-button-extra-small-font-size, @font-size-base);
-@button-small-font-size: var(--td-button-small-font-size, @font-size-base);
-@button-medium-font-size: var(--td-button-medium-font-size, @font-size-m);
-@button-large-font-size: var(--td-button-large-font-size, @font-size-m);
+@button-extra-small-font: var(--td-button-extra-small-font, @font-mark-medium);
+@button-small-font: var(--td-button-small-font, @font-mark-medium);
+@button-medium-font: var(--td-button-medium-font, @font-mark-large);
+@button-large-font: var(--td-button-large-font, @font-mark-large);
 
 @button-extra-small-height: var(--td-button-extra-small-height, 56rpx);
 @button-small-height: var(--td-button-small-height, 64rpx);
@@ -128,13 +127,13 @@
 @button: ~'@{prefix}-button';
 
 .button-size(@size) {
-  @fontSize: 'button-@{size}-font-size';
+  @font: 'button-@{size}-font';
   @padding: 'button-@{size}-padding-horizontal';
   @height: 'button-@{size}-height';
   @iconSize: 'button-@{size}-icon-size';
 
   .@{button}--size-@{size} {
-    font-size: @@fontSize;
+    font: @@font;
     padding-left: @@padding;
     padding-right: @@padding;
     height: @@height;
@@ -251,8 +250,6 @@
   touch-action: manipulation;
   border-radius: @button-border-radius;
   outline: none;
-  font-family: PingFang SC, Microsoft YaHei, Arial Regular;
-  font-weight: @button-font-weight;
   vertical-align: top;
   box-sizing: border-box;
 
