@@ -41,7 +41,7 @@ t-class-split | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-countdown-bg-color | @error-color | -
 --td-countdown-default-color | @text-color-primary | -

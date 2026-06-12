@@ -22,6 +22,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
 colon | Boolean | false | \- | N
+content-align | String | left | options: left/right | N
 data | Object | {} | Typescript: `FormData` | N
 error-message | Object | - | Typescript: `FormErrorMessage` | N
 label-align | String | right | options: left/right/top | N
@@ -59,6 +60,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
 arrow | Boolean | false | \- | N
+content-align | String | - | options: left/right | N
 help | String | - | \- | N
 label | String | '' | \- | N
 label-align | String | - | options: left/right/top | N
@@ -120,7 +122,7 @@ whitespace | String | - | \- | N
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-form-bg-color | @bg-color-container | -
 --td-form-item-border-color | @component-stroke | -

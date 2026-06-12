@@ -160,10 +160,18 @@
   }
 
   // 表格样式
+  .@{chat-markdown-table} {
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: auto;
+  }
+
   .@{chat-markdown-table}__container {
     display: table;
-    width: 100%;
+    min-width: 100%;
+    max-width: max-content;
     border-collapse: collapse;
+    white-space: nowrap;
 
     // 表头组
     &-thead {

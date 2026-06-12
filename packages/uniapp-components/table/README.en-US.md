@@ -57,7 +57,7 @@ width | String / Number | - | column width | N
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-table-body-text-color | @text-color-primary | -
 --td-table-border-color | @component-border | -
@@ -66,7 +66,7 @@ Name | Default Value | Description
 --td-table-header-bg-color | @bg-color-container | -
 --td-table-header-text-color | @text-color-placeholder | -
 --td-table-loading-bg-color | rgba(255, 255, 255, 0.55) | -
---td-table-row-height | 41px | -
+--td-table-row-height | 82rpx | -
 --td-table-stripe-bg-color | @bg-color-secondarycontainer | -
---td-table-td-padding | 8px 12px | -
---td-table-th-padding | 8px 12px | -
+--td-table-td-padding | 16rpx 24rpx | -
+--td-table-th-padding | 16rpx 24rpx | -
