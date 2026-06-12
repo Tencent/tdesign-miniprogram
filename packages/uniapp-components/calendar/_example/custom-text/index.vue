@@ -8,9 +8,7 @@
       @click="(e) => handleCalendar(e, { type: 'single' })"
     />
 
-    <view class="demo-desc">
-      带双行描述的日历
-    </view>
+    <view class="demo-desc"> 带双行描述的日历 </view>
     <t-calendar
       :visible="visible"
       :value="type === 'single' ? singleValue : value"
@@ -18,7 +16,7 @@
       :max-date="maxDate"
       :format="type === 'single' ? singleFormat : format"
       :data-type="type"
-      @update:visible="(e) => visible = e"
+      @update:visible="(e) => (visible = e)"
       @confirm="(e) => handleConfirm(e, { type })"
     />
     <t-cell
@@ -101,11 +99,11 @@ export default {
 </script>
 <style>
 .demo-desc {
-    margin-top: 32rpx;
-    margin-bottom: 32rpx;
+  margin-top: 32rpx;
+  margin-bottom: 32rpx;
 }
 
 :deep(.is-holiday:not(.t-calendar__dates-item--selected)) {
-    color: #e34d59 !important;
+  color: #e34d59 !important;
 }
 </style>

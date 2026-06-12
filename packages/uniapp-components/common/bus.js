@@ -44,7 +44,7 @@ export default class Bus {
 
     const listeners = this.listeners.get(evtName) || [];
     // 使用副本避免执行时修改数组
-    [...listeners].forEach(func => func(...args));
+    [...listeners].forEach((func) => func(...args));
   }
 
   off(evtName, listener) {

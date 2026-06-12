@@ -1,11 +1,6 @@
 <template>
   <view class="example-search">
-    <t-search
-      v-model:value="value"
-      center
-      placeholder="搜索预设文案"
-      @change="onChange"
-    />
+    <t-search v-model:value="value" center placeholder="搜索预设文案" @change="onChange" />
   </view>
 </template>
 
@@ -30,7 +25,7 @@ export default {
 </script>
 <style>
 .example-search {
-    background-color: var(--bg-color-demo);
-    padding: 16rpx 32rpx;
+  background-color: var(--bg-color-demo);
+  padding: 16rpx 32rpx;
 }
 </style>

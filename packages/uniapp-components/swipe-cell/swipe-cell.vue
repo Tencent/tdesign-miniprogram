@@ -12,15 +12,8 @@
     @touchend="(e) => parseEventDynamicCode(e, skipMove ? '' : disabled || 'endDrag')"
     @touchcancel="(e) => parseEventDynamicCode(e, disabled || 'endDrag')"
   >
-    <view
-      id="wrapper"
-      ref="wrapper"
-      :style="wrapperStyle"
-    >
-      <view
-        :class="classPrefix + '__left'"
-        data-key="left"
-      >
+    <view id="wrapper" ref="wrapper" :style="wrapperStyle">
+      <view :class="classPrefix + '__left'" data-key="left">
         <slot name="left" />
         <view
           v-for="(item, index) in left"
@@ -30,9 +23,7 @@
           :data-action="item"
           @click.stop="onActionTap(item, 'left')"
         >
-          <block
-            v-if="item.icon"
-          >
+          <block v-if="item.icon">
             <t-icon
               :custom-style="item.icon.style || ''"
               :t-class="classPrefix + '__icon'"
@@ -46,19 +37,13 @@
             />
           </block>
 
-          <text
-            v-if="item.text"
-            :class="classPrefix + '__text'"
-          >
+          <text v-if="item.text" :class="classPrefix + '__text'">
             {{ item.text }}
           </text>
         </view>
       </view>
       <slot />
-      <view
-        :class="classPrefix + '__right'"
-        data-key="right"
-      >
+      <view :class="classPrefix + '__right'" data-key="right">
         <slot name="right" />
         <view
           v-for="(item, index) in right"
@@ -68,9 +53,7 @@
           :data-action="item"
           @click.stop="onActionTap(item, 'right')"
         >
-          <block
-            v-if="item.icon"
-          >
+          <block v-if="item.icon">
             <t-icon
               :custom-style="item.icon.style || ''"
               :t-class="classPrefix + '__icon'"
@@ -84,10 +67,7 @@
             />
           </block>
 
-          <text
-            v-if="item.text"
-            :class="classPrefix + '__text'"
-          >
+          <text v-if="item.text" :class="classPrefix + '__text'">
             {{ item.text }}
           </text>
         </view>
@@ -104,43 +84,33 @@ import tools from '../common/utils.wxs';
 import { getObserver } from '../common/wechat';
 import TIcon from '../icon/icon';
 
-import {
-  initLeftWidth,
-  initRightWidth,
-  startDrag,
-  onDrag,
-  endDrag,
-  onCloseChange,
-  onOpenedChange,
-} from './computed';
+import { initLeftWidth, initRightWidth, startDrag, onDrag, endDrag, onCloseChange, onOpenedChange } from './computed';
 import props from './props';
 
-
 let ARRAY = [];
-
 
 const name = `${prefix}-swipe-cell`;
 
 const ContainerClass = `.${name}`;
 
-const makeMethods = () => [
-  [initLeftWidth, 'initLeftWidth'],
-  [initRightWidth, 'initRightWidth'],
-  [startDrag, 'startDrag'],
-  [onDrag, 'onDrag'],
-  [endDrag, 'endDrag'],
-  [onCloseChange, 'onCloseChange'],
-  [onOpenedChange, 'onOpenedChange'],
-].reduce((acc, item) => {
-  const func = item[0];
-  return {
-    ...acc,
-    [item[1]](...args) {
-      func.call(this, ...args);
-    },
-  };
-}, {});
-
+const makeMethods = () =>
+  [
+    [initLeftWidth, 'initLeftWidth'],
+    [initRightWidth, 'initRightWidth'],
+    [startDrag, 'startDrag'],
+    [onDrag, 'onDrag'],
+    [endDrag, 'endDrag'],
+    [onCloseChange, 'onCloseChange'],
+    [onOpenedChange, 'onOpenedChange'],
+  ].reduce((acc, item) => {
+    const func = item[0];
+    return {
+      ...acc,
+      [item[1]](...args) {
+        func.call(this, ...args);
+      },
+    };
+  }, {});
 
 export default {
   components: {
@@ -151,9 +121,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     props: {
       ...props,
     },
@@ -194,22 +162,24 @@ export default {
       this.setSwipeWidth();
     },
     beforeUnmount() {
-      ARRAY = ARRAY.filter(e => e !== this);
+      ARRAY = ARRAY.filter((e) => e !== this);
     },
     methods: {
       ...makeMethods(),
       parseEventDynamicCode,
       setSwipeWidth() {
-        Promise.all([getRect(this, `${ContainerClass}__left`), getRect(this, `${ContainerClass}__right`)]).then(([leftRect, rightRect]) => {
-          if (leftRect.width === 0 && rightRect.width === 0 && !this._hasObserved) {
-            this._hasObserved = true;
-            getObserver(this, `.${name}`).then(() => {
-              this.setSwipeWidth();
-            });
-          }
-          this.state.leftWidth = leftRect.width;
-          this.state.rightWidth = rightRect.width;
-        });
+        Promise.all([getRect(this, `${ContainerClass}__left`), getRect(this, `${ContainerClass}__right`)]).then(
+          ([leftRect, rightRect]) => {
+            if (leftRect.width === 0 && rightRect.width === 0 && !this._hasObserved) {
+              this._hasObserved = true;
+              getObserver(this, `.${name}`).then(() => {
+                this.setSwipeWidth();
+              });
+            }
+            this.state.leftWidth = leftRect.width;
+            this.state.rightWidth = rightRect.width;
+          },
+        );
       },
 
       onSkipMove() {
@@ -229,7 +199,7 @@ export default {
       },
 
       closeOther() {
-        ARRAY.filter(item => item !== this).forEach(item => item.close());
+        ARRAY.filter((item) => item !== this).forEach((item) => item.close());
       },
 
       onTap() {

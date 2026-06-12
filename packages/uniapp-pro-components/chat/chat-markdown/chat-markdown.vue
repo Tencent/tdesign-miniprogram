@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="classPrefix + ' ' + classPrefix + '--normal'"
-    :style="'' + tools._style([customStyle])"
-  >
+  <view :class="classPrefix + ' ' + classPrefix + '--normal'" :style="'' + tools._style([customStyle])">
     <chat-markdown-node :nodes="nodes" />
   </view>
 </template>
@@ -23,7 +20,6 @@ import { Lexer as LexerUni } from '../npm/marked/uniapp';
 // #endif
 
 import props from './props';
-
 
 const name = `${prefix}-chat-markdown`;
 
@@ -103,7 +99,7 @@ export default {
     },
 
     methods: {
-    // 解析markdown文本
+      // 解析markdown文本
       parseMarkdown(markdown) {
         try {
           let lexer;
@@ -135,7 +131,6 @@ export default {
         }
       },
     },
-
   }),
 };
 </script>

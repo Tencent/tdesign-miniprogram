@@ -11,10 +11,7 @@
     >
       <view :class="classPrefix + '__icon--left'">
         <slot name="icon" />
-        <block
-          v-if="innerIcon"
-          name="icon"
-        >
+        <block v-if="innerIcon" name="icon">
           <t-icon
             :custom-style="innerIcon.style || ''"
             :t-class="tClassIcon"
@@ -63,15 +60,9 @@
         @complete="handleLinkClick"
       />
       <slot name="link" />
-      <view
-        :class="classPrefix + '__icon--right'"
-        @click="handleClose"
-      >
+      <view :class="classPrefix + '__icon--right'" @click="handleClose">
         <slot name="close-btn" />
-        <block
-          v-if="iCloseBtn"
-          name="icon"
-        >
+        <block v-if="iCloseBtn" name="icon">
           <t-icon
             :custom-style="iCloseBtn.style || ''"
             :t-class="tClassCloseBtn"
@@ -100,7 +91,6 @@ import TLink from '../link/link';
 import { messageDefaultData } from '../message/config';
 
 import { getMessageStyles } from './computed.js';
-
 
 const SHOW_DURATION = 400;
 const name = `${prefix}-message`;
@@ -144,13 +134,8 @@ export default {
       `${prefix}-class-link`,
       `${prefix}-class-close-btn`,
     ],
-    props: {
-    },
-    emits: [
-      'duration-end',
-      'close-btn-click',
-      'link-click',
-    ],
+    props: {},
+    emits: ['duration-end', 'close-btn-click', 'link-click'],
     data() {
       return {
         ...rawData,
@@ -192,7 +177,6 @@ export default {
         },
         immediate: true,
       },
-
 
       link: {
         handler(v) {
@@ -247,10 +231,7 @@ export default {
           this.loop -= 1;
         } else if (this.loop === 0) {
           // 动画回到初始位置
-          this.animation = this.resetAnimation
-            .translateX(0)
-            .step()
-            .export();
+          this.animation = this.resetAnimation.translateX(0).step().export();
           return;
         }
 
@@ -261,8 +242,7 @@ export default {
         const warpID = `#${name}__text-wrap`;
         const nodeID = `#${name}__text`;
         Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeRect, wrapRect]) => {
-          this.animation = this.resetAnimation.translateX(wrapRect.width).step()
-            .export();
+          this.animation = this.resetAnimation.translateX(wrapRect.width).step().export();
 
           setTimeout(() => {
             const durationTime = ((nodeRect.width + wrapRect.width) / speeding) * 1000;
@@ -319,8 +299,7 @@ export default {
                 this.fadeClass = '';
               });
             })
-            .catch(() => {
-            });
+            .catch(() => {});
         });
       },
 

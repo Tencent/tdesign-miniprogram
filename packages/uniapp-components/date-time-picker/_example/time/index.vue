@@ -1,8 +1,6 @@
 <template>
   <view>
-    <view class="demo-desc">
-      时分秒选择器
-    </view>
+    <view class="demo-desc"> 时分秒选择器 </view>
     <t-cell
       title="选择时间"
       hover
@@ -13,9 +11,7 @@
       @click="(e) => showPicker(e, { mode: 'second' })"
     />
 
-    <view class="demo-desc">
-      时分选择器
-    </view>
+    <view class="demo-desc"> 时分选择器 </view>
     <t-cell
       title="选择时间"
       hover
@@ -33,7 +29,7 @@
       :mode="['null', 'second']"
       :value="second"
       format="HH:mm:ss"
-      @update:visible="(e) => secondVisible = e"
+      @update:visible="(e) => (secondVisible = e)"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"
@@ -47,7 +43,7 @@
       :start="start"
       :value="minute"
       format="HH:mm"
-      @update:visible="(e) => minuteVisible = e"
+      @update:visible="(e) => (minuteVisible = e)"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"
@@ -101,6 +97,6 @@ export default {
 </script>
 <style>
 .panel-item {
-    margin: 32rpx 0;
+  margin: 32rpx 0;
 }
 </style>

@@ -1,9 +1,5 @@
 <template>
-  <t-qrcode
-    value="https://tdesign.tencent.com/"
-    level="M"
-    status="active"
-  />
+  <t-qrcode value="https://tdesign.tencent.com/" level="M" status="active" />
 </template>
 
 <script>

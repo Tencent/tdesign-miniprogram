@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import RadioDemo from '../radio.vue';
 export default {
   components: {

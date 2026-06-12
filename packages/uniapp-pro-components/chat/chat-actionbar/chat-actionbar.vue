@@ -1,18 +1,11 @@
 <template>
   <!-- 普通模式 -->
-  <view
-    v-if="placement !== 'longpress'"
-    :class="[classPrefix, placement]"
-    :style="'' + tools._style([customStyle])"
-  >
+  <view v-if="placement !== 'longpress'" :class="[classPrefix, placement]" :style="'' + tools._style([customStyle])">
     <view :class="classPrefix + '__inner ' + classPrefix + '__inner--column'">
       <view :class="classPrefix + '__left ' + classPrefix + '__item'">
         <slot name="prefix" />
       </view>
-      <block
-        v-for="(item, index) in actions"
-        :key="index"
-      >
+      <block v-for="(item, index) in actions" :key="index">
         <!-- 分享按钮使用 button 标签 -->
         <button
           v-if="item.name === 'share'"
@@ -22,10 +15,7 @@
           :data-chat-id="chatId"
           @click="handleActionClick"
         >
-          <t-icon
-            :name="item.isActive ? iconActiveMap[item.name] : iconMap[item.name]"
-            size="40rpx"
-          />
+          <t-icon :name="item.isActive ? iconActiveMap[item.name] : iconMap[item.name]" size="40rpx" />
         </button>
 
         <!-- 其他按钮使用 view 标签 -->
@@ -35,21 +25,14 @@
           :class="'' + tools.cls(classPrefix + '__item', [['active', item.isActive]])"
           @click="handleActionClick"
         >
-          <t-icon
-            :name="item.isActive ? iconActiveMap[item.name] : iconMap[item.name]"
-            size="40rpx"
-          />
+          <t-icon :name="item.isActive ? iconActiveMap[item.name] : iconMap[item.name]" size="40rpx" />
         </view>
       </block>
     </view>
   </view>
 
   <!-- 长按弹出层模式 -->
-  <view
-    v-else
-    :class="[classPrefix, classPrefix + '__popover-skeleton']"
-    :style="popoverPosition"
-  >
+  <view v-else :class="[classPrefix, classPrefix + '__popover-skeleton']" :style="popoverPosition">
     <t-popover
       ref="popover"
       placement="bottom"
@@ -68,10 +51,7 @@
             <view :class="classPrefix + '__left ' + classPrefix + '__item--popover'">
               <slot name="prefix" />
             </view>
-            <block
-              v-for="(item, index) in actions"
-              :key="index"
-            >
+            <block v-for="(item, index) in actions" :key="index">
               <!-- 分享按钮使用 button 标签 -->
               <button
                 v-if="item.name === 'share'"
@@ -81,10 +61,7 @@
                 :data-chat-id="chatId"
                 @click="handleActionClick"
               >
-                <t-icon
-                  :name="iconMap[item.name]"
-                  size="40rpx"
-                />
+                <t-icon :name="iconMap[item.name]" size="40rpx" />
                 <view :class="classPrefix + '__item__text'">
                   {{ item.text }}
                 </view>
@@ -223,18 +200,18 @@ export default {
 
     methods: {
       filterSpecialChars(content) {
-      // 保留段落、换行和缩进 - 不处理换行符和行首空白
+        // 保留段落、换行和缩进 - 不处理换行符和行首空白
         let result = content;
 
         // 先处理表格格式 - 保留表格语法
         const tableRegex = /^(\s*\|.*\|.*\n\s*\|[-: ]+\|.*\n(\s*\|.*\|.*\n)*)/gm;
         const tables = [];
         result = result.replace(tableRegex, (match) => {
-        // 在表格内容中去除特殊引用格式和强调语法
+          // 在表格内容中去除特殊引用格式和强调语法
           const cleanedTable = match
             .replace(/\[\d+(?:,\d+)*\]\(@ref\)/g, '')
             .replace(/(\*\*|__)(.*?)\1|(\*|_)(.*?)\3/g, '$2$4')
-          // 替换表格中的<br>标签为换行符
+            // 替换表格中的<br>标签为换行符
             .replace(/<br\s*\/?>/gi, '\n');
           tables.push(cleanedTable);
           return `%%TABLE${tables.length - 1}%%`; // 用占位符临时替换表格
@@ -347,16 +324,17 @@ export default {
             query.exec((res) => {
               const [rect] = res;
               if (rect) {
-              // 获取屏幕宽度
+                // 获取屏幕宽度
                 const systemInfo = uni.getSystemInfoSync();
                 const { screenWidth } = systemInfo;
                 const elementRightEdge = rect.left + rect.width;
 
                 if (elementRightEdge > screenWidth) {
-                // 超出右边界，调整到右侧
-                  this.popoverStyle = 'transition: none;position:fixed; left: unset !important; right: 16rpx !important;';
+                  // 超出右边界，调整到右侧
+                  this.popoverStyle =
+                    'transition: none;position:fixed; left: unset !important; right: 16rpx !important;';
                 } else if (rect.left <= 0) {
-                // 超出左边界，调整到左侧
+                  // 超出左边界，调整到左侧
                   this.popoverStyle = 'transition: none;position:fixed; left: 16rpx !important;';
                 }
               }

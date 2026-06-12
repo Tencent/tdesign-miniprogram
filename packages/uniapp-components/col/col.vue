@@ -1,10 +1,6 @@
 <template>
   <view
-    :class="[
-      tClass,
-      tools.cls(classPrefix, [span]),
-      (offset ? classPrefix + '--offset-' + offset : '')
-    ]"
+    :class="[tClass, tools.cls(classPrefix, [span]), offset ? classPrefix + '--offset-' + offset : '']"
     :style="'' + getColStyles(gutter, customStyle)"
   >
     <slot />
@@ -15,15 +11,12 @@ import { prefix } from '../common/config';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 import { uniComponent } from '../common/src/index';
 
-
 import tools from '../common/utils.wxs';
 
 import { getColStyles } from './computed.js';
 import props from './props';
 
-
 const name = `${prefix}-col`;
-
 
 export default {
   ...uniComponent({
@@ -50,7 +43,6 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./col.css"></style>
 <style scoped>

@@ -1,9 +1,6 @@
 <template>
   <view
-    :class="[
-      tools.cls(classPrefix, [['auto-size', column == 0]]),
-      tClass
-    ]"
+    :class="[tools.cls(classPrefix, [['auto-size', column == 0]]), tClass]"
     :style="'' + tools._style([gridItemStyle, customStyle])"
     :hover-class="hover ? classPrefix + '--hover' : ''"
     :hover-stay-time="200"
@@ -12,15 +9,9 @@
     :aria-describedby="describedbyID"
     @click="onClick"
   >
-    <view
-      :class="'' + tools.cls(classPrefix + '__wrapper', [layout])"
-      :style="gridItemWrapperStyle"
-    >
+    <view :class="'' + tools.cls(classPrefix + '__wrapper', [layout])" :style="gridItemWrapperStyle">
       <view
-        :class="[
-          tools.cls(classPrefix + '__content', [align, layout]),
-          tClassContent
-        ]"
+        :class="[tools.cls(classPrefix + '__content', [align, layout]), tClassContent]"
         :style="gridItemContentStyle"
       >
         <slot />
@@ -39,12 +30,7 @@
           :t-class-content="badgeProps.tClassContent"
           :t-class-count="badgeProps.tClassCount"
         >
-          <view
-            :class="[
-              tools.cls(classPrefix + '__image', [getImageSize(column), ['icon', icon]]),
-              tClassImage
-            ]"
-          >
+          <view :class="[tools.cls(classPrefix + '__image', [getImageSize(column), ['icon', icon]]), tClassImage]">
             <block v-if="image && image != 'slot'">
               <t-image
                 :t-class="tools.cls(classPrefix + '__image', [getImageSize(column)]) + ' ' + tClassImage"
@@ -65,13 +51,16 @@
               />
             </block>
             <slot name="image" />
-            <block
-              v-if="iconName || tools.isNoEmptyObj(iconData)"
-              name="icon"
-            >
+            <block v-if="iconName || tools.isNoEmptyObj(iconData)" name="icon">
               <t-icon
                 :custom-style="iconData.style || ''"
-                :t-class="classPrefix + '__icon ' + classPrefix + '__icon--' + (iconData.activeIdx == iconData.index ? 'active ' : ' ')"
+                :t-class="
+                  classPrefix +
+                  '__icon ' +
+                  classPrefix +
+                  '__icon--' +
+                  (iconData.activeIdx == iconData.index ? 'active ' : ' ')
+                "
                 :prefix="iconData.prefix"
                 :name="iconName || iconData.name"
                 :size="iconData.size"
@@ -86,28 +75,23 @@
         <view
           :id="describedbyID"
           :class="'' + tools.cls(classPrefix + '__words', [layout])"
-          :aria-label="ariaLabel
-            || (
-              (badgeProps && (badgeProps.dot || badgeProps.count))
-                ? text + ',' + description + ',' + tools.getBadgeAriaLabel({ ...(badgeProps || {}) })
-                : '')"
+          :aria-label="
+            ariaLabel ||
+            (badgeProps && (badgeProps.dot || badgeProps.count)
+              ? text + ',' + description + ',' + tools.getBadgeAriaLabel({ ...(badgeProps || {}) })
+              : '')
+          "
         >
           <view
             v-if="text"
-            :class="[
-              tools.cls(classPrefix + '__text', [getImageSize(column), layout]) + ' ',
-              tClassText
-            ]"
+            :class="[tools.cls(classPrefix + '__text', [getImageSize(column), layout]) + ' ', tClassText]"
           >
             {{ text }}
           </view>
           <slot name="text" />
           <view
             v-if="description"
-            :class="[
-              tools.cls(classPrefix + '__description', [getImageSize(column), layout]) + ' ',
-              tClassDescription
-            ]"
+            :class="[tools.cls(classPrefix + '__description', [getImageSize(column), layout]) + ' ', tClassDescription]"
           >
             {{ description }}
           </view>
@@ -132,10 +116,8 @@ import TImage from '../image/image';
 
 import props from './props';
 
-
 const name = `${prefix}-grid-item`;
 const getUniqueID = uniqueFactory('grid_item');
-
 
 const LinkTypes = {
   'redirect-to': 'redirectTo',
@@ -166,9 +148,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-      'click',
-    ],
+    emits: ['click'],
     data() {
       return {
         prefix,
@@ -251,14 +231,14 @@ export default {
         let { border } = this[RELATION_MAP.GridItem];
 
         if (!border) {
-        // 如果border的值没传或者是border的值为false
+          // 如果border的值没传或者是border的值为false
           return '';
         }
 
         if (!isObject(border)) {
           border = {};
         }
-        const { color = '#266FE8', width = 2, style = 'solid' } = border ;
+        const { color = '#266FE8', width = 2, style = 'solid' } = border;
 
         if (gutter) {
           return `border:${width}rpx ${style} ${color}`;

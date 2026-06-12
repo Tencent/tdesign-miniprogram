@@ -1,14 +1,6 @@
 <template>
   <view>
-    <t-button
-      variant="outline"
-      block
-      size="large"
-      theme="primary"
-      @click="openDrawerBase"
-    >
-      带底部插槽
-    </t-button>
+    <t-button variant="outline" block size="large" theme="primary" @click="openDrawerBase"> 带底部插槽 </t-button>
 
     <t-drawer
       :visible="visible"
@@ -17,21 +9,13 @@
       :items="sidebar"
       :using-custom-navbar="!isMPAlipay"
       :custom-navbar-height="gCustomNavbarHeight"
-      @update:visible="(e) => visible = e"
+      @update:visible="(e) => (visible = e)"
       @overlay-click="overlayClick"
       @item-click="itemClick"
     >
-      <template
-        #footer
-      >
+      <template #footer>
         <view class="button-host">
-          <t-button
-            size="large"
-            block
-            variant="outline"
-          >
-            操作
-          </t-button>
+          <t-button size="large" block variant="outline"> 操作 </t-button>
         </view>
       </template>
     </t-drawer>
@@ -111,6 +95,6 @@ export default {
 </script>
 <style>
 .button-host {
-    margin: 20rpx 32rpx 0;
+  margin: 20rpx 32rpx 0;
 }
 </style>

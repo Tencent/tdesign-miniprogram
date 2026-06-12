@@ -1,19 +1,13 @@
 <template>
   <view>
-    <t-cell
-      title="选择地区"
-      arrow
-      hover
-      :note="areaText"
-      @click="onAreaPicker"
-    />
+    <t-cell title="选择地区" arrow hover :note="areaText" @click="onAreaPicker" />
 
     <t-picker
       :visible="areaVisible"
       :value="areaValue"
       title="选择地区"
       :using-custom-navbar="!isMPAlipay"
-      @update:visible="(e) => areaVisible = e"
+      @update:visible="(e) => (areaVisible = e)"
       @change="onPickerChange"
       @pick="onColumnChange"
       @cancel="onPickerCancel"
@@ -33,7 +27,7 @@ import TPickerItem from '@tdesign/uniapp/picker-item/picker-item.vue';
 import { areaList } from './helper';
 
 const getOptions = (obj, filter) => {
-  const res = Object.keys(obj).map(key => ({
+  const res = Object.keys(obj).map((key) => ({
     value: key,
     label: obj[key],
   }));
@@ -97,7 +91,7 @@ export default {
     },
 
     getCities(provinceValue) {
-      const cities = getOptions(areaList.cities, city => match(city.value, provinceValue, 2));
+      const cities = getOptions(areaList.cities, (city) => match(city.value, provinceValue, 2));
       const counties = this.getCounties(cities[0].value);
       return {
         cities,
@@ -106,7 +100,7 @@ export default {
     },
 
     getCounties(cityValue) {
-      return getOptions(areaList.counties, county => match(county.value, cityValue, 4));
+      return getOptions(areaList.counties, (county) => match(county.value, cityValue, 4));
     },
 
     onPickerChange(e) {
@@ -114,7 +108,7 @@ export default {
       console.log('picker confirm:', e);
       this.areaVisible = false;
       this.areaValue = value;
-      this.areaText =  label.join(' ');
+      this.areaText = label.join(' ');
     },
 
     onPickerCancel(e) {
@@ -132,5 +126,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

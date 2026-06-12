@@ -1,16 +1,9 @@
 <template>
   <view>
-    <t-demo-navbar
-      title="Upload"
-    />
+    <t-demo-navbar title="Upload" />
     <view class="demo">
-      <t-demo-header
-        title="Upload 上传"
-        notice="渲染框架支持情况：WebView"
-      >
-        <template
-          #desc
-        >
+      <t-demo-header title="Upload 上传" notice="渲染框架支持情况：WebView">
+        <template #desc>
           <view>
             用于相册读取或拉起拍照的图片上传功能。
             <text style="color: var(--td-brand-color)">
@@ -20,56 +13,34 @@
           </view>
         </template>
       </t-demo-header>
-      <t-demo
-        title="01 组件类型"
-        desc="单选上传图片"
-      >
+      <t-demo title="01 组件类型" desc="单选上传图片">
         <view class="upload-demo">
-          <view class="upload-demo__title">
-            上传图片
-          </view>
+          <view class="upload-demo__title"> 上传图片 </view>
           <single-demo />
         </view>
       </t-demo>
-      <t-demo
-        desc="多选上传图片"
-      >
+      <t-demo desc="多选上传图片">
         <view class="upload-demo">
-          <view class="upload-demo__title">
-            上传图片
-          </view>
+          <view class="upload-demo__title"> 上传图片 </view>
           <multiple-demo />
         </view>
       </t-demo>
-      <t-demo
-        desc="长按拖拽排序图片"
-      >
+      <t-demo desc="长按拖拽排序图片">
         <view class="upload-demo">
-          <view class="upload-demo__title">
-            上传图片
-          </view>
+          <view class="upload-demo__title"> 上传图片 </view>
           <drag-demo />
         </view>
       </t-demo>
-      <t-demo
-        title="02 组件状态"
-        desc="加载状态"
-      >
+      <t-demo title="02 组件状态" desc="加载状态">
         <view class="upload-demo">
-          <view class="upload-demo__title">
-            上传图片
-          </view>
+          <view class="upload-demo__title"> 上传图片 </view>
           <status-demo />
         </view>
       </t-demo>
       <!-- #ifdef MP-WEIXIN -->
-      <t-demo
-        desc="从聊天记录上选"
-      >
+      <t-demo desc="从聊天记录上选">
         <view class="upload-demo">
-          <view class="upload-demo__title">
-            上传图片
-          </view>
+          <view class="upload-demo__title"> 上传图片 </view>
           <message-file />
         </view>
       </t-demo>
@@ -79,7 +50,6 @@
 </template>
 
 <script>
-
 import DragDemo from './drag/index.vue';
 import MessageFile from './messageFile/index.vue';
 import MultipleDemo from './multiple/index.vue';

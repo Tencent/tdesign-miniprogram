@@ -1,28 +1,27 @@
 <template>
   <view>
-    <view
-      :style="'' + tools._style([customStyle])"
-      :class="classPrefix + ' ' + tClass"
-    >
+    <view :style="'' + tools._style([customStyle])" :class="classPrefix + ' ' + tClass">
       <view
         :class="
-          classPrefix +'__input-box ' +
-            prefix + '-' +(focus ? 'is-focused' : 'not-focused') +
-            ' ' + classPrefix + '__input-box--' + (center ? 'center' : '') +
-            ' ' + classPrefix + '__input-box--' + shape +
-            ' ' + tClassInputContainer
+          classPrefix +
+          '__input-box ' +
+          prefix +
+          '-' +
+          (focus ? 'is-focused' : 'not-focused') +
+          ' ' +
+          classPrefix +
+          '__input-box--' +
+          (center ? 'center' : '') +
+          ' ' +
+          classPrefix +
+          '__input-box--' +
+          shape +
+          ' ' +
+          tClassInputContainer
         "
       >
-        <t-icon
-          v-if="leftIcon"
-          :name="leftIcon"
-          :t-class="prefix + '-icon ' + tClassLeft"
-          :aria-hidden="true"
-        />
-        <slot
-          v-else
-          name="left-icon"
-        />
+        <t-icon v-if="leftIcon" :name="leftIcon" :t-class="prefix + '-icon ' + tClassLeft" :aria-hidden="true" />
+        <slot v-else name="left-icon" />
         <input
           :type="type"
           name="input"
@@ -43,12 +42,20 @@
           :cursor-color="cursorColor"
           :placeholder="placeholder"
           :placeholder-style="placeholderStyle"
-          :placeholder-class="placeholderClass + ' ' + classPrefix + '__placeholder ' + classPrefix + '__placeholder--' + (center ? 'center' : 'normal')"
+          :placeholder-class="
+            placeholderClass +
+            ' ' +
+            classPrefix +
+            '__placeholder ' +
+            classPrefix +
+            '__placeholder--' +
+            (center ? 'center' : 'normal')
+          "
           @input="onInput"
           @focus="onFocus"
           @blur="onBlur"
           @confirm="onConfirm"
-        >
+        />
         <view
           v-if="dataValue !== '' && clearable && showClearIcon"
           :class="classPrefix + '__clear hotspot-expanded ' + tClassClear"
@@ -56,11 +63,7 @@
           aria-label="清除"
           @touchstart.stop.prevent="handleClear"
         >
-          <t-icon
-            name="close-circle-filled"
-            size="inherit"
-            color="inherit"
-          />
+          <t-icon name="close-circle-filled" size="inherit" color="inherit" />
         </view>
       </view>
       <view
@@ -71,10 +74,7 @@
       >
         {{ action }}
       </view>
-      <slot
-        v-else
-        name="action"
-      />
+      <slot v-else name="action" />
     </view>
     <view
       v-if="isSearching && resultList.length > 0 && !isSelected"
@@ -90,12 +90,8 @@
         aria-role="option"
         @click="(e) => onSelectOption(e, { index })"
       >
-        <template
-          #title
-        >
-          <rich-text
-            :nodes="highLight(item, dataValue)"
-          />
+        <template #title>
+          <rich-text :nodes="highLight(item, dataValue)" />
         </template>
       </t-cell>
     </view>
@@ -106,7 +102,6 @@ import TCell from '../cell/cell';
 import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 
-
 import { getCharacterLength, nextTick } from '../common/utils';
 import tools from '../common/utils.wxs';
 import TIcon from '../icon/icon';
@@ -116,7 +111,6 @@ import props from './props';
 // import { getInnerMaxLen } from '../input/utils';
 
 const name = `${prefix}-search`;
-
 
 export default {
   components: {
@@ -139,8 +133,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-    ],
+    emits: [],
     data() {
       return {
         classPrefix: name,
@@ -151,8 +144,8 @@ export default {
         tools,
 
         dataValue: this.value,
-      // innerMaxLen: -1,
-      // rawValue: '',
+        // innerMaxLen: -1,
+        // rawValue: '',
       };
     },
     watch: {
@@ -175,7 +168,7 @@ export default {
 
       dataValue: {
         handler() {
-        // this.updateInnerMaxLen();
+          // this.updateInnerMaxLen();
           this.updateClearIconVisible();
         },
       },
@@ -184,8 +177,8 @@ export default {
       disabled: 'updateClearIconVisible',
       readonly: 'updateClearIconVisible',
 
-    // maxcharacter: 'updateInnerMaxLen',
-    // maxlength: 'updateInnerMaxLen',
+      // maxcharacter: 'updateInnerMaxLen',
+      // maxlength: 'updateInnerMaxLen',
     },
     mounted() {
       this.updateClearIconVisible();
@@ -216,7 +209,6 @@ export default {
           value = characters;
         }
 
-
         nextTick().then(() => {
           this.dataValue = value;
           this.emitChange({
@@ -224,7 +216,7 @@ export default {
             trigger: 'input-change',
           });
         });
-      // this.updateInnerMaxLen();
+        // this.updateInnerMaxLen();
       },
 
       onFocus(e) {
@@ -270,30 +262,28 @@ export default {
         });
       },
       highLight,
-    // updateInnerMaxLen() {
-    //   // this.innerMaxLen = this.getInnerMaxLen();
-    // },
-    // getInnerMaxLen() {
-    //   const {
-    //     maxcharacter,
-    //     maxlength,
-    //     dataValue,
-    //     rawValue,
-    //     count,
-    //   } = this;
-    //   return getInnerMaxLen({
-    //     allowInputOverMax: false,
-    //     maxcharacter,
-    //     maxlength,
-    //     dataValue,
-    //     rawValue,
-    //     count,
-    //   });
-    // },
+      // updateInnerMaxLen() {
+      //   // this.innerMaxLen = this.getInnerMaxLen();
+      // },
+      // getInnerMaxLen() {
+      //   const {
+      //     maxcharacter,
+      //     maxlength,
+      //     dataValue,
+      //     rawValue,
+      //     count,
+      //   } = this;
+      //   return getInnerMaxLen({
+      //     allowInputOverMax: false,
+      //     maxcharacter,
+      //     maxlength,
+      //     dataValue,
+      //     rawValue,
+      //     count,
+      //   });
+      // },
     },
   }),
 };
-
-
 </script>
 <style scoped src="./search.css"></style>

@@ -1,9 +1,5 @@
 <template>
-  <view
-    :style="'' + tools._style([customStyle])"
-    :class="classPrefix + ' ' + tClass"
-    disable-scroll
-  >
+  <view :style="'' + tools._style([customStyle])" :class="classPrefix + ' ' + tClass" disable-scroll>
     <view
       :id="'id-' + classPrefix + '__bar'"
       :class="classPrefix + '__sidebar ' + tClassSidebar"
@@ -14,21 +10,19 @@
       <view
         v-for="(item, index) in innerIndexList"
         :key="index"
-        :class="[classPrefix + '__sidebar-item', dataCurrent === item ? classPrefix + '__sidebar-item' + '--active' : '', tClassSidebarItem]"
+        :class="[
+          classPrefix + '__sidebar-item',
+          dataCurrent === item ? classPrefix + '__sidebar-item' + '--active' : '',
+          tClassSidebarItem,
+        ]"
         :data-index="index"
         @click.stop="onClick(item, index)"
       >
-        <view
-          aria-role="button"
-          :aria-label="dataCurrent === item ? '已选中' + item : ''"
-        >
+        <view aria-role="button" :aria-label="dataCurrent === item ? '已选中' + item : ''">
           {{ getFirstCharacter(item, showFullIndex) }}
         </view>
 
-        <view
-          v-if="showTips && dataCurrent === item"
-          :class="classPrefix + '__sidebar-tips'"
-        >
+        <view v-if="showTips && dataCurrent === item" :class="classPrefix + '__sidebar-tips'">
           {{ dataCurrent }}
         </view>
       </view>
@@ -37,11 +31,9 @@
   </view>
 </template>
 <script>
-
 import { prefix } from '../common/config';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
 import { uniComponent } from '../common/src/index';
-
 
 import { getRect, throttle, systemInfo } from '../common/utils';
 import tools from '../common/utils.wxs';
@@ -50,13 +42,10 @@ import pageScrollMixin from '../mixins/page-scroll';
 import { getFirstCharacter } from './computed.js';
 import props from './props';
 
-
 const name = `${prefix}-indexes`;
 
-
 export default {
-  components: {
-  },
+  components: {},
   ...uniComponent({
     name,
     options: {
@@ -68,22 +57,12 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-sidebar`,
-      `${prefix}-class-sidebar-item`,
-    ],
-    mixins: [
-      pageScrollMixin(),
-      ParentMixin(RELATION_MAP.IndexesAnchor),
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-sidebar`, `${prefix}-class-sidebar-item`],
+    mixins: [pageScrollMixin(), ParentMixin(RELATION_MAP.IndexesAnchor)],
     props: {
       ...props,
     },
-    emits: [
-      'change',
-      'select',
-    ],
+    emits: ['change', 'select'],
     data() {
       return {
         prefix,
@@ -112,7 +91,7 @@ export default {
             this.setHeight(this.innerHeight);
           };
           if (!pre?.length) {
-          // 防止抖音小程序报错
+            // 防止抖音小程序报错
             setTimeout(() => {
               cb();
             }, 33);
@@ -187,15 +166,16 @@ export default {
       },
 
       getAllRect() {
-        this.getAnchorsRect().then(() => {
-          this.groupTop.forEach((item, index) => {
-            const next = this.groupTop[index + 1];
-            item.totalHeight = (next?.top || Infinity) - item.top;
-          });
+        this.getAnchorsRect()
+          .then(() => {
+            this.groupTop.forEach((item, index) => {
+              const next = this.groupTop[index + 1];
+              item.totalHeight = (next?.top || Infinity) - item.top;
+            });
 
-          const current = this.dataCurrent || this.innerIndexList[0];
-          this.setAnchorByCurrent(current, 'init');
-        })
+            const current = this.dataCurrent || this.innerIndexList[0];
+            this.setAnchorByCurrent(current, 'init');
+          })
           .catch((err) => {
             console.warn('err', err);
           });
@@ -203,31 +183,35 @@ export default {
       },
 
       getAnchorsRect() {
-        return Promise.all((this.children || [])
-          .map(child => getRect(child, `.${name}-anchor`)
-            .then((rect) => {
-              this.groupTop.push({
-                height: rect.height,
-                top: rect.top,
-                anchor: child.index,
-              });
-            })
-            .catch((err) => {
-              console.warn('err', err);
-            })));
+        return Promise.all(
+          (this.children || []).map((child) =>
+            getRect(child, `.${name}-anchor`)
+              .then((rect) => {
+                this.groupTop.push({
+                  height: rect.height,
+                  top: rect.top,
+                  anchor: child.index,
+                });
+              })
+              .catch((err) => {
+                console.warn('err', err);
+              }),
+          ),
+        );
       },
 
       getSidebarRect() {
-        getRect(this, `#id-${name}__bar`).then((rect) => {
-          const { top, height } = rect;
-          const { length } = this.innerIndexList;
+        getRect(this, `#id-${name}__bar`)
+          .then((rect) => {
+            const { top, height } = rect;
+            const { length } = this.innerIndexList;
 
-          this.sidebar = {
-            top,
-            height,
-            itemHeight: (height - (length - 1) * 2) / length, // margin = 2px
-          };
-        })
+            this.sidebar = {
+              top,
+              height,
+              itemHeight: (height - (length - 1) * 2) / length, // margin = 2px
+            };
+          })
           .catch((err) => {
             console.warn('err', err);
           });
@@ -249,7 +233,7 @@ export default {
 
         if (this.activeAnchor !== null && this.activeAnchor === current && !force) return;
 
-        const target = this.groupTop.find(item => item.anchor === current);
+        const target = this.groupTop.find((item) => item.anchor === current);
 
         if (target) {
           const scrollTop = target.top - stickyOffset;
@@ -313,7 +297,9 @@ export default {
 
         scrollTop += stickyOffset;
 
-        const curIndex = this.groupTop.findIndex(group => scrollTop >= group.top - group.height && scrollTop <= group.top + group.totalHeight - group.height);
+        const curIndex = this.groupTop.findIndex(
+          (group) => scrollTop >= group.top - group.height && scrollTop <= group.top + group.totalHeight - group.height,
+        );
 
         if (curIndex === -1) return;
 
@@ -339,7 +325,7 @@ export default {
                 child.anchorStyle = anchorStyle;
               }
             } else if (index + 1 === curIndex) {
-            // 两个 anchor 同时出现时的上一个
+              // 两个 anchor 同时出现时的上一个
               const anchorStyle = `transform: translate3d(0, ${
                 betwixt ? offset - curGroup.height : 0
               }px, 0); top: ${stickyOffset}px`;

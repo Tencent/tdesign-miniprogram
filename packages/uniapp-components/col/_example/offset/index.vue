@@ -2,19 +2,13 @@
   <view>
     <t-row gutter="16">
       <t-col span="8">
-        <view class="dark">
-          col-8
-        </view>
+        <view class="dark"> col-8 </view>
       </t-col>
       <t-col span="8">
-        <view class="dark">
-          col-8
-        </view>
+        <view class="dark"> col-8 </view>
       </t-col>
       <t-col span="8">
-        <view class="dark">
-          col-8
-        </view>
+        <view class="dark"> col-8 </view>
       </t-col>
     </t-row>
   </view>
@@ -37,19 +31,19 @@ export default {
 </script>
 <style scoped>
 .dark {
-    background-color: #0052d9;
+  background-color: #0052d9;
 }
 
 .light {
-    background-color: #366ef4;
+  background-color: #366ef4;
 }
 
 .dark,
 .light {
-    color: #fff;
-    font-size: 28rpx;
-    line-height: 96rpx;
-    margin-bottom: 32rpx;
-    text-align: center;
+  color: #fff;
+  font-size: 28rpx;
+  line-height: 96rpx;
+  margin-bottom: 32rpx;
+  text-align: center;
 }
 </style>

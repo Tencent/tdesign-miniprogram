@@ -1,13 +1,9 @@
 <template>
-  <form
-    :class="classPrefix + ' ' + tClass"
-    :style="'' + tools._style([customStyle])"
-  >
+  <form :class="classPrefix + ' ' + tClass" :style="'' + tools._style([customStyle])">
     <slot />
   </form>
 </template>
 <script>
-
 import { prefix } from '../common/config';
 
 import { ParentMixin, RELATION_MAP } from '../common/relation';
@@ -30,9 +26,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     mixins: [ParentMixin(RELATION_MAP.FormItem)],
     props: {
       ...props,
@@ -53,7 +47,7 @@ export default {
     },
 
     methods: {
-    // 初始化表单数据
+      // 初始化表单数据
       initFormData() {
         const { data } = this;
         // 确保 data 不为 undefined 或 null
@@ -70,7 +64,7 @@ export default {
       // 注册子组件
       registerChild(child) {
         const { children } = this;
-        if (!children.find(item => item.name === child.name)) {
+        if (!children.find((item) => item.name === child.name)) {
           children.push(child);
           this.children = children;
         }
@@ -79,7 +73,7 @@ export default {
       // 注销子组件
       unregisterChild(childName) {
         const { children } = this;
-        const index = children.findIndex(item => item.name === childName);
+        const index = children.findIndex((item) => item.name === childName);
         if (index > -1) {
           children.splice(index, 1);
           this.children = children;
@@ -101,8 +95,8 @@ export default {
         const { children } = this;
         const { data } = this;
         const validatePromises = children
-          .filter(child => needValidate(`${child.name}`, fields))
-          .map(child => child.validate(data, trigger, showErrorMessage));
+          .filter((child) => needValidate(`${child.name}`, fields))
+          .map((child) => child.validate(data, trigger, showErrorMessage));
 
         try {
           const results = await Promise.all(validatePromises);
@@ -131,7 +125,7 @@ export default {
         if (!firstErrorKey) return;
 
         const { children } = this;
-        const errorChild = children.find(child => child.name === firstErrorKey);
+        const errorChild = children.find((child) => child.name === firstErrorKey);
         if (!errorChild) return;
 
         errorChild.scrollIntoView(scrollToFirstError);
@@ -149,7 +143,7 @@ export default {
             }
             return true;
           })
-          .map(child => child.validateOnly(trigger));
+          .map((child) => child.validateOnly(trigger));
 
         try {
           const results = await Promise.all(validatePromises);
@@ -231,7 +225,7 @@ export default {
         const { children, initialData, formData } = this;
 
         children
-          .filter(child => needValidate(`${child.name}`, fields))
+          .filter((child) => needValidate(`${child.name}`, fields))
           .forEach((child) => {
             if (resetType === 'empty') {
               this.updateFormData(child.name, this.getEmptyValue(child.name));
@@ -297,6 +291,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./form.css"></style>

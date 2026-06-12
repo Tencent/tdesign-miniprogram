@@ -8,10 +8,8 @@ const { writeFileSync } = require('t-comm');
 const { PACKAGES_ROOT, toGlobPattern } = require('../release/config');
 const { toPascal } = require('../utils/utils');
 
-
 // 基于 __dirname 推算项目根目录（脚本位于 packages/tdesign-uniapp/example/script/types/）
 const PROJECT_ROOT = path.resolve(__dirname, '../../../../../');
-
 
 const CONFIG = {
   pkgJsonPath: path.resolve(PACKAGES_ROOT, 'tdesign-uniapp/package.json'),
@@ -86,12 +84,12 @@ const BASE_EXTRA_EXPORTS = {
 };
 
 function getOtherExports(isChat) {
-  return isChat
-    ? { ...COMMON_EXPORTS }
-    : { ...COMMON_EXPORTS, ...BASE_EXTRA_EXPORTS };
+  return isChat ? { ...COMMON_EXPORTS } : { ...COMMON_EXPORTS, ...BASE_EXTRA_EXPORTS };
 }
 
-const getDTSTemplate = isChat => `import type { TransformEventHandlers, ExtractNonOnProps } from '${isChat ? '@tdesign/uniapp' : '..'}/common/common';
+const getDTSTemplate = (
+  isChat,
+) => `import type { TransformEventHandlers, ExtractNonOnProps } from '${isChat ? '@tdesign/uniapp' : '..'}/common/common';
 import type { Td{{Component}}Props } from '../{{component}}/type';
 
 export type {{Component}}Props = ExtractNonOnProps<Td{{Component}}Props>;
@@ -109,7 +107,6 @@ const GLOBAL_DTS_TEMPLATE = `declare module 'vue' {
 export {};
 `;
 
-
 function checkFileExists(filePath, label) {
   if (!fs.existsSync(filePath)) {
     console.error(`[types] 错误: ${label} 不存在: ${filePath}`);
@@ -117,14 +114,7 @@ function checkFileExists(filePath, label) {
   }
 }
 
-async function genOnProject({
-  pkgGlob,
-  pkgJsonPath,
-  dtsDir,
-  indexPath,
-  globalDTSPath,
-  isChat,
-}) {
+async function genOnProject({ pkgGlob, pkgJsonPath, dtsDir, indexPath, globalDTSPath, isChat }) {
   const label = isChat ? 'chat' : 'base';
   console.log(`[types][${label}] 开始生成, glob: ${pkgGlob}`);
 
@@ -148,7 +138,7 @@ async function genOnProject({
     process.exit(1);
   }
 
-  const fileNames = filtered.map(item => item.split(path.sep)[item.split(path.sep).length - 2]);
+  const fileNames = filtered.map((item) => item.split(path.sep)[item.split(path.sep).length - 2]);
   fileNames.sort();
 
   console.log(`[types][${label}] 找到 ${fileNames.length} 个组件: ${fileNames.join(', ')}`);
@@ -183,31 +173,32 @@ async function main() {
   });
 }
 
-
 function changePkgExports(fileNames, pkgJsonPath, isChat, label) {
   const otherExports = getOtherExports(isChat);
-  const exportsType = fileNames.reduce((acc, item) => {
-    const key = `./${item}/${item}.vue`;
-    const source = `./dist/${item}/${item}.vue`;
+  const exportsType = fileNames.reduce(
+    (acc, item) => {
+      const key = `./${item}/${item}.vue`;
+      const source = `./dist/${item}/${item}.vue`;
 
-    return {
-      ...acc,
-      [key]: {
-        types: `./dist/types/${item}.d.ts`,
-        import: source,
-        default: source,
-      },
-    };
-  }, {
-    ...otherExports,
-  });
+      return {
+        ...acc,
+        [key]: {
+          types: `./dist/types/${item}.d.ts`,
+          import: source,
+          default: source,
+        },
+      };
+    },
+    {
+      ...otherExports,
+    },
+  );
 
   const pkgJson = require(pkgJsonPath);
   pkgJson.exports = exportsType;
   writeFileSync(pkgJsonPath, `${JSON.stringify(pkgJson, null, 2)}\n`);
   console.log(`[types][${label}] 更新 package.json exports: ${Object.keys(exportsType).length} 条`);
 }
-
 
 function genDTS({ list, dtsDir, isChat, label }) {
   if (!fs.existsSync(dtsDir)) {
@@ -228,43 +219,43 @@ function genDTS({ list, dtsDir, isChat, label }) {
 const EXTRA_INDEX_EXPORTS = [
   '',
   '// mixins',
-  'export { handlePageScroll } from \'../mixins/page-scroll\';',
+  "export { handlePageScroll } from '../mixins/page-scroll';",
   '',
   '// 函数式调用',
-  'export { default as DialogPlugin } from \'../dialog/index\';',
-  'export { default as Dialog } from \'../dialog/index\';',
-  'export { default as MessagePlugin } from \'../message/index\';',
-  'export { default as Message } from \'../message/index\';',
-  'export { default as Toast, showToast, hideToast } from \'../toast/index\';',
-  'export { default as ToastPlugin } from \'../toast/index\';',
-  'export type { ToastOptionsType } from \'../toast/index\';',
-  'export { default as ActionSheetPlugin, ActionSheetTheme } from \'../action-sheet/index\';',
-  'export { default as ActionSheet } from \'../action-sheet/index\';',
-  'export type { ActionSheetShowOption } from \'../action-sheet/show\';',
+  "export { default as DialogPlugin } from '../dialog/index';",
+  "export { default as Dialog } from '../dialog/index';",
+  "export { default as MessagePlugin } from '../message/index';",
+  "export { default as Message } from '../message/index';",
+  "export { default as Toast, showToast, hideToast } from '../toast/index';",
+  "export { default as ToastPlugin } from '../toast/index';",
+  "export type { ToastOptionsType } from '../toast/index';",
+  "export { default as ActionSheetPlugin, ActionSheetTheme } from '../action-sheet/index';",
+  "export { default as ActionSheet } from '../action-sheet/index';",
+  "export type { ActionSheetShowOption } from '../action-sheet/show';",
 ];
 
 function genIndexContent(fileNames, indexPath, isChat, label) {
   const content = Array.from(new Set(fileNames))
-    .filter(item => !CONFIG.filterTypes.includes(item))
-    .map(item => `export * from '../${item}/type';`);
+    .filter((item) => !CONFIG.filterTypes.includes(item))
+    .map((item) => `export * from '../${item}/type';`);
 
   // 仅 base 包追加函数式调用和 mixins 的额外导出
   const fullContent = isChat ? content : [...content, ...EXTRA_INDEX_EXPORTS];
   writeFileSync(indexPath, `${fullContent.join('\n')}\n`);
 
-  const extraCount = isChat ? 0 : EXTRA_INDEX_EXPORTS.filter(l => l.startsWith('export')).length;
+  const extraCount = isChat ? 0 : EXTRA_INDEX_EXPORTS.filter((l) => l.startsWith('export')).length;
   console.log(`[types][${label}] 生成 index.d.ts: ${content.length} 条组件 export + ${extraCount} 条额外 export`);
 }
 
 function getGlobalDTS(fileNames, globalDTSPath, isChat, label) {
   const pkgName = isChat ? '@tdesign/uniapp-chat' : '@tdesign/uniapp';
-  const content = Array.from(new Set(fileNames))
-    .map(item => `T${toPascal(item)}: typeof import('${pkgName}/${item}/${item}.vue').default;`);
+  const content = Array.from(new Set(fileNames)).map(
+    (item) => `T${toPascal(item)}: typeof import('${pkgName}/${item}/${item}.vue').default;`,
+  );
 
   const result = GLOBAL_DTS_TEMPLATE.replace('{{CONTENT}}', content.join('\n    '));
   writeFileSync(globalDTSPath, result);
   console.log(`[types][${label}] 生成 global.d.ts: ${content.length} 个组件 -> ${globalDTSPath}`);
 }
-
 
 main();

@@ -3,7 +3,7 @@ export const isEmptyObj = function (obj) {
 };
 
 const changeNumToStr = function (arr) {
-  return arr.map(item => (typeof item === 'number' ? `${item}rpx` : item));
+  return arr.map((item) => (typeof item === 'number' ? `${item}rpx` : item));
 };
 
 export const getMessageStyles = function (zIndex, offset, wrapTop) {
@@ -20,4 +20,3 @@ export const getMessageStyles = function (zIndex, offset, wrapTop) {
 
   return zIndexStyle + styleOffset;
 };
-

@@ -1,11 +1,6 @@
 <template>
   <view>
-    <t-calendar
-      title="日历标题"
-      :use-popup="false"
-      type="multiple"
-      @select="handleSelect"
-    />
+    <t-calendar title="日历标题" :use-popup="false" type="multiple" @select="handleSelect" />
   </view>
 </template>
 
@@ -27,5 +22,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

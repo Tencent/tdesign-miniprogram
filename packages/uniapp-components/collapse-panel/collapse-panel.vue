@@ -1,11 +1,5 @@
 <template>
-  <view
-    :style="'' + tools._style([customStyle])"
-    :class="[
-      classPrefix + ' ' + classPrefix + '--' + placement,
-      tClass
-    ]"
-  >
+  <view :style="'' + tools._style([customStyle])" :class="[classPrefix + ' ' + classPrefix + '--' + placement, tClass]">
     <view
       :class="classPrefix + '__title'"
       aria-role="button"
@@ -23,52 +17,42 @@
         :t-class-title="'class-title ' + (ultimateDisabled ? 'class-title--disabled' : '')"
         :t-class-note="'class-note ' + (ultimateDisabled ? 'class-note--disabled' : '')"
         :t-class-left-icon="'class-left-icon ' + (ultimateDisabled ? 'class-left-icon--disabled' : '')"
-        :t-class-right-icon="'class-right-icon ' + classPrefix + '__arrow--' + placement + ' ' + (ultimateDisabled ? 'class-right-icon--disabled' : '')"
+        :t-class-right-icon="
+          'class-right-icon ' +
+          classPrefix +
+          '__arrow--' +
+          placement +
+          ' ' +
+          (ultimateDisabled ? 'class-right-icon--disabled' : '')
+        "
         t-class-hover="class-header-hover"
         :title-style="titleCustomStyle"
         :note-style="noteCustomStyle"
         :right-icon-style="rightIconCustomStyle"
       >
-        <template
-          v-if="$slots['header-left-icon']"
-          #left-icon
-        >
-          <slot
-            name="header-left-icon"
-          />
+        <template v-if="$slots['header-left-icon']" #left-icon>
+          <slot name="header-left-icon" />
         </template>
-        <template
-          v-if="$slots['header']"
-          #title
-        >
-          <slot
-            name="header"
-          />
+        <template v-if="$slots['header']" #title>
+          <slot name="header" />
         </template>
-        <template
-          v-if="$slots['header-right-content']"
-          #note
-        >
-          <slot
-            name="header-right-content"
-          />
+        <template v-if="$slots['header-right-content']" #note>
+          <slot name="header-right-content" />
         </template>
-        <template
-          v-if="$slots['expand-icon']"
-          #right-icon
-        >
-          <slot
-            name="expand-icon"
-          />
+        <template v-if="$slots['expand-icon']" #right-icon>
+          <slot name="expand-icon" />
         </template>
       </t-cell>
     </view>
-    <view
-      :class="classPrefix + '__wrapper'"
-      :animation="animation"
-      :aria-hidden="expanded ? '' : true"
-    >
-      <view :class="'' + tools.cls(classPrefix + '__content', [['disabled', ultimateDisabled], ['expanded', expanded], placement]) + ' ' + tClassContent">
+    <view :class="classPrefix + '__wrapper'" :animation="animation" :aria-hidden="expanded ? '' : true">
+      <view
+        :class="
+          '' +
+          tools.cls(classPrefix + '__content', [['disabled', ultimateDisabled], ['expanded', expanded], placement]) +
+          ' ' +
+          tClassContent
+        "
+      >
         {{ content }}
         <slot />
         <slot name="content" />
@@ -99,11 +83,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-content`,
-      `${prefix}-class-header`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-content`, `${prefix}-class-header`],
     mixins: [ChildrenMixin(RELATION_MAP.CollapsePanel)],
     props: {
       ...props,
@@ -130,7 +110,6 @@ export default {
       noteCustomStyle() {
         return tools._style({
           color: this.ultimateDisabled && DISABLED_COLOR,
-
         });
       },
       rightIconCustomStyle() {
@@ -169,7 +148,7 @@ export default {
 
       updateStyle(expanded) {
         return getRect(this, `.${name}__content`)
-          .then(rect => rect.height)
+          .then((rect) => rect.height)
           .then((height) => {
             const animation = uni.createAnimation({
               duration: 0,
@@ -177,43 +156,27 @@ export default {
             });
 
             if (expanded) {
-              animation
-                .height(height)
-                .top(0)
-                .step({ duration: 300 })
-                .height('auto')
-                .step();
+              animation.height(height).top(0).step({ duration: 300 }).height('auto').step();
             } else {
               let doAnimation = false;
 
               // #ifdef H5 || APP
-              animation
-                .height(height)
-                .top(1)
-                .step({ duration: 17 })
-                .height(0)
-                .step({ duration: 300 });
+              animation.height(height).top(1).step({ duration: 17 }).height(0).step({ duration: 300 });
               doAnimation = true;
               // #endif
 
               if (!doAnimation) {
-                animation
-                  .height(height)
-                  .top(1)
-                  .step({ duration: 1 })
-                  .height(0)
-                  .step({ duration: 300 });
+                animation.height(height).top(1).step({ duration: 1 }).height(0).step({ duration: 300 });
               }
             }
 
-            this.animation =  animation.export();
+            this.animation = animation.export();
           });
       },
 
       onClick() {
         const { ultimateDisabled } = this;
         const { value } = this;
-
 
         if (ultimateDisabled) return;
 
@@ -225,11 +188,10 @@ export default {
       },
 
       innerAfterLinked() {
-        const { dataValue, expandIcon, disabled } =  this[RELATION_MAP.CollapsePanel];
+        const { dataValue, expandIcon, disabled } = this[RELATION_MAP.CollapsePanel];
 
         this.ultimateExpandIcon = this.expandIcon == null ? expandIcon : this.expandIcon;
         this.ultimateDisabled = this.disabled == null ? disabled : this.disabled;
-
 
         let interval = 0;
         // #ifdef APP
@@ -242,6 +204,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./collapse-panel.css"></style>

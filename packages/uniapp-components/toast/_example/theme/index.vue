@@ -1,37 +1,11 @@
 <template>
   <view>
-    <t-toast
-      ref="t-toast"
-    />
+    <t-toast ref="t-toast" />
 
     <view class="box">
-      <t-button
-        theme="primary"
-        size="large"
-        variant="outline"
-        block
-        @click="showSuccessToast"
-      >
-        成功提示
-      </t-button>
-      <t-button
-        theme="primary"
-        size="large"
-        variant="outline"
-        block
-        @click="showWarningToast"
-      >
-        警告提示
-      </t-button>
-      <t-button
-        theme="primary"
-        size="large"
-        variant="outline"
-        block
-        @click="showErrorToast"
-      >
-        错误提示
-      </t-button>
+      <t-button theme="primary" size="large" variant="outline" block @click="showSuccessToast"> 成功提示 </t-button>
+      <t-button theme="primary" size="large" variant="outline" block @click="showWarningToast"> 警告提示 </t-button>
+      <t-button theme="primary" size="large" variant="outline" block @click="showErrorToast"> 错误提示 </t-button>
     </view>
   </view>
 </template>
@@ -81,5 +55,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

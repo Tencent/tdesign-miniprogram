@@ -45,11 +45,11 @@ export default {
   },
   formatList: {
     type: Array,
-    default: () => ([]),
+    default: () => [],
   },
   innerSwatchList: {
     type: Array,
-    default: () => ([]),
+    default: () => [],
   },
   format: {
     type: String,

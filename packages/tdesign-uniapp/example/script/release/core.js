@@ -4,12 +4,7 @@ const path = require('path');
 const { processLess } = require('./less');
 const { processTs } = require('./typescript');
 
-
-async function copy({
-  relativePath,
-  filePath,
-  config,
-}) {
+async function copy({ relativePath, filePath, config }) {
   // 兼容 Windows：glob 返回 / 分隔的路径，统一用 / 分割
   const normalizedRelativePath = relativePath.split(path.sep).join('/');
   const isDemo = normalizedRelativePath.split('/')[1] === '_example';

@@ -56,7 +56,7 @@ export const cmyk2rgb = (cyan, magenta, yellow, black) => {
   };
 };
 const REG_CMYK_STRING = /cmyk\((\d+%?),(\d+%?),(\d+%?),(\d+%?)\)/;
-const toNumber = str => Math.max(0, Math.min(255, parseInt(str, 10)));
+const toNumber = (str) => Math.max(0, Math.min(255, parseInt(str, 10)));
 /**
  * 输入色转rgb
  * @param input
@@ -75,4 +75,3 @@ export const cmykInputToColor = (input) => {
   }
   return input;
 };
-

@@ -7,22 +7,38 @@
     aria-role="switch"
     @click="handleSwitch"
   >
-    <view :class="'' + tools.cls(classPrefix + '__body', [['checked', checked], ['disabled', disabled || loading], size]) + ' ' + tClassBody">
+    <view
+      :class="
+        '' +
+        tools.cls(classPrefix + '__body', [['checked', checked], ['disabled', disabled || loading], size]) +
+        ' ' +
+        tClassBody
+      "
+    >
       <view
-        :class="'' + tools.cls(classPrefix + '__dot', [['checked', checked], ['disabled', disabled], ['plain', label.length != 2 && icon.length != 2 && !loading], size]) +
+        :class="
+          '' +
+          tools.cls(classPrefix + '__dot', [
+            ['checked', checked],
+            ['disabled', disabled],
+            ['plain', label.length != 2 && icon.length != 2 && !loading],
+            size,
+          ]) +
           ' ' +
-          tClassDot"
+          tClassDot
+        "
         :aria-hidden="true"
       >
         <view
           v-if="label"
-          :class="'' + tools.cls(classPrefix + '__label', [['checked', checked], ['disabled', disabled], size]) + ' ' + tClassLabel"
+          :class="
+            '' +
+            tools.cls(classPrefix + '__label', [['checked', checked], ['disabled', disabled], size]) +
+            ' ' +
+            tClassLabel
+          "
         >
-          <t-loading
-            v-if="loading"
-            inherit-color
-            size="32rpx"
-          />
+          <t-loading v-if="loading" inherit-color size="32rpx" />
           <text v-else-if="label.length == 2">
             {{ checked ? label[0] : label[1] }}
           </text>
@@ -46,7 +62,6 @@ import TLoading from '../loading/loading';
 
 import props from './props';
 
-
 const name = `${prefix}-switch`;
 
 export default {
@@ -65,12 +80,7 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-label`,
-      `${prefix}-class-body`,
-      `${prefix}-class-dot`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-label`, `${prefix}-class-body`, `${prefix}-class-dot`],
     props: {
       ...props,
     },
@@ -101,9 +111,7 @@ export default {
         immediate: true,
       },
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
       handleSwitch() {
         const { loading, disabled, dataValue, customValue } = this;

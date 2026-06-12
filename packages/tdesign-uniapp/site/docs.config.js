@@ -586,7 +586,6 @@ export const docs = [
         component: () => import('@/watermark/README.md'),
         componentEn: () => import('@/watermark/README.en-US.md'),
       },
-
     ],
   },
   {
@@ -715,10 +714,10 @@ export const docs = [
   },
 ];
 
-const enDocs = docs.map(doc => ({
+const enDocs = docs.map((doc) => ({
   ...doc,
   title: doc.titleEn,
-  children: doc?.children?.map(child => ({
+  children: doc?.children?.map((child) => ({
     title: child.titleEn,
     name: `${child.name}-en`,
     path: `${child.path}-en`,

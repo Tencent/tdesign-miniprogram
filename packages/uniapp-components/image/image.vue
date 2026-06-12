@@ -1,8 +1,5 @@
 <template>
-  <view
-    :style="'' + tools._style([customStyle])"
-    :class="[tClass, classPrefix]"
-  >
+  <view :style="'' + tools._style([customStyle])" :class="[tClass, classPrefix]">
     <view
       v-if="isLoading"
       :style="'' + tools._style([innerStyle])"
@@ -18,47 +15,24 @@
         :t-class="tClassLoad"
         :t-class-text="classPrefix + '--loading-text'"
       />
-      <view
-        v-else-if="loading !== '' && loading !== 'slot'"
-        :class="classPrefix + '__common ' + tClassLoad"
-      >
+      <view v-else-if="loading !== '' && loading !== 'slot'" :class="classPrefix + '__common ' + tClassLoad">
         {{ loading }}
       </view>
-      <slot
-        v-else
-        name="loading"
-      />
+      <slot v-else name="loading" />
     </view>
     <view
       v-else-if="isFailed"
       :style="'' + tools._style([innerStyle])"
-      :class="[
-        classPrefix + '__mask ' + classPrefix + '--failed ' + classPrefix + '--shape-' + shape,
-        tClassError
-      ]"
+      :class="[classPrefix + '__mask ' + classPrefix + '--failed ' + classPrefix + '--shape-' + shape, tClassError]"
       :aria-hidden="ariaHidden"
     >
-      <view
-        v-if="error === 'default'"
-        style="font-size: 44rpx"
-        :class="tClassLoad"
-      >
-        <t-icon
-          name="close"
-          aria-role="img"
-          aria-label="加载失败"
-        />
+      <view v-if="error === 'default'" style="font-size: 44rpx" :class="tClassLoad">
+        <t-icon name="close" aria-role="img" aria-label="加载失败" />
       </view>
-      <view
-        v-else-if="error && error !== 'slot'"
-        :class="[classPrefix + '__common ', tClassLoad]"
-      >
+      <view v-else-if="error && error !== 'slot'" :class="[classPrefix + '__common ', tClassLoad]">
         {{ error }}
       </view>
-      <slot
-        v-else
-        name="error"
-      />
+      <slot v-else name="error" />
     </view>
     <image
       v-if="!isFailed"
@@ -67,7 +41,7 @@
       :class="[
         classPrefix + '__img ' + classPrefix + '--shape-' + shape + ' ',
         (isLoading ? classPrefix + '--lazy' : '') + ' ',
-        tClassImage
+        tClassImage,
       ]"
       :src="src"
       :mode="mode"
@@ -93,7 +67,6 @@ import TLoading from '../loading/loading';
 
 import ImageProps from './props';
 
-
 const name = `${prefix}-image`;
 export default {
   components: {
@@ -105,18 +78,11 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-load`,
-      `${prefix}-class-image`,
-      `${prefix}-class-error`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-load`, `${prefix}-class-image`, `${prefix}-class-error`],
     props: {
       ...ImageProps,
     },
-    emits: [
-      'click',
-    ],
+    emits: ['click'],
     data() {
       return {
         prefix,
@@ -143,25 +109,18 @@ export default {
     methods: {
       onLoaded(e) {
         const version = appBaseInfo.SDKVersion;
-        const {
-          mode,
-          tId,
-        } = this;
+        const { mode, tId } = this;
 
         const lower = compareVersion(version, '2.10.3') < 0;
         // #ifdef MP-WEIXIN || MP-QQ
         if ('heightFix' === mode && lower) {
-          getRect(this, `#${tId || 'image'}`).then((e) => {
-            const {
-              height,
-              width,
-            } = e;
+          getRect(this, `#${tId || 'image'}`)
+            .then((e) => {
+              const { height, width } = e;
 
-            this.innerStyle = `height: ${addUnit(height)}; width: ${width}px;`;
-          })
-            .catch(() => {
-
-            });
+              this.innerStyle = `height: ${addUnit(height)}; width: ${width}px;`;
+            })
+            .catch(() => {});
         }
         // #endif
         this.isLoading = false;
@@ -185,9 +144,7 @@ export default {
         this.innerStyle = innerStyle;
       },
       update() {
-        const {
-          src,
-        } = this;
+        const { src } = this;
         this.preSrc = src;
         if (src) {
           this.isLoading = true;

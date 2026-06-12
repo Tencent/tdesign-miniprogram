@@ -1,15 +1,7 @@
 <template>
   <view>
-    <t-avatar-group
-      cascading="right-up"
-      :max="5"
-      @collapsed-item-click="onClickCollapsedAvatar"
-    >
-      <t-avatar
-        v-for="(pic, index) in pics"
-        :key="index"
-        :image="pic"
-      />
+    <t-avatar-group cascading="right-up" :max="5" @collapsed-item-click="onClickCollapsedAvatar">
+      <t-avatar v-for="(pic, index) in pics" :key="index" :image="pic" />
     </t-avatar-group>
   </view>
 </template>
@@ -50,5 +42,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

@@ -1,21 +1,8 @@
 <template>
   <view class="stepper-example">
-    <t-stepper
-      :value="value"
-      size="large"
-      theme="filled"
-      @change="handleChange"
-    />
-    <t-stepper
-      default-value="3"
-      :max="99"
-      theme="filled"
-    />
-    <t-stepper
-      default-value="3"
-      size="small"
-      theme="filled"
-    />
+    <t-stepper :value="value" size="large" theme="filled" @change="handleChange" />
+    <t-stepper default-value="3" :max="99" theme="filled" />
+    <t-stepper default-value="3" size="small" theme="filled" />
   </view>
 </template>
 
@@ -42,9 +29,9 @@ export default {
 </script>
 <style>
 .stepper-example {
-    padding: 32rpx;
-    display: flex;
-    background-color: var(--bg-color-demo);
-    justify-content: space-between;
+  padding: 32rpx;
+  display: flex;
+  background-color: var(--bg-color-demo);
+  justify-content: space-between;
 }
 </style>

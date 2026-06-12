@@ -1,38 +1,20 @@
 <template>
-  <view
-    :class="classPrefix"
-    @click="nodeClick"
-  >
+  <view :class="classPrefix" @click="nodeClick">
     <view :class="classPrefix + '__container'">
       <view :class="classPrefix + '__thead'">
         <view :class="classPrefix + '__tr'">
-          <block
-            v-for="(th, j) in node.header"
-            :key="j"
-          >
-            <view
-              :class="classPrefix + '__th'"
-              :style="'text-align:' + node.align[j] || 'left' + ';'"
-            >
+          <block v-for="(th, j) in node.header" :key="j">
+            <view :class="classPrefix + '__th'" :style="'text-align:' + node.align[j] || 'left' + ';'">
               <chat-markdown-node :nodes="th.tokens" />
             </view>
           </block>
         </view>
       </view>
       <view :class="classPrefix + '__tbody'">
-        <block
-          v-for="(row, k) in node.rows"
-          :key="k"
-        >
+        <block v-for="(row, k) in node.rows" :key="k">
           <view :class="classPrefix + '__tr'">
-            <block
-              v-for="(cell, l) in row"
-              :key="l"
-            >
-              <view
-                :class="classPrefix + '__td'"
-                :style="'text-align:' + node.align[l] || 'left' + ';'"
-              >
+            <block v-for="(cell, l) in row" :key="l">
+              <view :class="classPrefix + '__td'" :style="'text-align:' + node.align[l] || 'left' + ';'">
                 <chat-markdown-node :nodes="cell.tokens" />
               </view>
             </block>
@@ -51,7 +33,6 @@ import { uniComponent } from '@tdesign/uniapp/common/src/index';
 import chatMarkdownNode from '../chat-markdown-node/chat-markdown-node';
 
 const name = `${prefix}-chat-markdown-table`;
-
 
 export default {
   components: {

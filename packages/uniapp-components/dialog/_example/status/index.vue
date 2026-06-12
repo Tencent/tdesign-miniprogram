@@ -1,8 +1,6 @@
 <template>
   <view>
-    <view class="demo-desc">
-      文字按钮
-    </view>
+    <view class="demo-desc"> 文字按钮 </view>
     <t-button
       t-class="wrapper"
       theme="primary"
@@ -24,9 +22,7 @@
       @cancel="closeDialog"
     />
 
-    <view class="demo-desc">
-      水平基础按钮
-    </view>
+    <view class="demo-desc"> 水平基础按钮 </view>
     <t-button
       t-class="wrapper"
       theme="primary"
@@ -47,9 +43,7 @@
       @cancel="closeDialog"
     />
 
-    <view class="demo-desc">
-      垂直基础按钮
-    </view>
+    <view class="demo-desc"> 垂直基础按钮 </view>
     <t-button
       t-class="wrapper"
       theme="primary"
@@ -72,9 +66,7 @@
       @cancel="closeDialog"
     />
 
-    <view class="demo-desc">
-      多按钮
-    </view>
+    <view class="demo-desc"> 多按钮 </view>
     <t-button
       t-class="wrapper"
       theme="primary"
@@ -95,9 +87,7 @@
       @action="closeDialog"
     />
 
-    <view class="demo-desc">
-      带关闭按钮的对话框
-    </view>
+    <view class="demo-desc"> 带关闭按钮的对话框 </view>
     <t-button
       t-class="wrapper"
       theme="primary"
@@ -161,7 +151,6 @@ export default {
           theme: 'primary',
         },
       ],
-
     };
   },
   created() {},
@@ -180,10 +169,10 @@ export default {
 </script>
 <style scoped>
 .demo-desc {
-    margin: 0 0 32rpx;
+  margin: 0 0 32rpx;
 }
 
 .wrapper {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 </style>

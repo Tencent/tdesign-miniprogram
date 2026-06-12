@@ -4,7 +4,7 @@
       :visible="visible"
       :using-custom-navbar="!isMPAlipay"
       :placement="cur.value || 'top'"
-      @update:visible="(e) => visible = e"
+      @update:visible="(e) => (visible = e)"
     >
       <view :class="'block block--' + cur.value">
         {{ cur.text }}
@@ -85,26 +85,26 @@ export default {
 </script>
 <style scoped>
 .block {
-    color: var(--td-text-color-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  color: var(--td-text-color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .block--top,
 .block--bottom {
-    width: 100vw;
-    height: 240px;
+  width: 100vw;
+  height: 240px;
 }
 
 .block--left,
 .block--right {
-    width: 280px;
-    height: 100%;
+  width: 280px;
+  height: 100%;
 }
 
 .block--center {
-    width: 240px;
-    height: 240px;
+  width: 240px;
+  height: 240px;
 }
 </style>

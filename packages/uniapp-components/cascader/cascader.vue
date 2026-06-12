@@ -10,34 +10,21 @@
       :overlay-props="popupProps && popupProps.overlayProps"
       @visible-change="onVisibleChange"
     >
-      <view
-        :style="'' + tools._style([customStyle])"
-        :class="classPrefix"
-      >
+      <view :style="'' + tools._style([customStyle])" :class="classPrefix">
         <view :class="classPrefix + '__title'">
           <slot name="title" />
           {{ title || globalConfig.title || '' }}
         </view>
-        <view
-          :class="classPrefix + '__close-btn'"
-          @click="onClose"
-        >
+        <view :class="classPrefix + '__close-btn'" @click="onClose">
           <slot name="close-btn" />
-          <t-icon
-            v-if="closeBtn"
-            size="48rpx"
-            name="close"
-          />
+          <t-icon v-if="closeBtn" size="48rpx" name="close" />
         </view>
 
         <slot name="header" />
 
         <view :class="classPrefix + '__content'">
           <block v-if="steps && steps.length">
-            <view
-              v-if="theme == 'step'"
-              :class="classPrefix + '__steps'"
-            >
+            <view v-if="theme == 'step'" :class="classPrefix + '__steps'">
               <view
                 v-for="(item, index) in steps"
                 :key="index"
@@ -48,18 +35,26 @@
                 <view
                   :class="
                     classPrefix +
-                      '__step-dot ' +
-                      classPrefix +
-                      '__step-dot--' +
-                      (item !== placeholder ? 'active' : '') +
-                      ' ' +
-                      classPrefix +
-                      '__step-dot--' +
-                      (index === steps.length - 1 ? 'last' : '')
+                    '__step-dot ' +
+                    classPrefix +
+                    '__step-dot--' +
+                    (item !== placeholder ? 'active' : '') +
+                    ' ' +
+                    classPrefix +
+                    '__step-dot--' +
+                    (index === steps.length - 1 ? 'last' : '')
                   "
                 />
 
-                <view :class="classPrefix + '__step-label ' + classPrefix + '__step-label--' + (index === stepIndex ? 'active' : '')">
+                <view
+                  :class="
+                    classPrefix +
+                    '__step-label ' +
+                    classPrefix +
+                    '__step-label--' +
+                    (index === stepIndex ? 'active' : '')
+                  "
+                >
                   {{ item }}
                 </view>
 
@@ -78,7 +73,7 @@
               ref="tabs"
               :value="stepIndex"
               :space-evenly="false"
-              @change="({value}) => onTabChange(value)"
+              @change="({ value }) => onTabChange(value)"
             >
               <t-tab-panel
                 v-for="(item, index) in steps"
@@ -92,16 +87,13 @@
 
           <slot name="middle-content" />
 
-          <view
-            v-if="subTitles && subTitles[stepIndex]"
-            :class="classPrefix + '__options-title'"
-          >
+          <view v-if="subTitles && subTitles[stepIndex]" :class="classPrefix + '__options-title'">
             {{ subTitles[stepIndex] }}
           </view>
 
           <view
             :class="classPrefix + '__options-container'"
-            :style="'' + `width: ${items.length + 1 }00vw; transform: translateX(-${stepIndex}00vw)`"
+            :style="'' + `width: ${items.length + 1}00vw; transform: translateX(-${stepIndex}00vw)`"
           >
             <scroll-view
               v-for="(options, index) in items"
@@ -145,7 +137,6 @@ import TTabs from '../tabs/tabs';
 
 import props from './props';
 
-
 const componentName = 'cascader';
 const name = `${prefix}-${componentName}`;
 
@@ -154,7 +145,7 @@ function parseOptions(options, keys) {
   const value = coalesce(keys?.value, 'value');
   const disabled = coalesce(keys?.disabled, 'disabled');
 
-  return options.map(item => ({
+  return options.map((item) => ({
     [label]: item[label],
     [value]: item[value],
     [disabled]: item[disabled],
@@ -189,15 +180,11 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     props: {
       ...props,
     },
-    emits: [
-      'update:visible',
-    ],
+    emits: ['update:visible'],
     data() {
       return {
         prefix,
@@ -218,7 +205,8 @@ export default {
     computed: {
       stepArrowCustomStyle() {
         return tools._style({
-          color: 'var(--td-cascader-step-arrow-color, var(--td-text-color-placeholder, var(--td-font-gray-3, rgba(0, 0, 0, .4))))',
+          color:
+            'var(--td-cascader-step-arrow-color, var(--td-text-color-placeholder, var(--td-font-gray-3, rgba(0, 0, 0, .4))))',
           marginLeft: 'auto',
         });
       },
@@ -296,7 +284,6 @@ export default {
             this.items = items;
           }
 
-
           if (visible && theme === 'step') {
             this.updateOptionsHeight(steps.length);
           }
@@ -322,12 +309,10 @@ export default {
         ...defaultState,
       };
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
       setTabParent() {
-      // #ifdef MP-TOUTIAO
+        // #ifdef MP-TOUTIAO
         nextTick().then(() => {
           const tabsRef = this.$refs.tabs;
           this.steps.forEach((tools, index) => {
@@ -335,7 +320,7 @@ export default {
             tabRef?.[0]?.setParent(tabsRef);
           });
         });
-      // #endif
+        // #endif
       },
       updateOptionsHeight(steps) {
         const { contentHeight, stepsInitHeight, stepHeight, subTitlesHeight } = this.state;
@@ -349,16 +334,12 @@ export default {
         this.state.contentHeight = height;
 
         if (theme === 'step') {
-          await Promise.all([
-            getRect(this, `.${classPrefix}__steps`),
-            getRect(this, `.${classPrefix}__step`),
-          ])
+          await Promise.all([getRect(this, `.${classPrefix}__steps`), getRect(this, `.${classPrefix}__step`)])
             .then(([stepsRect, stepRect]) => {
               this.state.stepsInitHeight = stepsRect.height - (steps - 1) * stepRect.height;
               this.state.stepHeight = stepRect.height;
             })
-            .catch(() => {
-            });
+            .catch(() => {});
         }
 
         if (subTitles.length > 0) {
@@ -367,9 +348,10 @@ export default {
         }
 
         const optionsInitHeight = this.state.contentHeight - this.state.subTitlesHeight;
-        this.optionsHeight = theme === 'step'
-          ? optionsInitHeight - this.state.stepsInitHeight - (steps - 1) * this.state.stepHeight
-          : optionsInitHeight - this.state.tabsHeight;
+        this.optionsHeight =
+          theme === 'step'
+            ? optionsInitHeight - this.state.stepsInitHeight - (steps - 1) * this.state.stepHeight
+            : optionsInitHeight - this.state.tabsHeight;
       },
 
       initWithValue() {
@@ -403,13 +385,13 @@ export default {
         const { dataVisible: visible, items, selectedIndexes, stepIndex } = this;
 
         if (visible) {
-          getRect(this, '.cascader-radio-group-0').then((rect) => {
-            const eachRadioHeight = rect.height / items[0]?.length;
+          getRect(this, '.cascader-radio-group-0')
+            .then((rect) => {
+              const eachRadioHeight = rect.height / items[0]?.length;
 
-            this[`scrollTopList[${stepIndex}]`] = eachRadioHeight * selectedIndexes[stepIndex];
-          })
-            .catch(() => {
-            });
+              this[`scrollTopList[${stepIndex}]`] = eachRadioHeight * selectedIndexes[stepIndex];
+            })
+            .catch(() => {});
         }
       },
       hide(trigger) {
@@ -468,7 +450,7 @@ export default {
         const { checkStrictly } = this;
         const { selectedIndexes, items, keys, options, selectedValue } = this;
 
-        const index = items[level].findIndex(item => item[coalesce(keys?.value, 'value')] === value);
+        const index = items[level].findIndex((item) => item[coalesce(keys?.value, 'value')] === value);
 
         let item = selectedIndexes.slice(0, level).reduce((acc, item, index) => {
           if (index === 0) {
@@ -476,7 +458,6 @@ export default {
           }
           return acc[coalesce(keys?.children, 'children')][item];
         }, options);
-
 
         if (level === 0) {
           item = item[index];
@@ -506,7 +487,7 @@ export default {
           this.selectedIndexes = selectedIndexes;
           this[`items[${level + 1}]`] = newItems[level + 1];
         } else {
-        // setCascaderValue(item.value);
+          // setCascaderValue(item.value);
           this.selectedIndexes = selectedIndexes;
           setTimeout(this.triggerChange);
 
@@ -514,7 +495,7 @@ export default {
         }
         // #ifdef VUE2
         this.$set(this, 'selectedIndexes', JSON.parse(JSON.stringify(selectedIndexes)));
-      // #endif
+        // #endif
       },
       triggerChange() {
         const { items, selectedValue, selectedIndexes } = this;

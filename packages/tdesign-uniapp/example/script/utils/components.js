@@ -6,7 +6,6 @@ const { nav, skylineNav } = require('../../src/pages/home/data/nav.json');
 const { other, skylineOther } = require('../../src/pages/home/data/other.json');
 const { ux, skylineUx } = require('../../src/pages/home/data/ux.json');
 
-
 module.exports = {
   components: {
     base,

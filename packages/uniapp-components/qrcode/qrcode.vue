@@ -1,7 +1,10 @@
 <template>
   <view
-    :style="'' + `${tools._style([customStyle])}; width:${containerSize}px; height: ${containerSize}px; background-color: ${bgColor};`"
-    :class="''+`${classPrefix} ${borderless ? prefix + '-' + 'borderless' : ''} ${tClass}`"
+    :style="
+      '' +
+      `${tools._style([customStyle])}; width:${containerSize}px; height: ${containerSize}px; background-color: ${bgColor};`
+    "
+    :class="'' + `${classPrefix} ${borderless ? prefix + '-' + 'borderless' : ''} ${tClass}`"
   >
     <qrcode-canvas
       ref="qrcodeCanvas"
@@ -17,16 +20,8 @@
       @drawCompleted="handleDrawCompleted"
     />
 
-    <view
-      v-if="showMask && canvasReady"
-      :class="'' + `${prefix}-mask`"
-    >
-      <qrcode-status
-        :status="status"
-        :status-render="statusRender"
-        :locale="globalConfig"
-        @refresh="handleRefresh"
-      >
+    <view v-if="showMask && canvasReady" :class="'' + `${prefix}-mask`">
+      <qrcode-status :status="status" :status-render="statusRender" :locale="globalConfig" @refresh="handleRefresh">
         <template #statusRender>
           <slot name="statusRender" />
         </template>
@@ -60,10 +55,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-canvas`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-canvas`],
     props: {
       ...props,
     },
@@ -79,7 +71,7 @@ export default {
     },
     computed: {
       // 容器尺寸 = Canvas 尺寸 + padding * 2
-    // padding 为 12px，所以容器需要额外 24px
+      // padding 为 12px，所以容器需要额外 24px
       containerSize() {
         return this.size + 24;
       },
@@ -97,7 +89,7 @@ export default {
     },
     methods: {
       async initCanvas() {
-      // 获取 canvas 实例
+        // 获取 canvas 实例
         const canvasComp = this.$refs.qrcodeCanvas;
         if (canvasComp) {
           const canvas = await canvasComp.getCanvasNode();

@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="classPrefix"
-    :style="'' + tools._style([customStyle])"
-  >
+  <view :class="classPrefix" :style="'' + tools._style([customStyle])">
     <!-- 动态加载动画 -->
     <view
       v-if="animation !== 'skeleton'"
@@ -20,31 +17,17 @@
         <view :class="classPrefix + '__gradient'" />
       </block>
 
-      <view
-        v-if="animation === 'dots'"
-        :class="classPrefix + '__dots'"
-      >
-        <t-loading
-          theme="dots"
-          size="60rpx"
-        />
+      <view v-if="animation === 'dots'" :class="classPrefix + '__dots'">
+        <t-loading theme="dots" size="60rpx" />
       </view>
     </view>
     <block v-if="animation === 'skeleton'">
       <view :class="classPrefix + '__skeleton'">
-        <t-skeleton
-          :row-col="[1, 1, 1, { width: '80%' }]"
-          theme="paragraph"
-          animation="gradient"
-          loading
-        />
+        <t-skeleton :row-col="[1, 1, 1, { width: '80%' }]" theme="paragraph" animation="gradient" loading />
       </view>
     </block>
     <!-- 文本内容 -->
-    <view
-      v-if="text"
-      :class="classPrefix + '__text'"
-    >
+    <view v-if="text" :class="classPrefix + '__text'">
       {{ text }}
     </view>
   </view>
@@ -59,9 +42,7 @@ import tSkeleton from '@tdesign/uniapp/skeleton/skeleton.vue';
 
 import props from './props';
 
-
 const name = `${prefix}-chat-loading`;
-
 
 export default {
   components: {

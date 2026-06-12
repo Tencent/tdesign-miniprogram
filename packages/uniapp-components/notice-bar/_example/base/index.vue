@@ -1,12 +1,7 @@
 <template>
   <view>
-    <t-notice-bar
-      :visible="true"
-      :prefix-icon="false"
-    >
-      <template #content>
-        这是一条普通的通知信息
-      </template>
+    <t-notice-bar :visible="true" :prefix-icon="false">
+      <template #content> 这是一条普通的通知信息 </template>
     </t-notice-bar>
   </view>
 </template>
@@ -24,5 +19,4 @@ export default {
   methods: {},
 };
 </script>
-<style>
-</style>
+<style></style>

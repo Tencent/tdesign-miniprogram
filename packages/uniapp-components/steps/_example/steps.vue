@@ -1,13 +1,7 @@
 <template>
   <view class="skyline">
-    <t-demo-navbar
-      title="Steps"
-    />
-    <scroll-view
-      scroll-y
-      type="list"
-      class="scroll-view"
-    >
+    <t-demo-navbar title="Steps" />
+    <scroll-view scroll-y type="list" class="scroll-view">
       <view class="demo">
         <t-demo-header
           title="Steps 步骤条"
@@ -20,10 +14,7 @@
 
         <vertical-demo />
 
-        <t-demo
-          title="02 组件状态"
-          desc="选项卡状态"
-        />
+        <t-demo title="02 组件状态" desc="选项卡状态" />
 
         <status-demo />
 
@@ -36,7 +27,6 @@
 </template>
 
 <script>
-
 import HorizontalDemo from './horizontal/index.vue';
 import SpecialDemo from './special/index.vue';
 import StatusDemo from './status/index.vue';

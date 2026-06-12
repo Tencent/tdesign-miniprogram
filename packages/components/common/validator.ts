@@ -2,13 +2,9 @@ export function isFunction(val: unknown): val is Function {
   return typeof val === 'function';
 }
 
-export const isString = (val: unknown): val is string => {
-  return typeof val === 'string';
-};
+export const isString = (val: unknown): val is string => typeof val === 'string';
 
-export const isNull = <T>(value: T | null): value is null => {
-  return value === null;
-};
+export const isNull = <T>(value: T | null): value is null => value === null;
 
 export const isUndefined = <T>(value: T | undefined): value is undefined => value === undefined;
 

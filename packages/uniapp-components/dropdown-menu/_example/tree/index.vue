@@ -37,8 +37,7 @@ const generateTree = function (deep = 0, count = 10, prefix) {
   return ans;
 };
 export default {
-  components: {
-  },
+  components: {},
   data() {
     return {
       doubleColumnsTree: {
@@ -59,5 +58,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

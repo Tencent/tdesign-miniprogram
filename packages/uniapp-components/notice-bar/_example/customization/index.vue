@@ -2,32 +2,14 @@
   <view>
     <!-- slot实现自定义content内容 -->
     <t-notice-bar :visible="true">
-      <template
-        #content
-      >
-        <view
-          class="inline"
-        >
-          提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述
-        </view>
+      <template #content>
+        <view class="inline"> 提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述提示文字描述 </view>
       </template>
-      <template
-        #operation
-      >
-        <t-link
-          content="详情"
-          theme="primary"
-          :underline="false"
-          :navigator-props="navigatorProps"
-        />
+      <template #operation>
+        <t-link content="详情" theme="primary" :underline="false" :navigator-props="navigatorProps" />
       </template>
-      <template
-        #suffix-icon
-      >
-        <t-icon
-          name="close"
-          size="44rpx"
-        />
+      <template #suffix-icon>
+        <t-icon name="close" size="44rpx" />
       </template>
     </t-notice-bar>
   </view>
@@ -56,6 +38,6 @@ export default {
 </script>
 <style>
 .inline {
-    display: inline;
+  display: inline;
 }
 </style>

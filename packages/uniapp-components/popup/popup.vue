@@ -2,7 +2,13 @@
   <view>
     <view
       v-if="realVisible"
-      :style="'' + tools._style([popup.getPopupStyles({ zIndex: zIndex, distanceTop: distanceTop, placement: placement, duration: duration }), customStyle])"
+      :style="
+        '' +
+        tools._style([
+          popup.getPopupStyles({ zIndex: zIndex, distanceTop: distanceTop, placement: placement, duration: duration }),
+          customStyle,
+        ])
+      "
       :class="'' + tools.cls(classPrefix, [placement]) + ' ' + transitionClass + ' ' + tClass"
       @transitionend="onTransitionEnd"
     >
@@ -13,41 +19,18 @@
       >
         <slot name="content" />
         <slot />
-        <view
-          :class="classPrefix + '__close'"
-          @click="handleClose"
-        >
-          <t-icon
-            v-if="closeBtn"
-            name="close"
-            size="64rpx"
-          />
-          <slot
-            name="close-btn"
-            :class="classPrefix + '-slot'"
-          />
+        <view :class="classPrefix + '__close'" @click="handleClose">
+          <t-icon v-if="closeBtn" name="close" size="64rpx" />
+          <slot name="close-btn" :class="classPrefix + '-slot'" />
         </view>
       </view>
 
-      <view
-        v-else
-        :class="classPrefix + '__content ' + tClassContent"
-      >
+      <view v-else :class="classPrefix + '__content ' + tClassContent">
         <slot name="content" />
         <slot />
-        <view
-          :class="classPrefix + '__close'"
-          @click="handleClose"
-        >
-          <t-icon
-            v-if="closeBtn"
-            name="close"
-            size="64rpx"
-          />
-          <slot
-            name="close-btn"
-            :class="classPrefix + '-slot'"
-          />
+        <view :class="classPrefix + '__close'" @click="handleClose">
+          <t-icon v-if="closeBtn" name="close" size="64rpx" />
+          <slot name="close-btn" :class="classPrefix + '-slot'" />
         </view>
       </view>
     </view>
@@ -70,7 +53,6 @@
 import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 
-
 import tools from '../common/utils.wxs';
 import TIcon from '../icon/icon';
 import { transitionMixins } from '../mixins/transition';
@@ -84,7 +66,6 @@ delete props.visible;
 
 const name = `${prefix}-popup`;
 
-
 export default {
   components: {
     TOverlay,
@@ -95,19 +76,12 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-content`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-content`],
     mixins: [transitionMixins, useCustomNavbar],
     props: {
       ...props,
     },
-    emits: [
-      'visible-change',
-      'leaved',
-      'update:visible',
-    ],
+    emits: ['visible-change', 'leaved', 'update:visible'],
     data() {
       return {
         prefix,
@@ -116,10 +90,11 @@ export default {
         tools,
       };
     },
-    computed: { innerPreventScrollThrough() {
-      const { preventScrollThrough, overlayProps } = this;
-      return preventScrollThrough || (overlayProps ? !!overlayProps.preventScrollThrough : false);
-    },
+    computed: {
+      innerPreventScrollThrough() {
+        const { preventScrollThrough, overlayProps } = this;
+        return preventScrollThrough || (overlayProps ? !!overlayProps.preventScrollThrough : false);
+      },
     },
     methods: {
       noop() {},
@@ -138,6 +113,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./popup.css"></style>

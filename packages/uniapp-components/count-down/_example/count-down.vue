@@ -1,33 +1,22 @@
 <template>
   <view>
-    <t-demo-navbar
-      custom-class="demo-navbar"
-      title="CountDown"
-    />
+    <t-demo-navbar custom-class="demo-navbar" title="CountDown" />
     <t-demo-header
       title="CountDown 倒计时"
       desc="用于实时展示倒计时数值。"
       notice="渲染框架支持情况：Skyline、WebView"
     />
-    <t-demo
-      padding
-      title="01 组件类型"
-    >
+    <t-demo padding title="01 组件类型">
       <base-demo />
     </t-demo>
 
-    <t-demo
-      padding
-      title="02 组件尺寸"
-      desc="倒计时 large/medium/small 尺寸"
-    >
+    <t-demo padding title="02 组件尺寸" desc="倒计时 large/medium/small 尺寸">
       <size-demo />
     </t-demo>
   </view>
 </template>
 
 <script>
-
 import BaseDemo from './base/index.vue';
 import SizeDemo from './size/index.vue';
 export default {
@@ -43,8 +32,7 @@ export default {
       counting: false,
     };
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 <style lang="less">

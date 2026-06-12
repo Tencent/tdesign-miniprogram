@@ -1,10 +1,7 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <t-chat-message
-        :content="userMessage.content"
-        :role="userMessage.role"
-      />
+      <t-chat-message :content="userMessage.content" :role="userMessage.role" />
     </view>
   </view>
 </template>
@@ -40,13 +37,13 @@ export default {
 </script>
 <style>
 .chat-example {
-    display: flex;
-    flex-direction: column;
-    gap: 32rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
 }
 
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx 32rpx 0 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx 32rpx 0 32rpx;
 }
 </style>

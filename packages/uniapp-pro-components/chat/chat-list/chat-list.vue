@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="[classPrefix, classes]"
-    :style="'' + tools._style([customStyle])"
-  >
+  <view :class="[classPrefix, classes]" :style="'' + tools._style([customStyle])">
     <scroll-view
       :class="'' + tools.cls(classPrefix + '__content', [['reverse', reverse]])"
       :scroll-y="true"
@@ -25,10 +22,7 @@
         * a 优先级更高
         */ -->
       <block v-if="data && data.length > 0">
-        <block
-          v-for="(item, index) in data"
-          :key="index"
-        >
+        <block v-for="(item, index) in data" :key="index">
           <chat-message
             v-if="virtualList ? index >= startIndex && index <= endIndex : true"
             :avatar="item.avatar || ''"
@@ -59,9 +53,7 @@ import ChatMessage from '../chat-message/chat-message.vue';
 
 import props from './props';
 
-
 const name = `${prefix}-chat-list`;
-
 
 export default {
   components: {
@@ -114,14 +106,14 @@ export default {
     methods: {
       setScrollTop(scrollTop = 0) {
         if (scrollTop === this.scrollViewTop) {
-        // eslint-disable-next-line no-param-reassign
+          // eslint-disable-next-line no-param-reassign
           scrollTop -= 1;
         }
         this.scrollViewTop = scrollTop;
       },
       scrollToBottom() {
-      // reverse 为 true 时，滚动到 0 即为底部
-      // reverse 为 false 时，需要滚动到一个很大的值才能到底部
+        // reverse 为 true 时，滚动到 0 即为底部
+        // reverse 为 false 时，需要滚动到一个很大的值才能到底部
         const scrollTop = this.reverse ? 0 : 999999;
         this.setScrollTop(scrollTop);
       },
@@ -162,12 +154,11 @@ export default {
             this.endIndex = Math.min(dataLen - 1, this.endIndex + count);
           } else {
             this.startIndex = Math.max(this.startIndex - count, 0);
-          // todo 正向布局自动滚动到原来位置？
+            // todo 正向布局自动滚动到原来位置？
           }
         }
       },
     },
-
   }),
 };
 </script>
@@ -175,7 +166,7 @@ export default {
 <style scoped>
 /* #ifdef H5 || APP */
 .t-chat-list__content :deep(.uni-scroll-view-content) {
-  display: flex;;
+  display: flex;
   flex-direction: column;
 }
 /* #endif */

@@ -1,15 +1,20 @@
 <template>
-  <view
-    :style="'' + tools._style([customStyle])"
-    :class="classPrefix + ' ' + classPrefix + '--' + size + ' ' + tClass"
-  >
+  <view :style="'' + tools._style([customStyle])" :class="classPrefix + ' ' + classPrefix + '--' + size + ' ' + tClass">
     <view
       :class="
-        classPrefix +'__minus ' +
-          classPrefix + '__minus--' + theme +
-          ' ' + classPrefix + '__icon--' + size +
-          ' ' + (disabled || disableMinus || currentValue <= min ? classPrefix + '--' + theme + '-disabled' : '') +
-          ' ' + tClassMinus
+        classPrefix +
+        '__minus ' +
+        classPrefix +
+        '__minus--' +
+        theme +
+        ' ' +
+        classPrefix +
+        '__icon--' +
+        size +
+        ' ' +
+        (disabled || disableMinus || currentValue <= min ? classPrefix + '--' + theme + '-disabled' : '') +
+        ' ' +
+        tClassMinus
       "
       :aria-label="'减少' + step"
       aria-role="button"
@@ -18,7 +23,15 @@
     >
       <t-icon name="remove" />
     </view>
-    <view :class="classPrefix + '__input--' + theme + ' ' + (disabled || disableInput ? classPrefix + '--' + theme + '-disabled' : '')">
+    <view
+      :class="
+        classPrefix +
+        '__input--' +
+        theme +
+        ' ' +
+        (disabled || disableInput ? classPrefix + '--' + theme + '-disabled' : '')
+      "
+    >
       <input
         :style="inputWidth ? 'width:' + inputWidth + 'px;' : ''"
         :class="classPrefix + '__input ' + classPrefix + '__input--' + size + ' ' + tClassInput"
@@ -28,15 +41,23 @@
         @input="handleInput"
         @focus="handleFocus"
         @blur="handleBlur"
-      >
+      />
     </view>
     <view
       :class="
-        classPrefix + '__plus ' +
-          classPrefix + '__plus--' + theme +
-          ' ' + classPrefix + '__icon--' + size +
-          ' ' + (disabled || disablePlus || currentValue >= max ? classPrefix + '--' + theme + '-disabled' : '') +
-          ' ' + tClassPlus
+        classPrefix +
+        '__plus ' +
+        classPrefix +
+        '__plus--' +
+        theme +
+        ' ' +
+        classPrefix +
+        '__icon--' +
+        size +
+        ' ' +
+        (disabled || disablePlus || currentValue >= max ? classPrefix + '--' + theme + '-disabled' : '') +
+        ' ' +
+        tClassPlus
       "
       :aria-label="'增加' + step"
       aria-role="button"
@@ -57,9 +78,7 @@ import TIcon from '../icon/icon';
 
 import props from './props';
 
-
 const name = `${prefix}-stepper`;
-
 
 export default {
   components: {
@@ -76,12 +95,7 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-input`,
-      `${prefix}-class-minus`,
-      `${prefix}-class-plus`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-input`, `${prefix}-class-minus`, `${prefix}-class-plus`],
     props: {
       ...props,
     },
@@ -149,7 +163,7 @@ export default {
         const newValue = Number(formattedStr);
 
         nextTick().then(() => {
-        // 使用 format 返回的字符串更新显示值，避免 Number() 转换丢失末尾0
+          // 使用 format 返回的字符串更新显示值，避免 Number() 转换丢失末尾0
           this.updateCurrentValue(formattedStr);
         });
 

@@ -1,18 +1,8 @@
 <template>
   <view>
-    <t-empty
-      icon="info-circle-filled"
-      description="描述文字"
-    >
-      <template
-        #action
-      >
-        <t-button
-          theme="primary"
-          size="large"
-        >
-          操作按钮
-        </t-button>
+    <t-empty icon="info-circle-filled" description="描述文字">
+      <template #action>
+        <t-button theme="primary" size="large"> 操作按钮 </t-button>
       </template>
     </t-empty>
   </view>
@@ -21,7 +11,6 @@
 <script>
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TEmpty from '@tdesign/uniapp/empty/empty.vue';
-
 
 export default {
   components: {
@@ -35,5 +24,4 @@ export default {
   methods: {},
 };
 </script>
-<style>
-</style>
+<style></style>

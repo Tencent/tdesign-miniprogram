@@ -1,9 +1,6 @@
 <template>
   <view>
-    <view
-      v-for="(themeItem, index) in themeList"
-      :key="index"
-    >
+    <view v-for="(themeItem, index) in themeList" :key="index">
       <view class="demo-section__desc">
         {{ themeItem.title }}
       </view>
@@ -54,14 +51,14 @@ export default {
 </script>
 <style>
 .demo-section__desc {
-    font-size: 28rpx;
-    color: var(--td-text-color-placeholder);
-    margin-top: 16rpx;
-    line-height: 44rpx;
+  font-size: 28rpx;
+  color: var(--td-text-color-placeholder);
+  margin-top: 16rpx;
+  line-height: 44rpx;
 }
 
 .demo-section__content {
-    margin-top: 32rpx;
-    margin-bottom: 48rpx;
+  margin-top: 32rpx;
+  margin-bottom: 48rpx;
 }
 </style>
