@@ -6,15 +6,7 @@
       @selected="(e) => handleSelected(e, { tagId: 't-action-sheet' })"
     />
 
-    <t-button
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="handleAction"
-    >
-      列表型选项状态
-    </t-button>
+    <t-button size="large" variant="outline" block theme="primary" @click="handleAction"> 列表型选项状态 </t-button>
   </view>
 </template>
 

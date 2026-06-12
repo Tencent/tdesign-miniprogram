@@ -32,11 +32,11 @@ export default {
 </script>
 <style scoped>
 .textarea-example {
-    margin: 0 32rpx;
-    border-radius: 18rpx;
+  margin: 0 32rpx;
+  border-radius: 18rpx;
 }
 
 :deep(.external-class) {
-    height: 312rpx;
+  height: 312rpx;
 }
 </style>

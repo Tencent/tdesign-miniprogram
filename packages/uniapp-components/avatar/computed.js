@@ -25,6 +25,6 @@ export function getSize(size = 'medium', windowWidth) {
   }
 }
 
-export function  getStyles(isShow) {
+export function getStyles(isShow) {
   return isShow ? '' : 'display: none;';
 }

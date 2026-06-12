@@ -2,7 +2,6 @@ const path = require('path');
 
 const { execCommand, readFileSync } = require('t-comm');
 
-
 function getTag(version) {
   if (version.includes('alpha')) {
     return 'alpha';

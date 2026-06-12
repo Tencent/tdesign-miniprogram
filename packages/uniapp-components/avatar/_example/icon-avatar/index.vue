@@ -1,14 +1,7 @@
 <template>
   <view>
-    <t-avatar
-      t-class="avatar-example"
-      icon="user"
-    />
-    <t-avatar
-      t-class="avatar-example"
-      shape="round"
-      icon="user"
-    />
+    <t-avatar t-class="avatar-example" icon="user" />
+    <t-avatar t-class="avatar-example" shape="round" icon="user" />
   </view>
 </template>
 
@@ -29,6 +22,6 @@ export default {
 </script>
 <style>
 .avatar-example:not(:last-child) {
-    margin-right: 64rpx;
+  margin-right: 64rpx;
 }
 </style>

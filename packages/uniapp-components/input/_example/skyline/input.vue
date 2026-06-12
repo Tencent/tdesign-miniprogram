@@ -1,25 +1,11 @@
 <template>
   <view class="skyline">
-    <t-demo-navbar
-      custom-class="block"
-      title="Input"
-    />
-    <scroll-view
-      scroll-y
-      type="list"
-      class="scroll-view"
-    >
+    <t-demo-navbar custom-class="block" title="Input" />
+    <scroll-view scroll-y type="list" class="scroll-view">
       <view class="input-example">
-        <view class="demo-title">
-          Input 输入框
-        </view>
-        <view class="demo-desc">
-          用于单行文本信息输入。
-        </view>
-        <t-demo
-          title="01 组件类型"
-          desc="基础输入框"
-        >
+        <view class="demo-title"> Input 输入框 </view>
+        <view class="demo-desc"> 用于单行文本信息输入。 </view>
+        <t-demo title="01 组件类型" desc="基础输入框">
           <base-demo />
         </t-demo>
         <t-demo desc="带字数限制输入框">
@@ -35,20 +21,14 @@
           <special-demo />
         </t-demo>
 
-        <t-demo
-          title="02 组件状态"
-          desc="输入框状态"
-        >
+        <t-demo title="02 组件状态" desc="输入框状态">
           <status-demo />
         </t-demo>
         <t-demo desc="信息超长状态">
           <label-demo />
         </t-demo>
 
-        <t-demo
-          title="03 组件样式"
-          desc="内容位置"
-        >
+        <t-demo title="03 组件样式" desc="内容位置">
           <align-demo />
         </t-demo>
         <t-demo desc="竖排样式">
@@ -69,7 +49,6 @@
 </template>
 
 <script>
-
 import AlignDemo from '../align/index.vue';
 import BannerDemo from '../banner/index.vue';
 import BaseDemo from '../base/index.vue';
@@ -108,8 +87,7 @@ export default {
       priceError: false,
     };
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 <style lang="less">

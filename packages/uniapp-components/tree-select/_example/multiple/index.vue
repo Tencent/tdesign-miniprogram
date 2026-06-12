@@ -1,11 +1,6 @@
 <template>
   <view>
-    <t-tree-select
-      :options="options"
-      :value="value"
-      multiple
-      @change="onChange"
-    />
+    <t-tree-select :options="options" :value="value" multiple @change="onChange" />
   </view>
 </template>
 
@@ -46,5 +41,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

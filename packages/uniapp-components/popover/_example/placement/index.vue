@@ -1,9 +1,7 @@
 <template>
   <view>
     <view class="popover-example-row">
-      <view class="demo-block__header-desc">
-        顶部弹出气泡
-      </view>
+      <view class="demo-block__header-desc"> 顶部弹出气泡 </view>
       <view class="row">
         <view class="popover-example__content">
           <t-popover
@@ -11,12 +9,10 @@
             placement="top-left"
             theme="dark"
             data-target="topLeft"
-            @update:visible="(e) => visible.topLeft = e"
+            @update:visible="(e) => (visible.topLeft = e)"
           >
             <template #content>
-              <view>
-                弹出气泡内容
-              </view>
+              <view> 弹出气泡内容 </view>
             </template>
 
             <view class="popover-example__content">
@@ -39,12 +35,10 @@
             placement="top"
             theme="dark"
             data-target="top"
-            @update:visible="(e) => visible.top = e"
+            @update:visible="(e) => (visible.top = e)"
           >
             <template #content>
-              <view>
-                弹出气泡内容
-              </view>
+              <view> 弹出气泡内容 </view>
             </template>
 
             <view class="popover-example__content">
@@ -67,12 +61,10 @@
             placement="top-right"
             theme="dark"
             data-target="topRight"
-            @update:visible="(e) => visible.topRight = e"
+            @update:visible="(e) => (visible.topRight = e)"
           >
             <template #content>
-              <view>
-                弹出气泡内容
-              </view>
+              <view> 弹出气泡内容 </view>
             </template>
 
             <view class="popover-example__content">
@@ -93,9 +85,7 @@
     </view>
 
     <view class="popover-example-row">
-      <view class="demo-block__header-desc">
-        底部弹出气泡
-      </view>
+      <view class="demo-block__header-desc"> 底部弹出气泡 </view>
       <view class="row">
         <view class="popover-example__content">
           <t-popover
@@ -103,12 +93,10 @@
             placement="bottom-left"
             theme="dark"
             data-target="bottomLeft"
-            @update:visible="(e) => visible.bottomLeft = e"
+            @update:visible="(e) => (visible.bottomLeft = e)"
           >
             <template #content>
-              <view>
-                弹出气泡内容
-              </view>
+              <view> 弹出气泡内容 </view>
             </template>
 
             <view class="popover-example__content">
@@ -131,12 +119,10 @@
             placement="bottom"
             theme="dark"
             data-target="bottom"
-            @update:visible="(e) => visible.bottom = e"
+            @update:visible="(e) => (visible.bottom = e)"
           >
             <template #content>
-              <view>
-                弹出气泡内容
-              </view>
+              <view> 弹出气泡内容 </view>
             </template>
 
             <view class="popover-example__content">
@@ -160,14 +146,11 @@
             placement="bottom-right"
             theme="dark"
             data-target="bottomRight"
-            @update:visible="(e) => visible.bottomRight = e"
+            @update:visible="(e) => (visible.bottomRight = e)"
           >
             <template #content>
-              <view>
-                弹出气泡内容
-              </view>
+              <view> 弹出气泡内容 </view>
             </template>
-
 
             <view class="popover-example__content">
               <t-button
@@ -187,9 +170,7 @@
     </view>
 
     <view class="popover-example-row">
-      <view class="demo-block__header-desc">
-        右侧弹出气泡
-      </view>
+      <view class="demo-block__header-desc"> 右侧弹出气泡 </view>
       <view class="column">
         <view class="popover-example__content">
           <t-popover
@@ -197,14 +178,11 @@
             placement="right-top"
             theme="dark"
             data-target="rightTop"
-            @update:visible="(e) => visible.rightTop = e"
+            @update:visible="(e) => (visible.rightTop = e)"
           >
             <template #content>
-              <view>
-                气泡内容
-              </view>
+              <view> 气泡内容 </view>
             </template>
-
 
             <view class="popover-example__content">
               <t-button
@@ -226,12 +204,10 @@
             placement="right"
             theme="dark"
             data-target="right"
-            @update:visible="(e) => visible.right = e"
+            @update:visible="(e) => (visible.right = e)"
           >
             <template #content>
-              <view>
-                气泡内容
-              </view>
+              <view> 气泡内容 </view>
             </template>
             <view class="popover-example__content">
               <t-button
@@ -253,12 +229,10 @@
             placement="right-bottom"
             theme="dark"
             data-target="rightBottom"
-            @update:visible="(e) => visible.rightBottom = e"
+            @update:visible="(e) => (visible.rightBottom = e)"
           >
             <template #content>
-              <view>
-                气泡内容
-              </view>
+              <view> 气泡内容 </view>
             </template>
             <view class="popover-example__content">
               <t-button
@@ -278,9 +252,7 @@
     </view>
 
     <view class="flex-end popover-example-row">
-      <view class="demo-block__header-desc">
-        左侧弹出气泡
-      </view>
+      <view class="demo-block__header-desc"> 左侧弹出气泡 </view>
       <view class="column">
         <view class="popover-example__content">
           <t-popover
@@ -288,12 +260,10 @@
             placement="left-top"
             theme="dark"
             data-target="leftTop"
-            @update:visible="(e) => visible.leftTop = e"
+            @update:visible="(e) => (visible.leftTop = e)"
           >
             <template #content>
-              <view>
-                气泡内容
-              </view>
+              <view> 气泡内容 </view>
             </template>
             <view class="popover-example__content">
               <t-button
@@ -315,12 +285,10 @@
             placement="left"
             theme="dark"
             data-target="left"
-            @update:visible="(e) => visible.left = e"
+            @update:visible="(e) => (visible.left = e)"
           >
             <template #content>
-              <view>
-                气泡内容
-              </view>
+              <view> 气泡内容 </view>
             </template>
             <view class="popover-example__content">
               <t-button
@@ -342,12 +310,10 @@
             placement="left-bottom"
             theme="dark"
             data-target="leftBottom"
-            @update:visible="(e) => visible.leftBottom = e"
+            @update:visible="(e) => (visible.leftBottom = e)"
           >
             <template #content>
-              <view>
-                气泡内容
-              </view>
+              <view> 气泡内容 </view>
             </template>
             <view class="popover-example__content">
               <t-button
@@ -407,47 +373,46 @@ export default {
 </script>
 <style scoped lang="less">
 .popover-example-row {
-    display: flex;
-    flex-direction: column;
-    padding: 0 32rpx;
-    margin-bottom: 48rpx;
+  display: flex;
+  flex-direction: column;
+  padding: 0 32rpx;
+  margin-bottom: 48rpx;
 }
 
 .row {
-    display: flex;
-    flex-direction: row;
-    gap: 32rpx;
+  display: flex;
+  flex-direction: row;
+  gap: 32rpx;
 }
 
 .column {
-    display: flex;
-    flex-direction: column;
-    gap: 32rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
 }
 
 .flex-end .column {
-    align-items: flex-end;
+  align-items: flex-end;
 }
 
 .demo-block__header-desc {
-    margin-top: var(--td-spacer, 16rpx);
-    margin-bottom: 32rpx;
-    font-size: var(--td-font-size-base, 28rpx);
-    white-space: pre-line;
-    color: var(--bg-color-demo-desc);
-    line-height: 22px;
+  margin-top: var(--td-spacer, 16rpx);
+  margin-bottom: 32rpx;
+  font-size: var(--td-font-size-base, 28rpx);
+  white-space: pre-line;
+  color: var(--bg-color-demo-desc);
+  line-height: 22px;
 }
 
 .popover-example__content {
-    flex: 1;
+  flex: 1;
 }
 
 :deep(.button-width--small) {
-    width: 204rpx;
+  width: 204rpx;
 }
 
 :deep(.button-width--large) {
-    width: 446rpx;
+  width: 446rpx;
 }
-
 </style>

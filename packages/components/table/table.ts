@@ -120,9 +120,10 @@ export default class Table extends SuperComponent {
       let tableElementStyles = tableContentWidth ? `width: ${formatCSSUnit(tableContentWidth)}` : '';
       // 有固定列时，自动根据列宽之和计算 tableContentWidth
       if (!tableElementStyles && hasFixedColumn && columns && columns.length > 0) {
-        const totalWidth = (columns as BaseTableCol[]).reduce((sum: number, col: BaseTableCol) => {
-          return sum + parseFloat(String(col.width || 80));
-        }, 0);
+        const totalWidth = (columns as BaseTableCol[]).reduce(
+          (sum: number, col: BaseTableCol) => sum + parseFloat(String(col.width || 80)),
+          0,
+        );
         tableElementStyles = `width: ${totalWidth}px`;
       }
 

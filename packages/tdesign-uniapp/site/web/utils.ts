@@ -54,7 +54,7 @@ function compareVersion(version1, version2) {
 }
 
 function filterStableVersions(versionList) {
-  return versionList.filter(version => !version.includes('-'));
+  return versionList.filter((version) => !version.includes('-'));
 }
 
 // 过滤小版本 + 版本号排序

@@ -6,35 +6,11 @@
       @selected="(e) => handleSelected(e, { tagId: 't-action-sheet' })"
     />
 
-    <t-button
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="handleAction"
-    >
-      常规列表型
-    </t-button>
+    <t-button size="large" variant="outline" block theme="primary" @click="handleAction"> 常规列表型 </t-button>
 
-    <t-button
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="showDescAction"
-    >
-      带描述列表型
-    </t-button>
+    <t-button size="large" variant="outline" block theme="primary" @click="showDescAction"> 带描述列表型 </t-button>
 
-    <t-button
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="showIconAction"
-    >
-      带图标列表型
-    </t-button>
+    <t-button size="large" variant="outline" block theme="primary" @click="showIconAction"> 带图标列表型 </t-button>
   </view>
 </template>
 

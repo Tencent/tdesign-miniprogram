@@ -1,18 +1,9 @@
 <template>
   <view class="skyline">
-    <t-demo-navbar
-      custom-class="demo-navbar"
-      title="Icon"
-    />
-    <scroll-view
-      scroll-y
-      type="list"
-      class="scroll-view"
-    >
+    <t-demo-navbar custom-class="demo-navbar" title="Icon" />
+    <scroll-view scroll-y type="list" class="scroll-view">
       <view class="demo">
-        <view class="demo-title">
-          Icon 图标
-        </view>
+        <view class="demo-title"> Icon 图标 </view>
         <view class="demo-desc">
           用于界面中的操作、入口、功能、服务等视觉表达，icon风格与品牌风格需要保持一致的感受，从而增加一致性
         </view>
@@ -31,7 +22,6 @@
 </template>
 
 <script>
-
 import BaseDemo from '../base/index.vue';
 import CustomDemo from '../custom/index.vue';
 import IconImage from '../iconImage/index.vue';

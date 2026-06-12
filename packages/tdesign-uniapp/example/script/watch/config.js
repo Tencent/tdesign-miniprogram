@@ -7,7 +7,6 @@ const VUE2_CLI_ROOT = path.resolve(PACKAGES_ROOT, '../../tdesign-uniapp-starter-
 const VUE2_HX_ROOT = path.resolve(PACKAGES_ROOT, '../../tdesign-uniapp-starter-vue2-hx');
 const VUE3_HX_ROOT = path.resolve(PACKAGES_ROOT, '../../tdesign-uniapp-starter-vue3-hx');
 
-
 const config = {
   vue3CliRoot: VUE3_CLI_ROOT,
   vue2CliRoot: VUE2_CLI_ROOT,
@@ -41,7 +40,6 @@ const config = {
 
   demoPagesGlob: toGlobPattern(path.resolve(VUE3_CLI_ROOT, 'src/{pages,components,mixins,style}/**/*')),
 };
-
 
 module.exports = {
   config,

@@ -1,19 +1,9 @@
 <template>
   <view>
-    <t-demo-navbar
-      custom-class="demo-navbar"
-      title="Popover"
-    />
-    <t-demo-header
-      title="Popover 弹出气泡"
-      desc="用于文字提示的气泡框。"
-      notice="渲染框架支持情况：WebView"
-    />
+    <t-demo-navbar custom-class="demo-navbar" title="Popover" />
+    <t-demo-header title="Popover 弹出气泡" desc="用于文字提示的气泡框。" notice="渲染框架支持情况：WebView" />
     <view class="tdesign-demo-popover">
-      <t-demo
-        title="01 组件类型"
-        padding
-      >
+      <t-demo title="01 组件类型" padding>
         <base-demo />
       </t-demo>
       <t-demo title="02 组件样式">
@@ -30,7 +20,6 @@
 import BaseDemo from './base';
 import PlacementDemo from './placement';
 import ThemeDemo from './theme';
-
 
 export default {
   options: {

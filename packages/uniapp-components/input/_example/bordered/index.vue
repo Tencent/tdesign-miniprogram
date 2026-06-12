@@ -1,8 +1,6 @@
 <template>
   <view class="input-example--bordered">
-    <view class="input-example__label">
-      标签文字
-    </view>
+    <view class="input-example__label"> 标签文字 </view>
 
     <t-input
       placeholder="请输入文字"
@@ -30,15 +28,15 @@ export default {
 </script>
 <style>
 .input-example--bordered {
-    --td-input-vertical-padding: 24rpx;
-    background-color: var(--bg-color-demo);
-    padding: 32rpx 32rpx 16rpx;
+  --td-input-vertical-padding: 24rpx;
+  background-color: var(--bg-color-demo);
+  padding: 32rpx 32rpx 16rpx;
 }
 
 .input-example__label {
-    color: var(--td-text-color-primary);
-    font-size: 24rpx;
-    line-height: 40rpx;
-    margin: 0 8rpx 16rpx;
+  color: var(--td-text-color-primary);
+  font-size: 24rpx;
+  line-height: 40rpx;
+  margin: 0 8rpx 16rpx;
 }
 </style>

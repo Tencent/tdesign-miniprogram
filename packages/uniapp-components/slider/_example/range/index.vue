@@ -1,11 +1,6 @@
 <template>
   <view class="wrapper">
-    <t-slider
-      range
-      :default-value="[35, 65]"
-      @dragstart="onDragstart"
-      @dragend="onDragend"
-    />
+    <t-slider range :default-value="[35, 65]" @dragstart="onDragstart" @dragend="onDragend" />
   </view>
 </template>
 
@@ -31,7 +26,7 @@ export default {
 </script>
 <style>
 .wrapper {
-    background: var(--bg-color-demo);
-    padding: 0 12rpx;
+  background: var(--bg-color-demo);
+  padding: 0 12rpx;
 }
 </style>

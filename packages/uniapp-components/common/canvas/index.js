@@ -1,7 +1,4 @@
-export async function loadImage({
-  canvas,
-  src,
-}) {
+export async function loadImage({ canvas, src }) {
   let result = null;
   if (!src || !canvas) {
     return result;

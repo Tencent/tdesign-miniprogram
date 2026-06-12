@@ -1,18 +1,13 @@
 <template>
   <view>
-    <t-demo-navbar
-      title="TreeSelect"
-    />
+    <t-demo-navbar title="TreeSelect" />
     <view class="demo">
       <t-demo-header
         title="TreeSelect 树形选择器"
         desc="用于多层级数据的逐级选择。"
         notice="渲染框架支持情况：WebView"
       />
-      <t-demo
-        title="01 组件类型"
-        desc="基础树形选择器"
-      >
+      <t-demo title="01 组件类型" desc="基础树形选择器">
         <base-demo />
       </t-demo>
 
@@ -20,10 +15,7 @@
         <multiple-demo />
       </t-demo>
 
-      <t-demo
-        title="02 组件状态"
-        desc="树形选择器-三列"
-      >
+      <t-demo title="02 组件状态" desc="树形选择器-三列">
         <normal-demo />
       </t-demo>
     </view>
@@ -46,5 +38,4 @@ export default {
   methods: {},
 };
 </script>
-<style>
-</style>
+<style></style>

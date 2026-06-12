@@ -18,7 +18,6 @@
 import { goBackOrGoHome } from '../common/route';
 import TNavbar from '../navbar/navbar.vue';
 
-
 export default {
   components: {
     TNavbar,

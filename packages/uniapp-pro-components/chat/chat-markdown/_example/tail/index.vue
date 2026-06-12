@@ -6,10 +6,7 @@
       style="margin-bottom: 16px"
       @change="handleSegmentChange"
     />
-    <scroll-view
-      class="chat-example-scroll"
-      scroll-y
-    >
+    <scroll-view class="chat-example-scroll" scroll-y>
       <!-- 光标：默认内置 tail 组件 -->
       <t-chat-markdown
         v-if="segmentedValue === 'cursor'"
@@ -18,11 +15,7 @@
         @click="handleNodeTap"
       />
       <!-- 无动画：不传 streaming -->
-      <t-chat-markdown
-        v-else-if="segmentedValue === 'no-animation'"
-        :content="content"
-        @click="handleNodeTap"
-      />
+      <t-chat-markdown v-else-if="segmentedValue === 'no-animation'" :content="content" @click="handleNodeTap" />
     </scroll-view>
   </view>
 </template>

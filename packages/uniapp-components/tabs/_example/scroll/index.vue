@@ -1,17 +1,7 @@
 <template>
   <view>
-    <t-tabs
-      :default-value="0"
-      :space-evenly="false"
-      @change="onTabsChange"
-      @click="onTabsClick"
-    >
-      <t-tab-panel
-        v-for="(item, index) in 8"
-        :key="index"
-        label="选项"
-        :value="index"
-      />
+    <t-tabs :default-value="0" :space-evenly="false" @change="onTabsChange" @click="onTabsClick">
+      <t-tab-panel v-for="(item, index) in 8" :key="index" label="选项" :value="index" />
     </t-tabs>
   </view>
 </template>
@@ -38,5 +28,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

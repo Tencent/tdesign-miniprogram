@@ -73,7 +73,6 @@
   </view>
 </template>
 <script>
-
 import { prefix } from '../common/config';
 
 import TCalendar from '../common/shared/calendar/index';
@@ -85,15 +84,10 @@ import usingConfig from '../mixins/using-config';
 import useCustomNavbar from '../mixins/using-custom-navbar';
 import TPopup from '../popup/popup';
 
-import {
-  getMonthTitle,
-  getDateLabel,
-  isDateSelected,
-} from './computed.js';
+import { getMonthTitle, getDateLabel, isDateSelected } from './computed.js';
 import props from './props';
 import CalendarTemplate from './template.vue';
 import { getPrevMonth, getPrevYear, getNextMonth, getNextYear } from './utils';
-
 
 const componentName = 'calendar';
 const name = `${prefix}-${componentName}`;
@@ -118,9 +112,7 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     mixins: [
       useCustomNavbar,
       usingConfig({
@@ -131,9 +123,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-      'update:visible',
-    ],
+    emits: ['update:visible'],
     data() {
       return {
         prefix,
@@ -348,7 +338,7 @@ export default {
       calcCurrentMonth(newValue) {
         const date = newValue || this.getCurrentDate();
         const { year, month } = this.getCurrentYearAndMonth(date);
-        const currentMonth = this.months.filter(item => item.year === year && item.month === month);
+        const currentMonth = this.months.filter((item) => item.year === year && item.month === month);
 
         this.updateActionButton(date);
 
@@ -393,7 +383,7 @@ export default {
         this.updateCurrentMonth();
 
         if (this.confirmBtn == null) {
-        // 不显示确认按钮，则选择完即关闭 popup
+          // 不显示确认按钮，则选择完即关闭 popup
           if (this.type === 'single' || rawValue.length === 2) {
             this.dataVisible = false;
             this._trigger('change', { value }); // 受控
@@ -414,7 +404,7 @@ export default {
       toTime(val) {
         if (!val) return null;
         if (Array.isArray(val)) {
-          return val.map(item => item.getTime());
+          return val.map((item) => item.getTime());
         }
         return val.getTime();
       },

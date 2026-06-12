@@ -1,14 +1,7 @@
 <template>
   <view class="demo-rate">
-    <view class="demo-rate__title">
-      第三方图标
-    </view>
-    <t-rate
-      :value="value"
-      icon-prefix="icon"
-      icon="a-1h"
-      @change="onChange"
-    />
+    <view class="demo-rate__title"> 第三方图标 </view>
+    <t-rate :value="value" icon-prefix="icon" icon="a-1h" @change="onChange" />
   </view>
 </template>
 
@@ -34,25 +27,25 @@ export default {
 </script>
 <style>
 .demo-rate {
-    background-color: var(--bg-color-demo);
-    color: var(--td-text-color-primary);
-    height: 96rpx;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 32rpx;
-    margin-top: 32rpx;
-    margin-bottom: 32rpx;
+  background-color: var(--bg-color-demo);
+  color: var(--td-text-color-primary);
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  margin-top: 32rpx;
+  margin-bottom: 32rpx;
 }
 
 .demo-rate__title {
-    width: 200rpx;
-    font-size: 16px;
+  width: 200rpx;
+  font-size: 16px;
 }
 
 .demo-rate__transparent {
-    background-color: transparent;
-    padding-left: 32rpx;
-    border: 0;
+  background-color: transparent;
+  padding-left: 32rpx;
+  border: 0;
 }
 </style>

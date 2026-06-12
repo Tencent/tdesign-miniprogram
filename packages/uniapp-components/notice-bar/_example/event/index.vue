@@ -1,37 +1,15 @@
 <template>
   <view>
-    <t-notice-bar
-      :visible="visible"
-      suffix-icon="chevron-right"
-      @click="click"
-    >
-      <template
-        #content
-      >
-        <view
-          class="inline"
-        >
-          这是一条普通的通知信息
-        </view>
+    <t-notice-bar :visible="visible" suffix-icon="chevron-right" @click="click">
+      <template #content>
+        <view class="inline"> 这是一条普通的通知信息 </view>
       </template>
-      <template
-        #operation
-      >
-        <t-link
-          content="详情"
-          theme="primary"
-          :underline="false"
-          :navigator-props="navigatorProps"
-        />
+      <template #operation>
+        <t-link content="详情" theme="primary" :underline="false" :navigator-props="navigatorProps" />
       </template>
     </t-notice-bar>
 
-    <t-notice-bar
-      :visible="visible"
-      suffix-icon="chevron-right"
-      content="这是一条普通的通知信息"
-      @click="click"
-    />
+    <t-notice-bar :visible="visible" suffix-icon="chevron-right" content="这是一条普通的通知信息" @click="click" />
   </view>
 </template>
 
@@ -62,6 +40,6 @@ export default {
 </script>
 <style>
 .inline {
-    display: inline;
+  display: inline;
 }
 </style>

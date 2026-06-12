@@ -1,16 +1,10 @@
 <template>
   <view>
     <view class="example-search">
-      <t-search
-        placeholder="最大输入10个字符"
-        :maxlength="10"
-      />
+      <t-search placeholder="最大输入10个字符" :maxlength="10" />
     </view>
     <view class="example-search">
-      <t-search
-        placeholder="最大输入10个字符，汉字算两个"
-        :maxcharacter="10"
-      />
+      <t-search placeholder="最大输入10个字符，汉字算两个" :maxcharacter="10" />
     </view>
   </view>
 </template>
@@ -30,7 +24,7 @@ export default {
 </script>
 <style>
 .example-search {
-    background-color: var(--bg-color-demo);
-    padding: 16rpx 32rpx;
+  background-color: var(--bg-color-demo);
+  padding: 16rpx 32rpx;
 }
 </style>

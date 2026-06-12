@@ -9,13 +9,18 @@
   >
     <view
       :class="classPrefix + '__wrapper'"
-      :style="'transition: transform ' + duration + 'ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, ' + offset + 'px, 0); padding: ' + wrapperPaddingY + 'px 0'"
+      :style="
+        'transition: transform ' +
+        duration +
+        'ms cubic-bezier(0.215, 0.61, 0.355, 1); transform: translate3d(0, ' +
+        offset +
+        'px, 0); padding: ' +
+        wrapperPaddingY +
+        'px 0'
+      "
     >
       <!-- 虚拟滚动：占位容器（撑开总高度） -->
-      <view
-        v-if="enableVirtualScroll"
-        :style="'height: ' + totalHeight + 'px; position: relative;'"
-      >
+      <view v-if="enableVirtualScroll" :style="'height: ' + totalHeight + 'px; position: relative;'">
         <!-- 可见区域（绝对定位） -->
         <view :style="'position: absolute; top: ' + virtualOffsetY + 'px; left: 0; right: 0;'">
           <view
@@ -26,18 +31,11 @@
             :data-index="virtualStartIndex + index"
             @tap="onClickItem"
           >
-            <t-icon
-              v-if="option[keys.icon]"
-              :class="classPrefix + '__item-icon'"
-              :name="option[keys.icon]"
-            />
+            <t-icon v-if="option[keys.icon]" :class="classPrefix + '__item-icon'" :name="option[keys.icon]" />
             <text :class="classPrefix + '__item-label'">
               {{ option[keys.label] }}
             </text>
-            <slot
-              v-if="useSlots"
-              :name="'label-suffix--' + (virtualStartIndex + index)"
-            />
+            <slot v-if="useSlots" :name="'label-suffix--' + (virtualStartIndex + index)" />
           </view>
         </view>
       </view>
@@ -52,18 +50,11 @@
           :data-index="index"
           @click="onClickItem"
         >
-          <t-icon
-            v-if="option[keys.icon]"
-            :class="classPrefix + '__item-icon'"
-            :name="option[keys.icon]"
-          />
+          <t-icon v-if="option[keys.icon]" :class="classPrefix + '__item-icon'" :name="option[keys.icon]" />
           <text :class="classPrefix + '__item-label'">
             {{ option[keys.label] }}
           </text>
-          <slot
-            v-if="useSlots"
-            :name="'label-suffix--' + index"
-          />
+          <slot v-if="useSlots" :name="'label-suffix--' + index" />
         </view>
       </template>
     </view>
@@ -79,7 +70,6 @@ import tools from '../common/utils.wxs';
 import TIcon from '../icon/icon.vue';
 
 import props from './props';
-
 
 const name = `${prefix}-picker-item`;
 
@@ -125,12 +115,8 @@ export default {
       styleIsolation: 'shared',
       virtualHost: true,
     },
-    externalClasses: [
-      `${prefix}-class`,
-    ],
-    mixins: [
-      ChildrenMixin(RELATION_MAP.PickerItem),
-    ],
+    externalClasses: [`${prefix}-class`],
+    mixins: [ChildrenMixin(RELATION_MAP.PickerItem)],
     props: {
       ...props,
       useSlots: {
@@ -181,12 +167,10 @@ export default {
       this.startTime = 0;
       this._animationTimer = null; // 动画期间更新虚拟滚动的定时器
     },
-    mounted() {
-
-    },
+    mounted() {},
 
     beforeUnmount() {
-    // 清理定时器，防止内存泄漏
+      // 清理定时器，防止内存泄漏
       if (this._animationTimer) {
         clearInterval(this._animationTimer);
         this._animationTimer = null;
@@ -259,7 +243,9 @@ export default {
         // 判断是否为快速惯性滚动（用于决定缓冲区大小）
         const isFastInertia = Math.abs(distance) > itemHeight * 3;
         // 根据是否快速惯性滚动选择缓冲区大小
-        const bufferCount = isFastInertia ? VIRTUAL_SCROLL_CONFIG.FAST_SCROLL_BUFFER : VIRTUAL_SCROLL_CONFIG.BUFFER_COUNT;
+        const bufferCount = isFastInertia
+          ? VIRTUAL_SCROLL_CONFIG.FAST_SCROLL_BUFFER
+          : VIRTUAL_SCROLL_CONFIG.BUFFER_COUNT;
 
         // 清除之前的动画更新定时器
         if (this._animationTimer) {
@@ -274,7 +260,7 @@ export default {
 
         // 虚拟滚动：预先计算覆盖动画全程的可见范围，避免动画期间频繁更新
         if (enableVirtualScroll) {
-        // 计算当前位置和目标位置的索引范围
+          // 计算当前位置和目标位置的索引范围
           const currentIndex = Math.floor(Math.abs(offset) / itemHeight);
           const targetIndex = index;
 
@@ -292,7 +278,7 @@ export default {
 
           // 使用 nextTick 确保 DOM 更新后再执行后续操作
           nextTick().then(() => {
-          // 动画结束后，精确更新虚拟滚动视图到最终位置
+            // 动画结束后，精确更新虚拟滚动视图到最终位置
             const visibleRange = this.computeVirtualRange(finalOffset, formatOptions.length, itemHeight, false);
             this.visibleOptions = formatOptions.slice(visibleRange.startIndex, visibleRange.endIndex);
             this.virtualStartIndex = visibleRange.startIndex;
@@ -307,7 +293,7 @@ export default {
       formatOption(options, columnIndex, format) {
         if (typeof format !== 'function') return options;
 
-        return options.map(ele => format(ele, columnIndex));
+        return options.map((ele) => format(ele, columnIndex));
       },
 
       updateSelected(index, trigger) {
@@ -337,11 +323,11 @@ export default {
         // 大数据量优化：使用 Map 快速查找索引
         let index = -1;
         if (optionsCount > 500) {
-        // 构建临时 Map（只在查找时构建，不缓存）
+          // 构建临时 Map（只在查找时构建，不缓存）
           const valueMap = new Map(formatOptions.map((item, idx) => [item[keys?.value], idx]));
           index = valueMap.get(value) ?? -1;
         } else {
-          index = formatOptions.findIndex(item => item[keys?.value] === value);
+          index = formatOptions.findIndex((item) => item[keys?.value] === value);
         }
         const selectedIndex = index > 0 ? index : 0;
 
@@ -363,7 +349,7 @@ export default {
           this.virtualStartIndex = visibleRange.startIndex;
           this.virtualOffsetY = visibleRange.startIndex * itemHeight;
         } else {
-        // 不启用虚拟滚动时，visibleOptions 等于 formatOptions
+          // 不启用虚拟滚动时，visibleOptions 等于 formatOptions
           this.visibleOptions = formatOptions;
           this.virtualStartIndex = 0;
           this.virtualOffsetY = 0;
@@ -375,12 +361,12 @@ export default {
       },
 
       /**
-     * 计算虚拟滚动的可见范围
-     * @param offset 当前滚动偏移量
-     * @param totalCount 总选项数量
-     * @param itemHeight 单个选项高度
-     * @param isFastScroll 是否为快速滑动
-     */
+       * 计算虚拟滚动的可见范围
+       * @param offset 当前滚动偏移量
+       * @param totalCount 总选项数量
+       * @param itemHeight 单个选项高度
+       * @param isFastScroll 是否为快速滑动
+       */
       computeVirtualRange(offset, totalCount, itemHeight, isFastScroll = false) {
         const scrollTop = Math.abs(offset);
         const { BUFFER_COUNT, FAST_SCROLL_BUFFER } = VIRTUAL_SCROLL_CONFIG;
@@ -401,10 +387,10 @@ export default {
       },
 
       /**
-     * 更新虚拟滚动的可见选项
-     * @param offset 当前滚动偏移量（可选，不传则使用 data.offset）
-     * @param isFastScroll 是否为快速滑动
-     */
+       * 更新虚拟滚动的可见选项
+       * @param offset 当前滚动偏移量（可选，不传则使用 data.offset）
+       * @param isFastScroll 是否为快速滑动
+       */
       updateVisibleOptions(offset, isFastScroll = false) {
         const { formatOptions, itemHeight, enableVirtualScroll } = this;
 
@@ -415,8 +401,8 @@ export default {
 
         // 只有当可见范围发生变化时才更新
         if (
-          visibleRange.startIndex !== this.virtualStartIndex
-        || visibleRange.endIndex !== this.virtualStartIndex + this.visibleOptions.length
+          visibleRange.startIndex !== this.virtualStartIndex ||
+          visibleRange.endIndex !== this.virtualStartIndex + this.visibleOptions.length
         ) {
           this.visibleOptions = formatOptions.slice(visibleRange.startIndex, visibleRange.endIndex);
           this.virtualStartIndex = visibleRange.startIndex;

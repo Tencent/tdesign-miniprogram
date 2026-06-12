@@ -20,10 +20,8 @@ import pageScrollMixin from '../mixins/page-scroll';
 
 import props from './props';
 
-
 const name = `${prefix}-sticky`;
 const ContainerClass = `.${name}`;
-
 
 export default {
   ...uniComponent({
@@ -31,10 +29,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-content`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-content`],
     mixins: [pageScrollMixin()],
     props: {
       ...props,
@@ -135,11 +130,10 @@ export default {
 
       getContainerRect() {
         const nodesRef = this.container();
-        return new Promise(resolve => nodesRef.boundingClientRect(resolve).exec());
+        return new Promise((resolve) => nodesRef.boundingClientRect(resolve).exec());
       },
     },
   }),
 };
-
 </script>
 <style scoped src="./sticky.css"></style>

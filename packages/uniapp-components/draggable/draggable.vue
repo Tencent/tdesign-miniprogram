@@ -13,12 +13,10 @@
 import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 
-
 import { getRect, getWindowInfo } from '../common/utils';
 import tools from '../common/utils.wxs';
 
 import props from './props';
-
 
 const name = `${prefix}-draggable`;
 
@@ -31,11 +29,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-      'move',
-      'start',
-      'end',
-    ],
+    emits: ['move', 'start', 'end'],
     data() {
       return {
         prefix,
@@ -63,7 +57,6 @@ export default {
         let x = this.startX - e.touches[0].clientX; // x轴移动偏移量
         let y = this.startY - e.touches[0].clientY; // y轴移动偏移量
 
-
         if (this.direction === 'vertical') {
           x = systemInfo.windowWidth - this.rect.right;
         }
@@ -85,7 +78,7 @@ export default {
         try {
           this.rect = await getRect(this, `.${this.classPrefix}`);
         } catch (e) {
-        // ignore reject
+          // ignore reject
         }
       },
     },

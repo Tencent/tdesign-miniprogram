@@ -1,22 +1,8 @@
 <template>
   <view>
-    <view
-      v-if="isShow"
-      :style="'' + tools._style([customStyle])"
-      :class="[classPrefix + ' ', tClass]"
-    >
-      <view
-        v-if="parsedRowCols.length"
-        :class="classPrefix + '__content'"
-      >
-        <view
-          v-for="(row, index) in parsedRowCols"
-          :key="index"
-          :class="[
-            classPrefix + '__row ',
-            tClassRow
-          ]"
-        >
+    <view v-if="isShow" :style="'' + tools._style([customStyle])" :class="[classPrefix + ' ', tClass]">
+      <view v-if="parsedRowCols.length" :class="classPrefix + '__content'">
+        <view v-for="(row, index) in parsedRowCols" :key="index" :class="[classPrefix + '__row ', tClassRow]">
           <view
             v-for="(col, index1) in row"
             :key="index1"
@@ -26,10 +12,7 @@
         </view>
       </view>
     </view>
-    <view
-      v-else
-      :class="classPrefix + '__content'"
-    >
+    <view v-else :class="classPrefix + '__content'">
       <slot />
     </view>
   </view>
@@ -38,37 +21,49 @@
 import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 
-
 import { classNames } from '../common/utils';
 import tools from '../common/utils.wxs';
 import { isInteger, isNumeric } from '../common/validator';
 
 import props from './props';
 
-
 const name = `${prefix}-skeleton`;
 
-
 const ThemeMap = {
-  avatar: [{
-    type: 'circle',
-    size: '96rpx',
-  }],
-  image: [{
-    type: 'rect',
-    size: '144rpx',
-  }],
-  text: [[{
-    width: '24%',
-    height: '32rpx',
-    marginRight: '32rpx',
-  }, {
-    width: '76%',
-    height: '32rpx',
-  }], 1],
-  paragraph: [1, 1, 1, {
-    width: '55%',
-  }],
+  avatar: [
+    {
+      type: 'circle',
+      size: '96rpx',
+    },
+  ],
+  image: [
+    {
+      type: 'rect',
+      size: '144rpx',
+    },
+  ],
+  text: [
+    [
+      {
+        width: '24%',
+        height: '32rpx',
+        marginRight: '32rpx',
+      },
+      {
+        width: '76%',
+        height: '32rpx',
+      },
+    ],
+    1,
+  ],
+  paragraph: [
+    1,
+    1,
+    1,
+    {
+      width: '55%',
+    },
+  ],
 };
 
 export default {
@@ -77,11 +72,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-col`,
-      `${prefix}-class-row`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-col`, `${prefix}-class-row`],
     props: {
       ...props,
     },
@@ -117,7 +108,7 @@ export default {
         const { theme, rowCol } = this;
         const rowCols = [];
 
-        if (rowCol &&  rowCol.length) {
+        if (rowCol && rowCol.length) {
           rowCols.push(...rowCol);
         } else {
           rowCols.push(...ThemeMap[theme || 'text']);
@@ -132,7 +123,7 @@ export default {
           }
 
           if (Array.isArray(item)) {
-            return item.map(col => ({
+            return item.map((col) => ({
               ...col,
               class: this.getColItemClass(col),
               style: this.getColItemStyle(col),

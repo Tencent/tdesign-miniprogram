@@ -3,5 +3,15 @@ import type { TransformEventHandlers, ExtractNonOnProps } from '@tdesign/uniapp/
 
 export type ChatLoadingProps = ExtractNonOnProps<TdChatLoadingProps>;
 export type ChatLoadingEmits = TransformEventHandlers<TdChatLoadingProps, true>;
-declare const ChatLoadingComponent: import('vue').DefineComponent<ChatLoadingProps, {}, {}, {}, {}, {}, {}, ChatLoadingEmits, any>;
+declare const ChatLoadingComponent: import('vue').DefineComponent<
+  ChatLoadingProps,
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  ChatLoadingEmits,
+  any
+>;
 export default ChatLoadingComponent;

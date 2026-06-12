@@ -29,7 +29,7 @@ const options = {
 // 处理流程
 async function processLess(inputFile, rawOutputFile) {
   if (!inputFile.endsWith('.less')) return;
-  if (CONFIG.whiteList.find(item => inputFile.startsWith(item))) {
+  if (CONFIG.whiteList.find((item) => inputFile.startsWith(item))) {
     return;
   }
 
@@ -37,8 +37,8 @@ async function processLess(inputFile, rawOutputFile) {
     let lessCode = fs.readFileSync(inputFile, 'utf8');
 
     lessCode = lessCode.replace(
-      '@import \'@tdesign/uniapp/common/style/base.less\'',
-      '@import \'../common/style/base.less\'',
+      "@import '@tdesign/uniapp/common/style/base.less'",
+      "@import '../common/style/base.less'",
     );
 
     const cssResult = await less.render(lessCode, {
@@ -51,7 +51,9 @@ async function processLess(inputFile, rawOutputFile) {
       ],
     });
 
-    const postcssResult = await postcss([CONFIG.useRpxTransform ? rpxTransform(options) : null].filter(Boolean)).process(cssResult.css, { from: undefined });
+    const postcssResult = await postcss(
+      [CONFIG.useRpxTransform ? rpxTransform(options) : null].filter(Boolean),
+    ).process(cssResult.css, { from: undefined });
 
     const getOutputFile = (rawOutputFile) => {
       const filename = `${path.basename(rawOutputFile, path.extname(rawOutputFile)).replace(/^_/, '')}.css`;

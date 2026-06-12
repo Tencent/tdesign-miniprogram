@@ -13,9 +13,7 @@ import { uniComponent } from '../common/src/index';
 import tools from '../common/utils.wxs';
 import transition from '../mixins/transition';
 
-
 const name = `${prefix}-transition`;
-
 
 export default {
   ...uniComponent({
@@ -23,29 +21,19 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     mixins: [transition()],
-    props: {
-    },
+    props: {},
     data() {
       return {
         classPrefix: name,
         tools,
       };
     },
-    watch: {
-
-    },
-    mounted() {
-
-    },
-    methods: {
-
-    },
+    watch: {},
+    mounted() {},
+    methods: {},
   }),
 };
-
 </script>
 <style scoped src="./transition.css"></style>

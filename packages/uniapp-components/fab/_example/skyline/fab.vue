@@ -1,25 +1,12 @@
 <template>
   <view>
     <view class="skyline">
-      <t-demo-navbar
-        title="Fab"
-      />
-      <scroll-view
-        scroll-y
-        type="list"
-        class="scroll-view"
-      >
+      <t-demo-navbar title="Fab" />
+      <scroll-view scroll-y type="list" class="scroll-view">
         <view class="demo">
-          <view class="demo-title">
-            Fab 悬浮按钮
-          </view>
-          <view class="demo-desc">
-            当功能使用图标即可表意清楚时，可使用纯图标悬浮按钮，例如：添加、发布
-          </view>
-          <t-demo
-            title="01 组件类型"
-            desc="纯图标悬浮按钮"
-          >
+          <view class="demo-title"> Fab 悬浮按钮 </view>
+          <view class="demo-desc"> 当功能使用图标即可表意清楚时，可使用纯图标悬浮按钮，例如：添加、发布 </view>
+          <t-demo title="01 组件类型" desc="纯图标悬浮按钮">
             <view class="wrapper">
               <t-button
                 theme="primary"
@@ -72,7 +59,6 @@
 </template>
 
 <script>
-
 import TButton from '@tdesign/uniapp/button/button.vue';
 
 import BaseDemo from '../base/index.vue';

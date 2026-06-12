@@ -1,9 +1,7 @@
 <template>
   <view class="wrap">
     <view class="custom-navbar">
-      <t-demo-navbar
-        title="TDesign"
-      />
+      <t-demo-navbar title="TDesign" />
     </view>
     <t-indexes
       :default-current="defaultCurrent"
@@ -12,19 +10,11 @@
       @select="onSelect"
       @change="onChange"
     >
-      <block
-        v-for="(item, index) in list"
-        :key="index"
-      >
+      <block v-for="(item, index) in list" :key="index">
         <t-indexes-anchor :index="item.index" />
 
         <t-cell-group>
-          <t-cell
-            v-for="(city, index1) in item.children"
-            :key="index1"
-            :title="city"
-            aria-role="button"
-          />
+          <t-cell v-for="(city, index1) in item.children" :key="index1" :title="city" aria-role="button" />
         </t-cell-group>
       </block>
     </t-indexes>
@@ -60,7 +50,22 @@ export default {
         },
         {
           index: 'B',
-          children: ['北京', '白银', '保定', '宝鸡', '保山', '包头', '巴中', '北海', '蚌埠', '本溪', '毕节', '滨州', '百色', '亳州'],
+          children: [
+            '北京',
+            '白银',
+            '保定',
+            '宝鸡',
+            '保山',
+            '包头',
+            '巴中',
+            '北海',
+            '蚌埠',
+            '本溪',
+            '毕节',
+            '滨州',
+            '百色',
+            '亳州',
+          ],
         },
         {
           index: 'C',
@@ -88,7 +93,21 @@ export default {
         },
         {
           index: 'D',
-          children: ['大连', '东莞', '大理', '丹东', '大庆', '大同', '大兴安岭', '德宏', '德阳', '德州', '定西', '迪庆', '东营'],
+          children: [
+            '大连',
+            '东莞',
+            '大理',
+            '丹东',
+            '大庆',
+            '大同',
+            '大兴安岭',
+            '德宏',
+            '德阳',
+            '德州',
+            '定西',
+            '迪庆',
+            '东营',
+          ],
         },
         {
           index: 'E',
@@ -120,7 +139,7 @@ export default {
     setTimeout(() => {
       this.getCustomNavbarHeight();
     }, 30);
-    this.indexList = this.list.map(item => item.index);
+    this.indexList = this.list.map((item) => item.index);
   },
   methods: {
     onChange(e) {
@@ -151,5 +170,4 @@ export default {
   overflow: auto;
 }
 /* #endif */
-
 </style>

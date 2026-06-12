@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="'' + `${classPrefix} ${tClass}`"
-    :style="'' + `${tools._style([customStyle, cssVars])}`"
-  >
+  <view :class="'' + `${classPrefix} ${tClass}`" :style="'' + `${tools._style([customStyle, cssVars])}`">
     <slot />
   </view>
 </template>
@@ -23,9 +20,7 @@ const name = `${prefix}-${componentName}`;
 export default {
   ...uniComponent({
     name,
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     options: {
       styleIsolation: 'shared',
     },
@@ -56,8 +51,7 @@ export default {
       },
     },
     mounted() {
-      this.iComponentId = `${Date.now()}-${Math.random().toString(36)
-        .slice(2)}`;
+      this.iComponentId = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
       this.initStore();
       this.updateConfig();
     },
@@ -70,16 +64,16 @@ export default {
       }
     },
     methods: {
-    /**
-     * 初始化 Store 并订阅状态变化
-     */
+      /**
+       * 初始化 Store 并订阅状态变化
+       */
       initStore() {
         this.iUnsubscribeLocale = configStore.currentLocale.subscribe(() => {});
       },
 
       /**
-     * 更新配置
-     */
+       * 更新配置
+       */
       updateConfig() {
         const { themeVars, globalConfig } = this;
 

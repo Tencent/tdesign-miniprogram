@@ -5,35 +5,32 @@
   >
     <view :class="classPrefix + '__group'">
       <!-- thumb 动画背景 -->
-      <view
-        :class="classPrefix + '__thumb ' + tClassThumb"
-        :style="thumbStyle"
-      />
+      <view :class="classPrefix + '__thumb ' + tClassThumb" :style="thumbStyle" />
 
       <!-- 选项列表 -->
       <view
         v-for="(item, index) in segmentItems"
         :key="index"
-        :class="'' + tools.cls(classPrefix + '__item', [
-          ['active', index === activeIndex],
-          ['disabled', disabled || item.disabled]
-        ]) + ' ' + classPrefix + '-item-' + index + ' ' + tClassItem"
+        :class="
+          '' +
+          tools.cls(classPrefix + '__item', [
+            ['active', index === activeIndex],
+            ['disabled', disabled || item.disabled],
+          ]) +
+          ' ' +
+          classPrefix +
+          '-item-' +
+          index +
+          ' ' +
+          tClassItem
+        "
         @click="handleSelect(index)"
       >
         <view :class="classPrefix + '__item-inner'">
-          <block
-            v-if="item.icon"
-            name="icon"
-          >
-            <t-icon
-              :name="item.icon.name || item.icon"
-              :t-class="classPrefix + '__item-icon'"
-            />
+          <block v-if="item.icon" name="icon">
+            <t-icon :name="item.icon.name || item.icon" :t-class="classPrefix + '__item-icon'" />
           </block>
-          <span
-            v-if="item.label"
-            :class="classPrefix + '__item-label'"
-          >{{ item.label }}</span>
+          <span v-if="item.label" :class="classPrefix + '__item-label'">{{ item.label }}</span>
         </view>
       </view>
     </view>
@@ -42,7 +39,6 @@
 <script>
 import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
-
 
 import { calcIcon, getRect, coalesce } from '../common/utils';
 import tools from '../common/utils.wxs';
@@ -67,11 +63,7 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-thumb`,
-      `${prefix}-class-item`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-thumb`, `${prefix}-class-item`],
     props: {
       ...props,
     },
@@ -135,7 +127,7 @@ export default {
         const { dataValue, segmentItems } = this;
         let activeIndex = -1;
         if (dataValue != null) {
-          activeIndex = segmentItems.findIndex(item => item.value === dataValue);
+          activeIndex = segmentItems.findIndex((item) => item.value === dataValue);
         }
         if (activeIndex === this.activeIndex) return;
         this.activeIndex = activeIndex;
@@ -149,10 +141,7 @@ export default {
         if (activeIndex < 0) return;
         const groupClass = `.${classPrefix}__group`;
         const itemClass = `.${classPrefix}-item-${activeIndex}`;
-        Promise.all([
-          getRect(this, itemClass),
-          getRect(this, groupClass),
-        ]).then(([itemRect, groupRect]) => {
+        Promise.all([getRect(this, itemClass), getRect(this, groupClass)]).then(([itemRect, groupRect]) => {
           if (itemRect && groupRect) {
             const left = itemRect.left - groupRect.left;
             this.thumbStyle = `width: ${itemRect.width}px; transform: translateX(${left}px);`;

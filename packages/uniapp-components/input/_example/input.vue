@@ -1,18 +1,9 @@
 <template>
   <view>
-    <t-demo-navbar
-      title="Input"
-    />
+    <t-demo-navbar title="Input" />
     <view class="input-example">
-      <t-demo-header
-        title="Input 输入框"
-        desc="用于单行文本信息输入。"
-        notice="渲染框架支持情况：Skyline、WebView"
-      />
-      <t-demo
-        title="01 组件类型"
-        desc="基础输入框"
-      >
+      <t-demo-header title="Input 输入框" desc="用于单行文本信息输入。" notice="渲染框架支持情况：Skyline、WebView" />
+      <t-demo title="01 组件类型" desc="基础输入框">
         <base-demo />
       </t-demo>
       <t-demo desc="带字数限制输入框">
@@ -28,20 +19,14 @@
         <special-demo />
       </t-demo>
 
-      <t-demo
-        title="02 组件状态"
-        desc="输入框状态"
-      >
+      <t-demo title="02 组件状态" desc="输入框状态">
         <status-demo />
       </t-demo>
       <t-demo desc="信息超长状态">
         <label-demo />
       </t-demo>
 
-      <t-demo
-        title="03 组件样式"
-        desc="内容位置"
-      >
+      <t-demo title="03 组件样式" desc="内容位置">
         <align-demo />
       </t-demo>
       <t-demo desc="竖排样式">
@@ -61,7 +46,6 @@
 </template>
 
 <script>
-
 import AlignDemo from './align/index.vue';
 import BannerDemo from './banner/index.vue';
 import BaseDemo from './base/index.vue';
@@ -99,8 +83,7 @@ export default {
       priceError: false,
     };
   },
-  methods: {
-  },
+  methods: {},
 };
 </script>
 <style lang="less">

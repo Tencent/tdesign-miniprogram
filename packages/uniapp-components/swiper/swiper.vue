@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="classPrefix + ' ' + tClass"
-    :style="'' + tools._style([customStyle])"
-  >
+  <view :class="classPrefix + ' ' + tClass" :style="'' + tools._style([customStyle])">
     <swiper
       :class="classPrefix + '-host'"
       :autoplay="autoplay"
@@ -24,9 +21,10 @@
         v-for="(item, index) in list"
         :key="index"
         :class="
-          '' + tools.cls(classPrefix + '__item', [
+          '' +
+          tools.cls(classPrefix + '__item', [
             ['preview', isPrev(navCurrent, index, list)],
-            ['next', isNext(navCurrent, index, list)]
+            ['next', isNext(navCurrent, index, list)],
           ])
         "
         :data-index="index"
@@ -77,7 +75,6 @@ import TSwiperNav from '../swiper-nav/swiper-nav';
 import { isPrev, isNext, getImageClass } from './computed.js';
 import props from './props';
 
-
 const name = `${prefix}-swiper`;
 
 export default {
@@ -91,17 +88,18 @@ export default {
       multipleSlots: true,
       styleIsolation: 'shared',
     },
-    externalClasses: [`${prefix}-class`, `${prefix}-class-nav`, `${prefix}-class-image`, `${prefix}-class-prev-image`, `${prefix}-class-next-image`],
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-nav`,
+      `${prefix}-class-image`,
+      `${prefix}-class-prev-image`,
+      `${prefix}-class-next-image`,
+    ],
     mixins: [ParentMixin(RELATION_MAP.SwiperNav)],
     props: {
       ...props,
     },
-    emits: [
-      'click',
-      'change',
-      'animationfinish',
-      'image-load',
-    ],
+    emits: ['click', 'change', 'animationfinish', 'image-load'],
     data() {
       return {
         prefix,
@@ -190,6 +188,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./swiper.css"></style>

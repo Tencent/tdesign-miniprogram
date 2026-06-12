@@ -10,7 +10,6 @@ if (process.env.UNI_PLATFORM !== 'h5') {
   diffPlugins.push(genVersionMpVitePlugin());
 }
 
-
 const TDESIGN_UNIAPP_COMPONENTS = path.resolve(__dirname, './src/_tdesign').replace(/\\/g, '/');
 const TDESIGN_UNIAPP_CHAT_COMPONENTS = path.resolve(__dirname, './src/_tdesign-chat').replace(/\\/g, '/');
 
@@ -30,10 +29,7 @@ export default ({ mode }: { mode: string }) => {
   const vueAppBase = env.VUE_APP_PUBLICPATH;
 
   const result = defineConfig({
-    plugins: [
-      uni(),
-      diffPlugins,
-    ],
+    plugins: [uni(), diffPlugins],
     resolve: {
       alias: {
         ...baseAlias,

@@ -1,21 +1,8 @@
 <template>
   <view>
-    <t-cell
-      t-class="mb-16"
-      title="带标题选择器"
-      arrow
-      hover
-      :note="cityText"
-      @click="onTitlePicker"
-    />
+    <t-cell t-class="mb-16" title="带标题选择器" arrow hover :note="cityText" @click="onTitlePicker" />
 
-    <t-cell
-      title="无标题选择器"
-      arrow
-      hover
-      :note="city2Text"
-      @click="onWithoutTitlePicker"
-    />
+    <t-cell title="无标题选择器" arrow hover :note="city2Text" @click="onWithoutTitlePicker" />
 
     <t-picker
       :visible="cityVisible"
@@ -23,7 +10,7 @@
       data-key="city"
       :title="cityTitle"
       :using-custom-navbar="!isMPAlipay"
-      @update:visible="(e) => cityVisible = e"
+      @update:visible="(e) => (cityVisible = e)"
       @change="(e) => onPickerChange(e, { key: 'city' })"
       @pick="(e) => onColumnChange(e, { key: 'city' })"
       @cancel="(e) => onPickerCancel(e, { key: 'city' })"
@@ -37,7 +24,7 @@
       data-key="city2"
       :title="city2Title"
       :using-custom-navbar="!isMPAlipay"
-      @update:visible="(e) => city2Visible = e"
+      @update:visible="(e) => (city2Visible = e)"
       @change="(e) => onPickerChange(e, { key: 'city2' })"
       @pick="(e) => onColumnChange(e, { key: 'city2' })"
       @cancel="(e) => onPickerCancel(e, { key: 'city2' })"
@@ -115,7 +102,7 @@ export default {
     },
     onTitlePicker() {
       this.cityVisible = true;
-      this.cityTitle =  '选择城市';
+      this.cityTitle = '选择城市';
     },
     onWithoutTitlePicker() {
       this.city2Visible = true;
@@ -126,6 +113,6 @@ export default {
 </script>
 <style>
 :deep(.mb-16) {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 </style>

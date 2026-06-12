@@ -1,19 +1,13 @@
 <template>
   <view>
-    <t-demo-navbar
-      class="demo-navbar"
-      title="ChatLoading"
-    />
+    <t-demo-navbar class="demo-navbar" title="ChatLoading" />
     <view class="demo">
       <t-demo-header
         title="ChatLoading 对话加载"
         desc="用于对话场景中的加载状态组件。"
         notice="渲染框架支持情况：WebView"
       />
-      <t-demo
-        title="01 组件类型"
-        desc="支持多种加载中动效类型，包括 gradient、moving、dots"
-      >
+      <t-demo title="01 组件类型" desc="支持多种加载中动效类型，包括 gradient、moving、dots">
         <base-demo />
       </t-demo>
       <t-demo desc="带文案描述的类型">

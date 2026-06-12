@@ -1,11 +1,6 @@
 <template>
   <view class="chat-example-block">
-    <t-chat-thinking
-      :content="content"
-      layout="block"
-      :status="status"
-      @collapsedChange="handleCollapsedChange"
-    />
+    <t-chat-thinking :content="content" layout="block" :status="status" @collapsedChange="handleCollapsedChange" />
   </view>
 </template>
 
@@ -35,7 +30,7 @@ export default {
 </script>
 <style>
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx;
 }
 </style>

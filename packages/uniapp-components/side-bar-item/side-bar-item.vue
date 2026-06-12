@@ -1,36 +1,34 @@
 <template>
   <view
     :id="tId"
-    :class="'' + tools.cls(classPrefix, [
-      ['active', active],
-      ['disabled', disabled]
-    ]) +
+    :class="
+      '' +
+      tools.cls(classPrefix, [
+        ['active', active],
+        ['disabled', disabled],
+      ]) +
       ' ' +
-      tClass"
+      tClass
+    "
     :style="'' + tools._style([customStyle])"
     aria-role="button"
-    :aria-label="ariaLabel ||
+    :aria-label="
+      ariaLabel ||
       (badgeProps && (badgeProps.dot || badgeProps.count)
-        ? (active ? '已选中，' + label + tools.getBadgeAriaLabel({ ...badgeProps })
-          : label + tools.getBadgeAriaLabel({ ...badgeProps })) : '')"
+        ? active
+          ? '已选中，' + label + tools.getBadgeAriaLabel({ ...badgeProps })
+          : label + tools.getBadgeAriaLabel({ ...badgeProps })
+        : '')
+    "
     :aria-disabled="disabled"
     @click="handleClick"
   >
     <block v-if="active">
       <view :class="classPrefix + '__line'" />
-      <view
-        v-if="!isFirstChild"
-        :class="classPrefix + '__prefix'"
-      />
-      <view
-        v-if="!isLastChild"
-        :class="classPrefix + '__suffix'"
-      />
+      <view v-if="!isFirstChild" :class="classPrefix + '__prefix'" />
+      <view v-if="!isLastChild" :class="classPrefix + '__suffix'" />
     </block>
-    <block
-      v-if="innerIcon"
-      name="icon"
-    >
+    <block v-if="innerIcon" name="icon">
       <t-icon
         :custom-style="iconCustomStyle"
         :t-class="classPrefix + '__icon'"
@@ -76,9 +74,7 @@ import TIcon from '../icon/icon';
 
 import props from './props';
 
-
 const name = `${prefix}-side-bar-item`;
-
 
 export default {
   components: {
@@ -90,9 +86,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     mixins: [ChildrenMixin(RELATION_MAP.SideBarItem)],
     props: {
       ...props,
@@ -140,9 +134,7 @@ export default {
         immediate: true,
       },
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
       innerAfterLinked() {
         const parent = this[RELATION_MAP.SideBarItem];
@@ -161,6 +153,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./side-bar-item.css"></style>

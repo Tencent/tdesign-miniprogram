@@ -1,37 +1,36 @@
 <template>
   <view
-    :style="'' + tools._style([
-      customStyle,
-      show ? '' : 'display: none',
-      inheritColor ? 'color: inherit' : ''
-    ])"
+    :style="'' + tools._style([customStyle, show ? '' : 'display: none', inheritColor ? 'color: inherit' : ''])"
     :class="[
       tClass,
-      classPrefix +
-        ' ' + (classPrefix + '--' + layout) +
-        ' ' + (fullscreen ? classPrefix + '--fullscreen' : '')
+      classPrefix + ' ' + (classPrefix + '--' + layout) + ' ' + (fullscreen ? classPrefix + '--fullscreen' : ''),
     ]"
   >
     <view
       v-if="indicator"
       :class="[
         tClassIndicator,
-        classPrefix + '__spinner ' +
-          classPrefix + '__spinner--' + theme + ' ' + (reverse ? 'reverse' : '')
+        classPrefix + '__spinner ' + classPrefix + '__spinner--' + theme + ' ' + (reverse ? 'reverse' : ''),
       ]"
-      :style="'width: ' +tools.addUnit(size) +
-        '; height: ' + tools.addUnit(size) +
-        '; ' + (inheritColor ? 'color: inherit;' : '') +
-        ' ' + (indicator ? '' : 'display: none;') +
-        ' ' + (duration ? 'animation-duration: ' + duration / 1000 + 's;' : '') +
-        ' animation-play-state: ' + (pause ? 'paused' : 'running') +
-        ';'"
+      :style="
+        'width: ' +
+        tools.addUnit(size) +
+        '; height: ' +
+        tools.addUnit(size) +
+        '; ' +
+        (inheritColor ? 'color: inherit;' : '') +
+        ' ' +
+        (indicator ? '' : 'display: none;') +
+        ' ' +
+        (duration ? 'animation-duration: ' + duration / 1000 + 's;' : '') +
+        ' animation-play-state: ' +
+        (pause ? 'paused' : 'running') +
+        ';'
+      "
       :aria-role="ariaRole || 'img'"
       :aria-label="ariaLabel || text || '加载中'"
     >
-      <template
-        v-if="theme === 'spinner'"
-      >
+      <template v-if="theme === 'spinner'">
         <view
           v-for="(item, index) in 12"
           :key="index"
@@ -39,36 +38,37 @@
         />
       </template>
 
-      <view
-        v-if="theme === 'circular'"
-        :class="classPrefix + '__circular'"
-      />
+      <view v-if="theme === 'circular'" :class="classPrefix + '__circular'" />
       <block v-if="theme === 'dots'">
         <view
           :class="classPrefix + '__dot'"
           :style="
             (duration ? 'animation-duration: ' + duration / 1000 + 's; animation-delay:' + 0 + 's;' : '') +
-              ' animation-play-state: ' +
-              (pause ? 'paused' : 'running') +
-              ';'
+            ' animation-play-state: ' +
+            (pause ? 'paused' : 'running') +
+            ';'
           "
         />
         <view
           :class="classPrefix + '__dot'"
           :style="
-            (duration ? 'animation-duration: ' + duration / 1000 + 's; animation-delay:' + (duration * 1) / 3000 + 's;' : '') +
-              ' animation-play-state: ' +
-              (pause ? 'paused' : 'running') +
-              ';'
+            (duration
+              ? 'animation-duration: ' + duration / 1000 + 's; animation-delay:' + (duration * 1) / 3000 + 's;'
+              : '') +
+            ' animation-play-state: ' +
+            (pause ? 'paused' : 'running') +
+            ';'
           "
         />
         <view
           :class="classPrefix + '__dot'"
           :style="
-            (duration ? 'animation-duration: ' + duration / 1000 + 's; animation-delay:' + (duration * 2) / 3000 + 's;' : '') +
-              ' animation-play-state: ' +
-              (pause ? 'paused' : 'running') +
-              ';'
+            (duration
+              ? 'animation-duration: ' + duration / 1000 + 's; animation-delay:' + (duration * 2) / 3000 + 's;'
+              : '') +
+            ' animation-play-state: ' +
+            (pause ? 'paused' : 'running') +
+            ';'
           "
         />
       </block>
@@ -95,9 +95,7 @@ import tools from '../common/utils.wxs';
 
 import props from './props';
 
-
 const name = `${prefix}-loading`;
-
 
 export default {
   ...uniComponent({
@@ -106,11 +104,7 @@ export default {
       multipleSlots: true,
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-text`,
-      `${prefix}-class-indicator`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-text`, `${prefix}-class-indicator`],
     props: {
       ...props,
     },
@@ -125,9 +119,7 @@ export default {
     watch: {
       loading: {
         handler(value) {
-          const {
-            delay,
-          } = this;
+          const { delay } = this;
           if (this.timer) {
             clearTimeout(this.timer);
           }
@@ -153,7 +145,5 @@ export default {
     },
   }),
 };
-
 </script>
-<style src="./loading.css" scoped>
-</style>
+<style src="./loading.css" scoped></style>

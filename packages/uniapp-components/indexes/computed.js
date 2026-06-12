@@ -5,4 +5,3 @@ export function getFirstCharacter(str, showFullIndex) {
   }
   return res.substring(0, 1);
 }
-

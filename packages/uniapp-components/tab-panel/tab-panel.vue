@@ -22,7 +22,6 @@ import tools from '../common/utils.wxs';
 
 import props from './props';
 
-
 const name = `${prefix}-tab-panel`;
 
 export default {
