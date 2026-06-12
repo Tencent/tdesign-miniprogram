@@ -46,6 +46,9 @@
       "path": "pages-more/col/col"
     },
     {
+      "path": "pages-more/paragraph/paragraph"
+    },
+    {
       "path": "pages-more/back-top/back-top"
     },
     {
@@ -480,6 +483,10 @@
       {
         "name": "layout",
         "pathName": "pages-more/col/col"
+      },
+      {
+        "name": "typography",
+        "pathName": "pages-more/paragraph/paragraph"
       },
       {
         "name": "back-top",
