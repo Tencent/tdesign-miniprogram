@@ -70,7 +70,7 @@ title | String | - | title of current step | N
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-guide-body-color | @text-color-secondary | -
 --td-guide-dialog-body-font | @font-body-large | -

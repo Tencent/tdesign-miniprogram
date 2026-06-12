@@ -58,7 +58,7 @@ t-class-text | 文本样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-back-top-half-round-border-radius | @radius-round | -
 --td-back-top-round-bg-color | @bg-color-container | -

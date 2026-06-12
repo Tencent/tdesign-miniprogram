@@ -40,6 +40,11 @@ export default {
     type: Object,
     default: () => ({}),
   },
+  /** 防止滚动穿透，即不允许点击和滚动 */
+  preventScrollThrough: {
+    type: Boolean,
+    default: true,
+  },
   /** 是否显示取消按钮 */
   showCancel: {
     type: Boolean,

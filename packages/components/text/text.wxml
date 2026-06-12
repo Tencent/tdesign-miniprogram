@@ -9,7 +9,7 @@
 >
   <view
     wx:if="{{ellipsis}}"
-    class="{{classPrefix}}__ellipsis-content {{_this.decorClass(classPrefix, strong, underline, delete, code, mark, keyboard, italic)}}"
+    class="{{classPrefix}}__ellipsis-content {{_this.decorClass(classPrefix, strong, underline, _delete, code, mark, keyboard, italic)}}"
     style="{{_this.ellipsisStyle(ellipsis, isExpanded)}}{{_this.markStyle(mark)}}"
   >
     <text wx:if="{{content}}">{{content}}</text>
@@ -17,7 +17,7 @@
   </view>
   <block wx:else>
     <view
-      class="{{_this.decorClass(classPrefix, strong, underline, delete, code, mark, keyboard, italic)}}"
+      class="{{_this.decorClass(classPrefix, strong, underline, _delete, code, mark, keyboard, italic)}}"
       style="display: inline"
     >
       <text wx:if="{{content}}">{{content}}</text>

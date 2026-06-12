@@ -128,10 +128,10 @@ export default {
           return {};
         }
         const fontSize = {
-          'extra-small': 'var(--td-button-extra-small-icon-font-size, 36rpx)',
-          small: 'var(--td-button-small-icon-font-size, 36rpx)',
-          medium: 'var(--td-button-medium-icon-font-size, 40rpx)',
-          large: 'var(--td-button-large-icon-font-size, 48rpx)',
+          'extra-small': 'var(--td-button-extra-small-icon-size, 36rpx)',
+          small: 'var(--td-button-small-icon-size, 36rpx)',
+          medium: 'var(--td-button-medium-icon-size, 40rpx)',
+          large: 'var(--td-button-large-icon-size, 48rpx)',
         };
 
         return tools._style([
