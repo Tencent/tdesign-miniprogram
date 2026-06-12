@@ -295,7 +295,7 @@ export default {
         return styles.join('; ');
       },
 
-      getCustomClassName(className) {
+      getCustomClassName(className = '') {
         const calcClassName = (name) => {
           if (typeof name === 'function') {
             return name() || '';
@@ -318,7 +318,7 @@ export default {
         if (col.className) classes.push(...this.getCustomClassName(col.className));
         if (colIndex === this.lastFixedLeftIndex) classes.push(`${name}__cell--fixed-left-last`);
         if (colIndex === this.firstFixedRightIndex) classes.push(`${name}__cell--fixed-right-first`);
-        return classes;
+        return classes.join(' ');
       },
 
       updateRenderData() {
