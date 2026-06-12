@@ -10,6 +10,7 @@
       :using-custom-navbar="dataUsingCustomNavbar"
       :custom-navbar-height="customNavbarHeight"
       :show-overlay="dataShowOverlay"
+      :prevent-scroll-through="dataPreventScrollThrough"
       :z-index="(dataPopupProps && dataPopupProps.zIndex) || defaultPopUpzIndex"
       :overlay-props="(dataPopupProps && dataPopupProps.overlayProps) || defaultOverlayProps"
       @visible-change="onPopupVisibleChange"
@@ -302,6 +303,7 @@ export default {
           'description',
           'items',
           'popupProps',
+          'preventScrollThrough',
           'showCancel',
           'showOverlay',
           'theme',

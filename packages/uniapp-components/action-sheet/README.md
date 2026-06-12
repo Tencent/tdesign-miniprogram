@@ -89,12 +89,13 @@ count | Number | 8 | 设置每页展示菜单的数量，仅当 type=grid 时有
 description | String | - | 动作面板描述文字 | N
 items | Array | [] | 菜单项。TS 类型：`Array<string \| ActionSheetItem>` `interface ActionSheetItem { label: string; description?: string; color?: string; disabled?: boolean; icon?: string \| object; suffixIcon?: string \| object }`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/action-sheet/type.ts) | N
 popup-props | Object | {} | 透传 Popup 组件全部属性。TS 类型：`PopupProps`，[Popup API Documents](./popup?tab=api)。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/action-sheet/type.ts) | N
+prevent-scroll-through | Boolean | true | 防止滚动穿透，即不允许点击和滚动 | N
 show-cancel | Boolean | true | 是否显示取消按钮 | N
 show-overlay | Boolean | true | 是否显示遮罩层 | N
 theme | String | list | 展示类型，列表和表格形式展示。可选项：list/grid | N
 using-custom-navbar | Boolean | false | 是否使用了自定义导航栏 | N
-visible | Boolean | false | 显示与隐藏。支持语法糖 `v-model:visible` | N
-default-visible | Boolean | false | 显示与隐藏。非受控属性 | N
+visible | Boolean | false | 显示与隐藏。支持语法糖 `v-model:visible`。TS 类型：`boolean \| null` | N
+default-visible | Boolean | false | 显示与隐藏。非受控属性。TS 类型：`boolean \| null` | N
 
 ### ActionSheet Events
 
