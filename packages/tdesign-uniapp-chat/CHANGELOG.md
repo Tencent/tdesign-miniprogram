@@ -5,6 +5,18 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.2.4 `2026-06-12`
+
+### 🚀 Features
+
+- `ChatMarkdown`: 新增 `streaming` 属性，表示流式输出配置项目，可用于控制尾部光标的显示与隐藏 @mimaoxiao ([#4390](https://github.com/Tencent/tdesign-miniprogram/pull/4390))
+- `ChatMessage`: `chatContentProps` 属性新增 `thinking` 配置项，支持透传给 `ChatThinking` 组件 @mimaoxiao ([#4410](https://github.com/Tencent/tdesign-miniprogram/pull/4410))
+
+### 🐞 Bug Fixes
+
+- `ChatMarkdown`: 支持表格横向滚动 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `ChatThinking`: 修复 `collapsed` 属性没有监听到的问题 @mimaoxiao ([#4410](https://github.com/Tencent/tdesign-miniprogram/pull/4410))
+
 ## 🌈 0.2.3 `2026-04-09`
 
 ### 🚀 Features
