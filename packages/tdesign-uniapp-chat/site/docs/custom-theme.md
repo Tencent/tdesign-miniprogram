@@ -8,7 +8,7 @@ spline: explain
 
 ## 全局自定义
 
-TDesign UniApp 的 CSS Variables 全部定义可以在这里看到: [_variables.less](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/style/_variables.less)
+TDesign Uniapp 的 CSS Variables 全部定义可以在这里看到: [_variables.less](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/style/_variables.less)
 
 如果你想改变主题色，主要改变这几个变量即可：
 
@@ -31,7 +31,7 @@ page {
 
 ## 局部自定义
 
-在 TDesign UniApp 里，你也可以只给某个组件修改主题，下面以 `Rate` 举例：
+在 TDesign Uniapp 里，你也可以只给某个组件修改主题，下面以 `Rate` 举例：
 
 ```css
 page {

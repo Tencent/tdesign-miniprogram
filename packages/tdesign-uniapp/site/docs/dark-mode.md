@@ -17,7 +17,7 @@ spline: design-mode
 
 ## 实现方案
 
-TDesign UniApp 基于 Design Token 变量和媒体查询 `prefers-color-scheme` 实现了深色模式。默认情况下，每个组件自带了组件级别 light 样式变量，无需手动引入。如需使用深色模式，请按照以下步骤操作。
+TDesign Uniapp 基于 Design Token 变量和媒体查询 `prefers-color-scheme` 实现了深色模式。默认情况下，每个组件自带了组件级别 light 样式变量，无需手动引入。如需使用深色模式，请按照以下步骤操作。
 
 ## 使用方式
 

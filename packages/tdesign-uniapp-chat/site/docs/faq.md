@@ -4,11 +4,11 @@ description: 看看有没有你想要的。
 spline: explain
 ---
 
-### 与 TDesign UniApp 库的关系
+### 与 TDesign Uniapp 库的关系
 
-[TDsign UniApp](https://www.npmjs.com/package/@tdesign/uniapp) 和 [TDesign UniApp Chat](https://www.npmjs.com/package/@tdesign/uniapp-chat) 是两个不同的包，后者依赖前者。
+[TDesign Uniapp](https://www.npmjs.com/package/@tdesign/uniapp) 和 [TDesign Uniapp Chat](https://www.npmjs.com/package/@tdesign/uniapp-chat) 是两个不同的包，后者依赖前者。
 
-样式文件从 TDesign UniApp 引入一份即可。
+样式文件从 TDesign Uniapp 引入一份即可。
 
 ```js
 import '@tdesign/uniapp/theme.css';
