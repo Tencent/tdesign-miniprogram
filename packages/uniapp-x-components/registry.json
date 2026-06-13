@@ -1,0 +1,132 @@
+{
+  "$schema": "https://tdesign.tencent.com/uniapp-x/registry/schema.json",
+  "homepage": "https://github.com/Tencent/tdesign-miniprogram",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "title": "Utils",
+      "description": "类名合并 cn 与变体引擎 cva（uts 兼容）",
+      "dependencies": [],
+      "registryDependencies": [],
+      "files": [
+        {
+          "path": "utils/cn.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "utils/cva.ts",
+          "type": "registry:lib"
+        }
+      ]
+    },
+    {
+      "name": "button",
+      "type": "registry:component",
+      "title": "Button",
+      "description": "一个 uni-app x 兼容的按钮组件，支持 4 种 variant × 5 种 theme × 4 种 size × 4 种 shape 的组合矩阵。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/button/README.md",
+          "type": "registry:doc"
+        },
+        {
+          "path": "components/button/button.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/button/button.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/button/button.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/button/button.variants.ts",
+          "type": "registry:variants"
+        },
+        {
+          "path": "components/button/button.vue",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "cell",
+      "type": "registry:component",
+      "title": "Cell",
+      "description": "通用列表项组件，常用于表单条目、设置页、信息展示。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/cell/README.md",
+          "type": "registry:doc"
+        },
+        {
+          "path": "components/cell/cell.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/cell/cell.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/cell/cell.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/cell/cell.variants.ts",
+          "type": "registry:variants"
+        },
+        {
+          "path": "components/cell/cell.vue",
+          "type": "registry:component"
+        }
+      ]
+    },
+    {
+      "name": "input",
+      "type": "registry:component",
+      "title": "Input",
+      "description": "文本输入框，支持 v-model、清除、前后插槽与多种校验状态。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/input/README.md",
+          "type": "registry:doc"
+        },
+        {
+          "path": "components/input/input.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/input/input.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/input/input.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/input/input.variants.ts",
+          "type": "registry:variants"
+        },
+        {
+          "path": "components/input/input.vue",
+          "type": "registry:component"
+        }
+      ]
+    }
+  ]
+}

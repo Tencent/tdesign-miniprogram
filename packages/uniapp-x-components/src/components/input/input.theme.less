@@ -1,0 +1,48 @@
+.t-input {
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  padding: 0 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  background: #fff;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+  gap: 8px;
+
+  &--small  { height: 32px; font-size: 13px; }
+  &--medium { height: 40px; font-size: 14px; }
+  &--large  { height: 48px; font-size: 16px; }
+
+  &--status-success { border-color: #2ba471; }
+  &--status-warning { border-color: #ed7b2f; }
+  &--status-error   { border-color: #d54941; }
+
+  &--disabled { background: #f3f3f3; cursor: not-allowed; }
+  &--readonly { background: #fafafa; }
+
+  &__inner {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #181818;
+    font: inherit;
+  }
+
+  &__prefix,
+  &__suffix { display: inline-flex; align-items: center; color: #888; }
+
+  &__clear {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 50%;
+    background: #c5c5c5;
+    color: #fff;
+    font-size: 12px;
+    cursor: pointer;
+  }
+}

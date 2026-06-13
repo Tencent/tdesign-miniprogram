@@ -1,0 +1,13 @@
+{
+  "$schema": "./.sync-targets.schema.json",
+  "_help_": "复制本文件为 .sync-targets.json 后修改 root 字段。文件已 gitignored，每台机器自己配自己的。",
+  "targets": [
+    {
+      "name": "demo-uniapp-x",
+      "root": "/Users/yourname/HBuilderProjects/tdesign-uniapp-x-demo",
+      "componentsDir": "components",
+      "utilsDir": "utils",
+      "rewriteImports": true
+    }
+  ]
+}

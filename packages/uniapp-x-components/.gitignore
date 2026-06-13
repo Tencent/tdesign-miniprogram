@@ -1,0 +1,9 @@
+node_modules/
+dist/
+coverage/
+.turbo/
+*.log
+.DS_Store
+
+# HBuilderX 同步配置（每台机器路径不同）
+.sync-targets.json

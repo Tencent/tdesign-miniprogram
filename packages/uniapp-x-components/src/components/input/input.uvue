@@ -1,0 +1,86 @@
+<template>
+  <view :class="rootClass">
+    <view v-if="hasPrefix" class="t-input__prefix">
+      <slot name="prefix" />
+    </view>
+
+    <input
+      class="t-input__inner"
+      :type="type"
+      :value="modelValue"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :maxlength="maxlength > 0 ? maxlength : -1"
+      @input="onInput"
+      @focus="onFocus"
+      @blur="onBlur"
+      @confirm="onConfirm"
+    />
+
+    <view
+      v-if="clearable && modelValue.length > 0 && !disabled && !readonly"
+      class="t-input__clear"
+      @click="onClear"
+    >
+      <text>×</text>
+    </view>
+
+    <view v-if="hasSuffix" class="t-input__suffix">
+      <slot name="suffix" />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { computed, useSlots } from 'vue';
+import { inputVariants } from './input.variants';
+import type { InputType, InputSize, InputStatus } from './input.types';
+
+const props = defineProps({
+  modelValue: { type: String, default: '' },
+  placeholder: { type: String, default: '' },
+  type: { type: String as PropType<InputType>, default: 'text' },
+  size: { type: String as PropType<InputSize>, default: 'medium' },
+  status: { type: String as PropType<InputStatus>, default: 'default' },
+  disabled: { type: Boolean, default: false },
+  readonly: { type: Boolean, default: false },
+  clearable: { type: Boolean, default: false },
+  maxlength: { type: Number, default: 0 },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['update:modelValue', 'change', 'focus', 'blur', 'clear', 'enter']);
+
+const slots = useSlots();
+const hasPrefix = computed(() => slots.prefix != null);
+const hasSuffix = computed(() => slots.suffix != null);
+
+const rootClass = computed(() =>
+  inputVariants({
+    size: props.size,
+    status: props.status,
+    disabled: props.disabled,
+    readonly: props.readonly,
+    class: props.customClass,
+  }),
+);
+
+function onInput(e: UniInputEvent) {
+  const value = e.detail.value;
+  emit('update:modelValue', value);
+  emit('change', value);
+}
+
+function onFocus(e: UniFocusEvent) { emit('focus', e); }
+function onBlur(e: UniBlurEvent)   { emit('blur', e); }
+function onConfirm(_e: UniInputConfirmEvent) { emit('enter', props.modelValue); }
+function onClear() {
+  emit('update:modelValue', '');
+  emit('change', '');
+  emit('clear');
+}
+</script>
+
+<style lang="less">
+@import './input.theme.less';
+</style>
