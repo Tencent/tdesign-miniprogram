@@ -140,6 +140,7 @@ export default {
       ...props,
     },
     emits: [
+      'update:value',
     ],
     data() {
       return {

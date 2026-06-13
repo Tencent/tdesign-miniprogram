@@ -17,6 +17,11 @@ export interface TdUploadProps {
    */
   addContent?: string;
   /**
+   * 是否允许重复上传相同文件名的文件
+   * @default false
+   */
+  allowUploadDuplicateFile?: boolean;
+  /**
    * 图片上传配置，视频上传配置，文件上传配置等，包含图片尺寸、图片来源、视频来源、视频拍摄最长时间等。更多细节查看小程序官网。[图片上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)。[视频上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseVideo.html)
    */
   config?: UploadMpConfig;
@@ -82,6 +87,11 @@ export interface TdUploadProps {
    * @default media
    */
   source?: 'media' | 'messageFile';
+  /**
+   * 组件风格。提供宫格和列表两种布局风格
+   * @default grid
+   */
+  theme?: 'grid' | 'list';
   /**
    * 拖拽位置移动时的过渡参数,`duration`单位为ms
    * @default { backTransition: true, duration: 300, timingFunction: 'ease' }
@@ -149,7 +159,7 @@ export interface UploadFile {
   status: 'loading' | 'reload' | 'failed' | 'done';
 }
 
-export type MediaType = 'image' | 'video';
+export type MediaType = 'image' | 'video' | 'mix';
 
 export interface RequestMethodResponse {
   status: 'success' | 'fail';
