@@ -21,6 +21,11 @@ const props: TdNavbarProps = {
     type: Boolean,
     value: true,
   },
+  /** 是否销毁导航栏，仅场景值为 1433、1434、1177、1175 时有效 */
+  isHiddenInSpecialScene: {
+    type: Boolean,
+    value: false,
+  },
   /** 是否展示左侧箭头 */
   leftArrow: {
     type: Boolean,
@@ -53,11 +58,6 @@ const props: TdNavbarProps = {
   zIndex: {
     type: Number,
     value: 1,
-  },
-  /** 是否销毁导航栏，仅场景值为 1433、1434、1177、1175 时有效 */
-  isHiddenInSpecialScene: {
-    type: Boolean,
-    value: false,
   },
 };
 

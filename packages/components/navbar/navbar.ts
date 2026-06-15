@@ -83,14 +83,11 @@ export default class Navbar extends SuperComponent {
   };
 
   attached() {
-    const specialScene = checkSpecialScene();
+    const isSpecialScene = checkSpecialScene();
 
-    if (specialScene) {
-      this.setData({ isSpecialScene: true });
+    if (isSpecialScene) {
+      this.setData({ isSpecialScene });
     }
-
-    // 特殊场景下开启 isHiddenInSpecialScene 时，销毁导航栏，跳过后续初始化
-    if (specialScene && this.properties.isHiddenInSpecialScene) return;
 
     this.initStyle();
     this.getLeftRect();

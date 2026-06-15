@@ -30,6 +30,14 @@ export interface TdNavbarProps {
     value?: boolean;
   };
   /**
+   * 是否销毁导航栏，仅场景值为 1433、1434、1177、1175 时有效
+   * @default false
+   */
+  isHiddenInSpecialScene?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 是否展示左侧箭头
    * @default false
    */
@@ -82,13 +90,5 @@ export interface TdNavbarProps {
   zIndex?: {
     type: NumberConstructor;
     value?: number;
-  };
-  /**
-   * 是否销毁导航栏，仅场景值为 1433、1434、1177、1175 时有效
-   * @default false
-   */
-  isHiddenInSpecialScene?: {
-    type: BooleanConstructor;
-    value?: boolean;
   };
 }
