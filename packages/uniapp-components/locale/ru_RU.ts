@@ -121,6 +121,11 @@ export default {
     finish: 'Готово',
     back: 'Назад',
   },
+  typography: {
+    expandText: 'Развернуть',
+    collapseText: 'Свернуть',
+    copiedText: 'Скопировано',
+  },
   qrcode: {
     expiredText: 'истекший',
     refreshText: 'обновить',

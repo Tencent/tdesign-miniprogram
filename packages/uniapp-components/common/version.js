@@ -12,6 +12,9 @@ function getSystemInfo() {
 
 // 版本号比较, 参考：https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html
 export function compareVersion(v1, v2) {
+  if (!v1 || !v2) {
+    return 0;
+  }
   v1 = v1.split('.');
   v2 = v2.split('.');
   const len = Math.max(v1.length, v2.length);

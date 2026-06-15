@@ -17,7 +17,7 @@ export interface TdFabProps {
    */
   draggable?: boolean | FabDirectionEnum;
   /**
-   * 图标
+   * 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon` 组件
    * @default ''
    */
   icon?: string | Record<string, any>;
