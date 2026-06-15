@@ -6,7 +6,7 @@ spline: explain
 
 ## 写在前面
 
-TDesign UniApp 的实现原理，可以查看[这篇文章](https://juejin.cn/post/7571650164844068898)。
+TDesign Uniapp 的实现原理，可以查看[这篇文章](https://juejin.cn/post/7571650164844068898)。
 
 ### 外部样式类
 

@@ -142,14 +142,14 @@ export default {
     },
     methods: {
       onLoaded(e) {
-        const version = appBaseInfo.SDKVersion;
         const {
           mode,
           tId,
         } = this;
 
-        const lower = compareVersion(version, '2.10.3') < 0;
         // #ifdef MP-WEIXIN || MP-QQ
+        const version = appBaseInfo.SDKVersion || '2.10.3';
+        const lower = compareVersion(version, '2.10.3') < 0;
         if ('heightFix' === mode && lower) {
           getRect(this, `#${tId || 'image'}`).then((e) => {
             const {

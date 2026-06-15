@@ -5,6 +5,21 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.10.0 `2026-06-15`
+
+### 🚀 Features
+
+- `Typography`: 新增 `Typography` 排版组件 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Cascader`: 新增 `filterable`、`filter` 和 `filter-placeholder` 属性，支持搜索功能 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+
+### 🐞 Bug Fixes
+
+- `Image`: 修复鸿蒙下图片无法显示问题 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Message`: 修复连续点击时的报错问题 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Search`: 补全 `update:value` 事件声明，修复 `v-model:value` 语法糖告警 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Stepper`: 调整手动输入逻辑，输入时仅过滤非法字符，范围校验&赋值移至失焦 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Upload`: 修复禁用态文件样式错误（禁用态下移除操作按钮） @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+
 ## 🌈 0.9.1 `2026-06-12`
 
 ### 🚀 Features
