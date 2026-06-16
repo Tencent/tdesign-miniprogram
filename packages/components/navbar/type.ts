@@ -30,7 +30,7 @@ export interface TdNavbarProps {
     value?: boolean;
   };
   /**
-   * 是否销毁导航栏，仅场景值为 1433、1434、1177、1175 时有效
+   * 【实验】是否销毁导航栏，仅场景值为 1433、1434、1177、1175 时有效
    * @default false
    */
   isHiddenInSpecialScene?: {

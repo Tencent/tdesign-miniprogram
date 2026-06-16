@@ -12,6 +12,7 @@ background | String | - | `deprecated`。background | N
 delta | Number | 1 | \- | N
 fixed | Boolean | true | \- | N
 home-icon | String | - | `deprecated`。homeIcon | N
+is-hidden-in-special-scene | Boolean | false | \- | N
 left-arrow | Boolean | false | \- | N
 left-icon | String | - | `deprecated` | N
 placeholder | Boolean | false | \- | N
