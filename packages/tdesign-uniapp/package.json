@@ -284,6 +284,11 @@
       "import": "./dist/link/link.vue",
       "default": "./dist/link/link.vue"
     },
+    "./list/list.vue": {
+      "types": "./dist/types/list.d.ts",
+      "import": "./dist/list/list.vue",
+      "default": "./dist/list/list.vue"
+    },
     "./loading/loading.vue": {
       "types": "./dist/types/loading.d.ts",
       "import": "./dist/loading/loading.vue",
