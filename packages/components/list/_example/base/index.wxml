@@ -1,0 +1,5 @@
+<t-list asyncLoading="{{loading}}" bind:scroll="onScroll">
+  <t-cell wx:for="{{list}}" wx:key="*this" align="middle">
+    <view class="cell" slot="title">{{item}}</view>
+  </t-cell>
+</t-list>

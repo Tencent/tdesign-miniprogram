@@ -51,6 +51,10 @@ const display = {
       label: '图片预览',
     },
     {
+      name: 'List',
+      label: '列表',
+    },
+    {
       name: 'Progress',
       label: '进度条',
     },

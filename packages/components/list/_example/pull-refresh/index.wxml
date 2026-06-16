@@ -1,0 +1,7 @@
+<t-pull-down-refresh value="{{refreshing}}" bind:refresh="onRefresh" bind:scroll="onPullScroll">
+  <t-list id="pull-list" asyncLoading="{{loading}}" bind:scroll="onScroll">
+    <t-cell wx:for="{{listPull}}" wx:key="*this" align="middle">
+      <view class="cell" slot="title">{{item}}</view>
+    </t-cell>
+  </t-list>
+</t-pull-down-refresh>

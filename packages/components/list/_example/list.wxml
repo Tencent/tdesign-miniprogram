@@ -1,0 +1,29 @@
+<t-navbar class="demo-navbar" title="List" leftArrow placeholder />
+<view class="demo list-demo">
+  <t-demo-header
+    wx:if="{{currentTab === 'info'}}"
+    title="List 列表"
+    desc="瀑布流滚动加载，用于展示同一类型信息的长列表。当列表即将滚动到底部时，会触发事件并加载更多列表项。"
+    notice="渲染框架支持情况：Skyline、WebView"
+  />
+
+  <t-demo wx:if="{{currentTab === 'info'}}" title="01 类型" desc="基础列表">
+    <t-button size="large" variant="outline" theme="primary" data-tab="base" bind:tap="onChangeTab">基础列表</t-button>
+    <t-button size="large" variant="outline" theme="primary" data-tab="pull-refresh" bind:tap="onChangeTab"
+      >下拉刷新</t-button
+    >
+    <t-button size="large" variant="outline" theme="primary" data-tab="error-tip" bind:tap="onChangeTab"
+      >错误提示</t-button
+    >
+  </t-demo>
+
+  <view wx:if="{{currentTab === 'base'}}">
+    <base />
+  </view>
+  <view wx:if="{{currentTab === 'error-tip'}}">
+    <err-tip />
+  </view>
+  <view wx:if="{{currentTab === 'pull-refresh'}}" class="pull-refresh-wrap">
+    <pull-refresh />
+  </view>
+</view>

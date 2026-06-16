@@ -1,0 +1,8 @@
+<t-list asyncLoading="{{loading}}" bind:scroll="onLoadMore">
+  <t-cell wx:for="{{listError}}" wx:key="*this" align="middle">
+    <view class="cell" slot="title">{{item}}</view>
+  </t-cell>
+  <t-loading wx:if="{{showError}}" indicator="{{false}}" slot="footer" bind:tap="onLoadMore">
+    <view class="custom-error">请求失败，点击重新<text>加载</text></view>
+  </t-loading>
+</t-list>
