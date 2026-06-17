@@ -226,9 +226,19 @@ export default {
       shouldLoadImage,
       init() {
         const { visible: dataVisible, images, initialIndex } = this;
-        if (dataVisible && images?.length) {
+        // 重置缩放与图片样式，避免上次双指放大/缩放后的状态被保留
+        const reset = () => {
           this.loadedImageIndexes = [];
-          this.currentSwiperIndex =  initialIndex >= images.length ? images.length - 1 : initialIndex;
+          this.currentScale = 1;
+          this.lastTapTime = 0;
+          this.imagesStyle = {};
+          this.swiperStyle = {};
+        };
+        if (dataVisible && images?.length) {
+          this.currentSwiperIndex = initialIndex >= images.length ? images.length - 1 : initialIndex;
+          reset();
+        } else if (!dataVisible) {
+          reset();
         }
       },
       calcMaskTop() {
