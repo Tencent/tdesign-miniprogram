@@ -2,9 +2,23 @@ import { wxComponent, SuperComponent, RelationsOptions } from '../common/src/ind
 import config from '../common/config';
 import props from './props';
 import { getRect } from '../common/utils';
+import { getWindowInfo } from '../common/wechat';
 
 const { prefix } = config;
 const classPrefix = `${prefix}-tab-bar`;
+
+/** 获取底部安全区高度（home indicator 区） */
+function getSafeAreaBottom() {
+  try {
+    const info = getWindowInfo();
+    if (info && info.safeArea && typeof info.screenHeight === 'number') {
+      return Math.max(0, info.screenHeight - info.safeArea.bottom);
+    }
+  } catch (e) {
+    // ignore
+  }
+  return 0;
+}
 
 @wxComponent()
 export default class Tabbar extends SuperComponent {
@@ -37,7 +51,7 @@ export default class Tabbar extends SuperComponent {
     value() {
       this.updateChildren();
     },
-    'fixed, placeholder'() {
+    'fixed, placeholder, shape, safeAreaInsetBottom'() {
       this.setPlaceholderHeight();
     },
   };
@@ -54,7 +68,11 @@ export default class Tabbar extends SuperComponent {
 
       wx.nextTick(() => {
         getRect(this, `.${classPrefix}`).then((res) => {
-          this.setData({ placeholderHeight: res.height });
+          let { height } = res;
+          if (this.properties.shape === 'round' && this.properties.safeAreaInsetBottom) {
+            height += getSafeAreaBottom();
+          }
+          this.setData({ placeholderHeight: height });
         });
       });
     },
