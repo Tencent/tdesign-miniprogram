@@ -1,0 +1,40 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-image
+        width="80"
+        height="80"
+        shape="square"
+        src="https://tdesign.gtimg.com/site/avatar.jpg"
+      />
+      <t-image
+        width="80"
+        height="80"
+        shape="round"
+        src="https://tdesign.gtimg.com/site/avatar.jpg"
+      />
+      <t-image
+        width="80"
+        height="80"
+        shape="circle"
+        src="https://tdesign.gtimg.com/site/avatar.jpg"
+      />
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-row > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

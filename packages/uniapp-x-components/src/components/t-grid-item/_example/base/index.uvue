@@ -1,0 +1,29 @@
+<template>
+  <view class="demo-block">
+    <t-grid :column="2">
+      <t-grid-item
+        v-for="(item, index) in items"
+        :key="index"
+        layout="horizontal"
+        :text="item.text"
+        :description="item.description"
+        :image="item.image"
+      />
+    </t-grid>
+  </view>
+</template>
+
+<script setup lang="uts">
+const items = [
+  { text: '应用一', description: '描述', image: 'https://tdesign.gtimg.com/site/grid/grid-1.png' },
+  { text: '应用二', description: '描述', image: 'https://tdesign.gtimg.com/site/grid/grid-2.png' },
+  { text: '应用三', description: '描述', image: 'https://tdesign.gtimg.com/site/grid/grid-3.png' },
+  { text: '应用四', description: '描述', image: 'https://tdesign.gtimg.com/site/grid/grid-4.png' },
+];
+</script>
+
+<style>
+.demo-block {
+  background-color: #ffffff;
+}
+</style>

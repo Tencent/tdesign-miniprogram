@@ -1,0 +1,102 @@
+<template>
+  <view v-if="props.visible" :class="rootClass">
+    <view v-if="props.fixed && props.placeholder" class="t-navbar__placeholder" />
+    <view class="t-navbar__content">
+      <view class="t-navbar__left">
+        <view v-if="props.leftArrow" class="t-navbar__left-arrow" @click="goBack">
+          <t-icon name="chevron-left" />
+        </view>
+        <slot name="left" />
+        <view class="t-navbar__capsule">
+          <slot name="capsule" />
+        </view>
+      </view>
+
+      <view class="t-navbar__center">
+        <slot name="title">
+          <text v-if="showTitle.length > 0" class="t-navbar__center-title">{{ showTitle }}</text>
+        </slot>
+      </view>
+
+      <view class="t-navbar__right" @click="onClickRight">
+        <slot name="right" />
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Navbar - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 navbar：
+ *  - leftArrow=true 时显示返回箭头，点击触发 go-back 并执行 uni.navigateBack
+ *  - title + titleMaxLength 自动截断
+ *  - fixed + placeholder 占位
+ *
+ * 实现差异：
+ *  - 不再调用小程序专属 API `uni.getMenuButtonBoundingClientRect` / `uni.onMenuButtonBoundingClientRectWeightChange`，
+ *    胶囊适配交由 CSS 变量 `--td-navbar-padding-top`、`--td-navbar-height` 由业务侧根据平台覆写
+ *  - delta=0 时不执行 navigateBack（与原版一致）
+ */
+import { computed } from 'vue';
+import TIcon from '../t-icon/t-icon.uvue';
+import { navbarVariants } from './t-navbar.variants';
+
+const props = defineProps({
+  animation: { type: Boolean, default: true },
+  delta: { type: Number, default: 1 },
+  fixed: { type: Boolean, default: true },
+  leftArrow: { type: Boolean, default: false },
+  placeholder: { type: Boolean, default: false },
+  safeAreaInsetTop: { type: Boolean, default: true },
+  title: { type: String, default: '' },
+  titleMaxLength: { type: Number, default: 0 },
+  visible: { type: Boolean, default: true },
+  zIndex: { type: Number, default: 1 },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['go-back', 'right-click', 'success', 'fail', 'complete']);
+
+const rootClass = computed<string>(() =>
+  navbarVariants({
+    fixed: props.fixed,
+    visible: props.visible,
+    class: props.customClass,
+  }),
+);
+
+const showTitle = computed<string>(() => {
+  const max = props.titleMaxLength;
+  if (max > 0 && props.title.length > max) {
+    return props.title.substring(0, max) + '...';
+  }
+  return props.title;
+});
+
+function goBack() {
+  emit('go-back');
+  if (props.delta > 0) {
+    uni.navigateBack({
+      delta: props.delta,
+      success: (e) => {
+        emit('success', e);
+        emit('complete', e);
+      },
+      fail: (e) => {
+        emit('fail', e);
+        emit('complete', e);
+      },
+    } as NavigateBackOptions);
+  }
+}
+
+function onClickRight() {
+  emit('right-click');
+}
+</script>
+
+<style lang="less">
+@import './t-navbar.theme.less';
+</style>

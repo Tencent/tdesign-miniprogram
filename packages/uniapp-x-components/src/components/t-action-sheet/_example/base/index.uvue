@@ -1,0 +1,90 @@
+<template>
+  <view>
+    <t-button block size="large" theme="primary" custom-style="margin-bottom: 16rpx;" @click="openList">
+      列表模式
+    </t-button>
+    <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="openGrid">
+      宫格模式
+    </t-button>
+    <t-button block size="large" variant="outline" @click="openWithDesc">
+      带描述文字
+    </t-button>
+
+    <t-action-sheet
+      :visible="listVisible"
+      theme="list"
+      :items="listItems"
+      @update:visible="(v) => listVisible = v"
+      @selected="onSelected"
+    />
+
+    <t-action-sheet
+      :visible="gridVisible"
+      theme="grid"
+      :items="gridItems"
+      @update:visible="(v) => gridVisible = v"
+      @selected="onSelected"
+    />
+
+    <t-action-sheet
+      :visible="descVisible"
+      theme="list"
+      description="这是一段描述文字，用于说明此操作面板的用途"
+      :items="listItems"
+      @update:visible="(v) => descVisible = v"
+      @selected="onSelected"
+    />
+
+    <view v-if="lastSelected.length > 0" class="hint">
+      <text>最近选中：{{ lastSelected }}</text>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * ActionSheet base demo - list / grid / description
+ */
+import { ref } from 'vue';
+import type { ActionSheetItem } from '@/uni_modules/tdesign-uniapp-x/components/t-action-sheet';
+
+const listVisible = ref<boolean>(false);
+const gridVisible = ref<boolean>(false);
+const descVisible = ref<boolean>(false);
+const lastSelected = ref<string>('');
+
+const listItems: ActionSheetItem[] = [
+  { label: '复制' } as ActionSheetItem,
+  { label: '收藏' } as ActionSheetItem,
+  { label: '分享' } as ActionSheetItem,
+  { label: '删除', color: '#d54941' } as ActionSheetItem,
+];
+
+const gridItems: ActionSheetItem[] = [
+  { label: '微信', icon: 'logo-wechat' } as ActionSheetItem,
+  { label: 'QQ', icon: 'logo-qq' } as ActionSheetItem,
+  { label: '微博', icon: 'logo-weibo' } as ActionSheetItem,
+  { label: '链接', icon: 'link' } as ActionSheetItem,
+  { label: '复制', icon: 'file-copy' } as ActionSheetItem,
+  { label: '更多', icon: 'more' } as ActionSheetItem,
+];
+
+function openList() {
+  listVisible.value = true;
+}
+function openGrid() {
+  gridVisible.value = true;
+}
+function openWithDesc() {
+  descVisible.value = true;
+}
+function onSelected(ctx: any) {
+  const item = ctx.item as ActionSheetItem;
+  lastSelected.value = item.label;
+}
+</script>
+
+<style>
+.hint { padding-top: 24rpx; }
+.hint text { font-size: 24rpx; color: rgba(0,0,0,0.6); }
+</style>

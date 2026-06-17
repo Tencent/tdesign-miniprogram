@@ -1,0 +1,58 @@
+<template>
+  <view :class="rootClass">
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Grid - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/grid：
+ *  - column / gutter / border / hover / align / theme 通过 provide 暴露给 grid-item
+ *  - 边框样式简化：仅在 border=true 时给 grid-item 添加右下边框，与原版风格一致
+ */
+import { computed, provide } from 'vue';
+import { gridVariants } from './t-grid.variants';
+import type { GridAlign, GridTheme } from './t-grid.types';
+
+const props = defineProps({
+  align: { type: String as PropType<GridAlign>, default: 'center' },
+  border: { type: [Boolean, Object] as PropType<boolean | object>, default: false },
+  column: { type: Number, default: 4 },
+  gutter: { type: Number, default: 0 },
+  hover: { type: Boolean, default: false },
+  theme: { type: String as PropType<GridTheme>, default: 'default' },
+  customClass: { type: String, default: '' },
+});
+
+const hasBorder = computed<boolean>(() => {
+  return props.border !== false && props.border !== null;
+});
+
+provide('t-grid-context', {
+  align: props.align,
+  border: props.border,
+  hasBorder: hasBorder.value,
+  column: props.column,
+  gutter: props.gutter,
+  hover: props.hover,
+  theme: props.theme,
+});
+
+const rootClass = computed(() => {
+  let cls = gridVariants({
+    theme: props.theme,
+    align: props.align,
+    class: props.customClass,
+  });
+  if (hasBorder.value) {
+    cls = cls + ' t-grid--bordered';
+  }
+  return cls;
+});
+</script>
+
+<style lang="less">
+@import './t-grid.theme.less';
+</style>

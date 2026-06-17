@@ -1,0 +1,132 @@
+@td-cell-height: var(--td-cell-height, auto);
+@td-cell-vertical-padding: var(--td-cell-vertical-padding, 16px);
+@td-cell-horizontal-padding: var(--td-cell-horizontal-padding, 16px);
+@td-cell-bg-color: var(--td-cell-bg-color, #fff);
+@td-cell-hover-color: var(--td-cell-hover-color, #f3f3f3);
+@td-cell-border-color: var(--td-cell-border-color, #e7e7e7);
+@td-cell-title-color: var(--td-cell-title-color, rgba(0, 0, 0, 0.9));
+@td-cell-title-font-size: var(--td-cell-title-font-size, 16px);
+@td-cell-title-line-height: var(--td-cell-title-line-height, 24px);
+@td-cell-description-color: var(--td-cell-description-color, rgba(0, 0, 0, 0.6));
+@td-cell-description-font-size: var(--td-cell-description-font-size, 14px);
+@td-cell-description-line-height: var(--td-cell-description-line-height, 22px);
+@td-cell-note-color: var(--td-cell-note-color, rgba(0, 0, 0, 0.4));
+@td-cell-note-font-size: var(--td-cell-note-font-size, 16px);
+@td-cell-disabled-color: var(--td-cell-disabled-color, rgba(0, 0, 0, 0.26));
+@td-cell-right-icon-color: var(--td-cell-right-icon-color, rgba(0, 0, 0, 0.4));
+@td-cell-right-icon-size: var(--td-cell-right-icon-size, 24px);
+@td-cell-required-color: var(--td-cell-required-color, #d54941);
+@td-cell-required-font-size: var(--td-cell-required-font-size, 16px);
+@td-cell-spacer: var(--td-cell-spacer, 4px);
+@td-cell-spacer-2: var(--td-cell-spacer-2, 16px);
+@td-cell-left-spacer: var(--td-cell-left-spacer, 8px);
+@td-cell-border-left-space: var(--td-cell-border-left-space, 16px);
+@td-cell-border-right-space: var(--td-cell-border-right-space, 0);
+
+.t-cell {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  padding: @td-cell-vertical-padding @td-cell-horizontal-padding;
+  background-color: @td-cell-bg-color;
+  box-sizing: border-box;
+
+  &--align-top { align-items: flex-start; }
+  &--align-middle { align-items: center; }
+  &--align-bottom { align-items: flex-end; }
+
+  &--bordered::after {
+    content: '';
+    position: absolute;
+    left: @td-cell-border-left-space;
+    right: @td-cell-border-right-space;
+    bottom: 0;
+    height: 1px;
+    background-color: @td-cell-border-color;
+    transform: scaleY(0.5);
+    transform-origin: 0 100%;
+  }
+
+  &--hover,
+  &--active { background-color: @td-cell-hover-color; }
+  &--disabled { color: @td-cell-disabled-color; }
+  &--arrow { cursor: pointer; }
+
+  &__left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-self: stretch;
+    &:not(:empty) { margin-right: @td-cell-left-spacer; }
+  }
+
+  &__title {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: @td-cell-spacer-2;
+    min-width: 0;
+
+    &-text {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: @td-cell-title-font-size;
+      line-height: @td-cell-title-line-height;
+      color: @td-cell-title-color;
+
+      &-content {
+        font-size: @td-cell-title-font-size;
+        line-height: @td-cell-title-line-height;
+        color: @td-cell-title-color;
+      }
+    }
+  }
+
+  &__description {
+    margin-top: @td-cell-spacer;
+    font-size: @td-cell-description-font-size;
+    line-height: @td-cell-description-line-height;
+    color: @td-cell-description-color;
+
+    &-text {
+      font-size: @td-cell-description-font-size;
+      line-height: @td-cell-description-line-height;
+      color: @td-cell-description-color;
+    }
+  }
+
+  &__note {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    color: @td-cell-note-color;
+    font-size: @td-cell-note-font-size;
+  }
+
+  &__right {
+    display: flex;
+    flex-direction: row;
+    align-self: stretch;
+
+    &--top { align-items: flex-start; }
+    &--middle { align-items: center; }
+    &--bottom { align-items: flex-end; }
+
+    &-arrow {
+      margin-left: @td-cell-spacer;
+      color: @td-cell-right-icon-color;
+      font-size: @td-cell-right-icon-size;
+    }
+  }
+
+  &__note + &__right:not(:empty) { margin-left: @td-cell-spacer; }
+
+  &--required {
+    font-size: @td-cell-required-font-size;
+    color: @td-cell-required-color;
+  }
+}

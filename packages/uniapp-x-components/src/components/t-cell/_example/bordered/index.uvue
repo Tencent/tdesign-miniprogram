@@ -1,0 +1,7 @@
+<template>
+  <view>
+    <t-cell title="带边框 1" bordered ></t-cell>
+    <t-cell title="带边框 2" bordered ></t-cell>
+    <t-cell title="带边框 3" bordered note="描述" arrow ></t-cell>
+  </view>
+</template>

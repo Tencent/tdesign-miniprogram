@@ -1,0 +1,23 @@
+/**
+ * SideBar 基础样式
+ *
+ * 与 @tdesign/uniapp 的 side-bar.less 视觉对齐
+ */
+
+@td-side-bar-width: var(--td-side-bar-width, 103px);
+@td-side-bar-height: var(--td-side-bar-height, 100%);
+@td-side-bar-bg-color: var(--td-side-bar-bg-color, #f3f3f3);
+
+.t-side-bar {
+  display: flex;
+  flex-direction: column;
+  width: @td-side-bar-width;
+  height: @td-side-bar-height;
+  overflow-y: auto;
+  background-color: @td-side-bar-bg-color;
+
+  &__padding {
+    flex: 1;
+    background-color: @td-side-bar-bg-color;
+  }
+}

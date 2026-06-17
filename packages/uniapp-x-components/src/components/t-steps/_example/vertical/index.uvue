@@ -1,0 +1,16 @@
+<template>
+  <view class="demo-block">
+    <t-steps :current="1" layout="vertical">
+      <t-step-item title="提交申请" content="2024-01-01 12:00" ></t-step-item>
+      <t-step-item title="审核中" content="预计 1-3 个工作日" ></t-step-item>
+      <t-step-item title="审核通过" content="尚未到达" ></t-step-item>
+    </t-steps>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 24px 16px;
+  background-color: #ffffff;
+}
+</style>

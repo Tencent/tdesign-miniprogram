@@ -1,0 +1,60 @@
+<template>
+  <view class="side-bar-wrapper">
+    <t-side-bar :value="value" @change="onChange">
+      <t-side-bar-item
+        v-for="(item, index) in list"
+        :key="index"
+        :value="item.value"
+        :label="item.label"
+      />
+    </t-side-bar>
+    <view class="content">
+      <text class="content-text">{{ activeLabel }}</text>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { computed, ref } from 'vue';
+
+const value = ref<string>('0');
+const list = [
+  { value: '0', label: '全部商品' },
+  { value: '1', label: '女装' },
+  { value: '2', label: '男装' },
+  { value: '3', label: '内衣' },
+  { value: '4', label: '配饰' },
+];
+
+function onChange(e: { value: string; label: string }) {
+  value.value = e.value;
+}
+
+const activeLabel = computed<string>(() => {
+  for (let i = 0; i < list.length; i = i + 1) {
+    if (list[i].value === value.value) return list[i].label;
+  }
+  return '';
+});
+</script>
+
+<style>
+.side-bar-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 320px;
+  background-color: #ffffff;
+}
+.content {
+  flex: 1;
+  padding: 16px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.content-text {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.9);
+}
+</style>

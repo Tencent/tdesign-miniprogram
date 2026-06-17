@@ -1,0 +1,78 @@
+<template>
+  <scroll-view class="demo-page" :scroll-y="true">
+    <view class="demo-header">
+      <text class="demo-title">Link 链接</text>
+      <text class="demo-desc">用于跳转到其他页面或外部资源的入口。</text>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">01 组件类型</text>
+      <text class="demo-section-desc">不同主题</text>
+      <base-demo></base-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">02 组件状态</text>
+      <text class="demo-section-desc">下划线 / 禁用 / 带图标</text>
+      <status-demo></status-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">03 组件样式</text>
+      <text class="demo-section-desc">尺寸</text>
+      <size-demo></size-demo>
+    </view>
+  </scroll-view>
+</template>
+
+<script>
+import BaseDemo from './base/index.uvue';
+import SizeDemo from './size/index.uvue';
+import StatusDemo from './status/index.uvue';
+
+export default {
+  components: {
+    BaseDemo,
+    SizeDemo,
+    StatusDemo,
+  },
+};
+</script>
+
+<style>
+.demo-page {
+  flex: 1;
+  background-color: #f5f5f5;
+}
+.demo-header {
+  padding: 24px 16px 16px;
+  background-color: #ffffff;
+}
+.demo-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #181818;
+  margin-bottom: 8px;
+}
+.demo-desc {
+  font-size: 14px;
+  color: #888888;
+  line-height: 22px;
+}
+.demo-section {
+  margin-top: 12px;
+  background-color: #ffffff;
+  padding-bottom: 8px;
+}
+.demo-section-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #181818;
+  padding: 16px 16px 8px;
+}
+.demo-section-desc {
+  font-size: 13px;
+  color: #666666;
+  padding: 8px 16px 0;
+}
+</style>

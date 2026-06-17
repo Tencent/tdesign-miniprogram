@@ -1,0 +1,155 @@
+<template>
+  <view :class="rootClass">
+    <view class="t-indexes__sidebar">
+      <view
+        v-for="(item, index) in finalIndexList"
+        :key="index"
+        :class="getItemClass(item)"
+        @click="onClick(item)"
+      >
+        <text>{{ getFirstChar(item) }}</text>
+        <view v-if="showTips && innerCurrent === item" class="t-indexes__sidebar-tips">
+          <text>{{ item }}</text>
+        </view>
+      </view>
+    </view>
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Indexes - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 indexes：
+ *  - indexList 为空时默认 A-Z
+ *  - showFullIndex 全展示 vs 只展示首字符
+ *  - 点击侧栏 -> 触发 select / change
+ *  - 通过 provide('t-indexes-context') 通知子 anchor 当前激活项（用于内部高亮）
+ *
+ * 实现差异：
+ *  - 不接管 page-scroll 实现自动联动（无法精准跨平台测距），sticky/stickyOffset 透传给子项
+ *  - 不实现 touchmove 滑动选择（仅 click），保持核心交互
+ */
+import { computed, provide, reactive, ref, watch } from 'vue';
+import { indexesVariants } from './t-indexes.variants';
+import type { IndexesValue } from './t-indexes.types';
+
+type IndexesContext = {
+  current: IndexesValue;
+  sticky: boolean;
+  stickyOffset: number;
+};
+
+const props = defineProps({
+  current: { type: [String, Number] as PropType<IndexesValue>, default: '' },
+  defaultCurrent: { type: [String, Number] as PropType<IndexesValue>, default: '' },
+  indexList: { type: Array as PropType<IndexesValue[]>, default: () => [] as IndexesValue[] },
+  showFullIndex: { type: Boolean, default: false },
+  sticky: { type: Boolean, default: true },
+  stickyOffset: { type: Number, default: 0 },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change', 'select', 'update:current']);
+
+function buildAlphabet(): IndexesValue[] {
+  const arr: IndexesValue[] = [];
+  const start = 65; // 'A'
+  for (let i = 0; i < 26; i = i + 1) {
+    arr.push(String.fromCharCode(start + i));
+  }
+  return arr;
+}
+
+const finalIndexList = computed<IndexesValue[]>(() => {
+  if (props.indexList.length > 0) return props.indexList;
+  return buildAlphabet();
+});
+
+const innerCurrent = ref<IndexesValue>('');
+// 初始化：current > defaultCurrent > finalIndexList[0]
+function resolveInitial() {
+  if (props.current !== '') {
+    innerCurrent.value = props.current;
+    return;
+  }
+  if (props.defaultCurrent !== '') {
+    innerCurrent.value = props.defaultCurrent;
+    return;
+  }
+  const list = finalIndexList.value;
+  if (list.length > 0) innerCurrent.value = list[0];
+}
+resolveInitial();
+
+watch(
+  () => props.current,
+  (v: IndexesValue) => {
+    if (v !== '') innerCurrent.value = v;
+  },
+);
+
+const showTips = ref<boolean>(false);
+let tipsTimer: number = -1;
+
+function toggleTips(flag: boolean) {
+  if (!flag) {
+    if (tipsTimer !== -1) {
+      clearTimeout(tipsTimer);
+    }
+    tipsTimer = setTimeout(() => {
+      showTips.value = false;
+    }, 300) as any as number;
+  } else {
+    showTips.value = true;
+  }
+}
+
+const ctx = reactive<IndexesContext>({
+  current: innerCurrent.value,
+  sticky: props.sticky,
+  stickyOffset: props.stickyOffset,
+});
+watch(
+  () => innerCurrent.value,
+  (v: IndexesValue) => {
+    ctx.current = v;
+  },
+);
+
+provide('t-indexes-context', ctx);
+
+const rootClass = computed<string>(() =>
+  indexesVariants({
+    class: props.customClass,
+  }),
+);
+
+function getItemClass(item: IndexesValue): string {
+  let cls = 't-indexes__sidebar-item';
+  if (innerCurrent.value === item) cls = cls + ' t-indexes__sidebar-item--active';
+  return cls;
+}
+
+function getFirstChar(item: IndexesValue): string {
+  const s = item.toString();
+  if (props.showFullIndex) return s;
+  return s.length > 0 ? s.substring(0, 1) : '';
+}
+
+function onClick(item: IndexesValue) {
+  toggleTips(true);
+  if (innerCurrent.value !== item) {
+    innerCurrent.value = item;
+    emit('change', { index: item, current: item });
+    emit('update:current', item);
+  }
+  emit('select', { index: item });
+  toggleTips(false);
+}
+</script>
+
+<style lang="less">
+@import './t-indexes.theme.less';
+</style>

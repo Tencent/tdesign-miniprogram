@@ -1,0 +1,15 @@
+<template>
+  <view class="demo-block">
+    <t-image
+      width="160"
+      height="160"
+      src="https://tdesign.gtimg.com/site/avatar.jpg"
+    />
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 24px 16px;
+}
+</style>

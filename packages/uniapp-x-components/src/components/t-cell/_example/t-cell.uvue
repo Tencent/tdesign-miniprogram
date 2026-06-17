@@ -1,0 +1,120 @@
+<template>
+  <scroll-view class="demo-page" :scroll-y="true">
+    <view class="demo-page__header">
+      <text class="demo-page__title">Cell 单元格</text>
+      <text class="demo-page__desc">用于各个类别行的信息展示。</text>
+    </view>
+
+    <view class="demo-block">
+      <text class="demo-block__title">01 组件类型</text>
+      <text class="demo-block__desc">基础单元格</text>
+      <view class="demo-block__slot">
+        <base-demo></base-demo>
+      </view>
+      <text class="demo-block__desc demo-block__desc--gap">带箭头</text>
+      <view class="demo-block__slot">
+        <arrow-demo></arrow-demo>
+      </view>
+      <text class="demo-block__desc demo-block__desc--gap">带边框</text>
+      <view class="demo-block__slot">
+        <bordered-demo></bordered-demo>
+      </view>
+    </view>
+
+    <view class="demo-block">
+      <text class="demo-block__title">02 组件状态</text>
+      <text class="demo-block__desc">必填 / 禁用 / 悬浮</text>
+      <view class="demo-block__slot">
+        <required-demo></required-demo>
+        <disabled-demo></disabled-demo>
+      </view>
+    </view>
+
+    <view class="demo-block">
+      <text class="demo-block__title">03 组件样式</text>
+      <text class="demo-block__desc">主轴对齐</text>
+      <view class="demo-block__slot">
+        <align-demo></align-demo>
+      </view>
+    </view>
+  </scroll-view>
+</template>
+
+<script>
+import BaseDemo from './base/index.uvue';
+import ArrowDemo from './arrow/index.uvue';
+import BorderedDemo from './bordered/index.uvue';
+import RequiredDemo from './required/index.uvue';
+import AlignDemo from './align/index.uvue';
+import DisabledDemo from './disabled/index.uvue';
+
+export default {
+  components: {
+    BaseDemo,
+    ArrowDemo,
+    BorderedDemo,
+    RequiredDemo,
+    AlignDemo,
+    DisabledDemo,
+  },
+};
+</script>
+
+<style lang="less">
+.demo-page {
+  flex: 1;
+  background-color: #f5f5f5;
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px 0;
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    color: rgba(0, 0, 0, 0.9);
+  }
+
+  &__desc {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
+
+.demo-block {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin: 0 16px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 26px;
+    color: rgba(0, 0, 0, 0.9);
+  }
+
+  &__desc {
+    margin: 8px 16px 0;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.6);
+
+    &--gap {
+      margin-top: 24px;
+    }
+  }
+
+  &__slot {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+  }
+}
+</style>

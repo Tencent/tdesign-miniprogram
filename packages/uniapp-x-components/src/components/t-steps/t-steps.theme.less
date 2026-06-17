@@ -1,0 +1,21 @@
+/**
+ * Steps 基础样式
+ */
+
+.t-steps {
+  display: flex;
+  width: 100%;
+
+  &--horizontal {
+    flex-direction: row;
+  }
+  &--vertical {
+    flex-direction: column;
+  }
+  &--reverse&--horizontal {
+    flex-direction: row-reverse;
+  }
+  &--reverse&--vertical {
+    flex-direction: column-reverse;
+  }
+}

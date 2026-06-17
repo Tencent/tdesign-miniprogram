@@ -1,0 +1,70 @@
+<template>
+  <view :class="rootClass" @click="onClick">
+    <image
+      v-if="props.prefixIcon.length > 0"
+      class="t-link__prefix-icon"
+      :src="props.prefixIcon"
+      mode="aspectFit"
+    />
+    <view class="t-link__content">
+      <slot>
+        <text v-if="props.content.length > 0">{{ props.content }}</text>
+      </slot>
+    </view>
+    <image
+      v-if="props.suffixIcon.length > 0"
+      class="t-link__suffix-icon"
+      :src="props.suffixIcon"
+      mode="aspectFit"
+    />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Link - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/link：
+ *  - theme/size/underline/disabled/hover 完整支持
+ *  - prefixIcon/suffixIcon 仅支持 string（图片 URL）
+ *  - 点击仅触发 click 事件，业务层根据 navigatorProps 自行处理路由
+ */
+import { computed } from 'vue';
+import { linkVariants } from './t-link.variants';
+import type { LinkSize, LinkTheme } from './t-link.types';
+
+const props = defineProps({
+  content: { type: String, default: '' },
+  disabled: { type: Boolean, default: false },
+  hover: { type: Boolean, default: false },
+  navigatorProps: { type: Object as PropType<Record<string, any> | null>, default: null },
+  prefixIcon: { type: String, default: '' },
+  size: { type: String as PropType<LinkSize>, default: 'medium' },
+  suffixIcon: { type: String, default: '' },
+  theme: { type: String as PropType<LinkTheme>, default: 'default' },
+  underline: { type: Boolean, default: false },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['click']);
+
+const rootClass = computed(() =>
+  linkVariants({
+    theme: props.theme,
+    size: props.size,
+    underline: props.underline,
+    disabled: props.disabled,
+    hover: props.hover,
+    class: props.customClass,
+  }),
+);
+
+function onClick(event: UniMouseEvent) {
+  if (props.disabled) return;
+  emit('click', event);
+}
+</script>
+
+<style lang="less">
+@import './t-link.theme.less';
+</style>

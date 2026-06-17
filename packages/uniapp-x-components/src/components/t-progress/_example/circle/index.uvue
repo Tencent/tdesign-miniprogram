@@ -1,0 +1,26 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-progress theme="circle" :percentage="60" ></t-progress>
+      <t-progress theme="circle" :percentage="90" status="success" ></t-progress>
+      <t-progress theme="circle" :percentage="40" status="error" ></t-progress>
+      <t-progress theme="circle" :percentage="30" size="micro" ></t-progress>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-row > * {
+  margin-right: 16px;
+  margin-bottom: 16px;
+}
+</style>

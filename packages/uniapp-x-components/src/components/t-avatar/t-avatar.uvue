@@ -1,0 +1,89 @@
+<template>
+  <view :class="rootClass" :style="rootStyle">
+    <image
+      v-if="props.image.length > 0 && !loadFailed"
+      class="t-avatar__image"
+      :src="props.image"
+      mode="aspectFill"
+      @error="onError"
+    />
+    <image
+      v-else-if="props.icon.length > 0"
+      class="t-avatar__icon"
+      :src="props.icon"
+      mode="aspectFit"
+    />
+    <view v-else-if="hasAlt" class="t-avatar__text">
+      <text>{{ props.alt }}</text>
+    </view>
+    <view v-else class="t-avatar__text">
+      <slot />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Avatar - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/avatar：
+ *  - image 加载失败回退到 alt（hideOnLoadFailed=true 则隐藏）
+ *  - icon 简化为 string（图片 URL）
+ *  - badgeProps / imageProps / bordered 暂不实现
+ */
+import { computed, ref } from 'vue';
+import { avatarVariants } from './t-avatar.variants';
+import type { AvatarShape, AvatarSize } from './t-avatar.types';
+
+const props = defineProps({
+  alt: { type: String, default: '' },
+  hideOnLoadFailed: { type: Boolean, default: false },
+  icon: { type: String, default: '' },
+  image: { type: String, default: '' },
+  shape: { type: String as PropType<AvatarShape>, default: 'circle' },
+  size: { type: String, default: 'medium' },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['error']);
+
+const loadFailed = ref(false);
+
+function isPresetSize(s: string): boolean {
+  return s === 'small' || s === 'medium' || s === 'large';
+}
+
+function addUnit(value: string): string {
+  if (value.length === 0) return '';
+  if (/^-?\d+(\.\d+)?$/.test(value)) return value + 'px';
+  return value;
+}
+
+const rootClass = computed(() => {
+  const sizeKey: any = isPresetSize(props.size) ? props.size : 'medium';
+  return avatarVariants({
+    shape: props.shape,
+    size: sizeKey,
+    class: props.customClass,
+  });
+});
+
+const rootStyle = computed<string>(() => {
+  if (!isPresetSize(props.size) && props.size.length > 0) {
+    const u = addUnit(props.size);
+    return 'width:' + u + ';height:' + u;
+  }
+  return '';
+});
+
+const hasAlt = computed<boolean>(() => props.alt.length > 0);
+
+function onError(event: UniEvent) {
+  loadFailed.value = true;
+  emit('error', event);
+}
+</script>
+
+<style lang="less">
+@import './t-avatar.theme.less';
+</style>

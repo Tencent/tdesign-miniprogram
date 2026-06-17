@@ -1,0 +1,37 @@
+<template>
+  <view class="side-bar-wrapper">
+    <t-side-bar :value="value" @change="onChange">
+      <t-side-bar-item
+        v-for="(item, index) in list"
+        :key="index"
+        :value="item.value"
+        :label="item.label"
+        :disabled="item.disabled"
+      />
+    </t-side-bar>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const value = ref<string>('0');
+const list = [
+  { value: '0', label: '选项一', disabled: false },
+  { value: '1', label: '选项二', disabled: false },
+  { value: '2', label: '禁用选项', disabled: true },
+  { value: '3', label: '选项四', disabled: false },
+];
+
+function onChange(e: { value: string; label: string }) {
+  value.value = e.value;
+}
+</script>
+
+<style>
+.side-bar-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 240px;
+}
+</style>

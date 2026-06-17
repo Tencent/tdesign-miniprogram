@@ -6,3 +6,9 @@ export {
   type VariantsConfig,
   type VariantProps,
 } from './cva';
+export {
+  getCharacterLength,
+  type CharCountMode,
+  type CharCountResult,
+} from './text';
+export { normalizeIcon, EMPTY_ICON, type IconConfig } from './icon';

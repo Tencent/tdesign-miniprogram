@@ -1,0 +1,209 @@
+<template>
+  <!--
+    Message - uni-app x 实现（指令式预埋组件，简化版）
+    -------------------------------------------------------
+    DOM 结构对齐 @tdesign/uniapp/message-item/message-item.vue：
+      <view v-if="realVisible" class="t-message t-message--{theme} t-message--align-{align}">
+        <view class="t-message__icon" v-if="resolvedIcon"><t-icon /></view>
+        <view class="t-message__content">
+          <text class="t-message__text">{{ content }}</text>
+        </view>
+        <view class="t-message__link" v-if="link" @click>{{ link }}</view>
+        <view class="t-message__close-btn" v-if="resolvedCloseBtn" @click>×</view>
+      </view>
+
+    使用方式：
+      <template>
+        <t-message ref="message" />
+      </template>
+      <script setup>
+        import { Message } from '../t-message';
+        Message.success({ content: '操作成功' });
+      </script>
+  -->
+  <view v-if="realVisible" class="t-message-host">
+    <view :class="rootClass" :style="rootStyle">
+      <!-- 图标 -->
+      <view v-if="resolvedIconName.length > 0" class="t-message__icon">
+        <t-icon :name="resolvedIconName" size="44rpx" />
+      </view>
+
+      <!-- 内容 -->
+      <view class="t-message__content">
+        <text class="t-message__text">{{ state.content }}</text>
+      </view>
+
+      <!-- 链接 -->
+      <view v-if="state.link.length > 0" class="t-message__link" @click="onLinkClick">
+        <text>{{ state.link }}</text>
+      </view>
+
+      <!-- 关闭按钮 -->
+      <view v-if="resolvedCloseIcon.length > 0" class="t-message__close-btn" @click="onCloseClick">
+        <text v-if="resolvedCloseIcon === '__default__'">×</text>
+        <t-icon v-else :name="resolvedCloseIcon" size="36rpx" />
+      </view>
+    </view>
+  </view>
+</template>
+
+<script lang="uts">
+/**
+ * Message - uni-app x 实现
+ *
+ * 暴露的命令式 API（通过 ref.value.xxx 调用）：
+ *  - setMessage(opts, theme): 显示一条 message
+ *  - hide(): 立即关闭
+ *
+ * 通过 show.ts 包装为 Message.info / success / warning / error / hide 静态方法。
+ */
+import { computed, defineComponent, ref } from 'vue';
+import { messageVariants } from './t-message.variants';
+
+type MessageInternalState = {
+  content: string;
+  theme: string;
+  duration: number;
+  closeBtn: string; // '__default__' / 自定义图标名 / '' 不显示
+  icon: string; // '__theme__' / 自定义图标名 / '' 不显示
+  align: string;
+  link: string;
+  zIndex: number;
+};
+
+function defaultState(): MessageInternalState {
+  return {
+    content: '',
+    theme: 'info',
+    duration: 3000,
+    closeBtn: '',
+    icon: '__theme__',
+    align: 'left',
+    link: '',
+    zIndex: 15000,
+  } as MessageInternalState;
+}
+
+/** theme → 默认 prefix 图标名 */
+function getThemeIcon(theme: string): string {
+  if (theme === 'success') return 'check-circle-filled';
+  if (theme === 'warning') return 'error-circle-filled';
+  if (theme === 'error') return 'error-circle-filled';
+  return 'info-circle-filled';
+}
+
+export default defineComponent({
+  name: 't-message',
+  setup() {
+    const realVisible = ref<boolean>(false);
+    const state = ref<MessageInternalState>(defaultState());
+    let hideTimer: number = -1;
+
+    const resolvedIconName = computed<string>(() => {
+      const ic = state.value.icon;
+      if (ic.length === 0) return '';
+      if (ic === '__theme__') return getThemeIcon(state.value.theme);
+      return ic;
+    });
+
+    const resolvedCloseIcon = computed<string>(() => state.value.closeBtn);
+
+    const rootClass = computed<string>(() =>
+      messageVariants({ theme: state.value.theme, align: state.value.align }),
+    );
+
+    const rootStyle = computed<string>(() => 'z-index:' + state.value.zIndex.toString());
+
+    function clearHideTimer() {
+      if (hideTimer >= 0) {
+        clearTimeout(hideTimer);
+        hideTimer = -1;
+      }
+    }
+
+    /** 内部统一入口：合并 opts → state → 启动定时器 */
+    function setMessage(opts: any, theme: string) {
+      clearHideTimer();
+      const next = defaultState();
+      next.theme = theme;
+      if (opts != null) {
+        const o = opts as UTSJSONObject;
+        const content = o.getString('content');
+        if (content != null) next.content = content;
+        const dur = o.getNumber('duration');
+        if (dur != null) next.duration = (dur as number).toInt();
+        const align = o.getString('align');
+        if (align != null) next.align = align;
+        const link = o.getString('link');
+        if (link != null) next.link = link;
+        const z = o.getNumber('zIndex');
+        if (z != null) next.zIndex = (z as number).toInt();
+        // closeBtn: boolean → '__default__' / '' ；string → 透传
+        const cbBool = o.getBoolean('closeBtn');
+        if (cbBool != null) {
+          next.closeBtn = cbBool ? '__default__' : '';
+        } else {
+          const cbStr = o.getString('closeBtn');
+          if (cbStr != null) next.closeBtn = cbStr;
+        }
+        // icon: boolean → '__theme__' / '' ；string → 透传
+        const iconBool = o.getBoolean('icon');
+        if (iconBool != null) {
+          next.icon = iconBool ? '__theme__' : '';
+        } else {
+          const iconStr = o.getString('icon');
+          if (iconStr != null) next.icon = iconStr;
+        }
+        // 用户显式传 theme 优先（Message.info({theme:'success'}) 这种 case）
+        const customTheme = o.getString('theme');
+        if (customTheme != null) next.theme = customTheme;
+      }
+      state.value = next;
+      realVisible.value = true;
+
+      if (next.duration > 0) {
+        hideTimer = setTimeout(() => {
+          hide();
+        }, next.duration);
+      }
+    }
+
+    function hide() {
+      clearHideTimer();
+      realVisible.value = false;
+    }
+
+    function onCloseClick() {
+      hide();
+    }
+
+    function onLinkClick() {
+      // 链接点击后由用户决定是否关闭，这里 noop（事件由全局 API 透传）
+    }
+
+    return {
+      realVisible,
+      state,
+      resolvedIconName,
+      resolvedCloseIcon,
+      rootClass,
+      rootStyle,
+      setMessage,
+      hide,
+      onCloseClick,
+      onLinkClick,
+    };
+  },
+});
+</script>
+
+<style lang="less">
+@import './t-message.theme.less';
+
+.t-message-host {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: visible;
+}
+</style>

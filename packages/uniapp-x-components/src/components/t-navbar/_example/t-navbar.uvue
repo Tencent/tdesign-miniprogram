@@ -1,0 +1,90 @@
+<template>
+  <scroll-view class="demo-page" :scroll-y="true">
+    <view class="demo-header">
+      <text class="demo-title">Navbar 导航栏</text>
+      <text class="demo-desc">用于不同页面之间切换或者跳转，位于内容区的上方，系统状态栏的下方。</text>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">基础导航栏</text>
+      <base-demo></base-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">胶囊样式导航栏</text>
+      <back-home-demo></back-home-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">带搜索导航栏</text>
+      <search-demo></search-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">带图片导航栏</text>
+      <img-demo></img-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">组件样式</text>
+      <left-title-demo></left-title-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">自定义颜色</text>
+      <custom-color-demo></custom-color-demo>
+    </view>
+  </scroll-view>
+</template>
+
+<script>
+import BaseDemo from './base/index.uvue';
+import BackHomeDemo from './back-home/index.uvue';
+import SearchDemo from './search/index.uvue';
+import ImgDemo from './img/index.uvue';
+import LeftTitleDemo from './left-title/index.uvue';
+import CustomColorDemo from './custom-color/index.uvue';
+export default {
+  components: {
+    BaseDemo,
+    BackHomeDemo,
+    SearchDemo,
+    ImgDemo,
+    LeftTitleDemo,
+    CustomColorDemo,
+  },
+};
+</script>
+
+<style>
+.demo-page {
+  flex: 1;
+  background-color: #f5f5f5;
+}
+.demo-header {
+  padding: 24px 16px 16px;
+  background-color: #ffffff;
+}
+.demo-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #181818;
+  margin-bottom: 8px;
+}
+.demo-desc {
+  font-size: 14px;
+  color: #888888;
+  line-height: 22px;
+}
+.demo-section {
+  margin-top: 12px;
+  background-color: #ffffff;
+  padding: 8px 16px;
+}
+.demo-section-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #181818;
+  padding: 8px 0 4px;
+}
+</style>

@@ -1,0 +1,25 @@
+/**
+ * Grid 基础样式
+ */
+
+@td-grid-bg-color: var(--td-grid-bg-color, #ffffff);
+@td-grid-card-radius: var(--td-grid-card-radius, 12px);
+
+.t-grid {
+  position: relative;
+  background-color: @td-grid-bg-color;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+
+  &--card {
+    margin: 0 16px;
+    border-radius: @td-grid-card-radius;
+    overflow: hidden;
+  }
+
+  &--bordered {
+    border-top: 1px solid #e7e7e7;
+    border-left: 1px solid #e7e7e7;
+  }
+}

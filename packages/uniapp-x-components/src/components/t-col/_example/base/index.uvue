@@ -1,0 +1,39 @@
+<template>
+  <view>
+    <t-row>
+      <t-col :span="8"><view class="dark">col-8</view></t-col>
+      <t-col :span="8"><view class="light">col-8</view></t-col>
+      <t-col :span="8"><view class="dark">col-8</view></t-col>
+    </t-row>
+
+    <t-row>
+      <t-col :span="4"><view class="dark">col-4</view></t-col>
+      <t-col :span="16" :offset="4"><view class="light">col-16 col-offset-4</view></t-col>
+    </t-row>
+
+    <t-row>
+      <t-col :offset="12" :span="12"><view class="dark">col-12 col-offset-12</view></t-col>
+    </t-row>
+  </view>
+</template>
+
+<script setup lang="uts"></script>
+
+<style>
+.dark {
+  background-color: #0052d9;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 48px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.light {
+  background-color: #366ef4;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 48px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+</style>

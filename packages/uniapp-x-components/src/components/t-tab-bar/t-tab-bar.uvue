@@ -1,0 +1,131 @@
+<template>
+  <view>
+    <view
+      v-if="props.fixed && props.placeholder"
+      class="t-tab-bar__placeholder"
+      :style="'height:' + placeholderHeight + 'px'"
+    />
+    <view :class="rootClass" :style="'z-index:' + zIndexStr">
+      <slot />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * TabBar - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 tab-bar：
+ *  - value 受控、defaultValue 非受控；change 事件在子项点击时触发
+ *  - 通过 provide('t-tab-bar-context') 把 currentValue / theme / split / shape 暴露给子项
+ *
+ * 实现差异：
+ *  - 不再用 ParentMixin/ChildrenMixin；而是 reactive context + provide/inject
+ *  - placeholder 高度固定为 56px（uts 中无法精准 getRect 父级，按视觉默认）
+ */
+import { computed, provide, reactive, ref, watch } from 'vue';
+import { tabBarVariants } from './t-tab-bar.variants';
+import type { TabBarShape, TabBarTheme, TabBarValue } from './t-tab-bar.types';
+
+type TabBarContext = {
+  currentValue: TabBarValue;
+  theme: TabBarTheme;
+  shape: TabBarShape;
+  split: boolean;
+  itemCount: number;
+  setValue: (value: TabBarValue) => void;
+  registerItem: () => number;
+};
+
+const props = defineProps({
+  bordered: { type: Boolean, default: true },
+  fixed: { type: Boolean, default: true },
+  placeholder: { type: Boolean, default: false },
+  safeAreaInsetBottom: { type: Boolean, default: true },
+  shape: { type: String as PropType<TabBarShape>, default: 'normal' },
+  split: { type: Boolean, default: true },
+  theme: { type: String as PropType<TabBarTheme>, default: 'normal' },
+  value: { type: [String, Number] as PropType<TabBarValue>, default: '' },
+  defaultValue: { type: [String, Number] as PropType<TabBarValue>, default: '' },
+  zIndex: { type: Number, default: 1 },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change', 'update:value']);
+
+// 内部当前值：value 优先，否则用 defaultValue
+const innerValue = ref<TabBarValue>(props.value !== '' ? props.value : props.defaultValue);
+
+watch(
+  () => props.value,
+  (v: TabBarValue) => {
+    if (v !== '') innerValue.value = v;
+  },
+);
+
+const placeholderHeight = ref<number>(56);
+
+const itemCounter = ref<number>(0);
+
+const ctx = reactive<TabBarContext>({
+  currentValue: innerValue.value,
+  theme: props.theme,
+  shape: props.shape,
+  split: props.split,
+  itemCount: 0,
+  setValue: (val: TabBarValue) => {
+    innerValue.value = val;
+    ctx.currentValue = val;
+    emit('change', { value: val });
+    emit('update:value', val);
+  },
+  registerItem: (): number => {
+    itemCounter.value = itemCounter.value + 1;
+    ctx.itemCount = itemCounter.value;
+    return itemCounter.value;
+  },
+});
+
+watch(
+  () => innerValue.value,
+  (v: TabBarValue) => {
+    ctx.currentValue = v;
+  },
+);
+watch(
+  () => props.theme,
+  (v: TabBarTheme) => {
+    ctx.theme = v;
+  },
+);
+watch(
+  () => props.shape,
+  (v: TabBarShape) => {
+    ctx.shape = v;
+  },
+);
+watch(
+  () => props.split,
+  (v: boolean) => {
+    ctx.split = v;
+  },
+);
+
+provide('t-tab-bar-context', ctx);
+
+const rootClass = computed<string>(() =>
+  tabBarVariants({
+    shape: props.shape,
+    fixed: props.fixed,
+    bordered: props.bordered,
+    safeAreaInsetBottom: props.safeAreaInsetBottom,
+    class: props.customClass,
+  }),
+);
+
+const zIndexStr = computed<string>(() => props.zIndex.toString());
+</script>
+
+<style lang="less">
+@import './t-tab-bar.theme.less';
+</style>

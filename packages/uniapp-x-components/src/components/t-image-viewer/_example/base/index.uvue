@@ -1,0 +1,29 @@
+<template>
+  <view class="demo-block">
+    <t-button theme="primary" @click="visible = true">预览图片</t-button>
+    <t-image-viewer
+      v-model:visible="visible"
+      :images="images"
+      :initial-index="0"
+      :show-index="true"
+      :close-btn="true"
+    />
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const visible = ref(false);
+const images: string[] = [
+  'https://tdesign.gtimg.com/site/avatar.jpg',
+  'https://tdesign.gtimg.com/site/swiper/swiper-1.png',
+  'https://tdesign.gtimg.com/site/swiper/swiper-2.png',
+];
+</script>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+</style>

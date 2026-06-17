@@ -1,0 +1,66 @@
+<template>
+  <view :class="rootClass">
+    <view v-if="hasThumb" class="t-empty__thumb">
+      <slot name="image">
+        <image
+          v-if="props.image.length > 0"
+          class="t-empty__image"
+          :src="props.image"
+          mode="aspectFit"
+        />
+        <image
+          v-else-if="props.icon.length > 0"
+          class="t-empty__icon"
+          :src="props.icon"
+          mode="aspectFit"
+        />
+      </slot>
+    </view>
+    <view v-if="hasDescription" class="t-empty__description">
+      <slot name="description">
+        <text v-if="props.description.length > 0">{{ props.description }}</text>
+      </slot>
+    </view>
+    <view class="t-empty__actions">
+      <slot name="actions" />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Empty - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/empty。
+ * uts 端将 icon 简化为字符串（图片 URL），不支持 Object 透传。
+ */
+import { computed, useSlots } from 'vue';
+import { emptyVariants } from './t-empty.variants';
+
+const props = defineProps({
+  description: { type: String, default: '' },
+  icon: { type: String, default: '' },
+  image: { type: String, default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const slots = useSlots();
+
+const rootClass = computed(() => emptyVariants({ class: props.customClass }));
+
+const hasThumb = computed<boolean>(() => {
+  return (
+    props.image.length > 0 ||
+    props.icon.length > 0 ||
+    slots.image != null
+  );
+});
+
+const hasDescription = computed<boolean>(() => {
+  return props.description.length > 0 || slots.description != null;
+});
+</script>
+
+<style lang="less">
+@import './t-empty.theme.less';
+</style>

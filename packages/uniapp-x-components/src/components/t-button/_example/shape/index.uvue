@@ -1,0 +1,21 @@
+<template>
+  <view class="demo-block">
+    <t-button theme="primary" shape="rectangle">矩形</t-button>
+    <t-button theme="primary" shape="square">方形</t-button>
+    <t-button theme="primary" shape="round">圆角</t-button>
+    <t-button theme="primary" shape="circle">圆形</t-button>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+.demo-block > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

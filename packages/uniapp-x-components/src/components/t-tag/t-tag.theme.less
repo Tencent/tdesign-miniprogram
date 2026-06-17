@@ -1,0 +1,228 @@
+/**
+ * Tag 基础样式
+ *
+ * 保留 uniapp 版的 theme × variant 矩阵：
+ *   - dark：纯色填充（白字）
+ *   - light：浅色填充（主题色字）
+ *   - outline：白底 + 主题色描边
+ *   - light-outline：浅色填充 + 主题色描边
+ *
+ * uts/uvue 端不支持复杂 less mixin（如 each + 拼接 var name），因此手工展开。
+ */
+
+// ----- theme 主色 -----
+@td-tag-default-color: var(--td-tag-default-color, #e7e7e7);
+@td-tag-default-light-color: var(--td-tag-default-light-color, #f3f3f3);
+@td-tag-default-font-color: var(--td-tag-default-font-color, rgba(0, 0, 0, 0.9));
+
+@td-tag-primary-color: var(--td-tag-primary-color, #0052d9);
+@td-tag-primary-light-color: var(--td-tag-primary-light-color, #d9e1ff);
+
+@td-tag-success-color: var(--td-tag-success-color, #2ba471);
+@td-tag-success-light-color: var(--td-tag-success-light-color, #d9f4e6);
+
+@td-tag-warning-color: var(--td-tag-warning-color, #ed7b2f);
+@td-tag-warning-light-color: var(--td-tag-warning-light-color, #fcdcc1);
+
+@td-tag-danger-color: var(--td-tag-danger-color, #d54941);
+@td-tag-danger-light-color: var(--td-tag-danger-light-color, #fcdcdb);
+
+@td-tag-outline-bg-color: var(--td-tag-outline-bg-color, #ffffff);
+@td-tag-disabled-color: var(--td-tag-disabled-color, rgba(0, 0, 0, 0.26));
+@td-tag-disabled-bg-color: var(--td-tag-disabled-bg-color, #f3f3f3);
+@td-tag-disabled-border-color: var(--td-tag-disabled-border-color, #dcdcdc);
+
+// ----- size -----
+@td-tag-small-padding: var(--td-tag-small-padding, 1px 6px);
+@td-tag-medium-padding: var(--td-tag-medium-padding, 1px 8px);
+@td-tag-large-padding: var(--td-tag-large-padding, 2px 8px);
+@td-tag-extra-large-padding: var(--td-tag-extra-large-padding, 8px 16px);
+
+@td-tag-small-font-size: var(--td-tag-small-font-size, 10px);
+@td-tag-medium-font-size: var(--td-tag-medium-font-size, 12px);
+@td-tag-large-font-size: var(--td-tag-large-font-size, 14px);
+@td-tag-extra-large-font-size: var(--td-tag-extra-large-font-size, 14px);
+
+// ----- shape -----
+@td-tag-square-radius: var(--td-tag-square-radius, 4px);
+@td-tag-round-radius: var(--td-tag-round-radius, 999px);
+
+@td-tag-close-color: var(--td-tag-close-color, rgba(0, 0, 0, 0.4));
+
+.t-tag {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  user-select: none;
+  vertical-align: middle;
+  padding: @td-tag-medium-padding;
+  font-size: @td-tag-medium-font-size;
+  border-radius: @td-tag-square-radius;
+  line-height: 1.4;
+
+  &__text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  &__close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+    color: @td-tag-close-color;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  // ---- size ----
+  &--small {
+    padding: @td-tag-small-padding;
+    font-size: @td-tag-small-font-size;
+  }
+  &--medium {
+    padding: @td-tag-medium-padding;
+    font-size: @td-tag-medium-font-size;
+  }
+  &--large {
+    padding: @td-tag-large-padding;
+    font-size: @td-tag-large-font-size;
+  }
+  &--extra-large {
+    padding: @td-tag-extra-large-padding;
+    font-size: @td-tag-extra-large-font-size;
+  }
+
+  // ---- shape ----
+  &--square { border-radius: @td-tag-square-radius; }
+  &--round { border-radius: @td-tag-round-radius; }
+  &--mark {
+    border-radius: 0;
+    border-top-right-radius: @td-tag-round-radius;
+    border-bottom-right-radius: @td-tag-round-radius;
+  }
+
+  // ===== theme × variant 矩阵展开 =====
+
+  // -- default + dark --
+  &--default.t-tag--dark {
+    color: @td-tag-default-font-color;
+    background-color: @td-tag-default-color;
+    border-color: @td-tag-default-color;
+  }
+  // -- default + light --
+  &--default.t-tag--light {
+    color: @td-tag-default-font-color;
+    background-color: @td-tag-default-light-color;
+    border-color: @td-tag-default-light-color;
+  }
+  // -- default + outline --
+  &--default.t-tag--outline {
+    color: @td-tag-default-font-color;
+    background-color: @td-tag-outline-bg-color;
+    border-color: @td-tag-default-color;
+  }
+  // -- default + light-outline --
+  &--default.t-tag--light-outline {
+    color: @td-tag-default-font-color;
+    background-color: @td-tag-default-light-color;
+    border-color: @td-tag-default-color;
+  }
+
+  // -- primary --
+  &--primary.t-tag--dark {
+    color: #ffffff;
+    background-color: @td-tag-primary-color;
+    border-color: @td-tag-primary-color;
+  }
+  &--primary.t-tag--light {
+    color: @td-tag-primary-color;
+    background-color: @td-tag-primary-light-color;
+    border-color: @td-tag-primary-light-color;
+  }
+  &--primary.t-tag--outline {
+    color: @td-tag-primary-color;
+    background-color: @td-tag-outline-bg-color;
+    border-color: @td-tag-primary-color;
+  }
+  &--primary.t-tag--light-outline {
+    color: @td-tag-primary-color;
+    background-color: @td-tag-primary-light-color;
+    border-color: @td-tag-primary-color;
+  }
+
+  // -- success --
+  &--success.t-tag--dark {
+    color: #ffffff;
+    background-color: @td-tag-success-color;
+    border-color: @td-tag-success-color;
+  }
+  &--success.t-tag--light {
+    color: @td-tag-success-color;
+    background-color: @td-tag-success-light-color;
+    border-color: @td-tag-success-light-color;
+  }
+  &--success.t-tag--outline {
+    color: @td-tag-success-color;
+    background-color: @td-tag-outline-bg-color;
+    border-color: @td-tag-success-color;
+  }
+  &--success.t-tag--light-outline {
+    color: @td-tag-success-color;
+    background-color: @td-tag-success-light-color;
+    border-color: @td-tag-success-color;
+  }
+
+  // -- warning --
+  &--warning.t-tag--dark {
+    color: #ffffff;
+    background-color: @td-tag-warning-color;
+    border-color: @td-tag-warning-color;
+  }
+  &--warning.t-tag--light {
+    color: @td-tag-warning-color;
+    background-color: @td-tag-warning-light-color;
+    border-color: @td-tag-warning-light-color;
+  }
+  &--warning.t-tag--outline {
+    color: @td-tag-warning-color;
+    background-color: @td-tag-outline-bg-color;
+    border-color: @td-tag-warning-color;
+  }
+  &--warning.t-tag--light-outline {
+    color: @td-tag-warning-color;
+    background-color: @td-tag-warning-light-color;
+    border-color: @td-tag-warning-color;
+  }
+
+  // -- danger --
+  &--danger.t-tag--dark {
+    color: #ffffff;
+    background-color: @td-tag-danger-color;
+    border-color: @td-tag-danger-color;
+  }
+  &--danger.t-tag--light {
+    color: @td-tag-danger-color;
+    background-color: @td-tag-danger-light-color;
+    border-color: @td-tag-danger-light-color;
+  }
+  &--danger.t-tag--outline {
+    color: @td-tag-danger-color;
+    background-color: @td-tag-outline-bg-color;
+    border-color: @td-tag-danger-color;
+  }
+  &--danger.t-tag--light-outline {
+    color: @td-tag-danger-color;
+    background-color: @td-tag-danger-light-color;
+    border-color: @td-tag-danger-color;
+  }
+
+  // ---- 禁用态（仅 default 主题在视觉上标准化） ----
+  &--disabled {
+    color: @td-tag-disabled-color;
+    background-color: @td-tag-disabled-bg-color;
+    border-color: @td-tag-disabled-border-color;
+  }
+}

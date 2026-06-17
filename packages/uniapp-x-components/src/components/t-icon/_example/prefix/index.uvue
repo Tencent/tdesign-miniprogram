@@ -1,0 +1,31 @@
+<template>
+  <view class="demo-block">
+    <t-icon prefix="my-icon" name="alert" size="28" ></t-icon>
+    <t-icon prefix="my-icon" name="bell" size="28" ></t-icon>
+    <t-icon prefix="my-icon" name="cart" size="28" ></t-icon>
+  </view>
+  <view class="demo-tip">
+    <text class="demo-tip-text">需在外部全局注入对应字体（如 my-icon-* 类名）</text>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 16px;
+}
+.demo-block > * {
+  margin-right: 16px;
+  margin-bottom: 12px;
+}
+.demo-tip {
+  padding: 0 16px 12px;
+}
+.demo-tip-text {
+  font-size: 12px;
+  color: #888888;
+}
+</style>

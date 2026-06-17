@@ -1,0 +1,33 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <text class="demo-label">默认</text>
+      <t-countdown :time="3600000" theme="default" ></t-countdown>
+    </view>
+    <view class="demo-row">
+      <text class="demo-label">方形</text>
+      <t-countdown :time="3600000" theme="square" ></t-countdown>
+    </view>
+    <view class="demo-row">
+      <text class="demo-label">圆形</text>
+      <t-countdown :time="3600000" theme="round" ></t-countdown>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.demo-label {
+  width: 60px;
+  font-size: 12px;
+  color: #888888;
+}
+</style>

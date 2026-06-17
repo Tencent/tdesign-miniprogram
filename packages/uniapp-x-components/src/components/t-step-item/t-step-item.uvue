@@ -1,0 +1,189 @@
+<template>
+  <view :class="rootClass" @click="onClick">
+    <view class="t-steps-item__anchor">
+      <view v-if="isDot" :class="dotClass" />
+      <view v-else :class="circleClass">
+        <image
+          v-if="props.icon.length > 0"
+          class="t-steps-item__icon"
+          :src="props.icon"
+          mode="aspectFit"
+        />
+        <text v-else>{{ indexLabel }}</text>
+      </view>
+    </view>
+
+    <view :class="contentClass">
+      <view :class="titleClass">
+        <slot name="title">
+          <text v-if="props.title.length > 0">{{ props.title }}</text>
+        </slot>
+      </view>
+      <view v-if="props.content.length > 0" class="t-steps-item__description">
+        <text>{{ props.content }}</text>
+      </view>
+      <view v-if="props.extra.length > 0" class="t-steps-item__extra">
+        <text>{{ props.extra }}</text>
+      </view>
+    </view>
+
+    <view v-if="!isLast" :class="lineClass" />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * StepItem - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/step-item：
+ *  - inject 父级 t-steps-context；缺失时独立工作
+ *  - status: 优先使用自身 status；如果当前是 active step，则使用父级 currentStatus
+ *  - 自动根据当前位置计算"已完成 / 进行中 / 未开始"
+ *  - 点击触发父级 setCurrent
+ *  - icon 仅支持 string（图片 URL），无 icon 时显示 step 序号
+ */
+import { computed, getCurrentInstance, inject, onMounted } from 'vue';
+import { stepItemVariants } from './t-step-item.variants';
+import type { StepItemStatus } from './t-step-item.types';
+
+type StepsCtx = {
+  ctx: {
+    current: string | number;
+    currentStatus: StepItemStatus;
+    layout: 'horizontal' | 'vertical';
+    theme: 'default' | 'dot';
+    sequence: 'positive' | 'reverse';
+    readonly: boolean;
+    registeredKeys: (string | number)[];
+  };
+  registerStep: (key: string | number) => void;
+  setCurrent: (key: string | number) => void;
+};
+
+const props = defineProps({
+  content: { type: String, default: '' },
+  extra: { type: String, default: '' },
+  icon: { type: String, default: '' },
+  status: { type: String as PropType<StepItemStatus>, default: 'default' },
+  title: { type: String, default: '' },
+  value: {
+    type: [String, Number, null] as PropType<string | number | null>,
+    default: null,
+  },
+  customClass: { type: String, default: '' },
+});
+
+const steps = inject('t-steps-context', null) as StepsCtx | null;
+const instanceUid = (getCurrentInstance() as any)?.uid ?? 0;
+
+const stepKey = computed<string | number>(() => {
+  if (props.value != null) return props.value as string | number;
+  return 'step-' + String(instanceUid);
+});
+
+onMounted(() => {
+  if (steps != null) steps.registerStep(stepKey.value);
+});
+
+const indexInList = computed<number>(() => {
+  if (steps == null) return 0;
+  const arr = steps.ctx.registeredKeys;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === stepKey.value) return i;
+  }
+  return 0;
+});
+
+const isLast = computed<boolean>(() => {
+  if (steps == null) return true;
+  return indexInList.value === steps.ctx.registeredKeys.length - 1;
+});
+
+/** 自动计算状态：基于父级 current 与当前 step index/value */
+const autoStatus = computed<StepItemStatus>(() => {
+  if (steps == null) return props.status;
+  const cur = steps.ctx.current;
+  // 父级 current = 'FINISH' 全部完成
+  if (cur === 'FINISH') return 'finish';
+
+  // 当 props.value 显式给出时优先匹配 value；否则用 index 比较
+  let curIndex = -1;
+  if (typeof cur === 'number') {
+    curIndex = cur as number;
+  } else if (typeof cur === 'string' && (cur as string).length > 0) {
+    // 尝试通过 registeredKeys 反查
+    const arr = steps.ctx.registeredKeys;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === cur) {
+        curIndex = i;
+        break;
+      }
+    }
+  }
+
+  // 如果当前 step 设置了 status，则优先使用（仅适配 finish/error 显式标记场景）
+  if (props.status === 'finish' || props.status === 'error') return props.status;
+
+  if (curIndex < 0) return 'default';
+  if (indexInList.value < curIndex) return 'finish';
+  if (indexInList.value === curIndex) return steps.ctx.currentStatus;
+  return 'default';
+});
+
+const isDot = computed<boolean>(() => {
+  if (steps == null) return false;
+  return steps.ctx.theme === 'dot';
+});
+
+const layout = computed<'horizontal' | 'vertical'>(() => {
+  if (steps == null) return 'horizontal';
+  return steps.ctx.layout;
+});
+
+const indexLabel = computed<string>(() => {
+  if (autoStatus.value === 'finish') return '✓';
+  if (autoStatus.value === 'error') return '!';
+  return String(indexInList.value + 1);
+});
+
+const rootClass = computed(() =>
+  stepItemVariants({
+    layout: layout.value,
+    class: props.customClass,
+  }),
+);
+
+const circleClass = computed<string>(() => {
+  return 't-steps-item__circle t-steps-item__circle--' + autoStatus.value;
+});
+
+const dotClass = computed<string>(() => {
+  return 't-steps-item__dot t-steps-item__dot--' + autoStatus.value;
+});
+
+const titleClass = computed<string>(() => {
+  return 't-steps-item__title t-steps-item__title--' + autoStatus.value;
+});
+
+const contentClass = computed<string>(() => {
+  return layout.value === 'vertical'
+    ? 't-steps-item__content t-steps-item__content--vertical'
+    : 't-steps-item__content t-steps-item__content--horizontal';
+});
+
+const lineClass = computed<string>(() => {
+  let c = 't-steps-item__line t-steps-item__line--' + layout.value;
+  if (autoStatus.value === 'finish') c = c + ' t-steps-item__line--finish';
+  return c;
+});
+
+function onClick() {
+  if (steps == null) return;
+  if (steps.ctx.readonly) return;
+  steps.setCurrent(stepKey.value);
+}
+</script>
+
+<style lang="less">
+@import './t-step-item.theme.less';
+</style>

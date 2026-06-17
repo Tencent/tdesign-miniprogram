@@ -1,0 +1,103 @@
+<template>
+  <view :class="rootClass">
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Steps - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/steps：
+ *  - layout: horizontal / vertical
+ *  - sequence: positive / reverse
+ *  - theme: default(数字+图标) / dot(圆点)
+ *  - 通过 provide 把上下文（current/currentStatus/layout/theme/sequence/registeredKeys）下放给 t-step-item
+ *  - 受控 current / 非受控 defaultCurrent
+ *  - readonly 时禁用 step-item 的点击切换
+ */
+import { computed, onMounted, provide, reactive, watch } from 'vue';
+import { stepsVariants } from './t-steps.variants';
+import type {
+  StepsTheme,
+  StepsLayout,
+  StepsSequence,
+  StepsCurrentStatus,
+} from './t-steps.types';
+
+const props = defineProps({
+  current: { type: [String, Number, null] as PropType<string | number | null>, default: null },
+  defaultCurrent: { type: [String, Number, null] as PropType<string | number | null>, default: null },
+  currentStatus: { type: String as PropType<StepsCurrentStatus>, default: 'process' },
+  layout: { type: String as PropType<StepsLayout>, default: 'horizontal' },
+  readonly: { type: [Boolean, null] as PropType<boolean | null>, default: null },
+  sequence: { type: String as PropType<StepsSequence>, default: 'positive' },
+  theme: { type: String as PropType<StepsTheme>, default: 'default' },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change', 'update:current']);
+
+const ctx = reactive({
+  current: '' as string | number,
+  currentStatus: props.currentStatus,
+  layout: props.layout,
+  theme: props.theme,
+  sequence: props.sequence,
+  readonly: props.readonly === true,
+  registeredKeys: [] as (string | number)[],
+});
+
+function applyCurrent() {
+  if (props.current != null) {
+    ctx.current = props.current as string | number;
+  } else if (props.defaultCurrent != null) {
+    ctx.current = props.defaultCurrent as string | number;
+  } else {
+    ctx.current = 0;
+  }
+}
+
+onMounted(() => applyCurrent());
+watch(() => props.current, () => {
+  if (props.current != null) ctx.current = props.current as string | number;
+});
+watch(() => props.currentStatus, () => { ctx.currentStatus = props.currentStatus; });
+watch(() => props.layout, () => { ctx.layout = props.layout; });
+watch(() => props.theme, () => { ctx.theme = props.theme; });
+watch(() => props.sequence, () => { ctx.sequence = props.sequence; });
+watch(() => props.readonly, () => { ctx.readonly = props.readonly === true; });
+
+function registerStep(key: string | number) {
+  // 检查是否已注册
+  for (let i = 0; i < ctx.registeredKeys.length; i++) {
+    if (ctx.registeredKeys[i] === key) return;
+  }
+  ctx.registeredKeys.push(key);
+}
+
+function setCurrent(key: string | number) {
+  if (ctx.readonly) return;
+  const prev = ctx.current;
+  if (props.current == null) {
+    ctx.current = key;
+  }
+  emit('change', key, prev);
+  emit('update:current', key);
+}
+
+provide('t-steps-context', { ctx, registerStep, setCurrent });
+
+const rootClass = computed(() =>
+  stepsVariants({
+    layout: props.layout,
+    sequence: props.sequence,
+    theme: props.theme,
+    class: props.customClass,
+  }),
+);
+</script>
+
+<style lang="less">
+@import './t-steps.theme.less';
+</style>

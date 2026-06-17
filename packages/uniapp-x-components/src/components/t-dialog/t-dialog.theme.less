@@ -1,0 +1,113 @@
+/**
+ * Dialog 样式
+ *
+ * 对齐 @tdesign/uniapp/dialog/dialog.less 的视觉结构：
+ *  - 居中弹窗：固定宽度 622rpx，圆角 24rpx
+ *  - 内容区：padding 32rpx + max-height 912rpx + 自动滚动
+ *  - footer 按钮区：horizontal（按钮平均分）/ vertical（纵向堆叠）
+ */
+
+.t-dialog-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 11499;
+}
+
+.t-dialog-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 11500;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.t-dialog {
+  width: var(--td-dialog-width, 622rpx);
+  background-color: #ffffff;
+  border-radius: var(--td-dialog-border-radius, 24rpx);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.t-dialog__close-btn {
+  position: absolute;
+  top: 16rpx;
+  right: 16rpx;
+  width: 56rpx;
+  height: 56rpx;
+  font-size: 36rpx;
+  color: var(--td-dialog-close-color, rgba(0, 0, 0, 0.4));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.t-dialog__content {
+  padding: 48rpx 32rpx 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.t-dialog__header {
+  text-align: center;
+  font-size: 36rpx;
+  line-height: 52rpx;
+  font-weight: 600;
+  color: var(--td-dialog-title-color, rgba(0, 0, 0, 0.9));
+}
+
+.t-dialog__body {
+  margin-top: 16rpx;
+  text-align: center;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: var(--td-dialog-content-color, rgba(0, 0, 0, 0.6));
+}
+
+.t-dialog__footer {
+  display: flex;
+  flex-direction: row;
+  padding: 32rpx;
+}
+
+.t-dialog--vertical .t-dialog__footer {
+  flex-direction: column;
+}
+
+.t-dialog__btn {
+  flex: 1;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8rpx;
+  font-size: 32rpx;
+}
+
+.t-dialog__btn--horizontal + .t-dialog__btn--horizontal {
+  margin-left: 16rpx;
+}
+
+.t-dialog__btn--vertical + .t-dialog__btn--vertical {
+  margin-top: 16rpx;
+}
+
+.t-dialog__btn--cancel {
+  background-color: #f3f3f3;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.t-dialog__btn--confirm {
+  background-color: #0052d9;
+  color: #ffffff;
+}

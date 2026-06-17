@@ -1,0 +1,30 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-link content="带下划线" theme="primary" :underline="true" ></t-link>
+      <t-link content="禁用链接" theme="primary" :disabled="true" ></t-link>
+      <t-link
+        content="带图标"
+        theme="primary"
+        prefix-icon="https://tdesign.gtimg.com/icon/0.0.1/static/svg/help.svg"
+        suffix-icon="https://tdesign.gtimg.com/icon/0.0.1/static/svg/chevron-right.svg"
+      />
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-row > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

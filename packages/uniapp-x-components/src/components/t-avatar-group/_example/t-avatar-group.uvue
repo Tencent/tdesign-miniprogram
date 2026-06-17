@@ -1,0 +1,78 @@
+<template>
+  <scroll-view class="demo-page" :scroll-y="true">
+    <view class="demo-header">
+      <text class="demo-title">AvatarGroup 头像组</text>
+      <text class="demo-desc">将多个头像紧凑展示，支持折叠超出部分。</text>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">01 组件类型</text>
+      <text class="demo-section-desc">基础头像组</text>
+      <base-demo></base-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">02 组件状态</text>
+      <text class="demo-section-desc">折叠超出</text>
+      <collapse-demo></collapse-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">03 组件样式</text>
+      <text class="demo-section-desc">层叠方向</text>
+      <cascading-demo></cascading-demo>
+    </view>
+  </scroll-view>
+</template>
+
+<script>
+import BaseDemo from './base/index.uvue';
+import CollapseDemo from './collapse/index.uvue';
+import CascadingDemo from './cascading/index.uvue';
+
+export default {
+  components: {
+    BaseDemo,
+    CollapseDemo,
+    CascadingDemo,
+  },
+};
+</script>
+
+<style>
+.demo-page {
+  flex: 1;
+  background-color: #f5f5f5;
+}
+.demo-header {
+  padding: 24px 16px 16px;
+  background-color: #ffffff;
+}
+.demo-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #181818;
+  margin-bottom: 8px;
+}
+.demo-desc {
+  font-size: 14px;
+  color: #888888;
+  line-height: 22px;
+}
+.demo-section {
+  margin-top: 12px;
+  background-color: #ffffff;
+  padding-bottom: 8px;
+}
+.demo-section-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #181818;
+  padding: 16px 16px 8px;
+}
+.demo-section-desc {
+  font-size: 13px;
+  color: #666666;
+  padding: 8px 16px 0;
+}
+</style>

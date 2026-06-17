@@ -1,0 +1,104 @@
+<template>
+  <view
+    v-if="realVisible"
+    :class="rootClass"
+    :style="rootStyle"
+    :aria-role="'button'"
+    :aria-label="'关闭'"
+    @click.stop="handleClick"
+    @touchmove.stop.prevent="noop"
+    @transitionend="onTransitionEnd"
+  >
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Overlay - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 overlay：
+ *  - visible 进入/离开时切 t-fade-enter / t-fade-leave-to
+ *  - 离场动画结束后才真正卸载（realVisible），并 emit leaved
+ *  - 点击触发 click({ visible: !visible })
+ *  - preventScrollThrough 时阻止 touchmove 冒泡（锁滚动）
+ *
+ * 实现差异：
+ *  - 不使用 disable-scroll（小程序专属）
+ *  - usingCustomNavbar 仅作语义保留
+ */
+import { computed, ref, watch } from 'vue';
+import { overlayVariants } from './t-overlay.variants';
+
+const props = defineProps({
+  backgroundColor: { type: String, default: '' },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  duration: { type: Number, default: 300 },
+  preventScrollThrough: { type: Boolean, default: true },
+  usingCustomNavbar: { type: Boolean, default: false },
+  visible: { type: Boolean, default: false },
+  zIndex: { type: Number, default: 11000 },
+});
+
+const emit = defineEmits(['click', 'leaved']);
+
+/** 真实渲染开关：进入立刻 true、离开等动画结束后才置 false */
+const realVisible = ref<boolean>(props.visible);
+/** 当前动画阶段：enter / active / leave */
+const animState = ref<string>(props.visible ? 'active' : 'enter');
+
+watch(
+  () => props.visible,
+  (v: boolean) => {
+    if (v) {
+      // 进入：先挂载 + enter（透明），下一帧切 active
+      realVisible.value = true;
+      animState.value = 'enter';
+      setTimeout(() => {
+        animState.value = 'active';
+      }, 16);
+    } else {
+      // 离开：切 leave，等 transitionend 卸载
+      animState.value = 'leave';
+    }
+  },
+);
+
+const rootClass = computed<string>(() => {
+  const cls = overlayVariants({ state: animState.value });
+  return props.customClass.length > 0 ? cls + ' ' + props.customClass : cls;
+});
+
+const rootStyle = computed<string>(() => {
+  const parts: string[] = [];
+  parts.push('--td-overlay-transition-duration:' + props.duration.toString() + 'ms');
+  parts.push('z-index:' + props.zIndex.toString());
+  if (props.backgroundColor.length > 0) {
+    parts.push('background-color:' + props.backgroundColor);
+  }
+  if (props.customStyle.length > 0) {
+    parts.push(props.customStyle);
+  }
+  return parts.join(';');
+});
+
+function handleClick() {
+  emit('click', { visible: !props.visible });
+}
+
+function onTransitionEnd() {
+  if (animState.value === 'leave') {
+    realVisible.value = false;
+    emit('leaved');
+  }
+}
+
+function noop() {
+  // 仅用于 touchmove.stop.prevent 占位
+}
+</script>
+
+<style lang="less">
+@import './t-overlay.theme.less';
+</style>

@@ -1,0 +1,52 @@
+<template>
+  <view :class="rootClass" :style="props.customStyle">
+    <view class="t-fab__button" @click="onClick">
+      <slot name="icon">
+        <image
+          v-if="props.icon.length > 0"
+          class="t-fab__icon"
+          :src="props.icon"
+          mode="aspectFit"
+        />
+      </slot>
+      <text v-if="props.text.length > 0" class="t-fab__text">{{ props.text }}</text>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Fab - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/fab：
+ *  - icon: string（图片 URL；uts 端不支持 Object 透传）
+ *  - text: 文本内容
+ *  - 拖拽功能（draggable / yBounds）暂未实现，仅保留 prop 声明
+ *  - 位置控制通过外部 customStyle 传入（默认 right:16px;bottom:32px）
+ */
+import { computed } from 'vue';
+import { fabVariants } from './t-fab.variants';
+import type { FabDraggable } from './t-fab.types';
+
+const props = defineProps({
+  draggable: { type: [Boolean, String] as PropType<FabDraggable>, default: false },
+  icon: { type: String, default: '' },
+  text: { type: String, default: '' },
+  usingCustomNavbar: { type: Boolean, default: false },
+  yBounds: { type: Array as PropType<any[] | null>, default: null },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: 'right: 16px; bottom: 32px;' },
+});
+
+const emit = defineEmits(['click']);
+
+const rootClass = computed(() => fabVariants({ class: props.customClass }));
+
+function onClick(event: UniEvent) {
+  emit('click', event);
+}
+</script>
+
+<style lang="less">
+@import './t-fab.theme.less';
+</style>

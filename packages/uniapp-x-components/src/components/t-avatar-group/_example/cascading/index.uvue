@@ -1,0 +1,29 @@
+<template>
+  <view class="demo-block">
+    <text class="demo-section-desc">left-up（左侧在上）</text>
+    <t-avatar-group cascading="left-up">
+      <t-avatar image="https://tdesign.gtimg.com/site/avatar.jpg" ></t-avatar>
+      <t-avatar image="https://tdesign.gtimg.com/site/avatar.jpg" ></t-avatar>
+      <t-avatar image="https://tdesign.gtimg.com/site/avatar.jpg" ></t-avatar>
+    </t-avatar-group>
+
+    <text class="demo-section-desc">right-up（右侧在上）</text>
+    <t-avatar-group cascading="right-up">
+      <t-avatar image="https://tdesign.gtimg.com/site/avatar.jpg" ></t-avatar>
+      <t-avatar image="https://tdesign.gtimg.com/site/avatar.jpg" ></t-avatar>
+      <t-avatar image="https://tdesign.gtimg.com/site/avatar.jpg" ></t-avatar>
+    </t-avatar-group>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-section-desc {
+  display: block;
+  margin: 12px 0 8px;
+  font-size: 12px;
+  color: #888888;
+}
+</style>

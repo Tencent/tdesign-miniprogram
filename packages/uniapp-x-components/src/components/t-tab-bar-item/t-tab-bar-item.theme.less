@@ -1,0 +1,122 @@
+/**
+ * TabBarItem 基础样式
+ *
+ * 与 @tdesign/uniapp 的 tab-bar-item.less 视觉对齐
+ */
+
+@td-tab-bar-height: var(--td-tab-bar-height, 40px);
+@td-tab-bar-color: var(--td-tab-bar-color, rgba(0, 0, 0, 0.9));
+@td-tab-bar-bg-color: var(--td-tab-bar-bg-color, #ffffff);
+@td-tab-bar-border-color: var(--td-tab-bar-border-color, #e7e7e7);
+@td-tab-bar-active-color: var(--td-tab-bar-active-color, #0052d9);
+@td-tab-bar-active-bg: var(--td-tab-bar-active-bg, rgba(0, 82, 217, 0.1));
+@td-tab-bar-spread-shadow: var(--td-tab-bar-spread-shadow, 0 8px 24px rgba(0, 0, 0, 0.12));
+@td-tab-bar-spread-border-color: var(--td-tab-bar-spread-border-color, #e7e7e7);
+
+.t-tab-bar-item {
+  flex: 1;
+  height: @td-tab-bar-height;
+  box-sizing: border-box;
+  position: relative;
+  margin: 8px 0;
+  padding: 0 12px;
+
+  &--split + &--split {
+    border-left: 1px solid @td-tab-bar-border-color;
+  }
+
+  &--crowded {
+    padding: 0 8px;
+  }
+
+  &--round {
+    border-radius: 999px;
+  }
+
+  &__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: @td-tab-bar-color;
+
+    &--checked {
+      .t-tab-bar-item__text,
+      .t-tab-bar-item__icon {
+        color: @td-tab-bar-active-color;
+        font-weight: 600;
+      }
+    }
+
+    &--tag {
+      border-radius: 999px;
+    }
+
+    &--tag&--checked {
+      background-color: @td-tab-bar-active-bg;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon:empty {
+    display: none;
+  }
+
+  &__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 22px;
+
+    &--small {
+      font-size: 10px;
+      line-height: 14px;
+    }
+  }
+
+  &__icon-menu {
+    margin-right: 4px;
+  }
+
+  &__spread {
+    position: absolute;
+    top: 0;
+    left: 7%;
+    width: 86%;
+    background-color: @td-tab-bar-bg-color;
+    transform: translate3d(0, calc(-100% - 16px), 0);
+    z-index: 1;
+    border-radius: 6px;
+    color: @td-tab-bar-color;
+    box-shadow: @td-tab-bar-spread-shadow;
+
+    &-item {
+      width: 100%;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      flex-direction: column;
+
+      &-split {
+        background-color: @td-tab-bar-spread-border-color;
+        width: 80%;
+        height: 1px;
+      }
+
+      &-text {
+        padding-top: 12px;
+      }
+    }
+  }
+}

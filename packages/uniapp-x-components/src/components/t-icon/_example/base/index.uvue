@@ -1,0 +1,23 @@
+<template>
+  <view class="demo-block">
+    <t-icon name="check" ></t-icon>
+    <t-icon name="close" ></t-icon>
+    <t-icon name="info-circle" ></t-icon>
+    <t-icon name="error-circle" ></t-icon>
+    <t-icon name="help-circle" ></t-icon>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 16px;
+}
+.demo-block > * {
+  margin-right: 16px;
+  margin-bottom: 12px;
+}
+</style>

@@ -1,0 +1,85 @@
+<template>
+  <view :class="rootClass" :style="rootStyle" @click="onClick">
+    <view class="t-tag__text">
+      <slot>
+        <text v-if="props.content.length > 0">{{ props.content }}</text>
+      </slot>
+    </view>
+    <view
+      v-if="props.closable && !props.disabled"
+      class="t-tag__close"
+      @click.stop="onClose"
+    >
+      <text>×</text>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Tag - uni-app x 实现
+ *
+ * 行为契约与 tag.vue 镜像保持一致；类型从 t-tag.types.ts 同源引入。
+ *
+ * 简化点：
+ *  - 关闭按钮使用 unicode "×" 而非 t-icon（避免对 icon 字体的强依赖，包体更小）；
+ *  - 不支持 icon prop（tag.vue 中通过 t-icon 渲染图标）；如需图标可使用 default slot；
+ *  - 禁用态屏蔽 click / close 事件。
+ */
+import { computed } from 'vue';
+import { tagVariants } from './t-tag.variants';
+import type { TagTheme, TagVariant, TagShape, TagSize } from './t-tag.types';
+
+const props = defineProps({
+  theme: { type: String as PropType<TagTheme>, default: 'default' },
+  variant: { type: String as PropType<TagVariant>, default: 'dark' },
+  shape: { type: String as PropType<TagShape>, default: 'square' },
+  size: { type: String as PropType<TagSize>, default: 'medium' },
+  disabled: { type: Boolean, default: false },
+  closable: { type: Boolean, default: false },
+  maxWidth: { type: [String, Number], default: '' },
+  content: { type: String, default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['click', 'close']);
+
+function addUnit(value: string | number): string {
+  if (value === '' || value === null) return '';
+  const v = String(value);
+  if (/^-?\d+(\.\d+)?$/.test(v)) return v + 'px';
+  return v;
+}
+
+const rootClass = computed(() =>
+  tagVariants({
+    theme: props.theme,
+    variant: props.variant,
+    shape: props.shape,
+    size: props.size,
+    closable: props.closable,
+    disabled: props.disabled,
+    class: props.customClass,
+  }),
+);
+
+const rootStyle = computed<string>(() => {
+  const w = addUnit(props.maxWidth as any);
+  if (w.length > 0) return 'max-width:' + w;
+  return '';
+});
+
+function onClick(event: UniMouseEvent) {
+  if (props.disabled) return;
+  emit('click', event);
+}
+
+function onClose(event: UniMouseEvent) {
+  if (props.disabled) return;
+  emit('close', event);
+}
+</script>
+
+<style lang="less">
+@import './t-tag.theme.less';
+</style>

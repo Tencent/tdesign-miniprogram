@@ -1,0 +1,14 @@
+<template>
+  <view class="demo-block">
+    <t-empty
+      image="https://tdesign.gtimg.com/site/empty/network.png"
+      description="网络异常，请稍后重试"
+    />
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 24px 16px;
+}
+</style>

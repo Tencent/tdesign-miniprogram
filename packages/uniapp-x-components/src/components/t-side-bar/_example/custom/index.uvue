@@ -1,0 +1,42 @@
+<template>
+  <view class="side-bar-wrapper">
+    <t-side-bar :value="value" custom-class="custom-side-bar" @change="onChange">
+      <t-side-bar-item
+        v-for="(item, index) in list"
+        :key="index"
+        :value="item.value"
+        :label="item.label"
+        :badge-props="item.badgeProps"
+      />
+    </t-side-bar>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const value = ref<string>('0');
+const list = [
+  { value: '0', label: '消息', badgeProps: { count: 16 } },
+  { value: '1', label: '通知', badgeProps: { dot: true } },
+  { value: '2', label: '订单', badgeProps: { count: 'New' } },
+  { value: '3', label: '我的', badgeProps: {} as { dot?: boolean; count?: number | string } },
+];
+
+function onChange(e: { value: string; label: string }) {
+  value.value = e.value;
+}
+</script>
+
+<style>
+.side-bar-wrapper {
+  display: flex;
+  flex-direction: row;
+  height: 240px;
+}
+.custom-side-bar {
+  --td-side-bar-bg-color: #f9f9f9;
+  --td-side-bar-active-bg: #ffffff;
+  --td-side-bar-active-color: #d54941;
+}
+</style>

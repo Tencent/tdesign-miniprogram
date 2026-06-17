@@ -1,0 +1,21 @@
+<template>
+  <view class="demo-block">
+    <t-collapse v-model:value="value" :expand-mutex="true">
+      <t-collapse-panel value="1" header="手风琴 - 标题1" content="同一时刻只展开一个面板。" ></t-collapse-panel>
+      <t-collapse-panel value="2" header="手风琴 - 标题2" content="点击其它面板时，当前面板自动收起。" ></t-collapse-panel>
+      <t-collapse-panel value="3" header="手风琴 - 标题3" content="可通过 expandMutex 开启互斥模式。" ></t-collapse-panel>
+    </t-collapse>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const value = ref<(string | number)[]>(['1']);
+</script>
+
+<style>
+.demo-block {
+  background-color: #ffffff;
+}
+</style>

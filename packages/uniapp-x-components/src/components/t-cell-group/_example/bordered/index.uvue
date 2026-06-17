@@ -1,0 +1,14 @@
+<template>
+  <view class="demo-block">
+    <t-cell-group title="带边框" :bordered="true">
+      <t-cell title="单元格1" ></t-cell>
+      <t-cell title="单元格2" ></t-cell>
+    </t-cell-group>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  background-color: #ffffff;
+}
+</style>

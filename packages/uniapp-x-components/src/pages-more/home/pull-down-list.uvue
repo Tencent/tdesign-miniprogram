@@ -1,0 +1,148 @@
+<template>
+  <!--
+    PullDownList —— uniapp-x 版折叠分组列表
+    -------------------------------------------------------
+    与 packages/tdesign-uniapp/example/src/components/pull-down-list/index.vue
+    保持视觉/交互一致：
+      · 顶部行：分组名 + 折叠箭头图标
+      · 点击切换子项展示，展开时分组名/图标半透明（视觉降权）
+      · 子项最后一项不画底分割线
+    uniapp-x 的渲染层不支持 `transition: height`，因此简化为 v-show 直接显隐，
+    保留语义可访问性（aria-expanded / aria-hidden）。
+  -->
+  <view :class="rootClass">
+    <view
+      v-if="props.childArr.length > 0"
+      class="pulldown__head"
+      :aria-expanded="String(open)"
+      @click="onToggle"
+    >
+      <text class="pulldown__name">{{ props.name }}</text>
+      <t-icon
+        :name="open ? 'chevron-up' : props.icon"
+        size="48rpx"
+        color="#A6A6A6"
+      />
+    </view>
+
+    <view v-show="open" class="pulldown__body" :aria-hidden="String(!open)">
+      <view
+        v-for="(item, idx) in props.childArr"
+        :key="item.name"
+        class="pulldown__child"
+        :class="idx === props.childArr.length - 1 ? 'pulldown__child--last' : ''"
+        @click="onChildClick(item)"
+      >
+        <view class="pulldown__child-text">
+          <text class="pulldown__child-en">{{ item.name }}</text>
+          <text class="pulldown__child-cn"> {{ item.label }}</text>
+        </view>
+        <t-icon
+          name="chevron-right"
+          size="32rpx"
+          color="#BBBBBB"
+        />
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * `t-icon` 在目标 HBuilderX 项目里通过 easycom 自动注册（`uni_modules/<id>/components/t-icon`），
+ * 因此模板里直接写 `<t-icon />` 即可，无需 import 组件本体。
+ * 类型从 home-data 同源引入，保证与配置数据强类型对齐。
+ */
+import { computed, ref } from 'vue';
+import type { HomeChild } from './home-data';
+
+const props = defineProps({
+  name: { type: String, default: '' },
+  icon: { type: String, default: 'chevron-down' },
+  childArr: { type: Array as PropType<HomeChild[]>, default: (): HomeChild[] => [] as HomeChild[] },
+  defaultOpen: { type: Boolean, default: false },
+});
+
+const emit = defineEmits(['click']);
+
+const open = ref<boolean>(props.defaultOpen);
+
+const rootClass = computed(() => {
+  return open.value ? 'pulldown pulldown--actived' : 'pulldown';
+});
+
+function onToggle() {
+  open.value = !open.value;
+}
+
+function onChildClick(item: HomeChild) {
+  emit('click', item);
+}
+</script>
+
+<style lang="less">
+.pulldown {
+  background-color: #ffffff;
+  border-radius: 8rpx;
+  margin-bottom: 24rpx;
+  overflow: hidden;
+}
+
+.pulldown__head {
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+}
+
+.pulldown__name {
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.pulldown--actived .pulldown__name {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.pulldown__body {
+  padding-left: 32rpx;
+  padding-right: 32rpx;
+}
+
+.pulldown__child {
+  height: 112rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-width: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+.pulldown__child--last {
+  border-bottom-color: transparent;
+}
+
+.pulldown__child-text {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.pulldown__child-en {
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.pulldown__child-cn {
+  font-size: 32rpx;
+  line-height: 48rpx;
+  color: rgba(0, 0, 0, 0.6);
+}
+</style>

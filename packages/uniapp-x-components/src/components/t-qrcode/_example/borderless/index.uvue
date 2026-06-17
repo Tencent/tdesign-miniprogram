@@ -1,0 +1,19 @@
+<template>
+  <view class="demo-block">
+    <t-qrcode
+      value="https://tdesign.tencent.com/"
+      image-url="https://tdesign.gtimg.com/site/qrcode-demo.png"
+      :size="160"
+      :borderless="true"
+    />
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 24px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>

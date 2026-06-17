@@ -1,0 +1,17 @@
+<template>
+  <view class="demo-block">
+    <t-steps :current="2" theme="dot">
+      <t-step-item title="步骤1" content="提示文案" ></t-step-item>
+      <t-step-item title="步骤2" content="提示文案" ></t-step-item>
+      <t-step-item title="步骤3" content="提示文案" ></t-step-item>
+      <t-step-item title="步骤4" content="提示文案" ></t-step-item>
+    </t-steps>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 24px 16px;
+  background-color: #ffffff;
+}
+</style>

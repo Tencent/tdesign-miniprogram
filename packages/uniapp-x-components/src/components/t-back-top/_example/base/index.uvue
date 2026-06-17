@@ -1,0 +1,28 @@
+<template>
+  <view class="demo">
+    <t-back-top
+      :theme="backTopTheme"
+      :text="backTopText"
+      :scroll-top="scrollTop"
+      @to-top="onToTop"
+    />
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const backTopTheme = ref('round');
+const backTopText = ref('顶部');
+const scrollTop = ref(300);
+
+function onToTop() {
+  // 已滚动到顶部
+}
+</script>
+
+<style>
+.demo {
+  height: 600px;
+}
+</style>

@@ -1,0 +1,76 @@
+/**
+ * QRCode 基础样式
+ */
+
+@td-qrcode-padding: var(--td-qrcode-padding, 12px);
+@td-qrcode-border-radius: var(--td-qrcode-border-radius, 6px);
+@td-qrcode-border-color: var(--td-qrcode-border-color, #e7e7e7);
+@td-qrcode-bg-color: var(--td-qrcode-bg-color, #ffffff);
+@td-qrcode-mask-bg-color: var(--td-qrcode-mask-bg-color, rgba(255, 255, 255, 0.96));
+@td-qrcode-mask-text-color: var(--td-qrcode-mask-text-color, rgba(0, 0, 0, 0.9));
+
+.t-qrcode {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  background-color: @td-qrcode-bg-color;
+  padding: @td-qrcode-padding;
+  border-radius: @td-qrcode-border-radius;
+  border: 1px solid @td-qrcode-border-color;
+
+  &--borderless {
+    border-color: transparent;
+  }
+
+  &__inner {
+    position: relative;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__placeholder {
+    background-color: #f3f3f3;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(0, 0, 0, 0.4);
+    font-size: 12px;
+  }
+
+  &__icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: @td-qrcode-mask-bg-color;
+    color: @td-qrcode-mask-text-color;
+    text-align: center;
+    border-radius: @td-qrcode-border-radius;
+    font-size: 14px;
+  }
+
+  &__refresh {
+    margin-top: 8px;
+    color: #0052d9;
+    text-decoration: underline;
+    font-size: 14px;
+  }
+}

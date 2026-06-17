@@ -1,0 +1,52 @@
+<template>
+  <scroll-view class="demo-page" :scroll-y="true">
+    <view class="demo-header">
+      <text class="demo-title">NoticeBar 公告栏</text>
+      <text class="demo-desc">用于展示一组消息通知，支持 4 种主题、跑马灯滚动与纵向轮播。</text>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">基础用法</text>
+      <base-demo></base-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">主题</text>
+      <theme-demo></theme-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">横向跑马灯</text>
+      <marquee-demo></marquee-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">纵向轮播</text>
+      <vertical-demo></vertical-demo>
+    </view>
+  </scroll-view>
+</template>
+
+<script>
+import BaseDemo from './base/index.uvue';
+import ThemeDemo from './theme/index.uvue';
+import MarqueeDemo from './marquee/index.uvue';
+import VerticalDemo from './vertical/index.uvue';
+export default {
+  components: {
+    BaseDemo,
+    ThemeDemo,
+    MarqueeDemo,
+    VerticalDemo,
+  },
+};
+</script>
+
+<style>
+.demo-page { flex: 1; background-color: #f5f5f5; }
+.demo-header { padding: 24px 16px 16px; background-color: #ffffff; }
+.demo-title { font-size: 20px; font-weight: bold; color: #181818; margin-bottom: 8px; }
+.demo-desc { font-size: 14px; color: #888888; line-height: 22px; }
+.demo-section { margin-top: 12px; background-color: #ffffff; padding: 8px 16px 16px; }
+.demo-section-title { font-size: 16px; font-weight: bold; color: #181818; padding: 12px 0 8px; }
+</style>

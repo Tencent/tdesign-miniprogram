@@ -1,0 +1,16 @@
+<template>
+  <view>
+    <t-tabs default-value="0" :space-evenly="false">
+      <t-tab-panel
+        v-for="i in [0, 1, 2, 3, 4, 5, 6, 7]"
+        :key="i"
+        label="选项"
+        :value="i"
+      />
+    </t-tabs>
+  </view>
+</template>
+
+<script setup lang="uts"></script>
+
+<style></style>

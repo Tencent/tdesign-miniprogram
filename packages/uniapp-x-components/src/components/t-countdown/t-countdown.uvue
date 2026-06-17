@@ -1,0 +1,196 @@
+<template>
+  <view :class="rootClass">
+    <template v-if="props.content === 'default'">
+      <template v-for="(seg, index) in segments" :key="index">
+        <view v-if="seg.kind === 'item'" class="t-count-down__item">
+          <text>{{ seg.text }}</text>
+        </view>
+        <view v-else-if="seg.kind === 'split-dot'" class="t-count-down__split t-count-down__split--dot">
+          <text>{{ seg.text }}</text>
+        </view>
+        <view v-else class="t-count-down__split t-count-down__split--text">
+          <text>{{ seg.text }}</text>
+        </view>
+      </template>
+    </template>
+    <view v-else>
+      <slot>
+        <text>{{ props.content }}</text>
+      </slot>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * CountDown - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/count-down：
+ *  - format: DD-日, HH-时, mm-分, ss-秒, SSS-毫秒
+ *  - 支持 splitWithUnit（汉字单位分割）/ 风格 default|round|square
+ *  - autoStart=true 时挂载即启动；通过 expose 暴露 start/pause/reset
+ */
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { countdownVariants } from './t-countdown.variants';
+import type { CountDownTheme, CountDownSize } from './t-countdown.types';
+
+type Segment = { kind: 'item' | 'split-dot' | 'split-text'; text: string };
+
+const props = defineProps({
+  autoStart: { type: Boolean, default: true },
+  content: { type: String, default: 'default' },
+  format: { type: String, default: 'HH:mm:ss' },
+  millisecond: { type: Boolean, default: false },
+  size: { type: String as PropType<CountDownSize>, default: 'medium' },
+  splitWithUnit: { type: Boolean, default: false },
+  theme: { type: String as PropType<CountDownTheme>, default: 'default' },
+  time: { type: Number, default: 0, required: true },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change', 'finish']);
+
+const remaining = ref(0);
+let timer: number = -1;
+let endTimestamp = 0;
+
+function clearTimer() {
+  if (timer !== -1) {
+    clearInterval(timer);
+    timer = -1;
+  }
+}
+
+function tick() {
+  const now = Date.now();
+  let diff = endTimestamp - now;
+  if (diff <= 0) {
+    diff = 0;
+    remaining.value = 0;
+    emitChange(0);
+    clearTimer();
+    emit('finish');
+    return;
+  }
+  remaining.value = diff;
+  emitChange(diff);
+}
+
+function emitChange(ms: number) {
+  const days = Math.floor(ms / 86400000);
+  const hours = Math.floor((ms % 86400000) / 3600000);
+  const minutes = Math.floor((ms % 3600000) / 60000);
+  const seconds = Math.floor((ms % 60000) / 1000);
+  const milliseconds = ms % 1000;
+  emit('change', { days, hours, minutes, seconds, milliseconds });
+}
+
+function start() {
+  clearTimer();
+  endTimestamp = Date.now() + (remaining.value > 0 ? remaining.value : props.time);
+  tick();
+  const interval = props.millisecond ? 50 : 1000;
+  timer = setInterval(() => tick(), interval) as unknown as number;
+}
+
+function pause() {
+  clearTimer();
+}
+
+function reset() {
+  clearTimer();
+  remaining.value = props.time;
+  if (props.autoStart) {
+    start();
+  }
+}
+
+watch(() => props.time, () => {
+  remaining.value = props.time;
+  if (props.autoStart) start();
+});
+
+onMounted(() => {
+  remaining.value = props.time;
+  if (props.autoStart) start();
+});
+
+onBeforeUnmount(() => clearTimer());
+
+defineExpose({ start, pause, reset });
+
+function pad2(n: number): string {
+  if (n < 10) return '0' + String(n);
+  return String(n);
+}
+
+function pad3(n: number): string {
+  if (n < 10) return '00' + String(n);
+  if (n < 100) return '0' + String(n);
+  return String(n);
+}
+
+const rootClass = computed(() =>
+  countdownVariants({
+    theme: props.theme,
+    size: props.size,
+    class: props.customClass,
+  }),
+);
+
+/**
+ * 解析 format 并生成段：
+ *  - DD/HH/mm/ss/SSS 视为时间项（item）
+ *  - 单字符 ":" / "-" 等视为 split-dot
+ *  - 汉字（日/时/分/秒/毫秒）视为 split-text
+ */
+const segments = computed<Segment[]>(() => {
+  const ms = remaining.value;
+  const days = Math.floor(ms / 86400000);
+  const hours = Math.floor((ms % 86400000) / 3600000);
+  const minutes = Math.floor((ms % 3600000) / 60000);
+  const seconds = Math.floor((ms % 60000) / 1000);
+  const milliseconds = ms % 1000;
+
+  // 简化处理：根据 format 中是否包含 DD/HH/mm/ss/SSS 决定输出
+  const fmt = props.format;
+  const out: Segment[] = [];
+
+  // 自定义解析：扫描 fmt
+  let i = 0;
+  while (i < fmt.length) {
+    if (i + 2 < fmt.length && fmt.substring(i, i + 3) === 'SSS') {
+      out.push({ kind: 'item', text: pad3(milliseconds) });
+      i += 3;
+    } else if (i + 1 < fmt.length && fmt.substring(i, i + 2) === 'DD') {
+      out.push({ kind: 'item', text: pad2(days) });
+      i += 2;
+    } else if (i + 1 < fmt.length && fmt.substring(i, i + 2) === 'HH') {
+      out.push({ kind: 'item', text: pad2(hours) });
+      i += 2;
+    } else if (i + 1 < fmt.length && fmt.substring(i, i + 2) === 'mm') {
+      out.push({ kind: 'item', text: pad2(minutes) });
+      i += 2;
+    } else if (i + 1 < fmt.length && fmt.substring(i, i + 2) === 'ss') {
+      out.push({ kind: 'item', text: pad2(seconds) });
+      i += 2;
+    } else {
+      const ch = fmt.charAt(i);
+      // 中文/字母 视为 text；其他符号视为 dot
+      const code = ch.charCodeAt(0);
+      const isText = code > 127; // 简单判定汉字
+      if (props.splitWithUnit || isText) {
+        out.push({ kind: 'split-text', text: ch });
+      } else {
+        out.push({ kind: 'split-dot', text: ch });
+      }
+      i += 1;
+    }
+  }
+  return out;
+});
+</script>
+
+<style lang="less">
+@import './t-countdown.theme.less';
+</style>

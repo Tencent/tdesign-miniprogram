@@ -1,0 +1,104 @@
+<template>
+  <scroll-view class="demo-page" :scroll-y="true">
+    <view class="demo-header">
+      <text class="demo-title">Tabs 选项卡</text>
+      <text class="demo-desc">用于在不同页面或者内容之间切换。</text>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">基础选项卡</text>
+      <base-demo></base-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">主题</text>
+      <theme-demo></theme-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">滚动选项卡</text>
+      <scroll-demo></scroll-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">尺寸</text>
+      <size-demo></size-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">状态</text>
+      <status-demo></status-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">带徽标</text>
+      <with-badge-demo></with-badge-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">带图标</text>
+      <with-icon-demo></with-icon-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">带内容</text>
+      <with-content-demo></with-content-demo>
+    </view>
+  </scroll-view>
+</template>
+
+<script>
+import BaseDemo from './base/index.uvue';
+import ThemeDemo from './theme/index.uvue';
+import ScrollDemo from './scroll/index.uvue';
+import SizeDemo from './size/index.uvue';
+import StatusDemo from './status/index.uvue';
+import WithBadgeDemo from './with-badge/index.uvue';
+import WithIconDemo from './with-icon/index.uvue';
+import WithContentDemo from './with-content/index.uvue';
+export default {
+  components: {
+    BaseDemo,
+    ThemeDemo,
+    ScrollDemo,
+    SizeDemo,
+    StatusDemo,
+    WithBadgeDemo,
+    WithIconDemo,
+    WithContentDemo,
+  },
+};
+</script>
+
+<style>
+.demo-page {
+  flex: 1;
+  background-color: #f5f5f5;
+}
+.demo-header {
+  padding: 24px 16px 16px;
+  background-color: #ffffff;
+}
+.demo-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #181818;
+  margin-bottom: 8px;
+}
+.demo-desc {
+  font-size: 14px;
+  color: #888888;
+  line-height: 22px;
+}
+.demo-section {
+  margin-top: 12px;
+  background-color: #ffffff;
+  padding: 12px 16px;
+}
+.demo-section-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #181818;
+  padding: 4px 0 12px;
+}
+</style>

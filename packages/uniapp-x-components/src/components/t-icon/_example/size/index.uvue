@@ -1,0 +1,22 @@
+<template>
+  <view class="demo-block">
+    <t-icon name="check" size="20" ></t-icon>
+    <t-icon name="check" size="28" ></t-icon>
+    <t-icon name="check" size="36" ></t-icon>
+    <t-icon name="check" size="48rpx" ></t-icon>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 16px;
+}
+.demo-block > * {
+  margin-right: 16px;
+  margin-bottom: 12px;
+}
+</style>

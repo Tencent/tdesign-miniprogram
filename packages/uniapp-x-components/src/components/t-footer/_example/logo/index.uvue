@@ -1,0 +1,26 @@
+<template>
+  <view class="demo-block">
+    <t-footer
+      :logo="logo"
+      :links="links"
+      text="Copyright © 2019-2024 TDesign. All Rights Reserved"
+    />
+  </view>
+</template>
+
+<script setup lang="uts">
+const logo = {
+  icon: 'https://tdesign.gtimg.com/site/tdesign-logo.png',
+  title: 'TDesign',
+};
+const links = [
+  { name: '帮助', url: '/pages/help/help' },
+  { name: '反馈', url: '/pages/feedback/feedback' },
+];
+</script>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+</style>

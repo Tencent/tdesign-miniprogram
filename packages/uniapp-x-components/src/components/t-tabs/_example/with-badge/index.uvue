@@ -1,0 +1,13 @@
+<template>
+  <view>
+    <t-tabs default-value="0">
+      <t-tab-panel label="选项" value="0" :badge-props="{ dot: true }" />
+      <t-tab-panel label="选项" value="1" :badge-props="{ count: 8 }" />
+      <t-tab-panel label="选项" value="2" />
+    </t-tabs>
+  </view>
+</template>
+
+<script setup lang="uts"></script>
+
+<style></style>

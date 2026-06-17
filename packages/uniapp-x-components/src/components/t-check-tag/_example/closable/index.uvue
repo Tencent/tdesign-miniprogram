@@ -1,0 +1,34 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-check-tag content="可关闭" :closable="true" v-model:checked="value1" @close="onClose" ></t-check-tag>
+      <t-check-tag content="禁用" :disabled="true" ></t-check-tag>
+      <t-check-tag content="禁用选中" :disabled="true" :default-checked="true" ></t-check-tag>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const value1 = ref(true);
+function onClose() {
+  uni.showToast({ title: '关闭标签', icon: 'none' });
+}
+</script>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-row > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

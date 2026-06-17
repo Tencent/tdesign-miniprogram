@@ -1,0 +1,111 @@
+/**
+ * ActionSheet 样式
+ *
+ * 对齐 @tdesign/uniapp/action-sheet 视觉：
+ *  - 从底部弹出（由外层 t-popup placement="bottom" 提供）
+ *  - 顶部 description 描述文字
+ *  - list 模式：纵向条目列表，分隔线
+ *  - grid 模式：宫格布局，图标 + 标题
+ *  - 底部 cancel 按钮（带间隔条）
+ */
+
+.t-action-sheet {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 顶部描述 */
+.t-action-sheet__description {
+  padding: 32rpx;
+  text-align: center;
+  font-size: 24rpx;
+  line-height: 36rpx;
+  color: var(--td-action-sheet-description-color, rgba(0, 0, 0, 0.4));
+}
+
+/* 列表模式 */
+.t-action-sheet__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.t-action-sheet__item {
+  height: 112rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 32rpx;
+  color: var(--td-action-sheet-item-color, rgba(0, 0, 0, 0.9));
+  border-bottom-width: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: var(--td-action-sheet-divider-color, #e7e7e7);
+}
+
+.t-action-sheet--align-center .t-action-sheet__item {
+  justify-content: center;
+}
+.t-action-sheet--align-left .t-action-sheet__item {
+  justify-content: flex-start;
+  padding-left: 32rpx;
+}
+
+.t-action-sheet__item--disabled {
+  color: var(--td-action-sheet-item-disabled-color, rgba(0, 0, 0, 0.26));
+}
+
+.t-action-sheet__item:active {
+  background-color: var(--td-action-sheet-hover-color, #f3f3f3);
+}
+
+/* 宫格模式 */
+.t-action-sheet__grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.t-action-sheet__grid-item {
+  width: 25%;
+  padding: 24rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.t-action-sheet__grid-item-icon {
+  width: 56rpx;
+  height: 56rpx;
+  font-size: 56rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--td-action-sheet-icon-color, rgba(0, 0, 0, 0.9));
+}
+
+.t-action-sheet__grid-item-label {
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: var(--td-action-sheet-item-color, rgba(0, 0, 0, 0.9));
+}
+
+/* 底部取消按钮 */
+.t-action-sheet__gap {
+  height: 16rpx;
+  background-color: var(--td-action-sheet-gap-color, #f5f5f5);
+}
+
+.t-action-sheet__cancel {
+  height: 112rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: var(--td-action-sheet-cancel-color, rgba(0, 0, 0, 0.9));
+}
+
+.t-action-sheet__cancel:active {
+  background-color: var(--td-action-sheet-hover-color, #f3f3f3);
+}

@@ -1,0 +1,29 @@
+<template>
+  <view>
+    <t-row :gutter="16">
+      <t-col :span="12"><view class="dark">col-12</view></t-col>
+      <t-col :span="12"><view class="light">col-12</view></t-col>
+    </t-row>
+  </view>
+</template>
+
+<script setup lang="uts"></script>
+
+<style>
+.dark {
+  background-color: #0052d9;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 48px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.light {
+  background-color: #366ef4;
+  color: #ffffff;
+  font-size: 14px;
+  line-height: 48px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+</style>

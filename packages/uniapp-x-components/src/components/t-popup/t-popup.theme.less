@@ -1,0 +1,98 @@
+/**
+ * Popup 主题样式
+ *
+ * 1:1 对齐 @tdesign/uniapp/popup/popup.less：
+ *  - 5 个 placement 的位置 + 圆角
+ *  - fade 动画进出场（top/bottom/left/right 平移、center 缩放+透明度）
+ *  - 安全区适配（bottom 方向）
+ *
+ * uvue 差异：
+ *  - 使用具名 css 变量（--td-popup-*），保持与 web/小程序一致的 token API
+ *  - `transition` 走 .t-popup 自身规则，时长由 inline style --td-popup-transition-duration 注入
+ */
+
+.t-popup {
+  position: fixed;
+  z-index: 11500;
+  background-color: var(--td-popup-bg-color, #ffffff);
+  /* 默认 240ms，inline style 可覆盖 --td-popup-transition-duration */
+  transition-property: transform, opacity;
+  transition-duration: var(--td-popup-transition-duration, 240ms);
+  transition-timing-function: ease;
+}
+
+.t-popup__content {
+  position: relative;
+  height: 100%;
+  z-index: 1;
+}
+
+.t-popup__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 20rpx;
+  line-height: 1;
+  color: var(--td-popup-close-btn-color, rgba(0, 0, 0, 0.9));
+  font-size: 48rpx;
+}
+
+/* 五种 placement */
+.t-popup--top {
+  top: 0;
+  left: 0;
+  width: 100%;
+  border-bottom-left-radius: var(--td-popup-border-radius, 24rpx);
+  border-bottom-right-radius: var(--td-popup-border-radius, 24rpx);
+}
+
+.t-popup--bottom {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top-left-radius: var(--td-popup-border-radius, 24rpx);
+  border-top-right-radius: var(--td-popup-border-radius, 24rpx);
+  /* iOS 安全区底边距 */
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.t-popup--left {
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.t-popup--right {
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+
+.t-popup--center {
+  top: 50%;
+  left: 50%;
+  /* center 用 translate(-50%, -50%) 居中 */
+  transform: translate(-50%, -50%);
+  border-radius: var(--td-popup-border-radius, 24rpx);
+}
+
+/* fade 动画：进入前/离开后 */
+.t-popup.t-fade-enter,
+.t-popup.t-fade-leave-to {
+  &.t-popup--top {
+    transform: translateY(-100%);
+  }
+  &.t-popup--bottom {
+    transform: translateY(100%);
+  }
+  &.t-popup--left {
+    transform: translateX(-100%);
+  }
+  &.t-popup--right {
+    transform: translateX(100%);
+  }
+  &.t-popup--center {
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0;
+  }
+}

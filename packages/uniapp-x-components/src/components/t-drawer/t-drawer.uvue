@@ -1,0 +1,150 @@
+<template>
+  <!--
+    Drawer - uni-app x 实现
+    -------------------------------------------------------
+    DOM 结构 1:1 对齐 @tdesign/uniapp/drawer/drawer.vue：
+      <view>
+        <t-popup placement="left|right" ...>
+          <view class="t-drawer">
+            <slot name="title" />
+            <text v-if="title" class="t-drawer__title">{{ title }}</text>
+            <scroll-view class="t-drawer__sidebar">
+              <view class="t-drawer__sidebar-item" v-for="...">
+                <view class="t-drawer__sidebar-item-icon"><t-icon /></view>
+                <view class="t-drawer__sidebar-item-title">{{ item.title }}</view>
+              </view>
+            </scroll-view>
+            <view class="t-drawer__footer">
+              <slot /> <slot name="footer" />
+            </view>
+          </view>
+        </t-popup>
+      </view>
+  -->
+  <view v-if="!destroyOnClose || dataVisible">
+    <t-popup
+      :visible="dataVisible"
+      :z-index="zIndex"
+      :placement="placement"
+      :show-overlay="showOverlay"
+      :close-on-overlay-click="closeOnOverlayClick"
+      :custom-style="customStyle"
+      @visible-change="onVisibleChange"
+      @update:visible="onUpdateVisible"
+    >
+      <view class="t-drawer">
+        <slot name="title" />
+        <text v-if="title.length > 0" class="t-drawer__title">{{ title }}</text>
+        <scroll-view class="t-drawer__sidebar" :scroll-y="true">
+          <view
+            v-for="(item, index) in items"
+            :key="index"
+            class="t-drawer__sidebar-item"
+            @click="onItemClick(index, item)"
+          >
+            <view v-if="resolveItemIcon(item).name.length > 0" class="t-drawer__sidebar-item-icon">
+              <t-icon
+                :name="resolveItemIcon(item).name"
+                :size="resolveItemIcon(item).size"
+                :color="resolveItemIcon(item).color"
+                :prefix="resolveItemIcon(item).prefix"
+              />
+            </view>
+            <view class="t-drawer__sidebar-item-title">
+              <text>{{ item.title }}</text>
+            </view>
+          </view>
+        </scroll-view>
+        <view class="t-drawer__footer">
+          <slot />
+          <slot name="footer" />
+        </view>
+      </view>
+    </t-popup>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Drawer - uni-app x 实现（v2，基于 t-popup 重构）
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 drawer：
+ *  - visible / defaultVisible（受控/非受控）
+ *  - placement: left / right 决定滑入方向
+ *  - showOverlay / closeOnOverlayClick 透传给 t-popup
+ *  - destroyOnClose: 关闭时是否卸载 DOM
+ *  - items 列表渲染 + 自定义 title/footer slot
+ *
+ * 事件：
+ *  - update:visible / overlay-click / close / item-click
+ */
+import { computed, ref, watch } from 'vue';
+import { normalizeIcon, type IconConfig } from '../../utils';
+import type { DrawerItem, DrawerOverlayProps, DrawerPlacement } from './t-drawer.types';
+
+const props = defineProps({
+  closeOnOverlayClick: { type: Boolean, default: true },
+  destroyOnClose: { type: Boolean, default: false },
+  defaultVisible: { type: Boolean, default: false },
+  items: { type: Array as PropType<DrawerItem[]>, default: () => [] as DrawerItem[] },
+  overlayProps: { type: Object as PropType<DrawerOverlayProps>, default: () => ({} as DrawerOverlayProps) },
+  placement: { type: String as PropType<DrawerPlacement>, default: 'right' },
+  showOverlay: { type: Boolean, default: true },
+  title: { type: String, default: '' },
+  visible: { type: Boolean, default: false },
+  zIndex: { type: Number, default: 11500 },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+});
+
+const emit = defineEmits(['update:visible', 'close', 'overlay-click', 'item-click']);
+
+/** 内部受控状态，等价于原版的 dataVisible */
+const dataVisible = ref<boolean>(props.visible || props.defaultVisible);
+
+watch(
+  () => props.visible,
+  (v: boolean) => {
+    dataVisible.value = v;
+  },
+);
+
+/**
+ * t-popup 的 visible-change 事件回调，对齐原版 onVisibleChange：
+ *  - 同步 dataVisible
+ *  - 关闭时 emit close
+ *  - showOverlay 时 emit overlay-click
+ *  - 始终 emit update:visible
+ */
+function onVisibleChange(detail: { visible: boolean; trigger: string }) {
+  const v = detail.visible;
+  dataVisible.value = v;
+  if (!v) {
+    emit('close', { trigger: detail.trigger });
+  }
+  if (props.showOverlay) {
+    emit('overlay-click', { visible: v });
+  }
+  emit('update:visible', v);
+}
+
+/** popup 自身的 update:visible 走兜底通道（点关闭按钮等场景） */
+function onUpdateVisible(v: boolean) {
+  if (v !== dataVisible.value) {
+    dataVisible.value = v;
+    emit('update:visible', v);
+  }
+}
+
+function onItemClick(index: number, item: DrawerItem) {
+  emit('item-click', { index, item });
+}
+
+function resolveItemIcon(item: DrawerItem): IconConfig {
+  return normalizeIcon(item.icon);
+}
+</script>
+
+<style lang="less">
+@import './t-drawer.theme.less';
+</style>

@@ -1,0 +1,38 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-avatar
+        size="small"
+        image="https://tdesign.gtimg.com/site/avatar.jpg"
+      />
+      <t-avatar
+        size="medium"
+        image="https://tdesign.gtimg.com/site/avatar.jpg"
+      />
+      <t-avatar
+        size="large"
+        image="https://tdesign.gtimg.com/site/avatar.jpg"
+      />
+      <t-avatar
+        size="80px"
+        image="https://tdesign.gtimg.com/site/avatar.jpg"
+      />
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-row > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

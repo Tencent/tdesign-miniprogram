@@ -1,0 +1,35 @@
+/**
+ * CellGroup 基础样式
+ */
+
+@td-cell-group-title-font-size: var(--td-cell-group-title-font-size, 14px);
+@td-cell-group-title-line-height: var(--td-cell-group-title-line-height, 45px);
+@td-cell-group-title-padding-left: var(--td-cell-group-title-padding-left, 16px);
+@td-cell-group-title-bg-color: var(--td-cell-group-title-bg-color, #f3f3f3);
+@td-cell-group-title-color: var(--td-cell-group-title-color, rgba(0, 0, 0, 0.4));
+@td-cell-group-border-color: var(--td-cell-group-border-color, #e7e7e7);
+@td-cell-group-card-radius: var(--td-cell-group-card-radius, 12px);
+
+.t-cell-group {
+  position: relative;
+
+  &__title {
+    font-size: @td-cell-group-title-font-size;
+    color: @td-cell-group-title-color;
+    text-align: left;
+    line-height: @td-cell-group-title-line-height;
+    background-color: @td-cell-group-title-bg-color;
+    padding-left: @td-cell-group-title-padding-left;
+  }
+
+  &--bordered {
+    border-top: 1px solid @td-cell-group-border-color;
+    border-bottom: 1px solid @td-cell-group-border-color;
+  }
+
+  &--card {
+    margin: 0 16px;
+    border-radius: @td-cell-group-card-radius;
+    overflow: hidden;
+  }
+}

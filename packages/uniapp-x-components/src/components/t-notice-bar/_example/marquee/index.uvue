@@ -1,0 +1,29 @@
+<template>
+  <view>
+    <view class="row">
+      <text class="row-label">默认跑马灯（无限循环）</text>
+      <t-notice-bar
+        content="跑马灯：超长文案会循环滚动，适合用于公告与活动通知。点击可触发 click 事件。"
+        :marquee="true"
+      />
+    </view>
+    <view class="row">
+      <text class="row-label">慢速跑马灯（speed=30）</text>
+      <t-notice-bar
+        content="慢速滚动：speed 越小越慢，单位是 px/s。"
+        theme="warning"
+        :marquee="true"
+        :marquee-speed="30"
+      />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/** NoticeBar marquee demo - 横向跑马灯 */
+</script>
+
+<style>
+.row { padding-top: 16rpx; padding-bottom: 16rpx; }
+.row-label { display: block; font-size: 24rpx; color: rgba(0,0,0,0.4); padding-bottom: 8rpx; }
+</style>

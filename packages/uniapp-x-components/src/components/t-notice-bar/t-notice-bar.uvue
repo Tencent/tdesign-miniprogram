@@ -1,0 +1,190 @@
+<template>
+  <!--
+    NoticeBar - uni-app x 实现
+    -------------------------------------------------------
+    DOM 结构对齐 @tdesign/uniapp/notice-bar/notice-bar.vue：
+      <view class="t-notice-bar t-notice-bar--{theme}">
+        <view class="t-notice-bar__prefix-icon" v-if="resolvedPrefix">
+          <t-icon />
+        </view>
+        <view class="t-notice-bar__content-wrap">
+          <swiper v-if="direction==='vertical'">             ← 纵向轮播
+            <swiper-item v-for="...">
+              <view class="t-notice-bar__content--vertical-item">{{ item }}</view>
+            </swiper-item>
+          </swiper>
+          <view v-else class="t-notice-bar__content [marquee]">  ← 横向跑马灯（CSS 动画）
+            <text>{{ content }}</text>
+            <slot name="content" />
+            <view class="t-notice-bar__operation" v-if="operation">{{ operation }}</view>
+          </view>
+        </view>
+        <view class="t-notice-bar__suffix-icon" v-if="suffixIcon">
+          <t-icon />
+        </view>
+      </view>
+  -->
+  <view
+    v-if="visible"
+    :class="rootClass"
+    :style="customStyle"
+  >
+    <!-- 前缀图标 -->
+    <view
+      v-if="resolvedPrefixIconName.length > 0"
+      class="t-notice-bar__prefix-icon"
+      @click="onClickPrefixIcon"
+    >
+      <t-icon :name="resolvedPrefixIconName" size="44rpx" />
+    </view>
+
+    <!-- 内容区 -->
+    <view class="t-notice-bar__content-wrap" @click="onClickContent">
+      <!-- 纵向轮播（依赖原生 swiper） -->
+      <swiper
+        v-if="direction === 'vertical'"
+        :autoplay="true"
+        :vertical="true"
+        :circular="true"
+        :interval="interval"
+        :class="'t-notice-bar__content t-notice-bar__content--vertical'"
+        @change="onVerticalChange"
+      >
+        <swiper-item v-for="(item, index) in contentList" :key="index">
+          <view class="t-notice-bar__content--vertical-item">
+            <text>{{ item }}</text>
+          </view>
+        </swiper-item>
+      </swiper>
+
+      <!-- 横向（可跑马灯） -->
+      <view v-else :class="contentClass" :style="marqueeStyle">
+        <text v-if="content.length > 0">{{ content }}</text>
+        <slot name="content" />
+        <view
+          v-if="operation.length > 0"
+          class="t-notice-bar__operation"
+          @click.stop="onClickOperation"
+        >
+          <text>{{ operation }}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 后缀图标 -->
+    <view
+      v-if="suffixIcon.length > 0"
+      class="t-notice-bar__suffix-icon"
+      @click="onClickSuffixIcon"
+    >
+      <t-icon :name="suffixIcon" size="44rpx" />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * NoticeBar - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 notice-bar：
+ *  - 4 主题：info / success / warning / error，默认主题图标自动注入
+ *  - 横向：可选跑马灯（CSS animation 实现，匀速循环）
+ *  - 纵向：原生 swiper 自动轮播
+ *  - 点击触发 click({ trigger }) 区分点击源
+ *
+ * 实现差异：
+ *  - 跑马灯走 CSS animation（uvue 不支持 uni.createAnimation）
+ *    · marquee=true 时启用，speed 单位 px/s（折算到 duration）
+ *  - prefixIcon='' 表示不显示，'__theme__' 或留空时按 theme 推导默认图标
+ *  - content 与 contentList 拆分为两个 props 替代原版的联合类型
+ */
+import { computed } from 'vue';
+import { noticeBarVariants } from './t-notice-bar.variants';
+
+const props = defineProps({
+  content: { type: String, default: '' },
+  contentList: { type: Array as PropType<string[]>, default: () => [] as string[] },
+  direction: { type: String, default: 'horizontal' },
+  interval: { type: Number, default: 2000 },
+  marquee: { type: Boolean, default: false },
+  marqueeSpeed: { type: Number, default: 50 },
+  marqueeDelay: { type: Number, default: 0 },
+  operation: { type: String, default: '' },
+  prefixIcon: { type: String, default: '__theme__' },
+  suffixIcon: { type: String, default: '' },
+  theme: { type: String, default: 'info' },
+  visible: { type: Boolean, default: true },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+});
+
+const emit = defineEmits(['click', 'change']);
+
+/** 主题 → 默认 prefix 图标名 */
+function getThemeIcon(theme: string): string {
+  if (theme === 'success') return 'check-circle-filled';
+  if (theme === 'warning') return 'error-circle-filled';
+  if (theme === 'error') return 'error-circle-filled';
+  return 'info-circle-filled';
+}
+
+const resolvedPrefixIconName = computed<string>(() => {
+  // '' 显式不展示
+  if (props.prefixIcon.length === 0) return '';
+  // '__theme__' 用主题默认图标
+  if (props.prefixIcon === '__theme__') return getThemeIcon(props.theme);
+  return props.prefixIcon;
+});
+
+const rootClass = computed<string>(() => {
+  const cls = noticeBarVariants({ theme: props.theme });
+  return props.customClass.length > 0 ? cls + ' ' + props.customClass : cls;
+});
+
+const contentClass = computed<string>(() => {
+  const base = 't-notice-bar__content';
+  if (props.marquee) return base + ' t-notice-bar__content--marquee';
+  return base;
+});
+
+/**
+ * 跑马灯动画 inline style：
+ *  - duration ≈ 200%（移动距离 200vw） / speed
+ *  - delay 从 prop 注入
+ */
+const marqueeStyle = computed<string>(() => {
+  if (!props.marquee) return '';
+  const speed = props.marqueeSpeed > 0 ? props.marqueeSpeed : 50;
+  // 200vw 距离 / speed 像素每秒，假定屏幕宽度 750rpx ≈ 375px
+  const durationSec = (375 * 2) / speed;
+  return (
+    'animation-duration:' +
+    durationSec.toString() +
+    's;animation-delay:' +
+    props.marqueeDelay.toString() +
+    'ms;'
+  );
+});
+
+function onClickPrefixIcon() {
+  emit('click', { trigger: 'prefix-icon' });
+}
+function onClickContent() {
+  emit('click', { trigger: 'content' });
+}
+function onClickOperation() {
+  emit('click', { trigger: 'operation' });
+}
+function onClickSuffixIcon() {
+  emit('click', { trigger: 'suffix-icon' });
+}
+function onVerticalChange(e: any) {
+  // swiper change 事件透传
+  const detail = e.detail as any;
+  emit('change', { current: detail.current, source: detail.source ?? '' });
+}
+</script>
+
+<style lang="less">
+@import './t-notice-bar.theme.less';
+</style>

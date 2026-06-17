@@ -17,11 +17,15 @@
         {
           "path": "utils/cva.ts",
           "type": "registry:lib"
+        },
+        {
+          "path": "utils/text.ts",
+          "type": "registry:lib"
         }
       ]
     },
     {
-      "name": "button",
+      "name": "t-button",
       "type": "registry:component",
       "title": "Button",
       "description": "一个 uni-app x 兼容的按钮组件，支持 4 种 variant × 5 种 theme × 4 种 size × 4 种 shape 的组合矩阵。",
@@ -31,33 +35,29 @@
       ],
       "files": [
         {
-          "path": "components/button/README.md",
+          "path": "components/t-button/README.md",
           "type": "registry:doc"
         },
         {
-          "path": "components/button/button.theme.less",
+          "path": "components/t-button/t-button.theme.less",
           "type": "registry:style"
         },
         {
-          "path": "components/button/button.types.ts",
+          "path": "components/t-button/t-button.types.ts",
           "type": "registry:types"
         },
         {
-          "path": "components/button/button.uvue",
+          "path": "components/t-button/t-button.uvue",
           "type": "registry:component"
         },
         {
-          "path": "components/button/button.variants.ts",
+          "path": "components/t-button/t-button.variants.ts",
           "type": "registry:variants"
-        },
-        {
-          "path": "components/button/button.vue",
-          "type": "registry:component"
         }
       ]
     },
     {
-      "name": "cell",
+      "name": "t-cell",
       "type": "registry:component",
       "title": "Cell",
       "description": "通用列表项组件，常用于表单条目、设置页、信息展示。",
@@ -67,64 +67,650 @@
       ],
       "files": [
         {
-          "path": "components/cell/README.md",
+          "path": "components/t-cell/README.md",
           "type": "registry:doc"
         },
         {
-          "path": "components/cell/cell.theme.less",
+          "path": "components/t-cell/t-cell.theme.less",
           "type": "registry:style"
         },
         {
-          "path": "components/cell/cell.types.ts",
+          "path": "components/t-cell/t-cell.types.ts",
           "type": "registry:types"
         },
         {
-          "path": "components/cell/cell.uvue",
+          "path": "components/t-cell/t-cell.uvue",
           "type": "registry:component"
         },
         {
-          "path": "components/cell/cell.variants.ts",
+          "path": "components/t-cell/t-cell.variants.ts",
           "type": "registry:variants"
-        },
-        {
-          "path": "components/cell/cell.vue",
-          "type": "registry:component"
         }
       ]
     },
     {
-      "name": "input",
+      "name": "t-row",
       "type": "registry:component",
-      "title": "Input",
-      "description": "文本输入框，支持 v-model、清除、前后插槽与多种校验状态。",
+      "title": "Row",
+      "description": "栅格行容器，配合 t-col 使用形成 24 栅格布局；通过 gutter 设置列间距，与 @tdesign/uniapp 的 row 视觉/API 对齐。",
       "dependencies": [],
       "registryDependencies": [
         "utils"
       ],
       "files": [
         {
-          "path": "components/input/README.md",
-          "type": "registry:doc"
-        },
-        {
-          "path": "components/input/input.theme.less",
+          "path": "components/t-row/t-row.theme.less",
           "type": "registry:style"
         },
         {
-          "path": "components/input/input.types.ts",
+          "path": "components/t-row/t-row.types.ts",
           "type": "registry:types"
         },
         {
-          "path": "components/input/input.uvue",
+          "path": "components/t-row/t-row.uvue",
           "type": "registry:component"
         },
         {
-          "path": "components/input/input.variants.ts",
+          "path": "components/t-row/t-row.variants.ts",
           "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-col",
+      "type": "registry:component",
+      "title": "Col",
+      "description": "栅格列容器，需配合 t-row 使用，支持 24 栅格 span / offset，与 @tdesign/uniapp 的 col 视觉/API 对齐。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "t-row"
+      ],
+      "files": [
+        {
+          "path": "components/t-col/t-col.theme.less",
+          "type": "registry:style"
         },
         {
-          "path": "components/input/input.vue",
+          "path": "components/t-col/t-col.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-col/t-col.uvue",
           "type": "registry:component"
+        },
+        {
+          "path": "components/t-col/t-col.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-input",
+      "type": "registry:component",
+      "title": "Input",
+      "description": "文本输入框，与 [@tdesign/uniapp 的 input](https://tdesign.tencent.com/uniapp/components/input) 视觉与 API 全面对齐：列表内嵌型样式、下分割线、横竖排布局、状态色 tips、清除按钮、前/后置文字与图标、字符限制等。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/t-input/README.md",
+          "type": "registry:doc"
+        },
+        {
+          "path": "components/t-input/t-input.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-input/t-input.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-input/t-input.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-input/t-input.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-back-top",
+      "type": "registry:component",
+      "title": "BackTop",
+      "description": "返回顶部按钮，scroll 距离达到阈值时显示，点击调用 uni.pageScrollTo 回到顶部，与 @tdesign/uniapp 的 back-top 视觉/API 对齐。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "t-icon"
+      ],
+      "files": [
+        {
+          "path": "components/t-back-top/t-back-top.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-back-top/t-back-top.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-back-top/t-back-top.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-back-top/t-back-top.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-navbar",
+      "type": "registry:component",
+      "title": "Navbar",
+      "description": "导航栏组件，提供 left / center(title) / right 三栏布局与 fixed 占位，与 @tdesign/uniapp 的 navbar 视觉/API 对齐。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "t-icon"
+      ],
+      "files": [
+        {
+          "path": "components/t-navbar/t-navbar.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-navbar/t-navbar.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-navbar/t-navbar.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-navbar/t-navbar.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-tab-bar",
+      "type": "registry:component",
+      "title": "TabBar",
+      "description": "底部标签栏容器，支持 normal/round 形状、normal/tag 主题、固定底部、底部安全区适配；需配合 t-tab-bar-item 使用。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/t-tab-bar/t-tab-bar.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-tab-bar/t-tab-bar.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-tab-bar/t-tab-bar.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-tab-bar/t-tab-bar.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-tab-bar-item",
+      "type": "registry:component",
+      "title": "TabBarItem",
+      "description": "标签栏单项，支持图标 + 文字 + 徽标 + 二级菜单，需配合 t-tab-bar 使用。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "t-icon",
+        "t-tab-bar"
+      ],
+      "files": [
+        {
+          "path": "components/t-tab-bar-item/t-tab-bar-item.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-tab-bar-item/t-tab-bar-item.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-tab-bar-item/t-tab-bar-item.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-tab-bar-item/t-tab-bar-item.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-tabs",
+      "type": "registry:component",
+      "title": "Tabs",
+      "description": "选项卡容器，支持 line/tag/card 三种主题、均分/滚动两种布局、状态/徽标/图标，需配合 t-tab-panel 使用。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "t-icon"
+      ],
+      "files": [
+        {
+          "path": "components/t-tabs/t-tabs.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-tabs/t-tabs.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-tabs/t-tabs.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-tabs/t-tabs.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-tab-panel",
+      "type": "registry:component",
+      "title": "TabPanel",
+      "description": "选项卡面板，子组件，向父 t-tabs 注册元数据并根据 currentValue 显示/隐藏；支持 lazy 懒加载与 panel 文本/插槽。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "t-tabs"
+      ],
+      "files": [
+        {
+          "path": "components/t-tab-panel/t-tab-panel.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-tab-panel/t-tab-panel.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-tab-panel/t-tab-panel.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-tab-panel/t-tab-panel.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-side-bar",
+      "type": "registry:component",
+      "title": "SideBar",
+      "description": "纵向侧边栏导航容器，需配合 t-side-bar-item 使用，激活项带圆角拼接视觉。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/t-side-bar/t-side-bar.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-side-bar/t-side-bar.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-side-bar/t-side-bar.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-side-bar/t-side-bar.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-side-bar-item",
+      "type": "registry:component",
+      "title": "SideBarItem",
+      "description": "侧边栏单项，支持图标 + 文字 + 徽标 + 禁用，需配合 t-side-bar 使用。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "t-icon",
+        "t-side-bar"
+      ],
+      "files": [
+        {
+          "path": "components/t-side-bar-item/t-side-bar-item.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-side-bar-item/t-side-bar-item.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-side-bar-item/t-side-bar-item.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-side-bar-item/t-side-bar-item.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-indexes",
+      "type": "registry:component",
+      "title": "Indexes",
+      "description": "索引导航容器，提供 A-Z/自定义索引侧栏，点击切换 current；需配合 t-indexes-anchor 使用。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/t-indexes/t-indexes.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-indexes/t-indexes.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-indexes/t-indexes.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-indexes/t-indexes.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-indexes-anchor",
+      "type": "registry:component",
+      "title": "IndexesAnchor",
+      "description": "索引锚点节点，inject 父 t-indexes 的 current 值并对当前索引头部高亮。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "t-indexes"
+      ],
+      "files": [
+        {
+          "path": "components/t-indexes-anchor/t-indexes-anchor.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-indexes-anchor/t-indexes-anchor.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-indexes-anchor/t-indexes-anchor.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-indexes-anchor/t-indexes-anchor.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-drawer",
+      "type": "registry:component",
+      "title": "Drawer",
+      "description": "侧滑抽屉，基于 t-popup 实现 left/right 方向滑入；支持 items 列表、title/footer 插槽、destroyOnClose，与 @tdesign/uniapp 的 drawer DOM 结构/CSS Token/API 1:1 对齐。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "t-icon",
+        "t-overlay",
+        "t-popup"
+      ],
+      "files": [
+        {
+          "path": "components/t-drawer/t-drawer.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-drawer/t-drawer.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-drawer/t-drawer.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-drawer/t-drawer.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-overlay",
+      "type": "registry:component",
+      "title": "Overlay",
+      "description": "遮罩层，配合弹层组件使用。基于 fade 动画进出场，支持点击关闭、防穿透滚动、自定义背景色与时长。与 @tdesign/uniapp 的 overlay props/CSS Token/DOM 结构 1:1 对齐。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/t-overlay/t-overlay.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-overlay/t-overlay.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-overlay/t-overlay.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-overlay/t-overlay.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-popup",
+      "type": "registry:component",
+      "title": "Popup",
+      "description": "弹出层，从 top/bottom/left/right/center 5 个方向弹出，自带 t-overlay 遮罩与 fade/translate 进出场动画；支持 closeBtn、closeOnOverlayClick、preventScrollThrough，与 @tdesign/uniapp 的 popup props/CSS Token/DOM 结构 1:1 对齐。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "t-overlay"
+      ],
+      "files": [
+        {
+          "path": "components/t-popup/t-popup.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-popup/t-popup.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-popup/t-popup.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-popup/t-popup.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-notice-bar",
+      "type": "registry:component",
+      "title": "NoticeBar",
+      "description": "公告栏，支持 info/success/warning/error 4 种主题色、横向跑马灯（CSS animation）与纵向 swiper 轮播；前/后缀图标可自定义，与 @tdesign/uniapp 的 notice-bar props/CSS Token/DOM 结构对齐。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "t-icon"
+      ],
+      "files": [
+        {
+          "path": "components/t-notice-bar/t-notice-bar.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-notice-bar/t-notice-bar.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-notice-bar/t-notice-bar.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-notice-bar/t-notice-bar.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-toast",
+      "type": "registry:component",
+      "title": "Toast",
+      "description": "轻提示，通过预埋 <t-toast ref='toast' /> + showToast/hideToast 全局 API 调用；支持 loading/success/warning/error 4 主题（loading 走 t-loading circular）、top/middle/bottom 3 位置、row/column 布局，与 @tdesign/uniapp 的 toast 用法对齐。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "t-icon",
+        "t-loading",
+        "t-overlay"
+      ],
+      "files": [
+        {
+          "path": "components/t-toast/show.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "components/t-toast/t-toast.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-toast/t-toast.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-toast/t-toast.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-toast/t-toast.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-message",
+      "type": "registry:component",
+      "title": "Message",
+      "description": "页面顶部消息提醒，通过预埋 <t-message ref='message' /> + Message.info/success/warning/error 静态方法调用；支持图标、关闭按钮、链接，与 @tdesign/uniapp 的 message 用法对齐（v1 单条简化版）。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "t-icon"
+      ],
+      "files": [
+        {
+          "path": "components/t-message/show.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "components/t-message/t-message.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-message/t-message.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-message/t-message.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-message/t-message.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-dialog",
+      "type": "registry:component",
+      "title": "Dialog",
+      "description": "对话框，受控 + 指令式双模式：受控模式 visible/title/content/confirm/cancel；指令式 Dialog.alert/confirm/show/close。支持 horizontal/vertical 按钮布局、关闭按钮、点遮罩关闭，与 @tdesign/uniapp 的 dialog 用法对齐。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils"
+      ],
+      "files": [
+        {
+          "path": "components/t-dialog/show.ts",
+          "type": "registry:lib"
+        },
+        {
+          "path": "components/t-dialog/t-dialog.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-dialog/t-dialog.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-dialog/t-dialog.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-dialog/t-dialog.variants.ts",
+          "type": "registry:variants"
+        }
+      ]
+    },
+    {
+      "name": "t-action-sheet",
+      "type": "registry:component",
+      "title": "ActionSheet",
+      "description": "动作面板，从底部弹出，基于 t-popup placement='bottom' 实现；支持 list/grid 双模式、描述文字、取消按钮、disabled item，与 @tdesign/uniapp 的 action-sheet props/DOM 结构对齐。",
+      "dependencies": [],
+      "registryDependencies": [
+        "utils",
+        "t-icon",
+        "t-overlay",
+        "t-popup"
+      ],
+      "files": [
+        {
+          "path": "components/t-action-sheet/t-action-sheet.theme.less",
+          "type": "registry:style"
+        },
+        {
+          "path": "components/t-action-sheet/t-action-sheet.types.ts",
+          "type": "registry:types"
+        },
+        {
+          "path": "components/t-action-sheet/t-action-sheet.uvue",
+          "type": "registry:component"
+        },
+        {
+          "path": "components/t-action-sheet/t-action-sheet.variants.ts",
+          "type": "registry:variants"
         }
       ]
     }

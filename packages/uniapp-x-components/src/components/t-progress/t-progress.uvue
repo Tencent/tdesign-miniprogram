@@ -1,0 +1,136 @@
+<template>
+  <!-- circle -->
+  <view v-if="props.theme === 'circle'" :class="rootClass" :style="circleStyle">
+    <view class="t-progress__circle-inner">
+      <view v-if="props.label !== false" class="t-progress__info">
+        <text>{{ labelText }}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- line / plump -->
+  <view v-else :class="rootClass">
+    <view class="t-progress__bar" :style="barStyle">
+      <view class="t-progress__inner" :style="innerStyle" />
+    </view>
+    <view v-if="props.label !== false && props.theme !== 'plump'" class="t-progress__info">
+      <text>{{ labelText }}</text>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Progress - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/progress：
+ *  - theme: line / plump / circle
+ *  - status: success / warning / error / active
+ *  - color: 单色字符串（uts 端不支持渐变 / 数组 / 对象）
+ *  - circle 通过 conic-gradient 背景实现进度，micro/default 由 size 决定
+ */
+import { computed } from 'vue';
+import { progressVariants } from './t-progress.variants';
+import type {
+  ProgressTheme,
+  ProgressStatus,
+  ProgressLabel,
+  ProgressSize,
+} from './t-progress.types';
+
+const props = defineProps({
+  color: { type: String, default: '' },
+  label: { type: [Boolean, String] as PropType<ProgressLabel>, default: true },
+  percentage: { type: Number, default: 0 },
+  size: { type: [String, Number] as PropType<ProgressSize>, default: 'default' },
+  status: { type: String as PropType<ProgressStatus | ''>, default: '' },
+  strokeWidth: { type: [String, Number] as PropType<string | number>, default: '' },
+  theme: { type: String as PropType<ProgressTheme>, default: 'line' },
+  trackColor: { type: String, default: '' },
+  customClass: { type: String, default: '' },
+});
+
+function addUnit(value: any): string {
+  if (value === '' || value === null || value === undefined) return '';
+  const v = String(value);
+  if (/^-?\d+(\.\d+)?$/.test(v)) return v + 'px';
+  return v;
+}
+
+function clamp(val: number): number {
+  if (val < 0) return 0;
+  if (val > 100) return 100;
+  return val;
+}
+
+const safePercentage = computed<number>(() => clamp(props.percentage));
+
+const rootClass = computed(() => {
+  let cls = progressVariants({
+    theme: props.theme,
+    status: (props.status as any),
+    class: props.customClass,
+  });
+  if (props.theme === 'plump' && safePercentage.value < 10) {
+    cls = cls + ' t-progress--under-ten';
+  } else if (props.theme === 'plump') {
+    cls = cls + ' t-progress--over-ten';
+  }
+  if (props.theme === 'circle' && props.size === 'micro') {
+    cls = cls + ' t-progress--circle--micro';
+  }
+  return cls;
+});
+
+const barStyle = computed<string>(() => {
+  const parts: string[] = [];
+  if (props.trackColor.length > 0) parts.push('background:' + props.trackColor);
+  const sw = addUnit(props.strokeWidth as any);
+  if (sw.length > 0 && props.theme === 'line') {
+    parts.push('height:' + sw);
+  }
+  return parts.join(';');
+});
+
+const innerStyle = computed<string>(() => {
+  const parts: string[] = [];
+  parts.push('width:' + safePercentage.value + '%');
+  if (props.color.length > 0) parts.push('background:' + props.color);
+  return parts.join(';');
+});
+
+const circleStyle = computed<string>(() => {
+  // 用 conic-gradient 实现环形进度
+  const parts: string[] = [];
+  const fillColor = props.color.length > 0 ? props.color : '#0052d9';
+  const trackColor = props.trackColor.length > 0 ? props.trackColor : '#e7e7e7';
+  parts.push(
+    'background: conic-gradient(' +
+      fillColor +
+      ' 0% ' +
+      safePercentage.value +
+      '%, ' +
+      trackColor +
+      ' ' +
+      safePercentage.value +
+      '% 100%)',
+  );
+  // 自定义 size
+  if (typeof props.size === 'number' || (typeof props.size === 'string' && props.size !== 'default' && props.size !== 'micro')) {
+    const u = addUnit(props.size as any);
+    parts.push('width:' + u);
+    parts.push('height:' + u);
+  }
+  return parts.join(';');
+});
+
+const labelText = computed<string>(() => {
+  if (typeof props.label === 'string') return props.label as string;
+  if (props.label === false) return '';
+  return safePercentage.value.toFixed(0) + '%';
+});
+</script>
+
+<style lang="less">
+@import './t-progress.theme.less';
+</style>

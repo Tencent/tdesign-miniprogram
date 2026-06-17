@@ -1,0 +1,82 @@
+<template>
+  <scroll-view class="demo-page" :scroll-y="true">
+    <view class="demo-header">
+      <text class="demo-title">Icon 图标</text>
+      <text class="demo-desc">用于表达对象语义的图形化标识。</text>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">01 组件类型</text>
+      <text class="demo-section-desc">基础图标</text>
+      <base-demo></base-demo>
+      <text class="demo-section-desc">图片链接</text>
+      <image-demo></image-demo>
+      <text class="demo-section-desc">自定义图标前缀</text>
+      <prefix-demo></prefix-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">02 组件样式</text>
+      <text class="demo-section-desc">尺寸</text>
+      <size-demo></size-demo>
+      <text class="demo-section-desc">颜色</text>
+      <color-demo></color-demo>
+    </view>
+  </scroll-view>
+</template>
+
+<script>
+import BaseDemo from './base/index.uvue';
+import SizeDemo from './size/index.uvue';
+import ColorDemo from './color/index.uvue';
+import ImageDemo from './image/index.uvue';
+import PrefixDemo from './prefix/index.uvue';
+
+export default {
+  components: {
+    BaseDemo,
+    SizeDemo,
+    ColorDemo,
+    ImageDemo,
+    PrefixDemo,
+  },
+};
+</script>
+
+<style>
+.demo-page {
+  flex: 1;
+  background-color: #f5f5f5;
+}
+.demo-header {
+  padding: 24px 16px 16px;
+  background-color: #ffffff;
+}
+.demo-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #181818;
+  margin-bottom: 8px;
+}
+.demo-desc {
+  font-size: 14px;
+  color: #888888;
+  line-height: 22px;
+}
+.demo-section {
+  margin-top: 12px;
+  background-color: #ffffff;
+  padding-bottom: 8px;
+}
+.demo-section-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #181818;
+  padding: 16px 16px 8px;
+}
+.demo-section-desc {
+  font-size: 13px;
+  color: #666666;
+  padding: 8px 16px 0;
+}
+</style>

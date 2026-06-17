@@ -1,0 +1,77 @@
+/**
+ * Indexes 基础样式
+ *
+ * 与 @tdesign/uniapp 的 indexes.less 视觉对齐
+ */
+
+@td-indexes-sidebar-color: var(--td-indexes-sidebar-color, rgba(0, 0, 0, 0.9));
+@td-indexes-sidebar-item-size: var(--td-indexes-sidebar-item-size, 20px);
+@td-indexes-sidebar-font-size: var(--td-indexes-sidebar-font-size, 12px);
+@td-indexes-sidebar-active-color: var(--td-indexes-sidebar-active-color, #ffffff);
+@td-indexes-sidebar-active-bg-color: var(--td-indexes-sidebar-active-bg-color, #0052d9);
+@td-indexes-sidebar-right: var(--td-indexes-sidebar-right, 8px);
+
+@td-indexes-sidebar-tips-size: var(--td-indexes-sidebar-tips-size, 48px);
+@td-indexes-sidebar-tips-font-size: var(--td-indexes-sidebar-tips-font-size, 24px);
+@td-indexes-sidebar-tips-color: var(--td-indexes-sidebar-tips-color, #0052d9);
+@td-indexes-sidebar-tips-bg-color: var(--td-indexes-sidebar-tips-bg-color, rgba(0, 82, 217, 0.1));
+
+.t-indexes {
+  position: relative;
+
+  &__sidebar {
+    position: absolute;
+    right: @td-indexes-sidebar-right;
+    color: @td-indexes-sidebar-color;
+    font-size: @td-indexes-sidebar-font-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+
+    &-item {
+      min-width: @td-indexes-sidebar-item-size;
+      height: @td-indexes-sidebar-item-size;
+      padding: 0 4px;
+      box-sizing: border-box;
+      border-radius: @td-indexes-sidebar-item-size;
+      position: relative;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--active {
+        background-color: @td-indexes-sidebar-active-bg-color;
+        color: @td-indexes-sidebar-active-color;
+      }
+    }
+
+    &-item + &-item {
+      margin-top: 2px;
+    }
+
+    &-tips {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-width: @td-indexes-sidebar-tips-size;
+      max-width: 99px;
+      padding: 0 16px;
+      box-sizing: border-box;
+      height: @td-indexes-sidebar-tips-size;
+      font-size: @td-indexes-sidebar-tips-font-size;
+      font-weight: 600;
+      color: @td-indexes-sidebar-tips-color;
+      background-color: @td-indexes-sidebar-tips-bg-color;
+      border-radius: @td-indexes-sidebar-tips-size;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: calc(100% + 16px);
+    }
+  }
+}

@@ -1,0 +1,63 @@
+<template>
+  <view class="t-demo-block" :class="{ 't-demo-block--notitle': title.length === 0 }">
+    <view v-if="title.length > 0 || desc.length > 0" class="t-demo-block__header">
+      <text v-if="title.length > 0" class="t-demo-block__header-title">{{ title }}</text>
+      <text v-if="desc.length > 0" class="t-demo-block__header-desc">{{ desc }}</text>
+    </view>
+    <view class="t-demo-block__slot">
+      <slot />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * 内部 demo 容器（与 @tdesign/uniapp 的 t-demo 视觉对齐）：
+ * 不带白底卡片，只负责"分组间距 + title/desc"。slot 内组件自己贴底色形成列表效果。
+ *
+ * 仅用于 _example/ 调试页，不随插件发布。
+ */
+defineProps({
+  title: { type: String, default: '' },
+  desc: { type: String, default: '' },
+});
+</script>
+
+<style lang="less">
+.t-demo-block {
+  margin: 32px 0 0;
+  display: flex;
+  flex-direction: column;
+
+  &--notitle {
+    margin-top: 0;
+  }
+
+  &__header {
+    margin: 0 16px;
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 26px;
+      color: rgba(0, 0, 0, 0.9);
+    }
+
+    &-desc {
+      margin-top: 8px;
+      font-size: 14px;
+      line-height: 22px;
+      color: rgba(0, 0, 0, 0.6);
+    }
+  }
+
+  &__slot {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+  }
+}
+</style>

@@ -1,0 +1,241 @@
+/**
+ * Input 样式（与 @tdesign/uniapp 视觉对齐：列表内嵌型、下分割线、状态色）
+ * 全部颜色 / 间距走 CSS Variables，命名沿用 --td-input-* 系列。
+ */
+
+// ------- 默认 token -------
+@td-input-vertical-padding: var(--td-input-vertical-padding, 16px);
+@td-input-horizontal-padding: var(--td-input-horizontal-padding, 16px);
+
+@td-input-bg-color: var(--td-input-bg-color, rgba(255, 255, 255, 1));
+@td-input-text-color: var(--td-input-default-text-color, rgba(0, 0, 0, 0.9));
+@td-input-disabled-text-color: var(--td-input-disabled-text-color, rgba(0, 0, 0, 0.26));
+@td-input-placeholder-text-color: var(--td-input-placeholder-text-color, rgba(0, 0, 0, 0.4));
+
+@td-input-label-color: var(--td-input-label-text-color, rgba(0, 0, 0, 0.9));
+@td-input-suffix-text-color: var(--td-input-suffix-text-color, rgba(0, 0, 0, 0.9));
+@td-input-suffix-icon-color: var(--td-input-suffix-icon-color, rgba(0, 0, 0, 0.4));
+@td-input-prefix-icon-color: var(--td-input-prefix-icon-color, rgba(0, 0, 0, 0.9));
+
+@td-input-border-color: var(--td-input-border-color, #e7e7e7);
+@td-input-border-left-space: var(--td-input-border-left-space, 16px);
+@td-input-border-right-space: var(--td-input-border-right-space, 0);
+@td-input-align-items: var(--td-input-align-items, center);
+
+@td-input-success-color: var(--td-input-success-tips-color, #2ba471);
+@td-input-warning-color: var(--td-input-warning-tips-color, #e37318);
+@td-input-error-color: var(--td-input-error-tips-color, #d54941);
+
+@td-input-label-min-width: var(--td-input-label-min-width, 2em);
+@td-input-label-max-width: var(--td-input-label-max-width, 5em);
+@td-input-success-text-color: var(--td-input-success-text-color, #2ba471); // 'success' 状态输入框文本颜色
+@td-input-warning-text-color: var(--td-input-warning-text-color, #e37318); // 'warning' 状态输入框文本颜色
+@td-input-error-text-color: var(--td-input-error-text-color, #d54941); // 'error' 状态输入框文本颜色
+@td-input-default-tips-color: var(--td-input-default-tips-color, rgba(0, 0, 0, 0.4)); // 'default' 状态辅助文本颜色
+@td-input-placeholder-text-font: var(--td-input-placeholder-text-font, 16px / 24px PingFang SC, Microsoft YaHei, Arial Regular); // 输入框占位符文本字体大小
+@td-input-label-text-color: var(--td-input-label-text-color, rgba(0, 0, 0, 0.9)); // 左侧文本颜色
+@td-input-label-text-font: var(--td-input-label-text-font, 16px / 24px PingFang SC, Microsoft YaHei, Arial Regular); // 左侧文本字体大小
+
+.t-input {
+  display: flex;
+  align-items: @td-input-align-items;
+  flex-direction: row;
+  width: 100%;
+  padding: @td-input-vertical-padding @td-input-horizontal-padding;
+  background-color: @td-input-bg-color;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+
+  // ---- 下分割线（borderless=false 时） ----
+  &--border::after {
+    content: '';
+    position: absolute;
+    left: @td-input-border-left-space;
+    right: @td-input-border-right-space;
+    bottom: 0;
+    height: 1px;
+    background-color: @td-input-border-color;
+    transform: scaleY(0.5);
+    transform-origin: 0 100%;
+  }
+
+  // ---- 竖排 ----
+  &--layout-vertical {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  // ---- prefix 区（icon + label） ----
+  &__wrap--prefix {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+    margin-right: 16px;
+  }
+
+  &__icon--prefix {
+    display: flex;
+    align-items: center;
+    color: @td-input-prefix-icon-color;
+    font-size: 24px;
+    margin-right: 4px;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    color: @td-input-label-color;
+    font-size: 16px;
+    line-height: 24px;
+    word-wrap: break-word;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__label-text {
+    font-size: 16px;
+    color: @td-input-label-color;
+    line-height: 24px;
+  }
+
+  &--layout-vertical &__wrap--prefix {
+    margin-right: 0;
+    margin-bottom: 4px;
+  }
+
+  &--layout-vertical &__label {
+    font-size: 14px;
+    margin-right: 0;
+  }
+
+  &--layout-vertical &__label-text {
+    font-size: 14px;
+  }
+
+  // ---- 内容主体 wrap ----
+  &__wrap {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    flex-shrink: 1;
+    min-width: 0;
+    width: 100%;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  // ---- input 控件 ----
+  &__control {
+    flex: 1;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    min-height: 24px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: @td-input-text-color;
+    font-size: 16px;
+    line-height: 24px;
+
+    &--disabled {
+      color: @td-input-disabled-text-color;
+      cursor: not-allowed;
+    }
+
+    &--read-only {
+      cursor: default;
+    }
+  }
+
+  &__placeholder {
+    color: @td-input-placeholder-text-color;
+    font-size: 16px;
+
+    &--disabled {
+      color: @td-input-disabled-text-color;
+    }
+  }
+
+  // ---- 文本对齐 ----
+  &--left   { text-align: left; }
+  &--center { text-align: center; }
+  &--right  { text-align: right; }
+
+  // ---- 后置区域 ----
+  &__wrap--clearable-icon,
+  &__wrap--suffix-icon,
+  &__wrap--suffix {
+    flex: 0 0 auto;
+    padding-left: 8px;
+    display: flex;
+    align-items: center;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__wrap--clearable-icon,
+  &__wrap--suffix-icon {
+    color: @td-input-suffix-icon-color;
+    font-size: 24px;
+  }
+
+  &__wrap--suffix {
+    color: @td-input-suffix-text-color;
+    font-size: 16px;
+  }
+
+  // 兜底的 ✕（无 t-icon 时使用）
+  &__clear-fallback {
+    width: 20px;
+    height: 20px;
+    line-height: 18px;
+    text-align: center;
+    border-radius: 50%;
+    background: #c5c5c5;
+    color: #ffffff;
+    font-size: 14px;
+  }
+
+  // ---- tips ----
+  &__tips {
+    font-size: 12px;
+    line-height: 20px;
+    padding-top: 4px;
+
+    &.t-input--default { color: @td-input-placeholder-text-color; }
+    &.t-input--success { color: @td-input-success-color; }
+    &.t-input--warning { color: @td-input-warning-color; }
+    &.t-input--error   { color: @td-input-error-color; }
+  }
+
+  &__tips-text {
+    font-size: 12px;
+    line-height: 20px;
+  }
+
+  // ---- 禁用 / 只读 ----
+  &--disabled .t-input__control,
+  &--readonly .t-input__control {
+    color: @td-input-disabled-text-color;
+  }
+}

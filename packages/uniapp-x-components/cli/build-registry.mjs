@@ -16,7 +16,7 @@
  *   "dependencies": [],                  // 外部 npm 依赖
  *   "registryDependencies": ["utils"],   // 同 registry 的兄弟项
  *   "files": [
- *     { "path": "components/button/button.vue", "type": "registry:component", "content": "..." },
+ *     { "path": "components/t-button/t-button.vue", "type": "registry:component", "content": "..." },
  *     ...
  *   ]
  * }

@@ -1,0 +1,6 @@
+<template>
+  <view>
+    <t-cell title="必填项" required note="必填" bordered ></t-cell>
+    <t-cell title="必填项 + 描述" description="此项为必填" required note="必填" ></t-cell>
+  </view>
+</template>

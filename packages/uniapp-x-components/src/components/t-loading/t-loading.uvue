@@ -1,0 +1,153 @@
+<template>
+  <view v-if="show" :class="rootClass">
+    <view
+      v-if="props.indicator"
+      :class="spinnerClass"
+      :style="spinnerStyle"
+    >
+      <slot name="indicator">
+        <!-- circular: 单纯依赖 border 旋转，无需子节点 -->
+
+        <!-- spinner: 12 个小条 -->
+        <template v-if="props.theme === 'spinner'">
+          <view class="t-loading__dot t-loading__dot-0"><view class="t-loading__dot-bar" /></view>
+          <view class="t-loading__dot t-loading__dot-1"><view class="t-loading__dot-bar" /></view>
+          <view class="t-loading__dot t-loading__dot-2"><view class="t-loading__dot-bar" /></view>
+          <view class="t-loading__dot t-loading__dot-3"><view class="t-loading__dot-bar" /></view>
+          <view class="t-loading__dot t-loading__dot-4"><view class="t-loading__dot-bar" /></view>
+          <view class="t-loading__dot t-loading__dot-5"><view class="t-loading__dot-bar" /></view>
+          <view class="t-loading__dot t-loading__dot-6"><view class="t-loading__dot-bar" /></view>
+          <view class="t-loading__dot t-loading__dot-7"><view class="t-loading__dot-bar" /></view>
+          <view class="t-loading__dot t-loading__dot-8"><view class="t-loading__dot-bar" /></view>
+          <view class="t-loading__dot t-loading__dot-9"><view class="t-loading__dot-bar" /></view>
+          <view class="t-loading__dot t-loading__dot-10"><view class="t-loading__dot-bar" /></view>
+          <view class="t-loading__dot t-loading__dot-11"><view class="t-loading__dot-bar" /></view>
+        </template>
+
+        <!-- dots: 三个点 -->
+        <view v-if="props.theme === 'dots'" class="t-loading__dots-wrapper">
+          <view class="t-loading__dots-item t-loading__dots-item-0" />
+          <view class="t-loading__dots-item t-loading__dots-item-1" />
+          <view class="t-loading__dots-item t-loading__dots-item-2" />
+        </view>
+      </slot>
+    </view>
+
+    <view v-if="hasText" :class="textClass">
+      <slot>
+        <text>{{ props.text }}</text>
+      </slot>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Loading - uni-app x 实现
+ *
+ * 行为契约与 loading.vue 镜像保持一致；类型从 t-loading.types.ts 同源引入。
+ */
+import { computed, ref, watch, onBeforeUnmount, useSlots } from 'vue';
+import {
+  loadingVariants,
+  loadingSpinnerVariants,
+  loadingTextVariants,
+} from './t-loading.variants';
+import type { LoadingTheme, LoadingLayout } from './t-loading.types';
+
+const props = defineProps({
+  theme: { type: String as PropType<LoadingTheme>, default: 'circular' },
+  layout: { type: String as PropType<LoadingLayout>, default: 'horizontal' },
+  text: { type: String, default: '' },
+  size: { type: [String, Number], default: '20px' },
+  duration: { type: Number, default: 800 },
+  loading: { type: Boolean, default: true },
+  delay: { type: Number, default: 0 },
+  pause: { type: Boolean, default: false },
+  reverse: { type: Boolean, default: false },
+  inheritColor: { type: Boolean, default: false },
+  indicator: { type: Boolean, default: true },
+  fullscreen: { type: Boolean, default: false },
+  customClass: { type: String, default: '' },
+});
+
+const slots = useSlots();
+const show = ref<boolean>(props.loading && props.delay === 0);
+let timer: number = -1;
+
+watch(
+  () => props.loading,
+  (val: boolean) => {
+    if (timer !== -1) {
+      clearTimeout(timer);
+      timer = -1;
+    }
+    if (val && props.delay > 0) {
+      timer = setTimeout(() => {
+        show.value = true;
+        timer = -1;
+      }, props.delay) as any;
+    } else {
+      show.value = val;
+    }
+  },
+  { immediate: true },
+);
+
+onBeforeUnmount(() => {
+  if (timer !== -1) {
+    clearTimeout(timer);
+    timer = -1;
+  }
+});
+
+function addUnit(value: string | number): string {
+  if (value === '' || value === null) return '20px';
+  const v = String(value);
+  if (/^-?\d+(\.\d+)?$/.test(v)) return v + 'px';
+  return v;
+}
+
+const hasText = computed(() => props.text.length > 0 || slots.default != null);
+
+const rootClass = computed(() =>
+  loadingVariants({
+    layout: props.layout,
+    fullscreen: props.fullscreen,
+    inheritColor: props.inheritColor,
+    class: props.customClass,
+  }),
+);
+
+const spinnerClass = computed(() =>
+  loadingSpinnerVariants({
+    theme: props.theme,
+    reverse: props.reverse,
+  }),
+);
+
+const spinnerStyle = computed(() => {
+  const parts: string[] = [];
+  const sizeStr = addUnit(props.size as any);
+  parts.push('width:' + sizeStr);
+  parts.push('height:' + sizeStr);
+  if (props.duration > 0) {
+    parts.push('animation-duration:' + (props.duration / 1000) + 's');
+  }
+  parts.push('animation-play-state:' + (props.pause ? 'paused' : 'running'));
+  if (props.inheritColor) {
+    parts.push('color:inherit');
+  }
+  return parts.join(';');
+});
+
+const textClass = computed(() =>
+  loadingTextVariants({
+    layout: props.layout,
+  }),
+);
+</script>
+
+<style lang="less">
+@import './t-loading.theme.less';
+</style>

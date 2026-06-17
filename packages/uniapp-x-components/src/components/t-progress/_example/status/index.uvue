@@ -1,0 +1,25 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-progress :percentage="80" status="success" ></t-progress>
+    </view>
+    <view class="demo-row">
+      <t-progress :percentage="60" status="warning" ></t-progress>
+    </view>
+    <view class="demo-row">
+      <t-progress :percentage="40" status="error" ></t-progress>
+    </view>
+    <view class="demo-row">
+      <t-progress :percentage="50" status="active" ></t-progress>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  margin-bottom: 12px;
+}
+</style>

@@ -1,0 +1,39 @@
+<template>
+  <view class="demo-block">
+    <text class="demo-section-desc">尺寸</text>
+    <view class="demo-row">
+      <t-check-tag content="small" size="small" :default-checked="true" ></t-check-tag>
+      <t-check-tag content="medium" size="medium" :default-checked="true" ></t-check-tag>
+      <t-check-tag content="large" size="large" :default-checked="true" ></t-check-tag>
+    </view>
+
+    <text class="demo-section-desc">形状</text>
+    <view class="demo-row">
+      <t-check-tag content="square" shape="square" :default-checked="true" ></t-check-tag>
+      <t-check-tag content="round" shape="round" :default-checked="true" ></t-check-tag>
+      <t-check-tag content="mark" shape="mark" :default-checked="true" ></t-check-tag>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-section-desc {
+  display: block;
+  font-size: 12px;
+  color: #888888;
+  margin: 8px 0;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-row > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

@@ -1,0 +1,22 @@
+<template>
+  <view class="demo-block">
+    <t-button theme="primary" size="large">主要按钮</t-button>
+    <t-button theme="default" size="large">默认按钮</t-button>
+    <t-button theme="danger" size="large">危险按钮</t-button>
+    <t-button theme="warning" size="large">警告按钮</t-button>
+    <t-button theme="success" size="large">成功按钮</t-button>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+.demo-block > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

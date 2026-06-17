@@ -1,0 +1,41 @@
+<template>
+  <view>
+    <button class="open-btn" @click="openDrawer">带图标抽屉</button>
+    <t-drawer
+      :visible="visible"
+      title="导航菜单"
+      :items="sidebar"
+      @update:visible="onVisibleChange"
+    />
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const visible = ref<boolean>(false);
+const sidebar = [
+  { title: '首页', icon: 'home' },
+  { title: '应用', icon: 'app' },
+  { title: '聊天', icon: 'chat' },
+  { title: '我的', icon: 'user' },
+];
+
+function openDrawer() {
+  visible.value = true;
+}
+function onVisibleChange(v: boolean) {
+  visible.value = v;
+}
+</script>
+
+<style>
+.open-btn {
+  margin: 16px;
+  height: 44px;
+  background-color: #ffffff;
+  border: 1px solid #0052d9;
+  color: #0052d9;
+  border-radius: 4px;
+}
+</style>

@@ -1,0 +1,84 @@
+<template>
+  <view :class="rootClass">
+    <view v-if="hasThumb" class="t-result__thumb">
+      <slot name="image">
+        <image
+          v-if="props.image.length > 0"
+          class="t-result__image"
+          :src="props.image"
+          mode="aspectFit"
+        />
+        <image
+          v-else-if="iconUrl.length > 0"
+          class="t-result__icon"
+          :src="iconUrl"
+          mode="aspectFit"
+        />
+      </slot>
+    </view>
+    <view v-if="props.title.length > 0" class="t-result__title">
+      <slot name="title">
+        <text>{{ props.title }}</text>
+      </slot>
+    </view>
+    <view v-if="hasDescription" class="t-result__description">
+      <slot name="description">
+        <text v-if="props.description.length > 0">{{ props.description }}</text>
+      </slot>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Result - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/result：
+ *  - icon 简化为 string（图片 URL）或 boolean（false=不显示）
+ *  - 主题着色通过 .t-result--theme-* 应用 thumb color
+ */
+import { computed, useSlots } from 'vue';
+import { resultVariants } from './t-result.variants';
+import type { ResultTheme } from './t-result.types';
+
+const props = defineProps({
+  description: { type: String, default: '' },
+  icon: { type: [String, Boolean] as PropType<string | boolean>, default: '' },
+  image: { type: String, default: '' },
+  theme: { type: String as PropType<ResultTheme>, default: 'default' },
+  title: { type: String, default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const slots = useSlots();
+
+const rootClass = computed(() =>
+  resultVariants({
+    theme: props.theme,
+    class: props.customClass,
+  }),
+);
+
+const iconUrl = computed<string>(() => {
+  // 仅当 icon 为非空字符串时显示
+  if (typeof props.icon === 'string') return props.icon as string;
+  return '';
+});
+
+const hasThumb = computed<boolean>(() => {
+  if (props.icon === false) return slots.image != null || props.image.length > 0;
+  return (
+    props.image.length > 0 ||
+    iconUrl.value.length > 0 ||
+    slots.image != null
+  );
+});
+
+const hasDescription = computed<boolean>(() => {
+  return props.description.length > 0 || slots.description != null;
+});
+</script>
+
+<style lang="less">
+@import './t-result.theme.less';
+</style>

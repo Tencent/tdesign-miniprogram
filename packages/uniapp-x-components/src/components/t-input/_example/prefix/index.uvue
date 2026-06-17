@@ -1,0 +1,32 @@
+<template>
+  <view>
+    <t-input
+      v-model="v1"
+      prefix-icon="🔍"
+      label="标签文字"
+      placeholder="请输入文字"
+    />
+    <t-input
+      v-model="v2"
+      prefix-icon="🔍"
+      placeholder="请输入文字"
+    />
+  </view>
+</template>
+
+<script>
+export default {
+  data() {
+    return { v1: '', v2: '' };
+  },
+};
+</script>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-block > * {
+  margin-bottom: 12px;
+}
+</style>

@@ -5,8 +5,7 @@
     {
       "name": "demo-uniapp-x",
       "root": "/Users/yourname/HBuilderProjects/tdesign-uniapp-x-demo",
-      "componentsDir": "components",
-      "utilsDir": "utils",
+      "uniModuleId": "tdesign-uniapp-x",
       "rewriteImports": true
     }
   ]

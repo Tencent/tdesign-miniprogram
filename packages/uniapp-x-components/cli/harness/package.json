@@ -1,0 +1,24 @@
+{
+  "name": "@tdesign/uniapp-x-harness",
+  "version": "0.0.0",
+  "private": true,
+  "description": "TDesign UniApp X 组件视觉对齐 + AI 自动修复工具链（基于 Playwright + Knot LLM 代理）",
+  "type": "module",
+  "main": "run.mjs",
+  "bin": {
+    "harness": "./run.mjs"
+  },
+  "scripts": {
+    "audit": "node run.mjs audit",
+    "fix": "node run.mjs fix",
+    "knot": "node lib/knot-proxy.mjs --foreground"
+  },
+  "dependencies": {
+    "cos-nodejs-sdk-v5": "^2.15.4",
+    "dotenv": "^16.4.5",
+    "openai": "^4.68.0",
+    "pixelmatch": "^6.0.0",
+    "playwright": "^1.48.0",
+    "pngjs": "^7.0.0"
+  }
+}

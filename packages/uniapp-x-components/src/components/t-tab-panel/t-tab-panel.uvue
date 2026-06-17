@@ -1,0 +1,125 @@
+<template>
+  <view v-if="shouldRender" :class="rootClass">
+    <text v-if="props.panel.length > 0" class="t-tab-panel__text">{{ props.panel }}</text>
+    <slot />
+    <slot name="panel" />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * TabPanel - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 tab-panel：
+ *  - 通过 inject('t-tabs-context') 注册自己的元数据 (label/value/icon/badge)
+ *  - icon 同时支持字符串与对象 ({ name, size, color, prefix })
+ *  - 默认 v-show 模式（保留 DOM）；lazy=true 时仅在激活后才挂载，激活后保留
+ */
+import { computed, inject, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { tabPanelVariants } from './t-tab-panel.variants';
+import { normalizeIcon, type IconConfig } from '../../utils';
+import type { TabPanelBadgeProps } from './t-tab-panel.types';
+
+type TabsContext = {
+  currentValue: string | number;
+  animation: boolean;
+  registerPanel: (meta: any) => void;
+  unregisterPanel: (value: string | number) => void;
+  isActive: (value: string | number) => boolean;
+};
+
+const ctxDefault: TabsContext = {
+  currentValue: '',
+  animation: false,
+  registerPanel: (_v: any) => {},
+  unregisterPanel: (_v: string | number) => {},
+  isActive: (_v: string | number): boolean => false,
+};
+
+const props = defineProps({
+  badgeProps: { type: Object as PropType<TabPanelBadgeProps>, default: () => ({} as TabPanelBadgeProps) },
+  disabled: { type: Boolean, default: false },
+  icon: { type: [String, Object] as PropType<string | IconConfig>, default: '' },
+  label: { type: String, default: '' },
+  lazy: { type: Boolean, default: false },
+  panel: { type: String, default: '' },
+  value: { type: [String, Number], default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const ctx = inject('t-tabs-context', ctxDefault) as TabsContext;
+const internalIndex = ref<number>(0);
+
+function buildMeta() {
+  const bp = props.badgeProps;
+  const dot = bp.dot ?? false;
+  const c = bp.count ?? '';
+  let countStr = '';
+  if (typeof c === 'number') {
+    const max = bp.maxCount ?? 99;
+    countStr = c > max ? max.toString() + '+' : c.toString();
+  } else {
+    countStr = c.toString();
+  }
+  return {
+    label: props.label,
+    value: props.value !== '' ? props.value : internalIndex.value,
+    disabled: props.disabled,
+    icon: normalizeIcon(props.icon),
+    badgeDot: dot,
+    badgeCount: countStr,
+    panel: props.panel,
+  };
+}
+
+onMounted(() => {
+  ctx.registerPanel(buildMeta());
+});
+onBeforeUnmount(() => {
+  ctx.unregisterPanel(props.value !== '' ? props.value : internalIndex.value);
+});
+
+watch(
+  () => [props.label, props.value, props.disabled, props.panel],
+  () => {
+    ctx.registerPanel(buildMeta());
+  },
+);
+watch(
+  () => props.icon,
+  () => {
+    ctx.registerPanel(buildMeta());
+  },
+  { deep: true },
+);
+
+const isActive = computed<boolean>(() => {
+  const v = props.value !== '' ? props.value : internalIndex.value;
+  return ctx.currentValue === v;
+});
+
+const hasActivated = ref<boolean>(false);
+watch(
+  () => isActive.value,
+  (active: boolean) => {
+    if (active) hasActivated.value = true;
+  },
+  { immediate: true },
+);
+
+const shouldRender = computed<boolean>(() => {
+  if (!props.lazy) return true;
+  return hasActivated.value;
+});
+
+const rootClass = computed<string>(() =>
+  tabPanelVariants({
+    active: isActive.value,
+    class: props.customClass,
+  }),
+);
+</script>
+
+<style lang="less">
+@import './t-tab-panel.theme.less';
+</style>

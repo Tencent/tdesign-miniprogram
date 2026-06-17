@@ -1,0 +1,56 @@
+<template>
+  <view>
+    <!-- 后置图标按钮 -->
+    <t-input
+      v-model="v1"
+      label="标签文字"
+      placeholder="请输入文字"
+      suffix-icon="ⓘ"
+      @click="onClick"
+    />
+
+    <!-- 自定义 suffix slot：操作按钮 -->
+    <t-input
+      v-model="v2"
+      label="标签文字"
+      placeholder="请输入文字"
+      tips="最多十个字"
+      :maxcharacter="10"
+    >
+      <template #suffix>
+        <text class="op-btn">操作按钮</text>
+      </template>
+    </t-input>
+
+    <!-- 通讯录后置图标 -->
+    <t-input
+      v-model="v3"
+      label="标签文字"
+      placeholder="请输入文字"
+      suffix-icon="☰"
+    />
+  </view>
+</template>
+
+<script>
+export default {
+  data() {
+    return { v1: '', v2: '', v3: '' };
+  },
+  methods: {
+    onClick(e) {
+      console.log('click trigger:', e.trigger);
+    },
+  },
+};
+</script>
+
+<style>
+.op-btn {
+  background: #0052d9;
+  color: #fff;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+</style>

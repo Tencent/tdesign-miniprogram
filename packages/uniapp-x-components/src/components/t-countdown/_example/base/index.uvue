@@ -1,0 +1,11 @@
+<template>
+  <view class="demo-block">
+    <t-countdown :time="3600000" ></t-countdown>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+</style>

@@ -1,0 +1,81 @@
+<template>
+  <view :class="rootClass">
+    <view v-if="hasLogo" class="t-footer__logo" @click="onLogoClick">
+      <image
+        v-if="logoIcon.length > 0"
+        class="t-footer__icon"
+        :src="logoIcon"
+        mode="aspectFit"
+      />
+      <text v-if="logoTitle.length > 0" class="t-footer__title">{{ logoTitle }}</text>
+    </view>
+    <view v-if="props.links.length > 0" class="t-footer__link-list">
+      <template v-for="(link, index) in props.links" :key="index">
+        <text
+          class="t-footer__link-item"
+          @click="onLinkClick(link, index)"
+        >{{ link.name }}</text>
+        <text v-if="index < props.links.length - 1" class="t-footer__link-line">|</text>
+      </template>
+    </view>
+    <view v-if="props.text.length > 0" class="t-footer__text">
+      <text>{{ props.text }}</text>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Footer - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/footer：
+ *  - links: 链接列表，点击触发 link-click
+ *  - logo: { icon, title, url } 配置；点击触发 logo-click
+ *  - text: 版权信息
+ *  - 不在组件内执行路由跳转，仅抛出事件由业务层处理
+ */
+import { computed } from 'vue';
+import { footerVariants } from './t-footer.variants';
+import type { FooterLink, FooterLogo } from './t-footer.types';
+
+const props = defineProps({
+  links: { type: Array as PropType<FooterLink[]>, default: () => [] as FooterLink[] },
+  logo: { type: Object as PropType<FooterLogo | null>, default: null },
+  text: { type: String, default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['link-click', 'logo-click']);
+
+const rootClass = computed(() => footerVariants({ class: props.customClass }));
+
+const logoIcon = computed<string>(() => {
+  if (props.logo == null) return '';
+  const v = (props.logo as FooterLogo).icon;
+  return v != null ? v : '';
+});
+
+const logoTitle = computed<string>(() => {
+  if (props.logo == null) return '';
+  const v = (props.logo as FooterLogo).title;
+  return v != null ? v : '';
+});
+
+const hasLogo = computed<boolean>(() => {
+  return logoIcon.value.length > 0 || logoTitle.value.length > 0;
+});
+
+function onLinkClick(link: FooterLink, index: number) {
+  emit('link-click', { item: link, index });
+}
+
+function onLogoClick() {
+  if (props.logo != null) {
+    emit('logo-click', props.logo as FooterLogo);
+  }
+}
+</script>
+
+<style lang="less">
+@import './t-footer.theme.less';
+</style>

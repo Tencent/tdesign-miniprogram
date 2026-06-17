@@ -1,0 +1,37 @@
+<template>
+  <view>
+    <t-tab-bar
+      :value="value"
+      shape="round"
+      theme="tag"
+      :split="false"
+      :fixed="false"
+      @change="onChange"
+    >
+      <t-tab-bar-item
+        v-for="(item, index) in list"
+        :key="index"
+        :value="item.value"
+        :icon="item.icon"
+      />
+    </t-tab-bar>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const value = ref<string>('label_1');
+const list = [
+  { value: 'label_1', icon: 'home' },
+  { value: 'label_2', icon: 'app' },
+  { value: 'label_3', icon: 'chat' },
+  { value: 'label_4', icon: 'user' },
+];
+
+function onChange(e: { value: string }) {
+  value.value = e.value;
+}
+</script>
+
+<style></style>

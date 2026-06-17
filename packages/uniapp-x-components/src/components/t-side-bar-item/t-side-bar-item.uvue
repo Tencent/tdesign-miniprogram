@@ -1,0 +1,116 @@
+<template>
+  <view :class="rootClass" @click="handleClick">
+    <view v-if="active" class="t-side-bar-item__line" />
+    <view v-if="active && !isFirst" class="t-side-bar-item__prefix" />
+    <view v-if="active && !isLast" class="t-side-bar-item__suffix" />
+
+    <t-icon
+      v-if="innerIcon.name.length > 0"
+      :name="innerIcon.name"
+      :size="innerIcon.size"
+      :color="innerIcon.color"
+      :prefix="innerIcon.prefix"
+      custom-class="t-side-bar-item__icon"
+    />
+
+    <text>{{ props.label }}</text>
+
+    <view v-if="hasBadgeDot" class="t-side-bar-item__badge-dot" />
+    <view v-else-if="hasBadgeCount" class="t-side-bar-item__badge-count">
+      <text class="t-side-bar-item__badge-text">{{ badgeText }}</text>
+    </view>
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * SideBarItem - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 side-bar-item：
+ *  - 通过 inject('t-side-bar-context') 与父 t-side-bar 通信
+ *  - 自身 isFirst / isLast 由 onMounted 时 ctx.registerItem 顺序判断
+ */
+import { computed, inject, onMounted, ref } from 'vue';
+import TIcon from '../t-icon/t-icon.uvue';
+import { sideBarItemVariants } from './t-side-bar-item.variants';
+import { normalizeIcon, type IconConfig } from '../../utils';
+import type { SideBarItemBadgeProps } from './t-side-bar-item.types';
+
+type SideBarContext = {
+  currentValue: string | number;
+  itemCount: number;
+  registerItem: () => number;
+  setValue: (v: string | number, label: string) => void;
+};
+
+const ctxDefault: SideBarContext = {
+  currentValue: '',
+  itemCount: 0,
+  registerItem: (): number => 0,
+  setValue: (_v: string | number, _l: string) => {},
+};
+
+const props = defineProps({
+  badgeProps: { type: Object as PropType<SideBarItemBadgeProps>, default: () => ({} as SideBarItemBadgeProps) },
+  disabled: { type: Boolean, default: false },
+  icon: { type: [String, Object] as PropType<string | IconConfig>, default: '' },
+  label: { type: String, default: '' },
+  value: { type: [String, Number], default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const innerIcon = computed<IconConfig>(() => normalizeIcon(props.icon));
+
+const ctx = inject('t-side-bar-context', ctxDefault) as SideBarContext;
+
+const myIndex = ref<number>(0);
+
+onMounted(() => {
+  myIndex.value = ctx.registerItem();
+});
+
+const currentName = computed<string | number>(() => {
+  if (props.value !== '') return props.value;
+  return myIndex.value;
+});
+
+const active = computed<boolean>(() => {
+  return !props.disabled && ctx.currentValue === currentName.value;
+});
+
+const isFirst = computed<boolean>(() => myIndex.value === 1);
+const isLast = computed<boolean>(() => myIndex.value === ctx.itemCount && ctx.itemCount > 0);
+
+const rootClass = computed<string>(() =>
+  sideBarItemVariants({
+    active: active.value,
+    disabled: props.disabled,
+    class: props.customClass,
+  }),
+);
+
+const hasBadgeDot = computed<boolean>(() => props.badgeProps.dot ?? false);
+const hasBadgeCount = computed<boolean>(() => {
+  const c = props.badgeProps.count ?? '';
+  return c !== '' && c !== 0;
+});
+const badgeText = computed<string>(() => {
+  const c = props.badgeProps.count ?? '';
+  if (typeof c === 'number') {
+    const max = props.badgeProps.maxCount ?? 99;
+    if (c > max) return max.toString() + '+';
+    return c.toString();
+  }
+  return c.toString();
+});
+
+function handleClick() {
+  if (props.disabled) return;
+  ctx.setValue(currentName.value, props.label);
+}
+</script>
+
+<style lang="less">
+@import './t-side-bar-item.theme.less';
+</style>

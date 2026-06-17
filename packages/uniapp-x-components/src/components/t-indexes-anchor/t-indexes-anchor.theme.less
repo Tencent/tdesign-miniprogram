@@ -1,0 +1,36 @@
+/**
+ * IndexesAnchor 基础样式
+ *
+ * 与 @tdesign/uniapp 的 indexes-anchor.less 视觉对齐
+ */
+
+@td-indexes-anchor-color: var(--td-indexes-anchor-color, rgba(0, 0, 0, 0.9));
+@td-indexes-anchor-active-color: var(--td-indexes-anchor-active-color, #0052d9);
+@td-indexes-anchor-bg-color: var(--td-indexes-anchor-bg-color, #f3f3f3);
+@td-indexes-anchor-active-bg-color: var(--td-indexes-anchor-active-bg-color, #ffffff);
+@td-indexes-anchor-font-size: var(--td-indexes-anchor-font-size, 14px);
+@td-indexes-anchor-padding: var(--td-indexes-anchor-padding, 4px 16px);
+@td-indexes-anchor-border-color: var(--td-indexes-anchor-border-color, #e7e7e7);
+
+.t-indexes-anchor {
+  color: @td-indexes-anchor-color;
+  font-size: @td-indexes-anchor-font-size;
+
+  &__header {
+    padding: 4px 16px;
+    background-color: @td-indexes-anchor-bg-color;
+  }
+
+  &__slot {
+    overflow: hidden;
+  }
+
+  &--active {
+    .t-indexes-anchor__header {
+      background-color: @td-indexes-anchor-active-bg-color;
+      color: @td-indexes-anchor-active-color;
+      font-weight: 600;
+      border-bottom: 1px solid @td-indexes-anchor-border-color;
+    }
+  }
+}

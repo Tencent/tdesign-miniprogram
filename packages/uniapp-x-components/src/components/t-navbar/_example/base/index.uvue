@@ -1,0 +1,18 @@
+<template>
+  <view>
+    <view class="block">
+      <t-navbar title="标题文字" :fixed="false" />
+    </view>
+    <view class="block">
+      <t-navbar title="标题文字" :left-arrow="true" :fixed="false" @go-back="handleBack" />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+function handleBack() {
+  // go back
+}
+</script>
+
+<style></style>

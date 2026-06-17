@@ -1,0 +1,94 @@
+<template>
+  <scroll-view class="demo-page" :scroll-y="true">
+    <view class="demo-header">
+      <text class="demo-title">Button 按钮</text>
+      <text class="demo-desc">用于开启一个闭环的操作任务，如"删除"对象、"购买"商品等。</text>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">01 组件类型</text>
+      <text class="demo-section-desc">主题</text>
+      <base-demo></base-demo>
+      <text class="demo-section-desc">变体</text>
+      <variant-demo></variant-demo>
+      <text class="demo-section-desc">通栏按钮</text>
+      <block-demo></block-demo>
+      <text class="demo-section-desc">幽灵按钮</text>
+      <ghost-demo></ghost-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">02 组件状态</text>
+      <text class="demo-section-desc">禁用 / 加载</text>
+      <status-demo></status-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">03 组件样式</text>
+      <text class="demo-section-desc">尺寸</text>
+      <size-demo></size-demo>
+      <text class="demo-section-desc">形状</text>
+      <shape-demo></shape-demo>
+    </view>
+  </scroll-view>
+</template>
+
+<script>
+import BaseDemo from './base/index.uvue';
+import VariantDemo from './variant/index.uvue';
+import SizeDemo from './size/index.uvue';
+import ShapeDemo from './shape/index.uvue';
+import StatusDemo from './status/index.uvue';
+import BlockDemo from './block/index.uvue';
+import GhostDemo from './ghost/index.uvue';
+
+export default {
+  components: {
+    BaseDemo,
+    VariantDemo,
+    SizeDemo,
+    ShapeDemo,
+    StatusDemo,
+    BlockDemo,
+    GhostDemo,
+  },
+};
+</script>
+
+<style>
+.demo-page {
+  flex: 1;
+  background-color: #f5f5f5;
+}
+.demo-header {
+  padding: 24px 16px 16px;
+  background-color: #ffffff;
+}
+.demo-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #181818;
+  margin-bottom: 8px;
+}
+.demo-desc {
+  font-size: 14px;
+  color: #888888;
+  line-height: 22px;
+}
+.demo-section {
+  margin-top: 12px;
+  background-color: #ffffff;
+  padding-bottom: 8px;
+}
+.demo-section-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #181818;
+  padding: 16px 16px 8px;
+}
+.demo-section-desc {
+  font-size: 13px;
+  color: #666666;
+  padding: 8px 16px 0;
+}
+</style>

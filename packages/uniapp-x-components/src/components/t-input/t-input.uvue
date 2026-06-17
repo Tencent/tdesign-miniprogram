@@ -1,0 +1,336 @@
+<template>
+  <view :class="rootClass">
+    <!-- ① prefix 区：图标 + 标签 -->
+    <view v-if="showPrefix" class="t-input__wrap--prefix">
+      <view v-if="hasPrefixIconSlot || props.prefixIcon.length > 0" class="t-input__icon--prefix">
+        <slot name="prefix-icon">
+          <text v-if="props.prefixIcon.length > 0">{{ props.prefixIcon }}</text>
+        </slot>
+      </view>
+      <view v-if="hasLabelSlot || props.label.length > 0" class="t-input__label">
+        <slot name="label">
+          <text v-if="props.label.length > 0" class="t-input__label-text">{{ props.label }}</text>
+        </slot>
+      </view>
+    </view>
+
+    <!-- ② 主体 wrap -->
+    <view class="t-input__wrap">
+      <view class="t-input__content" @click="onClick">
+        <input
+          :class="controlClass"
+          :type="inputType"
+          :password="type === 'password'"
+          :value="dataValue"
+          :placeholder="placeholder"
+          :placeholder-style="placeholderStyle"
+          :placeholder-class="finalPlaceholderClass"
+          :disabled="disabled || readonly"
+          :maxlength="effectiveMaxlength"
+          :focus="focus || autoFocus"
+          :confirm-type="confirmType"
+          :confirm-hold="confirmHold"
+          :adjust-position="adjustPosition"
+          :cursor="cursor"
+          :cursor-color="cursorColor"
+          :cursor-spacing="cursorSpacing"
+          :selection-start="selectionStart"
+          :selection-end="selectionEnd"
+          :hold-keyboard="holdKeyboard"
+          :always-embed="alwaysEmbed"
+          @input="onInput"
+          @change="onNativeChange"
+          @focus="onFocus"
+          @blur="onBlur"
+          @confirm="onConfirm"
+          @keyboardheightchange="onKeyboardHeightChange"
+          @nicknamereview="onNickNameReview"
+        />
+
+        <!-- 清除按钮 -->
+        <view
+          v-if="showClearable"
+          class="t-input__wrap--clearable-icon"
+          @click.stop="onClear"
+        >
+          <text class="t-input__clear-fallback">×</text>
+        </view>
+
+        <!-- 后置文本（slot 优先） -->
+        <view
+          v-if="hasSuffixSlot || suffix.length > 0"
+          class="t-input__wrap--suffix"
+          @click="onSuffixClick"
+        >
+          <slot name="suffix">
+            <text v-if="suffix.length > 0">{{ suffix }}</text>
+          </slot>
+        </view>
+
+        <!-- 后置图标 -->
+        <view
+          v-if="hasSuffixIconSlot || props.suffixIcon.length > 0"
+          class="t-input__wrap--suffix-icon"
+          @click="onSuffixIconClick"
+        >
+          <slot name="suffix-icon">
+            <text v-if="props.suffixIcon.length > 0">{{ props.suffixIcon }}</text>
+          </slot>
+        </view>
+      </view>
+
+      <!-- ③ tips -->
+      <view v-if="hasTipsSlot || tips.length > 0" :class="tipsClass">
+        <slot name="tips">
+          <text v-if="tips.length > 0" class="t-input__tips-text">{{ tips }}</text>
+        </slot>
+      </view>
+    </view>
+
+    <!-- ④ 额外区（如操作按钮） -->
+    <slot name="extra" />
+  </view>
+</template>
+
+<script setup lang="uts">
+import { computed, ref, useSlots, watch } from 'vue';
+import {
+  inputVariants,
+  inputControlVariants,
+  inputTipsVariants,
+} from './t-input.variants';
+import { getCharacterLength } from '../../utils/text';
+import type {
+  InputType,
+  InputAlign,
+  InputLayout,
+  InputStatus,
+  InputClearTrigger,
+  InputConfirmType,
+  InputFormatFn,
+} from './t-input.types';
+
+const props = defineProps({
+  /** v-model 值 */
+  modelValue: { type: String, default: '' },
+  /** uniapp 版兼容字段：与 modelValue 等价 */
+  value: { type: String, default: '' },
+  placeholder: { type: String, default: '' },
+  type: { type: String as PropType<InputType>, default: 'text' },
+  align: { type: String as PropType<InputAlign>, default: 'left' },
+  label: { type: String, default: '' },
+  tips: { type: String, default: '' },
+  suffix: { type: String, default: '' },
+  prefixIcon: { type: String, default: '' },
+  suffixIcon: { type: String, default: '' },
+  layout: { type: String as PropType<InputLayout>, default: 'horizontal' },
+  borderless: { type: Boolean, default: false },
+  status: { type: String as PropType<InputStatus>, default: 'default' },
+  disabled: { type: Boolean, default: false },
+  readonly: { type: Boolean, default: false },
+  clearable: { type: Boolean, default: false },
+  clearTrigger: { type: String as PropType<InputClearTrigger>, default: 'always' },
+  maxlength: { type: Number, default: -1 },
+  maxcharacter: { type: Number, default: -1 },
+  allowInputOverMax: { type: Boolean, default: false },
+  focus: { type: Boolean, default: false },
+  confirmType: { type: String as PropType<InputConfirmType>, default: 'done' },
+  confirmHold: { type: Boolean, default: false },
+  adjustPosition: { type: Boolean, default: true },
+  placeholderClass: { type: String, default: 'input-placeholder' },
+  placeholderStyle: { type: String, default: '' },
+  format: { type: Function as PropType<InputFormatFn | null>, default: null },
+  customClass: { type: String, default: '' },
+  cursor: { type: Number, default: -1 },
+  cursorColor: { type: String, default: '#0052d9' },
+  cursorSpacing: { type: Number, default: 0 },
+  safePasswordCertPath: { type: String, default: '' },
+  safePasswordCustomHash: { type: String, default: '' },
+  safePasswordLength: { type: Number, default: 0 },
+  safePasswordNonce: { type: String, default: '' },
+  safePasswordSalt: { type: String, default: '' },
+  safePasswordTimeStamp: { type: Number, default: 0 },
+  selectionEnd: { type: Number, default: -1 },
+  selectionStart: { type: Number, default: -1 },
+  alwaysEmbed: { type: Boolean, default: false },
+  autoFocus: { type: Boolean, default: false },
+  holdKeyboard: { type: Boolean, default: false },
+});
+
+const emit = defineEmits([
+  'update:modelValue',
+  'update:value',
+  'change',
+  'focus',
+  'blur',
+  'clear',
+  'enter',
+  'click',
+  'keyboardheightchange',
+  'nicknamereview',
+]);
+
+const slots = useSlots();
+const hasLabelSlot = computed<boolean>(() => slots.label != null);
+const hasPrefixIconSlot = computed<boolean>(() => slots['prefix-icon'] != null);
+const hasSuffixSlot = computed<boolean>(() => slots.suffix != null);
+const hasSuffixIconSlot = computed<boolean>(() => slots['suffix-icon'] != null);
+const hasTipsSlot = computed<boolean>(() => slots.tips != null);
+
+// 是否显示 prefix 区域
+const showPrefix = computed<boolean>(() => {
+  return hasPrefixIconSlot.value || props.prefixIcon.length > 0 || hasLabelSlot.value || props.label.length > 0;
+});
+
+// 受控值：modelValue 优先，回退到 value
+const dataValue = ref<string>(props.modelValue.length > 0 ? props.modelValue : props.value);
+
+watch(
+  () => props.modelValue,
+  (v: string) => {
+    dataValue.value = v;
+  },
+);
+watch(
+  () => props.value,
+  (v: string) => {
+    if (props.modelValue.length === 0 && v !== dataValue.value) {
+      dataValue.value = v;
+    }
+  },
+);
+
+// password 类型在原生 input 上需要把 type 留 text + password=true
+const inputType = computed<string>(() => (props.type === 'password' ? 'text' : props.type));
+
+// placeholderClass 默认值对齐 baseline
+const finalPlaceholderClass = computed<string>(() => {
+  if (props.placeholderClass.length > 0) return props.placeholderClass;
+  return 'input-placeholder';
+});
+
+// maxlength 行为：allowInputOverMax 时设为 -1 不限制；否则取 maxlength
+const effectiveMaxlength = computed<number>(() => {
+  if (props.allowInputOverMax) return -1;
+  if (props.maxlength > 0) return props.maxlength;
+  return -1;
+});
+
+// 清除按钮显示规则
+const focused = ref<boolean>(false);
+const showClearable = computed<boolean>(() => {
+  if (!props.clearable) return false;
+  if (dataValue.value.length === 0) return false;
+  if (props.disabled || props.readonly) return false;
+  if (props.clearTrigger === 'focus' && !focused.value) return false;
+  return true;
+});
+
+// ---- 便捷引用 ----
+const label = computed<string>(() => props.label);
+const prefixIcon = computed<string>(() => props.prefixIcon);
+
+// ---- 类名 ----
+const rootClass = computed<string>(() =>
+  inputVariants({
+    layout: props.layout,
+    align: props.align,
+    status: props.status,
+    borderless: props.borderless,
+    disabled: props.disabled,
+    readonly: props.readonly,
+    class: props.customClass,
+  }),
+);
+const controlClass = computed<string>(() =>
+  inputControlVariants({
+    align: props.align,
+    disabled: props.disabled,
+    readonly: props.readonly,
+  }),
+);
+const tipsClass = computed<string>(() =>
+  inputTipsVariants({
+    align: props.align,
+    status: props.status,
+  }),
+);
+
+// ---- 内部更新 ----
+function updateValue(value: string) {
+  let next = value;
+
+  // maxcharacter 截断（allowInputOverMax 关闭时）
+  if (!props.allowInputOverMax && props.maxcharacter > 0) {
+    const r = getCharacterLength('maxcharacter', value, props.maxcharacter);
+    next = r.characters;
+  }
+
+  dataValue.value = next;
+  emit('update:modelValue', next);
+  emit('update:value', next);
+}
+
+// ---- events ----
+function onInput(e: UniInputEvent) {
+  const v = e.detail.value;
+  const cursor = e.detail.cursor;
+  updateValue(v);
+  emit('change', { value: dataValue.value, cursor });
+}
+
+function onNativeChange(e: UniInputEvent) {
+  // 仅 nickname 类型走原生 change
+  if (props.type !== 'nickname') return;
+  const v = e.detail.value;
+  updateValue(v);
+  emit('change', { value: dataValue.value });
+}
+
+function onFocus(e: UniFocusEvent) {
+  focused.value = true;
+  emit('focus', { value: dataValue.value });
+}
+
+function onBlur(e: UniBlurEvent) {
+  focused.value = false;
+  // 失焦时执行 format
+  if (props.format != null) {
+    const fmt = props.format as InputFormatFn;
+    const next = fmt(e.detail.value);
+    updateValue(next);
+  }
+  emit('blur', { value: dataValue.value });
+}
+
+function onConfirm(_e: UniInputConfirmEvent) {
+  emit('enter', { value: dataValue.value });
+}
+
+function onClear() {
+  updateValue('');
+  emit('clear', { value: '' });
+  emit('change', { value: '' });
+}
+
+function onClick() {
+  emit('click', { trigger: 'input' });
+}
+function onSuffixClick() {
+  emit('click', { trigger: 'suffix' });
+}
+function onSuffixIconClick() {
+  emit('click', { trigger: 'suffix-icon' });
+}
+
+function onKeyboardHeightChange(e: UniInputEvent) {
+  emit('keyboardheightchange', e.detail);
+}
+function onNickNameReview(e: UniInputEvent) {
+  emit('nicknamereview', e.detail);
+}
+</script>
+
+<style lang="less">
+@import './t-input.theme.less';
+</style>

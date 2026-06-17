@@ -1,0 +1,40 @@
+/**
+ * Fab 基础样式
+ */
+
+@td-fab-shadow: var(--td-fab-shadow, 0 8px 24px rgba(0, 0, 0, 0.16));
+@td-fab-bg-color: var(--td-fab-bg-color, #0052d9);
+@td-fab-color: var(--td-fab-color, #ffffff);
+
+.t-fab {
+  position: fixed;
+  z-index: 100;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 999px;
+    background-color: @td-fab-bg-color;
+    color: @td-fab-color;
+    box-shadow: @td-fab-shadow;
+  }
+
+  &__icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__text {
+    margin-left: 4px;
+    color: @td-fab-color;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  &__icon + &__text {
+    margin-left: 6px;
+  }
+}

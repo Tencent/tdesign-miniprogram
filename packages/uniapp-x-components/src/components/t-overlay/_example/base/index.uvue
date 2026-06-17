@@ -1,0 +1,41 @@
+<template>
+  <view>
+    <t-button
+      block
+      size="large"
+      theme="primary"
+      variant="outline"
+      @click="handleClick"
+    >
+      基础用法
+    </t-button>
+    <t-overlay
+      :visible="visible"
+      :duration="500"
+      @click="handleOverlayClick"
+    />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Overlay base demo
+ * 1:1 对齐 @tdesign/uniapp overlay/_example/base/index.vue
+ *
+ * 注意：t-button / t-overlay 由 starter 端 easycom 全局注册，
+ * 这里不再 import，与 t-empty/t-image-viewer 等示例保持一致写法。
+ */
+import { ref } from 'vue';
+
+const visible = ref<boolean>(false);
+
+function handleClick() {
+  visible.value = true;
+}
+function handleOverlayClick() {
+  visible.value = !visible.value;
+}
+</script>
+
+<style>
+</style>

@@ -1,0 +1,21 @@
+<template>
+  <view class="demo-block">
+    <t-collapse v-model:value="value">
+      <t-collapse-panel value="1" header="标题1" content="内容1：折叠面板的内容默认收起。" ></t-collapse-panel>
+      <t-collapse-panel value="2" header="标题2" content="内容2：可以同时展开多个面板。" ></t-collapse-panel>
+      <t-collapse-panel value="3" header="标题3" content="内容3：禁用面板可设置 disabled。" ></t-collapse-panel>
+    </t-collapse>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const value = ref<(string | number)[]>(['1']);
+</script>
+
+<style>
+.demo-block {
+  background-color: #ffffff;
+}
+</style>

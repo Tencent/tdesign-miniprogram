@@ -1,0 +1,67 @@
+<template>
+  <view>
+    <!-- 必须预埋 t-dialog 并设置 ref="dialog" -->
+    <t-dialog ref="dialog" />
+
+    <t-button block size="large" theme="primary" custom-style="margin-bottom: 16rpx;" @click="onAlert">
+      Dialog.alert（仅确认）
+    </t-button>
+    <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onConfirm">
+      Dialog.confirm（取消+确认）
+    </t-button>
+    <t-button block size="large" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onVertical">
+      纵向按钮布局
+    </t-button>
+    <t-button block size="large" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onWithCloseBtn">
+      带关闭按钮
+    </t-button>
+    <t-button block size="large" variant="text" @click="onClose">
+      Dialog.close()
+    </t-button>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Dialog base demo - alert / confirm / 纵向布局 / 关闭按钮
+ */
+import { Dialog } from '@/uni_modules/tdesign-uniapp-x/components/t-dialog';
+
+function onAlert() {
+  Dialog.alert({
+    title: '提示',
+    content: '这是一个 alert 弹窗，仅有确认按钮。',
+  });
+}
+function onConfirm() {
+  Dialog.confirm({
+    title: '确认删除',
+    content: '删除后无法恢复，是否继续？',
+    cancelBtn: '取消',
+    confirmBtn: '确认删除',
+  });
+}
+function onVertical() {
+  Dialog.confirm({
+    title: '协议确认',
+    content: '请仔细阅读相关协议条款后再继续。',
+    cancelBtn: '查看协议',
+    confirmBtn: '我已阅读并同意',
+    buttonLayout: 'vertical',
+  });
+}
+function onWithCloseBtn() {
+  Dialog.show({
+    title: '带关闭按钮',
+    content: '右上角的 × 也可关闭弹窗。',
+    confirmBtn: '知道了',
+    closeBtn: true,
+    closeOnOverlayClick: true,
+  });
+}
+function onClose() {
+  Dialog.close();
+}
+</script>
+
+<style></style>

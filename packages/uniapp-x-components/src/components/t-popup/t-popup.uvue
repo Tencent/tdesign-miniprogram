@@ -1,0 +1,172 @@
+<template>
+  <!--
+    Popup - uni-app x 实现
+    -------------------------------------------------------
+    DOM 结构 1:1 对齐 @tdesign/uniapp/popup/popup.vue：
+      <view>
+        <view class="t-popup t-popup--{placement} {fade-state}">       ← 浮层容器（动画位移 + 圆角吸附）
+          <view class="t-popup__content">                               ← 内容区
+            <slot name="content" />
+            <slot />
+            <view class="t-popup__close" @click>                        ← 关闭按钮区（closeBtn 或 close-btn slot）
+              <text v-if="closeBtn">×</text>
+              <slot name="close-btn" />
+            </view>
+          </view>
+        </view>
+        <t-overlay v-if="showOverlay" @click />                          ← 遮罩层（透传 overlayProps）
+      </view>
+
+    动画策略：与 t-overlay 一致的 enter/active/leave 三段式：
+      visible=true  → realVisible=true → state='enter'（offscreen） → 16ms 后 'active'（吸附就位）
+      visible=false → state='leave'（offscreen） → transitionend → realVisible=false
+  -->
+  <view v-if="realVisible || rootRealVisible">
+    <view
+      v-if="realVisible"
+      :class="rootClass"
+      :style="rootStyle"
+      @transitionend="onTransitionEnd"
+    >
+      <view :class="contentClass" @touchmove.stop.prevent="noop">
+        <slot name="content" />
+        <slot />
+        <view v-if="closeBtn || hasCloseBtnSlot" class="t-popup__close" @click="handleClose">
+          <text v-if="closeBtn" class="t-popup__close-icon">×</text>
+          <slot name="close-btn" />
+        </view>
+      </view>
+    </view>
+    <t-overlay
+      v-if="showOverlay"
+      :visible="overlayVisible"
+      :duration="duration"
+      :z-index="zIndex - 500"
+      :prevent-scroll-through="preventScrollThrough"
+      @click="handleOverlayClick"
+    />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Popup - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 popup：
+ *  - visible（受控）/ defaultVisible（非受控）
+ *  - 进入：内容容器从 offscreen 平移到位 + overlay 淡入
+ *  - 离开：内容容器平移出场 + overlay 淡出，等内容容器 transitionend 后真正卸载
+ *  - 点击遮罩层 → 触发 visible-change({ trigger:'overlay' }) + update:visible(false)
+ *  - 点击关闭按钮 → 触发 visible-change({ trigger:'close-btn' }) + update:visible(false)
+ *
+ * 实现细节：
+ *  - rootRealVisible：保证 v-if 容器在 overlay 离场动画期间也存活
+ *  - overlayVisible：与 popup 内容容器同步进出，但由 t-overlay 自管动画结束后卸载
+ */
+import { computed, ref, useSlots, watch } from 'vue';
+import { popupVariants } from './t-popup.variants';
+
+const props = defineProps({
+  closeBtn: { type: Boolean, default: false },
+  closeOnOverlayClick: { type: Boolean, default: true },
+  customClass: { type: String, default: '' },
+  customClassContent: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  content: { type: String, default: '' },
+  defaultVisible: { type: Boolean, default: false },
+  duration: { type: Number, default: 240 },
+  preventScrollThrough: { type: Boolean, default: true },
+  placement: { type: String, default: 'top' },
+  showOverlay: { type: Boolean, default: true },
+  usingCustomNavbar: { type: Boolean, default: false },
+  visible: { type: Boolean, default: false },
+  zIndex: { type: Number, default: 11500 },
+});
+
+const emit = defineEmits(['visible-change', 'update:visible', 'leaved']);
+const slots = useSlots();
+
+/** 浮层内容真实渲染开关 */
+const realVisible = ref<boolean>(props.visible || props.defaultVisible);
+/** 容器外层 v-if 开关：保证 overlay 离场动画期间 dom 不被立刻卸载 */
+const rootRealVisible = ref<boolean>(props.visible || props.defaultVisible);
+/** 同步给 t-overlay 的 visible（控制 overlay 自身的进出动画） */
+const overlayVisible = ref<boolean>(props.visible || props.defaultVisible);
+/** 内容容器动画阶段：enter / active / leave */
+const animState = ref<string>(realVisible.value ? 'active' : 'enter');
+
+watch(
+  () => props.visible,
+  (v: boolean) => {
+    if (v) {
+      // 进入
+      rootRealVisible.value = true;
+      realVisible.value = true;
+      overlayVisible.value = true;
+      animState.value = 'enter';
+      setTimeout(() => {
+        animState.value = 'active';
+      }, 16);
+    } else {
+      // 离开：内容先 leave，触发 transitionend 后再卸载
+      animState.value = 'leave';
+      overlayVisible.value = false;
+    }
+  },
+);
+
+const hasCloseBtnSlot = computed<boolean>(() => slots['close-btn'] != null);
+
+const rootClass = computed<string>(() => {
+  const cls = popupVariants({ placement: props.placement, state: animState.value });
+  return props.customClass.length > 0 ? cls + ' ' + props.customClass : cls;
+});
+
+const rootStyle = computed<string>(() => {
+  const parts: string[] = [];
+  parts.push('z-index:' + props.zIndex.toString());
+  parts.push('--td-popup-transition-duration:' + props.duration.toString() + 'ms');
+  if (props.customStyle.length > 0) {
+    parts.push(props.customStyle);
+  }
+  return parts.join(';');
+});
+
+const contentClass = computed<string>(() => {
+  const base = 't-popup__content';
+  return props.customClassContent.length > 0 ? base + ' ' + props.customClassContent : base;
+});
+
+function noop() {
+  // 占位：用于 touchmove.stop.prevent
+}
+
+function handleOverlayClick() {
+  if (!props.closeOnOverlayClick) return;
+  emit('visible-change', { visible: false, trigger: 'overlay' });
+  emit('update:visible', false);
+}
+
+function handleClose() {
+  emit('visible-change', { visible: false, trigger: 'close-btn' });
+  emit('update:visible', false);
+}
+
+function onTransitionEnd() {
+  if (animState.value === 'leave') {
+    realVisible.value = false;
+    rootRealVisible.value = false;
+    emit('leaved');
+  }
+}
+</script>
+
+<style lang="less">
+@import './t-popup.theme.less';
+
+.t-popup__close-icon {
+  font-size: 48rpx;
+  line-height: 1;
+  color: var(--td-popup-close-btn-color, rgba(0, 0, 0, 0.9));
+}
+</style>

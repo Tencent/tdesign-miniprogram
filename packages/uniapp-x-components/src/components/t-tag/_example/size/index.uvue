@@ -1,0 +1,26 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-tag theme="primary" size="small">小号</t-tag>
+      <t-tag theme="primary" size="medium">中等</t-tag>
+      <t-tag theme="primary" size="large">大号</t-tag>
+      <t-tag theme="primary" size="extra-large">超大</t-tag>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-row > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

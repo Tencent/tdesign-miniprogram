@@ -1,0 +1,118 @@
+<template>
+  <view :class="rootClass">
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Collapse - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/collapse：
+ *  - 受控（value） / 非受控（defaultValue）双模式；defaultExpandAll=true 时启动展开全部
+ *  - expandMutex 互斥展开
+ *  - 通过 provide 把上下文（value、disabled、expandIcon、theme、togglePanel）下放给 t-collapse-panel
+ *  - 使用 reactive context 让子面板 panel 能 inject 后实时拿到 activeValue
+ */
+import { computed, onMounted, provide, reactive, watch } from 'vue';
+import { collapseVariants } from './t-collapse.variants';
+import type { CollapseTheme, CollapseValue } from './t-collapse.types';
+
+const props = defineProps({
+  defaultExpandAll: { type: Boolean, default: false },
+  disabled: { type: Boolean, default: false },
+  expandIcon: { type: Boolean, default: true },
+  expandMutex: { type: Boolean, default: false },
+  theme: { type: String as PropType<CollapseTheme>, default: 'default' },
+  value: { type: Array as PropType<CollapseValue | null>, default: null },
+  defaultValue: { type: Array as PropType<CollapseValue | null>, default: null },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change', 'update:value']);
+
+const ctx = reactive({
+  activeValue: [] as CollapseValue,
+  disabled: props.disabled,
+  expandIcon: props.expandIcon,
+  theme: props.theme,
+  registeredKeys: [] as (string | number)[],
+});
+
+function toArr(v: CollapseValue | null): CollapseValue {
+  if (v == null) return [] as CollapseValue;
+  return v as CollapseValue;
+}
+
+function indexOf(arr: CollapseValue, key: string | number): number {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === key) return i;
+  }
+  return -1;
+}
+
+function applyValueFromProps() {
+  if (props.value != null) {
+    ctx.activeValue = toArr(props.value);
+    return;
+  }
+  if (props.defaultValue != null) {
+    ctx.activeValue = toArr(props.defaultValue);
+    return;
+  }
+  if (props.defaultExpandAll) {
+    ctx.activeValue = ctx.registeredKeys.slice() as CollapseValue;
+    return;
+  }
+  ctx.activeValue = [] as CollapseValue;
+}
+
+onMounted(() => applyValueFromProps());
+watch(() => props.value, () => {
+  if (props.value != null) ctx.activeValue = toArr(props.value);
+});
+watch(() => props.disabled, () => { ctx.disabled = props.disabled; });
+watch(() => props.expandIcon, () => { ctx.expandIcon = props.expandIcon; });
+
+function registerPanel(key: string | number) {
+  if (indexOf(ctx.registeredKeys as CollapseValue, key) === -1) {
+    ctx.registeredKeys.push(key);
+    if (props.value == null && props.defaultValue == null && props.defaultExpandAll) {
+      if (indexOf(ctx.activeValue, key) === -1) ctx.activeValue.push(key);
+    }
+  }
+}
+
+function togglePanel(key: string | number) {
+  if (props.disabled) return;
+  const idx = indexOf(ctx.activeValue, key);
+  let next: CollapseValue;
+  if (idx >= 0) {
+    next = ctx.activeValue.slice() as CollapseValue;
+    next.splice(idx, 1);
+  } else if (props.expandMutex) {
+    next = [key] as CollapseValue;
+  } else {
+    next = ctx.activeValue.slice() as CollapseValue;
+    next.push(key);
+  }
+  if (props.value == null) {
+    ctx.activeValue = next;
+  }
+  emit('change', next);
+  emit('update:value', next);
+}
+
+provide('t-collapse-context', { ctx, registerPanel, togglePanel });
+
+const rootClass = computed(() =>
+  collapseVariants({
+    theme: props.theme,
+    class: props.customClass,
+  }),
+);
+</script>
+
+<style lang="less">
+@import './t-collapse.theme.less';
+</style>

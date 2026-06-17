@@ -1,0 +1,32 @@
+<template>
+  <view>
+    <t-navbar :fixed="false">
+      <template #left>
+        <view class="search-box">
+          <input class="search-input" placeholder="搜索内容" />
+        </view>
+      </template>
+    </t-navbar>
+  </view>
+</template>
+
+<script setup lang="uts"></script>
+
+<style>
+.search-box {
+  width: 252px;
+  height: 32px;
+  background-color: #f3f3f3;
+  border-radius: 999px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+}
+.search-input {
+  flex: 1;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.9);
+  background-color: transparent;
+  border: 0;
+}
+</style>

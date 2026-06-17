@@ -1,0 +1,127 @@
+/**
+ * Tabs 基础样式
+ *
+ * 与 @tdesign/uniapp 的 tabs.less 视觉对齐：
+ *  - line/tag/card 三种主题
+ *  - track 下划线指示器
+ */
+
+@td-tab-font-size: var(--td-tab-font-size, 14px);
+@td-tab-nav-bg-color: var(--td-tab-nav-bg-color, #ffffff);
+@td-tab-item-height: var(--td-tab-item-height, 48px);
+@td-tab-item-color: var(--td-tab-item-color, rgba(0, 0, 0, 0.9));
+@td-tab-item-active-color: var(--td-tab-item-active-color, #0052d9);
+@td-tab-item-disabled-color: var(--td-tab-item-disabled-color, rgba(0, 0, 0, 0.26));
+@td-tab-border-color: var(--td-tab-border-color, #e7e7e7);
+
+@td-tab-track-color: var(--td-tab-track-color, #0052d9);
+@td-tab-track-thickness: var(--td-tab-track-thickness, 3px);
+@td-tab-track-width: var(--td-tab-track-width, 16px);
+@td-tab-track-radius: var(--td-tab-track-radius, 4px);
+
+@td-tab-item-tag-height: var(--td-tab-item-tag-height, 32px);
+@td-tab-item-tag-bg: var(--td-tab-item-tag-bg, #f3f3f3);
+@td-tab-item-tag-active-bg: var(--td-tab-item-tag-active-bg, rgba(0, 82, 217, 0.1));
+
+.t-tabs {
+  position: relative;
+  background-color: @td-tab-nav-bg-color;
+
+  &__wrapper {
+    display: flex;
+    overflow: hidden;
+    background: @td-tab-nav-bg-color;
+
+    &--card {
+      background: @td-tab-item-tag-bg;
+    }
+  }
+
+  &__scroll {
+    position: relative;
+    height: @td-tab-item-height;
+
+    &--split {
+      border-bottom: 1px solid @td-tab-border-color;
+    }
+  }
+
+  &__nav {
+    position: relative;
+    user-select: none;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    &--evenly {
+      width: 100%;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    color: @td-tab-item-color;
+    padding: 0 16px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    overflow: hidden;
+    height: @td-tab-item-height;
+    font-size: @td-tab-font-size;
+
+    &--evenly {
+      flex: 1 0 auto;
+    }
+
+    &--active {
+      font-weight: 600;
+      color: @td-tab-item-active-color;
+    }
+
+    &--disabled {
+      color: @td-tab-item-disabled-color;
+    }
+
+    &-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &--tag {
+        padding: 0 12px;
+        line-height: @td-tab-item-tag-height;
+        border-radius: calc(@td-tab-item-tag-height / 2);
+        background-color: @td-tab-item-tag-bg;
+      }
+
+      &--active&--tag {
+        background-color: @td-tab-item-tag-active-bg;
+      }
+    }
+  }
+
+  &__icon {
+    font-size: 18px;
+    margin-right: 4px;
+  }
+
+  &__track {
+    position: absolute;
+    z-index: 1;
+    background-color: @td-tab-track-color;
+    bottom: 1px;
+    width: @td-tab-track-width;
+    height: @td-tab-track-thickness;
+    border-radius: @td-tab-track-radius;
+    transition: left 0.3s ease;
+  }
+
+  &__content {
+    width: 100%;
+    overflow: hidden;
+  }
+}

@@ -1,0 +1,21 @@
+<template>
+  <view class="demo-block">
+    <t-loading :duration="2000" text="慢速 (2s)" ></t-loading>
+    <t-loading :duration="800" text="默认 (0.8s)" ></t-loading>
+    <t-loading :duration="300" text="快速 (0.3s)" ></t-loading>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 16px;
+}
+.demo-block > * {
+  margin-right: 24px;
+  margin-bottom: 12px;
+}
+</style>

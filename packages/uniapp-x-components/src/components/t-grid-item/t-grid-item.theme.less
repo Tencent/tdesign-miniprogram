@@ -1,0 +1,85 @@
+/**
+ * GridItem 基础样式
+ */
+
+@td-grid-item-padding: var(--td-grid-item-padding, 16px);
+@td-grid-item-bg-color: var(--td-grid-item-bg-color, #ffffff);
+@td-grid-item-image-width: var(--td-grid-item-image-width, 48px);
+@td-grid-item-text-color: var(--td-grid-item-text-color, rgba(0, 0, 0, 0.9));
+@td-grid-item-text-font-size: var(--td-grid-item-text-font-size, 14px);
+@td-grid-item-description-font-size: var(--td-grid-item-description-font-size, 12px);
+@td-grid-item-description-color: var(--td-grid-item-description-color, rgba(0, 0, 0, 0.4));
+@td-grid-item-hover-bg-color: var(--td-grid-item-hover-bg-color, #f3f3f3);
+@td-grid-item-border-color: var(--td-grid-item-border-color, #e7e7e7);
+
+.t-grid-item {
+  box-sizing: border-box;
+  background-color: @td-grid-item-bg-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &--bordered {
+    border-right: 1px solid @td-grid-item-border-color;
+    border-bottom: 1px solid @td-grid-item-border-color;
+  }
+
+  &--hover {
+    background-color: @td-grid-item-hover-bg-color;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    padding: @td-grid-item-padding 0;
+    width: 100%;
+    box-sizing: border-box;
+
+    &--horizontal {
+      flex-direction: row;
+      padding-left: @td-grid-item-padding;
+    }
+
+    &--left {
+      align-items: flex-start;
+    }
+  }
+
+  &__image {
+    width: @td-grid-item-image-width;
+    height: @td-grid-item-image-width;
+  }
+
+  &__words {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+
+    &--horizontal {
+      margin-left: 12px;
+      align-items: flex-start;
+      text-align: left;
+    }
+  }
+
+  &__text {
+    color: @td-grid-item-text-color;
+    font-size: @td-grid-item-text-font-size;
+    padding-top: 8px;
+
+    &--horizontal {
+      padding-top: 0;
+    }
+  }
+
+  &__description {
+    color: @td-grid-item-description-color;
+    font-size: @td-grid-item-description-font-size;
+    margin-top: 2px;
+  }
+}

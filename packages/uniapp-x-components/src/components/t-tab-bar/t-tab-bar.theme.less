@@ -1,0 +1,50 @@
+/**
+ * TabBar 基础样式
+ *
+ * 与 @tdesign/uniapp 的 tab-bar.less 视觉对齐：
+ *  - shape: normal / round
+ *  - fixed 固定到底部，safe 适配安全区
+ */
+
+@td-tab-bar-bg-color: var(--td-tab-bar-bg-color, #ffffff);
+@td-tab-bar-border-color: var(--td-tab-bar-border-color, #e7e7e7);
+@td-tab-bar-round-shadow: var(
+  --td-tab-bar-round-shadow,
+  0 8px 24px rgba(0, 0, 0, 0.12)
+);
+
+.t-tab-bar {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  position: relative;
+  background-color: @td-tab-bar-bg-color;
+  box-sizing: border-box;
+  pointer-events: auto;
+
+  &--normal&--border {
+    border-top: 1px solid @td-tab-bar-border-color;
+  }
+
+  &--fixed {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  }
+
+  &--normal&--safe {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  &--round {
+    margin-left: 16px;
+    margin-right: 16px;
+    border-radius: 999px;
+    box-shadow: @td-tab-bar-round-shadow;
+  }
+
+  &--fixed&--round&--safe {
+    bottom: env(safe-area-inset-bottom);
+  }
+}

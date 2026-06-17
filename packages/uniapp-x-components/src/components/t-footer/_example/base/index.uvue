@@ -1,0 +1,11 @@
+<template>
+  <view class="demo-block">
+    <t-footer text="Copyright © 2019-2024 TDesign. All Rights Reserved" ></t-footer>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+</style>

@@ -1,0 +1,86 @@
+<template>
+  <scroll-view class="demo-page" :scroll-y="true">
+    <view class="demo-header">
+      <text class="demo-title">Tag 标签</text>
+      <text class="demo-desc">用于表明主体的类目、属性或状态。</text>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">01 组件类型</text>
+      <text class="demo-section-desc">主题</text>
+      <base-demo></base-demo>
+      <text class="demo-section-desc">风格变体</text>
+      <variant-demo></variant-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">02 组件状态</text>
+      <text class="demo-section-desc">可关闭 / 禁用</text>
+      <closable-demo></closable-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">03 组件样式</text>
+      <text class="demo-section-desc">形状</text>
+      <shape-demo></shape-demo>
+      <text class="demo-section-desc">尺寸</text>
+      <size-demo></size-demo>
+    </view>
+  </scroll-view>
+</template>
+
+<script>
+import BaseDemo from './base/index.uvue';
+import VariantDemo from './variant/index.uvue';
+import ShapeDemo from './shape/index.uvue';
+import SizeDemo from './size/index.uvue';
+import ClosableDemo from './closable/index.uvue';
+
+export default {
+  components: {
+    BaseDemo,
+    VariantDemo,
+    ShapeDemo,
+    SizeDemo,
+    ClosableDemo,
+  },
+};
+</script>
+
+<style>
+.demo-page {
+  flex: 1;
+  background-color: #f5f5f5;
+}
+.demo-header {
+  padding: 24px 16px 16px;
+  background-color: #ffffff;
+}
+.demo-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #181818;
+  margin-bottom: 8px;
+}
+.demo-desc {
+  font-size: 14px;
+  color: #888888;
+  line-height: 22px;
+}
+.demo-section {
+  margin-top: 12px;
+  background-color: #ffffff;
+  padding-bottom: 8px;
+}
+.demo-section-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #181818;
+  padding: 16px 16px 8px;
+}
+.demo-section-desc {
+  font-size: 13px;
+  color: #666666;
+  padding: 8px 16px 0;
+}
+</style>

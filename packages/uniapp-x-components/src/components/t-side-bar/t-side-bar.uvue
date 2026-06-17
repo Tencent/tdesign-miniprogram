@@ -1,0 +1,82 @@
+<template>
+  <view :class="rootClass">
+    <slot />
+    <view class="t-side-bar__padding" />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * SideBar - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 side-bar：
+ *  - value 受控、defaultValue 非受控；change/click 事件
+ *  - 通过 provide('t-side-bar-context') 让 t-side-bar-item 自行注册并获知 isFirst/isLast
+ */
+import { computed, provide, reactive, ref, watch } from 'vue';
+import { sideBarVariants } from './t-side-bar.variants';
+import type { SideBarValue } from './t-side-bar.types';
+
+type SideBarContext = {
+  currentValue: SideBarValue;
+  itemCount: number;
+  registerItem: () => number;
+  setValue: (v: SideBarValue, label: string) => void;
+};
+
+const props = defineProps({
+  value: { type: [String, Number] as PropType<SideBarValue>, default: '' },
+  defaultValue: { type: [String, Number] as PropType<SideBarValue>, default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change', 'click', 'update:value']);
+
+const innerValue = ref<SideBarValue>(props.value !== '' ? props.value : props.defaultValue);
+
+watch(
+  () => props.value,
+  (v: SideBarValue) => {
+    if (v !== '') innerValue.value = v;
+  },
+);
+
+const itemCounter = ref<number>(0);
+
+const ctx = reactive<SideBarContext>({
+  currentValue: innerValue.value,
+  itemCount: 0,
+  registerItem: (): number => {
+    itemCounter.value = itemCounter.value + 1;
+    ctx.itemCount = itemCounter.value;
+    return itemCounter.value;
+  },
+  setValue: (v: SideBarValue, label: string) => {
+    emit('click', { value: v, label });
+    if (innerValue.value !== v) {
+      innerValue.value = v;
+      emit('change', { value: v, label });
+      emit('update:value', v);
+    }
+  },
+});
+
+watch(
+  () => innerValue.value,
+  (v: SideBarValue) => {
+    ctx.currentValue = v;
+  },
+);
+
+provide('t-side-bar-context', ctx);
+
+const rootClass = computed<string>(() =>
+  sideBarVariants({
+    class: props.customClass,
+  }),
+);
+</script>
+
+<style lang="less">
+@import './t-side-bar.theme.less';
+</style>

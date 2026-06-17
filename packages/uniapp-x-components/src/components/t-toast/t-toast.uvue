@@ -1,0 +1,254 @@
+<template>
+  <!--
+    Toast - uni-app x 实现（指令式预埋组件）
+    -------------------------------------------------------
+    DOM 结构对齐 @tdesign/uniapp/toast/toast.vue：
+      <view>
+        <view v-if="realVisible" class="t-toast t-toast--{theme} t-toast--{direction}" style="top:25%/45%/75%">
+          <view class="t-toast__content t-toast__content--{direction}">
+            <t-loading v-if="theme === 'loading'" theme="circular" inherit-color :size="direction==='row' ? '48rpx' : '64rpx'" />
+            <t-icon v-else-if="iconName" class="t-toast__icon t-toast__icon--{direction}" />
+            <view class="t-toast__text t-toast__text--{direction}">{{ message }}</view>
+          </view>
+        </view>
+      </view>
+
+    使用方式（预埋 + ref）：
+      <template>
+        <t-toast ref="toast" />
+      </template>
+      <script setup>
+        const toast = ref<any>(null);
+        toast.value.show({ message: '操作成功', theme: 'success' });
+      </script>
+
+    或全局 API：
+      import { showToast } from '../t-toast';
+      showToast({ message: 'hi' });   // 自动找当前页面的 #t-toast / refs.toast
+  -->
+  <view v-if="realVisible" class="t-toast-host">
+    <view :class="rootClass" :style="rootStyle" @transitionend="onTransitionEnd">
+      <view :class="contentClass">
+        <!-- loading 主题：使用 t-loading circular 主题，inherit-color 跟随 toast 文字色 -->
+        <t-loading
+          v-if="state.theme === 'loading'"
+          :class="iconClass"
+          theme="circular"
+          inherit-color
+          :size="loadingSize"
+        />
+        <!-- 其他 theme：用 t-icon 显示对应图标 -->
+        <t-icon
+          v-else-if="resolvedIcon.length > 0"
+          :class="iconClass"
+          :name="resolvedIcon"
+        />
+        <view v-if="state.message.length > 0" :class="textClass">
+          <text>{{ state.message }}</text>
+        </view>
+      </view>
+    </view>
+    <!-- 遮罩层，仅 showOverlay 或 preventScrollThrough 时启用 -->
+    <t-overlay
+      v-if="state.showOverlay || state.preventScrollThrough"
+      :visible="overlayVisible"
+      :duration="300"
+      :z-index="12000"
+      :background-color="state.showOverlay ? '' : 'transparent'"
+      :prevent-scroll-through="state.preventScrollThrough"
+    />
+  </view>
+</template>
+
+<script lang="uts">
+/**
+ * Toast - uni-app x 实现
+ *
+ * 暴露的命令式 API（通过 ref.value.xxx 调用）：
+ *  - show(opts: ToastOptions): void  打开 toast，自动按 duration 关闭
+ *  - hide(): void                    立即关闭
+ *  - isVisible(): boolean            当前是否可见
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 toast：
+ *  - 4 主题：loading 走 t-loading circular ；success/warning/error 走 t-icon 预设图标
+ *  - placement → top% 映射：top=25% / middle=45% / bottom=75%
+ *  - duration > 0 自动关闭；=0 常驻
+ */
+import { computed, defineComponent, ref } from 'vue';
+import { toastVariants } from './t-toast.variants';
+
+type ToastInternalState = {
+  message: string;
+  theme: string;
+  icon: string;
+  placement: string;
+  direction: string;
+  duration: number;
+  showOverlay: boolean;
+  preventScrollThrough: boolean;
+};
+
+function defaultState(): ToastInternalState {
+  return {
+    message: '',
+    theme: 'none',
+    icon: '',
+    placement: 'middle',
+    direction: 'row',
+    duration: 2000,
+    showOverlay: false,
+    preventScrollThrough: false,
+  } as ToastInternalState;
+}
+
+export default defineComponent({
+  name: 't-toast',
+  setup() {
+    /** 真实渲染开关 */
+    const realVisible = ref<boolean>(false);
+    /** 遮罩层显隐（与 realVisible 同步切换） */
+    const overlayVisible = ref<boolean>(false);
+    /** 当前 toast 状态合集 */
+    const state = ref<ToastInternalState>(defaultState());
+    /** 自动关闭定时器 id */
+    let hideTimer: number = -1;
+
+    /** theme → 默认图标名（loading 走特殊占位） */
+    function getThemeIcon(theme: string): string {
+      if (theme === 'success') return 'check-circle';
+      if (theme === 'warning') return 'error-circle';
+      if (theme === 'error') return 'close-circle';
+      return '';
+    }
+
+    /** 解析后的最终图标：用户自定义 icon 优先，其次主题预设 */
+    const resolvedIcon = computed<string>(() => {
+      if (state.value.icon.length > 0) return state.value.icon;
+      return getThemeIcon(state.value.theme);
+    });
+
+    const rootClass = computed<string>(() =>
+      toastVariants({
+        placement: state.value.placement,
+        direction: state.value.direction,
+        theme: state.value.theme,
+      }),
+    );
+
+    const rootStyle = computed<string>(() => {
+      const p = state.value.placement;
+      let topPct = '45%';
+      if (p === 'top') topPct = '25%';
+      else if (p === 'bottom') topPct = '75%';
+      return 'top:' + topPct;
+    });
+
+    const contentClass = computed<string>(() => {
+      const dir = state.value.direction;
+      return 't-toast__content t-toast__content--' + dir;
+    });
+
+    const iconClass = computed<string>(() => {
+      const dir = state.value.direction;
+      return 't-toast__icon t-toast__icon--' + dir;
+    });
+
+    /** loading 主题下 t-loading 的 size，对齐原版 row=48rpx / column=64rpx */
+    const loadingSize = computed<string>(() => {
+      return state.value.direction === 'row' ? '48rpx' : '64rpx';
+    });
+
+    const textClass = computed<string>(() => {
+      const dir = state.value.direction;
+      return 't-toast__text t-toast__text--' + dir;
+    });
+
+    function clearHideTimer() {
+      if (hideTimer >= 0) {
+        clearTimeout(hideTimer);
+        hideTimer = -1;
+      }
+    }
+
+    /** show: 显示 toast，duration > 0 时自动关闭 */
+    function show(opts: any) {
+      clearHideTimer();
+      const next = defaultState();
+      // 合并用户配置（undefined 字段保留默认值）
+      if (opts != null) {
+        const o = opts as UTSJSONObject;
+        const msg = o.getString('message');
+        if (msg != null) next.message = msg;
+        const theme = o.getString('theme');
+        if (theme != null) next.theme = theme;
+        const icon = o.getString('icon');
+        if (icon != null) next.icon = icon;
+        const placement = o.getString('placement');
+        if (placement != null) next.placement = placement;
+        const direction = o.getString('direction');
+        if (direction != null) next.direction = direction;
+        const duration = o.getNumber('duration');
+        if (duration != null) next.duration = (duration as number).toInt();
+        const showOverlay = o.getBoolean('showOverlay');
+        if (showOverlay != null) next.showOverlay = showOverlay;
+        const ps = o.getBoolean('preventScrollThrough');
+        if (ps != null) next.preventScrollThrough = ps;
+      }
+      state.value = next;
+      realVisible.value = true;
+      overlayVisible.value = true;
+
+      if (next.duration > 0) {
+        hideTimer = setTimeout(() => {
+          hide();
+        }, next.duration);
+      }
+    }
+
+    /** hide: 立即关闭 toast */
+    function hide() {
+      clearHideTimer();
+      if (!realVisible.value) return;
+      realVisible.value = false;
+      overlayVisible.value = false;
+    }
+
+    function isVisible(): boolean {
+      return realVisible.value;
+    }
+
+    function onTransitionEnd() {
+      // 预留：未来加入 fade out 时使用
+    }
+
+    return {
+      realVisible,
+      overlayVisible,
+      state,
+      resolvedIcon,
+      rootClass,
+      rootStyle,
+      contentClass,
+      iconClass,
+      textClass,
+      loadingSize,
+      show,
+      hide,
+      isVisible,
+      onTransitionEnd,
+    };
+  },
+});
+</script>
+
+<style lang="less">
+@import './t-toast.theme.less';
+
+.t-toast-host {
+  /* 占位容器，本身不可见，为 fixed 定位的 toast 提供独立挂载点 */
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: visible;
+}
+</style>

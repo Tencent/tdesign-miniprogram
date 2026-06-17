@@ -1,0 +1,24 @@
+<template>
+  <view class="demo-block">
+    <t-result
+      theme="success"
+      title="支付成功"
+    >
+      <template #description>
+        <text>请到</text>
+        <text class="demo-link">订单详情</text>
+        <text>查看订单状态</text>
+      </template>
+    </t-result>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 24px 16px;
+}
+.demo-link {
+  color: #0052d9;
+  margin: 0 4px;
+}
+</style>

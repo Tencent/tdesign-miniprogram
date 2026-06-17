@@ -1,0 +1,100 @@
+<template>
+  <view :class="rootClass" :style="rootStyle">
+    <view class="t-qrcode__inner" :style="innerStyle">
+      <image
+        v-if="props.imageUrl.length > 0"
+        class="t-qrcode__image"
+        :src="props.imageUrl"
+        mode="aspectFit"
+      />
+      <view v-else class="t-qrcode__placeholder">
+        <text>QR</text>
+      </view>
+      <image
+        v-if="props.icon.length > 0"
+        class="t-qrcode__icon"
+        :src="props.icon"
+        :style="iconStyle"
+        mode="aspectFit"
+      />
+    </view>
+
+    <view v-if="!props.statusRender && hasMask" class="t-qrcode__mask">
+      <slot name="status">
+        <text>{{ maskText }}</text>
+        <view v-if="props.status === 'expired'" class="t-qrcode__refresh" @click="onRefresh">
+          <text>点击刷新</text>
+        </view>
+      </slot>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * QRCode - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/qrcode：
+ *  - uts 端不在组件内绘制二维码（无 canvas API）
+ *  - 业务层将 value 渲染为图片后通过 imageUrl 透传，组件负责显示外框/状态遮罩/icon
+ *  - status: active 不显示遮罩；其他状态显示文本遮罩；expired 提供"点击刷新"
+ */
+import { computed } from 'vue';
+import { qrcodeVariants } from './t-qrcode.variants';
+import type { QRCodeLevel, QRCodeStatus } from './t-qrcode.types';
+
+const props = defineProps({
+  bgColor: { type: String, default: '' },
+  borderless: { type: Boolean, default: false },
+  color: { type: String, default: '' },
+  icon: { type: String, default: '' },
+  iconSize: { type: Number, default: 40 },
+  level: { type: String as PropType<QRCodeLevel>, default: 'M' },
+  size: { type: Number, default: 160 },
+  status: { type: String as PropType<QRCodeStatus>, default: 'active' },
+  statusRender: { type: Boolean, default: false },
+  value: { type: String, default: '' },
+  imageUrl: { type: String, default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['refresh']);
+
+const rootClass = computed(() =>
+  qrcodeVariants({
+    borderless: props.borderless,
+    class: props.customClass,
+  }),
+);
+
+const rootStyle = computed<string>(() => {
+  const parts: string[] = [];
+  if (props.bgColor.length > 0) parts.push('background-color:' + props.bgColor);
+  return parts.join(';');
+});
+
+const innerStyle = computed<string>(() => {
+  return 'width:' + String(props.size) + 'px;height:' + String(props.size) + 'px';
+});
+
+const iconStyle = computed<string>(() => {
+  return 'width:' + String(props.iconSize) + 'px;height:' + String(props.iconSize) + 'px';
+});
+
+const hasMask = computed<boolean>(() => props.status !== 'active');
+
+const maskText = computed<string>(() => {
+  if (props.status === 'expired') return '二维码已失效';
+  if (props.status === 'loading') return '加载中...';
+  if (props.status === 'scanned') return '已扫描';
+  return '';
+});
+
+function onRefresh() {
+  emit('refresh');
+}
+</script>
+
+<style lang="less">
+@import './t-qrcode.theme.less';
+</style>

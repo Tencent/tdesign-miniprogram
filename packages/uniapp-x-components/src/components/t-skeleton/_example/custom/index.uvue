@@ -1,0 +1,24 @@
+<template>
+  <view class="demo-block">
+    <t-skeleton :row-col="rowCol" ></t-skeleton>
+  </view>
+</template>
+
+<script setup lang="uts">
+const rowCol: any[] = [
+  1,
+  { type: 'rect', width: '120px', height: '24px' },
+  [
+    { type: 'circle', size: '32px' },
+    { type: 'text' },
+    { type: 'text', width: '40%' },
+  ],
+  3,
+];
+</script>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+</style>

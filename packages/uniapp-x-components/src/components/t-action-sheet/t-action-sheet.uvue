@@ -1,0 +1,187 @@
+<template>
+  <!--
+    ActionSheet - uni-app x 实现（基于 t-popup 重构）
+    -------------------------------------------------------
+    DOM 结构对齐 @tdesign/uniapp/action-sheet/action-sheet.vue：
+      <t-popup placement="bottom" :visible @update:visible>
+        <view class="t-action-sheet t-action-sheet--{theme} t-action-sheet--align-{align}">
+          <view class="t-action-sheet__description" v-if="description">{{ description }}</view>
+          <view class="t-action-sheet__list" v-if="theme === 'list'">
+            <view class="t-action-sheet__item" v-for="..." @click>{{ item.label }}</view>
+          </view>
+          <view class="t-action-sheet__grid" v-else>
+            <view class="t-action-sheet__grid-item" v-for="..." @click>
+              <t-icon class="t-action-sheet__grid-item-icon" />
+              <text class="t-action-sheet__grid-item-label">{{ item.label }}</text>
+            </view>
+          </view>
+          <view class="t-action-sheet__gap" v-if="showCancel" />
+          <view class="t-action-sheet__cancel" v-if="showCancel" @click>{{ cancelText || '取消' }}</view>
+        </view>
+      </t-popup>
+  -->
+  <t-popup
+    :visible="dataVisible"
+    placement="bottom"
+    :show-overlay="showOverlay"
+    :prevent-scroll-through="preventScrollThrough"
+    :close-on-overlay-click="true"
+    @visible-change="onVisibleChange"
+    @update:visible="onUpdateVisible"
+  >
+    <view :class="rootClass" :style="customStyle">
+      <!-- 顶部描述 -->
+      <view v-if="description.length > 0" class="t-action-sheet__description">
+        <text>{{ description }}</text>
+      </view>
+
+      <!-- list 模式 -->
+      <view v-if="theme === 'list'" class="t-action-sheet__list">
+        <view
+          v-for="(item, index) in items"
+          :key="index"
+          :class="getItemClass(item)"
+          :style="getItemStyle(item)"
+          @click="onItemClick(index, item)"
+        >
+          <text>{{ item.label }}</text>
+        </view>
+      </view>
+
+      <!-- grid 模式 -->
+      <view v-else class="t-action-sheet__grid">
+        <view
+          v-for="(item, index) in items"
+          :key="index"
+          class="t-action-sheet__grid-item"
+          @click="onItemClick(index, item)"
+        >
+          <view v-if="resolveItemIcon(item).length > 0" class="t-action-sheet__grid-item-icon">
+            <t-icon :name="resolveItemIcon(item)" size="56rpx" />
+          </view>
+          <text class="t-action-sheet__grid-item-label">{{ item.label }}</text>
+        </view>
+      </view>
+
+      <!-- 取消按钮 -->
+      <view v-if="showCancel" class="t-action-sheet__gap" />
+      <view
+        v-if="showCancel"
+        class="t-action-sheet__cancel"
+        @click="onCancelClick"
+      >
+        <text>{{ resolvedCancelText }}</text>
+      </view>
+    </view>
+  </t-popup>
+</template>
+
+<script setup lang="uts">
+/**
+ * ActionSheet - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 action-sheet：
+ *  - visible / defaultVisible（受控/非受控）
+ *  - 点击 item → emit selected({index,item}) 并自动关闭
+ *  - 点击取消按钮 → emit cancel + 关闭
+ *  - 点击遮罩 → 关闭（trigger 由 popup 透传）
+ *
+ * 实现策略：
+ *  - 底部容器统一用 t-popup placement="bottom" 提供动画与遮罩
+ *  - disabled item 不响应点击，仅样式表现
+ */
+import { computed, ref, watch } from 'vue';
+import { actionSheetVariants } from './t-action-sheet.variants';
+import type { ActionSheetItem } from './t-action-sheet.types';
+
+const props = defineProps({
+  align: { type: String, default: 'center' },
+  cancelText: { type: String, default: '' },
+  count: { type: Number, default: 8 },
+  description: { type: String, default: '' },
+  items: { type: Array as PropType<ActionSheetItem[]>, default: () => [] as ActionSheetItem[] },
+  preventScrollThrough: { type: Boolean, default: true },
+  showCancel: { type: Boolean, default: true },
+  showOverlay: { type: Boolean, default: true },
+  theme: { type: String, default: 'list' },
+  visible: { type: Boolean, default: false },
+  defaultVisible: { type: Boolean, default: false },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+});
+
+const emit = defineEmits(['cancel', 'close', 'selected', 'update:visible']);
+
+/** 内部受控状态，等价于原版 dataVisible */
+const dataVisible = ref<boolean>(props.visible || props.defaultVisible);
+
+watch(
+  () => props.visible,
+  (v: boolean) => {
+    dataVisible.value = v;
+  },
+);
+
+const rootClass = computed<string>(() => {
+  const cls = actionSheetVariants({ theme: props.theme, align: props.align });
+  return props.customClass.length > 0 ? cls + ' ' + props.customClass : cls;
+});
+
+const resolvedCancelText = computed<string>(() => {
+  if (props.cancelText.length > 0) return props.cancelText;
+  return '取消';
+});
+
+function getItemClass(item: ActionSheetItem): string {
+  let cls = 't-action-sheet__item';
+  if (item.disabled === true) cls += ' t-action-sheet__item--disabled';
+  return cls;
+}
+
+function getItemStyle(item: ActionSheetItem): string {
+  if (item.color != null && (item.color as string).length > 0) {
+    return 'color:' + (item.color as string);
+  }
+  return '';
+}
+
+function resolveItemIcon(item: ActionSheetItem): string {
+  if (item.icon == null) return '';
+  return item.icon as string;
+}
+
+function onItemClick(index: number, item: ActionSheetItem) {
+  if (item.disabled === true) return;
+  emit('selected', { index, item });
+  closeBy('selected');
+}
+
+function onCancelClick() {
+  emit('cancel');
+  closeBy('cancel');
+}
+
+/** popup visible-change（点遮罩 / 关闭按钮）回调 */
+function onVisibleChange(detail: { visible: boolean; trigger: string }) {
+  if (!detail.visible) {
+    closeBy(detail.trigger);
+  }
+}
+
+function onUpdateVisible(v: boolean) {
+  if (v !== dataVisible.value) {
+    dataVisible.value = v;
+    emit('update:visible', v);
+  }
+}
+
+function closeBy(_trigger: string) {
+  dataVisible.value = false;
+  emit('update:visible', false);
+  emit('close');
+}
+</script>
+
+<style lang="less">
+@import './t-action-sheet.theme.less';
+</style>

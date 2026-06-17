@@ -1,0 +1,25 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-block-row">
+      <t-result theme="default" title="默认状态" description="说明文案" ></t-result>
+    </view>
+    <view class="demo-block-row">
+      <t-result theme="success" title="操作成功" description="说明文案" ></t-result>
+    </view>
+    <view class="demo-block-row">
+      <t-result theme="warning" title="操作警告" description="说明文案" ></t-result>
+    </view>
+    <view class="demo-block-row">
+      <t-result theme="error" title="操作失败" description="说明文案" ></t-result>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 24px 16px;
+}
+.demo-block-row {
+  margin-bottom: 24px;
+}
+</style>

@@ -1,0 +1,6 @@
+<template>
+  <view>
+    <t-cell title="正常单元格" hover note="点击高亮" bordered ></t-cell>
+    <t-cell title="禁用单元格" disabled note="禁用" ></t-cell>
+  </view>
+</template>

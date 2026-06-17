@@ -1,0 +1,11 @@
+<template>
+  <view class="demo-block">
+    <t-empty description="暂无数据" ></t-empty>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 24px 16px;
+}
+</style>

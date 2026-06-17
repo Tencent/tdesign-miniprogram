@@ -1,0 +1,120 @@
+/**
+ * Badge 基础样式
+ *
+ * 与 uniapp 版 badge.less 保持 token 体系一致；适配 uni-app x：
+ *  - ribbon / triangle 系列在 uts/App 端 linear-gradient 兼容存在差异，
+ *    采用更稳健的"实心矩形 + 旋转"方案降级（视觉上等价于 ribbon-right）。
+ *  - dot 圆点尺寸独立，size=large 时按 1.25x 放大。
+ */
+
+@td-badge-bg-color: var(--td-badge-bg-color, #d54941);
+@td-badge-text-color: var(--td-badge-text-color, #ffffff);
+@td-badge-content-text-color: var(--td-badge-content-text-color, rgba(0, 0, 0, 0.9));
+
+@td-badge-basic-height: var(--td-badge-basic-height, 16px);
+@td-badge-basic-padding: var(--td-badge-basic-padding, 4px);
+@td-badge-basic-min-width: var(--td-badge-basic-min-width, 16px);
+@td-badge-font-size: var(--td-badge-font-size, 10px);
+
+@td-badge-large-height: var(--td-badge-large-height, 20px);
+@td-badge-large-padding: var(--td-badge-large-padding, 5px);
+@td-badge-large-font-size: var(--td-badge-large-font-size, 12px);
+
+@td-badge-dot-size: var(--td-badge-dot-size, 8px);
+@td-badge-dot-large-size: var(--td-badge-dot-large-size, 10px);
+
+@td-badge-square-radius: var(--td-badge-square-radius, 2px);
+@td-badge-bubble-radius: var(--td-badge-bubble-radius, 10px 10px 10px 1px);
+
+.t-badge {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+
+  &__content {
+    color: @td-badge-content-text-color;
+  }
+
+  &__inner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    font-size: @td-badge-font-size;
+    line-height: 1;
+    color: @td-badge-text-color;
+    background-color: @td-badge-bg-color;
+    text-align: center;
+    height: @td-badge-basic-height;
+    min-width: @td-badge-basic-min-width;
+    padding: 0 @td-badge-basic-padding;
+    white-space: nowrap;
+  }
+
+  // ---- shape: circle / square / bubble ----
+  &--circle {
+    border-radius: calc(@td-badge-basic-height / 2);
+  }
+
+  &--square {
+    border-radius: @td-badge-square-radius;
+  }
+
+  &--bubble {
+    border-radius: @td-badge-bubble-radius;
+  }
+
+  // ---- ribbon / triangle 简化为右上角矩形（uts 兼容）----
+  &--ribbon,
+  &--ribbon-right {
+    border-radius: 2px 0 0 2px;
+  }
+
+  &--ribbon-left {
+    border-radius: 0 2px 2px 0;
+  }
+
+  &--triangle-right,
+  &--triangle-left {
+    border-radius: 0;
+  }
+
+  // ---- dot ----
+  &--dot {
+    width: @td-badge-dot-size;
+    height: @td-badge-dot-size;
+    min-width: @td-badge-dot-size;
+    padding: 0;
+    border-radius: 50%;
+    font-size: 0;
+    line-height: 0;
+  }
+
+  // ---- size: large ----
+  &--large {
+    height: @td-badge-large-height;
+    min-width: @td-badge-large-height;
+    padding: 0 @td-badge-large-padding;
+    font-size: @td-badge-large-font-size;
+
+    &.t-badge--circle {
+      border-radius: calc(@td-badge-large-height / 2);
+    }
+  }
+
+  &--large&--dot {
+    width: @td-badge-dot-large-size;
+    height: @td-badge-dot-large-size;
+    min-width: @td-badge-dot-large-size;
+  }
+
+  // ---- 浮动定位（有 child content 时悬浮于右上角） ----
+  &--floating {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    transform: translate(-50%, -50%);
+    transform-origin: center center;
+    z-index: 1;
+  }
+}

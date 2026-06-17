@@ -1,0 +1,7 @@
+<template>
+  <view>
+    <t-cell title="顶部对齐" description="较长的描述文字会被多行展示" align="top" note="顶部" ></t-cell>
+    <t-cell title="居中对齐" description="较长的描述文字会被多行展示" align="middle" note="居中" ></t-cell>
+    <t-cell title="底部对齐" description="较长的描述文字会被多行展示" align="bottom" note="底部" ></t-cell>
+  </view>
+</template>

@@ -1,0 +1,139 @@
+<template>
+  <view :class="rootClass">
+    <view class="t-collapse-panel__header" @click="onHeaderClick">
+      <image
+        v-if="props.headerLeftIcon.length > 0"
+        class="t-collapse-panel__left-icon"
+        :src="props.headerLeftIcon"
+        mode="aspectFit"
+      />
+      <view class="t-collapse-panel__title">
+        <slot name="header">
+          <text v-if="props.header.length > 0">{{ props.header }}</text>
+        </slot>
+      </view>
+      <view v-if="props.headerRightContent.length > 0" class="t-collapse-panel__extra">
+        <slot name="headerRightContent">
+          <text>{{ props.headerRightContent }}</text>
+        </slot>
+      </view>
+      <view v-if="showArrow" :class="arrowClass">
+        <text>⌄</text>
+      </view>
+    </view>
+    <view :class="wrapperClass">
+      <view class="t-collapse-panel__content">
+        <slot>
+          <text v-if="props.content.length > 0">{{ props.content }}</text>
+        </slot>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * CollapsePanel - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/collapse-panel：
+ *  - inject 父级 t-collapse-context；缺失时独立工作
+ *  - value 不传则用挂载顺序作为 fallback key（这里通过自增计数器）
+ *  - placement: bottom(content 在 header 下方)/ top(content 在上方)
+ *  - 禁用 / 展开图标 优先级：自身 prop（非 null） > 父级
+ */
+import { computed, getCurrentInstance, inject, onMounted } from 'vue';
+import { collapsePanelVariants } from './t-collapse-panel.variants';
+import type { CollapsePanelPlacement } from './t-collapse-panel.types';
+
+type CollapseCtx = {
+  ctx: {
+    activeValue: (string | number)[];
+    disabled: boolean;
+    expandIcon: boolean;
+    theme: string;
+    registeredKeys: (string | number)[];
+  };
+  registerPanel: (key: string | number) => void;
+  togglePanel: (key: string | number) => void;
+};
+
+const props = defineProps({
+  content: { type: String, default: '' },
+  disabled: { type: [Boolean, null] as PropType<boolean | null>, default: null },
+  expandIcon: { type: [Boolean, null] as PropType<boolean | null>, default: null },
+  header: { type: String, default: '' },
+  headerLeftIcon: { type: String, default: '' },
+  headerRightContent: { type: String, default: '' },
+  placement: { type: String as PropType<CollapsePanelPlacement>, default: 'bottom' },
+  value: { type: [String, Number] as PropType<string | number | null>, default: null },
+  customClass: { type: String, default: '' },
+});
+
+const collapse = inject('t-collapse-context', null) as CollapseCtx | null;
+
+const instanceUid = (getCurrentInstance() as any)?.uid ?? 0;
+
+const panelKey = computed<string | number>(() => {
+  if (props.value != null) return props.value as string | number;
+  return 'panel-' + String(instanceUid);
+});
+
+onMounted(() => {
+  if (collapse != null) {
+    collapse.registerPanel(panelKey.value);
+  }
+});
+
+const isDisabled = computed<boolean>(() => {
+  if (props.disabled != null) return props.disabled as boolean;
+  if (collapse != null) return collapse.ctx.disabled;
+  return false;
+});
+
+const showArrow = computed<boolean>(() => {
+  if (props.expandIcon != null) return props.expandIcon as boolean;
+  if (collapse != null) return collapse.ctx.expandIcon;
+  return true;
+});
+
+const isExpanded = computed<boolean>(() => {
+  if (collapse == null) return false;
+  const arr = collapse.ctx.activeValue;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === panelKey.value) return true;
+  }
+  return false;
+});
+
+const rootClass = computed(() =>
+  collapsePanelVariants({
+    placement: props.placement,
+    expanded: isExpanded.value,
+    disabled: isDisabled.value,
+    class: props.customClass,
+  }),
+);
+
+const arrowClass = computed<string>(() => {
+  let c = 't-collapse-panel__arrow';
+  if (isExpanded.value) c = c + ' t-collapse-panel__arrow--expanded';
+  return c;
+});
+
+const wrapperClass = computed<string>(() => {
+  let c = 't-collapse-panel__wrapper';
+  if (isExpanded.value) c = c + ' t-collapse-panel__wrapper--expanded';
+  return c;
+});
+
+function onHeaderClick() {
+  if (isDisabled.value) return;
+  if (collapse != null) {
+    collapse.togglePanel(panelKey.value);
+  }
+}
+</script>
+
+<style lang="less">
+@import './t-collapse-panel.theme.less';
+</style>

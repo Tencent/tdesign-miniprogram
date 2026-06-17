@@ -1,0 +1,22 @@
+<template>
+  <view class="demo-block">
+    <t-footer
+      :links="links"
+      text="Copyright © 2019-2024 TDesign. All Rights Reserved"
+    />
+  </view>
+</template>
+
+<script setup lang="uts">
+const links = [
+  { name: '帮助', url: '/pages/help/help' },
+  { name: '反馈', url: '/pages/feedback/feedback' },
+  { name: '关于', url: '/pages/about/about' },
+];
+</script>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+</style>

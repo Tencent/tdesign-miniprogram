@@ -1,0 +1,71 @@
+/**
+ * Avatar 基础样式
+ *
+ * token 命名与 uniapp-components 对齐（--td-avatar-xxx），
+ * 仅将 rpx 单位换算到 px（750rpx ≈ 375px）。
+ */
+
+@td-avatar-bg-color: var(--td-avatar-bg-color, #d9e1ff);
+@td-avatar-content-color: var(--td-avatar-content-color, #0052d9);
+@td-avatar-small-width: var(--td-avatar-small-width, 40px);
+@td-avatar-medium-width: var(--td-avatar-medium-width, 48px);
+@td-avatar-large-width: var(--td-avatar-large-width, 64px);
+
+@td-avatar-text-small-font-size: var(--td-avatar-text-small-font-size, 14px);
+@td-avatar-text-medium-font-size: var(--td-avatar-text-medium-font-size, 16px);
+@td-avatar-text-large-font-size: var(--td-avatar-text-large-font-size, 20px);
+
+@td-avatar-circle-border-radius: var(--td-avatar-circle-border-radius, 999px);
+@td-avatar-round-border-radius: var(--td-avatar-round-border-radius, 6px);
+
+.t-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  background-color: @td-avatar-bg-color;
+  color: @td-avatar-content-color;
+  overflow: hidden;
+  position: relative;
+
+  &--small {
+    width: @td-avatar-small-width;
+    height: @td-avatar-small-width;
+    font-size: @td-avatar-text-small-font-size;
+  }
+  &--medium {
+    width: @td-avatar-medium-width;
+    height: @td-avatar-medium-width;
+    font-size: @td-avatar-text-medium-font-size;
+  }
+  &--large {
+    width: @td-avatar-large-width;
+    height: @td-avatar-large-width;
+    font-size: @td-avatar-text-large-font-size;
+  }
+
+  &--circle {
+    border-radius: @td-avatar-circle-border-radius;
+  }
+  &--round {
+    border-radius: @td-avatar-round-border-radius;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__icon {
+    width: 50%;
+    height: 50%;
+  }
+
+  &__text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

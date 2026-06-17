@@ -1,0 +1,17 @@
+<template>
+  <view>
+    <t-tabs default-value="0">
+      <t-tab-panel
+        v-for="i in [0, 1, 2]"
+        :key="i"
+        icon="app"
+        label="选项"
+        :value="i"
+      />
+    </t-tabs>
+  </view>
+</template>
+
+<script setup lang="uts"></script>
+
+<style></style>

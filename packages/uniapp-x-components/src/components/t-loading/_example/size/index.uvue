@@ -1,0 +1,22 @@
+<template>
+  <view class="demo-block">
+    <t-loading size="20" ></t-loading>
+    <t-loading size="28" ></t-loading>
+    <t-loading size="40" ></t-loading>
+    <t-loading size="56rpx" ></t-loading>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 16px;
+}
+.demo-block > * {
+  margin-right: 24px;
+  margin-bottom: 12px;
+}
+</style>

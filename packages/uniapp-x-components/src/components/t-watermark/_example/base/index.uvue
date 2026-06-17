@@ -1,0 +1,46 @@
+<template>
+  <view class="demo-block">
+    <t-watermark
+      :watermark-content="watermarkContent"
+      :rotate="-22"
+      :x="120"
+      :y="80"
+    >
+      <view class="demo-content">
+        <text class="demo-content-title">这里是水印保护的内容</text>
+        <text class="demo-content-desc">水印会以网格形式重复展示，可旋转任意角度。</text>
+      </view>
+    </t-watermark>
+  </view>
+</template>
+
+<script setup lang="uts">
+const watermarkContent = {
+  text: 'TDesign',
+  fontSize: 14,
+  fontColor: 'rgba(0,0,0,0.15)',
+};
+</script>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-content {
+  height: 240px;
+  background: #f3f3f3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.demo-content-title {
+  font-size: 16px;
+  color: #181818;
+  margin-bottom: 8px;
+}
+.demo-content-desc {
+  font-size: 12px;
+  color: #888888;
+}
+</style>

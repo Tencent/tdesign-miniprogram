@@ -1,0 +1,19 @@
+<template>
+  <view class="demo-block">
+    <t-divider ></t-divider>
+    <text class="demo-text">默认是 24px 上下间距、1px 实线</text>
+    <t-divider content="TDesign" ></t-divider>
+    <text class="demo-text">居中文字</text>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-text {
+  font-size: 13px;
+  color: #888888;
+  line-height: 22px;
+}
+</style>

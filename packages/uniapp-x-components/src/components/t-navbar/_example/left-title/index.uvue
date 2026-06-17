@@ -1,0 +1,60 @@
+<template>
+  <view>
+    <view class="block">
+      <t-navbar :left-arrow="true" title="标题居中" :fixed="false" />
+    </view>
+
+    <t-navbar :left-arrow="true" :fixed="false">
+      <template #left>
+        <text class="custom-title">标题左对齐</text>
+      </template>
+    </t-navbar>
+
+    <view class="demo-desc">标题尺寸</view>
+
+    <t-navbar :left-arrow="true" :fixed="false">
+      <template #left>
+        <text class="left-text" @click="onBack">返回</text>
+      </template>
+    </t-navbar>
+    <view class="header-title">大标题尺寸</view>
+  </view>
+</template>
+
+<script setup lang="uts">
+function onBack() {
+  uni.navigateBack({} as NavigateBackOptions);
+}
+</script>
+
+<style>
+.custom-title {
+  margin-left: 8px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.block {
+  display: block;
+  margin-bottom: 24px;
+}
+.demo-desc {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  padding: 0 16px;
+  font-size: 14px;
+  color: #888888;
+}
+.left-text {
+  display: block;
+  margin-left: 4px;
+  font-size: 16px;
+}
+.header-title {
+  font-size: 28px;
+  line-height: 36px;
+  padding: 4px 16px 8px;
+  background-color: #ffffff;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+}
+</style>

@@ -1,0 +1,92 @@
+<template>
+  <view :class="rootClass" :hover-class="hover && !disabled ? 't-cell--hover' : ''" @click="onClick">
+    <view class="t-cell__left">
+      <slot name="left-icon" />
+    </view>
+
+    <view class="t-cell__title">
+      <view class="t-cell__title-text">
+        <slot name="title">
+          <text class="t-cell__title-text-content">{{ title }}</text>
+        </slot>
+        <text v-if="required" class="t-cell--required">&nbsp;*</text>
+      </view>
+      <view v-if="hasDescription || description.length > 0" class="t-cell__description">
+        <slot name="description">
+          <text class="t-cell__description-text">{{ description }}</text>
+        </slot>
+      </view>
+    </view>
+
+    <view v-if="hasNote || note.length > 0" class="t-cell__note">
+      <slot name="note">
+        <text>{{ note }}</text>
+      </slot>
+    </view>
+
+    <view :class="rightClass">
+      <slot name="right-icon" />
+      <text v-if="!hasRightIcon && arrow" class="t-cell__right-arrow">›</text>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { computed, useSlots } from 'vue';
+import { cellVariants } from './t-cell.variants';
+import type { CellAlign } from './t-cell.types';
+
+const props = defineProps({
+  title: { type: String, default: '' },
+  description: { type: String, default: '' },
+  note: { type: String, default: '' },
+  arrow: { type: Boolean, default: false },
+  bordered: { type: Boolean, default: false },
+  hover: { type: Boolean, default: false },
+  disabled: { type: Boolean, default: false },
+  required: { type: Boolean, default: false },
+  align: { type: String as PropType<CellAlign>, default: 'middle' },
+  customClass: { type: String, default: '' },
+
+  image: { type: String, default: '' },
+  jumpType: { type: String, default: 'navigateTo' },
+  leftIcon: { type: String, default: '' },
+  noteStyle: { type: String, default: '' },
+  rightIcon: { type: String, default: '' },
+  rightIconStyle: { type: String, default: '' },
+  titleStyle: { type: String, default: '' },
+  url: { type: String, default: '' },
+});
+
+const emit = defineEmits(['click']);
+
+const slots = useSlots();
+const hasRightIcon = computed(() => slots['right-icon'] != null);
+const hasDescription = computed(() => slots.description != null);
+const hasNote = computed(() => slots.note != null);
+
+const rootClass = computed(() =>
+  cellVariants({
+    align: props.align,
+    bordered: props.bordered,
+    hover: props.hover,
+    disabled: props.disabled,
+    arrow: props.arrow,
+    class: props.customClass,
+  }),
+);
+
+const rightClass = computed(() => {
+  const align = props.align;
+  return `t-cell__right t-cell__right--${align}`;
+});
+
+function onClick(event: UniMouseEvent) {
+  if (props.disabled) return;
+  emit('click', event);
+}
+</script>
+
+<style lang="less">
+@import './t-cell.theme.less';
+</style>

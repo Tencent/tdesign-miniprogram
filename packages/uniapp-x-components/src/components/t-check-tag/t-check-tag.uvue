@@ -1,0 +1,110 @@
+<template>
+  <view :class="rootClass" @click="onClick">
+    <image
+      v-if="props.icon.length > 0"
+      class="t-tag__icon"
+      :src="props.icon"
+      mode="aspectFit"
+      style="width:14px;height:14px;margin-right:4px"
+    />
+    <view class="t-tag__text">
+      <slot>
+        <text v-if="displayContent.length > 0">{{ displayContent }}</text>
+      </slot>
+    </view>
+    <view
+      v-if="props.closable && !props.disabled"
+      class="t-tag__close"
+      @click.stop="onClose"
+    >
+      <text>×</text>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * CheckTag - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/check-tag：
+ *  - 受控（checked） / 非受控（defaultChecked）
+ *  - content 可传 [选中内容, 未选中内容] 数组：选中态显示 [0]，未选中显示 [1]
+ *  - 选中态强制使用 primary 主题（与默认色形成对比）
+ *  - 风格继承 t-tag 矩阵
+ */
+import { computed, onMounted, ref, watch } from 'vue';
+import { checkTagVariants } from './t-check-tag.variants';
+import type { CheckTagShape, CheckTagSize, CheckTagVariant } from './t-check-tag.types';
+
+const props = defineProps({
+  checked: { type: [Boolean, null] as PropType<boolean | null>, default: null },
+  defaultChecked: { type: Boolean, default: false },
+  closable: { type: Boolean, default: false },
+  content: {
+    type: [String, Number, Array] as PropType<string | number | (string | number)[]>,
+    default: '',
+  },
+  disabled: { type: Boolean, default: false },
+  icon: { type: String, default: '' },
+  shape: { type: String as PropType<CheckTagShape>, default: 'square' },
+  size: { type: String as PropType<CheckTagSize>, default: 'medium' },
+  variant: { type: String as PropType<CheckTagVariant>, default: 'dark' },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change', 'click', 'close', 'update:checked']);
+
+const innerChecked = ref(false);
+
+onMounted(() => {
+  innerChecked.value = props.checked != null ? (props.checked as boolean) : props.defaultChecked;
+});
+
+watch(() => props.checked, () => {
+  if (props.checked != null) innerChecked.value = props.checked as boolean;
+});
+
+const rootClass = computed(() =>
+  checkTagVariants({
+    shape: props.shape,
+    size: props.size,
+    variant: props.variant,
+    checked: innerChecked.value,
+    closable: props.closable,
+    disabled: props.disabled,
+    class: props.customClass,
+  }),
+);
+
+/** content 为数组时按 [选中, 未选中] 展示 */
+const displayContent = computed<string>(() => {
+  if (Array.isArray(props.content)) {
+    const arr = props.content as (string | number)[];
+    if (arr.length === 0) return '';
+    const idx = innerChecked.value ? 0 : 1;
+    const v = arr[idx];
+    return v != null ? String(v) : '';
+  }
+  if (typeof props.content === 'string') return props.content as string;
+  if (typeof props.content === 'number') return String(props.content);
+  return '';
+});
+
+function onClick(event: UniMouseEvent) {
+  if (props.disabled) return;
+  const next = !innerChecked.value;
+  if (props.checked == null) innerChecked.value = next;
+  emit('change', next);
+  emit('update:checked', next);
+  emit('click', event);
+}
+
+function onClose(event: UniMouseEvent) {
+  if (props.disabled) return;
+  emit('close', event);
+}
+</script>
+
+<style lang="less">
+@import './t-check-tag.theme.less';
+</style>

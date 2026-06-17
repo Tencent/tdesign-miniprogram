@@ -1,0 +1,18 @@
+<template>
+  <view class="demo-block">
+    <t-notice-bar content="提示信息：这是一条普通公告内容" />
+    <view class="gap" />
+    <t-notice-bar content="提示信息：可以配合操作按钮使用" operation="详情" />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * NoticeBar base demo - 单条文本与右侧操作
+ */
+</script>
+
+<style>
+.demo-block { padding: 0; }
+.gap { height: 24rpx; }
+</style>

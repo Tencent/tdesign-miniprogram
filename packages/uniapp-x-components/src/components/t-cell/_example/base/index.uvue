@@ -1,0 +1,7 @@
+<template>
+  <view>
+    <t-cell title="单元格" bordered ></t-cell>
+    <t-cell title="单元格" note="描述文字" bordered ></t-cell>
+    <t-cell title="单元格" description="二级文本" note="描述文字" ></t-cell>
+  </view>
+</template>

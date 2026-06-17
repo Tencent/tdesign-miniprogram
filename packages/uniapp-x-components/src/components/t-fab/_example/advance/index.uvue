@@ -1,0 +1,34 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-placeholder">
+      <text>页面内容</text>
+    </view>
+    <t-fab
+      icon="https://tdesign.gtimg.com/icon/0.0.1/static/svg/add.svg"
+      text="新建"
+      @click="onClick"
+    />
+  </view>
+</template>
+
+<script setup lang="uts">
+function onClick() {
+  uni.showToast({ title: '点击了悬浮按钮', icon: 'none' });
+}
+</script>
+
+<style>
+.demo-block {
+  position: relative;
+  height: 240px;
+}
+.demo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #888888;
+  font-size: 14px;
+  background-color: #f5f5f5;
+}
+</style>

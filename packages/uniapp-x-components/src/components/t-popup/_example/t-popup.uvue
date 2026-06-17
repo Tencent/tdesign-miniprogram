@@ -1,0 +1,38 @@
+<template>
+  <scroll-view class="demo-page" :scroll-y="true">
+    <view class="demo-header">
+      <text class="demo-title">Popup 弹出层</text>
+      <text class="demo-desc">用于在不切换页面的情况下展示更多操作或内容，支持 5 个方向弹出。</text>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">基础用法（5 个方向）</text>
+      <base-demo></base-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">带标题与关闭按钮</text>
+      <with-title-demo></with-title-demo>
+    </view>
+  </scroll-view>
+</template>
+
+<script>
+import BaseDemo from './base/index.uvue';
+import WithTitleDemo from './with-title/index.uvue';
+export default {
+  components: {
+    BaseDemo,
+    WithTitleDemo,
+  },
+};
+</script>
+
+<style>
+.demo-page { flex: 1; background-color: #f5f5f5; }
+.demo-header { padding: 24px 16px 16px; background-color: #ffffff; }
+.demo-title { font-size: 20px; font-weight: bold; color: #181818; margin-bottom: 8px; }
+.demo-desc { font-size: 14px; color: #888888; line-height: 22px; }
+.demo-section { margin-top: 12px; background-color: #ffffff; padding: 8px 16px 16px; }
+.demo-section-title { font-size: 16px; font-weight: bold; color: #181818; padding: 12px 0 8px; }
+</style>

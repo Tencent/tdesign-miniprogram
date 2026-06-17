@@ -1,0 +1,93 @@
+/**
+ * ImageViewer 基础样式
+ */
+
+@td-image-viewer-nav-height: var(--td-image-viewer-nav-height, 48px);
+@td-image-viewer-nav-bg-color: var(--td-image-viewer-nav-bg-color, #000);
+@td-image-viewer-nav-color: var(--td-image-viewer-nav-color, #ffffff);
+@td-image-viewer-mask-bg-color: var(--td-image-viewer-mask-bg-color, rgba(0, 0, 0, 0.85));
+@td-image-viewer-icon-size: var(--td-image-viewer-icon-size, 24px);
+
+.t-image-viewer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1001;
+  overflow: hidden;
+
+  &__mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: @td-image-viewer-mask-bg-color;
+    z-index: 1000;
+  }
+
+  &__swiper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1005;
+  }
+
+  &__slide {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__nav {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: @td-image-viewer-nav-height;
+    background-color: @td-image-viewer-nav-bg-color;
+    color: @td-image-viewer-nav-color;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1006;
+
+    &-close,
+    &-delete {
+      width: @td-image-viewer-icon-size;
+      height: @td-image-viewer-icon-size;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &-close {
+      margin-left: 12px;
+    }
+
+    &-delete {
+      margin-right: 12px;
+    }
+
+    &-index {
+      flex: 1;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    &-icon {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

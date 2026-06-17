@@ -12,14 +12,17 @@
     "README.md"
   ],
   "scripts": {
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:coverage": "vitest run --coverage",
     "typecheck": "tsc --noEmit",
     "build:registry": "node ./cli/build-registry.mjs",
     "sync": "node ./cli/sync-to-hbuilderx.mjs",
     "sync:watch": "node ./cli/sync-to-hbuilderx.mjs --watch",
-    "sync:dry": "node ./cli/sync-to-hbuilderx.mjs --dry-run"
+    "sync:dry": "node ./cli/sync-to-hbuilderx.mjs --dry-run",
+    "audit": "node ./cli/sync/report.mjs --all",
+    "audit:props": "node ./cli/sync/audit-props.mjs",
+    "audit:tokens": "node ./cli/sync/audit-tokens.mjs",
+    "audit:typecheck": "node ./cli/sync/typecheck.mjs",
+    "sync:props": "node ./cli/sync/sync-props.mjs",
+    "sync:tokens": "node ./cli/sync/sync-tokens.mjs"
   },
   "keywords": [
     "tdesign",
@@ -35,12 +38,6 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "catalog:",
-    "@vitejs/plugin-vue": "catalog:",
-    "@vitest/coverage-v8": "catalog:",
-    "@vue/test-utils": "catalog:",
-    "jsdom": "catalog:",
-    "typescript": "catalog:",
-    "vitest": "catalog:",
-    "vue": "catalog:"
+    "typescript": "catalog:"
   }
 }

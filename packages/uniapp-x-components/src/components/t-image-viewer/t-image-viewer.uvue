@@ -1,0 +1,150 @@
+<template>
+  <view v-if="isVisible" :class="rootClass">
+    <view class="t-image-viewer__mask" :style="maskStyle" @click="onMaskClick" />
+    <swiper
+      class="t-image-viewer__swiper"
+      :current="currentIndex"
+      :indicator-dots="false"
+      :autoplay="false"
+      :circular="false"
+      @change="onSwiperChange"
+    >
+      <swiper-item
+        v-for="(src, index) in props.images"
+        :key="index"
+        class="t-image-viewer__slide"
+      >
+        <image
+          class="t-image-viewer__image"
+          :src="src"
+          mode="aspectFit"
+        />
+      </swiper-item>
+    </swiper>
+
+    <view v-if="props.showIndex" class="t-image-viewer__nav">
+      <view v-if="props.closeBtn !== false" class="t-image-viewer__nav-close" @click="onClose">
+        <image
+          v-if="closeIconUrl.length > 0"
+          class="t-image-viewer__nav-icon"
+          :src="closeIconUrl"
+          mode="aspectFit"
+        />
+        <text v-else>×</text>
+      </view>
+      <view class="t-image-viewer__nav-index">
+        <text>{{ currentIndex + 1 }}/{{ props.images.length }}</text>
+      </view>
+      <view v-if="props.deleteBtn !== false" class="t-image-viewer__nav-delete" @click="onDelete">
+        <image
+          v-if="deleteIconUrl.length > 0"
+          class="t-image-viewer__nav-icon"
+          :src="deleteIconUrl"
+          mode="aspectFit"
+        />
+        <text v-else>🗑</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * ImageViewer - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/image-viewer：
+ *  - 受控（visible）+ 非受控（defaultVisible）
+ *  - 使用 swiper 实现左右切换
+ *  - closeBtn / deleteBtn 仅支持 boolean | string；不实现缩放手势
+ */
+import { computed, onMounted, ref, watch } from 'vue';
+import { imageViewerVariants } from './t-image-viewer.variants';
+
+const props = defineProps({
+  backgroundColor: { type: String, default: '' },
+  closeBtn: { type: [Boolean, String] as PropType<boolean | string>, default: false },
+  deleteBtn: { type: [Boolean, String] as PropType<boolean | string>, default: false },
+  images: { type: Array as PropType<string[]>, default: () => [] as string[] },
+  initialIndex: { type: Number, default: 0 },
+  lazy: { type: Boolean, default: true },
+  maxZoom: { type: Number, default: 3 },
+  showIndex: { type: Boolean, default: false },
+  usingCustomNavbar: { type: Boolean, default: false },
+  visible: { type: [Boolean, null] as PropType<boolean | null>, default: null },
+  defaultVisible: { type: Boolean, default: false },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change', 'close', 'delete', 'update:visible']);
+
+const internalVisible = ref(false);
+const currentIndex = ref(0);
+
+onMounted(() => {
+  internalVisible.value = props.visible != null ? (props.visible as boolean) : props.defaultVisible;
+  currentIndex.value = props.initialIndex;
+});
+
+watch(() => props.visible, () => {
+  if (props.visible != null) internalVisible.value = props.visible as boolean;
+});
+watch(() => props.initialIndex, () => {
+  currentIndex.value = props.initialIndex;
+});
+
+const isVisible = computed<boolean>(() => internalVisible.value);
+
+const rootClass = computed(() =>
+  imageViewerVariants({ class: props.customClass }),
+);
+
+const maskStyle = computed<string>(() => {
+  if (props.backgroundColor.length > 0) {
+    return 'background-color:' + props.backgroundColor;
+  }
+  return '';
+});
+
+const closeIconUrl = computed<string>(() => {
+  if (typeof props.closeBtn === 'string') return props.closeBtn as string;
+  return '';
+});
+
+const deleteIconUrl = computed<string>(() => {
+  if (typeof props.deleteBtn === 'string') return props.deleteBtn as string;
+  return '';
+});
+
+function setVisible(v: boolean) {
+  if (props.visible == null) {
+    internalVisible.value = v;
+  }
+  emit('update:visible', v);
+}
+
+function onSwiperChange(event: UniEvent) {
+  const detail: any = (event as any).detail;
+  if (detail != null && typeof detail.current === 'number') {
+    currentIndex.value = detail.current as number;
+    emit('change', detail.current);
+  }
+}
+
+function onMaskClick() {
+  setVisible(false);
+  emit('close', { index: currentIndex.value, visible: false, trigger: 'overlay' });
+}
+
+function onClose() {
+  setVisible(false);
+  emit('close', { index: currentIndex.value, visible: false, trigger: 'close-btn' });
+}
+
+function onDelete() {
+  emit('delete', currentIndex.value);
+}
+</script>
+
+<style lang="less">
+@import './t-image-viewer.theme.less';
+</style>

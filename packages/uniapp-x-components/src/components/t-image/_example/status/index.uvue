@@ -1,0 +1,48 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <view class="demo-col">
+        <t-image
+          width="80"
+          height="80"
+          loading="加载中"
+          src=""
+        />
+        <text class="demo-label">加载中</text>
+      </view>
+      <view class="demo-col">
+        <t-image
+          width="80"
+          height="80"
+          error="加载失败"
+          src="https://tdesign.gtimg.com/site/_404.png"
+        />
+        <text class="demo-label">加载失败</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 16px;
+  margin-bottom: 12px;
+}
+.demo-label {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #888888;
+}
+</style>

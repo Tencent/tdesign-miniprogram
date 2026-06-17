@@ -1,0 +1,104 @@
+/**
+ * Navbar 基础样式
+ *
+ * 与 @tdesign/uniapp 的 navbar.less 视觉对齐：
+ *  - left / center / right 三栏布局
+ *  - fixed 固定到顶部，padding-top 适配安全区（默认 20px，可由业务覆写 --td-navbar-padding-top）
+ */
+
+@td-navbar-color: var(--td-navbar-color, rgba(0, 0, 0, 0.9));
+@td-navbar-bg-color: var(--td-navbar-bg-color, #ffffff);
+@td-navbar-height: var(--td-navbar-height, 48px);
+@td-navbar-right: var(--td-navbar-right, 95px);
+@td-navbar-padding-top: var(--td-navbar-padding-top, 20px);
+@td-navbar-title-font-size: var(--td-navbar-title-font-size, 18px);
+@td-navbar-left-arrow-size: var(--td-navbar-left-arrow-size, 24px);
+@td-navbar-capsule-border-color: var(--td-navbar-capsule-border-color, #e7e7e7);
+@td-navbar-capsule-border-radius: var(--td-navbar-capsule-border-radius, 16px);
+@td-navbar-capsule-width: var(--td-navbar-capsule-width, 88px);
+@td-navbar-capsule-height: var(--td-navbar-capsule-height, 32px);
+
+.t-navbar {
+  position: relative;
+
+  &--fixed {
+    .t-navbar__content {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+  }
+
+  &--hide {
+    display: none;
+  }
+
+  &__placeholder {
+    height: @td-navbar-height;
+    padding-top: @td-navbar-padding-top;
+    position: relative;
+    visibility: hidden;
+    box-sizing: content-box;
+  }
+
+  &__content {
+    position: relative;
+    height: @td-navbar-height;
+    width: 100%;
+    padding-top: @td-navbar-padding-top;
+    color: @td-navbar-color;
+    background-color: @td-navbar-bg-color;
+    display: flex;
+    align-items: center;
+    box-sizing: content-box;
+  }
+
+  &__left {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin-left: 4px;
+    flex: 0 0 auto;
+
+    &-arrow {
+      font-size: @td-navbar-left-arrow-size;
+      padding: 0 8px;
+    }
+  }
+
+  &__capsule {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__center {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    height: @td-navbar-height;
+
+    &-title {
+      font-size: @td-navbar-title-font-size;
+      font-weight: 600;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+
+  &__right {
+    flex: 0 0 auto;
+    padding-right: 12px;
+    display: flex;
+    align-items: center;
+  }
+}

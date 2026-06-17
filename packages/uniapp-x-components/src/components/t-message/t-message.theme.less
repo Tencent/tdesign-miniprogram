@@ -1,0 +1,111 @@
+/**
+ * Message 样式
+ *
+ * 1:1 对齐 @tdesign/uniapp/message-item/message-item.less 的视觉：
+ *  - 顶部固定的浅色横幅，带 4 主题色边框/底色
+ *  - 左侧图标 + 中间内容 + 右侧 link/close
+ */
+
+.t-message {
+  position: fixed;
+  top: 0;
+  left: 16rpx;
+  right: 16rpx;
+  z-index: 15000;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  /* 进出场动画：top 由 -100% 滑入到 16rpx */
+  transition-property: transform, opacity;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* 进入前 / 离开后状态 */
+.t-message.t-message--hidden {
+  transform: translateY(-200%);
+  opacity: 0;
+}
+
+/* 4 主题：浅底深字 */
+.t-message--info {
+  color: var(--td-message-info-color, #0052d9);
+  background-color: var(--td-message-info-bg-color, #ecf2fe);
+}
+
+.t-message--success {
+  color: var(--td-message-success-color, #2ba471);
+  background-color: var(--td-message-success-bg-color, #e8f5ee);
+}
+
+.t-message--warning {
+  color: var(--td-message-warning-color, #e37318);
+  background-color: var(--td-message-warning-bg-color, #fef3e6);
+}
+
+.t-message--error {
+  color: var(--td-message-error-color, #d54941);
+  background-color: var(--td-message-error-bg-color, #fcecec);
+}
+
+/* 文本对齐 */
+.t-message--align-left .t-message__content {
+  text-align: left;
+  justify-content: flex-start;
+}
+.t-message--align-center .t-message__content {
+  text-align: center;
+  justify-content: center;
+}
+
+/* 图标 */
+.t-message__icon {
+  width: 44rpx;
+  height: 44rpx;
+  font-size: 44rpx;
+  margin-right: 16rpx;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 内容 */
+.t-message__content {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: inherit;
+  /* 跑马灯单行不折行 */
+  overflow: hidden;
+}
+
+.t-message__text {
+  color: inherit;
+}
+
+/* 链接 */
+.t-message__link {
+  margin-left: 16rpx;
+  color: var(--td-message-link-color, #0052d9);
+  font-weight: 500;
+}
+
+/* 关闭按钮 */
+.t-message__close-btn {
+  margin-left: 16rpx;
+  width: 44rpx;
+  height: 44rpx;
+  font-size: 36rpx;
+  color: var(--td-message-close-color, rgba(0, 0, 0, 0.4));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

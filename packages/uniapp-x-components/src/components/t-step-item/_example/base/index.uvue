@@ -1,0 +1,16 @@
+<template>
+  <view class="demo-block">
+    <t-steps :current="1">
+      <t-step-item title="标题1" content="描述" extra="附加" ></t-step-item>
+      <t-step-item title="标题2" content="描述" extra="附加" ></t-step-item>
+      <t-step-item title="标题3" content="描述" extra="附加" ></t-step-item>
+    </t-steps>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 24px 16px;
+  background-color: #ffffff;
+}
+</style>

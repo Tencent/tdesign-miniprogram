@@ -1,0 +1,50 @@
+<template>
+  <view :class="rootClass" :style="rootStyle">
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Col - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 col：
+ *  - span / offset 直接映射 24 栅格类
+ *  - 通过 inject('t-row-gutter') 取得父 row 的间距，并用 padding 消费一半
+ */
+import { computed, inject } from 'vue';
+import { colVariants } from './t-col.variants';
+
+const props = defineProps({
+  span: { type: Number, default: 0 },
+  offset: { type: Number, default: 0 },
+  customClass: { type: String, default: '' },
+});
+
+const gutter = inject<number>('t-row-gutter', 0);
+
+const rootClass = computed<string>(() => {
+  let cls = colVariants({
+    class: props.customClass,
+  });
+  if (props.span > 0 && props.span <= 24) {
+    cls = cls + ' t-col--' + props.span.toString();
+  }
+  if (props.offset > 0 && props.offset <= 23) {
+    cls = cls + ' t-col--offset-' + props.offset.toString();
+  }
+  return cls;
+});
+
+const rootStyle = computed<string>(() => {
+  if (gutter > 0) {
+    const half = (gutter / 2).toString();
+    return 'padding-left:' + half + 'px;padding-right:' + half + 'px';
+  }
+  return '';
+});
+</script>
+
+<style lang="less">
+@import './t-col.theme.less';
+</style>

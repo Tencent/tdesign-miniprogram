@@ -1,0 +1,59 @@
+<template>
+  <view>
+    <t-button block size="large" variant="outline" theme="primary" @click="visible = true">
+      带标题与关闭按钮的弹窗
+    </t-button>
+
+    <t-popup
+      :visible="visible"
+      placement="bottom"
+      :close-btn="true"
+      @update:visible="(v) => visible = v"
+    >
+      <view class="with-title">
+        <view class="with-title__header">
+          <text class="with-title__title">弹窗标题</text>
+        </view>
+        <view class="with-title__body">
+          <text class="with-title__desc">这是一段说明文案，演示 popup + close-btn + bottom 的组合用法。</text>
+          <text class="with-title__desc">点击右上角的关闭按钮，或下拉穿透蒙层即可关闭。</text>
+        </view>
+      </view>
+    </t-popup>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Popup with-title demo - 带标题与默认关闭按钮
+ * 1:1 对齐 @tdesign/uniapp/popup/_example/with-title/index.vue
+ */
+import { ref } from 'vue';
+
+const visible = ref<boolean>(false);
+</script>
+
+<style>
+.with-title {
+  background-color: #ffffff;
+  padding: 32rpx;
+}
+.with-title__header {
+  padding: 16rpx 0 24rpx;
+}
+.with-title__title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.9);
+}
+.with-title__body {
+  padding-bottom: 32rpx;
+}
+.with-title__desc {
+  display: block;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 44rpx;
+  margin-bottom: 12rpx;
+}
+</style>

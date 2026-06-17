@@ -1,0 +1,30 @@
+<template>
+  <view class="demo-block">
+    <t-icon
+      name="https://tdesign.gtimg.com/site/avatar.jpg"
+      size="48"
+    />
+    <t-icon
+      name="https://tdesign.gtimg.com/site/avatar.jpg"
+      size="64"
+    />
+    <t-icon
+      name="https://tdesign.gtimg.com/site/avatar.jpg"
+      size="80"
+    />
+  </view>
+</template>
+
+<style>
+.demo-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 16px;
+}
+.demo-block > * {
+  margin-right: 16px;
+  margin-bottom: 12px;
+}
+</style>

@@ -1,0 +1,75 @@
+<template>
+  <view :class="rootClass" :style="rootStyle" @click="onClick">
+    <image
+      v-if="isImage"
+      :src="props.name"
+      mode="aspectFit"
+      class="t-icon__image"
+    />
+    <!-- 字体图标：通过 ::before 注入 unicode；用 view 而非 text，确保伪元素在 uts/H5 端均可用 -->
+    <view v-else :class="glyphClass" />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Icon - uni-app x 实现
+ *
+ * 行为契约与 icon.vue 镜像保持一致；类型从 t-icon.types.ts 同源引入。
+ */
+import { computed } from 'vue';
+import { iconVariants } from './t-icon.variants';
+
+const props = defineProps({
+  name: { type: String, default: '' },
+  color: { type: String, default: '' },
+  prefix: { type: String, default: '' },
+  size: { type: [String, Number], default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['click']);
+
+const isImage = computed(() => props.name.indexOf('/') !== -1);
+
+function addUnit(value: string | number): string {
+  if (value === '' || value === null) return '';
+  const v = String(value);
+  // 数字 / 纯数字字符串默认补 px
+  if (/^-?\d+(\.\d+)?$/.test(v)) return v + 'px';
+  return v;
+}
+
+const rootStyle = computed(() => {
+  const parts: string[] = [];
+  if (props.size !== '' && props.size !== 0) {
+    parts.push('font-size:' + addUnit(props.size as any));
+  }
+  if (props.color.length > 0) {
+    parts.push('color:' + props.color);
+  }
+  return parts.join(';');
+});
+
+const rootClass = computed(() =>
+  iconVariants({
+    image: isImage.value,
+    class: props.customClass,
+  }),
+);
+
+const glyphClass = computed(() => {
+  // 无 prefix 时，字体图标直接挂在根 `.t-icon` 上（less 中 `each(@icons)` 会展开为 `.t-icon-{name}::before`）
+  // 自定义 prefix 时，按业务字典规则拼接 `prefix-name`
+  const p = props.prefix.length > 0 ? props.prefix : 't-icon';
+  return p + '-' + props.name;
+});
+
+function onClick(event: UniMouseEvent) {
+  emit('click', event);
+}
+</script>
+
+<style lang="less">
+@import './t-icon.theme.less';
+</style>

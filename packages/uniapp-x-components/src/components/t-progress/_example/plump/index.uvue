@@ -1,0 +1,22 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-progress theme="plump" :percentage="30" ></t-progress>
+    </view>
+    <view class="demo-row">
+      <t-progress theme="plump" :percentage="60" ></t-progress>
+    </view>
+    <view class="demo-row">
+      <t-progress theme="plump" :percentage="90" ></t-progress>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  margin-bottom: 12px;
+}
+</style>

@@ -1,0 +1,57 @@
+<template>
+  <view>
+    <!-- 重要：必须预埋 t-toast 并设置 ref="toast"，否则全局 API 找不到实例 -->
+    <t-toast ref="toast" />
+
+    <t-button block size="large" theme="primary" custom-style="margin-bottom: 16rpx;" @click="onShowDefault">
+      默认 Toast
+    </t-button>
+    <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onShowSuccess">
+      成功 Toast
+    </t-button>
+    <t-button block size="large" theme="warning" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onShowWarning">
+      警告 Toast
+    </t-button>
+    <t-button block size="large" theme="danger" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onShowError">
+      错误 Toast
+    </t-button>
+    <t-button block size="large" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onShowLoading">
+      加载 Toast（手动关闭）
+    </t-button>
+    <t-button block size="large" variant="text" @click="onHide">
+      手动关闭
+    </t-button>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Toast base demo - 4 主题 + 全局 API 调用
+ *
+ * 关键点：
+ *  1) <t-toast ref="toast" /> 预埋在 template
+ *  2) showToast / hideToast 内部用 getCurrentPages → $vm.$refs.toast 找到该实例
+ */
+import { showToast, hideToast } from '@/uni_modules/tdesign-uniapp-x/components/t-toast';
+
+function onShowDefault() {
+  showToast({ message: '这是一条默认 Toast' });
+}
+function onShowSuccess() {
+  showToast({ message: '操作成功', theme: 'success' });
+}
+function onShowWarning() {
+  showToast({ message: '请注意网络状态', theme: 'warning' });
+}
+function onShowError() {
+  showToast({ message: '操作失败，请重试', theme: 'error' });
+}
+function onShowLoading() {
+  showToast({ message: '加载中...', theme: 'loading', duration: 0 });
+}
+function onHide() {
+  hideToast();
+}
+</script>
+
+<style></style>

@@ -1,0 +1,125 @@
+<template>
+  <scroll-view class="demo-page" :scroll-y="true">
+    <view class="demo-header">
+      <text class="demo-title">Input 输入框</text>
+      <text class="demo-desc">用于单行文本信息输入。</text>
+    </view>
+
+    <view class="demo-block">
+      <view class="demo-block__head">
+        <text class="demo-block__title">01 组件类型</text>
+        <text class="demo-block__desc">基础输入框</text>
+      </view>
+      <base-demo></base-demo>
+      <text class="demo-block__desc demo-block__desc--solo">带字数限制输入框</text>
+      <maxlength-demo></maxlength-demo>
+      <text class="demo-block__desc demo-block__desc--solo">带操作输入框</text>
+      <suffix-demo></suffix-demo>
+      <text class="demo-block__desc demo-block__desc--solo">带图标输入框</text>
+      <prefix-demo></prefix-demo>
+      <text class="demo-block__desc demo-block__desc--solo">特定类型输入框</text>
+      <special-demo></special-demo>
+    </view>
+
+    <view class="demo-block">
+      <view class="demo-block__head">
+        <text class="demo-block__title">02 组件状态</text>
+        <text class="demo-block__desc">输入框状态</text>
+      </view>
+      <status-demo></status-demo>
+      <text class="demo-block__desc demo-block__desc--solo">信息超长状态</text>
+      <label-demo></label-demo>
+    </view>
+
+    <view class="demo-block">
+      <view class="demo-block__head">
+        <text class="demo-block__title">03 组件样式</text>
+        <text class="demo-block__desc">内容位置</text>
+      </view>
+      <align-demo></align-demo>
+      <text class="demo-block__desc demo-block__desc--solo">竖排样式</text>
+      <layout-demo></layout-demo>
+    </view>
+  </scroll-view>
+</template>
+
+<script>
+import BaseDemo from './base/index.uvue';
+import MaxlengthDemo from './maxlength/index.uvue';
+import SuffixDemo from './suffix/index.uvue';
+import PrefixDemo from './prefix/index.uvue';
+import SpecialDemo from './special/index.uvue';
+import StatusDemo from './status/index.uvue';
+import LabelDemo from './label/index.uvue';
+import AlignDemo from './align/index.uvue';
+import LayoutDemo from './layout/index.uvue';
+
+export default {
+  components: {
+    BaseDemo,
+    MaxlengthDemo,
+    SuffixDemo,
+    PrefixDemo,
+    SpecialDemo,
+    StatusDemo,
+    LabelDemo,
+    AlignDemo,
+    LayoutDemo,
+  },
+};
+</script>
+
+<style>
+/**
+ * 与 @tdesign/uniapp 对齐的 demo 容器：
+ * - 整页灰底，分组之间靠间距区分
+ * - 不再给 demo block 加白色卡片背景，让 t-input 自身的白底连续贴成"列表"效果
+ * - 标题/描述均放在白底之上的灰底区域（紧贴 input 之前）
+ */
+.demo-page {
+  flex: 1;
+  background-color: #f5f5f5;
+  padding-bottom: 32px;
+}
+.demo-header {
+  padding: 24px 16px 16px;
+}
+.demo-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.9);
+  line-height: 32px;
+  margin-bottom: 8px;
+}
+.demo-desc {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 22px;
+}
+
+.demo-block {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+}
+.demo-block__head {
+  padding: 24px 16px 12px;
+  display: flex;
+  flex-direction: column;
+}
+.demo-block__title {
+  font-size: 18px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.9);
+  line-height: 26px;
+  margin-bottom: 4px;
+}
+.demo-block__desc {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 22px;
+}
+.demo-block__desc--solo {
+  padding: 16px 16px 8px;
+}
+</style>

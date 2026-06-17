@@ -1,0 +1,33 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-check-tag content="标签一" v-model:checked="value1" ></t-check-tag>
+      <t-check-tag content="标签二" v-model:checked="value2" ></t-check-tag>
+      <t-check-tag :content="['已选中', '未选中']" v-model:checked="value3" ></t-check-tag>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const value1 = ref(false);
+const value2 = ref(true);
+const value3 = ref(false);
+</script>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-row > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

@@ -1,0 +1,123 @@
+<template>
+  <view :class="rootClass" :style="rootStyle" @click="onClick">
+    <view :class="contentClass">
+      <view v-if="hasImage" class="t-grid-item__image-wrapper">
+        <image
+          v-if="props.image.length > 0"
+          class="t-grid-item__image"
+          :src="props.image"
+          mode="aspectFit"
+        />
+        <image
+          v-else-if="props.icon.length > 0"
+          class="t-grid-item__image"
+          :src="props.icon"
+          mode="aspectFit"
+        />
+      </view>
+      <view :class="wordsClass">
+        <view v-if="props.text.length > 0" :class="textClass">
+          <text>{{ props.text }}</text>
+        </view>
+        <view v-if="props.description.length > 0" class="t-grid-item__description">
+          <text>{{ props.description }}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * GridItem - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/grid-item：
+ *  - 通过 inject 't-grid-context' 获取父级 column / gutter / hasBorder / align
+ *  - 自适应宽度：100% / column
+ *  - 不支持 url 自动跳转，仅触发 click 事件
+ */
+import { computed, inject, ref } from 'vue';
+import { gridItemVariants } from './t-grid-item.variants';
+import type { GridItemLayout } from './t-grid-item.types';
+
+type GridContext = {
+  align: 'left' | 'center';
+  hasBorder: boolean;
+  column: number;
+  gutter: number;
+  hover: boolean;
+};
+
+const ctxDefault: GridContext = {
+  align: 'center',
+  hasBorder: false,
+  column: 4,
+  gutter: 0,
+  hover: false,
+};
+
+const props = defineProps({
+  description: { type: String, default: '' },
+  icon: { type: String, default: '' },
+  image: { type: String, default: '' },
+  layout: { type: String as PropType<GridItemLayout>, default: 'vertical' },
+  text: { type: String, default: '' },
+  url: { type: String, default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['click']);
+
+const ctx = inject('t-grid-context', ctxDefault) as GridContext;
+const isHovering = ref(false);
+
+const rootClass = computed(() => {
+  let cls = gridItemVariants({
+    layout: props.layout,
+    class: props.customClass,
+  });
+  if (ctx.hasBorder) cls = cls + ' t-grid-item--bordered';
+  if (isHovering.value && ctx.hover) cls = cls + ' t-grid-item--hover';
+  return cls;
+});
+
+const rootStyle = computed<string>(() => {
+  const parts: string[] = [];
+  if (ctx.column > 0) {
+    const w = (100 / ctx.column).toFixed(4);
+    parts.push('width:' + w + '%');
+  }
+  return parts.join(';');
+});
+
+const contentClass = computed<string>(() => {
+  let c = 't-grid-item__content';
+  if (props.layout === 'horizontal') c = c + ' t-grid-item__content--horizontal';
+  if (ctx.align === 'left') c = c + ' t-grid-item__content--left';
+  return c;
+});
+
+const wordsClass = computed<string>(() => {
+  let c = 't-grid-item__words';
+  if (props.layout === 'horizontal') c = c + ' t-grid-item__words--horizontal';
+  return c;
+});
+
+const textClass = computed<string>(() => {
+  let c = 't-grid-item__text';
+  if (props.layout === 'horizontal') c = c + ' t-grid-item__text--horizontal';
+  return c;
+});
+
+const hasImage = computed<boolean>(() => {
+  return props.image.length > 0 || props.icon.length > 0;
+});
+
+function onClick(event: UniEvent) {
+  emit('click', event);
+}
+</script>
+
+<style lang="less">
+@import './t-grid-item.theme.less';
+</style>

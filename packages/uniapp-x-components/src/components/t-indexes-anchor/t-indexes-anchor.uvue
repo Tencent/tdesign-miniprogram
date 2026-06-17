@@ -1,0 +1,55 @@
+<template>
+  <view :class="rootClass">
+    <view class="t-indexes-anchor__wrapper">
+      <view class="t-indexes-anchor__slot">
+        <slot />
+      </view>
+      <view class="t-indexes-anchor__header">
+        <text>{{ props.index }}</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * IndexesAnchor - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 indexes-anchor：
+ *  - 通过 inject('t-indexes-context') 拿到 current，用于高亮当前 anchor 的 header
+ */
+import { computed, inject } from 'vue';
+import { indexesAnchorVariants } from './t-indexes-anchor.variants';
+
+type IndexesContext = {
+  current: string | number;
+  sticky: boolean;
+  stickyOffset: number;
+};
+
+const ctxDefault: IndexesContext = {
+  current: '',
+  sticky: false,
+  stickyOffset: 0,
+};
+
+const props = defineProps({
+  index: { type: [String, Number], default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const ctx = inject('t-indexes-context', ctxDefault) as IndexesContext;
+
+const active = computed<boolean>(() => ctx.current === props.index);
+
+const rootClass = computed<string>(() =>
+  indexesAnchorVariants({
+    active: active.value,
+    class: props.customClass,
+  }),
+);
+</script>
+
+<style lang="less">
+@import './t-indexes-anchor.theme.less';
+</style>

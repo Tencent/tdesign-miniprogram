@@ -1,0 +1,88 @@
+/**
+ * Toast 样式
+ *
+ * 1:1 对齐 @tdesign/uniapp/toast/toast.less，rpx 单位：
+ *  - 居中固定布局：left:50% + translate(-50%, -50%)；top% 由 placement 决定（25%/45%/75%）
+ *  - row：横向排列 icon + text；column：竖向 + 大图标
+ *  - 4 主题（loading/success/warning/error）共用同一深色底，由图标颜色区分
+ */
+
+.t-toast {
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 12001;
+  background-color: var(--td-toast-bg-color, rgba(0, 0, 0, 0.65));
+  border-radius: var(--td-toast-radius, 8rpx);
+  color: var(--td-toast-color, #ffffff);
+  max-width: var(--td-toast-max-width, 370rpx);
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  /* fade 动画，时长由 inline style 注入 */
+  transition-property: opacity;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+  opacity: 1;
+}
+
+/* 三种 placement：top% 直接 inline style 注入；这里仅做语义占位 */
+.t-toast--top,
+.t-toast--middle,
+.t-toast--bottom {
+  /* top 由 inline style 注入 */
+}
+
+/* fade 动画 */
+.t-toast.t-fade-enter,
+.t-toast.t-fade-leave-to {
+  opacity: 0;
+}
+
+/* 内容区 */
+.t-toast__content {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  line-height: 44rpx;
+}
+
+.t-toast__content--row {
+  flex-direction: row;
+  text-align: left;
+  padding: 28rpx 44rpx;
+}
+
+.t-toast__content--column {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 48rpx;
+  min-width: 160rpx;
+  min-height: 160rpx;
+}
+
+/* 图标 */
+.t-toast__icon--row {
+  font-size: var(--td-toast-row-icon-size, 48rpx);
+  color: inherit;
+}
+
+.t-toast__icon--column {
+  font-size: var(--td-toast-column-icon-size, 64rpx);
+  color: inherit;
+}
+
+/* 文本 */
+.t-toast__text {
+  color: inherit;
+}
+
+.t-toast__text--row {
+  margin-left: 16rpx;
+}
+
+.t-toast__text--column {
+  margin-top: 16rpx;
+}

@@ -1,0 +1,27 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-tag>默认</t-tag>
+      <t-tag theme="primary">主要</t-tag>
+      <t-tag theme="success">成功</t-tag>
+      <t-tag theme="warning">警告</t-tag>
+      <t-tag theme="danger">危险</t-tag>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-row > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

@@ -1,0 +1,116 @@
+<template>
+  <view :class="rootClass">
+    <view v-if="hasContent" class="t-badge__content">
+      <slot>
+        <text v-if="props.content.length > 0">{{ props.content }}</text>
+      </slot>
+    </view>
+    <view
+      v-if="showBadge"
+      :class="innerClass"
+      :style="innerStyle"
+    >
+      <slot v-if="!props.dot" name="count">
+        <text v-if="badgeText.length > 0">{{ badgeText }}</text>
+      </slot>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Badge - uni-app x 实现
+ *
+ * 行为契约与 badge.vue 镜像保持一致：
+ *  - dot=true：渲染小圆点，忽略 count；
+ *  - count 为数字且 > maxCount：展示 `${maxCount}+`；
+ *  - count 为 0：默认隐藏，showZero=true 时强制显示；
+ *  - 包含 default slot / content 时，徽标浮动到右上角；
+ *  - 仅作徽标用（无 child）时，原地展示。
+ */
+import { computed, useSlots } from 'vue';
+import { badgeVariants, badgeInnerVariants } from './t-badge.variants';
+import type { BadgeShape, BadgeSize } from './t-badge.types';
+
+const props = defineProps({
+  dot: { type: Boolean, default: false },
+  count: { type: [String, Number], default: '' },
+  maxCount: { type: Number, default: 99 },
+  showZero: { type: Boolean, default: false },
+  content: { type: String, default: '' },
+  color: { type: String, default: '' },
+  shape: { type: String as PropType<BadgeShape>, default: 'circle' },
+  size: { type: String as PropType<BadgeSize>, default: 'medium' },
+  offset: { type: Array as PropType<number[]>, default: (): number[] => [] },
+  customClass: { type: String, default: '' },
+});
+
+const slots = useSlots();
+
+// 是否存在 child content（用来决定徽标浮动定位）
+const hasContent = computed(() => props.content.length > 0 || slots.default != null);
+
+// 计算最终展示的徽标文字
+const badgeText = computed<string>(() => {
+  if (props.dot) return '';
+  const raw = props.count;
+  if (typeof raw === 'number') {
+    if (raw === 0) return '0';
+    if (raw > props.maxCount) return String(props.maxCount) + '+';
+    return String(raw);
+  }
+  // string
+  return raw == null ? '' : String(raw);
+});
+
+// 是否真正渲染徽标（dot 或 count 有内容；count=0 时受 showZero 控制）
+const showBadge = computed<boolean>(() => {
+  if (props.dot) return true;
+  const raw = props.count;
+  if (typeof raw === 'number') {
+    if (raw === 0) return props.showZero;
+    return true;
+  }
+  // string
+  if (raw == null) return false;
+  const s = String(raw);
+  if (s.length === 0) return false;
+  if (s === '0') return props.showZero;
+  return true;
+});
+
+const rootClass = computed(() =>
+  badgeVariants({
+    hasContent: hasContent.value,
+    class: props.customClass,
+  }),
+);
+
+const innerClass = computed(() =>
+  badgeInnerVariants({
+    shape: props.shape,
+    size: props.size,
+    dot: props.dot,
+    floating: hasContent.value,
+  }),
+);
+
+const innerStyle = computed<string>(() => {
+  const parts: string[] = [];
+  if (props.color.length > 0) {
+    parts.push('background-color:' + props.color);
+  }
+  // offset: [x, y]，仅在浮动模式下生效
+  if (hasContent.value && props.offset.length === 2) {
+    const x = props.offset[0];
+    const y = props.offset[1];
+    // 在默认 translate(-50%, -50%) 之上叠加偏移
+    parts.push('transform:translate(calc(-50% + ' + x + 'px), calc(-50% + ' + y + 'px))');
+  }
+  return parts.join(';');
+});
+</script>
+
+<style lang="less">
+@import './t-badge.theme.less';
+</style>

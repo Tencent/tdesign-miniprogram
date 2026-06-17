@@ -1,0 +1,38 @@
+<template>
+  <view>
+    <view class="row">
+      <text class="row-label">纵向轮播（每 2s 切换）</text>
+      <t-notice-bar
+        :content-list="messages"
+        direction="vertical"
+        :interval="2000"
+        @change="onChange"
+      />
+    </view>
+    <view class="row">
+      <text class="row-label">当前条目</text>
+      <text class="cur">{{ '#' + curIndex.toString() }}</text>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const messages: string[] = [
+  '通知 1：今日天气晴朗，宜出行',
+  '通知 2：服务器将于今晚维护',
+  '通知 3：双 12 活动即将开启',
+];
+
+const curIndex = ref<number>(0);
+function onChange(ctx: any) {
+  curIndex.value = (ctx.current as number);
+}
+</script>
+
+<style>
+.row { padding-top: 16rpx; padding-bottom: 16rpx; }
+.row-label { display: block; font-size: 24rpx; color: rgba(0,0,0,0.4); padding-bottom: 8rpx; }
+.cur { font-size: 28rpx; color: rgba(0,0,0,0.9); }
+</style>

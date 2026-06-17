@@ -1,0 +1,153 @@
+<template>
+  <view v-if="!visible">
+    <slot />
+  </view>
+  <view v-else :class="rootClass">
+    <view
+      v-for="(row, rowIndex) in rows"
+      :key="rowIndex"
+      class="t-skeleton__row"
+    >
+      <view
+        v-for="(col, colIndex) in row"
+        :key="colIndex"
+        :class="col.cls"
+        :style="col.style"
+      />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Skeleton - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/skeleton：
+ *  - delay 延迟显示加载效果
+ *  - theme: text(3行文本) / paragraph(3行) / image(rect) / avatar(circle)
+ *  - rowCol: 高级配置，支持 number(列数) / object(自定义)
+ */
+import { computed, ref, watch, onMounted } from 'vue';
+import { skeletonVariants } from './t-skeleton.variants';
+import type { SkeletonAnimation, SkeletonTheme } from './t-skeleton.types';
+
+type ColItem = { cls: string; style: string };
+
+const props = defineProps({
+  animation: { type: String as PropType<SkeletonAnimation>, default: 'none' },
+  delay: { type: Number, default: 0 },
+  loading: { type: Boolean, default: true },
+  rowCol: { type: Array as PropType<any[] | null>, default: null },
+  theme: { type: String as PropType<SkeletonTheme>, default: 'text' },
+  customClass: { type: String, default: '' },
+});
+
+const visible = ref(false);
+let timer: number = -1;
+
+function applyVisible() {
+  if (props.delay > 0) {
+    if (timer !== -1) clearTimeout(timer);
+    timer = setTimeout(() => {
+      visible.value = props.loading;
+    }, props.delay) as unknown as number;
+  } else {
+    visible.value = props.loading;
+  }
+}
+
+onMounted(() => applyVisible());
+watch(() => props.loading, () => applyVisible());
+
+function addUnit(value: any): string {
+  if (value === '' || value === null || value === undefined) return '';
+  const v = String(value);
+  if (/^-?\d+(\.\d+)?$/.test(v)) return v + 'px';
+  return v;
+}
+
+function buildCol(opt: any): ColItem {
+  let type = 'text';
+  let widthStr = '';
+  let heightStr = '';
+  if (typeof opt === 'object' && opt !== null) {
+    if (typeof opt.type === 'string') type = opt.type as string;
+    if (opt.width !== undefined) widthStr = addUnit(opt.width);
+    if (opt.height !== undefined) heightStr = addUnit(opt.height);
+    if (opt.size !== undefined) {
+      const s = addUnit(opt.size);
+      widthStr = s;
+      heightStr = s;
+    }
+  }
+  const styleParts: string[] = [];
+  if (widthStr.length > 0) styleParts.push('width:' + widthStr);
+  if (heightStr.length > 0) styleParts.push('height:' + heightStr);
+  return {
+    cls: 't-skeleton__col t-skeleton--type-' + type,
+    style: styleParts.join(';'),
+  };
+}
+
+const rows = computed<ColItem[][]>(() => {
+  // 1. 用户自定义 rowCol
+  if (props.rowCol != null && (props.rowCol as any[]).length > 0) {
+    const out: ColItem[][] = [];
+    const arr = props.rowCol as any[];
+    for (let i = 0; i < arr.length; i++) {
+      const item: any = arr[i];
+      if (typeof item === 'number') {
+        const cols: ColItem[] = [];
+        for (let j = 0; j < (item as number); j++) {
+          cols.push(buildCol({ type: 'text' }));
+        }
+        out.push(cols);
+      } else if (Array.isArray(item)) {
+        const cols: ColItem[] = [];
+        const itArr = item as any[];
+        for (let j = 0; j < itArr.length; j++) {
+          cols.push(buildCol(itArr[j]));
+        }
+        out.push(cols);
+      } else {
+        out.push([buildCol(item)]);
+      }
+    }
+    return out;
+  }
+
+  // 2. theme 预设
+  const theme = props.theme;
+  if (theme === 'avatar') {
+    return [[buildCol({ type: 'circle' })]];
+  }
+  if (theme === 'image') {
+    return [[buildCol({ type: 'rect', width: '72px', height: '72px' })]];
+  }
+  if (theme === 'paragraph') {
+    return [
+      [buildCol({ type: 'text' })],
+      [buildCol({ type: 'text' })],
+      [buildCol({ type: 'text' })],
+      [buildCol({ type: 'text', width: '70%' })],
+    ];
+  }
+  // text 默认 3 行
+  return [
+    [buildCol({ type: 'text' })],
+    [buildCol({ type: 'text' })],
+    [buildCol({ type: 'text', width: '70%' })],
+  ];
+});
+
+const rootClass = computed(() =>
+  skeletonVariants({
+    animation: props.animation,
+    class: props.customClass,
+  }),
+);
+</script>
+
+<style lang="less">
+@import './t-skeleton.theme.less';
+</style>

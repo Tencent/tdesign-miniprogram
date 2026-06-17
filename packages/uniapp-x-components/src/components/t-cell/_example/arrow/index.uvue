@@ -1,0 +1,7 @@
+<template>
+  <view>
+    <t-cell title="单元格" arrow bordered ></t-cell>
+    <t-cell title="跳转一" note="点我" arrow bordered ></t-cell>
+    <t-cell title="跳转二" description="二级文本" note="点我" arrow ></t-cell>
+  </view>
+</template>

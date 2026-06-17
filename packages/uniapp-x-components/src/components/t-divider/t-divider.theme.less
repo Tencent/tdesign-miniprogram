@@ -1,0 +1,81 @@
+/**
+ * Divider 基础样式
+ *
+ * 与 uniapp 版 divider.less 保持 token 体系一致（var(--td-divider-*)）；
+ * 适配 uni-app x（避免 ::before / ::after 在 uts 端的兼容差异），
+ * 改用真实 view 节点（`__line` 左/右双线）实现水平/垂直分割线。
+ */
+
+@td-divider-color: var(--td-divider-color, #e7e7e7);
+@td-divider-border-width: var(--td-divider-border-width, 1px);
+@td-divider-horizontal-margin: var(--td-divider-horizontal-margin, 12px);
+@td-divider-vertical-margin: var(--td-divider-vertical-margin, 8px);
+@td-divider-content-color: var(--td-divider-content-color, rgba(0, 0, 0, 0.4));
+@td-divider-content-font-size: var(--td-divider-content-font-size, 12px);
+@td-divider-content-margin: var(--td-divider-content-margin, 8px);
+@td-divider-vertical-height: var(--td-divider-vertical-height, 14px);
+
+.t-divider {
+  display: flex;
+  align-items: center;
+  color: @td-divider-color;
+  box-sizing: border-box;
+
+  &--horizontal {
+    flex-direction: row;
+    width: 100%;
+    margin: @td-divider-horizontal-margin 0;
+  }
+
+  &--vertical {
+    flex-direction: column;
+    height: @td-divider-vertical-height;
+    margin: 0 @td-divider-vertical-margin;
+  }
+
+  &--dashed {
+    .t-divider__line {
+      border-style: dashed;
+    }
+  }
+
+  &__line {
+    flex: 1;
+    box-sizing: border-box;
+    border-color: @td-divider-color;
+    border-style: solid;
+    border-width: 0;
+  }
+
+  &--horizontal &__line {
+    border-top-width: @td-divider-border-width;
+  }
+
+  &--vertical &__line {
+    border-left-width: @td-divider-border-width;
+  }
+
+  // 文本居左：左侧线缩短到固定值
+  &--horizontal&--left &__line:first-child {
+    flex: none;
+    width: 24px;
+  }
+
+  // 文本居右：右侧线缩短
+  &--horizontal&--right &__line:last-child {
+    flex: none;
+    width: 24px;
+  }
+
+  // 内容
+  &__content {
+    flex: none;
+    color: @td-divider-content-color;
+    font-size: @td-divider-content-font-size;
+    line-height: 1.4;
+  }
+
+  &--horizontal &__content:not(:empty) {
+    padding: 0 @td-divider-content-margin;
+  }
+}

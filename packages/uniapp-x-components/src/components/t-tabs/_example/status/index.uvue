@@ -1,0 +1,22 @@
+<template>
+  <view>
+    <t-tabs :value="value" @change="onTabsChange" @click="onTabsClick">
+      <t-tab-panel :label="value === '0' ? '选中' : '默认'" value="0" />
+      <t-tab-panel :label="value === '1' ? '选中' : '默认'" value="1" />
+      <t-tab-panel label="禁用" value="2" :disabled="true" />
+    </t-tabs>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+const value = ref<string>('0');
+function onTabsChange(e: { value: string; label: string }) {
+  value.value = e.value;
+}
+function onTabsClick(_e: { value: string; label: string }) {
+  // click
+}
+</script>
+
+<style></style>

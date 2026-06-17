@@ -1,0 +1,29 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-avatar size="small">A</t-avatar>
+      <t-avatar size="medium">王</t-avatar>
+      <t-avatar size="large">小明</t-avatar>
+      <t-avatar
+        size="medium"
+        alt="头"
+      />
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-row > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

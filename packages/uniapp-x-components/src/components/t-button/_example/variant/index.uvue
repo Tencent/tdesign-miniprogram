@@ -1,0 +1,21 @@
+<template>
+  <view class="demo-block">
+    <t-button theme="primary" variant="base" size="large">填充按钮</t-button>
+    <t-button theme="primary" variant="outline" size="large">描边按钮</t-button>
+    <t-button theme="primary" variant="dashed" size="large">虚线按钮</t-button>
+    <t-button theme="primary" variant="text" size="large">文字按钮</t-button>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+.demo-block > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

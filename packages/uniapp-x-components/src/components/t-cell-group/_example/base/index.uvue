@@ -1,0 +1,15 @@
+<template>
+  <view class="demo-block">
+    <t-cell-group title="基础用法">
+      <t-cell title="单元格1" ></t-cell>
+      <t-cell title="单元格2" ></t-cell>
+      <t-cell title="单元格3" ></t-cell>
+    </t-cell-group>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  background-color: #ffffff;
+}
+</style>

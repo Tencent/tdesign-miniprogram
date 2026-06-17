@@ -1,0 +1,159 @@
+/**
+ * StepItem 基础样式
+ *
+ * tokens 与 uniapp-components/step-item 命名对齐，rpx → px。
+ */
+
+@td-step-item-dot-size: var(--td-step-item-dot-size, 8px);
+@td-step-item-circle-size: var(--td-step-item-circle-size, 22px);
+@td-step-item-circle-text-font-size: var(--td-step-item-circle-text-font-size, 14px);
+@td-step-item-description-color: var(--td-step-item-description-color, rgba(0, 0, 0, 0.4));
+
+@td-step-item-default-circle-bg: var(--td-step-item-default-circle-bg, #f3f3f3);
+@td-step-item-default-circle-color: var(--td-step-item-default-circle-color, rgba(0, 0, 0, 0.4));
+@td-step-item-default-title-color: var(--td-step-item-default-title-color, rgba(0, 0, 0, 0.4));
+@td-step-item-default-line-color: var(--td-step-item-default-line-color, #e7e7e7);
+
+@td-step-item-process-circle-bg: var(--td-step-item-process-circle-bg, #0052d9);
+@td-step-item-process-circle-color: var(--td-step-item-process-circle-color, #ffffff);
+@td-step-item-process-title-color: var(--td-step-item-process-title-color, #0052d9);
+@td-step-item-process-line-color: var(--td-step-item-process-line-color, #e7e7e7);
+
+@td-step-item-finish-circle-bg: var(--td-step-item-finish-circle-bg, #d9e1ff);
+@td-step-item-finish-circle-color: var(--td-step-item-finish-circle-color, #0052d9);
+@td-step-item-finish-title-color: var(--td-step-item-finish-title-color, rgba(0, 0, 0, 0.9));
+@td-step-item-finish-line-color: var(--td-step-item-finish-line-color, #0052d9);
+
+@td-step-item-error-circle-bg: var(--td-step-item-error-circle-bg, #fcdcdb);
+@td-step-item-error-circle-color: var(--td-step-item-error-circle-color, #d54941);
+@td-step-item-error-title-color: var(--td-step-item-error-title-color, #d54941);
+
+.t-steps-item {
+  flex: 1;
+  position: relative;
+  display: flex;
+
+  &--horizontal {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  &--vertical {
+    flex-direction: row;
+    margin-bottom: 8px;
+  }
+
+  &__anchor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: @td-step-item-circle-size;
+    height: @td-step-item-circle-size;
+    border-radius: 50%;
+    font-size: @td-step-item-circle-text-font-size;
+  }
+
+  &__dot {
+    width: @td-step-item-dot-size;
+    height: @td-step-item-dot-size;
+    border-radius: 50%;
+    border-width: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+  }
+
+  &__icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  &__content {
+    text-align: center;
+
+    &--horizontal {
+      max-width: 80px;
+      margin-top: 8px;
+    }
+    &--vertical {
+      margin-left: 8px;
+      flex: 1;
+      padding-bottom: 16px;
+      text-align: left;
+    }
+  }
+
+  &__title {
+    font-size: 14px;
+
+    &--process {
+      font-weight: 600;
+    }
+  }
+  &__title + &__description {
+    margin-top: 4px;
+  }
+  &__description {
+    color: @td-step-item-description-color;
+    font-size: 12px;
+  }
+  &__extra {
+    margin-top: 8px;
+    font-size: 12px;
+    color: @td-step-item-description-color;
+  }
+
+  &__line {
+    background-color: @td-step-item-default-line-color;
+    position: absolute;
+
+    &--horizontal {
+      height: 1px;
+      width: calc(100% - 16px - @td-step-item-circle-size);
+      top: calc(@td-step-item-circle-size / 2);
+      left: calc(50% + @td-step-item-circle-size / 2 + 8px);
+    }
+    &--vertical {
+      width: 1px;
+      height: calc(100% - 16px - @td-step-item-circle-size);
+      left: calc(@td-step-item-circle-size / 2);
+      top: calc(@td-step-item-circle-size + 8px);
+    }
+    &--finish {
+      background-color: @td-step-item-finish-line-color;
+    }
+  }
+
+  /* 状态色 */
+  &__circle--default {
+    color: @td-step-item-default-circle-color;
+    background-color: @td-step-item-default-circle-bg;
+  }
+  &__circle--process {
+    color: @td-step-item-process-circle-color;
+    background-color: @td-step-item-process-circle-bg;
+  }
+  &__circle--finish {
+    color: @td-step-item-finish-circle-color;
+    background-color: @td-step-item-finish-circle-bg;
+  }
+  &__circle--error {
+    color: @td-step-item-error-circle-color;
+    background-color: @td-step-item-error-circle-bg;
+  }
+
+  &__title--default { color: @td-step-item-default-title-color; }
+  &__title--process { color: @td-step-item-process-title-color; }
+  &__title--finish { color: @td-step-item-finish-title-color; }
+  &__title--error { color: @td-step-item-error-title-color; }
+
+  &__dot--default { border-color: @td-step-item-default-line-color; background-color: @td-step-item-default-line-color; }
+  &__dot--process { border-color: @td-step-item-process-circle-bg; background-color: @td-step-item-process-circle-bg; }
+  &__dot--finish { border-color: @td-step-item-finish-line-color; background-color: @td-step-item-finish-line-color; }
+  &__dot--error { border-color: @td-step-item-error-circle-color; background-color: @td-step-item-error-circle-color; }
+}

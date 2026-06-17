@@ -1,0 +1,43 @@
+<template>
+  <view :class="rootClass">
+    <view v-if="props.title.length > 0" class="t-cell-group__title">
+      <slot name="title">
+        <text>{{ props.title }}</text>
+      </slot>
+    </view>
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * CellGroup - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/cell-group：
+ *  - title: 单元格组标题
+ *  - theme: default / card
+ *  - bordered: 是否显示组上下边框
+ */
+import { computed } from 'vue';
+import { cellGroupVariants } from './t-cell-group.variants';
+import type { CellGroupTheme } from './t-cell-group.types';
+
+const props = defineProps({
+  bordered: { type: Boolean, default: false },
+  theme: { type: String as PropType<CellGroupTheme>, default: 'default' },
+  title: { type: String, default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const rootClass = computed(() =>
+  cellGroupVariants({
+    theme: props.theme,
+    bordered: props.bordered,
+    class: props.customClass,
+  }),
+);
+</script>
+
+<style lang="less">
+@import './t-cell-group.theme.less';
+</style>

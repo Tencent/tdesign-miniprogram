@@ -1,0 +1,50 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-tag
+        v-for="(item, index) in tags"
+        :key="item"
+        theme="primary"
+        variant="light"
+        closable
+        @close="onClose(index)"
+      >
+        {{ item }}
+      </t-tag>
+      <t-tag v-if="tags.length === 0" theme="default">已全部关闭</t-tag>
+    </view>
+    <view class="demo-row demo-row--bottom">
+      <t-tag disabled>禁用</t-tag>
+      <t-tag closable disabled>禁用 + 可关闭</t-tag>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const tags = ref<string[]>(['标签 A', '标签 B', '标签 C']);
+
+function onClose(index: number) {
+  tags.value.splice(index, 1);
+}
+</script>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-row > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+.demo-row--bottom {
+  margin-top: 8px;
+}
+</style>

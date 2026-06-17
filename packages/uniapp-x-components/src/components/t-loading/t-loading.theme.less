@@ -1,0 +1,166 @@
+/**
+ * Loading 基础样式
+ *
+ * 与 uniapp loading.less 的 token 体系保持一致，使用 var(--td-loading-*) 主题变量。
+ * 适配 uni-app x：避免使用 conic-gradient / mask 等 App 端不支持的特性，circular 改为
+ * 旋转的圆环（border 样式）实现。
+ */
+
+@td-loading-color: var(--td-loading-color, #0052d9);
+@td-loading-text-color: var(--td-loading-text-color, rgba(0, 0, 0, 0.9));
+@td-loading-text-font-size: var(--td-loading-text-font-size, 14px);
+@td-loading-z-index: var(--td-loading-z-index, 3500);
+@td-loading-full-bg-color: var(--td-loading-full-bg-color, rgba(255, 255, 255, 0.6));
+
+.t-loading {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &--horizontal {
+    flex-direction: row;
+  }
+
+  &--vertical {
+    flex-direction: column;
+  }
+
+  &--fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: @td-loading-z-index;
+    background-color: @td-loading-full-bg-color;
+  }
+
+  &--inherit-color {
+    color: inherit;
+  }
+
+  // ---- 指示符容器 ----
+  &__spinner {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    color: @td-loading-color;
+    animation: t-loading-rotate 0.8s linear infinite;
+    animation-play-state: running;
+
+    &--reverse {
+      animation-name: t-loading-rotate-reverse;
+    }
+
+    // ---- circular: 圆环旋转 ----
+    &--circular {
+      border: 2px solid currentColor;
+      border-right-color: transparent;
+      border-radius: 50%;
+    }
+
+    // ---- spinner: 12 个小条 ----
+    &--spinner {
+      animation-timing-function: steps(12);
+      position: relative;
+    }
+
+    // ---- dots: 三个点 ----
+    &--dots {
+      animation: none;
+    }
+  }
+
+  // ---- spinner 12 条 ----
+  &__dot {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__dot-bar {
+    width: 2px;
+    height: 25%;
+    background-color: currentColor;
+    border-radius: 2px;
+  }
+
+  // ---- dots: 圆点容器 ----
+  &__dots-wrapper {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__dots-item {
+    width: 25%;
+    height: 25%;
+    border-radius: 50%;
+    background-color: currentColor;
+    animation: t-loading-dotting 1.4s linear infinite both;
+  }
+
+  // ---- 文本 ----
+  &__text {
+    color: @td-loading-text-color;
+    font-size: @td-loading-text-font-size;
+    line-height: 1.4;
+
+    &--horizontal:not(:empty) {
+      margin-left: 8px;
+    }
+
+    &--vertical:not(:empty) {
+      margin-top: 8px;
+    }
+  }
+}
+
+// ---- 12 条 spinner 的预设旋转角度（避开 uts 不支持的 less mixin 递归生成） ----
+.t-loading__dot-0  { transform: rotate(0deg);   opacity: 0; }
+.t-loading__dot-1  { transform: rotate(30deg);  opacity: 0.0833; }
+.t-loading__dot-2  { transform: rotate(60deg);  opacity: 0.1667; }
+.t-loading__dot-3  { transform: rotate(90deg);  opacity: 0.25; }
+.t-loading__dot-4  { transform: rotate(120deg); opacity: 0.3333; }
+.t-loading__dot-5  { transform: rotate(150deg); opacity: 0.4167; }
+.t-loading__dot-6  { transform: rotate(180deg); opacity: 0.5; }
+.t-loading__dot-7  { transform: rotate(210deg); opacity: 0.5833; }
+.t-loading__dot-8  { transform: rotate(240deg); opacity: 0.6667; }
+.t-loading__dot-9  { transform: rotate(270deg); opacity: 0.75; }
+.t-loading__dot-10 { transform: rotate(300deg); opacity: 0.8333; }
+.t-loading__dot-11 { transform: rotate(330deg); opacity: 0.9167; }
+
+// ---- dots 三个点的延迟错峰 ----
+.t-loading__dots-item-0 { animation-delay: 0s; }
+.t-loading__dots-item-1 { animation-delay: 0.2s; }
+.t-loading__dots-item-2 { animation-delay: 0.4s; }
+
+// ---- keyframes ----
+@keyframes t-loading-rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes t-loading-rotate-reverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+@keyframes t-loading-dotting {
+  0%   { opacity: 0.15; }
+  20%  { opacity: 0.85; }
+  60%  { opacity: 0.85; }
+  100% { opacity: 0.15; }
+}

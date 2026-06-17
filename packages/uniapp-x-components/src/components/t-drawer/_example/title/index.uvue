@@ -1,0 +1,41 @@
+<template>
+  <view>
+    <button class="open-btn" @click="openDrawer">带标题抽屉</button>
+    <t-drawer
+      :visible="visible"
+      title="抽屉标题"
+      :items="sidebar"
+      @update:visible="onVisibleChange"
+    />
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const visible = ref<boolean>(false);
+const sidebar = [
+  { title: '消息中心' },
+  { title: '订单管理' },
+  { title: '账户设置' },
+  { title: '帮助与反馈' },
+];
+
+function openDrawer() {
+  visible.value = true;
+}
+function onVisibleChange(v: boolean) {
+  visible.value = v;
+}
+</script>
+
+<style>
+.open-btn {
+  margin: 16px;
+  height: 44px;
+  background-color: #ffffff;
+  border: 1px solid #0052d9;
+  color: #0052d9;
+  border-radius: 4px;
+}
+</style>

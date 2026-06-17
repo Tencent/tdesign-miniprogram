@@ -1,0 +1,15 @@
+<template>
+  <view class="demo-block">
+    <t-empty description="暂无数据，去看看其它内容吧">
+      <template #actions>
+        <t-button theme="primary" size="small">去逛逛</t-button>
+      </template>
+    </t-empty>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 24px 16px;
+}
+</style>

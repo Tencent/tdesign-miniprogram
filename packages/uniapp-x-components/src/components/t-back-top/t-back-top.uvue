@@ -1,0 +1,73 @@
+<template>
+  <view
+    v-if="!hidden"
+    :class="rootClass"
+    @click="toTop"
+  >
+    <view class="t-back-top__icon">
+      <slot name="icon">
+        <t-icon v-if="!hideIcon && iconName.length > 0" :name="iconName" />
+      </slot>
+    </view>
+    <view v-if="text.length > 0" :class="textClass">
+      <text>{{ text }}</text>
+    </view>
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * BackTop - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 back-top：
+ *  - scrollTop < visibilityHeight 时隐藏
+ *  - 点击触发 to-top 事件，并调用 uni.pageScrollTo 滚动至页面顶部
+ *  - icon 默认 'backtop'，传 hideIcon 隐藏；不再支持 boolean / 对象（uts 严格类型）
+ */
+import { computed } from 'vue';
+import TIcon from '../t-icon/t-icon.uvue';
+import { backTopVariants } from './t-back-top.variants';
+import type { BackTopTheme } from './t-back-top.types';
+
+const props = defineProps({
+  fixed: { type: Boolean, default: true },
+  icon: { type: String, default: 'backtop' },
+  hideIcon: { type: Boolean, default: false },
+  scrollTop: { type: Number, default: 0 },
+  text: { type: String, default: '' },
+  theme: { type: String as PropType<BackTopTheme>, default: 'round' },
+  visibilityHeight: { type: Number, default: 200 },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['to-top']);
+
+const hidden = computed<boolean>(() => props.scrollTop < props.visibilityHeight);
+
+const iconName = computed<string>(() => props.icon);
+
+const rootClass = computed<string>(() =>
+  backTopVariants({
+    theme: props.theme,
+    fixed: props.fixed,
+    class: props.customClass,
+  }),
+);
+
+const textClass = computed<string>(() => {
+  return 't-back-top__text t-back-top__text--' + props.theme;
+});
+
+function toTop() {
+  emit('to-top');
+  uni.pageScrollTo({
+    scrollTop: 0,
+    duration: 300,
+  });
+}
+</script>
+
+<style lang="less">
+@import './t-back-top.theme.less';
+</style>

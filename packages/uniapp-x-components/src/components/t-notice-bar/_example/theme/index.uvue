@@ -1,0 +1,29 @@
+<template>
+  <view>
+    <view class="row">
+      <text class="row-label">info</text>
+      <t-notice-bar content="info 主题：这是一条信息提示" theme="info" />
+    </view>
+    <view class="row">
+      <text class="row-label">success</text>
+      <t-notice-bar content="success 主题：操作已成功完成" theme="success" />
+    </view>
+    <view class="row">
+      <text class="row-label">warning</text>
+      <t-notice-bar content="warning 主题：请注意网络环境" theme="warning" />
+    </view>
+    <view class="row">
+      <text class="row-label">error</text>
+      <t-notice-bar content="error 主题：发生错误，请稍后重试" theme="error" />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/** NoticeBar theme demo - 4 主题色对比 */
+</script>
+
+<style>
+.row { padding-top: 16rpx; padding-bottom: 16rpx; }
+.row-label { display: block; font-size: 24rpx; color: rgba(0,0,0,0.4); padding-bottom: 8rpx; }
+</style>

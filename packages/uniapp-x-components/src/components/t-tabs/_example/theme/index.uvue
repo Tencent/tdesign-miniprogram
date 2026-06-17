@@ -1,0 +1,25 @@
+<template>
+  <view>
+    <t-tabs default-value="0" theme="tag">
+      <t-tab-panel
+        v-for="i in [0, 1, 2, 3]"
+        :key="i"
+        label="选项"
+        :value="i"
+      />
+    </t-tabs>
+    <view style="height: 16px"></view>
+    <t-tabs default-value="0" theme="card">
+      <t-tab-panel
+        v-for="i in [0, 1, 2, 3]"
+        :key="i"
+        label="选项"
+        :value="i"
+      />
+    </t-tabs>
+  </view>
+</template>
+
+<script setup lang="uts"></script>
+
+<style></style>

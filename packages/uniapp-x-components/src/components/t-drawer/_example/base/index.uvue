@@ -1,0 +1,54 @@
+<template>
+  <view>
+    <button class="open-btn" @click="openDrawer">基础抽屉</button>
+    <t-drawer
+      :visible="visible"
+      :placement="placement"
+      :items="sidebar"
+      @update:visible="onVisibleChange"
+      @overlay-click="overlayClick"
+      @item-click="itemClick"
+    />
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const visible = ref<boolean>(false);
+const placement = ref<string>('left');
+const sidebar = [
+  { title: '菜单一' },
+  { title: '菜单二' },
+  { title: '菜单三' },
+  { title: '菜单四' },
+  { title: '菜单五' },
+  { title: '菜单六' },
+  { title: '菜单七' },
+  { title: '菜单八' },
+];
+
+function openDrawer() {
+  visible.value = true;
+}
+function onVisibleChange(v: boolean) {
+  visible.value = v;
+}
+function itemClick(_e: any) {
+  // item click
+}
+function overlayClick(_e: any) {
+  // overlay click
+}
+</script>
+
+<style>
+.open-btn {
+  margin: 16px;
+  height: 44px;
+  background-color: #ffffff;
+  border: 1px solid #0052d9;
+  color: #0052d9;
+  border-radius: 4px;
+}
+</style>

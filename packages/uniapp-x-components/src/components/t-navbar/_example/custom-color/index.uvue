@@ -1,0 +1,32 @@
+<template>
+  <view>
+    <t-navbar
+      custom-class="custom-navbar"
+      :left-arrow="true"
+      title="标题文字"
+      :fixed="false"
+      @right-click="handleRightClick"
+    >
+      <template #right>
+        <text class="right-text">右侧内容</text>
+      </template>
+    </t-navbar>
+  </view>
+</template>
+
+<script setup lang="uts">
+function handleRightClick() {
+  // right click
+}
+</script>
+
+<style>
+.custom-navbar {
+  --td-navbar-color: #ffffff;
+  --td-navbar-bg-color: #0052d9;
+}
+.right-text {
+  color: #ffffff;
+  font-size: 14px;
+}
+</style>

@@ -1,0 +1,42 @@
+/**
+ * Empty 基础样式
+ */
+
+@td-empty-icon-size: var(--td-empty-icon-size, 96px);
+@td-empty-description-color: var(--td-empty-description-color, rgba(0, 0, 0, 0.4));
+@td-empty-icon-color: var(--td-empty-icon-color, rgba(0, 0, 0, 0.4));
+@td-empty-description-font-size: var(--td-empty-description-font-size, 14px);
+@td-empty-description-margin-top: var(--td-empty-description-margin-top, 8px);
+@td-empty-action-margin-top: var(--td-empty-action-margin-top, 16px);
+
+.t-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__thumb {
+    width: @td-empty-icon-size;
+    height: @td-empty-icon-size;
+    color: @td-empty-icon-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon,
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__description {
+    margin-top: @td-empty-description-margin-top;
+    text-align: center;
+    color: @td-empty-description-color;
+    font-size: @td-empty-description-font-size;
+  }
+
+  &__actions {
+    margin-top: @td-empty-action-margin-top;
+  }
+}

@@ -1,0 +1,322 @@
+<template>
+  <!--
+    Dialog - uni-app x 实现（指令式 + 受控双模式）
+    -------------------------------------------------------
+    DOM 结构对齐 @tdesign/uniapp/dialog/dialog.vue：
+      <view v-if="visible">
+        <view class="t-dialog-mask" v-if="showOverlay" @click />
+        <view class="t-dialog-wrap">
+          <view class="t-dialog t-dialog--{buttonLayout}">
+            <view class="t-dialog__close-btn" v-if="closeBtn" @click>×</view>
+            <view class="t-dialog__content">
+              <view class="t-dialog__header" v-if="title">{{ title }}</view>
+              <view class="t-dialog__body" v-if="content">{{ content }}</view>
+            </view>
+            <view class="t-dialog__footer">
+              <view class="t-dialog__btn t-dialog__btn--cancel" v-if="cancelBtn" @click>{{ cancelBtn }}</view>
+              <view class="t-dialog__btn t-dialog__btn--confirm" v-if="confirmBtn" @click>{{ confirmBtn }}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    使用方式：
+      A) 受控模式：
+         <t-dialog :visible="vis" title="标题" content="内容" @confirm @cancel />
+      B) 指令式：
+         <t-dialog ref="dialog" />
+         Dialog.confirm({ title: 'xxx', content: 'xxx' })
+  -->
+  <view v-if="combinedVisible" class="t-dialog-host">
+    <view
+      v-if="combinedShowOverlay"
+      class="t-dialog-mask"
+      @click="onOverlayClick"
+    />
+    <view class="t-dialog-wrap">
+      <view :class="rootClass" :style="rootStyle">
+        <!-- 关闭按钮 -->
+        <view
+          v-if="combinedCloseBtn"
+          class="t-dialog__close-btn"
+          @click="onCloseBtnClick"
+        >
+          <text>×</text>
+        </view>
+
+        <!-- 标题 + 内容 -->
+        <view class="t-dialog__content">
+          <view v-if="combinedTitle.length > 0" class="t-dialog__header">
+            <text>{{ combinedTitle }}</text>
+          </view>
+          <view v-if="combinedContent.length > 0" class="t-dialog__body">
+            <text>{{ combinedContent }}</text>
+          </view>
+        </view>
+
+        <!-- 底部按钮 -->
+        <view class="t-dialog__footer">
+          <view
+            v-if="combinedCancelBtn.length > 0"
+            :class="cancelBtnClass"
+            @click="onCancelClick"
+          >
+            <text>{{ combinedCancelBtn }}</text>
+          </view>
+          <view
+            v-if="combinedConfirmBtn.length > 0"
+            :class="confirmBtnClass"
+            @click="onConfirmClick"
+          >
+            <text>{{ combinedConfirmBtn }}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script lang="uts">
+/**
+ * Dialog - uni-app x 实现
+ *
+ * 双模式：
+ *  1) 受控模式：<t-dialog :visible="x" title content @confirm @cancel />
+ *  2) 指令式：<t-dialog ref="dialog" /> + Dialog.confirm/.alert/.show()
+ *
+ * 当指令式调用时，内部 imperativeState 会覆盖 props，使得同一个组件实例既能受控用又能命令式用。
+ */
+import { computed, defineComponent, ref } from 'vue';
+import { dialogVariants } from './t-dialog.variants';
+
+type DialogInternalState = {
+  active: boolean; // 是否处于指令式驱动状态
+  title: string;
+  content: string;
+  cancelBtn: string;
+  confirmBtn: string;
+  buttonLayout: string;
+  closeBtn: boolean;
+  closeOnOverlayClick: boolean;
+  showOverlay: boolean;
+  zIndex: number;
+  /** 命令式回调 */
+  onConfirm: ((() => void) | null);
+  onCancel: ((() => void) | null);
+};
+
+function defaultState(): DialogInternalState {
+  return {
+    active: false,
+    title: '',
+    content: '',
+    cancelBtn: '',
+    confirmBtn: '确定',
+    buttonLayout: 'horizontal',
+    closeBtn: false,
+    closeOnOverlayClick: false,
+    showOverlay: true,
+    zIndex: 11500,
+    onConfirm: null,
+    onCancel: null,
+  } as DialogInternalState;
+}
+
+export default defineComponent({
+  name: 't-dialog',
+  props: {
+    visible: { type: Boolean, default: false },
+    title: { type: String, default: '' },
+    content: { type: String, default: '' },
+    cancelBtn: { type: String, default: '' },
+    confirmBtn: { type: String, default: '确定' },
+    buttonLayout: { type: String, default: 'horizontal' },
+    closeBtn: { type: Boolean, default: false },
+    closeOnOverlayClick: { type: Boolean, default: false },
+    showOverlay: { type: Boolean, default: true },
+    zIndex: { type: Number, default: 11500 },
+    customClass: { type: String, default: '' },
+    customStyle: { type: String, default: '' },
+  },
+  emits: ['confirm', 'cancel', 'close', 'overlay-click', 'update:visible'],
+  setup(props, ctx) {
+    /** 指令式驱动的状态（active=true 时优先于 props） */
+    const imperativeState = ref<DialogInternalState>(defaultState());
+
+    /** combined 系列 computed：active 时取 imperativeState，否则取 props */
+    const combinedVisible = computed<boolean>(() => {
+      if (imperativeState.value.active) return true;
+      return props.visible;
+    });
+
+    const combinedTitle = computed<string>(() => {
+      if (imperativeState.value.active) return imperativeState.value.title;
+      return props.title;
+    });
+
+    const combinedContent = computed<string>(() => {
+      if (imperativeState.value.active) return imperativeState.value.content;
+      return props.content;
+    });
+
+    const combinedCancelBtn = computed<string>(() => {
+      if (imperativeState.value.active) return imperativeState.value.cancelBtn;
+      return props.cancelBtn;
+    });
+
+    const combinedConfirmBtn = computed<string>(() => {
+      if (imperativeState.value.active) return imperativeState.value.confirmBtn;
+      return props.confirmBtn;
+    });
+
+    const combinedButtonLayout = computed<string>(() => {
+      if (imperativeState.value.active) return imperativeState.value.buttonLayout;
+      return props.buttonLayout;
+    });
+
+    const combinedCloseBtn = computed<boolean>(() => {
+      if (imperativeState.value.active) return imperativeState.value.closeBtn;
+      return props.closeBtn;
+    });
+
+    const combinedCloseOnOverlayClick = computed<boolean>(() => {
+      if (imperativeState.value.active) return imperativeState.value.closeOnOverlayClick;
+      return props.closeOnOverlayClick;
+    });
+
+    const combinedShowOverlay = computed<boolean>(() => {
+      if (imperativeState.value.active) return imperativeState.value.showOverlay;
+      return props.showOverlay;
+    });
+
+    const combinedZIndex = computed<number>(() => {
+      if (imperativeState.value.active) return imperativeState.value.zIndex;
+      return props.zIndex;
+    });
+
+    const rootClass = computed<string>(() => {
+      const cls = dialogVariants({ buttonLayout: combinedButtonLayout.value });
+      return props.customClass.length > 0 ? cls + ' ' + props.customClass : cls;
+    });
+
+    const rootStyle = computed<string>(() => 'z-index:' + combinedZIndex.value.toString());
+
+    const cancelBtnClass = computed<string>(() => {
+      const dir = combinedButtonLayout.value === 'vertical' ? 'vertical' : 'horizontal';
+      return 't-dialog__btn t-dialog__btn--cancel t-dialog__btn--' + dir;
+    });
+
+    const confirmBtnClass = computed<string>(() => {
+      const dir = combinedButtonLayout.value === 'vertical' ? 'vertical' : 'horizontal';
+      return 't-dialog__btn t-dialog__btn--confirm t-dialog__btn--' + dir;
+    });
+
+    /** 命令式入口：从 show.ts 调用 */
+    function show(opts: any) {
+      const next = defaultState();
+      next.active = true;
+      if (opts != null) {
+        const o = opts as UTSJSONObject;
+        const title = o.getString('title');
+        if (title != null) next.title = title;
+        const content = o.getString('content');
+        if (content != null) next.content = content;
+        const cancelBtn = o.getString('cancelBtn');
+        if (cancelBtn != null) next.cancelBtn = cancelBtn;
+        const confirmBtn = o.getString('confirmBtn');
+        if (confirmBtn != null) next.confirmBtn = confirmBtn;
+        const layout = o.getString('buttonLayout');
+        if (layout != null) next.buttonLayout = layout;
+        const cb = o.getBoolean('closeBtn');
+        if (cb != null) next.closeBtn = cb;
+        const co = o.getBoolean('closeOnOverlayClick');
+        if (co != null) next.closeOnOverlayClick = co;
+        const so = o.getBoolean('showOverlay');
+        if (so != null) next.showOverlay = so;
+        const z = o.getNumber('zIndex');
+        if (z != null) next.zIndex = (z as number).toInt();
+        // 回调函数透传（注意 uts 类型限制）
+        const onC = o.get('onConfirm');
+        if (onC != null) next.onConfirm = onC as (() => void);
+        const onX = o.get('onCancel');
+        if (onX != null) next.onCancel = onX as (() => void);
+      }
+      imperativeState.value = next;
+    }
+
+    /** 命令式关闭 */
+    function hide() {
+      const cur = imperativeState.value;
+      cur.active = false;
+      imperativeState.value = cur;
+    }
+
+    function onOverlayClick() {
+      ctx.emit('overlay-click');
+      if (combinedCloseOnOverlayClick.value) {
+        closeBy('overlay');
+      }
+    }
+
+    function onCloseBtnClick() {
+      closeBy('close-btn');
+    }
+
+    function onCancelClick() {
+      const st = imperativeState.value;
+      if (st.active && st.onCancel != null) {
+        (st.onCancel as (() => void))();
+      }
+      ctx.emit('cancel', {} as any);
+      closeBy('cancel');
+    }
+
+    function onConfirmClick() {
+      const st = imperativeState.value;
+      if (st.active && st.onConfirm != null) {
+        (st.onConfirm as (() => void))();
+      }
+      ctx.emit('confirm', {} as any);
+      closeBy('confirm');
+    }
+
+    /** 统一关闭出口：active 模式直接置 false；受控模式发 update:visible */
+    function closeBy(_trigger: string) {
+      ctx.emit('close');
+      if (imperativeState.value.active) {
+        hide();
+      } else {
+        ctx.emit('update:visible', false);
+      }
+    }
+
+    return {
+      combinedVisible,
+      combinedTitle,
+      combinedContent,
+      combinedCancelBtn,
+      combinedConfirmBtn,
+      combinedCloseBtn,
+      combinedShowOverlay,
+      rootClass,
+      rootStyle,
+      cancelBtnClass,
+      confirmBtnClass,
+      show,
+      hide,
+      onOverlayClick,
+      onCloseBtnClick,
+      onCancelClick,
+      onConfirmClick,
+    };
+  },
+});
+</script>
+
+<style lang="less">
+@import './t-dialog.theme.less';
+
+.t-dialog-host {
+  /* 顶层语义包裹，不影响布局 */
+}
+</style>

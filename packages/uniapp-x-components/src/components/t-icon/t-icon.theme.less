@@ -1,0 +1,73 @@
+/**
+ * Icon 基础样式
+ *
+ * 与 uniapp 版 icon.less 行为一致：
+ *  - 通过 @font-face 注入 TDesign CDN 字体（family 名 = `t`）
+ *  - 通过 each(@icons, ...) 把 `name → unicode` 字典展开为 `.t-icon-{name}::before { content }`
+ *  - 根 class `.t-icon` 设置 `font-family: t`，所有图标共用
+ *
+ * 字典内联在同目录 `icons.dict.less`，确保组件自包含——
+ * 同步到 HBuilderX 项目（uni_modules/tdesign-uniapp-x/components/t-icon/）后无须依赖兄弟包。
+ */
+
+@import './icons.dict.less';
+
+@td-icon-color: var(--td-icon-color, currentColor);
+@td-icon-size: var(--td-icon-size, 24px);
+
+@font-face {
+  font-family: 't';
+  src: url('https://tdesign.gtimg.com/icon/0.4.2/fonts/t.woff2') format('woff2'),
+    url('https://tdesign.gtimg.com/icon/0.4.2/fonts/t.woff') format('woff'),
+    url('https://tdesign.gtimg.com/icon/0.4.2/fonts/t.ttf') format('truetype'),
+    url('https://tdesign.gtimg.com/icon/0.4.2/fonts/t.svg#t') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.t-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-align: center;
+  line-height: 1;
+  font-size: @td-icon-size;
+  color: @td-icon-color;
+  /* stylelint-disable-next-line declaration-no-important */
+  font-family: 't' !important;
+  -webkit-font-smoothing: antialiased;
+
+  &--image {
+    width: 1em;
+    height: 1em;
+    /* 图片模式不需要字体 */
+    /* stylelint-disable-next-line declaration-no-important */
+    font-family: inherit !important;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  // 字典展开：.t-icon-check::before { content: '\e001' }
+  each(@icons, {
+    &-@{key} {
+      /* 与父级 .t-icon 解耦：自身也设置字体，避免 uts 端字体不继承导致字形丢失 */
+      /* stylelint-disable-next-line declaration-no-important */
+      font-family: 't' !important;
+      font-style: normal;
+      line-height: 1;
+      -webkit-font-smoothing: antialiased;
+
+      &::before {
+        content: @value;
+      }
+    }
+  });
+}

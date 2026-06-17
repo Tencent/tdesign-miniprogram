@@ -1,0 +1,83 @@
+<template>
+  <view :class="rootClass" :style="rootStyle">
+    <view :class="lineClass" :style="lineStyle" />
+    <view v-if="hasContent" :class="contentClass" :style="contentStyle">
+      <slot>
+        <text v-if="props.content.length > 0">{{ props.content }}</text>
+      </slot>
+    </view>
+    <view :class="lineClass" :style="lineStyle" />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Divider - uni-app x 实现
+ *
+ * 行为契约与 divider.vue 镜像保持一致；类型从 t-divider.types.ts 同源引入。
+ *
+ * 实现要点：
+ *  - 抛弃 ::before/::after 伪元素（uts/App 端兼容性弱），改为两段真实 `__line` view；
+ *  - layout=vertical 时仅保留中间 line（不渲染 content），content 仅水平场景生效；
+ *  - lineColor 透传到 line 的 border-color，同时映射到根 color，便于自定义文字色。
+ */
+import { computed, useSlots } from 'vue';
+import { dividerVariants } from './t-divider.variants';
+import type { DividerLayout, DividerAlign } from './t-divider.types';
+
+const props = defineProps({
+  layout: { type: String as PropType<DividerLayout>, default: 'horizontal' },
+  align: { type: String as PropType<DividerAlign>, default: 'center' },
+  dashed: { type: Boolean, default: false },
+  content: { type: String, default: '' },
+  lineColor: { type: String, default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const slots = useSlots();
+
+// 仅水平方向支持 content / 默认插槽
+const hasContent = computed(() => {
+  if (props.layout === 'vertical') return false;
+  return props.content.length > 0 || slots.default != null;
+});
+
+const rootClass = computed(() =>
+  dividerVariants({
+    layout: props.layout,
+    align: props.align,
+    dashed: props.dashed,
+    class: props.customClass,
+  }),
+);
+
+const rootStyle = computed(() => {
+  if (props.lineColor.length > 0) {
+    return 'color:' + props.lineColor;
+  }
+  return '';
+});
+
+const lineClass = computed(() => 't-divider__line');
+
+const lineStyle = computed(() => {
+  if (props.lineColor.length > 0) {
+    return 'border-color:' + props.lineColor;
+  }
+  return '';
+});
+
+const contentClass = computed(() => 't-divider__content');
+
+const contentStyle = computed(() => {
+  // 文字色默认跟随 lineColor，但用户可通过外部 customClass 覆盖
+  if (props.lineColor.length > 0) {
+    return 'color:' + props.lineColor;
+  }
+  return '';
+});
+</script>
+
+<style lang="less">
+@import './t-divider.theme.less';
+</style>

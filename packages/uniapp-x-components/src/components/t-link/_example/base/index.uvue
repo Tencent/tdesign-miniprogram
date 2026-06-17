@@ -1,0 +1,27 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-link content="默认链接" ></t-link>
+      <t-link content="主要链接" theme="primary" ></t-link>
+      <t-link content="成功链接" theme="success" ></t-link>
+      <t-link content="警告链接" theme="warning" ></t-link>
+      <t-link content="危险链接" theme="danger" ></t-link>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-row > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

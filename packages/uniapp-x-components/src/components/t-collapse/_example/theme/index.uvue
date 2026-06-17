@@ -1,0 +1,15 @@
+<template>
+  <view class="demo-block">
+    <t-collapse theme="card" :default-value="['1']">
+      <t-collapse-panel value="1" header="卡片折叠 1" content="card 主题在外侧添加圆角和左右间距。" ></t-collapse-panel>
+      <t-collapse-panel value="2" header="卡片折叠 2" content="可单独点击展开任意面板。" ></t-collapse-panel>
+    </t-collapse>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 12px 0;
+  background-color: #f5f5f5;
+}
+</style>

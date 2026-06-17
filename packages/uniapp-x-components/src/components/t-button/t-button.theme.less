@@ -1,0 +1,179 @@
+/**
+ * Button 基础样式（极简版，PoC-A 阶段）
+ * 等接入 TDesign 主题变量后再切换到 var(--td-*)
+ */
+
+@td-button-border-width: var(--td-button-border-width, 2px);
+@td-button-border-radius: var(--td-button-border-radius, 6px);
+@td-button-font-weight: var(--td-button-font-weight, 600);
+@td-button-extra-small-font-size: var(--td-button-extra-small-font-size, 14px);
+@td-button-small-font-size: var(--td-button-small-font-size, 14px);
+@td-button-medium-font-size: var(--td-button-medium-font-size, 16px);
+@td-button-large-font-size: var(--td-button-large-font-size, 16px);
+@td-button-extra-small-height: var(--td-button-extra-small-height, 28px);
+@td-button-small-height: var(--td-button-small-height, 32px);
+@td-button-medium-height: var(--td-button-medium-height, 40px);
+@td-button-large-height: var(--td-button-large-height, 48px);
+@td-button-icon-spacer: var(--td-button-icon-spacer, 8px);
+@td-button-icon-border-radius: var(--td-button-icon-border-radius, 4px);
+@td-button-extra-small-padding-horizontal: var(--td-button-extra-small-padding-horizontal, 8px);
+@td-button-small-padding-horizontal: var(--td-button-small-padding-horizontal, 12px);
+@td-button-medium-padding-horizontal: var(--td-button-medium-padding-horizontal, 16px);
+@td-button-large-padding-horizontal: var(--td-button-large-padding-horizontal, 20px);
+@td-button-extra-small-icon-size: var(--td-button-extra-small-icon-size, 18px);
+@td-button-small-icon-size: var(--td-button-small-icon-size, 18px);
+@td-button-medium-icon-size: var(--td-button-medium-icon-size, 20px);
+@td-button-large-icon-size: var(--td-button-large-icon-size, 24px);
+@td-button-default-color: var(--td-button-default-color, rgba(0, 0, 0, 0.9));
+@td-button-default-bg-color: var(--td-button-default-bg-color, #e7e7e7);
+@td-button-default-border-color: var(--td-button-default-border-color, #e7e7e7);
+@td-button-default-disabled-color: var(--td-button-default-disabled-color, rgba(0, 0, 0, 0.26));
+@td-button-default-disabled-bg: var(--td-button-default-disabled-bg, #eeeeee);
+@td-button-default-disabled-border-color: var(--td-button-default-disabled-border-color, #eeeeee);
+@td-button-primary-color: var(--td-button-primary-color, rgba(255, 255, 255, 1));
+@td-button-primary-border-color: var(--td-button-primary-border-color, #0052d9);
+@td-button-primary-bg-color: var(--td-button-primary-bg-color, #0052d9);
+@td-button-primary-disabled-color: var(--td-button-primary-disabled-color, rgba(255, 255, 255, 1));
+@td-button-primary-disabled-bg: var(--td-button-primary-disabled-bg, #b5c7ff);
+@td-button-primary-disabled-border-color: var(--td-button-primary-disabled-border-color, #b5c7ff);
+@td-button-light-color: var(--td-button-light-color, #0052d9);
+@td-button-light-border-color: var(--td-button-light-border-color, #f2f3ff);
+@td-button-light-bg-color: var(--td-button-light-bg-color, #f2f3ff);
+@td-button-light-disabled-color: var(--td-button-light-disabled-color, #b5c7ff);
+@td-button-light-disabled-bg: var(--td-button-light-disabled-bg, #f2f3ff);
+@td-button-light-disabled-border-color: var(--td-button-light-disabled-border-color, #f2f3ff);
+@td-button-danger-color: var(--td-button-danger-color, rgba(255, 255, 255, 1));
+@td-button-danger-border-color: var(--td-button-danger-border-color, #d54941);
+@td-button-danger-bg-color: var(--td-button-danger-bg-color, #d54941);
+@td-button-danger-disabled-color: var(--td-button-danger-disabled-color, rgba(255, 255, 255, 1));
+@td-button-danger-disabled-bg: var(--td-button-danger-disabled-bg, #ffb9b0);
+@td-button-danger-disabled-border-color: var(--td-button-danger-disabled-border-color, #ffb9b0);
+@td-button-default-outline-color: var(--td-button-default-outline-color, rgba(0, 0, 0, 0.9));
+@td-button-default-outline-border-color: var(--td-button-default-outline-border-color, #dcdcdc);
+@td-button-default-outline-disabled-color: var(--td-button-default-outline-disabled-color, #dcdcdc);
+@td-button-primary-outline-color: var(--td-button-primary-outline-color, #0052d9);
+@td-button-primary-outline-border-color: var(--td-button-primary-outline-border-color, #0052d9);
+@td-button-primary-outline-disabled-color: var(--td-button-primary-outline-disabled-color, #b5c7ff);
+@td-button-danger-outline-color: var(--td-button-danger-outline-color, #d54941);
+@td-button-danger-outline-border-color: var(--td-button-danger-outline-border-color, #d54941);
+@td-button-danger-outline-disabled-color: var(--td-button-danger-outline-disabled-color, #ffb9b0);
+@td-button-light-outline-color: var(--td-button-light-outline-color, #0052d9);
+@td-button-light-outline-border-color: var(--td-button-light-outline-border-color, #0052d9);
+@td-button-light-outline-bg-color: var(--td-button-light-outline-bg-color, #f2f3ff);
+@td-button-light-outline-disabled-color: var(--td-button-light-outline-disabled-color, #b5c7ff);
+@td-button-primary-dashed-color: var(--td-button-primary-dashed-color, #0052d9);
+@td-button-primary-dashed-border-color: var(--td-button-primary-dashed-border-color, #0052d9);
+@td-button-primary-dashed-disabled-color: var(--td-button-primary-dashed-disabled-color, #b5c7ff);
+@td-button-danger-dashed-color: var(--td-button-danger-dashed-color, #d54941);
+@td-button-danger-dashed-border-color: var(--td-button-danger-dashed-border-color, #d54941);
+@td-button-danger-dashed-disabled-color: var(--td-button-danger-dashed-disabled-color, rgba(255, 255, 255, 1));
+@td-button-primary-text-color: var(--td-button-primary-text-color, #0052d9);
+@td-button-primary-text-disabled-color: var(--td-button-primary-text-disabled-color, #b5c7ff);
+@td-button-danger-text-color: var(--td-button-danger-text-color, #d54941);
+@td-button-danger-text-disabled-color: var(--td-button-danger-text-disabled-color, rgba(255, 255, 255, 1));
+@td-button-light-text-color: var(--td-button-light-text-color, #0052d9);
+@td-button-ghost-color: var(--td-button-ghost-color, rgba(255, 255, 255, 1));
+@td-button-ghost-border-color: var(--td-button-ghost-border-color, rgba(255, 255, 255, 1));
+@td-button-ghost-disabled-color: var(--td-button-ghost-disabled-color, rgba(255, 255, 255, 0.22));
+@td-button-ghost-hover-color: var(--td-button-ghost-hover-color, rgba(255, 255, 255, 0.55));
+@td-button-ghost-primary-color: var(--td-button-ghost-primary-color, #0052d9);
+@td-button-ghost-primary-border-color: var(--td-button-ghost-primary-border-color, #0052d9);
+@td-button-ghost-primary-hover-color: var(--td-button-ghost-primary-hover-color, #003cab);
+@td-button-ghost-danger-color: var(--td-button-ghost-danger-color, #d54941);
+@td-button-ghost-danger-border-color: var(--td-button-ghost-danger-border-color, #d54941);
+@td-button-ghost-danger-hover-color: var(--td-button-ghost-danger-hover-color, #ad352f);
+@td-button-default-active-bg-color: var(--td-button-default-active-bg-color, #a6a6a6);
+@td-button-default-active-border-color: var(--td-button-default-active-border-color, #a6a6a6);
+@td-button-light-active-bg-color: var(--td-button-light-active-bg-color, #d9e1ff);
+@td-button-light-active-border-color: var(--td-button-light-active-border-color, #d9e1ff);
+@td-button-primary-active-bg-color: var(--td-button-primary-active-bg-color, #003cab);
+@td-button-primary-active-border-color: var(--td-button-primary-active-border-color, #003cab);
+@td-button-danger-active-bg-color: var(--td-button-danger-active-bg-color, #ad352f);
+@td-button-danger-active-border-color: var(--td-button-danger-active-border-color, #ad352f);
+@td-button-default-outline-active-bg-color: var(--td-button-default-outline-active-bg-color, #e7e7e7);
+@td-button-default-outline-active-border-color: var(--td-button-default-outline-active-border-color, #dcdcdc);
+@td-button-primary-outline-active-bg-color: var(--td-button-primary-outline-active-bg-color, #e7e7e7);
+@td-button-primary-outline-active-border-color: var(--td-button-primary-outline-active-border-color, #003cab);
+@td-button-danger-outline-active-bg-color: var(--td-button-danger-outline-active-bg-color, #e7e7e7);
+@td-button-danger-outline-active-border-color: var(--td-button-danger-outline-active-border-color, #ad352f);
+@td-button-light-outline-active-bg-color: var(--td-button-light-outline-active-bg-color, #d9e1ff);
+@td-button-light-outline-active-border-color: var(--td-button-light-outline-active-border-color, #003cab);
+@td-button-default-text-active-bg-color: var(--td-button-default-text-active-bg-color, #e7e7e7);
+@td-button-primary-text-active-bg-color: var(--td-button-primary-text-active-bg-color, #e7e7e7);
+@td-button-danger-text-active-bg-color: var(--td-button-danger-text-active-bg-color, #e7e7e7);
+@td-button-light-text-active-bg-color: var(--td-button-light-text-active-bg-color, #e7e7e7);
+.t-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 16px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+  cursor: pointer;
+  user-select: none;
+  background-clip: padding-box;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+
+  // ---- size ----
+  &--extra-small { height: 24px; padding: 0 8px;  font-size: 12px; }
+  &--small       { height: 32px; padding: 0 12px; font-size: 13px; }
+  &--medium      { height: 40px; padding: 0 16px; font-size: 14px; }
+  &--large       { height: 48px; padding: 0 20px; font-size: 16px; }
+
+  // ---- shape ----
+  &--rectangle { border-radius: 6px; }
+  &--square    { border-radius: 6px; padding: 0; aspect-ratio: 1 / 1; }
+  &--round     { border-radius: 999px; }
+  &--circle    { border-radius: 50%; padding: 0; aspect-ratio: 1 / 1; }
+
+  // ---- variant × theme（仅给出 base + outline 与 default/primary 示意，其余按需扩展） ----
+  &--variant-base {
+    color: #fff;
+    background: #888;
+    &.t-button--theme-primary { background: #0052d9; }
+    &.t-button--theme-danger  { background: #d54941; }
+    &.t-button--theme-warning { background: #ed7b2f; }
+    &.t-button--theme-success { background: #2ba471; }
+    &.t-button--theme-default { color: #181818; background: #f3f3f3; }
+  }
+
+  &--variant-outline {
+    background: transparent;
+    border-color: currentColor;
+    &.t-button--theme-primary { color: #0052d9; }
+    &.t-button--theme-danger  { color: #d54941; }
+    &.t-button--theme-warning { color: #ed7b2f; }
+    &.t-button--theme-success { color: #2ba471; }
+    &.t-button--theme-default { color: #181818; border-color: #dcdcdc; }
+  }
+
+  &--variant-dashed { border-style: dashed; }
+  &--variant-text   { background: transparent; border-color: transparent; }
+
+  // ---- 状态修饰 ----
+  &--block    { display: flex; width: 100%; }
+  &--disabled { opacity: 0.4; cursor: not-allowed; }
+  &--loading  { cursor: progress; }
+  &--ghost    { background: transparent !important; color: inherit; }
+
+  // ---- inner ----
+  &__icon,
+  &__loading,
+  &__content { display: inline-flex; align-items: center; }
+
+  &__spinner {
+    width: 14px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
+    border-radius: 50%;
+    animation: t-button-spin 0.8s linear infinite;
+  }
+}
+
+@keyframes t-button-spin {
+  to { transform: rotate(360deg); }
+}

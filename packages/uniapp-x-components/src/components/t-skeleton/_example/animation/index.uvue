@@ -1,0 +1,22 @@
+<template>
+  <view class="demo-block">
+    <text class="demo-label">渐变（gradient）</text>
+    <t-skeleton theme="paragraph" animation="gradient" ></t-skeleton>
+
+    <text class="demo-label">闪烁（flashed）</text>
+    <t-skeleton theme="paragraph" animation="flashed" ></t-skeleton>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-label {
+  display: block;
+  font-size: 12px;
+  color: #888888;
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+</style>

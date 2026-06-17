@@ -1,0 +1,118 @@
+/**
+ * NoticeBar 样式
+ *
+ * 1:1 对齐 @tdesign/uniapp/notice-bar/notice-bar.less，单位换算到 rpx：
+ *  - 4 主题色（info/success/warning/error）
+ *  - 横向跑马灯：CSS animation 替代 uni.createAnimation
+ *  - 纵向轮播：依靠原生 swiper 组件
+ */
+
+.t-notice-bar {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 26rpx 32rpx;
+  font-size: 28rpx;
+  line-height: 44rpx;
+}
+
+/* 主题：色板对齐 TDesign 默认 token */
+.t-notice-bar--info {
+  color: var(--td-notice-bar-info-color, #0052d9);
+  background-color: var(--td-notice-bar-info-bg-color, #ecf2fe);
+}
+
+.t-notice-bar--success {
+  color: var(--td-notice-bar-success-color, #2ba471);
+  background-color: var(--td-notice-bar-success-bg-color, #e8f5ee);
+}
+
+.t-notice-bar--warning {
+  color: var(--td-notice-bar-warning-color, #e37318);
+  background-color: var(--td-notice-bar-warning-bg-color, #fef3e6);
+}
+
+.t-notice-bar--error {
+  color: var(--td-notice-bar-error-color, #d54941);
+  background-color: var(--td-notice-bar-error-bg-color, #fcecec);
+}
+
+/* 前缀图标 */
+.t-notice-bar__prefix-icon {
+  width: 44rpx;
+  height: 44rpx;
+  padding-right: 16rpx;
+  color: inherit;
+  font-size: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 内容包裹层（跑马灯外壳） */
+.t-notice-bar__content-wrap {
+  flex: 1;
+  overflow: hidden;
+  color: var(--td-notice-bar-font-color, rgba(0, 0, 0, 0.9));
+}
+
+/* 单条横向内容（默认换行） */
+.t-notice-bar__content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  white-space: normal;
+}
+
+/* 跑马灯模式：单行不换行 + 平移动画 */
+.t-notice-bar__content--marquee {
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  animation-name: t-notice-bar-marquee;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  /* duration / delay 由 inline style 注入 */
+}
+
+@keyframes t-notice-bar-marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* 纵向轮播 swiper 容器 */
+.t-notice-bar__content--vertical {
+  height: 44rpx;
+}
+
+.t-notice-bar__content--vertical-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 44rpx;
+  line-height: 44rpx;
+  overflow: hidden;
+}
+
+/* 操作区 */
+.t-notice-bar__operation {
+  margin-left: 16rpx;
+  color: var(--td-notice-bar-operation-font-color, #0052d9);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* 后缀图标 */
+.t-notice-bar__suffix-icon {
+  width: 44rpx;
+  height: 44rpx;
+  padding-left: 16rpx;
+  color: var(--td-notice-bar-suffix-icon-color, rgba(0, 0, 0, 0.4));
+  font-size: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,255 @@
+<template>
+  <view :class="rootClass">
+    <view :class="wrapperClass">
+      <scroll-view
+        :scroll-x="true"
+        :show-scrollbar="false"
+        :class="scrollClass"
+      >
+        <view :class="navClass">
+          <view
+            v-for="(tab, index) in tabsList"
+            :key="index"
+            :class="getItemClass(tab, index)"
+            @click="onTabClick(tab, index)"
+          >
+            <view :class="getItemInnerClass(tab, index)">
+              <t-icon
+                v-if="tab.icon.name.length > 0"
+                :name="tab.icon.name"
+                :size="tab.icon.size"
+                :color="tab.icon.color"
+                :prefix="tab.icon.prefix"
+                custom-class="t-tabs__icon"
+              />
+              <text>{{ tab.label }}</text>
+              <view v-if="tab.badgeDot" class="t-tabs__badge-dot" />
+              <view v-else-if="tab.badgeCount.length > 0" class="t-tabs__badge-count">
+                <text class="t-tabs__badge-text">{{ tab.badgeCount }}</text>
+              </view>
+            </view>
+          </view>
+          <view
+            v-if="props.theme === 'line' && props.showBottomLine && tabsList.length > 0"
+            class="t-tabs__track"
+            :style="trackStyle"
+          />
+        </view>
+      </scroll-view>
+    </view>
+    <slot name="middle" />
+    <view class="t-tabs__content">
+      <slot />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Tabs - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 tabs：
+ *  - value 受控、defaultValue 非受控；change/click 事件
+ *  - theme: line/tag/card；spaceEvenly 是否均分；split 分割线
+ *  - 通过 provide('t-tabs-context') 与子 t-tab-panel 通信，子项注册自己的元数据后由父侧统一渲染 nav
+ *
+ * 实现差异：
+ *  - 不实现 sticky / swipeable / animation 三个能力（uts 中 scroll-view 高级 API 与小程序差异较大），保留 props 兼容
+ *  - track 下划线根据 spaceEvenly 自动估算位置（按 index 均分），不再 getRect 测量
+ */
+import { computed, provide, reactive, ref, watch } from 'vue';
+import TIcon from '../t-icon/t-icon.uvue';
+import { tabsVariants } from './t-tabs.variants';
+import type { IconConfig } from '../../utils';
+import type { TabsTheme, TabsValue } from './t-tabs.types';
+
+type TabMeta = {
+  label: string;
+  value: TabsValue;
+  disabled: boolean;
+  icon: IconConfig;
+  badgeDot: boolean;
+  badgeCount: string;
+  panel: string;
+};
+
+type TabsContext = {
+  currentValue: TabsValue;
+  animation: boolean;
+  registerPanel: (meta: TabMeta) => void;
+  unregisterPanel: (value: TabsValue) => void;
+  isActive: (value: TabsValue) => boolean;
+};
+
+const props = defineProps({
+  animation: { type: Object, default: () => ({} as Record<string, any>) },
+  bottomLineMode: { type: String, default: 'fixed' },
+  showBottomLine: { type: Boolean, default: true },
+  spaceEvenly: { type: Boolean, default: true },
+  split: { type: Boolean, default: true },
+  sticky: { type: Boolean, default: false },
+  stickyProps: { type: Object, default: () => ({} as Record<string, any>) },
+  swipeable: { type: Boolean, default: true },
+  theme: { type: String as PropType<TabsTheme>, default: 'line' },
+  value: { type: [String, Number] as PropType<TabsValue>, default: '' },
+  defaultValue: { type: [String, Number] as PropType<TabsValue>, default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change', 'click', 'update:value']);
+
+const innerValue = ref<TabsValue>(props.value !== '' ? props.value : props.defaultValue);
+
+watch(
+  () => props.value,
+  (v: TabsValue) => {
+    if (v !== '') innerValue.value = v;
+  },
+);
+
+const tabsList = reactive<TabMeta[]>([]);
+
+function registerPanel(meta: TabMeta) {
+  for (let i = 0; i < tabsList.length; i = i + 1) {
+    if (tabsList[i].value === meta.value) {
+      tabsList[i] = meta;
+      return;
+    }
+  }
+  tabsList.push(meta);
+  // 没有任何值，且没设过 defaultValue，则自动激活第一个
+  if (innerValue.value === '' && tabsList.length === 1) {
+    innerValue.value = meta.value;
+  }
+}
+
+function unregisterPanel(value: TabsValue) {
+  for (let i = 0; i < tabsList.length; i = i + 1) {
+    if (tabsList[i].value === value) {
+      tabsList.splice(i, 1);
+      return;
+    }
+  }
+}
+
+function isActive(value: TabsValue): boolean {
+  return innerValue.value === value;
+}
+
+const ctx = reactive<TabsContext>({
+  currentValue: innerValue.value,
+  animation: false,
+  registerPanel,
+  unregisterPanel,
+  isActive,
+});
+
+watch(
+  () => innerValue.value,
+  (v: TabsValue) => {
+    ctx.currentValue = v;
+  },
+);
+
+provide('t-tabs-context', ctx);
+
+const rootClass = computed<string>(() =>
+  tabsVariants({
+    theme: props.theme,
+    class: props.customClass,
+  }),
+);
+
+const wrapperClass = computed<string>(() => {
+  let cls = 't-tabs__wrapper';
+  if (props.theme === 'card') cls = cls + ' t-tabs__wrapper--card';
+  return cls;
+});
+
+const scrollClass = computed<string>(() => {
+  let cls = 't-tabs__scroll';
+  if (props.split) cls = cls + ' t-tabs__scroll--split';
+  return cls;
+});
+
+const navClass = computed<string>(() => {
+  let cls = 't-tabs__nav';
+  if (props.spaceEvenly) cls = cls + ' t-tabs__nav--evenly';
+  return cls;
+});
+
+function getItemClass(tab: TabMeta, _index: number): string {
+  let cls = 't-tabs__item';
+  if (props.spaceEvenly) cls = cls + ' t-tabs__item--evenly';
+  if (tab.disabled) cls = cls + ' t-tabs__item--disabled';
+  if (innerValue.value === tab.value) cls = cls + ' t-tabs__item--active';
+  return cls;
+}
+
+function getItemInnerClass(tab: TabMeta, _index: number): string {
+  let cls = 't-tabs__item-inner';
+  if (props.theme === 'tag') cls = cls + ' t-tabs__item-inner--tag';
+  if (innerValue.value === tab.value) cls = cls + ' t-tabs__item-inner--active';
+  return cls;
+}
+
+const trackStyle = computed<string>(() => {
+  if (tabsList.length === 0) return '';
+  let activeIndex = 0;
+  for (let i = 0; i < tabsList.length; i = i + 1) {
+    if (tabsList[i].value === innerValue.value) {
+      activeIndex = i;
+      break;
+    }
+  }
+  if (props.spaceEvenly) {
+    // 各项按总宽度均分；track width 16px，居中放置
+    const itemWidthPercent = 100 / tabsList.length;
+    const left = (itemWidthPercent * activeIndex + itemWidthPercent / 2).toString();
+    return 'left:calc(' + left + '% - 8px)';
+  }
+  // 按估算 80px 项宽
+  const left = (activeIndex * 80 + 32).toString();
+  return 'left:' + left + 'px';
+});
+
+function onTabClick(tab: TabMeta, _index: number) {
+  if (tab.disabled) return;
+  emit('click', { value: tab.value, label: tab.label });
+  if (innerValue.value !== tab.value) {
+    innerValue.value = tab.value;
+    emit('change', { value: tab.value, label: tab.label });
+    emit('update:value', tab.value);
+  }
+}
+</script>
+
+<style lang="less">
+@import './t-tabs.theme.less';
+
+.t-tabs__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background-color: #d54941;
+  margin-left: 4px;
+}
+.t-tabs__badge-count {
+  min-width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background-color: #d54941;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  margin-left: 4px;
+  box-sizing: border-box;
+}
+.t-tabs__badge-text {
+  font-size: 10px;
+  line-height: 14px;
+  color: #ffffff;
+}
+</style>

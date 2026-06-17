@@ -1,0 +1,93 @@
+<template>
+  <view>
+    <!-- 5 个方向触发按钮 -->
+    <t-button
+      v-for="item in position"
+      :key="item.value"
+      block
+      size="large"
+      variant="outline"
+      theme="primary"
+      custom-style="margin-bottom: 16rpx;"
+      @click="onTriggerClick(item)"
+    >
+      {{ item.text }}
+    </t-button>
+
+    <!-- popup 容器 -->
+    <t-popup
+      :visible="visible"
+      :placement="curPlacement"
+      @update:visible="onUpdateVisible"
+    >
+      <view :class="'block block--' + curPlacement">
+        <text class="block-text">{{ curText }}</text>
+      </view>
+    </t-popup>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Popup base demo - 5 个方向弹出
+ * 1:1 对齐 @tdesign/uniapp/popup/_example/base/index.vue
+ */
+import { ref } from 'vue';
+
+type PositionItem = {
+  value: string;
+  text: string;
+};
+
+const position: PositionItem[] = [
+  { value: 'top', text: '顶部弹出' },
+  { value: 'left', text: '左侧弹出' },
+  { value: 'center', text: '中间弹出' },
+  { value: 'bottom', text: '底部弹出' },
+  { value: 'right', text: '右侧弹出' },
+];
+
+const visible = ref<boolean>(false);
+const curPlacement = ref<string>('top');
+const curText = ref<string>('');
+
+function onTriggerClick(item: PositionItem) {
+  curPlacement.value = item.value;
+  curText.value = item.text;
+  // 下一帧切 visible，确保 placement 先就位
+  setTimeout(() => {
+    visible.value = true;
+  }, 0);
+}
+
+function onUpdateVisible(v: boolean) {
+  visible.value = v;
+}
+</script>
+
+<style>
+.block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+}
+.block--top,
+.block--bottom {
+  width: 750rpx;
+  height: 480rpx;
+}
+.block--left,
+.block--right {
+  width: 560rpx;
+  height: 100%;
+}
+.block--center {
+  width: 480rpx;
+  height: 480rpx;
+}
+.block-text {
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.6);
+}
+</style>

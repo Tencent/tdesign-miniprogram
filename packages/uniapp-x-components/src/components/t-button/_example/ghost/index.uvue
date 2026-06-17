@@ -1,0 +1,21 @@
+<template>
+  <view class="demo-block-dark">
+    <t-button theme="primary" ghost>主要幽灵</t-button>
+    <t-button theme="default" ghost>默认幽灵</t-button>
+    <t-button theme="danger" ghost>危险幽灵</t-button>
+  </view>
+</template>
+
+<style>
+.demo-block-dark {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 16px;
+  background-color: #333333;
+}
+.demo-block-dark > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

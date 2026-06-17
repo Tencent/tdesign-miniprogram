@@ -1,0 +1,46 @@
+/**
+ * AvatarGroup 基础样式
+ *
+ * uts/uvue 端不直接给子组件设置 z-index 顺序（受限），改为使用 margin-left 形成视觉层叠效果。
+ * tokens 与 uniapp-components/avatar-group 命名对齐。
+ */
+
+@td-avatar-group-offset-small: var(--td-avatar-group-margin-left-small, -8px);
+@td-avatar-group-offset-medium: var(--td-avatar-group-margin-left-medium, -8px);
+@td-avatar-group-offset-large: var(--td-avatar-group-margin-left-large, -8px);
+@td-avatar-group-line-spacing: var(--td-avatar-group-line-spacing, 2px);
+@td-avatar-group-collapse-bg: var(--td-avatar-group-collapse-bg, #e7e7e7);
+@td-avatar-group-collapse-color: var(--td-avatar-group-collapse-color, rgba(0, 0, 0, 0.9));
+
+.t-avatar-group {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+
+  /* 子项相互之间的偏移 */
+  &--offset-left {
+    .t-avatar-group__item + .t-avatar-group__item {
+      margin-left: @td-avatar-group-offset-medium;
+    }
+  }
+
+  &--offset-right {
+    flex-direction: row-reverse;
+    .t-avatar-group__item + .t-avatar-group__item {
+      margin-right: @td-avatar-group-offset-medium;
+    }
+  }
+
+  &__item {
+    padding: @td-avatar-group-line-spacing 0;
+  }
+
+  &__collapse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: @td-avatar-group-collapse-bg;
+    color: @td-avatar-group-collapse-color;
+    font-weight: 600;
+  }
+}

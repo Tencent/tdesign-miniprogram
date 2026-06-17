@@ -1,0 +1,34 @@
+<template>
+  <view>
+    <t-input v-model="v1" label="标签文字" placeholder="请输入文字" ></t-input>
+    <t-input v-model="v2" placeholder="请输入文字">
+      <template #label>
+        <view class="custom-label">
+          <text>标签文字</text>
+          <text class="required">*</text>
+        </view>
+      </template>
+    </t-input>
+    <t-input v-model="v3" placeholder="请输入文字" ></t-input>
+  </view>
+</template>
+
+<script>
+export default {
+  data() {
+    return { v1: '', v2: '', v3: '' };
+  },
+};
+</script>
+
+<style>
+.custom-label {
+  display: flex;
+  align-items: center;
+}
+.required {
+  color: #d54941;
+  margin-left: 2px;
+  font-size: 16px;
+}
+</style>

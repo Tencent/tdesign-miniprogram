@@ -1,0 +1,22 @@
+<template>
+  <view>
+    <t-navbar :fixed="false">
+      <template #left>
+        <image
+          class="custom-image"
+          src="https://tdesign.gtimg.com/mobile/demos/logo-light.png"
+          mode="aspectFit"
+        />
+      </template>
+    </t-navbar>
+  </view>
+</template>
+
+<script setup lang="uts"></script>
+
+<style>
+.custom-image {
+  width: 87px;
+  height: 24px;
+}
+</style>

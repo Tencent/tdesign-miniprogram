@@ -1,0 +1,53 @@
+<template>
+  <view class="demo-block">
+    <text class="demo-line-title">dark</text>
+    <view class="demo-row">
+      <t-tag theme="primary" variant="dark">主要</t-tag>
+      <t-tag theme="success" variant="dark">成功</t-tag>
+      <t-tag theme="warning" variant="dark">警告</t-tag>
+      <t-tag theme="danger" variant="dark">危险</t-tag>
+    </view>
+    <text class="demo-line-title">light</text>
+    <view class="demo-row">
+      <t-tag theme="primary" variant="light">主要</t-tag>
+      <t-tag theme="success" variant="light">成功</t-tag>
+      <t-tag theme="warning" variant="light">警告</t-tag>
+      <t-tag theme="danger" variant="light">危险</t-tag>
+    </view>
+    <text class="demo-line-title">outline</text>
+    <view class="demo-row">
+      <t-tag theme="primary" variant="outline">主要</t-tag>
+      <t-tag theme="success" variant="outline">成功</t-tag>
+      <t-tag theme="warning" variant="outline">警告</t-tag>
+      <t-tag theme="danger" variant="outline">危险</t-tag>
+    </view>
+    <text class="demo-line-title">light-outline</text>
+    <view class="demo-row">
+      <t-tag theme="primary" variant="light-outline">主要</t-tag>
+      <t-tag theme="success" variant="light-outline">成功</t-tag>
+      <t-tag theme="warning" variant="light-outline">警告</t-tag>
+      <t-tag theme="danger" variant="light-outline">危险</t-tag>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-line-title {
+  font-size: 13px;
+  color: #888888;
+  margin: 8px 0 4px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-row > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

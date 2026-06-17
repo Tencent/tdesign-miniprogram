@@ -1,0 +1,43 @@
+<template>
+  <view class="demo-block">
+    <text class="demo-label">text</text>
+    <t-skeleton theme="text" ></t-skeleton>
+
+    <text class="demo-label">paragraph</text>
+    <t-skeleton theme="paragraph" ></t-skeleton>
+
+    <view class="demo-row">
+      <view class="demo-col-left">
+        <t-skeleton theme="avatar" ></t-skeleton>
+      </view>
+      <view class="demo-col-right">
+        <t-skeleton theme="text" ></t-skeleton>
+      </view>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-label {
+  display: block;
+  font-size: 12px;
+  color: #888888;
+  margin-bottom: 8px;
+  margin-top: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 16px;
+}
+.demo-col-left {
+  margin-right: 16px;
+}
+.demo-col-right {
+  flex: 1;
+}
+</style>

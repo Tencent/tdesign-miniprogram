@@ -1,0 +1,204 @@
+<template>
+  <view :class="rootClass">
+    <view :class="contentClass" @click="toggle">
+      <view class="t-tab-bar-item__icon">
+        <slot name="icon">
+          <t-icon
+            v-if="innerIcon.name.length > 0"
+            :name="innerIcon.name"
+            :size="innerIcon.size !== '' ? innerIcon.size : iconSize"
+            :color="innerIcon.color"
+            :prefix="innerIcon.prefix"
+          />
+        </slot>
+        <view v-if="hasBadge" class="t-tab-bar-item__badge">
+          <text v-if="(props.badgeProps.dot ?? false) === false" class="t-tab-bar-item__badge-text">
+            {{ badgeText }}
+          </text>
+          <view v-else class="t-tab-bar-item__badge-dot" />
+        </view>
+      </view>
+      <view :class="textClass">
+        <t-icon
+          v-if="hasChildren"
+          name="view-list"
+          size="16"
+          custom-class="t-tab-bar-item__icon-menu"
+        />
+        <slot />
+      </view>
+    </view>
+    <view v-if="hasChildren && isSpread" class="t-tab-bar-item__spread">
+      <view
+        v-for="(child, index) in props.subTabBar"
+        :key="index"
+        class="t-tab-bar-item__spread-item"
+        @click="selectChild(child.value)"
+      >
+        <view v-if="index !== 0" class="t-tab-bar-item__spread-item-split" />
+        <text class="t-tab-bar-item__spread-item-text">{{ child.label }}</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * TabBarItem - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 tab-bar-item：
+ *  - 通过 inject('t-tab-bar-context') 与父 t-tab-bar 通信
+ *  - 支持 badgeProps（dot / count）
+ *  - icon 同时支持字符串图标名 与 对象 ({ name, size, color, prefix })
+ *  - subTabBar 支持二级菜单展开
+ */
+import { computed, inject, onMounted, ref } from 'vue';
+import TIcon from '../t-icon/t-icon.uvue';
+import { tabBarItemVariants } from './t-tab-bar-item.variants';
+import { normalizeIcon, type IconConfig } from '../../utils';
+import type { SubTabBarItem, TabBarItemBadgeProps } from './t-tab-bar-item.types';
+
+type TabBarContext = {
+  currentValue: string | number;
+  theme: string;
+  shape: string;
+  split: boolean;
+  itemCount: number;
+  setValue: (value: string | number) => void;
+  registerItem: () => number;
+};
+
+const ctxDefault: TabBarContext = {
+  currentValue: '',
+  theme: 'normal',
+  shape: 'normal',
+  split: true,
+  itemCount: 0,
+  setValue: (_v: string | number) => {},
+  registerItem: (): number => 0,
+};
+
+const props = defineProps({
+  badgeProps: { type: Object as PropType<TabBarItemBadgeProps>, default: () => ({}) },
+  icon: { type: [String, Object] as PropType<string | IconConfig>, default: '' },
+  subTabBar: { type: Array as PropType<SubTabBarItem[]>, default: () => [] as SubTabBarItem[] },
+  value: { type: [String, Number], default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const innerIcon = computed<IconConfig>(() => normalizeIcon(props.icon));
+
+const ctx = inject('t-tab-bar-context', ctxDefault) as TabBarContext;
+
+const internalIndex = ref<number>(0);
+
+onMounted(() => {
+  internalIndex.value = ctx.registerItem();
+});
+
+const currentName = computed<string | number>(() => {
+  if (props.value !== '') return props.value;
+  return internalIndex.value;
+});
+
+const isChecked = computed<boolean>(() => {
+  const sub = props.subTabBar;
+  if (sub.length > 0) {
+    for (let i = 0; i < sub.length; i = i + 1) {
+      if (sub[i].value === ctx.currentValue) return true;
+    }
+  }
+  return ctx.currentValue === currentName.value;
+});
+
+const hasChildren = computed<boolean>(() => props.subTabBar.length > 0);
+
+const isSpread = ref<boolean>(false);
+
+const rootClass = computed<string>(() => {
+  return tabBarItemVariants({
+    shape: ctx.shape as any,
+    crowded: ctx.itemCount > 3,
+    split: ctx.split,
+    class: props.customClass,
+  });
+});
+
+const contentClass = computed<string>(() => {
+  let cls = 't-tab-bar-item__content';
+  if (isChecked.value) cls = cls + ' t-tab-bar-item__content--checked';
+  if (ctx.theme === 'tag') cls = cls + ' t-tab-bar-item__content--tag';
+  return cls;
+});
+
+const textClass = computed<string>(() => {
+  let cls = 't-tab-bar-item__text';
+  if (innerIcon.value.name.length > 0) cls = cls + ' t-tab-bar-item__text--small';
+  return cls;
+});
+
+const iconSize = computed<string>(() => {
+  // 纯图标 24，图标+文字 20
+  return '20';
+});
+
+const hasBadge = computed<boolean>(() => {
+  const bp = props.badgeProps;
+  if (bp.dot ?? false) return true;
+  const c = bp.count ?? '';
+  return c !== '' && c !== 0;
+});
+
+const badgeText = computed<string>(() => {
+  const c = props.badgeProps.count ?? '';
+  if (typeof c === 'number') {
+    const max = props.badgeProps.maxCount ?? 99;
+    if (c > max) return max.toString() + '+';
+    return c.toString();
+  }
+  return c.toString();
+});
+
+function toggle() {
+  if (hasChildren.value) {
+    isSpread.value = !isSpread.value;
+    return;
+  }
+  ctx.setValue(currentName.value);
+}
+
+function selectChild(val: string | number) {
+  ctx.setValue(val);
+  isSpread.value = false;
+}
+</script>
+
+<style lang="less">
+@import './t-tab-bar-item.theme.less';
+
+.t-tab-bar-item__badge {
+  position: absolute;
+  top: 0;
+  right: 8px;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background-color: #d54941;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  box-sizing: border-box;
+}
+.t-tab-bar-item__badge-text {
+  font-size: 10px;
+  line-height: 14px;
+}
+.t-tab-bar-item__badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background-color: #d54941;
+}
+</style>

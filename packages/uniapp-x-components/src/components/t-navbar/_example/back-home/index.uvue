@@ -1,0 +1,48 @@
+<template>
+  <view>
+    <t-navbar title="标题文字" :fixed="false">
+      <template #capsule>
+        <view class="custom-capsule">
+          <view class="custom-capsule__icon" @click="onBack">
+            <t-icon name="chevron-left" size="20" />
+          </view>
+          <view class="custom-capsule__icon home" @click="onGoHome">
+            <t-icon name="home" size="20" />
+          </view>
+        </view>
+      </template>
+    </t-navbar>
+  </view>
+</template>
+
+<script setup lang="uts">
+function onBack() {
+  uni.navigateBack({} as NavigateBackOptions);
+}
+function onGoHome() {
+  uni.reLaunch({ url: '/pages/index/index' } as ReLaunchOptions);
+}
+</script>
+
+<style>
+.custom-capsule {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 88px;
+  height: 32px;
+  border: 1px solid #e7e7e7;
+  border-radius: 16px;
+  box-sizing: border-box;
+}
+.custom-capsule__icon {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.custom-capsule__icon.home {
+  border-left: 1px solid #e7e7e7;
+}
+</style>

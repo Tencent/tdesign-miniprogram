@@ -1,0 +1,163 @@
+<template>
+  <view :class="rootClass" :style="rootStyle">
+    <view class="t-watermark__content">
+      <slot />
+    </view>
+    <view v-if="hasContent" class="t-watermark__overlay" :style="overlayStyle">
+      <view
+        v-for="(rowOffset, rowIdx) in rowOffsets"
+        :key="rowIdx"
+        class="t-watermark__row"
+        :style="rowStyle(rowOffset)"
+      >
+        <view
+          v-for="colIdx in cols"
+          :key="colIdx"
+          class="t-watermark__cell"
+          :style="cellStyle"
+        >
+          <view :style="textWrapStyle">
+            <text
+              v-for="(item, lineIdx) in normalizedContent"
+              :key="lineIdx"
+              class="t-watermark__text"
+              :style="textStyle(item)"
+            >{{ item.text }}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Watermark - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/watermark：
+ *  - watermarkContent: 单 / 多行水印内容
+ *  - layout: rectangular(矩形对齐) / hexagonal(行错位)
+ *  - rotate: 整体旋转角度
+ *  - x/y: 水平/垂直间距
+ *  - alpha: 整体透明度
+ *  - 不实现 canvas/movable/removable（uts 端简化），适合静态版权水印场景
+ */
+import { computed } from 'vue';
+import { watermarkVariants } from './t-watermark.variants';
+import type { WatermarkLayout, WatermarkContentItem } from './t-watermark.types';
+
+const props = defineProps({
+  alpha: { type: Number, default: 1 },
+  content: { type: String, default: '' },
+  height: { type: Number, default: 0 },
+  isRepeat: { type: Boolean, default: true },
+  layout: { type: String as PropType<WatermarkLayout>, default: 'rectangular' },
+  lineSpace: { type: Number, default: 16 },
+  movable: { type: Boolean, default: false },
+  moveInterval: { type: Number, default: 3000 },
+  offset: { type: Array as PropType<number[] | null>, default: null },
+  removable: { type: Boolean, default: true },
+  rotate: { type: Number, default: -22 },
+  watermarkContent: {
+    type: [Object, Array, null] as PropType<WatermarkContentItem | WatermarkContentItem[] | null>,
+    default: null,
+  },
+  width: { type: Number, default: 0 },
+  x: { type: Number, default: 120 },
+  y: { type: Number, default: 80 },
+  zIndex: { type: Number, default: 10 },
+  customClass: { type: String, default: '' },
+});
+
+const rootClass = computed(() =>
+  watermarkVariants({
+    layout: props.layout,
+    class: props.customClass,
+  }),
+);
+
+const rootStyle = computed<string>(() => '');
+
+/** 把单/多行 content 标准化为数组 */
+const normalizedContent = computed<WatermarkContentItem[]>(() => {
+  if (props.watermarkContent == null) return [] as WatermarkContentItem[];
+  if (Array.isArray(props.watermarkContent)) {
+    return props.watermarkContent as WatermarkContentItem[];
+  }
+  return [props.watermarkContent as WatermarkContentItem];
+});
+
+const hasContent = computed<boolean>(() => normalizedContent.value.length > 0);
+
+/** 单元格宽高 */
+const cellWidth = computed<number>(() => {
+  if (props.width > 0) return props.width;
+  return props.x;
+});
+const cellHeight = computed<number>(() => {
+  if (props.height > 0) return props.height;
+  return props.y;
+});
+
+/** 网格行/列数：覆盖父容器，至少 5 行 / 5 列 */
+const rows = computed<number>(() => 6);
+const cols = computed<number>(() => 6);
+
+/** layout=hexagonal 时偶数行偏移半个 cellWidth */
+const rowOffsets = computed<number[]>(() => {
+  const arr: number[] = [];
+  for (let i = 0; i < rows.value; i++) {
+    if (props.layout === 'hexagonal' && i % 2 === 1) {
+      arr.push(cellWidth.value / 2);
+    } else {
+      arr.push(0);
+    }
+  }
+  return arr;
+});
+
+const overlayStyle = computed<string>(() => {
+  const parts: string[] = [];
+  parts.push('opacity:' + String(props.alpha));
+  parts.push('z-index:' + String(props.zIndex));
+  if (props.offset != null) {
+    const arr = props.offset as number[];
+    if (arr.length >= 2) {
+      parts.push('transform:translate(' + String(arr[0]) + 'px,' + String(arr[1]) + 'px)');
+    }
+  }
+  return parts.join(';');
+});
+
+function rowStyle(offset: number): string {
+  const parts: string[] = [];
+  parts.push('height:' + String(cellHeight.value) + 'px');
+  if (offset > 0) {
+    parts.push('margin-left:' + String(offset) + 'px');
+  }
+  return parts.join(';');
+}
+
+const cellStyle = computed<string>(() => {
+  return 'width:' + String(cellWidth.value) + 'px;height:' + String(cellHeight.value) + 'px';
+});
+
+const textWrapStyle = computed<string>(() => {
+  return 'transform:rotate(' + String(props.rotate) + 'deg);display:flex;flex-direction:column;align-items:center;line-height:' + String(props.lineSpace + 12) + 'px';
+});
+
+function textStyle(item: WatermarkContentItem): string {
+  const parts: string[] = [];
+  if (item.fontSize != null) parts.push('font-size:' + String(item.fontSize as number) + 'px');
+  else parts.push('font-size:14px');
+  if (item.fontColor != null) parts.push('color:' + (item.fontColor as string));
+  else parts.push('color:rgba(0,0,0,0.15)');
+  if (item.fontWeight != null) parts.push('font-weight:' + String(item.fontWeight));
+  if (item.alpha != null) parts.push('opacity:' + String(item.alpha as number));
+  return parts.join(';');
+}
+</script>
+
+<style lang="less">
+@import './t-watermark.theme.less';
+</style>

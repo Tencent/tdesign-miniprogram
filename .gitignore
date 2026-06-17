@@ -8,6 +8,7 @@ _example
 !packages/pro-components/**/_example/
 !packages/uniapp-components/**/_example/
 !packages/uniapp-pro-components/**/_example/
+!packages/uniapp-x-components/**/_example/
 
 packages/tdesign-miniprogram/example/pages/*
 !packages/tdesign-miniprogram/example/pages/gulp-error

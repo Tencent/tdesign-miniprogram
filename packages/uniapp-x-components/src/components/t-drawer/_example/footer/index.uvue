@@ -1,0 +1,55 @@
+<template>
+  <view>
+    <button class="open-btn" @click="openDrawer">带底部抽屉</button>
+    <t-drawer
+      :visible="visible"
+      title="个人中心"
+      :items="sidebar"
+      @update:visible="onVisibleChange"
+    >
+      <template #footer>
+        <view class="drawer-footer">
+          <text class="drawer-footer-text">底部内容区</text>
+        </view>
+      </template>
+    </t-drawer>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const visible = ref<boolean>(false);
+const sidebar = [
+  { title: '账户信息' },
+  { title: '我的订单' },
+  { title: '收藏夹' },
+  { title: '设置' },
+];
+
+function openDrawer() {
+  visible.value = true;
+}
+function onVisibleChange(v: boolean) {
+  visible.value = v;
+}
+</script>
+
+<style>
+.open-btn {
+  margin: 16px;
+  height: 44px;
+  background-color: #ffffff;
+  border: 1px solid #0052d9;
+  color: #0052d9;
+  border-radius: 4px;
+}
+.drawer-footer {
+  padding: 16px;
+  border-top: 1px solid #e7e7e7;
+}
+.drawer-footer-text {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+</style>

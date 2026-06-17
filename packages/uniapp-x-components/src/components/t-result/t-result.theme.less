@@ -1,0 +1,62 @@
+/**
+ * Result 基础样式
+ */
+
+@td-result-icon-size: var(--td-result-icon-size, 80px);
+@td-result-title-font-size: var(--td-result-title-font-size, 20px);
+@td-result-title-color: var(--td-result-title-color, rgba(0, 0, 0, 0.9));
+@td-result-description-font-size: var(--td-result-description-font-size, 14px);
+@td-result-description-color: var(--td-result-description-color, rgba(0, 0, 0, 0.6));
+@td-result-icon-default-color: var(--td-result-icon-default-color, #0052d9);
+@td-result-icon-success-color: var(--td-result-icon-success-color, #2ba471);
+@td-result-icon-warning-color: var(--td-result-icon-warning-color, #ed7b2f);
+@td-result-icon-error-color: var(--td-result-icon-error-color, #d54941);
+@td-result-title-margin-top: var(--td-result-title-margin-top, 4px);
+@td-result-description-margin-top: var(--td-result-description-margin-top, 8px);
+
+.t-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__thumb {
+    width: @td-result-icon-size;
+    height: @td-result-icon-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon,
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__title {
+    margin-top: @td-result-title-margin-top;
+    font-size: @td-result-title-font-size;
+    color: @td-result-title-color;
+  }
+
+  &__description {
+    margin-top: @td-result-description-margin-top;
+    text-align: center;
+    color: @td-result-description-color;
+    font-size: @td-result-description-font-size;
+  }
+
+  // theme
+  &--theme-default {
+    .t-result__thumb { color: @td-result-icon-default-color; }
+  }
+  &--theme-success {
+    .t-result__thumb { color: @td-result-icon-success-color; }
+  }
+  &--theme-warning {
+    .t-result__thumb { color: @td-result-icon-warning-color; }
+  }
+  &--theme-error {
+    .t-result__thumb { color: @td-result-icon-error-color; }
+  }
+}

@@ -6,17 +6,11 @@ spline: explain
 
 ## 写在前面
 
-TDesign UniApp 的实现原理，可以查看[这篇文章](https://juejin.cn/post/7571650164844068898)。
-
-### 外部样式类
-
-`tdesign-miniprogram` 中的 `externalClasses`，在 `tdesign-uniapp` 中被转成了 `props`。
-
-传参方式不变，都是 `t-class="xxx-class"`。使用的时候要在样式文件中增加 `:deep` 标记，否则会因为 `scoped` 而失败，如果是非页面级别组件，需要增加 `options: { styleIsolation: 'shared' }`。
+TDesign UniApp 的实现原理，可参考[原理介绍](https://juejin.cn/post/7571650164844068898)。
 
 ### 事件参数
 
-`tdesign-miniprogram` 中的事件参数，在 `tdesign-uniapp` 中都被去掉了 `detail` 一层。以 Picker 组件为例，在 `tdesign-miniprogram` 中，这样获取参数
+相较于 `tdesign-miniprogram`，`tdesign-uniapp` 统一去除了事件参数中的 `e.detail` 包装层。以 Picker 组件为例，在 `tdesign-miniprogram` 中获取参数的写法为：
 
 ```js
 onPickerChange(e) {
@@ -24,7 +18,7 @@ onPickerChange(e) {
 }
 ```
 
-在 `tdesign-uniapp` 中，需要去掉 `.detail`，即
+在 `tdesign-uniapp` 中，需要去掉 `.detail`，改为：
 
 ```js
 onPickerChange(e) {
@@ -32,15 +26,80 @@ onPickerChange(e) {
 }
 ```
 
-这样做是为了简化使用。`tdesign-uniapp` 中很多组件都采用了这种方式。
+该约定适用于 `tdesign-uniapp` 全部组件，旨在简化事件参数的使用。
+
+### v-model 写法
+
+`tdesign-uniapp` 所有受控组件统一使用 `value` 作为双向绑定属性名，**而非 Vue 3 默认的 `modelValue`**（与 React 版、原生小程序版保持一致）。因此在使用 `v-model` 时必须带上 `:value`：
+
+```html
+<!-- ✅ 正确：使用 v-model:value -->
+<t-dropdown-menu>
+  <t-dropdown-item v-model:value="val" :options="options" />
+</t-dropdown-menu>
+
+<t-checkbox v-model:value="checked" />
+<t-tabs v-model:value="current" />
+
+<!-- ❌ 错误：组件没有 modelValue prop，绑定不会生效 -->
+<t-dropdown-item v-model="val" :options="options" />
+```
+
+非受控场景可以使用 `defaultValue`，组件内部维护状态。该约定适用于所有带 `value` 的受控组件（如 `checkbox` / `radio` / `switch` / `tabs` / `cascader` / `dropdown-item` / `slider` / `stepper` 等）。
+
+### visible 受控
+
+以下组件在关闭时，需要父组件主动将 `visible` 重置为 `false`，否则无法再次打开。即这些组件的 `visible` 必须以受控方式使用，推荐使用 `v-model:visible` 语法糖，具体可参考各组件示例。
+
+- picker
+- date-time-picker
+- color-picker
+- cascader
+- calendar
+- drawer
+
+### 外部样式类
+
+`tdesign-miniprogram` 中的 `externalClasses` 在 `tdesign-uniapp` 中以 `props` 形式提供。
+
+传参方式保持一致，仍为 `t-class="xxx-class"`。使用时需注意：
+
+- 在样式文件中通过 `:deep()` 选择器穿透，否则会因 `<style scoped>` 隔离导致样式不生效；
+- 在小程序平台下，若组件并非页面级组件，需要额外声明 `options: { styleIsolation: 'shared' }` 以解除组件样式隔离。
+
+### 函数式组件如何传递 `context`
+
+在 `<script setup>` 语法糖下，函数式调用 Toast、Dialog 等组件时，最简单的方式是在页面模板中预埋一个组件实例，无需手动传递 `context`：
+
+```html
+<!-- 页面级组件: xx.vue -->
+<template>
+  <view>
+    <!-- ... -->
+    <t-toast />
+  </view>
+</template>
+```
+
+后续在该页面任意位置直接调用 `Toast({ message: 'xxx' })` 即可，组件库会自动定位到当前页面预埋的实例。Dialog、Notify 等同理。
+
+### PC 浏览器下手势 / 拖动类组件不生效
+
+部分依赖 touch 事件的组件（如 swipe-cell、slider 等）在 PC 浏览器中无法直接通过鼠标拖动触发。可在 H5 入口加载 `touch-emulator` 进行适配：
+
+```html
+<script src="https://tdesign.gtimg.com/js/touch-emulator.js"></script>
+```
+
+建议自行下载并托管到业务自己的 CDN，避免外链可用性问题。
 
 ### onPageScroll
 
-在小程序、APP 等平台下，需要业务自己在页面中监听 `pageScroll` 事件，这是因为动态的监听不生效。这里给出一个最佳实践之一。
+在小程序、App 等平台下，组件内部动态注册的页面生命周期钩子不会生效，因此需要业务方在页面中显式监听 `onPageScroll` 并将事件转发给组件库（如 Indexes、BackTop 等依赖滚动位置的组件均依赖此处理）。推荐用法如下：
 
 ```js
-// 页面 Vue 文件下，引入组件库提供的监听方法
-// 该方法内部会通过 event-bus，传递参数给对应的组件
+// 在页面 Vue 文件中引入组件库提供的监听方法
+// 该方法内部通过 event-bus 将滚动事件分发到组件内部
 import { handlePageScroll } from '@tdesign/uniapp/mixins/page-scroll';
 
 // Vue3
@@ -60,28 +119,28 @@ export default {
 
 ### slot 类型提示
 
-uniapp 给的脚手架工程配置有问题，`src/env.d.ts` 文件的 `vue` 声明不对，没有声明 `slot` 的类型。
+uniapp 官方脚手架的默认配置中，`src/env.d.ts` 对 `vue` 模块的类型声明不完整，未导出 slot 相关类型，会导致使用组件时缺失类型提示（典型报错如 `Property 'xxx' does not exist on type '{}'`）。
 
 解决方案：
 
-1. 注释掉 `src/env.d.ts` 文件中 `vue` 的声明
-2. `tsconfig.json` 中配置 `"moduleResolution": "bundler"`
+1. 注释掉 `src/env.d.ts` 中 `declare module 'vue'` 部分；
+2. 在 `tsconfig.json` 中将 `compilerOptions.moduleResolution` 设置为 `"bundler"`。
 
 <img src="https://tdesign.gtimg.com/uniapp/docs/faq-1.png" width="700" />
 
 <img src="https://tdesign.gtimg.com/uniapp/docs/faq-2.png" width="700" />
 
-另外，它这个脚手架太老了，自己的 `tsconfig.json` 还飘红，升级下 `@vue/tsconfig` 可解决。
+此外，官方脚手架自带的 `tsconfig.json` 在新版 TypeScript 下会出现类型报错，可通过将 `@vue/tsconfig` 升级至最新版本解决。
 
-这里有一个开箱即用的 uniapp Vue3 [脚手架项目](https://github.com/TDesignOteam/tdesign-uniapp-starter)，支持自动导入、类型提示等，你可以打开看看。
+推荐使用我们提供的开箱即用模板：[tdesign-uniapp-starter](https://github.com/TDesignOteam/tdesign-uniapp-starter)，已内置自动导入、类型提示等配置。
 
-### visible 受控
+### 微信开发者工具报 `Failed to load font`
 
-下面几个组件在关闭时，需要父组件中设置 `visible` 为 `false`，否则无法再次开启。也就是 `visible` 只能是受控的。可以用 `v-model:visible` 语法糖，可参考对应组件示例。
+在微信开发者工具控制台可能出现如下报错：
 
-- picker
-- date-time-picker
-- color-picker
-- cascader
-- calendar
-- drawer
+```
+[渲染层网络层错误] Failed to load font https://tdesign.gtimg.com/icon/x.x.x/fonts/t.woff
+net::ERR_CACHE_MISS
+```
+
+这是微信开发者工具自身的已知问题，不影响真机表现，可忽略。详情可参考 [`wx.loadFontFace` 文档](https://developers.weixin.qq.com/miniprogram/dev/api/ui/font/wx.loadFontFace.html)。

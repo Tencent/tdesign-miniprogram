@@ -1,0 +1,21 @@
+<template>
+  <view class="demo-block">
+    <t-button theme="primary">正常</t-button>
+    <t-button theme="primary" disabled>禁用</t-button>
+    <t-button theme="primary" loading>加载中</t-button>
+    <t-button theme="primary" disabled loading>禁用 + 加载</t-button>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 16px;
+}
+.demo-block > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

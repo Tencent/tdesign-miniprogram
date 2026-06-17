@@ -1,0 +1,98 @@
+<template>
+  <view :class="rootClass" :style="rootStyle">
+    <image
+      v-if="!isError"
+      class="t-image__img"
+      :src="props.src"
+      :mode="props.mode"
+      :lazy-load="props.lazy"
+      :webp="props.webp"
+      :show-menu-by-longpress="props.showMenuByLongpress"
+      @load="onLoad"
+      @error="onError"
+    />
+    <view v-if="isLoading && !isError" class="t-image__mask">
+      <slot name="loading">
+        <text v-if="props.loading !== 'default'">{{ props.loading }}</text>
+      </slot>
+    </view>
+    <view v-if="isError" class="t-image__mask">
+      <slot name="error">
+        <text v-if="props.error !== 'default'">{{ props.error }}</text>
+        <text v-else>加载失败</text>
+      </slot>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Image - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/image：
+ *  - shape: circle / round / square
+ *  - loading & error 占位
+ *  - 不支持 t-id 透传
+ */
+import { computed, ref } from 'vue';
+import { imageVariants } from './t-image.variants';
+import type { ImageShape, ImageMode } from './t-image.types';
+
+const props = defineProps({
+  error: { type: String, default: 'default' },
+  height: { type: [String, Number] as PropType<string | number>, default: '' },
+  lazy: { type: Boolean, default: false },
+  loading: { type: String, default: 'default' },
+  mode: { type: String as PropType<ImageMode>, default: 'scaleToFill' },
+  shape: { type: String as PropType<ImageShape>, default: 'square' },
+  showMenuByLongpress: { type: Boolean, default: false },
+  src: { type: String, default: '' },
+  webp: { type: Boolean, default: false },
+  width: { type: [String, Number] as PropType<string | number>, default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['error', 'load']);
+
+const isLoading = ref(true);
+const isError = ref(false);
+
+function addUnit(value: any): string {
+  if (value === '' || value === null || value === undefined) return '';
+  const v = String(value);
+  if (/^-?\d+(\.\d+)?$/.test(v)) return v + 'px';
+  return v;
+}
+
+const rootClass = computed(() =>
+  imageVariants({
+    shape: props.shape,
+    class: props.customClass,
+  }),
+);
+
+const rootStyle = computed<string>(() => {
+  const parts: string[] = [];
+  const w = addUnit(props.width as any);
+  const h = addUnit(props.height as any);
+  if (w.length > 0) parts.push('width:' + w);
+  if (h.length > 0) parts.push('height:' + h);
+  return parts.join(';');
+});
+
+function onLoad(event: UniEvent) {
+  isLoading.value = false;
+  isError.value = false;
+  emit('load', event);
+}
+
+function onError(event: UniEvent) {
+  isLoading.value = false;
+  isError.value = true;
+  emit('error', event);
+}
+</script>
+
+<style lang="less">
+@import './t-image.theme.less';
+</style>

@@ -1,0 +1,111 @@
+/**
+ * SideBarItem 基础样式
+ *
+ * 与 @tdesign/uniapp 的 side-bar-item.less 视觉对齐
+ */
+
+@td-side-bar-color: var(--td-side-bar-color, rgba(0, 0, 0, 0.9));
+@td-side-bar-font-size: var(--td-side-bar-font-size, 16px);
+@td-side-bar-bg-color: var(--td-side-bar-bg-color, #f3f3f3);
+@td-side-bar-disabled-color: var(--td-side-bar-disabled-color, rgba(0, 0, 0, 0.26));
+@td-side-bar-active-color: var(--td-side-bar-active-color, #0052d9);
+@td-side-bar-border-radius: var(--td-side-bar-border-radius, 9px);
+@td-side-bar-icon-size: var(--td-side-bar-icon-size, 20px);
+@td-side-bar-active-bg: var(--td-side-bar-active-bg, #ffffff);
+
+.t-side-bar-item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 16px;
+  font-size: @td-side-bar-font-size;
+  color: @td-side-bar-color;
+  background-color: @td-side-bar-bg-color;
+  box-sizing: border-box;
+
+  &--active {
+    font-weight: 600;
+    background-color: @td-side-bar-active-bg;
+    color: @td-side-bar-active-color;
+  }
+
+  &__icon {
+    font-size: @td-side-bar-icon-size;
+    margin-right: 4px;
+  }
+
+  &__line {
+    width: 3px;
+    height: 14px;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: @td-side-bar-active-color;
+    border-radius: 4px;
+  }
+
+  &__prefix,
+  &__suffix {
+    z-index: 1;
+    position: absolute;
+    right: 0;
+    width: 100%;
+    height: calc(@td-side-bar-border-radius * 2);
+    background-color: @td-side-bar-active-bg;
+    pointer-events: none;
+  }
+  &__prefix {
+    top: calc(@td-side-bar-border-radius * -2);
+  }
+  &__prefix::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: @td-side-bar-bg-color;
+    border-bottom-right-radius: @td-side-bar-border-radius;
+  }
+  &__suffix {
+    bottom: calc(@td-side-bar-border-radius * -2);
+  }
+  &__suffix::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: @td-side-bar-bg-color;
+    border-top-right-radius: @td-side-bar-border-radius;
+  }
+
+  &--disabled {
+    color: @td-side-bar-disabled-color;
+  }
+
+  &__badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background-color: #d54941;
+    margin-left: 4px;
+  }
+
+  &__badge-count {
+    min-width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    background-color: #d54941;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    margin-left: 4px;
+    box-sizing: border-box;
+  }
+  &__badge-text {
+    font-size: 10px;
+    line-height: 14px;
+    color: #ffffff;
+  }
+}

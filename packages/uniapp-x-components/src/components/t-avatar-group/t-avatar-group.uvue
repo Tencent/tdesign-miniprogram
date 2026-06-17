@@ -1,0 +1,94 @@
+<template>
+  <view :class="rootClass">
+    <slot />
+    <view
+      v-if="hasCollapse"
+      class="t-avatar-group__item t-avatar-group__collapse"
+      :class="collapseSizeClass"
+      :style="collapseStyle"
+      @click="onCollapseClick"
+    >
+      <text>{{ collapseText }}</text>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * AvatarGroup - uni-app x 实现
+ *
+ * 行为契约对齐 uniapp-components/avatar-group：
+ *  - cascading: left-up / right-up 控制层叠方向
+ *  - max: 同时显示的最多头像数量；超出部分由"折叠节点"承载
+ *  - shape / size: 对默认子节点生效，但不在容器内强制透传给子 t-avatar
+ *    （uts 端 useSlots 拿不到子组件 props，改为通过 collapseText 直接展示折叠内容）
+ *  - 业务层根据 max 自行截断 default slot 子节点；组件提供 collapseAvatar 折叠节点
+ */
+import { computed } from 'vue';
+import { avatarGroupVariants } from './t-avatar-group.variants';
+import type { AvatarGroupCascading, AvatarGroupShape } from './t-avatar-group.types';
+
+const props = defineProps({
+  cascading: { type: String as PropType<AvatarGroupCascading>, default: 'left-up' },
+  collapseAvatar: { type: String, default: '' },
+  max: { type: Number, default: 0 },
+  shape: { type: String as PropType<AvatarGroupShape | ''>, default: '' },
+  size: { type: String, default: '' },
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['collapsed-item-click']);
+
+function isPresetSize(s: string): boolean {
+  return s === 'small' || s === 'medium' || s === 'large';
+}
+
+function addUnit(value: string): string {
+  if (value.length === 0) return '';
+  if (/^-?\d+(\.\d+)?$/.test(value)) return value + 'px';
+  return value;
+}
+
+const rootClass = computed(() => {
+  const sizeKey: any = isPresetSize(props.size) ? props.size : null;
+  return avatarGroupVariants({
+    cascading: props.cascading,
+    size: sizeKey,
+    class: props.customClass,
+  });
+});
+
+const hasCollapse = computed<boolean>(() => props.collapseAvatar.length > 0);
+
+const collapseText = computed<string>(() => props.collapseAvatar);
+
+/** 折叠节点视觉尺寸：未传 size 时跟随 medium */
+const collapseSizeClass = computed<string>(() => {
+  if (props.shape === 'round') return 't-avatar t-avatar--round';
+  return 't-avatar t-avatar--circle';
+});
+
+const collapseStyle = computed<string>(() => {
+  const parts: string[] = [];
+  if (isPresetSize(props.size)) {
+    // 由 .t-avatar--{size} 决定宽高
+  } else if (props.size.length > 0) {
+    const u = addUnit(props.size);
+    parts.push('width:' + u);
+    parts.push('height:' + u);
+  } else {
+    parts.push('width:48px');
+    parts.push('height:48px');
+  }
+  return parts.join(';');
+});
+
+function onCollapseClick(event: UniMouseEvent) {
+  emit('collapsed-item-click', event);
+}
+</script>
+
+<style lang="less">
+@import './t-avatar-group.theme.less';
+@import '../t-avatar/t-avatar.theme.less';
+</style>

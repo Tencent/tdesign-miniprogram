@@ -1,0 +1,45 @@
+<template>
+  <view>
+    <t-input
+      v-model="v1"
+      label="标签文字"
+      placeholder="请输入文字"
+      status="error"
+      tips="错误提示"
+      :clearable="true"
+      @clear="onClear"
+      @click="onClick"
+    />
+    <t-input v-model="v2" label="标签文字" disabled @click="onClick" ></t-input>
+    <t-input v-model="v3" label="标签文字" readonly @click="onClick" ></t-input>
+  </view>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      v1: '已输入内容',
+      v2: '不可编辑文字',
+      v3: '只读模式',
+    };
+  },
+  methods: {
+    onClick(e) {
+      console.log('click trigger:', e.trigger);
+    },
+    onClear() {
+      console.log('clear');
+    },
+  },
+};
+</script>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-block > * {
+  margin-bottom: 12px;
+}
+</style>

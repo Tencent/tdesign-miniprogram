@@ -1,0 +1,60 @@
+/**
+ * Drawer 内容样式（v2，基于 t-popup 重构）
+ *
+ * 与 @tdesign/uniapp 的 drawer.less 视觉对齐：
+ *  - 仅描述 drawer 内部结构（title / sidebar / item / footer），
+ *    定位、滑入动画、overlay 由外层 t-popup 负责
+ *  - 宽度由 t-popup 的 left/right placement 自动撑满高度，drawer 自己控制宽度
+ */
+
+.t-drawer {
+  width: var(--td-drawer-width, 560rpx);
+  height: 100%;
+  background-color: var(--td-drawer-bg-color, #ffffff);
+  display: flex;
+  flex-direction: column;
+}
+
+.t-drawer__title {
+  font-size: var(--td-drawer-title-font-size, 32rpx);
+  font-weight: 600;
+  padding: 48rpx 32rpx 16rpx;
+  color: var(--td-drawer-title-color, rgba(0, 0, 0, 0.9));
+}
+
+.t-drawer__sidebar {
+  flex: 1;
+  width: 100%;
+}
+
+.t-drawer__sidebar-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom-width: 1rpx;
+  border-bottom-style: solid;
+  border-bottom-color: var(--td-drawer-border-color, #e7e7e7);
+  padding: var(--td-drawer-item-padding, 32rpx);
+  font-size: 32rpx;
+}
+
+.t-drawer__sidebar-item:active {
+  background-color: var(--td-drawer-hover-color, #f3f3f3);
+}
+
+.t-drawer__sidebar-item-icon {
+  padding-right: 16rpx;
+  color: var(--td-drawer-item-icon-color, rgba(0, 0, 0, 0.9));
+  font-size: var(--td-drawer-item-icon-size, 48rpx);
+}
+
+.t-drawer__sidebar-item-title {
+  flex: 1;
+  color: var(--td-drawer-title-color, rgba(0, 0, 0, 0.9));
+}
+
+.t-drawer__footer {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 40rpx;
+}

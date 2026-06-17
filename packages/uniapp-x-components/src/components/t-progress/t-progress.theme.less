@@ -1,0 +1,129 @@
+/**
+ * Progress 基础样式
+ *
+ * uts 端不支持 SVG 与 conic-gradient（部分平台），circle 退化为
+ * 一个由两段半圆遮罩拼接的 css 实现 + 中心圆，简化处理。
+ */
+
+@td-progress-line-stroke-width: var(--td-progress-line-stroke-width, 6px);
+@td-progress-stroke-plump-width: var(--td-progress-stroke-plump-width, 20px);
+@td-progress-stroke-circle-width: var(--td-progress-stroke-circle-width, 6px);
+@td-progress-circle-width: var(--td-progress-circle-width, 112px);
+@td-progress-circle-micro-width: var(--td-progress-circle-micro-width, 24px);
+@td-progress-track-bg-color: var(--td-progress-track-bg-color, #e7e7e7);
+@td-progress-inner-bg-color: var(--td-progress-inner-bg-color, #0052d9);
+@td-progress-inner-bg-color-success: var(--td-progress-inner-bg-color-success, #2ba471);
+@td-progress-inner-bg-color-error: var(--td-progress-inner-bg-color-error, #d54941);
+@td-progress-inner-bg-color-warning: var(--td-progress-inner-bg-color-warning, #ed7b2f);
+@td-progress-info-dark-color: var(--td-progress-info-dark-color, rgba(0, 0, 0, 0.9));
+@td-progress-info-light-color: var(--td-progress-info-light-color, #ffffff);
+@td-progress-circle-inner-bg-color: var(--td-progress-circle-inner-bg-color, #ffffff);
+
+.t-progress {
+  &__bar {
+    width: 100%;
+    height: @td-progress-line-stroke-width;
+    overflow: hidden;
+    background: @td-progress-track-bg-color;
+    border-radius: 999px;
+    position: relative;
+    flex: 1;
+  }
+
+  &__inner {
+    height: 100%;
+    background: @td-progress-inner-bg-color;
+    border-radius: 999px;
+  }
+
+  &__info {
+    padding-left: 8px;
+    box-sizing: border-box;
+    color: @td-progress-info-dark-color;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  // 标准
+  &--thin {
+    display: flex;
+    align-items: center;
+  }
+
+  // plump
+  &--plump {
+    .t-progress__bar {
+      height: @td-progress-stroke-plump-width;
+      border-radius: calc(@td-progress-stroke-plump-width / 2);
+    }
+    .t-progress__inner {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 8px;
+      box-sizing: border-box;
+    }
+    .t-progress__info {
+      color: @td-progress-info-light-color;
+      font-size: 12px;
+      padding: 0;
+    }
+    &.t-progress--under-ten {
+      .t-progress__info {
+        color: @td-progress-info-dark-color;
+      }
+    }
+  }
+
+  // circle 简化：用单 .t-progress__bar 显示 percentage（线性）+ 中心标签；
+  // 实际项目中可由业务通过 conic-gradient 自定义。
+  &--circle {
+    width: @td-progress-circle-width;
+    height: @td-progress-circle-width;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: @td-progress-track-bg-color;
+
+    .t-progress__circle-inner {
+      width: calc(100% - @td-progress-stroke-circle-width * 2);
+      height: calc(100% - @td-progress-stroke-circle-width * 2);
+      border-radius: 999px;
+      background-color: @td-progress-circle-inner-bg-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
+    .t-progress__info {
+      font-size: 24px;
+      padding: 0;
+    }
+    &--micro {
+      width: @td-progress-circle-micro-width;
+      height: @td-progress-circle-micro-width;
+      .t-progress__info {
+        font-size: 10px;
+      }
+    }
+  }
+
+  // 状态
+  &--status--success {
+    .t-progress__inner {
+      background: @td-progress-inner-bg-color-success;
+    }
+  }
+  &--status--warning {
+    .t-progress__inner {
+      background: @td-progress-inner-bg-color-warning;
+    }
+  }
+  &--status--error {
+    .t-progress__inner {
+      background: @td-progress-inner-bg-color-error;
+    }
+  }
+}

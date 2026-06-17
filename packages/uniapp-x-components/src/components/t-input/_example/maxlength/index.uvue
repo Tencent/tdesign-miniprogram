@@ -1,0 +1,37 @@
+<template>
+  <view>
+    <t-input
+      v-model="v1"
+      label="标签文字"
+      placeholder="请输入文字"
+      tips="最大输入10个字符"
+      :maxlength="10"
+    />
+    <t-input
+      v-model="v2"
+      label="标签文字"
+      placeholder="请输入文字"
+      tips="最大输入10个字符，汉字算两个"
+      :maxcharacter="10"
+    />
+  </view>
+</template>
+
+<script>
+export default {
+  data() {
+    return { v1: '', v2: '' };
+  },
+};
+</script>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.hint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #888888;
+}
+</style>

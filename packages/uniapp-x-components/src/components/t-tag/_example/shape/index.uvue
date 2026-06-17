@@ -1,0 +1,25 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-tag theme="primary" shape="square">方形</t-tag>
+      <t-tag theme="primary" shape="round">圆角</t-tag>
+      <t-tag theme="primary" shape="mark">书签</t-tag>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.demo-row > * {
+  margin-right: 12px;
+  margin-bottom: 12px;
+}
+</style>

@@ -1,0 +1,26 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <text class="demo-link">设计</text>
+      <t-divider layout="vertical" ></t-divider>
+      <text class="demo-link">开发</text>
+      <t-divider layout="vertical" ></t-divider>
+      <text class="demo-link">运营</text>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.demo-link {
+  font-size: 14px;
+  color: #0052d9;
+}
+</style>

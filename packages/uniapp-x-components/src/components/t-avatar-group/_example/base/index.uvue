@@ -1,0 +1,16 @@
+<template>
+  <view class="demo-block">
+    <t-avatar-group cascading="left-up">
+      <t-avatar image="https://tdesign.gtimg.com/site/avatar.jpg" ></t-avatar>
+      <t-avatar image="https://tdesign.gtimg.com/site/avatar.jpg" ></t-avatar>
+      <t-avatar image="https://tdesign.gtimg.com/site/avatar.jpg" ></t-avatar>
+      <t-avatar image="https://tdesign.gtimg.com/site/avatar.jpg" ></t-avatar>
+    </t-avatar-group>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+</style>

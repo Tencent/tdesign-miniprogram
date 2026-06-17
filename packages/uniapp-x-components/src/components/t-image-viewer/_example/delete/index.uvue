@@ -1,0 +1,37 @@
+<template>
+  <view class="demo-block">
+    <t-button theme="primary" @click="visible = true">支持删除</t-button>
+    <t-image-viewer
+      v-model:visible="visible"
+      :images="images"
+      :show-index="true"
+      :close-btn="true"
+      :delete-btn="true"
+      @delete="onDelete"
+    />
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const visible = ref(false);
+const images = ref<string[]>([
+  'https://tdesign.gtimg.com/site/avatar.jpg',
+  'https://tdesign.gtimg.com/site/swiper/swiper-1.png',
+  'https://tdesign.gtimg.com/site/swiper/swiper-2.png',
+]);
+
+function onDelete(index: number) {
+  const next = images.value.slice();
+  next.splice(index, 1);
+  images.value = next;
+  if (next.length === 0) visible.value = false;
+}
+</script>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+</style>

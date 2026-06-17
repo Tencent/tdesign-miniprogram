@@ -1,0 +1,43 @@
+<template>
+  <view class="demo-block">
+    <view class="demo-row">
+      <t-badge :count="6" shape="circle">
+        <view class="demo-tile" />
+      </t-badge>
+      <t-badge :count="6" shape="square">
+        <view class="demo-tile" />
+      </t-badge>
+      <t-badge :count="6" shape="bubble">
+        <view class="demo-tile" />
+      </t-badge>
+    </view>
+    <view class="demo-row">
+      <t-badge count="独立" ></t-badge>
+      <t-badge :count="99" color="#0052d9" ></t-badge>
+      <t-badge :count="0" show-zero color="#2ba471" ></t-badge>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-block {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+.demo-row > * {
+  margin-right: 32px;
+  margin-bottom: 12px;
+}
+.demo-tile {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  background-color: #e7e7e7;
+}
+</style>

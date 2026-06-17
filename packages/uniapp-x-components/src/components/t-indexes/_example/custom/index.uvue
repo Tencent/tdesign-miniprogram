@@ -1,0 +1,61 @@
+<template>
+  <view class="indexes-demo">
+    <t-indexes
+      :index-list="indexList"
+      :show-full-index="true"
+      :current="current"
+      @change="onChange"
+    >
+      <view
+        v-for="(group, idx) in groups"
+        :key="idx"
+        class="indexes-group"
+      >
+        <t-indexes-anchor :index="group.index" />
+        <view
+          v-for="(item, i) in group.list"
+          :key="i"
+          class="indexes-item"
+        >
+          <text>{{ item }}</text>
+        </view>
+      </view>
+    </t-indexes>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { ref } from 'vue';
+
+const indexList = ['热门', 'A', 'B', 'C'];
+const current = ref<string>('热门');
+
+const groups = [
+  { index: '热门', list: ['北京', '上海', '深圳', '广州'] },
+  { index: 'A', list: ['阿坝', '安庆'] },
+  { index: 'B', list: ['北京', '保定'] },
+  { index: 'C', list: ['成都', '长春'] },
+];
+
+function onChange(e: { index: string; current: string }) {
+  current.value = e.current;
+}
+</script>
+
+<style>
+.indexes-demo {
+  position: relative;
+  background-color: #ffffff;
+  min-height: 320px;
+}
+.indexes-group {
+  display: flex;
+  flex-direction: column;
+}
+.indexes-item {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.9);
+  border-bottom: 1px solid #f5f5f5;
+}
+</style>

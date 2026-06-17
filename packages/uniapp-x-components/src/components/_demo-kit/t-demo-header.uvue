@@ -1,0 +1,41 @@
+<template>
+  <view class="t-demo-header">
+    <text v-if="title.length > 0" class="t-demo-header__title">{{ title }}</text>
+    <text v-if="desc.length > 0" class="t-demo-header__desc">{{ desc }}</text>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * 内部 demo 页面顶部 header（与 @tdesign/uniapp 的 t-demo-header 视觉对齐）：
+ * 大号标题 + 小描述，纯文本布局，无背景。
+ *
+ * 仅用于 _example/ 调试页，不随插件发布。
+ */
+defineProps({
+  title: { type: String, default: '' },
+  desc: { type: String, default: '' },
+});
+</script>
+
+<style lang="less">
+.t-demo-header {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px 0;
+
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 32px;
+    color: rgba(0, 0, 0, 0.9);
+  }
+
+  &__desc {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 22px;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
+</style>

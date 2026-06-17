@@ -1,0 +1,38 @@
+<template>
+  <scroll-view class="demo-page" :scroll-y="true">
+    <view class="demo-header">
+      <text class="demo-title">Indexes 索引</text>
+      <text class="demo-desc">用于内容快速定位与浏览，常用于通讯录、城市选择等场景。</text>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">基础索引</text>
+      <base-demo></base-demo>
+    </view>
+
+    <view class="demo-section">
+      <text class="demo-section-title">自定义索引</text>
+      <custom-demo></custom-demo>
+    </view>
+  </scroll-view>
+</template>
+
+<script>
+import BaseDemo from './base/index.uvue';
+import CustomDemo from './custom/index.uvue';
+export default {
+  components: {
+    BaseDemo,
+    CustomDemo,
+  },
+};
+</script>
+
+<style>
+.demo-page { flex: 1; background-color: #f5f5f5; }
+.demo-header { padding: 24px 16px 16px; background-color: #ffffff; }
+.demo-title { font-size: 20px; font-weight: bold; color: #181818; margin-bottom: 8px; }
+.demo-desc { font-size: 14px; color: #888888; line-height: 22px; }
+.demo-section { margin-top: 12px; background-color: #ffffff; padding: 12px 16px; }
+.demo-section-title { font-size: 16px; font-weight: bold; color: #181818; padding: 4px 0 12px; }
+</style>

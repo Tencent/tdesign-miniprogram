@@ -1,0 +1,43 @@
+<template>
+  <view :class="rootClass" :style="rootStyle">
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Row - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp 的 row：
+ *  - gutter 通过 provide 暴露给子 t-col，由子 col 在 padding 中消费
+ *  - 自身用 negative margin 抵消首尾 padding（与原版 computed.js 行为一致）
+ */
+import { computed, provide } from 'vue';
+import { rowVariants } from './t-row.variants';
+
+const props = defineProps({
+  gutter: { type: Number, default: 0 },
+  customClass: { type: String, default: '' },
+});
+
+provide('t-row-gutter', props.gutter);
+
+const rootClass = computed<string>(() =>
+  rowVariants({
+    class: props.customClass,
+  }),
+);
+
+const rootStyle = computed<string>(() => {
+  const g = props.gutter;
+  if (g > 0) {
+    const half = (g / 2).toString();
+    return 'margin-left:-' + half + 'px;margin-right:-' + half + 'px';
+  }
+  return '';
+});
+</script>
+
+<style lang="less">
+@import './t-row.theme.less';
+</style>
