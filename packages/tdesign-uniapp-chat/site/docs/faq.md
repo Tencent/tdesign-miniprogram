@@ -18,6 +18,8 @@ spline: explain
 
 以上详细说明请参见 [TDesign Uniapp 常见问题](/uniapp/faq)，本文不再重复，只列出 chat 包特有的问题。
 
+## 常见问题
+
 ### 与 `@tdesign/uniapp` 的关系
 
 [`@tdesign/uniapp`](https://www.npmjs.com/package/@tdesign/uniapp) 与 [`@tdesign/uniapp-chat`](https://www.npmjs.com/package/@tdesign/uniapp-chat) 是两个独立发布的包，**`@tdesign/uniapp-chat` 依赖 `@tdesign/uniapp`**，使用前需要同时安装这两个包。
