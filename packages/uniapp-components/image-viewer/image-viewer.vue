@@ -226,9 +226,18 @@ export default {
       shouldLoadImage,
       init() {
         const { visible: dataVisible, images, initialIndex } = this;
-        if (dataVisible && images?.length) {
+        const init = () => {
           this.loadedImageIndexes = [];
+          this.currentScale = 1;
+          this.lastTapTime = 0;
+          this.imagesStyle = {};
+          this.swiperStyle = {};
+        };
+        if (dataVisible && images?.length) {
           this.currentSwiperIndex =  initialIndex >= images.length ? images.length - 1 : initialIndex;
+          init();
+        } else if (!dataVisible) {
+          init();
         }
       },
       calcMaskTop() {
