@@ -226,7 +226,8 @@ export default {
       shouldLoadImage,
       init() {
         const { visible: dataVisible, images, initialIndex } = this;
-        const init = () => {
+        // 重置缩放与图片样式，避免上次双指放大/缩放后的状态被保留
+        const reset = () => {
           this.loadedImageIndexes = [];
           this.currentScale = 1;
           this.lastTapTime = 0;
@@ -234,10 +235,10 @@ export default {
           this.swiperStyle = {};
         };
         if (dataVisible && images?.length) {
-          this.currentSwiperIndex =  initialIndex >= images.length ? images.length - 1 : initialIndex;
-          init();
+          this.currentSwiperIndex = initialIndex >= images.length ? images.length - 1 : initialIndex;
+          reset();
         } else if (!dataVisible) {
-          init();
+          reset();
         }
       },
       calcMaskTop() {
