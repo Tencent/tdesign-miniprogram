@@ -42,7 +42,7 @@ export function createApp() {
 `;
 
 export const MANIFEST_JSON_CONTENT = JSON.stringify({
-  name: 'TDesign UniApp',
+  name: 'TDesign Uniapp',
   appid: '',
   description: '',
   versionName: '1.0.0',
@@ -111,7 +111,7 @@ export const PAGES_JSON_CONTENT = JSON.stringify({
     {
       path: 'pages/index/index',
       style: {
-        navigationBarTitleText: 'TDesign UniApp',
+        navigationBarTitleText: 'TDesign Uniapp',
       },
     },
   ],

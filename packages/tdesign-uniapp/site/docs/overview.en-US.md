@@ -5,7 +5,7 @@ spline: explain
 ---
 
 
-<h3>Base<em class="tag">6</em></h3>
+<h3>Base<em class="tag">7</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/uniapp/components/button-en">
@@ -52,6 +52,14 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-link.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-link-dark.png" />
       <p class="name">Link</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/uniapp/components/typography-en">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-typography.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-typography-dark.png" />
+      <p class="name">Typography 排版</p>
     </a>
   </div>
 </section>

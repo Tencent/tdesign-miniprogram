@@ -110,11 +110,6 @@ export default {
         navCurrent: 0,
       };
     },
-    watch: {
-      navCurrent(t) {
-        this.updateNav(t);
-      },
-    },
 
     mounted() {
       this.navCurrent = this.current;
@@ -124,18 +119,6 @@ export default {
       isPrev,
       isNext,
       getImageClass,
-
-      updateNav(currentValue) {
-        if (this.navigation) return;
-        const $nav = this.getRelationNodes('./swiper-nav')?.[0];
-        if (!$nav) return;
-        const { direction, paginationPosition, list } = this;
-
-        this.current = currentValue;
-        this.total = list.length;
-        this.direction = direction;
-        this.paginationPosition = paginationPosition;
-      },
 
       onTap(e, dataset) {
         const { index } = dataset;

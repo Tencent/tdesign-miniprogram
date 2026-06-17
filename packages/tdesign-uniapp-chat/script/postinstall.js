@@ -17,7 +17,7 @@ function isUserInstall() {
 
 function printVue2PostCSSWarning() {
   console.warn('\n');
-  console.warn('⚠️  [TDesign UniApp Chat] 检测到当前使用 Vue2 环境');
+  console.warn('⚠️  [TDesign Uniapp Chat] 检测到当前使用 Vue2 环境');
   console.warn('   Vue2 项目需要在 postcss.config.js 中进行适配，否则样式可能无法正常工作。');
   console.warn('');
   console.warn('   📖 适配指南: https://juejin.cn/post/7602901195154030644');
@@ -73,14 +73,14 @@ function main() {
   const version = detectVueVersion();
 
   if (!version) {
-    console.warn('[TDesign UniApp Chat] Vue is not found. Please run "npm install vue" to install.');
+    console.warn('[TDesign Uniapp Chat] Vue is not found. Please run "npm install vue" to install.');
     return;
   }
 
   if (isVue2(version)) {
     printVue2PostCSSWarning();
   } else if (!isVue3(version)) {
-    console.warn(`[TDesign UniApp Chat] Vue version ${version} is not supported.`);
+    console.warn(`[TDesign Uniapp Chat] Vue version ${version} is not supported.`);
   }
 }
 

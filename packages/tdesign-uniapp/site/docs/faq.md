@@ -4,9 +4,9 @@ description: 看看有没有你想要的。
 spline: explain
 ---
 
-## 写在前面
+TDesign Uniapp 的实现原理，可参考[原理介绍](https://juejin.cn/post/7571650164844068898)。
 
-TDesign UniApp 的实现原理，可参考[原理介绍](https://juejin.cn/post/7571650164844068898)。
+## 常见问题
 
 ### 事件参数
 
