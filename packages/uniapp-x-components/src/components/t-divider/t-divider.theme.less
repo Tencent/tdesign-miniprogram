@@ -7,7 +7,7 @@
  */
 
 @td-divider-color: var(--td-divider-color, #e7e7e7);
-@td-divider-border-width: var(--td-divider-border-width, 1px);
+@td-divider-border-width: var(--td-divider-border-width, 0.5px);
 @td-divider-horizontal-margin: var(--td-divider-horizontal-margin, 12px);
 @td-divider-vertical-margin: var(--td-divider-vertical-margin, 8px);
 @td-divider-content-color: var(--td-divider-content-color, rgba(0, 0, 0, 0.4));
@@ -73,6 +73,11 @@
     color: @td-divider-content-color;
     font-size: @td-divider-content-font-size;
     line-height: 1.4;
+  }
+
+  &__text {
+    color: inherit;
+    font-size: inherit;
   }
 
   &--horizontal &__content:not(:empty) {

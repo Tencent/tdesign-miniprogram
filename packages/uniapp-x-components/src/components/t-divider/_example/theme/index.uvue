@@ -1,8 +1,9 @@
 <template>
-  <view class="demo-block">
-    <t-divider dashed content="虚线居中" ></t-divider>
-    <t-divider dashed align="left" content="虚线靠左" ></t-divider>
-    <t-divider dashed align="right" content="虚线靠右" ></t-divider>
+  <view>
+    <t-divider dashed></t-divider>
+    <t-divider dashed content="文字信息" align="left"></t-divider>
+    <t-divider dashed content="文字信息"></t-divider>
+    <t-divider dashed content="文字信息" align="right"></t-divider>
   </view>
 </template>
 

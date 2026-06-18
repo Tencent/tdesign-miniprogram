@@ -1,19 +1,48 @@
 <template>
-  <view class="demo-block">
-    <t-divider ></t-divider>
-    <text class="demo-text">默认是 24px 上下间距、1px 实线</text>
-    <t-divider content="TDesign" ></t-divider>
-    <text class="demo-text">居中文字</text>
+  <view>
+    <t-divider></t-divider>
+
+    <view class="divider-demo__title">
+      <text class="divider-demo__title-text">带文字水平分割线</text>
+    </view>
+
+    <t-divider content="文字信息" align="left"></t-divider>
+    <t-divider content="文字信息"></t-divider>
+    <t-divider content="文字信息" align="right"></t-divider>
+
+    <view class="divider-demo__title">
+      <text class="divider-demo__title-text">垂直分割线</text>
+    </view>
+
+    <view class="divider-wrapper">
+      <text class="divider-wrapper__text">文字信息</text>
+      <t-divider layout="vertical"></t-divider>
+      <text class="divider-wrapper__text">文字信息</text>
+      <t-divider layout="vertical"></t-divider>
+      <text class="divider-wrapper__text">文字信息</text>
+    </view>
   </view>
 </template>
 
 <style>
-.demo-block {
-  padding: 16px;
+.divider-demo__title {
+  padding: 16rpx 32rpx;
+  line-height: 40rpx;
 }
-.demo-text {
-  font-size: 13px;
-  color: #888888;
-  line-height: 22px;
+.divider-demo__title-text {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: var(--bg-color-demo-desc, var(--td-text-color-secondary, rgba(0, 0, 0, 0.6)));
+}
+.divider-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 32rpx;
+}
+.divider-wrapper__text {
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: var(--td-text-color-primary, rgba(0, 0, 0, 0.9));
 }
 </style>

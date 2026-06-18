@@ -3,7 +3,9 @@
     <view :class="lineClass" :style="lineStyle" />
     <view v-if="hasContent" :class="contentClass" :style="contentStyle">
       <slot>
-        <text v-if="props.content.length > 0">{{ props.content }}</text>
+        <text v-if="props.content.length > 0"
+          :class="textClass"
+        >{{ props.content }}</text>
       </slot>
     </view>
     <view :class="lineClass" :style="lineStyle" />
@@ -68,6 +70,7 @@ const lineStyle = computed(() => {
 });
 
 const contentClass = computed(() => 't-divider__content');
+const textClass = computed(() => 't-divider__text');
 
 const contentStyle = computed(() => {
   // 文字色默认跟随 lineColor，但用户可通过外部 customClass 覆盖
