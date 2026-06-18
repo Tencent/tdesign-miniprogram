@@ -1,22 +1,20 @@
 <template>
   <view :class="rootClass" @click="onClick">
-    <image
-      v-if="props.prefixIcon.length > 0"
-      class="t-link__prefix-icon"
-      :src="props.prefixIcon"
-      mode="aspectFit"
-    />
-    <view class="t-link__content">
-      <slot>
-        <text v-if="props.content.length > 0">{{ props.content }}</text>
+    <view v-if="hasPrefixIcon" class="t-link__prefix-icon">
+      <slot name="prefix-icon">
+        <t-icon v-if="props.prefixIcon.length > 0" :name="props.prefixIcon" :size="iconSize" />
       </slot>
     </view>
-    <image
-      v-if="props.suffixIcon.length > 0"
-      class="t-link__suffix-icon"
-      :src="props.suffixIcon"
-      mode="aspectFit"
-    />
+    <view class="t-link__content">
+      <slot>
+        <text v-if="props.content.length > 0" :style="contentTextStyle">{{ props.content }}</text>
+      </slot>
+    </view>
+    <view v-if="hasSuffixIcon" class="t-link__suffix-icon">
+      <slot name="suffix-icon">
+        <t-icon v-if="props.suffixIcon.length > 0" :name="props.suffixIcon" :size="iconSize" />
+      </slot>
+    </view>
   </view>
 </template>
 
@@ -26,10 +24,11 @@
  *
  * 行为契约对齐 uniapp-components/link：
  *  - theme/size/underline/disabled/hover 完整支持
- *  - prefixIcon/suffixIcon 仅支持 string（图片 URL）
+ *  - prefixIcon/suffixIcon 同时支持图标名（如 'link'、'jump'）与图片 URL（含 '/' 字符）
+ *  - 提供 prefix-icon / suffix-icon / default 具名插槽，便于业务自定义
  *  - 点击仅触发 click 事件，业务层根据 navigatorProps 自行处理路由
  */
-import { computed } from 'vue';
+import { computed, useSlots } from 'vue';
 import { linkVariants } from './t-link.variants';
 import type { LinkSize, LinkTheme } from './t-link.types';
 
@@ -48,6 +47,10 @@ const props = defineProps({
 
 const emit = defineEmits(['click']);
 
+const slots = useSlots();
+const hasPrefixIcon = computed(() => slots['prefix-icon'] != null || props.prefixIcon.length > 0);
+const hasSuffixIcon = computed(() => slots['suffix-icon'] != null || props.suffixIcon.length > 0);
+
 const rootClass = computed(() =>
   linkVariants({
     theme: props.theme,
@@ -58,6 +61,26 @@ const rootClass = computed(() =>
     class: props.customClass,
   }),
 );
+
+/**
+ * 图标显式 size：避免 uvue 后代选择器不生效导致图标无法跟随 link 尺寸变化。
+ * small=14 / medium=16 / large=18，与 link 文字字号视觉等比。
+ */
+const iconSize = computed((): string => {
+  if (props.size === 'small') return '14';
+  if (props.size === 'large') return '18';
+  return '16';
+});
+
+/**
+ * 文本显式 font-size 兜底：部分 uts 端 <text> 不会从父 <view> 继承 font-size，
+ * 直接在 <text> 上注入 font-size，与根节点 .t-link--{size} 双保险。
+ */
+const contentTextStyle = computed((): string => {
+  if (props.size === 'small') return 'font-size:12px;line-height:20px;';
+  if (props.size === 'large') return 'font-size:16px;line-height:24px;';
+  return 'font-size:14px;line-height:22px;';
+});
 
 function onClick(event: UniMouseEvent) {
   if (props.disabled) return;

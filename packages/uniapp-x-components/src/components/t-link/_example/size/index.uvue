@@ -1,25 +1,35 @@
 <template>
-  <view class="demo-block">
-    <view class="demo-row">
-      <t-link content="small" theme="primary" size="small" ></t-link>
-      <t-link content="medium" theme="primary" size="medium" ></t-link>
-      <t-link content="large" theme="primary" size="large" ></t-link>
-    </view>
+  <view class="link-example">
+    <t-link
+      size="small"
+      theme="primary"
+      content="S号链接"
+      suffix-icon="jump"
+      hover
+    />
+    <t-link
+      theme="primary"
+      content="M号链接"
+      suffix-icon="jump"
+      hover
+    />
+    <t-link
+      size="large"
+      theme="primary"
+      content="L号链接"
+      suffix-icon="jump"
+      hover
+    />
   </view>
 </template>
 
 <style>
-.demo-block {
-  padding: 16px;
-}
-.demo-row {
+.link-example {
   display: flex;
   flex-direction: row;
   align-items: center;
-  flex-wrap: wrap;
-}
-.demo-row > * {
-  margin-right: 12px;
-  margin-bottom: 12px;
+  justify-content: space-evenly;
+  height: 48px;
+  background-color: #ffffff;
 }
 </style>

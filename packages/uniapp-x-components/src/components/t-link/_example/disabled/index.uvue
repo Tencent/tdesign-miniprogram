@@ -1,0 +1,57 @@
+<template>
+  <view>
+    <view class="link-example">
+      <t-link
+        size="small"
+        theme="primary"
+        content="跳转链接"
+        suffix-icon="jump"
+        disabled
+        hover
+      />
+      <t-link
+        size="small"
+        content="跳转链接"
+        suffix-icon="jump"
+        disabled
+      />
+      <t-link
+        size="small"
+        theme="danger"
+        content="跳转链接"
+        suffix-icon="jump"
+        disabled
+      />
+    </view>
+    <view class="link-example">
+      <t-link
+        size="small"
+        theme="warning"
+        content="跳转链接"
+        suffix-icon="jump"
+        disabled
+      />
+      <t-link
+        size="small"
+        theme="success"
+        content="跳转链接"
+        suffix-icon="jump"
+        disabled
+      />
+    </view>
+  </view>
+</template>
+
+<style>
+.link-example {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 48px;
+  background-color: #ffffff;
+}
+.link-example:not(:last-child) {
+  margin-bottom: 16px;
+}
+</style>

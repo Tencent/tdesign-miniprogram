@@ -3,7 +3,7 @@
  */
 
 @td-link-default-color: var(--td-link-default-color, rgba(0, 0, 0, 0.9));
-@td-link-default-active-color: var(--td-link-default-active-color, #003cab);
+@td-link-default-active-color: var(--td-link-default-active-color, rgba(0, 0, 0, 0.6));
 @td-link-default-disabled-color: var(--td-link-default-disabled-color, rgba(0, 0, 0, 0.26));
 
 @td-link-primary-color: var(--td-link-primary-color, #0052d9);
@@ -22,18 +22,27 @@
 @td-link-danger-active-color: var(--td-link-danger-active-color, #a4231a);
 @td-link-danger-disabled-color: var(--td-link-danger-disabled-color, #f0a3a0);
 
+/* 尺寸字号变量（与 uniapp 版 link.less 中 small=28rpx/medium=32rpx/large=36rpx 视觉一致） */
+@td-link-small-font-size: var(--td-link-small-font-size, 12px);
+@td-link-medium-font-size: var(--td-link-medium-font-size, 14px);
+@td-link-large-font-size: var(--td-link-large-font-size, 16px);
+
 .t-link {
   position: relative;
   display: inline-flex;
+  flex-direction: row;
   align-items: center;
-  box-sizing: content-box;
+  /* 默认 medium 字号；尺寸 modifier 会覆盖它。font-size 继承到内部 <text> 与 t-icon */
+  font-size: @td-link-medium-font-size;
+  line-height: 22px;
 
   &__prefix-icon,
   &__suffix-icon {
-    width: 16px;
-    height: 16px;
+    display: inline-flex;
+    align-items: center;
   }
 
+  /* 当前后图标存在时，才与文字之间留间距 */
   &__prefix-icon + &__content {
     padding-left: 4px;
   }
@@ -41,18 +50,18 @@
     padding-left: 4px;
   }
 
-  /* 尺寸 */
+  /* 尺寸：直接在根节点设 font-size，通过继承传给 <text>；图标尺寸由 demo 通过 t-icon 的 size 属性控制 */
   &--small {
-    .t-link__content { font-size: 12px; }
-    .t-link__prefix-icon, .t-link__suffix-icon { width: 14px; height: 14px; }
+    font-size: @td-link-small-font-size;
+    line-height: 20px;
   }
   &--medium {
-    .t-link__content { font-size: 14px; }
-    .t-link__prefix-icon, .t-link__suffix-icon { width: 16px; height: 16px; }
+    font-size: @td-link-medium-font-size;
+    line-height: 22px;
   }
   &--large {
-    .t-link__content { font-size: 16px; }
-    .t-link__prefix-icon, .t-link__suffix-icon { width: 18px; height: 18px; }
+    font-size: @td-link-large-font-size;
+    line-height: 24px;
   }
 
   /* 主题 */
@@ -81,6 +90,7 @@
   &--danger:active { color: @td-link-danger-active-color; }
   &--danger.t-link--disabled { color: @td-link-danger-disabled-color; }
 
+  /* 下划线 */
   &--underline {
     .t-link__content {
       text-decoration: underline;
