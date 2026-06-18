@@ -18,6 +18,12 @@ value | String / Number / Array | - | `v-model:value` is supported。Typescript:
 default-value | String / Number / Array | - | uncontrolled property。Typescript: `string \| number \| Array<string \| number>` | N
 z-index | Number | 1 | \- | N
 
+### TabBar Events
+
+name | params | description
+-- | -- | --
+change | `(context: { value: string \| number })` | \-
+
 ### TabBar External Classes
 
 className | Description
