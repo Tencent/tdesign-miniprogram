@@ -21,6 +21,11 @@ export interface TdNavbarProps {
    */
   fixed?: boolean;
   /**
+   * 【实验】是否销毁导航栏，仅场景值为 1433、1434、1177、1175 时有效
+   * @default false
+   */
+  isHiddenInSpecialScene?: boolean;
+  /**
    * 是否展示左侧箭头
    * @default false
    */
