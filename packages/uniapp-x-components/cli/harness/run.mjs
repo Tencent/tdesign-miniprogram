@@ -18,9 +18,6 @@ import fs from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { config as loadEnv } from 'dotenv';
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-loadEnv({ path: path.join(__dirname, '.env') });
-
 import {
   COMPONENTS,
   RUNS_DIR,
@@ -35,6 +32,9 @@ import { startKnotProxy } from './lib/knot-proxy.mjs';
 import { makeClient, imageUrl, parseFilePatches } from './lib/llm.mjs';
 import { applyPatches } from './lib/patch-apply.mjs';
 import { uploadFile } from './lib/cos-upload.mjs';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+loadEnv({ path: path.join(__dirname, '.env') });
 
 // ----------- arg parse -----------
 function parseArgs(argv) {
@@ -52,7 +52,7 @@ function parseArgs(argv) {
 }
 
 function printHelp() {
-  console.log(`harness — TDesign UniApp X 视觉对齐 CLI
+  console.log(`harness — TDesign Uniapp X 视觉对齐 CLI
 
 Usage:
   node run.mjs audit <comp>
@@ -232,7 +232,7 @@ async function cmdFix(compName, { rounds = DEFAULT_MAX_ROUNDS, dryRun = false, m
       .replace(/{{TARGET_COUNT}}/g, String(audit.targetCount))
       .replace(/{{MISSING_PROPS_JSON}}/g, JSON.stringify(audit.missing, null, 2))
       .replace(/{{EXTRA_PROPS_JSON}}/g, JSON.stringify(audit.extra, null, 2))
-      .replace(/{{DIFF_RATIO}}/g, (worst.diff.diffRatio * 100).toFixed(2) + '%')
+      .replace(/{{DIFF_RATIO}}/g, `${(worst.diff.diffRatio * 100).toFixed(2)  }%`)
       .replace(/{{TARGET_TYPES}}/g, tryRead(path.join(targetDir, component.target.typesFile)))
       .replace(/{{TARGET_VARIANTS}}/g, tryRead(path.join(targetDir, component.target.variantsFile)))
       .replace(/{{TARGET_UVUE}}/g, tryRead(path.join(targetDir, component.target.uvueFile)))

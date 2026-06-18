@@ -1,6 +1,6 @@
 # @tdesign/uniapp-x-harness
 
-TDesign UniApp X 组件**视觉对齐** + **AI 自动修复**工具链。
+TDesign Uniapp X 组件**视觉对齐** + **AI 自动修复**工具链。
 
 ## 架构
 

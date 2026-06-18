@@ -6,7 +6,10 @@
       mode="aspectFit"
       class="t-icon__image"
     />
-    <!-- 字体图标：通过 ::before 注入 unicode；用 view 而非 text，确保伪元素在 uts/H5 端均可用 -->
+    <!-- 自定义字体图标：直接渲染 unicode 字符到 <text>，避开 uvue scoped 对伪元素与类选择器的隔离。
+         根节点叠加 .t-icon--glyph 修饰符放宽 font-family 强制，由外部 customStyle 注入，借 CSS 继承到此 <text>。 -->
+    <text v-else-if="props.glyphChar.length > 0" class="t-icon__glyph">{{ props.glyphChar }}</text>
+    <!-- 内置字体图标：通过 ::before 注入 unicode；用 view 而非 text，确保伪元素在 uts/H5 端均可用 -->
     <view v-else :class="glyphClass" />
   </view>
 </template>
@@ -26,6 +29,13 @@ const props = defineProps({
   prefix: { type: String, default: '' },
   size: { type: [String, Number], default: '' },
   customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  /**
+   * 自定义字体图标的 unicode 字符（如 '\ue64d'）。
+   * 传入后会直接渲染该字符到 <text>，绕开 uvue scoped 对类选择器/伪元素的隔离。
+   * 配合 `customStyle="font-family: 'xxx'"` 与外层 @font-face 即可使用任意字体图标。
+   */
+  glyphChar: { type: String, default: '' },
 });
 
 const emit = defineEmits(['click']);
@@ -48,12 +58,16 @@ const rootStyle = computed(() => {
   if (props.color.length > 0) {
     parts.push('color:' + props.color);
   }
+  if (props.customStyle.length > 0) {
+    parts.push(props.customStyle);
+  }
   return parts.join(';');
 });
 
 const rootClass = computed(() =>
   iconVariants({
     image: isImage.value,
+    glyph: props.glyphChar.length > 0,
     class: props.customClass,
   }),
 );

@@ -2,7 +2,7 @@
   "name": "@tdesign/uniapp-x",
   "version": "0.0.0",
   "private": true,
-  "description": "TDesign UniApp X 组件库（uts 兼容 + 原子化变体 + Shadcn 风格 registry）",
+  "description": "TDesign Uniapp X 组件库（uts 兼容 + 原子化变体 + Shadcn 风格 registry）",
   "type": "module",
   "main": "src/index.ts",
   "types": "src/index.ts",

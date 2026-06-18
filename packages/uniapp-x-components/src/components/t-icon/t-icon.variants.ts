@@ -12,5 +12,9 @@ export const iconVariants = cva('t-icon', {
     image: {
       true: 't-icon--image',
     },
+    glyph: {
+      // 自定义字体图标（glyphChar）模式：根节点放宽 font-family 强制，由外部 customStyle 决定
+      true: 't-icon--glyph',
+    },
   },
 });

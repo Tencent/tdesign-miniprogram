@@ -43,16 +43,20 @@
   line-height: 1;
   font-size: @td-icon-size;
   color: @td-icon-color;
-  /* stylelint-disable-next-line declaration-no-important */
-  font-family: 't' !important;
+  font-family: 't';
   -webkit-font-smoothing: antialiased;
 
   &--image {
     width: 1em;
     height: 1em;
     /* 图片模式不需要字体 */
-    /* stylelint-disable-next-line declaration-no-important */
-    font-family: inherit !important;
+    font-family: inherit;
+  }
+
+  // 自定义字体图标模式：放宽 font-family 强制，让外部 customStyle 注入的 font-family 生效，
+  // 并通过 CSS 继承传递到内部 <text class="t-icon__glyph">
+  &--glyph {
+    font-family: inherit;
   }
 
   &__image {
@@ -60,12 +64,21 @@
     height: 100%;
   }
 
+  // 自定义字体字形节点：不强制 font-family，由外部 customStyle 透传到根并继承到这里。
+  &__glyph {
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    font-size: inherit;
+    text-align: center;
+    -webkit-font-smoothing: antialiased;
+  }
+
   // 字典展开：.t-icon-check::before { content: '\e001' }
   each(@icons, {
     &-@{key} {
       /* 与父级 .t-icon 解耦：自身也设置字体，避免 uts 端字体不继承导致字形丢失 */
-      /* stylelint-disable-next-line declaration-no-important */
-      font-family: 't' !important;
+      font-family: 't';
       font-style: normal;
       line-height: 1;
       // 关键：显式继承父级 font-size。

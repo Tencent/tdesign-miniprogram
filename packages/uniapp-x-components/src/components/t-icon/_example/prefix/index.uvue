@@ -1,31 +1,88 @@
 <template>
-  <view class="demo-block">
-    <t-icon prefix="my-icon" name="alert" size="28" ></t-icon>
-    <t-icon prefix="my-icon" name="bell" size="28" ></t-icon>
-    <t-icon prefix="my-icon" name="cart" size="28" ></t-icon>
-  </view>
-  <view class="demo-tip">
-    <text class="demo-tip-text">需在外部全局注入对应字体（如 my-icon-* 类名）</text>
+  <view>
+    <view v-if="fontReady" class="demo-icon-list">
+      <view
+        v-for="(item, index) in prefixIcons"
+        :key="index"
+        class="demo-icon-card"
+      >
+        <t-icon
+          :glyph-char="item.char"
+          custom-style="font-family: 'my-icon'"
+          size="48rpx"
+        />
+        <text class="demo-icon-name">{{ item.name }}</text>
+      </view>
+    </view>
+    <view v-else class="demo-loading">
+      <text class="demo-loading-text">字体加载中…</text>
+    </view>
   </view>
 </template>
 
+<script setup lang="uts">
+import { ref, onMounted } from 'vue';
+
+type PrefixItem = {
+  name: string;
+  char: string;
+};
+
+const prefixIcons : PrefixItem[] = [
+  { name: 'a-0', char: '\ue64d' },
+  { name: 'a-1h', char: '\ue64e' },
+  { name: 'a-2h', char: '\ue64f' },
+  { name: 'a-3h', char: '\ue650' },
+];
+
+// 自定义字体（base64 woff2，与 uniapp 版 custom/index.vue 同源）
+const MY_ICON_FONT_SRC = "url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAPUAAsAAAAACGAAAAOFAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHFQGYACDGgqEPIQBATYCJAMUCwwABCAFhDcHQhtVBxHVmy/JfhzGjunMd9u7ZdNoJGL95+B5ckPfvzsIgZjoVHHRKe1qNlEdfUoAPFpzlgKhvLdV7dpf4MyYhRbmw1+ObxM9+wDSmJP2okWn0XkEe1sWSOAJJR4mYA3TSx7kD48ggEsZ9VFNm7ftSsjYQVPHk4DBlwpUtTJ21IhBONyBmagVHAR76U6DbMQCtUo9BzZk75cfVIgDCkvjn9NxeLOhPPTb+R31wtqF6PckEgQ4WwEWoIGih7mk93SgK7pIF6FxhwKGPDTZIOB3rK312yWKZ//hgaDQGBAbvzoIgIYwY8BvFxEI+O0JFPgdCDT4HVVfpN0CwAWWfQ68w1yWUQUvFRUUEJMZ0zBmzKILZ26suXbqHGrh2ZNXV18/fV68hafWnInRi06vPskQ3VV6eKqH9vB2nPDWbNu2C1xZtH31VhgiPfbE7kmo2ba78+R9oy6cueOtuXVuHwt3+kNEdfVYNWfEmhMii067q3cK6kYqetu26F2w6GjUtlO79uXprVE7b7r38YsHl62wxmwPBrvdDvyl7A2Os2v65berseOS461n/fL6PbPim4dlpFSGJIdmpmSGMm3NvmaVrZtVNPePPcwtGCU9i0KcX3dKyKGCTUFnY9aHrCNjTeN5PzcGxQd6498Eh4WH5zXPjbbvdIxJHLz4dnx4QLNlC4Y/nd98/MZvwLSjqfOTGoRGhEX8dfOa50XbtyfEJHVbM+JAnW7F8SnLQr7+lxVUpFRN6PF4ZnpY62/ZybnNs8Ki0qIimiWf7HroYciPBM85E3+uGqdmAKjPamomzPiEAAJN2zkJA0Lr/nY8A8DHwLJq4DAszzgoYIrfbuy7UNRYGTKaoc7Ih2BddD9goQJcXKDWj0Tw8RhT5OIkCKahZFAEEAuNIYUyXAYsPHJgYyiHSyHV+z0iGYhGTCCQwxQAwWEXFCEcgsbhAmW4G7CI4QFsHF7AxXn+ZQ85QYZDxpFxgekHag6eQj1npVcULztmKY8ST8xFwTh0dVvPXdBjXrOmvEXPTEA5ODhvvQ+tDRBz0DhzLZnjvmlo6Cn1HNzqkHFkXIDpB6g5eEos3Fx+RfGyYx5QZ74nQl3hclgPdNS0E9TF4Ce7XrS+vEUPMwFkq4MDzlf70AbpAMThaRpnrpEbknFPg8RoqaG+1uTekpz14a+2RIkWI5bYbAdV7S6ydTKm+/ggVysAAAA=') format('woff2')";
+
+const fontReady = ref(false);
+
+onMounted(() => {
+  // 关键：uvue 中 <style> 的 @font-face 受组件作用域隔离影响，子组件 <text> 看不到。
+  // 改用 uni.loadFontFace 全局注册字体，跨组件可用。
+  uni.loadFontFace({
+    family: 'my-icon',
+    source: MY_ICON_FONT_SRC,
+    global: true,
+    success: () => {
+      fontReady.value = true;
+    },
+    fail: () => {
+      // 即使失败也展示，避免一直白屏
+      fontReady.value = true;
+    },
+  });
+});
+</script>
+
 <style>
-.demo-block {
+.demo-icon-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  padding: 16rpx 32rpx;
+}
+.demo-icon-card {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  padding: 16px;
 }
-.demo-block > * {
-  margin-right: 16px;
-  margin-bottom: 12px;
+.demo-icon-name {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  line-height: 32rpx;
+  color: #999999;
+  text-align: center;
 }
-.demo-tip {
-  padding: 0 16px 12px;
+.demo-loading {
+  padding: 32rpx;
 }
-.demo-tip-text {
-  font-size: 12px;
-  color: #888888;
+.demo-loading-text {
+  font-size: 24rpx;
+  color: #999999;
 }
 </style>

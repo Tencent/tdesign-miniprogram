@@ -2,7 +2,7 @@
   "name": "@tdesign/uniapp-x-harness",
   "version": "0.0.0",
   "private": true,
-  "description": "TDesign UniApp X 组件视觉对齐 + AI 自动修复工具链（基于 Playwright + Knot LLM 代理）",
+  "description": "TDesign Uniapp X 组件视觉对齐 + AI 自动修复工具链（基于 Playwright + Knot LLM 代理）",
   "type": "module",
   "main": "run.mjs",
   "bin": {

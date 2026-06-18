@@ -1,23 +1,39 @@
 <template>
-  <view class="demo-block">
-    <t-icon name="check" ></t-icon>
-    <t-icon name="close" ></t-icon>
-    <t-icon name="info-circle" ></t-icon>
-    <t-icon name="error-circle" ></t-icon>
-    <t-icon name="help-circle" ></t-icon>
+  <view class="demo-icon-list">
+    <view
+      v-for="(item, index) in icons"
+      :key="index"
+      class="demo-icon-card"
+    >
+      <t-icon :name="item" size="48rpx" />
+      <text class="demo-icon-name">{{ item }}</text>
+    </view>
   </view>
 </template>
 
+<script setup lang="uts">
+import { icons } from '../data.uts';
+</script>
+
 <style>
-.demo-block {
+.demo-icon-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
-  padding: 16px;
+  padding: 16rpx 32rpx;
 }
-.demo-block > * {
-  margin-right: 16px;
-  margin-bottom: 12px;
+.demo-icon-card {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.demo-icon-name {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  line-height: 32rpx;
+  color: #999999;
+  text-align: center;
 }
 </style>

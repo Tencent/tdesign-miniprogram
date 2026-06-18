@@ -1,6 +1,6 @@
 # @tdesign/uniapp-x
 
-> TDesign UniApp X 组件库 — uts 兼容 + 原子化变体（cva） + Shadcn 风格 registry。
+> TDesign Uniapp X 组件库 — uts 兼容 + 原子化变体（cva） + Shadcn 风格 registry。
 
 ## 定位
 

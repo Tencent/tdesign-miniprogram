@@ -1,30 +1,33 @@
 <template>
-  <view class="demo-block">
-    <t-icon
-      name="https://tdesign.gtimg.com/site/avatar.jpg"
-      size="48"
-    />
-    <t-icon
-      name="https://tdesign.gtimg.com/site/avatar.jpg"
-      size="64"
-    />
-    <t-icon
-      name="https://tdesign.gtimg.com/site/avatar.jpg"
-      size="80"
-    />
+  <view class="demo-icon-list">
+    <view
+      v-for="(item, index) in imageIconList"
+      :key="index"
+      class="demo-icon-card"
+    >
+      <t-icon :name="item" size="48rpx" />
+    </view>
   </view>
 </template>
 
+<script setup lang="uts">
+const imageIconList : string[] = [
+  'https://tdesign.gtimg.com/mobile/demos/icon1.png',
+  'https://tdesign.gtimg.com/mobile/demos/icon2.png',
+];
+</script>
+
 <style>
-.demo-block {
+.demo-icon-list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
-  padding: 16px;
+  padding: 16rpx 32rpx;
 }
-.demo-block > * {
-  margin-right: 16px;
-  margin-bottom: 12px;
+.demo-icon-card {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
