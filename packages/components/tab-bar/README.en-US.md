@@ -23,7 +23,6 @@ z-index | Number | 1 | `1.12.1` | N
 
 name | params | description
 -- | -- | --
-change | `(value: string \| number)` | \-
 change | `(detail: { value: string \| number })` | \-
 
 ### TabBar External Classes

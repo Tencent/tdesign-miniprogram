@@ -80,7 +80,6 @@ z-index | Number | 1 | `1.12.1`。标签栏层级 | N
 
 名称 | 参数 | 描述
 -- | -- | --
-change | `(value: string \| number)` | 选中标签切换时触发
 change | `(detail: { value: string \| number })` | 选中标签切换时触发
 
 ### TabBar External Classes
