@@ -12,16 +12,17 @@
  *
  * 配置文件：包根的 `.sync-targets.json`（gitignored，每台机器自己写）
  * {
- *   "targets": [
+ *   \"targets\": [
  *     {
- *       "name": "demo-uniapp-x",
- *       "root": "/Users/xxx/HBuilderProjects/tdesign-uniapp-x-demo",
- *       "uniModuleId": "tdesign-uniapp-x",   // uni_modules 子目录名 / 插件 id
- *       "rewriteImports": true                // 可选，默认 true：去掉 import 中的 .ts 扩展
+ *       \"name\": \"demo-uniapp-x\",
+ *       // root 支持绝对路径，也支持相对路径（以 tdesign-miniprogram 仓库根为基准）。
+ *       // 例如 \"../tdesign-uniapp-x-starter-hx\" 表示与本仓库同父目录下的 starter 项目。
+ *       \"root\": \"../tdesign-uniapp-x-starter-hx\",
+ *       \"uniModuleId\": \"tdesign-uniapp-x\",   // uni_modules 子目录名 / 插件 id
+ *       \"rewriteImports\": true                // 可选，默认 true：去掉 import 中的 .ts 扩展
  *     }
  *   ]
- * }
- *
+ * } *
  * 同步规则：组件本体走 uni_modules（可被插件市场发布）；演示页 _example/ 走 pages-more（仅本地调试，不被插件包扫描）：
  *   src/components/t-<name>/t-<name>.uvue        → <root>/uni_modules/<id>/components/t-<name>/t-<name>.uvue
  *   src/components/t-<name>/t-<name>.theme.less  → <root>/uni_modules/<id>/components/t-<name>/t-<name>.theme.less
@@ -47,6 +48,9 @@ import { fileURLToPath } from 'node:url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PKG_ROOT = resolve(__dirname, '..');
+// monorepo 仓库根（tdesign-miniprogram/），相对路径的 target.root 以此为基准解析，
+// 这样配置 "../tdesign-uniapp-x-starter-hx" 即指向与本仓库同父目录的 starter 项目。
+const REPO_ROOT = resolve(PKG_ROOT, '..', '..');
 const SRC = join(PKG_ROOT, 'src');
 const COMPONENTS_DIR = join(SRC, 'components');
 const UTILS_DIR = join(SRC, 'utils');
@@ -439,6 +443,10 @@ async function loadConfig() {
     }
     for (const t of cfg.targets) {
       if (!t.root) throw new Error('每个 target 都必须填 root');
+      // 支持相对路径：以 monorepo 仓库根（REPO_ROOT）为基准，
+      // 这样 "../tdesign-uniapp-x-starter-hx" 即指向与本仓库同级目录的 starter。
+      // 绝对路径保持原样。
+      t.root = resolve(REPO_ROOT, t.root);
       const stat = await fs.stat(t.root).catch(() => null);
       if (!stat?.isDirectory()) throw new Error(`目标路径不存在或不是目录：${t.root}`);
     }
@@ -451,7 +459,9 @@ async function loadConfig() {
         targets: [
           {
             name: 'my-uniapp-x-demo',
-            root: '/绝对路径/到/HBuilder/项目',
+            // root 支持绝对路径，也支持相对路径（以 tdesign-miniprogram 仓库根为基准）。
+            // 例如 "../tdesign-uniapp-x-starter-hx" 表示与本仓库同父目录的 starter 项目。
+            root: '../tdesign-uniapp-x-starter-hx',
             uniModuleId: 'tdesign-uniapp-x',
           },
         ],

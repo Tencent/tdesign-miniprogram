@@ -1,0 +1,11 @@
+{
+  "$schema": "./.sync-targets.schema.json",
+  "targets": [
+    {
+      "name": "demo-uniapp-x",
+      "root": "../tdesign-uniapp-x-starter-hx",
+      "uniModuleId": "tdesign-uniapp-x",
+      "rewriteImports": true
+    }
+  ]
+}
