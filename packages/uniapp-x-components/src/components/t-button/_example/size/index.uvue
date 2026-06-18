@@ -1,22 +1,18 @@
 <template>
-  <view class="demo-block">
-    <t-button theme="primary" size="large">大尺寸</t-button>
-    <t-button theme="primary" size="medium">中尺寸</t-button>
-    <t-button theme="primary" size="small">小尺寸</t-button>
-    <t-button theme="primary" size="extra-small">超小尺寸</t-button>
+  <view class="demo-size">
+    <t-button theme="primary" size="large">按钮48</t-button>
+    <t-button theme="primary" size="medium">按钮40</t-button>
+    <t-button theme="primary" size="small">按钮32</t-button>
+    <t-button theme="primary" size="extra-small">按钮28</t-button>
   </view>
 </template>
 
 <style>
-.demo-block {
+.demo-size {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  padding: 16px;
-}
-.demo-block > * {
-  margin-right: 12px;
-  margin-bottom: 12px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
 }
 </style>

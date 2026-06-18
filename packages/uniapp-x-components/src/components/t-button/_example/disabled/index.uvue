@@ -1,0 +1,32 @@
+<template>
+  <view class="demo-disabled">
+    <view class="demo-row">
+      <view class="demo-cell"><t-button theme="primary" size="large" disabled block>填充按钮</t-button></view>
+      <view class="demo-cell"><t-button theme="default" variant="base" size="large" disabled block>填充按钮</t-button></view>
+      <view class="demo-cell"><t-button theme="default" size="large" disabled block>填充按钮</t-button></view>
+    </view>
+    <view class="demo-row">
+      <view class="demo-cell"><t-button theme="primary" variant="outline" size="large" disabled block>描边按钮</t-button></view>
+      <view class="demo-cell"><t-button theme="primary" variant="dashed" size="large" disabled block>虚框按钮</t-button></view>
+      <view class="demo-cell"><t-button theme="primary" variant="text" size="large" disabled block>文字按钮</t-button></view>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-disabled {
+  padding: 16px;
+}
+.demo-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 12px;
+}
+.demo-cell {
+  flex: 1;
+  margin-right: 12px;
+}
+.demo-cell:last-child {
+  margin-right: 0;
+}
+</style>

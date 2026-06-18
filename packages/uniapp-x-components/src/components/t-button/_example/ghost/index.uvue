@@ -1,21 +1,28 @@
 <template>
-  <view class="demo-block-dark">
-    <t-button theme="primary" ghost>主要幽灵</t-button>
-    <t-button theme="default" ghost>默认幽灵</t-button>
-    <t-button theme="danger" ghost>危险幽灵</t-button>
+  <view class="demo-ghost">
+    <view class="demo-cell">
+      <t-button theme="primary" ghost size="large">幽灵按钮</t-button>
+    </view>
+    <view class="demo-cell">
+      <t-button theme="danger" ghost size="large">幽灵按钮</t-button>
+    </view>
+    <view class="demo-cell demo-cell-last">
+      <t-button ghost size="large">幽灵按钮</t-button>
+    </view>
   </view>
 </template>
 
 <style>
-.demo-block-dark {
+.demo-ghost {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
   padding: 16px;
-  background-color: #333333;
+  background-color: #181818;
 }
-.demo-block-dark > * {
-  margin-right: 12px;
-  margin-bottom: 12px;
+.demo-cell {
+  margin-right: 16px;
+}
+.demo-cell-last {
+  margin-right: 0;
 }
 </style>

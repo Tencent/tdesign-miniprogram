@@ -1,21 +1,39 @@
 <template>
-  <view class="demo-block">
-    <t-button theme="primary" shape="rectangle">矩形</t-button>
-    <t-button theme="primary" shape="square">方形</t-button>
-    <t-button theme="primary" shape="round">圆角</t-button>
-    <t-button theme="primary" shape="circle">圆形</t-button>
+  <view class="demo-shape">
+    <view class="demo-cell">
+      <t-button theme="primary" size="large">填充按钮</t-button>
+    </view>
+    <view class="demo-cell">
+      <t-button theme="primary" size="large" shape="square">
+        <template #icon>
+          <t-icon name="search" size="20" color="#ffffff" />
+        </template>
+      </t-button>
+    </view>
+    <view class="demo-cell">
+      <t-button theme="primary" size="large" shape="round">填充按钮</t-button>
+    </view>
+    <view class="demo-cell demo-cell-last">
+      <t-button theme="primary" size="large" shape="circle">
+        <template #icon>
+          <t-icon name="search" size="20" color="#ffffff" />
+        </template>
+      </t-button>
+    </view>
   </view>
 </template>
 
 <style>
-.demo-block {
+.demo-shape {
   display: flex;
   flex-direction: row;
-  flex-wrap: wrap;
+  align-items: center;
   padding: 16px;
 }
-.demo-block > * {
-  margin-right: 12px;
-  margin-bottom: 12px;
+.demo-cell {
+  margin-right: 16px;
+}
+.demo-cell-last {
+  margin-right: 0;
 }
 </style>

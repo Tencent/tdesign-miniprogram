@@ -42,14 +42,14 @@ defineProps({
       font-weight: 700;
       font-size: 18px;
       line-height: 26px;
-      color: rgba(0, 0, 0, 0.9);
+      color: var(--bg-color-demo-title);
     }
 
     &-desc {
       margin-top: 8px;
       font-size: 14px;
       line-height: 22px;
-      color: rgba(0, 0, 0, 0.6);
+      color: var(--bg-color-demo-desc);
     }
   }
 
@@ -57,7 +57,7 @@ defineProps({
     margin-top: 16px;
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    // background-color: #fff;
   }
 }
 </style>

@@ -1,179 +1,462 @@
 /**
- * Button 基础样式（极简版，PoC-A 阶段）
- * 等接入 TDesign 主题变量后再切换到 var(--td-*)
+ * t-button 样式（与 @tdesign/uniapp 端 button.less 结构对齐 / uvue 子集实现）
+ *
+ * 命名约定（与 uniapp 端一致）：
+ *   .t-button                               // 基类
+ *   .t-button--size-{extra-small|small|medium|large}
+ *   .t-button--{default|primary|danger|warning|success}     // theme
+ *   .t-button--{outline|dashed|text}        // variant（base 不输出 class）
+ *   .t-button--{rectangle|round|square|circle}              // shape
+ *   .t-button--{block|disabled|loading|ghost|active}        // 状态修饰
+ *
+ * uvue 端的差异 / 不支持特性（与 uniapp 版的差距已在此文件内一次性消化）：
+ *   ❌ 不支持 ::after 伪元素 → uniapp 双层边框方案改为单层 border 模拟
+ *   ❌ 不支持 :not / :empty / 兄弟选择器 + ~ → 间距改用 gap
+ *   ❌ 不支持 inline-flex / vertical-align / cursor / outline / appearance
+ *   ❌ 不支持 transition: all → 仅声明明确属性
+ *   ⚠️  flex 默认 flex-direction: column，必须显式声明 row
+ *   ⚠️  :hover 在小程序/原生端不可用，hover 态由 hover-class="t-button--active" 驱动
+ *
+ * 设计变量与 uniapp 端 button.less 同名（保留 @td- 前缀），便于交叉对照。
  */
 
-@td-button-border-width: var(--td-button-border-width, 2px);
-@td-button-border-radius: var(--td-button-border-radius, 6px);
-@td-button-font-weight: var(--td-button-font-weight, 600);
-@td-button-extra-small-font-size: var(--td-button-extra-small-font-size, 14px);
-@td-button-small-font-size: var(--td-button-small-font-size, 14px);
-@td-button-medium-font-size: var(--td-button-medium-font-size, 16px);
-@td-button-large-font-size: var(--td-button-large-font-size, 16px);
-@td-button-extra-small-height: var(--td-button-extra-small-height, 28px);
-@td-button-small-height: var(--td-button-small-height, 32px);
-@td-button-medium-height: var(--td-button-medium-height, 40px);
-@td-button-large-height: var(--td-button-large-height, 48px);
-@td-button-icon-spacer: var(--td-button-icon-spacer, 8px);
-@td-button-icon-border-radius: var(--td-button-icon-border-radius, 4px);
-@td-button-extra-small-padding-horizontal: var(--td-button-extra-small-padding-horizontal, 8px);
-@td-button-small-padding-horizontal: var(--td-button-small-padding-horizontal, 12px);
-@td-button-medium-padding-horizontal: var(--td-button-medium-padding-horizontal, 16px);
-@td-button-large-padding-horizontal: var(--td-button-large-padding-horizontal, 20px);
-@td-button-extra-small-icon-size: var(--td-button-extra-small-icon-size, 18px);
-@td-button-small-icon-size: var(--td-button-small-icon-size, 18px);
-@td-button-medium-icon-size: var(--td-button-medium-icon-size, 20px);
-@td-button-large-icon-size: var(--td-button-large-icon-size, 24px);
-@td-button-default-color: var(--td-button-default-color, rgba(0, 0, 0, 0.9));
-@td-button-default-bg-color: var(--td-button-default-bg-color, #e7e7e7);
-@td-button-default-border-color: var(--td-button-default-border-color, #e7e7e7);
-@td-button-default-disabled-color: var(--td-button-default-disabled-color, rgba(0, 0, 0, 0.26));
-@td-button-default-disabled-bg: var(--td-button-default-disabled-bg, #eeeeee);
-@td-button-default-disabled-border-color: var(--td-button-default-disabled-border-color, #eeeeee);
-@td-button-primary-color: var(--td-button-primary-color, rgba(255, 255, 255, 1));
-@td-button-primary-border-color: var(--td-button-primary-border-color, #0052d9);
-@td-button-primary-bg-color: var(--td-button-primary-bg-color, #0052d9);
-@td-button-primary-disabled-color: var(--td-button-primary-disabled-color, rgba(255, 255, 255, 1));
-@td-button-primary-disabled-bg: var(--td-button-primary-disabled-bg, #b5c7ff);
-@td-button-primary-disabled-border-color: var(--td-button-primary-disabled-border-color, #b5c7ff);
-@td-button-light-color: var(--td-button-light-color, #0052d9);
-@td-button-light-border-color: var(--td-button-light-border-color, #f2f3ff);
-@td-button-light-bg-color: var(--td-button-light-bg-color, #f2f3ff);
-@td-button-light-disabled-color: var(--td-button-light-disabled-color, #b5c7ff);
-@td-button-light-disabled-bg: var(--td-button-light-disabled-bg, #f2f3ff);
-@td-button-light-disabled-border-color: var(--td-button-light-disabled-border-color, #f2f3ff);
-@td-button-danger-color: var(--td-button-danger-color, rgba(255, 255, 255, 1));
-@td-button-danger-border-color: var(--td-button-danger-border-color, #d54941);
-@td-button-danger-bg-color: var(--td-button-danger-bg-color, #d54941);
-@td-button-danger-disabled-color: var(--td-button-danger-disabled-color, rgba(255, 255, 255, 1));
-@td-button-danger-disabled-bg: var(--td-button-danger-disabled-bg, #ffb9b0);
-@td-button-danger-disabled-border-color: var(--td-button-danger-disabled-border-color, #ffb9b0);
-@td-button-default-outline-color: var(--td-button-default-outline-color, rgba(0, 0, 0, 0.9));
-@td-button-default-outline-border-color: var(--td-button-default-outline-border-color, #dcdcdc);
-@td-button-default-outline-disabled-color: var(--td-button-default-outline-disabled-color, #dcdcdc);
-@td-button-primary-outline-color: var(--td-button-primary-outline-color, #0052d9);
-@td-button-primary-outline-border-color: var(--td-button-primary-outline-border-color, #0052d9);
-@td-button-primary-outline-disabled-color: var(--td-button-primary-outline-disabled-color, #b5c7ff);
-@td-button-danger-outline-color: var(--td-button-danger-outline-color, #d54941);
-@td-button-danger-outline-border-color: var(--td-button-danger-outline-border-color, #d54941);
-@td-button-danger-outline-disabled-color: var(--td-button-danger-outline-disabled-color, #ffb9b0);
-@td-button-light-outline-color: var(--td-button-light-outline-color, #0052d9);
-@td-button-light-outline-border-color: var(--td-button-light-outline-border-color, #0052d9);
-@td-button-light-outline-bg-color: var(--td-button-light-outline-bg-color, #f2f3ff);
-@td-button-light-outline-disabled-color: var(--td-button-light-outline-disabled-color, #b5c7ff);
-@td-button-primary-dashed-color: var(--td-button-primary-dashed-color, #0052d9);
-@td-button-primary-dashed-border-color: var(--td-button-primary-dashed-border-color, #0052d9);
-@td-button-primary-dashed-disabled-color: var(--td-button-primary-dashed-disabled-color, #b5c7ff);
-@td-button-danger-dashed-color: var(--td-button-danger-dashed-color, #d54941);
-@td-button-danger-dashed-border-color: var(--td-button-danger-dashed-border-color, #d54941);
-@td-button-danger-dashed-disabled-color: var(--td-button-danger-dashed-disabled-color, rgba(255, 255, 255, 1));
-@td-button-primary-text-color: var(--td-button-primary-text-color, #0052d9);
-@td-button-primary-text-disabled-color: var(--td-button-primary-text-disabled-color, #b5c7ff);
-@td-button-danger-text-color: var(--td-button-danger-text-color, #d54941);
-@td-button-danger-text-disabled-color: var(--td-button-danger-text-disabled-color, rgba(255, 255, 255, 1));
-@td-button-light-text-color: var(--td-button-light-text-color, #0052d9);
-@td-button-ghost-color: var(--td-button-ghost-color, rgba(255, 255, 255, 1));
-@td-button-ghost-border-color: var(--td-button-ghost-border-color, rgba(255, 255, 255, 1));
-@td-button-ghost-disabled-color: var(--td-button-ghost-disabled-color, rgba(255, 255, 255, 0.22));
-@td-button-ghost-hover-color: var(--td-button-ghost-hover-color, rgba(255, 255, 255, 0.55));
-@td-button-ghost-primary-color: var(--td-button-ghost-primary-color, #0052d9);
-@td-button-ghost-primary-border-color: var(--td-button-ghost-primary-border-color, #0052d9);
-@td-button-ghost-primary-hover-color: var(--td-button-ghost-primary-hover-color, #003cab);
-@td-button-ghost-danger-color: var(--td-button-ghost-danger-color, #d54941);
-@td-button-ghost-danger-border-color: var(--td-button-ghost-danger-border-color, #d54941);
-@td-button-ghost-danger-hover-color: var(--td-button-ghost-danger-hover-color, #ad352f);
-@td-button-default-active-bg-color: var(--td-button-default-active-bg-color, #a6a6a6);
-@td-button-default-active-border-color: var(--td-button-default-active-border-color, #a6a6a6);
-@td-button-light-active-bg-color: var(--td-button-light-active-bg-color, #d9e1ff);
-@td-button-light-active-border-color: var(--td-button-light-active-border-color, #d9e1ff);
-@td-button-primary-active-bg-color: var(--td-button-primary-active-bg-color, #003cab);
-@td-button-primary-active-border-color: var(--td-button-primary-active-border-color, #003cab);
-@td-button-danger-active-bg-color: var(--td-button-danger-active-bg-color, #ad352f);
-@td-button-danger-active-border-color: var(--td-button-danger-active-border-color, #ad352f);
-@td-button-default-outline-active-bg-color: var(--td-button-default-outline-active-bg-color, #e7e7e7);
-@td-button-default-outline-active-border-color: var(--td-button-default-outline-active-border-color, #dcdcdc);
-@td-button-primary-outline-active-bg-color: var(--td-button-primary-outline-active-bg-color, #e7e7e7);
-@td-button-primary-outline-active-border-color: var(--td-button-primary-outline-active-border-color, #003cab);
-@td-button-danger-outline-active-bg-color: var(--td-button-danger-outline-active-bg-color, #e7e7e7);
-@td-button-danger-outline-active-border-color: var(--td-button-danger-outline-active-border-color, #ad352f);
-@td-button-light-outline-active-bg-color: var(--td-button-light-outline-active-bg-color, #d9e1ff);
-@td-button-light-outline-active-border-color: var(--td-button-light-outline-active-border-color, #003cab);
-@td-button-default-text-active-bg-color: var(--td-button-default-text-active-bg-color, #e7e7e7);
-@td-button-primary-text-active-bg-color: var(--td-button-primary-text-active-bg-color, #e7e7e7);
-@td-button-danger-text-active-bg-color: var(--td-button-danger-text-active-bg-color, #e7e7e7);
-@td-button-light-text-active-bg-color: var(--td-button-light-text-active-bg-color, #e7e7e7);
+// ============== 设计变量 ==============
+// 通用
+@td-button-border-width: 1px;
+@td-button-border-radius: 6px;
+@td-button-font-weight: 600;
+
+// 尺寸阶梯（与 uniapp 端 56/64/80/96 rpx ↔ 28/32/40/48 px 对齐）
+@td-button-extra-small-height: 28px;
+@td-button-small-height: 32px;
+@td-button-medium-height: 40px;
+@td-button-large-height: 48px;
+
+@td-button-extra-small-padding-horizontal: 8px;
+@td-button-small-padding-horizontal: 12px;
+@td-button-medium-padding-horizontal: 16px;
+@td-button-large-padding-horizontal: 20px;
+
+@td-button-extra-small-font-size: 14px;
+@td-button-small-font-size: 14px;
+@td-button-medium-font-size: 16px;
+@td-button-large-font-size: 16px;
+
+@td-button-extra-small-icon-size: 18px;
+@td-button-small-icon-size: 18px;
+@td-button-medium-icon-size: 20px;
+@td-button-large-icon-size: 24px;
+
+@td-button-icon-spacer: 8px;
+@td-button-icon-border-radius: 4px;
+
+// theme 颜色（filled / 默认变体）
+@td-button-default-color: rgba(0, 0, 0, 0.9);
+@td-button-default-bg-color: #e7e7e7;
+@td-button-default-border-color: #e7e7e7;
+@td-button-default-active-bg-color: #a6a6a6;
+@td-button-default-active-border-color: #a6a6a6;
+@td-button-default-disabled-color: rgba(0, 0, 0, 0.26);
+@td-button-default-disabled-bg: #eeeeee;
+@td-button-default-disabled-border-color: #eeeeee;
+
+@td-button-primary-color: #ffffff;
+@td-button-primary-bg-color: #0052d9;
+@td-button-primary-border-color: #0052d9;
+@td-button-primary-active-bg-color: #003cab;
+@td-button-primary-active-border-color: #003cab;
+@td-button-primary-disabled-color: #ffffff;
+@td-button-primary-disabled-bg: #b5c7ff;
+@td-button-primary-disabled-border-color: #b5c7ff;
+
+@td-button-danger-color: #ffffff;
+@td-button-danger-bg-color: #d54941;
+@td-button-danger-border-color: #d54941;
+@td-button-danger-active-bg-color: #ad352f;
+@td-button-danger-active-border-color: #ad352f;
+@td-button-danger-disabled-color: #ffffff;
+@td-button-danger-disabled-bg: #ffb9b0;
+@td-button-danger-disabled-border-color: #ffb9b0;
+
+@td-button-warning-color: #ffffff;
+@td-button-warning-bg-color: #ed7b2f;
+@td-button-warning-border-color: #ed7b2f;
+@td-button-warning-active-bg-color: #c25c11;
+@td-button-warning-active-border-color: #c25c11;
+@td-button-warning-disabled-color: #ffffff;
+@td-button-warning-disabled-bg: #f9c191;
+@td-button-warning-disabled-border-color: #f9c191;
+
+@td-button-success-color: #ffffff;
+@td-button-success-bg-color: #2ba471;
+@td-button-success-border-color: #2ba471;
+@td-button-success-active-bg-color: #1f7e54;
+@td-button-success-active-border-color: #1f7e54;
+@td-button-success-disabled-color: #ffffff;
+@td-button-success-disabled-bg: #93dab7;
+@td-button-success-disabled-border-color: #93dab7;
+
+// outline 变体颜色
+@td-button-default-outline-color: rgba(0, 0, 0, 0.9);
+@td-button-default-outline-border-color: #dcdcdc;
+@td-button-default-outline-active-bg-color: #e7e7e7;
+@td-button-default-outline-active-border-color: #dcdcdc;
+@td-button-default-outline-disabled-color: #dcdcdc;
+
+@td-button-primary-outline-color: #0052d9;
+@td-button-primary-outline-border-color: #0052d9;
+@td-button-primary-outline-active-bg-color: #e7e7e7;
+@td-button-primary-outline-active-border-color: #003cab;
+@td-button-primary-outline-disabled-color: #b5c7ff;
+
+@td-button-danger-outline-color: #d54941;
+@td-button-danger-outline-border-color: #d54941;
+@td-button-danger-outline-active-bg-color: #e7e7e7;
+@td-button-danger-outline-active-border-color: #ad352f;
+@td-button-danger-outline-disabled-color: #ffb9b0;
+
+@td-button-warning-outline-color: #ed7b2f;
+@td-button-warning-outline-border-color: #ed7b2f;
+@td-button-warning-outline-active-bg-color: #e7e7e7;
+@td-button-warning-outline-active-border-color: #c25c11;
+@td-button-warning-outline-disabled-color: #f9c191;
+
+@td-button-success-outline-color: #2ba471;
+@td-button-success-outline-border-color: #2ba471;
+@td-button-success-outline-active-bg-color: #e7e7e7;
+@td-button-success-outline-active-border-color: #1f7e54;
+@td-button-success-outline-disabled-color: #93dab7;
+
+// dashed 颜色（与 outline 同色阶，仅 border-style 不同）
+// text 颜色
+@td-button-default-text-color: rgba(0, 0, 0, 0.9);
+@td-button-default-text-active-bg-color: #e7e7e7;
+@td-button-primary-text-color: #0052d9;
+@td-button-primary-text-active-bg-color: #e7e7e7;
+@td-button-primary-text-disabled-color: #b5c7ff;
+@td-button-danger-text-color: #d54941;
+@td-button-danger-text-active-bg-color: #e7e7e7;
+@td-button-danger-text-disabled-color: #ffb9b0;
+@td-button-warning-text-color: #ed7b2f;
+@td-button-warning-text-active-bg-color: #e7e7e7;
+@td-button-warning-text-disabled-color: #f9c191;
+@td-button-success-text-color: #2ba471;
+@td-button-success-text-active-bg-color: #e7e7e7;
+@td-button-success-text-disabled-color: #93dab7;
+
+// ghost
+@td-button-ghost-color: #ffffff;
+@td-button-ghost-border-color: #ffffff;
+@td-button-ghost-disabled-color: rgba(255, 255, 255, 0.22);
+
+// ============== Mixin（按 uniapp 端 .button-size / .button-theme 思路平移） ==============
+
+// size mixin：一次性写入 height / padding / font-size / icon-size
+.button-size(@size, @height, @paddingH, @fontSize, @iconSize) {
+  .t-button--size-@{size} {
+    height: @height;
+    line-height: @height;
+    padding-left: @paddingH;
+    padding-right: @paddingH;
+    font-size: @fontSize;
+
+    .t-button__icon {
+      font-size: @iconSize;
+    }
+
+    // 穿透 t-icon 自身的 font-size: 24px 默认值，让按钮内图标尺寸跟随 button size 阶梯
+    // （选择器特异性：0,2,1 > t-icon 自身的 0,1,0）
+    .t-button__icon .t-icon {
+      font-size: @iconSize;
+    }
+  }
+}
+
+// filled theme mixin（基础变体：实色填充）
+.button-theme(@theme, @color, @bg, @borderColor, @activeBg, @activeBorderColor,
+              @disabledColor, @disabledBg, @disabledBorderColor) {
+  .t-button--@{theme} {
+    color: @color;
+    background-color: @bg;
+    border-color: @borderColor;
+
+    &.t-button--active {
+      background-color: @activeBg;
+      border-color: @activeBorderColor;
+    }
+
+    &.t-button--disabled {
+      color: @disabledColor;
+      background-color: @disabledBg;
+      border-color: @disabledBorderColor;
+    }
+  }
+}
+
+// outline theme mixin（描边变体）
+.button-outline(@theme, @color, @borderColor, @activeBg, @activeBorderColor, @disabledColor) {
+  .t-button--outline.t-button--@{theme} {
+    color: @color;
+    background-color: transparent;
+    border-color: @borderColor;
+
+    &.t-button--active {
+      color: @activeBorderColor;
+      background-color: @activeBg;
+      border-color: @activeBorderColor;
+    }
+
+    &.t-button--disabled {
+      color: @disabledColor;
+      background-color: transparent;
+      border-color: @disabledColor;
+    }
+  }
+}
+
+// dashed theme mixin（与 outline 同色阶，仅 border-style 不同；在根选择器统一改 border-style）
+.button-dashed(@theme, @color, @borderColor, @activeBg, @activeBorderColor, @disabledColor) {
+  .t-button--dashed.t-button--@{theme} {
+    color: @color;
+    background-color: transparent;
+    border-color: @borderColor;
+
+    &.t-button--active {
+      color: @activeBorderColor;
+      background-color: @activeBg;
+      border-color: @activeBorderColor;
+    }
+
+    &.t-button--disabled {
+      color: @disabledColor;
+      background-color: transparent;
+      border-color: @disabledColor;
+    }
+  }
+}
+
+// text theme mixin（文字变体：透明背景 + 透明边框）
+.button-text(@theme, @color, @activeBg, @disabledColor) {
+  .t-button--text.t-button--@{theme} {
+    color: @color;
+    background-color: transparent;
+    border-color: transparent;
+
+    &.t-button--active {
+      background-color: @activeBg;
+    }
+
+    &.t-button--disabled {
+      color: @disabledColor;
+      background-color: transparent;
+    }
+  }
+}
+
+// ghost theme mixin（透明背景 + 描边，theme 决定文字/边框颜色）
+.button-ghost(@theme, @color, @borderColor) {
+  .t-button--ghost.t-button--@{theme} {
+    color: @color;
+    background-color: transparent;
+    border-color: @borderColor;
+  }
+}
+
+// ============== 基类 ==============
+
 .t-button {
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 0 16px;
-  border: 1px solid transparent;
-  border-radius: 6px;
-  font-size: 14px;
-  line-height: 1.4;
-  cursor: pointer;
-  user-select: none;
-  background-clip: padding-box;
-  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  height: @td-button-medium-height;
+  padding: 0 @td-button-medium-padding-horizontal;
+  border-width: @td-button-border-width;
+  border-style: solid;
+  border-color: transparent;
+  border-radius: @td-button-border-radius;
+  font-size: @td-button-medium-font-size;
+  font-weight: @td-button-font-weight;
+  // text-align: center;  // uvue 端 view 不需要
+  box-sizing: border-box;
 
-  // ---- size ----
-  &--extra-small { height: 24px; padding: 0 8px;  font-size: 12px; }
-  &--small       { height: 32px; padding: 0 12px; font-size: 13px; }
-  &--medium      { height: 40px; padding: 0 16px; font-size: 14px; }
-  &--large       { height: 48px; padding: 0 20px; font-size: 16px; }
-
-  // ---- shape ----
-  &--rectangle { border-radius: 6px; }
-  &--square    { border-radius: 6px; padding: 0; aspect-ratio: 1 / 1; }
-  &--round     { border-radius: 999px; }
-  &--circle    { border-radius: 50%; padding: 0; aspect-ratio: 1 / 1; }
-
-  // ---- variant × theme（仅给出 base + outline 与 default/primary 示意，其余按需扩展） ----
-  &--variant-base {
-    color: #fff;
-    background: #888;
-    &.t-button--theme-primary { background: #0052d9; }
-    &.t-button--theme-danger  { background: #d54941; }
-    &.t-button--theme-warning { background: #ed7b2f; }
-    &.t-button--theme-success { background: #2ba471; }
-    &.t-button--theme-default { color: #181818; background: #f3f3f3; }
-  }
-
-  &--variant-outline {
-    background: transparent;
-    border-color: currentColor;
-    &.t-button--theme-primary { color: #0052d9; }
-    &.t-button--theme-danger  { color: #d54941; }
-    &.t-button--theme-warning { color: #ed7b2f; }
-    &.t-button--theme-success { color: #2ba471; }
-    &.t-button--theme-default { color: #181818; border-color: #dcdcdc; }
-  }
-
-  &--variant-dashed { border-style: dashed; }
-  &--variant-text   { background: transparent; border-color: transparent; }
-
-  // ---- 状态修饰 ----
-  &--block    { display: flex; width: 100%; }
-  &--disabled { opacity: 0.4; cursor: not-allowed; }
-  &--loading  { cursor: progress; }
-  &--ghost    { background: transparent !important; color: inherit; }
-
-  // ---- inner ----
   &__icon,
   &__loading,
-  &__content { display: inline-flex; align-items: center; }
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__icon {
+    border-radius: @td-button-icon-border-radius;
+    // 与后置 content 间距（用 margin 替代 uniapp 的 + 选择器；__icon 是条件渲染，
+    // 不存在时不会输出节点，因此不会影响纯文字按钮的对齐）
+    margin-right: @td-button-icon-spacer;
+  }
+
+  &__loading {
+    margin-right: @td-button-icon-spacer;
+  }
+
+  // square / circle 按钮宽=高，且通常仅渲染 icon 不渲染 content，
+  // 此时 __icon 的 margin-right 会让图标整体左偏，需置零保持居中
+  &--square &__icon,
+  &--square &__loading,
+  &--circle &__icon,
+  &--circle &__loading {
+    margin-right: 0;
+  }
 
   &__spinner {
     width: 14px;
     height: 14px;
-    border: 2px solid currentColor;
+    border-width: 2px;
+    border-style: solid;
+    border-color: currentColor;
     border-right-color: transparent;
     border-radius: 50%;
-    animation: t-button-spin 0.8s linear infinite;
+    /* uvue 仅部分端支持 keyframes，PoC 阶段保留，不工作时降级为静态样式 */
+    animation-name: t-button-spin;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+  }
+
+  // ---- shape ----
+  &--rectangle {
+    border-radius: @td-button-border-radius;
+  }
+  &--round {
+    // round 圆角随 size 变化，uvue 不支持 calc(var)，改为各 size 内单独设置（见下方 size×shape 区块）
+    border-radius: 999px;
+  }
+  &--square {
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: @td-button-border-radius;
+  }
+  &--circle {
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 50%;
+  }
+
+  // ---- 状态 ----
+  &--block {
+    width: 100%;
+  }
+  &--disabled {
+    opacity: 1; // 颜色由各 theme 的 --disabled 子规则控制，此处不再降透明度
+  }
+  &--loading {
+    // PoC：loading 与 disabled 视觉一致，由组件层面阻止点击
   }
 }
 
+// ============== size matrix ==============
+.button-size(extra-small, @td-button-extra-small-height, @td-button-extra-small-padding-horizontal,
+             @td-button-extra-small-font-size, @td-button-extra-small-icon-size);
+.button-size(small,       @td-button-small-height,       @td-button-small-padding-horizontal,
+             @td-button-small-font-size,       @td-button-small-icon-size);
+.button-size(medium,      @td-button-medium-height,      @td-button-medium-padding-horizontal,
+             @td-button-medium-font-size,      @td-button-medium-icon-size);
+.button-size(large,       @td-button-large-height,       @td-button-large-padding-horizontal,
+             @td-button-large-font-size,       @td-button-large-icon-size);
+
+// square / circle 的宽度跟随 size 高度
+.t-button--square.t-button--size-extra-small,
+.t-button--circle.t-button--size-extra-small { width: @td-button-extra-small-height; }
+.t-button--square.t-button--size-small,
+.t-button--circle.t-button--size-small       { width: @td-button-small-height; }
+.t-button--square.t-button--size-medium,
+.t-button--circle.t-button--size-medium      { width: @td-button-medium-height; }
+.t-button--square.t-button--size-large,
+.t-button--circle.t-button--size-large       { width: @td-button-large-height; }
+
+// ============== filled theme matrix（base variant，无 variant class） ==============
+.button-theme(default, @td-button-default-color, @td-button-default-bg-color, @td-button-default-border-color,
+              @td-button-default-active-bg-color, @td-button-default-active-border-color,
+              @td-button-default-disabled-color, @td-button-default-disabled-bg, @td-button-default-disabled-border-color);
+.button-theme(primary, @td-button-primary-color, @td-button-primary-bg-color, @td-button-primary-border-color,
+              @td-button-primary-active-bg-color, @td-button-primary-active-border-color,
+              @td-button-primary-disabled-color, @td-button-primary-disabled-bg, @td-button-primary-disabled-border-color);
+.button-theme(danger,  @td-button-danger-color,  @td-button-danger-bg-color,  @td-button-danger-border-color,
+              @td-button-danger-active-bg-color, @td-button-danger-active-border-color,
+              @td-button-danger-disabled-color, @td-button-danger-disabled-bg, @td-button-danger-disabled-border-color);
+.button-theme(warning, @td-button-warning-color, @td-button-warning-bg-color, @td-button-warning-border-color,
+              @td-button-warning-active-bg-color, @td-button-warning-active-border-color,
+              @td-button-warning-disabled-color, @td-button-warning-disabled-bg, @td-button-warning-disabled-border-color);
+.button-theme(success, @td-button-success-color, @td-button-success-bg-color, @td-button-success-border-color,
+              @td-button-success-active-bg-color, @td-button-success-active-border-color,
+              @td-button-success-disabled-color, @td-button-success-disabled-bg, @td-button-success-disabled-border-color);
+
+// ============== outline matrix ==============
+.button-outline(default, @td-button-default-outline-color, @td-button-default-outline-border-color,
+                @td-button-default-outline-active-bg-color, @td-button-default-outline-active-border-color,
+                @td-button-default-outline-disabled-color);
+.button-outline(primary, @td-button-primary-outline-color, @td-button-primary-outline-border-color,
+                @td-button-primary-outline-active-bg-color, @td-button-primary-outline-active-border-color,
+                @td-button-primary-outline-disabled-color);
+.button-outline(danger,  @td-button-danger-outline-color, @td-button-danger-outline-border-color,
+                @td-button-danger-outline-active-bg-color, @td-button-danger-outline-active-border-color,
+                @td-button-danger-outline-disabled-color);
+.button-outline(warning, @td-button-warning-outline-color, @td-button-warning-outline-border-color,
+                @td-button-warning-outline-active-bg-color, @td-button-warning-outline-active-border-color,
+                @td-button-warning-outline-disabled-color);
+.button-outline(success, @td-button-success-outline-color, @td-button-success-outline-border-color,
+                @td-button-success-outline-active-bg-color, @td-button-success-outline-active-border-color,
+                @td-button-success-outline-disabled-color);
+
+// dashed：与 outline 同色阶，仅 border-style 不同
+.t-button--dashed { border-style: dashed; }
+
+.button-dashed(default, @td-button-default-outline-color, @td-button-default-outline-border-color,
+                @td-button-default-outline-active-bg-color, @td-button-default-outline-active-border-color,
+                @td-button-default-outline-disabled-color);
+.button-dashed(primary, @td-button-primary-outline-color, @td-button-primary-outline-border-color,
+                @td-button-primary-outline-active-bg-color, @td-button-primary-outline-active-border-color,
+                @td-button-primary-outline-disabled-color);
+.button-dashed(danger,  @td-button-danger-outline-color, @td-button-danger-outline-border-color,
+                @td-button-danger-outline-active-bg-color, @td-button-danger-outline-active-border-color,
+                @td-button-danger-outline-disabled-color);
+.button-dashed(warning, @td-button-warning-outline-color, @td-button-warning-outline-border-color,
+                @td-button-warning-outline-active-bg-color, @td-button-warning-outline-active-border-color,
+                @td-button-warning-outline-disabled-color);
+.button-dashed(success, @td-button-success-outline-color, @td-button-success-outline-border-color,
+                @td-button-success-outline-active-bg-color, @td-button-success-outline-active-border-color,
+                @td-button-success-outline-disabled-color);
+
+// ============== text matrix ==============
+.button-text(default, @td-button-default-text-color, @td-button-default-text-active-bg-color, @td-button-default-disabled-color);
+.button-text(primary, @td-button-primary-text-color, @td-button-primary-text-active-bg-color, @td-button-primary-text-disabled-color);
+.button-text(danger,  @td-button-danger-text-color,  @td-button-danger-text-active-bg-color,  @td-button-danger-text-disabled-color);
+.button-text(warning, @td-button-warning-text-color, @td-button-warning-text-active-bg-color, @td-button-warning-text-disabled-color);
+.button-text(success, @td-button-success-text-color, @td-button-success-text-active-bg-color, @td-button-success-text-disabled-color);
+
+// ============== ghost ==============
+// ghost 优先级高于 theme，统一透明背景；颜色随 theme 切换
+.t-button--ghost {
+  background-color: transparent;
+  color: @td-button-ghost-color;
+  border-color: @td-button-ghost-border-color;
+
+  &.t-button--disabled {
+    color: @td-button-ghost-disabled-color;
+    border-color: @td-button-ghost-disabled-color;
+    background-color: transparent;
+  }
+}
+
+.button-ghost(primary, @td-button-primary-color,  @td-button-primary-bg-color);
+.button-ghost(danger,  @td-button-danger-color,   @td-button-danger-bg-color);
+.button-ghost(warning, @td-button-warning-color,  @td-button-warning-bg-color);
+.button-ghost(success, @td-button-success-color,  @td-button-success-bg-color);
+// default + ghost 即基础白色，不需要单独覆盖
+
 @keyframes t-button-spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }

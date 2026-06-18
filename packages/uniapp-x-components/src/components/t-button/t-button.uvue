@@ -1,6 +1,7 @@
 <template>
   <view
     :class="rootClass"
+    :style="customStyle"
     :hover-class="disabled || loading ? '' : 't-button--active'"
     @click="onClick"
   >
@@ -46,6 +47,7 @@ const props = defineProps({
   loading: { type: Boolean, default: false },
   ghost: { type: Boolean, default: false },
   customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
 
   activityType: { type: Number, default: 0 },
   appParameter: { type: String, default: '' },

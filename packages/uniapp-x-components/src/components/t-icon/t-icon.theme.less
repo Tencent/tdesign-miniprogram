@@ -30,6 +30,11 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  // 关键：盒子按 font-size 自动撑开（1em = 当前 font-size）。
+  // 否则在 uvue/uni-app 端，子元素 <view class="t-icon-{name}"> 不会自动按字号撑开，
+  // 父级 inline-flex 会塌缩成 0/默认值，font-size 即便设到 24px 也无法转化为可视尺寸。
+  width: 1em;
+  height: 1em;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -63,6 +68,18 @@
       font-family: 't' !important;
       font-style: normal;
       line-height: 1;
+      // 关键：显式继承父级 font-size。
+      // uvue/uni-app 端 view 的 font-size 不会自动从父 view 继承，
+      // 不写 font-size: inherit 则回退到全局默认（约 16px），
+      // 导致下面 width/height 的 1em 计算成 16px，伪元素 ::before
+      // 字形也按 16px 渲染，与父级 .t-icon (24px) 不匹配。
+      font-size: inherit;
+      // 让字形子节点也按字号撑开，确保伪元素 ::before 在 view 容器里能正常渲染
+      width: 1em;
+      height: 1em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       -webkit-font-smoothing: antialiased;
 
       &::before {

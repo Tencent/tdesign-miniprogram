@@ -59,16 +59,19 @@ import { TButton } from '@tdesign/uniapp-x';
 
 ## 类名结构（供主题覆盖）
 
+> 与 `@tdesign/uniapp` 端 `button.less` 完全对齐，便于跨端样式定制。
+
 ```
 .t-button
-  .t-button--variant-{base|outline|dashed|text}
-  .t-button--theme-{default|primary|danger|warning|success}
-  .t-button--{extra-small|small|medium|large}
-  .t-button--{rectangle|square|round|circle}
+  .t-button--{outline|dashed|text}                       // variant，base 不输出 class
+  .t-button--{default|primary|danger|warning|success}    // theme
+  .t-button--size-{extra-small|small|medium|large}       // size 带 size- 前缀
+  .t-button--{rectangle|square|round|circle}             // shape
   .t-button--block?
   .t-button--disabled?
   .t-button--loading?
   .t-button--ghost?
+  .t-button--active?    // hover/按压态，由 hover-class 注入（替代小程序端 :hover）
 
   .t-button__icon
   .t-button__loading > .t-button__spinner

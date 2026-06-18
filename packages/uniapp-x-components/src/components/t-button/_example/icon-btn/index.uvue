@@ -1,0 +1,40 @@
+<template>
+  <view class="demo-icon">
+    <view class="demo-cell">
+      <t-button theme="primary" size="large" block>
+        <template #icon>
+          <t-icon name="app" color="#ffffff" />
+        </template>
+        填充按钮
+      </t-button>
+    </view>
+    <view class="demo-cell">
+      <t-button theme="primary" size="large" loading block>加载中</t-button>
+    </view>
+    <view class="demo-cell demo-cell-square">
+      <t-button theme="primary" shape="square" size="large">
+        <template #icon>
+          <t-icon name="search" color="#ffffff" />
+        </template>
+      </t-button>
+    </view>
+  </view>
+</template>
+
+<style>
+.demo-icon {
+  display: flex;
+  flex-direction: row;
+  padding: 16px;
+}
+.demo-cell {
+  flex: 1;
+  margin-right: 12px;
+}
+.demo-cell-square {
+  flex: 0 0 auto;
+}
+.demo-cell:last-child {
+  margin-right: 0;
+}
+</style>

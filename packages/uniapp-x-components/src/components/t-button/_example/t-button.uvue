@@ -1,56 +1,74 @@
 <template>
   <scroll-view class="demo-page" :scroll-y="true">
-    <view class="demo-header">
-      <text class="demo-title">Button 按钮</text>
-      <text class="demo-desc">用于开启一个闭环的操作任务，如"删除"对象、"购买"商品等。</text>
-    </view>
+    <t-demo-header
+      title="Button 按钮"
+      desc="用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。"
+    />
 
-    <view class="demo-section">
-      <text class="demo-section-title">01 组件类型</text>
-      <text class="demo-section-desc">主题</text>
-      <base-demo></base-demo>
-      <text class="demo-section-desc">变体</text>
-      <variant-demo></variant-demo>
-      <text class="demo-section-desc">通栏按钮</text>
-      <block-demo></block-demo>
-      <text class="demo-section-desc">幽灵按钮</text>
-      <ghost-demo></ghost-demo>
-    </view>
+    <t-demo title="01 组件类型" desc="基础按钮">
+      <base-demo />
+    </t-demo>
 
-    <view class="demo-section">
-      <text class="demo-section-title">02 组件状态</text>
-      <text class="demo-section-desc">禁用 / 加载</text>
-      <status-demo></status-demo>
-    </view>
+    <t-demo desc="图标按钮">
+      <icon-btn-demo />
+    </t-demo>
 
-    <view class="demo-section">
-      <text class="demo-section-title">03 组件样式</text>
-      <text class="demo-section-desc">尺寸</text>
-      <size-demo></size-demo>
-      <text class="demo-section-desc">形状</text>
-      <shape-demo></shape-demo>
-    </view>
+    <t-demo desc="幽灵按钮">
+      <ghost-demo />
+    </t-demo>
+
+    <t-demo desc="组合按钮">
+      <group-btn-demo />
+    </t-demo>
+
+    <t-demo desc="通栏按钮">
+      <block-demo />
+    </t-demo>
+
+    <t-demo title="02 组件状态" desc="按钮禁用态">
+      <disabled-demo />
+    </t-demo>
+
+    <t-demo title="03 组件样式" desc="按钮尺寸">
+      <size-demo />
+    </t-demo>
+
+    <t-demo desc="按钮形状">
+      <shape-demo />
+    </t-demo>
+
+    <t-demo desc="按钮主题">
+      <theme-demo />
+    </t-demo>
   </scroll-view>
 </template>
 
 <script>
+// import TDemoHeader from '../../_demo-kit/t-demo-header.uvue';
+// import TDemo from '../../_demo-kit/t-demo.uvue';
 import BaseDemo from './base/index.uvue';
-import VariantDemo from './variant/index.uvue';
+import IconBtnDemo from './icon-btn/index.uvue';
+import GhostDemo from './ghost/index.uvue';
+import GroupBtnDemo from './group-btn/index.uvue';
+import BlockDemo from './block/index.uvue';
+import DisabledDemo from './disabled/index.uvue';
 import SizeDemo from './size/index.uvue';
 import ShapeDemo from './shape/index.uvue';
-import StatusDemo from './status/index.uvue';
-import BlockDemo from './block/index.uvue';
-import GhostDemo from './ghost/index.uvue';
+import ThemeDemo from './theme/index.uvue';
 
 export default {
   components: {
+    // TDemoHeader,
+    // TDemo,
     BaseDemo,
-    VariantDemo,
+    IconBtnDemo,
+    GhostDemo,
+    GroupBtnDemo,
+    BlockDemo,
+    DisabledDemo,
     SizeDemo,
     ShapeDemo,
-    StatusDemo,
-    BlockDemo,
-    GhostDemo,
+    ThemeDemo,
   },
 };
 </script>
@@ -58,37 +76,6 @@ export default {
 <style>
 .demo-page {
   flex: 1;
-  background-color: #f5f5f5;
-}
-.demo-header {
-  padding: 24px 16px 16px;
-  background-color: #ffffff;
-}
-.demo-title {
-  font-size: 20px;
-  font-weight: bold;
-  color: #181818;
-  margin-bottom: 8px;
-}
-.demo-desc {
-  font-size: 14px;
-  color: #888888;
-  line-height: 22px;
-}
-.demo-section {
-  margin-top: 12px;
-  background-color: #ffffff;
-  padding-bottom: 8px;
-}
-.demo-section-title {
-  font-size: 16px;
-  font-weight: bold;
-  color: #181818;
-  padding: 16px 16px 8px;
-}
-.demo-section-desc {
-  font-size: 13px;
-  color: #666666;
-  padding: 8px 16px 0;
+  background-color: var(--td-bg-color-container);
 }
 </style>
