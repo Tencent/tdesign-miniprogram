@@ -160,6 +160,15 @@ export const docs = [
         component: () => import('@/link/README.md'),
         componentEn: () => import('@/link/README.en-US.md'),
       },
+      {
+        title: 'Typography 排版',
+        titleEn: 'Typography',
+        name: 'typography',
+        meta: { docType: 'base' },
+        path: '/uniapp/components/typography',
+        component: () => import('@/paragraph/README.md'),
+        componentEn: () => import('@/paragraph/README.en-US.md'),
+      },
     ],
   },
   {

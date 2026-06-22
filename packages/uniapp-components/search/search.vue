@@ -133,7 +133,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [],
+    emits: ['update:value'],
     data() {
       return {
         classPrefix: name,

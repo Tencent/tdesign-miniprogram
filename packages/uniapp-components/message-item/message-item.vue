@@ -110,6 +110,7 @@ const rawData = {
   fadeClass: '',
 
   closeTimeoutContext: 0,
+  hideTimeoutContext: 0,
   nextAnimationContext: 0,
   resetAnimation: uni.createAnimation({
     duration: 0,
@@ -307,9 +308,10 @@ export default {
         this.reset();
         this.fadeClass = `${name}__fade`;
 
-        setTimeout(() => {
+        this.hideTimeoutContext = setTimeout(() => {
           this.visible = false;
           this.animation = [];
+          this.hideTimeoutContext = 0;
         }, SHOW_DURATION);
         if (typeof this.onHide === 'function') {
           this.onHide();
@@ -323,6 +325,12 @@ export default {
         }
         clearTimeout(this.closeTimeoutContext);
         this.closeTimeoutContext = 0;
+        // 同时清掉上一次 hide 中用于延迟将 visible 置 false 的定时器，
+        // 避免连续快速调用 hide 后又调 show 时，旧的 timeout 把新消息 hide 掉。
+        if (this.hideTimeoutContext) {
+          clearTimeout(this.hideTimeoutContext);
+          this.hideTimeoutContext = 0;
+        }
       },
 
       handleClose() {

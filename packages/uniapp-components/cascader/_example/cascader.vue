@@ -25,6 +25,10 @@
       <t-demo desc="选择任意一项">
         <check-strictly />
       </t-demo>
+
+      <t-demo desc="可搜索">
+        <filterable-demo />
+      </t-demo>
     </view>
   </view>
 </template>
@@ -32,6 +36,7 @@
 <script>
 import BaseDemo from './base';
 import CheckStrictly from './check-strictly';
+import FilterableDemo from './filterable';
 import KeysDemo from './keys';
 import ThemeTab from './theme-tab';
 import WithTitle from './with-title';
@@ -44,6 +49,7 @@ export default {
     KeysDemo,
     WithTitle,
     CheckStrictly,
+    FilterableDemo,
   },
   data() {
     return {};

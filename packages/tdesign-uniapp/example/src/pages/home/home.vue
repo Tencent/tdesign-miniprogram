@@ -16,9 +16,9 @@
           aria-label="TDesign Logo"
         />
       </view>
-      <view class="desc">
+      <view class="desc" @click="onDescTap">
         TDesign 适配 uni-app 的组件库{{ isSkyline ? ' (skyline render)' : '' }}
-        <text v-if="!isSkyline && showTrySkyline" class="skyline-entry" @click="goSkyline"> try skyline </text>
+        <text v-if="!isSkyline && showTrySkyline" class="skyline-entry" @click.stop="goSkyline"> try skyline </text>
       </view>
       <pull-down-list
         v-for="item of list"
@@ -43,6 +43,8 @@
 <script>
 import TFooter from '@tdesign/uniapp/footer/footer.vue';
 import { themeMixin } from '@tdesign/uniapp/mixins/theme-change';
+import { simpleMorse } from 't-comm/lib/morse-pwd/index';
+import { toggleVConsole } from 't-comm/lib/v-console/index';
 
 import PullDownList from '../../components/pull-down-list/index.vue';
 import TrdPrivacy from '../../components/trd-privacy/index.vue';
@@ -75,6 +77,7 @@ export default {
       isSkyline: false,
       showTrySkyline: false,
       winStyle: false,
+      debugEnabled: false,
     };
   },
   onLoad(options) {
@@ -124,6 +127,50 @@ export default {
       });
     },
 
+    onDescTap() {
+      // 连续点击 5 次（间隔 < 500ms）唤起调试面板，复用 t-comm simpleMorse
+      simpleMorse({
+        target: 5,
+        timeout: 500,
+        callback: () => this.toggleDebugConsole(),
+      });
+    },
+
+    toggleDebugConsole() {
+      // #ifdef H5
+      try {
+        const visible = toggleVConsole();
+        uni.showToast({
+          title: visible ? '已开启 vConsole' : '已关闭 vConsole',
+          icon: 'none',
+        });
+      } catch (e) {
+        console.error('[home] toggleVConsole failed', e);
+        uni.showToast({ title: '调试面板加载失败', icon: 'none' });
+      }
+      // #endif
+
+      // #ifndef H5
+      if (typeof uni !== 'undefined' && typeof uni.setEnableDebug === 'function') {
+        const enable = !this.debugEnabled;
+        uni.setEnableDebug({
+          enableDebug: enable,
+          success: () => {
+            this.debugEnabled = enable;
+            uni.showToast({
+              title: enable ? '已开启调试模式' : '已关闭调试模式',
+              icon: 'none',
+            });
+          },
+          fail: () => {
+            uni.showToast({ title: '当前环境不支持调试面板', icon: 'none' });
+          },
+        });
+      } else {
+        uni.showToast({ title: '当前环境不支持调试面板', icon: 'none' });
+      }
+      // #endif
+    },
     showPrivacyWin() {
       this.$refs.trdPrivacy?.showPrivacyWin();
     },

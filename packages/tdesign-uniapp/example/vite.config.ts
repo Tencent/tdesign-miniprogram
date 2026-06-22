@@ -3,11 +3,20 @@ import path from 'path';
 import { defineConfig, loadEnv } from 'vite';
 
 import uni from '@dcloudio/vite-plugin-uni';
-import { genVersionMpVitePlugin } from '@plugin-light/vite-plugin-gen-version';
+import { genVersionMpVitePlugin, genVersionWebVitePlugin } from '@plugin-light/vite-plugin-gen-version';
+import { BUILD_NAME_MAP } from 't-comm/lib/v-console/config';
 
 const diffPlugins: any[] = [];
 if (process.env.UNI_PLATFORM !== 'h5') {
   diffPlugins.push(genVersionMpVitePlugin());
+} else {
+  diffPlugins.push(
+    genVersionWebVitePlugin({
+      buildName: BUILD_NAME_MAP.build,
+      commitName: BUILD_NAME_MAP.commit,
+      delay: 0,
+    }),
+  );
 }
 
 const TDESIGN_UNIAPP_COMPONENTS = path.resolve(__dirname, './src/_tdesign').replace(/\\/g, '/');
@@ -29,7 +38,7 @@ export default ({ mode }: { mode: string }) => {
   const vueAppBase = env.VUE_APP_PUBLICPATH;
 
   const result = defineConfig({
-    plugins: [uni(), diffPlugins],
+    plugins: [uni(), ...diffPlugins],
     resolve: {
       alias: {
         ...baseAlias,

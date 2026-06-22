@@ -1,3 +1,4 @@
+const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
@@ -114,6 +115,37 @@ function checkFileExists(filePath, label) {
   }
 }
 
+function runEslintFix(targets, label) {
+  // 过滤掉不存在的路径，避免 eslint 直接报错退出
+  const existing = targets.filter((p) => fs.existsSync(p));
+  if (existing.length === 0) {
+    console.warn(`[types][${label}] 跳过 eslint --fix: 无可处理的目标文件`);
+    return;
+  }
+
+  const args = [
+    'eslint',
+    '--fix',
+    '--no-error-on-unmatched-pattern',
+    '--ext',
+    '.ts,.d.ts',
+    ...existing.map((p) => `"${p}"`),
+  ].join(' ');
+
+  console.log(`[types][${label}] 执行 eslint --fix 处理 ${existing.length} 个目标...`);
+  try {
+    execSync(`npx ${args}`, {
+      cwd: PROJECT_ROOT,
+      stdio: 'inherit',
+    });
+    console.log(`[types][${label}] eslint --fix 完成 ✅`);
+  } catch (err) {
+    // eslint 在仅有 warning（或个别非 --fix 可处理的 error）时也会非零退出，
+    // 不应阻断生成流程，仅打印提示
+    console.warn(`[types][${label}] eslint --fix 退出码非零（可能存在无法自动修复的问题，请手动检查）`);
+  }
+}
+
 async function genOnProject({ pkgGlob, pkgJsonPath, dtsDir, indexPath, globalDTSPath, isChat }) {
   const label = isChat ? 'chat' : 'base';
   console.log(`[types][${label}] 开始生成, glob: ${pkgGlob}`);
@@ -147,6 +179,9 @@ async function genOnProject({ pkgGlob, pkgJsonPath, dtsDir, indexPath, globalDTS
   genDTS({ list: fileNames, dtsDir, isChat, label });
   genIndexContent(fileNames, indexPath, isChat, label);
   getGlobalDTS(fileNames, globalDTSPath, isChat, label);
+
+  // 对生成的文件自动执行 eslint --fix，避免再手动跑 lint
+  runEslintFix([dtsDir, globalDTSPath], label);
 
   console.log(`[types][${label}] 生成完毕 ✅`);
 }

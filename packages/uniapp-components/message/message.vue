@@ -1,24 +1,25 @@
 <template>
   <view>
     <t-message-item
-      v-for="item in messageList"
+      v-for="(item, idx) in messageList"
       :key="item.id"
       :ref="item.id"
       @close-btn-click="(e) => handleClose(e, { tagId: item.id })"
       @link-click="(e) => handleLinkClick(e, { tagId: item.id })"
       @duration-end="(e) => handleDurationEnd(e, { tagId: item.id })"
     >
-      <template #icon>
+      <!-- slot 仅透传给第一条消息，避免 v-for 中产生多个同名 slot 的警告 -->
+      <template v-if="idx === 0" #icon>
         <slot name="icon" />
       </template>
-      <template #content>
+      <template v-if="idx === 0" #content>
         <slot name="content" />
       </template>
-      <slot />
-      <template #link>
+      <slot v-if="idx === 0" />
+      <template v-if="idx === 0" #link>
         <slot name="link" />
       </template>
-      <template #close-btn>
+      <template v-if="idx === 0" #close-btn>
         <slot name="close-btn" />
       </template>
     </t-message-item>
@@ -86,6 +87,9 @@ export default {
 
     created() {
       this.instances = [];
+      // 记录各 id 对应的延迟移除 messageList 占位的定时器，避免连续点击时上一次 close 的
+      // 延迟移除在复用过程中把新占位也干掉导致 ref 实例释放、新消息闪退。
+      this.removeMsgTimers = {};
     },
     mounted() {},
 
@@ -99,11 +103,18 @@ export default {
         if (!this.instances) {
           this.instances = [];
         }
+        // 过滤掉之前可能 push 进来的 undefined，避免 findIndex 报错
+        this.instances = this.instances.filter(Boolean);
 
         let id = `${name}_${this.index}`;
         if (msg.single) {
           // 不能与外层的 ref 相同，否则抖音小程序报错
           id = `${name}_inner`;
+        }
+        // 若存在同 id 的 pending removeMsg 定时器，先取消掉，避免复用后被延迟销毁。
+        if (this.removeMsgTimers && this.removeMsgTimers[id]) {
+          clearTimeout(this.removeMsgTimers[id]);
+          delete this.removeMsgTimers[id];
         }
         const gap = unitConvert(msg.gap || this.gap);
         const msgObj = {
@@ -112,13 +123,21 @@ export default {
           id,
           gap,
         };
-        const instanceIndex = this.instances.findIndex((x) => x.id === id);
+        const instanceIndex = this.instances.findIndex((x) => x && x.id === id);
         if (instanceIndex < 0) {
           this.addMessage(msgObj);
         } else {
           // 更新消息
           const instance = this.instances[instanceIndex];
           const offsetHeight = this.getOffsetHeight(instanceIndex);
+          // 复用实例前先清掉上一次 show 启动的 duration/animation 定时器，
+          // 否则 resetData 只是把 closeTimeoutContext 字段重置为 0，原 timeout 仍会触发 hide，
+          // 导致新展示的消息不到 duration 就消失。
+          if (typeof instance.reset === 'function') {
+            instance.reset();
+          }
+          // 旧的 onHide 也要清掉，避免旧回调把新消息从 instances 中移除
+          instance.onHide = null;
           instance.resetData(() => {
             Object.keys(msgObj).forEach((key) => {
               instance[key] = msgObj[key];
@@ -138,13 +157,17 @@ export default {
        * @param msgObj
        */
       addMessage(msgObj) {
-        const list = [...this.messageList, { id: msgObj.id }];
-        this.messageList = list;
+        // single 模式下若已经有同 id 的占位，直接复用并跳过 add，避免列表中出现重复 id
+        const existIndex = this.messageList.findIndex((x) => x.id === msgObj.id);
+        if (existIndex < 0) {
+          this.messageList = [...this.messageList, { id: msgObj.id }];
+        }
 
         setTimeout(() => {
           const offsetHeight = this.getOffsetHeight();
           const instance = this.showMessageItem(msgObj, msgObj.id, offsetHeight);
-          if (this.instances) {
+          // instance 可能为 undefined，避免污染 instances 导致后续 findIndex 异常
+          if (this.instances && instance) {
             this.instances.push(instance);
             this.index += 1;
           }
@@ -183,6 +206,11 @@ export default {
         }
 
         if (instance) {
+          // 复用同一 ref 时同样要先清掉旧定时器与旧 onHide，避免互相干扰
+          if (typeof instance.reset === 'function') {
+            instance.reset();
+          }
+          instance.onHide = null;
           instance.resetData(() => {
             Object.keys(options).forEach((key) => {
               instance[key] = options[key];
@@ -201,8 +229,16 @@ export default {
       },
 
       close(id) {
-        setTimeout(() => {
+        if (!this.removeMsgTimers) {
+          this.removeMsgTimers = {};
+        }
+        // 多次 close 同一 id 时，先清掉旧的 pending removeMsg 定时器
+        if (this.removeMsgTimers[id]) {
+          clearTimeout(this.removeMsgTimers[id]);
+        }
+        this.removeMsgTimers[id] = setTimeout(() => {
           this.removeMsg(id);
+          delete this.removeMsgTimers[id];
         }, SHOW_DURATION);
         this.removeInstance(id);
       },
@@ -215,7 +251,7 @@ export default {
         if (!id) {
           this.hideAll();
         }
-        const instance = this.instances.find((x) => x.id === id);
+        const instance = this.instances.find((x) => x && x.id === id);
         if (instance) {
           instance.hide();
         }
@@ -236,7 +272,7 @@ export default {
        * 移除message实例
        */
       removeInstance(id) {
-        const index = this.instances.findIndex((x) => x.id === id);
+        const index = this.instances.findIndex((x) => x && x.id === id);
         if (index < 0) return;
         const instance = this.instances[index];
         const removedHeight = instance.height;

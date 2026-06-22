@@ -6,6 +6,16 @@ import props from './props';
 const { prefix } = config;
 const name = `${prefix}-navbar`;
 
+// 这些场景下 wx.getMenuButtonBoundingClientRect 不可用或取值不可靠，需跳过调用
+// 1433（半屏小程序）、1434（半屏小程序-从聊天素材打开）、1177（视频号直播间）、1175（视频号profile页）
+const SKIP_MENU_RECT_SCENES = [1433, 1434, 1177, 1175];
+
+/** 判断当前是否处于特殊场景（半屏、视频号等） */
+const checkSpecialScene = (): boolean => {
+  const { scene } = wx.getLaunchOptionsSync();
+  return SKIP_MENU_RECT_SCENES.includes(scene);
+};
+
 @wxComponent()
 export default class Navbar extends SuperComponent {
   externalClasses = [
@@ -66,12 +76,19 @@ export default class Navbar extends SuperComponent {
     showTitle: '',
     hideLeft: false, // 隐藏左侧内容
     hideCenter: false, // 隐藏中部内容
+    isSpecialScene: false, // 是否处于特殊场景
     _menuRect: null, // 胶囊按钮节点信息
     _leftRect: null, // 左侧节点信息
     _boxStyle: {}, // 记录样式
   };
 
   attached() {
+    const isSpecialScene = checkSpecialScene();
+
+    if (isSpecialScene) {
+      this.setData({ isSpecialScene });
+    }
+
     this.initStyle();
     this.getLeftRect();
     this.onMenuButtonBoundingClientRectWeightChange();
@@ -133,7 +150,8 @@ export default class Navbar extends SuperComponent {
     },
 
     getMenuRect() {
-      // 场景值为1177（视频号直播间）和1175 （视频号profile页）时，小程序禁用了 wx.getMenuButtonBoundingClientRect
+      if (this.data.isSpecialScene) return;
+
       if (wx.getMenuButtonBoundingClientRect) {
         const rect = wx.getMenuButtonBoundingClientRect();
         this.setData({

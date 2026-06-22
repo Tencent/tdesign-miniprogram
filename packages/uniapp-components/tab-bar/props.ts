@@ -59,4 +59,9 @@ export default {
     type: Number,
     default: 1,
   },
+  /** 选中标签切换时触发 */
+  onChange: {
+    type: Function,
+    default: () => ({}),
+  },
 };

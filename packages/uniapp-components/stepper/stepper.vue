@@ -215,6 +215,9 @@ export default {
         this.$emit('focus', { value });
       },
 
+      /**
+       * 输入过程中仅过滤非法字符并更新显示值，不做 min/max 边界约束。范围校验和 change 事件统一在 handleBlur 中处理
+       */
       handleInput(e) {
         const { value } = e.detail;
         // 允许输入空值
@@ -223,21 +226,15 @@ export default {
         }
 
         const formatted = this.filterIllegalChar(value);
-        const newValue = this.format(formatted);
 
-        const displayValue = this.integer ? newValue : formatted;
         // 当过滤后的值与当前值相同时，需要先清空再回填，强制触发视图更新
-        if (String(this.currentValue) === String(displayValue)) {
+        if (String(this.currentValue) === String(formatted)) {
           this.updateCurrentValue('');
           nextTick().then(() => {
-            this.updateCurrentValue(displayValue);
+            this.updateCurrentValue(formatted);
           });
         } else {
-          this.updateCurrentValue(displayValue);
-        }
-
-        if (this.integer || /\.\d*[1-9]/.test(formatted)) {
-          this.setValue(formatted);
+          this.updateCurrentValue(formatted);
         }
       },
 

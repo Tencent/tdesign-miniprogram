@@ -1,9 +1,9 @@
 {
   "name": "@tdesign/uniapp",
-  "version": "0.9.1",
+  "version": "0.10.0",
   "id": "tdesign-uniapp",
   "title": "tdesign-uniapp",
-  "description": "TDesign Component for UniApp",
+  "description": "TDesign Component for Uniapp",
   "author": "tdesign",
   "license": "MIT",
   "keywords": [
@@ -309,6 +309,11 @@
       "import": "./dist/overlay/overlay.vue",
       "default": "./dist/overlay/overlay.vue"
     },
+    "./paragraph/paragraph.vue": {
+      "types": "./dist/types/paragraph.d.ts",
+      "import": "./dist/paragraph/paragraph.vue",
+      "default": "./dist/paragraph/paragraph.vue"
+    },
     "./picker/picker.vue": {
       "types": "./dist/types/picker.d.ts",
       "import": "./dist/picker/picker.vue",
@@ -469,10 +474,20 @@
       "import": "./dist/tag/tag.vue",
       "default": "./dist/tag/tag.vue"
     },
+    "./text/text.vue": {
+      "types": "./dist/types/text.d.ts",
+      "import": "./dist/text/text.vue",
+      "default": "./dist/text/text.vue"
+    },
     "./textarea/textarea.vue": {
       "types": "./dist/types/textarea.d.ts",
       "import": "./dist/textarea/textarea.vue",
       "default": "./dist/textarea/textarea.vue"
+    },
+    "./title/title.vue": {
+      "types": "./dist/types/title.d.ts",
+      "import": "./dist/title/title.vue",
+      "default": "./dist/title/title.vue"
     },
     "./toast/toast.vue": {
       "types": "./dist/types/toast.d.ts",

@@ -43,7 +43,7 @@ export function createApp() {
 
 export const MANIFEST_JSON_CONTENT = JSON.stringify(
   {
-    name: 'TDesign UniApp',
+    name: 'TDesign Uniapp',
     appid: '',
     description: '',
     versionName: '1.0.0',
