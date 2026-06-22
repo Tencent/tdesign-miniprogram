@@ -2,39 +2,33 @@
   <view
     :id="tId"
     :class="
+      '' +
       tools.cls(classPrefix, [
         ['active', active],
-        ['disabled', disabled]
+        ['disabled', disabled],
       ]) +
-        ' ' +
-        tClass
+      ' ' +
+      tClass
     "
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     aria-role="button"
     :aria-label="
       ariaLabel ||
-        (badgeProps && (badgeProps.dot || badgeProps.count)
-          ? (active ? '已选中，' + label + tools.getBadgeAriaLabel({ ...badgeProps })
-            : label + tools.getBadgeAriaLabel({ ...badgeProps })) : '')
+      (badgeProps && (badgeProps.dot || badgeProps.count)
+        ? active
+          ? '已选中，' + label + tools.getBadgeAriaLabel({ ...badgeProps })
+          : label + tools.getBadgeAriaLabel({ ...badgeProps })
+        : '')
     "
     :aria-disabled="disabled"
     @click="handleClick"
   >
     <block v-if="active">
       <view :class="classPrefix + '__line'" />
-      <view
-        v-if="!isFirstChild"
-        :class="classPrefix + '__prefix'"
-      />
-      <view
-        v-if="!isLastChild"
-        :class="classPrefix + '__suffix'"
-      />
+      <view v-if="!isFirstChild" :class="classPrefix + '__prefix'" />
+      <view v-if="!isLastChild" :class="classPrefix + '__suffix'" />
     </block>
-    <block
-      v-if="innerIcon"
-      name="icon"
-    >
+    <block v-if="innerIcon" name="icon">
       <t-icon
         :custom-style="iconCustomStyle"
         :t-class="classPrefix + '__icon'"
@@ -50,15 +44,15 @@
     </block>
     <block v-if="badgeProps">
       <t-badge
-        :color="badgeProps.color"
+        :color="badgeProps.color || ''"
         :content="label"
-        :count="badgeProps.count"
-        :dot="badgeProps.dot"
-        :max-count="badgeProps.maxCount"
-        :offset="badgeProps.offset"
-        :shape="badgeProps.shape"
-        :show-zero="badgeProps.showZero"
-        :size="badgeProps.size"
+        :count="badgeProps.count || 0"
+        :dot="badgeProps.dot || false"
+        :max-count="badgeProps.maxCount || 99"
+        :offset="badgeProps.offset || []"
+        :shape="badgeProps.shape || 'circle'"
+        :show-zero="badgeProps.showZero || false"
+        :size="badgeProps.size || 'medium'"
         :t-class="badgeProps.tClass"
         :t-class-content="badgeProps.tClassContent"
         :t-class-count="badgeProps.tClassCount"
@@ -72,94 +66,92 @@
 </template>
 <script>
 import TBadge from '../badge/badge';
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
 
+import props from './props';
 
 const name = `${prefix}-side-bar-item`;
 
-
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-  ],
-  mixins: [ChildrenMixin(RELATION_MAP.SideBarItem)],
+export default {
   components: {
     TBadge,
     TIcon,
   },
-  props: {
-    ...props,
-    tId: {
-      type: String,
-      default: '',
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-  },
-  data() {
-    return {
-      classPrefix: name,
-      prefix,
-      active: false,
-      isPre: false,
-      isNext: false,
-      tools,
-      isFirstChild: false,
-      isLastChild: false,
-    };
-  },
-  computed: {
-    iconCustomStyle() {
-      return tools._style([
-        {
-          fontSize: 'var(--td-side-bar-icon-size, 20px)',
-          marginRight: '2px',
+    externalClasses: [`${prefix}-class`],
+    mixins: [ChildrenMixin(RELATION_MAP.SideBarItem)],
+    props: {
+      ...props,
+      tId: {
+        type: String,
+        default: '',
+      },
+    },
+    data() {
+      return {
+        classPrefix: name,
+        prefix,
+        active: false,
+        isPre: false,
+        isNext: false,
+        tools,
+        isFirstChild: false,
+        isLastChild: false,
+      };
+    },
+    computed: {
+      iconCustomStyle() {
+        if (!this.innerIcon) return '';
+
+        return tools._style([
+          {
+            fontSize: 'var(--td-side-bar-icon-size, 40rpx)',
+            marginRight: '4rpx',
+          },
+          this.innerIcon.style || '',
+        ]);
+      },
+    },
+    watch: {
+      icon: {
+        handler(v) {
+          this.innerIcon = typeof v === 'string' ? { name: v } : v;
         },
-        this.innerIcon.style || '',
-      ]);
-    },
-  },
-  watch: {
-    icon: {
-      handler(v) {
-        this.innerIcon = typeof v === 'string' ? { name: v } : v;
+        immediate: true,
       },
-      immediate: true,
-    },
-    disabled: {
-      handler() {
-        this.updateActive(this.value);
+      disabled: {
+        handler() {
+          this.updateActive(this.value);
+        },
+        immediate: true,
       },
-      immediate: true,
     },
-  },
-  mounted() {
+    mounted() {},
+    methods: {
+      innerAfterLinked() {
+        const parent = this[RELATION_MAP.SideBarItem];
+        this.updateActive(parent.dataValue);
+      },
+      updateActive(value) {
+        const active = value === this.value && !this.disabled;
+        this.active = active;
+      },
+      handleClick() {
+        if (this.disabled) return;
+        const { value, label } = this;
 
-  },
-  methods: {
-    innerAfterLinked() {
-      const parent = this[RELATION_MAP.SideBarItem];
-      this.updateActive(parent.dataValue);
+        this[RELATION_MAP.SideBarItem]?.doChange({ value, label });
+      },
     },
-    updateActive(value) {
-      const active = value === this.value && !this.disabled;
-      this.active = active;
-    },
-    handleClick() {
-      if (this.disabled) return;
-      const { value, label } = this;
-
-      this[RELATION_MAP.SideBarItem]?.doChange({ value, label });
-    },
-  },
-});
-
+  }),
+};
 </script>
 <style scoped src="./side-bar-item.css"></style>

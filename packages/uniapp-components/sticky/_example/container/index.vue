@@ -1,9 +1,6 @@
 <template>
   <view class="wrapper">
-    <t-sticky
-      :container="container"
-      :offset-top="navbarHeight"
-    >
+    <t-sticky :container="container" :offset-top="navbarHeight">
       <t-button
         size="large"
         t-class="external-class green-button"
@@ -17,8 +14,8 @@
 </template>
 
 <script>
-import TSticky from '@tdesign/uniapp/sticky/sticky.vue';
 import TButton from '@tdesign/uniapp/button/button.vue';
+import TSticky from '@tdesign/uniapp/sticky/sticky.vue';
 export default {
   options: {
     styleIsolation: 'shared',
@@ -45,17 +42,16 @@ export default {
   created() {},
   methods: {
     ready() {
-      this.container = () => uni.createSelectorQuery().in(this)
-        .select('.wrapper');
+      this.container = () => uni.createSelectorQuery().in(this).select('.wrapper');
     },
   },
 };
 </script>
 <style scoped>
 .wrapper {
-    width: 100%;
-    height: 150px;
-    background-color: var(--bg-color-demo-secondary);
+  width: 100%;
+  height: 150px;
+  background-color: var(--bg-color-demo-secondary);
 }
 
 /* :deep(.external-class) {
@@ -64,14 +60,14 @@ export default {
 } */
 
 .green-button {
-    z-index: 0 !important;
-    background-color: #008858 !important;
-    color: #fff !important;
+  z-index: 0 !important;
+  background-color: #008858 !important;
+  color: #fff !important;
 }
 
 .hover-class::after {
-    z-index: -1;
-    background-color: #006c45;
-    border-color: #006c45;
+  z-index: -1;
+  background-color: #006c45;
+  border-color: #006c45;
 }
 </style>

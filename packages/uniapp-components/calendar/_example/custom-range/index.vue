@@ -5,22 +5,17 @@
       :value="value"
       :min-date="minDate"
       :max-date="maxDate"
-      @update:visible="visible = $event"
+      @update:visible="(e) => (visible = e)"
       @confirm="handleConfirm"
     />
-    <t-cell
-      arrow
-      title="含不可选的日历"
-      :note="formatTimestamp(value)"
-      @click="handleCalendar"
-    />
+    <t-cell arrow title="含不可选的日历" :note="formatTimestamp(value)" @click="handleCalendar" />
   </view>
 </template>
 <script>
-import TCell from '@tdesign/uniapp/cell/cell.vue';
 import TCalendar from '@tdesign/uniapp/calendar/calendar.vue';
-import { formatTimestamp } from '../computed';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
 
+import { formatTimestamp } from '../computed';
 
 export default {
   components: {
@@ -51,6 +46,6 @@ export default {
 </script>
 <style>
 .is-holiday:not(.t-calendar__dates-item--selected) {
-    color: #e34d59 !important;
+  color: #e34d59 !important;
 }
 </style>

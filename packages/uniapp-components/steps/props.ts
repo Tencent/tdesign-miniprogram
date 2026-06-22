@@ -34,8 +34,8 @@ export default {
   },
   /** 只读状态 */
   readonly: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdStepsProps['readonly'],
   },
   /** 步骤条顺序 */
   sequence: {

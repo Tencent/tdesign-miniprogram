@@ -1,24 +1,15 @@
 <template>
   <view>
-    <t-button
-      size="large"
-      variant="outline"
-      theme="primary"
-      block
-      @click="showDialog"
-    >
-      命令行操作
-    </t-button>
-    <t-dialog
-      ref="t-dialog"
-    />
+    <t-button size="large" variant="outline" theme="primary" block @click="showDialog"> 命令行操作 </t-button>
+    <t-dialog ref="t-dialog" />
   </view>
 </template>
 
 <script>
+import { DialogPlugin } from '@tdesign/uniapp';
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TDialog from '@tdesign/uniapp/dialog/dialog.vue';
-import Dialog from '@tdesign/uniapp/dialog/index';
+
 export default {
   components: {
     TButton,
@@ -38,12 +29,11 @@ export default {
         confirmBtn: '确定',
         cancelBtn: '取消',
       };
-      Dialog.confirm(dialogConfig)
-        .then(data => console.log('点击了确定', data))
-        .catch(data => console.log('点击了取消', data));
+      DialogPlugin.confirm(dialogConfig)
+        .then((data) => console.log('点击了确定', data))
+        .catch((data) => console.log('点击了取消', data));
     },
   },
 };
 </script>
-<style>
-</style>
+<style></style>

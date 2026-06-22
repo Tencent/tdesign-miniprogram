@@ -246,12 +246,11 @@ export default class Slider extends SuperComponent {
   }
 
   handleMark(marks: any) {
-    const calcPos = (arr: number[]) => {
-      return arr.map((item) => ({
+    const calcPos = (arr: number[]) =>
+      arr.map((item) => ({
         val: item,
         left: this.valueToPosition(item),
       }));
-    };
 
     if (marks?.length && Array.isArray(marks)) {
       this.setData({

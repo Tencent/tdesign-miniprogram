@@ -1,8 +1,8 @@
 <template>
   <view
     :id="tId"
-    :style="tools._style([customStyle])"
-    :class="tools.cls(classPrefix, [innerPlacement, ['block', block], ['disabled', iDisabled]]) + ' ' + tClass"
+    :style="'' + tools._style([customStyle])"
+    :class="'' + tools.cls(classPrefix, [innerPlacement, ['block', block], ['disabled', iDisabled]]) + ' ' + tClass"
     :disabled="iDisabled"
     aria-role="radio"
     :aria-checked="dataChecked"
@@ -10,20 +10,17 @@
     :aria-disabled="iDisabled"
     @click.stop="handleTap"
   >
-    <view :class="tools.cls(classPrefix + '__icon', [innerPlacement, ['checked', dataChecked], ['disabled', iDisabled]]) + ' ' + tClassIcon">
-      <slot
-        v-if="slotIcon"
-        name="icon"
-      />
-      <view
-        v-else-if="customIcon"
-        :class="classPrefix + '__image'"
-      >
-        <image
-          :src="dataChecked ? iconVal[0] : iconVal[1]"
-          :class="classPrefix + '-icon__image'"
-          webp
-        />
+    <view
+      :class="
+        '' +
+        tools.cls(classPrefix + '__icon', [innerPlacement, ['checked', dataChecked], ['disabled', iDisabled]]) +
+        ' ' +
+        tClassIcon
+      "
+    >
+      <slot v-if="slotIcon" name="icon" />
+      <view v-else-if="customIcon" :class="classPrefix + '__image'">
+        <image :src="dataChecked ? iconVal[0] : iconVal[1]" :class="classPrefix + '-icon__image'" webp />
       </view>
       <block v-else>
         <t-icon
@@ -33,31 +30,25 @@
         />
         <view
           v-if="dataChecked && icon == 'dot'"
-          :class="tools.cls(classPrefix + '__icon-' + icon, [['disabled', iDisabled]])"
+          :class="'' + tools.cls(classPrefix + '__icon-' + icon, [['disabled', iDisabled]])"
         />
         <view
           v-if="!dataChecked && (icon == 'circle' || icon == 'dot')"
-          :class="tools.cls(classPrefix + '__icon-circle', [['disabled', iDisabled]])"
+          :class="'' + tools.cls(classPrefix + '__icon-circle', [['disabled', iDisabled]])"
         />
-        <view
-          v-if="!dataChecked && icon == 'line'"
-          class="placeholder"
-        />
+        <view v-if="!dataChecked && icon == 'line'" class="placeholder" />
       </block>
     </view>
-    <view
-      :class="classPrefix + '__content'"
-      data-target="text"
-      @click.stop="handleTap"
-    >
+    <view :class="classPrefix + '__content'" data-target="text" @click.stop="handleTap">
       <view
         :class="
+          '' +
           tools.cls(classPrefix + '__title', [
             ['disabled', iDisabled],
-            ['checked', dataChecked]
+            ['checked', dataChecked],
           ]) +
-            ' ' +
-            tClassLabel
+          ' ' +
+          tClassLabel
         "
         :style="'-webkit-line-clamp:' + maxLabelRow"
       >
@@ -69,12 +60,13 @@
       </view>
       <view
         :class="
+          '' +
           tools.cls(classPrefix + '__description', [
             ['disabled', iDisabled],
-            ['checked', dataChecked]
+            ['checked', dataChecked],
           ]) +
-            ' ' +
-            tClassContent
+          ' ' +
+          tClassContent
         "
         :style="'-webkit-line-clamp:' + maxContentRow"
       >
@@ -84,142 +76,141 @@
         <slot name="content" />
       </view>
     </view>
-    <view
-      v-if="!borderless"
-      :class="tools.cls(classPrefix + '__border', [innerPlacement]) + ' ' + tClassBorder"
-    />
+    <view v-if="!borderless" :class="'' + tools.cls(classPrefix + '__border', [innerPlacement]) + ' ' + tClassBorder" />
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
 import { prefix, ISOLATED_RELATION_KEY } from '../common/config';
-import { coalesce } from '../common/utils';
-import { uniComponent } from '../common/src/index';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import { coalesce } from '../common/utils';
+import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
 
+import props from './props';
 
 const name = `${prefix}-radio`;
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  controlledProps: [
-    {
-      key: 'checked',
-      event: 'change',
-    },
-  ],
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-label`,
-    `${prefix}-class-icon`,
-    `${prefix}-class-content`,
-    `${prefix}-class-border`,
-  ],
-  mixins: [ChildrenMixin(RELATION_MAP.Radio)],
+export default {
   components: {
     TIcon,
   },
-  props: {
-    ...props,
-    borderless: {
-      type: Boolean,
-      default: false,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-    tId: {
-      type: String,
-    },
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      customIcon: false,
-      slotIcon: false,
-      optionLinked: false,
-      iconVal: [],
-      innerPlacement: '',
-      iDisabled: false,
-      iReadonly: false,
-      tools,
-
-      dataChecked: coalesce(this.checked, this.defaultChecked),
-    };
-  },
-  computed: {
-    isIsolated() {
-      return this.relationKey === ISOLATED_RELATION_KEY;
-    },
-  },
-  watch: {
-    checked: {
-      handler(v) {
-        this.dataChecked = v;
+    controlledProps: [
+      {
+        key: 'checked',
+        event: 'change',
       },
-      immediate: true,
-    },
-    disabled: {
-      handler(v) {
-        this.iDisabled = v;
+    ],
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-label`,
+      `${prefix}-class-icon`,
+      `${prefix}-class-content`,
+      `${prefix}-class-border`,
+    ],
+    mixins: [ChildrenMixin(RELATION_MAP.Radio)],
+    props: {
+      ...props,
+      borderless: {
+        type: Boolean,
+        default: false,
       },
-      immediate: true,
-    },
-    readonly: {
-      handler(v) {
-        this.iReadonly = v;
+      tId: {
+        type: String,
       },
-      immediate: true,
     },
-  },
-  mounted() {
-    this.init();
-  },
-  methods: {
-    handleTap(e) {
-      const { iDisabled, iReadonly, contentDisabled } = this;
-      const { target } = e.currentTarget.dataset;
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        customIcon: false,
+        slotIcon: false,
+        optionLinked: false,
+        iconVal: [],
+        innerPlacement: '',
+        iDisabled: false,
+        iReadonly: false,
+        tools,
 
-      if (iDisabled || iReadonly || (target === 'text' && contentDisabled)) return;
-
-      this.doChange();
+        dataChecked: coalesce(this.checked, this.defaultChecked),
+      };
     },
-    doChange() {
-      const { value, dataChecked, allowUncheck } = this;
-      const parent = this.isIsolated ? null : this[RELATION_MAP.Radio];
-
-      const isAllowUncheck = Boolean(allowUncheck || parent?.allowUncheck);
-
-      if (parent) {
-        this[RELATION_MAP.Radio].updateValue(dataChecked && isAllowUncheck ? null : value);
-      } else {
-        this._trigger('change', { checked: isAllowUncheck ? !dataChecked : true });
-      }
+    computed: {
+      isIsolated() {
+        return this.relationKey === ISOLATED_RELATION_KEY;
+      },
     },
-    init() {
-      const { icon } = this;
-      const parent = this.isIsolated ? null : this[RELATION_MAP.Radio];
-      const isIdArr = Array.isArray(parent?.icon || icon);
-
-      this.customIcon = isIdArr;
-      this.slotIcon = icon === 'slot';
-      this.iconVal = isIdArr ? parent?.icon || icon : [];
-      this.innerPlacement = this.placement || parent?.placement || 'left';
+    watch: {
+      checked: {
+        handler(v) {
+          this.dataChecked = v;
+        },
+        immediate: true,
+      },
+      disabled: {
+        handler(v) {
+          this.iDisabled = v;
+        },
+        immediate: true,
+      },
+      readonly: {
+        handler(v) {
+          this.iReadonly = v;
+        },
+        immediate: true,
+      },
     },
-
-    setDisabled(disabled) {
-      if (this.isIsolated) return;
-
-      this.iDisabled = this.disabled || disabled;
+    mounted() {
+      this.init();
     },
+    methods: {
+      handleTap(e) {
+        const { iDisabled, iReadonly, contentDisabled } = this;
+        const { target } = e.currentTarget.dataset;
 
-    setReadonly(readonly) {
-      this.iReadonly = this.readonly || readonly;
+        if (iDisabled || iReadonly || (target === 'text' && contentDisabled)) return;
+
+        this.doChange();
+      },
+      doChange() {
+        const { value, dataChecked, allowUncheck } = this;
+        const parent = this.isIsolated ? null : this[RELATION_MAP.Radio];
+
+        const isAllowUncheck = Boolean(allowUncheck || parent?.allowUncheck);
+
+        if (parent) {
+          this[RELATION_MAP.Radio].updateValue(dataChecked && isAllowUncheck ? null : value);
+        } else {
+          this._trigger('change', { checked: isAllowUncheck ? !dataChecked : true });
+        }
+      },
+      init() {
+        const { icon } = this;
+        const parent = this.isIsolated ? null : this[RELATION_MAP.Radio];
+        const isIdArr = Array.isArray(parent?.icon || icon);
+
+        this.customIcon = isIdArr;
+        this.slotIcon = icon === 'slot';
+        this.iconVal = isIdArr ? parent?.icon || icon : [];
+        this.innerPlacement = this.placement || parent?.placement || 'left';
+      },
+
+      setDisabled(disabled) {
+        if (this.isIsolated) return;
+
+        this.iDisabled = this.disabled || disabled;
+      },
+
+      setReadonly(readonly) {
+        this.iReadonly = this.readonly || readonly;
+      },
     },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./radio.css"></style>

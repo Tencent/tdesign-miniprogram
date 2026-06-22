@@ -224,9 +224,7 @@ export default class PickerItem extends SuperComponent {
     formatOption(options: PickerItemOption[], columnIndex: number, format: any) {
       if (typeof format !== 'function') return options;
 
-      return options.map((ele: PickerItemOption) => {
-        return format(ele, columnIndex);
-      });
+      return options.map((ele: PickerItemOption) => format(ele, columnIndex));
     },
 
     updateSelected(index: number, trigger: boolean) {

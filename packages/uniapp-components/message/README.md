@@ -8,7 +8,9 @@ isComponent: true
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-message />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TMessage from '@tdesign/uniapp/message/message.vue';
@@ -16,10 +18,13 @@ import TMessage from '@tdesign/uniapp/message/message.vue';
 
 ### 引入 API
 
-若以 API 形式调用 Message，则需在页面 `page.js` 中引入组件 API：
+若以 API 形式调用 Message，则需在页面中引入组件 API：
 
 ```js
-import Message from '@tdesign/uniapp/message/index';
+// MessagePlugin 和 Message 均可使用
+import { MessagePlugin } from '@tdesign/uniapp';
+// 或
+// import { Message } from '@tdesign/uniapp';
 ```
 
 ### 组件类型

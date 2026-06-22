@@ -1,14 +1,8 @@
 <template>
-  <view
-    :style="tools._style([customStyle])"
-    :class="classPrefix"
-  >
+  <view :style="'' + tools._style([customStyle])" :class="classPrefix">
     <view
       v-if="theme === PRO_THEME.LINE"
-      :class="[
-        classPrefix + '--thin ' + classPrefix + '--status--' + (status || computedStatus),
-        tClass
-      ]"
+      :class="[classPrefix + '--thin ' + classPrefix + '--status--' + (status || computedStatus), tClass]"
     >
       <view
         aria-role="progressbar"
@@ -21,22 +15,12 @@
         :style="'height: ' + heightBar + 'px;border-radius: ' + heightBar + 'px;background-color: ' + bgColorBar"
       >
         <view
-          :class="[
-            classPrefix + '__inner ',
-            tClassBar
-          ]"
+          :class="[classPrefix + '__inner ', tClassBar]"
           :style="'background: ' + colorBar + '; width: ' + (computedProgress + '%')"
         />
       </view>
-      <view
-        v-if="label"
-        :class="classPrefix + '__info ' + tClassLabel"
-        :aria-hidden="true"
-      >
-        <block
-          v-if="tools.includes(STATUS, status)"
-          name="icon"
-        >
+      <view v-if="label" :class="classPrefix + '__info ' + tClassLabel" :aria-hidden="true">
+        <block v-if="tools.includes(STATUS, status)" name="icon">
           <t-icon
             :t-class="classPrefix + '__icon ' + classPrefix + '__icon--'"
             :name="LINE_STATUS_ICON[status]"
@@ -59,16 +43,16 @@
       aria-live="polite"
       :class="
         classPrefix +
-          '__bar ' +
-          classPrefix +
-          '--plump ' +
-          (computedProgress > 10 ? classPrefix + '--over-ten' : classPrefix + '--under-ten') +
-          ' ' +
-          classPrefix +
-          '--status--' +
-          (status || computedStatus) +
-          ' ' +
-          tClass
+        '__bar ' +
+        classPrefix +
+        '--plump ' +
+        (computedProgress > 10 ? classPrefix + '--over-ten' : classPrefix + '--under-ten') +
+        ' ' +
+        classPrefix +
+        '--status--' +
+        (status || computedStatus) +
+        ' ' +
+        tClass
       "
       :style="'height: ' + heightBar + 'px;border-radius: ' + heightBar + 'px;background-color: ' + bgColorBar"
     >
@@ -76,28 +60,15 @@
         :class="classPrefix + '__inner ' + tClassBar"
         :style="'background: ' + colorBar + '; width: ' + computedProgress + '%'"
       >
-        <view
-          v-if="label && computedProgress > 10"
-          :class="classPrefix + '__info ' + tClassLabel"
-        >
+        <view v-if="label && computedProgress > 10" :class="classPrefix + '__info ' + tClassLabel">
           <text>{{ tools.isString(label) ? label : computedProgress + '%' }}</text>
         </view>
-        <slot
-          v-if="computedProgress > 10"
-          name="label"
-        />
+        <slot v-if="computedProgress > 10" name="label" />
       </view>
-      <view
-        v-if="label && computedProgress <= 10"
-        :class="classPrefix + '__info ' + tClassLabel"
-        :aria-hidden="true"
-      >
+      <view v-if="label && computedProgress <= 10" :class="classPrefix + '__info ' + tClassLabel" :aria-hidden="true">
         <text>{{ tools.isString(label) ? label : computedProgress + '%' }}</text>
       </view>
-      <slot
-        v-if="computedProgress <= 10"
-        name="label"
-      />
+      <slot v-if="computedProgress <= 10" name="label" />
     </view>
     <view
       v-if="theme === PRO_THEME.CIRCLE"
@@ -110,28 +81,21 @@
         :aria-valuenow="computedProgress"
         :aria-label="ariaLabel || (isIOS ? getIOSAriaLabel(status) : getAndroidAriaLabel(status))"
         aria-live="polite"
-        :class="tools.cls(classPrefix + '__canvas--circle', [[size, true]])"
+        :class="'' + tools.cls(classPrefix + '__canvas--circle', [[size, true]])"
         :style="
           getCircleStyle(size, heightBar) +
-            '; background-image: conic-gradient(from var(--td-progress-circle-from), ' +
-            (colorCircle || STATUS_COLOR[status] || 'var(--td-progress-inner-bg-color)') +
-            ' ' +
-            computedProgress +
-            '%, ' +
-            (bgColorBar || 'var(--td-progress-track-bg-color)') +
-            ' 0%);'
+          '; background-image: conic-gradient(from var(--td-progress-circle-from), ' +
+          (colorCircle || STATUS_COLOR[status] || 'var(--td-progress-inner-bg-color)') +
+          ' ' +
+          computedProgress +
+          '%, ' +
+          (bgColorBar || 'var(--td-progress-track-bg-color)') +
+          ' 0%);'
         "
       >
         <view :class="classPrefix + '__canvas--inner ' + tClassBar">
-          <view
-            v-if="label"
-            :class="classPrefix + '__info ' + tClassLabel"
-            :aria-hidden="true"
-          >
-            <block
-              v-if="tools.includes(STATUS, status)"
-              name="icon"
-            >
+          <view v-if="label" :class="classPrefix + '__info ' + tClassLabel" :aria-hidden="true">
+            <block v-if="tools.includes(STATUS, status)" name="icon">
               <t-icon
                 :t-class="classPrefix + '__icon ' + classPrefix + '__icon--'"
                 :name="CIRCLE_STATUS_ICON[status]"
@@ -149,109 +113,103 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import { getBackgroundColor } from './utils';
+import { uniComponent } from '../common/src/index';
+
 import { unitConvert, isIOS as isIOSValidator } from '../common/utils';
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
 
 import {
   STATUS,
   STATUS_TEXT,
   PRO_THEME,
-
   STATUS_COLOR,
   LINE_STATUS_ICON,
   CIRCLE_STATUS_ICON,
-
   getCircleStyle,
   getIOSAriaLabel,
   getAndroidAriaLabel,
 } from './computed.js';
-
+import props from './props';
+import { getBackgroundColor } from './utils';
 
 const name = `${prefix}-progress`;
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-bar`,
-    `${prefix}-class-label`,
-  ],
+export default {
   components: {
     TIcon,
   },
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      colorBar: '',
-      heightBar: '',
-      computedStatus: '',
-      computedProgress: 0,
-      isIOS: isIOSValidator(),
-      STATUS,
-      STATUS_TEXT,
-      PRO_THEME,
-
-      STATUS_COLOR,
-      LINE_STATUS_ICON,
-      CIRCLE_STATUS_ICON,
-
-      getCircleStyle,
-      getIOSAriaLabel,
-      getAndroidAriaLabel,
-      tools,
-    };
-  },
-  watch: {
-    percentage: {
-      handler(percentage) {
-        percentage = Math.max(0, Math.min(percentage, 100));
-
-        this.computedStatus = percentage === 100 ? 'success' : '';
-        this.computedProgress = percentage;
-      },
-      immediate: true,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-
-    color: {
-      handler(color) {
-        this.colorBar = getBackgroundColor(color);
-        this.colorCircle = typeof color === 'object' ? '' : color; // 环形不支持渐变，单独处理
-      },
-      immediate: true,
+    externalClasses: [`${prefix}-class`, `${prefix}-class-bar`, `${prefix}-class-label`],
+    props: {
+      ...props,
     },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        colorBar: '',
+        heightBar: '',
+        computedStatus: '',
+        computedProgress: 0,
+        isIOS: isIOSValidator(),
+        STATUS,
+        STATUS_TEXT,
+        PRO_THEME,
 
-    strokeWidth: {
-      handler(strokeWidth) {
-        if (!strokeWidth) {
-          return '';
-        }
-        this.heightBar = unitConvert(strokeWidth);
-      },
-      immediate: true,
+        STATUS_COLOR,
+        LINE_STATUS_ICON,
+        CIRCLE_STATUS_ICON,
+
+        getCircleStyle,
+        getIOSAriaLabel,
+        getAndroidAriaLabel,
+        tools,
+      };
     },
+    watch: {
+      percentage: {
+        handler(percentage) {
+          percentage = Math.max(0, Math.min(percentage, 100));
 
-    trackColor: {
-      handler(trackColor) {
-        this.bgColorBar = trackColor;
+          this.computedStatus = percentage === 100 ? 'success' : '';
+          this.computedProgress = percentage;
+        },
+        immediate: true,
       },
-      immediate: true,
-    },
-  },
-  methods: {
 
-  },
-});
+      color: {
+        handler(color) {
+          this.colorBar = getBackgroundColor(color);
+          this.colorCircle = typeof color === 'object' ? '' : color; // 环形不支持渐变，单独处理
+        },
+        immediate: true,
+      },
+
+      strokeWidth: {
+        handler(strokeWidth) {
+          if (!strokeWidth) {
+            return '';
+          }
+          this.heightBar = unitConvert(strokeWidth);
+        },
+        immediate: true,
+      },
+
+      trackColor: {
+        handler(trackColor) {
+          this.bgColorBar = trackColor;
+        },
+        immediate: true,
+      },
+    },
+    methods: {},
+  }),
+};
 </script>
 <style scoped src="./progress.css"></style>

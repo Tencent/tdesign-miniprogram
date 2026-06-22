@@ -1,7 +1,7 @@
 ---
 title: ChatThinking 思考过程
 description: 用于展示思考过程的组件。
-spline: base
+spline: chat
 isComponent: true
 ---
 
@@ -32,6 +32,10 @@ isComponent: true
 
 {{ base }}
 
+支持通过collapsed来控制面板是否折叠，示例中展示了当内容输出结束时自动收起的效果
+
+{{ collapsed }}
+
 ### 02 组件状态
 
 #### 思考中
@@ -56,7 +60,7 @@ isComponent: true
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
-animation | String | moving | 内容区域最大高度，超出会自动滚动。可选项：skeleton/moving/gradient/dot | N
+animation | String | moving | 加载的状态形式。可选项：skeleton/moving/gradient/dots | N
 collapsed | Boolean | false | 是否折叠 | N
 content | Object | - | 必需。思考内容对象。TS 类型：`{ text?: string; title?: string }` | Y
 layout | String | block | 布局方式。可选项：block/border | N
@@ -67,7 +71,7 @@ status | String | pending | 必需。思考状态。可选项：complete/stop/er
 
 名称 | 参数 | 描述
 -- | -- | --
-collapsed-change | `(value: Boolean)` | 切换折叠面板时触发
+collapsed-change | `(value: boolean)` | 切换折叠面板时触发
 
 ### ChatThinking Slots
 

@@ -4,7 +4,7 @@ description: 将根据业务实践持续新增组件类型，敬请留意组件�
 spline: explain
 ---
 
-<h3>基础<em class="tag">6</em></h3>
+<h3>基础<em class="tag">7</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/uniapp/components/button">
@@ -51,6 +51,14 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-link.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-link-dark.png" />
       <p class="name">Link 链接</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/uniapp/components/typography">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-typography.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-typography-dark.png" />
+      <p class="name">Typography 排版</p>
     </a>
   </div>
 </section>
@@ -241,7 +249,7 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">18</em></h3>
+<h3>数据展示<em class="tag">21</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/uniapp/components/avatar">
@@ -347,6 +355,22 @@ spline: explain
     </a>
   </div>
 
+   <div class="image-wrapper">
+    <a class="item" href="/uniapp/components/segmented">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-segmented.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-segmented-dark.png" />
+      <p class="name">Segmented 分段控制器</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/uniapp/components/segmented">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-segmented.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-segmented-dark.png" />
+      <p class="name">Segmented 分段控制器</p>
+    </a>
+  </div>
+
   <div class="image-wrapper">
     <a class="item" href="/uniapp/components/skeleton">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-skeleton.png" />
@@ -368,6 +392,14 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-swiper.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-swiper-dark.png" />
       <p class="name">Swiper 轮播图</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/uniapp/components/table">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-table.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-table-dark.png" />
+      <p class="name">Table 表格</p>
     </a>
   </div>
 

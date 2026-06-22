@@ -1,18 +1,9 @@
 <template>
   <view>
     <t-swipe-cell>
-      <t-cell
-        title="左滑单操作"
-        note="辅助信息"
-        :bordered="false"
-      />
+      <t-cell title="左滑单操作" note="辅助信息" :bordered="false" />
       <template #right>
-        <view
-          class="btn delete-btn"
-          @click="onDelete"
-        >
-          删除
-        </view>
+        <view class="btn delete-btn" @click="onDelete"> 删除 </view>
       </template>
     </t-swipe-cell>
 
@@ -25,54 +16,21 @@
         image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
       />
       <template #right>
-        <view
-          class="btn delete-btn"
-          @click="onDelete"
-        >
-          删除
-        </view>
+        <view class="btn delete-btn" @click="onDelete"> 删除 </view>
       </template>
     </t-swipe-cell>
 
-    <t-swipe-cell
-      :right="right"
-      @click="onActionClick"
-    >
-      <t-cell
-        title="左滑双操作"
-        note="辅助信息"
-        :bordered="false"
-      />
+    <t-swipe-cell :right="right" @click="onActionClick">
+      <t-cell title="左滑双操作" note="辅助信息" :bordered="false" />
     </t-swipe-cell>
 
     <t-swipe-cell>
-      <t-cell
-        title="左滑多操作"
-        note="辅助信息"
-        :bordered="false"
-      />
+      <t-cell title="左滑多操作" note="辅助信息" :bordered="false" />
       <template #right>
-        <view
-          class="btn-wrapper"
-        >
-          <view
-            class="btn favor-btn"
-            @click="onFavor"
-          >
-            收藏
-          </view>
-          <view
-            class="btn edit-btn"
-            @click="onEdit"
-          >
-            编辑
-          </view>
-          <view
-            class="btn delete-btn"
-            @click="onDelete"
-          >
-            删除
-          </view>
+        <view class="btn-wrapper">
+          <view class="btn favor-btn" @click="onFavor"> 收藏 </view>
+          <view class="btn edit-btn" @click="onEdit"> 编辑 </view>
+          <view class="btn delete-btn" @click="onDelete"> 删除 </view>
         </view>
       </template>
     </t-swipe-cell>
@@ -80,8 +38,8 @@
 </template>
 
 <script>
-import TSwipeCell from '@tdesign/uniapp/swipe-cell/swipe-cell.vue';
 import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TSwipeCell from '@tdesign/uniapp/swipe-cell/swipe-cell.vue';
 export default {
   components: {
     TSwipeCell,
@@ -138,27 +96,27 @@ export default {
 </script>
 <style>
 .btn-wrapper {
-    height: 100%;
+  height: 100%;
 }
 
 .btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 120rpx;
-    height: 100%;
-    color: white;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 120rpx;
+  height: 100%;
+  color: white;
 }
 
 .delete-btn {
-    background-color: #e34d59;
+  background-color: #e34d59;
 }
 
 .edit-btn {
-    background-color: #ed7b2f;
+  background-color: #ed7b2f;
 }
 
 .favor-btn {
-    background-color: var(--td-brand-color, #0052d9);
+  background-color: var(--td-brand-color, #0052d9);
 }
 </style>

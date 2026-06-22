@@ -1,18 +1,8 @@
 <template>
   <view>
-    <t-button
-      theme="primary"
-      size="large"
-      variant="outline"
-      block
-      @click="onClick"
-    >
-      带操作图片预览
-    </t-button>
+    <t-button theme="primary" size="large" variant="outline" block @click="onClick"> 带操作图片预览 </t-button>
 
-    <t-action-sheet
-      ref="t-action-sheet"
-    />
+    <t-action-sheet ref="t-action-sheet" />
 
     <t-image-viewer
       :using-custom-navbar="!isMPAlipay"
@@ -30,10 +20,11 @@
 </template>
 
 <script>
-import TButton from '@tdesign/uniapp/button/button.vue';
+import { ActionSheetPlugin } from '@tdesign/uniapp';
 import TActionSheet from '@tdesign/uniapp/action-sheet/action-sheet.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
 import TImageViewer from '@tdesign/uniapp/image-viewer/image-viewer.vue';
-import ActionSheet from '@tdesign/uniapp/action-sheet/index';
+
 export default {
   components: {
     TButton,
@@ -52,7 +43,10 @@ export default {
   created() {},
   methods: {
     onClick() {
-      this.images = ['https://tdesign.gtimg.com/mobile/demos/swiper1.png', 'https://tdesign.gtimg.com/mobile/demos/swiper2.png'];
+      this.images = [
+        'https://tdesign.gtimg.com/mobile/demos/swiper1.png',
+        'https://tdesign.gtimg.com/mobile/demos/swiper2.png',
+      ];
       this.showIndex = true;
       this.visible = true;
       this.closeBtn = true;
@@ -65,7 +59,7 @@ export default {
     onDelete(e) {
       const { index } = e;
       console.log(index);
-      ActionSheet.show({
+      ActionSheetPlugin.show({
         context: this,
         selector: '#t-action-sheet',
         description: '要删除这张照片吗？',
@@ -85,5 +79,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

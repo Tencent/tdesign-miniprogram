@@ -16,10 +16,9 @@ const props: TdChatActionbarProps = {
     type: String,
     value: '',
   },
-  /** 评价内容 */
+  /** 评价类型， 可选 'good'（点赞） 或者 'bad'（点踩）， 默认为空 */
   comment: {
     type: String,
-    value: '',
   },
   /** 被复制的内容 */
   content: {
@@ -36,15 +35,14 @@ const props: TdChatActionbarProps = {
     type: Boolean,
     value: false,
   },
+  /** 【实验】长按操作栏位置 */
+  longPressPosition: {
+    type: Object,
+  },
   /** 【实验】操作栏位置 */
   placement: {
     type: String,
     value: 'start',
-  },
-  /** 【实验】长按触发点的位置信息，用于定位 popover */
-  longPressPosition: {
-    type: Object,
-    value: null,
   },
 };
 

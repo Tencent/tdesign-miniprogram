@@ -1,17 +1,11 @@
 <template>
   <view class="chat-example-block">
-    <t-chat-thinking
-      :content="content"
-      layout="block"
-      :status="status"
-      @collapsedChange="handleCollapsedChange"
-    />
+    <t-chat-thinking :content="content" layout="block" :status="status" @collapsedChange="handleCollapsedChange" />
   </view>
 </template>
 
 <script>
 import TChatThinking from '@tdesign/uniapp-chat/chat-thinking/chat-thinking.vue';
-
 
 export default {
   components: {
@@ -30,15 +24,14 @@ export default {
   created() {},
   methods: {
     handleCollapsedChange(e) {
-      console.log('展开状态变化:', e.detail);
+      console.log('展开状态变化:', e);
     },
   },
 };
 </script>
 <style>
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx;
 }
-
 </style>

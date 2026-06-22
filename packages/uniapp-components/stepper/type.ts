@@ -15,7 +15,7 @@ export interface TdStepperProps {
   /**
    * 禁用全部操作
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * 输入框宽度，默认单位 `px`
    */

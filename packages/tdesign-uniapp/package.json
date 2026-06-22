@@ -1,9 +1,9 @@
 {
   "name": "@tdesign/uniapp",
-  "version": "0.7.3",
+  "version": "0.10.0",
   "id": "tdesign-uniapp",
   "title": "tdesign-uniapp",
-  "description": "TDesign Component for UniApp",
+  "description": "TDesign Component for Uniapp",
   "author": "tdesign",
   "license": "MIT",
   "keywords": [
@@ -14,6 +14,7 @@
   ],
   "files": [
     "dist",
+    "script",
     "global.d.ts",
     "LICENSE",
     "README.md",
@@ -34,9 +35,54 @@
   "typings": "./dist/types/index.d.ts",
   "types": "./dist/types/index.d.ts",
   "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/index.js"
+    },
     "./*": "./dist/*",
     "./global": {
       "types": "./global.d.ts"
+    },
+    "./mixins/page-scroll": {
+      "types": "./dist/mixins/page-scroll.d.ts",
+      "import": "./dist/mixins/page-scroll.js",
+      "default": "./dist/mixins/page-scroll.js"
+    },
+    "./dialog": {
+      "types": "./dist/dialog/index.d.ts",
+      "import": "./dist/dialog/index.js",
+      "default": "./dist/dialog/index.js"
+    },
+    "./message": {
+      "types": "./dist/message/index.d.ts",
+      "import": "./dist/message/index.js",
+      "default": "./dist/message/index.js"
+    },
+    "./toast": {
+      "types": "./dist/toast/index.d.ts",
+      "import": "./dist/toast/index.js",
+      "default": "./dist/toast/index.js"
+    },
+    "./action-sheet": {
+      "types": "./dist/action-sheet/index.d.ts",
+      "import": "./dist/action-sheet/index.js",
+      "default": "./dist/action-sheet/index.js"
+    },
+    "./theme.css": {
+      "types": "./dist/theme.css.d.ts",
+      "default": "./dist/theme.css"
+    },
+    "./theme.less": {
+      "types": "./dist/theme.less.d.ts",
+      "default": "./dist/theme.less"
+    },
+    "./theme-light.css": {
+      "types": "./dist/theme-light.css.d.ts",
+      "default": "./dist/theme-light.css"
+    },
+    "./theme-light.less": {
+      "types": "./dist/theme-light.less.d.ts",
+      "default": "./dist/theme-light.less"
     },
     "./action-sheet/action-sheet.vue": {
       "types": "./dist/types/action-sheet.d.ts",
@@ -122,6 +168,11 @@
       "types": "./dist/types/color-picker.d.ts",
       "import": "./dist/color-picker/color-picker.vue",
       "default": "./dist/color-picker/color-picker.vue"
+    },
+    "./config-provider/config-provider.vue": {
+      "types": "./dist/types/config-provider.d.ts",
+      "import": "./dist/config-provider/config-provider.vue",
+      "default": "./dist/config-provider/config-provider.vue"
     },
     "./count-down/count-down.vue": {
       "types": "./dist/types/count-down.d.ts",
@@ -258,6 +309,11 @@
       "import": "./dist/overlay/overlay.vue",
       "default": "./dist/overlay/overlay.vue"
     },
+    "./paragraph/paragraph.vue": {
+      "types": "./dist/types/paragraph.d.ts",
+      "import": "./dist/paragraph/paragraph.vue",
+      "default": "./dist/paragraph/paragraph.vue"
+    },
     "./picker/picker.vue": {
       "types": "./dist/types/picker.d.ts",
       "import": "./dist/picker/picker.vue",
@@ -267,6 +323,11 @@
       "types": "./dist/types/picker-item.d.ts",
       "import": "./dist/picker-item/picker-item.vue",
       "default": "./dist/picker-item/picker-item.vue"
+    },
+    "./popover/popover.vue": {
+      "types": "./dist/types/popover.d.ts",
+      "import": "./dist/popover/popover.vue",
+      "default": "./dist/popover/popover.vue"
     },
     "./popup/popup.vue": {
       "types": "./dist/types/popup.d.ts",
@@ -317,6 +378,11 @@
       "types": "./dist/types/search.d.ts",
       "import": "./dist/search/search.vue",
       "default": "./dist/search/search.vue"
+    },
+    "./segmented/segmented.vue": {
+      "types": "./dist/types/segmented.d.ts",
+      "import": "./dist/segmented/segmented.vue",
+      "default": "./dist/segmented/segmented.vue"
     },
     "./side-bar/side-bar.vue": {
       "types": "./dist/types/side-bar.d.ts",
@@ -393,6 +459,11 @@
       "import": "./dist/tab-panel/tab-panel.vue",
       "default": "./dist/tab-panel/tab-panel.vue"
     },
+    "./table/table.vue": {
+      "types": "./dist/types/table.d.ts",
+      "import": "./dist/table/table.vue",
+      "default": "./dist/table/table.vue"
+    },
     "./tabs/tabs.vue": {
       "types": "./dist/types/tabs.d.ts",
       "import": "./dist/tabs/tabs.vue",
@@ -403,10 +474,20 @@
       "import": "./dist/tag/tag.vue",
       "default": "./dist/tag/tag.vue"
     },
+    "./text/text.vue": {
+      "types": "./dist/types/text.d.ts",
+      "import": "./dist/text/text.vue",
+      "default": "./dist/text/text.vue"
+    },
     "./textarea/textarea.vue": {
       "types": "./dist/types/textarea.d.ts",
       "import": "./dist/textarea/textarea.vue",
       "default": "./dist/textarea/textarea.vue"
+    },
+    "./title/title.vue": {
+      "types": "./dist/types/title.d.ts",
+      "import": "./dist/title/title.vue",
+      "default": "./dist/title/title.vue"
     },
     "./toast/toast.vue": {
       "types": "./dist/types/toast.d.ts",
@@ -463,7 +544,9 @@
     "init": "node ./example/script/watch/init.js && node ./example/script/pages/index.js",
     "watch": "node ./example/script/watch/watch.js",
     "release:prepare": "node ./example/script/release/prepare.js",
-    "commit": "git-cz"
+    "gen:types": "node ./example/script/types/index.js",
+    "commit": "git-cz",
+    "postinstall": "node script/postinstall.js || true"
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:",
@@ -485,7 +568,7 @@
     "eslint-import-resolver-node": "catalog:",
     "eslint-plugin-import": "catalog:",
     "eslint-plugin-jest": "catalog:",
-    "eslint-plugin-light": "latest",
+    "eslint-plugin-light": "catalog:",
     "eslint-plugin-prettier": "catalog:",
     "eslint-plugin-react": "catalog:",
     "eslint-plugin-react-hooks": "catalog:",

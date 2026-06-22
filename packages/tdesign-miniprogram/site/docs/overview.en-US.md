@@ -54,6 +54,14 @@ spline: explain
       <p class="name">Link</p>
     </a>
   </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/typography-en">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-typography.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-typography-dark.png" />
+      <p class="name">Typography</p>
+    </a>
+  </div>
 </section>
 
 <h3>Navigation<em class="tag">8</em></h3>
@@ -116,7 +124,7 @@ spline: explain
   </div>
 </section>
 
-<h3>Form<em class="tag">16</em></h3>
+<h3>Form<em class="tag">17</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/calendar-en">
@@ -151,6 +159,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-datetimepicker.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-datetimepicker-dark.png" />
       <p class="name">DateTimePicker</p>
+    </a>
+  </div>
+   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/form-en">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-form.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-form-dark.png" />
+      <p class="name">Form</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -235,7 +250,7 @@ spline: explain
   </div>
 </section>
 
-<h3>Data Display<em class="tag">18</em></h3>
+<h3>Data Display<em class="tag">20</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/avatar-en">
@@ -342,6 +357,14 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/segmented">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-segmented.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-segmented-dark.png" />
+      <p class="name">Segmented</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/skeleton-en">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-skeleton.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-skeleton-dark.png" />
@@ -366,6 +389,14 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components//table-en">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-table.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-table-dark.png" />
+      <p class="name">Table</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/tag-en">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-tag.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-tag-dark.png" />
@@ -382,7 +413,7 @@ spline: explain
   </div>
 </section>
 
-<h3>Feedback<em class="tag">10</em></h3>
+<h3>Feedback<em class="tag">13</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/action-sheet-en">

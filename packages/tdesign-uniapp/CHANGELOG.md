@@ -5,6 +5,86 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.10.0 `2026-06-15`
+
+### 🚀 Features
+
+- `Typography`: 新增 `Typography` 排版组件 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Cascader`: 新增 `filterable`、`filter` 和 `filter-placeholder` 属性，支持搜索功能 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+
+### 🐞 Bug Fixes
+
+- `Image`: 修复鸿蒙下图片无法显示问题 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Message`: 修复连续点击时的报错问题 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Search`: 补全 `update:value` 事件声明，修复 `v-model:value` 语法糖告警 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Stepper`: 调整手动输入逻辑，输入时仅过滤非法字符，范围校验&赋值移至失焦 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Upload`: 修复禁用态文件样式错误（禁用态下移除操作按钮） @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+
+## 🌈 0.9.1 `2026-06-12`
+
+### 🚀 Features
+
+- `ActionSheet`: 新增 `preventScrollThrough` 属性 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `Form`: 新增 `contentAlign` 属性，支持配置表单内容对齐方式 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `ImageViewer`: 新增 `maxZoom` 属性，支持缩放 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `Search`: 支持 `v-model` 语法糖写法 @Kriac ([#4459](https://github.com/Tencent/tdesign-miniprogram/pull/4459))
+
+### 🐞 Bug Fixes
+
+- `Button`: 修复图标尺寸变量错误问题 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `Input`: 将 `change` 事件放在值更新之后 @Kriac ([#4443](https://github.com/Tencent/tdesign-miniprogram/pull/4443))
+- `Picker`: 修复按钮自定义文案无效 @liweijie0812 ([#4480](https://github.com/Tencent/tdesign-miniprogram/pull/4480))
+- `Table`: 修复列配置中的类名选项无效的问题 @betavs ([#4500](https://github.com/Tencent/tdesign-miniprogram/pull/4500))
+- `Upload`: 修复预览图片不是当前问题 @novlan1 ([#4473](https://github.com/Tencent/tdesign-miniprogram/pull/4473))
+
+## 🌈 0.9.0 `2026-05-08`
+
+### 🚀 Features
+
+- `Table`: 新增 `Table` 表格组件 @novlan1 ([#4397](https://github.com/Tencent/tdesign-miniprogram/pull/4397))
+- `Segmented`: 新增 `Segmented` 分段控制器组件 @novlan1 ([#4413](https://github.com/Tencent/tdesign-miniprogram/pull/4413))
+
+### 🐞 Bug Fixes
+
+- `Calendar`: 修复 `type` 为 `range` 时，未滚动到目标位置的问题 @novlan1 ([#4413](https://github.com/Tencent/tdesign-miniprogram/pull/4413))
+- `DropdownMenu`: 修复 `label` 回显错误问题 @novlan1 ([#4413](https://github.com/Tencent/tdesign-miniprogram/pull/4413))
+- `Input`: 修复 input clearable 点击后没有及时更新双向绑定的问题 @Kriac ([#4420](https://github.com/Tencent/tdesign-miniprogram/pull/4420))
+- `TabBar`: 修复 `badgeProps` 属性中的 `color` 和 `shape` 字段无效 @liweijie0812 ([#4427](https://github.com/Tencent/tdesign-miniprogram/pull/4427))
+
+## 🌈 0.8.1 `2026-04-09`
+
+### 🚀 Features
+
+- `Icon`: 新增 `divider-1`, `voice-wave` 和 `keyboard-1`  图标 @uyarn ([#4395](https://github.com/Tencent/tdesign-miniprogram/pull/4395))
+
+### 🐞 Bug Fixes
+
+- `Form`: 修复 `FormItem` 右侧箭头深色模式颜色错误 @anlyyao ([#4384](https://github.com/Tencent/tdesign-miniprogram/pull/4384))
+- `Rate`: 修复提示框层级不够被覆盖的问题 @liweijie0812 ([#4386](https://github.com/Tencent/tdesign-miniprogram/pull/4386))
+
+## 🌈 0.8.0 `2026-03-23`
+
+### 🚨 Breaking Changes
+
+- `DateTimePicker`: 废弃 `custom-locale` 属性，请用 `ConfigProvider` 替换该功能 @novlan1 ([#4350](https://github.com/Tencent/tdesign-miniprogram/pull/4350))
+
+### 🚀 Features
+
+- `Cascader`: 新增 `PopupProps` 属性，透传至 `Popup` @novlan1 ([#4320](https://github.com/Tencent/tdesign-miniprogram/pull/4320))
+- `ConfigProvider`: 新增 `ConfigProvider` 全局特性配置组件 @novlan1 ([#4350](https://github.com/Tencent/tdesign-miniprogram/pull/4350))
+- `Picker`: 支持 `v-model:value` 语法糖 @novlan1 ([#4320](https://github.com/Tencent/tdesign-miniprogram/pull/4320))
+
+### 🐞 Bug Fixes
+
+- `ColorPicker`: 修复弹窗模式下预设颜色（swatch-colors）无法横向滚动 @novlan1 ([#4350](https://github.com/Tencent/tdesign-miniprogram/pull/4350))
+- `DateTimePicker`: 修复 `format` 含非日期 `token`（如 `ddd`）时，格式化后的值回传导致 `Invalid Date` 的问题 @novlan1 ([#4320](https://github.com/Tencent/tdesign-miniprogram/pull/4320))
+- `Form`: 修复 `required-mark` 无效问题 @novlan1 ([#4350](https://github.com/Tencent/tdesign-miniprogram/pull/4350))
+- `Tabs`: 修复开启 `animation` 和 `lazy` 时，跳跃切换选项卡内容区域显示异常的问题 @novlan1 ([#4350](https://github.com/Tencent/tdesign-miniprogram/pull/4350))
+- `Toast`: 修复 `setup` 语法下，函数式调用时找不到实例的问题 @novlan1 ([#4312](https://github.com/Tencent/tdesign-miniprogram/pull/4312))
+- `Upload`: 
+  - 修复 `@upload-disabled-mask` 变量默认值错误 @anlyyao ([#4303](https://github.com/Tencent/tdesign-miniprogram/pull/4303))
+  - 修复 H5 环境下回调中 URL 错误问题 @novlan1 ([#4320](https://github.com/Tencent/tdesign-miniprogram/pull/4320))
+
 ## 🌈 0.7.3 `2026-03-04`
 
 ### 🐞 Bug Fixes

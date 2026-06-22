@@ -1,6 +1,5 @@
-import utils from '@tdesign/uniapp/common/utils.wxs';
 import { getRegExp } from '@tdesign/uniapp/common/runtime/wxs-polyfill';
-
+import utils from '@tdesign/uniapp/common/utils.wxs';
 
 export function textareaStyle(autosize) {
   if (autosize && typeof autosize === 'object') {
@@ -19,4 +18,3 @@ function addUnit(value) {
   }
   return REGEXP.test(`${value}`) ? `${value}rpx` : value;
 }
-

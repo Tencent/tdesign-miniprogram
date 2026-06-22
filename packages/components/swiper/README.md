@@ -1,7 +1,7 @@
 ---
 title: Swiper 轮播图
 description: 用于循环轮播一组图片或内容，也可以滑动进行切换，轮播动效时间可以设置。
-spline: message
+spline: data
 isComponent: true
 ---
 
@@ -136,7 +136,7 @@ t-class | 根节点样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-swiper-item-padding | 0 | -
 --td-swiper-radius | @radius-large | -

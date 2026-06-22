@@ -1,9 +1,6 @@
 <template>
   <view class="chat-example-block">
-    <t-chat-markdown
-      :content="markdownContent"
-      @click="handleLinkTap"
-    />
+    <t-chat-markdown :content="markdownContent" @click="handleNodeTap" />
   </view>
 </template>
 
@@ -42,19 +39,24 @@ export default {
     };
   },
   methods: {
-    handleLinkTap(e) {
-      // 打开链接
-      console.log('监听点击', e);
-      uni.navigateTo({
-        url: e.node.href,
-      });
+    handleNodeTap(e) {
+      const { node } = e;
+      // 打印节点信息
+      console.log('节点信息', node);
+      // 图片节点预览
+      if (node && node.type === 'image') {
+        uni.previewImage({
+          urls: [node.href],
+          current: node.href,
+        });
+      }
     },
   },
 };
 </script>
 <style>
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx;
 }
 </style>

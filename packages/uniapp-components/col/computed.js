@@ -11,4 +11,3 @@ export function getColStyles(gutter, customStyle) {
 
   return utils._style([customStyle]) + _style;
 }
-

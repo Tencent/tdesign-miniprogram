@@ -26,7 +26,6 @@
     "gray-matter": "catalog:",
     "playwright": "catalog:",
     "prismjs": "catalog:",
-    "tdesign-icons-view": "catalog:tdesign",
     "vite": "catalog:",
     "vite-plugin-tdoc": "catalog:"
   }

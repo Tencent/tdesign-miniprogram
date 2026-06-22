@@ -1,8 +1,5 @@
 <template>
-  <t-qrcode
-    value="https://tdesign.tencent.com/"
-    :borderless="true"
-  />
+  <t-qrcode value="https://tdesign.tencent.com/" :borderless="true" />
 </template>
 
 <script>

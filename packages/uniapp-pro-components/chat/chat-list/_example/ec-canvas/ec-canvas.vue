@@ -7,9 +7,9 @@
       class="ec-canvas"
       :canvas-id="canvasId"
       @init="init"
-      @touchstart="parseEventDynamicCode($event, ec.disableTouch ? '' : 'touchStart')"
-      @touchmove="parseEventDynamicCode($event, ec.disableTouch ? '' : 'touchMove')"
-      @touchend="parseEventDynamicCode($event, ec.disableTouch ? '' : 'touchEnd')"
+      @touchstart="(e) => parseEventDynamicCode(e, ec.disableTouch ? '' : 'touchStart')"
+      @touchmove="(e) => parseEventDynamicCode(e, ec.disableTouch ? '' : 'touchMove')"
+      @touchend="(e) => parseEventDynamicCode(e, ec.disableTouch ? '' : 'touchEnd')"
     />
     <!-- 旧的 -->
     <canvas
@@ -17,9 +17,9 @@
       class="ec-canvas"
       :canvas-id="canvasId"
       @init="init"
-      @touchstart="parseEventDynamicCode($event, ec.disableTouch ? '' : 'touchStart')"
-      @touchmove="parseEventDynamicCode($event, ec.disableTouch ? '' : 'touchMove')"
-      @touchend="parseEventDynamicCode($event, ec.disableTouch ? '' : 'touchEnd')"
+      @touchstart="(e) => parseEventDynamicCode(e, ec.disableTouch ? '' : 'touchStart')"
+      @touchmove="(e) => parseEventDynamicCode(e, ec.disableTouch ? '' : 'touchMove')"
+      @touchend="(e) => parseEventDynamicCode(e, ec.disableTouch ? '' : 'touchEnd')"
     />
   </view>
 </template>

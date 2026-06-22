@@ -1,53 +1,26 @@
 <template>
   <view>
     <t-tabs :default-value="0">
-      <t-tab-panel
-        label="小尺寸"
-        value="0"
-      />
-      <t-tab-panel
-        label="选项"
-        value="1"
-      />
-      <t-tab-panel
-        label="选项"
-        value="2"
-      />
-      <t-tab-panel
-        label="选项"
-        value="3"
-      />
+      <t-tab-panel label="小尺寸" value="0" />
+      <t-tab-panel label="选项" value="1" />
+      <t-tab-panel label="选项" value="2" />
+      <t-tab-panel label="选项" value="3" />
     </t-tabs>
 
     <view style="height: 16px" />
 
-    <t-tabs
-      class="bigger"
-      :default-value="0"
-    >
-      <t-tab-panel
-        label="大尺寸"
-        value="0"
-      />
-      <t-tab-panel
-        label="选项"
-        value="1"
-      />
-      <t-tab-panel
-        label="选项"
-        value="2"
-      />
-      <t-tab-panel
-        label="选项"
-        value="3"
-      />
+    <t-tabs class="bigger" :default-value="0">
+      <t-tab-panel label="大尺寸" value="0" />
+      <t-tab-panel label="选项" value="1" />
+      <t-tab-panel label="选项" value="2" />
+      <t-tab-panel label="选项" value="3" />
     </t-tabs>
   </view>
 </template>
 
 <script>
-import TTabs from '@tdesign/uniapp/tabs/tabs.vue';
 import TTabPanel from '@tdesign/uniapp/tab-panel/tab-panel.vue';
+import TTabs from '@tdesign/uniapp/tabs/tabs.vue';
 export default {
   components: {
     TTabs,

@@ -1,14 +1,8 @@
 <template>
   <view>
-    <view
-      class="chat-box image-chat"
-      :style="'height: ' + contentHeight + ';'"
-    >
+    <view class="chat-box image-chat" :style="'height: ' + contentHeight + ';'">
       <t-chat-list>
-        <block
-          v-for="(item, chatIndex) in chatList"
-          :key="item.key"
-        >
+        <block v-for="(item, chatIndex) in chatList" :key="item.key">
           <t-chat-message
             :chat-id="item.key"
             :avatar="item.avatar || ''"
@@ -20,38 +14,24 @@
           >
             <template #content>
               <view v-if="item.message.role === 'user'">
-                <block
-                  v-for="(contentItem, contentIndex) in item.message.content"
-                  :key="contentIndex"
-                >
+                <block v-for="(contentItem, contentIndex) in item.message.content" :key="contentIndex">
                   <t-chat-content
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
+                    :role="item.message.role"
                   />
                 </block>
               </view>
-              <view
-                v-else
-                style="width: 100%"
-              >
-                <block
-                  v-for="(contentItem, contentIndex) in item.message.content"
-                  :key="contentIndex"
-                >
+              <view v-else style="width: 100%">
+                <block v-for="(contentItem, contentIndex) in item.message.content" :key="contentIndex">
                   <t-chat-content
                     v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                     :content="contentItem"
+                    :role="item.message.role"
                   />
 
-                  <view
-                    v-else
-                    class="attachment-slide"
-                  >
-                    <t-attachments
-                      :items="contentItem.data"
-                      :in-chat="true"
-                      :removable="false"
-                    />
+                  <view v-else class="attachment-slide">
+                    <t-attachments :items="contentItem.data" :in-chat="true" :removable="false" />
                   </view>
                 </block>
               </view>
@@ -60,8 +40,8 @@
               <t-chat-actionbar
                 v-if="
                   chatIndex !== chatList.length - 1 &&
-                    item.message.status === 'complete' &&
-                    item.message.role === 'assistant'
+                  item.message.status === 'complete' &&
+                  item.message.role === 'assistant'
                 "
                 placement="end"
                 @actions="handleAction"
@@ -96,14 +76,15 @@
 </template>
 
 <script>
-import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
+import { Toast } from '@tdesign/uniapp';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
+import TAttachments from '@tdesign/uniapp-chat/attachments/attachments.vue';
+import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
 import TChatContent from '@tdesign/uniapp-chat/chat-content/chat-content.vue';
 import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
-import TAttachments from '@tdesign/uniapp-chat/attachments/attachments.vue';
+import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
 import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
-import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
-import TToast from '@tdesign/uniapp/toast/toast.vue';
-import Toast from '@tdesign/uniapp/toast/index';
+
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;
@@ -112,7 +93,7 @@ const getUniqueKey = () => {
   return `key-${uniqueId}`;
 };
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
   const arr = str.split('');
@@ -182,7 +163,6 @@ export default {
         items: [],
         removable: true,
         imageViewer: true,
-        addable: false,
       },
 
       // 内容高度

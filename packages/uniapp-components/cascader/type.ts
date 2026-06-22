@@ -4,6 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
+import type { TdPopupProps as PopupProps } from '../popup/type';
 import type { TreeOptionData, TreeKeysType } from '../common/common';
 
 export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOptionData> {
@@ -18,6 +19,20 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
    */
   closeBtn?: boolean;
   /**
+   *  自定义过滤函数。返回 true 表示匹配，未设置时使用内置匹配规则：对路径中所有 label 拼接后做大小写不敏感的 includes 匹配
+   */
+  filter?: CascaderFilterFunction;
+  /**
+   * 搜索框占位符描述文本
+   * @default ''
+   */
+  filterPlaceholder?: string;
+  /**
+   * 是否可搜索，开启后顶部会展示一个搜索框
+   * @default false
+   */
+  filterable?: boolean;
+  /**
    * 用来定义 value / label / children / disabled 在 `options` 中对应的字段别名
    */
   keys?: CascaderKeysType;
@@ -27,10 +42,15 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
    */
   options?: Array<CascaderOption>;
   /**
-   * 未选中时的提示文案
-   * @default 选择选项
+   * 未选中时的提示文案。组件内置默认值为：'选择选项'
+   * @default ''
    */
   placeholder?: string;
+  /**
+   * 透传 Popup 组件全部属性
+   * @default {}
+   */
+  popupProps?: PopupProps;
   /**
    * 每级展示的次标题
    * @default []
@@ -71,6 +91,12 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
    */
   onPick?: (context: { value: string | number; label: string; index: number; level: number }) => void;
 }
+
+export type CascaderFilterFunction<CascaderOption extends TreeOptionData = TreeOptionData> = (
+  keyword: string,
+  option: CascaderOption,
+  path: CascaderOption[],
+) => boolean;
 
 export type CascaderKeysType = TreeKeysType;
 

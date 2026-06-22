@@ -1,27 +1,13 @@
 <template>
   <view>
-    <t-toast
-      ref="t-toast"
-    />
+    <t-toast ref="t-toast" />
 
     <view class="box">
       <view class="toast-example">
-        <t-button
-          theme="primary"
-          size="large"
-          variant="outline"
-          :style="buttonStyle"
-          @click="handleShow"
-        >
+        <t-button theme="primary" size="large" variant="outline" :style="buttonStyle" @click="handleShow">
           显示提示
         </t-button>
-        <t-button
-          theme="primary"
-          size="large"
-          variant="outline"
-          :style="buttonStyle"
-          @click="handleHide"
-        >
+        <t-button theme="primary" size="large" variant="outline" :style="buttonStyle" @click="handleHide">
           关闭提示
         </t-button>
       </view>
@@ -30,10 +16,9 @@
 </template>
 
 <script>
-import TToast from '@tdesign/uniapp/toast/toast.vue';
-import Toast, { hideToast } from '@tdesign/uniapp/toast/index';
+import { Toast, hideToast } from '@tdesign/uniapp';
 import TButton from '@tdesign/uniapp/button/button.vue';
-
+import TToast from '@tdesign/uniapp/toast/toast.vue';
 
 export default {
   options: {
@@ -70,7 +55,7 @@ export default {
 </script>
 <style>
 .toast-example {
-    text-align: center;
-    display: flex;
+  text-align: center;
+  display: flex;
 }
 </style>

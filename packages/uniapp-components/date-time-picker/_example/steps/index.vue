@@ -1,13 +1,6 @@
 <template>
   <view>
-    <t-cell
-      title="选择时间"
-      hover
-      :note="text || ''"
-      arrow
-      t-class="panel-item"
-      @click="showPicker"
-    />
+    <t-cell title="选择时间" hover :note="text || ''" arrow t-class="panel-item" @click="showPicker" />
 
     <t-date-time-picker
       :visible="visible"
@@ -16,7 +9,7 @@
       format="HH:mm:ss"
       :mode="['null', 'second']"
       :steps="{ minute: 5 }"
-      @update:visible="visible = $event"
+      @update:visible="(e) => (visible = e)"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"
@@ -62,6 +55,6 @@ export default {
 </script>
 <style>
 .panel-item {
-    margin: 32rpx 0;
+  margin: 32rpx 0;
 }
 </style>

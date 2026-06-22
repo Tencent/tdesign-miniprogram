@@ -40,14 +40,19 @@ export default {
     type: Boolean,
     default: true,
   },
+  /** 图片最大放大比例 */
+  maxZoom: {
+    type: Number,
+    default: 3,
+  },
   /** 是否显示页码 */
   showIndex: Boolean,
   /** 是否使用了自定义导航栏 */
   usingCustomNavbar: Boolean,
   /** 隐藏/显示预览 */
   visible: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdImageViewerProps['visible'],
   },
   /** 隐藏/显示预览，非受控属性 */
   defaultVisible: Boolean,

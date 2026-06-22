@@ -17,5 +17,10 @@ Component({
       data: markdownData,
     },
   },
-  methods: {},
+  methods: {
+    onClick(e) {
+      const { node } = e.detail;
+      console.log('点击节点', node);
+    },
+  },
 });

@@ -3,33 +3,19 @@
     <t-action-sheet
       ref="t-action-sheet"
       :using-custom-navbar="!isMPAlipay"
-      @selected="handleSelected($event, { tagId: 't-action-sheet' })"
+      @selected="(e) => handleSelected(e, { tagId: 't-action-sheet' })"
     />
-    <t-button
-      size="large"
-      variant="outline"
-      custom-dataset="center"
-      block
-      theme="primary"
-      @click="handleAction"
-    >
+    <t-button size="large" variant="outline" custom-dataset="center" block theme="primary" @click="handleAction">
       居中列表型
     </t-button>
-    <t-button
-      size="large"
-      variant="outline"
-      custom-dataset="left"
-      block
-      theme="primary"
-      @click="handleAction"
-    >
+    <t-button size="large" variant="outline" custom-dataset="left" block theme="primary" @click="handleAction">
       左对齐列表型
     </t-button>
   </view>
 </template>
 
 <script>
-import { default as ActionSheet, ActionSheetTheme } from '@tdesign/uniapp/action-sheet/index';
+import { ActionSheetPlugin, ActionSheetTheme } from '@tdesign/uniapp';
 import TActionSheet from '@tdesign/uniapp/action-sheet/action-sheet.vue';
 import TButton from '@tdesign/uniapp/button/button.vue';
 
@@ -45,7 +31,7 @@ export default {
   methods: {
     handleAction(e) {
       const align = e.currentTarget.dataset.custom;
-      ActionSheet.show({
+      ActionSheetPlugin.show({
         theme: ActionSheetTheme.List,
         selector: '#t-action-sheet',
         context: this,
@@ -78,5 +64,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

@@ -1,63 +1,21 @@
 <template>
   <view>
-    <t-tabs
-      :default-value="0"
-      t-class="custom-tabs"
-      @change="onTabsChange"
-      @click="onTabsClick"
-    >
-      <t-tab-panel
-        label="选项"
-        value="0"
-      />
-      <t-tab-panel
-        label="选项"
-        value="1"
-      />
+    <t-tabs :default-value="0" t-class="custom-tabs" @change="onTabsChange" @click="onTabsClick">
+      <t-tab-panel label="选项" value="0" />
+      <t-tab-panel label="选项" value="1" />
     </t-tabs>
 
-    <t-tabs
-      :default-value="0"
-      t-class="custom-tabs"
-      @change="onTabsChange"
-      @click="onTabsClick"
-    >
-      <t-tab-panel
-        label="选项"
-        value="0"
-      />
-      <t-tab-panel
-        label="选项"
-        value="1"
-      />
-      <t-tab-panel
-        label="上限六个文字"
-        value="2"
-      />
+    <t-tabs :default-value="0" t-class="custom-tabs" @change="onTabsChange" @click="onTabsClick">
+      <t-tab-panel label="选项" value="0" />
+      <t-tab-panel label="选项" value="1" />
+      <t-tab-panel label="上限六个文字" value="2" />
     </t-tabs>
 
-    <t-tabs
-      :default-value="0"
-      t-class="custom-tabs"
-      @change="onTabsChange"
-      @click="onTabsClick"
-    >
-      <t-tab-panel
-        label="选项"
-        value="0"
-      />
-      <t-tab-panel
-        label="选项"
-        value="1"
-      />
-      <t-tab-panel
-        label="选项"
-        value="2"
-      />
-      <t-tab-panel
-        label="上限四字"
-        value="3"
-      />
+    <t-tabs :default-value="0" t-class="custom-tabs" @change="onTabsChange" @click="onTabsClick">
+      <t-tab-panel label="选项" value="0" />
+      <t-tab-panel label="选项" value="1" />
+      <t-tab-panel label="选项" value="2" />
+      <t-tab-panel label="上限四字" value="3" />
     </t-tabs>
 
     <t-tabs
@@ -69,33 +27,18 @@
       @click="onTabsClick"
       @scroll="onStickyScroll"
     >
-      <t-tab-panel
-        label="选项"
-        value="0"
-      />
-      <t-tab-panel
-        label="选项"
-        value="1"
-      />
-      <t-tab-panel
-        label="选项"
-        value="2"
-      />
-      <t-tab-panel
-        label="选项"
-        value="3"
-      />
-      <t-tab-panel
-        label="上限四字"
-        value="4"
-      />
+      <t-tab-panel label="选项" value="0" />
+      <t-tab-panel label="选项" value="1" />
+      <t-tab-panel label="选项" value="2" />
+      <t-tab-panel label="选项" value="3" />
+      <t-tab-panel label="上限四字" value="4" />
     </t-tabs>
   </view>
 </template>
 
 <script>
-import TTabs from '@tdesign/uniapp/tabs/tabs.vue';
 import TTabPanel from '@tdesign/uniapp/tab-panel/tab-panel.vue';
+import TTabs from '@tdesign/uniapp/tabs/tabs.vue';
 export default {
   options: {
     styleIsolation: 'shared',
@@ -111,15 +54,13 @@ export default {
     },
   },
   data() {
-    return {
-    };
+    return {};
   },
   computed: {
     stickyProps() {
       return {
         zIndex: 100,
         offsetTop: this.stickyOffset,
-
       };
     },
   },
@@ -138,8 +79,7 @@ export default {
 };
 </script>
 <style>
-
 .custom-tabs {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 </style>

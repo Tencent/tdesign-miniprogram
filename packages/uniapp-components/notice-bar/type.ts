@@ -46,7 +46,7 @@ export interface TdNoticeBarProps {
    * 显示/隐藏
    * @default false
    */
-  visible?: boolean;
+  visible?: boolean | null;
   /**
    * 显示/隐藏，非受控属性
    * @default false

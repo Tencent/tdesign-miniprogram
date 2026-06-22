@@ -1,12 +1,7 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <t-attachments
-        :items="items"
-        @fileClick="onFileClick"
-        @remove="onRemove"
-        @add="onAdd"
-      />
+      <t-attachments :items="items" @fileClick="onFileClick" @remove="onRemove" @add="onAdd" />
     </view>
   </view>
 </template>
@@ -78,8 +73,7 @@ export default {
 </script>
 <style>
 .chat-example-block {
-    padding: 32rpx;
-    background-color: var(--td-bg-color-container);
+  padding: 32rpx;
+  background-color: var(--td-bg-color-container);
 }
-
 </style>

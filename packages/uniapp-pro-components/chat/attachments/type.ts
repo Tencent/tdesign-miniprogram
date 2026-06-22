@@ -6,11 +6,6 @@
 
 export interface TdAttachmentsProps {
   /**
-   * 【讨论中】是否显示添加按钮
-   * @default true
-   */
-  addable?: boolean;
-  /**
    * 是否启用图片预览功能
    * @default true
    */

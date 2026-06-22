@@ -37,7 +37,7 @@ header | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-color-picker-gradient-preview-height | 56rpx | -
 --td-color-picker-gradient-preview-radius | 6rpx | -

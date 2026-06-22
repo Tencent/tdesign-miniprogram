@@ -1,53 +1,12 @@
 <template>
   <view>
-    <t-toast
-      ref="t-toast"
-    />
+    <t-toast ref="t-toast" />
     <view class="box">
-      <t-button
-        size="large"
-        variant="outline"
-        theme="primary"
-        block
-        @click="showText"
-      >
-        纯文本
-      </t-button>
-      <t-button
-        size="large"
-        variant="outline"
-        theme="primary"
-        block
-        @click="showMultiText"
-      >
-        多行文字
-      </t-button>
-      <t-button
-        size="large"
-        variant="outline"
-        theme="primary"
-        block
-        @click="showHorizontalText"
-      >
-        带横向图标
-      </t-button>
-      <t-button
-        size="large"
-        variant="outline"
-        theme="primary"
-        block
-        @click="showVerticalText"
-      >
-        带竖向图标
-      </t-button>
-      <t-button
-        v-if="!skylineRender"
-        size="large"
-        variant="outline"
-        theme="primary"
-        block
-        @click="showLoading"
-      >
+      <t-button size="large" variant="outline" theme="primary" block @click="showText"> 纯文本 </t-button>
+      <t-button size="large" variant="outline" theme="primary" block @click="showMultiText"> 多行文字 </t-button>
+      <t-button size="large" variant="outline" theme="primary" block @click="showHorizontalText"> 带横向图标 </t-button>
+      <t-button size="large" variant="outline" theme="primary" block @click="showVerticalText"> 带竖向图标 </t-button>
+      <t-button v-if="!skylineRender" size="large" variant="outline" theme="primary" block @click="showLoading">
         加载状态
       </t-button>
     </view>
@@ -55,10 +14,11 @@
 </template>
 
 <script>
-import TToast from '@tdesign/uniapp/toast/toast.vue';
+import { Toast } from '@tdesign/uniapp';
 import TButton from '@tdesign/uniapp/button/button.vue';
 import SkylineBehavior from '@tdesign/uniapp/mixins/skyline.js';
-import { default as Toast } from '@tdesign/uniapp/toast/index';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
+
 export default {
   components: {
     TToast,
@@ -66,8 +26,7 @@ export default {
   },
   mixins: [SkylineBehavior],
   data() {
-    return {
-    };
+    return {};
   },
   created() {},
   methods: {
@@ -114,5 +73,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

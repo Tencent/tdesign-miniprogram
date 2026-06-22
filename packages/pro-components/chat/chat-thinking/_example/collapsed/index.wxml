@@ -1,0 +1,10 @@
+<view class="chat-example-block">
+  <t-chat-thinking
+    content="{{content}}"
+    layout="block"
+    status="{{status}}"
+    animation="moving"
+    bind:collapsedChange="handleCollapsedChange"
+    collapsed="{{collapsed}}"
+  />
+</view>

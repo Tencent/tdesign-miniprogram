@@ -70,8 +70,8 @@ export default {
   },
   /** 是否禁用输入框 */
   disabled: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdInputProps['disabled'],
   },
   /** 获取焦点 */
   focus: Boolean,
@@ -105,8 +105,8 @@ export default {
   },
   /** 占位符 */
   placeholder: {
-    type: String,
-    default: undefined,
+    type: [String, null],
+    default: null as TdInputProps['placeholder'],
   },
   /** 指定 placeholder 的样式类 */
   placeholderClass: {
@@ -124,8 +124,8 @@ export default {
   },
   /** 只读状态 */
   readonly: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdInputProps['readonly'],
   },
   /** 安全键盘加密公钥的路径，只支持包内路径 */
   safePasswordCertPath: {

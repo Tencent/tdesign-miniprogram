@@ -146,23 +146,19 @@ export default class ChatActionbar extends SuperComponent {
 
       const baseActions = [];
       let dataActions = [];
-      if (this.properties.placement === 'longpress') {
-        dataActions = ['quote', 'copy', 'share'];
-      } else if (Array.isArray(this.properties.actionBar)) {
-        dataActions = this.properties.actionBar;
-      }
+      dataActions = this.properties.actionBar;
       dataActions.forEach((item) => {
         if (item === 'good' || item === 'bad') {
           baseActions.push({
             name: item,
             isActive: this.data.pComment === item,
-            text: globalConfig.actionBar[item] || item,
+            text: globalConfig.actionBar?.[item] || item,
           });
         } else {
           baseActions.push({
             name: item,
             isActive: false,
-            text: globalConfig.actionBar[item] || item,
+            text: globalConfig.actionBar?.[item] || item,
           });
         }
       });

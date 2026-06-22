@@ -22,10 +22,10 @@ export default class ChatMarkdownNode extends SuperComponent {
   };
 
   methods = {
-    linkClick(e) {
+    nodeClick(e) {
       const { index } = e.currentTarget.dataset || {};
       const token = this.data.nodes?.[index];
-      this.handleClick(e, 'link-tap', token);
+      this.handleClick(e, 'node-tap', token);
     },
 
     getCareMarkdown() {

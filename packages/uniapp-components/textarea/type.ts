@@ -63,7 +63,7 @@ export interface TdTextareaProps {
   /**
    * 是否禁用文本框
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * 如果 textarea 是在一个 `position:fixed` 的区域，需要显式指定属性 fixed 为 true
    * @default false
@@ -100,7 +100,7 @@ export interface TdTextareaProps {
   /**
    * 占位符
    */
-  placeholder?: string;
+  placeholder?: string | null;
   /**
    * 指定 placeholder 的样式类，目前仅支持color,font-size和font-weight
    * @default textarea-placeholder
@@ -114,7 +114,7 @@ export interface TdTextareaProps {
   /**
    * 只读状态
    */
-  readonly?: boolean;
+  readonly?: boolean | null;
   /**
    * 光标结束位置，自动聚集时有效，需与 selection-start 搭配使用
    * @default -1

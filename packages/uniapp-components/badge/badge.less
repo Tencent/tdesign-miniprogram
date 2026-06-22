@@ -2,6 +2,7 @@
 
 @badge-text-color: var(--td-badge-text-color, @text-color-anti);
 @badge-content-text-color: var(--td-badge-content-text-color, @text-color-primary);
+@badge-content-text-font: var(--td-badge-content-text-font, @font-body-large);
 @badge-color: var(--td-badge-bg-color, @error-color);
 @badge-font: var(--td-badge-font, @font-mark-extraSmall);
 @badge-basic-height: var(--td-badge-basic-height, 32rpx);
@@ -181,7 +182,7 @@
 
   &__content-text {
     display: block;
-    font: @font-body-large;
+    font: @badge-content-text-font;
     color: @badge-content-text-color;
   }
 

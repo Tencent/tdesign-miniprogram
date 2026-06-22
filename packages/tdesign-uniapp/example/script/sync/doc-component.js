@@ -1,9 +1,10 @@
 // 拷贝组件文档
-const glob = require('glob');
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
 
-const { writeFileSync, readFileSync  } = require('t-comm');
+const glob = require('glob');
+
+const { writeFileSync, readFileSync } = require('t-comm');
 
 const config = {
   target: path.resolve(__dirname, '../../../tdesign'),

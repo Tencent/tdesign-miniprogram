@@ -1,0 +1,22 @@
+{
+  "other": {
+    "name": "其他",
+    "icon": "menu-application",
+    "childArr": [
+      {
+        "name": "ConfigProvider",
+        "label": "全局配置"
+      }
+    ]
+  },
+  "skylineOther": {
+    "name": "其他",
+    "icon": "menu-application",
+    "childArr": [
+      {
+        "name": "ConfigProvider",
+        "label": "全局配置"
+      }
+    ]
+  }
+}

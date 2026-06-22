@@ -3,18 +3,18 @@
     v-if="dataVisible"
     :id="classPrefix"
     :class="classPrefix + ' ' + tClass"
-    :style="tools._style([customStyle, '--td-image-viewer-top: ' + distanceTop + 'px'])"
+    :style="'' + tools._style([customStyle, '--td-image-viewer-top: ' + distanceTop + 'px'])"
     :aria-modal="true"
     aria-role="dialog"
     aria-label="图片查看器"
-    @touchmove.stop.prevent="true"
   >
     <view
       :class="classPrefix + '__mask'"
       data-source="overlay"
-      :style="tools._style([backgroundColor && '--td-image-viewer-mask-bg-color: ' + backgroundColor])"
+      :style="'' + tools._style([backgroundColor && '--td-image-viewer-mask-bg-color: ' + backgroundColor])"
       aria-role="button"
       aria-label="关闭"
+      @touchmove.prevent="() => {}"
       @click="(e) => onClose(e, 'overlay')"
     />
     <block v-if="images && images.length">
@@ -28,32 +28,43 @@
           @change="onSwiperChange"
           @click="(e) => onClose(e, '')"
         >
-          <swiper-item
-            v-for="(item, index) in images"
-            :key="index"
-            :class="classPrefix + '__preview-image'"
-          >
-            <t-image
-              v-if="!lazy || shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes)"
-              :t-class="prefix + '-image--external'"
-              :class="classPrefix + '__image'"
-              :custom-style="(imagesStyle[index] && imagesStyle[index].style) || ''"
-              :data-index="index"
-              :src="item"
-              :mode="(imageProps && imageProps.mode) || 'aspectFit'"
-              :lazy="(imageProps && imageProps.lazy) || false"
-              :loading="(imageProps && imageProps.loading) || 'default'"
-              :shape="(imageProps && imageProps.shape) || 'square'"
-              :webp="(imageProps && imageProps.webp) || false"
-              :show-menu-by-longpress="(imageProps && imageProps.showMenuByLongpress) || false"
-              @load="onImageLoadSuccess($event, { index })"
-            />
+          <swiper-item v-for="(item, index) in images" :key="index" :class="classPrefix + '__preview-image'">
+            <movable-area :class="classPrefix + '__movable-area'" scale-area @touchmove="onAreaTouchMove">
+              <movable-view
+                :class="classPrefix + '__movable-view'"
+                direction="all"
+                :scale="true"
+                :scale-min="1"
+                :scale-max="maxZoom"
+                :scale-value="index === currentSwiperIndex ? currentScale : 1"
+                :damping="100"
+                :friction="20"
+                :out-of-bounds="false"
+                :disabled="false"
+                @scale="onMovableScale"
+                @tap.stop="onImageDoubleTap(index)"
+              >
+                <t-image
+                  v-if="!lazy || shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes)"
+                  :t-class="prefix + '-image--external'"
+                  :class="classPrefix + '__image'"
+                  :custom-style="(imagesStyle[index] && imagesStyle[index].style) || ''"
+                  :data-index="index"
+                  :src="item"
+                  :mode="(imageProps && imageProps.mode) || 'aspectFit'"
+                  :lazy="(imageProps && imageProps.lazy) || false"
+                  :loading="(imageProps && imageProps.loading) || 'default'"
+                  :shape="(imageProps && imageProps.shape) || 'square'"
+                  :webp="(imageProps && imageProps.webp) || false"
+                  :show-menu-by-longpress="(imageProps && imageProps.showMenuByLongpress) || false"
+                  @load="(e) => onImageLoadSuccess(e, { index })"
+                />
+              </movable-view>
+            </movable-area>
           </swiper-item>
         </swiper>
       </view>
-      <view
-        :class="classPrefix + '__nav'"
-      >
+      <view :class="classPrefix + '__nav'">
         <view
           :class="classPrefix + '__nav-close'"
           aria-role="button"
@@ -61,10 +72,7 @@
           @click.stop.prevent="(e) => onClose(e, '')"
         >
           <slot name="close-btn" />
-          <block
-            v-if="iCloseBtn"
-            name="icon"
-          >
+          <block v-if="iCloseBtn" name="icon">
             <t-icon
               :custom-style="iCloseBtn.style || ''"
               :t-class="iCloseBtn.tClass"
@@ -79,18 +87,10 @@
             />
           </block>
         </view>
-        <view
-          v-if="showIndex"
-          :class="classPrefix + '__nav-index'"
-        >
+        <view v-if="showIndex" :class="classPrefix + '__nav-index'">
           {{ currentSwiperIndex + 1 }}/{{ images.length }}
         </view>
-        <view
-          :class="classPrefix + '__nav-delete'"
-          aria-role="button"
-          aria-label="删除"
-          @click="onDelete"
-        >
+        <view :class="classPrefix + '__nav-delete'" aria-role="button" aria-label="删除" @click="onDelete">
           <slot name="delete-btn" />
           <t-icon
             v-if="iDeleteBtn"
@@ -111,204 +111,254 @@
   </view>
 </template>
 <script>
-import TImage from '../image/image';
-import TIcon from '../icon/icon';
+import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 import { styles, calcIcon, systemInfo } from '../common/utils';
-import { prefix } from '../common/config';
-import props from './props';
+
 import tools from '../common/utils.wxs';
-import { shouldLoadImage } from './computed.js';
+import TIcon from '../icon/icon';
+import TImage from '../image/image';
+
 import useCustomNavbar from '../mixins/using-custom-navbar';
 
+import { shouldLoadImage } from './computed.js';
+import props from './props';
 
 const name = `${prefix}-image-viewer`;
 
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  controlledProps: [
-    {
-      key: 'visible',
-      event: 'close',
-    },
-  ],
-  externalClasses: [`${prefix}-class`],
-  mixins: [useCustomNavbar],
+export default {
   components: {
     TImage,
     TIcon,
   },
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      currentSwiperIndex: 0,
-      loadedImageIndexes: [],
-      windowHeight: 0,
-      windowWidth: 0,
-      swiperStyle: {},
-      imagesStyle: {},
-      maskTop: 0,
-      tools,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    controlledProps: [
+      {
+        key: 'visible',
+        event: 'close',
+      },
+    ],
+    externalClasses: [`${prefix}-class`],
+    mixins: [useCustomNavbar],
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        currentSwiperIndex: 0,
+        loadedImageIndexes: [],
+        windowHeight: 0,
+        windowWidth: 0,
+        swiperStyle: {},
+        imagesStyle: {},
+        maskTop: 0,
+        tools,
 
-      iDeleteBtn: null,
-      iCloseBtn: null,
-      dataVisible: this.visible,
-    };
-  },
-  watch: {
-    visible: {
-      handler(v) {
-        this.dataVisible = v;
-        this.init();
+        iDeleteBtn: null,
+        iCloseBtn: null,
+        dataVisible: this.visible,
+        currentScale: 1,
+        lastTapTime: 0,
+      };
+    },
+    watch: {
+      visible: {
+        handler(v) {
+          this.dataVisible = v;
+          this.init();
+        },
+      },
+      initialIndex: 'init',
+      images: 'init',
+
+      closeBtn: {
+        handler(v) {
+          this.iCloseBtn = calcIcon(v, 'close');
+        },
+        immediate: true,
+      },
+
+      deleteBtn: {
+        handler(v) {
+          this.iDeleteBtn = calcIcon(v, 'delete');
+        },
+        immediate: true,
       },
     },
-    initialIndex: 'init',
-    images: 'init',
-
-    closeBtn: {
-      handler(v) {
-        this.iCloseBtn = calcIcon(v, 'close');
-      },
-      immediate: true,
+    created() {
+      this.saveScreenSize();
+      // this.calcMaskTop();
     },
-
-    deleteBtn: {
-      handler(v) {
-        this.iDeleteBtn =  calcIcon(v, 'delete');
-      },
-      immediate: true,
+    mounted() {
+      this.init();
     },
-  },
-  created() {
-    this.saveScreenSize();
-    // this.calcMaskTop();
-  },
-  mounted() {
-    this.init();
-  },
-  methods: {
-    shouldLoadImage,
-    init() {
-      const { visible: dataVisible, images, initialIndex } = this;
-      if (dataVisible && images?.length) {
-        this.loadedImageIndexes = [];
-        this.currentSwiperIndex =  initialIndex >= images.length ? images.length - 1 : initialIndex;
-      }
-    },
-    calcMaskTop() {
-      if (this.usingCustomNavbar) {
-        const rect = wx?.getMenuButtonBoundingClientRect() || null;
-        const { statusBarHeight } = systemInfo;
-
-        if (rect && statusBarHeight) {
-          this.maskTop =  rect.top - statusBarHeight + rect.bottom;
-        }
-      }
-    },
-    saveScreenSize() {
-      const { windowHeight, windowWidth } = systemInfo;
-      this.windowHeight = windowHeight;
-      this.windowWidth = windowWidth;
-    },
-
-    calcImageDisplayStyle(imageWidth, imageHeight) {
-      const { windowWidth, windowHeight } = this;
-      const ratio = imageWidth / imageHeight;
-      // 图片宽高都小于屏幕宽高
-      if (imageWidth < windowWidth && imageHeight < windowHeight) {
-        return {
-          styleObj: {
-            width: `${imageWidth}px`,
-            height: `${imageHeight}px`,
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
-          },
+    methods: {
+      shouldLoadImage,
+      init() {
+        const { visible: dataVisible, images, initialIndex } = this;
+        // 重置缩放与图片样式，避免上次双指放大/缩放后的状态被保留
+        const reset = () => {
+          this.loadedImageIndexes = [];
+          this.currentScale = 1;
+          this.lastTapTime = 0;
+          this.imagesStyle = {};
+          this.swiperStyle = {};
         };
-      }
-      // 图片宽高至少存在一个大于屏幕宽高，此时判断图片宽高比，按长边显示
-      if (ratio >= 1) {
+        if (dataVisible && images?.length) {
+          this.currentSwiperIndex = initialIndex >= images.length ? images.length - 1 : initialIndex;
+          reset();
+        } else if (!dataVisible) {
+          reset();
+        }
+      },
+      calcMaskTop() {
+        if (this.usingCustomNavbar) {
+          const rect = wx?.getMenuButtonBoundingClientRect() || null;
+          const { statusBarHeight } = systemInfo;
+
+          if (rect && statusBarHeight) {
+            this.maskTop = rect.top - statusBarHeight + rect.bottom;
+          }
+        }
+      },
+      saveScreenSize() {
+        const { windowHeight, windowWidth } = systemInfo;
+        this.windowHeight = windowHeight;
+        this.windowWidth = windowWidth;
+      },
+
+      calcImageDisplayStyle(imageWidth, imageHeight) {
+        const { windowWidth, windowHeight } = this;
+        const ratio = imageWidth / imageHeight;
+        // 图片宽高都小于屏幕宽高
+        if (imageWidth < windowWidth && imageHeight < windowHeight) {
+          return {
+            styleObj: {
+              width: `${imageWidth}px`,
+              height: `${imageHeight}px`,
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+            },
+          };
+        }
+        // 图片宽高至少存在一个大于屏幕宽高，此时判断图片宽高比，按长边显示
+        if (ratio >= 1) {
+          return {
+            styleObj: {
+              width: '100vw',
+              height: `${windowWidth / ratio}px`,
+            },
+          };
+        }
+
+        // 图片的高大于宽（纵向图），设定高度为100vh，宽度自适应，且确保宽度不超过屏幕宽度
+        const scaledHeight = ratio * windowHeight * 2;
+        if (scaledHeight < windowWidth) {
+          return {
+            styleObj: {
+              width: `${scaledHeight}rpx`,
+              height: '100vh',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+            },
+          };
+        }
+        // 当通过高度计算的图片宽度超过屏幕宽度时, 以屏幕宽度为基准, 重新计算高度
         return {
           styleObj: {
             width: '100vw',
-            height: `${(windowWidth / ratio)}px`,
+            height: `${(windowWidth / imageWidth) * imageHeight}px`,
           },
         };
-      }
+      },
 
-      // 图片的高大于宽（纵向图），设定高度为100vh，宽度自适应，且确保宽度不超过屏幕宽度
-      const scaledHeight = ratio * windowHeight * 2;
-      if (scaledHeight < windowWidth) {
-        return {
-          styleObj: {
-            width: `${scaledHeight}rpx`,
-            height: '100vh',
-            left: '50%',
-            transform: 'translate(-50%, -50%)',
+      onImageLoadSuccess({ e }, { index }) {
+        const {
+          detail: { width, height },
+        } = e;
+
+        const { mode, styleObj } = this.calcImageDisplayStyle(width, height);
+        const originImagesStyle = this.imagesStyle;
+        const originSwiperStyle = this.swiperStyle;
+
+        if (!this.loadedImageIndexes.includes(index)) {
+          this.loadedImageIndexes = [...this.loadedImageIndexes, index];
+        }
+
+        this.swiperStyle = {
+          ...originSwiperStyle,
+          [index]: {
+            style: `height: ${styleObj.height}`,
           },
         };
-      }
-      // 当通过高度计算的图片宽度超过屏幕宽度时, 以屏幕宽度为基准, 重新计算高度
-      return {
-        styleObj: {
-          width: '100vw',
-          height: `${(windowWidth / imageWidth) * imageHeight}px`,
-        },
-      };
+        this.imagesStyle = {
+          ...originImagesStyle,
+          [index]: {
+            mode,
+            style: styles({ ...styleObj }),
+          },
+        };
+      },
+
+      onSwiperChange(e) {
+        const {
+          detail: { current },
+        } = e;
+        // 切换图片时重置缩放，避免上一张的缩放状态影响当前图
+        this.currentScale = 1;
+        this.currentSwiperIndex = current;
+
+        this._trigger('change', { index: current });
+      },
+
+      onMovableScale(e) {
+        const scale = e?.detail?.scale ?? 1;
+        this.currentScale = scale;
+      },
+
+      onAreaTouchMove(e) {
+        // 当图片处于缩放状态时，阻止 touchmove 冒泡到 swiper，避免误触翻页（H5 端兜底）
+        // movable-view 自身仍会响应拖动/pinch，不受影响
+        // 注：小程序端原生 swiper 滑动手势底层接管，stopPropagation 无效，留作平台限制
+        if (this.currentScale > 1) {
+          if (e && typeof e.stopPropagation === 'function') {
+            e.stopPropagation();
+          }
+          if (e && typeof e.preventDefault === 'function') {
+            e.preventDefault();
+          }
+        }
+      },
+
+      onImageDoubleTap(index) {
+        // 仅响应当前图片，避免影响其它 swiper-item
+        if (index !== this.currentSwiperIndex) return;
+        const now = Date.now();
+        if (now - this.lastTapTime < 300) {
+          // 双击：在 1 与 maxZoom 之间切换
+          const max = Number(this.maxZoom) || 3;
+          this.currentScale = this.currentScale > 1 ? 1 : max;
+          this.lastTapTime = 0;
+        } else {
+          this.lastTapTime = now;
+        }
+      },
+
+      onClose(e, source) {
+        this._trigger('close', { visible: false, trigger: source || 'button', index: this.currentSwiperIndex });
+      },
+
+      onDelete() {
+        this._trigger('delete', { index: this.currentSwiperIndex });
+      },
     },
-
-    onImageLoadSuccess({ e }, { index }) {
-      const {
-        detail: { width, height },
-      } = e;
-
-      const { mode, styleObj } = this.calcImageDisplayStyle(width, height);
-      const originImagesStyle = this.imagesStyle;
-      const originSwiperStyle = this.swiperStyle;
-
-      if (!this.loadedImageIndexes.includes(index)) {
-        this.loadedImageIndexes = [...this.loadedImageIndexes, index];
-      }
-
-
-      this.swiperStyle = {
-        ...originSwiperStyle,
-        [index]: {
-          style: `height: ${styleObj.height}`,
-        },
-      };
-      this.imagesStyle = {
-        ...originImagesStyle,
-        [index]: {
-          mode,
-          style: styles({ ...styleObj }),
-        },
-      };
-    },
-
-    onSwiperChange(e) {
-      const {
-        detail: { current },
-      } = e;
-      this.currentSwiperIndex = current;
-
-      this._trigger('change', { index: current });
-    },
-
-    onClose(e, source) {
-      this._trigger('close', { visible: false, trigger: source || 'button', index: this.currentSwiperIndex });
-    },
-
-    onDelete() {
-      this._trigger('delete', { index: this.currentSwiperIndex });
-    },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./image-viewer.css"></style>

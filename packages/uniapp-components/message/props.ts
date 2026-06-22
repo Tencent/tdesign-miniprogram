@@ -68,8 +68,8 @@ export default {
   },
   /** 是否显示，隐藏时默认销毁组件 */
   visible: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdMessageProps['visible'],
   },
   /** 是否显示，隐藏时默认销毁组件，非受控属性 */
   defaultVisible: Boolean,

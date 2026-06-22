@@ -4,74 +4,63 @@
       :class="[
         classPrefix,
         tClass,
-        classPrefix + '--' + layout + ' ' + classPrefix + '--' + align + ' ' + (dashed ? classPrefix + '--dashed' : '')
+        classPrefix + '--' + layout + ' ' + classPrefix + '--' + align + ' ' + (dashed ? classPrefix + '--dashed' : ''),
       ]"
-      :style="tools._style([dividerStyle, customStyle])"
+      :style="'' + tools._style([dividerStyle, customStyle])"
     >
-      <view
-        :class="[
-          tClassContent,
-          classPrefix + '__content'
-        ]"
-      >
+      <view :class="[tClassContent, classPrefix + '__content']">
         <view v-if="content">
           {{ content }}
         </view>
-        <slot
-          v-else
-          name="content"
-        />
+        <slot v-else name="content" />
       </view>
     </view>
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+
 import tools from '../common/utils.wxs';
 
+import props from './props';
 
 const name = `${prefix}-divider`;
 
-
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-content`,
-  ],
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      tools,
-      dividerStyle: '',
-    };
-  },
-  watch: {
-    lineColor: {
-      handler() {
-        this.setStyle();
+export default {
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    externalClasses: [`${prefix}-class`, `${prefix}-class-content`],
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        tools,
+        dividerStyle: '',
+      };
+    },
+    watch: {
+      lineColor: {
+        handler() {
+          this.setStyle();
+        },
+        immediateU: true,
       },
-      immediateU: true,
     },
-  },
-  methods: {
-    setStyle() {
-      const {
-        lineColor,
-      } = this;
-      const dividerStyle = `${lineColor ? `border-color: ${lineColor};` : ''}`;
-      this.dividerStyle = dividerStyle;
+    methods: {
+      setStyle() {
+        const { lineColor } = this;
+        const dividerStyle = `${lineColor ? `border-color: ${lineColor};` : ''}`;
+        this.dividerStyle = dividerStyle;
+      },
     },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./divider.css"></style>

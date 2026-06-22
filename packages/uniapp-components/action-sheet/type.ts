@@ -38,6 +38,11 @@ export interface TdActionSheetProps {
    */
   popupProps?: PopupProps;
   /**
+   * 防止滚动穿透，即不允许点击和滚动
+   * @default true
+   */
+  preventScrollThrough?: boolean;
+  /**
    * 是否显示取消按钮
    * @default true
    */
@@ -61,12 +66,12 @@ export interface TdActionSheetProps {
    * 显示与隐藏
    * @default false
    */
-  visible?: boolean;
+  visible?: boolean | null;
   /**
    * 显示与隐藏，非受控属性
    * @default false
    */
-  defaultVisible?: boolean;
+  defaultVisible?: boolean | null;
   /**
    * 点击取消按钮时触发
    */

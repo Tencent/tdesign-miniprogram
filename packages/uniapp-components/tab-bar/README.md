@@ -8,7 +8,9 @@ isComponent: true
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-tab-bar />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TTabBar from '@tdesign/uniapp/tab-bar/tab-bar.vue';
@@ -64,6 +66,12 @@ value | String / Number / Array | - | 当前选中标签的索引。支持语法
 default-value | String / Number / Array | - | 当前选中标签的索引。非受控属性。TS 类型：`string \| number \| Array<string \| number>` | N
 z-index | Number | 1 | 标签栏层级 | N
 
+### TabBar Events
+
+名称 | 参数 | 描述
+-- | -- | --
+change | `(context: { value: string \| number })` | 选中标签切换时触发
+
 ### TabBar External Classes
 
 类名 | 描述
@@ -85,12 +93,12 @@ value | String / Number | - | 标识符 | N
 
 名称 | 描述
 -- | --
-icon | 图标插槽，用于自定义图标区域内容
+icon | 自定义 `icon` 显示内容
 
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-tab-bar-bg-color | @bg-color-container | -
 --td-tab-bar-border-color | @border-level-1-color | -

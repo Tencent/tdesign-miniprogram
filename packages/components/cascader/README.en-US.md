@@ -10,6 +10,9 @@ style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 check-strictly | Boolean | false | \- | N
 close-btn | Boolean | true | \- | N
+filter | Function | - | Typescript: `CascaderFilterFunction ` `type CascaderFilterFunction<CascaderOption extends TreeOptionData = TreeOptionData> = (keyword: string, option: CascaderOption, path: CascaderOption[]) => boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/cascader/type.ts) | N
+filter-placeholder | String | - | \- | N
+filterable | Boolean | false | \- | N
 keys | Object | - | Typescript: `CascaderKeysType` `type CascaderKeysType = TreeKeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/cascader/type.ts) | N
 options | Array | [] | Typescript: `Array<CascaderOption>` | N
 placeholder | String | - | \- | N
@@ -24,7 +27,7 @@ visible | Boolean | false | \- | N
 
 name | params | description
 -- | -- | --
-change | `(value: string \| number, selectedOptions: string[])` | `1.0.1`
+change | `(detail: { value: string \| number, selectedOptions: string[] })` | `1.0.1`
 close | `(trigger: CascaderTriggerSource)` | `1.0.1`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/cascader/type.ts)。<br/>`type CascaderTriggerSource = 'overlay' \| 'close-btn' \| 'finish'`<br/>
 pick | `(value: string \| number, label: string, index: number, level: number)` | `1.0.1`
 
@@ -40,13 +43,21 @@ title | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-cascader-active-color | @brand-color | -
 --td-cascader-bg-color | @bg-color-container | -
 --td-cascader-border-color | @component-stroke | -
 --td-cascader-content-height | 78vh | -
 --td-cascader-disabled-color | @text-color-disabled | -
+--td-cascader-filter-empty-color | @text-color-placeholder | -
+--td-cascader-filter-empty-padding | 96rpx @spacer-2 | -
+--td-cascader-filter-highlight-color | @brand-color | -
+--td-cascader-filter-item-color | @text-color-primary | -
+--td-cascader-filter-item-disabled-color | @text-color-disabled | -
+--td-cascader-filter-item-hover-bg | @bg-color-secondarycontainer | -
+--td-cascader-filter-item-padding | 24rpx 32rpx | -
+--td-cascader-filter-padding | 0 @spacer-2 @spacer-1 | -
 --td-cascader-options-height | calc(100% - @cascader-step-height) | -
 --td-cascader-options-title-color | @text-color-placeholder | -
 --td-cascader-step-arrow-color | @text-color-placeholder | -

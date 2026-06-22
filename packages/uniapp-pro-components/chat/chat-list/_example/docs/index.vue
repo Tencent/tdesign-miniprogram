@@ -1,31 +1,39 @@
 <template>
   <view>
-    <view
-      class="chat-box"
-      :style="'height: ' + contentHeight + ';'"
-    >
+    <view class="chat-box" :style="'height: ' + contentHeight + ';'">
       <t-chat-list>
-        <block
-          v-for="(item, chatIndex) in chatList"
-          :key="item.key"
-        >
+        <block v-for="(item, chatIndex) in chatList" :key="item.key">
           <t-chat-message
             :chat-id="item.key"
             :avatar="item.avatar || ''"
             :name="item.name || ''"
             :datetime="item.datetime || ''"
-            :content="item.message.content"
             :role="item.message.role"
-            :chat-content-props="chatContentProps"
             :placement="item.message.role === 'user' ? 'right' : 'left'"
             @message-longpress="showPopover"
           >
+            <template #content>
+              <block v-for="(contentItem, contentIndex) in item.message.content" :key="contentIndex">
+                <t-chat-content
+                  v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
+                  :content="contentItem"
+                  :role="item.message.role"
+                  :markdown-props="{
+                    ...chatContentProps,
+                    streaming:
+                      loading && chatIndex === 0 && item.message.role === 'assistant'
+                        ? { hasNextChunk: true, tail: true }
+                        : null,
+                  }"
+                />
+              </block>
+            </template>
             <template #actionbar>
               <t-chat-actionbar
                 v-if="
                   chatIndex !== chatList.length - 1 &&
-                    item.message.status === 'complete' &&
-                    item.message.role === 'assistant'
+                  item.message.status === 'complete' &&
+                  item.message.role === 'assistant'
                 "
                 :action-bar="customActionBar"
                 @actions="handleAction"
@@ -43,7 +51,7 @@
             :attachments-props="attachmentsProps"
             :render-presets="renderPresets"
             :auto-rise-with-keyboard="true"
-            @update:visible="visible = $event"
+            @update:visible="(e) => (visible = e)"
             @send="onSend"
             @stop="onStop"
             @focus="onFocus"
@@ -68,12 +76,14 @@
 </template>
 
 <script>
-import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
-import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
-import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
-import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import { Toast } from '@tdesign/uniapp';
 import TToast from '@tdesign/uniapp/toast/toast.vue';
-import Toast from '@tdesign/uniapp/toast/index';
+import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import TChatContent from '@tdesign/uniapp-chat/chat-content/chat-content.vue';
+import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
+import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
+import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
+
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;
@@ -82,8 +92,9 @@ const getUniqueKey = () => {
   return `key-${uniqueId}`;
 };
 
-const mockData1 =  '🌼宝子们，春天来啦，这些户外郊游打卡地你必须知道👏\n\n🌟郊野公园\n这里有大片的草地和各种花卉，随便一拍都是大片既视感📷。还能放风筝、野餐，享受惬意的春日时光。\n\n🌳植物园\n各种珍稀植物汇聚于此，仿佛置身于绿色的海洋。漫步其中，感受大自然的神奇与美丽。\n\n💧湖边湿地\n湖水清澈，周围生态环境优越。能看到很多候鸟和水生植物，是亲近自然的好去处。\n\n宝子们，赶紧收拾行囊，去这些地方打卡吧😜。\n\n#春天郊游 #打卡目的地 #户外之旅 #春日美景';
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const mockData1 =
+  '🌼宝子们，春天来啦，这些户外郊游打卡地你必须知道👏\n\n🌟郊野公园\n这里有大片的草地和各种花卉，随便一拍都是大片既视感📷。还能放风筝、野餐，享受惬意的春日时光。\n\n🌳植物园\n各种珍稀植物汇聚于此，仿佛置身于绿色的海洋。漫步其中，感受大自然的神奇与美丽。\n\n💧湖边湿地\n湖水清澈，周围生态环境优越。能看到很多候鸟和水生植物，是亲近自然的好去处。\n\n宝子们，赶紧收拾行囊，去这些地方打卡吧😜。\n\n#春天郊游 #打卡目的地 #户外之旅 #春日美景';
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
   const arr = str.split('');
@@ -97,6 +108,7 @@ const fetchStream = async (str, options) => {
 export default {
   components: {
     TChatMessage,
+    TChatContent,
     TChatList,
     TChatSender,
     TChatActionbar,
@@ -144,7 +156,6 @@ export default {
         items: [],
         removable: true,
         imageViewer: true,
-        addable: false,
       },
 
       renderPresets: [
@@ -228,7 +239,7 @@ export default {
           data: value.trim(),
         },
       ];
-      const attachments = this.attachmentsProps.items.map(item => ({
+      const attachments = this.attachmentsProps.items.map((item) => ({
         ...item,
         status: 'success',
       }));

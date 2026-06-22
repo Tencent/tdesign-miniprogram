@@ -6,11 +6,6 @@
 
 import type { TdAttachmentsProps } from './type';
 export default {
-  /** 【讨论中】是否显示添加按钮 */
-  addable: {
-    type: Boolean,
-    default: true,
-  },
   /** 是否启用图片预览功能 */
   imageViewer: {
     type: Boolean,

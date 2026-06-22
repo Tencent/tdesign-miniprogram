@@ -24,6 +24,10 @@ const form = {
       label: '时间选择器',
     },
     {
+      name: 'Form',
+      label: '表单',
+    },
+    {
       name: 'Input',
       label: '输入框',
     },
@@ -71,10 +75,6 @@ const form = {
       name: 'Upload',
       label: '上传',
     },
-    // {
-    //   name: 'Form',
-    //   label: '表单',
-    // },
   ],
 };
 

@@ -6,20 +6,19 @@
       variant="outline"
       data-type="hasCancelBtn"
       block
-      @click="showDialog($event, { type: 'hasCancelBtn' })"
+      @click="(e) => showDialog(e, { type: 'hasCancelBtn' })"
     >
       开放能力按钮
     </t-button>
-    <t-dialog
-      ref="t-dialog"
-    />
+    <t-dialog ref="t-dialog" />
   </view>
 </template>
 
 <script>
+import { DialogPlugin } from '@tdesign/uniapp';
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TDialog from '@tdesign/uniapp/dialog/dialog.vue';
-import Dialog from '@tdesign/uniapp/dialog/index';
+
 export default {
   components: {
     TButton,
@@ -49,7 +48,7 @@ export default {
           },
         },
       };
-      Dialog.confirm(dialogConfig)
+      DialogPlugin.confirm(dialogConfig)
         .then(() => {
           console.log('点击确定');
         })
@@ -60,5 +59,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

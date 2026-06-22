@@ -1,9 +1,9 @@
 {
   "name": "@tdesign/uniapp-chat",
-  "version": "0.2.1",
+  "version": "0.2.4",
   "id": "tdesign-uniapp-chat",
   "title": "tdesign-uniapp-chat",
-  "description": "TDesign Chat Component for UniApp",
+  "description": "TDesign Chat Component for Uniapp",
   "author": "tdesign",
   "license": "MIT",
   "keywords": [
@@ -15,6 +15,10 @@
   "typings": "./dist/types/index.d.ts",
   "types": "./dist/types/index.d.ts",
   "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/index.js"
+    },
     "./*": "./dist/*",
     "./global": {
       "types": "./global.d.ts"
@@ -67,6 +71,7 @@
   },
   "files": [
     "dist",
+    "script",
     "global.d.ts",
     "LICENSE",
     "README.md",
@@ -88,7 +93,8 @@
     "site": "pnpm --filter=\"./site\" build",
     "site:dev": "pnpm --filter=\"./site\" run dev",
     "site:preview": "pnpm --filter=\"./site\" run site:preview",
-    "type-check": "vue-tsc --noEmit"
+    "type-check": "vue-tsc --noEmit",
+    "postinstall": "node script/postinstall.js || true"
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:",
@@ -110,8 +116,8 @@
     "eslint-import-resolver-node": "catalog:",
     "eslint-plugin-import": "catalog:",
     "eslint-plugin-jest": "catalog:",
-    "eslint-plugin-light": "latest",
-    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-light": "catalog:",
+    "eslint-plugin-prettier": "catalog:",
     "eslint-plugin-react": "catalog:",
     "eslint-plugin-react-hooks": "catalog:",
     "eslint-plugin-tailwindcss": "catalog:",

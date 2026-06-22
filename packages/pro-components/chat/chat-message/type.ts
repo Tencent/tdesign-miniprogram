@@ -5,6 +5,7 @@
  * */
 
 import { ChatContentProps } from '../chat-content/index';
+import { ChatThinkingProps } from '../chat-thinking/index';
 import { FileItem } from '../attachments/index';
 
 export interface TdChatMessageProps {
@@ -24,11 +25,11 @@ export interface TdChatMessageProps {
     value?: string;
   };
   /**
-   * 聊天内容组件的属性
+   * 聊天内容组件的属性，支持通过 `thinking` 字段透传 ChatThinking 组件属性
    */
   chatContentProps?: {
     type: ObjectConstructor;
-    value?: ChatContentProps;
+    value?: ChatMessageContentProps;
   };
   /**
    * 聊天消息的唯一标识
@@ -91,6 +92,12 @@ export interface TdChatMessageProps {
     value?: 'base' | 'outline' | 'text';
   };
 }
+
+export interface ChatMessageContentProps extends ChatContentProps {
+  thinking?: ChatMessageThinking;
+}
+
+export type ChatMessageThinking = Pick<ChatThinkingProps, 'animation' | 'collapsed' | 'layout' | 'maxHeight'>;
 
 export type ChatMessageContent = TextContent | MarkdownContent | ThinkingContent | AttachmentContent;
 

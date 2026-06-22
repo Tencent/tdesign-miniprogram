@@ -5,14 +5,13 @@
       layout="block"
       :status="status"
       animation="moving"
-      @expandChange="handleExpandChange"
+      @collapsedChange="handleCollapsedChange"
     />
   </view>
 </template>
 
 <script>
 import TChatThinking from '@tdesign/uniapp-chat/chat-thinking/chat-thinking.vue';
-
 
 export default {
   components: {
@@ -22,7 +21,7 @@ export default {
     return {
       thinking: true,
       fullText:
-                '嗯，用户问牛顿第一定律是不是适用于所有参考系。首先，我得先回忆一下牛顿第一定律的内容。牛顿第一定律，也就是惯性定律，说物体在没有外力作用时会保持静止或匀速直线运动。也就是说， 保持原来的运动状态。',
+        '嗯，用户问牛顿第一定律是不是适用于所有参考系。首先，我得先回忆一下牛顿第一定律的内容。牛顿第一定律，也就是惯性定律，说物体在没有外力作用时会保持静止或匀速直线运动。也就是说， 保持原来的运动状态。',
       currentText: '',
       isTyping: true,
       content: {
@@ -122,15 +121,15 @@ export default {
       });
     },
 
-    handleExpandChange() {
-      console.log('占位：函数 handleExpandChange 未声明');
+    handleCollapsedChange(e) {
+      console.log('展开状态变化:', e);
     },
   },
 };
 </script>
 <style>
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx;
 }
 </style>

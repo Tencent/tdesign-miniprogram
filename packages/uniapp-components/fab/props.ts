@@ -15,9 +15,9 @@ export default {
     type: [String, Boolean],
     default: false as TdFabProps['draggable'],
   },
-  /** 图标 */
+  /** 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon` 组件 */
   icon: {
-    type: String,
+    type: [String, Object],
     default: '',
   },
   /** 悬浮按钮的样式，常用于调整位置（即将废弃，建议使用 `style`） */

@@ -1,14 +1,16 @@
 ---
 title: Attachments 文件附件
 description: 用于聊天场景中上传、预览和管理附件的组件。
-spline: base
+spline: chat
 isComponent: true
 ---
 
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-attachments />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TAttachments from '@tdesign/uniapp-chat/attachments/attachments.vue';
@@ -41,9 +43,8 @@ import TAttachments from '@tdesign/uniapp-chat/attachments/attachments.vue';
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
-addable | Boolean | true | 【讨论中】是否显示添加按钮 | N
 image-viewer | Boolean | true | 是否启用图片预览功能 | N
-items | Array | [] | 必需。附件列表。TS 类型：`FileItem[]` `interface FileItem { fileType: 'image'\|'video'\|'audio'\|'pdf'\|'doc'\|'ppt'\|'txt'; name: string; url: string; size: number; status?: 'success'\|'fail'\|'pending'\|'error'; progress?: number; errorMessage?: string; fileIcon?: string; width?: number; height?: number; mode?: 'aspectFit' \| 'aspectFill' \| 'widthFix' \| 'heightFix' \| 'scaleToFill'}`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-pro-components/chat/attachments/type.ts) | Y
+items | Array | [] | 必需。附件列表。TS 类型：`FileItem[]` `interface FileItem { fileType: 'image'\|'video'\|'audio'\|'pdf'\|'doc'\|'ppt'\|'txt'; name: string; url: string; size: number; status?: 'success'\|'fail'\|'pending'\|'error'; progress?: number; errorMessage?: string; fileIcon?: string; width?: number; height?: number; mode?: 'aspectFit' \| 'aspectFill' \| 'widthFix' \| 'heightFix' \| 'scaleToFill'}`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-pro-components/chat/attachments/type.ts) | Y
 removable | Boolean | true | 是否显示删除按钮 | N
 
 ### Attachments Events

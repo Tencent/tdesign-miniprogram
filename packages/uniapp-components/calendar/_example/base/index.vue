@@ -1,24 +1,14 @@
 <template>
   <view>
-    <t-calendar
-      :visible="visible"
-      @update:visible="visible = $event"
-      @confirm="handleConfirm"
-      @close="onClose"
-    />
-    <t-cell
-      arrow
-      title="单个选择日历"
-      :note="formatTimestamp(value)"
-      @click="handleCalendar"
-    />
+    <t-calendar :visible="visible" @update:visible="(e) => (visible = e)" @confirm="handleConfirm" @close="onClose" />
+    <t-cell arrow title="单个选择日历" :note="formatTimestamp(value)" @click="handleCalendar" />
   </view>
 </template>
 <script>
 import TCalendar from '@tdesign/uniapp/calendar/calendar.vue';
 import TCell from '@tdesign/uniapp/cell/cell.vue';
-import { formatTimestamp } from '../computed';
 
+import { formatTimestamp } from '../computed';
 
 export default {
   components: {
@@ -48,5 +38,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

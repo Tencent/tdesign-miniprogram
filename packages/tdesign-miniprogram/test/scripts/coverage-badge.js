@@ -19,6 +19,7 @@ const RELATED_MAP = {
   'tab-bar': 'tab-bar-item',
   tabs: 'tab-panel',
   tag: 'check-tag',
+  paragraph: ['paragraph', 'text', 'title'],
 };
 
 /**
@@ -112,11 +113,17 @@ ans.forEach((items, component) => {
 
     // 处理相关组件的合并覆盖率
     if (component in RELATED_MAP) {
-      const related = ans.get(RELATED_MAP[component]);
-      if (related) {
-        const denominator = item.total + related[type].total;
-        val = denominator === 0 ? '100' : (((item.covered + related[type].covered) / denominator) * 100).toFixed(0);
-      }
+      const relatedKeys = Array.isArray(RELATED_MAP[component]) ? RELATED_MAP[component] : [RELATED_MAP[component]];
+      let totalSum = item.total;
+      let coveredSum = item.covered;
+      relatedKeys.forEach((key) => {
+        const related = ans.get(key);
+        if (related) {
+          totalSum += related[type].total;
+          coveredSum += related[type].covered;
+        }
+      });
+      val = totalSum === 0 ? '100' : ((coveredSum / totalSum) * 100).toFixed(0);
     }
 
     const message = Number.isNaN(val) ? '0' : val;

@@ -2,16 +2,6 @@ import path from 'path';
 import simulate from 'miniprogram-simulate';
 import * as Util from '../../common/utils';
 
-beforeAll(() => {
-  global.getCurrentPages = jest.fn(() => {
-    return [
-      {
-        pageScroller: [jest.fn()],
-      },
-    ];
-  });
-});
-
 describe('indexes', () => {
   const id = load(path.resolve(__dirname, `./index`));
 

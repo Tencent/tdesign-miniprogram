@@ -1,9 +1,11 @@
 import * as path from 'path';
-import { defineConfig, loadEnv } from 'vite';
+
+import { defineConfig, loadEnv, type UserConfig } from 'vite';
+
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
-// import changelog2Json from './web/plugins/changelog-to-json';
+import changelog2Json from './web/plugins/changelog-to-json';
 import tdocPlugin from './web/plugins/plugin-tdoc';
 
 const resolvePath = (r) => path.resolve(__dirname, r);
@@ -30,7 +32,7 @@ const disableTreeShakingPlugin = (paths) => ({
 const root: string = process.cwd();
 const ENV_PREFIX = ['VITE_', 'VUE_APP'];
 
-export default ({ mode }) => {
+const config: UserConfig | (({ mode }: { mode: string }) => UserConfig) = defineConfig(({ mode }): UserConfig => {
   const env = loadEnv(mode, root, ENV_PREFIX);
   const vueAppBase = env.VUE_APP_PUBLICPATH;
   const experimentalConfig = vueAppBase
@@ -58,13 +60,14 @@ export default ({ mode }) => {
       }
     : {};
 
-  const result = defineConfig({
+  return {
     base: publicPathMap[mode],
     ...experimentalConfig,
     root: '.',
     resolve: {
       alias: {
         '@': resolvePath('../../uniapp-components'),
+        '@common': resolvePath('../../common'),
         '@docs': resolvePath('./docs'),
       },
     },
@@ -100,10 +103,10 @@ export default ({ mode }) => {
         isCustomElement,
       }),
       tdocPlugin(mode),
-      // changelog2Json(),
+      changelog2Json(),
       disableTreeShakingPlugin(['style/', 'toast/']),
     ],
-  });
+  };
+});
 
-  return result;
-};
+export default config;

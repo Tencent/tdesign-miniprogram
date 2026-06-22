@@ -26,22 +26,9 @@ export default class Search extends SuperComponent {
   observers = {
     resultList(val) {
       const { isSelected } = this.data;
-      if (val.length) {
-        if (isSelected) {
-          // 已选择
-          this.setData({
-            isShowResultList: false,
-            isSelected: false,
-          });
-        } else {
-          this.setData({
-            isShowResultList: true,
-          });
-        }
-      } else {
-        this.setData({
-          isShowResultList: false,
-        });
+      // resultList 变化且已选过某项时，重置 isSelected 状态
+      if (val.length && isSelected) {
+        this.setData({ isSelected: false });
       }
     },
     'clearTrigger, clearable, disabled, readonly'() {
@@ -52,8 +39,8 @@ export default class Search extends SuperComponent {
   data = {
     classPrefix: name,
     prefix,
-    isShowResultList: false,
     isSelected: false,
+    isSearching: false, // 是否开启搜索模式
     showClearIcon: true,
   };
 
@@ -84,6 +71,7 @@ export default class Search extends SuperComponent {
 
   onFocus(e) {
     const { value } = e.detail;
+    this.setData({ isSearching: true });
     this.updateClearIconVisible(true);
     this.triggerEvent('focus', { value });
   }
@@ -95,7 +83,7 @@ export default class Search extends SuperComponent {
   }
 
   handleClear() {
-    this.setData({ value: '' });
+    this.setData({ value: '', isSearching: false });
     this.triggerEvent('clear', { value: '' });
     this.triggerEvent('change', { value: '', trigger: 'clear' });
   }
@@ -106,6 +94,7 @@ export default class Search extends SuperComponent {
   }
 
   onActionClick() {
+    this.setData({ isSearching: false });
     this.triggerEvent('action-click');
   }
 

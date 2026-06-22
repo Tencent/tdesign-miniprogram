@@ -1,11 +1,6 @@
 <template>
   <view>
-    <t-fab
-      icon="add"
-      :button-props="fabButton"
-      text="分享给朋友"
-      @click="handleClick"
-    />
+    <t-fab icon="add" :button-props="fabButton" text="分享给朋友" @click="handleClick" />
   </view>
 </template>
 

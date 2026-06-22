@@ -1,7 +1,7 @@
 ---
 title: Progress 进度条
 description: 用于展示任务当前的进度。
-spline: message
+spline: data
 isComponent: true
 ---
 
@@ -86,7 +86,7 @@ t-class-label | 标签样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-progress-info-dark-color | @text-color-primary | -
 --td-progress-info-light-color | @text-color-anti | -

@@ -19,7 +19,7 @@ export interface TdRadioProps<T = RadioValue> {
    * 是否选中
    * @default false
    */
-  checked?: boolean;
+  checked?: boolean | null;
   /**
    * 是否选中，非受控属性
    * @default false
@@ -37,7 +37,7 @@ export interface TdRadioProps<T = RadioValue> {
   /**
    * 是否为禁用态
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * 自定义选中图标和非选中图标。使用 Array 时表示：`[选中态图标，非选中态图标]`。使用 String 时，值为 circle 表示填充型图标、值为 line 表示描边型图标、值为 dot 表示圆点图标，值为 slot 时使用插槽
    * @default 'circle'
@@ -69,7 +69,7 @@ export interface TdRadioProps<T = RadioValue> {
   /**
    * 只读状态
    */
-  readonly?: boolean;
+  readonly?: boolean | null;
   /**
    * -1 时代表独立，不再寻找 parent，用于头条小程序
    * @default ''

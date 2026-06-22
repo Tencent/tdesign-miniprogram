@@ -4,7 +4,7 @@
       :visible="visible"
       :using-custom-navbar="!isMPAlipay"
       :placement="cur.value || 'top'"
-      @update:visible="visible = $event"
+      @update:visible="(e) => (visible = e)"
     >
       <view :class="'block block--' + cur.value">
         {{ cur.text }}
@@ -20,7 +20,7 @@
       theme="primary"
       :data-item="item"
       :custom-style="index === item.length - 1 ? '' : 'margin-bottom: 16px;'"
-      @click="handlePopup($event, { item })"
+      @click="(e) => handlePopup(e, { item })"
     >
       {{ item.text }}
     </t-button>
@@ -28,8 +28,8 @@
 </template>
 
 <script>
-import TPopup from '@tdesign/uniapp/popup/popup.vue';
 import TButton from '@tdesign/uniapp/button/button.vue';
+import TPopup from '@tdesign/uniapp/popup/popup.vue';
 export default {
   options: {
     styleIsolation: 'shared',
@@ -85,26 +85,26 @@ export default {
 </script>
 <style scoped>
 .block {
-    color: var(--td-text-color-secondary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  color: var(--td-text-color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .block--top,
 .block--bottom {
-    width: 100vw;
-    height: 240px;
+  width: 100vw;
+  height: 240px;
 }
 
 .block--left,
 .block--right {
-    width: 280px;
-    height: 100%;
+  width: 280px;
+  height: 100%;
 }
 
 .block--center {
-    width: 240px;
-    height: 240px;
+  width: 240px;
+  height: 240px;
 }
 </style>

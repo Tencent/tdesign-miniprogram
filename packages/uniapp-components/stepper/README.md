@@ -8,7 +8,9 @@ isComponent: true
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-stepper />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TStepper from '@tdesign/uniapp/stepper/stepper.vue';
@@ -81,7 +83,7 @@ t-class-plus | 右侧递增号样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-stepper-input-disabled-bg | @bg-color-component-disabled | -
 --td-stepper-input-disabled-color | @text-color-disabled | -

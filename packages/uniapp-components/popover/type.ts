@@ -49,11 +49,11 @@ export interface TdPopoverProps {
   /**
    * 是否显示气泡确认框
    */
-  visible?: boolean;
+  visible?: boolean | null;
   /**
    * 是否显示气泡确认框，非受控属性
    */
-  defaultVisible?: boolean;
+  defaultVisible?: boolean | null;
   /**
    * 确认框显示或隐藏时触发
    */

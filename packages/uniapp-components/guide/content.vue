@@ -2,41 +2,23 @@
   <!-- #ifdef VUE2 -->
   <view>
     <!-- #endif -->
-    <slot
-      v-if="!title && !body"
-      :name="'content-' + current"
-    />
+    <slot v-if="!title && !body" :name="'content-' + current" />
     <block v-else>
       <view :class="tClassTooltip">
-        <view
-          v-if="title"
-          :class="tClassTitle + ' ' + classPrefix + '__title--' + modeType"
-        >
+        <view v-if="title" :class="tClassTitle + ' ' + classPrefix + '__title--' + modeType">
           {{ title }}
         </view>
-        <slot
-          v-else
-          :name="'title-' + current"
-        />
-        <view
-          v-if="body"
-          :class="tClassBody + ' ' + classPrefix + '__body--' + modeType"
-        >
+        <slot v-else :name="'title-' + current" />
+        <view v-if="body" :class="tClassBody + ' ' + classPrefix + '__body--' + modeType">
           {{ body }}
         </view>
-        <slot
-          v-else
-          :name="'body-' + current"
-        />
+        <slot v-else :name="'body-' + current" />
       </view>
       <view
         v-if="current !== -1"
         :class="tClassFooter + ' ' + classPrefix + '__footer ' + classPrefix + '__footer--' + modeType"
       >
-        <block
-          v-if="current < steps.length - 1 && !hideSkip"
-          name="button"
-        >
+        <block v-if="current < steps.length - 1 && !hideSkip" name="button">
           <t-button
             :t-id="skipButton.tId"
             :custom-style="skipButton.style"
@@ -79,10 +61,7 @@
             @agreeprivacyauthorization="(e) => onTplButtonTap(e, { type: skipButton.type })"
           />
         </block>
-        <block
-          v-else-if="current === steps.length - 1 && !hideBack"
-          name="button"
-        >
+        <block v-else-if="current === steps.length - 1 && !hideBack" name="button">
           <t-button
             :t-id="backButton.tId"
             :custom-style="backButton.style"
@@ -125,10 +104,7 @@
             @agreeprivacyauthorization="(e) => onTplButtonTap(e, { type: backButton.type })"
           />
         </block>
-        <block
-          v-if="current < steps.length - 1"
-          name="button"
-        >
+        <block v-if="current < steps.length - 1" name="button">
           <t-button
             :t-id="nextButton.tId"
             :custom-style="nextButton.style"
@@ -171,10 +147,7 @@
             @agreeprivacyauthorization="(e) => onTplButtonTap(e, { type: nextButton.type })"
           />
         </block>
-        <block
-          v-else
-          name="button"
-        >
+        <block v-else name="button">
           <t-button
             :t-id="finishButton.tId"
             :custom-style="finishButton.style"
@@ -219,14 +192,13 @@
         </block>
       </view>
     </block>
-  <!-- #ifdef VUE2 -->
+    <!-- #ifdef VUE2 -->
   </view>
   <!-- #endif -->
 </template>
 <script>
 import TButton from '../button/button.vue';
 import { canUseVirtualHost } from '../common/version';
-
 
 export default {
   options: {
@@ -302,12 +274,10 @@ export default {
     },
     steps: {
       type: Array,
-      default: () => ([]),
+      default: () => [],
     },
   },
-  emits: [
-    'onTplButtonTap',
-  ],
+  emits: ['onTplButtonTap'],
   data() {
     return {
       useVirtualHost: canUseVirtualHost(),

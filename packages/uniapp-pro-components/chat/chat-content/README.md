@@ -1,13 +1,15 @@
 ---
 title: ChatContent 对话正文
 description: ChatContent 用于在聊天对话中渲染不同类型的聊天内容。它支持纯文本和Markdown格式的内容渲染，能够根据内容类型自动选择合适的渲染方式。
-spline: base
+spline: chat
 isComponent: true
 ---
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-chat-content />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TChatContent from '@tdesign/uniapp-chat/chat-content/chat-content.vue';

@@ -6,4 +6,3 @@ export function getValue(label, value) {
   if (label && label === 'true') return value;
   if (REGEXP.test(label)) return label.replace(REGEXP, value);
 }
-

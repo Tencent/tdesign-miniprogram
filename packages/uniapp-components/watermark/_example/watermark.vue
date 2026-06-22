@@ -1,17 +1,9 @@
 <template>
   <view>
-    <t-demo-navbar
-      title="Watermark"
-    />
+    <t-demo-navbar title="Watermark" />
     <view class="demo">
-      <t-demo-header
-        title="Watermark 水印"
-        desc="给页面的某个区域加上水印。"
-      />
-      <t-demo
-        title="01 组件类型"
-        desc="文字水印"
-      >
+      <t-demo-header title="Watermark 水印" desc="给页面的某个区域加上水印。" />
+      <t-demo title="01 组件类型" desc="文字水印">
         <base-watermark />
       </t-demo>
       <t-demo desc="图片水印">
@@ -41,13 +33,13 @@
 
 <script>
 import BaseWatermark from './base/index.vue';
-import ImageWatermark from './image/index.vue';
 import GrayWatermark from './gray/index.vue';
+import ImageWatermark from './image/index.vue';
+import LayoutDemo from './layout/index.vue';
+import MoveImageWatermark from './move-image/index.vue';
+import MoveTextWatermark from './move-text/index.vue';
 import MultiLineWatermark from './multi-line/index.vue';
 import MultiLineGrayWatermark from './multi-line-gray/index.vue';
-import MoveTextWatermark from './move-text/index.vue';
-import MoveImageWatermark from './move-image/index.vue';
-import LayoutDemo from './layout/index.vue';
 
 export default {
   components: {

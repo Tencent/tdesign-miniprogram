@@ -1,7 +1,7 @@
 ---
 title: Image 图片
 description: 用于展示效果，主要为上下左右居中裁切、拉伸、平铺等方式。
-spline: base
+spline: data
 isComponent: true
 ---
 
@@ -89,7 +89,7 @@ t-class-load | 加载样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-image-color | @text-color-placeholder | -
 --td-image-loading-bg-color | @bg-color-secondarycontainer | -

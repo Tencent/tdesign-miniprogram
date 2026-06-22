@@ -62,7 +62,11 @@
   <slot wx:else name="action" />
 </view>
 
-<view wx:if="{{isShowResultList && !isSelected}}" class="{{classPrefix}}__result-list" aria-role="listbox">
+<view
+  wx:if="{{isSearching && resultList.length > 0 && !isSelected}}"
+  class="{{classPrefix}}__result-list"
+  aria-role="listbox"
+>
   <t-cell
     wx:for="{{resultList}}"
     wx:key="index"

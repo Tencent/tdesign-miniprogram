@@ -42,6 +42,11 @@ export interface TdImageViewerProps {
    */
   lazy?: boolean;
   /**
+   * 图片最大放大比例
+   * @default 3
+   */
+  maxZoom?: number;
+  /**
    * 是否显示页码
    * @default false
    */
@@ -55,12 +60,12 @@ export interface TdImageViewerProps {
    * 隐藏/显示预览
    * @default false
    */
-  visible?: boolean;
+  visible?: boolean | null;
   /**
    * 隐藏/显示预览，非受控属性
    * @default false
    */
-  defaultVisible?: boolean;
+  defaultVisible?: boolean | null;
   /**
    * 翻页时回调
    */

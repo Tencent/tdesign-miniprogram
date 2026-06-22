@@ -107,7 +107,7 @@ export interface TdSearchProps {
   /**
    * 只读状态
    */
-  readonly?: boolean;
+  readonly?: boolean | null;
   /**
    * 预览结果列表
    * @default []

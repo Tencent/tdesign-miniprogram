@@ -4,7 +4,6 @@ const SHARE_INFO = {
   title: 'TDesign UI',
 };
 
-
 export default {
   onShareAppMessage() {
     return SHARE_INFO;
@@ -15,7 +14,7 @@ export default {
   computed: {
     gCustomNavbarHeight() {
       let result = 0;
-      // #ifdef H5 || APP-PLUS
+      // #ifdef H5 || APP
       result = 48;
       // #endif
       return result;
@@ -47,10 +46,8 @@ export default {
     // #ifdef MP-WEIXIN
     if (typeof wx.showShareMenu === 'function') {
       wx.showShareMenu({
-        success: () => {
-        },
-        fail: () => {
-        },
+        success: () => {},
+        fail: () => {},
       });
     }
     // #endif

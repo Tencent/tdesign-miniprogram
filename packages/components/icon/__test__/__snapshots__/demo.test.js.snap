@@ -10869,6 +10869,21 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
+        data-name="divider-1"
+        name="divider-1"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        divider-1
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
         data-name="dividers-1"
         name="dividers-1"
         size="48rpx"
@@ -18108,6 +18123,21 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         key
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="keyboard-1"
+        name="keyboard-1"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        keyboard-1
       </wx-view>
     </wx-view>
     <wx-view
@@ -34488,6 +34518,21 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         visual-recognition
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="voice-wave"
+        name="voice-wave"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        voice-wave
       </wx-view>
     </wx-view>
     <wx-view

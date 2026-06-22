@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="classPrefix"
-    :style="tools._style([customStyle])"
-  >
+  <view :class="classPrefix" :style="'' + tools._style([customStyle])" @click.stop>
     <block v-if="status === 'error' || content.type === 'text'">
       <view :class="classPrefix + '__' + role + ' ' + classPrefix + '__' + status">
         <view class="_pre">
@@ -12,9 +9,10 @@
     </block>
     <block v-else>
       <view :class="classPrefix + '__assistant'">
-        <TChatMarkdown
+        <t-chat-markdown
           :content="textInfo"
           :options="markdownProps && markdownProps.options"
+          :streaming="markdownProps && markdownProps.streaming"
           @click="onClick"
         />
       </view>
@@ -22,96 +20,95 @@
   </view>
 </template>
 <script>
-import TChatMarkdown from '../chat-markdown/chat-markdown.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
-import props from './props';
-import tools from '@tdesign/uniapp/common/utils.wxs';
+
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
+import tools from '@tdesign/uniapp/common/utils.wxs';
+
+import TChatMarkdown from '../chat-markdown/chat-markdown.vue';
+
+import props from './props';
 
 const name = `${prefix}-chat-content`;
 
-
-export default uniComponent({
-  name,
-  options: {
-    multipleSlots: true,
-    styleIsolation: 'shared',
-  },
-
+export default {
   components: {
     TChatMarkdown,
   },
-
-  props: {
-    ...props,
-  },
-
-  emits: [
-    'click',
-  ],
-
-  data() {
-    return {
-      classPrefix: name,
-      textInfo: '',
-      tools,
-    };
-  },
-
-  watch: {
-    content: {
-      handler() {
-        this.setTextInfo();
-      },
-      immediate: true,
-      deep: true,
+  ...uniComponent({
+    name,
+    options: {
+      multipleSlots: true,
+      styleIsolation: 'shared',
     },
-  },
 
-  mounted() {
-    this.setTextInfo();
-  },
+    props: {
+      ...props,
+    },
 
-  methods: {
-    getEscapeReplacement(ch) {
-      const escapeReplacements = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot;',
-        '\'': '&#39;',
+    emits: ['click'],
+    data() {
+      return {
+        classPrefix: name,
+        textInfo: '',
+        tools,
       };
-      return escapeReplacements[ch];
     },
-    escape(html, encode = false) {
-      const escapeTest = /[&<>"']/;
-      const escapeReplace = new RegExp(escapeTest.source, 'g');
-      const escapeTestNoEncode = /[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/;
-      const escapeReplaceNoEncode = new RegExp(escapeTestNoEncode.source, 'g');
-      if (encode) {
-        if (escapeTest.test(html)) {
-          return html.replace(escapeReplace, this.getEscapeReplacement);
+
+    watch: {
+      content: {
+        handler() {
+          this.setTextInfo();
+        },
+        immediate: true,
+        deep: true,
+      },
+    },
+
+    mounted() {
+      this.setTextInfo();
+    },
+
+    methods: {
+      getEscapeReplacement(ch) {
+        const escapeReplacements = {
+          '&': '&amp;',
+          '<': '&lt;',
+          '>': '&gt;',
+          '"': '&quot;',
+          "'": '&#39;',
+        };
+        return escapeReplacements[ch];
+      },
+      escape(html, encode = false) {
+        const escapeTest = /[&<>"']/;
+        const escapeReplace = new RegExp(escapeTest.source, 'g');
+        const escapeTestNoEncode = /[<>"']|&(?!(#\d{1,7}|#[Xx][a-fA-F0-9]{1,6}|\w+);)/;
+        const escapeReplaceNoEncode = new RegExp(escapeTestNoEncode.source, 'g');
+        if (encode) {
+          if (escapeTest.test(html)) {
+            return html.replace(escapeReplace, this.getEscapeReplacement);
+          }
+        } else if (escapeTestNoEncode.test(html)) {
+          return html.replace(escapeReplaceNoEncode, this.getEscapeReplacement);
         }
-      } else if (escapeTestNoEncode.test(html)) {
-        return html.replace(escapeReplaceNoEncode, this.getEscapeReplacement);
-      }
-      return html;
-    },
+        return html;
+      },
 
-    setTextInfo() {
-      // error 状态下统一按纯文本处理，避免走 markdown 渲染
-      if (this.content.type === 'text' || this.status === 'error') {
-        this.textInfo = this.escape(this.content.data || '');
-      } else {
-        this.textInfo = this.content.data;
-      }
-    },
+      setTextInfo() {
+        // error 状态下统一按纯文本处理，避免走 markdown 渲染
+        if (this.content.type === 'text' || this.status === 'error') {
+          this.textInfo = this.escape(this.content.data || '');
+        } else {
+          this.textInfo = this.content.data;
+        }
+      },
 
-    onClick(e) {
-      this.$emit('click', e);
+      onClick(e) {
+        this.$emit('click', e);
+      },
     },
-  },
-});
-
+  }),
+};
 </script>
 <style scoped src="./chat-content.css"></style>

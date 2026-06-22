@@ -1,6 +1,6 @@
 <view class="chat-box" style="height: {{contentHeight}};">
   <t-chat id="chatList" bindscroll="onScroll">
-    <block wx:for="{{chatList}}" wx:key="index">
+    <block wx:for="{{chatList}}" wx:key="chatId">
       <t-chat-message
         chat-id="{{item.chatId}}"
         avatar="{{item.avatar || ''}}"
@@ -11,6 +11,7 @@
         placement="{{item.role === 'user' ? 'right' : 'left'}}"
         status="{{item.status || ''}}"
         bind:message-longpress="showPopover"
+        bind:click="onClick"
       >
         <t-chat-actionbar
           wx:if="{{index !== chatList.length - 1 && item.status === 'complete' && item.role === 'assistant'}}"
@@ -41,6 +42,7 @@
     placement="longpress"
     bind:actions="handlePopoverAction"
     longPressPosition="{{longPressPosition}}"
+    action-bar="{{['quote', 'copy', 'share']}}"
   />
   <!-- 内置虚拟列表优化性能仅在data属性中使用 -->
   <!-- <t-chat id="chatList" bindscroll="onScroll" data="{{chatList}}"></t-chat> -->

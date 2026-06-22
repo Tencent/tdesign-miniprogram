@@ -1,18 +1,12 @@
 <template>
   <view>
-    <t-demo-navbar
-      custom-class="demo-navbar"
-      title="Fab"
-    />
+    <t-demo-navbar custom-class="demo-navbar" title="Fab" />
     <t-demo-header
       title="Fab 悬浮按钮"
       desc="当功能使用图标即可表意清楚时，可使用纯图标悬浮按钮，例如：添加、发布。"
       notice="渲染框架支持情况：Skyline、WebView"
     />
-    <t-demo
-      title="01 组件类型"
-      desc="纯图标悬浮按钮"
-    >
+    <t-demo title="01 组件类型" desc="纯图标悬浮按钮">
       <view class="wrapper">
         <t-button
           theme="primary"
@@ -20,7 +14,7 @@
           block
           variant="outline"
           data-type="base"
-          @click="handleChange($event, { type: 'base' })"
+          @click="(e) => handleChange(e, { type: 'base' })"
         >
           纯图标悬浮按钮
         </t-button>
@@ -34,16 +28,13 @@
           block
           variant="outline"
           data-type="advance"
-          @click="handleChange($event, { type: 'advance' })"
+          @click="(e) => handleChange(e, { type: 'advance' })"
         >
           图标加文字悬浮按钮
         </t-button>
       </view>
     </t-demo>
-    <t-demo
-      title="02 组件样式"
-      desc="可移动悬浮按钮"
-    >
+    <t-demo title="02 组件样式" desc="可移动悬浮按钮">
       <view class="wrapper">
         <t-button
           theme="primary"
@@ -51,7 +42,7 @@
           block
           variant="outline"
           data-type="draggable"
-          @click="handleChange($event, { type: 'draggable' })"
+          @click="(e) => handleChange(e, { type: 'draggable' })"
         >
           可移动悬浮按钮
         </t-button>
@@ -65,7 +56,7 @@
           block
           variant="outline"
           data-type="collapsible"
-          @click="handleChange($event, { type: 'collapsible' })"
+          @click="(e) => handleChange(e, { type: 'collapsible' })"
         >
           带自动收缩功能
         </t-button>
@@ -73,24 +64,12 @@
     </t-demo>
     <t-demo padding>
       <view class="skeleton-group">
-        <t-skeleton
-          :row-col="rowCol"
-          loading
-        />
-        <t-skeleton
-          :row-col="rowCol"
-          loading
-        />
+        <t-skeleton :row-col="rowCol" loading />
+        <t-skeleton :row-col="rowCol" loading />
       </view>
       <view class="skeleton-group">
-        <t-skeleton
-          :row-col="rowCol"
-          loading
-        />
-        <t-skeleton
-          :row-col="rowCol"
-          loading
-        />
+        <t-skeleton :row-col="rowCol" loading />
+        <t-skeleton :row-col="rowCol" loading />
       </view>
     </t-demo>
 
@@ -102,14 +81,14 @@
 </template>
 
 <script>
-
 import TButton from '@tdesign/uniapp/button/button.vue';
-import TSkeleton from '@tdesign/uniapp/skeleton/skeleton.vue';
-import BaseDemo from './base/index.vue';
-import AdvanceDemo from './advance/index.vue';
-import DraggableDemo from './draggable/index.vue';
-import CollapsibleDemo from './collapsible/index.vue';
 import { handlePageScroll } from '@tdesign/uniapp/mixins/page-scroll';
+import TSkeleton from '@tdesign/uniapp/skeleton/skeleton.vue';
+
+import AdvanceDemo from './advance/index.vue';
+import BaseDemo from './base/index.vue';
+import CollapsibleDemo from './collapsible/index.vue';
+import DraggableDemo from './draggable/index.vue';
 
 export default {
   components: {

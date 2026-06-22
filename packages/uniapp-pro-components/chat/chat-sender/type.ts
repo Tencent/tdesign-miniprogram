@@ -70,10 +70,6 @@ export interface TdChatSenderProps {
    */
   onChange?: (value: string, context: { e: InputEvent | MouseEvent | KeyboardEvent }) => void;
   /**
-   * 添加附件时触发
-   */
-  onFileAdd?: () => void;
-  /**
    * 附件列表变化时触发
    */
   onFileChange?: (file: FileItem) => void;

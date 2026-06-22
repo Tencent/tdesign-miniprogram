@@ -2,9 +2,12 @@ import { SuperComponent, wxComponent } from '../../../components/common/src/inde
 import config from '../../../components/common/config';
 import props from './props';
 import usingConfig from '../../../components/mixins/using-config';
+import { TdChatThinkingProps } from './type';
 
 const { prefix } = config;
 const componentName = 'chat-thinking';
+
+export type ChatThinkingProps = TdChatThinkingProps;
 
 @wxComponent()
 export default class ChatThinking extends SuperComponent {
@@ -25,6 +28,9 @@ export default class ChatThinking extends SuperComponent {
   observers = {
     maxHeight() {
       this.setContentStyle();
+    },
+    collapsed(val: boolean) {
+      this.setData({ localCollapsed: val });
     },
   };
 
@@ -55,14 +61,9 @@ export default class ChatThinking extends SuperComponent {
       this.data.handleCollapse = this.handleCollapse.bind(this);
     },
     attached() {
-      const createdFn = function __anonymous() {
-        // 初始化折叠状态
-        this.setData({
-          localCollapsed: this.properties.collapsed || false,
-        });
-      };
-      createdFn.call(this);
-
+      this.setData({
+        localCollapsed: this.properties.collapsed,
+      });
       // 调用新增的函数
       this.setContentStyle();
     },

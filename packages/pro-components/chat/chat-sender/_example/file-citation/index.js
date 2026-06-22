@@ -16,7 +16,6 @@ Page({
       items: [],
       removable: true,
       imageViewer: true,
-      addable: false,
     },
     renderPresets: [
       {
@@ -122,11 +121,6 @@ Page({
     const { files } = e.detail;
     console.log('文件列表变化:', files);
     this.setData({ fileList: files });
-  },
-
-  // 添加文件
-  onFileAdd() {
-    console.log('添加文件');
   },
 
   // 选择文件

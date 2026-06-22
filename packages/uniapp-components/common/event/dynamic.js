@@ -4,7 +4,7 @@
  * @param {*} exp
  */
 export function parseEventDynamicCode(e, exp, ...args) {
-  if (typeof(this[exp]) === 'function') {
+  if (typeof this[exp] === 'function') {
     this[exp](e, ...args);
   }
 }

@@ -9,17 +9,20 @@ export default {
   /** 操作栏配置 */
   actionBar: {
     type: Array,
-    default: () => ['replay', 'copy', 'good', 'bad', 'share'],
+    default: ['replay', 'copy', 'good', 'bad', 'share'],
   },
   /** 【实验】聊天消息的唯一标识 */
   chatId: {
     type: String,
     default: '',
   },
-  /** 评价内容 */
+  /** 评价类型， 可选 'good'（点赞） 或者 'bad'（点踩）， 默认为空 */
   comment: {
     type: String,
-    default: '',
+    validator(val: TdChatActionbarProps['comment']): boolean {
+      if (!val) return true;
+      return ['good', 'bad'].includes(val);
+    },
   },
   /** 被复制的内容 */
   content: {
@@ -37,6 +40,10 @@ export default {
   },
   /** 【讨论中】操作按钮是否可点击 */
   disabled: Boolean,
+  /** 【实验】长按操作栏位置 */
+  longPressPosition: {
+    type: Object,
+  },
   /** 【实验】操作栏位置 */
   placement: {
     type: String,
@@ -45,11 +52,6 @@ export default {
       if (!val) return true;
       return ['start', 'end', 'space-around', 'space-between', 'longpress'].includes(val);
     },
-  },
-  /** 【实验】长按触发点的位置信息，用于定位 popover */
-  longPressPosition: {
-    type: Object,
-    value: null,
   },
   /** 点击点赞，点踩，复制，分享，重新生成按钮时触发发 */
   onActions: {

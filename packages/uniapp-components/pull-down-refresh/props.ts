@@ -69,8 +69,8 @@ export default {
   usingCustomNavbar: Boolean,
   /** 组件状态，值为 `true` 表示下拉状态，值为 `false` 表示收起状态 */
   value: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdPullDownRefreshProps['value'],
   },
   /** 组件状态，值为 `true` 表示下拉状态，值为 `false` 表示收起状态，非受控属性 */
   defaultValue: Boolean,

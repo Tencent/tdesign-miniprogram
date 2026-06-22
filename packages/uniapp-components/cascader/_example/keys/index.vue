@@ -1,11 +1,6 @@
 <template>
   <view>
-    <t-cell
-      title="地址"
-      :note="note"
-      arrow
-      @click="showCascader"
-    />
+    <t-cell title="地址" :note="note" arrow @click="showCascader" />
 
     <t-cascader
       :visible="visible"
@@ -14,15 +9,15 @@
       :options="options"
       title="请选择地址"
       placeholder="未选中时的提示文案"
-      @update:visible="visible = $event"
+      @update:visible="(e) => (visible = e)"
       @change="onChange"
     />
   </view>
 </template>
 
 <script>
-import TCell from '@tdesign/uniapp/cell/cell.vue';
 import TCascader from '@tdesign/uniapp/cascader/cascader.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
 const data = {
   areaList: [
     {
@@ -203,7 +198,7 @@ export default {
     },
     onChange(e) {
       const { selectedOptions } = e;
-      this.note = selectedOptions.map(item => item.name).join('/');
+      this.note = selectedOptions.map((item) => item.name).join('/');
       this.visible = false;
     },
   },
@@ -211,6 +206,6 @@ export default {
 </script>
 <style>
 page .demo {
-    --td-cascader-active-color: green;
+  --td-cascader-active-color: green;
 }
 </style>

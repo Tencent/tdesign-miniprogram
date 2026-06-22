@@ -90,7 +90,7 @@ lang | String | - | message language。options: en/zh_CN/zh_TW | N
 loading | Boolean | false | set button to be loading state | N
 loading-props | Object | - | Typescript: `LoadingProps`，[Loading API Documents](./loading?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/button/type.ts) | N
 need-show-entrance | Boolean | true | \- | N
-open-type | String | - | open type of button, [Miniprogram Button](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)。options: contact/share/getPhoneNumber/getUserInfo/launchApp/openSetting/feedback/chooseAvatar/agreePrivacyAuthorization | N
+open-type | String | - | open type of button, [Miniprogram Button](https://developers.weixin.qq.com/miniprogram/dev/component/button.html)。options: contact/liveActivity/share/getPhoneNumber/getRealtimePhoneNumber/getUserInfo/launchApp/openSetting/feedback/chooseAvatar/agreePrivacyAuthorization/phoneOneClickLogin | N
 phone-number-no-quota-toast | Boolean | true | \- | N
 send-message-img | String | 截图 | \- | N
 send-message-path | String | 当前分享路径 | \- | N
@@ -119,6 +119,7 @@ getrealtimephonenumber | \- | \-
 getuserinfo | \- | \-
 launchapp | \- | \-
 opensetting | \- | \-
+phoneoneclicklogin | \- | \-
 tap | `event` | \-
 
 ### Button Slots
@@ -140,7 +141,7 @@ t-class-loading | class name of loading
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-button-border-radius | @radius-default | -
 --td-button-border-width | 4rpx | -
@@ -177,11 +178,10 @@ Name | Default Value | Description
 --td-button-default-outline-color | @text-color-primary | -
 --td-button-default-outline-disabled-color | @component-border | -
 --td-button-default-text-active-bg-color | @bg-color-container-active | -
---td-button-extra-small-font-size | @font-size-base | -
+--td-button-extra-small-font | @font-mark-medium | -
 --td-button-extra-small-height | 56rpx | -
 --td-button-extra-small-icon-size | 36rpx | -
 --td-button-extra-small-padding-horizontal | 16rpx | -
---td-button-font-weight | 600 | -
 --td-button-ghost-border-color | @button-ghost-color | -
 --td-button-ghost-color | @text-color-anti | -
 --td-button-ghost-danger-border-color | @error-color | -
@@ -194,7 +194,7 @@ Name | Default Value | Description
 --td-button-ghost-primary-hover-color | @brand-color-active | -
 --td-button-icon-border-radius | 8rpx | -
 --td-button-icon-spacer | @spacer | -
---td-button-large-font-size | @font-size-m | -
+--td-button-large-font | @font-mark-large | -
 --td-button-large-height | 96rpx | -
 --td-button-large-icon-size | 48rpx | -
 --td-button-large-padding-horizontal | 40rpx | -
@@ -214,7 +214,7 @@ Name | Default Value | Description
 --td-button-light-outline-disabled-color | @brand-color-disabled | -
 --td-button-light-text-active-bg-color | @bg-color-container-active | -
 --td-button-light-text-color | @brand-color | -
---td-button-medium-font-size | @font-size-m | -
+--td-button-medium-font | @font-mark-large | -
 --td-button-medium-height | 80rpx | -
 --td-button-medium-icon-size | 40rpx | -
 --td-button-medium-padding-horizontal | 32rpx | -
@@ -237,7 +237,7 @@ Name | Default Value | Description
 --td-button-primary-text-active-bg-color | @bg-color-container-active | -
 --td-button-primary-text-color | @brand-color | -
 --td-button-primary-text-disabled-color | @brand-color-disabled | -
---td-button-small-font-size | @font-size-base | -
+--td-button-small-font | @font-mark-medium | -
 --td-button-small-height | 64rpx | -
 --td-button-small-icon-size | 36rpx | -
 --td-button-small-padding-horizontal | 24rpx | -

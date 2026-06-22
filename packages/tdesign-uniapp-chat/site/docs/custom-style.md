@@ -4,7 +4,7 @@ description: TDesign 提供了多种方式可以实现样式覆盖
 spline: explain
 ---
 
-TDesign UniApp 提供了 4 种方式用于样式覆盖
+TDesign Uniapp 提供了 4 种方式用于样式覆盖
 
 ## 1 使用 Custom Style
 
@@ -108,7 +108,7 @@ TDesign 在每个组件的内部都预置了许多外部样式类供开发者使
 }
 ```
 
-**实现上，TDesign UniApp 将外部样式类都转成了 `props`**
+**实现上，TDesign Uniapp 将外部样式类都转成了 `props`**
 
 ## 4 使用 CSS 变量
 

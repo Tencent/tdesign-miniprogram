@@ -18,7 +18,7 @@ isComponent: true
 
 ## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/W0VFgNmo845R" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/gzU6NGmZ8h7A" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -77,7 +77,7 @@ t-class-count | 计数样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-badge-basic-height | 32rpx | -
 --td-badge-basic-padding | 8rpx | -
@@ -86,9 +86,12 @@ t-class-count | 计数样式类
 --td-badge-border-radius | 4rpx | -
 --td-badge-bubble-border-radius | 20rpx 20rpx 20rpx 1px | -
 --td-badge-content-text-color | @text-color-primary | -
+--td-badge-content-text-font | @font-body-large | -
 --td-badge-dot-size | 16rpx | -
 --td-badge-font | @font-mark-extraSmall | -
 --td-badge-large-font | @font-mark-small | -
 --td-badge-large-height | 40rpx | -
 --td-badge-large-padding | 10rpx | -
 --td-badge-text-color | @text-color-anti | -
+--td-line-height-mark-extraSmall | 32rpx | -
+--td-line-height-mark-small | 40rpx | -

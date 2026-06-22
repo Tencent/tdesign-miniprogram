@@ -1,9 +1,7 @@
 <template>
   <view>
     <view class="popover-example-row">
-      <view class="demo-block__header-desc">
-        顶部弹出气泡
-      </view>
+      <view class="demo-block__header-desc"> 顶部弹出气泡 </view>
       <view class="row">
         <view class="popover-example__content">
           <t-popover
@@ -11,12 +9,10 @@
             placement="top-left"
             theme="dark"
             data-target="topLeft"
-            @update:visible="visible.topLeft = $event"
+            @update:visible="(e) => (visible.topLeft = e)"
           >
             <template #content>
-              <view>
-                弹出气泡内容
-              </view>
+              <view> 弹出气泡内容 </view>
             </template>
 
             <view class="popover-example__content">
@@ -26,7 +22,7 @@
                 variant="outline"
                 size="large"
                 data-target="topLeft"
-                @click="showPopover($event, { target: 'topLeft' })"
+                @click="(e) => showPopover(e, { target: 'topLeft' })"
               >
                 顶部左
               </t-button>
@@ -39,12 +35,10 @@
             placement="top"
             theme="dark"
             data-target="top"
-            @update:visible="visible.top = $event"
+            @update:visible="(e) => (visible.top = e)"
           >
             <template #content>
-              <view>
-                弹出气泡内容
-              </view>
+              <view> 弹出气泡内容 </view>
             </template>
 
             <view class="popover-example__content">
@@ -54,7 +48,7 @@
                 variant="outline"
                 size="large"
                 data-target="top"
-                @click="showPopover($event, { target: 'top' })"
+                @click="(e) => showPopover(e, { target: 'top' })"
               >
                 顶部中
               </t-button>
@@ -67,12 +61,10 @@
             placement="top-right"
             theme="dark"
             data-target="topRight"
-            @update:visible="visible.topRight = $event"
+            @update:visible="(e) => (visible.topRight = e)"
           >
             <template #content>
-              <view>
-                弹出气泡内容
-              </view>
+              <view> 弹出气泡内容 </view>
             </template>
 
             <view class="popover-example__content">
@@ -82,7 +74,7 @@
                 variant="outline"
                 size="large"
                 data-target="topRight"
-                @click="showPopover($event, { target: 'topRight' })"
+                @click="(e) => showPopover(e, { target: 'topRight' })"
               >
                 顶部右
               </t-button>
@@ -93,9 +85,7 @@
     </view>
 
     <view class="popover-example-row">
-      <view class="demo-block__header-desc">
-        底部弹出气泡
-      </view>
+      <view class="demo-block__header-desc"> 底部弹出气泡 </view>
       <view class="row">
         <view class="popover-example__content">
           <t-popover
@@ -103,12 +93,10 @@
             placement="bottom-left"
             theme="dark"
             data-target="bottomLeft"
-            @update:visible="visible.bottomLeft = $event"
+            @update:visible="(e) => (visible.bottomLeft = e)"
           >
             <template #content>
-              <view>
-                弹出气泡内容
-              </view>
+              <view> 弹出气泡内容 </view>
             </template>
 
             <view class="popover-example__content">
@@ -118,7 +106,7 @@
                 variant="outline"
                 size="large"
                 data-target="bottomLeft"
-                @click="showPopover($event, { target: 'bottomLeft' })"
+                @click="(e) => showPopover(e, { target: 'bottomLeft' })"
               >
                 底部左
               </t-button>
@@ -131,12 +119,10 @@
             placement="bottom"
             theme="dark"
             data-target="bottom"
-            @update:visible="visible.bottom = $event"
+            @update:visible="(e) => (visible.bottom = e)"
           >
             <template #content>
-              <view>
-                弹出气泡内容
-              </view>
+              <view> 弹出气泡内容 </view>
             </template>
 
             <view class="popover-example__content">
@@ -146,7 +132,7 @@
                 variant="outline"
                 size="large"
                 data-target="bottom"
-                @click="showPopover($event, { target: 'bottom' })"
+                @click="(e) => showPopover(e, { target: 'bottom' })"
               >
                 底部中
               </t-button>
@@ -160,14 +146,11 @@
             placement="bottom-right"
             theme="dark"
             data-target="bottomRight"
-            @update:visible="visible.bottomRight = $event"
+            @update:visible="(e) => (visible.bottomRight = e)"
           >
             <template #content>
-              <view>
-                弹出气泡内容
-              </view>
+              <view> 弹出气泡内容 </view>
             </template>
-
 
             <view class="popover-example__content">
               <t-button
@@ -176,7 +159,7 @@
                 variant="outline"
                 size="large"
                 data-target="bottomRight"
-                @click="showPopover($event, { target: 'bottomRight' })"
+                @click="(e) => showPopover(e, { target: 'bottomRight' })"
               >
                 底部右
               </t-button>
@@ -187,9 +170,7 @@
     </view>
 
     <view class="popover-example-row">
-      <view class="demo-block__header-desc">
-        右侧弹出气泡
-      </view>
+      <view class="demo-block__header-desc"> 右侧弹出气泡 </view>
       <view class="column">
         <view class="popover-example__content">
           <t-popover
@@ -197,14 +178,11 @@
             placement="right-top"
             theme="dark"
             data-target="rightTop"
-            @update:visible="visible.rightTop = $event"
+            @update:visible="(e) => (visible.rightTop = e)"
           >
             <template #content>
-              <view>
-                气泡内容
-              </view>
+              <view> 气泡内容 </view>
             </template>
-
 
             <view class="popover-example__content">
               <t-button
@@ -213,7 +191,7 @@
                 variant="outline"
                 size="large"
                 data-target="rightTop"
-                @click="showPopover($event, { target: 'rightTop' })"
+                @click="(e) => showPopover(e, { target: 'rightTop' })"
               >
                 右侧上
               </t-button>
@@ -226,12 +204,10 @@
             placement="right"
             theme="dark"
             data-target="right"
-            @update:visible="visible.right = $event"
+            @update:visible="(e) => (visible.right = e)"
           >
             <template #content>
-              <view>
-                气泡内容
-              </view>
+              <view> 气泡内容 </view>
             </template>
             <view class="popover-example__content">
               <t-button
@@ -240,7 +216,7 @@
                 variant="outline"
                 size="large"
                 data-target="right"
-                @click="showPopover($event, { target: 'right' })"
+                @click="(e) => showPopover(e, { target: 'right' })"
               >
                 右侧中
               </t-button>
@@ -253,12 +229,10 @@
             placement="right-bottom"
             theme="dark"
             data-target="rightBottom"
-            @update:visible="visible.rightBottom = $event"
+            @update:visible="(e) => (visible.rightBottom = e)"
           >
             <template #content>
-              <view>
-                气泡内容
-              </view>
+              <view> 气泡内容 </view>
             </template>
             <view class="popover-example__content">
               <t-button
@@ -267,7 +241,7 @@
                 variant="outline"
                 size="large"
                 data-target="rightBottom"
-                @click="showPopover($event, { target: 'rightBottom' })"
+                @click="(e) => showPopover(e, { target: 'rightBottom' })"
               >
                 右侧下
               </t-button>
@@ -278,9 +252,7 @@
     </view>
 
     <view class="flex-end popover-example-row">
-      <view class="demo-block__header-desc">
-        左侧弹出气泡
-      </view>
+      <view class="demo-block__header-desc"> 左侧弹出气泡 </view>
       <view class="column">
         <view class="popover-example__content">
           <t-popover
@@ -288,12 +260,10 @@
             placement="left-top"
             theme="dark"
             data-target="leftTop"
-            @update:visible="visible.leftTop = $event"
+            @update:visible="(e) => (visible.leftTop = e)"
           >
             <template #content>
-              <view>
-                气泡内容
-              </view>
+              <view> 气泡内容 </view>
             </template>
             <view class="popover-example__content">
               <t-button
@@ -302,7 +272,7 @@
                 variant="outline"
                 size="large"
                 data-target="leftTop"
-                @click="showPopover($event, { target: 'leftTop' })"
+                @click="(e) => showPopover(e, { target: 'leftTop' })"
               >
                 左侧上
               </t-button>
@@ -315,12 +285,10 @@
             placement="left"
             theme="dark"
             data-target="left"
-            @update:visible="visible.left = $event"
+            @update:visible="(e) => (visible.left = e)"
           >
             <template #content>
-              <view>
-                气泡内容
-              </view>
+              <view> 气泡内容 </view>
             </template>
             <view class="popover-example__content">
               <t-button
@@ -329,7 +297,7 @@
                 variant="outline"
                 size="large"
                 data-target="left"
-                @click="showPopover($event, { target: 'left' })"
+                @click="(e) => showPopover(e, { target: 'left' })"
               >
                 左侧中
               </t-button>
@@ -342,12 +310,10 @@
             placement="left-bottom"
             theme="dark"
             data-target="leftBottom"
-            @update:visible="visible.leftBottom = $event"
+            @update:visible="(e) => (visible.leftBottom = e)"
           >
             <template #content>
-              <view>
-                气泡内容
-              </view>
+              <view> 气泡内容 </view>
             </template>
             <view class="popover-example__content">
               <t-button
@@ -356,7 +322,7 @@
                 variant="outline"
                 size="large"
                 data-target="leftBottom"
-                @click="showPopover($event, { target: 'leftBottom' })"
+                @click="(e) => showPopover(e, { target: 'leftBottom' })"
               >
                 左侧下
               </t-button>
@@ -369,8 +335,8 @@
 </template>
 
 <script>
-import TPopover from '@tdesign/uniapp/popover/popover.vue';
 import TButton from '@tdesign/uniapp/button/button.vue';
+import TPopover from '@tdesign/uniapp/popover/popover.vue';
 export default {
   options: {
     styleIsolation: 'shared',
@@ -407,47 +373,46 @@ export default {
 </script>
 <style scoped lang="less">
 .popover-example-row {
-    display: flex;
-    flex-direction: column;
-    padding: 0 32rpx;
-    margin-bottom: 48rpx;
+  display: flex;
+  flex-direction: column;
+  padding: 0 32rpx;
+  margin-bottom: 48rpx;
 }
 
 .row {
-    display: flex;
-    flex-direction: row;
-    gap: 32rpx;
+  display: flex;
+  flex-direction: row;
+  gap: 32rpx;
 }
 
 .column {
-    display: flex;
-    flex-direction: column;
-    gap: 32rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
 }
 
 .flex-end .column {
-    align-items: flex-end;
+  align-items: flex-end;
 }
 
 .demo-block__header-desc {
-    margin-top: var(--td-spacer, 16rpx);
-    margin-bottom: 32rpx;
-    font-size: var(--td-font-size-base, 28rpx);
-    white-space: pre-line;
-    color: var(--bg-color-demo-desc);
-    line-height: 22px;
+  margin-top: var(--td-spacer, 16rpx);
+  margin-bottom: 32rpx;
+  font-size: var(--td-font-size-base, 28rpx);
+  white-space: pre-line;
+  color: var(--bg-color-demo-desc);
+  line-height: 22px;
 }
 
 .popover-example__content {
-    flex: 1;
+  flex: 1;
 }
 
 :deep(.button-width--small) {
-    width: 204rpx;
+  width: 204rpx;
 }
 
 :deep(.button-width--large) {
-    width: 446rpx;
+  width: 446rpx;
 }
-
 </style>

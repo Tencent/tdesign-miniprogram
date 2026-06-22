@@ -61,7 +61,7 @@ export interface TdMessageProps {
    * 是否显示，隐藏时默认销毁组件
    * @default false
    */
-  visible?: boolean;
+  visible?: boolean | null;
   /**
    * 是否显示，隐藏时默认销毁组件，非受控属性
    * @default false

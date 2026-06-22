@@ -13,7 +13,7 @@ export interface TdSwitchProps<T = SwitchValue> {
   /**
    * 是否禁用组件。优先级：Switch.disabled > Form.disabled
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * 开关的图标；[打开时的图标，关闭时的图标]
    * @default []

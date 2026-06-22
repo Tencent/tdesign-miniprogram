@@ -1,8 +1,6 @@
 <template>
   <view>
-    <t-demo-navbar
-      title="DateTimePicker"
-    />
+    <t-demo-navbar title="DateTimePicker" />
     <view class="demo">
       <t-demo-header
         title="DateTimePicker 时间选择器"
@@ -10,10 +8,7 @@
         notice="渲染框架支持情况：WebView"
       />
 
-      <t-demo
-        title="01 组件类型"
-        desc="年月日选择器"
-      />
+      <t-demo title="01 组件类型" desc="年月日选择器" />
 
       <year-month-date />
 
@@ -29,10 +24,7 @@
 
       <date-all />
 
-      <t-demo
-        title="01 组件用法"
-        desc="调整步数"
-      >
+      <t-demo title="01 组件用法" desc="调整步数">
         <steps-demo />
       </t-demo>
 
@@ -44,13 +36,12 @@
 </template>
 
 <script>
-
-import YearMonthDate from './year-month-date/index.vue';
-import YearMonth from './year-month/index.vue';
-import TimeDemo from './time/index.vue';
 import DateAll from './date-all/index.vue';
 import StepsDemo from './steps/index.vue';
+import TimeDemo from './time/index.vue';
 import WithoutPopup from './without-popup/index.vue';
+import YearMonth from './year-month/index.vue';
+import YearMonthDate from './year-month-date/index.vue';
 export default {
   components: {
     YearMonthDate,

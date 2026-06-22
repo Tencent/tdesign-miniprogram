@@ -52,6 +52,9 @@ export default class ChatMessage extends SuperComponent {
         },
       });
     },
+    onContentClick(e) {
+      this.triggerEvent('click', e.detail);
+    },
     setShowAvatar() {
       this.setData({
         showAvatar: this.properties?.avatar || '',

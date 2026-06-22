@@ -1,18 +1,7 @@
 <template>
   <view>
-    <t-tab-bar
-      t-class="t-tab-bar"
-      default-value="user"
-      theme="tag"
-      :split="false"
-      :fixed="false"
-    >
-      <t-tab-bar-item
-        v-for="(item, index) in list"
-        :key="index"
-        :value="item.value"
-        :sub-tab-bar="item.children"
-      >
+    <t-tab-bar t-class="t-tab-bar" default-value="user" theme="tag" :split="false" :fixed="false">
+      <t-tab-bar-item v-for="(item, index) in list" :key="index" :value="item.value" :sub-tab-bar="item.children">
         {{ item.label }}
       </t-tab-bar-item>
     </t-tab-bar>
@@ -68,5 +57,4 @@ export default {
   methods: {},
 };
 </script>
-<style>
-</style>
+<style></style>

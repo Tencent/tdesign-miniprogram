@@ -40,13 +40,13 @@ export default {
   },
   /** 选中值 */
   value: {
-    type: [String, Number, Array],
-    default: undefined as TdDropdownItemProps['value'],
+    type: [String, Number, Array, null],
+    default: null as TdDropdownItemProps['value'],
   },
   /** 选中值，非受控属性 */
   defaultValue: {
-    type: [String, Number, Array],
-    default: undefined as TdDropdownItemProps['defaultValue'],
+    type: [String, Number, Array, null],
+    default: null as TdDropdownItemProps['defaultValue'],
   },
   /** 值改变时触发 */
   onChange: {

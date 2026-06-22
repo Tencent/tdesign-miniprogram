@@ -11,10 +11,9 @@ const props: TdFormItemProps = {
     type: Boolean,
     value: false,
   },
-  /** label 原生属性 */
-  for: {
+  /** 表单内容对齐方式：左对齐、右对齐，优先级高于 Form.contentAlign */
+  contentAlign: {
     type: String,
-    value: '',
   },
   /** 表单项说明内容 */
   help: {

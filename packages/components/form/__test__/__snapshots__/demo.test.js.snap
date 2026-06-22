@@ -30,71 +30,57 @@ exports[`Form Form horizontal demo works fine 1`] = `
     }}"
     id="form"
     labelAlign="left"
-    requiredMark="{{true}}"
     resetType="initial"
     rules="{{
       Object {
-        "age": Array [
-          Object {
-            "message": "年限不能为空",
-            "required": true,
-          },
-        ],
         "birth": Array [
           Object {
-            "message": "生日不能为空",
-            "required": true,
+            "message": "不能为空",
+            "validator": [Function],
           },
         ],
         "description": Array [
           Object {
-            "message": "分数不能为空",
-            "required": true,
+            "message": "分数过低会影响整体评价",
+            "validator": [Function],
           },
         ],
         "gender": Array [
           Object {
-            "message": "性别不能为空",
-            "required": true,
+            "message": "不能为空",
+            "validator": [Function],
           },
         ],
         "name": Array [
           Object {
-            "message": "用户名不能为空",
-            "required": true,
-          },
-          Object {
-            "maxLength": 3,
-            "message": "用户名不能超过3个字符",
+            "message": "只能输入8个字符英文",
+            "pattern": "[a-zA-Z]{8}",
+            "validator": [Function],
           },
         ],
         "password": Array [
           Object {
-            "message": "密码不能为空",
-            "required": true,
-          },
-        ],
-        "photo": Array [
-          Object {
-            "message": "上传照片不能为空",
-            "required": true,
+            "message": "长度大于6个字符",
+            "validator": [Function],
           },
         ],
         "place": Array [
           Object {
-            "message": "籍贯不能为空",
-            "required": true,
+            "message": "不能为空",
+            "validator": [Function],
           },
         ],
         "resume": Array [
           Object {
-            "message": "简介不能为空",
-            "required": true,
+            "message": "不能为空",
+            "validator": [Function],
           },
         ],
       }
     }}"
+    scrollToFirstError="smooth"
     showErrorMessage="{{true}}"
+    usingCustomNavbar="{{true}}"
     bind:reset="onReset"
     bind:submit="onSubmit"
   >
@@ -104,9 +90,9 @@ exports[`Form Form horizontal demo works fine 1`] = `
       name="name"
     >
       <t-input
-        align="right"
         borderless="{{true}}"
         data-field="name"
+        disabled="{{false}}"
         placeholder="请输入用户名"
         value=""
         bind:change="onInputChange"
@@ -117,10 +103,10 @@ exports[`Form Form horizontal demo works fine 1`] = `
       name="password"
     >
       <t-input
-        align="right"
         borderless="{{true}}"
         clearable="{{false}}"
         data-field="password"
+        disabled="{{false}}"
         placeholder="请输入密码"
         type="password"
         value=""
@@ -134,6 +120,7 @@ exports[`Form Form horizontal demo works fine 1`] = `
       <t-radio-group
         borderless="{{true}}"
         class="box"
+        disabled="{{false}}"
         value=""
         bind:change="onRadioChange"
       >
@@ -158,17 +145,28 @@ exports[`Form Form horizontal demo works fine 1`] = `
       </t-radio-group>
     </t-form-item>
     <t-form-item
+      arrow="{{true}}"
       contentAlign="right"
       label="生日"
       name="birth"
     >
       <t-input
-        align="right"
         borderless="{{true}}"
-        data-field="birth"
+        disabled="{{false}}"
         placeholder="请输入生日"
+        readonly="{{true}}"
         value=""
-        bind:change="onInputChange"
+        bind:tap="showDatePicker"
+      />
+      <t-date-time-picker
+        end=""
+        format="YYYY-MM-DD"
+        mode="date"
+        start=""
+        title="选择日期"
+        visible="{{false}}"
+        bind:change="onDatePickerConfirm"
+        bind:close="onDatePickerClose"
       />
     </t-form-item>
     <t-form-item
@@ -178,9 +176,10 @@ exports[`Form Form horizontal demo works fine 1`] = `
       name="place"
     >
       <t-input
-        align="right"
         borderless="{{true}}"
+        disabled="{{false}}"
         placeholder="请选择籍贯"
+        readonly="{{true}}"
         value=""
         bind:tap="showCascader"
       />
@@ -354,6 +353,7 @@ exports[`Form Form horizontal demo works fine 1`] = `
       name="age"
     >
       <t-stepper
+        disabled="{{false}}"
         theme="filled"
         value="{{3}}"
         bind:change="onChangeStepper"
@@ -366,6 +366,7 @@ exports[`Form Form horizontal demo works fine 1`] = `
     >
       <t-rate
         allowHalf="{{true}}"
+        disabled="{{false}}"
         gap="{{8}}"
         value="{{2}}"
         variant="filled"
@@ -375,9 +376,11 @@ exports[`Form Form horizontal demo works fine 1`] = `
     <t-form-item
       label="个人简介"
       name="resume"
+      tClassLabel="my-label"
     >
       <t-textarea
         class="textarea"
+        disabled="{{false}}"
         indicator="{{true}}"
         maxlength="{{50}}"
         placeholder="请输入个人简介"
@@ -391,7 +394,8 @@ exports[`Form Form horizontal demo works fine 1`] = `
     >
       <t-upload
         action="https://service-bv448zsw-1257786608.gz.apigw.tencentcs.com/api/upload-demo"
-        class="my-upload"
+        class="upload"
+        disabled="{{false}}"
         files="{{
           Array [
             Object {
@@ -475,71 +479,57 @@ exports[`Form Form vertical demo works fine 1`] = `
     }}"
     id="form"
     labelAlign="top"
-    requiredMark="{{true}}"
     resetType="empty"
     rules="{{
       Object {
-        "age": Array [
-          Object {
-            "message": "年限不能为空",
-            "required": true,
-          },
-        ],
         "birth": Array [
           Object {
-            "message": "生日不能为空",
-            "required": true,
+            "message": "不能为空",
+            "validator": [Function],
           },
         ],
         "description": Array [
           Object {
-            "message": "分数不能为空",
-            "required": true,
+            "message": "分数过低会影响整体评价",
+            "validator": [Function],
           },
         ],
         "gender": Array [
           Object {
-            "message": "性别不能为空",
-            "required": true,
+            "message": "不能为空",
+            "validator": [Function],
           },
         ],
         "name": Array [
           Object {
-            "message": "用户名不能为空",
-            "required": true,
-          },
-          Object {
-            "maxLength": 3,
-            "message": "用户名不能超过3个字符",
+            "message": "只能输入8个字符英文",
+            "pattern": "[a-zA-Z]{8}",
+            "validator": [Function],
           },
         ],
         "password": Array [
           Object {
-            "message": "密码不能为空",
-            "required": true,
-          },
-        ],
-        "photo": Array [
-          Object {
-            "message": "上传照片不能为空",
-            "required": true,
+            "message": "长度大于6个字符",
+            "validator": [Function],
           },
         ],
         "place": Array [
           Object {
-            "message": "籍贯不能为空",
-            "required": true,
+            "message": "不能为空",
+            "validator": [Function],
           },
         ],
         "resume": Array [
           Object {
-            "message": "简介不能为空",
-            "required": true,
+            "message": "不能为空",
+            "validator": [Function],
           },
         ],
       }
     }}"
+    scrollToFirstError="smooth"
     showErrorMessage="{{true}}"
+    usingCustomNavbar="{{true}}"
     bind:reset="onReset"
     bind:submit="onSubmit"
   >
@@ -551,6 +541,7 @@ exports[`Form Form vertical demo works fine 1`] = `
       <t-input
         borderless="{{true}}"
         data-field="name"
+        disabled="{{false}}"
         placeholder="请输入用户名"
         value=""
         bind:change="onInputChange"
@@ -564,6 +555,7 @@ exports[`Form Form vertical demo works fine 1`] = `
         borderless="{{true}}"
         clearable="{{false}}"
         data-field="password"
+        disabled="{{false}}"
         placeholder="请输入密码"
         type="password"
         value=""
@@ -577,6 +569,7 @@ exports[`Form Form vertical demo works fine 1`] = `
       <t-radio-group
         borderless="{{true}}"
         class="box"
+        disabled="{{false}}"
         value=""
         bind:change="onRadioChange"
       >
@@ -601,15 +594,28 @@ exports[`Form Form vertical demo works fine 1`] = `
       </t-radio-group>
     </t-form-item>
     <t-form-item
+      arrow="{{true}}"
       label="生日"
       name="birth"
     >
       <t-input
         borderless="{{true}}"
         data-field="birth"
+        disabled="{{false}}"
         placeholder="请输入生日"
+        readonly="{{true}}"
         value=""
-        bind:change="onInputChange"
+        bind:tap="showDatePicker"
+      />
+      <t-date-time-picker
+        end=""
+        format="YYYY-MM-DD"
+        mode="date"
+        start=""
+        title="选择日期"
+        visible="{{false}}"
+        bind:change="onDatePickerConfirm"
+        bind:close="onDatePickerClose"
       />
     </t-form-item>
     <t-form-item
@@ -619,7 +625,9 @@ exports[`Form Form vertical demo works fine 1`] = `
     >
       <t-input
         borderless="{{true}}"
+        disabled="{{false}}"
         placeholder="请选择籍贯"
+        readonly="{{true}}"
         value=""
         bind:tap="showCascader"
       />
@@ -792,6 +800,7 @@ exports[`Form Form vertical demo works fine 1`] = `
       name="age"
     >
       <t-stepper
+        disabled="{{false}}"
         theme="filled"
         value="{{3}}"
         bind:change="onChangeStepper"
@@ -803,6 +812,7 @@ exports[`Form Form vertical demo works fine 1`] = `
     >
       <t-rate
         allowHalf="{{true}}"
+        disabled="{{false}}"
         gap="{{8}}"
         value="{{2}}"
         variant="filled"
@@ -815,6 +825,7 @@ exports[`Form Form vertical demo works fine 1`] = `
     >
       <t-textarea
         class="textarea"
+        disabled="{{false}}"
         indicator="{{true}}"
         maxlength="{{50}}"
         placeholder="请输入个人简介"
@@ -824,11 +835,13 @@ exports[`Form Form vertical demo works fine 1`] = `
     </t-form-item>
     <t-form-item
       label="上传照片"
+      labelAlign="top"
       name="photo"
     >
       <t-upload
         action="https://service-bv448zsw-1257786608.gz.apigw.tencentcs.com/api/upload-demo"
         class="upload"
+        disabled="{{false}}"
         files="{{
           Array [
             Object {

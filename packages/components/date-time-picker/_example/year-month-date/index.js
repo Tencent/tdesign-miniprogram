@@ -63,7 +63,7 @@ Page({
 
       return {
         value: item.value,
-        label: item.label.slice(0, -1),
+        label: item.label?.slice(0, -1),
       };
     },
   },

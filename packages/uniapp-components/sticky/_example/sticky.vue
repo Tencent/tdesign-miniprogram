@@ -1,9 +1,7 @@
 <template>
   <view>
     <view class="custom-navbar">
-      <t-demo-navbar
-        title="Sticky"
-      />
+      <t-demo-navbar title="Sticky" />
     </view>
     <view class="demo tdesign-demo-sticky-base">
       <t-demo-header
@@ -11,23 +9,13 @@
         desc="用于常驻页面顶部的信息、操作展示。"
         notice="渲染框架支持情况：WebView"
       />
-      <t-demo
-        title="01 类型"
-        desc="基础吸顶"
-        padding
-      >
+      <t-demo title="01 类型" desc="基础吸顶" padding>
         <base-demo :navbar-height="navbarHeight" />
       </t-demo>
-      <t-demo
-        title=""
-        desc="吸顶距离"
-      >
+      <t-demo desc="吸顶距离">
         <offset-demo :navbar-height="navbarHeight" />
       </t-demo>
-      <t-demo
-        title=""
-        desc="指定容器"
-      >
+      <t-demo desc="指定容器">
         <container-demo :navbar-height="navbarHeight" />
       </t-demo>
     </view>
@@ -35,12 +23,11 @@
 </template>
 
 <script>
-
-import BaseDemo from './base/index.vue';
-import OffsetDemo from './offset/index.vue';
-import ContainerDemo from './container/index.vue';
 import { handlePageScroll } from '@tdesign/uniapp/mixins/page-scroll';
 
+import BaseDemo from './base/index.vue';
+import ContainerDemo from './container/index.vue';
+import OffsetDemo from './offset/index.vue';
 
 export default {
   onPageScroll(e) {

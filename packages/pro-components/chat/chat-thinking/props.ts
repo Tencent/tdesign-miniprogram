@@ -6,7 +6,7 @@
 
 import { TdChatThinkingProps } from './type';
 const props: TdChatThinkingProps = {
-  /** 内容区域最大高度，超出会自动滚动 */
+  /** 加载的状态形式 */
   animation: {
     type: String,
     value: 'moving',

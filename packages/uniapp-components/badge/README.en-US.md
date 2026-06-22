@@ -35,7 +35,7 @@ t-class-count | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-badge-basic-height | 32rpx | -
 --td-badge-basic-padding | 8rpx | -
@@ -44,6 +44,7 @@ Name | Default Value | Description
 --td-badge-border-radius | 4rpx | -
 --td-badge-bubble-border-radius | 20rpx 20rpx 20rpx 1px | -
 --td-badge-content-text-color | @text-color-primary | -
+--td-badge-content-text-font | @font-body-large | -
 --td-badge-dot-size | 16rpx | -
 --td-badge-font | @font-mark-extraSmall | -
 --td-badge-large-font | @font-mark-small | -

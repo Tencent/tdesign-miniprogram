@@ -1,4 +1,4 @@
-import { getCurrentPage } from '../common/utils.js';
+import { getCurrentPage } from '../common/utils';
 
 export default {
   data() {

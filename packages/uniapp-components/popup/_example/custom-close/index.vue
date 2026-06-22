@@ -1,18 +1,8 @@
 <template>
   <view>
-    <t-popup
-      :visible="visible"
-      placement="center"
-      @visible-change="onVisibleChange"
-    >
+    <t-popup :visible="visible" placement="center" @visible-change="onVisibleChange">
       <view class="block">
-        <t-icon
-          name="close-circle"
-          :custom-style="closeIconCustomStyle"
-          size="64rpx"
-          color="#fff"
-          @click="onClose"
-        />
+        <t-icon name="close-circle" :custom-style="closeIconCustomStyle" size="64rpx" color="#fff" @click="onClose" />
       </view>
     </t-popup>
 
@@ -30,10 +20,10 @@
 </template>
 
 <script>
-import TPopup from '@tdesign/uniapp/popup/popup.vue';
-import TIcon from '@tdesign/uniapp/icon/icon.vue';
 import TButton from '@tdesign/uniapp/button/button.vue';
 import tools from '@tdesign/uniapp/common/utils.wxs';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
+import TPopup from '@tdesign/uniapp/popup/popup.vue';
 
 export default {
   options: {
@@ -97,10 +87,10 @@ export default {
 </script>
 <style scoped>
 .block {
-    position: relative;
-    width: 240px;
-    height: 240px;
-    background: var(--td-bg-color-container);
-    border-radius: 16rpx;
+  position: relative;
+  width: 240px;
+  height: 240px;
+  background: var(--td-bg-color-container);
+  border-radius: 16rpx;
 }
 </style>

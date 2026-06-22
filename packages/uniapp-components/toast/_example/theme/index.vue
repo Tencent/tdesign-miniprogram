@@ -1,45 +1,20 @@
 <template>
   <view>
-    <t-toast
-      ref="t-toast"
-    />
+    <t-toast ref="t-toast" />
 
     <view class="box">
-      <t-button
-        theme="primary"
-        size="large"
-        variant="outline"
-        block
-        @click="showSuccessToast"
-      >
-        成功提示
-      </t-button>
-      <t-button
-        theme="primary"
-        size="large"
-        variant="outline"
-        block
-        @click="showWarningToast"
-      >
-        警告提示
-      </t-button>
-      <t-button
-        theme="primary"
-        size="large"
-        variant="outline"
-        block
-        @click="showErrorToast"
-      >
-        错误提示
-      </t-button>
+      <t-button theme="primary" size="large" variant="outline" block @click="showSuccessToast"> 成功提示 </t-button>
+      <t-button theme="primary" size="large" variant="outline" block @click="showWarningToast"> 警告提示 </t-button>
+      <t-button theme="primary" size="large" variant="outline" block @click="showErrorToast"> 错误提示 </t-button>
     </view>
   </view>
 </template>
 
 <script>
-import TToast from '@tdesign/uniapp/toast/toast.vue';
+import { Toast } from '@tdesign/uniapp';
 import TButton from '@tdesign/uniapp/button/button.vue';
-import Toast from '@tdesign/uniapp/toast/index';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
+
 export default {
   components: {
     TToast,
@@ -80,5 +55,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

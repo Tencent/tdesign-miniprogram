@@ -1,7 +1,7 @@
 ---
 title: Drawer 抽屉
-description: 用作一组平行关系页面/内容的切换器，相较于Tab，同屏可展示更多的选项数量。
-spline: message
+description: 用作一组平行关系页面/内容的切换器，相较于 Tab，同屏可展示更多的选项数量。
+spline: navigation
 isComponent: true
 ---
 
@@ -88,7 +88,7 @@ title | `0.29.0`。自定义 `title` 显示内容
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-drawer-bg-color | @bg-color-container | -
 --td-drawer-border-color | @border-level-1-color | -

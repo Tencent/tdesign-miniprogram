@@ -1,30 +1,16 @@
 <template>
   <view>
-    <t-tabs
-      :value="value"
-      @change="onTabsChange"
-      @click="onTabsClick"
-    >
-      <t-tab-panel
-        :label="value == '0' ? '选中' : '默认'"
-        value="0"
-      />
-      <t-tab-panel
-        :label="value == '1' ? '选中' : '默认'"
-        value="1"
-      />
-      <t-tab-panel
-        label="禁用"
-        value="2"
-        disabled
-      />
+    <t-tabs :value="value" @change="onTabsChange" @click="onTabsClick">
+      <t-tab-panel :label="value == '0' ? '选中' : '默认'" value="0" />
+      <t-tab-panel :label="value == '1' ? '选中' : '默认'" value="1" />
+      <t-tab-panel label="禁用" value="2" disabled />
     </t-tabs>
   </view>
 </template>
 
 <script>
-import TTabs from '@tdesign/uniapp/tabs/tabs.vue';
 import TTabPanel from '@tdesign/uniapp/tab-panel/tab-panel.vue';
+import TTabs from '@tdesign/uniapp/tabs/tabs.vue';
 export default {
   components: {
     TTabs,
@@ -47,5 +33,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

@@ -1,17 +1,10 @@
 <template>
-  <view
-    :style="tools._style([customStyle])"
-    :class="className"
-  >
+  <view :style="'' + tools._style([customStyle])" :class="className">
     <slot />
     <view :class="classPrefix + '__collapse--slot'">
       <slot name="collapse-avatar" />
     </view>
-    <view
-      v-if="max && max < length"
-      :class="classPrefix + '__collapse--default'"
-      @click="onCollapsedItemClick"
-    >
+    <view v-if="max && max < length" :class="classPrefix + '__collapse--default'" @click="onCollapsedItemClick">
       <t-avatar
         :t-class-image="prefix + '-avatar--border ' + prefix + '-avatar--border-' + size + ' ' + tClassImage"
         :t-class-content="tClassContent"
@@ -27,93 +20,89 @@
 </template>
 <script>
 import TAvatar from '../avatar/avatar';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import avatarGroupProps from './props';
-
-import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import tools from '../common/utils.wxs';
 
+import avatarGroupProps from './props';
 
 const name = `${prefix}-avatar-group`;
 const AVATAR_GROUP_INIT_Z_INDEX = 50;
 
-
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-content`,
-    `${prefix}-class-image`,
-  ],
-  mixins: [ParentMixin(RELATION_MAP.Avatar)],
+export default {
   components: {
     TAvatar,
   },
-  props: {
-    ...avatarGroupProps,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      hasChild: true,
-      length: 0,
-      className: '',
-      tools,
-    };
-  },
-  watch: {
-    cascading: 'setClass',
-    size: 'setClass',
-  },
-  mounted() {
-    this.setClass();
-    this.length = this.children?.length || 0;
-    if (this.length) {
-      this.handleMax();
-    }
-  },
-  methods: {
-    setClass() {
-      const { cascading, size } = this;
-      const direction = cascading.split('-')[0];
-      const classList = [
-        name,
-        this.tClass,
-        `${name}-offset-${direction}`,
-        `${name}-offset-${direction}-${size.indexOf('px') > -1 ? 'medium' : size || 'medium'}`,
-      ];
-
-      this.className = classList.join(' ');
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
+    externalClasses: [`${prefix}-class`, `${prefix}-class-content`, `${prefix}-class-image`],
+    mixins: [ParentMixin(RELATION_MAP.Avatar)],
+    props: {
+      ...avatarGroupProps,
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        hasChild: true,
+        length: 0,
+        className: '',
+        tools,
+      };
+    },
+    watch: {
+      cascading: 'setClass',
+      size: 'setClass',
+    },
+    mounted() {
+      this.setClass();
+      this.length = this.children?.length || 0;
+      if (this.length) {
+        this.handleMax();
+      }
+    },
+    methods: {
+      setClass() {
+        const { cascading, size } = this;
+        const direction = cascading.split('-')[0];
+        const classList = [
+          name,
+          this.tClass,
+          `${name}-offset-${direction}`,
+          `${name}-offset-${direction}-${size.indexOf('px') > -1 ? 'medium' : size || 'medium'}`,
+        ];
 
-    handleMax() {
-      const { max, cascading } = this;
-      const len = this.children.length;
-      if (!max || max > len) return;
+        this.className = classList.join(' ');
+      },
 
-      const restAvatars = this.children.splice(max, len - max);
+      handleMax() {
+        const { max, cascading } = this;
+        const len = this.children.length;
+        if (!max || max > len) return;
 
-      const isLeft = cascading === 'left-up';
-      this.children.forEach((child, index) => {
-        child.setStyle({
-          zIndex: isLeft && `calc(var(--td-avatar-group-init-z-index, ${AVATAR_GROUP_INIT_Z_INDEX}) - ${index})`,
-          padding: 'var(--td-avatar-group-line-spacing, 2px) 0',
+        const restAvatars = this.children.splice(max, len - max);
+
+        const isLeft = cascading === 'left-up';
+        this.children.forEach((child, index) => {
+          child.setStyle({
+            zIndex: isLeft && `calc(var(--td-avatar-group-init-z-index, ${AVATAR_GROUP_INIT_Z_INDEX}) - ${index})`,
+            padding: 'var(--td-avatar-group-line-spacing, 2px) 0',
+          });
         });
-      });
 
-      restAvatars.forEach((child) => {
-        child.hide();
-      });
+        restAvatars.forEach((child) => {
+          child.hide();
+        });
+      },
+      onCollapsedItemClick(e) {
+        this.$emit('collapsed-item-click', e);
+      },
     },
-    onCollapsedItemClick(e) {
-      this.$emit('collapsed-item-click', e);
-    },
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./avatar-group.css"></style>

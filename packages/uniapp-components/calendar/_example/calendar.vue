@@ -1,22 +1,13 @@
 <template>
   <view>
-    <t-demo-navbar
-      title="Calendar"
-    />
+    <t-demo-navbar title="Calendar" />
     <view class="demo">
-      <t-demo-header
-        title="Calendar 日历"
-        desc="按照日历形式展示数据或日期的容器"
-        notice="渲染框架支持情况：WebView"
-      />
-      <t-demo
-        title="01 组件类型"
-        desc="基础日历"
-      >
+      <t-demo-header title="Calendar 日历" desc="按照日历形式展示数据或日期的容器" notice="渲染框架支持情况：WebView" />
+      <t-demo title="01 组件类型" desc="基础日历">
         <base-demo />
       </t-demo>
 
-      <t-demo desc="">
+      <t-demo>
         <multiple-demo />
       </t-demo>
 
@@ -32,10 +23,7 @@
         <range-demo />
       </t-demo>
 
-      <t-demo
-        title="02 组件样式"
-        desc="国际化"
-      >
+      <t-demo title="02 组件样式" desc="国际化">
         <local-text />
       </t-demo>
 
@@ -52,12 +40,12 @@
 
 <script>
 import BaseDemo from './base';
-import MultipleDemo from './multiple';
-import CustomText from './custom-text';
-import SwitchMode from './switch-mode';
-import RangeDemo from './range';
-import LocalText from './local-text';
 import CustomRange from './custom-range';
+import CustomText from './custom-text';
+import LocalText from './local-text';
+import MultipleDemo from './multiple';
+import RangeDemo from './range';
+import SwitchMode from './switch-mode';
 import WithoutPopup from './without-popup';
 export default {
   components: {

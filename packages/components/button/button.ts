@@ -99,6 +99,9 @@ export default class Button extends SuperComponent {
     agreeprivacyauthorization(e) {
       this.triggerEvent('agreeprivacyauthorization', e.detail);
     },
+    phoneoneclicklogin(e) {
+      this.triggerEvent('phoneoneclicklogin', e.detail);
+    },
     handleTap(e) {
       if (this.data.disabled || this.data.loading) return;
 

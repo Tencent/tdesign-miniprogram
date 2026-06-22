@@ -7,7 +7,7 @@
       variant="outline"
       data-key="imageOnTop"
       block
-      @click="showDialog($event, { key: 'imageOnTop' })"
+      @click="(e) => showDialog(e, { key: 'imageOnTop' })"
     >
       图片置顶-带标题描述
     </t-button>
@@ -20,13 +20,8 @@
       @confirm="closeDialog"
       @cancel="closeDialog"
     >
-      <template
-        #top
-      >
-        <t-image
-          t-class="dialog-image"
-          src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
-        />
+      <template #top>
+        <t-image t-class="dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
       </template>
     </t-dialog>
 
@@ -37,7 +32,7 @@
       variant="outline"
       data-key="imageOnTopWithContent"
       block
-      @click="showDialog($event, { key: 'imageOnTopWithContent' })"
+      @click="(e) => showDialog(e, { key: 'imageOnTopWithContent' })"
     >
       图片置顶-无标题
     </t-button>
@@ -49,13 +44,8 @@
       @confirm="closeDialog"
       @cancel="closeDialog"
     >
-      <template
-        #top
-      >
-        <t-image
-          t-class="dialog-image"
-          src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
-        />
+      <template #top>
+        <t-image t-class="dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
       </template>
     </t-dialog>
 
@@ -66,7 +56,7 @@
       variant="outline"
       data-key="imageOnTopWithTitle"
       block
-      @click="showDialog($event, { key: 'imageOnTopWithTitle' })"
+      @click="(e) => showDialog(e, { key: 'imageOnTopWithTitle' })"
     >
       图片置顶-纯标题
     </t-button>
@@ -78,13 +68,8 @@
       @confirm="closeDialog"
       @cancel="closeDialog"
     >
-      <template
-        #top
-      >
-        <t-image
-          t-class="dialog-image"
-          src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
-        />
+      <template #top>
+        <t-image t-class="dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
       </template>
     </t-dialog>
 
@@ -95,7 +80,7 @@
       variant="outline"
       data-key="imageOnMiddleWithImage"
       block
-      @click="showDialog($event, { key: 'imageOnMiddleWithImage' })"
+      @click="(e) => showDialog(e, { key: 'imageOnMiddleWithImage' })"
     >
       图片置顶-纯图片
     </t-button>
@@ -106,13 +91,8 @@
       @confirm="closeDialog"
       @cancel="closeDialog"
     >
-      <template
-        #top
-      >
-        <t-image
-          t-class="dialog-image"
-          src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
-        />
+      <template #top>
+        <t-image t-class="dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
       </template>
     </t-dialog>
 
@@ -123,7 +103,7 @@
       variant="outline"
       data-key="imageOnMiddle"
       block
-      @click="showDialog($event, { key: 'imageOnMiddle' })"
+      @click="(e) => showDialog(e, { key: 'imageOnMiddle' })"
     >
       图片居中-带标题描述
     </t-button>
@@ -136,13 +116,8 @@
       @confirm="closeDialog"
       @cancel="closeDialog"
     >
-      <template
-        #middle
-      >
-        <t-image
-          t-class="image-host dialog-image"
-          src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
-        />
+      <template #middle>
+        <t-image t-class="image-host dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
       </template>
     </t-dialog>
 
@@ -153,7 +128,7 @@
       variant="outline"
       data-key="imageOnMiddleWithTitle"
       block
-      @click="showDialog($event, { key: 'imageOnMiddleWithTitle' })"
+      @click="(e) => showDialog(e, { key: 'imageOnMiddleWithTitle' })"
     >
       图片居中-纯标题
     </t-button>
@@ -165,13 +140,8 @@
       @confirm="closeDialog"
       @cancel="closeDialog"
     >
-      <template
-        #middle
-      >
-        <t-image
-          t-class="image-host dialog-image"
-          src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
-        />
+      <template #middle>
+        <t-image t-class="image-host dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
       </template>
     </t-dialog>
   </view>
@@ -179,8 +149,8 @@
 
 <script>
 import TButton from '@tdesign/uniapp/button/button.vue';
-import TImage from '@tdesign/uniapp/image/image.vue';
 import TDialog from '@tdesign/uniapp/dialog/dialog.vue';
+import TImage from '@tdesign/uniapp/image/image.vue';
 export default {
   options: {
     styleIsolation: 'shared',
@@ -216,16 +186,16 @@ export default {
 </script>
 <style>
 .wrapper {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 
 .dialog-image {
-    width: 100%;
-    height: 160px;
+  width: 100%;
+  height: 160px;
 }
 
 .image-host {
-    display: block;
-    margin-top: 48rpx;
+  display: block;
+  margin-top: 48rpx;
 }
 </style>

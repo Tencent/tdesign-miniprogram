@@ -73,7 +73,7 @@ export interface TdInputProps {
   /**
    * 是否禁用输入框
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * 获取焦点
    * @default false
@@ -109,7 +109,7 @@ export interface TdInputProps {
   /**
    * 占位符
    */
-  placeholder?: string;
+  placeholder?: string | null;
   /**
    * 指定 placeholder 的样式类
    * @default input-placeholder
@@ -127,7 +127,7 @@ export interface TdInputProps {
   /**
    * 只读状态
    */
-  readonly?: boolean;
+  readonly?: boolean | null;
   /**
    * 安全键盘加密公钥的路径，只支持包内路径
    * @default ''

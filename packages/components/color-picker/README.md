@@ -1,7 +1,7 @@
 ---
 title: ColorPicker 颜色选择器
 description: 用于颜色选择，支持多种格式。
-spline: data
+spline: form
 isComponent: true
 ---
 
@@ -97,7 +97,7 @@ header | 顶部插槽，仅在 `usePopup` 为 `true` 时有效
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-color-picker-gradient-preview-height | 56rpx | -
 --td-color-picker-gradient-preview-radius | 6rpx | -

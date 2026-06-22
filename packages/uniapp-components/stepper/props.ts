@@ -10,8 +10,8 @@ export default {
   disableInput: Boolean,
   /** 禁用全部操作 */
   disabled: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdStepperProps['disabled'],
   },
   /** 输入框宽度，默认单位 `px` */
   inputWidth: {

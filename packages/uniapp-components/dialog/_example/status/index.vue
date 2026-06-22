@@ -1,8 +1,6 @@
 <template>
   <view>
-    <view class="demo-desc">
-      文字按钮
-    </view>
+    <view class="demo-desc"> 文字按钮 </view>
     <t-button
       t-class="wrapper"
       theme="primary"
@@ -10,7 +8,7 @@
       variant="outline"
       data-key="showConfirm"
       block
-      @click="showDialog($event, { key: 'showConfirm' })"
+      @click="(e) => showDialog(e, { key: 'showConfirm' })"
     >
       文字按钮
     </t-button>
@@ -24,9 +22,7 @@
       @cancel="closeDialog"
     />
 
-    <view class="demo-desc">
-      水平基础按钮
-    </view>
+    <view class="demo-desc"> 水平基础按钮 </view>
     <t-button
       t-class="wrapper"
       theme="primary"
@@ -34,7 +30,7 @@
       variant="outline"
       data-key="showWarnConfirm"
       block
-      @click="showDialog($event, { key: 'showWarnConfirm' })"
+      @click="(e) => showDialog(e, { key: 'showWarnConfirm' })"
     >
       水平基础按钮
     </t-button>
@@ -47,9 +43,7 @@
       @cancel="closeDialog"
     />
 
-    <view class="demo-desc">
-      垂直基础按钮
-    </view>
+    <view class="demo-desc"> 垂直基础按钮 </view>
     <t-button
       t-class="wrapper"
       theme="primary"
@@ -57,7 +51,7 @@
       variant="outline"
       data-key="showTooLongBtnContent"
       block
-      @click="showDialog($event, { key: 'showTooLongBtnContent' })"
+      @click="(e) => showDialog(e, { key: 'showTooLongBtnContent' })"
     >
       垂直基础按钮
     </t-button>
@@ -72,9 +66,7 @@
       @cancel="closeDialog"
     />
 
-    <view class="demo-desc">
-      多按钮
-    </view>
+    <view class="demo-desc"> 多按钮 </view>
     <t-button
       t-class="wrapper"
       theme="primary"
@@ -82,7 +74,7 @@
       variant="outline"
       data-key="showMultiBtn"
       block
-      @click="showDialog($event, { key: 'showMultiBtn' })"
+      @click="(e) => showDialog(e, { key: 'showMultiBtn' })"
     >
       多按钮
     </t-button>
@@ -95,9 +87,7 @@
       @action="closeDialog"
     />
 
-    <view class="demo-desc">
-      带关闭按钮的对话框
-    </view>
+    <view class="demo-desc"> 带关闭按钮的对话框 </view>
     <t-button
       t-class="wrapper"
       theme="primary"
@@ -105,7 +95,7 @@
       variant="outline"
       data-key="showCloseBtn"
       block
-      @click="showDialog($event, { key: 'showCloseBtn' })"
+      @click="(e) => showDialog(e, { key: 'showCloseBtn' })"
     >
       带关闭按钮的对话框
     </t-button>
@@ -161,7 +151,6 @@ export default {
           theme: 'primary',
         },
       ],
-
     };
   },
   created() {},
@@ -180,10 +169,10 @@ export default {
 </script>
 <style scoped>
 .demo-desc {
-    margin: 0 0 32rpx;
+  margin: 0 0 32rpx;
 }
 
 .wrapper {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 </style>

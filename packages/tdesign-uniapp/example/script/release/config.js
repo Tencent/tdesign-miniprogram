@@ -23,6 +23,9 @@ const config = {
 const DIST_BLACK_LIST = [
   'tsconfig.eslint.json',
   '.eslintrc.js',
+  // postinstall 脚本改由发布包根目录的 script/ 承载（见 tdesign-uniapp(-chat)/script/postinstall.js），
+  // 不再随源码一起拷贝进 dist，避免两处并存造成困惑
+  'script/postinstall.js',
 ];
 
 module.exports = {

@@ -131,6 +131,13 @@ class ConfigStore {
         }
         this._cleanupCallbacks.delete(componentId);
       }
+
+      // 如果没有其他 config-provider 实例设置了 locale，则重置为空对象
+      // 这样其他组件会回退到默认语言包（zh_CN）
+      const hasOtherLocaleProvider = Array.from(this._pageInitFlags.values()).some((flag) => flag.locale);
+      if (!hasOtherLocaleProvider) {
+        this.currentLocale.value = {};
+      }
     }
   }
 }

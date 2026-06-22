@@ -8,9 +8,9 @@ name | type | default | description | required
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
 animation | String | skeleton | options: skeleton/moving/gradient/dots | N
 avatar | String | - | \- | N
-chat-content-props | Object | - | Typescript: `ChatContentProps`，[ChatContent API Documents](./chat-content?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-pro-components/chat/chat-message/type.ts) | N
+chat-content-props | Object | - | Typescript: `ChatMessageContentProps` `interface ChatMessageContentProps extends ChatContentProps { thinking?: ChatMessageThinking; }` `type ChatMessageThinking = Pick<ChatThinkingProps, 'animation' \| 'collapsed' \| 'layout' \| 'maxHeight'>  ` `import { ChatContentProps } from '@ChatContent'`，[ChatThinking API Documents](./chat-thinking?tab=api)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-pro-components/chat/chat-message/type.ts) | N
 chat-id | String | - | \- | N
-content | Array | - | Typescript: `ChatMessageContent[] ` `type ChatMessageContent = TextContent \| MarkdownContent \| ThinkingContent \| AttachmentContent` ` type AttachmentContent = ChatBaseContent<'attachment', FileItem[]>` `type ThinkingContent = ChatBaseContent<'thinking', ThinkingContentData>` `type MarkdownContent = ChatBaseContent<'markdown', string>` `type TextContent = ChatBaseContent<'text', string>` `interface ThinkingContentData {title?: string; text: string}` `interface ChatBaseContent<T extends ChatContentType, TData> {type: T; data: TData}` `type ChatMessageStatus = 'pending' \| 'streaming' \| 'complete' \| 'stop' \| 'error'` `type ChatContentType = \| 'text' \| 'markdown' \| 'thinking' \| 'attachment'`，[Attachments API Documents](./attachments?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-pro-components/chat/chat-message/type.ts) | N
+content | Array | - | Typescript: `ChatMessageContent[] ` `type ChatMessageContent = TextContent \| MarkdownContent \| ThinkingContent \| AttachmentContent` ` type AttachmentContent = ChatBaseContent<'attachment', FileItem[]>` `type ThinkingContent = ChatBaseContent<'thinking', ThinkingContentData>` `type MarkdownContent = ChatBaseContent<'markdown', string>` `type TextContent = ChatBaseContent<'text', string>` `interface ThinkingContentData {title?: string; text: string}` `interface ChatBaseContent<T extends ChatContentType, TData> {type: T; data: TData}` `type ChatMessageStatus = 'pending' \| 'streaming' \| 'complete' \| 'stop' \| 'error'` `type ChatContentType = \| 'text' \| 'markdown' \| 'thinking' \| 'attachment'`，[Attachments API Documents](./attachments?tab=api)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-pro-components/chat/chat-message/type.ts) | N
 datetime | String | - | \- | N
 name | String | - | \- | N
 placement | String | - | options: left/right | N
@@ -22,9 +22,10 @@ variant | String | base | options: base/outline/text | N
 
 name | params | description
 -- | -- | --
-message-longpress | `(detail: { id: string, longPressPosition: { x: number, y: number } })` | longpress-event
+message-longpress | `(context: { e: MouseEvent, id: string, longPressPosition: { x: number, y: number } })` | \-
+
 ### ChatMessage Slots
 
 name | \-
 avatar | \-
-datetime | \-
+content | \-

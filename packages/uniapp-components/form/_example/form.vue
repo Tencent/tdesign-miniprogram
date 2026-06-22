@@ -1,18 +1,12 @@
 <template>
   <view class="tdesign-mobile-demo">
-    <t-demo-navbar
-      custom-class="demo-navbar"
-      title="Form"
-    />
+    <t-demo-navbar custom-class="demo-navbar" title="Form" />
     <t-demo-header
       title="Form 表单"
       desc="用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。"
       notice="渲染框架支持情况：Skyline、WebView"
     />
-    <t-demo
-      title="01 组件类型"
-      desc="基础表单"
-    >
+    <t-demo title="01 组件类型" desc="基础表单">
       <view class="option">
         <view class="select-button-group">
           <t-button
@@ -36,6 +30,11 @@
             竖向排布
           </t-button>
         </view>
+        <t-cell title="禁用态">
+          <template #note>
+            <t-switch :value="switchValue" @change="onChangeSwitch" />
+          </template>
+        </t-cell>
       </view>
     </t-demo>
 
@@ -50,17 +49,21 @@
 </template>
 
 <script>
+import TButton from '@tdesign/uniapp/button/button.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import { canUseVirtualHost } from '@tdesign/uniapp/common/version';
+import TSwitch from '@tdesign/uniapp/switch/switch.vue';
 
 import HorizontalDemo from './horizontal/index.vue';
 import VerticalDemo from './vertical/index.vue';
-import TButton from '@tdesign/uniapp/button/button.vue';
-import { canUseVirtualHost } from '@tdesign/uniapp/common/version';
 
 export default {
   components: {
     HorizontalDemo,
     VerticalDemo,
     TButton,
+    TCell,
+    TSwitch,
   },
   data() {
     return {
@@ -79,6 +82,9 @@ export default {
   methods: {
     onClick() {
       this.isActive1 = !this.isActive1;
+    },
+    onChangeSwitch(e) {
+      this.switchValue = e.value;
     },
   },
 };

@@ -53,8 +53,8 @@ export default {
   },
   /** 显示/隐藏 */
   visible: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdNoticeBarProps['visible'],
   },
   /** 显示/隐藏，非受控属性 */
   defaultVisible: Boolean,

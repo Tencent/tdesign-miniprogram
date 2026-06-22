@@ -1,11 +1,10 @@
-import { getCurrentPage } from '../common/utils';
 import Bus from '../common/bus';
+import { getCurrentPage } from '../common/utils';
 
 const overflowScrollReg = /scroll|auto|overlay/i;
 
 export const bus = new Bus();
 export const PAGE_SCROLL_EVENT_NAME = 'page-scroll';
-
 
 const onPageScroll = function (event) {
   const page = getCurrentPage();
@@ -19,7 +18,6 @@ const onPageScroll = function (event) {
     }
   });
 };
-
 
 export default (funcName = 'onScroll', useBus = true) => {
   // #ifdef H5
@@ -43,11 +41,13 @@ export default (funcName = 'onScroll', useBus = true) => {
       const page = getCurrentPage();
       if (!page) return;
 
-
       if (Array.isArray(page.pageScroller)) {
         page.pageScroller.push(this._bindScroller);
       } else {
-        page.pageScroller = typeof page.onPageScroll === 'function' ? [page.onPageScroll.bind(page), this._bindScroller] : [this._bindScroller];
+        page.pageScroller =
+          typeof page.onPageScroll === 'function'
+            ? [page.onPageScroll.bind(page), this._bindScroller]
+            : [this._bindScroller];
       }
 
       page.onPageScroll = onPageScroll;
@@ -68,7 +68,7 @@ export default (funcName = 'onScroll', useBus = true) => {
       const page = getCurrentPage();
       if (!page) return;
 
-      page.pageScroller = page.pageScroller?.filter(item => item !== this._bindScroller) || [];
+      page.pageScroller = page.pageScroller?.filter((item) => item !== this._bindScroller) || [];
     },
     methods: {
       _bindScroller(e) {
@@ -84,7 +84,6 @@ export default (funcName = 'onScroll', useBus = true) => {
     },
   };
 };
-
 
 export function getScroller(el, root) {
   // #ifdef H5
@@ -107,7 +106,6 @@ export function getScroller(el, root) {
   return root;
   // #endif
 }
-
 
 export function handlePageScroll(e) {
   bus.emit(PAGE_SCROLL_EVENT_NAME, e);

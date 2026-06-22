@@ -5,27 +5,20 @@
       use-popup
       enable-alpha
       type="multiple"
-      @update:visible="visible = $event"
+      @update:visible="(e) => (visible = e)"
       @change="onChange"
       @palette-bar-change="onPaletteBarChange"
     />
 
-    <t-button
-      block
-      size="large"
-      variant="outline"
-      theme="primary"
-      t-class="wrapper"
-      @click="handlePopup"
-    >
+    <t-button block size="large" variant="outline" theme="primary" t-class="wrapper" @click="handlePopup">
       弹窗形式的颜色选择器
     </t-button>
   </view>
 </template>
 
 <script>
-import TColorPicker from '@tdesign/uniapp/color-picker/color-picker.vue';
 import TButton from '@tdesign/uniapp/button/button.vue';
+import TColorPicker from '@tdesign/uniapp/color-picker/color-picker.vue';
 
 export default {
   components: {
@@ -51,5 +44,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

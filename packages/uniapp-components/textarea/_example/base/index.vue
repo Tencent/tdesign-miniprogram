@@ -1,10 +1,6 @@
 <template>
   <view>
-    <t-textarea
-      t-class="external-class"
-      placeholder="请输入文字"
-      :disable-default-padding="true"
-    />
+    <t-textarea t-class="external-class" placeholder="请输入文字" :disable-default-padding="true" />
   </view>
 </template>
 
@@ -26,6 +22,6 @@ export default {
 </script>
 <style scoped>
 :deep(.external-class) {
-    height: 256rpx;
+  height: 256rpx;
 }
 </style>

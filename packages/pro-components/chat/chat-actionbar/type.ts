@@ -11,7 +11,7 @@ export interface TdChatActionbarProps {
    */
   actionBar?: {
     type: ArrayConstructor;
-    value?: Array<'replay' | 'copy' | 'good' | 'bad' | 'share'>;
+    value?: Array<'replay' | 'copy' | 'good' | 'bad' | 'share' | 'quote'>;
   };
   /**
    * 【实验】聊天消息的唯一标识
@@ -22,12 +22,11 @@ export interface TdChatActionbarProps {
     value?: string;
   };
   /**
-   * 评价内容
-   * @default ''
+   * 评价类型， 可选 'good'（点赞） 或者 'bad'（点踩）， 默认为空
    */
   comment?: {
     type: StringConstructor;
-    value?: string;
+    value?: 'good' | 'bad';
   };
   /**
    * 被复制的内容
@@ -54,6 +53,13 @@ export interface TdChatActionbarProps {
     value?: boolean;
   };
   /**
+   * 【实验】长按操作栏位置
+   */
+  longPressPosition?: {
+    type: ObjectConstructor;
+    value?: ChatActionbarLongPressPosition;
+  };
+  /**
    * 【实验】操作栏位置
    * @default start
    */
@@ -61,18 +67,18 @@ export interface TdChatActionbarProps {
     type: StringConstructor;
     value?: 'start' | 'end' | 'space-around' | 'space-between' | 'longpress';
   };
-  /**
-   * 【实验】长按触发点的位置信息，用于定位 popover
-   */
-  longPressPosition?: {
-    type: ObjectConstructor;
-    value?: {
-      pageX: number;
-      pageY: number;
-      clientX: number;
-      clientY: number;
-      x: number;
-      y: number;
-    };
-  };
+}
+
+export interface ChatActionbarLongPressPosition {
+  type?: object;
+  value?: LongPressPositionValue;
+}
+
+export interface LongPressPositionValue {
+  pageX?: number;
+  pageY?: number;
+  clientX?: number;
+  clientY?: number;
+  x?: number;
+  y?: number;
 }

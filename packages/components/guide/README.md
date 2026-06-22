@@ -1,7 +1,7 @@
 ---
 title: Guide 引导
 description: 逐步骤进行指引或解释说明的组件，常用于用户不熟悉的或需进行特别强调的页面。
-spline: base
+spline: message
 isComponent: true
 ---
 
@@ -119,7 +119,7 @@ title | String | - | 当前步骤的标题内容，支持插槽：slot="title-{{
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-guide-body-color | @text-color-secondary | -
 --td-guide-dialog-body-font | @font-body-large | -

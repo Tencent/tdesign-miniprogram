@@ -1,26 +1,16 @@
 <template>
   <view>
     <view class="chat-example">
-      <view class="title">
-        用户内容纯文本支持HTML转义
-      </view>
+      <view class="title"> 用户内容纯文本支持HTML转义 </view>
       <view class="chat-example-block">
-        <t-chat-content
-          :content="userContent"
-          role="user"
-        />
+        <t-chat-content :content="userContent" role="user" />
       </view>
     </view>
 
     <view class="chat-example">
-      <view class="title">
-        助手内容（Markdown）
-      </view>
+      <view class="title"> 助手内容（Markdown） </view>
       <view class="chat-example-block">
-        <t-chat-content
-          :content="assistantContent"
-          role="assistant"
-        />
+        <t-chat-content :content="assistantContent" role="assistant" @click="onClick" />
       </view>
     </view>
   </view>
@@ -28,7 +18,6 @@
 
 <script>
 import TChatContent from '@tdesign/uniapp-chat/chat-content/chat-content.vue';
-
 
 const markdownData = `# Markdown功能测试 (H1标题)
 
@@ -83,23 +72,28 @@ export default {
     };
   },
   created() {},
-  methods: {},
+  methods: {
+    onClick(e) {
+      const { node } = e;
+      console.log('点击节点', node);
+    },
+  },
 };
 </script>
 <style>
 .chat-example {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 
 .chat-example-block {
-    padding: 32rpx;
-    background-color: var(--td-bg-color-container);
+  padding: 32rpx;
+  background-color: var(--td-bg-color-container);
 }
 
 .title {
-    padding: 0 32rpx 32rpx;
-    font-size: 28rpx;
-    line-height: 44rpx;
-    color: var(--bg-color-demo-desc);
+  padding: 0 32rpx 32rpx;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  color: var(--bg-color-demo-desc);
 }
 </style>

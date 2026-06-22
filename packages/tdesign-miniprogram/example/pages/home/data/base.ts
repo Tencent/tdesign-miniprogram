@@ -39,13 +39,10 @@ const base = {
       label: '布局',
       path: '/pages/col/col',
     },
-    // {
-    //   name: 'Typography',
-    //   label: '字体',
-    // },
     {
-      name: 'ConfigProvider',
-      label: '全局特性配置',
+      name: 'Typography',
+      label: '排版',
+      path: '/pages/paragraph/paragraph',
     },
   ],
 };

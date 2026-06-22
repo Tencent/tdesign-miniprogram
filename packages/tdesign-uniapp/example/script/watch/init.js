@@ -1,21 +1,23 @@
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
+
 const glob = require('glob');
 const { deleteFolder } = require('t-comm');
+
+const { generateStyleShortcuts } = require('../release/prepare');
+
+const { generateDts } = require('../release/typescript');
 
 const { config } = require('./config');
 const { copyComponents, checkVue2CliExist, checkVue2HxExist, checkVue3HxExist } = require('./helper');
 
-
-async function copyOneProject({
-  globMode,
-  sourceDir,
-  isChat,
-}) {
-  const list = glob.sync(globMode, {
-    ignore: '**/node_modules/**/*',
-    nodir: true,
-  }).filter(item => !item.includes('node_modules'));
+async function copyOneProject({ globMode, sourceDir, isChat }) {
+  const list = glob
+    .sync(globMode, {
+      ignore: '**/node_modules/**/*',
+      nodir: true,
+    })
+    .filter((item) => !item.includes('node_modules'));
 
   for (const item of list) {
     const relativePath = path.relative(sourceDir, item);
@@ -31,34 +33,31 @@ async function copyOneProject({
 
 function clearTargetDir() {
   deleteFolder(config.componentTargetDirInVue3Cli);
-  deleteFolder(config.componentTargetDirInApp);
+  deleteFolder(config.componentChatTargetDirInVue3Cli);
 
   deleteFolder(config.pagesMoreDirInVue3Cli);
-  deleteFolder(config.pagesMoreDirInApp);
 
   if (checkVue2CliExist()) {
     deleteFolder(config.componentTargetDirInVue2Cli);
+    deleteFolder(config.componentChatTargetDirInVue2Cli);
     deleteFolder(config.pagesMoreDirInVue2Cli);
   }
 
   if (checkVue2HxExist()) {
     deleteFolder(config.componentTargetDirInVue2Hx);
+    deleteFolder(config.componentChatTargetDirInVue2Hx);
     deleteFolder(config.pagesMoreDirInVue2Hx);
   }
 
   if (checkVue3HxExist()) {
     deleteFolder(config.componentTargetDirInVue3Hx);
+    deleteFolder(config.componentChatTargetDirInVue3Hx);
     deleteFolder(config.pagesMoreDirInVue3Hx);
   }
 }
 
-
 async function main() {
   await clearTargetDir();
-
-  await copyInfra({
-    infraDir: config.infraDirInApp,
-  });
 
   if (checkVue2CliExist()) {
     await copyInfra({
@@ -84,17 +83,34 @@ async function main() {
     isChat: false,
   });
 
+  // 为主包生成 .d.ts 声明文件
+  generateDts(config.sourceDir, config.componentTargetDirInVue3Cli);
+
   await copyOneProject({
     globMode: config.chatSourceGlob,
     sourceDir: config.chatSourceDir,
     isChat: true,
   });
+
+  // 为各目标目录生成快捷样式入口文件（theme.css / theme.less）
+  generateStyleShortcuts(config.componentTargetDirInVue3Cli);
+
+  if (checkVue2CliExist()) {
+    generateStyleShortcuts(config.componentTargetDirInVue2Cli);
+  }
+
+  if (checkVue2HxExist()) {
+    generateStyleShortcuts(config.componentTargetDirInVue2Hx);
+  }
+
+  if (checkVue3HxExist()) {
+    generateStyleShortcuts(config.componentTargetDirInVue3Hx);
+  }
+  // 为 chat 包生成 .d.ts 声明文件
+  generateDts(config.chatSourceDir, config.componentChatTargetDirInVue3Cli);
 }
 
-
-async function copyInfra({
-  infraDir,
-}) {
+async function copyInfra({ infraDir }) {
   const list = glob.sync([config.demoPagesGlob], {
     ignore: '**/node_modules/**/*',
     nodir: true,
@@ -111,6 +127,5 @@ async function copyInfra({
 
   console.log(`[Wrote] done! Length of App Files is ${list.length}!`);
 }
-
 
 main();

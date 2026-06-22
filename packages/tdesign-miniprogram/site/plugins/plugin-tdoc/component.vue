@@ -71,8 +71,8 @@ export default defineComponent({
     },
     name() {
       const { path } = this.$route;
-      const name = path.slice(path.lastIndexOf('/') + 1);
-      return name.replace('layout', 'col');
+      const nameMap: Record<string, string> = { layout: 'col', typography: 'paragraph' };
+      return path.slice(path.lastIndexOf('/') + 1).replace(/layout|typography/, (m) => nameMap[m]);
     },
     liveHost() {
       const { host } = window.location;

@@ -33,7 +33,16 @@ exports[`Search Search base demo works fine 1`] = `
   >
     <t-search
       placeholder="输入tdesign，有预览结果"
-      resultList="{{Array []}}"
+      resultList="{{
+        Array [
+          "tdesign-vue",
+          "tdesign-react",
+          "tdesign-miniprogram",
+          "tdesign-angular",
+          "tdesign-mobile-vue",
+          "tdesign-mobile-react",
+        ]
+      }}"
       bind:change="onChangeValue"
     />
   </wx-view>

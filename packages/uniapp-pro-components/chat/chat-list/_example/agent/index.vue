@@ -1,16 +1,8 @@
 <template>
   <view>
-    <view
-      class="chat-box"
-      :style="'height: ' + contentHeightClone + ';'"
-    >
-      <t-chat-list
-        @scroll="onScroll"
-      >
-        <block
-          v-for="(item, chatIndex) in chatList"
-          :key="item.key"
-        >
+    <view class="chat-box" :style="'height: ' + contentHeightClone + ';'">
+      <t-chat-list @scroll="onScroll">
+        <block v-for="(item, chatIndex) in chatList" :key="item.key">
           <t-chat-message
             :chat-id="item.key"
             :avatar="item.avatar || ''"
@@ -21,29 +13,16 @@
             @message-longpress="showPopover"
           >
             <template #content>
-              <block
-                v-for="(contentItem, contentIndex) in item.message.content"
-                :key="contentIndex"
-              >
+              <block v-for="(contentItem, contentIndex) in item.message.content" :key="contentIndex">
                 <t-chat-content
                   v-if="contentItem.type === 'text' || contentItem.type === 'markdown'"
                   :content="contentItem"
                   :role="item.message.role"
                 />
 
-                <view
-                  v-if="contentItem.type === 'agent'"
-                  class="step"
-                >
-                  <t-steps
-                    layout="vertical"
-                    :current="contentItem.content.steps.length"
-                  >
-                    <t-step-item
-                      v-for="(item, index) in contentItem.content.steps"
-                      :key="index"
-                      :title="item.step"
-                    >
+                <view v-if="contentItem.type === 'agent'" class="step">
+                  <t-steps layout="vertical" :current="contentItem.content.steps.length">
+                    <t-step-item v-for="(item, index) in contentItem.content.steps" :key="index" :title="item.step">
                       <template #content>
                         <view class="step-text-list">
                           <view
@@ -71,8 +50,8 @@
               <t-chat-actionbar
                 v-if="
                   chatIndex !== chatList.length - 1 &&
-                    item.message.status === 'complete' &&
-                    item.message.role === 'assistant'
+                  item.message.status === 'complete' &&
+                  item.message.role === 'assistant'
                 "
                 placement="end"
                 @actions="handleAction"
@@ -107,16 +86,18 @@
 </template>
 
 <script>
-import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
+import { Toast } from '@tdesign/uniapp';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
+import TStepItem from '@tdesign/uniapp/step-item/step-item.vue';
+import TSteps from '@tdesign/uniapp/steps/steps.vue';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
+
+import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
 import TChatContent from '@tdesign/uniapp-chat/chat-content/chat-content.vue';
 import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
+import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
 import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
-import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
-import TSteps from '@tdesign/uniapp/steps/steps.vue';
-import TStepItem from '@tdesign/uniapp/step-item/step-item.vue';
-import TIcon from '@tdesign/uniapp/icon/icon.vue';
-import TToast from '@tdesign/uniapp/toast/toast.vue';
-import Toast from '@tdesign/uniapp/toast/index';
+
 import { getNavigationBarHeight } from '../utils';
 
 let uniqueId = 0;
@@ -125,7 +106,7 @@ const getUniqueKey = () => {
   return `key-${uniqueId}`;
 };
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
   const arr = str.split('');

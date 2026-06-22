@@ -1,14 +1,16 @@
 ---
 title: Popover 弹出气泡
 description: 用于文字提示的气泡框。
-spline: data
+spline: message
 isComponent: true
 ---
 
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-popover />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TPopover from '@tdesign/uniapp/popover/popover.vue';
@@ -68,7 +70,7 @@ t-class-content | 内容样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-popover-brand-bg-color | @primary-color-1 | -
 --td-popover-brand-color | @primary-color-7 | -

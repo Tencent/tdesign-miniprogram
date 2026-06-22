@@ -1,12 +1,18 @@
 <template>
   <view
-    :class="utils.cls(classPrefix, [['popup', usePopup]]) + ' ' + classPrefix + '-switch-mode--' + switchMode + ' ' + tClass"
+    :class="
+      '' +
+      utils.cls(classPrefix, [['popup', usePopup]]) +
+      ' ' +
+      classPrefix +
+      '-switch-mode--' +
+      switchMode +
+      ' ' +
+      tClass
+    "
     :style="customStyle"
   >
-    <view
-      :class="classPrefix + '__title'"
-      tabindex="0"
-    >
+    <view :class="classPrefix + '__title'" tabindex="0">
       <slot name="title" />
       <text v-if="title || realLocalText.title">
         {{ title || realLocalText.title }}
@@ -15,25 +21,24 @@
     <t-icon
       v-if="usePopup"
       name="close"
+      :custom-style="closeBtnCustomStyle"
       :t-class="classPrefix + '__close-btn'"
       size="48rpx"
       aria-role="button"
       aria-label="关闭"
-      :custom-style="closeBtnCustomStyle"
       @click="handleClose"
     />
-    <block
-      v-if="switchMode !== 'none'"
-      name="calendar-header"
-    >
+    <block v-if="switchMode !== 'none'" name="calendar-header">
       <calendar-header
         :class-prefix="classPrefix + '-header'"
         :switch-mode="switchMode"
-        :title="getMonthTitle(
-          currentMonth[0] && currentMonth[0].year,
-          realLocalText.months && currentMonth[0] && realLocalText.months[currentMonth[0].month],
-          realLocalText.monthTitle
-        )"
+        :title="
+          getMonthTitle(
+            currentMonth[0] && currentMonth[0].year,
+            realLocalText.months && currentMonth[0] && realLocalText.months[currentMonth[0].month],
+            realLocalText.monthTitle,
+          )
+        "
         :pre-year-btn-disable="actionButtons.preYearBtnDisable"
         :prev-month-btn-disable="actionButtons.prevMonthBtnDisable"
         :next-year-btn-disable="actionButtons.nextYearBtnDisable"
@@ -41,15 +46,8 @@
         @handleSwitchModeChange="handleSwitchModeChange"
       />
     </block>
-    <view
-      aria-hidden
-      :class="classPrefix + '__days'"
-    >
-      <view
-        v-for="(item, index) in days"
-        :key="index"
-        :class="classPrefix + '__days-item'"
-      >
+    <view aria-hidden :class="classPrefix + '__days'">
+      <view v-for="(item, index) in days" :key="index" :class="classPrefix + '__days-item'">
         {{ item }}
       </view>
     </view>
@@ -61,20 +59,20 @@
       :show-scrollbar="false"
       @scroll="onScroll"
     >
-      <block
-        v-for="(item, index) in switchMode === 'none' ? months : currentMonth"
-        :key="index"
-      >
-        <block
-          v-if="switchMode === 'none'"
-          name="calendar-header"
-        >
+      <block v-for="(item, index) in switchMode === 'none' ? months : currentMonth" :key="index">
+        <block v-if="switchMode === 'none'" name="calendar-header">
           <calendar-header
             :t-class="classPrefix + '__month'"
             :class-prefix="classPrefix + '-header'"
             :switch-mode="switchMode"
             :t-id="'year_' + item.year + '_month_' + item.month"
-            :title="getMonthTitle(item.year, realLocalText.months && realLocalText.months[item.month], realLocalText.monthTitle)"
+            :title="
+              getMonthTitle(
+                item.year,
+                realLocalText.months && realLocalText.months[item.month],
+                realLocalText.monthTitle,
+              )
+            "
             :pre-year-btn-disable="actionButtons.preYearBtnDisable"
             :prev-month-btn-disable="actionButtons.prevMonthBtnDisable"
             :next-year-btn-disable="actionButtons.nextYearBtnDisable"
@@ -84,16 +82,18 @@
         </block>
 
         <view :class="classPrefix + '__dates'">
-          <view
-            v-for="(item, index1) in (item.weekdayOfFirstDay - firstDayOfWeek + 7) % 7"
-            :key="index1"
-          />
-          <block
-            v-for="(dateItem, dateIndex) in item.months"
-            :key="dateIndex"
-          >
+          <view v-for="(item, index1) in (item.weekdayOfFirstDay - firstDayOfWeek + 7) % 7" :key="index1" />
+          <block v-for="(dateItem, dateIndex) in item.months" :key="dateIndex">
             <view
-              :class="classPrefix + '__dates-item ' + dateItem.className + ' ' + classPrefix + '__dates-item--' + dateItem.type"
+              :class="
+                classPrefix +
+                '__dates-item ' +
+                dateItem.className +
+                ' ' +
+                classPrefix +
+                '__dates-item--' +
+                dateItem.type
+              "
               :data-year="item.year"
               :data-month="item.month"
               :data-date="dateItem"
@@ -102,10 +102,7 @@
               :aria-disabled="dateItem.type === 'disabled'"
               @click="handleSelect"
             >
-              <view
-                v-if="dateItem.prefix"
-                :class="classPrefix + '__dates-item-prefix'"
-              >
+              <view v-if="dateItem.prefix" :class="classPrefix + '__dates-item-prefix'">
                 {{ dateItem.prefix }}
               </view>
               {{ dateItem.day }}
@@ -120,14 +117,8 @@
         </view>
       </block>
     </scroll-view>
-    <view
-      v-if="innerConfirmBtn != null && usePopup"
-      :class="classPrefix + '__footer'"
-    >
-      <slot
-        v-if="innerConfirmBtn === 'slot'"
-        name="confirm-btn"
-      />
+    <view v-if="innerConfirmBtn != null && usePopup" :class="classPrefix + '__footer'">
+      <slot v-if="innerConfirmBtn === 'slot'" name="confirm-btn" />
       <block v-else-if="innerConfirmBtn">
         <t-button
           :t-id="innerConfirmBtn.tId"
@@ -177,18 +168,17 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon.vue';
 import TButton from '../button/button.vue';
-import utils from '../common/utils.wxs';
-import {
-  getDateLabel,
-  getMonthTitle,
-} from './computed.js';
-import CalendarHeader from './calendar-header.vue';
+
 import { prefix } from '../common/config';
 import { coalesce } from '../common/utils';
-import props from './template.props';
+import utils from '../common/utils.wxs';
+import TIcon from '../icon/icon.vue';
 
+import CalendarHeader from './calendar-header.vue';
+import { getDateLabel, getMonthTitle } from './computed.js';
+
+import props from './template.props';
 
 export default {
   name: 'TCalendarContent',
@@ -203,13 +193,7 @@ export default {
   props: {
     ...props,
   },
-  emits: [
-    'clickButton',
-    'close',
-    'scroll',
-    'select',
-    'handleSwitchModeChange',
-  ],
+  emits: ['clickButton', 'close', 'scroll', 'select', 'handleSwitchModeChange'],
   data() {
     return {
       prefix,
@@ -220,19 +204,16 @@ export default {
     closeBtnCustomStyle() {
       return utils._style({
         position: 'absolute',
-        top: '16px',
-        right: '16px',
-        margin: '-12px',
-        padding: '12px',
+        top: '32rpx',
+        right: '32rpx',
+        margin: '-24rpx',
+        padding: '24rpx',
         color: 'var(--td-calendar-title-color, var(--td-text-color-primary, var(--td-font-gray-1, rgba(0, 0, 0, .9))))',
       });
     },
   },
-  watch: {
-  },
-  mounted() {
-
-  },
+  watch: {},
+  mounted() {},
   methods: {
     coalesce,
     getDateLabel,
@@ -254,6 +235,5 @@ export default {
     },
   },
 };
-
 </script>
 <style scoped src="./calendar.css"></style>

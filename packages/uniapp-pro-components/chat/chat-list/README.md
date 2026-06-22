@@ -1,14 +1,16 @@
 ---
 title: ChatList 对话列表
 description: 用于展示对话或者普通对话场景的组件。
-spline: base
+spline: chat
 isComponent: true
 ---
 
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-chat-list />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';

@@ -1,13 +1,16 @@
 const fs = require('fs');
 const path = require('path');
+
 const less = require('less');
 const postcss = require('postcss');
 const rpxTransform = require('postcss-rpx-transform');
+
 const { PACKAGES_ROOT, PROJECT_ROOT } = require('./config');
 
 const CONFIG = {
   whiteList: [
     path.resolve(PACKAGES_ROOT, 'uniapp-components/common/style/theme/index.less'),
+    path.resolve(PACKAGES_ROOT, 'uniapp-components/common/style/theme/index-light.less'),
     path.resolve(PACKAGES_ROOT, 'uniapp-components/common/style/base.less'),
     path.resolve(PACKAGES_ROOT, 'uniapp-components/common/style/_variables.less'),
     path.resolve(PACKAGES_ROOT, 'uniapp-components/common/style/mixins/'),

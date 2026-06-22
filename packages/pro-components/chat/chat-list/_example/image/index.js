@@ -1,5 +1,5 @@
 import Toast from 'tdesign-miniprogram/toast';
-import { getNavigationBarHeight } from '../../../utils/utils';
+import getNavigationBarHeight from '../utils';
 
 let uniqueId = 0;
 const getUniqueKey = () => {
@@ -7,9 +7,7 @@ const getUniqueKey = () => {
   return `key-${uniqueId}`;
 };
 
-const sleep = (ms) => {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-};
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
@@ -71,7 +69,6 @@ Component({
       items: [],
       removable: true,
       imageViewer: true,
-      addable: false,
     },
     contentHeight: '100vh', // 内容高度
     activePopoverId: '', // 当前打开悬浮actionbar的chatId
@@ -177,9 +174,9 @@ Component({
         await fetchStream('接下来我将生成符合要求的图片', {
           success(result) {
             if (!that.data.loading) return;
-            that.data.chatList[0].message.content[0].data += result;
+            const currentData = that.data.chatList[0].message.content[0].data;
             that.setData({
-              chatList: that.data.chatList,
+              'chatList[0].message.content[0].data': currentData + result,
             });
           },
           complete() {},
@@ -238,9 +235,8 @@ Component({
             },
           ],
         });
-        that.data.chatList[0].message.status = 'complete';
         that.setData({
-          chatList: that.data.chatList,
+          'chatList[0].message.status': 'complete',
           loading: false,
         });
       });

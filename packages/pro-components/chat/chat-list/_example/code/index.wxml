@@ -1,6 +1,6 @@
 <view class="chat-box" style="height: {{contentHeight}};">
   <t-chat>
-    <block wx:for="{{chatList}}" wx:key="index" wx:for-index="chatIndex">
+    <block wx:for="{{chatList}}" wx:key="chatId" wx:for-index="chatIndex">
       <t-chat-message
         chat-id="{{item.chatId}}"
         avatar="{{item.avatar || ''}}"

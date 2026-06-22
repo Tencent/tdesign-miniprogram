@@ -1,8 +1,8 @@
 import vue from '@vitejs/plugin-vue';
 import vitePluginTdoc from 'vite-plugin-tdoc';
 
-import getTransforms from './transforms';
 import renderDemo from './demo';
+import getTransforms from './transforms';
 
 export default (mode) =>
   vitePluginTdoc({

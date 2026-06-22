@@ -100,6 +100,15 @@ name | type | default | description | required
 confirm | String | - | confirm text | N
 reset | String | - | reset text | N
 
+### FormConfig
+
+name | type | default | description | required
+-- | -- | -- | -- | --
+colon-text | String | - | colon on the right of label ":" | N
+error-message | Object | - | Typescript: `FormErrorMessage`，[Form API Documents](./form?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/config-provider/type.ts) | N
+required-mark | Boolean | true | \- | N
+required-mark-position | String | left | Display position of required symbols。options: left/right | N
+
 ### GuideConfig
 
 name | type | default | description | required

@@ -4,9 +4,10 @@ import { display, skylineDisplay } from './display';
 import { form, skylineForm } from './form';
 import { ux, skylineUx } from './ux';
 import { chat } from './chat';
+import { other, skylineOther } from './other';
 
-const list = [chat, base, nav, form, display, ux];
+const list = [chat, base, nav, form, display, ux, other];
 
-const skylineList = [skylineBase, skylineNav, skylineForm, skylineDisplay, skylineUx];
+const skylineList = [skylineBase, skylineNav, skylineForm, skylineDisplay, skylineUx, skylineOther];
 
 export { list, skylineList };

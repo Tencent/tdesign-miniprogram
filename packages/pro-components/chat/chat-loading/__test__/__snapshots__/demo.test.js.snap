@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatLoading ChatLoading base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="chat-example"
+  >
+    <wx-view
+      class="chat-example-block"
+    >
+      <t-chat-loading
+        animation="gradient"
+      />
+    </wx-view>
+    <wx-view
+      class="chat-example-block"
+    >
+      <t-chat-loading
+        animation="moving"
+      />
+    </wx-view>
+    <wx-view
+      class="chat-example-block"
+    >
+      <t-chat-loading
+        animation="dots"
+      />
+    </wx-view>
+  </wx-view>
+</base>
+`;
+
+exports[`ChatLoading ChatLoading text demo works fine 1`] = `
+<wx-text>
+  <wx-view
+    class="chat-example"
+  >
+    <wx-view
+      class="chat-example-block"
+    >
+      <t-chat-loading
+        animation="dots"
+        text="加载中..."
+      />
+    </wx-view>
+  </wx-view>
+</wx-text>
+`;

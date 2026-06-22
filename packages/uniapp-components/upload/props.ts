@@ -23,8 +23,8 @@ export default {
   },
   /** 是否禁用组件 */
   disabled: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdUploadProps['disabled'],
   },
   /** 是否支持拖拽排序。长按时是否振动，碰撞时是否振动。示例一：`true`。示例二：`{ vibrate: true, collisionVibrate: true }` */
   draggable: {
@@ -86,6 +86,15 @@ export default {
     validator(val: TdUploadProps['source']): boolean {
       if (!val) return true;
       return ['media', 'messageFile'].includes(val);
+    },
+  },
+  /** 组件风格。提供宫格和列表两种布局风格 */
+  theme: {
+    type: String,
+    default: 'grid' as TdUploadProps['theme'],
+    validator(val: TdUploadProps['theme']): boolean {
+      if (!val) return true;
+      return ['grid', 'list'].includes(val);
     },
   },
   /** 拖拽位置移动时的过渡参数,`duration`单位为ms */

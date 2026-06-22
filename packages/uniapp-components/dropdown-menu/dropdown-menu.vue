@@ -1,23 +1,21 @@
 <template>
   <view
     id="t-bar"
-    :style="tools._style([customStyle])"
+    :style="'' + tools._style([customStyle])"
     :class="classPrefix + ' ' + tClass"
-    @touchmove.stop.prevent="parseEventDynamicCode($event, activeIdx === -1 ? '' : 'noop')"
+    @touchmove.stop.prevent="(e) => parseEventDynamicCode(e, activeIdx === -1 ? '' : 'noop')"
   >
     <view
       v-for="(item, index) in menus"
       :key="index"
       :data-index="index"
-      :class="
-        tools.cls(classPrefix + '__item', [
-          ['active', activeIdx == index],
-          ['disabled', item.disabled],
-          [index, true]
-        ]) +
-          ' ' +
-          tClassItem
-      "
+      :class="[
+        classPrefix + '__item',
+        activeIdx == index ? classPrefix + '__item' + '--active' : '',
+        item.disabled ? classPrefix + '__item' + '--disabled' : '',
+        true ? classPrefix + '__item' + '--index' : '',
+        tClassItem,
+      ]"
       :aria-disabled="item.disabled"
       aria-role="button"
       :aria-expanded="activeIdx === index"
@@ -28,14 +26,11 @@
         {{ item.label }}
       </view>
 
-      <block
-        v-if="iArrowIcon"
-        name="icon"
-      >
+      <block v-if="iArrowIcon" name="icon">
         <t-icon
           :custom-style="iArrowIcon.style || ''"
           :t-class="getIconTClass(index)"
-          :class="getIconClass(index)"
+          :class="'' + getIconClass(index)"
           :prefix="iArrowIcon.prefix"
           :name="iArrowIcon.name"
           :size="iArrowIcon.size"
@@ -51,129 +46,126 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+
+import { parseEventDynamicCode } from '../common/event/dynamic';
+import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
 import { calcIcon } from '../common/utils';
 import tools from '../common/utils.wxs';
-import { ParentMixin, RELATION_MAP } from '../common/relation';
-import { parseEventDynamicCode } from '../common/event/dynamic';
 import { canUseVirtualHost } from '../common/version';
+import TIcon from '../icon/icon';
 
+import props from './props';
 
 const name = `${prefix}-dropdown-menu`;
 
-
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-item`,
-    `${prefix}-class-label`,
-    `${prefix}-class-icon`,
-  ],
-  mixins: [ParentMixin(RELATION_MAP.DropdownItem)],
+export default {
   components: {
     TIcon,
   },
-  props: {
-    ...props,
-  },
-  emits: ['close', 'open'],
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      menus: null,
-      activeIdx: -1,
-      bottom: 0,
-      iArrowIcon: {
-        name: props.arrowIcon.default,
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
+    },
+    externalClasses: [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-label`, `${prefix}-class-icon`],
+    mixins: [ParentMixin(RELATION_MAP.DropdownItem)],
+    props: {
+      ...props,
+    },
+    emits: ['close', 'open'],
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        menus: null,
+        activeIdx: -1,
+        bottom: 0,
+        iArrowIcon: {
+          name: props.arrowIcon.default,
+        },
+        tools,
+      };
+    },
+    watch: {
+      arrowIcon: {
+        handler(v) {
+          this.iArrowIcon = calcIcon(v);
+        },
+        immediate: true,
       },
-      tools,
-    };
-  },
-  watch: {
-    arrowIcon: {
-      handler(v) {
-        this.iArrowIcon = calcIcon(v);
+
+      activeIdx(v) {
+        this.$emit(v === -1 ? 'close' : 'open');
       },
-      immediate: true,
     },
-
-    activeIdx(v) {
-      this.$emit(v === -1 ? 'close' : 'open');
+    mounted() {
+      this.getAllItems();
     },
-  },
-  mounted() {
-    this.getAllItems();
-  },
-  methods: {
-    getIconTClass(index) {
-      return canUseVirtualHost() ? this.getIconRealClass(index) : '';
+    methods: {
+      getIconTClass(index) {
+        return canUseVirtualHost() ? this.getIconRealClass(index) : '';
+      },
+      getIconClass(index) {
+        return !canUseVirtualHost() ? this.getIconRealClass(index) : '';
+      },
+      getIconRealClass(index) {
+        const { classPrefix, activeIdx, tClassIcon } = this;
+        return `${classPrefix}__icon ${classPrefix}__icon--${activeIdx == index ? 'active ' : ' '}${tClassIcon}`;
+      },
+      parseEventDynamicCode,
+      toggle(index) {
+        const { activeIdx, duration } = this;
+        const prevItem = this.children[activeIdx];
+        const currItem = this.children[index];
+
+        if (currItem?.disabled) return;
+
+        if (activeIdx !== -1) {
+          prevItem.$emit('close');
+          prevItem.show = false;
+
+          setTimeout(() => {
+            prevItem.$emit('closed');
+          }, duration);
+        }
+
+        if (index == null || activeIdx === index) {
+          this.activeIdx = -1;
+        } else {
+          currItem.$emit('open');
+          this.activeIdx = index;
+
+          currItem.show = true;
+
+          setTimeout(() => {
+            currItem.$emit('opened');
+          }, duration);
+        }
+      },
+      getAllItems() {
+        const menus = this.children?.map((data) => ({
+          label: data.computedLabel || data.label,
+          disabled: data.disabled,
+        }));
+
+        this.menus = menus;
+      },
+      handleToggle(index) {
+        this.toggle(index);
+      },
+
+      noop() {},
     },
-    getIconClass(index) {
-      return !canUseVirtualHost() ? this.getIconRealClass(index) : '';
-    },
-    getIconRealClass(index) {
-      const { classPrefix, activeIdx, tClassIcon } = this;
-      return `${classPrefix}__icon ${classPrefix}__icon--${activeIdx == index ? 'active ' : ' '}${tClassIcon}`;
-    },
-    parseEventDynamicCode,
-    toggle(index) {
-      const { activeIdx, duration } = this;
-      const prevItem = this.children[activeIdx];
-      const currItem = this.children[index];
-
-      if (currItem?.disabled) return;
-
-      if (activeIdx !== -1) {
-        prevItem.$emit('close');
-        prevItem.show = false;
-
-        setTimeout(() => {
-          prevItem.$emit('closed');
-        }, duration);
-      }
-
-      if (index == null || activeIdx === index) {
-        this.activeIdx = -1;
-      } else {
-        currItem.$emit('open');
-        this.activeIdx = index;
-
-        currItem.show = true;
-
-        setTimeout(() => {
-          currItem.$emit('opened');
-        }, duration);
-      }
-    },
-    getAllItems() {
-      const menus = this.children?.map(data => ({
-        label: data.label || data.computedLabel,
-        disabled: data.disabled,
-      }));
-
-      this.menus = menus;
-    },
-    handleToggle(index) {
-      this.toggle(index);
-    },
-
-    noop() {},
-  },
-});
+  }),
+};
 </script>
 <style scoped src="./dropdown-menu.css"></style>
 <style scoped>
 :deep(.t-dropdown-menu__icon) {
-  font-size: var(--td-dropdown-menu-icon-size, 20px);
-  padding: 2px;
+  font-size: var(--td-dropdown-menu-icon-size, 48rpx);
+  padding: 4rpx;
   box-sizing: border-box;
   transition: transform 240ms ease;
 }
@@ -181,6 +173,6 @@ export default uniComponent({
   transform: rotate(180deg);
 }
 :deep(.t-dropdown-menu__icon):not(:empty) {
-  margin-left: 4px;
+  margin-left: 8rpx;
 }
 </style>

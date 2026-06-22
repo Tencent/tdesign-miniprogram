@@ -4,7 +4,7 @@ description: 将根据业务实践持续新增组件类型，敬请留意组件�
 spline: explain
 ---
 
-<h3>基础<em class="tag">6</em></h3>
+<h3>基础<em class="tag">7</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/button">
@@ -51,6 +51,14 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-link.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-link-dark.png" />
       <p class="name">Link 链接</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/typography">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-typography.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-typography-dark.png" />
+      <p class="name">Typography 排版</p>
     </a>
   </div>
 </section>
@@ -115,7 +123,7 @@ spline: explain
   </div>
 </section>
 
-<h3>输入<em class="tag">16</em></h3>
+<h3>输入<em class="tag">17</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/calendar">
@@ -150,6 +158,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-datetimepicker.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-datetimepicker-dark.png" />
       <p class="name">DateTimePicker 日期选择器</p>
+    </a>
+  </div>
+   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/form">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-form.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-form-dark.png" />
+      <p class="name">Form 表单</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -234,7 +249,7 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">18</em></h3>
+<h3>数据展示<em class="tag">20</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/avatar">
@@ -341,6 +356,14 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/segmented">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-segmented.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-segmented-dark.png" />
+      <p class="name">Segmented 分段控制器</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/skeleton">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-skeleton.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-skeleton-dark.png" />
@@ -365,6 +388,14 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/table">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-table.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-table-dark.png" />
+      <p class="name">Table 表格</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/tag">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-tag.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-tag-dark.png" />
@@ -381,7 +412,7 @@ spline: explain
   </div>
 </section>
 
-<h3>反馈<em class="tag">12</em></h3>
+<h3>反馈<em class="tag">13</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/action-sheet">

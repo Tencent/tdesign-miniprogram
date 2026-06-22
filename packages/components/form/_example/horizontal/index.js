@@ -30,6 +30,7 @@ Component({
       ],
     },
     visibleCascader: false,
+    dateVisible: false,
     address: '120119',
     rateGap: 8,
     action: 'https://service-bv448zsw-1257786608.gz.apigw.tencentcs.com/api/upload-demo',
@@ -94,19 +95,22 @@ Component({
         ],
       },
     ],
-    rules: {
-      name: [
-        { required: true, message: '用户名不能为空' },
-        { maxLength: 3, message: '用户名不能超过3个字符' },
-      ],
-      password: [{ required: true, message: '密码不能为空' }],
-      gender: [{ required: true, message: '性别不能为空' }],
-      birth: [{ required: true, message: '生日不能为空' }],
-      age: [{ required: true, message: '年限不能为空' }],
-      place: [{ required: true, message: '籍贯不能为空' }],
-      description: [{ required: true, message: '分数不能为空' }],
-      resume: [{ required: true, message: '简介不能为空' }],
-      photo: [{ required: true, message: '上传照片不能为空' }],
+    rules: {},
+  },
+
+  lifetimes: {
+    attached() {
+      this.setData({
+        'rules.name': [
+          { pattern: '[a-zA-Z]{8}', validator: (val) => val.length === 8, message: '只能输入8个字符英文' },
+        ],
+        'rules.password': [{ validator: (val) => val.length > 6, message: '长度大于6个字符' }],
+        'rules.description': [{ validator: (val) => val > 3, message: '分数过低会影响整体评价' }],
+        'rules.gender': [{ validator: (val) => val !== '', message: '不能为空' }],
+        'rules.birth': [{ validator: (val) => val !== '', message: '不能为空' }],
+        'rules.place': [{ validator: (val) => val !== '', message: '不能为空' }],
+        'rules.resume': [{ validator: (val) => val !== '', message: '不能为空' }],
+      });
     },
   },
 
@@ -164,8 +168,8 @@ Component({
     },
 
     onChangeCascader(e) {
-      const { options } = e.detail;
-      const placeText = options?.map((item) => item.label).join('/');
+      const { selectedOptions } = e.detail;
+      const placeText = selectedOptions?.map((item) => item.label).join('/');
       this.setData({
         'formData.place': placeText,
         visibleCascader: false,
@@ -211,6 +215,24 @@ Component({
       photo.splice(index, 1);
       this.setData({
         'formData.photo': photo,
+      });
+    },
+
+    showDatePicker() {
+      this.setData({ dateVisible: true });
+    },
+
+    onDatePickerConfirm(e) {
+      const { value } = e.detail;
+      this.setData({
+        'formData.birth': value,
+        dateVisible: false,
+      });
+    },
+
+    onDatePickerClose() {
+      this.setData({
+        dateVisible: false,
       });
     },
   },

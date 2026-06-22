@@ -1,28 +1,20 @@
 <template>
   <view
-    :style="tools._style([customStyle])"
-    :class="[
-      classPrefix + ' ' + classPrefix + '--theme-' + theme,
-      tClass
-    ]"
+    :style="'' + tools._style([customStyle])"
+    :class="[classPrefix + ' ' + classPrefix + '--theme-' + theme, tClass]"
   >
-    <view
-      :aria-hidden="true"
-      :class="classPrefix + '__thumb'"
-    >
-      <t-image
-        v-if="image"
-        :t-class="tClassImage"
-        :src="image"
-        mode="aspectFit"
-      />
-      <block
-        v-else-if="innerIcon"
-        name="icon"
-      >
+    <view :aria-hidden="true" :class="classPrefix + '__thumb'">
+      <t-image v-if="image" :t-class="tClassImage" :src="image" mode="aspectFit" />
+      <block v-else-if="innerIcon" name="icon">
         <t-icon
           :custom-style="innerIcon.style || ''"
-          :t-class="classPrefix + '__icon ' + classPrefix + '__icon--' + (innerIcon.activeIdx == innerIcon.index ? 'active ' : ' ')"
+          :t-class="
+            classPrefix +
+            '__icon ' +
+            classPrefix +
+            '__icon--' +
+            (innerIcon.activeIdx == innerIcon.index ? 'active ' : ' ')
+          "
           :prefix="innerIcon.prefix"
           :name="innerIcon.name"
           :size="innerIcon.size"
@@ -34,23 +26,13 @@
       </block>
       <slot name="image" />
     </view>
-    <view
-      :class="[
-        classPrefix + '__title ',
-        tClassTitle
-      ]"
-    >
+    <view :class="[classPrefix + '__title ', tClassTitle]">
       <block v-if="title">
         {{ title }}
       </block>
       <slot name="title" />
     </view>
-    <view
-      :class="[
-        classPrefix + '__description ',
-        tClassDescription
-      ]"
-    >
+    <view :class="[classPrefix + '__description ', tClassDescription]">
       <block v-if="description">
         {{ description }}
       </block>
@@ -60,14 +42,14 @@
 </template>
 
 <script>
-import TIcon from '../icon/icon';
-import TImage from '../image/image';
-import { uniComponent } from '../common/src/index';
-import props from './props';
 import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
 import { calcIcon } from '../common/utils';
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+import TImage from '../image/image';
 
+import props from './props';
 
 const name = `${prefix}-result`;
 const THEME_ICON = {
@@ -77,50 +59,48 @@ const THEME_ICON = {
   error: 'close-circle',
 };
 
-
-export default uniComponent({
-  name,
-  options: {
-    styleIsolation: 'shared',
-  },
-  externalClasses: [
-    `${prefix}-class`,
-    `${prefix}-class-image`,
-    `${prefix}-class-title`,
-    `${prefix}-class-description`,
-  ],
+export default {
   components: {
     TIcon,
     TImage,
   },
-  props: {
-    ...props,
-  },
-  data() {
-    return {
-      prefix,
-      classPrefix: name,
-      tools,
-
-      innerIcon: null,
-    };
-  },
-  watch: {
-    icon: 'initIcon',
-    theme: 'initIcon',
-  },
-  mounted() {
-    this.initIcon();
-  },
-  methods: {
-    initIcon() {
-      const {
-        icon,
-        theme,
-      } = this;
-      this.innerIcon = calcIcon(icon, THEME_ICON[theme]);
+  ...uniComponent({
+    name,
+    options: {
+      styleIsolation: 'shared',
     },
-  },
-});
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-image`,
+      `${prefix}-class-title`,
+      `${prefix}-class-description`,
+    ],
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        prefix,
+        classPrefix: name,
+        tools,
+
+        innerIcon: null,
+      };
+    },
+    watch: {
+      icon: 'initIcon',
+      theme: 'initIcon',
+    },
+    mounted() {
+      this.initIcon();
+    },
+    methods: {
+      initIcon() {
+        const { icon, theme } = this;
+        this.innerIcon = calcIcon(icon, THEME_ICON[theme]);
+      },
+    },
+  }),
+};
 </script>
 <style scoped src="./result.css"></style>

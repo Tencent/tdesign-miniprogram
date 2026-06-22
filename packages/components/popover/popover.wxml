@@ -16,7 +16,7 @@
   wx:if="{{realVisible}}"
   id="{{classPrefix}}-content"
   style="{{style}} {{contentStyle}} {{customStyle}}"
-  class="{{class}} {{classPrefix}} {{transitionClass}} {{prefix}}-class {{classPrefix}}--placement-{{_placement}} {{fixed ? classPrefix + '--fixed' : ''}}"
+  class="class {{classPrefix}} {{transitionClass}} {{prefix}}-class {{classPrefix}}--placement-{{_placement}} {{fixed ? classPrefix + '--fixed' : ''}}"
 >
   <view
     class="{{classPrefix}}__content {{classPrefix}}--{{theme}} {{prefix}}-class-content {{showArrow ? classPrefix + '__content--arrow' : ''}}"

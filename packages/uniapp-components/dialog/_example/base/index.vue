@@ -7,7 +7,7 @@
       variant="outline"
       data-key="showTextAndTitle"
       block
-      @click="showDialog($event, { key: 'showTextAndTitle' })"
+      @click="(e) => showDialog(e, { key: 'showTextAndTitle' })"
     >
       反馈类-带标题
     </t-button>
@@ -26,7 +26,7 @@
       variant="outline"
       data-key="showContentOnly"
       block
-      @click="showDialog($event, { key: 'showContentOnly' })"
+      @click="(e) => showDialog(e, { key: 'showContentOnly' })"
     >
       反馈类-无标题
     </t-button>
@@ -44,16 +44,11 @@
       variant="outline"
       data-key="showTitleOnly"
       block
-      @click="showDialog($event, { key: 'showTitleOnly' })"
+      @click="(e) => showDialog(e, { key: 'showTitleOnly' })"
     >
       反馈类-纯标题
     </t-button>
-    <t-dialog
-      :visible="showTitleOnly"
-      title="对话框标题"
-      :confirm-btn="confirmBtn"
-      @confirm="closeDialog"
-    />
+    <t-dialog :visible="showTitleOnly" title="对话框标题" :confirm-btn="confirmBtn" @confirm="closeDialog" />
 
     <t-button
       t-class="wrapper"
@@ -62,31 +57,25 @@
       variant="outline"
       data-key="showMultiTextAndTitle"
       block
-      @click="showDialog($event, { key: 'showMultiTextAndTitle' })"
+      @click="(e) => showDialog(e, { key: 'showMultiTextAndTitle' })"
     >
       反馈类-内容超长
     </t-button>
-    <t-dialog
-      :visible="showMultiTextAndTitle"
-      title="对话框标题"
-      :confirm-btn="confirmBtn"
-      @confirm="closeDialog"
-    >
-      <template
-        #content
-      >
+    <t-dialog :visible="showMultiTextAndTitle" title="对话框标题" :confirm-btn="confirmBtn" @confirm="closeDialog">
+      <template #content>
         <!-- 适配skyline，增加type="list" -->
-        <scroll-view
-          type="list"
-          scroll-y
-          class="long-content"
-        >
+        <scroll-view type="list" scroll-y class="long-content">
           <view class="content-container">
-            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案 这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
-            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案 这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
-            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案 这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
-            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案 这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
-            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案 这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
           </view>
         </scroll-view>
       </template>
@@ -136,23 +125,23 @@ export default {
 </script>
 <style>
 .wrapper {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 
 .long-content {
-    height: 576rpx;
-    margin-top: 16rpx;
-    font-size: 32rpx;
-    color: #888;
+  height: 576rpx;
+  margin-top: 16rpx;
+  font-size: 32rpx;
+  color: #888;
 }
 
 .long-content .content-container {
-    white-space: pre-line;
+  white-space: pre-line;
 }
 
 .long-content ::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
+  display: none;
+  width: 0;
+  height: 0;
 }
 </style>

@@ -8,7 +8,7 @@ export interface TdSliderProps {
   /**
    * 是否禁用组件
    */
-  disabled?: boolean;
+  disabled?: boolean | null;
   /**
    * 滑块当前值文本。<br />值为 true 显示默认文案；值为 false 不显示滑块当前值文本；<br />值为 `${value}%` 则表示组件会根据占位符渲染文案；<br />值类型为函数时，参数 `value` 标识滑块值，参数 `position=start` 表示范围滑块的起始值，参数 `position=end` 表示范围滑块的终点值
    * @default false

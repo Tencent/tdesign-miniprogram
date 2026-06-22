@@ -12,6 +12,9 @@ function getSystemInfo() {
 
 // 版本号比较, 参考：https://developers.weixin.qq.com/miniprogram/dev/framework/compatibility.html
 export function compareVersion(v1, v2) {
+  if (!v1 || !v2) {
+    return 0;
+  }
   v1 = v1.split('.');
   v2 = v2.split('.');
   const len = Math.max(v1.length, v2.length);
@@ -54,7 +57,7 @@ export function canUseVirtualHost() {
   result = judgeByVersion('2.19.2');
   // #endif
 
-  // #ifdef H5 || APP-PLUS || MP-ALIPAY
+  // #ifdef H5 || APP || MP-ALIPAY
   result = true;
   // #endif
 

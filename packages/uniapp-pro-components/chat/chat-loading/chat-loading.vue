@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="classPrefix"
-    :style="tools._style([customStyle])"
-  >
+  <view :class="classPrefix" :style="'' + tools._style([customStyle])">
     <!-- 动态加载动画 -->
     <view
       v-if="animation !== 'skeleton'"
@@ -20,70 +17,55 @@
         <view :class="classPrefix + '__gradient'" />
       </block>
 
-      <view
-        v-if="animation === 'dots'"
-        :class="classPrefix + '__dots'"
-      >
-        <t-loading
-          theme="dots"
-          size="60rpx"
-        />
+      <view v-if="animation === 'dots'" :class="classPrefix + '__dots'">
+        <t-loading theme="dots" size="60rpx" />
       </view>
     </view>
     <block v-if="animation === 'skeleton'">
       <view :class="classPrefix + '__skeleton'">
-        <t-skeleton
-          :row-col="[1, 1, 1, { width: '80%' }]"
-          theme="paragraph"
-          animation="gradient"
-          loading
-        />
+        <t-skeleton :row-col="[1, 1, 1, { width: '80%' }]" theme="paragraph" animation="gradient" loading />
       </view>
     </block>
     <!-- 文本内容 -->
-    <view
-      v-if="text"
-      :class="classPrefix + '__text'"
-    >
+    <view v-if="text" :class="classPrefix + '__text'">
       {{ text }}
     </view>
   </view>
 </template>
 <script>
-import tSkeleton from '@tdesign/uniapp/skeleton/skeleton.vue';
-import tLoading from '@tdesign/uniapp/loading/loading.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
-import props from './props';
 import tools from '@tdesign/uniapp/common/utils.wxs';
+import tLoading from '@tdesign/uniapp/loading/loading.vue';
+import tSkeleton from '@tdesign/uniapp/skeleton/skeleton.vue';
 
+import props from './props';
 
 const name = `${prefix}-chat-loading`;
 
-
-export default uniComponent({
-  name,
-  options: {
-    multipleSlots: true,
-    styleIsolation: 'shared',
-  },
-
+export default {
   components: {
     tSkeleton,
     tLoading,
   },
+  ...uniComponent({
+    name,
+    options: {
+      multipleSlots: true,
+      styleIsolation: 'shared',
+    },
 
-  props: {
-    ...props,
-  },
-
-  data() {
-    return {
-      classPrefix: name,
-      tools,
-    };
-  },
-});
+    props: {
+      ...props,
+    },
+    data() {
+      return {
+        classPrefix: name,
+        tools,
+      };
+    },
+  }),
+};
 </script>
 <style scoped src="./chat-loading.css"></style>

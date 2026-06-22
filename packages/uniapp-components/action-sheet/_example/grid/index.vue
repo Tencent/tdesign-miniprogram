@@ -3,44 +3,21 @@
     <t-action-sheet
       ref="t-action-sheet"
       :using-custom-navbar="!isMPAlipay"
-      @selected="handleSelected($event, { tagId: 't-action-sheet' })"
+      @selected="(e) => handleSelected(e, { tagId: 't-action-sheet' })"
     />
 
-    <t-button
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="handleAction"
-    >
-      常规宫格型
-    </t-button>
-    <t-button
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="handleActionWithDesc"
-    >
+    <t-button size="large" variant="outline" block theme="primary" @click="handleAction"> 常规宫格型 </t-button>
+    <t-button size="large" variant="outline" block theme="primary" @click="handleActionWithDesc">
       常描述宫格型
     </t-button>
-    <t-button
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="handleMultiAction"
-    >
-      带翻页宫格型
-    </t-button>
+    <t-button size="large" variant="outline" block theme="primary" @click="handleMultiAction"> 带翻页宫格型 </t-button>
   </view>
 </template>
 
 <script>
-import ActionSheet, { ActionSheetTheme } from '@tdesign/uniapp/action-sheet/index';
+import { ActionSheetPlugin, ActionSheetTheme } from '@tdesign/uniapp';
 import TActionSheet from '@tdesign/uniapp/action-sheet/action-sheet.vue';
 import TButton from '@tdesign/uniapp/button/button.vue';
-
 
 const firstGrid = [
   {
@@ -87,7 +64,7 @@ export default {
   created() {},
   methods: {
     handleAction() {
-      ActionSheet.show({
+      ActionSheetPlugin.show({
         theme: ActionSheetTheme.Grid,
         selector: '#t-action-sheet',
         context: this,
@@ -95,18 +72,20 @@ export default {
       });
     },
     handleMultiAction() {
-      ActionSheet.show({
+      ActionSheetPlugin.show({
         theme: ActionSheetTheme.Grid,
         selector: '#t-action-sheet',
         context: this,
-        items: firstGrid.concat(new Array(8).fill({
-          label: '标题文字',
-          icon: 'image',
-        })),
+        items: firstGrid.concat(
+          new Array(8).fill({
+            label: '标题文字',
+            icon: 'image',
+          }),
+        ),
       });
     },
     handleActionWithDesc() {
-      ActionSheet.show({
+      ActionSheetPlugin.show({
         theme: ActionSheetTheme.Grid,
         selector: '#t-action-sheet',
         context: this,

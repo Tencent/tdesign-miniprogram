@@ -1,17 +1,7 @@
 <template>
   <view>
-    <t-button
-      theme="primary"
-      size="large"
-      variant="outline"
-      block
-      @click="onClick"
-    >
-      基础图片预览
-    </t-button>
-    <t-toast
-      ref="t-toast"
-    />
+    <t-button theme="primary" size="large" variant="outline" block @click="onClick"> 基础图片预览 </t-button>
+    <t-toast ref="t-toast" />
     <t-image-viewer
       :using-custom-navbar="!isMPAlipay"
       :custom-navbar-height="gCustomNavbarHeight"
@@ -28,10 +18,11 @@
 </template>
 
 <script>
+import { ToastPlugin } from '@tdesign/uniapp';
 import TButton from '@tdesign/uniapp/button/button.vue';
-import TToast from '@tdesign/uniapp/toast/toast.vue';
 import TImageViewer from '@tdesign/uniapp/image-viewer/image-viewer.vue';
-import Toast from '@tdesign/uniapp/toast/index';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
+
 export default {
   components: {
     TButton,
@@ -50,7 +41,10 @@ export default {
   created() {},
   methods: {
     onClick() {
-      this.images = ['https://tdesign.gtimg.com/mobile/demos/swiper1.png', 'https://tdesign.gtimg.com/mobile/demos/swiper2.png'];
+      this.images = [
+        'https://tdesign.gtimg.com/mobile/demos/swiper1.png',
+        'https://tdesign.gtimg.com/mobile/demos/swiper2.png',
+      ];
       this.showIndex = true;
       this.visible = true;
     },
@@ -60,7 +54,7 @@ export default {
     },
     onDelete(e) {
       const { index } = e;
-      Toast({
+      ToastPlugin({
         context: this,
         selector: '#t-toast',
         message: `删除第${index + 1}个`,
@@ -74,5 +68,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

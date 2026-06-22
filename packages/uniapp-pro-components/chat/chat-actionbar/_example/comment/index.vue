@@ -2,19 +2,16 @@
   <view>
     <t-toast ref="t-toast" />
     <view class="container">
-      <t-chat-actionbar
-        :content="content"
-        :comment="comment"
-        @actions="handleAction"
-      />
+      <t-chat-actionbar :content="content" :comment="comment" @actions="handleAction" />
     </view>
   </view>
 </template>
 
 <script>
-import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import { Toast } from '@tdesign/uniapp';
 import TToast from '@tdesign/uniapp/toast/toast.vue';
-import Toast from '@tdesign/uniapp/toast/index';
+
+import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
 
 export default {
   components: {
@@ -63,27 +60,27 @@ export default {
 </script>
 <style>
 .container {
-    padding: 32rpx;
-    background-color: var(--td-bg-color-container);
+  padding: 32rpx;
+  background-color: var(--td-bg-color-container);
 }
 
 .layout-btn {
-    margin: 16rpx 0;
-    padding: 12rpx 24rpx;
-    background-color: #0052d9;
-    color: #fff;
-    border: none;
-    border-radius: 8rpx;
-    font-size: 28rpx;
+  margin: 16rpx 0;
+  padding: 12rpx 24rpx;
+  background-color: #0052d9;
+  color: #fff;
+  border: none;
+  border-radius: 8rpx;
+  font-size: 28rpx;
 }
 
 .demo-text {
-    padding: 16rpx 0;
+  padding: 16rpx 0;
 }
 
 .checkbox-group {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 16rpx;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
 }
 </style>

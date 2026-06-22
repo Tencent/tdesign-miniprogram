@@ -20,8 +20,8 @@ export default {
   },
   /** 是否禁用评分 */
   disabled: {
-    type: Boolean,
-    default: undefined,
+    type: [Boolean, null],
+    default: null as TdRateProps['disabled'],
   },
   /** 评分图标的间距 */
   gap: {
@@ -34,8 +34,8 @@ export default {
   },
   /** 定义图标前缀 */
   iconPrefix: {
-    type: String,
-    default: undefined,
+    type: [String, null],
+    default: null as TdRateProps['iconPrefix'],
   },
   /** 选择评分弹框的位置，值为空字符表示不显示评分弹框 */
   placement: {

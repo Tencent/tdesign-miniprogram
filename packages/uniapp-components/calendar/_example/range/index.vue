@@ -6,22 +6,15 @@
       :min-date="minDate"
       :max-date="maxDate"
       type="range"
-      @update:visible="visible = $event"
+      @update:visible="(e) => (visible = e)"
       @confirm="handleConfirm"
     />
 
-    <view
-      class="wrapper"
-      @click="handleCalendar"
-    >
+    <view class="wrapper" @click="handleCalendar">
       <view class="wrapper__left">
         {{ formatTimestamp(value[0]) }}
       </view>
-      <t-icon
-        class="wrapper__center"
-        name="swap-right"
-        size="40rpx"
-      />
+      <t-icon class="wrapper__center" name="swap-right" size="40rpx" />
       <view class="wrapper__right">
         {{ formatTimestamp(value[1]) }}
       </view>
@@ -29,10 +22,10 @@
   </view>
 </template>
 <script>
-import TIcon from '@tdesign/uniapp/icon/icon.vue';
 import TCalendar from '@tdesign/uniapp/calendar/calendar.vue';
-import { formatTimestamp } from '../computed';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
 
+import { formatTimestamp } from '../computed';
 
 export default {
   components: {
@@ -63,28 +56,28 @@ export default {
 </script>
 <style>
 .wrapper {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx;
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .wrapper__center {
-    color: var(--td-text-color-placeholder);
+  color: var(--td-text-color-placeholder);
 }
 
 .wrapper__left,
 .wrapper__right {
-    width: 240rpx;
-    color: var(--td-text-color-primary);
-    font-size: 32rpx;
-    font-weight: 600;
-    line-height: 48rpx;
+  width: 240rpx;
+  color: var(--td-text-color-primary);
+  font-size: 32rpx;
+  font-weight: 600;
+  line-height: 48rpx;
 }
 
 .wrapper__right {
-    text-align: right;
+  text-align: right;
 }
 </style>

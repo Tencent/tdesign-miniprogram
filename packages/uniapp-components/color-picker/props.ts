@@ -31,8 +31,8 @@ export default {
   },
   /** 系统预设的颜色样例，值为 `null` 或 `[]` 则不显示系统色，值为 `undefined` 会显示组件内置的系统默认色 */
   swatchColors: {
-    type: Array,
-    default: undefined as TdColorPickerProps['swatchColors'],
+    type: [Array, null],
+    default: null as TdColorPickerProps['swatchColors'],
   },
   /** 颜色选择器类型。（base 表示仅展示系统预设内容; multiple 表示展示色板和系统预设内容 */
   type: {

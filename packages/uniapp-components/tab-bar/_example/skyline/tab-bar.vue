@@ -1,27 +1,11 @@
 <template>
   <view class="skyline">
-    <t-demo-navbar
-      custom-class="block"
-      title="TabBar"
-    />
-    <scroll-view
-      scroll-y
-      type="list"
-      class="scroll-view"
-      :scroll-top="scrollTo"
-      @scroll="onScroll"
-    >
+    <t-demo-navbar custom-class="block" title="TabBar" />
+    <scroll-view scroll-y type="list" class="scroll-view" :scroll-top="scrollTo" @scroll="onScroll">
       <view class="demo">
-        <view class="demo-title">
-          TabBar 标签栏
-        </view>
-        <view class="demo-desc">
-          用于在不同功能模块之间进行快速切换，位于页面底部。
-        </view>
-        <t-demo
-          title="01 组件类型"
-          desc="纯文本标签栏"
-        >
+        <view class="demo-title"> TabBar 标签栏 </view>
+        <view class="demo-desc"> 用于在不同功能模块之间进行快速切换，位于页面底部。 </view>
+        <t-demo title="01 组件类型" desc="纯文本标签栏">
           <text-only />
         </t-demo>
 
@@ -37,10 +21,7 @@
           <sub-demo />
         </t-demo>
 
-        <t-demo
-          title="02 组件样式"
-          desc="弱选中标签栏"
-        >
+        <t-demo title="02 组件样式" desc="弱选中标签栏">
           <badge-demo />
         </t-demo>
 
@@ -48,10 +29,7 @@
           <round-demo />
         </t-demo>
 
-        <t-demo
-          title="03 自定义"
-          desc="自定义样式"
-        >
+        <t-demo title="03 自定义" desc="自定义样式">
           <custom-demo />
         </t-demo>
       </view>
@@ -60,13 +38,13 @@
 </template>
 
 <script>
-import TextOnly from '../text-only/index.vue';
-import IconOnly from '../icon-only/index.vue';
-import BaseDemo from '../base/index.vue';
-import SubDemo from '../sub/index.vue';
 import BadgeDemo from '../badge/index.vue';
-import RoundDemo from '../round/index.vue';
+import BaseDemo from '../base/index.vue';
 import CustomDemo from '../custom/index.vue';
+import IconOnly from '../icon-only/index.vue';
+import RoundDemo from '../round/index.vue';
+import SubDemo from '../sub/index.vue';
+import TextOnly from '../text-only/index.vue';
 
 export default {
   components: {

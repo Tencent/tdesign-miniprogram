@@ -1,6 +1,6 @@
 <view class="chat-box" style="height: {{contentHeight}};">
   <t-chat>
-    <block wx:for="{{chatList}}" wx:key="index">
+    <block wx:for="{{chatList}}" wx:key="chatId">
       <t-chat-message
         chat-id="{{item.chatId}}"
         avatar="{{item.avatar || ''}}"
@@ -8,7 +8,9 @@
         datetime="{{item.datetime || ''}}"
         content="{{item.message.content}}"
         role="{{item.message.role}}"
+        status="{{item.message.status || ''}}"
         placement="{{item.message.role === 'user' ? 'right' : 'left'}}"
+        chat-content-props="{{item.chatContentProps}}"
         bind:message-longpress="showPopover"
       >
         <t-chat-actionbar

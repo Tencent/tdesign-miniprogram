@@ -1,43 +1,20 @@
 <template>
   <view class="skyline">
-    <t-demo-navbar
-      custom-class="block demo-navbar"
-      title="Toast"
-    />
-    <scroll-view
-      scroll-y
-      type="list"
-      class="scroll-view"
-    >
+    <t-demo-navbar custom-class="block demo-navbar" title="Toast" />
+    <scroll-view scroll-y type="list" class="scroll-view">
       <view class="demo">
-        <view class="demo-title">
-          Toast 轻提示
-        </view>
-        <view class="demo-desc">
-          用于轻量级反馈或提示，不会打断用户操作。
-        </view>
-        <t-demo
-          title="01 组件类型"
-          desc="基础提示"
-        >
+        <view class="demo-title"> Toast 轻提示 </view>
+        <view class="demo-desc"> 用于轻量级反馈或提示，不会打断用户操作。 </view>
+        <t-demo title="01 组件类型" desc="基础提示">
           <base-demo />
         </t-demo>
-        <t-demo
-          title="02 组件状态"
-          desc="内置主题"
-        >
+        <t-demo title="02 组件状态" desc="内置主题">
           <theme-demo />
         </t-demo>
-        <t-demo
-          title="03 显示遮罩"
-          desc="弹窗可显示遮罩，禁止滑动和点击"
-        >
+        <t-demo title="03 显示遮罩" desc="弹窗可显示遮罩，禁止滑动和点击">
           <cover-demo />
         </t-demo>
-        <t-demo
-          title="04 手动关闭"
-          desc="手动关闭轻提示"
-        >
+        <t-demo title="04 手动关闭" desc="手动关闭轻提示">
           <close-demo />
         </t-demo>
       </view>
@@ -47,10 +24,9 @@
 
 <script>
 import BaseDemo from '../base/index.vue';
-import ThemeDemo from '../theme/index.vue';
-import CoverDemo from '../cover/index.vue';
 import CloseDemo from '../close/index.vue';
-
+import CoverDemo from '../cover/index.vue';
+import ThemeDemo from '../theme/index.vue';
 
 export default {
   components: {

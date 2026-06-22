@@ -1,22 +1,15 @@
 <template>
   <view>
-    <t-navbar
-      title="标题文字"
-      :fixed="false"
-    >
-      <template
-        #capsule
-      >
-        <view
-          class="custom-capsule"
-        >
+    <t-navbar title="标题文字" :fixed="false">
+      <template #capsule>
+        <view class="custom-capsule">
           <t-icon
             size="40rpx"
             aria-role="button"
             aria-label="返回"
             name="chevron-left"
             :t-class="getIconTClass('back')"
-            :class="getIconClass('back')"
+            :class="'' + getIconClass('back')"
             @click="onBack"
           />
           <t-icon
@@ -25,7 +18,7 @@
             aria-label="首页"
             name="home"
             :t-class="getIconTClass('home')"
-            :class="getIconClass('home')"
+            :class="'' + getIconClass('home')"
             @click="onGoHome"
           />
         </view>
@@ -35,10 +28,9 @@
 </template>
 
 <script>
-import TNavbar from '@tdesign/uniapp/navbar/navbar.vue';
-import TIcon from '@tdesign/uniapp/icon/icon.vue';
 import { canUseVirtualHost } from '@tdesign/uniapp/common/version';
-
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
+import TNavbar from '@tdesign/uniapp/navbar/navbar.vue';
 
 export default {
   options: {
@@ -75,26 +67,26 @@ export default {
 </script>
 <style scoped>
 .custom-capsule {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 :deep(.custom-capsule__icon) {
-    flex: 1;
-    position: relative;
+  flex: 1;
+  position: relative;
 }
 
 :deep(.custom-capsule__icon.home:before) {
-    content: '';
-    display: block;
-    position: absolute;
-    left: -1px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1px;
-    height: 18px;
-    background: #e7e7e7;
+  content: '';
+  display: block;
+  position: absolute;
+  left: -1px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 18px;
+  background: #e7e7e7;
 }
 </style>

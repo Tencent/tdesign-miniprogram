@@ -1,16 +1,7 @@
 <template>
   <view class="demo__list">
-    <view
-      v-for="(item, index) in icons"
-      :key="index"
-      class="demo__card"
-    >
-      <t-icon
-        :name="item"
-        size="48rpx"
-        :data-name="item"
-        @click="onIconTap($event, { name: item })"
-      />
+    <view v-for="(item, index) in icons" :key="index" class="demo__card">
+      <t-icon :name="item" size="48rpx" :data-name="item" @click="(e) => onIconTap(e, { name: item })" />
 
       <view class="demo__card-name">
         {{ item }}
@@ -21,6 +12,7 @@
 
 <script>
 import TIcon from '@tdesign/uniapp/icon/icon.vue';
+
 import icons from '../data';
 
 export default {
@@ -50,20 +42,20 @@ export default {
 </script>
 <style>
 .demo__list {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 16rpx 32rpx;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16rpx 32rpx;
 }
 
 .demo__card {
-    flex: 0 0 25%;
-    text-align: center;
-    margin-bottom: 30rpx;
-    color: var(--td-text-color-primary);
+  flex: 0 0 25%;
+  text-align: center;
+  margin-bottom: 30rpx;
+  color: var(--td-text-color-primary);
 }
 
 .demo__card-name {
-    font-size: 24rpx;
-    color: #999;
+  font-size: 24rpx;
+  color: #999;
 }
 </style>

@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import useCustomNavbar from '../mixins/using-custom-navbar';
-import { unitConvert, systemInfo } from '../common/utils';
+import { calcIcon, unitConvert, systemInfo } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-fab`;
@@ -36,7 +36,7 @@ export default class Fab extends SuperComponent {
             ...baseButtonProps,
             shape: this.properties.text ? 'round' : 'circle',
             ...this.properties.buttonProps,
-            icon: this.properties.icon,
+            icon: calcIcon(this.properties.icon),
             content: this.properties.text,
             ariaLabel: this.properties.ariaLabel,
           },

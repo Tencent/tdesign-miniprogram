@@ -1,19 +1,13 @@
 <template>
   <view>
-    <t-demo-navbar
-      custom-class="demo-navbar"
-      title="NoticeBar"
-    />
+    <t-demo-navbar custom-class="demo-navbar" title="NoticeBar" />
     <view class="demo">
       <t-demo-header
         title="NoticeBar 公告栏"
         desc="在导航栏下方，用于给用户显示提示消息。"
         notice="渲染框架支持情况：WebView"
       />
-      <t-demo
-        title="01 组件类型"
-        desc="纯文字的公告栏"
-      >
+      <t-demo title="01 组件类型" desc="纯文字的公告栏">
         <base-demo />
       </t-demo>
       <t-demo desc="带图标的公告栏">
@@ -32,17 +26,11 @@
         <customization-demo />
       </t-demo>
 
-      <t-demo
-        title="02 组件状态"
-        desc="公告栏类型有普通（info）、警示（warning）、成功（success）、错误（error）"
-      >
+      <t-demo title="02 组件状态" desc="公告栏类型有普通（info）、警示（warning）、成功（success）、错误（error）">
         <theme-demo />
       </t-demo>
 
-      <t-demo
-        title="03 可滚动公告栏"
-        desc="可滚动公告栏有水平（horizontal）和垂直（vertical）"
-      >
+      <t-demo title="03 可滚动公告栏" desc="可滚动公告栏有水平（horizontal）和垂直（vertical）">
         <scrolling-demo />
       </t-demo>
     </view>
@@ -50,15 +38,14 @@
 </template>
 
 <script>
-
 import BaseDemo from './base/index.vue';
-import IconDemo from './iconDemo/index.vue';
-import SuffixIcon from './suffixIcon/index.vue';
-import EventDemo from './event/index.vue';
 import CustomDemo from './custom/index.vue';
-import ThemeDemo from './theme/index.vue';
-import ScrollingDemo from './scrolling/index.vue';
 import CustomizationDemo from './customization/index.vue';
+import EventDemo from './event/index.vue';
+import IconDemo from './iconDemo/index.vue';
+import ScrollingDemo from './scrolling/index.vue';
+import SuffixIcon from './suffixIcon/index.vue';
+import ThemeDemo from './theme/index.vue';
 export default {
   components: {
     BaseDemo,

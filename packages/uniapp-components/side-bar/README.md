@@ -8,7 +8,9 @@ isComponent: true
 
 ## 引入
 
-可在 `main.ts` 或在需要使用的页面或组件中引入。
+推荐使用 easycom 模式引入组件，配置后无需手动 import 即可直接在模板中使用 `<t-side-bar />`。详细配置请参考 [快速开始](../getting-started)。
+
+如需手动引入：
 
 ```js
 import TSideBar from '@tdesign/uniapp/side-bar/side-bar.vue';
@@ -75,7 +77,7 @@ value | String / Number | - | 当前选项的值 | N
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-side-bar-bg-color | @bg-color-secondarycontainer | -
 --td-side-bar-height | 100% | -

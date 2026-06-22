@@ -1,9 +1,7 @@
 <template>
   <view class="wrap">
     <view class="custom-navbar">
-      <t-demo-navbar
-        title="TDesign"
-      />
+      <t-demo-navbar title="TDesign" />
     </view>
     <view class="indexes">
       <t-indexes
@@ -13,14 +11,8 @@
         @change="onChange"
         @select="onSelect"
       >
-        <view
-          v-for="(item, index) in list"
-          :key="index"
-        >
-          <t-indexes-anchor
-            :index="item.index"
-            t-class="anchor-wrapper"
-          >
+        <view v-for="(item, index) in list" :key="index">
+          <t-indexes-anchor :index="item.index" t-class="anchor-wrapper">
             <view :class="'capsule' + (curIndex == item.index ? ' capsule--active' : '')">
               {{ item.index }}
             </view>
@@ -41,10 +33,10 @@
 </template>
 
 <script>
+import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TCellGroup from '@tdesign/uniapp/cell-group/cell-group.vue';
 import TIndexes from '@tdesign/uniapp/indexes/indexes.vue';
 import TIndexesAnchor from '@tdesign/uniapp/indexes-anchor/indexes-anchor.vue';
-import TCellGroup from '@tdesign/uniapp/cell-group/cell-group.vue';
-import TCell from '@tdesign/uniapp/cell/cell.vue';
 import { handlePageScroll } from '@tdesign/uniapp/mixins/page-scroll';
 
 const children = new Array(5).fill('列表内容');
@@ -95,7 +87,7 @@ export default {
   data() {
     return {
       list,
-      indexList: list.map(item => item.index),
+      indexList: list.map((item) => item.index),
       curIndex: '',
       stickyOffset: 0,
       city: '',
@@ -138,31 +130,30 @@ export default {
 } */
 /* #endif */
 
-
 .capsule {
-    margin: 0 8px;
-    height: 30px;
-    border-radius: 15px;
-    background-color: var(--td-bg-color-secondarycontainer, #f3f3f3);
-    padding-left: 32rpx;
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    box-sizing: border-box;
+  margin: 0 8px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: var(--td-bg-color-secondarycontainer, #f3f3f3);
+  padding-left: 32rpx;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  box-sizing: border-box;
 }
 
 .capsule--active {
-    border: 1px solid var(--td-border-level-1-color, #e7e7e7);
+  border: 1px solid var(--td-border-level-1-color, #e7e7e7);
 }
 
 :deep(.wrapper) {
-    padding-top: 8px;
-    /* height: 100%; */
+  padding-top: 8px;
+  /* height: 100%; */
 }
 
 .indexes,
 .capsule--active,
 :deep(.anchor-wrapper) {
-    background: var(--td-bg-color-container, #ffffff);
+  background: var(--td-bg-color-container, #ffffff);
 }
 </style>
