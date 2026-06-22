@@ -5,6 +5,38 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.10.0 `2026-06-15`
+
+### 🚀 Features
+
+- `Typography`: 新增 `Typography` 排版组件 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Cascader`: 新增 `filterable`、`filter` 和 `filter-placeholder` 属性，支持搜索功能 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+
+### 🐞 Bug Fixes
+
+- `Image`: 修复鸿蒙下图片无法显示问题 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Message`: 修复连续点击时的报错问题 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Search`: 补全 `update:value` 事件声明，修复 `v-model:value` 语法糖告警 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Stepper`: 调整手动输入逻辑，输入时仅过滤非法字符，范围校验&赋值移至失焦 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Upload`: 修复禁用态文件样式错误（禁用态下移除操作按钮） @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+
+## 🌈 0.9.1 `2026-06-12`
+
+### 🚀 Features
+
+- `ActionSheet`: 新增 `preventScrollThrough` 属性 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `Form`: 新增 `contentAlign` 属性，支持配置表单内容对齐方式 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `ImageViewer`: 新增 `maxZoom` 属性，支持缩放 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `Search`: 支持 `v-model` 语法糖写法 @Kriac ([#4459](https://github.com/Tencent/tdesign-miniprogram/pull/4459))
+
+### 🐞 Bug Fixes
+
+- `Button`: 修复图标尺寸变量错误问题 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `Input`: 将 `change` 事件放在值更新之后 @Kriac ([#4443](https://github.com/Tencent/tdesign-miniprogram/pull/4443))
+- `Picker`: 修复按钮自定义文案无效 @liweijie0812 ([#4480](https://github.com/Tencent/tdesign-miniprogram/pull/4480))
+- `Table`: 修复列配置中的类名选项无效的问题 @betavs ([#4500](https://github.com/Tencent/tdesign-miniprogram/pull/4500))
+- `Upload`: 修复预览图片不是当前问题 @novlan1 ([#4473](https://github.com/Tencent/tdesign-miniprogram/pull/4473))
+
 ## 🌈 0.9.0 `2026-05-08`
 
 ### 🚀 Features

@@ -8,6 +8,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
 arrow | Boolean | false | \- | N
+content-align | String | - | options: left/right | N
 help | String | - | \- | N
 label | String | '' | \- | N
 label-align | String | - | options: left/right/top | N
@@ -27,7 +28,7 @@ label | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-form-item-border-color | @component-stroke | -
 --td-form-item-border-left-space | @form-item-vertical-padding | -

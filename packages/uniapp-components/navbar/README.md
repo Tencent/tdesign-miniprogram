@@ -59,6 +59,7 @@ background | String | - | 已废弃。背景 | N
 delta | Number | 1 | 后退按钮后退层数，含义参考 [wx.navigateBack](https://developers.weixin.qq.com/miniprogram/dev/api/route/wx.navigateBack.html)，特殊的，传入 0 不会发生执行 wx.navigateBack | N
 fixed | Boolean | true | 是否固定在顶部 | N
 home-icon | String | - | 已废弃。首页图标地址。值为 '' 或者 undefined 则表示不显示返回图标，值为 'circle' 表示显示默认图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址 | N
+is-hidden-in-special-scene | Boolean | false | 【实验】是否销毁导航栏，仅场景值为 1433、1434、1177、1175 时有效 | N
 left-arrow | Boolean | false | 是否展示左侧箭头 | N
 left-icon | String | - | 已废弃。左侧图标地址，值为 '' 或者 undefined 则表示不显示返回图标，值为 'arrow-left' 表示显示返回图标，值为 'slot' 表示使用插槽渲染，值为其他则表示图标地址 | N
 placeholder | Boolean | false | 固定在顶部时是否开启占位 | N
@@ -104,7 +105,7 @@ t-class-title | 标题样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-navbar-padding-top | 20px | -
 --td-navbar-right | 95px | -

@@ -9,6 +9,7 @@
       show-error-message
       scroll-to-first-error="smooth"
       label-align="left"
+      content-align="right"
       @reset="(e) => onReset(e, { tagId: 'form' })"
       @submit="(e) => onSubmit(e, { tagId: 'form' })"
     >
@@ -16,6 +17,7 @@
         label="用户名"
         name="name"
         help="输入用户名"
+        content-align="left"
       >
         <t-input
           :value="formData.name"

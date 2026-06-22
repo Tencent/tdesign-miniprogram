@@ -1,6 +1,6 @@
 ---
 title: Uni App
-description: TDesign UniApp 组件库。
+description: TDesign Uniapp 组件库。
 spline: explain
 ---
 
@@ -8,7 +8,7 @@ spline: explain
   <svg fill="none" viewBox="0 0 16 16" width="16px" height="16px" style="margin-right: 5px">
     <path fill="#0052d9" d="M8 15A7 7 0 108 1a7 7 0 000 14zM7.4 4h1.2v1.2H7.4V4zm.1 2.5h1V12h-1V6.5z" fillOpacity="0.9"></path>
   </svg>
-  TDesign UniApp 组件库 npm 包名自 0.7.0 版本开始，从 tdesign-uniapp 变更为 @tdesign/uniapp
+  TDesign Uniapp 组件库 npm 包名自 0.7.0 版本开始，从 tdesign-uniapp 变更为 @tdesign/uniapp
 </div>
 
 ## 预览
@@ -149,11 +149,11 @@ import TLoading from '@tdesign/uniapp/loading/loading.vue';
 
 | 模板 | 描述 | 预览 |
 | --- | --- | --- |
-| [TDesign UniApp Starter](https://github.com/TDesignOteam/tdesign-uniapp-starter/) | Vue3 + CLI 模式模板 - 通用类 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-h5.png" height="100" /> |
-| [TDesign UniApp Starter Apply](https://github.com/TDesignOteam/tdesign-uniapp-starter-apply/) | Vue3 + CLI 模式模板 - 活动报名 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-apply-h5.png" height="100" /> |
-| [TDesign UniApp Starter Vue3 HX](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue3-hx/) | Vue3 + HBuilderX 模式模板 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue3-hx-h5.png" height="100" /> |
-| [TDesign UniApp Starter Vue2 CLI](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue2-cli/) | Vue2 + CLI 模式模板 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue2-cli-h5.png" height="100" /> |
-| [TDesign UniApp Starter Vue2 HX](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue2-hx/) | Vue2 + HBuilderX 模式模板 |<img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue2-hx-h5.png" height="100" /> |
+| [TDesign Uniapp Starter](https://github.com/TDesignOteam/tdesign-uniapp-starter/) | Vue3 + CLI 模式模板 - 通用类 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-h5.png" height="100" /> |
+| [TDesign Uniapp Starter Apply](https://github.com/TDesignOteam/tdesign-uniapp-starter-apply/) | Vue3 + CLI 模式模板 - 活动报名 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-apply-h5.png" height="100" /> |
+| [TDesign Uniapp Starter Vue3 HX](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue3-hx/) | Vue3 + HBuilderX 模式模板 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue3-hx-h5.png" height="100" /> |
+| [TDesign Uniapp Starter Vue2 CLI](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue2-cli/) | Vue2 + CLI 模式模板 | <img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue2-cli-h5.png" height="100" /> |
+| [TDesign Uniapp Starter Vue2 HX](https://github.com/TDesignOteam/tdesign-uniapp-starter-vue2-hx/) | Vue2 + HBuilderX 模式模板 |<img src="https://cdn.uwayfly.com/tdesign-uniapp/image/tdesign-uniapp-starter-vue2-hx-h5.png" height="100" /> |
 
 ## 开发
 

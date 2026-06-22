@@ -139,7 +139,7 @@ change | `(context: { value: CheckboxGroupValue, context: { value: boolean\|numb
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-checkbox-bg-color | @bg-color-container | -
 --td-checkbox-border-color | @component-stroke | -

@@ -43,7 +43,7 @@ t-class-cursor | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-slider-active-color | @brand-color | -
 --td-slider-bar-height | 8rpx | -

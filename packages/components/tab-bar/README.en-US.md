@@ -17,13 +17,13 @@ split | Boolean | true | \- | N
 theme | String | normal | options: normal/tag | N
 value | String / Number / Array | - | Typescript: `string \| number \| Array<string \| number>` | N
 default-value | String / Number / Array | undefined | uncontrolled property。Typescript: `string \| number \| Array<string \| number>` | N
-z-index | Number | 1 | \- | N
+z-index | Number | 1 | `1.12.1` | N
 
 ### TabBar Events
 
 name | params | description
 -- | -- | --
-change | `(value: string \| number)` | \-
+change | `(detail: { value: string \| number })` | \-
 
 ### TabBar External Classes
 
@@ -40,7 +40,9 @@ style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 badge-props | Object | - | Typescript: `BadgeProps`，[Badge API Documents](./badge?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/tab-bar-item/type.ts) | N
 icon | String / Object | - | \- | N
+link-type | String | redirectTo | `1.15.2`。options: redirectTo/switchTab/reLaunch/navigateTo | N
 sub-tab-bar | Array | - | Typescript: `SubTabBarItem[] ` `interface SubTabBarItem { value: string; label: string }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/tab-bar-item/type.ts) | N
+url | String | - | `1.15.2` | N
 value | String / Number | - | \- | N
 
 ### TabBarItem Slots

@@ -14,9 +14,19 @@ const props: TdTabBarItemProps = {
   icon: {
     type: null,
   },
+  /** 页面跳转类型 */
+  linkType: {
+    type: String,
+    value: 'redirectTo',
+  },
   /** 二级菜单 */
   subTabBar: {
     type: Array,
+  },
+  /** 点击后跳转的页面路径, 需要以 `/` 开头 */
+  url: {
+    type: String,
+    value: '',
   },
   /** 标识符 */
   value: {

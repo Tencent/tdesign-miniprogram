@@ -18,6 +18,12 @@ value | String / Number / Array | - | `v-model:value` is supported。Typescript:
 default-value | String / Number / Array | - | uncontrolled property。Typescript: `string \| number \| Array<string \| number>` | N
 z-index | Number | 1 | \- | N
 
+### TabBar Events
+
+name | params | description
+-- | -- | --
+change | `(context: { value: string \| number })` | \-
+
 ### TabBar External Classes
 
 className | Description
@@ -44,7 +50,7 @@ icon | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-tab-bar-bg-color | @bg-color-container | -
 --td-tab-bar-border-color | @border-level-1-color | -

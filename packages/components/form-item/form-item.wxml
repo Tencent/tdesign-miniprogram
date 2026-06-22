@@ -17,13 +17,16 @@
 
     <!-- 内容区域 -->
     <view class="{{formClass}}__controls {{errorClasses}} {{prefix}}-class-controls">
-      <view class="{{formClass}}__controls-content {{formClass}}__controls--{{contentAlign}}" style="{{contentStyle}}">
+      <view
+        class="{{formClass}}__controls-content {{formClass}}__controls--{{innerContentAlign}}"
+        style="{{contentStyle}}"
+      >
         <slot />
       </view>
       <!-- 帮助信息 -->
       <view
         wx:if="{{help}}"
-        class="{{formItemClass}}-help {{formClass}}__controls--{{contentAlign}} {{prefix}}-class-help"
+        class="{{formItemClass}}-help {{formClass}}__controls--{{innerContentAlign}} {{prefix}}-class-help"
       >
         {{ help }}
       </view>
@@ -31,7 +34,7 @@
       <!-- 校验提示信息 -->
       <view
         wx:if="{{(errorList.length > 0 && innerShowErrorMessage) || successList.length > 0}}"
-        class="{{formItemClass}}-extra {{formClass}}__controls--{{contentAlign}} {{prefix}}-class-extra"
+        class="{{formItemClass}}-extra {{formClass}}__controls--{{innerContentAlign}} {{prefix}}-class-extra"
       >
         {{errorList.length > 0 && innerShowErrorMessage ? errorList[0].message : successList[0].message}}
       </view>

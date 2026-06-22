@@ -64,7 +64,7 @@ t-class-header | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-collapse-border-color | @border-level-1-color | -
 --td-collapse-content-font | @font-body-medium | -
