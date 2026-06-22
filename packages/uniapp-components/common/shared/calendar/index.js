@@ -18,8 +18,8 @@ export default class TCalendar {
     if (type === 'single' && isValidDate(value)) return format(value);
     if (type === 'multiple' || type === 'range') {
       if (Array.isArray(value)) {
-        const isValid = value.every(item => isValidDate(item));
-        return isValid ? value.map(item => format(item)) : [];
+        const isValid = value.every((item) => isValidDate(item));
+        return isValid ? value.map((item) => format(item)) : [];
       }
       return [];
     }
@@ -50,7 +50,7 @@ export default class TCalendar {
         if (isSameDate({ year, month, date }, selectedDate)) return 'selected';
       }
       if (type === 'multiple' && selectedDate) {
-        const hit = selectedDate.some(item => isSameDate({ year, month, date }, item));
+        const hit = selectedDate.some((item) => isSameDate({ year, month, date }, item));
         if (hit) {
           return 'selected';
         }
@@ -64,7 +64,8 @@ export default class TCalendar {
           if (compareWithStart && compareWithEnd && allowSameDay) return 'start-end';
           if (compareWithStart) return 'start';
           if (compareWithEnd) return 'end';
-          if (startDate && endDate && curDate.getTime() > startDate.getTime() && curDate.getTime() < endDate.getTime()) return 'centre';
+          if (startDate && endDate && curDate.getTime() > startDate.getTime() && curDate.getTime() < endDate.getTime())
+            return 'centre';
         }
       }
 
@@ -115,7 +116,7 @@ export default class TCalendar {
       }
     } else if (type === 'multiple' && Array.isArray(selectedDate)) {
       const newVal = [...selectedDate];
-      const index = selectedDate.findIndex(item => isSameDate(item, selected));
+      const index = selectedDate.findIndex((item) => isSameDate(item, selected));
       if (index > -1) {
         newVal.splice(index, 1);
       } else {

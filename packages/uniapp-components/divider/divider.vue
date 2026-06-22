@@ -4,23 +4,15 @@
       :class="[
         classPrefix,
         tClass,
-        classPrefix + '--' + layout + ' ' + classPrefix + '--' + align + ' ' + (dashed ? classPrefix + '--dashed' : '')
+        classPrefix + '--' + layout + ' ' + classPrefix + '--' + align + ' ' + (dashed ? classPrefix + '--dashed' : ''),
       ]"
       :style="'' + tools._style([dividerStyle, customStyle])"
     >
-      <view
-        :class="[
-          tClassContent,
-          classPrefix + '__content'
-        ]"
-      >
+      <view :class="[tClassContent, classPrefix + '__content']">
         <view v-if="content">
           {{ content }}
         </view>
-        <slot
-          v-else
-          name="content"
-        />
+        <slot v-else name="content" />
       </view>
     </view>
   </view>
@@ -33,9 +25,7 @@ import tools from '../common/utils.wxs';
 
 import props from './props';
 
-
 const name = `${prefix}-divider`;
-
 
 export default {
   ...uniComponent({
@@ -43,10 +33,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-content`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-content`],
     props: {
       ...props,
     },
@@ -68,9 +55,7 @@ export default {
     },
     methods: {
       setStyle() {
-        const {
-          lineColor,
-        } = this;
+        const { lineColor } = this;
         const dividerStyle = `${lineColor ? `border-color: ${lineColor};` : ''}`;
         this.dividerStyle = dividerStyle;
       },

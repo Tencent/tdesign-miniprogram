@@ -2,57 +2,24 @@
   <view>
     <view>
       <view class="main-title">
-        <view class="title-major">
-          用户引导标题
-        </view>
-        <view class="title-sub">
-          按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。
-        </view>
+        <view class="title-major"> 用户引导标题 </view>
+        <view class="title-sub"> 按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。 </view>
       </view>
       <view class="field label-field">
-        <t-input
-          label="标签文字"
-          layout="vertical"
-          placeholder="请输入文字"
-        />
+        <t-input label="标签文字" layout="vertical" placeholder="请输入文字" />
       </view>
       <view class="field">
-        <t-input
-          label="标签文字"
-          layout="vertical"
-          placeholder="请输入文字"
-        />
+        <t-input label="标签文字" layout="vertical" placeholder="请输入文字" />
       </view>
       <view class="action">
-        <t-button
-          block
-          theme="light"
-          size="large"
-        >
-          重置
-        </t-button>
-        <t-button
-          block
-          theme="primary"
-          size="large"
-        >
-          确定
-        </t-button>
+        <t-button block theme="light" size="large"> 重置 </t-button>
+        <t-button block theme="primary" size="large"> 确定 </t-button>
       </view>
     </view>
 
-    <t-guide
-      :current="current"
-      :steps="steps"
-      @skip="close"
-      @finish="close"
-    >
-      <template
-        #body-1
-      >
-        <view
-          class="slot-body"
-        >
+    <t-guide :current="current" :steps="steps" @skip="close" @finish="close">
+      <template #body-1>
+        <view class="slot-body">
           <p>用户引导的说明文案 1</p>
           <t-image
             t-class="guide-demo-image"
@@ -133,41 +100,41 @@ export default {
 </script>
 <style>
 .main-title {
-    margin: 32rpx;
-    display: inline-block;
+  margin: 32rpx;
+  display: inline-block;
 }
 
 .title-major {
-    font-size: 48rpx;
-    font-weight: 600;
-    line-height: 72rpx;
+  font-size: 48rpx;
+  font-weight: 600;
+  line-height: 72rpx;
 }
 
 .title-sub {
-    font-size: 32rpx;
-    font-weight: 400;
-    line-height: 48rpx;
-    margin-top: 8rpx;
+  font-size: 32rpx;
+  font-weight: 400;
+  line-height: 48rpx;
+  margin-top: 8rpx;
 }
 
 .action {
-    margin: 63rpx;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 63rpx;
+  margin: 63rpx;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 63rpx;
 }
 
 .slot-body {
-    margin-top: 8rpx;
-    text-align: center;
-    color: var(--td-text-color-secondary);
-    font-size: 32rpx;
-    font-weight: 400;
-    line-height: 48rpx;
+  margin-top: 8rpx;
+  text-align: center;
+  color: var(--td-text-color-secondary);
+  font-size: 32rpx;
+  font-weight: 400;
+  line-height: 48rpx;
 }
 
 .slot-body :deep(.guide-demo-image) {
-    margin-top: 48rpx;
-    width: 100%;
+  margin-top: 48rpx;
+  width: 100%;
 }
 </style>

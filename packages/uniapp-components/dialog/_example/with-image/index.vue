@@ -20,13 +20,8 @@
       @confirm="closeDialog"
       @cancel="closeDialog"
     >
-      <template
-        #top
-      >
-        <t-image
-          t-class="dialog-image"
-          src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
-        />
+      <template #top>
+        <t-image t-class="dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
       </template>
     </t-dialog>
 
@@ -49,13 +44,8 @@
       @confirm="closeDialog"
       @cancel="closeDialog"
     >
-      <template
-        #top
-      >
-        <t-image
-          t-class="dialog-image"
-          src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
-        />
+      <template #top>
+        <t-image t-class="dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
       </template>
     </t-dialog>
 
@@ -78,13 +68,8 @@
       @confirm="closeDialog"
       @cancel="closeDialog"
     >
-      <template
-        #top
-      >
-        <t-image
-          t-class="dialog-image"
-          src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
-        />
+      <template #top>
+        <t-image t-class="dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
       </template>
     </t-dialog>
 
@@ -106,13 +91,8 @@
       @confirm="closeDialog"
       @cancel="closeDialog"
     >
-      <template
-        #top
-      >
-        <t-image
-          t-class="dialog-image"
-          src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
-        />
+      <template #top>
+        <t-image t-class="dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
       </template>
     </t-dialog>
 
@@ -136,13 +116,8 @@
       @confirm="closeDialog"
       @cancel="closeDialog"
     >
-      <template
-        #middle
-      >
-        <t-image
-          t-class="image-host dialog-image"
-          src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
-        />
+      <template #middle>
+        <t-image t-class="image-host dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
       </template>
     </t-dialog>
 
@@ -165,13 +140,8 @@
       @confirm="closeDialog"
       @cancel="closeDialog"
     >
-      <template
-        #middle
-      >
-        <t-image
-          t-class="image-host dialog-image"
-          src="https://tdesign.gtimg.com/mobile/demos/dialog1.png"
-        />
+      <template #middle>
+        <t-image t-class="image-host dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
       </template>
     </t-dialog>
   </view>
@@ -216,16 +186,16 @@ export default {
 </script>
 <style>
 .wrapper {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 
 .dialog-image {
-    width: 100%;
-    height: 160px;
+  width: 100%;
+  height: 160px;
 }
 
 .image-host {
-    display: block;
-    margin-top: 48rpx;
+  display: block;
+  margin-top: 48rpx;
 }
 </style>

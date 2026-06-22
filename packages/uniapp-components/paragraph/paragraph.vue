@@ -3,11 +3,7 @@
     :class="classPrefix + ' ' + tClass + ' ' + (ellipsis ? classPrefix + '__ellipsis-wrapper' : '')"
     :style="'' + tools._style([customStyle])"
   >
-    <view
-      v-if="ellipsis"
-      :class="classPrefix + '__ellipsis-content'"
-      :style="'' + ellipsisStyle(ellipsis, isExpanded)"
-    >
+    <view v-if="ellipsis" :class="classPrefix + '__ellipsis-content'" :style="'' + ellipsisStyle(ellipsis, isExpanded)">
       <text v-if="content">
         {{ content }}
       </text>
@@ -22,10 +18,7 @@
 
     <!-- 展开/收起按钮 -->
     <block v-if="ellipsis && !isExpanded && ellipsis.expandable && ellipsis.suffix">
-      <view
-        :class="classPrefix + '-ellipsis-symbol'"
-        @click="onExpand"
-      >
+      <view :class="classPrefix + '-ellipsis-symbol'" @click="onExpand">
         <slot name="suffix" />
       </view>
     </block>
@@ -67,15 +60,11 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     props: {
       ...props,
     },
-    emits: [
-      'expand',
-    ],
+    emits: ['expand'],
     data() {
       return {
         prefix,

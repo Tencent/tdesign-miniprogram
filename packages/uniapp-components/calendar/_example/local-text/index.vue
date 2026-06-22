@@ -6,16 +6,11 @@
       :min-date="minDate"
       :max-date="maxDate"
       :locale-text="localeText"
-      @update:visible="(e) => visible = e"
+      @update:visible="(e) => (visible = e)"
       @confirm="handleConfirm"
       @close="onClose"
     />
-    <t-cell
-      arrow
-      title="国际化"
-      :note="formatTimestamp(value)"
-      @click="handleCalendar"
-    />
+    <t-cell arrow title="国际化" :note="formatTimestamp(value)" @click="handleCalendar" />
   </view>
 </template>
 <script>
@@ -23,7 +18,6 @@ import TCalendar from '@tdesign/uniapp/calendar/calendar.vue';
 import TCell from '@tdesign/uniapp/cell/cell.vue';
 
 import { formatTimestamp } from '../computed';
-
 
 export default {
   components: {
@@ -41,7 +35,20 @@ export default {
         weekdays: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
         monthTitle: '{month} {year}',
         confirm: 'Confirm',
-        months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+        months: [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December',
+        ],
       },
     };
   },
@@ -61,5 +68,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

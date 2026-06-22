@@ -29,6 +29,6 @@ export default {
 </script>
 <style scoped>
 :deep(.external-class) {
-    height: 324rpx;
+  height: 324rpx;
 }
 </style>

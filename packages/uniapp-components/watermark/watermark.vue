@@ -1,23 +1,12 @@
 <template>
-  <view
-    :class="classPrefix + ' ' + tClass"
-    :style="'' + tools._style([customStyle])"
-  >
+  <view :class="classPrefix + ' ' + tClass" :style="'' + tools._style([customStyle])">
     <block v-if="content">
       {{ content }}
     </block>
     <slot name="content" />
     <slot />
-    <canvas
-      :id="canvasId"
-      :canvas-id="canvasId"
-      type="2d"
-      :style="canvasStyle"
-    />
-    <view
-      :class="movable ? 'watermark-move' : ''"
-      :style="'' + tools._style(watermarkStyle)"
-    />
+    <canvas :id="canvasId" :canvas-id="canvasId" type="2d" :style="canvasStyle" />
+    <view :class="movable ? 'watermark-move' : ''" :style="'' + tools._style(watermarkStyle)" />
   </view>
 </template>
 
@@ -49,8 +38,7 @@ export default {
         tools,
         watermarkStyle: {},
         initialed: false,
-        canvasId: `watermark-canvas-${Math.random().toString(36)
-          .slice(2, 11)}`,
+        canvasId: `watermark-canvas-${Math.random().toString(36).slice(2, 11)}`,
       };
     },
     computed: {
@@ -93,9 +81,7 @@ export default {
     },
     methods: {
       watermarkColor() {
-        return appBaseInfo.theme === 'dark'
-          ? 'rgba(238, 238, 238, 0.1)'
-          : 'rgba(0, 0, 0, 0.1)';
+        return appBaseInfo.theme === 'dark' ? 'rgba(238, 238, 238, 0.1)' : 'rgba(0, 0, 0, 0.1)';
       },
       renderWatermark() {
         const query = uni.createSelectorQuery().in(this);
@@ -129,63 +115,52 @@ export default {
               watermarkColor: this.watermarkColor(),
               layout: this.layout,
             };
-            generateBase64Url.call(
-              this,
-              canvas,
-              this.canvasId,
-              bgImageOptions,
-              (base64Url, backgroundSize) => {
-                let animationVars = {};
-                if (this.movable) {
-                  const {
-                    left0,
-                    left25,
-                    left50,
-                    left75,
-                    top0,
-                    top25,
-                    top50,
-                    top75,
-                  } = randomMovingStyle();
-                  animationVars = {
-                    '--watermark-left-0': left0,
-                    '--watermark-left-25': left25,
-                    '--watermark-left-50': left50,
-                    '--watermark-left-75': left75,
-                    '--watermark-top-0': top0,
-                    '--watermark-top-25': top25,
-                    '--watermark-top-50': top50,
-                    '--watermark-top-75': top75,
-                    '--watermark-animation-duration': `${
-                      (this.moveInterval * 4) / 60
-                    }s`,
-                  };
-                }
+            generateBase64Url
+              .call(
+                this,
+                canvas,
+                this.canvasId,
+                bgImageOptions,
+                (base64Url, backgroundSize) => {
+                  let animationVars = {};
+                  if (this.movable) {
+                    const { left0, left25, left50, left75, top0, top25, top50, top75 } = randomMovingStyle();
+                    animationVars = {
+                      '--watermark-left-0': left0,
+                      '--watermark-left-25': left25,
+                      '--watermark-left-50': left50,
+                      '--watermark-left-75': left75,
+                      '--watermark-top-0': top0,
+                      '--watermark-top-25': top25,
+                      '--watermark-top-50': top50,
+                      '--watermark-top-75': top75,
+                      '--watermark-animation-duration': `${(this.moveInterval * 4) / 60}s`,
+                    };
+                  }
 
-                this.watermarkStyle = {
-                  zIndex: this.zIndex,
-                  position: 'absolute',
-                  left: 0,
-                  right: 0,
-                  top: 0,
-                  bottom: 0,
-                  width: '100%',
-                  height: '100%',
-                  backgroundSize: `${
-                    backgroundSize?.width || gapX + this.width
-                  }px`,
-                  pointerEvents: 'none',
-                  backgroundRepeat: this.movable ? 'no-repeat' : 'repeat',
-                  backgroundImage: `url('${base64Url}')`,
-                  ...animationVars,
-                };
-              },
-              () => {
-                this.initialed = true;
-              },
-            ).catch((err) => {
-              console.error('render watermark failed', err);
-            });
+                  this.watermarkStyle = {
+                    zIndex: this.zIndex,
+                    position: 'absolute',
+                    left: 0,
+                    right: 0,
+                    top: 0,
+                    bottom: 0,
+                    width: '100%',
+                    height: '100%',
+                    backgroundSize: `${backgroundSize?.width || gapX + this.width}px`,
+                    pointerEvents: 'none',
+                    backgroundRepeat: this.movable ? 'no-repeat' : 'repeat',
+                    backgroundImage: `url('${base64Url}')`,
+                    ...animationVars,
+                  };
+                },
+                () => {
+                  this.initialed = true;
+                },
+              )
+              .catch((err) => {
+                console.error('render watermark failed', err);
+              });
           });
       },
     },

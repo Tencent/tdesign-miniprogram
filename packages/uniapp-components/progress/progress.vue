@@ -1,14 +1,8 @@
 <template>
-  <view
-    :style="'' + tools._style([customStyle])"
-    :class="classPrefix"
-  >
+  <view :style="'' + tools._style([customStyle])" :class="classPrefix">
     <view
       v-if="theme === PRO_THEME.LINE"
-      :class="[
-        classPrefix + '--thin ' + classPrefix + '--status--' + (status || computedStatus),
-        tClass
-      ]"
+      :class="[classPrefix + '--thin ' + classPrefix + '--status--' + (status || computedStatus), tClass]"
     >
       <view
         aria-role="progressbar"
@@ -21,22 +15,12 @@
         :style="'height: ' + heightBar + 'px;border-radius: ' + heightBar + 'px;background-color: ' + bgColorBar"
       >
         <view
-          :class="[
-            classPrefix + '__inner ',
-            tClassBar
-          ]"
+          :class="[classPrefix + '__inner ', tClassBar]"
           :style="'background: ' + colorBar + '; width: ' + (computedProgress + '%')"
         />
       </view>
-      <view
-        v-if="label"
-        :class="classPrefix + '__info ' + tClassLabel"
-        :aria-hidden="true"
-      >
-        <block
-          v-if="tools.includes(STATUS, status)"
-          name="icon"
-        >
+      <view v-if="label" :class="classPrefix + '__info ' + tClassLabel" :aria-hidden="true">
+        <block v-if="tools.includes(STATUS, status)" name="icon">
           <t-icon
             :t-class="classPrefix + '__icon ' + classPrefix + '__icon--'"
             :name="LINE_STATUS_ICON[status]"
@@ -59,16 +43,16 @@
       aria-live="polite"
       :class="
         classPrefix +
-          '__bar ' +
-          classPrefix +
-          '--plump ' +
-          (computedProgress > 10 ? classPrefix + '--over-ten' : classPrefix + '--under-ten') +
-          ' ' +
-          classPrefix +
-          '--status--' +
-          (status || computedStatus) +
-          ' ' +
-          tClass
+        '__bar ' +
+        classPrefix +
+        '--plump ' +
+        (computedProgress > 10 ? classPrefix + '--over-ten' : classPrefix + '--under-ten') +
+        ' ' +
+        classPrefix +
+        '--status--' +
+        (status || computedStatus) +
+        ' ' +
+        tClass
       "
       :style="'height: ' + heightBar + 'px;border-radius: ' + heightBar + 'px;background-color: ' + bgColorBar"
     >
@@ -76,28 +60,15 @@
         :class="classPrefix + '__inner ' + tClassBar"
         :style="'background: ' + colorBar + '; width: ' + computedProgress + '%'"
       >
-        <view
-          v-if="label && computedProgress > 10"
-          :class="classPrefix + '__info ' + tClassLabel"
-        >
+        <view v-if="label && computedProgress > 10" :class="classPrefix + '__info ' + tClassLabel">
           <text>{{ tools.isString(label) ? label : computedProgress + '%' }}</text>
         </view>
-        <slot
-          v-if="computedProgress > 10"
-          name="label"
-        />
+        <slot v-if="computedProgress > 10" name="label" />
       </view>
-      <view
-        v-if="label && computedProgress <= 10"
-        :class="classPrefix + '__info ' + tClassLabel"
-        :aria-hidden="true"
-      >
+      <view v-if="label && computedProgress <= 10" :class="classPrefix + '__info ' + tClassLabel" :aria-hidden="true">
         <text>{{ tools.isString(label) ? label : computedProgress + '%' }}</text>
       </view>
-      <slot
-        v-if="computedProgress <= 10"
-        name="label"
-      />
+      <slot v-if="computedProgress <= 10" name="label" />
     </view>
     <view
       v-if="theme === PRO_THEME.CIRCLE"
@@ -111,25 +82,20 @@
         :aria-label="ariaLabel || (isIOS ? getIOSAriaLabel(status) : getAndroidAriaLabel(status))"
         aria-live="polite"
         :class="'' + tools.cls(classPrefix + '__canvas--circle', [[size, true]])"
-        :style="getCircleStyle(size, heightBar) +
+        :style="
+          getCircleStyle(size, heightBar) +
           '; background-image: conic-gradient(from var(--td-progress-circle-from), ' +
           (colorCircle || STATUS_COLOR[status] || 'var(--td-progress-inner-bg-color)') +
           ' ' +
           computedProgress +
           '%, ' +
           (bgColorBar || 'var(--td-progress-track-bg-color)') +
-          ' 0%);'"
+          ' 0%);'
+        "
       >
         <view :class="classPrefix + '__canvas--inner ' + tClassBar">
-          <view
-            v-if="label"
-            :class="classPrefix + '__info ' + tClassLabel"
-            :aria-hidden="true"
-          >
-            <block
-              v-if="tools.includes(STATUS, status)"
-              name="icon"
-            >
+          <view v-if="label" :class="classPrefix + '__info ' + tClassLabel" :aria-hidden="true">
+            <block v-if="tools.includes(STATUS, status)" name="icon">
               <t-icon
                 :t-class="classPrefix + '__icon ' + classPrefix + '__icon--'"
                 :name="CIRCLE_STATUS_ICON[status]"
@@ -158,18 +124,15 @@ import {
   STATUS,
   STATUS_TEXT,
   PRO_THEME,
-
   STATUS_COLOR,
   LINE_STATUS_ICON,
   CIRCLE_STATUS_ICON,
-
   getCircleStyle,
   getIOSAriaLabel,
   getAndroidAriaLabel,
 } from './computed.js';
 import props from './props';
 import { getBackgroundColor } from './utils';
-
 
 const name = `${prefix}-progress`;
 
@@ -182,11 +145,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-bar`,
-      `${prefix}-class-label`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-bar`, `${prefix}-class-label`],
     props: {
       ...props,
     },
@@ -249,9 +208,7 @@ export default {
         immediate: true,
       },
     },
-    methods: {
-
-    },
+    methods: {},
   }),
 };
 </script>

@@ -7,118 +7,48 @@
   https://www.zhangxinxu.com/wordpress/2017/01/voiceover-aria-web-accessible-iphone/
 -->
 
-    <view class="demo-desc">
-      圆形徽标
-    </view>
+    <view class="demo-desc"> 圆形徽标 </view>
     <view class="demo-wrapper">
-      <t-badge
-        count="2"
-        :offset="[2, -2]"
-      >
-        <t-icon
-          name="notification"
-          size="48rpx"
-          aria-label="通知"
-        />
+      <t-badge count="2" :offset="[2, -2]">
+        <t-icon name="notification" size="48rpx" aria-label="通知" />
       </t-badge>
     </view>
 
-    <view class="demo-desc">
-      方形徽标
-    </view>
+    <view class="demo-desc"> 方形徽标 </view>
     <view class="demo-wrapper">
-      <t-badge
-        count="2"
-        shape="square"
-        :offset="[1, -2]"
-      >
-        <t-icon
-          name="notification"
-          size="48rpx"
-          aria-label="通知"
-        />
+      <t-badge count="2" shape="square" :offset="[1, -2]">
+        <t-icon name="notification" size="48rpx" aria-label="通知" />
       </t-badge>
     </view>
 
-    <view class="demo-desc">
-      气泡徽标
-    </view>
+    <view class="demo-desc"> 气泡徽标 </view>
     <view class="demo-wrapper">
-      <t-badge
-        count="领积分"
-        shape="bubble"
-        aria-role="button"
-      >
-        <t-button
-          icon="shop"
-          aria-label="商店"
-          shape="square"
-          size="large"
-        />
+      <t-badge count="领积分" shape="bubble" aria-role="button">
+        <t-button icon="shop" aria-label="商店" shape="square" size="large" />
       </t-badge>
     </view>
 
-    <view
-      class="demo-desc"
-      style="margin-bottom: 32rpx"
-    >
-      角标
-    </view>
-    <t-cell
-      title="单行标题"
-      t-class="t-class-cell"
-    >
+    <view class="demo-desc" style="margin-bottom: 32rpx"> 角标 </view>
+    <t-cell title="单行标题" t-class="t-class-cell">
       <template #note>
-        <t-badge
-          count="NEW"
-          :offset="skylineRender ? ['-18rpx', '-32rpx'] : [0, 0]"
-          shape="ribbon-left"
-        />
+        <t-badge count="NEW" :offset="skylineRender ? ['-18rpx', '-32rpx'] : [0, 0]" shape="ribbon-left" />
       </template>
     </t-cell>
-    <t-cell
-      title="单行标题"
-      :bordered="false"
-      t-class="t-class-cell"
-    >
+    <t-cell title="单行标题" :bordered="false" t-class="t-class-cell">
       <template #note>
-        <t-badge
-          count="NEW"
-          :offset="skylineRender ? ['-18rpx', '-32rpx'] : [0, 0]"
-          shape="ribbon"
-        />
+        <t-badge count="NEW" :offset="skylineRender ? ['-18rpx', '-32rpx'] : [0, 0]" shape="ribbon" />
       </template>
     </t-cell>
 
-    <view
-      class="demo-desc"
-      style="margin-bottom: 32rpx"
-    >
-      三角角标
-    </view>
-    <t-cell
-      title="单行标题"
-      t-class="t-class-cell"
-    >
+    <view class="demo-desc" style="margin-bottom: 32rpx"> 三角角标 </view>
+    <t-cell title="单行标题" t-class="t-class-cell">
       <template #note>
-        <t-badge
-          count="NEW"
-          :offset="skylineRender ? ['-24rpx', '-32rpx'] : [0, 0]"
-          shape="triangle-left"
-        />
+        <t-badge count="NEW" :offset="skylineRender ? ['-24rpx', '-32rpx'] : [0, 0]" shape="triangle-left" />
       </template>
     </t-cell>
-    <t-cell
-      title="单行标题"
-      :bordered="false"
-      t-class="t-class-cell"
-    >
+    <t-cell title="单行标题" :bordered="false" t-class="t-class-cell">
       <template #note>
-        <t-badge
-          count="NEW"
-          :offset="skylineRender ? ['-24rpx', '-32rpx'] : [0, 0]"
-          shape="triangle-right"
-        />
+        <t-badge count="NEW" :offset="skylineRender ? ['-24rpx', '-32rpx'] : [0, 0]" shape="triangle-right" />
       </template>
     </t-cell>
   </view>
@@ -143,8 +73,7 @@ export default {
   },
   mixins: [SkylineBehavior],
   data() {
-    return {
-    };
+    return {};
   },
   created() {},
   methods: {},
@@ -152,14 +81,14 @@ export default {
 </script>
 <style>
 .demo-wrapper {
-    display: flex;
-    margin-left: 32rpx;
-    margin-top: 28px;
-    margin-bottom: 24px;
-    align-items: center;
+  display: flex;
+  margin-left: 32rpx;
+  margin-top: 28px;
+  margin-bottom: 24px;
+  align-items: center;
 }
 
 :deep(.t-class-cell) {
-    overflow: hidden;
+  overflow: hidden;
 }
 </style>

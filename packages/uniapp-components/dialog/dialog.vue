@@ -14,18 +14,10 @@
     @visible-change="overlayClick"
   >
     <template #content>
-      <view
-        :class="classPrefix + ' ' + tClass"
-      >
+      <view :class="classPrefix + ' ' + tClass">
         <slot name="top" />
-        <view
-          v-if="dataCloseBtn"
-          :class="classPrefix + '__close-btn'"
-          @click="onClose"
-        >
-          <template
-            v-if="tools.isObject(dataCloseBtn)"
-          >
+        <view v-if="dataCloseBtn" :class="classPrefix + '__close-btn'" @click="onClose">
+          <template v-if="tools.isObject(dataCloseBtn)">
             <t-icon
               :custom-style="dataCloseBtn.style || ''"
               :prefix="dataCloseBtn.prefix"
@@ -37,24 +29,14 @@
               :aria-role="dataCloseBtn.ariaRole"
             />
           </template>
-          <t-icon
-            v-else
-            name="close"
-            size="44rpx"
-          />
+          <t-icon v-else name="close" size="44rpx" />
         </view>
         <view :class="classPrefix + '__content ' + tClassContent">
-          <view
-            v-if="dataTitle"
-            :class="classPrefix + '__header'"
-          >
+          <view v-if="dataTitle" :class="classPrefix + '__header'">
             {{ dataTitle }}
           </view>
           <slot name="title" />
-          <view
-            v-if="dataContent"
-            :class="classPrefix + '__body'"
-          >
+          <view v-if="dataContent" :class="classPrefix + '__body'">
             <text :class="classPrefix + '__body-text'">
               {{ dataContent }}
             </text>
@@ -64,9 +46,10 @@
         <slot name="middle" />
         <view
           :class="
-            '' + tools.cls(classPrefix + '__footer', [
+            '' +
+            tools.cls(classPrefix + '__footer', [
               ['column', dataButtonLayout === 'vertical'],
-              ['full', buttonVariant == 'text' && (!dataActions || dataActions.length == 0)]
+              ['full', buttonVariant == 'text' && (!dataActions || dataActions.length == 0)],
             ])
           "
         >
@@ -235,7 +218,6 @@ import props from './props';
 
 const name = `${prefix}-dialog`;
 
-
 export default {
   components: {
     TPopup,
@@ -290,7 +272,9 @@ export default {
       onWatchBtn(confirm, cancel) {
         const { prefix, classPrefix, dataButtonLayout } = this;
         const rect = { buttonVariant: 'text' };
-        const useBaseVariant = [confirm, cancel].some(item => isObject(item) && item.variant && item.variant !== 'text');
+        const useBaseVariant = [confirm, cancel].some(
+          (item) => isObject(item) && item.variant && item.variant !== 'text',
+        );
         const buttonMap = { confirm, cancel };
         const cls = [`${classPrefix}__button`];
         const externalCls = [];

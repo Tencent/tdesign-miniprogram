@@ -1,9 +1,5 @@
 <template>
-  <view
-    :style="'' + tools._style([customStyle])"
-    :class="classPrefix + ' ' + tClass"
-    aria-role="radiogroup"
-  >
+  <view :style="'' + tools._style([customStyle])" :class="classPrefix + ' ' + tClass" aria-role="radiogroup">
     <slot />
     <t-radio
       v-for="(item, index) in radioOptions"
@@ -29,7 +25,9 @@
       :name="item.name || ''"
       :borderless="borderless"
       :relation-key="relationKey"
-      @change="(e) => handleRadioChange(e, { index, value: item.value, allowUncheck: item.allowUncheck || allowUncheck })"
+      @change="
+        (e) => handleRadioChange(e, { index, value: item.value, allowUncheck: item.allowUncheck || allowUncheck })
+      "
     />
   </view>
 </template>
@@ -43,9 +41,7 @@ import TRadio from '../radio/radio';
 
 import props from './props';
 
-
 const name = `${prefix}-radio-group`;
-
 
 export default {
   components: {
@@ -62,9 +58,7 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     inject: {
       [RELATION_MAP.FormKey]: {
         default: null,
@@ -158,8 +152,7 @@ export default {
       },
 
       onChange(value) {
-        if (this[RELATION_MAP.FormKey]
-        && this[RELATION_MAP.FormKey].onValueChange) {
+        if (this[RELATION_MAP.FormKey] && this[RELATION_MAP.FormKey].onValueChange) {
           this[RELATION_MAP.FormKey].onValueChange(value);
         }
       },
@@ -196,13 +189,10 @@ export default {
             }
           });
           this.radioOptions = optionsValue;
-        } catch (error) {
-
-        }
+        } catch (error) {}
       },
     },
   }),
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>

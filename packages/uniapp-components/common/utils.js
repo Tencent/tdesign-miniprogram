@@ -10,7 +10,6 @@ export const appBaseInfo = getAppBaseInfo();
 
 export const deviceInfo = getDeviceInfo();
 
-
 /**
  * 多参数空值合并函数
  * @param {...any} args - 任意数量的参数
@@ -27,7 +26,6 @@ export function coalesce(...args) {
   // 如果所有参数都是null/undefined，返回最后一个参数
   return args[args.length - 1];
 }
-
 
 export const debounce = function (func, wait = 500) {
   let timerId;
@@ -104,7 +102,7 @@ export const classNames = function (...args) {
 
 export const styles = function (styleObj) {
   return Object.keys(styleObj)
-    .map(styleKey => `${styleKey}: ${styleObj[styleKey]}`)
+    .map((styleKey) => `${styleKey}: ${styleObj[styleKey]}`)
     .join('; ');
 };
 
@@ -134,8 +132,10 @@ export const getRect = function (context, selector, needAll = false, useH5Origin
     uni
       .createSelectorQuery()
       .in(context)
-      // eslint-disable-next-line no-unexpected-multiline
-      [needAll ? 'selectAll' : 'select'](selector)
+      [
+        // eslint-disable-next-line no-unexpected-multiline
+        needAll ? 'selectAll' : 'select'
+      ](selector)
       .boundingClientRect((rect) => {
         if (rect) {
           resolve(rect);
@@ -147,14 +147,14 @@ export const getRect = function (context, selector, needAll = false, useH5Origin
   });
 };
 
-
-export const getTreeDepth = (tree, key) => tree.reduce((maxDepth, node) => {
-  const keyName = coalesce(key, 'children');
-  if (node[keyName] && node[keyName].length > 0) {
-    return Math.max(maxDepth, getTreeDepth(node[keyName], key) + 1);
-  }
-  return Math.max(maxDepth, 1);
-}, 0);
+export const getTreeDepth = (tree, key) =>
+  tree.reduce((maxDepth, node) => {
+    const keyName = coalesce(key, 'children');
+    if (node[keyName] && node[keyName].length > 0) {
+      return Math.max(maxDepth, getTreeDepth(node[keyName], key) + 1);
+    }
+    return Math.max(maxDepth, 1);
+  }, 0);
 
 export const isIOS = function () {
   return !!(deviceInfo?.system?.toLowerCase().search('ios') + 1);
@@ -230,8 +230,8 @@ export const getCharacterLength = (type, char, max) => {
   };
 };
 
-export const chunk = (arr, size) => Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
-
+export const chunk = (arr, size) =>
+  Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
 
 const getPageContext = () => {
   const pages = getCurrentPages();
@@ -239,16 +239,12 @@ const getPageContext = () => {
   return page?.$vm || page;
 };
 
-
 const findInstance = (context, pageContext, pureSelector) => {
   if (context && context.$refs[pureSelector]) {
     return context.$refs[pureSelector];
   }
 
-  if (pageContext
-    && pageContext.$refs
-    && pageContext.$refs[pureSelector]
-  ) {
+  if (pageContext && pageContext.$refs && pageContext.$refs[pureSelector]) {
     return pageContext.$refs[pureSelector];
   }
 
@@ -270,7 +266,7 @@ export const getInstance = function (context, selector) {
 export const unitConvert = (value) => {
   if (typeof value === 'string') {
     if (value.includes('rpx')) {
-      return (parseInt(value, 10) * (coalesce(systemInfo?.screenWidth, 750))) / 750;
+      return (parseInt(value, 10) * coalesce(systemInfo?.screenWidth, 750)) / 750;
     }
     return parseInt(value, 10);
   }
@@ -302,11 +298,12 @@ export const setIcon = (iconName, icon, defaultIcon) => {
   };
 };
 
-export const toCamel = str => str.replace(/-(\w)/g, (match, m1) => m1.toUpperCase());
-export const toPascal = name => name
-  .split('-')
-  .map(part => part.charAt(0).toUpperCase() + part.slice(1))
-  .join('');
+export const toCamel = (str) => str.replace(/-(\w)/g, (match, m1) => m1.toUpperCase());
+export const toPascal = (name) =>
+  name
+    .split('-')
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join('');
 
 export function hyphenate(str) {
   const hyphenateRE = /\B([A-Z])/g;
@@ -346,18 +343,17 @@ export const isOverSize = (size, sizeLimit) => {
     MB: base * base,
     GB: base * base * base,
   };
-  const computedSize = typeof sizeLimit === 'number'
-    ? sizeLimit * base
-    : sizeLimit?.size * unitMap[coalesce(sizeLimit?.unit, 'KB')]; // 单位 KB
+  const computedSize =
+    typeof sizeLimit === 'number' ? sizeLimit * base : sizeLimit?.size * unitMap[coalesce(sizeLimit?.unit, 'KB')]; // 单位 KB
 
   return size > computedSize;
 };
 
-export const rpx2px = rpx => Math.floor((systemInfo.windowWidth * rpx) / 750);
+export const rpx2px = (rpx) => Math.floor((systemInfo.windowWidth * rpx) / 750);
 
-export const nextTick = () => new Promise((resolve) => {
-  setTimeout(() => {
-    resolve();
-  }, 33);
-});
-
+export const nextTick = () =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve();
+    }, 33);
+  });

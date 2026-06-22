@@ -15,15 +15,8 @@
       :overlay-props="(dataPopupProps && dataPopupProps.overlayProps) || defaultOverlayProps"
       @visible-change="onPopupVisibleChange"
     >
-      <view
-        :class="classPrefix + '__content ' + tClassContent"
-        tabindex="0"
-      >
-        <view
-          v-if="dataDescription"
-          tabindex="0"
-          :class="classPrefix + '__description'"
-        >
+      <view :class="classPrefix + '__content ' + tClassContent" tabindex="0">
+        <view v-if="dataDescription" tabindex="0" :class="classPrefix + '__description'">
           {{ dataDescription }}
         </view>
 
@@ -52,16 +45,8 @@
 
           <block v-else-if="gridThemeItems.length > 1">
             <view :class="classPrefix + '__swiper-wrap'">
-              <swiper
-                :style="heightStyle"
-                :autoplay="false"
-                :current="currentSwiperIndex"
-                @change="onSwiperChange"
-              >
-                <swiper-item
-                  v-for="(item, index) in gridThemeItems"
-                  :key="index"
-                >
+              <swiper :style="heightStyle" :autoplay="false" :current="currentSwiperIndex" @change="onSwiperChange">
+                <swiper-item v-for="(item, index) in gridThemeItems" :key="index">
                   <t-grid
                     align="center"
                     :t-class="classPrefix + '__grid ' + classPrefix + '__grid--swiper'"
@@ -97,14 +82,8 @@
           </block>
         </block>
 
-        <view
-          v-else-if="dataItems && dataItems.length"
-          :class="classPrefix + '__list'"
-        >
-          <block
-            v-for="(item, index) in dataItems"
-            :key="index"
-          >
+        <view v-else-if="dataItems && dataItems.length" :class="classPrefix + '__list'">
+          <block v-for="(item, index) in dataItems" :key="index">
             <view
               :data-index="index"
               :style="item.color ? 'color: ' + item.color : ''"
@@ -140,14 +119,11 @@
                   :aria-label="getIconData(item.suffixIcon).ariaLabel"
                   :aria-role="getIconData(item.suffixIcon).ariaRole"
                   :t-class="classPrefix + '__list-item-icon ' + classPrefix + '__list-item-icon--suffix'"
-                  style="margin-left: auto;"
+                  style="margin-left: auto"
                   :custom-style="suffixIconCustomStyle"
                 />
               </view>
-              <view
-                v-if="item.description"
-                :class="classPrefix + '__list-item-desc'"
-              >
+              <view v-if="item.description" :class="classPrefix + '__list-item-desc'">
                 {{ item.description }}
               </view>
             </view>
@@ -155,10 +131,7 @@
         </view>
       </view>
       <slot />
-      <view
-        v-if="dataShowCancel"
-        :class="classPrefix + '__footer'"
-      >
+      <view v-if="dataShowCancel" :class="classPrefix + '__footer'">
         <view :class="classPrefix + '__gap-' + dataTheme" />
         <view
           :class="classPrefix + '__cancel ' + tClassCancel"
@@ -194,7 +167,6 @@ import { actionSheetTheme } from './show';
 const componentName = 'action-sheet';
 const name = `${prefix}-${componentName}`;
 
-
 export default {
   components: {
     TIcon,
@@ -207,27 +179,18 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    controlledProps: [{
-      key: 'visible',
-      event: 'visible-change',
-    }],
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-content`,
-      `${prefix}-class-cancel`,
+    controlledProps: [
+      {
+        key: 'visible',
+        event: 'visible-change',
+      },
     ],
-    mixins: [
-      getFunctionalMixin(props),
-      useCustomNavbar,
-      usingConfig({ componentName }),
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-content`, `${prefix}-class-cancel`],
+    mixins: [getFunctionalMixin(props), useCustomNavbar, usingConfig({ componentName })],
     props: {
       ...props,
     },
-    emits: [
-      'visible-change',
-      'update:visible',
-    ],
+    emits: ['visible-change', 'update:visible'],
     data() {
       return {
         prefix,
@@ -243,10 +206,7 @@ export default {
     },
     computed: {
       rootCustomStyle() {
-        return tools._style([
-          this.customStyle,
-          this.dataTheme === 'grid' ? 'padding-bottom: 16rpx' : '',
-        ]);
+        return tools._style([this.customStyle, this.dataTheme === 'grid' ? 'padding-bottom: 16rpx' : '']);
       },
       iconCustomStyle() {
         return 'margin-right: 16rpx;';
@@ -285,8 +245,7 @@ export default {
       getIconData,
 
       memoInitialData() {
-        this.initialData = {
-        };
+        this.initialData = {};
       },
 
       splitGridThemeActions() {

@@ -1,49 +1,24 @@
 <template>
   <div>
-    <slot
-      v-if="statusRender"
-      name="statusRender"
-    />
+    <slot v-if="statusRender" name="statusRender" />
 
     <template v-else>
-      <view
-        v-if="status === 'expired'"
-        :class="'' + `${prefix}-expired`"
-      >
+      <view v-if="status === 'expired'" :class="'' + `${prefix}-expired`">
         <view :class="'' + `${prefix}-expired__text`">
           {{ locale.expiredText }}
-          <view
-            :class="'' + `${prefix}-expired__button`"
-            @click="handleRefresh"
-          >
-            <t-icon
-              name="refresh"
-              size="36rpx"
-            />
+          <view :class="'' + `${prefix}-expired__button`" @click="handleRefresh">
+            <t-icon name="refresh" size="36rpx" />
             {{ locale.refreshText }}
           </view>
         </view>
       </view>
 
-      <view
-        v-else-if="status === 'loading'"
-        :class="'' + `${prefix}-loading-container`"
-      >
-        <t-loading
-          size="64rpx"
-          :theme="isSkyline ? 'spinner' : 'circular'"
-        />
+      <view v-else-if="status === 'loading'" :class="'' + `${prefix}-loading-container`">
+        <t-loading size="64rpx" :theme="isSkyline ? 'spinner' : 'circular'" />
       </view>
 
-      <view
-        v-else-if="status === 'scanned'"
-        :class="'' + `${prefix}-scanned`"
-      >
-        <t-icon
-          name="check-circle-filled"
-          :class="'' + `${prefix}-scanned__icon`"
-          size="44rpx"
-        />
+      <view v-else-if="status === 'scanned'" :class="'' + `${prefix}-scanned`">
+        <t-icon name="check-circle-filled" :class="'' + `${prefix}-scanned__icon`" size="44rpx" />
         {{ locale.scannedText }}
       </view>
     </template>

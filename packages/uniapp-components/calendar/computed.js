@@ -1,6 +1,5 @@
 import { getRegExp } from '../common/runtime/wxs-polyfill';
 
-
 export function isDateSelected(dateItem) {
   return ['start', 'end', 'selected', 'centre'].indexOf(dateItem.type) >= 0;
 }
@@ -17,7 +16,6 @@ export function getMonthTitle(year, month, pattern = '') {
     return replacements[match] || match;
   });
 }
-
 
 export function getDateLabel(monthItem, dateItem) {
   const weekdayText = ['日', '一', '二', '三', '四', '五', '六'];

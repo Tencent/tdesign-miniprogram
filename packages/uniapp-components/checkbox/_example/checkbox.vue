@@ -1,23 +1,14 @@
 <template>
   <view class="skyline">
-    <t-demo-navbar
-      title="Checkbox"
-    />
-    <scroll-view
-      scroll-y
-      type="list"
-      class="scroll-view"
-    >
+    <t-demo-navbar title="Checkbox" />
+    <scroll-view scroll-y type="list" class="scroll-view">
       <view class="demo">
         <t-demo-header
           title="Checkbox 多选框"
           desc="用于预设的一组选项中执行多项选择，并呈现选择结果。"
           notice="渲染框架支持情况：Skyline、WebView"
         />
-        <t-demo
-          title="01 组件类型"
-          desc="纵向多选框"
-        >
+        <t-demo title="01 组件类型" desc="纵向多选框">
           <base-demo />
         </t-demo>
 
@@ -29,17 +20,11 @@
           <all-demo />
         </t-demo>
 
-        <t-demo
-          title="02 组件状态"
-          desc="多选框状态"
-        >
+        <t-demo title="02 组件状态" desc="多选框状态">
           <status-demo />
         </t-demo>
 
-        <t-demo
-          title="03 组件样式"
-          desc="勾选样式"
-        >
+        <t-demo title="03 组件样式" desc="勾选样式">
           <type-demo />
         </t-demo>
 
@@ -51,10 +36,7 @@
           <card-demo />
         </t-demo>
 
-        <t-demo
-          title="04 组件规格"
-          desc="多选框尺寸规格"
-        >
+        <t-demo title="04 组件规格" desc="多选框尺寸规格">
           <special-demo />
         </t-demo>
       </view>
@@ -63,7 +45,6 @@
 </template>
 
 <script>
-
 import AllDemo from './all/index.vue';
 import BaseDemo from './base/index.vue';
 import CardDemo from './card/index.vue';

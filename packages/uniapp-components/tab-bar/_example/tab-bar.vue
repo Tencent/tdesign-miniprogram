@@ -1,17 +1,9 @@
 <template>
   <view>
-    <t-demo-navbar
-      title="TabBar"
-    />
+    <t-demo-navbar title="TabBar" />
     <view class="demo">
-      <t-demo-header
-        title="TabBar 标签栏"
-        desc="用于在不同功能模块之间进行快速切换，位于页面底部。"
-      />
-      <t-demo
-        title="01 组件类型"
-        desc="纯文本标签栏"
-      >
+      <t-demo-header title="TabBar 标签栏" desc="用于在不同功能模块之间进行快速切换，位于页面底部。" />
+      <t-demo title="01 组件类型" desc="纯文本标签栏">
         <text-only />
       </t-demo>
 
@@ -27,10 +19,7 @@
         <sub-demo />
       </t-demo>
 
-      <t-demo
-        title="02 组件样式"
-        desc="弱选中标签栏"
-      >
+      <t-demo title="02 组件样式" desc="弱选中标签栏">
         <badge-demo />
       </t-demo>
 
@@ -38,10 +27,7 @@
         <round-demo />
       </t-demo>
 
-      <t-demo
-        title="03 自定义"
-        desc="自定义样式"
-      >
+      <t-demo title="03 自定义" desc="自定义样式">
         <custom-demo />
       </t-demo>
     </view>
@@ -49,7 +35,6 @@
 </template>
 
 <script>
-
 import BadgeDemo from './badge/index.vue';
 import BaseDemo from './base/index.vue';
 import CustomDemo from './custom/index.vue';

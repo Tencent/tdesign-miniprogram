@@ -20,6 +20,8 @@ export default {
     type: Boolean,
     default: true,
   },
+  /** 【实验】是否销毁导航栏，仅场景值为 1433、1434、1177、1175 时有效 */
+  isHiddenInSpecialScene: Boolean,
   /** 是否展示左侧箭头 */
   leftArrow: Boolean,
   /** 固定在顶部时是否开启占位 */

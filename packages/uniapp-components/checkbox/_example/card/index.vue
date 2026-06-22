@@ -1,22 +1,9 @@
 <template>
   <view>
-    <t-checkbox-group
-      t-class="theme-card"
-      :custom-style="cardCustomStyle"
-      :default-value="['1', '2']"
-    >
-      <t-checkbox
-        value="1"
-        label="多选"
-      />
-      <t-checkbox
-        value="2"
-        label="多选"
-      />
-      <t-checkbox
-        value="3"
-        label="多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行多选标题"
-      />
+    <t-checkbox-group t-class="theme-card" :custom-style="cardCustomStyle" :default-value="['1', '2']">
+      <t-checkbox value="1" label="多选" />
+      <t-checkbox value="2" label="多选" />
+      <t-checkbox value="3" label="多选标题多行多选标题多行多选标题多行多选标题多行多选标题多行多选标题" />
     </t-checkbox-group>
   </view>
 </template>
@@ -25,7 +12,6 @@
 import TCheckbox from '@tdesign/uniapp/checkbox/checkbox.vue';
 import TCheckboxGroup from '@tdesign/uniapp/checkbox-group/checkbox-group.vue';
 import tools from '@tdesign/uniapp/common/utils.wxs';
-
 
 export default {
   components: {

@@ -7,40 +7,15 @@
     :aria-current="curStatus == 'process' ? 'step' : ''"
     @click="onTap"
   >
-    <view
-      :class="'' + tools.cls(classPrefix + '__anchor', [layout])"
-      :aria-hidden="true"
-    >
-      <view
-        v-if="isDot"
-        :class="'' + tools.cls(classPrefix + '__dot', [curStatus])"
-      />
-      <view
-        v-else-if="icon"
-        :class="'' + tools.cls(classPrefix + '__icon', [curStatus])"
-      >
-        <slot
-          v-if="icon == 'slot'"
-          name="icon"
-        />
-        <t-icon
-          v-else
-          :name="icon"
-          size="44rpx"
-        />
+    <view :class="'' + tools.cls(classPrefix + '__anchor', [layout])" :aria-hidden="true">
+      <view v-if="isDot" :class="'' + tools.cls(classPrefix + '__dot', [curStatus])" />
+      <view v-else-if="icon" :class="'' + tools.cls(classPrefix + '__icon', [curStatus])">
+        <slot v-if="icon == 'slot'" name="icon" />
+        <t-icon v-else :name="icon" size="44rpx" />
       </view>
-      <view
-        v-else
-        :class="'' + tools.cls(classPrefix + '__circle', [curStatus])"
-      >
-        <t-icon
-          v-if="curStatus == 'finish'"
-          name="check"
-        />
-        <t-icon
-          v-else-if="curStatus == 'error'"
-          name="close"
-        />
+      <view v-else :class="'' + tools.cls(classPrefix + '__circle', [curStatus])">
+        <t-icon v-if="curStatus == 'finish'" name="check" />
+        <t-icon v-else-if="curStatus == 'error'" name="close" />
         <block v-else>
           {{ index + 1 }}
         </block>
@@ -56,10 +31,7 @@
           {{ title }}
         </block>
         <slot name="title" />
-        <slot
-          v-if="layout === 'vertical'"
-          name="title-right"
-        />
+        <slot v-if="layout === 'vertical'" name="title-right" />
       </view>
       <view :class="'' + tools.cls(classPrefix + '__description', [layout]) + ' ' + tClassDescription">
         <block v-if="content">
@@ -88,9 +60,7 @@ import TIcon from '../icon/icon';
 import { getAriaLabel } from './computed.js';
 import props from './props';
 
-
 const name = `${prefix}-steps-item`;
-
 
 export default {
   components: {
@@ -109,9 +79,11 @@ export default {
       `${prefix}-class-description`,
       `${prefix}-class-extra`,
     ],
-    mixins: [ChildrenMixin(RELATION_MAP.StepItem, {
-      indexKey: 'tIndex',
-    })],
+    mixins: [
+      ChildrenMixin(RELATION_MAP.StepItem, {
+        indexKey: 'tIndex',
+      }),
+    ],
     props: {
       ...props,
     },
@@ -140,9 +112,7 @@ export default {
         this.curStatus = value;
       },
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
       getAriaLabel,
       updateStatus({ current, currentStatus, index, theme, layout, items, sequence }) {
@@ -171,6 +141,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./step-item.css"></style>

@@ -5,7 +5,11 @@
   >
     <view
       v-if="ellipsis"
-      :class="classPrefix + '__ellipsis-content ' + decorClass(classPrefix, strong, underline, dataDelete, code, mark, keyboard, italic)"
+      :class="
+        classPrefix +
+        '__ellipsis-content ' +
+        decorClass(classPrefix, strong, underline, dataDelete, code, mark, keyboard, italic)
+      "
       :style="ellipsisStyle(ellipsis, isExpanded) + markStyle(mark)"
     >
       <text v-if="content">
@@ -44,11 +48,7 @@
     </view>
 
     <!-- 复制按钮 -->
-    <view
-      v-if="copyable"
-      :class="classPrefix + '__copy ' + tClassCopy"
-      @click="onCopy"
-    >
+    <view v-if="copyable" :class="classPrefix + '__copy ' + tClassCopy" @click="onCopy">
       <block v-if="isCopied">
         <t-icon name="check" />
       </block>
@@ -85,17 +85,11 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-copy`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-copy`],
     props: {
       ...props,
     },
-    emits: [
-      'expand',
-      'copy',
-    ],
+    emits: ['expand', 'copy'],
     data() {
       return {
         prefix,

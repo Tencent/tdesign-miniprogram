@@ -1,18 +1,11 @@
 <template>
   <view class="button-example">
-    <t-button
-      theme="primary"
-      size="large"
-      block
-    >
-      填充按钮
-    </t-button>
+    <t-button theme="primary" size="large" block> 填充按钮 </t-button>
   </view>
 </template>
 
 <script>
 import TButton from '@tdesign/uniapp/button/button.vue';
-
 
 export default {
   components: {
@@ -27,6 +20,6 @@ export default {
 </script>
 <style scoped>
 .button-example {
-    margin: 32rpx;
+  margin: 32rpx;
 }
 </style>

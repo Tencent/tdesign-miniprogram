@@ -8,7 +8,7 @@
           theme="dark"
           content="弹出气泡内容"
           data-target="dark"
-          @update:visible="(e) => visible.dark = e"
+          @update:visible="(e) => (visible.dark = e)"
         >
           <t-button
             class="button-width--small"
@@ -29,7 +29,7 @@
           theme="light"
           content="弹出气泡内容"
           data-target="light"
-          @update:visible="(e) => visible.light = e"
+          @update:visible="(e) => (visible.light = e)"
         >
           <t-button
             class="button-width--small"
@@ -50,7 +50,7 @@
           theme="brand"
           content="弹出气泡内容"
           data-target="brand"
-          @update:visible="(e) => visible.brand = e"
+          @update:visible="(e) => (visible.brand = e)"
         >
           <t-button
             class="button-width--small"
@@ -65,10 +65,7 @@
         </t-popover>
       </view>
     </view>
-    <view
-      class="row"
-      style="margin-top: 32rpx"
-    >
+    <view class="row" style="margin-top: 32rpx">
       <view class="popover-example__content">
         <t-popover
           :visible="visible.success"
@@ -76,7 +73,7 @@
           theme="success"
           content="弹出气泡内容"
           data-target="success"
-          @update:visible="(e) => visible.success = e"
+          @update:visible="(e) => (visible.success = e)"
         >
           <t-button
             class="button-width--small"
@@ -97,7 +94,7 @@
           theme="warning"
           content="弹出气泡内容"
           data-target="warning"
-          @update:visible="(e) => visible.warning = e"
+          @update:visible="(e) => (visible.warning = e)"
         >
           <t-button
             class="button-width--small"
@@ -118,7 +115,7 @@
           theme="error"
           content="弹出气泡内容"
           data-target="error"
-          @update:visible="(e) => visible.error = e"
+          @update:visible="(e) => (visible.error = e)"
         >
           <t-button
             class="button-width--small"
@@ -169,26 +166,25 @@ export default {
 </script>
 <style scoped lang="less">
 .row {
-    display: flex;
-    padding: 0 32rpx;
-    gap: 32rpx;
+  display: flex;
+  padding: 0 32rpx;
+  gap: 32rpx;
 }
 
 .demo-block__header-desc {
-    margin-top: var(--td-spacer, 16rpx);
-    margin-bottom: 32rpx;
-    font-size: var(--td-font-size-base, 28rpx);
-    white-space: pre-line;
-    color: var(--bg-color-demo-desc);
-    line-height: 22px;
+  margin-top: var(--td-spacer, 16rpx);
+  margin-bottom: 32rpx;
+  font-size: var(--td-font-size-base, 28rpx);
+  white-space: pre-line;
+  color: var(--bg-color-demo-desc);
+  line-height: 22px;
 }
 
 .popover-example__content {
-    flex: 1;
+  flex: 1;
 }
 
 .button-width--small {
-    width: 204rpx;
+  width: 204rpx;
 }
-
 </style>

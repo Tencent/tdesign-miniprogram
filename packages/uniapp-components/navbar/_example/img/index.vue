@@ -1,13 +1,15 @@
 <template>
   <view>
-    <t-navbar
-      :fixed="false"
-    >
+    <t-navbar :fixed="false">
       <template #left>
         <view>
           <t-image
             t-class="custom-image"
-            :src="theme === 'dark' ? 'https://tdesign.gtimg.com/mobile/demos/image-dark.png' : 'https://tdesign.gtimg.com/mobile/demos/logo-light.png'"
+            :src="
+              theme === 'dark'
+                ? 'https://tdesign.gtimg.com/mobile/demos/image-dark.png'
+                : 'https://tdesign.gtimg.com/mobile/demos/logo-light.png'
+            "
             aria-label="导航栏图片"
             custom-style="width: 87px;height: 24px;"
           />
@@ -34,8 +36,7 @@ export default {
   data() {
     return {};
   },
-  computed: {
-  },
+  computed: {},
 };
 </script>
 <style scoped>

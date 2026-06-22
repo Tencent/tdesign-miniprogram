@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import TextareaDemo from '../textarea.vue';
 export default {
   components: {

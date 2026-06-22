@@ -1,13 +1,7 @@
 <template>
   <view>
-    <t-notice-bar
-      :visible="visible"
-      :prefix-icon="false"
-      content="提示文字描述提示文字描述提示文字描述"
-    >
-      <template
-        #prefix-icon
-      >
+    <t-notice-bar :visible="visible" :prefix-icon="false" content="提示文字描述提示文字描述提示文字描述">
+      <template #prefix-icon>
         <view>
           <t-icon name="error-circle-filled" />
         </view>
@@ -33,5 +27,4 @@ export default {
   methods: {},
 };
 </script>
-<style>
-</style>
+<style></style>

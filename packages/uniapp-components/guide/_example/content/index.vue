@@ -2,66 +2,26 @@
   <view>
     <view>
       <view class="main-title">
-        <view class="title-major">
-          用户引导标题
-        </view>
-        <view class="title-sub">
-          按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。
-        </view>
+        <view class="title-major"> 用户引导标题 </view>
+        <view class="title-sub"> 按钮用于开启一个闭环的操作任务，如“删除”对象、“购买”商品等。 </view>
       </view>
       <view class="field label-field">
-        <t-input
-          label="标签文字"
-          layout="vertical"
-          placeholder="请输入文字"
-        />
+        <t-input label="标签文字" layout="vertical" placeholder="请输入文字" />
       </view>
       <view class="field">
-        <t-input
-          label="标签文字"
-          layout="vertical"
-          placeholder="请输入文字"
-        />
+        <t-input label="标签文字" layout="vertical" placeholder="请输入文字" />
       </view>
       <view class="action">
-        <t-button
-          block
-          theme="light"
-          size="large"
-        >
-          重置
-        </t-button>
-        <t-button
-          block
-          theme="primary"
-          size="large"
-        >
-          确定
-        </t-button>
+        <t-button block theme="light" size="large"> 重置 </t-button>
+        <t-button block theme="primary" size="large"> 确定 </t-button>
       </view>
     </view>
 
-    <t-guide
-      :current="current"
-      :steps="steps"
-      @skip="close"
-      @finish="close"
-    >
-      <template
-        #content-0
-      >
-        <view
-          class="content"
-        >
-          <t-icon
-            name="arrow-up"
-            size="64rpx"
-            color="#fff"
-            t-class="icon"
-          />
-          <p class="text">
-            1、自定义的图形或说明文案，用来解释或指导该功能使用。
-          </p>
+    <t-guide :current="current" :steps="steps" @skip="close" @finish="close">
+      <template #content-0>
+        <view class="content">
+          <t-icon name="arrow-up" size="64rpx" color="#fff" t-class="icon" />
+          <p class="text">1、自定义的图形或说明文案，用来解释或指导该功能使用。</p>
           <view class="footer">
             <t-button
               v-if="current < steps.length - 1"
@@ -102,21 +62,10 @@
           </view>
         </view>
       </template>
-      <template
-        #content-1
-      >
-        <view
-          class="content"
-        >
-          <t-icon
-            name="arrow-up"
-            size="64rpx"
-            color="#fff"
-            t-class="icon"
-          />
-          <p class="text">
-            2、自定义的图形或说明文案，用来解释或指导该功能使用。
-          </p>
+      <template #content-1>
+        <view class="content">
+          <t-icon name="arrow-up" size="64rpx" color="#fff" t-class="icon" />
+          <p class="text">2、自定义的图形或说明文案，用来解释或指导该功能使用。</p>
           <view class="footer">
             <t-button
               v-if="current < steps.length - 1"
@@ -158,21 +107,10 @@
         </view>
       </template>
 
-      <template
-        #content-2
-      >
-        <view
-          class="content"
-        >
-          <t-icon
-            name="arrow-up"
-            size="64rpx"
-            color="#fff"
-            t-class="icon"
-          />
-          <p class="text">
-            3、自定义的图形或说明文案，用来解释或指导该功能使用。
-          </p>
+      <template #content-2>
+        <view class="content">
+          <t-icon name="arrow-up" size="64rpx" color="#fff" t-class="icon" />
+          <p class="text">3、自定义的图形或说明文案，用来解释或指导该功能使用。</p>
           <view class="footer">
             <t-button
               v-if="current < steps.length - 1"
@@ -224,7 +162,6 @@ import { canUseVirtualHost } from '@tdesign/uniapp/common/version';
 import TGuide from '@tdesign/uniapp/guide/guide.vue';
 import TIcon from '@tdesign/uniapp/icon/icon.vue';
 import TInput from '@tdesign/uniapp/input/input.vue';
-
 
 export default {
   options: {
@@ -301,54 +238,54 @@ export default {
 </script>
 <style>
 .main-title {
-    margin: 32rpx;
-    display: inline-block;
+  margin: 32rpx;
+  display: inline-block;
 }
 
 .title-major {
-    font-size: 48rpx;
-    font-weight: 600;
-    line-height: 72rpx;
+  font-size: 48rpx;
+  font-weight: 600;
+  line-height: 72rpx;
 }
 
 .title-sub {
-    font-size: 32rpx;
-    font-weight: 400;
-    line-height: 48rpx;
-    margin-top: 8rpx;
+  font-size: 32rpx;
+  font-weight: 400;
+  line-height: 48rpx;
+  margin-top: 8rpx;
 }
 
 .action {
-    margin: 64rpx;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 64rpx;
+  margin: 64rpx;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 64rpx;
 }
 
 .content {
-    width: 480rpx;
+  width: 480rpx;
 }
 
 .content :deep(.icon) {
-    font-weight: 700;
-    width: 64rpx;
+  font-weight: 700;
+  width: 64rpx;
 }
 
 .content .text {
-    margin-top: 32rpx;
-    color: #fff;
-    font-size: 32rpx;
-    font-weight: 600;
-    text-align: left;
-    line-height: 48rpx;
+  margin-top: 32rpx;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+  text-align: left;
+  line-height: 48rpx;
 }
 
 .content .footer {
-    text-align: right;
-    margin-top: 32rpx;
+  text-align: right;
+  margin-top: 32rpx;
 }
 
-.content .footer :deep(.guide-demo-button + .guide-demo-button){
-    margin-left: 24rpx;
+.content .footer :deep(.guide-demo-button + .guide-demo-button) {
+  margin-left: 24rpx;
 }
 </style>

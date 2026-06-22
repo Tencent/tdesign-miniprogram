@@ -2,7 +2,12 @@
   <view
     :id="tId"
     :style="'' + tools._style([customStyle])"
-    :class="'' + tools.cls(classPrefix, [placement, theme, ['checked', dataChecked], ['block', block], ['disabled', iDisabled]]) + ' ' + tClass"
+    :class="
+      '' +
+      tools.cls(classPrefix, [placement, theme, ['checked', dataChecked], ['block', block], ['disabled', iDisabled]]) +
+      ' ' +
+      tClass
+    "
     aria-role="checkbox"
     :aria-checked="dataChecked ? (dataIndeterminate ? 'mixed' : true) : false"
     :aria-disabled="iDisabled ? true : false"
@@ -10,16 +15,15 @@
   >
     <view
       v-if="theme == 'default'"
-      :class="'' + tools.cls(classPrefix + '__icon', [placement, ['checked', dataChecked], ['disabled', iDisabled]]) + ' ' + tClassIcon"
+      :class="
+        '' +
+        tools.cls(classPrefix + '__icon', [placement, ['checked', dataChecked], ['disabled', iDisabled]]) +
+        ' ' +
+        tClassIcon
+      "
     >
-      <slot
-        v-if="icon === 'slot'"
-        name="icon"
-      />
-      <view
-        v-else-if="tools.isArray(icon)"
-        :class="classPrefix + '__icon'"
-      >
+      <slot v-if="icon === 'slot'" name="icon" />
+      <view v-else-if="tools.isArray(icon)" :class="classPrefix + '__icon'">
         <image
           :src="dataChecked ? (dataIndeterminate && icon[2] ? icon[2] : icon[0]) : icon[1]"
           :class="classPrefix + '__icon-image'"
@@ -40,24 +44,20 @@
           v-else-if="!dataChecked && (icon == 'circle' || icon == 'rectangle')"
           :class="'' + tools.cls(classPrefix + '__icon-' + icon, [['disabled', iDisabled]])"
         />
-        <view
-          v-if="!dataChecked && icon == 'line'"
-          class="placeholder"
-        />
+        <view v-if="!dataChecked && icon == 'line'" class="placeholder" />
       </block>
     </view>
-    <view
-      :class="classPrefix + '__content'"
-      data-target="text"
-      @click.stop="handleTap"
-    >
+    <view :class="classPrefix + '__content'" data-target="text" @click.stop="handleTap">
       <view
-        :class="'' + tools.cls(classPrefix + '__title', [
-          ['disabled', iDisabled],
-          ['checked', dataChecked]
-        ]) +
+        :class="
+          '' +
+          tools.cls(classPrefix + '__title', [
+            ['disabled', iDisabled],
+            ['checked', dataChecked],
+          ]) +
           ' ' +
-          tClassLabel"
+          tClassLabel
+        "
         :style="'-webkit-line-clamp:' + maxLabelRow"
       >
         <block v-if="label">
@@ -91,7 +91,6 @@ import tools from '../common/utils.wxs';
 import TIcon from '../icon/icon';
 
 import props from './props';
-
 
 const name = `${prefix}-checkbox`;
 
@@ -171,9 +170,7 @@ export default {
         immediate: true,
       },
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
       innerAfterLinked() {
         if (this.isIsolated) return;
@@ -186,7 +183,7 @@ export default {
           iDisabled: this.disabled == null ? disabled : this.disabled,
         };
 
-        data.dataBorderless = !!(coalesce(this.borderless, borderless));
+        data.dataBorderless = !!coalesce(this.borderless, borderless);
 
         data.dataChecked = this.dataChecked || checkedFromParent;
         if (this.dataChecked) {
@@ -202,7 +199,7 @@ export default {
 
         if (this.checkAll) {
           data.dataChecked = valueSet.size > 0;
-        // data.indeterminate =
+          // data.indeterminate =
         }
 
         Object.keys(data).forEach((key) => {
@@ -219,9 +216,14 @@ export default {
         const checked = !this.dataChecked;
         const parent = this[RELATION_MAP.Checkbox];
 
-
         if (parent && !this.isIsolated) {
-          parent.updateValue({ value, checkAll, indeterminate: dataIndeterminate, checked, item: { label, value, checked } });
+          parent.updateValue({
+            value,
+            checkAll,
+            indeterminate: dataIndeterminate,
+            checked,
+            item: { label, value, checked },
+          });
         } else {
           this._trigger('change', { context: { value, label }, checked });
         }

@@ -1,17 +1,7 @@
 <template>
-  <view
-    :class="[className + ' ', tClass]"
-    :style="'' + tools._style([tagStyle, customStyle])"
-    @click="handleClick"
-  >
-    <view
-      :aria-hidden="true"
-      :class="classPrefix + '__icon'"
-    >
-      <block
-        v-if="innerIcon"
-        name="icon"
-      >
+  <view :class="[className + ' ', tClass]" :style="'' + tools._style([tagStyle, customStyle])" @click="handleClick">
+    <view :aria-hidden="true" :class="classPrefix + '__icon'">
+      <block v-if="innerIcon" name="icon">
         <t-icon
           :custom-style="innerIcon.style || ''"
           :t-class="prefix + '-icon'"
@@ -29,10 +19,7 @@
     <view :class="classPrefix + '__text'">
       <slot />
     </view>
-    <block
-      v-if="innerClosable"
-      name="icon"
-    >
+    <block v-if="innerClosable" name="icon">
       <t-icon
         :custom-style="innerClosable.style || ''"
         :t-class="classPrefix + '__icon-close ' + prefix + '-icon'"
@@ -46,10 +33,7 @@
         @click="handleClose"
       />
     </block>
-    <slot
-      v-else
-      name="closable"
-    />
+    <slot v-else name="closable" />
   </view>
 </template>
 <script>
@@ -57,16 +41,13 @@ import TIcon from '.././icon/icon';
 import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 
-
 import { classNames, calcIcon } from '../common/utils';
 import tools from '../common/utils.wxs';
 import { isNumeric } from '../common/validator';
 
 import props from './props';
 
-
 const name = `${prefix}-tag`;
-
 
 export default {
   components: {
@@ -77,9 +58,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     props: {
       ...props,
     },
@@ -158,6 +137,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./tag.css"></style>

@@ -2,7 +2,6 @@ import { getInstance } from '../common/utils';
 
 import { MessageType } from './message.interface';
 
-
 const showMessage = function (options, theme = MessageType.info) {
   const { context, selector = '#t-message', ...otherOptions } = options;
   const instance = getInstance(context, selector);

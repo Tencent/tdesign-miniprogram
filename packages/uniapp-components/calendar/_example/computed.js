@@ -21,4 +21,3 @@ export function formatTimestamp(val) {
 
   return getDateByTimestamp(val);
 }
-

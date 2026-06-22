@@ -1,17 +1,7 @@
 <template>
   <view>
-    <t-button
-      size="large"
-      variant="outline"
-      theme="primary"
-      block
-      @click="showDialog"
-    >
-      命令行操作
-    </t-button>
-    <t-dialog
-      ref="t-dialog"
-    />
+    <t-button size="large" variant="outline" theme="primary" block @click="showDialog"> 命令行操作 </t-button>
+    <t-dialog ref="t-dialog" />
   </view>
 </template>
 
@@ -40,11 +30,10 @@ export default {
         cancelBtn: '取消',
       };
       DialogPlugin.confirm(dialogConfig)
-        .then(data => console.log('点击了确定', data))
-        .catch(data => console.log('点击了取消', data));
+        .then((data) => console.log('点击了确定', data))
+        .catch((data) => console.log('点击了取消', data));
     },
   },
 };
 </script>
-<style>
-</style>
+<style></style>

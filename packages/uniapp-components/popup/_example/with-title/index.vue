@@ -1,38 +1,16 @@
 <template>
   <view>
-    <t-popup
-      :visible="visible"
-      placement="bottom"
-      @visible-change="onVisibleChange"
-    >
+    <t-popup :visible="visible" placement="bottom" @visible-change="onVisibleChange">
       <view class="block">
         <view class="header">
-          <view
-            class="btn btn--cancel"
-            aria-role="button"
-          >
-            取消
-          </view>
-          <view class="title">
-            标题文字
-          </view>
-          <view
-            class="btn btn--confirm"
-            aria-role="button"
-          >
-            确定
-          </view>
+          <view class="btn btn--cancel" aria-role="button"> 取消 </view>
+          <view class="title"> 标题文字 </view>
+          <view class="btn btn--confirm" aria-role="button"> 确定 </view>
         </view>
       </view>
     </t-popup>
 
-    <t-button
-      block
-      size="large"
-      variant="outline"
-      theme="primary"
-      @click="handlePopup"
-    >
+    <t-button block size="large" variant="outline" theme="primary" @click="handlePopup">
       底部弹出层-带标题及操作
     </t-button>
   </view>

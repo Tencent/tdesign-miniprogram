@@ -8,13 +8,7 @@
         layout="vertical"
         t-class="wrapper"
       />
-      <t-loading
-        theme="spinner"
-        size="40rpx"
-        text="加载中"
-        layout="vertical"
-        t-class="wrapper"
-      />
+      <t-loading theme="spinner" size="40rpx" text="加载中" layout="vertical" t-class="wrapper" />
     </div>
   </view>
 </template>
@@ -31,8 +25,7 @@ export default {
   },
   mixins: [SkylineBehavior],
   data() {
-    return {
-    };
+    return {};
   },
   created() {},
   methods: {},
@@ -40,10 +33,10 @@ export default {
 </script>
 <style>
 .box {
-    display: flex;
+  display: flex;
 }
 
 .wrapper {
-    margin-right: 64px;
+  margin-right: 64px;
 }
 </style>

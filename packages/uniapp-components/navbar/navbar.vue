@@ -3,44 +3,27 @@
     :class="'' + tools.cls(classPrefix, [['fixed', fixed]]) + ' ' + visibleClass + ' ' + tClass"
     :style="'' + tools._style([boxStyle, customStyle])"
   >
-    <view
-      v-if="fixed && placeholder"
-      :class="classPrefix + '__placeholder ' + tClassPlaceholder"
-    />
+    <view v-if="fixed && placeholder" :class="classPrefix + '__placeholder ' + tClassPlaceholder" />
     <view :class="classPrefix + '__content ' + tClassContent">
       <view :class="classPrefix + '__left ' + (hideLeft ? classPrefix + '__left--hide' : '') + ' ' + tClassLeft">
-        <view
-          v-if="leftArrow"
-          :class="classPrefix + '__btn'"
-          aria-role="button"
-          aria-label="返回"
-          @click="goBack"
-        >
-          <t-icon
-            name="chevron-left"
-            :custom-style="leftArrowCustomStyle"
-            :t-class="classPrefix + '__left-arrow'"
-          />
+        <view v-if="leftArrow" :class="classPrefix + '__btn'" aria-role="button" aria-label="返回" @click="goBack">
+          <t-icon name="chevron-left" :custom-style="leftArrowCustomStyle" :t-class="classPrefix + '__left-arrow'" />
         </view>
         <slot name="left" />
         <view :class="classPrefix + '__capsule ' + tClassCapsule">
           <slot name="capsule" />
         </view>
       </view>
-      <view :class="classPrefix + '__center ' + (hideCenter ? classPrefix + '__center--hide' : '') + ' ' + tClassCenter">
+      <view
+        :class="classPrefix + '__center ' + (hideCenter ? classPrefix + '__center--hide' : '') + ' ' + tClassCenter"
+      >
         <slot name="title" />
-        <text
-          v-if="title"
-          :class="classPrefix + '__center-title ' + tClassTitle"
-        >
+        <text v-if="title" :class="classPrefix + '__center-title ' + tClassTitle">
           {{ showTitle }}
         </text>
       </view>
 
-      <view
-        :class="classPrefix + '__right'"
-        @click="onClickRight"
-      >
+      <view :class="classPrefix + '__right'" @click="onClickRight">
         <slot name="right" />
       </view>
     </view>
@@ -55,7 +38,6 @@ import TIcon from '../icon/icon';
 
 import props from './props';
 
-
 const name = `${prefix}-navbar`;
 
 const BASE_MENU_RECT = {
@@ -64,7 +46,6 @@ const BASE_MENU_RECT = {
   top: 24,
   right: 10, // 距离右侧的间距，实际 right 值在 getMenuRect 中动态计算
 };
-
 
 export default {
   components: {
@@ -90,13 +71,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-      'fail',
-      'complete',
-      'success',
-      'go-back',
-      'right-click',
-    ],
+    emits: ['fail', 'complete', 'success', 'go-back', 'right-click'],
     data() {
       return {
         timer: null,
@@ -112,7 +87,6 @@ export default {
         tools,
 
         visibleClass: '',
-
       };
     },
     computed: {
@@ -161,7 +135,7 @@ export default {
     },
     methods: {
       initStyle() {
-      // 每次重新获取最新的窗口信息，避免 H5 下窗口大小变化后使用缓存值
+        // 每次重新获取最新的窗口信息，避免 H5 下窗口大小变化后使用缓存值
         const windowInfo = getWindowInfo();
         this.getMenuRect(windowInfo);
 
@@ -192,12 +166,7 @@ export default {
         this.showTitle = temp;
       },
 
-      calcCenterStyle(
-        leftRect,
-        menuRect,
-        defaultStyle,
-        windowInfo,
-      ) {
+      calcCenterStyle(leftRect, menuRect, defaultStyle, windowInfo) {
         const curWindowInfo = windowInfo || getWindowInfo();
         const maxSpacing = Math.max(leftRect.right, curWindowInfo.windowWidth - menuRect.left);
         const iBoxStyle = {
@@ -232,9 +201,10 @@ export default {
           bottom: BASE_MENU_RECT.top + BASE_MENU_RECT.height,
           left: curWindowInfo.windowWidth - BASE_MENU_RECT.right - BASE_MENU_RECT.width,
         };
-        if (uni.getMenuButtonBoundingClientRect
-         && typeof uni.getMenuButtonBoundingClientRect === 'function'
-         && typeof uni.getMenuButtonBoundingClientRect() === 'object'
+        if (
+          uni.getMenuButtonBoundingClientRect &&
+          typeof uni.getMenuButtonBoundingClientRect === 'function' &&
+          typeof uni.getMenuButtonBoundingClientRect() === 'object'
         ) {
           rect = uni.getMenuButtonBoundingClientRect() || {};
         }
@@ -247,7 +217,7 @@ export default {
 
       onMenuButtonBoundingClientRectWeightChange() {
         if (uni.onMenuButtonBoundingClientRectWeightChange) {
-          this.onMenuButtonBoundingClientRectWeightChangeCallback = res => this.queryElements(res);
+          this.onMenuButtonBoundingClientRectWeightChangeCallback = (res) => this.queryElements(res);
 
           uni.onMenuButtonBoundingClientRectWeightChange(this.onMenuButtonBoundingClientRectWeightChangeCallback);
         }
@@ -260,22 +230,21 @@ export default {
       },
 
       /**
-     * 比较胶囊条和navbar内容，决定是否隐藏
-     * @param capsuleRect API返回值，胶囊条的位置信息
-     */
+       * 比较胶囊条和navbar内容，决定是否隐藏
+       * @param capsuleRect API返回值，胶囊条的位置信息
+       */
       queryElements(capsuleRect) {
-        Promise.all([
-          getRect(this, `.${this.classPrefix}__left`),
-          getRect(this, `.${this.classPrefix}__center`),
-        ]).then(([leftRect, centerRect]) => {
-        // 部分安卓机型中（目前仅在Magic6/7中复现），仍存在精度问题，暂使用 Math.round() 取整规避
-          const leftRight = Math.round(leftRect.right);
-          const centerRight = Math.round(centerRect.right);
-          const capsuleLeft = capsuleRect.left;
+        Promise.all([getRect(this, `.${this.classPrefix}__left`), getRect(this, `.${this.classPrefix}__center`)]).then(
+          ([leftRect, centerRect]) => {
+            // 部分安卓机型中（目前仅在Magic6/7中复现），仍存在精度问题，暂使用 Math.round() 取整规避
+            const leftRight = Math.round(leftRect.right);
+            const centerRight = Math.round(centerRect.right);
+            const capsuleLeft = capsuleRect.left;
 
-          this.hideLeft = leftRight > capsuleLeft;
-          this.hideCenter = leftRight > capsuleLeft ? true : centerRight > capsuleLeft;
-        });
+            this.hideLeft = leftRight > capsuleLeft;
+            this.hideCenter = leftRight > capsuleLeft ? true : centerRight > capsuleLeft;
+          },
+        );
       },
 
       goBack() {

@@ -11,16 +11,13 @@ const { generateDts } = require('../release/typescript');
 const { config } = require('./config');
 const { copyComponents, checkVue2CliExist, checkVue2HxExist, checkVue3HxExist } = require('./helper');
 
-
-async function copyOneProject({
-  globMode,
-  sourceDir,
-  isChat,
-}) {
-  const list = glob.sync(globMode, {
-    ignore: '**/node_modules/**/*',
-    nodir: true,
-  }).filter(item => !item.includes('node_modules'));
+async function copyOneProject({ globMode, sourceDir, isChat }) {
+  const list = glob
+    .sync(globMode, {
+      ignore: '**/node_modules/**/*',
+      nodir: true,
+    })
+    .filter((item) => !item.includes('node_modules'));
 
   for (const item of list) {
     const relativePath = path.relative(sourceDir, item);
@@ -58,7 +55,6 @@ function clearTargetDir() {
     deleteFolder(config.pagesMoreDirInVue3Hx);
   }
 }
-
 
 async function main() {
   await clearTargetDir();
@@ -114,10 +110,7 @@ async function main() {
   generateDts(config.chatSourceDir, config.componentChatTargetDirInVue3Cli);
 }
 
-
-async function copyInfra({
-  infraDir,
-}) {
+async function copyInfra({ infraDir }) {
   const list = glob.sync([config.demoPagesGlob], {
     ignore: '**/node_modules/**/*',
     nodir: true,
@@ -134,6 +127,5 @@ async function copyInfra({
 
   console.log(`[Wrote] done! Length of App Files is ${list.length}!`);
 }
-
 
 main();

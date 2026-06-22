@@ -1,9 +1,6 @@
 <template>
   <view>
-    <t-demo-navbar
-      custom-class="demo-navbar"
-      title="Icon"
-    />
+    <t-demo-navbar custom-class="demo-navbar" title="Icon" />
     <view class="demo">
       <t-demo-header
         title="Icon 图标"

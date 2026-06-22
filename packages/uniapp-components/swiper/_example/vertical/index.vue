@@ -15,24 +15,16 @@
 
     <view class="swiper-box swiper-box-option">
       <view class="cell">
-        <view class="label">
-          自动播放
-        </view>
+        <view class="label"> 自动播放 </view>
         <view class="option">
-          <t-switch
-            t-class="swiper-switch"
-            :value="autoplay"
-            @change="onAutoplayChange"
-          />
+          <t-switch t-class="swiper-switch" :value="autoplay" @change="onAutoplayChange" />
           <view class="option-desc">
             {{ autoplay ? '开' : '关' }}
           </view>
         </view>
       </view>
       <view class="cell">
-        <view class="label">
-          自动播放间隔时间(单位毫秒)
-        </view>
+        <view class="label"> 自动播放间隔时间(单位毫秒) </view>
         <view class="option">
           <t-slider
             t-class="swiper-slider"
@@ -47,9 +39,7 @@
         </view>
       </view>
       <view class="cell">
-        <view class="label">
-          动画持续时间(单位毫秒)
-        </view>
+        <view class="label"> 动画持续时间(单位毫秒) </view>
         <view class="option">
           <t-slider
             t-class="swiper-slider"
@@ -128,15 +118,15 @@ export default {
 </script>
 <style lang="less">
 .swiper-box {
-    margin: 0 32rpx 32rpx;
-    border-radius: 16rpx;
-    overflow: hidden;
-    transform: translateY(0);
+  margin: 0 32rpx 32rpx;
+  border-radius: 16rpx;
+  overflow: hidden;
+  transform: translateY(0);
 }
 
 .swiper-box .img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 :deep(.swiper-switch) {
@@ -147,38 +137,38 @@ export default {
 }
 
 .cell {
-    padding: 10rpx 0;
-    font-size: 28rpx;
-    color: #999;
+  padding: 10rpx 0;
+  font-size: 28rpx;
+  color: #999;
 }
 .cell.row {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 .cell .label {
-    color: #999;
-    margin-right: 20rpx;
+  color: #999;
+  margin-right: 20rpx;
 }
 
 .cell .option-desc {
-    width: 68rpx;
+  width: 68rpx;
 }
 
 .cell :deep(.swiper-slider) {
-    margin: 32rpx 0;
+  margin: 32rpx 0;
 }
 
 .swiper-box-vertical .item {
-    line-height: 400rpx;
+  line-height: 400rpx;
 }
 
 .swiper-box-option {
-    overflow: visible;
-    border-radius: 0;
+  overflow: visible;
+  border-radius: 0;
 }
 
 :deep(.external-class-bar) {
-    margin: 0 !important;
+  margin: 0 !important;
 }
 </style>

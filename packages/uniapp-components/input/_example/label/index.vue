@@ -1,9 +1,6 @@
 <template>
   <view>
-    <t-input
-      label="标签超长时最多十个字"
-      placeholder="请输入文字"
-    />
+    <t-input label="标签超长时最多十个字" placeholder="请输入文字" />
   </view>
 </template>
 
@@ -20,5 +17,4 @@ export default {
   methods: {},
 };
 </script>
-<style>
-</style>
+<style></style>

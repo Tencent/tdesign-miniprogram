@@ -98,6 +98,6 @@ export default {
 </script>
 <style>
 .wrapper {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 </style>

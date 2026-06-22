@@ -44,7 +44,10 @@ const generateRegExp = () => {
   const // ".9", "-5px", "100%".
     rKeyword = /[_a-z-][_a-z0-9-]*/;
   const // "red", "transparent".
-    rColor = combineRegExp(['(?:', rColorHex, '|', '(?:rgb|hsl)', rDigits3, '|', '(?:rgba|hsla)', rDigits4, '|', rKeyword, ')'], '');
+    rColor = combineRegExp(
+      ['(?:', rColorHex, '|', '(?:rgb|hsl)', rDigits3, '|', '(?:rgba|hsla)', rDigits4, '|', rKeyword, ')'],
+      '',
+    );
   const rColorStop = combineRegExp([rColor, '(?:\\s+', rValue, '(?:\\s+', rValue, ')?)?'], '');
   const // Single Color Stop, optional %, optional length.
     rColorStopList = combineRegExp(['(?:', rColorStop, rComma, ')*', rColorStop], '');
@@ -53,7 +56,10 @@ const generateRegExp = () => {
   const // Angle or SideCorner
     rGradientSearch = combineRegExp(['(?:(', rLineCapture, ')', rComma, ')?(', rColorStopList, ')'], searchFlags);
   const // Capture 1:"line", 2:"angle" (optional), 3:"side corner" (optional) and 4:"stop list".
-    rColorStopSearch = combineRegExp(['\\s*(', rColor, ')', '(?:\\s+', '(', rValue, '))?', '(?:', rComma, '\\s*)?'], searchFlags); // Capture 1:"color" and 2:"position" (optional).
+    rColorStopSearch = combineRegExp(
+      ['\\s*(', rColor, ')', '(?:\\s+', '(', rValue, '))?', '(?:', rComma, '\\s*)?'],
+      searchFlags,
+    ); // Capture 1:"color" and 2:"position" (optional).
   return {
     gradientSearch: rGradientSearch,
     colorStopSearch: rColorStopSearch,
@@ -177,4 +183,3 @@ export const parseGradientString = (input) => {
   return gradientColors;
 };
 export default parseGradientString;
-

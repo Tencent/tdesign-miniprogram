@@ -95,9 +95,7 @@ function useControl(this: any, option: ControlOption = {}): ControlInstance {
     controlled,
     initValue: controlled ? value : defaultValue,
     set,
-    get: () => {
-      return this.data[`_${valueKey}`];
-    },
+    get: () => this.data[`_${valueKey}`],
     change: (newVal, customChangeData, customUpdateFn) => {
       this.triggerEvent(changeEventName, typeof customChangeData !== 'undefined' ? customChangeData : newVal);
       // 完全受控模式，使用了受控属性，必须配合change事件来更新

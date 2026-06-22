@@ -10,10 +10,7 @@
     @end="onEnd"
   >
     <slot v-if="!buttonData.content && !buttonData.icon" />
-    <block
-      v-else
-      name="button"
-    >
+    <block v-else name="button">
       <t-button
         :t-id="buttonData.tId"
         :custom-style="buttonData.style || ''"
@@ -60,12 +57,8 @@
     </block>
   </t-draggable>
 
-  <view
-    v-else
-    :class="[classPrefix, tClass]"
-    :style="'' + tools._style(['right: 16px; bottom: 32px;', customStyle])"
-  >
-    <slot v-if="!buttonData || !buttonData.content && !buttonData.icon" />
+  <view v-else :class="[classPrefix, tClass]" :style="'' + tools._style(['right: 16px; bottom: 32px;', customStyle])">
+    <slot v-if="!buttonData || (!buttonData.content && !buttonData.icon)" />
     <t-button
       v-else
       :t-id="buttonData.tId"
@@ -118,7 +111,6 @@ import TButton from '../button/button';
 import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 
-
 import { unitConvert, getWindowInfo, calcIcon } from '../common/utils';
 import tools from '../common/utils.wxs';
 import TDraggable from '../draggable/draggable.vue';
@@ -150,11 +142,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-      'move',
-      'start',
-      'end',
-    ],
+    emits: ['move', 'start', 'end'],
     data() {
       return {
         prefix,
@@ -191,24 +179,19 @@ export default {
     },
     methods: {
       onTplButtonTap(e) {
-        this.$emit('click', { e  });
+        this.$emit('click', { e });
       },
       onStart(t) {
         this.$emit('drag-start', t);
       },
       onMove(e) {
-        const {
-          yBounds = [],
-          distanceTop,
-          systemInfo,
-        } = this;
+        const { yBounds = [], distanceTop, systemInfo } = this;
 
         const { x, y, rect } = e;
         const maxX = systemInfo.windowWidth - rect.width; // 父容器宽度 - 拖动元素宽度
         const maxY = systemInfo.windowHeight - Math.max(distanceTop, unitConvert(yBounds[0])) - rect.height; // 父容器高度 - 拖动元素高度
         const right = Math.max(0, Math.min(x, maxX));
         const bottom = Math.max(0, unitConvert(yBounds[1]), Math.min(y, maxY));
-
 
         this.moveStyle = `right: ${right}px; bottom: ${bottom}px;`;
       },
@@ -220,7 +203,6 @@ export default {
 
         setTimeout(() => {
           const insChild = this.$refs.draggableTemplate?.$refs?.draggable;
-
 
           // button 更新时，重新获取其尺寸
           if (this?.yBounds?.[1]) {

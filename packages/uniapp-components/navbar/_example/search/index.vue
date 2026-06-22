@@ -1,19 +1,9 @@
 <template>
   <view>
-    <t-navbar
-      left-icon="slot"
-      :fixed="false"
-    >
-      <template
-        #left
-      >
-        <view
-          class="search-box"
-        >
-          <t-search
-            shape="round"
-            placeholder="搜索内容"
-          />
+    <t-navbar left-icon="slot" :fixed="false">
+      <template #left>
+        <view class="search-box">
+          <t-search shape="round" placeholder="搜索内容" />
         </view>
       </template>
     </t-navbar>
@@ -37,11 +27,11 @@ export default {
 </script>
 <style scoped>
 .search-box {
-    --td-search-height: 32px;
-    width: 252px;
+  --td-search-height: 32px;
+  width: 252px;
 }
 
 page {
-    --td-search-font-size: 18px;
+  --td-search-font-size: 18px;
 }
 </style>

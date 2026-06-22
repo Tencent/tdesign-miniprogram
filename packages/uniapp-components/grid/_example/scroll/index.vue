@@ -1,10 +1,6 @@
 <template>
-  <view
-    class="block"
-  >
-    <t-grid
-      :column="0"
-    >
+  <view class="block">
+    <t-grid :column="0">
       <t-grid-item
         v-for="(item, index) in gridItemList"
         :key="index"
@@ -63,24 +59,24 @@ export default {
 </script>
 <style>
 .block {
-    display: block;
-    margin-bottom: 32rpx;
+  display: block;
+  margin-bottom: 32rpx;
 }
 
 .block :deep(.image) {
-    position: inherit;
+  position: inherit;
 }
 
 .block :deep(.image)::before {
-    content: ' ';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 200%;
-    border-radius: 24rpx;
-    border: 2rpx solid var(--td-gray-color-4);
-    transform-origin: 0 0;
-    transform: scale(0.5);
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  border-radius: 24rpx;
+  border: 2rpx solid var(--td-gray-color-4);
+  transform-origin: 0 0;
+  transform: scale(0.5);
 }
 </style>

@@ -1,19 +1,8 @@
 <template>
   <view>
-    <t-slider
-      :value="value"
-      :min="0"
-      :max="3"
-      :step="1"
-      :marks="marks"
-      @change="handleSliderChange"
-    />
+    <t-slider :value="value" :min="0" :max="3" :step="1" :marks="marks" @change="handleSliderChange" />
     <view class="qrcode-content">
-      <t-qrcode
-        value="https://tdesign.gtimg.com/site/tdesign-logo.png"
-        :level="currentLevel"
-        status="active"
-      />
+      <t-qrcode value="https://tdesign.gtimg.com/site/tdesign-logo.png" :level="currentLevel" status="active" />
     </view>
   </view>
 </template>

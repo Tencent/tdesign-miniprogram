@@ -1,8 +1,5 @@
 <template>
-  <t-config-provider
-    :global-config="globalConfig"
-    :theme-vars="themeVars"
-  >
+  <t-config-provider :global-config="globalConfig" :theme-vars="themeVars">
     <view class="chat-demo">
       <t-chat-thinking
         :content="content"

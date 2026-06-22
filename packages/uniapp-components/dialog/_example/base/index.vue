@@ -48,12 +48,7 @@
     >
       反馈类-纯标题
     </t-button>
-    <t-dialog
-      :visible="showTitleOnly"
-      title="对话框标题"
-      :confirm-btn="confirmBtn"
-      @confirm="closeDialog"
-    />
+    <t-dialog :visible="showTitleOnly" title="对话框标题" :confirm-btn="confirmBtn" @confirm="closeDialog" />
 
     <t-button
       t-class="wrapper"
@@ -66,27 +61,21 @@
     >
       反馈类-内容超长
     </t-button>
-    <t-dialog
-      :visible="showMultiTextAndTitle"
-      title="对话框标题"
-      :confirm-btn="confirmBtn"
-      @confirm="closeDialog"
-    >
-      <template
-        #content
-      >
+    <t-dialog :visible="showMultiTextAndTitle" title="对话框标题" :confirm-btn="confirmBtn" @confirm="closeDialog">
+      <template #content>
         <!-- 适配skyline，增加type="list" -->
-        <scroll-view
-          type="list"
-          scroll-y
-          class="long-content"
-        >
+        <scroll-view type="list" scroll-y class="long-content">
           <view class="content-container">
-            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案 这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
-            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案 这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
-            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案 这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
-            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案 这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
-            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案 这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
+            这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案
           </view>
         </scroll-view>
       </template>
@@ -136,23 +125,23 @@ export default {
 </script>
 <style>
 .wrapper {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 
 .long-content {
-    height: 576rpx;
-    margin-top: 16rpx;
-    font-size: 32rpx;
-    color: #888;
+  height: 576rpx;
+  margin-top: 16rpx;
+  font-size: 32rpx;
+  color: #888;
 }
 
 .long-content .content-container {
-    white-space: pre-line;
+  white-space: pre-line;
 }
 
 .long-content ::-webkit-scrollbar {
-    display: none;
-    width: 0;
-    height: 0;
+  display: none;
+  width: 0;
+  height: 0;
 }
 </style>

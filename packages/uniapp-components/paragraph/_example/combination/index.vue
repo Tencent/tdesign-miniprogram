@@ -16,49 +16,28 @@
         facilitates easy extension on top of TDesign, enabling a better alignment with business requirements.
       </t-paragraph>
 
-      <t-title>
-        Comprehensive
-      </t-title>
+      <t-title> Comprehensive </t-title>
       <t-paragraph>
         TDesign Support
-        <t-text code>
-          Vue 2
-        </t-text>,
-        <t-text code>
-          Vue 3
-        </t-text>,
-        <t-text code>
-          React
-        </t-text>
+        <t-text code> Vue 2 </t-text>, <t-text code> Vue 3 </t-text>,
+        <t-text code> React </t-text>
         components for Desktop Application and
-        <t-text code>
-          Vue 3
-        </t-text>,
-        <t-text code>
-          Wechat MiniProgram
-        </t-text>
+        <t-text code> Vue 3 </t-text>,
+        <t-text code> Wechat MiniProgram </t-text>
         components for Mobile Application.
       </t-paragraph>
       <t-paragraph>
         <view>• Features</view>
         <view>• Comprehensive</view>
-        <view style="padding-left: 24rpx">
-          • Consistency
-        </view>
-        <view style="padding-left: 24rpx">
-          • Usability
-        </view>
+        <view style="padding-left: 24rpx"> • Consistency </view>
+        <view style="padding-left: 24rpx"> • Usability </view>
         <view>• Join TDesign</view>
       </t-paragraph>
       <t-paragraph>
         <view>1. Features</view>
         <view>2. Comprehensive</view>
-        <view style="padding-left: 24rpx">
-          1. Consistency
-        </view>
-        <view style="padding-left: 24rpx">
-          2. Usability
-        </view>
+        <view style="padding-left: 24rpx"> 1. Consistency </view>
+        <view style="padding-left: 24rpx"> 2. Usability </view>
         <view>3. Join TDesign</view>
       </t-paragraph>
     </view>

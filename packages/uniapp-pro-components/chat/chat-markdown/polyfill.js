@@ -1,7 +1,7 @@
 function basePolyfill() {
   if (!Array.prototype.at) {
     Array.prototype.at = function (index) {
-    // 将索引转换为数字
+      // 将索引转换为数字
       index = Math.trunc(index) || 0;
       // 如果索引是负数，则从数组末尾开始计算
       if (index < 0) index += this.length;
@@ -14,7 +14,7 @@ function basePolyfill() {
 
   if (!String.prototype.at) {
     String.prototype.at = function (index) {
-    // 将索引转换为数字
+      // 将索引转换为数字
       index = Math.trunc(index) || 0;
       // 如果索引是负数，则从字符串末尾开始计算
       if (index < 0) index += this.length;

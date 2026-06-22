@@ -4,26 +4,22 @@
     :class="classPrefix + ' ' + classPrefix + '--' + theme + ' ' + classPrefix + '--' + size + ' ' + tClass"
     aria-role="option"
   >
-    <slot
-      v-if="content !== 'default'"
-      name="content"
-    />
+    <slot v-if="content !== 'default'" name="content" />
     <slot v-if="content !== 'default'" />
     <block v-else-if="theme == 'default' && !splitWithUnit">
       {{ formattedTime }}
     </block>
     <block v-else>
-      <block
-        v-for="(item, index) in timeRange"
-        :key="index"
-      >
+      <block v-for="(item, index) in timeRange" :key="index">
         <text :class="classPrefix + '__item ' + tClassCount">
           {{ formatUtil(timeData[timeRange[index]]) }}
         </text>
 
         <text
           v-if="splitWithUnit || timeRange.length - 1 !== index"
-          :class="classPrefix + '__split ' + classPrefix + '__split--' + (splitWithUnit ? 'text' : 'dot') + ' ' + tClassSplit"
+          :class="
+            classPrefix + '__split ' + classPrefix + '__split--' + (splitWithUnit ? 'text' : 'dot') + ' ' + tClassSplit
+          "
         >
           {{ splitWithUnit ? timeDataUnit[timeRange[index]] : ':' }}
         </text>
@@ -41,23 +37,16 @@ import { format as formatUtil } from './computed.js';
 import props from './props';
 import { isSameSecond, parseFormat, parseTimeData, TimeDataUnit } from './utils';
 
-
 const name = `${prefix}-count-down`;
 
-
 export default {
-  components: {
-  },
+  components: {},
   ...uniComponent({
     name,
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-count`,
-      `${prefix}-class-split`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-count`, `${prefix}-class-split`],
     props: {
       ...props,
     },
@@ -82,9 +71,7 @@ export default {
         immediate: true,
       },
     },
-    mounted() {
-
-    },
+    mounted() {},
     beforeUnmount() {
       if (this.timeoutId) {
         clearTimeout(this.timeoutId);

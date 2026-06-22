@@ -1,8 +1,5 @@
 <template>
-  <view
-    :style="'' + tools._style([customStyle])"
-    :class="'' + tools.cls(classPrefix, [placement]) + ' ' + tClass"
-  >
+  <view :style="'' + tools._style([customStyle])" :class="'' + tools.cls(classPrefix, [placement]) + ' ' + tClass">
     <t-sticky
       :t-class="tools.cls(classPrefix + '__sticky', [placement])"
       :disabled="!sticky"
@@ -34,27 +31,36 @@
               :key="index"
               :data-index="index"
               :class="
-                '' + tools.cls(classPrefix + '__item', [theme, ['evenly', spaceEvenly], placement, ['disabled', item.disabled], ['active', currentIndex === index]]) +
-                  ' ' +
-                  (currentIndex === index ? tClassActive : '') +
-                  ' ' +
-                  tClassItem
+                '' +
+                tools.cls(classPrefix + '__item', [
+                  theme,
+                  ['evenly', spaceEvenly],
+                  placement,
+                  ['disabled', item.disabled],
+                  ['active', currentIndex === index],
+                ]) +
+                ' ' +
+                (currentIndex === index ? tClassActive : '') +
+                ' ' +
+                tClassItem
               "
               aria-role="tab"
               :aria-controls="tabID + '_panel_' + index"
               :aria-selected="currentIndex === index"
               :aria-disabled="item.disabled"
-              :aria-label="ariaLabel || (item.badgeProps.dot || item.badgeProps.count ? item.label + tools.getBadgeAriaLabel({ ...item.badgeProps }) : '')"
+              :aria-label="
+                ariaLabel ||
+                (item.badgeProps.dot || item.badgeProps.count
+                  ? item.label + tools.getBadgeAriaLabel({ ...item.badgeProps })
+                  : '')
+              "
               @click="onTabTap"
             >
               <view
                 :class="'' + tools.cls(classPrefix + '__item-inner', [theme, ['active', currentIndex === index]])"
                 :aria-hidden="item.badgeProps.dot || item.badgeProps.count"
               >
-                <block
-                  v-if="item.icon"
-                  name="icon"
-                >
+                <block v-if="item.icon" name="icon">
                   <t-icon
                     :t-class="classPrefix + '__icon'"
                     :custom-style="getIconCustomStyle(item)"
@@ -82,7 +88,7 @@
                     :t-class="
                       tools.cls(classPrefix + '__badge', [
                         ['disabled', item.disabled],
-                        ['active', currentIndex === index]
+                        ['active', currentIndex === index],
                       ])
                     "
                     :custom-style="getBadgeCustomStyle(item, index)"
@@ -95,20 +101,14 @@
                 </block>
               </view>
 
-              <view
-                v-if="theme == 'card' && currentIndex - 1 == index"
-                :class="classPrefix + '__item-prefix'"
-              />
+              <view v-if="theme == 'card' && currentIndex - 1 == index" :class="classPrefix + '__item-prefix'" />
 
-              <view
-                v-if="theme == 'card' && currentIndex + 1 == index"
-                :class="classPrefix + '__item-suffix'"
-              />
+              <view v-if="theme == 'card' && currentIndex + 1 == index" :class="classPrefix + '__item-suffix'" />
             </view>
             <view
               v-if="theme == 'line' && showBottomLine"
               :class="'' + tools.cls(classPrefix + '__track', [placement]) + ' ' + tClassTrack"
-              :style="''+trackStyle(trackOption)"
+              :style="'' + trackStyle(trackOption)"
             />
           </view>
         </scroll-view>
@@ -124,7 +124,7 @@
     >
       <view
         :class="classPrefix + '__content-inner ' + tClassContent"
-        :style="''+animate({ duration: animation && animation.duration, currentIndex: currentIndex })"
+        :style="'' + animate({ duration: animation && animation.duration, currentIndex: currentIndex })"
       >
         <slot />
       </view>
@@ -150,7 +150,6 @@ import props from './props';
 const name = `${prefix}-tabs`;
 const getUniqueID = uniqueFactory('tabs');
 
-
 export default {
   components: {
     TSticky,
@@ -162,10 +161,12 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    controlledProps: [{
-      key: 'value',
-      event: 'change',
-    }],
+    controlledProps: [
+      {
+        key: 'value',
+        event: 'change',
+      },
+    ],
     externalClasses: [
       `${prefix}-class`,
       `${prefix}-class-item`,
@@ -177,12 +178,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-      'change',
-      'scroll',
-      'error',
-      'click',
-    ],
+    emits: ['change', 'scroll', 'error', 'click'],
     watch: {
       value: {
         handler(e) {
@@ -234,14 +230,14 @@ export default {
       trackStyle,
       animate,
       innerAfterLinked(target) {
-      // mixin 中已注入
-      // this.children.push(target);
+        // mixin 中已注入
+        // this.children.push(target);
         this.initChildId();
         target.dataIndex = this.children.length - 1;
         this.updateTabs();
       },
       innerAfterUnlinked(target) {
-        this.children = this.children.filter(item => item.index !== target.dataIndex);
+        this.children = this.children.filter((item) => item.index !== target.dataIndex);
         this.updateTabs(() => this.setTrack());
         this.initChildId();
       },
@@ -259,7 +255,13 @@ export default {
         const tabs = children.map((child) => {
           const { label, badgeProps, disabled, icon, panel, value, lazy } = child;
           return {
-            label, badgeProps, disabled, icon, panel, value, lazy,
+            label,
+            badgeProps,
+            disabled,
+            icon,
+            panel,
+            value,
+            lazy,
           };
         });
 
@@ -279,7 +281,7 @@ export default {
 
       setCurrentIndexByName(name) {
         const { children } = this;
-        const index = children.findIndex(child => child.getComputedName() === `${name}`);
+        const index = children.findIndex((child) => child.getComputedName() === `${name}`);
         if (index > -1) {
           this.setCurrentIndex(index);
         }
@@ -306,7 +308,6 @@ export default {
 
         this.currentIndex = index;
         this.currentLabels = Labels;
-
 
         setTimeout(() => {
           this.setTrack();
@@ -390,10 +391,7 @@ export default {
           }
 
           const isInit = this.previousIndex === undefined;
-          if (isInit
-          || this.previousIndex !== currentIndex
-          || this.lastDistance !== distance
-          ) {
+          if (isInit || this.previousIndex !== currentIndex || this.lastDistance !== distance) {
             this.previousIndex = currentIndex;
             this.trackOption = { lineWidth, distance, isInit };
             this.lastDistance = distance;

@@ -1,9 +1,6 @@
 <template>
   <view>
-    <t-demo-navbar
-      custom-class="demo-navbar"
-      title="PullDownRefresh"
-    />
+    <t-demo-navbar custom-class="demo-navbar" title="PullDownRefresh" />
     <base-comp />
   </view>
 </template>

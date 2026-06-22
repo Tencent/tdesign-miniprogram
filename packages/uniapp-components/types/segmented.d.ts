@@ -3,5 +3,15 @@ import type { TdSegmentedProps } from '../segmented/type';
 
 export type SegmentedProps = ExtractNonOnProps<TdSegmentedProps>;
 export type SegmentedEmits = TransformEventHandlers<TdSegmentedProps, true>;
-declare const SegmentedComponent: import('vue').DefineComponent<SegmentedProps, {}, {}, {}, {}, {}, {}, SegmentedEmits, any>;
+declare const SegmentedComponent: import('vue').DefineComponent<
+  SegmentedProps,
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  SegmentedEmits,
+  any
+>;
 export default SegmentedComponent;

@@ -97,7 +97,7 @@ async function prepareOne({ targetDir, sourceGlob, sourceDir }) {
 
   for (const item of list) {
     const relativePath = path.relative(sourceDir, item);
-    const isBlack = DIST_BLACK_LIST.some(black => relativePath.endsWith(black));
+    const isBlack = DIST_BLACK_LIST.some((black) => relativePath.endsWith(black));
     if (isBlack) {
       continue;
     }
