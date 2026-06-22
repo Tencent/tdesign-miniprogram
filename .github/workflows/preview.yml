@@ -15,7 +15,7 @@ jobs:
           echo "timestamp=${timestamp}" >> $GITHUB_OUTPUT
         id: time
       - name: Comment PR
-        uses: thollander/actions-comment-pull-request@v2
+        uses: thollander/actions-comment-pull-request@v3
         with:
           message: |
             正在构建预览的二维码，请稍等...
@@ -69,7 +69,7 @@ jobs:
           region: ap-guangzhou
           content: ${{ steps.preview.outputs.preview-qrcode }}
       - name: Comment PR
-        uses: thollander/actions-comment-pull-request@v2
+        uses: thollander/actions-comment-pull-request@v3
         with:
           message: |
             <img alt="qrcode" src="${{ steps.cos.outputs.url }}" width="256" />
