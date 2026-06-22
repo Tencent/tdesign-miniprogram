@@ -12,7 +12,7 @@
     <view :class="classPrefix + '__wrapper'">
       <textarea
         :class="classPrefix + '__wrapper-inner ' + (disabled ? prefix + '-is-disabled' : '') + ' ' + tClassTextarea"
-        :style="''+textareaStyle(autosize)"
+        :style="'' + textareaStyle(autosize)"
         :maxlength="allowInputOverMax ? -1 : maxlength"
         :disabled="disabled || readonly"
         :placeholder="placeholder"
@@ -54,13 +54,11 @@ import { prefix } from '../common/config';
 import { RELATION_MAP } from '../common/relation/parent-map';
 import { uniComponent } from '../common/src/index';
 
-
 import { getCharacterLength, coalesce, nextTick } from '../common/utils';
 import tools from '../common/utils.wxs';
 
 import { textareaStyle } from './computed.js';
 import props from './props';
-
 
 const name = `${prefix}-textarea`;
 
@@ -85,9 +83,7 @@ export default {
       ...props,
     },
 
-    emits: [
-      'update:value',
-    ],
+    emits: ['update:value'],
     data() {
       return {
         prefix,
@@ -102,8 +98,7 @@ export default {
       value(val) {
         this.updateValue(val);
 
-        if (this[RELATION_MAP.FormKey]
-        && this[RELATION_MAP.FormKey].onValueChange) {
+        if (this[RELATION_MAP.FormKey] && this[RELATION_MAP.FormKey].onValueChange) {
           this[RELATION_MAP.FormKey].onValueChange(val);
         }
       },
@@ -126,7 +121,6 @@ export default {
 
         this.dataValue = val;
 
-
         nextTick().then(() => {
           this.dataValue = value;
           this.count = count;
@@ -147,7 +141,11 @@ export default {
           };
         }
         if (maxlength > 0 && !Number.isNaN(maxlength)) {
-          const { length, characters } = getCharacterLength('maxlength', value, allowInputOverMax ? Infinity : maxlength);
+          const { length, characters } = getCharacterLength(
+            'maxlength',
+            value,
+            allowInputOverMax ? Infinity : maxlength,
+          );
           return {
             value: characters,
             count: length,
@@ -180,8 +178,7 @@ export default {
           ...event.detail,
         });
 
-        if (this[RELATION_MAP.FormKey]
-        && this[RELATION_MAP.FormKey].onBlur) {
+        if (this[RELATION_MAP.FormKey] && this[RELATION_MAP.FormKey].onBlur) {
           this[RELATION_MAP.FormKey].onBlur(event.detail.value);
         }
       },

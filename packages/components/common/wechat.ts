@@ -1,5 +1,5 @@
-export const getObserver = (context, selector: string) => {
-  return new Promise<WechatMiniprogram.IntersectionObserverObserveCallbackResult>((resolve) => {
+export const getObserver = (context, selector: string) =>
+  new Promise<WechatMiniprogram.IntersectionObserverObserveCallbackResult>((resolve) => {
     context
       .createIntersectionObserver({ nativeMode: true })
       .relativeToViewport()
@@ -7,7 +7,6 @@ export const getObserver = (context, selector: string) => {
         resolve(res);
       });
   });
-};
 
 /**
  * 背景：单页模式下, getWindowInfo、getAppBaseInfo、getDeviceInfo 等接口均返回 undefined。
@@ -15,14 +14,11 @@ export const getObserver = (context, selector: string) => {
  * 代码片段：https://developers.weixin.qq.com/s/mzvZ8FmH7vVW
  */
 
-export const getWindowInfo = () => {
-  return wx.getWindowInfo ? wx.getWindowInfo() || wx.getSystemInfoSync() : wx.getSystemInfoSync();
-};
+export const getWindowInfo = () =>
+  wx.getWindowInfo ? wx.getWindowInfo() || wx.getSystemInfoSync() : wx.getSystemInfoSync();
 
-export const getAppBaseInfo = () => {
-  return wx.getAppBaseInfo ? wx.getAppBaseInfo() || wx.getSystemInfoSync() : wx.getSystemInfoSync();
-};
+export const getAppBaseInfo = () =>
+  wx.getAppBaseInfo ? wx.getAppBaseInfo() || wx.getSystemInfoSync() : wx.getSystemInfoSync();
 
-export const getDeviceInfo = () => {
-  return wx.getDeviceInfo ? wx.getDeviceInfo() || wx.getSystemInfoSync() : wx.getSystemInfoSync();
-};
+export const getDeviceInfo = () =>
+  wx.getDeviceInfo ? wx.getDeviceInfo() || wx.getSystemInfoSync() : wx.getSystemInfoSync();

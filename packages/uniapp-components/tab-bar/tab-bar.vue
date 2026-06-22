@@ -9,15 +9,17 @@
     />
     <view
       :style="'' + tools._style(['z-index: ' + zIndex, customStyle])"
-      :class="'' + tools.cls(classPrefix, [
-        ['border', bordered], ['fixed', fixed],
-        ['safe', safeAreaInsetBottom], shape]
-      ) + ' ' + tClass"
+      :class="
+        '' +
+        tools.cls(classPrefix, [['border', bordered], ['fixed', fixed], ['safe', safeAreaInsetBottom], shape]) +
+        ' ' +
+        tClass
+      "
       aria-role="tablist"
     >
       <slot />
     </view>
-  <!-- #ifdef VUE2 -->
+    <!-- #ifdef VUE2 -->
   </view>
   <!-- #endif -->
 </template>
@@ -46,25 +48,24 @@ function getSafeAreaBottom() {
   return 0;
 }
 
-
 export default {
   ...uniComponent({
     name: classPrefix,
     options: {
       styleIsolation: 'shared',
     },
-    controlledProps: [{
-      key: 'value',
-      event: 'change',
-    }],
+    controlledProps: [
+      {
+        key: 'value',
+        event: 'change',
+      },
+    ],
     externalClasses: [`${prefix}-class`],
     mixins: [ParentMixin(RELATION_MAP.TabBarItem)],
     props: {
       ...props,
     },
-    emits: [
-      'change',
-    ],
+    emits: ['change'],
     data() {
       return {
         prefix,
@@ -88,7 +89,7 @@ export default {
         },
         immediate: true,
       },
-      'fixed'() {
+      fixed() {
         this.setPlaceholderHeight();
       },
       placeholder() {

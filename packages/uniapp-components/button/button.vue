@@ -33,13 +33,17 @@
     @agreeprivacyauthorization="agreeprivacyauthorization"
     @phoneoneclicklogin="phoneoneclicklogin"
   >
-    <block
-      v-if="innerIcon"
-      name="icon"
-    >
+    <block v-if="innerIcon" name="icon">
       <t-icon
         :custom-style="iconCustomStyle"
-        :t-class="classPrefix + '__icon ' + classPrefix + '__icon--' + (innerIcon.activeIdx == innerIcon.index ? 'active ' : ' ') + tClassIcon"
+        :t-class="
+          classPrefix +
+          '__icon ' +
+          classPrefix +
+          '__icon--' +
+          (innerIcon.activeIdx == innerIcon.index ? 'active ' : ' ') +
+          tClassIcon
+        "
         :prefix="innerIcon.prefix"
         :name="innerIcon.name || ''"
         :size="innerIcon.size"
@@ -66,8 +70,11 @@
       :custom-style="loadingCustomStyle"
     />
     <view
-      :class="classPrefix + '__content '
-        + ((innerIcon && innerIcon.name || loading) && content ? classPrefix + '__content--has-icon' : '')"
+      :class="
+        classPrefix +
+        '__content ' +
+        (((innerIcon && innerIcon.name) || loading) && content ? classPrefix + '__content--has-icon' : '')
+      "
     >
       <slot name="content" />
       <block v-if="content">
@@ -88,9 +95,7 @@ import TLoading from '../loading/loading';
 
 import props from './props';
 
-
 const name = `${prefix}-button`;
-
 
 export default {
   components: {
@@ -102,17 +107,11 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-icon`,
-      `${prefix}-class-loading`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-loading`],
     props: {
       ...props,
     },
-    emits: [
-      'click',
-    ],
+    emits: ['click'],
     data() {
       return {
         tools,
@@ -136,9 +135,7 @@ export default {
 
         return tools._style([
           {
-            fontSize: this.innerIcon.size
-              ? addUnit(this.innerIcon.size)
-              : fontSize[this.size || 'medium'],
+            fontSize: this.innerIcon.size ? addUnit(this.innerIcon.size) : fontSize[this.size || 'medium'],
             borderRadius: 'var(--td-button-icon-border-radius, 8rpx)',
           },
           this.innerIcon.style || '',
@@ -249,7 +246,6 @@ export default {
   margin-left: 8rpx;
 }
 /* #endif */
-
 
 .t-button {
   /* support my-alipay */

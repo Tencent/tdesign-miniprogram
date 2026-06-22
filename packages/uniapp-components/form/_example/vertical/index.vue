@@ -11,26 +11,19 @@
       @reset="(e) => onReset(e, { tagId: 'form' })"
       @submit="(e) => onSubmit(e, { tagId: 'form' })"
     >
-      <t-form-item
-        label="用户名"
-        name="name"
-        help="输入用户名"
-      >
+      <t-form-item label="用户名" name="name" help="输入用户名">
         <t-input
           :value="formData.name"
           :disabled="disabled"
           borderless
           placeholder="请输入用户名"
           data-field="name"
-          style="flex: 1;"
+          style="flex: 1"
           @change="(e) => onInputChange(e, { field: 'name' })"
         />
       </t-form-item>
 
-      <t-form-item
-        label="密码"
-        name="password"
-      >
+      <t-form-item label="密码" name="password">
         <t-input
           :value="formData.password"
           :disabled="disabled"
@@ -39,72 +32,46 @@
           :clearable="false"
           placeholder="请输入密码"
           data-field="password"
-          style="flex: 1;"
+          style="flex: 1"
           @change="(e) => onInputChange(e, { field: 'password' })"
         />
       </t-form-item>
 
-      <t-form-item
-        label="性别"
-        name="gender"
-      >
+      <t-form-item label="性别" name="gender">
         <t-radio-group
           :value="formData.gender"
           :disabled="disabled"
           t-class="box"
           borderless
-          style="flex: 1;"
+          style="flex: 1"
           @change="onRadioChange"
         >
-          <t-radio
-            :block="false"
-            name="radio"
-            value="man"
-            label="男"
-          />
-          <t-radio
-            :block="false"
-            name="radio"
-            value="women"
-            label="女"
-          />
-          <t-radio
-            :block="false"
-            name="radio"
-            value="secret"
-            label="保密"
-          />
+          <t-radio :block="false" name="radio" value="man" label="男" />
+          <t-radio :block="false" name="radio" value="women" label="女" />
+          <t-radio :block="false" name="radio" value="secret" label="保密" />
         </t-radio-group>
       </t-form-item>
 
-      <t-form-item
-        arrow
-        label="生日"
-        name="birth"
-      >
+      <t-form-item arrow label="生日" name="birth">
         <t-input
           :value="formData.birth"
           :disabled="disabled"
           borderless
           placeholder="请输入生日"
           data-field="birth"
-          style="flex: 1;"
+          style="flex: 1"
           @change="(e) => onInputChange(e, { field: 'birth' })"
         />
       </t-form-item>
 
-      <t-form-item
-        arrow
-        label="籍贯"
-        name="place"
-      >
+      <t-form-item arrow label="籍贯" name="place">
         <t-input
           :value="formData.place"
           :disabled="disabled"
           borderless
           placeholder="请选择籍贯"
           :readonly="true"
-          style="flex: 1;"
+          style="flex: 1"
           @click="showCascader"
         />
         <t-cascader
@@ -112,28 +79,17 @@
           :value="address"
           title="选择地址"
           :options="options"
-          @update:visible="(e) => visibleCascader = e"
+          @update:visible="(e) => (visibleCascader = e)"
           @change="onChangeCascader"
           @visible-change="onCascaderVisibleChange"
         />
       </t-form-item>
 
-      <t-form-item
-        label="年限"
-        name="age"
-      >
-        <t-stepper
-          :value="formData.age"
-          :disabled="disabled"
-          theme="filled"
-          @change="onChangeStepper"
-        />
+      <t-form-item label="年限" name="age">
+        <t-stepper :value="formData.age" :disabled="disabled" theme="filled" @change="onChangeStepper" />
       </t-form-item>
 
-      <t-form-item
-        label="自我评价"
-        name="description"
-      >
+      <t-form-item label="自我评价" name="description">
         <t-rate
           :value="formData.description"
           :disabled="disabled"
@@ -144,10 +100,7 @@
         />
       </t-form-item>
 
-      <t-form-item
-        label="个人简介"
-        name="resume"
-      >
+      <t-form-item label="个人简介" name="resume">
         <t-textarea
           :value="formData.resume"
           :disabled="disabled"
@@ -155,16 +108,12 @@
           indicator
           :maxlength="50"
           placeholder="请输入个人简介"
-          style="flex: 1;"
+          style="flex: 1"
           @change="onTextareaChange"
         />
       </t-form-item>
 
-      <t-form-item
-        label="上传照片"
-        label-align="top"
-        name="photo"
-      >
+      <t-form-item label="上传照片" label-align="top" name="photo">
         <t-upload
           :files="formData.photo"
           :disabled="disabled"
@@ -173,7 +122,7 @@
           :action="action"
           t-class="upload"
           :grid-config="gridConfig"
-          style="flex: 1;"
+          style="flex: 1"
           @fail="onFail"
           @progress="onProgress"
           @change="onChangeUpload"
@@ -223,7 +172,6 @@ import TRate from '@tdesign/uniapp/rate/rate.vue';
 import TStepper from '@tdesign/uniapp/stepper/stepper.vue';
 import TTextarea from '@tdesign/uniapp/textarea/textarea.vue';
 import TUpload from '@tdesign/uniapp/upload/upload.vue';
-
 
 export default {
   options: {
@@ -434,27 +382,13 @@ export default {
         },
       ],
       rules: {
-        name: [
-          { pattern: '[a-zA-Z]{8}', validator: val => val.length === 8, message: '只能输入8个字符英文' },
-        ],
-        password: [
-          { validator: val => val.length > 6, message: '长度大于6个字符' },
-        ],
-        description: [
-          { validator: val => val > 3, message: '分数过低会影响整体评价' },
-        ],
-        gender: [
-          { validator: val => val !== '', message: '不能为空' },
-        ],
-        birth: [
-          { validator: val => val !== '', message: '不能为空' },
-        ],
-        place: [
-          { validator: val => val !== '', message: '不能为空' },
-        ],
-        resume: [
-          { validator: val => val !== '', message: '不能为空' },
-        ],
+        name: [{ pattern: '[a-zA-Z]{8}', validator: (val) => val.length === 8, message: '只能输入8个字符英文' }],
+        password: [{ validator: (val) => val.length > 6, message: '长度大于6个字符' }],
+        description: [{ validator: (val) => val > 3, message: '分数过低会影响整体评价' }],
+        gender: [{ validator: (val) => val !== '', message: '不能为空' }],
+        birth: [{ validator: (val) => val !== '', message: '不能为空' }],
+        place: [{ validator: (val) => val !== '', message: '不能为空' }],
+        resume: [{ validator: (val) => val !== '', message: '不能为空' }],
       },
     };
   },
@@ -499,7 +433,7 @@ export default {
     },
     onChangeCascader(e) {
       const { selectedOptions } = e;
-      const placeText = selectedOptions?.map(item => item.label).join('/');
+      const placeText = selectedOptions?.map((item) => item.label).join('/');
       this.formData.place = placeText;
       this.visibleCascader = false;
     },
@@ -537,34 +471,34 @@ export default {
 </script>
 <style scoped>
 :deep(.box) {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 :deep(.textarea) {
-    height: 200rpx;
-    width: 100%;
-    --textarea-vertical-padding: 0;
-    --td-textarea-horizontal-padding: 0;
-    padding:0 !important;
+  height: 200rpx;
+  width: 100%;
+  --textarea-vertical-padding: 0;
+  --td-textarea-horizontal-padding: 0;
+  padding: 0 !important;
 }
 :deep(.textarea .t-textarea) {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 
 .button-group {
-    background-color: var(--bg-color-demo, #fff);
-    box-sizing: border-box;
-    padding: 32rpx;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    border-bottom: 1rpx solid var(--td-component-stroke, #e7e7e7);
+  background-color: var(--bg-color-demo, #fff);
+  box-sizing: border-box;
+  padding: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  border-bottom: 1rpx solid var(--td-component-stroke, #e7e7e7);
 }
 
 :deep(.upload) {
-    width: 100%;
+  width: 100%;
 }
 
 /* .button-group :deep(.t-button) {

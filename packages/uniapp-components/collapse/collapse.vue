@@ -1,10 +1,7 @@
 <template>
   <view
     :style="'' + tools._style([customStyle])"
-    :class="[
-      tClass,
-      tools.cls(classPrefix, [['hairline--top-bottom', border], theme])
-    ]"
+    :class="[tClass, tools.cls(classPrefix, [['hairline--top-bottom', border], theme])]"
   >
     <slot />
   </view>
@@ -19,9 +16,7 @@ import tools from '../common/utils.wxs';
 
 import props from './props';
 
-
 const name = `${prefix}-collapse`;
-
 
 export default {
   ...uniComponent({
@@ -40,9 +35,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-      'update:value',
-    ],
+    emits: ['update:value'],
     data() {
       return {
         prefix,
@@ -73,7 +66,6 @@ export default {
         },
         immediate: true,
       },
-
     },
     mounted() {
       let interval = 0;
@@ -107,7 +99,7 @@ export default {
         const hit = activeValues?.indexOf(panelValue);
 
         if (hit > -1) {
-          value = activeValues.filter(item => item !== panelValue);
+          value = activeValues.filter((item) => item !== panelValue);
         } else {
           value = expandMutex ? [panelValue] : activeValues.concat(panelValue);
         }

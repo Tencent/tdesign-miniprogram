@@ -81,10 +81,8 @@ import {
 } from './constants';
 import props from './props';
 
-
 import TemplateVue from './template.vue';
 import { Color, getColorObject } from './utils';
-
 
 const name = `${prefix}-color-picker`;
 
@@ -146,12 +144,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-      'palette-bar-change',
-      'close',
-      'change',
-      'update:visible',
-    ],
+    emits: ['palette-bar-change', 'close', 'change', 'update:visible'],
     data() {
       return {
         prefix,
@@ -229,13 +222,13 @@ export default {
     },
     created() {
       this.color = new Color(props.defaultValue.default || props.value.default || DEFAULT_COLOR);
-      this.formatList =  getFormatList(props.format.default, this.color);
+      this.formatList = getFormatList(props.format.default, this.color);
     },
     mounted() {
       setTimeout(() => {
         this.init();
       }, 33);
-      this.debouncedUpdateEleRect = debounce(e => this.updateEleRect(e), 150);
+      this.debouncedUpdateEleRect = debounce((e) => this.updateEleRect(e), 150);
     },
     beforeUnmount() {
       clearTimeout(this.timer);
@@ -293,8 +286,7 @@ export default {
               this.setCoreStyle();
             }, 33);
           })
-          .catch(() => {
-          });
+          .catch(() => {});
       },
 
       clickSwatch(e) {
@@ -498,6 +490,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./color-picker.css"></style>

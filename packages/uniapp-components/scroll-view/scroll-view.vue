@@ -1,12 +1,5 @@
 <template>
-  <scroll-view
-    :class="tClass"
-    type="list"
-    scroll-y
-    enhanced
-    :show-scrollbar="false"
-    :scroll-into-view="scrollIntoView"
-  >
+  <scroll-view :class="tClass" type="list" scroll-y enhanced :show-scrollbar="false" :scroll-into-view="scrollIntoView">
     <slot />
   </scroll-view>
 </template>
@@ -16,9 +9,7 @@ import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 // import { canUseProxyScrollView } from '../common/version';
 
-
 const name = `${prefix}-scroll-view`;
-
 
 export default {
   ...uniComponent({
@@ -34,21 +25,12 @@ export default {
       },
     },
     data() {
-      return {
-
-      };
+      return {};
     },
-    watch: {
-
-    },
-    mounted() {
-
-    },
-    methods: {
-
-    },
+    watch: {},
+    mounted() {},
+    methods: {},
   }),
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>

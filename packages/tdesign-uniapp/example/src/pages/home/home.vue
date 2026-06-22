@@ -16,18 +16,9 @@
           aria-label="TDesign Logo"
         />
       </view>
-      <view
-        class="desc"
-        @click="onDescTap"
-      >
-        TDesign 适配 uni-app 的组件库{{ isSkyline?' (skyline render)':'' }}
-        <text
-          v-if="!isSkyline && showTrySkyline"
-          class="skyline-entry"
-          @click.stop="goSkyline"
-        >
-          try skyline
-        </text>
+      <view class="desc" @click="onDescTap">
+        TDesign 适配 uni-app 的组件库{{ isSkyline ? ' (skyline render)' : '' }}
+        <text v-if="!isSkyline && showTrySkyline" class="skyline-entry" @click.stop="goSkyline"> try skyline </text>
       </view>
       <pull-down-list
         v-for="item of list"
@@ -39,22 +30,12 @@
       />
     </view>
     <view class="footer">
-      <view
-        class="show_privacy"
-        @click="showPrivacyWin"
-      >
-        《TDesign组件库服务声明》
-      </view>
+      <view class="show_privacy" @click="showPrivacyWin"> 《TDesign组件库服务声明》 </view>
       <t-footer text="该小程序仅演示示例，不收集个人信息。" />
       <t-footer :text="`Copyright © 1998 - ${currentYear} All Rights Reserved`" />
     </view>
-    <trd-privacy
-      ref="trdPrivacy"
-      name="TDesign组件库"
-      date="2023年11月14日"
-      :win-style="winStyle"
-    />
-  <!-- #ifdef VUE2-->
+    <trd-privacy ref="trdPrivacy" name="TDesign组件库" date="2023年11月14日" :win-style="winStyle" />
+    <!-- #ifdef VUE2-->
   </view>
   <!-- #endif -->
 </template>
@@ -64,7 +45,6 @@ import TFooter from '@tdesign/uniapp/footer/footer.vue';
 import { themeMixin } from '@tdesign/uniapp/mixins/theme-change';
 import { simpleMorse } from 't-comm/lib/morse-pwd/index';
 import { toggleVConsole } from 't-comm/lib/v-console/index';
-
 
 import PullDownList from '../../components/pull-down-list/index.vue';
 import TrdPrivacy from '../../components/trd-privacy/index.vue';
@@ -89,9 +69,7 @@ export default {
     PullDownList,
     TrdPrivacy,
   },
-  mixins: [
-    themeMixin,
-  ],
+  mixins: [themeMixin],
   data() {
     return {
       list: [],
@@ -143,7 +121,6 @@ export default {
       return data;
     },
 
-
     goSkyline() {
       uni.navigateTo({
         url: '/pages/home/home?skyline=1',
@@ -194,7 +171,7 @@ export default {
       }
       // #endif
     },
-    showPrivacyWin()  {
+    showPrivacyWin() {
       this.$refs.trdPrivacy?.showPrivacyWin();
     },
 
@@ -212,8 +189,8 @@ export default {
       }
 
       if (!path) {
-        name = name.replace(/^[A-Z]/, match => `${match}`.toLocaleLowerCase());
-        name = name.replace(/[A-Z]/g, match => `-${match.toLowerCase()}`);
+        name = name.replace(/^[A-Z]/, (match) => `${match}`.toLocaleLowerCase());
+        name = name.replace(/[A-Z]/g, (match) => `-${match.toLowerCase()}`);
 
         path = `/pages-more/${name}/${this.isSkyline ? 'skyline/' : ''}${name}`;
       }

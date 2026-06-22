@@ -11,13 +11,13 @@ export const getBadgeValue = function (props) {
 
 export const hasUnit = function (unit) {
   return (
-    unit.indexOf('px') > 0
-    || unit.indexOf('rpx') > 0
-    || unit.indexOf('em') > 0
-    || unit.indexOf('rem') > 0
-    || unit.indexOf('%') > 0
-    || unit.indexOf('vh') > 0
-    || unit.indexOf('vm') > 0
+    unit.indexOf('px') > 0 ||
+    unit.indexOf('rpx') > 0 ||
+    unit.indexOf('em') > 0 ||
+    unit.indexOf('rem') > 0 ||
+    unit.indexOf('%') > 0 ||
+    unit.indexOf('vh') > 0 ||
+    unit.indexOf('vm') > 0
   );
 };
 
@@ -27,15 +27,13 @@ export const getBadgeStyles = function (props) {
     styleStr += `background:${props.color};`;
   }
   if (props.offset?.[0]) {
-    styleStr
-      += `left: calc(100% + ${hasUnit(props.offset[0].toString()) ? props.offset[0] : `${props.offset[0]}px`});`;
+    styleStr += `left: calc(100% + ${hasUnit(props.offset[0].toString()) ? props.offset[0] : `${props.offset[0]}px`});`;
   }
   if (props.offset?.[1]) {
     styleStr += `top:${hasUnit(props.offset[1].toString()) ? props.offset[1] : `${props.offset[1]}px`};`;
   }
   return styleStr;
 };
-
 
 export const getBadgeInnerClass = function (props) {
   const baseClass = props.classPrefix;
@@ -60,4 +58,3 @@ export const isShowBadge = function (props) {
   if (props.count == null) return false;
   return true;
 };
-

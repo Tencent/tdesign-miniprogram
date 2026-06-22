@@ -1,19 +1,13 @@
 <template>
   <view>
-    <t-cell
-      title="选择地区"
-      arrow
-      hover
-      :note="areaText"
-      @click="onAreaPicker"
-    />
+    <t-cell title="选择地区" arrow hover :note="areaText" @click="onAreaPicker" />
 
     <t-picker
       :visible="areaVisible"
       :value="areaValue"
       title="选择地区"
       :using-custom-navbar="!isMPAlipay"
-      @update:visible="(e) => areaVisible = e"
+      @update:visible="(e) => (areaVisible = e)"
       @change="onPickerChange"
       @pick="onColumnChange"
       @cancel="onPickerCancel"
@@ -33,7 +27,7 @@ import TPickerItem from '@tdesign/uniapp/picker-item/picker-item.vue';
 import { areaList } from './helper';
 
 const getOptions = (obj, filter) => {
-  const res = Object.keys(obj).map(key => ({
+  const res = Object.keys(obj).map((key) => ({
     value: key,
     label: obj[key],
   }));
@@ -81,7 +75,9 @@ export default {
         if (typeof uni !== 'undefined' && uni.vibrateShort) {
           uni.vibrateShort({ type: 'medium', fail: () => {} });
         }
-      } catch (_) { /* noop */ }
+      } catch (_) {
+        /* noop */
+      }
 
       // 音效：懒初始化单个音频实例，落点时 seek(0) + play() 重放
       // 微信小程序需将 mp3 放到项目静态目录（如 /static/picker-tick.mp3）
@@ -96,7 +92,9 @@ export default {
           if (typeof this.innerTickAudio.seek === 'function') this.innerTickAudio.seek(0);
           this.innerTickAudio.play && this.innerTickAudio.play();
         }
-      } catch (_) { /* noop */ }
+      } catch (_) {
+        /* noop */
+      }
     },
 
     onColumnChange(e) {
@@ -122,7 +120,7 @@ export default {
     },
 
     getCities(provinceValue) {
-      const cities = getOptions(areaList.cities, city => match(city.value, provinceValue, 2));
+      const cities = getOptions(areaList.cities, (city) => match(city.value, provinceValue, 2));
       const counties = this.getCounties(cities[0].value);
       return {
         cities,
@@ -131,7 +129,7 @@ export default {
     },
 
     getCounties(cityValue) {
-      return getOptions(areaList.counties, county => match(county.value, cityValue, 4));
+      return getOptions(areaList.counties, (county) => match(county.value, cityValue, 4));
     },
 
     onPickerChange(e) {
@@ -139,7 +137,7 @@ export default {
       console.log('picker confirm:', e);
       this.areaVisible = false;
       this.areaValue = value;
-      this.areaText =  label.join(' ');
+      this.areaText = label.join(' ');
     },
 
     onPickerCancel(e) {
@@ -157,5 +155,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

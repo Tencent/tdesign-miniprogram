@@ -9,7 +9,6 @@ const { PROJECT_ROOT } = require('./config');
 const COMPILE_TS = false;
 const GENERATE_DTS = false;
 
-
 /** 编译选项，与根目录 tsconfig.json 中的 compilerOptions 保持一致 */
 const COMPILER_OPTIONS = {
   target: ts.ScriptTarget.ES2015,
@@ -54,7 +53,7 @@ function processTs(inputFile, rawOutputFile) {
     });
 
     // 将 4 空格缩进转换为 2 空格缩进
-    const outputText = result.outputText.replace(/^( {4})+/gm, match => '  '.repeat(match.length / 4));
+    const outputText = result.outputText.replace(/^( {4})+/gm, (match) => '  '.repeat(match.length / 4));
 
     // 输出文件后缀改为 .js
     const outputFile = rawOutputFile.replace(/\.ts$/, '.js');
@@ -132,7 +131,9 @@ function generateDts(sourceDir, targetDir) {
     // 清理临时文件
     try {
       fs.unlinkSync(tmpTsConfig);
-    } catch (e) { /* ignore */ }
+    } catch (e) {
+      /* ignore */
+    }
   }
 }
 

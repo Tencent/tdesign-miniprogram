@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import StepsDemo from '../steps.vue';
 export default {
   components: {

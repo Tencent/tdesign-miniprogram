@@ -5,24 +5,10 @@
       :using-custom-navbar="!isMPAlipay"
       @selected="(e) => handleSelected(e, { tagId: 't-action-sheet' })"
     />
-    <t-button
-      size="large"
-      variant="outline"
-      custom-dataset="center"
-      block
-      theme="primary"
-      @click="handleAction"
-    >
+    <t-button size="large" variant="outline" custom-dataset="center" block theme="primary" @click="handleAction">
       居中列表型
     </t-button>
-    <t-button
-      size="large"
-      variant="outline"
-      custom-dataset="left"
-      block
-      theme="primary"
-      @click="handleAction"
-    >
+    <t-button size="large" variant="outline" custom-dataset="left" block theme="primary" @click="handleAction">
       左对齐列表型
     </t-button>
   </view>
@@ -78,5 +64,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

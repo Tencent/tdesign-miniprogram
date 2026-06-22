@@ -220,7 +220,7 @@ export function listObserver(newVal) {
   st.list = newVal || [];
   st.list.forEach((item, index) => {
     this.setDragItemClass(index, 'remove', `${classPrefix}__drag--tran`);
-    this.setDragItemStyle(index,  `transform: translate3d(${item.tranX},${item.tranY}, 0)`);
+    this.setDragItemStyle(index, `transform: translate3d(${item.tranX},${item.tranY}, 0)`);
     if (item.fixed) this.setDragItemClass(index, 'add', `${classPrefix}__drag--fixed`);
   });
   dragCollisionList = [];

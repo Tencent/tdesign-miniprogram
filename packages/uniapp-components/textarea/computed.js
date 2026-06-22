@@ -1,6 +1,5 @@
 import utils from '../common/utils.wxs';
 
-
 export function textareaStyle(autosize) {
   if (autosize && typeof autosize === 'object') {
     return utils._style({
@@ -10,5 +9,3 @@ export function textareaStyle(autosize) {
   }
   return '';
 }
-
-

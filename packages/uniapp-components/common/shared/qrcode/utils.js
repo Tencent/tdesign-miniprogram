@@ -57,17 +57,18 @@ export const generatePath = (modules, margin = 0) => {
  * @param excavation
  * @returns
  */
-export const excavateModules = (modules, excavation) => modules.slice().map((row, y) => {
-  if (y < excavation.y || y >= excavation.y + excavation.h) {
-    return row;
-  }
-  return row.map((cell, x) => {
-    if (x < excavation.x || x >= excavation.x + excavation.w) {
-      return cell;
+export const excavateModules = (modules, excavation) =>
+  modules.slice().map((row, y) => {
+    if (y < excavation.y || y >= excavation.y + excavation.h) {
+      return row;
     }
-    return false;
+    return row.map((cell, x) => {
+      if (x < excavation.x || x >= excavation.x + excavation.w) {
+        return cell;
+      }
+      return false;
+    });
   });
-});
 /**
  * Get image settings
  * @param cells The modules of the QR code

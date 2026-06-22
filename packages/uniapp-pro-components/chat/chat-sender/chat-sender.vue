@@ -1,13 +1,11 @@
 <template>
   <view>
-    <view
-      :class="classPrefix"
-      :style="'' + tools._style([customStyle, inputStyle])"
-      @click.stop="handleOutsideClick"
-    >
+    <view :class="classPrefix" :style="'' + tools._style([customStyle, inputStyle])" @click.stop="handleOutsideClick">
       <view
         :class="classPrefix + '__header'"
-        :style="attachmentsProps && attachmentsProps.items && attachmentsProps.items.length > 0 ? 'margin-top:-8rpx;' : ''"
+        :style="
+          attachmentsProps && attachmentsProps.items && attachmentsProps.items.length > 0 ? 'margin-top:-8rpx;' : ''
+        "
       >
         <block v-if="attachmentsProps && attachmentsProps.items && attachmentsProps.items.length > 0">
           <view :class="classPrefix + '__attachments'">
@@ -30,7 +28,7 @@
           <slot name="input-prefix" />
           <textarea
             :class="classPrefix + '__textarea--control'"
-            :style="''+textareaStyle(textareaProps.autosize)"
+            :style="'' + textareaStyle(textareaProps.autosize)"
             :disabled="disabled"
             :auto-height="!!textareaProps.autosize"
             confirm-type="send"
@@ -59,24 +57,14 @@
           <view :class="classPrefix + '__sendbtn'">
             <block v-if="renderPresets">
               <view :class="classPrefix + '__sendbtn--default'">
-                <block
-                  v-for="(item, index) in renderPresets"
-                  :key="index"
-                >
+                <block v-for="(item, index) in renderPresets" :key="index">
                   <view>
                     <view
                       v-if="item.name === 'upload'"
                       :class="'plus-btn ' + (item.status === 'disabled' ? 'disabled' : '')"
                     >
-                      <view
-                        class="btn-func"
-                        :data-status="item.status"
-                        @click.stop="handleUploadClick"
-                      >
-                        <t-icon
-                          :name="visible ? 'close' : 'add'"
-                          size="40rpx"
-                        />
+                      <view class="btn-func" :data-status="item.status" @click.stop="handleUploadClick">
+                        <t-icon :name="visible ? 'close' : 'add'" size="40rpx" />
                       </view>
                     </view>
 
@@ -92,15 +80,17 @@
                       <block v-else>
                         <view
                           :class="
-                            'send-btn-icon send-btn-' + item.type + ' ' + (innerValue || loading ? 'active' : 'disabled') + ' ' + (loading ? 'stop' : '')
+                            'send-btn-icon send-btn-' +
+                            item.type +
+                            ' ' +
+                            (innerValue || loading ? 'active' : 'disabled') +
+                            ' ' +
+                            (loading ? 'stop' : '')
                           "
                           @click.stop="handleSendClick"
                         >
                           <block v-if="!loading">
-                            <t-icon
-                              name="send-filled"
-                              size="32rpx"
-                            />
+                            <t-icon name="send-filled" size="32rpx" />
                           </block>
                           <block v-else>
                             <view style="width: 24rpx; height: 24rpx; background-color: #ffffff" />
@@ -119,25 +109,11 @@
         </view>
       </view>
     </view>
-    <view
-      v-if="visible"
-      :class="classPrefix + '__upload'"
-      @click.stop="handleUploadClick"
-    >
-      <block
-        v-for="(name, index) in uploadNames"
-        :key="index"
-      >
-        <view
-          :class="classPrefix + '__upload-item'"
-          :data-name="name"
-          @click.stop="handleUploadEntryClick"
-        >
+    <view v-if="visible" :class="classPrefix + '__upload'" @click.stop="handleUploadClick">
+      <block v-for="(name, index) in uploadNames" :key="index">
+        <view :class="classPrefix + '__upload-item'" :data-name="name" @click.stop="handleUploadEntryClick">
           <view :class="classPrefix + '__upload-item__icon'">
-            <t-icon
-              :name="uploadConfig[name].iconClass"
-              size="56rpx"
-            />
+            <t-icon :name="uploadConfig[name].iconClass" size="56rpx" />
           </view>
           <view :class="classPrefix + '__upload-item__text'">
             {{ uploadConfig[name].text }}
@@ -165,7 +141,6 @@ import props from './props';
 const componentName = 'chat-sender';
 const name = `${prefix}-${componentName}`;
 
-
 export default {
   components: {
     tIcon,
@@ -183,10 +158,7 @@ export default {
       ...props,
     },
 
-    emits: [
-      'update:visible',
-      'update:value',
-    ],
+    emits: ['update:visible', 'update:value'],
     data() {
       return {
         classPrefix: name,
@@ -245,7 +217,7 @@ export default {
       },
       renderPresets: {
         handler(newVal) {
-          const preset = newVal.find(item => Array.isArray(item.presets));
+          const preset = newVal.find((item) => Array.isArray(item.presets));
           this.uploadNames = preset ? preset.presets : [];
         },
         immediate: true,
@@ -257,18 +229,18 @@ export default {
       textareaStyle,
 
       onkeyboardheightchange(e) {
-      // 业务侧控制键盘顶起高度，如果用fix布局，不需要监听键盘高度变化
+        // 业务侧控制键盘顶起高度，如果用fix布局，不需要监听键盘高度变化
         this.$emit('keyboardheightchange', e.detail);
         // 不开启自动顶起，不做处理
         if (!this.autoRiseWithKeyboard) return;
         const keyboardHeight = e.detail.height;
         if (keyboardHeight > 0) {
-        // 键盘弹起时，将键盘高度与原始 margin-bottom 相加
-        // todo：使用js计算实际的margin-bottom，因为业务侧可能会覆盖样式
+          // 键盘弹起时，将键盘高度与原始 margin-bottom 相加
+          // todo：使用js计算实际的margin-bottom，因为业务侧可能会覆盖样式
           const totalMarginBottom = keyboardHeight + this.originalMarginBottom;
           this.inputStyle = `margin-bottom: ${totalMarginBottom}px;`;
         } else {
-        // 键盘收起时，恢复原始 margin-bottom
+          // 键盘收起时，恢复原始 margin-bottom
           this.inputStyle = '';
         }
       },
@@ -302,7 +274,7 @@ export default {
       },
 
       handlerClick() {
-      // 禁用状态输入框无焦点
+        // 禁用状态输入框无焦点
         if (this.disabled) {
           this.focusFlag = false;
         } else {
@@ -343,11 +315,11 @@ export default {
         if (this.disabled || status === 'disabled') return;
         // 点击按钮切换面板显示状态
         this.$emit('update:visible', !this.visible);
-      // 透传处理上传按钮点击事件,由业务侧控制是否显示上传面板
+        // 透传处理上传按钮点击事件,由业务侧控制是否显示上传面板
       },
 
       handleFileClick(e) {
-      // 透传 处理文件点击事件
+        // 透传 处理文件点击事件
         const { item } = e.detail;
         this.$emit('fileClick', {
           file: item,
@@ -355,7 +327,7 @@ export default {
       },
 
       handleFileRemove(e) {
-      // 添加数组存在性检查
+        // 添加数组存在性检查
         if (!Array.isArray(this.files)) return;
         const { item: file, index } = e;
         this.$emit('fileDelete', {
@@ -383,7 +355,7 @@ export default {
           });
           // 处理选择的图片
           if (res.tempFilePaths && res.tempFilePaths.length > 0) {
-            const files = res.tempFilePaths.map(item => ({
+            const files = res.tempFilePaths.map((item) => ({
               url: item,
               name: item,
               // 获取文件名
@@ -416,14 +388,14 @@ export default {
 
       async handleWechatFileUpload(e) {
         try {
-        // 使用微信小程序的选择文件API
+          // 使用微信小程序的选择文件API
           const res = await wx.chooseMessageFile({
             count: 5,
             // 最多5个文件
             type: 'all', // 所有类型文件
           });
           if (res.tempFiles && res.tempFiles.length > 0) {
-            const files = res.tempFiles.map(item => ({
+            const files = res.tempFiles.map((item) => ({
               ...item,
               // 其他属性保留
               url: item.path, // 获取文件路径

@@ -6,16 +6,11 @@
       switch-mode="year-month"
       :min-date="minDate"
       :max-date="maxDate"
-      @update:visible="(e) => visible = e"
+      @update:visible="(e) => (visible = e)"
       @confirm="handleConfirm"
       @panel-change="handlePanelChange"
     />
-    <t-cell
-      arrow
-      title="带翻页功能的日历"
-      :note="formatTimestamp(value)"
-      @click="handleCalendar"
-    />
+    <t-cell arrow title="带翻页功能的日历" :note="formatTimestamp(value)" @click="handleCalendar" />
   </view>
 </template>
 <script>
@@ -54,5 +49,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

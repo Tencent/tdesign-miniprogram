@@ -1,9 +1,6 @@
 <template>
   <view class="chat-example-block">
-    <t-chat-markdown
-      :content="markdownContent"
-      @click="handleNodeTap"
-    />
+    <t-chat-markdown :content="markdownContent" @click="handleNodeTap" />
   </view>
 </template>
 
@@ -42,17 +39,17 @@ export default {
 </script>
 <style>
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx;
 }
 
 .demo-container {
-    padding: 32rpx;
-    background-color: #fff;
+  padding: 32rpx;
+  background-color: #fff;
 }
 
 .text {
-    margin-left: 10rpx;
-    margin-bottom: 32rpx;
+  margin-left: 10rpx;
+  margin-bottom: 32rpx;
 }
 </style>

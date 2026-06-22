@@ -1,52 +1,20 @@
 <template>
   <view>
-    <view class="demo-desc">
-      单游标垂直滑块
-    </view>
+    <view class="demo-desc"> 单游标垂直滑块 </view>
     <view class="wrapper">
-      <t-slider
-        vertical
-        :value="singlevalue"
-        label="${singlevalue}"
-        @change="handleSingleChange"
-      />
+      <t-slider vertical :value="singlevalue" label="${singlevalue}" @change="handleSingleChange" />
     </view>
-    <view class="demo-desc">
-      带刻度的双游标垂直滑块
-    </view>
+    <view class="demo-desc"> 带刻度的双游标垂直滑块 </view>
     <view class="wrapper">
-      <t-slider
-        vertical
-        range
-        :default-value="[20, 60]"
-        :marks="marks"
-        :step="20"
-      />
+      <t-slider vertical range :default-value="[20, 60]" :marks="marks" :step="20" />
     </view>
-    <view class="demo-desc">
-      胶囊型垂直滑块
-    </view>
+    <view class="demo-desc"> 胶囊型垂直滑块 </view>
     <view class="wrapper">
-      <t-slider
-        vertical
-        :value="capsuleValue"
-        label="${capsuleValue}"
-        theme="capsule"
-        @change="handleCapsuleChange"
-      />
+      <t-slider vertical :value="capsuleValue" label="${capsuleValue}" theme="capsule" @change="handleCapsuleChange" />
     </view>
-    <view class="demo-desc">
-      带刻度的胶囊型垂直滑块
-    </view>
+    <view class="demo-desc"> 带刻度的胶囊型垂直滑块 </view>
     <view class="wrapper">
-      <t-slider
-        vertical
-        :default-value="[20, 80]"
-        range
-        :marks="marks"
-        :step="20"
-        theme="capsule"
-      />
+      <t-slider vertical :default-value="[20, 80]" range :marks="marks" :step="20" theme="capsule" />
     </view>
   </view>
 </template>
@@ -84,12 +52,12 @@ export default {
 </script>
 <style>
 .demo-desc {
-    margin-top: 24rpx;
-    margin-bottom: 16rpx;
+  margin-top: 24rpx;
+  margin-bottom: 16rpx;
 }
 
 .wrapper {
-    background: var(--bg-color-demo);
-    padding-top: 40rpx;
+  background: var(--bg-color-demo);
+  padding-top: 40rpx;
 }
 </style>

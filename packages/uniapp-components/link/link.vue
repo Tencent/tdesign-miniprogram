@@ -4,7 +4,7 @@
       :class="className + ' ' + tClass"
       :style="'' + tools._style([customStyle])"
       :target="navigatorProps.target"
-      :url="!disabled ? (navigatorProps.url || '') : ''"
+      :url="!disabled ? navigatorProps.url || '' : ''"
       :open-type="navigatorProps.openType || 'navigate'"
       :delta="navigatorProps.delta"
       :app-id="navigatorProps.appId"
@@ -12,7 +12,9 @@
       :extra-data="navigatorProps.extraData"
       :version="navigatorProps.version"
       :short-link="navigatorProps.shortLink"
-      :hover-class="(hover && !disabled && classPrefix + '--hover') + ' ' + tClassHover + ' ' + navigatorProps.hoverClass"
+      :hover-class="
+        (hover && !disabled && classPrefix + '--hover') + ' ' + tClassHover + ' ' + navigatorProps.hoverClass
+      "
       :hover-stop-propagation="!!navigatorProps.hoverStopPropagation"
       :hover-start-time="navigatorProps.hoverStartTime"
       :hover-stay-time="navigatorProps.hoverStayTime"
@@ -23,10 +25,7 @@
     >
       <view :class="classPrefix + '__prefix-icon ' + tClassPrefixIcon">
         <slot name="prefix-icon" />
-        <block
-          v-if="iPrefixIcon"
-          name="icon"
-        >
+        <block v-if="iPrefixIcon" name="icon">
           <t-icon
             :custom-style="iPrefixIcon.style || ''"
             :t-class="iPrefixIcon.tClass"
@@ -50,10 +49,7 @@
       </view>
       <view :class="classPrefix + '__suffix-icon ' + tClassSuffixIcon">
         <slot name="suffix-icon" />
-        <block
-          v-if="iSuffixIcon"
-          name="icon"
-        >
+        <block v-if="iSuffixIcon" name="icon">
           <t-icon
             :custom-style="iSuffixIcon.style || ''"
             :t-class="iSuffixIcon.tClass"
@@ -75,13 +71,11 @@
 import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 
-
 import { calcIcon, coalesce } from '../common/utils';
 import tools from '../common/utils.wxs';
 import TIcon from '../icon/icon';
 
 import props from './props';
-
 
 const name = `${prefix}-link`;
 
@@ -147,8 +141,8 @@ export default {
           classList.push(`${name}--underline`);
         }
         if (
-          (Object.keys(navigatorProps).length && condition && !['navigateBack', 'exit'].includes(openType))
-        || disabled
+          (Object.keys(navigatorProps).length && condition && !['navigateBack', 'exit'].includes(openType)) ||
+          disabled
         ) {
           classList.push(`${name}--disabled`);
         }

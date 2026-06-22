@@ -1,23 +1,11 @@
 <template>
   <view>
-    <t-swipe-cell
-      :right="right"
-      opened
-      @click="onActionClick"
-    >
-      <t-cell
-        title="左滑-带图标文本双操作"
-        note="辅助信息"
-        :bordered="false"
-      />
+    <t-swipe-cell :right="right" opened @click="onActionClick">
+      <t-cell title="左滑-带图标文本双操作" note="辅助信息" :bordered="false" />
     </t-swipe-cell>
 
     <t-swipe-cell :right="rightIcon">
-      <t-cell
-        title="左滑-仅带图标双操作"
-        note="辅助信息"
-        :bordered="false"
-      />
+      <t-cell title="左滑-仅带图标双操作" note="辅助信息" :bordered="false" />
     </t-swipe-cell>
 
     <t-swipe-cell>
@@ -28,32 +16,14 @@
         note="辅助信息"
         image="https://tdesign.gtimg.com/mobile/demos/avatar1.png"
       />
-      <template
-        #right
-      >
-        <view
-          class="btn-wrapper"
-        >
-          <view
-            class="btn edit-btn column"
-            @click="onEdit"
-          >
-            <t-icon
-              t-class="padding-bottom"
-              name="edit"
-              size="32rpx"
-            />
+      <template #right>
+        <view class="btn-wrapper">
+          <view class="btn edit-btn column" @click="onEdit">
+            <t-icon t-class="padding-bottom" name="edit" size="32rpx" />
             编辑
           </view>
-          <view
-            class="btn delete-btn column"
-            @click="onDelete"
-          >
-            <t-icon
-              t-class="padding-bottom"
-              name="delete"
-              size="32rpx"
-            />
+          <view class="btn delete-btn column" @click="onDelete">
+            <t-icon t-class="padding-bottom" name="delete" size="32rpx" />
             删除
           </view>
         </view>
@@ -144,35 +114,35 @@ export default {
 </script>
 <style>
 .btn-wrapper {
-    height: 100%;
+  height: 100%;
 }
 
 .btn {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 120rpx;
-    height: 100%;
-    color: white;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 120rpx;
+  height: 100%;
+  color: white;
 }
 
 .delete-btn {
-    background-color: #e34d59;
+  background-color: #e34d59;
 }
 
 .edit-btn {
-    background-color: #ed7b2f;
+  background-color: #ed7b2f;
 }
 
 .favor-btn {
-    background-color: var(--td-brand-color, #0052d9);
+  background-color: var(--td-brand-color, #0052d9);
 }
 
 .column {
-    flex-direction: column;
+  flex-direction: column;
 }
 
 .padding-bottom {
-    padding-bottom: 8rpx;
+  padding-bottom: 8rpx;
 }
 </style>

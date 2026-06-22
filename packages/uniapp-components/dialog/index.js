@@ -2,7 +2,6 @@ import { getInstance } from '../common/utils';
 
 import props from './props';
 
-
 const defaultOptions = {
   actions: [],
   buttonLayout: props.buttonLayout.default,

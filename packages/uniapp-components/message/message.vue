@@ -9,38 +9,18 @@
       @duration-end="(e) => handleDurationEnd(e, { tagId: item.id })"
     >
       <!-- slot 仅透传给第一条消息，避免 v-for 中产生多个同名 slot 的警告 -->
-      <template
-        v-if="idx === 0"
-        #icon
-      >
-        <slot
-          name="icon"
-        />
+      <template v-if="idx === 0" #icon>
+        <slot name="icon" />
       </template>
-      <template
-        v-if="idx === 0"
-        #content
-      >
-        <slot
-          name="content"
-        />
+      <template v-if="idx === 0" #content>
+        <slot name="content" />
       </template>
       <slot v-if="idx === 0" />
-      <template
-        v-if="idx === 0"
-        #link
-      >
-        <slot
-          name="link"
-        />
+      <template v-if="idx === 0" #link>
+        <slot name="link" />
       </template>
-      <template
-        v-if="idx === 0"
-        #close-btn
-      >
-        <slot
-          name="close-btn"
-        />
+      <template v-if="idx === 0" #close-btn>
+        <slot name="close-btn" />
       </template>
     </t-message-item>
   </view>
@@ -54,7 +34,6 @@ import TMessageItem from '../message-item/message-item.vue';
 
 import { MessageType } from './message.interface';
 import props from './props';
-
 
 const SHOW_DURATION = 400;
 const name = `${prefix}-message`;
@@ -83,10 +62,13 @@ export default {
       visible: {
         handler(value) {
           if (value) {
-            const data = Object.keys(props).reduce((acc, key) => ({
-              ...acc,
-              [key]: this[key],
-            }), {});
+            const data = Object.keys(props).reduce(
+              (acc, key) => ({
+                ...acc,
+                [key]: this[key],
+              }),
+              {},
+            );
 
             this.setMessage(data, this.theme);
           } else {
@@ -109,8 +91,7 @@ export default {
       // 延迟移除在复用过程中把新占位也干掉导致 ref 实例释放、新消息闪退。
       this.removeMsgTimers = {};
     },
-    mounted() {
-    },
+    mounted() {},
 
     methods: {
       /**
@@ -127,7 +108,7 @@ export default {
 
         let id = `${name}_${this.index}`;
         if (msg.single) {
-        // 不能与外层的 ref 相同，否则抖音小程序报错
+          // 不能与外层的 ref 相同，否则抖音小程序报错
           id = `${name}_inner`;
         }
         // 若存在同 id 的 pending removeMsg 定时器，先取消掉，避免复用后被延迟销毁。
@@ -142,7 +123,7 @@ export default {
           id,
           gap,
         };
-        const instanceIndex = this.instances.findIndex(x => x && x.id === id);
+        const instanceIndex = this.instances.findIndex((x) => x && x.id === id);
         if (instanceIndex < 0) {
           this.addMessage(msgObj);
         } else {
@@ -172,12 +153,12 @@ export default {
       },
 
       /**
-   * 新增消息
-   * @param msgObj
-   */
+       * 新增消息
+       * @param msgObj
+       */
       addMessage(msgObj) {
         // single 模式下若已经有同 id 的占位，直接复用并跳过 add，避免列表中出现重复 id
-        const existIndex = this.messageList.findIndex(x => x.id === msgObj.id);
+        const existIndex = this.messageList.findIndex((x) => x.id === msgObj.id);
         if (existIndex < 0) {
           this.messageList = [...this.messageList, { id: msgObj.id }];
         }
@@ -194,10 +175,10 @@ export default {
       },
 
       /**
-   * 获取消息显示top偏移距离
-   * @param index
-   * @returns
-   */
+       * 获取消息显示top偏移距离
+       * @param index
+       * @returns
+       */
       getOffsetHeight(index = -1) {
         let offsetHeight = 0;
         let len = index;
@@ -212,12 +193,12 @@ export default {
       },
 
       /**
-   * 新增消息显示
-   * @param options
-   * @param id
-   * @param offsetHeight
-   * @returns
-   */
+       * 新增消息显示
+       * @param options
+       * @param id
+       * @param offsetHeight
+       * @returns
+       */
       showMessageItem(options, id, offsetHeight) {
         let instance = this.$refs[`${id}`];
         if (Array.isArray(instance)) {
@@ -263,35 +244,35 @@ export default {
       },
 
       /**
-   * 移除指定消息，id为空则删除全部消息
-   * @param id
-   */
+       * 移除指定消息，id为空则删除全部消息
+       * @param id
+       */
       hide(id) {
         if (!id) {
           this.hideAll();
         }
-        const instance = this.instances.find(x => x && x.id === id);
+        const instance = this.instances.find((x) => x && x.id === id);
         if (instance) {
           instance.hide();
         }
       },
 
       /**
-   * 移除全部消息
-   */
+       * 移除全部消息
+       */
       hideAll() {
         // 消息移除后也会移除instance，下标不用增加，直至全部删除
-        for (let i = 0; i < this.instances.length;) {
+        for (let i = 0; i < this.instances.length; ) {
           const instance = this.instances[i];
           instance.hide();
         }
       },
 
       /**
-   * 移除message实例
-   */
+       * 移除message实例
+       */
       removeInstance(id) {
-        const index = this.instances.findIndex(x => x && x.id === id);
+        const index = this.instances.findIndex((x) => x && x.id === id);
         if (index < 0) return;
         const instance = this.instances[index];
         const removedHeight = instance.height;
@@ -303,14 +284,14 @@ export default {
       },
 
       /**
-   * 移除页面元素
-   * @param id
-   */
+       * 移除页面元素
+       * @param id
+       */
       removeMsg(id) {
-        this.messageList = this.messageList.filter(item => item.id !== id);
+        this.messageList = this.messageList.filter((item) => item.id !== id);
         // #ifdef VUE2
         this.$set(this, 'messageList', this.messageList);
-      // #endif
+        // #endif
       },
 
       handleClose(e) {
@@ -328,5 +309,4 @@ export default {
   }),
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>

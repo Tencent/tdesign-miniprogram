@@ -1,20 +1,11 @@
 <template>
   <view>
-    <view
-      v-if="title"
-      :class="[
-        classPrefix + '__title ',
-        tClassTitle
-      ]"
-    >
+    <view v-if="title" :class="[classPrefix + '__title ', tClassTitle]">
       {{ title }}
     </view>
     <view
       :style="'' + tools._style([customStyle])"
-      :class="[
-        tools.cls(classPrefix, [['bordered', bordered], theme]),
-        tClass
-      ]"
+      :class="[tools.cls(classPrefix, [['bordered', bordered], theme]), tClass]"
     >
       <slot />
     </view>
@@ -29,9 +20,7 @@ import tools from '../common/utils.wxs';
 
 import props from './props';
 
-
 const name = `${prefix}-cell-group`;
-
 
 export default {
   ...uniComponent({

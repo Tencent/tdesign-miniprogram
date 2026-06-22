@@ -1,11 +1,6 @@
 <template>
   <view>
-    <t-checkbox-group
-      :value="current"
-      :options="options"
-      :relation-key="relationKey"
-      @change="handleGroupChange"
-    />
+    <t-checkbox-group :value="current" :options="options" :relation-key="relationKey" @change="handleGroupChange" />
   </view>
 </template>
 
@@ -53,5 +48,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

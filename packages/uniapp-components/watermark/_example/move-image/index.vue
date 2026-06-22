@@ -1,13 +1,6 @@
 <template>
   <view>
-    <t-watermark
-      :watermark-content="watermark"
-      :x="100"
-      :y="140"
-      :width="120"
-      :height="30"
-      movable
-    >
+    <t-watermark :watermark-content="watermark" :x="100" :y="140" :width="120" :height="30" movable>
       <view style="width: 100%; height: 300px" />
     </t-watermark>
   </view>

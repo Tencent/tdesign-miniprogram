@@ -30,7 +30,6 @@ export const isSameSecond = function (time1, time2) {
   return Math.floor(time1 / 1000) === Math.floor(time2 / 1000);
 };
 
-
 /**
  *
  * @param time 倒计时时间，毫秒单位
@@ -50,7 +49,7 @@ export const parseFormat = function (time, format) {
   Object.keys(obj).forEach((prop) => {
     if (new RegExp(`(${prop})`).test(timeText)) {
       timeText = timeText.replace(RegExp.$1, (match, offset, source) => {
-        const v = `${(obj)[prop]}`;
+        const v = `${obj[prop]}`;
         let digit = v;
         if (match.length > 1) {
           digit = (match.replace(new RegExp(match[0], 'g'), '0') + v).substr(v.length);

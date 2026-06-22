@@ -7,7 +7,7 @@
       prefix + '-vertical-align-' + verticalAlign,
       bordered ? classPrefix + '--bordered' : '',
       stripe ? classPrefix + '--striped' : '',
-      (stripe && (maxHeight || height)) ? classPrefix + '--header-fixed' : '',
+      stripe && (maxHeight || height) ? classPrefix + '--header-fixed' : '',
       loading ? classPrefix + '--loading' : '',
       rowspanAndColspan ? classPrefix + '--rowspan-colspan' : '',
       hasFixedColumn ? classPrefix + '--column-fixed' : '',
@@ -21,26 +21,17 @@
       :scroll-y="!!(height || maxHeight)"
       @scroll="onScroll"
     >
-      <view
-        :class="classPrefix + '__table-elm'"
-        :style="tableElementStylesStr"
-      >
+      <view :class="classPrefix + '__table-elm'" :style="tableElementStylesStr">
         <!-- 表头 -->
         <view
           v-if="showHeader"
-          :class="[
-            classPrefix + '__header',
-            (maxHeight || height) ? classPrefix + '__header--fixed' : '',
-          ]"
+          :class="[classPrefix + '__header', maxHeight || height ? classPrefix + '__header--fixed' : '']"
         >
           <view :class="classPrefix + '__header-tr'">
             <view
               v-for="(col, colIndex) in columns"
               :key="col.colKey || colIndex"
-              :class="[
-                classPrefix + '__th',
-                getThClassName(col, colIndex),
-              ]"
+              :class="[classPrefix + '__th', getThClassName(col, colIndex)]"
               :style="'' + getColStyle(col, colIndex)"
             >
               <view :class="classPrefix + '__th-content'">
@@ -53,18 +44,12 @@
         <!-- 表体 -->
         <view :class="classPrefix + '__body'">
           <!-- 空数据 -->
-          <view
-            v-if="isEmpty"
-            :class="classPrefix + '__empty-row'"
-          >
+          <view v-if="isEmpty" :class="classPrefix + '__empty-row'">
             <view :class="classPrefix + '__empty'">
               <template v-if="empty">
                 {{ empty }}
               </template>
-              <slot
-                v-else
-                name="empty"
-              />
+              <slot v-else name="empty" />
             </view>
           </view>
 
@@ -81,10 +66,7 @@
             <template v-for="(cell, tdIndex) in rowItem.cells">
               <!-- #endif -->
               <!-- #ifdef VUE3 -->
-              <template
-                v-for="(cell, tdIndex) in rowItem.cells"
-                :key="cell.colKey"
-              >
+              <template v-for="(cell, tdIndex) in rowItem.cells" :key="cell.colKey">
                 <!-- #endif -->
 
                 <view
@@ -103,11 +85,11 @@
                     {{ cell.content }}
                   </view>
                 </view>
-              <!-- #ifdef VUE3 -->
+                <!-- #ifdef VUE3 -->
               </template>
-            <!-- #endif -->
+              <!-- #endif -->
 
-            <!-- #ifdef VUE2 -->
+              <!-- #ifdef VUE2 -->
             </template>
             <!-- #endif -->
           </view>
@@ -115,10 +97,7 @@
       </view>
 
       <!-- 加载中 -->
-      <view
-        v-if="loading"
-        :class="classPrefix + '__loading--full'"
-      >
+      <view v-if="loading" :class="classPrefix + '__loading--full'">
         <slot name="loading">
           <t-loading
             :delay="(loadingProps && loadingProps.delay) || 0"
@@ -140,10 +119,7 @@
     </scroll-view>
 
     <!-- 表尾总结行 -->
-    <view
-      v-if="footerSummary"
-      :class="classPrefix + '__bottom-content'"
-    >
+    <view v-if="footerSummary" :class="classPrefix + '__bottom-content'">
       {{ footerSummary }}
     </view>
     <slot name="footer-summary" />
@@ -156,7 +132,6 @@ import tools from '../common/utils.wxs';
 import TLoading from '../loading/loading.vue';
 
 import props from './base-table-props';
-
 
 const name = `${prefix}-table`;
 
@@ -181,20 +156,13 @@ export default {
   components: {
     TLoading,
   },
-  emits: [
-    'row-click',
-    'cell-click',
-    'scroll',
-    'scroll-to-bottom',
-  ],
+  emits: ['row-click', 'cell-click', 'scroll', 'scroll-to-bottom'],
   ...uniComponent({
     name,
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     props: {
       ...props,
     },
@@ -278,7 +246,10 @@ export default {
         if (!col) return '';
         const defaultColWidth = this.tableLayout === 'fixed' ? '80px' : undefined;
         const width = formatCSSUnit(col.width || defaultColWidth);
-        const minWidth = !formatCSSUnit(col.width || defaultColWidth) && !col.minWidth && this.tableLayout === 'fixed' ? '80px' : formatCSSUnit(col.minWidth);
+        const minWidth =
+          !formatCSSUnit(col.width || defaultColWidth) && !col.minWidth && this.tableLayout === 'fixed'
+            ? '80px'
+            : formatCSSUnit(col.minWidth);
         const styles = [];
         // 当列设置了固定宽度时，使用 flex: 0 0 auto 防止被 flex 压缩，支持横向滚动
         if (col.width) {
@@ -336,7 +307,7 @@ export default {
         const dataLen = (data || []).length;
 
         // 检测是否有固定列
-        const hasFixedColumn = (columns || []).some(col => !!col.fixed);
+        const hasFixedColumn = (columns || []).some((col) => !!col.fixed);
         this.hasFixedColumn = hasFixedColumn;
 
         // 计算固定列偏移量

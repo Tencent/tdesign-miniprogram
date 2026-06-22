@@ -28,11 +28,11 @@ export default {
   },
   months: {
     type: Array,
-    default: () => ([]),
+    default: () => [],
   },
   currentMonth: {
     type: [Array, Object],
-    default: () => ([]),
+    default: () => [],
   },
   actionButtons: {
     type: Object,
@@ -40,7 +40,7 @@ export default {
   },
   days: {
     type: Array,
-    default: () => ([]),
+    default: () => [],
   },
   scrollIntoView: {
     type: String,

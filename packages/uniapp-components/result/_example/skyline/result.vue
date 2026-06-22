@@ -1,25 +1,11 @@
 <template>
   <view class="skyline">
-    <t-demo-navbar
-      custom-class="demo-navbar"
-      title="Result"
-    />
-    <scroll-view
-      scroll-y
-      type="list"
-      class="scroll-view"
-    >
+    <t-demo-navbar custom-class="demo-navbar" title="Result" />
+    <scroll-view scroll-y type="list" class="scroll-view">
       <view class="demo">
-        <view class="demo-title">
-          Result 结果
-        </view>
-        <view class="demo-desc">
-          用于反馈不同结果的展示。
-        </view>
-        <t-demo
-          title="组件类型"
-          desc="基础结果"
-        >
+        <view class="demo-title"> Result 结果 </view>
+        <view class="demo-desc"> 用于反馈不同结果的展示。 </view>
+        <t-demo title="组件类型" desc="基础结果">
           <theme-demo />
         </t-demo>
         <t-demo desc="带描述的结果">
@@ -30,15 +16,7 @@
         </t-demo>
         <t-demo desc="页面示例">
           <view class="demo-section__wrapper">
-            <t-button
-              theme="primary"
-              block
-              size="large"
-              variant="outline"
-              @click="goResultPage"
-            >
-              页面示例
-            </t-button>
+            <t-button theme="primary" block size="large" variant="outline" @click="goResultPage"> 页面示例 </t-button>
           </view>
         </t-demo>
       </view>

@@ -10,11 +10,23 @@
     >
       <view :class="tClass + ' ' + classPrefix">
         <view
-          :class="tClassReference + ' ' + classPrefix + '__reference ' + (nonOverlay ? classPrefix + '__reference--nonoverlay' : '')"
+          :class="
+            tClassReference +
+            ' ' +
+            classPrefix +
+            '__reference ' +
+            (nonOverlay ? classPrefix + '__reference--nonoverlay' : '')
+          "
           :style="referenceStyle"
         />
         <view
-          :class="tClassPopover + ' ' + classPrefix + '__container ' + (title || body ? classPrefix + '__container--' + modeType : '')"
+          :class="
+            tClassPopover +
+            ' ' +
+            classPrefix +
+            '__container ' +
+            (title || body ? classPrefix + '__container--' + modeType : '')
+          "
           :style="popoverStyle"
         >
           <content-comp
@@ -116,7 +128,15 @@
       placement="center"
     >
       <view :class="tClass + ' ' + classPrefix">
-        <view :class="tClassPopover + ' ' + classPrefix + '__container ' + (title || body ? classPrefix + '__container--' + modeType : '')">
+        <view
+          :class="
+            tClassPopover +
+            ' ' +
+            classPrefix +
+            '__container ' +
+            (title || body ? classPrefix + '__container--' + modeType : '')
+          "
+        >
           <content-comp
             :title="title"
             :body="body"
@@ -222,7 +242,6 @@ import TPopup from '../popup/popup';
 import ContentComp from './content.vue';
 import props from './props';
 
-
 const componentName = 'guide';
 const name = `${prefix}-${componentName}`;
 
@@ -260,10 +279,7 @@ export default {
       `${prefix}-class-back`,
       `${prefix}-class-finish`,
     ],
-    mixins: [
-      useCustomNavbar,
-      usingConfig({ componentName }),
-    ],
+    mixins: [useCustomNavbar, usingConfig({ componentName })],
     props: {
       ...props,
     },
@@ -319,11 +335,10 @@ export default {
           return;
         }
 
-        const modeType = (coalesce(step.mode, this.mode)) === 'dialog' ? 'dialog' : 'popover';
+        const modeType = coalesce(step.mode, this.mode) === 'dialog' ? 'dialog' : 'popover';
         const showOverlay = coalesce(step.showOverlay, this.showOverlay);
         this.nonOverlay = !showOverlay;
         this.modeType = modeType;
-
 
         if (modeType === 'popover') {
           const rect = await step.element();
@@ -365,13 +380,7 @@ export default {
         return styles({ position: 'absolute', ...style });
       },
       makeButtonProps(step, mode) {
-        const {
-          tClassSkip,
-          tClassNext,
-          tClassBack,
-          tClassFinish,
-          globalConfig,
-        } = this;
+        const { tClassSkip, tClassNext, tClassBack, tClassFinish, globalConfig } = this;
         let skipButton = coalesce(step.skipButtonProps, this.skipButtonProps);
         const size = mode === 'popover' ? 'extra-small' : 'medium';
         skipButton = {
@@ -455,13 +464,13 @@ export default {
       },
       getPlacement() {
         const space = rpx2px(32);
-        const offsetLeft = offset => unitConvert(isNumeric(offset?.[0]) ? `${offset?.[0]}rpx` : offset?.[0] || 0);
-        const offsetTop = offset => unitConvert(isNumeric(offset?.[1]) ? `${offset?.[1]}rpx` : offset?.[1] || 0);
-        const left = place => parseFloat(place.left);
-        const right = place => parseFloat(place.right);
-        const top = place => parseFloat(place.top);
-        const height = place => parseFloat(place.height);
-        const width = place => parseFloat(place.width);
+        const offsetLeft = (offset) => unitConvert(isNumeric(offset?.[0]) ? `${offset?.[0]}rpx` : offset?.[0] || 0);
+        const offsetTop = (offset) => unitConvert(isNumeric(offset?.[1]) ? `${offset?.[1]}rpx` : offset?.[1] || 0);
+        const left = (place) => parseFloat(place.left);
+        const right = (place) => parseFloat(place.right);
+        const top = (place) => parseFloat(place.top);
+        const height = (place) => parseFloat(place.height);
+        const width = (place) => parseFloat(place.width);
         return {
           center: (rect, place, offset) => ({
             top: `${Math.max(height(place) + top(place) + space + offsetTop(offset), 1)}px`,
@@ -520,7 +529,6 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./guide.css"></style>
 <style scoped lang="less">

@@ -1,14 +1,7 @@
 <template>
   <view>
-    <t-checkbox-group
-      :value="value"
-      @change="onChange"
-    >
-      <view
-        v-for="(item, index) in 3"
-        :key="index"
-        :class="'card ' + (contain(value, index) ? 'card--active' : '')"
-      >
+    <t-checkbox-group :value="value" @change="onChange">
+      <view v-for="(item, index) in 3" :key="index" :class="'card ' + (contain(value, index) ? 'card--active' : '')">
         <t-icon
           v-if="contain(value, index)"
           name="check"
@@ -27,12 +20,7 @@
       </view>
     </t-checkbox-group>
 
-    <view
-      class="demo-desc"
-      style="margin: 48rpx 32rpx 32rpx"
-    >
-      横向卡片多选框
-    </view>
+    <view class="demo-desc" style="margin: 48rpx 32rpx 32rpx"> 横向卡片多选框 </view>
 
     <t-checkbox-group
       :t-class="horBoxTClass"
@@ -41,11 +29,7 @@
       :value="value1"
       @change="onChange1"
     >
-      <view
-        v-for="(item, index) in 3"
-        :key="index"
-        :class="'card ' + (contain(value1, index) ? 'card--active' : '')"
-      >
+      <view v-for="(item, index) in 3" :key="index" :class="'card ' + (contain(value1, index) ? 'card--active' : '')">
         <t-icon
           v-if="contain(value1, index)"
           name="check"
@@ -55,12 +39,7 @@
           :aria-hidden="true"
         />
 
-        <t-checkbox
-          :value="index"
-          label="多选"
-          icon="none"
-          borderless
-        />
+        <t-checkbox :value="index" label="多选" icon="none" borderless />
       </view>
     </t-checkbox-group>
   </view>
@@ -134,41 +113,41 @@ export default {
 </script>
 <style>
 .card {
-    position: relative;
-    margin: 32rpx;
-    border-radius: 12rpx;
-    overflow: hidden;
-    box-sizing: border-box;
-    border: 3rpx solid var(--td-bg-color-container, #fff);
+  position: relative;
+  margin: 32rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 3rpx solid var(--td-bg-color-container, #fff);
 }
 
 .card--active {
-    border-color: var(--td-brand-color, #0052d9);
+  border-color: var(--td-brand-color, #0052d9);
 }
 
 .card--active::after {
-    content: '';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 0;
-    height: 0;
-    border-width: 28px 28px 28px 0;
-    border-style: solid;
-    border-color: #0052d9 transparent transparent transparent;
-    border: 14px solid var(--td-brand-color, #0052d9);
-    border-bottom-color: transparent;
-    border-right-color: transparent;
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-width: 28px 28px 28px 0;
+  border-style: solid;
+  border-color: #0052d9 transparent transparent transparent;
+  border: 14px solid var(--td-brand-color, #0052d9);
+  border-bottom-color: transparent;
+  border-right-color: transparent;
 }
 
 .card__icon {
-    color: var(--td-bg-color-container, #fff);
-    position: absolute;
-    left: 1.5px;
-    top: 1.5px;
-    z-index: 1;
-    font-size: 16px;
+  color: var(--td-bg-color-container, #fff);
+  position: absolute;
+  left: 1.5px;
+  top: 1.5px;
+  z-index: 1;
+  font-size: 16px;
 }
 
 /* 横向布局 */
@@ -181,12 +160,12 @@ export default {
 } */
 
 .horizontal-box .card {
-    flex: 0 0 calc(33.33% - 12rpx);
-    margin: 0 0 24rpx 0;
+  flex: 0 0 calc(33.33% - 12rpx);
+  margin: 0 0 24rpx 0;
 }
 
 .horizontal-box .card::after {
-    border-width: 48rpx 48rpx 48rpx 0;
+  border-width: 48rpx 48rpx 48rpx 0;
 }
 
 /* .horizontal-box .card__icon {

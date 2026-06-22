@@ -1,60 +1,52 @@
 <template>
   <view
     :style="'' + tools._style([customStyle])"
-    :class="classPrefix + ' ' + classPrefix + '--' + (theme || 'grid') + ' ' + (disabled ? classPrefix + '--disabled' : '') + ' ' + tClass"
+    :class="
+      classPrefix +
+      ' ' +
+      classPrefix +
+      '--' +
+      (theme || 'grid') +
+      ' ' +
+      (disabled ? classPrefix + '--disabled' : '') +
+      ' ' +
+      tClass
+    "
   >
     <!-- ========== list 布局 ========== -->
     <block v-if="theme === 'list'">
       <!-- 上传触发按钮 -->
-      <view
-        v-if="addBtn && customLimit > 0"
-        :class="classPrefix + '__list-trigger'"
-        @click="onAddTap"
-      >
+      <view v-if="addBtn && customLimit > 0" :class="classPrefix + '__list-trigger'" @click="onAddTap">
         <slot name="add-content" />
         <block v-if="addContent">
           {{ addContent }}
         </block>
-        <t-button
-          v-else
-          theme="primary"
-          size="medium"
-          :disabled="disabled"
-          icon="upload"
-          @click="onAddTap"
-        >
+        <t-button v-else theme="primary" size="medium" :disabled="disabled" icon="upload" @click="onAddTap">
           上传
         </t-button>
       </view>
       <!-- 文件列表（非拖拽模式） -->
       <block v-if="!dragLayout">
-        <view
-          v-if="customFiles.length > 0"
-          :class="classPrefix + '__list'"
-        >
+        <view v-if="customFiles.length > 0" :class="classPrefix + '__list'">
           <view
             v-for="(file, index) in customFiles"
             :key="file.url"
-            :class="classPrefix + '__list-item' + (file.status == 'failed' || file.status == 'reload' ? ' ' + classPrefix + '__list-item--fail' : '') + (file.status == 'loading' ? ' ' + classPrefix + '__list-item--progress' : '')"
+            :class="
+              classPrefix +
+              '__list-item' +
+              (file.status == 'failed' || file.status == 'reload' ? ' ' + classPrefix + '__list-item--fail' : '') +
+              (file.status == 'loading' ? ' ' + classPrefix + '__list-item--progress' : '')
+            "
             :data-file="file"
             :data-index="index"
             @click="(e) => onPreview(e, { file, index })"
           >
             <!-- 左侧图标/缩略图 -->
             <block v-if="file.status == 'loading'">
-              <t-icon
-                :t-class="classPrefix + '__list-item-loading'"
-                name="loading"
-                size="48rpx"
-                aria-hidden
-              />
+              <t-icon :t-class="classPrefix + '__list-item-loading'" name="loading" size="48rpx" aria-hidden />
             </block>
             <block v-else-if="file.status == 'failed' || file.status == 'reload'">
-              <t-icon
-                :t-class="classPrefix + '__list-item-error-icon'"
-                name="error-circle-filled"
-                aria-hidden
-              />
+              <t-icon :t-class="classPrefix + '__list-item-error-icon'" name="error-circle-filled" aria-hidden />
             </block>
             <block v-else-if="isImageType(file) && file.url">
               <view style="position: relative; flex-shrink: 0">
@@ -64,10 +56,7 @@
                   :mode="(imageProps && imageProps.mode) || 'aspectFill'"
                   shape="round"
                 />
-                <view
-                  v-if="disabled"
-                  :class="classPrefix + '__disabled-mask'"
-                />
+                <view v-if="disabled" :class="classPrefix + '__disabled-mask'" />
               </view>
             </block>
             <block v-else>
@@ -84,26 +73,27 @@
                 {{ file.name || '' }}
               </view>
               <view :class="classPrefix + '__list-item-size'">
-                {{ file.status == 'loading'
-                  ? (file.percent ? globalConfig.progress.uploadingText + ' ' + file.percent + '%' : globalConfig.progress.uploadingText)
-                  : file.status == 'failed' || file.status == 'reload'
-                    ? globalConfig.progress.failText
-                    : formatSize(file.size) }}
+                {{
+                  file.status == 'loading'
+                    ? file.percent
+                      ? globalConfig.progress.uploadingText + ' ' + file.percent + '%'
+                      : globalConfig.progress.uploadingText
+                    : file.status == 'failed' || file.status == 'reload'
+                      ? globalConfig.progress.failText
+                      : formatSize(file.size)
+                }}
               </view>
             </view>
             <!-- 删除按钮 -->
             <view
-              v-if="(tools.isBoolean(file.removeBtn) ? file.removeBtn : removeBtn)"
+              v-if="tools.isBoolean(file.removeBtn) ? file.removeBtn : removeBtn"
               :class="classPrefix + '__list-item-action'"
               :data-index="index"
               aria-role="button"
               aria-label="删除"
-              @click.stop="(e) => onDelete(e, {index})"
+              @click.stop="(e) => onDelete(e, { index })"
             >
-              <t-icon
-                :t-class="classPrefix + '__list-item-delete'"
-                name="delete"
-              />
+              <t-icon :t-class="classPrefix + '__list-item-delete'" name="delete" />
             </view>
           </view>
         </view>
@@ -128,7 +118,11 @@
           aria-role="presentation"
         >
           <view
-            :class="classPrefix + '__wrapper ' + (!isImageType(file) && file.type !== 'video' ? classPrefix + '__wrapper--file' : '')"
+            :class="
+              classPrefix +
+              '__wrapper ' +
+              (!isImageType(file) && file.type !== 'video' ? classPrefix + '__wrapper--file' : '')
+            "
             :style="gridItemStyle"
             :aria-role="ariaRole || getWrapperAriaRole(file)"
             :aria-label="ariaLabel || getWrapperAriaLabel(file)"
@@ -169,7 +163,7 @@
               :class="classPrefix + '__file-content'"
               :data-file="file"
               :data-index="index"
-              @click.stop="(e) => onFileClick(e, {file, index})"
+              @click.stop="(e) => onFileClick(e, { file, index })"
             >
               <view :class="classPrefix + '__file-icon'">
                 <t-icon
@@ -188,29 +182,16 @@
               :class="classPrefix + '__progress-mask ' + classPrefix + '__progress-mask--file'"
               :data-index="index"
               :data-file="file"
-              @click.stop="(e) => onFileClick(e, {file, index})"
+              @click.stop="(e) => onFileClick(e, { file, index })"
             >
               <block v-if="file.status == 'loading'">
-                <t-icon
-                  :t-class="classPrefix + '__progress-loading'"
-                  name="loading"
-                  size="48rpx"
-                  aria-hidden
-                />
+                <t-icon :t-class="classPrefix + '__progress-loading'" name="loading" size="48rpx" aria-hidden />
                 <view :class="classPrefix + '__progress-text'">
                   {{ file.percent ? file.percent + '%' : globalConfig.progress.uploadingText }}
                 </view>
               </block>
-              <t-icon
-                v-else
-                :name="file.status == 'reload' ? 'refresh' : 'close-circle'"
-                size="48rpx"
-                aria-hidden
-              />
-              <view
-                v-if="file.status == 'reload' || file.status == 'failed'"
-                :class="classPrefix + '__progress-text'"
-              >
+              <t-icon v-else :name="file.status == 'reload' ? 'refresh' : 'close-circle'" size="48rpx" aria-hidden />
+              <view v-if="file.status == 'reload' || file.status == 'failed'" :class="classPrefix + '__progress-text'">
                 {{ file.status == 'reload' ? globalConfig.progress.reloadText : globalConfig.progress.failText }}
               </view>
             </view>
@@ -221,36 +202,29 @@
               :class="classPrefix + '__progress-mask'"
               :data-index="index"
               :data-file="file"
-              @click.stop="(e) => onFileClick(e, {file, index})"
+              @click.stop="(e) => onFileClick(e, { file, index })"
             >
               <block v-if="file.status == 'loading'">
-                <t-icon
-                  :t-class="classPrefix + '__progress-loading'"
-                  name="loading"
-                  size="48rpx"
-                  aria-hidden
-                />
+                <t-icon :t-class="classPrefix + '__progress-loading'" name="loading" size="48rpx" aria-hidden />
                 <view :class="classPrefix + '__progress-text'">
                   {{ file.percent ? file.percent + '%' : globalConfig.progress.uploadingText }}
                 </view>
               </block>
-              <t-icon
-                v-else
-                :name="file.status == 'reload' ? 'refresh' : 'close-circle'"
-                size="48rpx"
-                aria-hidden
-              />
-              <view
-                v-if="file.status == 'reload' || file.status == 'failed'"
-                :class="classPrefix + '__progress-text'"
-              >
+              <t-icon v-else :name="file.status == 'reload' ? 'refresh' : 'close-circle'" size="48rpx" aria-hidden />
+              <view v-if="file.status == 'reload' || file.status == 'failed'" :class="classPrefix + '__progress-text'">
                 {{ file.status == 'reload' ? globalConfig.progress.reloadText : globalConfig.progress.failText }}
               </view>
             </view>
 
             <!-- 禁用遮罩：图片/视频且非 loading/失败时显示 -->
             <view
-              v-if="disabled && (isImageType(file) || file.type === 'video') && file.status !== 'loading' && file.status !== 'failed' && file.status !== 'reload'"
+              v-if="
+                disabled &&
+                (isImageType(file) || file.type === 'video') &&
+                file.status !== 'loading' &&
+                file.status !== 'failed' &&
+                file.status !== 'reload'
+              "
               :class="classPrefix + '__disabled-mask'"
             />
 
@@ -260,13 +234,9 @@
               :data-index="index"
               aria-role="button"
               aria-label="删除"
-              @click.stop="(e) => onDelete(e, {index})"
+              @click.stop="(e) => onDelete(e, { index })"
             >
-              <t-icon
-                name="close"
-                size="32rpx"
-                color="#fff"
-              />
+              <t-icon name="close" size="32rpx" color="#fff" />
             </view>
           </view>
         </t-grid-item>
@@ -277,18 +247,12 @@
           aria-label="上传"
           @click="onAddTap"
         >
-          <view
-            :class="classPrefix + '__wrapper'"
-            :style="gridItemStyle"
-          >
+          <view :class="classPrefix + '__wrapper'" :style="gridItemStyle">
             <slot name="add-content" />
             <block v-if="addContent">
               {{ addContent }}
             </block>
-            <view
-              v-else
-              :class="classPrefix + '__add-icon ' + (disabled ? classPrefix + '__add-icon--disabled' : '')"
-            >
+            <view v-else :class="classPrefix + '__add-icon ' + (disabled ? classPrefix + '__add-icon--disabled' : '')">
               <t-icon name="add" />
             </view>
           </view>
@@ -319,7 +283,11 @@
               custom-style="width: 100%"
             >
               <view
-                :class="classPrefix + '__wrapper ' + (!isImageType(file) && file.type !== 'video' ? classPrefix + '__wrapper--file' : '')"
+                :class="
+                  classPrefix +
+                  '__wrapper ' +
+                  (!isImageType(file) && file.type !== 'video' ? classPrefix + '__wrapper--file' : '')
+                "
                 :style="gridItemStyle + ';'"
                 :aria-role="ariaRole || getWrapperAriaRole(file)"
                 :aria-label="ariaLabel || getWrapperAriaLabel(file)"
@@ -349,14 +317,14 @@
                   :autoplay="false"
                   objectFit="contain"
                   :data-file="file"
-                  @click.stop="(e) => onFileClick(e, {file, index})"
+                  @click.stop="(e) => onFileClick(e, { file, index })"
                 />
                 <view
                   v-else-if="!file.status || file.status == 'done'"
                   :class="classPrefix + '__file-content'"
                   :data-file="file"
                   :data-index="index"
-                  @click.stop="(e) => onFileClick(e, {file, index})"
+                  @click.stop="(e) => onFileClick(e, { file, index })"
                 >
                   <view :class="classPrefix + '__file-icon'">
                     <t-icon
@@ -374,15 +342,10 @@
                   :class="classPrefix + '__progress-mask ' + classPrefix + '__progress-mask--file'"
                   :data-index="index"
                   :data-file="file"
-                  @click.stop="(e) => onFileClick(e, {file, index})"
+                  @click.stop="(e) => onFileClick(e, { file, index })"
                 >
                   <block v-if="file.status == 'loading'">
-                    <t-icon
-                      :t-class="classPrefix + '__progress-loading'"
-                      name="loading"
-                      size="48rpx"
-                      aria-hidden
-                    />
+                    <t-icon :t-class="classPrefix + '__progress-loading'" name="loading" size="48rpx" aria-hidden />
                     <view :class="classPrefix + '__progress-text'">
                       {{ file.percent ? file.percent + '%' : globalConfig.progress.uploadingText }}
                     </view>
@@ -406,15 +369,10 @@
                   :class="classPrefix + '__progress-mask'"
                   :data-index="index"
                   :data-file="file"
-                  @click.stop="(e) => onFileClick(e, {file, index})"
+                  @click.stop="(e) => onFileClick(e, { file, index })"
                 >
                   <block v-if="file.status == 'loading'">
-                    <t-icon
-                      :t-class="classPrefix + '__progress-loading'"
-                      name="loading"
-                      size="48rpx"
-                      aria-hidden
-                    />
+                    <t-icon :t-class="classPrefix + '__progress-loading'" name="loading" size="48rpx" aria-hidden />
                     <view :class="classPrefix + '__progress-text'">
                       {{ file.percent ? file.percent + '%' : globalConfig.progress.uploadingText }}
                     </view>
@@ -434,7 +392,13 @@
                 </view>
 
                 <view
-                  v-if="disabled && (isImageType(file) || file.type === 'video') && file.status !== 'loading' && file.status !== 'failed' && file.status !== 'reload'"
+                  v-if="
+                    disabled &&
+                    (isImageType(file) || file.type === 'video') &&
+                    file.status !== 'loading' &&
+                    file.status !== 'failed' &&
+                    file.status !== 'reload'
+                  "
                   :class="classPrefix + '__disabled-mask'"
                 />
 
@@ -445,13 +409,9 @@
                   :data-url="file.url"
                   aria-role="button"
                   aria-label="删除"
-                  @click.stop="(e) => onDelete(e, {index})"
+                  @click.stop="(e) => onDelete(e, { index })"
                 >
-                  <t-icon
-                    name="close"
-                    size="32rpx"
-                    color="#fff"
-                  />
+                  <t-icon name="close" size="32rpx" color="#fff" />
                 </view>
               </view>
             </t-grid-item>
@@ -459,8 +419,8 @@
           <view
             v-if="addBtn && customLimit > 0"
             :ref="classPrefix + '__drag-item'"
-            :class="''+getDragItemClass(customFiles.length)"
-            :style="''+getDragItemStyle(customFiles.length)"
+            :class="'' + getDragItemClass(customFiles.length)"
+            :style="'' + getDragItemStyle(customFiles.length)"
           >
             <t-grid-item
               :t-class="classPrefix + '__grid'"
@@ -469,10 +429,7 @@
               custom-style="width: 100%"
               @click="onAddTap"
             >
-              <view
-                :class="classPrefix + '__wrapper'"
-                :style="gridItemStyle"
-              >
+              <view :class="classPrefix + '__wrapper'" :style="gridItemStyle">
                 <slot name="add-content" />
                 <block v-if="addContent">
                   {{ addContent }}
@@ -506,15 +463,8 @@ import TImage from '../image/image';
 
 import usingConfig from '../mixins/using-config';
 
-import {
-  longPress,
-  touchMove,
-  touchEnd,
-  baseDataObserver,
-  listObserver,
-} from './drag.computed.js';
+import { longPress, touchMove, touchEnd, baseDataObserver, listObserver } from './drag.computed.js';
 import props from './props';
-
 
 import {
   getWrapperAriaRole,
@@ -525,26 +475,25 @@ import {
   formatSize,
 } from './upload.computed.js';
 
-
 const componentName = 'upload';
 const name = `${prefix}-${componentName}`;
 
-const makeMethods = () => [
-  [longPress, 'longPress'],
-  [touchMove, 'touchMove'],
-  [touchEnd, 'touchEnd'],
-  [baseDataObserver, 'baseDataObserver'],
-  [listObserver, 'listObserver'],
-].reduce((acc, item) => {
-  const func = item[0];
-  return {
-    ...acc,
-    [item[1]](...args) {
-      func.call(this, ...args);
-    },
-  };
-}, {});
-
+const makeMethods = () =>
+  [
+    [longPress, 'longPress'],
+    [touchMove, 'touchMove'],
+    [touchEnd, 'touchEnd'],
+    [baseDataObserver, 'baseDataObserver'],
+    [listObserver, 'listObserver'],
+  ].reduce((acc, item) => {
+    const func = item[0];
+    return {
+      ...acc,
+      [item[1]](...args) {
+        func.call(this, ...args);
+      },
+    };
+  }, {});
 
 export default {
   components: {
@@ -671,12 +620,12 @@ export default {
       },
 
       /**
-   * 由于小程序暂时在ios上不支持返回上传文件的fileType，这里用文件的后缀来判断
-   * @param mediaType
-   * @param tempFilePath
-   * @returns string
-   * @link https://developers.weixin.qq.com/community/develop/doc/00042820b28ee8fb41fc4d0c254c00
-   */
+       * 由于小程序暂时在ios上不支持返回上传文件的fileType，这里用文件的后缀来判断
+       * @param mediaType
+       * @param tempFilePath
+       * @returns string
+       * @link https://developers.weixin.qq.com/community/develop/doc/00042820b28ee8fb41fc4d0c254c00
+       */
       getFileType(mediaType, tempFilePath, fileType) {
         if (fileType) return fileType; // 如果有返回fileType就直接用
         if (mediaType.length === 1 && mediaType[0] !== 'mix') {
@@ -748,8 +697,7 @@ export default {
         this.initDragList();
         setTimeout(() => {
           this.initDragBaseData();
-        }, 33)
-        ;
+        }, 33);
       },
 
       initDragList() {
@@ -792,7 +740,6 @@ export default {
           query = this.createSelectorQuery();
         }
 
-
         let selectorGridItem;
         let selectorGrid;
         // #ifdef H5 || APP
@@ -825,7 +772,6 @@ export default {
           this.dragWrapStyle = dragWrapStyle;
           this.dragLayout = true;
 
-
           // 为了给拖拽元素加上拖拽方法，同时控制不拖拽时不取消穿透
           const timer = setTimeout(() => {
             this.dragging = false;
@@ -854,7 +800,7 @@ export default {
 
         if (!preview) return;
 
-        const usePreviewMedia = this.customFiles.some(file => file.type === 'video');
+        const usePreviewMedia = this.customFiles.some((file) => file.type === 'video');
         if (usePreviewMedia) {
           this.onPreviewMedia({ index });
         } else {
@@ -863,7 +809,7 @@ export default {
       },
 
       onPreviewImage({ index }) {
-        const urls = this.customFiles.filter(file => file.percent !== -1).map(file => file.url);
+        const urls = this.customFiles.filter((file) => file.percent !== -1).map((file) => file.url);
         const current = this.customFiles[index]?.url;
         uni.previewImage({
           urls,
@@ -887,7 +833,7 @@ export default {
 
       uploadFiles(files) {
         return Promise.resolve().then(() => {
-        // 开始调用上传函数
+          // 开始调用上传函数
           const task = this.requestMethod(files);
           if (task instanceof Promise) {
             return task;
@@ -897,7 +843,7 @@ export default {
       },
 
       startUpload(files) {
-      // 如果传入了上传函数，则进度设为0并开始上传，否则跳过上传
+        // 如果传入了上传函数，则进度设为0并开始上传，否则跳过上传
         if (typeof this.requestMethod === 'function') {
           return this.uploadFiles(files)
             .then(() => {
@@ -965,7 +911,17 @@ export default {
 
             // 支持单/多文件
             res.tempFiles.forEach((temp) => {
-              const { size, fileType, tempFilePath: tTempFilePath, path: tPath, width, height, duration, thumbTempFilePath, ...res } = temp;
+              const {
+                size,
+                fileType,
+                tempFilePath: tTempFilePath,
+                path: tPath,
+                width,
+                height,
+                duration,
+                thumbTempFilePath,
+                ...res
+              } = temp;
               const tempFilePath = tTempFilePath || tPath;
               if (this.checkFileSize(size, sizeLimit, fileType)) return;
 
@@ -996,8 +952,8 @@ export default {
 
       // #ifdef H5
       /**
-     * H5 平台使用原生 input[type=file] 选择文件，支持图片和视频
-     */
+       * H5 平台使用原生 input[type=file] 选择文件，支持图片和视频
+       */
       chooseFileH5(mediaType, customLimit, sizeLimit) {
         const input = document.createElement('input');
         input.type = 'file';
@@ -1040,7 +996,7 @@ export default {
             const name = file.name || this.getRandFileName(url);
 
             if (fileType === 'image') {
-            // 图片：获取宽高
+              // 图片：获取宽高
               const img = new Image();
               img.onload = () => {
                 files.push({
@@ -1074,7 +1030,7 @@ export default {
               };
               img.src = url;
             } else {
-            // 视频：获取时长、宽高和封面
+              // 视频：获取时长、宽高和封面
               const video = document.createElement('video');
               video.preload = 'metadata';
               video.onloadedmetadata = () => {
@@ -1093,7 +1049,7 @@ export default {
                     canvas.getContext('2d').drawImage(video, 0, 0, width, height);
                     thumb = canvas.toDataURL('image/jpeg', 0.7);
                   } catch (err) {
-                  // 跨域等情况下可能截图失败，忽略
+                    // 跨域等情况下可能截图失败，忽略
                   }
 
                   files.push({
@@ -1166,8 +1122,8 @@ export default {
             });
             this.afterSelect(files);
           },
-          fail: err => this.triggerFailEvent(err),
-          complete: res => this.$emit('complete', res),
+          fail: (err) => this.triggerFailEvent(err),
+          complete: (res) => this.$emit('complete', res),
         });
       },
 
@@ -1244,18 +1200,13 @@ export default {
           return;
         }
         if (operation === 'remove') {
-          this.dragItemClassList[index] = this.dragItemClassList[index].filter(item => !valList.includes(item));
+          this.dragItemClassList[index] = this.dragItemClassList[index].filter((item) => !valList.includes(item));
         }
       },
       getDragItemClass(index) {
         const { classPrefix } = this;
-        const base = [
-          `${classPrefix}__drag-item`,
-        ];
-        return [
-          ...base,
-          ...(this.dragItemClassList[index] || []),
-        ].join(' ');
+        const base = [`${classPrefix}__drag-item`];
+        return [...base, ...(this.dragItemClassList[index] || [])].join(' ');
       },
       setDragItemStyle(index, val) {
         if (!this.dragItemStyleList[index]) {
@@ -1271,10 +1222,7 @@ export default {
           `--td-upload-drag-transition-timing-function: ${transition.timingFunction}`,
         ];
 
-        return [
-          ...base,
-          ...(this.dragItemStyleList[index] || []),
-        ].join(';');
+        return [...base, ...(this.dragItemStyleList[index] || [])].join(';');
       },
     },
   }),

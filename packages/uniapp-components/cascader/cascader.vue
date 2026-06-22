@@ -10,33 +10,20 @@
       :overlay-props="popupProps && popupProps.overlayProps"
       @visible-change="onVisibleChange"
     >
-      <view
-        :style="'' + tools._style([customStyle])"
-        :class="classPrefix"
-      >
+      <view :style="'' + tools._style([customStyle])" :class="classPrefix">
         <view :class="classPrefix + '__title'">
           <slot name="title" />
           {{ title || globalConfig.title || '' }}
         </view>
-        <view
-          :class="classPrefix + '__close-btn'"
-          @click="onClose"
-        >
+        <view :class="classPrefix + '__close-btn'" @click="onClose">
           <slot name="close-btn" />
-          <t-icon
-            v-if="closeBtn"
-            size="48rpx"
-            name="close"
-          />
+          <t-icon v-if="closeBtn" size="48rpx" name="close" />
         </view>
 
         <slot name="header" />
 
         <view :class="classPrefix + '__content'">
-          <view
-            v-if="filterable"
-            :class="classPrefix + '__filter'"
-          >
+          <view v-if="filterable" :class="classPrefix + '__filter'">
             <t-search
               :value="filterKeyword"
               :placeholder="filterPlaceholder || globalConfig.filterPlaceholder"
@@ -47,10 +34,7 @@
 
           <block v-if="!isSearching">
             <block v-if="steps && steps.length">
-              <view
-                v-if="theme == 'step'"
-                :class="classPrefix + '__steps'"
-              >
+              <view v-if="theme == 'step'" :class="classPrefix + '__steps'">
                 <view
                   v-for="(item, index) in steps"
                   :key="index"
@@ -61,18 +45,26 @@
                   <view
                     :class="
                       classPrefix +
-                        '__step-dot ' +
-                        classPrefix +
-                        '__step-dot--' +
-                        (item !== placeholder ? 'active' : '') +
-                        ' ' +
-                        classPrefix +
-                        '__step-dot--' +
-                        (index === steps.length - 1 ? 'last' : '')
+                      '__step-dot ' +
+                      classPrefix +
+                      '__step-dot--' +
+                      (item !== placeholder ? 'active' : '') +
+                      ' ' +
+                      classPrefix +
+                      '__step-dot--' +
+                      (index === steps.length - 1 ? 'last' : '')
                     "
                   />
 
-                  <view :class="classPrefix + '__step-label ' + classPrefix + '__step-label--' + (index === stepIndex ? 'active' : '')">
+                  <view
+                    :class="
+                      classPrefix +
+                      '__step-label ' +
+                      classPrefix +
+                      '__step-label--' +
+                      (index === stepIndex ? 'active' : '')
+                    "
+                  >
                     {{ item }}
                   </view>
 
@@ -91,7 +83,7 @@
                 ref="tabs"
                 :value="stepIndex"
                 :space-evenly="false"
-                @change="({value}) => onTabChange(value)"
+                @change="({ value }) => onTabChange(value)"
               >
                 <t-tab-panel
                   v-for="(item, index) in steps"
@@ -105,16 +97,13 @@
 
             <slot name="middle-content" />
 
-            <view
-              v-if="subTitles && subTitles[stepIndex]"
-              :class="classPrefix + '__options-title'"
-            >
+            <view v-if="subTitles && subTitles[stepIndex]" :class="classPrefix + '__options-title'">
               {{ subTitles[stepIndex] }}
             </view>
 
             <view
               :class="classPrefix + '__options-container'"
-              :style="'' + `width: ${items.length + 1 }00vw; transform: translateX(-${stepIndex}00vw)`"
+              :style="'' + `width: ${items.length + 1}00vw; transform: translateX(-${stepIndex}00vw)`"
             >
               <scroll-view
                 v-for="(options, index) in items"
@@ -142,16 +131,15 @@
           </block>
 
           <block v-else>
-            <scroll-view
-              v-if="filterResults.length"
-              :class="classPrefix + '__filter-result'"
-              scroll-y
-              type="list"
-            >
+            <scroll-view v-if="filterResults.length" :class="classPrefix + '__filter-result'" scroll-y type="list">
               <view
                 v-for="item in filterResults"
                 :key="item.key"
-                :class="classPrefix + '__filter-result-item' + (item.disabled ? ' ' + classPrefix + '__filter-result-item--disabled' : '')"
+                :class="
+                  classPrefix +
+                  '__filter-result-item' +
+                  (item.disabled ? ' ' + classPrefix + '__filter-result-item--disabled' : '')
+                "
                 :hover-class="item.disabled ? '' : classPrefix + '__filter-result-item--hover'"
                 :data-key="item.key"
                 @click="() => onFilterResultTap(item.key)"
@@ -165,10 +153,7 @@
                 </text>
               </view>
             </scroll-view>
-            <view
-              v-else
-              :class="classPrefix + '__filter-empty'"
-            >
+            <view v-else :class="classPrefix + '__filter-empty'">
               {{ globalConfig.empty }}
             </view>
           </block>
@@ -192,7 +177,6 @@ import TTabs from '../tabs/tabs';
 
 import props from './props';
 
-
 const componentName = 'cascader';
 const name = `${prefix}-${componentName}`;
 
@@ -201,7 +185,7 @@ function parseOptions(options, keys) {
   const value = coalesce(keys?.value, 'value');
   const disabled = coalesce(keys?.disabled, 'disabled');
 
-  return options.map(item => ({
+  return options.map((item) => ({
     [label]: item[label],
     [value]: item[value],
     [disabled]: item[disabled],
@@ -223,15 +207,15 @@ function flattenPaths(options, keys) {
       if (Array.isArray(children) && children.length > 0) {
         walk(children, nextPath, nextIndexes);
       } else {
-        const labels = nextPath.map(node => String(coalesce(node?.[labelKey], '')));
+        const labels = nextPath.map((node) => String(coalesce(node?.[labelKey], '')));
         const text = [labels.join(''), String(coalesce(item?.text, ''))].filter(Boolean).join('');
         result.push({
-          key: nextPath.map(node => String(coalesce(node?.[valueKey], ''))).join('/'),
+          key: nextPath.map((node) => String(coalesce(node?.[valueKey], ''))).join('/'),
           path: nextPath,
           indexes: nextIndexes,
           labels,
           text,
-          disabled: nextPath.some(node => node?.[disabledKey]),
+          disabled: nextPath.some((node) => node?.[disabledKey]),
         });
       }
     });
@@ -270,7 +254,7 @@ function buildFragments(labels, keyword) {
 function defaultFilter(keyword, _option, path, labelKey) {
   const lower = keyword.toLowerCase();
   const joined = path
-    .map(node => String(coalesce(node?.[labelKey], '')))
+    .map((node) => String(coalesce(node?.[labelKey], '')))
     .join('')
     .toLowerCase();
   const text = String(coalesce(path[path.length - 1]?.text, '')).toLowerCase();
@@ -308,15 +292,11 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     props: {
       ...props,
     },
-    emits: [
-      'update:visible',
-    ],
+    emits: ['update:visible'],
     data() {
       return {
         prefix,
@@ -340,7 +320,8 @@ export default {
     computed: {
       stepArrowCustomStyle() {
         return tools._style({
-          color: 'var(--td-cascader-step-arrow-color, var(--td-text-color-placeholder, var(--td-font-gray-3, rgba(0, 0, 0, .4))))',
+          color:
+            'var(--td-cascader-step-arrow-color, var(--td-text-color-placeholder, var(--td-font-gray-3, rgba(0, 0, 0, .4))))',
           marginLeft: 'auto',
         });
       },
@@ -442,7 +423,6 @@ export default {
             this.items = items;
           }
 
-
           if (visible && theme === 'step') {
             this.updateOptionsHeight(steps.length);
           }
@@ -469,12 +449,10 @@ export default {
       };
       this.filterDebounced = null;
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
       setTabParent() {
-      // #ifdef MP-TOUTIAO
+        // #ifdef MP-TOUTIAO
         nextTick().then(() => {
           const tabsRef = this.$refs.tabs;
           this.steps.forEach((tools, index) => {
@@ -482,7 +460,7 @@ export default {
             tabRef?.[0]?.setParent(tabsRef);
           });
         });
-      // #endif
+        // #endif
       },
       updateOptionsHeight(steps) {
         const { contentHeight, stepsInitHeight, stepHeight, subTitlesHeight } = this.state;
@@ -496,16 +474,12 @@ export default {
         this.state.contentHeight = height;
 
         if (theme === 'step') {
-          await Promise.all([
-            getRect(this, `.${classPrefix}__steps`),
-            getRect(this, `.${classPrefix}__step`),
-          ])
+          await Promise.all([getRect(this, `.${classPrefix}__steps`), getRect(this, `.${classPrefix}__step`)])
             .then(([stepsRect, stepRect]) => {
               this.state.stepsInitHeight = stepsRect.height - (steps - 1) * stepRect.height;
               this.state.stepHeight = stepRect.height;
             })
-            .catch(() => {
-            });
+            .catch(() => {});
         }
 
         if (subTitles.length > 0) {
@@ -514,17 +488,18 @@ export default {
         }
 
         if (filterable) {
-          await getRect(this, `.${classPrefix}__filter`).then((filterRect) => {
-            this.state.filterHeight = filterRect.height;
-          })
-            .catch(() => {
-            });
+          await getRect(this, `.${classPrefix}__filter`)
+            .then((filterRect) => {
+              this.state.filterHeight = filterRect.height;
+            })
+            .catch(() => {});
         }
 
         const optionsInitHeight = this.state.contentHeight - this.state.subTitlesHeight - this.state.filterHeight;
-        this.optionsHeight = theme === 'step'
-          ? optionsInitHeight - this.state.stepsInitHeight - (steps - 1) * this.state.stepHeight
-          : optionsInitHeight - this.state.tabsHeight;
+        this.optionsHeight =
+          theme === 'step'
+            ? optionsInitHeight - this.state.stepsInitHeight - (steps - 1) * this.state.stepHeight
+            : optionsInitHeight - this.state.tabsHeight;
       },
 
       initWithValue() {
@@ -558,13 +533,13 @@ export default {
         const { dataVisible: visible, items, selectedIndexes, stepIndex } = this;
 
         if (visible) {
-          getRect(this, '.cascader-radio-group-0').then((rect) => {
-            const eachRadioHeight = rect.height / items[0]?.length;
+          getRect(this, '.cascader-radio-group-0')
+            .then((rect) => {
+              const eachRadioHeight = rect.height / items[0]?.length;
 
-            this[`scrollTopList[${stepIndex}]`] = eachRadioHeight * selectedIndexes[stepIndex];
-          })
-            .catch(() => {
-            });
+              this[`scrollTopList[${stepIndex}]`] = eachRadioHeight * selectedIndexes[stepIndex];
+            })
+            .catch(() => {});
         }
       },
       hide(trigger) {
@@ -600,7 +575,7 @@ export default {
       onFilterChange(e) {
         const value = e?.value ?? e?.detail?.value ?? '';
         if (!this.filterDebounced) {
-          this.filterDebounced = debounce(kw => this.applyFilter(kw), 200);
+          this.filterDebounced = debounce((kw) => this.applyFilter(kw), 200);
         }
         this.filterDebounced(value);
       },
@@ -622,9 +597,10 @@ export default {
 
         flat.forEach((entry) => {
           const leaf = entry.path[entry.path.length - 1];
-          const matched = typeof userFilter === 'function'
-            ? !!userFilter(keyword, leaf, entry.path)
-            : defaultFilter(keyword, leaf, entry.path, labelKey);
+          const matched =
+            typeof userFilter === 'function'
+              ? !!userFilter(keyword, leaf, entry.path)
+              : defaultFilter(keyword, leaf, entry.path, labelKey);
           if (matched) {
             results.push({
               key: entry.key,
@@ -640,7 +616,7 @@ export default {
         this.isSearching = true;
       },
       onFilterResultTap(key) {
-        const target = this.filterResults.find(item => item.key === key);
+        const target = this.filterResults.find((item) => item.key === key);
         if (!target || target.disabled) return;
 
         const { indexes } = target;
@@ -723,7 +699,7 @@ export default {
         const { checkStrictly } = this;
         const { selectedIndexes, items, keys, options, selectedValue } = this;
 
-        const index = items[level].findIndex(item => item[coalesce(keys?.value, 'value')] === value);
+        const index = items[level].findIndex((item) => item[coalesce(keys?.value, 'value')] === value);
 
         let item = selectedIndexes.slice(0, level).reduce((acc, item, index) => {
           if (index === 0) {
@@ -731,7 +707,6 @@ export default {
           }
           return acc[coalesce(keys?.children, 'children')][item];
         }, options);
-
 
         if (level === 0) {
           item = item[index];
@@ -761,7 +736,7 @@ export default {
           this.selectedIndexes = selectedIndexes;
           this[`items[${level + 1}]`] = newItems[level + 1];
         } else {
-        // setCascaderValue(item.value);
+          // setCascaderValue(item.value);
           this.selectedIndexes = selectedIndexes;
           setTimeout(this.triggerChange);
 
@@ -769,7 +744,7 @@ export default {
         }
         // #ifdef VUE2
         this.$set(this, 'selectedIndexes', JSON.parse(JSON.stringify(selectedIndexes)));
-      // #endif
+        // #endif
       },
       triggerChange() {
         const { items, selectedValue, selectedIndexes } = this;

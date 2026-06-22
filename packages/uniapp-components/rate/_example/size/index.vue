@@ -1,25 +1,12 @@
 <template>
   <view>
     <view class="demo-rate">
-      <view class="demo-rate__title">
-        大尺寸 24
-      </view>
-      <t-rate
-        :value="value[0]"
-        :data-index="0"
-        @change="(e) => onChange(e, { index: 0 })"
-      />
+      <view class="demo-rate__title"> 大尺寸 24 </view>
+      <t-rate :value="value[0]" :data-index="0" @change="(e) => onChange(e, { index: 0 })" />
     </view>
     <view class="demo-rate">
-      <view class="demo-rate__title">
-        小尺寸 20
-      </view>
-      <t-rate
-        :value="value[1]"
-        :data-index="1"
-        :size="20"
-        @change="(e) => onChange(e, { index: 1 })"
-      />
+      <view class="demo-rate__title"> 小尺寸 20 </view>
+      <t-rate :value="value[1]" :data-index="1" :size="20" @change="(e) => onChange(e, { index: 1 })" />
     </view>
   </view>
 </template>
@@ -49,25 +36,25 @@ export default {
 </script>
 <style>
 .demo-rate {
-    background-color: var(--bg-color-demo);
-    color: var(--td-text-color-primary);
-    height: 96rpx;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 32rpx;
-    margin-top: 32rpx;
-    margin-bottom: 32rpx;
+  background-color: var(--bg-color-demo);
+  color: var(--td-text-color-primary);
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  margin-top: 32rpx;
+  margin-bottom: 32rpx;
 }
 
 .demo-rate__title {
-    width: 200rpx;
-    font-size: 16px;
+  width: 200rpx;
+  font-size: 16px;
 }
 
 .demo-rate__transparent {
-    background-color: transparent;
-    padding-left: 32rpx;
-    border: 0;
+  background-color: transparent;
+  padding-left: 32rpx;
+  border: 0;
 }
 </style>

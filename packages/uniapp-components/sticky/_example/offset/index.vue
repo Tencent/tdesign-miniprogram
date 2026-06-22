@@ -1,12 +1,7 @@
 <template>
   <view>
     <t-sticky :offset-top="40 + navbarHeight">
-      <t-button
-        size="large"
-        theme="danger"
-        t-class="external-class"
-        custom-style="width: 104px;margin-left: 136px;"
-      >
+      <t-button size="large" theme="danger" t-class="external-class" custom-style="width: 104px;margin-left: 136px;">
         吸顶距离
       </t-button>
     </t-sticky>

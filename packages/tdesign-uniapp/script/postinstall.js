@@ -45,8 +45,8 @@ function detectVueVersion() {
   try {
     const userPkgPath = path.resolve(process.cwd(), 'package.json');
     const userPkg = JSON.parse(fs.readFileSync(userPkgPath, 'utf-8'));
-    const vueDep = (userPkg.dependencies && userPkg.dependencies.vue)
-      || (userPkg.devDependencies && userPkg.devDependencies.vue);
+    const vueDep =
+      (userPkg.dependencies && userPkg.dependencies.vue) || (userPkg.devDependencies && userPkg.devDependencies.vue);
     if (vueDep) return vueDep;
   } catch (e) {}
 

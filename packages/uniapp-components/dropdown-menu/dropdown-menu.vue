@@ -9,7 +9,13 @@
       v-for="(item, index) in menus"
       :key="index"
       :data-index="index"
-      :class="[classPrefix + '__item', activeIdx == index ? classPrefix + '__item' + '--active' : '', item.disabled ? classPrefix + '__item' + '--disabled' : '', true ? classPrefix + '__item' + '--index' : '', tClassItem]"
+      :class="[
+        classPrefix + '__item',
+        activeIdx == index ? classPrefix + '__item' + '--active' : '',
+        item.disabled ? classPrefix + '__item' + '--disabled' : '',
+        true ? classPrefix + '__item' + '--index' : '',
+        tClassItem,
+      ]"
       :aria-disabled="item.disabled"
       aria-role="button"
       :aria-expanded="activeIdx === index"
@@ -20,14 +26,11 @@
         {{ item.label }}
       </view>
 
-      <block
-        v-if="iArrowIcon"
-        name="icon"
-      >
+      <block v-if="iArrowIcon" name="icon">
         <t-icon
           :custom-style="iArrowIcon.style || ''"
           :t-class="getIconTClass(index)"
-          :class="''+getIconClass(index)"
+          :class="'' + getIconClass(index)"
           :prefix="iArrowIcon.prefix"
           :name="iArrowIcon.name"
           :size="iArrowIcon.size"
@@ -55,9 +58,7 @@ import TIcon from '../icon/icon';
 
 import props from './props';
 
-
 const name = `${prefix}-dropdown-menu`;
-
 
 export default {
   components: {
@@ -68,12 +69,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-item`,
-      `${prefix}-class-label`,
-      `${prefix}-class-icon`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-label`, `${prefix}-class-icon`],
     mixins: [ParentMixin(RELATION_MAP.DropdownItem)],
     props: {
       ...props,
@@ -149,7 +145,7 @@ export default {
         }
       },
       getAllItems() {
-        const menus = this.children?.map(data => ({
+        const menus = this.children?.map((data) => ({
           label: data.computedLabel || data.label,
           disabled: data.disabled,
         }));

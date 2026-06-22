@@ -1,16 +1,7 @@
 <template>
   <view class="demo__list">
-    <view
-      v-for="(item, index) in imageIconList"
-      :key="index"
-      class="demo__card"
-    >
-      <t-icon
-        :name="item"
-        size="48rpx"
-        :data-name="item"
-        @click="(e) => onIconTap(e, { name: item })"
-      />
+    <view v-for="(item, index) in imageIconList" :key="index" class="demo__card">
+      <t-icon :name="item" size="48rpx" :data-name="item" @click="(e) => onIconTap(e, { name: item })" />
     </view>
   </view>
 </template>
@@ -23,7 +14,10 @@ export default {
   },
   data() {
     return {
-      imageIconList: ['https://tdesign.gtimg.com/mobile/demos/icon1.png', 'https://tdesign.gtimg.com/mobile/demos/icon2.png'],
+      imageIconList: [
+        'https://tdesign.gtimg.com/mobile/demos/icon1.png',
+        'https://tdesign.gtimg.com/mobile/demos/icon2.png',
+      ],
     };
   },
   created() {},
@@ -44,15 +38,15 @@ export default {
 </script>
 <style>
 .demo__list {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 16rpx 32rpx;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 16rpx 32rpx;
 }
 
 .demo__card {
-    flex: 0 0 25%;
-    display: flex;
-    justify-content: center;
-    text-align: center;
+  flex: 0 0 25%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 </style>

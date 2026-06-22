@@ -1,26 +1,15 @@
 <template>
   <view>
-    <view class="demo-desc">
-      Large
-    </view>
+    <view class="demo-desc"> Large </view>
 
     <view class="block">
-      <t-avatar
-        icon="user"
-        size="large"
-        :badge-props="{count: 8, size: 'large', offset: [7, 7]}"
-      />
+      <t-avatar icon="user" size="large" :badge-props="{ count: 8, size: 'large', offset: [7, 7] }" />
     </view>
 
-    <view class="demo-desc">
-      Medium
-    </view>
+    <view class="demo-desc"> Medium </view>
 
     <view class="block">
-      <t-avatar
-        icon="user"
-        :badge-props="{count: 8, offset: [5, 5]}"
-      />
+      <t-avatar icon="user" :badge-props="{ count: 8, offset: [5, 5] }" />
     </view>
   </view>
 </template>
@@ -42,6 +31,6 @@ export default {
 </script>
 <style>
 .block {
-    padding: 32rpx 32rpx 48rpx;
+  padding: 32rpx 32rpx 48rpx;
 }
 </style>

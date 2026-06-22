@@ -2,20 +2,11 @@
   <view
     v-if="visible"
     :style="'' + tools._style([customStyle])"
-    :class="[
-      classPrefix + ' ' + classPrefix + '--' + theme,
-      tClass
-    ]"
+    :class="[classPrefix + ' ' + classPrefix + '--' + theme, tClass]"
   >
-    <view
-      :class="classPrefix + '__prefix-icon'"
-      @click="clickPrefixIcon"
-    >
+    <view :class="classPrefix + '__prefix-icon'" @click="clickPrefixIcon">
       <slot name="prefix-icon" />
-      <block
-        v-if="iPrefixIcon"
-        name="icon"
-      >
+      <block v-if="iPrefixIcon" name="icon">
         <t-icon
           :custom-style="iPrefixIcon.style || ''"
           :t-class="tClassPrefixIcon"
@@ -30,10 +21,7 @@
         />
       </block>
     </view>
-    <view
-      :class="classPrefix + '__content-wrap'"
-      @click="clickContent"
-    >
+    <view :class="classPrefix + '__content-wrap'" @click="clickContent">
       <view v-if="direction === 'vertical' && tools.isArray(content)">
         <swiper
           :autoplay="true"
@@ -44,10 +32,7 @@
           :class="classPrefix + '__content ' + classPrefix + '__content--vertical'"
           @change="onChange"
         >
-          <block
-            v-for="(item, index) in content"
-            :key="index"
-          >
+          <block v-for="(item, index) in content" :key="index">
             <swiper-item>
               <view :class="classPrefix + '__content--vertical-item'">
                 {{ item }}
@@ -65,10 +50,7 @@
           {{ content }}
         </block>
         <slot name="content" />
-        <view
-          :class="classPrefix + '__operation ' + tClassOperation"
-          @click.stop.prevent="clickOperation"
-        >
+        <view :class="classPrefix + '__operation ' + tClassOperation" @click.stop.prevent="clickOperation">
           <block v-if="operation">
             {{ operation }}
           </block>
@@ -76,15 +58,9 @@
         </view>
       </view>
     </view>
-    <view
-      :class="classPrefix + '__suffix-icon'"
-      @click="clickSuffixIcon"
-    >
+    <view :class="classPrefix + '__suffix-icon'" @click="clickSuffixIcon">
       <slot name="suffix-icon" />
-      <block
-        v-if="iSuffixIcon"
-        name="icon"
-      >
+      <block v-if="iSuffixIcon" name="icon">
         <t-icon
           :custom-style="iSuffixIcon.style || ''"
           :t-class="tClassSuffixIcon"
@@ -109,7 +85,6 @@ import tools from '../common/utils.wxs';
 import TIcon from '../icon/icon.vue';
 
 import props from './props';
-
 
 const name = `${prefix}-notice-bar`;
 const THEME_ICON = {
@@ -138,10 +113,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-      'click',
-      'change',
-    ],
+    emits: ['click', 'change'],
     data() {
       return {
         prefix,
@@ -218,7 +190,7 @@ export default {
     },
     methods: {
       initAnimation() {
-      // 获取外部容器和滚动内容的宽度
+        // 获取外部容器和滚动内容的宽度
         const warpID = `.${name}__content-wrap`;
         const nodeID = `.${name}__content`;
         getAnimationFrame(this, () => {
@@ -256,19 +228,18 @@ export default {
         const delayTime = isFirstScroll ? delay : 0;
         const durationTime = isFirstScroll ? firstAnimationDuration : animationDuration;
         // 滚动内容: 初始位置
-        this.animationData = this.resetAnimation
+        ((this.animationData = this.resetAnimation
           .translateX(isFirstScroll ? 0 : wrapWidth)
           .step()
-          .export(),
-
-        setTimeout(() => {
-        // 滚动内容: 最终位置
-          this.animationData = uni
-            .createAnimation({ duration: durationTime, timingFunction: 'linear', delay: delayTime })
-            .translateX(-nodeWidth)
-            .step()
-            .export();
-        }, 20);
+          .export()),
+          setTimeout(() => {
+            // 滚动内容: 最终位置
+            this.animationData = uni
+              .createAnimation({ duration: durationTime, timingFunction: 'linear', delay: delayTime })
+              .translateX(-nodeWidth)
+              .step()
+              .export();
+          }, 20));
 
         // 滚动一次完成, 开启下一次的滚动
         this.nextAnimationContext = setTimeout(() => {
@@ -276,9 +247,8 @@ export default {
             this.loop -= 1;
             this.startScrollAnimation();
           } else if (this.loop === 0) {
-          // 动画回到初始位置
-            this.animationData = this.resetAnimation.translateX(0).step()
-              .export();
+            // 动画回到初始位置
+            this.animationData = this.resetAnimation.translateX(0).step().export();
           } else if (this.loop < 0) {
             this.startScrollAnimation();
           }

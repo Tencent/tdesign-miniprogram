@@ -26,4 +26,3 @@ export const getIconData = function (icon) {
 export const isImage = function (name) {
   return name.indexOf('/') !== -1;
 };
-

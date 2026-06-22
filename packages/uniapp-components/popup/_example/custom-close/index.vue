@@ -1,18 +1,8 @@
 <template>
   <view>
-    <t-popup
-      :visible="visible"
-      placement="center"
-      @visible-change="onVisibleChange"
-    >
+    <t-popup :visible="visible" placement="center" @visible-change="onVisibleChange">
       <view class="block">
-        <t-icon
-          name="close-circle"
-          :custom-style="closeIconCustomStyle"
-          size="64rpx"
-          color="#fff"
-          @click="onClose"
-        />
+        <t-icon name="close-circle" :custom-style="closeIconCustomStyle" size="64rpx" color="#fff" @click="onClose" />
       </view>
     </t-popup>
 
@@ -97,10 +87,10 @@ export default {
 </script>
 <style scoped>
 .block {
-    position: relative;
-    width: 240px;
-    height: 240px;
-    background: var(--td-bg-color-container);
-    border-radius: 16rpx;
+  position: relative;
+  width: 240px;
+  height: 240px;
+  background: var(--td-bg-color-container);
+  border-radius: 16rpx;
 }
 </style>

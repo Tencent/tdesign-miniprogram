@@ -1,18 +1,11 @@
 <template>
   <view>
     <view class="example-segmented">
-      <t-segmented
-        :options="options"
-        :default-value="0"
-      />
+      <t-segmented :options="options" :default-value="0" />
     </view>
 
     <view class="example-segmented">
-      <t-segmented
-        :options="optionsWithIcon"
-        :value="valueWithIcon"
-        @change="onChangeWithIcon"
-      />
+      <t-segmented :options="optionsWithIcon" :value="valueWithIcon" @change="onChangeWithIcon" />
     </view>
   </view>
 </template>

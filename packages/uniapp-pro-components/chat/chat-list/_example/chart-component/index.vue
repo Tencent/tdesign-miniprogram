@@ -1,12 +1,6 @@
 <template>
-  <view
-    v-if="ec"
-    class="container"
-  >
-    <ec-canvas
-      canvas-id="mychart-line"
-      :ec="ec"
-    />
+  <view v-if="ec" class="container">
+    <ec-canvas canvas-id="mychart-line" :ec="ec" />
   </view>
 </template>
 
@@ -70,14 +64,13 @@ export default {
 </script>
 <style>
 .container {
-    position: relative !important;
-    width: 100% !important;
-    height: 600rpx !important;
+  position: relative !important;
+  width: 100% !important;
+  height: 600rpx !important;
 }
 
 ec-canvas {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
-
 </style>
