@@ -249,7 +249,7 @@ spline: explain
   </div>
 </section>
 
-<h3>数据展示<em class="tag">21</em></h3>
+<h3>数据展示<em class="tag">20</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/uniapp/components/avatar">
@@ -356,14 +356,6 @@ spline: explain
   </div>
 
    <div class="image-wrapper">
-    <a class="item" href="/uniapp/components/segmented">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-segmented.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-segmented-dark.png" />
-      <p class="name">Segmented 分段控制器</p>
-    </a>
-  </div>
-
-  <div class="image-wrapper">
     <a class="item" href="/uniapp/components/segmented">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-segmented.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-segmented-dark.png" />
