@@ -3,14 +3,14 @@
     <t-collapse :default-value="['1', '2']">
       <t-collapse-panel
         value="1"
-        header="带左侧图标"
+        header="折叠面板标题"
         header-left-icon="https://tdesign.gtimg.com/icon/0.0.1/static/svg/help.svg"
         header-right-content="详情"
         content="可以通过 headerLeftIcon 和 headerRightContent 自定义面板头。"
       />
       <t-collapse-panel
         value="2"
-        header="禁用面板"
+        header="折叠面板标题"
         :disabled="true"
         content="disabled=true 时禁止点击展开/收起。"
       />

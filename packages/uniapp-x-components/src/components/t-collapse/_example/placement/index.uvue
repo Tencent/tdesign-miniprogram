@@ -4,7 +4,8 @@
       <t-collapse-panel
         value="1"
         header="折叠面板标题"
-        content="此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容"
+        placement="top"
+        content="placement=top 时，内容显示在面板头部上方。"
       ></t-collapse-panel>
     </t-collapse>
   </view>

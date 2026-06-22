@@ -1,41 +1,49 @@
 <template>
   <view class="demo-block">
+    <view class="demo-desc">Large</view>
     <view class="demo-row">
-      <t-badge :count="3" size="medium">
-        <text class="demo-text">默认尺寸</text>
-      </t-badge>
-      <t-badge :count="3" size="large">
-        <text class="demo-text">大尺寸</text>
+      <t-badge :count="8" size="large" :offset="[-6, 6]">
+        <t-avatar size="large">
+          <t-icon name="user" size="32" color="#0052d9" />
+        </t-avatar>
       </t-badge>
     </view>
+
+    <view class="demo-desc">Medium</view>
     <view class="demo-row">
-      <t-badge dot size="medium">
-        <text class="demo-text">默认红点</text>
-      </t-badge>
-      <t-badge dot size="large">
-        <text class="demo-text">大号红点</text>
+      <t-badge :count="8" :offset="[-4, 4]">
+        <t-avatar>
+          <t-icon name="user" size="24" color="#0052d9" />
+        </t-avatar>
       </t-badge>
     </view>
   </view>
 </template>
 
+<script setup lang="uts">
+// easycom
+</script>
+
 <style>
 .demo-block {
   padding: 16px;
+  background-color: #ffffff;
+}
+.demo-desc {
+  font-size: 14px;
+  color: #666666;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 .demo-row {
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
-  margin-bottom: 8px;
+  margin-bottom: 24px;
+  overflow: visible;
 }
-.demo-row > * {
+.demo-row > view {
   margin-right: 40px;
-  margin-bottom: 12px;
-}
-.demo-text {
-  font-size: 14px;
-  color: #181818;
 }
 </style>

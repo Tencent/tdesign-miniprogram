@@ -58,7 +58,16 @@
     flex-direction: row;
     align-items: center;
     align-self: stretch;
-    &:not(:empty) { margin-right: @td-cell-left-spacer; }
+    &:not(:empty) { margin-right: @td-cell-spacer-2; }
+
+    &-icon {
+      font-size: 24px;
+    }
+
+    &-image {
+      width: 48px;
+      height: 48px;
+    }
   }
 
   &__title {
@@ -117,6 +126,12 @@
     &--bottom { align-items: flex-end; }
 
     &-arrow {
+      margin-left: @td-cell-spacer;
+      color: @td-cell-right-icon-color;
+      font-size: @td-cell-right-icon-size;
+    }
+
+    &-icon {
       margin-left: @td-cell-spacer;
       color: @td-cell-right-icon-color;
       font-size: @td-cell-right-icon-size;

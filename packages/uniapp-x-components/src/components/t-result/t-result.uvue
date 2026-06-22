@@ -10,15 +10,21 @@
         />
         <image
           v-else-if="iconUrl.length > 0"
-          class="t-result__icon"
+          class="t-result__image"
           :src="iconUrl"
           mode="aspectFit"
         />
+        <t-icon
+          v-else-if="themeIconName.length > 0"
+          class="t-result__icon"
+          :name="themeIconName"
+          size="80px"
+        />
       </slot>
     </view>
-    <view v-if="props.title.length > 0" class="t-result__title">
+    <view v-if="hasTitle" class="t-result__title">
       <slot name="title">
-        <text>{{ props.title }}</text>
+        <text v-if="props.title.length > 0">{{ props.title }}</text>
       </slot>
     </view>
     <view v-if="hasDescription" class="t-result__description">
@@ -34,16 +40,25 @@
  * Result - uni-app x 实现
  *
  * 行为契约对齐 uniapp-components/result：
- *  - icon 简化为 string（图片 URL）或 boolean（false=不显示）
- *  - 主题着色通过 .t-result--theme-* 应用 thumb color
+ *  - icon: string=图片 URL；false=不显示；true（默认）=按 theme 渲染内置字体图标
+ *  - 主题着色通过 .t-result--theme-* 给 thumb 设置 color，t-icon 会继承
  */
 import { computed, useSlots } from 'vue';
+import TIcon from '../t-icon/t-icon.uvue';
 import { resultVariants } from './t-result.variants';
 import type { ResultTheme } from './t-result.types';
 
+/** theme → 默认字体图标名（与 uniapp-components/result 中的 THEME_ICON 保持一致） */
+function getThemeIcon(theme: string): string {
+  if (theme === 'success') return 'check-circle';
+  if (theme === 'warning') return 'error-circle';
+  if (theme === 'error') return 'close-circle';
+  return 'error-circle';
+}
+
 const props = defineProps({
   description: { type: String, default: '' },
-  icon: { type: [String, Boolean] as PropType<string | boolean>, default: '' },
+  icon: { type: [String, Boolean] as PropType<string | boolean>, default: true },
   image: { type: String, default: '' },
   theme: { type: String as PropType<ResultTheme>, default: 'default' },
   title: { type: String, default: '' },
@@ -60,18 +75,32 @@ const rootClass = computed(() =>
 );
 
 const iconUrl = computed<string>(() => {
-  // 仅当 icon 为非空字符串时显示
+  // 仅当 icon 为非空字符串时作为图片 URL 显示
   if (typeof props.icon === 'string') return props.icon as string;
   return '';
 });
 
+/** 是否使用主题字体图标：icon=true 且未传 image / icon 字符串 / image slot */
+const themeIconName = computed<string>(() => {
+  // icon=false 显式禁用
+  if (typeof props.icon === 'boolean' && (props.icon as boolean) === false) return '';
+  // 已用图片或图片 URL，不再展示字体图标
+  if (props.image.length > 0) return '';
+  if (iconUrl.value.length > 0) return '';
+  if (slots.image != null) return '';
+  return getThemeIcon(props.theme);
+});
+
 const hasThumb = computed<boolean>(() => {
-  if (props.icon === false) return slots.image != null || props.image.length > 0;
-  return (
-    props.image.length > 0 ||
-    iconUrl.value.length > 0 ||
-    slots.image != null
-  );
+  if (slots.image != null) return true;
+  if (props.image.length > 0) return true;
+  if (iconUrl.value.length > 0) return true;
+  if (themeIconName.value.length > 0) return true;
+  return false;
+});
+
+const hasTitle = computed<boolean>(() => {
+  return props.title.length > 0 || slots.title != null;
 });
 
 const hasDescription = computed<boolean>(() => {

@@ -1,13 +1,28 @@
 <template>
-  <view :class="rootClass" :hover-class="hover && !disabled ? 't-cell--hover' : ''" @click="onClick">
-    <view class="t-cell__left">
-      <slot name="left-icon" />
+  <view :class="rootClass" :style="customStyle" :hover-class="hover && !disabled ? 't-cell--hover' : ''" @click="onClick">
+    <view v-if="leftIcon.length > 0 || image.length > 0 || hasLeftIcon || hasImage" class="t-cell__left">
+      <slot name="left-icon">
+        <t-icon
+          v-if="leftIcon.length > 0"
+          class="t-cell__left-icon"
+          :name="leftIcon"
+          :custom-style="leftIconColorStyle"
+        />
+      </slot>
+      <slot name="image">
+        <t-image
+          v-if="image.length > 0"
+          class="t-cell__left-image"
+          shape="round"
+          :src="image"
+        />
+      </slot>
     </view>
 
-    <view class="t-cell__title">
+    <view class="t-cell__title" :style="titleStyle">
       <view class="t-cell__title-text">
         <slot name="title">
-          <text class="t-cell__title-text-content">{{ title }}</text>
+          <text class="t-cell__title-text-content" :style="titleStyle">{{ title }}</text>
         </slot>
         <text v-if="required" class="t-cell--required">&nbsp;*</text>
       </view>
@@ -18,15 +33,27 @@
       </view>
     </view>
 
-    <view v-if="hasNote || note.length > 0" class="t-cell__note">
+    <view v-if="hasNote || note.length > 0" class="t-cell__note" :style="noteStyle">
       <slot name="note">
-        <text>{{ note }}</text>
+        <text :style="noteStyle">{{ note }}</text>
       </slot>
     </view>
 
-    <view :class="rightClass">
-      <slot name="right-icon" />
-      <text v-if="!hasRightIcon && arrow" class="t-cell__right-arrow">›</text>
+    <view :class="rightClass" :style="rightIconStyle">
+      <slot name="right-icon">
+        <t-icon
+          v-if="rightIcon.length > 0"
+          class="t-cell__right-icon"
+          :name="rightIcon"
+          :custom-style="rightIconColorStyle"
+        />
+        <t-icon
+          v-else-if="arrow"
+          class="t-cell__right-icon"
+          name="chevron-right"
+          :custom-style="rightIconColorStyle"
+        />
+      </slot>
     </view>
   </view>
 </template>
@@ -41,12 +68,13 @@ const props = defineProps({
   description: { type: String, default: '' },
   note: { type: String, default: '' },
   arrow: { type: Boolean, default: false },
-  bordered: { type: Boolean, default: false },
+  bordered: { type: Boolean, default: true },
   hover: { type: Boolean, default: false },
   disabled: { type: Boolean, default: false },
   required: { type: Boolean, default: false },
   align: { type: String as PropType<CellAlign>, default: 'middle' },
   customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
 
   image: { type: String, default: '' },
   jumpType: { type: String, default: 'navigateTo' },
@@ -61,7 +89,8 @@ const props = defineProps({
 const emit = defineEmits(['click']);
 
 const slots = useSlots();
-const hasRightIcon = computed(() => slots['right-icon'] != null);
+const hasLeftIcon = computed(() => slots['left-icon'] != null);
+const hasImage = computed(() => slots.image != null);
 const hasDescription = computed(() => slots.description != null);
 const hasNote = computed(() => slots.note != null);
 
@@ -71,7 +100,7 @@ const rootClass = computed(() =>
     bordered: props.bordered,
     hover: props.hover,
     disabled: props.disabled,
-    arrow: props.arrow,
+    arrow: props.arrow || props.rightIcon.length > 0,
     class: props.customClass,
   }),
 );
@@ -79,6 +108,18 @@ const rootClass = computed(() =>
 const rightClass = computed(() => {
   const align = props.align;
   return `t-cell__right t-cell__right--${align}`;
+});
+
+// leftIcon 默认色：品牌蓝（与 uniapp 一致）。外部可通过 slot 自定义。
+const leftIconColorStyle = computed<string>(() => {
+  if (props.disabled) return 'color: rgba(0, 0, 0, 0.26); font-size: 24px;';
+  return 'color: var(--td-brand-color, #0052d9); font-size: 24px;';
+});
+
+// 右侧图标 / 箭头颜色：默认占位灰，禁用时变浅
+const rightIconColorStyle = computed<string>(() => {
+  if (props.disabled) return 'color: rgba(0, 0, 0, 0.26); font-size: 24px;';
+  return 'color: rgba(0, 0, 0, 0.4); font-size: 24px;';
 });
 
 function onClick(event: UniMouseEvent) {

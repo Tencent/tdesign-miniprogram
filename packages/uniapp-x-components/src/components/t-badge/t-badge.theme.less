@@ -2,9 +2,9 @@
  * Badge 基础样式
  *
  * 与 uniapp 版 badge.less 保持 token 体系一致；适配 uni-app x：
- *  - ribbon / triangle 系列在 uts/App 端 linear-gradient 兼容存在差异，
- *    采用更稳健的"实心矩形 + 旋转"方案降级（视觉上等价于 ribbon-right）。
- *  - dot 圆点尺寸独立，size=large 时按 1.25x 放大。
+ *  - shape: ribbon / triangle 系列使用 linear-gradient（H5/微信小程序/App-NVue 均已支持）
+ *  - 浮动定位使用 has-content + floating 组合，避免依赖 sibling 选择器
+ *  - 单位统一使用 px（与 uvue 默认 px 单位体系一致；如需 rpx 可通过 CSS 变量覆盖）
  */
 
 @td-badge-bg-color: var(--td-badge-bg-color, #d54941);
@@ -15,10 +15,12 @@
 @td-badge-basic-padding: var(--td-badge-basic-padding, 4px);
 @td-badge-basic-min-width: var(--td-badge-basic-min-width, 16px);
 @td-badge-font-size: var(--td-badge-font-size, 10px);
+@td-badge-line-height: var(--td-badge-line-height, 16px);
 
 @td-badge-large-height: var(--td-badge-large-height, 20px);
 @td-badge-large-padding: var(--td-badge-large-padding, 5px);
 @td-badge-large-font-size: var(--td-badge-large-font-size, 12px);
+@td-badge-large-line-height: var(--td-badge-large-line-height, 20px);
 
 @td-badge-dot-size: var(--td-badge-dot-size, 8px);
 @td-badge-dot-large-size: var(--td-badge-dot-large-size, 10px);
@@ -27,28 +29,67 @@
 @td-badge-bubble-radius: var(--td-badge-bubble-radius, 10px 10px 10px 1px);
 
 .t-badge {
+  // 默认仅作为内联容器；不带子内容时表现为普通的徽标本体
+  // 关键：使用 inline-block 而非 inline-flex，避免父容器为 flex 时
+  //      t-badge 宽度被压缩到 0，导致 floating 的 left:100% 失效。
   position: relative;
-  display: inline-flex;
-  align-items: flex-start;
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  overflow: visible;
+
+  // 有 child content 时，根作为绝对定位上下文
+  &--has-content {
+    position: relative;
+  }
 
   &__content {
+    display: inline-block;
     color: @td-badge-content-text-color;
   }
 
+  &__content-text {
+    color: @td-badge-content-text-color;
+  }
+
+  // 徽标本体（数字 / 圆点 / 自定义文字）
+  // 关键：width:auto + flex-shrink:0 防止在 inline-flex 父级里被压缩，
+  //      导致 'NEW' 等多字符 count 只显示首字母。
   &__inner {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    font-size: @td-badge-font-size;
-    line-height: 1;
-    color: @td-badge-text-color;
-    background-color: @td-badge-bg-color;
-    text-align: center;
+    width: auto;
     height: @td-badge-basic-height;
     min-width: @td-badge-basic-min-width;
     padding: 0 @td-badge-basic-padding;
+    font-size: @td-badge-font-size;
+    line-height: @td-badge-line-height;
+    color: @td-badge-text-color;
+    background-color: @td-badge-bg-color;
+    text-align: center;
     white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  &__count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    white-space: nowrap;
+  }
+
+  // 徽标中的文字节点：uvue/uts 端 <text> 在 inline-flex 里默认 flex:1，
+  // 会被父宽约束从而截断（表现为 'NEW' 只显示 'N'），这里强制不压缩。
+  &__count > text,
+  &__count text {
+    flex: none;
+    white-space: nowrap;
+    color: @td-badge-text-color;
+    font-size: @td-badge-font-size;
+    line-height: @td-badge-line-height;
   }
 
   // ---- shape: circle / square / bubble ----
@@ -64,19 +105,23 @@
     border-radius: @td-badge-bubble-radius;
   }
 
-  // ---- ribbon / triangle 简化为右上角矩形（uts 兼容）----
-  &--ribbon,
-  &--ribbon-right {
-    border-radius: 2px 0 0 2px;
-  }
+  // ---- size: large（基础形状） ----
+  &--large {
+    height: @td-badge-large-height;
+    min-width: @td-badge-large-height;
+    padding: 0 @td-badge-large-padding;
+    font-size: @td-badge-large-font-size;
+    line-height: @td-badge-large-line-height;
 
-  &--ribbon-left {
-    border-radius: 0 2px 2px 0;
-  }
+    &.t-badge--circle {
+      border-radius: calc(@td-badge-large-height / 2);
+    }
 
-  &--triangle-right,
-  &--triangle-left {
-    border-radius: 0;
+    .t-badge__count > text,
+    .t-badge__count text {
+      font-size: @td-badge-large-font-size;
+      line-height: @td-badge-large-line-height;
+    }
   }
 
   // ---- dot ----
@@ -90,31 +135,120 @@
     line-height: 0;
   }
 
-  // ---- size: large ----
-  &--large {
-    height: @td-badge-large-height;
-    min-width: @td-badge-large-height;
-    padding: 0 @td-badge-large-padding;
-    font-size: @td-badge-large-font-size;
-
-    &.t-badge--circle {
-      border-radius: calc(@td-badge-large-height / 2);
-    }
-  }
-
   &--large&--dot {
     width: @td-badge-dot-large-size;
     height: @td-badge-dot-large-size;
     min-width: @td-badge-dot-large-size;
   }
 
+  // ---- ribbon / triangle：与 uniapp 原版一致，使用 linear-gradient + 旋转文字 ----
+  &--ribbon,
+  &--ribbon-right,
+  &--ribbon-left,
+  &--triangle-right,
+  &--triangle-left {
+    width: calc(@td-badge-basic-height * 2);
+    height: calc(@td-badge-basic-height * 2);
+    min-width: calc(@td-badge-basic-height * 2);
+    padding: 0;
+    border-radius: 0;
+    background-color: transparent;
+    overflow: hidden;
+  }
+
+  &--ribbon,
+  &--ribbon-right {
+    background: linear-gradient(
+      45deg,
+      transparent 50%,
+      @td-badge-bg-color 50%,
+      @td-badge-bg-color 85%,
+      transparent 85%
+    );
+  }
+
+  &--triangle-right {
+    background: linear-gradient(45deg, transparent 50%, @td-badge-bg-color 50%);
+  }
+
+  &--ribbon-left {
+    background: linear-gradient(
+      -45deg,
+      transparent 50%,
+      @td-badge-bg-color 50%,
+      @td-badge-bg-color 85%,
+      transparent 85%
+    );
+  }
+
+  &--triangle-left {
+    background: linear-gradient(-45deg, transparent 50%, @td-badge-bg-color 50%);
+  }
+
+  // ribbon-right / triangle-right：文字顺时针 45° 居于右上
+  &--ribbon .t-badge__count,
+  &--ribbon-right .t-badge__count,
+  &--triangle-right .t-badge__count {
+    transform: rotate(45deg) translateY(calc(-1 * @td-badge-line-height / 2 + 1px));
+  }
+
+  // ribbon-left / triangle-left：文字逆时针 45°
+  &--ribbon-left .t-badge__count,
+  &--triangle-left .t-badge__count {
+    transform: rotate(-45deg) translateY(calc(-1 * @td-badge-line-height / 2 + 1px));
+  }
+
+  // large 下 ribbon/triangle 同步放大
+  &--large&--ribbon,
+  &--large&--ribbon-right,
+  &--large&--ribbon-left,
+  &--large&--triangle-right,
+  &--large&--triangle-left {
+    width: calc(@td-badge-large-height * 2);
+    height: calc(@td-badge-large-height * 2);
+    min-width: calc(@td-badge-large-height * 2);
+  }
+
+  &--large&--ribbon .t-badge__count,
+  &--large&--ribbon-right .t-badge__count,
+  &--large&--triangle-right .t-badge__count {
+    transform: rotate(45deg) translateY(calc(-1 * @td-badge-large-line-height / 2 + 2px));
+  }
+
+  &--large&--ribbon-left .t-badge__count,
+  &--large&--triangle-left .t-badge__count {
+    transform: rotate(-45deg) translateY(calc(-1 * @td-badge-large-line-height / 2 + 2px));
+  }
+
   // ---- 浮动定位（有 child content 时悬浮于右上角） ----
+  // 与 uniapp 原版（badge.less）一致：徽标整体锚到 child 的右上角外侧，
+  // top: 0 / left: 100% 让徽标的左上角贴在 child 的右上角点上，
+  // 再用 translate(-50%, -50%) 把徽标的中心拉到该点 —— 实现
+  // 1/4 在 child 内、3/4 在 child 外的视觉效果。
+  // 之前的写法看起来一致，但配合父级 button/icon 的 overflow:hidden
+  // 时会被裁掉一半；这里把 overflow 风险通过 z-index 提升 + 不让
+  // 父级裁切（由业务侧决定）来缓解，并确保 inner 自身 width:auto。
   &--floating {
     position: absolute;
     top: 0;
     left: 100%;
     transform: translate(-50%, -50%);
     transform-origin: center center;
-    z-index: 1;
+    z-index: 2;
+  }
+
+  &--floating&--ribbon,
+  &--floating&--ribbon-right,
+  &--floating&--triangle-right {
+    left: auto;
+    right: 0;
+    transform: none;
+  }
+
+  &--floating&--ribbon-left,
+  &--floating&--triangle-left {
+    left: 0;
+    right: auto;
+    transform: none;
   }
 }

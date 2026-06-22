@@ -1,26 +1,26 @@
 <template>
-  <view class="demo-block">
-    <t-footer
-      :logo="logo"
-      :links="links"
-      text="Copyright © 2019-2024 TDesign. All Rights Reserved"
-    />
+  <view>
+    <view class="demo-block">
+      <t-footer :logo="logoIconTitle" />
+    </view>
+    <view class="demo-block">
+      <t-footer :logo="logoUrlOnly" />
+    </view>
   </view>
 </template>
 
 <script setup lang="uts">
-const logo = {
-  icon: 'https://tdesign.gtimg.com/site/tdesign-logo.png',
-  title: 'TDesign',
+const logoIconTitle = {
+  icon: 'https://tdesign.gtimg.com/mobile/demos/logo2.png',
+  title: '品牌名称',
 };
-const links = [
-  { name: '帮助', url: '/pages/help/help' },
-  { name: '反馈', url: '/pages/feedback/feedback' },
-];
+const logoUrlOnly = {
+  url: 'https://tdesign.gtimg.com/mobile/demos/logo1.png',
+};
 </script>
 
 <style>
 .demo-block {
-  padding: 16px;
+  padding: 8px 16px;
 }
 </style>

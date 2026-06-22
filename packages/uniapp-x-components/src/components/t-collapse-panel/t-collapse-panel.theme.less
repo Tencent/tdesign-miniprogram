@@ -8,69 +8,105 @@
 @td-collapse-panel-content-color: var(--td-collapse-panel-content-color, rgba(0, 0, 0, 0.9));
 @td-collapse-panel-disabled-color: var(--td-collapse-panel-disabled-color, rgba(0, 0, 0, 0.26));
 @td-collapse-panel-padding: var(--td-collapse-panel-padding, 16px);
+@td-collapse-panel-arrow-color: var(--td-collapse-panel-arrow-color, rgba(0, 0, 0, 0.4));
+@td-collapse-panel-transition-duration: var(--td-collapse-panel-transition-duration, 240ms);
+@td-collapse-panel-max-content-height: var(--td-collapse-panel-max-content-height, 600px);
+/* Material standard easing：开头快、收尾缓，整体更"跟手" */
+@td-collapse-panel-transition-timing: var(
+  --td-collapse-panel-transition-timing,
+  cubic-bezier(0.4, 0, 0.2, 1)
+);
 
 .t-collapse-panel {
   background-color: @td-collapse-panel-bg-color;
 
-  &__header {
-    display: flex;
-    align-items: center;
-    padding: @td-collapse-panel-padding;
-    color: @td-collapse-panel-header-color;
-    font-size: 16px;
-    border-bottom: 1px solid @td-collapse-panel-border-color;
+  &__title {
+    /* 包裹 t-cell，承担点击事件；样式沿用 t-cell */
   }
 
   &__left-icon {
     width: 20px;
     height: 20px;
-    margin-right: 8px;
   }
 
-  &__title {
-    flex: 1;
-  }
-
-  &__extra {
-    margin-right: 8px;
-    color: rgba(0, 0, 0, 0.4);
-    font-size: 14px;
+  &__header {
+    /* t-cell 自带 padding 16px / bordered 分割线，这里只在 placement=top 时反向边框 */
+    &--top {
+      /* placement=top 模式下 header 在内容下方，分割线由 content--expanded--top 处理 */
+    }
   }
 
   &__arrow {
-    color: rgba(0, 0, 0, 0.4);
-    font-size: 16px;
-    transition: transform 0.2s linear;
+    color: @td-collapse-panel-arrow-color;
+    /* 箭头转动稍快，避免视觉上"先转完才轮到内容动"的脱节感 */
+    transition: transform 200ms @td-collapse-panel-transition-timing;
   }
 
   &__arrow--expanded {
     transform: rotate(180deg);
   }
 
+  &__arrow--top {
+    transform: rotate(180deg);
+  }
+
+  &__arrow--top.t-collapse-panel__arrow--expanded {
+    transform: rotate(0deg);
+  }
+
+  /**
+   * 展开/收起动画：
+   * 受 uvue 限制（无 uni.createAnimation、height:auto 不可过渡），
+   * 改用 max-height + opacity 配合 CSS transition 模拟高度动画。
+   *
+   * 视觉调优：
+   *  - max-height 默认目标 600px（一般面板内容都 << 600px，可让真实可见过渡占据更长比例）
+   *  - 收起：opacity 用更短时长 + ease-in 提前淡出，避免"max-height 还在收 但内容已是空白"的尾部突兀
+   *  - 展开：opacity 延迟一点开始，让高度先撑开一点，避免内容文字"飘"出来
+   *  - timing 用 Material standard cubic-bezier，开头快、收尾缓，整体更"跟手"
+   */
   &__wrapper {
     overflow: hidden;
-    height: 0;
+    max-height: 0;
+    opacity: 0;
+    transition-property: max-height, opacity;
+    transition-duration: @td-collapse-panel-transition-duration, 160ms;
+    transition-timing-function: @td-collapse-panel-transition-timing, ease-in;
+    transition-delay: 0ms, 0ms;
   }
 
   &__wrapper--expanded {
-    height: auto;
+    max-height: @td-collapse-panel-max-content-height;
+    opacity: 1;
+    /* 展开时 opacity 略晚于 max-height 开始，让高度先撑开，再让内容渐显 */
+    transition-duration: @td-collapse-panel-transition-duration, 200ms;
+    transition-timing-function: @td-collapse-panel-transition-timing, ease-out;
+    transition-delay: 0ms, 80ms;
   }
 
   &__content {
     color: @td-collapse-panel-content-color;
     padding: @td-collapse-panel-padding;
     font-size: 14px;
+    line-height: 22px;
+  }
+
+  &__content-text {
+    color: @td-collapse-panel-content-color;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  &__content--disabled {
+    color: @td-collapse-panel-disabled-color;
+  }
+
+  &__content--disabled .t-collapse-panel__content-text {
+    color: @td-collapse-panel-disabled-color;
   }
 
   &--top {
     display: flex;
     flex-direction: column-reverse;
-  }
-
-  &--disabled {
-    .t-collapse-panel__header,
-    .t-collapse-panel__content {
-      color: @td-collapse-panel-disabled-color;
-    }
   }
 }

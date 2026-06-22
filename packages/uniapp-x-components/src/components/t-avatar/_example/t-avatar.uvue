@@ -2,15 +2,19 @@
   <scroll-view class="demo-page" :scroll-y="true">
     <view class="demo-header">
       <text class="demo-title">Avatar 头像</text>
-      <text class="demo-desc">用图标、图片或者文字展示用户或事物的头像。</text>
+      <text class="demo-desc">用于展示用户头像信息，除了纯展示也可点击进入个人详情等操作。</text>
     </view>
 
     <view class="demo-section">
       <text class="demo-section-title">01 组件类型</text>
-      <text class="demo-section-desc">基础头像</text>
-      <base-demo></base-demo>
+      <text class="demo-section-desc">图片头像</text>
+      <image-demo></image-demo>
       <text class="demo-section-desc">字符头像</text>
       <character-demo></character-demo>
+      <text class="demo-section-desc">图标头像</text>
+      <icon-demo></icon-demo>
+      <text class="demo-section-desc">带徽标头像</text>
+      <badge-demo></badge-demo>
     </view>
 
     <view class="demo-section">
@@ -22,15 +26,19 @@
 </template>
 
 <script>
-import BaseDemo from './base/index.uvue';
-import SizeDemo from './size/index.uvue';
+import ImageDemo from './image/index.uvue';
 import CharacterDemo from './character/index.uvue';
+import IconDemo from './icon/index.uvue';
+import BadgeDemo from './badge/index.uvue';
+import SizeDemo from './size/index.uvue';
 
 export default {
   components: {
-    BaseDemo,
-    SizeDemo,
+    ImageDemo,
     CharacterDemo,
+    IconDemo,
+    BadgeDemo,
+    SizeDemo,
   },
 };
 </script>

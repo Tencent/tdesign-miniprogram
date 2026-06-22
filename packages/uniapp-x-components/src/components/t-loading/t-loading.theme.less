@@ -2,8 +2,7 @@
  * Loading 基础样式
  *
  * 与 uniapp loading.less 的 token 体系保持一致，使用 var(--td-loading-*) 主题变量。
- * 适配 uni-app x：避免使用 conic-gradient / mask 等 App 端不支持的特性，circular 改为
- * 旋转的圆环（border 样式）实现。
+ * 适配 uni-app x：避免使用 conic-gradient / mask 等 App 端不支持的特性。
  */
 
 @td-loading-color: var(--td-loading-color, #0052d9);
@@ -43,6 +42,7 @@
 
   // ---- 指示符容器 ----
   &__spinner {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -57,59 +57,67 @@
       animation-name: t-loading-rotate-reverse;
     }
 
-    // ---- circular: 圆环旋转 ----
-    &--circular {
-      border: 2px solid currentColor;
-      border-right-color: transparent;
-      border-radius: 50%;
-    }
-
     // ---- spinner: 12 个小条 ----
     &--spinner {
       animation-timing-function: steps(12);
-      position: relative;
+
+      // spinner 下的 __dot：12 个旋转条
+      .t-loading__dot {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+      }
+
+      .t-loading__dot-bar {
+        width: 2px;
+        height: 25%;
+        background-color: currentColor;
+        border-radius: 2px;
+      }
     }
 
     // ---- dots: 三个点 ----
     &--dots {
       animation: none;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+
+      // dots 下的 __dot：三个圆点
+      .t-loading__dot {
+        width: 20%;
+        height: 20%;
+        border-radius: 50%;
+        background-color: currentColor;
+        // animation 相关属性通过 inline style 动态设置（duration/delay/play-state）
+        animation-name: t-loading-dotting;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+      }
+    }
+
+    // ---- circular: 圆环旋转 ----
+    &--circular {
+      // 容器继续旋转，圆环通过 __circular 子元素实现
     }
   }
 
-  // ---- spinner 12 条 ----
-  &__dot {
-    position: absolute;
-    top: 0;
-    left: 0;
+  // circular 圆环（独立元素，与 uniapp 版本对齐）
+  &__circular {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  &__dot-bar {
-    width: 2px;
-    height: 25%;
-    background-color: currentColor;
-    border-radius: 2px;
-  }
-
-  // ---- dots: 圆点容器 ----
-  &__dots-wrapper {
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    height: 100%;
-  }
-
-  &__dots-item {
-    width: 25%;
-    height: 25%;
+    box-sizing: border-box;
+    border: 2px solid currentColor;
+    border-right-color: transparent;
     border-radius: 50%;
-    background-color: currentColor;
-    animation: t-loading-dotting 1.4s linear infinite both;
   }
 
   // ---- 文本 ----
@@ -127,25 +135,6 @@
     }
   }
 }
-
-// ---- 12 条 spinner 的预设旋转角度（避开 uts 不支持的 less mixin 递归生成） ----
-.t-loading__dot-0  { transform: rotate(0deg);   opacity: 0; }
-.t-loading__dot-1  { transform: rotate(30deg);  opacity: 0.0833; }
-.t-loading__dot-2  { transform: rotate(60deg);  opacity: 0.1667; }
-.t-loading__dot-3  { transform: rotate(90deg);  opacity: 0.25; }
-.t-loading__dot-4  { transform: rotate(120deg); opacity: 0.3333; }
-.t-loading__dot-5  { transform: rotate(150deg); opacity: 0.4167; }
-.t-loading__dot-6  { transform: rotate(180deg); opacity: 0.5; }
-.t-loading__dot-7  { transform: rotate(210deg); opacity: 0.5833; }
-.t-loading__dot-8  { transform: rotate(240deg); opacity: 0.6667; }
-.t-loading__dot-9  { transform: rotate(270deg); opacity: 0.75; }
-.t-loading__dot-10 { transform: rotate(300deg); opacity: 0.8333; }
-.t-loading__dot-11 { transform: rotate(330deg); opacity: 0.9167; }
-
-// ---- dots 三个点的延迟错峰 ----
-.t-loading__dots-item-0 { animation-delay: 0s; }
-.t-loading__dots-item-1 { animation-delay: 0.2s; }
-.t-loading__dots-item-2 { animation-delay: 0.4s; }
 
 // ---- keyframes ----
 @keyframes t-loading-rotate {

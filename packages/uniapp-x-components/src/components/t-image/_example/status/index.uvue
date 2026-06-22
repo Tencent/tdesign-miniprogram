@@ -1,23 +1,54 @@
 <template>
   <view class="demo-block">
-    <view class="demo-row">
-      <view class="demo-col">
+    <view class="tr">
+      <view class="col">
+        <text class="text">加载默认提示</text>
         <t-image
-          width="80"
-          height="80"
-          loading="加载中"
+          shape="round"
+          width="72"
+          height="72"
           src=""
         />
-        <text class="demo-label">加载中</text>
       </view>
-      <view class="demo-col">
+      <view class="col">
+        <text class="text">加载自定义提示</text>
         <t-image
-          width="80"
-          height="80"
-          error="加载失败"
-          src="https://tdesign.gtimg.com/site/_404.png"
+          shape="round"
+          loading="slot"
+          width="72"
+          height="72"
+          src=""
+        >
+          <template #loading>
+            <t-loading theme="spinner" size="20" :loading="true" />
+          </template>
+        </t-image>
+      </view>
+    </view>
+
+    <view class="tr">
+      <view class="col">
+        <text class="text">失败默认提示</text>
+        <t-image
+          shape="round"
+          src="a"
+          width="72"
+          height="72"
         />
-        <text class="demo-label">加载失败</text>
+      </view>
+      <view class="col">
+        <text class="text">失败自定义提示</text>
+        <t-image
+          src="a"
+          shape="round"
+          error="slot"
+          width="72"
+          height="72"
+        >
+          <template #error>
+            <text class="error-text">加载失败</text>
+          </template>
+        </t-image>
       </view>
     </view>
   </view>
@@ -27,22 +58,28 @@
 .demo-block {
   padding: 16px;
 }
-.demo-row {
+.tr {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  flex-wrap: wrap;
 }
-.demo-col {
+.tr + .tr {
+  margin-top: 24px;
+}
+.col {
+  flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-right: 16px;
-  margin-bottom: 12px;
+  align-items: flex-start;
+  margin: 0 8px;
 }
-.demo-label {
-  margin-top: 6px;
-  font-size: 12px;
+.text {
+  font-size: 14px;
+  color: #888888;
+  line-height: 22px;
+  margin-bottom: 16px;
+}
+.error-text {
+  font-size: 10px;
   color: #888888;
 }
 </style>

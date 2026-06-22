@@ -1,6 +1,6 @@
 <template>
   <view class="demo-block">
-    <t-footer text="Copyright © 2019-2024 TDesign. All Rights Reserved" ></t-footer>
+    <t-footer text="Copyright © 2021-2031 TD.All Rights Reserved." />
   </view>
 </template>
 

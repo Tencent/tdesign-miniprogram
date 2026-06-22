@@ -1,22 +1,32 @@
 <template>
-  <view class="demo-block">
-    <t-footer
-      :links="links"
-      text="Copyright © 2019-2024 TDesign. All Rights Reserved"
-    />
+  <view>
+    <view class="demo-block">
+      <t-footer
+        text="Copyright © 2021-2031 TD.All Rights Reserved."
+        :links="single"
+      />
+    </view>
+    <view class="demo-block">
+      <t-footer
+        text="Copyright © 2021-2031 TD.All Rights Reserved."
+        :links="double"
+      />
+    </view>
   </view>
 </template>
 
 <script setup lang="uts">
-const links = [
-  { name: '帮助', url: '/pages/help/help' },
-  { name: '反馈', url: '/pages/feedback/feedback' },
-  { name: '关于', url: '/pages/about/about' },
+const single = [
+  { name: '底部链接', url: '/pages/home/home' },
+];
+const double = [
+  { name: '底部链接', url: '/pages/home/home' },
+  { name: '底部链接', url: '' },
 ];
 </script>
 
 <style>
 .demo-block {
-  padding: 16px;
+  padding: 8px 16px;
 }
 </style>

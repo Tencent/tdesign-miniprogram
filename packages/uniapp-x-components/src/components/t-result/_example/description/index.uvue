@@ -1,16 +1,16 @@
 <template>
   <view class="demo-block">
     <view class="demo-block-row">
-      <t-result theme="default" title="默认状态" />
+      <t-result theme="default" title="默认状态" description="描述文字" />
     </view>
     <view class="demo-block-row">
-      <t-result theme="success" title="操作成功" />
+      <t-result theme="success" title="操作成功" description="描述文字" />
     </view>
     <view class="demo-block-row">
-      <t-result theme="warning" title="操作警告" />
+      <t-result theme="warning" title="操作警告" description="描述文字" />
     </view>
     <view class="demo-block-row">
-      <t-result theme="error" title="操作失败" />
+      <t-result theme="error" title="操作失败" description="描述文字" />
     </view>
   </view>
 </template>

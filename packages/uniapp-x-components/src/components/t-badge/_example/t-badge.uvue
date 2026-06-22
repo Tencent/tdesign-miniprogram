@@ -7,19 +7,19 @@
 
     <view class="demo-section">
       <text class="demo-section-title">01 组件类型</text>
-      <text class="demo-section-desc">基础徽标 / 红点 / 数字 / 文字</text>
+      <!-- <text class="demo-section-desc">基础徽标 / 红点 / 数字 / 文字</text> -->
       <base-demo></base-demo>
     </view>
 
     <view class="demo-section">
       <text class="demo-section-title">02 组件样式</text>
-      <text class="demo-section-desc">形状 与 颜色</text>
+      <!-- <text class="demo-section-desc">形状 与 颜色</text> -->
       <shape-demo></shape-demo>
     </view>
 
     <view class="demo-section">
       <text class="demo-section-title">03 组件尺寸</text>
-      <text class="demo-section-desc">medium / large</text>
+      <!-- <text class="demo-section-desc">medium / large</text> -->
       <size-demo></size-demo>
     </view>
   </scroll-view>

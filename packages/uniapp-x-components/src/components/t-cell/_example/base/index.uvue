@@ -1,7 +1,8 @@
 <template>
   <view>
-    <t-cell title="单元格" bordered ></t-cell>
-    <t-cell title="单元格" note="描述文字" bordered ></t-cell>
-    <t-cell title="单元格" description="二级文本" note="描述文字" ></t-cell>
+    <t-cell title="单行标题" hover arrow />
+    <t-cell title="单行标题" hover required arrow />
+    <t-cell title="单行标题" hover note="辅助信息" arrow />
+    <t-cell title="单行标题" hover arrow left-icon="app" :bordered="false" />
   </view>
 </template>

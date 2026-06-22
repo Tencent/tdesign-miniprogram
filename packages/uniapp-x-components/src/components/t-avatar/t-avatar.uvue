@@ -14,9 +14,9 @@
       mode="aspectFit"
     />
     <view v-else-if="hasAlt" class="t-avatar__text">
-      <text>{{ props.alt }}</text>
+      <text :style="textStyle">{{ props.alt }}</text>
     </view>
-    <view v-else class="t-avatar__text">
+    <view v-else class="t-avatar__text" :style="textStyle">
       <slot />
     </view>
   </view>
@@ -77,6 +77,20 @@ const rootStyle = computed<string>(() => {
 });
 
 const hasAlt = computed<boolean>(() => props.alt.length > 0);
+
+/**
+ * 文本字号兜底：uts 端 <text> 不会从父 <view> 继承 font-size，
+ * 必须在 text/外层 view 上显式注入 font-size，否则 small/medium/large 看起来都一样大。
+ */
+const textStyle = computed<string>(() => {
+  if (props.size === 'small') return 'font-size:14px;';
+  if (props.size === 'large') return 'font-size:20px;';
+  if (!isPresetSize(props.size) && props.size.length > 0) {
+    // 自定义 size：按头像宽度的 35% 作为字号兜底（接近 medium 的 16/48 ≈ 0.33）
+    return '';
+  }
+  return 'font-size:16px;';
+});
 
 function onError(event: UniEvent) {
   loadFailed.value = true;

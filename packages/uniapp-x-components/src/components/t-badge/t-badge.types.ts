@@ -23,9 +23,9 @@ export type BadgeSize = 'medium' | 'large';
 export interface BadgeProps {
   /** 是否为红点（小圆点） */
   dot?: boolean;
-  /** 徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+ */
-  count?: string | number;
-  /** 封顶的数字值，超过则展示为 `${maxCount}+` */
+  /** 徽标右上角内容。可以是数字，也可以是文字。如：'new'/3/99+。值为空（null）时使用 count 插槽渲染 */
+  count?: string | number | null;
+  /** 封顶的数字值，超过则展示 `${maxCount}+` */
   maxCount?: number;
   /** 当数值为 0 时是否展示徽标 */
   showZero?: boolean;
@@ -37,10 +37,17 @@ export interface BadgeProps {
   shape?: BadgeShape;
   /** 尺寸 */
   size?: BadgeSize;
-  /** 状态点位置偏移：[x, y]，单位 px */
-  offset?: number[];
-  /** 透传额外类名 */
+  /**
+   * 状态点位置偏移：[x, y]
+   * 元素可为数字（按 px 处理）或带单位的字符串（如 '10em'、'-2rpx'）
+   */
+  offset?: Array<string | number>;
+  /** 透传根节点额外类名 */
   customClass?: string;
+  /** 透传 content（子内容）节点额外类名 */
+  customClassContent?: string;
+  /** 透传 count（徽标本体）节点额外类名 */
+  customClassCount?: string;
 }
 
 export interface BadgeEmits {

@@ -13,13 +13,30 @@
     />
     <view v-if="isLoading && !isError" class="t-image__mask">
       <slot name="loading">
-        <text v-if="props.loading !== 'default'">{{ props.loading }}</text>
+        <!-- loading="default" 时显示加载动画 -->
+        <t-loading
+          v-if="props.loading === 'default'"
+          theme="dots"
+          :size="22"
+          :loading="true"
+          inherit-color
+        />
+        <!-- loading 为其他文本时显示文本（空字符串或 'slot' 时不显示） -->
+        <text v-else-if="props.loading !== '' && props.loading !== 'slot'">{{ props.loading }}</text>
       </slot>
     </view>
     <view v-if="isError" class="t-image__mask">
       <slot name="error">
-        <text v-if="props.error !== 'default'">{{ props.error }}</text>
-        <text v-else>加载失败</text>
+        <!-- error="default" 时显示失败图标 -->
+        <t-icon
+          v-if="props.error === 'default'"
+          name="close"
+          :size="22"
+          aria-role="img"
+          aria-label="加载失败"
+        />
+        <!-- error 为其他文本时显示文本（空字符串或 'slot' 时不显示） -->
+        <text v-else-if="props.error !== '' && props.error !== 'slot'">{{ props.error }}</text>
       </slot>
     </view>
   </view>
@@ -31,11 +48,14 @@
  *
  * 行为契约对齐 uniapp-components/image：
  *  - shape: circle / round / square
- *  - loading & error 占位
+ *  - loading="default" 显示 t-loading 动画
+ *  - error="default" 显示 t-icon close 图标
  *  - 不支持 t-id 透传
  */
 import { computed, ref } from 'vue';
 import { imageVariants } from './t-image.variants';
+import TLoading from '../t-loading/t-loading.uvue';
+import TIcon from '../t-icon/t-icon.uvue';
 import type { ImageShape, ImageMode } from './t-image.types';
 
 const props = defineProps({

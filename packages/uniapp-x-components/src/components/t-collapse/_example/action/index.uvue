@@ -4,6 +4,7 @@
       <t-collapse-panel
         value="1"
         header="折叠面板标题"
+        :header-right-content="indexOf(value, '1') > -1 ? '收起' : '展开'"
         content="此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容"
       ></t-collapse-panel>
     </t-collapse>
@@ -13,7 +14,14 @@
 <script setup lang="uts">
 import { ref } from 'vue';
 
-const value = ref<(string | number)[]>(['1']);
+const value = ref<(string | number)[]>([]);
+
+function indexOf(arr: (string | number)[], key: string | number): number {
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === key) return i;
+  }
+  return -1;
+}
 </script>
 
 <style>

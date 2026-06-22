@@ -1,5 +1,6 @@
 <template>
   <view :class="rootClass">
+    <!-- 有 logo 时仅渲染 logo 区块（与 uniapp 行为一致：互斥分支） -->
     <view v-if="hasLogo" class="t-footer__logo" @click="onLogoClick">
       <image
         v-if="logoIcon.length > 0"
@@ -8,19 +9,29 @@
         mode="aspectFit"
       />
       <text v-if="logoTitle.length > 0" class="t-footer__title">{{ logoTitle }}</text>
+      <!-- 仅 url 时整图渲染品牌 logo -->
+      <image
+        v-else-if="logoUrl.length > 0"
+        class="t-footer__title-url"
+        :src="logoUrl"
+        mode="widthFix"
+      />
     </view>
-    <view v-if="props.links.length > 0" class="t-footer__link-list">
-      <template v-for="(link, index) in props.links" :key="index">
-        <text
-          class="t-footer__link-item"
-          @click="onLinkClick(link, index)"
-        >{{ link.name }}</text>
-        <text v-if="index < props.links.length - 1" class="t-footer__link-line">|</text>
-      </template>
-    </view>
-    <view v-if="props.text.length > 0" class="t-footer__text">
-      <text>{{ props.text }}</text>
-    </view>
+    <!-- 否则渲染 links + text -->
+    <template v-else>
+      <view v-if="props.links.length > 0" class="t-footer__link-list">
+        <template v-for="(link, index) in props.links" :key="index">
+          <text
+            class="t-footer__link-item"
+            @click="onLinkClick(link, index)"
+          >{{ link.name }}</text>
+          <text v-if="index < props.links.length - 1" class="t-footer__link-line">|</text>
+        </template>
+      </view>
+      <view v-if="props.text.length > 0" class="t-footer__text">
+        <text class="t-footer__text-content">{{ props.text }}</text>
+      </view>
+    </template>
   </view>
 </template>
 
@@ -61,8 +72,14 @@ const logoTitle = computed<string>(() => {
   return v != null ? v : '';
 });
 
+const logoUrl = computed<string>(() => {
+  if (props.logo == null) return '';
+  const v = (props.logo as FooterLogo).url;
+  return v != null ? v : '';
+});
+
 const hasLogo = computed<boolean>(() => {
-  return logoIcon.value.length > 0 || logoTitle.value.length > 0;
+  return logoIcon.value.length > 0 || logoTitle.value.length > 0 || logoUrl.value.length > 0;
 });
 
 function onLinkClick(link: FooterLink, index: number) {

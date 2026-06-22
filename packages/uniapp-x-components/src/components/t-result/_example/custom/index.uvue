@@ -1,13 +1,11 @@
 <template>
   <view class="demo-block">
-    <t-result
-      theme="success"
-      title="支付成功"
-    >
+    <t-result image="https://tdesign.gtimg.com/mobile/demos/result1.png">
+      <template #title>
+        <text>自定义结果</text>
+      </template>
       <template #description>
-        <text>请到</text>
-        <text class="demo-link">订单详情</text>
-        <text>查看订单状态</text>
+        <text>描述文字</text>
       </template>
     </t-result>
   </view>
@@ -16,9 +14,5 @@
 <style>
 .demo-block {
   padding: 24px 16px;
-}
-.demo-link {
-  color: #0052d9;
-  margin: 0 4px;
 }
 </style>

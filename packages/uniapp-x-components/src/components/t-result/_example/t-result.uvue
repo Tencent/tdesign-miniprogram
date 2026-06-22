@@ -8,33 +8,47 @@
     <view class="demo-section">
       <text class="demo-section-title">01 组件类型</text>
       <text class="demo-section-desc">基础结果</text>
-      <base-demo></base-demo>
-    </view>
-
-    <view class="demo-section">
-      <text class="demo-section-title">02 组件状态</text>
-      <text class="demo-section-desc">主题</text>
       <theme-demo></theme-demo>
-    </view>
-
-    <view class="demo-section">
-      <text class="demo-section-title">03 组件样式</text>
-      <text class="demo-section-desc">自定义描述</text>
+      <text class="demo-section-desc">带描述的结果</text>
+      <description-demo></description-demo>
+      <text class="demo-section-desc">自定义结果</text>
       <custom-demo></custom-demo>
+      <text class="demo-section-desc">页面示例</text>
+      <view class="demo-section__wrapper">
+        <t-button
+          theme="primary"
+          block
+          size="large"
+          variant="outline"
+          @click="goResultPage"
+        >
+          页面示例
+        </t-button>
+      </view>
     </view>
   </scroll-view>
 </template>
 
 <script>
-import BaseDemo from './base/index.uvue';
 import ThemeDemo from './theme/index.uvue';
+import DescriptionDemo from './description/index.uvue';
 import CustomDemo from './custom/index.uvue';
 
 export default {
   components: {
-    BaseDemo,
     ThemeDemo,
+    DescriptionDemo,
     CustomDemo,
+  },
+  methods: {
+    goResultPage() {
+      uni.navigateTo({
+        url: '/pages-more/tdesign-uniapp-x/t-result/result-page',
+        fail: () => {
+          uni.showToast({ title: '页面跳转失败', icon: 'none' });
+        },
+      });
+    },
   },
 };
 </script>
@@ -74,5 +88,8 @@ export default {
   font-size: 13px;
   color: #666666;
   padding: 8px 16px 0;
+}
+.demo-section__wrapper {
+  padding: 16px;
 }
 </style>

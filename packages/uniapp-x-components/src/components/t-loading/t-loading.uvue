@@ -1,39 +1,41 @@
 <template>
-  <view v-if="show" :class="rootClass">
+  <view v-if="show" :class="rootClass" :style="rootStyle">
     <view
       v-if="props.indicator"
       :class="spinnerClass"
       :style="spinnerStyle"
+      :aria-role="props.ariaRole || 'img'"
+      :aria-label="props.ariaLabel || props.text || '加载中'"
     >
       <slot name="indicator">
-        <!-- circular: 单纯依赖 border 旋转，无需子节点 -->
+        <!-- circular: 圆环旋转（独立子元素，与 uniapp 版本对齐） -->
+        <view v-if="props.theme === 'circular'" class="t-loading__circular" />
 
         <!-- spinner: 12 个小条 -->
         <template v-if="props.theme === 'spinner'">
-          <view class="t-loading__dot t-loading__dot-0"><view class="t-loading__dot-bar" /></view>
-          <view class="t-loading__dot t-loading__dot-1"><view class="t-loading__dot-bar" /></view>
-          <view class="t-loading__dot t-loading__dot-2"><view class="t-loading__dot-bar" /></view>
-          <view class="t-loading__dot t-loading__dot-3"><view class="t-loading__dot-bar" /></view>
-          <view class="t-loading__dot t-loading__dot-4"><view class="t-loading__dot-bar" /></view>
-          <view class="t-loading__dot t-loading__dot-5"><view class="t-loading__dot-bar" /></view>
-          <view class="t-loading__dot t-loading__dot-6"><view class="t-loading__dot-bar" /></view>
-          <view class="t-loading__dot t-loading__dot-7"><view class="t-loading__dot-bar" /></view>
-          <view class="t-loading__dot t-loading__dot-8"><view class="t-loading__dot-bar" /></view>
-          <view class="t-loading__dot t-loading__dot-9"><view class="t-loading__dot-bar" /></view>
-          <view class="t-loading__dot t-loading__dot-10"><view class="t-loading__dot-bar" /></view>
-          <view class="t-loading__dot t-loading__dot-11"><view class="t-loading__dot-bar" /></view>
+          <view
+            v-for="(item, index) in 12"
+            :key="index"
+            class="t-loading__dot"
+            :style="'transform: rotate(' + (index * 30) + 'deg); opacity: ' + (index * 0.0833) + ';'"
+          >
+            <view class="t-loading__dot-bar" />
+          </view>
         </template>
 
-        <!-- dots: 三个点 -->
-        <view v-if="props.theme === 'dots'" class="t-loading__dots-wrapper">
-          <view class="t-loading__dots-item t-loading__dots-item-0" />
-          <view class="t-loading__dots-item t-loading__dots-item-1" />
-          <view class="t-loading__dots-item t-loading__dots-item-2" />
-        </view>
+        <!-- dots: 三个点（与 uniapp 版本对齐，使用 __dot 类名） -->
+        <template v-if="props.theme === 'dots'">
+          <view
+            v-for="(item, index) in 3"
+            :key="index"
+            class="t-loading__dot"
+            :style="dotsAnimationStyle(index)"
+          />
+        </template>
       </slot>
     </view>
 
-    <view v-if="hasText" :class="textClass">
+    <view v-if="hasText" :class="textClass" :aria-hidden="props.indicator" :aria-label="props.ariaLabel || props.text">
       <slot>
         <text>{{ props.text }}</text>
       </slot>
@@ -69,6 +71,9 @@ const props = defineProps({
   indicator: { type: Boolean, default: true },
   fullscreen: { type: Boolean, default: false },
   customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  ariaRole: { type: String, default: '' },
+  ariaLabel: { type: String, default: '' },
 });
 
 const slots = useSlots();
@@ -119,6 +124,20 @@ const rootClass = computed(() =>
   }),
 );
 
+const rootStyle = computed(() => {
+  const parts: string[] = [];
+  if (props.customStyle.length > 0) {
+    parts.push(props.customStyle);
+  }
+  if (!show.value) {
+    parts.push('display: none');
+  }
+  if (props.inheritColor) {
+    parts.push('color: inherit');
+  }
+  return parts.join(';');
+});
+
 const spinnerClass = computed(() =>
   loadingSpinnerVariants({
     theme: props.theme,
@@ -131,7 +150,8 @@ const spinnerStyle = computed(() => {
   const sizeStr = addUnit(props.size as any);
   parts.push('width:' + sizeStr);
   parts.push('height:' + sizeStr);
-  if (props.duration > 0) {
+  // 只有非 dots 主题才需要旋转动画
+  if (props.theme !== 'dots' && props.duration > 0) {
     parts.push('animation-duration:' + (props.duration / 1000) + 's');
   }
   parts.push('animation-play-state:' + (props.pause ? 'paused' : 'running'));
@@ -146,6 +166,25 @@ const textClass = computed(() =>
     layout: props.layout,
   }),
 );
+
+/**
+ * 计算 dots 主题下每个点的 animation-delay（与 uniapp 版本对齐）
+ * @param index 点的索引 0/1/2
+ */
+function dotsAnimationStyle(index: number): string {
+  const parts: string[] = [];
+  // animation-duration 固定为 1.4s，与 t-loading-dotting keyframes 对齐
+  parts.push('animation-duration:1.4s');
+  // animation-delay 与 uniapp 版本对齐：delay = (duration * index) / 3000 秒
+  if (props.duration > 0 && index > 0) {
+    const delay = (props.duration * index) / 3000;
+    parts.push('animation-delay:' + delay + 's');
+  } else {
+    parts.push('animation-delay:0s');
+  }
+  parts.push('animation-play-state:' + (props.pause ? 'paused' : 'running'));
+  return parts.join(';');
+}
 </script>
 
 <style lang="less">

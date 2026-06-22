@@ -1,8 +1,18 @@
 <template>
   <view class="demo-block">
     <t-collapse :default-value="['1', '2']">
-      <t-collapse-panel value="1" header="底部展开（默认）" content="placement=bottom 时，内容显示在面板头部下方。" placement="bottom" ></t-collapse-panel>
-      <t-collapse-panel value="2" header="顶部展开" content="placement=top 时，内容显示在面板头部上方。" placement="top" ></t-collapse-panel>
+      <t-collapse-panel
+        value="1"
+        header="折叠面板标题"
+        placement="bottom"
+        content="placement=bottom 时，内容显示在面板头部下方。"
+      ></t-collapse-panel>
+      <t-collapse-panel
+        value="2"
+        header="折叠面板标题"
+        placement="top"
+        content="placement=top 时，内容显示在面板头部上方。"
+      ></t-collapse-panel>
     </t-collapse>
   </view>
 </template>

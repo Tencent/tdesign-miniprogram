@@ -1,38 +1,60 @@
 <template>
   <view class="demo-block">
+    <view class="demo-desc">红点徽标</view>
     <view class="demo-row">
-      <t-badge dot>
-        <text class="demo-text">消息</text>
+      <t-badge dot content="消息" />
+      <t-badge dot :offset="[1, -1]">
+        <t-icon name="notification" size="24" aria-label="通知" />
       </t-badge>
-      <t-badge :count="5">
-        <text class="demo-text">购物车</text>
+      <t-badge dot :offset="[1, 1]">
+        <t-button>按钮</t-button>
       </t-badge>
-      <t-badge :count="120" :max-count="99">
-        <text class="demo-text">通知</text>
+    </view>
+
+    <view class="demo-desc">数字徽标</view>
+    <view class="demo-row">
+      <t-badge :count="8" content="消息" :offset="[4, 0]" />
+      <t-badge :count="2" :offset="[2, -2]">
+        <t-icon name="notification" size="24" aria-label="通知" />
       </t-badge>
-      <t-badge count="new">
-        <text class="demo-text">动态</text>
+      <t-badge :count="8" :offset="[2, 2]">
+        <t-button>按钮</t-button>
+      </t-badge>
+    </view>
+
+    <view class="demo-desc">自定义徽标</view>
+    <view class="demo-row">
+      <t-badge count="NEW" :offset="[0, 2]">
+        <t-button icon="notification" shape="square" size="large" aria-label="通知" />
       </t-badge>
     </view>
   </view>
 </template>
 
+<script setup lang="uts">
+// easycom
+</script>
+
 <style>
 .demo-block {
   padding: 16px;
+  background-color: #ffffff;
+}
+.demo-desc {
+  font-size: 14px;
+  color: #666666;
+  margin-bottom: 12px;
 }
 .demo-row {
   display: flex;
   flex-direction: row;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 24px;
+  overflow: visible;
 }
-.demo-row > * {
+.demo-row > view {
   margin-right: 32px;
   margin-bottom: 12px;
-}
-.demo-text {
-  font-size: 14px;
-  color: #181818;
 }
 </style>

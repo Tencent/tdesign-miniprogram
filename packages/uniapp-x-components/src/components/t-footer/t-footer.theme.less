@@ -13,6 +13,7 @@
 @td-footer-logo-icon-margin-right: var(--td-footer-logo-icon-margin-right, 8px);
 @td-footer-logo-title-font-size: var(--td-footer-logo-title-font-size, 16px);
 @td-footer-logo-title-color: var(--td-footer-logo-title-color, rgba(0, 0, 0, 0.9));
+@td-footer-logo-title-url-width: var(--td-footer-logo-title-url-width, 128px);
 
 .t-footer {
   display: flex;
@@ -23,6 +24,7 @@
 
   &__logo {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-bottom: 8px;
@@ -42,9 +44,9 @@
 
   &__link-list {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
   }
 
   &__link-item {
@@ -61,7 +63,14 @@
 
   &__text {
     margin-top: @td-footer-text-margin-top;
+  }
+
+  &__text-content {
     font-size: @td-footer-text-font-size;
     color: @td-footer-text-color;
+  }
+
+  &__title-url {
+    width: @td-footer-logo-title-url-width;
   }
 }

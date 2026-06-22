@@ -2,24 +2,24 @@
   <scroll-view class="demo-page" :scroll-y="true">
     <view class="demo-header">
       <text class="demo-title">Collapse 折叠面板</text>
-      <text class="demo-desc">用于将冗长或多层级的内容进行分组管理。</text>
+      <text class="demo-desc">可以折叠/展开的内容区域。</text>
     </view>
 
     <view class="demo-section">
       <text class="demo-section-title">01 组件类型</text>
-      <text class="demo-section-desc">基础折叠</text>
+      <text class="demo-section-desc">基础折叠面板</text>
       <base-demo></base-demo>
-    </view>
-
-    <view class="demo-section">
-      <text class="demo-section-title">02 组件状态</text>
-      <text class="demo-section-desc">手风琴模式</text>
+      <text class="demo-section-desc">向上展开</text>
+      <placement-demo></placement-demo>
+      <text class="demo-section-desc">带操作说明</text>
+      <action-demo></action-demo>
+      <text class="demo-section-desc">手风琴式</text>
       <accordion-demo></accordion-demo>
     </view>
 
     <view class="demo-section">
-      <text class="demo-section-title">03 组件样式</text>
-      <text class="demo-section-desc">卡片主题</text>
+      <text class="demo-section-title">02 组件样式</text>
+      <text class="demo-section-desc">卡片折叠面板</text>
       <theme-demo></theme-demo>
     </view>
   </scroll-view>
@@ -27,12 +27,16 @@
 
 <script>
 import BaseDemo from './base/index.uvue';
+import PlacementDemo from './placement/index.uvue';
+import ActionDemo from './action/index.uvue';
 import AccordionDemo from './accordion/index.uvue';
 import ThemeDemo from './theme/index.uvue';
 
 export default {
   components: {
     BaseDemo,
+    PlacementDemo,
+    ActionDemo,
     AccordionDemo,
     ThemeDemo,
   },

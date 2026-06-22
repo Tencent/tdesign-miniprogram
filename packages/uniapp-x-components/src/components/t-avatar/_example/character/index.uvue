@@ -1,29 +1,28 @@
 <template>
   <view class="demo-block">
     <view class="demo-row">
-      <t-avatar size="small">A</t-avatar>
-      <t-avatar size="medium">王</t-avatar>
-      <t-avatar size="large">小明</t-avatar>
-      <t-avatar
-        size="medium"
-        alt="头"
-      />
+      <t-avatar custom-class="external-class-content">A</t-avatar>
+      <t-avatar custom-class="external-class-content" shape="round">A</t-avatar>
     </view>
   </view>
 </template>
 
 <style>
 .demo-block {
-  padding: 16px;
+  padding: 12px 16px 4px;
 }
 .demo-row {
   display: flex;
   flex-direction: row;
   align-items: center;
-  flex-wrap: wrap;
 }
 .demo-row > * {
-  margin-right: 12px;
-  margin-bottom: 12px;
+  margin-right: 32px;
+}
+/* 与 uniapp 版字符头像同款配色：白字蓝底 */
+.external-class-content {
+  color: #ffffff;
+  background-color: #0052d9;
+  font-weight: 400;
 }
 </style>

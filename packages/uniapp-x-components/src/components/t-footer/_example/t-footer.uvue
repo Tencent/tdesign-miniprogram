@@ -6,12 +6,12 @@
     </view>
 
     <view class="demo-section">
-      <text class="demo-section-title">01 组件类型</text>
+      <text class="demo-section-title">01 类型</text>
       <text class="demo-section-desc">基础页脚</text>
       <base-demo></base-demo>
-      <text class="demo-section-desc">带链接</text>
+      <text class="demo-section-desc">基础加链接页脚</text>
       <link-demo></link-demo>
-      <text class="demo-section-desc">带 Logo</text>
+      <text class="demo-section-desc">品牌页脚</text>
       <logo-demo></logo-demo>
     </view>
   </scroll-view>

@@ -1,31 +1,49 @@
 <template>
   <view :class="rootClass">
-    <view class="t-collapse-panel__header" @click="onHeaderClick">
-      <image
-        v-if="props.headerLeftIcon.length > 0"
-        class="t-collapse-panel__left-icon"
-        :src="props.headerLeftIcon"
-        mode="aspectFit"
-      />
-      <view class="t-collapse-panel__title">
-        <slot name="header">
-          <text v-if="props.header.length > 0">{{ props.header }}</text>
-        </slot>
-      </view>
-      <view v-if="props.headerRightContent.length > 0" class="t-collapse-panel__extra">
-        <slot name="headerRightContent">
-          <text>{{ props.headerRightContent }}</text>
-        </slot>
-      </view>
-      <view v-if="showArrow" :class="arrowClass">
-        <text>⌄</text>
-      </view>
+    <view class="t-collapse-panel__title" @click="onHeaderClick">
+      <t-cell
+        :title="props.header"
+        :note="props.headerRightContent"
+        :bordered="true"
+        :custom-class="headerClass"
+        :title-style="titleStyle"
+        :note-style="noteStyle"
+      >
+        <template v-if="hasHeaderLeftIcon || props.headerLeftIcon.length > 0" #left-icon>
+          <slot name="header-left-icon">
+            <image
+              v-if="props.headerLeftIcon.length > 0"
+              class="t-collapse-panel__left-icon"
+              :src="props.headerLeftIcon"
+              mode="aspectFit"
+            />
+          </slot>
+        </template>
+        <template v-if="hasHeader" #title>
+          <slot name="header" />
+        </template>
+        <template v-if="hasHeaderRightContent" #note>
+          <slot name="header-right-content" />
+        </template>
+        <template #right-icon>
+          <slot name="expand-icon">
+            <t-icon
+              v-if="showArrow"
+              name="chevron-down"
+              size="48rpx"
+              :custom-class="arrowClass"
+              :color="isDisabled ? disabledColor : ''"
+            />
+          </slot>
+        </template>
+      </t-cell>
     </view>
     <view :class="wrapperClass">
-      <view class="t-collapse-panel__content">
+      <view :class="contentClass">
         <slot>
-          <text v-if="props.content.length > 0">{{ props.content }}</text>
+          <text v-if="props.content.length > 0" class="t-collapse-panel__content-text">{{ props.content }}</text>
         </slot>
+        <slot name="content" />
       </view>
     </view>
   </view>
@@ -40,8 +58,9 @@
  *  - value 不传则用挂载顺序作为 fallback key（这里通过自增计数器）
  *  - placement: bottom(content 在 header 下方)/ top(content 在上方)
  *  - 禁用 / 展开图标 优先级：自身 prop（非 null） > 父级
+ *  - header 复用 t-cell（带 bordered 分割线）；箭头复用 t-icon（chevron-down/up）
  */
-import { computed, getCurrentInstance, inject, onMounted } from 'vue';
+import { computed, getCurrentInstance, inject, onMounted, useSlots } from 'vue';
 import { collapsePanelVariants } from './t-collapse-panel.variants';
 import type { CollapsePanelPlacement } from './t-collapse-panel.types';
 
@@ -70,6 +89,11 @@ const props = defineProps({
 });
 
 const collapse = inject('t-collapse-context', null) as CollapseCtx | null;
+
+const slots = useSlots();
+const hasHeader = computed(() => slots.header != null);
+const hasHeaderLeftIcon = computed(() => slots['header-left-icon'] != null);
+const hasHeaderRightContent = computed(() => slots['header-right-content'] != null);
 
 const instanceUid = (getCurrentInstance() as any)?.uid ?? 0;
 
@@ -114,8 +138,15 @@ const rootClass = computed(() =>
   }),
 );
 
+const headerClass = computed<string>(() => {
+  let c = 't-collapse-panel__header t-collapse-panel__header--' + props.placement;
+  if (isExpanded.value) c = c + ' t-collapse-panel__header--expanded';
+  if (isDisabled.value) c = c + ' t-collapse-panel__header--disabled';
+  return c;
+});
+
 const arrowClass = computed<string>(() => {
-  let c = 't-collapse-panel__arrow';
+  let c = 't-collapse-panel__arrow t-collapse-panel__arrow--' + props.placement;
   if (isExpanded.value) c = c + ' t-collapse-panel__arrow--expanded';
   return c;
 });
@@ -124,6 +155,25 @@ const wrapperClass = computed<string>(() => {
   let c = 't-collapse-panel__wrapper';
   if (isExpanded.value) c = c + ' t-collapse-panel__wrapper--expanded';
   return c;
+});
+
+const contentClass = computed<string>(() => {
+  let c = 't-collapse-panel__content t-collapse-panel__content--' + props.placement;
+  if (isExpanded.value) c = c + ' t-collapse-panel__content--expanded';
+  if (isDisabled.value) c = c + ' t-collapse-panel__content--disabled';
+  return c;
+});
+
+const disabledColor = 'rgba(0, 0, 0, 0.26)';
+
+const titleStyle = computed<string>(() => {
+  if (isDisabled.value) return 'color:' + disabledColor + ';';
+  return '';
+});
+
+const noteStyle = computed<string>(() => {
+  if (isDisabled.value) return 'color:' + disabledColor + ';';
+  return '';
 });
 
 function onHeaderClick() {

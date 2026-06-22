@@ -1,8 +1,8 @@
 <template>
   <view :class="rootClass">
-    <view v-if="hasContent" class="t-badge__content">
+    <view v-if="hasContent" :class="contentClass">
       <slot>
-        <text v-if="props.content.length > 0">{{ props.content }}</text>
+        <text v-if="props.content.length > 0" class="t-badge__content-text">{{ props.content }}</text>
       </slot>
     </view>
     <view
@@ -10,9 +10,11 @@
       :class="innerClass"
       :style="innerStyle"
     >
-      <slot v-if="!props.dot" name="count">
-        <text v-if="badgeText.length > 0">{{ badgeText }}</text>
-      </slot>
+      <view v-if="!props.dot" class="t-badge__count">
+        <slot name="count">
+          <text v-if="badgeText.length > 0">{{ badgeText }}</text>
+        </slot>
+      </view>
     </view>
   </view>
 </template>
@@ -21,12 +23,15 @@
 /**
  * Badge - uni-app x 实现
  *
- * 行为契约与 badge.vue 镜像保持一致：
+ * 行为契约对齐 packages/uniapp-components/badge：
  *  - dot=true：渲染小圆点，忽略 count；
- *  - count 为数字且 > maxCount：展示 `${maxCount}+`；
- *  - count 为 0：默认隐藏，showZero=true 时强制显示；
+ *  - count 为数字或纯数字字符串且 > maxCount：展示 `${maxCount}+`；
+ *  - count 为 0 / '0'：默认隐藏，showZero=true 时强制显示；
+ *  - count 为 null：仍渲染徽标，内部使用 #count 插槽内容；
  *  - 包含 default slot / content 时，徽标浮动到右上角；
- *  - 仅作徽标用（无 child）时，原地展示。
+ *  - 仅作徽标用（无 child）时，原地展示；
+ *  - offset: [x, y]，元素为 number 时按 px 计算，字符串带单位时原样使用；
+ *    与 uniapp 原版一致，offset 注入到 left/top（覆盖默认浮动位置）。
  */
 import { computed, useSlots } from 'vue';
 import { badgeVariants, badgeInnerVariants } from './t-badge.variants';
@@ -34,66 +39,119 @@ import type { BadgeShape, BadgeSize } from './t-badge.types';
 
 const props = defineProps({
   dot: { type: Boolean, default: false },
-  count: { type: [String, Number], default: '' },
+  count: { type: [String, Number, null] as PropType<string | number | null>, default: 0 },
   maxCount: { type: Number, default: 99 },
   showZero: { type: Boolean, default: false },
   content: { type: String, default: '' },
   color: { type: String, default: '' },
   shape: { type: String as PropType<BadgeShape>, default: 'circle' },
   size: { type: String as PropType<BadgeSize>, default: 'medium' },
-  offset: { type: Array as PropType<number[]>, default: (): number[] => [] },
+  offset: { type: Array as PropType<Array<string | number>>, default: (): Array<string | number> => [] },
   customClass: { type: String, default: '' },
+  customClassContent: { type: String, default: '' },
+  customClassCount: { type: String, default: '' },
 });
 
 const slots = useSlots();
 
 // 是否存在 child content（用来决定徽标浮动定位）
-const hasContent = computed(() => props.content.length > 0 || slots.default != null);
+const hasContent = computed<boolean>(() => props.content.length > 0 || slots.default != null);
+
+// 是否为"纯数字"——即可以参与 maxCount 比较
+function isNumericLike(raw: string | number | null): boolean {
+  if (raw === null) return false;
+  if (typeof raw === 'number') return !isNaN(raw);
+  // string
+  if (raw.length === 0) return false;
+  // /^-?\d+$/ uts 不一定支持 RegExp，简单遍历
+  let i = 0;
+  if (raw.charAt(0) === '-') i = 1;
+  if (i === raw.length) return false;
+  for (; i < raw.length; i++) {
+    const c = raw.charCodeAt(i);
+    if (c < 48 || c > 57) return false;
+  }
+  return true;
+}
+
+function toInt(raw: string | number): number {
+  if (typeof raw === 'number') return raw;
+  return parseInt(raw, 10);
+}
 
 // 计算最终展示的徽标文字
 const badgeText = computed<string>(() => {
   if (props.dot) return '';
   const raw = props.count;
-  if (typeof raw === 'number') {
-    if (raw === 0) return '0';
-    if (raw > props.maxCount) return String(props.maxCount) + '+';
-    return String(raw);
+  if (raw === null) return '';
+  if (isNumericLike(raw)) {
+    const n = toInt(raw);
+    if (n > props.maxCount) return String(props.maxCount) + '+';
+    return String(n);
   }
-  // string
-  return raw == null ? '' : String(raw);
+  // 非数字字符串（如 'new'、'NEW'）原样展示
+  return String(raw);
 });
 
-// 是否真正渲染徽标（dot 或 count 有内容；count=0 时受 showZero 控制）
+// 是否真正渲染徽标
 const showBadge = computed<boolean>(() => {
   if (props.dot) return true;
   const raw = props.count;
-  if (typeof raw === 'number') {
-    if (raw === 0) return props.showZero;
+  // count === null：使用 #count 插槽渲染（即使插槽为空也保留徽标位置，与 uniapp 原版 isShowBadge(count==null) 行为一致）
+  if (raw === null) return true;
+  if (isNumericLike(raw)) {
+    const n = toInt(raw);
+    if (n === 0) return props.showZero;
     return true;
   }
-  // string
-  if (raw == null) return false;
+  // 字符串：长度 0 视为不显示；'0' 走 showZero
   const s = String(raw);
   if (s.length === 0) return false;
-  if (s === '0') return props.showZero;
   return true;
 });
 
-const rootClass = computed(() =>
+const rootClass = computed<string>(() =>
   badgeVariants({
     hasContent: hasContent.value,
     class: props.customClass,
   }),
 );
 
-const innerClass = computed(() =>
+const contentClass = computed<string>(() => {
+  let cls = 't-badge__content';
+  if (props.customClassContent.length > 0) {
+    cls += ' ' + props.customClassContent;
+  }
+  return cls;
+});
+
+const innerClass = computed<string>(() =>
   badgeInnerVariants({
     shape: props.shape,
     size: props.size,
     dot: props.dot,
     floating: hasContent.value,
+    class: props.customClassCount,
   }),
 );
+
+// 单位检测：字符串包含已知 CSS 单位则原样使用，否则按 px 处理
+function withUnit(v: string | number): string {
+  if (typeof v === 'number') return v + 'px';
+  const s = v;
+  if (
+    s.indexOf('px') > -1 ||
+    s.indexOf('rpx') > -1 ||
+    s.indexOf('em') > -1 ||
+    s.indexOf('rem') > -1 ||
+    s.indexOf('%') > -1 ||
+    s.indexOf('vh') > -1 ||
+    s.indexOf('vw') > -1
+  ) {
+    return s;
+  }
+  return s + 'px';
+}
 
 const innerStyle = computed<string>(() => {
   const parts: string[] = [];
@@ -101,11 +159,16 @@ const innerStyle = computed<string>(() => {
     parts.push('background-color:' + props.color);
   }
   // offset: [x, y]，仅在浮动模式下生效
-  if (hasContent.value && props.offset.length === 2) {
-    const x = props.offset[0];
-    const y = props.offset[1];
-    // 在默认 translate(-50%, -50%) 之上叠加偏移
-    parts.push('transform:translate(calc(-50% + ' + x + 'px), calc(-50% + ' + y + 'px))');
+  if (hasContent.value && props.offset.length > 0) {
+    const x = props.offset.length > 0 ? props.offset[0] : 0;
+    const y = props.offset.length > 1 ? props.offset[1] : 0;
+    // 与 uniapp 原版一致：覆盖默认 left:100%，改写为 calc(100% + offset)
+    if (x !== null && x !== undefined && String(x).length > 0) {
+      parts.push('left:calc(100% + ' + withUnit(x) + ')');
+    }
+    if (y !== null && y !== undefined && String(y).length > 0) {
+      parts.push('top:' + withUnit(y));
+    }
   }
   return parts.join(';');
 });

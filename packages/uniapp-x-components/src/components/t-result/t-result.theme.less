@@ -20,17 +20,14 @@
   align-items: center;
 
   &__thumb {
-    width: @td-result-icon-size;
-    height: @td-result-icon-size;
     display: flex;
     align-items: center;
     justify-content: center;
   }
 
-  &__icon,
   &__image {
-    width: 100%;
-    height: 100%;
+    width: @td-result-icon-size;
+    height: @td-result-icon-size;
   }
 
   &__title {
@@ -46,7 +43,7 @@
     font-size: @td-result-description-font-size;
   }
 
-  // theme
+  // theme: 通过 thumb 的 color 让 t-icon 继承到主题色
   &--theme-default {
     .t-result__thumb { color: @td-result-icon-default-color; }
   }

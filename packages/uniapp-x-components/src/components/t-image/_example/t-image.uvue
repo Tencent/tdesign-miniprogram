@@ -2,24 +2,16 @@
   <scroll-view class="demo-page" :scroll-y="true">
     <view class="demo-header">
       <text class="demo-title">Image 图片</text>
-      <text class="demo-desc">用于展示效果，支持加载占位与失败兜底。</text>
+      <text class="demo-desc">用于展示效果，主要为上下左右居中裁切、拉伸、平铺等方式。</text>
     </view>
 
     <view class="demo-section">
       <text class="demo-section-title">01 组件类型</text>
-      <text class="demo-section-desc">基础图片</text>
       <base-demo></base-demo>
     </view>
 
     <view class="demo-section">
-      <text class="demo-section-title">02 组件样式</text>
-      <text class="demo-section-desc">形状</text>
-      <shape-demo></shape-demo>
-    </view>
-
-    <view class="demo-section">
-      <text class="demo-section-title">03 组件状态</text>
-      <text class="demo-section-desc">加载中 / 加载失败</text>
+      <text class="demo-section-title">02 组件状态</text>
       <status-demo></status-demo>
     </view>
   </scroll-view>
@@ -27,13 +19,11 @@
 
 <script>
 import BaseDemo from './base/index.uvue';
-import ShapeDemo from './shape/index.uvue';
 import StatusDemo from './status/index.uvue';
 
 export default {
   components: {
     BaseDemo,
-    ShapeDemo,
     StatusDemo,
   },
 };

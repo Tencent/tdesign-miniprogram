@@ -1,0 +1,43 @@
+<template>
+  <view class="page">
+    <view class="page__content">
+      <t-result
+        theme="success"
+        title="成功状态"
+        description="描述文字"
+      />
+    </view>
+    <view class="page__footer">
+      <t-button
+        theme="primary"
+        block
+        size="large"
+        variant="outline"
+        @click="goBack"
+      >
+        返回
+      </t-button>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+function goBack() {
+  uni.navigateBack({
+    delta: 1,
+  } as NavigateBackOptions);
+}
+</script>
+
+<style>
+.page {
+  flex: 1;
+  background-color: #ffffff;
+}
+.page__content {
+  padding: 48px 16px 32px;
+}
+.page__footer {
+  padding: 0 16px 24px;
+}
+</style>

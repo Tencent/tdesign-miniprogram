@@ -7,9 +7,13 @@
 
     <view class="demo-block">
       <text class="demo-block__title">01 组件类型</text>
-      <text class="demo-block__desc">基础单元格</text>
+      <text class="demo-block__desc">单行单元格</text>
       <view class="demo-block__slot">
         <base-demo></base-demo>
+      </view>
+      <text class="demo-block__desc demo-block__desc--gap">多行单元格</text>
+      <view class="demo-block__slot">
+        <multiple-demo></multiple-demo>
       </view>
       <text class="demo-block__desc demo-block__desc--gap">带箭头</text>
       <view class="demo-block__slot">
@@ -36,26 +40,32 @@
       <view class="demo-block__slot">
         <align-demo></align-demo>
       </view>
+      <text class="demo-block__desc demo-block__desc--gap">卡片单元格</text>
+      <theme-demo></theme-demo>
     </view>
   </scroll-view>
 </template>
 
 <script>
 import BaseDemo from './base/index.uvue';
+import MultipleDemo from './multiple/index.uvue';
 import ArrowDemo from './arrow/index.uvue';
 import BorderedDemo from './bordered/index.uvue';
 import RequiredDemo from './required/index.uvue';
 import AlignDemo from './align/index.uvue';
 import DisabledDemo from './disabled/index.uvue';
+import ThemeDemo from './theme/index.uvue';
 
 export default {
   components: {
     BaseDemo,
+    MultipleDemo,
     ArrowDemo,
     BorderedDemo,
     RequiredDemo,
     AlignDemo,
     DisabledDemo,
+    ThemeDemo,
   },
 };
 </script>

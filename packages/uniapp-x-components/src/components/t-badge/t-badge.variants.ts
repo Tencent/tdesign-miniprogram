@@ -9,7 +9,7 @@
 
 import { cva } from '../../utils/cva';
 
-// 根容器：仅作为相对定位锚点
+// 根容器：仅作为相对定位锚点；hasContent=true 时让根具备 inline-block 定位上下文
 export const badgeVariants = cva('t-badge', {
   variants: {
     hasContent: {
