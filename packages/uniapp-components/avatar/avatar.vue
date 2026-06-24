@@ -1,9 +1,6 @@
 <template>
   <view
-    :class="[
-      classPrefix + '__wrapper',
-      tClass
-    ]"
+    :class="[classPrefix + '__wrapper', tClass]"
     :style="'' + tools._style([utils.getStyles(isShow), customStyle, innerStyle])"
   >
     <t-badge
@@ -22,10 +19,7 @@
       :t-class-count="badgeProps.tClassCount"
     >
       <view
-        :class="[
-          utils.getClass(classPrefix, dataSize || 'medium', dataShape, dataBordered),
-          tClassImage
-        ]"
+        :class="[utils.getClass(classPrefix, dataSize || 'medium', dataShape, dataBordered), tClassImage]"
         :style="'' + utils.getSize(dataSize, windowWidth)"
         :aria-label="ariaLabel || alt || '头像'"
         :aria-role="ariaRole || 'img'"
@@ -36,7 +30,7 @@
           :t-class="prefix + '-image ' + classPrefix + '__image'"
           :t-class-load="tClassAlt"
           :custom-style="imageCustomStyle"
-          style="width: 100%;height: 100%;"
+          style="width: 100%; height: 100%"
           :src="image"
           :mode="(imageProps && imageProps.mode) || 'aspectFill'"
           :lazy="(imageProps && imageProps.lazy) || false"
@@ -46,13 +40,17 @@
           :error="alt || 'default'"
           @error="onLoadError"
         />
-        <block
-          v-else-if="iconName || tools.isNoEmptyObj(iconData)"
-          name="icon"
-        >
+        <block v-else-if="iconName || tools.isNoEmptyObj(iconData)" name="icon">
           <t-icon
             :custom-style="iconCustomStyle"
-            :t-class="classPrefix + '__icon ' + classPrefix + '__icon--' + (iconData.activeIdx == iconData.index ? 'active ' : ' ') + tClassIcon"
+            :t-class="
+              classPrefix +
+              '__icon ' +
+              classPrefix +
+              '__icon--' +
+              (iconData.activeIdx == iconData.index ? 'active ' : ' ') +
+              tClassIcon
+            "
             :prefix="iconData.prefix"
             :name="iconName || iconData.name"
             :size="iconData.size"
@@ -63,13 +61,7 @@
             @click="iconData.click || ''"
           />
         </block>
-        <view
-          v-else
-          :class="[
-            classPrefix + '__text ',
-            tClassContent
-          ]"
-        >
+        <view v-else :class="[classPrefix + '__text ', tClassContent]">
           <slot />
         </view>
       </view>
@@ -89,9 +81,7 @@ import TImage from '../image/image';
 import * as utils from './computed.js';
 import avatarProps from './props';
 
-
 const name = `${prefix}-avatar`;
-
 
 export default {
   components: {
@@ -144,9 +134,7 @@ export default {
 
         return tools._style([
           {
-            fontSize: this.iconData.size
-              ? addUnit(this.iconData.size)
-              : fontSize[this.dataSize],
+            fontSize: this.iconData.size ? addUnit(this.iconData.size) : fontSize[this.dataSize],
           },
           this.iconData.style || '',
         ]);
@@ -172,11 +160,8 @@ export default {
         },
         immediate: true,
       },
-
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
       innerAfterLinked() {
         this.dataShape = this.shape || this[RELATION_MAP.Avatar]?.shape || 'circle';
@@ -198,6 +183,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./avatar.css"></style>

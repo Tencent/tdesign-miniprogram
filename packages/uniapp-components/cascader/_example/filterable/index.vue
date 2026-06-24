@@ -1,11 +1,6 @@
 <template>
   <view>
-    <t-cell
-      title="地址"
-      :note="note"
-      arrow
-      @click="showCascader"
-    />
+    <t-cell title="地址" :note="note" arrow @click="showCascader" />
 
     <t-cascader
       :visible="visible"
@@ -14,7 +9,7 @@
       title="请选择地址"
       filterable
       filter-placeholder="搜索省/市/区"
-      @update:visible="(e) => visible = e"
+      @update:visible="(e) => (visible = e)"
       @change="onChange"
       @pick="onPick"
     />
@@ -130,11 +125,10 @@ export default {
     onChange(e) {
       const { selectedOptions, value } = e;
       this.value = value;
-      this.note = selectedOptions.map(item => item.label).join('/');
+      this.note = selectedOptions.map((item) => item.label).join('/');
       this.visible = false;
     },
   },
 };
 </script>
-<style>
-</style>
+<style></style>

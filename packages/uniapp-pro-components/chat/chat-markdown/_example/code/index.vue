@@ -1,9 +1,6 @@
 <template>
   <view class="chat-example-block">
-    <t-chat-markdown
-      :content="markdownContent"
-      @click="handleNodeTap"
-    />
+    <t-chat-markdown :content="markdownContent" @click="handleNodeTap" />
   </view>
 </template>
 
@@ -16,7 +13,6 @@ import { Form, Input, Button, Message } from 'tdesign-react';
 const LoginForm = () => { const [loading, setLoading] = useState(false);
 \`\`\`
 `;
-
 
 export default {
   components: {
@@ -45,8 +41,7 @@ export default {
 </script>
 <style>
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx;
 }
-
 </style>

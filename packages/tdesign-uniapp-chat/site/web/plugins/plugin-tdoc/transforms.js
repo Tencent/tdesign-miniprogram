@@ -5,7 +5,7 @@ import mdToVue from './md-to-vue';
 
 let demoCodesImports = {};
 
-export default mode => ({
+export default (mode) => ({
   before({ source, file }) {
     const resourceDir = path.dirname(file);
     const reg = file.match(/([\w-]+)\.?([\w-]+)?\.md/);
@@ -38,7 +38,8 @@ export default mode => ({
       const localeDemoPath = path.resolve(resourceDir, `../_example/${demoFileName}.${localeName}.vue`);
       // const demoPath = path.resolve(resourceDir, `./demos/${demoFileName}.vue`);
       // localeDemo 优先级最高
-      if (fs.existsSync(localeDemoPath)) return `\n::: demo demos/${demoFileName}.${localeName} ${componentName}\n:::\n`;
+      if (fs.existsSync(localeDemoPath))
+        return `\n::: demo demos/${demoFileName}.${localeName} ${componentName}\n:::\n`;
 
       if (!fs.existsSync(defaultDemoPath)) {
         console.log('\x1B[36m%s\x1B[0m', `${componentName} 组件需要实现 demos/${demoFileName}.vue 示例!`);
@@ -58,7 +59,7 @@ export default mode => ({
   },
   render({ source, file, md }) {
     const demoCodesDefsStr = Object.keys(demoCodesImports)
-      .map(key => demoCodesImports[key])
+      .map((key) => demoCodesImports[key])
       .join(';\n');
 
     const demoCodeInstallStr = Object.keys(demoCodesImports).join(',');

@@ -1,18 +1,8 @@
 <template>
   <view>
-    <t-button
-      theme="primary"
-      size="large"
-      variant="outline"
-      block
-      @click="onClick"
-    >
-      带操作图片预览
-    </t-button>
+    <t-button theme="primary" size="large" variant="outline" block @click="onClick"> 带操作图片预览 </t-button>
 
-    <t-action-sheet
-      ref="t-action-sheet"
-    />
+    <t-action-sheet ref="t-action-sheet" />
 
     <t-image-viewer
       :using-custom-navbar="!isMPAlipay"
@@ -53,7 +43,10 @@ export default {
   created() {},
   methods: {
     onClick() {
-      this.images = ['https://tdesign.gtimg.com/mobile/demos/swiper1.png', 'https://tdesign.gtimg.com/mobile/demos/swiper2.png'];
+      this.images = [
+        'https://tdesign.gtimg.com/mobile/demos/swiper1.png',
+        'https://tdesign.gtimg.com/mobile/demos/swiper2.png',
+      ];
       this.showIndex = true;
       this.visible = true;
       this.closeBtn = true;
@@ -86,5 +79,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

@@ -4,7 +4,6 @@ const SHARE_INFO = {
   title: 'TDesign UI',
 };
 
-
 export default {
   onShareAppMessage() {
     return SHARE_INFO;
@@ -47,10 +46,8 @@ export default {
     // #ifdef MP-WEIXIN
     if (typeof wx.showShareMenu === 'function') {
       wx.showShareMenu({
-        success: () => {
-        },
-        fail: () => {
-        },
+        success: () => {},
+        fail: () => {},
       });
     }
     // #endif

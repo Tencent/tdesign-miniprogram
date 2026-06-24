@@ -1,11 +1,6 @@
 <template>
   <view class="input-example--banner">
-    <t-input
-      :custom-style="style"
-      label="标签文字"
-      placeholder="请输入文字"
-      borderless
-    />
+    <t-input :custom-style="style" label="标签文字" placeholder="请输入文字" borderless />
   </view>
 </template>
 
@@ -26,6 +21,6 @@ export default {
 </script>
 <style>
 .input-example--banner {
-    margin: 0 32rpx;
+  margin: 0 32rpx;
 }
 </style>

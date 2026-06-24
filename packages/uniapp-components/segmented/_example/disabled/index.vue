@@ -1,10 +1,6 @@
 <template>
   <view class="example-segmented">
-    <t-segmented
-      :options="optionsWithDisabled"
-      :value="valueWithDisabled"
-      @change="onChangeWithDisabled"
-    />
+    <t-segmented :options="optionsWithDisabled" :value="valueWithDisabled" @change="onChangeWithDisabled" />
   </view>
 </template>
 

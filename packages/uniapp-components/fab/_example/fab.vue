@@ -1,18 +1,12 @@
 <template>
   <view>
-    <t-demo-navbar
-      custom-class="demo-navbar"
-      title="Fab"
-    />
+    <t-demo-navbar custom-class="demo-navbar" title="Fab" />
     <t-demo-header
       title="Fab 悬浮按钮"
       desc="当功能使用图标即可表意清楚时，可使用纯图标悬浮按钮，例如：添加、发布。"
       notice="渲染框架支持情况：Skyline、WebView"
     />
-    <t-demo
-      title="01 组件类型"
-      desc="纯图标悬浮按钮"
-    >
+    <t-demo title="01 组件类型" desc="纯图标悬浮按钮">
       <view class="wrapper">
         <t-button
           theme="primary"
@@ -40,10 +34,7 @@
         </t-button>
       </view>
     </t-demo>
-    <t-demo
-      title="02 组件样式"
-      desc="可移动悬浮按钮"
-    >
+    <t-demo title="02 组件样式" desc="可移动悬浮按钮">
       <view class="wrapper">
         <t-button
           theme="primary"
@@ -73,24 +64,12 @@
     </t-demo>
     <t-demo padding>
       <view class="skeleton-group">
-        <t-skeleton
-          :row-col="rowCol"
-          loading
-        />
-        <t-skeleton
-          :row-col="rowCol"
-          loading
-        />
+        <t-skeleton :row-col="rowCol" loading />
+        <t-skeleton :row-col="rowCol" loading />
       </view>
       <view class="skeleton-group">
-        <t-skeleton
-          :row-col="rowCol"
-          loading
-        />
-        <t-skeleton
-          :row-col="rowCol"
-          loading
-        />
+        <t-skeleton :row-col="rowCol" loading />
+        <t-skeleton :row-col="rowCol" loading />
       </view>
     </t-demo>
 
@@ -102,7 +81,6 @@
 </template>
 
 <script>
-
 import TButton from '@tdesign/uniapp/button/button.vue';
 import { handlePageScroll } from '@tdesign/uniapp/mixins/page-scroll';
 import TSkeleton from '@tdesign/uniapp/skeleton/skeleton.vue';

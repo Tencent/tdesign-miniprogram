@@ -17,7 +17,7 @@
       mode="second"
       :value="datetime"
       format="YYYY-MM-DD HH:mm:ss"
-      @update:visible="(e) => datetimeVisible = e"
+      @update:visible="(e) => (datetimeVisible = e)"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"
@@ -71,6 +71,6 @@ export default {
 </script>
 <style>
 .panel-item {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 </style>

@@ -1,26 +1,13 @@
 <template>
   <view>
     <view class="block">
-      <t-steps
-        :current="first"
-        current-status="error"
-        @change="onFirstChange"
-      >
-        <t-step-item
-          v-for="(item, index) in 4"
-          :key="index"
-          :title="getText(first, index)"
-          content="辅助信息"
-        />
+      <t-steps :current="first" current-status="error" @change="onFirstChange">
+        <t-step-item v-for="(item, index) in 4" :key="index" :title="getText(first, index)" content="辅助信息" />
       </t-steps>
     </view>
 
     <view class="block">
-      <t-steps
-        :current="second"
-        current-status="error"
-        @change="onSecondChange"
-      >
+      <t-steps :current="second" current-status="error" @change="onSecondChange">
         <t-step-item
           v-for="(item, index) in 4"
           :key="index"
@@ -32,18 +19,8 @@
     </view>
 
     <view class="block">
-      <t-steps
-        theme="dot"
-        :current="third"
-        current-status="error"
-        @change="onThirdChange"
-      >
-        <t-step-item
-          v-for="(item, index) in 4"
-          :key="index"
-          :title="getText(third, index)"
-          content="辅助信息"
-        />
+      <t-steps theme="dot" :current="third" current-status="error" @change="onThirdChange">
+        <t-step-item v-for="(item, index) in 4" :key="index" :title="getText(third, index)" content="辅助信息" />
       </t-steps>
     </view>
   </view>
@@ -52,7 +29,6 @@
 <script>
 import TStepItem from '@tdesign/uniapp/step-item/step-item.vue';
 import TSteps from '@tdesign/uniapp/steps/steps.vue';
-
 
 export default {
   components: {
@@ -87,8 +63,8 @@ export default {
 </script>
 <style>
 .block {
-    background-color: var(--bg-color-demo);
-    padding: 32rpx 0;
-    margin: 32rpx 0 48rpx;
+  background-color: var(--bg-color-demo);
+  padding: 32rpx 0;
+  margin: 32rpx 0 48rpx;
 }
 </style>

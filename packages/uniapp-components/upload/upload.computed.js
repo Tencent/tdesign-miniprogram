@@ -51,7 +51,29 @@ function getFileCategory(ext) {
   if (['.xlsx', '.xls', '.csv', '.xlc', '.xlm', '.xlt', '.xlw'].includes(ext)) return 'excel';
   if (['.pptx', '.ppt', '.key'].includes(ext)) return 'ppt';
   if (['.docx', '.doc', '.document', '.wps', '.wdb', '.msword'].includes(ext)) return 'word';
-  if (['.avi', '.mp4', '.wmv', '.mpg', '.mpeg', '.mov', '.rm', '.ram', '.swf', '.flv', '.rmvb', '.3gp', '.mp2', '.mp3', '.ogg', '.3gpp', '.ac3', '.au'].includes(ext)) return 'media';
+  if (
+    [
+      '.avi',
+      '.mp4',
+      '.wmv',
+      '.mpg',
+      '.mpeg',
+      '.mov',
+      '.rm',
+      '.ram',
+      '.swf',
+      '.flv',
+      '.rmvb',
+      '.3gp',
+      '.mp2',
+      '.mp3',
+      '.ogg',
+      '.3gpp',
+      '.ac3',
+      '.au',
+    ].includes(ext)
+  )
+    return 'media';
   if (['.zip', '.rar', '.7z', '.tar', '.gz', '.bz2', '.xz'].includes(ext)) return 'zip';
   return 'other';
 }

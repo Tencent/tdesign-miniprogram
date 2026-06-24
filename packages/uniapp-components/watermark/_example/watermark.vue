@@ -1,17 +1,9 @@
 <template>
   <view>
-    <t-demo-navbar
-      title="Watermark"
-    />
+    <t-demo-navbar title="Watermark" />
     <view class="demo">
-      <t-demo-header
-        title="Watermark 水印"
-        desc="给页面的某个区域加上水印。"
-      />
-      <t-demo
-        title="01 组件类型"
-        desc="文字水印"
-      >
+      <t-demo-header title="Watermark 水印" desc="给页面的某个区域加上水印。" />
+      <t-demo title="01 组件类型" desc="文字水印">
         <base-watermark />
       </t-demo>
       <t-demo desc="图片水印">

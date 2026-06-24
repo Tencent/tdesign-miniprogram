@@ -4,11 +4,9 @@
 export function ellipsisStyle(ellipsis, isExpanded) {
   if (!ellipsis || isExpanded) return '';
   const row = typeof ellipsis === 'object' && ellipsis.row ? ellipsis.row : 1;
-  return (
-    `overflow:hidden;text-overflow:ellipsis;white-space:normal;display:-webkit-box;-webkit-line-clamp:${
-      row
-    };-webkit-box-orient:vertical;`
-  );
+  return `overflow:hidden;text-overflow:ellipsis;white-space:normal;display:-webkit-box;-webkit-line-clamp:${
+    row
+  };-webkit-box-orient:vertical;`;
 }
 
 /* 计算外层容器 class */

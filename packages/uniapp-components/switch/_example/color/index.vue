@@ -1,15 +1,8 @@
 <template>
   <view class="custom-color">
-    <t-cell
-      title="自定义颜色开关"
-      :bordered="false"
-    >
-      <template
-        #note
-      >
-        <t-switch
-          :default-value="true"
-        />
+    <t-cell title="自定义颜色开关" :bordered="false">
+      <template #note>
+        <t-switch :default-value="true" />
       </template>
     </t-cell>
     <!-- <t-cell title="自定义颜色" bordered="{{false}}">
@@ -38,12 +31,11 @@ export default {
     };
   },
   created() {},
-  methods: {
-  },
+  methods: {},
 };
 </script>
 <style>
 .custom-color {
-    --td-switch-checked-color: #00a870;
+  --td-switch-checked-color: #00a870;
 }
 </style>

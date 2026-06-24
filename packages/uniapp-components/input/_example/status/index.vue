@@ -12,19 +12,9 @@
       @click="onClick"
     />
 
-    <t-input
-      label="标签文字"
-      value="不可编辑文字"
-      disabled
-      @click="onClick"
-    />
+    <t-input label="标签文字" value="不可编辑文字" disabled @click="onClick" />
 
-    <t-input
-      label="标签文字"
-      value="只读模式"
-      readonly
-      @click="onClick"
-    />
+    <t-input label="标签文字" value="只读模式" readonly @click="onClick" />
   </view>
 </template>
 
@@ -50,6 +40,6 @@ export default {
 </script>
 <style>
 .custom-class {
-    --td-input-align-items: start;
+  --td-input-align-items: start;
 }
 </style>

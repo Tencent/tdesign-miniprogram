@@ -1,12 +1,7 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <t-chat-message
-        datetime="16:38"
-        name="张三"
-        :content="message.content"
-        :role="message.role"
-      />
+      <t-chat-message datetime="16:38" name="张三" :content="message.content" :role="message.role" />
     </view>
     <view class="chat-example-block">
       <t-chat-message
@@ -33,7 +28,6 @@
 <script>
 import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
 
-
 export default {
   components: {
     TChatMessage,
@@ -57,14 +51,13 @@ export default {
 </script>
 <style>
 .chat-example {
-    display: flex;
-    flex-direction: column;
-    gap: 32rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
 }
 
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx 32rpx 0 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx 32rpx 0 32rpx;
 }
-
 </style>

@@ -14,10 +14,7 @@
       @change="onChange"
     />
 
-    <view
-      class="box"
-      style="height: 42px"
-    />
+    <view class="box" style="height: 42px" />
 
     <t-swiper
       class="scale-card-theme"
@@ -41,7 +38,13 @@
 <script>
 import TSwiper from '@tdesign/uniapp/swiper/swiper.vue';
 const imageCdn = 'https://tdesign.gtimg.com/mobile/demos';
-const swiperList = [`${imageCdn}/swiper1.png`, `${imageCdn}/swiper2.png`, `${imageCdn}/swiper1.png`, `${imageCdn}/swiper2.png`, `${imageCdn}/swiper1.png`];
+const swiperList = [
+  `${imageCdn}/swiper1.png`,
+  `${imageCdn}/swiper2.png`,
+  `${imageCdn}/swiper1.png`,
+  `${imageCdn}/swiper2.png`,
+  `${imageCdn}/swiper1.png`,
+];
 export default {
   components: {
     TSwiper,
@@ -68,19 +71,19 @@ export default {
 </script>
 <style>
 .card-theme {
-    --td-swiper-radius: 0;
-    --td-swiper-item-padding: 0 12rpx;
-    --td-swiper-nav-dot-color: var(--td-bg-color-component, #e7e7e7);
-    --td-swiper-nav-dot-active-color: var(--td-brand-color, #0052d9);
+  --td-swiper-radius: 0;
+  --td-swiper-item-padding: 0 12rpx;
+  --td-swiper-nav-dot-color: var(--td-bg-color-component, #e7e7e7);
+  --td-swiper-nav-dot-active-color: var(--td-brand-color, #0052d9);
 
-    padding-bottom: 18px;
+  padding-bottom: 18px;
 }
 
 .card-theme .card-theme-nav {
-    bottom: -18px;
+  bottom: -18px;
 }
 
 .scale-candidate {
-    height: 126px !important;
+  height: 126px !important;
 }
 </style>

@@ -18,12 +18,8 @@
       @visible-change="onVisibleChange"
       @close="onClose"
     >
-      <template
-        #header
-      >
-        <slot
-          name="header"
-        />
+      <template #header>
+        <slot name="header" />
       </template>
 
       <t-picker-item
@@ -35,12 +31,8 @@
         index="index"
         :format="formatter"
       />
-      <template
-        #footer
-      >
-        <slot
-          name="footer"
-        />
+      <template #footer>
+        <slot name="footer" />
       </template>
     </t-picker>
   </view>
@@ -68,7 +60,6 @@ dayjs.extend(localeData);
 dayjs.locale('zh-cn');
 
 const defaultLocale = dayjsLocaleMap[dayjs.locale()]?.key || dayjsLocaleMap.default?.key;
-
 
 const componentName = 'date-time-picker';
 const name = `${prefix}-${componentName}`;
@@ -103,18 +94,11 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-confirm`,
-      `${prefix}-class-cancel`,
-      `${prefix}-class-title`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-confirm`, `${prefix}-class-cancel`, `${prefix}-class-title`],
     props: {
       ...props,
     },
-    emits: [
-      'update:visible',
-    ],
+    emits: ['update:visible'],
     data() {
       return {
         prefix,
@@ -155,7 +139,7 @@ export default {
 
       mode: {
         handler(v, prev) {
-        // 解决 pick 事件触发两次问题
+          // 解决 pick 事件触发两次问题
           const checkEqual = () => {
             if (!prev) return false;
             let result = false;
@@ -176,19 +160,16 @@ export default {
       },
     },
     created() {
-    // created 时机并不准，uniapp 自己 mock 的
-    // this.date = null;
+      // created 时机并不准，uniapp 自己 mock 的
+      // this.date = null;
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
       updateColumns() {
         this.date = this.getParseDate();
 
         const { columns, columnsValue } = this.getValueCols();
-        this.columns = columns,
-        this.columnsValue = columnsValue;
+        ((this.columns = columns), (this.columnsValue = columnsValue));
       },
 
       getDaysOfWeekInMonth(date, type) {
@@ -228,7 +209,7 @@ export default {
 
         // 当直接解析失败时（如 "2021-12-23 周四"），尝试提取日期时间数字部分进行解析
         if (!parseDate.isValid() && typeof currentValue === 'string') {
-        // 匹配常见的日期时间格式：YYYY-MM-DD 或 YYYY-MM-DD HH:mm:ss 等
+          // 匹配常见的日期时间格式：YYYY-MM-DD 或 YYYY-MM-DD HH:mm:ss 等
           const dateMatch = currentValue.match(/(\d{4}[-/]\d{1,2}[-/]\d{1,2}(\s+\d{1,2}:\d{1,2}(:\d{1,2})?)?)/);
           if (dateMatch) {
             parseDate = dayjs(dateMatch[1]);
@@ -261,7 +242,7 @@ export default {
         const date = this[map[type]]();
         const keys = ['year', 'month', 'date', 'hour', 'minute', 'second'];
 
-        return keys.map(k => date[k]?.());
+        return keys.map((k) => date[k]?.());
       },
 
       getDate() {
@@ -315,9 +296,7 @@ export default {
         const minEdge = this.getOptionEdge('min', type);
         const maxEdge = this.getOptionEdge('max', type);
         const step = coalesce(steps?.[type], 1);
-        const dayjsMonthsShort = dayjs().locale(this.dayjsLocale)
-          .localeData()
-          .monthsShort();
+        const dayjsMonthsShort = dayjs().locale(this.dayjsLocale).localeData().monthsShort();
 
         if (type === 'date' && showWeek) {
           return this.getDaysOfWeekInMonth(this.date, type);
@@ -567,7 +546,7 @@ export default {
           return [];
         }
 
-        const endIndex = matchModes?.findIndex(mode => modeString === mode);
+        const endIndex = matchModes?.findIndex((mode) => modeString === mode);
         return matchModes?.slice(0, endIndex + 1);
       },
 
@@ -577,8 +556,6 @@ export default {
         return fullModes[0] === ModeItem.HOUR;
       },
     },
-
-
   }),
 };
 </script>

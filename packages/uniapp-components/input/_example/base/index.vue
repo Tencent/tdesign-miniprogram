@@ -1,19 +1,10 @@
 <template>
   <view>
-    <t-input
-      label="标签文字"
-      placeholder="请输入文字"
-    />
+    <t-input label="标签文字" placeholder="请输入文字" />
 
     <t-input placeholder="请输入文字">
-      <template
-        #label
-      >
-        <view
-          class="custom-label"
-        >
-          标签文字
-        </view>
+      <template #label>
+        <view class="custom-label"> 标签文字 </view>
       </template>
     </t-input>
 
@@ -36,13 +27,13 @@ export default {
 </script>
 <style>
 .custom-label {
-    display: inline-flex;
+  display: inline-flex;
 }
 
 .custom-label::after {
-    content: '*';
-    color: red;
-    font-size: 32rpx;
-    margin-left: 4rpx;
+  content: '*';
+  color: red;
+  font-size: 32rpx;
+  margin-left: 4rpx;
 }
 </style>

@@ -1,5 +1,3 @@
 export function initTDesign() {
-  return {
-  };
+  return {};
 }
-

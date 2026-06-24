@@ -1,46 +1,28 @@
 <template>
   <view>
-    <t-demo-navbar
-      custom-class="demo-navbar"
-      title="Skeleton"
-    />
+    <t-demo-navbar custom-class="demo-navbar" title="Skeleton" />
     <view class="demo">
       <t-demo-header
         title="Skeleton 骨架屏"
         desc="用于等待加载内容所展示的占位图形组合，有动态效果加载效果，减少用户等待焦虑。"
       />
-      <t-demo
-        title="01 骨架屏类型"
-        padding
-      >
+      <t-demo title="01 骨架屏类型" padding>
         <theme-demo />
       </t-demo>
 
-      <t-demo
-        desc="单元格骨架屏"
-        padding
-      >
+      <t-demo desc="单元格骨架屏" padding>
         <cell-group />
       </t-demo>
 
-      <t-demo
-        desc="宫格骨架屏"
-        padding
-      >
+      <t-demo desc="宫格骨架屏" padding>
         <grid-demo />
       </t-demo>
 
-      <t-demo
-        desc="图文组合骨架屏"
-        padding
-      >
+      <t-demo desc="图文组合骨架屏" padding>
         <image-group />
       </t-demo>
 
-      <t-demo
-        title="02 组件动效"
-        padding
-      >
+      <t-demo title="02 组件动效" padding>
         <animation-demo />
       </t-demo>
     </view>
@@ -48,7 +30,6 @@
 </template>
 
 <script>
-
 // import TSkeleton from '@tdesign/uniapp/skeleton/skeleton.vue';
 import AnimationDemo from './animation/index.vue';
 import CellGroup from './cell-group/index.vue';

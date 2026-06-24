@@ -1,14 +1,7 @@
 <template>
   <view>
     <t-sticky :offset-top="navbarHeight">
-      <t-button
-        size="large"
-        theme="primary"
-        t-class="external-class"
-        custom-style="width: 104px"
-      >
-        基础吸顶
-      </t-button>
+      <t-button size="large" theme="primary" t-class="external-class" custom-style="width: 104px"> 基础吸顶 </t-button>
     </t-sticky>
   </view>
 </template>

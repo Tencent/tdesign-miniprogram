@@ -123,7 +123,7 @@ spline: explain
   </div>
 </section>
 
-<h3>输入<em class="tag">16</em></h3>
+<h3>输入<em class="tag">17</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/calendar">
@@ -158,6 +158,13 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-datetimepicker.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-datetimepicker-dark.png" />
       <p class="name">DateTimePicker 日期选择器</p>
+    </a>
+  </div>
+   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/form">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-form.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-form-dark.png" />
+      <p class="name">Form 表单</p>
     </a>
   </div>
   <div class="image-wrapper">
@@ -405,7 +412,7 @@ spline: explain
   </div>
 </section>
 
-<h3>反馈<em class="tag">12</em></h3>
+<h3>反馈<em class="tag">13</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/action-sheet">

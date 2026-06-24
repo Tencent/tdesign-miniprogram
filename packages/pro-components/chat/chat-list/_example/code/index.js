@@ -10,9 +10,7 @@ const getUniqueKey = () => {
   return `key-${uniqueId}`;
 };
 
-const sleep = (ms) => {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-};
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;

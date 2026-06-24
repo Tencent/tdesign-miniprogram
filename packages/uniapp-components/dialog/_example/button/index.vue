@@ -10,9 +10,7 @@
     >
       开放能力按钮
     </t-button>
-    <t-dialog
-      ref="t-dialog"
-    />
+    <t-dialog ref="t-dialog" />
   </view>
 </template>
 
@@ -61,5 +59,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

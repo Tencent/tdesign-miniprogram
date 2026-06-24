@@ -1,23 +1,9 @@
 <template>
-  <view
-    :style="'' + tools._style([customStyle])"
-    :class="[
-      classPrefix,
-      tClass
-    ]"
-  >
+  <view :style="'' + tools._style([customStyle])" :class="[classPrefix, tClass]">
     <block v-if="logo && Object.keys(logo).length">
       <view :class="classPrefix + '__logo'">
-        <t-image
-          v-if="logo.icon"
-          :t-class="classPrefix + '__icon'"
-          :custom-style="iconCustomStyle"
-          :src="logo.icon"
-        />
-        <view
-          v-if="logo.title"
-          :class="classPrefix + '__title'"
-        >
+        <t-image v-if="logo.icon" :t-class="classPrefix + '__icon'" :custom-style="iconCustomStyle" :src="logo.icon" />
+        <view v-if="logo.title" :class="classPrefix + '__title'">
           {{ logo.title }}
         </view>
         <t-image
@@ -30,30 +16,13 @@
       </view>
     </block>
     <block v-else>
-      <view
-        v-if="links.length > 0"
-        :class="classPrefix + '__link-list'"
-      >
-        <block
-          v-for="(item, index) in links"
-          :key="index"
-        >
-          <navigator
-            :url="item.url"
-            :open-type="item.openType"
-            hover-class="none"
-            :class="classPrefix + '__link-item'"
-          >
+      <view v-if="links.length > 0" :class="classPrefix + '__link-list'">
+        <block v-for="(item, index) in links" :key="index">
+          <navigator :url="item.url" :open-type="item.openType" hover-class="none" :class="classPrefix + '__link-item'">
             {{ item.name }}
           </navigator>
 
-          <view
-            v-if="index !== links.length - 1"
-            :aria-hidden="true"
-            :class="classPrefix + '__link-line'"
-          >
-            |
-          </view>
+          <view v-if="index !== links.length - 1" :aria-hidden="true" :class="classPrefix + '__link-line'"> | </view>
         </block>
       </view>
       <view :class="classPrefix + '__text'">
@@ -70,9 +39,7 @@ import TImage from '../image/image';
 
 import props from './props';
 
-
 const name = `${prefix}-footer`;
-
 
 export default {
   components: {
@@ -83,9 +50,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     props: {
       ...props,
     },
@@ -110,8 +75,7 @@ export default {
         });
       },
     },
-    methods: {
-    },
+    methods: {},
   }),
 };
 </script>

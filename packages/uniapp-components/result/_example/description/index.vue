@@ -1,15 +1,8 @@
 <template>
   <view>
-    <view
-      v-for="(item, index) in resultList"
-      :key="index"
-    >
+    <view v-for="(item, index) in resultList" :key="index">
       <view class="demo-section__content">
-        <t-result
-          :theme="item.theme"
-          :title="item.title"
-          :description="item.description"
-        />
+        <t-result :theme="item.theme" :title="item.title" :description="item.description" />
       </view>
     </view>
   </view>
@@ -53,6 +46,6 @@ export default {
 </script>
 <style>
 .demo-section__content {
-    margin-bottom: 96rpx;
+  margin-bottom: 96rpx;
 }
 </style>

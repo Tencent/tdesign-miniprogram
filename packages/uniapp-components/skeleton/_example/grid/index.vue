@@ -1,9 +1,6 @@
 <template>
   <view class="wrapper">
-    <t-skeleton
-      :row-col="grid"
-      loading
-    />
+    <t-skeleton :row-col="grid" loading />
   </view>
 </template>
 
@@ -79,7 +76,7 @@ export default {
 </script>
 <style>
 .wrapper {
-    --td-skeleton-row-spacing: 20rpx;
-    margin-top: 32rpx;
+  --td-skeleton-row-spacing: 20rpx;
+  margin-top: 32rpx;
 }
 </style>

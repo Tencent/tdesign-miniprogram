@@ -1,26 +1,31 @@
 <template>
   <view
     :style="'' + tools._style([customStyle])"
-    :class="'' + tools.cls(classPrefix, [
-      ['top', label || scaleTextArray.length],
-      ['disabled', disabled],
-      ['range', range]
-    ]) +
+    :class="
+      '' +
+      tools.cls(classPrefix, [
+        ['top', label || scaleTextArray.length],
+        ['disabled', disabled],
+        ['range', range],
+      ]) +
       '  ' +
       tClass +
       ' ' +
-      (vertical ? classPrefix + '--vertical' : '')"
+      (vertical ? classPrefix + '--vertical' : '')
+    "
   >
     <block v-if="!range">
-      <text
-        v-if="showExtremeValue"
-        :class="classPrefix + '__value ' + classPrefix + '__value--min'"
-      >
+      <text v-if="showExtremeValue" :class="classPrefix + '__value ' + classPrefix + '__value--min'">
         {{ label ? getValue(label, min) : min }}
       </text>
       <view
         id="sliderLine"
-        :class="'' + tools.cls(classPrefix + '__bar', [['disabled', disabled], theme, ['marks', isScale && theme == 'capsule']]) + ' ' + tClassBar"
+        :class="
+          '' +
+          tools.cls(classPrefix + '__bar', [['disabled', disabled], theme, ['marks', isScale && theme == 'capsule']]) +
+          ' ' +
+          tClassBar
+        "
         @click="onSingleLineTap"
       >
         <block v-if="isScale">
@@ -28,26 +33,32 @@
             v-for="(item, index) in scaleArray"
             :key="index"
             :class="
-              '' + tools.cls(classPrefix + '__scale-item', [
+              '' +
+              tools.cls(classPrefix + '__scale-item', [
                 ['active', innerValue >= item.val],
                 ['disabled', disabled],
                 theme,
-                ['hidden', ((index == 0 || index == scaleArray.length - 1) && theme == 'capsule') || value == item.val]
+                ['hidden', ((index == 0 || index == scaleArray.length - 1) && theme == 'capsule') || value == item.val],
               ])
             "
-            :style="(vertical ? 'top' : 'left') + ':' + item.left + 'px; ' + (vertical ? 'transform: translate(-50%, -50%);' : 'transform: translateX(-50%);')"
+            :style="
+              (vertical ? 'top' : 'left') +
+              ':' +
+              item.left +
+              'px; ' +
+              (vertical ? 'transform: translate(-50%, -50%);' : 'transform: translateX(-50%);')
+            "
             :aria-hidden="true"
           >
-            <view
-              v-if="scaleTextArray.length"
-              :class="'' + tools.cls(classPrefix + '__scale-desc', [theme])"
-            >
+            <view v-if="scaleTextArray.length" :class="'' + tools.cls(classPrefix + '__scale-desc', [theme])">
               {{ scaleTextArray[index] }}
             </view>
           </view>
         </block>
         <view
-          :class="'' + tools.cls(classPrefix + '__line', [['disabled', disabled], theme, 'single']) + ' ' + tClassBarActive"
+          :class="
+            '' + tools.cls(classPrefix + '__line', [['disabled', disabled], theme, 'single']) + ' ' + tClassBarActive
+          "
           :style="(vertical ? 'height' : 'width') + ': ' + lineBarWidth"
         >
           <view
@@ -79,23 +90,22 @@
           </view>
         </view>
       </view>
-      <text
-        v-if="showExtremeValue"
-        :class="classPrefix + '__value ' + classPrefix + '__value--max'"
-      >
+      <text v-if="showExtremeValue" :class="classPrefix + '__value ' + classPrefix + '__value--max'">
         {{ label ? getValue(label, max) : max }}
       </text>
     </block>
     <block v-if="range">
-      <view
-        v-if="showExtremeValue"
-        :class="classPrefix + '__range-extreme ' + classPrefix + '__range-extreme--min'"
-      >
+      <view v-if="showExtremeValue" :class="classPrefix + '__range-extreme ' + classPrefix + '__range-extreme--min'">
         {{ min }}
       </view>
       <view
         id="sliderLine"
-        :class="'' + tools.cls(classPrefix + '__bar', [['disabled', disabled], theme, ['marks', isScale && theme == 'capsule']]) + ' ' + tClassBar"
+        :class="
+          '' +
+          tools.cls(classPrefix + '__bar', [['disabled', disabled], theme, ['marks', isScale && theme == 'capsule']]) +
+          ' ' +
+          tClassBar
+        "
         @click="onLineTap"
       >
         <block v-if="isScale">
@@ -103,27 +113,40 @@
             v-for="(item, index) in scaleArray"
             :key="index"
             :class="
-              '' + tools.cls(classPrefix + '__scale-item', [
+              '' +
+              tools.cls(classPrefix + '__scale-item', [
                 ['active', dotTopValue[1] >= item.val && item.val >= dotTopValue[0]],
                 ['disabled', disabled],
                 theme,
-                ['hidden', ((index == 0 || index == scaleArray.length - 1) && theme == 'capsule') || value == item.val]
+                ['hidden', ((index == 0 || index == scaleArray.length - 1) && theme == 'capsule') || value == item.val],
               ])
             "
-            :style="(vertical ? 'top' : 'left') + ':' + item.left + 'px; ' + (vertical ? 'transform: translate(-50%, -50%);' : 'transform: translateX(-50%);')"
+            :style="
+              (vertical ? 'top' : 'left') +
+              ':' +
+              item.left +
+              'px; ' +
+              (vertical ? 'transform: translate(-50%, -50%);' : 'transform: translateX(-50%);')
+            "
             :aria-hidden="true"
           >
-            <view
-              v-if="scaleTextArray.length"
-              :class="'' + tools.cls(classPrefix + '__scale-desc', [theme])"
-            >
+            <view v-if="scaleTextArray.length" :class="'' + tools.cls(classPrefix + '__scale-desc', [theme])">
               {{ scaleTextArray[index] }}
             </view>
           </view>
         </block>
         <view
           :class="'' + tools.cls(classPrefix + '__line', [['disabled', disabled], theme]) + ' ' + tClassBarActive"
-          :style="(vertical ? 'top' : 'left') + ': ' + lineLeft + 'px; ' + (vertical ? 'bottom' : 'right') + ': ' + lineRight + 'px'"
+          :style="
+            (vertical ? 'top' : 'left') +
+            ': ' +
+            lineLeft +
+            'px; ' +
+            (vertical ? 'bottom' : 'right') +
+            ': ' +
+            lineRight +
+            'px'
+          "
         >
           <view
             id="leftDot"
@@ -181,10 +204,7 @@
           </view>
         </view>
       </view>
-      <view
-        v-if="showExtremeValue"
-        :class="classPrefix + '__range-extreme ' + classPrefix + '__range-extreme--max'"
-      >
+      <view v-if="showExtremeValue" :class="classPrefix + '__range-extreme ' + classPrefix + '__range-extreme--max'">
         {{ max }}
       </view>
     </block>
@@ -202,7 +222,6 @@ import { isString, isFunction } from '../common/validator';
 import { getValue } from './computed.js';
 import props from './props';
 import { trimSingleValue, trimValue } from './tool';
-
 
 const name = `${prefix}-slider`;
 
@@ -230,7 +249,7 @@ export default {
     },
     data() {
       return {
-      // 按钮样式列表
+        // 按钮样式列表
         sliderStyles: '',
         classPrefix: name,
         initialLeft: null,
@@ -362,7 +381,9 @@ export default {
       triggerValue(value) {
         const { min, max, range } = this;
         const trimmedValue = trimValue(value, {
-          min, max, range,
+          min,
+          max,
+          range,
         });
 
         if (JSON.stringify(this.preval) === JSON.stringify(trimmedValue)) return;
@@ -390,9 +411,7 @@ export default {
               text = label;
               throw new Error();
             }
-          } catch (e) {
-
-          }
+          } catch (e) {}
           return text;
         }
 
@@ -407,7 +426,9 @@ export default {
         const { min, max, range } = this;
 
         const value = trimValue(newValue, {
-          min, max, range,
+          min,
+          max,
+          range,
         });
 
         const realLabel = this.getLabelByValue(value);
@@ -434,16 +455,17 @@ export default {
       valueToPosition(value) {
         const { min, max, theme } = this;
         const { blockSize, maxRange } = this;
-        const halfBlock = (theme) === 'capsule' ? Number(blockSize) / 2 : 0;
+        const halfBlock = theme === 'capsule' ? Number(blockSize) / 2 : 0;
 
         return Math.round(((Number(value) - Number(min)) / (Number(max) - Number(min))) * maxRange) + halfBlock;
       },
 
       handleMark(marks) {
-        const calcPos = arr => arr.map(item => ({
-          val: item,
-          left: this.valueToPosition(item),
-        }));
+        const calcPos = (arr) =>
+          arr.map((item) => ({
+            val: item,
+            left: this.valueToPosition(item),
+          }));
 
         if (marks?.length && Array.isArray(marks)) {
           this.isScale = true;
@@ -452,8 +474,8 @@ export default {
         }
 
         if (Object.prototype.toString.call(marks) === '[object Object]') {
-          const scaleArray = Object.keys(marks).map(item => Number(item));
-          const scaleTextArray = scaleArray.map(item => marks[item]);
+          const scaleArray = Object.keys(marks).map((item) => Number(item));
+          const scaleTextArray = scaleArray.map((item) => marks[item]);
 
           this.isScale = scaleArray.length > 0;
           this.scaleArray = calcPos(scaleArray);
@@ -485,7 +507,7 @@ export default {
         let initialRight = vertical ? bottom : right;
         if (initialLeft === 0 && initialRight === 0) return;
 
-        if ((theme) === 'capsule') {
+        if (theme === 'capsule') {
           maxRange = maxRange - Number(blockSize) - 6; // 6 是边框宽度
           initialLeft -= halfBlock;
           initialRight -= halfBlock;
@@ -526,15 +548,15 @@ export default {
       },
 
       async getSingleChangeValue(e) {
-      // await this.getInitialInfo();
+        // await this.getInitialInfo();
         const { min, max, theme, vertical } = this;
         const { initialLeft, maxRange, blockSize } = this;
-        const touch = e.changedTouches.find(item => item.identifier === this.identifier[0]);
+        const touch = e.changedTouches.find((item) => item.identifier === this.identifier[0]);
         if (!touch) return;
         const pagePosition = this.getPagePosition(touch);
 
         let offset = 0;
-        if ((theme) === 'capsule') {
+        if (theme === 'capsule') {
           offset = Number(blockSize);
           if (vertical) {
           }
@@ -555,13 +577,13 @@ export default {
       },
 
       /**
-   * 将位置转换为值
-   *
-   * @param {number} posValue 位置数据
-   * @param {(0 | 1)} dir 方向： 0-left， 1-right
-   * @return  {number}
-   * @memberof Slider
-   */
+       * 将位置转换为值
+       *
+       * @param {number} posValue 位置数据
+       * @param {(0 | 1)} dir 方向： 0-left， 1-right
+       * @return  {number}
+       * @memberof Slider
+       */
       convertPosToValue(posValue, dir) {
         const { maxRange } = this;
         const { max, min } = this;
@@ -578,7 +600,7 @@ export default {
 
         const [touch] = e.changedTouches;
         const pagePosition = this.getPagePosition(touch);
-        const halfBlock = (theme) === 'capsule' ? Number(blockSize) / 2 : 0;
+        const halfBlock = theme === 'capsule' ? Number(blockSize) / 2 : 0;
 
         const currentLeft = pagePosition - initialLeft;
         const currentRight = -(pagePosition - initialRight);
@@ -596,7 +618,7 @@ export default {
           const isMoveLeft = distanceLeft < distanceRight;
 
           let offset = 0;
-          if ((theme) === 'capsule') {
+          if (theme === 'capsule') {
             offset = Number(blockSize);
             if (vertical) {
               offset *= 2;
@@ -639,16 +661,16 @@ export default {
         const { initialLeft, innerValue, blockSize } = this;
         if (disabled) return;
 
-        const touch = e.changedTouches.find(item => item.identifier === this.identifier[0]);
+        const touch = e.changedTouches.find((item) => item.identifier === this.identifier[0]);
         if (!touch) return;
         const pagePosition = this.getPagePosition(touch);
         let offset = 0;
-        if ((theme) === 'capsule') {
+        if (theme === 'capsule') {
           offset = Number(blockSize) + 3;
         }
         const currentLeft = pagePosition - initialLeft - offset;
 
-        const newData = [...(innerValue)];
+        const newData = [...innerValue];
         const leftValue = this.convertPosToValue(currentLeft, 0);
 
         newData[0] = this.stepValue(leftValue);
@@ -661,18 +683,18 @@ export default {
         const { initialRight, innerValue } = this;
         if (disabled) return;
 
-        const touch = e.changedTouches.find(item => item.identifier === this.identifier[1]);
+        const touch = e.changedTouches.find((item) => item.identifier === this.identifier[1]);
         if (!touch) return;
 
         const pagePosition = this.getPagePosition(touch);
         let offset = 0;
-        if ((theme) === 'capsule') {
+        if (theme === 'capsule') {
           offset -= 3;
         } else if (vertical) {
         }
         const currentRight = -(pagePosition - initialRight - offset);
 
-        const newData = [...(innerValue)];
+        const newData = [...innerValue];
         const rightValue = this.convertPosToValue(currentRight, 1);
         newData[1] = this.stepValue(rightValue);
 
@@ -682,9 +704,9 @@ export default {
       setLineStyle(left, right) {
         const { theme } = this;
         const { blockSize, maxRange } = this;
-        const halfBlock = (theme) === 'capsule' ? Number(blockSize) / 2 : 0;
-        const [a, b] = this.innerValue ;
-        const cut = v => parseInt(v, 10);
+        const halfBlock = theme === 'capsule' ? Number(blockSize) / 2 : 0;
+        const [a, b] = this.innerValue;
+        const cut = (v) => parseInt(v, 10);
 
         this.dotTopValue = [a, b];
         this.realLabel = [this.getLabelByValue(a, 'start'), this.getLabelByValue(b, 'end')];

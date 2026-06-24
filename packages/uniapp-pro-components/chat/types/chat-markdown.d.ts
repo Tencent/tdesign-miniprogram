@@ -3,5 +3,15 @@ import type { TransformEventHandlers, ExtractNonOnProps } from '@tdesign/uniapp/
 
 export type ChatMarkdownProps = ExtractNonOnProps<TdChatMarkdownProps>;
 export type ChatMarkdownEmits = TransformEventHandlers<TdChatMarkdownProps, true>;
-declare const ChatMarkdownComponent: import('vue').DefineComponent<ChatMarkdownProps, {}, {}, {}, {}, {}, {}, ChatMarkdownEmits, any>;
+declare const ChatMarkdownComponent: import('vue').DefineComponent<
+  ChatMarkdownProps,
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  ChatMarkdownEmits,
+  any
+>;
 export default ChatMarkdownComponent;

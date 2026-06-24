@@ -1,17 +1,8 @@
 <template>
   <view>
-    <view
-      class="chat-box"
-      :style="'height: ' + contentHeight + ';'"
-    >
-      <t-chat-list
-        id="chatList"
-        @scroll="(e) => onScroll(e, { tagId: 'chatList' })"
-      >
-        <block
-          v-for="(item, index) in chatList"
-          :key="item.chatId"
-        >
+    <view class="chat-box" :style="'height: ' + contentHeight + ';'">
+      <t-chat-list id="chatList" @scroll="(e) => onScroll(e, { tagId: 'chatList' })">
+        <block v-for="(item, index) in chatList" :key="item.chatId">
           <t-chat-message
             :chat-id="item.chatId"
             :avatar="item.avatar || ''"
@@ -43,7 +34,7 @@
             :disabled="disabled"
             :auto-rise-with-keyboard="true"
             :render-presets="renderPresets"
-            @update:value="(e) => value = e"
+            @update:value="(e) => (value = e)"
             @send="onSend"
             @stop="onStop"
             @focus="onFocus"
@@ -92,7 +83,7 @@ const mockData = `南极的自动提款机并没有一个特定的专属名称�
 
 南极作为非主权领土，其基础设施以科研和生活支持为主，商业金融服务非常有限。若有类似设施，通常是临时或实验性质的。`;
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
   const arr = str.split('');
@@ -249,10 +240,8 @@ export default {
     // 获取当前时间
     getCurrentTime() {
       const now = new Date();
-      const hours = now.getHours().toString()
-        .padStart(2, '0');
-      const minutes = now.getMinutes().toString()
-        .padStart(2, '0');
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
       return `${hours}:${minutes}`;
     },
 

@@ -3,7 +3,7 @@ const path = require('path');
 
 const glob = require('glob');
 
-const { writeFileSync, readFileSync  } = require('t-comm');
+const { writeFileSync, readFileSync } = require('t-comm');
 
 const config = {
   target: path.resolve(__dirname, '../../../tdesign'),

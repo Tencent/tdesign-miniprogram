@@ -5,23 +5,15 @@
   >
     <view :class="classPrefix + '__left'">
       <view :class="classPrefix + '__scrollable scroll-x'">
-        <block
-          v-for="(item, index) in files"
-          :key="index"
-        >
-          <view
-            :class="classPrefix + '__files'"
-            :data-index="index"
-            @click.stop="onFileWrapTap"
-          >
+        <block v-for="(item, index) in files" :key="index">
+          <view :class="classPrefix + '__files'" :data-index="index" @click.stop="onFileWrapTap">
             <block v-if="item.fileType === 'image'">
-              <view :class="'file-image ' + classPrefix + '__file ' + (removable ? classPrefix + '__file--removable' : '')">
+              <view
+                :class="'file-image ' + classPrefix + '__file ' + (removable ? classPrefix + '__file--removable' : '')"
+              >
                 <block v-if="item.status === 'pending' || item.status === 'fail' || item.status === 'error'">
                   <view :class="item.status + ' ' + classPrefix + '__file--' + item.status">
-                    <t-loading
-                      theme="circular"
-                      size="48rpx"
-                    />
+                    <t-loading theme="circular" size="48rpx" />
                   </view>
                 </block>
                 <block v-else>
@@ -33,16 +25,8 @@
                     :style="inChat ? imageStyle(item) : ''"
                   />
                 </block>
-                <view
-                  v-if="removable"
-                  :class="classPrefix + '__remove'"
-                  @click.stop="(e) => onRemoveTap(e, { index })"
-                >
-                  <t-icon
-                    :data-index="index"
-                    name="multiply"
-                    size="16px"
-                  />
+                <view v-if="removable" :class="classPrefix + '__remove'" @click.stop="(e) => onRemoveTap(e, { index })">
+                  <t-icon :data-index="index" name="multiply" size="16px" />
                 </view>
               </view>
             </block>
@@ -51,75 +35,42 @@
                 <view class="image">
                   <block v-if="item.status === 'pending'">
                     <view :class="'loading ' + classPrefix + '__file--pending'">
-                      <t-loading
-                        theme="circular"
-                        size="48rpx"
-                      />
+                      <t-loading theme="circular" size="48rpx" />
                     </view>
                   </block>
                   <block v-else-if="item.status === 'fail'">
                     <view :class="'fail ' + classPrefix + '__file--fail'">
-                      <t-loading
-                        theme="circular"
-                        size="48rpx"
-                      />
+                      <t-loading theme="circular" size="48rpx" />
                     </view>
                   </block>
                   <block v-else-if="item.status === 'error'">
                     <view :class="'error ' + classPrefix + '__file--error'">
-                      <t-loading
-                        theme="circular"
-                        size="48rpx"
-                      />
+                      <t-loading theme="circular" size="48rpx" />
                     </view>
                   </block>
                   <block v-else>
-                    <t-icon
-                      :name="item.fileIcon.name"
-                      :color="item.fileIcon.color"
-                      size="48rpx"
-                    />
+                    <t-icon :name="item.fileIcon.name" :color="item.fileIcon.color" size="48rpx" />
                   </block>
                 </view>
                 <view :class="classPrefix + '__content'">
                   <view :class="classPrefix + '__title'">
                     {{ item.name }}
                   </view>
-                  <view
-                    v-if="item.status === 'pending'"
-                    :class="classPrefix + '__desc'"
-                  >
+                  <view v-if="item.status === 'pending'" :class="classPrefix + '__desc'">
                     {{ globalConfig.status['pending'] }} {{ item.progress || 0 + '%' }}
                   </view>
-                  <view
-                    v-else-if="item.status === 'fail'"
-                    :class="classPrefix + '__desc'"
-                  >
+                  <view v-else-if="item.status === 'fail'" :class="classPrefix + '__desc'">
                     {{ globalConfig.status['fail'] }}
                   </view>
-                  <view
-                    v-else-if="item.status === 'error'"
-                    :class="classPrefix + '__desc'"
-                  >
+                  <view v-else-if="item.status === 'error'" :class="classPrefix + '__desc'">
                     {{ item.errorMessage }}
                   </view>
-                  <view
-                    v-else
-                    :class="classPrefix + '__desc'"
-                  >
+                  <view v-else :class="classPrefix + '__desc'">
                     {{ item.desc }}
                   </view>
                 </view>
-                <view
-                  v-if="removable"
-                  :class="classPrefix + '__remove'"
-                  @click.stop="(e) => onRemoveTap(e, { index })"
-                >
-                  <t-icon
-                    :data-index="index"
-                    name="multiply"
-                    size="16px"
-                  />
+                <view v-if="removable" :class="classPrefix + '__remove'" @click.stop="(e) => onRemoveTap(e, { index })">
+                  <t-icon :data-index="index" name="multiply" size="16px" />
                 </view>
               </view>
             </block>
@@ -141,10 +92,8 @@ import usingConfig from '../mixins/using-config';
 import { imageStyle, getFileTypeClass, getImageMode } from './computed';
 import props from './props';
 
-
 const componentName = 'attachments';
 const name = `${prefix}-${componentName}`;
-
 
 export default {
   components: {
@@ -159,7 +108,6 @@ export default {
       styleIsolation: 'shared',
     },
 
-
     props: {
       ...props,
       inChat: {
@@ -168,10 +116,7 @@ export default {
       },
     },
 
-    emits: [
-      'fileClick',
-      'remove',
-    ],
+    emits: ['fileClick', 'remove'],
     data() {
       return {
         classPrefix: name,
@@ -190,8 +135,7 @@ export default {
       },
     },
 
-    created() {
-    },
+    created() {},
     mounted() {
       this.setFiles();
     },
@@ -236,16 +180,16 @@ export default {
         let unit;
 
         if (sizeInBytes < 1024) {
-        // 小于1KB，显示B
+          // 小于1KB，显示B
           formattedSize = sizeInBytes;
           unit = 'B';
         } else if (sizeInBytes < 1024 * 1024) {
-        // 大于等于1KB小于1MB，显示KB
+          // 大于等于1KB小于1MB，显示KB
           const sizeInKB = sizeInBytes / 1024;
           formattedSize = sizeInKB % 1 === 0 ? sizeInKB : sizeInKB.toFixed(2);
           unit = 'KB';
         } else {
-        // 大于等于1MB，显示MB
+          // 大于等于1MB，显示MB
           const sizeInMB = sizeInBytes / (1024 * 1024);
           formattedSize = sizeInMB % 1 === 0 ? sizeInMB : sizeInMB.toFixed(2);
           unit = 'MB';
@@ -298,7 +242,7 @@ export default {
         const lastDotIndex = url.lastIndexOf('.');
         const extension = lastDotIndex !== -1 ? url.substring(lastDotIndex + 1).toLowerCase() : '';
         const extensionToType = {
-        // 图片类型
+          // 图片类型
           jpg: 'image',
           jpeg: 'image',
           png: 'image',
@@ -332,12 +276,11 @@ export default {
         if (item.extension) {
           return item.extension;
         }
-        const extension = item.extension || (item.url ? item.url.split('.').pop()
-          .toLowerCase() : '');
+        const extension = item.extension || (item.url ? item.url.split('.').pop().toLowerCase() : '');
         return extension;
       },
       setFiles() {
-        this.files = this.items.map(item => ({
+        this.files = this.items.map((item) => ({
           ...item,
           fileType: this.renderFileType(item),
           desc: this.renderDesc(item),

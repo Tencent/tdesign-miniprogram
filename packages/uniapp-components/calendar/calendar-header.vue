@@ -1,12 +1,9 @@
 <template>
   <view
     :id="tId"
-    :class="' ' + tClass + ' ' + classPrefix + ' '+(switchMode !== 'none' ? classPrefix + '__with-action' : '')"
+    :class="' ' + tClass + ' ' + classPrefix + ' ' + (switchMode !== 'none' ? classPrefix + '__with-action' : '')"
   >
-    <view
-      v-if="switchMode !== 'none'"
-      :class="classPrefix + '__action'"
-    >
+    <view v-if="switchMode !== 'none'" :class="classPrefix + '__action'">
       <view
         v-if="switchMode === 'year-month'"
         :class="'' + utils.cls(classPrefix + '__icon', [['disabled', preYearBtnDisable]])"
@@ -28,10 +25,7 @@
     <view :class="classPrefix + '__title'">
       {{ title }}
     </view>
-    <view
-      v-if="switchMode !== 'none'"
-      :class="classPrefix + '__action'"
-    >
+    <view v-if="switchMode !== 'none'" :class="classPrefix + '__action'">
       <view
         :class="'' + utils.cls(classPrefix + '__icon', [['disabled', nextMonthBtnDisable]])"
         :data-disabled="nextMonthBtnDisable"
@@ -70,20 +64,14 @@ export default {
   props: {
     ...props,
   },
-  emits: [
-    'handleSwitchModeChange',
-  ],
+  emits: ['handleSwitchModeChange'],
   data() {
     return {
       utils,
     };
   },
-  watch: {
-
-  },
-  mounted() {
-
-  },
+  watch: {},
+  mounted() {},
   methods: {
     handleSwitchModeChange(...args) {
       this.$emit('handleSwitchModeChange', ...args);
@@ -91,7 +79,6 @@ export default {
     getMonthTitle,
   },
 };
-
 </script>
 
 <style scoped src="./calendar.css"></style>

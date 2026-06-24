@@ -5,7 +5,7 @@
   height: 16rpx;
   border-radius: 50%;
   transform: translateY(-25%);
-  background-color: #003CAB;
+  background-color: #003cab;
   vertical-align: middle;
   margin-left: 4rpx;
 }

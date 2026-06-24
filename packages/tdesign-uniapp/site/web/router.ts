@@ -1,8 +1,4 @@
-import {
-  type RouteRecordRaw,
-  createRouter,
-  createWebHistory,
-  type RouterOptions } from 'vue-router';
+import { type RouteRecordRaw, createRouter, createWebHistory, type RouterOptions } from 'vue-router';
 
 import config from '../docs.config';
 

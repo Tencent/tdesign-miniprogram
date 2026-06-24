@@ -36,13 +36,11 @@ function parseOptions(options: OptionsType, keys: KeysType) {
   const value = keys?.value ?? 'value';
   const disabled = keys?.disabled ?? 'disabled';
 
-  return options.map((item) => {
-    return {
-      [label]: item[label],
-      [value]: item[value],
-      [disabled]: item[disabled],
-    };
-  });
+  return options.map((item) => ({
+    [label]: item[label],
+    [value]: item[value],
+    [disabled]: item[disabled],
+  }));
 }
 
 function flattenPaths(options: OptionsType, keys: KeysType): FlatPath[] {

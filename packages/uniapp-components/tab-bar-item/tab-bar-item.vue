@@ -31,10 +31,7 @@
           :offset="badgeProps.offset || [0, 0]"
           :t-class-count="prefix + '-badge-class'"
         >
-          <block
-            v-if="innerIcon"
-            name="icon"
-          >
+          <block v-if="innerIcon" name="icon">
             <t-icon
               :custom-style="innerIcon.style || ''"
               :t-class="innerIcon.tClass || ''"
@@ -51,10 +48,7 @@
           <!-- 避免被 badge 组件识别为空，t-badge__content:not(:empty) -->
           <view v-else />
         </t-badge>
-        <block
-          v-else-if="!!icon"
-          name="icon"
-        >
+        <block v-else-if="!!icon" name="icon">
           <t-icon
             :custom-style="innerIcon.style || ''"
             :t-class="innerIcon.tClass || ''"
@@ -71,19 +65,11 @@
         <slot name="icon" />
       </view>
       <view :class="'' + tools.cls(classPrefix + '__text', [['small', !!icon]])">
-        <t-icon
-          v-if="hasChildren"
-          name="view-list"
-          size="32rpx"
-          :t-class="classPrefix + '__icon-menu'"
-        />
+        <t-icon v-if="hasChildren" name="view-list" size="32rpx" :t-class="classPrefix + '__icon-menu'" />
         <slot />
       </view>
     </view>
-    <view
-      v-if="hasChildren && isSpread"
-      :class="classPrefix + '__spread'"
-    >
+    <view v-if="hasChildren && isSpread" :class="classPrefix + '__spread'">
       <view
         v-for="(child, index) in subTabBar || []"
         :key="index"
@@ -94,15 +80,9 @@
         aria-role="tab"
         @click="selectChild"
       >
-        <view
-          v-if="index !== 0"
-          :class="classPrefix + '__spread-item-split'"
-        />
+        <view v-if="index !== 0" :class="classPrefix + '__spread-item-split'" />
 
-        <view
-          :class="classPrefix + '__spread-item-text'"
-          :data-value="child.value || index"
-        >
+        <view :class="classPrefix + '__spread-item-text'" :data-value="child.value || index">
           {{ child.label }}
         </view>
       </view>
@@ -208,7 +188,7 @@ export default {
       },
       checkActive(value) {
         const { currentName, subTabBar = [] } = this;
-        const isChecked = subTabBar?.some(item => item.value === value) || currentName === value;
+        const isChecked = subTabBar?.some((item) => item.value === value) || currentName === value;
 
         this.isChecked = isChecked;
       },

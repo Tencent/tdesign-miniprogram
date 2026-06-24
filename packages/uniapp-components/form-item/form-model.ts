@@ -79,11 +79,7 @@ const VALIDATE_MAP = {
     return reg.test(val);
   },
   // 自定义校验规则，可能是异步校验
-  validator: (
-    val: any,
-    validate: Function,
-    context?: { formData: any; name: string },
-  ): any => validate(val, context),
+  validator: (val: any, validate: Function, context?: { formData: any; name: string }): any => validate(val, context),
 };
 
 /**
@@ -93,11 +89,7 @@ const VALIDATE_MAP = {
  * @param context 表单上下文，包含 formData 和 name，供自定义校验器使用
  * @returns 两种校验结果，一种是内置校验规则的校验结果，二种是自定义校验规则（validator）的校验结果
  */
-export async function validateOneRule(
-  value: any,
-  rule: any,
-  context?: { formData: any; name: string },
-): Promise<any> {
+export async function validateOneRule(value: any, rule: any, context?: { formData: any; name: string }): Promise<any> {
   let validateResult: any = { result: true };
   const keys = Object.keys(rule);
   let vOptions: any;
@@ -141,7 +133,7 @@ export async function validateOneRule(
  * 保留 validateRules 别名以兼容已有调用
  */
 export async function validate(value: any, rules: any[], context?: { formData: any; name: string }): Promise<any[]> {
-  const all = rules.map(rule => validateOneRule(value, rule, context));
+  const all = rules.map((rule) => validateOneRule(value, rule, context));
   const r = await Promise.all(all);
   return r;
 }

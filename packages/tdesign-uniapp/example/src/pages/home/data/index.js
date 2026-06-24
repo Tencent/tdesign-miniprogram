@@ -6,7 +6,7 @@ import navData from './nav.json';
 import otherData from './other.json';
 import uxData from './ux.json';
 
-const  { base, skylineBase } = baseData;
+const { base, skylineBase } = baseData;
 const { nav, skylineNav } = navData;
 const { display, skylineDisplay } = displayData;
 const { form, skylineForm } = formData;

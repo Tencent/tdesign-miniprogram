@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="classPrefix"
-    :style="'' + tools._style([`height:${tools.addUnit(height)}`, customStyle])"
-  >
+  <view :class="classPrefix" :style="'' + tools._style([`height:${tools.addUnit(height)}`, customStyle])">
     <t-scroll-view
       v-for="(item, level) in treeOptions"
       :key="level"
@@ -14,7 +11,7 @@
         v-if="level == 0"
         :value="innerValue[level]"
         :t-class="classPrefix + '-column ' + tClassLeftColumn"
-        style="width: 100%;height: auto;"
+        style="width: 100%; height: auto"
         @change="onRootChange"
       >
         <t-side-bar-item
@@ -35,13 +32,14 @@
           :data-level="level"
           :data-value="treeItem.value"
           :class="
-            '' + tools.cls(classPrefix + '__item', [
+            '' +
+            tools.cls(classPrefix + '__item', [
               ['active', treeItem.value === innerValue[level]],
-              ['disabled', treeItem.disabled]
+              ['disabled', treeItem.disabled],
             ]) +
-              ' ' +
-              tClassMiddleItem +
-              ' scroll-into-view'
+            ' ' +
+            tClassMiddleItem +
+            ' scroll-into-view'
           "
           @click="handleTreeClick"
         >
@@ -57,11 +55,11 @@
         :data-level="level"
         data-type="single"
         :value="innerValue[level]"
-        @change="({value}) => handleChange({ value, level, type: 'single' })"
+        @change="({ value }) => handleChange({ value, level, type: 'single' })"
       >
         <t-radio
           v-for="(treeItem, index) in treeOptions[level]"
-          :key="`radio-${innerValue[level-1]}-${level}-${index}`"
+          :key="`radio-${innerValue[level - 1]}-${level}-${index}`"
           :t-id="'scroll-to-' + treeItem.value"
           :t-class="'scroll-into-view ' + classPrefix + '__radio-item ' + tClassRightItem"
           :t-class-label="tClassRightItemLabel"
@@ -82,11 +80,11 @@
         :value="innerValue[level] || []"
         :data-level="level"
         data-type="multiple"
-        @change="({context}) => handleChange({ context, value: context.value, level, type: 'multiple' })"
+        @change="({ context }) => handleChange({ context, value: context.value, level, type: 'multiple' })"
       >
         <t-checkbox
           v-for="(treeItem, index) in treeOptions[level]"
-          :key="`checkbox-${innerValue[level-1]}-${level}-${index}`"
+          :key="`checkbox-${innerValue[level - 1]}-${level}-${index}`"
           :t-id="'scroll-to-' + treeItem.value"
           :t-class="'scroll-into-view ' + tClassRightItem"
           :t-class-label="tClassRightItemLabel"
@@ -114,7 +112,6 @@ import { getTreeDepth, coalesce, nextTick } from '../common/utils';
 
 import tools from '../common/utils.wxs';
 import { isDef } from '../common/validator';
-
 
 import { canUseVirtualHost } from '../common/version';
 import TRadio from '../radio/radio';
@@ -217,7 +214,7 @@ export default {
 
         while (currentNode?.children) {
           level += 1;
-          const currentLevelOptions = currentNode.children.map(item => ({
+          const currentLevelOptions = currentNode.children.map((item) => ({
             label: item[keys?.label || 'label'],
             value: item[keys?.value || 'value'],
             disabled: item[keys?.disabled || 'disabled'],
@@ -228,7 +225,10 @@ export default {
 
           const currentValue = coalesce(customValue?.[level], value?.[level]);
           currentNode = currentValue
-            ? coalesce(currentLevelOptions.find(child => child.value === currentValue), currentLevelOptions[0])
+            ? coalesce(
+                currentLevelOptions.find((child) => child.value === currentValue),
+                currentLevelOptions[0],
+              )
             : currentLevelOptions[0];
         }
 
@@ -241,12 +241,13 @@ export default {
         }
 
         const leafLevel = Math.max(0, level);
-        const innerValue = customValue
-        || treeOptions.map((levelOptions, idx) => {
-          const isLastLevel = idx === treeOptions.length - 1;
-          const defaultValue = isLastLevel && multiple ? [levelOptions[0]?.value] : levelOptions[0]?.value;
-          return coalesce(value?.[idx], defaultValue);
-        });
+        const innerValue =
+          customValue ||
+          treeOptions.map((levelOptions, idx) => {
+            const isLastLevel = idx === treeOptions.length - 1;
+            const defaultValue = isLastLevel && multiple ? [levelOptions[0]?.value] : levelOptions[0]?.value;
+            return coalesce(value?.[idx], defaultValue);
+          });
 
         this.innerValue = innerValue;
         this.leafLevel = leafLevel;
@@ -258,7 +259,7 @@ export default {
         if (status === 'init') {
           const innerValue = customValue || value;
           const scrollIntoView = Array.isArray(innerValue)
-            ? innerValue.map(item => (Array.isArray(item) ? item[0] : item))
+            ? innerValue.map((item) => (Array.isArray(item) ? item[0] : item))
             : [innerValue];
 
           this.scrollIntoView = scrollIntoView;

@@ -1,29 +1,12 @@
 <template>
   <view class="skyline">
-    <t-demo-navbar
-      custom-class="block"
-      title="BackTop"
-    />
-    <scroll-view
-      scroll-y
-      type="list"
-      class="scroll-view"
-      :scroll-top="scrollTo"
-      @scroll="onScroll"
-    >
+    <t-demo-navbar custom-class="block" title="BackTop" />
+    <scroll-view scroll-y type="list" class="scroll-view" :scroll-top="scrollTo" @scroll="onScroll">
       <view class="demo">
-        <view class="demo-title">
-          BackTop 返回顶部
-        </view>
-        <view class="demo-desc">
-          用于当页面过长往下滑动时，帮助用户快速回到页面顶部。
-        </view>
+        <view class="demo-title"> BackTop 返回顶部 </view>
+        <view class="demo-desc"> 用于当页面过长往下滑动时，帮助用户快速回到页面顶部。 </view>
 
-        <t-demo
-          title="组件类型"
-          desc="圆形返回顶部"
-          padding
-        >
+        <t-demo title="组件类型" desc="圆形返回顶部" padding>
           <t-button
             theme="primary"
             size="large"
@@ -35,10 +18,7 @@
             圆形返回顶部
           </t-button>
         </t-demo>
-        <t-demo
-          desc="半圆形返回顶部"
-          padding
-        >
+        <t-demo desc="半圆形返回顶部" padding>
           <t-button
             theme="primary"
             size="large"
@@ -52,59 +32,19 @@
         </t-demo>
         <t-demo padding>
           <view class="container-flex">
-            <t-skeleton
-              :row-col="rowCol"
-              class="skeleton-item"
-              loading
-            />
-            <t-skeleton
-              :row-col="rowCol"
-              class="skeleton-item"
-              loading
-            />
-            <t-skeleton
-              :row-col="rowCol"
-              class="skeleton-item"
-              loading
-            />
-            <t-skeleton
-              :row-col="rowCol"
-              class="skeleton-item"
-              loading
-            />
-            <t-skeleton
-              :row-col="rowCol"
-              class="skeleton-item"
-              loading
-            />
-            <t-skeleton
-              :row-col="rowCol"
-              class="skeleton-item"
-              loading
-            />
-            <t-skeleton
-              :row-col="rowCol"
-              class="skeleton-item"
-              loading
-            />
-            <t-skeleton
-              :row-col="rowCol"
-              class="skeleton-item"
-              loading
-            />
+            <t-skeleton :row-col="rowCol" class="skeleton-item" loading />
+            <t-skeleton :row-col="rowCol" class="skeleton-item" loading />
+            <t-skeleton :row-col="rowCol" class="skeleton-item" loading />
+            <t-skeleton :row-col="rowCol" class="skeleton-item" loading />
+            <t-skeleton :row-col="rowCol" class="skeleton-item" loading />
+            <t-skeleton :row-col="rowCol" class="skeleton-item" loading />
+            <t-skeleton :row-col="rowCol" class="skeleton-item" loading />
+            <t-skeleton :row-col="rowCol" class="skeleton-item" loading />
           </view>
         </t-demo>
 
-        <base-demo
-          v-if="type == 'round'"
-          :scroll-top="scrollTop"
-          @to-top="onToTop"
-        />
-        <half-round
-          v-if="type == 'half-round'"
-          :scroll-top="scrollTop"
-          @to-top="onToTop"
-        />
+        <base-demo v-if="type == 'round'" :scroll-top="scrollTop" @to-top="onToTop" />
+        <half-round v-if="type == 'half-round'" :scroll-top="scrollTop" @to-top="onToTop" />
       </view>
     </scroll-view>
   </view>

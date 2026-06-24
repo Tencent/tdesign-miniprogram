@@ -5,19 +5,12 @@
       use-popup
       enable-alpha
       type="multiple"
-      @update:visible="(e) => visible = e"
+      @update:visible="(e) => (visible = e)"
       @change="onChange"
       @palette-bar-change="onPaletteBarChange"
     />
 
-    <t-button
-      block
-      size="large"
-      variant="outline"
-      theme="primary"
-      t-class="wrapper"
-      @click="handlePopup"
-    >
+    <t-button block size="large" variant="outline" theme="primary" t-class="wrapper" @click="handlePopup">
       弹窗形式的颜色选择器
     </t-button>
   </view>
@@ -51,5 +44,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

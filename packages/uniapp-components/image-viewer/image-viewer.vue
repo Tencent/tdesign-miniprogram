@@ -28,16 +28,8 @@
           @change="onSwiperChange"
           @click="(e) => onClose(e, '')"
         >
-          <swiper-item
-            v-for="(item, index) in images"
-            :key="index"
-            :class="classPrefix + '__preview-image'"
-          >
-            <movable-area
-              :class="classPrefix + '__movable-area'"
-              scale-area
-              @touchmove="onAreaTouchMove"
-            >
+          <swiper-item v-for="(item, index) in images" :key="index" :class="classPrefix + '__preview-image'">
+            <movable-area :class="classPrefix + '__movable-area'" scale-area @touchmove="onAreaTouchMove">
               <movable-view
                 :class="classPrefix + '__movable-view'"
                 direction="all"
@@ -72,9 +64,7 @@
           </swiper-item>
         </swiper>
       </view>
-      <view
-        :class="classPrefix + '__nav'"
-      >
+      <view :class="classPrefix + '__nav'">
         <view
           :class="classPrefix + '__nav-close'"
           aria-role="button"
@@ -82,10 +72,7 @@
           @click.stop.prevent="(e) => onClose(e, '')"
         >
           <slot name="close-btn" />
-          <block
-            v-if="iCloseBtn"
-            name="icon"
-          >
+          <block v-if="iCloseBtn" name="icon">
             <t-icon
               :custom-style="iCloseBtn.style || ''"
               :t-class="iCloseBtn.tClass"
@@ -100,18 +87,10 @@
             />
           </block>
         </view>
-        <view
-          v-if="showIndex"
-          :class="classPrefix + '__nav-index'"
-        >
+        <view v-if="showIndex" :class="classPrefix + '__nav-index'">
           {{ currentSwiperIndex + 1 }}/{{ images.length }}
         </view>
-        <view
-          :class="classPrefix + '__nav-delete'"
-          aria-role="button"
-          aria-label="删除"
-          @click="onDelete"
-        >
+        <view :class="classPrefix + '__nav-delete'" aria-role="button" aria-label="删除" @click="onDelete">
           <slot name="delete-btn" />
           <t-icon
             v-if="iDeleteBtn"
@@ -136,17 +115,14 @@ import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 import { styles, calcIcon, systemInfo } from '../common/utils';
 
-
 import tools from '../common/utils.wxs';
 import TIcon from '../icon/icon';
 import TImage from '../image/image';
-
 
 import useCustomNavbar from '../mixins/using-custom-navbar';
 
 import { shouldLoadImage } from './computed.js';
 import props from './props';
-
 
 const name = `${prefix}-image-viewer`;
 
@@ -210,14 +186,14 @@ export default {
 
       deleteBtn: {
         handler(v) {
-          this.iDeleteBtn =  calcIcon(v, 'delete');
+          this.iDeleteBtn = calcIcon(v, 'delete');
         },
         immediate: true,
       },
     },
     created() {
       this.saveScreenSize();
-    // this.calcMaskTop();
+      // this.calcMaskTop();
     },
     mounted() {
       this.init();
@@ -226,9 +202,19 @@ export default {
       shouldLoadImage,
       init() {
         const { visible: dataVisible, images, initialIndex } = this;
-        if (dataVisible && images?.length) {
+        // 重置缩放与图片样式，避免上次双指放大/缩放后的状态被保留
+        const reset = () => {
           this.loadedImageIndexes = [];
-          this.currentSwiperIndex =  initialIndex >= images.length ? images.length - 1 : initialIndex;
+          this.currentScale = 1;
+          this.lastTapTime = 0;
+          this.imagesStyle = {};
+          this.swiperStyle = {};
+        };
+        if (dataVisible && images?.length) {
+          this.currentSwiperIndex = initialIndex >= images.length ? images.length - 1 : initialIndex;
+          reset();
+        } else if (!dataVisible) {
+          reset();
         }
       },
       calcMaskTop() {
@@ -237,7 +223,7 @@ export default {
           const { statusBarHeight } = systemInfo;
 
           if (rect && statusBarHeight) {
-            this.maskTop =  rect.top - statusBarHeight + rect.bottom;
+            this.maskTop = rect.top - statusBarHeight + rect.bottom;
           }
         }
       },
@@ -266,7 +252,7 @@ export default {
           return {
             styleObj: {
               width: '100vw',
-              height: `${(windowWidth / ratio)}px`,
+              height: `${windowWidth / ratio}px`,
             },
           };
         }
@@ -304,7 +290,6 @@ export default {
         if (!this.loadedImageIndexes.includes(index)) {
           this.loadedImageIndexes = [...this.loadedImageIndexes, index];
         }
-
 
         this.swiperStyle = {
           ...originSwiperStyle,

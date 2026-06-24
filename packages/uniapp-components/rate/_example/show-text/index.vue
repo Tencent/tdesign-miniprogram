@@ -1,9 +1,7 @@
 <template>
   <view>
     <view class="demo-rate">
-      <view class="demo-rate__title">
-        带描述评分
-      </view>
+      <view class="demo-rate__title"> 带描述评分 </view>
       <!-- 自定义带描述评分，设置属性：texts -->
       <t-rate
         :value="value[0]"
@@ -14,28 +12,14 @@
       />
     </view>
     <view class="demo-rate">
-      <view class="demo-rate__title">
-        带描述评分
-      </view>
+      <view class="demo-rate__title"> 带描述评分 </view>
       <!-- 带描述评分，设置属性：showText -->
-      <t-rate
-        :value="value[1]"
-        :data-index="1"
-        :show-text="true"
-        @change="(e) => onChange(e, { index: 1 })"
-      />
+      <t-rate :value="value[1]" :data-index="1" :show-text="true" @change="(e) => onChange(e, { index: 1 })" />
     </view>
 
     <view class="demo-rate">
-      <view class="demo-rate__title">
-        带描述评分
-      </view>
-      <t-rate
-        :value="value[2]"
-        :data-index="2"
-        :show-text="true"
-        @change="(e) => onChange(e, { index: 2 })"
-      />
+      <view class="demo-rate__title"> 带描述评分 </view>
+      <t-rate :value="value[2]" :data-index="2" :show-text="true" @change="(e) => onChange(e, { index: 2 })" />
     </view>
   </view>
 </template>
@@ -66,25 +50,25 @@ export default {
 </script>
 <style>
 .demo-rate {
-    background-color: var(--bg-color-demo);
-    color: var(--td-text-color-primary);
-    height: 96rpx;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 32rpx;
-    margin-top: 32rpx;
-    margin-bottom: 32rpx;
+  background-color: var(--bg-color-demo);
+  color: var(--td-text-color-primary);
+  height: 96rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32rpx;
+  margin-top: 32rpx;
+  margin-bottom: 32rpx;
 }
 
 .demo-rate__title {
-    width: 200rpx;
-    font-size: 16px;
+  width: 200rpx;
+  font-size: 16px;
 }
 
 .demo-rate__transparent {
-    background-color: transparent;
-    padding-left: 32rpx;
-    border: 0;
+  background-color: transparent;
+  padding-left: 32rpx;
+  border: 0;
 }
 </style>

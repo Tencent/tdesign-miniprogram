@@ -1,11 +1,6 @@
 <template>
   <view>
-    <t-cell
-      title="地址"
-      :note="note"
-      arrow
-      @click="showCascader"
-    />
+    <t-cell title="地址" :note="note" arrow @click="showCascader" />
 
     <t-cascader
       :visible="visible"
@@ -14,18 +9,12 @@
       :value="value"
       :options="options"
       title="请选择地址"
-      @update:visible="(e) => visible = e"
+      @update:visible="(e) => (visible = e)"
       @change="onChange"
       @pick="onPick"
     >
-      <template
-        #close-btn
-      >
-        <text
-          class="confirm-btn"
-        >
-          确定
-        </text>
+      <template #close-btn>
+        <text class="confirm-btn"> 确定 </text>
       </template>
     </t-cascader>
   </view>
@@ -215,7 +204,7 @@ export default {
       const { selectedOptions, value } = e;
       console.log('change', value);
       this.value = value;
-      this.note = selectedOptions.map(item => item.label).join('/');
+      this.note = selectedOptions.map((item) => item.label).join('/');
       this.visible = false;
     },
   },
@@ -223,7 +212,7 @@ export default {
 </script>
 <style>
 .confirm-btn {
-    color: #0052d9;
-    font-size: 16px;
+  color: #0052d9;
+  font-size: 16px;
 }
 </style>

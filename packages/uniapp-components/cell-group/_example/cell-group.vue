@@ -1,38 +1,16 @@
 <template>
   <view>
-    <t-demo-navbar
-      title="cell-group 组合单元格"
-    />
+    <t-demo-navbar title="cell-group 组合单元格" />
     <view class="demo">
-      <view class="demo-title">
-        Cell-group 组合单元格
-      </view>
-      <view class="demo-desc">
-        cell的组合单元格
-      </view>
+      <view class="demo-title"> Cell-group 组合单元格 </view>
+      <view class="demo-desc"> cell的组合单元格 </view>
 
       <view>
         <t-cell-group title="01 基础用法">
-          <t-cell
-            title="单行标题"
-            required
-          />
-          <t-cell
-            title="单行标题"
-            hover
-            note="辅助信息"
-          />
-          <t-cell
-            title="单行标题"
-            hover
-            arrow
-          />
-          <t-cell
-            title="单行标题"
-            hover
-            note="辅助信息"
-            arrow
-          />
+          <t-cell title="单行标题" required />
+          <t-cell title="单行标题" hover note="辅助信息" />
+          <t-cell title="单行标题" hover arrow />
+          <t-cell title="单行标题" hover note="辅助信息" arrow />
         </t-cell-group>
       </view>
     </view>

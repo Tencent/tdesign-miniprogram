@@ -125,14 +125,13 @@ interface TreeNode {
   [key: string]: any;
 }
 
-export const getTreeDepth = (tree: TreeNode[], key?: string) => {
-  return tree.reduce((maxDepth: number, node: TreeNode) => {
+export const getTreeDepth = (tree: TreeNode[], key?: string) =>
+  tree.reduce((maxDepth: number, node: TreeNode) => {
     if (node[key ?? 'children'] && node[key ?? 'children'].length > 0) {
       return Math.max(maxDepth, getTreeDepth(node[key ?? 'children'], key) + 1);
     }
     return Math.max(maxDepth, 1);
   }, 0);
-};
 
 export const isIOS = function (): boolean {
   return !!(deviceInfo?.system?.toLowerCase().search('ios') + 1);
@@ -317,10 +316,9 @@ export const isOverSize = (size, sizeLimit) => {
 
 export const rpx2px = (rpx) => Math.floor((systemInfo.windowWidth * rpx) / 750);
 
-export const nextTick = () => {
-  return new Promise<void>((resolve) => {
+export const nextTick = () =>
+  new Promise<void>((resolve) => {
     wx.nextTick(() => {
       resolve();
     });
   });
-};

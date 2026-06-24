@@ -1,10 +1,7 @@
 <template>
   <view
     :style="'' + tools._style([customStyle])"
-    :class="[
-      tClass,
-      tools.cls(classPrefix, [['bordered', bordered || isLastChild]]),
-    ]"
+    :class="[tClass, tools.cls(classPrefix, [['bordered', bordered || isLastChild]])]"
     :hover-class="hover ? classPrefix + '--hover' : ''"
     hover-stay-time="70"
     :aria-role="ariaRole || (arrow ? 'button' : '')"
@@ -12,10 +9,7 @@
     @click="onClick"
   >
     <view :class="classPrefix + '__left ' + tClassLeft">
-      <block
-        v-if="iLeftIcon"
-        name="icon"
-      >
+      <block v-if="iLeftIcon" name="icon">
         <t-icon
           :custom-style="leftIconCustomStyle"
           :t-class="classPrefix + '__left-icon ' + tClassLeftIcon"
@@ -39,59 +33,29 @@
       <slot name="image" />
     </view>
     <view :class="classPrefix + '__title ' + tClassCenter">
-      <view
-        :class="[
-          classPrefix + '__title-text ',
-          tClassTitle
-        ]"
-        :style="'' + tools._style(titleStyle)"
-      >
+      <view :class="[classPrefix + '__title-text ', tClassTitle]" :style="'' + tools._style(titleStyle)">
         <block v-if="title">
           {{ title }}
         </block>
         <slot name="title" />
         <block v-if="required">
-          <text
-            decode
-            :class="classPrefix + '--required'"
-          >
-            &nbsp;*
-          </text>
+          <text decode :class="classPrefix + '--required'"> &nbsp;* </text>
         </block>
       </view>
-      <view
-        :class="[
-          classPrefix + '__description ',
-          tClassDescription
-        ]"
-      >
-        <view
-          v-if="description"
-          :class="classPrefix + '__description-text'"
-        >
+      <view :class="[classPrefix + '__description ', tClassDescription]">
+        <view v-if="description" :class="classPrefix + '__description-text'">
           {{ description }}
         </view>
         <slot name="description" />
       </view>
     </view>
-    <view
-      :class="[
-        classPrefix + '__note ',
-        tClassNote
-      ]"
-      :style="'' + tools._style(noteStyle)"
-    >
+    <view :class="[classPrefix + '__note ', tClassNote]" :style="'' + tools._style(noteStyle)">
       <text v-if="note">
         {{ note }}
       </text>
       <slot name="note" />
     </view>
-    <view
-      :class="[
-        tools.cls(`${classPrefix}__right`, [align]),
-        tClassRight,
-      ]"
-    >
+    <view :class="[tools.cls(`${classPrefix}__right`, [align]), tClassRight]">
       <t-icon
         v-if="rightArrow"
         :custom-style="rightArrowCustomStyle"
@@ -105,10 +69,7 @@
         @click="'handleClose' || ''"
       />
       <block v-else>
-        <block
-          v-if="iRightIcon"
-          name="icon"
-        >
+        <block v-if="iRightIcon" name="icon">
           <t-icon
             :custom-style="rightIconCustomStyle"
             :t-class="classPrefix + '__right-icon ' + tClassRightIcon"
@@ -136,7 +97,6 @@ import TIcon from '../icon/icon';
 import TImage from '../image/image';
 
 import props from './props';
-
 
 const name = `${prefix}-cell`;
 
@@ -172,9 +132,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-      'click',
-    ],
+    emits: ['click'],
     data() {
       return {
         prefix,
@@ -195,9 +153,7 @@ export default {
             color: this.iLeftIcon.color
               ? this.iLeftIcon.color
               : 'var(--td-cell-left-icon-color, var(--td-brand-color, var(--td-primary-color-7, #0052d9)))',
-            fontSize: this.iLeftIcon.size
-              ? addUnit(this.iLeftIcon.size)
-              : 'var(--td-cell-left-icon-font-size, 48rpx)',
+            fontSize: this.iLeftIcon.size ? addUnit(this.iLeftIcon.size) : 'var(--td-cell-left-icon-font-size, 48rpx)',
           },
           this.iLeftIcon.style || '',
         ]);
@@ -212,12 +168,8 @@ export default {
         if (!this.rightArrow) return '';
         return tools._style([
           {
-            color: this.rightArrow.color
-              ? this.rightArrow.color
-              : COMMON_RIGHT_ICON_STYLE.color,
-            fontSize: this.rightArrow.size
-              ? addUnit(this.rightArrow.size)
-              : COMMON_RIGHT_ICON_STYLE.fontSize,
+            color: this.rightArrow.color ? this.rightArrow.color : COMMON_RIGHT_ICON_STYLE.color,
+            fontSize: this.rightArrow.size ? addUnit(this.rightArrow.size) : COMMON_RIGHT_ICON_STYLE.fontSize,
           },
           this.rightIconStyle || '',
           this.rightArrow.style || '',
@@ -227,12 +179,8 @@ export default {
         if (!this.iRightIcon) return '';
         return tools._style([
           {
-            color: this.iRightIcon.color
-              ? this.iRightIcon.color
-              : COMMON_RIGHT_ICON_STYLE.color,
-            fontSize: this.iRightIcon.size
-              ? addUnit(this.iRightIcon.size)
-              : COMMON_RIGHT_ICON_STYLE.fontSize,
+            color: this.iRightIcon.color ? this.iRightIcon.color : COMMON_RIGHT_ICON_STYLE.color,
+            fontSize: this.iRightIcon.size ? addUnit(this.iRightIcon.size) : COMMON_RIGHT_ICON_STYLE.fontSize,
           },
           this.rightIconStyle || '',
           this.iRightIcon.style || '',
