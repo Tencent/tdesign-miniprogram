@@ -11,7 +11,7 @@ docClass: timeline
 
 - `Form`: 新增 `contentAlign ` 属性，支持配置表单内容对齐方式 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
 - `Navbar`: 新增 `isHiddenInSpecialScene` 属性，表示是否销毁导航栏，仅场景值为 1433、1434、1177、1175 时有效 @anlyyao ([#4509](https://github.com/Tencent/tdesign-miniprogram/pull/4509))
-- `TabbarItem`: 新增 `url` 和 `linkType` 属性 @anlyyao ([#4523](https://github.com/Tencent/tdesign-miniprogram/pull/4523))
+- `TabBar`: `TabBarItem` 新增 `url` 和 `linkType` 属性 @anlyyao ([#4523](https://github.com/Tencent/tdesign-miniprogram/pull/4523))
 
 ### 🐞 Bug Fixes
 
