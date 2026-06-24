@@ -584,7 +584,6 @@
     "stylelint-config-common": "catalog:",
     "stylelint-config-standard": "catalog:",
     "stylelint-less": "catalog:",
-    "stylelint-scss": "catalog:",
     "t-comm": "catalog:",
     "tslib": "catalog:",
     "typescript": "catalog:",
