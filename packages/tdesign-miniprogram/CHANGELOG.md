@@ -5,6 +5,21 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.15.2 `2026-06-24`
+
+### 🚀 Features
+
+- `Form`: 新增 `contentAlign ` 属性，支持配置表单内容对齐方式 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `Navbar`: 新增 `isHiddenInSpecialScene` 属性，表示是否销毁导航栏，仅场景值为 1433、1434、1177、1175 时有效 @anlyyao ([#4509](https://github.com/Tencent/tdesign-miniprogram/pull/4509))
+- `TabbarItem`: 新增 `url` 和 `linkType` 属性 @anlyyao ([#4523](https://github.com/Tencent/tdesign-miniprogram/pull/4523))
+
+### 🐞 Bug Fixes
+
+- `Button`: ⚠️ `--td-button-xx-font-size` 系列变更为 `--td-button-xx-font`；⚠️ 移除 `--td-button-font-weight`，请改用 `--td-button-xx-font`，或者[组件库级别的 css var ](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/style/theme/_font.less)调整字号、行高、字重、字体等文本样式 @liweijie0812 ([#4501](https://github.com/Tencent/tdesign-miniprogram/pull/4501))
+- `Popover`: 修复外部样式类 `class` 无效 @anlyyao ([#4499](https://github.com/Tencent/tdesign-miniprogram/pull/4499))
+- `TabBar`: 修复 `shape` 为 `round` 时占位高度未包含底部安全区的问题 @novlan1 ([#4521](https://github.com/Tencent/tdesign-miniprogram/pull/4521))
+- `Text`: 修复组件在 Mpx 跨端小程序框架中报错 @anlyyao ([#4498](https://github.com/Tencent/tdesign-miniprogram/pull/4498))
+
 ## 🌈 1.15.1 `2026-06-05`
 
 ### 🚀 Features
