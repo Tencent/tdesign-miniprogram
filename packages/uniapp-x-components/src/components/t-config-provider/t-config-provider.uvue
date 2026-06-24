@@ -1,0 +1,30 @@
+<template>
+  <view :class="rootClass">
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+import { configProviderVariants } from './t-config-provider.variants';
+
+const props = defineProps({
+  /** 主题配置 */
+  theme: { type: Object as PropType<Record<string, any>>, default: null },
+  /** 语言配置 */
+  locale: { type: String, default: 'zh-CN' },
+  /** 全局尺寸 */
+  size: { type: String, default: 'medium' },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const rootClass = computed(() => 
+  configProviderVariants({ class: props.customClass })
+);
+
+// TODO: 实现 provide/inject 机制，向子组件提供全局配置
+</script>
+
+<style lang="less">
+@import './t-config-provider.theme.less';
+</style>

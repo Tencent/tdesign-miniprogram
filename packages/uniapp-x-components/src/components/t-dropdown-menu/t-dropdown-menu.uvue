@@ -1,0 +1,236 @@
+<template>
+  <view :class="rootClass" :style="customStyle">
+    <slot name="top" />
+    <view :class="barClass">
+      <view
+        v-for="(item, index) in items"
+        :key="index"
+        :class="getItemClass(index)"
+        @click="handleToggle(index)"
+      >
+        <text :class="getLabelClass(index)">
+          {{ item.label }}
+        </text>
+        <t-icon
+          :name="item.icon || 'chevron-down'"
+          :class="getIconClass(index)"
+          :size="32"
+        />
+      </view>
+    </view>
+
+    <view :class="menuClass">
+      <view
+        v-for="(item, index) in items"
+        :key="index"
+        :class="getDropdownClass(index)"
+      >
+        <view :class="dropdownContentClass">
+          <slot :name="'dropdown' + index" />
+        </view>
+      </view>
+    </view>
+
+    <slot name="bottom" />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * DropdownMenu - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/dropdown-menu
+ */
+import { dropdownMenuVariants } from './t-dropdown-menu.variants';
+
+const props = defineProps({
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  direction: { type: String, default: 'down' },
+  duration: { type: Number, default: 200 },
+  options: { type: Array as PropType<any[]>, default: () => [] },
+  placement: { type: String, default: 'bottom' },
+  theme: { type: String, default: 'tabs' },
+  value: { type: [String, Number], default: undefined },
+  visible: { type: Boolean, default: false },
+});
+
+const emit = defineEmits(['change', 'open', 'close', 'update:value', 'update:visible']);
+
+// 内部状态
+const activeIndex = ref<number>(-1);
+const items = ref<any[]>([]);
+
+// 初始化
+onMounted(() => {
+  if (props.options && props.options.length > 0) {
+    items.value = props.options.map((option: any) => ({
+      label: option.label || '',
+      value: option.value,
+      icon: option.icon || '',
+      disabled: option.disabled || false,
+    }));
+  }
+});
+
+// 监听 props.options 变化
+watch(() => props.options, (v) => {
+  if (v && v.length > 0) {
+    items.value = v.map((option: any) => ({
+      label: option.label || '',
+      value: option.value,
+      icon: option.icon || '',
+      disabled: option.disabled || false,
+    }));
+  }
+});
+
+// 根节点类名
+const rootClass = computed<string>(() => {
+  return dropdownMenuVariants({
+    class: props.customClass,
+  });
+});
+
+// 工具栏类名
+const barClass = computed<string>(() => {
+  return 't-dropdown-menu__bar';
+});
+
+// 菜单类名
+const menuClass = computed<string>(() => {
+  return 't-dropdown-menu__menu';
+});
+
+// 下拉内容类名
+const dropdownContentClass = computed<string>(() => {
+  return 't-dropdown-menu__dropdown-content';
+});
+
+// 获取项目类名
+function getItemClass(index: number): string {
+  const arr = ['t-dropdown-menu__item'];
+  if (index === activeIndex.value) {
+    arr.push('t-dropdown-menu__item--active');
+  }
+  if (items.value[index]?.disabled) {
+    arr.push('t-dropdown-menu__item--disabled');
+  }
+  return arr.join(' ');
+}
+
+// 获取标签类名
+function getLabelClass(index: number): string {
+  const arr = ['t-dropdown-menu__label'];
+  if (index === activeIndex.value) {
+    arr.push('t-dropdown-menu__label--active');
+  }
+  return arr.join(' ');
+}
+
+// 获取图标类名
+function getIconClass(index: number): string {
+  const arr = ['t-dropdown-menu__icon'];
+  if (index === activeIndex.value) {
+    arr.push('t-dropdown-menu__icon--active');
+  }
+  return arr.join(' ');
+}
+
+// 获取下拉类名
+function getDropdownClass(index: number): string {
+  const arr = ['t-dropdown-menu__dropdown'];
+  if (index === activeIndex.value) {
+    arr.push('t-dropdown-menu__dropdown--active');
+  }
+  return arr.join(' ');
+}
+
+// 处理切换
+function handleToggle(index: number) {
+  if (items.value[index]?.disabled) return;
+
+  if (activeIndex.value === index) {
+    activeIndex.value = -1;
+    emit('close', { index });
+  } else {
+    activeIndex.value = index;
+    emit('open', { index });
+  }
+}
+</script>
+
+<style lang="less">
+@import './t-dropdown-menu.theme.less';
+
+.t-dropdown-menu {
+  position: relative;
+
+  &__bar {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-bottom: 1rpx solid #e7e7e7;
+  }
+
+  &__item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8rpx;
+    padding: 24rpx 16rpx;
+    cursor: pointer;
+
+    &--active {
+      color: #0052d9;
+    }
+
+    &--disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+
+  &__label {
+    font-size: 28rpx;
+    color: rgba(0, 0, 0, 0.9);
+
+    &--active {
+      color: #0052d9;
+    }
+  }
+
+  &__icon {
+    transition: transform 0.2s;
+
+    &--active {
+      transform: rotate(180deg);
+      color: #0052d9;
+    }
+  }
+
+  &__menu {
+    position: relative;
+  }
+
+  &__dropdown {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fff;
+    box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+    z-index: 100;
+
+    &--active {
+      display: block;
+    }
+  }
+
+  &__dropdown-content {
+    padding: 16rpx;
+  }
+}
+</style>

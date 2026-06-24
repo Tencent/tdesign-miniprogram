@@ -1,0 +1,235 @@
+<template>
+  <t-popup
+    v-model:visible="dataVisible"
+    :custom-style="props.customStyle"
+    placement="bottom"
+    :overlay-style="props.overlayStyle"
+  >
+    <view :class="rootClass">
+      <!-- 顶部工具栏 -->
+      <view :class="toolbarClass">
+        <view :class="cancelBtnClass" @click="handleCancel">
+          {{ props.cancelBtn }}
+        </view>
+        <view :class="titleClass">
+          {{ props.title }}
+        </view>
+        <view :class="confirmBtnClass" @click="handleConfirm">
+          {{ props.confirmBtn }}
+        </view>
+      </view>
+
+      <!-- 选择器内容 -->
+      <picker-view
+        :class="pickerViewClass"
+        :value="pickerValue"
+        @change="onPickerChange"
+        @pickstart="onPickerStart"
+        @pickend="onPickerEnd"
+      >
+        <picker-view-column
+          v-for="(column, colIndex) in dataColumns"
+          :key="colIndex"
+        >
+          <view
+            v-for="(item, itemIndex) in column"
+            :key="itemIndex"
+            :class="pickerItemClass"
+          >
+            {{ typeof item === 'object' ? item[props.optionKey] : item }}
+          </view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </t-popup>
+</template>
+
+<script setup lang="uts">
+/**
+ * Picker - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/picker
+ */
+import { pickerVariants } from './t-picker.variants';
+
+const props = defineProps({
+  cancelBtn: { type: String, default: '取消' },
+  columns: { type: Array as PropType<any[]>, default: () => [] },
+  confirmBtn: { type: String, default: '确认' },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  modelValue: { type: [String, Number, Array], default: undefined },
+  optionKey: { type: String, default: 'label' },
+  overlayStyle: { type: String, default: '' },
+  title: { type: String, default: '' },
+  value: { type: [String, Number, Array], default: undefined },
+  visible: { type: Boolean, default: false },
+});
+
+const emit = defineEmits(['cancel', 'change', 'close', 'confirm', 'update:modelValue', 'update:visible']);
+
+// 内部状态
+const dataVisible = ref<boolean>(props.visible);
+const dataColumns = ref<any[]>([]);
+const pickerValue = ref<number[]>([]);
+const isScrolling = ref<boolean>(false);
+const tempValue = ref<any[]>([]);
+
+// 初始化
+onMounted(() => {
+  dataColumns.value = props.columns;
+  initPickerValue();
+});
+
+// 监听 props.visible 变化
+watch(() => props.visible, (v) => {
+  dataVisible.value = v;
+});
+
+// 监听 dataVisible 变化
+watch(dataVisible, (v) => {
+  emit('update:visible', v);
+  if (!v) {
+    emit('close');
+  }
+});
+
+// 监听 props.columns 变化
+watch(() => props.columns, (v) => {
+  dataColumns.value = v;
+  initPickerValue();
+});
+
+// 根节点类名
+const rootClass = computed<string>(() => {
+  return pickerVariants({
+    class: props.customClass,
+  });
+});
+
+// 工具栏类名
+const toolbarClass = computed<string>(() => {
+  return 't-picker__toolbar';
+});
+
+// 取消按钮类名
+const cancelBtnClass = computed<string>(() => {
+  return 't-picker__cancel';
+});
+
+// 标题类名
+const titleClass = computed<string>(() => {
+  return 't-picker__title';
+});
+
+// 确认按钮类名
+const confirmBtnClass = computed<string>(() => {
+  return 't-picker__confirm';
+});
+
+// 选择器视图类名
+const pickerViewClass = computed<string>(() => {
+  return 't-picker__view';
+});
+
+// 选择器项类名
+const pickerItemClass = computed<string>(() => {
+  return 't-picker__item';
+});
+
+// 初始化选择器值
+function initPickerValue() {
+  const val = props.value || props.modelValue;
+  if (val !== undefined) {
+    if (Array.isArray(val)) {
+      pickerValue.value = val.map(v => Number(v));
+    } else {
+      pickerValue.value = [Number(val)];
+    }
+  } else {
+    pickerValue.value = dataColumns.value.map(() => 0);
+  }
+  tempValue.value = [...pickerValue.value];
+}
+
+// 处理选择器变化
+function onPickerChange(e: any) {
+  const value = e.detail.value;
+  tempValue.value = value;
+  isScrolling.value = false;
+}
+
+// 处理滚动开始
+function onPickerStart() {
+  isScrolling.value = true;
+}
+
+// 处理滚动结束
+function onPickerEnd() {
+  isScrolling.value = false;
+}
+
+// 处理取消
+function handleCancel() {
+  dataVisible.value = false;
+  emit('cancel');
+}
+
+// 处理确认
+function handleConfirm() {
+  pickerValue.value = [...tempValue.value];
+  dataVisible.value = false;
+
+  // 获取选中项
+  const selectedItems = pickerValue.value.map((val, index) => {
+    const column = dataColumns.value[index];
+    return column ? column[val] : null;
+  });
+
+  emit('confirm', { value: selectedItems });
+  emit('change', { value: selectedItems });
+}
+</script>
+
+<style lang="less">
+@import './t-picker.theme.less';
+
+.t-picker {
+  background: #fff;
+  border-radius: 16rpx 16rpx 0 0;
+
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 88rpx;
+    padding: 0 32rpx;
+    border-bottom: 1rpx solid #e7e7e7;
+  }
+
+  &__cancel,
+  &__confirm {
+    font-size: 28rpx;
+    color: #0052d9;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.9);
+  }
+
+  &__view {
+    height: 400rpx;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
+    color: rgba(0, 0, 0, 0.9);
+  }
+}
+</style>

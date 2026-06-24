@@ -1,0 +1,392 @@
+<template>
+  <t-popup
+    :visible="dataVisible"
+    placement="bottom"
+    :show-overlay="true"
+    @visible-change="onVisibleChange"
+  >
+    <view :class="rootClass" :style="customStyle">
+      <view :class="titleClass">
+        {{ title || '选择' }}
+      </view>
+      <view :class="closeBtnClass" @click="handleClose">
+        <t-icon v-if="closeBtn" name="close" :size="48" />
+      </view>
+
+      <view :class="contentClass">
+        <!-- 步骤导航 -->
+        <view v-if="steps.length > 0" :class="stepsClass">
+          <view
+            v-for="(step, index) in steps"
+            :key="index"
+            :class="[stepClass, index === stepIndex ? 't-cascader__step--active' : '']"
+            @click="handleStepClick(index)"
+          >
+            <view :class="stepDotClass" />
+            <text :class="stepLabelClass">
+              {{ step }}
+            </text>
+          </view>
+        </view>
+
+        <!-- 选项列表 -->
+        <view :class="optionsContainerClass">
+          <scroll-view
+            v-for="(options, index) in items"
+            :key="index"
+            :class="optionsClass"
+            scroll-y
+            type="list"
+            :style="'height: ' + optionsHeight + 'px'"
+          >
+            <view
+              v-for="(option, optIndex) in options"
+              :key="optIndex"
+              :class="getOptionClass(option, index, optIndex)"
+              @click="handleSelect(option, index, optIndex)"
+            >
+              <text :class="optionLabelClass">
+                {{ option.label }}
+              </text>
+              <t-icon
+                v-if="option.children && option.children.length"
+                name="chevron-right"
+                :size="32"
+              />
+            </view>
+          </scroll-view>
+        </view>
+      </view>
+    </view>
+  </t-popup>
+</template>
+
+<script setup lang="uts">
+/**
+ * Cascader - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/cascader
+ */
+import { cascaderVariants } from './t-cascader.variants';
+
+const props = defineProps({
+  closeBtn: { type: Boolean, default: true },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  defaultValue: { type: [String, Number, Array], default: null },
+  filterable: { type: Boolean, default: false },
+  keys: { type: Object as PropType<any>, default: () => ({}) },
+  options: { type: Array as PropType<any[]>, default: () => [] },
+  placeholder: { type: String, default: '请选择' },
+  theme: { type: String, default: 'step' },
+  title: { type: String, default: '' },
+  value: { type: [String, Number, Array], default: undefined },
+  visible: { type: Boolean, default: false },
+});
+
+const emit = defineEmits(['change', 'close', 'pick', 'update:visible']);
+
+// 内部状态
+const dataVisible = ref<boolean>(props.visible);
+const dataValue = ref<any>(props.defaultValue);
+const stepIndex = ref<number>(0);
+const selectedIndexes = ref<number[]>([]);
+const selectedValue = ref<any[]>([]);
+const steps = ref<string[]>([]);
+const items = ref<any[]>([]);
+const optionsHeight = ref<number>(400);
+
+// 初始化
+onMounted(() => {
+  initOptions();
+});
+
+// 监听 props.visible 变化
+watch(() => props.visible, (v) => {
+  dataVisible.value = v;
+  if (v) {
+    initOptions();
+  }
+});
+
+// 监听 dataVisible 变化
+watch(dataVisible, (v) => {
+  emit('update:visible', v);
+  if (!v) {
+    emit('close', { trigger: 'overlay' });
+  }
+});
+
+// 监听 props.value 变化
+watch(() => props.value, (v) => {
+  if (v !== undefined && v !== null) {
+    dataValue.value = v;
+    initSelectedIndexes();
+  }
+});
+
+// 监听 props.options 变化
+watch(() => props.options, () => {
+  initOptions();
+});
+
+// 根节点类名
+const rootClass = computed<string>(() => {
+  return cascaderVariants({
+    class: props.customClass,
+  });
+});
+
+// 标题类名
+const titleClass = computed<string>(() => {
+  return 't-cascader__title';
+});
+
+// 关闭按钮类名
+const closeBtnClass = computed<string>(() => {
+  return 't-cascader__close-btn';
+});
+
+// 内容类名
+const contentClass = computed<string>(() => {
+  return 't-cascader__content';
+});
+
+// 步骤容器类名
+const stepsClass = computed<string>(() => {
+  return 't-cascader__steps';
+});
+
+// 步骤类名
+const stepClass = computed<string>(() => {
+  return 't-cascader__step';
+});
+
+// 步骤圆点类名
+const stepDotClass = computed<string>(() => {
+  return 't-cascader__step-dot';
+});
+
+// 步骤标签类名
+const stepLabelClass = computed<string>(() => {
+  return 't-cascader__step-label';
+});
+
+// 选项容器类名
+const optionsContainerClass = computed<string>(() => {
+  return 't-cascader__options-container';
+});
+
+// 选项类名
+const optionsClass = computed<string>(() => {
+  return 't-cascader__options';
+});
+
+// 选项标签类名
+const optionLabelClass = computed<string>(() => {
+  return 't-cascader__option-label';
+});
+
+// 初始化选项
+function initOptions() {
+  const { options, keys } = props;
+  const labelKey = keys?.label || 'label';
+  const valueKey = keys?.value || 'value';
+  const childrenKey = keys?.children || 'children';
+
+  // 第一级选项
+  const firstLevel = options.map((item: any) => ({
+    label: item[labelKey],
+    value: item[valueKey],
+    children: item[childrenKey],
+  }));
+
+  items.value = [firstLevel];
+  steps.value = [props.placeholder || '请选择'];
+
+  // 如果有选中值，初始化选中状态
+  if (dataValue.value) {
+    initSelectedIndexes();
+  }
+}
+
+// 初始化选中索引
+function initSelectedIndexes() {
+  // TODO: 根据 value 初始化 selectedIndexes
+}
+
+// 获取选项类名
+function getOptionClass(option: any, level: number, index: number): string {
+  const arr = ['t-cascader__option'];
+
+  if (selectedValue.value[level] === option.value) {
+    arr.push('t-cascader__option--selected');
+  }
+
+  if (option.disabled) {
+    arr.push('t-cascader__option--disabled');
+  }
+
+  return arr.join(' ');
+}
+
+// 处理步骤点击
+function handleStepClick(index: number) {
+  stepIndex.value = index;
+}
+
+// 处理选项选择
+function handleSelect(option: any, level: number, index: number) {
+  if (option.disabled) return;
+
+  const { keys } = props;
+  const childrenKey = keys?.children || 'children';
+
+  // 更新选中状态
+  selectedIndexes.value[level] = index;
+  selectedValue.value[level] = option.value;
+
+  // 删除后续级别的选中状态
+  selectedIndexes.value = selectedIndexes.value.slice(0, level + 1);
+  selectedValue.value = selectedValue.value.slice(0, level + 1);
+
+  emit('pick', {
+    value: option.value,
+    label: option.label,
+    index,
+    level,
+  });
+
+  // 如果有子选项，加载下一级
+  if (option.children && option.children.length > 0) {
+    const nextLevel = option.children.map((item: any) => ({
+      label: item[keys?.label || 'label'],
+      value: item[keys?.value || 'value'],
+      children: item[keys?.children || 'children'],
+    }));
+
+    items.value[level + 1] = nextLevel;
+    items.value = items.value.slice(0, level + 2);
+
+    steps.value[level + 1] = option.label;
+    steps.value = steps.value.slice(0, level + 2);
+
+    stepIndex.value = level + 1;
+  } else {
+    // 没有子选项，选择完成
+    const finalValue = selectedValue.value[selectedValue.value.length - 1];
+    dataValue.value = finalValue;
+
+    emit('change', {
+      value: finalValue,
+      selectedOptions: items.value.map((item, idx) => item[selectedIndexes.value[idx]]).filter(Boolean),
+    });
+
+    dataVisible.value = false;
+  }
+}
+
+// 处理关闭
+function handleClose() {
+  dataVisible.value = false;
+  emit('close', { trigger: 'close-btn' });
+}
+
+// 处理可见性变化
+function onVisibleChange() {
+  dataVisible.value = false;
+}
+</script>
+
+<style lang="less">
+@import './t-cascader.theme.less';
+
+.t-cascader {
+  background: #fff;
+  border-radius: 16rpx 16rpx 0 0;
+  max-height: 80vh;
+
+  &__title {
+    font-size: 32rpx;
+    font-weight: 600;
+    text-align: center;
+    padding: 24rpx;
+    border-bottom: 1rpx solid #e7e7e7;
+  }
+
+  &__close-btn {
+    position: absolute;
+    right: 24rpx;
+    top: 24rpx;
+    cursor: pointer;
+  }
+
+  &__content {
+    padding: 0 24rpx 24rpx;
+  }
+
+  &__steps {
+    display: flex;
+    align-items: center;
+    padding: 16rpx 0;
+    gap: 16rpx;
+  }
+
+  &__step {
+    display: flex;
+    align-items: center;
+    gap: 8rpx;
+    cursor: pointer;
+
+    &--active {
+      color: #0052d9;
+    }
+  }
+
+  &__step-dot {
+    width: 12rpx;
+    height: 12rpx;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.2);
+
+    &--active {
+      background: #0052d9;
+    }
+  }
+
+  &__step-label {
+    font-size: 28rpx;
+  }
+
+  &__options-container {
+    overflow: hidden;
+  }
+
+  &__options {
+    max-height: 60vh;
+  }
+
+  &__option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24rpx 16rpx;
+    border-bottom: 1rpx solid #f5f5f5;
+    cursor: pointer;
+
+    &--selected {
+      color: #0052d9;
+      font-weight: 500;
+    }
+
+    &--disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+
+  &__option-label {
+    font-size: 28rpx;
+  }
+}
+</style>

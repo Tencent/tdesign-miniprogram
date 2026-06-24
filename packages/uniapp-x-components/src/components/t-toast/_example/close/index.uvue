@@ -1,0 +1,44 @@
+<template>
+  <view>
+    <!-- 重要：必须预埋 t-toast 并设置 ref="toast"，否则全局 API 找不到实例 -->
+    <t-toast ref="toast" />
+
+    <view class="box">
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="handleShow">
+        显示提示
+      </t-button>
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="handleHide">
+        关闭提示
+      </t-button>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Toast 手动关闭示例 - 对齐 uniapp 版本的 close/index.vue
+ *
+ * 展示内容：
+ *  - 手动关闭轻提示（duration=-1 常驻，调用 hideToast 关闭）
+ */
+import { showToast, hideToast } from '@/uni_modules/tdesign-uniapp-x/components/t-toast';
+
+function handleShow() {
+  showToast({
+    duration: -1,
+    message: '轻提示文字内容',
+  });
+}
+
+function handleHide() {
+  hideToast();
+}
+</script>
+
+<style>
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+</style>

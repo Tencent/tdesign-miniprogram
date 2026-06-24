@@ -1,17 +1,7 @@
 <template>
   <!--
-    Message - uni-app x 实现（指令式预埋组件，简化版）
+    Message - uni-app x 实现（指令式预埋组件）
     -------------------------------------------------------
-    DOM 结构对齐 @tdesign/uniapp/message-item/message-item.vue：
-      <view v-if="realVisible" class="t-message t-message--{theme} t-message--align-{align}">
-        <view class="t-message__icon" v-if="resolvedIcon"><t-icon /></view>
-        <view class="t-message__content">
-          <text class="t-message__text">{{ content }}</text>
-        </view>
-        <view class="t-message__link" v-if="link" @click>{{ link }}</view>
-        <view class="t-message__close-btn" v-if="resolvedCloseBtn" @click>×</view>
-      </view>
-
     使用方式：
       <template>
         <t-message ref="message" />
@@ -59,6 +49,7 @@
  */
 import { computed, defineComponent, ref } from 'vue';
 import { messageVariants } from './t-message.variants';
+import type { MessageOptions } from './t-message.types';
 
 type MessageInternalState = {
   content: string;
@@ -69,6 +60,20 @@ type MessageInternalState = {
   align: string;
   link: string;
   zIndex: number;
+  /** 相对于 placement 的偏移量，默认单位 rpx。示例：[-10, 20] 或 ['10rpx', '8rpx'] */
+  offset: number[];
+  /** 两条 message 之间的间距 */
+  gap: number;
+  /** 是否保持仅显示一条信息 */
+  single: boolean;
+  /** 跑马灯效果 */
+  marquee: boolean | MessageMarquee;
+};
+
+type MessageMarquee = {
+  speed?: number;
+  loop?: number;
+  delay?: number;
 };
 
 function defaultState(): MessageInternalState {
@@ -81,6 +86,10 @@ function defaultState(): MessageInternalState {
     align: 'left',
     link: '',
     zIndex: 15000,
+    offset: [0, 0],
+    gap: 12,
+    single: true,
+    marquee: false,
   } as MessageInternalState;
 }
 
@@ -112,7 +121,19 @@ export default defineComponent({
       messageVariants({ theme: state.value.theme, align: state.value.align }),
     );
 
-    const rootStyle = computed<string>(() => 'z-index:' + state.value.zIndex.toString());
+    const rootStyle = computed<string>(() => {
+      const parts: string[] = [];
+      parts.push('z-index:' + state.value.zIndex.toString());
+      // 添加 offset 偏移量支持
+      const offset = state.value.offset;
+      if (offset != null && offset.length >= 2) {
+        // offset[0] = top, offset[1] = left/right
+        parts.push('top:' + offset[0].toString() + 'rpx');
+        parts.push('left:' + offset[1].toString() + 'rpx');
+        parts.push('right:' + offset[1].toString() + 'rpx');
+      }
+      return parts.join(';');
+    });
 
     function clearHideTimer() {
       if (hideTimer >= 0) {
@@ -121,41 +142,128 @@ export default defineComponent({
       }
     }
 
+    /**
+     * 从 UTSJSONObject 或普通对象中安全获取值
+     * 兼容两种传入方式（指令式 API 可能传入普通 JS 对象）
+     */
+    function getOptString(opts: any, key: string): string | null {
+      if (opts == null) return null;
+      // 尝试作为 UTSJSONObject 处理
+      if (typeof opts.getString === 'function') {
+        return opts.getString(key);
+      }
+      // 作为普通对象处理
+      const val = opts[key];
+      return val != null ? String(val) : null;
+    }
+
+    function getOptNumber(opts: any, key: string): number | null {
+      if (opts == null) return null;
+      // 尝试作为 UTSJSONObject 处理
+      if (typeof opts.getNumber === 'function') {
+        return opts.getNumber(key);
+      }
+      // 作为普通对象处理
+      const val = opts[key];
+      return val != null ? Number(val) : null;
+    }
+
+    function getOptBoolean(opts: any, key: string): boolean | null {
+      if (opts == null) return null;
+      // 尝试作为 UTSJSONObject 处理
+      if (typeof opts.getBoolean === 'function') {
+        return opts.getBoolean(key);
+      }
+      // 作为普通对象处理
+      const val = opts[key];
+      return val != null ? Boolean(val) : null;
+    }
+
+    function getOptObject(opts: any, key: string): any | null {
+      if (opts == null) return null;
+      // 尝试作为 UTSJSONObject 处理
+      if (typeof opts.getObject === 'function') {
+        return opts.getObject(key);
+      }
+      // 作为普通对象处理
+      const val = opts[key];
+      return val != null ? val : null;
+    }
+
+    function getOptArray(opts: any, key: string): any[] | null {
+      if (opts == null) return null;
+      // 尝试作为 UTSJSONObject 处理
+      if (typeof opts.getArray === 'function') {
+        return opts.getArray(key);
+      }
+      // 作为普通对象处理
+      const val = opts[key];
+      return Array.isArray(val) ? val : null;
+    }
+
     /** 内部统一入口：合并 opts → state → 启动定时器 */
     function setMessage(opts: any, theme: string) {
       clearHideTimer();
       const next = defaultState();
       next.theme = theme;
       if (opts != null) {
-        const o = opts as UTSJSONObject;
-        const content = o.getString('content');
+        const content = getOptString(opts, 'content');
         if (content != null) next.content = content;
-        const dur = o.getNumber('duration');
-        if (dur != null) next.duration = (dur as number).toInt();
-        const align = o.getString('align');
+
+        // 修复：使用兼容方法获取数值，避免 .toInt() 错误
+        const dur = getOptNumber(opts, 'duration');
+        if (dur != null) next.duration = Math.floor(dur);
+
+        const align = getOptString(opts, 'align');
         if (align != null) next.align = align;
-        const link = o.getString('link');
+
+        const link = getOptString(opts, 'link');
         if (link != null) next.link = link;
-        const z = o.getNumber('zIndex');
-        if (z != null) next.zIndex = (z as number).toInt();
+
+        const z = getOptNumber(opts, 'zIndex');
+        if (z != null) next.zIndex = Math.floor(z);
+
+        // offset: [top, left/right] 数组
+        const offsetArr = getOptArray(opts, 'offset');
+        if (offsetArr != null && offsetArr.length >= 2) {
+          next.offset = [Math.floor(Number(offsetArr[0])), Math.floor(Number(offsetArr[1]))];
+        }
+
+        // gap: 两条 message 之间的间距
+        const gapNum = getOptNumber(opts, 'gap');
+        if (gapNum != null) next.gap = Math.floor(gapNum);
+
+        // single: 是否保持仅显示一条信息
+        const singleBool = getOptBoolean(opts, 'single');
+        if (singleBool != null) next.single = singleBool;
+
+        // marquee: 跑马灯效果
+        const marqueeObj = getOptObject(opts, 'marquee');
+        if (marqueeObj != null) {
+          next.marquee = marqueeObj as any;
+        } else {
+          const marqueeBool = getOptBoolean(opts, 'marquee');
+          if (marqueeBool != null) next.marquee = marqueeBool;
+        }
+
         // closeBtn: boolean → '__default__' / '' ；string → 透传
-        const cbBool = o.getBoolean('closeBtn');
+        const cbBool = getOptBoolean(opts, 'closeBtn');
         if (cbBool != null) {
           next.closeBtn = cbBool ? '__default__' : '';
         } else {
-          const cbStr = o.getString('closeBtn');
+          const cbStr = getOptString(opts, 'closeBtn');
           if (cbStr != null) next.closeBtn = cbStr;
         }
         // icon: boolean → '__theme__' / '' ；string → 透传
-        const iconBool = o.getBoolean('icon');
+        const iconBool = getOptBoolean(opts, 'icon');
         if (iconBool != null) {
           next.icon = iconBool ? '__theme__' : '';
         } else {
-          const iconStr = o.getString('icon');
+          const iconStr = getOptString(opts, 'icon');
           if (iconStr != null) next.icon = iconStr;
         }
         // 用户显式传 theme 优先（Message.info({theme:'success'}) 这种 case）
-        const customTheme = o.getString('theme');
+        const customTheme = getOptString(opts, 'theme');
         if (customTheme != null) next.theme = customTheme;
       }
       state.value = next;

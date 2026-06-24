@@ -1,0 +1,209 @@
+<template>
+  <view
+    :class="rootClass"
+    :style="props.customStyle"
+    :aria-checked="checked"
+    :aria-disabled="iDisabled"
+    aria-role="switch"
+    @click="handleSwitch"
+  >
+    <view :class="bodyClass">
+      <view :class="dotClass">
+        <view v-if="props.label && props.label.length === 2" :class="labelClass">
+          <t-loading v-if="props.loading" inherit-color size="32rpx" />
+          <text v-else>{{ checked ? props.label[0] : props.label[1] }}</text>
+        </view>
+        <view v-else-if="props.icon && props.icon.length === 2" :class="labelClass">
+          <t-icon :name="checked ? props.icon[0] : props.icon[1]" :size="props.size" />
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Switch - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/switch
+ */
+import { switchVariants } from './t-switch.variants';
+
+const props = defineProps({
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  customValue: { type: Array as PropType<any[]>, default: () => [true, false] },
+  disabled: { type: Boolean, default: false },
+  icon: { type: Array as PropType<string[]>, default: () => [] },
+  label: { type: Array as PropType<string[]>, default: () => [] },
+  loading: { type: Boolean, default: false },
+  size: { type: String, default: 'medium' },
+  value: { type: [Boolean, String, Number], default: undefined },
+  defaultValue: { type: [Boolean, String, Number], default: undefined },
+});
+
+const emit = defineEmits(['change', 'update:value']);
+
+// 内部状态
+const dataValue = ref<any>(props.defaultValue !== undefined ? props.defaultValue : props.customValue[1]);
+const checked = ref<boolean>(false);
+const iDisabled = ref<boolean>(props.disabled);
+
+// 初始化
+onMounted(() => {
+  const val = props.value !== undefined ? props.value : props.defaultValue;
+  if (val !== undefined) {
+    dataValue.value = val;
+    updateChecked(val);
+  }
+});
+
+// 监听 props.value 变化
+watch(() => props.value, (v) => {
+  if (v !== undefined && v !== null) {
+    dataValue.value = v;
+    updateChecked(v);
+  }
+});
+
+// 更新选中状态
+function updateChecked(val: any) {
+  const [activeValue] = props.customValue;
+  checked.value = val === activeValue;
+}
+
+// 根节点类名
+const rootClass = computed<string>(() => {
+  return switchVariants({
+    size: props.size,
+    disabled: iDisabled.value,
+    class: props.customClass,
+  });
+});
+
+// 开关主体类名
+const bodyClass = computed<string>(() => {
+  const arr = ['t-switch__body'];
+  if (checked.value) arr.push('t-switch__body--checked');
+  if (iDisabled.value || props.loading) arr.push('t-switch__body--disabled');
+  arr.push(`t-switch__body--${props.size}`);
+  return arr.join(' ');
+});
+
+// 圆点类名
+const dotClass = computed<string>(() => {
+  const arr = ['t-switch__dot'];
+  if (checked.value) arr.push('t-switch__dot--checked');
+  if (iDisabled.value) arr.push('t-switch__dot--disabled');
+  if (props.label.length !== 2 && props.icon.length !== 2 && !props.loading) {
+    arr.push('t-switch__dot--plain');
+  }
+  arr.push(`t-switch__dot--${props.size}`);
+  return arr.join(' ');
+});
+
+// 标签类名
+const labelClass = computed<string>(() => {
+  const arr = ['t-switch__label'];
+  if (checked.value) arr.push('t-switch__label--checked');
+  if (iDisabled.value) arr.push('t-switch__label--disabled');
+  arr.push(`t-switch__label--${props.size}`);
+  return arr.join(' ');
+});
+
+// 处理开关切换
+function handleSwitch() {
+  if (props.loading || iDisabled.value) return;
+
+  const [activeValue, inactiveValue] = props.customValue;
+  const newValue = dataValue.value === activeValue ? inactiveValue : activeValue;
+
+  dataValue.value = newValue;
+  updateChecked(newValue);
+
+  emit('update:value', newValue);
+  emit('change', { value: newValue });
+}
+</script>
+
+<style lang="less">
+@import './t-switch.theme.less';
+
+.t-switch {
+  display: inline-block;
+
+  &__body {
+    position: relative;
+    width: 96rpx;
+    height: 56rpx;
+    background: rgba(0, 0, 0, 0.26);
+    border-radius: 28rpx;
+    transition: background 0.3s;
+
+    &--checked {
+      background: #0052d9;
+    }
+
+    &--disabled {
+      opacity: 0.4;
+    }
+
+    &--small {
+      width: 80rpx;
+      height: 48rpx;
+    }
+
+    &--large {
+      width: 112rpx;
+      height: 64rpx;
+    }
+  }
+
+  &__dot {
+    position: absolute;
+    top: 4rpx;
+    left: 4rpx;
+    width: 48rpx;
+    height: 48rpx;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.1);
+
+    &--checked {
+      transform: translateX(40rpx);
+    }
+
+    &--disabled {
+      background: #f5f5f5;
+    }
+
+    &--small {
+      width: 40rpx;
+      height: 40rpx;
+
+      &--checked {
+        transform: translateX(32rpx);
+      }
+    }
+
+    &--large {
+      width: 56rpx;
+      height: 56rpx;
+
+      &--checked {
+        transform: translateX(48rpx);
+      }
+    }
+  }
+
+  &__label {
+    font-size: 20rpx;
+    color: #fff;
+    line-height: 1;
+  }
+}
+</style>

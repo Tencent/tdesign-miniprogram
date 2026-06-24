@@ -1,0 +1,57 @@
+/**
+ * Text 组件主题样式
+ */
+
+@td-text-default-color: var(--td-text-default-color, rgba(0, 0, 0, 0.9));
+@td-text-primary-color: var(--td-text-primary-color, #0052d9);
+@td-text-success-color: var(--td-text-success-color, #2ba471);
+@td-text-warning-color: var(--td-text-warning-color, #e37318);
+@td-text-error-color: var(--td-text-error-color, #d54941);
+
+@td-text-small-font-size: var(--td-text-small-font-size, 12px);
+@td-text-medium-font-size: var(--td-text-medium-font-size, 14px);
+@td-text-large-font-size: var(--td-text-large-font-size, 16px);
+
+@td-text-small-line-height: var(--td-text-small-line-height, 20px);
+@td-text-medium-line-height: var(--td-text-medium-line-height, 22px);
+@td-text-large-line-height: var(--td-text-large-line-height, 24px);
+
+.t-text {
+  display: inline;
+  word-break: break-all;
+
+  &--default {
+    color: @td-text-default-color;
+  }
+
+  &--primary {
+    color: @td-text-primary-color;
+  }
+
+  &--success {
+    color: @td-text-success-color;
+  }
+
+  &--warning {
+    color: @td-text-warning-color;
+  }
+
+  &--error {
+    color: @td-text-error-color;
+  }
+
+  &--small {
+    font-size: @td-text-small-font-size;
+    line-height: @td-text-small-line-height;
+  }
+
+  &--medium {
+    font-size: @td-text-medium-font-size;
+    line-height: @td-text-medium-line-height;
+  }
+
+  &--large {
+    font-size: @td-text-large-font-size;
+    line-height: @td-text-large-line-height;
+  }
+}

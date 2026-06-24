@@ -1,0 +1,46 @@
+<template>
+  <text :class="rootClass" :selectable="selectable" @click="onClick">
+    <slot>{{ content }}</slot>
+  </text>
+</template>
+
+<script setup lang="uts">
+/**
+ * Text - uni-app x 实现
+ * 
+ * 文本组件，支持主题色、尺寸等属性
+ */
+import { textVariants } from './t-text.variants';
+import type { TextTheme, TextSize } from './t-text.types';
+
+const props = defineProps({
+  /** 文本内容 */
+  content: { type: String, default: '' },
+  /** 主题 */
+  theme: { type: String as PropType<TextTheme>, default: 'default' },
+  /** 尺寸 */
+  size: { type: String as PropType<TextSize>, default: 'medium' },
+  /** 是否可选中 */
+  selectable: { type: Boolean, default: false },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['click']);
+
+const rootClass = computed(() => 
+  textVariants({ 
+    theme: props.theme,
+    size: props.size,
+    class: props.customClass 
+  })
+);
+
+function onClick(event: UniMouseEvent) {
+  emit('click', event);
+}
+</script>
+
+<style lang="less">
+@import './t-text.theme.less';
+</style>

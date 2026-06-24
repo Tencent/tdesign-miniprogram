@@ -5,6 +5,7 @@
  *  - 居中固定布局：left:50% + translate(-50%, -50%)；top% 由 placement 决定（25%/45%/75%）
  *  - row：横向排列 icon + text；column：竖向 + 大图标
  *  - 4 主题（loading/success/warning/error）共用同一深色底，由图标颜色区分
+ *  - 支持 fade 进入/离开动画
  */
 
 .t-toast {
@@ -25,6 +26,8 @@
   transition-duration: 300ms;
   transition-timing-function: ease;
   opacity: 1;
+  box-sizing: border-box;
+  min-height: 0; // 防止 flex 容器被意外拉伸
 }
 
 /* 三种 placement：top% 直接 inline style 注入；这里仅做语义占位 */
@@ -32,6 +35,25 @@
 .t-toast--middle,
 .t-toast--bottom {
   /* top 由 inline style 注入 */
+}
+
+/* column 模式：竖向布局时增加 padding 和最小宽高 */
+.t-toast--column {
+  padding: 48rpx;
+  min-width: 160rpx;
+  min-height: 160rpx;
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* loading + with-text：带文字的加载状态 */
+.t-toast--loading.t-toast--with-text {
+  min-width: 204rpx;
+  min-height: 204rpx;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 /* fade 动画 */
@@ -58,15 +80,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 48rpx;
-  min-width: 160rpx;
-  min-height: 160rpx;
 }
 
 /* 图标 */
 .t-toast__icon--row {
   font-size: var(--td-toast-row-icon-size, 48rpx);
   color: inherit;
+  display: flex;
 }
 
 .t-toast__icon--column {
@@ -77,9 +97,28 @@
 /* 文本 */
 .t-toast__text {
   color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: pre-line;
 }
 
 .t-toast__text--row {
+  margin-left: 16rpx;
+}
+
+.t-toast__text--column {
+  margin-top: 16rpx;
+}
+
+/* 仅子元素非空时才有 margin */
+.t-toast__text--column:not(:empty):not(:only-child) {
+  margin-top: 16rpx;
+}
+
+.t-toast__text--row:not(:empty):not(:only-child) {
   margin-left: 16rpx;
 }
 

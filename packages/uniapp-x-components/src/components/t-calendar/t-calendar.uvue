@@ -1,0 +1,585 @@
+<template>
+  <t-popup
+    v-if="usePopup"
+    :visible="dataVisible"
+    placement="bottom"
+    :show-overlay="isShowOverlay"
+    :z-index="popupProps?.zIndex"
+    :overlay-props="popupProps?.overlayProps"
+    @visible-change="onVisibleChange"
+  >
+    <view :class="rootClass" :style="customStyle">
+      <view :class="titleClass">
+        {{ title || realLocalText.title || '' }}
+      </view>
+      <view :class="closeBtnClass" @click="handleClose">
+        <t-icon v-if="closeBtn" name="close" :size="48" />
+      </view>
+
+      <view :class="contentClass">
+        <!-- 月份导航 -->
+        <view :class="switchClass">
+          <view
+            :class="[switchBtnClass, actionButtons.preYearBtnDisable ? 't-calendar__switch-btn--disabled' : '']"
+            @click="handleSwitchModeChange('pre-year')"
+          >
+            <t-icon name="chevron-left-double" />
+          </view>
+          <view
+            :class="[switchBtnClass, actionButtons.prevMonthBtnDisable ? 't-calendar__switch-btn--disabled' : '']"
+            @click="handleSwitchModeChange('pre-month')"
+          >
+            <t-icon name="chevron-left" />
+          </view>
+          <view :class="currentMonthClass">
+            {{ currentMonthText }}
+          </view>
+          <view
+            :class="[switchBtnClass, actionButtons.nextMonthBtnDisable ? 't-calendar__switch-btn--disabled' : '']"
+            @click="handleSwitchModeChange('next-month')"
+          >
+            <t-icon name="chevron-right" />
+          </view>
+          <view
+            :class="[switchBtnClass, actionButtons.nextYearBtnDisable ? 't-calendar__switch-btn--disabled' : '']"
+            @click="handleSwitchModeChange('next-year')"
+          >
+            <t-icon name="chevron-right-double" />
+          </view>
+        </view>
+
+        <!-- 星期标题 -->
+        <view :class="weekdaysClass">
+          <view v-for="(day, index) in weekdays" :key="index" :class="weekdayClass">
+            {{ day }}
+          </view>
+        </view>
+
+        <!-- 日期列表 -->
+        <scroll-view
+          :class="monthsClass"
+          scroll-y
+          :scroll-into-view="scrollIntoView"
+          type="list"
+          @scroll="onScroll"
+        >
+          <view
+            v-for="(month, monthIndex) in months"
+            :key="monthIndex"
+            :id="`year_${month.year}_month_${month.month}`"
+            :class="monthClass"
+          >
+            <view :class="monthTitleClass">
+              {{ month.year }}年{{ month.month + 1 }}月
+            </view>
+            <view :class="daysGridClass">
+              <view
+                v-for="(day, dayIndex) in month.days"
+                :key="dayIndex"
+                :class="getDayClass(day)"
+                :data-date="JSON.stringify(day)"
+                @click="handleSelect(day)"
+              >
+                <view :class="dayTextClass">
+                  {{ day.day }}
+                </view>
+              </view>
+            </view>
+          </view>
+        </scroll-view>
+
+        <!-- 确认按钮 -->
+        <view v-if="confirmBtn !== null" :class="confirmBtnClass" @click="handleConfirm">
+          {{ typeof confirmBtn === 'string' ? confirmBtn : realLocalText.confirm || '确认' }}
+        </view>
+      </view>
+    </view>
+  </t-popup>
+</template>
+
+<script setup lang="uts">
+/**
+ * Calendar - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/calendar
+ */
+import { calendarVariants } from './t-calendar.variants';
+
+const props = defineProps({
+  allowSameDay: { type: Boolean, default: false },
+  autoClose: { type: Boolean, default: true },
+  closeBtn: { type: Boolean, default: true },
+  confirmBtn: { type: [String, Object], default: null },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  defaultValue: { type: [String, Number, Array], default: null },
+  firstDayOfWeek: { type: Number, default: 0 },
+  format: { type: String, default: 'YYYY-MM-DD' },
+  maxDate: { type: Number, default: 0 },
+  minDate: { type: Number, default: 0 },
+  popupProps: { type: Object as PropType<any>, default: () => ({}) },
+  showWeekend: { type: Boolean, default: true },
+  title: { type: String, default: '' },
+  type: { type: String, default: 'single' },
+  usePopup: { type: Boolean, default: true },
+  value: { type: [String, Number, Array], default: undefined },
+  visible: { type: Boolean, default: false },
+});
+
+const emit = defineEmits(['change', 'close', 'confirm', 'panel-change', 'scroll', 'select', 'update:visible']);
+
+// 内部状态
+const dataVisible = ref<boolean>(props.visible);
+const dataValue = ref<any>(props.defaultValue);
+const months = ref<any[]>([]);
+const currentMonth = ref<any>({});
+const scrollIntoView = ref<string>('');
+const weekdays = ref<string[]>(['日', '一', '二', '三', '四', '五', '六']);
+const realLocalText = ref<any>({
+  title: '选择日期',
+  confirm: '确认',
+  weekDays: ['日', '一', '二', '三', '四', '五', '六'],
+});
+const actionButtons = ref<any>({
+  preYearBtnDisable: false,
+  prevMonthBtnDisable: false,
+  nextMonthBtnDisable: false,
+  nextYearBtnDisable: false,
+});
+
+// 初始化
+onMounted(() => {
+  initCalendar();
+});
+
+// 监听 props.visible 变化
+watch(() => props.visible, (v) => {
+  dataVisible.value = v;
+  if (v) {
+    initCalendar();
+  }
+});
+
+// 监听 dataVisible 变化
+watch(dataVisible, (v) => {
+  emit('update:visible', v);
+  if (!v) {
+    emit('close', { trigger: 'overlay' });
+  }
+});
+
+// 监听 props.value 变化
+watch(() => props.value, (v) => {
+  if (v !== undefined && v !== null) {
+    dataValue.value = v;
+  }
+});
+
+// 根节点类名
+const rootClass = computed<string>(() => {
+  return calendarVariants({
+    class: props.customClass,
+  });
+});
+
+// 标题类名
+const titleClass = computed<string>(() => {
+  return 't-calendar__title';
+});
+
+// 关闭按钮类名
+const closeBtnClass = computed<string>(() => {
+  return 't-calendar__close-btn';
+});
+
+// 内容类名
+const contentClass = computed<string>(() => {
+  return 't-calendar__content';
+});
+
+// 切换按钮容器类名
+const switchClass = computed<string>(() => {
+  return 't-calendar__switch';
+});
+
+// 切换按钮类名
+const switchBtnClass = computed<string>(() => {
+  return 't-calendar__switch-btn';
+});
+
+// 当前月份类名
+const currentMonthClass = computed<string>(() => {
+  return 't-calendar__current-month';
+});
+
+// 星期标题类名
+const weekdaysClass = computed<string>(() => {
+  return 't-calendar__weekdays';
+});
+
+// 星期类名
+const weekdayClass = computed<string>(() => {
+  return 't-calendar__weekday';
+});
+
+// 月份容器类名
+const monthsClass = computed<string>(() => {
+  return 't-calendar__months';
+});
+
+// 月份类名
+const monthClass = computed<string>(() => {
+  return 't-calendar__month';
+});
+
+// 月份标题类名
+const monthTitleClass = computed<string>(() => {
+  return 't-calendar__month-title';
+});
+
+// 日期网格类名
+const daysGridClass = computed<string>(() => {
+  return 't-calendar__days-grid';
+});
+
+// 日期类名
+const dayClass = computed<string>(() => {
+  return 't-calendar__day';
+});
+
+// 日期文本类名
+const dayTextClass = computed<string>(() => {
+  return 't-calendar__day-text';
+});
+
+// 确认按钮类名
+const confirmBtnClass = computed<string>(() => {
+  return 't-calendar__confirm-btn';
+});
+
+// 当前月份文本
+const currentMonthText = computed<string>(() => {
+  if (!currentMonth.value.year) return '';
+  return `${currentMonth.value.year}年${currentMonth.value.month + 1}月`;
+});
+
+// 是否显示遮罩
+const isShowOverlay = computed<boolean>(() => {
+  return props.popupProps?.showOverlay ?? true;
+});
+
+// 初始化日历
+function initCalendar() {
+  const now = new Date();
+  const minDate = props.minDate || new Date(now.getFullYear() - 1, 0, 1).getTime();
+  const maxDate = props.maxDate || new Date(now.getFullYear() + 1, 11, 31).getTime();
+
+  const monthsList = getMonths(minDate, maxDate);
+  months.value = monthsList;
+
+  // 设置当前月份
+  const current = dataValue.value
+    ? new Date(Array.isArray(dataValue.value) ? dataValue.value[0] : dataValue.value)
+    : now;
+  updateCurrentMonth(current);
+
+  // 滚动到当前月份
+  scrollIntoView.value = '';
+  setTimeout(() => {
+    scrollIntoView.value = `year_${current.getFullYear()}_month_${current.getMonth()}`;
+  }, 100);
+}
+
+// 获取月份列表
+function getMonths(minDate: number, maxDate: number): any[] {
+  const min = new Date(minDate);
+  const max = new Date(maxDate);
+  const months: any[] = [];
+
+  const startYear = min.getFullYear();
+  const startMonth = min.getMonth();
+  const endYear = max.getFullYear();
+  const endMonth = max.getMonth();
+
+  for (let year = startYear; year <= endYear; year++) {
+    const monthStart = year === startYear ? startMonth : 0;
+    const monthEnd = year === endYear ? endMonth : 11;
+
+    for (let month = monthStart; month <= monthEnd; month++) {
+      const days = getDays(year, month);
+      months.push({
+        year,
+        month,
+        days,
+      });
+    }
+  }
+
+  return months;
+}
+
+// 获取某月的日期列表
+function getDays(year: number, month: number): any[] {
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
+  const days: any[] = [];
+
+  // 填充前面的空白
+  const startWeekday = firstDay.getDay();
+  for (let i = 0; i < startWeekday; i++) {
+    days.push({ day: '', type: 'empty' });
+  }
+
+  // 填充日期
+  for (let day = 1; day <= lastDay.getDate(); day++) {
+    const date = new Date(year, month, day);
+    const timestamp = date.getTime();
+    const isSelected = isDateSelected(timestamp);
+    const isDisabled = timestamp < props.minDate || timestamp > props.maxDate;
+
+    days.push({
+      year,
+      month,
+      day,
+      date: timestamp,
+      type: isDisabled ? 'disabled' : isSelected ? 'selected' : 'normal',
+    });
+  }
+
+  return days;
+}
+
+// 判断日期是否被选中
+function isDateSelected(timestamp: number): boolean {
+  if (!dataValue.value) return false;
+
+  if (Array.isArray(dataValue.value)) {
+    return dataValue.value.some((v: any) => {
+      const d = new Date(v);
+      return d.getFullYear() === new Date(timestamp).getFullYear() &&
+        d.getMonth() === new Date(timestamp).getMonth() &&
+        d.getDate() === new Date(timestamp).getDate();
+    });
+  } else {
+    const d = new Date(dataValue.value);
+    return d.getFullYear() === new Date(timestamp).getFullYear() &&
+      d.getMonth() === new Date(timestamp).getMonth() &&
+      d.getDate() === new Date(timestamp).getDate();
+  }
+}
+
+// 获取日期类名
+function getDayClass(day: any): string {
+  const arr = ['t-calendar__day'];
+
+  if (day.type === 'empty') {
+    arr.push('t-calendar__day--empty');
+  } else if (day.type === 'disabled') {
+    arr.push('t-calendar__day--disabled');
+  } else if (day.type === 'selected') {
+    arr.push('t-calendar__day--selected');
+  }
+
+  return arr.join(' ');
+}
+
+// 处理日期选择
+function handleSelect(day: any) {
+  if (day.type === 'disabled' || day.type === 'empty') return;
+
+  const timestamp = day.date;
+
+  if (props.type === 'single') {
+    dataValue.value = timestamp;
+    if (props.confirmBtn === null) {
+      dataVisible.value = false;
+      emit('change', { value: timestamp });
+    }
+  } else if (props.type === 'range') {
+    if (!Array.isArray(dataValue.value)) {
+      dataValue.value = [timestamp];
+    } else if (dataValue.value.length === 1) {
+      dataValue.value = [dataValue.value[0], timestamp];
+      if (props.confirmBtn === null) {
+        dataVisible.value = false;
+        emit('change', { value: dataValue.value });
+      }
+    } else {
+      dataValue.value = [timestamp];
+    }
+  }
+
+  emit('select', { value: timestamp });
+  updateMonths();
+}
+
+// 处理确认
+function handleConfirm() {
+  emit('confirm', { value: dataValue.value });
+  if (props.autoClose) {
+    dataVisible.value = false;
+  }
+}
+
+// 处理关闭
+function handleClose() {
+  dataVisible.value = false;
+  emit('close', { trigger: 'close-btn' });
+}
+
+// 处理可见性变化
+function onVisibleChange() {
+  dataVisible.value = false;
+}
+
+// 处理滚动
+function onScroll(e: any) {
+  emit('scroll', e.detail);
+}
+
+// 处理月份切换
+function handleSwitchModeChange(type: string) {
+  // TODO: 实现月份切换逻辑
+  emit('panel-change', { type });
+}
+
+// 更新月份数据
+function updateMonths() {
+  months.value = getMonths(
+    props.minDate || new Date().getTime(),
+    props.maxDate || new Date().getTime()
+  );
+}
+
+// 更新当前月份
+function updateCurrentMonth(date: Date) {
+  currentMonth.value = {
+    year: date.getFullYear(),
+    month: date.getMonth(),
+  };
+}
+</script>
+
+<style lang="less">
+@import './t-calendar.theme.less';
+
+.t-calendar {
+  background: #fff;
+  border-radius: 16rpx 16rpx 0 0;
+  max-height: 80vh;
+
+  &__title {
+    font-size: 32rpx;
+    font-weight: 600;
+    text-align: center;
+    padding: 24rpx;
+    border-bottom: 1rpx solid #e7e7e7;
+  }
+
+  &__close-btn {
+    position: absolute;
+    right: 24rpx;
+    top: 24rpx;
+    cursor: pointer;
+  }
+
+  &__content {
+    padding: 0 24rpx 24rpx;
+  }
+
+  &__switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16rpx 0;
+  }
+
+  &__switch-btn {
+    padding: 8rpx;
+    cursor: pointer;
+
+    &--disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+  }
+
+  &__current-month {
+    font-size: 28rpx;
+    font-weight: 500;
+  }
+
+  &__weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8rpx;
+    padding: 16rpx 0;
+  }
+
+  &__weekday {
+    text-align: center;
+    font-size: 24rpx;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  &__months {
+    max-height: 60vh;
+  }
+
+  &__month {
+    margin-bottom: 24rpx;
+  }
+
+  &__month-title {
+    font-size: 28rpx;
+    font-weight: 500;
+    margin-bottom: 16rpx;
+  }
+
+  &__days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8rpx;
+  }
+
+  &__day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64rpx;
+    border-radius: 8rpx;
+    cursor: pointer;
+
+    &--empty {
+      cursor: default;
+    }
+
+    &--disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    &--selected {
+      background: #0052d9;
+      color: #fff;
+    }
+  }
+
+  &__day-text {
+    font-size: 28rpx;
+  }
+
+  &__confirm-btn {
+    margin-top: 24rpx;
+    height: 80rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0052d9;
+    color: #fff;
+    border-radius: 8rpx;
+    font-size: 28rpx;
+    cursor: pointer;
+  }
+}
+</style>

@@ -1,0 +1,142 @@
+<template>
+  <view :class="rootClass" :style="props.customStyle">
+    <!-- 通过 options 属性生成 checkbox -->
+    <t-checkbox
+      v-for="(item, index) in normalizedOptions"
+      :key="index"
+      :label="item.label"
+      :value="item.value"
+      :checked="isChecked(item.value)"
+      :disabled="item.disabled != null ? item.disabled : props.disabled"
+      :block="item.block != null ? item.block : true"
+      :check-all="item.checkAll || false"
+      :content="item.content || ''"
+      :content-disabled="item.contentDisabled || false"
+      :icon="item.icon || 'circle'"
+      :indeterminate="item.indeterminate || false"
+      :max-content-row="item.maxContentRow || 5"
+      :max-label-row="item.maxLabelRow || 3"
+      :placement="item.placement || 'left'"
+      :readonly="item.readonly || false"
+      @change="handleChildChange"
+    />
+
+    <!-- 自定义子组件 -->
+    <slot v-if="!normalizedOptions.length" />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * CheckboxGroup - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/checkbox-group：
+ *  - value 受控 / defaultValue 非受控
+ *  - options 快速配置（Array<string> | Array<object>）
+ *  - keys 自定义 options 字段映射
+ *  - max 最大可选数量
+ *  - disabled 禁用所有子项
+ *  - 支持 checkAll 全选逻辑
+ */
+import { computed, provide, ref, watch } from 'vue';
+import { checkboxGroupVariants } from './t-checkbox-group.variants';
+
+const props = defineProps({
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  defaultValue: { type: Array as PropType<any[]>, default: () => [] },
+  disabled: { type: Boolean, default: false },
+  keys: { type: Object as PropType<{ label?: string; value?: string; disabled?: string }>, default: () => ({}) },
+  max: { type: Number, default: 0 },
+  name: { type: String, default: '' },
+  options: { type: Array as PropType<any[]>, default: () => [] },
+  value: { type: Array as PropType<any[]>, default: () => [] },
+});
+
+const emit = defineEmits(['change', 'update:value']);
+
+// 内部状态
+const dataValue = ref<any[]>(props.value?.length ? props.value : props.defaultValue);
+
+// 提供给子组件的注入 key
+provide('checkboxGroupContext', {
+  dataValue,
+  disabled: props.disabled,
+  max: props.max,
+  handleChildChange,
+});
+
+// 规范化 options
+const normalizedOptions = computed<any[]>(() => {
+  if (!props.options || !Array.isArray(props.options) || props.options.length === 0) {
+    return [];
+  }
+
+  const { keys } = props;
+  const labelKey = keys.label || 'label';
+  const valueKey = keys.value || 'value';
+
+  return props.options.map((item: any) => {
+    if (typeof item === 'string' || typeof item === 'number') {
+      return {
+        label: String(item),
+        value: item,
+        checked: dataValue.value.includes(item),
+      };
+    }
+    return {
+      ...item,
+      label: item[labelKey] || '',
+      value: item[valueKey],
+      checked: dataValue.value.includes(item[valueKey]),
+    };
+  });
+});
+
+// 根节点类名
+const rootClass = computed<string>(() => {
+  return checkboxGroupVariants({ class: props.customClass });
+});
+
+// 判断 value 是否选中
+function isChecked(val: any): boolean {
+  return dataValue.value.includes(val);
+}
+
+// 子组件变化处理
+function handleChildChange(event: { value: any; label: string; checked: boolean }) {
+  const { value, checked } = event;
+  let newValue = [...dataValue.value];
+
+  // 检查 max 限制
+  if (props.max > 0 && checked && newValue.length >= props.max) {
+    return;
+  }
+
+  if (checked) {
+    if (!newValue.includes(value)) {
+      newValue.push(value);
+    }
+  } else {
+    const index = newValue.indexOf(value);
+    if (index > -1) {
+      newValue.splice(index, 1);
+    }
+  }
+
+  dataValue.value = newValue;
+  emit('update:value', newValue);
+  emit('change', { value: newValue });
+}
+
+// 监听 props.value 变化
+watch(() => props.value, (v: any[]) => {
+  if (v && Array.isArray(v)) {
+    dataValue.value = v;
+  }
+});
+</script>
+
+<style lang="less">
+@import './t-checkbox-group.theme.less';
+</style>

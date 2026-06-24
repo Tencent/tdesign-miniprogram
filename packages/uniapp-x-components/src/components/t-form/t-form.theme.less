@@ -1,0 +1,10 @@
+@import '../common/style/base.less';
+
+@form: ~'@{prefix}-form';
+
+@form-bg-color: var(--td-form-bg-color, @bg-color-container);
+
+.@{form} {
+  display: block;
+  background-color: @form-bg-color;
+}

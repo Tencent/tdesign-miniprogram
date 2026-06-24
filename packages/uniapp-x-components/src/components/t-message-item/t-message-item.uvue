@@ -1,0 +1,85 @@
+<template>
+  <view :class="rootClass">
+    <view v-if="hasIcon" class="t-message-item__icon">
+      <slot name="icon">
+        <t-icon :name="iconName" :size="iconSize" />
+      </slot>
+    </view>
+    <view class="t-message-item__content">
+      <view v-if="title.length > 0" class="t-message-item__title">{{ title }}</view>
+      <view v-if="content.length > 0" class="t-message-item__text">{{ content }}</view>
+      <slot />
+    </view>
+    <view v-if="closable" class="t-message-item__close" @click="onClose">
+      <t-icon name="close" :size="iconSize" />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * MessageItem - uni-app x 实现
+ * 
+ * 消息条目组件，用于全局提示、通知等场景
+ */
+import { messageItemVariants } from './t-message-item.variants';
+import type { MessageItemTheme, MessageItemSize } from './t-message-item.types';
+
+const props = defineProps({
+  /** 消息内容 */
+  content: { type: String, default: '' },
+  /** 消息标题 */
+  title: { type: String, default: '' },
+  /** 主题 */
+  theme: { type: String as PropType<MessageItemTheme>, default: 'default' },
+  /** 尺寸 */
+  size: { type: String as PropType<MessageItemSize>, default: 'medium' },
+  /** 是否可关闭 */
+  closable: { type: Boolean, default: false },
+  /** 图标名 */
+  icon: { type: String, default: '' },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['close']);
+
+const slots = useSlots();
+const hasIcon = computed<boolean>(() => slots.icon != null || props.icon.length > 0);
+
+/** 根据主题自动匹配图标 */
+const iconName = computed<string>(() => {
+  if (props.icon.length > 0) return props.icon;
+  const iconMap: Record<MessageItemTheme, string> = {
+    default: 'info-circle',
+    primary: 'info-circle',
+    success: 'check-circle',
+    warning: 'error-circle',
+    error: 'error-circle',
+  };
+  return iconMap[props.theme] || 'info-circle';
+});
+
+/** 图标尺寸 */
+const iconSize = computed<string>(() => {
+  if (props.size === 'small') return '14';
+  if (props.size === 'large') return '18';
+  return '16';
+});
+
+const rootClass = computed(() => 
+  messageItemVariants({ 
+    theme: props.theme,
+    size: props.size,
+    class: props.customClass 
+  })
+);
+
+function onClose(event: UniMouseEvent) {
+  emit('close', event);
+}
+</script>
+
+<style lang="less">
+@import './t-message-item.theme.less';
+</style>

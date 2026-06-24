@@ -1,0 +1,71 @@
+<template>
+  <view :class="rootClass" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Draggable - uni-app x 实现
+ * 
+ * 拖拽组件，支持元素拖拽移动
+ */
+import { draggableVariants } from './t-draggable.variants';
+
+const props = defineProps({
+  /** 是否允许拖拽 */
+  draggable: { type: Boolean, default: true },
+  /** 拖拽方向：horizontal、vertical、all */
+  direction: { type: String, default: 'all' },
+  /** 初始X坐标 */
+  x: { type: Number, default: 0 },
+  /** 初始Y坐标 */
+  y: { type: Number, default: 0 },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['dragstart', 'drag', 'dragend']);
+
+const positionX = ref<number>(props.x);
+const positionY = ref<number>(props.y);
+const isDragging = ref<boolean>(false);
+
+const rootClass = computed(() => 
+  draggableVariants({ class: props.customClass })
+);
+
+const style = computed<string>(() => {
+  return `position: fixed; left: ${positionX.value}px; top: ${positionY.value}px;`;
+});
+
+function onTouchStart(event: UniTouchEvent) {
+  if (!props.draggable) return;
+  isDragging.value = true;
+  emit('dragstart', { x: positionX.value, y: positionY.value });
+}
+
+function onTouchMove(event: UniTouchEvent) {
+  if (!props.draggable || !isDragging.value) return;
+  const touch = event.touches[0];
+  
+  if (props.direction === 'all' || props.direction === 'horizontal') {
+    positionX.value = touch.clientX;
+  }
+  if (props.direction === 'all' || props.direction === 'vertical') {
+    positionY.value = touch.clientY;
+  }
+  
+  emit('drag', { x: positionX.value, y: positionY.value });
+}
+
+function onTouchEnd() {
+  if (!isDragging.value) return;
+  isDragging.value = false;
+  emit('dragend', { x: positionX.value, y: positionY.value });
+}
+</script>
+
+<style lang="less">
+@import './t-draggable.theme.less';
+</style>

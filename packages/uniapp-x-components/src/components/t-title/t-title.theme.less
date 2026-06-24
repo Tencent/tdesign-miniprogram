@@ -1,0 +1,69 @@
+/**
+ * Title 组件主题样式
+ */
+
+@td-title-default-color: var(--td-title-default-color, rgba(0, 0, 0, 0.9));
+@td-title-primary-color: var(--td-title-primary-color, #0052d9);
+@td-title-success-color: var(--td-title-success-color, #2ba471);
+@td-title-warning-color: var(--td-title-warning-color, #e37318);
+@td-title-error-color: var(--td-title-error-color, #d54941);
+
+@td-title-small-font-size: var(--td-title-small-font-size, 16px);
+@td-title-medium-font-size: var(--td-title-medium-font-size, 20px);
+@td-title-large-font-size: var(--td-title-large-font-size, 24px);
+
+@td-title-small-line-height: var(--td-title-small-line-height, 24px);
+@td-title-medium-line-height: var(--td-title-medium-line-height, 28px);
+@td-title-large-line-height: var(--td-title-large-line-height, 32px);
+
+@td-title-font-weight: var(--td-title-font-weight, 600);
+
+.t-title {
+  display: flex;
+  align-items: center;
+  font-weight: @td-title-font-weight;
+
+  &__text {
+    flex: 1;
+  }
+
+  &__extra {
+    flex: none;
+    margin-left: 8px;
+  }
+
+  &--default {
+    color: @td-title-default-color;
+  }
+
+  &--primary {
+    color: @td-title-primary-color;
+  }
+
+  &--success {
+    color: @td-title-success-color;
+  }
+
+  &--warning {
+    color: @td-title-warning-color;
+  }
+
+  &--error {
+    color: @td-title-error-color;
+  }
+
+  &--small {
+    font-size: @td-title-small-font-size;
+    line-height: @td-title-small-line-height;
+  }
+
+  &--medium {
+    font-size: @td-title-medium-font-size;
+    line-height: @td-title-medium-line-height;
+  }
+
+  &--large {
+    font-size: @td-title-large-font-size;
+    line-height: @td-title-large-line-height;
+  }
+}

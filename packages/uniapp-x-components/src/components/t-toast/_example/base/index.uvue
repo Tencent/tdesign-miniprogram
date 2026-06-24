@@ -3,54 +3,72 @@
     <!-- 重要：必须预埋 t-toast 并设置 ref="toast"，否则全局 API 找不到实例 -->
     <t-toast ref="toast" />
 
-    <t-button block size="large" theme="primary" custom-style="margin-bottom: 16rpx;" @click="onShowDefault">
-      默认 Toast
-    </t-button>
-    <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onShowSuccess">
-      成功 Toast
-    </t-button>
-    <t-button block size="large" theme="warning" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onShowWarning">
-      警告 Toast
-    </t-button>
-    <t-button block size="large" theme="danger" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onShowError">
-      错误 Toast
-    </t-button>
-    <t-button block size="large" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onShowLoading">
-      加载 Toast（手动关闭）
-    </t-button>
-    <t-button block size="large" variant="text" @click="onHide">
-      手动关闭
-    </t-button>
+    <view class="box">
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="showText">
+        纯文本
+      </t-button>
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="showMultiText">
+        多行文字
+      </t-button>
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="showHorizontalIcon">
+        带横向图标
+      </t-button>
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="showVerticalIcon">
+        带竖向图标
+      </t-button>
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="showLoading">
+        加载状态
+      </t-button>
+    </view>
   </view>
 </template>
 
 <script setup lang="uts">
 /**
- * Toast base demo - 4 主题 + 全局 API 调用
+ * Toast 基础示例 - 对齐 uniapp 版本的 base/index.vue
  *
- * 关键点：
- *  1) <t-toast ref="toast" /> 预埋在 template
- *  2) showToast / hideToast 内部用 getCurrentPages → $vm.$refs.toast 找到该实例
+ * 展示内容：
+ *  - 纯文本
+ *  - 多行文字（超出 3 行自动省略）
+ *  - 带横向图标（direction=row）
+ *  - 带竖向图标（direction=column）
+ *  - 加载状态（theme=loading, direction=column）
  */
-import { showToast, hideToast } from '@/uni_modules/tdesign-uniapp-x/components/t-toast';
+import { showToast } from '@/uni_modules/tdesign-uniapp-x/components/t-toast';
 
-function onShowDefault() {
-  showToast({ message: '这是一条默认 Toast' });
+function showText() {
+  showToast({
+    message: '轻提示文字内容',
+  });
 }
-function onShowSuccess() {
-  showToast({ message: '操作成功', theme: 'success' });
+
+function showMultiText() {
+  showToast({
+    message: '最多一行展示十个汉字宽度限制最多不超过三行文字',
+  });
 }
-function onShowWarning() {
-  showToast({ message: '请注意网络状态', theme: 'warning' });
+
+function showHorizontalIcon() {
+  showToast({
+    message: '带横向图标',
+    icon: 'check-circle',
+  });
 }
-function onShowError() {
-  showToast({ message: '操作失败，请重试', theme: 'error' });
+
+function showVerticalIcon() {
+  showToast({
+    message: '带竖向图标',
+    icon: 'check-circle',
+    direction: 'column',
+  });
 }
-function onShowLoading() {
-  showToast({ message: '加载中...', theme: 'loading', duration: 0 });
-}
-function onHide() {
-  hideToast();
+
+function showLoading() {
+  showToast({
+    message: '加载中...',
+    theme: 'loading',
+    direction: 'column',
+  });
 }
 </script>
 

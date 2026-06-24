@@ -1,0 +1,54 @@
+<template>
+  <view :class="rootClass" :style="rootStyle">
+    <view v-if="isFixed" :style="placeholderStyle" />
+    <view :class="contentClass" :style="contentStyle">
+      <slot />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Sticky - uni-app x 实现
+ * 
+ * 粘性布局组件，元素在滚动到指定位置时会固定在顶部
+ */
+import { stickyVariants } from './t-sticky.variants';
+
+const props = defineProps({
+  /** 吸顶距离 */
+  offsetTop: { type: Number, default: 0 },
+  /** 吸底距离 */
+  offsetBottom: { type: Number, default: 0 },
+  /** 层级 */
+  zIndex: { type: Number, default: 99 },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const isFixed = ref<boolean>(false);
+const stickyTop = ref<number>(0);
+const contentStyle = ref<string>('');
+const placeholderStyle = ref<string>('');
+
+const rootClass = computed(() => stickyVariants({ class: props.customClass }));
+const contentClass = computed(() => (isFixed.value ? 't-sticky--fixed' : ''));
+
+const rootStyle = computed<string>(() => {
+  return `z-index: ${props.zIndex};`;
+});
+
+// TODO: 实现滚动监听逻辑，在 uni-app x 中需要使用 onPageScroll 或节点查询
+
+onMounted(() => {
+  // 初始化
+});
+
+onUnmounted(() => {
+  // 清理
+});
+</script>
+
+<style lang="less">
+@import './t-sticky.theme.less';
+</style>

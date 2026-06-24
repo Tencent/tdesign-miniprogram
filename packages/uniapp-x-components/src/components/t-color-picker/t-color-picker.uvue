@@ -1,0 +1,593 @@
+<template>
+  <t-popup
+    v-if="usePopup"
+    :visible="dataVisible"
+    placement="bottom"
+    :show-overlay="true"
+    @visible-change="onVisibleChange"
+  >
+    <view :class="rootClass" :style="customStyle">
+      <view :class="saturationClass" @touchstart="onSaturationTouchStart" @touchmove="onSaturationTouchMove">
+        <view :class="saturation-white" />
+        <view :class="saturation-black" />
+        <view :class="saturation-thumb" :style="saturationThumbStyle" />
+      </view>
+
+      <view :class="hueSliderClass">
+        <view :class="hue-track" @touchstart="onHueTouchStart" @touchmove="onHueTouchMove">
+          <view :class="hue-thumb" :style="hueThumbStyle" />
+        </view>
+      </view>
+
+      <view v-if="enableAlpha" :class="alphaSliderClass">
+        <view :class="alpha-track" @touchstart="onAlphaTouchStart" @touchmove="onAlphaTouchMove">
+          <view :class="alpha-thumb" :style="alphaThumbStyle" />
+        </view>
+      </view>
+
+      <view :class="previewClass">
+        <view :class="preview-color" :style="'background: ' + previewColor" />
+        <text :class="preview-text">{{ previewColor }}</text>
+      </view>
+
+      <view v-if="swatchList.length > 0" :class="swatchClass">
+        <view
+          v-for="(color, index) in swatchList"
+          :key="index"
+          :class="swatchItemClass"
+          :style="'background: ' + color"
+          @click="onSwatchClick(color)"
+        />
+      </view>
+
+      <view :class="formatClass">
+        <text :class="formatLabelClass">{{ format }}</text>
+        <text :class="formatValueClass">{{ formatValue }}</text>
+      </view>
+    </view>
+  </t-popup>
+</template>
+
+<script setup lang="uts">
+/**
+ * ColorPicker - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/color-picker
+ */
+import { colorPickerVariants } from './t-color-picker.variants';
+
+const props = defineProps({
+  color: { type: String, default: '#0052d9' },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  defaultValue: { type: String, default: '' },
+  enableAlpha: { type: Boolean, default: false },
+  format: { type: String, default: 'HEX' },
+  showPrimaryColorPreview: { type: Boolean, default: true },
+  swatchColors: { type: Array as PropType<string[]>, default: () => [] },
+  type: { type: String, default: 'single' },
+  usePopup: { type: Boolean, default: true },
+  value: { type: String, default: undefined },
+  visible: { type: Boolean, default: false },
+});
+
+const emit = defineEmits(['change', 'close', 'palette-bar-change', 'update:value', 'update:visible']);
+
+// 内部状态
+const dataVisible = ref<boolean>(props.visible);
+const dataValue = ref<string>(props.defaultValue || props.color);
+const hue = ref<number>(0);
+const saturation = ref<number>(1);
+const value = ref<number>(1);
+const alpha = ref<number>(1);
+const saturationRect = ref<any>({});
+const hueRect = ref<any>({});
+
+// 色板默认尺寸
+const SATURATION_WIDTH = 300;
+const SATURATION_HEIGHT = 200;
+const SLIDER_WIDTH = 300;
+
+// 初始化
+onMounted(() => {
+  if (props.value) {
+    dataValue.value = props.value;
+  }
+  updateColor();
+});
+
+// 监听 props.visible 变化
+watch(() => props.visible, (v) => {
+  dataVisible.value = v;
+  if (v) {
+    updateColor();
+  }
+});
+
+// 监听 dataVisible 变化
+watch(dataVisible, (v) => {
+  emit('update:visible', v);
+  if (!v) {
+    emit('close', { trigger: 'overlay' });
+  }
+});
+
+// 监听 props.value 变化
+watch(() => props.value, (v) => {
+  if (v !== undefined && v !== null) {
+    dataValue.value = v;
+    updateColor();
+  }
+});
+
+// 根节点类名
+const rootClass = computed<string>(() => {
+  return colorPickerVariants({
+    class: props.customClass,
+  });
+});
+
+// 饱和度面板类名
+const saturationClass = computed<string>(() => {
+  return 't-color-picker__saturation';
+});
+
+// 饱和度白色渐变
+const saturationWhite = computed<string>(() => {
+  return 't-color-picker__saturation-white';
+});
+
+// 饱和度黑色渐变
+const saturationBlack = computed<string>(() => {
+  return 't-color-picker__saturation-black';
+});
+
+// 饱和度滑块
+const saturationThumb = computed<string>(() => {
+  return 't-color-picker__saturation-thumb';
+});
+
+// 饱和度滑块样式
+const saturationThumbStyle = computed<string>(() => {
+  const left = saturation.value * SATURATION_WIDTH;
+  const top = (1 - value.value) * SATURATION_HEIGHT;
+  return `left: ${left}px; top: ${top}px; background: ${getCurrentColor()}`;
+});
+
+// 色相滑块容器类名
+const hueSliderClass = computed<string>(() => {
+  return 't-color-picker__hue-slider';
+});
+
+// 色相轨道
+const hueTrack = computed<string>(() => {
+  return 't-color-picker__hue-track';
+});
+
+// 色相滑块
+const hueThumbStyle = computed<string>(() => {
+  const left = (hue.value / 360) * SLIDER_WIDTH;
+  return `left: ${left}px`;
+});
+
+// 透明度滑块容器类名
+const alphaSliderClass = computed<string>(() => {
+  return 't-color-picker__alpha-slider';
+});
+
+// 透明度轨道
+const alphaTrack = computed<string>(() => {
+  return 't-color-picker__alpha-track';
+});
+
+// 透明度滑块样式
+const alphaThumbStyle = computed<string>(() => {
+  const left = alpha.value * SLIDER_WIDTH;
+  return `left: ${left}px`;
+});
+
+// 预览类名
+const previewClass = computed<string>(() => {
+  return 't-color-picker__preview';
+});
+
+// 预览颜色
+const previewColor = computed<string>(() => {
+  return getCurrentColor();
+});
+
+// 预设颜色类名
+const swatchClass = computed<string>(() => {
+  return 't-color-picker__swatch';
+});
+
+// 预设颜色项类名
+const swatchItemClass = computed<string>(() => {
+  return 't-color-picker__swatch-item';
+});
+
+// 格式类名
+const formatClass = computed<string>(() => {
+  return 't-color-picker__format';
+});
+
+// 格式标签类名
+const formatLabelClass = computed<string>(() => {
+  return 't-color-picker__format-label';
+});
+
+// 格式值类名
+const formatValueClass = computed<string>(() => {
+  return 't-color-picker__format-value';
+});
+
+// 格式值
+const formatValue = computed<string>(() => {
+  const color = getCurrentColor();
+  switch (props.format) {
+    case 'RGB':
+      return color;
+    case 'HSL':
+      return color;
+    case 'HEX':
+    default:
+      return color;
+  }
+});
+
+// 获取当前颜色
+function getCurrentColor(): string {
+  return dataValue.value || props.color;
+}
+
+// 更新颜色
+function updateColor() {
+  const color = dataValue.value;
+  if (!color) return;
+
+  // 解析颜色值
+  const rgb = parseColor(color);
+  if (rgb) {
+    // 转换为 HSL
+    const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+    hue.value = hsl.h;
+    saturation.value = hsl.s;
+    value.value = hsl.l;
+    alpha.value = rgb.a;
+  }
+}
+
+// 解析颜色
+function parseColor(color: string): any {
+  // 简化实现：支持 hex
+  if (color.startsWith('#')) {
+    const hex = color.replace('#', '');
+    if (hex.length === 3) {
+      return {
+        r: parseInt(hex[0] + hex[0], 16),
+        g: parseInt(hex[1] + hex[1], 16),
+        b: parseInt(hex[2] + hex[2], 16),
+        a: 1,
+      };
+    } else if (hex.length === 6) {
+      return {
+        r: parseInt(hex.substring(0, 2), 16),
+        g: parseInt(hex.substring(2, 4), 16),
+        b: parseInt(hex.substring(4, 6), 16),
+        a: 1,
+      };
+    }
+  }
+  return null;
+}
+
+// RGB 转 HSL
+function rgbToHsl(r: number, g: number, b: number): any {
+  r /= 255;
+  g /= 255;
+  b /= 255;
+
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h = 0;
+  let s = 0;
+  const l = (max + min) / 2;
+
+  if (max !== min) {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+
+    switch (max) {
+      case r:
+        h = ((g - b) / d + (g < b ? 6 : 0)) / 6;
+        break;
+      case g:
+        h = ((b - r) / d + 2) / 6;
+        break;
+      case b:
+        h = ((r - g) / d + 4) / 6;
+        break;
+    }
+  }
+
+  return {
+    h: Math.round(h * 360),
+    s,
+    l,
+  };
+}
+
+// 处理饱和度面板触摸
+function onSaturationTouchStart(e: any) {
+  updateSaturation(e);
+}
+
+function onSaturationTouchMove(e: any) {
+  updateSaturation(e);
+}
+
+function updateSaturation(e: any) {
+  const touch = e.touches[0];
+  if (!touch) return;
+
+  // 获取面板位置
+  uni.createSelectorQuery().in(getCurrentInstance()).select('.t-color-picker__saturation').boundingClientRect().exec((res) => {
+    const rect = res[0];
+    if (!rect) return;
+
+    const x = Math.max(0, Math.min(touch.pageX - rect.left, SATURATION_WIDTH));
+    const y = Math.max(0, Math.min(touch.pageY - rect.top, SATURATION_HEIGHT));
+
+    saturation.value = x / SATURATION_WIDTH;
+    value.value = 1 - y / SATURATION_HEIGHT;
+
+    emitChange('saturation');
+  });
+}
+
+// 处理色相滑块触摸
+function onHueTouchStart(e: any) {
+  updateHue(e);
+}
+
+function onHueTouchMove(e: any) {
+  updateHue(e);
+}
+
+function updateHue(e: any) {
+  const touch = e.touches[0];
+  if (!touch) return;
+
+  uni.createSelectorQuery().in(getCurrentInstance()).select('.t-color-picker__hue-track').boundingClientRect().exec((res) => {
+    const rect = res[0];
+    if (!rect) return;
+
+    const x = Math.max(0, Math.min(touch.pageX - rect.left, SLIDER_WIDTH));
+    hue.value = (x / SLIDER_WIDTH) * 360;
+
+    emitChange('hue');
+  });
+}
+
+// 处理透明度滑块触摸
+function onAlphaTouchStart(e: any) {
+  updateAlpha(e);
+}
+
+function onAlphaTouchMove(e: any) {
+  updateAlpha(e);
+}
+
+function updateAlpha(e: any) {
+  const touch = e.touches[0];
+  if (!touch) return;
+
+  uni.createSelectorQuery().in(getCurrentInstance()).select('.t-color-picker__alpha-track').boundingClientRect().exec((res) => {
+    const rect = res[0];
+    if (!rect) return;
+
+    const x = Math.max(0, Math.min(touch.pageX - rect.left, SLIDER_WIDTH));
+    alpha.value = x / SLIDER_WIDTH;
+
+    emitChange('alpha');
+  });
+}
+
+// 触发变化
+function emitChange(trigger: string) {
+  const color = hslToColor(hue.value, saturation.value, value.value, alpha.value);
+  dataValue.value = color;
+
+  emit('change', {
+    value: color,
+    context: { trigger, color },
+  });
+}
+
+// HSL 转颜色字符串
+function hslToColor(h: number, s: number, l: number, a: number): string {
+  // 简化实现：返回 hex
+  const rgb = hslToRgb(h, s, l);
+  return `#${rgb.r.toString(16).padStart(2, '0')}${rgb.g.toString(16).padStart(2, '0')}${rgb.b.toString(16).padStart(2, '0')}`;
+}
+
+// HSL 转 RGB
+function hslToRgb(h: number, s: number, l: number): any {
+  h /= 360;
+  let r, g, b;
+
+  if (s === 0) {
+    r = g = b = l;
+  } else {
+    const hue2rgb = (p: number, q: number, t: number) => {
+      if (t < 0) t += 1;
+      if (t > 1) t -= 1;
+      if (t < 1/6) return p + (q - p) * 6 * t;
+      if (t < 1/2) return q;
+      if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+      return p;
+    };
+
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+
+    r = hue2rgb(p, q, h + 1/3);
+    g = hue2rgb(p, q, h);
+    b = hue2rgb(p, q, h - 1/3);
+  }
+
+  return {
+    r: Math.round(r * 255),
+    g: Math.round(g * 255),
+    b: Math.round(b * 255),
+  };
+}
+
+// 预设颜色点击
+function onSwatchClick(color: string) {
+  dataValue.value = color;
+  updateColor();
+  emit('change', {
+    value: color,
+    context: { trigger: 'preset' },
+  });
+}
+
+// 处理可见性变化
+function onVisibleChange() {
+  dataVisible.value = false;
+}
+</script>
+
+<style lang="less">
+@import './t-color-picker.theme.less';
+
+.t-color-picker {
+  background: #fff;
+  padding: 24rpx;
+  border-radius: 16rpx 16rpx 0 0;
+
+  &__saturation {
+    position: relative;
+    width: 100%;
+    height: 400rpx;
+    margin-bottom: 24rpx;
+    border-radius: 8rpx;
+    overflow: hidden;
+  }
+
+  &__saturation-white {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, #fff, transparent);
+  }
+
+  &__saturation-black {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, #000, transparent);
+  }
+
+  &__saturation-thumb {
+    position: absolute;
+    width: 24rpx;
+    height: 24rpx;
+    border-radius: 50%;
+    border: 2rpx solid #fff;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 4rpx rgba(0, 0, 0, 0.3);
+  }
+
+  &__hue-slider,
+  &__alpha-slider {
+    width: 100%;
+    height: 24rpx;
+    margin-bottom: 24rpx;
+    border-radius: 12rpx;
+  }
+
+  &__hue-track {
+    width: 100%;
+    height: 100%;
+    border-radius: 12rpx;
+    background: linear-gradient(to right, #f00, #ff0, #0f0, #0ff, #00f, #f0f, #f00);
+    position: relative;
+  }
+
+  &__alpha-track {
+    width: 100%;
+    height: 100%;
+    border-radius: 12rpx;
+    background: linear-gradient(to right, transparent, #000);
+    position: relative;
+  }
+
+  &__hue-thumb,
+  &__alpha-thumb {
+    position: absolute;
+    top: 50%;
+    width: 24rpx;
+    height: 24rpx;
+    border-radius: 50%;
+    background: #fff;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 4rpx rgba(0, 0, 0, 0.3);
+  }
+
+  &__preview {
+    display: flex;
+    align-items: center;
+    gap: 16rpx;
+    margin-bottom: 24rpx;
+  }
+
+  &__preview-color {
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 8rpx;
+    border: 2rpx solid #e7e7e7;
+  }
+
+  &__preview-text {
+    font-size: 28rpx;
+    color: rgba(0, 0, 0, 0.9);
+  }
+
+  &__swatch {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16rpx;
+    margin-bottom: 24rpx;
+  }
+
+  &__swatch-item {
+    width: 64rpx;
+    height: 64rpx;
+    border-radius: 8rpx;
+    cursor: pointer;
+    border: 2rpx solid #e7e7e7;
+  }
+
+  &__format {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__format-label {
+    font-size: 24rpx;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  &__format-value {
+    font-size: 28rpx;
+    color: rgba(0, 0, 0, 0.9);
+  }
+}
+</style>

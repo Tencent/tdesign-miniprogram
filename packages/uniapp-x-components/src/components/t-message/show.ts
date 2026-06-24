@@ -3,6 +3,7 @@
  * -------------------------------------------------------
  * 行为契约对齐 @tdesign/uniapp/message/index.js：
  *   Message.info({...}) / .success / .warning / .error / .hide()
+ *   MessagePlugin.info({...}) / .success / .warning / .error / .hide()
  *
  * 使用前提：当前 page template 中预埋 <t-message ref="message" />
  */
@@ -22,7 +23,7 @@ function getMessageInstance(refName: string): any | null {
   if (refs == null) return null;
   const inst = refs[refName];
   if (inst == null) {
-    console.warn('[t-message] 未找到 ref="' + refName + '" 的 <t-message />，请先在页面 template 中预埋。');
+    console.warn(`[t-message] 未找到 ref="${refName}" 的 <t-message />，请先在页面 template 中预埋。`);
     return null;
   }
   return inst;
@@ -37,7 +38,7 @@ function showMessage(options: MessageOptions, theme: MessageTheme): void {
 }
 
 /** Message 全局 API：4 主题快捷方法 + hide */
-export const Message = {
+const Message = {
   info(options: MessageOptions): void {
     showMessage(options, 'info');
   },
@@ -57,3 +58,8 @@ export const Message = {
     }
   },
 };
+
+/** MessagePlugin 导出别名，对齐 @tdesign/uniapp 的 API */
+const MessagePlugin = Message;
+
+export { Message, MessagePlugin };

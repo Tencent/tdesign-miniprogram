@@ -1,0 +1,136 @@
+<template>
+  <view :class="rootClass" :style="props.customStyle">
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Form - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/form：
+ *  - 表单数据收集与校验
+ *  - 支持 rules 校验规则
+ *  - 支持 labelAlign, labelWidth 统一配置
+ *  - 支持 onSubmit, onReset 事件
+ *  - 提供 setValidateMessage, clearValidate 等方法
+ */
+import { formVariants } from './t-form.variants';
+
+const props = defineProps({
+  colon: { type: Boolean, default: false },
+  contentAlign: { type: String, default: 'left' },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  data: { type: Object as PropType<Record<string, any>>, default: () => ({}) },
+  errorMessage: { type: Object as PropType<Record<string, string>>, default: () => ({}) },
+  labelAlign: { type: String, default: 'right' },
+  labelWidth: { type: [String, Number], default: '81px' },
+  requiredMark: { type: [Boolean, Object as PropType<any>], default: null },
+  requiredMarkPosition: { type: String, default: 'left' },
+  resetType: { type: String, default: 'empty' },
+  rules: { type: Object as PropType<Record<string, any[]>>, default: () => ({}) },
+  scrollToFirstError: { type: String, default: '' },
+  showErrorMessage: { type: Boolean, default: true },
+  submitWithWarningMessage: { type: Boolean, default: false },
+});
+
+const emit = defineEmits(['reset', 'submit', 'validate']);
+
+// 存储表单项实例
+const formItems = ref<any[]>([]);
+
+// 提供给子组件的上下文
+provide('formContext', {
+  props,
+  addFormItem: (item: any) => {
+    formItems.value.push(item);
+  },
+  removeFormItem: (item: any) => {
+    const index = formItems.value.indexOf(item);
+    if (index > -1) formItems.value.splice(index, 1);
+  },
+});
+
+// 根节点类名
+const rootClass = computed<string>(() => {
+  return formVariants({ class: props.customClass });
+});
+
+// 设置表单校验状态（供外部调用）
+function setValidateMessage(message: Record<string, { type: string; message: string }>) {
+  formItems.value.forEach((item) => {
+    const field = item.props?.name || item.props?.field;
+    if (field && message[field]) {
+      item.setData && item.setData({
+        validateStatus: message[field].type,
+        validateMessage: message[field].message,
+      });
+    }
+  });
+}
+
+// 清空校验状态
+function clearValidate(fields?: string[]) {
+  formItems.value.forEach((item) => {
+    const field = item.props?.name || item.props?.field;
+    if (!fields || fields.includes(field)) {
+      item.setData && item.setData({
+        validateStatus: '',
+        validateMessage: '',
+      });
+    }
+  });
+}
+
+// 校验表单
+async function validate(): Promise<{ valid: boolean; errors: any[] }> {
+  const errors: any[] = [];
+  formItems.value.forEach((item) => {
+    if (item.validate) {
+      const result = item.validate();
+      if (result !== true) {
+        errors.push(result);
+      }
+    }
+  });
+
+  const valid = errors.length === 0;
+  emit('validate', { valid, errors });
+  return { valid, errors };
+}
+
+// 重置表单
+function reset() {
+  formItems.value.forEach((item) => {
+    item.reset && item.reset(props.resetType);
+  });
+  emit('reset');
+}
+
+// 提交表单
+async function submit() {
+  const { valid } = await validate();
+  if (valid) {
+    emit('submit', { value: props.data });
+  }
+}
+
+defineExpose({
+  setValidateMessage,
+  clearValidate,
+  validate,
+  reset,
+  submit,
+});
+</script>
+
+<style lang="less">
+@import './t-form.theme.less';
+
+.t-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+</style>

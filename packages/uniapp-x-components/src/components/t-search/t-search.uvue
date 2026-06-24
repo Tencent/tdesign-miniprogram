@@ -1,0 +1,270 @@
+<template>
+  <view :class="rootClass" :style="props.customStyle">
+    <view :class="inputBoxClass">
+      <t-icon
+        v-if="props.leftIcon"
+        :name="props.leftIcon"
+        :class="leftIconClass"
+        :aria-hidden="true"
+      />
+      <slot v-else name="left-icon" />
+
+      <input
+        :type="props.type"
+        name="search"
+        :maxlength="props.maxlength"
+        :disabled="props.disabled || props.readonly"
+        :class="inputClass"
+        :focus="props.focus"
+        :value="dataValue"
+        :placeholder="props.placeholder"
+        :placeholder-style="placeholderStyle"
+        @input="onInput"
+        @focus="onFocus"
+        @blur="onBlur"
+        @confirm="onConfirm"
+      />
+
+      <view
+        v-if="dataValue !== '' && props.clearable && showClearIcon"
+        :class="clearClass"
+        aria-role="button"
+        aria-label="清除"
+        @click="handleClear"
+      >
+        <t-icon name="close-circle-filled" size="inherit" color="inherit" />
+      </view>
+    </view>
+
+    <view
+      v-if="props.action"
+      :class="actionClass"
+      aria-role="button"
+      @click="onActionClick"
+    >
+      {{ props.action }}
+    </view>
+    <slot v-else name="action" />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Search - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/search
+ */
+import { searchVariants } from './t-search.variants';
+
+const props = defineProps({
+  action: { type: String, default: '' },
+  center: { type: Boolean, default: false },
+  clearable: { type: Boolean, default: false },
+  clearTrigger: { type: String, default: 'always' },
+  confirmHold: { type: Boolean, default: false },
+  confirmType: { type: String, default: 'search' },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  disabled: { type: Boolean, default: false },
+  focus: { type: Boolean, default: false },
+  leftIcon: { type: String, default: 'search' },
+  maxlength: { type: Number, default: -1 },
+  placeholder: { type: String, default: '搜索' },
+  placeholderClass: { type: String, default: 'input-placeholder' },
+  placeholderStyle: { type: String, default: '' },
+  readonly: { type: Boolean, default: false },
+  shape: { type: String, default: 'square' },
+  type: { type: String, default: 'text' },
+  value: { type: String, default: undefined },
+  defaultValue: { type: String, default: '' },
+});
+
+const emit = defineEmits(['blur', 'change', 'clear', 'focus', 'input', 'search', 'submit', 'update:value']);
+
+// 内部状态
+const dataValue = ref<string>(props.defaultValue);
+const showClearIcon = ref<boolean>(false);
+
+// 初始化
+onMounted(() => {
+  if (props.value !== undefined) {
+    dataValue.value = props.value;
+  }
+  updateClearIconVisible();
+});
+
+// 监听 props.value 变化
+watch(() => props.value, (v) => {
+  if (v !== undefined && v !== null) {
+    dataValue.value = v;
+  }
+});
+
+// 根节点类名
+const rootClass = computed<string>(() => {
+  return searchVariants({
+    class: props.customClass,
+  });
+});
+
+// 输入框容器类名
+const inputBoxClass = computed<string>(() => {
+  const arr = ['t-search__input-box'];
+  arr.push(`t-search__input-box--${props.shape}`);
+  if (props.center) arr.push('t-search__input-box--center');
+  if (props.focus) arr.push('t-search__input-box--focused');
+  return arr.join(' ');
+});
+
+// 输入框类名
+const inputClass = computed<string>(() => {
+  const arr = ['t-search__input'];
+  if (props.disabled) arr.push('t-search__input--disabled');
+  return arr.join(' ');
+});
+
+// 左侧图标类名
+const leftIconClass = computed<string>(() => {
+  return 't-search__left-icon';
+});
+
+// 清除按钮类名
+const clearClass = computed<string>(() => {
+  return 't-search__clear';
+});
+
+// 操作按钮类名
+const actionClass = computed<string>(() => {
+  return 't-search__action';
+});
+
+// 更新清除图标显示状态
+function updateClearIconVisible(value: boolean = false) {
+  if (props.disabled || props.readonly || !dataValue.value) {
+    showClearIcon.value = false;
+    return;
+  }
+  showClearIcon.value = value || props.clearTrigger === 'always';
+}
+
+// 处理输入
+function onInput(e: any) {
+  const { value } = e.detail;
+  dataValue.value = value;
+  emit('update:value', value);
+  emit('change', { value });
+  emit('input', { value });
+  updateClearIconVisible(true);
+}
+
+// 处理焦点
+function onFocus(e: any) {
+  const { value } = e.detail;
+  emit('focus', { value });
+  updateClearIconVisible(true);
+}
+
+// 处理失焦
+function onBlur(e: any) {
+  const { value } = e.detail;
+  emit('blur', { value });
+  updateClearIconVisible();
+}
+
+// 处理清除
+function handleClear() {
+  dataValue.value = '';
+  emit('update:value', '');
+  emit('change', { value: '' });
+  emit('clear', { value: '' });
+  updateClearIconVisible();
+}
+
+// 处理确认（搜索）
+function onConfirm(e: any) {
+  const { value } = e.detail;
+  emit('submit', { value });
+  emit('search', { value });
+}
+
+// 处理操作按钮点击
+function onActionClick() {
+  emit('action-click');
+}
+</script>
+
+<style lang="less">
+@import './t-search.theme.less';
+
+.t-search {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx;
+
+  &__input-box {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    height: 64rpx;
+    padding: 0 16rpx;
+    background: #f5f5f5;
+    border-radius: 8rpx;
+    gap: 8rpx;
+
+    &--square {
+      border-radius: 8rpx;
+    }
+
+    &--round {
+      border-radius: 32rpx;
+    }
+
+    &--center {
+      justify-content: center;
+    }
+
+    &--focused {
+      background: #f5f5f5;
+      border: 2rpx solid #0052d9;
+    }
+  }
+
+  &__left-icon {
+    flex-shrink: 0;
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  &__input {
+    flex: 1;
+    height: 100%;
+    font-size: 28rpx;
+    color: rgba(0, 0, 0, 0.9);
+    background: transparent;
+    border: none;
+    outline: none;
+
+    &--disabled {
+      color: rgba(0, 0, 0, 0.26);
+    }
+  }
+
+  &__clear {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32rpx;
+    height: 32rpx;
+    color: rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  &__action {
+    flex-shrink: 0;
+    margin-left: 16rpx;
+    font-size: 28rpx;
+    color: #0052d9;
+    cursor: pointer;
+  }
+}
+</style>

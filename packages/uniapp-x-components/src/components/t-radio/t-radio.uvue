@@ -1,0 +1,206 @@
+<template>
+  <view
+    :class="rootClass"
+    :style="props.customStyle"
+    @click="handleTap"
+  >
+    <!-- 图标区 -->
+    <view v-if="props.theme === 'default'" :class="iconClass">
+      <slot v-if="props.icon === 'slot'" name="icon" />
+      <view v-else class="t-radio__icon-wrapper">
+        <view v-if="dataChecked" class="t-radio__icon-checked">
+          <view :class="checkedIconClass" />
+        </view>
+        <view v-else class="t-radio__icon-unchecked" />
+      </view>
+    </view>
+
+    <!-- 内容区 -->
+    <view class="t-radio__content" @click.stop="handleContentTap">
+      <view :class="labelClass" :style="labelStyle">
+        <text v-if="props.label">{{ props.label }}</text>
+        <slot />
+        <slot name="label" />
+      </view>
+      <view v-if="props.content" :class="contentClass" :style="contentStyle">
+        <text>{{ props.content }}</text>
+        <slot name="content" />
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Radio - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/radio：
+ *  - 支持单独使用或在 radio-group 中使用
+ *  - checked 受控 / defaultChecked 非受控
+ *  - allowUncheck 允许取消选中
+ *  - icon: circle/dot/line/slot/Array
+ *  - placement: left/right
+ */
+import { radioVariants } from './t-radio.variants';
+
+const props = defineProps({
+  allowUncheck: { type: Boolean, default: false },
+  block: { type: Boolean, default: true },
+  checked: { type: [Boolean, Object as PropType<any>], default: null },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  defaultChecked: { type: Boolean, default: false },
+  content: { type: String, default: '' },
+  contentDisabled: { type: Boolean, default: false },
+  disabled: { type: [Boolean, Object as PropType<any>], default: null },
+  icon: { type: [String, Array as PropType<any[]>], default: 'circle' },
+  label: { type: String, default: '' },
+  maxContentRow: { type: Number, default: 5 },
+  maxLabelRow: { type: Number, default: 3 },
+  name: { type: String, default: '' },
+  placement: { type: String, default: '' },
+  readonly: { type: [Boolean, Object as PropType<any>], default: null },
+  relationKey: { type: String, default: '' },
+  theme: { type: String, default: 'default' },
+  value: { type: [String, Number, Boolean], default: '' },
+});
+
+const emit = defineEmits(['change', 'update:checked']);
+
+// 内部状态
+const dataChecked = ref<boolean>(
+  props.checked != null ? !!props.checked : props.defaultChecked
+);
+const iDisabled = ref<boolean>(props.disabled != null ? !!props.disabled : false);
+
+// 监听 props 变化
+watch(() => props.checked, (v: any) => {
+  if (v != null) {
+    dataChecked.value = !!v;
+  }
+});
+
+// 样式计算
+const iconClass = computed<string>(() => {
+  const arr = ['t-radio__icon'];
+  arr.push(`t-radio__icon--${props.placement || 'left'}`);
+  if (dataChecked.value) arr.push('t-radio__icon--checked');
+  if (iDisabled.value) arr.push('t-radio__icon--disabled');
+  return arr.join(' ');
+});
+
+const checkedIconClass = computed<string>(() => {
+  const iconType = typeof props.icon === 'string' ? props.icon : 'circle';
+  return `t-radio__icon-dot t-radio__icon-dot--${iconType}`;
+});
+
+const labelStyle = computed<string>(() => {
+  return `-webkit-line-clamp: ${props.maxLabelRow}`;
+});
+
+const contentStyle = computed<string>(() => {
+  return `-webkit-line-clamp: ${props.maxContentRow}`;
+});
+
+const rootClass = computed<string>(() => {
+  const placement = props.placement || 'left';
+  return radioVariants({
+    placement,
+    checked: dataChecked.value,
+    block: props.block,
+    disabled: iDisabled.value,
+    class: props.customClass,
+  });
+});
+
+const labelClass = computed<string>(() => {
+  const arr = ['t-radio__title'];
+  if (iDisabled.value) arr.push('t-radio__title--disabled');
+  if (dataChecked.value) arr.push('t-radio__title--checked');
+  return arr.join(' ');
+});
+
+const contentClass = computed<string>(() => {
+  return iDisabled.value
+    ? 't-radio__description t-radio__description--disabled'
+    : 't-radio__description';
+});
+
+// 点击事件
+function handleTap() {
+  if (iDisabled.value || props.readonly) return;
+  toggle();
+}
+
+function handleContentTap() {
+  if (iDisabled.value || props.readonly || props.contentDisabled) return;
+  toggle();
+}
+
+function toggle() {
+  if (dataChecked.value && !props.allowUncheck) return;
+  const next = !dataChecked.value;
+  dataChecked.value = next;
+  emit('update:checked', next);
+  emit('change', {
+    value: props.value,
+    label: props.label,
+    checked: next,
+  });
+}
+
+// 供父组件调用
+function setDisabled(disabled: boolean) {
+  iDisabled.value = props.disabled != null ? !!props.disabled : disabled;
+}
+
+defineExpose({
+  setDisabled,
+  dataChecked,
+  props,
+});
+</script>
+
+<style lang="less">
+@import './t-radio.theme.less';
+
+.t-radio__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.t-radio__icon-checked {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.t-radio__icon-dot {
+  &--circle {
+    width: 24rpx;
+    height: 24rpx;
+    border-radius: 50%;
+    background: var(--td-radio-icon-checked-color, #0052d9);
+  }
+  &--dot {
+    width: 16rpx;
+    height: 16rpx;
+    border-radius: 50%;
+    background: var(--td-radio-icon-checked-color, #0052d9);
+  }
+  &--line {
+    width: 24rpx;
+    height: 4rpx;
+    background: var(--td-radio-icon-checked-color, #0052d9);
+    border-radius: 2rpx;
+  }
+}
+
+.t-radio__icon-unchecked {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  border: 2rpx solid var(--td-radio-icon-color, #dcdcdc);
+}
+</style>

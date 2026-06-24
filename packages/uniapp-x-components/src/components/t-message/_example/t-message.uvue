@@ -10,6 +10,8 @@
       <base-demo></base-demo>
     </view>
   </scroll-view>
+
+  <t-message ref="message" />
 </template>
 
 <script>

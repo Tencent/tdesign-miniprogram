@@ -8,11 +8,21 @@
  *  - icon: 显示图标（true 用主题预设 / false 不显示 / 字符串自定义）
  *  - align: left / center 文本对齐
  *  - link: 右侧链接文本
- *
- * 实现差异（v1 简化）：
- *  - 仅支持单条 message（uniapp x 多条 message-item 队列管理复杂度高，先支持核心场景）
- *  - 跑马灯/offset/gap 暂不支持，后续按需补齐
+ *  - offset: 相对于 placement 的偏移量，默认单位 rpx
+ *  - gap: 两条 message 之间的间距
+ *  - single: 是否保持仅显示一条信息
+ *  - marquee: 跑马灯效果
  */
+
+/** 跑马灯效果配置 */
+export type MessageMarquee = {
+  /** 速度控制（px/s） */
+  speed?: number;
+  /** 循环播放次数，值为 -1 表示循环播放，值为 0 表示不循环播放 */
+  loop?: number;
+  /** 延迟多久开始播放（ms） */
+  delay?: number;
+};
 
 export type MessageTheme = 'info' | 'success' | 'warning' | 'error';
 export type MessageAlign = 'left' | 'center';
@@ -34,6 +44,17 @@ export type MessageOptions = {
   link?: string;
   /** 元素层级 */
   zIndex?: number;
+  /**
+   * 相对于 placement 的偏移量，默认单位 rpx
+   * 示例：[-10, 20] 或 ['10rpx', '8rpx']
+   */
+  offset?: [number, number] | [string, string];
+  /** 两条 message 之间的间距，默认 12 */
+  gap?: number | string;
+  /** 是否保持仅显示一条信息，默认 true */
+  single?: boolean;
+  /** 跑马灯效果 */
+  marquee?: boolean | MessageMarquee;
 };
 
 export type MessageProps = MessageOptions & {

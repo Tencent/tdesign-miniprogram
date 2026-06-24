@@ -1,51 +1,77 @@
 <template>
   <view>
-    <!-- 重要：必须预埋 t-message 并设置 ref="message" -->
     <t-message ref="message" />
 
-    <t-button block size="large" theme="primary" custom-style="margin-bottom: 16rpx;" @click="onInfo">
-      Message.info
-    </t-button>
-    <t-button block size="large" theme="success" custom-style="margin-bottom: 16rpx;" @click="onSuccess">
-      Message.success
-    </t-button>
-    <t-button block size="large" theme="warning" custom-style="margin-bottom: 16rpx;" @click="onWarning">
-      Message.warning
-    </t-button>
-    <t-button block size="large" theme="danger" custom-style="margin-bottom: 16rpx;" @click="onError">
-      Message.error
-    </t-button>
-    <t-button block size="large" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onWithLink">
-      带链接 + 关闭按钮
-    </t-button>
-    <t-button block size="large" variant="text" @click="onHide">
-      Message.hide()
-    </t-button>
+    <view class="message-example--base">
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onInfo">
+        纯文字的通知
+      </t-button>
+
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onWithIcon">
+        带图标的通知
+      </t-button>
+
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onWithClose">
+        带关闭的通知
+      </t-button>
+
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onWithLink">
+        带链接的通知
+      </t-button>
+
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onWithOffset">
+        自定义偏移量
+      </t-button>
+
+      <t-button block size="large" theme="warning" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onWarning">
+        Message.warning
+      </t-button>
+
+      <t-button block size="large" theme="danger" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onError">
+        Message.error
+      </t-button>
+
+      <t-button block size="large" variant="text" @click="onHide">
+        Message.hide()
+      </t-button>
+    </view>
   </view>
 </template>
 
 <script setup lang="uts">
 /**
- * Message base demo - 4 种主题 + 关闭/链接按钮
+ * Message base demo - 对齐 @tdesign/uniapp 版本的使用方式
  *
  * 关键点：
  *  1) <t-message ref="message" /> 预埋
  *  2) Message.info / success / warning / error / hide 全局静态方法
+ *  3) 支持 offset、link、closeBtn、icon 等属性
  */
 import { Message } from '@/uni_modules/tdesign-uniapp-x/components/t-message';
 
 function onInfo() {
-  Message.info({ content: '这是一条 info 消息' });
+  Message.info({
+    content: '这是一条纯文字的消息通知',
+    duration: 5000,
+    icon: false,
+  });
 }
-function onSuccess() {
-  Message.success({ content: '操作成功！' });
+
+function onWithIcon() {
+  Message.info({
+    content: '这是一条带图标的消息通知',
+    duration: 5000,
+  });
 }
-function onWarning() {
-  Message.warning({ content: '请注意当前操作可能影响数据' });
+
+function onWithClose() {
+  Message.info({
+    content: '这是一条带关闭的消息通知',
+    duration: 0, // 常驻，直到用户关闭
+    closeBtn: true,
+  });
 }
-function onError() {
-  Message.error({ content: '请求失败，请稍后重试' });
-}
+
 function onWithLink() {
   Message.info({
     content: '检测到新版本，可立即更新',
@@ -54,9 +80,34 @@ function onWithLink() {
     duration: 0,
   });
 }
+
+function onWithOffset() {
+  Message.info({
+    content: '这是一条自定义偏移量的消息',
+    offset: [90, 32], // [top, left/right]，单位 rpx
+    duration: 5000,
+  });
+}
+
+function onSuccess() {
+  Message.success({ content: '操作成功！' });
+}
+
+function onWarning() {
+  Message.warning({ content: '请注意当前操作可能影响数据' });
+}
+
+function onError() {
+  Message.error({ content: '请求失败，请稍后重试' });
+}
+
 function onHide() {
   Message.hide();
 }
 </script>
 
-<style></style>
+<style>
+.message-example--base {
+  margin: 32rpx;
+}
+</style>

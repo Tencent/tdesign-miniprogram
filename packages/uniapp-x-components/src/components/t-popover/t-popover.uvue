@@ -1,0 +1,197 @@
+<template>
+  <view :class="rootClass" :style="customStyle">
+    <view :class="triggerClass" @click="handleTrigger">
+      <slot />
+    </view>
+
+    <t-popup
+      v-if="dataVisible"
+      :visible="dataVisible"
+      :placement="placement"
+      :show-overlay="false"
+      @visible-change="onVisibleChange"
+    >
+      <view :class="contentClass">
+        <view v-if="showArrow" :class="arrowClass" :style="arrowStyle" />
+        <view :class="bodyClass">
+          <slot name="content" />
+        </view>
+      </view>
+    </t-popup>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Popover - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/popover
+ */
+import { popoverVariants } from './t-popover.variants';
+
+const props = defineProps({
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  placement: { type: String, default: 'top' },
+  showArrow: { type: Boolean, default: true },
+  theme: { type: String, default: 'dark' },
+  trigger: { type: String, default: 'click' },
+  value: { type: Boolean, default: undefined },
+  visible: { type: Boolean, default: false },
+});
+
+const emit = defineEmits(['close', 'open', 'visible-change', 'update:visible']);
+
+// 内部状态
+const dataVisible = ref<boolean>(props.visible);
+const triggerRect = ref<any>({});
+
+// 初始化
+onMounted(() => {
+  if (props.value !== undefined) {
+    dataVisible.value = props.value;
+  }
+});
+
+// 监听 props.visible 变化
+watch(() => props.visible, (v) => {
+  dataVisible.value = v;
+});
+
+// 监听 dataVisible 变化
+watch(dataVisible, (v) => {
+  emit('update:visible', v);
+  emit('visible-change', v);
+  if (v) {
+    emit('open');
+  } else {
+    emit('close');
+  }
+});
+
+// 监听 props.value 变化
+watch(() => props.value, (v) => {
+  if (v !== undefined && v !== null) {
+    dataVisible.value = v;
+  }
+});
+
+// 根节点类名
+const rootClass = computed<string>(() => {
+  return popoverVariants({
+    class: props.customClass,
+  });
+});
+
+// 触发区域类名
+const triggerClass = computed<string>(() => {
+  return 't-popover__trigger';
+});
+
+// 内容类名
+const contentClass = computed<string>(() => {
+  return 't-popover__content';
+});
+
+// 箭头类名
+const arrowClass = computed<string>(() => {
+  return `t-popover__arrow t-popover__arrow--${props.placement}`;
+});
+
+// 箭头样式
+const arrowStyle = computed<string>(() => {
+  // 根据 placement 计算箭头位置
+  return '';
+});
+
+// 主体类名
+const bodyClass = computed<string>(() => {
+  return `t-popover__body t-popover__body--${props.theme}`;
+});
+
+// 处理触发
+function handleTrigger() {
+  if (props.trigger === 'click') {
+    dataVisible.value = !dataVisible.value;
+  }
+}
+
+// 处理可见性变化
+function onVisibleChange() {
+  dataVisible.value = false;
+}
+</script>
+
+<style lang="less">
+@import './t-popover.theme.less';
+
+.t-popover {
+  position: relative;
+  display: inline-block;
+
+  &__trigger {
+    display: inline-block;
+  }
+
+  &__content {
+    position: relative;
+  }
+
+  &__arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+
+    &--top {
+      bottom: -8rpx;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 8rpx 8rpx 0 8rpx;
+      border-color: #333 transparent transparent transparent;
+    }
+
+    &--bottom {
+      top: -8rpx;
+      left: 50%;
+      transform: translateX(-50%);
+      border-width: 0 8rpx 8rpx 8rpx;
+      border-color: transparent transparent #333 transparent;
+    }
+
+    &--left {
+      right: -8rpx;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 8rpx 0 8rpx 8rpx;
+      border-color: transparent transparent transparent #333;
+    }
+
+    &--right {
+      left: -8rpx;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 8rpx 8rpx 8rpx 0;
+      border-color: transparent #333 transparent transparent;
+    }
+  }
+
+  &__body {
+    padding: 16rpx 24rpx;
+    border-radius: 8rpx;
+    font-size: 28rpx;
+    max-width: 400rpx;
+
+    &--dark {
+      background: #333;
+      color: #fff;
+    }
+
+    &--light {
+      background: #fff;
+      color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+</style>

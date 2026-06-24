@@ -1,0 +1,333 @@
+<template>
+  <view :class="rootClass" :style="props.customStyle">
+    <!-- 减少按钮 -->
+    <view
+      :class="minusClass"
+      :aria-label="'减少' + props.step"
+      aria-role="button"
+      :aria-disabled="iDisabled || props.disableMinus || dataValue <= props.min"
+      @click="handleMinus"
+    >
+      <t-icon name="remove" />
+    </view>
+
+    <!-- 输入框 -->
+    <view :class="inputWrapClass">
+      <input
+        :class="inputClass"
+        :disabled="iDisabled || props.disableInput"
+        :type="props.integer ? 'number' : 'digit'"
+        :value="displayValue"
+        @input="handleInput"
+        @focus="handleFocus"
+        @blur="handleBlur"
+      />
+    </view>
+
+    <!-- 增加按钮 -->
+    <view
+      :class="plusClass"
+      :aria-label="'增加' + props.step"
+      aria-role="button"
+      :aria-disabled="iDisabled || props.disablePlus || dataValue >= props.max"
+      @click="handlePlus"
+    >
+      <t-icon name="add" />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Stepper - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/stepper
+ */
+import { stepperVariants } from './t-stepper.variants';
+
+const props = defineProps({
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  disabled: { type: Boolean, default: false },
+  disableInput: { type: Boolean, default: false },
+  disableMinus: { type: Boolean, default: false },
+  disablePlus: { type: Boolean, default: false },
+  inputWidth: { type: Number, default: 0 },
+  integer: { type: Boolean, default: false },
+  max: { type: Number, default: 100 },
+  min: { type: Number, default: 0 },
+  placeholder: { type: String, default: '' },
+  readOnly: { type: Boolean, default: false },
+  size: { type: String, default: 'medium' },
+  step: { type: Number, default: 1 },
+  theme: { type: String, default: 'normal' },
+  value: { type: Number, default: undefined },
+  defaultValue: { type: Number, default: undefined },
+});
+
+const emit = defineEmits(['blur', 'change', 'overlimit', 'update:value']);
+
+// 内部状态
+const dataValue = ref<number>(props.min);
+const preValue = ref<number>(props.min);
+const iDisabled = ref<boolean>(props.disabled);
+
+// 显示值（可能是字符串，保持末尾0）
+const displayValue = ref<string>('');
+
+// 初始化
+onMounted(() => {
+  const val = props.value !== undefined ? props.value : props.defaultValue;
+  if (val !== undefined) {
+    updateValue(Number(val));
+  } else {
+    updateValue(props.min);
+  }
+});
+
+// 监听 props.value 变化
+watch(() => props.value, (v) => {
+  if (v !== undefined && v !== null) {
+    updateValue(Number(v));
+  }
+});
+
+// 根节点类名
+const rootClass = computed<string>(() => {
+  return stepperVariants({
+    size: props.size,
+    theme: props.theme,
+    disabled: iDisabled.value,
+    class: props.customClass,
+  });
+});
+
+// 减少按钮类名
+const minusClass = computed<string>(() => {
+  const arr = ['t-stepper__minus', `t-stepper__minus--${props.theme}`, `t-stepper__icon--${props.size}`];
+  if (iDisabled.value || props.disableMinus || dataValue.value <= props.min) {
+    arr.push(`t-stepper--${props.theme}-disabled`);
+  }
+  return arr.join(' ');
+});
+
+// 增加按钮类名
+const plusClass = computed<string>(() => {
+  const arr = ['t-stepper__plus', `t-stepper__plus--${props.theme}`, `t-stepper__icon--${props.size}`];
+  if (iDisabled.value || props.disablePlus || dataValue.value >= props.max) {
+    arr.push(`t-stepper--${props.theme}-disabled`);
+  }
+  return arr.join(' ');
+});
+
+// 输入框容器类名
+const inputWrapClass = computed<string>(() => {
+  return `t-stepper__input--${props.theme} ${iDisabled.value || props.disableInput ? `t-stepper--${props.theme}-disabled` : ''}`;
+});
+
+// 输入框类名
+const inputClass = computed<string>(() => {
+  return `t-stepper__input t-stepper__input--${props.size}`;
+});
+
+// 获取小数位数
+function getLen(num: number | string): number {
+  const str = String(num);
+  const idx = str.indexOf('.');
+  return idx === -1 ? 0 : str.split('.')[1].length;
+}
+
+// 检查是否包含有效小数（用于判断是否需要保留末尾0）
+function hasValidDecimal(value: string): boolean {
+  return /\.\d*[1-9]/.test(value);
+}
+
+// 加法运算（避免精度丢失）
+function add(a: number, b: number): number {
+  const maxLen = Math.max(getLen(a), getLen(b));
+  const base = Math.pow(10, maxLen);
+  const result = Math.round(a * base + b * base) / base;
+  return maxLen > 0 ? Number(result.toFixed(maxLen)) : result;
+}
+
+// 格式化值
+function format(value: number | string): string {
+  const { min, max, step } = props;
+  const strValue = String(value);
+  const len = Math.max(getLen(step), getLen(strValue));
+  const numValue = Math.max(Math.min(max, Number(strValue), Number.MAX_SAFE_INTEGER), min, Number.MIN_SAFE_INTEGER);
+  return numValue.toFixed(len);
+}
+
+// 更新值（内部使用，不直接触发 change）
+function updateValue(value: number) {
+  const formattedStr = format(value);
+  const newValue = Number(formattedStr);
+  dataValue.value = newValue;
+  // 智能判断：如果格式化后的字符串与数字转换结果一致，存数字；否则存字符串
+  displayValue.value = String(newValue) === formattedStr ? String(newValue) : formattedStr;
+}
+
+// 设置值（对外触发 change）
+function setValue(value: number) {
+  const formattedStr = format(value);
+  const newValue = Number(formattedStr);
+
+  // 智能类型判断：无信息丢失时存数字，否则保留字符串
+  const finalValue = String(newValue) === formattedStr ? newValue : formattedStr;
+
+  // 使用字符串更新显示值，避免末尾0丢失
+  displayValue.value = formattedStr;
+
+  if (preValue.value === newValue) return;
+
+  preValue.value = newValue;
+  dataValue.value = newValue;
+  emit('update:value', finalValue);
+  emit('change', { value: finalValue });
+}
+
+// 过滤非法字符
+function filterIllegalChar(value: string): string {
+  let v = value.replace(/[^0-9.]/g, '');
+  const indexOfDot = v.indexOf('.');
+  if (props.integer && indexOfDot !== -1) {
+    return v.split('.')[0];
+  }
+  if (!props.integer && indexOfDot !== -1 && indexOfDot !== v.lastIndexOf('.')) {
+    return v.split('.', 2).join('.');
+  }
+  return v;
+}
+
+// 处理减少
+function handleMinus() {
+  if (iDisabled.value || props.disableMinus || dataValue.value <= props.min) {
+    emit('overlimit', { type: 'minus' });
+    return;
+  }
+  setValue(add(dataValue.value, -props.step));
+}
+
+// 处理增加
+function handlePlus() {
+  if (iDisabled.value || props.disablePlus || dataValue.value >= props.max) {
+    emit('overlimit', { type: 'plus' });
+    return;
+  }
+  setValue(add(dataValue.value, props.step));
+}
+
+// 处理输入
+function handleInput(event: any) {
+  const value = event.detail?.value || event.value || '';
+  if (value === '') {
+    displayValue.value = '';
+    return;
+  }
+
+  const formatted = filterIllegalChar(String(value));
+
+  // 当过滤后的值与当前值相同时（如 integer=true 过滤小数点后），Vue 会跳过更新
+  // 需要先清空再回填
+  if (String(displayValue.value) === String(formatted)) {
+    const temp = displayValue.value;
+    displayValue.value = '';
+    // 使用 nextTick 模拟（UTS 环境用 setTimeout）
+    setTimeout(() => {
+      displayValue.value = temp;
+    }, 0);
+  } else {
+    displayValue.value = formatted;
+  }
+
+  // 触发 change 事件
+  const numValue = Number(formatted);
+  if (!isNaN(numValue)) {
+    emit('update:value', numValue);
+    emit('change', { value: numValue });
+  }
+}
+// 处理焦点
+function handleFocus(event: any) {
+  emit('focus', { value: dataValue.value });
+}
+
+// 处理失焦
+function handleBlur(event: any) {
+  const rawValue = event.detail?.value || event.value || '';
+  // 先过滤非法字符，再格式化
+  const filtered = filterIllegalChar(String(rawValue));
+  const value = format(filtered || props.min);
+  setValue(Number(value));
+  emit('blur', { value: dataValue.value });
+}
+</script>
+
+<style lang="less">
+@import './t-stepper.theme.less';
+
+.t-stepper {
+  display: inline-flex;
+  align-items: center;
+
+  &__minus,
+  &__plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64rpx;
+    height: 64rpx;
+    background: #f5f5f5;
+    border-radius: 8rpx;
+    cursor: pointer;
+
+    &--small {
+      width: 48rpx;
+      height: 48rpx;
+    }
+
+    &--large {
+      width: 80rpx;
+      height: 80rpx;
+    }
+  }
+
+  &__input {
+    width: 96rpx;
+    height: 64rpx;
+    margin: 0 8rpx;
+    text-align: center;
+    font-size: 28rpx;
+    background: #f5f5f5;
+    border-radius: 8rpx;
+    border: none;
+    outline: none;
+
+    &--small {
+      height: 48rpx;
+      font-size: 24rpx;
+    }
+
+    &--large {
+      height: 80rpx;
+      font-size: 32rpx;
+    }
+
+    &:disabled {
+      background: #f5f5f5;
+      color: rgba(0, 0, 0, 0.26);
+    }
+  }
+
+  &--normal-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &--filled-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+</style>

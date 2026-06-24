@@ -1,0 +1,73 @@
+<template>
+  <view :class="rootClass">
+    <view 
+      v-for="(item, index) in options" 
+      :key="index"
+      :class="itemClass(index)"
+      @click="onItemClick(item, index)"
+    >
+      <text class="t-segmented__label">{{ typeof item === 'string' ? item : item.label }}</text>
+    </view>
+    <view :class="thumbClass" :style="thumbStyle" />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Segmented - uni-app x 实现
+ * 
+ * 分段器组件，用于在多个选项之间进行选择
+ */
+import { segmentedVariants } from './t-segmented.variants';
+
+const props = defineProps({
+  /** 选项数据 */
+  options: { type: Array as PropType<(string | Record<string, any>)[]>, default: () => [] },
+  /** 当前选中值 */
+  value: { type: [String, Number], default: '' },
+  /** 默认选中索引 */
+  defaultValue: { type: Number, default: 0 },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change', 'update:value']);
+
+const currentIndex = ref<number>(props.defaultValue);
+const itemWidth = ref<number>(0);
+
+const rootClass = computed(() => 
+  segmentedVariants({ class: props.customClass })
+);
+
+const thumbClass = computed<string>(() => 't-segmented__thumb');
+
+const thumbStyle = computed<string>(() => {
+  if (itemWidth.value <= 0) return '';
+  return `width: ${itemWidth.value}px; transform: translateX(${currentIndex.value * itemWidth.value}px);`;
+});
+
+function itemClass(index: number): string {
+  const baseClass = 't-segmented__item';
+  const activeClass = currentIndex.value === index ? ' t-segmented__item--active' : '';
+  return baseClass + activeClass;
+}
+
+function onItemClick(item: string | Record<string, any>, index: number) {
+  currentIndex.value = index;
+  const value = typeof item === 'string' ? item : (item.value || '');
+  emit('change', value, index);
+  emit('update:value', value);
+}
+
+onMounted(() => {
+  // 计算每个选项的宽度
+  nextTick(() => {
+    // TODO: 获取组件宽度，计算每个选项的宽度
+  });
+});
+</script>
+
+<style lang="less">
+@import './t-segmented.theme.less';
+</style>

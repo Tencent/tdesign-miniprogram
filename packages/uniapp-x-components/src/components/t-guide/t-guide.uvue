@@ -1,0 +1,95 @@
+<template>
+  <view v-if="visible" :class="rootClass">
+    <view class="t-guide__overlay" :style="overlayStyle" @click="onOverlayClick" />
+    <view v-if="currentStep >= 0 && currentStep < steps.length" :class="contentClass" :style="contentStyle">
+      <view class="t-guide__title" v-if="steps[currentStep].title">{{ steps[currentStep].title }}</view>
+      <view class="t-guide__body" v-if="steps[currentStep].body">{{ steps[currentStep].body }}</view>
+      <view class="t-guide__footer">
+        <t-button v-if="currentStep > 0" size="small" variant="outline" @click="onPrev">上一步</t-button>
+        <t-button v-if="currentStep < steps.length - 1" size="small" theme="primary" @click="onNext">下一步</t-button>
+        <t-button v-else size="small" theme="primary" @click="onFinish">完成</t-button>
+      </view>
+      <view class="t-guide__counter">{{ currentStep + 1 }} / {{ steps.length }}</view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Guide - uni-app x 实现
+ * 
+ * 引导组件，用于新功能引导、操作指引等场景
+ */
+import { guideVariants } from './t-guide.variants';
+
+const props = defineProps({
+  /** 引导步骤 */
+  steps: { type: Array as PropType<Record<string, any>[]>, default: () => [] },
+  /** 是否显示 */
+  visible: { type: Boolean, default: false },
+  /** 当前步骤索引 */
+  current: { type: Number, default: 0 },
+  /** 是否显示遮罩 */
+  showOverlay: { type: Boolean, default: true },
+  /** 点击遮罩是否关闭 */
+  closeOnOverlay: { type: Boolean, default: false },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change', 'finish', 'close']);
+
+const currentStep = ref<number>(props.current);
+
+const rootClass = computed(() => guideVariants({ class: props.customClass }));
+
+const overlayStyle = computed<string>(() => {
+  if (!props.showOverlay) return 'display: none;';
+  return '';
+});
+
+const contentClass = computed<string>(() => 't-guide__content');
+
+const contentStyle = computed<string>(() => {
+  if (currentStep.value >= 0 && currentStep.value < props.steps.length) {
+    const step = props.steps[currentStep.value];
+    if (step.position) {
+      return `left: ${step.position.x}px; top: ${step.position.y}px;`;
+    }
+  }
+  return '';
+});
+
+function onNext() {
+  if (currentStep.value < props.steps.length - 1) {
+    currentStep.value++;
+    emit('change', currentStep.value);
+  }
+}
+
+function onPrev() {
+  if (currentStep.value > 0) {
+    currentStep.value--;
+    emit('change', currentStep.value);
+  }
+}
+
+function onFinish() {
+  emit('finish');
+  emit('close');
+}
+
+function onOverlayClick() {
+  if (props.closeOnOverlay) {
+    emit('close');
+  }
+}
+
+watch(() => props.current, (val: number) => {
+  currentStep.value = val;
+});
+</script>
+
+<style lang="less">
+@import './t-guide.theme.less';
+</style>

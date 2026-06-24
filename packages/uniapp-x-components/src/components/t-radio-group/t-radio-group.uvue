@@ -1,0 +1,115 @@
+<template>
+  <view :class="rootClass" :style="props.customStyle">
+    <!-- 通过 options 属性生成 radio -->
+    <t-radio
+      v-for="(item, index) in normalizedOptions"
+      :key="index"
+      :label="item.label"
+      :value="item.value"
+      :checked="isChecked(item.value)"
+      :disabled="item.disabled != null ? item.disabled : props.disabled"
+      :block="item.block != null ? item.block : true"
+      :content="item.content || ''"
+      :content-disabled="item.contentDisabled || false"
+      :icon="item.icon || 'circle'"
+      :max-content-row="item.maxContentRow || 5"
+      :max-label-row="item.maxLabelRow || 3"
+      :placement="item.placement || props.placement"
+      :readonly="item.readonly || false"
+      @change="handleChildChange"
+    />
+
+    <!-- 自定义子组件 -->
+    <slot v-if="!normalizedOptions.length" />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * RadioGroup - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/radio-group
+ */
+
+const props = defineProps({
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  defaultValue: { type: [String, Number, Boolean], default: '' },
+  disabled: { type: Boolean, default: false },
+  keys: { type: Object as PropType<{ label?: string; value?: string; disabled?: string }>, default: () => ({}) },
+  name: { type: String, default: '' },
+  options: { type: Array as PropType<any[]>, default: () => [] },
+  placement: { type: String, default: 'left' },
+  value: { type: [String, Number, Boolean], default: '' },
+});
+
+const emit = defineEmits(['change', 'update:value']);
+
+// 内部状态
+const dataValue = ref<any>(props.value || props.defaultValue);
+
+// 提供给子组件的注入
+provide('radioGroupContext', {
+  dataValue,
+  disabled: props.disabled,
+  placement: props.placement,
+  handleChildChange,
+});
+
+// 规范化 options
+const normalizedOptions = computed<any[]>(() => {
+  if (!props.options || !Array.isArray(props.options) || props.options.length === 0) {
+    return [];
+  }
+
+  const { keys } = props;
+  const labelKey = keys.label || 'label';
+  const valueKey = keys.value || 'value';
+
+  return props.options.map((item: any) => {
+    if (typeof item === 'string' || typeof item === 'number') {
+      return {
+        label: String(item),
+        value: item,
+        checked: dataValue.value === item,
+      };
+    }
+    return {
+      ...item,
+      label: item[labelKey] || '',
+      value: item[valueKey],
+      checked: dataValue.value === item[valueKey],
+    };
+  });
+});
+
+// 根节点类名
+const rootClass = computed<string>(() => {
+  return `t-radio-group ${props.customClass}`;
+});
+
+// 判断 value 是否选中
+function isChecked(val: any): boolean {
+  return dataValue.value === val;
+}
+
+// 子组件变化处理
+function handleChildChange(event: { value: any; label: string; checked: boolean }) {
+  if (!event.checked) return; // radio 只能选中，不能取消（除非 allowUncheck）
+
+  dataValue.value = event.value;
+  emit('update:value', event.value);
+  emit('change', { value: event.value });
+}
+
+// 监听 props.value 变化
+watch(() => props.value, (v: any) => {
+  if (v !== undefined && v !== null) {
+    dataValue.value = v;
+  }
+});
+</script>
+
+<style lang="less">
+@import './t-radio-group.theme.less';
+</style>

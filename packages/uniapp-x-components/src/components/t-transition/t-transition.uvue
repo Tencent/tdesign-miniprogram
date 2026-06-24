@@ -1,0 +1,46 @@
+<template>
+  <view v-if="show" :class="rootClass" :style="transitionStyle">
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Transition - uni-app x 实现
+ * 
+ * 过渡动画组件，支持多种内置动画效果
+ */
+import { computed, ref, watch } from 'vue';
+import { transitionVariants } from './t-transition.variants';
+
+type TransitionName = 'fade' | 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'slide-up' | 'slide-down' | 'slide-left' | 'slide-right' | 'zoom';
+
+const props = defineProps({
+  /** 是否显示 */
+  show: { type: Boolean, default: false },
+  /** 动画名称 */
+  name: { type: String as PropType<TransitionName>, default: 'fade' },
+  /** 动画持续时间(ms) */
+  duration: { type: Number, default: 300 },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const visible = ref<boolean>(props.show);
+const transitionStyle = computed<string>(() => `transition-duration: ${props.duration}ms;`);
+
+const rootClass = computed(() => 
+  transitionVariants({ 
+    name: props.name,
+    class: props.customClass 
+  })
+);
+
+watch(() => props.show, (val: boolean) => {
+  visible.value = val;
+});
+</script>
+
+<style lang="less">
+@import './t-transition.theme.less';
+</style>

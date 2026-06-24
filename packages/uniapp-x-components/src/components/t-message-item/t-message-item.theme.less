@@ -1,0 +1,81 @@
+/**
+ * MessageItem 组件主题样式
+ */
+
+@td-message-item-default-bg: var(--td-message-item-default-bg, #f3f3f3);
+@td-message-item-primary-bg: var(--td-message-item-primary-bg, #ecf2fe);
+@td-message-item-success-bg: var(--td-message-item-success-bg, #e8f8f0);
+@td-message-item-warning-bg: var(--td-message-item-warning-bg, #fef3e6);
+@td-message-item-error-bg: var(--td-message-item-error-bg, #fde8e8);
+
+@td-message-item-default-color: var(--td-message-item-default-color, rgba(0, 0, 0, 0.9));
+@td-message-item-primary-color: var(--td-message-item-primary-color, #0052d9);
+@td-message-item-success-color: var(--td-message-item-success-color, #2ba471);
+@td-message-item-warning-color: var(--td-message-item-warning-color, #e37318);
+@td-message-item-error-color: var(--td-message-item-error-color, #d54941);
+
+@td-message-item-padding: var(--td-message-item-padding, 12px);
+@td-message-item-border-radius: var(--td-message-item-border-radius, 6px);
+
+.t-message-item {
+  display: flex;
+  align-items: flex-start;
+  padding: @td-message-item-padding;
+  border-radius: @td-message-item-border-radius;
+  box-sizing: border-box;
+
+  &__icon {
+    flex: none;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__title {
+    font-weight: 600;
+    margin-bottom: 4px;
+    word-break: break-all;
+  }
+
+  &__text {
+    word-break: break-all;
+  }
+
+  &__close {
+    flex: none;
+    margin-left: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+
+  &--default {
+    background: @td-message-item-default-bg;
+    color: @td-message-item-default-color;
+  }
+
+  &--primary {
+    background: @td-message-item-primary-bg;
+    color: @td-message-item-primary-color;
+  }
+
+  &--success {
+    background: @td-message-item-success-bg;
+    color: @td-message-item-success-color;
+  }
+
+  &--warning {
+    background: @td-message-item-warning-bg;
+    color: @td-message-item-warning-color;
+  }
+
+  &--error {
+    background: @td-message-item-error-bg;
+    color: @td-message-item-error-color;
+  }
+}

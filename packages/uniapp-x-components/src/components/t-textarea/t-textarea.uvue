@@ -1,0 +1,215 @@
+<template>
+  <view :class="rootClass" :style="props.customStyle">
+    <!-- 标签 -->
+    <view v-if="props.label" class="t-textarea__label">
+      <text>{{ props.label }}</text>
+    </view>
+
+    <!-- 输入框区 -->
+    <view class="t-textarea__wrapper">
+      <textarea
+        :class="textareaClass"
+        :value="dataValue"
+        :placeholder="props.placeholder"
+        :maxlength="maxLength"
+        :disabled="iDisabled"
+        :readonly="props.readonly"
+        :auto-focus="props.focus"
+        :placeholder-class="props.placeholderClass"
+        :placeholder-style="props.placeholderStyle"
+        @input="handleInput"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @confirm="handleConfirm"
+      />
+
+      <!-- 清除按钮 -->
+      <view
+        v-if="props.clearable && dataValue.length > 0 && !iDisabled"
+        class="t-textarea__clear"
+        @click="handleClear"
+      >
+        <text>×</text>
+      </view>
+    </view>
+
+    <!-- 字符计数 -->
+    <view v-if="props.indicator" class="t-textarea__indicator">
+      <text>{{ currentLength }}/{{ maxLengthText }}</text>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Textarea - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/textarea
+ */
+import { textareaVariants } from './t-textarea.variants';
+
+const props = defineProps({
+  adjustPosition: { type: Boolean, default: true },
+  allowInputOverMax: { type: Boolean, default: false },
+  autofocus: { type: Boolean, default: false },
+  autosize: { type: [Boolean, Object as PropType<{ maxHeight?: number; minHeight?: number }>], default: false },
+  bordered: { type: Boolean, default: false },
+  clearable: { type: Boolean, default: false },
+  confirmHold: { type: Boolean, default: false },
+  confirmType: { type: String, default: 'return' },
+  cursor: { type: Number, default: -1 },
+  cursorColor: { type: String, default: '#0052d9' },
+  cursorSpacing: { type: Number, default: 0 },
+  disableDefaultPadding: { type: Boolean, default: false },
+  disabled: { type: [Boolean, Object as PropType<any>], default: null },
+  fixed: { type: Boolean, default: false },
+  focus: { type: Boolean, default: false },
+  holdKeyboard: { type: Boolean, default: false },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  indicator: { type: Boolean, default: false },
+  label: { type: String, default: '' },
+  maxcharacter: { type: Number, default: -1 },
+  maxlength: { type: Number, default: -1 },
+  placeholder: { type: [String, Object as PropType<any>], default: null },
+  placeholderClass: { type: String, default: 'textarea-placeholder' },
+  placeholderStyle: { type: String, default: '' },
+  readonly: { type: [Boolean, Object as PropType<any>], default: null },
+  selectionEnd: { type: Number, default: -1 },
+  selectionStart: { type: Number, default: -1 },
+  showConfirmBar: { type: Boolean, default: true },
+  value: { type: [String, Number], default: '' },
+  defaultValue: { type: [String, Number], default: '' },
+});
+
+const emit = defineEmits(['blur', 'change', 'enter', 'focus', 'keyboardheightchange', 'linechange', 'update:value']);
+
+// 内部状态
+const dataValue = ref<string>(String(props.value || props.defaultValue || ''));
+const iDisabled = ref<boolean>(props.disabled != null ? !!props.disabled : false);
+
+// 计算最大长度
+const maxLength = computed<number>(() => {
+  if (props.maxlength > -1) return props.maxlength;
+  return props.allowInputOverMax ? 99999 : -1;
+});
+
+const maxLengthText = computed<string>(() => {
+  if (props.maxlength > -1) return String(props.maxlength);
+  if (props.maxcharacter > -1) return String(props.maxcharacter);
+  return '∞';
+});
+
+const currentLength = computed<number>(() => {
+  return dataValue.value.length;
+});
+
+// 类名计算
+const rootClass = computed<string>(() => {
+  return textareaVariants({
+    disabled: iDisabled.value,
+    readonly: props.readonly != null ? !!props.readonly : false,
+    class: props.customClass,
+  });
+});
+
+const textareaClass = computed<string>(() => {
+  const arr = ['t-textarea__inner'];
+  if (iDisabled.value) arr.push('t-textarea__inner--disabled');
+  if (props.readonly) arr.push('t-textarea__inner--readonly');
+  return arr.join(' ');
+});
+
+// 监听 props.value 变化
+watch(() => props.value, (v: any) => {
+  if (v !== undefined && v !== null) {
+    dataValue.value = String(v);
+  }
+});
+
+// 事件处理
+function handleInput(event: any) {
+  const val = event.detail?.value || event.value || '';
+  dataValue.value = val;
+  emit('update:value', val);
+  emit('change', { value: val });
+}
+
+function handleFocus(event: any) {
+  emit('focus', { value: dataValue.value, event });
+}
+
+function handleBlur(event: any) {
+  emit('blur', { value: dataValue.value, event });
+}
+
+function handleConfirm(event: any) {
+  emit('enter', { value: dataValue.value, event });
+}
+
+function handleClear() {
+  dataValue.value = '';
+  emit('update:value', '');
+  emit('change', { value: '', trigger: 'clear' });
+}
+</script>
+
+<style lang="less">
+@import './t-textarea.theme.less';
+
+.t-textarea__label {
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.9);
+  margin-bottom: 8rpx;
+}
+
+.t-textarea__wrapper {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+}
+
+.t-textarea__inner {
+  flex: 1;
+  min-height: 120rpx;
+  padding: 16rpx;
+  font-size: 28rpx;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.9);
+  background: #f5f5f5;
+  border-radius: 12rpx;
+  border: none;
+  outline: none;
+  resize: none;
+
+  &--disabled {
+    color: rgba(0, 0, 0, 0.26);
+    background: #f5f5f5;
+  }
+
+  &--readonly {
+    background: transparent;
+  }
+}
+
+.t-textarea__clear {
+  position: absolute;
+  right: 16rpx;
+  top: 16rpx;
+  width: 40rpx;
+  height: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.t-textarea__indicator {
+  margin-top: 8rpx;
+  text-align: right;
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.4);
+}
+</style>

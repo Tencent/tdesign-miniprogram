@@ -1,0 +1,91 @@
+<template>
+  <view :class="rootClass">
+    <view class="t-dropdown-item__title" @click="onToggle">
+      <text>{{ selectedLabel }}</text>
+      <view class="t-dropdown-item__arrow" :class="arrowClass">
+        <t-icon name="chevron-down" size="14" />
+      </view>
+    </view>
+    <view v-if="expanded" class="t-dropdown-item__popup">
+      <view 
+        v-for="(item, index) in options" 
+        :key="index"
+        :class="optionClass(item)"
+        @click="onOptionClick(item)"
+      >
+        <text>{{ typeof item === 'string' ? item : item.label }}</text>
+        <t-icon v-if="isSelected(item)" name="check" size="14" />
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * DropdownItem - uni-app x 实现
+ * 
+ * 下拉菜单条目组件，用于下拉菜单选项
+ */
+import { dropdownItemVariants } from './t-dropdown-item.variants';
+
+const props = defineProps({
+  /** 选项数据 */
+  options: { type: Array as PropType<(string | Record<string, any>)[]>, default: () => [] },
+  /** 当前选中值 */
+  value: { type: [String, Number], default: '' },
+  /** 占位文本 */
+  placeholder: { type: String, default: '请选择' },
+  /** 是否多选 */
+  multiple: { type: Boolean, default: false },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change', 'update:value']);
+
+const expanded = ref<boolean>(false);
+
+const rootClass = computed(() => 
+  dropdownItemVariants({ 
+    expanded: expanded.value,
+    class: props.customClass 
+  })
+);
+
+const arrowClass = computed<string>(() => expanded.value ? 't-dropdown-item__arrow--expanded' : '');
+
+const selectedLabel = computed<string>(() => {
+  if (props.value === '' || props.value == null) return props.placeholder;
+  
+  const selected = props.options.find(opt => {
+    if (typeof opt === 'string') return opt === props.value;
+    return opt.value === props.value;
+  });
+  
+  if (!selected) return props.placeholder;
+  return typeof selected === 'string' ? selected : selected.label;
+});
+
+function isSelected(item: string | Record<string, any>): boolean {
+  const value = typeof item === 'string' ? item : item.value;
+  if (props.multiple && Array.isArray(props.value)) {
+    return (props.value as any[]).includes(value);
+  }
+  return props.value === value;
+}
+
+function onToggle() {
+  expanded.value = !expanded.value;
+}
+
+function onOptionClick(item: string | Record<string, any>) {
+  const value = typeof item === 'string' ? item : item.value;
+  emit('change', value);
+  emit('update:value', value);
+  expanded.value = false;
+}
+</script>
+
+<style lang="less">
+@import './t-dropdown-item.theme.less';
+</style>

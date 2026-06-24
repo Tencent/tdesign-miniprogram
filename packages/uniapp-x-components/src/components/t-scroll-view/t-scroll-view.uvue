@@ -1,0 +1,75 @@
+<template>
+  <scroll-view 
+    :class="rootClass"
+    :scroll-x="scrollX"
+    :scroll-y="scrollY"
+    :scroll-top="scrollTop"
+    :scroll-left="scrollLeft"
+    :scroll-with-animation="scrollWithAnimation"
+    :show-scrollbar="showScrollbar"
+    :refresher-enabled="refresherEnabled"
+    :refresher-triggered="refresherTriggered"
+    @scroll="onScroll"
+    @scrolltoupper="onScrollToUpper"
+    @scrolltolower="onScrollToLower"
+    @refresherrefresh="onRefresherRefresh"
+  >
+    <slot />
+  </scroll-view>
+</template>
+
+<script setup lang="uts">
+/**
+ * ScrollView - uni-app x 实现
+ * 
+ * 滚动视图组件，支持横向/纵向滚动、下拉刷新等
+ */
+import { scrollViewVariants } from './t-scroll-view.variants';
+
+const props = defineProps({
+  /** 是否允许横向滚动 */
+  scrollX: { type: Boolean, default: false },
+  /** 是否允许纵向滚动 */
+  scrollY: { type: Boolean, default: true },
+  /** 设置竖向滚动条位置 */
+  scrollTop: { type: Number, default: 0 },
+  /** 设置横向滚动条位置 */
+  scrollLeft: { type: Number, default: 0 },
+  /** 是否使用动画过渡 */
+  scrollWithAnimation: { type: Boolean, default: false },
+  /** 是否显示滚动条 */
+  showScrollbar: { type: Boolean, default: true },
+  /** 是否开启下拉刷新 */
+  refresherEnabled: { type: Boolean, default: false },
+  /** 设置当前下拉刷新状态 */
+  refresherTriggered: { type: Boolean, default: false },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['scroll', 'scrolltoupper', 'scrolltolower', 'refresherrefresh']);
+
+const rootClass = computed(() => 
+  scrollViewVariants({ class: props.customClass })
+);
+
+function onScroll(event: UniScrollViewScrollEvent) {
+  emit('scroll', event);
+}
+
+function onScrollToUpper(event: UniScrollViewScrollEvent) {
+  emit('scrolltoupper', event);
+}
+
+function onScrollToLower(event: UniScrollViewScrollEvent) {
+  emit('scrolltolower', event);
+}
+
+function onRefresherRefresh(event: UniScrollViewRefresherEvent) {
+  emit('refresherrefresh', event);
+}
+</script>
+
+<style lang="less">
+@import './t-scroll-view.theme.less';
+</style>

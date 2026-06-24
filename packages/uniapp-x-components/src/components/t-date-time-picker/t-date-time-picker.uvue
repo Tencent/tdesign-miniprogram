@@ -1,0 +1,316 @@
+<template>
+  <t-popup
+    v-model:visible="dataVisible"
+    :custom-style="props.customStyle"
+    placement="bottom"
+    :overlay-style="props.overlayStyle"
+  >
+    <view :class="rootClass">
+      <!-- 顶部工具栏 -->
+      <view :class="toolbarClass">
+        <view :class="cancelBtnClass" @click="handleCancel">
+          {{ props.cancelBtn }}
+        </view>
+        <view :class="titleClass">
+          {{ props.title }}
+        </view>
+        <view :class="confirmBtnClass" @click="handleConfirm">
+          {{ props.confirmBtn }}
+        </view>
+      </view>
+
+      <!-- 选择器内容 -->
+      <picker-view
+        :class="pickerViewClass"
+        :value="pickerValue"
+        @change="onPickerChange"
+      >
+        <picker-view-column v-if="showYear">
+          <view
+            v-for="(year, index) in years"
+            :key="index"
+            :class="pickerItemClass"
+          >
+            {{ year }}年
+          </view>
+        </picker-view-column>
+
+        <picker-view-column v-if="showMonth">
+          <view
+            v-for="(month, index) in months"
+            :key="index"
+            :class="pickerItemClass"
+          >
+            {{ month }}月
+          </view>
+        </picker-view-column>
+
+        <picker-view-column v-if="showDay">
+          <view
+            v-for="(day, index) in days"
+            :key="index"
+            :class="pickerItemClass"
+          >
+            {{ day }}日
+          </view>
+        </picker-view-column>
+
+        <picker-view-column v-if="showHour">
+          <view
+            v-for="(hour, index) in hours"
+            :key="index"
+            :class="pickerItemClass"
+          >
+            {{ hour }}时
+          </view>
+        </picker-view-column>
+
+        <picker-view-column v-if="showMinute">
+          <view
+            v-for="(minute, index) in minutes"
+            :key="index"
+            :class="pickerItemClass"
+          >
+            {{ minute }}分
+          </view>
+        </picker-view-column>
+
+        <picker-view-column v-if="showSecond">
+          <view
+            v-for="(second, index) in seconds"
+            :key="index"
+            :class="pickerItemClass"
+          >
+            {{ second }}秒
+          </view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </t-popup>
+</template>
+
+<script setup lang="uts">
+/**
+ * DateTimePicker - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/date-time-picker
+ */
+import { dateTimePickerVariants } from './t-date-time-picker.variants';
+
+const props = defineProps({
+  cancelBtn: { type: String, default: '取消' },
+  confirmBtn: { type: String, default: '确认' },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  defaultValue: { type: String, default: '' },
+  enableTimePicker: { type: Boolean, default: false },
+  end: { type: String, default: '' },
+  format: { type: String, default: 'YYYY-MM-DD' },
+  mode: { type: String, default: 'date' },
+  overlayStyle: { type: String, default: '' },
+  start: { type: String, default: '' },
+  title: { type: String, default: '' },
+  value: { type: String, default: undefined },
+  visible: { type: Boolean, default: false },
+});
+
+const emit = defineEmits(['cancel', 'change', 'close', 'confirm', 'update:value', 'update:visible']);
+
+// 内部状态
+const dataVisible = ref<boolean>(props.visible);
+const pickerValue = ref<number[]>([]);
+const dataValue = ref<string>('');
+
+// 年份范围
+const currentYear = new Date().getFullYear();
+const years = ref<number[]>([]);
+const months = ref<number[]>([]);
+const days = ref<number[]>([]);
+const hours = ref<number[]>([]);
+const minutes = ref<number[]>([]);
+const seconds = ref<number[]>([]);
+
+// 显示控制
+const showYear = computed<boolean>(() => props.mode === 'date' || props.mode === 'datetime');
+const showMonth = computed<boolean>(() => props.mode === 'date' || props.mode === 'datetime');
+const showDay = computed<boolean>(() => props.mode === 'date' || props.mode === 'datetime');
+const showHour = computed<boolean>(() => props.mode === 'datetime' || props.mode === 'time');
+const showMinute = computed<boolean>(() => props.mode === 'datetime' || props.mode === 'time');
+const showSecond = computed<boolean>(() => props.mode === 'datetime' || props.mode === 'time');
+
+// 初始化
+onMounted(() => {
+  initData();
+  initValue();
+});
+
+// 初始化数据
+function initData() {
+  // 年份
+  const startYear = props.start ? parseInt(props.start) : currentYear - 10;
+  const endYear = props.end ? parseInt(props.end) : currentYear + 10;
+  years.value = Array.from({ length: endYear - startYear + 1 }, (_, i) => startYear + i);
+
+  // 月份
+  months.value = Array.from({ length: 12 }, (_, i) => i + 1);
+
+  // 天数
+  days.value = Array.from({ length: 31 }, (_, i) => i + 1);
+
+  // 小时
+  hours.value = Array.from({ length: 24 }, (_, i) => i);
+
+  // 分钟
+  minutes.value = Array.from({ length: 60 }, (_, i) => i);
+
+  // 秒
+  seconds.value = Array.from({ length: 60 }, (_, i) => i);
+}
+
+// 初始化值
+function initValue() {
+  const val = props.value || props.defaultValue;
+  if (val) {
+    dataValue.value = val;
+    parseValue(val);
+  } else {
+    const now = new Date();
+    pickerValue.value = [
+      years.value.indexOf(now.getFullYear()),
+      now.getMonth(),
+      now.getDate() - 1,
+      now.getHours(),
+      now.getMinutes(),
+      now.getSeconds(),
+    ].filter(v => v >= 0);
+  }
+}
+
+// 解析值
+function parseValue(val: string) {
+  const date = new Date(val);
+  if (isNaN(date.getTime())) return;
+
+  const yearIdx = years.value.indexOf(date.getFullYear());
+  const monthIdx = date.getMonth();
+  const dayIdx = date.getDate() - 1;
+  const hourIdx = date.getHours();
+  const minuteIdx = date.getMinutes();
+  const secondIdx = date.getSeconds();
+
+  pickerValue.value = [yearIdx, monthIdx, dayIdx, hourIdx, minuteIdx, secondIdx].filter(v => v >= 0);
+}
+
+// 根节点类名
+const rootClass = computed<string>(() => {
+  return dateTimePickerVariants({
+    class: props.customClass,
+  });
+});
+
+// 工具栏类名
+const toolbarClass = computed<string>(() => {
+  return 't-date-time-picker__toolbar';
+});
+
+// 取消按钮类名
+const cancelBtnClass = computed<string>(() => {
+  return 't-date-time-picker__cancel';
+});
+
+// 标题类名
+const titleClass = computed<string>(() => {
+  return 't-date-time-picker__title';
+});
+
+// 确认按钮类名
+const confirmBtnClass = computed<string>(() => {
+  return 't-date-time-picker__confirm';
+});
+
+// 选择器视图类名
+const pickerViewClass = computed<string>(() => {
+  return 't-date-time-picker__view';
+});
+
+// 选择器项类名
+const pickerItemClass = computed<string>(() => {
+  return 't-date-time-picker__item';
+});
+
+// 处理选择器变化
+function onPickerChange(e: any) {
+  const value = e.detail.value;
+  pickerValue.value = value;
+}
+
+// 处理取消
+function handleCancel() {
+  dataVisible.value = false;
+  emit('cancel');
+}
+
+// 处理确认
+function handleConfirm() {
+  const selected = pickerValue.value;
+  const year = years.value[selected[0]] || currentYear;
+  const month = months.value[selected[1]] || 1;
+  const day = days.value[selected[2]] || 1;
+  const hour = hours.value[selected[3]] || 0;
+  const minute = minutes.value[selected[4]] || 0;
+  const second = seconds.value[selected[5]] || 0;
+
+  const date = new Date(year, month - 1, day, hour, minute, second);
+  const formatted = formatDate(date);
+
+  dataValue.value = formatted;
+  dataVisible.value = false;
+
+  emit('confirm', { value: formatted });
+  emit('change', { value: formatted });
+  emit('update:value', formatted);
+}
+</script>
+
+<style lang="less">
+@import './t-date-time-picker.theme.less';
+
+.t-date-time-picker {
+  background: #fff;
+  border-radius: 16rpx 16rpx 0 0;
+
+  &__toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 88rpx;
+    padding: 0 32rpx;
+    border-bottom: 1rpx solid #e7e7e7;
+  }
+
+  &__cancel,
+  &__confirm {
+    font-size: 28rpx;
+    color: #0052d9;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-size: 32rpx;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.9);
+  }
+
+  &__view {
+    height: 400rpx;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28rpx;
+    color: rgba(0, 0, 0, 0.9);
+  }
+}
+</style>

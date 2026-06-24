@@ -1,0 +1,54 @@
+<template>
+  <view :class="rootClass">
+    <view 
+      v-for="(item, index) of options" 
+      :key="item.value"
+      :class="itemClass(item)"
+      @click="onItemClick(item, index)"
+    >
+      <text class="t-tree-select__label">{{ item.label }}</text>
+      <view v-if="item.children && item.children.length > 0" class="t-tree-select__arrow">
+        <t-icon name="chevron-right" size="14" />
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+
+import { computed } from 'vue';
+import { treeSelectVariants } from './t-tree-select.variants';
+import type { TreeSelectOption } from './t-tree-select.types';
+
+const props = defineProps({
+  /** 选项数据 */
+  options: { type: Array as PropType<TreeSelectOption[]>, default: () => [] },
+  /** 当前选中的值 */
+  value: { type: [String, Number], default: '' },
+  /** 层级索引 */
+  level: { type: Number, default: 0 },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change', 'click']);
+
+const rootClass = computed(() => 
+  treeSelectVariants({ class: props.customClass })
+);
+
+function itemClass(item: TreeSelectOption): string {
+  const baseClass = 't-tree-select__item';
+  const activeClass = props.value === item.value ? ' t-tree-select__item--active' : '';
+  return baseClass + activeClass;
+}
+
+function onItemClick(item: TreeSelectOption, index: number) {
+  emit('click', item, index);
+  emit('change', item.value, item);
+}
+</script>
+
+<style lang="less">
+@import './t-tree-select.theme.less';
+</style>

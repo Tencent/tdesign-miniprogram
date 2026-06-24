@@ -1,0 +1,236 @@
+<template>
+  <view
+    :class="rootClass"
+    :style="props.customStyle"
+    @click="handleTap"
+  >
+    <!-- 图标区 -->
+    <view v-if="props.theme === 'default'" :class="iconClass">
+      <!-- 自定义图标 slot -->
+      <slot v-if="props.icon === 'slot'" name="icon" />
+      <!-- 图片图标 -->
+      <view v-else-if="isArrayIcon" class="t-checkbox__icon">
+        <image
+          :src="dataChecked ? (dataIndeterminate && iconArray[2] ? iconArray[2] : iconArray[0]) : iconArray[1]"
+          class="t-checkbox__icon-image"
+        />
+      </view>
+      <!-- 内置图标 -->
+      <view v-else class="t-checkbox__icon-wrapper">
+        <text v-if="dataChecked" :class="checkedIconClass">{{ dataIndeterminate ? '−' : '✓' }}</text>
+        <view v-else :class="uncheckIconClass" />
+      </view>
+    </view>
+
+    <!-- 内容区 -->
+    <view class="t-checkbox__content" @click.stop="handleContentTap">
+      <view :class="labelClass" :style="labelStyle">
+        <text v-if="props.label">{{ props.label }}</text>
+        <slot />
+        <slot name="label" />
+      </view>
+      <view v-if="props.content" :class="contentClass" :style="contentStyle">
+        <text>{{ props.content }}</text>
+        <slot name="content" />
+      </view>
+    </view>
+
+    <!-- 边框 -->
+    <view v-if="props.theme === 'default' && !dataBorderless" :class="borderClass" />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Checkbox - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/checkbox/checkbox.vue：
+ *  - 支持单独使用或在中 checkbox-group 中使用
+ *  - checked 受控 / defaultChecked 非受控
+ *  - checkAll 全选模式（需在 checkbox-group 中使用）
+ *  - indeterminate 半选状态
+ *  - icon: circle/rectangle/line/slot/Array
+ *  - placement: left/right
+ *  - borderless 无边框模式
+ *  - readonly 只读
+ *  - contentDisabled 内容区不触发选中
+ */
+import { computed, ref, watch } from 'vue';
+import { checkboxVariants } from './t-checkbox.variants';
+
+const props = defineProps({
+  // 基础属性
+  block: { type: Boolean, default: true },
+  borderless: { type: [Boolean, Object as PropType<any>], default: null },
+  checkAll: { type: Boolean, default: false },
+  checked: { type: Boolean, default: false },
+  defaultChecked: { type: Boolean, default: false },
+  content: { type: String, default: '' },
+  contentDisabled: { type: Boolean, default: false },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  disabled: { type: [Boolean, Object as PropType<any>], default: null },
+  icon: { type: [String, Array as PropType<string[] | null>], default: 'circle' },
+  indeterminate: { type: Boolean, default: false },
+  label: { type: String, default: '' },
+  maxContentRow: { type: Number, default: 5 },
+  maxLabelRow: { type: Number, default: 3 },
+  name: { type: String, default: '' },
+  placement: { type: String, default: 'left' },
+  readonly: { type: [Boolean, Object as PropType<any>], default: null },
+  relationKey: { type: String, default: '' },
+  theme: { type: String, default: 'default' },
+  value: { type: [String, Number, Boolean], default: '' },
+});
+
+const emit = defineEmits(['change', 'update:checked']);
+
+// 内部状态
+const dataChecked = ref<boolean>(props.checked || props.defaultChecked);
+const dataIndeterminate = ref<boolean>(props.indeterminate);
+const dataBorderless = ref<boolean>(
+  props.borderless != null ? !!props.borderless : false
+);
+const iDisabled = ref<boolean>(props.disabled != null ? !!props.disabled : false);
+
+// 监听 props 变化
+watch(() => props.checked, (v: boolean) => {
+  dataChecked.value = v;
+});
+watch(() => props.indeterminate, (v: boolean) => {
+  dataIndeterminate.value = v;
+});
+
+// 判断 icon 是否为数组
+const isArrayIcon = computed<boolean>(() => {
+  return Array.isArray(props.icon);
+});
+const iconArray = computed<string[]>(() => {
+  return isArrayIcon.value ? (props.icon as any as string[]) : [];
+});
+
+// 图标相关类名
+const iconClass = computed<string>(() => {
+  const arr = ['t-checkbox__icon'];
+  arr.push(`t-checkbox__icon--${props.placement}`);
+  if (dataChecked.value) arr.push('t-checkbox__icon--checked');
+  if (iDisabled.value) arr.push('t-checkbox__icon--disabled');
+  return arr.join(' ');
+});
+
+const checkedIconClass = computed<string>(() => {
+  const iconType = typeof props.icon === 'string' ? props.icon : 'circle';
+  return `t-checkbox__icon-check t-checkbox__icon-check--${iconType}`;
+});
+
+const uncheckIconClass = computed<string>(() => {
+  const iconType = typeof props.icon === 'string' ? props.icon : 'circle';
+  return `t-checkbox__icon-${iconType}`;
+});
+
+// 标签样式
+const labelStyle = computed<string>(() => {
+  return `-webkit-line-clamp: ${props.maxLabelRow}`;
+});
+
+const contentStyle = computed<string>(() => {
+  return `-webkit-line-clamp: ${props.maxContentRow}`;
+});
+
+// 根节点类名
+const rootClass = computed<string>(() => {
+  return checkboxVariants({
+    placement: props.placement,
+    theme: props.theme,
+    checked: dataChecked.value,
+    block: props.block,
+    disabled: iDisabled.value,
+    class: props.customClass,
+  });
+});
+
+const labelClass = computed<string>(() => {
+  const arr = ['t-checkbox__title'];
+  if (iDisabled.value) arr.push('t-checkbox__title--disabled');
+  if (dataChecked.value) arr.push('t-checkbox__title--checked');
+  return arr.join(' ');
+});
+
+const contentClass = computed<string>(() => {
+  return iDisabled.value
+    ? 't-checkbox__description t-checkbox__description--disabled'
+    : 't-checkbox__description';
+});
+
+const borderClass = computed<string>(() => {
+  return `t-checkbox__border t-checkbox__border--${props.placement}`;
+});
+
+// 点击事件
+function handleTap() {
+  if (iDisabled.value || props.readonly) return;
+  toggle();
+}
+
+function handleContentTap() {
+  if (iDisabled.value || props.readonly || props.contentDisabled) return;
+  toggle();
+}
+
+function toggle() {
+  const next = !dataChecked.value;
+  dataChecked.value = next;
+  emit('update:checked', next);
+  emit('change', {
+    value: props.value,
+    label: props.label,
+    checked: next,
+  });
+}
+
+// 供父组件（checkbox-group）调用的方法
+function setDisabled(disabled: boolean) {
+  iDisabled.value = props.disabled != null ? !!props.disabled : disabled;
+}
+
+function setBorderless(borderless: boolean) {
+  dataBorderless.value = props.borderless != null ? !!props.borderless : borderless;
+}
+
+// 导出供父组件使用
+defineExpose({
+  setDisabled,
+  setBorderless,
+  dataChecked,
+  props,
+});
+</script>
+
+<style lang="less">
+@import './t-checkbox.theme.less';
+
+.t-checkbox__icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.t-checkbox__icon-check {
+  font-size: 32rpx;
+  color: var(--td-checkbox-icon-checked-color, #0052d9);
+}
+
+.t-checkbox__icon-circle {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 50%;
+  border: 2rpx solid var(--td-checkbox-icon-color, #dcdcdc);
+}
+
+.t-checkbox__icon-rectangle {
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 8rpx;
+  border: 2rpx solid var(--td-checkbox-icon-color, #dcdcdc);
+}
+</style>

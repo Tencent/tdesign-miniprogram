@@ -1,0 +1,105 @@
+<template>
+  <view :class="rootClass">
+    <view class="t-table__header" v-if="showHeader">
+      <view 
+        v-for="(col, colIndex) in columns" 
+        :key="colIndex"
+        :class="headerCellClass(col)"
+        :style="col.width ? `width: ${col.width}px;` : ''"
+      >
+        <text>{{ col.title }}</text>
+        <view v-if="col.sortable" class="t-table__sort" @click="onSort(col)">
+          <t-icon name="caret-up-small" size="12" />
+          <t-icon name="caret-down-small" size="12" />
+        </view>
+      </view>
+    </view>
+    <view class="t-table__body">
+      <view 
+        v-for="(row, rowIndex) in data" 
+        :key="rowIndex"
+        :class="rowClass(rowIndex)"
+        @click="onRowClick(row, rowIndex)"
+      >
+        <view 
+          v-for="(col, colIndex) in columns" 
+          :key="colIndex"
+          :class="cellClass(col)"
+          :style="col.width ? `width: ${col.width}px;` : ''"
+        >
+          <slot :name="col.key" :row="row" :col="col" :index="rowIndex">
+            <text>{{ row[col.key] }}</text>
+          </slot>
+        </view>
+      </view>
+    </view>
+    <view v-if="showFooter" class="t-table__footer">
+      <slot name="footer" />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Table - uni-app x 实现
+ * 
+ * 表格组件，用于展示结构化数据
+ */
+import { tableVariants } from './t-table.variants';
+import type { TableColumn } from './t-table.types';
+
+const props = defineProps({
+  /** 表格列配置 */
+  columns: { type: Array as PropType<TableColumn[]>, default: () => [] },
+  /** 表格数据 */
+  data: { type: Array as PropType<Record<string, any>[]>, default: () => [] },
+  /** 是否显示表头 */
+  showHeader: { type: Boolean, default: true },
+  /** 是否显示页脚 */
+  showFooter: { type: Boolean, default: false },
+  /** 行键名 */
+  rowKey: { type: String, default: 'id' },
+  /** 是否显示边框 */
+  bordered: { type: Boolean, default: true },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['rowclick', 'sort']);
+
+const rootClass = computed(() => 
+  tableVariants({ 
+    bordered: props.bordered,
+    class: props.customClass 
+  })
+);
+
+function headerCellClass(col: TableColumn): string {
+  const baseClass = 't-table__cell t-table__header-cell';
+  const sortClass = col.sortable ? ' t-table__cell--sortable' : '';
+  return baseClass + sortClass;
+}
+
+function cellClass(col: TableColumn): string {
+  return 't-table__cell t-table__body-cell';
+}
+
+function rowClass(index: number): string {
+  const baseClass = 't-table__row';
+  const stripeClass = index % 2 === 1 ? ' t-table__row--stripe' : '';
+  return baseClass + stripeClass;
+}
+
+function onRowClick(row: Record<string, any>, index: number) {
+  emit('rowclick', row, index);
+}
+
+function onSort(col: TableColumn) {
+  if (!col.sortable) return;
+  emit('sort', col.key, col.sortOrder === 'asc' ? 'desc' : 'asc');
+}
+</script>
+
+<style lang="less">
+@import './t-table.theme.less';
+</style>

@@ -1,0 +1,40 @@
+<template>
+  <view :class="rootClass">
+    <text class="t-paragraph__text">{{ content }}</text>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Paragraph - uni-app x 实现
+ * 
+ * 段落文本组件，支持主题色、尺寸等属性
+ */
+import { paragraphVariants } from './t-paragraph.variants';
+import type { ParagraphTheme, ParagraphSize } from './t-paragraph.types';
+
+const props = defineProps({
+  /** 段落内容 */
+  content: { type: String, default: '' },
+  /** 主题 */
+  theme: { type: String as PropType<ParagraphTheme>, default: 'default' },
+  /** 尺寸 */
+  size: { type: String as PropType<ParagraphSize>, default: 'medium' },
+  /** 是否可选中 */
+  selectable: { type: Boolean, default: false },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const rootClass = computed(() => 
+  paragraphVariants({ 
+    theme: props.theme,
+    size: props.size,
+    class: props.customClass 
+  })
+);
+</script>
+
+<style lang="less">
+@import './t-paragraph.theme.less';
+</style>

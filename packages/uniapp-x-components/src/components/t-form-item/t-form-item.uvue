@@ -1,0 +1,315 @@
+<template>
+  <view :class="rootClass" :style="props.customStyle">
+    <view :class="wrapClass">
+      <!-- 标签区域 -->
+      <slot name="label">
+        <view
+          v-if="props.label"
+          :class="labelClass"
+          :style="'width: ' + dataLabelWidth"
+        >
+          <text :class="labelTextClass">{{ props.label }}</text>
+          <text v-if="dataColon" class="t-form__colon">:</text>
+        </view>
+      </slot>
+
+      <!-- 内容区域 -->
+      <view :class="controlsClass">
+        <view :class="controlsContentClass" :style="contentStyle">
+          <slot />
+        </view>
+
+        <!-- 帮助信息 -->
+        <slot name="help">
+          <view v-if="props.help" :class="helpClass">
+            <text>{{ props.help }}</text>
+          </view>
+        </slot>
+
+        <!-- 校验提示信息 -->
+        <view v-if="(errorList.length > 0 && dataShowErrorMessage) || successList.length > 0" :class="extraClass">
+          <text>{{ errorList.length > 0 && dataShowErrorMessage ? errorList[0].message : successList[0].message }}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * FormItem - uni-app x 实现
+ *
+ * 行为契约对齐 @tdesign/uniapp/form-item
+ */
+import { formItemVariants } from './t-form-item.variants';
+
+const props = defineProps({
+  arrow: { type: Boolean, default: false },
+  contentAlign: { type: String, default: 'left' },
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  help: { type: String, default: '' },
+  label: { type: String, default: '' },
+  labelAlign: { type: String, default: '' },
+  labelWidth: { type: [String, Number], default: '' },
+  name: { type: String, default: '' },
+  requiredMark: { type: [Boolean, Object as PropType<any>], default: null },
+  rules: { type: Array as PropType<any[]>, default: () => [] },
+  showErrorMessage: { type: [Boolean, Object as PropType<any>], default: null },
+});
+
+const emit = defineEmits(['validate']);
+
+// 内部状态
+const errorList = ref<any[]>([]);
+const successList = ref<any[]>([]);
+const verifyStatus = ref<string>('to_be_validated');
+const dataLabelAlign = ref<string>('right');
+const dataLabelWidth = ref<string>('81px');
+const dataRequiredMark = ref<boolean>(false);
+const dataShowErrorMessage = ref<boolean>(true);
+const dataContentAlign = ref<string>('left');
+const dataColon = ref<boolean>(false);
+
+// 从父组件 form 获取配置
+const formContext = inject('formContext', null);
+
+// 类名计算
+const rootClass = computed<string>(() => {
+  const arr = ['t-form__item'];
+  if (errorList.value.length > 0 && dataShowErrorMessage.value) {
+    arr.push('t-form__item--error');
+  }
+  arr.push(`t-form__item--${dataLabelAlign.value}`);
+  if (props.customClass) arr.push(props.customClass);
+  return arr.join(' ');
+});
+
+const wrapClass = computed<string>(() => {
+  return `t-form__item-wrap t-form__item--${dataLabelAlign.value}`;
+});
+
+const labelClass = computed<string>(() => {
+  const arr = ['t-form__label'];
+  arr.push(`t-form__label--${dataLabelAlign.value}`);
+  if (dataRequiredMark.value) {
+    arr.push('t-form__label--required');
+  }
+  return arr.join(' ');
+});
+
+const labelTextClass = computed<string>(() => {
+  return 't-form__label-text';
+});
+
+const controlsClass = computed<string>(() => {
+  const arr = ['t-form__controls'];
+  if (errorList.value.length > 0 && dataShowErrorMessage.value) {
+    arr.push('t-form__controls--error');
+  }
+  return arr.join(' ');
+});
+
+const controlsContentClass = computed<string>(() => {
+  return `t-form__controls-content t-form__controls--${dataContentAlign.value}`;
+});
+
+const contentStyle = computed<string>(() => {
+  return dataContentAlign.value ? `text-align: ${dataContentAlign.value}` : '';
+});
+
+const helpClass = computed<string>(() => {
+  return `t-form__item-help t-form__controls--${dataContentAlign.value}`;
+});
+
+const extraClass = computed<string>(() => {
+  return `t-form__item-extra t-form__controls--${dataContentAlign.value}`;
+});
+
+// 初始化
+onMounted(() => {
+  if (formContext) {
+    // 注册到父表单
+    formContext.addFormItem && formContext.addFormItem(getPublicInstance());
+
+    // 从父表单获取配置
+    const formProps = formContext.props || {};
+    dataLabelAlign.value = props.labelAlign || formProps.labelAlign || 'right';
+    dataLabelWidth.value = normalizeLabelWidth(props.labelWidth || formProps.labelWidth || '81px');
+    dataContentAlign.value = props.contentAlign || formProps.contentAlign || 'left';
+    dataShowErrorMessage.value = props.showErrorMessage != null ? !!props.showErrorMessage : formProps.showErrorMessage !== false;
+    dataColon.value = formProps.colon || false;
+
+    // 判断是否需要显示必填标记
+    const formRules = formProps.rules || {};
+    const fieldRules = formRules[props.name];
+    const isRequired = fieldRules && fieldRules.some((rule: any) => rule.required);
+    dataRequiredMark.value = props.requiredMark != null ? !!props.requiredMark : formProps.requiredMark || isRequired;
+  }
+});
+
+onUnmounted(() => {
+  if (formContext) {
+    formContext.removeFormItem && formContext.removeFormItem(getPublicInstance());
+  }
+});
+
+// 规范化 labelWidth
+function normalizeLabelWidth(value: string | number): string {
+  if (!value) return '81px';
+  const str = String(value);
+  if (/^\d+$/.test(str)) return `${str}px`;
+  return str;
+}
+
+// 获取公共实例（用于父组件调用）
+function getPublicInstance(): any {
+  return {
+    props,
+    validate,
+    clearValidate,
+    resetField,
+    setValidateMessage,
+  };
+}
+
+// 验证方法
+async function validate(trigger: string = 'all'): Promise<any> {
+  const rules = props.rules || [];
+  if (rules.length === 0) {
+    return { [props.name]: true };
+  }
+
+  // TODO: 实现完整的校验逻辑
+  // 这里需要获取表单数据，然后校验
+  return { [props.name]: true };
+}
+
+// 清空校验状态
+function clearValidate() {
+  errorList.value = [];
+  successList.value = [];
+  verifyStatus.value = 'to_be_validated';
+}
+
+// 重置字段
+function resetField() {
+  clearValidate();
+}
+
+// 设置校验信息
+function setValidateMessage(messages: any[]) {
+  const errorList_ = messages.filter((item: any) => item.type !== 'success');
+  const successList_ = messages.filter((item: any) => item.type === 'success');
+
+  errorList.value = errorList_;
+  successList.value = successList_;
+  verifyStatus.value = errorList_.length > 0 ? 'fail' : 'success';
+}
+
+// 暴露方法供父组件调用
+defineExpose({
+  validate,
+  clearValidate,
+  resetField,
+  setValidateMessage,
+  props,
+});
+</script>
+
+<style lang="less">
+@import './t-form-item.theme.less';
+
+.t-form__item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24rpx;
+
+  &--left {
+    .t-form__label {
+      text-align: left;
+    }
+  }
+
+  &--right {
+    .t-form__label {
+      text-align: right;
+    }
+  }
+
+  &--top {
+    .t-form__item-wrap {
+      flex-direction: column;
+    }
+
+    .t-form__label {
+      width: 100% !important;
+      margin-bottom: 8rpx;
+    }
+  }
+
+  &--error {
+    .t-form__controls {
+      border-color: #e34d59;
+    }
+  }
+}
+
+.t-form__item-wrap {
+  display: flex;
+  align-items: flex-start;
+  gap: 16rpx;
+}
+
+.t-form__label {
+  flex-shrink: 0;
+  font-size: 28rpx;
+  color: rgba(0, 0, 0, 0.9);
+  line-height: 44rpx;
+
+  &--required {
+    &::before {
+      content: '*';
+      color: #e34d59;
+      margin-right: 4rpx;
+    }
+  }
+
+  &-text {
+    display: inline;
+  }
+}
+
+.t-form__colon {
+  margin-left: 4rpx;
+}
+
+.t-form__controls {
+  flex: 1;
+  min-width: 0;
+
+  &-content {
+    width: 100%;
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--right {
+    text-align: right;
+  }
+}
+
+.t-form__item-help {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.t-form__item-extra {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #e34d59;
+}
+</style>

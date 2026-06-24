@@ -1,0 +1,45 @@
+<template>
+  <view :class="rootClass">
+    <slot />
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Locale - uni-app x 实现
+ * 
+ * 国际化组件，用于多语言支持
+ */
+import { localeVariants } from './t-locale.variants';
+
+const props = defineProps({
+  /** 当前语言 */
+  locale: { type: String, default: 'zh-CN' },
+  /** 翻译资源 */
+  messages: { type: Object as PropType<Record<string, Record<string, string>>>, default: () => ({}) },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const rootClass = computed(() => localeVariants({ class: props.customClass }));
+
+// TODO: 实现 provide/inject 机制，向子组件提供国际化能力
+// 提供 t() 函数用于翻译
+
+/**
+ * 翻译函数
+ * @param key 翻译键
+ * @param defaultText 默认文本
+ */
+ function t(key: string, defaultText?: string): string {
+  const messages = props.messages[props.locale];
+  if (messages && messages[key]) {
+    return messages[key];
+  }
+  return defaultText || key;
+}
+</script>
+
+<style lang="less">
+@import './t-locale.theme.less';
+</style>

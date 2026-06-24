@@ -1,0 +1,224 @@
+<template>
+  <view :class="rootClass" :style="customStyle">
+    <view :class="railClass" @click="onRailClick">
+      <view :class="trackClass" :style="trackStyle" />
+      <view :class="thumbClass" :style="thumbStyle" @touchstart="onThumbTouchStart" @touchmove="onThumbTouchMove" @touchend="onThumbTouchEnd">
+        <view v-if="showExtremeValue" :class="valueTipClass">
+          {{ formatValue(currentValue) }}
+        </view>
+      </view>
+      <view v-if="range" :class="[thumbClass, 't-slider__thumb--end']" :style="endThumbStyle" @touchstart="onEndThumbTouchStart" @touchmove="onEndThumbTouchMove" @touchend="onEndThumbTouchEnd">
+        <view v-if="showExtremeValue" :class="valueTipClass">
+          {{ formatValue(endValue) }}
+        </view>
+      </view>
+    </view>
+    <view v-if="showExtremeValue" :class="extremeClass">
+      <text :class="extremeMinClass">{{ formatValue(min) }}</text>
+      <text :class="extremeMaxClass">{{ formatValue(max) }}</text>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+import { sliderVariants } from './t-slider.variants';
+
+const props = defineProps({
+  customClass: { type: String, default: '' },
+  customStyle: { type: String, default: '' },
+  disabled: { type: Boolean, default: false },
+  formatTooltip: { type: Function as PropType<(value: number) => string>, default: null },
+  inputNumberProps: { type: Object as PropType<any>, default: null },
+  label: { type: String, default: '' },
+  layout: { type: String, default: 'horizontal' },
+  marks: { type: Object as PropType<any>, default: null },
+  max: { type: Number, default: 100 },
+  min: { type: Number, default: 0 },
+  range: { type: Boolean, default: false },
+  step: { type: Number, default: 1 },
+  showExtremeValue: { type: Boolean, default: false },
+  theme: { type: String, default: 'default' },
+  value: { type: Number, default: undefined },
+  modelValue: { type: Number, default: undefined },
+  defaultValue: { type: Number, default: 0 },
+});
+
+const emit = defineEmits(['change', 'changing', 'update:modelValue', 'update:value']);
+
+const currentValue = ref<number>(props.defaultValue);
+const endValue = ref<number>(props.max);
+const railRect = ref<any>(null);
+const RAIL_WIDTH = 300;
+
+onMounted(() => {
+  initValue();
+  queryRailRect();
+});
+
+watch(() => props.value, (v) => {
+  if (v !== undefined) currentValue.value = v;
+});
+watch(() => props.modelValue, (v) => {
+  if (v !== undefined) currentValue.value = v;
+});
+
+function initValue() {
+  const v = props.value !== undefined ? props.value : props.modelValue;
+  if (v !== undefined) {
+    currentValue.value = v as number;
+  }
+}
+
+function queryRailRect() {
+  uni.createSelectorQuery().in(getCurrentInstance()).select('.t-slider__rail').boundingClientRect().exec((res) => {
+    if (res[0]) railRect.value = res[0];
+  });
+}
+
+const rootClass = computed<string>(() => sliderVariants({ class: props.customClass }));
+const railClass = computed<string>(() => 't-slider__rail');
+const trackClass = computed<string>(() => 't-slider__track');
+const thumbClass = computed<string>(() => 't-slider__thumb');
+const valueTipClass = computed<string>(() => 't-slider__value-tip');
+const extremeClass = computed<string>(() => 't-slider__extreme');
+const extremeMinClass = computed<string>(() => 't-slider__extreme--min');
+const extremeMaxClass = computed<string>(() => 't-slider__extreme--max');
+
+const trackStyle = computed<string>(() => {
+  const percent = (currentValue.value - props.min) / (props.max - props.min) * 100;
+  return `width: ${percent}%`;
+});
+
+const thumbStyle = computed<string>(() => {
+  const percent = (currentValue.value - props.min) / (props.max - props.min) * 100;
+  return `left: ${percent}%`;
+});
+
+const endThumbStyle = computed<string>(() => {
+  const percent = (endValue.value - props.min) / (props.max - props.min) * 100;
+  return `left: ${percent}%`;
+});
+
+function formatValue(value: number): string {
+  if (props.formatTooltip) return props.formatTooltip(value);
+  return String(value);
+}
+
+function onRailClick(e: any) {
+  if (props.disabled) return;
+  const touch = e.detail ? e.detail : e.touches?.[0] || e.changedTouches?.[0];
+  if (!touch || !railRect.value) return;
+  const x = touch.pageX - railRect.value.left;
+  const percent = Math.max(0, Math.min(1, x / railRect.value.width));
+  const value = props.min + percent * (props.max - props.min);
+  const stepped = Math.round(value / props.step) * props.step;
+  currentValue.value = Math.max(props.min, Math.min(props.max, stepped));
+  emitChange();
+}
+
+function onThumbTouchStart(e: any) {}
+function onThumbTouchMove(e: any) {
+  if (props.disabled) return;
+  const touch = e.touches[0];
+  if (!touch || !railRect.value) return;
+  queryRailRect();
+  setTimeout(() => {
+    if (!railRect.value) return;
+    const x = Math.max(0, Math.min(touch.pageX - railRect.value.left, railRect.value.width));
+    const percent = x / railRect.value.width;
+    const value = props.min + percent * (props.max - props.min);
+    const stepped = Math.round(value / props.step) * props.step;
+    currentValue.value = Math.max(props.min, Math.min(props.max, stepped));
+    emit('changing', currentValue.value);
+  }, 0);
+}
+function onThumbTouchEnd(e: any) {
+  emitChange();
+}
+
+function onEndThumbTouchStart(e: any) {}
+function onEndThumbTouchMove(e: any) {
+  if (props.disabled) return;
+  const touch = e.touches[0];
+  if (!touch || !railRect.value) return;
+  queryRailRect();
+  setTimeout(() => {
+    if (!railRect.value) return;
+    const x = Math.max(0, Math.min(touch.pageX - railRect.value.left, railRect.value.width));
+    const percent = x / railRect.value.width;
+    const value = props.min + percent * (props.max - props.min);
+    const stepped = Math.round(value / props.step) * props.step;
+    endValue.value = Math.max(currentValue.value, Math.min(props.max, stepped));
+    emit('changing', [currentValue.value, endValue.value]);
+  }, 0);
+}
+function onEndThumbTouchEnd(e: any) {
+  emitChange();
+}
+
+function emitChange() {
+  const value = props.range ? [currentValue.value, endValue.value] : currentValue.value;
+  emit('change', value);
+  emit('update:modelValue', value);
+  emit('update:value', value);
+}
+</script>
+
+<style lang="less">
+@import './t-slider.theme.less';
+
+.t-slider {
+  padding: 32rpx 24rpx;
+
+  &__rail {
+    position: relative;
+    width: 100%;
+    height: 8rpx;
+    background: #e7e7e7;
+    border-radius: 4rpx;
+  }
+
+  &__track {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    background: #0052d9;
+    border-radius: 4rpx;
+  }
+
+  &__thumb {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 32rpx;
+    height: 32rpx;
+    background: #fff;
+    border: 4rpx solid #0052d9;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+
+  &__value-tip {
+    position: absolute;
+    top: -48rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: #fff;
+    padding: 4rpx 12rpx;
+    border-radius: 4rpx;
+    font-size: 24rpx;
+    white-space: nowrap;
+  }
+
+  &__extreme {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8rpx;
+    font-size: 24rpx;
+    color: rgba(0, 0, 0, 0.6);
+  }
+}
+</style>

@@ -5,25 +5,55 @@
       <text class="demo-desc">用于轻量级反馈或提示，不会打断用户操作。通过预埋组件 + 全局 API 调用。</text>
     </view>
 
+    <!-- 01 基础用法 -->
     <view class="demo-section">
       <text class="demo-section-title">基础用法</text>
       <base-demo></base-demo>
     </view>
+
+    <!-- 02 内置主题 -->
+    <view class="demo-section">
+      <text class="demo-section-title">内置主题</text>
+      <theme-demo></theme-demo>
+    </view>
+
+    <!-- 03 显示遮罩 -->
+    <view class="demo-section">
+      <text class="demo-section-title">显示遮罩</text>
+      <cover-demo></cover-demo>
+    </view>
+
+    <!-- 04 手动关闭 -->
+    <view class="demo-section">
+      <text class="demo-section-title">手动关闭</text>
+      <close-demo></close-demo>
+    </view>
   </scroll-view>
+
+  <t-toast ref="toast"></t-toast>
 </template>
 
 <script>
 import BaseDemo from './base/index.uvue';
+import ThemeDemo from './theme/index.uvue';
+import CoverDemo from './cover/index.uvue';
+import CloseDemo from './close/index.uvue';
+
 export default {
-  components: { BaseDemo },
+  components: {
+    BaseDemo,
+    ThemeDemo,
+    CoverDemo,
+    CloseDemo,
+  },
 };
 </script>
 
 <style>
 .demo-page { flex: 1; background-color: #f5f5f5; }
 .demo-header { padding: 24px 16px 16px; background-color: #ffffff; }
-.demo-title { font-size: 20px; font-weight: bold; color: #181818; margin-bottom: 8px; }
-.demo-desc { font-size: 14px; color: #888888; line-height: 22px; }
+.demo-title { font-size: 20px; font-weight: bold; color: #181818; margin-bottom: 8px; display: block; }
+.demo-desc { font-size: 14px; color: #888888; line-height: 22px; display: block; }
 .demo-section { margin-top: 12px; background-color: #ffffff; padding: 8px 16px 16px; }
-.demo-section-title { font-size: 16px; font-weight: bold; color: #181818; padding: 12px 0 8px; }
+.demo-section-title { font-size: 16px; font-weight: bold; color: #181818; padding: 12px 0 8px; display: block; }
 </style>

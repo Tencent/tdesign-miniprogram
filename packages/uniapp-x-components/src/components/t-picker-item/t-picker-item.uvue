@@ -1,0 +1,45 @@
+<template>
+  <picker-view-column class="t-picker-item">
+    <view 
+      v-for="(item, index) in options" 
+      :key="index"
+      :class="itemClass(index)"
+    >
+      <text>{{ typeof item === 'string' ? item : item.label }}</text>
+    </view>
+  </picker-view-column>
+</template>
+
+<script setup lang="uts">
+/**
+ * PickerItem - uni-app x 实现
+ * 
+ * 选择器条目组件，用于在 picker-view 中显示选项
+ */
+import { pickerItemVariants } from './t-picker-item.variants';
+
+const props = defineProps({
+  /** 选项数据 */
+  options: { type: Array as PropType<(string | Record<string, any>)[]>, default: () => [] },
+  /** 当前选中索引 */
+  value: { type: Number, default: 0 },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change']);
+
+const rootClass = computed(() => 
+  pickerItemVariants({ class: props.customClass })
+);
+
+function itemClass(index: number): string {
+  const baseClass = 't-picker-item__option';
+  const selectedClass = props.value === index ? ' t-picker-item__option--selected' : '';
+  return baseClass + selectedClass;
+}
+</script>
+
+<style lang="less">
+@import './t-picker-item.theme.less';
+</style>

@@ -1,0 +1,75 @@
+<template>
+  <swiper 
+    :class="rootClass"
+    :indicator-dots="showDots"
+    :autoplay="autoplay"
+    :interval="interval"
+    :duration="duration"
+    :circular="circular"
+    :vertical="vertical"
+    :current="currentIndex"
+    @change="onChange"
+  >
+    <swiper-item v-for="(item, index) in items" :key="index">
+      <view class="t-swiper__item">
+        <image v-if="typeof item === 'string'" :src="item" class="t-swiper__image" mode="aspectFill" />
+        <slot v-else :item="item" :index="index" />
+      </view>
+    </swiper-item>
+  </swiper>
+</template>
+
+<script setup lang="uts">
+/**
+ * Swiper - uni-app x 实现
+ * 
+ * 轮播图组件，支持图片轮播、自动播放等
+ */
+import { swiperVariants } from './t-swiper.variants';
+
+const props = defineProps({
+  /** 轮播数据 */
+  items: { type: Array as PropType<(string | Record<string, any>)[]>, default: () => [] },
+  /** 当前索引 */
+  current: { type: Number, default: 0 },
+  /** 是否自动播放 */
+  autoplay: { type: Boolean, default: false },
+  /** 自动播放间隔(ms) */
+  interval: { type: Number, default: 5000 },
+  /** 切换动画时长(ms) */
+  duration: { type: Number, default: 500 },
+  /** 是否循环播放 */
+  circular: { type: Boolean, default: true },
+  /** 是否垂直方向 */
+  vertical: { type: Boolean, default: false },
+  /** 是否显示指示器 */
+  showDots: { type: Boolean, default: true },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change', 'update:current']);
+
+const currentIndex = ref<number>(props.current);
+
+const rootClass = computed(() => 
+  swiperVariants({ 
+    vertical: props.vertical,
+    class: props.customClass 
+  })
+);
+
+function onChange(event: UniSwiperChangeEvent) {
+  currentIndex.value = event.detail.current;
+  emit('change', currentIndex.value);
+  emit('update:current', currentIndex.value);
+}
+
+watch(() => props.current, (val: number) => {
+  currentIndex.value = val;
+});
+</script>
+
+<style lang="less">
+@import './t-swiper.theme.less';
+</style>

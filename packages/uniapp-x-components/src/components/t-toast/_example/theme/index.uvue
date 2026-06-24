@@ -1,0 +1,56 @@
+<template>
+  <view>
+    <!-- 重要：必须预埋 t-toast 并设置 ref="toast"，否则全局 API 找不到实例 -->
+    <t-toast ref="toast" />
+
+    <view class="box">
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="showSuccess">
+        成功提示
+      </t-button>
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="showWarning">
+        警告提示
+      </t-button>
+      <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="showError">
+        错误提示
+      </t-button>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Toast 主题示例 - 对齐 uniapp 版本的 theme/index.vue
+ *
+ * 展示内容：
+ *  - 成功提示（theme=success, direction=column）
+ *  - 警告提示（theme=warning, direction=column）
+ *  - 错误提示（theme=error, direction=column）
+ */
+import { showToast } from '@/uni_modules/tdesign-uniapp-x/components/t-toast';
+
+function showSuccess() {
+  showToast({
+    message: '成功文案',
+    theme: 'success',
+    direction: 'column',
+  });
+}
+
+function showWarning() {
+  showToast({
+    message: '警告文案',
+    theme: 'warning',
+    direction: 'column',
+  });
+}
+
+function showError() {
+  showToast({
+    message: '错误文案',
+    theme: 'error',
+    direction: 'column',
+  });
+}
+</script>
+
+<style></style>

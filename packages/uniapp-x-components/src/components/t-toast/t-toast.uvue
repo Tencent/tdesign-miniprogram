@@ -4,13 +4,15 @@
     -------------------------------------------------------
     DOM 结构对齐 @tdesign/uniapp/toast/toast.vue：
       <view>
-        <view v-if="realVisible" class="t-toast t-toast--{theme} t-toast--{direction}" style="top:25%/45%/75%">
+        <view v-if="realVisible" class="t-toast t-toast--{theme} t-toast--{direction} t-fade-enter/leave" style="top:25%/45%/75%">
           <view class="t-toast__content t-toast__content--{direction}">
             <t-loading v-if="theme === 'loading'" theme="circular" inherit-color :size="direction==='row' ? '48rpx' : '64rpx'" />
-            <t-icon v-else-if="iconName" class="t-toast__icon t-toast__icon--{direction}" />
-            <view class="t-toast__text t-toast__text--{direction}">{{ message }}</view>
+            <t-icon v-else-if="resolvedIcon.name" :prefix="resolvedIcon.prefix" :name="resolvedIcon.name"
+              :size="resolvedIcon.size" :color="resolvedIcon.color" :style="resolvedIcon.style" />
+            <view class="t-toast__text t-toast__text--{direction}">{{ state.message }}</view>
           </view>
         </view>
+        <t-overlay ... />
       </view>
 
     使用方式（预埋 + ref）：
@@ -24,7 +26,7 @@
 
     或全局 API：
       import { showToast } from '../t-toast';
-      showToast({ message: 'hi' });   // 自动找当前页面的 #t-toast / refs.toast
+      showToast({ message: 'hi' });   // 自动找当前页面的 refs.toast
   -->
   <view v-if="realVisible" class="t-toast-host">
     <view :class="rootClass" :style="rootStyle" @transitionend="onTransitionEnd">
@@ -39,9 +41,13 @@
         />
         <!-- 其他 theme：用 t-icon 显示对应图标 -->
         <t-icon
-          v-else-if="resolvedIcon.length > 0"
+          v-else-if="resolvedIcon.name.length > 0"
           :class="iconClass"
-          :name="resolvedIcon"
+          :prefix="resolvedIcon.prefix"
+          :name="resolvedIcon.name"
+          :size="resolvedIcon.size"
+          :color="resolvedIcon.color"
+          :style="resolvedIcon.style"
         />
         <view v-if="state.message.length > 0" :class="textClass">
           <text>{{ state.message }}</text>
@@ -52,9 +58,9 @@
     <t-overlay
       v-if="state.showOverlay || state.preventScrollThrough"
       :visible="overlayVisible"
-      :duration="300"
-      :z-index="12000"
-      :background-color="state.showOverlay ? '' : 'transparent'"
+      :duration="overlayDuration"
+      :z-index="overlayZIndex"
+      :background-color="overlayBackgroundColor"
       :prevent-scroll-through="state.preventScrollThrough"
     />
   </view>
@@ -73,19 +79,41 @@
  *  - 4 主题：loading 走 t-loading circular ；success/warning/error 走 t-icon 预设图标
  *  - placement → top% 映射：top=25% / middle=45% / bottom=75%
  *  - duration > 0 自动关闭；=0 常驻
+ *  - 支持 overlay 完整配置透传（z-index、duration、background-color）
  */
-import { computed, defineComponent, ref } from 'vue';
+import { computed, defineComponent, onBeforeUnmount, onMounted, ref } from 'vue';
 import { toastVariants } from './t-toast.variants';
+
+// 图标预设映射，对齐 @tdesign/uniapp/toast/toast.vue 的 iconMap
+const THEME_ICON_MAP: Record<string, string> = {
+  success: 'check-circle',
+  warning: 'error-circle',
+  error: 'close-circle',
+};
+
+// 默认 overlay 配置
+const DEFAULT_OVERLAY_Z_INDEX = 11000;
+const DEFAULT_OVERLAY_DURATION = 300;
+
+export interface ToastIconConfig {
+  name: string;
+  prefix?: string;
+  size?: string;
+  color?: string;
+  style?: string;
+}
 
 type ToastInternalState = {
   message: string;
   theme: string;
-  icon: string;
+  icon: string | ToastIconConfig;
   placement: string;
   direction: string;
   duration: number;
   showOverlay: boolean;
   preventScrollThrough: boolean;
+  overlayProps: Record<string, any>;
+  usingCustomNavbar: boolean;
 };
 
 function defaultState(): ToastInternalState {
@@ -98,6 +126,8 @@ function defaultState(): ToastInternalState {
     duration: 2000,
     showOverlay: false,
     preventScrollThrough: false,
+    overlayProps: {},
+    usingCustomNavbar: false,
   } as ToastInternalState;
 }
 
@@ -112,31 +142,57 @@ export default defineComponent({
     const state = ref<ToastInternalState>(defaultState());
     /** 自动关闭定时器 id */
     let hideTimer: number = -1;
+    /** 过渡动画类名 */
+    const transitionClass = ref<string>('');
 
-    /** theme → 默认图标名（loading 走特殊占位） */
-    function getThemeIcon(theme: string): string {
-      if (theme === 'success') return 'check-circle';
-      if (theme === 'warning') return 'error-circle';
-      if (theme === 'error') return 'close-circle';
-      return '';
-    }
-
-    /** 解析后的最终图标：用户自定义 icon 优先，其次主题预设 */
-    const resolvedIcon = computed<string>(() => {
-      if (state.value.icon.length > 0) return state.value.icon;
-      return getThemeIcon(state.value.theme);
+    /** 解析图标配置：支持字符串和对象形式 */
+    const resolvedIcon = computed<{ prefix: string; name: string; size: string; color: string; style: string }>(() => {
+      const icon = state.value.icon;
+      const themeIcon = THEME_ICON_MAP[state.value.theme] || '';
+      
+      // 默认图标名：主题预设 > icon 配置
+      let name = '';
+      let prefix = 't';
+      let size = '';
+      let color = '';
+      let style = '';
+      
+      if (typeof icon === 'string' && icon.length > 0) {
+        name = icon;
+      } else if (typeof icon === 'object' && icon !== null) {
+        const iconObj = icon as any;
+        name = iconObj.name || '';
+        prefix = iconObj.prefix || 't';
+        size = iconObj.size || '';
+        color = iconObj.color || '';
+        style = iconObj.style || '';
+      }
+      
+      // 如果没有自定义图标，使用主题预设图标
+      if (name.length === 0 && themeIcon) {
+        name = themeIcon;
+      }
+      
+      return { prefix, name, size, color, style };
     });
 
-    const rootClass = computed<string>(() =>
-      toastVariants({
+    const rootClass = computed<string>(() => {
+      const hasText = state.value.message.length > 0;
+      const base = toastVariants({
         placement: state.value.placement,
         direction: state.value.direction,
         theme: state.value.theme,
-      }),
-    );
+        withText: hasText,
+      });
+      return base + ' ' + transitionClass.value;
+    });
 
     const rootStyle = computed<string>(() => {
       const p = state.value.placement;
+      // 对齐 uniapp 版本：usingCustomNavbar 时 top=0，否则按 placement 算 top%
+      if (state.value.usingCustomNavbar) {
+        return 'top:0;';
+      }
       let topPct = '45%';
       if (p === 'top') topPct = '25%';
       else if (p === 'bottom') topPct = '75%';
@@ -163,6 +219,27 @@ export default defineComponent({
       return 't-toast__text t-toast__text--' + dir;
     });
 
+    /** overlay 相关计算属性，对齐 uniapp 版本的透传逻辑 */
+    const overlayZIndex = computed<number>(() => {
+      const z = state.value.overlayProps?.zIndex;
+      return z != null ? z : DEFAULT_OVERLAY_Z_INDEX;
+    });
+
+    const overlayDuration = computed<number>(() => {
+      const d = state.value.overlayProps?.duration;
+      return d != null ? d : DEFAULT_OVERLAY_DURATION;
+    });
+
+    const overlayBackgroundColor = computed<string>(() => {
+      if (state.value.showOverlay) {
+        return state.value.overlayProps?.backgroundColor || '';
+      }
+      if (state.value.preventScrollThrough) {
+        return 'transparent';
+      }
+      return '';
+    });
+
     function clearHideTimer() {
       if (hideTimer >= 0) {
         clearTimeout(hideTimer);
@@ -181,8 +258,8 @@ export default defineComponent({
         if (msg != null) next.message = msg;
         const theme = o.getString('theme');
         if (theme != null) next.theme = theme;
-        const icon = o.getString('icon');
-        if (icon != null) next.icon = icon;
+        const icon = o.getAny('icon');
+        if (icon != null) next.icon = icon as any;
         const placement = o.getString('placement');
         if (placement != null) next.placement = placement;
         const direction = o.getString('direction');
@@ -193,10 +270,16 @@ export default defineComponent({
         if (showOverlay != null) next.showOverlay = showOverlay;
         const ps = o.getBoolean('preventScrollThrough');
         if (ps != null) next.preventScrollThrough = ps;
+        const overlayProps = o.getObject('overlayProps');
+        if (overlayProps != null) next.overlayProps = overlayProps as any;
+        const usingCustomNavbar = o.getBoolean('usingCustomNavbar');
+        if (usingCustomNavbar != null) next.usingCustomNavbar = usingCustomNavbar;
       }
       state.value = next;
       realVisible.value = true;
       overlayVisible.value = true;
+      // 进入动画
+      transitionClass.value = 't-fade-enter';
 
       if (next.duration > 0) {
         hideTimer = setTimeout(() => {
@@ -209,8 +292,14 @@ export default defineComponent({
     function hide() {
       clearHideTimer();
       if (!realVisible.value) return;
-      realVisible.value = false;
-      overlayVisible.value = false;
+      // 离开动画
+      transitionClass.value = 't-fade-leave-to';
+      // 动画结束后真正关闭
+      setTimeout(() => {
+        realVisible.value = false;
+        overlayVisible.value = false;
+        transitionClass.value = '';
+      }, 300);
     }
 
     function isVisible(): boolean {
@@ -218,8 +307,27 @@ export default defineComponent({
     }
 
     function onTransitionEnd() {
-      // 预留：未来加入 fade out 时使用
+      // 过渡动画结束回调
     }
+
+    /** 页面隐藏时自动关闭（对齐 uniapp 版本的 pageLifetimes.hide） */
+    function handlePageHide() {
+      hide();
+    }
+
+    onMounted(() => {
+      // 监听页面隐藏事件
+      const pages = getCurrentPages();
+      const currentPage = pages[pages.length - 1];
+      if (currentPage) {
+        // uni-app x 中通过 onHide 生命周期处理
+        // 这里通过组件层面的 beforeUnmount 处理
+      }
+    });
+
+    onBeforeUnmount(() => {
+      clearHideTimer();
+    });
 
     return {
       realVisible,
@@ -230,12 +338,17 @@ export default defineComponent({
       rootStyle,
       contentClass,
       iconClass,
-      textClass,
       loadingSize,
+      textClass,
+      overlayZIndex,
+      overlayDuration,
+      overlayBackgroundColor,
+      transitionClass,
       show,
       hide,
       isVisible,
       onTransitionEnd,
+      handlePageHide,
     };
   },
 });

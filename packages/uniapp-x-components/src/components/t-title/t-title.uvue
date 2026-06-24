@@ -1,0 +1,46 @@
+<template>
+  <view :class="rootClass">
+    <text class="t-title__text">{{ content }}</text>
+    <view v-if="hasExtraSlot" class="t-title__extra">
+      <slot name="extra" />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * Title - uni-app x 实现
+ * 
+ * 标题组件，支持主题色、尺寸、副标题等
+ */
+import { titleVariants } from './t-title.variants';
+import type { TitleTheme, TitleSize } from './t-title.types';
+
+const props = defineProps({
+  /** 标题内容 */
+  content: { type: String, default: '' },
+  /** 主题 */
+  theme: { type: String as PropType<TitleTheme>, default: 'default' },
+  /** 尺寸 */
+  size: { type: String as PropType<TitleSize>, default: 'medium' },
+  /** 标题级别 */
+  level: { type: Number, default: 1 },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const slots = useSlots();
+const hasExtraSlot = computed<boolean>(() => slots.extra != null);
+
+const rootClass = computed(() => 
+  titleVariants({ 
+    theme: props.theme,
+    size: props.size,
+    class: props.customClass 
+  })
+);
+</script>
+
+<style lang="less">
+@import './t-title.theme.less';
+</style>

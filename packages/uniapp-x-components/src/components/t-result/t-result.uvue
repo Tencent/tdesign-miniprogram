@@ -43,7 +43,6 @@
  *  - icon: string=图片 URL；false=不显示；true（默认）=按 theme 渲染内置字体图标
  *  - 主题着色通过 .t-result--theme-* 给 thumb 设置 color，t-icon 会继承
  */
-import { computed, useSlots } from 'vue';
 import TIcon from '../t-icon/t-icon.uvue';
 import { resultVariants } from './t-result.variants';
 import type { ResultTheme } from './t-result.types';

@@ -1,0 +1,99 @@
+<template>
+  <view :class="rootClass" @touchstart="onTouchStart" @touchmove="onTouchMove" @touchend="onTouchEnd">
+    <view class="t-swipe-cell__left" :style="leftStyle">
+      <slot name="left" />
+    </view>
+    <view class="t-swipe-cell__content">
+      <slot />
+    </view>
+    <view class="t-swipe-cell__right" :style="rightStyle">
+      <slot name="right" />
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * SwipeCell - uni-app x 实现
+ * 
+ * 滑动单元格组件，支持左右滑动显示操作按钮
+ */
+import { swipeCellVariants } from './t-swipe-cell.variants';
+
+const props = defineProps({
+  /** 左侧滑动距离阈值 */
+  leftWidth: { type: Number, default: 0 },
+  /** 右侧滑动距离阈值 */
+  rightWidth: { type: Number, default: 0 },
+  /** 是否禁止滑动 */
+  disabled: { type: Boolean, default: false },
+  /** 自动关闭 */
+  autoClose: { type: Boolean, default: false },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['open', 'close']);
+
+const offsetX = ref<number>(0);
+const startX = ref<number>(0);
+const startY = ref<number>(0);
+
+const rootClass = computed(() => 
+  swipeCellVariants({ class: props.customClass })
+);
+
+const leftStyle = computed<string>(() => {
+  if (props.leftWidth <= 0) return 'display: none;';
+  return `width: ${props.leftWidth}px; transform: translateX(${offsetX.value > 0 ? Math.min(offsetX.value, props.leftWidth) : 0}px);`;
+});
+
+const rightStyle = computed<string>(() => {
+  if (props.rightWidth <= 0) return 'display: none;';
+  return `width: ${props.rightWidth}px; transform: translateX(${offsetX.value < 0 ? Math.max(offsetX.value, -props.rightWidth) : 0}px);`;
+});
+
+function onTouchStart(event: UniTouchEvent) {
+  if (props.disabled) return;
+  const touch = event.touches[0];
+  startX.value = touch.clientX;
+  startY.value = touch.clientY;
+}
+
+function onTouchMove(event: UniTouchEvent) {
+  if (props.disabled) return;
+  const touch = event.touches[0];
+  const deltaX = touch.clientX - startX.value;
+  const deltaY = touch.clientY - startY.value;
+  
+  // 判断滑动方向
+  if (Math.abs(deltaX) > Math.abs(deltaY)) {
+    offsetX.value = deltaX;
+  }
+}
+
+function onTouchEnd() {
+  if (props.disabled) return;
+  
+  if (offsetX.value > props.leftWidth / 2) {
+    offsetX.value = props.leftWidth;
+    emit('open', 'left');
+  } else if (offsetX.value < -props.rightWidth / 2) {
+    offsetX.value = -props.rightWidth;
+    emit('open', 'right');
+  } else {
+    offsetX.value = 0;
+    emit('close');
+  }
+}
+
+/** 关闭滑动 */
+function close() {
+  offsetX.value = 0;
+  emit('close');
+}
+</script>
+
+<style lang="less">
+@import './t-swipe-cell.theme.less';
+</style>

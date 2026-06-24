@@ -1,0 +1,59 @@
+<template>
+  <scroll-view 
+    :class="rootClass"
+    :refresher-enabled="true"
+    :refresher-triggered="isRefreshing"
+    @refresherrefresh="onRefresh"
+    @scrolltolower="onLoadMore"
+  >
+    <slot />
+    <view v-if="loadingMore" class="t-pull-down-refresh__load-more">
+      <t-loading size="small" text="加载中..." />
+    </view>
+  </scroll-view>
+</template>
+
+<script setup lang="uts">
+/**
+ * PullDownRefresh - uni-app x 实现
+ * 
+ * 下拉刷新组件，支持下拉刷新和上拉加载更多
+ */
+import { pullDownRefreshVariants } from './t-pull-down-refresh.variants';
+
+const props = defineProps({
+  /** 是否正在刷新 */
+  refreshing: { type: Boolean, default: false },
+  /** 是否正在加载更多 */
+  loadingMore: { type: Boolean, default: false },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['refresh', 'loadmore']);
+
+const isRefreshing = ref<boolean>(props.refreshing);
+
+const rootClass = computed(() => 
+  pullDownRefreshVariants({ class: props.customClass })
+);
+
+watch(() => props.refreshing, (val: boolean) => {
+  isRefreshing.value = val;
+});
+
+function onRefresh(event: UniScrollViewRefresherEvent) {
+  isRefreshing.value = true;
+  emit('refresh', event);
+}
+
+function onLoadMore(event: UniScrollViewScrollEvent) {
+  if (!props.loadingMore) {
+    emit('loadmore', event);
+  }
+}
+</script>
+
+<style lang="less">
+@import './t-pull-down-refresh.theme.less';
+</style>

@@ -1,0 +1,64 @@
+<template>
+  <view :class="rootClass">
+    <view 
+      v-for="(item, index) in total"
+      :key="index"
+      :class="dotClass(index)"
+      @click="onDotClick(index)"
+    >
+      <view v-if="type === 'fraction'" class="t-swiper-nav__fraction">
+        {{ current + 1 }} / {{ total }}
+      </view>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+/**
+ * SwiperNav - uni-app x 实现
+ * 
+ * 轮播图指示器组件，支持点状、条状、分数等类型
+ */
+import { computed } from 'vue';
+import { swiperNavVariants } from './t-swiper-nav.variants';
+
+const props = defineProps({
+  /** 当前索引 */
+  current: { type: Number, default: 0 },
+  /** 总数量 */
+  total: { type: Number, default: 0 },
+  /** 指示器类型：dots、bars、fraction */
+  type: { type: String, default: 'dots' },
+  /** 指示器位置：top、bottom、left、right */
+  position: { type: String, default: 'bottom' },
+  /** 是否垂直 */
+  vertical: { type: Boolean, default: false },
+  /** 自定义类名 */
+  customClass: { type: String, default: '' },
+});
+
+const emit = defineEmits(['change']);
+
+const rootClass = computed(() => 
+  swiperNavVariants({ 
+    type: props.type,
+    position: props.position,
+    vertical: props.vertical,
+    class: props.customClass 
+  })
+);
+
+function dotClass(index: number): string {
+  const baseClass = 't-swiper-nav__dot';
+  const activeClass = props.current === index ? ' t-swiper-nav__dot--active' : '';
+  return baseClass + activeClass;
+}
+
+function onDotClick(index: number) {
+  emit('change', index);
+}
+</script>
+
+<style lang="less">
+@import './t-swiper-nav.theme.less';
+</style>
