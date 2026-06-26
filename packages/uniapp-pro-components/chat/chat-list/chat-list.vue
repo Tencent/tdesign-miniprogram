@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="[classPrefix, classes]"
-    :style="'' + tools._style([customStyle])"
-  >
+  <view :class="[classPrefix, classes]" :style="'' + tools._style([customStyle])">
     <scroll-view
       :class="'' + tools.cls(classPrefix + '__content', [['reverse', reverse]])"
       :scroll-y="true"
@@ -25,10 +22,7 @@
         * a 优先级更高
         */ -->
       <block v-if="data && data.length > 0">
-        <block
-          v-for="(item, index) in data"
-          :key="index"
-        >
+        <block v-for="(item, index) in data" :key="index">
           <chat-message
             v-if="virtualList ? index >= startIndex && index <= endIndex : true"
             :avatar="item.avatar || ''"
@@ -50,12 +44,14 @@
   </view>
 </template>
 <script>
-import ChatMessage from '../chat-message/chat-message.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
-import props from './props';
 
-import tools from '@tdesign/uniapp/common/utils.wxs';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
+import tools from '@tdesign/uniapp/common/utils.wxs';
+
+import ChatMessage from '../chat-message/chat-message.vue';
+
+import props from './props';
 
 
 const name = `${prefix}-chat-list`;
@@ -173,7 +169,7 @@ export default {
 <style scoped>
 /* #ifdef H5 || APP-PLUS */
 .t-chat-list__content :deep(.uni-scroll-view-content) {
-  display: flex;;
+  display: flex;
   flex-direction: column;
 }
 /* #endif */

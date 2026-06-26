@@ -56,7 +56,7 @@ placeholder | String | 请输入消息... | 输入框默认文案 | N
 render-presets | Array | [{name: 'upload', presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'], status: ''},{ name: 'send', type: 'icon'}] | 预设发送区渲染配置，用于灵活配置发送区的上传入口和发送按钮，支持自定义类型、顺序、样式。TS 类型：`ChatActionButtons` `type ChatActionButtons = Array<ChatActionButton>` `type ChatActionButton = UploadButton \| SendButton` `interface UploadButton { name: 'upload'; presets: string[]; status?: string; }` `interface SendButton { name: 'send'; type: 'icon' \| 'text';}`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-pro-components/chat/chat-sender/type.ts) | N
 textarea-props | Boolean / Object | { autosize: { maxHeight: 264, minHeight: 48 } } | 透传给 Textarea 组件的属性，autosize数值单位为 rpx | N
 value | String | - | 输入框的值 | N
-allowSpeech | Boolean | false | 是否允许语音输入 | N
+allowSpeech | String | 'keyboard' | 输入类型，keyboard-键盘输入，speech-语音输入。可选项：`keyboard`/`speech` | N
 visible | Boolean | false | 上传面板是否可见 | N
 
 ### ChatSender Events

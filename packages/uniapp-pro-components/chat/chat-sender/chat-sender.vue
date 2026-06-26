@@ -30,28 +30,33 @@
       <view :class="classPrefix + '__actions'">
         <view :class="classPrefix + '__textarea'">
           <slot name="input-prefix" />
-          <textarea
-            :class="classPrefix + '__textarea--control'"
-            :style="'' + textareaStyle(textareaProps.autosize)"
-            :disabled="disabled"
-            :auto-height="!!textareaProps.autosize"
-            confirm-type="send"
-            :adjust-position="adjustPosition"
-            :disable-default-padding="false"
-            cursor-spacing="30"
-            maxlength="-1"
-            :value="innerValue"
-            @change="textChange"
-            @focus="focusFn"
-            @blur="blurFn"
-            @click="handlerClick"
-            @input="textChange"
-            @keyboardheightchange="onkeyboardheightchange"
-            @confirm="handleSendClick"
-          />
-          <view :class="classPrefix + '__textarea--placeholder ' + (focusFlag || innerValue ? 'hide' : '')">
-            {{ placeholder || globalConfig.placeholder }}
-          </view>
+          <!-- 文本输入模式 -->
+          <template v-if="allowSpeech === 'keyboard'">
+            <textarea
+              :class="classPrefix + '__textarea--control'"
+              :style="'' + textareaStyle(textareaProps.autosize)"
+              :disabled="disabled"
+              :auto-height="!!textareaProps.autosize"
+              confirm-type="send"
+              :adjust-position="adjustPosition"
+              :disable-default-padding="false"
+              cursor-spacing="30"
+              maxlength="-1"
+              :value="innerValue"
+              @change="textChange"
+              @focus="focusFn"
+              @blur="blurFn"
+              @click="handlerClick"
+              @input="textChange"
+              @keyboardheightchange="onkeyboardheightchange"
+              @confirm="handleSendClick"
+            />
+            <view :class="classPrefix + '__textarea--placeholder ' + (focusFlag || innerValue ? 'hide' : '')">
+              {{ placeholder || globalConfig.placeholder }}
+            </view>
+          </template>
+          <!-- 语音输入模式 -->
+          <slot v-else name="speech" />
         </view>
 
         <view :class="classPrefix + '__footer'">
@@ -377,7 +382,7 @@ export default {
         const { type } = e.currentTarget.dataset;
         const sourceType = [type];
         try {
-          const res = await wx.chooseImage({
+          const res = await uni.chooseImage({
             count: 1,
             // 最多可选9张
             sizeType: ['original', 'compressed'],
@@ -408,7 +413,7 @@ export default {
             });
           }
         } catch (err) {
-          wx.showToast({
+          uni.showToast({
             title: type === 'album' ? '选择图片失败' : '拍照失败',
             icon: 'none',
           });
@@ -420,7 +425,7 @@ export default {
       async handleWechatFileUpload(e) {
         try {
         // 使用微信小程序的选择文件API
-          const res = await wx.chooseMessageFile({
+          const res = await uni.chooseMessageFile({
             count: 5,
             // 最多5个文件
             type: 'all', // 所有类型文件
@@ -444,7 +449,7 @@ export default {
             });
           }
         } catch (err) {
-          wx.showToast({
+          uni.showToast({
             title: '选择微信文件失败',
             icon: 'none',
           });

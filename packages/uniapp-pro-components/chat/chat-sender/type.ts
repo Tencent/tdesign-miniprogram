@@ -62,10 +62,10 @@ export interface TdChatSenderProps {
    */
   visible?: boolean;
   /**
-   * 是否允许语音输入
-   * @default false
+   * 输入类型， keyboard-键盘输入，speech-语音输入
+   * @default 'keyboard'
    */
-  allowSpeech?: boolean;
+  allowSpeech?: 'keyboard' | 'speech';
   /**
    * 输入框聚焦时触发
    */

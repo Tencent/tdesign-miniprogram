@@ -1,139 +1,100 @@
 <template>
-  <view :class="[classPrefix]">
+  <view :class="classPrefix">
+    <!-- hook：授权时按住说话 / 未授权引导授权 -->
     <view
       v-if="recordAuthStatus"
-      :class="[classPrefix + '-hook']"
-      @touchstart="startRecord"
-      @touchend="stopRecord"
-      @touchmove="touchmove"
-      @touchcancel="touchcancel"
+      :class="classPrefix + '-hook'"
+      @touchstart.stop="startRecord"
+      @touchend.stop="stopRecord"
+      @touchmove.stop="touchmove"
+      @touchcancel.stop="touchcancel"
     >
-      <slot v-if="$slots.speechInput" name="speechInput" />
-      <view v-else> 按住 说话 </view>
+      <slot name="speechInput">
+        <view>{{ globalConfig.holdToTalk }}</view>
+      </slot>
     </view>
-    <view v-else :class="[classPrefix + '-hook']" @click="openVoiceSetting">
-      <slot v-if="$slots.speechNoAuth" name="speechNoAuth" />
-      <view v-else> 请授权麦克风权限 </view>
+
+    <view v-else :class="[classPrefix + '-hook', classPrefix + '-hook--no-auth']" @click="requestRecordAuth">
+      <slot name="speechNoAuth">
+        <view>{{ globalConfig.requestAuth }}</view>
+      </slot>
     </view>
-    <view class="cover-ng-bar" :class="[classPrefix + '-audio-input', showMask ? 'show' : '']">
-      <!-- 遮罩层 -->
-      <view :class="[classPrefix + '-audio-input__mask']" @click="handleCancelSend" />
 
-      <view :class="[classPrefix + '-audio-input__main']">
-        <!-- 动画图标/气泡区域 -->
-        <view
-          v-if="processStatus === 'recording' || processStatus === 'confirm'"
-          :class="[classPrefix + '-audio-input-ani', 'fade-in']"
-        >
-          <!-- 气泡内容 -->
-          <view class="bubble-container" :class="[bubbleStatusClass]">
-            <!-- 1. 录音中：音量条 (只在正常状态显示) -->
-            <view v-if="processStatus === 'recording' && interactStatus === 'normal'" class="audio-wave">
-              <view v-for="i in 13" :key="i" class="wave-item" />
-            </view>
-            <!-- 2. 取消状态：红色气泡，省略号 -->
-            <view v-else-if="interactStatus === 'release_cancel' || processStatus === 'error'" class="cancel-icon" />
-            <view v-if="processStatus === 'error'" class="cancel-text"> 未识别到语音 </view>
-            <!-- 3. 转文字状态或确认状态：可编辑输入框 -->
-            <view
-              v-else-if="interactStatus === 'release_convert' || processStatus === 'confirm'"
-              class="convert-content"
-            >
-              <textarea v-model="translateResult" class="editable-textarea" :maxlength="-1" />
-              <!-- 省略号仅在未释放时显示 -->
-              <view v-if="interactStatus === 'release_convert'" class="convert-dots" />
-            </view>
-          </view>
-        </view>
+    <!-- 遮罩 + 录音面板 -->
+    <view :class="['cover-ng-bar', classPrefix + '-audio-input', showMask ? 'show' : '']">
+      <!-- mask -->
+      <view :class="classPrefix + '-audio-input__mask'" @click="handleCancelSend" />
 
+      <view :class="classPrefix + '-audio-input__main'">
         <!-- 底部区域 -->
         <view
           v-if="processStatus === 'recording' || processStatus === 'confirm'"
           :class="[classPrefix + '-audio-input__ft', processStatus, interactStatus, 'fade-in']"
+          :style="'bottom: ' + bottomHeight + 'rpx;'"
         >
-          <!-- 状态提示文案 -->
+          <!-- 录音阶段：音波动画（独立在提示文字上方） -->
+          <view
+            v-if="processStatus === 'recording'"
+            :class="['audio-wave-outer', 'audio-wave', interactStatus === 'release_cancel' ? 'wave-red' : 'wave-blue']"
+          >
+            <view v-for="item in waveList" :key="item" class="wave-item" />
+          </view>
+
+          <!-- 提示文字：两条文字同时存在，通过位移+透明度做"跟手"上下切换动效 -->
           <view class="tips-text">
             <template v-if="processStatus === 'recording'">
-              <text v-if="interactStatus !== 'normal'"> Audio </text>
-              <text v-else> Release to send </text>
+              <view :class="['tips-item', 'tips-send', interactStatus === 'release_cancel' ? 'is-out-up' : 'is-in']">
+                <text>{{ globalConfig.releaseToSend }}</text>
+              </view>
+              <view
+                :class="['tips-item', 'tips-cancel', interactStatus === 'release_cancel' ? 'is-in' : 'is-out-down']"
+              >
+                <text>{{ globalConfig.releaseToCancel }}</text>
+              </view>
             </template>
-            <template v-else-if="processStatus === 'processing'"> Processing... </template>
-            <!-- confirm 状态不显示提示文案 -->
           </view>
 
-          <!-- 状态4：松手后的确认按钮区域 (Send / Cancel) -->
+          <!-- 录音阶段：全宽大按钮（纯色空按钮，仅承载手势） -->
+          <view
+            v-if="processStatus === 'recording'"
+            :class="['record-main-btn', interactStatus === 'release_cancel' ? 'is-cancel' : 'is-record']"
+            @touchstart.stop="startRecord"
+            @touchend.stop="stopRecord"
+            @touchmove.stop="touchmove"
+            @touchcancel.stop="touchcancel"
+          />
+
+          <!-- 确认按钮区（Send/Cancel） -->
           <view
             v-if="processStatus === 'confirm' || processStatus === 'error'"
-            class="confirm-actions"
-            :class="{ 'is-error': processStatus === 'error' }"
+            :class="['confirm-actions', processStatus === 'error' ? 'is-error' : '']"
           >
             <view
-              class="action-btn btn-cancel"
-              :class="{ active: activeBtnCancel, disabled: processStatus === 'error' }"
+              :class="[
+                'action-btn',
+                'btn-cancel',
+                activeBtnCancel ? 'active' : '',
+                processStatus === 'error' ? 'disabled' : '',
+              ]"
               @click="handleCancelSend"
-              @touchstart="processStatus !== 'error' && (activeBtnCancel = true)"
-              @touchend="activeBtnCancel = false"
-              @touchcancel="activeBtnCancel = false"
             >
               <view class="icon-wrapper">
-                <t-icon name="rollback" size="48rpx" color="#FFFFFF" />
+                <text class="rollback-icon">↩</text>
               </view>
-              <text class="btn-text"> Cancel </text>
+              <text class="btn-text">{{ globalConfig.cancelText }}</text>
             </view>
             <view
-              class="action-btn btn-send"
-              :class="{ active: activeBtnSend, disabled: processStatus === 'error' }"
+              :class="[
+                'action-btn',
+                'btn-send',
+                activeBtnSend ? 'active' : '',
+                processStatus === 'error' ? 'disabled' : '',
+              ]"
               @click="handleSendVoiceMsg"
-              @touchstart="processStatus !== 'error' && (activeBtnSend = true)"
-              @touchend="activeBtnSend = false"
-              @touchcancel="activeBtnSend = false"
             >
-              <text>Send</text>
+              <text class="send-btn-text">{{ globalConfig.sendText }}</text>
             </view>
           </view>
-
-          <!-- 底部大圆背景和异形按钮 (仅在录音/处理阶段显示) -->
-          <template v-if="processStatus === 'recording' || processStatus === 'processing'">
-            <!-- 大圆背景 -->
-            <view :class="[classPrefix + '-audio-input__ft__bg']" />
-
-            <!-- 左侧按钮 -->
-            <view
-              class="shape-btn left-btn"
-              :class="{ active: interactStatus === 'release_cancel' || processStatus === 'error' }"
-            >
-              <view
-                v-if="interactStatus === 'release_cancel' || processStatus === 'error'"
-                :key="'cancel-' + (interactStatus === 'release_cancel' || processStatus === 'error')"
-                class="btn-hint"
-              >
-                <text class="word word-1"> Release </text>
-                <text class="word word-2"> to cancel </text>
-              </view>
-
-              <view class="btn-label">
-                <text class="word"> Cancel </text>
-              </view>
-            </view>
-
-            <!-- 右侧按钮 -->
-            <view class="shape-btn right-btn" :class="{ active: interactStatus === 'release_convert' }">
-              <view
-                v-if="interactStatus === 'release_convert'"
-                :key="'convert-' + (interactStatus === 'release_convert')"
-                class="btn-hint"
-              >
-                <text class="word word-1"> Release </text>
-                <text class="word word-2"> to edit </text>
-                <text class="word word-3"> text </text>
-              </view>
-
-              <view class="btn-label">
-                <text class="word word-1"> Convert </text>
-                <text class="word word-2"> to Text </text>
-              </view>
-            </view>
-          </template>
         </view>
       </view>
     </view>
@@ -141,480 +102,583 @@
 </template>
 
 <script>
-import { prefix } from 'tdesign-uniapp/common/config';
-import { uniComponent } from 'tdesign-uniapp/common/src/index';
-import tIcon from 'tdesign-uniapp/icon/icon.vue';
+// import { prefix } from '@tdesign/uniapp/common/config';
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
+import props from './props';
+import usingConfig from '../mixins/using-config';
 
-const name = `${prefix}-chat-record`;
+const componentName = 'chat-record';
+const name = `t-${componentName}`;
 
-let startRecordTimer = null; // 语音录制定时器-模拟长按
+// 交互阈值配置（单位：px）
+const MOVE_THRESHOLD_Y = 60;
+
+// 语音录制定时器-模拟长按
+let startRecordTimer = null;
 let recordTimer = null;
 
-// 录音管理器实例
-// eslint-disable-next-line no-undef
-const plugin = requirePlugin('WechatSI');
-const manager = plugin.getRecordRecognitionManager();
+export default {
+  ...uniComponent({
+    name,
 
-console.error('managerxxxxxx================', manager);
+    mixins: [usingConfig({ componentName })],
 
-// 交互阈值配置
-const MOVE_THRESHOLD_Y = 60; // 垂直阈值 px（约 120rpx），滑到 shape-btn 附近
-const MOVE_THRESHOLD_X = 30; // 水平阈值 px（约 60rpx）
-
-export default uniComponent({
-  name: 'ChatRecord',
-
-  components: {
-    tIcon,
-  },
-
-  props: {
-    // 是否自动发送（用于扩展）
-    autoSend: {
-      type: Boolean,
-      default: false,
+    props: {
+      ...props,
     },
-  },
 
-  data() {
-    return {
-      classPrefix: name,
-      recordAuthSetting: false, // 是否已授权语音输入
-      recordAuthStatus: true, // 是否展示拒绝授权文案
-      // UI 状态
-      showMask: false,
-      activeBtnCancel: false,
-      activeBtnSend: false,
+    data() {
+      return {
+        classPrefix: name,
 
-      // 流程状态
-      processStatus: 'idle', // idle | recording | processing | confirm | error
-      interactStatus: 'normal', // normal | release_cancel | release_convert
+        // 权限
+        recordAuthSetting: false,
+        // 是否已授权 scope.record（未授权时应展示去设置/授权引导）
+        recordAuthStatus: false,
 
-      // 录音数据
-      voiceInfo: {
-        voicePath: '',
-        voiceText: '',
-        duration: 0,
+        // UI 状态
+        showMask: false,
+        activeBtnCancel: false,
+        activeBtnSend: false,
+
+        // 流程状态
+        processStatus: 'idle', // idle | recording | processing | confirm | error
+        interactStatus: 'normal', // normal | release_cancel
+
+        // 录音数据
+        voiceInfo: {
+          voicePath: '',
+          voiceText: '',
+          duration: 0,
+        },
+
+        // 转文字结果
+        translateResult: '',
+        startTouch: { x: 0, y: 0 },
+        isStarted: false,
+        isManagerBusy: false,
+        ignoreNextOnStop: false,
+        managerRecording: false,
+        waveList: Array.from({ length: 27 }).map((_, i) => i + 1),
+        bubbleStatusClass: 'bubble-blue',
+      };
+    },
+
+    created() {
+      // manager 为非响应式实例属性
+      this.manager = null;
+      this.initRecordManager();
+    },
+
+    mounted() {
+      // 进入页面时检查一次权限
+      this.getVoiceAuthSetting().catch(() => null);
+    },
+
+    beforeDestroy() {
+      if (this.manager) {
+        try {
+          this.manager.stop();
+        } catch (e) {
+          // ignore
+        }
+      }
+      this.resetState();
+    },
+
+    methods: {
+      initRecordManager() {
+        try {
+          // WechatSI 插件需要你在 app.json 里配置 plugins: { WechatSI: { ... } }
+          // eslint-disable-next-line no-undef
+          if (typeof requirePlugin === 'function') {
+            const plugin = requirePlugin('WechatSI');
+            this.manager = plugin?.getRecordRecognitionManager?.();
+          }
+        } catch (e) {
+          this.manager = null;
+        }
+
+        const manager = this.manager;
+        if (!manager) return;
+
+        manager.onStart = () => {
+          this.managerRecording = true;
+          this.processStatus = 'recording';
+          this.updateBubbleClass();
+        };
+
+        manager.onRecognize = (res) => {
+          // res.result 实时识别结果；res.end 表示结束
+          if (res?.result && !res?.end) {
+            const voiceText = res.result;
+            this.voiceInfo = {
+              ...this.voiceInfo,
+              voiceText,
+            };
+            if (this.interactStatus === 'release_convert') {
+              this.translateResult = voiceText;
+            }
+          }
+        };
+
+        manager.onStop = (res) => {
+          this.managerRecording = false;
+          this.isManagerBusy = false;
+
+          if (this.ignoreNextOnStop) {
+            this.ignoreNextOnStop = false;
+            return;
+          }
+
+          if (this.processStatus === 'error') return;
+
+          const tempFilePath = res?.tempFilePath || '';
+          const durationMs = res?.duration || 0;
+          const duration = Math.floor(durationMs / 1000) || 1;
+          const voiceText = res?.result || '';
+
+          // 直接发送，不进入 confirm 状态
+          this.voiceInfo = {
+            voicePath: tempFilePath,
+            voiceText,
+            duration,
+          };
+          this.translateResult = voiceText;
+
+          this.$emit('recognize', {
+            voicePath: tempFilePath,
+            voiceText,
+            duration,
+          });
+
+          // 发送后重置状态
+          setTimeout(() => {
+            this.resetState();
+          }, 100);
+        };
+
+        manager.onError = (err) => {
+          uni.showToast({
+            icon: 'none',
+            title: this.globalConfig?.recognizeFailTip || '录音识别失败，请重试',
+            duration: 2000,
+          });
+          this.isManagerBusy = false;
+          this.managerRecording = false;
+          this.processStatus = 'error';
+          this.interactStatus = 'normal';
+          this.translateResult = '';
+          this.activeBtnCancel = false;
+          this.activeBtnSend = false;
+          this.showMask = false;
+          this.updateBubbleClass();
+
+          this.$emit('error', err);
+        };
       },
 
-      // 转文字结果
-      translateResult: '',
-
-      // 手势追踪
-      startTouch: { x: 0, y: 0 },
-
-      isStarted: false, // 是否开始录音
-      isManagerBusy: false, // stop后等待识别完成
-      ignoreNextOnStop: false, // 取消时忽略 onStop 回调对UI的影响
-      managerRecording: false,
-    };
-  },
-
-  computed: {
-    // 气泡样式类名
-    bubbleStatusClass() {
-      if (this.interactStatus === 'release_cancel' || this.processStatus === 'error') return 'bubble-red';
-      if (
-        this.interactStatus === 'release_convert' ||
-        this.processStatus === 'processing' ||
-        this.processStatus === 'confirm'
-      ) {
-        return 'bubble-wide';
-      }
-      return 'bubble-blue';
-    },
-  },
-  mounted() {
-    this.initRecordManager();
-  },
-
-  beforeDestroy() {
-    if (manager) {
-      manager.stop();
-    }
-    this.resetState();
-    if (recordTimer) {
-      clearInterval(recordTimer);
-      recordTimer = null;
-    }
-    if (startRecordTimer) {
-      clearTimeout(startRecordTimer);
-      startRecordTimer = null;
-    }
-  },
-
-  methods: {
-    // ==================== 初始化 ====================
-
-    /**
-     * 初始化录音管理器
-     */
-    initRecordManager() {
-      if (!manager) return;
-
-      manager.onStart = () => {
-        console.error('onStart 开始录音=====');
-        this.managerRecording = true;
-        this.processStatus = 'recording';
-      };
-
-      manager.onRecognize = (res) => {
-        console.error('onRecognize 识别中=====:', res);
-        if (res.result && !res.end) {
-          this.voiceInfo.voiceText = res.result;
-          if (this.interactStatus === 'release_convert') {
-            this.translateResult = this.voiceInfo.voiceText;
-          }
+      updateBubbleClass() {
+        const { interactStatus, processStatus, translateResult, bottomHeight,
+                activeBtnCancel, activeBtnSend } = this;
+        let bubbleStatusClass = 'bubble-blue';
+        if (interactStatus === 'release_cancel' || processStatus === 'error') {
+          bubbleStatusClass = 'bubble-red';
         }
-      };
+        this.bubbleStatusClass = bubbleStatusClass;
 
-      manager.onStop = (res) => {
-        console.error('onStop 录音完成====:', res);
-        this.managerRecording = false;
-        this.isManagerBusy = false;
+        // 通知外部 speechBubble 插槽同步状态
+        this.$emit('statechange', {
+          processStatus,
+          interactStatus,
+          translateResult,
+          bottomHeight,
+          activeBtnCancel,
+          activeBtnSend,
+        });
+      },
 
-        if (this.ignoreNextOnStop) {
-          this.ignoreNextOnStop = false;
+      // 键盘高度监听已移至示例页面处理
+      async getVoiceAuthSetting() {
+        return new Promise((resolve, reject) => {
+          uni.getSetting({
+            success: (res) => {
+              const authSetting = res.authSetting || {};
+              const hasRequested = Object.prototype.hasOwnProperty.call(authSetting, 'scope.record');
+              const recordAuthStatus = !!authSetting['scope.record'];
+              const recordAuthSetting = recordAuthStatus;
+              this.recordAuthSetting = recordAuthSetting;
+              this.recordAuthStatus = recordAuthStatus;
+              resolve(recordAuthSetting);
+            },
+            fail: () =>
+              reject(
+                new Error(this.globalConfig?.authSettingFail || '获取录音权限设置失败'),
+              ),
+          });
+        });
+      },
+
+      async requestRecordAuth() {
+        // 系统层检测：如果系统把"微信-麦克风"关了，这里会提示去系统设置
+        const sysOk = await this.checkSystemMicPermission();
+        if (!sysOk) return;
+
+        try {
+          // 先尝试直接弹授权框（必须在用户点击事件里调用）
+          await uni.authorize({ scope: 'scope.record' });
+
+          // 授权成功后刷新状态
+          await this.getVoiceAuthSetting();
+        } catch (e) {
+          // 用户拒绝 / 或已拒绝不再询问 -> 才引导去设置页
+          this.openVoiceSetting();
+        }
+      },
+
+      /**
+       * 申请小程序录音权限（scope.record）
+       * 同时检测"系统层面是否禁用了微信麦克风"。
+       */
+      async applyAuth() {
+        // 先检测系统层面的麦克风权限（如果系统禁用，openSetting 里通常也不会出现开关）
+        const sysOk = await this.checkSystemMicPermission();
+        if (!sysOk) {
+          this.recordAuthSetting = false;
+          this.recordAuthStatus = false;
+          return false;
+        }
+
+        return new Promise((resolve, reject) => {
+          uni.authorize({
+            scope: 'scope.record',
+            success: () => {
+              this.recordAuthSetting = true;
+              this.recordAuthStatus = true;
+              resolve(true);
+            },
+            fail: (err) => {
+              // 这里通常是用户拒绝（或已拒绝且不再询问）
+              this.recordAuthSetting = false;
+              this.recordAuthStatus = false;
+              reject(err);
+            },
+          });
+        });
+      },
+
+      /**
+       * 检测系统层面的麦克风权限是否允许"微信"使用。
+       */
+      async checkSystemMicPermission() {
+        // 低版本基础库可能没有该 API，缺失时默认继续走授权流程
+        if (typeof uni.getAppAuthorizeSetting !== 'function') return true;
+
+        try {
+          const res = uni.getAppAuthorizeSetting();
+          const mic = res?.microphoneAuthorized; // 'authorized' | 'denied' | 'not determined'
+
+          if (mic === 'denied') {
+            this.showSystemMicGuide();
+            return false;
+          }
+          return true;
+        } catch (e) {
+          return true;
+        }
+      },
+
+      /** 系统麦克风被关闭时的明确引导 */
+      showSystemMicGuide() {
+        const { globalConfig } = this;
+        uni.showModal({
+          title: globalConfig?.systemMicTitle || '无法使用麦克风',
+          content:
+            globalConfig?.systemMicContent ||
+            '检测到手机系统已关闭"微信"的麦克风权限。\n\n请到系统设置中开启：\n- iOS：设置 > 微信 > 麦克风\n- Android：设置 > 应用管理 > 微信 > 权限 > 麦克风\n\n开启后返回小程序再试。',
+          showCancel: false,
+        });
+      },
+
+      async openVoiceSetting() {
+        // 先判断是否系统层禁用了微信麦克风；如果是，直接提示去系统设置
+        const sysOk = await this.checkSystemMicPermission();
+        if (!sysOk) return;
+
+        uni.openSetting({
+          success: (r) => {
+            const recordAuthSetting = !!r.authSetting?.['scope.record'];
+            const recordAuthStatus = !!r.authSetting?.['scope.record'];
+            this.recordAuthSetting = recordAuthSetting;
+            this.recordAuthStatus = recordAuthStatus;
+          },
+          fail: () => {
+            uni.showToast({
+              icon: 'none',
+              title: this.globalConfig?.openSettingFail || '打开设置失败',
+            });
+          },
+        });
+      },
+
+      // ==================== 授权设置回调 ====================
+      onOpenSetting(e) {
+        const { authSetting } = e;
+        if (authSetting?.['scope.record']) {
+          // 用户授权了录音权限
+          this.recordAuthSetting = true;
+          this.recordAuthStatus = true;
+        } else {
+          // 用户未授权录音权限
+          this.recordAuthSetting = false;
+          this.recordAuthStatus = false;
+        }
+      },
+
+      // ==================== 录音流程 ====================
+      async startRecord(e) {
+        // 避免识别回调/stop 尚未完成又开始
+        if (this.isManagerBusy) {
+          uni.showToast({
+            icon: 'none',
+            title: this.globalConfig?.busyTip || '识别中，请稍候…',
+          });
           return;
         }
 
-        if (this.processStatus === 'error') return;
+        if (this.processStatus === 'error') {
+          this.resetState();
+        }
 
-        const { tempFilePath, duration } = res;
-        this.voiceInfo.voicePath = tempFilePath;
-        this.voiceInfo.voiceText = res.result || '';
-        this.voiceInfo.duration = Math.floor(duration / 1000) || 1;
-        this.translateResult = this.voiceInfo.voiceText;
+        this.isStarted = true;
 
-        this.processStatus = 'confirm';
-      };
-
-      manager.onError = (err) => {
-        console.error('[ChatRecord] 录音错误:', err);
-        this.isManagerBusy = false;
-        this.managerRecording = false;
-        // 先标记错误状态，防止 onStop 回调覆盖
-        this.processStatus = 'error';
-        this.interactStatus = 'normal';
-        this.translateResult = '';
-        this.activeBtnCancel = false;
-        this.activeBtnSend = false;
-
-        // 给用户友好的错误提示
-        uni.showToast({
-          icon: 'none',
-          title: '录音识别失败，请重试',
-          duration: 2000,
-        });
-
-        this.$emit('error', err);
-      };
-    },
-
-    // ==================== 权限管理 ====================
-
-    /**
-     * 检查录音权限
-     */
-    async getVoiceAuthSetting() {
-      return new Promise((resolve, reject) => {
-        uni.getSetting({
-          success: (res) => {
-            const authSettings = Object.keys(res.authSetting);
-            // 是否已经授权了
-            this.recordAuthSetting = authSettings.includes('scope.record');
-            // 当前授权状态
-            this.recordAuthStatus = !!res.authSetting['scope.record'];
-            resolve(this.recordAuthSetting);
-          },
-          fail: () => {
-            reject(false);
-          },
-        });
-      });
-    },
-
-    /**
-     * 申请录音权限
-     */
-    async applyAuth() {
-      return new Promise((resolve, reject) => {
-        uni.authorize({
-          scope: 'scope.record',
-          success: () => {
-            this.recordAuthSetting = true;
-            this.recordAuthStatus = true;
-            resolve(true);
-          },
-          fail: (err) => {
-            // 用户拒绝授权，需要引导去设置页面
-            this.recordAuthSetting = false;
-            this.recordAuthStatus = false;
-            reject(err);
-          },
-        });
-      });
-    },
-
-    /**
-     * 打开系统设置页面
-     */
-    openVoiceSetting() {
-      // TODO: 引导用户打开设置
-      uni.showModal({
-        title: '提示',
-        content: '即将跳转到设置页',
-        success: (res) => {
-          if (res.confirm) {
-            uni.openSetting({
-              success: (res) => {
-                this.recordAuthSetting = !!res.authSetting['scope.record'];
-                this.recordAuthStatus = !!res.authSetting['scope.record'];
-                this.$nextTick(() => {
-                  this.$forceUpdate();
-                });
-              },
-            });
+        // 授权检查
+        try {
+          await this.getVoiceAuthSetting();
+          if (!this.recordAuthSetting) {
+            const ok = await this.applyAuth();
+            if (!ok) {
+              this.isStarted = false;
+              return;
+            }
+            this.isStarted = false;
+            return;
           }
-        },
-      });
-    },
-
-    /**
-     * 开始录音
-     */
-    async startRecord(e) {
-      console.log('startRecord', e);
-      // 阻止默认行为
-      if (e && e.preventDefault) {
-        e.preventDefault();
-      }
-
-      if (this.isManagerBusy) {
-        uni.showToast({ icon: 'none', title: '识别中，请稍候…' });
-        return;
-      }
-
-      // 如果之前处于错误状态，先完全重置
-      if (this.processStatus === 'error') {
-        this.resetState();
-      }
-
-      this.isStarted = true;
-
-      // 检查授权
-      try {
-        await this.getVoiceAuthSetting();
-        if (!this.recordAuthSetting) {
-          await this.applyAuth();
+        } catch (error) {
           this.isStarted = false;
           return;
         }
-      } catch (error) {
-        console.error('授权检查失败', error);
+
+        // 记录起始触摸点
+        const touch = e?.changedTouches?.[0];
+        if (touch) {
+          this.startTouch = { x: touch.clientX, y: touch.clientY };
+        }
+
+        this.showMask = true;
+        this.processStatus = 'recording';
+        this.interactStatus = 'normal';
+        this.translateResult = '';
+        this.voiceInfo = { voicePath: '', voiceText: '', duration: 0 };
+        this.updateBubbleClass();
+
+        // 100ms 后开始录音（与原组件一致）
+        if (startRecordTimer) {
+          clearTimeout(startRecordTimer);
+          startRecordTimer = null;
+        }
+        startRecordTimer = setTimeout(() => {
+          if (!this.isStarted) return;
+
+          if (!this.manager) {
+            this.initRecordManager();
+          }
+
+          if (this.manager) {
+            this.isManagerBusy = true;
+            const duration = this.duration ?? 60000;
+            const lang = this.lang ?? 'zh_CN';
+            this.manager.start({ duration, lang });
+          } else {
+            // 插件不可用
+            uni.showToast({
+              icon: 'none',
+              title: this.globalConfig?.missingPluginTip || '缺少语音识别插件 WechatSI',
+            });
+            this.processStatus = 'error';
+            this.updateBubbleClass();
+          }
+        }, 100);
+
+        // 预留：如需显示计时/动画，可使用 recordTimer
+        if (recordTimer) {
+          clearInterval(recordTimer);
+          recordTimer = null;
+        }
+        recordTimer = setInterval(() => {
+          // noop
+        }, 1000);
+      },
+
+      touchmove(e) {
+        if (!this.isStarted || !this.showMask) return;
+        if (this.processStatus !== 'recording') return;
+
+        const touch = (e.touches && e.touches[0]) || (e.changedTouches && e.changedTouches[0]);
+        if (!touch) return;
+
+        const deltaY = touch.clientY - this.startTouch.y;
+
+        // 只有上滑取消，没有转文字
+        let interactStatus = 'normal';
+        if (deltaY < -MOVE_THRESHOLD_Y) {
+          interactStatus = 'release_cancel';
+        }
+
+        if (interactStatus !== this.interactStatus) {
+          this.interactStatus = interactStatus;
+          this.updateBubbleClass();
+        }
+      },
+
+      stopRecord() {
+        if (this.processStatus !== 'recording') return;
+
         this.isStarted = false;
-        return;
-      }
 
-      // 记录起始触摸点
-      if (e && e.changedTouches && e.changedTouches[0]) {
-        const { clientX, clientY } = e.changedTouches[0];
-        this.startTouch = { x: clientX, y: clientY };
-      }
+        if (recordTimer) {
+          clearInterval(recordTimer);
+          recordTimer = null;
+        }
+        if (startRecordTimer) {
+          clearTimeout(startRecordTimer);
+          startRecordTimer = null;
+        }
 
-      this.showMask = true;
-      this.processStatus = 'recording';
-      this.interactStatus = 'normal';
-      this.translateResult = '';
-      // 重置录音数据
-      this.voiceInfo = { voicePath: '', voiceText: '', duration: 0 };
+        // 停止录音
+        if (this.manager) {
+          if (this.managerRecording) {
+            this.manager.stop();
+          } else {
+            // 录音尚未开始，取消启动
+            this.ignoreNextOnStop = true;
+          }
+        }
 
-      console.log('[ChatRecord] 模拟录音开始');
-      // 500ms 后开始录音
-      startRecordTimer = setTimeout(() => {
-        if (!this.isStarted) {
-          console.log('录音已取消');
+        if (this.interactStatus === 'release_cancel') {
+          // 取消时不让 onStop 把 UI 推到 confirm
+          this.ignoreNextOnStop = true;
+          this.activeBtnCancel = true;
+          this.cancelRecord();
+        } else {
+          // 正常松手：等待 onStop 回调，自动进入 confirm 并发送
+        }
+      },
+
+      touchcancel() {
+        this.cancelRecord();
+      },
+
+      // ==================== 业务逻辑 ====================
+      cancelRecord() {
+        this.showMask = false;
+        this.resetState();
+      },
+
+      convertToText() {
+        this.processStatus = 'confirm';
+        this.interactStatus = 'normal';
+        this.translateResult = this.voiceInfo.voiceText;
+        this.updateBubbleClass();
+      },
+
+      sendVoice() {
+        // 发送语音原始信息（按原组件逻辑保留）
+        this.$emit('recognize', {
+          voicePath: this.voiceInfo.voicePath,
+          voiceText: this.voiceInfo.voiceText,
+          duration: this.voiceInfo.duration,
+        });
+        // 延迟重置状态，确保事件能够正确触发
+        setTimeout(() => {
+          this.resetState();
+        }, 100);
+      },
+
+      handleSendVoiceMsg() {
+        if (this.processStatus === 'error') {
           return;
         }
-        // 确保录音管理器已初始化
-        if (!manager) {
-          this.initRecordManager();
+
+        // 发送语音消息，包含语音文件和转文字结果
+        this.$emit('recognize', {
+          voicePath: this.voiceInfo.voicePath,
+          voiceText: this.translateResult || this.voiceInfo.voiceText,
+          duration: this.voiceInfo.duration,
+        });
+
+        // 关闭弹窗
+        this.showMask = false;
+        // 延迟重置状态，确保事件能够正确触发
+        setTimeout(() => {
+          this.resetState();
+        }, 100);
+      },
+
+      handleCancelSend() {
+        if (this.processStatus === 'error') {
+          this.resetState();
+          return;
         }
-        if (manager) {
-          this.isManagerBusy = true; // 一旦start，先认为会进入一次完整流程
-          manager.start({ duration: 60000, lang: 'zh_CN' });
+        // 关闭弹窗
+        this.showMask = false;
+        // 延迟重置状态，确保事件能够正确触发
+        setTimeout(() => {
+          this.resetState();
+        }, 100);
+      },
+
+      onTranslateInput(e) {
+        this.translateResult = e.detail?.value ?? '';
+        this.activeBtnCancel = !!e.detail?.value;
+        this.activeBtnSend = !!e.detail?.value;
+      },
+
+      // ==================== 状态管理 ====================
+      resetState() {
+        if (recordTimer) {
+          clearInterval(recordTimer);
+          recordTimer = null;
         }
-      }, 100);
-    },
-
-    /**
-     * 手势移动处理
-     */
-    touchmove(e) {
-      // 只有在录音开始后才处理滑动
-      if (!this.isStarted || !this.showMask) {
-        return;
-      }
-
-      if (this.processStatus !== 'recording') return;
-
-      // 优先使用 touches，在 touchmove 中更可靠
-      const touch = e.touches && e.touches[0] ? e.touches[0] : e.changedTouches[0];
-      if (!touch) return;
-
-      const { clientX, clientY } = touch;
-      const deltaX = clientX - this.startTouch.x;
-      const deltaY = clientY - this.startTouch.y;
-
-      // 判断手势方向
-      if (deltaY < -MOVE_THRESHOLD_Y) {
-        // 向上滑动超过阈值（到达 shape-btn 附近）
-        if (deltaX < -MOVE_THRESHOLD_X) {
-          this.interactStatus = 'release_cancel'; // 左上：取消
-        } else if (deltaX > MOVE_THRESHOLD_X) {
-          this.interactStatus = 'release_convert'; // 右上：转文字
-        } else {
-          this.interactStatus = 'normal'; // 正上：无操作
+        if (startRecordTimer) {
+          clearTimeout(startRecordTimer);
+          startRecordTimer = null;
         }
-      } else {
+
+        if (this.manager && this.managerRecording) {
+          try {
+            this.manager.stop();
+          } catch (e) {
+            // ignore
+          }
+        }
+
+        this.isStarted = false;
+        this.managerRecording = false;
+        this.showMask = false;
+        this.processStatus = 'idle';
         this.interactStatus = 'normal';
-      }
+        this.translateResult = '';
+        this.voiceInfo = { voicePath: '', voiceText: '', duration: 0 };
+        this.activeBtnCancel = false;
+        this.activeBtnSend = false;
+        this.isManagerBusy = false;
+        this.ignoreNextOnStop = false;
+        this.updateBubbleClass();
+      },
     },
-
-    /**
-     * 停止录音
-     */
-    stopRecord() {
-      if (this.processStatus !== 'recording') return;
-
-      // 标记录音结束
-      this.isStarted = false;
-
-      // 清除定时器
-      if (recordTimer) {
-        clearInterval(recordTimer);
-        recordTimer = null;
-      }
-      if (startRecordTimer) {
-        clearTimeout(startRecordTimer);
-        startRecordTimer = null;
-      }
-      // 关键：只有在录音真正开始后，才调用 stop，否则插件会报错 stopBeforeStartEvent
-      if (manager && this.managerRecording) {
-        manager.stop();
-      }
-      if (this.interactStatus === 'release_cancel') {
-        this.ignoreNextOnStop = true; // 取消时，不要让 onStop 把UI推到confirm
-        this.cancelRecord(); // 这里可以继续reset UI
-      } else if (this.interactStatus === 'release_convert') {
-        // UI可以先进入处理/确认态，最终以onStop拿到的result为准
-        this.convertToText();
-      } else {
-        // 正常松手：等 onStop 里把 confirm / 文本填好
-      }
-    },
-
-    /**
-     * 触摸取消
-     */
-    touchcancel() {
-      this.cancelRecord();
-    },
-
-    // ==================== 业务逻辑 ====================
-
-    /**
-     * 取消录音
-     */
-    cancelRecord() {
-      console.log('[ChatRecord] 取消录音');
-      // if (manager) manager.stop();
-      this.$emit('cancel');
-      this.resetState();
-    },
-
-    /**
-     * 转换为文字
-     */
-    convertToText() {
-      console.log('[ChatRecord] 转换为文字');
-      this.processStatus = 'confirm';
-      this.interactStatus = 'normal';
-      this.translateResult = this.voiceInfo.voiceText;
-    },
-
-    /**
-     * 直接发送语音
-     */
-    sendVoice() {
-      console.log('[ChatRecord] 发送语音', this.voiceInfo);
-      this.$emit('send', {
-        voicePath: this.voiceInfo.voicePath,
-        voiceText: this.voiceInfo.voiceText,
-        duration: this.voiceInfo.duration,
-      });
-      this.resetState();
-    },
-
-    /**
-     * 发送转文字结果
-     */
-    handleSendVoiceMsg() {
-      // 错误状态下禁用发送
-      if (this.processStatus === 'error') {
-        return;
-      }
-      this.$emit('recognize', this.translateResult);
-      this.resetState();
-    },
-
-    /**
-     * 取消发送
-     */
-    handleCancelSend() {
-      // 错误状态下禁用取消，只允许重置状态
-      if (this.processStatus === 'error') {
-        this.resetState();
-        return;
-      }
-      this.$emit('cancel');
-      this.resetState();
-    },
-
-    // ==================== 状态管理 ====================
-
-    /**
-     * 重置所有状态
-     */
-    resetState() {
-      // 清除录音相关定时器
-      if (recordTimer) {
-        clearInterval(recordTimer);
-        recordTimer = null;
-      }
-      if (startRecordTimer) {
-        clearTimeout(startRecordTimer);
-        startRecordTimer = null;
-      }
-
-      // 只有真正录音开始过才stop
-      if (manager && this.managerRecording) {
-        manager.stop();
-      }
-      // 重置录音状态
-      this.isStarted = false;
-      this.managerRecording = false;
-      this.showMask = false;
-      this.processStatus = 'idle';
-      this.interactStatus = 'normal';
-      this.translateResult = '';
-      this.voiceInfo = { voicePath: '', voiceText: '', duration: 0 };
-      this.activeBtnCancel = false;
-      this.activeBtnSend = false;
-      this.isManagerBusy = false;
-    },
-  },
-});
+  }),
+};
 </script>
 
 <style scoped>

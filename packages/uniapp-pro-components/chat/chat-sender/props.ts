@@ -46,10 +46,10 @@ export default {
     type: String,
     default: '',
   },
-  /** 是否允许语音输入 */
+  /** 输入类型， keyboard-键盘输入，speech-语音输入 */
   allowSpeech: {
-    type: Boolean,
-    default: false,
+    type: String,
+    default: 'keyboard',
   },
   /** 上传面板是否可见 */
   visible: Boolean,

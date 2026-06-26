@@ -476,7 +476,6 @@ export default class ChatRecord extends SuperComponent {
     },
 
     touchcancel() {
-      console.log('松手转文字');
       this.cancelRecord();
     },
 
