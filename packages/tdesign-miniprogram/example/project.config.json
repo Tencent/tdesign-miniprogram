@@ -239,6 +239,12 @@
           "scene": null
         },
         {
+          "name": "list",
+          "pathName": "pages/list/list",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "message",
           "pathName": "pages/message/message",
           "query": "",

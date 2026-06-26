@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-list": "tdesign-miniprogram/list/list",
+    "t-cell": "tdesign-miniprogram/cell/cell",
+    "t-pull-down-refresh": "tdesign-miniprogram/pull-down-refresh/pull-down-refresh"
+  }
+}

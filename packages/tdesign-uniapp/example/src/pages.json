@@ -103,6 +103,9 @@
       "path": "pages-more/image-viewer/image-viewer"
     },
     {
+      "path": "pages-more/list/list"
+    },
+    {
       "path": "pages-more/progress/progress"
     },
     {
@@ -559,6 +562,10 @@
       {
         "name": "image-viewer",
         "pathName": "pages-more/image-viewer/image-viewer"
+      },
+      {
+        "name": "list",
+        "pathName": "pages-more/list/list"
       },
       {
         "name": "progress",
