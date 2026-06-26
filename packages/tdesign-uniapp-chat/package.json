@@ -85,6 +85,7 @@
     "url": "git+https://github.com/Tencent/tdesign-miniprogram.git",
     "directory": "packages/tdesign-uniapp-chat"
   },
+  "homepage": "https://tdesign.tencent.com/uniapp-chat",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
