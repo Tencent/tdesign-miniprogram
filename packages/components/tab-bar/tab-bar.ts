@@ -36,6 +36,8 @@ export default class Tabbar extends SuperComponent {
     prefix,
     classPrefix,
     placeholderHeight: 56,
+    safeAreaBottomHeight: 0,
+    safeAreaBottomReady: false,
   };
 
   properties = props;
@@ -54,15 +56,37 @@ export default class Tabbar extends SuperComponent {
     'fixed, placeholder, shape, safeAreaInsetBottom'() {
       this.setPlaceholderHeight();
     },
+    safeAreaInsetBottom() {
+      this.setSafeAreaBottomHeight();
+    },
   };
 
   lifetimes = {
     ready() {
       this.showChildren();
+      this.setSafeAreaBottomHeight();
     },
   };
 
   methods = {
+    setSafeAreaBottomHeight() {
+      if (!this.properties.safeAreaInsetBottom) {
+        // 关闭时清空，避免残留值影响样式
+        if (this.data.safeAreaBottomReady || this.data.safeAreaBottomHeight !== 0) {
+          this.setData({ safeAreaBottomHeight: 0, safeAreaBottomReady: false });
+        }
+        return;
+      }
+
+      wx.nextTick(() => {
+        const safeAreaBottomHeight = getSafeAreaBottom();
+        this.setData({ safeAreaBottomHeight, safeAreaBottomReady: true }, () => {
+          // safeArea 注入后，placeholder 占位高度可能依赖它，再触发一次重算
+          this.setPlaceholderHeight();
+        });
+      });
+    },
+
     setPlaceholderHeight() {
       if (!this.properties.fixed || !this.properties.placeholder) return;
 
