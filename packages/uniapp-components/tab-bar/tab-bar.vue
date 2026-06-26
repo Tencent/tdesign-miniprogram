@@ -8,7 +8,14 @@
       :style="'height: ' + placeholderHeight + 'px;'"
     />
     <view
-      :style="'' + tools._style(['z-index: ' + zIndex, customStyle])"
+      :style="
+        '' +
+        tools._style([
+          'z-index: ' + zIndex,
+          safeAreaBottomReady ? '--safe-area-inset-bottom: ' + safeAreaBottomHeight + 'px' : '',
+          customStyle,
+        ])
+      "
       :class="
         '' +
         tools.cls(classPrefix, [['border', bordered], ['fixed', fixed], ['safe', safeAreaInsetBottom], shape]) +
@@ -74,6 +81,8 @@ export default {
 
         dataValue: coalesce(this.value, this.defaultValue),
         placeholderHeight: 56,
+        safeAreaBottomHeight: 0,
+        safeAreaBottomReady: false,
       };
     },
     watch: {
@@ -99,14 +108,31 @@ export default {
         this.setPlaceholderHeight();
       },
       safeAreaInsetBottom() {
+        this.setSafeAreaBottomHeight();
         this.setPlaceholderHeight();
       },
     },
     mounted() {
+      this.setSafeAreaBottomHeight();
       this.setPlaceholderHeight();
       this.showChildren();
     },
     methods: {
+      setSafeAreaBottomHeight() {
+        if (!this.safeAreaInsetBottom) {
+          if (this.safeAreaBottomReady || this.safeAreaBottomHeight !== 0) {
+            this.safeAreaBottomHeight = 0;
+            this.safeAreaBottomReady = false;
+          }
+          return;
+        }
+        nextTick().then(() => {
+          this.safeAreaBottomHeight = getSafeAreaBottom();
+          this.safeAreaBottomReady = true;
+          // safeArea 注入后 placeholder 高度可能需要重算
+          this.setPlaceholderHeight();
+        });
+      },
       setPlaceholderHeight() {
         if (!this.fixed || !this.placeholder) {
           return;
