@@ -102,13 +102,13 @@
 </template>
 
 <script>
-// import { prefix } from '@tdesign/uniapp/common/config';
+import { prefix } from '@tdesign/uniapp/common/config';
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
 import props from './props';
 import usingConfig from '../mixins/using-config';
 
 const componentName = 'chat-record';
-const name = `t-${componentName}`;
+const name = `${prefix}-${componentName}`;
 
 // 交互阈值配置（单位：px）
 const MOVE_THRESHOLD_Y = 60;
