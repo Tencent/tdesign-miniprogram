@@ -1,0 +1,122 @@
+<template>
+  <view>
+    <t-button
+      class="wrapper"
+      size="large"
+      theme="primary"
+      variant="outline"
+      block
+      content="图片置顶-带标题描述"
+      @click="open('imageOnTop')"
+    />
+    <t-dialog
+      :visible="imageOnTop"
+      title="对话框标题"
+      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+      :confirm-btn="baseConfirm"
+      cancel-btn="取消"
+      @confirm="close"
+      @cancel="close"
+    >
+      <template #top>
+        <t-image class="dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
+      </template>
+    </t-dialog>
+
+    <t-button
+      class="wrapper"
+      size="large"
+      theme="primary"
+      variant="outline"
+      block
+      content="图片置顶-纯标题"
+      @click="open('imageOnTopWithTitle')"
+    />
+    <t-dialog
+      :visible="imageOnTopWithTitle"
+      title="对话框标题"
+      :confirm-btn="baseConfirm"
+      cancel-btn="取消"
+      @confirm="close"
+      @cancel="close"
+    >
+      <template #top>
+        <t-image class="dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
+      </template>
+    </t-dialog>
+
+    <t-button
+      class="wrapper"
+      theme="primary"
+      size="large"
+      variant="outline"
+      block
+      content="图片居中-带标题描述"
+      @click="open('imageOnMiddle')"
+    />
+    <t-dialog
+      :visible="imageOnMiddle"
+      title="对话框标题"
+      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+      :confirm-btn="baseConfirm"
+      cancel-btn="取消"
+      @confirm="close"
+      @cancel="close"
+    >
+      <template #middle>
+        <t-image class="image-host dialog-image" src="https://tdesign.gtimg.com/mobile/demos/dialog1.png" />
+      </template>
+    </t-dialog>
+  </view>
+</template>
+
+<script lang="uts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const imageOnTop = ref<boolean>(false);
+    const imageOnTopWithTitle = ref<boolean>(false);
+    const imageOnMiddle = ref<boolean>(false);
+    const dialogKey = ref<string>('');
+
+    const baseConfirm = { content: '确定', variant: 'base' } as UTSJSONObject;
+
+    function open(key: string) {
+      dialogKey.value = key;
+      if (key === 'imageOnTop') imageOnTop.value = true;
+      else if (key === 'imageOnTopWithTitle') imageOnTopWithTitle.value = true;
+      else if (key === 'imageOnMiddle') imageOnMiddle.value = true;
+    }
+    function close() {
+      const key = dialogKey.value;
+      if (key === 'imageOnTop') imageOnTop.value = false;
+      else if (key === 'imageOnTopWithTitle') imageOnTopWithTitle.value = false;
+      else if (key === 'imageOnMiddle') imageOnMiddle.value = false;
+    }
+
+    return {
+      imageOnTop,
+      imageOnTopWithTitle,
+      imageOnMiddle,
+      baseConfirm,
+      open,
+      close,
+    };
+  },
+});
+</script>
+
+<style>
+.wrapper {
+  margin-bottom: 16rpx;
+}
+.dialog-image {
+  width: 100%;
+  height: 320rpx;
+}
+.image-host {
+  display: block;
+  margin-top: 48rpx;
+}
+</style>

@@ -1,0 +1,47 @@
+<template>
+  <view>
+    <t-button
+      size="large"
+      theme="primary"
+      variant="outline"
+      block
+      content="自定义按钮（透传 button props）"
+      @click="onShow"
+    />
+  </view>
+</template>
+
+<script lang="uts">
+/**
+ * Dialog 自定义按钮 demo
+ *
+ * confirmBtn 透传 t-button 的 props（content / theme / variant / size 等）
+ */
+import { defineComponent } from 'vue';
+import { DialogPlugin } from '@/uni_modules/tdesign-uniapp-x/components/t-dialog';
+
+export default defineComponent({
+  setup() {
+    function onShow() {
+      DialogPlugin.confirm({
+        title: '弹窗标题',
+        content: '告知当前状态、信息和解决方法等内容。',
+        cancelBtn: '取消',
+        // 透传 button props（uvue 端因为 native 限制，分享/电话等开放能力以 t-button 自身支持为准）
+        confirmBtn: {
+          content: '我已知晓',
+          variant: 'base',
+          theme: 'primary',
+          size: 'medium',
+        } as UTSJSONObject,
+      })
+        .then(() => console.log('点击确定'))
+        .catch(() => console.log('点击取消'));
+    }
+
+    return { onShow };
+  },
+});
+</script>
+
+<style></style>

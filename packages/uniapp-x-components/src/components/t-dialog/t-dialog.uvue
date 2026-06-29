@@ -1,108 +1,147 @@
 <template>
   <!--
-    Dialog - uni-app x 实现（指令式 + 受控双模式）
+    Dialog - uni-app x 实现（v2，基于 t-popup 重构）
     -------------------------------------------------------
-    DOM 结构对齐 @tdesign/uniapp/dialog/dialog.vue：
-      <view v-if="visible">
-        <view class="t-dialog-mask" v-if="showOverlay" @click />
-        <view class="t-dialog-wrap">
-          <view class="t-dialog t-dialog--{buttonLayout}">
-            <view class="t-dialog__close-btn" v-if="closeBtn" @click>×</view>
-            <view class="t-dialog__content">
-              <view class="t-dialog__header" v-if="title">{{ title }}</view>
-              <view class="t-dialog__body" v-if="content">{{ content }}</view>
+    DOM 结构 1:1 对齐 @tdesign/uniapp/dialog/dialog.vue：
+      <t-popup placement="center" :visible :show-overlay :close-on-overlay-click :prevent-scroll-through :z-index>
+        <view class="t-dialog">
+          <slot name="top" />
+          <view class="t-dialog__close-btn" v-if="closeBtn"><t-icon name="close" /></view>
+          <view class="t-dialog__content">
+            <view class="t-dialog__header" v-if="title">{{ title }}</view>
+            <slot name="title" />
+            <view class="t-dialog__body" v-if="content">
+              <text class="t-dialog__body-text">{{ content }}</text>
             </view>
-            <view class="t-dialog__footer">
-              <view class="t-dialog__btn t-dialog__btn--cancel" v-if="cancelBtn" @click>{{ cancelBtn }}</view>
-              <view class="t-dialog__btn t-dialog__btn--confirm" v-if="confirmBtn" @click>{{ confirmBtn }}</view>
-            </view>
+            <slot name="content" />
+          </view>
+          <slot name="middle" />
+          <view class="t-dialog__footer t-dialog__footer--{column|full}">
+            actions[] | cancel | confirm（皆为 t-button）
           </view>
         </view>
+      </t-popup>
+
+    动画 / 遮罩 / 遮罩点击 / 滚动穿透 全部由 t-popup 提供（带渐入渐出）
+    使用方式：
+      A) 受控：<t-dialog :visible="vis" title content @confirm @cancel />
+      B) 指令式：<t-dialog ref="dialog" /> + Dialog.alert/.confirm/.action/.show()
+  -->
+  <t-popup
+    placement="center"
+    :visible="combinedVisible"
+    :show-overlay="combinedShowOverlay"
+    :close-on-overlay-click="combinedCloseOnOverlayClick"
+    :prevent-scroll-through="combinedPreventScrollThrough"
+    :using-custom-navbar="combinedUsingCustomNavbar"
+    :z-index="combinedZIndex"
+    :custom-style="popupCustomStyle"
+    @visible-change="onPopupVisibleChange"
+    @update:visible="onPopupUpdateVisible"
+  >
+    <view :class="rootClass" :style="rootStyle">
+      <slot name="top" />
+
+      <view v-if="hasCloseBtn" class="t-dialog__close-btn" @click="onCloseBtnClick">
+        <t-icon
+          v-if="closeBtnIconName.length > 0"
+          :name="closeBtnIconName"
+          :size="closeBtnIconSize"
+          :color="closeBtnIconColor"
+        />
       </view>
 
-    使用方式：
-      A) 受控模式：
-         <t-dialog :visible="vis" title="标题" content="内容" @confirm @cancel />
-      B) 指令式：
-         <t-dialog ref="dialog" />
-         Dialog.confirm({ title: 'xxx', content: 'xxx' })
-  -->
-  <view v-if="combinedVisible" class="t-dialog-host">
-    <view
-      v-if="combinedShowOverlay"
-      class="t-dialog-mask"
-      @click="onOverlayClick"
-    />
-    <view class="t-dialog-wrap">
-      <view :class="rootClass" :style="rootStyle">
-        <!-- 关闭按钮 -->
-        <view
-          v-if="combinedCloseBtn"
-          class="t-dialog__close-btn"
-          @click="onCloseBtnClick"
-        >
-          <text>×</text>
+      <view class="t-dialog__content">
+        <view v-if="combinedTitle.length > 0" class="t-dialog__header">
+          <text>{{ combinedTitle }}</text>
         </view>
+        <slot name="title" />
+        <view v-if="combinedContent.length > 0" class="t-dialog__body">
+          <text class="t-dialog__body-text">{{ combinedContent }}</text>
+        </view>
+        <slot name="content" />
+      </view>
 
-        <!-- 标题 + 内容 -->
-        <view class="t-dialog__content">
-          <view v-if="combinedTitle.length > 0" class="t-dialog__header">
-            <text>{{ combinedTitle }}</text>
-          </view>
-          <view v-if="combinedContent.length > 0" class="t-dialog__body">
-            <text>{{ combinedContent }}</text>
-          </view>
-        </view>
+      <slot name="middle" />
 
-        <!-- 底部按钮 -->
-        <view class="t-dialog__footer">
-          <view
-            v-if="combinedCancelBtn.length > 0"
-            :class="cancelBtnClass"
-            @click="onCancelClick"
-          >
-            <text>{{ combinedCancelBtn }}</text>
-          </view>
-          <view
-            v-if="combinedConfirmBtn.length > 0"
-            :class="confirmBtnClass"
-            @click="onConfirmClick"
-          >
-            <text>{{ combinedConfirmBtn }}</text>
-          </view>
-        </view>
+      <view :class="footerClass">
+        <template v-if="combinedActions.length > 0">
+          <t-button
+            v-for="(item, index) in combinedActions"
+            :key="index"
+            :class="actionButtonClass"
+            block
+            :content="actionContent(item)"
+            :theme="actionTheme(item)"
+            :variant="actionVariant(item)"
+            :size="actionSize(item)"
+            :disabled="actionDisabled(item)"
+            :loading="actionLoading(item)"
+            @click="onActionClick(index)"
+          />
+        </template>
+        <slot name="actions" />
+
+        <t-button
+          v-if="hasCancelBtn"
+          :class="cancelButtonClass"
+          block
+          :content="cancelBtnContent"
+          :theme="cancelBtnTheme"
+          :variant="cancelBtnVariant"
+          :size="cancelBtnSize"
+          :disabled="cancelBtnDisabled"
+          @click="onCancelClick"
+        />
+        <slot name="cancel-btn" />
+
+        <t-button
+          v-if="hasConfirmBtn"
+          :class="confirmButtonClass"
+          block
+          :content="confirmBtnContent"
+          :theme="confirmBtnTheme"
+          :variant="confirmBtnVariant"
+          :size="confirmBtnSize"
+          :disabled="confirmBtnDisabled"
+          :loading="confirmBtnLoading"
+          @click="onConfirmClick"
+        />
+        <slot name="confirm-btn" />
       </view>
     </view>
-  </view>
+  </t-popup>
 </template>
 
 <script lang="uts">
 /**
- * Dialog - uni-app x 实现
+ * Dialog - uni-app x 实现（v2）
  *
  * 双模式：
- *  1) 受控模式：<t-dialog :visible="x" title content @confirm @cancel />
- *  2) 指令式：<t-dialog ref="dialog" /> + Dialog.confirm/.alert/.show()
+ *  1) 受控：<t-dialog :visible="x" title content :confirm-btn :cancel-btn @confirm @cancel />
+ *  2) 指令式：<t-dialog ref="dialog" /> + Dialog.alert/.confirm/.action/.show()
  *
- * 当指令式调用时，内部 imperativeState 会覆盖 props，使得同一个组件实例既能受控用又能命令式用。
+ * imperativeState.active=true 时，所有渲染优先取自 imperativeState（覆盖 props）
  */
 import { computed, defineComponent, ref } from 'vue';
-import { dialogVariants } from './t-dialog.variants';
 
 type DialogInternalState = {
-  active: boolean; // 是否处于指令式驱动状态
+  active: boolean;
   title: string;
   content: string;
-  cancelBtn: string;
-  confirmBtn: string;
+  cancelBtn: any;
+  confirmBtn: any;
+  closeBtn: any;
   buttonLayout: string;
-  closeBtn: boolean;
   closeOnOverlayClick: boolean;
   showOverlay: boolean;
+  preventScrollThrough: boolean;
+  usingCustomNavbar: boolean;
   zIndex: number;
-  /** 命令式回调 */
+  actions: UTSJSONObject[];
   onConfirm: ((() => void) | null);
   onCancel: ((() => void) | null);
+  onAction: (((index: number) => void) | null);
 };
 
 function defaultState(): DialogInternalState {
@@ -111,15 +150,44 @@ function defaultState(): DialogInternalState {
     title: '',
     content: '',
     cancelBtn: '',
-    confirmBtn: '确定',
+    confirmBtn: '',
+    closeBtn: false as any,
     buttonLayout: 'horizontal',
-    closeBtn: false,
     closeOnOverlayClick: false,
     showOverlay: true,
+    preventScrollThrough: true,
+    usingCustomNavbar: false,
     zIndex: 11500,
+    actions: [] as UTSJSONObject[],
     onConfirm: null,
     onCancel: null,
+    onAction: null,
   } as DialogInternalState;
+}
+
+function btnAsString(btn: any): string {
+  if (btn == null) return '';
+  if (typeof btn === 'string') return btn as string;
+  const o = btn as UTSJSONObject;
+  const c = o.getString('content');
+  if (c != null) return c as string;
+  return '';
+}
+
+function btnGetString(btn: any, key: string, dft: string): string {
+  if (btn == null || typeof btn === 'string') return dft;
+  const o = btn as UTSJSONObject;
+  const v = o.getString(key);
+  if (v == null) return dft;
+  return v as string;
+}
+
+function btnGetBoolean(btn: any, key: string, dft: boolean): boolean {
+  if (btn == null || typeof btn === 'string') return dft;
+  const o = btn as UTSJSONObject;
+  const v = o.getBoolean(key);
+  if (v == null) return dft;
+  return v as boolean;
 }
 
 export default defineComponent({
@@ -128,90 +196,207 @@ export default defineComponent({
     visible: { type: Boolean, default: false },
     title: { type: String, default: '' },
     content: { type: String, default: '' },
-    cancelBtn: { type: String, default: '' },
-    confirmBtn: { type: String, default: '确定' },
+    cancelBtn: { type: [String, Object], default: '' },
+    confirmBtn: { type: [String, Object], default: '' },
+    closeBtn: { type: [Boolean, Object], default: false },
+    actions: { type: Array as PropType<UTSJSONObject[]>, default: () => [] as UTSJSONObject[] },
     buttonLayout: { type: String, default: 'horizontal' },
-    closeBtn: { type: Boolean, default: false },
     closeOnOverlayClick: { type: Boolean, default: false },
     showOverlay: { type: Boolean, default: true },
+    preventScrollThrough: { type: Boolean, default: true },
+    usingCustomNavbar: { type: Boolean, default: false },
     zIndex: { type: Number, default: 11500 },
     customClass: { type: String, default: '' },
     customStyle: { type: String, default: '' },
   },
-  emits: ['confirm', 'cancel', 'close', 'overlay-click', 'update:visible'],
+  emits: ['confirm', 'cancel', 'close', 'action', 'overlay-click', 'update:visible'],
   setup(props, ctx) {
-    /** 指令式驱动的状态（active=true 时优先于 props） */
     const imperativeState = ref<DialogInternalState>(defaultState());
 
-    /** combined 系列 computed：active 时取 imperativeState，否则取 props */
     const combinedVisible = computed<boolean>(() => {
       if (imperativeState.value.active) return true;
       return props.visible;
     });
-
     const combinedTitle = computed<string>(() => {
       if (imperativeState.value.active) return imperativeState.value.title;
       return props.title;
     });
-
     const combinedContent = computed<string>(() => {
       if (imperativeState.value.active) return imperativeState.value.content;
       return props.content;
     });
-
-    const combinedCancelBtn = computed<string>(() => {
+    const combinedCancelBtn = computed<any>(() => {
       if (imperativeState.value.active) return imperativeState.value.cancelBtn;
       return props.cancelBtn;
     });
-
-    const combinedConfirmBtn = computed<string>(() => {
+    const combinedConfirmBtn = computed<any>(() => {
       if (imperativeState.value.active) return imperativeState.value.confirmBtn;
       return props.confirmBtn;
     });
-
+    const combinedCloseBtn = computed<any>(() => {
+      if (imperativeState.value.active) return imperativeState.value.closeBtn;
+      return props.closeBtn;
+    });
+    const combinedActions = computed<UTSJSONObject[]>(() => {
+      if (imperativeState.value.active) return imperativeState.value.actions;
+      return props.actions;
+    });
     const combinedButtonLayout = computed<string>(() => {
       if (imperativeState.value.active) return imperativeState.value.buttonLayout;
       return props.buttonLayout;
     });
-
-    const combinedCloseBtn = computed<boolean>(() => {
-      if (imperativeState.value.active) return imperativeState.value.closeBtn;
-      return props.closeBtn;
-    });
-
     const combinedCloseOnOverlayClick = computed<boolean>(() => {
       if (imperativeState.value.active) return imperativeState.value.closeOnOverlayClick;
       return props.closeOnOverlayClick;
     });
-
     const combinedShowOverlay = computed<boolean>(() => {
       if (imperativeState.value.active) return imperativeState.value.showOverlay;
       return props.showOverlay;
     });
-
+    const combinedPreventScrollThrough = computed<boolean>(() => {
+      if (imperativeState.value.active) return imperativeState.value.preventScrollThrough;
+      return props.preventScrollThrough;
+    });
+    const combinedUsingCustomNavbar = computed<boolean>(() => {
+      if (imperativeState.value.active) return imperativeState.value.usingCustomNavbar;
+      return props.usingCustomNavbar;
+    });
     const combinedZIndex = computed<number>(() => {
       if (imperativeState.value.active) return imperativeState.value.zIndex;
       return props.zIndex;
     });
 
     const rootClass = computed<string>(() => {
-      const cls = dialogVariants({ buttonLayout: combinedButtonLayout.value });
-      return props.customClass.length > 0 ? cls + ' ' + props.customClass : cls;
+      const base = 't-dialog';
+      return props.customClass.length > 0 ? base + ' ' + props.customClass : base;
+    });
+    const rootStyle = computed<string>(() => props.customStyle);
+    const popupCustomStyle = computed<string>(() => '--td-popup-border-radius:24rpx;background-color:transparent;padding:0;');
+
+    const isVerticalLayout = computed<boolean>(() => combinedButtonLayout.value === 'vertical');
+
+    const isFullFooter = computed<boolean>(() => {
+      const ca = combinedActions.value;
+      if (ca.length > 0) return false;
+      const c = combinedCancelBtn.value;
+      const cf = combinedConfirmBtn.value;
+      const cancelIsObj = c != null && typeof c !== 'string';
+      const confirmIsObj = cf != null && typeof cf !== 'string';
+      if (cancelIsObj || confirmIsObj) return false;
+      return true;
     });
 
-    const rootStyle = computed<string>(() => 'z-index:' + combinedZIndex.value.toString());
-
-    const cancelBtnClass = computed<string>(() => {
-      const dir = combinedButtonLayout.value === 'vertical' ? 'vertical' : 'horizontal';
-      return 't-dialog__btn t-dialog__btn--cancel t-dialog__btn--' + dir;
+    const footerClass = computed<string>(() => {
+      let cls = 't-dialog__footer';
+      if (isVerticalLayout.value) cls += ' t-dialog__footer--column';
+      if (isFullFooter.value) cls += ' t-dialog__footer--full';
+      return cls;
     });
 
-    const confirmBtnClass = computed<string>(() => {
-      const dir = combinedButtonLayout.value === 'vertical' ? 'vertical' : 'horizontal';
-      return 't-dialog__btn t-dialog__btn--confirm t-dialog__btn--' + dir;
+    const buttonDirCls = computed<string>(() => {
+      return isVerticalLayout.value ? 't-dialog__button--vertical' : 't-dialog__button--horizontal';
     });
 
-    /** 命令式入口：从 show.ts 调用 */
+    const cancelButtonClass = computed<string>(() =>
+      't-dialog__button t-dialog__button--cancel ' + buttonDirCls.value,
+    );
+    const confirmButtonClass = computed<string>(() =>
+      't-dialog__button t-dialog__button--confirm ' + buttonDirCls.value,
+    );
+    const actionButtonClass = computed<string>(() =>
+      't-dialog__button t-dialog__button--action ' + buttonDirCls.value,
+    );
+
+    const hasCloseBtn = computed<boolean>(() => {
+      const c = combinedCloseBtn.value;
+      if (c == null) return false;
+      if (typeof c === 'boolean') return c as boolean;
+      return true;
+    });
+    const closeBtnIconName = computed<string>(() => {
+      const c = combinedCloseBtn.value;
+      if (c == null || typeof c === 'boolean') return 'close';
+      return btnGetString(c, 'name', 'close');
+    });
+    const closeBtnIconSize = computed<string>(() => {
+      const c = combinedCloseBtn.value;
+      if (c == null || typeof c === 'boolean') return '44rpx';
+      return btnGetString(c, 'size', '44rpx');
+    });
+    const closeBtnIconColor = computed<string>(() => {
+      const c = combinedCloseBtn.value;
+      if (c == null || typeof c === 'boolean') return '';
+      return btnGetString(c, 'color', '');
+    });
+
+    const hasCancelBtn = computed<boolean>(() => {
+      const c = combinedCancelBtn.value;
+      if (c == null) return false;
+      if (typeof c === 'string') return (c as string).length > 0;
+      return true;
+    });
+    const cancelBtnContent = computed<string>(() => btnAsString(combinedCancelBtn.value));
+    const cancelBtnVariant = computed<string>(() => {
+      const c = combinedCancelBtn.value;
+      if (c == null || typeof c === 'string') return 'text';
+      return btnGetString(c, 'variant', 'base');
+    });
+    const cancelBtnTheme = computed<string>(() => {
+      const c = combinedCancelBtn.value;
+      if (c == null || typeof c === 'string') return 'default';
+      return btnGetString(c, 'theme', 'light');
+    });
+    const cancelBtnSize = computed<string>(() => {
+      const c = combinedCancelBtn.value;
+      if (c == null || typeof c === 'string') return 'medium';
+      return btnGetString(c, 'size', 'medium');
+    });
+    const cancelBtnDisabled = computed<boolean>(() => btnGetBoolean(combinedCancelBtn.value, 'disabled', false));
+
+    const hasConfirmBtn = computed<boolean>(() => {
+      const c = combinedConfirmBtn.value;
+      if (c == null) return false;
+      if (typeof c === 'string') return (c as string).length > 0;
+      return true;
+    });
+    const confirmBtnContent = computed<string>(() => btnAsString(combinedConfirmBtn.value));
+    const confirmBtnVariant = computed<string>(() => {
+      const c = combinedConfirmBtn.value;
+      if (c == null || typeof c === 'string') return 'text';
+      return btnGetString(c, 'variant', 'base');
+    });
+    const confirmBtnTheme = computed<string>(() => {
+      const c = combinedConfirmBtn.value;
+      if (c == null || typeof c === 'string') return 'primary';
+      return btnGetString(c, 'theme', 'primary');
+    });
+    const confirmBtnSize = computed<string>(() => {
+      const c = combinedConfirmBtn.value;
+      if (c == null || typeof c === 'string') return 'medium';
+      return btnGetString(c, 'size', 'medium');
+    });
+    const confirmBtnDisabled = computed<boolean>(() => btnGetBoolean(combinedConfirmBtn.value, 'disabled', false));
+    const confirmBtnLoading = computed<boolean>(() => btnGetBoolean(combinedConfirmBtn.value, 'loading', false));
+
+    function actionContent(item: UTSJSONObject): string {
+      return btnGetString(item, 'content', '');
+    }
+    function actionTheme(item: UTSJSONObject): string {
+      return btnGetString(item, 'theme', 'default');
+    }
+    function actionVariant(item: UTSJSONObject): string {
+      return btnGetString(item, 'variant', 'base');
+    }
+    function actionSize(item: UTSJSONObject): string {
+      return btnGetString(item, 'size', 'medium');
+    }
+    function actionDisabled(item: UTSJSONObject): boolean {
+      return btnGetBoolean(item, 'disabled', false);
+    }
+    function actionLoading(item: UTSJSONObject): boolean {
+      return btnGetBoolean(item, 'loading', false);
+    }
+
     function show(opts: any) {
       const next = defaultState();
       next.active = true;
@@ -221,39 +406,66 @@ export default defineComponent({
         if (title != null) next.title = title;
         const content = o.getString('content');
         if (content != null) next.content = content;
-        const cancelBtn = o.getString('cancelBtn');
-        if (cancelBtn != null) next.cancelBtn = cancelBtn;
-        const confirmBtn = o.getString('confirmBtn');
-        if (confirmBtn != null) next.confirmBtn = confirmBtn;
+
+        const cancelBtnAny = o.get('cancelBtn');
+        if (cancelBtnAny != null) next.cancelBtn = cancelBtnAny;
+        const confirmBtnAny = o.get('confirmBtn');
+        if (confirmBtnAny != null) next.confirmBtn = confirmBtnAny;
+        const closeBtnAny = o.get('closeBtn');
+        if (closeBtnAny != null) next.closeBtn = closeBtnAny;
+
         const layout = o.getString('buttonLayout');
         if (layout != null) next.buttonLayout = layout;
-        const cb = o.getBoolean('closeBtn');
-        if (cb != null) next.closeBtn = cb;
+
         const co = o.getBoolean('closeOnOverlayClick');
         if (co != null) next.closeOnOverlayClick = co;
         const so = o.getBoolean('showOverlay');
         if (so != null) next.showOverlay = so;
+        const ps = o.getBoolean('preventScrollThrough');
+        if (ps != null) next.preventScrollThrough = ps;
+        const ucn = o.getBoolean('usingCustomNavbar');
+        if (ucn != null) next.usingCustomNavbar = ucn;
         const z = o.getNumber('zIndex');
-        if (z != null) next.zIndex = +(z as number)
-        // 回调函数透传（注意 uts 类型限制）
+        if (z != null) next.zIndex = +(z as number);
+
+        const acts = o.getArray('actions');
+        if (acts != null) next.actions = acts as UTSJSONObject[];
+
         const onC = o.get('onConfirm');
         if (onC != null) next.onConfirm = onC as (() => void);
         const onX = o.get('onCancel');
         if (onX != null) next.onCancel = onX as (() => void);
+        const onA = o.get('onAction');
+        if (onA != null) next.onAction = onA as ((index: number) => void);
       }
       imperativeState.value = next;
     }
 
-    /** 命令式关闭 */
     function hide() {
       const cur = imperativeState.value;
       cur.active = false;
+      cur.actions = [] as UTSJSONObject[];
+      cur.onConfirm = null;
+      cur.onCancel = null;
+      cur.onAction = null;
       imperativeState.value = cur;
     }
 
-    function onOverlayClick() {
-      ctx.emit('overlay-click');
-      if (combinedCloseOnOverlayClick.value) {
+    function onPopupVisibleChange(detail: { visible: boolean; trigger: string }) {
+      if (!detail.visible) {
+        const trig = detail.trigger;
+        if (trig === 'overlay') {
+          ctx.emit('overlay-click');
+          if (combinedCloseOnOverlayClick.value) {
+            closeBy('overlay');
+          }
+        } else {
+          closeBy('close-btn');
+        }
+      }
+    }
+    function onPopupUpdateVisible(v: boolean) {
+      if (!v) {
         closeBy('overlay');
       }
     }
@@ -268,7 +480,12 @@ export default defineComponent({
         (st.onCancel as (() => void))();
       }
       ctx.emit('cancel', {} as any);
-      closeBy('cancel');
+      ctx.emit('close', { trigger: 'cancel' } as any);
+      if (imperativeState.value.active) {
+        hide();
+      } else {
+        ctx.emit('update:visible', false);
+      }
     }
 
     function onConfirmClick() {
@@ -277,12 +494,32 @@ export default defineComponent({
         (st.onConfirm as (() => void))();
       }
       ctx.emit('confirm', {} as any);
-      closeBy('confirm');
+      if (imperativeState.value.active) {
+        hide();
+      } else {
+        ctx.emit('update:visible', false);
+      }
     }
 
-    /** 统一关闭出口：active 模式直接置 false；受控模式发 update:visible */
-    function closeBy(_trigger: string) {
-      ctx.emit('close');
+    function onActionClick(index: number) {
+      const st = imperativeState.value;
+      if (st.active && st.onAction != null) {
+        (st.onAction as ((i: number) => void))(index);
+      }
+      ctx.emit('action', { index } as any);
+      if (imperativeState.value.active) {
+        hide();
+      } else {
+        ctx.emit('update:visible', false);
+      }
+    }
+
+    function closeBy(trigger: string) {
+      const st = imperativeState.value;
+      if (st.active && st.onCancel != null && (trigger === 'overlay' || trigger === 'close-btn')) {
+        (st.onCancel as (() => void))();
+      }
+      ctx.emit('close', { trigger } as any);
       if (imperativeState.value.active) {
         hide();
       } else {
@@ -294,20 +531,50 @@ export default defineComponent({
       combinedVisible,
       combinedTitle,
       combinedContent,
-      combinedCancelBtn,
-      combinedConfirmBtn,
-      combinedCloseBtn,
+      combinedActions,
       combinedShowOverlay,
+      combinedCloseOnOverlayClick,
+      combinedPreventScrollThrough,
+      combinedUsingCustomNavbar,
+      combinedZIndex,
       rootClass,
       rootStyle,
-      cancelBtnClass,
-      confirmBtnClass,
+      popupCustomStyle,
+      footerClass,
+      hasCloseBtn,
+      closeBtnIconName,
+      closeBtnIconSize,
+      closeBtnIconColor,
+      hasCancelBtn,
+      cancelBtnContent,
+      cancelBtnVariant,
+      cancelBtnTheme,
+      cancelBtnSize,
+      cancelBtnDisabled,
+      cancelButtonClass,
+      hasConfirmBtn,
+      confirmBtnContent,
+      confirmBtnVariant,
+      confirmBtnTheme,
+      confirmBtnSize,
+      confirmBtnDisabled,
+      confirmBtnLoading,
+      confirmButtonClass,
+      actionButtonClass,
+      actionContent,
+      actionTheme,
+      actionVariant,
+      actionSize,
+      actionDisabled,
+      actionLoading,
       show,
       hide,
-      onOverlayClick,
+      onPopupVisibleChange,
+      onPopupUpdateVisible,
       onCloseBtnClick,
       onCancelClick,
       onConfirmClick,
+      onActionClick,
     };
   },
 });
@@ -315,8 +582,4 @@ export default defineComponent({
 
 <style lang="less">
 @import './t-dialog.theme.less';
-
-.t-dialog-host {
-  /* 顶层语义包裹，不影响布局 */
-}
 </style>

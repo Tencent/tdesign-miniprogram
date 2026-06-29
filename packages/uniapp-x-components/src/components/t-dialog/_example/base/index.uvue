@@ -1,64 +1,137 @@
 <template>
   <view>
-    <t-button block size="large" theme="primary" custom-style="margin-bottom: 16rpx;" @click="onAlert">
-      Dialog.alert（仅确认）
-    </t-button>
-    <t-button block size="large" theme="primary" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onConfirm">
-      Dialog.confirm（取消+确认）
-    </t-button>
-    <t-button block size="large" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onVertical">
-      纵向按钮布局
-    </t-button>
-    <t-button block size="large" variant="outline" custom-style="margin-bottom: 16rpx;" @click="onWithCloseBtn">
-      带关闭按钮
-    </t-button>
-    <t-button block size="large" variant="text" @click="onClose">
-      Dialog.close()
-    </t-button>
+    <t-button
+      class="wrapper"
+      theme="primary"
+      size="large"
+      variant="outline"
+      block
+      content="反馈类-带标题"
+      @click="open('showTextAndTitle')"
+    />
+    <t-dialog
+      :visible="showTextAndTitle"
+      title="对话框标题"
+      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+      :confirm-btn="confirmBtn"
+      @confirm="close"
+    />
+
+    <t-button
+      class="wrapper"
+      theme="primary"
+      size="large"
+      variant="outline"
+      block
+      content="反馈类-无标题"
+      @click="open('showContentOnly')"
+    />
+    <t-dialog
+      :visible="showContentOnly"
+      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+      :confirm-btn="confirmBtn"
+      @confirm="close"
+    />
+
+    <t-button
+      class="wrapper"
+      theme="primary"
+      size="large"
+      variant="outline"
+      block
+      content="反馈类-纯标题"
+      @click="open('showTitleOnly')"
+    />
+    <t-dialog :visible="showTitleOnly" title="对话框标题" :confirm-btn="confirmBtn" @confirm="close" />
+
+    <t-button
+      class="wrapper"
+      theme="primary"
+      size="large"
+      variant="outline"
+      block
+      content="反馈类-内容超长"
+      @click="open('showMultiTextAndTitle')"
+    />
+    <t-dialog
+      :visible="showMultiTextAndTitle"
+      title="对话框标题"
+      :confirm-btn="confirmBtn"
+      @confirm="close"
+    >
+      <template #content>
+        <scroll-view scroll-y class="long-content">
+          <view class="content-container">
+            <text class="long-content-text">{{ longText }}</text>
+          </view>
+        </scroll-view>
+      </template>
+    </t-dialog>
   </view>
 </template>
 
-<script setup lang="uts">
+<script lang="uts">
 /**
- * Dialog base demo - alert / confirm / 纵向布局 / 关闭按钮
+ * Dialog base demo - 受控模式 4 个反馈类用法
  */
-import { Dialog } from '@/uni_modules/tdesign-uniapp-x/components/t-dialog';
+import { defineComponent, ref } from 'vue';
 
-function onAlert() {
-  Dialog.alert({
-    title: '提示',
-    content: '这是一个 alert 弹窗，仅有确认按钮。',
-  });
-}
-function onConfirm() {
-  Dialog.confirm({
-    title: '确认删除',
-    content: '删除后无法恢复，是否继续？',
-    cancelBtn: '取消',
-    confirmBtn: '确认删除',
-  });
-}
-function onVertical() {
-  Dialog.confirm({
-    title: '协议确认',
-    content: '请仔细阅读相关协议条款后再继续。',
-    cancelBtn: '查看协议',
-    confirmBtn: '我已阅读并同意',
-    buttonLayout: 'vertical',
-  });
-}
-function onWithCloseBtn() {
-  Dialog.show({
-    title: '带关闭按钮',
-    content: '右上角的 × 也可关闭弹窗。',
-    confirmBtn: '知道了',
-    closeBtn: true,
-    closeOnOverlayClick: true,
-  });
-}
-function onClose() {
-  Dialog.close();
-}
+export default defineComponent({
+  setup() {
+    const showTextAndTitle = ref<boolean>(false);
+    const showContentOnly = ref<boolean>(false);
+    const showTitleOnly = ref<boolean>(false);
+    const showMultiTextAndTitle = ref<boolean>(false);
+    const dialogKey = ref<string>('');
+    const confirmBtn = { content: '知道了', variant: 'base' } as UTSJSONObject;
+
+    const longText =
+      '这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案。\n这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案。\n这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案。\n这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案。\n这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案。\n这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案。\n这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案，这里是辅助内容文案。';
+
+    function open(key: string) {
+      dialogKey.value = key;
+      if (key === 'showTextAndTitle') showTextAndTitle.value = true;
+      else if (key === 'showContentOnly') showContentOnly.value = true;
+      else if (key === 'showTitleOnly') showTitleOnly.value = true;
+      else if (key === 'showMultiTextAndTitle') showMultiTextAndTitle.value = true;
+    }
+
+    function close() {
+      const key = dialogKey.value;
+      if (key === 'showTextAndTitle') showTextAndTitle.value = false;
+      else if (key === 'showContentOnly') showContentOnly.value = false;
+      else if (key === 'showTitleOnly') showTitleOnly.value = false;
+      else if (key === 'showMultiTextAndTitle') showMultiTextAndTitle.value = false;
+    }
+
+    return {
+      showTextAndTitle,
+      showContentOnly,
+      showTitleOnly,
+      showMultiTextAndTitle,
+      confirmBtn,
+      longText,
+      open,
+      close,
+    };
+  },
+});
 </script>
 
-<style></style>
+<style>
+.wrapper {
+  margin-bottom: 16rpx;
+}
+.long-content {
+  height: 320rpx;
+  margin-top: 16rpx;
+}
+.content-container {
+  padding: 0;
+}
+.long-content-text {
+  font-size: 28rpx;
+  color: #888;
+  line-height: 44rpx;
+}
+</style>

@@ -1,5 +1,5 @@
 export { dialogVariants } from './t-dialog.variants';
-export { Dialog } from './show';
+export { Dialog, DialogPlugin } from './show';
 export type {
   DialogProps,
   DialogEmits,
@@ -7,4 +7,7 @@ export type {
   DialogButtonLayout,
   DialogConfirmContext,
   DialogCancelContext,
+  DialogCloseContext,
+  DialogActionContext,
+  DialogEventSource,
 } from './t-dialog.types';

@@ -1,61 +1,57 @@
 /**
- * Dialog 样式
+ * Dialog 样式 - 1:1 对齐 @tdesign/uniapp/dialog/dialog.less
  *
- * 对齐 @tdesign/uniapp/dialog/dialog.less 的视觉结构：
- *  - 居中弹窗：固定宽度 622rpx，圆角 24rpx
- *  - 内容区：padding 32rpx + max-height 912rpx + 自动滚动
- *  - footer 按钮区：horizontal（按钮平均分）/ vertical（纵向堆叠）
+ * 仅保留 t-dialog 自身样式：定位/动画/遮罩 全部委托给外层 t-popup
+ * - --td-popup-border-radius 在内联 style 中注入，让 popup 容器获得圆角
+ * - 关闭按钮 t-dialog__close-btn 绝对定位（相对 popup 容器）
+ * - footer：水平/纵向两种布局
  */
 
-.t-dialog-mask {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-  z-index: 11499;
-}
-
-.t-dialog-wrap {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 11500;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
+@dialog-width: 622rpx;
+@dialog-radius: 24rpx;
+@dialog-body-max-height: 912rpx;
+@spacer: 16rpx;
+@spacer-1: 16rpx;
+@spacer-2: 24rpx;
+@spacer-3: 32rpx;
+@spacer-4: 48rpx;
 
 .t-dialog {
-  width: var(--td-dialog-width, 622rpx);
-  background-color: #ffffff;
-  border-radius: var(--td-dialog-border-radius, 24rpx);
+  width: var(--td-dialog-width, @dialog-width);
+  border-radius: var(--td-dialog-border-radius, @dialog-radius);
+  background-color: var(--td-bg-color-container, #ffffff);
   overflow: hidden;
+  position: relative;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
 }
 
 .t-dialog__close-btn {
   position: absolute;
-  top: 16rpx;
-  right: 16rpx;
+  top: @spacer;
+  right: @spacer;
   width: 56rpx;
   height: 56rpx;
-  font-size: 36rpx;
-  color: var(--td-dialog-close-color, rgba(0, 0, 0, 0.4));
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1;
+  color: var(--td-dialog-close-color, rgba(0, 0, 0, 0.4));
+}
+
+.t-dialog__close-btn-text {
+  font-size: 36rpx;
+  line-height: 1;
 }
 
 .t-dialog__content {
-  padding: 48rpx 32rpx 0;
+  padding: @spacer-3 @spacer-3 0;
+  max-height: var(--td-dialog-body-max-height, @dialog-body-max-height);
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .t-dialog__header {
@@ -66,48 +62,54 @@
   color: var(--td-dialog-title-color, rgba(0, 0, 0, 0.9));
 }
 
+/* header + body 之间间距 */
+.t-dialog__header + .t-dialog__body,
+.t-dialog__header + .t-dialog__body--with-margin {
+  margin-top: @spacer;
+}
+
 .t-dialog__body {
-  margin-top: 16rpx;
   text-align: center;
   font-size: 28rpx;
   line-height: 44rpx;
   color: var(--td-dialog-content-color, rgba(0, 0, 0, 0.6));
 }
 
+.t-dialog__body-text {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
 .t-dialog__footer {
   display: flex;
   flex-direction: row;
-  padding: 32rpx;
+  padding: @spacer-3;
 }
 
-.t-dialog--vertical .t-dialog__footer {
-  flex-direction: column;
+.t-dialog__footer--column {
+  flex-direction: column-reverse;
 }
 
-.t-dialog__btn {
+.t-dialog__footer--full {
+  padding: @spacer-4 0 0;
+}
+
+/* footer 内的按钮（t-button 实现） */
+.t-dialog__button {
   flex: 1;
-  height: 80rpx;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8rpx;
-  font-size: 32rpx;
+  overflow: hidden;
 }
 
-.t-dialog__btn--horizontal + .t-dialog__btn--horizontal {
-  margin-left: 16rpx;
+.t-dialog__button--horizontal + .t-dialog__button--horizontal {
+  margin-left: @spacer-1;
 }
 
-.t-dialog__btn--vertical + .t-dialog__btn--vertical {
-  margin-top: 16rpx;
+/* column 布局下，cancel 在下方（column-reverse 实际渲染倒序） */
+.t-dialog__footer--column .t-dialog__button {
+  width: 100%;
+  flex: none;
 }
 
-.t-dialog__btn--cancel {
-  background-color: #f3f3f3;
-  color: rgba(0, 0, 0, 0.9);
-}
-
-.t-dialog__btn--confirm {
-  background-color: #0052d9;
-  color: #ffffff;
+.t-dialog__footer--column .t-dialog__button + .t-dialog__button {
+  margin-top: @spacer-1;
 }

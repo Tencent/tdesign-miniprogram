@@ -1,0 +1,174 @@
+<template>
+  <view>
+    <view class="demo-desc"><text>文字按钮</text></view>
+    <t-button
+      class="wrapper"
+      theme="primary"
+      size="large"
+      variant="outline"
+      block
+      content="文字按钮"
+      @click="open('showConfirm')"
+    />
+    <t-dialog
+      :visible="showConfirm"
+      title="对话框标题"
+      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+      confirm-btn="确定"
+      cancel-btn="取消"
+      @confirm="close"
+      @cancel="close"
+    />
+
+    <view class="demo-desc"><text>水平基础按钮</text></view>
+    <t-button
+      class="wrapper"
+      theme="primary"
+      size="large"
+      variant="outline"
+      block
+      content="水平基础按钮"
+      @click="open('showWarnConfirm')"
+    />
+    <t-dialog
+      :visible="showWarnConfirm"
+      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+      :confirm-btn="baseConfirm"
+      cancel-btn="取消"
+      @confirm="close"
+      @cancel="close"
+    />
+
+    <view class="demo-desc"><text>垂直基础按钮</text></view>
+    <t-button
+      class="wrapper"
+      theme="primary"
+      size="large"
+      variant="outline"
+      block
+      content="垂直基础按钮"
+      @click="open('showVerticalConfirm')"
+    />
+    <t-dialog
+      :visible="showVerticalConfirm"
+      title="对话框标题"
+      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+      :confirm-btn="baseConfirm"
+      cancel-btn="取消"
+      button-layout="vertical"
+      @confirm="close"
+      @cancel="close"
+    />
+
+    <view class="demo-desc"><text>多按钮</text></view>
+    <t-button
+      class="wrapper"
+      theme="primary"
+      size="large"
+      variant="outline"
+      block
+      content="多按钮"
+      @click="open('showMultiBtn')"
+    />
+    <t-dialog
+      :visible="showMultiBtn"
+      title="对话框标题"
+      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+      button-layout="vertical"
+      :actions="multiBtnList"
+      @action="onAction"
+    />
+
+    <view class="demo-desc"><text>带关闭按钮的对话框</text></view>
+    <t-button
+      class="wrapper"
+      theme="primary"
+      size="large"
+      variant="outline"
+      block
+      content="带关闭按钮的对话框"
+      @click="open('showCloseBtn')"
+    />
+    <t-dialog
+      :visible="showCloseBtn"
+      title="对话框标题"
+      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+      :close-btn="true"
+      :confirm-btn="warnConfirm"
+      cancel-btn="取消"
+      @confirm="close"
+      @cancel="close"
+      @close="close"
+    />
+  </view>
+</template>
+
+<script lang="uts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const showConfirm = ref<boolean>(false);
+    const showWarnConfirm = ref<boolean>(false);
+    const showVerticalConfirm = ref<boolean>(false);
+    const showMultiBtn = ref<boolean>(false);
+    const showCloseBtn = ref<boolean>(false);
+    const dialogKey = ref<string>('');
+
+    const baseConfirm = { content: '确定', variant: 'base' } as UTSJSONObject;
+    const warnConfirm = { content: '警示操作', variant: 'base', theme: 'danger' } as UTSJSONObject;
+
+    const multiBtnList = [
+      { content: '次要按钮', theme: 'light' },
+      { content: '次要按钮', theme: 'light' },
+      { content: '主要按钮', theme: 'primary' },
+    ] as UTSJSONObject[];
+
+    function open(key: string) {
+      dialogKey.value = key;
+      if (key === 'showConfirm') showConfirm.value = true;
+      else if (key === 'showWarnConfirm') showWarnConfirm.value = true;
+      else if (key === 'showVerticalConfirm') showVerticalConfirm.value = true;
+      else if (key === 'showMultiBtn') showMultiBtn.value = true;
+      else if (key === 'showCloseBtn') showCloseBtn.value = true;
+    }
+    function close() {
+      const key = dialogKey.value;
+      if (key === 'showConfirm') showConfirm.value = false;
+      else if (key === 'showWarnConfirm') showWarnConfirm.value = false;
+      else if (key === 'showVerticalConfirm') showVerticalConfirm.value = false;
+      else if (key === 'showMultiBtn') showMultiBtn.value = false;
+      else if (key === 'showCloseBtn') showCloseBtn.value = false;
+    }
+    function onAction(ctx: UTSJSONObject) {
+      console.log('action click index = ', ctx.getNumber('index'));
+      close();
+    }
+
+    return {
+      showConfirm,
+      showWarnConfirm,
+      showVerticalConfirm,
+      showMultiBtn,
+      showCloseBtn,
+      baseConfirm,
+      warnConfirm,
+      multiBtnList,
+      open,
+      close,
+      onAction,
+    };
+  },
+});
+</script>
+
+<style>
+.wrapper {
+  margin-bottom: 16rpx;
+}
+.demo-desc {
+  margin: 16rpx 0;
+  color: #666;
+  font-size: 24rpx;
+}
+</style>

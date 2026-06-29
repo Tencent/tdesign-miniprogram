@@ -1,0 +1,103 @@
+<template>
+  <view>
+    <t-button
+      class="wrapper"
+      size="large"
+      theme="primary"
+      variant="outline"
+      block
+      content="输入类-无描述"
+      @click="open('showWithInput')"
+    />
+    <t-dialog
+      :visible="showWithInput"
+      title="带输入框对话框"
+      confirm-btn="确定"
+      cancel-btn="取消"
+      @confirm="close"
+      @cancel="close"
+    >
+      <template #content>
+        <t-input
+          class="dialog-input"
+          v-model="inputValue1"
+          placeholder="输入文案"
+          borderless
+        />
+      </template>
+    </t-dialog>
+
+    <t-button
+      class="wrapper"
+      theme="primary"
+      size="large"
+      variant="outline"
+      block
+      content="输入类-带描述"
+      @click="open('showTextAndTitleWithInput')"
+    />
+    <t-dialog
+      :visible="showTextAndTitleWithInput"
+      title="带输入框对话框"
+      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+      confirm-btn="确定"
+      cancel-btn="取消"
+      @confirm="close"
+      @cancel="close"
+    >
+      <template #content>
+        <t-input
+          class="dialog-input"
+          v-model="inputValue2"
+          placeholder="输入文案"
+          borderless
+        />
+      </template>
+    </t-dialog>
+  </view>
+</template>
+
+<script lang="uts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const showWithInput = ref<boolean>(false);
+    const showTextAndTitleWithInput = ref<boolean>(false);
+    const inputValue1 = ref<string>('');
+    const inputValue2 = ref<string>('');
+    const dialogKey = ref<string>('');
+
+    function open(key: string) {
+      dialogKey.value = key;
+      if (key === 'showWithInput') showWithInput.value = true;
+      else if (key === 'showTextAndTitleWithInput') showTextAndTitleWithInput.value = true;
+    }
+    function close() {
+      const key = dialogKey.value;
+      if (key === 'showWithInput') showWithInput.value = false;
+      else if (key === 'showTextAndTitleWithInput') showTextAndTitleWithInput.value = false;
+    }
+
+    return {
+      showWithInput,
+      showTextAndTitleWithInput,
+      inputValue1,
+      inputValue2,
+      open,
+      close,
+    };
+  },
+});
+</script>
+
+<style>
+.wrapper {
+  margin-bottom: 16rpx;
+}
+.dialog-input {
+  margin-top: 24rpx;
+  border-radius: 8rpx;
+  background-color: var(--td-bg-color-page, #f5f5f5);
+}
+</style>

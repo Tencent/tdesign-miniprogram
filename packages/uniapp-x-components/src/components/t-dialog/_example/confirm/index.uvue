@@ -1,0 +1,105 @@
+<template>
+  <view>
+    <t-button
+      class="wrapper"
+      theme="primary"
+      size="large"
+      variant="outline"
+      block
+      content="确认类-带标题"
+      @click="open('showConfirm')"
+    />
+    <t-dialog
+      :visible="showConfirm"
+      title="对话框标题"
+      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+      :confirm-btn="confirmBtn"
+      cancel-btn="取消"
+      @confirm="close"
+      @cancel="close"
+    />
+
+    <t-button
+      class="wrapper"
+      theme="primary"
+      size="large"
+      variant="outline"
+      block
+      content="确认类-无标题（警示）"
+      @click="open('showWarnConfirm')"
+    />
+    <t-dialog
+      :visible="showWarnConfirm"
+      content="告知当前状态、信息和解决方法，等内容。描述文案尽可能控制在三行内"
+      :confirm-btn="warnConfirmBtn"
+      cancel-btn="取消"
+      @confirm="close"
+      @cancel="close"
+    />
+
+    <t-button
+      class="wrapper"
+      theme="primary"
+      size="large"
+      variant="outline"
+      block
+      content="确认类-纯标题"
+      @click="open('showLightConfirm')"
+    />
+    <t-dialog
+      :visible="showLightConfirm"
+      title="对话框标题"
+      :confirm-btn="lightConfirmBtn"
+      cancel-btn="取消"
+      @confirm="close"
+      @cancel="close"
+    />
+  </view>
+</template>
+
+<script lang="uts">
+import { defineComponent, ref } from 'vue';
+
+export default defineComponent({
+  setup() {
+    const showConfirm = ref<boolean>(false);
+    const showWarnConfirm = ref<boolean>(false);
+    const showLightConfirm = ref<boolean>(false);
+    const dialogKey = ref<string>('');
+
+    const confirmBtn = { content: '确定', variant: 'base' } as UTSJSONObject;
+    const warnConfirmBtn = { content: '警示操作', variant: 'base', theme: 'danger' } as UTSJSONObject;
+    const lightConfirmBtn = { content: '确定', variant: 'base', theme: 'light' } as UTSJSONObject;
+
+    function open(key: string) {
+      dialogKey.value = key;
+      if (key === 'showConfirm') showConfirm.value = true;
+      else if (key === 'showWarnConfirm') showWarnConfirm.value = true;
+      else if (key === 'showLightConfirm') showLightConfirm.value = true;
+    }
+    function close() {
+      const key = dialogKey.value;
+      if (key === 'showConfirm') showConfirm.value = false;
+      else if (key === 'showWarnConfirm') showWarnConfirm.value = false;
+      else if (key === 'showLightConfirm') showLightConfirm.value = false;
+    }
+
+    return {
+      showConfirm,
+      showWarnConfirm,
+      showLightConfirm,
+      confirmBtn,
+      warnConfirmBtn,
+      lightConfirmBtn,
+      open,
+      close,
+    };
+  },
+});
+</script>
+
+<style>
+.wrapper {
+  margin-bottom: 16rpx;
+}
+</style>

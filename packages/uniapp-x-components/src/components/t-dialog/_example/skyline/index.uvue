@@ -1,0 +1,47 @@
+<template>
+  <!--
+    Skyline 渲染框架适配示例
+    -------------------------------------------------------
+    uniapp 端 skyline 是 wxss 渲染容器适配示例；uvue 端原生为同等能力，
+    无需特殊适配。此处保留目录与命名以与 @tdesign/uniapp 对齐，并复用
+    其它 demo 的组合展示。
+  -->
+  <view>
+    <view class="demo-title"><text>Dialog 对话框（Skyline 等价：原生渲染）</text></view>
+
+    <view class="section"><text class="section-title">反馈类对话框</text></view>
+    <base-demo></base-demo>
+
+    <view class="section"><text class="section-title">确认类对话框</text></view>
+    <confirm-demo></confirm-demo>
+
+    <view class="section"><text class="section-title">命令调用</text></view>
+    <command-demo></command-demo>
+  </view>
+</template>
+
+<script>
+import BaseDemo from '../base/index.uvue';
+import ConfirmDemo from '../confirm/index.uvue';
+import CommandDemo from '../command/index.uvue';
+
+export default {
+  components: { BaseDemo, ConfirmDemo, CommandDemo },
+};
+</script>
+
+<style>
+.demo-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  margin: 24rpx 0;
+}
+.section {
+  margin-top: 24rpx;
+}
+.section-title {
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 16rpx;
+}
+</style>

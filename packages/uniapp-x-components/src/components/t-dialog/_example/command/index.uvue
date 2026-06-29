@@ -1,0 +1,57 @@
+<template>
+  <view>
+    <t-button
+      size="large"
+      theme="primary"
+      variant="outline"
+      block
+      content="命令行操作（Promise）"
+      @click="onConfirmDialog"
+    />
+    <view class="result"><text>上次结果：{{ lastResult }}</text></view>
+  </view>
+</template>
+
+<script lang="uts">
+/**
+ * Dialog command demo - 指令式调用 + Promise 链式
+ *
+ * 注意：使用 Dialog.confirm 必须在父级 page template 中预埋 <t-dialog ref="dialog" />
+ */
+import { defineComponent, ref } from 'vue';
+import { DialogPlugin } from '@/uni_modules/tdesign-uniapp-x/components/t-dialog';
+
+export default defineComponent({
+  setup() {
+    const lastResult = ref<string>('');
+
+    function onConfirmDialog() {
+      DialogPlugin.confirm({
+        title: '弹窗标题',
+        content: '告知当前状态、信息和解决方法等内容。',
+        confirmBtn: '确定',
+        cancelBtn: '取消',
+        closeOnOverlayClick: true,
+      })
+        .then((res: string) => {
+          console.log('点击了确定', res);
+          lastResult.value = '点击了确定';
+        })
+        .catch((err: string) => {
+          console.log('点击了取消', err);
+          lastResult.value = '点击了取消';
+        });
+    }
+
+    return { lastResult, onConfirmDialog };
+  },
+});
+</script>
+
+<style>
+.result {
+  margin-top: 16rpx;
+  color: #888;
+  font-size: 28rpx;
+}
+</style>
