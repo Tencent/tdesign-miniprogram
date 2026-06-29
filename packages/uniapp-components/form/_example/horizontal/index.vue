@@ -54,20 +54,31 @@
         </t-radio-group>
       </t-form-item>
 
-      <t-form-item label="生日" name="birth" content-align="right">
+      <t-form-item arrow label="生日" name="birth" content-align="right">
         <t-input
           :value="formData.birth"
           :disabled="disabled"
           borderless
           align="right"
-          placeholder="请输入生日"
+          placeholder="请选择生日"
+          :readonly="!isH5"
           data-field="birth"
           style="flex: 1"
-          @change="(e) => onInputChange(e, { field: 'birth' })"
+          @click="showDatePicker"
+        />
+        <t-date-time-picker
+          :visible="visibleDatePicker"
+          auto-close
+          title="选择生日"
+          mode="date"
+          :default-value="formData.birth"
+          format="YYYY-MM-DD"
+          @update:visible="(e) => (visibleDatePicker = e)"
+          @change="onChangeDatePicker"
         />
       </t-form-item>
 
-      <t-form-item arrow label="籍贯" name="place" content-align="right">
+      <t-form-item arrow label="籍贯" name="place" content-align="left">
         <t-input
           ref="input"
           :value="formData.place"
@@ -168,6 +179,7 @@
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TCascader from '@tdesign/uniapp/cascader/cascader.vue';
 import { canUseVirtualHost } from '@tdesign/uniapp/common/version';
+import TDateTimePicker from '@tdesign/uniapp/date-time-picker/date-time-picker.vue';
 import TForm from '@tdesign/uniapp/form/form.vue';
 import TFormItem from '@tdesign/uniapp/form-item/form-item.vue';
 import TInput from '@tdesign/uniapp/input/input.vue';
@@ -191,6 +203,7 @@ export default {
     TRadio,
     // TPopup,
     TCascader,
+    TDateTimePicker,
     TStepper,
     TRate,
     TTextarea,
@@ -209,7 +222,7 @@ export default {
         name: '',
         password: '',
         gender: '',
-        birth: '',
+        birth: '2020-01-01',
         place: '',
         age: 3,
         description: 2,
@@ -228,6 +241,7 @@ export default {
         ],
       },
       visibleCascader: false,
+      visibleDatePicker: false,
       address: '120119',
       rateGap: 8,
       action: 'https://service-bv448zsw-1257786608.gz.apigw.tencentcs.com/api/upload-demo',
@@ -450,6 +464,14 @@ export default {
     },
     onChangeStepper(e) {
       this.formData.age = e.value;
+    },
+    showDatePicker() {
+      this.visibleDatePicker = true;
+      uni.hideKeyboard();
+    },
+    onChangeDatePicker(e) {
+      this.formData.birth = e.value;
+      this.visibleDatePicker = false;
     },
     onFail(e) {
       console.log('[onFail]: ', e);
