@@ -11,7 +11,7 @@
       size="large"
       variant="outline"
       theme="primary"
-      custom-style="display: block; margin-top: 32rpx"
+      custom-style="margin-top: 32rpx"
       @click="handlePopup"
     >
       居中弹出层-带自定义关闭按钮

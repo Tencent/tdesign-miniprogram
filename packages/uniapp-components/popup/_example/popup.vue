@@ -6,7 +6,7 @@
       desc="由其他控件触发，屏幕滑出或弹出一块自定义内容区域。"
       notice="渲染框架支持情况：Skyline、WebView"
     />
-    <view class="tdesign-demo-popup">
+    <view class="demo">
       <t-demo title="01 组件类型" desc="基础弹出层" padding>
         <base-demo />
       </t-demo>
