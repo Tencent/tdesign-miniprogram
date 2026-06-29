@@ -68,7 +68,7 @@
           auto-close
           title="选择生日"
           mode="date"
-          :default-value="form.birth"
+          :default-value="formData.birth"
           format="YYYY-MM-DD"
           @update:visible="(e) => (visibleDatePicker = e)"
           @change="onChangeDatePicker"
