@@ -1,8 +1,5 @@
 <template>
   <view>
-    <!-- 必须预埋 t-dialog 并设置 ref="dialog" -->
-    <t-dialog ref="dialog" />
-
     <t-button block size="large" theme="primary" custom-style="margin-bottom: 16rpx;" @click="onAlert">
       Dialog.alert（仅确认）
     </t-button>

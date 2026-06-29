@@ -234,7 +234,7 @@ export default defineComponent({
         const so = o.getBoolean('showOverlay');
         if (so != null) next.showOverlay = so;
         const z = o.getNumber('zIndex');
-        if (z != null) next.zIndex = (z as number).toInt();
+        if (z != null) next.zIndex = +(z as number)
         // 回调函数透传（注意 uts 类型限制）
         const onC = o.get('onConfirm');
         if (onC != null) next.onConfirm = onC as (() => void);
