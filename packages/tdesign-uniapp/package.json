@@ -1,6 +1,6 @@
 {
   "name": "@tdesign/uniapp",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "id": "tdesign-uniapp",
   "title": "tdesign-uniapp",
   "description": "TDesign Component for Uniapp",
@@ -28,6 +28,7 @@
     "url": "git+https://github.com/Tencent/tdesign-miniprogram.git",
     "directory": "packages/tdesign-uniapp"
   },
+  "homepage": "https://tdesign.tencent.com/uniapp",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -584,7 +585,6 @@
     "stylelint-config-common": "catalog:",
     "stylelint-config-standard": "catalog:",
     "stylelint-less": "catalog:",
-    "stylelint-scss": "catalog:",
     "t-comm": "catalog:",
     "tslib": "catalog:",
     "typescript": "catalog:",

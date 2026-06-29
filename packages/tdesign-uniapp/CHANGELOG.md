@@ -5,6 +5,16 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.10.1 `2026-06-24`
+
+### 🐞 Bug Fixes
+
+- `Button`: ⚠️ `--td-button-xx-font-size` 系列变更为 `--td-button-xx-font`；⚠️ 移除 `--td-button-font-weight`，请改用 `--td-button-xx-font`，或者[组件库级别的 css var ](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/style/theme/_font.less)调整字号、行高、字重、字体等文本样式 @liweijie0812 ([#4501](https://github.com/Tencent/tdesign-miniprogram/pull/4501))
+- `ColorPicker`: 修复 H5 下预设色彩排列问题 @novlan1 ([#4521](https://github.com/Tencent/tdesign-miniprogram/pull/4521))
+- `ImageViewer`: 修复重复打开时缩放状态未重置的问题 @novlan1 ([#4514](https://github.com/Tencent/tdesign-miniprogram/pull/4514))
+- `Swiper`: 修复非小程序下找不到 `getRelationNodes` 的编译报错问题 @novlan1 ([#4514](https://github.com/Tencent/tdesign-miniprogram/pull/4514))
+- `TabBar`: 修复 `shape` 为 `round` 时占位高度未包含底部安全区的问题 @novlan1 ([#4521](https://github.com/Tencent/tdesign-miniprogram/pull/4521))
+
 ## 🌈 0.10.0 `2026-06-15`
 
 ### 🚀 Features

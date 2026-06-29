@@ -116,7 +116,7 @@ export const PAGES_JSON_CONTENT = JSON.stringify(
       {
         path: 'pages/index/index',
         style: {
-          navigationBarTitleText: 'TDesign UniApp',
+          navigationBarTitleText: 'TDesign Uniapp',
         },
       },
     ],
