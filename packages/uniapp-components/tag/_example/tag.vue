@@ -1,7 +1,7 @@
 <template>
   <view>
     <t-demo-navbar custom-class="demo-navbar" title="Tag" />
-    <view>
+    <view class="demo">
       <t-demo-header title="Tag 标签" desc="用于表明主体的类目，属性或状态。" />
       <t-demo title="01 组件类型">
         <type-demo />
