@@ -19,7 +19,13 @@
 <script>
 import TChatContent from '@tdesign/uniapp-chat/chat-content/chat-content.vue';
 
-const markdownData = `# Markdown功能测试 (H1标题)
+let title = '# Markdown功能测试 (H1标题)';
+
+// #ifdef APP-HARMONY
+title = '# Markdown功能测试';
+// #endif
+
+const markdownData = `${title}
 
 ## 基础语法测试 (H2标题)
 
