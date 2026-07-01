@@ -178,7 +178,7 @@
       <slot name="add-content" />
       <block wx:if="{{addContent}}">{{addContent}}</block>
       <t-button wx:else theme="primary" size="medium" disabled="{{disabled}}" icon="upload" bindtap="onAddTap"
-        >上传</t-button
+        >Upload</t-button
       >
     </view>
     <!-- 文件列表（非拖拽模式） -->
