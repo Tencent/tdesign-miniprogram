@@ -72,7 +72,7 @@
       </view>
     </view>
 
-    <t-icon v-if="arrow" name="chevron-right" :class="formItemClass + '__icon'" />
+    <t-icon v-if="arrow" name="chevron-right" :t-class="formItemClass + '__icon'" />
   </view>
 </template>
 <script>
