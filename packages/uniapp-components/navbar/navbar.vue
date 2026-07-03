@@ -1,5 +1,6 @@
 <template>
   <view
+    v-if="!(isSpecialScene && isHiddenInSpecialScene)"
     :class="'' + tools.cls(classPrefix, [['fixed', fixed]]) + ' ' + visibleClass + ' ' + tClass"
     :style="'' + tools._style([boxStyle, customStyle])"
   >
@@ -47,6 +48,24 @@ const BASE_MENU_RECT = {
   right: 10, // 距离右侧的间距，实际 right 值在 getMenuRect 中动态计算
 };
 
+// 这些场景下 wx.getMenuButtonBoundingClientRect 不可用或取值不可靠，需跳过调用
+// 1433（半屏小程序）、1434（半屏小程序-从聊天素材打开）、1177（视频号直播间）、1175（视频号profile页）
+const SKIP_MENU_RECT_SCENES = [1433, 1434, 1177, 1175];
+
+/** 判断当前是否处于特殊场景（半屏、视频号等） */
+const checkSpecialScene = () => {
+  let isSpecial = false;
+  // #ifdef MP-WEIXIN
+  try {
+    const { scene } = uni.getLaunchOptionsSync ? uni.getLaunchOptionsSync() : {};
+    isSpecial = SKIP_MENU_RECT_SCENES.includes(scene);
+  } catch (e) {
+    isSpecial = false;
+  }
+  // #endif
+  return isSpecial;
+};
+
 export default {
   components: {
     TIcon,
@@ -81,6 +100,7 @@ export default {
         showTitle: '',
         hideLeft: false,
         hideCenter: false,
+        isSpecialScene: false, // 是否处于特殊场景
         iMenuRect: null,
         iLeftRect: null,
         iBoxStyle: {},
@@ -116,6 +136,12 @@ export default {
 
     mounted() {
       this.onWatchTitle();
+
+      const isSpecialScene = checkSpecialScene();
+      if (isSpecialScene) {
+        this.isSpecialScene = isSpecialScene;
+      }
+
       this.initStyle();
       this.getLeftRect();
       this.onMenuButtonBoundingClientRectWeightChange();
@@ -193,6 +219,8 @@ export default {
       },
 
       getMenuRect(windowInfo) {
+        if (this.isSpecialScene) return;
+
         const curWindowInfo = windowInfo || getWindowInfo();
         // 场景值为1177（视频号直播间）和1175 （视频号profile页）时，小程序禁用了 uni.getMenuButtonBoundingClientRect
         let rect = {
@@ -250,7 +278,7 @@ export default {
       goBack() {
         const { delta } = this;
         // eslint-disable-next-line
-      const that = this;
+        const that = this;
         this.$emit('go-back');
         if (delta > 0) {
           uni.navigateBack({
