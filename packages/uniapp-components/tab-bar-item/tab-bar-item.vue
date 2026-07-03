@@ -172,13 +172,17 @@ export default {
         this.isSpread = true;
       },
       toggle() {
-        const { currentName, hasChildren, isSpread } = this;
+        const { currentName, hasChildren, isSpread, url, linkType } = this;
 
         if (hasChildren) {
           this.isSpread = !isSpread;
         }
         this[RELATION_MAP.TabBarItem].updateValue(currentName);
         this[RELATION_MAP.TabBarItem].changeOtherSpread(currentName);
+
+        if (url && uni[linkType]) {
+          uni[linkType]({ url });
+        }
       },
       selectChild(event) {
         const { value } = event.target.dataset;

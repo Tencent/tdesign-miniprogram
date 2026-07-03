@@ -7,6 +7,7 @@
         :value="item.value"
         :icon="item.icon"
         :aria-label="item.ariaLabel"
+        :url="item.url"
       />
     </t-tab-bar>
   </view>
@@ -38,6 +39,7 @@ export default {
           value: 'label_3',
           icon: 'chat',
           ariaLabel: '聊天',
+          url: '/pages-more/chat-list/chat-list',
         },
         {
           value: 'label_4',

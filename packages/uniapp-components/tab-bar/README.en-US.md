@@ -38,7 +38,9 @@ name | type | default | description | required
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
 badge-props | Object | {} | Typescript: `BadgeProps`，[Badge API Documents](./badge?tab=api)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/tab-bar-item/type.ts) | N
 icon | String / Object | - | \- | N
+link-type | String | redirectTo | options: redirectTo/switchTab/reLaunch/navigateTo | N
 sub-tab-bar | Array | - | Typescript: `SubTabBarItem[] ` `interface SubTabBarItem { value: string; label: string }`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/tab-bar-item/type.ts) | N
+url | String | - | \- | N
 value | String / Number | - | \- | N
 
 ### TabBarItem Slots
