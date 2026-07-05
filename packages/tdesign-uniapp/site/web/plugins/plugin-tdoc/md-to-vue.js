@@ -19,8 +19,11 @@ const DEFAULT_EN_TABS = [
 ];
 
 function getMobilePrefix(mode) {
+  if (mode === 'production') {
+    return 'https://static.tdesign.tencent.com/uniapp/live';
+  }
   if (mode === 'preview') {
-    return 'https://tdesign.tencent.com/uniapp/live';
+    return 'live/index.html';
   }
   // 开发环境使用相对路径，通过站点服务的代理访问
   return '/uniapp/live';
