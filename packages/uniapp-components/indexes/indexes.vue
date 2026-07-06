@@ -79,6 +79,7 @@ export default {
         groupTop: [],
         sidebar: null,
         currentTouchAnchor: null,
+        touchMoved: false,
 
         dataCurrent: this.current,
       };
@@ -256,16 +257,22 @@ export default {
       },
 
       onTouchMove(e) {
+        this.touchMoved = true;
         this.onAnchorTouch(e);
       },
 
       onTouchCancel() {
+        this.touchMoved = false;
         this.toggleTips(false);
       },
 
       onTouchEnd(e) {
+        // 只有真正拖拽滑动过才走触摸定位，纯点击由 onClick 处理，避免双重触发导致抽搐
+        if (this.touchMoved) {
+          this.touchMoved = false;
+          this.onAnchorTouch(e);
+        }
         this.toggleTips(false);
-        this.onAnchorTouch(e);
       },
 
       onAnchorTouch: throttle(function (e) {
