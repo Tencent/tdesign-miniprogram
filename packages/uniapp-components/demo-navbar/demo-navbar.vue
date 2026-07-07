@@ -3,7 +3,7 @@
   <t-navbar
     :class="customClass"
     :title="title"
-    left-arrow
+    :left-arrow="leftArrow"
     :delta="-1"
     placeholder
     :z-index="99"
@@ -30,6 +30,10 @@ export default {
     customClass: {
       type: String,
       default: '',
+    },
+    leftArrow: {
+      type: Boolean,
+      default: true,
     },
   },
   methods: {

@@ -4,7 +4,7 @@
     <!-- #endif -->
     <!-- #ifndef H5 -->
     <!-- #ifndef MP-ALIPAY -->
-    <t-demo-navbar title="TDesign UI" />
+    <t-demo-navbar title="TDesign UI" :left-arrow="false" />
     <!-- #endif -->
     <!-- #endif -->
     <view class="main">
@@ -12,7 +12,7 @@
         <image
           class="title-icon"
           mode="aspectFit"
-          :src="`https://image-1251917893.file.myqcloud.com/next-svr/images/2025/10/${theme === 'dark' ? 'TDesign-logo_dark' : 'TDesign-logo_light'}.png`"
+          :src="`/static/${theme === 'dark' ? 'TDesign-logo_dark' : 'TDesign-logo_light'}.png`"
           aria-label="TDesign Logo"
         />
       </view>
@@ -31,7 +31,7 @@
     </view>
     <view class="footer">
       <view class="show_privacy" @click="showPrivacyWin"> 《TDesign组件库服务声明》 </view>
-      <t-footer text="该小程序仅演示示例，不收集个人信息。" />
+      <t-footer :text="`该${platformDesc}仅演示示例，不收集个人信息。`" />
       <t-footer :text="`Copyright © 1998 - ${currentYear} All Rights Reserved`" />
     </view>
     <trd-privacy ref="trdPrivacy" name="TDesign组件库" date="2023年11月14日" :win-style="winStyle" />
@@ -79,6 +79,21 @@ export default {
       winStyle: false,
       debugEnabled: false,
     };
+  },
+  computed: {
+    platformDesc() {
+      let result = '应用';
+
+      // #ifdef H5
+      result = '网站';
+      // #endif
+
+      // #ifdef MP
+      result = '小程序';
+      // #endif
+
+      return result;
+    },
   },
   onLoad(options) {
     const { q, skyline: querySkyline } = options || {};

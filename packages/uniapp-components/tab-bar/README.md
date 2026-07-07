@@ -86,7 +86,9 @@ t-class | 根节点样式类
 custom-style | Object | - | 自定义样式 | N
 badge-props | Object | {} | 图标右上角提示信息。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/tab-bar-item/type.ts) | N
 icon | String / Object | - | 图标名称。传入对象时透传至 Icon 组件 | N
+link-type | String | redirectTo | 页面跳转类型。可选项：redirectTo/switchTab/reLaunch/navigateTo | N
 sub-tab-bar | Array | - | 二级菜单。TS 类型：`SubTabBarItem[] ` `interface SubTabBarItem { value: string; label: string }`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/tab-bar-item/type.ts) | N
+url | String | - | 点击后跳转的页面路径, 需要以 `/` 开头 | N
 value | String / Number | - | 标识符 | N
 
 ### TabBarItem Slots

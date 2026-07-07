@@ -21,6 +21,7 @@
       </view>
     </view>
 
+    <!-- #ifndef APP-HARMONY -->
     <view class="demo-count-down">
       <text class="demo-count-down-desc"> 带圆形底 </text>
       <view class="demo-count-down-content">
@@ -47,6 +48,7 @@
         />
       </view>
     </view>
+    <!-- #endif -->
   </view>
 </template>
 

@@ -10,9 +10,11 @@
       <base-demo />
     </t-demo>
 
+    <!-- #ifndef APP-HARMONY -->
     <t-demo padding title="02 组件尺寸" desc="倒计时 large/medium/small 尺寸">
       <size-demo />
     </t-demo>
+    <!-- #endif -->
   </view>
 </template>
 

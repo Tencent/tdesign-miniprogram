@@ -40,7 +40,7 @@ export default {
   },
   data() {
     return {
-      imageSrc: 'https://tdesign.gtimg.com/mobile/demos/image1.jpeg',
+      imageSrc: 'https://tdesign.gtimg.com/demo/demo-image-1.png',
     };
   },
   created() {},

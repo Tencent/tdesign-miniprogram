@@ -5,6 +5,20 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.10.2 `2026-07-07`
+
+### 🚀 Features
+
+- `Navbar`: 新增 `isHiddenInSpecialScene` 属性，表示是否销毁导航栏，仅场景值为 1433、1434、1177、1175 时有效 @novlan1 ([#4546](https://github.com/Tencent/tdesign-miniprogram/pull/4546))
+- `TabBar`: `TabBarItem` 新增 `url` 和 `linkType` 属性 @novlan1 ([#4546](https://github.com/Tencent/tdesign-miniprogram/pull/4546))
+
+### 🐞 Bug Fixes
+
+- `Form`: 修复表单图标在小程序下展示大小问题 @novlan1 ([#4536](https://github.com/Tencent/tdesign-miniprogram/pull/4536))
+- `Switch`: 修复 `TdSwitchProps` 泛型参数导致 TypeScript 类型报错的问题 @novlan1 ([#4553](https://github.com/Tencent/tdesign-miniprogram/pull/4553))
+- `Textarea`: 修复 H5 端设置 `autosize` 后，文本内容超过 `maxHeight` 时无法滚动问题 @novlan1 ([#4536](https://github.com/Tencent/tdesign-miniprogram/pull/4536))
+- `Indexes`: 修复点击右侧索引栏时，`click` 与 `touchend` 事件双重触发导致的锚点抖动问题 @novlan1 ([#4548](https://github.com/Tencent/tdesign-miniprogram/pull/4548))
+
 ## 🌈 0.10.1 `2026-06-24`
 
 ### 🐞 Bug Fixes
