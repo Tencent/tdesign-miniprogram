@@ -19,10 +19,12 @@ const DEFAULT_EN_TABS = [
 ];
 
 function getMobilePrefix(mode) {
-  if (mode === 'preview') {
-    return 'https://tdesign.tencent.com/uniapp/live';
+  if (mode === 'production') {
+    return 'https://static.tdesign.tencent.com/uniapp/live';
   }
-
+  if (mode === 'preview') {
+    return '/live/index.html';
+  }
   return '/uniapp/live';
 }
 
