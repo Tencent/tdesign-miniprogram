@@ -15,7 +15,7 @@ spline: explain
 
 Scan the QR code to preview ↓
 
-<img src="https://tdesign.gtimg.com/uniapp/example-qrcode.png" width="600" />
+<img src="https://tdesign.gtimg.com/uniapp/example-qrcode.png" width="700" />
 
 > Other platforms are also supported. Due to platform review and other reasons, previews may not be available, but this does not affect the normal use of the component library.
 
