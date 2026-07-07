@@ -12,7 +12,7 @@
         <image
           class="title-icon"
           mode="aspectFit"
-          :src="`https://image-1251917893.file.myqcloud.com/next-svr/images/2025/10/${theme === 'dark' ? 'TDesign-logo_dark' : 'TDesign-logo_light'}.png`"
+          :src="`/static/${theme === 'dark' ? 'TDesign-logo_dark' : 'TDesign-logo_light'}.png`"
           aria-label="TDesign Logo"
         />
       </view>
