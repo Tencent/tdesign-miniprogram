@@ -80,7 +80,7 @@ import { prefix } from '../common/config';
 
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 import { uniComponent } from '../common/src/index';
-import { getRect } from '../common/utils';
+import { coalesce, getRect } from '../common/utils';
 import tools from '../common/utils.wxs';
 import { isNumeric } from '../common/validator';
 import TIcon from '../icon/icon.vue';
@@ -187,7 +187,7 @@ export default {
         this.dataLabelAlign = labelAlign || target.labelAlign;
         this.dataLabelWidth = normalizeLabelWidth(labelWidth || target.labelWidth);
         this.dataContentAlign = contentAlign || target.contentAlign;
-        this.dataRequiredMark = requiredMark ?? target.requiredMark ?? globalConfig.requiredMark ?? isRequired;
+        this.dataRequiredMark = coalesce(requiredMark, target.requiredMark, globalConfig.requiredMark, isRequired);
         this.dataShowErrorMessage = typeof showErrorMessage === 'boolean' ? showErrorMessage : target.showErrorMessage;
         this.requiredMarkPosition = target.requiredMarkPosition || globalConfig.requiredMarkPosition || 'left';
       },
