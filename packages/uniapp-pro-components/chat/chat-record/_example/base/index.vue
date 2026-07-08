@@ -1,187 +1,406 @@
 <template>
-  <view class="demo-base-container">
-    <!-- 聊天发送器组件 -->
-    <view class="chat-sender-demo-wrapper">
-      <view class="chat-sender-height-limit">
-        <view class="chat-sender-height-left-limit" />
-        <view class="chat-sender-height-right-limit" />
-      </view>
-      <view class="chat-sender-placeholder">
-        高度限制：最大高度为132px
-      </view>
-      <view class="chat-sender-wrapper">
-        <t-chat-sender
-          v-model="query"
-          :loading="loading"
-          :placeholder="placeholder"
-          :textarea-props="textareaProps"
-          :allow-speech="allowSpeech"
-          :render-presets="renderPresets"
-          @send="onSend"
+  <view class="chat-box" :style="{ height: contentHeight }">
+    <t-chat-list id="chatList" @scroll="onScroll">
+      <t-chat-message
+        v-for="(item, index) in chatList"
+        :key="item.chatId"
+        :chat-id="item.chatId"
+        :avatar="item.avatar || ''"
+        :name="item.name || ''"
+        :datetime="item.datetime || ''"
+        :content="item.content"
+        :role="item.role"
+        :placement="item.role === 'user' ? 'right' : 'left'"
+        :status="item.status || ''"
+        @message-longpress="showPopover"
+        @click="onClick"
+      >
+        <template
+          v-if="index !== chatList.length - 1 && item.status === 'complete' && item.role === 'assistant'"
+          #actionbar
         >
+          <t-chat-actionbar
+            :id="'actionbar-' + item.chatId"
+            :chat-id="item.chatId"
+            :comment="item.comment"
+            placement="end"
+            @actions="handleAction"
+          />
+        </template>
+      </t-chat-message>
+
+      <template #footer>
+        <t-chat-sender
+          v-model="value"
+          :loading="loading"
+          :disabled="disabled"
+          :auto-rise-with-keyboard="true"
+          :render-presets="renderPresets"
+          :allow-speech="allowSpeech"
+          :placeholder="placeholder"
+          @send="onSend"
+          @stop="onStop"
+          @focus="onFocus"
+          @keyboardheightchange="onKeyboardHeightChange"
+        >
+          <!-- 语音输入模式 -->
           <template #speech>
-            <t-chat-record
-              style="margin: 10px 0"
-              @recognize="onRecognize"
-            >
+            <t-chat-record @recognize="handleRecognize" @error="handleRecordError">
               <template #speechInput>
-                <div style="padding: 10px; background: #f0f0f0; border-radius: 8px">
-                  按住说话
-                </div>
+                <view class="speech-slot-btn"> 按住说话 </view>
               </template>
               <template #speechNoAuth>
-                <div style="padding: 10px; background: #ffebee; border-radius: 8px; color: #d32f2f">
-                  请授权麦克风权限
-                </div>
+                <view class="speech-btn-error"> 请授权麦克风权限 </view>
               </template>
             </t-chat-record>
           </template>
+
+          <!-- 底部切换按钮 -->
           <template #footer-prefix>
             <view class="demo-footer-prefix">
-              <view
-                class="speech-block"
-                @click="toggleSenderType"
-              >
-                <t-icon
-                  name="microphone"
-                  size="40rpx"
-                />
+              <view class="icon-wrapper" @click="toggleVoiceIcon">
+                <t-icon class="voice-input-button" :name="allowSpeech === 'speech' ? 'keyboard-1' : 'voice-wave'" />
               </view>
             </view>
           </template>
         </t-chat-sender>
-      </view>
-      <view class="demo-footer">
-        内容由AI生成，仅供参考
-      </view>
-    </view>
+      </template>
+    </t-chat-list>
+
+    <t-toast id="t-toast" />
   </view>
 </template>
 
 <script>
-import tChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import tChatRecord from 'tdesign-uniapp-chat/chat-record/chat-record.vue';
 import TIcon from 'tdesign-uniapp/icon/icon.vue';
+
+import tToast from 'tdesign-uniapp/toast/toast.vue';
+
+import tChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import tChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
+import tChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
+import tChatRecord from 'tdesign-uniapp-chat/chat-record/chat-record.vue';
+import tChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
+
 
 export default {
   components: {
-    tChatSender,
-    tChatRecord,
-    TIcon,
+    't-chat-list': tChatList,
+    't-chat-message': tChatMessage,
+    't-chat-actionbar': tChatActionbar,
+    't-chat-sender': tChatSender,
+    't-chat-record': tChatRecord,
+    't-icon': TIcon,
+    't-toast': tToast,
   },
   data() {
     return {
-      query: '',
+      renderPresets: [{ name: 'send', type: 'icon' }],
+      chatList: [
+        {
+          avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
+          role: 'assistant',
+          status: 'complete',
+          content: [
+            {
+              type: 'text',
+              data: '它叫 McMurdo Station ATM，是美国富国银行安装在南极洲最大科学中心麦克默多站的一台自动提款机。',
+            },
+          ],
+          chatId: this.getUniqueKey(),
+          comment: '',
+        },
+        {
+          role: 'user',
+          content: [
+            {
+              type: 'text',
+              data: '牛顿第一定律是否适用于所有参考系？',
+            },
+          ],
+          chatId: this.getUniqueKey(),
+        },
+      ],
+      value: '', // 输入框的值
+      loading: false, // 加载状态
+      disabled: false, // 禁用状态
+      contentHeight: '100vh', // 内容高度
+      activePopoverId: '', // 当前打开悬浮actionbar的chatId
+      longPressPosition: null, // 长按位置对象
+      allowSpeech: 'keyboard',
+      keyboardHeight: 0, // 键盘高度（px）
       placeholder: '请输入内容',
-      textareaProps: {
-        autosize: {
-          maxHeight: 264,
-          minHeight: 48, // 设置为0时，用自动计算height的高度
-        }, // 默认为false
-      },
-      renderSend: [
-        {
-          name: 'send',
-          type: 'text',
-        },
-      ],
-      loading: false,
-      showVoice: false,
-      allowSpeech: false,
-      renderPresets: [
-        {
-          name: 'send',
-          type: 'icon',
-        },
-      ],
+      uniqueId: 0,
     };
   },
+  mounted() {
+    this.calculateContentHeight();
+  },
   methods: {
-    // 语音识别回调
-    onRecognize(voiceMsg) {
+    getUniqueKey() {
+      this.uniqueId += 1;
+      return `key-${this.uniqueId}`;
+    },
+
+    // 计算内容区域高度
+    calculateContentHeight() {
+      try {
+        const systemInfo = uni.getSystemInfoSync();
+        const statusBarHeight = systemInfo.statusBarHeight || 0;
+        const navigationBarHeight = statusBarHeight + 44; // 标准导航栏高度
+
+        this.contentHeight = `calc(100vh - ${navigationBarHeight}rpx)`;
+      } catch (error) {
+        console.error('生成内容高度表达式失败:', error);
+        this.contentHeight = 'calc(100vh - 96rpx)';
+      }
+    },
+
+    // 调用chatList的滚动到底部方法
+    scrollToBottom() {
+      const chatListComponent = this.$refs.chatList;
+      if (chatListComponent && typeof chatListComponent.scrollToBottom === 'function') {
+        chatListComponent.scrollToBottom();
+      }
+    },
+
+    onScroll(e) {
+      console.log('监听滚动', e);
+    },
+
+    /**
+     * 监听键盘高度变化，弹出键盘时将 chat-sender 往上推
+     */
+    onKeyboardHeightChange(e) {
+      const height = (e && e.height) || 0;
+      this.keyboardHeight = height;
+    },
+
+    toggleVoiceIcon() {
+      // 切换前先收起键盘，避免 textarea 销毁失焦与模式切换叠加导致 chat-sender 闪烁
+      if (uni.hideKeyboard) {
+        uni.hideKeyboard();
+      }
+      this.allowSpeech = this.allowSpeech === 'keyboard' ? 'speech' : 'keyboard';
+    },
+
+    /**
+     * 语音识别回调
+     */
+    handleRecognize(voiceMsg) {
       console.log('语音识别结果:', voiceMsg);
-      // 可以将语音识别结果设置到输入框中
-      this.query = voiceMsg;
+      if (voiceMsg.voiceText) {
+        // 自动发送识别到的文本
+        this.onSend({ value: voiceMsg.voiceText });
+      }
     },
-    handleVoice() {
-      this.showVoice = !this.showVoice;
+
+    // 语音识别错误
+    handleRecordError(err) {
+      console.error('语音识别错误:', err);
     },
-    toggleSenderType() {
-      console.log('toggleSenderType', this.allowSpeech);
-      this.allowSpeech = !this.allowSpeech;
+
+    // 发送消息事件处理
+    onSend(e) {
+      const value = e.value || e.detail?.value;
+      if (!value || value.trim() === '') return;
+
+      // 创建用户消息对象
+      const userMessage = {
+        role: 'user',
+        content: [
+          {
+            type: 'text',
+            data: value.trim(),
+          },
+        ],
+        chatId: this.getUniqueKey(),
+      };
+
+      // 将用户消息插入到chatList的开头
+      this.chatList = [userMessage, ...this.chatList];
+      this.value = ''; // 清空输入框
+
+      // 模拟助手回复
+      this.simulateAssistantReply(value.trim());
     },
-    onSend(_value, { e: _e }) {
-      console.log('onSend', _e, _value);
+
+    // 停止事件处理
+    onStop() {
+      this.loading = false;
+    },
+
+    // 聚焦事件处理
+    onFocus() {
+      console.log('输入框聚焦');
+    },
+
+    // 模拟助手回复
+    simulateAssistantReply() {
       this.loading = true;
-      this.query = '';
-      setTimeout(() => {
-        this.loading = false;
-      }, 1000);
+
+      const mockData = `南极的自动提款机并没有一个特定的专属名称，但历史上确实有一台ATM机曾短暂存在于南极的**麦克默多站**（McMurdo Station）。这台ATM由美国**富兰克林国家银行**（Wells Fargo）于1998年安装，主要供驻扎在该站的科研人员使用。不过，由于南极的极端环境和极低的人口密度，这台ATM机并未长期运行，最终被移除。
+
+**背景补充：**
+- **麦克默多站**是美国在南极最大的科研基地，夏季人口可达约1,000人，冬季约200人。
+- 该ATM机更多是作为一种象征性服务存在，实际使用频率极低，因为南极科考人员通常依靠预支资金或电子支付。
+- 目前南极已无长期运行的ATM机，现代科考站更多依赖非现金交易方式。
+
+南极作为非主权领土，其基础设施以科研和生活支持为主，商业金融服务非常有限。若有类似设施，通常是临时或实验性质的。`;
+
+      // 请求中
+      const assistantMessage = {
+        role: 'assistant',
+        content: [
+          {
+            type: 'markdown',
+            data: '',
+          },
+        ],
+        avatar: 'https://tdesign.gtimg.com/site/chat-avatar.png',
+        status: 'pending',
+        chatId: this.getUniqueKey(),
+        comment: '',
+      };
+
+      this.chatList = [assistantMessage, ...this.chatList];
+
+      const that = this;
+      this.$nextTick(() => {
+        this.fetchStream(mockData, {
+          success(result) {
+            if (!that.loading) return;
+            that.chatList[0].status = 'streaming';
+            that.chatList[0].content[0].data += result;
+            that.chatList = [...that.chatList]; // 触发响应式更新
+          },
+          complete() {
+            that.chatList[0].status = 'complete';
+            that.loading = false;
+            that.chatList = [...that.chatList]; // 触发响应式更新
+          },
+        });
+      });
+    },
+
+    fetchStream(str, options) {
+      const { success, complete, delay = 100 } = options;
+      const arr = str.split('');
+
+      const stream = async () => {
+        for (let i = 0; i < arr.length; i += 1) {
+          await this.sleep(delay);
+          success(arr[i]);
+        }
+        complete();
+      };
+
+      stream();
+    },
+
+    sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    },
+
+    handleAction(e) {
+      const { name, active, data, chatId } = e.detail || e;
+
+      let message = '';
+      switch (name) {
+        case 'replay':
+          message = '重新生成';
+          break;
+        case 'copy':
+          console.log(data);
+          message = '复制成功';
+          break;
+        case 'good':
+          message = active ? '点赞成功' : '取消点赞';
+          break;
+        case 'bad':
+          message = active ? '点踩成功' : '取消点踩';
+          break;
+        case 'share':
+          message = '分享功能';
+          break;
+        default:
+          message = `执行了${name}操作`;
+      }
+
+      this.$refs.toast?.show({
+        message,
+        theme: 'success',
+      });
+
+      if (name === 'good' || name === 'bad') {
+        this.chatList.forEach((item) => {
+          if (item.chatId === chatId) {
+            item.comment = active ? name : '';
+          }
+        });
+        this.chatList = [...this.chatList]; // 触发响应式更新
+      }
+    },
+
+    showPopover(e) {
+      const { id, longPressPosition } = e.detail || e;
+
+      let role = '';
+      this.chatList.forEach((item) => {
+        if (item.chatId === id) {
+          role = item.role;
+        }
+      });
+
+      // 仅当 role 为 user 时才显示 popover
+      if (role !== 'user') {
+        return;
+      }
+
+      this.activePopoverId = id;
+      this.longPressPosition = longPressPosition;
+    },
+
+    onClick(e) {
+      const { node } = e.detail || e;
+      console.log('点击节点', node);
     },
   },
 };
 </script>
+
 <style>
-.demo-base-container {
-  background-color: var(--td-bg-color-container);
-  height: 360rpx;
-  position: relative;
+.chat-box {
+  padding: 32rpx;
+  box-sizing: border-box;
 }
 
-/* 聊天发送器包装器 */
-.chat-sender-demo-wrapper {
-  margin-bottom: 32rpx;
-  /* border: 2rpx solid #e5e5e5; */
-  border-radius: 8rpx;
-  overflow: hidden;
+.t-chat-list {
+  padding: 0 32rpx;
+  box-sizing: border-box;
 }
 
-.chat-sender-height-limit {
-  height: 72rpx;
-  padding: 0 24rpx;
+.t-chat-message {
+  padding: 0 32rpx;
+}
+
+.speech-slot-btn,
+.speech-btn-error {
+  /* 不设置 height，让 chat-sender 父容器的 min-height(134rpx) 自然撑起，
+     避免与 t-chat-record-hook 的 padding/line-height 叠加导致总高度超过 keyboard 模式 */
+  width: 100%;
+  text-align: center;
+  gap: 8rpx;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-}
-
-.chat-sender-height-left-limit {
-  height: 70rpx;
-  width: 70rpx;
-  border-top: 1px var(--td-component-stroke) dashed;
-  border-left: 1px var(--td-component-stroke) dashed;
-  border-top-left-radius: 32rpx;
-}
-.chat-sender-height-right-limit {
-  height: 70rpx;
-  width: 70rpx;
-  border-top: 1px var(--td-component-stroke) dashed;
-  border-right: 1px var(--td-component-stroke) dashed;
-  border-top-right-radius: 32rpx;
-}
-.chat-sender-placeholder {
+  justify-content: center;
   font-size: 32rpx;
-  font-weight: 600;
-  color: var(--demo-chat-sender-placeholder);
-  text-align: center;
-  height: 48rpx;
+  line-height: 48rpx;
+  color: rgba(0, 0, 0, 0.9);
 }
 
-.chat-sender-wrapper {
-  position: absolute;
-  width: 100%;
-  bottom: 0rpx;
-  background-color: var(--td-bg-color-container);
-}
-
-.demo-footer {
-  height: 32rpx;
-  width: 100%;
-  text-align: center;
-  font-size: 20rpx;
-  line-height: 32rpx;
-  color: var(--td-text-color-placeholder);
-  position: absolute;
-  bottom: 32rpx;
+.speech-btn-error {
+  color: red;
 }
 
 .demo-footer-prefix {
@@ -189,12 +408,20 @@ export default {
   align-items: center;
 }
 
-.speech-block {
+/* 语音输入按钮样式 */
+.icon-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 24rpx;
-  height: 60rpx;
-  margin-right: 16rpx;
+  border-radius: 50%;
+  width: 64rpx;
+  height: 64rpx;
+  background-color: #fff;
+  border: 1px solid #dcdcdc;
+}
+
+.voice-input-button {
+  font-size: 36rpx;
+  color: #000;
 }
 </style>

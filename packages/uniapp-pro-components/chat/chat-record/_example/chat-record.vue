@@ -1,20 +1,9 @@
 <template>
   <view>
-    <t-navbar
-      class="demo-navbar"
-      title="ChatSender"
-      left-arrow
-    />
+    <t-navbar class="demo-navbar" title="ChatRecord" left-arrow />
     <view class="demo">
-      <t-demo-header
-        title="ChatSender 对话输入"
-        desc="用于 AI 聊天的输入框，可以扩展模型、多模态等能力。"
-        notice="渲染框架支持情况：WebView"
-      />
-      <t-demo
-        title="语音输入组件"
-        desc="基础类型"
-      >
+      <t-demo-header title="ChatRecord 语音录入" />
+      <t-demo>
         <baseDemo />
       </t-demo>
     </view>
@@ -31,8 +20,7 @@ export default {
   data() {
     return {};
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {},
 };
 </script>
