@@ -187,7 +187,7 @@ export default {
         this.dataLabelAlign = labelAlign || target.labelAlign;
         this.dataLabelWidth = normalizeLabelWidth(labelWidth || target.labelWidth);
         this.dataContentAlign = contentAlign || target.contentAlign;
-        this.dataRequiredMark = requiredMark || target.requiredMark || globalConfig.requiredMark || isRequired;
+        this.dataRequiredMark = requiredMark ?? target.requiredMark ?? globalConfig.requiredMark ?? isRequired;
         this.dataShowErrorMessage = typeof showErrorMessage === 'boolean' ? showErrorMessage : target.showErrorMessage;
         this.requiredMarkPosition = target.requiredMarkPosition || globalConfig.requiredMarkPosition || 'left';
       },
