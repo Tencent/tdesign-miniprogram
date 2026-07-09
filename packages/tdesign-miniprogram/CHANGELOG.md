@@ -5,6 +5,14 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.15.3 `2026-07-09`
+
+### 🐞 Bug Fixes
+
+- `Form`: `FormRule.required` 为 true 时，`requiredMark` 属性无效 @anlyyao ([#4555](https://github.com/Tencent/tdesign-miniprogram/pull/4555))
+- `TabBar`: HarmonyOS 的安全区域内边距 @Darley-Wey ([#4304](https://github.com/Tencent/tdesign-miniprogram/pull/4304))
+- `Upload`: 修复列表布局中上传按钮文案错误（`上传 -> Upload`） @anlyyao ([#4540](https://github.com/Tencent/tdesign-miniprogram/pull/4540))
+
 ## 🌈 1.15.2 `2026-06-24`
 
 ### 🚀 Features
