@@ -99,6 +99,14 @@ export interface TdChatSenderProps {
     value?: 'keyboard' | 'speech';
   };
   /**
+   * 是否允许语音输入。为 true 时显示语音切换按钮，语音输入 UI 由开发者通过 speech 插槽自行提供
+   * @default false
+   */
+  allowSpeech?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 上传面板是否可见
    * @default false
    */

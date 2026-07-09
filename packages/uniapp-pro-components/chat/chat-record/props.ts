@@ -15,11 +15,6 @@ export default {
     type: Number,
     default: 60000,
   },
-  /** 是否自动发送（预留扩展） */
-  autoSend: {
-    type: Boolean,
-    default: false,
-  },
   /** 底部高度，用于适配键盘弹出时的布局 */
   bottomHeight: {
     type: Number,

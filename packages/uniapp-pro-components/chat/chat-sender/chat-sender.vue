@@ -30,8 +30,8 @@
       <view :class="classPrefix + '__actions'">
         <view :class="classPrefix + '__textarea'">
           <slot name="input-prefix" />
-          <!-- 文本输入模式 -->
-          <template v-if="allowSpeech === 'keyboard'">
+          <!-- 键盘输入模式：allowSpeech 为 false，或 allowSpeech 为 true 但当前处于键盘模式时显示 -->
+          <template v-if="!allowSpeech || inputMode === 'keyboard'">
             <textarea
               :class="classPrefix + '__textarea--control'"
               :style="'' + textareaStyle(textareaProps.autosize)"
@@ -55,12 +55,26 @@
               {{ placeholder || globalConfig.placeholder }}
             </view>
           </template>
-          <!-- 语音输入模式 -->
-          <slot v-else name="speech" />
+          <!-- 语音输入模式：allowSpeech 为 true 且当前处于语音模式时显示，语音 UI 由开发者通过 speech 插槽提供 -->
+          <slot
+            v-else
+            name="speech"
+          />
         </view>
 
         <view :class="classPrefix + '__footer'">
           <view :class="classPrefix + '__mode'">
+            <!-- 语音切换按钮：allowSpeech 为 true 时内置显示 -->
+            <view
+              v-if="allowSpeech"
+              :class="classPrefix + '__speech-toggle'"
+              @click.stop="handleSpeechToggle"
+            >
+              <t-icon
+                :name="inputMode === 'speech' ? 'keyboard-1' : 'voice-wave'"
+                size="36rpx"
+              />
+            </view>
             <slot name="footer-prefix" />
           </view>
           <view :class="classPrefix + '__sendbtn'">
@@ -230,6 +244,9 @@ export default {
         tools,
 
         innerValue: this.value,
+
+        // 当前输入模式：keyboard-键盘输入，speech-语音输入
+        inputMode: 'keyboard',
       };
     },
 
@@ -263,6 +280,18 @@ export default {
 
     methods: {
       textareaStyle,
+
+      /**
+       * 切换语音/键盘输入模式
+       * 切换前先收起键盘，避免 textarea 销毁失焦与模式切换叠加导致闪烁
+       */
+      handleSpeechToggle() {
+        if (uni.hideKeyboard) {
+          uni.hideKeyboard();
+        }
+        this.inputMode = this.inputMode === 'keyboard' ? 'speech' : 'keyboard';
+      },
+
 
       onkeyboardheightchange(e) {
       // 业务侧控制键盘顶起高度，如果用fix布局，不需要监听键盘高度变化

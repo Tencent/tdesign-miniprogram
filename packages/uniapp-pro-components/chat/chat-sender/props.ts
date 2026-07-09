@@ -46,10 +46,10 @@ export default {
     type: String,
     default: '',
   },
-  /** 输入类型， keyboard-键盘输入，speech-语音输入 */
+  /** 是否允许语音输入。为 true 时显示语音切换按钮，语音输入 UI 由开发者通过 speech 插槽自行提供 */
   allowSpeech: {
-    type: String,
-    default: 'keyboard',
+    type: Boolean,
+    default: false,
   },
   /** 上传面板是否可见 */
   visible: Boolean,

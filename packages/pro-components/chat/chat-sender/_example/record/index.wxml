@@ -6,7 +6,7 @@
         value="{{query}}"
         loading="{{loading}}"
         placeholder="{{placeholder}}"
-        allowSpeech="{{allowSpeech}}"
+        allowSpeech="{{true}}"
         bind:send="onSend"
         bind:keyboardheightchange="onKeyboardHeightChange"
       >
@@ -15,14 +15,6 @@
             <view slot="speechInput" class="speech-slot-btn"> 按住说话 </view>
             <view slot="speechNoAuth" class="speech-btn-error"> 请授权麦克风权限 </view>
           </t-chat-record>
-        </view>
-        <view slot="footer-prefix" class="demo-footer-prefix">
-          <view class="icon-wrapper" bind:tap="toggleVoiceIcon">
-            <t-icon
-              class="voice-input-button"
-              name="{{allowSpeech === 'speech' ? 'keyboard-1' : 'voice-wave'}}"
-            />
-          </view>
         </view>
       </t-chat-sender>
     </view>

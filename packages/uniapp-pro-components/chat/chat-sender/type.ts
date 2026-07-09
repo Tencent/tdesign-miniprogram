@@ -62,10 +62,11 @@ export interface TdChatSenderProps {
    */
   visible?: boolean;
   /**
-   * 输入类型， keyboard-键盘输入，speech-语音输入
-   * @default 'keyboard'
+   * 是否允许语音输入。为 true 时，输入框左侧显示语音切换按钮，点击后切换到语音模式，
+   * 语音输入 UI 由开发者通过 speech 插槽自行提供
+   * @default false
    */
-  allowSpeech?: 'keyboard' | 'speech';
+  allowSpeech?: boolean;
   /**
    * 输入框聚焦时触发
    */

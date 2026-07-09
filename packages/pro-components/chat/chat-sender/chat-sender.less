@@ -142,6 +142,24 @@
     z-index: @chat-sender-footer-z-index;
   }
 
+  // 模式切换区域（底部左侧）
+  &__mode {
+    display: flex;
+    align-items: center;
+  }
+
+  // 语音/键盘切换按钮
+  &__speech-toggle {
+    width: @chat-sender-send-btn-size;
+    height: @chat-sender-send-btn-size;
+    border-radius: 50%;
+    border: @chat-sender-btn-func-border;
+    background-color: @chat-sender-btn-func-bg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   // 上传区域
   &__upload {
     display: flex;

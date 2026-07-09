@@ -31,7 +31,7 @@
       disabled="{{disabled}}"
       autoRiseWithKeyboard="{{true}}"
       renderPresets="{{renderPresets}}"
-      allowSpeech="{{allowSpeech}}"
+      allowSpeech="{{true}}"
       placeholder="{{placeholder}}"
       bind:send="onSend"
       bind:stop="onStop"
@@ -44,25 +44,8 @@
           <view slot="speechNoAuth" class="speech-btn-error"> 请授权麦克风权限 </view>
         </t-chat-record>
       </view>
-      <view slot="footer-prefix" class="demo-footer-prefix">
-        <view class="icon-wrapper" bind:tap="toggleVoiceIcon">
-          <t-icon
-          class="voice-input-button"
-          name="{{allowSpeech === 'speech' ? 'keyboard-1' : 'voice-wave'}}"
-          />
-        </view>
-      </view>
     </t-chat-sender>
   </view>
   </t-chat>
-  <!-- <t-chat-actionbar
-    class="popover-actionbar"
-    placement="longpress"
-    bind:actions="handlePopoverAction"
-    longPressPosition="{{longPressPosition}}"
-    action-bar="{{['quote', 'copy', 'share']}}"
-  /> -->
-  <!-- 内置虚拟列表优化性能仅在data属性中使用 -->
-  <!-- <t-chat id="chatList" bindscroll="onScroll" data="{{chatList}}"></t-chat> -->
 </view>
 <t-toast id="t-toast" />

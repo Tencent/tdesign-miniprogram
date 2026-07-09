@@ -79,7 +79,6 @@ import TChatRecord from '@tdesign/uniapp-chat/chat-record/chat-record.vue';
 -- | -- | -- | -- | --
 lang | String | 'zh_CN' | 识别语言（WechatSI 插件参数） | N
 duration | Number | 60000 | 最大录音时长（ms） | N
-auto-send | Boolean | false | 是否自动发送（预留扩展） | N
 bottom-height | Number | 0 | 底部高度，用于适配键盘弹出时的布局 | N
 
 ### ChatRecord Events

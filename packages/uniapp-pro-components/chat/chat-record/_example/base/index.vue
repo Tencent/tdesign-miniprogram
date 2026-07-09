@@ -1,6 +1,12 @@
 <template>
-  <view class="chat-box" :style="{ height: contentHeight }">
-    <t-chat-list id="chatList" @scroll="onScroll">
+  <view
+    class="chat-box"
+    :style="{ height: contentHeight }"
+  >
+    <t-chat-list
+      id="chatList"
+      @scroll="onScroll"
+    >
       <t-chat-message
         v-for="(item, index) in chatList"
         :key="item.chatId"
@@ -36,7 +42,7 @@
           :disabled="disabled"
           :auto-rise-with-keyboard="true"
           :render-presets="renderPresets"
-          :allow-speech="allowSpeech"
+          :allow-speech="true"
           :placeholder="placeholder"
           @send="onSend"
           @stop="onStop"
@@ -45,23 +51,21 @@
         >
           <!-- 语音输入模式 -->
           <template #speech>
-            <t-chat-record @recognize="handleRecognize" @error="handleRecordError">
+            <t-chat-record
+              @recognize="handleRecognize"
+              @error="handleRecordError"
+            >
               <template #speechInput>
-                <view class="speech-slot-btn"> 按住说话 </view>
+                <view class="speech-slot-btn">
+                  按住说话
+                </view>
               </template>
               <template #speechNoAuth>
-                <view class="speech-btn-error"> 请授权麦克风权限 </view>
+                <view class="speech-btn-error">
+                  请授权麦克风权限
+                </view>
               </template>
             </t-chat-record>
-          </template>
-
-          <!-- 底部切换按钮 -->
-          <template #footer-prefix>
-            <view class="demo-footer-prefix">
-              <view class="icon-wrapper" @click="toggleVoiceIcon">
-                <t-icon class="voice-input-button" :name="allowSpeech === 'speech' ? 'keyboard-1' : 'voice-wave'" />
-              </view>
-            </view>
           </template>
         </t-chat-sender>
       </template>
@@ -127,7 +131,6 @@ export default {
       contentHeight: '100vh', // 内容高度
       activePopoverId: '', // 当前打开悬浮actionbar的chatId
       longPressPosition: null, // 长按位置对象
-      allowSpeech: 'keyboard',
       keyboardHeight: 0, // 键盘高度（px）
       placeholder: '请输入内容',
       uniqueId: 0,
@@ -177,12 +180,9 @@ export default {
     },
 
     toggleVoiceIcon() {
-      // 切换前先收起键盘，避免 textarea 销毁失焦与模式切换叠加导致 chat-sender 闪烁
-      if (uni.hideKeyboard) {
-        uni.hideKeyboard();
-      }
-      this.allowSpeech = this.allowSpeech === 'keyboard' ? 'speech' : 'keyboard';
+      // 切换按钮已内置到 chat-sender 组件中，此方法不再需要
     },
+
 
     /**
      * 语音识别回调
@@ -371,12 +371,7 @@ export default {
 
 <style>
 .chat-box {
-  padding: 32rpx;
-  box-sizing: border-box;
-}
-
-.t-chat-list {
-  padding: 0 32rpx;
+  padding-top: 32rpx;
   box-sizing: border-box;
 }
 
@@ -406,22 +401,5 @@ export default {
 .demo-footer-prefix {
   display: flex;
   align-items: center;
-}
-
-/* 语音输入按钮样式 */
-.icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  width: 64rpx;
-  height: 64rpx;
-  background-color: #fff;
-  border: 1px solid #dcdcdc;
-}
-
-.voice-input-button {
-  font-size: 36rpx;
-  color: #000;
 }
 </style>

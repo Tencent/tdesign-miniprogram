@@ -68,6 +68,7 @@ render-presets | Array | [{name: 'upload', presets: ['uploadCamera', 'uploadImag
 textarea-props | Boolean / Object | { autosize: { maxHeight: 264, minHeight: 48 } } | 透传给 Textarea 组件的属性，autosize数值单位为 rpx | N
 value | String | - | 输入框的值 | N
 visible | Boolean | false | 上传面板是否可见 | N
+allow-speech | Boolean | false | 是否允许语音输入。为 `true` 时显示语音切换按钮，语音输入由开发者通过 `speech` 插槽实现三方语音输入的功能 | N
 
 ### ChatSender Events
 
