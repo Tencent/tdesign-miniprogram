@@ -85,7 +85,7 @@ export default class FormItem extends SuperComponent {
           innerLabelWidth: normalizeLabelWidth(labelWidth || target.data.labelWidth),
           innerContentAlign,
           contentStyle: innerContentAlign ? `text-align: ${innerContentAlign}` : '',
-          innerRequiredMark: requiredMark || target.data.requiredMark || globalConfig.requiredMark || isRequired,
+          innerRequiredMark: requiredMark ?? target.data.requiredMark ?? globalConfig.requiredMark ?? isRequired,
           innerShowErrorMessage:
             typeof showErrorMessage === 'boolean' ? showErrorMessage : target.properties.showErrorMessage,
           requiredMarkPosition: target.data.requiredMarkPosition || globalConfig.requiredMarkPosition || 'left',
