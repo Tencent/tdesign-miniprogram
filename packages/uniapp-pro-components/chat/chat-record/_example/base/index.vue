@@ -179,11 +179,6 @@ export default {
       this.keyboardHeight = height;
     },
 
-    toggleVoiceIcon() {
-      // 切换按钮已内置到 chat-sender 组件中，此方法不再需要
-    },
-
-
     /**
      * 语音识别回调
      */

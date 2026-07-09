@@ -6,7 +6,7 @@
         value="{{query}}"
         loading="{{loading}}"
         placeholder="{{placeholder}}"
-        allowSpeech="{{true}}"
+        allowSpeech="{{allowSpeech}}"
         bind:send="onSend"
         bind:keyboardheightchange="onKeyboardHeightChange"
       >

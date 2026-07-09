@@ -6,8 +6,7 @@ Page({
     query: '', // 输入框内容
     placeholder: '请输入内容', // 输入框占位符
     loading: false, // 发送按钮加载状态
-    showVoice: false, // 是否显示语音输入组件
-    allowSpeech: 'speech',
+    allowSpeech: true,
     keyboardHeight: 0, // 键盘高度（px）
   },
 
@@ -40,25 +39,6 @@ Page({
   },
 
   /**
-   * 切换语音输入显示状态
-   */
-  handleVoice() {
-    const showVoice = !this.data.showVoice;
-    this.setData({
-      showVoice,
-      allowSpeech: showVoice ? 'speech' : 'keyboard',
-    });
-  },
-
-  toggleVoiceIcon() {
-    // 切换前先收起键盘，避免 textarea 销毁失焦与模式切换叠加导致 chat-sender 闪烁
-    wx.hideKeyboard && wx.hideKeyboard();
-    this.setData({
-      allowSpeech: this.data.allowSpeech === 'keyboard' ? 'speech' : 'keyboard',
-    });
-  },
-
-  /**
    * 语音识别回调
    * @param {Object} e - 事件对象
    */
@@ -70,8 +50,6 @@ Page({
     if(voiceMsg.voiceText) {
       this.setData({
         query: voiceMsg.voiceText,
-        showVoice: false, // 识别完成后隐藏语音输入组件
-        allowSpeech: 'keyboard',
       });
     }
 

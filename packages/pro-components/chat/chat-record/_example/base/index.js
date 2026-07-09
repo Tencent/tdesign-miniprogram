@@ -99,8 +99,6 @@ Component({
     animation: 'dots',
     activePopoverId: '', // 当前打开悬浮actionbar的chatId
     longPressPosition: null, // 长按位置对象
-    showVoice: false, // 是否显示语音输入组件
-    allowSpeech: 'speech',
     keyboardHeight: 0, // 键盘高度（px）
   },
 
@@ -122,23 +120,6 @@ Component({
       const height = (e && e.detail && e.detail.height) || 0;
       this.setData({
         keyboardHeight: height,
-      });
-    },
-    toggleVoiceIcon() {
-      // 切换前先收起键盘，避免 textarea 销毁失焦与模式切换叠加导致 chat-sender 闪烁
-      wx.hideKeyboard && wx.hideKeyboard();
-      this.setData({
-        allowSpeech: this.data.allowSpeech === 'keyboard' ? 'speech' : 'keyboard',
-      });
-    },
-    /**
-     * 切换语音输入显示状态
-     */
-    handleVoice() {
-      const showVoice = !this.data.showVoice;
-      this.setData({
-        showVoice,
-        allowSpeech: showVoice ? 'speech' : 'keyboard',
       });
     },
     /**
