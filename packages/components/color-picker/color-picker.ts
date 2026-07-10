@@ -398,5 +398,11 @@ export default class ColorPicker extends SuperComponent {
     onVisibleChange() {
       this.close('overlay');
     },
+
+    handleEyeDropperTap() {
+      this.triggerEvent('eyedropper-tap', {
+        color: getColorObject(this.color),
+      });
+    },
   };
 }

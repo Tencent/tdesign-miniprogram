@@ -9,4 +9,5 @@ export type ColorPickerChangeTrigger =
   | 'palette-brightness'
   | 'palette-hue-bar'
   | 'palette-alpha-bar'
-  | 'preset';
+  | 'preset'
+  | 'eyedropper';
