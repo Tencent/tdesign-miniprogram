@@ -58,7 +58,7 @@ textarea-props | Boolean / Object | { autosize: { maxHeight: 264, minHeight: 48 
 value | String | - | 输入框的值 | N
 allowSpeech | String | 'keyboard' | 输入类型，keyboard-键盘输入，speech-语音输入。可选项：`keyboard`/`speech` | N
 visible | Boolean | false | 上传面板是否可见 | N
-allow-speech | Boolean | false | 是否允许语音输入。为 `true` 时显示语音切换按钮，语音输入由开发者通过 `speech` 插槽实现三方语音输入的功能 | N
+allow-speech | Boolean | false | 是否允许语音输入。为 `true` 时显示语音切换按钮，语音输入由开发者通过 `speech` 插槽引入chat-record实现三方语音输入的功能 | N
 
 ### ChatSender Events
 

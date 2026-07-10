@@ -14,7 +14,11 @@
       </slot>
     </view>
 
-    <view v-else :class="[classPrefix + '-hook', classPrefix + '-hook--no-auth']" @click="requestRecordAuth">
+    <view
+      v-else
+      :class="[classPrefix + '-hook', classPrefix + '-hook--no-auth']"
+      @click="requestRecordAuth"
+    >
       <slot name="speechNoAuth">
         <view>{{ globalConfig.requestAuth }}</view>
       </slot>
@@ -23,7 +27,10 @@
     <!-- 遮罩 + 录音面板 -->
     <view :class="['cover-ng-bar', classPrefix + '-audio-input', showMask ? 'show' : '']">
       <!-- mask -->
-      <view :class="classPrefix + '-audio-input__mask'" @click="handleCancelSend" />
+      <view
+        :class="classPrefix + '-audio-input__mask'"
+        @click="handleCancelSend"
+      />
 
       <view :class="classPrefix + '-audio-input__main'">
         <!-- 底部区域 -->
@@ -37,7 +44,11 @@
             v-if="processStatus === 'recording'"
             :class="['audio-wave-outer', 'audio-wave', interactStatus === 'release_cancel' ? 'wave-red' : 'wave-blue']"
           >
-            <view v-for="item in waveList" :key="item" class="wave-item" />
+            <view
+              v-for="item in waveList"
+              :key="item"
+              class="wave-item"
+            />
           </view>
 
           <!-- 提示文字：两条文字同时存在，通过位移+透明度做"跟手"上下切换动效 -->
@@ -79,9 +90,13 @@
               @click="handleCancelSend"
             >
               <view class="icon-wrapper">
-                <text class="rollback-icon">↩</text>
+                <text class="rollback-icon">
+                  ↩
+                </text>
               </view>
-              <text class="btn-text">{{ globalConfig.cancelText }}</text>
+              <text class="btn-text">
+                {{ globalConfig.cancelText }}
+              </text>
             </view>
             <view
               :class="[
@@ -92,7 +107,9 @@
               ]"
               @click="handleSendVoiceMsg"
             >
-              <text class="send-btn-text">{{ globalConfig.sendText }}</text>
+              <text class="send-btn-text">
+                {{ globalConfig.sendText }}
+              </text>
             </view>
           </view>
         </view>
@@ -126,7 +143,11 @@ export default {
     props: {
       ...props,
     },
-
+    emits: [
+      'recognize',
+      'error',
+      'cancel',
+    ],
     data() {
       return {
         classPrefix: name,
@@ -192,6 +213,7 @@ export default {
           // WechatSI 插件需要你在 app.json 里配置 plugins: { WechatSI: { ... } }
           // eslint-disable-next-line no-undef
           if (typeof requirePlugin === 'function') {
+            // eslint-disable-next-line
             const plugin = requirePlugin('WechatSI');
             this.manager = plugin?.getRecordRecognitionManager?.();
           }
@@ -199,7 +221,7 @@ export default {
           this.manager = null;
         }
 
-        const manager = this.manager;
+        const { manager } = this;
         if (!manager) return;
 
         manager.onStart = () => {
@@ -279,23 +301,12 @@ export default {
       },
 
       updateBubbleClass() {
-        const { interactStatus, processStatus, translateResult, bottomHeight,
-                activeBtnCancel, activeBtnSend } = this;
+        const { interactStatus, processStatus } = this;
         let bubbleStatusClass = 'bubble-blue';
         if (interactStatus === 'release_cancel' || processStatus === 'error') {
           bubbleStatusClass = 'bubble-red';
         }
         this.bubbleStatusClass = bubbleStatusClass;
-
-        // 通知外部 speechBubble 插槽同步状态
-        this.$emit('statechange', {
-          processStatus,
-          interactStatus,
-          translateResult,
-          bottomHeight,
-          activeBtnCancel,
-          activeBtnSend,
-        });
       },
 
       // 键盘高度监听已移至示例页面处理
@@ -304,17 +315,13 @@ export default {
           uni.getSetting({
             success: (res) => {
               const authSetting = res.authSetting || {};
-              const hasRequested = Object.prototype.hasOwnProperty.call(authSetting, 'scope.record');
               const recordAuthStatus = !!authSetting['scope.record'];
               const recordAuthSetting = recordAuthStatus;
               this.recordAuthSetting = recordAuthSetting;
               this.recordAuthStatus = recordAuthStatus;
               resolve(recordAuthSetting);
             },
-            fail: () =>
-              reject(
-                new Error(this.globalConfig?.authSettingFail || '获取录音权限设置失败'),
-              ),
+            fail: () => reject(new Error(this.globalConfig?.authSettingFail || '获取录音权限设置失败')),
           });
         });
       },
@@ -394,8 +401,8 @@ export default {
         uni.showModal({
           title: globalConfig?.systemMicTitle || '无法使用麦克风',
           content:
-            globalConfig?.systemMicContent ||
-            '检测到手机系统已关闭"微信"的麦克风权限。\n\n请到系统设置中开启：\n- iOS：设置 > 微信 > 麦克风\n- Android：设置 > 应用管理 > 微信 > 权限 > 麦克风\n\n开启后返回小程序再试。',
+            globalConfig?.systemMicContent
+            || '检测到手机系统已关闭"微信"的麦克风权限。\n\n请到系统设置中开启：\n- iOS：设置 > 微信 > 麦克风\n- Android：设置 > 应用管理 > 微信 > 权限 > 麦克风\n\n开启后返回小程序再试。',
           showCancel: false,
         });
       },
@@ -582,7 +589,12 @@ export default {
       // ==================== 业务逻辑 ====================
       cancelRecord() {
         this.showMask = false;
-        this.resetState();
+        // 延迟重置状态，确保事件能够正确触发
+        setTimeout(() => {
+          this.resetState();
+        }, 100);
+        // 取消发送语音消息
+        this.$emit('cancel');
       },
 
       convertToText() {
@@ -630,12 +642,8 @@ export default {
           this.resetState();
           return;
         }
-        // 关闭弹窗
-        this.showMask = false;
-        // 延迟重置状态，确保事件能够正确触发
-        setTimeout(() => {
-          this.resetState();
-        }, 100);
+        // 取消发送语音消息
+        this.cancelRecord();
       },
 
       onTranslateInput(e) {

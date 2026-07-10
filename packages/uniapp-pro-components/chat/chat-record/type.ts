@@ -25,4 +25,16 @@ export interface TdChatRecordProps {
    * @default 0
    */
   bottomHeight?: number;
+  /**
+   * 语音识别完成时触发，返回语音文件路径、识别文本和录音时长
+   */
+  onRecognize?: (context: { voicePath: string; voiceText: string; duration: number }) => void;
+  /**
+   * 取消录音时触发
+   */
+  onCancel?: () => void;
+  /**
+   * 录音识别错误时触发
+   */
+  onError?: (err: any) => void;
 }

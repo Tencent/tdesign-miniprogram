@@ -174,16 +174,6 @@ export default class ChatRecord extends SuperComponent {
       let bubbleStatusClass = 'bubble-blue';
       if (interactStatus === 'release_cancel' || processStatus === 'error') bubbleStatusClass = 'bubble-red';
       this.setData({ bubbleStatusClass });
-
-      // 通知外部 speechBubble 插槽同步状态
-      this.triggerEvent('statechange', {
-        processStatus,
-        interactStatus,
-        translateResult,
-        bottomHeight,
-        activeBtnCancel,
-        activeBtnSend,
-      });
     },
 
     // 键盘高度监听已移至示例页面处理
@@ -481,8 +471,13 @@ export default class ChatRecord extends SuperComponent {
 
     // ==================== 业务逻辑 ====================
     cancelRecord() {
+       // 关闭弹窗
       this.setData({ showMask: false });
-      this.resetState();
+      // 延迟重置状态，确保事件能够正确触发
+      setTimeout(() => {
+        this.resetState();
+      }, 100);
+      this.triggerEvent('cancel');
     },
 
     convertToText() {
@@ -532,12 +527,7 @@ export default class ChatRecord extends SuperComponent {
         this.resetState();
         return;
       }
-      // 关闭弹窗
-      this.setData({ showMask: false });
-      // 延迟重置状态，确保事件能够正确触发
-      setTimeout(() => {
-        this.resetState();
-      }, 100);
+      this.cancelRecord();
     },
 
     onTranslateInput(e: WechatMiniprogram.Input) {

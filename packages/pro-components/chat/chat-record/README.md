@@ -73,7 +73,9 @@ isComponent: true
 
 名称 | 参数 | 描述
 -- | -- | --
-recognize | msg: string | 识别到的文本内容
+recognize | `(context: { voicePath: string, voiceText: string, duration: number })` | 语音识别完成时触发
+error | `(err: any)` | 录音识别错误时触发
+cancel | - | 取消录音时触发
 
 ### ChatRecord Slots
 

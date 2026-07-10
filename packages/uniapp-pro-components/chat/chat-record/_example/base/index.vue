@@ -370,7 +370,7 @@ export default {
   box-sizing: border-box;
 }
 
-.t-chat-message {
+:deep(.t-chat-message) {
   padding: 0 32rpx;
 }
 

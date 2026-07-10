@@ -87,7 +87,7 @@ bottom-height | Number | 0 | 底部高度，用于适配键盘弹出时的布局
 -- | -- | --
 recognize | `(context: { voicePath: string, voiceText: string, duration: number })` | 语音识别完成时触发
 error | `(err: any)` | 录音识别错误时触发
-statechange | `(context: { processStatus, interactStatus, translateResult, bottomHeight, activeBtnCancel, activeBtnSend })` | 录音状态变化时触发
+cancel | - | 取消录音时触发
 
 ### ChatRecord Slots
 
