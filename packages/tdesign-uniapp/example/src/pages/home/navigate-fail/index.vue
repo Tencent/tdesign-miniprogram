@@ -1,27 +1,15 @@
 <template>
   <view class="demo">
     <view class="container">
-      <t-icon
-        :name="failImage"
-        size="224rpx"
-        color="#DCDCDC"
-      />
-      <view class="fail-error">
-        页面加载错误
-      </view>
-      <t-button
-        class="fail-button"
-        @click="toHome"
-      >
-        回到首页
-      </t-button>
+      <t-icon :name="failImage" size="224rpx" color="#DCDCDC" />
+      <view class="fail-error"> 页面加载错误 </view>
+      <t-button class="fail-button" @click="toHome"> 回到首页 </t-button>
     </view>
   </view>
 </template>
 <script>
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TIcon from '@tdesign/uniapp/icon/icon.vue';
-
 
 export default {
   name: 'NavigateFail',

@@ -6,33 +6,11 @@
       @selected="(e) => handleSelected(e, { tagId: 't-action-sheet' })"
     />
 
-    <t-button
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="handleAction"
-    >
-      常规宫格型
-    </t-button>
-    <t-button
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="handleActionWithDesc"
-    >
+    <t-button size="large" variant="outline" block theme="primary" @click="handleAction"> 常规宫格型 </t-button>
+    <t-button size="large" variant="outline" block theme="primary" @click="handleActionWithDesc">
       常描述宫格型
     </t-button>
-    <t-button
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="handleMultiAction"
-    >
-      带翻页宫格型
-    </t-button>
+    <t-button size="large" variant="outline" block theme="primary" @click="handleMultiAction"> 带翻页宫格型 </t-button>
   </view>
 </template>
 
@@ -40,7 +18,6 @@
 import { ActionSheetPlugin, ActionSheetTheme } from '@tdesign/uniapp';
 import TActionSheet from '@tdesign/uniapp/action-sheet/action-sheet.vue';
 import TButton from '@tdesign/uniapp/button/button.vue';
-
 
 const firstGrid = [
   {
@@ -99,10 +76,12 @@ export default {
         theme: ActionSheetTheme.Grid,
         selector: '#t-action-sheet',
         context: this,
-        items: firstGrid.concat(new Array(8).fill({
-          label: '标题文字',
-          icon: 'image',
-        })),
+        items: firstGrid.concat(
+          new Array(8).fill({
+            label: '标题文字',
+            icon: 'image',
+          }),
+        ),
       });
     },
     handleActionWithDesc() {

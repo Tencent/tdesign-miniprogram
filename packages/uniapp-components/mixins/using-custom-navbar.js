@@ -25,7 +25,7 @@ const useCustomNavbarBehavior = {
       const { statusBarHeight } = systemInfo;
       let distance = 0;
       // #ifndef H5
-      // #ifndef APP-PLUS
+      // #ifndef APP
       const menuButton = uni.getMenuButtonBoundingClientRect();
       distance = menuButton.top + menuButton.bottom - statusBarHeight;
       // #endif

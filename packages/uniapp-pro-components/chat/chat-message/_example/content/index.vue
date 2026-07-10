@@ -2,18 +2,10 @@
   <view class="chat-example">
     <!-- 附件消息 -->
     <view class="chat-example-block">
-      <t-chat-message
-        :content="pic1.content"
-        :role="pic1.role"
-        :chat-content-props="chatContentProps"
-      />
+      <t-chat-message :content="pic1.content" :role="pic1.role" :chat-content-props="chatContentProps" />
     </view>
     <view class="chat-example-block">
-      <t-chat-message
-        :content="pic2.content"
-        :role="pic2.role"
-        :chat-content-props="chatContentProps"
-      />
+      <t-chat-message :content="pic2.content" :role="pic2.role" :chat-content-props="chatContentProps" />
     </view>
     <view class="chat-example-block">
       <t-chat-message
@@ -24,11 +16,7 @@
       />
     </view>
     <view class="chat-example-block">
-      <t-chat-message
-        :content="fileMessage.content"
-        :role="fileMessage.role"
-        :chat-content-props="chatContentProps"
-      />
+      <t-chat-message :content="fileMessage.content" :role="fileMessage.role" :chat-content-props="chatContentProps" />
     </view>
     <view class="chat-example-block">
       <t-chat-message
@@ -40,12 +28,7 @@
     </view>
     <!-- 思考过程消息 -->
     <view class="chat-example-block">
-      <t-chat-message
-        :content="aiMessage.content"
-        :role="aiMessage.role"
-        :status="aiMessage.status"
-        variant="text"
-      >
+      <t-chat-message :content="aiMessage.content" :role="aiMessage.role" :status="aiMessage.status" variant="text">
         <template #actionbar>
           <t-chat-actionbar />
         </template>
@@ -55,9 +38,8 @@
 </template>
 
 <script>
-import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
 import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
-
+import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
 
 export default {
   components: {
@@ -231,14 +213,13 @@ export default {
 </script>
 <style>
 .chat-example {
-    display: flex;
-    flex-direction: column;
-    gap: 32rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
 }
 
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx 32rpx 0 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx 32rpx 0 32rpx;
 }
-
 </style>

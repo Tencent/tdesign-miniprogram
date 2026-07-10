@@ -1,14 +1,7 @@
 <template>
   <view>
-    <t-avatar-group
-      :max="5"
-      collapse-avatar="+5"
-    >
-      <t-avatar
-        v-for="(pic, index) in pics"
-        :key="index"
-        :image="pic"
-      />
+    <t-avatar-group :max="5" collapse-avatar="+5">
+      <t-avatar v-for="(pic, index) in pics" :key="index" :image="pic" />
     </t-avatar-group>
   </view>
 </template>
@@ -38,5 +31,4 @@ export default {
   methods: {},
 };
 </script>
-<style>
-</style>
+<style></style>

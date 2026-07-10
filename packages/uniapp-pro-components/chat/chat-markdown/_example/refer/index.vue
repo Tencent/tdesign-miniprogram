@@ -1,9 +1,6 @@
 <template>
   <view class="chat-example-block">
-    <t-chat-markdown
-      :content="markdownContent"
-      @click="handleNodeTap"
-    />
+    <t-chat-markdown :content="markdownContent" @click="handleNodeTap" />
   </view>
 </template>
 
@@ -15,7 +12,6 @@ const markdownData = `
 
 > TDesign distills Tencent's years of design experience into professional design guideline, providing universal design solutions that assist product managers, designers, developers, and other roles in efficiently completing the design and development of enterprise-level products, while maintaining consistent design language and style to meet user experience requirements.
 `;
-
 
 export default {
   components: {
@@ -44,8 +40,7 @@ export default {
 </script>
 <style>
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx;
 }
-
 </style>

@@ -15,17 +15,10 @@
     >
       <view :class="classPrefix">
         <slot name="title" />
-        <view
-          v-if="title"
-          :class="classPrefix + '__title'"
-        >
+        <view v-if="title" :class="classPrefix + '__title'">
           {{ title }}
         </view>
-        <scroll-view
-          :class="classPrefix + '__sidebar'"
-          scroll-y
-          type="list"
-        >
+        <scroll-view :class="classPrefix + '__sidebar'" scroll-y type="list">
           <view
             v-for="(item, index) in items"
             :key="index"
@@ -40,11 +33,7 @@
             :aria-label="item.title"
             @click="onItemClick"
           >
-            <view
-              v-if="item.icon"
-              :aria-hidden="true"
-              :class="classPrefix + '__sidebar-item-icon'"
-            >
+            <view v-if="item.icon" :aria-hidden="true" :class="classPrefix + '__sidebar-item-icon'">
               <t-icon :name="item.icon" />
             </view>
 
@@ -62,18 +51,18 @@
   </view>
 </template>
 <script>
-import TPopup from '../popup/popup';
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
 import { coalesce } from '../common/utils';
-import props from './props';
-import useCustomNavbar from '../mixins/using-custom-navbar';
-import tools from '../common/utils.wxs';
 
+import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+import useCustomNavbar from '../mixins/using-custom-navbar';
+import TPopup from '../popup/popup';
+
+import props from './props';
 
 const name = `${prefix}-drawer`;
-
 
 export default {
   components: {
@@ -85,18 +74,11 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    mixins: [
-      useCustomNavbar,
-    ],
+    mixins: [useCustomNavbar],
     props: {
       ...props,
     },
-    emits: [
-      'update:visible',
-      'close',
-      'overlay-click',
-      'item-click',
-    ],
+    emits: ['update:visible', 'close', 'overlay-click', 'item-click'],
     data() {
       return {
         classPrefix: name,
@@ -110,7 +92,7 @@ export default {
       },
     },
     methods: {
-    // closeOnOverlayClick 为 true 时才能触发 popup 的 visible-change 事件
+      // closeOnOverlayClick 为 true 时才能触发 popup 的 visible-change 事件
       onVisibleChange(detail) {
         const { visible } = detail;
         const { showOverlay } = this;

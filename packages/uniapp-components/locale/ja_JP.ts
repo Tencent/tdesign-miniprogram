@@ -96,6 +96,11 @@ export default {
     finish: '完了',
     back: '戻る',
   },
+  typography: {
+    expandText: 'もっと拡大する',
+    collapseText: '畳む',
+    copiedText: 'コピー成功',
+  },
   qrcode: {
     expiredText: '期限切れ',
     refreshText: 'リフレッシュ',

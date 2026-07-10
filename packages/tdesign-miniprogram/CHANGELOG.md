@@ -5,6 +5,67 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.15.3 `2026-07-09`
+
+### 🐞 Bug Fixes
+
+- `Form`: `FormRule.required` 为 true 时，`requiredMark` 属性无效 @anlyyao ([#4555](https://github.com/Tencent/tdesign-miniprogram/pull/4555))
+- `TabBar`: HarmonyOS 的安全区域内边距 @Darley-Wey ([#4304](https://github.com/Tencent/tdesign-miniprogram/pull/4304))
+- `Upload`: 修复列表布局中上传按钮文案错误（`上传 -> Upload`） @anlyyao ([#4540](https://github.com/Tencent/tdesign-miniprogram/pull/4540))
+
+## 🌈 1.15.2 `2026-06-24`
+
+### 🚀 Features
+
+- `Form`: 新增 `contentAlign ` 属性，支持配置表单内容对齐方式 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `Navbar`: 新增 `isHiddenInSpecialScene` 属性，表示是否销毁导航栏，仅场景值为 1433、1434、1177、1175 时有效 @anlyyao ([#4509](https://github.com/Tencent/tdesign-miniprogram/pull/4509))
+- `TabBar`: `TabBarItem` 新增 `url` 和 `linkType` 属性 @anlyyao ([#4523](https://github.com/Tencent/tdesign-miniprogram/pull/4523))
+
+### 🐞 Bug Fixes
+
+- `Button`: ⚠️ `--td-button-xx-font-size` 系列变更为 `--td-button-xx-font`；⚠️ 移除 `--td-button-font-weight`，请改用 `--td-button-xx-font`，或者[组件库级别的 css var ](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/style/theme/_font.less)调整字号、行高、字重、字体等文本样式 @liweijie0812 ([#4501](https://github.com/Tencent/tdesign-miniprogram/pull/4501))
+- `Popover`: 修复外部样式类 `class` 无效 @anlyyao ([#4499](https://github.com/Tencent/tdesign-miniprogram/pull/4499))
+- `TabBar`: 修复 `shape` 为 `round` 时占位高度未包含底部安全区的问题 @novlan1 ([#4521](https://github.com/Tencent/tdesign-miniprogram/pull/4521))
+- `Text`: 修复组件在 Mpx 跨端小程序框架中报错 @anlyyao ([#4498](https://github.com/Tencent/tdesign-miniprogram/pull/4498))
+
+## 🌈 1.15.1 `2026-06-05`
+
+### 🚀 Features
+
+- `Cascader`: 新增 `filterable`、`filter` 和 `filter-placeholder` 属性，支持搜索功能 @kk-418 ([#4453](https://github.com/Tencent/tdesign-miniprogram/pull/4453))
+- `Typography`: 支持多语言配置 @anlyyao ([#4477](https://github.com/Tencent/tdesign-miniprogram/pull/4477))
+
+### 🐞 Bug Fixes
+
+- `Picker`: 修复按钮自定义文案无效 @liweijie0812 ([#4480](https://github.com/Tencent/tdesign-miniprogram/pull/4480))
+- `Stepper`: 调整手动输入逻辑，输入时仅过滤非法字符，范围校验&赋值移至失焦 @anlyyao ([#4484](https://github.com/Tencent/tdesign-miniprogram/pull/4484))
+
+## 🌈 1.15.0 `2026-05-21`
+
+### 🚀 Features
+
+- `ChatMarkdown`: 新增 `streaming` 属性，表示流式输出配置项目，可用于控制尾部光标的显示与隐藏 @mimaoxiao ([#4390](https://github.com/Tencent/tdesign-miniprogram/pull/4390))
+- `Typography`: 新增 `Typography` 排版组件 @anlyyao ([#4428](https://github.com/Tencent/tdesign-miniprogram/pull/4428))
+- `Upload`: 新增 `theme` 属性，支持列表布局 @anlyyao ([#4454](https://github.com/Tencent/tdesign-miniprogram/pull/4454))
+
+### 🐞 Bug Fixes
+
+- `DropdownMenu`: 修复 `label` 回显错误问题 @novlan1 ([#4413](https://github.com/Tencent/tdesign-miniprogram/pull/4413))
+- `Upload`: 修复禁用态文件样式错误（禁用态下移除操作按钮）@anlyyao ([#4454](https://github.com/Tencent/tdesign-miniprogram/pull/4454))
+
+## 🌈 1.14.0 `2026-04-24`
+
+### 🚀 Features
+
+- `ChatMessage`: `chatContentProps` 属性新增 `thinking` 配置项，支持透传给 `ChatThinking` 组件 @mimaoxiao ([#4410](https://github.com/Tencent/tdesign-miniprogram/pull/4410))
+- `Segmented`: 新增 `Segmented` 分段控制器组件 @anlyyao ([#4416](https://github.com/Tencent/tdesign-miniprogram/pull/4416))
+- `Table`: 新增 `Table` 表格组件 @novlan1 ([#4397](https://github.com/Tencent/tdesign-miniprogram/pull/4397))
+
+### 🐞 Bug Fixes
+
+- `Form`: 修复 `submit` 的 `firstError` 返回值错误 @liweijie0812 ([#4423](https://github.com/Tencent/tdesign-miniprogram/pull/4423))
+- `TabBar`: 修复 `badgeProps` 属性中的 `color` 和 `shape` 字段无效 @liweijie0812 ([#4427](https://github.com/Tencent/tdesign-miniprogram/pull/4427))
+
 ## 🌈 1.13.2 `2026-04-09`
 
 ### 🚀 Features

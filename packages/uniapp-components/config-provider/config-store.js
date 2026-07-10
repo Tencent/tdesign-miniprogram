@@ -19,7 +19,7 @@ class ConfigStore {
     try {
       return JSON.stringify(a) === JSON.stringify(b);
     } catch (e) {
-      return keysA.every(key => this.deepEqual(a[key], b[key]));
+      return keysA.every((key) => this.deepEqual(a[key], b[key]));
     }
   }
 
@@ -56,10 +56,12 @@ class ConfigStore {
       if (cleanup) {
         try {
           cleanup();
-        } catch (e) { /* ignore */ }
+        } catch (e) {
+          /* ignore */
+        }
         this.cleanupCallbacks.delete(componentId);
       }
-      const hasOtherLocaleProvider = Array.from(this.pageInitFlags.values()).some(flag => flag.locale);
+      const hasOtherLocaleProvider = Array.from(this.pageInitFlags.values()).some((flag) => flag.locale);
       if (!hasOtherLocaleProvider) {
         this.currentLocale.value = {};
       }

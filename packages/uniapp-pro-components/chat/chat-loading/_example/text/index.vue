@@ -1,10 +1,7 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <t-chat-loading
-        animation="dots"
-        text="加载中..."
-      />
+      <t-chat-loading animation="dots" text="加载中..." />
     </view>
   </view>
 </template>
@@ -24,7 +21,7 @@ export default {
 </script>
 <style>
 .chat-example {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx;
 }
 </style>

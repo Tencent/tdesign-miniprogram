@@ -1,23 +1,48 @@
 <template>
   <view
-    :class="classPrefix + ' ' + formItemClass + ' ' + formClass + '--' + dataLabelAlign + ' ' + formItemClass + '__' + name + ' ' + errorClasses + ' ' + tClass"
+    :class="
+      classPrefix +
+      ' ' +
+      formItemClass +
+      ' ' +
+      formClass +
+      '--' +
+      dataLabelAlign +
+      ' ' +
+      formItemClass +
+      '__' +
+      name +
+      ' ' +
+      errorClasses +
+      ' ' +
+      tClass
+    "
     :style="'' + tools._style([customStyle])"
   >
     <view :class="formItemClass + '-wrap ' + formItemClass + '--' + dataLabelAlign + ' ' + tClassWrap">
       <!-- 标签区域 -->
-      <view
-        v-if="label"
-        :class="labelClass + ' ' + labelClass + '--' + dataLabelAlign
-          + (dataRequiredMark ? ' ' + labelClass + '--required' : '')
-          + (dataRequiredMark && requiredMarkPosition === 'right' ? ' ' + labelClass + '--required-right' : '')
-          + ' ' + tClassLabel"
-        :style="'width: ' + dataLabelWidth"
-      >
-        <label :for="forId">{{ label }}</label>
-        <template v-if="colon">
-          {{ globalConfig.colonText }}
-        </template>
-      </view>
+      <slot name="label">
+        <view
+          v-if="label"
+          :class="
+            labelClass +
+            ' ' +
+            labelClass +
+            '--' +
+            dataLabelAlign +
+            (dataRequiredMark ? ' ' + labelClass + '--required' : '') +
+            (dataRequiredMark && requiredMarkPosition === 'right' ? ' ' + labelClass + '--required-right' : '') +
+            ' ' +
+            tClassLabel
+          "
+          :style="'width: ' + dataLabelWidth"
+        >
+          <label :class="labelClass + '-text'" :for="forId">{{ label }}</label>
+          <template v-if="colon">
+            {{ globalConfig.colonText }}
+          </template>
+        </view>
+      </slot>
 
       <!-- 内容区域 -->
       <view :class="formClass + '__controls ' + errorClasses + ' ' + tClassControls">
@@ -28,12 +53,14 @@
           <slot />
         </view>
         <!-- 帮助信息 -->
-        <view
-          v-if="help"
-          :class="formItemClass + '-help ' + formClass + '__controls--' + dataContentAlign + ' ' + tClassHelp"
-        >
-          {{ help }}
-        </view>
+        <slot name="help">
+          <view
+            v-if="help"
+            :class="formItemClass + '-help ' + formClass + '__controls--' + dataContentAlign + ' ' + tClassHelp"
+          >
+            {{ help }}
+          </view>
+        </slot>
 
         <!-- 校验提示信息 -->
         <view
@@ -45,24 +72,22 @@
       </view>
     </view>
 
-    <t-icon
-      v-if="arrow"
-      name="chevron-right"
-      :class="formItemClass + '__icon'"
-    />
+    <t-icon v-if="arrow" name="chevron-right" :t-class="formItemClass + '__icon'" />
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
-import { getRect } from '../common/utils';
 import { prefix } from '../common/config';
-import props from './props';
-import { validateRules, ValidateStatus } from './form-model';
-import TIcon from '../icon/icon.vue';
+
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import { coalesce, getRect } from '../common/utils';
 import tools from '../common/utils.wxs';
-import usingConfig from '../mixins/using-config';
 import { isNumeric } from '../common/validator';
+import TIcon from '../icon/icon.vue';
+import usingConfig from '../mixins/using-config';
+
+import { validateRules, ValidateStatus } from './form-model';
+import props from './props';
 
 const parentComponentName = 'form';
 const componentName = 'form-item';
@@ -97,10 +122,7 @@ export default {
         [RELATION_MAP.FormKey]: this,
       };
     },
-    mixins: [
-      ChildrenMixin(RELATION_MAP.FormItem),
-      usingConfig({ componentName: parentComponentName }),
-    ],
+    mixins: [ChildrenMixin(RELATION_MAP.FormItem), usingConfig({ componentName: parentComponentName })],
 
     props: {
       ...props,
@@ -139,11 +161,9 @@ export default {
         return contentAlign ? `text-align: ${contentAlign}` : '';
       },
     },
-    watch: {
-
-    },
+    watch: {},
     created() {
-    // this.initFormItem();
+      // this.initFormItem();
     },
     beforeUnmount() {
       if (this.form) {
@@ -160,16 +180,16 @@ export default {
         const { globalConfig } = this;
         const { requiredMark, labelAlign, labelWidth, showErrorMessage, contentAlign } = this;
         const formRules = target.rules?.[this.name];
-        const isRequired = formRules?.some(rule => rule.required);
+        const isRequired = formRules?.some((rule) => rule.required);
 
-        this.dataRules = formRules;
+        this.dataRules = formRules || [];
         this.colon = target.colon;
         this.dataLabelAlign = labelAlign || target.labelAlign;
         this.dataLabelWidth = normalizeLabelWidth(labelWidth || target.labelWidth);
         this.dataContentAlign = contentAlign || target.contentAlign;
-        this.dataRequiredMark = requiredMark || target.requiredMark || globalConfig.requiredMark || isRequired;
+        this.dataRequiredMark = coalesce(requiredMark, target.requiredMark, globalConfig.requiredMark, isRequired);
         this.dataShowErrorMessage = typeof showErrorMessage === 'boolean' ? showErrorMessage : target.showErrorMessage;
-        this.requiredMarkPosition = target.requiredMarkPosition || globalConfig.requiredMarkPosition;
+        this.requiredMarkPosition = target.requiredMarkPosition || globalConfig.requiredMarkPosition || 'left';
       },
       innerAfterUnlinked() {
         if (this.form) {
@@ -179,7 +199,7 @@ export default {
       // 处理描述信息链接点击事件
       handlePreviewImage(e) {
         const { url } = e.currentTarget.dataset;
-        const urls = url.map(item => item.url) || [];
+        const urls = url.map((item) => item.url) || [];
         if (url) {
           uni.previewImage({
             urls,
@@ -240,9 +260,8 @@ export default {
         }
 
         // 根据触发方式过滤规则
-        const filteredRules = trigger === 'all'
-          ? rules
-          : rules.filter(rule => (rule.trigger || 'change') === trigger);
+        const filteredRules =
+          trigger === 'all' ? rules : rules.filter((rule) => (rule.trigger || 'change') === trigger);
 
         if (filteredRules.length === 0) {
           return { [this.name]: true };
@@ -276,7 +295,7 @@ export default {
         const labelName = this.label || this.name;
 
         const errorList = results
-          .filter(item => item.result !== true)
+          .filter((item) => item.result !== true)
           .map((item) => {
             if (item.message) return item;
 
@@ -291,7 +310,7 @@ export default {
             return item;
           });
 
-        const successList = results.filter(item => item.result === true && item.message && item.type === 'success');
+        const successList = results.filter((item) => item.result === true && item.message && item.type === 'success');
 
         return {
           errorList,
@@ -305,7 +324,9 @@ export default {
         getRect(this, `.${this.classPrefix}`).then((rect) => {
           if (!rect) return;
           const query = uni.createSelectorQuery();
-          query.selectViewport().scrollOffset()
+          query
+            .selectViewport()
+            .scrollOffset()
             .exec((res) => {
               if (!res[0]) return;
               uni.pageScrollTo({
@@ -349,8 +370,8 @@ export default {
 
       // 设置验证信息
       setValidateMessage(validateMessage) {
-        const errorList = validateMessage.filter(item => item.type !== 'success');
-        const successList = validateMessage.filter(item => item.type === 'success');
+        const errorList = validateMessage.filter((item) => item.type !== 'success');
+        const successList = validateMessage.filter((item) => item.type === 'success');
 
         let verifyStatus = ValidateStatus.SUCCESS;
         if (validateMessage.length > 0) {

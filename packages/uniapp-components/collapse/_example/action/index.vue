@@ -1,9 +1,6 @@
 <template>
   <view class="wrapper">
-    <t-collapse
-      :value="activeValues"
-      @change="handleChange"
-    >
+    <t-collapse :value="activeValues" @change="handleChange">
       <t-collapse-panel
         header="折叠面板标题"
         :header-right-content="activeValues.indexOf(0) > -1 ? '收起' : '展开'"
@@ -36,5 +33,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

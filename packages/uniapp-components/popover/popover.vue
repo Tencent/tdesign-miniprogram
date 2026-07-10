@@ -1,9 +1,6 @@
 <template>
   <view>
-    <view
-      :id="classPrefix + '-wrapper'"
-      :class="classPrefix + '__wrapper'"
-    >
+    <view :id="classPrefix + '-wrapper'" :class="classPrefix + '__wrapper'">
       <slot />
     </view>
     <t-overlay
@@ -19,37 +16,58 @@
       v-if="realVisible"
       :id="classPrefix + '-content'"
       :style="contentStyle + ' ' + customStyle"
-      :class="classPrefix + ' ' + transitionClass + ' ' + tClass + ' ' + classPrefix + '--placement-' + innerPlacement + ' ' + (fixed ? classPrefix + '--fixed' : '')"
+      :class="
+        classPrefix +
+        ' ' +
+        transitionClass +
+        ' ' +
+        tClass +
+        ' ' +
+        classPrefix +
+        '--placement-' +
+        innerPlacement +
+        ' ' +
+        (fixed ? classPrefix + '--fixed' : '')
+      "
     >
-      <view :class="classPrefix + '__content ' + classPrefix + '--' + theme + ' ' + tClassContent + ' ' + (showArrow ? classPrefix + '__content--arrow' : '')">
+      <view
+        :class="
+          classPrefix +
+          '__content ' +
+          classPrefix +
+          '--' +
+          theme +
+          ' ' +
+          tClassContent +
+          ' ' +
+          (showArrow ? classPrefix + '__content--arrow' : '')
+        "
+      >
         <slot name="content" />
         <view v-if="content">
           {{ content }}
         </view>
-        <view
-          v-if="showArrow"
-          :class="classPrefix + '__arrow'"
-          :style="arrowStyle"
-        />
+        <view v-if="showArrow" :class="classPrefix + '__arrow'" :style="arrowStyle" />
       </view>
     </view>
   </view>
 </template>
 
 <script>
-import TOverlay from '../overlay/overlay';
-import { getWindowInfo } from '../common/wechat';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+
 import { debounce, nextTick, coalesce } from '../common/utils';
-import { transitionMixins } from '../mixins/transition';
+import { getWindowInfo } from '../common/wechat';
 import pageScrollMixin from '../mixins/page-scroll';
+import { transitionMixins } from '../mixins/transition';
+import TOverlay from '../overlay/overlay';
+
+import props from './props';
 
 delete props.visible;
 
 const name = `${prefix}-popover`;
-
 
 export default {
   components: {
@@ -68,26 +86,15 @@ export default {
       },
     ],
 
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-content`,
-      `${prefix}-class-trigger`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-content`, `${prefix}-class-trigger`],
 
-    mixins: [
-      transitionMixins,
-      pageScrollMixin(),
-    ],
+    mixins: [transitionMixins, pageScrollMixin()],
 
     props: {
       ...props,
     },
 
-    emits: [
-      'visible-change',
-      'leaved',
-      'update:visible',
-    ],
+    emits: ['visible-change', 'leaved', 'update:visible'],
 
     data() {
       return {
@@ -106,7 +113,7 @@ export default {
         if (val === undefined || val === null) return;
         this.updateVisible(val);
       },
-      'placement'(v) {
+      placement(v) {
         if (v) {
           nextTick().then(() => {
             this.computePosition();
@@ -124,9 +131,7 @@ export default {
         }
       },
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
       onScroll() {
         if (this.realVisible) {
@@ -152,9 +157,9 @@ export default {
       getToward(placement) {
         const horizontal = ['top', 'bottom'];
         const vertical = ['left', 'right'];
-        const isHorizontal = horizontal.find(item => placement.includes(item));
-        const isVertical = vertical.find(item => placement.includes(item));
-        const isBase = [...horizontal, ...vertical].find(item => item === placement);
+        const isHorizontal = horizontal.find((item) => placement.includes(item));
+        const isVertical = vertical.find((item) => placement.includes(item));
+        const isBase = [...horizontal, ...vertical].find((item) => item === placement);
         const isEnd = placement.includes('end');
         return {
           isHorizontal,
@@ -248,25 +253,11 @@ export default {
               triggerRect = triggerChildRect;
             }
 
-            const {
-              isHorizontal,
-              isVertical,
-            } = this.getToward(placement);
-            const {
-              width: contentWidth,
-              height: contentHeight,
-            } = contentRect;
-            const {
-              left: triggerLeft,
-              top: triggerTop,
-              right: triggerRight,
-              bottom: triggerBottom,
-            } = triggerRect;
+            const { isHorizontal, isVertical } = this.getToward(placement);
+            const { width: contentWidth, height: contentHeight } = contentRect;
+            const { left: triggerLeft, top: triggerTop, right: triggerRight, bottom: triggerBottom } = triggerRect;
             let canPlace = true;
-            const {
-              windowWidth,
-              windowHeight,
-            } = getWindowInfo();
+            const { windowWidth, windowHeight } = getWindowInfo();
             let finalPlacement = placement;
             if (isHorizontal) {
               if (placement.startsWith('top')) {
@@ -304,9 +295,7 @@ export default {
       },
       async computePosition() {
         const { placement } = this;
-        const innerPlacement = placement
-          .replace(/-(left|top)$/, '-start')
-          .replace(/-(right|bottom)$/, '-end');
+        const innerPlacement = placement.replace(/-(left|top)$/, '-start').replace(/-(right|bottom)$/, '-end');
         // 此处必须要设置，否则计算的位置会出错
         this.innerPlacement = innerPlacement;
 
@@ -329,10 +318,7 @@ export default {
           // TODO 优化：滚动时可能导致箭头闪烁
           this.innerPlacement = finalPlacement;
 
-          const {
-            scrollTop = 0,
-            scrollLeft = 0,
-          } = viewportOffset || {};
+          const { scrollTop = 0, scrollLeft = 0 } = viewportOffset || {};
           const top = isFixed ? basePos.top : basePos.top + scrollTop;
           const left = isFixed ? basePos.left : basePos.left + scrollLeft;
           const style = `top:${Math.max(top, 0)}px;left:${Math.max(left, 0)}px;`;
@@ -345,7 +331,5 @@ export default {
     },
   }),
 };
-
-
 </script>
 <style scoped src="./popover.css"></style>

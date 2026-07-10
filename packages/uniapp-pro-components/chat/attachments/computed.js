@@ -22,7 +22,6 @@ export function getImageMode(imageProps) {
   return imageProps && imageProps.mode ? imageProps.mode : 'scaleToFill';
 }
 
-
 export function getFileTypeClass(inChat, files) {
   // 如果 inChat 不为 true，返回空字符串
   if (!inChat) {
@@ -46,4 +45,3 @@ export function getFileTypeClass(inChat, files) {
   // 根据判断结果返回相应的类名
   return allImages ? 'all_images' : 'all_files';
 }
-

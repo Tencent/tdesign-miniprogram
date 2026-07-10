@@ -150,6 +150,12 @@
           "scene": null
         },
         {
+          "name": "layout",
+          "pathName": "pages/col/col",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "config-provider",
           "pathName": "pages/config-provider/config-provider",
           "query": "",
@@ -342,6 +348,12 @@
           "scene": null
         },
         {
+          "name": "segmented",
+          "pathName": "pages/segmented/segmented",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "slider",
           "pathName": "pages/slider/slider",
           "query": "",
@@ -402,6 +414,12 @@
           "scene": null
         },
         {
+          "name": "table",
+          "pathName": "pages/table/table",
+          "query": "",
+          "scene": null
+        },
+        {
           "name": "tabs",
           "pathName": "pages/tabs/tabs",
           "query": "",
@@ -428,6 +446,12 @@
         {
           "name": "tree-select",
           "pathName": "pages/tree-select/tree-select",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "typography",
+          "pathName": "pages/paragraph/paragraph",
           "query": "",
           "scene": null
         },

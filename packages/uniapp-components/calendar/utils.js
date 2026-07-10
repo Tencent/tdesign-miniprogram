@@ -10,7 +10,7 @@ export function getYearByOffset(date, offset) {
   return _date;
 }
 
-export const getPrevMonth = date => getMonthByOffset(date, -1);
-export const getNextMonth = date => getMonthByOffset(date, 1);
-export const getPrevYear = date => getYearByOffset(date, -1);
-export const getNextYear = date => getYearByOffset(date, 1);
+export const getPrevMonth = (date) => getMonthByOffset(date, -1);
+export const getNextMonth = (date) => getMonthByOffset(date, 1);
+export const getPrevYear = (date) => getYearByOffset(date, -1);
+export const getNextYear = (date) => getYearByOffset(date, 1);

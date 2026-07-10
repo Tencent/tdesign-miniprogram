@@ -1,5 +1,6 @@
 <wxs src="../common/utils.wxs" module="_" />
 <view
+  wx:if="{{!(isSpecialScene && isHiddenInSpecialScene)}}"
   class="{{_.cls(classPrefix, [['fixed', fixed]])}} {{visibleClass}} class {{prefix}}-class"
   style="{{_._style([boxStyle, style, customStyle])}}"
 >

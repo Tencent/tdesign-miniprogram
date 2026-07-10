@@ -109,7 +109,7 @@ title | String | - | 当前步骤的标题内容，支持插槽：slot="title-{{
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-guide-body-color | @text-color-secondary | -
 --td-guide-dialog-body-font | @font-body-large | -

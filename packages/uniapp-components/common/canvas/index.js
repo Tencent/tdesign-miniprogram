@@ -1,7 +1,4 @@
-export async function loadImage({
-  canvas,
-  src,
-}) {
+export async function loadImage({ canvas, src }) {
   let result = null;
   if (!src || !canvas) {
     return result;
@@ -23,7 +20,7 @@ export async function loadImage({
   }
   // #endif
 
-  // #ifdef APP-PLUS
+  // #ifdef APP
   result = new Promise((resolve) => {
     uni.getImageInfo({
       src,

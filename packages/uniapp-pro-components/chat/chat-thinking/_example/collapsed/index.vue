@@ -94,7 +94,7 @@ export default {
 </script>
 <style>
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx;
 }
 </style>

@@ -1,9 +1,6 @@
 <template>
   <view
-    :class="[
-      classPrefix + '__wrapper',
-      tClass
-    ]"
+    :class="[classPrefix + '__wrapper', tClass]"
     :style="'' + tools._style([utils.getStyles(isShow), customStyle, innerStyle])"
   >
     <t-badge
@@ -22,10 +19,7 @@
       :t-class-count="badgeProps.tClassCount"
     >
       <view
-        :class="[
-          utils.getClass(classPrefix, dataSize || 'medium', dataShape, dataBordered),
-          tClassImage
-        ]"
+        :class="[utils.getClass(classPrefix, dataSize || 'medium', dataShape, dataBordered), tClassImage]"
         :style="'' + utils.getSize(dataSize, windowWidth)"
         :aria-label="ariaLabel || alt || '头像'"
         :aria-role="ariaRole || 'img'"
@@ -36,7 +30,7 @@
           :t-class="prefix + '-image ' + classPrefix + '__image'"
           :t-class-load="tClassAlt"
           :custom-style="imageCustomStyle"
-          style="width: 100%;height: 100%;"
+          style="width: 100%; height: 100%"
           :src="image"
           :mode="(imageProps && imageProps.mode) || 'aspectFill'"
           :lazy="(imageProps && imageProps.lazy) || false"
@@ -46,12 +40,17 @@
           :error="alt || 'default'"
           @error="onLoadError"
         />
-        <block
-          v-else-if="iconName || tools.isNoEmptyObj(iconData)"
-          name="icon"
-        >
+        <block v-else-if="iconName || tools.isNoEmptyObj(iconData)" name="icon">
           <t-icon
-            :t-class="classPrefix + '__icon ' + classPrefix + '__icon--' + (iconData.activeIdx == iconData.index ? 'active ' : ' ') + tClassIcon"
+            :custom-style="iconCustomStyle"
+            :t-class="
+              classPrefix +
+              '__icon ' +
+              classPrefix +
+              '__icon--' +
+              (iconData.activeIdx == iconData.index ? 'active ' : ' ') +
+              tClassIcon
+            "
             :prefix="iconData.prefix"
             :name="iconName || iconData.name"
             :size="iconData.size"
@@ -59,17 +58,10 @@
             :aria-hidden="!!iconData.ariaHidden"
             :aria-label="iconData.ariaLabel"
             :aria-role="iconData.ariaRole"
-            :custom-style="iconCustomStyle"
             @click="iconData.click || ''"
           />
         </block>
-        <view
-          v-else
-          :class="[
-            classPrefix + '__text ',
-            tClassContent
-          ]"
-        >
+        <view v-else :class="[classPrefix + '__text ', tClassContent]">
           <slot />
         </view>
       </view>
@@ -77,20 +69,19 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
 import TBadge from '../badge/badge';
-import TImage from '../image/image';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import avatarProps from './props';
+import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
 import { setIcon, systemInfo, addUnit } from '../common/utils';
 import tools from '../common/utils.wxs';
-import * as utils from './computed.js';
-import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import TIcon from '../icon/icon';
+import TImage from '../image/image';
 
+import * as utils from './computed.js';
+import avatarProps from './props';
 
 const name = `${prefix}-avatar`;
-
 
 export default {
   components: {
@@ -136,16 +127,14 @@ export default {
     computed: {
       iconCustomStyle() {
         const fontSize = {
-          small: 'var(--td-avatar-icon-small-font-size, 20px)',
-          medium: 'var(--td-avatar-icon-medium-font-size, 24px)',
-          large: 'var(--td-avatar-icon-large-font-size, 32px)',
+          small: 'var(--td-avatar-icon-small-font-size, 40rpx)',
+          medium: 'var(--td-avatar-icon-medium-font-size, 48rpx)',
+          large: 'var(--td-avatar-icon-large-font-size, 64rpx)',
         };
 
         return tools._style([
           {
-            fontSize: this.iconData.size
-              ? addUnit(this.iconData.size)
-              : fontSize[this.dataSize],
+            fontSize: this.iconData.size ? addUnit(this.iconData.size) : fontSize[this.dataSize],
           },
           this.iconData.style || '',
         ]);
@@ -171,11 +160,8 @@ export default {
         },
         immediate: true,
       },
-
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
       innerAfterLinked() {
         this.dataShape = this.shape || this[RELATION_MAP.Avatar]?.shape || 'circle';
@@ -197,6 +183,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./avatar.css"></style>

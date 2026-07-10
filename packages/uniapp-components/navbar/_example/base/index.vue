@@ -1,21 +1,11 @@
 <template>
   <view>
     <view class="block">
-      <t-navbar
-        title="标题文字"
-        t-class-title="nav-title"
-        :fixed="false"
-      />
+      <t-navbar title="标题文字" t-class-title="nav-title" :fixed="false" />
     </view>
 
     <view class="block">
-      <t-navbar
-        class="block"
-        title="标题文字"
-        left-arrow
-        :fixed="false"
-        @go-back="handleBack"
-      />
+      <t-navbar class="block" title="标题文字" left-arrow :fixed="false" @go-back="handleBack" />
     </view>
   </view>
 </template>
@@ -37,5 +27,4 @@ export default {
   },
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>

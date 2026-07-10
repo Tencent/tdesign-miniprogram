@@ -17,9 +17,19 @@ export interface TdTabBarItemProps {
    */
   icon?: string | object;
   /**
+   * 页面跳转类型
+   * @default redirectTo
+   */
+  linkType?: 'redirectTo' | 'switchTab' | 'reLaunch' | 'navigateTo';
+  /**
    * 二级菜单
    */
   subTabBar?: SubTabBarItem[];
+  /**
+   * 点击后跳转的页面路径, 需要以 `/` 开头
+   * @default ''
+   */
+  url?: string;
   /**
    * 标识符
    */

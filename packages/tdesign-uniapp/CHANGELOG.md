@@ -5,6 +5,76 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.10.2 `2026-07-07`
+
+### 🚀 Features
+
+- `Navbar`: 新增 `isHiddenInSpecialScene` 属性，表示是否销毁导航栏，仅场景值为 1433、1434、1177、1175 时有效 @novlan1 ([#4546](https://github.com/Tencent/tdesign-miniprogram/pull/4546))
+- `TabBar`: `TabBarItem` 新增 `url` 和 `linkType` 属性 @novlan1 ([#4546](https://github.com/Tencent/tdesign-miniprogram/pull/4546))
+
+### 🐞 Bug Fixes
+
+- `Form`: 修复表单图标在小程序下展示大小问题 @novlan1 ([#4536](https://github.com/Tencent/tdesign-miniprogram/pull/4536))
+- `Switch`: 修复 `TdSwitchProps` 泛型参数导致 TypeScript 类型报错的问题 @novlan1 ([#4553](https://github.com/Tencent/tdesign-miniprogram/pull/4553))
+- `Textarea`: 修复 H5 端设置 `autosize` 后，文本内容超过 `maxHeight` 时无法滚动问题 @novlan1 ([#4536](https://github.com/Tencent/tdesign-miniprogram/pull/4536))
+- `Indexes`: 修复点击右侧索引栏时，`click` 与 `touchend` 事件双重触发导致的锚点抖动问题 @novlan1 ([#4548](https://github.com/Tencent/tdesign-miniprogram/pull/4548))
+
+## 🌈 0.10.1 `2026-06-24`
+
+### 🐞 Bug Fixes
+
+- `Button`: ⚠️ `--td-button-xx-font-size` 系列变更为 `--td-button-xx-font`；⚠️ 移除 `--td-button-font-weight`，请改用 `--td-button-xx-font`，或者[组件库级别的 css var ](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/style/theme/_font.less)调整字号、行高、字重、字体等文本样式 @liweijie0812 ([#4501](https://github.com/Tencent/tdesign-miniprogram/pull/4501))
+- `ColorPicker`: 修复 H5 下预设色彩排列问题 @novlan1 ([#4521](https://github.com/Tencent/tdesign-miniprogram/pull/4521))
+- `ImageViewer`: 修复重复打开时缩放状态未重置的问题 @novlan1 ([#4514](https://github.com/Tencent/tdesign-miniprogram/pull/4514))
+- `Swiper`: 修复非小程序下找不到 `getRelationNodes` 的编译报错问题 @novlan1 ([#4514](https://github.com/Tencent/tdesign-miniprogram/pull/4514))
+- `TabBar`: 修复 `shape` 为 `round` 时占位高度未包含底部安全区的问题 @novlan1 ([#4521](https://github.com/Tencent/tdesign-miniprogram/pull/4521))
+
+## 🌈 0.10.0 `2026-06-15`
+
+### 🚀 Features
+
+- `Typography`: 新增 `Typography` 排版组件 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Cascader`: 新增 `filterable`、`filter` 和 `filter-placeholder` 属性，支持搜索功能 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+
+### 🐞 Bug Fixes
+
+- `Image`: 修复鸿蒙下图片无法显示问题 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Message`: 修复连续点击时的报错问题 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Search`: 补全 `update:value` 事件声明，修复 `v-model:value` 语法糖告警 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Stepper`: 调整手动输入逻辑，输入时仅过滤非法字符，范围校验&赋值移至失焦 @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+- `Upload`: 修复禁用态文件样式错误（禁用态下移除操作按钮） @novlan1 ([#4511](https://github.com/Tencent/tdesign-miniprogram/pull/4511))
+
+## 🌈 0.9.1 `2026-06-12`
+
+### 🚀 Features
+
+- `ActionSheet`: 新增 `preventScrollThrough` 属性 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `Form`: 新增 `contentAlign` 属性，支持配置表单内容对齐方式 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `ImageViewer`: 新增 `maxZoom` 属性，支持缩放 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `Search`: 支持 `v-model` 语法糖写法 @Kriac ([#4459](https://github.com/Tencent/tdesign-miniprogram/pull/4459))
+
+### 🐞 Bug Fixes
+
+- `Button`: 修复图标尺寸变量错误问题 @novlan1 ([#4506](https://github.com/Tencent/tdesign-miniprogram/pull/4506))
+- `Input`: 将 `change` 事件放在值更新之后 @Kriac ([#4443](https://github.com/Tencent/tdesign-miniprogram/pull/4443))
+- `Picker`: 修复按钮自定义文案无效 @liweijie0812 ([#4480](https://github.com/Tencent/tdesign-miniprogram/pull/4480))
+- `Table`: 修复列配置中的类名选项无效的问题 @betavs ([#4500](https://github.com/Tencent/tdesign-miniprogram/pull/4500))
+- `Upload`: 修复预览图片不是当前问题 @novlan1 ([#4473](https://github.com/Tencent/tdesign-miniprogram/pull/4473))
+
+## 🌈 0.9.0 `2026-05-08`
+
+### 🚀 Features
+
+- `Table`: 新增 `Table` 表格组件 @novlan1 ([#4397](https://github.com/Tencent/tdesign-miniprogram/pull/4397))
+- `Segmented`: 新增 `Segmented` 分段控制器组件 @novlan1 ([#4413](https://github.com/Tencent/tdesign-miniprogram/pull/4413))
+
+### 🐞 Bug Fixes
+
+- `Calendar`: 修复 `type` 为 `range` 时，未滚动到目标位置的问题 @novlan1 ([#4413](https://github.com/Tencent/tdesign-miniprogram/pull/4413))
+- `DropdownMenu`: 修复 `label` 回显错误问题 @novlan1 ([#4413](https://github.com/Tencent/tdesign-miniprogram/pull/4413))
+- `Input`: 修复 input clearable 点击后没有及时更新双向绑定的问题 @Kriac ([#4420](https://github.com/Tencent/tdesign-miniprogram/pull/4420))
+- `TabBar`: 修复 `badgeProps` 属性中的 `color` 和 `shape` 字段无效 @liweijie0812 ([#4427](https://github.com/Tencent/tdesign-miniprogram/pull/4427))
+
 ## 🌈 0.8.1 `2026-04-09`
 
 ### 🚀 Features

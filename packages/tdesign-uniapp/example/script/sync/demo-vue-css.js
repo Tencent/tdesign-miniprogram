@@ -1,9 +1,10 @@
 // demo 中 css 纳入 vue
-const glob = require('glob');
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
 
-const { writeFileSync, readFileSync  } = require('t-comm');
+const glob = require('glob');
+
+const { writeFileSync, readFileSync } = require('t-comm');
 
 const config = {
   target: path.resolve(__dirname, '../../../tdesign'),
@@ -15,9 +16,9 @@ function parseOne(file) {
   const vuePath = path.resolve(path.dirname(file), `${filename}.vue`);
   const content = readFileSync(vuePath);
 
-  if (content.includes('@import \'./index.css\';')) {
+  if (content.includes("@import './index.css';")) {
     const sassContent = readFileSync(file);
-    const newVueContent = content.replace('@import \'./index.css\';\n', sassContent);
+    const newVueContent = content.replace("@import './index.css';\n", sassContent);
     writeFileSync(vuePath, newVueContent);
 
     if (!sassContent.trim()) {

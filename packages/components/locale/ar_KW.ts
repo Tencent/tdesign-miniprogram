@@ -29,6 +29,8 @@ export default {
   cascader: {
     title: 'العنوان',
     placeholder: 'اختر الخيارات',
+    filterPlaceholder: 'بحث',
+    empty: 'لا توجد عناصر مطابقة',
   },
   dropdownMenu: {
     reset: 'إعادة الضبط',
@@ -120,6 +122,11 @@ export default {
     skip: 'تخطي',
     finish: 'أنهي',
     back: 'العودة',
+  },
+  typography: {
+    expandText: 'توسيع',
+    collapseText: 'طي',
+    copiedText: 'النسخ اكتمل',
   },
   qrcode: {
     expiredText: 'منتهي الصلاحية',

@@ -689,6 +689,5 @@ export default {
 };
 </script>
 
-<style scoped>
-@import './chat-record.css';
+<style scoped src="./chat-record.css">
 </style>

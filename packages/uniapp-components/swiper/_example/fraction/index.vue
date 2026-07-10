@@ -15,7 +15,13 @@
 <script>
 import TSwiper from '@tdesign/uniapp/swiper/swiper.vue';
 const imageCdn = 'https://tdesign.gtimg.com/mobile/demos';
-const swiperList = [`${imageCdn}/swiper1.png`, `${imageCdn}/swiper2.png`, `${imageCdn}/swiper1.png`, `${imageCdn}/swiper2.png`, `${imageCdn}/swiper1.png`];
+const swiperList = [
+  `${imageCdn}/swiper1.png`,
+  `${imageCdn}/swiper2.png`,
+  `${imageCdn}/swiper1.png`,
+  `${imageCdn}/swiper2.png`,
+  `${imageCdn}/swiper1.png`,
+];
 export default {
   components: {
     TSwiper,
@@ -39,7 +45,7 @@ export default {
 </script>
 <style>
 .img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 </style>

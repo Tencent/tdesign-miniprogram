@@ -1,9 +1,9 @@
 {
   "name": "@tdesign/uniapp-chat",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "id": "tdesign-uniapp-chat",
   "title": "tdesign-uniapp-chat",
-  "description": "TDesign Chat Component for UniApp",
+  "description": "TDesign Chat Component for Uniapp",
   "author": "tdesign",
   "license": "MIT",
   "keywords": [
@@ -15,6 +15,10 @@
   "typings": "./dist/types/index.d.ts",
   "types": "./dist/types/index.d.ts",
   "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "default": "./dist/index.js"
+    },
     "./*": "./dist/*",
     "./global": {
       "types": "./global.d.ts"
@@ -72,6 +76,7 @@
   },
   "files": [
     "dist",
+    "script",
     "global.d.ts",
     "LICENSE",
     "README.md",
@@ -85,6 +90,7 @@
     "url": "git+https://github.com/Tencent/tdesign-miniprogram.git",
     "directory": "packages/tdesign-uniapp-chat"
   },
+  "homepage": "https://tdesign.tencent.com/uniapp-chat",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -94,7 +100,7 @@
     "site:dev": "pnpm --filter=\"./site\" run dev",
     "site:preview": "pnpm --filter=\"./site\" run site:preview",
     "type-check": "vue-tsc --noEmit",
-    "postinstall": "node dist/script/postinstall.js || true"
+    "postinstall": "node script/postinstall.js || true"
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:",
@@ -117,7 +123,7 @@
     "eslint-plugin-import": "catalog:",
     "eslint-plugin-jest": "catalog:",
     "eslint-plugin-light": "catalog:",
-    "eslint-plugin-prettier": "4.2.1",
+    "eslint-plugin-prettier": "catalog:",
     "eslint-plugin-react": "catalog:",
     "eslint-plugin-react-hooks": "catalog:",
     "eslint-plugin-tailwindcss": "catalog:",
@@ -132,7 +138,6 @@
     "stylelint-config-common": "catalog:",
     "stylelint-config-standard": "catalog:",
     "stylelint-less": "catalog:",
-    "stylelint-scss": "catalog:",
     "t-comm": "catalog:",
     "tslib": "catalog:",
     "typescript": "catalog:",

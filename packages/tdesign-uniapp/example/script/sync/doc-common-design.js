@@ -1,9 +1,10 @@
 // 拷贝组件设计指南
 
-const glob = require('glob');
 const path = require('path');
 
-const { writeFileSync, readFileSync  } = require('t-comm');
+const glob = require('glob');
+
+const { writeFileSync, readFileSync } = require('t-comm');
 
 const config = {
   target: path.resolve(__dirname, '../../../site/docs/design'),

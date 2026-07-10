@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="classPrefix + ' ' + tClass"
-    :style="'' + tools._style([customStyle])"
-  >
+  <view :class="classPrefix + ' ' + tClass" :style="'' + tools._style([customStyle])">
     <swiper
       :class="classPrefix + '-host'"
       :autoplay="autoplay"
@@ -24,9 +21,10 @@
         v-for="(item, index) in list"
         :key="index"
         :class="
-          '' + tools.cls(classPrefix + '__item', [
+          '' +
+          tools.cls(classPrefix + '__item', [
             ['preview', isPrev(navCurrent, index, list)],
-            ['next', isNext(navCurrent, index, list)]
+            ['next', isNext(navCurrent, index, list)],
           ])
         "
         :data-index="index"
@@ -67,14 +65,15 @@
   </view>
 </template>
 <script>
-import TSwiperNav from '../swiper-nav/swiper-nav';
-import TImage from '../image/image';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import tools from '../common/utils.wxs';
-import { isPrev, isNext, getImageClass } from './computed.js';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import tools from '../common/utils.wxs';
+import TImage from '../image/image';
+import TSwiperNav from '../swiper-nav/swiper-nav';
+
+import { isPrev, isNext, getImageClass } from './computed.js';
+import props from './props';
 
 const name = `${prefix}-swiper`;
 
@@ -89,17 +88,18 @@ export default {
       multipleSlots: true,
       styleIsolation: 'shared',
     },
-    externalClasses: [`${prefix}-class`, `${prefix}-class-nav`, `${prefix}-class-image`, `${prefix}-class-prev-image`, `${prefix}-class-next-image`],
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-nav`,
+      `${prefix}-class-image`,
+      `${prefix}-class-prev-image`,
+      `${prefix}-class-next-image`,
+    ],
     mixins: [ParentMixin(RELATION_MAP.SwiperNav)],
     props: {
       ...props,
     },
-    emits: [
-      'click',
-      'change',
-      'animationfinish',
-      'image-load',
-    ],
+    emits: ['click', 'change', 'animationfinish', 'image-load'],
     data() {
       return {
         prefix,
@@ -107,11 +107,6 @@ export default {
         tools,
         navCurrent: 0,
       };
-    },
-    watch: {
-      navCurrent(t) {
-        this.updateNav(t);
-      },
     },
 
     mounted() {
@@ -122,18 +117,6 @@ export default {
       isPrev,
       isNext,
       getImageClass,
-
-      updateNav(currentValue) {
-        if (this.navigation) return;
-        const $nav = this.getRelationNodes('./swiper-nav')?.[0];
-        if (!$nav) return;
-        const { direction, paginationPosition, list } = this;
-
-        this.current = currentValue;
-        this.total = list.length;
-        this.direction = direction;
-        this.paginationPosition = paginationPosition;
-      },
 
       onTap(e, dataset) {
         const { index } = dataset;
@@ -188,6 +171,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./swiper.css"></style>

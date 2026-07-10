@@ -5,17 +5,8 @@
     <t-attachments items="{{items}}" bind:fileClick="onFileClick" bind:remove="onRemove" bind:add="onAdd" />
   </view> -->
 
-    <view
-      v-for="(item, index) in items"
-      :key="index"
-      class="chat-example-block"
-    >
-      <t-attachments
-        :items="[item]"
-        @fileClick="onFileClick"
-        @remove="onRemove"
-        @add="onAdd"
-      />
+    <view v-for="(item, index) in items" :key="index" class="chat-example-block">
+      <t-attachments :items="[item]" @fileClick="onFileClick" @remove="onRemove" @add="onAdd" />
     </view>
   </view>
 </template>
@@ -122,15 +113,14 @@ export default {
 </script>
 <style>
 .chat-example {
-    padding: 32rpx;
-    box-sizing: border-box;
-    background-color: var(--td-bg-color-container);
+  padding: 32rpx;
+  box-sizing: border-box;
+  background-color: var(--td-bg-color-container);
 }
 
 .chat-example-block {
-    display: inline-flex;
-    width: 336rpx;
-    margin-bottom: 26rpx;
+  display: inline-flex;
+  width: 336rpx;
+  margin-bottom: 26rpx;
 }
-
 </style>

@@ -1,14 +1,7 @@
 <template>
   <view>
-    <t-avatar
-      t-class="avatar-example"
-      :image="image"
-    />
-    <t-avatar
-      t-class="avatar-example"
-      shape="round"
-      :image="image"
-    />
+    <t-avatar t-class="avatar-example" :image="image" />
+    <t-avatar t-class="avatar-example" shape="round" :image="image" />
   </view>
 </template>
 
@@ -32,6 +25,6 @@ export default {
 </script>
 <style>
 :deep(.avatar-example) {
-    margin-right: 64rpx;
+  margin-right: 64rpx;
 }
 </style>

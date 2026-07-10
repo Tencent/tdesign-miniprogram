@@ -14,10 +14,11 @@ image-props | Object | - | Typescript: `ImageProps`，[Image API Documents](./im
 images | Array | [] | Typescript: `Array<string>` | N
 initial-index | Number | 0 | Typescript: `Number` | N
 lazy | Boolean | true | \- | N
+max-zoom | Number | 3 | \- | N
 show-index | Boolean | false | \- | N
 using-custom-navbar | Boolean | false | \- | N
-visible | Boolean | false | hide or show image viewer。`v-model:visible` is supported | N
-default-visible | Boolean | false | hide or show image viewer。uncontrolled property | N
+visible | Boolean | false | hide or show image viewer。`v-model:visible` is supported。Typescript: `boolean \| null` | N
+default-visible | Boolean | false | hide or show image viewer。uncontrolled property。Typescript: `boolean \| null` | N
 
 ### ImageViewer Events
 
@@ -37,7 +38,7 @@ delete-btn | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-image-viewer-close-margin-left | @spacer-1 | -
 --td-image-viewer-delete-margin-right | @spacer-1 | -

@@ -1,28 +1,27 @@
 <template>
   <view>
-    <view
-      :style="'' + tools._style([customStyle])"
-      :class="classPrefix + ' ' + tClass"
-    >
+    <view :style="'' + tools._style([customStyle])" :class="classPrefix + ' ' + tClass">
       <view
         :class="
-          classPrefix +'__input-box ' +
-            prefix + '-' +(focus ? 'is-focused' : 'not-focused') +
-            ' ' + classPrefix + '__input-box--' + (center ? 'center' : '') +
-            ' ' + classPrefix + '__input-box--' + shape +
-            ' ' + tClassInputContainer
+          classPrefix +
+          '__input-box ' +
+          prefix +
+          '-' +
+          (focus ? 'is-focused' : 'not-focused') +
+          ' ' +
+          classPrefix +
+          '__input-box--' +
+          (center ? 'center' : '') +
+          ' ' +
+          classPrefix +
+          '__input-box--' +
+          shape +
+          ' ' +
+          tClassInputContainer
         "
       >
-        <t-icon
-          v-if="leftIcon"
-          :name="leftIcon"
-          :t-class="prefix + '-icon ' + tClassLeft"
-          :aria-hidden="true"
-        />
-        <slot
-          v-else
-          name="left-icon"
-        />
+        <t-icon v-if="leftIcon" :name="leftIcon" :t-class="prefix + '-icon ' + tClassLeft" :aria-hidden="true" />
+        <slot v-else name="left-icon" />
         <input
           :type="type"
           name="input"
@@ -43,12 +42,20 @@
           :cursor-color="cursorColor"
           :placeholder="placeholder"
           :placeholder-style="placeholderStyle"
-          :placeholder-class="placeholderClass + ' ' + classPrefix + '__placeholder ' + classPrefix + '__placeholder--' + (center ? 'center' : 'normal')"
+          :placeholder-class="
+            placeholderClass +
+            ' ' +
+            classPrefix +
+            '__placeholder ' +
+            classPrefix +
+            '__placeholder--' +
+            (center ? 'center' : 'normal')
+          "
           @input="onInput"
           @focus="onFocus"
           @blur="onBlur"
           @confirm="onConfirm"
-        >
+        />
         <view
           v-if="dataValue !== '' && clearable && showClearIcon"
           :class="classPrefix + '__clear hotspot-expanded ' + tClassClear"
@@ -56,11 +63,7 @@
           aria-label="清除"
           @touchstart.stop.prevent="handleClear"
         >
-          <t-icon
-            name="close-circle-filled"
-            size="inherit"
-            color="inherit"
-          />
+          <t-icon name="close-circle-filled" size="inherit" color="inherit" />
         </view>
       </view>
       <view
@@ -71,13 +74,10 @@
       >
         {{ action }}
       </view>
-      <slot
-        v-else
-        name="action"
-      />
+      <slot v-else name="action" />
     </view>
     <view
-      v-if="isShowResultList && !isSelected"
+      v-if="isSearching && resultList.length > 0 && !isSelected"
       :class="classPrefix + '__result-list'"
       aria-role="listbox"
     >
@@ -90,30 +90,27 @@
         aria-role="option"
         @click="(e) => onSelectOption(e, { index })"
       >
-        <template
-          #title
-        >
-          <rich-text
-            :nodes="highLight(item, dataValue)"
-          />
+        <template #title>
+          <rich-text :nodes="highLight(item, dataValue)" />
         </template>
       </t-cell>
     </view>
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
 import TCell from '../cell/cell';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+
 import { getCharacterLength, nextTick } from '../common/utils';
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+
 import { highLight } from './computed.js';
+import props from './props';
 // import { getInnerMaxLen } from '../input/utils';
 
 const name = `${prefix}-search`;
-
 
 export default {
   components: {
@@ -136,36 +133,27 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-    ],
+    emits: ['update:value'],
     data() {
       return {
         classPrefix: name,
         prefix,
-        isShowResultList: false,
         isSelected: false,
+        isSearching: false,
         showClearIcon: false,
         tools,
 
         dataValue: this.value,
-      // innerMaxLen: -1,
-      // rawValue: '',
+        // innerMaxLen: -1,
+        // rawValue: '',
       };
     },
     watch: {
       resultList: {
         handler(val) {
           const { isSelected } = this;
-          if (val.length) {
-            if (isSelected) {
-              // 已选择
-              this.isShowResultList = false;
-              this.isSelected = false;
-            } else {
-              this.isShowResultList = true;
-            }
-          } else {
-            this.isShowResultList = false;
+          if (val.length && isSelected) {
+            this.isSelected = false;
           }
         },
         immediate: true,
@@ -180,7 +168,7 @@ export default {
 
       dataValue: {
         handler() {
-        // this.updateInnerMaxLen();
+          // this.updateInnerMaxLen();
           this.updateClearIconVisible();
         },
       },
@@ -189,8 +177,8 @@ export default {
       disabled: 'updateClearIconVisible',
       readonly: 'updateClearIconVisible',
 
-    // maxcharacter: 'updateInnerMaxLen',
-    // maxlength: 'updateInnerMaxLen',
+      // maxcharacter: 'updateInnerMaxLen',
+      // maxlength: 'updateInnerMaxLen',
     },
     mounted() {
       this.updateClearIconVisible();
@@ -205,7 +193,10 @@ export default {
 
         this.showClearIcon = value || String(clearTrigger) === 'always';
       },
-
+      emitChange(data) {
+        this.$emit('update:value', data.value);
+        this.$emit('change', data);
+      },
       onInput(e) {
         let { value } = e.detail;
         // this.rawValue = value;
@@ -218,19 +209,19 @@ export default {
           value = characters;
         }
 
-
         nextTick().then(() => {
           this.dataValue = value;
-          this.$emit('change', {
+          this.emitChange({
             value,
             trigger: 'input-change',
           });
         });
-      // this.updateInnerMaxLen();
+        // this.updateInnerMaxLen();
       },
 
       onFocus(e) {
         const { value } = e.detail;
+        this.isSearching = true;
         this.updateClearIconVisible(true);
         this.$emit('focus', { value });
       },
@@ -243,11 +234,12 @@ export default {
 
       handleClear() {
         this.dataValue = '';
-        this.$emit('clear', { value: '' });
-        this.$emit('change', {
+        this.isSearching = false;
+        this.emitChange({
           value: '',
           trigger: 'clear',
         });
+        this.$emit('clear', { value: '' });
       },
 
       onConfirm(e) {
@@ -256,6 +248,7 @@ export default {
       },
 
       onActionClick() {
+        this.isSearching = false;
         this.$emit('action-click');
       },
 
@@ -263,37 +256,34 @@ export default {
         const item = this.resultList[index];
         this.dataValue = item;
         this.isSelected = true;
-
-        this.$emit('change', {
+        this.emitChange({
           value: item,
           trigger: 'option-click',
         });
       },
       highLight,
-    // updateInnerMaxLen() {
-    //   // this.innerMaxLen = this.getInnerMaxLen();
-    // },
-    // getInnerMaxLen() {
-    //   const {
-    //     maxcharacter,
-    //     maxlength,
-    //     dataValue,
-    //     rawValue,
-    //     count,
-    //   } = this;
-    //   return getInnerMaxLen({
-    //     allowInputOverMax: false,
-    //     maxcharacter,
-    //     maxlength,
-    //     dataValue,
-    //     rawValue,
-    //     count,
-    //   });
-    // },
+      // updateInnerMaxLen() {
+      //   // this.innerMaxLen = this.getInnerMaxLen();
+      // },
+      // getInnerMaxLen() {
+      //   const {
+      //     maxcharacter,
+      //     maxlength,
+      //     dataValue,
+      //     rawValue,
+      //     count,
+      //   } = this;
+      //   return getInnerMaxLen({
+      //     allowInputOverMax: false,
+      //     maxcharacter,
+      //     maxlength,
+      //     dataValue,
+      //     rawValue,
+      //     count,
+      //   });
+      // },
     },
   }),
 };
-
-
 </script>
 <style scoped src="./search.css"></style>

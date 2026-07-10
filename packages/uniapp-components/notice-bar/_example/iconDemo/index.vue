@@ -1,13 +1,7 @@
 <template>
   <view>
-    <t-notice-bar
-      :visible="visible"
-      :prefix-icon="false"
-      content="提示文字描述提示文字描述提示文字描述"
-    >
-      <template
-        #prefix-icon
-      >
+    <t-notice-bar :visible="visible" :prefix-icon="false" content="提示文字描述提示文字描述提示文字描述">
+      <template #prefix-icon>
         <view>
           <t-icon name="error-circle-filled" />
         </view>
@@ -17,8 +11,8 @@
 </template>
 
 <script>
-import TNoticeBar from '@tdesign/uniapp/notice-bar/notice-bar.vue';
 import TIcon from '@tdesign/uniapp/icon/icon.vue';
+import TNoticeBar from '@tdesign/uniapp/notice-bar/notice-bar.vue';
 export default {
   components: {
     TNoticeBar,
@@ -33,5 +27,4 @@ export default {
   methods: {},
 };
 </script>
-<style>
-</style>
+<style></style>

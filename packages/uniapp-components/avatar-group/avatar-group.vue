@@ -1,17 +1,10 @@
 <template>
-  <view
-    :style="'' + tools._style([customStyle])"
-    :class="className"
-  >
+  <view :style="'' + tools._style([customStyle])" :class="className">
     <slot />
     <view :class="classPrefix + '__collapse--slot'">
       <slot name="collapse-avatar" />
     </view>
-    <view
-      v-if="max && max < length"
-      :class="classPrefix + '__collapse--default'"
-      @click="onCollapsedItemClick"
-    >
+    <view v-if="max && max < length" :class="classPrefix + '__collapse--default'" @click="onCollapsedItemClick">
       <t-avatar
         :t-class-image="prefix + '-avatar--border ' + prefix + '-avatar--border-' + size + ' ' + tClassImage"
         :t-class-content="tClassContent"
@@ -27,17 +20,15 @@
 </template>
 <script>
 import TAvatar from '../avatar/avatar';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import avatarGroupProps from './props';
-
-import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import tools from '../common/utils.wxs';
 
+import avatarGroupProps from './props';
 
 const name = `${prefix}-avatar-group`;
 const AVATAR_GROUP_INIT_Z_INDEX = 50;
-
 
 export default {
   components: {
@@ -48,11 +39,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-content`,
-      `${prefix}-class-image`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-content`, `${prefix}-class-image`],
     mixins: [ParentMixin(RELATION_MAP.Avatar)],
     props: {
       ...avatarGroupProps,

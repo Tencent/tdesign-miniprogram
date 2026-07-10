@@ -7,11 +7,7 @@
       content="提示文字描述提示文字描述提示文字描述提示文字描述文"
     />
 
-    <t-notice-bar
-      :visible="visible"
-      :marquee="marquee2"
-      content="提示文字描述提示文字描述提示文字描述提示文字描述文"
-    />
+    <t-notice-bar :visible="visible" :marquee="marquee2" content="提示文字描述提示文字描述提示文字描述提示文字描述文" />
 
     <t-notice-bar
       :visible="true"
@@ -54,5 +50,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

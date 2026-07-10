@@ -1,10 +1,7 @@
 <template>
   <view
     :style="'' + tools._style([customStyle])"
-    :class="'' + tools.cls(classPrefix, [
-      ['split', split],
-      ['crowded', crowded], shape]
-    ) + ' ' + tClass"
+    :class="'' + tools.cls(classPrefix, [['split', split], ['crowded', crowded], shape]) + ' ' + tClass"
   >
     <view
       :class="'' + tools.cls(classPrefix + '__content', [['checked', isChecked], theme])"
@@ -23,19 +20,18 @@
       >
         <t-badge
           v-if="badgeProps.dot || badgeProps.count"
+          :color="badgeProps.color || ''"
           :count="badgeProps.count || 0"
           :max-count="badgeProps.maxCount || 99"
           :dot="badgeProps.dot || false"
           :content="badgeProps.content || ''"
+          :shape="badgeProps.shape || 'circle'"
           :size="badgeProps.size || 'medium'"
           :visible="badgeProps.visible"
           :offset="badgeProps.offset || [0, 0]"
           :t-class-count="prefix + '-badge-class'"
         >
-          <block
-            v-if="innerIcon"
-            name="icon"
-          >
+          <block v-if="innerIcon" name="icon">
             <t-icon
               :custom-style="innerIcon.style || ''"
               :t-class="innerIcon.tClass || ''"
@@ -52,10 +48,7 @@
           <!-- 避免被 badge 组件识别为空，t-badge__content:not(:empty) -->
           <view v-else />
         </t-badge>
-        <block
-          v-else-if="!!icon"
-          name="icon"
-        >
+        <block v-else-if="!!icon" name="icon">
           <t-icon
             :custom-style="innerIcon.style || ''"
             :t-class="innerIcon.tClass || ''"
@@ -72,21 +65,13 @@
         <slot name="icon" />
       </view>
       <view :class="'' + tools.cls(classPrefix + '__text', [['small', !!icon]])">
-        <t-icon
-          v-if="hasChildren"
-          name="view-list"
-          size="32rpx"
-          :t-class="classPrefix + '__icon-menu'"
-        />
+        <t-icon v-if="hasChildren" name="view-list" size="32rpx" :t-class="classPrefix + '__icon-menu'" />
         <slot />
       </view>
     </view>
-    <view
-      v-if="hasChildren && isSpread"
-      :class="classPrefix + '__spread'"
-    >
+    <view v-if="hasChildren && isSpread" :class="classPrefix + '__spread'">
       <view
-        v-for="(child, index) in (subTabBar || [])"
+        v-for="(child, index) in subTabBar || []"
         :key="index"
         :class="classPrefix + '__spread-item'"
         :hover-class="classPrefix + '__spread-item--active'"
@@ -95,15 +80,9 @@
         aria-role="tab"
         @click="selectChild"
       >
-        <view
-          v-if="index !== 0"
-          :class="classPrefix + '__spread-item-split'"
-        />
+        <view v-if="index !== 0" :class="classPrefix + '__spread-item-split'" />
 
-        <view
-          :class="classPrefix + '__spread-item-text'"
-          :data-value="child.value || index"
-        >
+        <view :class="classPrefix + '__spread-item-text'" :data-value="child.value || index">
           {{ child.label }}
         </view>
       </view>
@@ -111,17 +90,18 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
 import TBadge from '../badge/badge';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+
+import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
 import { getRect, calcIcon } from '../common/utils';
 import tools from '../common/utils.wxs';
-import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import TIcon from '../icon/icon';
+
+import props from './props';
 
 const classPrefix = `${prefix}-tab-bar-item`;
-
 
 export default {
   components: {
@@ -192,13 +172,17 @@ export default {
         this.isSpread = true;
       },
       toggle() {
-        const { currentName, hasChildren, isSpread } = this;
+        const { currentName, hasChildren, isSpread, url, linkType } = this;
 
         if (hasChildren) {
           this.isSpread = !isSpread;
         }
         this[RELATION_MAP.TabBarItem].updateValue(currentName);
         this[RELATION_MAP.TabBarItem].changeOtherSpread(currentName);
+
+        if (url && uni[linkType]) {
+          uni[linkType]({ url });
+        }
       },
       selectChild(event) {
         const { value } = event.target.dataset;
@@ -208,7 +192,7 @@ export default {
       },
       checkActive(value) {
         const { currentName, subTabBar = [] } = this;
-        const isChecked = subTabBar?.some(item => item.value === value) || currentName === value;
+        const isChecked = subTabBar?.some((item) => item.value === value) || currentName === value;
 
         this.isChecked = isChecked;
       },

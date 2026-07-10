@@ -27,6 +27,11 @@
         "name": "Layout",
         "label": "布局",
         "path": "/pages-more/col/col"
+      },
+      {
+        "name": "Typography",
+        "label": "排版",
+        "path": "/pages-more/paragraph/paragraph"
       }
     ]
   },

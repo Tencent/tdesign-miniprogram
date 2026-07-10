@@ -142,6 +142,14 @@ export interface TdUploadProps {
     value?: 'media' | 'messageFile';
   };
   /**
+   * 组件风格。提供宫格和列表两种布局风格
+   * @default grid
+   */
+  theme?: {
+    type: StringConstructor;
+    value?: 'grid' | 'list';
+  };
+  /**
    * 拖拽位置移动时的过渡参数,`duration`单位为ms
    * @default { backTransition: true, duration: 300, timingFunction: 'ease' }
    */
@@ -151,9 +159,9 @@ export interface TdUploadProps {
   };
 }
 
-export type UploadMpConfig = ImageConfig | VideoConfig;
+export type UploadMpConfig = UploadImageConfig | UploadVideoConfig;
 
-export interface ImageConfig {
+export interface UploadImageConfig {
   count?: number;
   sizeType?: Array<SizeTypeValues>;
   sourceType?: Array<SourceTypeValues>;
@@ -163,7 +171,7 @@ export type SizeTypeValues = 'original' | 'compressed';
 
 export type SourceTypeValues = 'album' | 'camera';
 
-export interface VideoConfig {
+export interface UploadVideoConfig {
   sourceType?: Array<SourceTypeValues>;
   compressed?: boolean;
   maxDuration?: number;
@@ -179,7 +187,7 @@ export interface UploadFile {
   status: 'loading' | 'reload' | 'failed' | 'done';
 }
 
-export type MediaType = 'image' | 'video';
+export type MediaType = 'image' | 'video' | 'mix';
 
 export interface SizeLimitObj {
   size: number;

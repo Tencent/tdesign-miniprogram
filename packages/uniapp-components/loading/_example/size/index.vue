@@ -1,32 +1,14 @@
 <template>
   <view class="loading-size-demo">
-    <t-loading
-      :theme="skylineRender ? 'spinner' : 'circular'"
-      size="64rpx"
-      text="加载中..."
-      t-class="large"
-    />
+    <t-loading :theme="skylineRender ? 'spinner' : 'circular'" size="64rpx" text="加载中..." t-class="large" />
 
-    <view class="demo-desc">
-      中尺寸
-    </view>
+    <view class="demo-desc"> 中尺寸 </view>
 
-    <t-loading
-      :theme="skylineRender ? 'spinner' : 'circular'"
-      size="56rpx"
-      text="加载中..."
-      t-class="medium"
-    />
+    <t-loading :theme="skylineRender ? 'spinner' : 'circular'" size="56rpx" text="加载中..." t-class="medium" />
 
-    <view class="demo-desc">
-      小尺寸
-    </view>
+    <view class="demo-desc"> 小尺寸 </view>
 
-    <t-loading
-      :theme="skylineRender ? 'spinner' : 'circular'"
-      size="48rpx"
-      text="加载中..."
-    />
+    <t-loading :theme="skylineRender ? 'spinner' : 'circular'" size="48rpx" text="加载中..." />
   </view>
 </template>
 
@@ -39,8 +21,7 @@ export default {
   },
   mixins: [SkylineBehavior],
   data() {
-    return {
-    };
+    return {};
   },
   created() {},
   methods: {},
@@ -56,6 +37,6 @@ export default {
 }
 
 .loading-size-demo .demo-desc {
-    margin: 48rpx 0 32rpx;
+  margin: 48rpx 0 32rpx;
 }
 </style>

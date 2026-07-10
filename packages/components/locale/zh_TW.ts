@@ -16,6 +16,8 @@ export default {
   cascader: {
     title: '標題',
     placeholder: '選擇選項',
+    filterPlaceholder: '搜尋',
+    empty: '暫無匹配項',
   },
   dropdownMenu: {
     reset: '重置',
@@ -95,6 +97,11 @@ export default {
     skip: '跳過',
     finish: '完成',
     back: '返回',
+  },
+  typography: {
+    expandText: '展開',
+    collapseText: '收起',
+    copiedText: '復製成功',
   },
   qrcode: {
     expiredText: '二維碼過期',

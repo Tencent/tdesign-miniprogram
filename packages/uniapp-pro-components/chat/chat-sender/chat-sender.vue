@@ -174,19 +174,22 @@
   </view>
 </template>
 <script>
-import tIcon from '@tdesign/uniapp/icon/icon.vue';
-import attachments from '../attachments/attachments.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
-import props from './props';
+
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
-import { textareaStyle } from './computed';
-import tools from '@tdesign/uniapp/common/utils.wxs';
+
 import { nextTick } from '@tdesign/uniapp/common/utils';
+import tools from '@tdesign/uniapp/common/utils.wxs';
+import tIcon from '@tdesign/uniapp/icon/icon.vue';
+
+import attachments from '../attachments/attachments.vue';
 
 import usingConfig from '../mixins/using-config';
+
+import { textareaStyle } from './computed';
+import props from './props';
 const componentName = 'chat-sender';
 const name = `${prefix}-${componentName}`;
-
 
 export default {
   components: {
@@ -205,10 +208,7 @@ export default {
       ...props,
     },
 
-    emits: [
-      'update:visible',
-      'update:value',
-    ],
+    emits: ['update:visible', 'update:value'],
     data() {
       return {
         classPrefix: name,
@@ -294,18 +294,18 @@ export default {
 
 
       onkeyboardheightchange(e) {
-      // 业务侧控制键盘顶起高度，如果用fix布局，不需要监听键盘高度变化
+        // 业务侧控制键盘顶起高度，如果用fix布局，不需要监听键盘高度变化
         this.$emit('keyboardheightchange', e.detail);
         // 不开启自动顶起，不做处理
         if (!this.autoRiseWithKeyboard) return;
         const keyboardHeight = e.detail.height;
         if (keyboardHeight > 0) {
-        // 键盘弹起时，将键盘高度与原始 margin-bottom 相加
-        // todo：使用js计算实际的margin-bottom，因为业务侧可能会覆盖样式
+          // 键盘弹起时，将键盘高度与原始 margin-bottom 相加
+          // todo：使用js计算实际的margin-bottom，因为业务侧可能会覆盖样式
           const totalMarginBottom = keyboardHeight + this.originalMarginBottom;
           this.inputStyle = `margin-bottom: ${totalMarginBottom}px;`;
         } else {
-        // 键盘收起时，恢复原始 margin-bottom
+          // 键盘收起时，恢复原始 margin-bottom
           this.inputStyle = '';
         }
       },
@@ -339,7 +339,7 @@ export default {
       },
 
       handlerClick() {
-      // 禁用状态输入框无焦点
+        // 禁用状态输入框无焦点
         if (this.disabled) {
           this.focusFlag = false;
         } else {
@@ -380,11 +380,11 @@ export default {
         if (this.disabled || status === 'disabled') return;
         // 点击按钮切换面板显示状态
         this.$emit('update:visible', !this.visible);
-      // 透传处理上传按钮点击事件,由业务侧控制是否显示上传面板
+        // 透传处理上传按钮点击事件,由业务侧控制是否显示上传面板
       },
 
       handleFileClick(e) {
-      // 透传 处理文件点击事件
+        // 透传 处理文件点击事件
         const { item } = e.detail;
         this.$emit('fileClick', {
           file: item,
@@ -392,7 +392,7 @@ export default {
       },
 
       handleFileRemove(e) {
-      // 添加数组存在性检查
+        // 添加数组存在性检查
         if (!Array.isArray(this.files)) return;
         const { item: file, index } = e;
         this.$emit('fileDelete', {

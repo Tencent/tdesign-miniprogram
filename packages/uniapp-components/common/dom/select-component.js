@@ -10,17 +10,14 @@ export function selectComponent(context, selector) {
     attribute = attribute.slice(1);
   }
 
-  if (
-    context.$refs && context.$refs[attribute]) {
+  if (context.$refs && context.$refs[attribute]) {
     return context.$refs[attribute];
   }
 
   if (context && typeof context.$selectComponent === 'function') {
-    const res =  context.$selectComponent(selector);
+    const res = context.$selectComponent(selector);
     return res;
   }
 
   return context && context.selectComponent && context.selectComponent(selector);
 }
-
-

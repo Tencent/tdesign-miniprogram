@@ -1,9 +1,6 @@
 <template>
   <div>
-    <t-notice-bar
-      :visible="noticeVisible"
-      :content="notice"
-    />
+    <t-notice-bar :visible="noticeVisible" :content="notice" />
     <view class="demo-title">
       {{ title }}
     </view>
@@ -39,9 +36,7 @@ export default {
     },
   },
   data() {
-    return {
-
-    };
+    return {};
   },
   computed: {
     noticeVisible() {
@@ -56,5 +51,4 @@ export default {
   },
 };
 </script>
-<style scoped src="./index.css">
-</style>
+<style scoped src="./index.css"></style>

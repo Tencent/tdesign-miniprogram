@@ -1,15 +1,8 @@
 <template>
   <view>
-    <t-input
-      prefix-icon="app"
-      label="标签文字"
-      placeholder="请输入文字"
-    />
+    <t-input prefix-icon="app" label="标签文字" placeholder="请输入文字" />
 
-    <t-input
-      prefix-icon="app"
-      placeholder="请输入文字"
-    />
+    <t-input prefix-icon="app" placeholder="请输入文字" />
   </view>
 </template>
 
@@ -26,5 +19,4 @@ export default {
   methods: {},
 };
 </script>
-<style>
-</style>
+<style></style>

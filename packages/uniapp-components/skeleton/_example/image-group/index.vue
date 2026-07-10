@@ -1,13 +1,7 @@
 <template>
   <view class="group">
-    <t-skeleton
-      :row-col="rowCol"
-      loading
-    />
-    <t-skeleton
-      :row-col="rowCol"
-      loading
-    />
+    <t-skeleton :row-col="rowCol" loading />
+    <t-skeleton :row-col="rowCol" loading />
   </view>
 </template>
 
@@ -37,8 +31,8 @@ export default {
 </script>
 <style>
 .group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 32rpx;
 }
 </style>

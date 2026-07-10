@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="classPrefix"
-    :style="'' + tools._style([customStyle])"
-  >
+  <view :class="classPrefix" :style="'' + tools._style([customStyle])">
     <view :class="'' + tools.cls(classPrefix + '__inner', [layout])">
       <view :class="classPrefix + '__hd'">
         <block v-if="status === 'error' || status === 'complete' || status === 'stop'">
@@ -26,35 +23,27 @@
           />
         </view>
       </view>
-      <view
-        v-if="!localCollapsed"
-        :class="'' + tools.cls(classPrefix + '__bd', [layout])"
-        :style="contentStyle"
-      >
-        <view
-          v-if="content.text"
-          :class="'' + tools.cls(classPrefix + '__bd__inner', [])"
-        >
+      <view v-if="!localCollapsed" :class="'' + tools.cls(classPrefix + '__bd', [layout])" :style="contentStyle">
+        <view v-if="content.text" :class="'' + tools.cls(classPrefix + '__bd__inner', [])">
           {{ content.text }}
         </view>
-        <slot
-          v-else
-          name="content"
-        />
+        <slot v-else name="content" />
       </view>
     </view>
   </view>
 </template>
 <script>
-import TChatLoading from '../chat-loading/chat-loading.vue';
-import TIcon from '@tdesign/uniapp/icon/icon.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
-import props from './props';
-import tools from '@tdesign/uniapp/common/utils.wxs';
-import { uniComponent } from '@tdesign/uniapp/common/src/index';
 
+import { uniComponent } from '@tdesign/uniapp/common/src/index';
+import tools from '@tdesign/uniapp/common/utils.wxs';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
+
+import TChatLoading from '../chat-loading/chat-loading.vue';
 
 import usingConfig from '../mixins/using-config';
+
+import props from './props';
 const componentName = 'chat-thinking';
 const name = `${prefix}-${componentName}`;
 
@@ -90,9 +79,9 @@ export default {
         },
         immediate: true,
       },
-    },
-    collapsed(val) {
-      this.localCollapsed = val;
+      collapsed(val) {
+        this.localCollapsed = val;
+      },
     },
 
     created() {
@@ -100,17 +89,17 @@ export default {
     },
 
     mounted() {
-    // 调用新增的函数
+      // 调用新增的函数
       this.setContentStyle();
     },
 
     methods: {
       handleCollapse() {
-      // 切换内部折叠状态
+        // 切换内部折叠状态
         this.localCollapsed = !this.localCollapsed;
 
         // 通知父组件状态变化
-        this.$emit('collapsedChange',  this.localCollapsed);
+        this.$emit('collapsedChange', this.localCollapsed);
       },
       setContentStyle() {
         if (this.maxHeight) {
@@ -120,10 +109,7 @@ export default {
         }
       },
     },
-
   }),
 };
-
-
 </script>
 <style scoped src="./chat-thinking.css"></style>

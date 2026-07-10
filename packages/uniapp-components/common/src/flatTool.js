@@ -41,7 +41,6 @@ export const iterateInheritedPrototype = function iterateInheritedPrototype(
   }
 };
 
-
 /**
  *
  * 将一个可能包含原型链的对象扁平化成单个对象
@@ -57,10 +56,7 @@ export const iterateInheritedPrototype = function iterateInheritedPrototype(
  *
  * 注意2：类继承的时候不要在函数中调用 super，toObject 之后是扁平的，没有 super 之说
  */
-export const toObject = function toObject(
-  something,
-  options = {},
-) {
+export const toObject = function toObject(something, options = {}) {
   const obj = {};
   if (!isObject(something)) return obj;
 

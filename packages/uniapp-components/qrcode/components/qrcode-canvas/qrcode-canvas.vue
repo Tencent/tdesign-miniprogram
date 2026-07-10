@@ -1,8 +1,5 @@
 <template>
-  <view
-    class="t-qrcode__canvas-wrapper"
-    :class="tClass"
-  >
+  <view class="t-qrcode__canvas-wrapper" :class="tClass">
     <canvas
       :id="canvasId"
       ref="qrcodeCanvas"
@@ -15,13 +12,19 @@
 </template>
 
 <script>
-import props from './props';
-import useQRCode from '../../hooks/useQRCode';
-import { DEFAULT_MINVERSION, excavateModules, isSupportPath2d, generatePath } from '../../../common/shared/qrcode/utils';
-import { uniComponent } from '../../../common/src/index';
-import { prefix } from '../../../common/config';
 import { loadImage } from '../../../common/canvas/index';
+import { prefix } from '../../../common/config';
+import {
+  DEFAULT_MINVERSION,
+  excavateModules,
+  isSupportPath2d,
+  generatePath,
+} from '../../../common/shared/qrcode/utils';
+import { uniComponent } from '../../../common/src/index';
 import { getWindowInfo, nextTick } from '../../../common/utils';
+import useQRCode from '../../hooks/useQRCode';
+
+import props from './props';
 
 export default {
   ...uniComponent({
@@ -29,9 +32,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     props: {
       ...props,
     },
@@ -40,8 +41,7 @@ export default {
       return {
         canvas: null,
         ctx: null,
-        canvasId: `qrcode-canvas-${Math.random().toString(36)
-          .slice(2, 11)}`,
+        canvasId: `qrcode-canvas-${Math.random().toString(36).slice(2, 11)}`,
         isWeb: false,
       };
     },
@@ -63,7 +63,7 @@ export default {
       },
       size() {
         let interval = 0;
-        // #ifdef APP-PLUS
+        // #ifdef APP
         interval = 33;
         // #endif
         setTimeout(() => {
@@ -84,13 +84,13 @@ export default {
       },
     },
     created() {
-    // 小程序不能使用响应式的this.canvas
+      // 小程序不能使用响应式的this.canvas
       this._canvas = null;
       this._ctx = null;
     },
     mounted() {
-    // 判断是否为小程序环境，否则默认为 H5
-    // #ifdef MP
+      // 判断是否为小程序环境，否则默认为 H5
+      // #ifdef MP
       this.isWeb = false;
       // #endif
 
@@ -110,12 +110,12 @@ export default {
 
         // #ifdef H5
         this.initH5Canvas();
-      // #endif
+        // #endif
       },
 
       // H5 环境初始化
       async initH5Canvas() {
-      // 在 uniapp H5 环境中，canvas 会被包裹在 uni-canvas 内
+        // 在 uniapp H5 环境中，canvas 会被包裹在 uni-canvas 内
         const uniCanvasElement = document.querySelector(`#${this.canvasId}`);
         let canvasElement = null;
 
@@ -140,7 +140,7 @@ export default {
         }
 
         if (canvasElement) {
-        // 在初始化时设置 Canvas 的物理尺寸和显示尺寸
+          // 在初始化时设置 Canvas 的物理尺寸和显示尺寸
           const pixelRatio = window.devicePixelRatio || 1;
           const canvasSize = this.size * pixelRatio;
 
@@ -191,7 +191,6 @@ export default {
                 console.warn('获取 ctx 失败', e);
               }
 
-
               await this.renderQRCode();
             });
         }
@@ -216,11 +215,11 @@ export default {
             size: this.size,
             imageSettings: this.icon
               ? {
-                src: this.icon,
-                width: sizeProp.width,
-                height: sizeProp.height,
-                excavate: true,
-              }
+                  src: this.icon,
+                  width: sizeProp.width,
+                  height: sizeProp.height,
+                  excavate: true,
+                }
               : undefined,
           });
 
@@ -239,7 +238,7 @@ export default {
           canvas.height = canvasSize;
           // 小程序环境：scale 计算方式（参考 TS 实现）
           scale = canvasSize / qrData.numCells;
-          // #ifdef APP-PLUS
+          // #ifdef APP
           scale /= pixelRatio;
           // #endif
           // #endif
@@ -282,7 +281,7 @@ export default {
           if (this.isWeb && isSupportPath2d) {
             ctx.fill(new Path2D(generatePath(cellsToDraw, qrData.margin)));
           } else {
-          // 小程序环境或不支持 Path2D 时使用逐个绘制
+            // 小程序环境或不支持 Path2D 时使用逐个绘制
             cellsToDraw.forEach((row, y) => {
               row.forEach((cell, x) => {
                 if (cell) {
@@ -297,7 +296,7 @@ export default {
             await this.drawIcon(qrData, pixelRatio);
           }
 
-          // #ifdef APP-PLUS
+          // #ifdef APP
           ctx.draw();
           // #endif
 
@@ -317,7 +316,7 @@ export default {
         }
 
         try {
-        // 加载图标图片
+          // 加载图标图片
           const img = await this.loadIconImage();
 
           if (!img) {
@@ -338,13 +337,7 @@ export default {
           // #endif
 
           // 绘制图标
-          ctx.drawImage(
-            img,
-            drawX,
-            drawY,
-            calculatedImageSettings.w,
-            calculatedImageSettings.h,
-          );
+          ctx.drawImage(img, drawX, drawY, calculatedImageSettings.w, calculatedImageSettings.h);
 
           // 恢复透明度
           ctx.globalAlpha = 1;

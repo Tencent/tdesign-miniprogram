@@ -29,6 +29,8 @@ export default {
   cascader: {
     title: 'Title',
     placeholder: 'Select options',
+    filterPlaceholder: 'Search',
+    empty: 'No matching options',
   },
   dropdownMenu: {
     reset: 'Reset',
@@ -109,6 +111,11 @@ export default {
     skip: 'Skip',
     finish: 'Finish',
     back: 'Back',
+  },
+  typography: {
+    expandText: 'more',
+    collapseText: 'collapse',
+    copiedText: 'copied',
   },
   qrcode: {
     expiredText: 'expired',

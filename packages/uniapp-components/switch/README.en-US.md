@@ -7,14 +7,14 @@
 name | type | default | description | required
 -- | -- | -- | -- | --
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
-custom-value | Array | [true, false] | Typescript：`Array<SwitchValue>` | N
+custom-value | Array | [true, false] | Typescript: `Array<SwitchValue>` | N
 disabled | Boolean | undefined | \- | N
-icon | Array | [] | Typescript：`string[]` | N
-label | Array | [] | Typescript：`string[]` | N
+icon | Array | [] | Typescript: `string[]` | N
+label | Array | [] | Typescript: `string[]` | N
 loading | Boolean | false | \- | N
 size | String | medium | options: small/medium/large | N
-value | String / Number / Boolean | - | `v-model:value` is supported。Typescript：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/switch/type.ts) | N
-default-value | String / Number / Boolean | - | uncontrolled property。Typescript：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/switch/type.ts) | N
+value | String / Number / Boolean | - | `v-model:value` is supported。Typescript: `SwitchValue` `type SwitchValue = string \| number \| boolean`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/switch/type.ts) | N
+default-value | String / Number / Boolean | - | uncontrolled property。Typescript: `SwitchValue` `type SwitchValue = string \| number \| boolean`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/switch/type.ts) | N
 
 ### Switch Events
 
@@ -34,7 +34,7 @@ t-class-label | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-switch-checked-color | @brand-color | -
 --td-switch-checked-disabled-color | @brand-color-disabled | -

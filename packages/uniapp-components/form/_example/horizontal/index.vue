@@ -9,29 +9,24 @@
       show-error-message
       scroll-to-first-error="smooth"
       label-align="left"
+      :label-width="85"
+      content-align="right"
       @reset="(e) => onReset(e, { tagId: 'form' })"
       @submit="(e) => onSubmit(e, { tagId: 'form' })"
     >
-      <t-form-item
-        label="用户名"
-        name="name"
-        help="输入用户名"
-      >
+      <t-form-item label="用户名" name="name" help="输入用户名" content-align="left">
         <t-input
           :value="formData.name"
           :disabled="disabled"
           borderless
           placeholder="请输入用户名"
           data-field="name"
-          style="flex: 1;"
-          @update:value="(e) => formData.name = e"
+          style="flex: 1"
+          @update:value="(e) => (formData.name = e)"
         />
       </t-form-item>
 
-      <t-form-item
-        label="密码"
-        name="password"
-      >
+      <t-form-item label="密码" name="password">
         <t-input
           :value="formData.password"
           :disabled="disabled"
@@ -40,67 +35,51 @@
           :clearable="false"
           placeholder="请输入密码"
           data-field="password"
-          style="flex: 1;"
+          style="flex: 1"
           @change="(e) => onInputChange(e, { field: 'password' })"
         />
       </t-form-item>
 
-      <t-form-item
-        label="性别"
-        name="gender"
-      >
+      <t-form-item label="性别" name="gender">
         <t-radio-group
           :value="formData.gender"
           :disabled="disabled"
           t-class="box"
-          style="flex: 1;"
+          style="flex: 1"
           borderless
           @change="onRadioChange"
         >
-          <t-radio
-            :block="false"
-            name="radio"
-            value="man"
-            label="男"
-          />
-          <t-radio
-            :block="false"
-            name="radio"
-            value="women"
-            label="女"
-          />
-          <t-radio
-            :block="false"
-            name="radio"
-            value="secret"
-            label="保密"
-          />
+          <t-radio :block="false" name="radio" value="man" label="男" />
+          <t-radio :block="false" name="radio" value="women" label="女" />
+          <t-radio :block="false" name="radio" value="secret" label="保密" />
         </t-radio-group>
       </t-form-item>
 
-      <t-form-item
-        label="生日"
-        name="birth"
-        content-align="right"
-      >
+      <t-form-item arrow label="生日" name="birth" content-align="right">
         <t-input
           :value="formData.birth"
           :disabled="disabled"
           borderless
           align="right"
-          placeholder="请输入生日"
+          placeholder="请选择生日"
+          :readonly="!isH5"
           data-field="birth"
-          style="flex: 1;"
-          @change="(e) => onInputChange(e, { field: 'birth' })"
+          style="flex: 1"
+          @click="showDatePicker"
+        />
+        <t-date-time-picker
+          :visible="visibleDatePicker"
+          auto-close
+          title="选择生日"
+          mode="date"
+          :default-value="formData.birth"
+          format="YYYY-MM-DD"
+          @update:visible="(e) => (visibleDatePicker = e)"
+          @change="onChangeDatePicker"
         />
       </t-form-item>
 
-      <t-form-item
-        arrow
-        label="籍贯"
-        name="place"
-        content-align="right"
-      >
+      <t-form-item arrow label="籍贯" name="place" content-align="left">
         <t-input
           ref="input"
           :value="formData.place"
@@ -109,7 +88,7 @@
           align="right"
           placeholder="请选择籍贯"
           :readonly="!isH5"
-          style="flex: 1;"
+          style="flex: 1"
           @click="showCascader"
         />
 
@@ -118,30 +97,17 @@
           :value="address"
           title="选择地址"
           :options="options"
-          @update:visible="(e) => visibleCascader = e"
+          @update:visible="(e) => (visibleCascader = e)"
           @change="onChangeCascader"
           @visible-change="onCascaderVisibleChange"
         />
       </t-form-item>
 
-      <t-form-item
-        label="年限"
-        name="age"
-        content-align="right"
-      >
-        <t-stepper
-          :value="formData.age"
-          :disabled="disabled"
-          theme="filled"
-          @change="onChangeStepper"
-        />
+      <t-form-item label="年限" name="age" content-align="right">
+        <t-stepper :value="formData.age" :disabled="disabled" theme="filled" @change="onChangeStepper" />
       </t-form-item>
 
-      <t-form-item
-        label="自我评价"
-        name="description"
-        content-align="right"
-      >
+      <t-form-item label="自我评价" name="description" content-align="right">
         <t-rate
           :value="formData.description"
           :disabled="disabled"
@@ -152,10 +118,7 @@
         />
       </t-form-item>
 
-      <t-form-item
-        label="个人简介"
-        name="resume"
-      >
+      <t-form-item label="个人简介" name="resume">
         <t-textarea
           :value="formData.resume"
           :disabled="disabled"
@@ -163,15 +126,12 @@
           indicator
           :maxlength="50"
           placeholder="请输入个人简介"
-          style="flex: 1;"
-          @update:value="(e) => formData.resume = e"
+          style="flex: 1"
+          @update:value="(e) => (formData.resume = e)"
         />
       </t-form-item>
 
-      <t-form-item
-        label="上传照片"
-        name="photo"
-      >
+      <t-form-item label="上传照片" name="photo">
         <t-upload
           t-class="upload"
           :files="formData.photo"
@@ -217,19 +177,20 @@
 </template>
 
 <script>
+import TButton from '@tdesign/uniapp/button/button.vue';
+import TCascader from '@tdesign/uniapp/cascader/cascader.vue';
+import { canUseVirtualHost } from '@tdesign/uniapp/common/version';
+import TDateTimePicker from '@tdesign/uniapp/date-time-picker/date-time-picker.vue';
 import TForm from '@tdesign/uniapp/form/form.vue';
 import TFormItem from '@tdesign/uniapp/form-item/form-item.vue';
 import TInput from '@tdesign/uniapp/input/input.vue';
-import TRadioGroup from '@tdesign/uniapp/radio-group/radio-group.vue';
 import TRadio from '@tdesign/uniapp/radio/radio.vue';
+import TRadioGroup from '@tdesign/uniapp/radio-group/radio-group.vue';
 // import TPopup from '@tdesign/uniapp/popup/popup.vue';
-import TCascader from '@tdesign/uniapp/cascader/cascader.vue';
-import TStepper from '@tdesign/uniapp/stepper/stepper.vue';
 import TRate from '@tdesign/uniapp/rate/rate.vue';
+import TStepper from '@tdesign/uniapp/stepper/stepper.vue';
 import TTextarea from '@tdesign/uniapp/textarea/textarea.vue';
 import TUpload from '@tdesign/uniapp/upload/upload.vue';
-import TButton from '@tdesign/uniapp/button/button.vue';
-import { canUseVirtualHost } from '@tdesign/uniapp/common/version';
 
 export default {
   options: {
@@ -243,6 +204,7 @@ export default {
     TRadio,
     // TPopup,
     TCascader,
+    TDateTimePicker,
     TStepper,
     TRate,
     TTextarea,
@@ -261,7 +223,7 @@ export default {
         name: '',
         password: '',
         gender: '',
-        birth: '',
+        birth: '2020-01-01',
         place: '',
         age: 3,
         description: 2,
@@ -280,6 +242,7 @@ export default {
         ],
       },
       visibleCascader: false,
+      visibleDatePicker: false,
       address: '120119',
       rateGap: 8,
       action: 'https://service-bv448zsw-1257786608.gz.apigw.tencentcs.com/api/upload-demo',
@@ -441,27 +404,13 @@ export default {
         },
       ],
       rules: {
-        name: [
-          { pattern: '[a-zA-Z]{8}', validator: val => val.length === 8, message: '只能输入8个字符英文' },
-        ],
-        password: [
-          { validator: val => val.length > 6, message: '长度大于6个字符' },
-        ],
-        description: [
-          { validator: val => val > 3, message: '分数过低会影响整体评价' },
-        ],
-        gender: [
-          { validator: val => val !== '', message: '不能为空' },
-        ],
-        birth: [
-          { validator: val => val !== '', message: '不能为空' },
-        ],
-        place: [
-          { validator: val => val !== '', message: '不能为空' },
-        ],
-        resume: [
-          { validator: val => val !== '', message: '不能为空' },
-        ],
+        name: [{ pattern: '[a-zA-Z]{8}', validator: (val) => val.length === 8, message: '只能输入8个字符英文' }],
+        password: [{ validator: (val) => val.length > 6, message: '长度大于6个字符' }],
+        description: [{ validator: (val) => val > 3, message: '分数过低会影响整体评价' }],
+        gender: [{ validator: (val) => val !== '', message: '不能为空' }],
+        birth: [{ validator: (val) => val !== '', message: '不能为空' }],
+        place: [{ validator: (val) => val !== '', message: '不能为空' }],
+        resume: [{ validator: (val) => val !== '', message: '不能为空' }],
       },
     };
   },
@@ -506,7 +455,7 @@ export default {
     },
     onChangeCascader(e) {
       const { selectedOptions } = e;
-      const placeText = selectedOptions?.map(item => item.label).join('/');
+      const placeText = selectedOptions?.map((item) => item.label).join('/');
       this.formData.place = placeText;
       this.visibleCascader = false;
     },
@@ -516,6 +465,14 @@ export default {
     },
     onChangeStepper(e) {
       this.formData.age = e.value;
+    },
+    showDatePicker() {
+      this.visibleDatePicker = true;
+      uni.hideKeyboard();
+    },
+    onChangeDatePicker(e) {
+      this.formData.birth = e.value;
+      this.visibleDatePicker = false;
     },
     onFail(e) {
       console.log('[onFail]: ', e);
@@ -544,16 +501,16 @@ export default {
 </script>
 <style scoped>
 :deep(.box) {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }
 
 .form {
 }
 
 :deep(.upload) {
-    width: 100%;
+  width: 100%;
 }
 
 /* .upload {
@@ -561,24 +518,24 @@ export default {
 } */
 
 :deep(.textarea) {
-    height: 200rpx;
-    width: 100%;
-    --textarea-vertical-padding: 0;
-    --td-textarea-horizontal-padding: 0;
-    padding:0 !important;
+  height: 200rpx;
+  width: 100%;
+  --textarea-vertical-padding: 0;
+  --td-textarea-horizontal-padding: 0;
+  padding: 0 !important;
 }
 :deep(.textarea .t-textarea) {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 
 .button-group {
-    background-color: var(--bg-color-demo, #fff);
-    box-sizing: border-box;
-    padding: 32rpx;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    border-bottom: 1rpx solid var(--td-component-stroke, #e7e7e7);;
+  background-color: var(--bg-color-demo, #fff);
+  box-sizing: border-box;
+  padding: 32rpx;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  border-bottom: 1rpx solid var(--td-component-stroke, #e7e7e7);
 }
 
 /* .button-group :deep(.t-button) {
@@ -589,5 +546,4 @@ export default {
 .button-group :deep(.t-button:not(:last-child)) {
     margin-right: 32rpx;
 } */
-
 </style>

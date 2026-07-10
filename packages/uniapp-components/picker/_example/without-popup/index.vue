@@ -6,10 +6,8 @@
       :use-popup="false"
       data-key="city"
       :title="cityTitle"
-      cancel-btn="取消"
-      confirm-btn="确认"
       :using-custom-navbar="!isMPAlipay"
-      @update:visible="(e) => cityVisible = e"
+      @update:visible="(e) => (cityVisible = e)"
       @change="(e) => onPickerChange(e, { key: 'city' })"
       @pick="(e) => onColumnChange(e, { key: 'city' })"
       @cancel="(e) => onPickerCancel(e, { key: 'city' })"
@@ -80,6 +78,6 @@ export default {
 </script>
 <style>
 .mb-16 {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 </style>

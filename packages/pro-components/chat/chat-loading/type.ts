@@ -11,7 +11,7 @@ export interface TdChatLoadingProps {
    */
   animation?: {
     type: StringConstructor;
-    value?: 'skeleton' | 'moving' | 'gradient' | 'dot';
+    value?: 'skeleton' | 'moving' | 'gradient' | 'dots';
   };
   /**
    * 加载过程展示的文字内容

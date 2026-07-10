@@ -96,6 +96,11 @@ export default {
     finish: '完成',
     back: '返回',
   },
+  typography: {
+    expandText: '展開',
+    collapseText: '收起',
+    copiedText: '復製成功',
+  },
   qrcode: {
     expiredText: '二維碼過期',
     refreshText: '點擊刷新',

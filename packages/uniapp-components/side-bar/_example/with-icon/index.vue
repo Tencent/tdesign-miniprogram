@@ -1,20 +1,11 @@
 <template>
   <view>
     <view class="custom-navbar">
-      <t-demo-navbar
-        custom-class="demo-navbar"
-        title="TDesign"
-      />
+      <t-demo-navbar custom-class="demo-navbar" title="TDesign" />
     </view>
 
-    <view
-      class="side-bar-wrapper"
-      :style="'height: calc(100vh - ' + navbarHeight + 'px)'"
-    >
-      <t-side-bar
-        :value="sideBarIndex"
-        @change="onSideBarChange"
-      >
+    <view class="side-bar-wrapper" :style="'height: calc(100vh - ' + navbarHeight + 'px)'">
+      <t-side-bar :value="sideBarIndex" @change="onSideBarChange">
         <t-side-bar-item
           v-for="(item, index) in categories"
           :key="index"
@@ -24,30 +15,14 @@
           :badge-props="item.badgeProps"
         />
       </t-side-bar>
-      <scroll-view
-        class="content"
-        scroll-y
-        scroll-with-animation
-        :scroll-top="scrollTop"
-        @scroll="onScroll"
-      >
-        <view
-          v-for="(item, index) in categories"
-          :key="index"
-          class="section"
-        >
+      <scroll-view class="content" scroll-y scroll-with-animation :scroll-top="scrollTop" @scroll="onScroll">
+        <view v-for="(item, index) in categories" :key="index" class="section">
           <view class="title">
             {{ item.title || item.label }}
           </view>
 
-          <t-grid
-            :column="3"
-            :border="false"
-          >
-            <block
-              v-for="(cargo, index1) in item.items"
-              :key="index1"
-            >
+          <t-grid :column="3" :border="false">
+            <block v-for="(cargo, index1) in item.items" :key="index1">
               <t-grid-item
                 t-class-image="image"
                 :text="cargo.label"
@@ -63,16 +38,15 @@
 </template>
 
 <script>
-import TSideBar from '@tdesign/uniapp/side-bar/side-bar.vue';
-import TSideBarItem from '@tdesign/uniapp/side-bar-item/side-bar-item.vue';
 import TGrid from '@tdesign/uniapp/grid/grid.vue';
 import TGridItem from '@tdesign/uniapp/grid-item/grid-item.vue';
+import TSideBar from '@tdesign/uniapp/side-bar/side-bar.vue';
+import TSideBarItem from '@tdesign/uniapp/side-bar-item/side-bar-item.vue';
 const image = 'https://tdesign.gtimg.com/mobile/demos/example2.png';
-const items = new Array(12).fill()
-  .map((_, index) => ({
-    label: index % 3 === 2 ? '最多六个文字' : '标题文字',
-    image,
-  }));
+const items = new Array(12).fill().map((_, index) => ({
+  label: index % 3 === 2 ? '最多六个文字' : '标题文字',
+  image,
+}));
 export default {
   options: {
     styleIsolation: 'shared',
@@ -156,7 +130,7 @@ export default {
       query.select('.custom-navbar').boundingClientRect();
       query.exec((res) => {
         const [rects, { height: navbarHeight = 0 }] = res;
-        this.offsetTopList = rects.map(item => item.top - navbarHeight);
+        this.offsetTopList = rects.map((item) => item.top - navbarHeight);
 
         this.navbarHeight = navbarHeight;
         this.scrollTop = this.offsetTopList[sideBarIndex];
@@ -204,51 +178,51 @@ export default {
 </script>
 <style>
 page {
-    background-color: var(--td-bg-color-container);
+  background-color: var(--td-bg-color-container);
 }
 
 page .round-image {
-    border-radius: 12rpx;
+  border-radius: 12rpx;
 }
 
 .side-bar-wrapper {
-    display: flex;
-    height: 100vh;
+  display: flex;
+  height: 100vh;
 
-    --td-grid-item-text-font: var(--td-font-body-small);
+  --td-grid-item-text-font: var(--td-font-body-small);
 }
 
 .side-bar-wrapper .content {
-    flex: 1;
+  flex: 1;
 }
 
 .side-bar-wrapper .section {
-    padding: 32rpx 0;
+  padding: 32rpx 0;
 }
 
 .side-bar-wrapper .title {
-    padding-left: 40rpx;
-    margin-bottom: 8rpx;
-    font: var(--td-font-body-medium);
-    color: var(--td-text-color-primary);
+  padding-left: 40rpx;
+  margin-bottom: 8rpx;
+  font: var(--td-font-body-medium);
+  color: var(--td-text-color-primary);
 }
 
 .side-bar-wrapper :deep(.image) {
-    width: 96rpx;
-    height: 96rpx;
-    position: relative;
+  width: 96rpx;
+  height: 96rpx;
+  position: relative;
 }
 
 .side-bar-wrapper :deep(.image)::before {
-    content: ' ';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 200%;
-    height: 200%;
-    border-radius: 24rpx;
-    border: 2rpx solid var(--td-gray-color-4);
-    transform-origin: 0 0;
-    transform: scale(0.5);
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  border-radius: 24rpx;
+  border: 2rpx solid var(--td-gray-color-4);
+  transform-origin: 0 0;
+  transform: scale(0.5);
 }
 </style>

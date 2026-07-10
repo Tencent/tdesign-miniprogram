@@ -1,8 +1,9 @@
 // 格式化文档，去掉多余空格
-const glob = require('glob');
 const path = require('path');
 
-const { writeFileSync, readFileSync  } = require('t-comm');
+const glob = require('glob');
+
+const { writeFileSync, readFileSync } = require('t-comm');
 
 const config = {
   target: path.resolve(__dirname, '../../../tdesign'),

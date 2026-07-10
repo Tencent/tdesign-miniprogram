@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import LinkDemo from '../link.vue';
 export default {
   components: {

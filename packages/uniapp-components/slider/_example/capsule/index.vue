@@ -1,37 +1,14 @@
 <template>
   <view class="wrapper">
-    <t-slider
-      :default-value="30"
-      theme="capsule"
-    />
+    <t-slider :default-value="30" theme="capsule" />
 
-    <t-slider
-      :default-value="[40, 60]"
-      range
-      theme="capsule"
-    />
+    <t-slider :default-value="[40, 60]" range theme="capsule" />
 
-    <t-slider
-      :default-value="[40, 60]"
-      range
-      label="${value}"
-      theme="capsule"
-    />
+    <t-slider :default-value="[40, 60]" range label="${value}" theme="capsule" />
 
-    <t-slider
-      :default-value="60"
-      :marks="marks"
-      :step="20"
-      theme="capsule"
-    />
+    <t-slider :default-value="60" :marks="marks" :step="20" theme="capsule" />
 
-    <t-slider
-      :default-value="[20, 80]"
-      range
-      :marks="marks"
-      :step="20"
-      theme="capsule"
-    />
+    <t-slider :default-value="[20, 80]" range :marks="marks" :step="20" theme="capsule" />
   </view>
 </template>
 
@@ -59,18 +36,18 @@ export default {
 </script>
 <style>
 .label {
-    display: flex;
-    align-items: center;
-    width: 718rpx;
-    padding-left: 32rpx;
+  display: flex;
+  align-items: center;
+  width: 718rpx;
+  padding-left: 32rpx;
 }
 
 .label-class {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .wrapper {
-    background: var(--bg-color-demo);
-    padding: 0 12rpx;
+  background: var(--bg-color-demo);
+  padding: 0 12rpx;
 }
 </style>

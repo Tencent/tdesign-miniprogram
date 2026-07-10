@@ -1,15 +1,20 @@
 <template>
-  <view
-    :style="'' + tools._style([customStyle])"
-    :class="classPrefix + ' ' + classPrefix + '--' + size + ' ' + tClass"
-  >
+  <view :style="'' + tools._style([customStyle])" :class="classPrefix + ' ' + classPrefix + '--' + size + ' ' + tClass">
     <view
       :class="
-        classPrefix +'__minus ' +
-          classPrefix + '__minus--' + theme +
-          ' ' + classPrefix + '__icon--' + size +
-          ' ' + (disabled || disableMinus || currentValue <= min ? classPrefix + '--' + theme + '-disabled' : '') +
-          ' ' + tClassMinus
+        classPrefix +
+        '__minus ' +
+        classPrefix +
+        '__minus--' +
+        theme +
+        ' ' +
+        classPrefix +
+        '__icon--' +
+        size +
+        ' ' +
+        (disabled || disableMinus || currentValue <= min ? classPrefix + '--' + theme + '-disabled' : '') +
+        ' ' +
+        tClassMinus
       "
       :aria-label="'减少' + step"
       aria-role="button"
@@ -18,7 +23,15 @@
     >
       <t-icon name="remove" />
     </view>
-    <view :class="classPrefix + '__input--' + theme + ' ' + (disabled || disableInput ? classPrefix + '--' + theme + '-disabled' : '')">
+    <view
+      :class="
+        classPrefix +
+        '__input--' +
+        theme +
+        ' ' +
+        (disabled || disableInput ? classPrefix + '--' + theme + '-disabled' : '')
+      "
+    >
       <input
         :style="inputWidth ? 'width:' + inputWidth + 'px;' : ''"
         :class="classPrefix + '__input ' + classPrefix + '__input--' + size + ' ' + tClassInput"
@@ -28,15 +41,23 @@
         @input="handleInput"
         @focus="handleFocus"
         @blur="handleBlur"
-      >
+      />
     </view>
     <view
       :class="
-        classPrefix + '__plus ' +
-          classPrefix + '__plus--' + theme +
-          ' ' + classPrefix + '__icon--' + size +
-          ' ' + (disabled || disablePlus || currentValue >= max ? classPrefix + '--' + theme + '-disabled' : '') +
-          ' ' + tClassPlus
+        classPrefix +
+        '__plus ' +
+        classPrefix +
+        '__plus--' +
+        theme +
+        ' ' +
+        classPrefix +
+        '__icon--' +
+        size +
+        ' ' +
+        (disabled || disablePlus || currentValue >= max ? classPrefix + '--' + theme + '-disabled' : '') +
+        ' ' +
+        tClassPlus
       "
       :aria-label="'增加' + step"
       aria-role="button"
@@ -48,16 +69,16 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
 import { coalesce, nextTick } from '../common/utils';
-import props from './props';
-import tools from '../common/utils.wxs';
 
+import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
+
+import props from './props';
 
 const name = `${prefix}-stepper`;
-
 
 export default {
   components: {
@@ -74,12 +95,7 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-input`,
-      `${prefix}-class-minus`,
-      `${prefix}-class-plus`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-input`, `${prefix}-class-minus`, `${prefix}-class-plus`],
     props: {
       ...props,
     },
@@ -147,7 +163,7 @@ export default {
         const newValue = Number(formattedStr);
 
         nextTick().then(() => {
-        // 使用 format 返回的字符串更新显示值，避免 Number() 转换丢失末尾0
+          // 使用 format 返回的字符串更新显示值，避免 Number() 转换丢失末尾0
           this.updateCurrentValue(formattedStr);
         });
 
@@ -199,6 +215,9 @@ export default {
         this.$emit('focus', { value });
       },
 
+      /**
+       * 输入过程中仅过滤非法字符并更新显示值，不做 min/max 边界约束。范围校验和 change 事件统一在 handleBlur 中处理
+       */
       handleInput(e) {
         const { value } = e.detail;
         // 允许输入空值
@@ -207,21 +226,15 @@ export default {
         }
 
         const formatted = this.filterIllegalChar(value);
-        const newValue = this.format(formatted);
 
-        const displayValue = this.integer ? newValue : formatted;
         // 当过滤后的值与当前值相同时，需要先清空再回填，强制触发视图更新
-        if (String(this.currentValue) === String(displayValue)) {
+        if (String(this.currentValue) === String(formatted)) {
           this.updateCurrentValue('');
           nextTick().then(() => {
-            this.updateCurrentValue(displayValue);
+            this.updateCurrentValue(formatted);
           });
         } else {
-          this.updateCurrentValue(displayValue);
-        }
-
-        if (this.integer || /\.\d*[1-9]/.test(formatted)) {
-          this.setValue(formatted);
+          this.updateCurrentValue(formatted);
         }
       },
 

@@ -22,11 +22,27 @@ export interface TdTabBarItemProps {
     value?: string | object;
   };
   /**
+   * 页面跳转类型
+   * @default redirectTo
+   */
+  linkType?: {
+    type: StringConstructor;
+    value?: 'redirectTo' | 'switchTab' | 'reLaunch' | 'navigateTo';
+  };
+  /**
    * 二级菜单
    */
   subTabBar?: {
     type: ArrayConstructor;
     value?: SubTabBarItem[];
+  };
+  /**
+   * 点击后跳转的页面路径, 需要以 `/` 开头
+   * @default ''
+   */
+  url?: {
+    type: StringConstructor;
+    value?: string;
   };
   /**
    * 标识符

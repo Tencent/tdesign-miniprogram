@@ -19,8 +19,8 @@ const onPageScroll = function (event?: IPageScrollOption) {
   });
 };
 
-export default (funcName = 'onScroll') => {
-  return Behavior({
+export default (funcName = 'onScroll') =>
+  Behavior({
     attached() {
       const page = getCurrentPage<{ pageScroller: Scroller[] }>();
       if (!page) return;
@@ -47,4 +47,3 @@ export default (funcName = 'onScroll') => {
       page.pageScroller = page.pageScroller?.filter((item) => item !== this._pageScroller) || [];
     },
   });
-};

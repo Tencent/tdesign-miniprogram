@@ -7,15 +7,15 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
 
+import tools from '../common/utils.wxs';
+
+import props from './props';
 
 const name = `${prefix}-steps`;
-
 
 export default {
   ...uniComponent({
@@ -29,9 +29,7 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     mixins: [ParentMixin(RELATION_MAP.StepItem)],
     props: {
       ...props,
@@ -61,9 +59,7 @@ export default {
       theme: 'updateChildren',
       sequence: 'updateChildren',
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
       innerAfterLinked(child) {
         this.updateChildren();
@@ -77,9 +73,7 @@ export default {
       },
       updateChildren() {
         const items = this.children;
-        const {
-          dataCurrent, currentStatus, theme, layout, sequence,
-        } = this;
+        const { dataCurrent, currentStatus, theme, layout, sequence } = this;
 
         items?.forEach((item, index) => {
           item.updateStatus({
@@ -97,7 +91,7 @@ export default {
       updateLastChid() {
         const items = this.children;
 
-        items.forEach((child, index) => child.isLastChild = index === items.length - 1);
+        items.forEach((child, index) => (child.isLastChild = index === items.length - 1));
       },
       handleClick(index) {
         if (!this.readonly) {

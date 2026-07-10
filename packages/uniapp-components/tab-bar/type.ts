@@ -53,4 +53,8 @@ export interface TdTabBarProps {
    * @default 1
    */
   zIndex?: number;
+  /**
+   * 选中标签切换时触发
+   */
+  onChange?: (context: { value: string | number }) => void;
 }

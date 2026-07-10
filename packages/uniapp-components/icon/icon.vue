@@ -7,15 +7,8 @@
     :aria-role="ariaRole"
     @click="onTap"
   >
-    <view
-      v-if="isImage"
-      :class="classPrefix + '--image'"
-    >
-      <image
-        :src="name"
-        mode="aspectFit"
-        :class="classPrefix + '__image'"
-      />
+    <view v-if="isImage" :class="classPrefix + '--image'">
+      <image :src="name" mode="aspectFit" :class="classPrefix + '__image'" />
     </view>
     <div
       v-if="tools.isValidIconName(name) && !isImage"
@@ -24,12 +17,13 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+
 import { styles, addUnit, getRect } from '../common/utils';
 import tools from '../common/utils.wxs';
 
+import props from './props';
 
 const name = `${prefix}-icon`;
 export default {
@@ -82,20 +76,19 @@ export default {
         this.$emit('click', t);
       },
       setIconStyle() {
-        const {
-          name,
-          color,
-          size,
-          classPrefix,
-        } = this;
+        const { name, color, size, classPrefix } = this;
         const isImage = name.indexOf('/') !== -1;
         const sizeValue = size !== null && size !== '' ? addUnit(size) : undefined;
-        const colorStyle = color ? {
-          color,
-        } : {};
-        const fontStyle = size ? {
-          'font-size': sizeValue,
-        } : {};
+        const colorStyle = color
+          ? {
+              color,
+            }
+          : {};
+        const fontStyle = size
+          ? {
+              'font-size': sizeValue,
+            }
+          : {};
         const iconStyle = { ...colorStyle, ...fontStyle };
         this.isImage = isImage;
 

@@ -1,11 +1,6 @@
 <template>
   <view>
-    <t-notice-bar
-      :visible="visible"
-      suffix-icon="close"
-      content="这是一条普通的通知信息"
-      @click="click"
-    />
+    <t-notice-bar :visible="visible" suffix-icon="close" content="这是一条普通的通知信息" @click="click" />
   </view>
 </template>
 
@@ -29,5 +24,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

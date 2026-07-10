@@ -1,14 +1,12 @@
 <template>
   <view>
-    <t-message
-      ref="t-message"
-    />
+    <t-message ref="t-message" />
 
     <t-message
       :visible="visible"
       :offset="[90, 32]"
       content="这是一条通过组件调用的消息通知"
-      @duration-end="() => visible = false"
+      @duration-end="() => (visible = false)"
     />
 
     <view class="message-example--base">
@@ -82,9 +80,9 @@
 </template>
 
 <script>
+import { MessagePlugin } from '@tdesign/uniapp';
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TMessage from '@tdesign/uniapp/message/message.vue';
-import { MessagePlugin } from '@tdesign/uniapp';
 
 export default {
   options: {
@@ -181,6 +179,6 @@ export default {
 </script>
 <style scoped>
 .message-example--base {
-    margin: 32rpx;
+  margin: 32rpx;
 }
 </style>

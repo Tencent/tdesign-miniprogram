@@ -1,25 +1,22 @@
 <template>
   <view
     :style="'' + tools._style([customStyle])"
-    :class="[
-      tClass,
-      tools.cls(classPrefix, [['hairline--top-bottom', border], theme])
-    ]"
+    :class="[tClass, tools.cls(classPrefix, [['hairline--top-bottom', border], theme])]"
   >
     <slot />
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import { coalesce } from '../common/utils';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import { coalesce } from '../common/utils';
 
+import tools from '../common/utils.wxs';
+
+import props from './props';
 
 const name = `${prefix}-collapse`;
-
 
 export default {
   ...uniComponent({
@@ -38,9 +35,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-      'update:value',
-    ],
+    emits: ['update:value'],
     data() {
       return {
         prefix,
@@ -71,11 +66,10 @@ export default {
         },
         immediate: true,
       },
-
     },
     mounted() {
       let interval = 0;
-      // #ifdef APP-PLUS
+      // #ifdef APP
       interval = 33;
       // #endif
       setTimeout(() => {
@@ -105,7 +99,7 @@ export default {
         const hit = activeValues?.indexOf(panelValue);
 
         if (hit > -1) {
-          value = activeValues.filter(item => item !== panelValue);
+          value = activeValues.filter((item) => item !== panelValue);
         } else {
           value = expandMutex ? [panelValue] : activeValues.concat(panelValue);
         }

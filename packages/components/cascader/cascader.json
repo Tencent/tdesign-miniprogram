@@ -6,6 +6,7 @@
     "t-popup": "../popup/popup",
     "t-tabs": "../tabs/tabs",
     "t-tab-panel": "../tab-panel/tab-panel",
-    "t-radio-group": "../radio-group/radio-group"
+    "t-radio-group": "../radio-group/radio-group",
+    "t-search": "../search/search"
   }
 }

@@ -1,6 +1,5 @@
 import { getInstance, coalesce } from '../common/utils';
 
-
 function Toast(options) {
   const { context, selector = '#t-toast', ...Options } = options;
   const instance = getInstance(context, selector);

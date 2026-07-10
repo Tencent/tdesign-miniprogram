@@ -1,25 +1,13 @@
 <template>
   <view>
     <view class="wrapper">
-      <t-slider
-        :default-value="60"
-        :marks="marks"
-        :step="20"
-        @change="handleChange"
-      />
+      <t-slider :default-value="60" :marks="marks" :step="20" @change="handleChange" />
     </view>
 
-    <view class="demo-desc">
-      带刻度双游标滑块
-    </view>
+    <view class="demo-desc"> 带刻度双游标滑块 </view>
 
     <view class="wrapper">
-      <t-slider
-        range
-        :default-value="[20, 60]"
-        :marks="marks"
-        :step="20"
-      />
+      <t-slider range :default-value="[20, 60]" :marks="marks" :step="20" />
     </view>
   </view>
 </template>
@@ -52,12 +40,12 @@ export default {
 </script>
 <style>
 .demo-desc {
-    margin-top: 24rpx;
-    margin-bottom: 16rpx;
+  margin-top: 24rpx;
+  margin-bottom: 16rpx;
 }
 
 .wrapper {
-    background: var(--bg-color-demo);
-    padding: 40rpx 12rpx 0;
+  background: var(--bg-color-demo);
+  padding: 40rpx 12rpx 0;
 }
 </style>

@@ -1,14 +1,6 @@
 import { getCharacterLength, coalesce } from '../common/utils';
 
-
-export function getInnerMaxLen({
-  allowInputOverMax,
-  maxcharacter,
-  maxlength,
-  dataValue,
-  rawValue,
-  count,
-}) {
+export function getInnerMaxLen({ allowInputOverMax, maxcharacter, maxlength, dataValue, rawValue, count }) {
   if (allowInputOverMax) {
     return -1;
   }
@@ -18,7 +10,6 @@ export function getInnerMaxLen({
   if (!dataValue) {
     return maxcharacter;
   }
-
 
   const { length: realCount } = getCharacterLength('maxcharacter', rawValue, Infinity);
 
@@ -32,7 +23,7 @@ export function getInnerMaxLen({
     allowInputOverMax ? Infinity : maxcharacter,
   );
 
-  const extra = (coalesce(count, computedCount)) - dataValue.length;
+  const extra = coalesce(count, computedCount) - dataValue.length;
 
   return maxcharacter - extra;
 }

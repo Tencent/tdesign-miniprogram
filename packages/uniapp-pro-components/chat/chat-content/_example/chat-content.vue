@@ -1,9 +1,6 @@
 <template>
   <view>
-    <t-demo-navbar
-      class="demo-navbar"
-      title="ChatContent"
-    />
+    <t-demo-navbar class="demo-navbar" title="ChatContent" />
     <view class="demo">
       <t-demo-header
         title="ChatContent 对话正文"

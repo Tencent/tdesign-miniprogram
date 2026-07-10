@@ -66,6 +66,12 @@ value | String / Number / Array | - | 当前选中标签的索引。支持语法
 default-value | String / Number / Array | - | 当前选中标签的索引。非受控属性。TS 类型：`string \| number \| Array<string \| number>` | N
 z-index | Number | 1 | 标签栏层级 | N
 
+### TabBar Events
+
+名称 | 参数 | 描述
+-- | -- | --
+change | `(context: { value: string \| number })` | 选中标签切换时触发
+
 ### TabBar External Classes
 
 类名 | 描述
@@ -80,19 +86,21 @@ t-class | 根节点样式类
 custom-style | Object | - | 自定义样式 | N
 badge-props | Object | {} | 图标右上角提示信息。TS 类型：`BadgeProps`，[Badge API Documents](./badge?tab=api)。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/tab-bar-item/type.ts) | N
 icon | String / Object | - | 图标名称。传入对象时透传至 Icon 组件 | N
+link-type | String | redirectTo | 页面跳转类型。可选项：redirectTo/switchTab/reLaunch/navigateTo | N
 sub-tab-bar | Array | - | 二级菜单。TS 类型：`SubTabBarItem[] ` `interface SubTabBarItem { value: string; label: string }`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/tab-bar-item/type.ts) | N
+url | String | - | 点击后跳转的页面路径, 需要以 `/` 开头 | N
 value | String / Number | - | 标识符 | N
 
 ### TabBarItem Slots
 
 名称 | 描述
 -- | --
-icon | 图标插槽，用于自定义图标区域内容
+icon | 自定义 `icon` 显示内容
 
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-tab-bar-bg-color | @bg-color-container | -
 --td-tab-bar-border-color | @border-level-1-color | -

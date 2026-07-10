@@ -55,6 +55,6 @@ t-class-text | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-pull-down-refresh-color | @text-color-placeholder | -

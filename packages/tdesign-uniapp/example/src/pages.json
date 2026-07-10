@@ -46,6 +46,9 @@
       "path": "pages-more/col/col"
     },
     {
+      "path": "pages-more/paragraph/paragraph"
+    },
+    {
       "path": "pages-more/back-top/back-top"
     },
     {
@@ -109,6 +112,9 @@
       "path": "pages-more/result/result"
     },
     {
+      "path": "pages-more/segmented/segmented"
+    },
+    {
       "path": "pages-more/skeleton/skeleton"
     },
     {
@@ -116,6 +122,9 @@
     },
     {
       "path": "pages-more/swiper/swiper"
+    },
+    {
+      "path": "pages-more/table/table"
     },
     {
       "path": "pages-more/tag/tag"
@@ -452,7 +461,7 @@
   "globalStyle": {
     "pageOrientation": "portrait",
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "TDesign UniApp",
+    "navigationBarTitleText": "TDesign Uniapp",
     "backgroundColor": "#F8F8F8",
     "navigationStyle": "custom"
   },
@@ -482,6 +491,10 @@
       {
         "name": "layout",
         "pathName": "pages-more/col/col"
+      },
+      {
+        "name": "typography",
+        "pathName": "pages-more/paragraph/paragraph"
       },
       {
         "name": "back-top",
@@ -568,6 +581,10 @@
         "pathName": "pages-more/result/result"
       },
       {
+        "name": "segmented",
+        "pathName": "pages-more/segmented/segmented"
+      },
+      {
         "name": "skeleton",
         "pathName": "pages-more/skeleton/skeleton"
       },
@@ -578,6 +595,10 @@
       {
         "name": "swiper",
         "pathName": "pages-more/swiper/swiper"
+      },
+      {
+        "name": "table",
+        "pathName": "pages-more/table/table"
       },
       {
         "name": "tag",

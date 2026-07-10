@@ -1,19 +1,7 @@
 <template>
   <view class="loading-container-flex">
-    <t-loading
-      v-if="!skylineRender"
-      theme="circular"
-      size="40rpx"
-      text="加载中..."
-      t-class="wrapper"
-    />
-    <t-loading
-      theme="spinner"
-      size="40rpx"
-      text="加载中..."
-      inherit-color
-      t-class="wrapper"
-    />
+    <t-loading v-if="!skylineRender" theme="circular" size="40rpx" text="加载中..." t-class="wrapper" />
+    <t-loading theme="spinner" size="40rpx" text="加载中..." inherit-color t-class="wrapper" />
   </view>
 </template>
 
@@ -29,8 +17,7 @@ export default {
   },
   mixins: [SkylineBehavior],
   data() {
-    return {
-    };
+    return {};
   },
   created() {},
   methods: {},
@@ -38,13 +25,13 @@ export default {
 </script>
 <style>
 .loading-container-flex {
-    display: flex;
-    align-items: center;
-    color: #000;
+  display: flex;
+  align-items: center;
+  color: #000;
 }
 
 .wrapper {
-    display: flex;
-    margin-right: 64px;
+  display: flex;
+  margin-right: 64px;
 }
 </style>

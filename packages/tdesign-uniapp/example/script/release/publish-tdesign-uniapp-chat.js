@@ -1,5 +1,6 @@
-const { publishCore } = require('./publish-core');
 const path = require('path');
+
+const { publishCore } = require('./publish-core');
 
 const PUBLISH_DIR = path.resolve(__dirname, '../../../../npm_dist');
 

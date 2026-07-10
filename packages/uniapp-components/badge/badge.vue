@@ -13,23 +13,15 @@
     >
       <!-- #ifdef H5 -->
 
-      <slot
-        v-if="!content"
-        :class="classPrefix + '__content-slot'"
-      />
+      <slot v-if="!content" :class="classPrefix + '__content-slot'" />
       <!-- #endif -->
 
       <!-- 小程序下在 slot 下加 :class 属性，会导致渲染失败 -->
       <!-- #ifndef H5 -->
-      <slot
-        v-if="!content"
-      />
+      <slot v-if="!content" />
       <!-- #endif -->
 
-      <text
-        v-else
-        :class="classPrefix + '__content-text'"
-      >
+      <text v-else :class="classPrefix + '__content-text'">
         {{ content }}
       </text>
     </view>
@@ -38,42 +30,30 @@
       :id="descriptionID"
       :aria-hidden="true"
       :aria-label="ariaLabel || tools.getBadgeAriaLabel({ dot: dot, count: count, maxCount: maxCount })"
-      :class="[
-        getBadgeInnerClass + ' ' + prefix + '-has-count ',
-        tClassCount
-      ]"
+      :class="[getBadgeInnerClass + ' ' + prefix + '-has-count ', tClassCount]"
       :style="'' + tools._style([getBadgeStyles])"
     >
       <view :class="classPrefix + '__count'">
         <template v-if="isShowBadge">
           {{ getBadgeValue }}
         </template>
-        <slot
-          else
-          name="count"
-        />
+        <slot else name="count" />
       </view>
     </view>
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+
 import { uniqueFactory, getRect } from '../common/utils';
 import tools from '../common/utils.wxs';
 
-import {
-  getBadgeValue,
-  getBadgeStyles,
-  getBadgeInnerClass,
-  isShowBadge,
-} from './computed.js';
-
+import { getBadgeValue, getBadgeStyles, getBadgeInnerClass, isShowBadge } from './computed.js';
+import props from './props';
 
 const name = `${prefix}-badge`;
 const getUniqueID = uniqueFactory('badge');
-
 
 export default {
   ...uniComponent({
@@ -81,11 +61,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-count`,
-      `${prefix}-class-content`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-count`, `${prefix}-class-content`],
     props: {
       ...props,
     },

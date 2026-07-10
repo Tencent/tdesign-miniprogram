@@ -1,9 +1,5 @@
 <template>
-  <view
-    :class="classPrefix"
-    :style="'' + tools._style([customStyle])"
-    @click.stop
-  >
+  <view :class="classPrefix" :style="'' + tools._style([customStyle])" @click.stop>
     <block v-if="status === 'error' || content.type === 'text'">
       <view :class="classPrefix + '__' + role + ' ' + classPrefix + '__' + status">
         <view class="_pre">
@@ -16,6 +12,7 @@
         <t-chat-markdown
           :content="textInfo"
           :options="markdownProps && markdownProps.options"
+          :streaming="markdownProps && markdownProps.streaming"
           @click="onClick"
         />
       </view>
@@ -23,14 +20,16 @@
   </view>
 </template>
 <script>
-import TChatMarkdown from '../chat-markdown/chat-markdown.vue';
 import { prefix } from '@tdesign/uniapp/common/config';
-import props from './props';
-import tools from '@tdesign/uniapp/common/utils.wxs';
+
 import { uniComponent } from '@tdesign/uniapp/common/src/index';
+import tools from '@tdesign/uniapp/common/utils.wxs';
+
+import TChatMarkdown from '../chat-markdown/chat-markdown.vue';
+
+import props from './props';
 
 const name = `${prefix}-chat-content`;
-
 
 export default {
   components: {
@@ -47,9 +46,7 @@ export default {
       ...props,
     },
 
-    emits: [
-      'click',
-    ],
+    emits: ['click'],
     data() {
       return {
         classPrefix: name,
@@ -79,7 +76,7 @@ export default {
           '<': '&lt;',
           '>': '&gt;',
           '"': '&quot;',
-          '\'': '&#39;',
+          "'": '&#39;',
         };
         return escapeReplacements[ch];
       },
@@ -99,7 +96,7 @@ export default {
       },
 
       setTextInfo() {
-      // error 状态下统一按纯文本处理，避免走 markdown 渲染
+        // error 状态下统一按纯文本处理，避免走 markdown 渲染
         if (this.content.type === 'text' || this.status === 'error') {
           this.textInfo = this.escape(this.content.data || '');
         } else {
@@ -113,6 +110,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./chat-content.css"></style>

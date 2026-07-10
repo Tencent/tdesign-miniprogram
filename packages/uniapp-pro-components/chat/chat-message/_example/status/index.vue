@@ -24,7 +24,6 @@
 <script>
 import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
 
-
 export default {
   components: {
     TChatMessage,
@@ -49,14 +48,13 @@ export default {
 </script>
 <style>
 .chat-example {
-    display: flex;
-    flex-direction: column;
-    gap: 32rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
 }
 
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx 32rpx 0 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx 32rpx 0 32rpx;
 }
-
 </style>

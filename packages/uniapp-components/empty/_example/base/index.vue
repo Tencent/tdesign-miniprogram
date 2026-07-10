@@ -1,9 +1,6 @@
 <template>
   <view>
-    <t-empty
-      icon="info-circle-filled"
-      description="描述文字"
-    />
+    <t-empty icon="info-circle-filled" description="描述文字" />
   </view>
 </template>
 
@@ -20,5 +17,4 @@ export default {
   methods: {},
 };
 </script>
-<style>
-</style>
+<style></style>

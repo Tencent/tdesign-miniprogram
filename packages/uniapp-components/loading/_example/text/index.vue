@@ -1,9 +1,6 @@
 <template>
   <view>
-    <t-loading
-      :indicator="false"
-      text="加载中..."
-    />
+    <t-loading :indicator="false" text="加载中..." />
   </view>
 </template>
 
@@ -20,5 +17,4 @@ export default {
   methods: {},
 };
 </script>
-<style>
-</style>
+<style></style>

@@ -1,12 +1,6 @@
 <template>
   <view>
-    <t-input
-      class="custom-class"
-      label="标签文字"
-      placeholder="请输入文字"
-      tips="最大输入10个字符"
-      :maxlength="10"
-    />
+    <t-input class="custom-class" label="标签文字" placeholder="请输入文字" tips="最大输入10个字符" :maxlength="10" />
     <t-input
       class="custom-class"
       label="标签文字"
@@ -32,6 +26,6 @@ export default {
 </script>
 <style>
 .custom-class {
-    --td-input-align-items: start;
+  --td-input-align-items: start;
 }
 </style>

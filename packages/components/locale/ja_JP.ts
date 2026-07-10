@@ -16,6 +16,8 @@ export default {
   cascader: {
     title: 'タイトル',
     placeholder: 'オプションを選択',
+    filterPlaceholder: '検索',
+    empty: '該当する項目はありません',
   },
   dropdownMenu: {
     reset: 'リセット',
@@ -95,6 +97,11 @@ export default {
     skip: 'スキップ',
     finish: '完了',
     back: '戻る',
+  },
+  typography: {
+    expandText: 'もっと拡大する',
+    collapseText: '畳む',
+    copiedText: 'コピー成功',
   },
   qrcode: {
     expiredText: '期限切れ',

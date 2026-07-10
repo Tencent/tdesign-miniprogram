@@ -11,7 +11,7 @@ index | String / Number | - | \- | N
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-indexes-anchor-active-bg-color | @bg-color-container | -
 --td-indexes-anchor-active-color | @brand-color | -

@@ -1,28 +1,13 @@
 <template>
   <view>
-    <t-slider
-      :value="35"
-      disabled
-    />
+    <t-slider :value="35" disabled />
 
     <view class="wrapper">
-      <t-slider
-        show-extreme-value
-        label="${value}"
-        :value="[40, 60]"
-        range
-        disabled
-      />
+      <t-slider show-extreme-value label="${value}" :value="[40, 60]" range disabled />
     </view>
 
     <view class="wrapper">
-      <t-slider
-        range
-        :value="[20, 60]"
-        :marks="marks"
-        :step="20"
-        disabled
-      />
+      <t-slider range :value="[20, 60]" :marks="marks" :step="20" disabled />
     </view>
   </view>
 </template>
@@ -51,8 +36,8 @@ export default {
 </script>
 <style>
 .wrapper {
-    margin-top: 32rpx;
-    background: var(--bg-color-demo);
-    padding: 40rpx 12rpx 0;
+  margin-top: 32rpx;
+  background: var(--bg-color-demo);
+  padding: 40rpx 12rpx 0;
 }
 </style>

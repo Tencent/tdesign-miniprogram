@@ -11,10 +11,7 @@
     >
       <view :class="classPrefix + '__icon--left'">
         <slot name="icon" />
-        <block
-          v-if="innerIcon"
-          name="icon"
-        >
+        <block v-if="innerIcon" name="icon">
           <t-icon
             :custom-style="innerIcon.style || ''"
             :t-class="tClassIcon"
@@ -63,15 +60,9 @@
         @complete="handleLinkClick"
       />
       <slot name="link" />
-      <view
-        :class="classPrefix + '__icon--right'"
-        @click="handleClose"
-      >
+      <view :class="classPrefix + '__icon--right'" @click="handleClose">
         <slot name="close-btn" />
-        <block
-          v-if="iCloseBtn"
-          name="icon"
-        >
+        <block v-if="iCloseBtn" name="icon">
           <t-icon
             :custom-style="iCloseBtn.style || ''"
             :t-class="tClassCloseBtn"
@@ -89,16 +80,17 @@
   </view>
 </template>
 <script>
+import { prefix } from '../common/config';
+import { uniComponent } from '../common/src/index';
+import { getRect, unitConvert, calcIcon } from '../common/utils';
+import tools from '../common/utils.wxs';
+import { isObject } from '../common/validator';
 import TIcon from '../icon/icon';
 import TLink from '../link/link';
-import { uniComponent } from '../common/src/index';
-import { prefix } from '../common/config';
-import { getRect, unitConvert, calcIcon } from '../common/utils';
-import { isObject } from '../common/validator';
-import tools from '../common/utils.wxs';
-import { getMessageStyles } from './computed.js';
+
 import { messageDefaultData } from '../message/config';
 
+import { getMessageStyles } from './computed.js';
 
 const SHOW_DURATION = 400;
 const name = `${prefix}-message`;
@@ -118,6 +110,7 @@ const rawData = {
   fadeClass: '',
 
   closeTimeoutContext: 0,
+  hideTimeoutContext: 0,
   nextAnimationContext: 0,
   resetAnimation: uni.createAnimation({
     duration: 0,
@@ -142,13 +135,8 @@ export default {
       `${prefix}-class-link`,
       `${prefix}-class-close-btn`,
     ],
-    props: {
-    },
-    emits: [
-      'duration-end',
-      'close-btn-click',
-      'link-click',
-    ],
+    props: {},
+    emits: ['duration-end', 'close-btn-click', 'link-click'],
     data() {
       return {
         ...rawData,
@@ -190,7 +178,6 @@ export default {
         },
         immediate: true,
       },
-
 
       link: {
         handler(v) {
@@ -245,10 +232,7 @@ export default {
           this.loop -= 1;
         } else if (this.loop === 0) {
           // 动画回到初始位置
-          this.animation = this.resetAnimation
-            .translateX(0)
-            .step()
-            .export();
+          this.animation = this.resetAnimation.translateX(0).step().export();
           return;
         }
 
@@ -259,8 +243,7 @@ export default {
         const warpID = `#${name}__text-wrap`;
         const nodeID = `#${name}__text`;
         Promise.all([getRect(this, nodeID), getRect(this, warpID)]).then(([nodeRect, wrapRect]) => {
-          this.animation = this.resetAnimation.translateX(wrapRect.width).step()
-            .export();
+          this.animation = this.resetAnimation.translateX(wrapRect.width).step().export();
 
           setTimeout(() => {
             const durationTime = ((nodeRect.width + wrapRect.width) / speeding) * 1000;
@@ -317,8 +300,7 @@ export default {
                 this.fadeClass = '';
               });
             })
-            .catch(() => {
-            });
+            .catch(() => {});
         });
       },
 
@@ -326,9 +308,10 @@ export default {
         this.reset();
         this.fadeClass = `${name}__fade`;
 
-        setTimeout(() => {
+        this.hideTimeoutContext = setTimeout(() => {
           this.visible = false;
           this.animation = [];
+          this.hideTimeoutContext = 0;
         }, SHOW_DURATION);
         if (typeof this.onHide === 'function') {
           this.onHide();
@@ -342,6 +325,12 @@ export default {
         }
         clearTimeout(this.closeTimeoutContext);
         this.closeTimeoutContext = 0;
+        // 同时清掉上一次 hide 中用于延迟将 visible 置 false 的定时器，
+        // 避免连续快速调用 hide 后又调 show 时，旧的 timeout 把新消息 hide 掉。
+        if (this.hideTimeoutContext) {
+          clearTimeout(this.hideTimeoutContext);
+          this.hideTimeoutContext = 0;
+        }
       },
 
       handleClose() {

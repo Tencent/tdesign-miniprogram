@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import CheckboxDemo from '../checkbox.vue';
 export default {
   components: {

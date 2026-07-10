@@ -16,6 +16,8 @@ export default {
   cascader: {
     title: '제목',
     placeholder: '옵션 선택',
+    filterPlaceholder: '검색',
+    empty: '일치하는 항목이 없습니다',
   },
   dropdownMenu: {
     reset: '초기화',
@@ -95,6 +97,11 @@ export default {
     skip: '건너뛰기',
     finish: '완료',
     back: '뒤로',
+  },
+  typography: {
+    expandText: '더보기',
+    collapseText: '접기',
+    copiedText: '복사 성공',
   },
   qrcode: {
     expiredText: '만료됨',

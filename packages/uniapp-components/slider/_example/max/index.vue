@@ -1,13 +1,6 @@
 <template>
   <view class="wrapper">
-    <t-slider
-      :default-value="30"
-      :min="20"
-      :max="100"
-      :step="20"
-      :marks="marks"
-      @change="handleChange"
-    />
+    <t-slider :default-value="30" :min="20" :max="100" :step="20" :marks="marks" @change="handleChange" />
   </view>
 </template>
 
@@ -38,7 +31,7 @@ export default {
 </script>
 <style>
 .wrapper {
-    padding: 40rpx 12rpx 0;
-    background: var(--bg-color-demo);
+  padding: 40rpx 12rpx 0;
+  background: var(--bg-color-demo);
 }
 </style>

@@ -1,6 +1,11 @@
 {
   "component": true,
   "styleIsolation": "apply-shared",
+  "componentGenerics": {
+    "tail-component": {
+      "default": "tdesign-miniprogram/chat-markdown/chat-markdown-tail/chat-markdown-tail"
+    }
+  },
   "usingComponents": {
     "t-chat-markdown": "tdesign-miniprogram/chat-markdown/chat-markdown"
   }

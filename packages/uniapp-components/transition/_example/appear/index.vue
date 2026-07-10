@@ -1,20 +1,9 @@
 <template>
   <view>
-    <t-button
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="onTriggerClick"
-    >
-      Toggle attach
-    </t-button>
+    <t-button size="large" variant="outline" block theme="primary" @click="onTriggerClick"> Toggle attach </t-button>
 
     <view v-if="visible">
-      <t-transition
-        visible
-        appear
-      >
+      <t-transition visible appear>
         <view class="block" />
       </t-transition>
     </view>
@@ -22,7 +11,6 @@
 </template>
 
 <script>
-
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TTransition from '@tdesign/uniapp/transition/transition.vue';
 export default {
@@ -46,5 +34,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

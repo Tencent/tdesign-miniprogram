@@ -1,17 +1,26 @@
 <template>
   <view
     :style="'' + tools._style([customStyle])"
-    :class="'' + tools.cls(classPrefix, [['border', !borderless], ['readonly', readonly], ['disabled', disabled]])
-      + ' ' + classPrefix + '--layout-' + layout + ' ' + tClass"
+    :class="
+      '' +
+      tools.cls(classPrefix, [
+        ['border', !borderless],
+        ['readonly', readonly],
+        ['disabled', disabled],
+      ]) +
+      ' ' +
+      classPrefix +
+      '--layout-' +
+      layout +
+      ' ' +
+      tClass
+    "
     aria-describedby
   >
     <view :class="classPrefix + '__wrap--prefix'">
       <view :class="classPrefix + '__icon--prefix'">
         <slot name="prefix-icon" />
-        <block
-          v-if="iPrefixIcon"
-          name="icon"
-        >
+        <block v-if="iPrefixIcon" name="icon">
           <t-icon
             :custom-style="iPrefixIcon.style || ''"
             :t-class="tClassPrefixIcon"
@@ -26,10 +35,7 @@
           />
         </block>
       </view>
-      <view
-        :class="classPrefix + '__label ' + tClassLabel"
-        aria-hidden
-      >
+      <view :class="classPrefix + '__label ' + tClassLabel" aria-hidden>
         <slot name="label" />
         <block v-if="label">
           {{ label }}
@@ -37,17 +43,16 @@
       </view>
     </view>
     <view :class="classPrefix + '__wrap'">
-      <view
-        :class="classPrefix + '__content ' + classPrefix + '--' + status"
-        @click="onClick"
-      >
+      <view :class="classPrefix + '__content ' + classPrefix + '--' + status" @click="onClick">
         <input
-          :class="''+ getInputClass(classPrefix, suffix, align, disabled) + ' ' + tClassInput"
+          :class="'' + getInputClass(classPrefix, suffix, align, disabled) + ' ' + tClassInput"
           :maxlength="allowInputOverMax ? -1 : maxlength"
           :disabled="disabled || readonly"
           :placeholder="placeholder"
           :placeholder-style="placeholderStyle"
-          :placeholder-class="tools.cls(classPrefix + '__placeholder', [['disabled', disabled]]) + ' ' + placeholderClass"
+          :placeholder-class="
+            tools.cls(classPrefix + '__placeholder', [['disabled', disabled]]) + ' ' + placeholderClass
+          "
           :value="dataValue"
           :password="type === 'password'"
           :type="type === 'password' ? 'text' : type"
@@ -79,7 +84,7 @@
           @confirm="onConfirm"
           @keyboardheightchange="onKeyboardHeightChange"
           @nicknamereview="onNickNameReview"
-        >
+        />
         <view
           v-if="iClearIcon && dataValue && dataValue.length && showClearIcon"
           :class="classPrefix + '__wrap--clearable-icon'"
@@ -98,24 +103,15 @@
             @click="iClearIcon.click || ''"
           />
         </view>
-        <view
-          :class="classPrefix + '__wrap--suffix ' + tClassSuffix"
-          @click="onSuffixClick"
-        >
+        <view :class="classPrefix + '__wrap--suffix ' + tClassSuffix" @click="onSuffixClick">
           <text v-if="suffix">
             {{ suffix }}
           </text>
           <slot name="suffix" />
         </view>
-        <view
-          :class="classPrefix + '__wrap--suffix-icon'"
-          @click="onSuffixIconClick"
-        >
+        <view :class="classPrefix + '__wrap--suffix-icon'" @click="onSuffixIconClick">
           <slot name="suffix-icon" />
-          <block
-            v-if="iSuffixIcon"
-            name="icon"
-          >
+          <block v-if="iSuffixIcon" name="icon">
             <t-icon
               :custom-style="iSuffixIcon.style || ''"
               :t-class="tClassSuffixIcon"
@@ -143,19 +139,18 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import { getCharacterLength, calcIcon, coalesce, nextTick } from '../common/utils';
-import { isDef } from '../common/validator';
-import { getInputClass } from './computed.js';
-import tools from '../common/utils.wxs';
 import { RELATION_MAP } from '../common/relation/parent-map';
+import { uniComponent } from '../common/src/index';
+import { getCharacterLength, calcIcon, coalesce, nextTick } from '../common/utils';
+import tools from '../common/utils.wxs';
+import { isDef } from '../common/validator';
+import TIcon from '../icon/icon';
 
+import { getInputClass } from './computed.js';
+import props from './props';
 
 const name = `${prefix}-input`;
-
 
 export default {
   components: {
@@ -239,8 +234,7 @@ export default {
           nextTick().then(() => {
             this.dataValue = v;
 
-            if (this[RELATION_MAP.FormKey]
-            && this[RELATION_MAP.FormKey].onValueChange) {
+            if (this[RELATION_MAP.FormKey] && this[RELATION_MAP.FormKey].onValueChange) {
               this[RELATION_MAP.FormKey].onValueChange(v);
             }
           });
@@ -256,7 +250,7 @@ export default {
     methods: {
       getInputClass,
       updateValue(value) {
-      // this.rawValue = value;
+        // this.rawValue = value;
         this.dataValue = value;
 
         const { allowInputOverMax, maxcharacter, maxlength } = this;
@@ -304,8 +298,8 @@ export default {
       },
 
       emitChange(data) {
-        this.$emit('change', data);
         this.$emit('update:value', data.value);
+        this.$emit('change', data);
       },
 
       onFocus(e) {
@@ -316,8 +310,7 @@ export default {
       onBlur(e) {
         this.updateClearIconVisible();
 
-        if (this[RELATION_MAP.FormKey]
-        && this[RELATION_MAP.FormKey].onBlur) {
+        if (this[RELATION_MAP.FormKey] && this[RELATION_MAP.FormKey].onBlur) {
           this[RELATION_MAP.FormKey].onBlur(this.dataValue);
         }
 
@@ -344,8 +337,9 @@ export default {
       },
 
       clearInput(e) {
+        this.updateValue('');
+        this.emitChange({ value: this.dataValue });
         this.$emit('clear', e.detail);
-        this.dataValue = '';
       },
 
       onKeyboardHeightChange(e) {
@@ -362,7 +356,6 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./input.css"></style>
 <style scoped>

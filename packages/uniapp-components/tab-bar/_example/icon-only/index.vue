@@ -1,13 +1,6 @@
 <template>
   <view>
-    <t-tab-bar
-      t-class="t-tab-bar"
-      :value="value"
-      theme="tag"
-      :split="false"
-      :fixed="false"
-      @change="onChange"
-    >
+    <t-tab-bar t-class="t-tab-bar" :value="value" theme="tag" :split="false" :fixed="false" @change="onChange">
       <t-tab-bar-item
         v-for="(item, index) in list"
         :key="index"
@@ -62,5 +55,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

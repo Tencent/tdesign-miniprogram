@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import DemoAvatar from '../avatar.vue';
 export default {
   components: {

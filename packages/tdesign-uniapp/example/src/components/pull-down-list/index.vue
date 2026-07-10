@@ -1,9 +1,12 @@
 <template>
   <view
     class="pullDownList"
-    :class="[tClass, {
-      'actived': childBoxHeight > 0
-    }]"
+    :class="[
+      tClass,
+      {
+        actived: childBoxHeight > 0,
+      },
+    ]"
   >
     <view
       v-if="!!childArr.length"
@@ -15,32 +18,12 @@
       <view class="name">
         {{ name }}
       </view>
-      <t-icon
-        :name="icon"
-        size="48rpx"
-        color="#A6A6A6"
-        t-class="icon"
-        aria-hidden
-      />
+      <t-icon :name="icon" size="48rpx" color="#A6A6A6" t-class="icon" aria-hidden />
     </view>
-    <view
-      class="childBox"
-      :style="''+`height: ${ childBoxHeight }rpx`"
-      :aria-hidden="!childBoxHeight"
-    >
-      <view
-        v-for="item of childArr"
-        :key="item.name"
-        class="child"
-        aria-role="button"
-        @click="() => clickChild(item)"
-      >
+    <view class="childBox" :style="'' + `height: ${childBoxHeight}rpx`" :aria-hidden="!childBoxHeight">
+      <view v-for="item of childArr" :key="item.name" class="child" aria-role="button" @click="() => clickChild(item)">
         {{ item.name }} {{ item.label }}
-        <t-icon
-          name="chevron-right"
-          color="var(--td-text-color-placeholder)"
-          aria-hidden
-        />
+        <t-icon name="chevron-right" color="var(--td-text-color-placeholder)" aria-hidden />
       </view>
     </view>
   </view>
@@ -71,16 +54,14 @@ export default {
     },
     childArr: {
       type: Array,
-      default: () => ([]),
+      default: () => [],
     },
     tClass: {
       type: String,
       default: '',
     },
   },
-  emits: [
-    'click',
-  ],
+  emits: ['click'],
   data() {
     return {
       childBoxHeight: 0,
@@ -88,18 +69,13 @@ export default {
   },
   methods: {
     switchHandle() {
-      this.childBoxHeight = this.childBoxHeight > 0
-        ? 0
-        : this.childArr.length * itemHeight;
+      this.childBoxHeight = this.childBoxHeight > 0 ? 0 : this.childArr.length * itemHeight;
     },
-
 
     clickChild(item) {
       this.$emit('click', item);
     },
   },
 };
-
-
 </script>
 <style lang="less" src="./index.less" scoped></style>

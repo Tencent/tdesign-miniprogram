@@ -38,7 +38,7 @@ title | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-drawer-bg-color | @bg-color-container | -
 --td-drawer-border-color | @border-level-1-color | -

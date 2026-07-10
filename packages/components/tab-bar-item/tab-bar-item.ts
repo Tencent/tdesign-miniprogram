@@ -77,7 +77,7 @@ export default class TabBarItem extends SuperComponent {
       });
     },
     toggle() {
-      const { currentName, hasChildren, isSpread } = this.data;
+      const { currentName, hasChildren, isSpread, url, linkType } = this.data;
 
       if (hasChildren) {
         this.setData({
@@ -86,6 +86,10 @@ export default class TabBarItem extends SuperComponent {
       }
       this.$parent.updateValue(currentName);
       this.$parent.changeOtherSpread(currentName);
+
+      if (url && wx[linkType]) {
+        wx[linkType]({ url });
+      }
     },
     selectChild(event) {
       const { value } = event.target.dataset;

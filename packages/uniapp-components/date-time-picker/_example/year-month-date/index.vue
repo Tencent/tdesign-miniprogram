@@ -23,7 +23,7 @@
       :filter="filter"
       :formatter="formatter"
       :popup-props="popupProps"
-      @update:visible="(e) => dateVisible = e"
+      @update:visible="(e) => (dateVisible = e)"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"
@@ -35,7 +35,20 @@
 <script>
 import TCell from '@tdesign/uniapp/cell/cell.vue';
 import TDateTimePicker from '@tdesign/uniapp/date-time-picker/date-time-picker.vue';
-const calendarMonth = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+const calendarMonth = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 export default {
   components: {
     TCell,
@@ -128,10 +141,10 @@ export default {
 </script>
 <style>
 :deep(.panel-item) {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 
 :deep(.panel-item::after) {
-    border: 0;
+  border: 0;
 }
 </style>

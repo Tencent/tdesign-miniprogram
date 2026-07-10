@@ -109,9 +109,7 @@ export default class TreeSelect extends SuperComponent {
       if (status === 'init') {
         const _value = customValue || value;
         const scrollIntoView = Array.isArray(_value)
-          ? _value.map((item) => {
-              return Array.isArray(item) ? item[0] : item;
-            })
+          ? _value.map((item) => (Array.isArray(item) ? item[0] : item))
           : [_value];
         this.setData({
           scrollIntoView,

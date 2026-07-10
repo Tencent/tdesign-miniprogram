@@ -1,23 +1,19 @@
 <template>
   <view>
-    <view
-      v-if="showControls"
-      :class="classPrefix + '__btn ' + ' ' + tClass"
-      :style="'' + tools._style([customStyle])"
-    >
+    <view v-if="showControls" :class="classPrefix + '__btn ' + ' ' + tClass" :style="'' + tools._style([customStyle])">
       <view
         :class="classPrefix + '__btn--prev'"
         data-dir="prev"
         aria-role="button"
         aria-label="上一张"
-        @click="(e) => nav(e, { dir: 'prev'})"
+        @click="(e) => nav(e, { dir: 'prev' })"
       />
       <view
         :class="classPrefix + '__btn--next'"
         data-dir="next"
         aria-role="button"
         aria-label="下一张"
-        @click="(e) => nav(e, { dir: 'next'})"
+        @click="(e) => nav(e, { dir: 'next' })"
       />
     </view>
     <view
@@ -25,36 +21,50 @@
       :style="'' + tools._style([customStyle])"
       :class="
         tClass +
-          ' ' + classPrefix +
-          ' ' + classPrefix + '--' + direction +
-          ' ' + classPrefix + '__' + type +
-          ' ' + classPrefix + '--' + paginationPosition
+        ' ' +
+        classPrefix +
+        ' ' +
+        classPrefix +
+        '--' +
+        direction +
+        ' ' +
+        classPrefix +
+        '__' +
+        type +
+        ' ' +
+        classPrefix +
+        '--' +
+        paginationPosition
       "
     >
       <block v-if="type === 'dots' || type === 'dots-bar'">
         <view
           v-for="(item, idx) in total"
           :key="idx"
-          :class="[classPrefix + '__' + type + '-item', current === idx ? classPrefix + '__' + type + '-item' + '--active' : '', direction ? classPrefix + '__' + type + '-item' + '--' + direction : '']"
+          :class="[
+            classPrefix + '__' + type + '-item',
+            current === idx ? classPrefix + '__' + type + '-item' + '--active' : '',
+            direction ? classPrefix + '__' + type + '-item' + '--' + direction : '',
+          ]"
         />
       </block>
-      <block v-if="type === 'fraction'">
-        {{ current + 1 }}/{{ total }}
-      </block>
+      <block v-if="type === 'fraction'"> {{ current + 1 }}/{{ total }} </block>
     </view>
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+
+import tools from '../common/utils.wxs';
+
+import props from './props';
 
 const name = `${prefix}-swiper-nav`;
 
 export default {
-  components: { },
+  components: {},
   ...uniComponent({
     name,
     options: {
@@ -65,9 +75,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-      'nav-btn-change',
-    ],
+    emits: ['nav-btn-change'],
     data() {
       return {
         prefix,

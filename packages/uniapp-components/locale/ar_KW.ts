@@ -121,6 +121,11 @@ export default {
     finish: 'أنهي',
     back: 'العودة',
   },
+  typography: {
+    expandText: 'توسيع',
+    collapseText: 'طي',
+    copiedText: 'النسخ اكتمل',
+  },
   qrcode: {
     expiredText: 'منتهي الصلاحية',
     refreshText: 'ينعش',

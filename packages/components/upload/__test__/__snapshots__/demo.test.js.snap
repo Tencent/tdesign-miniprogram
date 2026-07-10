@@ -221,3 +221,184 @@ exports[`Upload Upload status demo works fine 1`] = `
   </wx-view>
 </status>
 `;
+
+exports[`Upload Upload theme demo works fine 1`] = `
+<theme>
+  <wx-view
+    class="wrapper"
+  >
+    <wx-view
+      class="upload-demo"
+    >
+      <wx-view
+        class="upload-demo__title"
+      >
+        宫格布局上传
+      </wx-view>
+      <t-upload
+        disabled="{{true}}"
+        draggable="{{true}}"
+        files="{{
+          Array [
+            Object {
+              "name": "loading-file.txt",
+              "status": "loading",
+              "url": "",
+            },
+            Object {
+              "name": "loading-file2.txt",
+              "percent": 68,
+              "status": "loading",
+              "url": "",
+            },
+            Object {
+              "name": "failed-file.txt",
+              "status": "reload",
+              "url": "",
+            },
+            Object {
+              "name": "error-file.txt",
+              "status": "failed",
+              "url": "",
+            },
+            Object {
+              "name": "report.xlsx",
+              "size": 153600,
+              "status": "done",
+              "url": "",
+            },
+            Object {
+              "name": "document.pdf",
+              "size": 327680,
+              "status": "done",
+              "url": "",
+            },
+            Object {
+              "name": "presentation.pptx",
+              "size": 524288,
+              "status": "done",
+              "url": "",
+            },
+            Object {
+              "name": "article.docx",
+              "size": 262144,
+              "status": "done",
+              "url": "",
+            },
+            Object {
+              "name": "image-loading.png",
+              "status": "loading",
+              "type": "image",
+              "url": "https://tdesign.gtimg.com/mobile/demos/upload6.png",
+            },
+            Object {
+              "name": "image-percent.png",
+              "percent": 68,
+              "status": "loading",
+              "type": "image",
+              "url": "https://tdesign.gtimg.com/mobile/demos/upload6.png",
+            },
+            Object {
+              "name": "image-reload.png",
+              "status": "reload",
+              "type": "image",
+              "url": "https://tdesign.gtimg.com/mobile/demos/upload6.png",
+            },
+            Object {
+              "name": "image-failed.png",
+              "status": "failed",
+              "type": "image",
+              "url": "https://tdesign.gtimg.com/mobile/demos/upload6.png",
+            },
+            Object {
+              "name": "image-done.png",
+              "status": "done",
+              "type": "image",
+              "url": "https://tdesign.gtimg.com/mobile/demos/upload6.png",
+            },
+          ]
+        }}"
+        source="messageFile"
+        theme="grid"
+        bind:add="handleGridAdd"
+        bind:drop="handleGridDrop"
+        bind:remove="handleGridRemove"
+      />
+    </wx-view>
+    <wx-view
+      class="upload-demo"
+      style="margin-top: 32rpx"
+    >
+      <wx-view
+        class="upload-demo__title"
+      >
+        列表布局上传
+      </wx-view>
+      <t-upload
+        disabled="{{true}}"
+        draggable="{{true}}"
+        files="{{
+          Array [
+            Object {
+              "name": "Technical Design Document.pdf",
+              "percent": 30,
+              "size": 222208,
+              "status": "loading",
+              "url": "",
+            },
+            Object {
+              "name": "Technical Design Document.pdf",
+              "size": 222208,
+              "status": "failed",
+              "url": "",
+            },
+            Object {
+              "name": "Design Mockup.png",
+              "size": 1048576,
+              "status": "done",
+              "type": "image",
+              "url": "https://tdesign.gtimg.com/mobile/demos/upload6.png",
+            },
+            Object {
+              "name": "Product Demo.mp4",
+              "size": 5242880,
+              "status": "done",
+              "type": "video",
+              "url": "",
+            },
+            Object {
+              "name": "Project Proposal.docx",
+              "size": 131072,
+              "status": "done",
+              "url": "",
+            },
+            Object {
+              "name": "Financial Report.xlsx",
+              "size": 262144,
+              "status": "done",
+              "url": "",
+            },
+            Object {
+              "name": "User Manual.pdf",
+              "size": 524288,
+              "status": "done",
+              "url": "",
+            },
+            Object {
+              "name": "Quarterly Review.pptx",
+              "size": 786432,
+              "status": "done",
+              "url": "",
+            },
+          ]
+        }}"
+        source="messageFile"
+        theme="list"
+        bind:add="handleListAdd"
+        bind:drop="handleListDrop"
+        bind:remove="handleListRemove"
+      />
+    </wx-view>
+  </wx-view>
+</theme>
+`;

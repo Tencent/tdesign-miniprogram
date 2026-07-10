@@ -8,6 +8,7 @@
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
 arrow | Boolean | false | 是否显示右侧箭头 | N
+content-align | String | - | 表单内容对齐方式：左对齐、右对齐，优先级高于 Form.contentAlign。可选项：left/right | N
 help | String | - | 表单项说明内容 | N
 label | String | '' | 字段标签名称 | N
 label-align | String | - | 表单字段标签对齐方式：左对齐、右对齐、顶部对齐。默认使用 Form 的对齐方式，优先级高于 Form.labelAlign。可选项：left/right/top | N
@@ -27,7 +28,7 @@ label | 自定义 `label` 显示内容
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-form-item-border-color | @component-stroke | -
 --td-form-item-border-left-space | @form-item-vertical-padding | -

@@ -7,7 +7,6 @@
     :aria-modal="true"
     aria-role="dialog"
     aria-label="图片查看器"
-    @touchmove.stop.prevent="true"
   >
     <view
       :class="classPrefix + '__mask'"
@@ -15,6 +14,7 @@
       :style="'' + tools._style([backgroundColor && '--td-image-viewer-mask-bg-color: ' + backgroundColor])"
       aria-role="button"
       aria-label="关闭"
+      @touchmove.prevent="() => {}"
       @click="(e) => onClose(e, 'overlay')"
     />
     <block v-if="images && images.length">
@@ -28,32 +28,43 @@
           @change="onSwiperChange"
           @click="(e) => onClose(e, '')"
         >
-          <swiper-item
-            v-for="(item, index) in images"
-            :key="index"
-            :class="classPrefix + '__preview-image'"
-          >
-            <t-image
-              v-if="!lazy || shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes)"
-              :t-class="prefix + '-image--external'"
-              :class="classPrefix + '__image'"
-              :custom-style="(imagesStyle[index] && imagesStyle[index].style) || ''"
-              :data-index="index"
-              :src="item"
-              :mode="(imageProps && imageProps.mode) || 'aspectFit'"
-              :lazy="(imageProps && imageProps.lazy) || false"
-              :loading="(imageProps && imageProps.loading) || 'default'"
-              :shape="(imageProps && imageProps.shape) || 'square'"
-              :webp="(imageProps && imageProps.webp) || false"
-              :show-menu-by-longpress="(imageProps && imageProps.showMenuByLongpress) || false"
-              @load="(e) => onImageLoadSuccess(e, { index })"
-            />
+          <swiper-item v-for="(item, index) in images" :key="index" :class="classPrefix + '__preview-image'">
+            <movable-area :class="classPrefix + '__movable-area'" scale-area @touchmove="onAreaTouchMove">
+              <movable-view
+                :class="classPrefix + '__movable-view'"
+                direction="all"
+                :scale="true"
+                :scale-min="1"
+                :scale-max="maxZoom"
+                :scale-value="index === currentSwiperIndex ? currentScale : 1"
+                :damping="100"
+                :friction="20"
+                :out-of-bounds="false"
+                :disabled="false"
+                @scale="onMovableScale"
+                @tap.stop="onImageDoubleTap(index)"
+              >
+                <t-image
+                  v-if="!lazy || shouldLoadImage(index, currentSwiperIndex, loadedImageIndexes)"
+                  :t-class="prefix + '-image--external'"
+                  :class="classPrefix + '__image'"
+                  :custom-style="(imagesStyle[index] && imagesStyle[index].style) || ''"
+                  :data-index="index"
+                  :src="item"
+                  :mode="(imageProps && imageProps.mode) || 'aspectFit'"
+                  :lazy="(imageProps && imageProps.lazy) || false"
+                  :loading="(imageProps && imageProps.loading) || 'default'"
+                  :shape="(imageProps && imageProps.shape) || 'square'"
+                  :webp="(imageProps && imageProps.webp) || false"
+                  :show-menu-by-longpress="(imageProps && imageProps.showMenuByLongpress) || false"
+                  @load="(e) => onImageLoadSuccess(e, { index })"
+                />
+              </movable-view>
+            </movable-area>
           </swiper-item>
         </swiper>
       </view>
-      <view
-        :class="classPrefix + '__nav'"
-      >
+      <view :class="classPrefix + '__nav'">
         <view
           :class="classPrefix + '__nav-close'"
           aria-role="button"
@@ -61,10 +72,7 @@
           @click.stop.prevent="(e) => onClose(e, '')"
         >
           <slot name="close-btn" />
-          <block
-            v-if="iCloseBtn"
-            name="icon"
-          >
+          <block v-if="iCloseBtn" name="icon">
             <t-icon
               :custom-style="iCloseBtn.style || ''"
               :t-class="iCloseBtn.tClass"
@@ -79,18 +87,10 @@
             />
           </block>
         </view>
-        <view
-          v-if="showIndex"
-          :class="classPrefix + '__nav-index'"
-        >
+        <view v-if="showIndex" :class="classPrefix + '__nav-index'">
           {{ currentSwiperIndex + 1 }}/{{ images.length }}
         </view>
-        <view
-          :class="classPrefix + '__nav-delete'"
-          aria-role="button"
-          aria-label="删除"
-          @click="onDelete"
-        >
+        <view :class="classPrefix + '__nav-delete'" aria-role="button" aria-label="删除" @click="onDelete">
           <slot name="delete-btn" />
           <t-icon
             v-if="iDeleteBtn"
@@ -111,16 +111,18 @@
   </view>
 </template>
 <script>
-import TImage from '../image/image';
-import TIcon from '../icon/icon';
+import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 import { styles, calcIcon, systemInfo } from '../common/utils';
-import { prefix } from '../common/config';
-import props from './props';
+
 import tools from '../common/utils.wxs';
-import { shouldLoadImage } from './computed.js';
+import TIcon from '../icon/icon';
+import TImage from '../image/image';
+
 import useCustomNavbar from '../mixins/using-custom-navbar';
 
+import { shouldLoadImage } from './computed.js';
+import props from './props';
 
 const name = `${prefix}-image-viewer`;
 
@@ -161,6 +163,8 @@ export default {
         iDeleteBtn: null,
         iCloseBtn: null,
         dataVisible: this.visible,
+        currentScale: 1,
+        lastTapTime: 0,
       };
     },
     watch: {
@@ -182,14 +186,14 @@ export default {
 
       deleteBtn: {
         handler(v) {
-          this.iDeleteBtn =  calcIcon(v, 'delete');
+          this.iDeleteBtn = calcIcon(v, 'delete');
         },
         immediate: true,
       },
     },
     created() {
       this.saveScreenSize();
-    // this.calcMaskTop();
+      // this.calcMaskTop();
     },
     mounted() {
       this.init();
@@ -198,9 +202,19 @@ export default {
       shouldLoadImage,
       init() {
         const { visible: dataVisible, images, initialIndex } = this;
-        if (dataVisible && images?.length) {
+        // 重置缩放与图片样式，避免上次双指放大/缩放后的状态被保留
+        const reset = () => {
           this.loadedImageIndexes = [];
-          this.currentSwiperIndex =  initialIndex >= images.length ? images.length - 1 : initialIndex;
+          this.currentScale = 1;
+          this.lastTapTime = 0;
+          this.imagesStyle = {};
+          this.swiperStyle = {};
+        };
+        if (dataVisible && images?.length) {
+          this.currentSwiperIndex = initialIndex >= images.length ? images.length - 1 : initialIndex;
+          reset();
+        } else if (!dataVisible) {
+          reset();
         }
       },
       calcMaskTop() {
@@ -209,7 +223,7 @@ export default {
           const { statusBarHeight } = systemInfo;
 
           if (rect && statusBarHeight) {
-            this.maskTop =  rect.top - statusBarHeight + rect.bottom;
+            this.maskTop = rect.top - statusBarHeight + rect.bottom;
           }
         }
       },
@@ -238,7 +252,7 @@ export default {
           return {
             styleObj: {
               width: '100vw',
-              height: `${(windowWidth / ratio)}px`,
+              height: `${windowWidth / ratio}px`,
             },
           };
         }
@@ -277,7 +291,6 @@ export default {
           this.loadedImageIndexes = [...this.loadedImageIndexes, index];
         }
 
-
         this.swiperStyle = {
           ...originSwiperStyle,
           [index]: {
@@ -297,9 +310,44 @@ export default {
         const {
           detail: { current },
         } = e;
+        // 切换图片时重置缩放，避免上一张的缩放状态影响当前图
+        this.currentScale = 1;
         this.currentSwiperIndex = current;
 
         this._trigger('change', { index: current });
+      },
+
+      onMovableScale(e) {
+        const scale = e?.detail?.scale ?? 1;
+        this.currentScale = scale;
+      },
+
+      onAreaTouchMove(e) {
+        // 当图片处于缩放状态时，阻止 touchmove 冒泡到 swiper，避免误触翻页（H5 端兜底）
+        // movable-view 自身仍会响应拖动/pinch，不受影响
+        // 注：小程序端原生 swiper 滑动手势底层接管，stopPropagation 无效，留作平台限制
+        if (this.currentScale > 1) {
+          if (e && typeof e.stopPropagation === 'function') {
+            e.stopPropagation();
+          }
+          if (e && typeof e.preventDefault === 'function') {
+            e.preventDefault();
+          }
+        }
+      },
+
+      onImageDoubleTap(index) {
+        // 仅响应当前图片，避免影响其它 swiper-item
+        if (index !== this.currentSwiperIndex) return;
+        const now = Date.now();
+        if (now - this.lastTapTime < 300) {
+          // 双击：在 1 与 maxZoom 之间切换
+          const max = Number(this.maxZoom) || 3;
+          this.currentScale = this.currentScale > 1 ? 1 : max;
+          this.lastTapTime = 0;
+        } else {
+          this.lastTapTime = now;
+        }
       },
 
       onClose(e, source) {

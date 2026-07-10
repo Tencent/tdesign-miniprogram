@@ -73,25 +73,21 @@
   </view>
 </template>
 <script>
-import TPopup from '../popup/popup';
-import CalendarTemplate from './template.vue';
-
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
+
+import TCalendar from '../common/shared/calendar/index';
+import { uniComponent } from '../common/src/index';
 import { coalesce } from '../common/utils';
 
-import props from './props';
-import TCalendar from '../common/shared/calendar/index';
-import useCustomNavbar from '../mixins/using-custom-navbar';
-import { getPrevMonth, getPrevYear, getNextMonth, getNextYear } from './utils';
 import tools from '../common/utils.wxs';
 import usingConfig from '../mixins/using-config';
-import {
-  getMonthTitle,
-  getDateLabel,
-  isDateSelected,
-} from './computed.js';
+import useCustomNavbar from '../mixins/using-custom-navbar';
+import TPopup from '../popup/popup';
 
+import { getMonthTitle, getDateLabel, isDateSelected } from './computed.js';
+import props from './props';
+import CalendarTemplate from './template.vue';
+import { getPrevMonth, getPrevYear, getNextMonth, getNextYear } from './utils';
 
 const componentName = 'calendar';
 const name = `${prefix}-${componentName}`;
@@ -116,9 +112,7 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     mixins: [
       useCustomNavbar,
       usingConfig({
@@ -129,9 +123,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-      'update:visible',
-    ],
+    emits: ['update:visible'],
     data() {
       return {
         prefix,
@@ -224,9 +216,9 @@ export default {
       dataVisible: {
         handler(v) {
           if (v) {
-            this.onScrollIntoView();
             this.base.value = this.dataValue;
             this.calcMonths();
+            this.onScrollIntoView();
           }
         },
         immediate: true,
@@ -298,7 +290,11 @@ export default {
         const date = new Date(Array.isArray(value) ? value[0] : value);
 
         if (date) {
-          this.scrollIntoView = `year_${date.getFullYear()}_month_${date.getMonth()}`;
+          // 先置空再赋值，确保 scroll-view 在每次打开时都能响应 scroll-into-view 变化并滚动到目标月份
+          this.scrollIntoView = '';
+          this.$nextTick(() => {
+            this.scrollIntoView = `year_${date.getFullYear()}_month_${date.getMonth()}`;
+          });
         }
       },
 
@@ -342,7 +338,7 @@ export default {
       calcCurrentMonth(newValue) {
         const date = newValue || this.getCurrentDate();
         const { year, month } = this.getCurrentYearAndMonth(date);
-        const currentMonth = this.months.filter(item => item.year === year && item.month === month);
+        const currentMonth = this.months.filter((item) => item.year === year && item.month === month);
 
         this.updateActionButton(date);
 
@@ -387,7 +383,7 @@ export default {
         this.updateCurrentMonth();
 
         if (this.confirmBtn == null) {
-        // 不显示确认按钮，则选择完即关闭 popup
+          // 不显示确认按钮，则选择完即关闭 popup
           if (this.type === 'single' || rawValue.length === 2) {
             this.dataVisible = false;
             this._trigger('change', { value }); // 受控
@@ -408,7 +404,7 @@ export default {
       toTime(val) {
         if (!val) return null;
         if (Array.isArray(val)) {
-          return val.map(item => item.getTime());
+          return val.map((item) => item.getTime());
         }
         return val.getTime();
       },

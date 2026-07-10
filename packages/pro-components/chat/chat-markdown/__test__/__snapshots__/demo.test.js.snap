@@ -108,6 +108,47 @@ exports[`ChatMarkdown ChatMarkdown sheet demo works fine 1`] = `
 </sheet>
 `;
 
+exports[`ChatMarkdown ChatMarkdown tail demo works fine 1`] = `
+<tail>
+  <wx-view
+    class="chat-example-block"
+  >
+    <wx-view
+      style="margin-bottom: 16px"
+    >
+      <t-segmented
+        options="{{
+          Array [
+            Object {
+              "label": "光标",
+              "value": 0,
+            },
+            Object {
+              "label": "圆点",
+              "value": 1,
+            },
+            Object {
+              "label": "省略号",
+              "value": 2,
+            },
+            Object {
+              "label": "无动画",
+              "value": 3,
+            },
+          ]
+        }}"
+        value="{{-1}}"
+        bind:change="handleSegmentChange"
+      />
+    </wx-view>
+    <wx-scroll-view
+      class="chat-example-scroll"
+      scrollY="{{true}}"
+    />
+  </wx-view>
+</tail>
+`;
+
 exports[`ChatMarkdown ChatMarkdown url demo works fine 1`] = `
 <url>
   <wx-view

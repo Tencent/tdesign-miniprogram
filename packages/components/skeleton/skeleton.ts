@@ -76,13 +76,11 @@ export default class Skeleton extends SuperComponent {
         }
 
         if (Array.isArray(item)) {
-          return item.map((col) => {
-            return {
-              ...col,
-              class: this.getColItemClass(col),
-              style: this.getColItemStyle(col),
-            };
-          });
+          return item.map((col) => ({
+            ...col,
+            class: this.getColItemClass(col),
+            style: this.getColItemStyle(col),
+          }));
         }
 
         const nItem = item as SkeletonRowColObj;

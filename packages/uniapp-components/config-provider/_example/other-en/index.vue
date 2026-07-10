@@ -2,14 +2,8 @@
   <t-config-provider :global-config="globalConfig">
     <!-- Rate -->
     <view class="rate-demo-cell">
-      <view class="rate-demo-cell__title">
-        Rating
-      </view>
-      <t-rate
-        :value="rateValue"
-        show-text
-        @change="onRateChange"
-      />
+      <view class="rate-demo-cell__title"> Rating </view>
+      <t-rate :value="rateValue" show-text @change="onRateChange" />
     </view>
 
     <!-- Calendar -->
@@ -20,21 +14,10 @@
       @confirm="handleCalendarConfirm"
       @close="onCalendarClose"
     />
-    <t-cell
-      arrow
-      title="Single select date"
-      :note="formatTimestamp(value)"
-      @click="handleCalendar"
-    />
+    <t-cell arrow title="Single select date" :note="formatTimestamp(value)" @click="handleCalendar" />
 
     <!-- DateTimePicker -->
-    <t-cell
-      title="Select time"
-      hover
-      :note="dateText || 'YY-MM-DD'"
-      arrow
-      @click="showDatePicker"
-    />
+    <t-cell title="Select time" hover :note="dateText || 'YY-MM-DD'" arrow @click="showDatePicker" />
 
     <t-date-time-picker
       auto-close
@@ -50,12 +33,12 @@
 </template>
 
 <script>
-import TConfigProvider from '@tdesign/uniapp/config-provider/config-provider.vue';
-import TRate from '@tdesign/uniapp/rate/rate.vue';
 import TCalendar from '@tdesign/uniapp/calendar/calendar.vue';
 import TCell from '@tdesign/uniapp/cell/cell.vue';
+import TConfigProvider from '@tdesign/uniapp/config-provider/config-provider.vue';
 import TDateTimePicker from '@tdesign/uniapp/date-time-picker/date-time-picker.vue';
 import enUS from '@tdesign/uniapp/locale/en_US';
+import TRate from '@tdesign/uniapp/rate/rate.vue';
 
 function getDateByTimestamp(val) {
   const date = new Date(val);
@@ -90,7 +73,7 @@ export default {
     formatTimestamp(val) {
       if (!val) return '';
       if (Array.isArray(val)) {
-        return val.map(v => getDateByTimestamp(v)).join('、');
+        return val.map((v) => getDateByTimestamp(v)).join('、');
       }
       return getDateByTimestamp(val);
     },

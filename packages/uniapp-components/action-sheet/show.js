@@ -1,16 +1,14 @@
 import { getInstance } from '../common/utils';
 
-
 export const ActionSheetTheme = {
   List: 'list',
   Grid: 'grid',
 };
 
-
 export const actionSheetTheme = {
   List: ActionSheetTheme.List,
   Grid: ActionSheetTheme.Grid,
-} ;
+};
 
 export const show = function (options) {
   const { context, selector = '#t-action-sheet', ...otherOptions } = { ...options };

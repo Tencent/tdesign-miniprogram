@@ -3,4 +3,3 @@ export const getTreeClass = function (level, total) {
   if (level === 1 && level !== total - 1) return 'middle';
   return 'left';
 };
-

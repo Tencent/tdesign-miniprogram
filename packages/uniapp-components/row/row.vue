@@ -1,21 +1,19 @@
 <template>
-  <view
-    :class="prefix + '-row'"
-    :style="''+getRowStyles(gutter, customStyle)"
-  >
+  <view :class="prefix + '-row'" :style="'' + getRowStyles(gutter, customStyle)">
     <slot />
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import tools from '../common/utils.wxs';
-import { getRowStyles } from './computed.js';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+
+import tools from '../common/utils.wxs';
+
+import { getRowStyles } from './computed.js';
+import props from './props';
 
 const name = `${prefix}-row`;
-
 
 export default {
   ...uniComponent({
@@ -47,9 +45,7 @@ export default {
         this.setGutter();
       },
       setGutter() {
-        const {
-          gutter,
-        } = this;
+        const { gutter } = this;
 
         this.children?.forEach((o) => {
           o.gutter = gutter;
@@ -58,6 +54,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./row.css"></style>

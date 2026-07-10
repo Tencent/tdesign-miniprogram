@@ -10,7 +10,7 @@
     <view class="slider-container">
       <t-slider
         t-class="slider-class"
-        style="flex-grow: 1;"
+        style="flex-grow: 1"
         :value="duration"
         :min="100"
         :max="1500"
@@ -23,9 +23,8 @@
 
 <script>
 import TLoading from '@tdesign/uniapp/loading/loading.vue';
-import TSlider from '@tdesign/uniapp/slider/slider.vue';
 import SkylineBehavior from '@tdesign/uniapp/mixins/skyline.js';
-
+import TSlider from '@tdesign/uniapp/slider/slider.vue';
 
 export default {
   options: {
@@ -51,12 +50,12 @@ export default {
 </script>
 <style>
 .slider-container {
-    display: flex;
-    align-items: center;
-    width: 718rpx;
+  display: flex;
+  align-items: center;
+  width: 718rpx;
 }
 
 :deep(.slider-class) {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 </style>

@@ -1,24 +1,13 @@
 <template>
   <view class="skyline">
-    <t-demo-navbar
-      title="Layout"
-    />
-    <scroll-view
-      scroll-y
-      type="list"
-      class="scroll-view"
-    >
+    <t-demo-navbar title="Layout" />
+    <scroll-view scroll-y type="list" class="scroll-view">
       <view class="demo">
-        <view class="demo-title">
-          Layout 布局
-        </view>
+        <view class="demo-title"> Layout 布局 </view>
         <view class="demo-desc">
           以规则的网格阵列来指导和规范页面中的版面布局以及信息分布，提高界面内布局的一致性，节约成本。
         </view>
-        <t-demo
-          title="01 组件类型"
-          desc="基础用法"
-        >
+        <t-demo title="01 组件类型" desc="基础用法">
           <base-demo />
         </t-demo>
 
@@ -31,7 +20,6 @@
 </template>
 
 <script>
-
 import BaseDemo from '../base/index.vue';
 import OffsetDemo from '../offset/index.vue';
 

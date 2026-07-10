@@ -6,7 +6,6 @@ isComponent: true
 ---
 
 
-<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-0%25-red" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -60,7 +59,7 @@ isComponent: true
 -- | -- | -- | -- | --
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
-animation | String | moving | 内容区域最大高度，超出会自动滚动。可选项：skeleton/moving/gradient/dot | N
+animation | String | moving | 加载的状态形式。可选项：skeleton/moving/gradient/dots | N
 collapsed | Boolean | false | 是否折叠 | N
 content | Object | - | 必需。思考内容对象。TS 类型：`{ text?: string; title?: string }` | Y
 layout | String | block | 布局方式。可选项：block/border | N
@@ -71,7 +70,7 @@ status | String | pending | 必需。思考状态。可选项：complete/stop/er
 
 名称 | 参数 | 描述
 -- | -- | --
-collapsed-change | `(value: Boolean)` | 切换折叠面板时触发
+collapsed-change | `(value: boolean)` | 切换折叠面板时触发
 
 ### ChatThinking Slots
 

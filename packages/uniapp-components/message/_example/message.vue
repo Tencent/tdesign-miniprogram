@@ -1,25 +1,16 @@
 <template>
   <view>
-    <t-demo-navbar
-      title="Message"
-      left-arrow
-    />
+    <t-demo-navbar title="Message" left-arrow />
     <view class="demo message-example">
       <t-demo-header
         title="Message 消息通知"
         desc="用于轻量级反馈或提示，不会打断用户操作。"
         notice="渲染框架支持情况：WebView"
       />
-      <t-demo
-        title="01 组件类型"
-        desc="消息通知内容为文本、带操作按钮"
-      >
+      <t-demo title="01 组件类型" desc="消息通知内容为文本、带操作按钮">
         <base-demo />
       </t-demo>
-      <t-demo
-        title="02 组件状态"
-        desc="消息组件风格"
-      >
+      <t-demo title="02 组件状态" desc="消息组件风格">
         <theme-demo />
       </t-demo>
     </view>
@@ -27,7 +18,6 @@
 </template>
 
 <script>
-
 import BaseDemo from './base/index.vue';
 import ThemeDemo from './theme/index.vue';
 export default {

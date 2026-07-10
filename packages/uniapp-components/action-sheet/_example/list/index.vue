@@ -6,42 +6,18 @@
       @selected="(e) => handleSelected(e, { tagId: 't-action-sheet' })"
     />
 
-    <t-button
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="handleAction"
-    >
-      常规列表型
-    </t-button>
+    <t-button size="large" variant="outline" block theme="primary" @click="handleAction"> 常规列表型 </t-button>
 
-    <t-button
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="showDescAction"
-    >
-      带描述列表型
-    </t-button>
+    <t-button size="large" variant="outline" block theme="primary" @click="showDescAction"> 带描述列表型 </t-button>
 
-    <t-button
-      size="large"
-      variant="outline"
-      block
-      theme="primary"
-      @click="showIconAction"
-    >
-      带图标列表型
-    </t-button>
+    <t-button size="large" variant="outline" block theme="primary" @click="showIconAction"> 带图标列表型 </t-button>
   </view>
 </template>
 
 <script>
-import TButton from '@tdesign/uniapp/button/button.vue';
-import TActionSheet from '@tdesign/uniapp/action-sheet/action-sheet.vue';
 import { ActionSheetPlugin, ActionSheetTheme } from '@tdesign/uniapp';
+import TActionSheet from '@tdesign/uniapp/action-sheet/action-sheet.vue';
+import TButton from '@tdesign/uniapp/button/button.vue';
 
 export default {
   components: {

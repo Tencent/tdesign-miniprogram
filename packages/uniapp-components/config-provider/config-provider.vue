@@ -1,18 +1,17 @@
 <template>
-  <view
-    :class="'' + `${classPrefix} ${tClass}`"
-    :style="'' + `${tools._style([customStyle, cssVars])}`"
-  >
+  <view :class="'' + `${classPrefix} ${tClass}`" :style="'' + `${tools._style([customStyle, cssVars])}`">
     <slot />
   </view>
 </template>
 
 <script>
 import { prefix } from '../common/config';
-import props from './props';
+
 import { uniComponent } from '../common/src/index';
 import tools from '../common/utils.wxs';
+
 import { configStore } from './config-store';
+import props from './props';
 import themeVarsToCSS from './utils';
 
 const componentName = 'config-provider';
@@ -21,9 +20,7 @@ const name = `${prefix}-${componentName}`;
 export default {
   ...uniComponent({
     name,
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     options: {
       styleIsolation: 'shared',
     },
@@ -54,8 +51,7 @@ export default {
       },
     },
     mounted() {
-      this.iComponentId = `${Date.now()}-${Math.random().toString(36)
-        .slice(2)}`;
+      this.iComponentId = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
       this.initStore();
       this.updateConfig();
     },
@@ -68,16 +64,16 @@ export default {
       }
     },
     methods: {
-    /**
-     * 初始化 Store 并订阅状态变化
-     */
+      /**
+       * 初始化 Store 并订阅状态变化
+       */
       initStore() {
         this.iUnsubscribeLocale = configStore.currentLocale.subscribe(() => {});
       },
 
       /**
-     * 更新配置
-     */
+       * 更新配置
+       */
       updateConfig() {
         const { themeVars, globalConfig } = this;
 

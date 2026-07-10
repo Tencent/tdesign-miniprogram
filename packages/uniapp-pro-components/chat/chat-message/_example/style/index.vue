@@ -1,32 +1,19 @@
 <template>
   <view class="chat-example">
     <view class="chat-example-block">
-      <t-chat-message
-        :content="userMessage.content"
-        :role="userMessage.role"
-        variant="text"
-      />
+      <t-chat-message :content="userMessage.content" :role="userMessage.role" variant="text" />
     </view>
     <view class="chat-example-block">
-      <t-chat-message
-        :content="userMessage.content"
-        :role="userMessage.role"
-        variant="base"
-      />
+      <t-chat-message :content="userMessage.content" :role="userMessage.role" variant="base" />
     </view>
     <view class="chat-example-block">
-      <t-chat-message
-        :content="userMessage.content"
-        :role="userMessage.role"
-        variant="outline"
-      />
+      <t-chat-message :content="userMessage.content" :role="userMessage.role" variant="outline" />
     </view>
   </view>
 </template>
 
 <script>
 import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
-
 
 export default {
   components: {
@@ -56,14 +43,13 @@ export default {
 </script>
 <style>
 .chat-example {
-    display: flex;
-    flex-direction: column;
-    gap: 32rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 32rpx;
 }
 
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx 32rpx 0 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx 32rpx 0 32rpx;
 }
-
 </style>

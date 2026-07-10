@@ -91,28 +91,26 @@ function keys(obj) {
   return JSON.stringify(obj)
     .replace(getRegExp('{|}|"', 'g'), '')
     .split(',')
-    .map(item => item.split(':')[0]);
+    .map((item) => item.split(':')[0]);
 }
 
 function kebabCase(str) {
-  return str
-    .replace(getRegExp('[A-Z]', 'g'), ele => `-${ele}`)
-    .toLowerCase();
+  return str.replace(getRegExp('[A-Z]', 'g'), (ele) => `-${ele}`).toLowerCase();
 }
 
 // eslint-disable-next-line no-underscore-dangle
 function _style(styles) {
   if (isArray(styles)) {
     return styles
-      .filter(item => item != null && item !== '')
-      .map(item => ((isArray(item) || isObject(item)) ? _style(item) : endsWith(item, ';')))
+      .filter((item) => item != null && item !== '')
+      .map((item) => (isArray(item) || isObject(item) ? _style(item) : endsWith(item, ';')))
       .join(' ');
   }
 
   if (isObject(styles)) {
     return keys(styles)
-      .filter(key => styles[key] != null && styles[key] !== '')
-      .map(key => [kebabCase(key), [styles[key]]].join(':'))
+      .filter((key) => styles[key] != null && styles[key] !== '')
+      .map((key) => [kebabCase(key), [styles[key]]].join(':'))
       .join(';');
   }
 

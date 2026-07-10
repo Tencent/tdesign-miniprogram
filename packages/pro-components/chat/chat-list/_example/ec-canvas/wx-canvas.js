@@ -49,16 +49,14 @@ export default class WxCanvas {
       return ctx;
     };
 
-    zrender.util.$override('measureText', function (text, font) {
+    zrender.util.$override('measureText', (text, font) => {
       ctx.font = font || '12px sans-serif';
       return ctx.measureText(text);
     });
   }
 
   _initStyle(ctx) {
-    ctx.createRadialGradient = (...args) => {
-      return ctx.createCircularGradient(...args);
-    };
+    ctx.createRadialGradient = (...args) => ctx.createCircularGradient(...args);
   }
 
   _initEvent() {

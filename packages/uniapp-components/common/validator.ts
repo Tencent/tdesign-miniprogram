@@ -81,7 +81,7 @@ export function isDate(input: string | Date, options?: IsDateOptions): boolean {
   const opts = { ...defaultOptions, ...options };
 
   if (typeof input === 'string') {
-    const delimiter = opts.delimiters.find(d => opts.format.includes(d));
+    const delimiter = opts.delimiters.find((d) => opts.format.includes(d));
     if (!delimiter) return false;
 
     const formatParts = opts.format.split(delimiter);
@@ -109,9 +109,9 @@ export function isDate(input: string | Date, options?: IsDateOptions): boolean {
 
     const date = new Date(`${year}-${month}-${day}T00:00:00.000Z`);
     return (
-      date.getUTCFullYear() === Number(year)
-      && date.getUTCMonth() + 1 === Number(month)
-      && date.getUTCDate() === Number(day)
+      date.getUTCFullYear() === Number(year) &&
+      date.getUTCMonth() + 1 === Number(month) &&
+      date.getUTCDate() === Number(day)
     );
   }
 
@@ -212,16 +212,18 @@ function isIP(ipAddress: string, version?: number): boolean {
   const IPv4AddressFormat = `(${IPv4SegmentFormat}[.]){3}${IPv4SegmentFormat}`;
   const IPv4AddressRegExp = new RegExp(`^${IPv4AddressFormat}$`);
   const IPv6SegmentFormat = '(?:[0-9a-fA-F]{1,4})';
-  const IPv6AddressRegExp = new RegExp('^('
-    + `(?:${IPv6SegmentFormat}:){7}(?:${IPv6SegmentFormat}|:)|`
-    + `(?:${IPv6SegmentFormat}:){6}(?:${IPv4AddressFormat}|:${IPv6SegmentFormat}|:)|`
-    + `(?:${IPv6SegmentFormat}:){5}(?::${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,2}|:)|`
-    + `(?:${IPv6SegmentFormat}:){4}(?:(:${IPv6SegmentFormat}){0,1}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,3}|:)|`
-    + `(?:${IPv6SegmentFormat}:){3}(?:(:${IPv6SegmentFormat}){0,2}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,4}|:)|`
-    + `(?:${IPv6SegmentFormat}:){2}(?:(:${IPv6SegmentFormat}){0,3}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,5}|:)|`
-    + `(?:${IPv6SegmentFormat}:){1}(?:(:${IPv6SegmentFormat}){0,4}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,6}|:)|`
-    + `(?::((?::${IPv6SegmentFormat}){0,5}:${IPv4AddressFormat}|(?::${IPv6SegmentFormat}){1,7}|:))`
-    + ')(%[0-9a-zA-Z.]{1,})?$');
+  const IPv6AddressRegExp = new RegExp(
+    '^(' +
+      `(?:${IPv6SegmentFormat}:){7}(?:${IPv6SegmentFormat}|:)|` +
+      `(?:${IPv6SegmentFormat}:){6}(?:${IPv4AddressFormat}|:${IPv6SegmentFormat}|:)|` +
+      `(?:${IPv6SegmentFormat}:){5}(?::${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,2}|:)|` +
+      `(?:${IPv6SegmentFormat}:){4}(?:(:${IPv6SegmentFormat}){0,1}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,3}|:)|` +
+      `(?:${IPv6SegmentFormat}:){3}(?:(:${IPv6SegmentFormat}){0,2}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,4}|:)|` +
+      `(?:${IPv6SegmentFormat}:){2}(?:(:${IPv6SegmentFormat}){0,3}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,5}|:)|` +
+      `(?:${IPv6SegmentFormat}:){1}(?:(:${IPv6SegmentFormat}){0,4}:${IPv4AddressFormat}|(:${IPv6SegmentFormat}){1,6}|:)|` +
+      `(?::((?::${IPv6SegmentFormat}){0,5}:${IPv4AddressFormat}|(?::${IPv6SegmentFormat}){1,7}|:))` +
+      ')(%[0-9a-zA-Z.]{1,})?$',
+  );
 
   const v = version ? version.toString() : '';
   if (!v) {
@@ -333,9 +335,13 @@ export function isEmail(str: string, options?: IsEmailOptions): boolean {
     const innerUser = user.slice(1, user.length - 1);
     /* eslint-disable no-control-regex */
     if (opts.allow_utf8_local_part) {
-      return /^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|(\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*$/i.test(innerUser);
+      return /^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]|(\\[\x01-\x09\x0b\x0c\x0d-\x7f\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))*$/i.test(
+        innerUser,
+      );
     }
-    return /^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e]|(\\[\x01-\x09\x0b\x0c\x0d-\x7f]))*$/i.test(innerUser);
+    return /^([\s\x01-\x08\x0b\x0c\x0e-\x1f\x7f\x21\x23-\x5b\x5d-\x7e]|(\\[\x01-\x09\x0b\x0c\x0d-\x7f]))*$/i.test(
+      innerUser,
+    );
     /* eslint-enable no-control-regex */
   }
 
@@ -477,11 +483,15 @@ export function isURL(str: string, options?: IsURLOptions): boolean {
   if (host === '' && !opts.require_host) return true;
 
   // 域名校验
-  if (!isIP(host) && !isFQDN(host, {
-    require_tld: opts.require_tld,
-    allow_underscores: opts.allow_underscores,
-    allow_trailing_dot: opts.allow_trailing_dot,
-  }) && (!ipv6 || !isIP(ipv6, 6))) {
+  if (
+    !isIP(host) &&
+    !isFQDN(host, {
+      require_tld: opts.require_tld,
+      allow_underscores: opts.allow_underscores,
+      allow_trailing_dot: opts.allow_trailing_dot,
+    }) &&
+    (!ipv6 || !isIP(ipv6, 6))
+  ) {
     return false;
   }
 

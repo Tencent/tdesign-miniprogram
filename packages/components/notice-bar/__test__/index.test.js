@@ -12,9 +12,7 @@ const mockGetAnimationFrame = jest.spyOn(Util, 'getAnimationFrame');
 const mockGetRect = jest.spyOn(Util, 'getRect');
 
 // 设置每次调用函数的值
-mockGetAnimationFrame.mockImplementation((context, cb) => {
-  return cb();
-});
+mockGetAnimationFrame.mockImplementation((context, cb) => cb());
 
 // 调用函数第1次的返回值 nodeRect
 mockGetRect.mockImplementation((context, id) => {

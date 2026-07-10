@@ -3,5 +3,15 @@ import type { TdFormItemProps } from '../form-item/type';
 
 export type FormItemProps = ExtractNonOnProps<TdFormItemProps>;
 export type FormItemEmits = TransformEventHandlers<TdFormItemProps, true>;
-declare const FormItemComponent: import('vue').DefineComponent<FormItemProps, {}, {}, {}, {}, {}, {}, FormItemEmits, any>;
+declare const FormItemComponent: import('vue').DefineComponent<
+  FormItemProps,
+  {},
+  {},
+  {},
+  {},
+  {},
+  {},
+  FormItemEmits,
+  any
+>;
 export default FormItemComponent;

@@ -10,4 +10,3 @@ export function getInputClass(classPrefix, suffix, align, disabled) {
   }
   return className.join(' ');
 }
-

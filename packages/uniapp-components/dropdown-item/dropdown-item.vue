@@ -36,11 +36,7 @@
             :value="dataValue"
             @change="handleRadioChange"
           >
-            <view
-              v-for="(item, index) in options"
-              :id="'id_' + item[valueAlias]"
-              :key="index"
-            >
+            <view v-for="(item, index) in options" :id="'id_' + item[valueAlias]" :key="index">
               <t-radio
                 :placement="placement"
                 tabindex="0"
@@ -51,7 +47,7 @@
                 :value="item[valueAlias]"
                 :label="item[labelAlias]"
                 :disabled="item.disabled"
-                @change="e => onRadioChange(e, item[valueAlias])"
+                @change="(e) => onRadioChange(e, item[valueAlias])"
               />
             </view>
           </t-radio-group>
@@ -69,11 +65,7 @@
             :value="dataValue ? dataValue : []"
             @change="handleRadioChange"
           >
-            <view
-              v-for="(item, index) in options"
-              :id="'id_' + item[valueAlias]"
-              :key="index"
-            >
+            <view v-for="(item, index) in options" :id="'id_' + item[valueAlias]" :key="index">
               <t-checkbox
                 tabindex="0"
                 :t-class="classPrefix + '__checkbox-item ' + tClassColumnItem"
@@ -82,7 +74,7 @@
                 :label="item[labelAlias]"
                 :disabled="item.disabled"
                 :checked="dataValue.indexOf(item[valueAlias]) > -1"
-                @change="e => onCheckboxChange(e, item[valueAlias])"
+                @change="(e) => onCheckboxChange(e, item[valueAlias])"
               />
             </view>
           </t-checkbox-group>
@@ -117,25 +109,26 @@
 </template>
 <script>
 import TButton from '../button/button';
-import TRadio from '../radio/radio';
-import TRadioGroup from '../radio-group/radio-group';
 import TCheckbox from '../checkbox/checkbox';
 import TCheckboxGroup from '../checkbox-group/checkbox-group';
-import TPopup from '../popup/popup';
 
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import { coalesce, getRect, getWindowInfo } from '../common/utils';
-import props from './props';
-import menuProps from '../dropdown-menu/props';
-import tools from '../common/utils.wxs';
-import { getStyles } from './computed';
-import { ChildrenMixin, RELATION_MAP } from '../common/relation';
-import { canUseVirtualHost } from '../common/version';
 
+import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import { coalesce, getRect, getWindowInfo } from '../common/utils';
+import tools from '../common/utils.wxs';
+import { canUseVirtualHost } from '../common/version';
+import menuProps from '../dropdown-menu/props';
+import TPopup from '../popup/popup';
+import TRadio from '../radio/radio';
+import TRadioGroup from '../radio-group/radio-group';
+
+import { getStyles } from './computed';
+
+import props from './props';
 
 const name = `${prefix}-dropdown-item`;
-
 
 export default {
   components: {
@@ -151,10 +144,12 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    controlledProps: [{
-      key: 'value',
-      event: 'change',
-    }],
+    controlledProps: [
+      {
+        key: 'value',
+        event: 'change',
+      },
+    ],
     externalClasses: [
       `${prefix}-class`,
       `${prefix}-class-content`,
@@ -224,7 +219,7 @@ export default {
             boxSizing: 'border-box',
 
             display: 'grid',
-            gridGap: '0px',
+            gridGap: '0',
 
             gridTemplateColumns: `repeat(${this.optionsColumns}, 1fr)`,
           },
@@ -238,10 +233,10 @@ export default {
             boxSizing: 'border-box',
 
             display: 'grid',
-            gridGap: '12px',
+            gridGap: '24rpx',
 
             gridTemplateColumns: `repeat(${this.optionsColumns}, 1fr)`,
-            padding: '16px',
+            padding: '32rpx',
           },
         ]);
       },
@@ -268,10 +263,12 @@ export default {
             if (v && !Array.isArray(v)) throw TypeError('应传入数组类型的 value');
           }
 
-          const target = options.find(item => item[valueAlias] === v);
+          const target = options.find((item) => item[valueAlias] === v);
 
           if (target) {
             this.computedLabel = target[labelAlias];
+          } else {
+            this.computedLabel = '';
           }
         },
         immediate: true,
@@ -291,7 +288,7 @@ export default {
       },
     },
     mounted() {
-      const {  windowTop } = getWindowInfo();
+      const { windowTop } = getWindowInfo();
       this.windowTop = windowTop || 0;
     },
     methods: {
@@ -336,7 +333,10 @@ export default {
       },
       onCheckboxChange(e) {
         const { checkAll, dataIndeterminate } = this.$refs.checkboxGroupRef;
-        const { context: { value, label }, checked } = e;
+        const {
+          context: { value, label },
+          checked,
+        } = e;
         this.$refs.checkboxGroupRef.updateValue({
           value,
           checkAll,
@@ -355,7 +355,7 @@ export default {
         if (!this.multiple) {
           this.closeDropdown();
         } else {
-          const firstChecked = this.options.find(item => value.includes(item.value));
+          const firstChecked = this.options.find((item) => value.includes(item.value));
           if (firstChecked) {
             this.firstCheckedValue = firstChecked.value;
           }
@@ -376,8 +376,8 @@ export default {
       handleConfirm() {
         this._trigger('confirm', { value: this.dataValue });
         this.closeDropdown();
-      // 在关闭 popup 后才自动滚动到首个选项
-      // this.firstCheckedValue = this.firstCheckedValue;
+        // 在关闭 popup 后才自动滚动到首个选项
+        // this.firstCheckedValue = this.firstCheckedValue;
       },
 
       onLeaved() {
@@ -386,7 +386,6 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./dropdown-item.css"></style>
 <style scoped>

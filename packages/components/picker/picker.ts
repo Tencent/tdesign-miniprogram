@@ -76,12 +76,10 @@ export default class Picker extends SuperComponent {
     },
 
     getColumnIndexes() {
-      const columns = this.$children.map((pickerColumn, columnIndex) => {
-        return {
-          column: columnIndex,
-          index: pickerColumn._selectedIndex,
-        };
-      });
+      const columns = this.$children.map((pickerColumn, columnIndex) => ({
+        column: columnIndex,
+        index: pickerColumn._selectedIndex,
+      }));
       return columns;
     },
 

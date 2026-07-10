@@ -1,15 +1,11 @@
 <template>
   <view>
-    <t-demo-navbar
-      custom-class="demo-navbar"
-      title="PullDownRefresh"
-    />
+    <t-demo-navbar custom-class="demo-navbar" title="PullDownRefresh" />
     <base-demo />
   </view>
 </template>
 
 <script>
-
 import BaseDemo from './base/index.vue';
 export default {
   components: {

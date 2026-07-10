@@ -19,7 +19,7 @@
       format="YYYY-MM"
       :start="start"
       :end="end"
-      @update:visible="(e) => monthVisible = e"
+      @update:visible="(e) => (monthVisible = e)"
       @change="onConfirm"
       @pick="onColumnChange"
       @cancel="hidePicker"
@@ -74,6 +74,6 @@ export default {
 </script>
 <style>
 .panel-item {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 </style>

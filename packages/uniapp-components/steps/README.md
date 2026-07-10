@@ -129,7 +129,7 @@ t-class-title | 标题样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-step-item-circle-size | 44rpx | -
 --td-step-item-circle-text-font | @font-body-medium | -

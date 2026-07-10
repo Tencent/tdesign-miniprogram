@@ -1,29 +1,13 @@
 <template>
   <view>
     <view class="group">
-      <t-skeleton
-        class="group-avatar"
-        :row-col="rowColsAvater"
-        loading
-      />
-      <t-skeleton
-        class="group-content"
-        :row-col="rowColsContent"
-        loading
-      />
+      <t-skeleton class="group-avatar" :row-col="rowColsAvater" loading />
+      <t-skeleton class="group-content" :row-col="rowColsContent" loading />
     </view>
 
     <view class="group">
-      <t-skeleton
-        class="group-avatar"
-        :row-col="rowColsImage"
-        loading
-      />
-      <t-skeleton
-        class="group-content"
-        :row-col="rowColsContent"
-        loading
-      />
+      <t-skeleton class="group-avatar" :row-col="rowColsImage" loading />
+      <t-skeleton class="group-content" :row-col="rowColsContent" loading />
     </view>
   </view>
 </template>
@@ -64,16 +48,16 @@ export default {
 </script>
 <style>
 .group {
-    display: flex;
-    align-items: center;
-    margin-top: 32rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 32rpx;
 }
 
 .group-avatar {
-    margin-right: 24rpx;
+  margin-right: 24rpx;
 }
 
 .group-content {
-    width: 566rpx;
+  width: 566rpx;
 }
 </style>

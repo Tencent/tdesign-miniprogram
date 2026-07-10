@@ -68,7 +68,7 @@ t-class-count | 计数样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-badge-basic-height | 32rpx | -
 --td-badge-basic-padding | 8rpx | -
@@ -77,6 +77,7 @@ t-class-count | 计数样式类
 --td-badge-border-radius | 4rpx | -
 --td-badge-bubble-border-radius | 20rpx 20rpx 20rpx 1px | -
 --td-badge-content-text-color | @text-color-primary | -
+--td-badge-content-text-font | @font-body-large | -
 --td-badge-dot-size | 16rpx | -
 --td-badge-font | @font-mark-extraSmall | -
 --td-badge-large-font | @font-mark-small | -

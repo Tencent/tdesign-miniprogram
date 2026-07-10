@@ -4,32 +4,15 @@ import { getWindowInfo } from '../../common/utils';
 const ratio = getWindowInfo().pixelRatio || 1;
 
 // 元素中心为旋转点执行旋转
-const drawRotate = (
-  ctx,
-  x,
-  y,
-  rotate,
-) => {
+const drawRotate = (ctx, x, y, rotate) => {
   ctx.translate(x, y);
   ctx.rotate((Math.PI / 180) * Number(rotate));
   ctx.translate(-x, -y);
 };
 
 // 绘制文字
-const drawText = (
-  ctx,
-  x,
-  y,
-  markHeight,
-  text,
-  fontWeight,
-  fontSize,
-  fontFamily,
-  fillStyle,
-) => {
-  ctx.font = `normal normal ${fontWeight} ${
-    fontSize * ratio
-  }px/${markHeight}px ${fontFamily}`;
+const drawText = (ctx, x, y, markHeight, text, fontWeight, fontSize, fontFamily, fillStyle) => {
+  ctx.font = `normal normal ${fontWeight} ${fontSize * ratio}px/${markHeight}px ${fontFamily}`;
 
   ctx.fillStyle = fillStyle;
   ctx.textAlign = 'start';
@@ -106,7 +89,7 @@ export default async function generateBase64Url(
   ctx.globalAlpha = alpha;
 
   // h5需要全局缩放
-  // #ifdef H5 || APP-PLUS
+  // #ifdef H5 || APP
   ctx.scale(1 / ratio, 1 / ratio);
   // #endif
 
@@ -115,9 +98,7 @@ export default async function generateBase64Url(
 
   ctx.translate(offsetLeft * ratio, offsetTop * ratio);
 
-  const contents = Array.isArray(watermarkContent)
-    ? watermarkContent
-    : [{ ...watermarkContent }];
+  const contents = Array.isArray(watermarkContent) ? watermarkContent : [{ ...watermarkContent }];
 
   let top = 0;
 
@@ -131,15 +112,8 @@ export default async function generateBase64Url(
     }
   });
 
-
   // 绘制水印内容
-  const renderWatermarkItem = async (
-    item,
-    offsetX = 0,
-    offsetY = 0,
-    rotateX = 0,
-    rotateY = 0,
-  ) => {
+  const renderWatermarkItem = async (item, offsetX = 0, offsetY = 0, rotateX = 0, rotateY = 0) => {
     if (item.url) {
       const { url, isGrayscale = false } = item;
       const img = await loadImage({
@@ -152,24 +126,12 @@ export default async function generateBase64Url(
 
       // TODO：其他技术栈修复了「灰度效果只影响图片，不影响文字」的bug，因为小程序不能创建临时canvas，暂时没有想到比较优雅的解决方案
       if (isGrayscale) {
-        // #ifdef APP-PLUS
-        ctx.drawImage(
-          img,
-          offsetX,
-          offsetY + item.top * ratio,
-          width * ratio / 2,
-          height * ratio / 2,
-        );
+        // #ifdef APP
+        ctx.drawImage(img, offsetX, offsetY + item.top * ratio, (width * ratio) / 2, (height * ratio) / 2);
         // #endif
 
-        // #ifndef APP-PLUS
-        ctx.drawImage(
-          img,
-          offsetX,
-          offsetY + item.top * ratio,
-          width * ratio,
-          height * ratio,
-        );
+        // #ifndef APP
+        ctx.drawImage(img, offsetX, offsetY + item.top * ratio, width * ratio, height * ratio);
         // #endif
         const imgData = await getImageData(ctx, {
           x: 0,
@@ -189,24 +151,12 @@ export default async function generateBase64Url(
           y: 0,
         });
       } else {
-        // #ifdef APP-PLUS
-        ctx.drawImage(
-          img,
-          offsetX,
-          (offsetY + item.top * ratio),
-          width * ratio / 2,
-          height * ratio / 2,
-        );
+        // #ifdef APP
+        ctx.drawImage(img, offsetX, offsetY + item.top * ratio, (width * ratio) / 2, (height * ratio) / 2);
         // #endif
 
-        // #ifndef APP-PLUS
-        ctx.drawImage(
-          img,
-          offsetX,
-          offsetY + item.top * ratio,
-          width * ratio,
-          height * ratio,
-        );
+        // #ifndef APP
+        ctx.drawImage(img, offsetX, offsetY + item.top * ratio, width * ratio, height * ratio);
         // #endif
       }
 
@@ -215,27 +165,12 @@ export default async function generateBase64Url(
     }
 
     if (item.text) {
-      const {
-        text,
-        fontSize = 16,
-        fontFamily = 'normal',
-        fontWeight = 'normal',
-      } = item;
+      const { text, fontSize = 16, fontFamily = 'normal', fontWeight = 'normal' } = item;
       const fillStyle = item?.fontColor || watermarkColor;
 
       ctx.save?.();
       drawRotate(ctx, rotateX, rotateY, rotate);
-      drawText(
-        ctx,
-        offsetX,
-        offsetY + item.top * ratio,
-        markHeight,
-        text,
-        fontWeight,
-        fontSize,
-        fontFamily,
-        fillStyle,
-      );
+      drawText(ctx, offsetX, offsetY + item.top * ratio, markHeight, text, fontWeight, fontSize, fontFamily, fillStyle);
       ctx.restore?.();
     }
   };
@@ -248,19 +183,12 @@ export default async function generateBase64Url(
   // 六边形水印
   if (isHexagonal) {
     for (const item of contents) {
-      await renderWatermarkItem(
-        item,
-        dislocationDrawX,
-        dislocationDrawY,
-        dislocationRotateX,
-        dislocationRotateY,
-      );
+      await renderWatermarkItem(item, dislocationDrawX, dislocationDrawY, dislocationRotateX, dislocationRotateY);
     }
   }
-  // #ifdef APP-PLUS
+  // #ifdef APP
   ctx.draw();
   // #endif
-
 
   // 没有图片
   const canvasUrl = await exportCanvasImage.call(this, canvas, canvasId);
@@ -296,13 +224,12 @@ export function exportCanvasImage(canvas, canvasId) {
           // #ifndef MP
           canvasId,
           // #endif
-          success: res => resolve(res.tempFilePath),
+          success: (res) => resolve(res.tempFilePath),
           fail: reject,
         });
       });
   });
 }
-
 
 async function getImageData(ctx, options) {
   let result;
@@ -312,27 +239,29 @@ async function getImageData(ctx, options) {
 
   if (!result) {
     result = new Promise((resolve) => {
-      uni.canvasGetImageData({
-        canvasId: options.canvasId,
-        x: options.x,
-        y: options.y,
-        width: options.width,
-        height: options.height,
-        success: (res) => {
-        // 小程序/App 返回的数据结构需要转换
-          resolve({
-            data: new Uint8ClampedArray(res.data),
-            width: res.width,
-            height: res.height,
-          });
+      uni.canvasGetImageData(
+        {
+          canvasId: options.canvasId,
+          x: options.x,
+          y: options.y,
+          width: options.width,
+          height: options.height,
+          success: (res) => {
+            // 小程序/App 返回的数据结构需要转换
+            resolve({
+              data: new Uint8ClampedArray(res.data),
+              width: res.width,
+              height: res.height,
+            });
+          },
         },
-      }, this);
+        this,
+      );
     });
   }
 
   return result;
 }
-
 
 async function putImageData(ctx, imageData, options) {
   let result;
@@ -343,16 +272,19 @@ async function putImageData(ctx, imageData, options) {
 
   if (!result) {
     result = new Promise((resolve, reject) => {
-      uni.canvasPutImageData({
-        canvasId: options.canvasId,
-        x: options.x,
-        y: options.y,
-        width: imageData.width,
-        height: imageData.height,
-        data: imageData.data,
-        success: resolve,
-        fail: reject,
-      }, this);
+      uni.canvasPutImageData(
+        {
+          canvasId: options.canvasId,
+          x: options.x,
+          y: options.y,
+          width: imageData.width,
+          height: imageData.height,
+          data: imageData.data,
+          success: resolve,
+          fail: reject,
+        },
+        this,
+      );
     });
   }
 

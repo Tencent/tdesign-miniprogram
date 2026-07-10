@@ -1,62 +1,25 @@
 <template>
   <view>
-    <t-cell
-      title="单行标题"
-      hover
-      :arrow="true"
-    />
-    <t-cell
-      title="单行标题"
-      hover
-      required
-      arrow
-    />
-    <t-cell
-      title="单行标题"
-      hover
-      arrow
-      aria-label="单行标题，有16条消息"
-    >
-      <template
-        #note
-      >
-        <t-badge
-          :count="16"
-          style="display: inline-flex;"
-        />
+    <t-cell title="单行标题" hover :arrow="true" />
+    <t-cell title="单行标题" hover required arrow />
+    <t-cell title="单行标题" hover arrow aria-label="单行标题，有16条消息">
+      <template #note>
+        <t-badge :count="16" style="display: inline-flex" />
       </template>
     </t-cell>
-    <t-cell
-      title="单行标题"
-      hover
-    >
-      <template
-        #note
-      >
-        <t-switch
-          :default-value="true"
-        />
+    <t-cell title="单行标题" hover>
+      <template #note>
+        <t-switch :default-value="true" />
       </template>
     </t-cell>
-    <t-cell
-      title="单行标题"
-      hover
-      note="辅助信息"
-      arrow
-    />
-    <t-cell
-      title="单行标题"
-      hover
-      arrow
-      left-icon="app"
-      :bordered="false"
-    />
+    <t-cell title="单行标题" hover note="辅助信息" arrow />
+    <t-cell title="单行标题" hover arrow left-icon="app" :bordered="false" />
   </view>
 </template>
 
 <script>
-import TCell from '@tdesign/uniapp/cell/cell.vue';
 import TBadge from '@tdesign/uniapp/badge/badge.vue';
+import TCell from '@tdesign/uniapp/cell/cell.vue';
 import TSwitch from '@tdesign/uniapp/switch/switch.vue';
 export default {
   components: {
@@ -71,5 +34,4 @@ export default {
   methods: {},
 };
 </script>
-<style>
-</style>
+<style></style>

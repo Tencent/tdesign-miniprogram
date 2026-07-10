@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import DemoLoading from '../loading';
 export default {
   components: {

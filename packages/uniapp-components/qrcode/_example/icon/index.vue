@@ -1,8 +1,5 @@
 <template>
-  <t-qrcode
-    value="https://tdesign.tencent.com/"
-    icon="https://tdesign.gtimg.com/site/tdesign-logo.png"
-  />
+  <t-qrcode value="https://tdesign.tencent.com/" icon="https://tdesign.gtimg.com/site/tdesign-logo.png" />
 </template>
 
 <script>

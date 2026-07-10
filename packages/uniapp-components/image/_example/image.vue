@@ -1,14 +1,8 @@
 <template>
   <view>
-    <t-demo-navbar
-      custom-class="demo-navbar"
-      title="Image"
-    />
+    <t-demo-navbar custom-class="demo-navbar" title="Image" />
     <view class="demo">
-      <t-demo-header
-        title="Image 图片"
-        desc="用于展示效果，主要为上下左右居中裁切、拉伸、平铺等方式。"
-      />
+      <t-demo-header title="Image 图片" desc="用于展示效果，主要为上下左右居中裁切、拉伸、平铺等方式。" />
       <t-demo title="01 组件类型">
         <base-comp />
       </t-demo>

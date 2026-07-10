@@ -1,8 +1,6 @@
 <template>
   <view>
-    <t-message
-      ref="t-message"
-    />
+    <t-message ref="t-message" />
 
     <view class="message-example--theme">
       <t-button
@@ -53,9 +51,9 @@
 </template>
 
 <script>
+import { MessagePlugin } from '@tdesign/uniapp';
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TMessage from '@tdesign/uniapp/message/message.vue';
-import { MessagePlugin } from '@tdesign/uniapp';
 
 export default {
   components: {
@@ -104,6 +102,6 @@ export default {
 </script>
 <style scoped>
 .message-example--theme {
-    margin: 32rpx;
+  margin: 32rpx;
 }
 </style>

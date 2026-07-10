@@ -1,17 +1,7 @@
 <template>
-  <view
-    :style="'' + tools._style([customStyle])"
-    :class="className + ' ' + tClass"
-    @click="onClick"
-  >
-    <view
-      :aria-hidden="true"
-      :class="classPrefix + '__icon'"
-    >
-      <block
-        v-if="innerIcon"
-        name="icon"
-      >
+  <view :style="'' + tools._style([customStyle])" :class="className + ' ' + tClass" @click="onClick">
+    <view :aria-hidden="true" :class="classPrefix + '__icon'">
+      <block v-if="innerIcon" name="icon">
         <t-icon
           :custom-style="innerIcon.style || ''"
           :t-class="prefix + '-icon'"
@@ -48,16 +38,16 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+
 import { classNames, calcIcon, coalesce } from '../common/utils';
 import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
 
+import props from './props';
 
 const name = `${prefix}-tag`;
-
 
 export default {
   components: {
@@ -68,14 +58,13 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    controlledProps: [{
-      key: 'checked',
-      event: 'change',
-    }],
-    externalClasses: [
-      `${prefix}-class`,
-
+    controlledProps: [
+      {
+        key: 'checked',
+        event: 'change',
+      },
     ],
+    externalClasses: [`${prefix}-class`],
     props: {
       ...props,
     },
@@ -143,6 +132,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./check-tag.css"></style>

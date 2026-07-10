@@ -1,15 +1,8 @@
 <template>
   <view>
-    <t-cell
-      title="基础开关"
-      :bordered="false"
-    >
-      <template
-        #note
-      >
-        <t-switch
-          :default-value="true"
-        />
+    <t-cell title="基础开关" :bordered="false">
+      <template #note>
+        <t-switch :default-value="true" />
       </template>
     </t-cell>
   </view>
@@ -29,9 +22,7 @@ export default {
     };
   },
   created() {},
-  methods: {
-  },
+  methods: {},
 };
 </script>
-<style>
-</style>
+<style></style>

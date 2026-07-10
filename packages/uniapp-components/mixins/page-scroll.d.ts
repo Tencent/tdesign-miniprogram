@@ -8,10 +8,7 @@ interface Bus {
 export declare const bus: Bus;
 export declare const PAGE_SCROLL_EVENT_NAME: string;
 
-declare function pageScrollMixin(
-  funcName?: string,
-  useBus?: boolean,
-): Record<string, any>;
+declare function pageScrollMixin(funcName?: string, useBus?: boolean): Record<string, any>;
 
 export default pageScrollMixin;
 

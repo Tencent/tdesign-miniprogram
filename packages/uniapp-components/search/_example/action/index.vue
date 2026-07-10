@@ -46,7 +46,7 @@ export default {
 </script>
 <style>
 .example-search {
-    background-color: var(--bg-color-demo);
-    padding: 16rpx 32rpx;
+  background-color: var(--bg-color-demo);
+  padding: 16rpx 32rpx;
 }
 </style>

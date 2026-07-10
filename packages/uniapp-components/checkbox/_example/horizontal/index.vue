@@ -1,33 +1,16 @@
 <template>
   <view>
-    <t-checkbox-group
-      :custom-style="boxCustomStyle"
-      borderless
-      :value="current"
-      @change="onChange"
-    >
-      <t-checkbox
-        :block="false"
-        value="checkbox1"
-        label="多选标题"
-      />
-      <t-checkbox
-        :block="false"
-        value="checkbox2"
-        label="多选标题"
-      />
-      <t-checkbox
-        :block="false"
-        value="checkbox3"
-        label="上限四字"
-      />
+    <t-checkbox-group :custom-style="boxCustomStyle" borderless :value="current" @change="onChange">
+      <t-checkbox :block="false" value="checkbox1" label="多选标题" />
+      <t-checkbox :block="false" value="checkbox2" label="多选标题" />
+      <t-checkbox :block="false" value="checkbox3" label="上限四字" />
     </t-checkbox-group>
   </view>
 </template>
 
 <script>
-import TCheckboxGroup from '@tdesign/uniapp/checkbox-group/checkbox-group.vue';
 import TCheckbox from '@tdesign/uniapp/checkbox/checkbox.vue';
+import TCheckboxGroup from '@tdesign/uniapp/checkbox-group/checkbox-group.vue';
 import tools from '@tdesign/uniapp/common/utils.wxs';
 
 export default {
@@ -58,7 +41,7 @@ export default {
   methods: {
     onChange(event) {
       console.log('checkbox', event.value);
-      this.current =  event.value;
+      this.current = event.value;
     },
   },
 };

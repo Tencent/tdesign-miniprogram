@@ -1,23 +1,7 @@
 <template>
   <view class="demo-closable">
-    <t-tag
-      v-if="show[0]"
-      :custom-style="mr16"
-      closable
-      variant="light"
-      @close="handleClose0"
-    >
-      文字标签
-    </t-tag>
-    <t-tag
-      v-if="show[1]"
-      :custom-style="mr16"
-      closable
-      variant="outline"
-      @close="handleClose1"
-    >
-      文字标签
-    </t-tag>
+    <t-tag v-if="show[0]" :custom-style="mr16" closable variant="light" @close="handleClose0"> 文字标签 </t-tag>
+    <t-tag v-if="show[1]" :custom-style="mr16" closable variant="outline" @close="handleClose1"> 文字标签 </t-tag>
   </view>
 </template>
 
@@ -49,6 +33,6 @@ export default {
 </script>
 <style>
 .demo-closable {
-    margin-left: 32rpx;
+  margin-left: 32rpx;
 }
 </style>

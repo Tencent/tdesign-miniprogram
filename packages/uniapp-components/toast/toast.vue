@@ -2,8 +2,21 @@
   <view>
     <view
       v-if="realVisible"
-      :class="'' + tools.cls(classPrefix, [dataDirection, dataTheme, ['with-text', dataMessage]]) + ' ' + tClass + ' ' + transitionClass"
-      :style="'' + tools._style(['top:' + (dataPlacement === 'top' ? '25%' : dataPlacement === 'bottom' ? '75%' : '45%'), customStyle])"
+      :class="
+        '' +
+        tools.cls(classPrefix, [dataDirection, dataTheme, ['with-text', dataMessage]]) +
+        ' ' +
+        tClass +
+        ' ' +
+        transitionClass
+      "
+      :style="
+        '' +
+        tools._style([
+          'top:' + (dataPlacement === 'top' ? '25%' : dataPlacement === 'bottom' ? '75%' : '45%'),
+          customStyle,
+        ])
+      "
       @transitionend="onTransitionEnd"
       @touchstart.stop.prevent="loop"
     >
@@ -16,10 +29,7 @@
           inherit-color
           layout="vertical"
         />
-        <block
-          v-else-if="innerIcon"
-          name="icon"
-        >
+        <block v-else-if="innerIcon" name="icon">
           <t-icon
             :custom-style="innerIcon.style || ''"
             :t-class="iconTClass"
@@ -34,10 +44,7 @@
           />
         </block>
         <slot name="icon" />
-        <view
-          aria-role="alert"
-          :class="classPrefix + '__text ' + classPrefix + '__text--' + dataDirection"
-        >
+        <view aria-role="alert" :class="classPrefix + '__text ' + classPrefix + '__text--' + dataDirection">
           {{ dataMessage }}
         </view>
         <slot name="message" />
@@ -50,35 +57,29 @@
       :duration="(overlayProps && overlayProps.duration) || 300"
       :using-custom-navbar="(overlayProps && overlayProps.usingCustomNavbar) || usingCustomNavbar"
       :custom-navbar-height="(overlayProps && overlayProps.customNavbarHeight) || customNavbarHeight"
-      :background-color="!showOverlay && dataPreventScrollThrough ? 'transparent' : (overlayProps && overlayProps.backgroundColor) || ''"
+      :background-color="
+        !showOverlay && dataPreventScrollThrough ? 'transparent' : (overlayProps && overlayProps.backgroundColor) || ''
+      "
       :prevent-scroll-through="dataPreventScrollThrough || (overlayProps && overlayProps.preventScrollThrough)"
     />
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import TLoading from '../loading/loading';
-import TOverlay from '../overlay/overlay';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import { transitionMixins } from '../mixins/transition';
+import { uniComponent } from '../common/src/index';
 import { calcIcon, toCamel, coalesce } from '../common/utils';
-import useCustomNavbar from '../mixins/using-custom-navbar';
 import tools from '../common/utils.wxs';
 import { canUseVirtualHost } from '../common/version';
+import TIcon from '../icon/icon';
+import TLoading from '../loading/loading';
+import { transitionMixins } from '../mixins/transition';
+import useCustomNavbar from '../mixins/using-custom-navbar';
+import TOverlay from '../overlay/overlay';
 
+import props from './props';
 
 const name = `${prefix}-toast`;
-const needTransformKeys = [
-  'direction',
-  'duration',
-  'icon',
-  'message',
-  'placement',
-  'preventScrollThrough',
-  'theme',
-];
+const needTransformKeys = ['direction', 'duration', 'icon', 'message', 'placement', 'preventScrollThrough', 'theme'];
 
 export default {
   components: {
@@ -91,23 +92,20 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     mixins: [transitionMixins, useCustomNavbar],
     props: {
       ...props,
     },
-    emits: [
-      'leaved',
-      'destory',
-      'close',
-    ],
+    emits: ['leaved', 'destory', 'close'],
     data() {
-      const info = needTransformKeys.reduce((acc, key) => ({
-        ...acc,
-        [toCamel(`data-${key}`)]: props[key].default,
-      }), {});
+      const info = needTransformKeys.reduce(
+        (acc, key) => ({
+          ...acc,
+          [toCamel(`data-${key}`)]: props[key].default,
+        }),
+        {},
+      );
 
       return {
         prefix,
@@ -121,16 +119,17 @@ export default {
       };
     },
 
-    computed: { iconTClass() {
-      return canUseVirtualHost() ? this.iconRealClass : '';
-    },
-    iconClass() {
-      return !canUseVirtualHost() ? this.iconRealClass : '';
-    },
-    iconRealClass() {
-      const { classPrefix, dataDirection } = this;
-      return `${classPrefix}__icon ${classPrefix}__icon--${dataDirection}`;
-    },
+    computed: {
+      iconTClass() {
+        return canUseVirtualHost() ? this.iconRealClass : '';
+      },
+      iconClass() {
+        return !canUseVirtualHost() ? this.iconRealClass : '';
+      },
+      iconRealClass() {
+        const { classPrefix, dataDirection } = this;
+        return `${classPrefix}__icon ${classPrefix}__icon--${dataDirection}`;
+      },
     },
 
     pageLifetimes: {
@@ -207,6 +206,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./toast.css"></style>

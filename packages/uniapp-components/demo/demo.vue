@@ -1,64 +1,31 @@
 <template>
-  <view
-    class="demo-block "
-    :class="{'demo-block_notitle': !title}"
-  >
-    <view
-      v-if="title || desc"
-      class="demo-block__header"
-    >
-      <view
-        v-if="title"
-        class="demo-block__header-title"
-      >
+  <view class="demo-block" :class="{ 'demo-block_notitle': !title }">
+    <view v-if="title || desc" class="demo-block__header">
+      <view v-if="title" class="demo-block__header-title">
         {{ title }}
       </view>
-      <view
-        v-if="desc"
-        class="demo-block__header-desc"
-        :class="{'demo-block_subtitle': !title}"
-      >
+      <view v-if="desc" class="demo-block__header-desc" :class="{ 'demo-block_subtitle': !title }">
         {{ desc }}
       </view>
-    <!-- <slot name="title-right" /> -->
+      <!-- <slot name="title-right" /> -->
     </view>
-    <view
-      v-for="(operItem, index) in operList"
-      :key="index"
-      class="demo-block__oper"
-    >
-      <view
-        v-if="operItem.title"
-        class="demo-block__oper-subtitle"
-      >
+    <view v-for="(operItem, index) in operList" :key="index" class="demo-block__oper">
+      <view v-if="operItem.title" class="demo-block__oper-subtitle">
         {{ operItem.title }}
       </view>
-      <view
-        v-for="btnItem in operItem.btns"
-        :key="btnItem.text"
-      >
-        <t-button
-          t-class="demo-block__oper-btn"
-          size="large"
-          block
-          :data-type="btnItem.type"
-          bind:tap="clickHandle"
-        >
+      <view v-for="btnItem in operItem.btns" :key="btnItem.text">
+        <t-button t-class="demo-block__oper-btn" size="large" block :data-type="btnItem.type" bind:tap="clickHandle">
           {{ btnItem.text }}
         </t-button>
       </view>
     </view>
-    <view
-      class="demo-block__slot"
-      :class="{'with-padding': padding}"
-    >
+    <view class="demo-block__slot" :class="{ 'with-padding': padding }">
       <slot />
     </view>
   </view>
 </template>
 <script>
 import TButton from '../button/button.vue';
-
 
 export default {
   name: 'TDemo',
@@ -88,11 +55,8 @@ export default {
   },
 
   data() {
-    return {
-
-    };
+    return {};
   },
 };
 </script>
-<style scoped src="./index.css">
-</style>
+<style scoped src="./index.css"></style>

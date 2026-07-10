@@ -4,9 +4,7 @@ import Message from '../index';
 import * as Util from '../../common/utils';
 
 const mockGetRect = jest.spyOn(Util, 'getRect');
-mockGetRect.mockImplementation(() => {
-  return new Promise((resolve) => resolve({ height: 46, width: 156 }));
-});
+mockGetRect.mockImplementation(() => new Promise((resolve) => resolve({ height: 46, width: 156 })));
 
 const mockInstance = jest.spyOn(Util, 'getInstance');
 

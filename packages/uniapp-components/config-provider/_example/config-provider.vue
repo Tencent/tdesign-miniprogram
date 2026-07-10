@@ -8,10 +8,7 @@
         notice="渲染框架支持情况：WebView、Skyline"
       />
 
-      <t-demo
-        title="01 配置示例"
-        desc="Upload"
-      >
+      <t-demo title="01 配置示例" desc="Upload">
         <upload-en />
       </t-demo>
 
@@ -27,9 +24,9 @@
 </template>
 
 <script>
-import UploadEn from './upload-en/index.vue';
-import OtherEn from './other-en/index.vue';
 import ChatEn from './chat-en/index.vue';
+import OtherEn from './other-en/index.vue';
+import UploadEn from './upload-en/index.vue';
 
 export default {
   components: {

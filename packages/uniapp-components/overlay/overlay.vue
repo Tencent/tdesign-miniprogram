@@ -3,12 +3,16 @@
     <view
       v-if="realVisible && preventScrollThrough"
       :class="prefix + '-overlay ' + transitionClass"
-      :style="'' + tools._style([
-        '--td-overlay-transition-duration:' + duration + 'ms',
-        'z-index:' + iZIndex, 'top:' + distanceTop + 'px',
-        computedStyle,
-        customStyle
-      ])"
+      :style="
+        '' +
+        tools._style([
+          '--td-overlay-transition-duration:' + duration + 'ms',
+          'z-index:' + iZIndex,
+          'top:' + distanceTop + 'px',
+          computedStyle,
+          customStyle,
+        ])
+      "
       :aria-role="ariaRole || 'button'"
       :aria-label="ariaLabel || '关闭'"
       disable-scroll
@@ -20,13 +24,8 @@
     </view>
     <view
       v-else-if="realVisible"
-      :class="prefix + '-overlay ' + transitionClass "
-      :style="'' + tools._style([
-        'z-index:' + iZIndex,
-        'top:' + distanceTop + 'px',
-        computedStyle,
-        customStyle
-      ])"
+      :class="prefix + '-overlay ' + transitionClass"
+      :style="'' + tools._style(['z-index:' + iZIndex, 'top:' + distanceTop + 'px', computedStyle, customStyle])"
       :aria-role="ariaRole || 'button'"
       :aria-label="ariaLabel || '关闭'"
       @click.stop="handleClick"
@@ -37,16 +36,17 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import transition from '../mixins/transition';
-import useCustomNavbar from '../mixins/using-custom-navbar';
-import tools from '../common/utils.wxs';
+import { uniComponent } from '../common/src/index';
 
+import tools from '../common/utils.wxs';
+import transition from '../mixins/transition';
+
+import useCustomNavbar from '../mixins/using-custom-navbar';
+
+import props from './props';
 
 const name = `${prefix}-overlay`;
-
 
 export default {
   ...uniComponent({
@@ -54,17 +54,11 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    mixins: [
-      transition(),
-      useCustomNavbar,
-    ],
+    mixins: [transition(), useCustomNavbar],
     props: {
       ...props,
     },
-    emits: [
-      'click',
-      'leaved',
-    ],
+    emits: ['click', 'leaved'],
     data() {
       return {
         prefix,
@@ -88,7 +82,6 @@ export default {
           }
         },
         immediate: true,
-
       },
     },
     methods: {

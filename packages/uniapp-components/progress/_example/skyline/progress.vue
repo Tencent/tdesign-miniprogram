@@ -5,7 +5,6 @@
 </template>
 
 <script>
-
 import DemoProgress from '../progress.vue';
 export default {
   components: {

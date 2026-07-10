@@ -122,10 +122,10 @@
     }
   },
   "lint-staged": {
-    "{packages/components,example,script}/**/*.{js,ts,wxs,wxml,wxss,html,json,less}": [
+    "{packages/components,packages/pro-components,packages/tdesign-miniprogram/example,script}/**/*.{js,ts,wxss,less,wxml,html,json,md,wxs}": [
       "prettier --write"
     ],
-    "{packages/components,example}/**/*.{js,ts}": [
+    "{packages/components,packages/pro-components,packages/tdesign-miniprogram/example}/**/*.{js,ts}": [
       "eslint --fix"
     ],
     "{packages/uniapp-components,packages/uniapp-pro-components,packages/tdesign-uniapp,packages/tdesign-uniapp-chat}/**/*.{ts,js,vue}": [

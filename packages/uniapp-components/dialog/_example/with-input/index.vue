@@ -20,9 +20,7 @@
       @confirm="closeDialog"
       @cancel="closeDialog"
     >
-      <template
-        #content
-      >
+      <template #content>
         <t-input
           borderless
           t-class="dialog-input"
@@ -56,9 +54,7 @@
       @confirm="closeDialog"
       @cancel="closeDialog"
     >
-      <template
-        #content
-      >
+      <template #content>
         <t-input
           borderless
           t-class="dialog-input"
@@ -75,8 +71,8 @@
 
 <script>
 import TButton from '@tdesign/uniapp/button/button.vue';
-import TInput from '@tdesign/uniapp/input/input.vue';
 import TDialog from '@tdesign/uniapp/dialog/dialog.vue';
+import TInput from '@tdesign/uniapp/input/input.vue';
 export default {
   options: {
     styleIsolation: 'shared',
@@ -98,7 +94,8 @@ export default {
       dialogCustomStyle,
 
       inputStyle: 'background-color: var(--td-bg-color-page);padding-top: 12px;padding-bottom: 12px;',
-      placeholderStyle: 'color: var(--td-text-color-placeholder);height: 24px;line-height: 24px;display: flex;align-items: center;',
+      placeholderStyle:
+        'color: var(--td-text-color-placeholder);height: 24px;line-height: 24px;display: flex;align-items: center;',
     };
   },
   created() {},

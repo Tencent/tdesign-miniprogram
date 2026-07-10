@@ -49,8 +49,8 @@ icon | Array | [] | 开关的图标；[打开时的图标，关闭时的图标]�
 label | Array | [] | 开关内容，[开启时内容，关闭时内容]。示例：['开', '关'] 。TS 类型：`string[]` | N
 loading | Boolean | false | 是否处于加载中状态 | N
 size | String | medium | 开关尺寸。可选项：small/medium/large | N
-value | String / Number / Boolean | - | 开关值。支持语法糖 `v-model:value`。TS 类型：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/switch/type.ts) | N
-default-value | String / Number / Boolean | - | 开关值。非受控属性。TS 类型：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/switch/type.ts) | N
+value | String / Number / Boolean | - | 开关值。支持语法糖 `v-model:value`。TS 类型：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/switch/type.ts) | N
+default-value | String / Number / Boolean | - | 开关值。非受控属性。TS 类型：`SwitchValue` `type SwitchValue = string \| number \| boolean`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/switch/type.ts) | N
 
 ### Switch Events
 
@@ -70,7 +70,7 @@ t-class-label | 开关内容样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
 --td-switch-checked-color | @brand-color | -
 --td-switch-checked-disabled-color | @brand-color-disabled | -

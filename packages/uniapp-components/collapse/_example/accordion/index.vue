@@ -1,33 +1,16 @@
 <template>
   <view>
-    <t-collapse
-      :default-value="[0]"
-      expand-mutex
-      expand-icon
-    >
-      <t-collapse-panel
-        header="折叠面板标题"
-        :value="0"
-      >
+    <t-collapse :default-value="[0]" expand-mutex expand-icon>
+      <t-collapse-panel header="折叠面板标题" :value="0">
         此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容
       </t-collapse-panel>
-      <t-collapse-panel
-        header="折叠面板标题"
-        :value="1"
-      >
+      <t-collapse-panel header="折叠面板标题" :value="1">
         此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容
       </t-collapse-panel>
-      <t-collapse-panel
-        header="折叠面板标题"
-        :value="2"
-      >
+      <t-collapse-panel header="折叠面板标题" :value="2">
         此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容
       </t-collapse-panel>
-      <t-collapse-panel
-        header="折叠面板标题"
-        disabled
-        :value="3"
-      >
+      <t-collapse-panel header="折叠面板标题" disabled :value="3">
         此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容此处可自定义内容
       </t-collapse-panel>
     </t-collapse>
@@ -49,5 +32,4 @@ export default {
   methods: {},
 };
 </script>
-<style>
-</style>
+<style></style>

@@ -1,12 +1,6 @@
 <template>
   <view>
-    <t-radio-group
-      allow-uncheck
-      :value="current"
-      :options="options"
-      :relation-key="relationKey"
-      @change="onChange"
-    />
+    <t-radio-group allow-uncheck :value="current" :options="options" :relation-key="relationKey" @change="onChange" />
   </view>
 </template>
 
@@ -53,5 +47,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

@@ -80,7 +80,7 @@ t-class | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-tag-close-icon-color | @text-color-placeholder | -
 --td-tag-danger-color | @error-color | -

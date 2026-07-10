@@ -48,10 +48,7 @@
           :t-class-indicator="tClassIndicator"
           :t-class="tClassLoading"
         />
-        <view
-          v-else-if="refreshStatus > REFRESH_STATUS_MAP.INITIAL"
-          :class="classPrefix + '__text ' + tClassText"
-        >
+        <view v-else-if="refreshStatus > REFRESH_STATUS_MAP.INITIAL" :class="classPrefix + '__text ' + tClassText">
           {{ dataLoadingTexts[refreshStatus] }}
         </view>
       </view>
@@ -60,17 +57,18 @@
   </scroll-view>
 </template>
 <script>
-import TLoading from '../loading/loading';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+
+import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
 import { getRect, systemInfo, unitConvert } from '../common/utils';
 import tools from '../common/utils.wxs';
 import { getObserver } from '../common/wechat';
-import { ParentMixin, RELATION_MAP } from '../common/relation';
-
+import TLoading from '../loading/loading';
 
 import usingConfig from '../mixins/using-config';
+
+import props from './props';
 const componentName = 'pull-down-refresh';
 const name = `${prefix}-${componentName}`;
 const defaultLoadingTexts = ['下拉刷新', '松手刷新', '正在刷新', '刷新完成'];
@@ -81,7 +79,6 @@ const REFRESH_STATUS_MAP = {
   LOADING: 2,
   SUCCESS: 3,
 };
-
 
 export default {
   components: {
@@ -98,23 +95,11 @@ export default {
       `${prefix}-class-text`,
       `${prefix}-class-indicator`,
     ],
-    mixins: [
-      ParentMixin(RELATION_MAP.BackTop),
-      usingConfig({ componentName }),
-    ],
+    mixins: [ParentMixin(RELATION_MAP.BackTop), usingConfig({ componentName })],
     props: {
       ...props,
     },
-    emits: [
-      'scrolltolower',
-      'scroll',
-      'change',
-      'refresh',
-      'dragstart',
-      'dragging',
-      'dragend',
-      'timeout',
-    ],
+    emits: ['scrolltolower', 'scroll', 'change', 'refresh', 'dragstart', 'dragging', 'dragend', 'timeout'],
     data() {
       return {
         prefix,
@@ -143,9 +128,11 @@ export default {
     },
     computed: {
       touchEnable() {
-        return this.refreshStatus !== REFRESH_STATUS_MAP.LOADING
-        && this.refreshStatus !== REFRESH_STATUS_MAP.SUCCESS
-        && !this.disabled;
+        return (
+          this.refreshStatus !== REFRESH_STATUS_MAP.LOADING &&
+          this.refreshStatus !== REFRESH_STATUS_MAP.SUCCESS &&
+          !this.disabled
+        );
       },
     },
     watch: {
@@ -265,7 +252,6 @@ export default {
       onTouchMove(e) {
         if (!this.startPoint || !this.touchEnable) return;
 
-
         const { touches } = e;
 
         if (touches.length !== 1) return;
@@ -312,7 +298,7 @@ export default {
           this.maxRefreshAnimateTimeFlag = null;
 
           if (this.refreshStatus === REFRESH_STATUS_MAP.LOADING) {
-          // 超时回调
+            // 超时回调
             this.$emit('timeout');
             this._trigger('change', { value: false });
           }
@@ -345,7 +331,7 @@ export default {
       scrollToTop() {
         let parsed = false;
 
-        // #ifdef APP-PLUS || MP
+        // #ifdef APP || MP
         this.scrollTop = 0;
         setTimeout(() => {
           this.scrollTop = 0.01;

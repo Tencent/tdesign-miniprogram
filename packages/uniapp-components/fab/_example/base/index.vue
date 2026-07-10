@@ -1,10 +1,6 @@
 <template>
   <view>
-    <t-fab
-      icon="add"
-      aria-label="增加"
-      @click="handleClick"
-    />
+    <t-fab icon="add" aria-label="增加" @click="handleClick" />
   </view>
 </template>
 

@@ -2,13 +2,13 @@
 
 <view slot="content" style="{{_._style([style, customStyle])}}" class="{{classPrefix}} {{prefix}}-class">
   <view class="{{classPrefix}}__toolbar" wx:if="{{header}}">
-    <view class="{{classPrefix}}__cancel {{prefix}}-class-cancel" wx:if="{{cancelBtn}}" bindtap="onCancel"
-      >{{globalConfig.cancel}}</view
-    >
+    <view class="{{classPrefix}}__cancel {{prefix}}-class-cancel" wx:if="{{cancelBtn}}" bindtap="onCancel">
+      {{cancelBtn === true ? globalConfig.cancel : cancelBtn}}
+    </view>
     <view class="{{classPrefix}}__title {{prefix}}-class-title">{{title}}</view>
-    <view class="{{classPrefix}}__confirm {{prefix}}-class-confirm" wx:if="{{confirmBtn}}" bindtap="onConfirm"
-      >{{globalConfig.confirm}}</view
-    >
+    <view class="{{classPrefix}}__confirm {{prefix}}-class-confirm" wx:if="{{confirmBtn}}" bindtap="onConfirm">
+      {{confirmBtn === true ? globalConfig.confirm : confirmBtn}}
+    </view>
   </view>
   <slot name="header" />
 

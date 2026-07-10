@@ -27,7 +27,6 @@ function findNearListParent(children = [], name) {
   return temp;
 }
 
-
 function getParentInToutiao(name) {
   let parent = this.$parent;
   if (!parent) {
@@ -45,7 +44,6 @@ function getParentInToutiao(name) {
     return result;
   }
 }
-
 
 function getParent(name = '') {
   const found = getParentInToutiao.call(this, name);
@@ -67,7 +65,6 @@ function getParent(name = '') {
   }
   return parent;
 }
-
 
 export function ChildrenMixin(parent, options = {}) {
   const indexKey = options.indexKey || 'index';
@@ -128,7 +125,6 @@ export function ChildrenMixin(parent, options = {}) {
       // #endif
     },
 
-
     mounted() {
       // #ifdef H5
       const that = this;
@@ -162,7 +158,6 @@ export function ChildrenMixin(parent, options = {}) {
 
         const children = [...(this[parent].children || []), this];
 
-
         // #ifdef H5
         try {
           // sortChildren(children, this[parent]);
@@ -184,7 +179,7 @@ export function ChildrenMixin(parent, options = {}) {
       onBeforeMount() {
         const that = this;
         if (that[parent]) {
-          that[parent].children = that[parent].children.filter(item => item !== that);
+          that[parent].children = that[parent].children.filter((item) => item !== that);
           this[parent].innerAfterUnLinked?.(this);
           this.innerAfterUnLinked?.(this);
 

@@ -6,6 +6,6 @@
 
   <!-- 代码内容区域 -->
   <scroll-view class="{{classPrefix}}__content" scroll-x="{{true}}">
-    <text class="{{classPrefix}}__text" decode="{{true}}">{{node.text}}</text>
+    <text class="{{classPrefix}}__text" decode="{{true}}">{{node.text}}</text><tail-component wx:if="{{node.isTail}}" />
   </scroll-view>
 </view>

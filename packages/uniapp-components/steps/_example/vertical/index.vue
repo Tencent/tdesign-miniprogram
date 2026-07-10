@@ -1,15 +1,9 @@
 <template>
   <view>
-    <view class="demo-desc">
-      垂直带序号步骤条
-    </view>
+    <view class="demo-desc"> 垂直带序号步骤条 </view>
 
     <view class="block">
-      <t-steps
-        layout="vertical"
-        :current="first"
-        @change="onFirstChange"
-      >
+      <t-steps layout="vertical" :current="first" @change="onFirstChange">
         <t-step-item
           v-for="(item, index) in 4"
           :key="index"
@@ -19,16 +13,10 @@
       </t-steps>
     </view>
 
-    <view class="demo-desc">
-      垂直带图标步骤条
-    </view>
+    <view class="demo-desc"> 垂直带图标步骤条 </view>
 
     <view class="block">
-      <t-steps
-        layout="vertical"
-        :current="second"
-        @change="onSecondChange"
-      >
+      <t-steps layout="vertical" :current="second" @change="onSecondChange">
         <t-step-item
           v-for="(item, index) in 4"
           :key="index"
@@ -39,17 +27,10 @@
       </t-steps>
     </view>
 
-    <view class="demo-desc">
-      垂直简略步骤条
-    </view>
+    <view class="demo-desc"> 垂直简略步骤条 </view>
 
     <view class="block">
-      <t-steps
-        layout="vertical"
-        theme="dot"
-        :current="third"
-        @change="onThirdChange"
-      >
+      <t-steps layout="vertical" theme="dot" :current="third" @change="onThirdChange">
         <t-step-item
           v-for="(item, index) in 4"
           :key="index"
@@ -59,28 +40,13 @@
       </t-steps>
     </view>
 
-    <view class="demo-desc">
-      垂直带自定义内容步骤条
-    </view>
+    <view class="demo-desc"> 垂直带自定义内容步骤条 </view>
 
     <view class="block">
-      <t-steps
-        layout="vertical"
-        :current="third"
-        @change="onThirdChange"
-      >
-        <t-step-item
-          v-for="(item, index) in 3"
-          :key="index"
-          :title="getText(third, index)"
-          content="可自定义此处内容"
-        >
-          <template
-            #extra
-          >
-            <view
-              v-if="index == 1"
-            >
+      <t-steps layout="vertical" :current="third" @change="onThirdChange">
+        <t-step-item v-for="(item, index) in 3" :key="index" :title="getText(third, index)" content="可自定义此处内容">
+          <template #extra>
+            <view v-if="index == 1">
               <image
                 src="https://tdesign.gtimg.com/mobile/demos/steps1.png"
                 alt="图标"
@@ -96,9 +62,8 @@
 </template>
 
 <script>
-import TSteps from '@tdesign/uniapp/steps/steps.vue';
 import TStepItem from '@tdesign/uniapp/step-item/step-item.vue';
-
+import TSteps from '@tdesign/uniapp/steps/steps.vue';
 
 export default {
   components: {
@@ -133,8 +98,8 @@ export default {
 </script>
 <style>
 .block {
-    background-color: var(--bg-color-demo);
-    padding: 32rpx;
-    margin: 32rpx 0 48rpx;
+  background-color: var(--bg-color-demo);
+  padding: 32rpx;
+  margin: 32rpx 0 48rpx;
 }
 </style>

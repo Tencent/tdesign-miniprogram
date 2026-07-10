@@ -35,7 +35,9 @@ exports[`picker :base 1`] = `
               class="t-picker__cancel t-class-cancel"
               bind:tap="onCancel"
             >
-              取消
+              
+      取消
+    
             </wx-view>
             <wx-view
               class="t-picker__title t-class-title"
@@ -46,7 +48,9 @@ exports[`picker :base 1`] = `
               class="t-picker__confirm t-class-confirm"
               bind:tap="onConfirm"
             >
-              确认
+              
+      确认
+    
             </wx-view>
           </wx-view>
           <wx-view

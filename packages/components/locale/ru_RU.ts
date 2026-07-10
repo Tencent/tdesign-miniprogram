@@ -28,6 +28,8 @@ export default {
   cascader: {
     title: 'Название',
     placeholder: 'Выберите опцию',
+    filterPlaceholder: 'Поиск',
+    empty: 'Совпадений не найдено',
   },
   dropdownMenu: {
     reset: 'Сброс',
@@ -120,6 +122,11 @@ export default {
     skip: 'Пропустить',
     finish: 'Готово',
     back: 'Назад',
+  },
+  typography: {
+    expandText: 'Развернуть',
+    collapseText: 'Свернуть',
+    copiedText: 'Скопировано',
   },
   qrcode: {
     expiredText: 'истекший',

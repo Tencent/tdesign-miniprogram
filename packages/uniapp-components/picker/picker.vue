@@ -13,38 +13,21 @@
       @visible-change="onPopupChange"
     >
       <template #content>
-        <view
-          :style="'' + tools._style([customStyle])"
-          :class="classPrefix + ' ' + tClass"
-        >
-          <view
-            v-if="header"
-            :class="classPrefix + '__toolbar'"
-          >
-            <view
-              v-if="cancelBtn"
-              :class="classPrefix + '__cancel ' + tClassCancel"
-              @click="onCancel"
-            >
-              {{ globalConfig.cancel }}
+        <view :style="'' + tools._style([customStyle])" :class="classPrefix + ' ' + tClass">
+          <view v-if="header" :class="classPrefix + '__toolbar'">
+            <view v-if="cancelBtn" :class="classPrefix + '__cancel ' + tClassCancel" @click="onCancel">
+              {{ cancelBtn === true ? globalConfig.cancel : cancelBtn }}
             </view>
             <view :class="classPrefix + '__title ' + tClassTitle">
               {{ title }}
             </view>
-            <view
-              v-if="confirmBtn"
-              :class="classPrefix + '__confirm ' + tClassConfirm"
-              @click="onConfirm"
-            >
-              {{ globalConfig.confirm }}
+            <view v-if="confirmBtn" :class="classPrefix + '__confirm ' + tClassConfirm" @click="onConfirm">
+              {{ confirmBtn === true ? globalConfig.confirm : confirmBtn }}
             </view>
           </view>
           <slot name="header" />
           <slot name="content" />
-          <view
-            :class="'' + tools.cls(classPrefix + '__main', [])"
-            disable-scroll
-          >
+          <view :class="'' + tools.cls(classPrefix + '__main', [])" disable-scroll>
             <slot />
             <view :class="classPrefix + '__mask ' + classPrefix + '__mask--top'" />
             <view :class="classPrefix + '__mask ' + classPrefix + '__mask--bottom'" />
@@ -59,38 +42,21 @@
     </t-popup>
 
     <block v-else>
-      <view
-        :style="'' + tools._style([customStyle])"
-        :class="classPrefix + ' ' + tClass"
-      >
-        <view
-          v-if="header"
-          :class="classPrefix + '__toolbar'"
-        >
-          <view
-            v-if="cancelBtn"
-            :class="classPrefix + '__cancel ' + tClassCancel"
-            @click="onCancel"
-          >
-            {{ globalConfig.cancel }}
+      <view :style="'' + tools._style([customStyle])" :class="classPrefix + ' ' + tClass">
+        <view v-if="header" :class="classPrefix + '__toolbar'">
+          <view v-if="cancelBtn" :class="classPrefix + '__cancel ' + tClassCancel" @click="onCancel">
+            {{ cancelBtn === true ? globalConfig.cancel : cancelBtn }}
           </view>
           <view :class="classPrefix + '__title ' + tClassTitle">
             {{ title }}
           </view>
-          <view
-            v-if="confirmBtn"
-            :class="classPrefix + '__confirm ' + tClassConfirm"
-            @click="onConfirm"
-          >
-            {{ globalConfig.confirm }}
+          <view v-if="confirmBtn" :class="classPrefix + '__confirm ' + tClassConfirm" @click="onConfirm">
+            {{ confirmBtn === true ? globalConfig.confirm : confirmBtn }}
           </view>
         </view>
         <slot name="header" />
         <slot name="content" />
-        <view
-          :class="'' + tools.cls(classPrefix + '__main', [])"
-          disable-scroll
-        >
+        <view :class="'' + tools.cls(classPrefix + '__main', [])" disable-scroll>
           <slot />
           <view :class="classPrefix + '__mask ' + classPrefix + '__mask--top'" />
           <view :class="classPrefix + '__mask ' + classPrefix + '__mask--bottom'" />
@@ -105,16 +71,18 @@
   </view>
 </template>
 <script>
-import TPopup from '../popup/popup';
+import { prefix } from '../common/config';
+
+import { ParentMixin, RELATION_MAP } from '../common/relation';
 import { uniComponent } from '../common/src/index';
 import { coalesce } from '../common/utils';
-import { prefix } from '../common/config';
-import props from './props';
-import useCustomNavbar from '../mixins/using-custom-navbar';
 import tools from '../common/utils.wxs';
-import { ParentMixin, RELATION_MAP } from '../common/relation';
 
 import usingConfig from '../mixins/using-config';
+import useCustomNavbar from '../mixins/using-custom-navbar';
+import TPopup from '../popup/popup';
+
+import props from './props';
 const componentName = 'picker';
 const name = `${prefix}-${componentName}`;
 
@@ -129,25 +97,12 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-confirm`,
-      `${prefix}-class-cancel`,
-      `${prefix}-class-title`,
-    ],
-    mixins: [
-      ParentMixin(RELATION_MAP.PickerItem),
-      useCustomNavbar,
-      usingConfig({ componentName }),
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-confirm`, `${prefix}-class-cancel`, `${prefix}-class-title`],
+    mixins: [ParentMixin(RELATION_MAP.PickerItem), useCustomNavbar, usingConfig({ componentName })],
     props: {
       ...props,
     },
-    emits: [
-      'visible-change',
-      'update:visible',
-      'update:value',
-    ],
+    emits: ['visible-change', 'update:visible', 'update:value'],
     data() {
       return {
         prefix,
@@ -234,8 +189,8 @@ export default {
       },
 
       getSelectedValue() {
-        const value = this.children?.map(item => item._selectedValue);
-        const label = this.children?.map(item => item._selectedLabel);
+        const value = this.children?.map((item) => item._selectedValue);
+        const label = this.children?.map((item) => item._selectedLabel);
         return [value, label];
       },
 
@@ -292,10 +247,7 @@ export default {
       },
 
       onWatchVisible() {
-        const {
-          usePopup,
-          dataVisible,
-        } = this;
+        const { usePopup, dataVisible } = this;
         if (!usePopup || dataVisible) {
           this.updateChildren();
           this.updateIndicatorPosition();

@@ -1,13 +1,13 @@
 <template>
-  <view
-    :class="classPrefix + ' ' + tClass"
-    :style="'' + tools._style([customStyle])"
-  >
+  <view :class="classPrefix + ' ' + tClass" :style="'' + tools._style([customStyle])">
     <view
-      :class="'' + tools.cls(classPrefix + '__wrapper', [
-        ['sticky', sticky],
-        ['active', active]
-      ])"
+      :class="
+        '' +
+        tools.cls(classPrefix + '__wrapper', [
+          ['sticky', sticky],
+          ['active', active],
+        ])
+      "
       :style="anchorStyle"
     >
       <view :class="classPrefix + '__slot'">
@@ -20,15 +20,15 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
 
+import tools from '../common/utils.wxs';
+
+import props from './props';
 
 const name = `${prefix}-indexes-anchor`;
-
 
 export default {
   ...uniComponent({
@@ -36,9 +36,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     mixins: [
       ChildrenMixin(RELATION_MAP.IndexesAnchor, {
         indexKey: 'tIndex',
@@ -57,14 +55,9 @@ export default {
         tools,
       };
     },
-    watch: {
-    },
-    mounted() {
-
-    },
-    methods: {
-
-    },
+    watch: {},
+    mounted() {},
+    methods: {},
   }),
 };
 </script>

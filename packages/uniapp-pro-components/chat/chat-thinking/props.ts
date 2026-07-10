@@ -6,13 +6,13 @@
 
 import type { TdChatThinkingProps } from './type';
 export default {
-  /** 内容区域最大高度，超出会自动滚动 */
+  /** 加载的状态形式 */
   animation: {
     type: String,
     default: 'moving' as TdChatThinkingProps['animation'],
     validator(val: TdChatThinkingProps['animation']): boolean {
       if (!val) return true;
-      return ['skeleton', 'moving', 'gradient', 'dot'].includes(val);
+      return ['skeleton', 'moving', 'gradient', 'dots'].includes(val);
     },
   },
   /** 是否折叠 */

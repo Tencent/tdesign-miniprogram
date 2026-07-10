@@ -1,18 +1,18 @@
 // dayjs 语言包
 import * as enLocale from '../../npm/dayjs/esm/locale/en';
+import * as jaLocale from '../../npm/dayjs/esm/locale/ja'; // 日语
+import * as koLocale from '../../npm/dayjs/esm/locale/ko'; // 韩语
+import * as ruLocale from '../../npm/dayjs/esm/locale/ru'; // 俄语
 import * as zhLocale from '../../npm/dayjs/esm/locale/zh-cn';
 import * as tcLocale from '../../npm/dayjs/esm/locale/zh-tw'; // 繁体
-import * as koLocale from '../../npm/dayjs/esm/locale/ko'; // 韩语
-import * as jaLocale from '../../npm/dayjs/esm/locale/ja'; // 日语
-import * as ruLocale from '../../npm/dayjs/esm/locale/ru'; // 俄语
 
 // 本地语言包
 import en from './en';
-import zh from './zh';
-import tc from './tc';
-import ko from './ko';
 import ja from './ja';
+import ko from './ko';
 import ru from './ru';
+import tc from './tc';
+import zh from './zh';
 
 export default {
   default: {

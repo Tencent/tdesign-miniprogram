@@ -1,11 +1,6 @@
 <template>
   <view>
-    <t-empty
-      t-class="empty-cls"
-      t-class-image="t-empty__image"
-      :image="image"
-      description="描述文字"
-    />
+    <t-empty t-class="empty-cls" t-class-image="t-empty__image" :image="image" description="描述文字" />
   </view>
 </template>
 
@@ -30,7 +25,7 @@ export default {
 </script>
 <style>
 :deep(.t-empty__image) {
-    width: 240rpx !important;
-    height: 240rpx !important;
+  width: 240rpx !important;
+  height: 240rpx !important;
 }
 </style>

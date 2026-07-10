@@ -1,9 +1,9 @@
 {
   "name": "@tdesign/uniapp",
-  "version": "0.8.1",
+  "version": "0.10.2",
   "id": "tdesign-uniapp",
   "title": "tdesign-uniapp",
-  "description": "TDesign Component for UniApp",
+  "description": "TDesign Component for Uniapp",
   "author": "tdesign",
   "license": "MIT",
   "keywords": [
@@ -14,6 +14,7 @@
   ],
   "files": [
     "dist",
+    "script",
     "global.d.ts",
     "LICENSE",
     "README.md",
@@ -27,6 +28,7 @@
     "url": "git+https://github.com/Tencent/tdesign-miniprogram.git",
     "directory": "packages/tdesign-uniapp"
   },
+  "homepage": "https://tdesign.tencent.com/uniapp",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
@@ -39,6 +41,9 @@
       "default": "./dist/index.js"
     },
     "./*": "./dist/*",
+    "./global": {
+      "types": "./global.d.ts"
+    },
     "./mixins/page-scroll": {
       "types": "./dist/mixins/page-scroll.d.ts",
       "import": "./dist/mixins/page-scroll.js",
@@ -72,8 +77,13 @@
       "types": "./dist/theme.less.d.ts",
       "default": "./dist/theme.less"
     },
-    "./global": {
-      "types": "./global.d.ts"
+    "./theme-light.css": {
+      "types": "./dist/theme-light.css.d.ts",
+      "default": "./dist/theme-light.css"
+    },
+    "./theme-light.less": {
+      "types": "./dist/theme-light.less.d.ts",
+      "default": "./dist/theme-light.less"
     },
     "./action-sheet/action-sheet.vue": {
       "types": "./dist/types/action-sheet.d.ts",
@@ -155,15 +165,15 @@
       "import": "./dist/collapse-panel/collapse-panel.vue",
       "default": "./dist/collapse-panel/collapse-panel.vue"
     },
-    "./config-provider/config-provider.vue": {
-      "types": "./dist/types/config-provider.d.ts",
-      "import": "./dist/config-provider/config-provider.vue",
-      "default": "./dist/config-provider/config-provider.vue"
-    },
     "./color-picker/color-picker.vue": {
       "types": "./dist/types/color-picker.d.ts",
       "import": "./dist/color-picker/color-picker.vue",
       "default": "./dist/color-picker/color-picker.vue"
+    },
+    "./config-provider/config-provider.vue": {
+      "types": "./dist/types/config-provider.d.ts",
+      "import": "./dist/config-provider/config-provider.vue",
+      "default": "./dist/config-provider/config-provider.vue"
     },
     "./count-down/count-down.vue": {
       "types": "./dist/types/count-down.d.ts",
@@ -300,6 +310,11 @@
       "import": "./dist/overlay/overlay.vue",
       "default": "./dist/overlay/overlay.vue"
     },
+    "./paragraph/paragraph.vue": {
+      "types": "./dist/types/paragraph.d.ts",
+      "import": "./dist/paragraph/paragraph.vue",
+      "default": "./dist/paragraph/paragraph.vue"
+    },
     "./picker/picker.vue": {
       "types": "./dist/types/picker.d.ts",
       "import": "./dist/picker/picker.vue",
@@ -309,6 +324,11 @@
       "types": "./dist/types/picker-item.d.ts",
       "import": "./dist/picker-item/picker-item.vue",
       "default": "./dist/picker-item/picker-item.vue"
+    },
+    "./popover/popover.vue": {
+      "types": "./dist/types/popover.d.ts",
+      "import": "./dist/popover/popover.vue",
+      "default": "./dist/popover/popover.vue"
     },
     "./popup/popup.vue": {
       "types": "./dist/types/popup.d.ts",
@@ -359,6 +379,11 @@
       "types": "./dist/types/search.d.ts",
       "import": "./dist/search/search.vue",
       "default": "./dist/search/search.vue"
+    },
+    "./segmented/segmented.vue": {
+      "types": "./dist/types/segmented.d.ts",
+      "import": "./dist/segmented/segmented.vue",
+      "default": "./dist/segmented/segmented.vue"
     },
     "./side-bar/side-bar.vue": {
       "types": "./dist/types/side-bar.d.ts",
@@ -435,6 +460,11 @@
       "import": "./dist/tab-panel/tab-panel.vue",
       "default": "./dist/tab-panel/tab-panel.vue"
     },
+    "./table/table.vue": {
+      "types": "./dist/types/table.d.ts",
+      "import": "./dist/table/table.vue",
+      "default": "./dist/table/table.vue"
+    },
     "./tabs/tabs.vue": {
       "types": "./dist/types/tabs.d.ts",
       "import": "./dist/tabs/tabs.vue",
@@ -445,10 +475,20 @@
       "import": "./dist/tag/tag.vue",
       "default": "./dist/tag/tag.vue"
     },
+    "./text/text.vue": {
+      "types": "./dist/types/text.d.ts",
+      "import": "./dist/text/text.vue",
+      "default": "./dist/text/text.vue"
+    },
     "./textarea/textarea.vue": {
       "types": "./dist/types/textarea.d.ts",
       "import": "./dist/textarea/textarea.vue",
       "default": "./dist/textarea/textarea.vue"
+    },
+    "./title/title.vue": {
+      "types": "./dist/types/title.d.ts",
+      "import": "./dist/title/title.vue",
+      "default": "./dist/title/title.vue"
     },
     "./toast/toast.vue": {
       "types": "./dist/types/toast.d.ts",
@@ -507,7 +547,7 @@
     "release:prepare": "node ./example/script/release/prepare.js",
     "gen:types": "node ./example/script/types/index.js",
     "commit": "git-cz",
-    "postinstall": "node dist/script/postinstall.js || true"
+    "postinstall": "node script/postinstall.js || true"
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:",
@@ -545,7 +585,6 @@
     "stylelint-config-common": "catalog:",
     "stylelint-config-standard": "catalog:",
     "stylelint-less": "catalog:",
-    "stylelint-scss": "catalog:",
     "t-comm": "catalog:",
     "tslib": "catalog:",
     "typescript": "catalog:",

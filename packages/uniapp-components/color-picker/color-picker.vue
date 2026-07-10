@@ -64,10 +64,12 @@
   </view>
 </template>
 <script>
-import TPopup from '../popup/popup';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { uniComponent } from '../common/src/index';
+import { debounce, nextTick } from '../common/utils';
+import tools from '../common/utils.wxs';
+import TPopup from '../popup/popup';
+
 import {
   SATURATION_PANEL_DEFAULT_HEIGHT,
   SATURATION_PANEL_DEFAULT_WIDTH,
@@ -77,12 +79,10 @@ import {
   HUE_MAX,
   DEFAULT_SYSTEM_SWATCH_COLORS,
 } from './constants';
-import { debounce, nextTick } from '../common/utils';
-import { Color, getColorObject } from './utils';
+import props from './props';
+
 import TemplateVue from './template.vue';
-
-import tools from '../common/utils.wxs';
-
+import { Color, getColorObject } from './utils';
 
 const name = `${prefix}-color-picker`;
 
@@ -144,12 +144,7 @@ export default {
     props: {
       ...props,
     },
-    emits: [
-      'palette-bar-change',
-      'close',
-      'change',
-      'update:visible',
-    ],
+    emits: ['palette-bar-change', 'close', 'change', 'update:visible'],
     data() {
       return {
         prefix,
@@ -227,13 +222,13 @@ export default {
     },
     created() {
       this.color = new Color(props.defaultValue.default || props.value.default || DEFAULT_COLOR);
-      this.formatList =  getFormatList(props.format.default, this.color);
+      this.formatList = getFormatList(props.format.default, this.color);
     },
     mounted() {
       setTimeout(() => {
         this.init();
       }, 33);
-      this.debouncedUpdateEleRect = debounce(e => this.updateEleRect(e), 150);
+      this.debouncedUpdateEleRect = debounce((e) => this.updateEleRect(e), 150);
     },
     beforeUnmount() {
       clearTimeout(this.timer);
@@ -291,8 +286,7 @@ export default {
               this.setCoreStyle();
             }, 33);
           })
-          .catch(() => {
-          });
+          .catch(() => {});
       },
 
       clickSwatch(e) {
@@ -496,6 +490,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./color-picker.css"></style>

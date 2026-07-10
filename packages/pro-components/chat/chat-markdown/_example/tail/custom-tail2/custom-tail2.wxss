@@ -1,0 +1,5 @@
+/* 自定义光标样式：省略号 */
+.custom-tail2 {
+  display: inline-block;
+  color: rgba(0, 0, 0, 0.9);
+}

@@ -77,7 +77,7 @@ t-class-image | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-avatar-group-init-z-index | @avatar-group-init-zIndex | -
 --td-avatar-group-line-spacing | 4rpx | -

@@ -6,15 +6,9 @@
     aria-role="button"
     @click="toTop"
   >
-    <view
-      :class="classPrefix + '__icon'"
-      aria-hidden
-    >
+    <view :class="classPrefix + '__icon'" aria-hidden>
       <slot name="icon" />
-      <block
-        v-if="innerIcon"
-        name="icon"
-      >
+      <block v-if="innerIcon" name="icon">
         <t-icon
           :custom-style="innerIcon.style || ''"
           :t-class="tClassIcon"
@@ -29,24 +23,21 @@
         />
       </block>
     </view>
-    <view
-      v-if="!!text"
-      :class="classPrefix + '__text--' + theme + ' ' + tClassText"
-    >
+    <view v-if="!!text" :class="classPrefix + '__text--' + theme + ' ' + tClassText">
       {{ text }}
     </view>
     <slot />
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
 import { calcIcon } from '../common/utils';
 import tools from '../common/utils.wxs';
-import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import TIcon from '../icon/icon';
 
+import props from './props';
 
 const name = `${prefix}-back-top`;
 
@@ -59,20 +50,12 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-icon`,
-      `${prefix}-class-text`,
-    ],
-    mixins: [
-      ChildrenMixin(RELATION_MAP.BackTop),
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-text`],
+    mixins: [ChildrenMixin(RELATION_MAP.BackTop)],
     props: {
       ...props,
     },
-    emits: [
-      'to-top',
-    ],
+    emits: ['to-top'],
     watch: {
       icon() {
         this.setIcon();

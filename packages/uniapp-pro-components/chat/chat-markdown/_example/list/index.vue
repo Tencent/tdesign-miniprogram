@@ -1,9 +1,6 @@
 <template>
   <view class="chat-example-block">
-    <t-chat-markdown
-      :content="markdownContent"
-      @click="handleNodeTap"
-    />
+    <t-chat-markdown :content="markdownContent" @click="handleNodeTap" />
   </view>
 </template>
 
@@ -19,7 +16,6 @@ const markdownData = `
 1. 有序列表
 2. 有序列表
 `;
-
 
 export default {
   components: {
@@ -48,8 +44,7 @@ export default {
 </script>
 <style>
 .chat-example-block {
-    background-color: var(--td-bg-color-container);
-    padding: 32rpx;
+  background-color: var(--td-bg-color-container);
+  padding: 32rpx;
 }
-
 </style>

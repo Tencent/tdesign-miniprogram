@@ -5,10 +5,7 @@
     </view>
 
     <view class="example-search">
-      <t-search
-        placeholder="搜索预设文案"
-        shape="round"
-      />
+      <t-search placeholder="搜索预设文案" shape="round" />
     </view>
   </view>
 </template>
@@ -34,11 +31,11 @@ export default {
 </script>
 <style>
 .example-search {
-    background-color: var(--bg-color-demo);
-    padding: 16rpx 32rpx;
+  background-color: var(--bg-color-demo);
+  padding: 16rpx 32rpx;
 }
 
 .example-search:not(:last-child) {
-    margin-bottom: 32rpx;
+  margin-bottom: 32rpx;
 }
 </style>

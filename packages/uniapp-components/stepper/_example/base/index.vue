@@ -1,9 +1,6 @@
 <template>
   <view class="stepper-example">
-    <t-stepper
-      default-value="3"
-      theme="filled"
-    />
+    <t-stepper default-value="3" theme="filled" />
   </view>
 </template>
 
@@ -22,7 +19,7 @@ export default {
 </script>
 <style>
 .stepper-example {
-    padding: 32rpx;
-    background-color: var(--bg-color-demo);
+  padding: 32rpx;
+  background-color: var(--bg-color-demo);
 }
 </style>

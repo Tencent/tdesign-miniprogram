@@ -1,36 +1,34 @@
 <template>
   <view
     :id="tId"
-    :class="'' + tools.cls(classPrefix, [
-      ['active', active],
-      ['disabled', disabled]
-    ]) +
+    :class="
+      '' +
+      tools.cls(classPrefix, [
+        ['active', active],
+        ['disabled', disabled],
+      ]) +
       ' ' +
-      tClass"
+      tClass
+    "
     :style="'' + tools._style([customStyle])"
     aria-role="button"
-    :aria-label="ariaLabel ||
+    :aria-label="
+      ariaLabel ||
       (badgeProps && (badgeProps.dot || badgeProps.count)
-        ? (active ? '已选中，' + label + tools.getBadgeAriaLabel({ ...badgeProps })
-          : label + tools.getBadgeAriaLabel({ ...badgeProps })) : '')"
+        ? active
+          ? '已选中，' + label + tools.getBadgeAriaLabel({ ...badgeProps })
+          : label + tools.getBadgeAriaLabel({ ...badgeProps })
+        : '')
+    "
     :aria-disabled="disabled"
     @click="handleClick"
   >
     <block v-if="active">
       <view :class="classPrefix + '__line'" />
-      <view
-        v-if="!isFirstChild"
-        :class="classPrefix + '__prefix'"
-      />
-      <view
-        v-if="!isLastChild"
-        :class="classPrefix + '__suffix'"
-      />
+      <view v-if="!isFirstChild" :class="classPrefix + '__prefix'" />
+      <view v-if="!isLastChild" :class="classPrefix + '__suffix'" />
     </block>
-    <block
-      v-if="innerIcon"
-      name="icon"
-    >
+    <block v-if="innerIcon" name="icon">
       <t-icon
         :custom-style="iconCustomStyle"
         :t-class="classPrefix + '__icon'"
@@ -68,16 +66,15 @@
 </template>
 <script>
 import TBadge from '../badge/badge';
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
 
+import props from './props';
 
 const name = `${prefix}-side-bar-item`;
-
 
 export default {
   components: {
@@ -89,9 +86,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     mixins: [ChildrenMixin(RELATION_MAP.SideBarItem)],
     props: {
       ...props,
@@ -118,8 +113,8 @@ export default {
 
         return tools._style([
           {
-            fontSize: 'var(--td-side-bar-icon-size, 20px)',
-            marginRight: '2px',
+            fontSize: 'var(--td-side-bar-icon-size, 40rpx)',
+            marginRight: '4rpx',
           },
           this.innerIcon.style || '',
         ]);
@@ -139,9 +134,7 @@ export default {
         immediate: true,
       },
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
       innerAfterLinked() {
         const parent = this[RELATION_MAP.SideBarItem];
@@ -160,6 +153,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./side-bar-item.css"></style>

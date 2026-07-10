@@ -1,11 +1,6 @@
 <template>
   <view>
-    <t-back-top
-      :theme="backTopTheme"
-      :text="backTopText"
-      :scroll-top="scrollTop"
-      @to-top="onToTop"
-    />
+    <t-back-top :theme="backTopTheme" :text="backTopText" :scroll-top="scrollTop" @to-top="onToTop" />
   </view>
 </template>
 
@@ -21,9 +16,7 @@ export default {
       default: 0,
     },
   },
-  emits: [
-    'to-top',
-  ],
+  emits: ['to-top'],
   data() {
     return {
       backTopTheme: 'half-round-dark',
@@ -38,5 +31,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

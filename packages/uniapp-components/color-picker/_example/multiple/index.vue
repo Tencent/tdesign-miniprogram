@@ -1,11 +1,6 @@
 <template>
   <view>
-    <t-color-picker
-      enable-alpha
-      type="multiple"
-      @change="onChange"
-      @palette-bar-change="onPaletteBarChange"
-    />
+    <t-color-picker enable-alpha type="multiple" @change="onChange" @palette-bar-change="onPaletteBarChange" />
   </view>
 </template>
 
@@ -29,5 +24,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

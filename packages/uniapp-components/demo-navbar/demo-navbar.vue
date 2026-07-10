@@ -3,7 +3,7 @@
   <t-navbar
     :class="customClass"
     :title="title"
-    left-arrow
+    :left-arrow="leftArrow"
     :delta="-1"
     placeholder
     :z-index="99"
@@ -15,9 +15,8 @@
   <!-- #endif -->
 </template>
 <script>
-import TNavbar from '../navbar/navbar.vue';
 import { goBackOrGoHome } from '../common/route';
-
+import TNavbar from '../navbar/navbar.vue';
 
 export default {
   components: {
@@ -31,6 +30,10 @@ export default {
     customClass: {
       type: String,
       default: '',
+    },
+    leftArrow: {
+      type: Boolean,
+      default: true,
     },
   },
   methods: {

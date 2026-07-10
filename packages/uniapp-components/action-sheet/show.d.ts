@@ -6,7 +6,7 @@ declare type Context = any;
 
 export declare enum ActionSheetTheme {
   List = 'list',
-  Grid = 'grid'
+  Grid = 'grid',
 }
 
 interface ActionSheetProps {

@@ -1,9 +1,5 @@
 <template>
-  <view
-    :style="'' + tools._style([customStyle])"
-    :class="classPrefix + ' ' + tClass"
-    aria-role="radiogroup"
-  >
+  <view :style="'' + tools._style([customStyle])" :class="classPrefix + ' ' + tClass" aria-role="radiogroup">
     <slot />
     <t-radio
       v-for="(item, index) in radioOptions"
@@ -29,22 +25,23 @@
       :name="item.name || ''"
       :borderless="borderless"
       :relation-key="relationKey"
-      @change="(e) => handleRadioChange(e, { index, value: item.value, allowUncheck: item.allowUncheck || allowUncheck })"
+      @change="
+        (e) => handleRadioChange(e, { index, value: item.value, allowUncheck: item.allowUncheck || allowUncheck })
+      "
     />
   </view>
 </template>
 <script>
-import TRadio from '../radio/radio';
 import { prefix } from '../common/config';
-import { coalesce } from '../common/utils';
-import { uniComponent } from '../common/src/index';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import { coalesce } from '../common/utils';
+import tools from '../common/utils.wxs';
+import TRadio from '../radio/radio';
 
+import props from './props';
 
 const name = `${prefix}-radio-group`;
-
 
 export default {
   components: {
@@ -61,9 +58,7 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
     inject: {
       [RELATION_MAP.FormKey]: {
         default: null,
@@ -157,8 +152,7 @@ export default {
       },
 
       onChange(value) {
-        if (this[RELATION_MAP.FormKey]
-        && this[RELATION_MAP.FormKey].onValueChange) {
+        if (this[RELATION_MAP.FormKey] && this[RELATION_MAP.FormKey].onValueChange) {
           this[RELATION_MAP.FormKey].onValueChange(value);
         }
       },
@@ -195,13 +189,10 @@ export default {
             }
           });
           this.radioOptions = optionsValue;
-        } catch (error) {
-
-        }
+        } catch (error) {}
       },
     },
   }),
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>

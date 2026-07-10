@@ -7,19 +7,19 @@
       >
     </view>
   </t-demo-header>
-  <t-demo title="01 组件类型" desc="单选上传图片">
+  <t-demo title="01 组件类型" desc="单选上传">
     <view class="upload-demo">
       <view class="upload-demo__title">上传图片</view>
       <single />
     </view>
   </t-demo>
-  <t-demo title="" desc="多选上传图片">
+  <t-demo title="" desc="多选上传">
     <view class="upload-demo">
       <view class="upload-demo__title">上传图片</view>
       <multiple />
     </view>
   </t-demo>
-  <t-demo title="" desc="长按拖拽排序图片">
+  <t-demo title="" desc="长按图片拖拽排片">
     <view class="upload-demo">
       <view class="upload-demo__title">上传图片</view>
       <drag />
@@ -36,5 +36,8 @@
       <view class="upload-demo__title">上传图片</view>
       <messageFile />
     </view>
+  </t-demo>
+  <t-demo title="03 组件风格" desc="宫格/列表布局">
+    <theme />
   </t-demo>
 </view>

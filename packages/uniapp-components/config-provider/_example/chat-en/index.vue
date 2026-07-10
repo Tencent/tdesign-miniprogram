@@ -1,8 +1,5 @@
 <template>
-  <t-config-provider
-    :global-config="globalConfig"
-    :theme-vars="themeVars"
-  >
+  <t-config-provider :global-config="globalConfig" :theme-vars="themeVars">
     <view class="chat-demo">
       <t-chat-thinking
         :content="content"
@@ -16,8 +13,9 @@
 </template>
 
 <script>
-import TConfigProvider from '@tdesign/uniapp/config-provider/config-provider.vue';
 import TChatThinking from '@tdesign/uniapp-chat/chat-thinking/chat-thinking.vue';
+
+import TConfigProvider from '@tdesign/uniapp/config-provider/config-provider.vue';
 import enUS from '@tdesign/uniapp/locale/en_US';
 
 export default {

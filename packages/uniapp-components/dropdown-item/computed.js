@@ -3,4 +3,3 @@ export function getStyles(top, zIndex) {
   const zIndexStyle = zIndex ? `z-index:${zIndex};` : '';
   return topStyle + zIndexStyle;
 }
-

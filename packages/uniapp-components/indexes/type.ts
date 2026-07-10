@@ -18,6 +18,11 @@ export interface TdIndexesProps {
    */
   indexList?: Array<string | number>;
   /**
+   * 索引是否完整展示
+   * @default false
+   */
+  showFullIndex?: Boolean;
+  /**
    * 索引是否吸顶，默认为true
    * @default true
    */

@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="classPrefix"
-    :style="'' + tools._style([customStyle])"
-  >
+  <view :class="classPrefix" :style="'' + tools._style([customStyle])">
     <view
       :class="classPrefix + '__wrapper ' + tClass"
       :style="'font-size:' + utils.regSize(size)"
@@ -20,7 +17,13 @@
       <t-icon
         v-for="(item, index) in count"
         :key="index"
-        :t-class="classPrefix + '__icon ' + utils.getIconClass(classPrefix + '__icon', defaultValue, dataValue, index, allowHalf, disabled, scaleIndex) + ' ' + tClassIcon"
+        :t-class="
+          classPrefix +
+          '__icon ' +
+          utils.getIconClass(classPrefix + '__icon', defaultValue, dataValue, index, allowHalf, disabled, scaleIndex) +
+          ' ' +
+          tClassIcon
+        "
         :custom-style="'margin-right: ' + (count - index > 1 ? tools.addUnit(gap) : 0) + '; ' + utils.getColor(color)"
         :name="'' + utils.getIconName(defaultValue, dataValue, index, icon)"
         :size="size"
@@ -36,12 +39,15 @@
     </text>
     <text
       v-if="isVisibleToScreenReader"
-      :class="'' + tools.cls(classPrefix + '__text', [
-        ['active', dataValue > 0],
-        ['sr-only', isVisibleToScreenReader]
-      ]) +
+      :class="
+        '' +
+        tools.cls(classPrefix + '__text', [
+          ['active', dataValue > 0],
+          ['sr-only', isVisibleToScreenReader],
+        ]) +
         ' ' +
-        tClassText"
+        tClassText
+      "
       aria-role="alert"
       aria-live="assertive"
     >
@@ -57,7 +63,10 @@
       <block v-if="actionType == 'tap'">
         <view
           v-if="allowHalf"
-          :class="[classPrefix + '__tips-item', utils.ceil(dataValue) - 0.5 == dataValue ? classPrefix + '__tips-item' + '--active' : '']"
+          :class="[
+            classPrefix + '__tips-item',
+            utils.ceil(dataValue) - 0.5 == dataValue ? classPrefix + '__tips-item' + '--active' : '',
+          ]"
           :data-value="'' + utils.ceil(dataValue) - 0.5"
           @click="onSelect"
         >
@@ -72,7 +81,10 @@
           </view>
         </view>
         <view
-          :class="[classPrefix + '__tips-item', utils.ceil(dataValue) == dataValue ? classPrefix + '__tips-item' + '--active' : '']"
+          :class="[
+            classPrefix + '__tips-item',
+            utils.ceil(dataValue) == dataValue ? classPrefix + '__tips-item' + '--active' : '',
+          ]"
           :data-value="utils.ceil(dataValue)"
           @click="onSelect"
         >
@@ -89,15 +101,20 @@
       </block>
       <view
         v-else
-        :class="[classPrefix + '__tips-item', utils.ceil(dataValue) == dataValue && actionType == 'tap' ? classPrefix + '__tips-item' + '--active' : '']"
+        :class="[
+          classPrefix + '__tips-item',
+          utils.ceil(dataValue) == dataValue && actionType == 'tap' ? classPrefix + '__tips-item' + '--active' : '',
+        ]"
         :data-value="utils.ceil(dataValue)"
         @click="onSelect"
       >
         <t-icon
-          :t-class="tools.cls(classPrefix + '__icon', [
-            ['selected', utils.ceil(dataValue) == dataValue],
-            ['selected-half', utils.ceil(dataValue) != dataValue]
-          ])"
+          :t-class="
+            tools.cls(classPrefix + '__icon', [
+              ['selected', utils.ceil(dataValue) == dataValue],
+              ['selected-half', utils.ceil(dataValue) != dataValue],
+            ])
+          "
           :name="utils.getIconName(defaultValue, 0, 0, icon)"
           :size="size"
           :custom-style="utils.getColor(color)"
@@ -110,20 +127,21 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+
+import { parseEventDynamicCode } from '../common/event/dynamic';
+import { uniComponent } from '../common/src/index';
 import { unitConvert, getRect, coalesce } from '../common/utils';
 import tools from '../common/utils.wxs';
-import utils from './computed.js';
-import { parseEventDynamicCode } from '../common/event/dynamic';
-
+import TIcon from '../icon/icon';
 
 import usingConfig from '../mixins/using-config';
+
+import utils from './computed.js';
+
+import props from './props';
 const componentName = 'rate';
 const name = `${prefix}-${componentName}`;
-
 
 export default {
   components: {
@@ -141,11 +159,7 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-icon`,
-      `${prefix}-class-text`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-icon`, `${prefix}-class-text`],
     props: {
       ...props,
     },
@@ -173,9 +187,7 @@ export default {
         immediate: true,
       },
     },
-    mounted() {
-
-    },
+    mounted() {},
     methods: {
       parseEventDynamicCode,
       onTouch(e, eventType) {
@@ -270,6 +282,5 @@ export default {
     },
   }),
 };
-
 </script>
 <style scoped src="./rate.css"></style>

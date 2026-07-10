@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="classPrefix + ' ' + tClass"
-    :style="'' + tools._style([customStyle])"
-  >
+  <view :class="classPrefix + ' ' + tClass" :style="'' + tools._style([customStyle])">
     <slot />
     <t-checkbox
       v-for="(item, index) in checkboxOptions"
@@ -33,16 +30,16 @@
 </template>
 <script>
 import TCheckbox from '../checkbox/checkbox';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import { coalesce } from '../common/utils';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import { coalesce } from '../common/utils';
 
+import tools from '../common/utils.wxs';
+
+import props from './props';
 
 const name = `${prefix}-checkbox-group`;
-
 
 export default {
   components: {
@@ -59,9 +56,7 @@ export default {
         event: 'change',
       },
     ],
-    externalClasses: [
-      `${prefix}-class`,
-    ],
+    externalClasses: [`${prefix}-class`],
 
     inject: {
       [RELATION_MAP.FormKey]: {
@@ -144,7 +139,6 @@ export default {
         const items = this.getChildren();
         const { dataValue } = this;
 
-
         if (items.length > 0) {
           items.forEach((item) => {
             if (!item.checkAll) {
@@ -152,7 +146,7 @@ export default {
             }
           });
           // 关联可全选项
-          if (items.some(item => item.checkAll)) {
+          if (items.some((item) => item.checkAll)) {
             this.setCheckall();
           }
         }
@@ -163,30 +157,29 @@ export default {
         const { max } = this;
 
         if (validChildren !== false) {
-          const keySet = new Set(this.getChildren().map(item => item.value));
-          newValue = newValue.filter(value => keySet.has(value));
+          const keySet = new Set(this.getChildren().map((item) => item.value));
+          newValue = newValue.filter((value) => keySet.has(value));
         }
 
         if (max && checked && newValue.length === max) return;
 
         if (checkAll) {
           const items = this.getChildren();
-          newValue = !checked && indeterminate
-            ? items
-              .filter(data => !(data.disabled && !newValue.includes(data.value)))
-              .map(item => item.value)
-            : items
-              .filter((data) => {
-                if (data.disabled) {
-                  return newValue.includes(data.value);
-                }
-                return checked && !data.checkAll;
-              })
-              .map(data => data.value);
+          newValue =
+            !checked && indeterminate
+              ? items.filter((data) => !(data.disabled && !newValue.includes(data.value))).map((item) => item.value)
+              : items
+                  .filter((data) => {
+                    if (data.disabled) {
+                      return newValue.includes(data.value);
+                    }
+                    return checked && !data.checkAll;
+                  })
+                  .map((data) => data.value);
         } else if (checked) {
           newValue = newValue.concat(value);
         } else {
-          const index = newValue.findIndex(v => v === value);
+          const index = newValue.findIndex((v) => v === value);
           newValue.splice(index, 1);
         }
 
@@ -198,8 +191,7 @@ export default {
       },
 
       onChange(value) {
-        if (this[RELATION_MAP.FormKey]
-        && this[RELATION_MAP.FormKey].onValueChange) {
+        if (this[RELATION_MAP.FormKey] && this[RELATION_MAP.FormKey].onValueChange) {
           this[RELATION_MAP.FormKey].onValueChange(value);
         }
       },
@@ -213,16 +205,16 @@ export default {
           const isLabel = ['number', 'string'].includes(typeof item);
           return isLabel
             ? {
-              label: `${item}`,
-              value: item,
-              checked: value?.includes(item),
-            }
+                label: `${item}`,
+                value: item,
+                checked: value?.includes(item),
+              }
             : {
-              ...item,
-              label: item[coalesce(keys?.label, 'label')],
-              value: item[coalesce(keys?.value, 'value')],
-              checked: value?.includes(item[coalesce(keys?.value, 'value')]),
-            };
+                ...item,
+                label: item[coalesce(keys?.label, 'label')],
+                value: item[coalesce(keys?.value, 'value')],
+                checked: value?.includes(item[coalesce(keys?.value, 'value')]),
+              };
         });
 
         this.checkboxOptions = checkboxOptions;
@@ -242,14 +234,14 @@ export default {
         const items = this.getChildren();
 
         if (!this.$checkAll) {
-          this.$checkAll = items.find(item => item.checkAll);
+          this.$checkAll = items.find((item) => item.checkAll);
         }
 
         if (!this.$checkAll) return;
 
         const { dataValue } = this;
-        const valueSet = new Set(dataValue?.filter(val => val !== this.$checkAll.value));
-        const isCheckall = items.every(item => (item.checkAll ? true : valueSet.has(item.value)));
+        const valueSet = new Set(dataValue?.filter((val) => val !== this.$checkAll.value));
+        const isCheckall = items.every((item) => (item.checkAll ? true : valueSet.has(item.value)));
 
         this.$checkAll.dataChecked = valueSet.size > 0;
         this.$checkAll.dataIndeterminate = !isCheckall;
@@ -257,7 +249,5 @@ export default {
     },
   }),
 };
-
 </script>
-<style scoped>
-</style>
+<style scoped></style>

@@ -9,7 +9,13 @@
       v-for="(item, index) in menus"
       :key="index"
       :data-index="index"
-      :class="[classPrefix + '__item', activeIdx == index ? classPrefix + '__item' + '--active' : '', item.disabled ? classPrefix + '__item' + '--disabled' : '', true ? classPrefix + '__item' + '--index' : '', tClassItem]"
+      :class="[
+        classPrefix + '__item',
+        activeIdx == index ? classPrefix + '__item' + '--active' : '',
+        item.disabled ? classPrefix + '__item' + '--disabled' : '',
+        true ? classPrefix + '__item' + '--index' : '',
+        tClassItem,
+      ]"
       :aria-disabled="item.disabled"
       aria-role="button"
       :aria-expanded="activeIdx === index"
@@ -20,14 +26,11 @@
         {{ item.label }}
       </view>
 
-      <block
-        v-if="iArrowIcon"
-        name="icon"
-      >
+      <block v-if="iArrowIcon" name="icon">
         <t-icon
           :custom-style="iArrowIcon.style || ''"
           :t-class="getIconTClass(index)"
-          :class="''+getIconClass(index)"
+          :class="'' + getIconClass(index)"
           :prefix="iArrowIcon.prefix"
           :name="iArrowIcon.name"
           :size="iArrowIcon.size"
@@ -43,19 +46,19 @@
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import props from './props';
+
+import { parseEventDynamicCode } from '../common/event/dynamic';
+import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
 import { calcIcon } from '../common/utils';
 import tools from '../common/utils.wxs';
-import { ParentMixin, RELATION_MAP } from '../common/relation';
-import { parseEventDynamicCode } from '../common/event/dynamic';
 import { canUseVirtualHost } from '../common/version';
+import TIcon from '../icon/icon';
 
+import props from './props';
 
 const name = `${prefix}-dropdown-menu`;
-
 
 export default {
   components: {
@@ -66,12 +69,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [
-      `${prefix}-class`,
-      `${prefix}-class-item`,
-      `${prefix}-class-label`,
-      `${prefix}-class-icon`,
-    ],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-item`, `${prefix}-class-label`, `${prefix}-class-icon`],
     mixins: [ParentMixin(RELATION_MAP.DropdownItem)],
     props: {
       ...props,
@@ -147,8 +145,8 @@ export default {
         }
       },
       getAllItems() {
-        const menus = this.children?.map(data => ({
-          label: data.label || data.computedLabel,
+        const menus = this.children?.map((data) => ({
+          label: data.computedLabel || data.label,
           disabled: data.disabled,
         }));
 
@@ -166,8 +164,8 @@ export default {
 <style scoped src="./dropdown-menu.css"></style>
 <style scoped>
 :deep(.t-dropdown-menu__icon) {
-  font-size: var(--td-dropdown-menu-icon-size, 20px);
-  padding: 2px;
+  font-size: var(--td-dropdown-menu-icon-size, 48rpx);
+  padding: 4rpx;
   box-sizing: border-box;
   transition: transform 240ms ease;
 }
@@ -175,6 +173,6 @@ export default {
   transform: rotate(180deg);
 }
 :deep(.t-dropdown-menu__icon):not(:empty) {
-  margin-left: 4px;
+  margin-left: 8rpx;
 }
 </style>

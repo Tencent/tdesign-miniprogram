@@ -71,7 +71,7 @@ t-class-title | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-step-item-circle-size | 44rpx | -
 --td-step-item-circle-text-font | @font-body-medium | -

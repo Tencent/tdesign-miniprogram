@@ -5,7 +5,7 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['base', 'code', 'list', 'refer', 'sheet', 'url'];
+const mapper = ['base', 'code', 'list', 'refer', 'sheet', 'tail', 'url'];
 
 describe('ChatMarkdown', () => {
   mapper.forEach((demoName) => {

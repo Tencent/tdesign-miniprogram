@@ -10,8 +10,6 @@ exports[`Picker Picker area demo works fine 1`] = `
     bind:click="onAreaPicker"
   />
   <t-picker
-    cancelBtn="取消"
-    confirmBtn="确认"
     title="选择地区"
     usingCustomNavbar="{{true}}"
     value="{{Array []}}"
@@ -137,8 +135,6 @@ exports[`Picker Picker base demo works fine 1`] = `
     bind:click="onSeasonPicker"
   />
   <t-picker
-    cancelBtn="取消"
-    confirmBtn="确认"
     data-key="city"
     title="选择城市"
     usingCustomNavbar="{{true}}"
@@ -203,8 +199,6 @@ exports[`Picker Picker base demo works fine 1`] = `
     </t-picker-item>
   </t-picker>
   <t-picker
-    cancelBtn="取消"
-    confirmBtn="确认"
     data-key="date"
     title="选择时间"
     usingCustomNavbar="{{true}}"
@@ -276,8 +270,6 @@ exports[`Picker Picker with-title demo works fine 1`] = `
     bind:click="onWithoutTitlePicker"
   />
   <t-picker
-    cancelBtn="取消"
-    confirmBtn="确认"
     data-key="city"
     title=""
     usingCustomNavbar="{{true}}"
@@ -315,8 +307,6 @@ exports[`Picker Picker with-title demo works fine 1`] = `
     />
   </t-picker>
   <t-picker
-    cancelBtn="取消"
-    confirmBtn="确认"
     data-key="city2"
     title=""
     usingCustomNavbar="{{true}}"
@@ -359,8 +349,6 @@ exports[`Picker Picker with-title demo works fine 1`] = `
 exports[`Picker Picker without-popup demo works fine 1`] = `
 <without-popup>
   <t-picker
-    cancelBtn="取消"
-    confirmBtn="确认"
     data-key="city"
     title=""
     usePopup="{{false}}"

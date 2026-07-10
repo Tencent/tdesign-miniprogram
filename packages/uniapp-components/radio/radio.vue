@@ -10,20 +10,17 @@
     :aria-disabled="iDisabled"
     @click.stop="handleTap"
   >
-    <view :class="'' + tools.cls(classPrefix + '__icon', [innerPlacement, ['checked', dataChecked], ['disabled', iDisabled]]) + ' ' + tClassIcon">
-      <slot
-        v-if="slotIcon"
-        name="icon"
-      />
-      <view
-        v-else-if="customIcon"
-        :class="classPrefix + '__image'"
-      >
-        <image
-          :src="dataChecked ? iconVal[0] : iconVal[1]"
-          :class="classPrefix + '-icon__image'"
-          webp
-        />
+    <view
+      :class="
+        '' +
+        tools.cls(classPrefix + '__icon', [innerPlacement, ['checked', dataChecked], ['disabled', iDisabled]]) +
+        ' ' +
+        tClassIcon
+      "
+    >
+      <slot v-if="slotIcon" name="icon" />
+      <view v-else-if="customIcon" :class="classPrefix + '__image'">
+        <image :src="dataChecked ? iconVal[0] : iconVal[1]" :class="classPrefix + '-icon__image'" webp />
       </view>
       <block v-else>
         <t-icon
@@ -39,24 +36,20 @@
           v-if="!dataChecked && (icon == 'circle' || icon == 'dot')"
           :class="'' + tools.cls(classPrefix + '__icon-circle', [['disabled', iDisabled]])"
         />
-        <view
-          v-if="!dataChecked && icon == 'line'"
-          class="placeholder"
-        />
+        <view v-if="!dataChecked && icon == 'line'" class="placeholder" />
       </block>
     </view>
-    <view
-      :class="classPrefix + '__content'"
-      data-target="text"
-      @click.stop="handleTap"
-    >
+    <view :class="classPrefix + '__content'" data-target="text" @click.stop="handleTap">
       <view
-        :class="'' + tools.cls(classPrefix + '__title', [
-          ['disabled', iDisabled],
-          ['checked', dataChecked]
-        ]) +
+        :class="
+          '' +
+          tools.cls(classPrefix + '__title', [
+            ['disabled', iDisabled],
+            ['checked', dataChecked],
+          ]) +
           ' ' +
-          tClassLabel"
+          tClassLabel
+        "
         :style="'-webkit-line-clamp:' + maxLabelRow"
       >
         <block v-if="label">
@@ -66,12 +59,15 @@
         <slot name="label" />
       </view>
       <view
-        :class="'' + tools.cls(classPrefix + '__description', [
-          ['disabled', iDisabled],
-          ['checked', dataChecked]
-        ]) +
+        :class="
+          '' +
+          tools.cls(classPrefix + '__description', [
+            ['disabled', iDisabled],
+            ['checked', dataChecked],
+          ]) +
           ' ' +
-          tClassContent"
+          tClassContent
+        "
         :style="'-webkit-line-clamp:' + maxContentRow"
       >
         <block v-if="content">
@@ -80,21 +76,18 @@
         <slot name="content" />
       </view>
     </view>
-    <view
-      v-if="!borderless"
-      :class="'' + tools.cls(classPrefix + '__border', [innerPlacement]) + ' ' + tClassBorder"
-    />
+    <view v-if="!borderless" :class="'' + tools.cls(classPrefix + '__border', [innerPlacement]) + ' ' + tClassBorder" />
   </view>
 </template>
 <script>
-import TIcon from '../icon/icon';
 import { prefix, ISOLATED_RELATION_KEY } from '../common/config';
-import { coalesce } from '../common/utils';
-import { uniComponent } from '../common/src/index';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import { coalesce } from '../common/utils';
+import tools from '../common/utils.wxs';
+import TIcon from '../icon/icon';
 
+import props from './props';
 
 const name = `${prefix}-radio`;
 

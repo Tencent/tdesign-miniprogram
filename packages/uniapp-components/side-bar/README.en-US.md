@@ -44,7 +44,7 @@ name | Description
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-side-bar-bg-color | @bg-color-secondarycontainer | -
 --td-side-bar-height | 100% | -

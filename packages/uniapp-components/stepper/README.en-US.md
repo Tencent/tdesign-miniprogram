@@ -40,7 +40,7 @@ t-class-plus | \-
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
-Name | Default Value | Description 
+Name | Default Value | Description
 -- | -- | --
 --td-stepper-input-disabled-bg | @bg-color-component-disabled | -
 --td-stepper-input-disabled-color | @text-color-disabled | -

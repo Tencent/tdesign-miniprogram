@@ -5,6 +5,7 @@
  * */
 
 import type { TdChatContentProps as ChatContentProps } from '../chat-content/type';
+import type { TdChatThinkingProps as ChatThinkingProps } from '../chat-thinking/type';
 import type { FileItem } from '../attachments/type';
 
 export interface TdChatMessageProps {
@@ -18,9 +19,9 @@ export interface TdChatMessageProps {
    */
   avatar?: string;
   /**
-   * 聊天内容组件的属性
+   * 聊天内容组件的属性，支持通过 `thinking` 字段透传 ChatThinking 组件属性
    */
-  chatContentProps?: ChatContentProps;
+  chatContentProps?: ChatMessageContentProps;
   /**
    * 聊天消息的唯一标识
    * @default ''
@@ -32,6 +33,7 @@ export interface TdChatMessageProps {
   content?: ChatMessageContent[];
   /**
    * 对话单元的时间配置
+   * @default ''
    */
   datetime?: string;
   /**
@@ -57,10 +59,16 @@ export interface TdChatMessageProps {
    */
   variant?: 'base' | 'outline' | 'text';
   /**
-   * null
+   * 长按事件
    */
-  onLongpress?: (context: { e: MouseEvent; id: string }) => void;
+  onMessageLongpress?: (context: { e: MouseEvent; id: string; longPressPosition: { x: number; y: number } }) => void;
 }
+
+export interface ChatMessageContentProps extends ChatContentProps {
+  thinking?: ChatMessageThinking;
+}
+
+export type ChatMessageThinking = Pick<ChatThinkingProps, 'animation' | 'collapsed' | 'layout' | 'maxHeight'>;
 
 export type ChatMessageContent = TextContent | MarkdownContent | ThinkingContent | AttachmentContent;
 

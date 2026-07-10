@@ -289,17 +289,38 @@
   &__swatches-items {
     margin-top: 24rpx;
     width: 100%;
-    list-style: none;
+    height: 48rpx;
     display: flex;
-
-    overflow-x: auto;
-    overflow-y: auto;
+    flex-direction: row;
 
     &::-webkit-scrollbar {
       display: none;
       width: 0;
       height: 0;
       color: transparent;
+    }
+
+    // 关键：穿透 uni-scroll-view 内部 wrapper，让色块横向排列（H5 only）
+    :deep(.uni-scroll-view),
+    :deep(.uni-scroll-view-content) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+    }
+
+    // 关键：隐藏 H5 端 uni-scroll-view 内部真正滚动节点的滚动条
+    :deep(.uni-scroll-view) {
+      &::-webkit-scrollbar {
+        display: none;
+        width: 0;
+        height: 0;
+        background: transparent;
+        color: transparent;
+      }
+
+      // Firefox / 非 webkit 内核
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
   }
 
@@ -351,7 +372,6 @@
 }
 
 .transparentBgImage () {
-  /* stylelint-disable-next-line color-no-hex */
   background-image: linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5),
     linear-gradient(45deg, #c5c5c5 25%, transparent 0, transparent 75%, #c5c5c5 0, #c5c5c5);
   background-size: 6px 6px;

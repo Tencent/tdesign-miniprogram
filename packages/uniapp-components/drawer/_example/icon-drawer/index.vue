@@ -1,14 +1,6 @@
 <template>
   <view>
-    <t-button
-      variant="outline"
-      block
-      size="large"
-      theme="primary"
-      @click="openDrawerIcon"
-    >
-      带图标抽屉
-    </t-button>
+    <t-button variant="outline" block size="large" theme="primary" @click="openDrawerIcon"> 带图标抽屉 </t-button>
 
     <t-drawer
       :visible="visible"
@@ -16,7 +8,7 @@
       :items="sidebar"
       :using-custom-navbar="!isMPAlipay"
       :custom-navbar-height="gCustomNavbarHeight"
-      @update:visible="(e) => visible = e"
+      @update:visible="(e) => (visible = e)"
       @overlay-click="overlayClick"
       @item-click="itemClick"
     />
@@ -76,8 +68,8 @@ export default {
   },
   created() {},
   /**
-     * 组件的方法列表
-     */
+   * 组件的方法列表
+   */
   methods: {
     openDrawerIcon() {
       this.visible = true;
@@ -92,5 +84,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

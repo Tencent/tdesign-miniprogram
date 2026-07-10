@@ -32,5 +32,5 @@ import TChatLoading from '@tdesign/uniapp-chat/chat-loading/chat-loading.vue';
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
-animation | String | moving | 加载的状态形式。可选项：skeleton/moving/gradient/dot | N
+animation | String | moving | 加载的状态形式。可选项：skeleton/moving/gradient/dots | N
 text | String | - | 加载过程展示的文字内容 | N

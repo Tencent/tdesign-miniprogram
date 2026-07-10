@@ -1,0 +1,682 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table Table base demo works fine 1`] = `
+<base>
+  <t-table
+    cellEmptyContent="-"
+    columns="{{
+      Array [
+        Object {
+          "colKey": "applicant",
+          "ellipsis": true,
+          "title": "标题",
+        },
+        Object {
+          "colKey": "status",
+          "ellipsis": true,
+          "title": "标题",
+        },
+        Object {
+          "colKey": "channel",
+          "ellipsis": true,
+          "title": "标题",
+        },
+        Object {
+          "colKey": "detail.email",
+          "ellipsis": true,
+          "title": "标题",
+        },
+      ]
+    }}"
+    data="{{
+      Array [
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 1,
+          "index": 1,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 2,
+          "index": 2,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 3,
+          "index": 3,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 4,
+          "index": 4,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 5,
+          "index": 5,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 6,
+          "index": 6,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 7,
+          "index": 7,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 8,
+          "index": 8,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 9,
+          "index": 9,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 10,
+          "index": 10,
+          "status": "内容",
+        },
+      ]
+    }}"
+    rowKey="id"
+    showHeader="{{true}}"
+    bind:cell-click="handleCellClick"
+    bind:row-click="handleRowClick"
+  />
+</base>
+`;
+
+exports[`Table Table bordered demo works fine 1`] = `
+<bordered>
+  <t-table
+    bordered="{{true}}"
+    cellEmptyContent="-"
+    columns="{{
+      Array [
+        Object {
+          "colKey": "applicant",
+          "ellipsis": true,
+          "title": "标题",
+        },
+        Object {
+          "colKey": "status",
+          "ellipsis": true,
+          "title": "标题",
+        },
+        Object {
+          "colKey": "channel",
+          "ellipsis": true,
+          "title": "标题",
+        },
+        Object {
+          "colKey": "detail.email",
+          "ellipsis": true,
+          "title": "标题",
+        },
+      ]
+    }}"
+    data="{{
+      Array [
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 1,
+          "index": 1,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 2,
+          "index": 2,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容内容内容",
+          },
+          "id": 3,
+          "index": 3,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 4,
+          "index": 4,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 5,
+          "index": 5,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容内容内容",
+          },
+          "id": 6,
+          "index": 6,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 7,
+          "index": 7,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 8,
+          "index": 8,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容内容内容",
+          },
+          "id": 9,
+          "index": 9,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 10,
+          "index": 10,
+          "status": "内容",
+        },
+      ]
+    }}"
+    rowKey="id"
+    showHeader="{{true}}"
+    bind:cell-click="handleCellClick"
+    bind:row-click="handleRowClick"
+  />
+</bordered>
+`;
+
+exports[`Table Table rowspan-colspan demo works fine 1`] = `
+<rowspan-colspan>
+  <t-table
+    bordered="{{true}}"
+    cellEmptyContent="-"
+    columns="{{
+      Array [
+        Object {
+          "colKey": "index",
+          "title": "序号",
+          "width": 60,
+        },
+        Object {
+          "colKey": "name",
+          "title": "姓名",
+        },
+        Object {
+          "colKey": "department",
+          "title": "部门",
+        },
+        Object {
+          "colKey": "status",
+          "title": "状态",
+        },
+      ]
+    }}"
+    data="{{
+      Array [
+        Object {
+          "department": "研发部",
+          "id": 1,
+          "index": 1,
+          "name": "张三",
+          "status": "在职",
+        },
+        Object {
+          "department": "研发部",
+          "id": 2,
+          "index": 2,
+          "name": "李四",
+          "status": "在职",
+        },
+        Object {
+          "department": "设计部",
+          "id": 3,
+          "index": 3,
+          "name": "王五",
+          "status": "离职",
+        },
+        Object {
+          "department": "产品部",
+          "id": 4,
+          "index": 4,
+          "name": "赵六",
+          "status": "在职",
+        },
+      ]
+    }}"
+    rowKey="id"
+    rowspanAndColspan="{{[Function]}}"
+  />
+</rowspan-colspan>
+`;
+
+exports[`Table Table scroll demo works fine 1`] = `
+<scroll>
+  <t-table
+    cellEmptyContent="-"
+    columns="{{
+      Array [
+        Object {
+          "colKey": "applicant",
+          "title": "标题",
+          "width": 180,
+        },
+        Object {
+          "colKey": "status",
+          "title": "标题",
+          "width": 180,
+        },
+        Object {
+          "colKey": "channel",
+          "title": "标题",
+          "width": 180,
+        },
+        Object {
+          "colKey": "detail.email",
+          "title": "标题",
+          "width": 180,
+        },
+      ]
+    }}"
+    data="{{
+      Array [
+        Object {
+          "applicant": "横向平铺内容不省略",
+          "channel": "横向平铺内容不省略",
+          "detail": Object {
+            "email": "横向平铺内容不省略",
+          },
+          "id": 1,
+          "index": 1,
+          "status": "横向平铺内容不省略",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 2,
+          "index": 2,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 3,
+          "index": 3,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "横向平铺内容不省略",
+          "channel": "横向平铺内容不省略",
+          "detail": Object {
+            "email": "横向平铺内容不省略",
+          },
+          "id": 4,
+          "index": 4,
+          "status": "横向平铺内容不省略",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 5,
+          "index": 5,
+          "status": "内容",
+        },
+      ]
+    }}"
+    rowKey="id"
+    showHeader="{{true}}"
+    tableContentWidth="720px"
+    bind:cell-click="handleCellClick"
+    bind:row-click="handleRowClick"
+  />
+</scroll>
+`;
+
+exports[`Table Table stripe demo works fine 1`] = `
+<stripe>
+  <t-table
+    cellEmptyContent="-"
+    columns="{{
+      Array [
+        Object {
+          "colKey": "applicant",
+          "title": "标题",
+        },
+        Object {
+          "colKey": "status",
+          "title": "标题",
+        },
+        Object {
+          "colKey": "channel",
+          "title": "标题",
+        },
+        Object {
+          "colKey": "detail.email",
+          "ellipsis": true,
+          "title": "标题",
+        },
+      ]
+    }}"
+    data="{{
+      Array [
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 1,
+          "index": 1,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 2,
+          "index": 2,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 3,
+          "index": 3,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 4,
+          "index": 4,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 5,
+          "index": 5,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 6,
+          "index": 6,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 7,
+          "index": 7,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 8,
+          "index": 8,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 9,
+          "index": 9,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 10,
+          "index": 10,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 11,
+          "index": 11,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 12,
+          "index": 12,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 13,
+          "index": 13,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 14,
+          "index": 14,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 15,
+          "index": 15,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 16,
+          "index": 16,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 17,
+          "index": 17,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 18,
+          "index": 18,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 19,
+          "index": 19,
+          "status": "内容",
+        },
+        Object {
+          "applicant": "内容",
+          "channel": "内容",
+          "detail": Object {
+            "email": "内容",
+          },
+          "id": 20,
+          "index": 20,
+          "status": "内容",
+        },
+      ]
+    }}"
+    fixedRows="{{
+      Array [
+        1,
+        2,
+      ]
+    }}"
+    maxHeight="{{400}}"
+    rowKey="id"
+    showHeader="{{true}}"
+    stripe="{{true}}"
+    bind:cell-click="handleCellClick"
+    bind:row-click="handleRowClick"
+  />
+</stripe>
+`;

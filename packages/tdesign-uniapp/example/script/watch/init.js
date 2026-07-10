@@ -1,23 +1,23 @@
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
+
 const glob = require('glob');
 const { deleteFolder } = require('t-comm');
 
-const { config } = require('./config');
-const { copyComponents, checkVue2CliExist, checkVue2HxExist, checkVue3HxExist } = require('./helper');
 const { generateStyleShortcuts } = require('../release/prepare');
+
 const { generateDts } = require('../release/typescript');
 
+const { config } = require('./config');
+const { copyComponents, checkVue2CliExist, checkVue2HxExist, checkVue3HxExist } = require('./helper');
 
-async function copyOneProject({
-  globMode,
-  sourceDir,
-  isChat,
-}) {
-  const list = glob.sync(globMode, {
-    ignore: '**/node_modules/**/*',
-    nodir: true,
-  }).filter(item => !item.includes('node_modules'));
+async function copyOneProject({ globMode, sourceDir, isChat }) {
+  const list = glob
+    .sync(globMode, {
+      ignore: '**/node_modules/**/*',
+      nodir: true,
+    })
+    .filter((item) => !item.includes('node_modules'));
 
   for (const item of list) {
     const relativePath = path.relative(sourceDir, item);
@@ -34,11 +34,8 @@ async function copyOneProject({
 function clearTargetDir() {
   deleteFolder(config.componentTargetDirInVue3Cli);
   deleteFolder(config.componentChatTargetDirInVue3Cli);
-  deleteFolder(config.componentTargetDirInApp);
-  deleteFolder(config.componentChatTargetDirInApp);
 
   deleteFolder(config.pagesMoreDirInVue3Cli);
-  deleteFolder(config.pagesMoreDirInApp);
 
   if (checkVue2CliExist()) {
     deleteFolder(config.componentTargetDirInVue2Cli);
@@ -59,13 +56,8 @@ function clearTargetDir() {
   }
 }
 
-
 async function main() {
   await clearTargetDir();
-
-  await copyInfra({
-    infraDir: config.infraDirInApp,
-  });
 
   if (checkVue2CliExist()) {
     await copyInfra({
@@ -102,7 +94,6 @@ async function main() {
 
   // 为各目标目录生成快捷样式入口文件（theme.css / theme.less）
   generateStyleShortcuts(config.componentTargetDirInVue3Cli);
-  generateStyleShortcuts(config.componentTargetDirInApp);
 
   if (checkVue2CliExist()) {
     generateStyleShortcuts(config.componentTargetDirInVue2Cli);
@@ -119,10 +110,7 @@ async function main() {
   generateDts(config.chatSourceDir, config.componentChatTargetDirInVue3Cli);
 }
 
-
-async function copyInfra({
-  infraDir,
-}) {
+async function copyInfra({ infraDir }) {
   const list = glob.sync([config.demoPagesGlob], {
     ignore: '**/node_modules/**/*',
     nodir: true,
@@ -139,6 +127,5 @@ async function copyInfra({
 
   console.log(`[Wrote] done! Length of App Files is ${list.length}!`);
 }
-
 
 main();

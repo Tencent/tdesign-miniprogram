@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+
 const glob = require('glob');
 const { deleteFolder } = require('t-comm');
 
@@ -21,6 +22,18 @@ const STYLE_SHORTCUTS = [
     target: 'theme.less',
     type: 'import',
     importPath: './common/style/theme/index.less',
+  },
+  {
+    // 纯浅色模式 css（不含深色模式，不随系统主题切换）
+    source: 'common/style/theme/index-light.css',
+    target: 'theme-light.css',
+    type: 'copy',
+  },
+  {
+    // 纯浅色模式 less
+    target: 'theme-light.less',
+    type: 'import',
+    importPath: './common/style/theme/index-light.less',
   },
 ];
 
@@ -84,7 +97,7 @@ async function prepareOne({ targetDir, sourceGlob, sourceDir }) {
 
   for (const item of list) {
     const relativePath = path.relative(sourceDir, item);
-    const isBlack = DIST_BLACK_LIST.some(black => relativePath.endsWith(black));
+    const isBlack = DIST_BLACK_LIST.some((black) => relativePath.endsWith(black));
     if (isBlack) {
       continue;
     }

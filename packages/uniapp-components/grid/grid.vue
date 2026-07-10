@@ -1,13 +1,6 @@
 <template>
-  <view
-    :style="'' + tools._style([customStyle])"
-    :class="'' + tools.cls(classPrefix, [theme]) + ' ' + tClass"
-  >
-    <view
-      v-if="column > 0"
-      :class="classPrefix + '__content'"
-      :style="contentStyle"
-    >
+  <view :style="'' + tools._style([customStyle])" :class="'' + tools.cls(classPrefix, [theme]) + ' ' + tClass">
+    <view v-if="column > 0" :class="classPrefix + '__content'" :style="contentStyle">
       <slot />
     </view>
     <scroll-view
@@ -22,16 +15,15 @@
   </view>
 </template>
 <script>
-import { uniComponent } from '../common/src/index';
 import { prefix } from '../common/config';
-import { isObject } from '../common/validator';
-import props from './props';
-import tools from '../common/utils.wxs';
 import { ParentMixin, RELATION_MAP } from '../common/relation';
+import { uniComponent } from '../common/src/index';
+import tools from '../common/utils.wxs';
+import { isObject } from '../common/validator';
 
+import props from './props';
 
 const name = `${prefix}-grid`;
-
 
 export default {
   ...uniComponent({
@@ -65,7 +57,7 @@ export default {
     methods: {
       watchCallback() {
         this.updateContentStyle();
-        this.doForChild(t => t.updateStyle?.());
+        this.doForChild((t) => t.updateStyle?.());
       },
       doForChild(action) {
         this.children?.forEach(action);
@@ -83,8 +75,8 @@ export default {
         let { border } = this;
 
         if (!border) return `margin-bottom:-${gutter}rpx; margin-right:-${gutter}rpx`;
-        if (!isObject(border)) border = {} ;
-        const { width = 2 } = border ;
+        if (!isObject(border)) border = {};
+        const { width = 2 } = border;
         return `margin-bottom:-${width}rpx; margin-right:-${width}rpx`;
       },
     },

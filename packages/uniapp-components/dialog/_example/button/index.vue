@@ -10,16 +10,14 @@
     >
       开放能力按钮
     </t-button>
-    <t-dialog
-      ref="t-dialog"
-    />
+    <t-dialog ref="t-dialog" />
   </view>
 </template>
 
 <script>
+import { DialogPlugin } from '@tdesign/uniapp';
 import TButton from '@tdesign/uniapp/button/button.vue';
 import TDialog from '@tdesign/uniapp/dialog/dialog.vue';
-import { DialogPlugin } from '@tdesign/uniapp';
 
 export default {
   components: {
@@ -61,5 +59,4 @@ export default {
   },
 };
 </script>
-<style>
-</style>
+<style></style>

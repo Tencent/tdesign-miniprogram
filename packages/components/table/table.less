@@ -1,0 +1,381 @@
+@import '../common/style/base.less';
+
+@table-prefix: ~'@{prefix}-table';
+
+// 变量
+@table-border-color: var(--td-table-border-color, @component-border);
+@table-header-bg-color: var(--td-table-header-bg-color, @bg-color-container);
+@table-header-text-color: var(--td-table-header-text-color, @text-color-placeholder);
+@table-body-text-color: var(--td-table-body-text-color, @text-color-primary);
+@table-stripe-bg-color: var(--td-table-stripe-bg-color, @bg-color-secondarycontainer);
+@table-td-padding: var(--td-table-td-padding, 16rpx 24rpx);
+@table-th-padding: var(--td-table-th-padding, 16rpx 24rpx);
+@table-font-size: var(--td-table-font-size, @font-body-medium);
+@table-loading-bg-color: var(--td-table-loading-bg-color, rgba(255, 255, 255, 0.55));
+@table-row-height: var(--td-table-row-height, 82rpx);
+@scrollbar-color: rgba(0, 0, 0, 10%);
+@scrollbar-hover-color: rgba(0, 0, 0, 30%);
+
+// 固定列相关变量
+@table-fixed-column-z-index: 30;
+@table-fixed-cell-border-color: var(--td-table-fixed-cell-border-color, @component-border);
+@table-fixed-cell-border-width: 8rpx;
+@table-fixed-cell-border-width-light: 4rpx;
+@table-fixed-cell-border: @table-fixed-cell-border-width solid @table-fixed-cell-border-color;
+@table-fixed-cell-border-light: @table-fixed-cell-border-width-light solid @table-fixed-cell-border-color;
+
+.@{table-prefix} {
+  position: relative;
+  width: 100%;
+  font: @table-font-size;
+  color: @table-body-text-color;
+  background-color: @bg-color-container;
+  box-sizing: border-box;
+
+  &__content {
+    position: relative;
+    overflow: auto;
+
+    // scrollbar 样式（同步 mobile-vue）
+    // scroll-view 在 H5 端内部会生成子滚动容器，需要同时匹配自身和后代元素
+    &::-webkit-scrollbar,
+    & ::-webkit-scrollbar {
+      width: 12rpx;
+      height: 12rpx;
+    }
+
+    &::-webkit-scrollbar-thumb,
+    & ::-webkit-scrollbar-thumb {
+      background-clip: content-box;
+      background-color: @scrollbar-color;
+      border-radius: 22rpx;
+    }
+
+    &::-webkit-scrollbar-thumb:vertical:hover,
+    &::-webkit-scrollbar-thumb:horizontal:hover,
+    & ::-webkit-scrollbar-thumb:vertical:hover,
+    & ::-webkit-scrollbar-thumb:horizontal:hover {
+      background-color: @scrollbar-hover-color;
+    }
+  }
+
+  &__table-elm {
+    display: flex;
+    flex-direction: column;
+    min-width: 100%;
+  }
+
+  // 表头
+  &__header {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__header-tr,
+  &__tr {
+    display: flex;
+    min-width: 100%;
+  }
+
+  &__th,
+  &__td {
+    flex: 1 1 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    min-width: 0;
+    border-bottom: 2rpx solid @table-border-color;
+  }
+
+  &__th {
+    padding: @table-th-padding;
+    background-color: @table-header-bg-color;
+    color: @table-header-text-color;
+    font-weight: normal;
+    text-align: left;
+  }
+
+  &__td {
+    padding: @table-td-padding;
+    text-align: left;
+  }
+
+  &__th-content,
+  &__td-content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  // 空数据
+  &__empty-row {
+    display: flex;
+    width: 100%;
+  }
+
+  &__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 48rpx 0;
+    background-color: @bg-color-container;
+    color: @text-color-placeholder;
+  }
+
+  // 表体
+  &__body {
+    position: relative;
+    background-color: @bg-color-container;
+  }
+
+  // 表尾
+  &__bottom-content {
+    padding: 16rpx 24rpx;
+    background-color: @bg-color-container;
+    border-top: 2rpx solid @table-border-color;
+  }
+
+  // 加载中
+  &__loading--full {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: @table-loading-bg-color;
+    z-index: 10;
+  }
+
+  // 对齐方式
+  .@{prefix}-align-left {
+    text-align: left;
+  }
+
+  .@{prefix}-align-center {
+    text-align: center;
+  }
+
+  .@{prefix}-align-right {
+    text-align: right;
+  }
+
+  // 垂直对齐
+  &.@{prefix}-vertical-align-top .@{table-prefix}__td {
+    vertical-align: top;
+  }
+
+  &.@{prefix}-vertical-align-middle .@{table-prefix}__td {
+    vertical-align: middle;
+  }
+
+  &.@{prefix}-vertical-align-bottom .@{table-prefix}__td {
+    vertical-align: bottom;
+  }
+
+  // 边框
+  &--bordered {
+    border: 2rpx solid @table-border-color;
+
+    .@{table-prefix}__th,
+    .@{table-prefix}__td {
+      border-right: 2rpx solid @table-border-color;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+
+    .@{table-prefix}__th {
+      border-bottom: 2rpx solid @table-border-color;
+    }
+  }
+
+  // 斑马纹（同步 mobile-vue）
+  // 注意：与 mobile-vue 不同，小程序/uniapp 中表头和数据行在不同容器中，
+  // __body 中的 __tr 从 1 开始计数，因此无论是否有固定表头，都用 odd 着色第1行
+  &--striped {
+    // 非 bordered 模式下，去掉行分割线，让斑马纹效果更纯粹
+    &:not(.@{table-prefix}--bordered) {
+      .@{table-prefix}__th,
+      .@{table-prefix}__td {
+        border-bottom: none;
+      }
+    }
+
+    // 奇数行着色（第1行灰色，第2行白色...）
+    .@{table-prefix}__tr:nth-child(odd) {
+      background-color: @table-stripe-bg-color;
+
+      // 固定列单元格也跟随斑马纹背景色
+      .@{table-prefix}__cell--fixed-left,
+      .@{table-prefix}__cell--fixed-right {
+        background-color: @table-stripe-bg-color;
+      }
+    }
+  }
+
+  // 布局方式
+  &--layout-fixed {
+    .@{table-prefix}__table-elm {
+      table-layout: fixed;
+    }
+  }
+
+  &--layout-auto {
+    .@{table-prefix}__table-elm {
+      table-layout: auto;
+    }
+  }
+
+  // 合并单元格
+  &--rowspan-colspan {
+    .@{table-prefix}__td-last-row {
+      border-bottom: none;
+    }
+
+    .@{table-prefix}__td-first-col {
+      border-left: none;
+    }
+  }
+
+  // 固定表头（同步 mobile-vue：固定表头时 th 背景色为灰色）
+  &__header--fixed {
+    position: sticky;
+    top: 0;
+    z-index: 33;
+
+    .@{table-prefix}__th {
+      background-color: @bg-color-secondarycontainer;
+    }
+  }
+
+  // 固定行（确保背景不透明，防止滚动时文字穿透）
+  &__row--fixed-top,
+  &__row--fixed-bottom {
+    background-color: @bg-color-container;
+
+    > .@{table-prefix}__td {
+      background-color: @bg-color-container;
+    }
+
+    // 固定行中的固定列单元格也需要背景色
+    > .@{table-prefix}__cell--fixed-left,
+    > .@{table-prefix}__cell--fixed-right {
+      background-color: @bg-color-container;
+    }
+  }
+
+  // 斑马纹模式下固定行也需要保持背景色
+  &--striped &__row--fixed-top,
+  &--striped &__row--fixed-bottom {
+    &:nth-child(odd) > .@{table-prefix}__td {
+      background-color: @table-stripe-bg-color;
+    }
+
+    &:nth-child(even) > .@{table-prefix}__td {
+      background-color: @bg-color-container;
+    }
+
+    // 固定列单元格也跟随斑马纹背景色
+    &:nth-child(odd) > .@{table-prefix}__cell--fixed-left,
+    &:nth-child(odd) > .@{table-prefix}__cell--fixed-right {
+      background-color: @table-stripe-bg-color;
+    }
+
+    &:nth-child(even) > .@{table-prefix}__cell--fixed-left,
+    &:nth-child(even) > .@{table-prefix}__cell--fixed-right {
+      background-color: @bg-color-container;
+    }
+  }
+
+  // 固定底部行的第一行加上边框
+  &__row--fixed-bottom-first > .@{table-prefix}__td {
+    border-top: 2rpx solid @table-border-color;
+  }
+
+  // 冻结表尾行时，最后一行非冻结行去除下边框
+  &__row--without-border-bottom > .@{table-prefix}__td {
+    border-bottom: none;
+  }
+
+  // 固定列
+  &--column-fixed {
+    .@{table-prefix}__cell--fixed-left,
+    .@{table-prefix}__cell--fixed-right {
+      position: sticky;
+      z-index: @table-fixed-column-z-index;
+      background-color: @bg-color-container;
+    }
+
+    .@{table-prefix}__cell--fixed-right {
+      z-index: @table-fixed-column-z-index + 1;
+    }
+
+    // 固定表头中的固定列 th 需要灰色背景（覆盖固定列的白色背景，放在 column-fixed 内部确保优先级）
+    .@{table-prefix}__header--fixed {
+      .@{table-prefix}__cell--fixed-left,
+      .@{table-prefix}__cell--fixed-right {
+        background-color: @bg-color-secondarycontainer;
+      }
+    }
+
+    // 右侧固定列始终显示左边框（同步 mobile-vue）
+    .@{table-prefix}__cell--fixed-right-first {
+      border-left: @table-fixed-cell-border-light;
+    }
+
+    // 固定列边界阴影指示器（伪元素）
+    .@{table-prefix}__cell--fixed-left-last,
+    .@{table-prefix}__cell--fixed-right-first {
+      &::after {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        content: '';
+        transition: box-shadow 0.3s;
+        pointer-events: none;
+        z-index: -1;
+      }
+    }
+
+    .@{table-prefix}__cell--fixed-left-last::after {
+      right: 0;
+      transform: translateX(100%);
+    }
+
+    .@{table-prefix}__cell--fixed-right-first::after {
+      left: 0;
+      transform: translateX(-100%);
+    }
+  }
+
+  // 可向左滚动时，左侧固定列显示阴影
+  &__content--scrollable-to-left {
+    .@{table-prefix}__cell--fixed-left-last::after {
+      border-right: @table-fixed-cell-border-light;
+    }
+  }
+
+  // 可向右滚动时，右侧固定列显示阴影
+  &__content--scrollable-to-right {
+    .@{table-prefix}__cell--fixed-right-first::after {
+      border-left: @table-fixed-cell-border-light;
+    }
+  }
+
+  // 有边框模式下的固定列阴影加粗
+  &--bordered &__content--scrollable-to-left {
+    .@{table-prefix}__cell--fixed-left-last::after {
+      border-right: @table-fixed-cell-border;
+    }
+  }
+
+  &--bordered &__content--scrollable-to-right {
+    .@{table-prefix}__cell--fixed-right-first::after {
+      border-left: @table-fixed-cell-border;
+    }
+  }
+}

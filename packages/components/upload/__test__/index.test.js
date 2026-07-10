@@ -8,8 +8,9 @@ const mock = (options, res) => {
   if (typeof options.complete === 'function') options.complete(res);
 };
 
-const mockChooseMedia = (cb) => {
-  return (
+const mockChooseMedia =
+  (cb) =>
+  (
     options = {
       success: jest.fn(),
       fail: jest.fn(),
@@ -19,7 +20,6 @@ const mockChooseMedia = (cb) => {
     const res = cb();
     mock(options, res);
   };
-};
 
 const mockFn = jest
   .fn()
@@ -305,9 +305,7 @@ describe('upload', () => {
         </t-upload>
         `,
         data: {
-          requestMethod: (files) => {
-            return files;
-          },
+          requestMethod: (files) => files,
           originFiles: [
             {
               url: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',

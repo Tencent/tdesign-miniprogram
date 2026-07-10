@@ -17,6 +17,14 @@ export interface TdFormProps<FormData extends Data = Data> {
     value?: boolean;
   };
   /**
+   * 表单内容对齐方式：左对齐、右对齐
+   * @default left
+   */
+  contentAlign?: {
+    type: StringConstructor;
+    value?: 'left' | 'right';
+  };
+  /**
    * 表单数据
    * @default {}
    */

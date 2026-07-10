@@ -160,6 +160,15 @@ export const docs = [
         component: () => import('@/link/README.md'),
         componentEn: () => import('@/link/README.en-US.md'),
       },
+      {
+        title: 'Typography 排版',
+        titleEn: 'Typography',
+        name: 'typography',
+        meta: { docType: 'base' },
+        path: '/uniapp/components/typography',
+        component: () => import('@/paragraph/README.md'),
+        componentEn: () => import('@/paragraph/README.en-US.md'),
+      },
     ],
   },
   {
@@ -524,6 +533,15 @@ export const docs = [
         componentEn: () => import('@/result/README.en-US.md'),
       },
       {
+        title: 'Segmented 分段控制器',
+        titleEn: 'Segmented',
+        name: 'segmented',
+        meta: { docType: 'data' },
+        path: '/uniapp/components/segmented',
+        component: () => import('@/segmented/README.md'),
+        componentEn: () => import('@/segmented/README.en-US.md'),
+      },
+      {
         title: 'Skeleton 骨架屏',
         titleEn: 'Skeleton',
         name: 'skeleton',
@@ -549,6 +567,15 @@ export const docs = [
         path: '/uniapp/components/swiper',
         component: () => import('@/swiper/README.md'),
         componentEn: () => import('@/swiper/README.en-US.md'),
+      },
+      {
+        title: 'Table 表格',
+        titleEn: 'Table',
+        name: 'table',
+        meta: { docType: 'data' },
+        path: '/uniapp/components/table',
+        component: () => import('@/table/README.md'),
+        componentEn: () => import('@/table/README.en-US.md'),
       },
       {
         title: 'Tag 标签',
@@ -696,10 +723,10 @@ export const docs = [
   },
 ];
 
-const enDocs = docs.map(doc => ({
+const enDocs = docs.map((doc) => ({
   ...doc,
   title: doc.titleEn,
-  children: doc?.children?.map(child => ({
+  children: doc?.children?.map((child) => ({
     title: child.titleEn,
     name: `${child.name}-en`,
     path: `${child.path}-en`,
