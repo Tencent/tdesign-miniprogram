@@ -108,6 +108,7 @@ Object.keys(data).forEach((fPath) => {
 // 生成并写入徽章到 README.md
 ans.forEach((items, component) => {
   let svgs = '';
+  let allZero = true;
   Object.entries(items).forEach(([type, item]) => {
     let val = calculateCoverage(item);
 
@@ -127,6 +128,9 @@ ans.forEach((items, component) => {
     }
 
     const message = Number.isNaN(val) ? '0' : val;
+    if (message !== '0') {
+      allZero = false;
+    }
     svgs += generateBadge(type, message);
   });
 
@@ -137,7 +141,10 @@ ans.forEach((items, component) => {
 
     let readme = fs.readFileSync(readmePath, { encoding: 'utf-8' });
     readme = readme.replace(/<span class="coverages-badge".+span>\n/g, '');
-    readme = readme.replace('## 引入', `${svgs}\n## 引入`);
+    // 覆盖率全为 0 时不生成徽标内容
+    if (!allZero) {
+      readme = readme.replace('## 引入', `${svgs}\n## 引入`);
+    }
     fs.writeFileSync(readmePath, readme);
   }
 });
