@@ -67,7 +67,13 @@ isComponent: true
 
 ## API
 
+### ChatRecord Props
 
+名称 | 类型 | 默认值 | 描述 | 必传
+-- | -- | -- | -- | --
+lang | String | 'zh_CN' | 识别语言（WechatSI 插件参数） | N
+duration | Number | 60000 | 最大录音时长（ms） | N
+bottom-height | Number | 0 | 底部高度，用于适配键盘弹出时的布局 | N
 
 ### ChatRecord Events
 
