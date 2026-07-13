@@ -1,11 +1,8 @@
 <template>
   <view>
-    <t-navbar class="demo-navbar" title="ChatRecord" left-arrow />
+    <t-demo-navbar class="demo-navbar" title="ChatRecord" left-arrow />
     <view class="demo">
-      <t-demo-header title="ChatRecord 语音录入" />
-      <t-demo>
-        <baseDemo />
-      </t-demo>
+      <baseDemo />
     </view>
   </view>
 </template>

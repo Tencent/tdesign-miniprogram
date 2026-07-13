@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="[classPrefix, classes]"
-    :style="'' + tools._style([customStyle])"
-  >
+  <view :class="[classPrefix, classes]" :style="'' + tools._style([customStyle])">
     <scroll-view
       :class="'' + tools.cls(classPrefix + '__content', [['reverse', reverse]])"
       :scroll-y="true"
@@ -25,10 +22,7 @@
         * a 优先级更高
         */ -->
       <block v-if="data && data.length > 0">
-        <block
-          v-for="(item, index) in data"
-          :key="index"
-        >
+        <block v-for="(item, index) in data" :key="index">
           <chat-message
             v-if="virtualList ? index >= startIndex && index <= endIndex : true"
             :avatar="item.avatar || ''"

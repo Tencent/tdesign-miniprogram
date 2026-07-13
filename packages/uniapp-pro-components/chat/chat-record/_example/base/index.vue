@@ -1,12 +1,6 @@
 <template>
-  <view
-    class="chat-box"
-    :style="{ height: contentHeight }"
-  >
-    <t-chat-list
-      id="chatList"
-      @scroll="onScroll"
-    >
+  <view class="chat-box" :style="{ height: contentHeight }">
+    <t-chat-list id="chatList" @scroll="onScroll">
       <t-chat-message
         v-for="(item, index) in chatList"
         :key="item.chatId"
@@ -51,19 +45,12 @@
         >
           <!-- 语音输入模式 -->
           <template #speech>
-            <t-chat-record
-              @recognize="handleRecognize"
-              @error="handleRecordError"
-            >
+            <t-chat-record @recognize="handleRecognize" @error="handleRecordError">
               <template #speechInput>
-                <view class="speech-slot-btn">
-                  按住说话
-                </view>
+                <view class="speech-slot-btn"> 按住说话 </view>
               </template>
               <template #speechNoAuth>
-                <view class="speech-btn-error">
-                  请授权麦克风权限
-                </view>
+                <view class="speech-btn-error"> 请授权麦克风权限 </view>
               </template>
             </t-chat-record>
           </template>
@@ -76,8 +63,6 @@
 </template>
 
 <script>
-import TIcon from 'tdesign-uniapp/icon/icon.vue';
-
 import tToast from 'tdesign-uniapp/toast/toast.vue';
 
 import tChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
@@ -85,7 +70,7 @@ import tChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
 import tChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
 import tChatRecord from 'tdesign-uniapp-chat/chat-record/chat-record.vue';
 import tChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-
+import { getNavigationBarHeight } from '../utils';
 
 export default {
   components: {
@@ -94,7 +79,6 @@ export default {
     't-chat-actionbar': tChatActionbar,
     't-chat-sender': tChatSender,
     't-chat-record': tChatRecord,
-    't-icon': TIcon,
     't-toast': tToast,
   },
   data() {
@@ -136,6 +120,9 @@ export default {
       uniqueId: 0,
     };
   },
+  options: {
+    styleIsolation: 'shared',
+  },
   mounted() {
     this.calculateContentHeight();
   },
@@ -148,11 +135,9 @@ export default {
     // 计算内容区域高度
     calculateContentHeight() {
       try {
-        const systemInfo = uni.getSystemInfoSync();
-        const statusBarHeight = systemInfo.statusBarHeight || 0;
-        const navigationBarHeight = statusBarHeight + 44; // 标准导航栏高度
+        const navigationBarHeight = getNavigationBarHeight() || 0;
 
-        this.contentHeight = `calc(100vh - ${navigationBarHeight}rpx)`;
+        this.contentHeight = `calc(100vh - ${navigationBarHeight}px)`;
       } catch (error) {
         console.error('生成内容高度表达式失败:', error);
         this.contentHeight = 'calc(100vh - 96rpx)';
@@ -294,7 +279,7 @@ export default {
     },
 
     sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
+      return new Promise((resolve) => setTimeout(resolve, ms));
     },
 
     handleAction(e) {
@@ -370,7 +355,7 @@ export default {
   box-sizing: border-box;
 }
 
-:deep(.t-chat-message) {
+.t-chat-message {
   padding: 0 32rpx;
 }
 
