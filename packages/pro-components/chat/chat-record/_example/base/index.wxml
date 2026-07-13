@@ -26,26 +26,26 @@
     </block>
     <view slot="footer">
       <t-chat-sender
-      value="{{value}}"
-      loading="{{loading}}"
-      disabled="{{disabled}}"
-      autoRiseWithKeyboard="{{true}}"
-      renderPresets="{{renderPresets}}"
-      allowSpeech="{{true}}"
-      placeholder="{{placeholder}}"
-      bind:send="onSend"
-      bind:stop="onStop"
-      bind:focus="onFocus"
-      bind:keyboardheightchange="onKeyboardHeightChange"
+        value="{{value}}"
+        loading="{{loading}}"
+        disabled="{{disabled}}"
+        autoRiseWithKeyboard="{{true}}"
+        renderPresets="{{renderPresets}}"
+        allowSpeech="{{true}}"
+        placeholder="{{placeholder}}"
+        bind:send="onSend"
+        bind:stop="onStop"
+        bind:focus="onFocus"
+        bind:keyboardheightchange="onKeyboardHeightChange"
       >
-      <view slot="speech">
-        <t-chat-record  bind:recognize="handleRecognize">
-          <view slot="speechInput" class="speech-slot-btn"> 按住说话 </view>
-          <view slot="speechNoAuth" class="speech-btn-error"> 请授权麦克风权限 </view>
-        </t-chat-record>
-      </view>
-    </t-chat-sender>
-  </view>
+        <view slot="speech">
+          <t-chat-record bind:recognize="handleRecognize">
+            <view slot="speechInput" class="speech-slot-btn"> 按住说话 </view>
+            <view slot="speechNoAuth" class="speech-btn-error"> 请授权麦克风权限 </view>
+          </t-chat-record>
+        </view>
+      </t-chat-sender>
+    </view>
   </t-chat>
 </view>
 <t-toast id="t-toast" />

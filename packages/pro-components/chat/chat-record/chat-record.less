@@ -15,7 +15,6 @@
 }
 
 @keyframes wave {
-
   0%,
   100% {
     transform: scaleY(1);
@@ -39,7 +38,7 @@
 
 // 遮罩层
 @chat-record-mask-z-index: 5100;
-@chat-record-mask-bg: rgba(0, 0, 0, 0.80);
+@chat-record-mask-bg: rgba(0, 0, 0, 0.8);
 @chat-record-mask-blur: blur(5px);
 
 // 主容器
@@ -57,7 +56,7 @@
 // 气泡颜色
 @chat-record-color-blue: #2979ff;
 @chat-record-color-red: #ff5252;
-@chat-record-color-white: #FFFFFF;
+@chat-record-color-white: #ffffff;
 
 @chat-record-cancel-font-size: 32rpx;
 
@@ -105,8 +104,8 @@
 @chat-record-circle-size: 2000rpx;
 @chat-record-circle-border-radius: 2000rpx;
 @chat-record-circle-bottom: -1700rpx;
-@chat-record-circle-border: 4rpx solid #FFFFFF;
-@chat-record-circle-bg-default: #DCDCDC;
+@chat-record-circle-border: 4rpx solid #ffffff;
+@chat-record-circle-bg-default: #dcdcdc;
 @chat-record-circle-bg-active: #4a4a4a;
 
 // 异形按钮
@@ -116,7 +115,7 @@
 @chat-record-shape-btn-padding-bottom: 180rpx;
 @chat-record-shape-btn-hint-top: -50rpx;
 @chat-record-shape-btn-hint-font-size: 24rpx;
-@chat-record-shape-btn-hint-color: #A3A3A3;
+@chat-record-shape-btn-hint-color: #a3a3a3;
 @chat-record-shape-btn-label-font-size: 28rpx;
 @chat-record-shape-btn-label-line-height: 44rpx;
 @chat-record-shape-btn-label-color: #fff;
@@ -146,7 +145,6 @@
 // ==================== 主容器 ====================
 
 .@{chat-record} {
-
   // 录音按钮
   &-hook {
     width: 100%;
@@ -164,9 +162,7 @@
   // ==================== 遮罩层和主容器 ====================
 
   &-audio-input {
-
     &.show {
-
       .@{chat-record}-audio-input__mask,
       .@{chat-record}-audio-input__main {
         opacity: 1;
@@ -313,7 +309,7 @@
 
         // 文案颜色：发送态黑色 60%，取消态红色
         .tips-send {
-          color: rgba(0, 0, 0, 0.60);
+          color: rgba(0, 0, 0, 0.6);
         }
 
         .tips-cancel {
@@ -378,9 +374,9 @@
             }
 
             .btn-text {
-              color: #FFF;
+              color: #fff;
               text-align: center;
-              font-family: "PingFang SC";
+              font-family: 'PingFang SC';
               font-size: @chat-record-cancel-text-font-size;
               font-weight: 600;
               line-height: @chat-record-cancel-text-line-height;
@@ -403,8 +399,8 @@
             transition: background-color @chat-record-transition-fast;
 
             text {
-              color: rgba(0, 0, 0, 0.90);
-              font-family: "PingFang SC";
+              color: rgba(0, 0, 0, 0.9);
+              font-family: 'PingFang SC';
               font-size: @chat-record-send-btn-font-size;
               font-weight: 600;
               line-height: @chat-record-send-btn-line-height;
