@@ -75,3 +75,12 @@ stop | `(value: string, context: { e: MouseEvent })` | 点击消息终止的回�
 update-value | `(value: boolean)` | 输入框值发生变化时触发
 update-visible | `(value: boolean)` | 上传面板可见性发生变化时触发
 upload-click | \- | 【实验】点击上传按钮时触发
+
+### ChatSender Slots
+
+名称 | 描述
+-- | --
+footer-prefix | 输入框底部左侧插槽，自定义输入框底部区域内容
+header | 输入框顶部插槽，自定义输入框顶部区域内容
+input-prefix | 输入框左侧插槽，自定义输入框左侧区域内容
+suffix | 输入框底部操作插槽，自定义输入框底部操作区域区域内容
