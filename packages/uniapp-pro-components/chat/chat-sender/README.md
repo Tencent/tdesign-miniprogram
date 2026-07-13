@@ -77,3 +77,13 @@ stop | `(value: string, context: { e: MouseEvent })` | 点击消息终止的回�
 update-value | `(value: boolean)` | 输入框值发生变化时触发
 update-visible | `(value: boolean)` | 上传面板可见性发生变化时触发
 upload-click | \- | 【实验】点击上传按钮时触发
+
+### ChatSender Slots
+
+名称 | 描述
+-- | --
+header | 输入框顶部区域，常用于展示引用内容、附件预览等
+input-prefix | 输入框内左侧前置区域
+speech | 语音输入区域，`allow-speech` 为 `true` 且切换至语音模式时显示，语音输入 UI 由开发者自行提供（推荐使用 `chat-record` 组件）
+footer-prefix | 底部左侧扩展区域，位于语音切换按钮右侧，常用于放置自定义功能按钮
+suffix | 底部右侧操作区域，`render-presets` 为空时显示，用于完全自定义发送区按钮
