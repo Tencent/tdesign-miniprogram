@@ -61,7 +61,7 @@ export default class ChatRecord extends SuperComponent {
     isManagerBusy: false,
     ignoreNextOnStop: false,
     managerRecording: false,
-      waveList: Array.from({ length: 27 }).map((_, i) => i + 1),
+    waveList: Array.from({ length: 27 }).map((_, i) => i + 1),
     bubbleStatusClass: 'bubble-blue',
   };
 
@@ -78,7 +78,7 @@ export default class ChatRecord extends SuperComponent {
         this.manager = null;
       }
 
-      const {manager} = this;
+      const { manager } = this;
       if (!manager) return;
 
       manager.onStart = () => {
@@ -147,7 +147,7 @@ export default class ChatRecord extends SuperComponent {
       };
 
       manager.onError = (err: any) => {
-          wx.showToast({
+        wx.showToast({
           icon: 'none',
           title: this.data.globalConfig?.recognizeFailTip || '录音识别失败，请重试',
           duration: 2000,
@@ -169,8 +169,7 @@ export default class ChatRecord extends SuperComponent {
     },
 
     updateBubbleClass() {
-      const { interactStatus, processStatus, translateResult, bottomHeight,
-              activeBtnCancel, activeBtnSend } = this.data;
+      const { interactStatus, processStatus } = this.data;
       let bubbleStatusClass = 'bubble-blue';
       if (interactStatus === 'release_cancel' || processStatus === 'error') bubbleStatusClass = 'bubble-red';
       this.setData({ bubbleStatusClass });
@@ -190,10 +189,7 @@ export default class ChatRecord extends SuperComponent {
             this.setData({ recordAuthSetting, recordAuthStatus, recordAuthDenied } as any);
             resolve(recordAuthSetting);
           },
-          fail: () =>
-            reject(
-              new Error(this.data.globalConfig?.authSettingFail || '获取录音权限设置失败'),
-            ),
+          fail: () => reject(new Error(this.data.globalConfig?.authSettingFail || '获取录音权限设置失败')),
         });
       });
     },
@@ -458,7 +454,7 @@ export default class ChatRecord extends SuperComponent {
         this.setData({
           ignoreNextOnStop: true,
           activeBtnCancel: true,
-         });
+        });
         this.cancelRecord();
       } else {
         // 正常松手：等待 onStop 回调，自动进入 confirm 并发送
@@ -471,7 +467,7 @@ export default class ChatRecord extends SuperComponent {
 
     // ==================== 业务逻辑 ====================
     cancelRecord() {
-       // 关闭弹窗
+      // 关闭弹窗
       this.setData({ showMask: false });
       // 延迟重置状态，确保事件能够正确触发
       setTimeout(() => {
@@ -535,7 +531,7 @@ export default class ChatRecord extends SuperComponent {
         translateResult: (e.detail?.value ?? '') as string,
         activeBtnCancel: !!e.detail?.value,
         activeBtnSend: !!e.detail?.value,
-       });
+      });
     },
 
     // ==================== 状态管理 ====================

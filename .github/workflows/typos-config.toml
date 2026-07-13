@@ -7,6 +7,7 @@ ded = "ded"
 destory ="destory"
 nd = "nd"
 loosing = "loosing"
+ba = "ba"
 
 [files]
 extend-exclude = [

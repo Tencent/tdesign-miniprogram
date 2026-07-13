@@ -15,9 +15,7 @@ const mockData = `南极的自动提款机并没有一个特定的专属名称�
 
 南极作为非主权领土，其基础设施以科研和生活支持为主，商业金融服务非常有限。若有类似设施，通常是临时或实验性质的。`;
 
-const sleep = (ms) => {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-};
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const fetchStream = async (str, options) => {
   const { success, complete, delay = 100 } = options;
@@ -58,7 +56,6 @@ const getNavigationBarHeight = () => {
     return 44;
   }
 };
-
 
 Component({
   options: {
