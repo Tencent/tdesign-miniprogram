@@ -1918,6 +1918,8 @@ const icons = [
   'speechless-1',
   'speechless-filled',
   'speechless',
+  'star-1-filled',
+  'star-1',
   'star-filled',
   'star',
   'statue-of-jesus-filled',
