@@ -8,6 +8,7 @@ name | type | default | description | required
 -- | -- | -- | -- | --
 custom-style | Object | - | CSS(Cascading Style Sheets) | N
 adjust-position | Boolean | false | \- | N
+allow-speech | Boolean | false | `0.11.0` | N
 attachments-props | Object | - | Typescript: `AttachmentsProps`，[Attachments API Documents](./attachments?tab=api)。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-pro-components/chat/chat-sender/type.ts) | N
 auto-rise-with-keyboard | Boolean | false | \- | N
 disabled | Boolean | false | \- | N
@@ -36,3 +37,12 @@ stop | `(value: string, context: { e: MouseEvent })` | \-
 update-value | `(value: boolean)` | \-
 update-visible | `(value: boolean)` | \-
 upload-click | \- | \-
+
+### ChatSender Slots
+
+name | Description
+-- | --
+footer-prefix | \-
+header | \-
+input-prefix | \-
+suffix | \-

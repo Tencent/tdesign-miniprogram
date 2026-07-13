@@ -68,43 +68,26 @@ Support custom message rendering through slots.
 
 ### ChatRecord Props
 
-Name | Type | Default | Description | Required
+name | type | default | description | required
 -- | -- | -- | -- | --
-style | Object | - | Style | N
-custom-style | Object | - | Style, generally used for virtualized component node scenarios | N
-records | Array | [] | Chat record data list. TS Type: `ChatRecordItem[]` | N
-loading | Boolean | false | Whether to show loading state | N
-finished | Boolean | false | Whether all data has been loaded | N
-loading-text | String | Loading... | Loading prompt text | N
-finished-text | String | No more data | Finished loading prompt text | N
-empty-text | String | No chat records | Empty state prompt text | N
-show-time-group | Boolean | true | Whether to show time grouping | N
-time-group-interval | Number | 5 | Time grouping interval (minutes) | N
-virtual-scroll | Boolean | false | Whether to enable virtual scrolling | N
-scroll-view-height | String | 100vh | Scroll view height | N
-auto-scroll-to-bottom | Boolean | true | Whether to auto scroll to bottom | N
+style | Object | - | CSS(Cascading Style Sheets) | N
+custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
+auto-send | Boolean | false | \- | N
+bottom-height | Number | 0 | \- | N
+duration | Number | 60000 | \- | N
+lang | String | zh_CN | \- | N
 
 ### ChatRecord Events
 
-Name | Parameters | Description
+name | params | description
 -- | -- | --
-loadmore | - | Triggered when scrolling to the top, used to load more history
-scroll | `(detail: ScrollDetail)` | Triggered when scrolling
-message-click | `(detail: { record: ChatRecordItem })` | Triggered when clicking a message
-message-long-press | `(detail: { record: ChatRecordItem })` | Triggered when long-pressing a message
+cancel | \- | \-
+error | `(err: any)` | \-
+recognize | `(detail: { voicePath: string, voiceText: string, duration: number })` | \-
 
 ### ChatRecord Slots
 
-Name | Description
+name | Description
 -- | --
-empty | Custom empty state content
-message | Custom message content, receives record parameter
-
-### ChatRecord External Style Classes
-
-Class Name | Description
--- | --
-t-class | Root node style class
-t-class-empty | Empty state style class
-t-class-time | Time grouping style class
-t-class-message | Message item style class
+speech-input | \-
+speech-no-auth | \-

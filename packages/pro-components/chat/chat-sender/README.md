@@ -56,10 +56,10 @@ isComponent: true
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 adjust-position | Boolean | false | 默认键盘弹起不会把页面顶起来 | N
+allow-speech | Boolean | false | `1.16.0`。是否允许语音输入。为 true 时显示语音切换按钮，语音输入 UI 由开发者通过 speech 插槽自行提供 | N
 attachments-props | Object | - | 附件列表属性。TS 类型：`AttachmentsProps`，[Attachments API Documents](./attachments?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/pro-components/chat/chat-sender/type.ts) | N
 auto-rise-with-keyboard | Boolean | false | 键盘弹起时自动顶起来输入框 | N
 disabled | Boolean | false | 是否禁用输入框 | N
-input-mode | String | text | 输入模式：text-文本输入模式（显示textarea），voice-语音输入模式（显示语音按钮）。可选项：text/voice | N
 file-list | Array | [] | 附件文件列表。TS 类型：`FileItem[]` | N
 loading | Boolean | false | 发送按钮是否处于加载状态 | N
 placeholder | String | - | 输入框默认文案。组件内置默认值为：'请输入消息...' | N
@@ -67,7 +67,6 @@ render-presets | Array | [{name: 'upload', presets: ['uploadCamera', 'uploadImag
 textarea-props | Boolean / Object | { autosize: { maxHeight: 264, minHeight: 48 } } | 透传给 Textarea 组件的属性，autosize数值单位为 rpx | N
 value | String | - | 输入框的值 | N
 visible | Boolean | false | 上传面板是否可见 | N
-allow-speech | Boolean | false | 是否允许语音输入。为 `true` 时显示语音切换按钮，语音输入由开发者通过 `speech` 插槽引入chat-record实现三方语音输入的功能 | N
 
 ### ChatSender Events
 
@@ -89,8 +88,7 @@ upload-click | \- | 【实验】点击上传按钮时触发
 
 名称 | 描述
 -- | --
-header | 输入框顶部区域，常用于展示引用内容、附件预览等
-input-prefix | 输入框内左侧前置区域
-speech | 语音输入区域，`allow-speech` 为 `true` 且切换至语音模式时显示，语音输入 UI 由开发者自行提供（推荐使用 `chat-record` 组件）
-footer-prefix | 底部左侧扩展区域，位于语音切换按钮右侧，常用于放置自定义功能按钮
-suffix | 底部右侧操作区域，`render-presets` 为空时显示，用于完全自定义发送区按钮
+footer-prefix | 输入框底部左侧插槽，自定义输入框底部区域内容
+header | 输入框顶部插槽，自定义输入框顶部区域内容
+input-prefix | 输入框左侧插槽，自定义输入框左侧区域内容
+suffix | 输入框底部操作插槽，自定义输入框底部操作区域区域内容

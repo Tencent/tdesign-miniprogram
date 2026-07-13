@@ -2,19 +2,9 @@
 
 /**
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
- */
+ * */
 
 export interface TdChatRecordProps {
-  /**
-   * 识别语言（WechatSI 插件参数）
-   * @default 'zh_CN'
-   */
-  lang?: string;
-  /**
-   * 最大录音时长（ms）
-   * @default 60000
-   */
-  duration?: number;
   /**
    * 是否自动发送（预留扩展）
    * @default false
@@ -26,9 +16,15 @@ export interface TdChatRecordProps {
    */
   bottomHeight?: number;
   /**
-   * 语音识别完成时触发，返回语音文件路径、识别文本和录音时长
+   * 最大录音时长（ms）
+   * @default 60000
    */
-  onRecognize?: (context: { voicePath: string; voiceText: string; duration: number }) => void;
+  duration?: number;
+  /**
+   * 识别语言（WechatSI 插件参数）
+   * @default zh_CN
+   */
+  lang?: string;
   /**
    * 取消录音时触发
    */
@@ -37,4 +33,8 @@ export interface TdChatRecordProps {
    * 录音识别错误时触发
    */
   onError?: (err: any) => void;
+  /**
+   * 语音识别完成时触发
+   */
+  onRecognize?: (context: { voicePath: string; voiceText: string; duration: number }) => void;
 }
