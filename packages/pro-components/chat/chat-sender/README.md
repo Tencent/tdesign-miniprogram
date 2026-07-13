@@ -82,3 +82,12 @@ keyboardheightchange | `(detail: {height: number, duration: number})` | 选择�
 send | `(value: string, context: {\| KeyboardEvent })` | 点击消息发送的回调方法
 stop | `(value: string)` | 点击消息终止的回调方法
 upload-click | \- | 【实验】点击上传按钮时触发
+
+### ChatSender Slots
+
+名称 | 描述
+-- | --
+footer-prefix | 输入框底部左侧插槽，自定义输入框底部区域内容
+header | 输入框顶部插槽，自定义输入框顶部区域内容
+input-prefix | 输入框左侧插槽，自定义输入框左侧区域内容
+suffix | 输入框底部操作插槽，自定义输入框底部操作区域区域内容

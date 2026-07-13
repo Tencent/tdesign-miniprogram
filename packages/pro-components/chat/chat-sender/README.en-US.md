@@ -35,3 +35,12 @@ keyboardheightchange | `(detail: {height: number, duration: number})` | \-
 send | `(value: string, context: {\| KeyboardEvent })` | \-
 stop | `(value: string)` | \-
 upload-click | \- | \-
+
+### ChatSender Slots
+
+name | Description
+-- | --
+footer-prefix | \-
+header | \-
+input-prefix | \-
+suffix | \-

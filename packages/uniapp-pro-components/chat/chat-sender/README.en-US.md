@@ -36,3 +36,12 @@ stop | `(value: string, context: { e: MouseEvent })` | \-
 update-value | `(value: boolean)` | \-
 update-visible | `(value: boolean)` | \-
 upload-click | \- | \-
+
+### ChatSender Slots
+
+name | Description
+-- | --
+footer-prefix | \-
+header | \-
+input-prefix | \-
+suffix | \-
