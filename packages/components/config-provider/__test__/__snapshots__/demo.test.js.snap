@@ -58,6 +58,27 @@ exports[`ConfigProvider ConfigProvider chat-en demo works fine 1`] = `
             "share": "share",
           },
         },
+        "chatRecord": Object {
+          "authSettingFail": "Failed to get recording permission settings",
+          "busyTip": "Recognizing, please wait...",
+          "cancelText": "Cancel",
+          "holdToTalk": "Hold to talk",
+          "missingPluginTip": "Missing voice recognition plugin WechatSI",
+          "openSettingFail": "Failed to open settings",
+          "recognizeFailTip": "Voice recognition failed, please try again",
+          "releaseToCancel": "Release to cancel",
+          "releaseToSend": "Release to send, swipe up to cancel",
+          "requestAuth": "Please authorize microphone permission",
+          "sendText": "Send",
+          "systemMicContent": "It is detected that the microphone permission of \\"WeChat\\" has been disabled in the system.
+
+Please enable it in system settings:
+- iOS: Settings > WeChat > Microphone
+- Android: Settings > Apps > WeChat > Permissions > Microphone
+
+Return to the mini program and try again after enabling.",
+          "systemMicTitle": "Cannot use microphone",
+        },
         "chatSender": Object {
           "placeholder": "please enter message...",
           "sendText": "send",
@@ -334,6 +355,27 @@ exports[`ConfigProvider ConfigProvider upload-en demo works fine 1`] = `
             "replay": "refresh",
             "share": "share",
           },
+        },
+        "chatRecord": Object {
+          "authSettingFail": "Failed to get recording permission settings",
+          "busyTip": "Recognizing, please wait...",
+          "cancelText": "Cancel",
+          "holdToTalk": "Hold to talk",
+          "missingPluginTip": "Missing voice recognition plugin WechatSI",
+          "openSettingFail": "Failed to open settings",
+          "recognizeFailTip": "Voice recognition failed, please try again",
+          "releaseToCancel": "Release to cancel",
+          "releaseToSend": "Release to send, swipe up to cancel",
+          "requestAuth": "Please authorize microphone permission",
+          "sendText": "Send",
+          "systemMicContent": "It is detected that the microphone permission of \\"WeChat\\" has been disabled in the system.
+
+Please enable it in system settings:
+- iOS: Settings > WeChat > Microphone
+- Android: Settings > Apps > WeChat > Permissions > Microphone
+
+Return to the mini program and try again after enabling.",
+          "systemMicTitle": "Cannot use microphone",
         },
         "chatSender": Object {
           "placeholder": "please enter message...",
