@@ -8,6 +8,7 @@ destory ="destory"
 nd = "nd"
 loosing = "loosing"
 ba = "ba"
+Impossibile = "Impossibile"
 
 [files]
 extend-exclude = [

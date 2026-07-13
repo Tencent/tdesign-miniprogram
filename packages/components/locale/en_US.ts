@@ -41,7 +41,7 @@ export default {
     title: 'Select Date',
     cancel: 'Cancel',
     confirm: 'Confirm',
-    format: 'YYYY-MM-DD',
+    format: 'YYYY-MM-DD HH:mm:ss',
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     yearLabel: '',
     monthLabel: '',
@@ -138,11 +138,6 @@ export default {
       quote: 'quote',
     },
   },
-  chatSender: {
-    placeholder: 'please enter message...',
-    sendText: 'send',
-    stopText: 'stop',
-  },
   chatRecord: {
     holdToTalk: 'Hold to talk',
     requestAuth: 'Please authorize microphone permission',
@@ -157,7 +152,16 @@ export default {
     openSettingFail: 'Failed to open settings',
     systemMicTitle: 'Cannot use microphone',
     systemMicContent:
-      'It is detected that the microphone permission of "WeChat" has been disabled in the system.\n\nPlease enable it in system settings:\n- iOS: Settings > WeChat > Microphone\n- Android: Settings > Apps > WeChat > Permissions > Microphone\n\nReturn to the mini program and try again after enabling.',
+      'Detected that the phone system has disabled the microphone permission for "WeChat".\n\n' +
+      'Please enable it in system settings:\n' +
+      '- iOS: Settings > WeChat > Microphone\n' +
+      '- Android: Settings > App Management > WeChat > Permissions > Microphone\n\n' +
+      'After enabling, return to the Mini Program and try again.',
+  },
+  chatSender: {
+    placeholder: 'please enter message...',
+    sendText: 'send',
+    stopText: 'stop',
   },
   chatThinking: {
     status: {
