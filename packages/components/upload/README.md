@@ -18,7 +18,7 @@ isComponent: true
 
 ## 代码演示
 
-<a href="https://developers.weixin.qq.com/s/lGURCGm98m7N" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
+<a href="https://developers.weixin.qq.com/s/fTyBRAmI8Ras" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
 <blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
@@ -61,7 +61,7 @@ isComponent: true
 ### 为什么 `Upload` 外层使用 `display: flex` 时会造成组件样式混乱？
 
 `Upload` 是基于 `TGrid` 宫格实现，当外层使用 `display: flex` ，子元素会默认加上 `flex-grow: 0`，造成 `Upload` 组件整体宽度不足。可以通过给 `Upload` 组件节点加上 `flex-grow: 1` 处理。
- 
+
 
 ## API
 
