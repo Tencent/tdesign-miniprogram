@@ -175,8 +175,8 @@
   <block wx:if="{{theme === 'list'}}">
     <!-- 上传触发按钮 -->
     <view wx:if="{{addBtn && customLimit > 0}}" class="{{classPrefix}}__list-trigger" bindtap="onAddTap">
-      <slot name="add-content" />
-      <block wx:if="{{addContent}}">{{addContent}}</block>
+      <slot wx:if="{{addContent === 'slot'}}" name="add-content" />
+      <block wx:elif="{{addContent}}">{{addContent}}</block>
       <t-button wx:else theme="primary" size="medium" disabled="{{disabled}}" icon="upload" bindtap="onAddTap"
         >Upload</t-button
       >
@@ -271,8 +271,8 @@
           bindclick="onAddTap"
         >
           <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
-            <slot name="add-content" />
-            <block wx:if="{{addContent}}">{{addContent}}</block>
+            <slot wx:if="{{addContent === 'slot'}}" name="add-content" />
+            <block wx:elif="{{addContent}}">{{addContent}}</block>
             <view wx:else class="{{classPrefix}}__add-icon">
               <t-icon name="add" />
             </view>
@@ -325,8 +325,8 @@
               bindclick="onAddTap"
             >
               <view class="{{classPrefix}}__wrapper" style="{{gridItemStyle}}">
-                <slot name="add-content" />
-                <block wx:if="{{addContent}}">{{addContent}}</block>
+                <slot wx:if="{{addContent === 'slot'}}" name="add-content" />
+                <block wx:elif="{{addContent}}">{{addContent}}</block>
                 <view wx:else class="{{classPrefix}}__add-icon">
                   <t-icon name="add" />
                 </view>
