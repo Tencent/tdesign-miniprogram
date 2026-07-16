@@ -26,6 +26,7 @@ export default class Avatar extends SuperComponent {
     prefix,
     classPrefix: name,
     isShow: true,
+    isImageLoadFailed: false,
     zIndex: 0,
     windowWidth: systemInfo.windowWidth,
   };
@@ -52,6 +53,11 @@ export default class Avatar extends SuperComponent {
         ...obj,
       });
     },
+    image() {
+      this.setData({
+        isImageLoadFailed: false,
+      });
+    },
   };
 
   methods = {
@@ -65,6 +71,10 @@ export default class Avatar extends SuperComponent {
       if (this.properties.hideOnLoadFailed) {
         this.setData({
           isShow: false,
+        });
+      } else {
+        this.setData({
+          isImageLoadFailed: true,
         });
       }
       this.triggerEvent('error', e.detail);

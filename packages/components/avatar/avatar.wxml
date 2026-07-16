@@ -28,7 +28,7 @@
       aria-hidden="{{ ariaHidden }}"
     >
       <t-image
-        wx:if="{{image}}"
+        wx:if="{{image && !isImageLoadFailed}}"
         t-class="{{prefix}}-image {{classPrefix}}__image"
         t-class-load="{{prefix}}-class-alt"
         style="{{imageProps && imageProps.style || ''}}"
@@ -42,12 +42,13 @@
         bind:error="onLoadError"
       />
       <template
-        wx:elif="{{iconName || _.isNoEmptyObj(iconData)}}"
+        wx:elif="{{!isImageLoadFailed && (iconName || _.isNoEmptyObj(iconData))}}"
         is="icon"
         data="{{tClass: classPrefix + '__icon ' + prefix + '-class-icon', name: iconName, ...iconData}}"
       />
       <view wx:else class="{{classPrefix}}__text {{prefix}}-class-content">
-        <slot />
+        <block wx:if="{{isImageLoadFailed && alt}}">{{alt}}</block>
+        <slot wx:else />
       </view>
     </view>
   </t-badge>

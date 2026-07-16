@@ -82,6 +82,18 @@ describe('Avatar & Avatar Groups', () => {
       await simulate.sleep(20);
       expect($wrapper.dom.style.display).toBe('none');
     });
+
+    it(':alt fallback when image load failed', async () => {
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const $image = comp.querySelector('.error-avatar-wrapper >>> #image');
+      $image.dispatchEvent('error');
+      await simulate.sleep(20);
+
+      const $text = comp.querySelector('.error-avatar-wrapper >>> .t-avatar__text');
+      expect($text.dom.textContent).toBe('avatar');
+    });
   });
 
   describe('Avatar Group Props', () => {
