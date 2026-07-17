@@ -41,11 +41,11 @@
           @send="onSend"
           @stop="onStop"
         >
-          <!-- 语音输入模式 -->
+          <!-- 语音输入：腾讯云 ASR（换 key 即用） -->
           <template #speech>
-            <t-chat-record @recognize="handleRecognize" @error="handleRecordError">
+            <t-chat-record :adapter="tencentAdapter" @recognize="handleRecognize" @error="handleRecordError">
               <template #speechInput>
-                <view class="speech-slot-btn"> 按住说话 </view>
+                <view class="speech-slot-btn"> 按住说话（腾讯云 ASR） </view>
               </template>
               <template #speechNoAuth>
                 <view class="speech-btn-error"> 请授权麦克风权限 </view>
@@ -68,7 +68,32 @@ import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
 import TChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
 import TChatRecord from 'tdesign-uniapp-chat/chat-record/chat-record.vue';
 import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
+import { TencentASRAdapter } from 'tdesign-uniapp-chat/chat-record/adapters/tencent-asr';
+
 import { getNavigationBarHeight } from '../utils';
+
+// ============================================================================
+// 换链接即用：替换为你的后端签名接口地址
+//
+// 后端代码见 koa-blog-end/packages/server/src/app/api/asr.ts
+// 部署后在 .env.local 中配置：
+//   TENCENT_ASR_APPID=你的APPID
+//   TENCENT_ASR_SECRET_ID=你的SecretId
+//   TENCENT_ASR_SECRET_KEY=你的SecretKey
+// ============================================================================
+const ASR_CONFIG = {
+  signEndpoint: 'https://your-api.com/api/asr/tencent-sign',
+  // signHeaders: { Authorization: 'Bearer xxx' },  // 如需鉴权
+};
+
+const mockData = `腾讯云 ASR 已就绪，按住下方「按住说话」即可开始录音识别。识别到的文字会作为新的用户消息自动插入到对话流顶部，方便你直接观察识别效果。
+
+**接入说明：**
+- 当前示例使用 **腾讯云一句话识别（ASR）** 作为自定义 adapter，配置完成后即可在小程序 / H5 双端跑通。
+- 你也可以参考 \`chat-record/adapters/tencent-asr.ts\` 自行实现 \`ASRAdapter\` 接口，替换为 **WebSpeech**（H5 原生）、**微信同声传译**（小程序原生）或自定义的云端方案。
+- 切换 adapter 不需要改动任何业务代码，只要在 \`t-chat-record\` 上传 :adapter 即可，组件会自动接管录音、权限、错误处理等流程。
+
+试试看按住说话，识别完成后消息会自动出现在这里。`;
 
 export default {
   components: {
@@ -113,8 +138,10 @@ export default {
       contentHeight: '100vh', // 内容高度
       activePopoverId: '', // 当前打开悬浮 actionbar 的 chatId
       longPressPosition: null, // 长按位置对象
-      placeholder: '请输入内容',
+      placeholder: '腾讯云 ASR Demo（H5 + 小程序双端可用）',
       uniqueId: 0,
+      // 实例化 adapter，传入腾讯云密钥
+      tencentAdapter: new TencentASRAdapter(ASR_CONFIG),
     };
   },
   options: {
@@ -122,6 +149,12 @@ export default {
   },
   mounted() {
     this.calculateContentHeight();
+  },
+  beforeUnmount() {
+    if (this.tencentAdapter) {
+      this.tencentAdapter.destroy();
+      this.tencentAdapter = null;
+    }
   },
   methods: {
     getUniqueKey() {
@@ -141,14 +174,6 @@ export default {
       }
     },
 
-    // 调用chatList的滚动到底部方法
-    scrollToBottom() {
-      const chatListComponent = this.$refs.chatList;
-      if (chatListComponent && typeof chatListComponent.scrollToBottom === 'function') {
-        chatListComponent.scrollToBottom();
-      }
-    },
-
     onScroll(e) {
       console.log('监听滚动', e);
     },
@@ -157,7 +182,7 @@ export default {
      * 语音识别回调
      */
     handleRecognize(voiceMsg) {
-      console.log('语音识别结果:', voiceMsg);
+      console.log('腾讯云 ASR 识别结果:', voiceMsg);
       if (voiceMsg.voiceText) {
         // 自动发送识别到的文本
         this.onSend({ value: voiceMsg.voiceText });
@@ -166,13 +191,13 @@ export default {
 
     // 语音识别错误
     handleRecordError(err) {
-      console.error('语音识别错误:', err);
+      console.error('ASR 错误:', err);
     },
 
     // 发送消息事件处理
     onSend(e) {
-      const value = e.value || e.detail?.value;
-      if (!value || value.trim() === '') return;
+      const sendValue = e.value || e.detail?.value;
+      if (!sendValue || sendValue.trim() === '') return;
 
       // 创建用户消息对象
       const userMessage = {
@@ -180,18 +205,18 @@ export default {
         content: [
           {
             type: 'text',
-            data: value.trim(),
+            data: sendValue.trim(),
           },
         ],
         chatId: this.getUniqueKey(),
       };
 
-      // 将用户消息插入到chatList的开头
+      // 将用户消息插入到 chatList 的开头
       this.chatList = [userMessage, ...this.chatList];
       this.value = ''; // 清空输入框
 
       // 模拟助手回复
-      this.simulateAssistantReply(value.trim());
+      this.simulateAssistantReply(sendValue.trim());
     },
 
     // 停止事件处理
@@ -202,15 +227,6 @@ export default {
     // 模拟助手回复
     simulateAssistantReply() {
       this.loading = true;
-
-      const mockData = `南极的自动提款机并没有一个特定的专属名称，但历史上确实有一台ATM机曾短暂存在于南极的**麦克默多站**（McMurdo Station）。这台ATM由美国**富兰克林国家银行**（Wells Fargo）于1998年安装，主要供驻扎在该站的科研人员使用。不过，由于南极的极端环境和极低的人口密度，这台ATM机并未长期运行，最终被移除。
-
-**背景补充：**
-- **麦克默多站**是美国在南极最大的科研基地，夏季人口可达约1,000人，冬季约200人。
-- 该ATM机更多是作为一种象征性服务存在，实际使用频率极低，因为南极科考人员通常依靠预支资金或电子支付。
-- 目前南极已无长期运行的ATM机，现代科考站更多依赖非现金交易方式。
-
-南极作为非主权领土，其基础设施以科研和生活支持为主，商业金融服务非常有限。若有类似设施，通常是临时或实验性质的。`;
 
       // 请求中
       const assistantMessage = {
@@ -360,10 +376,5 @@ export default {
 
 .speech-btn-error {
   color: red;
-}
-
-.demo-footer-prefix {
-  display: flex;
-  align-items: center;
 }
 </style>

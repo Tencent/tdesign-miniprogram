@@ -6,6 +6,10 @@
 
 export interface TdChatRecordProps {
   /**
+   * 语音识别适配器（Adapter）。不传时按平台自动选择内置适配器。 微信小程序使用 WechatSIAdapter（依赖 WechatSI 插件），H5 使用 WebSpeechAdapter（依赖浏览器 Web Speech API），APP / 其他小程序 → NoopSpeechAdapter（占位，提示需自定义）
+   */
+  adapter?: Adapter;
+  /**
    * 是否自动发送（预留扩展）
    * @default false
    */
@@ -38,3 +42,28 @@ export interface TdChatRecordProps {
    */
   onRecognize?: (context: { voicePath: string; voiceText: string; duration: number }) => void;
 }
+
+export type AdapterStartOptions = { duration: number; lang: string };
+
+export type AdapterStopResult = { tempFilePath: string; duration: number; result: string };
+
+export type AdapterPartialResult = { result: string };
+
+export type AdapterEventType = 'start' | 'partial' | 'stop' | 'error';
+
+export type Adapter = {
+  checkAuth(): Promise<boolean>;
+  requestAuth(): Promise<boolean>;
+  start(opts: AdapterStartOptions): Promise<void>;
+  stop(): Promise<void>;
+  on<E extends AdapterEventType>(event: E, cb: AdapterEventMap[E]): void;
+  off<E extends AdapterEventType>(event: E, cb?: AdapterEventMap[E]): void;
+  destroy(): void;
+};
+
+export type AdapterEventMap = {
+  start: () => void;
+  partial: (payload: AdapterPartialResult) => void;
+  stop: (payload: AdapterStopResult) => void;
+  error: (err: unknown) => void;
+};

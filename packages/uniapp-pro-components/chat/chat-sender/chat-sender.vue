@@ -1,10 +1,6 @@
 <template>
   <view>
-    <view
-      :class="classPrefix"
-      :style="'' + tools._style([customStyle, inputStyle])"
-      @click.stop="handleOutsideClick"
-    >
+    <view :class="classPrefix" :style="'' + tools._style([customStyle, inputStyle])" @click.stop="handleOutsideClick">
       <view
         :class="classPrefix + '__header'"
         :style="
@@ -56,48 +52,28 @@
             </view>
           </template>
           <!-- 语音输入模式：allowSpeech 为 true 且当前处于语音模式时显示，语音 UI 由开发者通过 speech 插槽提供 -->
-          <slot
-            v-else
-            name="speech"
-          />
+          <slot v-else name="speech" />
         </view>
 
         <view :class="classPrefix + '__footer'">
           <view :class="classPrefix + '__mode'">
             <!-- 语音切换按钮：allowSpeech 为 true 时内置显示 -->
-            <view
-              v-if="allowSpeech"
-              :class="classPrefix + '__speech-toggle'"
-              @click.stop="handleSpeechToggle"
-            >
-              <t-icon
-                :name="inputMode === 'speech' ? 'keyboard-1' : 'voice-wave'"
-                size="36rpx"
-              />
+            <view v-if="allowSpeech" :class="classPrefix + '__speech-toggle'" @click.stop="handleSpeechToggle">
+              <t-icon :name="inputMode === 'speech' ? 'keyboard-1' : 'voice-wave'" size="36rpx" />
             </view>
             <slot name="footer-prefix" />
           </view>
           <view :class="classPrefix + '__sendbtn'">
             <block v-if="renderPresets">
               <view :class="classPrefix + '__sendbtn--default'">
-                <block
-                  v-for="(item, index) in renderPresets"
-                  :key="index"
-                >
+                <block v-for="(item, index) in renderPresets" :key="index">
                   <view>
                     <view
                       v-if="item.name === 'upload'"
                       :class="'plus-btn ' + (item.status === 'disabled' ? 'disabled' : '')"
                     >
-                      <view
-                        class="btn-func"
-                        :data-status="item.status"
-                        @click.stop="handleUploadClick"
-                      >
-                        <t-icon
-                          :name="visible ? 'close' : 'add'"
-                          size="40rpx"
-                        />
+                      <view class="btn-func" :data-status="item.status" @click.stop="handleUploadClick">
+                        <t-icon :name="visible ? 'close' : 'add'" size="40rpx" />
                       </view>
                     </view>
 
@@ -114,19 +90,16 @@
                         <view
                           :class="
                             'send-btn-icon send-btn-' +
-                              item.type +
-                              ' ' +
-                              (innerValue || loading ? 'active' : 'disabled') +
-                              ' ' +
-                              (loading ? 'stop' : '')
+                            item.type +
+                            ' ' +
+                            (innerValue || loading ? 'active' : 'disabled') +
+                            ' ' +
+                            (loading ? 'stop' : '')
                           "
                           @click.stop="handleSendClick"
                         >
                           <block v-if="!loading">
-                            <t-icon
-                              name="send-filled"
-                              size="32rpx"
-                            />
+                            <t-icon name="send-filled" size="32rpx" />
                           </block>
                           <block v-else>
                             <view style="width: 24rpx; height: 24rpx; background-color: #ffffff" />
@@ -145,25 +118,11 @@
         </view>
       </view>
     </view>
-    <view
-      v-if="visible"
-      :class="classPrefix + '__upload'"
-      @click.stop="handleUploadClick"
-    >
-      <block
-        v-for="(name, index) in uploadNames"
-        :key="index"
-      >
-        <view
-          :class="classPrefix + '__upload-item'"
-          :data-name="name"
-          @click.stop="handleUploadEntryClick"
-        >
+    <view v-if="visible" :class="classPrefix + '__upload'" @click.stop="handleUploadClick">
+      <block v-for="(name, index) in uploadNames" :key="index">
+        <view :class="classPrefix + '__upload-item'" :data-name="name" @click.stop="handleUploadEntryClick">
           <view :class="classPrefix + '__upload-item__icon'">
-            <t-icon
-              :name="uploadConfig[name].iconClass"
-              size="56rpx"
-            />
+            <t-icon :name="uploadConfig[name].iconClass" size="56rpx" />
           </view>
           <view :class="classPrefix + '__upload-item__text'">
             {{ uploadConfig[name].text }}
@@ -270,7 +229,7 @@ export default {
       },
       renderPresets: {
         handler(newVal) {
-          const preset = newVal.find(item => Array.isArray(item.presets));
+          const preset = newVal.find((item) => Array.isArray(item.presets));
           this.uploadNames = preset ? preset.presets : [];
         },
         immediate: true,
@@ -291,7 +250,6 @@ export default {
         }
         this.inputMode = this.inputMode === 'keyboard' ? 'speech' : 'keyboard';
       },
-
 
       onkeyboardheightchange(e) {
         // 业务侧控制键盘顶起高度，如果用fix布局，不需要监听键盘高度变化
@@ -420,7 +378,7 @@ export default {
           });
           // 处理选择的图片
           if (res.tempFilePaths && res.tempFilePaths.length > 0) {
-            const files = res.tempFilePaths.map(item => ({
+            const files = res.tempFilePaths.map((item) => ({
               url: item,
               name: item,
               // 获取文件名
@@ -453,14 +411,14 @@ export default {
 
       async handleWechatFileUpload(e) {
         try {
-        // 使用微信小程序的选择文件API
+          // 使用微信小程序的选择文件API
           const res = await uni.chooseMessageFile({
             count: 5,
             // 最多5个文件
             type: 'all', // 所有类型文件
           });
           if (res.tempFiles && res.tempFiles.length > 0) {
-            const files = res.tempFiles.map(item => ({
+            const files = res.tempFiles.map((item) => ({
               ...item,
               // 其他属性保留
               url: item.path, // 获取文件路径
