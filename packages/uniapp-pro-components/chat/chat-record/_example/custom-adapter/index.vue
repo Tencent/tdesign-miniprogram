@@ -86,12 +86,13 @@ const ASR_CONFIG = {
   // signHeaders: { Authorization: 'Bearer xxx' },  // 如需鉴权
 };
 
-const mockData = `腾讯云 ASR 已就绪，按住下方「按住说话」即可开始录音识别。识别到的文字会作为新的用户消息自动插入到对话流顶部，方便你直接观察识别效果。
+const mockData = `腾讯云 ASR 已就绪，按住下方"按住说话"即可开始录音识别。识别到的文字会作为新的用户消息自动插入到对话流顶部，方便你直接观察识别效果。
 
-**接入说明：**
-- 当前示例使用 **腾讯云一句话识别（ASR）** 作为自定义 adapter，配置完成后即可在小程序 / H5 双端跑通。
-- 你也可以参考 \`chat-record/adapters/tencent-asr.ts\` 自行实现 \`ASRAdapter\` 接口，替换为 **WebSpeech**（H5 原生）、**微信同声传译**（小程序原生）或自定义的云端方案。
-- 切换 adapter 不需要改动任何业务代码，只要在 \`t-chat-record\` 上传 :adapter 即可，组件会自动接管录音、权限、错误处理等流程。
+当前示例使用腾讯云一句话识别（ASR）作为自定义 adapter，配置完成后即可在小程序 / H5 双端跑通。
+
+你也可以参考 chat-record/adapters/tencent-asr.ts 自行实现 ASRAdapter 接口，替换为 WebSpeech（H5 原生）、微信同声传译（小程序原生）或自定义的云端方案。
+
+切换 adapter 不需要改动任何业务代码，只要在 t-chat-record 上传 :adapter 即可，组件会自动接管录音、权限、错误处理等流程。
 
 试试看按住说话，识别完成后消息会自动出现在这里。`;
 
@@ -233,7 +234,7 @@ export default {
         role: 'assistant',
         content: [
           {
-            type: 'markdown',
+            type: 'text',
             data: '',
           },
         ],
