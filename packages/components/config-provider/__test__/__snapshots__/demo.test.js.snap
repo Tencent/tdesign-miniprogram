@@ -70,13 +70,13 @@ exports[`ConfigProvider ConfigProvider chat-en demo works fine 1`] = `
           "releaseToSend": "Release to send, swipe up to cancel",
           "requestAuth": "Please authorize microphone permission",
           "sendText": "Send",
-          "systemMicContent": "It is detected that the microphone permission of \\"WeChat\\" has been disabled in the system.
+          "systemMicContent": "Detected that the phone system has disabled the microphone permission for \\"WeChat\\".
 
 Please enable it in system settings:
 - iOS: Settings > WeChat > Microphone
-- Android: Settings > Apps > WeChat > Permissions > Microphone
+- Android: Settings > App Management > WeChat > Permissions > Microphone
 
-Return to the mini program and try again after enabling.",
+After enabling, return to the Mini Program and try again.",
           "systemMicTitle": "Cannot use microphone",
         },
         "chatSender": Object {
@@ -96,7 +96,7 @@ Return to the mini program and try again after enabling.",
           "confirm": "Confirm",
           "dateLabel": "",
           "dayjsLocale": "en",
-          "format": "YYYY-MM-DD",
+          "format": "YYYY-MM-DD HH:mm:ss",
           "hourLabel": "",
           "minuteLabel": "",
           "monthLabel": "",
@@ -368,13 +368,13 @@ exports[`ConfigProvider ConfigProvider upload-en demo works fine 1`] = `
           "releaseToSend": "Release to send, swipe up to cancel",
           "requestAuth": "Please authorize microphone permission",
           "sendText": "Send",
-          "systemMicContent": "It is detected that the microphone permission of \\"WeChat\\" has been disabled in the system.
+          "systemMicContent": "Detected that the phone system has disabled the microphone permission for \\"WeChat\\".
 
 Please enable it in system settings:
 - iOS: Settings > WeChat > Microphone
-- Android: Settings > Apps > WeChat > Permissions > Microphone
+- Android: Settings > App Management > WeChat > Permissions > Microphone
 
-Return to the mini program and try again after enabling.",
+After enabling, return to the Mini Program and try again.",
           "systemMicTitle": "Cannot use microphone",
         },
         "chatSender": Object {
@@ -394,7 +394,7 @@ Return to the mini program and try again after enabling.",
           "confirm": "Confirm",
           "dateLabel": "",
           "dayjsLocale": "en",
-          "format": "YYYY-MM-DD",
+          "format": "YYYY-MM-DD HH:mm:ss",
           "hourLabel": "",
           "minuteLabel": "",
           "monthLabel": "",

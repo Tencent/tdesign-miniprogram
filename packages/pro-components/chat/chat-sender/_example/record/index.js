@@ -47,7 +47,7 @@ Page({
     console.log('语音识别结果:', voiceMsg);
 
     // 将语音识别结果设置到输入框中
-    if(voiceMsg.voiceText) {
+    if (voiceMsg.voiceText) {
       this.setData({
         query: voiceMsg.voiceText,
       });

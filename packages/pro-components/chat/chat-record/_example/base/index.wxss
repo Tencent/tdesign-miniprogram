@@ -12,7 +12,6 @@
   padding: 0 32rpx;
 }
 
-
 .speech-slot-btn,
 .speech-btn-error {
   /* 不设置 height，让 chat-sender 父容器的 min-height(134rpx) 自然撑起，
@@ -57,13 +56,12 @@
   width: 64rpx;
   height: 64rpx;
   background-color: #fff;
-  border: 1px solid #DCDCDC;
+  border: 1px solid #dcdcdc;
 }
 .voice-input-button {
   font-size: 36rpx;
   color: #000;
 }
-
 
 wx-button:after {
   border: none;

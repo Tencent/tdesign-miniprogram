@@ -72,7 +72,7 @@
   width: 64rpx;
   height: 64rpx;
   background-color: #fff;
-  border: 1px solid #DCDCDC;
+  border: 1px solid #dcdcdc;
 }
 .voice-input-button {
   font-size: 36rpx;

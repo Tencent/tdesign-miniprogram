@@ -10,7 +10,7 @@ export default {
     confirm: 'أكد',
     title: 'انتقِ التاريخ',
     weekdays: ['يوم الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'],
-    monthTitle: '{شهر واحد} {سنة واحدة}',
+    monthTitle: '{month} {year}',
     months: [
       'يناير',
       'فبراير',
@@ -29,6 +29,8 @@ export default {
   cascader: {
     title: 'العنوان',
     placeholder: 'اختر الخيارات',
+    filterPlaceholder: 'بحث',
+    empty: 'لا توجد عناصر مطابقة',
   },
   dropdownMenu: {
     reset: 'إعادة الضبط',
@@ -39,7 +41,7 @@ export default {
     title: 'انتقِ التاريخ',
     cancel: 'الإلغاء',
     confirm: 'أكد',
-    format: 'DD-MM-YYYY',
+    format: 'DD-MM-YYYY HH:mm:ss',
     months: [
       'يناير',
       'فبراير',
@@ -78,6 +80,7 @@ export default {
       boolean: '${name} ليس منطقيًا',
       number: 'يجب أن يكون ${name} رقمًا',
     },
+    colonText: ':',
   },
   picker: {
     cancel: 'الإلغاء',
@@ -88,14 +91,14 @@ export default {
   },
   rate: {
     texts: ['سيء', 'مخيب', 'عادي', 'جيد', 'ممتاز'],
-    valueText: '{القيمة} نتيجة',
+    valueText: '{value} نقطة',
     noValueText: 'لا توجد نقاط',
   },
   tabBar: {
     newsAriaLabel: 'هناك أخبار جديدة',
-    moreNewsAriaLabel: 'هناك الكثير من الأخبار السيئة',
-    haveMoreNewsAriaLabel: 'هناك { قيمة }+ أخبار',
-    haveNewsAriaLabel: 'هناك { قيمة } أخبار',
+    moreNewsAriaLabel: 'هناك الكثير من الأخبار',
+    haveMoreNewsAriaLabel: 'هناك {value}+ أخبار',
+    haveNewsAriaLabel: 'هناك {value} أخبار',
   },
   table: {
     empty: 'البيانات الفارغة',
@@ -113,6 +116,7 @@ export default {
       waitingText: 'الانتظار',
       failText: 'فشل',
       successText: 'النجاح',
+      reloadText: 'إعادة الرفع',
     },
   },
   guide: {
@@ -146,6 +150,26 @@ export default {
       share: 'مشاركة',
       quote: 'اقتباس',
     },
+  },
+  chatRecord: {
+    holdToTalk: 'اضغط مع الاستمرار للتحدث',
+    requestAuth: 'يرجى منح إذن الميكروفون',
+    releaseToCancel: 'اترك للإلغاء',
+    releaseToSend: 'اترك للإرسال، اسحب للأعلى للإلغاء',
+    cancelText: 'إلغاء',
+    sendText: 'إرسال',
+    busyTip: 'جارٍ التعرّف، يرجى الانتظار…',
+    recognizeFailTip: 'فشل التعرّف على التسجيل، يرجى المحاولة مرة أخرى',
+    missingPluginTip: 'إضافة التعرّف على الصوت WechatSI مفقودة',
+    authSettingFail: 'فشل الحصول على إعدادات إذن التسجيل',
+    openSettingFail: 'فشل فتح الإعدادات',
+    systemMicTitle: 'لا يمكن استخدام الميكروفون',
+    systemMicContent:
+      'تم اكتشاف أن نظام الهاتف قد أوقف إذن الميكروفون لتطبيق "WeChat".\n\n' +
+      'يرجى تفعيله من إعدادات النظام:\n' +
+      '- iOS: الإعدادات > WeChat > الميكروفون\n' +
+      '- Android: الإعدادات > إدارة التطبيقات > WeChat > الأذونات > الميكروفون\n\n' +
+      'بعد التفعيل، عد إلى البرنامج المصغّر وحاول مرة أخرى.',
   },
   chatSender: {
     placeholder: 'الرجاء إدخال الرسالة...',

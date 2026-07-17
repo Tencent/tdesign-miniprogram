@@ -13,11 +13,7 @@
     </slot>
   </view>
 
-  <button
-    wx:else
-    class="{{classPrefix}}-hook {{classPrefix}}-hook--no-auth"
-    bindtap="requestRecordAuth"
-  >
+  <button wx:else class="{{classPrefix}}-hook {{classPrefix}}-hook--no-auth" bindtap="requestRecordAuth">
     <slot name="speechNoAuth">
       <view>{{globalConfig.requestAuth}}</view>
     </slot>
@@ -36,8 +32,10 @@
         style="bottom: {{bottomHeight}}rpx;"
       >
         <!-- 录音阶段：音波动画（独立在提示文字上方） -->
-        <view wx:if="{{processStatus === 'recording'}}"
-          class="audio-wave-outer audio-wave {{interactStatus === 'release_cancel' ? 'wave-red' : 'wave-blue'}}">
+        <view
+          wx:if="{{processStatus === 'recording'}}"
+          class="audio-wave-outer audio-wave {{interactStatus === 'release_cancel' ? 'wave-red' : 'wave-blue'}}"
+        >
           <block wx:for="{{waveList}}" wx:key="*this">
             <view class="wave-item" />
           </block>
@@ -56,9 +54,14 @@
         </view>
 
         <!-- 录音阶段：全宽大按钮（纯色空按钮，仅承载手势） -->
-        <view wx:if="{{processStatus === 'recording'}}"
+        <view
+          wx:if="{{processStatus === 'recording'}}"
           class="record-main-btn {{interactStatus === 'release_cancel' ? 'is-cancel' : 'is-record'}}"
-          catchtouchstart="startRecord" catchtouchend="stopRecord" catchtouchmove="touchmove" catchtouchcancel="touchcancel">
+          catchtouchstart="startRecord"
+          catchtouchend="stopRecord"
+          catchtouchmove="touchmove"
+          catchtouchcancel="touchcancel"
+        >
         </view>
 
         <!-- 确认按钮区（Send/Cancel） -->
