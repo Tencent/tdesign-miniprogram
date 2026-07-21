@@ -5,8 +5,9 @@ spline: base
 isComponent: true
 ---
 
-
-
+<div style="background: #ecf2fe; padding: 14px 24px; border-radius: 3px; color: #555a65">
+  <div style="border-left: 2px solid #0052d9; padding: 0 8px">渲染框架支持情况：Skyline、WebView</div>
+</div>
 
 ## 引入
 
@@ -22,7 +23,7 @@ isComponent: true
 
 <a href="https://developers.weixin.qq.com/s/NSVqRNmh8l5a" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
 
-<blockquote style="background-color: #d9e1ff; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
+<blockquote style="background-color: #ecf2fe; font-size: 15px; line-height: 26px;margin: 16px 0 0;padding: 16px; border-radius: 6px; color: #0052d9" >
 <p>Tips: 请确保开发者工具为打开状态。导入开发者工具后，依次执行：npm i > 构建npm包 > 勾选 "将JS编译成ES5"</p>
 </blockquote>
 

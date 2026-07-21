@@ -5,6 +5,9 @@ spline: data
 isComponent: true
 ---
 
+<div style="background: #ecf2fe; padding: 14px 24px; border-radius: 3px; color: #555a65">
+  <div style="border-left: 2px solid #0052d9; padding: 0 8px">渲染框架支持情况：Skyline、WebView</div>
+</div>
 
 > CountDown 组件用于实时展示倒计时数值。
 如果需要与站点演示一致的数字字体效果，推荐您到 <a href="https://tdesign.tencent.com/design/fonts">数字字体章节</a>，将 TCloudNumber 字体下载并将包含的 TCloudNumberVF.ttf 做为 TCloudNumber 字体资源引入到具体项目中使用。
