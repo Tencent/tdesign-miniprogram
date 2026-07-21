@@ -3,6 +3,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import matter from 'gray-matter';
 
+import testCoverage from '../../test-coverage';
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const componentPath = path.join(__dirname, './component.vue').replaceAll('\\', '/');
 
@@ -45,9 +47,10 @@ function customRender({ source, file, md }: any) {
   // split md
   const [demoMd = '', apiMd = ''] = content.split(pageData.apiFlag);
 
-  const mdSegment = {
+  const mdSegment: any = {
     ...pageData,
     componentName,
+    coverage: (pageData.isComponent && componentName && testCoverage[componentName]) || null,
     docMd: '<td-doc-empty></td-doc-empty>',
     demoMd: '<td-doc-empty></td-doc-empty>',
     apiMd: '<td-doc-empty></td-doc-empty>',

@@ -2,8 +2,10 @@ const path = require('path');
 const fs = require('fs');
 const os = require('os');
 
-const specify = process.argv[2];
 const data = require('../unit/coverage/coverage-summary.json');
+
+// 覆盖率数据模块输出路径（供站点 md-to-vue.ts 引用）
+const COVERAGE_MODULE_PATH = path.resolve(__dirname, '../../site/test-coverage.ts');
 
 // 父子组件映射表
 const RELATED_MAP = {
@@ -54,30 +56,6 @@ function calculateCoverage(item) {
   return ((item.covered / item.total) * 100).toFixed(0);
 }
 
-/**
- * 获取 README.md 文件路径
- * @param {string} component - 组件 key
- * @returns {string} README.md 文件路径
- */
-function getReadmePath(component) {
-  if (component.includes('/')) {
-    const [group, subComponent] = component.split('/');
-    return path.resolve(__dirname, `../../../pro-components/${group}/${subComponent}/README.md`);
-  }
-  return path.resolve(__dirname, `../../../components/${component}/README.md`);
-}
-
-/**
- * 生成覆盖率徽章 SVG
- * @param {string} type - 类型（lines/functions/statements/branches）
- * @param {number} percentage - 覆盖率百分比
- * @returns {string} SVG HTML 字符串
- */
-function generateBadge(type, percentage) {
-  const color = parseInt(percentage, 10) >= 80 ? 'blue' : 'red';
-  return `<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20${type}-${percentage}%25-${color}" /></span>`;
-}
-
 const ans = new Map();
 
 // 聚合覆盖率数据
@@ -105,10 +83,13 @@ Object.keys(data).forEach((fPath) => {
   ans.set(componentKey, target);
 });
 
-// 生成并写入徽章到 README.md
+// 计算每个组件的覆盖率（含父子组件合并），生成覆盖率数据 map
+const coverageMap = {};
+
 ans.forEach((items, component) => {
-  let svgs = '';
+  const result = {};
   let allZero = true;
+
   Object.entries(items).forEach(([type, item]) => {
     let val = calculateCoverage(item);
 
@@ -131,20 +112,28 @@ ans.forEach((items, component) => {
     if (message !== '0') {
       allZero = false;
     }
-    svgs += generateBadge(type, message);
+    result[type] = `${message}%`;
   });
 
-  if (!specify || component === specify) {
-    const readmePath = getReadmePath(component);
-
-    if (!fs.existsSync(readmePath)) return;
-
-    let readme = fs.readFileSync(readmePath, { encoding: 'utf-8' });
-    readme = readme.replace(/<span class="coverages-badge".+span>\n/g, '');
-    // 覆盖率全为 0 时不生成徽标内容
-    if (!allZero) {
-      readme = readme.replace('## 引入', `${svgs}\n## 引入`);
-    }
-    fs.writeFileSync(readmePath, readme);
+  // 覆盖率全为 0 时不生成数据
+  if (!allZero) {
+    coverageMap[component] = result;
   }
 });
+
+// 生成覆盖率数据模块
+const sortedKeys = Object.keys(coverageMap).sort();
+const entries = sortedKeys
+  .map((key) => {
+    const { lines, functions, statements, branches } = coverageMap[key];
+    return `  '${key}': { lines: '${lines}', functions: '${functions}', statements: '${statements}', branches: '${branches}' },`;
+  })
+  .join('\n');
+
+const moduleContent = `// 该文件由 test/scripts/coverage-badge.js 自动生成，请勿手动修改
+export default {
+${entries}
+};
+`;
+
+fs.writeFileSync(COVERAGE_MODULE_PATH, moduleContent);
