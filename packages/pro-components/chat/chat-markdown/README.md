@@ -57,7 +57,7 @@ isComponent: true
 
 {{ tail }}
 
-### FAQ
+## FAQ
 
 MarkdownNode 数据结构由 marked 解析器生成，不同节点类型包含不同字段，常见结构如下：
 

@@ -20,18 +20,6 @@ isComponent: true
 }
 ```
 
-## 常见问题
-
-<details>
-  <summary>
-    控制台告警：Failed to load font
-    <span class="icon">👇</span>
-  </summary>
-  <p style="margin-top: 10px; color: rgba(0, 0, 0, .6)">
-    告警属于开发者工具的 bug，可以忽略，具体可以看 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/ui/font/wx.loadFontFace.html" target="_blank">官网文档</a>
-  </p>
-</details>
-
 ## 代码演示
 
 <a href="https://developers.weixin.qq.com/s/7OxuPMmW8X5w" title="在开发者工具中预览效果" target="_blank" rel="noopener noreferrer"> 在开发者工具中预览效果 </a>
@@ -90,7 +78,11 @@ isComponent: true
 
 ## FAQ
 
-#### 如何使用多色图标？
+### 控制台告警：Failed to load font
+
+告警属于开发者工具的 bug，可以忽略，具体可以看 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/ui/font/wx.loadFontFace.html" target="_blank">官网文档</a>
+
+### 如何使用多色图标？
 
 请安装 `@mp-svg-icons/wechat`，已包含 TDesign 所有图标，支持 `任意的粗细调整` 和 `最多四种颜色填充` 功能，零依赖运行，支持无网络场景，具有更好的使用体验。
 

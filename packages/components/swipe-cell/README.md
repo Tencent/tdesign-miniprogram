@@ -47,6 +47,7 @@ isComponent: true
 {{ icon }}
 
 ## FAQ
+
 ### `SwipeCell` 组件在真机上无法滑动？
 移除全局配置项: "componentFramework": "glass-easel"，详情见： [issue 2524](https://github.com/Tencent/tdesign-miniprogram/issues/2524)。如需使用 `skyline render`，建议页面级粒度开启。
 
