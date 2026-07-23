@@ -222,7 +222,7 @@ export default {
         if (name && this.form) {
           const { formData } = this.form;
           // 支持 name="pat.acctType" 嵌套路径：走 form 表单层的 data 兜底（form-item 拿不到时回退到 form.data）
-          this.initialValue = getByPath(formData, name) ?? getByPath(this.form.data, name);
+          this.initialValue = coalesce(getByPath(formData, name), getByPath(this.form.data, name));
         }
       },
 
@@ -239,7 +239,7 @@ export default {
         const { name } = this;
         if (name && this.form) {
           const { formData } = this.form;
-          return getByPath(formData, name) ?? getByPath(this.form.data, name);
+          return coalesce(getByPath(formData, name), getByPath(this.form.data, name));
         }
         return undefined;
       },

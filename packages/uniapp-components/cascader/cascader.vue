@@ -573,7 +573,7 @@ export default {
         this.isSearching = false;
       },
       onFilterChange(e) {
-        const value = e?.value ?? e?.detail?.value ?? '';
+        const value = coalesce(e?.value, e?.detail?.value, '');
         if (!this.filterDebounced) {
           this.filterDebounced = debounce((kw) => this.applyFilter(kw), 200);
         }
@@ -583,7 +583,7 @@ export default {
         this.resetFilter();
       },
       applyFilter(rawKeyword) {
-        const keyword = String(rawKeyword ?? '').trim();
+        const keyword = String(coalesce(rawKeyword, '')).trim();
         if (!keyword) {
           this.resetFilter();
           return;
