@@ -71,6 +71,11 @@
     &--liquid-glass {
       background: transparent;
       transition: transform .3s cubic-bezier(.4, 0, .2, 1);
+
+      // 点击反馈：半透明光晕
+      &:active {
+        background-color: rgba(255, 255, 255, .12);
+      }
     }
 
     &--liquid-glass&--checked {
