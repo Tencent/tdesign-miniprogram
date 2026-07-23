@@ -79,10 +79,10 @@
         />
       </t-form-item>
 
-      <t-form-item arrow label="籍贯" name="place" content-align="left">
+      <t-form-item arrow label="籍贯" name="address.city" content-align="left">
         <t-input
           ref="input"
-          :value="formData.place"
+          :value="formData.address.city"
           :disabled="disabled"
           borderless
           align="right"
@@ -224,7 +224,9 @@ export default {
         password: '',
         gender: '',
         birth: '2020-01-01',
-        place: '',
+        address: {
+          city: '',
+        },
         age: 3,
         description: 2,
         resume: '',
@@ -409,7 +411,7 @@ export default {
         description: [{ validator: (val) => val > 3, message: '分数过低会影响整体评价' }],
         gender: [{ validator: (val) => val !== '', message: '不能为空' }],
         birth: [{ validator: (val) => val !== '', message: '不能为空' }],
-        place: [{ validator: (val) => val !== '', message: '不能为空' }],
+        'address.city': [{ validator: (val) => val !== '', message: '不能为空' }],
         resume: [{ validator: (val) => val !== '', message: '不能为空' }],
       },
     };
@@ -456,7 +458,7 @@ export default {
     onChangeCascader(e) {
       const { selectedOptions } = e;
       const placeText = selectedOptions?.map((item) => item.label).join('/');
-      this.formData.place = placeText;
+      this.formData.address.city = placeText;
       this.visibleCascader = false;
     },
     showCascader() {

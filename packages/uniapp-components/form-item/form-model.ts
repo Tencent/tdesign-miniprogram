@@ -140,3 +140,46 @@ export async function validate(value: any, rules: any[], context?: { formData: a
 
 // 兼容已有导入
 export const validateRules = validate;
+
+/**
+ * 按点号路径从对象中取值。
+ * 支持 'a'、'a.b'、'a.b.c' 三种形式；当任意一级不是对象或不存在时返回 undefined。
+ * 用于支持 form-item 的 name="pat.acctType" 嵌套对象属性命名。
+ */
+export function getByPath(obj: any, path: string): any {
+  if (obj == null || !path) return undefined;
+  if (path.indexOf('.') === -1) return obj[path];
+
+  const keys = path.split('.');
+  let cursor: any = obj;
+  for (let i = 0; i < keys.length; i += 1) {
+    if (cursor == null) return undefined;
+    cursor = cursor[keys[i]];
+  }
+  return cursor;
+}
+
+/**
+ * 按点号路径向对象中写值，沿途不存在的中转对象会被创建为 {}。
+ * 返回 boolean 表示是否成功写入（仅 path 非法时返回 false）。
+ */
+export function setByPath(obj: any, path: string, value: any): boolean {
+  if (obj == null || !path) return false;
+  if (path.indexOf('.') === -1) {
+    obj[path] = value;
+    return true;
+  }
+
+  const keys = path.split('.');
+  let cursor: any = obj;
+  for (let i = 0; i < keys.length - 1; i += 1) {
+    const key = keys[i];
+    const next = cursor[key];
+    if (next == null || typeof next !== 'object') {
+      cursor[key] = {};
+    }
+    cursor = cursor[key];
+  }
+  cursor[keys[keys.length - 1]] = value;
+  return true;
+}
