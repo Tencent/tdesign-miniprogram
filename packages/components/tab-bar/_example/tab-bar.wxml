@@ -28,6 +28,9 @@
   <t-demo desc="悬浮胶囊标签栏">
     <round />
   </t-demo>
+  <t-demo desc="液态玻璃标签栏（iOS26 风格）">
+    <liquid-glass />
+  </t-demo>
 
   <t-demo title="03 自定义" desc="自定义样式">
     <custom />

@@ -67,6 +67,16 @@
       background-color: @tab-bar-active-bg;
     }
 
+    // ─── Liquid Glass（液态玻璃）— 对标 iOS 26 ──────────
+    &--liquid-glass {
+      background: transparent;
+      transition: transform .3s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    &--liquid-glass&--checked {
+      transform: scale(1.06);
+    }
+
     // &--active {
     //   background-color: @tab-bar-hover-bg-color;
     // }

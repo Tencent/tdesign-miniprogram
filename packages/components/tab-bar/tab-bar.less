@@ -43,4 +43,61 @@
     bottom: constant(safe-area-inset-bottom);
     bottom: var(--safe-area-inset-bottom, env(safe-area-inset-bottom));
   }
+
+  // ─── Liquid Glass（液态玻璃）— 对标 iOS 26 ──────────────
+  &--liquid-glass {
+    --td-tab-bar-liquid-glass-bg: rgba(255, 255, 255, .15);
+    --td-tab-bar-liquid-glass-blur: 12px;
+    --td-tab-bar-liquid-glass-saturate: 180%;
+    --td-tab-bar-liquid-glass-border: rgba(255, 255, 255, .25);
+    --td-tab-bar-liquid-glass-shadow: 0 16rpx 64rpx rgba(0, 0, 0, .12);
+    --td-tab-bar-liquid-glass-highlight: inset 0 2rpx 2rpx rgba(255, 255, 255, .4);
+    --td-tab-bar-liquid-glass-active-scale: 1.06;
+    --td-tab-bar-liquid-glass-transition: .3s cubic-bezier(.4, 0, .2, 1);
+
+    background: var(--td-tab-bar-liquid-glass-bg);
+    backdrop-filter: blur(var(--td-tab-bar-liquid-glass-blur)) saturate(var(--td-tab-bar-liquid-glass-saturate));
+    -webkit-backdrop-filter: blur(var(--td-tab-bar-liquid-glass-blur)) saturate(var(--td-tab-bar-liquid-glass-saturate));
+    border: 1px solid var(--td-tab-bar-liquid-glass-border);
+    box-shadow: var(--td-tab-bar-liquid-glass-shadow), var(--td-tab-bar-liquid-glass-highlight);
+    transition: background var(--td-tab-bar-liquid-glass-transition),
+                backdrop-filter var(--td-tab-bar-liquid-glass-transition),
+                box-shadow var(--td-tab-bar-liquid-glass-transition);
+    margin-left: 32rpx;
+    margin-right: 32rpx;
+    border-radius: 999px;
+
+    // 顶部玻璃反光高光
+    &::before {
+      content: '';
+      position: absolute;
+      top: 2rpx;
+      left: 16rpx;
+      right: 16rpx;
+      height: 2rpx;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, .5) 30%,
+        rgba(255, 255, 255, .6) 50%,
+        rgba(255, 255, 255, .5) 70%,
+        transparent 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    // 底部微光
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 4rpx;
+      left: 24rpx;
+      right: 24rpx;
+      height: 2rpx;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(255, 255, 255, .15) 50%,
+        transparent 100%);
+      pointer-events: none;
+    }
+  }
 }
