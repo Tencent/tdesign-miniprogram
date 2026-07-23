@@ -1,6 +1,33 @@
 <template>
   <td-doc-content ref="tdDocContent" platform="mobile" page-status="hidden">
-    <td-doc-header v-if="info.tdDocHeader" platform="mobile" slot="doc-header" ref="tdDocHeader"></td-doc-header>
+    <td-doc-header v-if="info.tdDocHeader" platform="mobile" slot="doc-header" ref="tdDocHeader">
+      <template v-if="info.coverage">
+        <td-doc-badge
+          style="margin-right: 10px"
+          slot="badge"
+          label="coverages: lines"
+          :message="info.coverage.lines"
+        />
+        <td-doc-badge
+          style="margin-right: 10px"
+          slot="badge"
+          label="coverages: functions"
+          :message="info.coverage.functions"
+        />
+        <td-doc-badge
+          style="margin-right: 10px"
+          slot="badge"
+          label="coverages: statements"
+          :message="info.coverage.statements"
+        />
+        <td-doc-badge
+          style="margin-right: 10px"
+          slot="badge"
+          label="coverages: branches"
+          :message="info.coverage.branches"
+        />
+      </template>
+    </td-doc-header>
     <template v-if="info.isComponent">
       <td-doc-tabs ref="tdDocTabs" :tab="tab"></td-doc-tabs>
       <div class="td-doc-main" v-show="tab === 'demo'">
