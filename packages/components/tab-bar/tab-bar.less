@@ -54,8 +54,14 @@
     --td-tab-bar-liquid-glass-highlight: inset 0 2rpx 2rpx rgba(255, 255, 255, .4);
     --td-tab-bar-liquid-glass-active-scale: 1.06;
     --td-tab-bar-liquid-glass-transition: .3s cubic-bezier(.4, 0, .2, 1);
+    --td-tab-bar-liquid-glass-dispersion-warm: rgba(255, 100, 100, .04);
+    --td-tab-bar-liquid-glass-dispersion-cool: rgba(90, 130, 255, .04);
 
-    background: var(--td-tab-bar-liquid-glass-bg);
+    // 多层背景叠加：色散红/蓝边缘折射 + 底色
+    background:
+      radial-gradient(ellipse at 15% 50%, var(--td-tab-bar-liquid-glass-dispersion-warm) 0%, transparent 60%),
+      radial-gradient(ellipse at 85% 50%, var(--td-tab-bar-liquid-glass-dispersion-cool) 0%, transparent 60%),
+      var(--td-tab-bar-liquid-glass-bg);
     backdrop-filter: blur(var(--td-tab-bar-liquid-glass-blur)) saturate(var(--td-tab-bar-liquid-glass-saturate));
     -webkit-backdrop-filter: blur(var(--td-tab-bar-liquid-glass-blur)) saturate(var(--td-tab-bar-liquid-glass-saturate));
     border: 1px solid var(--td-tab-bar-liquid-glass-border);
@@ -98,6 +104,16 @@
         rgba(255, 255, 255, .15) 50%,
         transparent 100%);
       pointer-events: none;
+    }
+
+    // 无障碍：尊重用户「减少动效」偏好
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+
+      &::before,
+      &::after {
+        display: none;
+      }
     }
   }
 }
