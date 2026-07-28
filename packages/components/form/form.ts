@@ -26,16 +26,25 @@ export default class Form extends SuperComponent {
   relations: RelationsOptions = {
     '../form-item/form-item': {
       type: 'child',
-      linked() {},
+      // 子组件挂载时主动下发一次表单配置，兼容 Skyline 下 linked 仅触发一次的情况
+      linked(target) {
+        target.syncFromParent?.();
+      },
     },
   };
 
   data = {
     prefix,
     classPrefix: name,
-    children: [],
     initialData: {},
     fields: [],
+  };
+
+  observers = {
+    // 父组件配置变化时，统一下发到所有 form-item，保证 父 -> 子 的属性同步
+    'labelAlign, labelWidth, colon, contentAlign, requiredMark, requiredMarkPosition, showErrorMessage, rules'() {
+      this.getChildren().forEach((child: any) => child.syncFromParent?.());
+    },
   };
 
   lifetimes = {
@@ -58,28 +67,19 @@ export default class Form extends SuperComponent {
       });
     },
 
-    // 注册子组件
-    registerChild(child) {
-      const { children } = this.data;
-      if (!children.find((item) => item.data.name === child.data.name)) {
-        children.push(child);
-        this.setData({ children });
+    // 获取所有 form-item 子组件
+    // 优先使用 relations 注入的 $children（基于 getRelationNodes，兼容 Skyline），兜底使用节点查询
+    getChildren() {
+      let items = this.$children;
+      if (!items?.length) {
+        items = this.selectAllComponents(`.${prefix}-form-item`);
       }
-    },
-
-    // 注销子组件
-    unregisterChild(childName) {
-      const { children } = this.data;
-      const index = children.findIndex((item) => item.data.name === childName);
-      if (index > -1) {
-        children.splice(index, 1);
-        this.setData({ children });
-      }
+      return items || [];
     },
 
     // 验证表单
     async validate() {
-      const { children } = this.data;
+      const children = this.getChildren();
       const { data } = this.properties;
       const validatePromises = children.map((child) => child.validate(data, 'all', this.properties.showErrorMessage));
 
@@ -110,7 +110,7 @@ export default class Form extends SuperComponent {
       const firstErrorKey = Object.keys(validateResult)[0];
       if (!firstErrorKey) return;
 
-      const { children } = this.data;
+      const children = this.getChildren();
       const errorChild = children.find((child) => child.properties.name === firstErrorKey);
       if (!errorChild) return;
 
@@ -120,7 +120,7 @@ export default class Form extends SuperComponent {
     // 纯净验证（不显示错误信息）
     async validateOnly(params) {
       const { fields, trigger = 'all' } = params;
-      const { children } = this.data;
+      const children = this.getChildren();
 
       const validatePromises = children
         .filter((child) => {
@@ -220,7 +220,8 @@ export default class Form extends SuperComponent {
 
     // 重置表单
     reset() {
-      const { children, initialData, fields } = this.data;
+      const children = this.getChildren();
+      const { initialData, fields } = this.data;
       const resetData = {};
 
       children.forEach((child) => {
@@ -241,7 +242,7 @@ export default class Form extends SuperComponent {
 
     // 清空验证结果
     clearValidate(fields) {
-      const { children } = this.data;
+      const children = this.getChildren();
 
       children.forEach((child) => {
         if (!fields || fields.includes(child.data.name)) {
@@ -252,7 +253,7 @@ export default class Form extends SuperComponent {
 
     // 设置验证信息
     setValidateMessage(validateMessage) {
-      const { children } = this.data;
+      const children = this.getChildren();
 
       children.forEach((child) => {
         if (validateMessage[child.data.name]) {
