@@ -97,6 +97,7 @@ npm run dev
     </td>
   </tr>
 </table>
+
 ## 开源协议
 
 TDesign 遵循 [MIT 协议](https://github.com/Tencent/tdesign-miniprogram/LICENSE)。
