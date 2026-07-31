@@ -89,6 +89,11 @@ export default {
   },
   table: {
     empty: 'Dati Vuoti',
+    confirmText: 'Conferma',
+    resetText: 'Ripristina',
+    searchResultText: 'Ricerca "{result}", trovati {count} risultati',
+    clearFilterResultButtonText: 'Pulisci il filtro',
+    pullUpLoadingText: 'In carica',
   },
   list: {
     loading: 'Caricamento...',

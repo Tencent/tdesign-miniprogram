@@ -89,6 +89,12 @@ export default {
   },
   table: {
     empty: 'Empty Data',
+    confirmText: 'Confirm',
+    resetText: 'Reset',
+    searchResultText:
+      'Search "{result}". Found no items. | Search "{result}". Found 1 item. | Search "{result}". Found {count} items.',
+    clearFilterResultButtonText: 'Clear',
+    pullUpLoadingText: 'Loading...',
   },
   list: {
     loading: 'Loading...',

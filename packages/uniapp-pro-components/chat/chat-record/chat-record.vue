@@ -21,7 +21,7 @@
     </view>
 
     <!-- 遮罩 + 录音面板 -->
-    <view :class="['cover-ng-bar', classPrefix + '-audio-input', showMask ? 'show' : '']">
+    <view :class="[classPrefix + '-audio-input', showMask ? 'show' : '']">
       <!-- mask -->
       <view :class="classPrefix + '-audio-input__mask'" @click="handleCancelSend" />
 
@@ -29,7 +29,7 @@
         <!-- 底部区域 -->
         <view
           v-if="processStatus === 'recording' || processStatus === 'confirm'"
-          :class="[classPrefix + '-audio-input__ft', processStatus, interactStatus, 'fade-in']"
+          :class="[classPrefix + '-audio-input__ft', processStatus, interactStatus]"
           :style="'bottom: ' + bottomHeight + 'rpx;'"
         >
           <!-- 录音阶段：音波动画（独立在提示文字上方） -->
@@ -65,10 +65,7 @@
           />
 
           <!-- 确认按钮区（Send/Cancel） -->
-          <view
-            v-if="processStatus === 'confirm' || processStatus === 'error'"
-            :class="['confirm-actions', processStatus === 'error' ? 'is-error' : '']"
-          >
+          <view v-if="processStatus === 'confirm' || processStatus === 'error'" class="confirm-actions">
             <view
               :class="[
                 'action-btn',
@@ -118,9 +115,8 @@ const name = `${prefix}-${componentName}`;
 // 交互阈值配置（单位：px）
 const MOVE_THRESHOLD_Y = 60;
 
-// 语音录制定时器-模拟长按
+// 录音启动延时定时器（模拟长按）
 let startRecordTimer = null;
-let recordTimer = null;
 
 export default {
   ...uniComponent({
@@ -148,7 +144,7 @@ export default {
 
         // 流程状态
         processStatus: 'idle', // idle | recording | processing | confirm | error
-        interactStatus: 'normal', // normal | release_cancel
+        interactStatus: 'normal', // normal | release_cancel | release_convert
 
         // 录音数据
         voiceInfo: {
@@ -164,7 +160,6 @@ export default {
         isManagerBusy: false,
         managerRecording: false,
         waveList: Array.from({ length: 27 }).map((_, i) => i + 1),
-        bubbleStatusClass: 'bubble-blue',
       };
     },
 
@@ -228,7 +223,6 @@ export default {
         const onStart = () => {
           this.managerRecording = true;
           this.processStatus = 'recording';
-          this.updateBubbleClass();
         };
 
         const onPartial = (payload) => {
@@ -284,7 +278,9 @@ export default {
           this.activeBtnCancel = false;
           this.activeBtnSend = false;
           this.showMask = false;
-          this.updateBubbleClass();
+
+          // 清理长按延时启动定时器，避免错误期间仍触发录音
+          this.clearStartRecordTimer(startRecordTimer);
 
           this.$emit('error', err);
         };
@@ -332,13 +328,12 @@ export default {
         this.recordAuthStatus = ok;
       },
 
-      updateBubbleClass() {
-        const { interactStatus, processStatus } = this;
-        let bubbleStatusClass = 'bubble-blue';
-        if (interactStatus === 'release_cancel' || processStatus === 'error') {
-          bubbleStatusClass = 'bubble-red';
+      // 清理长按延时启动定时器
+      clearStartRecordTimer(timer) {
+        if (timer) {
+          clearTimeout(timer);
         }
-        this.bubbleStatusClass = bubbleStatusClass;
+        startRecordTimer = null;
       },
 
       // ==================== 录音流程 ====================
@@ -378,13 +373,9 @@ export default {
         this.interactStatus = 'normal';
         this.translateResult = '';
         this.voiceInfo = { voicePath: '', voiceText: '', duration: 0 };
-        this.updateBubbleClass();
 
         // 100ms 后开始录音（避免误触）
-        if (startRecordTimer) {
-          clearTimeout(startRecordTimer);
-          startRecordTimer = null;
-        }
+        this.clearStartRecordTimer(startRecordTimer);
         startRecordTimer = setTimeout(() => {
           if (!this.isStarted) return;
 
@@ -400,7 +391,6 @@ export default {
             Promise.resolve(this.iAdapter.start({ duration, lang })).catch((err) => {
               this.isManagerBusy = false;
               this.processStatus = 'error';
-              this.updateBubbleClass();
               this.$emit('error', err);
             });
           } else {
@@ -409,17 +399,8 @@ export default {
               title: this.globalConfig?.missingPluginTip || '语音识别不可用',
             });
             this.processStatus = 'error';
-            this.updateBubbleClass();
           }
         }, 100);
-
-        if (recordTimer) {
-          clearInterval(recordTimer);
-          recordTimer = null;
-        }
-        recordTimer = setInterval(() => {
-          // noop，预留计时/动画钩子
-        }, 1000);
       },
 
       touchmove(e) {
@@ -438,7 +419,6 @@ export default {
 
         if (interactStatus !== this.interactStatus) {
           this.interactStatus = interactStatus;
-          this.updateBubbleClass();
         }
       },
 
@@ -447,14 +427,7 @@ export default {
 
         this.isStarted = false;
 
-        if (recordTimer) {
-          clearInterval(recordTimer);
-          recordTimer = null;
-        }
-        if (startRecordTimer) {
-          clearTimeout(startRecordTimer);
-          startRecordTimer = null;
-        }
+        this.clearStartRecordTimer(startRecordTimer);
 
         // 通知 adapter 停止录音
         if (this.iAdapter) {
@@ -485,7 +458,6 @@ export default {
         this.processStatus = 'confirm';
         this.interactStatus = 'normal';
         this.translateResult = this.voiceInfo.voiceText;
-        this.updateBubbleClass();
       },
 
       sendVoice() {
@@ -532,14 +504,7 @@ export default {
 
       // ==================== 状态管理 ====================
       resetState() {
-        if (recordTimer) {
-          clearInterval(recordTimer);
-          recordTimer = null;
-        }
-        if (startRecordTimer) {
-          clearTimeout(startRecordTimer);
-          startRecordTimer = null;
-        }
+        this.clearStartRecordTimer(startRecordTimer);
 
         if (this.iAdapter && this.managerRecording) {
           try {
@@ -559,7 +524,6 @@ export default {
         this.activeBtnCancel = false;
         this.activeBtnSend = false;
         this.isManagerBusy = false;
-        this.updateBubbleClass();
       },
     },
   }),

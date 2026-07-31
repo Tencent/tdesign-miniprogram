@@ -33,41 +33,18 @@
 @chat-record-hook-line-height: 42rpx;
 @chat-record-hook-letter-spacing: 1.02rpx;
 @chat-record-hook-border-radius: 16px;
-@chat-record-hook-border: 2rpx solid #fff;
 @chat-record-hook-bg: #f5f5f5;
 
 // 遮罩层
 @chat-record-mask-z-index: 5100;
-@chat-record-mask-bg: rgba(0, 0, 0, 0.8);
-@chat-record-mask-blur: blur(5px);
 
 // 主容器
 @chat-record-main-z-index: 5101;
-
-// 气泡样式
-@chat-record-bubble-border-radius: 24rpx;
-@chat-record-bubble-padding: 40rpx 48rpx;
-@chat-record-bubble-min-width: 300rpx;
-@chat-record-bubble-min-height: 100rpx;
-@chat-record-bubble-max-height: 584rpx;
-@chat-record-bubble-margin-bottom: 268rpx;
-@chat-record-bubble-padding-horizontal: 48rpx;
 
 // 气泡颜色
 @chat-record-color-blue: #2979ff;
 @chat-record-color-red: #ff5252;
 @chat-record-color-white: #ffffff;
-
-@chat-record-cancel-font-size: 32rpx;
-
-// 红色气泡（取消）
-@chat-record-bubble-red-min-width: 160rpx;
-@chat-record-bubble-red-padding: 24rpx 32rpx;
-@chat-record-bubble-red-translate-x: -230rpx;
-
-// 宽气泡（转文字）
-@chat-record-bubble-wide-min-width: calc(100% - 96rpx);
-@chat-record-bubble-tail-right: calc(100% - 66rpx);
 
 // 波浪条
 @chat-record-wave-height: 28rpx;
@@ -76,50 +53,14 @@
 @chat-record-wave-item-height: 14rpx;
 @chat-record-wave-item-radius: 90rpx;
 
-// 省略号圆点
-@chat-record-dot-size: 8rpx;
-@chat-record-dot-gap: 6rpx;
-@chat-record-dot-shadow-offset: 14rpx;
-@chat-record-dot-margin-right: 56rpx;
-
-// 转文字输入框
-@chat-record-textarea-min-height: 112rpx;
-@chat-record-textarea-max-height: 504rpx;
-@chat-record-textarea-font-size: 40rpx;
-@chat-record-textarea-line-height: 56rpx;
-
 // 底部操作区
 @chat-record-footer-height: 260rpx;
-@chat-record-tips-top: 0rpx;
 @chat-record-tips-font-size: 28rpx;
 @chat-record-tips-line-height: 44rpx;
 
 // 全宽录音大按钮
-@chat-record-main-btn-height: 100rpx;
-@chat-record-main-btn-margin: 0 32rpx;
 @chat-record-main-btn-bg-record: #2979ff;
 @chat-record-main-btn-bg-cancel: #ff5252;
-
-// 大圆背景
-@chat-record-circle-size: 2000rpx;
-@chat-record-circle-border-radius: 2000rpx;
-@chat-record-circle-bottom: -1700rpx;
-@chat-record-circle-border: 4rpx solid #ffffff;
-@chat-record-circle-bg-default: #dcdcdc;
-@chat-record-circle-bg-active: #4a4a4a;
-
-// 异形按钮
-@chat-record-shape-btn-width: 340rpx;
-@chat-record-shape-btn-height: 338rpx;
-@chat-record-shape-btn-bottom: 120rpx;
-@chat-record-shape-btn-padding-bottom: 180rpx;
-@chat-record-shape-btn-hint-top: -50rpx;
-@chat-record-shape-btn-hint-font-size: 24rpx;
-@chat-record-shape-btn-hint-color: #a3a3a3;
-@chat-record-shape-btn-label-font-size: 28rpx;
-@chat-record-shape-btn-label-line-height: 44rpx;
-@chat-record-shape-btn-label-color: #fff;
-@chat-record-shape-btn-label-color-active: #000;
 
 // 确认按钮区域
 @chat-record-confirm-bottom: 120rpx;
@@ -225,7 +166,7 @@
         .generate-wave-delays(@n, (@i + 1));
       }
 
-      .generate-wave-delays(30);
+      .generate-wave-delays(27);
     }
 
     // ==================== 底部操作区 ====================

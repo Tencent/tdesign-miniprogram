@@ -10,9 +10,8 @@ const name = `${prefix}-${componentName}`;
 // 交互阈值配置（单位：px）
 const MOVE_THRESHOLD_Y = 60;
 
-// 语音录制定时器-模拟长按
+// 录音启动延时定时器（模拟长按）
 let startRecordTimer: number | null = null;
-let recordTimer: number | null = null;
 
 type VoiceInfo = {
   voicePath: string;
@@ -37,6 +36,8 @@ export default class ChatRecord extends SuperComponent {
     recordAuthSetting: false,
     // 是否已授权 scope.record（未授权时应展示去设置/授权引导）
     recordAuthStatus: false,
+    // 是否已向用户申请过授权但被拒绝
+    recordAuthDenied: false,
 
     // UI 状态
     showMask: false,
@@ -45,7 +46,7 @@ export default class ChatRecord extends SuperComponent {
 
     // 流程状态
     processStatus: 'idle' as 'idle' | 'recording' | 'processing' | 'confirm' | 'error',
-    interactStatus: 'normal' as 'normal' | 'release_cancel',
+    interactStatus: 'normal' as 'normal' | 'release_cancel' | 'release_convert',
 
     // 录音数据
     voiceInfo: {
@@ -62,12 +63,19 @@ export default class ChatRecord extends SuperComponent {
     ignoreNextOnStop: false,
     managerRecording: false,
     waveList: Array.from({ length: 27 }).map((_, i) => i + 1),
-    bubbleStatusClass: 'bubble-blue',
   };
 
   private manager: any = null;
 
   methods = {
+    // 清理长按延时启动定时器
+    clearStartRecordTimer(timer: number | null) {
+      if (timer) {
+        clearTimeout(timer);
+      }
+      startRecordTimer = null;
+    },
+
     initRecordManager() {
       try {
         // WechatSI 插件需要你在 app.json 里配置 plugins: { WechatSI: { ... } }
@@ -86,11 +94,9 @@ export default class ChatRecord extends SuperComponent {
           managerRecording: true,
           processStatus: 'recording',
         });
-        this.updateBubbleClass();
       };
 
       manager.onRecognize = (res: any) => {
-        console.error('输出语音识别结果================：', res);
         // res.result 实时识别结果；res.end 表示结束
         if (res?.result && !res?.end) {
           const voiceText = res.result;
@@ -162,17 +168,12 @@ export default class ChatRecord extends SuperComponent {
           activeBtnSend: false,
           showMask: false,
         });
-        this.updateBubbleClass();
+
+        // 清理长按延时启动定时器，避免错误期间仍触发录音
+        this.clearStartRecordTimer(startRecordTimer);
 
         this.triggerEvent('error', err);
       };
-    },
-
-    updateBubbleClass() {
-      const { interactStatus, processStatus } = this.data;
-      let bubbleStatusClass = 'bubble-blue';
-      if (interactStatus === 'release_cancel' || processStatus === 'error') bubbleStatusClass = 'bubble-red';
-      this.setData({ bubbleStatusClass });
     },
 
     // 键盘高度监听已移至示例页面处理
@@ -186,7 +187,7 @@ export default class ChatRecord extends SuperComponent {
             const recordAuthSetting = recordAuthStatus;
             const recordAuthDenied = hasRequested && !recordAuthStatus;
 
-            this.setData({ recordAuthSetting, recordAuthStatus, recordAuthDenied } as any);
+            this.setData({ recordAuthSetting, recordAuthStatus, recordAuthDenied });
             resolve(recordAuthSetting);
           },
           fail: () => reject(new Error(this.data.globalConfig?.authSettingFail || '获取录音权限设置失败')),
@@ -361,13 +362,9 @@ export default class ChatRecord extends SuperComponent {
         translateResult: '',
         voiceInfo: { voicePath: '', voiceText: '', duration: 0 },
       });
-      this.updateBubbleClass();
 
       // 100ms 后开始录音（与原组件一致）
-      if (startRecordTimer) {
-        clearTimeout(startRecordTimer);
-        startRecordTimer = null;
-      }
+      this.clearStartRecordTimer(startRecordTimer);
       startRecordTimer = setTimeout(() => {
         if (!this.data.isStarted) return;
 
@@ -390,18 +387,8 @@ export default class ChatRecord extends SuperComponent {
             title: this.data.globalConfig?.missingPluginTip || '缺少语音识别插件 WechatSI',
           });
           this.setData({ processStatus: 'error' });
-          this.updateBubbleClass();
         }
       }, 100) as unknown as number;
-
-      // 预留：如需显示计时/动画，可使用 recordTimer
-      if (recordTimer) {
-        clearInterval(recordTimer);
-        recordTimer = null;
-      }
-      recordTimer = setInterval(() => {
-        // noop
-      }, 1000) as unknown as number;
     },
 
     touchmove(e: WechatMiniprogram.TouchEvent) {
@@ -421,7 +408,6 @@ export default class ChatRecord extends SuperComponent {
 
       if (interactStatus !== this.data.interactStatus) {
         this.setData({ interactStatus });
-        this.updateBubbleClass();
       }
     },
 
@@ -430,14 +416,7 @@ export default class ChatRecord extends SuperComponent {
 
       this.setData({ isStarted: false });
 
-      if (recordTimer) {
-        clearInterval(recordTimer);
-        recordTimer = null;
-      }
-      if (startRecordTimer) {
-        clearTimeout(startRecordTimer);
-        startRecordTimer = null;
-      }
+      this.clearStartRecordTimer(startRecordTimer);
 
       // 停止录音
       if (this.manager) {
@@ -456,9 +435,8 @@ export default class ChatRecord extends SuperComponent {
           activeBtnCancel: true,
         });
         this.cancelRecord();
-      } else {
-        // 正常松手：等待 onStop 回调，自动进入 confirm 并发送
       }
+      // 正常松手：等待 onStop 回调，自动发送
     },
 
     touchcancel() {
@@ -536,14 +514,7 @@ export default class ChatRecord extends SuperComponent {
 
     // ==================== 状态管理 ====================
     resetState() {
-      if (recordTimer) {
-        clearInterval(recordTimer);
-        recordTimer = null;
-      }
-      if (startRecordTimer) {
-        clearTimeout(startRecordTimer);
-        startRecordTimer = null;
-      }
+      this.clearStartRecordTimer(startRecordTimer);
 
       if (this.manager && this.data.managerRecording) {
         try {
@@ -566,20 +537,13 @@ export default class ChatRecord extends SuperComponent {
         isManagerBusy: false,
         ignoreNextOnStop: false,
       });
-      this.updateBubbleClass();
     },
   };
 
   lifetimes = {
     created() {
-      // 确保 bottomHeight 有初始值
-      if (typeof this.properties.bottomHeight === 'undefined') {
-        this.setData({ bottomHeight: 0 });
-      }
-
       // 绑定方法到 this.data（对齐 chat-sender.ts 的写法）
       this.data.initRecordManager = this.initRecordManager.bind(this);
-      this.data.updateBubbleClass = this.updateBubbleClass.bind(this);
       this.data.getVoiceAuthSetting = this.getVoiceAuthSetting.bind(this);
       this.data.applyAuth = this.applyAuth.bind(this);
       this.data.openVoiceSetting = this.openVoiceSetting.bind(this);

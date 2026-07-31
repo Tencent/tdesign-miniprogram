@@ -20,7 +20,7 @@
   </button>
 
   <!-- 遮罩 + 录音面板 -->
-  <view class="cover-ng-bar {{classPrefix}}-audio-input {{showMask ? 'show' : ''}}">
+  <view class="{{classPrefix}}-audio-input {{showMask ? 'show' : ''}}">
     <!-- mask -->
     <view class="{{classPrefix}}-audio-input__mask" bindtap="handleCancelSend" />
 
@@ -28,7 +28,7 @@
       <!-- 底部区域 -->
       <view
         wx:if="{{processStatus === 'recording' || processStatus === 'confirm'}}"
-        class="{{classPrefix}}-audio-input__ft {{processStatus}} {{interactStatus}} fade-in"
+        class="{{classPrefix}}-audio-input__ft {{processStatus}} {{interactStatus}}"
         style="bottom: {{bottomHeight}}rpx;"
       >
         <!-- 录音阶段：音波动画（独立在提示文字上方） -->
@@ -65,10 +65,7 @@
         </view>
 
         <!-- 确认按钮区（Send/Cancel） -->
-        <view
-          wx:if="{{processStatus === 'confirm' || processStatus === 'error'}}"
-          class="confirm-actions {{processStatus === 'error' ? 'is-error' : ''}}"
-        >
+        <view wx:if="{{processStatus === 'confirm' || processStatus === 'error'}}" class="confirm-actions">
           <view
             class="action-btn btn-cancel {{activeBtnCancel ? 'active' : ''}} {{processStatus === 'error' ? 'disabled' : ''}}"
             bindtap="handleCancelSend"

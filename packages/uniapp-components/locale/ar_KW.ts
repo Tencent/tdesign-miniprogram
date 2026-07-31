@@ -102,6 +102,11 @@ export default {
   },
   table: {
     empty: 'البيانات الفارغة',
+    confirmText: 'نعم',
+    resetText: 'إعادة ضبط',
+    searchResultText: "تم العثور على بحث '{result}' و{count} من العناصر.",
+    clearFilterResultButtonText: 'صافي',
+    pullUpLoadingText: 'جاري التحميل',
   },
   list: {
     loading: 'التحميل...',
