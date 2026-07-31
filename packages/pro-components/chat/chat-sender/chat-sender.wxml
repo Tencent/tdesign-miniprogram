@@ -29,33 +29,46 @@
   <view class="{{classPrefix}}__actions">
     <view class="{{classPrefix}}__textarea">
       <slot name="input-prefix" />
-      <textarea
-        class="{{classPrefix}}__textarea--control"
-        style="{{_this.textareaStyle(textareaProps.autosize)}}"
-        disabled="{{disabled}}"
-        auto-height="{{!!textareaProps.autosize}}"
-        confirm-type="send"
-        adjust-position="{{adjustPosition}}"
-        disable-default-padding="{{false}}"
-        cursor-spacing="30"
-        maxlength="-1"
-        value="{{value}}"
-        bindchange="textChange"
-        bindfocus="focusFn"
-        bindblur="blurFn"
-        bindtap="handlerClick"
-        bindinput="textChange"
-        bindkeyboardheightchange="onkeyboardheightchange"
-        bindconfirm="handleSendClick"
-      >
-      </textarea>
-      <view class="{{classPrefix}}__textarea--placeholder {{focusFlag || value ? 'hide' : ''}}"
-        >{{placeholder || globalConfig.placeholder}}</view
-      >
+      <!-- 键盘输入模式：allowSpeech 为 false，或 allowSpeech 为 true 但当前处于键盘模式时显示 -->
+      <block wx:if="{{!allowSpeech || inputMode === 'keyboard'}}">
+        <textarea
+          class="{{classPrefix}}__textarea--control"
+          style="{{_this.textareaStyle(textareaProps.autosize)}}"
+          disabled="{{disabled}}"
+          auto-height="{{!!textareaProps.autosize}}"
+          confirm-type="send"
+          adjust-position="{{adjustPosition}}"
+          disable-default-padding="{{false}}"
+          cursor-spacing="30"
+          maxlength="-1"
+          value="{{value}}"
+          bindchange="textChange"
+          bindfocus="focusFn"
+          bindblur="blurFn"
+          bindtap="handlerClick"
+          bindinput="textChange"
+          bindkeyboardheightchange="onkeyboardheightchange"
+          bindconfirm="handleSendClick"
+        >
+        </textarea>
+        <view class="{{classPrefix}}__textarea--placeholder {{focusFlag || value ? 'hide' : ''}}"
+          >{{placeholder || globalConfig.placeholder}}</view
+        >
+      </block>
+      <!-- 语音输入模式：allowSpeech 为 true 且当前处于语音模式时显示，语音 UI 由开发者通过 speech 插槽提供 -->
+      <block wx:else>
+        <slot name="speech" />
+      </block>
     </view>
 
     <view class="{{classPrefix}}__footer">
       <view class="{{classPrefix + '__mode'}}">
+        <!-- 语音切换按钮：allowSpeech 为 true 时内置显示 -->
+        <block wx:if="{{allowSpeech}}">
+          <view class="{{classPrefix}}__speech-toggle" catchtap="handleSpeechToggle">
+            <t-icon name="{{inputMode === 'speech' ? 'keyboard-1' : 'voice-wave'}}" size="36rpx" />
+          </view>
+        </block>
         <slot name="footer-prefix" />
       </view>
       <view class="{{classPrefix}}__sendbtn">

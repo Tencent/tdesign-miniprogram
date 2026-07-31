@@ -1,0 +1,88 @@
+<view class="{{classPrefix}}">
+  <!-- hook：授权时按住说话 / 未授权引导授权 -->
+  <view
+    wx:if="{{recordAuthStatus}}"
+    class="{{classPrefix}}-hook"
+    catchtouchstart="startRecord"
+    catchtouchend="stopRecord"
+    catchtouchmove="touchmove"
+    catchtouchcancel="touchcancel"
+  >
+    <slot name="speechInput">
+      <view>{{globalConfig.holdToTalk}}</view>
+    </slot>
+  </view>
+
+  <button wx:else class="{{classPrefix}}-hook {{classPrefix}}-hook--no-auth" bindtap="requestRecordAuth">
+    <slot name="speechNoAuth">
+      <view>{{globalConfig.requestAuth}}</view>
+    </slot>
+  </button>
+
+  <!-- 遮罩 + 录音面板 -->
+  <view class="{{classPrefix}}-audio-input {{showMask ? 'show' : ''}}">
+    <!-- mask -->
+    <view class="{{classPrefix}}-audio-input__mask" bindtap="handleCancelSend" />
+
+    <view class="{{classPrefix}}-audio-input__main">
+      <!-- 底部区域 -->
+      <view
+        wx:if="{{processStatus === 'recording' || processStatus === 'confirm'}}"
+        class="{{classPrefix}}-audio-input__ft {{processStatus}} {{interactStatus}}"
+        style="bottom: {{bottomHeight}}rpx;"
+      >
+        <!-- 录音阶段：音波动画（独立在提示文字上方） -->
+        <view
+          wx:if="{{processStatus === 'recording'}}"
+          class="audio-wave-outer audio-wave {{interactStatus === 'release_cancel' ? 'wave-red' : 'wave-blue'}}"
+        >
+          <block wx:for="{{waveList}}" wx:key="*this">
+            <view class="wave-item" />
+          </block>
+        </view>
+
+        <!-- 提示文字：两条文字同时存在，通过位移+透明度做"跟手"上下切换动效 -->
+        <view class="tips-text">
+          <block wx:if="{{processStatus === 'recording'}}">
+            <view class="tips-item tips-send {{interactStatus === 'release_cancel' ? 'is-out-up' : 'is-in'}}">
+              <text>{{globalConfig.releaseToSend}}</text>
+            </view>
+            <view class="tips-item tips-cancel {{interactStatus === 'release_cancel' ? 'is-in' : 'is-out-down'}}">
+              <text>{{globalConfig.releaseToCancel}}</text>
+            </view>
+          </block>
+        </view>
+
+        <!-- 录音阶段：全宽大按钮（纯色空按钮，仅承载手势） -->
+        <view
+          wx:if="{{processStatus === 'recording'}}"
+          class="record-main-btn {{interactStatus === 'release_cancel' ? 'is-cancel' : 'is-record'}}"
+          catchtouchstart="startRecord"
+          catchtouchend="stopRecord"
+          catchtouchmove="touchmove"
+          catchtouchcancel="touchcancel"
+        >
+        </view>
+
+        <!-- 确认按钮区（Send/Cancel） -->
+        <view wx:if="{{processStatus === 'confirm' || processStatus === 'error'}}" class="confirm-actions">
+          <view
+            class="action-btn btn-cancel {{activeBtnCancel ? 'active' : ''}} {{processStatus === 'error' ? 'disabled' : ''}}"
+            bindtap="handleCancelSend"
+          >
+            <view class="icon-wrapper">
+              <text class="rollback-icon">↩</text>
+            </view>
+            <text class="btn-text">{{globalConfig.cancelText}}</text>
+          </view>
+          <view
+            class="action-btn btn-send {{activeBtnSend ? 'active' : ''}} {{processStatus === 'error' ? 'disabled' : ''}}"
+            bindtap="handleSendVoiceMsg"
+          >
+            <text class="send-btn-text">{{globalConfig.sendText}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

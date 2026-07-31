@@ -46,6 +46,9 @@ export default class ChatSender extends SuperComponent {
       },
     },
     uploadNames: [],
+
+    // 当前输入模式：keyboard-键盘输入，speech-语音输入
+    inputMode: 'keyboard',
   };
 
   observers = {
@@ -64,6 +67,18 @@ export default class ChatSender extends SuperComponent {
   };
 
   methods = {
+    /**
+     * 切换语音/键盘输入模式
+     * 切换前先收起键盘，避免 textarea 销毁失焦与模式切换叠加导致闪烁
+     */
+    handleSpeechToggle() {
+      // 切换前先收起键盘，避免 textarea 销毁失焦与模式切换叠加导致 chat-sender 闪烁
+      wx.hideKeyboard && wx.hideKeyboard();
+      this.setData({
+        inputMode: this.data.inputMode === 'keyboard' ? 'speech' : 'keyboard',
+      });
+    },
+
     onkeyboardheightchange(e) {
       // 业务侧控制键盘顶起高度，如果用fix布局，不需要监听键盘高度变化
       this.triggerEvent('keyboardheightchange', e.detail);
@@ -275,6 +290,7 @@ export default class ChatSender extends SuperComponent {
       this.data.handleImageUpload = this.handleImageUpload.bind(this);
       this.data.handleWechatFileUpload = this.handleWechatFileUpload.bind(this);
       this.data.handleUploadEntryClick = this.handleUploadEntryClick.bind(this);
+      this.data.handleSpeechToggle = this.handleSpeechToggle.bind(this);
     },
     attached() {},
     detached() {

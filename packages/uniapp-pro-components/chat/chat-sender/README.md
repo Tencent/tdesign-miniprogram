@@ -47,6 +47,7 @@ import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
 adjust-position | Boolean | false | 默认键盘弹起不会把页面顶起来 | N
+allow-speech | Boolean | false | `0.11.0`。是否允许语音输入。为 true 时显示语音切换按钮，语音输入 UI 由开发者通过 speech 插槽自行提供 | N
 attachments-props | Object | - | 附件列表属性。TS 类型：`AttachmentsProps`，[Attachments API Documents](./attachments?tab=api)。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-pro-components/chat/chat-sender/type.ts) | N
 auto-rise-with-keyboard | Boolean | false | 键盘弹起时自动顶起来输入框 | N
 disabled | Boolean | false | 是否禁用输入框 | N

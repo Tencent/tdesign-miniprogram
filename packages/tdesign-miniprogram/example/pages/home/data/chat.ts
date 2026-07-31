@@ -15,6 +15,10 @@ const chat = {
       label: '对话输入框',
     },
     {
+      name: 'ChatRecord',
+      label: '语音输入',
+    },
+    {
       name: 'ChatMarkdown',
       label: '对话 Markdown',
     },
