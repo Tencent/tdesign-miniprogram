@@ -6,7 +6,10 @@ isComponent: true
 ---
 
 
-<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-84%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-67%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-84%25-blue" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-79%25-red" /></span>
+<div style="background: #ecf2fe; padding: 14px 24px; border-radius: 3px; color: #555a65">
+  <div style="border-left: 2px solid #0052d9; padding: 0 8px">渲染框架支持情况：Skyline、WebView</div>
+</div>
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。

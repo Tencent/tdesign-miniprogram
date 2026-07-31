@@ -8,7 +8,7 @@ on:
     types: [submitted]
 
   issue_comment:
-    types: [edited]
+    types: [created, edited]
 
 jobs:
   changelog:

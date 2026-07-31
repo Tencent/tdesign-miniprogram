@@ -37,7 +37,6 @@
     "@vueuse/core": "catalog:",
     "dayjs": "catalog:",
     "lodash-es": "catalog:",
-    "tdesign-icons-vue-next": "catalog:tdesign",
     "tinycolor2": "catalog:",
     "validator": "catalog:"
   },
