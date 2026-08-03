@@ -5,6 +5,7 @@
   "main": "index.ts",
   "license": "MIT",
   "devDependencies": {
+    "validator": "catalog:",
     "dayjs": "catalog:",
     "tinycolor2": "catalog:",
     "tslib": "catalog:",
