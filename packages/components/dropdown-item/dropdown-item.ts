@@ -49,7 +49,7 @@ export default class DropdownMenuItem extends SuperComponent {
 
   relations: RelationsOptions = {
     '../dropdown-menu/dropdown-menu': {
-      type: 'parent',
+      type: 'ancestor',
       linked(target) {
         const { zIndex, duration, showOverlay } = target.properties;
 

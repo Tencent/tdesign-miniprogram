@@ -18,7 +18,7 @@ export default class Col extends SuperComponent {
 
   relations: RelationsOptions = {
     '../row/row': {
-      type: 'parent',
+      type: 'ancestor',
     },
   };
 }

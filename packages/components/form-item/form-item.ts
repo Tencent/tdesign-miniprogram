@@ -66,7 +66,7 @@ export default class FormItem extends SuperComponent {
 
   relations: RelationsOptions = {
     '../form/form': {
-      type: 'parent',
+      type: 'ancestor',
       // 关联建立时主动向父组件同步一次配置
       linked() {
         this.syncFromParent();

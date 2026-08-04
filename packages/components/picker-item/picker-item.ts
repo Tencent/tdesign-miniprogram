@@ -42,7 +42,7 @@ const momentum = (distance: number, duration: number) => {
 export default class PickerItem extends SuperComponent {
   relations: RelationsOptions = {
     '../picker/picker': {
-      type: 'parent',
+      type: 'ancestor',
     },
   };
 
