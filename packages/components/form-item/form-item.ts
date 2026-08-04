@@ -49,6 +49,7 @@ export default class FormItem extends SuperComponent {
     innerShowErrorMessage: true,
     innerContentAlign: '',
     contentStyle: '',
+    isLastChild: false,
   };
 
   observers = {

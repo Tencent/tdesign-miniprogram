@@ -29,6 +29,10 @@ export default class Form extends SuperComponent {
       // 子组件挂载时主动下发一次表单配置，兼容 Skyline 下 linked 仅触发一次的情况
       linked(target) {
         target.syncFromParent?.();
+        this.syncLastChildFlags();
+      },
+      unlinked() {
+        this.syncLastChildFlags();
       },
     },
   };
@@ -75,6 +79,11 @@ export default class Form extends SuperComponent {
         items = this.selectAllComponents(`.${prefix}-form-item`);
       }
       return items || [];
+    },
+
+    syncLastChildFlags() {
+      const items = this.getChildren();
+      items.forEach((child, index) => child.setData?.({ isLastChild: index === items.length - 1 }));
     },
 
     // 验证表单
