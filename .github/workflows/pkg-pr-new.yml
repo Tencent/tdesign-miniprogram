@@ -23,8 +23,4 @@ jobs:
 
       - run: pnpm exec run-p  build 'uniapp build:npm'
 
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 20
-
       - run: pnpm dlx pkg-pr-new publish 'packages/tdesign-miniprogram' 'packages/tdesign-uniapp' 'packages/tdesign-uniapp-chat'
