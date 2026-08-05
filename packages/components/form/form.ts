@@ -25,7 +25,7 @@ export default class Form extends SuperComponent {
 
   relations: RelationsOptions = {
     '../form-item/form-item': {
-      type: 'child',
+      type: 'descendant',
       // 子组件挂载时主动下发一次表单配置，兼容 Skyline 下 linked 仅触发一次的情况
       linked(target) {
         target.syncFromParent?.();
