@@ -752,6 +752,33 @@ exports[`Cascader Cascader keys demo works fine 1`] = `
 </keys>
 `;
 
+exports[`Cascader Cascader lazy-load demo works fine 1`] = `
+<lazy-load>
+  <t-cell
+    arrow="{{true}}"
+    note="中国/广东省/深圳市"
+    title="地址"
+    bind:click="showCascader"
+  />
+  <t-cascader
+    load="{{[Function]}}"
+    options="{{
+      Array [
+        Object {
+          "children": true,
+          "label": "中国",
+          "value": "CN",
+        },
+      ]
+    }}"
+    title="请选择地址"
+    value="440300"
+    visible="{{false}}"
+    bind:change="onChange"
+  />
+</lazy-load>
+`;
+
 exports[`Cascader Cascader theme-tab demo works fine 1`] = `
 <theme-tab>
   <t-cell
