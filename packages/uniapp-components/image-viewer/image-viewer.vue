@@ -113,7 +113,7 @@
 <script>
 import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
-import { styles, calcIcon, systemInfo } from '../common/utils';
+import { styles, calcIcon, systemInfo, coalesce } from '../common/utils';
 
 import tools from '../common/utils.wxs';
 import TIcon from '../icon/icon';
@@ -318,7 +318,7 @@ export default {
       },
 
       onMovableScale(e) {
-        const scale = e?.detail?.scale ?? 1;
+        const scale = coalesce(e?.detail?.scale, 1);
         this.currentScale = scale;
       },
 

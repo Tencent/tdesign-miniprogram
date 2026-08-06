@@ -2,7 +2,8 @@
   <view>
     <t-navbar t-class="custom-navbar" left-arrow title="标题文字" :fixed="false" @right-click="handleRightClick">
       <template #right>
-        <div>右侧内容</div>
+        <t-icon name="ellipsis" size="24px" />
+        <!-- <div>右侧内容</div> -->
       </template>
     </t-navbar>
   </view>
@@ -10,6 +11,7 @@
 
 <script>
 import TNavbar from '@tdesign/uniapp/navbar/navbar.vue';
+import TIcon from '@tdesign/uniapp/icon/icon.vue';
 
 export default {
   options: {
@@ -17,6 +19,7 @@ export default {
   },
   components: {
     TNavbar,
+    TIcon,
   },
   data() {
     return {};

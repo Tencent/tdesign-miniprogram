@@ -33,7 +33,10 @@ export default {
   /** 预设发送区渲染配置，用于灵活配置发送区的上传入口和发送按钮，支持自定义类型、顺序、样式 */
   renderPresets: {
     type: Array,
-    default: (): TdChatSenderProps['renderPresets'] => [{name: 'upload', presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'], status: ''},{ name: 'send', type: 'icon'}],
+    default: (): TdChatSenderProps['renderPresets'] => [
+      { name: 'upload', presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'], status: '' },
+      { name: 'send', type: 'icon' },
+    ],
   },
   /** 透传给 Textarea 组件的属性，autosize数值单位为 rpx */
   textareaProps: {

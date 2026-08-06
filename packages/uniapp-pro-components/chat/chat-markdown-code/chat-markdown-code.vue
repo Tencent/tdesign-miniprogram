@@ -1,8 +1,5 @@
 <template>
-  <view
-    :class="classPrefix"
-    @click="nodeClick"
-  >
+  <view :class="classPrefix" @click="nodeClick">
     <!-- 代码语言标签 -->
     <view v-if="node.lang" :class="classPrefix + '__header'">
       <text :class="classPrefix + '__lang'">

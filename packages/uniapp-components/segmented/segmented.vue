@@ -116,7 +116,7 @@ export default {
           }
           return {
             ...option,
-            label: option.label ?? String(option.value),
+            label: coalesce(option.label, String(option.value)),
             icon: option.icon ? calcIcon(option.icon) : null,
           };
         });
