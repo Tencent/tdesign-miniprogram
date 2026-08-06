@@ -9,13 +9,13 @@ docClass: timeline
 
 ### 🚀 Features
 
-- `Cell`: 统一组件关系类型为 `ancestor/descendant` 以支持复合嵌套场景 @anlyyao ([#4589](https://github.com/Tencent/tdesign-miniprogram/pull/4589))
 - `ChatRecord`: 新增语音输入组件 @zydemail ([#4474](https://github.com/Tencent/tdesign-miniprogram/pull/4474))
 - `ChatSender`: 新增 `allowSpeech` 属性，表示是否允许语音输入 @zydemail ([#4474](https://github.com/Tencent/tdesign-miniprogram/pull/4474))
-- `DropdownMenu`: 统一组件关系类型为 `ancestor/descendant` 以支持复合嵌套场景 @anlyyao ([#4589](https://github.com/Tencent/tdesign-miniprogram/pull/4589))
 - `Form`: 
   - 适配 `skyline` 渲染引擎 @anlyyao ([#4583](https://github.com/Tencent/tdesign-miniprogram/pull/4583))
   - 统一组件关系类型为 `ancestor/descendant` 以支持复合嵌套场景 @anlyyao ([#4589](https://github.com/Tencent/tdesign-miniprogram/pull/4589))
+- `Cell`: 统一组件关系类型为 `ancestor/descendant` 以支持复合嵌套场景 @anlyyao ([#4589](https://github.com/Tencent/tdesign-miniprogram/pull/4589))
+- `DropdownMenu`: 统一组件关系类型为 `ancestor/descendant` 以支持复合嵌套场景 @anlyyao ([#4589](https://github.com/Tencent/tdesign-miniprogram/pull/4589))
 - `Indexes`: 统一组件关系类型为 `ancestor/descendant` 以支持复合嵌套场景 @anlyyao ([#4589](https://github.com/Tencent/tdesign-miniprogram/pull/4589))
 - `Layout`: 统一组件关系类型为 `ancestor/descendant` 以支持复合嵌套场景 @anlyyao ([#4589](https://github.com/Tencent/tdesign-miniprogram/pull/4589))
 - `Picker`: 统一组件关系类型为 `ancestor/descendant` 以支持复合嵌套场景 @anlyyao ([#4589](https://github.com/Tencent/tdesign-miniprogram/pull/4589))
