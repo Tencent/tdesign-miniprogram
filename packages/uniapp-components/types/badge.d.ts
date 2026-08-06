@@ -1,5 +1,5 @@
-import type { TdBadgeProps } from '../badge/type';
 import type { TransformEventHandlers, ExtractNonOnProps } from '../common/common';
+import type { TdBadgeProps } from '../badge/type';
 
 export type BadgeProps = ExtractNonOnProps<TdBadgeProps>;
 export type BadgeEmits = TransformEventHandlers<TdBadgeProps, true>;

@@ -1,5 +1,5 @@
-import type { TdCollapseProps } from '../collapse/type';
 import type { TransformEventHandlers, ExtractNonOnProps } from '../common/common';
+import type { TdCollapseProps } from '../collapse/type';
 
 export type CollapseProps = ExtractNonOnProps<TdCollapseProps>;
 export type CollapseEmits = TransformEventHandlers<TdCollapseProps, true>;
