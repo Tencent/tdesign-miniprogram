@@ -43,6 +43,15 @@ export const docs = [
         // componentEn: () => import('@/chat/chat-sender/README.en-US.md'),
       },
       {
+        title: 'ChatRecord 语音输入',
+        titleEn: 'ChatRecord',
+        name: 'ChatRecord 语音输入',
+        meta: { docType: 'base' },
+        path: '/miniprogram-chat/components/chat-record',
+        component: () => import('@/chat/chat-record/README.md'),
+        // componentEn: () => import('@/chat/chat-record/README.en-US.md'),
+      },
+      {
         title: 'ChatMessage 对话消息体',
         titleEn: 'ChatMessage',
         name: 'ChatMessage 对话消息体',

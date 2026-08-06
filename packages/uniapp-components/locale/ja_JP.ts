@@ -16,6 +16,8 @@ export default {
   cascader: {
     title: 'タイトル',
     placeholder: 'オプションを選択',
+    filterPlaceholder: '検索',
+    empty: '該当する項目はありません',
   },
   dropdownMenu: {
     reset: 'リセット',
@@ -26,7 +28,7 @@ export default {
     title: '日付を選択',
     cancel: 'キャンセル',
     confirm: '確認',
-    format: 'YYYY-MM-DD',
+    format: 'YYYY-MM-DD HH:mm:ss',
     months: ['1 月', '2 月', '3 月', '4 月', '5 月', '6 月', '7 月', '8 月', '9 月', '10 月', '11 月', '12 月'],
     yearLabel: '年',
     monthLabel: '月',
@@ -74,6 +76,11 @@ export default {
   },
   table: {
     empty: 'データがありません',
+    confirmText: '確認事項',
+    resetText: 'リセット',
+    searchResultText: '検索“{result}”，探す {count} 記事結果',
+    clearFilterResultButtonText: 'クリアフィルター',
+    pullUpLoadingText: '読み込み中',
   },
   list: {
     loading: '読み込み中…',
@@ -88,6 +95,7 @@ export default {
       waitingText: '待機中',
       failText: '失敗しました',
       successText: '成功しました',
+      reloadText: '再アップロード',
     },
   },
   guide: {
@@ -121,6 +129,26 @@ export default {
       share: '共有',
       quote: '引用',
     },
+  },
+  chatRecord: {
+    holdToTalk: '押しながら話す',
+    requestAuth: 'マイクの権限を許可してください',
+    releaseToCancel: '離してキャンセル',
+    releaseToSend: '離して送信、上にスワイプでキャンセル',
+    cancelText: 'キャンセル',
+    sendText: '送信',
+    busyTip: '認識中です。しばらくお待ちください…',
+    recognizeFailTip: '録音の認識に失敗しました。もう一度お試しください',
+    missingPluginTip: '音声認識プラグイン WechatSI がありません',
+    authSettingFail: '録音権限の設定の取得に失敗しました',
+    openSettingFail: '設定を開けませんでした',
+    systemMicTitle: 'マイクを使用できません',
+    systemMicContent:
+      '携帯電話のシステムで「WeChat」のマイク権限がオフになっていることが検出されました。\n\n' +
+      'システム設定で有効にしてください：\n' +
+      '- iOS：設定 > WeChat > マイク\n' +
+      '- Android：設定 > アプリ管理 > WeChat > 権限 > マイク\n\n' +
+      '有効にした後、ミニプログラムに戻って再度お試しください。',
   },
   chatSender: {
     placeholder: 'メッセージを入力してください...',

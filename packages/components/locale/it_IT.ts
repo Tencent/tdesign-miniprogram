@@ -10,7 +10,7 @@ export default {
     confirm: 'Conferma',
     title: 'Seleziona Data',
     weekdays: ['Domenica', 'Lunedì', 'Martedì', 'Mercoledì', 'Giovedì', 'Venerdì', 'Sabato'],
-    monthTitle: '{mese} {anno}',
+    monthTitle: '{month} {year}',
     months: [
       'Gennaio',
       'Febbraio',
@@ -41,7 +41,7 @@ export default {
     title: 'Seleziona Data',
     cancel: 'Annulla',
     confirm: 'Conferma',
-    format: 'DD-MM-YYYY',
+    format: 'DD-MM-YYYY HH:mm:ss',
     months: ['Gen', 'Feb', 'Mar', 'Apr', 'Mag', 'Giu', 'Lug', 'Ago', 'Set', 'Ott', 'Nov', 'Dic'],
     yearLabel: 'Anno',
     monthLabel: 'Mese',
@@ -78,17 +78,22 @@ export default {
   },
   rate: {
     texts: ['Pessimo', 'Scarso', 'Normale', 'Buono', 'Eccellente'],
-    valueText: '{valore} punteggio',
+    valueText: '{value} punteggio',
     noValueText: 'Nessun punteggio',
   },
   tabBar: {
     newsAriaLabel: 'Ci sono nuove notizie',
     moreNewsAriaLabel: 'Ci sono molte notizie',
-    haveMoreNewsAriaLabel: 'Ci sono {valore}+ notizie',
-    haveNewsAriaLabel: 'Ci sono {valore} notizie',
+    haveMoreNewsAriaLabel: 'Ci sono {value}+ notizie',
+    haveNewsAriaLabel: 'Ci sono {value} notizie',
   },
   table: {
     empty: 'Dati Vuoti',
+    confirmText: 'Conferma',
+    resetText: 'Ripristina',
+    searchResultText: 'Ricerca "{result}", trovati {count} risultati',
+    clearFilterResultButtonText: 'Pulisci il filtro',
+    pullUpLoadingText: 'In carica',
   },
   list: {
     loading: 'Caricamento...',
@@ -103,6 +108,7 @@ export default {
       waitingText: 'Attesa',
       failText: 'Fallito',
       successText: 'Successo',
+      reloadText: 'Ricarica',
     },
   },
   guide: {
@@ -136,6 +142,26 @@ export default {
       share: 'Condividi',
       quote: 'Cita',
     },
+  },
+  chatRecord: {
+    holdToTalk: 'Tieni premuto per parlare',
+    requestAuth: 'Autorizza il permesso del microfono',
+    releaseToCancel: 'Rilascia per annullare',
+    releaseToSend: 'Rilascia per inviare, scorri su per annullare',
+    cancelText: 'Annulla',
+    sendText: 'Invia',
+    busyTip: 'Riconoscimento in corso, attendere…',
+    recognizeFailTip: 'Riconoscimento vocale non riuscito, riprova',
+    missingPluginTip: 'Plugin di riconoscimento vocale WechatSI mancante',
+    authSettingFail: 'Impossibile ottenere le impostazioni del permesso di registrazione',
+    openSettingFail: 'Impossibile aprire le impostazioni',
+    systemMicTitle: 'Impossibile usare il microfono',
+    systemMicContent:
+      'È stato rilevato che il sistema del telefono ha disabilitato il permesso del microfono per "WeChat".\n\n' +
+      'Abilitalo nelle impostazioni di sistema:\n' +
+      '- iOS: Impostazioni > WeChat > Microfono\n' +
+      '- Android: Impostazioni > Gestione app > WeChat > Autorizzazioni > Microfono\n\n' +
+      'Dopo averlo abilitato, torna al Mini Program e riprova.',
   },
   chatSender: {
     placeholder: 'Inserisci il messaggio...',

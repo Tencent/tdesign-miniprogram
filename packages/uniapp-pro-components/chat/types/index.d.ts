@@ -5,5 +5,6 @@ export * from '../chat-list/type';
 export * from '../chat-loading/type';
 export * from '../chat-markdown/type';
 export * from '../chat-message/type';
+export * from '../chat-record/type';
 export * from '../chat-sender/type';
 export * from '../chat-thinking/type';

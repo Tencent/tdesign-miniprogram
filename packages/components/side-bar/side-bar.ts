@@ -13,7 +13,7 @@ export default class SideBar extends SuperComponent {
 
   relations: RelationsOptions = {
     '../side-bar-item/side-bar-item': {
-      type: 'child',
+      type: 'descendant',
       linked(child) {
         this.children.push(child);
       },

@@ -9,6 +9,7 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 adjust-position | Boolean | false | \- | N
+allow-speech | Boolean | false | `1.16.0` | N
 attachments-props | Object | - | Typescript: `AttachmentsProps`，[Attachments API Documents](./attachments?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/pro-components/chat/chat-sender/type.ts) | N
 auto-rise-with-keyboard | Boolean | false | \- | N
 disabled | Boolean | false | \- | N

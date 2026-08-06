@@ -40,7 +40,7 @@ export default {
     title: 'Выберите время',
     cancel: 'Отмена',
     confirm: 'Подтвердить',
-    format: 'DD.MM.YYYY',
+    format: 'DD.MM.YYYY HH:mm:ss',
     months: [
       'Январь',
       'Февраль',
@@ -101,6 +101,11 @@ export default {
   },
   table: {
     empty: 'Нет данных',
+    confirmText: 'Подтвердить',
+    resetText: 'Сбросить',
+    searchResultText: 'Поиск «{result}», найдено {count} результатов',
+    clearFilterResultButtonText: 'Очистить фильтр',
+    pullUpLoadingText: 'Загрузка',
   },
   list: {
     loading: 'Загрузка...',
@@ -115,6 +120,7 @@ export default {
       waitingText: 'Ожидание загрузки',
       failText: 'Ошибка загрузки',
       successText: 'Загрузка завершена',
+      reloadText: 'Загрузить повторно',
     },
   },
   guide: {
@@ -148,6 +154,27 @@ export default {
       share: 'Поделиться',
       quote: 'Цитировать',
     },
+  },
+  chatRecord: {
+    holdToTalk: 'Нажмите и удерживайте, чтобы говорить',
+    requestAuth: 'Пожалуйста, предоставьте разрешение на использование микрофона',
+    releaseToCancel: 'Отпустите для отмены',
+    releaseToSend: 'Отпустите для отправки, проведите вверх для отмены',
+    cancelText: 'Отмена',
+    sendText: 'Отправить',
+    busyTip: 'Распознавание, пожалуйста, подождите…',
+    recognizeFailTip: 'Не удалось распознать запись, попробуйте снова',
+    missingPluginTip: 'Отсутствует плагин распознавания речи WechatSI',
+    authSettingFail: 'Не удалось получить настройки разрешения на запись',
+    openSettingFail: 'Не удалось открыть настройки',
+    systemMicTitle: 'Невозможно использовать микрофон',
+    systemMicContent:
+      'Обнаружено, что в системе телефона отключено разрешение ' +
+      'на использование микрофона для "WeChat".\n\n' +
+      'Пожалуйста, включите его в настройках системы:\n' +
+      '- iOS: Настройки > WeChat > Микрофон\n' +
+      '- Android: Настройки > Управление приложениями > WeChat > Разрешения > Микрофон\n\n' +
+      'После включения вернитесь в мини-программу и повторите попытку.',
   },
   chatSender: {
     placeholder: 'Введите сообщение...',

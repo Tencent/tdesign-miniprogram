@@ -11,7 +11,7 @@ export default class CellGroup extends SuperComponent {
 
   relations: RelationsOptions = {
     '../cell/cell': {
-      type: 'child',
+      type: 'descendant',
       linked() {
         this.updateLastChid();
       },
