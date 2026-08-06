@@ -5,6 +5,18 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.10.3 `2026-08-06`
+
+### 🚀 Features
+
+- `Form`: 支持嵌套 `name` @novlan1 ([#4578](https://github.com/Tencent/tdesign-miniprogram/pull/4578))
+- `Navbar`: 优化 `right` 插槽在多端的对齐与定位表现，H5/App 端不再预留胶囊按钮宽度 @novlan1 ([#4578](https://github.com/Tencent/tdesign-miniprogram/pull/4578))
+
+### 🐞 Bug Fixes
+
+- `Form`: 修复 `FormRule.required` 为 true 时，`requiredMark` 属性无效问题 @anlyyao ([#4555](https://github.com/Tencent/tdesign-miniprogram/pull/4555))
+- `SwiperCell`: 修复缓慢拖动时的抖动问题 @novlan1 ([#4578](https://github.com/Tencent/tdesign-miniprogram/pull/4578))
+
 ## 🌈 0.10.2 `2026-07-07`
 
 ### 🚀 Features
