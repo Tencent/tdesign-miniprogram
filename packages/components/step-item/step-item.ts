@@ -12,7 +12,7 @@ export default class StepItem extends SuperComponent {
 
   relations: RelationsOptions = {
     '../steps/steps': {
-      type: 'parent',
+      type: 'ancestor',
     },
   };
 

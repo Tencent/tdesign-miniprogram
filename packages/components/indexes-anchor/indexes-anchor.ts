@@ -21,7 +21,7 @@ export default class IndexesAnchor extends SuperComponent {
 
   relations: RelationsOptions = {
     '../indexes/indexes': {
-      type: 'parent',
+      type: 'ancestor',
     },
   };
 }

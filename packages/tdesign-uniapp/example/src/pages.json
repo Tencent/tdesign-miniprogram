@@ -402,6 +402,14 @@
       ]
     },
     {
+      "root": "pages-more/chat-record",
+      "pages": [
+        {
+          "path": "chat-record"
+        }
+      ]
+    },
+    {
       "root": "pages-more/chat-markdown",
       "pages": [
         {
@@ -737,6 +745,10 @@
         "pathName": "pages-more/chat-sender/chat-sender"
       },
       {
+        "name": "chat-record",
+        "pathName": "pages-more/chat-record/chat-record"
+      },
+      {
         "name": "chat-markdown",
         "pathName": "pages-more/chat-markdown/chat-markdown"
       },
@@ -799,6 +811,7 @@
         "pages-more/chat-list",
         "pages-more/chat-message",
         "pages-more/chat-sender",
+        "pages-more/chat-record",
         "pages-more/chat-markdown",
         "pages-more/chat-content",
         "pages-more/chat-thinking",

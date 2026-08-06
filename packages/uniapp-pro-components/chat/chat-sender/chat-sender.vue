@@ -26,32 +26,41 @@
       <view :class="classPrefix + '__actions'">
         <view :class="classPrefix + '__textarea'">
           <slot name="input-prefix" />
-          <textarea
-            :class="classPrefix + '__textarea--control'"
-            :style="'' + textareaStyle(textareaProps.autosize)"
-            :disabled="disabled"
-            :auto-height="!!textareaProps.autosize"
-            confirm-type="send"
-            :adjust-position="adjustPosition"
-            :disable-default-padding="false"
-            cursor-spacing="30"
-            maxlength="-1"
-            :value="innerValue"
-            @change="textChange"
-            @focus="focusFn"
-            @blur="blurFn"
-            @click="handlerClick"
-            @input="textChange"
-            @keyboardheightchange="onkeyboardheightchange"
-            @confirm="handleSendClick"
-          />
-          <view :class="classPrefix + '__textarea--placeholder ' + (focusFlag || innerValue ? 'hide' : '')">
-            {{ placeholder || globalConfig.placeholder }}
-          </view>
+          <!-- 键盘输入模式：allowSpeech 为 false，或 allowSpeech 为 true 但当前处于键盘模式时显示 -->
+          <template v-if="!allowSpeech || inputMode === 'keyboard'">
+            <textarea
+              :class="classPrefix + '__textarea--control'"
+              :style="'' + textareaStyle(textareaProps.autosize)"
+              :disabled="disabled"
+              :auto-height="!!textareaProps.autosize"
+              confirm-type="send"
+              :adjust-position="adjustPosition"
+              :disable-default-padding="false"
+              cursor-spacing="30"
+              maxlength="-1"
+              :value="innerValue"
+              @change="textChange"
+              @focus="focusFn"
+              @blur="blurFn"
+              @click="handlerClick"
+              @input="textChange"
+              @keyboardheightchange="onkeyboardheightchange"
+              @confirm="handleSendClick"
+            />
+            <view :class="classPrefix + '__textarea--placeholder ' + (focusFlag || innerValue ? 'hide' : '')">
+              {{ placeholder || globalConfig.placeholder }}
+            </view>
+          </template>
+          <!-- 语音输入模式：allowSpeech 为 true 且当前处于语音模式时显示，语音 UI 由开发者通过 speech 插槽提供 -->
+          <slot v-else name="speech" />
         </view>
 
         <view :class="classPrefix + '__footer'">
           <view :class="classPrefix + '__mode'">
+            <!-- 语音切换按钮：allowSpeech 为 true 时内置显示 -->
+            <view v-if="allowSpeech" :class="classPrefix + '__speech-toggle'" @click.stop="handleSpeechToggle">
+              <t-icon :name="inputMode === 'speech' ? 'keyboard-1' : 'voice-wave'" size="36rpx" />
+            </view>
             <slot name="footer-prefix" />
           </view>
           <view :class="classPrefix + '__sendbtn'">
@@ -194,6 +203,9 @@ export default {
         tools,
 
         innerValue: this.value,
+
+        // 当前输入模式：keyboard-键盘输入，speech-语音输入
+        inputMode: 'keyboard',
       };
     },
 
@@ -227,6 +239,17 @@ export default {
 
     methods: {
       textareaStyle,
+
+      /**
+       * 切换语音/键盘输入模式
+       * 切换前先收起键盘，避免 textarea 销毁失焦与模式切换叠加导致闪烁
+       */
+      handleSpeechToggle() {
+        if (uni.hideKeyboard) {
+          uni.hideKeyboard();
+        }
+        this.inputMode = this.inputMode === 'keyboard' ? 'speech' : 'keyboard';
+      },
 
       onkeyboardheightchange(e) {
         // 业务侧控制键盘顶起高度，如果用fix布局，不需要监听键盘高度变化
@@ -346,7 +369,7 @@ export default {
         const { type } = e.currentTarget.dataset;
         const sourceType = [type];
         try {
-          const res = await wx.chooseImage({
+          const res = await uni.chooseImage({
             count: 1,
             // 最多可选9张
             sizeType: ['original', 'compressed'],
@@ -377,7 +400,7 @@ export default {
             });
           }
         } catch (err) {
-          wx.showToast({
+          uni.showToast({
             title: type === 'album' ? '选择图片失败' : '拍照失败',
             icon: 'none',
           });
@@ -389,7 +412,7 @@ export default {
       async handleWechatFileUpload(e) {
         try {
           // 使用微信小程序的选择文件API
-          const res = await wx.chooseMessageFile({
+          const res = await uni.chooseMessageFile({
             count: 5,
             // 最多5个文件
             type: 'all', // 所有类型文件
@@ -413,7 +436,7 @@ export default {
             });
           }
         } catch (err) {
-          wx.showToast({
+          uni.showToast({
             title: '选择微信文件失败',
             icon: 'none',
           });

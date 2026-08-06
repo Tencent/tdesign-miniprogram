@@ -41,7 +41,7 @@ export default {
     title: 'Select Date',
     cancel: 'Cancel',
     confirm: 'Confirm',
-    format: 'YYYY-MM-DD',
+    format: 'YYYY-MM-DD HH:mm:ss',
     months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     yearLabel: '',
     monthLabel: '',
@@ -89,6 +89,12 @@ export default {
   },
   table: {
     empty: 'Empty Data',
+    confirmText: 'Confirm',
+    resetText: 'Reset',
+    searchResultText:
+      'Search "{result}". Found no items. | Search "{result}". Found 1 item. | Search "{result}". Found {count} items.',
+    clearFilterResultButtonText: 'Clear',
+    pullUpLoadingText: 'Loading...',
   },
   list: {
     loading: 'Loading...',
@@ -137,6 +143,26 @@ export default {
       share: 'share',
       quote: 'quote',
     },
+  },
+  chatRecord: {
+    holdToTalk: 'Hold to talk',
+    requestAuth: 'Please authorize microphone permission',
+    releaseToCancel: 'Release to cancel',
+    releaseToSend: 'Release to send, swipe up to cancel',
+    cancelText: 'Cancel',
+    sendText: 'Send',
+    busyTip: 'Recognizing, please wait...',
+    recognizeFailTip: 'Voice recognition failed, please try again',
+    missingPluginTip: 'Missing voice recognition plugin WechatSI',
+    authSettingFail: 'Failed to get recording permission settings',
+    openSettingFail: 'Failed to open settings',
+    systemMicTitle: 'Cannot use microphone',
+    systemMicContent:
+      'Detected that the phone system has disabled the microphone permission for "WeChat".\n\n' +
+      'Please enable it in system settings:\n' +
+      '- iOS: Settings > WeChat > Microphone\n' +
+      '- Android: Settings > App Management > WeChat > Permissions > Microphone\n\n' +
+      'After enabling, return to the Mini Program and try again.',
   },
   chatSender: {
     placeholder: 'please enter message...',

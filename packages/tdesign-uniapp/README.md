@@ -176,7 +176,7 @@ import TLoading from '@tdesign/uniapp/loading/loading.vue';
 
 有任何问题，建议通过 [Github issues](https://github.com/Tencent/tdesign-miniprogram/issues) 反馈或扫码加入用户微信群。
 
-<img src="https://raw.githubusercontent.com/Tencent/tdesign/main/packages/site-components/src/images/groups/wx-group.png" width="200" />
+<img src="https://raw.githubusercontent.com/Tencent/tdesign/main/packages/site-components/src/images/groups/uniapp-group.png" width="200" />
 
 ## 开源协议
 

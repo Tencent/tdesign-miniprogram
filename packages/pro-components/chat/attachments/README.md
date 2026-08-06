@@ -5,6 +5,10 @@ spline: chat
 isComponent: true
 ---
 
+<div style="background: #ecf2fe; padding: 14px 24px; border-radius: 3px; color: #555a65">
+  <div style="border-left: 2px solid #c6c6c6; padding: 0 8px;margin-bottom: 16px">该组件于 1.12.0 版本上线，请留意版本</div>
+  <div style="border-left: 2px solid #0052d9; padding: 0 8px">渲染框架支持情况：WebView</div>
+</div>
 
 ## 引入
 
