@@ -1,4 +1,4 @@
-import type { TransformEventHandlers, ExtractNonOnProps } from 'tdesign-uniapp/common/common';
+import type { TransformEventHandlers, ExtractNonOnProps } from '@tdesign/uniapp/common/common';
 import type { TdChatRecordProps } from '../chat-record/type';
 
 export type ChatRecordProps = ExtractNonOnProps<TdChatRecordProps>;

@@ -1,5 +1,5 @@
-import type { TdAvatarProps } from '../avatar/type';
 import type { TransformEventHandlers, ExtractNonOnProps } from '../common/common';
+import type { TdAvatarProps } from '../avatar/type';
 
 export type AvatarProps = ExtractNonOnProps<TdAvatarProps>;
 export type AvatarEmits = TransformEventHandlers<TdAvatarProps, true>;
