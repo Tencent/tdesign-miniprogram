@@ -9,7 +9,7 @@ const name = `${prefix}-steps`;
 export default class Steps extends SuperComponent {
   relations: RelationsOptions = {
     '../step-item/step-item': {
-      type: 'child',
+      type: 'descendant',
       linked(child) {
         this.updateChildren();
 

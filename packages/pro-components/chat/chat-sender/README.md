@@ -5,6 +5,10 @@ spline: chat
 isComponent: true
 ---
 
+<div style="background: #ecf2fe; padding: 14px 24px; border-radius: 3px; color: #555a65">
+  <div style="border-left: 2px solid #c6c6c6; padding: 0 8px;margin-bottom: 16px">该组件于 1.12.0 版本上线，请留意版本</div>
+  <div style="border-left: 2px solid #0052d9; padding: 0 8px">渲染框架支持情况：WebView</div>
+</div>
 
 ## 引入
 
@@ -56,6 +60,7 @@ isComponent: true
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 adjust-position | Boolean | false | 默认键盘弹起不会把页面顶起来 | N
+allow-speech | Boolean | false | `1.16.0`。是否允许语音输入。为 true 时显示语音切换按钮，语音输入 UI 由开发者通过 speech 插槽自行提供 | N
 attachments-props | Object | - | 附件列表属性。TS 类型：`AttachmentsProps`，[Attachments API Documents](./attachments?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/pro-components/chat/chat-sender/type.ts) | N
 auto-rise-with-keyboard | Boolean | false | 键盘弹起时自动顶起来输入框 | N
 disabled | Boolean | false | 是否禁用输入框 | N

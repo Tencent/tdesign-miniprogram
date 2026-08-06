@@ -18,7 +18,7 @@ export default class SideBarItem extends SuperComponent {
 
   relations: RelationsOptions = {
     '../side-bar/side-bar': {
-      type: 'parent',
+      type: 'ancestor',
       linked(parent) {
         this.parent = parent;
         this.updateActive(parent.data.value);

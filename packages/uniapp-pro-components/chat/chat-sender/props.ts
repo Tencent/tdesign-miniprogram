@@ -8,6 +8,8 @@ import type { TdChatSenderProps } from './type';
 export default {
   /** 默认键盘弹起不会把页面顶起来 */
   adjustPosition: Boolean,
+  /** 是否允许语音输入。为 true 时显示语音切换按钮，语音输入 UI 由开发者通过 speech 插槽自行提供 */
+  allowSpeech: Boolean,
   /** 附件列表属性 */
   attachmentsProps: {
     type: Object,
@@ -31,12 +33,12 @@ export default {
   /** 预设发送区渲染配置，用于灵活配置发送区的上传入口和发送按钮，支持自定义类型、顺序、样式 */
   renderPresets: {
     type: Array,
-    default: [{name: 'upload', presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'], status: ''},{ name: 'send', type: 'icon'}],
+    default: (): TdChatSenderProps['renderPresets'] => [{name: 'upload', presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'], status: ''},{ name: 'send', type: 'icon'}],
   },
   /** 透传给 Textarea 组件的属性，autosize数值单位为 rpx */
   textareaProps: {
     type: [Boolean, Object],
-    default: { autosize: { maxHeight: 264, minHeight: 48 } } as TdChatSenderProps['textareaProps'],
+    default: () => ({ autosize: { maxHeight: 264, minHeight: 48 } }) as TdChatSenderProps['textareaProps'],
   },
   /** 输入框的值 */
   value: {

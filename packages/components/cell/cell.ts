@@ -24,7 +24,7 @@ export default class Cell extends SuperComponent {
 
   relations: RelationsOptions = {
     '../cell-group/cell-group': {
-      type: 'parent',
+      type: 'ancestor',
     },
   };
 

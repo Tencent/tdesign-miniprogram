@@ -45,11 +45,11 @@ export default class FormItem extends SuperComponent {
     formRules: [],
     innerLabelAlign: '',
     innerLabelWidth: '',
-    form: {},
     colon: false,
     innerShowErrorMessage: true,
     innerContentAlign: '',
     contentStyle: '',
+    isLastChild: false,
   };
 
   observers = {
@@ -66,52 +66,52 @@ export default class FormItem extends SuperComponent {
 
   relations: RelationsOptions = {
     '../form/form': {
-      type: 'parent',
-      linked(target) {
-        target.registerChild(this);
-        this.form = target;
-        const { globalConfig } = this.data;
-        const { requiredMark, labelAlign, labelWidth, showErrorMessage } = this.properties;
-        const formRules = target.data.rules?.[this.properties.name];
-        const isRequired = formRules?.some((rule) => rule.required);
-
-        const { contentAlign } = this.properties;
-        const innerContentAlign = contentAlign || target.data.contentAlign || '';
-
-        this.setData({
-          formRules: formRules || [],
-          colon: target.data.colon,
-          innerLabelAlign: labelAlign || target.data.labelAlign,
-          innerLabelWidth: normalizeLabelWidth(labelWidth || target.data.labelWidth),
-          innerContentAlign,
-          contentStyle: innerContentAlign ? `text-align: ${innerContentAlign}` : '',
-          innerRequiredMark: requiredMark ?? target.data.requiredMark ?? globalConfig.requiredMark ?? isRequired,
-          innerShowErrorMessage:
-            typeof showErrorMessage === 'boolean' ? showErrorMessage : target.properties.showErrorMessage,
-          requiredMarkPosition: target.data.requiredMarkPosition || globalConfig.requiredMarkPosition || 'left',
-        });
-      },
-      unlinked() {
-        if (this.form) {
-          this.form.unregisterChild(this.properties.name);
-        }
+      type: 'ancestor',
+      // 关联建立时主动向父组件同步一次配置
+      linked() {
+        this.syncFromParent();
       },
     },
   };
 
   lifetimes = {
     ready() {
-      this.initFormItem();
-    },
-    /* istanbul ignore next */
-    detached() {
-      if (this.form) {
-        this.form.unregisterChild(this.properties.name);
-      }
+      // Skyline/glass-easel 下 relations.linked 可能未触发，ready 时再主动同步一次兜底
+      this.syncFromParent();
     },
   };
 
   methods = {
+    // 从父组件 t-form 同步配置（父 -> 子），集中处理「form-item 自身属性优先级高于 Form」的逻辑。
+    // 父组件引用统一通过 relations 注入的 $parent（基于 getRelationNodes）获取，兼容 Skyline 下 linked 仅触发一次的问题
+    syncFromParent() {
+      const parent = this.$parent;
+      if (!parent) return;
+
+      const { globalConfig } = this.data;
+      const { requiredMark, labelAlign, labelWidth, showErrorMessage, contentAlign, name } = this.properties;
+      const parentData = parent.data;
+
+      const formRules = parentData.rules?.[name];
+      const isRequired = formRules?.some((rule) => rule.required);
+      const innerContentAlign = contentAlign || parentData.contentAlign || '';
+
+      this.setData({
+        formRules: formRules || [],
+        colon: parentData.colon,
+        innerLabelAlign: labelAlign || parentData.labelAlign,
+        innerLabelWidth: normalizeLabelWidth(labelWidth || parentData.labelWidth),
+        innerContentAlign,
+        contentStyle: innerContentAlign ? `text-align: ${innerContentAlign}` : '',
+        innerRequiredMark: requiredMark ?? parentData.requiredMark ?? globalConfig.requiredMark ?? isRequired,
+        innerShowErrorMessage: typeof showErrorMessage === 'boolean' ? showErrorMessage : parentData.showErrorMessage,
+        requiredMarkPosition: parentData.requiredMarkPosition || globalConfig.requiredMarkPosition || 'left',
+      });
+
+      // 父组件可能在子组件之后才完成数据准备，这里主动同步初始值，避免 Skyline 下初始值丢失
+      this.setInitialValue();
+    },
+
     calcErrorClasses(errorList = this.data.errorList) {
       if (!this.data.innerShowErrorMessage) return '';
       if (!errorList || errorList.length === 0) return '';
@@ -135,24 +135,21 @@ export default class FormItem extends SuperComponent {
         });
     },
 
-    // 初始化表单项
-    initFormItem() {
-      this.setInitialValue();
-    },
-
     // 设置初始值
     setInitialValue() {
       const { name } = this.properties;
-      if (name && this.form) {
-        const data = this.form.properties.data || {};
+      const parent = this.$parent;
+      if (name && parent) {
+        const data = parent.properties.data || {};
         this.initialValue = data[name];
       }
     },
 
     // 获取表单数据
     getFormData() {
-      if (this.form) {
-        return this.form.properties.data || {};
+      const parent = this.$parent;
+      if (parent) {
+        return parent.properties.data || {};
       }
       return {};
     },
@@ -160,8 +157,9 @@ export default class FormItem extends SuperComponent {
     // 获取当前值
     getValue() {
       const { name } = this.properties;
-      if (name && this.form) {
-        const data = this.form.properties.data || {};
+      const parent = this.$parent;
+      if (name && parent) {
+        const data = parent.properties.data || {};
         return data[name];
       }
       return undefined;
@@ -218,7 +216,7 @@ export default class FormItem extends SuperComponent {
     // 分析验证结果
     analysisValidateResult(results) {
       const { globalConfig } = this.data;
-      const errorMessage = (this.form && this.form.properties.errorMessage) || globalConfig.errorMessage;
+      const errorMessage = this.$parent?.properties.errorMessage || globalConfig.errorMessage;
       const labelName = this.properties.label || this.properties.name;
 
       const errorList = results

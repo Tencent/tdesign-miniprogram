@@ -32,7 +32,7 @@ export default class Indexes extends SuperComponent {
 
   relations: RelationsOptions = {
     '../indexes-anchor/indexes-anchor': {
-      type: 'child',
+      type: 'descendant',
     },
   };
 
