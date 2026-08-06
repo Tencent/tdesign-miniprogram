@@ -61,14 +61,14 @@
 </template>
 
 <script>
-import TToast from 'tdesign-uniapp/toast/toast.vue';
+import TToast from '@tdesign/uniapp/toast/toast.vue';
 
-import TChatActionbar from 'tdesign-uniapp-chat/chat-actionbar/chat-actionbar.vue';
-import TChatList from 'tdesign-uniapp-chat/chat-list/chat-list.vue';
-import TChatMessage from 'tdesign-uniapp-chat/chat-message/chat-message.vue';
-import TChatRecord from 'tdesign-uniapp-chat/chat-record/chat-record.vue';
-import TChatSender from 'tdesign-uniapp-chat/chat-sender/chat-sender.vue';
-import { TencentASRAdapter } from 'tdesign-uniapp-chat/chat-record/adapters/tencent-asr';
+import TChatActionbar from '@tdesign/uniapp-chat/chat-actionbar/chat-actionbar.vue';
+import TChatList from '@tdesign/uniapp-chat/chat-list/chat-list.vue';
+import TChatMessage from '@tdesign/uniapp-chat/chat-message/chat-message.vue';
+import TChatRecord from '@tdesign/uniapp-chat/chat-record/chat-record.vue';
+import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
+import { TencentASRAdapter } from '@tdesign/uniapp-chat/chat-record/adapters/tencent-asr';
 
 import { getNavigationBarHeight } from '../utils';
 

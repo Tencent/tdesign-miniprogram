@@ -11,6 +11,7 @@ const path = require('path');
 module.exports = function createUniappEslintConfig(rootDir) {
   const packagesDir = path.resolve(rootDir, '..');
   const uniappComponentsDir = path.join(packagesDir, 'uniapp-components');
+  const uniappChatComponentsDir = path.join(packagesDir, 'tdesign-uniapp-chat');
 
   return {
     root: true,
@@ -35,7 +36,10 @@ module.exports = function createUniappEslintConfig(rootDir) {
     settings: {
       'import/resolver': {
         alias: {
-          map: [['@tdesign/uniapp', path.join(uniappComponentsDir, '')]],
+          map: [
+            ['@tdesign/uniapp', path.join(uniappComponentsDir, '')],
+            ['@tdesign/uniapp-chat', path.join(uniappChatComponentsDir, '')],
+          ],
           extensions: ['.js', '.jsx', '.ts', '.tsx', '.vue', '.json', '.node'],
         },
       },
