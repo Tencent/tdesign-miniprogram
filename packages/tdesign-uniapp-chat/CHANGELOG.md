@@ -5,6 +5,17 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 0.3.0 `2026-08-06`
+
+### 🚀 Features
+
+- `ChatRecord`: 新增语音输入组件 @zydemail ([#4474](https://github.com/Tencent/tdesign-miniprogram/pull/4474))
+- `ChatSender`: 新增 `allowSpeech` 属性，表示是否允许语音输入 @zydemail ([#4474](https://github.com/Tencent/tdesign-miniprogram/pull/4474))
+
+### 🐞 Bug Fixes
+
+- `ChatMarkdown`: 修复 App 下粗体样式无法显示的问题 @novlan1 ([#4578](https://github.com/Tencent/tdesign-miniprogram/pull/4578))
+
 ## 🌈 0.2.4 `2026-06-12`
 
 ### 🚀 Features
