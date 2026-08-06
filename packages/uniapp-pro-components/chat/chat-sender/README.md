@@ -47,6 +47,7 @@ import TChatSender from '@tdesign/uniapp-chat/chat-sender/chat-sender.vue';
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
 adjust-position | Boolean | false | 默认键盘弹起不会把页面顶起来 | N
+allow-speech | Boolean | false | `0.11.0`。是否允许语音输入。为 true 时显示语音切换按钮，语音输入 UI 由开发者通过 speech 插槽自行提供 | N
 attachments-props | Object | - | 附件列表属性。TS 类型：`AttachmentsProps`，[Attachments API Documents](./attachments?tab=api)。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-pro-components/chat/chat-sender/type.ts) | N
 auto-rise-with-keyboard | Boolean | false | 键盘弹起时自动顶起来输入框 | N
 disabled | Boolean | false | 是否禁用输入框 | N
@@ -75,3 +76,12 @@ stop | `(value: string, context: { e: MouseEvent })` | 点击消息终止的回�
 update-value | `(value: boolean)` | 输入框值发生变化时触发
 update-visible | `(value: boolean)` | 上传面板可见性发生变化时触发
 upload-click | \- | 【实验】点击上传按钮时触发
+
+### ChatSender Slots
+
+名称 | 描述
+-- | --
+footer-prefix | 输入框底部左侧插槽，自定义输入框底部区域内容
+header | 输入框顶部插槽，自定义输入框顶部区域内容
+input-prefix | 输入框左侧插槽，自定义输入框左侧区域内容
+suffix | 输入框底部操作插槽，自定义输入框底部操作区域区域内容

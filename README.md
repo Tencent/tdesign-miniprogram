@@ -71,6 +71,8 @@ npm run dev
 
 打开[微信开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)，把 `_example` 目录添加进去就可以预览示例了。
 
+> ⚠️ 为保证 `_example` 示例小程序的正常运行，请使用已开通「微信同声传译」插件使用权限的小程序 AppID，若无法使用该插件，请在 `app.json` 文件中移除 `plugins` 配置，以免小程序无法正常运行。
+
 ## 基础库版本
 
 最低基础库版本`^2.6.5`
@@ -85,7 +87,18 @@ npm run dev
 
 有任何问题，建议通过 [Github issues](https://github.com/Tencent/tdesign-miniprogram/issues) 反馈或扫码加入用户微信群。
 
-<img src="https://raw.githubusercontent.com/Tencent/tdesign/main/packages/site-components/src/images/groups/wx-group.png" width="200" />
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/Tencent/tdesign/main/packages/site-components/src/images/groups/wx-group.png" width="200" /><br />
+      微信小程序
+    </td>
+    <td align="center">
+      <img src="https://raw.githubusercontent.com/Tencent/tdesign/main/packages/site-components/src/images/groups/uniapp-group.png" width="200" /><br />
+      Uniapp
+    </td>
+  </tr>
+</table>
 
 ## 开源协议
 

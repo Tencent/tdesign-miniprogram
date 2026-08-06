@@ -4,6 +4,17 @@ packages:
   - '!**/_tdesign*/**'
   - '!**/uni_modules/**'
 
+allowBuilds:
+  '@parcel/watcher': true
+  '@tdesign/uniapp': true
+  '@tdesign/uniapp-chat': true
+  core-js: true
+  core-js-pure: true
+  es5-ext: true
+  esbuild: true
+  fsevents: true
+  vue-demi: true
+
 catalog:
   '@babel/core': ^7.26.0
   '@babel/helper-module-imports': 7.22.5
@@ -167,7 +178,6 @@ catalogs:
   tdesign:
     '@tdesign/site-components': ^0.19.1
     '@tdesign/theme-generator': ^1.2.3
-    tdesign-icons-vue-next: ^0.4.4
     tdesign-publish-cli: ^0.0.12
   uni:
     '@dcloudio/types': ^3.4.28

@@ -11,6 +11,11 @@ const props: TdChatSenderProps = {
     type: Boolean,
     value: false,
   },
+  /** 是否允许语音输入。为 true 时显示语音切换按钮，语音输入 UI 由开发者通过 speech 插槽自行提供 */
+  allowSpeech: {
+    type: Boolean,
+    value: false,
+  },
   /** 附件列表属性 */
   attachmentsProps: {
     type: Object,
@@ -43,7 +48,10 @@ const props: TdChatSenderProps = {
   /** 预设发送区渲染配置，用于灵活配置发送区的上传入口和发送按钮，支持自定义类型、顺序、样式 */
   renderPresets: {
     type: Array,
-    value: [{name: 'upload', presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'], status: ''},{ name: 'send', type: 'icon'}],
+    value: [
+      { name: 'upload', presets: ['uploadCamera', 'uploadImage', 'uploadAttachment'], status: '' },
+      { name: 'send', type: 'icon' },
+    ],
   },
   /** 透传给 Textarea 组件的属性，autosize数值单位为 rpx */
   textareaProps: {

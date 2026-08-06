@@ -5,8 +5,11 @@ spline: chat
 isComponent: true
 ---
 
+<div style="background: #ecf2fe; padding: 14px 24px; border-radius: 3px; color: #555a65">
+  <div style="border-left: 2px solid #c6c6c6; padding: 0 8px;margin-bottom: 16px">该组件于 1.12.0 版本上线，请留意版本</div>
+  <div style="border-left: 2px solid #0052d9; padding: 0 8px">渲染框架支持情况：WebView</div>
+</div>
 
-<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-0%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-0%25-red" /></span>
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -57,6 +60,7 @@ isComponent: true
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 adjust-position | Boolean | false | 默认键盘弹起不会把页面顶起来 | N
+allow-speech | Boolean | false | `1.16.0`。是否允许语音输入。为 true 时显示语音切换按钮，语音输入 UI 由开发者通过 speech 插槽自行提供 | N
 attachments-props | Object | - | 附件列表属性。TS 类型：`AttachmentsProps`，[Attachments API Documents](./attachments?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/pro-components/chat/chat-sender/type.ts) | N
 auto-rise-with-keyboard | Boolean | false | 键盘弹起时自动顶起来输入框 | N
 disabled | Boolean | false | 是否禁用输入框 | N
@@ -83,3 +87,12 @@ keyboardheightchange | `(detail: {height: number, duration: number})` | 选择�
 send | `(value: string, context: {\| KeyboardEvent })` | 点击消息发送的回调方法
 stop | `(value: string)` | 点击消息终止的回调方法
 upload-click | \- | 【实验】点击上传按钮时触发
+
+### ChatSender Slots
+
+名称 | 描述
+-- | --
+footer-prefix | 输入框底部左侧插槽，自定义输入框底部区域内容
+header | 输入框顶部插槽，自定义输入框顶部区域内容
+input-prefix | 输入框左侧插槽，自定义输入框左侧区域内容
+suffix | 输入框底部操作插槽，自定义输入框底部操作区域区域内容

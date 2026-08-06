@@ -5,7 +5,11 @@ spline: data
 isComponent: true
 ---
 
-<span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20lines-61%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20functions-52%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20statements-61%25-red" /></span><span class="coverages-badge" style="margin-right: 10px"><img src="https://img.shields.io/badge/coverages%3A%20branches-95%25-blue" /></span>
+<div style="background: #ecf2fe; padding: 14px 24px; border-radius: 3px; color: #555a65">
+  <div style="border-left: 2px solid #c6c6c6; padding: 0 8px;margin-bottom: 16px">该组件于 1.10.0 版本上线，请留意版本</div>
+  <div style="border-left: 2px solid #0052d9; padding: 0 8px">渲染框架支持情况：WebView</div>
+</div>
+
 ## 引入
 
 全局引入，在 miniprogram 根目录下的`app.json`中配置，局部引入，在需要引入的页面或组件的`index.json`中配置。
@@ -55,18 +59,18 @@ isComponent: true
 {{ size }}
 
 
-### FAQ
+## FAQ
 
-#### 关于二维码纠错等级
+### 关于二维码纠错等级
 纠错等级也叫纠错率，就是指二维码可以被遮挡后还能正常扫描，而这个能被遮挡的最大面积就是纠错率。
 
 通常情况下二维码分为 4 个纠错级别：`L级` 可纠正约 `7%` 错误、`M级` 可纠正约 `15%` 错误、`Q级` 可纠正约 `25%` 错误、`H级` 可纠正约 `30%` 错误。但并不是所有位置都可以缺损，像最明显的三个角上的方框，直接影响初始定位。中间零散的部分是内容编码，可以容忍缺损。当二维码的内容编码携带信息比较少的时候，也就是链接比较短的时候，设置不同的纠错等级，生成的图片不会发生变化。
 有关更多信息，可参阅[官方文档](https://www.qrcode.com/zh/about/error_correction)的相关资料
 
-#### 生成的二维码无法扫描？
+### 生成的二维码无法扫描？
 若二维码无法扫码识别，可能是因为链接地址过长导致像素过于密集，可以通过 `size` 配置二维码更大，或者通过短链接服务等方式将链接变短。
 
-#### `hidden` 元素中，二维码绘制失败？
+### `hidden` 元素中，二维码绘制失败？
 当 QRCode 外层使用 `hidden` 包裹，可以通过 `wx:if` 或者重新调用组件的 `init` 方法，确保组件正常渲染（在 t-popup/t-dialog 中同理）。如下：[可参考代码片段](https://developers.weixin.qq.com/s/OUlsk0mq8x6V)
 
 ```html

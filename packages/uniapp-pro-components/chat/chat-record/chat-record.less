@@ -1,0 +1,383 @@
+@import '@tdesign/uniapp/common/style/base.less';
+
+@chat-record: ~'@{prefix}-chat-record';
+
+// ==================== 动画定义 ====================
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes wave {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  50% {
+    transform: scaleY(1.857);
+  }
+}
+
+// ==================== 变量配置 ====================
+
+// 录音按钮
+@chat-record-hook-padding: 24rpx 0;
+@chat-record-hook-font-size: 34rpx;
+@chat-record-hook-line-height: 42rpx;
+@chat-record-hook-letter-spacing: 1.02rpx;
+@chat-record-hook-border-radius: 16px;
+@chat-record-hook-bg: #f5f5f5;
+
+// 遮罩层
+@chat-record-mask-z-index: 5100;
+
+// 主容器
+@chat-record-main-z-index: 5101;
+
+// 气泡颜色
+@chat-record-color-blue: #2979ff;
+@chat-record-color-red: #ff5252;
+@chat-record-color-white: #ffffff;
+
+// 波浪条
+@chat-record-wave-height: 28rpx;
+@chat-record-wave-gap: 2rpx;
+@chat-record-wave-item-width: 8rpx;
+@chat-record-wave-item-height: 14rpx;
+@chat-record-wave-item-radius: 90rpx;
+
+// 底部操作区
+@chat-record-footer-height: 260rpx;
+@chat-record-tips-font-size: 28rpx;
+@chat-record-tips-line-height: 44rpx;
+
+// 全宽录音大按钮
+@chat-record-main-btn-bg-record: #2979ff;
+@chat-record-main-btn-bg-cancel: #ff5252;
+
+// 确认按钮区域
+@chat-record-confirm-bottom: 120rpx;
+@chat-record-confirm-height: 300rpx;
+@chat-record-confirm-padding: 20rpx 48rpx 40rpx;
+@chat-record-cancel-icon-size: 144rpx;
+@chat-record-cancel-icon-margin: 16rpx;
+@chat-record-cancel-text-font-size: 24rpx;
+@chat-record-cancel-text-line-height: 40rpx;
+@chat-record-send-btn-width: 224rpx;
+@chat-record-send-btn-height: 144rpx;
+@chat-record-send-btn-radius: 1998rpx;
+@chat-record-send-btn-bg: #e0e0e0;
+@chat-record-send-btn-bg-active: #b0b0b0;
+@chat-record-send-btn-font-size: 28rpx;
+@chat-record-send-btn-line-height: 44rpx;
+
+// 过渡动画
+@chat-record-transition-ease: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+@chat-record-transition-fast: 0.15s ease;
+@chat-record-transition-opacity: 0.25s linear;
+
+// ==================== 主容器 ====================
+
+.@{chat-record} {
+  // 录音按钮
+  &-hook {
+    width: 100%;
+    padding: @chat-record-hook-padding;
+    color: rgba(0, 0, 0, 0.9);
+    text-align: center;
+    font-size: @chat-record-hook-font-size;
+    font-weight: 500;
+    line-height: @chat-record-hook-line-height;
+    letter-spacing: @chat-record-hook-letter-spacing;
+    border-radius: @chat-record-hook-border-radius;
+    background: @chat-record-hook-bg;
+  }
+
+  // ==================== 遮罩层和主容器 ====================
+
+  &-audio-input {
+    &.show {
+      .@{chat-record}-audio-input__mask,
+      .@{chat-record}-audio-input__main {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    // 遮罩层：设计稿为纯白背景，遮住 chat-sender 上半部分输入区域
+    &__mask {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      min-height: 380rpx;
+      z-index: @chat-record-mask-z-index;
+      background: #ffffff;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity @chat-record-transition-opacity;
+    }
+
+    // 主容器
+    &__main {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 80rpx;
+      z-index: @chat-record-main-z-index;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity @chat-record-transition-opacity;
+    }
+
+    // 音量波浪条
+    .audio-wave {
+      display: flex;
+      align-items: center;
+      height: @chat-record-wave-height;
+      gap: @chat-record-wave-gap;
+
+      .wave-item {
+        width: @chat-record-wave-item-width;
+        height: @chat-record-wave-item-height;
+        background: @chat-record-color-white;
+        border-radius: @chat-record-wave-item-radius;
+        transform-origin: center;
+        will-change: transform;
+        animation: wave 1.5s infinite ease-in-out;
+      }
+
+      // LESS 循环生成 27 个波浪条的动画延迟
+      .generate-wave-delays(@n, @i: 1) when (@i =< @n) {
+        .wave-item:nth-child(@{i}) {
+          animation-delay: unit((-1.5 + (@i - 1) * 0.05), s);
+        }
+
+        .generate-wave-delays(@n, (@i + 1));
+      }
+
+      .generate-wave-delays(27);
+    }
+
+    // ==================== 底部操作区 ====================
+
+    &__ft {
+      position: relative;
+      width: 100%;
+      height: @chat-record-footer-height;
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      animation: fadeIn 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding-bottom: 48rpx;
+      box-sizing: border-box;
+
+      // 外部音波动画（独立于按钮）：宽度略小于按钮（按钮 calc(100% - 64rpx)，此处 calc(100% - 128rpx)）
+      // 波浪条均匀分布以"撑满"音波区域，视觉上比之前 280rpx 长很多
+      .audio-wave-outer {
+        justify-content: space-between;
+        width: calc(100% - 158rpx);
+        margin-bottom: 12rpx;
+        pointer-events: none;
+        // 覆盖基类的 gap（基类用 gap，此处用 space-between 自动分布）
+        gap: 0;
+
+        &.wave-blue .wave-item {
+          background: @chat-record-color-blue;
+        }
+
+        &.wave-red .wave-item {
+          background: @chat-record-color-red;
+        }
+      }
+
+      // 提示文字容器：固定高度，作为"滚轮"舞台
+      .tips-text {
+        position: relative;
+        width: 100%;
+        height: @chat-record-tips-line-height;
+        margin-bottom: 24rpx;
+        pointer-events: none;
+        overflow: hidden;
+
+        // 单条提示文字：绝对定位，通过 transform/opacity 做上下切换
+        .tips-item {
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          width: 100%;
+          text-align: center;
+          font-size: @chat-record-tips-font-size;
+          font-weight: 500;
+          line-height: @chat-record-tips-line-height;
+          will-change: transform, opacity;
+          transition:
+            transform @chat-record-transition-ease,
+            opacity @chat-record-transition-opacity;
+
+          // 默认状态（在视图中）
+          &.is-in {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+          }
+
+          // 向上滑出（被上一条挤上去）
+          &.is-out-up {
+            transform: translate3d(0, -100%, 0);
+            opacity: 0;
+          }
+
+          // 在下方等待（从下方将要滑入）
+          &.is-out-down {
+            transform: translate3d(0, 100%, 0);
+            opacity: 0;
+          }
+        }
+
+        // 文案颜色：发送态黑色 60%，取消态红色
+        .tips-send {
+          color: rgba(0, 0, 0, 0.6);
+        }
+
+        .tips-cancel {
+          color: @chat-record-color-red;
+        }
+      }
+
+      // 取消状态保留兼容（其它地方若有依赖）：不再统一改色，颜色由 .tips-cancel 自带
+      &.release_cancel .tips-text {
+        color: inherit;
+      }
+      .record-main-btn {
+        width: calc(100% - 64rpx);
+        height: 100rpx;
+        border-radius: @chat-record-hook-border-radius;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color @chat-record-transition-ease;
+
+        &.is-record {
+          background-color: @chat-record-main-btn-bg-record;
+        }
+
+        &.is-cancel {
+          background-color: @chat-record-main-btn-bg-cancel;
+        }
+      }
+      // ==================== 确认按钮区域 ====================
+
+      .confirm-actions {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: @chat-record-confirm-bottom;
+        height: @chat-record-confirm-height;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: @chat-record-confirm-padding;
+        z-index: 20;
+
+        .action-btn {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: flex-start;
+          transition: all @chat-record-transition-fast;
+
+          // Cancel 按钮
+          &.btn-cancel {
+            .icon-wrapper {
+              width: @chat-record-cancel-icon-size;
+              height: @chat-record-cancel-icon-size;
+              border-radius: 50%;
+              background-color: rgba(255, 255, 255, 0.2);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: @chat-record-cancel-icon-margin;
+              transition: background-color @chat-record-transition-fast;
+            }
+
+            .btn-text {
+              color: #fff;
+              text-align: center;
+              font-family: 'PingFang SC';
+              font-size: @chat-record-cancel-text-font-size;
+              font-weight: 600;
+              line-height: @chat-record-cancel-text-line-height;
+            }
+
+            &.active .icon-wrapper {
+              background-color: rgba(255, 255, 255, 0.4);
+            }
+          }
+
+          // Send 按钮
+          &.btn-send {
+            width: @chat-record-send-btn-width;
+            height: @chat-record-send-btn-height;
+            background-color: @chat-record-send-btn-bg;
+            border-radius: @chat-record-send-btn-radius;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color @chat-record-transition-fast;
+
+            text {
+              color: rgba(0, 0, 0, 0.9);
+              font-family: 'PingFang SC';
+              font-size: @chat-record-send-btn-font-size;
+              font-weight: 600;
+              line-height: @chat-record-send-btn-line-height;
+            }
+
+            &.active {
+              background-color: @chat-record-send-btn-bg-active;
+            }
+
+            // 禁用状态
+            &.disabled {
+              background-color: #999;
+              opacity: 0.5;
+              pointer-events: none;
+
+              text {
+                color: rgba(255, 255, 255, 0.6);
+              }
+            }
+          }
+
+          // Cancel 按钮禁用状态
+          &.btn-cancel.disabled {
+            opacity: 0.5;
+            pointer-events: none;
+
+            .icon-wrapper {
+              background-color: rgba(255, 255, 255, 0.1);
+            }
+
+            .btn-text {
+              color: rgba(255, 255, 255, 0.6);
+            }
+          }
+        }
+      }
+    }
+  }
+}

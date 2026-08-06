@@ -65,7 +65,7 @@
 import { prefix } from '../common/config';
 import { ChildrenMixin, RELATION_MAP } from '../common/relation';
 import { uniComponent } from '../common/src/index';
-import { nextTick } from '../common/utils';
+import { nextTick, coalesce } from '../common/utils';
 import tools from '../common/utils.wxs';
 import TIcon from '../icon/icon.vue';
 
@@ -325,7 +325,7 @@ export default {
         if (optionsCount > 500) {
           // 构建临时 Map（只在查找时构建，不缓存）
           const valueMap = new Map(formatOptions.map((item, idx) => [item[keys?.value], idx]));
-          index = valueMap.get(value) ?? -1;
+          index = coalesce(valueMap.get(value), -1);
         } else {
           index = formatOptions.findIndex((item) => item[keys?.value] === value);
         }

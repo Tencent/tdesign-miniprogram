@@ -43,6 +43,7 @@ module.exports = function createUniappEslintConfig(rootDir) {
     rules: {
       'vue/no-v-text-v-html-on-component': 0,
       'light/no-complex-style-class': 2,
+      'light/valid-shaohou': 0,
       'vue/component-name-in-template-casing': [
         2,
         'kebab-case',

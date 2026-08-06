@@ -11,7 +11,7 @@
       ' ' +
       formItemClass +
       '__' +
-      name +
+      dataNameKey +
       ' ' +
       errorClasses +
       ' ' +
@@ -86,7 +86,7 @@ import { isNumeric } from '../common/validator';
 import TIcon from '../icon/icon.vue';
 import usingConfig from '../mixins/using-config';
 
-import { validateRules, ValidateStatus } from './form-model';
+import { validateRules, ValidateStatus, getByPath } from './form-model';
 import props from './props';
 
 const parentComponentName = 'form';
@@ -160,6 +160,10 @@ export default {
         const contentAlign = this.dataContentAlign;
         return contentAlign ? `text-align: ${contentAlign}` : '';
       },
+      // 供 :class 拼接使用：name="pat.acctType" → "pat-acctType"，避免 CSS class 里的点号被当成选择器分隔符
+      dataNameKey() {
+        return String(this.name || '').replace(/\./g, '-');
+      },
     },
     watch: {},
     created() {
@@ -217,7 +221,8 @@ export default {
         const { name } = this;
         if (name && this.form) {
           const { formData } = this.form;
-          this.initialValue = formData[name];
+          // 支持 name="pat.acctType" 嵌套路径：走 form 表单层的 data 兜底（form-item 拿不到时回退到 form.data）
+          this.initialValue = coalesce(getByPath(formData, name), getByPath(this.form.data, name));
         }
       },
 
@@ -234,7 +239,7 @@ export default {
         const { name } = this;
         if (name && this.form) {
           const { formData } = this.form;
-          return formData[name];
+          return coalesce(getByPath(formData, name), getByPath(this.form.data, name));
         }
         return undefined;
       },
@@ -267,7 +272,7 @@ export default {
           return { [this.name]: true };
         }
 
-        const value = data[this.name];
+        const value = getByPath(data, this.name);
         const context = { formData: data, name: this.name };
         const results = await validateRules(value, filteredRules, context);
 

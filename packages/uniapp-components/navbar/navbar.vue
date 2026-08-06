@@ -171,13 +171,16 @@ export default {
 
         const iBoxStyle = {
           '--td-navbar-padding-top': `${windowInfo.statusBarHeight}px`,
-          '--td-navbar-right': `${windowInfo.windowWidth - iMenuRect.left}px`, // 导航栏右侧小程序胶囊按钮宽度
           '--td-navbar-left-max-width': `${iMenuRect.left}px`, // 左侧内容最大宽度
           '--td-navbar-capsule-height': `${iMenuRect.height}px`, // 胶囊高度
           '--td-navbar-capsule-width': `${iMenuRect.width}px`, // 胶囊宽度
           '--td-navbar-height': `${(iMenuRect.top - windowInfo.statusBarHeight) * 2 + iMenuRect.height}px`,
         };
-        // #ifdef H5 || APP
+        // #ifdef MP
+        iBoxStyle['--td-navbar-right'] = `${windowInfo.windowWidth - iMenuRect.left}px`; // 小程序端保留胶囊按钮宽度
+        // #endif
+        // #ifndef MP
+        iBoxStyle['--td-navbar-right'] = '0px'; // 非小程序端不预留胶囊按钮空间，对齐 mobile-vue
         delete iBoxStyle['--td-navbar-height'];
         // #endif
 

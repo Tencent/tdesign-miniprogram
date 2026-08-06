@@ -74,9 +74,13 @@
     box-sizing: content-box;
   }
 
-  &__left {
+  &__left,
+  &__right {
     position: relative;
     box-sizing: border-box;
+  }
+
+  &__left {
     max-width: var(--td-navbar-left-max-width);
     overflow: hidden;
     display: flex;
@@ -91,6 +95,17 @@
     &--hide {
       opacity: 0;
     }
+  }
+
+  &__right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    margin-right: @spacer-1;
+    transition: opacity 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 
   &__capsule {

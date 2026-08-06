@@ -15,7 +15,7 @@ export default class Row extends SuperComponent {
 
   relations: RelationsOptions = {
     '../col/col': {
-      type: 'child',
+      type: 'descendant',
       linked(target) {
         const { gutter } = this.data;
         if (gutter) {

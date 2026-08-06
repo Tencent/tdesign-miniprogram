@@ -12,6 +12,7 @@ import { coalesce } from '../common/utils';
 import tools from '../common/utils.wxs';
 
 import props from './props';
+import { getByPath, setByPath } from '../form-item/form-model';
 
 const name = `${prefix}-form`;
 
@@ -83,7 +84,8 @@ export default {
       // 更新表单数据
       updateFormData(name, value) {
         const { formData } = this;
-        formData[name] = value;
+        // 支持 name="pat.acctType" 嵌套路径：按点号路径写值，自动补齐中转对象
+        setByPath(formData, name, value);
         this.formData = formData;
       },
 
@@ -230,7 +232,7 @@ export default {
             if (resetType === 'empty') {
               this.updateFormData(child.name, this.getEmptyValue(child.name));
             } else if (resetType === 'initial') {
-              this.updateFormData(child.name, initialData[child.name]);
+              this.updateFormData(child.name, getByPath(initialData, child.name));
             }
             child.resetField();
           });
@@ -265,7 +267,8 @@ export default {
       // 获取空值
       getEmptyValue(name) {
         const { formData } = this;
-        const currentValue = formData[name];
+        // 支持 name="pat.acctType" 嵌套路径
+        const currentValue = getByPath(formData, name);
 
         if (Array.isArray(currentValue)) {
           return [];

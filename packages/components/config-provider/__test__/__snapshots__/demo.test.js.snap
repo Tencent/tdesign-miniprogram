@@ -58,6 +58,27 @@ exports[`ConfigProvider ConfigProvider chat-en demo works fine 1`] = `
             "share": "share",
           },
         },
+        "chatRecord": Object {
+          "authSettingFail": "Failed to get recording permission settings",
+          "busyTip": "Recognizing, please wait...",
+          "cancelText": "Cancel",
+          "holdToTalk": "Hold to talk",
+          "missingPluginTip": "Missing voice recognition plugin WechatSI",
+          "openSettingFail": "Failed to open settings",
+          "recognizeFailTip": "Voice recognition failed, please try again",
+          "releaseToCancel": "Release to cancel",
+          "releaseToSend": "Release to send, swipe up to cancel",
+          "requestAuth": "Please authorize microphone permission",
+          "sendText": "Send",
+          "systemMicContent": "Detected that the phone system has disabled the microphone permission for \\"WeChat\\".
+
+Please enable it in system settings:
+- iOS: Settings > WeChat > Microphone
+- Android: Settings > App Management > WeChat > Permissions > Microphone
+
+After enabling, return to the Mini Program and try again.",
+          "systemMicTitle": "Cannot use microphone",
+        },
         "chatSender": Object {
           "placeholder": "please enter message...",
           "sendText": "send",
@@ -75,7 +96,7 @@ exports[`ConfigProvider ConfigProvider chat-en demo works fine 1`] = `
           "confirm": "Confirm",
           "dateLabel": "",
           "dayjsLocale": "en",
-          "format": "YYYY-MM-DD",
+          "format": "YYYY-MM-DD HH:mm:ss",
           "hourLabel": "",
           "minuteLabel": "",
           "monthLabel": "",
@@ -168,7 +189,12 @@ exports[`ConfigProvider ConfigProvider chat-en demo works fine 1`] = `
           "newsAriaLabel": "There is new news",
         },
         "table": Object {
+          "clearFilterResultButtonText": "Clear",
+          "confirmText": "Confirm",
           "empty": "Empty Data",
+          "pullUpLoadingText": "Loading...",
+          "resetText": "Reset",
+          "searchResultText": "Search \\"{result}\\". Found no items. | Search \\"{result}\\". Found 1 item. | Search \\"{result}\\". Found {count} items.",
         },
         "typography": Object {
           "collapseText": "collapse",
@@ -335,6 +361,27 @@ exports[`ConfigProvider ConfigProvider upload-en demo works fine 1`] = `
             "share": "share",
           },
         },
+        "chatRecord": Object {
+          "authSettingFail": "Failed to get recording permission settings",
+          "busyTip": "Recognizing, please wait...",
+          "cancelText": "Cancel",
+          "holdToTalk": "Hold to talk",
+          "missingPluginTip": "Missing voice recognition plugin WechatSI",
+          "openSettingFail": "Failed to open settings",
+          "recognizeFailTip": "Voice recognition failed, please try again",
+          "releaseToCancel": "Release to cancel",
+          "releaseToSend": "Release to send, swipe up to cancel",
+          "requestAuth": "Please authorize microphone permission",
+          "sendText": "Send",
+          "systemMicContent": "Detected that the phone system has disabled the microphone permission for \\"WeChat\\".
+
+Please enable it in system settings:
+- iOS: Settings > WeChat > Microphone
+- Android: Settings > App Management > WeChat > Permissions > Microphone
+
+After enabling, return to the Mini Program and try again.",
+          "systemMicTitle": "Cannot use microphone",
+        },
         "chatSender": Object {
           "placeholder": "please enter message...",
           "sendText": "send",
@@ -352,7 +399,7 @@ exports[`ConfigProvider ConfigProvider upload-en demo works fine 1`] = `
           "confirm": "Confirm",
           "dateLabel": "",
           "dayjsLocale": "en",
-          "format": "YYYY-MM-DD",
+          "format": "YYYY-MM-DD HH:mm:ss",
           "hourLabel": "",
           "minuteLabel": "",
           "monthLabel": "",
@@ -445,7 +492,12 @@ exports[`ConfigProvider ConfigProvider upload-en demo works fine 1`] = `
           "newsAriaLabel": "There is new news",
         },
         "table": Object {
+          "clearFilterResultButtonText": "Clear",
+          "confirmText": "Confirm",
           "empty": "Empty Data",
+          "pullUpLoadingText": "Loading...",
+          "resetText": "Reset",
+          "searchResultText": "Search \\"{result}\\". Found no items. | Search \\"{result}\\". Found 1 item. | Search \\"{result}\\". Found {count} items.",
         },
         "typography": Object {
           "collapseText": "collapse",

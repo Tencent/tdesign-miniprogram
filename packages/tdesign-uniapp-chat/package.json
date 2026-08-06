@@ -1,6 +1,6 @@
 {
   "name": "@tdesign/uniapp-chat",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "id": "tdesign-uniapp-chat",
   "title": "tdesign-uniapp-chat",
   "description": "TDesign Chat Component for Uniapp",
@@ -57,6 +57,11 @@
       "types": "./dist/types/chat-message.d.ts",
       "import": "./dist/chat-message/chat-message.vue",
       "default": "./dist/chat-message/chat-message.vue"
+    },
+    "./chat-record/chat-record.vue": {
+      "types": "./dist/types/chat-record.d.ts",
+      "import": "./dist/chat-record/chat-record.vue",
+      "default": "./dist/chat-record/chat-record.vue"
     },
     "./chat-sender/chat-sender.vue": {
       "types": "./dist/types/chat-sender.d.ts",

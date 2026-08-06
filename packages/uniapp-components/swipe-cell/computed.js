@@ -70,8 +70,7 @@ function swipeMove(_offset = 0) {
   const { state } = this;
   state.offset = range(_offset, -state.rightWidth, +state.leftWidth);
   const transform = `translate3d(${state.offset}px, 0, 0)`;
-  // const transition = state.dragging ? 'none' : 'transform .6s cubic-bezier(0.18, 0.89, 0.32, 1)';
-  const transition = 'transform .6s cubic-bezier(0.18, 0.89, 0.32, 1)';
+  const transition = state.dragging ? 'none' : 'transform .6s cubic-bezier(0.18, 0.89, 0.32, 1)';
 
   this.wrapperStyle = _._style({
     '-webkit-transform': transform,

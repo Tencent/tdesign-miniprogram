@@ -32,7 +32,7 @@ export default class Swiper extends SuperComponent {
 
   relations: RelationsOptions = {
     '../swiper-nav/swiper-nav': {
-      type: 'child',
+      type: 'descendant',
     },
   };
 
