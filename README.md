@@ -71,6 +71,8 @@ npm run dev
 
 打开[微信开发者工具](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html)，把 `_example` 目录添加进去就可以预览示例了。
 
+> ⚠️ 为保证 `_example` 示例小程序的正常运行，请使用已开通「微信同声传译」插件使用权限的小程序 AppID，若无法使用该插件，请在 `app.json` 文件中移除 `plugins` 配置，以免小程序无法正常运行。
+
 ## 基础库版本
 
 最低基础库版本`^2.6.5`
