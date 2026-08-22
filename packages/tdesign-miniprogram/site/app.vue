@@ -2,7 +2,6 @@
   <td-doc-layout>
     <td-header ref="tdHeader" slot="header">
       <div slot="search" style="display: flex; align-items: center">
-        <td-ai-button style="margin-right: 8px" framework="miniprogram" :demoRequestBody="demoRequestBody" />
         <td-doc-search ref="tdDocSearch" />
       </div>
     </td-header>
