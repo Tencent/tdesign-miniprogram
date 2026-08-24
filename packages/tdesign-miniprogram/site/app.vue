@@ -43,16 +43,11 @@ const docsMap = {
   en: sortDocs(enDocs),
 };
 
-const demoRequestBody = JSON.stringify({
-  files: {},
-});
-
 export default defineComponent({
   data() {
     return {
       docType: '',
       loaded: false,
-      demoRequestBody,
     };
   },
 
@@ -100,9 +95,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style lang="less">
-#webchat-sdk-iframe {
-  z-index: 99999;
-}
-</style>
