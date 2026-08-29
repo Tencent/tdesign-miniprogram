@@ -67,4 +67,31 @@ describe('fab', () => {
 
     expect(fn).toHaveBeenCalled();
   });
+
+  it(`fab :collapsible`, async () => {
+    const fn = jest.fn();
+    const id = simulate.load({
+      template: `<t-fab class="fab" text="base" collapsible collapse-duration="{{50}}" bind:click="handleClick"></t-fab>`,
+      methods: {
+        handleClick: fn,
+      },
+      usingComponents: {
+        't-fab': fab,
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    await simulate.sleep(60);
+    expect(comp.querySelector('.fab >>> .t-fab__collapsed')).toBeTruthy();
+
+    comp.querySelector('.fab >>> .t-fab__collapsed').dispatchEvent('tap');
+    await simulate.sleep(10);
+    expect(fn).not.toHaveBeenCalled();
+    expect(comp.querySelector('.fab >>> .t-button')).toBeTruthy();
+
+    comp.querySelector('.fab >>> .t-button').dispatchEvent('tap');
+    await simulate.sleep(10);
+    expect(fn).toHaveBeenCalled();
+  });
 });
