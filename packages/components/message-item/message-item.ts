@@ -94,7 +94,7 @@ export default class Message extends SuperComponent {
       this.memoInitialData();
     },
     detached() {
-      this.clearMessageAnimation();
+      this.reset();
     },
   };
 

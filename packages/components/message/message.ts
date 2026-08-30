@@ -110,7 +110,7 @@ export default class Message extends SuperComponent {
       () => {
         const offsetHeight = this.getOffsetHeight();
         const instance = this.showMessageItem(msgObj, msgObj.id, offsetHeight);
-        if (this.instances) {
+        if (instance) {
           this.instances.push(instance);
           this.index += 1;
         }
@@ -146,11 +146,11 @@ export default class Message extends SuperComponent {
   showMessageItem(options: MessageProps, id: string, offsetHeight: number) {
     const instance = this.selectComponent(`#${id}`);
     if (instance) {
+      instance.onHide = () => {
+        this.close(id);
+      };
       instance.resetData(() => {
         instance.setData(options, instance.show.bind(instance, offsetHeight));
-        instance.onHide = () => {
-          this.close(id);
-        };
       });
 
       return instance;
@@ -183,11 +183,8 @@ export default class Message extends SuperComponent {
    * 移除全部消息
    */
   hideAll() {
-    // 消息移除后也会移除instance，下标不用增加，直至全部删除
-    for (let i = 0; i < this.instances.length; ) {
-      const instance = this.instances[i];
-      instance.hide();
-    }
+    // 使用快照，避免依赖子实例在 hide 回调中同步修改 instances。
+    [...this.instances].forEach((instance) => instance?.hide());
   }
 
   /**
