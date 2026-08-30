@@ -1,0 +1,9 @@
+/* 液态玻璃示例需要一个有内容的背景才能看到玻璃效果 */
+.demo-section {
+  height: 200rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: 32rpx;
+  box-sizing: border-box;
+}
