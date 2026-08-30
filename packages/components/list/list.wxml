@@ -1,0 +1,23 @@
+<wxs src="../common/utils.wxs" module="_" />
+
+<view style="{{_._style([style, customStyle])}}" class="class {{prefix}}-class {{classPrefix}}">
+  <view wx:if="{{header}}">{{header}}</view>
+  <slot name="header" />
+
+  <slot />
+
+  <view class="{{classPrefix}}__loading--wrapper" bind:tap="onLoadMore">
+    <t-loading
+      wx:if="{{asyncLoading === 'loading' || asyncLoading === 'load-more'}}"
+      indicator="{{asyncLoading === 'loading'}}"
+      text="{{asyncLoading === 'loading' ? globalConfig.loading : globalConfig.loadingMoreText}}"
+      t-class="{{classPrefix}}__loading {{prefix}}-class-loading"
+    />
+    <block wx:else>
+      <slot name="asyncLoading" />
+    </block>
+  </view>
+
+  <view wx:if="{{footer}}">{{footer}}</view>
+  <slot name="footer" />
+</view>
