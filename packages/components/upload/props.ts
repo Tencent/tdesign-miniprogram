@@ -11,7 +11,7 @@ const props: TdUploadProps = {
     type: Boolean,
     value: true,
   },
-  /** 添加按钮内容 */
+  /** 添加按钮内容。值为 slots 时，表示使用插槽渲染 */
   addContent: {
     type: String,
   },
