@@ -39,6 +39,15 @@ export interface TdChatContentMDOptions {
 }
 
 export interface TdChatMarkdownStreamingOptions {
+  /**
+   * 是否还有后续分片输出（流式输出中为 true，结束时为 false）
+   */
   hasNextChunk?: boolean;
+  /**
+   * 流式输出时是否补全/隐藏末尾未闭合的 markdown 语法（如链接、图片、加粗等），
+   * 避免渲染过程中暴露原始符号与 URL；默认关闭以保持原有渲染效果
+   * @default false
+   */
+  completeSyntax?: boolean;
   tail?: boolean | { content?: string };
 }
