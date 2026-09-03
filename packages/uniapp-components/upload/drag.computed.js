@@ -113,7 +113,6 @@ export function longPress(event, index) {
 }
 
 export function touchMove(event, index) {
-  // const ins = event.instance;
   const st = this.getState();
   const _ = st.dragBaseData;
 
@@ -121,6 +120,13 @@ export function touchMove(event, index) {
   if (!mTouch) return;
 
   if (!st.dragging) return;
+
+  // 仅在真正拖拽时阻止默认滚动（H5 端）。
+  // 不能像旧实现那样在模板上挂 `.prevent`：它会在未拖拽的点击（如删除按钮）时
+  // preventDefault touchmove，导致 H5 不再派发后续 click，删除/预览事件全部失效。
+  if (event.cancelable !== false && typeof event.preventDefault === 'function') {
+    event.preventDefault();
+  }
 
   // 如果不是同一个触发点则返回
   if (st.sId !== mTouch.identifier) return;
