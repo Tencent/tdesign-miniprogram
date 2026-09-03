@@ -114,7 +114,8 @@
             :data-index="index"
             @longpress="(e) => parseEventDynamicCode(e, 'longPress', index)"
             @touchmove.stop.prevent="(e) => parseEventDynamicCode(e, dragging ? 'touchMove' : '', index)"
-            @touchend.stop.prevent="(e) => parseEventDynamicCode(e, dragging ? 'touchEnd' : '', index)"
+            @touchend.stop.prevent="onItemTouchEnd($event, { file, index })"
+            @touchstart="onItemTouchStart($event)"
           >
             <view
               :class="
@@ -178,8 +179,8 @@
                 aria-role="button"
                 aria-label="删除"
                 @click.stop="(e) => onDelete(e, { index })"
-                @touchstart="onDeleteTapStart($event)"
-                @touchend="onDeleteTapEnd($event, { index })"
+                @touchstart.stop="onDeleteTapStart($event)"
+                @touchend.stop="onDeleteTapEnd($event, { index })"
               >
                 <t-icon :t-class="classPrefix + '__list-item-delete'" name="delete" />
               </view>
@@ -363,7 +364,8 @@
             :data-index="index"
             @longpress="(e) => parseEventDynamicCode(e, 'longPress', index)"
             @touchmove.stop.prevent="(e) => parseEventDynamicCode(e, dragging ? 'touchMove' : '', index)"
-            @touchend.stop.prevent="(e) => parseEventDynamicCode(e, dragging ? 'touchEnd' : '', index)"
+            @touchend.stop.prevent="onItemTouchEnd($event, { file, index })"
+            @touchstart="onItemTouchStart($event)"
           >
             <t-grid-item
               :t-class="classPrefix + '__grid ' + classPrefix + '__grid-file'"
@@ -499,8 +501,8 @@
                   aria-role="button"
                   aria-label="删除"
                   @click.stop="(e) => onDelete(e, { index })"
-                  @touchstart="onDeleteTapStart($event)"
-                  @touchend="onDeleteTapEnd($event, { index })"
+                  @touchstart.stop="onDeleteTapStart($event)"
+                  @touchend.stop="onDeleteTapEnd($event, { index })"
                 >
                   <t-icon name="close" size="32rpx" color="#fff" />
                 </view>
@@ -765,30 +767,11 @@ export default {
         this.$emit('remove', { index, file: delFile });
       },
 
-      /**
-       * H5 下拖拽项外层绑定 @touchmove/@touchend 的 .prevent，
-       * 浏览器不会为触摸序列派发后续 click，导致删除按钮的 @click 失效。
-       * 这里用 touchstart/touchend 手动做一次"点击判定"：
-       * 位移小于阈值视为点击删除，否则（滑动/长按拖动）交给拖拽逻辑处理。
-       * 小程序端 @click(tap) 正常派发，无需该逻辑，直接空转。
-       */
       onDeleteTapStart(e) {
-        let parsed = false;
-        // #ifndef H5
-        parsed = true;
-        // #endif
-        if (parsed) return;
-
         const t = e && e.changedTouches && e.changedTouches[0];
         this._deleteTapStart = t ? { x: t.clientX, y: t.clientY } : null;
       },
       onDeleteTapEnd(e, { index }) {
-        let parsed = false;
-        // #ifndef H5
-        parsed = true;
-        // #endif
-        if (parsed) return;
-
         const start = this._deleteTapStart;
         this._deleteTapStart = null;
         const t = e && e.changedTouches && e.changedTouches[0];
@@ -796,6 +779,62 @@ export default {
         // 位移超过阈值说明是滑动/拖动起始于删除按钮，不触发删除
         if (Math.abs(t.clientX - start.x) > 12 || Math.abs(t.clientY - start.y) > 12) return;
         this.deleteHandle(index);
+      },
+
+      /**
+       * 拖拽项（非删除按钮区域）触摸起点记录
+       * H5 下用于 tap 判定（短按是否要触发预览）；
+       * 小程序端 @click(tap) 正常派发，无需该逻辑。
+       */
+      onItemTouchStart(e) {
+        let parsed = false;
+        // #ifndef H5
+        parsed = true;
+        // #endif
+        if (parsed) return;
+
+        const t = e && e.changedTouches && e.changedTouches[0];
+        if (!t) return;
+        const { target } = t;
+        const cp = this.classPrefix || '';
+        // 触摸起点是否落在删除按钮区域（list: __list-item-action / grid: __close-btn）
+        const inDelete = !!(target && target.closest && target.closest(`.${cp}__list-item-action,.${cp}__close-btn`));
+        this._dragItemTapStart = { x: t.clientX, y: t.clientY, inDelete };
+      },
+
+      /**
+       * 拖拽项（非删除按钮区域）touchend 兜底：
+       * - H5 下若触摸是 tap（位移小且不在删除按钮）→ 直接调 onPreview 触发预览（避免 click 被 .prevent 抑制）
+       * - 否则（非 tap / 在删除按钮）走原有拖拽 dragEnd 逻辑
+       * - 小程序端走原 dragEnd（@click 已经正常）
+       */
+      onItemTouchEnd(e, { file, index }) {
+        // 小程序端：保留原 dragEnd handler
+        let dragEndHandled = false;
+        // #ifndef H5
+        dragEndHandled = true;
+        // #endif
+        if (dragEndHandled) {
+          parseEventDynamicCode.call(this, e, this.dragging ? 'touchEnd' : '', index);
+          return;
+        }
+
+        // H5 端：tap 判定 → 触发预览 / 走 dragEnd
+        const start = this._dragItemTapStart;
+        this._dragItemTapStart = null;
+        const t = e && e.changedTouches && e.changedTouches[0];
+        let isTap = false;
+        if (start && t) {
+          if (Math.abs(t.clientX - start.x) <= 12 && Math.abs(t.clientY - start.y) <= 12) {
+            isTap = true;
+          }
+        }
+        if (isTap && start && !start.inDelete && file) {
+          this.onPreview(e, { file, index });
+          return;
+        }
+        // 非 tap 或在删除按钮区域：走原有拖拽 dragEnd
+        parseEventDynamicCode.call(this, e, this.dragging ? 'touchEnd' : '', index);
       },
 
       updateGrid() {
@@ -999,6 +1038,8 @@ export default {
 
       onPreviewMedia({ index: current }) {
         const sources = this.getPreviewMediaSources();
+        if (typeof uni.previewMedia !== 'function') return;
+
         uni.previewMedia({
           sources,
           current,
