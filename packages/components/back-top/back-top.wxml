@@ -4,7 +4,7 @@
 <view
   style="{{_._style([style, customStyle])}}"
   class="class {{prefix}}-class {{_.cls(classPrefix, [['fixed', fixed], theme])}}"
-  bindtap="toTop"
+  catch:tap="toTop"
   aria-role="button"
   hidden="{{hidden}}"
 >
