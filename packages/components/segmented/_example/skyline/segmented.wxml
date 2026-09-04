@@ -1,0 +1,18 @@
+<view class="skyline">
+  <t-navbar class="block demo-navbar" title="Segmented" left-arrow />
+  <scroll-view scroll-y type="list" class="scroll-view">
+    <view class="demo">
+      <view class="demo-title">Segmented 分段控制器</view>
+      <view class="demo-desc">用于展示多个选项并允许用户选择其中单个选项。</view>
+      <t-demo title="01 组件类型" desc="基础">
+        <base />
+      </t-demo>
+      <t-demo desc="自适应宽度">
+        <block-demo />
+      </t-demo>
+      <t-demo title="02 组件状态" desc="控制器禁用态">
+        <disabled />
+      </t-demo>
+    </view>
+  </scroll-view>
+</view>

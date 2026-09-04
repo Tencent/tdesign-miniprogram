@@ -97,6 +97,7 @@
     "pages/config-provider/config-provider",
     "pages/form/form",
     "pages/segmented/segmented",
+    "pages/segmented/skyline/segmented",
     "pages/paragraph/paragraph",
     "pages/chat-message/chat-message"
   ],
