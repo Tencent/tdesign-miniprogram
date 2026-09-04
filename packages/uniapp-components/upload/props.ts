@@ -11,7 +11,7 @@ export default {
     type: Boolean,
     default: true,
   },
-  /** 添加按钮内容 */
+  /** 添加按钮内容。值为 slot 时，表示使用插槽渲染 */
   addContent: {
     type: String,
   },
