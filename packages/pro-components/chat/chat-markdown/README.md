@@ -93,7 +93,7 @@ style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 content | String | - | 必需。markdown 内容文本 | Y
 options | Object | { gfm: true, pedantic: false, breaks: true } | Markdown 解析器基础配置。TS 类型：`TdChatContentMDOptions ` `interface TdChatContentMDOptions {gfm?: boolean; pedantic?: boolean; smartLists?: boolean; breaks?: boolean}`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/pro-components/chat/chat-markdown/type.ts) | N
-streaming | Object | - | 流式输出配置，控制尾部光标的显示与隐藏。尾部光标配置，true 使用默认光标 ▋，传对象可自定义光标字符。TS 类型：`TdChatMarkdownStreamingOptions` ` interface TdChatMarkdownStreamingOptions { hasNextChunk?: boolean; tail?: boolean \| { content?: string } }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/pro-components/chat/chat-markdown/type.ts) | N
+streaming | Object | - | 流式输出配置：`hasNextChunk` 表示是否还有后续分片（输出中为 true，结束时 false）；`completeSyntax`（默认 false，保持原有渲染效果）设为 true 时，流式中会对末尾未闭合的 markdown 语法（链接、图片、加粗、行内代码等）补全/隐藏，避免暴露原始符号与 URL；`tail` 控制尾部光标，true 使用默认光标 ▋，传对象可自定义光标字符。TS 类型：`TdChatMarkdownStreamingOptions` ` interface TdChatMarkdownStreamingOptions { hasNextChunk?: boolean; completeSyntax?: boolean; tail?: boolean \| { content?: string } }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/pro-components/chat/chat-markdown/type.ts) | N
 
 ### ChatMarkdown Events
 
