@@ -84,6 +84,8 @@ Open [WeChat Developer Tools](https://mp.weixin.qq.com/debug/wxadoc/dev/devtools
 
 Minimum base library version `^2.12.0`
 
+During development and debugging, it is recommended to select the latest stable debugging base library in WeChat Developer Tools to reduce console warnings or compatibility differences caused by different base library versions. Please include the actual base library version when reporting issues.
+
 ### Correspondence between component and basic library versions
 
 | 组件  | API    | 最低基础库 | 描述 |
