@@ -3,5 +3,5 @@
 
 <template
   is="{{draggable ? 'draggable' : 'view'}}"
-  data="{{prefix, classPrefix, style, customStyle, moveStyle, draggable, buttonData}}"
+  data="{{prefix, classPrefix, style, customStyle, moveStyle, collapsedStyle, draggable, buttonData, collapsible, collapsed}}"
 />
