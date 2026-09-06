@@ -28,7 +28,7 @@ jobs:
           ref: ${{ steps.comment-branch.outputs.head_ref }}
           repository: ${{ steps.comment-branch.outputs.head_repo_name_with_owner }}
 
-      - uses: pnpm/action-setup@v4
+      - uses: pnpm/action-setup@v6
 
       - uses: actions/setup-node@v6
         with:
