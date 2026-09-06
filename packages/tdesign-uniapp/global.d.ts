@@ -40,6 +40,7 @@ declare module 'vue' {
     TIndexesAnchor: typeof import('@tdesign/uniapp/indexes-anchor/indexes-anchor.vue').default;
     TInput: typeof import('@tdesign/uniapp/input/input.vue').default;
     TLink: typeof import('@tdesign/uniapp/link/link.vue').default;
+    TList: typeof import('@tdesign/uniapp/list/list.vue').default;
     TLoading: typeof import('@tdesign/uniapp/loading/loading.vue').default;
     TMessage: typeof import('@tdesign/uniapp/message/message.vue').default;
     TNavbar: typeof import('@tdesign/uniapp/navbar/navbar.vue').default;

@@ -470,6 +470,15 @@ export const docs = [
         component: () => import('@/image-viewer/README.md'),
       },
       {
+        title: 'List 列表',
+        titleEn: 'List',
+        name: 'list',
+        meta: { docType: 'data' },
+        path: '/miniprogram/components/list',
+        component: () => import('@/list/README.md'),
+        componentEn: () => import('@/list/README.en-US.md'),
+      },
+      {
         title: 'Progress 进度条',
         titleEn: 'Progress',
         name: 'progress',
