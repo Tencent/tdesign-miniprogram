@@ -13,7 +13,7 @@ Page({
     ],
     selectedSegment: -1, // 初始不选中任何分段
     content: '',
-    streaming: { hasNextChunk: false, tail: true },
+    streaming: { hasNextChunk: false, tail: true, completeSyntax: true },
   },
 
   onLoad() {
@@ -51,7 +51,7 @@ Page({
 
       this.setData({
         selectedSegment: segmentValue,
-        streaming: { hasNextChunk: true, tail: true },
+        streaming: { hasNextChunk: true, tail: true, completeSyntax: true },
       });
 
       this._timer = setInterval(() => {
@@ -59,7 +59,7 @@ Page({
         const isDone = index >= markdownData.length;
         this.setData({
           content: markdownData.slice(0, index),
-          streaming: { hasNextChunk: !isDone, tail: true },
+          streaming: { hasNextChunk: !isDone, tail: true, completeSyntax: true },
         });
         if (isDone) {
           clearInterval(this._timer);

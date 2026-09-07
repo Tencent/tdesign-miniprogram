@@ -55,7 +55,9 @@
       <block wx:if="{{item.tokens && item.tokens.length}}">
         <chat-markdown-node nodes="{{item.tokens}}" generic:tail-component="tail-component" />
       </block>
-      <block wx:else> {{''+item.raw+''}} <tail-component wx:if="{{item.isTail}}" /> </block>
+      <block wx:else>
+        {{''+item.raw+''}} <tail-component wx:if="{{item.isTail}}" content="{{item.tailContent}}" />
+      </block>
     </view>
   </block>
   <block wx:elif="{{item.type==='strong'}}">
@@ -112,6 +114,7 @@
     >
       {{''+(item.text||item.raw)+''}}
     </view>
+    <tail-component wx:if="{{item.isTail}}" content="{{item.tailContent}}" />
   </block>
   <block wx:else>
     <view
