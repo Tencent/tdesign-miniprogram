@@ -136,12 +136,17 @@ export function restoreMaskedInlineCodes(tokens: any[], masks: InlineCodeMask[])
         const restored: any[] = [];
         let offset = 0;
         let match: InlineCodeMaskMatch | null = firstMask;
-        while (match) {
-          if (match.index > offset) {
-            restored.push({ type: 'text', raw: raw.slice(offset, match.index), text: raw.slice(offset, match.index) });
+        while (match !== null) {
+          const current: InlineCodeMaskMatch = match;
+          if (current.index > offset) {
+            restored.push({
+              type: 'text',
+              raw: raw.slice(offset, current.index),
+              text: raw.slice(offset, current.index),
+            });
           }
-          restored.push({ type: 'codespan', raw: match.mask.raw, text: match.mask.text });
-          offset = match.index + match.mask.marker.length;
+          restored.push({ type: 'codespan', raw: current.mask.raw, text: current.mask.text });
+          offset = current.index + current.mask.marker.length;
           match = findMask(raw, offset);
         }
         if (offset < raw.length) restored.push({ type: 'text', raw: raw.slice(offset), text: raw.slice(offset) });
@@ -180,13 +185,14 @@ export function hasLeakedInlineFormatting(tokens: any[]): boolean {
 
     if (hasCodeSpan && hasFormatting) return true;
 
-    return items.some((token) => {
+    return items.some((token): boolean => {
       if (token.tokens?.length && containsLeakedFormatting(token.tokens)) return true;
-      if (token.items?.some((item: any) => item.tokens?.length && containsLeakedFormatting(item.tokens))) return true;
+      if (token.items?.some((item: any): boolean => !!item.tokens?.length && containsLeakedFormatting(item.tokens)))
+        return true;
       if (token.type === 'table') {
         const rows = [...(token.header ? [token.header] : []), ...(token.rows || [])];
-        return rows.some((row: any[]) =>
-          row.some((cell: any) => cell.tokens?.length && containsLeakedFormatting(cell.tokens)),
+        return rows.some((row: any[]): boolean =>
+          row.some((cell: any): boolean => !!cell.tokens?.length && containsLeakedFormatting(cell.tokens)),
         );
       }
       return false;

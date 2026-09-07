@@ -27,37 +27,171 @@ function hasUnclosedCodeFence(markdown: string): boolean {
   return !!fence;
 }
 
-/** 隐藏未输完的代码围栏（代码块内的闭合围栏、行首的起始围栏，均为 1~2 个标记字符） */
+/** 隐藏未输完的 1~2 位代码围栏标记。 */
 function hidePartialFence(markdown: string): string {
   return markdown.replace(/(^|\n)[ \t]*[`~]{1,2}[ \t]*$/, '$1');
 }
 
-/** 补全未闭合的图片语法（![alt / ![alt] / ![alt](url）：整段隐藏，闭合后再渲染 */
-function closeImage(markdown: string): string | null {
-  const match = markdown.match(/!\[[^\n\]]*?(\]\([^)]*|\]|)$/);
-  if (!match || match.index === undefined) return null;
+function isEscaped(markdown: string, index: number): boolean {
+  let slashCount = 0;
+  for (let i = index - 1; i >= 0 && markdown[i] === '\\'; i -= 1) slashCount += 1;
+  return slashCount % 2 === 1;
+}
+
+interface BacktickRun {
+  index: number;
+  length: number;
+}
+
+/** 收集 fenced code block 外的未转义反引号片段。 */
+function getInlineCodeRuns(markdown: string): BacktickRun[] {
+  const runs: BacktickRun[] = [];
+  let fence: string | null = null;
+  let lineStart = 0;
+
+  while (lineStart < markdown.length) {
+    const newlineIndex = markdown.indexOf('\n', lineStart);
+    const lineEnd = newlineIndex === -1 ? markdown.length : newlineIndex;
+    const line = markdown.slice(lineStart, lineEnd);
+    const matchedFence = line.match(/^ {0,3}(`{3,}|~{3,})(.*)$/);
+
+    if (fence) {
+      if (
+        matchedFence &&
+        matchedFence[1][0] === fence[0] &&
+        matchedFence[1].length >= fence.length &&
+        /^[ \t]*$/.test(matchedFence[2])
+      ) {
+        fence = null;
+      }
+    } else if (matchedFence && (matchedFence[1][0] === '~' || !matchedFence[2].includes('`'))) {
+      [, fence] = matchedFence;
+    } else {
+      const re = /`+/g;
+      for (let match = re.exec(line); match; match = re.exec(line)) {
+        const index = lineStart + match.index;
+        if (!isEscaped(markdown, index)) runs.push({ index, length: match[0].length });
+      }
+    }
+
+    if (newlineIndex === -1) break;
+    lineStart = newlineIndex + 1;
+  }
+
+  return runs;
+}
+
+/** 将已闭合行内代码替换为等长空格，避免其中的 Markdown 字面量参与后续语法检测。 */
+function getInlineSyntaxScanSource(markdown: string): string {
+  const chars = markdown.split('');
+  let opening: BacktickRun | null = null;
+
+  const runs = getInlineCodeRuns(markdown);
+  for (let r = 0; r < runs.length; r += 1) {
+    const run = runs[r];
+    if (!opening) {
+      opening = run;
+    } else if (run.length === opening.length) {
+      for (let i = opening.index; i < run.index + run.length; i += 1) chars[i] = ' ';
+      opening = null;
+    }
+  }
+
+  return chars.join('');
+}
+
+type ReferenceLinks = Record<string, unknown>;
+
+function normalizeReferenceLabel(label: string): string {
+  return label.trim().replace(/\s+/g, ' ').toLowerCase();
+}
+
+function hasReference(referenceLinks: ReferenceLinks, label: string): boolean {
+  return Object.prototype.hasOwnProperty.call(referenceLinks, normalizeReferenceLabel(label));
+}
+
+/** 隐藏末尾可能发展为图片的孤立 !，下一分片非 [ 或流结束时会由原文恢复。 */
+function hideImageMarker(markdown: string): string | null {
+  const scanSource = getInlineSyntaxScanSource(markdown);
+  const index = scanSource.length - 1;
+  if (
+    index < 0 ||
+    scanSource[index] !== '!' ||
+    isEscaped(markdown, index) ||
+    (index > 0 && !/\s/.test(scanSource[index - 1]))
+  )
+    return null;
+  return markdown.slice(0, index);
+}
+
+/** 隐藏末尾未闭合的图片语法；完整内联图片和已定义的引用式图片交给 marked。 */
+function closeImage(markdown: string, referenceLinks: ReferenceLinks): string | null {
+  const scanSource = getInlineSyntaxScanSource(markdown);
+  const reference = scanSource.match(/!\[([^\]\n]*)\]\[([^\]\n]*)\]$/);
+  if (reference?.index !== undefined && !isEscaped(markdown, reference.index)) return null;
+
+  const openReference = scanSource.match(/!\[([^\]\n]*)\]\[[^\]\n]*$/);
+  if (openReference?.index !== undefined && !isEscaped(markdown, openReference.index)) {
+    return markdown.slice(0, openReference.index);
+  }
+
+  const openAlt = scanSource.match(/!\[([^\]\n]*)$/);
+  const openDestination = scanSource.match(/!\[([^\]\n]*)\]\([^)\n]*$/);
+  const shortcutReference = scanSource.match(/!\[([^\]\n]*)\]$/);
+  const match = openAlt || openDestination || shortcutReference;
+
+  if (!match || match.index === undefined || isEscaped(markdown, match.index)) return null;
+  if (shortcutReference && hasReference(referenceLinks, shortcutReference[1])) return null;
   return markdown.slice(0, match.index);
 }
 
-/** 补全未闭合的链接语法（[text / [text] / [text](url）；列表任务框除外 */
-function closeLink(markdown: string): string | null {
-  const match = markdown.match(/\[[^\n\]]*?(\]\([^)]*|\]|)$/);
-  if (!match) return null;
-
-  const isTaskBox = /(^|\n)[ \t]*[-+*][ \t]+$/.test(markdown.slice(0, match.index));
-  if (isTaskBox) return null;
-
-  const tail = match[1];
-  if (tail.startsWith('](')) return `${markdown})`;
-  return tail === ']' ? `${markdown}()` : `${markdown}]()`;
+function isLinkCandidate(markdown: string, index: number): boolean {
+  if (isEscaped(markdown, index) || markdown[index - 1] === '!') return false;
+  const prefix = markdown.slice(0, index);
+  if (/!\[[^\]\n]*\]$/.test(prefix)) return false;
+  return !/(^|\n)[ \t]*[-+*][ \t]+$/.test(prefix);
 }
 
-/** 补全未闭合的行内代码：末尾反引号为奇数个时补同长闭合；暂无内容时隐藏起始反引号 */
+/** 补全末尾未闭合的链接语法；完整链接和已定义的引用式链接交给 marked。 */
+function closeLink(markdown: string, referenceLinks: ReferenceLinks): string | null {
+  const scanSource = getInlineSyntaxScanSource(markdown);
+  const reference = scanSource.match(/\[([^\]\n]*)\]\[([^\]\n]*)\]$/);
+  if (reference?.index !== undefined && isLinkCandidate(markdown, reference.index)) return null;
+
+  const openDestination = scanSource.match(/\[([^\]\n]*)\]\([^)\n]*$/);
+  if (openDestination?.index !== undefined && isLinkCandidate(markdown, openDestination.index)) {
+    return `${markdown})`;
+  }
+
+  const shortcutReference = scanSource.match(/\[([^\]\n]*)\]$/);
+  if (shortcutReference?.index !== undefined && isLinkCandidate(markdown, shortcutReference.index)) {
+    return hasReference(referenceLinks, shortcutReference[1]) ? null : `${markdown}()`;
+  }
+
+  const openLabel = scanSource.match(/\[([^\]\n]*)$/);
+  if (openLabel?.index !== undefined && isLinkCandidate(markdown, openLabel.index)) return `${markdown}]()`;
+  return null;
+}
+
+/** 补全末尾未闭合的行内代码；闭合符必须与起始反引号长度一致。 */
 function closeInlineCode(markdown: string): string | null {
-  const runs = markdown.match(/`+/g);
-  if (!runs || runs.length % 2 === 0) return null;
-  if (/`+$/.test(markdown)) return markdown.replace(/`+$/, '');
-  return `${markdown}${'`'.repeat(runs[runs.length - 1].length)}`;
+  const runs = getInlineCodeRuns(markdown);
+  let opening: BacktickRun | null = null;
+  for (let i = 0; i < runs.length; i += 1) {
+    const run = runs[i];
+    if (!opening) opening = run;
+    else if (run.length === opening.length) opening = null;
+  }
+
+  if (!opening) return null;
+  if (opening.index + opening.length === markdown.length) return markdown.slice(0, opening.index);
+
+  const lastRun = runs[runs.length - 1];
+  if (lastRun !== opening && lastRun.index + lastRun.length === markdown.length) {
+    if (lastRun.length < opening.length) return `${markdown}${'`'.repeat(opening.length - lastRun.length)}`;
+    return `${markdown} ${'`'.repeat(opening.length)}`;
+  }
+  return `${markdown}${'`'.repeat(opening.length)}`;
 }
 
 /**
@@ -66,21 +200,17 @@ function closeInlineCode(markdown: string): string | null {
  */
 function closeEmphasis(markdown: string): string | null {
   const lastLine = markdown.slice(markdown.lastIndexOf('\n') + 1);
-  // 行内存在未闭合的行内代码时不处理（交由 closeInlineCode 先补齐）
   if (!lastLine || (lastLine.match(/`/g) || []).length % 2 === 1) return null;
 
-  const line = lastLine.replace(/^\s*[*+-]\s+/, ''); // 剔除行首列表符号
-  // 行末标记片段先不参与配对（可能是未输完的闭合符，也可能是待内容的起始符）
+  const line = lastLine.replace(/^\s*[*+-]\s+/, '');
   const trailingMatch = line.match(/(\*)\1*$/);
   const trailing = trailingMatch ? trailingMatch[0] : '';
   const scanLine = trailingMatch ? line.slice(0, trailingMatch.index) : line;
 
-  // 仅当行内存在正文时才补闭合；纯符号行直接隐藏避免闪出
   const hasBody = !!scanLine.replace(/[\s*`]/g, '');
   if (trailing && !hasBody) return markdown.slice(0, markdown.length - lastLine.length);
 
-  // 成对行内代码（`...`）内部的 * 不参与配对，先整体剔除；链接内符号同理
-  const urlLess = scanLine.replace(/`[^`\n]*`/g, ' ').replace(/(?:https?|ftp):\/\/\S+/g, ' ');
+  const urlLess = getInlineSyntaxScanSource(scanLine).replace(/(?:https?|ftp):\/\/\S+/g, ' ');
   const stack: string[] = [];
   const re = /(\*{1,3})/g;
   for (let m = re.exec(urlLess); m; m = re.exec(urlLess)) {
@@ -93,12 +223,8 @@ function closeEmphasis(markdown: string): string | null {
 
   const top = stack[stack.length - 1];
   const trimmed = markdown.replace(/[ \t]+$/, '');
-  if (trailing && !top) {
-    // 行末符号但无待闭合内容：视为起始符，先隐藏避免闪出
-    return markdown.slice(0, markdown.length - trailing.length);
-  }
+  if (trailing && !top) return markdown.slice(0, markdown.length - trailing.length);
   if (trailing && top && trailing[0] === top[0]) {
-    // 行末标记与栈顶同字符：等长视为闭合符（弹出），不足视为部分闭合符（补足）
     if (trailing.length === top.length) stack.pop();
     else if (trailing.length < top.length) return `${trimmed}${top.slice(trailing.length)}`;
   }
@@ -106,7 +232,7 @@ function closeEmphasis(markdown: string): string | null {
 }
 
 /** 流式输出时补全/隐藏文本末尾未闭合的语法，避免原始符号与 URL 闪现 */
-export default function completeUnclosedInlineSyntax(markdown: string): string {
+export default function completeUnclosedInlineSyntax(markdown: string, referenceLinks: ReferenceLinks = {}): string {
   // 未闭合代码块：仅隐藏未输完的围栏，块内内容交给 marked 渲染
   if (hasUnclosedCodeFence(markdown)) return hidePartialFence(markdown);
 
@@ -114,15 +240,15 @@ export default function completeUnclosedInlineSyntax(markdown: string): string {
   const hiddenFence = hidePartialFence(markdown);
   if (hiddenFence !== markdown) return hiddenFence;
 
-  // 孤立 !（可能为图片起始符）：先隐藏，避免闪烁导致光标跳动
-  if (/(^|[^A-Za-z0-9])!$/.test(markdown)) return markdown.slice(0, -1);
-
   // 先补齐行内代码，避免其内部的 [text] / ![alt] 被误判为链接或图片语法。
   const codeClosed = closeInlineCode(markdown) ?? markdown;
 
-  // 图片、链接命中即返回（整段隐藏或补全，不与强调叠加）
-  const closed = closeImage(codeClosed) ?? closeLink(codeClosed);
-  if (closed !== null && closed !== undefined) return closed;
+  // 图片起始符、图片、链接命中即返回（整段隐藏或补全，不与强调叠加）。
+  const imageMarkerHidden = hideImageMarker(codeClosed);
+  if (imageMarkerHidden !== null) return imageMarkerHidden;
+
+  const closed = closeImage(codeClosed, referenceLinks) ?? closeLink(codeClosed, referenceLinks);
+  if (closed !== null) return closed;
 
   return closeEmphasis(codeClosed) ?? codeClosed;
 }

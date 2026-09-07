@@ -41,7 +41,12 @@ export function injectTailToTokens(tokens: any[], tailChar: string, depth = 0): 
       return true;
     }
 
-    // 叶子文本或行内代码节点且内容非空
+    // text 包装节点需要优先进入子 tokens，确保光标标记在实际渲染的文本之后。
+    if (token.type === 'text' && token.tokens?.length) {
+      if (injectTailToTokens(token.tokens, tailChar, depth + 1)) return true;
+    }
+
+    // 普通文本和行内代码都是可见叶子节点，光标应位于其后。
     if (['text', 'codespan'].includes(token.type) && (token.text || token.raw)?.trim()) {
       token.isTail = true;
       token.tailContent = tailChar;

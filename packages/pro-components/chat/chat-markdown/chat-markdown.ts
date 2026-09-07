@@ -43,11 +43,14 @@ export default class ChatMarkdown extends SuperComponent {
       try {
         const { streaming } = this.data;
         // 流式输出时对末尾未闭合语法做补全/隐藏（需显式开启 streaming.completeSyntax）
-        const shouldComplete = streaming?.hasNextChunk && streaming?.completeSyntax === true;
-        const source = shouldComplete ? completeUnclosedInlineSyntax(markdown) : markdown;
+        const syntaxCompletionEnabled = streaming?.completeSyntax === true;
+        const shouldComplete = streaming?.hasNextChunk && syntaxCompletionEnabled;
         const lexer = new Lexer(this.data.options);
-        let tokens = lexer.lex(source);
+        const originalTokens = lexer.lex(markdown);
+        const source = shouldComplete ? completeUnclosedInlineSyntax(markdown, originalTokens.links) : markdown;
+        let tokens = source === markdown ? originalTokens : new Lexer(this.data.options).lex(source);
 
+        // 修正 marked 对“强调语法内包含行内代码”场景的 token 泄漏；与流式语法补全开关无关。
         if (hasLeakedInlineFormatting(tokens)) {
           const { source: maskedSource, masks } = maskInlineCodes(source);
           tokens = new Lexer(this.data.options).lex(maskedSource);
