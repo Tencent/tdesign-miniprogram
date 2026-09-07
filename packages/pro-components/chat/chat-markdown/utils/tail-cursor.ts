@@ -27,9 +27,7 @@ function flatListItems(items: any[]): any[] {
 }
 
 /**
- * 从后往前遍历 token 树，找到最后一个非空 text 叶子节点，打上 isTail 标记。
- * - 有子节点（tokens / items）时优先递归
- * - 末尾是 code / table / image 等非 text 节点时静默跳过，不注入
+ * 从后往前遍历 token 树，找到最后一个非空文本或代码叶子节点，打上 isTail 标记。
  * @returns 是否成功注入
  */
 export function injectTailToTokens(tokens: any[], tailChar: string, depth = 0): boolean {
@@ -43,8 +41,8 @@ export function injectTailToTokens(tokens: any[], tailChar: string, depth = 0): 
       return true;
     }
 
-    // 叶子文本节点且内容非空
-    if (token.type === 'text' && (token.text || token.raw)?.trim()) {
+    // 叶子文本或行内代码节点且内容非空
+    if (['text', 'codespan'].includes(token.type) && (token.text || token.raw)?.trim()) {
       token.isTail = true;
       token.tailContent = tailChar;
       return true;

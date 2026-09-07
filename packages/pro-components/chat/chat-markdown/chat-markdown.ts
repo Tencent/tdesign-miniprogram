@@ -5,6 +5,7 @@ import props from './props';
 import { TdChatMarkdownProps } from './type';
 import completeUnclosedInlineSyntax from './utils/stream-syntax';
 import { resolveTailContent, injectTailToTokens } from './utils/tail-cursor';
+import { hasLeakedInlineFormatting, maskInlineCodes, restoreMaskedInlineCodes } from './utils/marked-fallback';
 
 const { prefix } = config;
 const name = `${prefix}-chat-markdown`;
@@ -45,7 +46,13 @@ export default class ChatMarkdown extends SuperComponent {
         const shouldComplete = streaming?.hasNextChunk && streaming?.completeSyntax === true;
         const source = shouldComplete ? completeUnclosedInlineSyntax(markdown) : markdown;
         const lexer = new Lexer(this.data.options);
-        const tokens = lexer.lex(source);
+        let tokens = lexer.lex(source);
+
+        if (hasLeakedInlineFormatting(tokens)) {
+          const { source: maskedSource, masks } = maskInlineCodes(source);
+          tokens = new Lexer(this.data.options).lex(maskedSource);
+          restoreMaskedInlineCodes(tokens, masks);
+        }
 
         // 尾部光标注入
         const tailChar = resolveTailContent(streaming?.tail);

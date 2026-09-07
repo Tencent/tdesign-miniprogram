@@ -7,15 +7,29 @@
  * 待语法闭合后再正常渲染。
  */
 
-/** 反引号围栏（```）起始数为奇数，说明存在未闭合的代码块 */
+/** 按 Markdown 围栏规则判断是否存在未闭合代码块。 */
 function hasUnclosedCodeFence(markdown: string): boolean {
-  const fences = markdown.match(/(^|\n)[ \t]*(`{3,}|~{3,})/g);
-  return !!fences && fences.length % 2 === 1;
+  let fence: string | null = null;
+
+  markdown.split('\n').forEach((line) => {
+    const matchedFence = line.match(/^ {0,3}(`{3,}|~{3,})(.*)$/);
+    if (!matchedFence) return;
+
+    const [, marker, info] = matchedFence;
+    if (fence) {
+      if (marker[0] === fence[0] && marker.length >= fence.length && /^[ \t]*$/.test(info)) fence = null;
+      return;
+    }
+
+    if (marker[0] === '~' || !info.includes('`')) fence = marker;
+  });
+
+  return !!fence;
 }
 
-/** 隐藏未输完的代码围栏（代码块内的闭合围栏、行首的起始围栏，均为 1~2 个反引号） */
+/** 隐藏未输完的代码围栏（代码块内的闭合围栏、行首的起始围栏，均为 1~2 个标记字符） */
 function hidePartialFence(markdown: string): string {
-  return markdown.replace(/(^|\n)[ \t]*`{1,2}[ \t]*$/, '$1');
+  return markdown.replace(/(^|\n)[ \t]*[`~]{1,2}[ \t]*$/, '$1');
 }
 
 /** 补全未闭合的图片语法（![alt / ![alt] / ![alt](url）：整段隐藏，闭合后再渲染 */
@@ -52,7 +66,8 @@ function closeInlineCode(markdown: string): string | null {
  */
 function closeEmphasis(markdown: string): string | null {
   const lastLine = markdown.slice(markdown.lastIndexOf('\n') + 1);
-  if (!lastLine || /`/.test(lastLine)) return null; // 行内含行内代码时不处理
+  // 行内存在未闭合的行内代码时不处理（交由 closeInlineCode 先补齐）
+  if (!lastLine || (lastLine.match(/`/g) || []).length % 2 === 1) return null;
 
   const line = lastLine.replace(/^\s*[*+-]\s+/, ''); // 剔除行首列表符号
   // 行末标记片段先不参与配对（可能是未输完的闭合符，也可能是待内容的起始符）
@@ -64,8 +79,8 @@ function closeEmphasis(markdown: string): string | null {
   const hasBody = !!scanLine.replace(/[\s*`]/g, '');
   if (trailing && !hasBody) return markdown.slice(0, markdown.length - lastLine.length);
 
-  // 用栈配对 `*` 序列，栈中残留即为未闭合的起始符
-  const urlLess = scanLine.replace(/(?:https?|ftp):\/\/\S+/g, ' '); // 链接内符号不参与配对
+  // 成对行内代码（`...`）内部的 * 不参与配对，先整体剔除；链接内符号同理
+  const urlLess = scanLine.replace(/`[^`\n]*`/g, ' ').replace(/(?:https?|ftp):\/\/\S+/g, ' ');
   const stack: string[] = [];
   const re = /(\*{1,3})/g;
   for (let m = re.exec(urlLess); m; m = re.exec(urlLess)) {
@@ -102,8 +117,12 @@ export default function completeUnclosedInlineSyntax(markdown: string): string {
   // 孤立 !（可能为图片起始符）：先隐藏，避免闪烁导致光标跳动
   if (/(^|[^A-Za-z0-9])!$/.test(markdown)) return markdown.slice(0, -1);
 
-  // 按优先级依次尝试补全，命中即返回；均未命中则保持原文
-  return (
-    closeImage(markdown) ?? closeLink(markdown) ?? closeInlineCode(markdown) ?? closeEmphasis(markdown) ?? markdown
-  );
+  // 先补齐行内代码，避免其内部的 [text] / ![alt] 被误判为链接或图片语法。
+  const codeClosed = closeInlineCode(markdown) ?? markdown;
+
+  // 图片、链接命中即返回（整段隐藏或补全，不与强调叠加）
+  const closed = closeImage(codeClosed) ?? closeLink(codeClosed);
+  if (closed !== null && closed !== undefined) return closed;
+
+  return closeEmphasis(codeClosed) ?? codeClosed;
 }
