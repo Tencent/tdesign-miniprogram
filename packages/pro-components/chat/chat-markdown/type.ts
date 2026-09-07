@@ -23,7 +23,7 @@ export interface TdChatMarkdownProps {
     value?: TdChatContentMDOptions;
   };
   /**
-   * 流式输出配置，控制尾部光标的显示与隐藏。尾部光标配置，true 使用默认光标 ▋，传对象可自定义光标字符
+   * 流式输出配置：`hasNextChunk` 表示是否还有后续分片（输出中为 true，结束时为 false）；`completeSyntax` 默认为 false，仅控制是否处理流式末尾未闭合的 Markdown 语法。设为 true 时，会对末尾未闭合的链接、图片、加粗、行内代码等语法进行补全或隐藏，避免暴露原始符号与 URL；`tail` 控制尾部光标，true 使用默认光标 ▋，传对象可自定义光标字符
    */
   streaming?: {
     type: ObjectConstructor;
@@ -39,15 +39,7 @@ export interface TdChatContentMDOptions {
 }
 
 export interface TdChatMarkdownStreamingOptions {
-  /**
-   * 是否还有后续分片输出（流式输出中为 true，结束时为 false）
-   */
   hasNextChunk?: boolean;
-  /**
-   * 流式输出时是否补全/隐藏末尾未闭合的 markdown 语法（如链接、图片、加粗等），
-   * 避免渲染过程中暴露原始符号与 URL；默认关闭以保持原有渲染效果
-   * @default false
-   */
   completeSyntax?: boolean;
   tail?: boolean | { content?: string };
 }
