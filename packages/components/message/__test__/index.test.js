@@ -182,6 +182,53 @@ describe('message', () => {
     });
   });
 
+  describe('lifecycle', () => {
+    it(': clears the duration timer when detached', () => {
+      const messageItem = load(path.resolve(__dirname, `../../message-item/message-item`), 't-message-item');
+      const comp = simulate.render(messageItem, {
+        content: 'message before navigate back',
+        duration: 5000,
+        offset: [20, 32],
+      });
+      comp.attach(document.createElement('parent-wrapper'));
+
+      comp.instance.show();
+      expect(comp.instance.closeTimeoutContext).not.toBe(0);
+
+      comp.detach();
+      const { closeTimeoutContext } = comp.instance;
+      if (closeTimeoutContext) clearTimeout(closeTimeoutContext);
+      expect(closeTimeoutContext).toBe(0);
+    });
+
+    it(': hides each message at most once when an instance cannot remove itself', () => {
+      const id = simulate.load({
+        template: `<t-message id="t-message" />`,
+        usingComponents: {
+          't-message': message,
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      const $message = comp.querySelector('#t-message');
+      const firstHide = jest
+        .fn()
+        .mockImplementationOnce(() => {})
+        .mockImplementationOnce(() => {
+          throw new Error('hide called repeatedly');
+        });
+      const secondHide = jest.fn();
+
+      $message.instance.instances = [{ hide: firstHide }, { hide: secondHide }];
+
+      expect(() => $message.instance.hideAll()).not.toThrow();
+      expect(firstHide).toHaveBeenCalledTimes(1);
+      expect(secondHide).toHaveBeenCalledTimes(1);
+      $message.instance.instances = [];
+      comp.detach();
+    });
+  });
+
   describe('multiple', () => {
     it(': message-count-gap', async () => {
       const id = simulate.load({
