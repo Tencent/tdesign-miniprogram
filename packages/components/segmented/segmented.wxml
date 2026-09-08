@@ -21,7 +21,7 @@
     >
       <view class="{{classPrefix}}__item-inner">
         <template wx:if="{{item.icon}}" is="icon" data="{{ tClass: classPrefix + '__item-icon', ...item.icon }}" />
-        <span wx:if="{{item.label}}" class="{{classPrefix}}__item-label">{{item.label}}</span>
+        <text wx:if="{{item.label}}" class="{{classPrefix}}__item-label">{{item.label}}</text>
       </view>
     </view>
   </view>

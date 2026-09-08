@@ -30,7 +30,7 @@
           <block v-if="item.icon" name="icon">
             <t-icon :name="item.icon.name || item.icon" :t-class="classPrefix + '__item-icon'" />
           </block>
-          <span v-if="item.label" :class="classPrefix + '__item-label'">{{ item.label }}</span>
+          <text v-if="item.label" :class="classPrefix + '__item-label'">{{ item.label }}</text>
         </view>
       </view>
     </view>
