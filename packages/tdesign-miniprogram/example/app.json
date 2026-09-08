@@ -144,7 +144,7 @@
     },
     {
       "root": "pages/action-sheet/",
-      "pages": ["action-sheet"]
+      "pages": ["action-sheet", "skyline/action-sheet"]
     },
     {
       "root": "pages/avatar/",

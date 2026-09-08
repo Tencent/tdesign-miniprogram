@@ -65,6 +65,10 @@ const skylineUx = {
   name: '反馈',
   icon: 'chat',
   childArr: [
+    {
+      name: 'ActionSheet',
+      label: '动作面板',
+    },
     // {
     //   name: 'Dialog',
     //   label: '对话框',
