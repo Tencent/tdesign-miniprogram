@@ -15,6 +15,22 @@ export interface TdFabProps {
     value?: ButtonProps;
   };
   /**
+   * 自动收缩延迟时间，单位毫秒
+   * @default 3000
+   */
+  collapseDuration?: {
+    type: NumberConstructor;
+    value?: number;
+  };
+  /**
+   * 是否开启自动收缩
+   * @default false
+   */
+  collapsible?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 是否可拖拽。`true` / `'all'`可拖动<br>`'vertical'`可垂直拖动<br>`'horizontal'`可水平拖动<br>`false`禁止拖动
    * @default false
    */
