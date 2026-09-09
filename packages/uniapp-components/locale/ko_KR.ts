@@ -80,7 +80,7 @@ export default {
     resetText: '초기화',
     searchResultText: '검색“{result}”，일어나 {count} 결과',
     clearFilterResultButtonText: '클리어 필터',
-    pullUpLoadingText: '로딩 중입니다',
+    loadingText: '로딩 중입니다',
   },
   list: {
     loading: '로딩 중...',

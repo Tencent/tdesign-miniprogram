@@ -80,7 +80,7 @@ export default {
     resetText: 'リセット',
     searchResultText: '検索“{result}”，探す {count} 記事結果',
     clearFilterResultButtonText: 'クリアフィルター',
-    pullUpLoadingText: '読み込み中',
+    loadingText: '読み込み中',
   },
   list: {
     loading: '読み込み中…',

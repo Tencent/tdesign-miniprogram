@@ -105,7 +105,7 @@ export default {
     resetText: 'Сбросить',
     searchResultText: 'Поиск «{result}», найдено {count} результатов',
     clearFilterResultButtonText: 'Очистить фильтр',
-    pullUpLoadingText: 'Загрузка',
+    loadingText: 'Загрузка',
   },
   list: {
     loading: 'Загрузка...',

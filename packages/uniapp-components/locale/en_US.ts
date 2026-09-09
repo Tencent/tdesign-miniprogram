@@ -94,7 +94,7 @@ export default {
     searchResultText:
       'Search "{result}". Found no items. | Search "{result}". Found 1 item. | Search "{result}". Found {count} items.',
     clearFilterResultButtonText: 'Clear',
-    pullUpLoadingText: 'Loading...',
+    loadingText: 'Loading...',
   },
   list: {
     loading: 'Loading...',
