@@ -34,6 +34,10 @@ const props: TdCascaderProps = {
   keys: {
     type: Object,
   },
+  /** 加载子树数据的方法（仅当节点 children 为 true 时生效） */
+  load: {
+    type: null,
+  },
   /** 可选项数据源 */
   options: {
     type: Array,

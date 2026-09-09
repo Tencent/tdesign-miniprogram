@@ -24,6 +24,10 @@
     <check-strictly />
   </t-demo>
 
+  <t-demo desc="懒加载选项">
+    <lazy-load />
+  </t-demo>
+
   <t-demo desc="支持搜索">
     <filterable />
   </t-demo>
