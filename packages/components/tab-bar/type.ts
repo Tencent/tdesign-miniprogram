@@ -59,7 +59,7 @@ export interface TdTabBarProps {
    */
   theme?: {
     type: StringConstructor;
-    value?: 'normal' | 'tag';
+    value?: 'normal' | 'tag' | 'liquid-glass';
   };
   /**
    * 当前选中标签的索引
