@@ -28,9 +28,9 @@
       aria-hidden="{{ ariaHidden }}"
     >
       <t-image
-        wx:if="{{image}}"
+        wx:if="{{image && isImgExist}}"
         t-class="{{prefix}}-image {{classPrefix}}__image"
-        t-class-load="{{prefix}}-class-alt"
+        t-class-load="{{classPrefix}}__image-alt {{prefix}}-class-alt"
         style="{{imageProps && imageProps.style || ''}}"
         src="{{image}}"
         mode="{{imageProps && imageProps.mode || 'aspectFill'}}"
@@ -38,7 +38,7 @@
         loading="{{imageProps && imageProps.loading || 'default'}}"
         shape="{{imageProps && imageProps.shape || 'round'}}"
         webp="{{imageProps && imageProps.webp || false}}"
-        error="{{alt || 'default'}}"
+        error="{{imageProps && imageProps.error || alt || 'default'}}"
         bind:error="onLoadError"
       />
       <template
