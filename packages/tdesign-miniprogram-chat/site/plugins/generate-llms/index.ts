@@ -1,6 +1,26 @@
+import { readFileSync } from 'fs';
 import path from 'path';
 
 import generateLlmsDocs from '../../../../common/docs/plugins/generate-llms';
+
+/** 小程序 demo 源码解析器：读取 _example/<demoName> 下的四段代码块（wxml/js/wxss/json）。 */
+function readDemoCode(componentDir: string, demoName: string): string {
+  const demoDir = path.join(componentDir, '_example', demoName);
+  const fileOrder = ['index.wxml', 'index.js', 'index.wxss', 'index.json'];
+  const sections: string[] = [];
+  fileOrder.forEach((file) => {
+    try {
+      const content = readFileSync(path.join(demoDir, file), 'utf-8');
+      // 忽略内容为空的文件（如部分示例的 index.wxss），避免生成空代码块
+      if (!content.trim()) return;
+      const lang = file.replace('index.', '');
+      sections.push(`\`\`\`${lang}`, content, '```');
+    } catch {
+      // 忽略不存在的文件
+    }
+  });
+  return sections.join('\n');
+}
 
 /**
  * vite 插件：chat 站点构建时，基于 CHAT_COMPONENT_MAP 生成组件的 LLM Markdown 文档。
@@ -25,6 +45,7 @@ export default function generateChatLlmsPlugin() {
         componentsRoot,
         outputDir,
         platform: 'chat',
+        readDemoCode,
         siteTitle: 'TDesign MiniProgram Chat',
         siteDescription: 'TDesign 小程序 AI Chat 组件库的 LLM 友好文档索引。',
       });
