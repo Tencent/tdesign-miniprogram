@@ -1,10 +1,11 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
+import usingConfig from '../mixins/using-config';
 import props from './base-table-props';
 import type { BaseTableCol, TableRowData } from './type';
 
 const { prefix } = config;
-const name = `${prefix}-table`;
+const componentName = 'table';
 
 function get(obj: any, path: string) {
   if (!obj || !path) return undefined;
@@ -25,6 +26,8 @@ function formatCSSUnit(unit: string | number | undefined) {
 
 @wxComponent()
 export default class Table extends SuperComponent {
+  behaviors = [usingConfig({ componentName })];
+
   externalClasses = [`${prefix}-class`];
 
   options = {
@@ -35,7 +38,7 @@ export default class Table extends SuperComponent {
 
   data = {
     prefix,
-    classPrefix: name,
+    classPrefix: `${prefix}-${componentName}`,
     tableClasses: '',
     tableContentStyles: '',
     tableElementStyles: '',
@@ -85,6 +88,7 @@ export default class Table extends SuperComponent {
         rowKey,
         fixedRows,
       } = this.properties;
+      const { classPrefix } = this.data;
 
       // 解析 fixedRows
       const fixedTopRows = (fixedRows && (fixedRows as number[])[0]) || 0;
@@ -98,14 +102,14 @@ export default class Table extends SuperComponent {
 
       // 表格基础类名
       const tableClasses = [
-        name,
+        classPrefix,
         `${prefix}-vertical-align-${verticalAlign || 'middle'}`,
-        bordered ? `${name}--bordered` : '',
-        stripe ? `${name}--striped` : '',
-        stripe && (maxHeight || height) ? `${name}--header-fixed` : '',
-        loading ? `${name}--loading` : '',
-        rowspanAndColspan ? `${name}--rowspan-colspan` : '',
-        hasFixedColumn ? `${name}--column-fixed` : '',
+        bordered ? `${classPrefix}--bordered` : '',
+        stripe ? `${classPrefix}--striped` : '',
+        stripe && (maxHeight || height) ? `${classPrefix}--header-fixed` : '',
+        loading ? `${classPrefix}--loading` : '',
+        rowspanAndColspan ? `${classPrefix}--rowspan-colspan` : '',
+        hasFixedColumn ? `${classPrefix}--column-fixed` : '',
       ]
         .filter(Boolean)
         .join(' ');
@@ -128,14 +132,14 @@ export default class Table extends SuperComponent {
       }
 
       // 表头类名
-      const theadClasses = [`${name}__header`, maxHeight || height ? `${name}__header--fixed` : '']
+      const theadClasses = [`${classPrefix}__header`, maxHeight || height ? `${classPrefix}__header--fixed` : '']
         .filter(Boolean)
         .join(' ');
 
-      const tbodyClasses = `${name}__body`;
+      const tbodyClasses = `${classPrefix}__body`;
 
       // 表格布局类名
-      const layoutClass = `${name}--layout-${tableLayout || 'fixed'}`;
+      const layoutClass = `${classPrefix}--layout-${tableLayout || 'fixed'}`;
 
       // 计算固定列偏移量
       const fixedLeftOffsets: number[] = [];
@@ -198,12 +202,12 @@ export default class Table extends SuperComponent {
       // 表头类名
       const thClassNames = (columns || []).map((col: BaseTableCol, colIndex: number) => {
         const classes: string[] = [];
-        if (col.colKey) classes.push(`${name}__th-${col.colKey}`);
+        if (col.colKey) classes.push(`${classPrefix}__th-${col.colKey}`);
         if (col.align && col.align !== 'left') classes.push(`${prefix}-align-${col.align}`);
-        if (col.fixed === 'left') classes.push(`${name}__cell--fixed-left`);
-        if (col.fixed === 'right') classes.push(`${name}__cell--fixed-right`);
-        if (colIndex === lastFixedLeftIndex) classes.push(`${name}__cell--fixed-left-last`);
-        if (colIndex === firstFixedRightIndex) classes.push(`${name}__cell--fixed-right-first`);
+        if (col.fixed === 'left') classes.push(`${classPrefix}__cell--fixed-left`);
+        if (col.fixed === 'right') classes.push(`${classPrefix}__cell--fixed-right`);
+        if (colIndex === lastFixedLeftIndex) classes.push(`${classPrefix}__cell--fixed-left-last`);
+        if (colIndex === firstFixedRightIndex) classes.push(`${classPrefix}__cell--fixed-right-first`);
         return classes.join(' ');
       });
 
@@ -251,10 +255,10 @@ export default class Table extends SuperComponent {
 
           const tdClasses: string[] = [];
           if (col.align && col.align !== 'left') tdClasses.push(`${prefix}-align-${col.align}`);
-          if (col.fixed === 'left') tdClasses.push(`${name}__cell--fixed-left`);
-          if (col.fixed === 'right') tdClasses.push(`${name}__cell--fixed-right`);
-          if (colIndex === lastFixedLeftIndex) tdClasses.push(`${name}__cell--fixed-left-last`);
-          if (colIndex === firstFixedRightIndex) tdClasses.push(`${name}__cell--fixed-right-first`);
+          if (col.fixed === 'left') tdClasses.push(`${classPrefix}__cell--fixed-left`);
+          if (col.fixed === 'right') tdClasses.push(`${classPrefix}__cell--fixed-right`);
+          if (colIndex === lastFixedLeftIndex) tdClasses.push(`${classPrefix}__cell--fixed-left-last`);
+          if (colIndex === firstFixedRightIndex) tdClasses.push(`${classPrefix}__cell--fixed-right-first`);
 
           let cellContent = '';
           if (col.colKey === 'serial-number') {
@@ -291,16 +295,16 @@ export default class Table extends SuperComponent {
             const classes: string[] = [];
             const dataLen = data.length;
             if (fixedTopRows > 0 && rowIndex < fixedTopRows) {
-              classes.push(`${name}__row--fixed-top`);
+              classes.push(`${classPrefix}__row--fixed-top`);
             }
             if (fixedBottomRows > 0 && rowIndex >= dataLen - fixedBottomRows) {
-              classes.push(`${name}__row--fixed-bottom`);
+              classes.push(`${classPrefix}__row--fixed-bottom`);
               if (rowIndex === dataLen - fixedBottomRows) {
-                classes.push(`${name}__row--fixed-bottom-first`);
+                classes.push(`${classPrefix}__row--fixed-bottom-first`);
               }
             }
             if (fixedBottomRows > 0 && rowIndex === dataLen - fixedBottomRows - 1) {
-              classes.push(`${name}__row--without-border-bottom`);
+              classes.push(`${classPrefix}__row--without-border-bottom`);
             }
             return classes.join(' ');
           })(),
@@ -323,7 +327,10 @@ export default class Table extends SuperComponent {
       const isEmpty = !data || data.length === 0;
 
       // 内容区域类名（滚动阴影）
-      const contentClasses = [`${name}__content`, hasFixedColumn ? `${name}__content--scrollable-to-right` : '']
+      const contentClasses = [
+        `${classPrefix}__content`,
+        hasFixedColumn ? `${classPrefix}__content--scrollable-to-right` : '',
+      ]
         .filter(Boolean)
         .join(' ');
 
@@ -359,9 +366,10 @@ export default class Table extends SuperComponent {
       fixedBottomRows: number,
       dataLen: number,
     ) {
+      const { classPrefix } = this.data;
       const query = this.createSelectorQuery();
-      query.select(`.${name}__header`).boundingClientRect();
-      query.selectAll(`.${name}__tr`).boundingClientRect();
+      query.select(`.${classPrefix}__header`).boundingClientRect();
+      query.selectAll(`.${classPrefix}__tr`).boundingClientRect();
       query.exec((res: any) => {
         if (!res) return;
         const headerRect = res[0];
@@ -420,6 +428,7 @@ export default class Table extends SuperComponent {
     },
 
     onScroll(this: any, e: any) {
+      const { classPrefix } = this.data;
       this.triggerEvent('scroll', { e });
 
       const target = e.detail || {};
@@ -430,7 +439,7 @@ export default class Table extends SuperComponent {
         const scrollWidth = target.scrollWidth || 0;
         // 使用 createSelectorQuery 获取实际宽度
         this.createSelectorQuery()
-          .select(`.${name}__content`)
+          .select(`.${classPrefix}__content`)
           .boundingClientRect()
           .exec((res: any) => {
             if (res && res[0]) {
@@ -438,9 +447,9 @@ export default class Table extends SuperComponent {
               const canScrollLeft = scrollLeft > 1;
               const canScrollRight = scrollWidth - scrollLeft - containerWidth > 1;
               const contentClasses = [
-                `${name}__content`,
-                canScrollLeft ? `${name}__content--scrollable-to-left` : '',
-                canScrollRight ? `${name}__content--scrollable-to-right` : '',
+                `${classPrefix}__content`,
+                canScrollLeft ? `${classPrefix}__content--scrollable-to-left` : '',
+                canScrollRight ? `${classPrefix}__content--scrollable-to-right` : '',
               ]
                 .filter(Boolean)
                 .join(' ');
