@@ -4,6 +4,8 @@ import path from 'path';
 import grayMatter from 'gray-matter';
 import type { ResolvedConfig } from 'vite';
 
+import { MOBILE_COMPONENT_MAP } from '../../../../common/js/components';
+
 interface ComponentDoc {
   /** 文件名，如 button */
   slug: string;
@@ -19,34 +21,6 @@ interface ComponentDoc {
   component: string;
   /** 生成后的正文内容（不含 frontmatter） */
   body: string;
-}
-
-/**
- * 从 site.config.mjs 文本解析组件注册表，用于确定组件公开名称与展示标题。
- *
- * 说明：站点以 `--configLoader runner` 构建，插件代码在 module runner 中执行，
- * 该 runner 在配置加载完成后即关闭，运行期无法再通过 import() 加载模块，
- * 因此这里直接以正则解析配置源码，获取 name/title 与 README 路径的映射。
- */
-function parseComponentRegistry(
-  siteConfigPath: string,
-): Map<string, { name: string; title: string }> {
-  const source = readFileSync(siteConfigPath, 'utf-8');
-  const map = new Map<string, { name: string; title: string }>();
-  // 定位所有组件文档导入，再向前回溯最近的 name / title 字段，避免跨条目误匹配
-  const importRe = /component:\s*\(\)\s*=>\s*import\(['"`]\/@\/([^/'"`]+)\/README\.md['"`]\)/g;
-  const fieldRe = (field: string) => new RegExp(`${field}:\\s*['"\`]([^'"\`]+)['"\`]`, 'g');
-  let match: RegExpExecArray | null;
-  while ((match = importRe.exec(source))) {
-    const slug = match[1];
-    const before = source.slice(Math.max(0, match.index - 600), match.index);
-    const nameMatch = [...before.matchAll(fieldRe('name'))].pop();
-    const titleMatch = [...before.matchAll(fieldRe('title'))].pop();
-    if (!nameMatch || !titleMatch) continue;
-    // 同一组件多次出现时以首次为准（中英文配置同源，不会重复）
-    if (!map.has(slug)) map.set(slug, { name: nameMatch[1], title: titleMatch[1] });
-  }
-  return map;
 }
 
 /**
@@ -222,10 +196,7 @@ function readDemoCode(componentDir: string, demoName: string): string {
 /**
  * 将 README 解析为组件文档。
  */
-async function parseComponentReadme(
-  componentDir: string,
-  registry: Map<string, { name: string; title: string }>,
-): Promise<ComponentDoc | null> {
+async function parseComponentReadme(componentDir: string): Promise<ComponentDoc | null> {
   const readmePath = path.join(componentDir, 'README.md');
   const raw = await promises.readFile(readmePath, 'utf-8');
   const { data, content } = grayMatter(raw);
@@ -234,11 +205,9 @@ async function parseComponentReadme(
   if (!rawTitle) return null;
 
   const slug = path.basename(componentDir);
-  const meta = registry.get(slug);
-  const title = meta?.title || rawTitle;
-  const { title: enTitle, subtitle } = splitTitle(title);
-  // 组件名：优先站点注册名，回退为英文 title
-  const component = meta?.name || enTitle;
+  const { title: enTitle, subtitle } = splitTitle(rawTitle);
+  // 组件名：优先取 MOBILE_COMPONENT_MAP 注册的导出名（首项），回退为英文 title
+  const component = MOBILE_COMPONENT_MAP[slug]?.[0] || enTitle;
 
   const body = cleanSiteHtml(
     content.replace(/\{\{\s*([a-z0-9-]+)\s*\}\}/g, (match, demoName: string) => {
@@ -311,15 +280,14 @@ export default function generateLlmsPlugin() {
       // site 根目录为 config.root（vite.config.ts 中已设置），组件目录位于其上级两级
       const siteRoot = config.root;
       const componentsRoot = path.resolve(siteRoot, '../../components');
-      const siteConfigPath = path.resolve(siteRoot, 'site.config.mjs');
       // 产物输出目录：从 config.build.outDir 推导，避免硬编码 dist
       const outputDir = config.build.outDir || path.join(siteRoot, 'dist');
       const llmsDir = path.join(outputDir, 'llms');
 
-      // 注册表只解析一次（逐组件解析会重复同步读配置并跑正则）
-      const registry = parseComponentRegistry(siteConfigPath);
-
-      const componentDirs = await promises.readdir(componentsRoot);
+      // 组件清单以 MOBILE_COMPONENT_MAP 的 key 为准，再补充不在 Map 中但有 README 的组件目录
+      const allDirs = await promises.readdir(componentsRoot);
+      const mapKeys = Object.keys(MOBILE_COMPONENT_MAP);
+      const componentDirs = [...mapKeys, ...allDirs.filter((dir) => !mapKeys.includes(dir))];
       const docs: ComponentDoc[] = [];
 
       for (const dir of componentDirs) {
@@ -334,7 +302,7 @@ export default function generateLlmsPlugin() {
             .catch(() => false);
           if (!hasReadme) continue;
 
-          const doc = await parseComponentReadme(componentDir, registry);
+          const doc = await parseComponentReadme(componentDir);
           if (doc) docs.push(doc);
         } catch (err) {
           // 单个组件解析失败仅告警，不中断整体生成
