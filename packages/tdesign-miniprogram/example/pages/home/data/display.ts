@@ -143,6 +143,10 @@ const skylineDisplay = {
       label: '结果',
     },
     {
+      name: 'Segmented',
+      label: '分段控制器',
+    },
+    {
       name: 'Skeleton',
       label: '骨架屏',
     },

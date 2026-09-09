@@ -27354,6 +27354,36 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
+        data-name="send-1-filled"
+        name="send-1-filled"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        send-1-filled
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="send-1"
+        name="send-1"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        send-1
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
         data-name="send-cancel-filled"
         name="send-cancel-filled"
         size="48rpx"
@@ -30228,6 +30258,36 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         table
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="tablet-filled"
+        name="tablet-filled"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        tablet-filled
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="tablet"
+        name="tablet"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        tablet
       </wx-view>
     </wx-view>
     <wx-view

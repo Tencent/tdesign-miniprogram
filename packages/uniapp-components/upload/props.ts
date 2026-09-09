@@ -11,7 +11,7 @@ export default {
     type: Boolean,
     default: true,
   },
-  /** 添加按钮内容 */
+  /** 添加按钮内容。值为 slot 时，表示使用插槽渲染 */
   addContent: {
     type: String,
   },
@@ -59,7 +59,7 @@ export default {
   /** 支持上传的文件类型，图片或视频 */
   mediaType: {
     type: Array,
-    default: () => ['image', 'video'],
+    default: (): TdUploadProps['mediaType'] => ['image', 'video'],
   },
   /** 是否支持图片预览，文件没有预览 */
   preview: {

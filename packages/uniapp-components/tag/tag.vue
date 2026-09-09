@@ -30,7 +30,7 @@
         :aria-hidden="!!innerClosable.ariaHidden"
         :aria-label="innerClosable.ariaLabel || '关闭'"
         :aria-role="innerClosable.ariaRole"
-        @click="handleClose"
+        @click.stop="handleClose"
       />
     </block>
     <slot v-else name="closable" />

@@ -13,10 +13,15 @@
   <view class="{{classPrefix}}__text">
     <slot />
   </view>
-  <template
+  <t-icon
     wx:if="{{_closable}}"
-    is="icon"
-    data="{{tClass: classPrefix + '__icon-close ' + prefix + '-icon', bindclick: 'handleClose',  ariaRole: 'button', ariaLabel: '关闭',  ..._closable }}"
+    class="{{classPrefix}}__icon-close {{prefix}}-icon"
+    prefix="{{_closable.prefix || ''}}"
+    name="{{_closable.name || ''}}"
+    size="{{_closable.size || ''}}"
+    color="{{_closable.color || ''}}"
+    aria-role="button"
+    aria-label="关闭"
     catch:tap="handleClose"
   />
   <slot wx:else name="closable" />

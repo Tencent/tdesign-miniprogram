@@ -275,6 +275,8 @@ describe('tag', () => {
           $close.dispatchEvent('tap');
           await simulate.sleep(10);
           expect(handleClose).toHaveBeenCalledTimes(1);
+          // close 事件触发时，不应同时触发 click 事件
+          expect(handleClick).toHaveBeenCalledTimes(1);
         }
       });
     });

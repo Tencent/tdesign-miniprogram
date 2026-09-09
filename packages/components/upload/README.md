@@ -75,7 +75,7 @@ isComponent: true
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 add-btn | Boolean | true | 添加按钮 | N
-add-content | String | - | 添加按钮内容 | N
+add-content | String | - | 添加按钮内容。值为 slots 时，表示使用插槽渲染 | N
 allow-upload-duplicate-file | Boolean | false | `暂不支持`。是否允许重复上传相同文件名的文件 | N
 config | Object | - | 图片上传配置，视频上传配置，文件上传配置等，包含图片尺寸、图片来源、视频来源、视频拍摄最长时间等。更多细节查看小程序官网。[图片上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/image/wx.chooseImage.html)。[视频上传](https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseVideo.html)。TS 类型：`UploadMpConfig` `type UploadMpConfig = UploadImageConfig \| UploadVideoConfig` `interface UploadImageConfig { count?: number; sizeType?: Array<SizeTypeValues>; sourceType?: Array<SourceTypeValues> }` `type SizeTypeValues = 'original' \| 'compressed'` `type SourceTypeValues = 'album' \| 'camera'` `interface UploadVideoConfig { sourceType?: Array<SourceTypeValues>; compressed?: boolean; maxDuration?: number; camera?: 'back' \| 'front' }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/upload/type.ts) | N
 disabled | Boolean | undefined | 是否禁用组件 | N

@@ -30,7 +30,7 @@
         <!-- 空数据 -->
         <view wx:if="{{isEmpty}}" class="{{classPrefix}}__empty-row">
           <view class="{{classPrefix}}__empty" style="grid-column: span {{columnsLength}}">
-            <block wx:if="{{empty}}">{{empty}}</block>
+            <block wx:if="{{empty || globalConfig.empty}}">{{empty || globalConfig.empty}}</block>
             <slot wx:else name="empty" />
           </view>
         </view>

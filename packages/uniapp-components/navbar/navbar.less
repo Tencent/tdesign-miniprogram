@@ -101,7 +101,9 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    right: 0;
+    // 小程序端避让右上角系统胶囊按钮（运行时由 --td-navbar-right 覆写为胶囊宽度 + 右侧间距），
+    // 非小程序端该值为 0，贴右显示，与移动端 H5 行为一致
+    right: @navbar-right;
     display: flex;
     align-items: center;
     margin-right: @spacer-1;

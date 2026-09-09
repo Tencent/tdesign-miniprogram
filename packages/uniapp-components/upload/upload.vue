@@ -17,12 +17,12 @@
     <block v-if="theme === 'list'">
       <!-- 上传触发按钮 -->
       <view v-if="addBtn && customLimit > 0" :class="classPrefix + '__list-trigger'" @click="onAddTap">
-        <slot name="add-content" />
-        <block v-if="addContent">
+        <slot v-if="addContent === 'slot'" name="add-content" />
+        <block v-else-if="addContent">
           {{ addContent }}
         </block>
         <t-button v-else theme="primary" size="medium" :disabled="disabled" icon="upload" @click="onAddTap">
-          上传
+          Upload
         </t-button>
       </view>
       <!-- 文件列表（非拖拽模式） -->
@@ -30,7 +30,7 @@
         <view v-if="customFiles.length > 0" :class="classPrefix + '__list'">
           <view
             v-for="(file, index) in customFiles"
-            :key="file.url"
+            :key="file.url || file.name || index"
             :class="
               classPrefix +
               '__list-item' +
@@ -98,6 +98,96 @@
           </view>
         </view>
       </block>
+      <!-- 文件列表（拖拽模式） -->
+      <block v-else>
+        <view
+          :class="classPrefix + '__list-drag'"
+          :list="dragList"
+          :style="dragWrapStyle"
+          :drag-base-data="dragBaseData"
+        >
+          <view
+            v-for="(file, index) in customFiles"
+            :key="file.url || file.name || index"
+            :class="'' + getDragItemClass(index)"
+            :style="'' + getDragItemStyle(index)"
+            :data-index="index"
+            @longpress="(e) => parseEventDynamicCode(e, 'longPress', index)"
+            @touchmove.stop.prevent="(e) => parseEventDynamicCode(e, dragging ? 'touchMove' : '', index)"
+            @touchend.stop.prevent="onItemTouchEnd($event, { file, index })"
+            @touchstart="onItemTouchStart($event)"
+          >
+            <view
+              :class="
+                classPrefix +
+                '__list-item' +
+                (file.status == 'failed' || file.status == 'reload' ? ' ' + classPrefix + '__list-item--fail' : '') +
+                (file.status == 'loading' ? ' ' + classPrefix + '__list-item--progress' : '')
+              "
+              :data-file="file"
+              :data-index="index"
+              @click="(e) => onPreview(e, { file, index })"
+            >
+              <!-- 左侧图标/缩略图 -->
+              <block v-if="file.status == 'loading'">
+                <t-icon :t-class="classPrefix + '__list-item-loading'" name="loading" size="48rpx" aria-hidden />
+              </block>
+              <block v-else-if="file.status == 'failed' || file.status == 'reload'">
+                <t-icon :t-class="classPrefix + '__list-item-error-icon'" name="error-circle-filled" aria-hidden />
+              </block>
+              <block v-else-if="isImageType(file) && file.url">
+                <view style="position: relative; flex-shrink: 0">
+                  <t-image
+                    :t-class="classPrefix + '__list-item-thumbnail'"
+                    :src="file.thumb || file.url"
+                    :mode="(imageProps && imageProps.mode) || 'aspectFill'"
+                    shape="round"
+                  />
+                  <view v-if="disabled" :class="classPrefix + '__disabled-mask'" />
+                </view>
+              </block>
+              <block v-else>
+                <view :class="classPrefix + '__list-item-icon'">
+                  <t-icon
+                    :t-class="classPrefix + '__file-type ' + getFileTypeIconColorClass(file, classPrefix)"
+                    :name="getFileTypeIcon(file)"
+                  />
+                </view>
+              </block>
+              <!-- 文件名与副文本 -->
+              <view :class="classPrefix + '__list-item-content'">
+                <view :class="classPrefix + '__list-item-name'">
+                  {{ file.name || '' }}
+                </view>
+                <view :class="classPrefix + '__list-item-size'">
+                  {{
+                    file.status == 'loading'
+                      ? file.percent
+                        ? globalConfig.progress.uploadingText + ' ' + file.percent + '%'
+                        : globalConfig.progress.uploadingText
+                      : file.status == 'failed' || file.status == 'reload'
+                        ? globalConfig.progress.failText
+                        : formatSize(file.size)
+                  }}
+                </view>
+              </view>
+              <!-- 删除按钮 -->
+              <view
+                v-if="tools.isBoolean(file.removeBtn) ? file.removeBtn : removeBtn"
+                :class="classPrefix + '__list-item-action'"
+                :data-index="index"
+                aria-role="button"
+                aria-label="删除"
+                @click.stop="(e) => onDelete(e, { index })"
+                @touchstart.stop="onDeleteTapStart($event)"
+                @touchend.stop="onDeleteTapEnd($event, { index })"
+              >
+                <t-icon :t-class="classPrefix + '__list-item-delete'" name="delete" />
+              </view>
+            </view>
+          </view>
+        </view>
+      </block>
     </block>
 
     <!-- ========== grid 布局（默认） ========== -->
@@ -112,7 +202,7 @@
       <block v-if="!dragLayout">
         <t-grid-item
           v-for="(file, index) in customFiles"
-          :key="index"
+          :key="file.url || file.name || index"
           :t-class="classPrefix + '__grid ' + classPrefix + '__grid-file'"
           :t-class-content="classPrefix + '__grid-content'"
           aria-role="presentation"
@@ -248,8 +338,8 @@
           @click="onAddTap"
         >
           <view :class="classPrefix + '__wrapper'" :style="gridItemStyle">
-            <slot name="add-content" />
-            <block v-if="addContent">
+            <slot v-if="addContent === 'slot'" name="add-content" />
+            <block v-else-if="addContent">
               {{ addContent }}
             </block>
             <view v-else :class="classPrefix + '__add-icon ' + (disabled ? classPrefix + '__add-icon--disabled' : '')">
@@ -274,7 +364,8 @@
             :data-index="index"
             @longpress="(e) => parseEventDynamicCode(e, 'longPress', index)"
             @touchmove.stop.prevent="(e) => parseEventDynamicCode(e, dragging ? 'touchMove' : '', index)"
-            @touchend.stop.prevent="(e) => parseEventDynamicCode(e, dragging ? 'touchEnd' : '', index)"
+            @touchend.stop.prevent="onItemTouchEnd($event, { file, index })"
+            @touchstart="onItemTouchStart($event)"
           >
             <t-grid-item
               :t-class="classPrefix + '__grid ' + classPrefix + '__grid-file'"
@@ -410,6 +501,8 @@
                   aria-role="button"
                   aria-label="删除"
                   @click.stop="(e) => onDelete(e, { index })"
+                  @touchstart.stop="onDeleteTapStart($event)"
+                  @touchend.stop="onDeleteTapEnd($event, { index })"
                 >
                   <t-icon name="close" size="32rpx" color="#fff" />
                 </view>
@@ -430,8 +523,8 @@
               @click="onAddTap"
             >
               <view :class="classPrefix + '__wrapper'" :style="gridItemStyle">
-                <slot name="add-content" />
-                <block v-if="addContent">
+                <slot v-if="addContent === 'slot'" name="add-content" />
+                <block v-else-if="addContent">
                   {{ addContent }}
                 </block>
                 <view
@@ -519,6 +612,7 @@ export default {
     props: {
       ...props,
     },
+    emits: ['sortend', 'change'],
     data() {
       return {
         classPrefix: name,
@@ -673,6 +767,76 @@ export default {
         this.$emit('remove', { index, file: delFile });
       },
 
+      onDeleteTapStart(e) {
+        const t = e && e.changedTouches && e.changedTouches[0];
+        this._deleteTapStart = t ? { x: t.clientX, y: t.clientY } : null;
+      },
+      onDeleteTapEnd(e, { index }) {
+        const start = this._deleteTapStart;
+        this._deleteTapStart = null;
+        const t = e && e.changedTouches && e.changedTouches[0];
+        if (!start || !t) return;
+        // 位移超过阈值说明是滑动/拖动起始于删除按钮，不触发删除
+        if (Math.abs(t.clientX - start.x) > 12 || Math.abs(t.clientY - start.y) > 12) return;
+        this.deleteHandle(index);
+      },
+
+      /**
+       * 拖拽项（非删除按钮区域）触摸起点记录
+       * H5 下用于 tap 判定（短按是否要触发预览）；
+       * 小程序端 @click(tap) 正常派发，无需该逻辑。
+       */
+      onItemTouchStart(e) {
+        let parsed = false;
+        // #ifndef H5
+        parsed = true;
+        // #endif
+        if (parsed) return;
+
+        const t = e && e.changedTouches && e.changedTouches[0];
+        if (!t) return;
+        const { target } = t;
+        const cp = this.classPrefix || '';
+        // 触摸起点是否落在删除按钮区域（list: __list-item-action / grid: __close-btn）
+        const inDelete = !!(target && target.closest && target.closest(`.${cp}__list-item-action,.${cp}__close-btn`));
+        this._dragItemTapStart = { x: t.clientX, y: t.clientY, inDelete };
+      },
+
+      /**
+       * 拖拽项（非删除按钮区域）touchend 兜底：
+       * - H5 下若触摸是 tap（位移小且不在删除按钮）→ 直接调 onPreview 触发预览（避免 click 被 .prevent 抑制）
+       * - 否则（非 tap / 在删除按钮）走原有拖拽 dragEnd 逻辑
+       * - 小程序端走原 dragEnd（@click 已经正常）
+       */
+      onItemTouchEnd(e, { file, index }) {
+        // 小程序端：保留原 dragEnd handler
+        let dragEndHandled = false;
+        // #ifndef H5
+        dragEndHandled = true;
+        // #endif
+        if (dragEndHandled) {
+          parseEventDynamicCode.call(this, e, this.dragging ? 'touchEnd' : '', index);
+          return;
+        }
+
+        // H5 端：tap 判定 → 触发预览 / 走 dragEnd
+        const start = this._dragItemTapStart;
+        this._dragItemTapStart = null;
+        const t = e && e.changedTouches && e.changedTouches[0];
+        let isTap = false;
+        if (start && t) {
+          if (Math.abs(t.clientX - start.x) <= 12 && Math.abs(t.clientY - start.y) <= 12) {
+            isTap = true;
+          }
+        }
+        if (isTap && start && !start.inDelete && file) {
+          this.onPreview(e, { file, index });
+          return;
+        }
+        // 非 tap 或在删除按钮区域：走原有拖拽 dragEnd
+        parseEventDynamicCode.call(this, e, this.dragging ? 'touchEnd' : '', index);
+      },
+
       updateGrid() {
         let { gridConfig = {} } = this;
         if (!isObject(gridConfig)) gridConfig = {};
@@ -686,6 +850,8 @@ export default {
         this.dragBaseData = {};
         this.dragWrapStyle = '';
         this.dragLayout = false;
+        this.dragItemClassList = [];
+        this.dragItemStyleList = [];
       },
 
       initDragLayout() {
@@ -694,6 +860,9 @@ export default {
           this.resetDragLayout();
           return;
         }
+        // 主题/文件变化后清理上一次拖拽累积的样式与 class，避免叠加
+        this.dragItemClassList = [];
+        this.dragItemStyleList = [];
         this.initDragList();
         setTimeout(() => {
           this.initDragBaseData();
@@ -702,35 +871,87 @@ export default {
 
       initDragList() {
         let i = 0;
-        const { column, customFiles, customLimit } = this;
+        const { customFiles, customLimit, theme } = this;
+        const isListTheme = theme === 'list';
+        // list 布局是单列拖拽（列数固定 1）
+        const dragColumn = this.getDragColumn();
         const dragList = [];
         customFiles.forEach((item, index) => {
           dragList.push({
             realKey: i, // 真实顺序
             sortKey: index, // 整体顺序
-            tranX: `${(index % column) * 100}%`,
-            tranY: `${Math.floor(index / column) * 100}%`,
+            tranX: `${(index % dragColumn) * 100}%`,
+            tranY: `${Math.floor(index / dragColumn) * 100}%`,
             data: { ...item },
           });
           i += 1;
         });
-        if (customLimit > 0) {
+
+        // list 布局下不添加 fixed 的"添加按钮"项（上传按钮在列表外部，独立渲染）
+        if (customLimit > 0 && !isListTheme) {
           const listLength = dragList.length;
           dragList.push({
             realKey: listLength, // 真实顺序
             sortKey: listLength, // 整体顺序
-            tranX: `${(listLength % column) * 100}%`,
-            tranY: `${Math.floor(listLength / column) * 100}%`,
+            tranX: `${(listLength % dragColumn) * 100}%`,
+            tranY: `${Math.floor(listLength / dragColumn) * 100}%`,
             fixed: true,
           });
         }
-        this.rows = Math.ceil(dragList.length / column);
+        this.rows = Math.ceil(dragList.length / dragColumn);
 
         this.dragList = dragList;
       },
 
+      /**
+       * 获取当前布局的拖拽列数（list 布局固定 1 列）
+       */
+      getDragColumn() {
+        const { theme, column } = this;
+        return theme === 'list' ? 1 : column;
+      },
+
+      /**
+       * 获取拖拽项的间距补偿（list 布局需要加上列表项之间的间距）
+       */
+      getDragItemGap() {
+        if (this.theme !== 'list') return 0;
+        const { windowWidth } = uni.getSystemInfoSync();
+        // less 中 __list 与 __list-drag-item 均使用 24rpx 行间距
+        return (windowWidth / 750) * 24;
+      },
+
+      /**
+       * 获取拖拽布局相关的选择器配置
+       * 统一 list 和 grid 布局的选择器逻辑
+       * list 布局使用非拖拽态的 list-item / list 选择器获取尺寸（拖拽态 DOM 由 dragLayout 切换后才渲染）
+       * grid 布局使用 grid-item / grid 选择器（grid 容器在两种态下都存在）
+       */
+      getDragSelectors() {
+        const { theme, classPrefix } = this;
+        const isListTheme = theme === 'list';
+        let itemSelector;
+        let wrapSelector;
+        // #ifdef H5 || APP
+        itemSelector = isListTheme ? `.${classPrefix}__list-item` : `.t-grid-item`;
+        wrapSelector = isListTheme ? `.${classPrefix}__list` : `.t-grid`;
+        // #endif
+        // #ifndef H5 || APP
+        // 小程序端 grid 布局的节点在 t-grid/t-grid-item 自定义组件内部，需用 >>> 跨组件选择
+        itemSelector = isListTheme ? `.${classPrefix}__list-item` : `.${classPrefix} >>> .t-grid-item`;
+        wrapSelector = isListTheme ? `.${classPrefix}__list` : `.${classPrefix} >>> .t-grid`;
+        // #endif
+
+        return {
+          itemSelector,
+          wrapSelector,
+        };
+      },
+
       initDragBaseData() {
-        const { classPrefix, rows, column } = this;
+        const { classPrefix, rows } = this;
+        const dragColumn = this.getDragColumn();
+        const { itemSelector, wrapSelector } = this.getDragSelectors();
 
         let query;
         // #ifdef H5 || APP
@@ -740,33 +961,28 @@ export default {
           query = this.createSelectorQuery();
         }
 
-        let selectorGridItem;
-        let selectorGrid;
-        // #ifdef H5 || APP
-        selectorGridItem = '.t-grid-item';
-        selectorGrid = '.t-grid';
-        // #endif
-
-        if (!selectorGridItem) {
-          selectorGridItem = `.${classPrefix} >>> .t-grid-item`;
-          selectorGrid = `.${classPrefix} >>> .t-grid`;
-        }
-
-        query.select(selectorGridItem).boundingClientRect();
-        query.select(selectorGrid).boundingClientRect();
+        query.select(itemSelector).boundingClientRect();
+        query.select(wrapSelector).boundingClientRect();
         query.selectViewport().scrollOffset();
         query.exec((res) => {
+          // 选择器未匹配到节点（如主题切换瞬间 / 布局尚未渲染）时静默退出，避免解构 null 报错
+          if (!res || !res[0] || !res[1]) return;
           const [{ width, height }, { left, top }, { scrollTop }] = res;
+
+          // list 布局需要补偿列表项之间的间距（rpx -> px）
+          const gap = this.getDragItemGap();
+          const itemHeight = height + gap;
+
           const dragBaseData = {
             rows,
             classPrefix,
             itemWidth: width,
-            itemHeight: height,
+            itemHeight,
             wrapLeft: left,
             wrapTop: top + scrollTop,
-            columns: column,
+            columns: dragColumn,
           };
-          const dragWrapStyle = `height: ${rows * height}px`;
+          const dragWrapStyle = `height: ${rows * itemHeight}px`;
 
           this.dragBaseData = dragBaseData;
           this.dragWrapStyle = dragWrapStyle;
@@ -822,6 +1038,8 @@ export default {
 
       onPreviewMedia({ index: current }) {
         const sources = this.getPreviewMediaSources();
+        if (typeof uni.previewMedia !== 'function') return;
+
         uni.previewMedia({
           sources,
           current,
@@ -1204,9 +1422,9 @@ export default {
         }
       },
       getDragItemClass(index) {
-        const { classPrefix } = this;
-        const base = [`${classPrefix}__drag-item`];
-        return [...base, ...(this.dragItemClassList[index] || [])].join(' ');
+        const { classPrefix, theme } = this;
+        const itemClass = theme === 'list' ? `${classPrefix}__list-drag-item` : `${classPrefix}__drag-item`;
+        return [itemClass, ...(this.dragItemClassList[index] || [])].join(' ');
       },
       setDragItemStyle(index, val) {
         if (!this.dragItemStyleList[index]) {
@@ -1215,9 +1433,10 @@ export default {
         this.dragItemStyleList[index].push(val);
       },
       getDragItemStyle(index) {
-        const { column, transition } = this;
+        const { theme, column, transition } = this;
         const base = [
-          `width: ${100 / column}%`,
+          // list 布局整行拖拽，宽度由样式表 __list-drag-item 控制（width: 100%）
+          ...(theme === 'list' ? [] : [`width: ${100 / column}%`]),
           `--td-upload-drag-transition-duration: ${transition.duration}ms`,
           `--td-upload-drag-transition-timing-function: ${transition.timingFunction}`,
         ];

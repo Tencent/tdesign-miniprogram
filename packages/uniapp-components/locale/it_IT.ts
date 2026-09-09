@@ -93,7 +93,7 @@ export default {
     resetText: 'Ripristina',
     searchResultText: 'Ricerca "{result}", trovati {count} risultati',
     clearFilterResultButtonText: 'Pulisci il filtro',
-    pullUpLoadingText: 'In carica',
+    loadingText: 'In carica',
   },
   list: {
     loading: 'Caricamento...',

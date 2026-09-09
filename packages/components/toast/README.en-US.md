@@ -24,7 +24,7 @@ using-custom-navbar | Boolean | false | \- | N
 name | params | description
 -- | -- | --
 close | \- | \-
-destroy | \- | \-
+destory | \- | \-
 
 ### Toast External Classes
 

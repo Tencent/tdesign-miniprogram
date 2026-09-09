@@ -106,7 +106,7 @@ export default {
     resetText: 'إعادة ضبط',
     searchResultText: "تم العثور على بحث '{result}' و{count} من العناصر.",
     clearFilterResultButtonText: 'صافي',
-    pullUpLoadingText: 'جاري التحميل',
+    loadingText: 'جاري التحميل',
   },
   list: {
     loading: 'التحميل...',

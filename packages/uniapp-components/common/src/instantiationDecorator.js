@@ -136,22 +136,6 @@ export const wxComponent = function wxComponent() {
   };
 };
 
-function sortPropsType(type) {
-  if (!Array.isArray(type)) {
-    return type;
-  }
-  type.sort((a, b) => {
-    if (a === Boolean) {
-      return -1;
-    }
-    if (b === Boolean) {
-      return 1;
-    }
-    return 0;
-  });
-  return type;
-}
-
 function filterProps(props, controlledProps) {
   const newProps = {};
   const emits = [];
@@ -188,7 +172,8 @@ function filterProps(props, controlledProps) {
     } else {
       newProps[key] = {
         ...(typeof props[key] === 'object' ? props[key] : {}),
-        type: sortPropsType(curType),
+        // Vue uses union prop order to distinguish String and Boolean values.
+        type: curType,
       };
     }
   });

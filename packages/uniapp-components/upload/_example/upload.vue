@@ -45,6 +45,9 @@
         </view>
       </t-demo>
       <!-- #endif -->
+      <t-demo title="03 组件风格" desc="宫格/列表布局">
+        <theme-demo />
+      </t-demo>
     </view>
   </view>
 </template>
@@ -55,6 +58,7 @@ import MessageFile from './messageFile/index.vue';
 import MultipleDemo from './multiple/index.vue';
 import SingleDemo from './single/index.vue';
 import StatusDemo from './status/index.vue';
+import ThemeDemo from './theme/index.vue';
 export default {
   components: {
     SingleDemo,
@@ -62,6 +66,7 @@ export default {
     StatusDemo,
     MessageFile,
     DragDemo,
+    ThemeDemo,
   },
   data() {
     return {};

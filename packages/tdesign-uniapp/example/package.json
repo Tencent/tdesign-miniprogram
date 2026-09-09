@@ -37,6 +37,7 @@
     "type-check": "vue-tsc --noEmit"
   },
   "dependencies": {
+    "@babel/runtime": "catalog:",
     "@dcloudio/uni-app": "catalog:uni",
     "@dcloudio/uni-app-harmony": "catalog:uni",
     "@dcloudio/uni-app-plus": "catalog:uni",
