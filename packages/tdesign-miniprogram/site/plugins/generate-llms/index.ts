@@ -1,19 +1,8 @@
 import { promises, readFileSync, statSync } from 'fs';
-import path, { dirname } from 'path';
-import { fileURLToPath } from 'url';
+import path from 'path';
 
 import grayMatter from 'gray-matter';
 import type { ResolvedConfig } from 'vite';
-
-const __dirname = dirname(fileURLToPath(import.meta.url));
-
-// 组件目录：packages/components
-const componentsRoot = path.resolve(__dirname, '../../../../components');
-// 站点配置文件
-const siteConfigPath = path.resolve(__dirname, '../../site.config.mjs');
-// LLM 产物输出目录：site/dist/llms
-const siteRoot = path.resolve(__dirname, '../../../site');
-const outputDir = path.join(siteRoot, 'dist/llms');
 
 interface ComponentDoc {
   /** 文件名，如 button */
@@ -39,7 +28,9 @@ interface ComponentDoc {
  * 该 runner 在配置加载完成后即关闭，运行期无法再通过 import() 加载模块，
  * 因此这里直接以正则解析配置源码，获取 name/title 与 README 路径的映射。
  */
-function parseComponentRegistry(): Map<string, { name: string; title: string }> {
+function parseComponentRegistry(
+  siteConfigPath: string,
+): Map<string, { name: string; title: string }> {
   const source = readFileSync(siteConfigPath, 'utf-8');
   const map = new Map<string, { name: string; title: string }>();
   // 定位所有组件文档导入，再向前回溯最近的 name / title 字段，避免跨条目误匹配
@@ -197,6 +188,17 @@ function cleanSiteHtml(body: string): string {
 }
 
 /**
+ * 判断 demo 目录是否存在（同步）。
+ */
+function isDirectorySync(p: string): boolean {
+  try {
+    return statSync(p).isDirectory();
+  } catch {
+    return false;
+  }
+}
+
+/**
  * 读取 demo 目录下的源码，返回四段代码块（wxml/js/wxss/json）。
  */
 function readDemoCode(componentDir: string, demoName: string): string {
@@ -215,27 +217,6 @@ function readDemoCode(componentDir: string, demoName: string): string {
     }
   }
   return sections.join('\n');
-}
-
-
-/**
- * 判断 demo 目录是否存在。
- */
-function hasDemo(componentDir: string, demoName: string): boolean {
-  const demoDir = path.join(componentDir, '_example', demoName);
-  return accessSync(demoDir);
-}
-
-/**
- * 同步访问目录，存在返回 true。
- */
-function accessSync(p: string): boolean {
-  try {
-    const stat = statSync(p);
-    return stat.isDirectory();
-  } catch {
-    return false;
-  }
 }
 
 /**
@@ -262,7 +243,7 @@ async function parseComponentReadme(
   const body = cleanSiteHtml(
     content.replace(/\{\{\s*([a-z0-9-]+)\s*\}\}/g, (match, demoName: string) => {
       // 仅当存在对应 _example 目录时才视为 demo 占位符，避免误伤 WXML 模板绑定（如 {{item}}/{{48}}）
-      if (!hasDemo(componentDir, demoName)) return match;
+      if (!isDirectorySync(path.join(componentDir, '_example', demoName))) return match;
       return readDemoCode(componentDir, demoName);
     }),
   );
@@ -326,32 +307,49 @@ export default function generateLlmsPlugin() {
       if (error) return;
       if (!config.env.PROD && config.env.MODE !== 'preview') return;
 
+      // 基于 config.root 推导路径，避免依赖 __dirname 多层回溯
+      // site 根目录为 config.root（vite.config.ts 中已设置），组件目录位于其上级两级
+      const siteRoot = config.root;
+      const componentsRoot = path.resolve(siteRoot, '../../components');
+      const siteConfigPath = path.resolve(siteRoot, 'site.config.mjs');
+      // 产物输出目录：从 config.build.outDir 推导，避免硬编码 dist
+      const outputDir = config.build.outDir || path.join(siteRoot, 'dist');
+      const llmsDir = path.join(outputDir, 'llms');
+
+      // 注册表只解析一次（逐组件解析会重复同步读配置并跑正则）
+      const registry = parseComponentRegistry(siteConfigPath);
+
       const componentDirs = await promises.readdir(componentsRoot);
       const docs: ComponentDoc[] = [];
 
       for (const dir of componentDirs) {
         const componentDir = path.join(componentsRoot, dir);
-        const stat = await promises.stat(componentDir).catch(() => null);
-        if (!stat || !stat.isDirectory()) continue;
+        try {
+          const stat = await promises.stat(componentDir).catch(() => null);
+          if (!stat || !stat.isDirectory()) continue;
 
-        const hasReadme = await promises
-          .access(path.join(componentDir, 'README.md'))
-          .then(() => true)
-          .catch(() => false);
-        if (!hasReadme) continue;
+          const hasReadme = await promises
+            .access(path.join(componentDir, 'README.md'))
+            .then(() => true)
+            .catch(() => false);
+          if (!hasReadme) continue;
 
-        const doc = await parseComponentReadme(componentDir, parseComponentRegistry());
-        if (doc) docs.push(doc);
+          const doc = await parseComponentReadme(componentDir, registry);
+          if (doc) docs.push(doc);
+        } catch (err) {
+          // 单个组件解析失败仅告警，不中断整体生成
+          console.warn(`[generate-llms] 解析组件 ${dir} 失败，已跳过：`, err);
+        }
       }
 
       docs.sort((a, b) => a.slug.localeCompare(b.slug));
 
-      await promises.mkdir(outputDir, { recursive: true });
+      await promises.mkdir(llmsDir, { recursive: true });
 
       for (const doc of docs) {
-        await promises.writeFile(path.join(outputDir, `${doc.slug}.md`), renderComponentMarkdown(doc));
+        await promises.writeFile(path.join(llmsDir, `${doc.slug}.md`), renderComponentMarkdown(doc));
       }
-      await promises.writeFile(path.join(siteRoot, 'dist/llms.txt'), renderLlmsTxt(docs));
+      await promises.writeFile(path.join(outputDir, 'llms.txt'), renderLlmsTxt(docs));
     },
   };
 }
