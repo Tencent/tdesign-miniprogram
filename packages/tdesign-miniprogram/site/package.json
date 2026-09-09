@@ -9,7 +9,8 @@
     "site:preview": "cross-env NODE_ENV=development vite build --configLoader runner --mode preview && cp dist/index.html dist/404.html",
     "site:prerender": "node scripts/prerender.mjs",
     "update:icons": "node scripts/update-icons.mjs",
-    "qrcode": "node scripts/qrcode/index.mjs"
+    "qrcode": "node scripts/qrcode/index.mjs",
+    "llms": "node scripts/generate-llms-md.mjs"
   },
   "license": "MIT",
   "dependencies": {

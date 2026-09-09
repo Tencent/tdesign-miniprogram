@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import type { ResolvedConfig, ViteDevServer } from 'vite';
 
 import generateChangelogJson from '../../../../common/docs/plugins/changelog-to-json';
+import { generateLlmsFiles } from '../scripts/generate-llms-md';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -32,6 +33,8 @@ export default function changelog2Json() {
       if (config.env.PROD || config.env.MODE === 'preview') {
         const json = await generateChangelogJson(changelogPath, 'mobile');
         await promises.writeFile(outputPath, JSON.stringify(json));
+        // 同步生成 LLM Markdown 文档：每个组件一个 <name>.md，外加 llms.txt 索引
+        generateLlmsFiles(path.resolve(outputPath, '../llms'));
       }
     },
   };
