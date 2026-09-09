@@ -26,6 +26,7 @@ export default class Avatar extends SuperComponent {
     prefix,
     classPrefix: name,
     isShow: true,
+    isImgExist: true,
     zIndex: 0,
     windowWidth: systemInfo.windowWidth,
   };
@@ -52,6 +53,15 @@ export default class Avatar extends SuperComponent {
         ...obj,
       });
     },
+
+    image(image) {
+      // 图片地址变化时重置加载失败标记，避免切换后无法重新渲染
+      if (image) {
+        this.setData({
+          isImgExist: true,
+        });
+      }
+    },
   };
 
   methods = {
@@ -62,11 +72,9 @@ export default class Avatar extends SuperComponent {
     },
 
     onLoadError(e: WechatMiniprogram.CustomEvent) {
-      if (this.properties.hideOnLoadFailed) {
-        this.setData({
-          isShow: false,
-        });
-      }
+      this.setData({
+        isImgExist: !this.properties.hideOnLoadFailed,
+      });
       this.triggerEvent('error', e.detail);
     },
   };
