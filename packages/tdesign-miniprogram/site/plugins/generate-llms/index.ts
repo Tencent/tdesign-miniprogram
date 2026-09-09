@@ -1,0 +1,277 @@
+import { promises, readFileSync, statSync } from 'fs';
+import path, { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+import grayMatter from 'gray-matter';
+import type { ResolvedConfig } from 'vite';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// 组件目录：packages/components
+const componentsRoot = path.resolve(__dirname, '../../../../components');
+// 站点配置文件
+const siteConfigPath = path.resolve(__dirname, '../../site.config.mjs');
+// LLM 产物输出目录：site/dist/llms
+const siteRoot = path.resolve(__dirname, '../../../site');
+const outputDir = path.join(siteRoot, 'dist/llms');
+
+interface ComponentDoc {
+  /** 文件名，如 button */
+  slug: string;
+  /** 英文名，如 Button */
+  title: string;
+  /** 中文名，如 按钮 */
+  subtitle: string;
+  /** 描述 */
+  description: string;
+  /** spline 分类 */
+  spline: string;
+  /** 组件名（如 Button / Layout） */
+  component: string;
+  /** 生成后的正文内容（不含 frontmatter） */
+  body: string;
+}
+
+/**
+ * 从 site.config.mjs 解析组件注册表，用于确定组件公开名称与展示标题。
+ */
+async function parseComponentRegistry(): Promise<Map<string, { name: string; title: string }>> {
+  const { docs } = await import(siteConfigPath);
+  const map = new Map<string, { name: string; title: string }>();
+  const collect = (
+    entries: Array<{ name: string; title: string; component?: () => unknown }>,
+  ) => {
+    for (const child of entries) {
+      const src = String(child.component || '');
+      const m = src.match(/@\/([^/]+)\/README\.md/);
+      if (!m) continue;
+      // 取最末段目录名作为 key（如 col、paragraph）
+      map.set(m[1], { name: child.name, title: child.title });
+    }
+  };
+  docs.forEach((doc: { type?: string; children?: Array<{ name: string; title: string; component?: () => unknown }> }) => {
+    if (doc.children) collect(doc.children);
+  });
+  return map;
+}
+
+/**
+ * 拆分 title：'Button 按钮' -> { title: 'Button', subtitle: '按钮' }
+ */
+function splitTitle(title: string): { title: string; subtitle: string } {
+  const trimmed = (title || '').trim();
+  const match = trimmed.match(/^(.+?)\s+(.+)$/);
+  if (match) return { title: match[1].trim(), subtitle: match[2].trim() };
+  return { title: trimmed, subtitle: '' };
+}
+
+/**
+ * 移除站点专用说明块：渲染框架支持情况 / 版本提示 / Tips blockquote / 预览链接。
+ * 通过 tag 计数处理嵌套元素，从而整块移除。
+ */
+function removeSiteBlocks(body: string): string {
+  const blockTags = ['div', 'blockquote'];
+  let result = body;
+
+  for (const tag of blockTags) {
+    const openRe = new RegExp(`<${tag}\\b[^>]*>`, 'g');
+    let match: RegExpExecArray | null;
+    while ((match = openRe.exec(result))) {
+      const openTag = match[0];
+      const isTarget =
+        (tag === 'div' && /(background:\s*#ecf2fe|background-color:\s*#ecf2fe|background:\s*#d9e1ff|background-color:\s*#d9e1ff)/.test(openTag)) ||
+        (tag === 'blockquote' && /background-color:\s*#/.test(openTag)) ||
+        /渲染框架支持情况|该组件于|Tips:|预览效果/.test(openTag);
+
+      if (!isTarget) continue;
+
+      let depth = 0;
+      const tokenRe = new RegExp(`</?${tag}(?:\\s[^>]*)?>`, 'g');
+      tokenRe.lastIndex = match.index;
+      let token: RegExpExecArray | null;
+      while ((token = tokenRe.exec(result))) {
+        if (token[0].startsWith(`</${tag}`)) {
+          depth -= 1;
+          if (depth === 0) {
+            const end = token.index + token[0].length;
+            result = result.slice(0, match.index) + result.slice(end);
+            break;
+          }
+        } else {
+          depth += 1;
+        }
+      }
+      openRe.lastIndex = match.index;
+    }
+  }
+  return result;
+}
+
+/**
+ * 清理站点专用 HTML 片段，保留可读的 Markdown。
+ */
+function cleanSiteHtml(body: string): string {
+  // 仅移除站点专用 HTML 块（渲染框架提示 / 版本提示 / Tips / 预览链接），
+  // 保留代码示例中的 <t-icon>、TypeScript 泛型等真实内容。
+  return removeSiteBlocks(body)
+    .replace(/<a href="https:\/\/developers\.weixin\.qq\.com\/s\/[^"]*"[^>]*>[^<]*<\/a>/g, '');
+}
+
+/**
+ * 读取 demo 目录下的源码，返回四段代码块（wxml/js/wxss/json）。
+ */
+function readDemoCode(componentDir: string, demoName: string): string {
+  const demoDir = path.join(componentDir, '_example', demoName);
+  const fileOrder = ['index.wxml', 'index.js', 'index.wxss', 'index.json'];
+  const sections: string[] = [];
+  for (const file of fileOrder) {
+    try {
+      const content = readFileSync(path.join(demoDir, file), 'utf-8');
+      const lang = file.replace('index.', '');
+      sections.push('```' + lang, content, '```');
+    } catch {
+      // 忽略不存在的文件
+    }
+  }
+  return sections.join('\n');
+}
+
+
+/**
+ * 判断 demo 目录是否存在。
+ */
+function hasDemo(componentDir: string, demoName: string): boolean {
+  const demoDir = path.join(componentDir, '_example', demoName);
+  return accessSync(demoDir);
+}
+
+/**
+ * 同步访问目录，存在返回 true。
+ */
+function accessSync(p: string): boolean {
+  try {
+    const stat = statSync(p);
+    return stat.isDirectory();
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * 将 README 解析为组件文档。
+ */
+async function parseComponentReadme(
+  componentDir: string,
+  registry: Map<string, { name: string; title: string }>,
+): Promise<ComponentDoc | null> {
+  const readmePath = path.join(componentDir, 'README.md');
+  const raw = await promises.readFile(readmePath, 'utf-8');
+  const { data, content } = grayMatter(raw);
+  const { title: rawTitle, description, spline } = data;
+
+  if (!rawTitle) return null;
+
+  const slug = path.basename(componentDir);
+  const meta = registry.get(slug);
+  const title = meta?.title || rawTitle;
+  const { title: enTitle, subtitle } = splitTitle(title);
+  // 组件名：优先站点注册名，回退为英文 title
+  const component = meta?.name || enTitle;
+
+  const body = cleanSiteHtml(
+    content.replace(/\{\{\s*([a-z0-9-]+)\s*\}\}/g, (match, demoName: string) => {
+      // 仅当存在对应 _example 目录时才视为 demo 占位符，避免误伤 WXML 模板绑定（如 {{item}}/{{48}}）
+      if (!hasDemo(componentDir, demoName)) return match;
+      return readDemoCode(componentDir, demoName);
+    }),
+  );
+
+  return {
+    slug,
+    title: enTitle,
+    subtitle,
+    description: description || '',
+    spline: spline || '',
+    component,
+    body,
+  };
+}
+
+/**
+ * 渲染单篇组件文档的 Markdown。
+ */
+function renderComponentMarkdown(doc: ComponentDoc): string {
+  const fm = [
+    '---',
+    `title: ${doc.title}`,
+    `subtitle: ${doc.subtitle}`,
+    `description: ${doc.description}`,
+    `spline: ${doc.spline}`,
+    `component: ${doc.component}`,
+    '---',
+    '',
+  ].join('\n');
+  return `${fm}${doc.body.trim()}\n`;
+}
+
+/**
+ * 渲染 llms.txt 索引。
+ */
+function renderLlmsTxt(docs: ComponentDoc[]): string {
+  const lines = [
+    '# TDesign MiniProgram',
+    '',
+    '> TDesign 小程序端组件库的 LLM 友好文档索引。',
+    '',
+  ];
+  docs.forEach((doc) => {
+    const titleText = doc.subtitle ? `${doc.title} ${doc.subtitle}` : doc.title;
+    lines.push(`- [${titleText}](./llms/${doc.slug}.md)：${doc.description}`);
+  });
+  return `${lines.join('\n')}\n`;
+}
+
+/**
+ * vite 插件：在站点构建时，为每个组件生成面向 LLM 的 Markdown 文档。
+ */
+export default function generateLlmsPlugin() {
+  let config: ResolvedConfig;
+  return {
+    name: 'generate-llms',
+    configResolved(resolvedConfig: ResolvedConfig) {
+      config = resolvedConfig;
+    },
+    async closeBundle(error?: Error) {
+      if (error) return;
+      if (!config.env.PROD && config.env.MODE !== 'preview') return;
+
+      const registry = await parseComponentRegistry();
+      const componentDirs = await promises.readdir(componentsRoot);
+      const docs: ComponentDoc[] = [];
+
+      for (const dir of componentDirs) {
+        const componentDir = path.join(componentsRoot, dir);
+        const stat = await promises.stat(componentDir).catch(() => null);
+        if (!stat || !stat.isDirectory()) continue;
+
+        const hasReadme = await promises
+          .access(path.join(componentDir, 'README.md'))
+          .then(() => true)
+          .catch(() => false);
+        if (!hasReadme) continue;
+
+        const doc = await parseComponentReadme(componentDir, registry);
+        if (doc) docs.push(doc);
+      }
+
+      docs.sort((a, b) => a.slug.localeCompare(b.slug));
+
+      await promises.mkdir(outputDir, { recursive: true });
+
+      for (const doc of docs) {
+        await promises.writeFile(path.join(outputDir, `${doc.slug}.md`), renderComponentMarkdown(doc));
+      }
+      await promises.writeFile(path.join(siteRoot, 'dist/llms.txt'), renderLlmsTxt(docs));
+    },
+  };
+}
