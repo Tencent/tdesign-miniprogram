@@ -1,5 +1,5 @@
 import { CHAT_COMPONENT_MAP } from '../../../../common/js/components';
-import generateLlmsPlugin from '../../../../tdesign-miniprogram/site/plugins/generate-llms';
+import generateLlmsPlugin from '../../../../common-docs/plugins/generate-llms';
 
 /**
  * chat 站点专用：基于 CHAT_COMPONENT_MAP 生成组件的 LLM Markdown 文档。
