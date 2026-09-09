@@ -211,8 +211,8 @@ function renderComponentMarkdown(doc) {
 /**
  * 渲染 llms.txt 索引。
  */
-function renderLlmsTxt(docs) {
-  const lines = ['# TDesign UniApp', '', '> TDesign UniApp 端组件库的 LLM 友好文档索引。', ''];
+function renderLlmsTxt(docs, siteTitle, siteDescription) {
+  const lines = [`# ${siteTitle}`, '', `> ${siteDescription}`, ''];
   docs.forEach((doc) => {
     const titleText = doc.subtitle ? `${doc.title} ${doc.subtitle}` : doc.title;
     lines.push(`- [${titleText}](./llms/${doc.slug}.md)：${doc.description}`);
@@ -223,7 +223,12 @@ function renderLlmsTxt(docs) {
 /**
  * vite 插件：在站点构建时，为每个组件生成面向 LLM 的 Markdown 文档。
  */
-export default function generateLlmsPlugin() {
+export default function generateLlmsPlugin(options = {}) {
+  const {
+    componentsDir = '../../uniapp-components',
+    siteTitle = 'TDesign UniApp',
+    siteDescription = 'TDesign UniApp 端组件库的 LLM 友好文档索引。',
+  } = options;
   let config;
   return {
     name: 'generate-llms',
@@ -234,10 +239,10 @@ export default function generateLlmsPlugin() {
       if (error) return;
       if (!config.env.PROD && config.env.MODE !== 'preview') return;
 
-      // uniapp 组件目录：site 根目录（config.root）的上级两级
+      // site 根目录为 config.root（vite.config.ts 中已设置），组件目录相对其解析
       const siteRoot = config.root;
-      const componentsRoot = path.resolve(siteRoot, '../../uniapp-components');
-      // 产物输出目录：从 config.build.outDir 推导
+      const componentsRoot = path.resolve(siteRoot, componentsDir);
+      // 产物输出目录：从 config.build.outDir 推导，避免硬编码 dist
       const outputDir = config.build.outDir || path.join(siteRoot, 'dist');
       const llmsDir = path.join(outputDir, 'llms');
 
@@ -271,7 +276,7 @@ export default function generateLlmsPlugin() {
       for (const doc of docs) {
         await promises.writeFile(path.join(llmsDir, `${doc.slug}.md`), renderComponentMarkdown(doc));
       }
-      await promises.writeFile(path.join(outputDir, 'llms.txt'), renderLlmsTxt(docs));
+      await promises.writeFile(path.join(outputDir, 'llms.txt'), renderLlmsTxt(docs, siteTitle, siteDescription));
     },
   };
 }
