@@ -67,7 +67,18 @@ describe('Avatar & Avatar Groups', () => {
       expect($text.dom.textContent).toBe('A');
     });
 
-    it(':hideOnLoadFailed', async () => {
+    it(':hideOnLoadFailed=false 图片加载失败后保留图片', async () => {
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const $image = comp.querySelector('.error-avatar-wrapper >>> #image');
+      $image.dispatchEvent('error');
+      await simulate.sleep(20);
+      // 默认 hideOnLoadFailed=false：图片组件仍保留，由 t-image 内部展示错误占位
+      expect(comp.querySelector('.error-avatar-wrapper >>> .t-image')).toBeTruthy();
+    });
+
+    it(':hideOnLoadFailed=true 图片加载失败后移除图片回退字符', async () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
 
@@ -80,7 +91,9 @@ describe('Avatar & Avatar Groups', () => {
       });
       $image.dispatchEvent('error');
       await simulate.sleep(20);
-      expect($wrapper.dom.style.display).toBe('none');
+      // 仅移除图片组件（回退展示字符内容），头像 wrapper 仍保留
+      expect($wrapper.dom.style.display).toBe('');
+      expect(comp.querySelector('.error-avatar-wrapper >>> .t-image')).toBeFalsy();
     });
   });
 
