@@ -4,7 +4,7 @@ import path from 'path';
 import grayMatter from 'gray-matter';
 import type { ResolvedConfig } from 'vite';
 
-import { MOBILE_COMPONENT_MAP } from '../../../../common/js/components';
+import { CHAT_COMPONENT_MAP, MOBILE_COMPONENT_MAP } from '../../../../common/js/components';
 
 interface ComponentDoc {
   /** 文件名，如 button */
@@ -196,7 +196,10 @@ function readDemoCode(componentDir: string, demoName: string): string {
 /**
  * 将 README 解析为组件文档。
  */
-async function parseComponentReadme(componentDir: string): Promise<ComponentDoc | null> {
+async function parseComponentReadme(
+  componentDir: string,
+  componentMap: ComponentMap,
+): Promise<ComponentDoc | null> {
   const readmePath = path.join(componentDir, 'README.md');
   const raw = await promises.readFile(readmePath, 'utf-8');
   const { data, content } = grayMatter(raw);
@@ -206,8 +209,8 @@ async function parseComponentReadme(componentDir: string): Promise<ComponentDoc 
 
   const slug = path.basename(componentDir);
   const { title: enTitle, subtitle } = splitTitle(rawTitle);
-  // 组件名：优先取 MOBILE_COMPONENT_MAP 注册的导出名（首项），回退为英文 title
-  const component = MOBILE_COMPONENT_MAP[slug]?.[0] || enTitle;
+  // 组件名：优先取组件 Map 注册的导出名（首项），回退为英文 title
+  const component = componentMap[slug]?.[0] || enTitle;
 
   const body = cleanSiteHtml(
     content.replace(/\{\{\s*([a-z0-9-]+)\s*\}\}/g, (match, demoName: string) => {
@@ -248,11 +251,11 @@ function renderComponentMarkdown(doc: ComponentDoc): string {
 /**
  * 渲染 llms.txt 索引。
  */
-function renderLlmsTxt(docs: ComponentDoc[]): string {
+function renderLlmsTxt(docs: ComponentDoc[], siteTitle: string, siteDescription: string): string {
   const lines = [
-    '# TDesign MiniProgram',
+    `# ${siteTitle}`,
     '',
-    '> TDesign 小程序端组件库的 LLM 友好文档索引。',
+    `> ${siteDescription}`,
     '',
   ];
   docs.forEach((doc) => {
@@ -262,10 +265,31 @@ function renderLlmsTxt(docs: ComponentDoc[]): string {
   return `${lines.join('\n')}\n`;
 }
 
+/** 组件清单映射：slug -> 导出组件名列表 */
+type ComponentMap = Record<string, string[]>;
+
+/** 插件配置项 */
+export interface GenerateLlmsOptions {
+  /** 组件清单映射，如 MOBILE_COMPONENT_MAP / CHAT_COMPONENT_MAP */
+  componentMap?: ComponentMap;
+  /** 组件根目录（相对 site root），默认 '../../components' */
+  componentsDir?: string;
+  /** llms.txt 索引标题 */
+  siteTitle?: string;
+  /** llms.txt 索引描述 */
+  siteDescription?: string;
+}
+
 /**
  * vite 插件：在站点构建时，为每个组件生成面向 LLM 的 Markdown 文档。
  */
-export default function generateLlmsPlugin() {
+export default function generateLlmsPlugin(options: GenerateLlmsOptions = {}) {
+  const {
+    componentMap = MOBILE_COMPONENT_MAP,
+    componentsDir = '../../components',
+    siteTitle = 'TDesign MiniProgram',
+    siteDescription = 'TDesign 小程序端组件库的 LLM 友好文档索引。',
+  } = options;
   let config: ResolvedConfig;
   return {
     name: 'generate-llms',
@@ -279,14 +303,14 @@ export default function generateLlmsPlugin() {
       // 基于 config.root 推导路径，避免依赖 __dirname 多层回溯
       // site 根目录为 config.root（vite.config.ts 中已设置），组件目录位于其上级两级
       const siteRoot = config.root;
-      const componentsRoot = path.resolve(siteRoot, '../../components');
+      const componentsRoot = path.resolve(siteRoot, componentsDir);
       // 产物输出目录：从 config.build.outDir 推导，避免硬编码 dist
       const outputDir = config.build.outDir || path.join(siteRoot, 'dist');
       const llmsDir = path.join(outputDir, 'llms');
 
-      // 组件清单以 MOBILE_COMPONENT_MAP 的 key 为准，再补充不在 Map 中但有 README 的组件目录
+      // 组件清单以 componentMap 的 key 为准，再补充不在 Map 中但有 README 的组件目录
       const allDirs = await promises.readdir(componentsRoot);
-      const mapKeys = Object.keys(MOBILE_COMPONENT_MAP);
+      const mapKeys = Object.keys(componentMap);
       const componentDirs = [...mapKeys, ...allDirs.filter((dir) => !mapKeys.includes(dir))];
       const docs: ComponentDoc[] = [];
 
@@ -302,7 +326,7 @@ export default function generateLlmsPlugin() {
             .catch(() => false);
           if (!hasReadme) continue;
 
-          const doc = await parseComponentReadme(componentDir);
+          const doc = await parseComponentReadme(componentDir, componentMap);
           if (doc) docs.push(doc);
         } catch (err) {
           // 单个组件解析失败仅告警，不中断整体生成
@@ -317,7 +341,7 @@ export default function generateLlmsPlugin() {
       for (const doc of docs) {
         await promises.writeFile(path.join(llmsDir, `${doc.slug}.md`), renderComponentMarkdown(doc));
       }
-      await promises.writeFile(path.join(outputDir, 'llms.txt'), renderLlmsTxt(docs));
+      await promises.writeFile(path.join(outputDir, 'llms.txt'), renderLlmsTxt(docs, siteTitle, siteDescription));
     },
   };
 }
