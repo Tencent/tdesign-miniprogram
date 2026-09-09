@@ -33,25 +33,28 @@ interface ComponentDoc {
 }
 
 /**
- * 从 site.config.mjs 解析组件注册表，用于确定组件公开名称与展示标题。
+ * 从 site.config.mjs 文本解析组件注册表，用于确定组件公开名称与展示标题。
+ *
+ * 说明：站点以 `--configLoader runner` 构建，插件代码在 module runner 中执行，
+ * 该 runner 在配置加载完成后即关闭，运行期无法再通过 import() 加载模块，
+ * 因此这里直接以正则解析配置源码，获取 name/title 与 README 路径的映射。
  */
-async function parseComponentRegistry(): Promise<Map<string, { name: string; title: string }>> {
-  const { docs } = await import(siteConfigPath);
+function parseComponentRegistry(): Map<string, { name: string; title: string }> {
+  const source = readFileSync(siteConfigPath, 'utf-8');
   const map = new Map<string, { name: string; title: string }>();
-  const collect = (
-    entries: Array<{ name: string; title: string; component?: () => unknown }>,
-  ) => {
-    for (const child of entries) {
-      const src = String(child.component || '');
-      const m = src.match(/@\/([^/]+)\/README\.md/);
-      if (!m) continue;
-      // 取最末段目录名作为 key（如 col、paragraph）
-      map.set(m[1], { name: child.name, title: child.title });
-    }
-  };
-  docs.forEach((doc: { type?: string; children?: Array<{ name: string; title: string; component?: () => unknown }> }) => {
-    if (doc.children) collect(doc.children);
-  });
+  // 定位所有组件文档导入，再向前回溯最近的 name / title 字段，避免跨条目误匹配
+  const importRe = /component:\s*\(\)\s*=>\s*import\(['"`]\/@\/([^/'"`]+)\/README\.md['"`]\)/g;
+  const fieldRe = (field: string) => new RegExp(`${field}:\\s*['"\`]([^'"\`]+)['"\`]`, 'g');
+  let match: RegExpExecArray | null;
+  while ((match = importRe.exec(source))) {
+    const slug = match[1];
+    const before = source.slice(Math.max(0, match.index - 600), match.index);
+    const nameMatch = [...before.matchAll(fieldRe('name'))].pop();
+    const titleMatch = [...before.matchAll(fieldRe('title'))].pop();
+    if (!nameMatch || !titleMatch) continue;
+    // 同一组件多次出现时以首次为准（中英文配置同源，不会重复）
+    if (!map.has(slug)) map.set(slug, { name: nameMatch[1], title: titleMatch[1] });
+  }
   return map;
 }
 
@@ -245,7 +248,6 @@ export default function generateLlmsPlugin() {
       if (error) return;
       if (!config.env.PROD && config.env.MODE !== 'preview') return;
 
-      const registry = await parseComponentRegistry();
       const componentDirs = await promises.readdir(componentsRoot);
       const docs: ComponentDoc[] = [];
 
@@ -260,7 +262,7 @@ export default function generateLlmsPlugin() {
           .catch(() => false);
         if (!hasReadme) continue;
 
-        const doc = await parseComponentReadme(componentDir, registry);
+        const doc = await parseComponentReadme(componentDir, parseComponentRegistry());
         if (doc) docs.push(doc);
       }
 
