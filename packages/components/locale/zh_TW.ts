@@ -80,7 +80,7 @@ export default {
     resetText: '重置',
     searchResultText: '搜尋"{result}"，找到{count}項結果',
     clearFilterResultButtonText: '清空篩選',
-    pullUpLoadingText: '加載中...',
+    loadingText: '加載中...',
   },
   list: {
     loading: '加載中...',
