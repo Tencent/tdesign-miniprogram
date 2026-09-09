@@ -24,7 +24,7 @@ export default function generateChatLlmsPlugin() {
       await generateLlmsDocs({
         componentsRoot,
         outputDir,
-        platform: 'chat',
+        platform: 'mobile',
         siteTitle: 'TDesign Uniapp',
         siteDescription: 'TDesign Uniapp 组件库的 LLM 友好文档索引。',
       });
