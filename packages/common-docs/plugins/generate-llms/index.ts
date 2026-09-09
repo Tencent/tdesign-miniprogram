@@ -1,13 +1,28 @@
 import { promises, readFileSync, statSync } from 'fs';
 import path from 'path';
 
-import grayMatter from 'gray-matter';
-
 import { cleanSiteHtml, splitTitle } from './markdown';
 import type { ComponentDoc, ComponentMap, GenerateLlmsOptions } from './types';
 
 export type { ComponentDoc, ComponentMap, GenerateLlmsOptions } from './types';
 export { cleanSiteHtml, splitTitle } from './markdown';
+
+/**
+ * 解析 Markdown 的 frontmatter（--- 包裹的简单 key: value 格式）。
+ * 替代 gray-matter，避免引入额外依赖。
+ */
+function parseFrontmatter(raw: string): { data: Record<string, string>; content: string } {
+  const data: Record<string, string> = {};
+  const match = raw.match(/^---\s*\n([\s\S]*?)\n---\s*\n?/);
+  if (!match) return { data, content: raw };
+
+  const fm = match[1];
+  for (const line of fm.split('\n')) {
+    const kv = line.match(/^([a-zA-Z0-9_-]+)\s*:\s*(.*?)\s*$/);
+    if (kv) data[kv[1]] = kv[2];
+  }
+  return { data, content: raw.slice(match[0].length) };
+}
 
 /** 判断 demo 目录是否存在（同步）。 */
 function isDirectorySync(p: string): boolean {
@@ -47,7 +62,7 @@ async function parseComponentReadme(
 ): Promise<ComponentDoc | null> {
   const readmePath = path.join(componentDir, 'README.md');
   const raw = await promises.readFile(readmePath, 'utf-8');
-  const { data, content } = grayMatter(raw);
+  const { data, content } = parseFrontmatter(raw);
   const { title: rawTitle, description, spline } = data;
 
   if (!rawTitle) return null;
@@ -113,7 +128,7 @@ function renderLlmsTxt(docs: ComponentDoc[], siteTitle: string, siteDescription:
 /**
  * 纯 JS 方法：为每个组件生成面向 LLM 的 Markdown 文档。
  *
- * 与 vite 解耦 —— 仅依赖文件系统与 gray-matter，不引入任何构建工具类型。
+ * 与 vite 解耦 —— 仅依赖文件系统，不引入额外第三方依赖。
  * 数据源为组件目录下的 README.md（frontmatter + 正文），
  * `{{ demo }}` 占位符替换为 `_example/` 目录下的真实源码块。
  * 产物：`<outputDir>/llms/<slug>.md`（每个组件一份）+ `<outputDir>/llms.txt`（组件索引）。
