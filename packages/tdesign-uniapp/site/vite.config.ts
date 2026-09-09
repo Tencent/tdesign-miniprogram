@@ -6,6 +6,7 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
 import changelog2Json from './web/plugins/changelog-to-json';
+import generateLlms from './web/plugins/generate-llms';
 import tdocPlugin from './web/plugins/plugin-tdoc';
 
 const resolvePath = (r) => path.resolve(__dirname, r);
@@ -104,6 +105,7 @@ const config: UserConfig | (({ mode }: { mode: string }) => UserConfig) = define
       }),
       tdocPlugin(mode),
       changelog2Json(),
+      generateLlms(),
       disableTreeShakingPlugin(['style/', 'toast/']),
     ],
   };
