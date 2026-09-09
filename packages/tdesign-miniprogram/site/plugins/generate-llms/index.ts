@@ -1,7 +1,8 @@
 import { readFileSync } from 'fs';
+import { readFile } from 'fs/promises';
 import path from 'path';
 
-import generateLlmsDocs from '../../../../common/docs/plugins/generate-llms';
+import generateLlmsDocs, { createComponentDocParser } from '../../../../common/docs/plugins/generate-llms';
 
 /** 小程序 demo 源码解析器：读取 _example/<demoName> 下的四段代码块（wxml/js/wxss/json）。 */
 function readDemoCode(componentDir: string, demoName: string): string {
@@ -21,6 +22,13 @@ function readDemoCode(componentDir: string, demoName: string): string {
   });
   return sections.join('\n');
 }
+
+// 组件文档解析器：读组件目录 README.md，demo 占位符由仓库自实现的 readDemoCode 替换，
+// 正文清理走默认 cleanSiteHtml（微信站点清理）
+const parseComponentDoc = createComponentDocParser({
+  readComponentDoc: (componentDir) => readFile(`${componentDir}/README.md`, 'utf-8').catch(() => null),
+  readDemoCode,
+});
 
 /**
  * vite 插件：站点构建时，基于 MOBILE_COMPONENT_MAP 生成组件的 LLM Markdown 文档。
@@ -47,7 +55,7 @@ export default function generateMobileLlmsPlugin() {
         componentsRoot,
         outputDir,
         platform: 'mobile',
-        readDemoCode,
+        parseComponentDoc,
         siteTitle: 'TDesign MiniProgram',
         siteDescription: 'TDesign 小程序端组件库的 LLM 友好文档索引。',
       });
