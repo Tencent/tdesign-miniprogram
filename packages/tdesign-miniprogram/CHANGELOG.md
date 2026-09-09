@@ -5,6 +5,21 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.16.1 `2026-09-09`
+
+### 🚀 Features
+
+- `CharMarkdown`: 新增可选配置 `streaming.completeSyntax`，默认为 false，仅控制是否处理流式末尾未闭合的 Markdown 语法。设为 true 时，会对末尾未闭合的链接、图片、加粗、行内代码等语法进行补全或隐藏，避免暴露原始符号与 URL。 @anlyyao ([#4627](https://github.com/Tencent/tdesign-miniprogram/pull/4627))
+- `Icon`: 新增  send-1-filled, send-1,  tablet-filled ,tablet 图标 @RADWIMPS426 ([icons#270](https://github.com/Tencent/tdesign-icons/pull/270)) ([icons#293](https://github.com/Tencent/tdesign-icons/pull/293)) @liweijie0812 ([#4621](https://github.com/Tencent/tdesign-miniprogram/pull/4621))
+- `Table`: 支持全局配置 @anlyyao ([#4637](https://github.com/Tencent/tdesign-miniprogram/pull/4637))
+
+### 🐞 Bug Fixes
+
+- `Avatar`: 修复图片加载失败后回退展示及切换图片地址无法重新加载的问题 @anlyyao ([#4635](https://github.com/Tencent/tdesign-miniprogram/pull/4635))
+- `Icon`: 修复 usb 图标深色模式下渲染异常 @uyarn ([icons#298](https://github.com/Tencent/tdesign-icons/pull/298)) @liweijie0812 ([#4621](https://github.com/Tencent/tdesign-miniprogram/pull/4621))
+- `Message`: 修复 Android 页面后退重进时可能卡死的问题 @SC123667 ([#4603](https://github.com/Tencent/tdesign-miniprogram/pull/4603))
+- `Tag`: 修复关闭图标点击时同时触发 `click` 事件的问题 @anlyyao ([#4611](https://github.com/Tencent/tdesign-miniprogram/pull/4611))
+
 ## 🌈 1.16.0 `2026-08-06`
 
 ### 🚀 Features
