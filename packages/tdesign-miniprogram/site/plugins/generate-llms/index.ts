@@ -1,14 +1,36 @@
+import path from 'path';
+
+import generateLlmsDocs from '../../../../common-docs/plugins/generate-llms';
 import { MOBILE_COMPONENT_MAP } from '../../../../common/js/components';
-import generateLlmsPlugin from '../../../../common-docs/plugins/generate-llms';
 
 /**
- * 站点专用：基于 MOBILE_COMPONENT_MAP 生成组件的 LLM Markdown 文档。
+ * vite 插件：站点构建时，基于 MOBILE_COMPONENT_MAP 生成组件的 LLM Markdown 文档。
+ * 核心逻辑为纯 JS 方法 generateLlmsDocs，此处仅负责 vite 构建钩子分发。
  */
 export default function generateMobileLlmsPlugin() {
-  return generateLlmsPlugin({
-    componentMap: MOBILE_COMPONENT_MAP,
-    componentsDir: '../../components',
-    siteTitle: 'TDesign MiniProgram',
-    siteDescription: 'TDesign 小程序端组件库的 LLM 友好文档索引。',
-  });
+  let config: any;
+  return {
+    name: 'generate-llms',
+    configResolved(resolvedConfig: any) {
+      config = resolvedConfig;
+    },
+    async closeBundle(error?: Error) {
+      if (error) return;
+      if (!config.env.PROD && config.env.MODE !== 'preview') return;
+
+      // 基于 config.root 推导路径，避免依赖 __dirname 多层回溯
+      const siteRoot = config.root;
+      const componentsRoot = path.resolve(siteRoot, '../../components');
+      // 产物输出目录：从 config.build.outDir 推导，避免硬编码 dist
+      const outputDir = config.build.outDir || path.join(siteRoot, 'dist');
+
+      await generateLlmsDocs({
+        componentsRoot,
+        outputDir,
+        componentMap: MOBILE_COMPONENT_MAP,
+        siteTitle: 'TDesign MiniProgram',
+        siteDescription: 'TDesign 小程序端组件库的 LLM 友好文档索引。',
+      });
+    },
+  };
 }

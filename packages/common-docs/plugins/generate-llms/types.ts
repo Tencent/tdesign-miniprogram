@@ -19,12 +19,14 @@ export interface ComponentDoc {
   body: string;
 }
 
-/** 插件配置项 */
+/** 生成配置项 */
 export interface GenerateLlmsOptions {
+  /** 组件根目录（绝对路径），目录下含各组件 README.md 与 _example/ */
+  componentsRoot: string;
+  /** 产物输出目录（绝对路径），生成 <outputDir>/llms/<slug>.md 与 <outputDir>/llms.txt */
+  outputDir: string;
   /** 组件清单映射，如 MOBILE_COMPONENT_MAP / CHAT_COMPONENT_MAP */
   componentMap?: ComponentMap;
-  /** 组件根目录（相对 site root） */
-  componentsDir?: string;
   /** llms.txt 索引标题 */
   siteTitle?: string;
   /** llms.txt 索引描述 */

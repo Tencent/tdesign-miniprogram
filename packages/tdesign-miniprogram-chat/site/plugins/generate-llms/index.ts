@@ -1,14 +1,34 @@
+import path from 'path';
+
+import generateLlmsDocs from '../../../../common-docs/plugins/generate-llms';
 import { CHAT_COMPONENT_MAP } from '../../../../common/js/components';
-import generateLlmsPlugin from '../../../../common-docs/plugins/generate-llms';
 
 /**
- * chat 站点专用：基于 CHAT_COMPONENT_MAP 生成组件的 LLM Markdown 文档。
+ * vite 插件：chat 站点构建时，基于 CHAT_COMPONENT_MAP 生成组件的 LLM Markdown 文档。
+ * 核心逻辑为纯 JS 方法 generateLlmsDocs，此处仅负责 vite 构建钩子分发。
  */
 export default function generateChatLlmsPlugin() {
-  return generateLlmsPlugin({
-    componentMap: CHAT_COMPONENT_MAP,
-    componentsDir: '../../pro-components/chat',
-    siteTitle: 'TDesign MiniProgram Chat',
-    siteDescription: 'TDesign 小程序 AI Chat 组件库的 LLM 友好文档索引。',
-  });
+  let config: any;
+  return {
+    name: 'generate-llms',
+    configResolved(resolvedConfig: any) {
+      config = resolvedConfig;
+    },
+    async closeBundle(error?: Error) {
+      if (error) return;
+      if (!config.env.PROD && config.env.MODE !== 'preview') return;
+
+      const siteRoot = config.root;
+      const componentsRoot = path.resolve(siteRoot, '../../pro-components/chat');
+      const outputDir = config.build.outDir || path.join(siteRoot, 'dist');
+
+      await generateLlmsDocs({
+        componentsRoot,
+        outputDir,
+        componentMap: CHAT_COMPONENT_MAP,
+        siteTitle: 'TDesign MiniProgram Chat',
+        siteDescription: 'TDesign 小程序 AI Chat 组件库的 LLM 友好文档索引。',
+      });
+    },
+  };
 }

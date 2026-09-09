@@ -2,7 +2,6 @@ import { promises, readFileSync, statSync } from 'fs';
 import path from 'path';
 
 import grayMatter from 'gray-matter';
-import type { ResolvedConfig } from 'vite';
 
 import { cleanSiteHtml, splitTitle } from './markdown';
 import type { ComponentDoc, ComponentMap, GenerateLlmsOptions } from './types';
@@ -112,71 +111,62 @@ function renderLlmsTxt(docs: ComponentDoc[], siteTitle: string, siteDescription:
 }
 
 /**
- * vite 插件：在站点构建时，为每个组件生成面向 LLM 的 Markdown 文档。
+ * 纯 JS 方法：为每个组件生成面向 LLM 的 Markdown 文档。
  *
+ * 与 vite 解耦 —— 仅依赖文件系统与 gray-matter，不引入任何构建工具类型。
  * 数据源为组件目录下的 README.md（frontmatter + 正文），
  * `{{ demo }}` 占位符替换为 `_example/` 目录下的真实源码块。
- * 产物：每个组件一份 `<slug>.md` + `llms.txt` 组件索引。
+ * 产物：`<outputDir>/llms/<slug>.md`（每个组件一份）+ `<outputDir>/llms.txt`（组件索引）。
+ *
+ * @param options 生成配置。需要显式传入 `componentsRoot` 与 `outputDir`。
+ * @returns 生成的组件文档列表。
  */
-export default function generateLlmsPlugin(options: GenerateLlmsOptions = {}) {
+export default async function generateLlmsDocs(options: GenerateLlmsOptions): Promise<ComponentDoc[]> {
   const {
+    componentsRoot,
+    outputDir,
     componentMap = {},
-    componentsDir = '../../components',
     siteTitle = 'TDesign MiniProgram',
     siteDescription = 'TDesign 小程序端组件库的 LLM 友好文档索引。',
     readDemoCode = readMiniProgramDemoCode,
   } = options;
-  let config: ResolvedConfig;
-  return {
-    name: 'generate-llms',
-    configResolved(resolvedConfig: ResolvedConfig) {
-      config = resolvedConfig;
-    },
-    async closeBundle(error?: Error) {
-      if (error) return;
-      if (!config.env.PROD && config.env.MODE !== 'preview') return;
 
-      // 基于 config.root 推导路径，避免依赖 __dirname 多层回溯
-      const siteRoot = config.root;
-      const componentsRoot = path.resolve(siteRoot, componentsDir);
-      // 产物输出目录：从 config.build.outDir 推导，避免硬编码 dist
-      const outputDir = config.build.outDir || path.join(siteRoot, 'dist');
-      const llmsDir = path.join(outputDir, 'llms');
+  const llmsDir = path.join(outputDir, 'llms');
 
-      // 组件清单以 componentMap 的 key 为准，再补充不在 Map 中但有 README 的组件目录
-      const allDirs = await promises.readdir(componentsRoot);
-      const mapKeys = Object.keys(componentMap);
-      const componentDirs = [...mapKeys, ...allDirs.filter((dir) => !mapKeys.includes(dir))];
-      const docs: ComponentDoc[] = [];
+  // 组件清单以 componentMap 的 key 为准，再补充不在 Map 中但有 README 的组件目录
+  const allDirs = await promises.readdir(componentsRoot);
+  const mapKeys = Object.keys(componentMap);
+  const componentDirs = [...mapKeys, ...allDirs.filter((dir) => !mapKeys.includes(dir))];
+  const docs: ComponentDoc[] = [];
 
-      for (const dir of componentDirs) {
-        const componentDir = path.join(componentsRoot, dir);
-        try {
-          const stat = await promises.stat(componentDir).catch(() => null);
-          if (!stat || !stat.isDirectory()) continue;
+  for (const dir of componentDirs) {
+    const componentDir = path.join(componentsRoot, dir);
+    try {
+      const stat = await promises.stat(componentDir).catch(() => null);
+      if (!stat || !stat.isDirectory()) continue;
 
-          const hasReadme = await promises
-            .access(path.join(componentDir, 'README.md'))
-            .then(() => true)
-            .catch(() => false);
-          if (!hasReadme) continue;
+      const hasReadme = await promises
+        .access(path.join(componentDir, 'README.md'))
+        .then(() => true)
+        .catch(() => false);
+      if (!hasReadme) continue;
 
-          const doc = await parseComponentReadme(componentDir, componentMap, readDemoCode);
-          if (doc) docs.push(doc);
-        } catch (err) {
-          // 单个组件解析失败仅告警，不中断整体生成
-          console.warn(`[generate-llms] 解析组件 ${dir} 失败，已跳过：`, err);
-        }
-      }
+      const doc = await parseComponentReadme(componentDir, componentMap, readDemoCode);
+      if (doc) docs.push(doc);
+    } catch (err) {
+      // 单个组件解析失败仅告警，不中断整体生成
+      console.warn(`[generate-llms] 解析组件 ${dir} 失败，已跳过：`, err);
+    }
+  }
 
-      docs.sort((a, b) => a.slug.localeCompare(b.slug));
+  docs.sort((a, b) => a.slug.localeCompare(b.slug));
 
-      await promises.mkdir(llmsDir, { recursive: true });
+  await promises.mkdir(llmsDir, { recursive: true });
 
-      for (const doc of docs) {
-        await promises.writeFile(path.join(llmsDir, `${doc.slug}.md`), renderComponentMarkdown(doc));
-      }
-      await promises.writeFile(path.join(outputDir, 'llms.txt'), renderLlmsTxt(docs, siteTitle, siteDescription));
-    },
-  };
+  for (const doc of docs) {
+    await promises.writeFile(path.join(llmsDir, `${doc.slug}.md`), renderComponentMarkdown(doc));
+  }
+  await promises.writeFile(path.join(outputDir, 'llms.txt'), renderLlmsTxt(docs, siteTitle, siteDescription));
+
+  return docs;
 }
