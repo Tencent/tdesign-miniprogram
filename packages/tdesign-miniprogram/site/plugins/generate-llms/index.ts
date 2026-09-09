@@ -130,6 +130,8 @@ function readDemoCode(componentDir: string, demoName: string): string {
   for (const file of fileOrder) {
     try {
       const content = readFileSync(path.join(demoDir, file), 'utf-8');
+      // 忽略内容为空的文件（如部分示例的 index.wxss），避免生成空代码块
+      if (!content.trim()) continue;
       const lang = file.replace('index.', '');
       sections.push('```' + lang, content, '```');
     } catch {
