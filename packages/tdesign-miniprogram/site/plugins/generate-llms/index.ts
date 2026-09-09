@@ -1,7 +1,6 @@
 import path from 'path';
 
-import generateLlmsDocs from '../../../../common-docs/plugins/generate-llms';
-import { MOBILE_COMPONENT_MAP } from '../../../../common/js/components';
+import generateLlmsDocs from '../../../../common/docs/plugins/generate-llms';
 
 /**
  * vite 插件：站点构建时，基于 MOBILE_COMPONENT_MAP 生成组件的 LLM Markdown 文档。
@@ -27,7 +26,7 @@ export default function generateMobileLlmsPlugin() {
       await generateLlmsDocs({
         componentsRoot,
         outputDir,
-        componentMap: MOBILE_COMPONENT_MAP,
+        platform: 'mobile',
         siteTitle: 'TDesign MiniProgram',
         siteDescription: 'TDesign 小程序端组件库的 LLM 友好文档索引。',
       });

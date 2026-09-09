@@ -1,7 +1,6 @@
 import path from 'path';
 
-import generateLlmsDocs from '../../../../common-docs/plugins/generate-llms';
-import { CHAT_COMPONENT_MAP } from '../../../../common/js/components';
+import generateLlmsDocs from '../../../../common/docs/plugins/generate-llms';
 
 /**
  * vite 插件：chat 站点构建时，基于 CHAT_COMPONENT_MAP 生成组件的 LLM Markdown 文档。
@@ -25,7 +24,7 @@ export default function generateChatLlmsPlugin() {
       await generateLlmsDocs({
         componentsRoot,
         outputDir,
-        componentMap: CHAT_COMPONENT_MAP,
+        platform: 'chat',
         siteTitle: 'TDesign MiniProgram Chat',
         siteDescription: 'TDesign 小程序 AI Chat 组件库的 LLM 友好文档索引。',
       });
