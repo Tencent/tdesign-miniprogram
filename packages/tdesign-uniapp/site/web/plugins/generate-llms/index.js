@@ -9,8 +9,9 @@ function readDemoCode(componentDir, demoName) {
   try {
     const content = readFileSync(path.join(componentDir, '_example', demoName, 'index.vue'), 'utf-8');
     // 忽略内容为空的文件，避免生成空代码块
-    if (!content.trim()) return '';
-    return ['```vue', content, '```'].join('\n');
+    const code = content.trim();
+    if (!code) return '';
+    return ['```vue', code, '```'].join('\n');
   } catch {
     // 忽略不存在的文件
     return '';
