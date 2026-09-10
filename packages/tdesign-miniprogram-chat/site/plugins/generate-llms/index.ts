@@ -1,5 +1,5 @@
-import { readFileSync } from 'fs';
 import { readFile } from 'fs/promises';
+import { readFileSync } from 'fs';
 import path from 'path';
 
 import generateLlmsDocs, { createComponentDocParser } from '../../../../common/docs/plugins/generate-llms';
@@ -56,6 +56,7 @@ export default function generateChatLlmsPlugin() {
         parseComponentDoc,
         siteTitle: 'TDesign MiniProgram Chat',
         siteDescription: 'TDesign 小程序 AI Chat 组件库的 LLM 友好文档索引。',
+        siteBaseUrl: config.base,
       });
     },
   };

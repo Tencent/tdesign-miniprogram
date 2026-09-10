@@ -1,3 +1,4 @@
+import { readFile } from 'fs/promises';
 import { readFileSync } from 'fs';
 import { readFile } from 'fs/promises';
 import path from 'path';
@@ -16,6 +17,13 @@ function readDemoCode(componentDir, demoName) {
     return '';
   }
 }
+
+/** 组件文档解析器：读取组件目录 README.md（含 frontmatter），无文档时返回 null；无微信站点专用清理 */
+const parseComponentDoc = createComponentDocParser({
+  readComponentDoc: async (componentDir) => readFile(path.join(componentDir, 'README.md'), 'utf-8').catch(() => null),
+  readDemoCode,
+  transformers: [],
+});
 
 /**
  * vite 插件：uniapp chat 站点构建时，基于 CHAT_COMPONENT_MAP 生成组件的 LLM Markdown 文档。
@@ -51,6 +59,7 @@ export default function generateChatLlmsPlugin() {
         parseComponentDoc,
         siteTitle: 'TDesign Uniapp Chat',
         siteDescription: 'TDesign Uniapp AI Chat 组件库的 LLM 友好文档索引。',
+        siteBaseUrl: config.base,
       });
     },
   };

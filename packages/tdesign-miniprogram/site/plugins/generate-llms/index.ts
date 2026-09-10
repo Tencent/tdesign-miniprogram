@@ -1,5 +1,5 @@
-import { readFileSync } from 'fs';
 import { readFile } from 'fs/promises';
+import { readFileSync } from 'fs';
 import path from 'path';
 
 import generateLlmsDocs, { createComponentDocParser } from '../../../../common/docs/plugins/generate-llms';
@@ -58,6 +58,7 @@ export default function generateMobileLlmsPlugin() {
         parseComponentDoc,
         siteTitle: 'TDesign MiniProgram',
         siteDescription: 'TDesign 小程序端组件库的 LLM 友好文档索引。',
+        siteBaseUrl: config.base,
       });
     },
   };
