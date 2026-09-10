@@ -14,14 +14,17 @@ export const docs = [
       },
       {
         title: '什么是流式输出',
+        titleEn: 'SSE',
         name: 'sse',
+        meta: { docType: 'explain' },
         path: '/miniprogram-chat/sse',
         component: () => import('@docs/sse.md'),
       },
     ],
   },
   {
-    title: '基础',
+    title: '智能对话',
+    titleEn: 'Chat',
     type: 'component', // 组件文档
     children: [
       {
@@ -118,20 +121,16 @@ export const docs = [
   },
 ];
 
-const enDocs = docs.map((doc) => {
-  return {
-    ...doc,
-    title: doc.titleEn,
-    children: doc?.children?.map((child) => {
-      return {
-        title: child.titleEn,
-        name: `${child.name}-en`,
-        path: `${child.path}-en`,
-        meta: { lang: 'en' },
-        component: child.componentEn || child.component,
-      };
-    }),
-  };
-});
+const enDocs = docs.map((doc) => ({
+  ...doc,
+  title: doc.titleEn,
+  children: doc?.children?.map((child) => ({
+    title: child.titleEn,
+    name: `${child.name}-en`,
+    path: `${child.path}-en`,
+    meta: { lang: 'en' },
+    component: child.componentEn || child.component,
+  })),
+}));
 
 export default { docs, enDocs };
