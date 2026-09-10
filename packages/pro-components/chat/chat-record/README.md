@@ -1,7 +1,7 @@
 ---
 title: ChatRecord 语音输入
 description: 用于聊天场景的语音输入组件，支持语音转文字、录音时长控制等功能。
-spline: base
+spline: chat
 isComponent: true
 ---
 
