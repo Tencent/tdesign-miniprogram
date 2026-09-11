@@ -57,7 +57,7 @@ export default function generateMobileLlmsPlugin() {
         platform: 'mobile',
         parseComponentDoc,
         siteTitle: 'TDesign MiniProgram',
-        siteDescription: 'TDesign 小程序端组件库的 LLM 友好文档索引。',
+        siteDescription: 'TDesign 适配移动端的组件库，适合在微信小程序项目中使用。',
         siteBaseUrl: config.base,
       });
     },

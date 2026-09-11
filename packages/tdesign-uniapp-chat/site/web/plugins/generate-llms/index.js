@@ -51,7 +51,8 @@ export default function generateChatLlmsPlugin() {
         platform: 'chat',
         parseComponentDoc,
         siteTitle: 'TDesign Uniapp Chat',
-        siteDescription: 'TDesign Uniapp AI Chat 组件库的 LLM 友好文档索引。',
+        siteDescription:
+          'TDesign Chat 智能对话组件库，为 AI 应用提供专业级聊天界面解决方案,适合在 Uniapp 技术栈项目中使用。',
         siteBaseUrl: config.base,
       });
     },

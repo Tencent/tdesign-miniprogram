@@ -51,7 +51,7 @@ export default function generateMobileLlmsPlugin() {
         platform: 'mobile',
         parseComponentDoc,
         siteTitle: 'TDesign Uniapp',
-        siteDescription: 'TDesign Uniapp 组件库的 LLM 友好文档索引。',
+        siteDescription: 'TDesign 适配移动端的组件库，适合在 Uniapp 技术栈项目中使用。',
         siteBaseUrl: config.base,
       });
     },
