@@ -7,6 +7,7 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 
 import changelog2Json from './plugins/changelog-to-json';
+import generateLlms from './plugins/generate-llms';
 import createTDesignPlugin from './plugins/plugin-tdoc';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -60,6 +61,7 @@ export default ({ mode }: any) => {
       vueJsx(),
       createTDesignPlugin(),
       changelog2Json(),
+      generateLlms(),
     ],
   });
 };
