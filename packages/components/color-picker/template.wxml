@@ -58,6 +58,10 @@
       </view>
     </view>
 
+    <view wx:if="{{eyeDropper && isMultiple}}" class="{{classPrefix}}__eyedropper-wrap">
+      <view class="{{classPrefix}}__eyedropper" catch:tap="handleEyeDropperTap">🎨</view>
+    </view>
+
     <view class="{{classPrefix}}__format" wx:if="{{isMultiple}}">
       <view class="{{classPrefix}}__format-item {{classPrefix}}__format-item--first"> {{format}} </view>
       <view class="{{classPrefix}}__format-item {{classPrefix}}__format-item--second">

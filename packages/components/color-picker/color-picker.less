@@ -348,6 +348,29 @@
   }
 }
 
+.@{prefix}-color-picker {
+  &__eyedropper-wrap {
+    display: flex;
+    justify-content: flex-end;
+    padding: 8px 0 0;
+  }
+
+  &__eyedropper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+}
+
 .transparentBgImage () {
   /* stylelint-disable-next-line color-no-hex */
   background-image:
