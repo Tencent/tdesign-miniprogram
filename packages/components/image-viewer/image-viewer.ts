@@ -183,5 +183,8 @@ export default class ImageViewer extends SuperComponent {
     onDelete() {
       this._trigger('delete', { index: this.data.currentSwiperIndex });
     },
+
+    // 阻止蒙层滚动穿透
+    noop() {},
   };
 }
