@@ -38,6 +38,9 @@
 }
 
 .symbol {
+  position: fixed;
+  right: 0;
+  bottom: 64px;
   width: 32px;
   height: 32px;
   display: flex;
