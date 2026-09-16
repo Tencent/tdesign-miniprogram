@@ -506,6 +506,15 @@ export const docs = [
         componentEn: () => import('@/image-viewer/README.en-US.md'),
       },
       {
+        title: 'List 列表',
+        titleEn: 'List',
+        name: 'list',
+        meta: { docType: 'data' },
+        path: '/uniapp/components/list',
+        component: () => import('@/list/README.md'),
+        componentEn: () => import('@/list/README.en-US.md'),
+      },
+      {
         title: 'Progress 进度条',
         titleEn: 'Progress',
         name: 'progress',
