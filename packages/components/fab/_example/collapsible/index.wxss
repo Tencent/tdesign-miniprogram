@@ -36,20 +36,3 @@
   height: 20px;
   line-height: 20px;
 }
-
-.symbol {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 16px 0 0 16px;
-  background: #fff;
-
-  border: 1px solid #dcdcdc;
-  border-right: 0;
-  box-shadow:
-    0px 5px 5px -3px #0000001a,
-    0px 8px 10px 1px #0000000f,
-    0px 3px 14px 2px #0000000d;
-}
