@@ -10,7 +10,7 @@
   aria-modal="{{true}}"
   aria-role="dialog"
   aria-label="图片查看器"
-  catchtouchmove="true"
+  catchtouchmove="noop"
 >
   <view
     class="{{classPrefix}}__mask"
