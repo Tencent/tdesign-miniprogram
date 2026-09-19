@@ -7,6 +7,7 @@
     "with-value": "./with-value",
     "with-title": "./with-title",
     "check-strictly": "./check-strictly",
+    "lazy-load": "./lazy-load",
     "filterable": "./filterable"
   }
 }
