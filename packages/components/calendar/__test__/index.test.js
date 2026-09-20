@@ -162,4 +162,29 @@ describe('calendar', () => {
       expect($confirmBtn.dom.textContent).toBe('ok');
     }
   });
+
+  it(':refreshes current panel after recalculating months', async () => {
+    const id = simulate.load({
+      template: `<t-calendar id="base" visible switch-mode="month" value="{{value}}" minDate="{{minDate}}" maxDate="{{maxDate}}"></t-calendar>`,
+      data: {
+        value: +new Date(2022, 1, 15),
+        minDate: +new Date(2022, 1, 1),
+        maxDate: +new Date(2022, 2, 31),
+      },
+      usingComponents: {
+        't-calendar': calendar,
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    const $calendar = comp.querySelector('#base');
+    const { instance } = $calendar;
+
+    instance.base.format = (day) => ({ ...day, suffix: 'updated' });
+    instance.calcMonths();
+    await simulate.sleep();
+
+    expect(instance.data.currentMonth[0].months[0].suffix).toBe('updated');
+  });
 });
