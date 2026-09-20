@@ -2,6 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import TCalendar from '../common/shared/calendar/index';
+import type { TCalendarValue } from '../common/shared/calendar/type';
 import { TdCalendarProps } from './type';
 import useCustomNavbar from '../mixins/using-custom-navbar';
 import usingConfig from '../mixins/using-config';
@@ -9,6 +10,8 @@ import { getPrevMonth, getPrevYear, getNextMonth, getNextYear } from './utils';
 
 const { prefix } = config;
 const componentName = 'calendar';
+
+type CalendarMonth = ReturnType<TCalendar['getMonths']>[number];
 
 export interface CalendarProps extends TdCalendarProps {}
 
@@ -166,7 +169,7 @@ export default class Calendar extends SuperComponent {
       }
     },
 
-    getCurrentYearAndMonth(v: Date) {
+    getCurrentYearAndMonth(v: TCalendarValue) {
       const date = new Date(v);
       return { year: date.getFullYear(), month: date.getMonth() };
     },
@@ -200,12 +203,12 @@ export default class Calendar extends SuperComponent {
       });
     },
 
-    updateCurrentMonth(newValue?: any) {
+    updateCurrentMonth(newValue?: TCalendarValue) {
       if (this.data.switchMode === 'none') return;
       this.calcCurrentMonth(newValue);
     },
 
-    getCurrentMonth(newValue?: any, months = this.data.months) {
+    getCurrentMonth(newValue?: TCalendarValue, months: CalendarMonth[] = this.data.months) {
       const date = newValue || this.getCurrentDate();
       const { year, month } = this.getCurrentYearAndMonth(date);
       const currentMonth = months.filter((item) => item.year === year && item.month === month);
@@ -216,14 +219,14 @@ export default class Calendar extends SuperComponent {
       };
     },
 
-    calcCurrentMonth(newValue?: any) {
+    calcCurrentMonth(newValue?: TCalendarValue) {
       const { date, currentMonth } = this.getCurrentMonth(newValue);
 
       this.updateActionButton(date);
       this.setData({ currentMonth });
     },
 
-    calcMonths(newValue?: any) {
+    calcMonths(newValue?: TCalendarValue) {
       const months = this.base.getMonths();
 
       if (this.data.switchMode === 'none') {
