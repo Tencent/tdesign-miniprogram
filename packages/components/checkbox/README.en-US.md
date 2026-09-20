@@ -16,7 +16,7 @@ default-checked | Boolean | undefined | uncontrolled property | N
 content | String | - | \- | N
 content-disabled | Boolean | - | \- | N
 disabled | Boolean | undefined | \- | N
-icon | String / Array | 'circle' | Typescript: `CheckboxIconType ` `type CheckboxIconType = 'circle' \| 'line' \| 'rectangle' \| string[] `。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/checkbox/type.ts) | N
+icon | String / Array | 'circle' | Typescript: `CheckboxIconType` `type CheckboxIconType = 'circle' \| 'line' \| 'rectangle' \| string[];`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/checkbox/type.ts) | N
 indeterminate | Boolean | false | \- | N
 label | String | - | \- | N
 max-content-row | Number | 5 | \- | N
@@ -58,6 +58,7 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 borderless | Boolean | false | \- | N
+direction | String | vertical | `1.16.2`。Radio option arrangement。options: vertical/horizontal | N
 disabled | Boolean | undefined | \- | N
 keys | Object | - | Typescript: `KeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 max | Number | undefined | \- | N
