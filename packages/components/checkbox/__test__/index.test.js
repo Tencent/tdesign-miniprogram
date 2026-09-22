@@ -5,6 +5,18 @@ describe('Checkbox', () => {
   const id = load(path.resolve(__dirname, './index'));
 
   describe('with group', () => {
+    it(':direction', async () => {
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const checkbox = comp.querySelector('.a');
+
+      comp.setData({ direction: 'horizontal' });
+      await simulate.sleep(10);
+
+      expect(checkbox.data.direction).toBe('horizontal');
+    });
+
     it(`: style && customStyle`, async () => {
       const comp = simulate.render(id);
       comp.attach(document.createElement('parent-wrapper'));
