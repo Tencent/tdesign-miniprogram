@@ -21,9 +21,10 @@ export default class RadioGroup extends SuperComponent {
     '../radio/radio': {
       type: 'descendant',
       linked(target) {
-        const { value, disabled, readonly } = this.data;
+        const { value, disabled, readonly, direction } = this.data;
         target.setData({
           checked: value === target.data.value,
+          direction,
         });
         target.setDisabled(disabled);
         target.setReadonly(readonly);
@@ -58,6 +59,11 @@ export default class RadioGroup extends SuperComponent {
       }
       this.getChildren().forEach((item) => {
         item.setDisabled(v);
+      });
+    },
+    direction(v) {
+      this.getChildren().forEach((item) => {
+        item.setData({ direction: v });
       });
     },
   };

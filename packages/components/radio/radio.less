@@ -3,7 +3,7 @@
 @radio-icon-size: var(--td-radio-icon-size, 48rpx);
 @radio-label-font: var(--td-radio-font, @font-body-large);
 @radio-label-line-height: var(--td-radio-label-line-height, 48rpx);
-@radio-vertical-padding: var(--td-radio-vertical-padding, 32rpx);
+@radio-vertical-padding: var(--td-radio-vertical-padding, @spacer-2);
 @radio-bg-color: var(--td-radio-bg-color, @bg-color-container);
 @radio-border-color: var(--td-radio-border-color, @component-stroke);
 @radio-label-color: var(--td-radio-label-color, @text-color-primary);
@@ -34,9 +34,15 @@
   &:focus {
     outline: 0;
   }
+
   &--block {
     display: flex;
     padding: @radio-vertical-padding;
+  }
+
+  &--horizontal {
+    padding: 0;
+    margin-right: @spacer-2;
   }
 
   &--right {
