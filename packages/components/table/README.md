@@ -97,6 +97,14 @@ empty | 自定义 `empty` 显示内容
 footer-summary | 自定义 `footer-summary` 显示内容
 loading | 自定义 `loading` 显示内容
 
+### BaseTable External Classes
+
+| 类名           | 描述             |
+| -------------- | ---------------- |
+| t-class        | 根节点样式类     |
+| t-class-footer | 表尾总结行样式类 |
+| t-class-header | 表头行样式类     |
+
 ### BaseTableCol
 
 名称 | 类型 | 默认值 | 描述 | 必传

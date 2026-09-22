@@ -43,6 +43,14 @@ empty | empty text or empty element
 footer-summary | footer summary content
 loading | loading state table
 
+### BaseTable External Classes
+
+| className      | Description |
+| -------------- | ----------- |
+| t-class        | \-          |
+| t-class-footer | \-          |
+| t-class-header | \-          |
+
 ### BaseTableCol
 
 name | type | default | description | required

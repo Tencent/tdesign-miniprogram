@@ -3,32 +3,16 @@ import config from '../common/config';
 import usingConfig from '../mixins/using-config';
 import props from './base-table-props';
 import type { BaseTableCol, TableRowData } from './type';
+import { formatCSSUnit, get, getColumnClassName } from './utils';
 
 const { prefix } = config;
 const componentName = 'table';
-
-function get(obj: any, path: string) {
-  if (!obj || !path) return undefined;
-  const keys = path.split('.');
-  let result = obj;
-  keys.forEach((key) => {
-    if (result !== undefined && result !== null) {
-      result = result[key];
-    }
-  });
-  return result;
-}
-
-function formatCSSUnit(unit: string | number | undefined) {
-  if (!unit) return unit;
-  return Number.isNaN(Number(unit)) ? unit : `${unit}px`;
-}
 
 @wxComponent()
 export default class Table extends SuperComponent {
   behaviors = [usingConfig({ componentName })];
 
-  externalClasses = [`${prefix}-class`];
+  externalClasses = [`${prefix}-class`, `${prefix}-class-header`, `${prefix}-class-footer`];
 
   options = {
     multipleSlots: true,
@@ -208,7 +192,8 @@ export default class Table extends SuperComponent {
         if (col.fixed === 'right') classes.push(`${classPrefix}__cell--fixed-right`);
         if (colIndex === lastFixedLeftIndex) classes.push(`${classPrefix}__cell--fixed-left-last`);
         if (colIndex === firstFixedRightIndex) classes.push(`${classPrefix}__cell--fixed-right-first`);
-        return classes.join(' ');
+        classes.push(getColumnClassName(col, { col, colIndex, type: 'th' }));
+        return classes.filter(Boolean).join(' ');
       });
 
       // 计算合并单元格
@@ -259,6 +244,7 @@ export default class Table extends SuperComponent {
           if (col.fixed === 'right') tdClasses.push(`${classPrefix}__cell--fixed-right`);
           if (colIndex === lastFixedLeftIndex) tdClasses.push(`${classPrefix}__cell--fixed-left-last`);
           if (colIndex === firstFixedRightIndex) tdClasses.push(`${classPrefix}__cell--fixed-right-first`);
+          tdClasses.push(getColumnClassName(col, { row, col, rowIndex, colIndex, type: 'td' }));
 
           let cellContent = '';
           if (col.colKey === 'serial-number') {
