@@ -111,21 +111,19 @@ exports[`Checkbox Checkbox horizontal demo works fine 1`] = `
         "checkbox2",
       ]
     }}"
+    direction="horizontal"
     tClass="box"
     bind:change="onChange"
   >
     <t-checkbox
-      block="{{false}}"
       label="多选标题"
       value="checkbox1"
     />
     <t-checkbox
-      block="{{false}}"
       label="多选标题"
       value="checkbox2"
     />
     <t-checkbox
-      block="{{false}}"
       label="上限四字"
       value="checkbox3"
     />

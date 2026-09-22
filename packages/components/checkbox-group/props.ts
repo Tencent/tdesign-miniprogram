@@ -11,6 +11,11 @@ const props: TdCheckboxGroupProps = {
     type: Boolean,
     value: false,
   },
+  /** 复选框按钮排列方式 */
+  direction: {
+    type: String,
+    value: 'vertical',
+  },
   /** 是否禁用组件。优先级：Form.disabled < CheckboxGroup.disabled < Checkbox.disabled */
   disabled: {
     type: null,

@@ -3,6 +3,7 @@
   style="{{style}}"
   customStyle="{{customStyle}}"
   class="group"
+  direction="{{direction}}"
   value="{{value}}"
   bind:change="handleChange"
 >

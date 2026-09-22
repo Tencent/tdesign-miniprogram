@@ -4,7 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import { KeysType } from '../common/common';
+import type { KeysType } from '../common/common';
 
 export interface TdRadioGroupProps<T = RadioValue> {
   /**
@@ -22,6 +22,14 @@ export interface TdRadioGroupProps<T = RadioValue> {
   borderless?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 单选框按钮排列方式
+   * @default vertical
+   */
+  direction?: {
+    type: StringConstructor;
+    value?: 'vertical' | 'horizontal';
   };
   /**
    * 是否禁用全部子单选框
