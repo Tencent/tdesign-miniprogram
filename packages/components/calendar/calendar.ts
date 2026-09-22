@@ -203,11 +203,6 @@ export default class Calendar extends SuperComponent {
       });
     },
 
-    updateCurrentMonth(newValue?: TCalendarValue) {
-      if (this.data.switchMode === 'none') return;
-      this.calcCurrentMonth(newValue);
-    },
-
     getCurrentMonth(newValue?: TCalendarValue, months: CalendarMonth[] = this.data.months) {
       const date = newValue || this.getCurrentDate();
       const { year, month } = this.getCurrentYearAndMonth(date);
