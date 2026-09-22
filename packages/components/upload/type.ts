@@ -112,12 +112,12 @@ export interface TdUploadProps {
     value?: boolean;
   };
   /**
-   * 移除按钮
+   * 移除按钮。值为 false 则不显示移除按钮；值为字符串表示图标名称；值为 Object 类型，表示透传至 icon 组件
    * @default true
    */
   removeBtn?: {
-    type: BooleanConstructor;
-    value?: boolean;
+    type: null;
+    value?: string | boolean | object;
   };
   /**
    * 自定义上传方法

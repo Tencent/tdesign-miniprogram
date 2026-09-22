@@ -22,7 +22,7 @@ image-props | Object | - | Typescript: `ImageProps`，[Image API Documents](./im
 max | Number | 0 | max count of files limit | N
 media-type | Array | ['image', 'video'] | Typescript: `Array<MediaType>` `type MediaType = 'image' \| 'video' \| 'mix'`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/upload/type.ts) | N
 preview | Boolean | true | `1.9.5` | N
-remove-btn | Boolean | true | \- | N
+remove-btn | String / Boolean / Object | true | \- | N
 request-method | Function | - | \- | N
 size-limit | Number / Object | - | files size limit。Typescript: `number \| SizeLimitObj` `interface SizeLimitObj { size: number; unit: SizeUnit ; message?: string }` `type SizeUnitArray = ['B', 'KB', 'MB', 'GB']` `type SizeUnit = SizeUnitArray[number]`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/upload/type.ts) | N
 source | String | media | options: media/messageFile | N

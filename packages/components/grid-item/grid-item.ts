@@ -1,7 +1,7 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
-import { uniqueFactory, setIcon } from '../common/utils';
+import { uniqueFactory, calcIcon } from '../common/utils';
 import { isObject } from '../common/validator';
 
 const { prefix } = config;
@@ -11,7 +11,7 @@ const getUniqueID = uniqueFactory('grid_item');
 enum LinkTypes {
   'redirect-to' = 'redirectTo',
   'switch-tab' = 'switchTab',
-  'relaunch' = 'reLaunch',
+  relaunch = 'reLaunch',
   'navigate-to' = 'navigateTo',
 }
 
@@ -57,9 +57,8 @@ export default class GridItem extends SuperComponent {
 
   observers = {
     icon(icon) {
-      const obj = setIcon('icon', icon, '');
       this.setData({
-        ...obj,
+        _icon: calcIcon(icon),
       });
     },
   };
