@@ -47,11 +47,7 @@
             />
           </block>
           <slot name="image" />
-          <template
-            wx:if="{{iconName || _.isNoEmptyObj(iconData)}}"
-            is="icon"
-            data="{{tClass: classPrefix + '__icon', name: iconName, ...iconData}}"
-          />
+          <template wx:if="{{_.isNoEmptyObj(_icon)}}" is="icon" data="{{tClass: classPrefix + '__icon', ..._icon}}" />
         </view>
       </t-badge>
       <view

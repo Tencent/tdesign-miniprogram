@@ -42,9 +42,9 @@
         bind:error="onLoadError"
       />
       <template
-        wx:elif="{{iconName || _.isNoEmptyObj(iconData)}}"
+        wx:elif="{{_.isNoEmptyObj(_icon)}}"
         is="icon"
-        data="{{tClass: classPrefix + '__icon ' + prefix + '-class-icon', name: iconName, ...iconData}}"
+        data="{{tClass: classPrefix + '__icon ' + prefix + '-class-icon', ..._icon}}"
       />
       <view wx:else class="{{classPrefix}}__text {{prefix}}-class-content">
         <slot />
