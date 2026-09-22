@@ -287,6 +287,42 @@ describe('upload', () => {
       expect($addIcon).not.toBeDefined();
     });
 
+    it(': remove-btn custom icon', async () => {
+      const id = simulate.load({
+        template: `<t-upload id="t-upload" files="{{files}}" removeBtn="{{removeBtn}}"></t-upload>`,
+        data: {
+          files: [
+            {
+              url: 'https://tdesign.gtimg.com/miniprogram/images/example4.png',
+              name: 'uploaded1.png',
+              type: 'image',
+            },
+          ],
+          removeBtn: true,
+        },
+        usingComponents: {
+          't-upload': upload,
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+      await simulate.sleep();
+
+      let $removeIcon = comp.querySelector('#t-upload >>> .t-upload__close-btn >>> .t-icon');
+      expect($removeIcon.dom.outerHTML).toContain('t-icon-close');
+
+      comp.setData({ removeBtn: 'delete' });
+      await simulate.sleep();
+      $removeIcon = comp.querySelector('#t-upload >>> .t-upload__close-btn >>> .t-icon');
+      expect($removeIcon.dom.outerHTML).toContain('t-icon-delete');
+
+      comp.setData({ removeBtn: { name: 'close-circle', color: 'red' } });
+      await simulate.sleep();
+      $removeIcon = comp.querySelector('#t-upload >>> .t-upload__close-btn >>> .t-icon');
+      expect($removeIcon.dom.outerHTML).toContain('t-icon-close-circle');
+      expect($removeIcon.dom.outerHTML).toContain('color: red');
+    });
+
     it(': request-method', async () => {
       let successFiles;
       const handleSuccess = jest.fn((e) => {
