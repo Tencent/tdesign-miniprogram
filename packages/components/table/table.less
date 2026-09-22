@@ -230,14 +230,48 @@
     }
   }
 
-  // 合并单元格
+  // 合并单元格：表体为 grid 布局（display 等由内联样式设置），需重置 flex 避免冲突
   &--rowspan-colspan {
+    .@{table-prefix}__body {
+      display: grid;
+      grid-auto-rows: minmax(0, auto);
+      min-width: 100%;
+    }
+
+    .@{table-prefix}__td {
+      display: flex;
+      align-items: center;
+      flex: none;
+      min-width: 0;
+    }
+
     .@{table-prefix}__td-last-row {
       border-bottom: none;
     }
 
     .@{table-prefix}__td-first-col {
       border-left: none;
+    }
+  }
+
+  // 合并单元格 + 边框：grid 下 :last-child 无法判断每行最后一列，
+  // 改为容器画上+左边框、单元格画右+下边框，保证每条网格线只绘制一次
+  &--rowspan-colspan&--bordered {
+    border-right: none;
+    border-bottom: none;
+
+    .@{table-prefix}__th {
+      border-right: 2rpx solid @table-border-color;
+      border-bottom: 2rpx solid @table-border-color;
+    }
+
+    .@{table-prefix}__td {
+      border-right: 2rpx solid @table-border-color;
+      border-bottom: 2rpx solid @table-border-color;
+
+      &:last-child {
+        border-right: 2rpx solid @table-border-color;
+      }
     }
   }
 
