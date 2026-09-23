@@ -49,7 +49,7 @@ Name | Default Value | Description
 --td-popover-error-color | @error-color-6 | -
 --td-popover-light-bg-color | @bg-color-container | -
 --td-popover-light-color | @text-color-primary | -
---td-popover-padding | 24rpx | -
+--td-popover-padding | @spacer-1 | -
 --td-popover-success-bg-color | @success-color-1 | -
 --td-popover-success-color | @success-color-5 | -
 --td-popover-warning-bg-color | @warning-color-1 | -

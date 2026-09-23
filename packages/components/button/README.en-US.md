@@ -180,7 +180,7 @@ Name | Default Value | Description
 --td-button-extra-small-font | @font-mark-medium | -
 --td-button-extra-small-height | 56rpx | -
 --td-button-extra-small-icon-size | 36rpx | -
---td-button-extra-small-padding-horizontal | 16rpx | -
+--td-button-extra-small-padding-horizontal | @spacer | -
 --td-button-ghost-border-color | @button-ghost-color | -
 --td-button-ghost-color | @text-color-anti | -
 --td-button-ghost-danger-border-color | @error-color | -
@@ -216,7 +216,7 @@ Name | Default Value | Description
 --td-button-medium-font | @font-mark-large | -
 --td-button-medium-height | 80rpx | -
 --td-button-medium-icon-size | 40rpx | -
---td-button-medium-padding-horizontal | 32rpx | -
+--td-button-medium-padding-horizontal | @spacer-2 | -
 --td-button-primary-active-bg-color | @brand-color-active | -
 --td-button-primary-active-border-color | @brand-color-active | -
 --td-button-primary-bg-color | @brand-color | -
@@ -239,4 +239,4 @@ Name | Default Value | Description
 --td-button-small-font | @font-mark-medium | -
 --td-button-small-height | 64rpx | -
 --td-button-small-icon-size | 36rpx | -
---td-button-small-padding-horizontal | 24rpx | -
+--td-button-small-padding-horizontal | @spacer-1 | -

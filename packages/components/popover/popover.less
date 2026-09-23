@@ -3,12 +3,12 @@
 @popover: ~'@{prefix}-popover';
 
 // 对外暴露变量
-@popover-padding: var(--td-popover-padding, 24rpx);
+@popover-padding: var(--td-popover-padding, @spacer-1);
 
 // 尺寸变量
 @popover-arrow-width: 16rpx;
-@popover-content-margin: 16rpx;
-@popover-content-arrow-margin: 24rpx;
+@popover-content-margin: @spacer;
+@popover-content-arrow-margin: @spacer-1;
 
 // 主题色变量
 @popover-dark-color: var(--td-popover-dark-color, @text-color-anti);
@@ -41,10 +41,10 @@
   &__content {
     position: relative;
     padding: @popover-padding;
-    border-radius: 12rpx;
+    border-radius: @radius-default;
     box-shadow: @shadow-3;
     font-size: @font-size-m;
-    line-height: 48rpx;
+    line-height: @text-line-height-m;
     box-sizing: border-box;
     word-break: break-all;
     border-radius: 6px;

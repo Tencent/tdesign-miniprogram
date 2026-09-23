@@ -7,7 +7,7 @@
 @badge-font: var(--td-badge-font, @font-mark-extraSmall);
 @badge-basic-height: var(--td-badge-basic-height, 32rpx);
 @badge-basic-width: var(--td-badge-basic-width, 32rpx);
-@badge-basic-padding: var(--td-badge-basic-padding, 8rpx);
+@badge-basic-padding: var(--td-badge-basic-padding, calc(@spacer / 2));
 @badge-border-radius: var(--td-badge-border-radius, 4rpx);
 @border-bubble-border-radius: var(--td-badge-bubble-border-radius, 20rpx 20rpx 20rpx 1px);
 @badge-dot-size: var(--td-badge-dot-size, 16rpx);
@@ -35,7 +35,7 @@
 
   &--dot {
     height: @badge-dot-size;
-    border-radius: 50%;
+    border-radius: @radius-circle;
     min-width: @badge-dot-size;
     padding: 0;
   }

@@ -5,7 +5,7 @@
 @checkbox-border-width: 4rpx;
 @checkbox-icon-size: var(--td-checkbox-icon-size, 48rpx);
 @checkbox-title-font: var(--td-checkbox-title-font, @font-body-large);
-@checkbox-title-line-height: var(--td-checkbox-title-line-height, 48rpx);
+@checkbox-title-line-height: var(--td-checkbox-title-line-height, @text-line-height-m);
 @checkbox-description-font: var(--td-checkbox-description-font, @font-body-medium);
 @checkbox-vertical-padding: var(--td-checkbox-vertical-padding, @spacer-2);
 @checkbox-bg-color: var(--td-checkbox-bg-color, @bg-color-container);
@@ -97,14 +97,14 @@
     }
 
     &--left {
-      margin-right: 16rpx;
+      margin-right: @spacer;
     }
 
     &-circle {
       width: calc((@checkbox-icon-size - @checkbox-border-width) * 2);
       height: calc((@checkbox-icon-size - @checkbox-border-width) * 2);
       border: calc(@checkbox-border-width * 2) solid @checkbox-icon-color;
-      border-radius: 50%;
+      border-radius: @radius-circle;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -194,7 +194,7 @@
   }
 
   &__title + &__description:not(:empty) {
-    margin-top: 8rpx;
+    margin-top: calc(@spacer / 2);
   }
 
   &__border {
@@ -213,12 +213,12 @@
 
   // theme = tag 启用
   &--tag {
-    font-size: 28rpx;
-    padding-top: 16rpx;
-    padding-bottom: 16rpx;
+    font-size: @font-size-base;
+    padding-top: @spacer;
+    padding-bottom: @spacer;
     text-align: center;
     background-color: @bg-color-secondarycontainer;
-    border-radius: 12rpx;
+    border-radius: @radius-default;
 
     &.@{checkbox}--checked {
       color: @checkbox-tag-active-color;

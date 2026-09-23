@@ -75,7 +75,7 @@ Name | Default Value | Description
 -- | -- | --
 --td-guide-body-color | @text-color-secondary | -
 --td-guide-dialog-body-font | @font-body-large | -
---td-guide-dialog-body-margin-top | 16rpx | -
+--td-guide-dialog-body-margin-top | @spacer | -
 --td-guide-dialog-body-text-align | center | -
 --td-guide-dialog-border-radius | @radius-extraLarge | -
 --td-guide-dialog-footer-button-padding | 0 @spacer-3 | -
@@ -88,7 +88,7 @@ Name | Default Value | Description
 --td-guide-footer-text-align | right | -
 --td-guide-popover-bg-color | @bg-color-container | -
 --td-guide-popover-body-font | @font-body-medium | -
---td-guide-popover-body-margin-top | 8rpx | -
+--td-guide-popover-body-margin-top | calc(@spacer / 2) | -
 --td-guide-popover-body-text-align | left | -
 --td-guide-popover-border | 2rpx solid @component-border | -
 --td-guide-popover-border-radius | @radius-large | -

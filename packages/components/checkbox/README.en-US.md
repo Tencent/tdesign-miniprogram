@@ -58,7 +58,7 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 borderless | Boolean | false | \- | N
-direction | String | vertical | `1.16.2`。Radio option arrangement。options: vertical/horizontal | N
+direction | String | vertical | `1.17.0`。Radio option arrangement。options: vertical/horizontal | N
 disabled | Boolean | undefined | \- | N
 keys | Object | - | Typescript: `KeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 max | Number | undefined | \- | N
@@ -100,5 +100,5 @@ Name | Default Value | Description
 --td-checkbox-title-color | @text-color-primary | -
 --td-checkbox-title-disabled-color | @text-color-disabled | -
 --td-checkbox-title-font | @font-body-large | -
---td-checkbox-title-line-height | 48rpx | -
+--td-checkbox-title-line-height | @text-line-height-m | -
 --td-checkbox-vertical-padding | @spacer-2 | -

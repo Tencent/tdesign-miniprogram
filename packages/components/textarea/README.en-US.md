@@ -74,6 +74,6 @@ Name | Default Value | Description
 --td-textarea-disabled-text-color | @text-color-disabled | -
 --td-textarea-indicator-text-color | @text-color-placeholder | -
 --td-textarea-label-color | @text-color-primary | -
---td-textarea-padding | 32rpx | -
+--td-textarea-padding | @spacer-2 | -
 --td-textarea-placeholder-color | @text-color-placeholder | -
 --td-textarea-text-color | @text-color-primary | -

@@ -88,6 +88,6 @@ t-class-right-item-label | 右侧第一列子项标签样式类
 --td-tree-colum-width | 206rpx | -
 --td-tree-item-active-color | @brand-color | -
 --td-tree-item-disabled-color | @text-color-disabled | -
---td-tree-item-font-size | 32rpx | -
+--td-tree-item-font-size | @font-size-m | -
 --td-tree-item-height | 112rpx | -
 --td-tree-root-bg-color | @bg-color-secondarycontainer | -

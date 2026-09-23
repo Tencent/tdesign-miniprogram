@@ -39,7 +39,7 @@ The component provides the following CSS variables, which can be used to customi
 Name | Default Value | Description
 -- | -- | --
 --td-badge-basic-height | 32rpx | -
---td-badge-basic-padding | 8rpx | -
+--td-badge-basic-padding | calc(@spacer / 2) | -
 --td-badge-basic-width | 32rpx | -
 --td-badge-bg-color | @error-color | -
 --td-badge-border-radius | 4rpx | -

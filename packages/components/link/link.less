@@ -28,13 +28,13 @@
 
 // 字号
 @link-content-small-font: @font-body-small;
-@link-icon-small-font-size: 28rpx;
+@link-icon-small-font-size: @font-size-base;
 
 @link-content-medium-font: @font-body-medium;
-@link-icon-medium-font-size: 32rpx;
+@link-icon-medium-font-size: @font-size-m;
 
 @link-content-large-font: @font-body-large;
-@link-icon-large-font-size: 36rpx;
+@link-icon-large-font-size: @font-size-l;
 
 @themes: primary, success, warning, default, danger;
 
@@ -109,10 +109,10 @@
   }
 
   &__prefix-icon:not(:empty) + &__content:not(:empty) {
-    padding-left: 8rpx;
+    padding-left: calc(@spacer / 2);
   }
 
   &__content:not(:empty) + &__suffix-icon:not(:empty) {
-    padding-left: 8rpx;
+    padding-left: calc(@spacer / 2);
   }
 }

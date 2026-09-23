@@ -46,7 +46,7 @@
     }
 
     &-item + &-item {
-      margin-top: 4rpx;
+      margin-top: calc(@spacer / 4);
     }
 
     &-tips {
@@ -55,7 +55,7 @@
       justify-content: center;
       min-width: @indexes-sidebar-tips-size;
       max-width: 198rpx;
-      padding: 0 32rpx;
+      padding: 0 @spacer-2;
       box-sizing: border-box;
       white-space: nowrap;
       overflow: hidden;

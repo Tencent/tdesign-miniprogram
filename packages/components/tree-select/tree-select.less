@@ -5,7 +5,7 @@
 @tree-item-active-color: var(--td-tree-item-active-color, @brand-color);
 @tree-item-disabled-color: var(--td-tree-item-disabled-color, @text-color-disabled);
 @tree-item-height: var(--td-tree-item-height, 112rpx);
-@tree-item-font-size: var(--td-tree-item-font-size, 32rpx);
+@tree-item-font-size: var(--td-tree-item-font-size, @font-size-m);
 @tree-colum-width: var(--td-tree-colum-width, 206rpx);
 @tree-colum-text-color: var(--td-tree-colum-text-color, @text-color-primary);
 
@@ -39,7 +39,7 @@
     height: @tree-item-height;
     line-height: @tree-item-height;
     font-size: @tree-item-font-size;
-    padding-left: 32rpx;
+    padding-left: @spacer-2;
 
     &--active {
       font-weight: 600;

@@ -133,7 +133,7 @@ t-class-left | 左侧图标样式类
 --td-search-icon-color | @text-color-placeholder | -
 --td-search-icon-size | 48rpx | -
 --td-search-label-color | @text-color-primary | -
---td-search-padding | 16rpx 24rpx | -
+--td-search-padding | @spacer @spacer-1 | -
 --td-search-placeholder-color | @text-color-placeholder | -
 --td-search-result-high-light-color | @brand-color | -
 --td-search-square-radius | @radius-default | -

@@ -4,7 +4,7 @@
 
 @grid-item-icon-size: 48rpx;
 
-@grid-item-padding: var(--td-grid-item-padding, 32rpx);
+@grid-item-padding: var(--td-grid-item-padding, @spacer-2);
 @grid-item-bg-color: var(--td-grid-item-bg-color, @bg-color-container);
 @grid-item-image-width: var(--td-grid-item-image-width, 96rpx);
 @grid-item-image-small-width: var(--td-grid-item-image-small-width, 64rpx);
@@ -13,7 +13,7 @@
 @grid-item-text-font: var(--td-grid-item-text-font, @font-body-medium);
 @grid-item-text-small-font: var(--td-grid-item-text-small-font, @font-body-extraSmall);
 @grid-item-text-middle-font: var(--td-grid-item-text-middle-font, @font-body-small);
-@grid-item-text-padding-top: var(--td-grid-item-text-padding-top, 16rpx);
+@grid-item-text-padding-top: var(--td-grid-item-text-padding-top, @spacer);
 @grid-item-description-font: var(--td-grid-item-description-font, @font-body-small);
 @grid-item-description-color: var(--td-grid-item-description-color, @text-color-placeholder);
 @grid-item-description-padding-top: var(--td-grid-item-description-padding-top, 0);
@@ -48,7 +48,7 @@
     align-items: center;
     overflow: hidden;
     position: relative;
-    padding: @grid-item-padding 0 24rpx;
+    padding: @grid-item-padding 0 @spacer-1;
 
     &--horizontal {
       flex-direction: row;
@@ -76,7 +76,7 @@
     align-items: center;
 
     &--horizontal {
-      margin-left: 24rpx;
+      margin-left: @spacer-1;
     }
 
     &:empty {

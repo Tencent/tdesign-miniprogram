@@ -43,15 +43,15 @@ The component provides the following CSS variables, which can be used to customi
 Name | Default Value | Description
 -- | -- | --
 --td-color-picker-gradient-preview-height | 56rpx | -
---td-color-picker-gradient-preview-radius | 6rpx | -
+--td-color-picker-gradient-preview-radius | @radius-small | -
 --td-color-picker-gradient-preview-width | 56rpx | -
---td-color-picker-input-format-margin-left | 48rpx | -
+--td-color-picker-input-format-margin-left | @spacer-3 | -
 --td-color-picker-panel-background | @bg-color-container | -
---td-color-picker-panel-padding | 32rpx | -
---td-color-picker-panel-radius | 24rpx | -
+--td-color-picker-panel-padding | @spacer-2 | -
+--td-color-picker-panel-radius | @radius-extraLarge | -
 --td-color-picker-panel-width | 750rpx | -
 --td-color-picker-saturation-height | 288rpx | -
---td-color-picker-saturation-radius | 12rpx | -
+--td-color-picker-saturation-radius | @radius-default | -
 --td-color-picker-saturation-thumb-size | 48rpx | -
 --td-color-picker-slider-height | 16rpx | -
 --td-color-picker-slider-thumb-padding | 6rpx | -

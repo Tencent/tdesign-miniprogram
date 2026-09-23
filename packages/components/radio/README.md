@@ -115,7 +115,7 @@ style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 allow-uncheck | Boolean | false | 是否允许取消选中 | N
 borderless | Boolean | false | 是否开启无边框模式 | N
-direction | String | vertical | `1.16.2`。单选框按钮排列方式。可选项：vertical/horizontal | N
+direction | String | vertical | `1.17.0`。单选框按钮排列方式。可选项：vertical/horizontal | N
 disabled | Boolean | undefined | 是否禁用全部子单选框 | N
 icon | String / Array | 'circle' | 自定义选中图标和非选中图标。示例：[选中态图标，非选中态图标]。使用 String 时，值为 circle 表示填充型图标、值为 line 表示描边型图标、值为 dot 表示圆点图标；仅在使用 options 时生效。TS 类型：`'circle' \| 'line' \| 'dot' \| Array<string>` | N
 keys | Object | - | 用来定义 value / label / disabled 在 `options` 中对应的字段别名。TS 类型：`KeysType`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
@@ -158,5 +158,5 @@ change | `(value: RadioValue)` | 选中值发生变化时触发
 --td-radio-label-checked-color | @text-color-primary | -
 --td-radio-label-color | @text-color-primary | -
 --td-radio-label-disabled-color | @text-color-disabled | -
---td-radio-label-line-height | 48rpx | -
---td-radio-vertical-padding | 32rpx | -
+--td-radio-label-line-height | @text-line-height-m | -
+--td-radio-vertical-padding | @spacer-2 | -
