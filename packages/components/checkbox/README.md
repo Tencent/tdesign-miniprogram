@@ -126,7 +126,7 @@ t-class-label | 标签样式类
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 borderless | Boolean | false | 是否开启无边框模式。优先级低于 Checkbox.borderless | N
-direction | String | vertical | `1.16.2`。复选框按钮排列方式。可选项：vertical/horizontal | N
+direction | String | vertical | `1.17.0`。复选框按钮排列方式。可选项：vertical/horizontal | N
 disabled | Boolean | undefined | 是否禁用组件。优先级：Form.disabled < CheckboxGroup.disabled < Checkbox.disabled | N
 keys | Object | - | 用来定义 value / label / disabled 在 `options` 中对应的字段别名。TS 类型：`KeysType`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 max | Number | undefined | 支持最多选中的数量 | N

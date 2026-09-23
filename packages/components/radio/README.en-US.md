@@ -58,7 +58,7 @@ style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 allow-uncheck | Boolean | false | \- | N
 borderless | Boolean | false | \- | N
-direction | String | vertical | `1.16.2`。Radio option arrangement。options: vertical/horizontal | N
+direction | String | vertical | `1.17.0`。Radio option arrangement。options: vertical/horizontal | N
 disabled | Boolean | undefined | \- | N
 icon | String / Array | 'circle' | Typescript: `'circle' \| 'line' \| 'dot' \| Array<string>` | N
 keys | Object | - | Typescript: `KeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
