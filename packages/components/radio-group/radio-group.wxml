@@ -1,6 +1,10 @@
 <wxs src="../common/utils.wxs" module="_" />
 
-<view style="{{_._style([style, customStyle])}}" class="{{classPrefix}} class {{prefix}}-class" aria-role="radiogroup">
+<view
+  style="{{_._style([style, customStyle])}}"
+  class="{{_.cls(classPrefix, [direction])}} class {{prefix}}-class"
+  aria-role="radiogroup"
+>
   <slot />
   <block wx:for="{{radioOptions}}" wx:key="value">
     <t-radio

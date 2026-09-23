@@ -3,6 +3,7 @@ Component({
     value: ['1'],
     single: false,
     max: 2,
+    direction: 'vertical',
     style: 'color: red',
     customStyle: 'font-size: 9px',
   },

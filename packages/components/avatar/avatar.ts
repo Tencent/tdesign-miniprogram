@@ -1,7 +1,7 @@
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
 import config from '../common/config';
 import avatarProps from './props';
-import { setIcon, systemInfo } from '../common/utils';
+import { calcIcon, systemInfo } from '../common/utils';
 
 const { prefix } = config;
 const name = `${prefix}-avatar`;
@@ -48,9 +48,8 @@ export default class Avatar extends SuperComponent {
 
   observers = {
     icon(icon) {
-      const obj = setIcon('icon', icon, '');
       this.setData({
-        ...obj,
+        _icon: calcIcon(icon),
       });
     },
 

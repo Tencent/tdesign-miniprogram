@@ -1,3 +1,4 @@
+<import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
 <wxs src="./upload.wxs" module="_this" />
 <wxs src="./drag.wxs" module="handler" />
@@ -48,7 +49,7 @@
     aria-label="删除"
     catchtap="onDelete"
   >
-    <t-icon t-class="{{classPrefix}}__list-item-delete" name="delete" />
+    <template is="icon" data="{{tClass: classPrefix + '__list-item-delete', ..._removeBtn}}" />
   </view>
 </template>
 
@@ -162,7 +163,7 @@
       aria-label="删除"
       bindtap="onDelete"
     >
-      <t-icon name="close" size="32rpx" color="#fff" />
+      <template is="icon" data="{{tClass: '', size: '32rpx', color: '#fff', ..._removeBtn}}" />
     </view>
   </view>
 </template>
@@ -195,7 +196,7 @@
         >
           <template
             is="list-item-content"
-            data="{{file, index, classPrefix, disabled, imageProps, removeBtn, globalConfig}}"
+            data="{{file, index, classPrefix, disabled, imageProps, removeBtn, _removeBtn, globalConfig}}"
           />
         </view>
       </view>
@@ -229,7 +230,7 @@
           >
             <template
               is="list-item-content"
-              data="{{file, index, classPrefix, disabled, imageProps, removeBtn, globalConfig}}"
+              data="{{file, index, classPrefix, disabled, imageProps, removeBtn, _removeBtn, globalConfig}}"
             />
           </view>
         </view>
@@ -258,7 +259,7 @@
         >
           <template
             is="grid-item-content"
-            data="{{file, index, classPrefix, disabled, gridItemStyle, ariaRole, ariaLabel, imageProps, removeBtn, globalConfig}}"
+            data="{{file, index, classPrefix, disabled, gridItemStyle, ariaRole, ariaLabel, imageProps, removeBtn, _removeBtn, globalConfig}}"
           />
         </t-grid-item>
 
@@ -307,7 +308,7 @@
             >
               <template
                 is="grid-item-content"
-                data="{{file, index, classPrefix, disabled, gridItemStyle, ariaRole, ariaLabel, imageProps, removeBtn, globalConfig}}"
+                data="{{file, index, classPrefix, disabled, gridItemStyle, ariaRole, ariaLabel, imageProps, removeBtn, _removeBtn, globalConfig}}"
               />
             </t-grid-item>
           </view>

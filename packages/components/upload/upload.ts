@@ -2,7 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import props from './props';
 import { UploadFile, SizeLimitObj } from './type';
 import config from '../common/config';
-import { isOverSize, isWxWork, isPC } from '../common/utils';
+import { calcIcon, isOverSize, isWxWork, isPC } from '../common/utils';
 import { isObject } from '../common/validator';
 import usingConfig from '../mixins/using-config';
 
@@ -22,6 +22,7 @@ export default class Upload extends SuperComponent {
   data = {
     classPrefix: `${prefix}-${componentName}`,
     prefix,
+    _removeBtn: { name: 'close' },
     current: false,
     proofs: [],
     customFiles: [] as UploadFile[], // 内部动态修改的files
@@ -51,14 +52,25 @@ export default class Upload extends SuperComponent {
     gridConfig() {
       this.updateGrid();
     },
+    'removeBtn, theme'(value: string | boolean | object, theme: string) {
+      this.setRemoveBtn(value, theme);
+    },
   };
 
   lifetimes = {
     ready() {
       this.updateGrid();
       this.handleLimit(this.data.customFiles, this.data.max);
+      this.setRemoveBtn(this.data.removeBtn, this.data.theme);
     },
   };
+
+  setRemoveBtn(value: string | boolean | object, theme: string) {
+    const defaultIcon = theme === 'list' ? 'delete' : 'close';
+    this.setData({
+      _removeBtn: typeof value === 'boolean' ? { name: defaultIcon } : calcIcon(value) || { name: defaultIcon },
+    });
+  }
 
   handleLimit(customFiles: UploadFile[], max: number) {
     if (max === 0) {

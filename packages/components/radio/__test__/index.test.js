@@ -58,6 +58,18 @@ describe('radio', () => {
   });
 
   describe('with group', () => {
+    it(':direction', async () => {
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const radio = comp.querySelector('.a');
+
+      comp.setData({ direction: 'horizontal' });
+      await simulate.sleep(10);
+
+      expect(radio.data.direction).toBe('horizontal');
+    });
+
     it(`:base`, async () => {
       // const id = simulate.load({
       //   template: `
