@@ -6,14 +6,14 @@
 @side-bar-bg-color: var(--td-side-bar-bg-color, @bg-color-secondarycontainer);
 @side-bar-disabled-color: var(--td-side-bar-disabled-color, @text-color-disabled);
 @side-bar-active-color: var(--td-side-bar-active-color, @brand-color);
-@side-bar-border-radius: var(--td-side-bar-border-radius, 18rpx);
+@side-bar-border-radius: var(--td-side-bar-border-radius, @radius-large);
 @side-bar-icon-size: var(--td-side-bar-icon-size, 40rpx);
 
 .@{prefix}-side-bar-item {
   display: flex;
   align-items: center;
   position: relative;
-  padding: 32rpx;
+  padding: @spacer-2;
   font: @side-bar-font;
   color: @side-bar-color;
   background: @side-bar-bg-color;
@@ -31,7 +31,7 @@
 
   &__icon {
     font-size: @side-bar-icon-size;
-    margin-right: 4rpx;
+    margin-right: calc(@spacer / 4);
   }
 
   &__prefix,

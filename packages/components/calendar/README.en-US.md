@@ -55,7 +55,7 @@ Name | Default Value | Description
 --td-calendar-item-centre-color | @brand-color-light | -
 --td-calendar-item-disabled-color | @text-color-disabled | -
 --td-calendar-item-suffix-color | @text-color-placeholder | -
---td-calendar-radius | 24rpx | -
+--td-calendar-radius | @radius-extraLarge | -
 --td-calendar-selected-border-radius | @radius-default | -
 --td-calendar-selected-color | @text-color-anti | -
 --td-calendar-switch-mode-icon-color | @text-color-secondary | -

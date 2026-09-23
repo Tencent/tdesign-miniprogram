@@ -5,7 +5,7 @@
  * */
 
 import { CheckboxIconType } from '../checkbox/index';
-import { KeysType } from '../common/common';
+import type { KeysType } from '../common/common';
 
 export interface TdCheckboxGroupProps<T = CheckboxGroupValue> {
   /**
@@ -15,6 +15,14 @@ export interface TdCheckboxGroupProps<T = CheckboxGroupValue> {
   borderless?: {
     type: BooleanConstructor;
     value?: boolean;
+  };
+  /**
+   * 复选框按钮排列方式
+   * @default vertical
+   */
+  direction?: {
+    type: StringConstructor;
+    value?: 'vertical' | 'horizontal';
   };
   /**
    * 是否禁用组件。优先级：Form.disabled < CheckboxGroup.disabled < Checkbox.disabled

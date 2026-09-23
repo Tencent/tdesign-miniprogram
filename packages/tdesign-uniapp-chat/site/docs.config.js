@@ -28,6 +28,7 @@ export const docs = [
       },
       {
         title: '什么是流式输出',
+        titleEn: 'SSE',
         name: 'sse',
         path: '/uniapp-chat/sse',
         component: () => import('@docs/sse.md'),
@@ -66,7 +67,8 @@ export const docs = [
     ],
   },
   {
-    title: '基础',
+    title: '智能对话',
+    titleEn: 'Chat',
     type: 'component', // 组件文档
     children: [
       {

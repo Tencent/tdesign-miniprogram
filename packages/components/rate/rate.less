@@ -54,7 +54,7 @@
   &__text {
     font-size: @rate-text-font-size;
     color: @rate-text-color;
-    margin-left: 32rpx;
+    margin-left: @spacer-2;
     vertical-align: middle;
 
     &--active {
@@ -69,8 +69,8 @@
     display: flex;
     align-items: center;
     bottom: calc(100% + 16rpx);
-    padding: 8rpx;
-    border-radius: 12rpx;
+    padding: calc(@spacer / 2);
+    border-radius: @radius-default;
     box-shadow: @shadow-1;
     background-color: @bg-color-container;
     transform: translateX(-50%);
@@ -86,7 +86,7 @@
       flex-direction: column;
       align-items: center;
       width: 64rpx;
-      border-radius: 6rpx;
+      border-radius: @radius-small;
 
       &--active {
         background-color: @bg-color-component;

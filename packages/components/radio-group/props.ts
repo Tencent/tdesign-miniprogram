@@ -16,6 +16,11 @@ const props: TdRadioGroupProps = {
     type: Boolean,
     value: false,
   },
+  /** 单选框按钮排列方式 */
+  direction: {
+    type: String,
+    value: 'vertical',
+  },
   /** 是否禁用全部子单选框 */
   disabled: {
     type: null,

@@ -2,12 +2,12 @@
 
 @drawer-width: var(--td-drawer-width, 560rpx);
 @drawer-title-font: var(--td-drawer-title-font, @font-title-large);
-@drawer-title-padding: var(--td-drawer-title-padding, 48rpx 32rpx 16rpx);
+@drawer-title-padding: var(--td-drawer-title-padding, @spacer-3 @spacer-2 @spacer);
 @drawer-bg-color: var(--td-drawer-bg-color, @bg-color-container);
 @drawer-border-color: var(--td-drawer-border-color, @border-level-1-color);
 @drawer-title-color: var(--td-drawer-title-color, @text-color-primary);
 @drawer-item-icon-color: var(--td-drawer-item-icon-color, @drawer-title-color);
-@drawer-item-padding: var(--td-drawer-item-padding, 32rpx);
+@drawer-item-padding: var(--td-drawer-item-padding, @spacer-2);
 @drawer-item-icon-size: var(--td-drawer-item-icon-size, 48rpx);
 @drawer-sidebar-height: var(--td-drawer-sidebar-height, 70vh);
 @drawer-footer-padding-bottom: var(--td-drawer-footer-padding-bottom, 40rpx);
@@ -26,7 +26,7 @@
 
   &__title {
     font: @drawer-title-font;
-    padding: 48rpx 32rpx 16rpx;
+    padding: @spacer-3 @spacer-2 @spacer;
     color: @drawer-title-color;
   }
 
@@ -53,7 +53,7 @@
       }
 
       &-icon {
-        padding-right: 16rpx;
+        padding-right: @spacer;
         color: @drawer-item-icon-color;
         font-size: @drawer-item-icon-size;
       }

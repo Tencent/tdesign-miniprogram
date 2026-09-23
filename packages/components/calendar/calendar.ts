@@ -2,6 +2,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import TCalendar from '../common/shared/calendar/index';
+import type { TCalendarValue } from '../common/shared/calendar/type';
 import { TdCalendarProps } from './type';
 import useCustomNavbar from '../mixins/using-custom-navbar';
 import usingConfig from '../mixins/using-config';
@@ -9,6 +10,8 @@ import { getPrevMonth, getPrevYear, getNextMonth, getNextYear } from './utils';
 
 const { prefix } = config;
 const componentName = 'calendar';
+
+type CalendarMonth = ReturnType<TCalendar['getMonths']>[number];
 
 export interface CalendarProps extends TdCalendarProps {}
 
@@ -66,7 +69,6 @@ export default class Calendar extends SuperComponent {
       this.initialValue();
 
       this.calcMonths();
-      this.updateCurrentMonth();
 
       if (!this.data.usePopup) {
         this.scrollIntoView();
@@ -112,8 +114,7 @@ export default class Calendar extends SuperComponent {
 
     value(v) {
       this.base.value = v;
-      this.calcMonths();
-      this.updateCurrentMonth(Array.isArray(v) ? v[0] : v);
+      this.calcMonths(Array.isArray(v) ? v[0] : v);
     },
 
     visible(v) {
@@ -168,7 +169,7 @@ export default class Calendar extends SuperComponent {
       }
     },
 
-    getCurrentYearAndMonth(v: Date) {
+    getCurrentYearAndMonth(v: TCalendarValue) {
       const date = new Date(v);
       return { year: date.getFullYear(), month: date.getMonth() };
     },
@@ -202,29 +203,36 @@ export default class Calendar extends SuperComponent {
       });
     },
 
-    updateCurrentMonth(newValue?: any) {
-      if (this.data.switchMode === 'none') return;
-      this.calcCurrentMonth(newValue);
-    },
-
-    calcCurrentMonth(newValue?: any) {
+    getCurrentMonth(newValue?: TCalendarValue, months: CalendarMonth[] = this.data.months) {
       const date = newValue || this.getCurrentDate();
       const { year, month } = this.getCurrentYearAndMonth(date);
-      const currentMonth = this.data.months.filter((item) => item.year === year && item.month === month);
+      const currentMonth = months.filter((item) => item.year === year && item.month === month);
 
-      this.updateActionButton(date);
-
-      this.setData({
-        currentMonth: currentMonth.length > 0 ? currentMonth : [this.data.months[0]],
-      });
+      return {
+        date,
+        currentMonth: currentMonth.length > 0 ? currentMonth : [months[0]],
+      };
     },
 
-    calcMonths() {
+    calcCurrentMonth(newValue?: TCalendarValue) {
+      const { date, currentMonth } = this.getCurrentMonth(newValue);
+
+      this.updateActionButton(date);
+      this.setData({ currentMonth });
+    },
+
+    calcMonths(newValue?: TCalendarValue) {
       const months = this.base.getMonths();
 
-      this.setData({
-        months,
-      });
+      if (this.data.switchMode === 'none') {
+        this.setData({ months });
+        return;
+      }
+
+      const { date, currentMonth } = this.getCurrentMonth(newValue, months);
+
+      this.updateActionButton(date);
+      this.setData({ months, currentMonth });
     },
 
     close(trigger) {
@@ -253,7 +261,6 @@ export default class Calendar extends SuperComponent {
       const value = this.toTime(rawValue);
 
       this.calcMonths();
-      this.updateCurrentMonth();
 
       if (this.data.confirmBtn == null) {
         // 不显示确认按钮，则选择完即关闭 popup

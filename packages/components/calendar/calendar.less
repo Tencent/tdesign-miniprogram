@@ -1,6 +1,6 @@
 @import '../common/style/base.less';
 
-@calendar-radius: var(--td-calendar-radius, 24rpx);
+@calendar-radius: var(--td-calendar-radius, @radius-extraLarge);
 @calendar-bg-color: var(--td-calendar-bg-color, @bg-color-container);
 @calendar-active-color: var(--td-calendar-active-color, @brand-color);
 @calendar-selected-color: var(--td-calendar-selected-color, @text-color-anti);
@@ -52,13 +52,13 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-column-gap: 8rpx;
-    padding: 0 32rpx;
+    padding: 0 @spacer-2;
     text-align: center;
     line-height: 92rpx;
 
     &-item {
       height: 92rpx;
-      font-size: 28rpx;
+      font-size: @font-size-base;
       color: @calendar-days-color;
     }
   }
@@ -72,11 +72,11 @@
   &__month {
     font: @font-title-small;
     color: @calendar-title-color;
-    padding: 32rpx 0 0;
+    padding: @spacer-2 0 0;
 
     &s {
       height: 712rpx;
-      padding: 0 32rpx 32rpx;
+      padding: 0 @spacer-2 @spacer-2;
       box-sizing: border-box;
 
       &::-webkit-scrollbar {
@@ -99,7 +99,7 @@
       font: @font-title-medium;
       border-radius: @calendar-selected-border-radius;
       height: 120rpx;
-      margin-top: 16rpx;
+      margin-top: @spacer;
       color: @calendar-title-color;
 
       .cursor-pointer();
@@ -196,7 +196,7 @@
   }
 
   &__footer {
-    padding: 32rpx;
+    padding: @spacer-2;
   }
 }
 
@@ -210,7 +210,7 @@
   align-items: center;
 
   &__with-action {
-    padding: 0rpx 32rpx 16rpx 32rpx;
+    padding: 0 @spacer-2 @spacer @spacer-2;
     box-sizing: border-box;
 
     .border(bottom, @border-color);
@@ -224,12 +224,12 @@
 
   &__action {
     display: flex;
-    font-size: 40rpx;
+    font-size: @font-size-xl;
     color: @calendar-switch-mode-icon-color;
   }
 
   &__icon {
-    padding: 16rpx;
+    padding: @spacer;
   }
 
   &__icon--disabled {

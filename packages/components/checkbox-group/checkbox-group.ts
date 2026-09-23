@@ -40,6 +40,11 @@ export default class CheckBoxGroup extends SuperComponent {
         item.setDisabled(v);
       });
     },
+    direction(v) {
+      this.getChildren().forEach((item) => {
+        item.setData({ direction: v });
+      });
+    },
   };
 
   lifetimes = {

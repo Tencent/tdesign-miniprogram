@@ -1,7 +1,7 @@
 ---
 title: ChatRecord
 description: A component for displaying chat conversation history with features like time grouping, scroll loading, and message interactions.
-spline: base
+spline: chat
 isComponent: true
 ---
 

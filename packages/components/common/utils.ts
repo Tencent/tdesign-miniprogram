@@ -234,31 +234,6 @@ export const unitConvert = (value: number | string | null | undefined): number =
   return value ?? 0;
 };
 
-export const setIcon = (iconName, icon, defaultIcon) => {
-  if (icon) {
-    if (typeof icon === 'string') {
-      return {
-        [`${iconName}Name`]: icon,
-        [`${iconName}Data`]: {},
-      };
-    }
-    if (typeof icon === 'object') {
-      return {
-        [`${iconName}Name`]: '',
-        [`${iconName}Data`]: icon,
-      };
-    }
-    return {
-      [`${iconName}Name`]: defaultIcon,
-      [`${iconName}Data`]: {},
-    };
-  }
-  return {
-    [`${iconName}Name`]: '',
-    [`${iconName}Data`]: {},
-  };
-};
-
 export const toCamel = (str) => str.replace(/-(\w)/g, (match, m1) => m1.toUpperCase());
 
 /**

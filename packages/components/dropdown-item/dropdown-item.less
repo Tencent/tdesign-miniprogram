@@ -57,7 +57,7 @@
     display: flex;
     background: @dropdown-menu-bg-color;
     position: relative;
-    padding: 32rpx;
+    padding: @spacer-2;
     .border(top, @component-border);
 
     &-btn {
@@ -65,7 +65,7 @@
     }
 
     &-btn + &-btn {
-      margin-left: 32rpx;
+      margin-left: @spacer-2;
     }
   }
 
@@ -84,20 +84,20 @@
 
     &-group {
       display: grid;
-      grid-gap: 24rpx;
+      grid-gap: @spacer-1;
     }
   }
 
   &__radio {
     &-group {
       display: grid;
-      grid-gap: 0rpx;
+      grid-gap: 0;
     }
   }
 
   &__checkbox {
     &-group {
-      padding: 32rpx;
+      padding: @spacer-2;
     }
   }
 

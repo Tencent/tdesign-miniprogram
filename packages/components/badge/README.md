@@ -83,7 +83,7 @@ t-class-count | 计数样式类
 名称 | 默认值 | 描述
 -- | -- | --
 --td-badge-basic-height | 32rpx | -
---td-badge-basic-padding | 8rpx | -
+--td-badge-basic-padding | calc(@spacer / 2) | -
 --td-badge-basic-width | 32rpx | -
 --td-badge-bg-color | @error-color | -
 --td-badge-border-radius | 4rpx | -

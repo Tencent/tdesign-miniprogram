@@ -18,9 +18,9 @@
 @button-icon-border-radius: var(--td-button-icon-border-radius, 8rpx);
 
 // padding
-@button-extra-small-padding-horizontal: var(--td-button-extra-small-padding-horizontal, 16rpx);
-@button-small-padding-horizontal: var(--td-button-small-padding-horizontal, 24rpx);
-@button-medium-padding-horizontal: var(--td-button-medium-padding-horizontal, 32rpx);
+@button-extra-small-padding-horizontal: var(--td-button-extra-small-padding-horizontal, @spacer);
+@button-small-padding-horizontal: var(--td-button-small-padding-horizontal, @spacer-1);
+@button-medium-padding-horizontal: var(--td-button-medium-padding-horizontal, @spacer-2);
 @button-large-padding-horizontal: var(--td-button-large-padding-horizontal, 40rpx);
 
 // 图标大小
@@ -511,7 +511,7 @@
 
   &__loading + &__content:not(:empty),
   &__icon + &__content:not(:empty) {
-    margin-left: 8rpx;
+    margin-left: calc(@spacer / 2);
   }
 
   &__icon {
@@ -577,13 +577,13 @@
   // 圆形
   &--circle {
     padding: 0;
-    border-radius: 50%;
+    border-radius: @radius-circle;
 
     &.@{button}--size-large {
       width: @button-large-height;
 
       &::after {
-        border-radius: 50%;
+        border-radius: @radius-circle;
       }
     }
 
@@ -591,7 +591,7 @@
       width: @button-medium-height;
 
       &::after {
-        border-radius: 50%;
+        border-radius: @radius-circle;
       }
     }
 
@@ -599,7 +599,7 @@
       width: @button-small-height;
 
       &::after {
-        border-radius: 50%;
+        border-radius: @radius-circle;
       }
     }
 
@@ -607,7 +607,7 @@
       width: @button-extra-small-height;
 
       &::after {
-        border-radius: 50%;
+        border-radius: @radius-circle;
       }
     }
   }

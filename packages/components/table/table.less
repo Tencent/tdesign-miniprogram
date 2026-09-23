@@ -8,8 +8,8 @@
 @table-header-text-color: var(--td-table-header-text-color, @text-color-placeholder);
 @table-body-text-color: var(--td-table-body-text-color, @text-color-primary);
 @table-stripe-bg-color: var(--td-table-stripe-bg-color, @bg-color-secondarycontainer);
-@table-td-padding: var(--td-table-td-padding, 16rpx 24rpx);
-@table-th-padding: var(--td-table-th-padding, 16rpx 24rpx);
+@table-td-padding: var(--td-table-td-padding, @spacer @spacer-1);
+@table-th-padding: var(--td-table-th-padding, @spacer @spacer-1);
 @table-font-size: var(--td-table-font-size, @font-body-medium);
 @table-loading-bg-color: var(--td-table-loading-bg-color, rgba(255, 255, 255, 0.55));
 @table-row-height: var(--td-table-row-height, 82rpx);
@@ -117,7 +117,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding: 48rpx 0;
+    padding: @spacer-3 0;
     background-color: @bg-color-container;
     color: @text-color-placeholder;
   }
@@ -130,7 +130,7 @@
 
   // 表尾
   &__bottom-content {
-    padding: 16rpx 24rpx;
+    padding: @spacer @spacer-1;
     background-color: @bg-color-container;
     border-top: 2rpx solid @table-border-color;
   }
@@ -191,6 +191,10 @@
     .@{table-prefix}__th {
       border-bottom: 2rpx solid @table-border-color;
     }
+
+    .@{table-prefix}__tr:last-child .@{table-prefix}__td {
+      border-bottom: none;
+    }
   }
 
   // 斑马纹（同步 mobile-vue）
@@ -230,14 +234,48 @@
     }
   }
 
-  // 合并单元格
+  // 合并单元格：表体为 grid 布局（display 等由内联样式设置），需重置 flex 避免冲突
   &--rowspan-colspan {
+    .@{table-prefix}__body {
+      display: grid;
+      grid-auto-rows: minmax(0, auto);
+      min-width: 100%;
+    }
+
+    .@{table-prefix}__td {
+      display: flex;
+      align-items: center;
+      flex: none;
+      min-width: 0;
+    }
+
     .@{table-prefix}__td-last-row {
       border-bottom: none;
     }
 
     .@{table-prefix}__td-first-col {
       border-left: none;
+    }
+  }
+
+  // 合并单元格 + 边框：grid 下 :last-child 无法判断每行最后一列，
+  // 改为容器画上+左边框、单元格画右+下边框，保证每条网格线只绘制一次
+  &--rowspan-colspan&--bordered {
+    border-right: none;
+    border-bottom: none;
+
+    .@{table-prefix}__th {
+      border-right: 2rpx solid @table-border-color;
+      border-bottom: 2rpx solid @table-border-color;
+    }
+
+    .@{table-prefix}__td {
+      border-right: 2rpx solid @table-border-color;
+      border-bottom: 2rpx solid @table-border-color;
+
+      &:last-child {
+        border-right: 2rpx solid @table-border-color;
+      }
     }
   }
 

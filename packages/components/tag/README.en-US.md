@@ -93,10 +93,10 @@ Name | Default Value | Description
 --td-tag-disabled-color | @text-color-disabled | -
 --td-tag-extra-large-font | @font-body-medium | -
 --td-tag-extra-large-icon-size | 32rpx | -
---td-tag-extra-large-padding | 16rpx 30rpx | -
+--td-tag-extra-large-padding | @spacer 30rpx | -
 --td-tag-large-font | @font-body-medium | -
 --td-tag-large-icon-size | 32rpx | -
---td-tag-large-padding | 4rpx 14rpx | -
+--td-tag-large-padding | calc(@spacer / 4) 14rpx | -
 --td-tag-mark-border-radius | @tag-round-border-radius | -
 --td-tag-medium-font | @font-body-small | -
 --td-tag-medium-icon-size | 28rpx | -
@@ -104,7 +104,7 @@ Name | Default Value | Description
 --td-tag-outline-bg-color | @bg-color-container | -
 --td-tag-primary-color | @brand-color | -
 --td-tag-primary-light-color | @brand-color-light | -
---td-tag-round-border-radius | 999px | -
+--td-tag-round-border-radius | @radius-round | -
 --td-tag-small-font | @font-body-extraSmall | -
 --td-tag-small-icon-size | 24rpx | -
 --td-tag-small-padding | 2rpx 10rpx | -

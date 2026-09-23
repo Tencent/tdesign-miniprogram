@@ -24,8 +24,8 @@
 // size
 @tag-small-padding: var(--td-tag-small-padding, 2rpx 10rpx);
 @tag-medium-padding: var(--td-tag-medium-padding, 2rpx 14rpx);
-@tag-large-padding: var(--td-tag-large-padding, 4rpx 14rpx);
-@tag-extra-large-padding: var(--td-tag-extra-large-padding, 16rpx 30rpx);
+@tag-large-padding: var(--td-tag-large-padding, calc(@spacer / 4) 14rpx);
+@tag-extra-large-padding: var(--td-tag-extra-large-padding, @spacer 30rpx);
 
 @tag-small-font: var(--td-tag-small-font, @font-body-extraSmall);
 @tag-medium-font: var(--td-tag-medium-font, @font-body-small);
@@ -38,7 +38,7 @@
 @tag-extra-large-icon-size: var(--td-tag-extra-large-icon-size, 32rpx);
 
 @tag-square-border-radius: var(--td-tag-square-border-radius, 8rpx);
-@tag-round-border-radius: var(--td-tag-round-border-radius, 999px);
+@tag-round-border-radius: var(--td-tag-round-border-radius, @radius-round);
 @tag-mark-border-radius: var(--td-tag-mark-border-radius, @tag-round-border-radius);
 
 @tag-close-icon-color: var(--td-tag-close-icon-color, @text-color-placeholder);
@@ -85,7 +85,7 @@
 
   &__icon:not(:empty) + &__text:not(:empty),
   &__text:not(:empty) + &__icon-close:not(:empty) {
-    margin-left: 8rpx;
+    margin-left: calc(@spacer / 2);
   }
 
   &.@{prefix}-tag {
@@ -100,7 +100,7 @@
 
       .@{prefix}-tag__icon:not(:empty) + .@{prefix}-tag__text:not(:empty),
       .@{prefix}-tag__text:not(:empty) + .@{prefix}-tag__icon-close:not(:empty) {
-        margin-left: 4rpx;
+        margin-left: calc(@spacer / 4);
       }
     }
 

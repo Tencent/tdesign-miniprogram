@@ -5,7 +5,7 @@
 @dropdown-menu-color: var(--td-dropdown-menu-color, @text-color-primary);
 @dropdown-menu-active-color: var(--td-dropdown-menu-active-color, @brand-color);
 @dropdown-menu-disabled-color: var(--td-dropdown-menu-disabled-color, @text-color-disabled);
-@dropdown-menu-font-size: var(--td-dropdown-menu-font-size, 28rpx);
+@dropdown-menu-font-size: var(--td-dropdown-menu-font-size, @font-size-base);
 @dropdown-menu-icon-size: var(--td-dropdown-menu-icon-size, 40rpx);
 @dropdown-menu-border-width: var(--td-dropdown-menu-border-width, 1px);
 
@@ -43,7 +43,7 @@
 
   &__icon {
     font-size: @dropdown-menu-icon-size;
-    padding: 4rpx;
+    padding: calc(@spacer / 4);
     box-sizing: border-box;
     transition: transform 240ms ease;
 
@@ -52,7 +52,7 @@
     }
 
     &:not(:empty) {
-      margin-left: 8rpx;
+      margin-left: calc(@spacer / 2);
     }
   }
 

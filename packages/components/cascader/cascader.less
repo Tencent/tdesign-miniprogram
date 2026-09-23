@@ -14,13 +14,13 @@
 @cascader-options-height: var(--td-cascader-options-height, calc(100% - @cascader-step-height));
 // filter (search)
 @cascader-filter-padding: var(--td-cascader-filter-padding, 0 @spacer-2 @spacer-1);
-@cascader-filter-item-padding: var(--td-cascader-filter-item-padding, 24rpx 32rpx);
+@cascader-filter-item-padding: var(--td-cascader-filter-item-padding, @spacer-1 @spacer-2);
 @cascader-filter-item-color: var(--td-cascader-filter-item-color, @text-color-primary);
 @cascader-filter-item-hover-bg: var(--td-cascader-filter-item-hover-bg, @bg-color-secondarycontainer);
 @cascader-filter-item-disabled-color: var(--td-cascader-filter-item-disabled-color, @text-color-disabled);
 @cascader-filter-highlight-color: var(--td-cascader-filter-highlight-color, @brand-color);
 @cascader-filter-empty-color: var(--td-cascader-filter-empty-color, @text-color-placeholder);
-@cascader-filter-empty-padding: var(--td-cascader-filter-empty-padding, 96rpx @spacer-2);
+@cascader-filter-empty-padding: var(--td-cascader-filter-empty-padding, @spacer-5 @spacer-2);
 // steps
 @cascader-step-height: var(--td-cascader-step-height, 88rpx);
 @cascader-step-dot-size: var(--td-cascader-step-dot-size, 16rpx);
@@ -80,7 +80,7 @@
     height: @cascader-step-height;
 
     &s {
-      padding: 0 32rpx 10rpx;
+      padding: 0 @spacer-2 10rpx;
       .border(bottom, @cascader-border-color);
     }
 
@@ -88,7 +88,7 @@
       position: relative;
       width: @cascader-step-dot-size;
       height: @cascader-step-dot-size;
-      border-radius: 50%;
+      border-radius: @radius-circle;
       border: 2rpx solid @cascader-active-color;
       box-sizing: border-box;
 

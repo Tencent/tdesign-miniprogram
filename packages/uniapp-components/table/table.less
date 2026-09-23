@@ -191,6 +191,10 @@
     .@{table-prefix}__th {
       border-bottom: 1px solid @table-border-color;
     }
+
+    .@{table-prefix}__tr:last-child .@{table-prefix}__td {
+      border-bottom: none;
+    }
   }
 
   // 斑马纹（同步 mobile-vue）
@@ -230,14 +234,48 @@
     }
   }
 
-  // 合并单元格
+  // 合并单元格：表体 grid 布局（grid-template-columns 由内联样式动态设置），重置 __td flex 避免冲突
   &--rowspan-colspan {
+    .@{table-prefix}__body {
+      display: grid;
+      grid-auto-rows: minmax(0, auto);
+      min-width: 100%;
+    }
+
+    .@{table-prefix}__td {
+      display: flex;
+      align-items: center;
+      flex: none;
+      min-width: 0;
+    }
+
     .@{table-prefix}__td-last-row {
       border-bottom: none;
     }
 
     .@{table-prefix}__td-first-col {
       border-left: none;
+    }
+  }
+
+  // 合并单元格 + 边框：grid 下 :last-child 无法判断每行最后一列，
+  // 改为容器画上+左、单元格画右+下，保证每条网格线只绘制一次
+  &--rowspan-colspan&--bordered {
+    border-right: none;
+    border-bottom: none;
+
+    .@{table-prefix}__th {
+      border-right: 1px solid @table-border-color;
+      border-bottom: 1px solid @table-border-color;
+    }
+
+    .@{table-prefix}__td {
+      border-right: 1px solid @table-border-color;
+      border-bottom: 1px solid @table-border-color;
+
+      &:last-child {
+        border-right: 1px solid @table-border-color;
+      }
     }
   }
 

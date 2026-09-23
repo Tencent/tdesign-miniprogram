@@ -92,7 +92,7 @@
       .@{loading}__dot {
         width: 20%;
         height: 20%;
-        border-radius: 50%;
+        border-radius: @radius-circle;
         background-color: @loading-color;
         animation-duration: 1.8s;
         animation-name: dotting;
@@ -112,7 +112,7 @@
     }
 
     &--horizontal:not(:first-child):not(:empty) {
-      margin-left: 16rpx;
+      margin-left: @spacer;
     }
   }
 

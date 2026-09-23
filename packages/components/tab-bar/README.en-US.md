@@ -56,6 +56,7 @@ icon | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description
 -- | -- | --
+--safe-area-inset-bottom | env(safe-area-inset-bottom) | -
 --td-tab-bar-bg-color | @bg-color-container | -
 --td-tab-bar-border-color | @border-level-1-color | -
 --td-tab-bar-round-shadow | @shadow-3 | -

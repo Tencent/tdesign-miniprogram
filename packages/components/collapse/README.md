@@ -121,14 +121,14 @@ t-class-header | 头部样式类
 -- | -- | --
 --td-collapse-border-color | @border-level-1-color | -
 --td-collapse-content-font | @font-body-medium | -
---td-collapse-content-padding | 32rpx | -
+--td-collapse-content-padding | @spacer-2 | -
 --td-collapse-content-text-color | @text-color-primary | -
 --td-collapse-disabled-color | @text-color-disabled | -
 --td-collapse-extra-font | @font-body-large | -
 --td-collapse-header-height | auto | -
 --td-collapse-header-text-color | @text-color-primary | -
 --td-collapse-header-text-disabled-color | @collapse-disabled-color | -
---td-collapse-horizontal-padding | 32rpx | -
+--td-collapse-horizontal-padding | @spacer-2 | -
 --td-collapse-icon-color | @text-color-placeholder | -
 --td-collapse-left-icon-color | @brand-color | -
 --td-collapse-panel-bg-color | @bg-color-container | -

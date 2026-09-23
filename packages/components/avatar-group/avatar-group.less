@@ -1,10 +1,10 @@
 @import '../common/style/base.less';
 
 //组合头像偏移量
-@avatar-group-offset-small: var(--td-avatar-group-margin-left-small, -16rpx);
-@avatar-group-offset-medium: var(--td-avatar-group-margin-left-medium, -16rpx);
-@avatar-group-offset-large: var(--td-avatar-group-margin-left-large, -16rpx);
-@avatar-group-line-spacing: var(--td-avatar-group-line-spacing, 4rpx);
+@avatar-group-offset-small: var(--td-avatar-group-margin-left-small, calc(-1 * @spacer));
+@avatar-group-offset-medium: var(--td-avatar-group-margin-left-medium, calc(-1 * @spacer));
+@avatar-group-offset-large: var(--td-avatar-group-margin-left-large, calc(-1 * @spacer));
+@avatar-group-line-spacing: var(--td-avatar-group-line-spacing, calc(@spacer / 4));
 
 @avatar-group-init-zIndex: 50;
 

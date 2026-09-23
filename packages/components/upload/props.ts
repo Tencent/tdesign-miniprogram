@@ -70,9 +70,9 @@ const props: TdUploadProps = {
     type: Boolean,
     value: true,
   },
-  /** 移除按钮 */
+  /** 移除按钮。值为 false 则不显示移除按钮；值为字符串表示图标名称；值为 Object 类型，表示透传至 icon 组件 */
   removeBtn: {
-    type: Boolean,
+    type: null,
     value: true,
   },
   /** 自定义上传方法 */

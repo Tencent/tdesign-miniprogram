@@ -15,14 +15,14 @@ default-checked | Boolean | undefined | uncontrolled property | N
 content | String | - | \- | N
 content-disabled | Boolean | false | \- | N
 disabled | Boolean | undefined | \- | N
-icon | String / Array | 'circle' | Typescript：`'circle' \| 'line' \| 'dot' \| Array<string>` | N
+icon | String / Array | 'circle' | Typescript: `'circle' \| 'line' \| 'dot' \| Array<string>` | N
 label | String | - | \- | N
 max-content-row | Number | 5 | \- | N
 max-label-row | Number | 3 | \- | N
 name | String | - | \- | N
 placement | String | - | options: left/right | N
 readonly | Boolean | undefined | `1.8.6` | N
-value | String / Number / Boolean | false | Typescript：`T` `type RadioValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/radio/type.ts) | N
+value | String / Number / Boolean | false | Typescript: `T` `type RadioValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/radio/type.ts) | N
 
 ### Radio Events
 
@@ -58,15 +58,16 @@ style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 allow-uncheck | Boolean | false | \- | N
 borderless | Boolean | false | \- | N
+direction | String | vertical | `1.17.0`。Radio option arrangement。options: vertical/horizontal | N
 disabled | Boolean | undefined | \- | N
-icon | String / Array | 'circle' | Typescript：`'circle' \| 'line' \| 'dot' \| Array<string>` | N
-keys | Object | - | Typescript：`KeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
+icon | String / Array | 'circle' | Typescript: `'circle' \| 'line' \| 'dot' \| Array<string>` | N
+keys | Object | - | Typescript: `KeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 name | String | - | \- | N
-options | Array | - | Typescript：`Array<RadioOption>` `type RadioOption = string \| number \| RadioOptionObj` `interface RadioOptionObj { label?: string; value?: string \| number; readonly?: boolean; disabled?: boolean; allowUncheck?: boolean; }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/radio-group/type.ts) | N
+options | Array | - | Typescript: `Array<RadioOption>` `type RadioOption = string \| number \| RadioOptionObj` `interface RadioOptionObj { label?: string; value?: string \| number; readonly?: boolean; disabled?: boolean; allowUncheck?: boolean; }`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/radio-group/type.ts) | N
 placement | String | left | options: left/right | N
 readonly | Boolean | undefined | `1.8.6` | N
-value | String / Number / Boolean | - | Typescript：`T` `type RadioValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/radio-group/type.ts) | N
-default-value | String / Number / Boolean | undefined | uncontrolled property。Typescript：`T` `type RadioValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/radio-group/type.ts) | N
+value | String / Number / Boolean | - | Typescript: `T` `type RadioValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/radio-group/type.ts) | N
+default-value | String / Number / Boolean | undefined | uncontrolled property。Typescript: `T` `type RadioValue = string \| number \| boolean`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/radio-group/type.ts) | N
 
 ### RadioGroup Events
 
@@ -100,5 +101,5 @@ Name | Default Value | Description
 --td-radio-label-checked-color | @text-color-primary | -
 --td-radio-label-color | @text-color-primary | -
 --td-radio-label-disabled-color | @text-color-disabled | -
---td-radio-label-line-height | 48rpx | -
---td-radio-vertical-padding | 32rpx | -
+--td-radio-label-line-height | @text-line-height-m | -
+--td-radio-vertical-padding | @spacer-2 | -

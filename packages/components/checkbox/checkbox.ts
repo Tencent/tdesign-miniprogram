@@ -24,11 +24,12 @@ export default class CheckBox extends SuperComponent {
     '../checkbox-group/checkbox-group': {
       type: 'ancestor',
       linked(parent) {
-        const { value, disabled, borderless } = parent.data;
+        const { value, disabled, borderless, direction } = parent.data;
         const valueSet = new Set(value);
         const checkedFromParent = valueSet.has(this.data.value);
         const data: any = {
           _disabled: this.data.disabled == null ? disabled : this.data.disabled,
+          direction,
         };
 
         if (borderless) {
@@ -68,6 +69,7 @@ export default class CheckBox extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
+    direction: 'vertical',
     _disabled: false,
   };
 

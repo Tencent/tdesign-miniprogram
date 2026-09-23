@@ -80,20 +80,18 @@ exports[`Radio Radio horizontal demo works fine 1`] = `
   <t-radio-group
     borderless="{{true}}"
     defaultValue="0"
+    direction="horizontal"
     tClass="box"
   >
     <t-radio
-      block="{{false}}"
       label="单选标题"
       value="0"
     />
     <t-radio
-      block="{{false}}"
       label="单选标题"
       value="1"
     />
     <t-radio
-      block="{{false}}"
       label="上限四字"
       value="2"
     />
