@@ -1,4 +1,3 @@
-import { classNames } from '../common/utils';
 import type { BaseTableCol, TableRowData } from './type';
 
 export function get(obj: any, path: string) {
@@ -16,16 +15,6 @@ export function get(obj: any, path: string) {
 export function formatCSSUnit(unit: string | number | undefined) {
   if (!unit) return unit;
   return Number.isNaN(Number(unit)) ? unit : `${unit}px`;
-}
-
-export function getColumnClassName(col: BaseTableCol, context: Record<string, any>) {
-  const columnClassName = col.className || (col as any)['class-name'];
-
-  if (Array.isArray(columnClassName)) {
-    return classNames(columnClassName.map((item) => getColumnClassName({ className: item }, context)));
-  }
-
-  return classNames(typeof columnClassName === 'function' ? columnClassName(context) : columnClassName);
 }
 
 // ------- 合并单元格（rowspan / colspan） -------
@@ -106,14 +95,4 @@ export function handleCellSpan(cellKey: string, skipSpansMap?: SkipSpansMap): Ce
   if (spanState.colspan && spanState.colspan > 1) result.colspan = spanState.colspan;
   if (spanState.skipped) result.skipped = true;
   return result;
-}
-
-/** 合并单元格场景：是否为最后一行（用于移除底部边框） */
-export function isLastRowInSpan(rowIndex: number, rowspan?: number, totalDataLength?: number): boolean {
-  return !!(rowspan && totalDataLength && rowIndex + rowspan === totalDataLength);
-}
-
-/** 合并单元格场景：是否为第一列（用于移除左边框） */
-export function isFirstColumnInSpan(colIndex: number): boolean {
-  return colIndex === 0;
 }

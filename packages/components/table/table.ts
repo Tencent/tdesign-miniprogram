@@ -3,7 +3,16 @@ import config from '../common/config';
 import usingConfig from '../mixins/using-config';
 import props from './base-table-props';
 import type { BaseTableCol, TableRowData } from './type';
-import { formatCSSUnit, get, getColumnClassName } from './utils';
+import {
+  formatCSSUnit,
+  get,
+  getColumnClassName,
+  getCellKey,
+  getSkipSpansMap,
+  handleCellSpan,
+  isFirstColumnInSpan,
+  isLastRowInSpan,
+} from './utils';
 
 const { prefix } = config;
 const componentName = 'table';
@@ -34,6 +43,8 @@ export default class Table extends SuperComponent {
     thClassNames: [] as string[],
     tdClassNames: [] as string[][],
     hasFixedColumn: false,
+    hasSpan: false,
+    tbodyStyles: '',
     scrollableToLeft: false,
     scrollableToRight: false,
     contentClasses: '',
@@ -197,53 +208,27 @@ export default class Table extends SuperComponent {
       });
 
       // 计算合并单元格
-      const skipSpansMap = new Map<string, { rowspan?: number; colspan?: number; skipped?: boolean }>();
-      if (rowspanAndColspan && data?.length && columns?.length) {
-        for (let i = 0; i < data.length; i += 1) {
-          const row = data[i];
-          for (let j = 0; j < columns.length; j += 1) {
-            const col = columns[j];
-            const cellKey = `${get(row, rowKey || 'id')}_${col.colKey || j}`;
-            const state = skipSpansMap.get(cellKey) || {};
-            const o = (rowspanAndColspan as any)({ row, col, rowIndex: i, colIndex: j }) || {};
-            if (o.rowspan || o.colspan || state.rowspan || state.colspan) {
-              if (o.rowspan) state.rowspan = o.rowspan;
-              if (o.colspan) state.colspan = o.colspan;
-              skipSpansMap.set(cellKey, state);
-            }
-            // 标记被合并的单元格
-            if (state.rowspan || state.colspan) {
-              const maxRowIndex = i + (state.rowspan || 1);
-              const maxColIndex = j + (state.colspan || 1);
-              for (let ri = i; ri < maxRowIndex; ri += 1) {
-                for (let ci = j; ci < maxColIndex; ci += 1) {
-                  if (ri !== i || ci !== j) {
-                    if (data[ri] && columns[ci]) {
-                      const key = `${get(data[ri], rowKey || 'id')}_${columns[ci].colKey || ci}`;
-                      const s = skipSpansMap.get(key) || {};
-                      s.skipped = true;
-                      skipSpansMap.set(key, s);
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
+      const hasSpan = !!rowspanAndColspan && !!data?.length && !!columns?.length;
+      const skipSpansMap = getSkipSpansMap(data, columns, rowKey, rowspanAndColspan as Function);
 
       // 构建渲染数据
       const renderData = (data || []).map((row: TableRowData, rowIndex: number) => {
         const cells = (columns || []).map((col: BaseTableCol, colIndex: number) => {
-          const cellKey = `${get(row, rowKey || 'id')}_${col.colKey || colIndex}`;
-          const spanState = skipSpansMap.get(cellKey);
+          const cellKey = getCellKey(row, rowKey, col.colKey, rowIndex, colIndex);
+          const { rowspan, colspan, skipped } = handleCellSpan(cellKey, skipSpansMap);
 
-          const tdClasses: string[] = [];
+          const isLastRow = isLastRowInSpan(rowIndex, rowspan, data.length);
+          const isFirstCol = !!(rowspanAndColspan && isFirstColumnInSpan(colIndex));
+
+          // 单元格完整类名（含列样式、固定列、合并单元格边框处理），供 template 直接使用
+          const tdClasses: string[] = [`${classPrefix}__td`, `${classPrefix}__td-${colIndex}`];
           if (col.align && col.align !== 'left') tdClasses.push(`${prefix}-align-${col.align}`);
           if (col.fixed === 'left') tdClasses.push(`${classPrefix}__cell--fixed-left`);
           if (col.fixed === 'right') tdClasses.push(`${classPrefix}__cell--fixed-right`);
           if (colIndex === lastFixedLeftIndex) tdClasses.push(`${classPrefix}__cell--fixed-left-last`);
           if (colIndex === firstFixedRightIndex) tdClasses.push(`${classPrefix}__cell--fixed-right-first`);
+          if (isLastRow) tdClasses.push(`${classPrefix}__td-last-row`);
+          if (isFirstCol) tdClasses.push(`${classPrefix}__td-first-col`);
           tdClasses.push(getColumnClassName(col, { row, col, rowIndex, colIndex, type: 'td' }));
 
           let cellContent = '';
@@ -260,15 +245,18 @@ export default class Table extends SuperComponent {
             }
           }
 
+          // 合并场景用 grid 定位实现跨行跨列，非合并场景沿用列宽样式
+          const cellStyle = hasSpan
+            ? `grid-column: ${colIndex + 1} / span ${colspan || 1}; grid-row: ${rowIndex + 1} / span ${rowspan || 1}`
+            : colStyles[colIndex];
+
           return {
             colKey: col.colKey || String(colIndex),
+            colIndex,
             content: cellContent,
-            className: tdClasses.join(' '),
-            skipped: spanState?.skipped || false,
-            rowspan: spanState?.rowspan || 0,
-            colspan: spanState?.colspan || 0,
-            isLastRow: !!(spanState?.rowspan && rowIndex + spanState.rowspan === data.length),
-            isFirstCol: !!(rowspanAndColspan && colIndex === 0),
+            tdClass: tdClasses.filter(Boolean).join(' '),
+            cellStyle,
+            skipped: skipped || false,
           };
         });
 
@@ -312,6 +300,19 @@ export default class Table extends SuperComponent {
 
       const isEmpty = !data || data.length === 0;
 
+      // 合并场景 grid 列模板（display: grid 由 --rowspan-colspan 类提供）：
+      // 列宽需与表头 flex 保持一致，有 width 用固定值，其余用 1fr 等分
+      let tbodyStyles = '';
+      if (hasSpan) {
+        const templateColumns = (columns || [])
+          .map((col: BaseTableCol) => {
+            const width = formatCSSUnit(col.width);
+            return width ? `${width}` : 'minmax(0, 1fr)';
+          })
+          .join(' ');
+        tbodyStyles = `grid-template-columns: ${templateColumns};`;
+      }
+
       // 内容区域类名（滚动阴影）
       const contentClasses = [
         `${classPrefix}__content`,
@@ -334,6 +335,8 @@ export default class Table extends SuperComponent {
           thClassNames,
           columnsLength: (columns || []).length,
           hasFixedColumn,
+          hasSpan,
+          tbodyStyles,
           contentClasses,
         },
         () => {
@@ -409,6 +412,13 @@ export default class Table extends SuperComponent {
           col: columns[colIndex],
           rowIndex,
           colIndex,
+        });
+      }
+      // 合并场景（grid 布局）无 __tr 行容器，tap 不会冒泡到 onRowClick，需手动补触发
+      if (this.data.hasSpan && data && data[rowIndex]) {
+        this.triggerEvent('row-click', {
+          row: data[rowIndex],
+          index: rowIndex,
         });
       }
     },

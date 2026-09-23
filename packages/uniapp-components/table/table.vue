@@ -42,7 +42,7 @@
         </view>
 
         <!-- 表体 -->
-        <view :class="classPrefix + '__body'">
+        <view :class="classPrefix + '__body'" :style="tbodyStyles">
           <!-- 空数据 -->
           <view v-if="isEmpty" :class="classPrefix + '__empty-row'">
             <view :class="classPrefix + '__empty'">
@@ -53,46 +53,86 @@
             </view>
           </view>
 
-          <!-- 数据行 -->
-          <view
-            v-for="rowItem in renderData"
-            :key="rowItem.rowId"
-            :class="[classPrefix + '__tr', rowItem.rowClass]"
-            :style="rowItem.rowStyle"
-            @click="onRowClick(rowItem.rowIndex)"
-          >
-            <!-- #ifdef VUE2 -->
-            <!-- eslint-disable-next-line vue/no-unused-vars -->
-            <template v-for="(cell, tdIndex) in rowItem.cells">
-              <!-- #endif -->
-              <!-- #ifdef VUE3 -->
-              <template v-for="(cell, tdIndex) in rowItem.cells" :key="cell.colKey">
+          <!-- 数据行：非合并场景为 flex 行结构 -->
+          <template v-if="!hasSpan">
+            <view
+              v-for="rowItem in renderData"
+              :key="rowItem.rowId"
+              :class="[classPrefix + '__tr', rowItem.rowClass]"
+              :style="rowItem.rowStyle"
+              @click="onRowClick(rowItem.rowIndex)"
+            >
+              <!-- #ifdef VUE2 -->
+              <!-- eslint-disable-next-line vue/no-unused-vars -->
+              <template v-for="(cell, tdIndex) in rowItem.cells">
+                <!-- #endif -->
+                <!-- #ifdef VUE3 -->
+                <template v-for="(cell, tdIndex) in rowItem.cells" :key="cell.colKey">
+                  <!-- #endif -->
+
+                  <view
+                    :class="[classPrefix + '__td', cell.className]"
+                    :style="'' + cell.cellStyle"
+                    @click.stop="onCellClick(rowItem.rowIndex, tdIndex)"
+                  >
+                    <view :class="classPrefix + '__td-content'">
+                      {{ cell.content }}
+                    </view>
+                  </view>
+                  <!-- #ifdef VUE3 -->
+                </template>
                 <!-- #endif -->
 
-                <view
-                  v-if="!cell.skipped"
-                  :key="cell.colKey"
-                  :class="[
-                    classPrefix + '__td',
-                    cell.className,
-                    cell.isLastRow ? classPrefix + '__td-last-row' : '',
-                    cell.isFirstCol ? classPrefix + '__td-first-col' : '',
-                  ]"
-                  :style="'' + getColStyle(columns[tdIndex], tdIndex)"
-                  @click.stop="onCellClick(rowItem.rowIndex, tdIndex)"
-                >
-                  <view :class="classPrefix + '__td-content'">
-                    {{ cell.content }}
-                  </view>
-                </view>
+                <!-- #ifdef VUE2 -->
+              </template>
+              <!-- #endif -->
+            </view>
+          </template>
+
+          <!-- 数据行：合并场景，body 为 grid 容器、td 跨行跨列 -->
+          <template v-else>
+            <!-- #ifdef VUE2 -->
+            <!-- eslint-disable-next-line vue/no-unused-vars -->
+            <template v-for="spanRow in renderData">
+              <!-- #endif -->
+              <!-- #ifdef VUE3 -->
+              <template v-for="spanRow in renderData" :key="spanRow.rowId">
+                <!-- #endif -->
+                <!-- #ifdef VUE2 -->
+                <!-- eslint-disable-next-line vue/no-unused-vars -->
+                <template v-for="(spanCell, spanTdIndex) in spanRow.cells">
+                  <!-- #endif -->
+                  <!-- #ifdef VUE3 -->
+                  <template v-for="(spanCell, spanTdIndex) in spanRow.cells" :key="spanCell.colKey">
+                    <!-- #endif -->
+                    <view
+                      v-if="!spanCell.skipped"
+                      :class="[
+                        classPrefix + '__td',
+                        spanCell.className,
+                        spanCell.isLastRow ? classPrefix + '__td-last-row' : '',
+                        spanCell.isFirstCol ? classPrefix + '__td-first-col' : '',
+                      ]"
+                      :style="'' + spanCell.cellStyle"
+                      @click.stop="onCellClick(spanRow.rowIndex, spanTdIndex)"
+                    >
+                      <view :class="classPrefix + '__td-content'">
+                        {{ spanCell.content }}
+                      </view>
+                    </view>
+                    <!-- #ifdef VUE3 -->
+                  </template>
+                  <!-- #endif -->
+                  <!-- #ifdef VUE2 -->
+                </template>
+                <!-- #endif -->
                 <!-- #ifdef VUE3 -->
               </template>
               <!-- #endif -->
-
               <!-- #ifdef VUE2 -->
             </template>
             <!-- #endif -->
-          </view>
+          </template>
         </view>
       </view>
 
@@ -132,25 +172,9 @@ import tools from '../common/utils.wxs';
 import TLoading from '../loading/loading.vue';
 
 import props from './base-table-props';
+import { get as getVal, formatCSSUnit, getCellKey, getSkipSpansMap, handleCellSpan } from './utils';
 
 const name = `${prefix}-table`;
-
-function getVal(obj, path) {
-  if (!obj || !path) return undefined;
-  const keys = path.split('.');
-  let result = obj;
-  keys.forEach((key) => {
-    if (result !== undefined && result !== null) {
-      result = result[key];
-    }
-  });
-  return result;
-}
-
-function formatCSSUnit(unit) {
-  if (!unit) return unit;
-  return Number.isNaN(Number(unit)) ? unit : `${unit}px`;
-}
 
 export default {
   components: {
@@ -174,6 +198,8 @@ export default {
         renderData: [],
         isEmpty: false,
         hasFixedColumn: false,
+        hasSpan: false,
+        tbodyStyles: '',
         scrollableToLeft: false,
         scrollableToRight: false,
         fixedLeftOffsets: [],
@@ -349,45 +375,28 @@ export default {
         }
 
         // 计算合并单元格
-        const skipSpansMap = new Map();
-        if (rowspanAndColspan && data?.length && columns?.length) {
-          for (let i = 0; i < data.length; i += 1) {
-            const row = data[i];
-            for (let j = 0; j < columns.length; j += 1) {
-              const col = columns[j];
-              const cellKey = `${getVal(row, rowKey || 'id')}_${col.colKey || j}`;
-              const state = skipSpansMap.get(cellKey) || {};
-              const o = rowspanAndColspan({ row, col, rowIndex: i, colIndex: j }) || {};
-              if (o.rowspan || o.colspan || state.rowspan || state.colspan) {
-                if (o.rowspan) state.rowspan = o.rowspan;
-                if (o.colspan) state.colspan = o.colspan;
-                skipSpansMap.set(cellKey, state);
-              }
-              if (state.rowspan || state.colspan) {
-                const maxRowIndex = i + (state.rowspan || 1);
-                const maxColIndex = j + (state.colspan || 1);
-                for (let ri = i; ri < maxRowIndex; ri += 1) {
-                  for (let ci = j; ci < maxColIndex; ci += 1) {
-                    if (ri !== i || ci !== j) {
-                      if (data[ri] && columns[ci]) {
-                        const key = `${getVal(data[ri], rowKey || 'id')}_${columns[ci].colKey || ci}`;
-                        const s = skipSpansMap.get(key) || {};
-                        s.skipped = true;
-                        skipSpansMap.set(key, s);
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
+        const hasSpan = !!rowspanAndColspan && !!data?.length && !!columns?.length;
+        const skipSpansMap = getSkipSpansMap(data, columns, rowKey, rowspanAndColspan);
+        this.hasSpan = hasSpan;
+
+        // 合并场景 grid 列模板，列宽与表头 flex 对齐：有 width 用固定值，其余用 1fr
+        let tbodyStyles = '';
+        if (hasSpan) {
+          const templateColumns = (columns || [])
+            .map((col) => {
+              const width = formatCSSUnit(col.width);
+              return width ? `${width}` : 'minmax(0, 1fr)';
+            })
+            .join(' ');
+          tbodyStyles = `grid-template-columns: ${templateColumns};`;
         }
+        this.tbodyStyles = tbodyStyles;
 
         // 构建渲染数据
         const renderData = (data || []).map((row, rowIndex) => {
           const cells = (columns || []).map((col, colIndex) => {
-            const cellKey = `${getVal(row, rowKey || 'id')}_${col.colKey || colIndex}`;
-            const spanState = skipSpansMap.get(cellKey);
+            const cellKey = getCellKey(row, rowKey, col.colKey, rowIndex, colIndex);
+            const { rowspan, colspan, skipped } = handleCellSpan(cellKey, skipSpansMap);
 
             const tdClasses = [];
             if (col.align && col.align !== 'left') tdClasses.push(`${prefix}-align-${col.align}`);
@@ -410,14 +419,20 @@ export default {
               }
             }
 
+            // 合并场景用 grid 定位实现跨行跨列
+            const cellStyle = hasSpan
+              ? `grid-column: ${colIndex + 1} / span ${colspan || 1}; grid-row: ${rowIndex + 1} / span ${rowspan || 1}`
+              : this.getColStyle(col, colIndex);
+
             return {
               colKey: col.colKey || String(colIndex),
               content: cellContent,
               className: tdClasses.join(' '),
-              skipped: spanState?.skipped || false,
-              rowspan: spanState?.rowspan || 0,
-              colspan: spanState?.colspan || 0,
-              isLastRow: !!(spanState?.rowspan && rowIndex + spanState.rowspan === data.length),
+              cellStyle,
+              skipped: skipped || false,
+              rowspan: rowspan || 0,
+              colspan: colspan || 0,
+              isLastRow: !!(rowspan && rowIndex + rowspan === data.length),
               isFirstCol: !!(rowspanAndColspan && colIndex === 0),
             };
           });
@@ -527,6 +542,13 @@ export default {
             col: columns[colIndex],
             rowIndex,
             colIndex,
+          });
+        }
+        // 合并场景无 __tr 行容器，click 不冒泡到 onRowClick，需手动补触发
+        if (this.hasSpan && data && data[rowIndex]) {
+          this.$emit('row-click', {
+            row: data[rowIndex],
+            index: rowIndex,
           });
         }
       },
