@@ -99,7 +99,7 @@ value | String / Number | - | 当前选项的值 | N
 --td-side-bar-height | 100% | -
 --td-side-bar-width | 206rpx | -
 --td-side-bar-active-color | @brand-color | -
---td-side-bar-border-radius | 18rpx | -
+--td-side-bar-border-radius | @radius-large | -
 --td-side-bar-color | @text-color-primary | -
 --td-side-bar-disabled-color | @text-color-disabled | -
 --td-side-bar-font | @font-body-large | -

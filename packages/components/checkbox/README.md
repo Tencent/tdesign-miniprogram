@@ -168,5 +168,5 @@ change | `(value: CheckboxGroupValue, context: { value: boolean\|number\|string,
 --td-checkbox-title-color | @text-color-primary | -
 --td-checkbox-title-disabled-color | @text-color-disabled | -
 --td-checkbox-title-font | @font-body-large | -
---td-checkbox-title-line-height | 48rpx | -
+--td-checkbox-title-line-height | @text-line-height-m | -
 --td-checkbox-vertical-padding | @spacer-2 | -

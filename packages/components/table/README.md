@@ -131,5 +131,5 @@ width | String / Number | - | 列宽，可以作为最小宽度使用。当列�
 --td-table-loading-bg-color | rgba(255, 255, 255, 0.55) | -
 --td-table-row-height | 82rpx | -
 --td-table-stripe-bg-color | @bg-color-secondarycontainer | -
---td-table-td-padding | 16rpx 24rpx | -
---td-table-th-padding | 16rpx 24rpx | -
+--td-table-td-padding | @spacer @spacer-1 | -
+--td-table-th-padding | @spacer @spacer-1 | -

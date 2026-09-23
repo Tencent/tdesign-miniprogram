@@ -93,9 +93,9 @@ title | `0.29.0`。自定义 `title` 显示内容
 --td-drawer-hover-color | @bg-color-secondarycontainer | -
 --td-drawer-item-icon-color | @drawer-title-color | -
 --td-drawer-item-icon-size | 48rpx | -
---td-drawer-item-padding | 32rpx | -
+--td-drawer-item-padding | @spacer-2 | -
 --td-drawer-sidebar-height | 70vh | -
 --td-drawer-title-color | @text-color-primary | -
 --td-drawer-title-font | @font-title-large | -
---td-drawer-title-padding | 48rpx 32rpx 16rpx | -
+--td-drawer-title-padding | @spacer-3 @spacer-2 @spacer | -
 --td-drawer-width | 560rpx | -

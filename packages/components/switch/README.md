@@ -102,9 +102,9 @@ t-class-label | 开关内容样式类
 --td-switch-icon-small-size | 32rpx | -
 --td-switch-label-checked-color | @switch-checked-color | -
 --td-switch-label-color | @bg-color-secondarycontainer-active | -
---td-switch-label-font-size | 28rpx | -
---td-switch-label-large-font-size | 32rpx | -
---td-switch-label-small-font-size | 24rpx | -
+--td-switch-label-font-size | @font-size-base | -
+--td-switch-label-large-font-size | @font-size-m | -
+--td-switch-label-small-font-size | @font-size-s | -
 --td-switch-large-height | 64rpx | -
 --td-switch-large-radius | calc(@switch-large-height / 2) | -
 --td-switch-large-width | 104rpx | -

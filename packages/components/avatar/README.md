@@ -143,10 +143,10 @@ t-class-image | 图片样式类
 名称 | 默认值 | 描述
 -- | -- | --
 --td-avatar-group-init-z-index | @avatar-group-init-zIndex | -
---td-avatar-group-line-spacing | 4rpx | -
---td-avatar-group-margin-left-large | -16rpx | -
---td-avatar-group-margin-left-medium | -16rpx | -
---td-avatar-group-margin-left-small | -16rpx | -
+--td-avatar-group-line-spacing | calc(@spacer / 4) | -
+--td-avatar-group-margin-left-large | calc(-1 * @spacer) | -
+--td-avatar-group-margin-left-medium | calc(-1 * @spacer) | -
+--td-avatar-group-margin-left-small | calc(-1 * @spacer) | -
 --td-avatar-bg-color | @brand-color-light-active | -
 --td-avatar-border-color | #fff | -
 --td-avatar-border-width-large | 6rpx | -
@@ -156,7 +156,7 @@ t-class-image | 图片样式类
 --td-avatar-content-color | @brand-color | -
 --td-avatar-icon-large-font-size | 64rpx | -
 --td-avatar-icon-medium-font-size | 48rpx | -
---td-avatar-icon-small-font-size | 40rpx | -
+--td-avatar-icon-small-font-size | @font-size-xl | -
 --td-avatar-large-width | 128rpx | -
 --td-avatar-margin-left | 0 | -
 --td-avatar-medium-width | 96rpx | -

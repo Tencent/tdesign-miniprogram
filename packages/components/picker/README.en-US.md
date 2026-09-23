@@ -64,12 +64,12 @@ The component provides the following CSS variables, which can be used to customi
 Name | Default Value | Description
 -- | -- | --
 --td-picker-bg-color | @bg-color-container | -
---td-picker-border-radius | 24rpx | -
+--td-picker-border-radius | @radius-extraLarge | -
 --td-picker-button-font | @font-body-large | -
 --td-picker-cancel-color | @text-color-secondary | -
 --td-picker-confirm-color | @brand-color | -
 --td-picker-indicator-bg-color | @bg-color-secondarycontainer | -
---td-picker-indicator-border-radius | 12rpx | -
+--td-picker-indicator-border-radius | @radius-default | -
 --td-picker-title-color | @text-color-primary | -
 --td-picker-title-font | @font-title-large | -
 --td-picker-toolbar-height | 116rpx | -

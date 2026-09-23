@@ -31,4 +31,4 @@ Name | Default Value | Description
 --td-footer-logo-title-url-width | 256rpx | -
 --td-footer-text-color | @text-color-placeholder | -
 --td-footer-text-font | @font-body-small | -
---td-footer-text-margin-top | 8rpx | -
+--td-footer-text-margin-top | calc(@spacer / 2) | -

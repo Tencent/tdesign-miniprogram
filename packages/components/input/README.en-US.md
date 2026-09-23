@@ -99,7 +99,7 @@ Name | Default Value | Description
 --td-input-align-items | center | -
 --td-input-bg-color | @bg-color-container | -
 --td-input-border-color | @component-stroke | -
---td-input-border-left-space | 32rpx | -
+--td-input-border-left-space | @spacer-2 | -
 --td-input-border-right-space | 0 | -
 --td-input-default-text-color | @text-color-primary | -
 --td-input-default-tips-color | @text-color-placeholder | -
@@ -117,6 +117,6 @@ Name | Default Value | Description
 --td-input-success-tips-color | @success-color | -
 --td-input-suffix-icon-color | @text-color-placeholder | -
 --td-input-suffix-text-color | @text-color-primary | -
---td-input-vertical-padding | 32rpx | -
+--td-input-vertical-padding | @spacer-2 | -
 --td-input-warning-text-color | @warning-color | -
 --td-input-warning-tips-color | @warning-color | -

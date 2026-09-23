@@ -101,5 +101,5 @@ Name | Default Value | Description
 --td-radio-label-checked-color | @text-color-primary | -
 --td-radio-label-color | @text-color-primary | -
 --td-radio-label-disabled-color | @text-color-disabled | -
---td-radio-label-line-height | 48rpx | -
---td-radio-vertical-padding | 32rpx | -
+--td-radio-label-line-height | @text-line-height-m | -
+--td-radio-vertical-padding | @spacer-2 | -

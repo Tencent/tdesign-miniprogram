@@ -120,5 +120,5 @@ t-class-sidebar-item | 侧边栏选项样式类
 --td-indexes-anchor-border-color | @component-border | -
 --td-indexes-anchor-color | @text-color-primary | -
 --td-indexes-anchor-font | @font-body-medium | -
---td-indexes-anchor-padding | 8rpx 32rpx | -
+--td-indexes-anchor-padding | calc(@spacer / 2) @spacer-2 | -
 --td-indexes-anchor-top | 0 | -

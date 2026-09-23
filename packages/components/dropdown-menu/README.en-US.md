@@ -94,7 +94,7 @@ Name | Default Value | Description
 --td-dropdown-menu-border-width | 1px | -
 --td-dropdown-menu-color | @text-color-primary | -
 --td-dropdown-menu-disabled-color | @text-color-disabled | -
---td-dropdown-menu-font-size | 28rpx | -
+--td-dropdown-menu-font-size | @font-size-base | -
 --td-dropdown-menu-height | 96rpx | -
 --td-dropdown-menu-icon-size | 40rpx | -
 --td-dropdown-body-max-height | 560rpx | -
