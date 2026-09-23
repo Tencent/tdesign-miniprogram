@@ -5,6 +5,27 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.17.0 `2026-09-23`
+
+### 🚀 Features
+
+- `CheckboxGroup`: 新增 `direction` 属性，表示复选框按钮排列方式 @anlyyao ([#4649](https://github.com/Tencent/tdesign-miniprogram/pull/4649))
+- `RadioGroup`: 新增 `direction` 属性，表示单选框按钮排列方式 @anlyyao ([#4649](https://github.com/Tencent/tdesign-miniprogram/pull/4649))
+- `Table`: 新增 `t-class-header` 和 `t-class-footer` 外部样式类 @anlyyao ([#4650](https://github.com/Tencent/tdesign-miniprogram/pull/4650))
+- `Upload`: `remove-btn` 属性扩展支持 `String` 和 `Object` 类型 @anlyyao ([#4651](https://github.com/Tencent/tdesign-miniprogram/pull/4651))
+
+### 🐞 Bug Fixes
+
+- `Calendar`: 修复翻页模式下日期描述与选中状态未及时更新的问题 @anlyyao ([#4648](https://github.com/Tencent/tdesign-miniprogram/pull/4648))
+- `ImageViewer`: 修复控制台告警 @liweijie0812 ([#4643](https://github.com/Tencent/tdesign-miniprogram/pull/4643))
+- `Table`: 
+  - 修复  `columns.className` 配置项无效 @anlyyao ([#4650](https://github.com/Tencent/tdesign-miniprogram/pull/4650))
+  - 修复合并单元格渲染错误 @anlyyao ([#4652](https://github.com/Tencent/tdesign-miniprogram/pull/4652))
+
+### 📈 Performance
+
+- `Style`: 组件间距、圆角与字号样式全量 token 化。已自定义` --td-spacer-* / --td-font-size-* / --td-radius-*`  的项目，升级后更多组件的间距、圆角与字号会跟随全局 token 变化(此前为硬编码不受影响) @anlyyao ([#4653](https://github.com/Tencent/tdesign-miniprogram/pull/4653))
+
 ## 🌈 1.16.1 `2026-09-09`
 
 ### 🚀 Features
