@@ -62,7 +62,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 16rpx 8rpx;
+    padding: @spacer calc(@spacer / 2);
     box-sizing: border-box;
   }
 
@@ -70,7 +70,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 8rpx;
+    margin-bottom: calc(@spacer / 2);
   }
 
   &__file-name {
@@ -81,7 +81,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     text-align: center;
-    padding: 0 4rpx;
+    padding: 0 calc(@spacer / 4);
     box-sizing: border-box;
   }
 
@@ -138,13 +138,13 @@
       justify-content: center;
       border-radius: @upload-radius;
       color: @text-color-anti;
-      padding: 32rpx 0;
+      padding: @spacer-2 0;
       box-sizing: border-box;
     }
 
     &-text {
       font: @font-body-small;
-      margin-top: 8rpx;
+      margin-top: calc(@spacer / 2);
     }
   }
 
@@ -195,7 +195,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding-bottom: 24rpx;
+    padding-bottom: @spacer-1;
     box-sizing: border-box;
 
     .@{prefix}-upload__list-item {
@@ -224,7 +224,7 @@
     flex-direction: row;
     align-items: center;
     column-gap: 24rpx;
-    padding: 16rpx 24rpx;
+    padding: @spacer @spacer-1;
     background: @upload-background;
     border-radius: @upload-radius;
     box-sizing: border-box;
@@ -292,7 +292,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-size: 36rpx;
+      font-size: @font-size-l;
       color: @text-color-placeholder;
     }
 

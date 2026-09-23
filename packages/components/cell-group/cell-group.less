@@ -1,9 +1,9 @@
 // @import (css) '../common/index.wxss';
 @import '../common/style/base.less';
 
-@cell-group-title-font-size: var(--td-cell-group-title-font-size, 28rpx);
+@cell-group-title-font-size: var(--td-cell-group-title-font-size, @font-size-base);
 @cell-group-title-line-height: var(--td-cell-group-title-line-height, 90rpx);
-@cell-group-title-padding-left: var(--td-cell-group-title-padding-left, 32rpx);
+@cell-group-title-padding-left: var(--td-cell-group-title-padding-left, @spacer-2);
 @cell-group-title-bg-color: var(--td-cell-group-title-bg-color, @bg-color-secondarycontainer);
 @cell-group-title-color: var(--td-cell-group-title-color, @text-color-placeholder);
 @cell-group-border-color: var(--td-cell-group-border-color, @component-stroke);
@@ -36,7 +36,7 @@
   }
 
   &--card {
-    margin: 0 32rpx;
+    margin: 0 @spacer-2;
     border-radius: @radius-large;
     overflow: hidden;
   }

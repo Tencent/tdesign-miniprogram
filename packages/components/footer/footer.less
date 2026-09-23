@@ -2,7 +2,7 @@
 
 @footer-text-color: var(--td-footer-text-color, @text-color-placeholder);
 @footer-text-font: var(--td-footer-text-font, @font-body-small);
-@footer-text-margin-top: var(--td-footer-text-margin-top, 8rpx);
+@footer-text-margin-top: var(--td-footer-text-margin-top, calc(@spacer / 2));
 @footer-link-color: var(--td-footer-link-color, @brand-color);
 @footer-link-font: var(--td-footer-link-font, @font-body-medium);
 
@@ -42,7 +42,7 @@
   }
 
   &__link-line {
-    font-size: 24rpx;
+    font-size: @font-size-s;
     color: @footer-link-dividing-line-color; // 链接分界线颜色
     display: inline-block;
     padding: 0 @footer-link-dividing-line-padding; // 链接分界线左右间距

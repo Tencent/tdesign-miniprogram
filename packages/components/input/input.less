@@ -1,6 +1,6 @@
 @import '../common/style/base.less';
 
-@input-vertical-padding: var(--td-input-vertical-padding, 32rpx); //输入框垂直方向内间距
+@input-vertical-padding: var(--td-input-vertical-padding, @spacer-2); //输入框垂直方向内间距
 
 @input-default-text-color: var(--td-input-default-text-color, @text-color-primary); // 'default' 状态输入框文本颜色
 @input-success-text-color: var(--td-input-success-text-color, @success-color); // 'success' 状态输入框文本颜色
@@ -14,7 +14,7 @@
 
 @input-bg-color: var(--td-input-bg-color, @bg-color-container); // 输入框背景颜色
 @input-border-color: var(--td-input-border-color, @component-stroke); // 输入框分割线颜色
-@input-border-left-space: var(--td-input-border-left-space, 32rpx);
+@input-border-left-space: var(--td-input-border-left-space, @spacer-2);
 @input-border-right-space: var(--td-input-border-right-space, 0);
 @input-placeholder-text-color: var(--td-input-placeholder-text-color, @text-color-placeholder); // 输入框占位符文本颜色
 @input-placeholder-text-font: var(--td-input-placeholder-text-font, @font-body-large); // 输入框占位符文本字体大小
@@ -70,12 +70,12 @@
 
     .@{prefix}-input--layout-vertical & {
       font-size: @font-size-base;
-      padding-bottom: 8rpx;
+      padding-bottom: calc(@spacer / 2);
     }
   }
 
   &__icon--prefix:not(:empty) + &__label:not(:empty) {
-    padding-left: 8rpx;
+    padding-left: calc(@spacer / 2);
   }
 
   &__label:not(:empty) + &__wrap {
@@ -185,7 +185,7 @@
 
   &__tips {
     font: @font-body-small;
-    padding-top: 8rpx;
+    padding-top: calc(@spacer / 2);
   }
 }
 

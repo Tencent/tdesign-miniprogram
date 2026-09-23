@@ -27,7 +27,7 @@
       width: @swiper-nav-dot-size;
       height: @swiper-nav-dot-size;
       background: @swiper-nav-dot-color;
-      border-radius: 50%;
+      border-radius: @radius-circle;
       margin: 0 10rpx;
       transition: all 0.4s ease-in;
 
@@ -112,7 +112,7 @@
   }
 
   &__fraction {
-    padding: 0 16rpx;
+    padding: 0 @spacer;
     height: @swiper-nav-fraction-height;
     border-radius: calc(@swiper-nav-fraction-height / 2);
     background: @swiper-nav-fraction-bg-color;
@@ -133,7 +133,7 @@
       transform: translateY(-50%);
       width: @swiper-nav-btn-size;
       height: @swiper-nav-btn-size;
-      border-radius: 50%;
+      border-radius: @radius-circle;
       background: @swiper-nav-btn-bg-color;
 
       &::after {
@@ -153,7 +153,7 @@
       left: 30rpx;
 
       &::after {
-        margin-left: 4rpx;
+        margin-left: calc(@spacer / 4);
         border-width: 2rpx 0 0 2rpx;
         transform: translate(-50%, -50%) rotateZ(-45deg);
       }
@@ -163,7 +163,7 @@
       right: 30rpx;
 
       &::after {
-        margin-left: -4rpx;
+        margin-left: calc(-1 * @spacer / 4);
         border-width: 2rpx 2rpx 0 0;
         transform: translate(-50%, -50%) rotateZ(45deg);
       }

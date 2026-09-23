@@ -22,8 +22,8 @@
   box-sizing: border-box;
   user-select: none;
   position: relative;
-  margin: 16rpx 0;
-  padding: 0 24rpx;
+  margin: @spacer 0;
+  padding: 0 @spacer-1;
 
   &--split {
     & + &::before {
@@ -34,11 +34,11 @@
   }
 
   &--crowded {
-    padding: 0 16rpx;
+    padding: 0 @spacer;
   }
 
   &--round {
-    border-radius: 99px;
+    border-radius: @radius-round;
   }
 
   &__content {
@@ -60,7 +60,7 @@
     }
 
     &--tag {
-      border-radius: 99px;
+      border-radius: @radius-round;
     }
 
     &--tag&--checked {
@@ -91,7 +91,7 @@
   }
 
   &__icon-menu {
-    margin-right: 8rpx;
+    margin-right: calc(@spacer / 2);
   }
 
   &__spread {
@@ -102,7 +102,7 @@
     background-color: @tab-bar-bg-color;
     transform: translate3d(0, calc(-100% - 32rpx), 0);
     z-index: 1;
-    border-radius: 12rpx;
+    border-radius: @radius-default;
     color: @tab-bar-color;
     box-shadow: @tab-bar-spread-shadow;
 
@@ -143,7 +143,7 @@
       }
 
       &-text {
-        padding-top: 24rpx;
+        padding-top: @spacer-1;
       }
     }
   }

@@ -68,10 +68,10 @@
   }
 
   &__grid {
-    padding-bottom: 16rpx;
+    padding-bottom: @spacer;
 
     &--swiper {
-      padding-bottom: 48rpx;
+      padding-bottom: @spacer-3;
     }
   }
 
@@ -141,7 +141,7 @@
   }
 
   &__swiper-wrap {
-    margin-top: 8rpx;
+    margin-top: calc(@spacer / 2);
     position: relative;
   }
 
@@ -179,7 +179,7 @@
       width: @action-sheet-dot-size;
       height: @action-sheet-dot-size;
       background-color: @action-sheet-dot-color;
-      border-radius: 50%;
+      border-radius: @radius-circle;
       margin: 0 @spacer;
       transition: all 0.4s ease-in;
 

@@ -26,7 +26,7 @@
   box-sizing: border-box;
 
   &--column {
-    padding: 48rpx;
+    padding: @spacer-3;
     min-width: 160rpx;
     min-height: 160rpx;
     border-radius: 16rpx;
@@ -79,11 +79,11 @@
     white-space: pre-line;
 
     &--column:not(:empty):not(:only-child) {
-      margin-top: 16rpx;
+      margin-top: @spacer;
     }
 
     &--row:not(:empty):not(:only-child) {
-      margin-left: 16rpx;
+      margin-left: @spacer;
     }
   }
 
