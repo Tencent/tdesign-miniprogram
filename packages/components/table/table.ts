@@ -214,7 +214,7 @@ export default class Table extends SuperComponent {
       // 构建渲染数据
       const renderData = (data || []).map((row: TableRowData, rowIndex: number) => {
         const cells = (columns || []).map((col: BaseTableCol, colIndex: number) => {
-          const cellKey = getCellKey(row, rowKey, col.colKey, colIndex);
+          const cellKey = getCellKey(row, rowKey, col.colKey, rowIndex, colIndex);
           const { rowspan, colspan, skipped } = handleCellSpan(cellKey, skipSpansMap);
 
           const isLastRow = isLastRowInSpan(rowIndex, rowspan, data.length);

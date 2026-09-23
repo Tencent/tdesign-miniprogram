@@ -172,25 +172,9 @@ import tools from '../common/utils.wxs';
 import TLoading from '../loading/loading.vue';
 
 import props from './base-table-props';
+import { get as getVal, formatCSSUnit, getCellKey, getSkipSpansMap, handleCellSpan } from './utils';
 
 const name = `${prefix}-table`;
-
-function getVal(obj, path) {
-  if (!obj || !path) return undefined;
-  const keys = path.split('.');
-  let result = obj;
-  keys.forEach((key) => {
-    if (result !== undefined && result !== null) {
-      result = result[key];
-    }
-  });
-  return result;
-}
-
-function formatCSSUnit(unit) {
-  if (!unit) return unit;
-  return Number.isNaN(Number(unit)) ? unit : `${unit}px`;
-}
 
 export default {
   components: {
@@ -392,40 +376,7 @@ export default {
 
         // 计算合并单元格
         const hasSpan = !!rowspanAndColspan && !!data?.length && !!columns?.length;
-        const skipSpansMap = new Map();
-        if (hasSpan) {
-          for (let i = 0; i < data.length; i += 1) {
-            const row = data[i];
-            for (let j = 0; j < columns.length; j += 1) {
-              const col = columns[j];
-              const cellKey = `${getVal(row, rowKey || 'id')}_${col.colKey || j}`;
-              const state = skipSpansMap.get(cellKey) || {};
-              const o = rowspanAndColspan({ row, col, rowIndex: i, colIndex: j }) || {};
-              if (o.rowspan || o.colspan || state.rowspan || state.colspan) {
-                if (o.rowspan) state.rowspan = o.rowspan;
-                if (o.colspan) state.colspan = o.colspan;
-                skipSpansMap.set(cellKey, state);
-              }
-              // 标记被合并覆盖的单元格
-              if ((state.rowspan && state.rowspan > 1) || (state.colspan && state.colspan > 1)) {
-                const maxRowIndex = i + (state.rowspan || 1);
-                const maxColIndex = j + (state.colspan || 1);
-                for (let ri = i; ri < maxRowIndex; ri += 1) {
-                  for (let ci = j; ci < maxColIndex; ci += 1) {
-                    if (ri !== i || ci !== j) {
-                      if (data[ri] && columns[ci]) {
-                        const key = `${getVal(data[ri], rowKey || 'id')}_${columns[ci].colKey || ci}`;
-                        const s = skipSpansMap.get(key) || {};
-                        s.skipped = true;
-                        skipSpansMap.set(key, s);
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
+        const skipSpansMap = getSkipSpansMap(data, columns, rowKey, rowspanAndColspan);
         this.hasSpan = hasSpan;
 
         // 合并场景 grid 列模板，列宽与表头 flex 对齐：有 width 用固定值，其余用 1fr
@@ -444,12 +395,8 @@ export default {
         // 构建渲染数据
         const renderData = (data || []).map((row, rowIndex) => {
           const cells = (columns || []).map((col, colIndex) => {
-            const cellKey = `${getVal(row, rowKey || 'id')}_${col.colKey || colIndex}`;
-            const spanState = skipSpansMap.get(cellKey);
-
-            // 仅当值 > 1 时才视为合并
-            const rowspan = spanState?.rowspan && spanState.rowspan > 1 ? spanState.rowspan : 0;
-            const colspan = spanState?.colspan && spanState.colspan > 1 ? spanState.colspan : 0;
+            const cellKey = getCellKey(row, rowKey, col.colKey, rowIndex, colIndex);
+            const { rowspan, colspan, skipped } = handleCellSpan(cellKey, skipSpansMap);
 
             const tdClasses = [];
             if (col.align && col.align !== 'left') tdClasses.push(`${prefix}-align-${col.align}`);
@@ -482,9 +429,9 @@ export default {
               content: cellContent,
               className: tdClasses.join(' '),
               cellStyle,
-              skipped: spanState?.skipped || false,
-              rowspan,
-              colspan,
+              skipped: skipped || false,
+              rowspan: rowspan || 0,
+              colspan: colspan || 0,
               isLastRow: !!(rowspan && rowIndex + rowspan === data.length),
               isFirstCol: !!(rowspanAndColspan && colIndex === 0),
             };
