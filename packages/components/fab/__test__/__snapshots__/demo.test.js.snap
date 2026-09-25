@@ -29,6 +29,8 @@ exports[`Fab Fab base demo works fine 1`] = `
 exports[`Fab Fab collapsible demo works fine 1`] = `
 <collapsible>
   <t-fab
+    collapseDuration="3000"
+    collapsible="{{true}}"
     customStyle="right:16px;bottom:24px"
     bind:click="handleClick"
     bind:dragend="handleDragEnd"
