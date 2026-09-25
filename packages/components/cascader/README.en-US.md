@@ -14,6 +14,7 @@ filter | Function | - | Typescript: `CascaderFilterFunction ` `type CascaderFilt
 filter-placeholder | String | - | \- | N
 filterable | Boolean | false | \- | N
 keys | Object | - | Typescript: `CascaderKeysType` `type CascaderKeysType = TreeKeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/cascader/type.ts) | N
+load | Function | - | loading subtree data (only effective when the node's children value is true)。Typescript: `(node: CascaderOption) => Promise<Array<CascaderOption>>` | N
 options | Array | [] | Typescript: `Array<CascaderOption>` | N
 placeholder | String | - | \- | N
 sub-titles | Array | [] | Typescript: `Array<string>` | N
