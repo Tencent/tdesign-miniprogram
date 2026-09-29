@@ -12,7 +12,7 @@ duration | Number | 300 | \- | N
 prevent-scroll-through | Boolean | true | \- | N
 using-custom-navbar | Boolean | false | \- | N
 visible | Boolean | false | \- | N
-z-index | Number | 11000 | \- | N
+z-index | Number | - | \- | N
 
 ### Overlay Events
 
@@ -33,3 +33,4 @@ Name | Default Value | Description
 -- | -- | --
 --td-overlay-bg-color | @mask-active | -
 --td-overlay-transition-duration | 300ms | -
+--td-overlay-zindex | @z-index-overlay | -

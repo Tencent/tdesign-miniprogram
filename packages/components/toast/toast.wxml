@@ -30,7 +30,7 @@
 <t-overlay
   style="{{ overlayProps && overlayProps.style || ''}}"
   visible="{{visible && (showOverlay || preventScrollThrough)}}"
-  z-index="{{overlayProps && overlayProps.zIndex || 11000}}"
+  z-index="{{overlayProps && overlayProps.zIndex || 0}}"
   duration="{{overlayProps && overlayProps.duration || 300}}"
   usingCustomNavbar="{{overlayProps && overlayProps.usingCustomNavbar || usingCustomNavbar}}"
   backgroundColor="{{!showOverlay && preventScrollThrough ? 'transparent' : overlayProps && overlayProps.backgroundColor || ''}}"

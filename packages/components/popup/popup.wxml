@@ -27,7 +27,7 @@
   wx:if="{{showOverlay}}"
   visible="{{visible}}"
   usingCustomNavbar="{{usingCustomNavbar}}"
-  z-index="{{overlayProps && overlayProps.zIndex || 11000}}"
+  z-index="{{overlayProps && overlayProps.zIndex || zIndex || 0}}"
   duration="{{overlayProps && overlayProps.duration || duration || 300}}"
   background-color="{{overlayProps && overlayProps.backgroundColor || ''}}"
   prevent-scroll-through="{{preventScrollThrough || (overlayProps ? !!overlayProps.preventScrollThrough : false)}}"

@@ -47,4 +47,4 @@ Name | Default Value | Description
 --td-loading-full-bg-color | rgba(255, 255, 255, 0.6) | -
 --td-loading-text-color | @text-color-primary | -
 --td-loading-text-font | @font-body-small | -
---td-loading-z-index | 3500 | -
+--td-loading-z-index | @z-index-loading | -

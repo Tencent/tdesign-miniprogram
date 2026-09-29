@@ -46,8 +46,7 @@ export interface TdOverlayProps {
     value?: boolean;
   };
   /**
-   * 遮罩层级
-   * @default 11000
+   * 遮罩层级，默认为 11000
    */
   zIndex?: {
     type: NumberConstructor;

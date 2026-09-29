@@ -9,7 +9,7 @@
   placement="bottom"
   show-overlay="{{_this.isShowOverlay(popupProps.showOverlay, true)}}"
   using-custom-navbar="{{usingCustomNavbar || popupProps.usingCustomNavbar}}"
-  z-index="{{ popupProps.zIndex || defaultPopUpzIndex }}"
+  z-index="{{ popupProps.zIndex || 0 }}"
   overlay-props="{{ popupProps.overlayProps || defaultPopUpProps }}"
   bind:visible-change="onPopupChange"
 >

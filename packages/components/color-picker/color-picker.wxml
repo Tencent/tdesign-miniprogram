@@ -6,7 +6,7 @@
   visible="{{visible}}"
   using-custom-navbar="{{popupProps.usingCustomNavbar || false}}"
   show-overlay="{{popupProps.showOverlay || true}}"
-  z-index="{{ popupProps.zIndex || 11500 }}"
+  z-index="{{ popupProps.zIndex || 0 }}"
   overlay-props="{{ popupProps.overlayProps || defaultOverlayProps }}"
   placement="bottom"
   bind:visible-change="onVisibleChange"

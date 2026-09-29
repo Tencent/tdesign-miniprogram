@@ -20,7 +20,7 @@ export default class Overlay extends SuperComponent {
     prefix,
     classPrefix: name,
     computedStyle: '',
-    _zIndex: 11000,
+    _zIndex: {},
   };
 
   observers = {
@@ -30,11 +30,9 @@ export default class Overlay extends SuperComponent {
       });
     },
     zIndex(v) {
-      if (v !== 0) {
-        this.setData({
-          _zIndex: v,
-        });
-      }
+      this.setData({
+        _zIndex: v !== 0 ? { zIndex: v } : {},
+      });
     },
   };
 
