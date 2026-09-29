@@ -1,6 +1,16 @@
 <import src="../common/template/icon.wxml" />
 <wxs src="../common/utils.wxs" module="_" />
 
+<t-overlay
+  style="{{ overlayProps && overlayProps.style || ''}}"
+  visible="{{visible && (showOverlay || preventScrollThrough)}}"
+  z-index="{{overlayProps && overlayProps.zIndex || 0}}"
+  duration="{{overlayProps && overlayProps.duration || 300}}"
+  usingCustomNavbar="{{overlayProps && overlayProps.usingCustomNavbar || usingCustomNavbar}}"
+  backgroundColor="{{!showOverlay && preventScrollThrough ? 'transparent' : overlayProps && overlayProps.backgroundColor || ''}}"
+  preventScrollThrough="{{preventScrollThrough || overlayProps && overlayProps.preventScrollThrough}}"
+/>
+
 <view
   wx:if="{{realVisible}}"
   class="{{_.cls(classPrefix, [direction, theme, ['with-text', message]])}} class {{prefix}}-class {{transitionClass}}"
@@ -27,12 +37,3 @@
     <slot name="message" />
   </view>
 </view>
-<t-overlay
-  style="{{ overlayProps && overlayProps.style || ''}}"
-  visible="{{visible && (showOverlay || preventScrollThrough)}}"
-  z-index="{{overlayProps && overlayProps.zIndex || 0}}"
-  duration="{{overlayProps && overlayProps.duration || 300}}"
-  usingCustomNavbar="{{overlayProps && overlayProps.usingCustomNavbar || usingCustomNavbar}}"
-  backgroundColor="{{!showOverlay && preventScrollThrough ? 'transparent' : overlayProps && overlayProps.backgroundColor || ''}}"
-  preventScrollThrough="{{preventScrollThrough || overlayProps && overlayProps.preventScrollThrough}}"
-/>

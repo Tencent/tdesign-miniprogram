@@ -1,9 +1,10 @@
+<wxs src="./overlay.wxs" module="overlay" />
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
   wx:if="{{realVisible && preventScrollThrough}}"
   class="{{prefix}}-overlay {{transitionClass}} class"
-  style="{{_._style(['--td-overlay-transition-duration:' + duration + 'ms','top:' + distanceTop + 'px', _zIndex, computedStyle, style, customStyle])}}"
+  style="{{_._style([style, customStyle, '--td-overlay-transition-duration:' + duration + 'ms','top:' + distanceTop + 'px', overlay.getOverlayStyle(backgroundColor, zIndex)])}}"
   bind:tap="handleClick"
   catchtouchmove="noop"
   bind:transitionend="onTransitionEnd"
@@ -15,7 +16,7 @@
 <view
   wx:elif="{{realVisible}}"
   class="{{prefix}}-overlay {{transitionClass}} class"
-  style="{{_._style(['top:' + distanceTop + 'px', _zIndex, computedStyle, style, customStyle])}}"
+  style="{{_._style([style, customStyle, 'top:' + distanceTop + 'px', overlay.getOverlayStyle(backgroundColor, zIndex)])}}"
   bind:tap="handleClick"
   bind:transitionend="onTransitionEnd"
   aria-role="{{ ariaRole || 'button' }}"
