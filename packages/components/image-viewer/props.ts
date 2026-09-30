@@ -40,6 +40,11 @@ const props: TdImageViewerProps = {
     type: Boolean,
     value: true,
   },
+  /** 是否开启循环滚动 */
+  loop: {
+    type: Boolean,
+    value: true,
+  },
   /** 是否显示页码 */
   showIndex: {
     type: Boolean,

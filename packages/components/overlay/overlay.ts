@@ -19,23 +19,6 @@ export default class Overlay extends SuperComponent {
   data = {
     prefix,
     classPrefix: name,
-    computedStyle: '',
-    _zIndex: 11000,
-  };
-
-  observers = {
-    backgroundColor(v) {
-      this.setData({
-        computedStyle: v ? `background-color: ${v};` : '',
-      });
-    },
-    zIndex(v) {
-      if (v !== 0) {
-        this.setData({
-          _zIndex: v,
-        });
-      }
-    },
   };
 
   methods = {

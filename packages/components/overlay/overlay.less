@@ -1,6 +1,7 @@
 @import '../common/style/base.less';
 
 @overlay: ~'@{prefix}-overlay';
+@overlay-zindex: var(--td-overlay-zindex, @z-index-overlay);
 @overlay-bg-color: var(--td-overlay-bg-color, @mask-active);
 @overlay-transition-duration: var(--td-overlay-transition-duration, 300ms);
 
@@ -10,6 +11,7 @@
   left: 0;
   width: 100%;
   bottom: 0;
+  z-index: @overlay-zindex;
   background-color: @overlay-bg-color;
   transition-property: opacity;
   transition-duration: @overlay-transition-duration;

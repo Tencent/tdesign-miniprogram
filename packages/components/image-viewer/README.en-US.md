@@ -15,6 +15,7 @@ image-props | Object | - | `1.12.0`。Typescript: `ImageProps`，[Image API Docu
 images | Array | [] | Typescript: `Array<string>` | N
 initial-index | Number | 0 | Typescript: `Number` | N
 lazy | Boolean | true | `1.9.4` | N
+loop | Boolean | true | \- | N
 show-index | Boolean | false | \- | N
 using-custom-navbar | Boolean | false | `v1.1.4` | N
 visible | Boolean | false | hide or show image viewer | N

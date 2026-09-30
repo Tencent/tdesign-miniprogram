@@ -14,7 +14,7 @@
     usingCustomNavbar="{{usingCustomNavbar}}"
     bind:visible-change="onPopupVisibleChange"
     show-overlay="{{showOverlay}}"
-    z-index="{{ popupProps.zIndex || defaultPopUpzIndex }}"
+    z-index="{{ popupProps.zIndex || 0 }}"
     overlay-props="{{ popupProps.overlayProps || defaultPopUpProps }}"
   >
     <view class="{{classPrefix}}__content {{prefix}}-class-content" tabindex="0">

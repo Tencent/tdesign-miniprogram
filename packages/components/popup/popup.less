@@ -11,10 +11,14 @@
 
 .@{popup} {
   position: fixed;
-  z-index: 11500;
   max-height: calc(100vh - var(--td-popup-distance-top, 0));
   transition: var(--td-popup-transition, all 300ms ease);
   background-color: @popup-bg-color;
+
+  &,
+  &-zIndex {
+    z-index: @z-index-popup;
+  }
 
   &__content {
     position: relative;

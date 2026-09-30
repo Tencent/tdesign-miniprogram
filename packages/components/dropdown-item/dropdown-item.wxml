@@ -15,7 +15,7 @@
   ></view>
   <t-popup
     visible="{{show}}"
-    z-index="{{zIndex + 1}}"
+    z-index="{{zIndex ? zIndex + 1 : 0}}"
     duration="{{duration}}"
     show-overlay="{{showOverlay}}"
     custom-style="position: absolute"

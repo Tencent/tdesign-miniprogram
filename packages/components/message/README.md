@@ -45,7 +45,7 @@ import Message from 'tdesign-miniprogram/message/index';
 
 ### 组件状态
 
-消息通知类型为普通（info）、警示（warning）、成功（success）、错误（error）  
+消息通知类型为普通（info）、警示（warning）、成功（success）、错误（error）
 
 {{ theme }}
 
@@ -106,14 +106,14 @@ t-class-link | 链接样式类
 ### CSS Variables
 
 组件提供了下列 CSS 变量，可用于自定义样式。
-名称 | 默认值 | 描述 
+名称 | 默认值 | 描述
 -- | -- | --
---td-message-bg-color | @bg-color-container | - 
---td-message-border-radius | @radius-default | - 
---td-message-box-shadow | @shadow-4 | - 
---td-message-close-icon-color | @font-gray-3 | - 
---td-message-content-font-color | @font-gray-1 | - 
---td-message-error-color | @error-color | - 
---td-message-info-color | @brand-color | - 
---td-message-success-color | @success-color | - 
+--td-message-bg-color | @bg-color-container | -
+--td-message-border-radius | @radius-default | -
+--td-message-box-shadow | @shadow-1 | -
+--td-message-close-icon-color | @text-color-placeholder | -
+--td-message-content-color | @text-color-primary | -
+--td-message-error-color | @error-color | -
+--td-message-info-color | @brand-color | -
+--td-message-success-color | @success-color | -
 --td-message-warning-color | @warning-color | -

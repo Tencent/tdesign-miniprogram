@@ -33,7 +33,7 @@ describe('popup', () => {
       const popupComp = simulate.render(popupId, { visible: true, placement: 'left' });
       popupComp.attach(document.createElement('parent-wrapper'));
       if (!VIRTUAL_HOST) {
-        const [popupDom] = popupComp.dom.children;
+        const popupDom = popupComp.querySelector('.t-popup').dom;
         expect(popupDom.className.match(/--left/)).toBeTruthy();
       }
     });
@@ -87,7 +87,7 @@ describe('popup', () => {
       const popupComp = simulate.render(popupId, { visible: true, ...transitionProps });
       popupComp.attach(document.createElement('parent-wrapper'));
       if (!VIRTUAL_HOST) {
-        const [popupDom] = popupComp.dom.children;
+        const popupDom = popupComp.querySelector('.t-popup').dom;
 
         // popupComp.setData({ visible: true });
 

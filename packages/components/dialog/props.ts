@@ -65,10 +65,9 @@ const props: TdDialogProps = {
   visible: {
     type: Boolean,
   },
-  /** 对话框层级，Web 侧样式默认为 2500，移动端样式默认 2500，小程序样式默认为 11500 */
+  /** 对话框层级，Web 侧样式默认为 2500，移动端样式默认 1500，小程序样式默认为 11500 */
   zIndex: {
     type: Number,
-    value: 11500,
   },
 };
 
