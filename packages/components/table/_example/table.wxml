@@ -14,7 +14,7 @@
   <t-demo desc="带斑马纹表格" padding>
     <stripe />
   </t-demo>
-  <t-demo desc="带边框表格" padding>
+  <t-demo desc="带边框表格，内容超出省略可浮层预览" padding>
     <bordered />
   </t-demo>
   <t-demo desc="带合并单元格的表格" padding>

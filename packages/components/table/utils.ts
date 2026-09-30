@@ -117,3 +117,53 @@ export function isLastRowInSpan(rowIndex: number, rowspan?: number, totalDataLen
 export function isFirstColumnInSpan(colIndex: number): boolean {
   return colIndex === 0;
 }
+
+// ------- 超出省略（ellipsis / ellipsisTitle） -------
+
+export interface EllipsisResult {
+  /** 是否开启超出省略 */
+  enabled: boolean;
+  /** 浮层展示内容，缺省时回退为单元格/表头完整内容 */
+  content?: string;
+  /** 透传给 Popover 组件的属性 */
+  props: Record<string, any>;
+}
+
+/**
+ * 解析 `ellipsis` / `ellipsisTitle` 配置。
+ * 支持 `boolean` / `Object`（透传 Popover）/ `{ props, content }` / `Function`（按单元格动态返回）。
+ * `ellipsisTitle` 优先级高于 `ellipsis`，由调用方决定取值。
+ */
+export function resolveEllipsis(value: any, params: Record<string, any>): EllipsisResult {
+  const disabled: EllipsisResult = { enabled: false, props: {} };
+  let result = value;
+
+  if (typeof value === 'function') {
+    try {
+      result = value(params);
+    } catch (err) {
+      // 函数可能依赖行数据（表头场景没有 row），异常时按未开启超出省略处理
+      return disabled;
+    }
+  }
+
+  if (result === false || result === null || result === undefined) return disabled;
+  if (typeof result === 'string') return { enabled: true, content: result, props: {} };
+  if (typeof result !== 'object') return { enabled: !!result, props: {} };
+
+  // `{ props, content }` 中 props 透传 Popover；其余形式整体作为 Popover 属性透传
+  const props: Record<string, any> = result.props && typeof result.props === 'object' ? { ...result.props } : {};
+  if (!result.props) {
+    Object.keys(result).forEach((key) => {
+      if (key !== 'content') props[key] = result[key];
+    });
+  }
+
+  const content = typeof result.content === 'function' ? result.content() : result.content;
+  return { enabled: true, content: typeof content === 'string' ? content : undefined, props };
+}
+
+/** 是否存在列开启了超出省略 */
+export function hasEllipsisColumn(columns: BaseTableCol[]): boolean {
+  return (columns || []).some((col) => !!col.ellipsis || !!col.ellipsisTitle);
+}
