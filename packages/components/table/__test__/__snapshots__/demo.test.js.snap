@@ -150,21 +150,39 @@ exports[`Table Table bordered demo works fine 1`] = `
         Object {
           "colKey": "applicant",
           "ellipsis": true,
-          "title": "标题",
+          "title": "标题(布尔)",
         },
         Object {
           "colKey": "status",
-          "ellipsis": true,
-          "title": "标题",
+          "ellipsis": Object {
+            "placement": "bottom",
+            "theme": "light",
+          },
+          "ellipsisTitle": Object {
+            "content": [Function],
+            "props": Object {
+              "placement": "bottom",
+              "theme": "brand",
+            },
+          },
+          "title": "很长很长的标题用于测试表头超出省略",
         },
         Object {
           "colKey": "channel",
-          "ellipsis": true,
-          "title": "标题",
+          "ellipsis": [Function],
+          "ellipsisTitle": false,
+          "title": "标题(函数)",
+        },
+        Object {
+          "colKey": "remark",
+          "ellipsis": [Function],
+          "ellipsisTitle": [Function],
+          "title": "标题(函数)",
         },
         Object {
           "colKey": "detail.email",
-          "ellipsis": true,
+          "ellipsis": [Function],
+          "ellipsisTitle": true,
           "title": "标题",
         },
       ]
@@ -173,32 +191,22 @@ exports[`Table Table bordered demo works fine 1`] = `
       Array [
         Object {
           "applicant": "内容",
-          "channel": "内容",
+          "channel": "这是一段很长很长的内容",
           "detail": Object {
-            "email": "内容",
+            "email": "这是一段很长很长很长的邮箱地址",
           },
           "id": 1,
-          "index": 1,
-          "status": "内容",
+          "remark": "这是一段很长很长很长的备注内容",
+          "status": "这是一段很长的内容",
         },
         Object {
-          "applicant": "内容",
+          "applicant": "这是一段很长很长很长的内容",
           "channel": "内容",
           "detail": Object {
             "email": "内容",
           },
           "id": 2,
-          "index": 2,
-          "status": "内容",
-        },
-        Object {
-          "applicant": "内容",
-          "channel": "内容",
-          "detail": Object {
-            "email": "内容内容内容",
-          },
-          "id": 3,
-          "index": 3,
+          "remark": "内容",
           "status": "内容",
         },
         Object {
@@ -207,28 +215,28 @@ exports[`Table Table bordered demo works fine 1`] = `
           "detail": Object {
             "email": "内容",
           },
-          "id": 4,
-          "index": 4,
-          "status": "内容",
+          "id": 3,
+          "remark": "内容",
+          "status": "这是一段很长很长很长很长的内容",
         },
         Object {
           "applicant": "内容",
+          "channel": "这是一段很长很长的内容",
+          "detail": Object {
+            "email": "这是一段很长很长很长的邮箱地址",
+          },
+          "id": 4,
+          "remark": "这是一段很长很长很长的备注内容",
+          "status": "这是一段很长的内容",
+        },
+        Object {
+          "applicant": "这是一段很长很长很长的内容",
           "channel": "内容",
           "detail": Object {
             "email": "内容",
           },
           "id": 5,
-          "index": 5,
-          "status": "内容",
-        },
-        Object {
-          "applicant": "内容",
-          "channel": "内容",
-          "detail": Object {
-            "email": "内容内容内容",
-          },
-          "id": 6,
-          "index": 6,
+          "remark": "内容",
           "status": "内容",
         },
         Object {
@@ -237,28 +245,28 @@ exports[`Table Table bordered demo works fine 1`] = `
           "detail": Object {
             "email": "内容",
           },
-          "id": 7,
-          "index": 7,
-          "status": "内容",
+          "id": 6,
+          "remark": "内容",
+          "status": "这是一段很长很长很长很长的内容",
         },
         Object {
           "applicant": "内容",
+          "channel": "这是一段很长很长的内容",
+          "detail": Object {
+            "email": "这是一段很长很长很长的邮箱地址",
+          },
+          "id": 7,
+          "remark": "这是一段很长很长很长的备注内容",
+          "status": "这是一段很长的内容",
+        },
+        Object {
+          "applicant": "这是一段很长很长很长的内容",
           "channel": "内容",
           "detail": Object {
             "email": "内容",
           },
           "id": 8,
-          "index": 8,
-          "status": "内容",
-        },
-        Object {
-          "applicant": "内容",
-          "channel": "内容",
-          "detail": Object {
-            "email": "内容内容内容",
-          },
-          "id": 9,
-          "index": 9,
+          "remark": "内容",
           "status": "内容",
         },
         Object {
@@ -267,9 +275,9 @@ exports[`Table Table bordered demo works fine 1`] = `
           "detail": Object {
             "email": "内容",
           },
-          "id": 10,
-          "index": 10,
-          "status": "内容",
+          "id": 9,
+          "remark": "内容",
+          "status": "这是一段很长很长很长很长的内容",
         },
       ]
     }}"
