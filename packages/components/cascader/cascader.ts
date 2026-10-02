@@ -36,7 +36,7 @@ function parseOptions(options: OptionsType, keys: KeysType) {
   const value = keys?.value ?? 'value';
   const disabled = keys?.disabled ?? 'disabled';
 
-  return options.map((item) => ({
+  return (options || []).map((item) => ({
     [label]: item[label],
     [value]: item[value],
     [disabled]: item[disabled],
@@ -55,25 +55,44 @@ function flattenPaths(options: OptionsType, keys: KeysType): FlatPath[] {
       const nextPath = [...path, item];
       const nextIndexes = [...indexes, idx];
       const children = item?.[childrenKey];
+
+      if (children === true) {
+        return;
+      }
+
       if (Array.isArray(children) && children.length > 0) {
         walk(children, nextPath, nextIndexes);
-      } else {
-        const labels = nextPath.map((node) => String(node?.[labelKey] ?? ''));
-        const text = [labels.join(''), String(item?.text ?? '')].filter(Boolean).join('');
-        result.push({
-          key: nextPath.map((node) => String(node?.[valueKey] ?? '')).join('/'),
-          path: nextPath,
-          indexes: nextIndexes,
-          labels,
-          text,
-          disabled: nextPath.some((node) => node?.[disabledKey]),
-        });
+        return;
       }
+
+      const labels = nextPath.map((node) => String(node?.[labelKey] ?? ''));
+      const text = [labels.join(''), String(item?.text ?? '')].filter(Boolean).join('');
+      result.push({
+        key: nextPath.map((node) => String(node?.[valueKey] ?? '')).join('/'),
+        path: nextPath,
+        indexes: nextIndexes,
+        labels,
+        text,
+        disabled: nextPath.some((node) => node?.[disabledKey]),
+      });
     });
   };
 
   walk(options || [], [], []);
   return result;
+}
+
+function cloneOptions(options: OptionsType, keys: KeysType): OptionsType {
+  const childrenKey = keys?.children ?? 'children';
+
+  return (options || []).map((item) => {
+    const cloned = { ...item };
+    const children = item?.[childrenKey];
+    if (Array.isArray(children)) {
+      cloned[childrenKey] = cloneOptions(children, keys);
+    }
+    return cloned;
+  });
 }
 
 function buildFragments(labels: string[], keyword: string): ResultFragment[] {
@@ -137,6 +156,14 @@ export default class Cascader extends SuperComponent {
 
   filterDebounced: ((value: string) => void) | null = null;
 
+  optionTree: OptionsType = [];
+
+  optionTreeInitialized = false;
+
+  optionTreeVersion = 0;
+
+  loadingNodes = new Set<object>();
+
   controlledProps = [
     {
       key: 'value',
@@ -186,9 +213,12 @@ export default class Cascader extends SuperComponent {
     },
 
     options() {
-      const { selectedValue, steps, items } = this.genItems();
+      this.syncOptionTree();
+      const selectedIndexes = this.getSelectedIndexesByValue();
+      const { selectedValue, steps, items } = this.genItems(selectedIndexes);
 
       this.setData({
+        selectedIndexes,
         steps,
         items,
         selectedValue,
@@ -202,6 +232,16 @@ export default class Cascader extends SuperComponent {
     },
 
     keys() {
+      this.syncOptionTree();
+      const selectedIndexes = this.getSelectedIndexesByValue();
+      const { selectedValue, steps, items } = this.genItems(selectedIndexes);
+      this.setData({
+        selectedIndexes,
+        steps,
+        items,
+        selectedValue,
+        stepIndex: items.length - 1,
+      });
       this.invalidateFlatPaths();
       if (this.data.isSearching) {
         this.applyFilter(this.data.filterKeyword);
@@ -286,26 +326,36 @@ export default class Cascader extends SuperComponent {
     },
 
     initWithValue() {
-      if (this.data.value != null && this.data.value !== '') {
-        const selectedIndexes = this.getIndexesByValue(this.data.options, this.data.value);
-
-        if (selectedIndexes) {
-          this.setData({ selectedIndexes });
-        }
-      } else {
-        this.setData({ selectedIndexes: [] });
+      this.setData({ selectedIndexes: this.getSelectedIndexesByValue() });
+    },
+    syncOptionTree() {
+      this.optionTree = cloneOptions(this.data.options, this.data.keys);
+      this.optionTreeInitialized = true;
+      this.optionTreeVersion += 1;
+      this.loadingNodes = new Set<object>();
+    },
+    getOptionTree() {
+      if (!this.optionTreeInitialized) {
+        this.syncOptionTree();
       }
+      return this.optionTree;
+    },
+    getSelectedIndexesByValue() {
+      const { value } = this.data;
+      if (value == null || value === '') return [];
+      return this.getIndexesByValue(this.getOptionTree(), value) || [];
     },
     getIndexesByValue(options: OptionsType, value) {
       const { keys } = this.data;
 
-      for (let i = 0, size = options.length; i < size; i += 1) {
+      for (let i = 0, size = options?.length || 0; i < size; i += 1) {
         const opt = options[i];
         if (opt[keys?.value ?? 'value'] === value) {
           return [i];
         }
-        if (opt[keys?.children ?? 'children']) {
-          const res = this.getIndexesByValue(opt[keys?.children ?? 'children'], value);
+        const children = opt[keys?.children ?? 'children'];
+        if (Array.isArray(children)) {
+          const res = this.getIndexesByValue(children, value);
           if (res) {
             return [i, ...res];
           }
@@ -344,8 +394,8 @@ export default class Cascader extends SuperComponent {
     ensureFlatPaths() {
       let { flatPaths } = this.state;
       if (!flatPaths || flatPaths.length === 0) {
-        const { options, keys } = this.data;
-        flatPaths = flattenPaths(options, keys);
+        const { keys } = this.data;
+        flatPaths = flattenPaths(this.getOptionTree(), keys);
         this.state.flatPaths = flatPaths;
       }
       return flatPaths;
@@ -422,7 +472,8 @@ export default class Cascader extends SuperComponent {
       this.hide('finish');
     },
     regenItemsByIndexes(selectedIndexes: number[]) {
-      const { options, keys, placeholder, globalConfig } = this.data;
+      const { keys, placeholder, globalConfig } = this.data;
+      const options = this.getOptionTree();
       const selectedValue: any[] = [];
       const steps: string[] = [];
       const items: any[] = [parseOptions(options, keys)];
@@ -461,8 +512,10 @@ export default class Cascader extends SuperComponent {
         stepIndex: value,
       });
     },
-    genItems() {
-      const { options, selectedIndexes, keys, placeholder, globalConfig } = this.data;
+    genItems(indexes = this.data.selectedIndexes) {
+      const { keys, placeholder, globalConfig } = this.data;
+      const options = this.getOptionTree();
+      const selectedIndexes = indexes || [];
       const selectedValue = [];
       const steps = [];
       const items = [parseOptions(options, keys)];
@@ -471,14 +524,16 @@ export default class Cascader extends SuperComponent {
         let current = options;
         for (let i = 0, size = selectedIndexes.length; i < size; i += 1) {
           const index = selectedIndexes[i];
-          const next = current[index];
-          current = next[keys?.children ?? 'children'];
+          const next = current?.[index];
+          if (!next) break;
+          const children = next[keys?.children ?? 'children'];
 
           selectedValue.push(next[keys?.value ?? 'value']);
           steps.push(next[keys?.label ?? 'label']);
 
-          if (next[keys?.children ?? 'children']) {
-            items.push(parseOptions(next[keys?.children ?? 'children'], keys));
+          if (Array.isArray(children) && children.length > 0) {
+            items.push(parseOptions(children, keys));
+            current = children;
           }
         }
       }
@@ -497,7 +552,9 @@ export default class Cascader extends SuperComponent {
       const { level } = e.target.dataset;
       const { value } = e.detail;
       const { checkStrictly } = this.properties;
-      const { selectedIndexes, items, keys, options, selectedValue } = this.data;
+      const { items, keys, selectedValue } = this.data;
+      const selectedIndexes = [...this.data.selectedIndexes];
+      const options = this.getOptionTree();
       const index = items[level].findIndex((item) => item[keys?.value ?? 'value'] === value);
 
       let item = selectedIndexes.slice(0, level).reduce((acc, item, index) => {
@@ -530,8 +587,12 @@ export default class Cascader extends SuperComponent {
       }
       selectedIndexes.length = level + 1;
 
-      const { items: newItems } = this.genItems();
-      if (item?.[keys?.children ?? 'children']?.length >= 0) {
+      const children = item?.[keys?.children ?? 'children'];
+      if (children === true && typeof this.data.load === 'function') {
+        this.setData({ selectedIndexes });
+        this.loadChildren(item, selectedIndexes);
+      } else if (Array.isArray(children) && children.length > 0) {
+        const { items: newItems } = this.genItems(selectedIndexes);
         this.setData({
           selectedIndexes,
           [`items[${level + 1}]`]: newItems[level + 1],
@@ -546,6 +607,67 @@ export default class Cascader extends SuperComponent {
         );
         this.hide('finish');
       }
+    },
+    async loadChildren(item: Record<string, any>, selectedIndexes: number[]) {
+      if (this.loadingNodes.has(item)) return;
+
+      const { keys, load } = this.data;
+      if (typeof load !== 'function') return;
+      const childrenKey = keys?.children ?? 'children';
+      const version = this.optionTreeVersion;
+      this.loadingNodes.add(item);
+
+      try {
+        const result = await load(item);
+        if (version !== this.optionTreeVersion) return;
+
+        const children = cloneOptions(Array.isArray(result) ? result : [], keys);
+        item[childrenKey] = children;
+        this.invalidateFlatPaths();
+
+        if (this.data.isSearching) {
+          this.applyFilter(this.data.filterKeyword);
+        }
+
+        const current = this.getOptionByIndexes(this.data.selectedIndexes);
+        if (current !== item) return;
+
+        const matchedIndexes = this.getIndexesByValue(children, this.data.value);
+        const nextIndexes = matchedIndexes ? [...selectedIndexes, ...matchedIndexes] : selectedIndexes;
+        const { selectedValue, steps, items } = this.genItems(nextIndexes);
+        this.setData(
+          {
+            selectedIndexes: nextIndexes,
+            selectedValue,
+            steps,
+            items,
+            stepIndex: items.length - 1,
+          },
+          children.length === 0
+            ? () => {
+                this.triggerChange();
+                this.hide('finish');
+              }
+            : undefined,
+        );
+      } catch {
+        // Keep children as true so the user can retry loading the node.
+      } finally {
+        this.loadingNodes.delete(item);
+      }
+    },
+    getOptionByIndexes(selectedIndexes: number[]) {
+      const childrenKey = this.data.keys?.children ?? 'children';
+      let current: any = this.getOptionTree();
+      let option: any;
+
+      for (let i = 0; i < selectedIndexes.length; i += 1) {
+        if (!Array.isArray(current)) return undefined;
+        option = current[selectedIndexes[i]];
+        if (!option) return undefined;
+        current = option[childrenKey];
+      }
+      return option;
     },
     triggerChange() {
       const { items, selectedValue, selectedIndexes } = this.data;
