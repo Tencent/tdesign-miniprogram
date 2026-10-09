@@ -56,7 +56,10 @@ export default class TreeSelect extends SuperComponent {
     buildTreeOptions() {
       const { options, value, customValue, multiple, keys } = this.data;
 
-      if (!options.length) return;
+      if (!options.length) {
+        this.setData({ treeOptions: [] });
+        return;
+      }
 
       const treeOptions: TreeOptionData[][] = [];
 
