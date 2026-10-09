@@ -224,7 +224,7 @@ export default {
           treeOptions.push(currentLevelOptions);
 
           const currentValue = coalesce(customValue?.[level], value?.[level]);
-          currentNode = currentValue
+          currentNode = isDef(currentValue)
             ? coalesce(
                 currentLevelOptions.find((child) => child.value === currentValue),
                 currentLevelOptions[0],

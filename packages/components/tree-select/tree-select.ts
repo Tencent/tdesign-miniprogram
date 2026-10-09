@@ -75,7 +75,7 @@ export default class TreeSelect extends SuperComponent {
         treeOptions.push(currentLevelOptions);
 
         const currentValue = customValue?.[level] ?? value?.[level];
-        currentNode = currentValue
+        currentNode = isDef(currentValue)
           ? (currentLevelOptions.find((child) => child.value === currentValue) ?? currentLevelOptions[0])
           : currentLevelOptions[0];
       }
