@@ -6,7 +6,6 @@
   id="popover-overlay"
   wx:if="{{realVisible && closeOnClickOutside}}"
   visible="{{true}}"
-  z-index="11000"
   duration="0"
   background-color="rgba(0,0,0,0)"
   bind:tap="onOverlayTap"

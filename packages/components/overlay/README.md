@@ -46,7 +46,7 @@ duration | Number | 300 | 背景色过渡时间，单位毫秒 | N
 prevent-scroll-through | Boolean | true | 防止滚动穿透，即不允许点击和滚动 | N
 using-custom-navbar | Boolean | false | 是否使用了自定义导航栏 | N
 visible | Boolean | false | 是否展示 | N
-z-index | Number | 11000 | 遮罩层级 | N
+z-index | Number | - | 遮罩层级，默认为 11000 | N
 
 ### Overlay Events
 
@@ -67,3 +67,4 @@ click | `({ visible: boolean })` | 点击遮罩时触发
 -- | -- | --
 --td-overlay-bg-color | @mask-active | -
 --td-overlay-transition-duration | 300ms | -
+--td-overlay-zindex | @z-index-overlay | -

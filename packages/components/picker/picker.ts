@@ -49,7 +49,6 @@ export default class Picker extends SuperComponent {
     prefix,
     classPrefix: `${prefix}-${componentName}`,
     defaultPopUpProps: {},
-    defaultPopUpzIndex: 11500,
     indicatorTop: 72, // 默认indicator位置，会动态计算
   };
 

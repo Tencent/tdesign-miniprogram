@@ -95,18 +95,18 @@ Name | Default Value | Description
 --td-tag-large-font | @font-body-medium | -
 --td-tag-large-icon-size | 32rpx | -
 --td-tag-large-padding | 4rpx 14rpx | -
---td-tag-mark-border-radius | @tag-round-border-radius | -
+--td-tag-mark-border-radius | @radius-round | -
 --td-tag-medium-font | @font-body-small | -
 --td-tag-medium-icon-size | 28rpx | -
 --td-tag-medium-padding | 2rpx 14rpx | -
 --td-tag-outline-bg-color | @bg-color-container | -
 --td-tag-primary-color | @brand-color | -
 --td-tag-primary-light-color | @brand-color-light | -
---td-tag-round-border-radius | 999px | -
+--td-tag-round-border-radius | @radius-round | -
 --td-tag-small-font | @font-body-extraSmall | -
 --td-tag-small-icon-size | 24rpx | -
 --td-tag-small-padding | 2rpx 10rpx | -
---td-tag-square-border-radius | 8rpx | -
+--td-tag-square-border-radius | @radius-small | -
 --td-tag-success-color | @success-color | -
 --td-tag-success-light-color | @success-color-1 | -
 --td-tag-warning-color | @warning-color | -

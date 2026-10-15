@@ -19,13 +19,13 @@
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: 1001;
+  z-index: calc(@z-index-image-viewer + 1);
   transform: translateZ(0);
   overflow: hidden;
 
   &__mask {
     position: absolute;
-    z-index: 1000;
+    z-index: @z-index-image-viewer;
     left: 0;
     top: 0;
     width: 100%;
@@ -39,7 +39,7 @@
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    z-index: 1005;
+    z-index: calc(@z-index-image-viewer + 5);
   }
 
   .swiper {
@@ -70,7 +70,7 @@
     background-color: @image-viewer-nav-bg-color; // 操作条背景色
     left: 0;
     color: @image-viewer-nav-color; // 操作条文本颜色
-    z-index: 1005;
+    z-index: calc(@z-index-image-viewer + 5);
 
     &-close {
       margin-left: @image-viewer-close-margin-left; // 关闭操作按钮左部间距

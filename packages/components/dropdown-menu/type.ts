@@ -38,8 +38,7 @@ export interface TdDropdownMenuProps {
     value?: boolean;
   };
   /**
-   * 菜单栏 z-index 层级
-   * @default 11600
+   * 菜单栏 z-index 层级，默认为 11600
    */
   zIndex?: {
     type: NumberConstructor;

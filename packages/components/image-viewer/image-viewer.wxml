@@ -26,6 +26,7 @@
         class="swiper"
         style="{{swiperStyle[currentSwiperIndex].style}}"
         autoplay="{{false}}"
+        circular="{{loop}}"
         current="{{currentSwiperIndex}}"
         bindchange="onSwiperChange"
         bindtap="onClose"

@@ -37,9 +37,9 @@
 @tag-large-icon-size: var(--td-tag-large-icon-size, 32rpx);
 @tag-extra-large-icon-size: var(--td-tag-extra-large-icon-size, 32rpx);
 
-@tag-square-border-radius: var(--td-tag-square-border-radius, 8rpx);
+@tag-square-border-radius: var(--td-tag-square-border-radius, @radius-small);
 @tag-round-border-radius: var(--td-tag-round-border-radius, @radius-round);
-@tag-mark-border-radius: var(--td-tag-mark-border-radius, @tag-round-border-radius);
+@tag-mark-border-radius: var(--td-tag-mark-border-radius, @radius-round);
 
 @tag-close-icon-color: var(--td-tag-close-icon-color, @text-color-placeholder);
 
@@ -138,6 +138,10 @@
   &.@{prefix}-tag {
     &--square {
       border-radius: @tag-square-border-radius;
+
+      &.@{prefix}-tag--extra-large {
+        border-radius: calc(@tag-square-border-radius * 2);
+      }
     }
 
     &--round {

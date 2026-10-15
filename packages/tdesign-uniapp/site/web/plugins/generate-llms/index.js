@@ -50,6 +50,7 @@ export default function generateMobileLlmsPlugin() {
         outputDir,
         platform: 'mobile',
         parseComponentDoc,
+        docHostMap: { layout: 'col', typography: 'paragraph' },
         siteTitle: 'TDesign Uniapp',
         siteDescription: 'TDesign 适配移动端的组件库，适合在 Uniapp 技术栈项目中使用。',
         siteBaseUrl: config.base,

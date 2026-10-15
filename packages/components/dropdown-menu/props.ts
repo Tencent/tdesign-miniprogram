@@ -26,10 +26,9 @@ const props: TdDropdownMenuProps = {
     type: Boolean,
     value: true,
   },
-  /** 菜单栏 z-index 层级 */
+  /** 菜单栏 z-index 层级，默认为 11600 */
   zIndex: {
     type: Number,
-    value: 11600,
   },
 };
 

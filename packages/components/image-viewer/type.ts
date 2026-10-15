@@ -63,6 +63,14 @@ export interface TdImageViewerProps {
     value?: boolean;
   };
   /**
+   * 是否开启循环滚动
+   * @default true
+   */
+  loop?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
    * 是否显示页码
    * @default false
    */

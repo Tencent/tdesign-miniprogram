@@ -13,7 +13,7 @@
   closeOnOverlayClick="{{closeOnOverlayClick}}"
   preventScrollThrough="{{preventScrollThrough}}"
   overlayProps="{{overlayProps}}"
-  zIndex="{{zIndex}}"
+  zIndex="{{zIndex || 0}}"
   placement="center"
   usingCustomNavbar="{{usingCustomNavbar}}"
   bind:visible-change="overlayClick"
