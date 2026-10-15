@@ -173,11 +173,13 @@ export default {
     },
     watch: {
       value: {
-        handler() {
-          this.buildTreeOptions();
-        },
+        handler: 'updateValue',
         deep: true,
         immediate: true,
+      },
+      customValue: {
+        handler: 'updateValue',
+        deep: true,
       },
       options: {
         handler() {
@@ -202,6 +204,10 @@ export default {
     },
     methods: {
       getTreeClass,
+      updateValue() {
+        this.innerValue = coalesce(this.value, this.dataValue, this.defaultValue);
+        this.buildTreeOptions();
+      },
       buildTreeOptions() {
         const { options, innerValue: value, customValue, multiple, keys } = this;
 
