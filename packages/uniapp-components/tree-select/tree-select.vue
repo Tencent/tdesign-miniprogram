@@ -211,7 +211,10 @@ export default {
       buildTreeOptions() {
         const { options, innerValue: value, customValue, multiple, keys } = this;
 
-        if (!options.length) return;
+        if (!options.length) {
+          this.treeOptions = [];
+          return;
+        }
 
         const treeOptions = [];
 
