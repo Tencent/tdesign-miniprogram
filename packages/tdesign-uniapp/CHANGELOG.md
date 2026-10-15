@@ -5,6 +5,27 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.0.0 `2026-10-15`
+
+### 🚀 Features
+
+- `Icon`: 新增  send-1-filled, send-1,  tablet-filled ,tablet 图标 @RADWIMPS426  ([icons#270](https://github.com/Tencent/tdesign-icons/pull/270)) ([icons#293](https://github.com/Tencent/tdesign-icons/pull/293)) @liweijie0812 ([#4621](https://github.com/Tencent/tdesign-miniprogram/pull/4621))
+- `Upload`: 优化列表模式拖拽表现 @novlan1 ([#4626](https://github.com/Tencent/tdesign-miniprogram/pull/4626))
+
+### 🐞 Bug Fixes
+
+- `Icon`: 修复 usb 图标深色模式下渲染异常 @uyarn ([icons#298](https://github.com/Tencent/tdesign-icons/pull/298)) @liweijie0812 ([#4621](https://github.com/Tencent/tdesign-miniprogram/pull/4621))
+- `Navbar`: 修复小程序端 `right` 插槽内容被右上角系统胶囊遮挡的问题 @novlan1 ([#4626](https://github.com/Tencent/tdesign-miniprogram/pull/4626))
+- `Table`: 修复合并单元格渲染错误 @anlyyao ([#4652](https://github.com/Tencent/tdesign-miniprogram/pull/4652))
+- `Tag`: 
+  - 修复关闭图标点击时同时触发 `click` 事件的问题 @anlyyao ([#4611](https://github.com/Tencent/tdesign-miniprogram/pull/4611))
+  - 修复圆角样式值错误 @anlyyao ([#4660](https://github.com/Tencent/tdesign-miniprogram/pull/4660))
+- `Textarea`: 修复 `placeholder` 占位内容字号错误 @anlyyao ([#4661](https://github.com/Tencent/tdesign-miniprogram/pull/4661))
+
+### 📈 Performance
+
+- `Style`: 修正灰阶色值。深色主题：`--td-gray-color-11` 由 `#383838` 修正为 `#393939`；浅色主题：`--td-gray-color-3` 由 `#e7e7e7` 修正为 `#e8e8e8`，`--td-gray-color-4` 由 `#dcdcdc` 修正为 `#ddd`，`--td-gray-color-5` 由 `#c5c5c5` 修正为 `#c6c6c6`，`--td-gray-color-11` 由 `#383838` 修正为 `#393939` @anlyyao ([#4659](https://github.com/Tencent/tdesign-miniprogram/pull/4659))
+
 ## 🌈 0.10.3 `2026-08-06`
 
 ### 🚀 Features
