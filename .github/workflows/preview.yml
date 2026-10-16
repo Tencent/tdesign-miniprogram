@@ -22,7 +22,7 @@ jobs:
           comment_tag: ${{steps.time.outputs.timestamp}}
       - uses: LeeJim/pull-request-comment-branch@main
         id: comment-branch
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v6
         if: success()
         with:
           ref: ${{ steps.comment-branch.outputs.head_ref }}
