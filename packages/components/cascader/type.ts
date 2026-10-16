@@ -54,6 +54,13 @@ export interface TdCascaderProps<CascaderOption extends TreeOptionData = TreeOpt
     value?: CascaderKeysType;
   };
   /**
+   * 加载子树数据的方法（仅当节点 children 为 true 时生效）
+   */
+  load?: {
+    type: undefined;
+    value?: (node: CascaderOption) => Promise<Array<CascaderOption>>;
+  };
+  /**
    * 可选项数据源
    * @default []
    */
