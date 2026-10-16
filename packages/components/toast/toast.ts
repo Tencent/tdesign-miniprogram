@@ -93,7 +93,7 @@ export default class Toast extends SuperComponent {
         clearTimeout(this.hideTimer);
         this.hideTimer = null;
       }
-      this.triggerEvent('destory');
+      this.triggerEvent('destroy');
     },
 
     loop() {},
