@@ -68,6 +68,8 @@ Fab 组件默认定位 `right: 16px; bottom: 32px;`，且拖拽功能也是通�
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 button-props | Object | - | 透传至 Button 组件。TS 类型：`ButtonProps`，[Button API Documents](./button?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/fab/type.ts) | N
+collapse-duration | Number | 3000 | 自动收缩延迟时间，单位毫秒 | N
+collapsible | Boolean | false | 是否开启自动收缩 | N
 draggable | String / Boolean | false | 是否可拖拽。`true` / `'all'`可拖动<br>`'vertical'`可垂直拖动<br>`'horizontal'`可水平拖动<br>`false`禁止拖动。TS 类型：`boolean \| FabDirectionEnum ` `type FabDirectionEnum = 'all' \| 'vertical' \| 'horizontal'`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/fab/type.ts) | N
 icon | String / Object | - | 图标名称。值为字符串表示图标名称，值为 `Object` 类型，表示透传至 `icon` 组件 | N
 text | String | - | 文本内容 | N

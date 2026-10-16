@@ -4,15 +4,20 @@
 <template name="draggable">
   <t-draggable
     id="draggable"
-    class="class"
+    class="class {{collapsed ? classPrefix + '--collapsed' : ''}}"
     t-class="{{prefix}}-class"
-    style="right: 16px; bottom: 32px; {{_._style([style, customStyle, moveStyle])}}"
+    style="right: 16px; bottom: 32px; {{_._style([style, customStyle, moveStyle, collapsed ? collapsedStyle : ''])}}"
     direction="{{draggable === true ? 'all' : draggable}}"
     bind:start="onStart"
     bind:move="onMove"
     bind:end="onEnd"
   >
-    <slot wx:if="{{!buttonData.content && !buttonData.icon}}" />
-    <template wx:else is="button" data="{{useDefaultSlot: true, ...buttonData}}" />
+    <view wx:if="{{collapsible && collapsed}}" class="{{classPrefix}}__collapsed" bind:tap="onCollapsedTap">
+      <t-icon name="chevron-left" size="20" />
+    </view>
+    <block wx:else>
+      <slot wx:if="{{!buttonData.content && !buttonData.icon}}" />
+      <template wx:else is="button" data="{{useDefaultSlot: true, ...buttonData}}" />
+    </block>
   </t-draggable>
 </template>

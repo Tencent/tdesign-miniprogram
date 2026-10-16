@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import pageScrollMixin from '../mixins/page-scroll';
 import useCustomNavbar from '../mixins/using-custom-navbar';
 import { calcIcon, unitConvert, systemInfo } from '../common/utils';
 
@@ -15,17 +16,31 @@ const baseButtonProps = {
 
 @wxComponent()
 export default class Fab extends SuperComponent {
-  behaviors = [useCustomNavbar];
+  behaviors = [pageScrollMixin(), useCustomNavbar];
 
   properties = props;
 
   externalClasses = [`class`, `${prefix}-class`, `${prefix}-class-button`];
+
+  collapseTimer = null;
 
   data = {
     prefix,
     classPrefix: name,
     buttonData: baseButtonProps,
     moveStyle: null,
+    collapsedStyle: 'right: 0;',
+    collapsed: false,
+  };
+
+  lifetimes = {
+    ready() {
+      this.startCollapseTimer();
+    },
+
+    detached() {
+      this.clearCollapseTimer();
+    },
   };
 
   observers = {
@@ -44,14 +59,52 @@ export default class Fab extends SuperComponent {
         this.computedSize?.bind(this),
       );
     },
+
+    'collapsible, collapseDuration'() {
+      this.expand();
+    },
   };
 
   methods = {
+    clearCollapseTimer() {
+      if (this.collapseTimer) {
+        clearTimeout(this.collapseTimer);
+        this.collapseTimer = null;
+      }
+    },
+
+    startCollapseTimer() {
+      this.clearCollapseTimer();
+      if (!this.properties.collapsible || this.properties.collapseDuration <= 0) return;
+
+      this.collapseTimer = setTimeout(() => {
+        this.setData({ collapsed: true });
+        this.collapseTimer = null;
+      }, this.properties.collapseDuration);
+    },
+
+    expand() {
+      this.setData({ collapsed: false }, this.startCollapseTimer.bind(this));
+    },
+
+    onScroll() {
+      if (!this.properties.collapsible) return;
+      this.expand();
+    },
+
+    onCollapsedTap() {
+      this.expand();
+    },
+
     onTplButtonTap(e) {
+      if (this.data.collapsed) return;
+      this.startCollapseTimer();
       this.triggerEvent('click', e);
     },
 
     onStart(e) {
+      this.clearCollapseTimer();
+      this.setData({ collapsed: false });
       this.triggerEvent('dragstart', e.detail.e);
     },
 
@@ -71,6 +124,7 @@ export default class Fab extends SuperComponent {
     },
 
     onEnd(e) {
+      this.startCollapseTimer();
       this.triggerEvent('dragend', e.detail.e);
     },
 
