@@ -9,7 +9,12 @@
     data-col-index="{{cell.colIndex}}"
     bind:tap="onCellClick"
   >
-    <view class="{{classPrefix}}__td-content">{{cell.content}}</view>
+    <view class="{{cell.contentClass}}">
+      <block wx:if="{{cell.ellipsis}}">
+        <text class="{{cell.textClass}}">{{cell.content}}</text>
+      </block>
+      <block wx:else>{{cell.content}}</block>
+    </view>
   </view>
 </template>
 
@@ -32,8 +37,15 @@
             wx:key="colKey"
             class="{{classPrefix}}__th {{thClassNames[colIndex]}}"
             style="{{colStyles[colIndex]}}"
+            data-col-index="{{colIndex}}"
+            bind:tap="onTitleClick"
           >
-            <view class="{{classPrefix}}__th-content"> {{col.title}} </view>
+            <view class="{{titleClassNames[colIndex]}}">
+              <block wx:if="{{titleEllipsisFlags[colIndex]}}">
+                <text class="{{classPrefix}}__th-text-{{colIndex}}">{{col.title}}</text>
+              </block>
+              <block wx:else>{{col.title}}</block>
+            </view>
           </view>
         </view>
       </view>
@@ -93,4 +105,24 @@
     {{footerSummary}}
   </view>
   <slot name="footer-summary" />
+
+  <!-- 超出省略内容的预览气泡，锚点用于定位到被点击的单元格/表头 -->
+  <view
+    wx:if="{{hasEllipsis && popoverMounted}}"
+    class="{{classPrefix}}__popover-anchor {{popoverVisible ? classPrefix + '__popover-anchor--visible' : ''}} t-popover-wrapper--fixed"
+    style="{{popoverAnchorStyle}}"
+  >
+    <t-popover
+      class="{{classPrefix}}__popover"
+      visible="{{popoverVisible}}"
+      content="{{popoverContent}}"
+      fixed="{{true}}"
+      custom-style="max-width: {{popoverConfig.maxWidth}};"
+      placement="{{popoverPlacement}}"
+      theme="{{popoverConfig.theme}}"
+      showArrow="{{popoverConfig.showArrow}}"
+      closeOnClickOutside="{{popoverConfig.closeOnClickOutside}}"
+      bind:visible-change="onPopoverVisibleChange"
+    />
+  </view>
 </view>

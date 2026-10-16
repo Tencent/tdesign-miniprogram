@@ -1,6 +1,7 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import usingConfig from '../mixins/using-config';
+import { getWindowInfo } from '../common/wechat';
 import props from './base-table-props';
 import type { BaseTableCol, TableRowData } from './type';
 import {
@@ -10,12 +11,30 @@ import {
   getCellKey,
   getSkipSpansMap,
   handleCellSpan,
+  hasEllipsisColumn,
   isFirstColumnInSpan,
   isLastRowInSpan,
+  resolveEllipsis,
 } from './utils';
 
 const { prefix } = config;
 const componentName = 'table';
+
+/** 单元格预览气泡的默认最大宽度（px） */
+const DEFAULT_POPOVER_MAX_WIDTH = 280;
+
+/** 归一化气泡最大宽度，支持数字（px）与带单位字符串（如 `300px` / `600rpx`） */
+function normalizeMaxWidth(maxWidth?: string | number): string {
+  if (maxWidth === undefined || maxWidth === null || maxWidth === '') return `${DEFAULT_POPOVER_MAX_WIDTH}px`;
+  return String(formatCSSUnit(maxWidth) || `${DEFAULT_POPOVER_MAX_WIDTH}px`);
+}
+
+/** 气泡最大宽度换算为 px，用于计算气泡相对单元格的对齐方式 */
+function maxWidthToPx(maxWidth: string | number | undefined, windowWidth: number) {
+  const value = normalizeMaxWidth(maxWidth);
+  if (value.endsWith('rpx')) return (parseFloat(value) * windowWidth) / 750;
+  return parseFloat(value) || DEFAULT_POPOVER_MAX_WIDTH;
+}
 
 @wxComponent()
 export default class Table extends SuperComponent {
@@ -48,6 +67,23 @@ export default class Table extends SuperComponent {
     scrollableToLeft: false,
     scrollableToRight: false,
     contentClasses: '',
+    // 超出省略（ellipsis / ellipsisTitle）
+    hasEllipsis: false,
+    titleClassNames: [] as string[],
+    titleEllipsisFlags: [] as boolean[],
+    popoverConfig: {
+      placement: 'top',
+      theme: 'dark',
+      showArrow: true,
+      closeOnClickOutside: true,
+      maxWidth: `${DEFAULT_POPOVER_MAX_WIDTH}px`,
+    } as Record<string, any>,
+    popoverPlacement: 'top',
+    popoverVisible: false,
+    // 每次弹出重新挂载，避免复用组件沿用上一次的坐标
+    popoverMounted: false,
+    popoverContent: '',
+    popoverAnchorStyle: '',
   };
 
   observers = {
@@ -84,6 +120,9 @@ export default class Table extends SuperComponent {
         fixedRows,
       } = this.properties;
       const { classPrefix } = this.data;
+
+      // 开启后才渲染气泡，并为单元格/表头附加测量与定位用的类名
+      const hasEllipsis = hasEllipsisColumn((columns || []) as BaseTableCol[]);
 
       // 解析 fixedRows
       const fixedTopRows = (fixedRows && (fixedRows as number[])[0]) || 0;
@@ -207,6 +246,19 @@ export default class Table extends SuperComponent {
         return classes.filter(Boolean).join(' ');
       });
 
+      // 表头内容类名与省略标记：ellipsisTitle 优先级高于 ellipsis
+      const titleEllipsisList = (columns || []).map((col: BaseTableCol, colIndex: number) =>
+        resolveEllipsis(col.ellipsisTitle !== undefined ? col.ellipsisTitle : col.ellipsis, { col, colIndex }),
+      );
+      const titleClassNames = titleEllipsisList.map((item: any, colIndex: number) => {
+        const classes: string[] = [`${classPrefix}__th-content`];
+        if (item.enabled) {
+          classes.push(`${classPrefix}__th-content--ellipsis`, `${classPrefix}__th-content-${colIndex}`);
+        }
+        return classes.filter(Boolean).join(' ');
+      });
+      const titleEllipsisFlags = titleEllipsisList.map((item: any) => !!item.enabled);
+
       // 计算合并单元格
       const hasSpan = !!rowspanAndColspan && !!data?.length && !!columns?.length;
       const skipSpansMap = getSkipSpansMap(data, columns, rowKey, rowspanAndColspan as Function);
@@ -245,10 +297,20 @@ export default class Table extends SuperComponent {
             }
           }
 
+          const cellEllipsis = resolveEllipsis(col.ellipsis, { row, col, rowIndex, colIndex });
+
           // 合并场景用 grid 定位实现跨行跨列，非合并场景沿用列宽样式
           const cellStyle = hasSpan
             ? `grid-column: ${colIndex + 1} / span ${colspan || 1}; grid-row: ${rowIndex + 1} / span ${rowspan || 1}`
             : colStyles[colIndex];
+
+          const contentClasses: string[] = [`${classPrefix}__td-content`];
+          if (cellEllipsis.enabled) {
+            contentClasses.push(
+              `${classPrefix}__td-content--ellipsis`,
+              `${classPrefix}__td-content-${rowIndex}-${colIndex}`,
+            );
+          }
 
           return {
             colKey: col.colKey || String(colIndex),
@@ -257,6 +319,9 @@ export default class Table extends SuperComponent {
             tdClass: tdClasses.filter(Boolean).join(' '),
             cellStyle,
             skipped: skipped || false,
+            contentClass: contentClasses.filter(Boolean).join(' '),
+            textClass: `${classPrefix}__td-text-${rowIndex}-${colIndex}`,
+            ellipsis: !!cellEllipsis.enabled,
           };
         });
 
@@ -338,6 +403,9 @@ export default class Table extends SuperComponent {
           hasSpan,
           tbodyStyles,
           contentClasses,
+          hasEllipsis,
+          titleClassNames,
+          titleEllipsisFlags,
         },
         () => {
           // 动态测量行高，修正固定行的 top/bottom 值
@@ -403,9 +471,121 @@ export default class Table extends SuperComponent {
       }
     },
 
+    /**
+     * 计算气泡弹出方位。
+     * 气泡以配置方位（`placement`）为准，但当单元格靠近屏幕左/右边缘时，
+     * 居中气泡会被贴边截断、箭头随之偏离单元格，此时改为贴边对齐以保证箭头落在单元格上。
+     */
+    getPopoverPlacement(this: any, contentRect: Record<string, number>, config: Record<string, any>) {
+      const { windowWidth } = getWindowInfo();
+      const base = String(config.placement || 'top').split('-')[0];
+      const maxWidth = maxWidthToPx(config.maxWidth, windowWidth);
+      const cellCenter = contentRect.left + contentRect.width / 2;
+
+      if (cellCenter < maxWidth / 2) return `${base}-left`;
+      if (windowWidth - cellCenter < maxWidth / 2) return `${base}-right`;
+      return base;
+    },
+
+    getPopoverConfig(this: any, props: Record<string, any>) {
+      return {
+        placement: props.placement || 'top',
+        theme: props.theme || 'dark',
+        showArrow: props.showArrow !== false,
+        closeOnClickOutside: props.closeOnClickOutside !== false,
+        // 限制气泡宽度，避免超长内容撑满屏幕导致定位与箭头偏移
+        maxWidth: normalizeMaxWidth(props.maxWidth),
+      };
+    },
+
+    /** 展示超出省略内容的预览气泡，气泡通过定位锚点跟随目标（单元格 / 表头） */
+    showEllipsisPopover(
+      this: any,
+      type: 'td' | 'th',
+      rowIndex: number,
+      colIndex: number,
+      content: string,
+      props: Record<string, any>,
+    ) {
+      if (!content) return;
+
+      const { classPrefix } = this.data;
+      const suffix = type === 'th' ? `${colIndex}` : `${rowIndex}-${colIndex}`;
+      const nextConfig = this.getPopoverConfig(props);
+
+      const query = this.createSelectorQuery();
+      query.select(`.${classPrefix}__${type}-content-${suffix}`).boundingClientRect();
+      query.select(`.${classPrefix}__${type}-text-${suffix}`).boundingClientRect();
+      query.select(`.${classPrefix}`).boundingClientRect();
+      query.exec((res: any) => {
+        if (!res) return;
+        const [contentRect, textRect, tableRect] = res;
+        if (!contentRect || !textRect || !tableRect) return;
+
+        // 文本实际尺寸大于可视尺寸，说明内容被隐藏
+        const isOverflow = textRect.width - contentRect.width > 1 || textRect.height - contentRect.height > 1;
+        if (!isOverflow) return;
+
+        const top = contentRect.top - tableRect.top;
+        const left = contentRect.left - tableRect.left;
+
+        const payload = {
+          popoverAnchorStyle: `top: ${top}px; left: ${left}px; width: ${contentRect.width}px; height: ${contentRect.height}px;`,
+          popoverContent: content,
+          popoverConfig: nextConfig,
+          popoverPlacement: this.getPopoverPlacement(contentRect, nextConfig),
+        };
+
+        // 先卸载再挂载，确保每次弹出都重新计算坐标（复用组件会沿用上一次的 top/left）
+        if (this.data.popoverMounted) {
+          this.setData({ popoverMounted: false, popoverVisible: false }, () =>
+            this.setData({ ...payload, popoverMounted: true, popoverVisible: true }),
+          );
+        } else {
+          this.setData({ ...payload, popoverMounted: true, popoverVisible: true });
+        }
+      });
+    },
+
+    /** 点击表头：表头内容超出省略时，弹出气泡预览完整标题 */
+    onTitleClick(this: any, e: any) {
+      const { colIndex } = e.currentTarget.dataset;
+      const { columns } = this.properties;
+      const col = columns && columns[colIndex];
+      if (!col) return;
+
+      const resolved = resolveEllipsis(col.ellipsisTitle !== undefined ? col.ellipsisTitle : col.ellipsis, {
+        col,
+        colIndex,
+      });
+      if (!resolved.enabled) return;
+
+      this.showEllipsisPopover('th', 0, colIndex, resolved.content || col.title || '', resolved.props);
+    },
+
+    onPopoverVisibleChange(this: any, e: any) {
+      const { visible } = e.detail || {};
+      if (!!visible !== this.data.popoverVisible) {
+        this.setData({ popoverVisible: !!visible });
+      }
+      // 关闭时延迟卸载，保留 popover 的淡出过渡
+      clearTimeout(this.popoverUnmountTimer);
+      if (!visible && this.data.popoverMounted) {
+        this.popoverUnmountTimer = setTimeout(() => this.setData({ popoverMounted: false }), 350);
+      }
+    },
+
     onCellClick(this: any, e: any) {
       const { rowIndex, colIndex } = e.currentTarget.dataset;
       const { data, columns } = this.properties;
+      const cell = this.data.renderData?.[rowIndex]?.cells?.[colIndex];
+      const col = columns && columns[colIndex];
+      if (cell && col) {
+        const resolved = resolveEllipsis(col.ellipsis, { row: data[rowIndex], col, rowIndex, colIndex });
+        if (resolved.enabled) {
+          this.showEllipsisPopover('td', rowIndex, colIndex, resolved.content || cell.content, resolved.props);
+        }
+      }
       if (data && data[rowIndex] && columns && columns[colIndex]) {
         this.triggerEvent('cell-click', {
           row: data[rowIndex],
@@ -426,6 +606,11 @@ export default class Table extends SuperComponent {
     onScroll(this: any, e: any) {
       const { classPrefix } = this.data;
       this.triggerEvent('scroll', { e });
+
+      // 滚动后单元格位置变化，预览气泡不再匹配，直接关闭
+      if (this.data.popoverVisible) {
+        this.setData({ popoverVisible: false });
+      }
 
       const target = e.detail || {};
 

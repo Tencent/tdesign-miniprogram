@@ -102,8 +102,24 @@
   &__th-content,
   &__td-content {
     overflow: hidden;
+  }
+
+  // 开启 ellipsis / ellipsisTitle 后才出现超出省略
+  &__th-content--ellipsis,
+  &__td-content--ellipsis {
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  // 预览气泡的定位锚点
+  &__popover-anchor {
+    position: absolute;
+    pointer-events: none;
+  }
+
+  // 气泡展示时需要响应交互（关闭气泡的遮罩层位于锚点内部）
+  &__popover-anchor--visible {
+    pointer-events: auto;
   }
 
   // 空数据

@@ -2,6 +2,7 @@
   "component": true,
   "styleIsolation": "apply-shared",
   "usingComponents": {
-    "t-loading": "../loading/loading"
+    "t-loading": "../loading/loading",
+    "t-popover": "../popover/popover"
   }
 }
