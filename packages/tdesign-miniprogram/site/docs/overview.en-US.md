@@ -333,6 +333,14 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/list-en">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-list.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-list-dark.png" />
+      <p class="name">List</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/progress-en">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-progress.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-progress-dark.png" />

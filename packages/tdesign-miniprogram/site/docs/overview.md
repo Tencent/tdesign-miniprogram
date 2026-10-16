@@ -332,6 +332,14 @@ spline: explain
   </div>
 
   <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/list">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-list.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-list-dark.png" />
+      <p class="name">List 列表</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/progress">
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-progress.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-progress-dark.png" />
