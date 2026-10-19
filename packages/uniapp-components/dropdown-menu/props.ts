@@ -26,10 +26,9 @@ export default {
     type: Boolean,
     default: true,
   },
-  /** 菜单栏 z-index 层级 */
+  /** 菜单栏 z-index 层级，默认为 11600 */
   zIndex: {
     type: Number,
-    default: 11600,
   },
   /** 菜单关闭时触发 */
   onClose: {

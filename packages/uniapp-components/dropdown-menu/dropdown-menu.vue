@@ -11,7 +11,7 @@
       :data-index="index"
       :class="[
         classPrefix + '__item',
-        activeIdx == index ? classPrefix + '__item' + '--active' : '',
+        activeIdx == index || item.active ? classPrefix + '__item' + '--active' : '',
         item.disabled ? classPrefix + '__item' + '--disabled' : '',
         true ? classPrefix + '__item' + '--index' : '',
         tClassItem,
@@ -148,6 +148,7 @@ export default {
         const menus = this.children?.map((data) => ({
           label: data.computedLabel || data.label,
           disabled: data.disabled,
+          active: data.keepActive,
         }));
 
         this.menus = menus;
