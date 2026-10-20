@@ -2,7 +2,6 @@
 
 @checkbox: ~'@{prefix}-checkbox';
 
-@checkbox-border-width: 4rpx;
 @checkbox-icon-size: var(--td-checkbox-icon-size, 48rpx);
 @checkbox-title-font: var(--td-checkbox-title-font, @font-body-large);
 @checkbox-title-line-height: var(--td-checkbox-title-line-height, @text-line-height-m);
@@ -101,32 +100,46 @@
     }
 
     &-circle {
-      width: calc((@checkbox-icon-size - @checkbox-border-width) * 2);
-      height: calc((@checkbox-icon-size - @checkbox-border-width) * 2);
-      border: calc(@checkbox-border-width * 2) solid @checkbox-icon-color;
-      border-radius: @radius-circle;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.5);
+      width: @checkbox-icon-size;
+      height: @checkbox-icon-size;
       box-sizing: border-box;
 
-      &--disabled {
+      &::after {
+        content: '';
+        width: calc((@checkbox-icon-size - 4rpx) * 2);
+        height: calc((@checkbox-icon-size - 4rpx) * 2);
+        border-radius: @radius-circle;
+        border: 6rpx solid @checkbox-icon-color;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.5);
+        box-sizing: border-box;
+      }
+
+      &--disabled::after {
         background: @checkbox-icon-disabled-bg-color;
       }
     }
 
     &-rectangle {
-      width: calc((@checkbox-icon-size - @checkbox-border-width * 2) * 2);
-      height: calc((@checkbox-icon-size - @checkbox-border-width * 2) * 2);
-      border: calc(@checkbox-border-width * 2) solid @checkbox-icon-color;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.5);
+      width: @checkbox-icon-size;
+      height: @checkbox-icon-size;
       box-sizing: border-box;
 
-      &--disabled {
+      &::after {
+        content: '';
+        width: calc((@checkbox-icon-size - 8rpx) * 2);
+        height: calc((@checkbox-icon-size - 8rpx) * 2);
+        border: 6rpx solid @checkbox-icon-color;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.5);
+        box-sizing: border-box;
+      }
+
+      &--disabled::after {
         background: @checkbox-icon-disabled-bg-color;
       }
     }
