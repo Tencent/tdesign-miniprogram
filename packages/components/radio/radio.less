@@ -82,10 +82,10 @@
 
       &::after {
         content: '';
-        width: calc(200% - 6rpx);
-        height: calc(200% - 6rpx);
+        width: calc((@radio-icon-size - 4rpx) * 2);
+        height: calc((@radio-icon-size - 4rpx) * 2);
         border-radius: @radius-circle;
-        border: 3px solid @radio-icon-color;
+        border: 6rpx solid @radio-icon-color;
         position: absolute;
         top: 50%;
         left: 50%;
