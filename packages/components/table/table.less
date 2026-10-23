@@ -1,6 +1,7 @@
 @import '../common/style/base.less';
 
 @table-prefix: ~'@{prefix}-table';
+@table-icon-size: @font-size-m;
 
 // 变量
 @table-border-color: var(--td-table-border-color, @component-border);
@@ -415,5 +416,25 @@
     .@{table-prefix}__cell--fixed-right-first::after {
       border-left: @table-fixed-cell-border;
     }
+  }
+
+  &__cell-check {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    --td-radio-vertical-padding: 0;
+    --td-checkbox-vertical-padding: 0;
+    --td-radio-icon-size: 40rpx;
+    --td-checkbox-icon-size: 40rpx;
+  }
+
+  &__cell-check-icon {
+    font-size: @table-icon-size;
+    width: @table-icon-size;
+    height: @table-icon-size;
+    flex: none;
+    margin-top: 0;
+    margin-right: 0;
   }
 }

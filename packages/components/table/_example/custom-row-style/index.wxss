@@ -1,0 +1,5 @@
+/* 自定义单元格类名样式 */
+.custom-cell-class-name {
+  color: orange;
+  font-weight: bold;
+}

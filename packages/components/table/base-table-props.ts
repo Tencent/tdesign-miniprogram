@@ -47,12 +47,29 @@ const props: TdBaseTableProps = {
     type: null,
     value: undefined,
   },
+  /** 数据加载模式 */
+  loadingMode: {
+    type: String,
+    value: 'pull-refresh',
+  },
   /** 透传加载组件全部属性 */
   loadingProps: {
     type: Object,
   },
   /** 表格最大高度，超出后会出现滚动条。示例：100, '30%', '300'。值为数字类型，会自动加上单位 px */
   maxHeight: {
+    type: null,
+  },
+  /** 分页配置，值为空则不显示。具体 API 参考分页组件。当 `data` 数据长度超过分页大小时，会自动对本地数据 `data` 进行排序，如果不希望对于 `data` 进行排序，可以设置 `disableDataPage = true` */
+  pagination: {
+    type: Object,
+  },
+  /** HTML 标签 `tr` 的属性。类型为 Function 时，参数说明：`params.row` 表示行数据；`params.rowIndex` 表示行下标；`params.type=body` 表示属性作用于 `tbody` 中的元素；`params.type=foot` 表示属性作用于 `tfoot` 中的元素。<br />示例一：{ draggable: true }，<br />示例二：[{ draggable: true }, { title: '超出省略显示' }]。<br /> 示例三：() => [{ draggable: true }] */
+  rowAttributes: {
+    type: null,
+  },
+  /** 行类名，泛型 T 指表格数据类型。`params.row` 表示行数据；`params.rowIndex` 表示行下标；`params.type=body`  表示类名作用于 `tbody` 中的元素；`params.type= tfoot` 表示类名作用于 `tfoot` 中的元素 */
+  rowClassName: {
     type: null,
   },
   /** 唯一标识一行数据的字段名，来源于 `data` 中的字段。如果是字段嵌套多层，可以设置形如 `item.a.id` 的方法 */

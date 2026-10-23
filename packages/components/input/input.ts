@@ -1,11 +1,14 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
+import { TdInputProps } from './type';
 import { getCharacterLength, calcIcon } from '../common/utils';
 import { isDef } from '../common/validator';
 
 const { prefix } = config;
 const name = `${prefix}-input`;
+
+export type InputProps = TdInputProps;
 
 @wxComponent()
 export default class Input extends SuperComponent {

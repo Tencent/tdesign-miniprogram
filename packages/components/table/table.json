@@ -2,6 +2,13 @@
   "component": true,
   "styleIsolation": "apply-shared",
   "usingComponents": {
-    "t-loading": "../loading/loading"
+    "t-loading": "../loading/loading",
+    "t-button": "../button/button",
+    "t-checkbox": "../checkbox/checkbox",
+    "t-checkbox-group": "../checkbox-group/checkbox-group",
+    "t-radio": "../radio/radio",
+    "t-radio-group": "../radio-group/radio-group",
+    "t-icon": "../icon/icon",
+    "t-popup": "../popup/popup"
   }
 }

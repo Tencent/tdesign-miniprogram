@@ -1,6 +1,9 @@
 import config from '../common/config';
 import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/index';
+import { TdRadioProps } from './type';
 import Props from './props';
+
+export type RadioProps = TdRadioProps;
 
 const { prefix } = config;
 const name = `${prefix}-radio`;

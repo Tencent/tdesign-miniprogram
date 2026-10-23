@@ -1,0 +1,22 @@
+<view class="select-demo">
+  <view class="select-demo__title">单选</view>
+  <t-table
+    row-key="index"
+    columns="{{singleColumns}}"
+    data="{{data}}"
+    selected-row-keys="{{selectedRowKeys1}}"
+    show-header="{{true}}"
+    cell-empty-content="vvv"
+    bind:select-change="onSelectChange1"
+  />
+  <view class="select-demo__title">多选</view>
+  <t-table
+    row-key="index"
+    columns="{{multipleColumns}}"
+    data="{{data}}"
+    selected-row-keys="{{selectedRowKeys2}}"
+    show-header="{{true}}"
+    cell-empty-content="vvv"
+    bind:select-change="onSelectChange2"
+  />
+</view>

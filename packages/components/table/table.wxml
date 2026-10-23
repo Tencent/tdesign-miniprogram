@@ -9,7 +9,31 @@
     data-col-index="{{cell.colIndex}}"
     bind:tap="onCellClick"
   >
-    <view class="{{classPrefix}}__td-content">{{cell.content}}</view>
+    <!-- 选中列：单选 -->
+    <block wx:if="{{cell.columnType === 'single'}}">
+      <t-radio
+        checked="{{cell.isChecked}}"
+        disabled="{{cell.isDisabled}}"
+        allow-uncheck="{{cell.allowUncheck}}"
+        t-class-icon="{{classPrefix}}__cell-check-icon"
+        data-row-index="{{rowIndex}}"
+        bind:change="onSelectChange"
+      />
+    </block>
+    <!-- 选中列：多选 -->
+    <block wx:elif="{{cell.columnType === 'multiple'}}">
+      <t-checkbox
+        checked="{{cell.isChecked}}"
+        indeterminate="{{cell.isIndeterminate}}"
+        disabled="{{cell.isDisabled}}"
+        icon="rectangle"
+        t-class-icon="{{classPrefix}}__cell-check-icon"
+        data-row-index="{{rowIndex}}"
+        bind:change="onSelectChange"
+      />
+    </block>
+    <!-- 普通单元格 -->
+    <view wx:else class="{{classPrefix}}__td-content">{{cell.content}}</view>
   </view>
 </template>
 
@@ -33,7 +57,22 @@
             class="{{classPrefix}}__th {{thClassNames[colIndex]}}"
             style="{{colStyles[colIndex]}}"
           >
-            <view class="{{classPrefix}}__th-content"> {{col.title}} </view>
+            <!-- 选中列表头：单选显示 title，多选显示全选控件 -->
+            <block wx:if="{{col.type === 'single'}}">
+              <view class="{{classPrefix}}__th-content">{{col.title}}</view>
+            </block>
+            <block wx:elif="{{col.type === 'multiple'}}">
+              <t-checkbox
+                checked="{{allChecked}}"
+                indeterminate="{{isIndeterminateChecked}}"
+                disabled="{{!hasSelectableRows}}"
+                icon="rectangle"
+                t-class-icon="{{classPrefix}}__cell-check-icon"
+                bind:change="onSelectAll"
+              />
+            </block>
+            <!-- 普通列表头 -->
+            <view wx:else class="{{classPrefix}}__th-content"> {{col.title}} </view>
           </view>
         </view>
       </view>

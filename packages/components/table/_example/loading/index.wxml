@@ -1,0 +1,23 @@
+<view class="loading-demo">
+  <view class="loading-demo__title">上拉加载</view>
+  <t-table
+    row-key="index"
+    columns="{{columns}}"
+    data="{{data}}"
+    pagination="{{pagination}}"
+    show-header="{{true}}"
+    cell-empty-content="vvv"
+    bind:page-change="onPageChange"
+  />
+  <view class="loading-demo__title">分页加载</view>
+  <t-table
+    row-key="index"
+    columns="{{columns}}"
+    data="{{data}}"
+    loading-mode="pagination"
+    pagination="{{pagination}}"
+    show-header="{{true}}"
+    cell-empty-content="vvv"
+    bind:page-change="onPageChange"
+  />
+</view>

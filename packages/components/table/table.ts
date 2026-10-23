@@ -1,8 +1,9 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import usingConfig from '../mixins/using-config';
-import props from './base-table-props';
-import type { BaseTableCol, TableRowData } from './type';
+import baseTableProps from './base-table-props';
+import primaryTableProps from './primary-table-props';
+import type { BaseTableCol, PrimaryTableCol, TableRowData } from './type';
 import {
   formatCSSUnit,
   get,
@@ -16,6 +17,8 @@ import {
 
 const { prefix } = config;
 const componentName = 'table';
+
+const props = { ...baseTableProps, ...primaryTableProps};
 
 @wxComponent()
 export default class Table extends SuperComponent {
@@ -48,6 +51,12 @@ export default class Table extends SuperComponent {
     scrollableToLeft: false,
     scrollableToRight: false,
     contentClasses: '',
+    // 选中
+    innerSelectedRowKeys: [] as any[],
+    // 全选状态
+    allChecked: false,
+    // 半选状态
+    isIndeterminateChecked: false,
   };
 
   observers = {
@@ -56,10 +65,22 @@ export default class Table extends SuperComponent {
     ) {
       this.updateTable();
     },
+    // 监听选中属性变化（受控模式）
+    selectedRowKeys(val: any) {
+      if (val) {
+        this.setData({ innerSelectedRowKeys: val });
+        this.updateTable();
+      }
+    },
   };
 
   lifetimes = {
     attached(this: any) {
+      // 初始化非受控默认值
+      const { defaultSelectedRowKeys } = this.properties;
+      if (defaultSelectedRowKeys && !this.data.innerSelectedRowKeys?.length) {
+        this.setData({ innerSelectedRowKeys: defaultSelectedRowKeys });
+      }
       this.updateTable();
     },
   };
@@ -82,8 +103,25 @@ export default class Table extends SuperComponent {
         cellEmptyContent,
         rowKey,
         fixedRows,
+        selectedRowKeys,
+        defaultSelectedRowKeys,
+        indeterminateSelectedRowKeys,
+        reserveSelectedRowOnPaginate,
       } = this.properties;
-      const { classPrefix } = this.data;
+      const { classPrefix, innerSelectedRowKeys } = this.data;
+
+      // 使用受控值或非受控值
+      let tSelectedRowKeys = selectedRowKeys || defaultSelectedRowKeys || innerSelectedRowKeys || [];
+
+      // reserveSelectedRowOnPaginate 为 false 时，分页切换清空不在当前页的选中项
+      if (reserveSelectedRowOnPaginate === false && !selectedRowKeys && innerSelectedRowKeys.length > 0) {
+        const currentDataKeys = (data || []).map((row: TableRowData) => get(row, rowKey || 'id'));
+        const filteredKeys = innerSelectedRowKeys.filter((key: any) => currentDataKeys.includes(key));
+        if (filteredKeys.length !== innerSelectedRowKeys.length) {
+          this.setData({ innerSelectedRowKeys: filteredKeys });
+          tSelectedRowKeys = filteredKeys;
+        }
+      }
 
       // 解析 fixedRows
       const fixedTopRows = (fixedRows && (fixedRows as number[])[0]) || 0;
@@ -173,14 +211,19 @@ export default class Table extends SuperComponent {
       // 列样式
       const defaultColWidth = tableLayout === 'fixed' ? '80px' : undefined;
       const colStyles = (columns || []).map((col: BaseTableCol, colIndex: number) => {
-        const width = formatCSSUnit(col.width || defaultColWidth);
-        const minWidth =
-          !formatCSSUnit(col.width || defaultColWidth) && !col.minWidth && tableLayout === 'fixed'
-            ? '80px'
-            : formatCSSUnit(col.minWidth);
+        const isSelectCol = (col as PrimaryTableCol).type === 'multiple' || (col as PrimaryTableCol).type === 'single';
+        const selectColWidth = '50px';
+        const width = formatCSSUnit(col.width || (isSelectCol ? selectColWidth : defaultColWidth));
+        let minWidth;
+        const hasNoWidth = !formatCSSUnit(col.width || (isSelectCol ? selectColWidth : defaultColWidth));
+        if (hasNoWidth && !col.minWidth && tableLayout === 'fixed') {
+          minWidth = isSelectCol ? selectColWidth : '80px';
+        } else {
+          minWidth = formatCSSUnit(col.minWidth);
+        }
         const styles: string[] = [];
         // 当列设置了固定宽度时，使用 flex: 0 0 auto 防止被 flex 压缩，支持横向滚动
-        if (col.width) {
+        if (col.width || isSelectCol) {
           styles.push('flex: 0 0 auto');
         }
         if (width) styles.push(`width: ${width}`);
@@ -203,6 +246,10 @@ export default class Table extends SuperComponent {
         if (col.fixed === 'right') classes.push(`${classPrefix}__cell--fixed-right`);
         if (colIndex === lastFixedLeftIndex) classes.push(`${classPrefix}__cell--fixed-left-last`);
         if (colIndex === firstFixedRightIndex) classes.push(`${classPrefix}__cell--fixed-right-first`);
+        // 选中列表头
+        if ((col as PrimaryTableCol).type === 'multiple' || (col as PrimaryTableCol).type === 'single') {
+          classes.push(`${classPrefix}__cell-check`);
+        }
         classes.push(getColumnClassName(col, { col, colIndex, type: 'th' }));
         return classes.filter(Boolean).join(' ');
       });
@@ -222,6 +269,10 @@ export default class Table extends SuperComponent {
 
           // 单元格完整类名（含列样式、固定列、合并单元格边框处理），供 template 直接使用
           const tdClasses: string[] = [`${classPrefix}__td`, `${classPrefix}__td-${colIndex}`];
+          // 选中列
+          if ((col as PrimaryTableCol).type === 'multiple' || (col as PrimaryTableCol).type === 'single') {
+            tdClasses.push(`${classPrefix}__cell-check`);
+          }
           if (col.align && col.align !== 'left') tdClasses.push(`${prefix}-align-${col.align}`);
           if (col.fixed === 'left') tdClasses.push(`${classPrefix}__cell--fixed-left`);
           if (col.fixed === 'right') tdClasses.push(`${classPrefix}__cell--fixed-right`);
@@ -232,10 +283,14 @@ export default class Table extends SuperComponent {
           tdClasses.push(getColumnClassName(col, { row, col, rowIndex, colIndex, type: 'td' }));
 
           let cellContent = '';
+          let cellType = 'normal'; // normal | select
           if (col.colKey === 'serial-number') {
             cellContent = String(rowIndex + 1);
+          } else if ((col as PrimaryTableCol).type === 'multiple' || (col as PrimaryTableCol).type === 'single') {
+            // 选中列
+            cellType = 'select';
           } else if (typeof col.cell === 'function') {
-            cellContent = col.cell({ row, col, rowIndex, colIndex });
+            cellContent = (col.cell as Function)({ row, col, rowIndex, colIndex });
           } else {
             const val = get(row, col.colKey || '');
             if (val !== undefined && val !== null && val !== '') {
@@ -250,6 +305,32 @@ export default class Table extends SuperComponent {
             ? `grid-column: ${colIndex + 1} / span ${colspan || 1}; grid-row: ${rowIndex + 1} / span ${rowspan || 1}`
             : colStyles[colIndex];
 
+          // 选中状态
+          const rowId = get(row, rowKey || 'id');
+          const isChecked = tSelectedRowKeys.includes(rowId);
+          // 半选状态：检查 indeterminateSelectedRowKeys 是否包含当前行 key
+          const isIndeterminate = indeterminateSelectedRowKeys?.includes(rowId) || false;
+          // 解析 checkProps（支持函数和对象形式）
+          const checkProps = (() => {
+            const colCheckProps = (col as PrimaryTableCol).checkProps;
+            if (!colCheckProps) return {};
+            if (typeof colCheckProps === 'function') {
+              return colCheckProps({ row, rowIndex }) || {};
+            }
+            return colCheckProps || {};
+          })();
+          // 解析列级 disabled（支持函数和布尔值）
+          const colDisabled = (() => {
+            const colDisable = (col as PrimaryTableCol).disabled;
+            if (!colDisable) return false;
+            if (typeof colDisable === 'function') {
+              return colDisable({ row, rowIndex }) || false;
+            }
+            return colDisable;
+          })();
+          const allowUncheck = (checkProps as any).allowUncheck || false;
+          const isDisabled = colDisabled || checkProps.disabled || false;
+
           return {
             colKey: col.colKey || String(colIndex),
             colIndex,
@@ -257,6 +338,13 @@ export default class Table extends SuperComponent {
             tdClass: tdClasses.filter(Boolean).join(' '),
             cellStyle,
             skipped: skipped || false,
+            cellType,
+            columnType: (col as PrimaryTableCol).type || 'normal',
+            isChecked,
+            isDisabled,
+            isIndeterminate,
+            allowUncheck,
+            rowId,
           };
         });
 
@@ -268,6 +356,10 @@ export default class Table extends SuperComponent {
           rowClass: (() => {
             const classes: string[] = [];
             const dataLen = data.length;
+            const rowId = get(row, rowKey || 'id');
+            if (tSelectedRowKeys.includes(rowId)) {
+              classes.push(`${classPrefix}__row--selected`);
+            }
             if (fixedTopRows > 0 && rowIndex < fixedTopRows) {
               classes.push(`${classPrefix}__row--fixed-top`);
             }
@@ -321,6 +413,33 @@ export default class Table extends SuperComponent {
         .filter(Boolean)
         .join(' ');
 
+      // 计算全选状态
+      const selectCol = (columns || []).find((c: PrimaryTableCol) => c.type === 'multiple');
+      let allChecked = false;
+      let isIndeterminateChecked = false;
+      let hasSelectableRows = false;
+      if (selectCol && (data || []).length > 0) {
+        const canSelectedRowKeys: any[] = [];
+        (data || []).forEach((row: TableRowData, rowIndex: number) => {
+          const isDisabled = this.getRowSelectDisabled(row, rowIndex, selectCol);
+          if (!isDisabled) {
+            canSelectedRowKeys.push(get(row, rowKey || 'id'));
+          }
+        });
+        hasSelectableRows = canSelectedRowKeys.length > 0;
+        // 选中行与可选行的交集
+        const intersectionKeys = canSelectedRowKeys.filter((key: any) => tSelectedRowKeys.includes(key));
+        // 全选：所有可选行都被选中，且没有额外的选中行
+        allChecked =
+          canSelectedRowKeys.length !== 0 &&
+          intersectionKeys.length === canSelectedRowKeys.length &&
+          intersectionKeys.length === tSelectedRowKeys.length;
+        // 半选：部分可选行被选中，或有不可见的选中行
+        isIndeterminateChecked =
+          (intersectionKeys.length > 0 && intersectionKeys.length < canSelectedRowKeys.length) ||
+          intersectionKeys.length < tSelectedRowKeys.length;
+      }
+
       this.setData(
         {
           tableClasses,
@@ -338,6 +457,9 @@ export default class Table extends SuperComponent {
           hasSpan,
           tbodyStyles,
           contentClasses,
+          allChecked,
+          isIndeterminateChecked,
+          hasSelectableRows,
         },
         () => {
           // 动态测量行高，修正固定行的 top/bottom 值
@@ -394,18 +516,28 @@ export default class Table extends SuperComponent {
 
     onRowClick(this: any, e: any) {
       const { rowIndex } = e.currentTarget.dataset;
-      const { data } = this.properties;
+      const { data, columns, selectOnRowClick } = this.properties;
       if (data && data[rowIndex]) {
         this.triggerEvent('row-click', {
           row: data[rowIndex],
           index: rowIndex,
         });
+        if (selectOnRowClick) {
+          const selectCol = (columns || []).find((c: PrimaryTableCol) => c.type === 'multiple' || c.type === 'single');
+          if (selectCol) {
+            const row = data[rowIndex];
+            const isDisabled = this.getRowSelectDisabled(row, rowIndex, selectCol);
+            if (!isDisabled) {
+              this.onSelectChange({ currentTarget: { dataset: { rowIndex } } });
+            }
+          }
+        }
       }
     },
 
     onCellClick(this: any, e: any) {
       const { rowIndex, colIndex } = e.currentTarget.dataset;
-      const { data, columns } = this.properties;
+      const { data, columns, selectOnRowClick } = this.properties;
       if (data && data[rowIndex] && columns && columns[colIndex]) {
         this.triggerEvent('cell-click', {
           row: data[rowIndex],
@@ -420,7 +552,138 @@ export default class Table extends SuperComponent {
           row: data[rowIndex],
           index: rowIndex,
         });
+        // 合并场景也需要处理行点击选中
+        if (selectOnRowClick) {
+          const selectCol = (columns || []).find((c: PrimaryTableCol) => c.type === 'multiple' || c.type === 'single');
+          if (selectCol) {
+            const row = data[rowIndex];
+            const isDisabled = this.getRowSelectDisabled(row, rowIndex, selectCol);
+            if (!isDisabled) {
+              this.onSelectChange({ currentTarget: { dataset: { rowIndex } } });
+            }
+          }
+        }
       }
+    },
+
+    /** 获取行选中禁用状态 */
+    getRowSelectDisabled(this: any, row: any, rowIndex: number, col: any) {
+      // 列级 disabled
+      const colDisabled = (() => {
+        const colDisable = col?.disabled;
+        if (!colDisable) return false;
+        if (typeof colDisable === 'function') {
+          return colDisable({ row, rowIndex }) || false;
+        }
+        return colDisable;
+      })();
+      // checkProps.disabled
+      const checkProps = (() => {
+        const colCheckProps = col?.checkProps;
+        if (!colCheckProps) return {};
+        if (typeof colCheckProps === 'function') {
+          return colCheckProps({ row, rowIndex }) || {};
+        }
+        return colCheckProps || {};
+      })();
+      return colDisabled || checkProps.disabled || false;
+    },
+
+    /** 选中行切换 */
+    onSelectChange(this: any, e: any) {
+      const { rowIndex } = e.currentTarget.dataset;
+      const { data, rowKey, columns } = this.properties;
+      const { innerSelectedRowKeys, renderData } = this.data;
+      const row = data && data[rowIndex];
+      if (!row) return;
+      const rowId = get(row, rowKey || 'id');
+      let newKeys = [...innerSelectedRowKeys];
+      const existIndex = newKeys.indexOf(rowId);
+
+      // 判断是单选还是多选列
+      const selectCol = (columns || []).find((c: PrimaryTableCol) => c.type === 'multiple' || c.type === 'single');
+      if (!selectCol) return;
+
+      // 从 renderData 获取当前行的 allowUncheck
+      const currentRowData = renderData?.find((r: any) => r.rowIndex === rowIndex);
+      const allowUncheck = currentRowData?.cells?.find((c: any) => c.columnType === 'single')?.allowUncheck || false;
+
+      if (selectCol.type === 'multiple') {
+        if (existIndex !== -1) {
+          newKeys.splice(existIndex, 1);
+        } else {
+          newKeys.push(rowId);
+        }
+      } else if (selectCol.type === 'single') {
+        if (existIndex !== -1 && allowUncheck) {
+          newKeys = [];
+        } else {
+          newKeys = [rowId];
+        }
+      }
+
+      // 更新内部状态
+      this.setData({ innerSelectedRowKeys: newKeys });
+
+      // 获取选中的行数据
+      const selectedRowData = newKeys
+        .map((key: any) => (data as any[]).find((d) => get(d, rowKey || 'id') === key))
+        .filter(Boolean);
+
+      // 触发事件
+      this.triggerEvent('select-change', {
+        selectedRowKeys: newKeys,
+        selectedRowData,
+        currentRowKey: rowId,
+        currentRowData: row,
+        type: existIndex !== -1 ? 'uncheck' : 'check',
+      });
+
+      this.updateTable();
+    },
+
+    /** 全选/取消全选 */
+    onSelectAll(this: any) {
+      const { data, rowKey, columns, reserveSelectedRowOnPaginate } = this.properties;
+      const { innerSelectedRowKeys, allChecked } = this.data;
+      const selectCol = (columns || []).find((c: PrimaryTableCol) => c.type === 'multiple');
+
+      const canSelectedRowKeys: any[] = [];
+      (data || []).forEach((row: TableRowData, rowIndex: number) => {
+        const isDisabled = this.getRowSelectDisabled(row, rowIndex, selectCol);
+        if (!isDisabled) {
+          canSelectedRowKeys.push(get(row, rowKey || 'id'));
+        }
+      });
+
+      const disabledSelectedRowKeys = (innerSelectedRowKeys || []).filter(
+        (id: any) => !canSelectedRowKeys.includes(id),
+      );
+
+      let newKeys: any[];
+      if (allChecked) {
+        newKeys = [...disabledSelectedRowKeys];
+      } else if (reserveSelectedRowOnPaginate === false) {
+          newKeys = [...disabledSelectedRowKeys, ...canSelectedRowKeys];
+        } else {
+          newKeys = [...new Set([...disabledSelectedRowKeys, ...innerSelectedRowKeys, ...canSelectedRowKeys])];
+        }
+
+      this.setData({ innerSelectedRowKeys: newKeys });
+
+      // 获取选中的行数据
+      const selectedRowData = newKeys
+        .map((key: any) => (data as any[]).find((d) => get(d, rowKey || 'id') === key))
+        .filter(Boolean);
+
+      this.triggerEvent('select-change', {
+        selectedRowKeys: newKeys,
+        selectedRowData,
+        currentRowKey: 'CHECK_ALL_BOX',
+        type: allChecked ? 'uncheck' : 'check',
+      });
+
+      this.updateTable();
     },
 
     onScroll(this: any, e: any) {

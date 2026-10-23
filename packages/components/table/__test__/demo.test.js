@@ -5,7 +5,17 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['base', 'bordered', 'rowspan-colspan', 'scroll', 'stripe'];
+const mapper = [
+  'base',
+  'bordered',
+  'rowspan-colspan',
+  'scroll',
+  'stripe',
+  'sort',
+  'select',
+  'loading',
+  'custom-row-style',
+];
 
 describe('Table', () => {
   mapper.forEach((demoName) => {

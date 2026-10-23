@@ -6,6 +6,10 @@
     "bordered": "./bordered",
     "stripe": "./stripe",
     "scroll": "./scroll",
-    "rowspan-colspan": "./rowspan-colspan"
+    "rowspan-colspan": "./rowspan-colspan",
+    "sort": "./sort",
+    "select": "./select",
+    "loading": "./loading",
+    "custom-row-style": "./custom-row-style"
   }
 }

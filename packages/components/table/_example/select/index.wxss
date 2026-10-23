@@ -1,0 +1,9 @@
+.select-demo {
+  padding: 0 16rpx;
+}
+
+.select-demo__title {
+  font-size: 28rpx;
+  margin: 24rpx 0 16rpx;
+  color: var(--td-text-color-secondary);
+}
