@@ -4,9 +4,6 @@ packages:
   - '!**/_tdesign*/**'
   - '!**/uni_modules/**'
 
-minimumReleaseAgeExclude:
-- '@tdesign/*'
-
 allowBuilds:
   '@parcel/watcher': true
   '@tdesign/uniapp': true
@@ -208,6 +205,6 @@ catalogs:
 cleanupUnusedCatalogs: true
 
 minimumReleaseAgeExclude:
-  - '@tdesign/site-components@0.20.1'
+- '@tdesign/*'
 
 shamefullyHoist: true
