@@ -176,7 +176,7 @@ catalogs:
     miniprogram-computed: ^5.0.0
     miniprogram-simulate: ^1.6.0
   tdesign:
-    '@tdesign/site-components': ^0.20.0
+    '@tdesign/site-components': ^0.20.1
     '@tdesign/theme-generator': ^1.2.3
     tdesign-publish-cli: ^0.0.12
   uni:
@@ -203,5 +203,8 @@ catalogs:
     '@dcloudio/vite-plugin-uni': 3.0.0-4030620241128001
 
 cleanupUnusedCatalogs: true
+
+minimumReleaseAgeExclude:
+  - '@tdesign/site-components@0.20.1'
 
 shamefullyHoist: true
