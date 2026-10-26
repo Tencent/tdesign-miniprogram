@@ -58,7 +58,7 @@ export function getSkipSpansMap(
     const row = data[i];
     for (let j = 0; j < colLen; j += 1) {
       const col = columns[j];
-      const cellKey = getCellKey(row, rowKey, col.colKey, i, j);
+      const cellKey = getCellKey(row, rowKey, col.colKey || '', i, j);
       const state = skipSpansMap.get(cellKey) || {};
       const o = rowspanAndColspan({ row, col, rowIndex: i, colIndex: j }) || {};
       if (o.rowspan || o.colspan || state.rowspan || state.colspan) {
@@ -73,7 +73,7 @@ export function getSkipSpansMap(
         for (let ri = i; ri < maxRowIndex; ri += 1) {
           for (let ci = j; ci < maxColIndex; ci += 1) {
             if (ri !== i || ci !== j) {
-              const key = getCellKey(data[ri], rowKey, columns[ci].colKey, ri, ci);
+              const key = getCellKey(data[ri], rowKey, columns[ci].colKey || '', ri, ci);
               const s = skipSpansMap.get(key) || {};
               s.skipped = true;
               skipSpansMap.set(key, s);
