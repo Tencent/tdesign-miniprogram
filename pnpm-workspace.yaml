@@ -4,6 +4,9 @@ packages:
   - '!**/_tdesign*/**'
   - '!**/uni_modules/**'
 
+minimumReleaseAgeExclude:
+- '@tdesign/*'
+
 allowBuilds:
   '@parcel/watcher': true
   '@tdesign/uniapp': true
