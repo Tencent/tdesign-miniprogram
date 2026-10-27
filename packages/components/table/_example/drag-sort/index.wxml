@@ -1,0 +1,8 @@
+<t-table
+  row-key="index"
+  columns="{{columns}}"
+  data="{{data}}"
+  drag-sort="row"
+  show-header
+  bind:dragSort="handleDragSort"
+/>
