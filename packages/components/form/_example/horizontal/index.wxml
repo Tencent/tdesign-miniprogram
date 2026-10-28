@@ -11,7 +11,7 @@
   bind:reset="onReset"
   bind:submit="onSubmit"
 >
-  <t-form-item label="用户名" name="name" help="输入用户名">
+  <t-form-item label="用户名" name="name">
     <t-input
       value="{{formData.name}}"
       borderless
@@ -49,7 +49,7 @@
     </t-radio-group>
   </t-form-item>
 
-  <t-form-item label="生日" arrow name="birth" content-align="right">
+  <t-form-item label="生日" arrow name="birth">
     <t-input
       value="{{formData.birth}}"
       disabled="{{disabled}}"
@@ -70,7 +70,7 @@
     />
   </t-form-item>
 
-  <t-form-item arrow label="籍贯" name="place" content-align="right">
+  <t-form-item arrow label="籍贯" name="place">
     <t-input
       value="{{formData.place}}"
       disabled="{{disabled}}"
@@ -89,11 +89,11 @@
     />
   </t-form-item>
 
-  <t-form-item label="年限" name="age" content-align="right">
+  <t-form-item label="年限" name="age">
     <t-stepper value="{{formData.age}}" disabled="{{disabled}}" theme="filled" bind:change="onChangeStepper" />
   </t-form-item>
 
-  <t-form-item label="自我评价" name="description" content-align="right">
+  <t-form-item label="自我评价" name="description">
     <t-rate
       value="{{formData.description}}"
       disabled="{{disabled}}"

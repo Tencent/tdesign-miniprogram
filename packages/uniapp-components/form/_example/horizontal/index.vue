@@ -10,11 +10,10 @@
       scroll-to-first-error="smooth"
       label-align="left"
       :label-width="85"
-      content-align="right"
       @reset="(e) => onReset(e, { tagId: 'form' })"
       @submit="(e) => onSubmit(e, { tagId: 'form' })"
     >
-      <t-form-item label="用户名" name="name" help="输入用户名" content-align="left">
+      <t-form-item label="用户名" name="name">
         <t-input
           :value="formData.name"
           :disabled="disabled"
@@ -55,12 +54,11 @@
         </t-radio-group>
       </t-form-item>
 
-      <t-form-item arrow label="生日" name="birth" content-align="right">
+      <t-form-item arrow label="生日" name="birth">
         <t-input
           :value="formData.birth"
           :disabled="disabled"
           borderless
-          align="right"
           placeholder="请选择生日"
           :readonly="!isH5"
           data-field="birth"
@@ -85,7 +83,6 @@
           :value="formData.address.city"
           :disabled="disabled"
           borderless
-          align="right"
           placeholder="请选择籍贯"
           :readonly="!isH5"
           style="flex: 1"
@@ -103,11 +100,11 @@
         />
       </t-form-item>
 
-      <t-form-item label="年限" name="age" content-align="right">
+      <t-form-item label="年限" name="age">
         <t-stepper :value="formData.age" :disabled="disabled" theme="filled" @change="onChangeStepper" />
       </t-form-item>
 
-      <t-form-item label="自我评价" name="description" content-align="right">
+      <t-form-item label="自我评价" name="description">
         <t-rate
           :value="formData.description"
           :disabled="disabled"
