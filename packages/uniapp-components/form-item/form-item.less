@@ -3,14 +3,19 @@
 /* Less 支持测试 - 监听功能验证 */
 @form: ~'@{prefix}-form';
 @form-item: ~'@{prefix}-form__item';
-@form-item-horizontal-padding: var(--td-form-item-horizontal-padding, 32rpx);
-@form-item-vertical-padding: var(--td-form-item-vertical-padding, 32rpx);
+@form-item-horizontal-padding: var(--td-form-item-horizontal-padding, @spacer-2);
+@form-item-vertical-padding: var(--td-form-item-vertical-padding, @spacer-2);
 @form-item-border-color: var(--td-form-item-border-color, @component-stroke);
 @form-item-border-left-space: var(--td-form-item-border-left-space, @form-item-vertical-padding);
 @form-item-border-right-space: var(--td-form-item-border-right-space, 0);
+@form-label-font: var(--td-form-label-font, @font-body-large);
+@form-item-arrow-color: var(--td-form-item-arrow-color, @text-color-placeholder);
+@form-item-arrow-size: var(--td-form-item-arrow-size, 48rpx);
+@form-item-arrow-align: var(--td-form-item-arrow-align, center);
 
 .@{form-item} {
   display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   padding: @form-item-vertical-padding @form-item-horizontal-padding;
   position: relative;
@@ -20,6 +25,12 @@
   --td-cell-horizontal-padding: 0;
   --td-input-vertical-padding: 0;
   --td-textarea-padding: 0;
+
+  &-main {
+    display: flex;
+    align-items: @form-item-arrow-align;
+    width: 100%;
+  }
 
   &:not(:last-child)::after {
     .hairline-bottom(@form-item-border-color);
@@ -36,7 +47,7 @@
     width: 100%;
     height: auto;
     min-height: 40rpx;
-    margin-top: 8rpx;
+    margin-top: calc(@spacer / 2);
   }
 
   &-help {
@@ -61,27 +72,31 @@
     flex-direction: column;
   }
 
-  :deep(.@{form-item}__icon) {
-    font-size: 48rpx;
-    color: @text-color-placeholder;
+  :deep(.@{form-item}-arrow) {
+    flex: 0 0 auto;
+    font-size: @form-item-arrow-size;
+    color: @form-item-arrow-color;
+    padding-left: calc(@spacer / 2);
+  }
+
+  &:has(.@{form-item}-arrow) {
+    .@{form-item}-tips:has(.@{form}__controls--right) {
+      padding-right: calc(@form-item-arrow-size + @spacer / 2);
+    }
   }
 }
 
 .@{form} {
-  &--top {
-    align-items: center;
-  }
-
   &__label {
-    padding-right: 32rpx;
+    padding-right: @spacer-2;
     vertical-align: middle;
-    line-height: 48rpx;
+    font: @form-label-font;
     color: @text-color-primary;
     box-sizing: border-box;
     word-break: break-all;
 
     &--top {
-      padding-bottom: 16rpx;
+      padding-bottom: @spacer;
     }
 
     &--left {
