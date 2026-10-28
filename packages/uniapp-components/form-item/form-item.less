@@ -3,8 +3,9 @@
 /* Less 支持测试 - 监听功能验证 */
 @form: ~'@{prefix}-form';
 @form-item: ~'@{prefix}-form__item';
-@form-item-horizontal-padding: var(--td-form-item-horizontal-padding, @spacer-2);
-@form-item-vertical-padding: var(--td-form-item-vertical-padding, @spacer-2);
+@form-item-horizontal-padding: @spacer-2;
+@form-item-vertical-padding: @spacer-2;
+@form-item-padding: var(--td-form-item-padding, @form-item-horizontal-padding @form-item-vertical-padding);
 @form-item-border-color: var(--td-form-item-border-color, @component-stroke);
 @form-item-border-left-space: var(--td-form-item-border-left-space, @form-item-vertical-padding);
 @form-item-border-right-space: var(--td-form-item-border-right-space, 0);
