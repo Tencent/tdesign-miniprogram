@@ -4,6 +4,7 @@ exports[`DropdownMenu DropdownMenu multi demo works fine 1`] = `
 <multi>
   <t-dropdown-menu>
     <t-dropdown-item
+      keepLabelActive="{{true}}"
       label="单列多选"
       multiple="{{true}}"
       options="{{
@@ -128,13 +129,8 @@ exports[`DropdownMenu DropdownMenu multi demo works fine 1`] = `
       optionsColumns="2"
     />
     <t-dropdown-item
-      defaultValue="{{
-        Array [
-          "option_1",
-          "option_2",
-          "option_3",
-        ]
-      }}"
+      defaultValue="{{Array []}}"
+      keepLabelActive="{{true}}"
       label="三列多选"
       multiple="{{true}}"
       options="{{
