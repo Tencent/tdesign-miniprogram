@@ -88,6 +88,7 @@ t-class-label | 标签样式类
 style | Object | - | 样式 | N
 custom-style | Object | - | 样式，一般用于开启虚拟化组件节点场景 | N
 disabled | Boolean | false | 是否禁用操作项 | N
+keep-label-active | Boolean | false | `1.18.0`。是否保持标题高亮（含菜单收起态），仅多选场景生效 | N
 keys | Object | - | 用来定义 value / label / disabled 在 `options` 中对应的字段别名。TS 类型：`KeysType`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 label | String | - | 标题 | N
 multiple | Boolean | false | 是否多选 | N

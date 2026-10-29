@@ -13,7 +13,7 @@
     />
     <t-popup
       :visible="show"
-      :z-index="zIndex + 1"
+      :z-index="zIndex ? zIndex + 1 : 0"
       :duration="duration"
       :show-overlay="showOverlay"
       custom-style="position: absolute"
@@ -179,6 +179,7 @@ export default {
         valueAlias: 'value',
         computedLabel: '',
         firstCheckedValue: '',
+        keepActive: false, // 是否保持标题高亮（含菜单收起态），仅多选且有选中项时生效
 
         dataValue: coalesce(this.value, this.defaultValue),
 
@@ -270,12 +271,16 @@ export default {
           } else {
             this.computedLabel = '';
           }
+
+          this.updateKeepActive();
         },
         immediate: true,
       },
       label: 'getParentAllItems',
       computedLabel: 'getParentAllItems',
       disabled: 'getParentAllItems',
+      keepLabelActive: 'updateKeepActive',
+      multiple: 'updateKeepActive',
       show: {
         handler(visible) {
           if (visible) {
@@ -302,6 +307,12 @@ export default {
       },
       getParentAllItems() {
         this[RELATION_MAP.DropdownItem]?.getAllItems();
+      },
+      updateKeepActive() {
+        const { keepLabelActive, multiple, dataValue } = this;
+
+        this.keepActive = Boolean(multiple && keepLabelActive && Array.isArray(dataValue) && dataValue.length > 0);
+        this.getParentAllItems();
       },
       closeDropdown() {
         this[RELATION_MAP.DropdownItem].activeIdx = -1;

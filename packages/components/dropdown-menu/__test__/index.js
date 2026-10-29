@@ -23,6 +23,10 @@ Component({
       value: ['option_3'],
       options: singleSelectOptions,
     },
+    emptyMultipleSelect: {
+      value: [],
+      options: singleSelectOptions,
+    },
     closeOnClickOverlay: true,
     style: 'color: red',
     customStyle: 'font-size: 9px',

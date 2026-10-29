@@ -13,6 +13,11 @@ export interface TdDropdownItemProps {
    */
   disabled?: boolean;
   /**
+   * 是否保持标题高亮（含菜单收起态），仅多选场景生效
+   * @default false
+   */
+  keepLabelActive?: boolean;
+  /**
    * 用来定义 value / label / disabled 在 `options` 中对应的字段别名
    */
   keys?: KeysType;
@@ -69,7 +74,7 @@ export interface TdDropdownItemProps {
 
 export interface DropdownOption {
   label: string;
-  disabled: boolean;
+  disabled?: boolean;
   value: DropdownValue | null;
 }
 

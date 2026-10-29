@@ -41,7 +41,7 @@ arrow-icon | String / Object | 'caret-down-small' | 自定义箭头图标 | N
 close-on-click-overlay | Boolean | true | 是否在点击遮罩层后关闭菜单 | N
 duration | String / Number | 200 | 动画时长 | N
 show-overlay | Boolean | true | 是否显示遮罩层 | N
-z-index | Number | 11600 | 菜单栏 z-index 层级 | N
+z-index | Number | - | 菜单栏 z-index 层级，默认为 11600 | N
 
 ### DropdownMenu Events
 
@@ -72,15 +72,16 @@ t-class-label | 标签样式类
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
 disabled | Boolean | false | 是否禁用操作项 | N
-keys | Object | - | 用来定义 value / label / disabled 在 `options` 中对应的字段别名。TS 类型：`KeysType`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/common/common.ts) | N
+keep-label-active | Boolean | false | `1.0.1`。是否保持标题高亮（含菜单收起态），仅多选场景生效 | N
+keys | Object | - | 用来定义 value / label / disabled 在 `options` 中对应的字段别名。TS 类型：`KeysType`。[通用类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/common/common.ts) | N
 label | String | - | 标题 | N
 multiple | Boolean | false | 是否多选 | N
-options | Array | [] | 选项数据。TS 类型：`Array<DropdownOption>` `interface DropdownOption { label: string; disabled: boolean; value: DropdownValue; }`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/dropdown-item/type.ts) | N
+options | Array | [] | 选项数据。TS 类型：`Array<DropdownOption>` `interface DropdownOption { label: string; disabled?: boolean; value: DropdownValue; }`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/dropdown-item/type.ts) | N
 options-columns | String / Number | 1 | 选项分栏（1-3） | N
 options-layout | String | columns | 已废弃。选项排列；不再支持 tree 布局，可与 treeSelect 配合使用 | N
 placement | String | left | 复选框和内容相对位置，仅单选菜单栏有效。可选项：left/right | N
-value | String / Number / Array | undefined | 选中值。支持语法糖 `v-model:value`。TS 类型：`DropdownValue ` `type DropdownValue = string \| number \| Array<DropdownValue>;`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/dropdown-item/type.ts) | N
-default-value | String / Number / Array | undefined | 选中值。非受控属性。TS 类型：`DropdownValue ` `type DropdownValue = string \| number \| Array<DropdownValue>;`。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/dropdown-item/type.ts) | N
+value | String / Number / Array | undefined | 选中值。支持语法糖 `v-model:value`。TS 类型：`DropdownValue ` `type DropdownValue = string \| number \| Array<DropdownValue>;`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/dropdown-item/type.ts) | N
+default-value | String / Number / Array | undefined | 选中值。非受控属性。TS 类型：`DropdownValue ` `type DropdownValue = string \| number \| Array<DropdownValue>;`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/dropdown-item/type.ts) | N
 
 ### DropdownItem Events
 
