@@ -94,6 +94,7 @@ export default class PickerItem extends SuperComponent {
       this.StartY = 0;
       this.StartOffset = 0;
       this.startTime = 0;
+      this._wheelDelta = 0;
       this._animationTimer = null; // 动画期间更新虚拟滚动的定时器
     },
     detached() {
@@ -106,7 +107,28 @@ export default class PickerItem extends SuperComponent {
   };
 
   methods = {
+    onWheel(event: WechatMiniprogram.CustomEvent<{ deltaY: number }>) {
+      const { deltaY } = event.detail;
+      const { itemHeight, curIndex } = this.data;
+      const count = this.getCount();
+      if (!Number.isFinite(deltaY) || !deltaY || !count || itemHeight <= 0) return;
+
+      this._wheelDelta += deltaY;
+      const steps = Math.trunc(this._wheelDelta / itemHeight);
+      if (!steps) return;
+
+      const index = range(curIndex + steps, 0, count - 1);
+      this._wheelDelta = index === 0 || index === count - 1 ? 0 : this._wheelDelta - steps * itemHeight;
+      if (index === curIndex) return;
+
+      const offset = -index * itemHeight;
+      this.updateVisibleOptions(offset);
+      this.setData({ offset, curIndex: index, duration: 0 });
+      this.updateSelected(index, true);
+    },
+
     onClickItem(event: WechatMiniprogram.TouchEvent) {
+      this._wheelDelta = 0;
       const { index: clickIndex } = event.currentTarget.dataset;
       const { itemHeight } = this.data;
       const index = range(clickIndex, 0, this.getCount() - 1);
@@ -119,6 +141,7 @@ export default class PickerItem extends SuperComponent {
     },
 
     onTouchStart(event) {
+      this._wheelDelta = 0;
       this.StartY = event.touches[0].clientY;
       this.StartOffset = this.data.offset;
       this.startTime = Date.now();
@@ -243,6 +266,7 @@ export default class PickerItem extends SuperComponent {
 
     // 刷新选中状态
     update() {
+      this._wheelDelta = 0;
       const { options, value, keys, format, columnIndex, itemHeight, visibleItemCount } = this.data;
 
       const formatOptions = this.formatOption(options, columnIndex, format);
