@@ -9,7 +9,7 @@
 @slider-dot-size: var(--td-slider-dot-size, 40rpx);
 @slider-dot-border-color: var(--td-slider-dot-color, @component-border);
 @slider-dot-disabled-border-color: var(--td-slider-dot-disabled-border-color, #f3f3f3);
-@slider-default-color: var(--td-slider-default-color, @bg-color-component);
+@slider-default-color: var(--td-slider-default-color, @bg-color-secondarycomponent);
 @slider-default-disabled-color: var(--td-slider-default-color, @bg-color-component-disabled);
 @slider-active-color: var(--td-slider-active-color, @brand-color);
 @slider-active-disabled-color: var(--td-slider-disabled-color, @brand-color-disabled);
@@ -18,7 +18,10 @@
 // capsule
 @slider-capsule-bar-heihgt: var(--td-slider-capsule-bar-heihgt, 48rpx);
 @slider-capsule-bar-width: var(--td-slider-capsule-bar-width, 48rpx);
+// 胶囊外层容器 / 刻度线色，比未激活轨道更浅以形成对比
 @slider-capsule-bar-color: var(--td-slider-capsule-bar-color, @bg-color-component);
+// 胶囊未激活轨道色，与通用轨道一致
+@slider-capsule-track-color: var(--td-slider-capsule-track-color, @slider-default-color);
 @slider-capsule-line-height: var(--td-slider-capsule-line-heihgt, 36rpx);
 
 .@{slider} {
@@ -45,25 +48,37 @@
     padding-top: 40rpx;
   }
 
-  &__line {
+  &__line,
+  &__line-bg {
     position: absolute;
     top: 0;
+    left: 0;
     height: @slider-bar-height;
-    border-radius: calc(@slider-bar-height / 2);
-    background-color: @slider-active-color;
-
-    &--disabled {
-      background-color: @slider-active-disabled-color;
-    }
 
     &--capsule {
       height: @slider-capsule-line-height;
+    }
+  }
+
+  // 激活填充条：位于轨道之上、刻度线之下
+  &__line-bg {
+    border-radius: calc(@slider-bar-height / 2);
+    background-color: @slider-active-color;
+    z-index: 1;
+
+    &--disabled {
+      background-color: @slider-active-disabled-color;
     }
 
     &--capsule&--single {
       border-top-left-radius: calc(@slider-capsule-line-height / 2);
       border-bottom-left-radius: calc(@slider-capsule-line-height / 2);
     }
+  }
+
+  // 滑块容器：透明，层级高于刻度线以稳定盖住刻度线
+  &__line {
+    z-index: 3;
   }
 
   &__dot {
@@ -140,8 +155,8 @@
     &--capsule {
       height: @slider-capsule-bar-heihgt;
       border-radius: calc(@slider-capsule-bar-heihgt / 2);
-      background-color: @slider-capsule-bar-color;
-      border: 6rpx solid @slider-capsule-bar-color;
+      background-color: @slider-capsule-track-color;
+      border: 6rpx solid @slider-capsule-track-color;
       box-sizing: border-box;
     }
 
@@ -151,6 +166,19 @@
 
     &--disabled {
       background-color: @slider-default-disabled-color;
+    }
+
+    // 胶囊禁用态（无刻度）：内容区与边框统一为禁用色
+    &--capsule&--disabled {
+      background-color: @slider-default-disabled-color;
+      border-color: @slider-default-disabled-color;
+    }
+
+    // 胶囊 + 刻度：内容区为未激活轨道色，边框为更浅的刻度线色以常显刻度；
+    // 置于禁用态之后，保证禁用时仍保留刻度配色
+    &--capsule&--marks {
+      background-color: @slider-capsule-track-color;
+      border-color: @slider-capsule-bar-color;
     }
   }
 
@@ -164,18 +192,18 @@
     text-align: right;
   }
 
-  // 刻度样式
+  // 刻度
   &__scale {
     &-item {
       background-color: @slider-default-color;
-      width: @slider-bar-height;
-      height: 16rpx;
-      width: 16rpx;
+      height: calc(@slider-bar-height * 2);
+      width: calc(@slider-bar-height * 2);
       border-radius: @radius-circle;
       position: absolute;
       top: 50%;
       margin-top: calc(-1 * @spacer / 2);
-      z-index: 1;
+      // 刻度线位于激活填充条之上、滑块容器之下
+      z-index: 2;
 
       &--active {
         background-color: @slider-active-color;
@@ -195,10 +223,17 @@
         border-radius: 0;
         background-color: @slider-capsule-bar-color;
         margin-top: calc(-0.5 * @slider-capsule-line-height);
-      }
 
-      &--hidden {
-        background-color: transparent;
+        // 胶囊刻度为分隔线需常显
+        &.@{slider}__scale-item--active.@{slider}__scale-item--disabled {
+          background-color: @slider-capsule-bar-color;
+        }
+
+        // 首尾节点隐藏
+        &.@{slider}__scale-item--hidden,
+        &.@{slider}__scale-item--hidden.@{slider}__scale-item--active.@{slider}__scale-item--disabled {
+          background-color: transparent;
+        }
       }
     }
 
@@ -234,16 +269,17 @@
     }
   }
 
-  .@{slider}__line {
+  .@{slider}__line,
+  .@{slider}__line-bg {
     width: 100%;
     height: unset;
     left: 0;
     border-radius: calc(@slider-bar-width / 2);
+  }
 
-    &--capsule.@{slider}__line--single {
-      border-top-left-radius: calc(@slider-capsule-line-height / 2);
-      border-top-right-radius: calc(@slider-capsule-line-height / 2);
-    }
+  .@{slider}__line-bg--capsule.@{slider}__line-bg--single {
+    border-top-left-radius: calc(@slider-capsule-line-height / 2);
+    border-top-right-radius: calc(@slider-capsule-line-height / 2);
   }
 
   .@{slider}__dot {
@@ -290,6 +326,8 @@
     &-item {
       left: 50%;
       margin-top: 0;
+      width: calc(@slider-bar-width * 2);
+      height: calc(@slider-bar-width * 2);
 
       &--capsule {
         height: 4rpx;

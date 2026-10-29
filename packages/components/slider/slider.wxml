@@ -15,7 +15,7 @@
     >
       <block wx:if="{{isScale}}">
         <view
-          class="{{_.cls(classPrefix + '__scale-item', [['active', _value >= item.val], ['disabled', disabled], theme, ['hidden', (index == 0 || index == scaleArray.length - 1) && theme == 'capsule' || value == item.val]])}}"
+          class="{{_.cls(classPrefix + '__scale-item', [['active', _value >= item.val], ['disabled', disabled], theme, ['hidden', (index == 0 || index == scaleArray.length - 1) && theme == 'capsule']])}}"
           wx:for="{{scaleArray}}"
           wx:key="index"
           style="{{vertical ? 'top' :  'left'}}:{{item.left}}px; {{vertical ? 'transform: translate(-50%, -50%);' : 'transform: translateX(-50%);'}}"
@@ -27,7 +27,11 @@
         </view>
       </block>
       <view
-        class="{{_.cls(classPrefix + '__line', [['disabled', disabled], theme, 'single'])}} {{prefix}}-class-bar-active"
+        class="{{_.cls(classPrefix + '__line-bg', [['disabled', disabled], theme, 'single'])}} {{prefix}}-class-bar-active"
+        style="{{vertical ? 'height' : 'width'}}: {{lineBarWidth}}"
+      ></view>
+      <view
+        class="{{_.cls(classPrefix + '__line', [theme, 'single'])}}"
         style="{{vertical ? 'height' : 'width'}}: {{lineBarWidth}}"
       >
         <view
@@ -75,7 +79,7 @@
     >
       <block wx:if="{{isScale}}">
         <view
-          class="{{_.cls(classPrefix + '__scale-item', [['active', dotTopValue[1] >= item.val && item.val >= dotTopValue[0]], ['disabled', disabled], theme, ['hidden', (index == 0 || index == scaleArray.length - 1) && theme == 'capsule' || value == item.val]])}}"
+          class="{{_.cls(classPrefix + '__scale-item', [['active', dotTopValue[1] >= item.val && item.val >= dotTopValue[0]], ['disabled', disabled], theme, ['hidden', (index == 0 || index == scaleArray.length - 1) && theme == 'capsule']])}}"
           wx:for="{{scaleArray}}"
           wx:for-index="index"
           wx:key="index"
@@ -88,7 +92,11 @@
         </view>
       </block>
       <view
-        class="{{_.cls(classPrefix + '__line', [['disabled', disabled], theme])}} {{prefix}}-class-bar-active"
+        class="{{_.cls(classPrefix + '__line-bg', [['disabled', disabled], theme])}} {{prefix}}-class-bar-active"
+        style="{{vertical ? 'top' : 'left'}}: {{lineLeft}}px; {{vertical ? 'bottom' : 'right'}}: {{lineRight}}px"
+      ></view>
+      <view
+        class="{{_.cls(classPrefix + '__line', [theme])}}"
         style="{{vertical ? 'top' : 'left'}}: {{lineLeft}}px; {{vertical ? 'bottom' : 'right'}}: {{lineRight}}px"
       >
         <view

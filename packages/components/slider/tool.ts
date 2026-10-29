@@ -45,6 +45,6 @@ export const trimValue = (value: number | number[], props): number | number[] =>
   }
 
   if (!range) {
-    return trimSingleValue(value, min, max);
+    return trimSingleValue(Array.isArray(value) ? value[0] : value, min, max);
   }
 };
