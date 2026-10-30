@@ -84,8 +84,9 @@ export function isDate(input: string | Date, options?: IsDateOptions): boolean {
     const delimiter = opts.delimiters.find((d) => opts.format.includes(d));
     if (!delimiter) return false;
 
+    const dateDelimiter = opts.strictMode ? delimiter : opts.delimiters.find((d) => (input as string).includes(d));
     const formatParts = opts.format.split(delimiter);
-    const dateParts = input.split(delimiter);
+    const dateParts = input.split(dateDelimiter);
     if (formatParts.length !== dateParts.length) return false;
 
     let year = '';
