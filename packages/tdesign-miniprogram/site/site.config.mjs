@@ -422,6 +422,14 @@ export const docs = [
         component: () => import('@/collapse/README.md'),
       },
       {
+        title: 'Comment 评论',
+        titleEn: 'Comment',
+        name: 'comment',
+        meta: { docType: 'data' },
+        path: '/miniprogram/components/comment',
+        component: () => import('@/comment/README.md'),
+      },
+      {
         title: 'CountDown 倒计时',
         titleEn: 'CountDown',
         name: 'countdown',

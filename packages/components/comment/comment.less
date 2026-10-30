@@ -1,0 +1,115 @@
+@import '../common/style/base.less';
+
+@comment: ~'@{prefix}-comment';
+@comment-inner-horizontal-padding: @spacer-2;
+@comment-inner-padding: @spacer-1 @comment-inner-horizontal-padding calc(@spacer / 2) @spacer-2;
+@comment-content-font: @font-body-large;
+@comment-content-color: @text-color-primary;
+@comment-author-color: @text-color-placeholder;
+@comment-author-margin-bottom: calc(@spacer / 4);
+@comment-datetime-color: @text-color-disabled;
+@comment-datetime-font: @font-body-small;
+@comment-bottom-margin-top: calc(@spacer / 2);
+@comment-reply-body-margin-left: calc(@spacer + @spacer-4);
+@comment-reply-inner-padding: @spacer @comment-inner-horizontal-padding calc(@spacer / 2) @spacer-2;
+@comment-folds-divider-background: @component-stroke;
+@comment-folds-item-color: @text-color-secondary;
+
+.@{comment} {
+  box-sizing: border-box;
+
+  &__inner {
+    display: flex;
+    padding: @comment-inner-padding;
+
+    &:active {
+      background-color: @bg-color-secondarycontainer;
+    }
+  }
+
+  &__avatar {
+    flex-shrink: 0;
+    margin-right: @spacer;
+  }
+
+  &__detail {
+    flex: auto;
+  }
+
+  &__author {
+    color: @comment-author-color;
+    margin-bottom: @comment-author-margin-bottom;
+  }
+
+  &__content {
+    word-break: break-all;
+    font: @comment-content-font;
+    color: @comment-content-color;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    margin-top: @comment-bottom-margin-top;
+  }
+
+  &__date {
+    font: @comment-datetime-font;
+    color: @comment-datetime-color;
+    margin-right: @spacer-2;
+  }
+
+  &__reply {
+    &-body {
+      margin-left: @comment-reply-body-margin-left;
+      overflow: hidden;
+      transition: height ease 240ms;
+
+      .@{comment}__inner {
+        padding: @comment-reply-inner-padding;
+      }
+    }
+  }
+
+  &__folds {
+    display: flex;
+    align-items: center;
+    margin-left: calc(@comment-reply-body-margin-left + @comment-inner-horizontal-padding);
+
+    &::before {
+      display: block;
+      content: '';
+      width: 18px;
+      height: 0.5px;
+      background: @comment-folds-divider-background;
+      margin-right: @spacer;
+    }
+
+    &-item {
+      display: flex;
+      align-items: center;
+      color: @comment-folds-item-color;
+      font-size: @font-size-s;
+      line-height: @text-line-height-s;
+      margin-right: @spacer-3;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex: 1;
+
+    &-block {
+      display: flex;
+      align-items: center;
+    }
+
+    &-item {
+      display: flex;
+      align-items: center;
+    }
+  }
+}

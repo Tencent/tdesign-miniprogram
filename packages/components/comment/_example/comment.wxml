@@ -1,0 +1,24 @@
+<view class="skyline">
+  <t-navbar class="demo-navbar" title="Comment" leftArrow placeholder zIndex="{{99}}" />
+  <scroll-view scroll-y type="list" class="scroll-view">
+    <view class="demo">
+      <t-demo-header
+        title="Comment 评论"
+        desc="用于展示评论信息，支持回复、点赞等操作，以及折叠/展开回复区。"
+        notice="渲染框架支持情况：Skyline、WebView"
+      />
+      <t-demo title="01 组件类型" desc="基础评论" padding>
+        <base />
+      </t-demo>
+      <t-demo desc="图片评论" padding>
+        <image-demo />
+      </t-demo>
+      <t-demo desc="文字+图片评论" padding>
+        <mixed />
+      </t-demo>
+      <t-demo title="02 组件样式" desc="展开+收起" padding>
+        <collapse />
+      </t-demo>
+    </view>
+  </scroll-view>
+</view>

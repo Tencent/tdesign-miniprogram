@@ -99,7 +99,8 @@
     "pages/segmented/segmented",
     "pages/segmented/skyline/segmented",
     "pages/paragraph/paragraph",
-    "pages/chat-message/chat-message"
+    "pages/chat-message/chat-message",
+    "pages/comment/comment"
   ],
   "subpackages": [
     {

@@ -1,0 +1,40 @@
+/**
+ * 获取 actions 中 placement 为 start 的项
+ */
+function getStartActions(actions) {
+  if (!actions || !actions.length) return [];
+  var result = [];
+  for (var i = 0; i < actions.length; i++) {
+    if (actions[i].placement === 'start') {
+      result.push(actions[i]);
+    }
+  }
+  return result;
+}
+
+/**
+ * 获取 actions 中 placement 为 end 的项
+ */
+function getEndActions(actions) {
+  if (!actions || !actions.length) return [];
+  var result = [];
+  for (var i = 0; i < actions.length; i++) {
+    if (actions[i].placement === 'end') {
+      result.push(actions[i]);
+    }
+  }
+  return result;
+}
+
+/**
+ * 判断是否为数组
+ */
+function isArray(val) {
+  return val && val.constructor === 'Array';
+}
+
+module.exports = {
+  getStartActions: getStartActions,
+  getEndActions: getEndActions,
+  isArray: isArray,
+};
