@@ -15,6 +15,7 @@ export * from '../col/type';
 export * from '../collapse/type';
 export * from '../collapse-panel/type';
 export * from '../color-picker/type';
+export * from '../comment/type';
 export * from '../config-provider/type';
 export * from '../count-down/type';
 export * from '../date-time-picker/type';
