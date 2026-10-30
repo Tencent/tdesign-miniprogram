@@ -7,6 +7,8 @@
 @table-header-bg-color: var(--td-table-header-bg-color, @bg-color-container);
 @table-header-text-color: var(--td-table-header-text-color, @text-color-placeholder);
 @table-body-text-color: var(--td-table-body-text-color, @text-color-primary);
+@table-popup-title-color: @text-color-primary;
+@table-popup-title-font: @font-title-medium;
 @table-stripe-bg-color: var(--td-table-stripe-bg-color, @bg-color-secondarycontainer);
 @table-td-padding: var(--td-table-td-padding, @spacer @spacer-1);
 @table-th-padding: var(--td-table-th-padding, @spacer @spacer-1);
@@ -111,15 +113,69 @@
     white-space: nowrap;
   }
 
-  // 预览气泡的定位锚点
-  &__popover-anchor {
-    position: absolute;
-    pointer-events: none;
-  }
+  &__popup {
+    &--center {
+      width: 480rpx;
+      height: 480rpx;
+    }
 
-  // 气泡展示时需要响应交互（关闭气泡的遮罩层位于锚点内部）
-  &__popover-anchor--visible {
-    pointer-events: auto;
+    &--bottom,
+    &--top {
+      width: 100%;
+      height: 436rpx;
+    }
+
+    &--left,
+    &--right {
+      width: 65%;
+      height: 100%;
+    }
+
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      box-sizing: border-box;
+    }
+
+    &-title {
+      flex-shrink: 0;
+      padding: @spacer-2;
+      overflow: hidden;
+      color: @table-popup-title-color;
+      font: @table-popup-title-font;
+      font-weight: 600;
+      text-align: center;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    &-close {
+      padding: @spacer-2;
+    }
+
+    &-content {
+      flex: 1;
+      overflow: auto;
+      word-break: break-all;
+      color: @table-body-text-color;
+      box-sizing: border-box;
+      padding: calc(48rpx + @spacer-2 * 2) @spacer-2 @spacer-2;
+
+      &--center {
+        padding-right: @spacer-3;
+        padding-bottom: @spacer-3;
+        padding-left: @spacer-3;
+      }
+    }
+
+    &-title:not(:empty) + .@{table-prefix}__popup-content {
+      padding-top: 0;
+    }
   }
 
   // 空数据

@@ -3,6 +3,6 @@
   "styleIsolation": "apply-shared",
   "usingComponents": {
     "t-loading": "../loading/loading",
-    "t-popover": "../popover/popover"
+    "t-popup": "../popup/popup"
   }
 }
