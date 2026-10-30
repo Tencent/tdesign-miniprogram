@@ -1,0 +1,114 @@
+<wxs src="./comment.wxs" module="_" />
+
+<!-- 操作按钮分组模板 -->
+<template name="actions-group">
+  <view class="{{classPrefix}}__actions-block">
+    <view
+      wx:for="{{_.getStartActions(actions)}}"
+      wx:key="key"
+      class="{{classPrefix}}__actions-item"
+      data-action="{{item}}"
+      bindtap="handleClickActions"
+    >
+      <slot name="action-{{item.key}}" />
+    </view>
+  </view>
+  <view class="{{classPrefix}}__actions-block">
+    <view
+      wx:for="{{_.getEndActions(actions)}}"
+      wx:key="key"
+      class="{{classPrefix}}__actions-item"
+      data-action="{{item}}"
+      bindtap="handleClickActions"
+    >
+      <slot name="action-{{item.key}}" />
+    </view>
+  </view>
+</template>
+
+<!-- 折叠/展开模板 -->
+<template name="folds">
+  <view class="{{classPrefix}}__folds" wx:if="{{commentFolds.total > 1}}">
+    <!-- collapsed 状态 -->
+    <view
+      wx:if="{{foldState === 'collapsed'}}"
+      class="{{classPrefix}}__folds-item"
+      data-expand="{{true}}"
+      bindtap="handleClickFold"
+    >
+      <text>{{commentFolds.content.collapsed || '展开回复'}}</text>
+      <t-icon name="chevron-down" size="32rpx" />
+    </view>
+
+    <!-- partial 状态 -->
+    <block wx:if="{{foldState === 'partial'}}">
+      <view class="{{classPrefix}}__folds-item" data-expand="{{true}}" bindtap="handleClickFold">
+        <text>{{(commentFolds.content.partial && commentFolds.content.partial[0]) || '展开更多回复'}}</text>
+        <t-icon name="chevron-down" size="32rpx" />
+      </view>
+      <view class="{{classPrefix}}__folds-item" data-expand="{{false}}" bindtap="handleClickFold">
+        <text>{{(commentFolds.content.partial && commentFolds.content.partial[1]) || '收起'}}</text>
+        <t-icon name="chevron-up" size="32rpx" />
+      </view>
+    </block>
+
+    <!-- expanded 状态 -->
+    <view
+      wx:if="{{foldState === 'expanded'}}"
+      class="{{classPrefix}}__folds-item"
+      data-expand="{{false}}"
+      bindtap="handleClickFold"
+    >
+      <text>{{commentFolds.content.expanded || '收起'}}</text>
+      <t-icon name="chevron-up" size="32rpx" />
+    </view>
+  </view>
+</template>
+
+<view class="{{classPrefix}} {{prefix}}-class">
+  <view class="{{classPrefix}}__inner">
+    <!-- 头像 -->
+    <view class="{{classPrefix}}__avatar {{prefix}}-class-avatar">
+      <t-avatar
+        wx:if="{{avatar}}"
+        image="{{avatar.image || avatar}}"
+        size="{{avatar.size || 'medium'}}"
+        shape="{{avatar.shape || 'circle'}}"
+      />
+      <slot wx:else name="avatar" />
+    </view>
+    <!-- 详情 -->
+    <view class="{{classPrefix}}__detail">
+      <!-- 作者 -->
+      <view wx:if="{{author}}" class="{{classPrefix}}__author {{prefix}}-class-author">{{author}}</view>
+      <slot wx:else name="author" />
+      <!-- 内容 -->
+      <view wx:if="{{content}}" class="{{classPrefix}}__content {{prefix}}-class-content">{{content}}</view>
+      <slot wx:else name="content" />
+      <!-- 底部：时间 + 操作 -->
+      <view wx:if="{{datetime || actions}}" class="{{classPrefix}}__bottom">
+        <view wx:if="{{datetime}}" class="{{classPrefix}}__date {{prefix}}-class-datetime">{{datetime}}</view>
+        <view class="{{classPrefix}}__actions {{prefix}}-class-actions">
+          <!-- 非数组：单个自定义节点 -->
+          <view wx:if="{{actions && !_.isArray(actions)}}" data-action="{{actions}}" bindtap="handleClickActions">
+            <slot name="actions" />
+          </view>
+          <!-- 数组：按 placement 分组渲染 -->
+          <template wx:elif="{{actions.length}}" is="actions-group" data="{{classPrefix, actions, _}}" />
+          <!-- 空数组：插槽兜底 -->
+          <slot wx:else name="actions" />
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 回复区 -->
+  <view class="{{classPrefix}}__reply">
+    <view class="{{classPrefix}}__reply-body" style="{{_replyBodyHeight ? 'height:' + _replyBodyHeight : ''}}">
+      <view class="{{classPrefix}}__reply-inner">
+        <slot name="reply" />
+      </view>
+    </view>
+    <template is="folds" data="{{classPrefix, foldState: _foldState, commentFolds: _commentFolds}}" />
+  </view>
+</view>

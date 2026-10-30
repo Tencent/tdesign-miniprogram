@@ -1,0 +1,15 @@
+<view class="mobile-comment">
+  <t-comment avatar="{{avatar}}" content="这是一段很长很长很长很长很长很长的评论内容。" datetime="今天16:38·广东">
+    <view slot="author" class="mobile-comment__author">
+      <view>Name1 名称</view>
+      <t-tag class="mobile-comment__author-tag" theme="primary" variant="light" shape="round">作者</t-tag>
+    </view>
+    <view slot="actions" class="mobile-comment__actions">
+      <view class="mobile-comment__reply-button">回复</view>
+      <view class="mobile-comment__actions-right">
+        <t-button class="mobile-comment__actions-button" icon="thumb-up" variant="text">6</t-button>
+        <t-button class="mobile-comment__actions-button" icon="uncomfortable-1" variant="text" />
+      </view>
+    </view>
+  </t-comment>
+</view>

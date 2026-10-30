@@ -23,6 +23,10 @@ const display = {
       label: '折叠面板',
     },
     {
+      name: 'Comment',
+      label: '评论',
+    },
+    {
       name: 'CountDown',
       label: '倒计时',
     },
