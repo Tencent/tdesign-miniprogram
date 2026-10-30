@@ -675,7 +675,7 @@ exports[`dropdown-menu :base 1`] = `
                   class="t-dropdown-item__footer t-class-footer"
                 />
                 <wx-view
-                  class="t-popup__close"
+                  class="t-popup__close t-class-close"
                   bind:tap="handleClose"
                 />
               </wx-view>

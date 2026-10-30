@@ -1,7 +1,6 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import usingConfig from '../mixins/using-config';
-import { getWindowInfo } from '../common/wechat';
 import props from './base-table-props';
 import type { BaseTableCol, TableRowData } from './type';
 import {
@@ -14,27 +13,12 @@ import {
   hasEllipsisColumn,
   isFirstColumnInSpan,
   isLastRowInSpan,
+  isTextEllipsis,
   resolveEllipsis,
 } from './utils';
 
 const { prefix } = config;
 const componentName = 'table';
-
-/** 单元格预览气泡的默认最大宽度（px） */
-const DEFAULT_POPOVER_MAX_WIDTH = 280;
-
-/** 归一化气泡最大宽度，支持数字（px）与带单位字符串（如 `300px` / `600rpx`） */
-function normalizeMaxWidth(maxWidth?: string | number): string {
-  if (maxWidth === undefined || maxWidth === null || maxWidth === '') return `${DEFAULT_POPOVER_MAX_WIDTH}px`;
-  return String(formatCSSUnit(maxWidth) || `${DEFAULT_POPOVER_MAX_WIDTH}px`);
-}
-
-/** 气泡最大宽度换算为 px，用于计算气泡相对单元格的对齐方式 */
-function maxWidthToPx(maxWidth: string | number | undefined, windowWidth: number) {
-  const value = normalizeMaxWidth(maxWidth);
-  if (value.endsWith('rpx')) return (parseFloat(value) * windowWidth) / 750;
-  return parseFloat(value) || DEFAULT_POPOVER_MAX_WIDTH;
-}
 
 @wxComponent()
 export default class Table extends SuperComponent {
@@ -71,19 +55,8 @@ export default class Table extends SuperComponent {
     hasEllipsis: false,
     titleClassNames: [] as string[],
     titleEllipsisFlags: [] as boolean[],
-    popoverConfig: {
-      placement: 'top',
-      theme: 'dark',
-      showArrow: true,
-      closeOnClickOutside: true,
-      maxWidth: `${DEFAULT_POPOVER_MAX_WIDTH}px`,
-    } as Record<string, any>,
-    popoverPlacement: 'top',
-    popoverVisible: false,
-    // 每次弹出重新挂载，避免复用组件沿用上一次的坐标
-    popoverMounted: false,
-    popoverContent: '',
-    popoverAnchorStyle: '',
+    popupProps: { placement: 'center' } as Record<string, any>,
+    popupVisible: false,
   };
 
   observers = {
@@ -121,7 +94,7 @@ export default class Table extends SuperComponent {
       } = this.properties;
       const { classPrefix } = this.data;
 
-      // 开启后才渲染气泡，并为单元格/表头附加测量与定位用的类名
+      // 开启后才渲染预览弹窗，并为单元格/表头附加超出省略测量用的类名
       const hasEllipsis = hasEllipsisColumn((columns || []) as BaseTableCol[]);
 
       // 解析 fixedRows
@@ -320,7 +293,6 @@ export default class Table extends SuperComponent {
             cellStyle,
             skipped: skipped || false,
             contentClass: contentClasses.filter(Boolean).join(' '),
-            textClass: `${classPrefix}__td-text-${rowIndex}-${colIndex}`,
             ellipsis: !!cellEllipsis.enabled,
           };
         });
@@ -471,35 +443,8 @@ export default class Table extends SuperComponent {
       }
     },
 
-    /**
-     * 计算气泡弹出方位。
-     * 气泡以配置方位（`placement`）为准，但当单元格靠近屏幕左/右边缘时，
-     * 居中气泡会被贴边截断、箭头随之偏离单元格，此时改为贴边对齐以保证箭头落在单元格上。
-     */
-    getPopoverPlacement(this: any, contentRect: Record<string, number>, config: Record<string, any>) {
-      const { windowWidth } = getWindowInfo();
-      const base = String(config.placement || 'top').split('-')[0];
-      const maxWidth = maxWidthToPx(config.maxWidth, windowWidth);
-      const cellCenter = contentRect.left + contentRect.width / 2;
-
-      if (cellCenter < maxWidth / 2) return `${base}-left`;
-      if (windowWidth - cellCenter < maxWidth / 2) return `${base}-right`;
-      return base;
-    },
-
-    getPopoverConfig(this: any, props: Record<string, any>) {
-      return {
-        placement: props.placement || 'top',
-        theme: props.theme || 'dark',
-        showArrow: props.showArrow !== false,
-        closeOnClickOutside: props.closeOnClickOutside !== false,
-        // 限制气泡宽度，避免超长内容撑满屏幕导致定位与箭头偏移
-        maxWidth: normalizeMaxWidth(props.maxWidth),
-      };
-    },
-
-    /** 展示超出省略内容的预览气泡，气泡通过定位锚点跟随目标（单元格 / 表头） */
-    showEllipsisPopover(
+    /** 展示超出省略内容的预览弹窗（仅当内容实际溢出时才弹出） */
+    showEllipsisPopup(
       this: any,
       type: 'td' | 'th',
       rowIndex: number,
@@ -511,43 +456,31 @@ export default class Table extends SuperComponent {
 
       const { classPrefix } = this.data;
       const suffix = type === 'th' ? `${colIndex}` : `${rowIndex}-${colIndex}`;
-      const nextConfig = this.getPopoverConfig(props);
 
       const query = this.createSelectorQuery();
       query.select(`.${classPrefix}__${type}-content-${suffix}`).boundingClientRect();
       query.select(`.${classPrefix}__${type}-text-${suffix}`).boundingClientRect();
-      query.select(`.${classPrefix}`).boundingClientRect();
       query.exec((res: any) => {
-        if (!res) return;
-        const [contentRect, textRect, tableRect] = res;
-        if (!contentRect || !textRect || !tableRect) return;
+        const [contentRect, textRect] = res || [];
+        // 内容实际宽度大于可视宽度才视为溢出（对齐桌面端 scrollWidth > clientWidth）
+        if (!isTextEllipsis(contentRect, textRect)) return;
 
-        // 文本实际尺寸大于可视尺寸，说明内容被隐藏
-        const isOverflow = textRect.width - contentRect.width > 1 || textRect.height - contentRect.height > 1;
-        if (!isOverflow) return;
-
-        const top = contentRect.top - tableRect.top;
-        const left = contentRect.left - tableRect.left;
-
-        const payload = {
-          popoverAnchorStyle: `top: ${top}px; left: ${left}px; width: ${contentRect.width}px; height: ${contentRect.height}px;`,
-          popoverContent: content,
-          popoverConfig: nextConfig,
-          popoverPlacement: this.getPopoverPlacement(contentRect, nextConfig),
-        };
-
-        // 先卸载再挂载，确保每次弹出都重新计算坐标（复用组件会沿用上一次的 top/left）
-        if (this.data.popoverMounted) {
-          this.setData({ popoverMounted: false, popoverVisible: false }, () =>
-            this.setData({ ...payload, popoverMounted: true, popoverVisible: true }),
-          );
-        } else {
-          this.setData({ ...payload, popoverMounted: true, popoverVisible: true });
-        }
+        this.setData({
+          popupProps: {
+            placement: props.placement || 'center',
+            showOverlay: props.showOverlay !== false,
+            closeOnOverlayClick: props.closeOnOverlayClick !== false,
+            closeBtn: props.closeBtn !== false,
+            usingCustomNavbar: !!props.usingCustomNavbar,
+            title: props.title || '',
+            content,
+          },
+          popupVisible: true,
+        });
       });
     },
 
-    /** 点击表头：表头内容超出省略时，弹出气泡预览完整标题 */
+    /** 点击表头：表头内容超出省略时，弹出浮层预览完整标题 */
     onTitleClick(this: any, e: any) {
       const { colIndex } = e.currentTarget.dataset;
       const { columns } = this.properties;
@@ -560,18 +493,13 @@ export default class Table extends SuperComponent {
       });
       if (!resolved.enabled) return;
 
-      this.showEllipsisPopover('th', 0, colIndex, resolved.content || col.title || '', resolved.props);
+      this.showEllipsisPopup('th', 0, colIndex, resolved.content || col.title || '', resolved.props);
     },
 
-    onPopoverVisibleChange(this: any, e: any) {
+    onPopupVisibleChange(this: any, e: any) {
       const { visible } = e.detail || {};
-      if (!!visible !== this.data.popoverVisible) {
-        this.setData({ popoverVisible: !!visible });
-      }
-      // 关闭时延迟卸载，保留 popover 的淡出过渡
-      clearTimeout(this.popoverUnmountTimer);
-      if (!visible && this.data.popoverMounted) {
-        this.popoverUnmountTimer = setTimeout(() => this.setData({ popoverMounted: false }), 350);
+      if (!!visible !== this.data.popupVisible) {
+        this.setData({ popupVisible: !!visible });
       }
     },
 
@@ -583,7 +511,7 @@ export default class Table extends SuperComponent {
       if (cell && col) {
         const resolved = resolveEllipsis(col.ellipsis, { row: data[rowIndex], col, rowIndex, colIndex });
         if (resolved.enabled) {
-          this.showEllipsisPopover('td', rowIndex, colIndex, resolved.content || cell.content, resolved.props);
+          this.showEllipsisPopup('td', rowIndex, colIndex, resolved.content || cell.content, resolved.props);
         }
       }
       if (data && data[rowIndex] && columns && columns[colIndex]) {
@@ -606,11 +534,6 @@ export default class Table extends SuperComponent {
     onScroll(this: any, e: any) {
       const { classPrefix } = this.data;
       this.triggerEvent('scroll', { e });
-
-      // 滚动后单元格位置变化，预览气泡不再匹配，直接关闭
-      if (this.data.popoverVisible) {
-        this.setData({ popoverVisible: false });
-      }
 
       const target = e.detail || {};
 
