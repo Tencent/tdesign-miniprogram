@@ -9,7 +9,12 @@
     data-col-index="{{cell.colIndex}}"
     bind:tap="onCellClick"
   >
-    <view class="{{classPrefix}}__td-content">{{cell.content}}</view>
+    <view class="{{cell.contentClass}}">
+      <block wx:if="{{cell.ellipsis}}">
+        <text class="{{classPrefix}}__td-text-{{rowIndex}}-{{cell.colIndex}}">{{cell.content}}</text>
+      </block>
+      <block wx:else>{{cell.content}}</block>
+    </view>
   </view>
 </template>
 
@@ -32,8 +37,15 @@
             wx:key="colKey"
             class="{{classPrefix}}__th {{thClassNames[colIndex]}}"
             style="{{colStyles[colIndex]}}"
+            data-col-index="{{colIndex}}"
+            bind:tap="onTitleClick"
           >
-            <view class="{{classPrefix}}__th-content"> {{col.title}} </view>
+            <view class="{{titleClassNames[colIndex]}}">
+              <block wx:if="{{titleEllipsisFlags[colIndex]}}">
+                <text class="{{classPrefix}}__th-text-{{colIndex}}">{{col.title}}</text>
+              </block>
+              <block wx:else>{{col.title}}</block>
+            </view>
           </view>
         </view>
       </view>
@@ -93,4 +105,25 @@
     {{footerSummary}}
   </view>
   <slot name="footer-summary" />
+
+  <!-- 超出省略内容的预览弹窗 -->
+  <t-popup
+    wx:if="{{hasEllipsis}}"
+    t-class="{{classPrefix}}__popup--{{popupProps.placement}}"
+    visible="{{popupVisible}}"
+    placement="{{popupProps.placement}}"
+    show-overlay="{{popupProps.showOverlay}}"
+    close-on-overlay-click="{{popupProps.closeOnOverlayClick}}"
+    close-btn="{{popupProps.closeBtn}}"
+    t-class-close="{{popupProps.closeBtn ? classPrefix + '__popup-close' : ''}}"
+    using-custom-navbar="{{popupProps.usingCustomNavbar}}"
+    bind:visible-change="onPopupVisibleChange"
+  >
+    <view class="{{classPrefix}}__popup-inner">
+      <view class="{{classPrefix}}__popup-title">{{popupProps.title}}</view>
+      <view class="{{classPrefix}}__popup-content {{classPrefix}}__popup-content--{{popupProps.placement}}"
+        >{{popupProps.content}}</view
+      >
+    </view>
+  </t-popup>
 </view>

@@ -281,6 +281,99 @@ exports[`Table Table bordered demo works fine 1`] = `
 </bordered>
 `;
 
+exports[`Table Table ellipsis demo works fine 1`] = `
+<ellipsis>
+  <t-table
+    cellEmptyContent="-"
+    columns="{{
+      Array [
+        Object {
+          "colKey": "applicant",
+          "ellipsis": Object {
+            "placement": "center",
+            "title": "申请人",
+          },
+          "title": "申请人",
+        },
+        Object {
+          "colKey": "status",
+          "ellipsis": Object {
+            "placement": "bottom",
+            "title": "审批状态",
+          },
+          "ellipsisTitle": true,
+          "title": "审批状态与处理结果",
+        },
+        Object {
+          "colKey": "channel",
+          "ellipsis": Object {
+            "placement": "bottom",
+            "title": "签署方式",
+          },
+          "ellipsisTitle": false,
+          "title": "签署方式",
+        },
+        Object {
+          "colKey": "email",
+          "ellipsis": Object {
+            "placement": "bottom",
+            "title": "邮箱地址",
+          },
+          "ellipsisTitle": Object {
+            "placement": "bottom",
+            "title": "邮箱地址",
+          },
+          "title": "邮箱地址",
+        },
+      ]
+    }}"
+    data="{{
+      Array [
+        Object {
+          "applicant": "贾明（kyrieJia）",
+          "channel": "电子签署（在线完成）",
+          "email": "jiaming.kyrie@example.com",
+          "id": 1,
+          "status": "审批通过，流程已全部走完",
+        },
+        Object {
+          "applicant": "张三（threeZhang）",
+          "channel": "纸质签署（线下邮寄）",
+          "email": "zhangsan.three@example.com",
+          "id": 2,
+          "status": "审批失败，请联系管理员处理",
+        },
+        Object {
+          "applicant": "王芳（fangWang）",
+          "channel": "电子签署（在线完成）",
+          "email": "wangfang.fw@example.com",
+          "id": 3,
+          "status": "审批已过期，需重新发起",
+        },
+        Object {
+          "applicant": "李雷（leiLi）",
+          "channel": "纸质签署（线下邮寄）",
+          "email": "lilei.ll@example.com",
+          "id": 4,
+          "status": "审批中，等待上级确认",
+        },
+        Object {
+          "applicant": "韩梅梅（meiHan）",
+          "channel": "电子签署（在线完成）",
+          "email": "hanmeimei.mm@example.com",
+          "id": 5,
+          "status": "审批通过，流程已全部走完",
+        },
+      ]
+    }}"
+    rowKey="id"
+    showHeader="{{true}}"
+    bind:cell-click="handleCellClick"
+    bind:row-click="handleRowClick"
+  />
+</ellipsis>
+`;
+
 exports[`Table Table rowspan-colspan demo works fine 1`] = `
 <rowspan-colspan>
   <t-table

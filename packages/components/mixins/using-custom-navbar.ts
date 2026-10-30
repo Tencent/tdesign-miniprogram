@@ -15,10 +15,12 @@ const useCustomNavbarBehavior = Behavior({
     distanceTop: 0,
   },
 
-  lifetimes: {
-    attached() {
-      if (this.properties.usingCustomNavbar) {
+  observers: {
+    usingCustomNavbar(value) {
+      if (value) {
         this.calculateCustomNavbarDistanceTop();
+      } else {
+        this.setData({ distanceTop: 0 });
       }
     },
   },

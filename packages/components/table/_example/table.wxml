@@ -17,6 +17,9 @@
   <t-demo desc="带边框表格" padding>
     <bordered />
   </t-demo>
+  <t-demo desc="单元格超出省略的表格 " padding>
+    <ellipsis />
+  </t-demo>
   <t-demo desc="带合并单元格的表格" padding>
     <rowspan-colspan />
   </t-demo>

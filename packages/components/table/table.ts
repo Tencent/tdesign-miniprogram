@@ -10,8 +10,11 @@ import {
   getCellKey,
   getSkipSpansMap,
   handleCellSpan,
+  hasEllipsisColumn,
   isFirstColumnInSpan,
   isLastRowInSpan,
+  isTextEllipsis,
+  resolveEllipsis,
 } from './utils';
 
 const { prefix } = config;
@@ -48,6 +51,12 @@ export default class Table extends SuperComponent {
     scrollableToLeft: false,
     scrollableToRight: false,
     contentClasses: '',
+    // 超出省略（ellipsis / ellipsisTitle）
+    hasEllipsis: false,
+    titleClassNames: [] as string[],
+    titleEllipsisFlags: [] as boolean[],
+    popupProps: { placement: 'center' } as Record<string, any>,
+    popupVisible: false,
   };
 
   observers = {
@@ -84,6 +93,9 @@ export default class Table extends SuperComponent {
         fixedRows,
       } = this.properties;
       const { classPrefix } = this.data;
+
+      // 开启后才渲染预览弹窗，并为单元格/表头附加超出省略测量用的类名
+      const hasEllipsis = hasEllipsisColumn((columns || []) as BaseTableCol[]);
 
       // 解析 fixedRows
       const fixedTopRows = (fixedRows && (fixedRows as number[])[0]) || 0;
@@ -207,6 +219,19 @@ export default class Table extends SuperComponent {
         return classes.filter(Boolean).join(' ');
       });
 
+      // 表头内容类名与省略标记：ellipsisTitle 优先级高于 ellipsis
+      const titleEllipsisList = (columns || []).map((col: BaseTableCol, colIndex: number) =>
+        resolveEllipsis(col.ellipsisTitle !== undefined ? col.ellipsisTitle : col.ellipsis, { col, colIndex }),
+      );
+      const titleClassNames = titleEllipsisList.map((item: any, colIndex: number) => {
+        const classes: string[] = [`${classPrefix}__th-content`];
+        if (item.enabled) {
+          classes.push(`${classPrefix}__th-content--ellipsis`, `${classPrefix}__th-content-${colIndex}`);
+        }
+        return classes.filter(Boolean).join(' ');
+      });
+      const titleEllipsisFlags = titleEllipsisList.map((item: any) => !!item.enabled);
+
       // 计算合并单元格
       const hasSpan = !!rowspanAndColspan && !!data?.length && !!columns?.length;
       const skipSpansMap = getSkipSpansMap(data, columns, rowKey, rowspanAndColspan as Function);
@@ -245,10 +270,20 @@ export default class Table extends SuperComponent {
             }
           }
 
+          const cellEllipsis = resolveEllipsis(col.ellipsis, { row, col, rowIndex, colIndex });
+
           // 合并场景用 grid 定位实现跨行跨列，非合并场景沿用列宽样式
           const cellStyle = hasSpan
             ? `grid-column: ${colIndex + 1} / span ${colspan || 1}; grid-row: ${rowIndex + 1} / span ${rowspan || 1}`
             : colStyles[colIndex];
+
+          const contentClasses: string[] = [`${classPrefix}__td-content`];
+          if (cellEllipsis.enabled) {
+            contentClasses.push(
+              `${classPrefix}__td-content--ellipsis`,
+              `${classPrefix}__td-content-${rowIndex}-${colIndex}`,
+            );
+          }
 
           return {
             colKey: col.colKey || String(colIndex),
@@ -257,6 +292,8 @@ export default class Table extends SuperComponent {
             tdClass: tdClasses.filter(Boolean).join(' '),
             cellStyle,
             skipped: skipped || false,
+            contentClass: contentClasses.filter(Boolean).join(' '),
+            ellipsis: !!cellEllipsis.enabled,
           };
         });
 
@@ -338,6 +375,9 @@ export default class Table extends SuperComponent {
           hasSpan,
           tbodyStyles,
           contentClasses,
+          hasEllipsis,
+          titleClassNames,
+          titleEllipsisFlags,
         },
         () => {
           // 动态测量行高，修正固定行的 top/bottom 值
@@ -403,9 +443,77 @@ export default class Table extends SuperComponent {
       }
     },
 
+    /** 展示超出省略内容的预览弹窗（仅当内容实际溢出时才弹出） */
+    showEllipsisPopup(
+      this: any,
+      type: 'td' | 'th',
+      rowIndex: number,
+      colIndex: number,
+      content: string,
+      props: Record<string, any>,
+    ) {
+      if (!content) return;
+
+      const { classPrefix } = this.data;
+      const suffix = type === 'th' ? `${colIndex}` : `${rowIndex}-${colIndex}`;
+
+      const query = this.createSelectorQuery();
+      query.select(`.${classPrefix}__${type}-content-${suffix}`).boundingClientRect();
+      query.select(`.${classPrefix}__${type}-text-${suffix}`).boundingClientRect();
+      query.exec((res: any) => {
+        const [contentRect, textRect] = res || [];
+        // 内容实际宽度大于可视宽度才视为溢出（对齐桌面端 scrollWidth > clientWidth）
+        if (!isTextEllipsis(contentRect, textRect)) return;
+
+        this.setData({
+          popupProps: {
+            placement: props.placement || 'center',
+            showOverlay: props.showOverlay !== false,
+            closeOnOverlayClick: props.closeOnOverlayClick !== false,
+            closeBtn: props.closeBtn !== false,
+            usingCustomNavbar: !!props.usingCustomNavbar,
+            title: props.title || '',
+            content,
+          },
+          popupVisible: true,
+        });
+      });
+    },
+
+    /** 点击表头：表头内容超出省略时，弹出浮层预览完整标题 */
+    onTitleClick(this: any, e: any) {
+      const { colIndex } = e.currentTarget.dataset;
+      const { columns } = this.properties;
+      const col = columns && columns[colIndex];
+      if (!col) return;
+
+      const resolved = resolveEllipsis(col.ellipsisTitle !== undefined ? col.ellipsisTitle : col.ellipsis, {
+        col,
+        colIndex,
+      });
+      if (!resolved.enabled) return;
+
+      this.showEllipsisPopup('th', 0, colIndex, resolved.content || col.title || '', resolved.props);
+    },
+
+    onPopupVisibleChange(this: any, e: any) {
+      const { visible } = e.detail || {};
+      if (!!visible !== this.data.popupVisible) {
+        this.setData({ popupVisible: !!visible });
+      }
+    },
+
     onCellClick(this: any, e: any) {
       const { rowIndex, colIndex } = e.currentTarget.dataset;
       const { data, columns } = this.properties;
+      const cell = this.data.renderData?.[rowIndex]?.cells?.[colIndex];
+      const col = columns && columns[colIndex];
+      if (cell && col) {
+        const resolved = resolveEllipsis(col.ellipsis, { row: data[rowIndex], col, rowIndex, colIndex });
+        if (resolved.enabled) {
+          this.showEllipsisPopup('td', rowIndex, colIndex, resolved.content || cell.content, resolved.props);
+        }
+      }
       if (data && data[rowIndex] && columns && columns[colIndex]) {
         this.triggerEvent('cell-click', {
           row: data[rowIndex],
