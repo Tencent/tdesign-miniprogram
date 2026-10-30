@@ -181,6 +181,66 @@ export interface BaseTableCol<T extends TableRowData = TableRowData> {
   width?: string | number;
 }
 
+export interface TdPrimaryTableProps {
+  /**
+   * 拖拽排序方式，值为 `row` 表示行拖拽排序，这种方式无法进行文本复制，慎用。值为`row-handler` 表示通过拖拽手柄进行行拖拽排序。值为 `col` 表示列顺序拖拽。值为 `row-handler-col` 表示同时支持行拖拽和列拖拽。⚠️`drag-col` 已废弃，请勿使用
+   */
+  dragSort?: {
+    type: StringConstructor;
+    value?: 'row' | 'row-handler' | 'col' | 'row-handler-col' | 'drag-col';
+  };
+  /**
+   * 隐藏排序文本提示，支持全局配置 `GlobalConfigProvider`，默认全局配置值为 `false`
+   */
+  hideSortTips?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 是否支持多列排序
+   * @default false
+   */
+  multipleSort?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 当前排序列是否显示背景色
+   * @default false
+   */
+  showSortColumnBgColor?: {
+    type: BooleanConstructor;
+    value?: boolean;
+  };
+  /**
+   * 排序控制。sortBy 排序字段；descending 是否进行降序排列。值为数组时，表示正进行多字段排序
+   */
+  sort?: {
+    type: null;
+    value?: TableSort;
+  };
+  /**
+   * 排序控制。sortBy 排序字段；descending 是否进行降序排列。值为数组时，表示正进行多字段排序，非受控属性
+   */
+  defaultSort?: {
+    type: null;
+    value?: TableSort;
+  };
+}
+
+export interface PrimaryTableCol {
+  /**
+   * 当前列支持排序的方式，desc 表示当前列只能进行降序排列；asc 表示当前列只能进行升序排列；all 表示当前列既可升序排列，又可以降序排列
+   * @default all
+   */
+  sortType?: SortType;
+  /**
+   * 该列是否支持排序。值为 true 表示该列支持排序；值类型为函数，表示对本地数据 `data` 进行排序，返回值参考 [MDN Array.sort](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)。泛型 T 指表格数据类型
+   * @default false
+   */
+  sorter?: boolean;
+}
+
 export type TableRowspanAndColspanFunc<T extends TableRowData = TableRowData> = (
   params: BaseTableCellParams<T>,
 ) => RowspanColspan;
@@ -210,3 +270,12 @@ export interface CellData<T extends TableRowData = TableRowData> extends BaseTab
 }
 
 export type DataType = TableRowData;
+
+export type TableSort = SortInfo | Array<SortInfo>;
+
+export interface SortInfo {
+  sortBy: string;
+  descending: boolean;
+}
+
+export type SortType = 'desc' | 'asc' | 'all';

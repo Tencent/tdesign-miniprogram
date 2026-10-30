@@ -11,6 +11,8 @@
       loading ? classPrefix + '--loading' : '',
       rowspanAndColspan ? classPrefix + '--rowspan-colspan' : '',
       hasFixedColumn ? classPrefix + '--column-fixed' : '',
+      isRowDraggable ? classPrefix + '--row-draggable' : '',
+      isColDraggable ? classPrefix + '--col-draggable' : '',
     ]"
     :style="'' + tools._style([customStyle])"
   >
@@ -31,11 +33,57 @@
             <view
               v-for="(col, colIndex) in columns"
               :key="col.colKey || colIndex"
-              :class="[classPrefix + '__th', getThClassName(col, colIndex)]"
-              :style="'' + getColStyle(col, colIndex)"
+              :class="[
+                classPrefix + '__th',
+                getThClassName(col, colIndex),
+                dragColEnabled ? classPrefix + '__th--drag-sort' : '',
+                draggingColIndex === colIndex ? classPrefix + '__th--dragging' : '',
+                col.sorter ? classPrefix + '__th--sortable' : '',
+              ]"
+              :style="getColStyle(col, colIndex) + (draggingColIndex === colIndex ? ';' + colDragTransform : '')"
+              @touchstart="onColTouchStart($event, colIndex)"
+              @touchmove.stop.prevent="onColTouchMove($event)"
+              @touchend.stop="onColTouchEnd()"
+              @touchcancel.stop="onColTouchEnd()"
             >
               <view :class="classPrefix + '__th-content'">
-                {{ col.title }}
+                <text>{{ col.title }}</text>
+                <view
+                  v-if="col.sorter"
+                  :class="classPrefix + '__sort-trigger'"
+                  @click.stop
+                  @touchstart.stop
+                  @touchmove.stop
+                  @touchend.stop
+                >
+                  <view :class="classPrefix + '__sort-icons'">
+                    <view
+                      v-if="!col.sortType || col.sortType === 'all' || col.sortType === 'asc'"
+                      :class="[
+                        classPrefix + '__sort-icon',
+                        classPrefix + '__sort-icon--asc',
+                        sortMap[col.colKey] && !sortMap[col.colKey].descending
+                          ? classPrefix + '__sort-icon--active'
+                          : classPrefix + '__sort-icon--default',
+                      ]"
+                      @tap.stop="onSortIconClick(colIndex, false)"
+                    >
+                      <t-icon name="chevron-down" size="16px" />
+                    </view>
+                    <view
+                      v-if="!col.sortType || col.sortType === 'all' || col.sortType === 'desc'"
+                      :class="[
+                        classPrefix + '__sort-icon',
+                        sortMap[col.colKey] && sortMap[col.colKey].descending
+                          ? classPrefix + '__sort-icon--active'
+                          : classPrefix + '__sort-icon--default',
+                      ]"
+                      @tap.stop="onSortIconClick(colIndex, true)"
+                    >
+                      <t-icon name="chevron-down" size="16px" />
+                    </view>
+                  </view>
+                </view>
               </view>
             </view>
           </view>
@@ -58,9 +106,18 @@
             <view
               v-for="rowItem in renderData"
               :key="rowItem.rowId"
-              :class="[classPrefix + '__tr', rowItem.rowClass]"
-              :style="rowItem.rowStyle"
+              :class="[
+                classPrefix + '__tr',
+                classPrefix + '__tr-' + rowItem.rowIndex,
+                rowItem.rowClass,
+                rowItem.draggingClass,
+              ]"
+              :style="rowItem.rowStyle + (rowItem.dragTransform ? ';' + rowItem.dragTransform : '')"
               @click="onRowClick(rowItem.rowIndex)"
+              @touchstart="onRowTouchStart($event, rowItem.rowIndex)"
+              @touchmove.stop.prevent="onRowTouchMove($event)"
+              @touchend.stop="onRowTouchEnd()"
+              @touchcancel.stop="onRowTouchEnd()"
             >
               <!-- #ifdef VUE2 -->
               <!-- eslint-disable-next-line vue/no-unused-vars -->
@@ -71,8 +128,16 @@
                   <!-- #endif -->
 
                   <view
-                    :class="[classPrefix + '__td', cell.className]"
-                    :style="'' + cell.cellStyle"
+                    :class="[
+                      classPrefix + '__td',
+                      cell.className,
+                      draggingColIndex === tdIndex ? classPrefix + '__td--dragging' : '',
+                    ]"
+                    :style="
+                      '' +
+                      cell.cellStyle +
+                      (draggingColIndex === tdIndex && colDragTransform ? ';' + colDragTransform : '')
+                    "
                     @click.stop="onCellClick(rowItem.rowIndex, tdIndex)"
                   >
                     <view :class="classPrefix + '__td-content'">
@@ -170,8 +235,10 @@ import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 import tools from '../common/utils.wxs';
 import TLoading from '../loading/loading.vue';
+import TIcon from '../icon/icon.vue';
 
-import props from './base-table-props';
+import baseProps from './base-table-props';
+import primaryProps from './primary-table-props';
 import { get as getVal, formatCSSUnit, getCellKey, getSkipSpansMap, handleCellSpan } from './utils';
 
 const name = `${prefix}-table`;
@@ -179,8 +246,9 @@ const name = `${prefix}-table`;
 export default {
   components: {
     TLoading,
+    TIcon,
   },
-  emits: ['row-click', 'cell-click', 'scroll', 'scroll-to-bottom'],
+  emits: ['row-click', 'cell-click', 'scroll', 'scroll-to-bottom', 'sort-change', 'data-change', 'change', 'drag-sort'],
   ...uniComponent({
     name,
     options: {
@@ -188,7 +256,8 @@ export default {
     },
     externalClasses: [`${prefix}-class`],
     props: {
-      ...props,
+      ...baseProps,
+      ...primaryProps,
     },
     data() {
       return {
@@ -208,6 +277,14 @@ export default {
         firstFixedRightIndex: -1,
         fixedTopRows: 0,
         fixedBottomRows: 0,
+        // 拖拽相关状态
+        isRowDraggable: false,
+        isColDraggable: false,
+        dragColEnabled: false,
+        draggingColIndex: -1,
+        colDragTransform: '',
+        // 排序相关状态
+        sortMap: {},
       };
     },
     computed: {
@@ -266,6 +343,21 @@ export default {
         },
         deep: true,
       },
+      dragSort: {
+        handler() {
+          this.updateDragState();
+        },
+        immediate: true,
+      },
+      sort() {
+        this.updateSortMap();
+      },
+      defaultSort() {
+        this.updateSortMap();
+      },
+      showSortColumnBgColor() {
+        this.updateRenderData();
+      },
     },
     methods: {
       getColStyle(col, colIndex) {
@@ -315,11 +407,305 @@ export default {
         if (col.className) classes.push(...this.getCustomClassName(col.className));
         if (colIndex === this.lastFixedLeftIndex) classes.push(`${name}__cell--fixed-left-last`);
         if (colIndex === this.firstFixedRightIndex) classes.push(`${name}__cell--fixed-right-first`);
+        // 排序列背景色
+        if (this.showSortColumnBgColor && col.sorter && this.sortMap[col.colKey]) {
+          classes.push(`${name}__sort-column`);
+        }
         return classes.join(' ');
+      },
+
+      // ========== 排序相关 ==========
+      normalizeSort(sort) {
+        if (!sort) return [];
+        return Array.isArray(sort) ? sort : [sort];
+      },
+
+      buildSortMap(sortArray) {
+        return sortArray.reduce((prev, cur, index) => {
+          prev[cur.sortBy] = { index, ...cur };
+          return prev;
+        }, {});
+      },
+
+      updateSortMap() {
+        const { sort, defaultSort } = this;
+        let sortArray;
+        if (sort) {
+          sortArray = this.normalizeSort(sort);
+        } else if (this._innerSortChanged) {
+          sortArray = this.normalizeSort(this._innerSort);
+        } else {
+          sortArray = this.normalizeSort(defaultSort);
+        }
+        this.sortMap = this.buildSortMap(sortArray);
+      },
+
+      onSortIconClick(colIndex, descending) {
+        const { columns, multipleSort, sort, defaultSort } = this;
+        const col = (columns || [])[colIndex];
+        if (!col || !col.sorter) return;
+
+        const currentSort = sort || (this._innerSortChanged ? this._innerSort : defaultSort);
+        const sortArray = this.normalizeSort(currentSort);
+        const { colKey } = col;
+
+        let nextSort;
+        if (multipleSort) {
+          const result = [...sortArray];
+          const existIndex = result.findIndex((s) => s.sortBy === colKey);
+          if (existIndex !== -1) {
+            if (result[existIndex].descending === descending) {
+              result.splice(existIndex, 1);
+            } else {
+              result[existIndex] = { sortBy: colKey, descending };
+            }
+          } else {
+            result.push({ sortBy: colKey, descending });
+          }
+          nextSort = result;
+        } else {
+          const currentSingle = sortArray[0];
+          if (currentSingle && currentSingle.sortBy === colKey && currentSingle.descending === descending) {
+            nextSort = undefined;
+          } else {
+            nextSort = { sortBy: colKey, descending };
+          }
+        }
+
+        const nextSortArray = this.normalizeSort(nextSort);
+        this.$emit('sort-change', { sort: nextSort });
+        if (nextSort) {
+          this.$emit('data-change', { trigger: 'sort' });
+        }
+        this.$emit('change', { sorter: nextSort }, { trigger: 'sorter' });
+
+        // 非受控模式下更新内部排序状态
+        if (!sort) {
+          this._innerSortChanged = true;
+          this._innerSort = nextSortArray.length === 0 ? undefined : nextSortArray;
+          this.updateSortMap();
+        }
+      },
+
+      // ========== 拖拽模式 ==========
+      updateDragState() {
+        const { dragSort } = this;
+        this.isRowDraggable = ['row', 'row-handler', 'row-handler-col'].includes(dragSort);
+        this.isColDraggable = ['col', 'row-handler-col'].includes(dragSort);
+        this.dragColEnabled = this.isColDraggable;
+        if ((this.isRowDraggable || this.isColDraggable) && !this._dragMeasured) {
+          this.$nextTick(() => {
+            this.measureDragDimensions();
+          });
+        }
+      },
+
+      measureDragDimensions() {
+        const query = uni.createSelectorQuery().in(this);
+        if (this.isRowDraggable) {
+          query.select(`.${name}__tr`).boundingClientRect();
+        }
+        if (this.isColDraggable) {
+          query.selectAll(`.${name}__th`).boundingClientRect();
+        }
+        query.exec((res) => {
+          if (!res) return;
+          let idx = 0;
+          if (this.isRowDraggable) {
+            const rowRect = res[idx];
+            if (rowRect && rowRect.height) {
+              this._rowHeight = rowRect.height;
+            }
+            idx += 1;
+          }
+          if (this.isColDraggable) {
+            const colRects = res[idx];
+            if (colRects && colRects.length > 0) {
+              this._colWidths = colRects.map((r) => r.width);
+            }
+          }
+          this._dragMeasured = true;
+        });
+      },
+
+      // ========== 行拖拽排序 ==========
+      onRowTouchStart(e, rowIndex) {
+        if (!this.isRowDraggable || this.hasSpan) return;
+        const touch = e.touches[0];
+        this._dragRowTargetIndex = rowIndex;
+        this._dragRowState = {
+          startY: touch.clientY,
+          startX: touch.clientX,
+          rowIndex,
+          activated: false,
+          lastMoveTime: 0,
+          lastTargetIndex: rowIndex,
+        };
+      },
+
+      onRowTouchMove(e) {
+        if (!this._dragRowState) return;
+        const touch = e.touches[0];
+        const { startX, startY, rowIndex } = this._dragRowState;
+        const deltaX = touch.clientX - startX;
+        const deltaY = touch.clientY - startY;
+
+        if (!this._dragRowState.activated) {
+          if (Math.abs(deltaY) > 10 && Math.abs(deltaY) > Math.abs(deltaX)) {
+            this._dragRowState.activated = true;
+            this.setRowDragStyle(
+              rowIndex,
+              `${name}__tr--dragging`,
+              `transform: translateY(${deltaY}px); z-index: 100;`,
+            );
+          } else {
+            return;
+          }
+        }
+
+        const now = Date.now();
+        if (now - this._dragRowState.lastMoveTime < 16) return;
+        this._dragRowState.lastMoveTime = now;
+
+        const rowHeight = this._rowHeight || 44;
+        const targetIndex = Math.max(
+          0,
+          Math.min(this.renderData.length - 1, rowIndex + Math.round(deltaY / rowHeight)),
+        );
+
+        this.setRowDragStyle(rowIndex, `${name}__tr--dragging`, `transform: translateY(${deltaY}px); z-index: 100;`);
+        this._dragRowState.lastTargetIndex = targetIndex;
+        this._dragRowTargetIndex = targetIndex;
+      },
+
+      onRowTouchEnd() {
+        if (!this._dragRowState) return;
+        const { activated, rowIndex } = this._dragRowState;
+        this._dragRowState = null;
+
+        if (!activated) {
+          this.setRowDragStyle(rowIndex, '', '');
+          return;
+        }
+
+        const targetIndex = this._dragRowTargetIndex ?? rowIndex;
+        this.setRowDragStyle(rowIndex, '', '');
+
+        if (targetIndex === rowIndex) return;
+
+        const { data } = this;
+        const newData = [...(data || [])];
+        const [movedItem] = newData.splice(rowIndex, 1);
+        newData.splice(targetIndex, 0, movedItem);
+
+        this.$emit('drag-sort', {
+          currentIndex: rowIndex,
+          current: (data || [])[rowIndex],
+          targetIndex,
+          target: (data || [])[targetIndex],
+          data: data || [],
+          newData,
+          sort: 'row',
+        });
+      },
+
+      setRowDragStyle(rowIndex, draggingClass, dragTransform) {
+        const list = [...this.renderData];
+        if (list[rowIndex]) {
+          list[rowIndex] = { ...list[rowIndex], draggingClass, dragTransform };
+          this.renderData = list;
+        }
+      },
+
+      // ========== 列拖拽排序 ==========
+      onColTouchStart(e, colIndex) {
+        if (!this.dragColEnabled) return;
+        const touch = e.touches[0];
+        this._dragColTargetIndex = colIndex;
+        this._dragColState = {
+          startX: touch.clientX,
+          startY: touch.clientY,
+          colIndex,
+          activated: false,
+          lastMoveTime: 0,
+          lastTargetIndex: colIndex,
+        };
+      },
+
+      onColTouchMove(e) {
+        if (!this._dragColState) return;
+        const touch = e.touches[0];
+        const { startX, startY, colIndex } = this._dragColState;
+        const deltaX = touch.clientX - startX;
+        const deltaY = touch.clientY - startY;
+
+        if (!this._dragColState.activated) {
+          if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY)) {
+            this._dragColState.activated = true;
+            this.draggingColIndex = colIndex;
+            this.colDragTransform = `transform: translateX(${deltaX}px); z-index: 100;`;
+          } else {
+            return;
+          }
+        }
+
+        const now = Date.now();
+        if (now - this._dragColState.lastMoveTime < 16) return;
+        this._dragColState.lastMoveTime = now;
+
+        const colWidths = this._colWidths || [];
+        const avgColWidth = colWidths.length > 0 ? colWidths.reduce((a, b) => a + b, 0) / colWidths.length : 80;
+        const targetIndex = Math.max(
+          0,
+          Math.min((this.columns || []).length - 1, colIndex + Math.round(deltaX / avgColWidth)),
+        );
+
+        this.draggingColIndex = colIndex;
+        this.colDragTransform = `transform: translateX(${deltaX}px); z-index: 100;`;
+        this._dragColState.lastTargetIndex = targetIndex;
+        this._dragColTargetIndex = targetIndex;
+      },
+
+      onColTouchEnd() {
+        if (!this._dragColState) return;
+        const { activated, colIndex } = this._dragColState;
+        this._dragColState = null;
+
+        if (!activated) {
+          this.draggingColIndex = -1;
+          this.colDragTransform = '';
+          return;
+        }
+
+        const targetIndex = this._dragColTargetIndex ?? colIndex;
+        this.draggingColIndex = -1;
+        this.colDragTransform = '';
+
+        if (targetIndex === colIndex) return;
+
+        const { columns } = this;
+        const newColumns = [...(columns || [])];
+        const [movedCol] = newColumns.splice(colIndex, 1);
+        newColumns.splice(targetIndex, 0, movedCol);
+
+        this.$emit('drag-sort', {
+          currentIndex: colIndex,
+          current: (columns || [])[colIndex],
+          targetIndex,
+          target: (columns || [])[targetIndex],
+          data: columns || [],
+          newData: newColumns,
+          sort: 'col',
+        });
       },
 
       updateRenderData() {
         const { columns, data, cellEmptyContent, rowKey, rowspanAndColspan, fixedRows } = this;
+
+        // 拖拽模式判断
+        this.updateDragState();
+        // 排序状态计算
+        this.updateSortMap();
 
         // 解析 fixedRows
         const fixedTopRows = (fixedRows && fixedRows[0]) || 0;
@@ -404,6 +790,10 @@ export default {
             if (col.fixed === 'right') tdClasses.push(`${name}__cell--fixed-right`);
             if (colIndex === this.lastFixedLeftIndex) tdClasses.push(`${name}__cell--fixed-left-last`);
             if (colIndex === this.firstFixedRightIndex) tdClasses.push(`${name}__cell--fixed-right-first`);
+            // 排序列背景色
+            if (this.showSortColumnBgColor && col.sorter && this.sortMap[col.colKey]) {
+              tdClasses.push(`${name}__sort-column`);
+            }
 
             let cellContent = '';
             if (col.colKey === 'serial-number') {
@@ -466,6 +856,8 @@ export default {
             row,
             rowClass: rowClasses.join(' '),
             rowStyle,
+            draggingClass: '',
+            dragTransform: '',
           };
         });
 

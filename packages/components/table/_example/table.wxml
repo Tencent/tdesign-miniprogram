@@ -20,4 +20,10 @@
   <t-demo desc="带合并单元格的表格" padding>
     <rowspan-colspan />
   </t-demo>
+  <t-demo desc="拖拽排序表格" padding>
+    <drag-sort />
+  </t-demo>
+  <t-demo desc="点击列排序表格" padding>
+    <sort />
+  </t-demo>
 </view>
