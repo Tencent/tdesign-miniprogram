@@ -13,6 +13,7 @@
 @action-sheet-dot-size: var(--td-action-sheet-dot-size, 16rpx);
 @action-sheet-dot-color: var(--td-action-sheet-dot-color, @text-color-disabled);
 @action-sheet-dot-active-color: var(--td-action-sheet-dot-active-color, @brand-color);
+@action-sheet-max-height: var(--td-action-sheet-max-height, 54vh);
 
 .@{action-sheet} {
   &__content {
@@ -24,6 +25,25 @@
 
     &:focus {
       outline: 0;
+    }
+  }
+
+  &.@{action-sheet}--list {
+    .@{action-sheet}__content {
+      display: flex;
+      flex-direction: column;
+      max-height: @action-sheet-max-height;
+      overflow: hidden;
+    }
+
+    .@{action-sheet}__description,
+    .@{action-sheet}__footer {
+      flex-shrink: 0;
+    }
+
+    .@{action-sheet}__list {
+      flex: auto;
+      min-height: 0;
     }
   }
 
@@ -88,6 +108,8 @@
   }
 
   &__list {
+    overflow-y: auto;
+
     &-item {
       flex-direction: column;
       padding: @spacer-2;
