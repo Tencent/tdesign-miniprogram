@@ -85,6 +85,9 @@
       "path": "pages-more/collapse/collapse"
     },
     {
+      "path": "pages-more/comment/comment"
+    },
+    {
       "path": "pages-more/count-down/count-down"
     },
     {
@@ -545,6 +548,10 @@
         "pathName": "pages-more/collapse/collapse"
       },
       {
+        "name": "comment",
+        "pathName": "pages-more/comment/comment"
+      },
+      {
         "name": "count-down",
         "pathName": "pages-more/count-down/count-down"
       },
@@ -822,3 +829,4 @@
     }
   }
 }
+
