@@ -495,18 +495,19 @@
     align-items: center;
     justify-content: center;
     vertical-align: text-bottom;
+    line-height: 1;
     color: var(--td-table-sort-icon-color, @text-color-placeholder);
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 
     &--asc {
       transform: rotate(180deg);
-      margin-bottom: -8rpx;
+      margin-bottom: -4rpx;
     }
 
     // 双图标模式下的降序图标偏移
     .@{table-prefix}__sort-icons &:not(.@{table-prefix}__sort-icon--asc) {
-      margin-top: -8rpx;
+      margin-top: -4rpx;
     }
 
     &--active {

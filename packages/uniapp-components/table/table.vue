@@ -42,16 +42,23 @@
               ]"
               :style="getColStyle(col, colIndex) + (draggingColIndex === colIndex ? ';' + colDragTransform : '')"
               @touchstart="onColTouchStart($event, colIndex)"
-              @touchmove="onColTouchMove($event)"
-              @touchend="onColTouchEnd()"
+              @touchmove.stop.prevent="onColTouchMove($event)"
+              @touchend.stop="onColTouchEnd()"
+              @touchcancel.stop="onColTouchEnd()"
             >
               <view :class="classPrefix + '__th-content'">
                 <text>{{ col.title }}</text>
-                <view v-if="col.sorter" :class="classPrefix + '__sort-trigger'">
+                <view
+                  v-if="col.sorter"
+                  :class="classPrefix + '__sort-trigger'"
+                  @click.stop
+                  @touchstart.stop
+                  @touchmove.stop
+                  @touchend.stop
+                >
                   <view :class="classPrefix + '__sort-icons'">
-                    <t-icon
+                    <view
                       v-if="!col.sortType || col.sortType === 'all' || col.sortType === 'asc'"
-                      name="chevron-down"
                       :class="[
                         classPrefix + '__sort-icon',
                         classPrefix + '__sort-icon--asc',
@@ -59,21 +66,22 @@
                           ? classPrefix + '__sort-icon--active'
                           : classPrefix + '__sort-icon--default',
                       ]"
-                      size="16px"
-                      @click.stop="onSortIconClick(colIndex, false)"
-                    />
-                    <t-icon
+                      @tap.stop="onSortIconClick(colIndex, false)"
+                    >
+                      <t-icon name="chevron-down" size="16px" />
+                    </view>
+                    <view
                       v-if="!col.sortType || col.sortType === 'all' || col.sortType === 'desc'"
-                      name="chevron-down"
                       :class="[
                         classPrefix + '__sort-icon',
                         sortMap[col.colKey] && sortMap[col.colKey].descending
                           ? classPrefix + '__sort-icon--active'
                           : classPrefix + '__sort-icon--default',
                       ]"
-                      size="16px"
-                      @click.stop="onSortIconClick(colIndex, true)"
-                    />
+                      @tap.stop="onSortIconClick(colIndex, true)"
+                    >
+                      <t-icon name="chevron-down" size="16px" />
+                    </view>
                   </view>
                 </view>
               </view>
@@ -107,8 +115,9 @@
               :style="rowItem.rowStyle + (rowItem.dragTransform ? ';' + rowItem.dragTransform : '')"
               @click="onRowClick(rowItem.rowIndex)"
               @touchstart="onRowTouchStart($event, rowItem.rowIndex)"
-              @touchmove="onRowTouchMove($event)"
-              @touchend="onRowTouchEnd()"
+              @touchmove.stop.prevent="onRowTouchMove($event)"
+              @touchend.stop="onRowTouchEnd()"
+              @touchcancel.stop="onRowTouchEnd()"
             >
               <!-- #ifdef VUE2 -->
               <!-- eslint-disable-next-line vue/no-unused-vars -->

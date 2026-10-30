@@ -4,7 +4,7 @@
       row-key="index"
       :columns="columns"
       :data="data"
-      drag-sort="col"
+      drag-sort="row"
       :show-header="true"
       @drag-sort="handleDragSort"
     />
