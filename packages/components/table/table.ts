@@ -467,7 +467,7 @@ export default class Table extends SuperComponent {
 
         this.setData({
           popupProps: {
-            placement: props.placement || 'center',
+            placement: props.placement || 'bottom',
             showOverlay: props.showOverlay !== false,
             closeOnOverlayClick: props.closeOnOverlayClick !== false,
             closeBtn: props.closeBtn !== false,

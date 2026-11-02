@@ -3,35 +3,34 @@ import SkylineBehavior from '@behaviors/skyline.js';
 Component({
   behaviors: [SkylineBehavior],
   data: {
-    // 组合 ellipsis + ellipsisTitle 的不同形式与取值
-    // 约束：弹出层方向仅 bottom / center；弹出内容为单元格内容；弹出标题为该列表头
+    // ellipsis / ellipsisTitle 的不同形式与取值
     columns: [
-      // 1. ellipsis 为 Object：整体透传给 Popup（center 弹出 + 列表头作为标题）；content 缺省时回退为单元格内容
+      // 1. ellipsis 为 Object
       {
         colKey: 'applicant',
         title: '申请人',
-        ellipsis: { placement: 'center', closeBtn: true },
+        ellipsis: { placement: 'center', title: '申请人' },
       },
-      // 2. ellipsis 为 Object + ellipsisTitle 为 true：表头内容也超出省略（优先级高于 ellipsis）；bottom 弹出
+      // 2. ellipsis + ellipsisTitle 均为 Object
       {
         colKey: 'status',
         title: '审批状态与处理结果',
-        ellipsis: { placement: 'bottom', closeBtn: false },
-        ellipsisTitle: true,
+        ellipsis: { placement: 'center', closeBtn: false },
+        ellipsisTitle: { placement: 'center', title: '审批状态与处理结果' },
       },
-      // 3. ellipsis 为 Object + ellipsisTitle 为 false：仅单元格超出省略，表头不省略
+      // 3. 关闭浮层关闭按钮
       {
         colKey: 'channel',
         title: '签署方式',
-        ellipsis: { placement: 'bottom' },
-        ellipsisTitle: false,
+        ellipsis: { closeBtn: false },
+        ellipsisTitle: { closeBtn: false },
       },
-      // 4. ellipsis 与 ellipsisTitle 均为 Object：单元格浮层与表头浮层均带列表头标题；bottom 弹出
+      // 4. 缺省 placement，使用默认值
       {
         colKey: 'email',
         title: '邮箱地址',
-        ellipsis: { placement: 'bottom', title: '邮箱地址' },
-        ellipsisTitle: { placement: 'bottom', title: '邮箱地址' },
+        ellipsis: { title: '邮箱地址' },
+        ellipsisTitle: { title: '邮箱地址' },
       },
     ],
     data: [],
