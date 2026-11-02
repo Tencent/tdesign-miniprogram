@@ -298,29 +298,31 @@ exports[`Table Table ellipsis demo works fine 1`] = `
         Object {
           "colKey": "status",
           "ellipsis": Object {
-            "placement": "bottom",
-            "title": "审批状态",
+            "closeBtn": false,
+            "placement": "center",
           },
-          "ellipsisTitle": true,
+          "ellipsisTitle": Object {
+            "placement": "center",
+            "title": "审批状态与处理结果",
+          },
           "title": "审批状态与处理结果",
         },
         Object {
           "colKey": "channel",
           "ellipsis": Object {
-            "placement": "bottom",
-            "title": "签署方式",
+            "closeBtn": false,
           },
-          "ellipsisTitle": false,
+          "ellipsisTitle": Object {
+            "closeBtn": false,
+          },
           "title": "签署方式",
         },
         Object {
           "colKey": "email",
           "ellipsis": Object {
-            "placement": "bottom",
             "title": "邮箱地址",
           },
           "ellipsisTitle": Object {
-            "placement": "bottom",
             "title": "邮箱地址",
           },
           "title": "邮箱地址",
