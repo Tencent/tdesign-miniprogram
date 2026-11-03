@@ -6579,6 +6579,21 @@ exports[`Icon Icon base demo works fine 1`] = `
       class="demo__card"
     >
       <t-icon
+        data-name="check-1"
+        name="check-1"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        check-1
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
         data-name="check-circle-filled"
         name="check-circle-filled"
         size="48rpx"
@@ -26328,6 +26343,21 @@ exports[`Icon Icon base demo works fine 1`] = `
         class="demo__card-name"
       >
         remote-wave
+      </wx-view>
+    </wx-view>
+    <wx-view
+      class="demo__card"
+    >
+      <t-icon
+        data-name="remove-1"
+        name="remove-1"
+        size="48rpx"
+        bind:click="onIconTap"
+      />
+      <wx-view
+        class="demo__card-name"
+      >
+        remove-1
       </wx-view>
     </wx-view>
     <wx-view
