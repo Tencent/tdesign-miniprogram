@@ -85,12 +85,12 @@ The component provides the following CSS variables, which can be used to customi
 Name | Default Value | Description
 -- | -- | --
 --td-checkbox-bg-color | @bg-color-container | -
---td-checkbox-border-color | @component-stroke | -
+--td-checkbox-border-color | @component-border | -
 --td-checkbox-description-color | @text-color-secondary | -
 --td-checkbox-description-disabled-color | @text-color-disabled | -
 --td-checkbox-description-font | @font-body-medium | -
 --td-checkbox-icon-checked-color | @brand-color | -
---td-checkbox-icon-color | @component-border | -
+--td-checkbox-icon-color | @text-color-anti | -
 --td-checkbox-icon-disabled-bg-color | @bg-color-component-disabled | -
 --td-checkbox-icon-disabled-color | @brand-color-disabled | -
 --td-checkbox-icon-size | 48rpx | -

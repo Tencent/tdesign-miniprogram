@@ -22,22 +22,33 @@
       <view v-else-if="customIcon" :class="classPrefix + '__image'">
         <image :src="dataChecked ? iconVal[0] : iconVal[1]" :class="classPrefix + '-icon__image'" webp />
       </view>
-      <block v-else>
-        <t-icon
-          v-if="dataChecked && (icon == 'circle' || icon == 'line')"
-          :name="icon == 'circle' ? 'check-circle-filled' : 'check'"
-          :class="classPrefix + '__icon-wrap'"
-        />
-        <view
-          v-if="dataChecked && icon == 'dot'"
-          :class="'' + tools.cls(classPrefix + '__icon-' + icon, [['disabled', iDisabled]])"
-        />
-        <view
-          v-if="!dataChecked && (icon == 'circle' || icon == 'dot')"
-          :class="'' + tools.cls(classPrefix + '__icon-circle', [['disabled', iDisabled]])"
-        />
-        <view v-if="!dataChecked && icon == 'line'" class="placeholder" />
-      </block>
+      <view
+        v-else-if="icon == 'circle'"
+        :class="
+          '' +
+          tools.cls(classPrefix + '__icon-circle', [
+            ['checked', dataChecked],
+            ['disabled', iDisabled],
+          ])
+        "
+      >
+        <t-icon v-if="dataChecked" name="check-1" />
+      </view>
+      <view
+        v-else-if="icon == 'dot'"
+        :class="
+          '' +
+          tools.cls(classPrefix + '__icon-dot', [
+            ['checked', dataChecked],
+            ['disabled', iDisabled],
+          ])
+        "
+      >
+        <view v-if="dataChecked" :class="classPrefix + '__icon-dot-inner'" />
+      </view>
+      <view v-else-if="icon == 'line'" :class="'' + tools.cls(classPrefix + '__icon-line', [['disabled', iDisabled]])">
+        <t-icon v-if="dataChecked" name="check" />
+      </view>
     </view>
     <view :class="classPrefix + '__content'" data-target="text" @click.stop="handleTap">
       <view

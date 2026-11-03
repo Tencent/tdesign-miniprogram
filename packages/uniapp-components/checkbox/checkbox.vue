@@ -23,29 +23,27 @@
       "
     >
       <slot v-if="icon === 'slot'" name="icon" />
-      <view v-else-if="tools.isArray(icon)" :class="classPrefix + '__icon'">
+      <view v-else-if="tools.isArray(icon)" :class="classPrefix + '__icon-wrapper'">
         <image
           :src="dataChecked ? (dataIndeterminate && icon[2] ? icon[2] : icon[0]) : icon[1]"
           :class="classPrefix + '__icon-image'"
         />
       </view>
-      <block v-else>
-        <t-icon
-          v-if="dataChecked && (icon == 'circle' || icon == 'rectangle')"
-          :name="dataIndeterminate ? 'minus-' + icon + '-filled' : 'check-' + icon + '-filled'"
-          :class="'' + tools.cls(classPrefix + '__icon-wrapper', [])"
-        />
-        <t-icon
-          v-if="dataChecked && icon == 'line'"
-          :name="dataIndeterminate ? 'minus-' + icon + '-filled' : 'check'"
-          :class="'' + tools.cls(classPrefix + '__icon-wrapper', [])"
-        />
-        <view
-          v-else-if="!dataChecked && (icon == 'circle' || icon == 'rectangle')"
-          :class="'' + tools.cls(classPrefix + '__icon-' + icon, [['disabled', iDisabled]])"
-        />
-        <view v-if="!dataChecked && icon == 'line'" class="placeholder" />
-      </block>
+      <view
+        v-else-if="icon == 'circle' || icon == 'rectangle'"
+        :class="
+          '' +
+          tools.cls(classPrefix + '__icon-' + icon, [
+            ['checked', dataChecked],
+            ['disabled', iDisabled],
+          ])
+        "
+      >
+        <t-icon v-if="dataChecked" :name="dataIndeterminate ? 'remove-1' : 'check-1'" />
+      </view>
+      <view v-else-if="icon == 'line'" :class="'' + tools.cls(classPrefix + '__icon-line', [['disabled', iDisabled]])">
+        <t-icon v-if="dataChecked" :name="dataIndeterminate ? 'minus' : 'check'" />
+      </view>
     </view>
     <view :class="classPrefix + '__content'" data-target="text" @click.stop="handleTap">
       <view
