@@ -104,6 +104,11 @@ export default {
     finish: '완료',
     back: '뒤로',
   },
+  comment: {
+    collapsedText: '답글 펼치기',
+    expandMoreText: '답글 더 보기',
+    collapseText: '접기',
+  },
   typography: {
     expandText: '더보기',
     collapseText: '접기',

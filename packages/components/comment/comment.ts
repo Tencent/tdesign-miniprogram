@@ -1,25 +1,30 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import commentProps from './props';
+import type { CommentFold, CommentFoldState } from './type';
+import type { AvatarProps } from '../avatar/index';
+import usingConfig from '../mixins/using-config';
 
 const { prefix } = config;
-const name = `${prefix}-comment`;
+const componentName = 'comment';
+const name = `${prefix}-${componentName}`;
 
-const DEFAULT_FOLDS = {
+const DEFAULT_STEP = 3;
+
+const DEFAULT_FOLDS: CommentFold = {
   state: 'collapsed',
   total: 0,
-  step: 3,
-  content: {
-    collapsed: '展开回复',
-    partial: ['展开更多回复', '收起'],
-    expanded: '收起',
-  },
+  step: DEFAULT_STEP,
 };
 
 @wxComponent()
 export default class Comment extends SuperComponent {
+  behaviors = [usingConfig({ componentName })];
+
   options = {
     multipleSlots: true,
+    // 以 _ 开头的 data 字段为纯数据字段，仅在逻辑层使用，不参与视图渲染
+    pureDataPattern: /^_/,
   };
 
   externalClasses = [
@@ -33,92 +38,124 @@ export default class Comment extends SuperComponent {
 
   properties = commentProps;
 
+  controlledProps = [
+    {
+      key: 'folds',
+      event: 'folds',
+    },
+  ];
+
   data = {
     prefix,
     classPrefix: name,
-    _foldState: 'collapsed',
+    foldState: 'collapsed',
+    commentFolds: DEFAULT_FOLDS,
+    replyBodyHeight: '',
+    avatarData: null,
+    // 纯数据字段：仅记录当前展开步数，不参与视图渲染
     _foldSteps: 0,
-    _isControlled: false,
-    _commentFolds: DEFAULT_FOLDS,
-    _replyBodyHeight: '',
+    globalConfig: {} as { collapsedText?: string; expandMoreText?: string; collapseText?: string },
   };
 
   observers = {
-    'folds, defaultFolds'(folds, defaultFolds) {
-      this._syncFolds(folds, defaultFolds);
+    avatar(avatar: string | AvatarProps) {
+      this._syncAvatar(avatar);
+    },
+
+    folds(folds: CommentFold | null) {
+      this._syncFolds(folds);
+    },
+
+    globalConfig() {
+      this._syncFolds(this.data.folds);
     },
   };
 
   lifetimes = {
     attached() {
-      this._syncFolds(this.properties.folds, this.properties.defaultFolds);
+      this._syncFolds(this.data.folds);
     },
   };
 
   methods = {
     handleClickActions(e: WechatMiniprogram.BaseEvent) {
       const { action } = e.currentTarget.dataset;
-      this.triggerEvent('actions', { action, e });
+      if (action?.disabled) return;
+      this.triggerEvent('actions', { action });
     },
 
     handleClickFold(e: WechatMiniprogram.BaseEvent) {
       const { expand } = e.currentTarget.dataset;
-      const isExpand = expand === true || expand === 'true';
-      const { folds, defaultFolds } = this.properties;
-      const commentFolds = folds || defaultFolds || DEFAULT_FOLDS;
+      const { commentFolds } = this.data;
 
-      if (!isExpand) {
-        this._setFoldState('collapsed', 0);
-        this.triggerEvent('folds', { fold: { ...commentFolds, state: 'collapsed' }, e });
+      // 收起：直接回到初始折叠态
+      if (expand !== true && expand !== 'true') {
+        this.setData({ _foldSteps: 0 });
+        this._emitFold({ ...commentFolds, state: 'collapsed' });
         return;
       }
 
+      // 展开：每点一次前进一步，达到 step 后进入完全展开态
       const foldSteps = this.data._foldSteps + 1;
-      const nextState = foldSteps >= (commentFolds.step || 3) - 1 ? 'expanded' : 'partial';
-      this._setFoldState(nextState, foldSteps);
-      this.triggerEvent('folds', { fold: { ...commentFolds, state: nextState }, e });
+      const step = commentFolds.step || DEFAULT_STEP;
+      const nextState: CommentFoldState = foldSteps >= step - 1 ? 'expanded' : 'partial';
+      this.setData({ _foldSteps: foldSteps });
+      this._emitFold({ ...commentFolds, state: nextState });
     },
   };
 
-  /** 统一解析 folds 并同步到 data */
-  _syncFolds(folds, defaultFolds) {
-    const commentFolds = folds || defaultFolds || DEFAULT_FOLDS;
-    const isControlled = folds !== null;
-    const foldState = isControlled ? folds.state || 'collapsed' : defaultFolds?.state || this.data._foldState;
+  /** 由 folds 派生折叠状态与文案 */
+  _syncFolds(folds: CommentFold | null) {
+    const commentFolds = folds || DEFAULT_FOLDS;
+    const userContent = commentFolds.content || {};
+    const { globalConfig } = this.data;
+    // 文案优先取业务传入的 content，缺省回退到全局国际化配置
+    const content = {
+      collapsed: userContent.collapsed ?? globalConfig.collapsedText,
+      partial: userContent.partial ?? [globalConfig.expandMoreText, globalConfig.collapseText],
+      expanded: userContent.expanded ?? globalConfig.collapseText,
+    };
+    const foldState: CommentFoldState = commentFolds.state || 'collapsed';
+    const step = commentFolds.step || DEFAULT_STEP;
     let foldSteps = this.data._foldSteps;
-    if (foldState === 'expanded') {
-      foldSteps = (commentFolds.step || 3) - 1;
-    } else if (foldState === 'collapsed') {
-      foldSteps = 0;
-    }
+    if (foldState === 'expanded') foldSteps = step - 1;
+    else if (foldState === 'collapsed') foldSteps = 0;
 
     this.setData(
       {
-        _isControlled: isControlled,
-        _foldState: foldState,
+        foldState,
         _foldSteps: foldSteps,
-        _commentFolds: commentFolds,
+        commentFolds: { ...commentFolds, content },
       },
       () => this._updateReplyHeight(),
     );
   }
 
-  /** 设置折叠状态：_foldSteps 始终更新，_foldState 仅非受控时更新 */
-  _setFoldState(state: string, steps: number) {
-    const data: Record<string, unknown> = { _foldSteps: steps };
-    if (!this.data._isControlled) {
-      data._foldState = state;
+  /** 归一化头像：字符串作为图片地址，对象作为 AvatarProps 透传 */
+  _syncAvatar(avatar: string | AvatarProps) {
+    if (typeof avatar === 'string') {
+      this.setData({ avatarData: { image: avatar } });
+    } else {
+      this.setData({ avatarData: avatar && typeof avatar === 'object' ? avatar : null });
     }
-    this.setData(data, () => this._updateReplyHeight());
   }
 
+  /** 触发 folds 事件，受控场景下同步内部值 */
+  _emitFold(fold: CommentFold) {
+    if (this._selfControlled) {
+      this.setData({ folds: fold });
+    }
+    this.triggerEvent('folds', { fold });
+  }
+
+  /** 测量回复区内容高度，驱动展开/收起的高度过渡动画 */
   _updateReplyHeight() {
     this.createSelectorQuery()
       .select(`.${name}__reply-inner`)
       .fields({ size: true })
-      .exec((res) => {
+      .exec((res: any[]) => {
         if (res?.[0]) {
-          this.setData({ _replyBodyHeight: `${res[0].height}px` });
+          this.setData({ replyBodyHeight: `${res[0].height}px` });
         }
       });
   }

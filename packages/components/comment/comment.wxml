@@ -1,27 +1,25 @@
-<wxs src="./comment.wxs" module="_" />
+<import src="../common/template/avatar.wxml" />
+<import src="../common/template/icon.wxml" />
+<wxs src="./comment.wxs" module="_this" />
+<wxs src="../common/utils.wxs" module="_" />
 
 <!-- 操作按钮分组模板 -->
 <template name="actions-group">
-  <view class="{{classPrefix}}__actions-block">
+  <view wx:for="{{_this.getActionGroups(actions)}}" wx:key="placement" class="{{classPrefix}}__actions-block">
     <view
-      wx:for="{{_.getStartActions(actions)}}"
+      wx:for="{{item.items}}"
+      wx:for-item="action"
       wx:key="key"
-      class="{{classPrefix}}__actions-item"
-      data-action="{{item}}"
+      class="{{_.cls(classPrefix + '__actions-item', [['disabled', action.disabled]])}}"
+      data-action="{{action}}"
       bindtap="handleClickActions"
     >
-      <slot name="action-{{item.key}}" />
-    </view>
-  </view>
-  <view class="{{classPrefix}}__actions-block">
-    <view
-      wx:for="{{_.getEndActions(actions)}}"
-      wx:key="key"
-      class="{{classPrefix}}__actions-item"
-      data-action="{{item}}"
-      bindtap="handleClickActions"
-    >
-      <slot name="action-{{item.key}}" />
+      <template
+        wx:if="{{_this.getIconData(action.icon)}}"
+        is="icon"
+        data="{{tClass: classPrefix + '__actions-item-icon', ..._this.getIconData(action.icon)}}"
+      />
+      {{action.content}}
     </view>
   </view>
 </template>
@@ -29,73 +27,39 @@
 <!-- 折叠/展开模板 -->
 <template name="folds">
   <view class="{{classPrefix}}__folds" wx:if="{{commentFolds.total > 1}}">
-    <!-- collapsed 状态 -->
     <view
-      wx:if="{{foldState === 'collapsed'}}"
+      wx:for="{{_this.getFoldItems(foldState, commentFolds)}}"
+      wx:key="key"
       class="{{classPrefix}}__folds-item"
-      data-expand="{{true}}"
+      data-expand="{{item.expand}}"
       bindtap="handleClickFold"
     >
-      <text>{{commentFolds.content.collapsed || '展开回复'}}</text>
-      <t-icon name="chevron-down" size="32rpx" />
-    </view>
-
-    <!-- partial 状态 -->
-    <block wx:if="{{foldState === 'partial'}}">
-      <view class="{{classPrefix}}__folds-item" data-expand="{{true}}" bindtap="handleClickFold">
-        <text>{{(commentFolds.content.partial && commentFolds.content.partial[0]) || '展开更多回复'}}</text>
-        <t-icon name="chevron-down" size="32rpx" />
-      </view>
-      <view class="{{classPrefix}}__folds-item" data-expand="{{false}}" bindtap="handleClickFold">
-        <text>{{(commentFolds.content.partial && commentFolds.content.partial[1]) || '收起'}}</text>
-        <t-icon name="chevron-up" size="32rpx" />
-      </view>
-    </block>
-
-    <!-- expanded 状态 -->
-    <view
-      wx:if="{{foldState === 'expanded'}}"
-      class="{{classPrefix}}__folds-item"
-      data-expand="{{false}}"
-      bindtap="handleClickFold"
-    >
-      <text>{{commentFolds.content.expanded || '收起'}}</text>
-      <t-icon name="chevron-up" size="32rpx" />
+      <text>{{item.content}}</text>
+      <t-icon name="{{item.icon}}" t-class="{{classPrefix}}__folds-item-icon" />
     </view>
   </view>
 </template>
 
-<view class="{{classPrefix}} {{prefix}}-class">
+<view class="{{classPrefix}} class {{prefix}}-class" style="{{_._style([style, customStyle])}}">
   <view class="{{classPrefix}}__inner">
-    <!-- 头像 -->
     <view class="{{classPrefix}}__avatar {{prefix}}-class-avatar">
-      <t-avatar
-        wx:if="{{avatar}}"
-        image="{{avatar.image || avatar}}"
-        size="{{avatar.size || 'medium'}}"
-        shape="{{avatar.shape || 'circle'}}"
-      />
+      <template wx:if="{{avatarData}}" is="avatar" data="{{...avatarData}}" />
       <slot wx:else name="avatar" />
     </view>
-    <!-- 详情 -->
     <view class="{{classPrefix}}__detail">
-      <!-- 作者 -->
-      <view wx:if="{{author}}" class="{{classPrefix}}__author {{prefix}}-class-author">{{author}}</view>
-      <slot wx:else name="author" />
-      <!-- 内容 -->
-      <view wx:if="{{content}}" class="{{classPrefix}}__content {{prefix}}-class-content">{{content}}</view>
-      <slot wx:else name="content" />
+      <view class="{{classPrefix}}__author {{prefix}}-class-author">
+        <block wx:if="{{author}}">{{author}}</block>
+        <slot wx:else name="author" />
+      </view>
+      <view class="{{classPrefix}}__content {{prefix}}-class-content">
+        <block wx:if="{{content}}">{{content}}</block>
+        <slot wx:else name="content" />
+      </view>
       <!-- 底部：时间 + 操作 -->
       <view wx:if="{{datetime || actions}}" class="{{classPrefix}}__bottom">
         <view wx:if="{{datetime}}" class="{{classPrefix}}__date {{prefix}}-class-datetime">{{datetime}}</view>
         <view class="{{classPrefix}}__actions {{prefix}}-class-actions">
-          <!-- 非数组：单个自定义节点 -->
-          <view wx:if="{{actions && !_.isArray(actions)}}" data-action="{{actions}}" bindtap="handleClickActions">
-            <slot name="actions" />
-          </view>
-          <!-- 数组：按 placement 分组渲染 -->
-          <template wx:elif="{{actions.length}}" is="actions-group" data="{{classPrefix, actions, _}}" />
-          <!-- 空数组：插槽兜底 -->
+          <template wx:if="{{actions.length}}" is="actions-group" data="{{classPrefix, actions}}" />
           <slot wx:else name="actions" />
         </view>
       </view>
@@ -104,11 +68,12 @@
 
   <!-- 回复区 -->
   <view class="{{classPrefix}}__reply">
-    <view class="{{classPrefix}}__reply-body" style="{{_replyBodyHeight ? 'height:' + _replyBodyHeight : ''}}">
+    <view class="{{classPrefix}}__reply-body" style="{{replyBodyHeight ? 'height:' + replyBodyHeight : ''}}">
       <view class="{{classPrefix}}__reply-inner">
+        <slot />
         <slot name="reply" />
       </view>
     </view>
-    <template is="folds" data="{{classPrefix, foldState: _foldState, commentFolds: _commentFolds}}" />
+    <template is="folds" data="{{classPrefix, foldState, commentFolds}}" />
   </view>
 </view>

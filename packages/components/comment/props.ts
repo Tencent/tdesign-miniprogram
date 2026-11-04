@@ -8,7 +8,7 @@ import { TdCommentProps } from './type';
 const props: TdCommentProps = {
   /** 操作 */
   actions: {
-    type: null,
+    type: Array,
   },
   /** 作者 */
   author: {
@@ -17,10 +17,6 @@ const props: TdCommentProps = {
   /** 头像 */
   avatar: {
     type: null,
-  },
-  /** 子元素内容，同 reply */
-  children: {
-    type: String,
   },
   /** 内容 */
   content: {

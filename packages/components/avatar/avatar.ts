@@ -2,12 +2,12 @@ import { SuperComponent, wxComponent, RelationsOptions } from '../common/src/ind
 import config from '../common/config';
 import avatarProps from './props';
 import { calcIcon, systemInfo } from '../common/utils';
-import { TdAvatarProps } from './type';
+import type { TdAvatarProps } from './type';
 
 const { prefix } = config;
 const name = `${prefix}-avatar`;
 
-export type AvatarProps = TdAvatarProps;
+export interface AvatarProps extends TdAvatarProps {}
 
 @wxComponent()
 export default class Avatar extends SuperComponent {

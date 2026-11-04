@@ -11,8 +11,8 @@ export interface TdCommentProps {
    * 操作
    */
   actions?: {
-    type: null;
-    value?: Array<CommentActionItem> | string;
+    type: ArrayConstructor;
+    value?: Array<CommentActionItem>;
   };
   /**
    * 作者
@@ -27,13 +27,6 @@ export interface TdCommentProps {
   avatar?: {
     type: null;
     value?: string | AvatarProps;
-  };
-  /**
-   * 子元素内容，同 reply
-   */
-  children?: {
-    type: StringConstructor;
-    value?: string;
   };
   /**
    * 内容
@@ -77,6 +70,7 @@ export type ActionPlacement = 'start' | 'end';
 export interface CommentActionItem {
   key: string;
   content?: string;
+  icon?: string | object;
   placement?: ActionPlacement;
   disabled?: boolean;
 }

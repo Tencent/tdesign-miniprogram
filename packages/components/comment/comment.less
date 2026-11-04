@@ -93,6 +93,10 @@
       line-height: @text-line-height-s;
       margin-right: @spacer-3;
     }
+
+    &-item-icon {
+      font-size: @font-size-m;
+    }
   }
 
   &__actions {
@@ -105,11 +109,23 @@
     &-block {
       display: flex;
       align-items: center;
+      gap: @spacer-2;
     }
 
     &-item {
       display: flex;
       align-items: center;
+      gap: calc(@spacer / 2);
+      color: @text-color-secondary;
+      font: @font-body-small;
+
+      &-icon {
+        font-size: @font-size-m;
+      }
+
+      &--disabled {
+        color: @text-color-disabled;
+      }
     }
   }
 }

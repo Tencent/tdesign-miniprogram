@@ -39,7 +39,7 @@
   --td-button-medium-padding-horizontal: calc(var(--td-spacer) / 4);
   --td-button-medium-height: var(--td-spacer-3);
   --td-button-medium-font: var(--td-font-body-small);
-  --td-button-medium-icon-size: 28rpx;
+  --td-button-medium-icon-size: 32rpx;
   box-sizing: border-box;
 }
 
