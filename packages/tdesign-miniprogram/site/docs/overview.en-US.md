@@ -250,7 +250,7 @@ spline: explain
   </div>
 </section>
 
-<h3>Data Display<em class="tag">20</em></h3>
+<h3>Data Display<em class="tag">21</em></h3>
 <section class="image-group">
   <div class="image-wrapper">
     <a class="item" href="/miniprogram/components/avatar-en">
@@ -289,6 +289,14 @@ spline: explain
       <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-countdown.png" />
       <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-countdown-dark.png" />
       <p class="name">CountDown</p>
+    </a>
+  </div>
+
+  <div class="image-wrapper">
+    <a class="item" href="/miniprogram/components/comment-en">
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-comment.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-comment-dark.png" />
+      <p class="name">Comment</p>
     </a>
   </div>
 
