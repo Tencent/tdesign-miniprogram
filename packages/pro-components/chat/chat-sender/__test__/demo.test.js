@@ -5,7 +5,7 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['attachments', 'base', 'content-citation', 'file-citation'];
+const mapper = ['attachments', 'base', 'content-citation', 'file-citation', 'record'];
 
 describe('ChatSender', () => {
   mapper.forEach((demoName) => {

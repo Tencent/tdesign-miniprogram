@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ChatRecord ChatRecord base demo works fine 1`] = `
+<base>
+  <wx-view
+    class="chat-box"
+    style="height: calc(100vh - 60px);"
+  >
+    <t-chat
+      id="chatList"
+      bind:scroll="onScroll"
+    >
+      <t-chat-message
+        avatar="https://tdesign.gtimg.com/site/chat-avatar.png"
+        chatId="key-1"
+        content="{{
+          Array [
+            Object {
+              "data": "它叫 McMurdo Station ATM，是美国富国银行安装在南极洲最大科学中心麦克默多站的一台自动提款机。",
+              "type": "text",
+            },
+          ]
+        }}"
+        datetime=""
+        name=""
+        placement="left"
+        role="assistant"
+        status="complete"
+        bind:click="onClick"
+        bind:message-longpress="showPopover"
+      >
+        <t-chat-actionbar
+          chatId="key-1"
+          comment=""
+          id="actionbar-key-1"
+          placement="end"
+          slot="actionbar"
+          bind:actions="handleAction"
+        />
+      </t-chat-message>
+      <t-chat-message
+        avatar=""
+        chatId="key-2"
+        content="{{
+          Array [
+            Object {
+              "data": "牛顿第一定律是否适用于所有参考系？",
+              "type": "text",
+            },
+          ]
+        }}"
+        datetime=""
+        name=""
+        placement="right"
+        role="user"
+        status=""
+        bind:click="onClick"
+        bind:message-longpress="showPopover"
+      />
+      <wx-view
+        slot="footer"
+      >
+        <t-chat-sender
+          allowSpeech="{{true}}"
+          autoRiseWithKeyboard="{{true}}"
+          disabled="{{false}}"
+          loading="{{false}}"
+          placeholder=""
+          renderPresets="{{
+            Array [
+              Object {
+                "name": "send",
+                "type": "icon",
+              },
+            ]
+          }}"
+          value=""
+          bind:focus="onFocus"
+          bind:keyboardheightchange="onKeyboardHeightChange"
+          bind:send="onSend"
+          bind:stop="onStop"
+        >
+          <wx-view
+            slot="speech"
+          >
+            <t-chat-record
+              bind:recognize="handleRecognize"
+            >
+              <wx-view
+                class="speech-slot-btn"
+                slot="speechInput"
+              >
+                 按住说话 
+              </wx-view>
+              <wx-view
+                class="speech-btn-error"
+                slot="speechNoAuth"
+              >
+                 请授权麦克风权限 
+              </wx-view>
+            </t-chat-record>
+          </wx-view>
+        </t-chat-sender>
+      </wx-view>
+    </t-chat>
+  </wx-view>
+  <t-toast
+    id="t-toast"
+  />
+</base>
+`;
