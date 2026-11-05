@@ -147,7 +147,7 @@ export default {
   left: 1.5px;
   top: 1.5px;
   z-index: 1;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 /* 横向布局 */
