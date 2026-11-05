@@ -104,6 +104,11 @@ export default {
     finish: '完了',
     back: '戻る',
   },
+  comment: {
+    collapsedText: '返信を表示',
+    expandMoreText: 'もっと返信を表示',
+    collapseText: '折りたたむ',
+  },
   typography: {
     expandText: 'もっと拡大する',
     collapseText: '畳む',

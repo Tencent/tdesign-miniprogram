@@ -1,0 +1,86 @@
+<view class="mobile-comment">
+  <view data-author="Name1 名称" bind:longpress="onLongPress">
+    <t-comment
+      avatar="{{avatar}}"
+      content="这是一段很长很长很长很长很长很长的评论内容。"
+      datetime="今天16:38·广东"
+      folds="{{folds}}"
+      bind:folds="onFolds"
+    >
+      <view slot="author" class="mobile-comment__author">
+        <view>Name1 名称</view>
+        <t-tag class="mobile-comment__author-tag" theme="primary" variant="light" shape="round">作者</t-tag>
+      </view>
+      <view slot="actions" class="mobile-comment__actions">
+        <view class="mobile-comment__reply-button" data-author="Name1 名称" bindtap="onReply">回复</view>
+        <view class="mobile-comment__actions-right">
+          <t-button class="mobile-comment__actions-button" icon="thumb-up" variant="text">6</t-button>
+          <t-button class="mobile-comment__actions-button" icon="uncomfortable-1" variant="text" />
+        </view>
+      </view>
+      <!-- 回复区 -->
+      <view slot="reply">
+        <view wx:for="{{visibleReplies}}" wx:key="index" data-author="{{item.author}}" bind:longpress="onLongPress">
+          <t-comment avatar="{{item.avatar}}" datetime="{{item.datetime}}">
+            <view slot="author" class="mobile-comment__author">
+              <view>{{item.author}}</view>
+            </view>
+            <view slot="content">
+              <block wx:if="{{item.replyTo}}">
+                <text>回复</text>
+                <text class="mobile-comment__reply-name">{{item.replyTo}}</text>
+                <text>：{{item.content}}</text>
+              </block>
+              <block wx:else>{{item.content}}</block>
+            </view>
+            <view slot="actions" class="mobile-comment__actions">
+              <view class="mobile-comment__reply-button" data-author="{{item.author}}" bindtap="onReply">回复</view>
+              <view class="mobile-comment__actions-right">
+                <t-button
+                  class="mobile-comment__actions-button"
+                  icon="thumb-up"
+                  variant="text"
+                  data-index="{{index}}"
+                  bindtap="onLike"
+                  >{{item.likeNum || ''}}</t-button
+                >
+                <t-button class="mobile-comment__actions-button" icon="uncomfortable-1" variant="text" />
+              </view>
+            </view>
+          </t-comment>
+        </view>
+      </view>
+    </t-comment>
+  </view>
+
+  <!-- 回复输入框 -->
+  <view wx:if="{{showReplyInput}}" class="mobile-comment__input">
+    <input
+      class="mobile-comment__input-content"
+      placeholder="{{replyTarget ? '回复' + replyTarget : '请输入内容'}}"
+      value="{{replyValue}}"
+      bindinput="onInputChange"
+      bindconfirm="onSubmit"
+      focus="{{focusInput}}"
+    />
+    <t-button
+      class="mobile-comment__input-button"
+      theme="primary"
+      shape="circle"
+      size="small"
+      icon="send"
+      disabled="{{!replyValue}}"
+      bindtap="onSubmit"
+    />
+  </view>
+
+  <!-- ActionSheet -->
+  <t-action-sheet
+    visible="{{showActionSheet}}"
+    cancel-text="取消"
+    items="{{actionSheetItems}}"
+    bind:selected="onActionSheetSelect"
+    bind:close="onActionSheetClose"
+    bind:cancel="onActionSheetClose"
+  />
+</view>

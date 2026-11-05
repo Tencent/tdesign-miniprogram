@@ -1,0 +1,14 @@
+<view class="mobile-comment">
+  <t-comment
+    avatar="{{avatar}}"
+    content="这是一段很长很长很长很长很长很长的评论内容。"
+    datetime="今天16:38·广东"
+    actions="{{actions}}"
+    bind:actions="onAction"
+  >
+    <view slot="author" class="mobile-comment__author">
+      <view>Name1 名称</view>
+      <t-tag class="mobile-comment__author-tag" theme="primary" variant="light" shape="round">作者</t-tag>
+    </view>
+  </t-comment>
+</view>

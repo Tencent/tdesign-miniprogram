@@ -104,6 +104,11 @@ export default {
     finish: '完成',
     back: '返回',
   },
+  comment: {
+    collapsedText: '展開回覆',
+    expandMoreText: '展開更多回覆',
+    collapseText: '收起',
+  },
   typography: {
     expandText: '展開',
     collapseText: '收起',
