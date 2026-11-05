@@ -15,7 +15,6 @@ exports[`Comment Comment base demo works fine 1`] = `
           },
           Object {
             "content": "6",
-            "disabled": true,
             "icon": "thumb-up",
             "key": "like",
             "placement": "end",

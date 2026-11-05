@@ -1,16 +1,3 @@
-var utils = require('../common/utils.wxs');
-
-/** 归一化 action 图标：字符串为图标名，对象为 icon 配置 */
-function getIconData(icon) {
-  if (utils.isString(icon)) {
-    return { name: icon };
-  }
-  if (utils.isNoEmptyObj(icon)) {
-    return icon;
-  }
-  return null;
-}
-
 /** 按 placement 把 actions 分为 start、end 两组，未指定 placement 归入 start */
 function getActionGroups(actions) {
   var start = [];
@@ -30,41 +17,39 @@ function getActionGroups(actions) {
   ];
 }
 
-/** partial 态「展开更多」文案，兼容 string / [string, string] */
-function getPartialExpandContent(content) {
-  var partial = content && content.partial;
-  if (!partial) return '展开更多回复';
-  if (typeof partial === 'string') return partial;
-  return partial[0] || '展开更多回复';
+/** 生成单个折叠项：expand 键为展开项（chevron-down），其余为收起项（chevron-up） */
+function createFoldItem(key, content) {
+  var expand = key === 'expand';
+  return {
+    key: key,
+    content: content,
+    expand: expand,
+    icon: expand ? 'chevron-down' : 'chevron-up',
+  };
 }
 
-/** partial 态「收起」文案，content.partial 为字符串时无此文案 */
-function getPartialCollapseContent(content) {
-  var partial = content && content.partial;
-  if (!partial) return '收起';
-  if (typeof partial === 'string') return '';
-  return partial[1] || '收起';
-}
-
-/** 按折叠状态生成折叠项 [{ key, content, expand, icon }] */
+/**
+ * 按折叠状态生成折叠项 [{ key, content, expand, icon }]
+ * content.partial 支持 string 或 [展开文案, 收起文案]：
+ * 为 string 时仅作为展开文案，收起项无文案
+ */
 function getFoldItems(foldState, commentFolds) {
   var content = (commentFolds && commentFolds.content) || {};
   if (foldState === 'partial') {
+    var partial = content.partial;
+    var isText = typeof partial === 'string';
     return [
-      { key: 'expand', content: getPartialExpandContent(content), expand: true, icon: 'chevron-down' },
-      { key: 'collapse', content: getPartialCollapseContent(content), expand: false, icon: 'chevron-up' },
+      createFoldItem('expand', isText ? partial : (partial && partial[0]) || '展开更多回复'),
+      createFoldItem('collapse', isText ? '' : (partial && partial[1]) || '收起'),
     ];
   }
   if (foldState === 'expanded') {
-    return [{ key: 'collapse', content: content.expanded || '收起', expand: false, icon: 'chevron-up' }];
+    return [createFoldItem('collapse', content.expanded || '收起')];
   }
-  return [{ key: 'expand', content: content.collapsed || '展开回复', expand: true, icon: 'chevron-down' }];
+  return [createFoldItem('expand', content.collapsed || '展开回复')];
 }
 
 module.exports = {
-  getIconData: getIconData,
   getActionGroups: getActionGroups,
-  getPartialExpandContent: getPartialExpandContent,
-  getPartialCollapseContent: getPartialCollapseContent,
   getFoldItems: getFoldItems,
 };

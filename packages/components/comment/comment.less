@@ -22,7 +22,7 @@
     display: flex;
     padding: @comment-inner-padding;
 
-    &:active {
+    &--active {
       background-color: @bg-color-secondarycontainer;
     }
   }
@@ -119,8 +119,9 @@
       color: @text-color-secondary;
       font: @font-body-small;
 
-      &-icon {
-        font-size: @font-size-m;
+      &--with-icon {
+        color: @text-color-placeholder;
+        font: @font-body-medium;
       }
 
       &--disabled {

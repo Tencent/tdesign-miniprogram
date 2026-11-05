@@ -10,15 +10,11 @@
       wx:for="{{item.items}}"
       wx:for-item="action"
       wx:key="key"
-      class="{{_.cls(classPrefix + '__actions-item', [['disabled', action.disabled]])}}"
+      class="{{_.cls(classPrefix + '__actions-item', [['with-icon', action.iconData], ['disabled', action.disabled]])}}"
       data-action="{{action}}"
       bindtap="handleClickActions"
     >
-      <template
-        wx:if="{{_this.getIconData(action.icon)}}"
-        is="icon"
-        data="{{tClass: classPrefix + '__actions-item-icon', ..._this.getIconData(action.icon)}}"
-      />
+      <template wx:if="{{action.iconData}}" is="icon" data="{{...action.iconData}}" />
       {{action.content}}
     </view>
   </view>
@@ -41,7 +37,12 @@
 </template>
 
 <view class="{{classPrefix}} class {{prefix}}-class" style="{{_._style([style, customStyle])}}">
-  <view class="{{classPrefix}}__inner">
+  <view
+    class="{{_.cls(classPrefix + '__inner', [['active', innerActive]])}}"
+    bind:longpress="handleLongPress"
+    bind:touchend="handlePressEnd"
+    bind:touchcancel="handlePressEnd"
+  >
     <view class="{{classPrefix}}__avatar {{prefix}}-class-avatar">
       <template wx:if="{{avatarData}}" is="avatar" data="{{...avatarData}}" />
       <slot wx:else name="avatar" />
@@ -59,7 +60,7 @@
       <view wx:if="{{datetime || actions}}" class="{{classPrefix}}__bottom">
         <view wx:if="{{datetime}}" class="{{classPrefix}}__date {{prefix}}-class-datetime">{{datetime}}</view>
         <view class="{{classPrefix}}__actions {{prefix}}-class-actions">
-          <template wx:if="{{actions.length}}" is="actions-group" data="{{classPrefix, actions}}" />
+          <template wx:if="{{actions.length}}" is="actions-group" data="{{classPrefix, actions: actionsData}}" />
           <slot wx:else name="actions" />
         </view>
       </view>

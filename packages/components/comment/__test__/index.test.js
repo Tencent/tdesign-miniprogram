@@ -48,7 +48,7 @@ describe('comment', () => {
         template: `<t-comment id="comment" avatar="{{avatar}}" />`,
         data: { avatar: 'https://tdesign.gtimg.com/avatar.png' },
       });
-      const {instance} = comp.querySelector('#comment');
+      const { instance } = comp.querySelector('#comment');
       expect(instance.data.avatarData).toEqual({ image: 'https://tdesign.gtimg.com/avatar.png' });
 
       const avatarProps = { shape: 'circle', image: 'https://tdesign.gtimg.com/avatar2.png' };
@@ -70,6 +70,8 @@ describe('comment', () => {
       });
       expect(comp.querySelectorAll('#comment >>> .t-comment__actions-item').length).toBe(3);
       expect(comp.querySelectorAll('#comment >>> .t-comment__actions-item--disabled').length).toBe(1);
+      // 带图标与不带图标的操作项分别标记，用于区分文字颜色
+      expect(comp.querySelectorAll('#comment >>> .t-comment__actions-item--with-icon').length).toBe(2);
     });
 
     it(': 未指定 placement 的操作项归入 start 分组而不丢失', () => {
@@ -94,7 +96,14 @@ describe('comment', () => {
         data: { folds: { state: 'collapsed', total: 6 } },
       });
       await simulate.sleep();
+      const { instance } = comp.querySelector('#comment');
       expect(comp.querySelector('#comment >>> .t-comment__folds-item').dom.textContent).toContain('展开回复');
+
+      instance.setData({
+        globalConfig: { collapsedText: 'Expand replies', expandMoreText: 'More replies', collapseText: 'Collapse' },
+      });
+      await simulate.sleep();
+      expect(comp.querySelector('#comment >>> .t-comment__folds-item').dom.textContent).toContain('Expand replies');
     });
 
     it(': folds 优先使用业务传入的 content 文案', async () => {
@@ -110,15 +119,19 @@ describe('comment', () => {
   describe('event', () => {
     it(': actions 点击操作项触发事件并回传当前项', async () => {
       const handleActions = jest.fn();
+      const action = { key: 'like', content: '6', icon: 'thumb-up', placement: 'end' };
       const comp = renderComment({
         template: `<t-comment id="comment" actions="{{actions}}" bind:actions="onActions" />`,
-        data: { actions: [{ key: 'reply', content: '回复', placement: 'start' }] },
+        data: { actions: [action] },
         methods: { onActions: handleActions },
       });
       comp.querySelector('#comment >>> .t-comment__actions-item').dispatchEvent('tap');
       await simulate.sleep(20);
+
+      const { detail } = handleActions.mock.calls[0][0];
       expect(handleActions).toHaveBeenCalledTimes(1);
-      expect(handleActions.mock.calls[0][0].detail.action.key).toBe('reply');
+      expect(Object.keys(detail)).toEqual(['action']);
+      expect(detail.action).toEqual(action);
     });
 
     it(': actions 禁用的操作项点击不触发事件', async () => {
@@ -138,7 +151,7 @@ describe('comment', () => {
         template: `<t-comment id="comment" defaultFolds="{{folds}}" />`,
         data: { folds: { state: 'collapsed', total: 6, step: 3 } },
       });
-      const {instance} = comp.querySelector('#comment');
+      const { instance } = comp.querySelector('#comment');
       await simulate.sleep();
       expect(instance.data.foldState).toBe('collapsed');
 
@@ -157,18 +170,21 @@ describe('comment', () => {
 
     it(': folds 受控下仅派发事件，内部状态由外部驱动', async () => {
       const handleFolds = jest.fn();
+      const folds = { state: 'collapsed', total: 6, step: 3, content: { collapsed: '展开5条回复' } };
       const comp = renderComment({
         template: `<t-comment id="comment" folds="{{folds}}" bind:folds="onFolds" />`,
-        data: { folds: { state: 'collapsed', total: 6, step: 3 } },
+        data: { folds },
         methods: { onFolds: handleFolds },
       });
-      const {instance} = comp.querySelector('#comment');
+      const { instance } = comp.querySelector('#comment');
 
       comp.querySelector('#comment >>> .t-comment__folds-item').dispatchEvent('tap');
       await simulate.sleep();
 
+      const { detail } = handleFolds.mock.calls[0][0];
       expect(handleFolds).toHaveBeenCalledTimes(1);
-      expect(handleFolds.mock.calls[0][0].detail.fold.state).toBe('partial');
+      expect(Object.keys(detail)).toEqual(['fold']);
+      expect(detail.fold).toEqual({ ...folds, state: 'partial' });
       // 外部未回写 folds，内部仍保持折叠态
       expect(instance.data.foldState).toBe('collapsed');
     });

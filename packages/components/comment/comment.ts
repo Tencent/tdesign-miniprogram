@@ -1,7 +1,8 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import commentProps from './props';
-import type { CommentFold, CommentFoldState } from './type';
+import { calcIcon } from '../common/utils';
+import type { CommentFold, CommentFoldState, CommentActionItem } from './type';
 import type { AvatarProps } from '../avatar/index';
 import usingConfig from '../mixins/using-config';
 
@@ -23,7 +24,6 @@ export default class Comment extends SuperComponent {
 
   options = {
     multipleSlots: true,
-    // 以 _ 开头的 data 字段为纯数据字段，仅在逻辑层使用，不参与视图渲染
     pureDataPattern: /^_/,
   };
 
@@ -52,7 +52,8 @@ export default class Comment extends SuperComponent {
     commentFolds: DEFAULT_FOLDS,
     replyBodyHeight: '',
     avatarData: null,
-    // 纯数据字段：仅记录当前展开步数，不参与视图渲染
+    actionsData: [],
+    innerActive: false,
     _foldSteps: 0,
     globalConfig: {} as { collapsedText?: string; expandMoreText?: string; collapseText?: string },
   };
@@ -62,36 +63,50 @@ export default class Comment extends SuperComponent {
       this._syncAvatar(avatar);
     },
 
-    folds(folds: CommentFold | null) {
-      this._syncFolds(folds);
+    actions(actions: CommentActionItem[]) {
+      this._syncActions(actions);
     },
 
-    globalConfig() {
-      this._syncFolds(this.data.folds);
+    'folds, globalConfig'(folds: CommentFold | null) {
+      this._syncFolds(folds);
     },
   };
 
   lifetimes = {
     attached() {
       this._syncFolds(this.data.folds);
+      this._syncActions(this.data.actions);
     },
   };
 
   methods = {
+    handleLongPress() {
+      this.setData({ innerActive: true });
+    },
+
+    handlePressEnd() {
+      if (this.data.innerActive) {
+        this.setData({ innerActive: false });
+      }
+    },
+
     handleClickActions(e: WechatMiniprogram.BaseEvent) {
       const { action } = e.currentTarget.dataset;
       if (action?.disabled) return;
-      this.triggerEvent('actions', { action });
+      const eventAction = { ...action };
+      delete eventAction.iconData;
+      this.triggerEvent('actions', { action: eventAction });
     },
 
     handleClickFold(e: WechatMiniprogram.BaseEvent) {
       const { expand } = e.currentTarget.dataset;
       const { commentFolds } = this.data;
+      const userFolds = this.data.folds || DEFAULT_FOLDS;
 
       // 收起：直接回到初始折叠态
       if (expand !== true && expand !== 'true') {
         this.setData({ _foldSteps: 0 });
-        this._emitFold({ ...commentFolds, state: 'collapsed' });
+        this._emitFold({ ...userFolds, state: 'collapsed' });
         return;
       }
 
@@ -100,7 +115,7 @@ export default class Comment extends SuperComponent {
       const step = commentFolds.step || DEFAULT_STEP;
       const nextState: CommentFoldState = foldSteps >= step - 1 ? 'expanded' : 'partial';
       this.setData({ _foldSteps: foldSteps });
-      this._emitFold({ ...commentFolds, state: nextState });
+      this._emitFold({ ...userFolds, state: nextState });
     },
   };
 
@@ -138,6 +153,12 @@ export default class Comment extends SuperComponent {
     } else {
       this.setData({ avatarData: avatar && typeof avatar === 'object' ? avatar : null });
     }
+  }
+
+  _syncActions(actions: CommentActionItem[]) {
+    this.setData({
+      actionsData: (actions || []).map((action) => ({ ...action, iconData: calcIcon(action.icon) })),
+    });
   }
 
   /** 触发 folds 事件，受控场景下同步内部值 */

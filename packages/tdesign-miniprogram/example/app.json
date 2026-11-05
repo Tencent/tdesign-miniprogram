@@ -100,7 +100,8 @@
     "pages/segmented/skyline/segmented",
     "pages/paragraph/paragraph",
     "pages/chat-message/chat-message",
-    "pages/comment/comment"
+    "pages/comment/comment",
+    "pages/comment/skyline/comment"
   ],
   "subpackages": [
     {
