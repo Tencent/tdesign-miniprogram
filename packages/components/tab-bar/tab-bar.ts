@@ -101,12 +101,22 @@ export default class Tabbar extends SuperComponent {
       });
     },
 
+    syncCrowded() {
+      const crowded = this.$children.length > 3;
+
+      this.$children.forEach((child) => {
+        if (child.data.crowded !== crowded) {
+          child.setData({ crowded });
+        }
+      });
+    },
+
     showChildren() {
       const { value } = this.data;
 
-      this.$children.forEach((child) => {
-        child.setData({ crowded: this.$children.length > 3 });
+      this.syncCrowded();
 
+      this.$children.forEach((child) => {
         if (child.properties.value === value) {
           child.showSpread();
         }
