@@ -45,19 +45,17 @@ export default class Icon extends SuperComponent {
       }
 
       this.setData({ isImage }, async () => {
-        if (isImage) {
-          let iconSize = sizeValue;
-          if (!iconSize) {
-            await getRect(this, `.${classPrefix}`)
-              .then((res) => {
-                iconSize = addUnit(res?.height);
-              })
-              .catch(() => {});
-          }
-
-          iconStyle.width = iconSize;
-          iconStyle.height = iconSize;
+        let iconSize = sizeValue;
+        if (!iconSize) {
+          await getRect(this, `.${classPrefix}`)
+            .then((res) => {
+              iconSize = addUnit(res?.height);
+            })
+            .catch(() => {});
         }
+
+        iconStyle.width = iconSize;
+        iconStyle.height = iconSize;
         this.setData({ iconStyle: `${styles(iconStyle)}` });
       });
     },
