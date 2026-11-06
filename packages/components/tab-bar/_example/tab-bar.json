@@ -7,6 +7,7 @@
     "sub": "./sub",
     "badge": "./badge",
     "round": "./round",
+    "liquid-glass": "./liquid-glass",
     "custom": "./custom"
   }
 }
