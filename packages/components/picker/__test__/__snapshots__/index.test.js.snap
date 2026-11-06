@@ -200,7 +200,7 @@ exports[`picker :base 1`] = `
           </wx-view>
         </wx-view>
         <wx-view
-          class="t-popup__close"
+          class="t-popup__close t-class-close"
           bind:tap="handleClose"
         />
       </wx-view>

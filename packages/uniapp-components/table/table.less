@@ -7,6 +7,8 @@
 @table-header-bg-color: var(--td-table-header-bg-color, @bg-color-container);
 @table-header-text-color: var(--td-table-header-text-color, @text-color-placeholder);
 @table-body-text-color: var(--td-table-body-text-color, @text-color-primary);
+@table-popup-title-color: @text-color-primary;
+@table-popup-title-font: @font-title-medium;
 @table-stripe-bg-color: var(--td-table-stripe-bg-color, @bg-color-secondarycontainer);
 @table-td-padding: var(--td-table-td-padding, 16rpx 24rpx);
 @table-th-padding: var(--td-table-th-padding, 16rpx 24rpx);
@@ -102,8 +104,86 @@
   &__th-content,
   &__td-content {
     overflow: hidden;
+  }
+
+  // 开启 ellipsis / ellipsisTitle 后才出现超出省略
+  &__th-content--ellipsis,
+  &__td-content--ellipsis {
     text-overflow: ellipsis;
     white-space: nowrap;
+
+    // 文本节点：H5 渲染为 uni-text、小程序为 text，显式 nowrap 避免换行
+    > text,
+    > uni-text {
+      white-space: nowrap;
+    }
+  }
+
+  // 浮层尺寸作用在 popup wrapper（子组件内部），用 :deep() 穿透，对齐小程序通过 t-class 外部类设置尺寸的方式
+  :deep(&__popup--center) {
+    height: 36vh;
+    aspect-ratio: 1;
+  }
+
+  :deep(&__popup--bottom),
+  :deep(&__popup--top) {
+    width: 100%;
+    height: 33vh;
+  }
+
+  :deep(&__popup--left),
+  :deep(&__popup--right) {
+    width: 65%;
+    height: 100%;
+  }
+
+  &__popup-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  &__popup-title {
+    flex-shrink: 0;
+    padding: @spacer-2;
+    overflow: hidden;
+    color: @table-popup-title-color;
+    font: @table-popup-title-font;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  // 关闭按钮在 popup 子组件内部，scoped 无法命中，用 :deep() 穿透，对齐小程序通过 t-class-close 外部类设置内边距的方式
+  :deep(&__popup-close) {
+    padding: @spacer-2;
+  }
+
+  &__popup-content {
+    flex: 1;
+    overflow: auto;
+    word-break: break-all;
+    color: @text-color-secondary;
+    box-sizing: border-box;
+    padding: @spacer-2;
+
+    &--center {
+      padding: @spacer-3;
+    }
+
+    // 关闭按钮存在时，顶部预留关闭按钮高度，避免内容被遮挡
+    &--with-close {
+      padding-top: calc(48rpx + @spacer-2 * 2);
+    }
+  }
+
+  &__popup-title:not(:empty) + .@{table-prefix}__popup-content {
+    padding-top: 0;
   }
 
   // 空数据

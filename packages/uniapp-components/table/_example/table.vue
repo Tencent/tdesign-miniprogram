@@ -19,6 +19,9 @@
       <t-demo desc="带边框表格" padding>
         <bordered-demo />
       </t-demo>
+      <t-demo desc="单元格超出省略的表格 " padding>
+        <ellipsis-demo />
+      </t-demo>
       <t-demo desc="带合并单元格的表格" padding>
         <rowspan-colspan-demo />
       </t-demo>
@@ -29,6 +32,7 @@
 <script>
 import BaseDemo from './base/index.vue';
 import BorderedDemo from './bordered/index.vue';
+import EllipsisDemo from './ellipsis/index.vue';
 import RowspanColspanDemo from './rowspan-colspan/index.vue';
 import ScrollDemo from './scroll/index.vue';
 import StripeDemo from './stripe/index.vue';
@@ -40,6 +44,7 @@ export default {
     StripeDemo,
     ScrollDemo,
     RowspanColspanDemo,
+    EllipsisDemo,
   },
   data() {
     return {};
