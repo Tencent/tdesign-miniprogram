@@ -39,20 +39,23 @@ export default class Icon extends SuperComponent {
       const fontStyle = size ? { 'font-size': sizeValue } : {};
       const iconStyle: Record<string, any> = { ...colorStyle, ...fontStyle };
 
-      this.setData({ isImage }, async () => {
-        if (isImage) {
-          let iconSize = sizeValue;
-          if (!iconSize) {
-            await getRect(this, `.${classPrefix}`)
-              .then((res) => {
-                iconSize = addUnit(res?.height);
-              })
-              .catch(() => {});
-          }
+      if (!isImage) {
+        this.setData({ isImage, iconStyle: `${styles(iconStyle)}` });
+        return;
+      }
 
-          iconStyle.width = iconSize;
-          iconStyle.height = iconSize;
+      this.setData({ isImage }, async () => {
+        let iconSize = sizeValue;
+        if (!iconSize) {
+          await getRect(this, `.${classPrefix}`)
+            .then((res) => {
+              iconSize = addUnit(res?.height);
+            })
+            .catch(() => {});
         }
+
+        iconStyle.width = iconSize;
+        iconStyle.height = iconSize;
         this.setData({ iconStyle: `${styles(iconStyle)}` });
       });
     },
