@@ -54,6 +54,34 @@ fixed | String | left | fixed current column to left or right。options: left/ri
 min-width | String / Number | - | add CSS property `min-width` to HTML Element `<col>`，Browsers with [TablesNG](https://docs.google.com/document/d/16PFD1GtMI9Zgwu0jtPaKZJ75Q2wyZ9EZnVbBacOfiNA/preview)  support `minWidth` | N
 width | String / Number | - | column width | N
 
+
+### PrimaryTable Props
+
+name | type | default | description | required
+-- | -- | -- | -- | --
+custom-style | Object | - | CSS(Cascading Style Sheets) | N
+drag-sort | String | - | dag sort。options: row/row-handler/col/row-handler-col/drag-col | N
+filter-row | String | - | filter value | N
+hide-sort-tips | Boolean | - | hide sort tips | N
+multiple-sort | Boolean | false | support multiple column fields sort | N
+show-sort-column-bg-color | Boolean | false | column shows sort bg color | N
+sort | Object / Array | - | sort configs。`v-model:sort` is supported。Typescript: `TableSort` `type TableSort = SortInfo \| Array<SortInfo>` `interface SortInfo { sortBy: string; descending: boolean }`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/table/type.ts) | N
+default-sort | Object / Array | - | sort configs。uncontrolled property。Typescript: `TableSort` `type TableSort = SortInfo \| Array<SortInfo>` `interface SortInfo { sortBy: string; descending: boolean }`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/table/type.ts) | N
+
+### PrimaryTable Slots
+
+name | Description
+-- | --
+filter-row | filter value
+sort-icon | sort icon
+
+### PrimaryTableCol
+
+name | type | default | description | required
+-- | -- | -- | -- | --
+sort-type | String | all | sort options。options: desc/asc/all。Typescript: `SortType` `type SortType = 'desc' \| 'asc' \| 'all'`。[see more ts definition](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/table/type.ts) | N
+sorter | Boolean | false | sort configs。Typescript: `boolean` | N
+
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles.
