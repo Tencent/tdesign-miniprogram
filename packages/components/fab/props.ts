@@ -10,6 +10,16 @@ const props: TdFabProps = {
   buttonProps: {
     type: Object,
   },
+  /** 自动收缩延迟时间，单位毫秒 */
+  collapseDuration: {
+    type: Number,
+    value: 3000,
+  },
+  /** 是否开启自动收缩 */
+  collapsible: {
+    type: Boolean,
+    value: false,
+  },
   /** 是否可拖拽。`true` / `'all'`可拖动<br>`'vertical'`可垂直拖动<br>`'horizontal'`可水平拖动<br>`false`禁止拖动 */
   draggable: {
     type: null,
