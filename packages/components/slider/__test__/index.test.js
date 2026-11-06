@@ -247,4 +247,57 @@ describe('slider', () => {
 
     expect($slider.instance.data._value).toBe(100);
   });
+
+  it(':re-measure after resize', async () => {
+    // Track coordinates are measured once and cached. A window size change (e.g. screen
+    // rotation) changes the track width, so the slider must measure again, otherwise the
+    // cached coordinates are stale and the cursor no longer follows the touch.
+    // https://github.com/Tencent/tdesign-miniprogram/issues/4262
+    const query = {
+      left: 16,
+      right: 325,
+      in() {
+        return this;
+      },
+      select() {
+        return this;
+      },
+      boundingClientRect(fn) {
+        fn({ left: this.left, right: this.right });
+        return this;
+      },
+      exec() {
+        return this;
+      },
+    };
+    const id = simulate.load({
+      template: `<t-slider id="base"></t-slider>`,
+      usingComponents: {
+        't-slider': slider,
+      },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    await simulate.sleep();
+
+    const $slider = comp.querySelector('#base');
+    // getRect measures through the component instance's createSelectorQuery
+    $slider.instance.createSelectorQuery = () => query;
+
+    // the framework triggers the page resize lifetime on screen rotation
+    $slider.instance.triggerPageLifeTime('resize');
+    await simulate.sleep();
+    expect($slider.instance.data.initialLeft).toBe(16);
+    expect($slider.instance.data.initialRight).toBe(325);
+    expect($slider.instance.data.maxRange).toBe(325 - 16);
+
+    // simulate a rotation: the track becomes narrower
+    query.left = 40;
+    query.right = 240;
+    $slider.instance.triggerPageLifeTime('resize');
+    await simulate.sleep();
+    expect($slider.instance.data.initialLeft).toBe(40);
+    expect($slider.instance.data.initialRight).toBe(240);
+    expect($slider.instance.data.maxRange).toBe(240 - 40);
+  });
 });
