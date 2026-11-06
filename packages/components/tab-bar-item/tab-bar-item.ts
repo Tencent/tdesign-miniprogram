@@ -25,7 +25,6 @@ export default class TabBarItem extends SuperComponent {
           currentName: this.properties.value ? this.properties.value : parent.initName(),
         });
         parent.updateChildren();
-        parent.syncCrowded();
       },
     },
   };
