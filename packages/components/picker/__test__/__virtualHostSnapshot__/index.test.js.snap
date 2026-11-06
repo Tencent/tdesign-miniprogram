@@ -59,6 +59,7 @@ exports[`picker :base 1`] = `
                 bind:touchend="onTouchEnd"
                 catch:touchmove="onTouchMove"
                 bind:touchstart="onTouchStart"
+                catch:wheel="onWheel"
               >
                 <wx-view
                   class="t-picker-item__wrapper"
@@ -99,6 +100,7 @@ exports[`picker :base 1`] = `
                 bind:touchend="onTouchEnd"
                 catch:touchmove="onTouchMove"
                 bind:touchstart="onTouchStart"
+                catch:wheel="onWheel"
               >
                 <wx-view
                   class="t-picker-item__wrapper"
