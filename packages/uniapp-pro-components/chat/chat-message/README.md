@@ -76,6 +76,8 @@ message-longpress | `(context: { e: MouseEvent, id: string, longPressPosition: {
 
 名称 | 描述
 -- | --
+content | 自定义`content` 显示内容（props中传入的content优先级高于插槽）
 avatar | 自定义 `avatar` 显示内容
 content | 自定义消息内容
 name | 自定义 `name` 显示内容
+actionbar | 自定义`actionbar` 操作栏
