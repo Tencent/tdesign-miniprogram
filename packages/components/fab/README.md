@@ -46,6 +46,8 @@ isComponent: true
 
 {{ collapsible }}
 
+该示例会在页面空闲约 3 秒后自动收缩；点击收缩状态的箭头即可展开，并重新开始计时。页面滚动时会重置收缩计时。
+
 ## FAQ
 
 ### 为什么通过 style/customStyle 设置 top/left 调整初试定位后，会使页面内容无法点击以及拖拽异常？

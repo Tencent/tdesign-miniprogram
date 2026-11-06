@@ -1,10 +1,19 @@
 import pageScrollMixin from 'tdesign-miniprogram/mixins/page-scroll';
 
+const COLLAPSE_DELAY = 3000;
+
 Component({
   behaviors: [pageScrollMixin()],
   data: {
-    scrolling: false,
-    timer: null,
+    collapsed: false,
+  },
+  lifetimes: {
+    attached() {
+      this.startCollapseTimer();
+    },
+    detached() {
+      this.clearCollapseTimer();
+    },
   },
   methods: {
     handleClick(e) {
@@ -17,15 +26,24 @@ Component({
       console.log('handleDragEnd: ', e);
     },
     onScroll() {
+      this.startCollapseTimer();
+    },
+    onExpand() {
+      if (!this.data.collapsed) return;
+      this.setData({ collapsed: false });
+      this.startCollapseTimer();
+    },
+    clearCollapseTimer() {
+      if (!this.timer) return;
       clearTimeout(this.timer);
-      this.setData({
-        scrolling: true,
-      });
+      this.timer = null;
+    },
+    startCollapseTimer() {
+      this.clearCollapseTimer();
       this.timer = setTimeout(() => {
-        this.setData({
-          scrolling: false,
-        });
-      }, 100);
+        this.setData({ collapsed: true });
+        this.timer = null;
+      }, COLLAPSE_DELAY);
     },
   },
 });
