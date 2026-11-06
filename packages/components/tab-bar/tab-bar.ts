@@ -101,20 +101,10 @@ export default class Tabbar extends SuperComponent {
       });
     },
 
-    syncCrowded() {
-      const crowded = this.$children.length > 3;
-
-      this.$children.forEach((child) => {
-        if (child.data.crowded !== crowded) {
-          child.setData({ crowded });
-        }
-      });
-    },
-
     showChildren() {
       const { value } = this.data;
 
-      this.syncCrowded();
+      this.updateChildren();
 
       this.$children.forEach((child) => {
         if (child.properties.value === value) {
@@ -125,9 +115,13 @@ export default class Tabbar extends SuperComponent {
 
     updateChildren() {
       const { value } = this.data;
+      const crowded = this.$children.length > 3;
 
       this.$children.forEach((child) => {
         child.checkActive(value);
+        if (child.data.crowded !== crowded) {
+          child.setData({ crowded });
+        }
       });
     },
 
