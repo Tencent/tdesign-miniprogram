@@ -56,7 +56,10 @@ export default class TreeSelect extends SuperComponent {
     buildTreeOptions() {
       const { options, value, customValue, multiple, keys } = this.data;
 
-      if (!options.length) return;
+      if (!options.length) {
+        this.setData({ treeOptions: [] });
+        return;
+      }
 
       const treeOptions: TreeOptionData[][] = [];
 
@@ -75,7 +78,7 @@ export default class TreeSelect extends SuperComponent {
         treeOptions.push(currentLevelOptions);
 
         const currentValue = customValue?.[level] ?? value?.[level];
-        currentNode = currentValue
+        currentNode = isDef(currentValue)
           ? (currentLevelOptions.find((child) => child.value === currentValue) ?? currentLevelOptions[0])
           : currentLevelOptions[0];
       }
