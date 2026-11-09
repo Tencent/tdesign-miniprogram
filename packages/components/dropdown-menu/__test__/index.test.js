@@ -96,4 +96,29 @@ describe('dropdown-menu', () => {
       expect($first.dom.textContent.trim()).toBe('first');
     }
   });
+
+  it(':keepLabelActive', async () => {
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    await simulate.sleep();
+
+    const $keepActive = comp.querySelector('#keep-active');
+    const $keepActiveEmpty = comp.querySelector('#keep-active-empty');
+    const $second = comp.querySelector('#second');
+
+    // 子组件：multiple + keepLabelActive + 有选中项 → keepActive 为 true
+    expect($keepActive.instance.data.keepActive).toBeTruthy();
+    // 子组件：multiple + keepLabelActive 但无选中项 → keepActive 为 false
+    expect($keepActiveEmpty.instance.data.keepActive).toBeFalsy();
+    // 子组件：multiple 但未开启 keepLabelActive → keepActive 为 false
+    expect($second.instance.data.keepActive).toBeFalsy();
+
+    const $items = comp.querySelectorAll('#base >>> .t-dropdown-menu__item');
+    // 收起态下：multiple + keepLabelActive + 有选中项 → 标题保持高亮
+    expect($items[2].dom.className).toContain('t-dropdown-menu__item--active');
+    // multiple 未开启 keepLabelActive → 收起态不高亮
+    expect($items[1].dom.className).not.toContain('t-dropdown-menu__item--active');
+    // keepLabelActive 但无选中项 → 不高亮
+    expect($items[3].dom.className).not.toContain('t-dropdown-menu__item--active');
+  });
 });

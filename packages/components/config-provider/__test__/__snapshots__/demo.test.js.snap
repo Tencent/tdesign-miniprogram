@@ -91,6 +91,11 @@ After enabling, return to the Mini Program and try again.",
             "stop": "thinking has stopped",
           },
         },
+        "comment": Object {
+          "collapseText": "Collapse",
+          "collapsedText": "Expand replies",
+          "expandMoreText": "More replies",
+        },
         "dateTimePicker": Object {
           "cancel": "Cancel",
           "confirm": "Confirm",
@@ -299,6 +304,49 @@ exports[`ConfigProvider ConfigProvider other-en demo works fine 1`] = `
       bind:close="handleClose"
       bind:pick="onColumnChange"
     />
+    <wx-view
+      class="comment-demo"
+    >
+      <t-comment
+        author="Name1"
+        avatar="{{
+          Object {
+            "image": "https://tdesign.gtimg.com/mobile/demos/avatar1.png",
+            "shape": "circle",
+            "size": "64rpx",
+          }
+        }}"
+        content="This is a comment content."
+        datetime="Today 16:38"
+        folds="{{
+          Object {
+            "state": "collapsed",
+            "step": 3,
+            "total": 6,
+          }
+        }}"
+        bind:folds="handleUpdateFold"
+      >
+        <wx-view
+          slot="reply"
+        >
+          <wx-view>
+            <t-comment
+              author="Name1"
+              avatar="{{
+                Object {
+                  "image": "https://tdesign.gtimg.com/mobile/demos/avatar1.png",
+                  "shape": "circle",
+                  "size": "40rpx",
+                }
+              }}"
+              content="This is a reply content."
+              datetime="Today 16:38"
+            />
+          </wx-view>
+        </wx-view>
+      </t-comment>
+    </wx-view>
   </t-config-provider>
 </other-en>
 `;
@@ -393,6 +441,11 @@ After enabling, return to the Mini Program and try again.",
             "pending": "thinking...",
             "stop": "thinking has stopped",
           },
+        },
+        "comment": Object {
+          "collapseText": "Collapse",
+          "collapsedText": "Expand replies",
+          "expandMoreText": "More replies",
         },
         "dateTimePicker": Object {
           "cancel": "Cancel",

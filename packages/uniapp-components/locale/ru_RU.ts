@@ -129,6 +129,11 @@ export default {
     finish: 'Готово',
     back: 'Назад',
   },
+  comment: {
+    collapsedText: 'Показать ответы',
+    expandMoreText: 'Ещё ответы',
+    collapseText: 'Свернуть',
+  },
   typography: {
     expandText: 'Развернуть',
     collapseText: 'Свернуть',

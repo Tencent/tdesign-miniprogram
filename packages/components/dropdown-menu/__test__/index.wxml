@@ -19,4 +19,20 @@
     defaultValue="{{multipleSelect.value}}"
     multiple
   />
+  <t-dropdown-item
+    id="keep-active"
+    label="保持高亮"
+    options="{{multipleSelect.options}}"
+    defaultValue="{{multipleSelect.value}}"
+    keepLabelActive
+    multiple
+  />
+  <t-dropdown-item
+    id="keep-active-empty"
+    label="保持高亮无选中"
+    options="{{multipleSelect.options}}"
+    defaultValue="{{emptyMultipleSelect.value}}"
+    keepLabelActive
+    multiple
+  />
 </t-dropdown-menu>

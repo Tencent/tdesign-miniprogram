@@ -1,0 +1,12 @@
+.mobile-comment__author {
+  display: flex;
+  align-items: center;
+  font: var(--td-font-body-small);
+  color: var(--td-text-color-placeholder);
+}
+
+.mobile-comment__author-tag {
+  border: none;
+  --td-tag-medium-padding: 0 var(--td-spacer);
+  --td-tag-primary-light-color: transparent;
+}

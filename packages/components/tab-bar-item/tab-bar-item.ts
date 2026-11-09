@@ -26,6 +26,9 @@ export default class TabBarItem extends SuperComponent {
         });
         parent.updateChildren();
       },
+      unlinked(parent) {
+        parent.updateChildren();
+      },
     },
   };
 
@@ -100,12 +103,12 @@ export default class TabBarItem extends SuperComponent {
       });
     },
     checkActive(value) {
-      const { currentName, subTabBar } = this.data;
-      const isChecked = subTabBar?.some((item) => item.value === value) || currentName === value;
+      const { currentName, subTabBar, isChecked } = this.data;
+      const nextChecked = subTabBar?.some((item) => item.value === value) || currentName === value;
 
-      this.setData({
-        isChecked,
-      });
+      if (nextChecked !== isChecked) {
+        this.setData({ isChecked: nextChecked });
+      }
     },
     closeSpread() {
       this.setData({

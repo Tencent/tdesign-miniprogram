@@ -97,6 +97,7 @@ export default class DropdownMenu extends SuperComponent {
       const menus = this.$children.map(({ data }) => ({
         label: data.computedLabel || data.label,
         disabled: data.disabled,
+        active: data.keepActive,
       }));
 
       this.setData({

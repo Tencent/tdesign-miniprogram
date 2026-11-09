@@ -540,3 +540,50 @@ exports[`ChatSender ChatSender file-citation demo works fine 1`] = `
   </wx-view>
 </file-citation>
 `;
+
+exports[`ChatSender ChatSender record demo works fine 1`] = `
+<record>
+  <wx-view
+    class="demo-base-container"
+  >
+    <wx-view
+      class="chat-sender-demo-wrapper"
+    >
+      <wx-view
+        class="chat-sender-wrapper"
+        style="bottom: 0px;"
+      >
+        <t-chat-sender
+          allowSpeech="{{true}}"
+          loading="{{false}}"
+          placeholder="请输入内容"
+          value=""
+          bind:keyboardheightchange="onKeyboardHeightChange"
+          bind:send="onSend"
+        >
+          <wx-view
+            slot="speech"
+          >
+            <t-chat-record
+              bind:recognize="handleRecognize"
+            >
+              <wx-view
+                class="speech-slot-btn"
+                slot="speechInput"
+              >
+                 按住说话 
+              </wx-view>
+              <wx-view
+                class="speech-btn-error"
+                slot="speechNoAuth"
+              >
+                 请授权麦克风权限 
+              </wx-view>
+            </t-chat-record>
+          </wx-view>
+        </t-chat-sender>
+      </wx-view>
+    </wx-view>
+  </wx-view>
+</record>
+`;

@@ -85,7 +85,6 @@ exports[`Form Form horizontal demo works fine 1`] = `
     bind:submit="onSubmit"
   >
     <t-form-item
-      help="输入用户名"
       label="用户名"
       name="name"
     >
@@ -146,7 +145,6 @@ exports[`Form Form horizontal demo works fine 1`] = `
     </t-form-item>
     <t-form-item
       arrow="{{true}}"
-      contentAlign="right"
       label="生日"
       name="birth"
     >
@@ -171,7 +169,6 @@ exports[`Form Form horizontal demo works fine 1`] = `
     </t-form-item>
     <t-form-item
       arrow="{{true}}"
-      contentAlign="right"
       label="籍贯"
       name="place"
     >
@@ -348,7 +345,6 @@ exports[`Form Form horizontal demo works fine 1`] = `
       />
     </t-form-item>
     <t-form-item
-      contentAlign="right"
       label="年限"
       name="age"
     >
@@ -360,7 +356,6 @@ exports[`Form Form horizontal demo works fine 1`] = `
       />
     </t-form-item>
     <t-form-item
-      contentAlign="right"
       label="自我评价"
       name="description"
     >
@@ -534,7 +529,6 @@ exports[`Form Form vertical demo works fine 1`] = `
     bind:submit="onSubmit"
   >
     <t-form-item
-      help="输入用户名"
       label="用户名"
       name="name"
     >

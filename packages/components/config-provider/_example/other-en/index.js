@@ -1,5 +1,11 @@
+import enUS from 'tdesign-miniprogram/locale/en_US';
+
+const REPLY_COUNT = 6;
+
 Component({
   data: {
+    globalConfig: enUS,
+
     // rate
     rateValue: 3,
 
@@ -15,7 +21,41 @@ Component({
     popupProps: {
       usingCustomNavbar: true,
     },
+
+    // comment（不传 folds.content，折叠/展开文案走全局国际化配置）
+    commentAvatar: {
+      shape: 'circle',
+      size: '64rpx',
+      image: 'https://tdesign.gtimg.com/mobile/demos/avatar1.png',
+    },
+    commentFold: {
+      state: 'collapsed',
+      total: REPLY_COUNT,
+      step: 3,
+    },
+    replyInfo: [],
+    visibleReplies: [],
   },
+
+  lifetimes: {
+    attached() {
+      const replyInfo = new Array(REPLY_COUNT).fill({}).map((_, index) => ({
+        author: `Name${index + 1}`,
+        avatar: {
+          shape: 'circle',
+          size: '40rpx',
+          image: 'https://tdesign.gtimg.com/mobile/demos/avatar1.png',
+        },
+        content: 'This is a reply content.',
+        datetime: 'Today 16:38',
+      }));
+      this.setData({
+        replyInfo,
+        visibleReplies: replyInfo.slice(0, 1),
+      });
+    },
+  },
+
   methods: {
     // rate
     onRateChange(e) {
@@ -69,6 +109,23 @@ Component({
 
     onPickerColumnChange(e) {
       console.log('pick', e.detail.value);
+    },
+
+    // comment
+    handleUpdateFold(e) {
+      const { fold } = e.detail;
+      const { replyInfo } = this.data;
+
+      let visibleReplies;
+      if (fold.state === 'collapsed') {
+        visibleReplies = replyInfo.slice(0, 1);
+      } else if (fold.state === 'partial') {
+        visibleReplies = replyInfo.slice(0, 3);
+      } else {
+        visibleReplies = replyInfo;
+      }
+
+      this.setData({ commentFold: fold, visibleReplies });
     },
   },
 });

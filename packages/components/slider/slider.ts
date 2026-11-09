@@ -130,6 +130,12 @@ export default class Slider extends SuperComponent {
     },
   };
 
+  pageLifetimes = {
+    resize() {
+      this.handleResize();
+    },
+  };
+
   injectPageScroll() {
     const { range, vertical } = this.properties;
     if (!range || !vertical) return;
@@ -305,6 +311,16 @@ export default class Slider extends SuperComponent {
       __inited: true,
     });
     this.bus.emit('initial');
+  }
+
+  handleResize() {
+    // Re-measure the track when the window size changes (e.g. screen rotation).
+    // Otherwise the cached bar coordinates stay stale and dragging breaks. (#4262)
+    this.setData({ __inited: false }, async () => {
+      await this.init().catch(() => {});
+      this.renderLine(this.data._value);
+      this.handleMark(this.properties.marks);
+    });
   }
 
   stepValue(value: number): number {

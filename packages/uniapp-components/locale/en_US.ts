@@ -118,6 +118,11 @@ export default {
     finish: 'Finish',
     back: 'Back',
   },
+  comment: {
+    collapsedText: 'Expand replies',
+    expandMoreText: 'More replies',
+    collapseText: 'Collapse',
+  },
   typography: {
     expandText: 'more',
     collapseText: 'collapse',

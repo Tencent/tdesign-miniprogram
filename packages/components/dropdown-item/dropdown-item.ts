@@ -45,6 +45,7 @@ export default class DropdownMenuItem extends SuperComponent {
     valueAlias: 'value',
     computedLabel: '',
     firstCheckedValue: '', // 用于多选再次打开自动定位到首个选项
+    keepActive: false, // 是否保持标题高亮（含菜单收起态），仅多选且有选中项时生效
   };
 
   relations: RelationsOptions = {
@@ -96,6 +97,14 @@ export default class DropdownMenuItem extends SuperComponent {
       }
     },
     'label, computedLabel, disabled'() {
+      this.$parent?.getAllItems();
+    },
+    'keepLabelActive, multiple, value'() {
+      const { keepLabelActive, multiple, value } = this.data;
+
+      this.setData({
+        keepActive: Boolean(multiple && keepLabelActive && Array.isArray(value) && value.length > 0),
+      });
       this.$parent?.getAllItems();
     },
     show(visible) {

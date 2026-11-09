@@ -13,66 +13,74 @@
       '__' +
       dataNameKey +
       ' ' +
-      errorClasses +
-      ' ' +
       tClass
     "
     :style="'' + tools._style([customStyle])"
   >
-    <view :class="formItemClass + '-wrap ' + formItemClass + '--' + dataLabelAlign + ' ' + tClassWrap">
-      <!-- 标签区域 -->
-      <slot name="label">
-        <view
-          v-if="label"
-          :class="
-            labelClass +
-            ' ' +
-            labelClass +
-            '--' +
-            dataLabelAlign +
-            (dataRequiredMark ? ' ' + labelClass + '--required' : '') +
-            (dataRequiredMark && requiredMarkPosition === 'right' ? ' ' + labelClass + '--required-right' : '') +
-            ' ' +
-            tClassLabel
-          "
-          :style="'width: ' + dataLabelWidth"
-        >
-          <label :class="labelClass + '-text'" :for="forId">{{ label }}</label>
-          <template v-if="colon">
-            {{ globalConfig.colonText }}
-          </template>
-        </view>
-      </slot>
-
-      <!-- 内容区域 -->
-      <view :class="formClass + '__controls ' + errorClasses + ' ' + tClassControls">
-        <view
-          :class="formClass + '__controls-content ' + formClass + '__controls--' + dataContentAlign"
-          :style="contentStyle"
-        >
-          <slot />
-        </view>
-        <!-- 帮助信息 -->
-        <slot name="help">
+    <view :class="formItemClass + '-main'">
+      <view :class="formItemClass + '-wrap ' + formItemClass + '--' + dataLabelAlign + ' ' + tClassWrap">
+        <!-- 标签区域 -->
+        <slot name="label">
           <view
-            v-if="help"
-            :class="formItemClass + '-help ' + formClass + '__controls--' + dataContentAlign + ' ' + tClassHelp"
+            v-if="label"
+            :class="
+              labelClass +
+              ' ' +
+              labelClass +
+              '--' +
+              dataLabelAlign +
+              (dataRequiredMark ? ' ' + labelClass + '--required' : '') +
+              (dataRequiredMark && requiredMarkPosition === 'right' ? ' ' + labelClass + '--required-right' : '') +
+              ' ' +
+              tClassLabel
+            "
+            :style="'width: ' + dataLabelWidth"
           >
-            {{ help }}
+            <label :class="labelClass + '-text'" :for="forId">{{ label }}</label>
+            <template v-if="colon">
+              {{ globalConfig.colonText }}
+            </template>
           </view>
         </slot>
 
-        <!-- 校验提示信息 -->
-        <view
-          v-if="(errorList.length > 0 && dataShowErrorMessage) || successList.length > 0"
-          :class="formItemClass + '-extra ' + formClass + '__controls--' + dataContentAlign + ' ' + tClassExtra"
-        >
-          {{ errorList.length > 0 && dataShowErrorMessage ? errorList[0].message : successList[0].message }}
+        <!-- 内容区域 -->
+        <view :class="formClass + '__controls ' + tClassControls">
+          <view
+            :class="formClass + '__controls-content ' + formClass + '__controls--' + dataContentAlign"
+            :style="contentStyle"
+          >
+            <slot />
+          </view>
         </view>
       </view>
+
+      <t-icon v-if="arrow" name="chevron-right" :t-class="formItemClass + '-arrow'" />
     </view>
 
-    <t-icon v-if="arrow" name="chevron-right" :t-class="formItemClass + '__icon'" />
+    <!-- 帮助信息 & 校验提示信息 -->
+    <view
+      v-if="help || (errorList.length > 0 && dataShowErrorMessage) || successList.length > 0"
+      :class="formItemClass + '-tips ' + errorClasses"
+      :style="label && dataLabelWidth && dataLabelAlign !== 'top' ? 'margin-left:' + dataLabelWidth : ''"
+    >
+      <!-- 帮助信息 -->
+      <slot name="help">
+        <view
+          v-if="help"
+          :class="formItemClass + '-help ' + formClass + '__controls--' + dataContentAlign + ' ' + tClassHelp"
+        >
+          {{ help }}
+        </view>
+      </slot>
+
+      <!-- 校验提示信息 -->
+      <view
+        v-if="(errorList.length > 0 && dataShowErrorMessage) || successList.length > 0"
+        :class="formItemClass + '-extra ' + formClass + '__controls--' + dataContentAlign + ' ' + tClassExtra"
+      >
+        {{ errorList.length > 0 && dataShowErrorMessage ? errorList[0].message : successList[0].message }}
+      </view>
+    </view>
   </view>
 </template>
 <script>

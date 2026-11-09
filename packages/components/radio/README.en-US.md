@@ -87,14 +87,14 @@ The component provides the following CSS variables, which can be used to customi
 Name | Default Value | Description
 -- | -- | --
 --td-radio-bg-color | @bg-color-container | -
---td-radio-border-color | @component-stroke | -
+--td-radio-border-color | @component-border | -
 --td-radio-content-checked-color | @text-color-secondary | -
 --td-radio-content-color | @text-color-secondary | -
 --td-radio-content-disabled-color | @text-color-disabled | -
 --td-radio-content-font | @font-body-medium | -
 --td-radio-font | @font-body-large | -
 --td-radio-icon-checked-color | @brand-color | -
---td-radio-icon-color | @component-border | -
+--td-radio-icon-color | @text-color-anti | -
 --td-radio-icon-disabled-bg-color | @bg-color-component-disabled | -
 --td-radio-icon-disabled-color | @brand-color-disabled | -
 --td-radio-icon-size | 48rpx | -

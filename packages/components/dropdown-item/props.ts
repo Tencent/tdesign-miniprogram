@@ -11,6 +11,11 @@ const props: TdDropdownItemProps = {
     type: Boolean,
     value: false,
   },
+  /** 是否保持标题高亮（含菜单收起态），仅多选场景生效 */
+  keepLabelActive: {
+    type: Boolean,
+    value: false,
+  },
   /** 用来定义 value / label / disabled 在 `options` 中对应的字段别名 */
   keys: {
     type: Object,

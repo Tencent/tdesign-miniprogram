@@ -12,7 +12,7 @@
       @reset="(e) => onReset(e, { tagId: 'form' })"
       @submit="(e) => onSubmit(e, { tagId: 'form' })"
     >
-      <t-form-item label="用户名" name="name" help="输入用户名">
+      <t-form-item label="用户名" name="name">
         <t-input
           :value="formData.name"
           :disabled="disabled"
@@ -125,7 +125,7 @@
         />
       </t-form-item>
 
-      <t-form-item label="上传照片" label-align="top" name="photo">
+      <t-form-item label="上传照片" name="photo">
         <t-upload
           :files="formData.photo"
           :disabled="disabled"

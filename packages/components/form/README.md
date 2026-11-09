@@ -153,8 +153,11 @@ whitespace | String | - | 值为空格校验不通过时表单项显示文案，
 名称 | 默认值 | 描述
 -- | -- | --
 --td-form-bg-color | @bg-color-container | -
+--td-form-item-arrow-align | center | -
+--td-form-item-arrow-color | @text-color-placeholder | -
+--td-form-item-arrow-size | 48rpx | -
 --td-form-item-border-color | @component-stroke | -
 --td-form-item-border-left-space | @form-item-vertical-padding | -
 --td-form-item-border-right-space | 0 | -
---td-form-item-horizontal-padding | @spacer-2 | -
---td-form-item-vertical-padding | @spacer-2 | -
+--td-form-item-padding | @form-item-horizontal-padding @form-item-vertical-padding | -
+--td-form-label-font | @font-body-large | -

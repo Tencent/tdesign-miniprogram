@@ -1,45 +1,55 @@
 <wxs src="../common/utils.wxs" module="_" />
 
 <view
-  class="{{classPrefix}} {{_.cls(formItemClass, [['bordered', !isLastChild]])}} {{formClass}}--{{innerLabelAlign}} {{formClass}}-item__{{name}} {{prefix}}-class"
+  class="{{classPrefix}} {{_.cls(formItemClass, [['bordered', !isLastChild]])}} {{formClass}}--{{innerLabelAlign}} {{formClass}}-item__{{name}} class {{prefix}}-class"
   style="{{_._style([style, customStyle])}}"
 >
-  <view class="{{formItemClass}}-wrap {{formItemClass}}--{{innerLabelAlign}} {{prefix}}-class-wrap">
-    <!-- 标签区域 -->
-    <view
-      wx:if="{{label}}"
-      class="{{_.cls(labelClass, [innerLabelAlign, ['required', innerRequiredMark], ['required-right', innerRequiredMark && requiredMarkPosition === 'right']])}}  {{prefix}}-class-label"
-      style="width: {{innerLabelWidth}}"
-    >
-      <label class="{{labelClass}}-text" for="{{for}}">{{label}}</label>
-      <block wx:if="{{colon}}">{{globalConfig.colonText}}</block>
-    </view>
-
-    <!-- 内容区域 -->
-    <view class="{{formClass}}__controls {{errorClasses}} {{prefix}}-class-controls">
+  <view class="{{formItemClass}}-main">
+    <view class="{{formItemClass}}-wrap {{formItemClass}}--{{innerLabelAlign}} {{prefix}}-class-wrap">
+      <!-- 标签区域 -->
       <view
-        class="{{formClass}}__controls-content {{formClass}}__controls--{{innerContentAlign}}"
-        style="{{contentStyle}}"
+        wx:if="{{label}}"
+        class="{{_.cls(labelClass, [innerLabelAlign, ['required', innerRequiredMark], ['required-right', innerRequiredMark && requiredMarkPosition === 'right']])}}  {{prefix}}-class-label"
+        style="width: {{innerLabelWidth}}"
       >
-        <slot />
-      </view>
-      <!-- 帮助信息 -->
-      <view
-        wx:if="{{help}}"
-        class="{{formItemClass}}-help {{formClass}}__controls--{{innerContentAlign}} {{prefix}}-class-help"
-      >
-        {{ help }}
+        <label class="{{labelClass}}-text" for="{{for}}">{{label}}</label>
+        <block wx:if="{{colon}}">{{globalConfig.colonText}}</block>
       </view>
 
-      <!-- 校验提示信息 -->
-      <view
-        wx:if="{{(errorList.length > 0 && innerShowErrorMessage) || successList.length > 0}}"
-        class="{{formItemClass}}-extra {{formClass}}__controls--{{innerContentAlign}} {{prefix}}-class-extra"
-      >
-        {{errorList.length > 0 && innerShowErrorMessage ? errorList[0].message : successList[0].message}}
+      <!-- 内容区域 -->
+      <view class="{{formClass}}__controls {{prefix}}-class-controls">
+        <view
+          class="{{formClass}}__controls-content {{formClass}}__controls--{{innerContentAlign}}"
+          style="{{contentStyle}}"
+        >
+          <slot />
+        </view>
       </view>
     </view>
+
+    <t-icon wx:if="{{arrow}}" name="chevron-right" class="{{formItemClass}}-arrow" />
   </view>
 
-  <t-icon wx:if="{{arrow}}" name="chevron-right" class="{{formItemClass}}__icon" />
+  <!-- 帮助信息 & 校验提示信息 -->
+  <view
+    wx:if="{{help || (errorList.length > 0 && innerShowErrorMessage) || successList.length > 0}}"
+    class="{{formItemClass}}-tips {{errorClasses}}"
+    style="{{label && innerLabelWidth && innerLabelAlign !== 'top' ? 'margin-left:' + innerLabelWidth : ''}}"
+  >
+    <!-- 帮助信息 -->
+    <view
+      wx:if="{{help}}"
+      class="{{formItemClass}}-help {{formClass}}__controls--{{innerContentAlign}} {{prefix}}-class-help"
+    >
+      {{ help }}
+    </view>
+
+    <!-- 校验提示信息 -->
+    <view
+      wx:if="{{(errorList.length > 0 && innerShowErrorMessage) || successList.length > 0}}"
+      class="{{formItemClass}}-extra {{formClass}}__controls--{{innerContentAlign}} {{prefix}}-class-extra"
+    >
+      {{errorList.length > 0 && innerShowErrorMessage ? errorList[0].message : successList[0].message}}
+    </view>
+  </view>
 </view>

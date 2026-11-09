@@ -44,6 +44,7 @@ name | type | default | description | required
 style | Object | - | CSS(Cascading Style Sheets) | N
 custom-style | Object | - | CSS(Cascading Style Sheets)，used to set style on virtual component | N
 disabled | Boolean | false | \- | N
+keep-label-active | Boolean | false | `1.18.0` | N
 keys | Object | - | Typescript: `KeysType`。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts) | N
 label | String | - | \- | N
 multiple | Boolean | false | \- | N

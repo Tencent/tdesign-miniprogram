@@ -75,6 +75,70 @@ exports[`dropdown-menu :base 1`] = `
           </wx-view>
         </t-icon>
       </wx-view>
+      <wx-view
+        ariaDisabled="{{false}}"
+        ariaExpanded="{{false}}"
+        ariaHaspopup="menu"
+        ariaRole="button"
+        class="t-dropdown-menu__item t-dropdown-menu__item--active t-dropdown-menu__item--2 t-class-item"
+        data-index="{{2}}"
+        bind:tap="handleToggle"
+      >
+        <wx-view
+          class="t-dropdown-menu__title t-class-label"
+        >
+          保持高亮
+        </wx-view>
+        <t-icon
+          tClass="t-dropdown-menu__icon t-dropdown-menu__icon-- t-class-icon"
+          bind:click=""
+        >
+          <wx-view
+            ariaHidden="{{true}}"
+            ariaLabel=""
+            ariaRole=""
+            class="t-icon class t-class"
+            style=""
+            bind:tap="onTap"
+          >
+            <wx-label
+              class="t-icon-caret-down-small t-icon-base"
+            />
+          </wx-view>
+        </t-icon>
+      </wx-view>
+      <wx-view
+        ariaDisabled="{{false}}"
+        ariaExpanded="{{false}}"
+        ariaHaspopup="menu"
+        ariaRole="button"
+        class="t-dropdown-menu__item t-dropdown-menu__item--3 t-class-item"
+        data-index="{{3}}"
+        bind:tap="handleToggle"
+      >
+        <wx-view
+          class="t-dropdown-menu__title t-class-label"
+        >
+          保持高亮无选中
+        </wx-view>
+        <t-icon
+          tClass="t-dropdown-menu__icon t-dropdown-menu__icon-- t-class-icon"
+          bind:click=""
+        >
+          <wx-view
+            ariaHidden="{{true}}"
+            ariaLabel=""
+            ariaRole=""
+            class="t-icon class t-class"
+            style=""
+            bind:tap="onTap"
+          >
+            <wx-label
+              class="t-icon-caret-down-small t-icon-base"
+            />
+          </wx-view>
+        </t-icon>
+      </wx-view>
       <t-dropdown-item
         id="first"
         bind:change="handleSingleSelect"
@@ -165,7 +229,7 @@ exports[`dropdown-menu :base 1`] = `
                                 class="t-radio__icon t-radio__icon--left t-class-icon"
                               >
                                 <wx-view
-                                  class="placeholder"
+                                  class="t-radio__icon-line"
                                 />
                               </wx-view>
                               <wx-view
@@ -215,7 +279,7 @@ exports[`dropdown-menu :base 1`] = `
                                 class="t-radio__icon t-radio__icon--left t-class-icon"
                               >
                                 <wx-view
-                                  class="placeholder"
+                                  class="t-radio__icon-line"
                                 />
                               </wx-view>
                               <wx-view
@@ -264,22 +328,24 @@ exports[`dropdown-menu :base 1`] = `
                               <wx-view
                                 class="t-radio__icon t-radio__icon--left t-radio__icon--checked t-class-icon"
                               >
-                                <t-icon
-                                  class="t-radio__icon-wrap"
+                                <wx-view
+                                  class="t-radio__icon-line"
                                 >
-                                  <wx-view
-                                    ariaHidden="{{false}}"
-                                    ariaLabel=""
-                                    ariaRole=""
-                                    class="t-icon class t-class"
-                                    style=""
-                                    bind:tap="onTap"
-                                  >
-                                    <wx-label
-                                      class="t-icon-check t-icon-base"
-                                    />
-                                  </wx-view>
-                                </t-icon>
+                                  <t-icon>
+                                    <wx-view
+                                      ariaHidden="{{false}}"
+                                      ariaLabel=""
+                                      ariaRole=""
+                                      class="t-icon class t-class"
+                                      style=""
+                                      bind:tap="onTap"
+                                    >
+                                      <wx-label
+                                        class="t-icon-check t-icon-base"
+                                      />
+                                    </wx-view>
+                                  </t-icon>
+                                </wx-view>
                               </wx-view>
                               <wx-view
                                 class="t-radio__content"
@@ -328,7 +394,7 @@ exports[`dropdown-menu :base 1`] = `
                                 class="t-radio__icon t-radio__icon--left t-class-icon"
                               >
                                 <wx-view
-                                  class="placeholder"
+                                  class="t-radio__icon-line"
                                 />
                               </wx-view>
                               <wx-view
@@ -378,7 +444,7 @@ exports[`dropdown-menu :base 1`] = `
                                 class="t-radio__icon t-radio__icon--left t-class-icon"
                               >
                                 <wx-view
-                                  class="placeholder"
+                                  class="t-radio__icon-line"
                                 />
                               </wx-view>
                               <wx-view
@@ -428,7 +494,7 @@ exports[`dropdown-menu :base 1`] = `
                                 class="t-radio__icon t-radio__icon--left t-class-icon"
                               >
                                 <wx-view
-                                  class="placeholder"
+                                  class="t-radio__icon-line"
                                 />
                               </wx-view>
                               <wx-view
@@ -478,7 +544,7 @@ exports[`dropdown-menu :base 1`] = `
                                 class="t-radio__icon t-radio__icon--left t-class-icon"
                               >
                                 <wx-view
-                                  class="placeholder"
+                                  class="t-radio__icon-line"
                                 />
                               </wx-view>
                               <wx-view
@@ -528,7 +594,7 @@ exports[`dropdown-menu :base 1`] = `
                                 class="t-radio__icon t-radio__icon--left t-class-icon"
                               >
                                 <wx-view
-                                  class="placeholder"
+                                  class="t-radio__icon-line"
                                 />
                               </wx-view>
                               <wx-view
@@ -578,7 +644,7 @@ exports[`dropdown-menu :base 1`] = `
                                 class="t-radio__icon t-radio__icon--left t-radio__icon--disabled t-class-icon"
                               >
                                 <wx-view
-                                  class="placeholder"
+                                  class="t-radio__icon-line t-radio__icon-line--disabled"
                                 />
                               </wx-view>
                               <wx-view
@@ -621,6 +687,12 @@ exports[`dropdown-menu :base 1`] = `
       </t-dropdown-item>
       <t-dropdown-item
         id="second"
+      />
+      <t-dropdown-item
+        id="keep-active"
+      />
+      <t-dropdown-item
+        id="keep-active-empty"
       />
     </wx-view>
   </t-dropdown-menu>

@@ -129,18 +129,18 @@
             </view>
           </block>
         </view>
-      </view>
-      <slot />
-      <view v-if="dataShowCancel" :class="classPrefix + '__footer'">
-        <view :class="classPrefix + '__gap-' + dataTheme" />
-        <view
-          :class="classPrefix + '__cancel ' + tClassCancel"
-          :hover-class="classPrefix + '__cancel--hover'"
-          hover-stay-time="70"
-          aria-role="button"
-          @click="onCancel"
-        >
-          {{ dataCancelText || globalConfig.cancel }}
+        <slot />
+        <view v-if="dataShowCancel" :class="classPrefix + '__footer'">
+          <view :class="classPrefix + '__gap-' + dataTheme" />
+          <view
+            :class="classPrefix + '__cancel ' + tClassCancel"
+            :hover-class="classPrefix + '__cancel--hover'"
+            hover-stay-time="70"
+            aria-role="button"
+            @click="onCancel"
+          >
+            {{ dataCancelText || globalConfig.cancel }}
+          </view>
         </view>
       </view>
     </t-popup>
