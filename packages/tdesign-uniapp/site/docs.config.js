@@ -461,6 +461,14 @@ export const docs = [
         componentEn: () => import('@/count-down/README.en-US.md'),
       },
       {
+        title: 'Comment 评论',
+        titleEn: 'Comment',
+        name: 'comment',
+        meta: { docType: 'data' },
+        path: '/uniapp/components/comment',
+        component: () => import('@/comment/README.md'),
+      },
+      {
         title: 'Empty 空状态',
         titleEn: 'Empty',
         name: 'empty',
