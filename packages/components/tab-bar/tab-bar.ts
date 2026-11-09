@@ -104,9 +104,9 @@ export default class Tabbar extends SuperComponent {
     showChildren() {
       const { value } = this.data;
 
-      this.$children.forEach((child) => {
-        child.setData({ crowded: this.$children.length > 3 });
+      this.updateChildren();
 
+      this.$children.forEach((child) => {
         if (child.properties.value === value) {
           child.showSpread();
         }
@@ -115,9 +115,13 @@ export default class Tabbar extends SuperComponent {
 
     updateChildren() {
       const { value } = this.data;
+      const crowded = this.$children.length > 3;
 
       this.$children.forEach((child) => {
         child.checkActive(value);
+        if (child.data.crowded !== crowded) {
+          child.setData({ crowded });
+        }
       });
     },
 
