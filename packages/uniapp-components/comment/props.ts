@@ -17,10 +17,6 @@ export default {
   avatar: {
     type: [String, Object],
   },
-  /** 子元素内容，同 reply */
-  children: {
-    type: String,
-  },
   /** 内容 */
   content: {
     type: String,

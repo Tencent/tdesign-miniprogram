@@ -36,15 +36,15 @@ import TComment from '@tdesign/uniapp/comment/comment.vue';
 {{ collapse }}
 
 ## API
+
 ### Comment Props
 
 名称 | 类型 | 默认值 | 描述 | 必传
 -- | -- | -- | -- | --
 custom-style | Object | - | 自定义样式 | N
-actions | Array | - | 操作。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/comment/type.ts) | N
+actions | Array | - | 操作。TS 类型：`Array<CommentActionItem>` `type ActionPlacement = 'start' \| 'end'` `interface CommentActionItem { key: string; content?: string; icon?: string \| object; placement?: ActionPlacement; disabled?: boolean}`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/comment/type.ts) | N
 author | String | - | 作者 | N
 avatar | String / Object | - | 头像。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/comment/type.ts) | N
-children | String | - | 子元素内容，同 reply | N
 content | String | - | 内容 | N
 datetime | String | - | 时间 | N
 folds | Object | - | 折叠/展开配置项。支持语法糖 `v-model:folds`。TS 类型：`CommentFold ` `type CommentFoldState = 'collapsed' \| 'partial' \| 'expanded'` `interface CommentFold { state: CommentFoldState; total?: number; step?: number; content?: Partial<Record<CommentFoldState, string \| [string, string]>>}`。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/comment/type.ts) | N
@@ -61,10 +61,9 @@ folds | `(context: { fold: CommentFold; e: Event })` | 用户点击“展开回�
 
 名称 | 描述
 -- | --
-actions | 自定义 `actions` 显示内容。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/comment/type.ts)
+actions | 自定义 `actions` 显示内容
 author | 自定义 `author` 显示内容
-avatar | 自定义 `avatar` 显示内容。[详细类型定义](https://github.com/tencent/tdesign-miniprogram/blob/develop/packages/uniapp-components/comment/type.ts)
-children | 自定义 `children` 显示内容
+avatar | 自定义 `avatar` 显示内容
 content | 自定义 `content` 显示内容
 datetime | 自定义 `datetime` 显示内容
 reply | 自定义 `reply` 显示内容

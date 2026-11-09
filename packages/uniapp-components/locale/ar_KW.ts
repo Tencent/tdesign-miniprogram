@@ -130,6 +130,11 @@ export default {
     finish: 'أنهي',
     back: 'العودة',
   },
+  comment: {
+    collapsedText: 'عرض الردود',
+    expandMoreText: 'عرض المزيد من الردود',
+    collapseText: 'طي',
+  },
   typography: {
     expandText: 'توسيع',
     collapseText: 'طي',

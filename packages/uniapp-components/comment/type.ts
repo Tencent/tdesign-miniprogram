@@ -20,10 +20,6 @@ export interface TdCommentProps {
    */
   avatar?: string | AvatarProps;
   /**
-   * 子元素内容，同 reply
-   */
-  children?: string;
-  /**
    * 内容
    */
   content?: string;
@@ -58,6 +54,7 @@ export type ActionPlacement = 'start' | 'end';
 export interface CommentActionItem {
   key: string;
   content?: string;
+  icon?: string | object;
   placement?: ActionPlacement;
   disabled?: boolean;
 }

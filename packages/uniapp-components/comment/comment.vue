@@ -1,66 +1,102 @@
 <template>
   <view :style="'' + tools._style([customStyle])" :class="[classPrefix, tClass]">
-    <view :class="classPrefix + '__inner'">
-      <view v-if="avatarIsObject" :class="classPrefix + '__avatar'">
-        <t-avatar v-bind="avatar" />
+    <view
+      :class="[tools.cls(classPrefix + '__inner', [['active', innerActive]])]"
+      @longpress="handleLongPress"
+      @touchend="handlePressEnd"
+      @touchcancel="handlePressEnd"
+    >
+      <view :class="classPrefix + '__avatar ' + tClassAvatar">
+        <t-avatar
+          v-if="avatarData"
+          :t-class="avatarData.tClass || ''"
+          :t-class-image="avatarData.tClassImage || ''"
+          :t-class-icon="avatarData.tClassIcon || ''"
+          :t-class-alt="avatarData.tClassAlt || ''"
+          :t-class-content="avatarData.tClassContent || ''"
+          :alt="avatarData.alt || ''"
+          :badge-props="avatarData.badgeProps || {}"
+          :bordered="avatarData.bordered || false"
+          :hide-on-load-failed="avatarData.hideOnLoadFailed || false"
+          :icon="avatarData.icon || ''"
+          :image="avatarData.image || ''"
+          :image-props="avatarData.imageProps || null"
+          :shape="avatarData.shape || ''"
+          :size="avatarData.size || ''"
+        />
+        <slot v-else name="avatar" />
       </view>
-      <view v-else-if="avatar" :class="classPrefix + '__avatar'">
-        <t-avatar :image="avatar" shape="circle" size="32px" />
-      </view>
-      <view v-else-if="$slots.avatar" :class="classPrefix + '__avatar'">
-        <slot name="avatar" />
-      </view>
-
       <view :class="classPrefix + '__detail'">
-        <view :class="classPrefix + '__author'">
+        <view :class="classPrefix + '__author ' + tClassAuthor">
           <block v-if="author">{{ author }}</block>
           <slot v-else name="author" />
         </view>
-        <view :class="classPrefix + '__content'">
+        <view :class="classPrefix + '__content ' + tClassContent">
           <block v-if="content">{{ content }}</block>
           <slot v-else name="content" />
         </view>
-        <view :class="classPrefix + '__bottom'">
-          <view :class="classPrefix + '__date'">
-            <block v-if="datetime">{{ datetime }}</block>
-            <slot v-else name="datetime" />
+        <view
+          v-if="datetime || (actions && actions.length) || $slots.datetime || $slots.actions"
+          :class="classPrefix + '__bottom'"
+        >
+          <view v-if="datetime" :class="classPrefix + '__date ' + tClassDatetime">{{ datetime }}</view>
+          <view v-else-if="$slots.datetime" :class="classPrefix + '__date ' + tClassDatetime">
+            <slot name="datetime" />
           </view>
-          <view :class="classPrefix + '__actions'">
-            <slot name="actions" />
+          <view :class="classPrefix + '__actions ' + tClassActions">
+            <block v-if="actions && actions.length">
+              <view v-for="group in actionGroups" :key="group.placement" :class="classPrefix + '__actions-block'">
+                <view
+                  v-for="action in group.items"
+                  :key="action.key"
+                  :class="[
+                    tools.cls(classPrefix + '__actions-item', [
+                      ['with-icon', action.iconData],
+                      ['disabled', action.disabled],
+                    ]),
+                  ]"
+                  @click="handleClickActions(action, $event)"
+                >
+                  <t-icon
+                    v-if="action.iconData"
+                    :custom-style="action.iconData.style || ''"
+                    :t-class="action.iconData.tClass || ''"
+                    :prefix="action.iconData.prefix || ''"
+                    :name="action.iconData.name || ''"
+                    :size="action.iconData.size || ''"
+                    :color="action.iconData.color || ''"
+                    :aria-hidden="!!action.iconData.ariaHidden"
+                    :aria-label="action.iconData.ariaLabel || ''"
+                    :aria-role="action.iconData.ariaRole || ''"
+                    @click="action.iconData.click || ''"
+                  />
+                  {{ action.content }}
+                </view>
+              </view>
+            </block>
+            <slot v-else name="actions" />
           </view>
         </view>
       </view>
     </view>
 
-    <view v-if="$slots.reply || showFolds" :class="classPrefix + '__reply'">
-      <view :id="replyBodyId" :class="classPrefix + '__reply-body'" :style="replyBodyStyle">
+    <view :class="classPrefix + '__reply'">
+      <view :class="classPrefix + '__reply-body'" :style="replyBodyStyle">
         <view :id="replyInnerId" :class="classPrefix + '__reply-inner'">
+          <slot />
           <slot name="reply" />
         </view>
       </view>
       <view v-if="showFolds" :class="classPrefix + '__folds'">
-        <block v-if="curFoldsState === 'collapsed'">
-          <view :class="classPrefix + '__folds-item'" @click="onClickFold(true)">
-            {{ foldsContent.collapsed }}
-            <t-icon name="chevron-down-s" size="16px" />
-          </view>
-        </block>
-        <block v-else-if="curFoldsState === 'partial'">
-          <view :class="classPrefix + '__folds-item'" @click="onClickFold(true)">
-            {{ foldsContent.partial && foldsContent.partial[0] }}
-            <t-icon name="chevron-down-s" size="16px" />
-          </view>
-          <view :class="classPrefix + '__folds-item'" @click="onClickFold(false)">
-            {{ foldsContent.partial && foldsContent.partial[1] }}
-            <t-icon name="chevron-up-s" size="16px" />
-          </view>
-        </block>
-        <block v-else>
-          <view :class="classPrefix + '__folds-item'" @click="onClickFold(false)">
-            {{ foldsContent.expanded }}
-            <t-icon name="chevron-up-s" size="16px" />
-          </view>
-        </block>
+        <view
+          v-for="item in foldItems"
+          :key="item.key"
+          :class="classPrefix + '__folds-item'"
+          @click="handleClickFold(item.expand, $event)"
+        >
+          <text>{{ item.content }}</text>
+          <t-icon :name="item.icon" :t-class="classPrefix + '__folds-item-icon'" />
+        </view>
       </view>
     </view>
   </view>
@@ -69,23 +105,23 @@
 <script>
 import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
+import { calcIcon, coalesce } from '../common/utils';
 import tools from '../common/utils.wxs';
+import usingConfig from '../mixins/using-config';
 import TAvatar from '../avatar/avatar';
 import TIcon from '../icon/icon';
 
 import props from './props';
 
 const name = `${prefix}-comment`;
+const componentName = 'comment';
+
+const DEFAULT_STEP = 3;
 
 const DEFAULT_FOLDS = {
   state: 'collapsed',
   total: 0,
-  step: 3,
-  content: {
-    collapsed: '展开回复',
-    partial: ['展开更多回复', '收起'],
-    expanded: '收起',
-  },
+  step: DEFAULT_STEP,
 };
 
 let uid = 0;
@@ -100,137 +136,226 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [`${prefix}-class`],
+    externalClasses: [
+      `${prefix}-class`,
+      `${prefix}-class-avatar`,
+      `${prefix}-class-author`,
+      `${prefix}-class-content`,
+      `${prefix}-class-datetime`,
+      `${prefix}-class-actions`,
+    ],
+    controlledProps: [
+      {
+        key: 'folds',
+        event: 'folds',
+      },
+    ],
+    mixins: [usingConfig({ componentName })],
     props: {
       ...props,
     },
     data() {
-      const id = `comment-${Date.now()}-${uid++}`;
+      uid += 1;
+      const id = `${name}-${Date.now()}-${uid}`;
       return {
         prefix,
         classPrefix: name,
         tools,
 
-        replyBodyId: `${id}-body`,
-        replyInnerId: `${id}-inner`,
-        replyBodyStyle: '',
+        replyInnerId: `${id}-reply-inner`,
+        replyBodyHeight: '',
 
-        innerFoldsState: 'collapsed',
+        dataFolds: coalesce(this.folds, this.defaultFolds),
         foldSteps: 0,
+        innerActive: false,
         observer: null,
       };
     },
     computed: {
-      avatarIsObject() {
-        return this.avatar && typeof this.avatar === 'object';
-      },
-      isControlled() {
-        return this.folds !== undefined && this.folds !== null;
-      },
-      commentFolds() {
-        return this.folds || this.defaultFolds || DEFAULT_FOLDS;
-      },
-      curFoldsState() {
-        if (this.isControlled) {
-          return this.folds.state || 'collapsed';
+      // 字符串头像作为图片地址，对象头像作为 AvatarProps 透传
+      avatarData() {
+        const { avatar } = this;
+        if (typeof avatar === 'string' && avatar) {
+          return { image: avatar };
         }
-        return this.innerFoldsState;
+        return avatar && typeof avatar === 'object' ? avatar : null;
+      },
+      actionsData() {
+        return (this.actions || []).map((action) => {
+          const iconData = calcIcon(action.icon);
+          return {
+            ...action,
+            iconData,
+          };
+        });
+      },
+      // 按 placement 分组，未指定 placement 归入 start
+      actionGroups() {
+        const start = [];
+        const end = [];
+        this.actionsData.forEach((action) => {
+          if (action.placement === 'end') {
+            end.push(action);
+          } else {
+            start.push(action);
+          }
+        });
+        return [
+          { placement: 'start', items: start },
+          { placement: 'end', items: end },
+        ];
+      },
+      curFolds() {
+        return this.dataFolds || DEFAULT_FOLDS;
+      },
+      // 文案优先取业务传入的 content，缺省回退到全局国际化配置
+      commentFolds() {
+        const userContent = this.curFolds.content || {};
+        const globalConfig = this.globalConfig || {};
+        const content = {
+          collapsed: coalesce(userContent.collapsed, globalConfig.collapsedText),
+          partial: coalesce(userContent.partial, [globalConfig.expandMoreText, globalConfig.collapseText]),
+          expanded: coalesce(userContent.expanded, globalConfig.collapseText),
+        };
+        return { ...this.curFolds, content };
+      },
+      foldState() {
+        return this.curFolds.state || 'collapsed';
       },
       showFolds() {
-        const total = this.commentFolds.total || 0;
-        return total > 1;
+        return (this.commentFolds.total || 0) > 1;
       },
-      foldsContent() {
-        return this.commentFolds.content || DEFAULT_FOLDS.content;
+      foldItems() {
+        const content = this.commentFolds.content || {};
+        const createItem = (key, text, expand) => ({
+          key,
+          content: text,
+          expand,
+          icon: expand ? 'chevron-down' : 'chevron-up',
+        });
+
+        if (this.foldState === 'partial') {
+          const { partial } = content;
+          const isText = typeof partial === 'string';
+          return [
+            createItem('expand', (isText ? partial : partial && partial[0]) || '展开更多回复', true),
+            createItem('collapse', isText ? '' : (partial && partial[1]) || '收起', false),
+          ];
+        }
+        if (this.foldState === 'expanded') {
+          return [createItem('collapse', content.expanded || '收起', false)];
+        }
+        return [createItem('expand', content.collapsed || '展开回复', true)];
+      },
+      replyBodyStyle() {
+        return this.replyBodyHeight ? `height:${this.replyBodyHeight}` : '';
       },
     },
     watch: {
-      'folds.state': {
+      folds: {
+        handler(folds) {
+          this.dataFolds = folds;
+        },
+        immediate: true,
+      },
+      foldState: {
         handler(state) {
-          if (!this.isControlled) return;
+          const { step = DEFAULT_STEP } = this.curFolds;
           if (state === 'collapsed') {
             this.foldSteps = 0;
           } else if (state === 'expanded') {
-            this.foldSteps = (this.commentFolds.step || 3) - 1;
+            this.foldSteps = step - 1;
           }
         },
         immediate: true,
+      },
+      dataFolds: {
+        handler() {
+          this.$nextTick(() => this.updateReplyHeight());
+        },
       },
     },
     mounted() {
       this.initObserver();
     },
     beforeUnmount() {
-      if (this.observer) {
-        this.observer.disconnect();
-        this.observer = null;
-      }
+      this.disconnectObserver();
     },
     // #ifdef VUE2
     beforeDestroy() {
-      if (this.observer) {
-        this.observer.disconnect();
-        this.observer = null;
-      }
+      this.disconnectObserver();
     },
     // #endif
     methods: {
-      // 计算回复区内容高度，驱动过渡动画
+      handleLongPress() {
+        this.innerActive = true;
+      },
+      handlePressEnd() {
+        if (this.innerActive) {
+          this.innerActive = false;
+        }
+      },
+      handleClickActions(action, e) {
+        if (action.disabled) return;
+        const eventAction = { ...action };
+        delete eventAction.iconData;
+        this.$emit('actions', { action: eventAction, e });
+      },
+      handleClickFold(expand, e) {
+        if (expand !== true && expand !== 'true') {
+          this.foldSteps = 0;
+          this.emitFold({ ...this.curFolds, state: 'collapsed' }, e);
+          return;
+        }
+
+        const foldSteps = this.foldSteps + 1;
+        const step = this.commentFolds.step || DEFAULT_STEP;
+        const nextState = foldSteps >= step - 1 ? 'expanded' : 'partial';
+        this.foldSteps = foldSteps;
+        this.emitFold({ ...this.curFolds, state: nextState }, e);
+      },
+      emitFold(fold, e) {
+        if (this.folds === null || this.folds === undefined) {
+          this.dataFolds = fold;
+        }
+        this.$emit('update:folds', fold);
+        this.$emit('folds', { fold, e });
+      },
+      // 测量回复区内容高度，驱动展开/收起的高度过渡动画
       updateReplyHeight() {
-        const innerId = `#${this.replyInnerId}`;
         uni
           .createSelectorQuery()
           .in(this)
-          .select(innerId)
+          .select(`#${this.replyInnerId}`)
           .boundingClientRect()
           .exec((res) => {
-            const rect = res && res[0];
+            const [rect] = res || [];
             if (rect) {
-              this.replyBodyStyle = `height:${rect.height}px;transition:height ease 240ms;`;
+              this.replyBodyHeight = `${rect.height}px`;
             }
           });
       },
-      // 监听回复区内容高度变化，驱动过渡动画
       initObserver() {
-        const innerId = `#${this.replyInnerId}`;
-
         this.$nextTick(() => this.updateReplyHeight());
 
-        // H5 端支持 ResizeObserver，监听内容高度变化
+        // H5 端监听回复区内容高度变化
         // #ifdef H5
         if (typeof ResizeObserver !== 'undefined') {
-          this.observer = new ResizeObserver(() => {
-            this.updateReplyHeight();
-          });
+          this.observer = new ResizeObserver(() => this.updateReplyHeight());
           this.$nextTick(() => {
-            const innerNode = document.querySelector(innerId);
-            if (innerNode) {
+            const innerNode = document.querySelector(`#${this.replyInnerId}`);
+            if (this.observer && innerNode) {
               this.observer.observe(innerNode);
             }
           });
         }
         // #endif
       },
-      onClickFold(isExpand) {
-        if (!isExpand) {
-          // 收起
-          this.foldSteps = 0;
-          if (!this.isControlled) {
-            this.innerFoldsState = 'collapsed';
-          }
-          this.$emit('folds', { fold: { ...this.commentFolds, state: 'collapsed' } });
-          this.$emit('change', { ...this.commentFolds, state: 'collapsed' });
-        } else {
-          // 展开
-          this.foldSteps += 1;
-          const nextState = this.foldSteps >= (this.commentFolds.step || 3) - 1 ? 'expanded' : 'partial';
-          if (!this.isControlled) {
-            this.innerFoldsState = nextState;
-          }
-          this.$emit('folds', { fold: { ...this.commentFolds, state: nextState } });
-          this.$emit('change', { ...this.commentFolds, state: nextState });
+      disconnectObserver() {
+        if (this.observer) {
+          this.observer.disconnect();
+          this.observer = null;
         }
-        this.$nextTick(() => this.updateReplyHeight());
       },
     },
   }),

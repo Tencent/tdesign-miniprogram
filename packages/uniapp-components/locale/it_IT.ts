@@ -117,6 +117,11 @@ export default {
     finish: 'Finisci',
     back: 'Indietro',
   },
+  comment: {
+    collapsedText: 'Espandi risposte',
+    expandMoreText: 'Altre risposte',
+    collapseText: 'Comprimi',
+  },
   typography: {
     expandText: 'Espandere',
     collapseText: 'ripiegare',
