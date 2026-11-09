@@ -22,6 +22,12 @@
       <t-demo desc="带合并单元格的表格" padding>
         <rowspan-colspan-demo />
       </t-demo>
+      <t-demo desc="拖拽排序表格" padding>
+        <drag-sort-demo />
+      </t-demo>
+      <t-demo desc="点击列排序表格" padding>
+        <sort-demo />
+      </t-demo>
     </view>
   </view>
 </template>
@@ -32,6 +38,8 @@ import BorderedDemo from './bordered/index.vue';
 import RowspanColspanDemo from './rowspan-colspan/index.vue';
 import ScrollDemo from './scroll/index.vue';
 import StripeDemo from './stripe/index.vue';
+import SortDemo from './sort/index.vue';
+import DragSortDemo from './drag-sort/index.vue';
 
 export default {
   components: {
@@ -40,6 +48,8 @@ export default {
     StripeDemo,
     ScrollDemo,
     RowspanColspanDemo,
+    SortDemo,
+    DragSortDemo,
   },
   data() {
     return {};

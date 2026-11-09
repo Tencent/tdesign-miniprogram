@@ -6,6 +6,8 @@
     "bordered": "./bordered",
     "stripe": "./stripe",
     "scroll": "./scroll",
-    "rowspan-colspan": "./rowspan-colspan"
+    "rowspan-colspan": "./rowspan-colspan",
+    "drag-sort": "./drag-sort",
+    "sort": "./sort"
   }
 }
