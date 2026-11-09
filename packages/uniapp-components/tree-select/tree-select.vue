@@ -211,7 +211,7 @@ export default {
       buildTreeOptions() {
         const { options, innerValue: value, customValue, multiple, keys } = this;
 
-        if (!options.length) {
+        if (!options?.length) {
           this.treeOptions = [];
           return;
         }
@@ -233,12 +233,10 @@ export default {
           treeOptions.push(currentLevelOptions);
 
           const currentValue = coalesce(customValue?.[level], value?.[level]);
-          currentNode = isDef(currentValue)
-            ? coalesce(
-                currentLevelOptions.find((child) => child.value === currentValue),
-                currentLevelOptions[0],
-              )
-            : currentLevelOptions[0];
+          const matchedNode = isDef(currentValue)
+            ? currentLevelOptions.find((child) => child.value === currentValue)
+            : undefined;
+          currentNode = coalesce(matchedNode, currentLevelOptions[0]);
         }
 
         const depth = getTreeDepth(options, keys?.children);
