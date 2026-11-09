@@ -1,4 +1,4 @@
-import { validateOneRule } from '../form-model';
+import { validateOneRule } from '../../form-item/form-model';
 
 describe('form-model', () => {
   it(': date rule accepts any allowed delimiter', async () => {
