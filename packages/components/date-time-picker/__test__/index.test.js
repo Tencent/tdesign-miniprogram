@@ -24,6 +24,86 @@ describe('date-time-picker', () => {
     target.end();
   };
 
+  const renderWheelPicker = (value = '2021-09', mode = 'month', format = 'YYYY-MM') => {
+    const picks = [];
+    const confirms = [];
+    const id = simulate.load({
+      template: `<t-date-time-picker id="wheel" mode="{{mode}}" value="{{value}}" format="{{format}}"
+        start="2000-01-01" end="2030-12-31" visible bind:pick="onPick" bind:confirm="onConfirm" />`,
+      data: { value, mode, format },
+      methods: {
+        onPick(e) {
+          picks.push(e.detail.value);
+        },
+        onConfirm(e) {
+          confirms.push(e.detail.value);
+        },
+      },
+      usingComponents: { 't-date-time-picker': dateTimePicker },
+    });
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+    const datePicker = comp.querySelector('#wheel');
+    const items = comp.querySelectorAll('#wheel >>> .t-date-time-picker__item');
+    const wheel = (column, deltaY = 40) =>
+      items[column].querySelector('.t-picker-item__group').dispatchEvent('wheel', {
+        detail: { deltaX: 0, deltaY, deltaZ: 0 },
+      });
+    return { comp, datePicker, wheel, picks, confirms };
+  };
+
+  it('confirms a pending wheel selection immediately without a late pick', async () => {
+    const { comp, wheel, picks, confirms } = renderWheelPicker();
+    wheel(1);
+    await simulate.sleep(10);
+    comp.querySelector('#wheel >>> .t-picker__confirm').dispatchEvent('tap');
+    await simulate.sleep(160);
+    expect(confirms).toEqual(['2021-10']);
+    expect(picks).toEqual(['2021-10']);
+    comp.detach();
+  });
+
+  it('preserves wheel changes when switching columns before idle', async () => {
+    const { comp, wheel, picks, confirms } = renderWheelPicker();
+    wheel(0);
+    await simulate.sleep(10);
+    wheel(1);
+    await simulate.sleep(10);
+    comp.querySelector('#wheel >>> .t-picker__confirm').dispatchEvent('tap');
+    await simulate.sleep(160);
+    expect(confirms).toEqual(['2022-10']);
+    expect(picks).toEqual(['2022-09', '2022-10']);
+    comp.detach();
+  });
+
+  it('cancels pending wheel notifications when cancelled or hidden externally', async () => {
+    const { comp, datePicker, wheel, picks } = renderWheelPicker();
+    wheel(1);
+    await simulate.sleep(10);
+    comp.querySelector('#wheel >>> .t-picker__cancel').dispatchEvent('tap');
+    await simulate.sleep(160);
+    expect(picks).toEqual([]);
+    wheel(1);
+    await simulate.sleep(10);
+    datePicker.setData({ visible: false });
+    await simulate.sleep(160);
+    expect(picks).toEqual([]);
+    comp.detach();
+  });
+
+  it('uses the updated day range when switching from January 31 to February', async () => {
+    const { comp, wheel, picks, confirms } = renderWheelPicker('2021-01-31', 'date', 'YYYY-MM-DD');
+    wheel(1);
+    await simulate.sleep(10);
+    wheel(2, -40);
+    await simulate.sleep(10);
+    comp.querySelector('#wheel >>> .t-picker__confirm').dispatchEvent('tap');
+    await simulate.sleep(160);
+    expect(confirms).toEqual(['2021-02-27']);
+    expect(picks).toEqual(['2021-02-28', '2021-02-27']);
+    comp.detach();
+  });
+
   it(': style && customStyle', () => {
     const comp = simulate.render(id);
     comp.attach(document.createElement('parent-wrapper'));
