@@ -5,6 +5,50 @@ toc: false
 docClass: timeline
 ---
 
+## 🌈 1.18.0 `2026-11-09`
+
+### 🚀 Features
+
+- `Comment`: 新增 `Comment` 评论组件 @boomLL ([#4698](https://github.com/Tencent/tdesign-miniprogram/pull/4698))
+- `Dropdown`: `DropdownOption` 的 `disabled` 字段改为可选项 @anlyyao ([#4663](https://github.com/Tencent/tdesign-miniprogram/pull/4663))
+- `DropdownItem`: 新增 `keepLabelActive` 属性， 表示标题是否保持高亮（含菜单收起态），仅多选场景生效 @anlyyao ([#4678](https://github.com/Tencent/tdesign-miniprogram/pull/4678))
+- `Icon`: 新增 `check-1`和 `remove-1` 图标 @uyarn ([icons#319](https://github.com/Tencent/tdesign-icons/pull/319)) ([#4704](https://github.com/Tencent/tdesign-miniprogram/pull/4704))
+- `ImageViewer`: 新增 `loop` 属性（是否开启循环滚动，默认 true） @anlyyao ([#4658](https://github.com/Tencent/tdesign-miniprogram/pull/4658))
+
+### 🐞 Bug Fixes
+
+- `ActionSheet`: 支持列表项超出滚动 @anlyyao ([#4699](https://github.com/Tencent/tdesign-miniprogram/pull/4699))
+- `Checkbox`: 
+  - 统一圆形图标描边宽度为 2px @anlyyao ([#4680](https://github.com/Tencent/tdesign-miniprogram/pull/4680))
+  - 优化组件内部图标实现路径，修复 `circle` 和 `rectangle` 图标的选中和非选中态直径不一致问题 @anlyyao ([#4680](https://github.com/Tencent/tdesign-miniprogram/pull/4680))
+- `DropdownMenu`: 修复 `label` 字重错误 @anlyyao ([#4712](https://github.com/Tencent/tdesign-miniprogram/pull/4712))
+- `Form`: 
+  - 修复默认配置下日期校验不支持 `-` 分隔符的问题 @kwy404 ([#4667](https://github.com/Tencent/tdesign-miniprogram/pull/4667))
+  - 调整 `FormItem` 结构使 `arrow` 仅与标签和输入框居中对齐 @anlyyao ([#4693](https://github.com/Tencent/tdesign-miniprogram/pull/4693))
+- `Icon`: 修复指定 size 后首次渲染字号跳变 @Kk25380 ([#4711](https://github.com/Tencent/tdesign-miniprogram/pull/4711))
+- `Radio`: 
+  - 统一圆形图标描边宽度为 2px @anlyyao ([#4680](https://github.com/Tencent/tdesign-miniprogram/pull/4680))
+  - 优化组件内部图标实现路径，修复 `circle` 图标的选中和非选中态直径不一致问题 @anlyyao ([#4680](https://github.com/Tencent/tdesign-miniprogram/pull/4680))
+- `Slider`: 
+  - 修复组件在横竖屏切换（容器尺寸变化）后无法滑动的问题 @Mosquito1123 ([#4657](https://github.com/Tencent/tdesign-miniprogram/pull/4657))
+  - 修复胶囊+刻度线模式样式错误以及 Skyline 渲染模式下刻度线和滑块层级错误 @anlyyao ([#4677](https://github.com/Tencent/tdesign-miniprogram/pull/4677))
+- `TabBar`: 修复四个标签首次渲染后内边距变化导致的选中背景宽度跳变 @Kk25380 ([#4713](https://github.com/Tencent/tdesign-miniprogram/pull/4713))
+- `Tag`: 修复圆角样式值错误 @anlyyao ([#4660](https://github.com/Tencent/tdesign-miniprogram/pull/4660))
+- `Textarea`: 修复 `placeholder` 占位内容字号错误 @anlyyao ([#4661](https://github.com/Tencent/tdesign-miniprogram/pull/4661))
+- `TreeSelect`: 修复零值/空字符串路径的子列选择，以及空选项时残留旧列的问题。 @dvd233 ([#4670](https://github.com/Tencent/tdesign-miniprogram/pull/4670))
+
+### 📈 Performance
+
+- `DropdownMenu`: 移除组件内部硬编码默认 zIndex = 11600，由样式表提供（@z-index-dropdown-menu = 11600） @anlyyao ([#4658](https://github.com/Tencent/tdesign-miniprogram/pull/4658))
+- `ImageViewer`: `z-index` 改用样式表变量及派生值（@z-index-image-viewer = 11000，含 +1/+5），替换硬编码 1000/1001/1005 @anlyyao ([#4658](https://github.com/Tencent/tdesign-miniprogram/pull/4658))
+- `Loading`: `--td-loading-z-index` 默认值改用样式表变量（@z-index-loading，3500 → 13500） @anlyyao ([#4658](https://github.com/Tencent/tdesign-miniprogram/pull/4658))
+- `Message`: `z-index `改用样式表变量（@z-index-message = 15000），替换硬编码 15000 @anlyyao ([#4658](https://github.com/Tencent/tdesign-miniprogram/pull/4658))
+- `Overlay`: 移除组件内部硬编码默认 zIndex = 11000，由样式表提供（@z-index-overlay = 11000） @anlyyao ([#4658](https://github.com/Tencent/tdesign-miniprogram/pull/4658))
+- `Popover`: 移除组件内部硬编码 zIndex=11000，由样式表提供（@z-index-popover = 11500） @anlyyao ([#4658](https://github.com/Tencent/tdesign-miniprogram/pull/4658))
+- `Popup`: 移除组件内部硬编码默认 zIndex = 11500，由样式表提供（@z-index-popup = 11500） @anlyyao ([#4658](https://github.com/Tencent/tdesign-miniprogram/pull/4658))
+- `Toast`: `z-index` 改用样式表变量（@z-index-toast = 12000），替换硬编码 12001 @anlyyao ([#4658](https://github.com/Tencent/tdesign-miniprogram/pull/4658))
+- `Style`: 修正灰阶色值。深色主题：`--td-gray-color-11` 由 `#383838` 修正为 `#393939`；浅色主题：`--td-gray-color-3` 由 `#e7e7e7` 修正为 `#e8e8e8`，`--td-gray-color-4` 由 `#dcdcdc` 修正为 `#ddd`，`--td-gray-color-5` 由 `#c5c5c5` 修正为 `#c6c6c6`，`--td-gray-color-11` 由 `#383838` 修正为 `#393939` @anlyyao ([#4659](https://github.com/Tencent/tdesign-miniprogram/pull/4659))
+
 ## 🌈 1.17.0 `2026-09-23`
 
 ### 🚀 Features
