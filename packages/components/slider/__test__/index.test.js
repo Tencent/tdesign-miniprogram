@@ -271,7 +271,8 @@ describe('slider', () => {
       },
     };
     const id = simulate.load({
-      template: `<t-slider id="base"></t-slider>`,
+      template: `<t-slider id="base" value="{{value}}"></t-slider>`,
+      data: { value: 0 },
       usingComponents: {
         't-slider': slider,
       },
@@ -291,6 +292,10 @@ describe('slider', () => {
     expect($slider.instance.data.initialRight).toBe(325);
     expect($slider.instance.data.maxRange).toBe(325 - 16);
 
+    // the value is updated after the first measure, the bar must follow it after resize
+    comp.setData({ value: 80 });
+    await simulate.sleep();
+
     // simulate a rotation: the track becomes narrower
     query.left = 40;
     query.right = 240;
@@ -299,5 +304,6 @@ describe('slider', () => {
     expect($slider.instance.data.initialLeft).toBe(40);
     expect($slider.instance.data.initialRight).toBe(240);
     expect($slider.instance.data.maxRange).toBe(240 - 40);
+    expect($slider.instance.data.lineBarWidth).toBe(`${Math.round(((240 - 40) * 80) / 100)}px`);
   });
 });
