@@ -3,6 +3,10 @@ import config from '../common/config';
 import props from './props';
 import { PickerItemOption } from './type';
 
+type PickerWheelEvent = WechatMiniprogram.BaseEvent & {
+  detail: { deltaX: number; deltaY: number; deltaZ: number; deltaMode?: number };
+};
+
 const { prefix } = config;
 const name = `${prefix}-picker-item`;
 
@@ -13,6 +17,7 @@ const ANIMATION_DURATION_MAX = 600; // 最大动画时长
 const INERTIA_TIME = 300;
 // 且距离大于`MOMENTUM_DISTANCE`时，执行惯性滚动
 const INERTIA_DISTANCE = 15;
+const WHEEL_IDLE_TIME = 120;
 
 // 虚拟滚动配置
 const VIRTUAL_SCROLL_CONFIG = {
@@ -31,7 +36,7 @@ const range = function (num: number, min: number, max: number) {
 const momentum = (distance: number, duration: number) => {
   let nDistance = distance;
   // 惯性滚动的速度
-  const speed = Math.abs(nDistance / duration);
+  const speed = Math.abs(nDistance / Math.max(duration, 1));
   // 加速度经验值: 0.005
   // 惯性滚动的距离
   nDistance = (speed / 0.005) * (nDistance < 0 ? -1 : 1);
@@ -94,31 +99,83 @@ export default class PickerItem extends SuperComponent {
       this.StartY = 0;
       this.StartOffset = 0;
       this.startTime = 0;
+      this._wheelDelta = 0;
+      this._wheelTimer = null;
       this._animationTimer = null; // 动画期间更新虚拟滚动的定时器
     },
     detached() {
+      this.resetWheel();
       // 清理定时器，防止内存泄漏
       if (this._animationTimer) {
-        clearInterval(this._animationTimer);
+        clearTimeout(this._animationTimer);
         this._animationTimer = null;
       }
     },
   };
 
   methods = {
+    resetWheel() {
+      clearTimeout(this._wheelTimer);
+      this._wheelTimer = null;
+      this._wheelDelta = 0;
+    },
+
+    flushWheel() {
+      if (!this._wheelTimer) return;
+      this.resetWheel();
+      if (this.data.curIndex !== this._selectedIndex) {
+        this.updateSelected(this.data.curIndex, true);
+      }
+    },
+
+    onWheel(event: PickerWheelEvent) {
+      const { deltaY } = event.detail;
+      if (!Number.isFinite(deltaY) || !deltaY) return;
+      this.$parent?.flushWheel(this);
+      const { itemHeight, curIndex } = this.data;
+      const count = this.getCount();
+      if (!count || !Number.isFinite(itemHeight) || itemHeight <= 0) return;
+
+      if (!this._wheelTimer || this._wheelDirection * deltaY < 0) {
+        this._wheelDelta = 0;
+      }
+      this._wheelDirection = Math.sign(deltaY);
+      clearTimeout(this._wheelTimer);
+      // 滚轮只按输入位移选中；空闲时间用于合并通知，不用于推算触摸惯性。
+      this._wheelTimer = setTimeout(() => this.flushWheel(), WHEEL_IDLE_TIME);
+
+      this._wheelDelta += deltaY;
+      const steps = Math.trunc(this._wheelDelta / itemHeight);
+      if (!steps) return;
+
+      const index = range(curIndex + steps, 0, count - 1);
+      this._wheelDelta = index === 0 || index === count - 1 ? 0 : this._wheelDelta - steps * itemHeight;
+      if (index === curIndex) return;
+
+      this.scrollToIndex(index, Math.abs(steps) > 1);
+    },
+
     onClickItem(event: WechatMiniprogram.TouchEvent) {
+      this.$parent?.flushWheel(this);
+      this.resetWheel();
+      clearTimeout(this._animationTimer);
+      this._animationTimer = null;
       const { index: clickIndex } = event.currentTarget.dataset;
       const { itemHeight } = this.data;
       const index = range(clickIndex, 0, this.getCount() - 1);
 
-      if (index !== this._selectedIndex) {
-        this.setData({ offset: -index * itemHeight, curIndex: index, duration: 200 });
+      if (this.data.offset !== -index * itemHeight) {
+        this.scrollToIndex(index);
       }
 
       this.updateSelected(index, true);
     },
 
     onTouchStart(event) {
+      this.$parent?.flushWheel(this);
+      this.flushWheel();
+      clearTimeout(this._animationTimer);
+      this._animationTimer = null;
       this.StartY = event.touches[0].clientY;
       this.StartOffset = this.data.offset;
       this.startTime = Date.now();
@@ -141,16 +198,16 @@ export default class PickerItem extends SuperComponent {
     },
 
     onTouchEnd(event) {
-      const { offset, itemHeight, enableVirtualScroll, formatOptions } = this.data;
+      const { offset, itemHeight } = this.data;
       const { startTime } = this;
-      if (offset === this.StartOffset) {
+      if (!this.getCount() || offset === this.StartOffset) {
         return;
       }
 
-      // 判断是否需要惯性滚动
-      let distance = 0;
       const move = event.changedTouches[0].clientY - this.StartY;
       const moveTime = Date.now() - startTime;
+      // 触摸释放时才根据真实手势时长计算惯性，滚轮仅复用 scrollToIndex 的动画。
+      let distance = 0;
       if (moveTime < INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
         distance = momentum(move, moveTime);
       }
@@ -158,6 +215,14 @@ export default class PickerItem extends SuperComponent {
       // 调整偏移量
       const newOffset = range(offset + distance, -this.getCount() * itemHeight, 0);
       const index = range(Math.round(-newOffset / itemHeight), 0, this.getCount() - 1);
+      this.scrollToIndex(index, Math.abs(distance) > itemHeight * 3);
+
+      if (index === this._selectedIndex) return;
+      this.updateSelected(index, true);
+    },
+
+    scrollToIndex(index: number, isFastScroll = false) {
+      const { offset, itemHeight, enableVirtualScroll, formatOptions } = this.data;
       const finalOffset = -index * itemHeight;
 
       // 动态计算动画时长：根据滑动距离调整，距离越大时长越长，但有上限
@@ -168,16 +233,9 @@ export default class PickerItem extends SuperComponent {
         ANIMATION_DURATION_BASE + scrollItems * 30, // 每滑动一个选项增加30ms
       );
 
-      // 判断是否为快速惯性滚动（用于决定缓冲区大小）
-      const isFastInertia = Math.abs(distance) > itemHeight * 3;
-      // 根据是否快速惯性滚动选择缓冲区大小
-      const bufferCount = isFastInertia ? VIRTUAL_SCROLL_CONFIG.FAST_SCROLL_BUFFER : VIRTUAL_SCROLL_CONFIG.BUFFER_COUNT;
-
-      // 清除之前的动画更新定时器
-      if (this._animationTimer) {
-        clearInterval(this._animationTimer);
-        this._animationTimer = null;
-      }
+      const wasAnimating = this._animationTimer != null;
+      clearTimeout(this._animationTimer);
+      this._animationTimer = null;
 
       // 性能优化：合并 setData 调用，一次性更新所有状态
       const updateData: any = {
@@ -188,37 +246,33 @@ export default class PickerItem extends SuperComponent {
 
       // 虚拟滚动：预先计算覆盖动画全程的可见范围，避免动画期间频繁更新
       if (enableVirtualScroll) {
-        // 计算当前位置和目标位置的索引范围
-        const currentIndex = Math.floor(Math.abs(offset) / itemHeight);
-        const targetIndex = index;
-
-        // 计算覆盖动画全程的可见范围（从当前位置到目标位置）
-        const minIndex = Math.min(currentIndex, targetIndex);
-        const maxIndex = Math.max(currentIndex, targetIndex);
-
-        // 使用缓冲区扩展范围，确保动画过程中不会出现空白
-        const animationStartIndex = Math.max(0, minIndex - bufferCount);
-        const animationEndIndex = Math.min(formatOptions.length, maxIndex + this.data.visibleItemCount + bufferCount);
+        const currentRange = this.computeVirtualRange(offset, formatOptions.length, itemHeight, isFastScroll);
+        const targetRange = this.computeVirtualRange(finalOffset, formatOptions.length, itemHeight, isFastScroll);
+        // 连续滚轮输入可能打断尚未完成的动画，保留上一段动画覆盖的范围。
+        const animationStartIndex = Math.min(
+          currentRange.startIndex,
+          targetRange.startIndex,
+          wasAnimating ? this.data.virtualStartIndex : currentRange.startIndex,
+        );
+        const animationEndIndex = Math.max(
+          currentRange.endIndex,
+          targetRange.endIndex,
+          wasAnimating ? this.data.virtualStartIndex + this.data.visibleOptions.length : currentRange.endIndex,
+        );
 
         updateData.visibleOptions = formatOptions.slice(animationStartIndex, animationEndIndex);
         updateData.virtualStartIndex = animationStartIndex;
         updateData.virtualOffsetY = animationStartIndex * itemHeight;
       }
 
-      this.setData(updateData, () => {
-        // 动画结束后，精确更新虚拟滚动视图到最终位置
-        if (enableVirtualScroll) {
-          const visibleRange = this.computeVirtualRange(finalOffset, formatOptions.length, itemHeight, false);
-          this.setData({
-            visibleOptions: formatOptions.slice(visibleRange.startIndex, visibleRange.endIndex),
-            virtualStartIndex: visibleRange.startIndex,
-            virtualOffsetY: visibleRange.startIndex * itemHeight,
-          });
-        }
-      });
-
-      if (index === this._selectedIndex) return;
-      this.updateSelected(index, true);
+      this.setData(updateData);
+      // setData 回调只表示视图更新完成，必须等位移动画结束后再收缩虚拟列表。
+      if (enableVirtualScroll) {
+        this._animationTimer = setTimeout(() => {
+          this._animationTimer = null;
+          this.updateVisibleOptions();
+        }, animationDuration);
+      }
     },
 
     formatOption(options: PickerItemOption[], columnIndex: number, format: any) {
@@ -243,6 +297,9 @@ export default class PickerItem extends SuperComponent {
 
     // 刷新选中状态
     update() {
+      this.resetWheel();
+      clearTimeout(this._animationTimer);
+      this._animationTimer = null;
       const { options, value, keys, format, columnIndex, itemHeight, visibleItemCount } = this.data;
 
       const formatOptions = this.formatOption(options, columnIndex, format);
