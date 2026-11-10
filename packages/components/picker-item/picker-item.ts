@@ -136,19 +136,13 @@ export default class PickerItem extends SuperComponent {
       const count = this.getCount();
       if (!count || !Number.isFinite(itemHeight) || itemHeight <= 0) return;
 
-      if (!this._wheelTimer || this._wheelDelta * deltaY < 0 || this._wheelDirection * deltaY < 0) {
+      if (!this._wheelTimer || this._wheelDirection * deltaY < 0) {
         this._wheelDelta = 0;
-        this._wheelStartOffset = this.data.offset;
-        this._wheelStartTime = Date.now();
       }
       this._wheelDirection = Math.sign(deltaY);
       clearTimeout(this._wheelTimer);
-      this._wheelTimer = setTimeout(() => {
-        const move = this.data.offset - this._wheelStartOffset;
-        const moveTime = Date.now() - this._wheelStartTime;
-        this.resetWheel();
-        this.finishScroll(move, moveTime, Math.abs(move) > itemHeight);
-      }, WHEEL_IDLE_TIME);
+      // 滚轮只按输入位移选中；空闲时间用于合并通知，不用于推算触摸惯性。
+      this._wheelTimer = setTimeout(() => this.flushWheel(), WHEEL_IDLE_TIME);
 
       this._wheelDelta += deltaY;
       const steps = Math.trunc(this._wheelDelta / itemHeight);
@@ -204,22 +198,15 @@ export default class PickerItem extends SuperComponent {
     },
 
     onTouchEnd(event) {
-      const { offset } = this.data;
+      const { offset, itemHeight } = this.data;
       const { startTime } = this;
-      if (offset === this.StartOffset) {
+      if (!this.getCount() || offset === this.StartOffset) {
         return;
       }
 
       const move = event.changedTouches[0].clientY - this.StartY;
       const moveTime = Date.now() - startTime;
-      this.finishScroll(move, moveTime);
-    },
-
-    finishScroll(move: number, moveTime: number, isFastScroll = false) {
-      const { offset, itemHeight } = this.data;
-      if (!this.getCount()) return;
-      if (!move && offset === -this._selectedIndex * itemHeight) return;
-
+      // 触摸释放时才根据真实手势时长计算惯性，滚轮仅复用 scrollToIndex 的动画。
       let distance = 0;
       if (moveTime < INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
         distance = momentum(move, moveTime);
@@ -228,7 +215,7 @@ export default class PickerItem extends SuperComponent {
       // 调整偏移量
       const newOffset = range(offset + distance, -this.getCount() * itemHeight, 0);
       const index = range(Math.round(-newOffset / itemHeight), 0, this.getCount() - 1);
-      this.scrollToIndex(index, isFastScroll || Math.abs(distance) > itemHeight * 3);
+      this.scrollToIndex(index, Math.abs(distance) > itemHeight * 3);
 
       if (index === this._selectedIndex) return;
       this.updateSelected(index, true);
