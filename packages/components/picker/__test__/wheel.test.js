@@ -1,4 +1,4 @@
-import PickerItem from '../picker-item';
+import PickerItem from '../../picker-item/picker-item';
 
 jest.mock('../../common/src/index', () => ({
   SuperComponent: class {},
@@ -102,7 +102,7 @@ describe('picker-item mouse wheel', () => {
     expect(comp.data.curIndex).toBe(2);
   });
 
-  it('emits once at the end of a wheel burst and shares touch inertia and duration', () => {
+  it('emits the exact wheel target once after a burst without adding momentum', () => {
     const comp = render(100);
     wheel(comp, 40);
     jest.advanceTimersByTime(40);
@@ -114,18 +114,37 @@ describe('picker-item mouse wheel', () => {
     jest.advanceTimersByTime(119);
     expect(comp.$parent.triggerColumnChange).not.toHaveBeenCalled();
     jest.advanceTimersByTime(1);
-    expect(comp.data.curIndex).toBeGreaterThan(3);
+    expect(comp.data.curIndex).toBe(3);
+    expect(comp.data.duration).toBe(330);
     expect(comp.$parent.triggerColumnChange).toHaveBeenCalledTimes(1);
     expect(comp.$parent.triggerColumnChange).toHaveBeenCalledWith({ index: comp.data.curIndex, column: 0 });
 
+    jest.advanceTimersByTime(1000);
+    expect(comp.data.curIndex).toBe(3);
+    expect(comp.$parent.triggerColumnChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('keeps touch inertia while sharing the bounded animation duration', () => {
     const touch = render(100);
     touch.onTouchStart({ touches: [{ clientY: 200 }] });
     touch.onTouchMove({ touches: [{ clientY: 80 }] });
     jest.advanceTimersByTime(200);
     touch.onTouchEnd({ changedTouches: [{ clientY: 80 }] });
-    expect(touch.data.curIndex).toBe(comp.data.curIndex);
-    expect(touch.data.duration).toBe(comp.data.duration);
+    expect(touch.data.curIndex).toBe(6);
+    expect(touch.data.duration).toBe(390);
     expect(touch.$parent.triggerColumnChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('moves exactly one item for one wheel step and does not jump again after idle', () => {
+    const comp = render(100);
+    wheel(comp, 40);
+    expect(comp.data.curIndex).toBe(1);
+    jest.advanceTimersByTime(120);
+    expect(comp.data.curIndex).toBe(1);
+    expect(comp.$parent.triggerColumnChange).toHaveBeenCalledWith({ index: 1, column: 0 });
+    jest.advanceTimersByTime(1000);
+    expect(comp.data.curIndex).toBe(1);
+    expect(comp.$parent.triggerColumnChange).toHaveBeenCalledTimes(1);
   });
 
   it('does not add inertia to a slow wheel gesture', () => {
