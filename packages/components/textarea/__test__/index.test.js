@@ -265,4 +265,49 @@ describe('textarea', () => {
       expect(handleBlur).toHaveBeenCalledTimes(2);
     });
   });
+
+  describe('event', () => {
+    it(': change carries the value truncated by maxlength when setData is async (issue #4705)', async () => {
+      const id = simulate.load({
+        template: `<t-textarea
+        class="maxlength-truncate"
+        maxlength="{{maxlength}}"
+        value="{{value}}"
+        ></t-textarea>`,
+        data: {
+          maxlength: 10,
+          value: '',
+        },
+        usingComponents: {
+          't-textarea': textarea,
+        },
+      });
+      const comp = simulate.render(id);
+      comp.attach(document.createElement('parent-wrapper'));
+
+      const { instance } = comp.querySelector('.maxlength-truncate');
+
+      // 真机上 setData 不是同步生效的：本轮同步代码里 this.data.value 仍是旧值。
+      // jsdom 的模拟实现是同步的，会让这个时序 bug 隐没，所以这里显式延迟 setData 来复现真机行为。
+      const realSetData = instance.setData.bind(instance);
+      instance.setData = (data, callback) => {
+        setTimeout(() => realSetData(data, callback), 0);
+      };
+
+      const changes = [];
+      instance.triggerEvent = (name, detail) => {
+        if (name === 'change') changes.push(detail);
+      };
+
+      // 模拟"输满 10 个字符后粘贴超长文本"：event.detail 里是未截断的原始值。
+      instance.onInput({ detail: { value: 'textarea用于多行文本信息输入超长粘贴内容', cursor: 0 } });
+      await simulate.sleep(10);
+
+      expect(changes.length).toBe(1);
+      // 对外抛出的 value 必须是经 maxlength 截断后的结果：22 个字符入参应被截到 10 个。
+      // 旧实现抛的是 this.data.value（setData 尚未生效，仍是空串），长度 0，断言失败。
+      expect(changes[0].value.length).toBe(10);
+      expect(changes[0].value).toBe('textarea用于');
+    });
+  });
 });
