@@ -206,20 +206,25 @@
       :show-overlay="popupProps.showOverlay"
       :close-on-overlay-click="popupProps.closeOnOverlayClick"
       :close-btn="popupProps.closeBtn"
-      :t-class-close="popupProps.closeBtn ? classPrefix + '__popup-close' : ''"
+      :t-class-close="
+        popupProps.closeBtn
+          ? classPrefix + '__popup-close ' + classPrefix + '__popup-close--' + popupProps.placement
+          : ''
+      "
       :using-custom-navbar="popupProps.usingCustomNavbar"
       @visible-change="onPopupVisibleChange"
     >
-      <view :class="classPrefix + '__popup-inner'">
+      <view :class="[classPrefix + '__popup-inner', classPrefix + '__popup-inner--' + popupProps.placement]">
         <view :class="classPrefix + '__popup-title'">{{ popupProps.title }}</view>
         <view
           :class="[
             classPrefix + '__popup-content',
             classPrefix + '__popup-content--' + popupProps.placement,
-            popupProps.closeBtn ? classPrefix + '__popup-content--with-close' : '',
+            { [classPrefix + '__popup-content--with-close']: popupProps.closeBtn },
           ]"
-          >{{ popupProps.content }}</view
         >
+          <view :class="classPrefix + '__popup-content-inner'">{{ popupProps.content }}</view>
+        </view>
       </view>
     </t-popup>
   </view>

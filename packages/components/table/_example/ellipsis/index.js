@@ -1,36 +1,56 @@
 import SkylineBehavior from '@behaviors/skyline.js';
 
+// 短文本：自适应
+const SHORT_TEXT = '单元格内容单元格内容单元格内容';
+// 居中：滚动
+const CENTER_LONG_TEXT = '单元格内容'.repeat(200);
+// 底部：不滚动
+const BOTTOM_LONG_TEXT = '单元格内容'.repeat(80);
+// 超长：滚动
+const EXTRA_LONG_TEXT = '单元格内容'.repeat(300);
+
 Component({
   behaviors: [SkylineBehavior],
   data: {
-    // ellipsis / ellipsisTitle 的不同形式与取值
+    // 浮层状态：位置 / 标题 / 关闭按钮
     columns: [
-      // 1. ellipsis 为 Object
       {
-        colKey: 'applicant',
-        title: '申请人',
-        ellipsis: { placement: 'center', title: '申请人' },
+        colKey: 'centerWithTitle',
+        title: '居中弹出·有标题',
+        width: 180,
+        ellipsis: { placement: 'center', title: '表格标题文案' },
+        ellipsisTitle: { placement: 'center', title: '居中弹出·有标题' },
       },
-      // 2. ellipsis + ellipsisTitle 均为 Object
       {
-        colKey: 'status',
-        title: '审批状态与处理结果',
+        colKey: 'centerNoTitle',
+        title: '居中弹出·无标题',
+        width: 180,
+        ellipsis: { placement: 'center' },
+      },
+      {
+        colKey: 'centerNoCloseBtn',
+        title: '居中弹出·无标题无关闭按钮',
+        width: 240,
         ellipsis: { placement: 'center', closeBtn: false },
-        ellipsisTitle: { placement: 'center', title: '审批状态与处理结果' },
       },
-      // 3. 关闭浮层关闭按钮
       {
-        colKey: 'channel',
-        title: '签署方式',
-        ellipsis: { closeBtn: false },
-        ellipsisTitle: { closeBtn: false },
+        colKey: 'bottomWithTitle',
+        title: '底部弹出·有标题',
+        width: 180,
+        ellipsis: { placement: 'bottom', title: '表格标题文案' },
+        ellipsisTitle: { placement: 'bottom', title: '底部弹出·有标题' },
       },
-      // 4. 缺省 placement，使用默认值
       {
-        colKey: 'email',
-        title: '邮箱地址',
-        ellipsis: { title: '邮箱地址' },
-        ellipsisTitle: { title: '邮箱地址' },
+        colKey: 'bottomNoCloseBtn',
+        title: '底部弹出·无关闭按钮',
+        width: 220,
+        ellipsis: { placement: 'bottom', title: '表格标题文案', closeBtn: false },
+      },
+      {
+        colKey: 'bottomNoTitle',
+        title: '底部弹出·无标题无关闭按钮',
+        width: 240,
+        ellipsis: { placement: 'bottom', closeBtn: false },
       },
     ],
     data: [],
@@ -38,42 +58,21 @@ Component({
   lifetimes: {
     attached() {
       const data = [
-        {
-          id: 1,
-          applicant: '贾明（kyrieJia）',
-          status: '审批通过，流程已全部走完',
-          channel: '电子签署（在线完成）',
-          email: 'jiaming.kyrie@example.com',
-        },
-        {
-          id: 2,
-          applicant: '张三（threeZhang）',
-          status: '审批失败，请联系管理员处理',
-          channel: '纸质签署（线下邮寄）',
-          email: 'zhangsan.three@example.com',
-        },
-        {
-          id: 3,
-          applicant: '王芳（fangWang）',
-          status: '审批已过期，需重新发起',
-          channel: '电子签署（在线完成）',
-          email: 'wangfang.fw@example.com',
-        },
-        {
-          id: 4,
-          applicant: '李雷（leiLi）',
-          status: '审批中，等待上级确认',
-          channel: '纸质签署（线下邮寄）',
-          email: 'lilei.ll@example.com',
-        },
-        {
-          id: 5,
-          applicant: '韩梅梅（meiHan）',
-          status: '审批通过，流程已全部走完',
-          channel: '电子签署（在线完成）',
-          email: 'hanmeimei.mm@example.com',
-        },
-      ];
+        // 短文本
+        { id: 1, centerText: SHORT_TEXT, bottomText: SHORT_TEXT },
+        // 长文本
+        { id: 2, centerText: CENTER_LONG_TEXT, bottomText: BOTTOM_LONG_TEXT },
+        // 超长文本
+        { id: 3, centerText: EXTRA_LONG_TEXT, bottomText: EXTRA_LONG_TEXT },
+      ].map(({ id, centerText, bottomText }) => ({
+        id,
+        centerWithTitle: centerText,
+        centerNoTitle: centerText,
+        centerNoCloseBtn: centerText,
+        bottomWithTitle: bottomText,
+        bottomNoCloseBtn: bottomText,
+        bottomNoTitle: bottomText,
+      }));
       this.setData({ data });
     },
   },

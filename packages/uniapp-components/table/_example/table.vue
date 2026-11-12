@@ -13,14 +13,14 @@
       <t-demo desc="横向平铺可滚动表格" padding>
         <scroll-demo />
       </t-demo>
-      <t-demo desc="带斑马纹表格" padding>
+      <t-demo title="02 组件状态" desc="单元格超出省略的表格" padding>
+        <ellipsis-demo />
+      </t-demo>
+      <t-demo title="03 组件样式" desc="带斑马纹表格" padding>
         <stripe-demo />
       </t-demo>
       <t-demo desc="带边框表格" padding>
         <bordered-demo />
-      </t-demo>
-      <t-demo desc="单元格超出省略的表格 " padding>
-        <ellipsis-demo />
       </t-demo>
       <t-demo desc="带合并单元格的表格" padding>
         <rowspan-colspan-demo />

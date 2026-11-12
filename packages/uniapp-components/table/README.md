@@ -33,6 +33,14 @@ import TTable from '@tdesign/uniapp/table/table.vue';
 
 {{ scroll }}
 
+### 组件状态
+
+#### 单元格超出省略的表格
+
+{{ ellipsis }}
+
+### 组件样式
+
 #### 带斑马纹表格样式
 
 {{ stripe }}
