@@ -7,6 +7,12 @@
 @table-header-bg-color: var(--td-table-header-bg-color, @bg-color-container);
 @table-header-text-color: var(--td-table-header-text-color, @text-color-placeholder);
 @table-body-text-color: var(--td-table-body-text-color, @text-color-primary);
+@table-popup-title-color: @text-color-primary;
+@table-popup-title-font: @font-title-medium;
+@table-popup-bottom-min-height: 26.8vh;
+@table-popup-bottom-max-height: 71.4vh;
+@table-popup-center-width: 82.9vw;
+@table-popup-center-max-height: 49.3vh;
 @table-stripe-bg-color: var(--td-table-stripe-bg-color, @bg-color-secondarycontainer);
 @table-td-padding: var(--td-table-td-padding, @spacer @spacer-1);
 @table-th-padding: var(--td-table-th-padding, @spacer @spacer-1);
@@ -102,8 +108,113 @@
   &__th-content,
   &__td-content {
     overflow: hidden;
+  }
+
+  // 开启 ellipsis / ellipsisTitle 后才出现超出省略
+  &__th-content--ellipsis,
+  &__td-content--ellipsis {
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  &__popup {
+    &--bottom,
+    &--top {
+      width: 100%;
+    }
+
+    &--center {
+      width: @table-popup-center-width;
+    }
+
+    &--left,
+    &--right {
+      width: 65%;
+      height: 100%;
+    }
+
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-sizing: border-box;
+
+      &--bottom,
+      &--top {
+        min-height: @table-popup-bottom-min-height;
+        max-height: @table-popup-bottom-max-height;
+        padding: @spacer-2;
+      }
+
+      &--center {
+        max-height: @table-popup-center-max-height;
+        padding: @spacer-4 @spacer-3;
+      }
+
+      &--left,
+      &--right {
+        height: 100%;
+        padding: @spacer-2;
+      }
+    }
+
+    &-title {
+      flex-shrink: 0;
+      overflow: hidden;
+      color: @table-popup-title-color;
+      font: @table-popup-title-font;
+      text-align: center;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    &-close {
+      padding: @spacer-2;
+
+      &--center {
+        padding: @spacer;
+        color: @text-color-placeholder;
+      }
+    }
+
+    &-content {
+      display: flex;
+      flex: 1 1 auto;
+      flex-direction: column;
+      min-height: 0;
+      overflow: hidden;
+      box-sizing: border-box;
+      padding-top: @spacer-2;
+
+      &--with-close {
+        padding-top: calc(48rpx + @spacer-2);
+      }
+
+      &--center&--with-close {
+        padding-top: @spacer-2;
+      }
+    }
+
+    &-content-inner {
+      flex: 1 1 auto;
+      min-height: 0;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      word-break: break-all;
+      color: @text-color-secondary;
+    }
+
+    &-title:not(:empty) + &-content {
+      padding-top: @spacer-2;
+    }
+
+    &-title:empty + &-content--center:not(&-content--with-close) {
+      padding-top: 0;
+    }
   }
 
   // 空数据

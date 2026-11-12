@@ -1,0 +1,9 @@
+<t-table
+  row-key="id"
+  columns="{{columns}}"
+  data="{{data}}"
+  show-header="{{true}}"
+  cell-empty-content="-"
+  bind:row-click="handleRowClick"
+  bind:cell-click="handleCellClick"
+/>
