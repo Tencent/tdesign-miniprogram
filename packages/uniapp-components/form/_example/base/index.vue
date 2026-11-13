@@ -5,13 +5,12 @@
       class="form"
       :data="formData"
       :rules="rules"
-      reset-type="initial"
+      reset-type="empty"
       show-error-message
-      scroll-to-first-error="smooth"
-      label-align="left"
-      :label-width="85"
-      @reset="(e) => onReset(e, { tagId: 'form' })"
-      @submit="(e) => onSubmit(e, { tagId: 'form' })"
+      scroll-to-first-error="auto"
+      :label-align="labelAlign"
+      @reset="onReset"
+      @submit="onSubmit"
     >
       <t-form-item label="用户名" name="name">
         <t-input
@@ -35,7 +34,7 @@
           placeholder="请输入密码"
           data-field="password"
           style="flex: 1"
-          @change="(e) => onInputChange(e, { field: 'password' })"
+          @update:value="(e) => (formData.password = e)"
         />
       </t-form-item>
 
@@ -59,16 +58,15 @@
           :value="formData.birth"
           :disabled="disabled"
           borderless
-          placeholder="请选择生日"
-          :readonly="!isH5"
-          data-field="birth"
+          placeholder="请选择"
+          readonly
           style="flex: 1"
           @click="showDatePicker"
         />
         <t-date-time-picker
           :visible="visibleDatePicker"
           auto-close
-          title="选择生日"
+          title="选择日期"
           mode="date"
           :default-value="formData.birth"
           format="YYYY-MM-DD"
@@ -77,18 +75,16 @@
         />
       </t-form-item>
 
-      <t-form-item arrow label="籍贯" name="address.city" content-align="left">
+      <t-form-item arrow label="籍贯" name="place">
         <t-input
-          ref="input"
-          :value="formData.address.city"
+          :value="formData.place"
           :disabled="disabled"
           borderless
-          placeholder="请选择籍贯"
-          :readonly="!isH5"
+          placeholder="请选择"
+          readonly
           style="flex: 1"
           @click="showCascader"
         />
-
         <t-cascader
           :visible="visibleCascader"
           :value="address"
@@ -115,7 +111,7 @@
         />
       </t-form-item>
 
-      <t-form-item label="个人简介" name="resume">
+      <t-form-item label="个人简介" name="resume" t-class-label="my-label">
         <t-textarea
           :value="formData.resume"
           :disabled="disabled"
@@ -148,25 +144,24 @@
 
       <view class="button-group">
         <t-button
+          theme="light"
+          form-type="reset"
+          size="large"
+          :style="!useVirtualHost ? 'flex: 1;display: flex;' : ''"
+          custom-style="flex: 1;margin-right: 16px;height: 40px;"
+          @click="reset"
+        >
+          重置
+        </t-button>
+        <t-button
           theme="primary"
           form-type="submit"
           size="large"
           :style="!useVirtualHost ? 'flex: 1;display: flex;' : ''"
-          custom-style="flex: 1;margin-right: 16px;height: 40px;"
+          custom-style="flex: 1;height: 40px;"
           @click="submit"
         >
           提交
-        </t-button>
-        <t-button
-          theme="default"
-          variant="base"
-          form-type="reset"
-          size="large"
-          :style="!useVirtualHost ? 'flex: 1;display: flex;' : ''"
-          custom-style="flex: 1;height: 40px;"
-          @click="reset"
-        >
-          重置
         </t-button>
       </view>
     </t-form>
@@ -183,7 +178,6 @@ import TFormItem from '@tdesign/uniapp/form-item/form-item.vue';
 import TInput from '@tdesign/uniapp/input/input.vue';
 import TRadio from '@tdesign/uniapp/radio/radio.vue';
 import TRadioGroup from '@tdesign/uniapp/radio-group/radio-group.vue';
-// import TPopup from '@tdesign/uniapp/popup/popup.vue';
 import TRate from '@tdesign/uniapp/rate/rate.vue';
 import TStepper from '@tdesign/uniapp/stepper/stepper.vue';
 import TTextarea from '@tdesign/uniapp/textarea/textarea.vue';
@@ -199,7 +193,6 @@ export default {
     TInput,
     TRadioGroup,
     TRadio,
-    // TPopup,
     TCascader,
     TDateTimePicker,
     TStepper,
@@ -209,6 +202,10 @@ export default {
     TButton,
   },
   props: {
+    labelAlign: {
+      type: String,
+      default: 'top',
+    },
     disabled: {
       type: Boolean,
       default: false,
@@ -217,16 +214,14 @@ export default {
   data() {
     return {
       formData: {
-        name: '',
-        password: '',
-        gender: '',
-        birth: '2020-01-01',
-        address: {
-          city: '',
-        },
+        name: 'Abcdefgh',
+        password: 'Abcdefgh',
+        gender: 'man',
+        birth: '2022-08-10',
+        place: '广东省 深圳市',
         age: 3,
-        description: 2,
-        resume: '',
+        description: 3.5,
+        resume: '本人性格开朗、稳重、细心，待人热情、真诚，工作认真负责，积极主动，勇于创新，具有很强的团队协作精神。',
         photo: [
           {
             url: 'https://tdesign.gtimg.com/mobile/demos/example4.png',
@@ -242,13 +237,18 @@ export default {
       },
       visibleCascader: false,
       visibleDatePicker: false,
-      address: '120119',
+      address: '440300',
       rateGap: 8,
       action: 'https://service-bv448zsw-1257786608.gz.apigw.tencentcs.com/api/upload-demo',
       gridConfig: {
         column: 3,
       },
       options: [
+        {
+          label: '广东省',
+          value: '440000',
+          children: [{ value: '440300', label: '深圳市' }],
+        },
         {
           label: '北京市',
           value: '110000',
@@ -257,70 +257,10 @@ export default {
               value: '110100',
               label: '北京市',
               children: [
-                {
-                  value: '110101',
-                  label: '东城区',
-                },
-                {
-                  value: '110102',
-                  label: '西城区',
-                },
-                {
-                  value: '110105',
-                  label: '朝阳区',
-                },
-                {
-                  value: '110106',
-                  label: '丰台区',
-                },
-                {
-                  value: '110107',
-                  label: '石景山区',
-                },
-                {
-                  value: '110108',
-                  label: '海淀区',
-                },
-                {
-                  value: '110109',
-                  label: '门头沟区',
-                },
-                {
-                  value: '110111',
-                  label: '房山区',
-                },
-                {
-                  value: '110112',
-                  label: '通州区',
-                },
-                {
-                  value: '110113',
-                  label: '顺义区',
-                },
-                {
-                  value: '110114',
-                  label: '昌平区',
-                },
-                {
-                  value: '110115',
-                  label: '大兴区',
-                },
-                {
-                  value: '110116',
-                  label: '怀柔区',
-                },
-                {
-                  value: '110117',
-                  label: '平谷区',
-                },
-                {
-                  value: '110118',
-                  label: '密云区',
-                },
-                {
-                  value: '110119',
-                  label: '延庆区',
-                },
+                { value: '110101', label: '东城区' },
+                { value: '110102', label: '西城区' },
+                { value: '110105', label: '朝阳区' },
+                { value: '110108', label: '海淀区' },
               ],
             },
           ],
@@ -333,82 +273,22 @@ export default {
               value: '120100',
               label: '天津市',
               children: [
-                {
-                  value: '120101',
-                  label: '和平区',
-                },
-                {
-                  value: '120102',
-                  label: '河东区',
-                },
-                {
-                  value: '120103',
-                  label: '河西区',
-                },
-                {
-                  value: '120104',
-                  label: '南开区',
-                },
-                {
-                  value: '120105',
-                  label: '河北区',
-                },
-                {
-                  value: '120106',
-                  label: '红桥区',
-                },
-                {
-                  value: '120110',
-                  label: '东丽区',
-                },
-                {
-                  value: '120111',
-                  label: '西青区',
-                },
-                {
-                  value: '120112',
-                  label: '津南区',
-                },
-                {
-                  value: '120113',
-                  label: '北辰区',
-                },
-                {
-                  value: '120114',
-                  label: '武清区',
-                },
-                {
-                  value: '120115',
-                  label: '宝坻区',
-                },
-                {
-                  value: '120116',
-                  label: '滨海新区',
-                },
-                {
-                  value: '120117',
-                  label: '宁河区',
-                },
-                {
-                  value: '120118',
-                  label: '静海区',
-                },
-                {
-                  value: '120119',
-                  label: '蓟州区',
-                },
+                { value: '120101', label: '和平区' },
+                { value: '120102', label: '河东区' },
+                { value: '120103', label: '河西区' },
+                { value: '120104', label: '南开区' },
               ],
             },
           ],
         },
       ],
       rules: {
-        name: [{ pattern: '[a-zA-Z]{8}', validator: (val) => val.length === 8, message: '只能输入8个字符英文' }],
-        password: [{ validator: (val) => val.length > 6, message: '长度大于6个字符' }],
-        description: [{ validator: (val) => val > 3, message: '分数过低会影响整体评价' }],
+        name: [{ validator: (val) => val.length === 8, message: '只能输入8个字符英文' }],
+        password: [{ validator: (val) => val.length > 6, message: '密码长度 6–16 位，支持字母、数字' }],
         gender: [{ validator: (val) => val !== '', message: '不能为空' }],
         birth: [{ validator: (val) => val !== '', message: '不能为空' }],
-        'address.city': [{ validator: (val) => val !== '', message: '不能为空' }],
+        place: [{ validator: (val) => val !== '', message: '不能为空' }],
+        description: [{ validator: (val) => val > 3, message: '分数过低会影响整体评价' }],
         resume: [{ validator: (val) => val !== '', message: '不能为空' }],
       },
     };
@@ -418,7 +298,6 @@ export default {
       return canUseVirtualHost();
     },
   },
-  created() {},
   methods: {
     onReset(e) {
       this.formData = e.formData;
@@ -434,28 +313,19 @@ export default {
       const { form } = this.$refs;
       form.reset();
     },
-    onInputChange(e, { field }) {
-      this.formData[`${field}`] = e.value;
-    },
     onRadioChange(e) {
       this.formData.gender = e.value;
     },
     onRateChange(e) {
       this.formData.description = e.value;
     },
-    onTextareaChange(e) {
-      this.formData.resume = e.value;
-    },
-    groupChangeFn(e) {
-      console.log('groupChange:', e.value);
-    },
     onCascaderVisibleChange(e) {
-      this.formData.visibleCascader = e.value;
+      this.visibleCascader = e.value;
     },
     onChangeCascader(e) {
       const { selectedOptions } = e;
-      const placeText = selectedOptions?.map((item) => item.label).join('/');
-      this.formData.address.city = placeText;
+      const placeText = selectedOptions?.map((item) => item.label).join(' ');
+      this.formData.place = placeText;
       this.visibleCascader = false;
     },
     showCascader() {
@@ -505,16 +375,9 @@ export default {
   justify-content: space-between;
 }
 
-.form {
-}
-
 :deep(.upload) {
   width: 100%;
 }
-
-/* .upload {
-    width: 100%;
-} */
 
 :deep(.textarea) {
   height: 200rpx;
@@ -527,6 +390,10 @@ export default {
   padding: 0 !important;
 }
 
+:deep(.my-label) {
+  align-self: flex-start;
+}
+
 .button-group {
   background-color: var(--bg-color-demo, #fff);
   box-sizing: border-box;
@@ -534,15 +401,5 @@ export default {
   display: flex;
   justify-content: space-between;
   position: relative;
-  border-bottom: 1rpx solid var(--td-component-stroke, #e7e7e7);
 }
-
-/* .button-group :deep(.t-button) {
-    height: 80rpx;
-    flex: 1;
-}
-
-.button-group :deep(.t-button:not(:last-child)) {
-    margin-right: 32rpx;
-} */
 </style>
