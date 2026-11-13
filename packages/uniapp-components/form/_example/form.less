@@ -3,26 +3,15 @@
   background-color: var(--bg-color-demo, #fff);
 }
 
-.option {
-  margin-bottom: 24rpx;
-}
-
-.select-button-group {
+.form-demo-sticky {
   background-color: var(--bg-color-demo, #fff);
-  box-sizing: border-box;
-  padding: 16rpx 8rpx;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  border-bottom: 1rpx solid var(--td-component-stroke, #e7e7e7);
-  margin-bottom: 16rpx;
 }
 
-// .select-button-group :deep(.t-button) {
-//   height: 64rpx !important;
-//   flex: 1 !important;
-// }
+.form-demo-sticky .t-tabs {
+  border-bottom: 1rpx solid var(--td-component-stroke, #e7e7e7);
+}
 
-// .select-button-group :deep(.t-button:not(:last-child)) {
-//   margin-right: 16rpx;
-// }
+.form-demo-sticky .t-cell {
+  --td-cell-border-left-space: 0;
+  --td-cell-border-right-space: 0;
+}
