@@ -225,7 +225,11 @@ export default class Calendar extends SuperComponent {
       const months = this.base.getMonths();
 
       if (this.data.switchMode === 'none') {
-        this.setData({ months });
+        // switchMode 为 none 时虽然不展示月份切换按钮，但面板仍需要定位到选中的月份。
+        // 这里之前只设置 months，currentMonth 会一直停留在初始的空对象上，
+        // 导致跨度过大时打开面板无法定位到选中区间（issue #4718）。
+        const { currentMonth } = this.getCurrentMonth(newValue, months);
+        this.setData({ months, currentMonth });
         return;
       }
 

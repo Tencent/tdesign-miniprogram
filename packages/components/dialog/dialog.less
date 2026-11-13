@@ -52,6 +52,15 @@
     }
   }
 
+  // 弹窗进场动画期间容器处于 scale/translate 合成层，原生 input 的
+  // placeholder 首次布局会被中间态 transform 干扰产生竖向偏移
+  // （issue #4551）。给插槽内容一个独立的稳定层，切断继承链。
+  &__content,
+  .@{prefix}-input {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
   &__header {
     text-align: center;
     font: @dialog-title-font;
