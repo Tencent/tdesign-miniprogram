@@ -1,22 +1,7 @@
-.option {
-  margin-bottom: 24rpx;
+.form-demo-sticky .t-cell {
+  --td-cell-border-left-space: 0;
 }
 
-.select-button-group {
-  background-color: var(--bg-color-demo, #fff);
-  box-sizing: border-box;
-  padding: 16rpx 8rpx;
-  display: flex;
-  justify-content: space-between;
-  position: relative;
-  border-bottom: 1rpx solid var(--td-component-stroke);
-}
-
-.select-button-group .t-button {
-  height: 64rpx;
-  flex: 1;
-}
-
-.select-button-group .t-button:not(:last-child) {
-  margin-right: 16rpx;
+.demo-desc {
+  margin-bottom: var(--td-spacer-4, 64rpx);
 }

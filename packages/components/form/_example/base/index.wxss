@@ -4,8 +4,6 @@
   justify-content: space-between;
 }
 
-.form {
-}
 .upload {
   width: 100%;
 }
@@ -15,27 +13,19 @@
   width: 100%;
   --td-textarea-padding: 0;
 }
+
 page .textarea .t-textarea {
   padding: 0 !important;
 }
 
 .button-group {
-  background-color: var(--bg-color-demo, #fff);
-  box-sizing: border-box;
-  padding: 32rpx;
   display: flex;
-  justify-content: space-between;
-  position: relative;
-  border-bottom: 1rpx solid var(--td-component-stroke);
+  gap: 32rpx;
+  padding: 32rpx;
 }
 
 .button-group .t-button {
-  height: 80rpx;
   flex: 1;
-}
-
-.button-group .t-button:not(:last-child) {
-  margin-right: 32rpx;
 }
 
 .my-label {

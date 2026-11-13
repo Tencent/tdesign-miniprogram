@@ -1,5 +1,9 @@
 Component({
   properties: {
+    labelAlign: {
+      type: String,
+      value: 'top',
+    },
     disabled: {
       type: Boolean,
       value: false,
@@ -8,14 +12,14 @@ Component({
 
   data: {
     formData: {
-      name: '',
-      password: '',
-      gender: '',
-      birth: '',
-      place: '',
+      name: 'Abcdefgh',
+      password: 'Abcdefgh',
+      gender: 'man',
+      birth: '2022-08-10',
+      place: '广东省 深圳市',
       age: 3,
-      description: 2,
-      resume: '',
+      description: 3.5,
+      resume: '本人性格开朗、稳重、细心，待人热情、真诚，工作认真负责，积极主动，勇于创新，具有很强的团队协作精神。',
       photo: [
         {
           url: 'https://tdesign.gtimg.com/mobile/demos/example4.png',
@@ -31,13 +35,18 @@ Component({
     },
     visibleCascader: false,
     dateVisible: false,
-    address: '120119',
+    address: '440300',
     rateGap: 8,
     action: 'https://service-bv448zsw-1257786608.gz.apigw.tencentcs.com/api/upload-demo',
     gridConfig: {
       column: 3,
     },
     options: [
+      {
+        label: '广东省',
+        value: '440000',
+        children: [{ value: '440300', label: '深圳市' }],
+      },
       {
         label: '北京市',
         value: '110000',
@@ -49,19 +58,7 @@ Component({
               { value: '110101', label: '东城区' },
               { value: '110102', label: '西城区' },
               { value: '110105', label: '朝阳区' },
-              { value: '110106', label: '丰台区' },
-              { value: '110107', label: '石景山区' },
               { value: '110108', label: '海淀区' },
-              { value: '110109', label: '门头沟区' },
-              { value: '110111', label: '房山区' },
-              { value: '110112', label: '通州区' },
-              { value: '110113', label: '顺义区' },
-              { value: '110114', label: '昌平区' },
-              { value: '110115', label: '大兴区' },
-              { value: '110116', label: '怀柔区' },
-              { value: '110117', label: '平谷区' },
-              { value: '110118', label: '密云区' },
-              { value: '110119', label: '延庆区' },
             ],
           },
         ],
@@ -78,18 +75,6 @@ Component({
               { value: '120102', label: '河东区' },
               { value: '120103', label: '河西区' },
               { value: '120104', label: '南开区' },
-              { value: '120105', label: '河北区' },
-              { value: '120106', label: '红桥区' },
-              { value: '120110', label: '东丽区' },
-              { value: '120111', label: '西青区' },
-              { value: '120112', label: '津南区' },
-              { value: '120113', label: '北辰区' },
-              { value: '120114', label: '武清区' },
-              { value: '120115', label: '宝坻区' },
-              { value: '120116', label: '滨海新区' },
-              { value: '120117', label: '宁河区' },
-              { value: '120118', label: '静海区' },
-              { value: '120119', label: '蓟州区' },
             ],
           },
         ],
@@ -101,14 +86,12 @@ Component({
   lifetimes: {
     attached() {
       this.setData({
-        'rules.name': [
-          { pattern: '[a-zA-Z]{8}', validator: (val) => val.length === 8, message: '只能输入8个字符英文' },
-        ],
-        'rules.password': [{ validator: (val) => val.length > 6, message: '长度大于6个字符' }],
-        'rules.description': [{ validator: (val) => val > 3, message: '分数过低会影响整体评价' }],
+        'rules.name': [{ validator: (val) => val.length === 8, message: '只能输入8个字符英文' }],
+        'rules.password': [{ validator: (val) => val.length > 6, message: '密码长度 6–16 位，支持字母、数字' }],
         'rules.gender': [{ validator: (val) => val !== '', message: '不能为空' }],
         'rules.birth': [{ validator: (val) => val !== '', message: '不能为空' }],
         'rules.place': [{ validator: (val) => val !== '', message: '不能为空' }],
+        'rules.description': [{ validator: (val) => val > 3, message: '分数过低会影响整体评价' }],
         'rules.resume': [{ validator: (val) => val !== '', message: '不能为空' }],
       });
     },
@@ -129,6 +112,7 @@ Component({
       const form = this.selectComponent('#form');
       form.submit();
     },
+
     reset() {
       const form = this.selectComponent('#form');
       form.reset();
@@ -159,17 +143,13 @@ Component({
       });
     },
 
-    groupChangeFn(e) {
-      console.log('groupChange:', e.detail.value);
-    },
-
     onCascaderVisibleChange(e) {
       this.setData({ visibleCascader: e.detail.visible });
     },
 
     onChangeCascader(e) {
       const { selectedOptions } = e.detail;
-      const placeText = selectedOptions?.map((item) => item.label).join('/');
+      const placeText = selectedOptions?.map((item) => item.label).join(' ');
       this.setData({
         'formData.place': placeText,
         visibleCascader: false,

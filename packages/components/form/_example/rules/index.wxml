@@ -1,0 +1,64 @@
+<t-form
+  id="form"
+  data="{{formData}}"
+  rules="{{rules}}"
+  show-error-message
+  using-custom-navbar
+  label-align="{{labelAlign}}"
+  bind:reset="onReset"
+  bind:submit="onSubmit"
+>
+  <t-form-item label="用户名" name="name">
+    <t-input
+      value="{{formData.name}}"
+      borderless
+      placeholder="请输入用户名"
+      disabled="{{disabled}}"
+      bind:change="onInputChange"
+      data-field="name"
+    />
+  </t-form-item>
+
+  <t-form-item label="性别" name="gender">
+    <t-radio-group
+      value="{{formData.gender}}"
+      disabled="{{disabled}}"
+      class="box"
+      borderless
+      bind:change="onRadioChange"
+    >
+      <t-radio block="{{false}}" name="radio" value="man" label="男" />
+      <t-radio block="{{false}}" name="radio" value="women" label="女" />
+      <t-radio block="{{false}}" name="radio" value="secret" label="保密" />
+    </t-radio-group>
+  </t-form-item>
+
+  <t-form-item label="生日" arrow name="birth">
+    <t-input
+      value="{{formData.birth}}"
+      disabled="{{disabled}}"
+      borderless
+      readonly
+      placeholder="请选择"
+      bind:tap="showDatePicker"
+    />
+    <t-date-time-picker
+      title="选择日期"
+      visible="{{dateVisible}}"
+      mode="date"
+      format="YYYY-MM-DD"
+      start="2015-01-01"
+      bind:change="onDatePickerConfirm"
+      bind:close="onDatePickerClose"
+    />
+  </t-form-item>
+
+  <t-form-item label="年限" name="age">
+    <t-stepper value="{{formData.age}}" disabled="{{disabled}}" theme="filled" bind:change="onChangeStepper" />
+  </t-form-item>
+
+  <view class="button-group">
+    <t-button theme="light" formType="reset" size="large" bind:tap="reset">重置</t-button>
+    <t-button theme="primary" formType="submit" size="large" bind:tap="submit">提交</t-button>
+  </view>
+</t-form>

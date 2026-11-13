@@ -2,10 +2,18 @@
   "component": true,
   "styleIsolation": "shared",
   "usingComponents": {
-    "t-button": "tdesign-miniprogram/button/button",
+    "t-sticky": "tdesign-miniprogram/sticky/sticky",
+    "t-tabs": "tdesign-miniprogram/tabs/tabs",
+    "t-tab-panel": "tdesign-miniprogram/tab-panel/tab-panel",
     "t-cell": "tdesign-miniprogram/cell/cell",
     "t-switch": "tdesign-miniprogram/switch/switch",
-    "horizontal": "./horizontal/index",
-    "vertical": "./vertical/index"
+    "base": "./base/index",
+    "help": "./help/index",
+    "rules": "./rules/index",
+    "label-align": "./label-align/index",
+    "colon": "./colon/index",
+    "required-mark": "./required-mark/index",
+    "label-width": "./label-width/index",
+    "content-align": "./content-align/index"
   }
 }
