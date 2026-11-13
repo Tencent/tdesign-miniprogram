@@ -13,9 +13,9 @@ export interface TdFormItemProps {
    */
   arrow?: boolean;
   /**
-   * 表单内容对齐方式：左对齐、右对齐，优先级高于 Form.contentAlign
+   * 表单内容对齐方式：左对齐、居中对齐及右对齐，优先级高于 Form.contentAlign
    */
-  contentAlign?: 'left' | 'right';
+  contentAlign?: 'left' | 'center' | 'right';
   /**
    * 表单项说明内容
    */

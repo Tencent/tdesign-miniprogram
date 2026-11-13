@@ -15,10 +15,10 @@ export interface TdFormProps<FormData extends Data = Data> {
    */
   colon?: boolean;
   /**
-   * 表单内容对齐方式：左对齐、右对齐
+   * 表单内容对齐方式：左对齐、居中对齐及右对齐
    * @default left
    */
-  contentAlign?: 'left' | 'right';
+  contentAlign?: 'left' | 'center' | 'right';
   /**
    * 表单数据
    * @default {}

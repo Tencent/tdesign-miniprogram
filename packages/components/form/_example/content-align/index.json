@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "styleIsolation": "shared",
+  "usingComponents": {
+    "t-form": "tdesign-miniprogram/form/form",
+    "t-form-item": "tdesign-miniprogram/form-item/form-item",
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-stepper": "tdesign-miniprogram/stepper/stepper"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "styleIsolation": "shared",
+  "usingComponents": {
+    "t-form": "tdesign-miniprogram/form/form",
+    "t-form-item": "tdesign-miniprogram/form-item/form-item",
+    "t-input": "tdesign-miniprogram/input/input",
+    "t-radio-group": "tdesign-miniprogram/radio-group/radio-group",
+    "t-radio": "tdesign-miniprogram/radio/radio",
+    "t-date-time-picker": "tdesign-miniprogram/date-time-picker/date-time-picker"
+  }
+}

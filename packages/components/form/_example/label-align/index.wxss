@@ -1,0 +1,3 @@
+.form-demo-form + .form-demo-form {
+  margin-top: 32rpx;
+}

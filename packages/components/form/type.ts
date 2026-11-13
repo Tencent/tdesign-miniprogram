@@ -4,8 +4,8 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import { IsEmailOptions } from 'validator/es/lib/isEmail';
-import { IsURLOptions } from 'validator/es/lib/isURL';
+import type { IsEmailOptions } from 'validator/es/lib/isEmail';
+import type { IsURLOptions } from 'validator/es/lib/isURL';
 
 export interface TdFormProps<FormData extends Data = Data> {
   /**
@@ -17,12 +17,12 @@ export interface TdFormProps<FormData extends Data = Data> {
     value?: boolean;
   };
   /**
-   * 表单内容对齐方式：左对齐、右对齐
+   * 表单内容对齐方式：左对齐、居中对齐及右对齐
    * @default left
    */
   contentAlign?: {
     type: StringConstructor;
-    value?: 'left' | 'right';
+    value?: 'left' | 'center' | 'right';
   };
   /**
    * 表单数据

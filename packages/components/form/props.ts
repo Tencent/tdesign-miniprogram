@@ -4,14 +4,14 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import { TdFormProps } from './type';
+import type { TdFormProps } from './type';
 const props: TdFormProps = {
   /** 是否在表单标签字段右侧显示冒号 */
   colon: {
     type: Boolean,
     value: false,
   },
-  /** 表单内容对齐方式：左对齐、右对齐 */
+  /** 表单内容对齐方式：左对齐、居中对齐及右对齐 */
   contentAlign: {
     type: String,
     value: 'left',

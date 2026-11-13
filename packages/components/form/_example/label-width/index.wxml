@@ -1,0 +1,65 @@
+<t-form class="form-demo-form" data="{{formData}}" label-align="left">
+  <t-form-item label="用户昵称" name="nickname" label-width="80px">
+    <t-input
+      value="{{formData.nickname}}"
+      borderless
+      placeholder="请输入昵称"
+      disabled="{{disabled}}"
+      data-field="nickname"
+      bind:change="onInputChange"
+    />
+  </t-form-item>
+  <t-form-item label="工作年限" name="workAge" label-width="80px">
+    <t-stepper
+      value="{{formData.workAge}}"
+      disabled="{{disabled}}"
+      theme="filled"
+      data-field="workAge"
+      bind:change="onChangeStepper"
+    />
+  </t-form-item>
+</t-form>
+
+<t-form class="form-demo-form" data="{{formData}}" label-align="left">
+  <t-form-item label="标签文案宽度" name="label" label-width="112px">
+    <t-input
+      value="{{formData.label}}"
+      borderless
+      placeholder="请输入内容"
+      disabled="{{disabled}}"
+      data-field="label"
+      bind:change="onInputChange"
+    />
+  </t-form-item>
+  <t-form-item label="标签文案宽度" name="labelAge" label-width="112px">
+    <t-stepper
+      value="{{formData.labelAge}}"
+      disabled="{{disabled}}"
+      theme="filled"
+      data-field="labelAge"
+      bind:change="onChangeStepper"
+    />
+  </t-form-item>
+</t-form>
+
+<t-form class="form-demo-form" data="{{formData}}" label-align="left">
+  <t-form-item label="标签文案宽度超长样式" name="longLabel" label-width="176px">
+    <t-input
+      value="{{formData.longLabel}}"
+      borderless
+      placeholder="请输入内容"
+      disabled="{{disabled}}"
+      data-field="longLabel"
+      bind:change="onInputChange"
+    />
+  </t-form-item>
+  <t-form-item label="标签文案宽度超长样式" name="longLabelAge" label-width="176px">
+    <t-stepper
+      value="{{formData.longLabelAge}}"
+      disabled="{{disabled}}"
+      theme="filled"
+      data-field="longLabelAge"
+      bind:change="onChangeStepper"
+    />
+  </t-form-item>
+</t-form>
