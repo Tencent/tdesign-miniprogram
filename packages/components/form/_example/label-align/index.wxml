@@ -1,0 +1,29 @@
+<t-form class="form-demo-form" data="{{formData}}" label-align="left" label-width="81px">
+  <t-form-item label="用户名" name="name">
+    <t-input
+      value="{{formData.name}}"
+      borderless
+      placeholder="请输入用户名"
+      disabled="{{disabled}}"
+      bind:change="onInputChange"
+    />
+  </t-form-item>
+  <t-form-item label="年限" name="age">
+    <t-stepper value="{{formData.age}}" disabled="{{disabled}}" theme="filled" bind:change="onChangeStepper" />
+  </t-form-item>
+</t-form>
+
+<t-form class="form-demo-form" data="{{formData}}" label-align="right" label-width="81px">
+  <t-form-item label="用户名" name="name">
+    <t-input
+      value="{{formData.name}}"
+      borderless
+      placeholder="请输入用户名"
+      disabled="{{disabled}}"
+      bind:change="onInputChange"
+    />
+  </t-form-item>
+  <t-form-item label="年限" name="age">
+    <t-stepper value="{{formData.age}}" disabled="{{disabled}}" theme="filled" bind:change="onChangeStepper" />
+  </t-form-item>
+</t-form>

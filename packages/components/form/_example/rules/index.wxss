@@ -1,0 +1,15 @@
+.box {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-group {
+  display: flex;
+  gap: 32rpx;
+  padding: 32rpx;
+}
+
+.button-group .t-button {
+  flex: 1;
+}

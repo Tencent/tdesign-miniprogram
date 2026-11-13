@@ -3,11 +3,11 @@
   class="form"
   data="{{formData}}"
   rules="{{rules}}"
-  reset-type="initial"
+  reset-type="empty"
   show-error-message
   using-custom-navbar
-  scrollToFirstError="smooth"
-  label-align="left"
+  scrollToFirstError="auto"
+  label-align="{{labelAlign}}"
   bind:reset="onReset"
   bind:submit="onSubmit"
 >
@@ -55,7 +55,7 @@
       disabled="{{disabled}}"
       borderless
       readonly
-      placeholder="请输入生日"
+      placeholder="请选择"
       bind:tap="showDatePicker"
     />
     <t-date-time-picker
@@ -63,10 +63,9 @@
       visible="{{dateVisible}}"
       mode="date"
       format="YYYY-MM-DD"
+      start="2015-01-01"
       bind:change="onDatePickerConfirm"
       bind:close="onDatePickerClose"
-      start="{{start}}"
-      end="{{end}}"
     />
   </t-form-item>
 
@@ -76,7 +75,7 @@
       disabled="{{disabled}}"
       borderless
       readonly
-      placeholder="请选择籍贯"
+      placeholder="请选择"
       bind:tap="showCascader"
     />
     <t-cascader
@@ -135,7 +134,7 @@
   </t-form-item>
 
   <view class="button-group">
+    <t-button theme="light" formType="reset" size="large" bind:tap="reset">重置</t-button>
     <t-button theme="primary" formType="submit" size="large" bind:tap="submit">提交</t-button>
-    <t-button theme="default" variant="base" formType="reset" size="large" bind:tap="reset">重置</t-button>
   </view>
 </t-form>

@@ -1,30 +1,62 @@
-<t-navbar class="demo-navbar" title="Form" leftArrow placeholder zIndex="{{99}}" />
+<view class="custom-navbar">
+  <t-navbar class="demo-navbar" title="Form" leftArrow placeholder zIndex="{{99}}" />
+</view>
 <t-demo-header
   title="Form 表单"
   desc="用以收集、校验和提交数据，一般由输入框、单选框、复选框、选择器等控件组成。"
   notice="渲染框架支持情况：WebView"
 />
 
-<t-demo title="01 组件类型" desc="基础表单">
-  <view class="option">
-    <view class="select-button-group">
-      <t-button theme="{{isActive1 ? 'light' : 'default'}}" shape="round" data-name="isActive1" bind:tap="onClick">
-        水平排布
-      </t-button>
-      <t-button theme="{{isActive2 ? 'light' : 'default'}}" shape="round" data-name="isActive2" bind:tap="onClick">
-        竖直排布
-      </t-button>
-    </view>
+<t-sticky offset-top="{{navbarHeight}}">
+  <view class="form-demo-sticky">
+    <t-tabs value="{{layout}}" theme="tag" bind:change="onLayoutChange">
+      <t-tab-panel label="水平排布" value="horizontal" />
+      <t-tab-panel label="竖向排布" value="vertical" />
+    </t-tabs>
     <t-cell title="禁用态">
-      <t-switch defaultValue="{{switchValue}}" slot="note" bind:change="onChangeSwitch" />
+      <t-switch slot="note" value="{{disabled}}" bind:change="onDisabledChange" />
     </t-cell>
   </view>
+</t-sticky>
 
-  <view wx:if="{{isActive1}}">
-    <horizontal disabled="{{switchValue}}" />
-  </view>
-
-  <view wx:if="{{isActive2}}">
-    <vertical disabled="{{switchValue}}" />
-  </view>
+<t-demo title="01 组件类型" desc="基础表单">
+  <base label-align="{{labelAlign}}" disabled="{{disabled}}" />
 </t-demo>
+
+<t-demo title="02 组件状态" desc="提示">
+  <help label-align="{{labelAlign}}" disabled="{{disabled}}" />
+</t-demo>
+
+<t-demo desc="校验规则">
+  <rules label-align="{{labelAlign}}" disabled="{{disabled}}" />
+</t-demo>
+
+<block wx:if="{{layout === 'horizontal'}}">
+  <t-demo title="03 组件样式" desc="标签对齐样式">
+    <label-align disabled="{{disabled}}" />
+  </t-demo>
+  <t-demo desc="标签带冒号">
+    <colon label-align="{{labelAlign}}" disabled="{{disabled}}" />
+  </t-demo>
+  <t-demo desc="标签必填位置">
+    <required-mark label-align="{{labelAlign}}" disabled="{{disabled}}" />
+  </t-demo>
+  <t-demo desc="标签宽度">
+    <label-width disabled="{{disabled}}" />
+  </t-demo>
+  <t-demo desc="标签内容对齐样式">
+    <content-align label-align="{{labelAlign}}" disabled="{{disabled}}" />
+  </t-demo>
+</block>
+
+<block wx:else>
+  <t-demo title="03 组件样式" desc="标签必填位置">
+    <required-mark label-align="{{labelAlign}}" disabled="{{disabled}}" />
+  </t-demo>
+  <t-demo desc="标签带冒号">
+    <colon label-align="{{labelAlign}}" disabled="{{disabled}}" />
+  </t-demo>
+  <t-demo desc="标签内容对齐样式">
+    <content-align label-align="{{labelAlign}}" disabled="{{disabled}}" />
+  </t-demo>
+</block>
