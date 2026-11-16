@@ -181,11 +181,11 @@
   // 关闭按钮在 popup 子组件内部，scoped 无法命中，用 :deep() 穿透，对齐小程序通过 t-class-close 外部类设置内边距的方式
   :deep(&__popup-close) {
     padding: @spacer-2;
+    color: @text-color-placeholder;
   }
 
   :deep(&__popup-close--center) {
     padding: @spacer;
-    color: @text-color-placeholder;
   }
 
   &__popup-content {
