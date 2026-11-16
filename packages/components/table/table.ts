@@ -1,8 +1,9 @@
 import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import usingConfig from '../mixins/using-config';
-import props from './base-table-props';
-import type { BaseTableCol, TableRowData } from './type';
+import baseProps from './base-table-props';
+import primaryProps from './primary-table-props';
+import type { BaseTableCol, PrimaryTableCol, TableRowData, SortInfo, TableSort } from './type';
 import {
   formatCSSUnit,
   get,
@@ -27,7 +28,7 @@ export default class Table extends SuperComponent {
     multipleSlots: true,
   };
 
-  properties = props;
+  properties = { ...baseProps, ...primaryProps };
 
   data = {
     prefix,
@@ -48,10 +49,21 @@ export default class Table extends SuperComponent {
     scrollableToLeft: false,
     scrollableToRight: false,
     contentClasses: '',
+    // 拖拽相关状态
+    isRowDraggable: false,
+    isColDraggable: false,
+    dragRowEnabled: false,
+    dragColEnabled: false,
+    // 拖拽中的状态
+    dragState: null as any, // { type: 'row'|'col', startIndex, currentIndex }
+    draggingColIndex: -1,
+    colDragTransform: '',
+    // 排序相关状态
+    sortMap: {} as Record<string, SortInfo & { index: number }>,
   };
 
   observers = {
-    'bordered, stripe, verticalAlign, loading, rowspanAndColspan, tableLayout, height, maxHeight, tableContentWidth, showHeader, columns, data, cellEmptyContent, rowKey, fixedRows'(
+    'bordered, stripe, verticalAlign, loading, rowspanAndColspan, tableLayout, height, maxHeight, tableContentWidth, showHeader, columns, data, cellEmptyContent, rowKey, fixedRows, dragSort, sort'(
       this: any,
     ) {
       this.updateTable();
@@ -82,9 +94,35 @@ export default class Table extends SuperComponent {
         cellEmptyContent,
         rowKey,
         fixedRows,
+        dragSort,
       } = this.properties;
       const { classPrefix } = this.data;
 
+      // 拖拽模式判断
+      const isRowDraggable = ['row', 'row-handler', 'row-handler-col'].includes(dragSort);
+      const isColDraggable = ['col', 'row-handler-col'].includes(dragSort);
+
+      // 排序相关
+      const {sort} = this.properties;
+      const {defaultSort} = this.properties;
+      // 受控模式从 properties.sort 计算 sortMap，非受控模式使用内部 data.sortMap（初始值从 defaultSort 计算）
+      let sortMap: Record<string, SortInfo & { index: number }>;
+      if (sort) {
+        const sortArray: SortInfo[] = Array.isArray(sort) ? sort : [sort];
+        sortMap = sortArray.reduce((prev, cur, index) => {
+          prev[cur.sortBy] = { index, ...cur };
+          return prev;
+        }, {});
+      } else if (this._innerSortChanged) {
+        sortMap = this.data.sortMap || {};
+      } else {
+        // 初始状态：从 defaultSort 计算
+        const sortArray: SortInfo[] = this.normalizeSort(defaultSort);
+        sortMap = sortArray.reduce((prev, cur, index) => {
+          prev[cur.sortBy] = { index, ...cur };
+          return prev;
+        }, {});
+      }
       // 解析 fixedRows
       const fixedTopRows = (fixedRows && (fixedRows as number[])[0]) || 0;
       const fixedBottomRows = (fixedRows && (fixedRows as number[])[1]) || 0;
@@ -105,6 +143,8 @@ export default class Table extends SuperComponent {
         loading ? `${classPrefix}--loading` : '',
         rowspanAndColspan ? `${classPrefix}--rowspan-colspan` : '',
         hasFixedColumn ? `${classPrefix}--column-fixed` : '',
+        isRowDraggable ? `${classPrefix}--row-draggable` : '',
+        isColDraggable ? `${classPrefix}--col-draggable` : '',
       ]
         .filter(Boolean)
         .join(' ');
@@ -195,6 +235,7 @@ export default class Table extends SuperComponent {
       });
 
       // 表头类名
+      const {showSortColumnBgColor} = this.properties;
       const thClassNames = (columns || []).map((col: BaseTableCol, colIndex: number) => {
         const classes: string[] = [];
         if (col.colKey) classes.push(`${classPrefix}__th-${col.colKey}`);
@@ -203,6 +244,10 @@ export default class Table extends SuperComponent {
         if (col.fixed === 'right') classes.push(`${classPrefix}__cell--fixed-right`);
         if (colIndex === lastFixedLeftIndex) classes.push(`${classPrefix}__cell--fixed-left-last`);
         if (colIndex === firstFixedRightIndex) classes.push(`${classPrefix}__cell--fixed-right-first`);
+        // 排序列背景色
+        if (showSortColumnBgColor && (col as PrimaryTableCol).sorter && sortMap[col.colKey]) {
+          classes.push(`${classPrefix}__sort-column`);
+        }
         classes.push(getColumnClassName(col, { col, colIndex, type: 'th' }));
         return classes.filter(Boolean).join(' ');
       });
@@ -229,6 +274,10 @@ export default class Table extends SuperComponent {
           if (colIndex === firstFixedRightIndex) tdClasses.push(`${classPrefix}__cell--fixed-right-first`);
           if (isLastRow) tdClasses.push(`${classPrefix}__td-last-row`);
           if (isFirstCol) tdClasses.push(`${classPrefix}__td-first-col`);
+          // 排序列背景色
+          if (showSortColumnBgColor && (col as PrimaryTableCol).sorter && sortMap[col.colKey]) {
+            tdClasses.push(`${classPrefix}__sort-column`);
+          }
           tdClasses.push(getColumnClassName(col, { row, col, rowIndex, colIndex, type: 'td' }));
 
           let cellContent = '';
@@ -265,6 +314,8 @@ export default class Table extends SuperComponent {
           rowId: get(row, rowKey || 'id'),
           cells,
           row,
+          draggingClass: '',
+          dragTransform: '',
           rowClass: (() => {
             const classes: string[] = [];
             const dataLen = data.length;
@@ -338,14 +389,93 @@ export default class Table extends SuperComponent {
           hasSpan,
           tbodyStyles,
           contentClasses,
+          isRowDraggable,
+          isColDraggable,
+          dragRowEnabled: isRowDraggable,
+          dragColEnabled: isColDraggable,
+          sortMap,
         },
         () => {
           // 动态测量行高，修正固定行的 top/bottom 值
           if (fixedTopRows > 0 || fixedBottomRows > 0) {
             this.measureAndFixStickyPositions(hasFixedHeader, fixedTopRows, fixedBottomRows, (data || []).length);
           }
+          // 拖拽模式：测量实际行高/列宽，用于精确计算拖拽落点
+          if (isRowDraggable || isColDraggable) {
+            this.measureDragDimensions();
+          }
         },
       );
+    },
+
+    // ========== 排序相关 ==========
+
+    onSortIconClick(this: any, e: any) {
+      const { colIndex, descending } = e.currentTarget.dataset;
+      const { columns, multipleSort, sort, defaultSort } = this.properties;
+      const col = (columns || [])[colIndex];
+      if (!col || !col.sorter) return;
+
+      const currentSort = sort || defaultSort;
+      const sortArray: SortInfo[] = this.normalizeSort(currentSort);
+      const { colKey } = col;
+
+      let nextSort: TableSort;
+      if (multipleSort) {
+        // 多列排序
+        const result = [...sortArray];
+        const existIndex = result.findIndex((s) => s.sortBy === colKey);
+        if (existIndex !== -1) {
+          const existing = result[existIndex];
+          // 再次点击相同方向则取消该列排序
+          if (existing.descending === descending) {
+            result.splice(existIndex, 1);
+          } else {
+            result[existIndex] = { sortBy: colKey, descending };
+          }
+        } else {
+          result.push({ sortBy: colKey, descending });
+        }
+        nextSort = result;
+      } else {
+        // 单列排序
+        const currentSingle = sortArray[0];
+        if (currentSingle && currentSingle.sortBy === colKey && currentSingle.descending === descending) {
+          // 再次点击相同方向则取消排序
+          nextSort = undefined;
+        } else {
+          nextSort = { sortBy: colKey, descending };
+        }
+      }
+
+      // 触发排序事件
+      const nextSortArray: SortInfo[] = this.normalizeSort(nextSort);
+      this.triggerEvent('sort-change', { sort: nextSort });
+      if (nextSort) {
+        this.triggerEvent('data-change', { trigger: 'sort' });
+      }
+      this.triggerEvent('change', { sorter: nextSort }, { trigger: 'sorter' });
+
+      // 非受控模式下更新内部排序状态
+      if (!sort) {
+        this._innerSortChanged = true;
+        this.setData({
+          sortMap: this.buildSortMap(nextSortArray),
+        });
+        this.updateTable();
+      }
+    },
+
+    buildSortMap(this: any, sortArray: SortInfo[]) {
+      return sortArray.reduce((prev, cur, index) => {
+        prev[cur.sortBy] = { index, ...cur };
+        return prev;
+      }, {});
+    },
+
+    normalizeSort(this: any, sort: TableSort): SortInfo[] {
+      if (!sort) return [];
+      return Array.isArray(sort) ? sort : [sort];
     },
 
     measureAndFixStickyPositions(
@@ -388,6 +518,34 @@ export default class Table extends SuperComponent {
 
         if (Object.keys(updates).length > 0) {
           this.setData(updates);
+        }
+      });
+    },
+
+    measureDragDimensions(this: any) {
+      const { classPrefix, isRowDraggable, isColDraggable } = this.data;
+      const query = this.createSelectorQuery();
+      if (isRowDraggable) {
+        query.select(`.${classPrefix}__tr`).boundingClientRect();
+      }
+      if (isColDraggable) {
+        query.selectAll(`.${classPrefix}__th`).boundingClientRect();
+      }
+      query.exec((res: any) => {
+        if (!res) return;
+        let idx = 0;
+        if (isRowDraggable) {
+          const rowRect = res[idx];
+          if (rowRect && rowRect.height) {
+            this._rowHeight = rowRect.height;
+          }
+          idx += 1;
+        }
+        if (isColDraggable) {
+          const colRects = res[idx];
+          if (colRects && colRects.length > 0) {
+            this._colWidths = colRects.map((r: any) => r.width);
+          }
         }
       });
     },
@@ -465,6 +623,210 @@ export default class Table extends SuperComponent {
       ) {
         this.triggerEvent('scroll-to-bottom');
       }
+    },
+
+    // ========== 行拖拽排序 ==========
+
+    onRowTouchStart(this: any, e: any) {
+      if (!this.data.dragRowEnabled || this.data.hasSpan) return;
+      const { rowIndex } = e.currentTarget.dataset;
+      const touch = e.touches[0];
+      this._dragRowState = {
+        startY: touch.clientY,
+        startX: touch.clientX,
+        rowIndex,
+        activated: false,
+        lastMoveTime: 0,
+        lastTargetIndex: rowIndex,
+      };
+    },
+
+    onRowTouchMove(this: any, e: any) {
+      if (!this._dragRowState) return;
+      const touch = e.touches[0];
+      const { startX, startY, rowIndex } = this._dragRowState;
+      const deltaX = touch.clientX - startX;
+      const deltaY = touch.clientY - startY;
+
+      if (!this._dragRowState.activated) {
+        // 行拖拽主要判断纵向位移，排除横向滑动
+        if (Math.abs(deltaY) > 10 && Math.abs(deltaY) > Math.abs(deltaX)) {
+          this._dragRowState.activated = true;
+          const { classPrefix } = this.data;
+          this.setData({
+            [`renderData[${rowIndex}].draggingClass`]: `${classPrefix}__tr--dragging`,
+            [`renderData[${rowIndex}].dragTransform`]: `transform: translateY(${deltaY}px); z-index: 100;`,
+          });
+        } else {
+          return;
+        }
+      }
+
+      // 节流：每 16ms 更新一次（约 60fps）
+      const now = Date.now();
+      if (now - this._dragRowState.lastMoveTime < 16) return;
+      this._dragRowState.lastMoveTime = now;
+
+      // 获取行高（默认值，后续可通过测量修正）
+      const rowHeight = this._rowHeight || 44;
+      const targetIndex = Math.max(
+        0,
+        Math.min(this.data.renderData.length - 1, rowIndex + Math.round(deltaY / rowHeight)),
+      );
+
+      const updates: Record<string, any> = {
+        [`renderData[${rowIndex}].dragTransform`]: `transform: translateY(${deltaY}px); z-index: 100;`,
+      };
+      // 只在目标索引变化时更新 dragState
+      if (this._dragRowState.lastTargetIndex !== targetIndex) {
+        updates.dragState = { type: 'row', startIndex: rowIndex, currentIndex: targetIndex };
+        this._dragRowState.lastTargetIndex = targetIndex;
+      }
+      this.setData(updates);
+    },
+
+    onRowTouchEnd(this: any) {
+      if (!this._dragRowState) return;
+      const { activated, rowIndex } = this._dragRowState;
+      this._dragRowState = null;
+
+      // 清除拖拽状态
+      const updates: Record<string, any> = {
+        dragState: null,
+        [`renderData[${rowIndex}].draggingClass`]: '',
+        [`renderData[${rowIndex}].dragTransform`]: '',
+      };
+
+      if (!activated) {
+        this.setData(updates);
+        return;
+      }
+
+      const { dragState } = this.data;
+      const targetIndex = dragState ? dragState.currentIndex : rowIndex;
+
+      if (targetIndex === rowIndex) {
+        this.setData(updates);
+        return;
+      }
+
+      // 交换数据
+      const { data } = this.properties;
+      const newData = [...(data || [])];
+      const [movedItem] = newData.splice(rowIndex, 1);
+      newData.splice(targetIndex, 0, movedItem);
+
+      const params = {
+        currentIndex: rowIndex,
+        current: (data || [])[rowIndex],
+        targetIndex,
+        target: (data || [])[targetIndex],
+        data: data || [],
+        newData,
+        sort: 'row',
+      };
+
+      this.triggerEvent('dragSort', params);
+      this.setData(updates);
+    },
+
+    // ========== 列拖拽排序 ==========
+
+    onColTouchStart(this: any, e: any) {
+      if (!this.data.dragColEnabled) return;
+      const { colIndex } = e.currentTarget.dataset;
+      const touch = e.touches[0];
+      this._dragColState = {
+        startX: touch.clientX,
+        startY: touch.clientY,
+        colIndex,
+        activated: false,
+        lastMoveTime: 0,
+        lastTargetIndex: colIndex,
+      };
+    },
+
+    onColTouchMove(this: any, e: any) {
+      if (!this._dragColState) return;
+      const touch = e.touches[0];
+      const { startX, startY, colIndex } = this._dragColState;
+      const deltaX = touch.clientX - startX;
+      const deltaY = touch.clientY - startY;
+
+      if (!this._dragColState.activated) {
+        // 列拖拽主要判断横向位移
+        if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY)) {
+          this._dragColState.activated = true;
+          this.setData({
+            colDragTransform: `transform: translateX(${deltaX}px); z-index: 100;`,
+            draggingColIndex: colIndex,
+          });
+        } else {
+          return;
+        }
+      }
+
+      // 节流：每 16ms 更新一次
+      const now = Date.now();
+      if (now - this._dragColState.lastMoveTime < 16) return;
+      this._dragColState.lastMoveTime = now;
+
+      // 根据测量的列宽计算目标位置
+      const colWidths = this._colWidths || [];
+      const avgColWidth =
+        colWidths.length > 0 ? colWidths.reduce((a: number, b: number) => a + b, 0) / colWidths.length : 80;
+      const targetIndex = Math.max(
+        0,
+        Math.min(this.data.columns.length - 1, colIndex + Math.round(deltaX / avgColWidth)),
+      );
+
+      const updates: Record<string, any> = {
+        colDragTransform: `transform: translateX(${deltaX}px); z-index: 100;`,
+        draggingColIndex: colIndex,
+      };
+      if (this._dragColState.lastTargetIndex !== targetIndex) {
+        updates.dragState = { type: 'col', startIndex: colIndex, currentIndex: targetIndex };
+        this._dragColState.lastTargetIndex = targetIndex;
+      }
+      this.setData(updates);
+    },
+
+    onColTouchEnd(this: any) {
+      if (!this._dragColState) return;
+      const { activated, colIndex } = this._dragColState;
+      this._dragColState = null;
+
+      if (!activated) {
+        this.setData({ dragState: null, draggingColIndex: -1, colDragTransform: '' });
+        return;
+      }
+
+      const { dragState } = this.data;
+      const targetIndex = dragState ? dragState.currentIndex : colIndex;
+
+      if (targetIndex === colIndex) {
+        this.setData({ dragState: null, draggingColIndex: -1, colDragTransform: '' });
+        return;
+      }
+
+      // 交换列
+      const { columns } = this.properties;
+      const newColumns = [...(columns || [])];
+      const [movedCol] = newColumns.splice(colIndex, 1);
+      newColumns.splice(targetIndex, 0, movedCol);
+
+      const params = {
+        currentIndex: colIndex,
+        current: (columns || [])[colIndex],
+        targetIndex,
+        target: (columns || [])[targetIndex],
+        data: columns || [],
+        newData: newColumns,
+        sort: 'col',
+      };
+
+      this.triggerEvent('dragSort', params);
+      this.setData({ dragState: null, draggingColIndex: -1, colDragTransform: '' });
     },
   };
 }

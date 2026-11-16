@@ -416,4 +416,111 @@
       border-left: @table-fixed-cell-border;
     }
   }
+
+  // ========== 拖拽排序相关样式 ==========
+
+  // 行可拖拽
+  &--row-draggable {
+    .@{table-prefix}__tr {
+      position: relative;
+      // H5 端禁止浏览器接管纵向手势，否则拖行时页面会滚动导致拖拽无效
+      touch-action: none;
+    }
+  }
+
+  // 列可拖拽
+  &--col-draggable {
+    .@{table-prefix}__th--drag-sort {
+      cursor: grab;
+      user-select: none;
+      // H5 端禁止浏览器接管横向手势，否则拖列时页面会横滚导致拖拽无效
+      touch-action: none;
+    }
+  }
+
+  // 正在拖拽的行
+  &__tr--dragging {
+    opacity: 0.8;
+    background-color: @bg-color-secondarycontainer;
+  }
+
+  // 可拖拽列表头
+  &__th--drag-sort {
+    cursor: grab;
+    user-select: none;
+  }
+
+  // 正在被拖拽的列（表头）
+  &__th--dragging {
+    position: relative;
+    opacity: 0.8;
+    background-color: @bg-color-secondarycontainer;
+  }
+
+  // 正在被拖拽的列（数据单元格）
+  &__td--dragging {
+    position: relative;
+    opacity: 0.8;
+    background-color: @bg-color-secondarycontainer;
+  }
+
+  // ========== 排序相关样式 ==========
+
+  &__th--sortable {
+    .@{table-prefix}__th-content {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__sort-trigger {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 8rpx;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  &__sort-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  &__sort-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: text-bottom;
+    line-height: 1;
+    color: var(--td-table-sort-icon-color, @text-color-placeholder);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    &--asc {
+      transform: rotate(180deg);
+      margin-bottom: -4rpx;
+    }
+
+    // 双图标模式下的降序图标偏移
+    .@{table-prefix}__sort-icons &:not(.@{table-prefix}__sort-icon--asc) {
+      margin-top: -4rpx;
+    }
+
+    &--active {
+      color: var(--td-table-sort-icon-active-color, @brand-color);
+    }
+
+    &--default {
+      color: var(--td-table-sort-icon-color, @text-color-placeholder);
+    }
+  }
+
+  // 排序列背景色
+  &__sort-column {
+    background-color: var(--td-table-sort-bg-color, @bg-color-secondarycontainer);
+  }
 }

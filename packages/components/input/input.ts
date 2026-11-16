@@ -3,6 +3,9 @@ import config from '../common/config';
 import props from './props';
 import { getCharacterLength, calcIcon } from '../common/utils';
 import { isDef } from '../common/validator';
+import { TdInputProps } from './type';
+
+export type InputProps = TdInputProps;
 
 const { prefix } = config;
 const name = `${prefix}-input`;

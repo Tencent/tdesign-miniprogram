@@ -3,7 +3,7 @@
 <!-- 单元格模板 -->
 <template name="table-cell">
   <view
-    class="{{cell.tdClass}}"
+    class="{{cell.tdClass}} {{draggingColIndex === cell.colIndex ? classPrefix + '__td--dragging' : ''}}"
     style="{{cell.cellStyle}}"
     data-row-index="{{rowIndex}}"
     data-col-index="{{cell.colIndex}}"
@@ -30,10 +30,38 @@
             wx:for-item="col"
             wx:for-index="colIndex"
             wx:key="colKey"
-            class="{{classPrefix}}__th {{thClassNames[colIndex]}}"
-            style="{{colStyles[colIndex]}}"
+            class="{{classPrefix}}__th {{thClassNames[colIndex]}} {{dragColEnabled ? classPrefix + '__th--drag-sort' : ''}} {{draggingColIndex === colIndex ? classPrefix + '__th--dragging' : ''}} {{col.sorter ? classPrefix + '__th--sortable' : ''}}"
+            style="{{colStyles[colIndex]}} {{draggingColIndex === colIndex ? colDragTransform : ''}}"
+            data-col-index="{{colIndex}}"
+            bind:touchstart="onColTouchStart"
+            bind:touchmove="onColTouchMove"
+            bind:touchend="onColTouchEnd"
           >
-            <view class="{{classPrefix}}__th-content"> {{col.title}} </view>
+            <view class="{{classPrefix}}__th-content">
+              <text>{{col.title}}</text>
+              <view wx:if="{{col.sorter}}" class="{{classPrefix}}__sort-trigger">
+                <view class="{{classPrefix}}__sort-icons">
+                  <t-icon
+                    wx:if="{{!col.sortType || col.sortType === 'all' || col.sortType === 'asc'}}"
+                    name="chevron-down"
+                    t-class="{{classPrefix}}__sort-icon {{classPrefix}}__sort-icon--asc {{sortMap[col.colKey] && !sortMap[col.colKey].descending ? classPrefix + '__sort-icon--active' : classPrefix + '__sort-icon--default'}}"
+                    size="32rpx"
+                    data-col-index="{{colIndex}}"
+                    data-descending="{{false}}"
+                    catch:tap="onSortIconClick"
+                  />
+                  <t-icon
+                    wx:if="{{!col.sortType || col.sortType === 'all' || col.sortType === 'desc'}}"
+                    name="chevron-down"
+                    t-class="{{classPrefix}}__sort-icon {{sortMap[col.colKey] && sortMap[col.colKey].descending ? classPrefix + '__sort-icon--active' : classPrefix + '__sort-icon--default'}}"
+                    size="32rpx"
+                    data-col-index="{{colIndex}}"
+                    data-descending="{{true}}"
+                    catch:tap="onSortIconClick"
+                  />
+                </view>
+              </view>
+            </view>
           </view>
         </view>
       </view>
@@ -55,13 +83,16 @@
             wx:for-item="rowItem"
             wx:for-index="trIndex"
             wx:key="rowId"
-            class="{{classPrefix}}__tr {{classPrefix}}__tr-{{trIndex}} {{rowItem.rowClass}}"
-            style="{{rowItem.rowStyle}}"
+            class="{{classPrefix}}__tr {{classPrefix}}__tr-{{trIndex}} {{rowItem.rowClass}} {{rowItem.draggingClass}}"
+            style="{{rowItem.rowStyle}} {{rowItem.dragTransform}}"
             data-row-index="{{rowItem.rowIndex}}"
             bind:tap="onRowClick"
+            bind:touchstart="onRowTouchStart"
+            bind:touchmove="onRowTouchMove"
+            bind:touchend="onRowTouchEnd"
           >
             <block wx:for="{{rowItem.cells}}" wx:for-item="cell" wx:key="colKey">
-              <template is="table-cell" data="{{ cell, rowIndex: rowItem.rowIndex, classPrefix }}" />
+              <template is="table-cell" data="{{ cell, rowIndex: rowItem.rowIndex, classPrefix, draggingColIndex }}" />
             </block>
           </view>
         </block>
@@ -72,7 +103,7 @@
               <template
                 wx:if="{{!cell.skipped}}"
                 is="table-cell"
-                data="{{ cell, rowIndex: rowItem.rowIndex, classPrefix }}"
+                data="{{ cell, rowIndex: rowItem.rowIndex, classPrefix, draggingColIndex }}"
               />
             </block>
           </block>

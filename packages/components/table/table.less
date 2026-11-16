@@ -1,5 +1,17 @@
 @import '../common/style/base.less';
 
+@font-face {
+  font-family: @prefix;
+  src:
+    url('https://tdesign.gtimg.com/icon/0.4.5/fonts/t.eot'),
+    url('https://tdesign.gtimg.com/icon/0.4.5/fonts/t.eot?#iefix') format('ded-opentype'),
+    url('https://tdesign.gtimg.com/icon/0.4.5/fonts/t.woff') format('woff'),
+    url('https://tdesign.gtimg.com/icon/0.4.5/fonts/t.ttf') format('truetype'),
+    url('https://tdesign.gtimg.com/icon/0.4.5/fonts/t.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @table-prefix: ~'@{prefix}-table';
 
 // 变量
@@ -415,5 +427,105 @@
     .@{table-prefix}__cell--fixed-right-first::after {
       border-left: @table-fixed-cell-border;
     }
+  }
+
+  // ========== 拖拽排序相关样式 ==========
+
+  // 行可拖拽
+  &--row-draggable {
+    .@{table-prefix}__tr {
+      position: relative;
+    }
+  }
+
+  // 列可拖拽
+  &--col-draggable {
+    .@{table-prefix}__th--drag-sort {
+      cursor: grab;
+      user-select: none;
+    }
+  }
+
+  // 正在拖拽的行
+  &__tr--dragging {
+    opacity: 0.8;
+    background-color: @bg-color-secondarycontainer;
+  }
+
+  // 可拖拽列表头
+  &__th--drag-sort {
+    cursor: grab;
+    user-select: none;
+  }
+
+  // 正在被拖拽的列（表头）
+  &__th--dragging {
+    opacity: 0.8;
+    background-color: @bg-color-secondarycontainer;
+  }
+
+  // 正在被拖拽的列（数据单元格）
+  &__td--dragging {
+    opacity: 0.8;
+    background-color: @bg-color-secondarycontainer;
+  }
+
+  // ========== 排序相关样式 ==========
+
+  &__th--sortable {
+    .@{table-prefix}__th-content {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__sort-trigger {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 8rpx;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  &__sort-icons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  &__sort-icon {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: text-bottom;
+    color: var(--td-table-sort-icon-color, @text-color-placeholder);
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+
+    &--asc {
+      transform: rotate(180deg);
+      margin-bottom: -8rpx;
+    }
+
+    // 双图标模式下的降序图标偏移
+    .@{table-prefix}__sort-icons &:not(.@{table-prefix}__sort-icon--asc) {
+      margin-top: -8rpx;
+    }
+
+    &--active {
+      color: var(--td-table-sort-icon-active-color, @brand-color);
+    }
+
+    &--default {
+      color: var(--td-table-sort-icon-color, @text-color-placeholder);
+    }
+  }
+
+  // 排序列背景色
+  &__sort-column {
+    background-color: var(--td-table-sort-bg-color, @bg-color-secondarycontainer);
   }
 }

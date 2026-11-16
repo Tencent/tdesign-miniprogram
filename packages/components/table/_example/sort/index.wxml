@@ -1,0 +1,9 @@
+<t-table
+  row-key="id"
+  columns="{{columns}}"
+  data="{{data}}"
+  sort="{{sort}}"
+  show-header="{{true}}"
+  cell-empty-content="-"
+  bind:sort-change="handleSortChange"
+/>

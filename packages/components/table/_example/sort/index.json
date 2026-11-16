@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-table": "tdesign-miniprogram/table/table"
+  }
+}
