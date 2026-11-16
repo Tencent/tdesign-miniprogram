@@ -24,6 +24,12 @@ import { styles, addUnit, getRect } from '../common/utils';
 import tools from '../common/utils.wxs';
 
 import props from './props';
+import { ensureIconFontLoaded } from './font-preload';
+
+// 模块加载即触发图标字体预加载（issue #4710）：
+// H5 端避免等首个 t-icon-* 渲染后浏览器才发起字体请求，
+// 消除请求返回前图标显示占位方块的中间态。
+ensureIconFontLoaded();
 
 const name = `${prefix}-icon`;
 export default {
