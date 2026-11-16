@@ -11,13 +11,13 @@
 
     <t-sticky :offset-top="navbarHeight">
       <view class="form-demo-sticky">
-        <t-tabs :value="layout" theme="tag" @change="onLayoutChange">
+        <t-tabs v-model:value="layout" theme="tag" :sticky-props="{ disabled: true }">
           <t-tab-panel label="水平排布" value="horizontal" />
           <t-tab-panel label="竖向排布" value="vertical" />
         </t-tabs>
         <t-cell title="禁用态">
           <template #note>
-            <t-switch :value="disabled" @change="onDisabledChange" />
+            <t-switch v-model:value="disabled" />
           </template>
         </t-cell>
       </view>
@@ -127,12 +127,6 @@ export default {
         const { height = 0 } = res[0] || {};
         this.navbarHeight = height;
       });
-    },
-    onLayoutChange(e) {
-      this.layout = e.value;
-    },
-    onDisabledChange(e) {
-      this.disabled = e.value;
     },
   },
 };

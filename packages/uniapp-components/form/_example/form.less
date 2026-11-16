@@ -1,17 +1,12 @@
-.tdesign-mobile-demo {
-  padding: 0 0 180rpx 0;
-  background-color: var(--bg-color-demo, #fff);
-}
-
 .form-demo-sticky {
-  background-color: var(--bg-color-demo, #fff);
+  background-color: var(--td-bg-color-container, #fff);
+
+
+  .t-cell {
+    --td-cell-border-left-space: 0;
+  }
 }
 
-.form-demo-sticky .t-tabs {
-  border-bottom: 1rpx solid var(--td-component-stroke, #e7e7e7);
-}
-
-.form-demo-sticky .t-cell {
-  --td-cell-border-left-space: 0;
-  --td-cell-border-right-space: 0;
+:deep(.demo-desc) {
+  margin-bottom: var(--td-spacer-4, 64rpx);
 }
