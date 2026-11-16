@@ -6,6 +6,7 @@
     "bordered": "./bordered",
     "stripe": "./stripe",
     "scroll": "./scroll",
+    "ellipsis": "./ellipsis",
     "rowspan-colspan": "./rowspan-colspan"
   }
 }

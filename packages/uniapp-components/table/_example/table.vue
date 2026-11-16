@@ -13,7 +13,10 @@
       <t-demo desc="横向平铺可滚动表格" padding>
         <scroll-demo />
       </t-demo>
-      <t-demo desc="带斑马纹表格" padding>
+      <t-demo title="02 组件状态" desc="单元格超出省略的表格" padding>
+        <ellipsis-demo />
+      </t-demo>
+      <t-demo title="03 组件样式" desc="带斑马纹表格" padding>
         <stripe-demo />
       </t-demo>
       <t-demo desc="带边框表格" padding>
@@ -29,6 +32,7 @@
 <script>
 import BaseDemo from './base/index.vue';
 import BorderedDemo from './bordered/index.vue';
+import EllipsisDemo from './ellipsis/index.vue';
 import RowspanColspanDemo from './rowspan-colspan/index.vue';
 import ScrollDemo from './scroll/index.vue';
 import StripeDemo from './stripe/index.vue';
@@ -40,6 +44,7 @@ export default {
     StripeDemo,
     ScrollDemo,
     RowspanColspanDemo,
+    EllipsisDemo,
   },
   data() {
     return {};

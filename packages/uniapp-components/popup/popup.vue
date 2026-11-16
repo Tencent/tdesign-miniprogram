@@ -19,8 +19,8 @@
       >
         <slot name="content" />
         <slot />
-        <view :class="classPrefix + '__close'" @click="handleClose">
-          <t-icon v-if="closeBtn" name="close" size="64rpx" />
+        <view :class="classPrefix + '__close ' + tClassClose" @click="handleClose">
+          <t-icon v-if="closeBtn" name="close" />
           <slot name="close-btn" :class="classPrefix + '-slot'" />
         </view>
       </view>
@@ -28,8 +28,8 @@
       <view v-else :class="classPrefix + '__content ' + tClassContent">
         <slot name="content" />
         <slot />
-        <view :class="classPrefix + '__close'" @click="handleClose">
-          <t-icon v-if="closeBtn" name="close" size="64rpx" />
+        <view :class="classPrefix + '__close ' + tClassClose" @click="handleClose">
+          <t-icon v-if="closeBtn" name="close" />
           <slot name="close-btn" :class="classPrefix + '-slot'" />
         </view>
       </view>
@@ -76,7 +76,7 @@ export default {
     options: {
       styleIsolation: 'shared',
     },
-    externalClasses: [`${prefix}-class`, `${prefix}-class-content`],
+    externalClasses: [`${prefix}-class`, `${prefix}-class-content`, `${prefix}-class-close`],
     mixins: [transitionMixins, useCustomNavbar],
     props: {
       ...props,

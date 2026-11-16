@@ -33,9 +33,20 @@
               :key="col.colKey || colIndex"
               :class="[classPrefix + '__th', getThClassName(col, colIndex)]"
               :style="'' + getColStyle(col, colIndex)"
+              @click="onTitleClick(colIndex)"
             >
-              <view :class="classPrefix + '__th-content'">
-                {{ col.title }}
+              <view
+                :class="[
+                  classPrefix + '__th-content',
+                  titleEllipsisFlags[colIndex]
+                    ? classPrefix + '__th-content--ellipsis ' + classPrefix + '__th-content-' + colIndex
+                    : '',
+                ]"
+              >
+                <text v-if="titleEllipsisFlags[colIndex]" :class="classPrefix + '__th-text-' + colIndex">{{
+                  col.title
+                }}</text>
+                <template v-else>{{ col.title }}</template>
               </view>
             </view>
           </view>
@@ -75,8 +86,19 @@
                     :style="'' + cell.cellStyle"
                     @click.stop="onCellClick(rowItem.rowIndex, tdIndex)"
                   >
-                    <view :class="classPrefix + '__td-content'">
-                      {{ cell.content }}
+                    <view
+                      :class="[
+                        classPrefix + '__td-content',
+                        cell.ellipsis ? classPrefix + '__td-content--ellipsis' : '',
+                        cell.ellipsis ? classPrefix + '__td-content-' + rowItem.rowIndex + '-' + tdIndex : '',
+                      ]"
+                    >
+                      <text
+                        v-if="cell.ellipsis"
+                        :class="classPrefix + '__td-text-' + rowItem.rowIndex + '-' + tdIndex"
+                        >{{ cell.content }}</text
+                      >
+                      <template v-else>{{ cell.content }}</template>
                     </view>
                   </view>
                   <!-- #ifdef VUE3 -->
@@ -116,8 +138,19 @@
                       :style="'' + spanCell.cellStyle"
                       @click.stop="onCellClick(spanRow.rowIndex, spanTdIndex)"
                     >
-                      <view :class="classPrefix + '__td-content'">
-                        {{ spanCell.content }}
+                      <view
+                        :class="[
+                          classPrefix + '__td-content',
+                          spanCell.ellipsis ? classPrefix + '__td-content--ellipsis' : '',
+                          spanCell.ellipsis ? classPrefix + '__td-content-' + spanRow.rowIndex + '-' + spanTdIndex : '',
+                        ]"
+                      >
+                        <text
+                          v-if="spanCell.ellipsis"
+                          :class="classPrefix + '__td-text-' + spanRow.rowIndex + '-' + spanTdIndex"
+                          >{{ spanCell.content }}</text
+                        >
+                        <template v-else>{{ spanCell.content }}</template>
                       </view>
                     </view>
                     <!-- #ifdef VUE3 -->
@@ -163,6 +196,37 @@
       {{ footerSummary }}
     </view>
     <slot name="footer-summary" />
+
+    <!-- 超出省略内容的预览弹窗 -->
+    <t-popup
+      v-if="hasEllipsis"
+      :t-class="classPrefix + '__popup--' + popupProps.placement"
+      :visible="popupVisible"
+      :placement="popupProps.placement"
+      :show-overlay="popupProps.showOverlay"
+      :close-on-overlay-click="popupProps.closeOnOverlayClick"
+      :close-btn="popupProps.closeBtn"
+      :t-class-close="
+        popupProps.closeBtn
+          ? classPrefix + '__popup-close ' + classPrefix + '__popup-close--' + popupProps.placement
+          : ''
+      "
+      :using-custom-navbar="popupProps.usingCustomNavbar"
+      @visible-change="onPopupVisibleChange"
+    >
+      <view :class="[classPrefix + '__popup-inner', classPrefix + '__popup-inner--' + popupProps.placement]">
+        <view :class="classPrefix + '__popup-title'">{{ popupProps.title }}</view>
+        <view
+          :class="[
+            classPrefix + '__popup-content',
+            classPrefix + '__popup-content--' + popupProps.placement,
+            { [classPrefix + '__popup-content--with-close']: popupProps.closeBtn },
+          ]"
+        >
+          <view :class="classPrefix + '__popup-content-inner'">{{ popupProps.content }}</view>
+        </view>
+      </view>
+    </t-popup>
   </view>
 </template>
 <script>
@@ -170,15 +234,26 @@ import { prefix } from '../common/config';
 import { uniComponent } from '../common/src/index';
 import tools from '../common/utils.wxs';
 import TLoading from '../loading/loading.vue';
+import TPopup from '../popup/popup.vue';
 
 import props from './base-table-props';
-import { get as getVal, formatCSSUnit, getCellKey, getSkipSpansMap, handleCellSpan } from './utils';
+import {
+  get as getVal,
+  formatCSSUnit,
+  getCellKey,
+  getSkipSpansMap,
+  handleCellSpan,
+  resolveEllipsis,
+  hasEllipsisColumn,
+  isTextEllipsis,
+} from './utils';
 
 const name = `${prefix}-table`;
 
 export default {
   components: {
     TLoading,
+    TPopup,
   },
   emits: ['row-click', 'cell-click', 'scroll', 'scroll-to-bottom'],
   ...uniComponent({
@@ -208,6 +283,11 @@ export default {
         firstFixedRightIndex: -1,
         fixedTopRows: 0,
         fixedBottomRows: 0,
+        // 超出省略（ellipsis / ellipsisTitle）
+        hasEllipsis: false,
+        titleEllipsisFlags: [],
+        popupProps: { placement: 'center' },
+        popupVisible: false,
       };
     },
     computed: {
@@ -321,6 +401,17 @@ export default {
       updateRenderData() {
         const { columns, data, cellEmptyContent, rowKey, rowspanAndColspan, fixedRows } = this;
 
+        // 开启后才渲染预览弹窗，并为单元格/表头附加超出省略测量用的类名
+        const hasEllipsis = hasEllipsisColumn(columns || []);
+        this.hasEllipsis = hasEllipsis;
+
+        // 表头省略标记：ellipsisTitle 优先级高于 ellipsis
+        this.titleEllipsisFlags = (columns || []).map(
+          (col, colIndex) =>
+            resolveEllipsis(col.ellipsisTitle !== undefined ? col.ellipsisTitle : col.ellipsis, { col, colIndex })
+              .enabled,
+        );
+
         // 解析 fixedRows
         const fixedTopRows = (fixedRows && fixedRows[0]) || 0;
         const fixedBottomRows = (fixedRows && fixedRows[1]) || 0;
@@ -424,6 +515,8 @@ export default {
               ? `grid-column: ${colIndex + 1} / span ${colspan || 1}; grid-row: ${rowIndex + 1} / span ${rowspan || 1}`
               : this.getColStyle(col, colIndex);
 
+            const cellEllipsis = resolveEllipsis(col.ellipsis, { row, col, rowIndex, colIndex });
+
             return {
               colKey: col.colKey || String(colIndex),
               content: cellContent,
@@ -434,6 +527,7 @@ export default {
               colspan: colspan || 0,
               isLastRow: !!(rowspan && rowIndex + rowspan === data.length),
               isFirstCol: !!(rowspanAndColspan && colIndex === 0),
+              ellipsis: !!cellEllipsis.enabled,
             };
           });
 
@@ -536,6 +630,14 @@ export default {
 
       onCellClick(rowIndex, colIndex) {
         const { data, columns } = this;
+        const cell = this.renderData?.[rowIndex]?.cells?.[colIndex];
+        const col = columns && columns[colIndex];
+        if (cell && col) {
+          const resolved = resolveEllipsis(col.ellipsis, { row: data[rowIndex], col, rowIndex, colIndex });
+          if (resolved.enabled) {
+            this.showEllipsisPopup('td', rowIndex, colIndex, resolved.content || cell.content, resolved.props);
+          }
+        }
         if (data && data[rowIndex] && columns && columns[colIndex]) {
           this.$emit('cell-click', {
             row: data[rowIndex],
@@ -550,6 +652,56 @@ export default {
             row: data[rowIndex],
             index: rowIndex,
           });
+        }
+      },
+
+      /** 展示超出省略内容的预览弹窗（仅当内容实际溢出时才弹出） */
+      showEllipsisPopup(type, rowIndex, colIndex, content, popupProps) {
+        if (!content) return;
+
+        const { classPrefix } = this;
+        const suffix = type === 'th' ? `${colIndex}` : `${rowIndex}-${colIndex}`;
+
+        const query = uni.createSelectorQuery().in(this);
+        query.select(`.${classPrefix}__${type}-content-${suffix}`).boundingClientRect();
+        query.select(`.${classPrefix}__${type}-text-${suffix}`).boundingClientRect();
+        query.exec((res) => {
+          const [contentRect, textRect] = res || [];
+          // 内容实际宽度大于可视宽度才视为溢出（对齐桌面端 scrollWidth > clientWidth）
+          if (!isTextEllipsis(contentRect, textRect)) return;
+
+          this.popupProps = {
+            placement: popupProps.placement || 'bottom',
+            showOverlay: popupProps.showOverlay !== false,
+            closeOnOverlayClick: popupProps.closeOnOverlayClick !== false,
+            closeBtn: popupProps.closeBtn !== false,
+            usingCustomNavbar: !!popupProps.usingCustomNavbar,
+            title: popupProps.title || '',
+            content,
+          };
+          this.popupVisible = true;
+        });
+      },
+
+      /** 点击表头：表头内容超出省略时，弹出浮层预览完整标题 */
+      onTitleClick(colIndex) {
+        const { columns } = this;
+        const col = columns && columns[colIndex];
+        if (!col) return;
+
+        const resolved = resolveEllipsis(col.ellipsisTitle !== undefined ? col.ellipsisTitle : col.ellipsis, {
+          col,
+          colIndex,
+        });
+        if (!resolved.enabled) return;
+
+        this.showEllipsisPopup('th', 0, colIndex, resolved.content || col.title || '', resolved.props);
+      },
+
+      onPopupVisibleChange(e) {
+        const { visible } = e || {};
+        if (!!visible !== this.popupVisible) {
+          this.popupVisible = !!visible;
         }
       },
 

@@ -29,8 +29,8 @@
   >
     <slot name="content" />
     <slot />
-    <view class="{{classPrefix}}__close" bind:tap="handleClose">
-      <t-icon name="close" wx:if="{{closeBtn}}" size="64rpx" />
+    <view class="{{classPrefix}}__close {{prefix}}-class-close" bind:tap="handleClose">
+      <t-icon name="close" wx:if="{{closeBtn}}" />
       <slot name="close-btn" class="{{classPrefix}}-slot" />
     </view>
   </view>
