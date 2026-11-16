@@ -1,29 +1,38 @@
 Component({
   data: {
-    isActive1: true,
-    isActive2: false,
-    switchValue: false,
+    layout: 'horizontal',
+    labelAlign: 'left',
+    disabled: false,
+    navbarHeight: 0,
+  },
+
+  lifetimes: {
+    ready() {
+      this.getCustomNavbarHeight();
+    },
   },
 
   methods: {
-    onClick(e) {
-      const { name } = e.currentTarget.dataset;
-      if (name === 'isActive1') {
-        this.setData({
-          isActive1: !this.data.isActive1,
-          isActive2: this.data.isActive1,
-        });
-      } else {
-        this.setData({
-          isActive1: this.data.isActive2,
-          isActive2: !this.data.isActive2,
-        });
-      }
+    getCustomNavbarHeight() {
+      const query = this.createSelectorQuery().in(this);
+      query.select('.custom-navbar').boundingClientRect();
+      query.exec((res) => {
+        const { height = 0 } = res[0] || {};
+        this.setData({ navbarHeight: height });
+      });
     },
 
-    onChangeSwitch(e) {
+    onLayoutChange(e) {
+      const layout = e.detail.value;
       this.setData({
-        switchValue: e.detail.value,
+        layout,
+        labelAlign: layout === 'horizontal' ? 'left' : 'top',
+      });
+    },
+
+    onDisabledChange(e) {
+      this.setData({
+        disabled: e.detail.value,
       });
     },
   },

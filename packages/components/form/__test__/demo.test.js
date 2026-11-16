@@ -5,7 +5,7 @@
 import path from 'path';
 import simulate from 'miniprogram-simulate';
 
-const mapper = ['horizontal', 'vertical'];
+const mapper = ['base', 'colon', 'content-align', 'help', 'label-align', 'label-width', 'required-mark', 'rules'];
 
 describe('Form', () => {
   mapper.forEach((demoName) => {

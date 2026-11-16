@@ -8,13 +8,13 @@ import type { TdFormProps } from './type';
 export default {
   /** 是否在表单标签字段右侧显示冒号 */
   colon: Boolean,
-  /** 表单内容对齐方式：左对齐、右对齐 */
+  /** 表单内容对齐方式：左对齐、居中对齐及右对齐 */
   contentAlign: {
     type: String,
     default: 'left' as TdFormProps['contentAlign'],
     validator(val: TdFormProps['contentAlign']): boolean {
       if (!val) return true;
-      return ['left', 'right'].includes(val);
+      return ['left', 'center', 'right'].includes(val);
     },
   },
   /** 表单数据 */

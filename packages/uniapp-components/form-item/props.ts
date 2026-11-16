@@ -8,12 +8,12 @@ import type { TdFormItemProps } from './type';
 export default {
   /** 是否显示右侧箭头 */
   arrow: Boolean,
-  /** 表单内容对齐方式：左对齐、右对齐，优先级高于 Form.contentAlign */
+  /** 表单内容对齐方式：左对齐、居中对齐及右对齐，优先级高于 Form.contentAlign */
   contentAlign: {
     type: String,
     validator(val: TdFormItemProps['contentAlign']): boolean {
       if (!val) return true;
-      return ['left', 'right'].includes(val);
+      return ['left', 'center', 'right'].includes(val);
     },
   },
   /** 表单项说明内容 */

@@ -163,8 +163,8 @@ spline: explain
   </div>
   <div class="image-wrapper">
     <a class="item" href="/uniapp/components/form-en">
-      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-input.png" />
-      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-input-dark.png" />
+      <img class="__light__" src="https://tdesign.gtimg.com/site/mobile/doc-form.png" />
+      <img class="__dark__" src="https://tdesign.gtimg.com/site/mobile/doc-form-dark.png" />
       <p class="name">Form</p>
     </a>
   </div>
