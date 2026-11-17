@@ -101,10 +101,17 @@ export default class Navbar extends SuperComponent {
   methods = {
     initStyle() {
       this.getMenuRect();
+    },
 
+    /** 仅基于 data 中已有的胶囊信息计算样式（不再重新取数，避免与 getMenuRect 互相触发）*/
+    applyStyle() {
       const { _menuRect, _leftRect } = this.data;
 
-      if (!_menuRect || !_leftRect || !systemInfo) return;
+      if (!_menuRect || !_leftRect || !systemInfo) {
+        // attached 阶段 getMenuRect 的 setData 尚未回流，_menuRect 仍为空（issue #4732）
+        // getMenuRect 的 setData 回调会调用 applyStyle 补算，这里直接返回等待即可
+        return;
+      }
 
       const _boxStyle = {
         '--td-navbar-padding-top': `${systemInfo.statusBarHeight}px`,
@@ -143,7 +150,8 @@ export default class Navbar extends SuperComponent {
 
     getLeftRect() {
       getRect(this, `.${name}__left`).then((res) => {
-        if (res.right > this.data._leftRect.right) {
+        if (!res || !this.data._menuRect) return;
+        if (res.right > (this.data._leftRect?.right ?? 0)) {
           this.calcCenterStyle(res, this.data._menuRect, this.data._boxStyle);
         }
       });
@@ -154,12 +162,17 @@ export default class Navbar extends SuperComponent {
 
       if (wx.getMenuButtonBoundingClientRect) {
         const rect = wx.getMenuButtonBoundingClientRect();
-        this.setData({
-          _menuRect: rect,
-          _leftRect: {
-            right: systemInfo.windowWidth - rect.left,
+        this.setData(
+          {
+            _menuRect: rect,
+            _leftRect: {
+              right: systemInfo.windowWidth - rect.left,
+            },
           },
-        });
+          // setData 异步：真机冷启动时 attached 内首次同步读取拿不到胶囊信息（issue #4732）
+          // 必须等回调落地后重算样式，保证首屏即与胶囊对齐
+          () => this.applyStyle(),
+        );
       }
     },
 
