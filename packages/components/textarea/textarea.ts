@@ -58,6 +58,9 @@ export default class Textarea extends SuperComponent {
         value,
         count,
       });
+      // setData 是异步的，this.data.value 在本轮同步代码里仍是旧值。
+      // 把截断后的值返回给调用方（onInput），避免 change 事件带出超长原始值。
+      return value;
     },
 
     calculateValue(value, maxcharacter, maxlength) {
@@ -88,8 +91,11 @@ export default class Textarea extends SuperComponent {
 
     onInput(event) {
       const { value, cursor } = event.detail;
-      this.updateValue(value);
-      this.triggerEvent('change', { value: this.data.value, cursor });
+      const nextValue = this.updateValue(value);
+      // 使用 updateValue 返回的截断结果：this.setData 异步生效，
+      // 直接读 this.data.value 会拿到未经 maxlength/maxcharacter 截断的旧值，
+      // 导致外部收到的 value 长度超过 maxlength（issue #4705）。
+      this.triggerEvent('change', { value: nextValue, cursor });
     },
     onFocus(event) {
       this.triggerEvent('focus', {
