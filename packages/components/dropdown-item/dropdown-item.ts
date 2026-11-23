@@ -99,6 +99,11 @@ export default class DropdownMenuItem extends SuperComponent {
     'label, computedLabel, disabled'() {
       this.$parent?.getAllItems();
     },
+    disabled(disabled) {
+      if (disabled && this.data.show) {
+        this.closeDropdown();
+      }
+    },
     'keepLabelActive, multiple, value'() {
       const { keepLabelActive, multiple, value } = this.data;
 
@@ -140,6 +145,7 @@ export default class DropdownMenuItem extends SuperComponent {
     },
 
     handleTreeClick(e) {
+      if (this.data.disabled) return;
       const { level, value: itemValue } = e.currentTarget.dataset;
       const { value } = this.data;
 
@@ -148,6 +154,7 @@ export default class DropdownMenuItem extends SuperComponent {
     },
 
     handleRadioChange(e) {
+      if (this.data.disabled) return;
       const { value } = e.detail;
 
       this._trigger('change', { value });
@@ -169,11 +176,13 @@ export default class DropdownMenuItem extends SuperComponent {
     },
 
     handleReset() {
+      if (this.data.disabled) return;
       this._trigger('change', { value: [] });
       this._trigger('reset');
     },
 
     handleConfirm() {
+      if (this.data.disabled) return;
       this._trigger('confirm', { value: this.data.value });
       this.closeDropdown();
       // 在关闭popup后才自动滚动到首个选项
