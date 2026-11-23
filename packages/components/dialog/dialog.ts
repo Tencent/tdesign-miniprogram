@@ -65,12 +65,14 @@ export default class Dialog extends SuperComponent {
           base.theme = 'light';
         }
 
-        if (typeof btn === 'string') {
-          rect[`_${key}`] = { ...base, content: btn };
-        } else if (btn && typeof btn === 'object') {
-          rect[`_${key}`] = { ...base, ...btn };
-        } else {
+        // 空字符串表示「不渲染这个按钮」，不能当成空文案去渲染一个空按钮：
+        // `cancelBtn: ''` 是 alert 以及用户隐藏取消按钮的写法。
+        if (!btn) {
           rect[`_${key}`] = null;
+        } else if (typeof btn === 'string') {
+          rect[`_${key}`] = { ...base, content: btn };
+        } else {
+          rect[`_${key}`] = { ...base, ...btn };
         }
       });
 
