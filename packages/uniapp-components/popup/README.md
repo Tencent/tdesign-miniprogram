@@ -42,6 +42,7 @@ close-btn | Boolean | - | 关闭按钮，值类型为 Boolean 时表示是否显
 close-on-overlay-click | Boolean | true | 点击遮罩层是否关闭 | N
 content | String | - | 浮层里面的内容 | N
 duration | Number | 240 | 动画过渡时间 | N
+max-width | String / Number | - | 弹出层最大宽度，仅顶部和底部弹出场景有效。 | N
 overlay-props | Object | {} | 遮罩层的属性，透传至 overlay。TS 类型：`OverlayProps`，[Overlay API Documents](./overlay?tab=api)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/popup/type.ts) | N
 placement | String | top | 浮层出现位置。可选项：top/left/right/bottom/center | N
 prevent-scroll-through | Boolean | true | 是否阻止背景滚动 | N

@@ -17,8 +17,8 @@
 
 <view
   wx:if="{{realVisible}}"
-  style="{{_._style([popup.getPopupStyles(zIndex, distanceTop, placement, duration), style, customStyle])}}"
-  class="{{_.cls(classPrefix, [placement])}} {{transitionClass}} class {{prefix}}-class"
+  style="{{_._style([popup.getPopupStyles(zIndex, distanceTop, placement, duration, maxWidth), style, customStyle])}}"
+  class="{{_.cls(classPrefix, [placement, ['with-max-width', popup.hasMaxWidth(placement, maxWidth)]])}} {{transitionClass}} class {{prefix}}-class"
   bind:transitionend="onTransitionEnd"
 >
   <!-- 暂时移除：aria-role="dialog" aria-modal="{{ true }}"，关联：https://github.com/Tencent/tdesign-miniprogram/issues/2142 -->

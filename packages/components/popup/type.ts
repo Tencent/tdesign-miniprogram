@@ -4,7 +4,7 @@
  * 该文件为脚本自动生成文件，请勿随意修改。如需修改请联系 PMC
  * */
 
-import { OverlayProps } from '../overlay/index';
+import type { OverlayProps } from '../overlay/index';
 
 export interface TdPopupProps {
   /**
@@ -36,6 +36,13 @@ export interface TdPopupProps {
   duration?: {
     type: NumberConstructor;
     value?: number;
+  };
+  /**
+   * 弹出层最大宽度，仅顶部和底部弹出场景有效。
+   */
+  maxWidth?: {
+    type: null;
+    value?: string | number;
   };
   /**
    * 遮罩层的属性，透传至 overlay
