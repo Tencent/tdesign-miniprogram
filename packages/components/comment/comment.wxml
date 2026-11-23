@@ -14,7 +14,11 @@
       data-action="{{action}}"
       bindtap="handleClickActions"
     >
-      <template wx:if="{{action.iconData}}" is="icon" data="{{...action.iconData}}" />
+      <template
+        wx:if="{{action.iconData}}"
+        is="icon"
+        data="{{tClass: classPrefix + '__actions-item-icon', ...action.iconData}}"
+      />
       {{action.content}}
     </view>
   </view>
@@ -38,7 +42,7 @@
 
 <view class="{{classPrefix}} class {{prefix}}-class" style="{{_._style([style, customStyle])}}">
   <view
-    class="{{_.cls(classPrefix + '__inner', [['active', innerActive]])}}"
+    class="{{_.cls(classPrefix + '__inner', [['long-press', innerActive]])}}"
     bind:longpress="handleLongPress"
     bind:touchend="handlePressEnd"
     bind:touchcancel="handlePressEnd"

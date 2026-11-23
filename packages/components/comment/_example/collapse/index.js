@@ -1,5 +1,16 @@
 const REPLY_COUNT = 6;
 
+// 点赞数量格式化：过万（>= 10000）统一使用 k 单位，如 15800 -> 15.8k
+const formatLikeCount = (count) => {
+  if (count >= 10000) {
+    const value = count / 1000;
+    return `${Number.isInteger(value) ? value : value.toFixed(1)}k`;
+  }
+  return String(count);
+};
+
+const likeCounts = [6, 68, 688, 6888, 15800, 158000];
+
 Component({
   data: {
     avatar: {
@@ -19,14 +30,9 @@ Component({
     },
     replyInfo: [],
     visibleReplies: [],
-    // 回复输入框（待对齐视觉，暂不展示）
-    showReplyInput: false,
-    replyValue: '',
-    replyTarget: '',
-    focusInput: false,
     // ActionSheet
     showActionSheet: false,
-    actionSheetItems: ['回复', '转发', '复制', '举报'],
+    actionSheetItems: ['复制', '回复', '举报', '删除'],
     longPressTarget: '',
   },
 
@@ -43,7 +49,8 @@ Component({
           },
           content: '这是一段很长很长很长很长很长很长的评论内容。',
           datetime: '今天16:38·广东',
-          likeNum: 6,
+          likeNum: likeCounts[i],
+          likeText: formatLikeCount(likeCounts[i]),
         });
       }
       this.setData({
@@ -77,16 +84,7 @@ Component({
 
     onReply(e) {
       const { author } = e.currentTarget.dataset;
-      // 待对齐视觉后展示输入框，当前仅记录回复目标
-      this.setData({ replyTarget: author });
-    },
-
-    onLike(e) {
-      const { index } = e.currentTarget.dataset;
-      const { replyInfo } = this.data;
-      this.setData({
-        [`replyInfo[${index}].likeNum`]: replyInfo[index].likeNum + 1,
-      });
+      console.log('回复:', author);
     },
 
     onLongPress(e) {
@@ -98,64 +96,14 @@ Component({
     },
 
     onActionSheetSelect(e) {
-      const { label } = e.detail;
-      if (label === '回复' && this.data.longPressTarget) {
-        // 待对齐视觉后展示输入框
-        this.setData({ replyTarget: this.data.longPressTarget });
-      }
+      const { selected } = e.detail;
+      const label = typeof selected === 'string' ? selected : selected.label;
+      console.log('长按评论：', this.data.longPressTarget, '操作：', label);
       this.setData({ showActionSheet: false });
     },
 
     onActionSheetClose() {
       this.setData({ showActionSheet: false });
-    },
-
-    onInputChange(e) {
-      this.setData({ replyValue: e.detail.value });
-    },
-
-    onSubmit() {
-      const { replyValue, replyTarget, replyInfo } = this.data;
-      if (!replyValue.trim()) return;
-
-      const now = new Date();
-      const hours = String(now.getHours()).padStart(2, '0');
-      const minutes = String(now.getMinutes()).padStart(2, '0');
-
-      const newReply = {
-        author: '我',
-        avatar: {
-          shape: 'circle',
-          size: '40rpx',
-          image: 'https://tdesign.gtimg.com/mobile/demos/avatar2.png',
-        },
-        content: replyValue,
-        datetime: `今天${hours}:${minutes}·广东`,
-        likeNum: 0,
-        ...(replyTarget ? { replyTo: replyTarget } : {}),
-      };
-
-      const newReplyInfo = [...replyInfo, newReply];
-      const newTotal = newReplyInfo.length;
-
-      this.setData({
-        replyInfo: newReplyInfo,
-        visibleReplies: newReplyInfo,
-        folds: {
-          ...this.data.folds,
-          state: 'expanded',
-          total: newTotal,
-          content: {
-            collapsed: `展开${newTotal - 1}条回复`,
-            partial: ['展开更多回复', '收起'],
-            expanded: '收起',
-          },
-        },
-        replyValue: '',
-        replyTarget: '',
-        showReplyInput: false,
-        focusInput: false,
-      });
     },
   },
 });

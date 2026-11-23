@@ -7,7 +7,7 @@ Component({
     },
     actions: [
       { key: 'reply', content: '回复', placement: 'start' },
-      { key: 'like', content: '6', icon: 'thumb-up', placement: 'end' },
+      { key: 'like', content: '6', icon: 'heart', placement: 'end' },
       { key: 'dislike', icon: 'uncomfortable-1', placement: 'end' },
     ],
   },

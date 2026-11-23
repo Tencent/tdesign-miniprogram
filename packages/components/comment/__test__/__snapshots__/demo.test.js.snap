@@ -15,7 +15,7 @@ exports[`Comment Comment base demo works fine 1`] = `
           },
           Object {
             "content": "6",
-            "icon": "thumb-up",
+            "icon": "heart",
             "key": "like",
             "placement": "end",
           },
@@ -63,154 +63,142 @@ exports[`Comment Comment collapse demo works fine 1`] = `
   <wx-view
     class="mobile-comment"
   >
-    <wx-view
+    <t-comment
+      avatar="{{
+        Object {
+          "image": "https://tdesign.gtimg.com/mobile/demos/avatar1.png",
+          "shape": "circle",
+          "size": "64rpx",
+        }
+      }}"
+      content="这是一段很长很长很长很长很长很长的评论内容。"
       data-author="Name1 名称"
-      bind:longpress="onLongPress"
+      datetime="今天16:38·广东"
+      folds="{{
+        Object {
+          "content": Object {
+            "collapsed": "展开5条回复",
+            "expanded": "收起",
+            "partial": Array [
+              "展开更多回复",
+              "收起",
+            ],
+          },
+          "state": "collapsed",
+          "step": 3,
+          "total": 6,
+        }
+      }}"
+      bind:folds="onFolds"
+      bind:long-press="onLongPress"
     >
-      <t-comment
-        avatar="{{
-          Object {
-            "image": "https://tdesign.gtimg.com/mobile/demos/avatar1.png",
-            "shape": "circle",
-            "size": "64rpx",
-          }
-        }}"
-        content="这是一段很长很长很长很长很长很长的评论内容。"
-        datetime="今天16:38·广东"
-        folds="{{
-          Object {
-            "content": Object {
-              "collapsed": "展开5条回复",
-              "expanded": "收起",
-              "partial": Array [
-                "展开更多回复",
-                "收起",
-              ],
-            },
-            "state": "collapsed",
-            "step": 3,
-            "total": 6,
-          }
-        }}"
-        bind:folds="onFolds"
+      <wx-view
+        class="mobile-comment__author"
+        slot="author"
+      >
+        <wx-view>
+          Name1 名称
+        </wx-view>
+        <t-tag
+          class="mobile-comment__author-tag"
+          shape="round"
+          theme="primary"
+          variant="light"
+        >
+          作者
+        </t-tag>
+      </wx-view>
+      <wx-view
+        class="mobile-comment__actions"
+        slot="actions"
       >
         <wx-view
-          class="mobile-comment__author"
-          slot="author"
+          class="mobile-comment__reply-button"
+          data-author="Name1 名称"
+          bind:tap="onReply"
         >
-          <wx-view>
-            Name1 名称
-          </wx-view>
-          <t-tag
-            class="mobile-comment__author-tag"
-            shape="round"
-            theme="primary"
-            variant="light"
-          >
-            作者
-          </t-tag>
+          回复
         </wx-view>
         <wx-view
-          class="mobile-comment__actions"
-          slot="actions"
+          class="mobile-comment__actions-right"
+        >
+          <t-button
+            class="mobile-comment__actions-button"
+            icon="heart"
+            variant="text"
+          >
+            6
+          </t-button>
+          <t-button
+            class="mobile-comment__actions-button"
+            icon="uncomfortable-1"
+            variant="text"
+          />
+        </wx-view>
+      </wx-view>
+      <wx-view
+        slot="reply"
+      >
+        <t-comment
+          avatar="{{
+            Object {
+              "image": "https://tdesign.gtimg.com/mobile/demos/avatar1.png",
+              "shape": "circle",
+              "size": "40rpx",
+            }
+          }}"
+          content="这是一段很长很长很长很长很长很长的评论内容。"
+          data-author="Name1 名称"
+          datetime="今天16:38·广东"
+          bind:long-press="onLongPress"
         >
           <wx-view
-            class="mobile-comment__reply-button"
-            data-author="Name1 名称"
-            bind:tap="onReply"
+            class="mobile-comment__author"
+            slot="author"
           >
-            回复
+            <wx-view>
+              Name1 名称
+            </wx-view>
           </wx-view>
           <wx-view
-            class="mobile-comment__actions-right"
+            class="mobile-comment__actions"
+            slot="actions"
           >
-            <t-button
-              class="mobile-comment__actions-button"
-              icon="thumb-up"
-              variant="text"
+            <wx-view
+              class="mobile-comment__reply-button"
+              data-author="Name1 名称"
+              bind:tap="onReply"
             >
-              6
-            </t-button>
-            <t-button
-              class="mobile-comment__actions-button"
-              icon="uncomfortable-1"
-              variant="text"
-            />
-          </wx-view>
-        </wx-view>
-        <wx-view
-          slot="reply"
-        >
-          <wx-view
-            data-author="Name1 名称"
-            bind:longpress="onLongPress"
-          >
-            <t-comment
-              avatar="{{
-                Object {
-                  "image": "https://tdesign.gtimg.com/mobile/demos/avatar1.png",
-                  "shape": "circle",
-                  "size": "40rpx",
-                }
-              }}"
-              datetime="今天16:38·广东"
+              回复
+            </wx-view>
+            <wx-view
+              class="mobile-comment__actions-right"
             >
-              <wx-view
-                class="mobile-comment__author"
-                slot="author"
+              <t-button
+                class="mobile-comment__actions-button"
+                icon="heart"
+                variant="text"
               >
-                <wx-view>
-                  Name1 名称
-                </wx-view>
-              </wx-view>
-              <wx-view
-                slot="content"
-              >
-                这是一段很长很长很长很长很长很长的评论内容。
-              </wx-view>
-              <wx-view
-                class="mobile-comment__actions"
-                slot="actions"
-              >
-                <wx-view
-                  class="mobile-comment__reply-button"
-                  data-author="Name1 名称"
-                  bind:tap="onReply"
-                >
-                  回复
-                </wx-view>
-                <wx-view
-                  class="mobile-comment__actions-right"
-                >
-                  <t-button
-                    class="mobile-comment__actions-button"
-                    data-index="{{0}}"
-                    icon="thumb-up"
-                    variant="text"
-                    bind:tap="onLike"
-                  >
-                    6
-                  </t-button>
-                  <t-button
-                    class="mobile-comment__actions-button"
-                    icon="uncomfortable-1"
-                    variant="text"
-                  />
-                </wx-view>
-              </wx-view>
-            </t-comment>
+                6
+              </t-button>
+              <t-button
+                class="mobile-comment__actions-button"
+                icon="uncomfortable-1"
+                variant="text"
+              />
+            </wx-view>
           </wx-view>
-        </wx-view>
-      </t-comment>
-    </wx-view>
+        </t-comment>
+      </wx-view>
+    </t-comment>
     <t-action-sheet
       cancelText="取消"
       items="{{
         Array [
-          "回复",
-          "转发",
           "复制",
+          "回复",
           "举报",
+          "删除",
         ]
       }}"
       visible="{{false}}"
@@ -266,7 +254,7 @@ exports[`Comment Comment image demo works fine 1`] = `
             mode="aspectFill"
             shape="round"
             src="https://tdesign.gtimg.com/mobile/demos/swiper1.png"
-            style="width: 156rpx; height: 156rpx"
+            style="width: 160rpx; height: 160rpx"
           />
         </wx-view>
       </wx-view>
@@ -284,7 +272,7 @@ exports[`Comment Comment image demo works fine 1`] = `
         >
           <t-button
             class="mobile-comment__actions-button"
-            icon="thumb-up"
+            icon="heart"
             variant="text"
           >
             6
@@ -352,7 +340,7 @@ exports[`Comment Comment mixed demo works fine 1`] = `
               mode="aspectFill"
               shape="round"
               src="https://tdesign.gtimg.com/mobile/demos/swiper1.png"
-              style="width: 156rpx; height: 156rpx"
+              style="width: 160rpx; height: 160rpx"
             />
           </wx-view>
           <wx-view
@@ -364,7 +352,7 @@ exports[`Comment Comment mixed demo works fine 1`] = `
               mode="aspectFill"
               shape="round"
               src="https://tdesign.gtimg.com/mobile/demos/swiper1.png"
-              style="width: 156rpx; height: 156rpx"
+              style="width: 160rpx; height: 160rpx"
             />
           </wx-view>
           <wx-view
@@ -376,7 +364,7 @@ exports[`Comment Comment mixed demo works fine 1`] = `
               mode="aspectFill"
               shape="round"
               src="https://tdesign.gtimg.com/mobile/demos/swiper1.png"
-              style="width: 156rpx; height: 156rpx"
+              style="width: 160rpx; height: 160rpx"
             />
             <wx-view
               class="mobile-comment__images-badge"
@@ -402,7 +390,7 @@ exports[`Comment Comment mixed demo works fine 1`] = `
         >
           <t-button
             class="mobile-comment__actions-button"
-            icon="thumb-up"
+            icon="heart"
             variant="text"
           >
             6
