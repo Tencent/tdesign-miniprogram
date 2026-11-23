@@ -188,6 +188,25 @@ describe('comment', () => {
       // 外部未回写 folds，内部仍保持折叠态
       expect(instance.data.foldState).toBe('collapsed');
     });
+
+    it(': long-press 长按评论触发事件并高亮', async () => {
+      const handleLongPress = jest.fn();
+      const comp = renderComment({
+        template: `<t-comment id="comment" content="一条评论" bind:long-press="onLongPress" />`,
+        methods: { onLongPress: handleLongPress },
+      });
+      const { instance } = comp.querySelector('#comment');
+
+      comp.querySelector('#comment >>> .t-comment__inner').dispatchEvent('longpress');
+      await simulate.sleep();
+      expect(handleLongPress).toHaveBeenCalledTimes(1);
+      expect(instance.data.innerActive).toBe(true);
+      expect(comp.querySelector('#comment >>> .t-comment__inner--long-press')).toBeTruthy();
+
+      comp.querySelector('#comment >>> .t-comment__inner').dispatchEvent('touchend');
+      await simulate.sleep();
+      expect(instance.data.innerActive).toBe(false);
+    });
   });
 
   describe('slots', () => {

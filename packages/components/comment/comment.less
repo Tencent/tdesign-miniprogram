@@ -3,17 +3,18 @@
 @comment: ~'@{prefix}-comment';
 @comment-inner-horizontal-padding: @spacer-2;
 @comment-inner-padding: @spacer-1 @comment-inner-horizontal-padding calc(@spacer / 2) @spacer-2;
-@comment-content-font: @font-body-large;
+@comment-content-font: @font-body-medium;
 @comment-content-color: @text-color-primary;
 @comment-author-color: @text-color-placeholder;
 @comment-author-margin-bottom: calc(@spacer / 4);
-@comment-datetime-color: @text-color-disabled;
+@comment-datetime-color: @text-color-placeholder;
 @comment-datetime-font: @font-body-small;
-@comment-bottom-margin-top: calc(@spacer / 2);
+@comment-bottom-margin-top: calc(@spacer / 4);
 @comment-reply-body-margin-left: calc(@spacer + @spacer-4);
 @comment-reply-inner-padding: @spacer @comment-inner-horizontal-padding calc(@spacer / 2) @spacer-2;
 @comment-folds-divider-background: @component-stroke;
 @comment-folds-item-color: @text-color-secondary;
+@comment-actions-gap: 40rpx;
 
 .@{comment} {
   box-sizing: border-box;
@@ -22,7 +23,7 @@
     display: flex;
     padding: @comment-inner-padding;
 
-    &--active {
+    &--long-press {
       background-color: @bg-color-secondarycontainer;
     }
   }
@@ -56,7 +57,7 @@
   &__date {
     font: @comment-datetime-font;
     color: @comment-datetime-color;
-    margin-right: @spacer-2;
+    margin-right: @spacer;
   }
 
   &__reply {
@@ -74,7 +75,7 @@
   &__folds {
     display: flex;
     align-items: center;
-    margin-left: calc(@comment-reply-body-margin-left + @comment-inner-horizontal-padding);
+    padding: @spacer @spacer-2 0 calc(@comment-reply-body-margin-left + @comment-inner-horizontal-padding);
 
     &::before {
       display: block;
@@ -91,7 +92,10 @@
       color: @comment-folds-item-color;
       font-size: @font-size-s;
       line-height: @text-line-height-s;
-      margin-right: @spacer-3;
+
+      &:not(:last-child) {
+        margin-right: @spacer-3;
+      }
     }
 
     &-item-icon {
@@ -109,7 +113,7 @@
     &-block {
       display: flex;
       align-items: center;
-      gap: @spacer-2;
+      gap: @comment-actions-gap;
     }
 
     &-item {

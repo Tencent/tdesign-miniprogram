@@ -80,8 +80,9 @@ export default class Comment extends SuperComponent {
   };
 
   methods = {
-    handleLongPress() {
+    handleLongPress(e: WechatMiniprogram.TouchEvent) {
       this.setData({ innerActive: true });
+      this.triggerEvent('long-press', { e });
     },
 
     handlePressEnd() {

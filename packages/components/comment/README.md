@@ -63,6 +63,7 @@ reply | String | - | 回复 | N
 -- | -- | --
 actions | `(detail: { action: CommentActionItem;})` | 点击任一操作项（如回复/点赞/不喜欢）时触发并返回当前操作项
 folds | `(detail: { fold: CommentFold;})` | 用户点击“展开回复/收起”时触发，并返回点击后的 fold 配置
+long-press | \- | `1.18.1`。长按整个评论时触发
 
 ### Comment Slots
 

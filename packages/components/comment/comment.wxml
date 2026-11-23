@@ -38,7 +38,7 @@
 
 <view class="{{classPrefix}} class {{prefix}}-class" style="{{_._style([style, customStyle])}}">
   <view
-    class="{{_.cls(classPrefix + '__inner', [['active', innerActive]])}}"
+    class="{{_.cls(classPrefix + '__inner', [['long-press', innerActive]])}}"
     bind:longpress="handleLongPress"
     bind:touchend="handlePressEnd"
     bind:touchcancel="handlePressEnd"
