@@ -278,7 +278,12 @@ export default {
       },
       label: 'getParentAllItems',
       computedLabel: 'getParentAllItems',
-      disabled: 'getParentAllItems',
+      disabled(disabled) {
+        this.getParentAllItems();
+        if (disabled && this.show) {
+          this.closeDropdown();
+        }
+      },
       keepLabelActive: 'updateKeepActive',
       multiple: 'updateKeepActive',
       show: {
@@ -332,6 +337,7 @@ export default {
       },
 
       handleTreeClick(e) {
+        if (this.disabled) return;
         const { level, value: itemValue } = e.currentTarget.dataset;
         const { dataValue } = this;
 
@@ -340,9 +346,11 @@ export default {
       },
 
       onRadioChange(e, curValue) {
+        if (this.disabled) return;
         this.handleRadioChange({ value: curValue });
       },
       onCheckboxChange(e) {
+        if (this.disabled) return;
         const { checkAll, dataIndeterminate } = this.$refs.checkboxGroupRef;
         const {
           context: { value, label },
@@ -359,6 +367,7 @@ export default {
       },
 
       handleRadioChange(e) {
+        if (this.disabled) return;
         const { value } = e;
 
         this._trigger('change', { value });
@@ -380,11 +389,13 @@ export default {
       },
 
       handleReset() {
+        if (this.disabled) return;
         this._trigger('change', { value: [] });
         this._trigger('reset');
       },
 
       handleConfirm() {
+        if (this.disabled) return;
         this._trigger('confirm', { value: this.dataValue });
         this.closeDropdown();
         // 在关闭 popup 后才自动滚动到首个选项
