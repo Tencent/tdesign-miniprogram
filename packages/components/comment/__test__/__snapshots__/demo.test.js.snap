@@ -147,6 +147,7 @@ exports[`Comment Comment collapse demo works fine 1`] = `
               "size": "40rpx",
             }
           }}"
+          content="这是一段很长很长很长很长很长很长的评论内容。"
           data-author="Name1 名称"
           datetime="今天16:38·广东"
           bind:long-press="onLongPress"
@@ -158,11 +159,6 @@ exports[`Comment Comment collapse demo works fine 1`] = `
             <wx-view>
               Name1 名称
             </wx-view>
-          </wx-view>
-          <wx-view
-            slot="content"
-          >
-            这是一段很长很长很长很长很长很长的评论内容。
           </wx-view>
           <wx-view
             class="mobile-comment__actions"
@@ -180,10 +176,8 @@ exports[`Comment Comment collapse demo works fine 1`] = `
             >
               <t-button
                 class="mobile-comment__actions-button"
-                data-index="{{0}}"
                 icon="thumb-up"
                 variant="text"
-                bind:tap="onLike"
               >
                 6
               </t-button>
@@ -201,10 +195,10 @@ exports[`Comment Comment collapse demo works fine 1`] = `
       cancelText="取消"
       items="{{
         Array [
-          "回复",
-          "转发",
           "复制",
+          "回复",
           "举报",
+          "删除",
         ]
       }}"
       visible="{{false}}"

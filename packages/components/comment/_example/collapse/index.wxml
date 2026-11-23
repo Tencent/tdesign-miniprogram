@@ -25,6 +25,7 @@
         wx:for="{{visibleReplies}}"
         wx:key="index"
         avatar="{{item.avatar}}"
+        content="{{item.content}}"
         datetime="{{item.datetime}}"
         data-author="{{item.author}}"
         bind:long-press="onLongPress"
@@ -32,52 +33,16 @@
         <view slot="author" class="mobile-comment__author">
           <view>{{item.author}}</view>
         </view>
-        <view slot="content">
-          <block wx:if="{{item.replyTo}}">
-            <text>回复</text>
-            <text class="mobile-comment__reply-name">{{item.replyTo}}</text>
-            <text>：{{item.content}}</text>
-          </block>
-          <block wx:else>{{item.content}}</block>
-        </view>
         <view slot="actions" class="mobile-comment__actions">
           <view class="mobile-comment__reply-button" data-author="{{item.author}}" bindtap="onReply">回复</view>
           <view class="mobile-comment__actions-right">
-            <t-button
-              class="mobile-comment__actions-button"
-              icon="thumb-up"
-              variant="text"
-              data-index="{{index}}"
-              bindtap="onLike"
-              >{{item.likeNum || ''}}</t-button
-            >
+            <t-button class="mobile-comment__actions-button" icon="thumb-up" variant="text">{{item.likeText}}</t-button>
             <t-button class="mobile-comment__actions-button" icon="uncomfortable-1" variant="text" />
           </view>
         </view>
       </t-comment>
     </view>
   </t-comment>
-
-  <!-- 回复输入框 -->
-  <view wx:if="{{showReplyInput}}" class="mobile-comment__input">
-    <input
-      class="mobile-comment__input-content"
-      placeholder="{{replyTarget ? '回复' + replyTarget : '请输入内容'}}"
-      value="{{replyValue}}"
-      bindinput="onInputChange"
-      bindconfirm="onSubmit"
-      focus="{{focusInput}}"
-    />
-    <t-button
-      class="mobile-comment__input-button"
-      theme="primary"
-      shape="circle"
-      size="small"
-      icon="send"
-      disabled="{{!replyValue}}"
-      bindtap="onSubmit"
-    />
-  </view>
 
   <!-- ActionSheet -->
   <t-action-sheet

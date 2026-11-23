@@ -16,11 +16,6 @@
   font: var(--td-font-body-small);
 }
 
-.mobile-comment__reply-name {
-  color: var(--td-text-color-secondary);
-  font: var(--td-font-body-medium);
-}
-
 .mobile-comment__actions {
   display: flex;
   align-items: center;
@@ -41,30 +36,4 @@
   --td-button-medium-font: var(--td-font-body-small);
   --td-button-medium-icon-size: 32rpx;
   box-sizing: border-box;
-}
-
-.mobile-comment__input {
-  display: flex;
-  padding: 24rpx;
-  gap: var(--td-spacer);
-  border-radius: 32rpx;
-  border: 1px solid #dcdcdc;
-  background: #ffffff;
-  box-shadow:
-    0 12rpx 60rpx 10rpx rgba(0, 0, 0, 0.05),
-    0 32rpx 48rpx 4rpx rgba(0, 0, 0, 0.04),
-    0 16rpx 20rpx -10rpx rgba(0, 0, 0, 0.08);
-  margin-top: 96rpx;
-}
-
-.mobile-comment__input-content {
-  border: none;
-  flex: 1;
-  background: transparent;
-}
-
-.mobile-comment__input-button {
-  --td-button-primary-disabled-bg: #dcdcdc;
-  --td-button-primary-disabled-border-color: transparent;
-  transform: rotate(-90deg);
 }
