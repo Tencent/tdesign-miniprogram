@@ -16,6 +16,7 @@ const wxmlmin = require('gulp-htmlmin');
 const rename = require('gulp-rename');
 const replaceTask = require('gulp-replace-task');
 const mpNpm = require('gulp-mp-npm');
+const transformUnicodeRegex = require('./transform-unicode-regex');
 const gulpIf = require('gulp-if');
 
 const config = require('./config');
@@ -194,6 +195,7 @@ module.exports = (src, dist, moduleName) => {
     return merge2(
       tsResult.js
         .pipe(mpNpm())
+        .pipe(transformUnicodeRegex())
         .pipe(tasks.replacePaths())
         .pipe(gulpIf(isComponent(src) && isProduction && !ignoreTerser, jsmin()))
         .pipe(sourcemaps.write('.'))
@@ -210,6 +212,7 @@ module.exports = (src, dist, moduleName) => {
       .src(globs.js, { ...srcOptions, since: since(tasks.js) })
       .pipe(generateConfigReplaceTask(config, { stringify: true }))
       .pipe(mpNpm())
+      .pipe(transformUnicodeRegex())
       .pipe(gulpIf(isComponent(src) && isProduction && !ignoreTerser, jsmin()))
       .pipe(gulp.dest(dist));
 
