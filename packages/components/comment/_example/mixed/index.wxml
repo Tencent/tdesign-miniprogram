@@ -14,7 +14,7 @@
           data-index="{{index}}"
           bindtap="onImageClick"
         >
-          <t-image src="{{item}}" mode="aspectFill" shape="round" style="width: 156rpx; height: 156rpx" />
+          <t-image src="{{item}}" mode="aspectFill" shape="round" style="width: 160rpx; height: 160rpx" />
           <view wx:if="{{index === maxShow - 1 && images.length > maxShow}}" class="mobile-comment__images-badge">
             共{{images.length}}张
           </view>
@@ -24,7 +24,7 @@
     <view slot="actions" class="mobile-comment__actions">
       <view class="mobile-comment__reply-button">回复</view>
       <view class="mobile-comment__actions-right">
-        <t-button class="mobile-comment__actions-button" icon="thumb-up" variant="text">6</t-button>
+        <t-button class="mobile-comment__actions-button" icon="heart" variant="text">6</t-button>
         <t-button class="mobile-comment__actions-button" icon="uncomfortable-1" variant="text" />
       </view>
     </view>

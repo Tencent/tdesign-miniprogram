@@ -21,7 +21,7 @@ Global introduction, configured in `app.json` under the miniprogram root directo
 
 ## Examples
 
-### Basic Comment
+### Text Comment
 
 {{ base }}
 

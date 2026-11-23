@@ -15,7 +15,7 @@ exports[`Comment Comment base demo works fine 1`] = `
           },
           Object {
             "content": "6",
-            "icon": "thumb-up",
+            "icon": "heart",
             "key": "like",
             "placement": "end",
           },
@@ -124,7 +124,7 @@ exports[`Comment Comment collapse demo works fine 1`] = `
         >
           <t-button
             class="mobile-comment__actions-button"
-            icon="thumb-up"
+            icon="heart"
             variant="text"
           >
             6
@@ -176,7 +176,7 @@ exports[`Comment Comment collapse demo works fine 1`] = `
             >
               <t-button
                 class="mobile-comment__actions-button"
-                icon="thumb-up"
+                icon="heart"
                 variant="text"
               >
                 6
@@ -254,7 +254,7 @@ exports[`Comment Comment image demo works fine 1`] = `
             mode="aspectFill"
             shape="round"
             src="https://tdesign.gtimg.com/mobile/demos/swiper1.png"
-            style="width: 156rpx; height: 156rpx"
+            style="width: 160rpx; height: 160rpx"
           />
         </wx-view>
       </wx-view>
@@ -272,7 +272,7 @@ exports[`Comment Comment image demo works fine 1`] = `
         >
           <t-button
             class="mobile-comment__actions-button"
-            icon="thumb-up"
+            icon="heart"
             variant="text"
           >
             6
@@ -340,7 +340,7 @@ exports[`Comment Comment mixed demo works fine 1`] = `
               mode="aspectFill"
               shape="round"
               src="https://tdesign.gtimg.com/mobile/demos/swiper1.png"
-              style="width: 156rpx; height: 156rpx"
+              style="width: 160rpx; height: 160rpx"
             />
           </wx-view>
           <wx-view
@@ -352,7 +352,7 @@ exports[`Comment Comment mixed demo works fine 1`] = `
               mode="aspectFill"
               shape="round"
               src="https://tdesign.gtimg.com/mobile/demos/swiper1.png"
-              style="width: 156rpx; height: 156rpx"
+              style="width: 160rpx; height: 160rpx"
             />
           </wx-view>
           <wx-view
@@ -364,7 +364,7 @@ exports[`Comment Comment mixed demo works fine 1`] = `
               mode="aspectFill"
               shape="round"
               src="https://tdesign.gtimg.com/mobile/demos/swiper1.png"
-              style="width: 156rpx; height: 156rpx"
+              style="width: 160rpx; height: 160rpx"
             />
             <wx-view
               class="mobile-comment__images-badge"
@@ -390,7 +390,7 @@ exports[`Comment Comment mixed demo works fine 1`] = `
         >
           <t-button
             class="mobile-comment__actions-button"
-            icon="thumb-up"
+            icon="heart"
             variant="text"
           >
             6

@@ -7,7 +7,7 @@
         desc="用于展示评论信息，支持回复、点赞等操作，以及折叠/展开回复区。"
         notice="渲染框架支持情况：Skyline、WebView"
       />
-      <t-demo title="01 组件类型" desc="基础评论">
+      <t-demo title="01 组件类型" desc="文本评论">
         <base />
       </t-demo>
       <t-demo desc="图片评论">

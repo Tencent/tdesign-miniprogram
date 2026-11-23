@@ -14,7 +14,11 @@
       data-action="{{action}}"
       bindtap="handleClickActions"
     >
-      <template wx:if="{{action.iconData}}" is="icon" data="{{...action.iconData}}" />
+      <template
+        wx:if="{{action.iconData}}"
+        is="icon"
+        data="{{tClass: classPrefix + '__actions-item-icon', ...action.iconData}}"
+      />
       {{action.content}}
     </view>
   </view>

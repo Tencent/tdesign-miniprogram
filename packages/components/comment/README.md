@@ -21,7 +21,7 @@ isComponent: true
 
 ## 代码演示
 
-### 基础评论
+### 文本评论
 
 {{ base }}
 
