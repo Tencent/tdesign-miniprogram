@@ -104,7 +104,7 @@ icon | 自定义 `icon` 显示内容
 -- | -- | --
 --safe-area-inset-bottom | env(safe-area-inset-bottom) | -
 --td-tab-bar-bg-color | @bg-color-container | -
---td-tab-bar-border-color | @border-level-1-color | -
+--td-tab-bar-border-color | @component-stroke | -
 --td-tab-bar-round-shadow | @shadow-3 | -
 --td-tab-bar-active-bg | @brand-color-light | -
 --td-tab-bar-active-color | @brand-color | -

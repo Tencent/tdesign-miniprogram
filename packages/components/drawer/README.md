@@ -88,7 +88,7 @@ title | `0.29.0`。自定义 `title` 显示内容
 名称 | 默认值 | 描述
 -- | -- | --
 --td-drawer-bg-color | @bg-color-container | -
---td-drawer-border-color | @border-level-1-color | -
+--td-drawer-border-color | @component-stroke | -
 --td-drawer-footer-padding-bottom | 40rpx | -
 --td-drawer-hover-color | @bg-color-secondarycontainer | -
 --td-drawer-item-icon-color | @drawer-title-color | -
