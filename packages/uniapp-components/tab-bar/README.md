@@ -111,5 +111,5 @@ icon | 自定义 `icon` 显示内容
 --td-tab-bar-color | @text-color-primary | -
 --td-tab-bar-height | 80rpx | -
 --td-tab-bar-hover-bg-color | rgba(0, 0, 0, 0.05) | -
---td-tab-bar-spread-border-color | @border-color | -
+--td-tab-bar-spread-border-color | @component-stroke | -
 --td-tab-bar-spread-shadow | @shadow-3 | -
