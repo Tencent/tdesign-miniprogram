@@ -65,8 +65,11 @@ export default {
         ...otherOptions,
       };
       instance.setData({
-        cancelBtn: '',
         ...mergedOptions,
+        // alert 只保留确定按钮。这里必须放在展开之后：mergedOptions 里带着实例上的
+        // cancelBtn（页面写了 `cancel-btn` 就会有值），放在前面会被它覆盖回去，
+        // 取消按钮就又冒出来了。
+        cancelBtn: '',
         visible: true,
       });
       instance._onConfirm = resolve;
