@@ -34,12 +34,12 @@ describe('toast', () => {
 
   it(':base', async () => {
     const close = jest.fn();
-    const destory = jest.fn();
+    const destroy = jest.fn();
     const id = simulate.load({
-      template: `<t-toast id="toast" bind:close="close" bind:destory="destory"></t-toast>`,
+      template: `<t-toast id="toast" bind:close="close" bind:destroy="destroy"></t-toast>`,
       methods: {
         close,
-        destory,
+        destroy,
       },
       usingComponents: {
         't-toast': toast,
@@ -64,7 +64,7 @@ describe('toast', () => {
 
     await simulate.sleep(0);
 
-    expect(destory).toHaveBeenCalledTimes(1);
+    expect(destroy).toHaveBeenCalledTimes(1);
   });
 
   it(':duration', async () => {
