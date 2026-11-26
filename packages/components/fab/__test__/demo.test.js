@@ -14,6 +14,22 @@ describe('Fab', () => {
       const container = simulate.render(id);
       container.attach(document.createElement('parent-wrapper'));
       expect(container.toJSON()).toMatchSnapshot();
+
+      if (demoName !== 'collapsible') return;
+
+      expect(container.data.collapsed).toBe(false);
+
+      container.instance.clearCollapseTimer();
+      jest.useFakeTimers();
+      container.instance.startCollapseTimer();
+      jest.advanceTimersByTime(3000);
+      expect(container.data.collapsed).toBe(true);
+
+      container.instance.onExpand();
+      expect(container.data.collapsed).toBe(false);
+
+      jest.clearAllTimers();
+      jest.useRealTimers();
     });
   });
 });
