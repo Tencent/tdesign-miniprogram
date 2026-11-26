@@ -11,6 +11,7 @@ close-btn | Boolean | - | \- | N
 close-on-overlay-click | Boolean | true | \- | N
 content | String | - | \- | N
 duration | Number | 240 | \- | N
+max-width | String / Number | - | Maximum width of the popup. Only applies to top and bottom placements. | N
 overlay-props | Object | {} | Typescript：`OverlayProps`，[Overlay API Documents](./overlay?tab=api)。[see more ts definition](https://github.com/Tencent/tdesign-miniprogram/tree/develop/packages/uniapp-components/popup/type.ts) | N
 placement | String | top | options: top/left/right/bottom/center | N
 prevent-scroll-through | Boolean | true | \- | N

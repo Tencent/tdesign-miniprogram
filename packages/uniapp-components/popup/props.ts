@@ -24,6 +24,10 @@ export default {
     type: Number,
     default: 240,
   },
+  /** 弹出层最大宽度，仅顶部和底部弹出场景有效。 */
+  maxWidth: {
+    type: [String, Number],
+  },
   /** 遮罩层的属性，透传至 overlay */
   overlayProps: {
     type: Object,

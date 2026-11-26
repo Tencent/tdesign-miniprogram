@@ -1,17 +1,6 @@
 <template>
   <view>
-    <view
-      v-if="realVisible"
-      :style="
-        '' +
-        tools._style([
-          popup.getPopupStyles({ zIndex: zIndex, distanceTop: distanceTop, placement: placement, duration: duration }),
-          customStyle,
-        ])
-      "
-      :class="'' + tools.cls(classPrefix, [placement]) + ' ' + transitionClass + ' ' + tClass"
-      @transitionend="onTransitionEnd"
-    >
+    <view v-if="realVisible" :style="popupStyles" :class="popupClasses" @transitionend="onTransitionEnd">
       <view
         v-if="innerPreventScrollThrough"
         :class="classPrefix + '__content ' + tClassContent"
@@ -91,6 +80,17 @@ export default {
       };
     },
     computed: {
+      popupStyles() {
+        const { zIndex, distanceTop, placement, duration, maxWidth, customStyle } = this;
+        return tools._style([
+          popup.getPopupStyles({ zIndex, distanceTop, placement, duration, maxWidth }),
+          customStyle,
+        ]);
+      },
+      popupClasses() {
+        const { classPrefix, placement, maxWidth, transitionClass, tClass } = this;
+        return `${tools.cls(classPrefix, [placement, ['with-max-width', popup.hasMaxWidth(placement, maxWidth)]])} ${transitionClass} ${tClass}`;
+      },
       innerPreventScrollThrough() {
         const { preventScrollThrough, overlayProps } = this;
         return preventScrollThrough || (overlayProps ? !!overlayProps.preventScrollThrough : false);
