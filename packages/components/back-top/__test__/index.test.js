@@ -53,4 +53,33 @@ describe('back-top', () => {
     await simulate.sleep(10);
     expect(onToTop).toHaveBeenCalledTimes(1);
   });
+
+  it(`: should not bubble tap event`, async () => {
+    const onToTop = jest.fn();
+    const onWrapperTap = jest.fn();
+    const id = simulate.load({
+      template: `
+        <view bind:tap="onWrapperTap">
+          <t-back-top class="base" bind:to-top="onToTop"></t-back-top>
+        </view>
+      `,
+      methods: {
+        onToTop,
+        onWrapperTap,
+      },
+      usingComponents: {
+        't-back-top': backtop,
+      },
+    });
+
+    const comp = simulate.render(id);
+    comp.attach(document.createElement('parent-wrapper'));
+
+    const $backTop = comp.querySelector('.base >>> .t-back-top');
+    $backTop.dispatchEvent('tap');
+    await simulate.sleep(10);
+
+    expect(onToTop).toHaveBeenCalledTimes(1);
+    expect(onWrapperTap).not.toHaveBeenCalled();
+  });
 });
