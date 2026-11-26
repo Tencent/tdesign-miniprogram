@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "List",
+  "navigationBarBackgroundColor": "#fff",
+  "usingComponents": {
+    "t-button": "tdesign-miniprogram/button/button",
+    "base": "./base",
+    "pull-refresh": "./pull-refresh",
+    "err-tip": "./err-tip"
+  }
+}
