@@ -4,6 +4,7 @@ import { SuperComponent, wxComponent } from '../common/src/index';
 import config from '../common/config';
 import props from './props';
 import { debounce } from '../common/utils';
+import clampHorizontal from './utils';
 import transition from '../mixins/transition';
 import pageScrollMixin from '../mixins/page-scroll';
 
@@ -248,7 +249,8 @@ export default class Popover extends SuperComponent {
         const top = isFixed ? basePos.top : basePos.top + scrollTop;
         const left = isFixed ? basePos.left : basePos.left + scrollLeft;
 
-        const style = `top:${Math.max(top, 0)}px;left:${Math.max(left, 0)}px;`;
+        const { windowWidth } = getWindowInfo();
+        const style = `top:${Math.max(top, 0)}px;left:${clampHorizontal(left, contentRect.width, windowWidth)}px;`;
         const arrowStyle = this.calcArrowStyle(_placement, triggerRect, contentRect);
         this.setData({ contentStyle: style, arrowStyle });
       });
