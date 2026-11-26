@@ -3,10 +3,15 @@
 
 <template name="view">
   <view
-    class="{{classPrefix}} class {{prefix}}-class"
-    style="right: 16px; bottom: 32px; {{_._style([style, customStyle])}}"
+    class="{{classPrefix}} class {{prefix}}-class {{collapsed ? classPrefix + '--collapsed' : ''}}"
+    style="right: 16px; bottom: 32px; {{_._style([style, customStyle, collapsed ? collapsedStyle : ''])}}"
   >
-    <slot wx:if="{{!buttonData.content && !buttonData.icon}}" />
-    <template wx:else is="button" data="{{useDefaultSlot: true, ...buttonData}}" />
+    <view wx:if="{{collapsible && collapsed}}" class="{{classPrefix}}__collapsed" bind:tap="onCollapsedTap">
+      <t-icon name="chevron-left" size="20" />
+    </view>
+    <block wx:else>
+      <slot wx:if="{{!buttonData.content && !buttonData.icon}}" />
+      <template wx:else is="button" data="{{useDefaultSlot: true, ...buttonData}}" />
+    </block>
   </view>
 </template>
