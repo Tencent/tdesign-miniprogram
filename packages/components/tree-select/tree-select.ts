@@ -130,9 +130,20 @@ export default class TreeSelect extends SuperComponent {
       const { value: itemValue } = e.detail;
 
       this.getScrollIntoView('none');
-      innerValue[0] = itemValue;
 
-      this._trigger('change', { value: innerValue, level: 0 });
+      // 切换父级后，后续每一列的候选值都变了，必须按新父级重建。
+      // buildTreeOptions 依据 data.value 定位分支，因此先把新父级写回去，
+      // 深层选中值交给它按新分支重新推导（issue #4664）。
+      const nextValue = [...(innerValue || [])];
+      nextValue[0] = itemValue;
+      for (let level = 1; level < nextValue.length; level += 1) {
+        nextValue[level] = undefined;
+      }
+
+      this.setData({ value: nextValue });
+      this.buildTreeOptions();
+
+      this._trigger('change', { value: this.data.innerValue, level: 0 });
     },
 
     handleTreeClick(e) {
