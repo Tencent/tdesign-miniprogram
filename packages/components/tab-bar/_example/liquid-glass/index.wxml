@@ -1,0 +1,25 @@
+<!--
+  液态玻璃（Liquid Glass）— 对标 iOS 26
+  纯 CSS 方案：backdrop-filter blur(12px) saturate(180%)
+  无 SVG 滤镜依赖，全平台兼容
+-->
+<view class="demo-section">
+  <t-tab-bar
+    t-class="t-tab-bar"
+    value="{{value}}"
+    shape="round"
+    theme="liquid-glass"
+    fixed="{{false}}"
+    split="{{false}}"
+    bindchange="onChange"
+  >
+    <t-tab-bar-item
+      wx:for="{{list}}"
+      wx:key="value"
+      value="{{item.value}}"
+      icon="{{item.icon}}"
+      ariaLabel="{{item.ariaLabel}}"
+    >
+    </t-tab-bar-item>
+  </t-tab-bar>
+</view>
