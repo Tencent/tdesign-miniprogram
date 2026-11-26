@@ -72,6 +72,7 @@ filter | Function | - |  自定义过滤函数。返回 true 表示匹配，未�
 filter-placeholder | String | - | 搜索框占位符描述文本 | N
 filterable | Boolean | false | 是否可搜索，开启后顶部会展示一个搜索框  | N
 keys | Object | - | 用来定义 value / label / children / disabled 在 `options` 中对应的字段别名。TS 类型：`CascaderKeysType` `type CascaderKeysType = TreeKeysType`。[通用类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/common/common.ts)。[详细类型定义](https://github.com/Tencent/tdesign-miniprogram/blob/develop/packages/components/cascader/type.ts) | N
+load | Function | - | 加载子树数据的方法（仅当节点 children 为 true 时生效）。TS 类型：`(node: CascaderOption) => Promise<Array<CascaderOption>>` | N
 options | Array | [] | 可选项数据源。TS 类型：`Array<CascaderOption>` | N
 placeholder | String | - | 未选中时的提示文案。组件内置默认值为：'选择选项' | N
 sub-titles | Array | [] | 每级展示的次标题。TS 类型：`Array<string>` | N
