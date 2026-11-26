@@ -41,7 +41,7 @@ The component provides the following CSS variables, which can be used to customi
 Name | Default Value | Description
 -- | -- | --
 --td-drawer-bg-color | @bg-color-container | -
---td-drawer-border-color | @border-level-1-color | -
+--td-drawer-border-color | @component-stroke | -
 --td-drawer-footer-padding-bottom | 40rpx | -
 --td-drawer-hover-color | @bg-color-secondarycontainer | -
 --td-drawer-item-icon-color | @drawer-title-color | -

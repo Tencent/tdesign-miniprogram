@@ -68,7 +68,7 @@ t-class-header | \-
 The component provides the following CSS variables, which can be used to customize styles.
 Name | Default Value | Description
 -- | -- | --
---td-collapse-border-color | @border-level-1-color | -
+--td-collapse-border-color | @component-stroke | -
 --td-collapse-content-font | @font-body-medium | -
 --td-collapse-content-padding | @spacer-2 | -
 --td-collapse-content-text-color | @text-color-primary | -

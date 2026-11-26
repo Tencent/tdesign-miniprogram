@@ -115,7 +115,7 @@ t-class-title | 标题样式类
 --td-navbar-right | 95px | -
 --td-navbar-background | @navbar-bg-color | -
 --td-navbar-bg-color | @bg-color-container | -
---td-navbar-capsule-border-color | @border-level-1-color | -
+--td-navbar-capsule-border-color | @component-stroke | -
 --td-navbar-capsule-border-radius | 16px | -
 --td-navbar-capsule-height | 32px | -
 --td-navbar-capsule-width | 88px | -
