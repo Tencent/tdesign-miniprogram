@@ -38,6 +38,8 @@ export default class Picker extends SuperComponent {
       if (!usePopup || visible) {
         this.updateChildren();
         this.updateIndicatorPosition();
+      } else {
+        this.$children.forEach((child) => child.resetWheel());
       }
     },
     'itemHeight, visibleItemCount'() {
@@ -53,6 +55,12 @@ export default class Picker extends SuperComponent {
   };
 
   methods = {
+    flushWheel(activeChild?) {
+      this.$children.forEach((child) => {
+        if (child !== activeChild) child.flushWheel();
+      });
+    },
+
     updateChildren() {
       const { value, defaultValue, itemHeight, visibleItemCount, keys } = this.properties;
 
@@ -83,6 +91,7 @@ export default class Picker extends SuperComponent {
     },
 
     onConfirm() {
+      this.flushWheel();
       // 获取当前实际显示的选中值
       const value = [];
       const label = [];
@@ -124,6 +133,7 @@ export default class Picker extends SuperComponent {
     },
 
     close(trigger) {
+      this.$children.forEach((child) => child.resetWheel());
       if (this.data.autoClose) {
         this.setData({ visible: false });
       }
